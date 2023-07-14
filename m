@@ -1,118 +1,83 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4210156eje;
-        Fri, 14 Jul 2023 11:02:27 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGgFOUlBS4RoVsGs+djKyvcSS/VLXvTJb+1CPAirY66UNRFaTQpGHJz++/ouumI5tjZavQR
-X-Received: by 2002:a0c:9c0d:0:b0:635:e3ae:e80e with SMTP id v13-20020a0c9c0d000000b00635e3aee80emr4871539qve.6.1689357747123;
-        Fri, 14 Jul 2023 11:02:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689357747; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4218409eje;
+        Fri, 14 Jul 2023 11:15:41 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFV+tCsVIu+RQCYoiNrOs7W+VApyRXF9tR+xwiPeB9B/X0gQX5wwtpsPjF6vSj18Tx6UVuj
+X-Received: by 2002:a05:620a:2587:b0:765:83e8:d990 with SMTP id x7-20020a05620a258700b0076583e8d990mr5508478qko.75.1689358541036;
+        Fri, 14 Jul 2023 11:15:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689358541; cv=none;
         d=google.com; s=arc-20160816;
-        b=eza6l3QcPasjHpgeIwQLo8kjiOg2RhH14/QIFbMEOKvmF+NP5Uf/C/MuuDigi3X7BU
-         di9r0gSiCvOyduWBGa//F/DYK1MdOBKhYgVFfcLR/Ikh4y2c9dQlARs+T9T8TlVPMiOc
-         935Rj06yFPjvymjH+2rRuJyzWLPFs6XQrmeLgzG0ObYoEqnEFYj4ojPGgYOm4tgEwYEU
-         zjVC7HZ9v1VbD7AlreLQ9by/7avwcut/fJhQNHXxPupVppdCJsDGQsmVqWm9QhGnaj2c
-         R7T7+XBSMP9N+g/K0PYQIDnge/f1lW8Yxfu514n7NHIwpmoGH1W/pPtL3S/zbxQHGAfu
-         0kSg==
+        b=xpyYU3eKFQfow/O8VHjOo0cvFgRCi/m35OfCR5RA0WRnbbbxWW1ZSpKzuLyhEO3wcn
+         wKLhcKq0i57ADq143W9LACD89Kwa92UARGNdIncYVwdI/AXA8LscRDX9Jy2tv1h12ms8
+         v9OOQP5qSw9AGxgBBZKY5zx8pKFZft73C2DuahJPkRmTiVgTMDiZSKhd4z125M7AIU8V
+         7nPUF1qX/kmr9bPnhTN+oypsHp2ezXKd4eFgLA+XTmOxYdQ2ItZ28pqYObb13Z7dM6GA
+         UZX8G+pPLVSwCAMdRKmlrztPZEH1xHkk0GhsCfzSZ9XbnsfHs60N8uVRQsBs8XNw/FVd
+         FQHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:date:message-id:dkim-signature;
-        bh=q9GuIFbfEjzy6ek6MLn46SugcVDlVjVUxxJ1hsvmQrs=;
-        fh=XaJyRVgIkAEQ7N4YqXRKqZV9XDMlbQjXiRJQ8eLocmI=;
-        b=gXrLOph65F3jzmZtx5ky376bRov1jChvNJVf4hfv/K91EX2RAOW9tgW4sFhalvNixP
-         p6FctVQoWhXAdoSjoreZYRcMnCOX4WZ0kuhLsCz+JnReAPQt+OIAQo0YHqXANmhdSAUV
-         7rMihVcCBgPUh2VXI2C3ySts1C2uaDD/1TJ3BACBAiu7ZRkOgTjPhq3uScYxKo+Fw7Xv
-         FJmo77QkfKCUeUpBAdH8Kr0oUBc/5dLMF9zXYM2T0dSvM/1VC+gVpm/juDpD2Ekkl9Fx
-         jKPuxZOHwEnso9j91Y6isVgdpavhTPojS/PRH42d6shKdWcy7qATvP16ahUEjCbOL42z
-         r1ng==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version;
+        bh=nS7bQpsH2ArTasOyoexHQAEm4dnTyLFFwegAZmtFymg=;
+        fh=TK33j72NKU5t+rKUT/boAfxsioDAis0VQGPbWkJmWCQ=;
+        b=OBZymhik4dOPyDyxllsQu99V/BygIIvlH6v+XcTlLq1kzNBlSP4Hgpln1HU6U7YXmI
+         X8shs8r8Hocn5Wd3PLTn92eB2ceNEueq+nuHSfDKDmS3FE7vEvKw5Rnum0aSzrz5J2pU
+         Ucab2Fr1xqUB4XpsuU6Rg24mdm++ro+XPEeBqArk+R7VwTuQzn7SucXhoSMyw28GrRAe
+         4lP94NReiStZsc6S+r3rm02X6JZ8xinHLzCoCnOuzXph0EVgqrIPU/h/amHxErc6Rj3Y
+         z5DxLUOmx7GDo+zZ0g8/c4dzuRMEhYBOsmo4ABxtJDS/mDnH6A/xa/SjYBx3D5V4vXvV
+         9nqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ac98aNvQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h14-20020a0cf20e000000b00636d76c80f7si4744425qvk.106.2023.07.14.11.02.26
+        by mx.google.com with ESMTPS id w12-20020a05620a444c00b007672c6fdc47si5030572qkp.355.2023.07.14.11.15.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jul 2023 11:02:27 -0700 (PDT)
+        Fri, 14 Jul 2023 11:15:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ac98aNvQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qKN75-0007hn-KL; Fri, 14 Jul 2023 14:01:55 -0400
+	id 1qKNKB-00043e-1S; Fri, 14 Jul 2023 14:15:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1qKN74-0007hD-9h; Fri, 14 Jul 2023 14:01:54 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1qKN71-0005TY-Em; Fri, 14 Jul 2023 14:01:54 -0400
-Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 36EHq8sW008541; Fri, 14 Jul 2023 18:01:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- subject : to : cc : references : from : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=q9GuIFbfEjzy6ek6MLn46SugcVDlVjVUxxJ1hsvmQrs=;
- b=ac98aNvQN0OnOiayzF++8iLy47ckIrR8lmOrhV11ANNfBuXd7rGemPVB5iV6ThQnZfbQ
- uNij4dyUBnCCHNt4h1pQGWcOv7xf0PwmpWPGyX0CdHusdXm2J+4XR/MScVY2q8Bsx4qn
- CYcLakcq3DzjWyU9l9ZlAiRi9rq8Qt47rkAvztEW7z0rs8Rtt+VEiLlrwqPB75C1C1Zf
- k167eFoKu4lyfLBx+3OK6Y9Q1xWJHpiuFs++5b+WtWxnk/Cr8snQ7mtUFR+G9Vjlr73H
- mvD+y2Bttj7oHvlM1kmmxsGSigN6OpMH8oOav/Jn9UtTZFhmFlstOQmn0yzRhQS+i8qp oQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3rub4x05hc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 14 Jul 2023 18:01:30 +0000
-Received: from m0353723.ppops.net (m0353723.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 36EHt3Fs017650;
- Fri, 14 Jul 2023 18:01:30 GMT
-Received: from ppma11.dal12v.mail.ibm.com
- (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3rub4x05h1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 14 Jul 2023 18:01:30 +0000
-Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
- by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 36EDaw3h001157; Fri, 14 Jul 2023 18:01:29 GMT
-Received: from smtprelay07.dal12v.mail.ibm.com ([172.16.1.9])
- by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3rtpvutbcu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 14 Jul 2023 18:01:29 +0000
-Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
- [10.39.53.233])
- by smtprelay07.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 36EI1SJW16581004
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 14 Jul 2023 18:01:29 GMT
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id CE36A5804E;
- Fri, 14 Jul 2023 18:01:28 +0000 (GMT)
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D46C45803F;
- Fri, 14 Jul 2023 18:01:27 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
- by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Fri, 14 Jul 2023 18:01:27 +0000 (GMT)
-Message-ID: <da3ed561-ba4d-5782-35b7-edcfae28538f@linux.ibm.com>
-Date: Fri, 14 Jul 2023 14:01:27 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v2 09/11] tpm_tis_sysbus: move DSDT AML generation to
- device
-Content-Language: en-US
-To: Joelle van Dyne <j@getutm.app>, Eric Auger <eric.auger@redhat.com>
-Cc: qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- "open list:ARM ACPI Subsystem" <qemu-arm@nongnu.org>
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1qKNK8-00042v-KX; Fri, 14 Jul 2023 14:15:24 -0400
+Received: from mail-pl1-f180.google.com ([209.85.214.180])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1qKNK6-0008WL-ST; Fri, 14 Jul 2023 14:15:24 -0400
+Received: by mail-pl1-f180.google.com with SMTP id
+ d9443c01a7336-1b9cd6a0051so14228875ad.1; 
+ Fri, 14 Jul 2023 11:15:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1689358521; x=1691950521;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=nS7bQpsH2ArTasOyoexHQAEm4dnTyLFFwegAZmtFymg=;
+ b=kbIWxH4KUYc1/8FVqZv8HWmfau81QWXnw4VQsx+DHtDgHIEtsbrJtReGq2DpeYk9ib
+ 2x4fld4CqGi2wM32NAdCzVFhU/gyHTApWUobGjCPyYAOzt2qIK0mDeY3bEEW6MtGuijH
+ bkh8rBjlEeDZKP7kZfBtqRZwxYeBtyFEm3Ducg+WXz2+w7rDGoLT4UC8CttPFcyGnCEY
+ ITa1p+Yc0r9Esu9oTKRovvIdXhMQz2sn7EBRiJLx6FhfF7A8yUeIe9sVJyRKMQLhVmsH
+ JjkIg5ZE+o+6mpXMO0BKjSkZJIz2inwOw1XS/Y8NncTFXVP5hYfO3DnOPaXfx1iw3aQO
+ NrUA==
+X-Gm-Message-State: ABy/qLZtURH4zQvOkKWsx3sIBgLLvfi9wD4yuDCo+IsmmxHTWsG+ZKVV
+ /mRRUOW0n2gjz9b8QQHIgejUNzJBWcf1Dw==
+X-Received: by 2002:a17:902:8689:b0:1bb:1a64:5a74 with SMTP id
+ g9-20020a170902868900b001bb1a645a74mr1331166plo.33.1689358520161; 
+ Fri, 14 Jul 2023 11:15:20 -0700 (PDT)
+Received: from mail-pj1-f48.google.com (mail-pj1-f48.google.com.
+ [209.85.216.48]) by smtp.gmail.com with ESMTPSA id
+ c2-20020a170902d90200b001b88af04175sm8062444plz.41.2023.07.14.11.15.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 14 Jul 2023 11:15:19 -0700 (PDT)
+Received: by mail-pj1-f48.google.com with SMTP id
+ 98e67ed59e1d1-2633b669f5fso1280356a91.2; 
+ Fri, 14 Jul 2023 11:15:19 -0700 (PDT)
+X-Received: by 2002:a17:90a:f0c9:b0:263:ff97:5bbb with SMTP id
+ fa9-20020a17090af0c900b00263ff975bbbmr3806498pjb.46.1689358519252; Fri, 14
+ Jul 2023 11:15:19 -0700 (PDT)
+MIME-Version: 1.0
 References: <20230714070931.23476-1-j@getutm.app>
  <20230714070931.23476-10-j@getutm.app>
  <d3d3d9d0-fb88-9500-34d9-9780f9c2644f@linux.ibm.com>
@@ -121,33 +86,35 @@ References: <20230714070931.23476-1-j@getutm.app>
  <CA+E+eSCbPXZWk2zst+AunRpL74DOEB437mZqMhpWQ0K+=dvf8A@mail.gmail.com>
  <bd034676-1a9b-59a7-0445-129c32daa7b1@linux.ibm.com>
  <CA+E+eSC7MOOWhZ1WzAAjczX+P8WvjGdLY8wkX=sq98M3YCRVJQ@mail.gmail.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <CA+E+eSC7MOOWhZ1WzAAjczX+P8WvjGdLY8wkX=sq98M3YCRVJQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: mmCy0EW3qw7J1gxMaSoJOhokwIV-7kzL
-X-Proofpoint-ORIG-GUID: ImjBZAP6BNjA_awDM6KAdjJ2rtEGeNww
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
-MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-07-14_08,2023-07-13_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 spamscore=0
- impostorscore=0 mlxscore=0 lowpriorityscore=0 adultscore=0 mlxlogscore=999
- malwarescore=0 bulkscore=0 clxscore=1015 phishscore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2306200000
- definitions=main-2307140160
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <da3ed561-ba4d-5782-35b7-edcfae28538f@linux.ibm.com>
+In-Reply-To: <da3ed561-ba4d-5782-35b7-edcfae28538f@linux.ibm.com>
+From: Joelle van Dyne <j@getutm.app>
+Date: Fri, 14 Jul 2023 11:15:08 -0700
+X-Gmail-Original-Message-ID: <CA+E+eSDPzefb+1-QAY11GN21h2zr8w=VjDmZjba8wC+M9htm9A@mail.gmail.com>
+Message-ID: <CA+E+eSDPzefb+1-QAY11GN21h2zr8w=VjDmZjba8wC+M9htm9A@mail.gmail.com>
+Subject: Re: [PATCH v2 09/11] tpm_tis_sysbus: move DSDT AML generation to
+ device
+To: Stefan Berger <stefanb@linux.ibm.com>
+Cc: Joelle van Dyne <j@getutm.app>, Eric Auger <eric.auger@redhat.com>,
+ qemu-devel@nongnu.org, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>, 
+ Song Gao <gaosong@loongson.cn>, Stefan Berger <stefanb@linux.vnet.ibm.com>, 
+ "open list:ARM ACPI Subsystem" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=209.85.214.180; envelope-from=osy86dev@gmail.com;
+ helo=mail-pl1-f180.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,75 +129,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oreIb2myrgqT
+X-TUID: c5cCfiUCojgL
 
+On Fri, Jul 14, 2023 at 11:01=E2=80=AFAM Stefan Berger <stefanb@linux.ibm.c=
+om> wrote:
+>
+>
+>
+> On 7/14/23 13:46, Joelle van Dyne wrote:
+> > On Fri, Jul 14, 2023 at 10:43=E2=80=AFAM Stefan Berger <stefanb@linux.i=
+bm.com> wrote:
+> >>
+> >>
+> >>
+> >> On 7/14/23 13:39, Joelle van Dyne wrote:
+> >>> On Fri, Jul 14, 2023 at 10:37=E2=80=AFAM Stefan Berger <stefanb@linux=
+.ibm.com> wrote:
+> >>>>
+> >>>>
+> >>>>
+> >>>> On 7/14/23 13:29, Joelle van Dyne wrote:
+> >>>>> On Fri, Jul 14, 2023 at 9:19=E2=80=AFAM Stefan Berger <stefanb@linu=
+x.ibm.com> wrote:
+> >>>>>>
+> >>>>>>
+> >>>>>>
+> >>>>>>
+> >>>>>> I don't know whether we would want multiple devices. tpm_find() us=
+age is certainly not prepared for multiple devices.
+> >>>>> Sorry, "multiple TPM interfaces" here does not mean "at the same
+> >>>>> time". Will clarify the description.
+> >>>>>
+> >>>>>>
+> >>>>>>
+> >>>>>> Good for the consolidation.
+> >>>>>>
+> >>>>>>
+> >>>>>> Does moving the TIS to a different address help on aarch64?
+> >>>>> That was the first thing we tried and no it doesn't help.
+> >>>>
+> >>>> I would remove it if we don't have a known alternative address that =
+makes it work. If we do, I think we should document it in tpm.rst.
+> >>> "It" is referring to tpm-tis-device? Note that it does work fine with=
+ Linux VMs.
+> >>
+> >> yes, tpm_tis_sysbus and I know it works with Liunux but I see this dis=
+cussion here around Win 11 on aarch64. Why do we need to user another addre=
+ss than the standard address if for Win 11 on aarch64 it doesn't get it to =
+work.
+> > The standard address won't work for Linux either.
+> >
+> > TPM TIS on standard address on ARM64 Virt machines =3D collision with
+> > DRAM, will not instantiate
+>
+> I thought that this was working with Linux on the aarch64 virt board as c=
+ontributed by Eric Auger.
+>
+> https://github.com/qemu/qemu/commit/fcaa204194e15ba24cd53087dd616aabbc29e=
+64f
+>
+> Also I had tested it to some extent: https://github.com/stefanberger/swtp=
+m/issues/493#issuecomment-885221109
+I think I know where the confusion is. Both your examples use
+"tpm-tis-device" which indeed uses the SysBus and gets a dynamic
+address. In this patch, the removed code that generates the AML gets
+this address by poking into the SysBus device, getting its base, then
+adding the offset from the TIS device to it. In the change, we move
+that code to get the address to earlier in the Virt init sequence
+(before the machine is realized) in order to tell the TIS device what
+its own base address is. Then, during the AML generation phase, we can
+just tell the TIS device to "generate your own AML" which is now
+possible because it knows its own base address. This is also how the
+TIS ISA bus device does it but that is simpler because it can just use
+the default address.
 
+Separately, there is a `build_tpm2` table function which also needs
+the device base address but only for CRB devices (TIS has the field
+set to 0) so it's irrelevant here.
 
-On 7/14/23 13:46, Joelle van Dyne wrote:
-> On Fri, Jul 14, 2023 at 10:43 AM Stefan Berger <stefanb@linux.ibm.com> wrote:
->>
->>
->>
->> On 7/14/23 13:39, Joelle van Dyne wrote:
->>> On Fri, Jul 14, 2023 at 10:37 AM Stefan Berger <stefanb@linux.ibm.com> wrote:
->>>>
->>>>
->>>>
->>>> On 7/14/23 13:29, Joelle van Dyne wrote:
->>>>> On Fri, Jul 14, 2023 at 9:19 AM Stefan Berger <stefanb@linux.ibm.com> wrote:
->>>>>>
->>>>>>
->>>>>>
->>>>>>
->>>>>> I don't know whether we would want multiple devices. tpm_find() usage is certainly not prepared for multiple devices.
->>>>> Sorry, "multiple TPM interfaces" here does not mean "at the same
->>>>> time". Will clarify the description.
->>>>>
->>>>>>
->>>>>>
->>>>>> Good for the consolidation.
->>>>>>
->>>>>>
->>>>>> Does moving the TIS to a different address help on aarch64?
->>>>> That was the first thing we tried and no it doesn't help.
->>>>
->>>> I would remove it if we don't have a known alternative address that makes it work. If we do, I think we should document it in tpm.rst.
->>> "It" is referring to tpm-tis-device? Note that it does work fine with Linux VMs.
->>
->> yes, tpm_tis_sysbus and I know it works with Liunux but I see this discussion here around Win 11 on aarch64. Why do we need to user another address than the standard address if for Win 11 on aarch64 it doesn't get it to work.
-> The standard address won't work for Linux either.
-> 
-> TPM TIS on standard address on ARM64 Virt machines = collision with
-> DRAM, will not instantiate
-
-I thought that this was working with Linux on the aarch64 virt board as contributed by Eric Auger.
-
-https://github.com/qemu/qemu/commit/fcaa204194e15ba24cd53087dd616aabbc29e64f
-
-Also I had tested it to some extent: https://github.com/stefanberger/swtpm/issues/493#issuecomment-885221109
-
-
-
-> TPM TIS on SysBus with dynamically allocated address = works on Linux,
-> cannot start on Windows
-> 
->>
->>>
->>>>
->>>>
->>>>>>
->>>>>> Can the size really be an option? I don't see it useful and if one gave the wrong size it may break things.
->>>>> It was added for consistency (otherwise we have to determine the size
->>>>> by looking at the interface everywhere). Also, it is possible for the
->>>>> size to be larger than the constant. For example, Apple Silicon uses
->>>>> 16KiB page sizes and we may decide to force the device to be 16KiB
->>>>> aligned (not sure if this is needed yet while we still track down why
->>>>> the dual mapping was not working). In that case, we would need to
->>>>> inform the OS of the true region size to prevent any overlap issues.
->>>>> Both baseaddr and size should be provided only by the plug handler in
->>>>> the virt machine, otherwise things may break even if we get rid of
->>>>> size and have just an incorrect baseaddr.
->>>>>
->>>>>>
->>>>>>
->>>>>>
+>
+>
+>
+> > TPM TIS on SysBus with dynamically allocated address =3D works on Linux=
+,
+> > cannot start on Windows
+> >
+> >>
+> >>>
+> >>>>
+> >>>>
+> >>>>>>
+> >>>>>> Can the size really be an option? I don't see it useful and if one=
+ gave the wrong size it may break things.
+> >>>>> It was added for consistency (otherwise we have to determine the si=
+ze
+> >>>>> by looking at the interface everywhere). Also, it is possible for t=
+he
+> >>>>> size to be larger than the constant. For example, Apple Silicon use=
+s
+> >>>>> 16KiB page sizes and we may decide to force the device to be 16KiB
+> >>>>> aligned (not sure if this is needed yet while we still track down w=
+hy
+> >>>>> the dual mapping was not working). In that case, we would need to
+> >>>>> inform the OS of the true region size to prevent any overlap issues=
+.
+> >>>>> Both baseaddr and size should be provided only by the plug handler =
+in
+> >>>>> the virt machine, otherwise things may break even if we get rid of
+> >>>>> size and have just an incorrect baseaddr.
+> >>>>>
+> >>>>>>
+> >>>>>>
+> >>>>>>

@@ -1,90 +1,90 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4360858eje;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4360859eje;
         Fri, 14 Jul 2023 16:28:40 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHN3hPuk508INLMObI5Hy/9Iib14zf28rglUKYgAVbnEJe3C7bZ5PhS56CAF0m1C93b5ypt
-X-Received: by 2002:a05:622a:1811:b0:400:7ff8:db5b with SMTP id t17-20020a05622a181100b004007ff8db5bmr8531407qtc.33.1689377320461;
+X-Google-Smtp-Source: APBJJlFEZDzvnR0AyATGo2Hhdgg5f1Dke56b4VcLNE2k5gltDPrURVvGlt+RyzDn8JhGWj4Hgbmd
+X-Received: by 2002:a0c:f513:0:b0:621:1a4c:759b with SMTP id j19-20020a0cf513000000b006211a4c759bmr5234738qvm.36.1689377320713;
         Fri, 14 Jul 2023 16:28:40 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1689377320; cv=none;
         d=google.com; s=arc-20160816;
-        b=BFaQgdqTShaRJzOySRFFid25DG5s4kS1FB3mLhqCL7A0M3LBz/gw1LUUCvaeke1RCg
-         Qnv+O1taMMWQZq7kRB3HCYC+uWyKn2+F8NPvZlccOizS8ZlauWGbuT284fG3kR9gr67s
-         bIXWyE1K/S9XAhEs2eNDp5pJTTyYRevPbOprH8r5MgoS/ZZ7jp7yo8Sbn/sVLiI/hPPp
-         bckD1vRxfTFwDtGioHWgj2eti9+ZokqBo5kFAyQv8wYd75p/x2+vRUcOt1T9xTrTctLe
-         JD6JUT6xKoG5HOVo/sfl1KLCUAw+vUoGqzweo6h+3Nc3yX7H9TxZQb/4XaqLLQB1E40L
-         1GPQ==
+        b=1HNJ/HRo6nQaKq0HCrwmul5Jsw6HubP8tooxx24Qpwy0tWIL7sq0qjk3ksLt2USUu/
+         Ri0TqHZuwg/8hTKTX4JHC4BjpdJl57wvFeC3Y//4nuzPfq0pS2bLMLfQPISmXhCziFQ4
+         PRpDT1krXHQahxVQLjhf4dvtVXAml7aR1VP+rDUycLaL/TjFRnMbPZRFgbV0aZOCo07n
+         hUoqYQu+BarTWKAQYRXs7SnTJc7d7+zUfcdMGR9oJMG8NZK+Oe1tlFhPOUiNncBZxian
+         xdlJKArDYdy2mndXEyU90hSx0+HXRb9pi3/R3D7QWfxw3bjE6WksCvbkLxvFno50HUkq
+         iwzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:feedback-id:references:in-reply-to:message-id:subject
          :cc:from:to:dkim-signature:date;
-        bh=rYex7wocRTZGMfRvcRZxojizl1kEh3Iuu8cjifrFqzQ=;
+        bh=p8qyHHyfDhdsEY8JvJ77P9SgwAhpNZHlmyp2CWDWqO8=;
         fh=51RBXPp2dGsIxW/A/2XX6J9OY4lNIg77Uvb7eAIehHk=;
-        b=SpGh5SQh76dUZl3uG1cLel0IVC9m1bRMF7gSFV8IW7Om5/Dq1lVSk8JmfoGBJLfqjM
-         4zmO9OWfoGotyS3yenI8l+X2ZWKb3SPyXBcsj0wmbUA0f+jgVtzzBvGpFn37wtyTLi42
-         eqP3+BeY8G7K9287vtMa9e1E1TkxEbVdJMb14uwkhqoD8mB6nhbw8nPGXfIUj7jBjuUj
-         gfh4hRVvhJj0FiB0WhDtiT8L/Fr72RHJveXX2asCuViILugLWUIRb9plpjwY+g7M4D7g
-         2lE+Cag5drYntOvSidEcQU1Y4oll3G88ural8cO+JzjKbpV5lRfAtM1UrEQRbHnpcN0v
-         veQg==
+        b=FO0lvwoobl8mdDkhZw1fgFx2j3nBFSRqje1TI7yuLcOr/CN3JjeIZxfdHuj18aEHCI
+         4p/R3abXQ/CChSg7AaNb34p1w3e2qPE3TgzA5z3MzIA/rQ9mzXPcox3H7Lvf4eH391pl
+         o3hIY5NeOhZ7i2xuWci1tRl7FBUz9wZBGLcWomQ0Vk+NXSZhkNS5tTSKR17OA7BZ8MkO
+         oMMDQfgSkPr6jep8hP4aawi4tM7XRhu2Ye58fWJsTak2YERADIfqAymmcLhv4KpKkBB3
+         N9zz49ATRjKK2lkXbYGsnA2tiHwW59loQGF2v+kABYk+DlgUYDgPBWb95JjuqXriZwc8
+         tpGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=mqu2Tzyg;
+       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=H895B0Gj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=laplante.io
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9-20020a05622a110900b003fde9320602si2425533qty.492.2023.07.14.16.28.40
+        by mx.google.com with ESMTPS id x2-20020a0cc502000000b0062dfad6c538si1139829qvi.168.2023.07.14.16.28.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 14 Jul 2023 16:28:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=mqu2Tzyg;
+       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=H895B0Gj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=laplante.io
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qKSCb-0000qs-OP; Fri, 14 Jul 2023 19:27:57 -0400
+	id 1qKSCW-0000mV-6Z; Fri, 14 Jul 2023 19:27:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chris@laplante.io>) id 1qKSCZ-0000oc-NP
- for qemu-devel@nongnu.org; Fri, 14 Jul 2023 19:27:56 -0400
-Received: from mail-4018.proton.ch ([185.70.40.18])
+ (Exim 4.90_1) (envelope-from <chris@laplante.io>) id 1qKSCS-0000lH-II
+ for qemu-devel@nongnu.org; Fri, 14 Jul 2023 19:27:49 -0400
+Received: from mail-0301.mail-europe.com ([188.165.51.139])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chris@laplante.io>) id 1qKSCY-000417-4y
- for qemu-devel@nongnu.org; Fri, 14 Jul 2023 19:27:55 -0400
-Date: Fri, 14 Jul 2023 23:27:37 +0000
+ (Exim 4.90_1) (envelope-from <chris@laplante.io>) id 1qKSCR-00040X-41
+ for qemu-devel@nongnu.org; Fri, 14 Jul 2023 19:27:48 -0400
+Date: Fri, 14 Jul 2023 23:27:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=laplante.io;
- s=protonmail3; t=1689377271; x=1689636471;
- bh=rYex7wocRTZGMfRvcRZxojizl1kEh3Iuu8cjifrFqzQ=;
+ s=protonmail3; t=1689377259; x=1689636459;
+ bh=p8qyHHyfDhdsEY8JvJ77P9SgwAhpNZHlmyp2CWDWqO8=;
  h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
  Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
  Message-ID:BIMI-Selector;
- b=mqu2TzygWc2rF5jtfcV0lwJ/yKDEcSdLDU1yPwOU+mke/yAgzIlvxidTOvoeTk5T1
- QcjuktGSYHfRh74wNBuaJp9+2Zg/QNNDS6aktbG30CjtUBL7gU3swjsuup1QluiH1y
- 76OCTZQoB/yOmQXRFVYPT3FoR0XCOguoTysLZzIeydG42pZGs/d7lU1cE1+GmV5HVk
- eeYRgEq+ees5tkiqIcWnQawkbXo0TaGwY7/YYChgcorSWmO13f9QGKrmUCxXh9zVbV
- 0FvSH0MKxIZvWyFCCHCwQqTKgspTXcYB4CU8ybmTy0f0jdIbmXYBn63zbQ0UhciK1S
- nlR9+TeB61bDg==
+ b=H895B0Gj1q3Fp+OtSCoYgRtsx9dObrAmJv2trFlK/6Vhkc+K1CF9lZOCiQ/zc+sWa
+ h5/BcjFnqxvDlJUq744PhH2T2IUA97PCMdSHvNtOV666CtlfQnJJuYCmGICXG4Aryt
+ 6GMMKtTVrZG5hqMiWZtE6hr5BAIWuHkIynPNHwVGzpN8CM5fzYhx7QOoo+RrOBKQZX
+ GLnWOcN5Asjnk7EAne6tiLuoBFgvNLTEaMzfqLzFwBUTDy1yBvCN8PRYt4sBFQ6vwP
+ W9/6msgwsA66kfRKoVEcJyq/guQgffEVdKPK1WwfuCPq8ScwbKlycxl5Mfd5vh+XOL
+ 2HZZBjP7Y2syg==
 To: qemu-devel@nongnu.org
 From: Chris Laplante <chris@laplante.io>
 Cc: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Chris Laplante <chris@laplante.io>
-Subject: [PATCH 4/6] qtest: factor out qtest_install_gpio_out_intercepts
-Message-ID: <20230714232659.76434-5-chris@laplante.io>
+Subject: [PATCH 3/6] qtest: bail from irq_intercept_in if name is specified
+Message-ID: <20230714232659.76434-4-chris@laplante.io>
 In-Reply-To: <20230714232659.76434-1-chris@laplante.io>
 References: <20230714232659.76434-1-chris@laplante.io>
 Feedback-ID: 43500449:user:proton
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=185.70.40.18; envelope-from=chris@laplante.io;
- helo=mail-4018.proton.ch
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=188.165.51.139; envelope-from=chris@laplante.io;
+ helo=mail-0301.mail-europe.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,75 +99,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xnPOToWjG30G
+X-TUID: HaFeY9QtbqSq
 
-Simplify the code a bit.
+Named interception of in-GPIOs is not supported yet.
 
 Signed-off-by: Chris Laplante <chris@laplante.io>
 ---
- softmmu/qtest.c | 23 +++++++++++------------
- 1 file changed, 11 insertions(+), 12 deletions(-)
+ softmmu/qtest.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/softmmu/qtest.c b/softmmu/qtest.c
-index 74482ce3cd..051bbf4177 100644
+index 7c3dea5760..74482ce3cd 100644
 --- a/softmmu/qtest.c
 +++ b/softmmu/qtest.c
-@@ -365,6 +365,15 @@ void qtest_set_command_cb(bool (*pc_cb)(CharBackend *c=
-hr, gchar **words))
-     process_command_cb =3D pc_cb;
- }
+@@ -401,6 +401,12 @@ static void qtest_process_command(CharBackend *chr, gc=
+har **words)
+             return;
+         }
 =20
-+static void qtest_install_gpio_out_intercepts(DeviceState *dev, const char=
- *name, int n)
-+{
-+    qemu_irq *disconnected =3D g_new0(qemu_irq, 1);
-+    qemu_irq icpt =3D qemu_allocate_irq(qtest_irq_handler,
-+                                      disconnected, n);
++        if (is_named && !is_outbound) {
++            qtest_send_prefix(chr);
++            qtest_send(chr, "FAIL Interception of named in-GPIOs not yet s=
+upported\n");
++            return;
++        }
 +
-+    *disconnected =3D qdev_intercept_gpio_out(dev, icpt,name, n);
-+}
-+
- static void qtest_process_command(CharBackend *chr, gchar **words)
- {
-     const gchar *command;
-@@ -421,23 +430,13 @@ static void qtest_process_command(CharBackend *chr, g=
-char **words)
+         if (irq_intercept_dev) {
+             qtest_send_prefix(chr);
+             if (irq_intercept_dev !=3D dev) {
+@@ -412,7 +418,6 @@ static void qtest_process_command(CharBackend *chr, gch=
+ar **words)
+         }
+=20
+         QLIST_FOREACH(ngl, &dev->gpios, node) {
+-            /* We don't support inbound interception of named GPIOs yet */
              if (is_outbound) {
                  if (is_named) {
                      if (ngl->name && strcmp(ngl->name, words[2]) =3D=3D 0)=
  {
--                        qemu_irq *disconnected =3D g_new0(qemu_irq, 1);
--                        qemu_irq icpt =3D qemu_allocate_irq(qtest_irq_hand=
-ler,
--                                                          disconnected, 0)=
-;
--
--                        *disconnected =3D qdev_intercept_gpio_out(dev, icp=
-t,
--                                                                ngl->name,=
- 0);
-+                        qtest_install_gpio_out_intercepts(dev, ngl->name, =
-0);
-                         break;
-                     }
-                 } else if (!ngl->name) {
-                     int i;
-                     for (i =3D 0; i < ngl->num_out; ++i) {
--                        qemu_irq *disconnected =3D g_new0(qemu_irq, 1);
--                        qemu_irq icpt =3D qemu_allocate_irq(qtest_irq_hand=
-ler,
--                                                          disconnected, i)=
-;
--
--                        *disconnected =3D qdev_intercept_gpio_out(dev, icp=
-t,
--                                                                ngl->name,=
- i);
-+                        qtest_install_gpio_out_intercepts(dev, ngl->name, =
-i);
-                     }
-                 }
-             } else {
 --=20
 2.39.2
 

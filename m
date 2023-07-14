@@ -1,113 +1,113 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp3984301eje;
-        Fri, 14 Jul 2023 05:00:16 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlE2RdwPvhRJEOQsBXjX45NjNK3X1bLodVEfMBYR6kg2lxXsQeV3GrA0AaUBd3X8vkiPWHDc
-X-Received: by 2002:a05:620a:1a8e:b0:767:dbe5:1f2f with SMTP id bl14-20020a05620a1a8e00b00767dbe51f2fmr4677132qkb.35.1689336014858;
-        Fri, 14 Jul 2023 05:00:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689336014; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp3989751eje;
+        Fri, 14 Jul 2023 05:07:35 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlH+A7FOiLeS/SLCOAWZj02+ojodRwckaikFOpkn7cL5JSNIUVmvIpYeuQY4PeUYDrOHmJQX
+X-Received: by 2002:a05:620a:408d:b0:767:7980:157 with SMTP id f13-20020a05620a408d00b0076779800157mr5158396qko.51.1689336455691;
+        Fri, 14 Jul 2023 05:07:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689336455; cv=none;
         d=google.com; s=arc-20160816;
-        b=rwGA5EXTKtIBdF+MaI1J6c5pOdp+kRiOpXOmfREQ6h6yqibr/mylhr2wD6lTm2F4/i
-         tTWnh4lMzzGSUZBpshzCHiF342SCFVAc/+vK14PcEzKuxtRhOT13580622Kts4oKJRuO
-         zTiRDPHKOWLvtS39VDjjG6e+T4iIThiA3WP4FAUh7tB6r2n8A4Ex1deyMHFV9IND5Ayn
-         kSd9vyyIMCzNczHpT+6iwsHAaI0zLq0bIuB2Qyg15fko4cQR80QP5eLxCsgFP7hHBVBQ
-         t3Zcvdgt3EVFKN5/Ap3lHJBR1sDW3ag5H1jwxavUspU/SsQurpzNoBJpveLGc8YfzDcP
-         +9pg==
+        b=SZ6GtpT6QvzITtzYR5DYuNMsQi3qtADFHnbA6sq9VhoqSqvQJkC+E3raZLZdoO4ssn
+         HvBoeHEjDUiTg4zZxpQ1kYIWFpS3TyvJ8CyyBDudTTuOGBO0ytLvQ7zqItqy8XuMb4iT
+         h0CZ5N4+c6T/UMJeOMbMpPOCAY7ebFcB4bGp1y576PwVAK38X+qtr8/v0KEFGYH1cZ92
+         xBik/C9DYChIp7pQUSMl53h05C9EIYCC8m55yYJZEf25FJ1MmDnlSVpo2lP9DaQJ00VC
+         6yS5oLuGe9lRgaAD7Cm/DKAH7+oPfKL3Ea991MxouMaMIrCB2S5YJwtTYEMk2wts2fJX
+         ObYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:cc:to:from
          :date:dkim-signature;
-        bh=pL8kzYo1qhSZ6fIzoUIBM9v4GNhjP0IKX1EVPTyJkbo=;
+        bh=jFPRECPM+9/54Lqgnq2iiR5SNRM+ew6AleNkCJt9HZA=;
         fh=c8vW5PCkaRf214jXm9EDxrstE644+gnpXCzouEc1OdI=;
-        b=j2V4E2slt3ZfFggkZuWgJeA/zf1IpFiAbVEt2b/eA01LW2p5ECzxpTjbdlt+Y7KlIf
-         opq4tYKLkm6xy5r3TqoYZpXFsTVsgNdk6W+bWA/hGmU/UO3tLEhXnI/BJAXWWP77i1nu
-         mCG0H8oBKBmbyiUPOziCwPpujP+Eu1c+dSG0lVBJisrWfVjX6ulIYnAEF1e1UDy2goXK
-         ffVgFmOjyWnzX+QlAVsQSt1dHwst4L/rbGyjhFZaQJHMgkHAoXo7FTHW43sYRIRfIr+g
-         eveXhZnWXSNvtBWCabXMH6UddOZNL8LHbt83s4ZP6li7X0Nbz5DUZaVBHLwYTq9AfFSt
-         6JuQ==
+        b=dGe8p76RMZ2sWKWTbldqZKKCYzOAUuFJfu/wcr6TGmdiKsiVwXRRGobHCFY2HuTi6e
+         HXN2qmBwySjdoGLFuFWJs59KsBfNBlyrmRcNtHYi29itlHJQ8TjGy6ESmE/Y4sspVSd4
+         rzexSizjFW3qVojMUeGRAiuZxrQka3m2av/ye1gXzb+awo/8vThZgK93AaonlCB2iMdC
+         i29T5xLScvvQqEKl/dS3oiIDnGSvl4RXj/TQ+3Do9Kt2Kts1KmVmCuHm9GpWCS7/wnsH
+         l3QH/PcwzzW2STu9LR5PyoF8McGl3xYNCKNkgKxfhn7Q3dxL/AciKL5DxcssguTDPBcz
+         M0Ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LyPOT8mf;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FIFs1RkH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ou20-20020a05620a621400b00765ad67e3bfsi4192408qkn.398.2023.07.14.05.00.14
+        by mx.google.com with ESMTPS id j3-20020a05620a146300b00763b64c273esi4230213qkl.220.2023.07.14.05.07.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jul 2023 05:00:14 -0700 (PDT)
+        Fri, 14 Jul 2023 05:07:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LyPOT8mf;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FIFs1RkH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qKHSX-00044F-AQ; Fri, 14 Jul 2023 07:59:41 -0400
+	id 1qKHZs-00085k-LO; Fri, 14 Jul 2023 08:07:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1qKHSU-00043u-Pv
- for qemu-arm@nongnu.org; Fri, 14 Jul 2023 07:59:39 -0400
+ id 1qKHZr-00085D-Aj
+ for qemu-arm@nongnu.org; Fri, 14 Jul 2023 08:07:15 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1qKHSR-0004Aj-7o
- for qemu-arm@nongnu.org; Fri, 14 Jul 2023 07:59:36 -0400
+ id 1qKHZo-0006wN-I9
+ for qemu-arm@nongnu.org; Fri, 14 Jul 2023 08:07:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1689335974;
+ s=mimecast20190719; t=1689336431;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=pL8kzYo1qhSZ6fIzoUIBM9v4GNhjP0IKX1EVPTyJkbo=;
- b=LyPOT8mfNQ+QirnIeezhBQQseKWqgWbDWU9wtnLYz7CRSxBWfw7+QwBlVKdPmIS3dtzFBB
- Y7K3kROVugkIzSa6YbQMpk/fe2cLpDAR4hIn95EZlH/yu8OOQGpUJkAGGF6hPSxQp6ujMh
- HifAPipEXWVb4nVQLP/kawhjqDV6Hrc=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=jFPRECPM+9/54Lqgnq2iiR5SNRM+ew6AleNkCJt9HZA=;
+ b=FIFs1RkHlDKSk7HGag/O5fTju/99tgQKfHZmrhkHl0HMnHpO44SQZMJX0/EPZRGYEry3zg
+ Vi8ZL96LW4gciY3Aqb3vUREoCxoXBbcpxdcbrhjGY7+EuSoDzjrSzO7r+9KPh9QEx/Pk8b
+ tCSExLRZ0CwhvGgm3/JTvJj0MKjFSsY=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-206-oXA7wEO2O8GY8rY4aplVjg-1; Fri, 14 Jul 2023 07:59:33 -0400
-X-MC-Unique: oXA7wEO2O8GY8rY4aplVjg-1
-Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-978a991c3f5so113764366b.0
- for <qemu-arm@nongnu.org>; Fri, 14 Jul 2023 04:59:33 -0700 (PDT)
+ us-mta-644-LgdvhtfpN3is-iDWu1hxGw-1; Fri, 14 Jul 2023 08:07:10 -0400
+X-MC-Unique: LgdvhtfpN3is-iDWu1hxGw-1
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-993d7ca4607so111177766b.1
+ for <qemu-arm@nongnu.org>; Fri, 14 Jul 2023 05:07:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689335972; x=1691927972;
+ d=1e100.net; s=20221208; t=1689336429; x=1691928429;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=pL8kzYo1qhSZ6fIzoUIBM9v4GNhjP0IKX1EVPTyJkbo=;
- b=CqJXBLHWhyWiV9m/Y4/TqnNlrHGdCr9xcGNQ89VoknhGPc1SJjG65hPAAdPg2yQl96
- 8Gw64UUs4AuJE5sjfcPfCKCNkoShGkzbXJGPtQc4KqjTQZdIiyn4My8JZiaILu+sEum/
- 8JEHTkJSW6hlXpQfuKNI3CrGWtXje2A9Aw3IaETkxHFMfgcxSkm+bCaWIwdvpQ4cnRWC
- oXhyU690QybZl3rmYoRf0IxQjLW1atOkbiE3CrCMag4AbZalJjjuzZaMIjZURpYBLSaC
- iBbbfuurk+ioUAjoX0YyfUN5TynMUKOBxBMg52UiQe+oFuBf0LP1JlVr+IPqRY6fKBiU
- YPEg==
-X-Gm-Message-State: ABy/qLaHuLLSV8crf2rxjF9Hvu8dGBZEwgm2kOhVOmcST5pI9M/QQOQA
- sXB6XOQnMmLibVbQfbQFvyhMkOhEiND1zt8pConbCCPxLAQBsfnh0IHw2cy/j0e5oxZQN3UFwnw
- T8oJxqRv662nv
-X-Received: by 2002:a17:906:73c4:b0:993:f15f:efb7 with SMTP id
- n4-20020a17090673c400b00993f15fefb7mr3994607ejl.8.1689335972111; 
- Fri, 14 Jul 2023 04:59:32 -0700 (PDT)
-X-Received: by 2002:a17:906:73c4:b0:993:f15f:efb7 with SMTP id
- n4-20020a17090673c400b00993f15fefb7mr3994591ejl.8.1689335971786; 
- Fri, 14 Jul 2023 04:59:31 -0700 (PDT)
+ bh=jFPRECPM+9/54Lqgnq2iiR5SNRM+ew6AleNkCJt9HZA=;
+ b=JatD4LHSI3/dtfoFIQt5eY50EzjT8FncnmKTazPNEFKHKRmoX0MN96MjSmGsY0KqJQ
+ 5Eq7XBwjbrgTpqwyTKyhZpUzlsyHiuIpb4RrPavmNZh5t8ARePYLU4U7vCmSghsGahZ9
+ BXx6YDhmgOS1iXXHJVbN2SJN3vSIoi00EqUEnmBQk9bRpq220VZxoFixnVLfOpplb5xY
+ WtnwLFrFeFuVRlnXy4R8c0gx3+Zhg7KawcjcW/2SFB2ZEBphSvjKsJbwKPBvu1QnynU1
+ J5ewCDx0PHBu0W3RY1O5c0mNEHJ8KrGz9Fho8lNLoTzoE23tf8E/QblyhE3RPQEQpvJ5
+ OZtg==
+X-Gm-Message-State: ABy/qLZcYAtF4WlTIxTZhXHCU+qHs3bYDVxUrSBEhiMvdkdwWBnL5ndW
+ 9uJnNlZj58hqDO0MCytHiys0KcmCMcKIoSwxZEuwr/5XEFO3aq0d8Ss7fwdY9v8mPa+qRx8v7pr
+ 1mQ2kYdXV+wcS
+X-Received: by 2002:a17:906:6495:b0:993:f081:2c5a with SMTP id
+ e21-20020a170906649500b00993f0812c5amr4444673ejm.5.1689336429514; 
+ Fri, 14 Jul 2023 05:07:09 -0700 (PDT)
+X-Received: by 2002:a17:906:6495:b0:993:f081:2c5a with SMTP id
+ e21-20020a170906649500b00993f0812c5amr4444652ejm.5.1689336429205; 
+ Fri, 14 Jul 2023 05:07:09 -0700 (PDT)
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- gr19-20020a170906e2d300b0098e2eaec394sm5390425ejb.101.2023.07.14.04.59.31
+ z2-20020a1709063ac200b009944e955e19sm679729ejd.30.2023.07.14.05.07.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Jul 2023 04:59:31 -0700 (PDT)
-Date: Fri, 14 Jul 2023 13:59:30 +0200
+ Fri, 14 Jul 2023 05:07:08 -0700 (PDT)
+Date: Fri, 14 Jul 2023 14:07:07 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Gavin Shan <gshan@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, pbonzini@redhat.com,
  eduardo@habkost.net, peter.maydell@linaro.org, marcel.apfelbaum@gmail.com,
  philmd@linaro.org, wangyanan55@huawei.com, shan.gavin@gmail.com
-Subject: Re: [PATCH 2/3] hw/arm/virt: Use generic CPU type invalidation
-Message-ID: <20230714135930.428e7d19@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20230713054502.410911-3-gshan@redhat.com>
+Subject: Re: [PATCH 1/3] machine: Factor CPU type invalidation out into helper
+Message-ID: <20230714140707.5c7c2402@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20230713054502.410911-2-gshan@redhat.com>
 References: <20230713054502.410911-1-gshan@redhat.com>
- <20230713054502.410911-3-gshan@redhat.com>
+ <20230713054502.410911-2-gshan@redhat.com>
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
@@ -138,88 +138,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KIJp5QqS+bKP
+X-TUID: RPMc3+Zs6ZxL
 
-On Thu, 13 Jul 2023 15:45:01 +1000
+On Thu, 13 Jul 2023 15:45:00 +1000
 Gavin Shan <gshan@redhat.com> wrote:
 
-> There is a generic CPU type invalidation in machine_run_board_init()
-                              ^^^^^
-using that throughout the series is confusing to me.
-Perhaps use original phrase 'valid cpu types' with appropriate rephrasing
-would be better 
-
-> and we needn't a same and private invalidation. Set mc->valid_cpu_types
-> to use the generic CPU type invalidation.
-
-I's suggest to replace commit message/subj with something like
-
-arm/virt specific cpu_type_valid() is duplicate of ...
-drop it and use ...
-
+> The CPU type invalidation logic in machine_run_board_init() is
+> independent enough. Lets factor it out into helper validate_cpu_type().
+> Since we're here, the relevant comments are improved a bit.
+> 
 > No functional change intended.
-
-
-
 > 
 > Signed-off-by: Gavin Shan <gshan@redhat.com>
 > ---
->  hw/arm/virt.c | 21 +++------------------
->  1 file changed, 3 insertions(+), 18 deletions(-)
+>  hw/core/machine.c | 81 +++++++++++++++++++++++++----------------------
+>  1 file changed, 43 insertions(+), 38 deletions(-)
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 7d9dbc2663..43d7772ffd 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -203,7 +203,7 @@ static const int a15irqmap[] = {
->      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
->  };
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index f0d35c6401..68b866c762 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -1349,12 +1349,52 @@ out:
+>      return r;
+>  }
 >  
-> -static const char *valid_cpus[] = {
-> +static const char *valid_cpu_types[] = {
->  #ifdef CONFIG_TCG
->      ARM_CPU_TYPE_NAME("cortex-a7"),
->      ARM_CPU_TYPE_NAME("cortex-a15"),
-> @@ -219,20 +219,9 @@ static const char *valid_cpus[] = {
->      ARM_CPU_TYPE_NAME("cortex-a57"),
->      ARM_CPU_TYPE_NAME("host"),
->      ARM_CPU_TYPE_NAME("max"),
-> +    NULL
->  };
+> +static void validate_cpu_type(MachineState *machine)
+s/validate_cpu_type/is_cpu_type_valid or better is_cpu_type_supported
+
+Is it going to be reused elsewhere (otherwise I don't see much reason to move code around)?
+
+> +{
+> +    MachineClass *machine_class = MACHINE_GET_CLASS(machine);
+> +    ObjectClass *oc = object_class_by_name(machine->cpu_type);
+> +    CPUClass *cc = CPU_CLASS(oc);
+> +    int i;
+> +
+> +    /*
+> +     * Check if the user-specified CPU type is supported when the valid
+> +     * CPU types have been determined. Note that the user-specified CPU
+> +     * type is given by '-cpu' option.
+> +     */
+> +    if (!machine->cpu_type || !machine_class->valid_cpu_types) {
+> +        goto out_no_check;
+no goto-s please
+
+> +    }
+> +
+> +    for (i = 0; machine_class->valid_cpu_types[i]; i++) {
+> +        if (object_class_dynamic_cast(oc, machine_class->valid_cpu_types[i])) {
+> +            break;
+> +        }
+> +    }
+> +
+> +    if (!machine_class->valid_cpu_types[i]) {
+> +        /* The user-specified CPU type is invalid */
+> +        error_report("Invalid CPU type: %s", machine->cpu_type);
+> +        error_printf("The valid types are: %s",
+> +                     machine_class->valid_cpu_types[0]);
+> +        for (i = 1; machine_class->valid_cpu_types[i]; i++) {
+> +            error_printf(", %s", machine_class->valid_cpu_types[i]);
+> +        }
+> +        error_printf("\n");
+> +
+> +        exit(1);
+
+since you are touching that,
+turn it in errp handling, in separate patch 1st
+and only then introduce your helper.
+
+> +    }
+> +
+> +    /* Check if CPU type is deprecated and warn if so */
+> +out_no_check:
+> +    if (cc && cc->deprecation_note) {
+> +        warn_report("CPU model %s is deprecated -- %s",
+> +                    machine->cpu_type, cc->deprecation_note);
+> +    }
+> +}
 >  
-> -static bool cpu_type_valid(const char *cpu)
-> -{
-> -    int i;
+>  void machine_run_board_init(MachineState *machine, const char *mem_path, Error **errp)
+>  {
+>      MachineClass *machine_class = MACHINE_GET_CLASS(machine);
+> -    ObjectClass *oc = object_class_by_name(machine->cpu_type);
+> -    CPUClass *cc;
+>  
+>      /* This checkpoint is required by replay to separate prior clock
+>         reading from the other reads, because timer polling functions query
+> @@ -1405,42 +1445,7 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
+>          machine->ram = machine_consume_memdev(machine, machine->memdev);
+>      }
+>  
+> -    /* If the machine supports the valid_cpu_types check and the user
+> -     * specified a CPU with -cpu check here that the user CPU is supported.
+> -     */
+> -    if (machine_class->valid_cpu_types && machine->cpu_type) {
+> -        int i;
 > -
-> -    for (i = 0; i < ARRAY_SIZE(valid_cpus); i++) {
-> -        if (strcmp(cpu, valid_cpus[i]) == 0) {
-> -            return true;
+> -        for (i = 0; machine_class->valid_cpu_types[i]; i++) {
+> -            if (object_class_dynamic_cast(oc,
+> -                                          machine_class->valid_cpu_types[i])) {
+> -                /* The user specificed CPU is in the valid field, we are
+> -                 * good to go.
+> -                 */
+> -                break;
+> -            }
+> -        }
+> -
+> -        if (!machine_class->valid_cpu_types[i]) {
+> -            /* The user specified CPU is not valid */
+> -            error_report("Invalid CPU type: %s", machine->cpu_type);
+> -            error_printf("The valid types are: %s",
+> -                         machine_class->valid_cpu_types[0]);
+> -            for (i = 1; machine_class->valid_cpu_types[i]; i++) {
+> -                error_printf(", %s", machine_class->valid_cpu_types[i]);
+> -            }
+> -            error_printf("\n");
+> -
+> -            exit(1);
 > -        }
 > -    }
-> -    return false;
-> -}
 > -
->  static void create_randomness(MachineState *ms, const char *node)
->  {
->      struct {
-> @@ -2030,11 +2019,6 @@ static void machvirt_init(MachineState *machine)
->      unsigned int smp_cpus = machine->smp.cpus;
->      unsigned int max_cpus = machine->smp.max_cpus;
->  
-> -    if (!cpu_type_valid(machine->cpu_type)) {
-> -        error_report("mach-virt: CPU type %s not supported", machine->cpu_type);
-> -        exit(1);
+> -    /* Check if CPU type is deprecated and warn if so */
+> -    cc = CPU_CLASS(oc);
+> -    if (cc && cc->deprecation_note) {
+> -        warn_report("CPU model %s is deprecated -- %s", machine->cpu_type,
+> -                    cc->deprecation_note);
 > -    }
-> -
->      possible_cpus = mc->possible_cpu_arch_ids(machine);
+> +    validate_cpu_type(machine);
 >  
->      /*
-> @@ -2953,6 +2937,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->  #else
->      mc->default_cpu_type = ARM_CPU_TYPE_NAME("max");
->  #endif
-> +    mc->valid_cpu_types = valid_cpu_types;
->      mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
->      mc->kvm_type = virt_kvm_type;
->      assert(!mc->get_hotplug_handler);
+>      if (machine->cgs) {
+>          /*
 

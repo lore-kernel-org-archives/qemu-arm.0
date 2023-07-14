@@ -1,188 +1,183 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp3856419eje;
-        Fri, 14 Jul 2023 00:27:58 -0700 (PDT)
-X-Received: by 2002:a05:6a00:3494:b0:67a:8ed:cec with SMTP id cp20-20020a056a00349400b0067a08ed0cecmr2749303pfb.2.1689319678458;
-        Fri, 14 Jul 2023 00:27:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689319678; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp3992876eje;
+        Fri, 14 Jul 2023 05:12:11 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGaYZEY5Q9gZmIATMsHAo0QzhzNrMs4vmUnxCwCl6wHfr79u2iHEUs6de082Vw7kIfxrkNz
+X-Received: by 2002:a0c:f584:0:b0:635:d9c0:3121 with SMTP id k4-20020a0cf584000000b00635d9c03121mr3560970qvm.0.1689336731674;
+        Fri, 14 Jul 2023 05:12:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689336731; cv=none;
         d=google.com; s=arc-20160816;
-        b=o9CZQHumD0FpuqCre3WqjQrxG+hlrivps0MscsEg1AW1HZgiHhIgutOI4d8lVgt38q
-         8naBPgPvqgmPISLaDtDyF0Zsq1BvtWwVmBcIBZ5dc+FDSFMh/W4schQlA+UjauohtsPQ
-         9/qzkZqhRd/LPv6Mtz4NOD46BR0jBorRJkxeZ+OHAwuAOCk5LeukC1++q79Q2n33lixP
-         Zry4xeFaZ0AkVpBvcMgrvNf7snasOBxYCSFI3jbmeYfi0usckLgfXB9iHMNz0hfzBz5e
-         QVOcMfB8P9hyQ/w2l0AzYq4fBji28EX85btN2S147ygcaOiIiF4tXRZamFR+xM+PzzkZ
-         HZjQ==
+        b=kKN9I5SxM2KzbNMyTQsaSYTLwbAj7sxATDTLbWzufOUMNP2VMKQKaR0y20IM/NLOD4
+         g9oipA5x3bPf+9Ez0vt/GIHeBRzS1Ll81Nf2vVImwQppImuIibHweVMsy7spwKwzA279
+         VUB0dGucVda1XRnmBIDskXTcOp80cnqg95BHNrjKbX9FKrKU/61rgoqQftI6zFCJFiZE
+         Jxi4FCb/1Vdv4CQNHWLML5aVwnGC8qxW4qnjbrR8ORQcBrXE9auYSRVT/ZQJtvsh0xhB
+         laA6qYJUIq2NCnfd0s+NzttqZMR4UWocjDvEDyroC5THFsawwh1B5aBS7PeSbvhzqFmw
+         dNTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=IRNkAyYOxaYorrSx+EWNj/GqtvsCdKRzaPD2iT5Y+fs=;
-        fh=bV1FKtOwQYMkLW8YMaj6mcOpoJ9C2r/NNmryPIpjQl4=;
-        b=b4xe0G4ermAQWh1VNjbuUpQrBJgR5I0cjM6mx30HM6LPx5eyUXct95GnPpF02kU6ci
-         rrXsiRyZ85Syomj4asAprDtRcdaS+l76RJ+rOhZ85B/tA9/MwMroKVYMq9c8IbVaeTeH
-         CDOFnaqQhsJ5sbqRkffx3B/hBo1dHOTZfEi8LaaGWVk4rQx6v9GM90zXH7ewqD8qHBPU
-         dqDmKEQX69Re0fchmteSsIaKdIBlBO7IJeRknXmgN0O21WazsltCvr2LJCqLSYratxNi
-         gTR1lTl1c8thzlF8ZRevtzJu3OfgmlDb+bOtC+oiYZl5hOCx7aRrHvyNS/m4tcOjYWg+
-         e4Cw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=glW9VQiFTCYRQKc64wosZSQg0PiQuKACp95ogt0befo=;
+        fh=odLqd9FFV3i9O0BjT7AvuCttvuSMpMuS2ObrzwglBHk=;
+        b=de6lmUX33MYr99mHRgl+VlINzJwElihU+Zwg7Q/aSsORyRm37iD4I6KJWrIbCPn70Y
+         LUO6I0JThvRZrEK3X58v8KWl2aNtA70DEuw0lfBGjjqPZYKpGNKAWMyHG/lAg1mGV4Xv
+         nIVOVa/Ypw0Jozjf7UHFjg4dLyLNhfEhBJD6Bg0M6X50Htd21r5pQhwQvVOPWRgQd5RM
+         q4yhfCC1djhas5g8XyWs5RYu5J3QuFdoI62x4z8InoLr6kyqSUsTeST75RR1QOZgi5ue
+         cpmXnodsJvKKON3R0NoMYuRCZ3NpY1aGnsnz4XNkTvYKH3yoTzaQjQcEXO9lnZ5q4UhB
+         1tLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k3MELwL0;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b21-20020aa79515000000b0066c6e0a49dasor319501pfp.0.2023.07.14.00.27.58
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=irUG4DfQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bi12-20020a05620a318c00b00766fb2210a6si4492762qkb.246.2023.07.14.05.12.11
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 14 Jul 2023 00:27:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 14 Jul 2023 05:12:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=k3MELwL0;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689319678; x=1691911678;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=IRNkAyYOxaYorrSx+EWNj/GqtvsCdKRzaPD2iT5Y+fs=;
-        b=k3MELwL0diu9sAkw/7ETssrEvUmofEJ3yM9GCVw+XeZy1SYc7eZR34heMQzqS7jhHF
-         c8t6Q8bx5ylqdx3KBSlJRCwVZaZQiBMzXaiTt8IsXp1rGFmMSihhbeaUGGGhhBV+zmgh
-         RagewraqnrTZm7DlRNsTRxIVZ+xxxsk5OmN9oAeUCdcNBSZl2fSH8hE5Kj4iVgg61z3C
-         /TBPfwRClEOOFa6fxl4jJsGofNDgDxD4agaQrBkPQPFUPiUuH63YumU19oOyLyWBW+VY
-         wHxZAdE/XeulYoxofOX6ATGRbxAyEfZsK2+EKqFmgyjnYBAQfWl+Ztleei10lUhlAW9H
-         l7Qg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689319678; x=1691911678;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IRNkAyYOxaYorrSx+EWNj/GqtvsCdKRzaPD2iT5Y+fs=;
-        b=aIumpMEFDnA0Ll7HTz4iBOygyR06itgzCKvSK7LtmaovhExzLaka1LA04az9UkUQIq
-         1MImaZhWPjvTaTHg0lOG2eeC1zA4VpG5K1O5zZLxnLcCt8zvPzdbHqUdc6w4Y3BzHRDH
-         IFMrm1V1ZWb+8IFGheyazO3EF/uCdIkUEHJkuBfVXzw8yUhUW5e0J/qT90GQGL414ryX
-         sa0VeOVRF5G1vucf1pmtX1OmgI37+XvcGjo6Z9BzBL1LpQ+9II5+HUzJaITfu1KJjYPK
-         oJs2/jbQ3ez/FNATPTK5jTPIKkehCyzQiEUyDkWy0nJ+YovMeb2h5o+BSuV++/vVquCy
-         SMlg==
-X-Gm-Message-State: ABy/qLbZNqivQg64438AVVVk4ON9nxJZxzRb7qofNd7bHCAjb4uf5j4y
-	NWnPpyZ3goPxgzE4I31+wzbi+82Gnp+9pL43Y+LaXsnl
-X-Google-Smtp-Source: APBJJlFFsOnLXF1j+lTUlJBCrs88c10bHqIA2B+VU4NZ451YAayOrlynIUvPahnUMYa/B5m5NasXaA==
-X-Received: by 2002:a05:6a00:2d20:b0:67a:20d0:b9bb with SMTP id fa32-20020a056a002d2000b0067a20d0b9bbmr3009177pfb.1.1689319677878;
-        Fri, 14 Jul 2023 00:27:57 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.149.227] ([172.58.27.104])
-        by smtp.gmail.com with ESMTPSA id fm12-20020a056a002f8c00b00666b6dc10desm6550256pfb.56.2023.07.14.00.27.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Jul 2023 00:27:57 -0700 (PDT)
-Message-ID: <f9c35a6c-be32-7758-d78a-e63449f864b8@linaro.org>
-Date: Fri, 14 Jul 2023 08:27:48 +0100
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=irUG4DfQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qKHe7-0000vi-Ks; Fri, 14 Jul 2023 08:11:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1qKHe4-0000vN-9c; Fri, 14 Jul 2023 08:11:36 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1qKHe0-0002XK-WF; Fri, 14 Jul 2023 08:11:34 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 36EC7Jh7029813; Fri, 14 Jul 2023 12:11:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=glW9VQiFTCYRQKc64wosZSQg0PiQuKACp95ogt0befo=;
+ b=irUG4DfQQip9DOaLfYiAr2Jzyua0/jZg3Lj1UhXEpi5WoEJzV02Vm+BvNzIHLh0vvuTH
+ /46P1dKqDwfPSFFEIyaL4b/Kx2HIDFYi2MJpTRxhOR3uyC67pnXbpzc6rieuB07zoksm
+ wGpzs+ZJA4v057CcfirzK3SIXAPfnjAiIL7nSsX4diwCMs6ljSszIApW4zit1rKkdyql
+ +Qj9xZ6y1T3PKSZdcmJyxVnaTbE7rH5Hhc6vBr4xBvtMP5t5iIkDyN93YCkBYz+hN5w8
+ 01MysF9AznfCf28LBDbEceHW2184z8OwhbN14ECLvJwQ6JPioHf4ftSaEr5i3LLseDb6 Lw== 
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3ru5vf88e8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 14 Jul 2023 12:11:26 +0000
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 36E8Uqk6008108;
+ Fri, 14 Jul 2023 12:11:25 GMT
+Received: from smtprelay04.wdc07v.mail.ibm.com ([9.208.129.114])
+ by ppma04wdc.us.ibm.com (PPS) with ESMTPS id 3rtqkhue0f-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 14 Jul 2023 12:11:25 +0000
+Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
+ [10.39.53.233])
+ by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 36ECBOQe31589094
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 14 Jul 2023 12:11:24 GMT
+Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id A17A058054;
+ Fri, 14 Jul 2023 12:11:24 +0000 (GMT)
+Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 401E05804E;
+ Fri, 14 Jul 2023 12:11:24 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Fri, 14 Jul 2023 12:11:24 +0000 (GMT)
+Message-ID: <14777385-4e13-de09-c58f-bf4a2b5f52fa@linux.ibm.com>
+Date: Fri, 14 Jul 2023 08:11:23 -0400
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [RFC PATCH v2 11/11] hw/char/pl011: Implement TX FIFO
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v2 07/11] hw/arm/virt: add plug handler for TPM on SysBus
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Mikko Rapeli <mikko.rapeli@linaro.org>
-References: <20230710175102.32429-1-philmd@linaro.org>
- <20230710175102.32429-12-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230710175102.32429-12-philmd@linaro.org>
+To: Joelle van Dyne <j@getutm.app>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:Virt" <qemu-arm@nongnu.org>
+References: <20230714070931.23476-1-j@getutm.app>
+ <20230714070931.23476-8-j@getutm.app>
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <20230714070931.23476-8-j@getutm.app>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: aO4+kAs44Zdy
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: PKy_67go_gSLj2jvarhCgJfhTrRCaUpS
+X-Proofpoint-GUID: PKy_67go_gSLj2jvarhCgJfhTrRCaUpS
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
+ definitions=2023-07-14_06,2023-07-13_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 impostorscore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 malwarescore=0
+ mlxscore=0 lowpriorityscore=0 priorityscore=1501 mlxlogscore=912
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2306200000 definitions=main-2307140109
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: o06Bmp6Wdsy5
 
-On 7/10/23 18:51, Philippe Mathieu-Daudé wrote:
-> +static gboolean pl011_xmit(void *do_not_use, GIOCondition cond, void *opaque)
+
+
+On 7/14/23 03:09, Joelle van Dyne wrote:
+> TPM needs to know its own base address in order to generate its DSDT
+> device entry.
+> 
+> Signed-off-by: Joelle van Dyne <j@getutm.app>
+> ---
+>   hw/arm/virt.c | 37 +++++++++++++++++++++++++++++++++++++
+>   1 file changed, 37 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 7d9dbc2663..432148ef47 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2732,6 +2732,37 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
+>                            dev, &error_abort);
+>   }
+> 
+> +#ifdef CONFIG_TPM
+> +static void virt_tpm_plug(VirtMachineState *vms, TPMIf *tpmif)
 > +{
-> +    PL011State *s = opaque;
-> +    int ret;
-> +    const uint8_t *buf;
-> +    uint32_t buflen;
-> +    uint32_t count;
-> +    bool tx_enabled;
-> +
-> +    if (!qemu_chr_fe_backend_connected(&s->chr)) {
-> +        /* Instant drain the fifo when there's no back-end */
-> +        return pl011_drain_tx(s);
-> +    }
-> +
-> +    tx_enabled = s->cr & CR_UARTEN;
+> +    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
+> +    hwaddr pbus_base = vms->memmap[VIRT_PLATFORM_BUS].base;
 
-What happened to "Hello, World"?  We ought to be consistent.
-For actual modeling, I think you need TXE too.
++static void virt_tpm_plug(LoongArchMachineState *lams, TPMIf *tpmif)
++{
++    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(lams->platform_bus_dev);
++    hwaddr pbus_base = VIRT_PLATFORM_BUS_BASEADDRESS;
 
-Where does UARTFR get updated after successfully transmitting data?
+These seem to be the differences between the loongarch and the arm virt implementations.
+Why not have a function with this signature that both archs can call?
 
->   static void pl011_write_txdata(PL011State *s, const uint8_t *buf, int length)
-> @@ -162,12 +218,32 @@ static void pl011_write_txdata(PL011State *s, const uint8_t *buf, int length)
->       if (!(s->cr & CR_TXE)) {
->           qemu_log_mask(LOG_GUEST_ERROR, "PL011 write data but TX disabled\n");
->       }
-> +    if (!fifo8_is_empty(&s->xmit_fifo)) {
-> +        /*
-> +         * If the UART is disabled in the middle of transmission
-> +         * or reception, it completes the current character before
-> +         * stopping.
-> +         */
-> +        pl011_xmit(NULL, G_IO_OUT, s);
-> +        return;
-> +    }
+static void virt_tpm_plug(PlatformBusDevice *pbus, hwaddr pbus_base, TPMIf *tpmif)
 
-Why is this in write_txdata?  I would expect to find this with a write to UARTCR.
-You appear to *not* be queuing data unless the fifo is empty.
-
-> +    if (length > fifo8_num_free(&s->xmit_fifo)) {
-> +        /*
-> +         * The FIFO contents remain valid because no more data is
-> +         * written when the FIFO is full, only the contents of the
-> +         * shift register are overwritten. The CPU must now read
-> +         * the data, to empty the FIFO.
-> +         */
-> +        trace_pl011_fifo_tx_overrun();
-> +        s->rsr |= RSR_OE;
-> +        return;
-> +    }
-> +
-> +    trace_pl011_fifo_tx_put(length);
-> +    fifo8_push_all(&s->xmit_fifo, buf, length);
-
-Since length will always be 1, probably we should just remove it.
-
-> +static bool pl011_xmit_fifo_state_needed(void *opaque, int version_id)
-> +{
-> +    PL011State* s = opaque;
-> +
-> +    return pl011_is_fifo_enabled(s) && !fifo8_is_empty(&s->xmit_fifo);
-> +}
-
-Ok.
-
->   static int pl011_post_load(void *opaque, int version_id)
->   {
->       PL011State* s = opaque;
-> @@ -455,6 +538,11 @@ static int pl011_post_load(void *opaque, int version_id)
->           s->read_pos = 0;
->       }
->   
-> +    if (pl011_xmit_fifo_state_needed(s, version_id)) {
-> +        /* Reschedule another transmission */
-> +        qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP, pl011_xmit, s);
-> +    }
-
-Ok.
-
-> @@ -473,6 +561,7 @@ static const VMStateDescription vmstate_pl011 = {
->           VMSTATE_UINT32(int_enabled, PL011State),
->           VMSTATE_UINT32(int_level, PL011State),
->           VMSTATE_UINT32_ARRAY(read_fifo, PL011State, PL011_FIFO_DEPTH),
-> +        VMSTATE_FIFO8_TEST(xmit_fifo, PL011State, pl011_xmit_fifo_state_needed),
-
-Not ok.
-
-The new data should go in its own VMStateDescription, like vmstate_pl011_clock.
-
-
-r~
+Regards,
+    Stefan

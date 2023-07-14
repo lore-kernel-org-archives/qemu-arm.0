@@ -1,306 +1,597 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4012980eje;
-        Fri, 14 Jul 2023 05:46:26 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEeV0LOhwdEkiDictGLvZJqiAfpmVr/j7yfUBjJtINl0/zkL2FIN0PPrM/2ROm+NhhjFGe4
-X-Received: by 2002:ac8:4e92:0:b0:403:cc10:825d with SMTP id 18-20020ac84e92000000b00403cc10825dmr4442637qtp.57.1689338786037;
-        Fri, 14 Jul 2023 05:46:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1689338786; cv=pass;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4081154eje;
+        Fri, 14 Jul 2023 07:28:02 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGfeBLU2YGbgNS67+uqDtrdEL3PEq8N/RFmbVWjHAZgPOr2RXMHvvvMpnI00pgkhK3Dchxq
+X-Received: by 2002:a05:620a:29c9:b0:767:df5f:c6b9 with SMTP id s9-20020a05620a29c900b00767df5fc6b9mr5698646qkp.2.1689344882181;
+        Fri, 14 Jul 2023 07:28:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689344882; cv=none;
         d=google.com; s=arc-20160816;
-        b=SHVL8EovDJZGyL7olQROaYWgODjAFPjohyL6jzXs9YzG/QCWUSborCuZIaWKta3YYE
-         rfzeKWUn05n97HrU7cT3kUGxL/8H3KDlEs7H6epr0/CEayXvsI6beeuBUi6wEOahcucr
-         Qjel/VwZfVOtrloQ30WlJRW4jvAeNRajtoPVmcRAIg9FnlIBIOeTzieZtwSVU64HNv3r
-         BWVGcU/aTZXBC5Sh68wukkXY9R9DTO+5mFeRKG0aQmPwfbato+8WVGnUUyMVKa0jjdY4
-         Il6Ps0DC3//QUgOfCoJmH9IZvJtuZcmw2cj+FXJgh+YRSrqsbyDOTsMJ7Nl0PnA6kA4m
-         26hg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=O8s3URYg55NyluBmPd06woEFFXDKOYWLBDDWqTgOfpQK21g5A535kfxF+8Q5iPyn3l
+         UZXmzLqRsOZpO6rd44AFXObL7CKSH0lLC/Wu+U/WaFs3DL0OnCAgjmdUeULoQt6D/uAS
+         CNjcC+eLUeGnjhrau2iwniYtyBz/UTJuuAhEmzXtwNKtIQpxm54a8886gVMVLsYj88k6
+         Oyh/ZOA0Y7D5kGQMO+DtVw1UNitfGUJx9K82SqS56jf8ggz0OP4vif/OEBVbi8XZRGjB
+         H3rT8z5qZH2DWafD8HWipjAWr2JcKNjhIhwjA02kWaGqtwlFhC3C2wgBaFrKYhCTKzFQ
+         YZLA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=sy6igTv0M4G4lUQSIqK3IgAe2aHMwHrZgKTdJI2/P9Q=;
-        fh=Z7SP2d5b8mgJtBbWiB0VUy3hqkPB7FqsqHIpQ041oC0=;
-        b=SSVC8ln4VNnTiscVOMUGzNeF+g9oDhjZRc0JOLlVYo3Lx/MJ91YC7qxGT0Xctigi55
-         Fw3dZubT7om2X5ea6FoTTB3IN7W42JxbY7s1KjE0SSR+YcHZvUme9LrxdzWIXOQ/Skb6
-         vWxwY6EkikSZfjZf3p6/8QVpbY+aGHCzvLpx9dSw1hqnF0qHy24Cg0SvbgBAfPKpn4ZU
-         dfDhtOoegfffc1GHKGsKqd4t06Gd2GnMA1Jdilsoh3EvqWGB7SUVzEh59e1aZLBAN8YW
-         DF08m3uctk8wEvjNakliTqXGt4WcBl9yndi2Xe4A42G9FavvUCWlbnMovo4p5odY3awj
-         2+gA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b=FjF5ZZkG;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=dt1Ggq+F;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:date:message-id:dkim-signature;
+        bh=jfiSrSK2FzWeLscPQVwV/mpbDEYGTSH3nTziboYswCw=;
+        fh=VlxGBuztImzxzQTebj6NILFFTp0RkVZt59GsQOigE6g=;
+        b=JIDVAhMv1qpE7uaj5US69wyG/TR9OfHPbe2FsoAlpslwua0NVkeVktuKCp5/rdOXXW
+         iph5M8BrGcDTODoQJhiJEVc//AYA1mvT08xWDx1nFM38Iw8fUOwD/3ZubjzgcEMTwxSf
+         u8xGae1QyQFeEOHDSk4jEDgvXwyG2pDD6NnkTC9Rlxaj76F/u21lUurnJcQUK4ZbXGwx
+         XGAUUKkrZx26YM0J833Il2m1hwICeGp1WvamKFNIT37C01SG1Sg4em2HZ9pdV2QWZ3OH
+         O9H4F+JZdBcq95lBDnj/8EPuEMUt9F9IJdhZvDD+liBLnafcOi1f/vnXp0iwHMG5Olwm
+         Gggw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=PFJQR78f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b10-20020ac85bca000000b004035c106304si4392500qtb.470.2023.07.14.05.46.25
+        by mx.google.com with ESMTPS id g184-20020a37b6c1000000b00766f99ebd7csi4441040qkf.526.2023.07.14.07.28.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jul 2023 05:46:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Jul 2023 07:28:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b=FjF5ZZkG;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=dt1Ggq+F;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=PFJQR78f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qKIBU-0004TW-Up; Fri, 14 Jul 2023 08:46:08 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qKJlU-0005o5-DL; Fri, 14 Jul 2023 10:27:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1qKIBQ-0004Sb-51; Fri, 14 Jul 2023 08:46:04 -0400
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1qKJlS-0005nK-AH; Fri, 14 Jul 2023 10:27:22 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
- id 1qKIBN-000856-Fy; Fri, 14 Jul 2023 08:46:03 -0400
-Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 36ECAb9S028630; Fri, 14 Jul 2023 12:45:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-id : content-transfer-encoding : mime-version; s=corp-2023-03-30;
- bh=sy6igTv0M4G4lUQSIqK3IgAe2aHMwHrZgKTdJI2/P9Q=;
- b=FjF5ZZkG1pKfzqUFchpMgVBEgbVwTwdCLia+I0EXmzjmeDyWuCuimxh2+gkbYDArTlTu
- bxFI7wY3efJ1Zb3RRHK0ScPM8CPk1C8jkAfr9McOuBVUzu7fmpxOZv5IDzy20GnGNJqZ
- ZBkIxtpJW8qO/5cWQPOzSVF9wVy0ZAe7NOnAoQRJ8qtJK9JTLsVjSy5+JvFXFA8Bwlf0
- aT+en0gpg1eb6rbykovSuil/HiBiCCzz/YXnkLmGzGx6urIroJ4h2gdhAFG29kP6r852
- ip7GgnSF7CiwfZPCbXMqXS4c/59bH5mvNAdfpQKniNj7rO5iMJPVSDruh5iH/THUfVN3 Mw== 
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3rtq8ascew-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 14 Jul 2023 12:45:43 +0000
-Received: from pps.filterd
- (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19)
- with ESMTP id 36ECUUNr001974; Fri, 14 Jul 2023 12:45:42 GMT
-Received: from nam10-mw2-obe.outbound.protection.outlook.com
- (mail-mw2nam10lp2108.outbound.protection.outlook.com [104.47.55.108])
- by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 3rtpvx3g2d-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 14 Jul 2023 12:45:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Z/+SudyIc5d8MB5kyz828ep5CAV+FYDqHBAlwpThEj71qN1e9EjeJY3RuiJeNd266/2i5RvTxTfvxhCSsyE8Gl3iz/d8htCDum7qJRlhh0cxcBt+l8H6ILzkGuB/6bTEtFnKKgGFIe5Rg02rh7+NYURbXGIYwtjTyCXQz4NNqZGUyaD7cTcKI3WGBlMQ7eA1UMHFDbgwY4sfLeGxUIl26a7R0DyLMIaxLEEl+spRspgwx5LNkDHm4si3+14frDNfF5p8IiX8BtO0i2KN+/iCsxxbp5Q/NlrRW16HnmfRnQc3vNVykE0R5Qg+5yrrHAeTKV6fVXlQLfG+zxAnjQMVow==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sy6igTv0M4G4lUQSIqK3IgAe2aHMwHrZgKTdJI2/P9Q=;
- b=ImQS40adYwH2nUFpKGyOvrabtM2aJ7Nnqne3c+6T8PbBMYN6X3Ce7iUwGiTOy9nbuPwBTl8IhxP0Vf6coFBpi+NLW4Vbwc6qDOmtBKBPytOPN8EdkNonhZ6lnZT+KPSTc+Wvv5Mw+1716UrN8+4cZKChztbmVmOhIWSSEudUlxPC57DrY434t5pmG/3Str5L+qee88bY3g669aGt3/+RV2ggmAV/M6ijgVKeq3BVPtUr2jQA4OrUCO/WkVzVtIGn9uPWCEdrO2NXdAHxijLercR2CPppX4WWJ0Hlir1hMML+08+tIsgL8NevZOBBa9QjFgmT94HW+gawwx4gX1dfwQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sy6igTv0M4G4lUQSIqK3IgAe2aHMwHrZgKTdJI2/P9Q=;
- b=dt1Ggq+FJ/mkM4m05N6D8jgDtcpSbf2jLHm0ICzuuQGiRkkApUV8b+qRS66CNiobuuWCBaacmegDTuXOLA9zoyfA1J1y9L47wzVhlXOPaNR21eDiBpUPzD+++fcgSIa72DrSrjkJqw3y2my4d7SXqE+Q6VsjGZUMmsh2nGUdMIo=
-Received: from PH0PR10MB5433.namprd10.prod.outlook.com (2603:10b6:510:e0::9)
- by BN0PR10MB5190.namprd10.prod.outlook.com (2603:10b6:408:12b::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.28; Fri, 14 Jul
- 2023 12:45:38 +0000
-Received: from PH0PR10MB5433.namprd10.prod.outlook.com
- ([fe80::5831:4a1a:fc:d349]) by PH0PR10MB5433.namprd10.prod.outlook.com
- ([fe80::5831:4a1a:fc:d349%3]) with mapi id 15.20.6588.027; Fri, 14 Jul 2023
- 12:45:38 +0000
-From: Miguel Luis <miguel.luis@oracle.com>
-To: Eric Auger <eauger@redhat.com>
-CC: Peter Maydell <peter.maydell@linaro.org>, "Michael S . Tsirkin"
- <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Haibo Xu
- <haibo.xu@linaro.org>, Andrew Jones <drjones@redhat.com>, Marc Zyngier
- <maz@kernel.org>
-Subject: Re: [RFC PATCH 4/5] target/arm: enable feature ARM_FEATURE_EL2 if EL2
- is supported
-Thread-Topic: [RFC PATCH 4/5] target/arm: enable feature ARM_FEATURE_EL2 if
- EL2 is supported
-Thread-Index: AQHZSsnNgqOjmf8mc0OfFMGPlH0ZNK+tLuEAgAzdrIA=
-Date: Fri, 14 Jul 2023 12:45:38 +0000
-Message-ID: <9EFC06E4-7F76-4E94-A788-D488999870CB@oracle.com>
-References: <20230227163718.62003-1-miguel.luis@oracle.com>
- <20230227163718.62003-5-miguel.luis@oracle.com>
- <acb446c4-dddb-30f6-5faf-e976fbe0c605@redhat.com>
-In-Reply-To: <acb446c4-dddb-30f6-5faf-e976fbe0c605@redhat.com>
-Accept-Language: en-GB, en-US
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1qKJlP-0005Cb-Is; Fri, 14 Jul 2023 10:27:22 -0400
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 36EEPfue031879; Fri, 14 Jul 2023 14:27:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ subject : to : cc : references : from : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=jfiSrSK2FzWeLscPQVwV/mpbDEYGTSH3nTziboYswCw=;
+ b=PFJQR78fBEBp8h5c6kO41uUdYQr7PilcyK7eHc0TBxkD7GgsaOb93gGmbuDPpj66NGwA
+ xg/p5l7yM+E7lsD2E6w1X+6icCBq3r23r1ud4m2dQwbP6eMx/GI5bA8BEtN6rPaPezzb
+ eE/emWmSTpkutT4FlvhOuvRL33y4Bcb89YXCGeUdE6HpQrwi4YTfZnrk/GqAGEN5AYmK
+ x8UIrR8Nk/dm+CaHK8FWxxG96X+IbvC38VeKRUu2earJobHonHJR2UKpzim/JPTxeKeJ
+ oWKTT0CiHN6w+NrjL+5yVYjqva60cD3Ev7TPRuQfVBKU0q+ueIpEin7yfYH9H4dIq6uw WQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3ru805g7mw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 14 Jul 2023 14:27:05 +0000
+Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 36EEIYbt007927;
+ Fri, 14 Jul 2023 14:27:04 GMT
+Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
+ [169.53.41.122])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3ru805g7me-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 14 Jul 2023 14:27:04 +0000
+Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
+ by ppma04dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 36EDwTpV008407;
+ Fri, 14 Jul 2023 14:27:03 GMT
+Received: from smtprelay07.dal12v.mail.ibm.com ([9.208.130.99])
+ by ppma04dal.us.ibm.com (PPS) with ESMTPS id 3rtq33pav2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 14 Jul 2023 14:27:03 +0000
+Received: from smtpav04.dal12v.mail.ibm.com (smtpav04.dal12v.mail.ibm.com
+ [10.241.53.103])
+ by smtprelay07.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 36EER2U932047716
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 14 Jul 2023 14:27:02 GMT
+Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id F3BFD58056;
+ Fri, 14 Jul 2023 14:27:01 +0000 (GMT)
+Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id F305458052;
+ Fri, 14 Jul 2023 14:27:00 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by smtpav04.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Fri, 14 Jul 2023 14:27:00 +0000 (GMT)
+Message-ID: <b65eaadc-26a8-c07f-0531-8522c37ba93e@linux.ibm.com>
+Date: Fri, 14 Jul 2023 10:27:00 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v2 10/11] tpm_crb_sysbus: introduce TPM CRB SysBus device
 Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH0PR10MB5433:EE_|BN0PR10MB5190:EE_
-x-ms-office365-filtering-correlation-id: fc4110a6-12cb-48a7-7274-08db84683a0c
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: fCv2H3bSLH/XaJ+2WbETcaugFhF5VjL18j0BK+kSYKvizSBAHvPSUJtP4pPksOZ/fqlVbtfAD7FIDQ3my40psdGxyYmr5wZqI2fNfW0gHaLPMm7blF3r6XoBwL3mryF3DDqUcK79UtZvzjRSOx/qZhwNC4Gj+iC8v7+XxLy3qtygf5zWPtP2/fYVN7Zy/V7nKmm5cEFnlUAYW+JbiwZYVsbTF/qNkLX+mYCFQwB2UcuhD+7OmAtLBGFJWGQQhmmcvt6duFcLLQr8k01yeoN+i7EU+0lj9FtM4LV+pp1J+kOH8dfxd9cKJSHItr2AcuJKoNrApfAV+z86wwsuPYcBcaxoTUth55Us6YZGgcwWxE4X3fePj3weaMvgOQQpIUtibAJ3MEZJmgfLowA56T4+e2SWBBUpZhzSpHR1nPi1SdzELuIcqhVlQ5qhsNrTEjUbiLK5U2VuPEAGSTj5ScfuaH5Twea3ziS0xJTa/V//Z9JUdlCfKY4M5LyGswto2OxJjufGy5Dtn3S6xBMz8iDvEGqZwZWiSYB03F53RAMTeLIwS4XN5HvEk3FLA/XV4XAyT9+rA1fl1yUM28+x3s46Ied74ZNWNtlf7JEPdOSc1KgrsYC79Jx1bwerw6Jm89GuP3le9o5TKLKCWHSu5/YetA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR10MB5433.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(396003)(346002)(366004)(136003)(376002)(39860400002)(451199021)(5660300002)(38100700002)(44832011)(7416002)(122000001)(41300700001)(8936002)(8676002)(316002)(38070700005)(86362001)(2906002)(966005)(6512007)(53546011)(26005)(6506007)(71200400001)(6486002)(478600001)(2616005)(36756003)(83380400001)(33656002)(186003)(54906003)(4326008)(64756008)(66446008)(66476007)(66556008)(6916009)(76116006)(66946007)(91956017)(45980500001);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?YitMdURwMDdBNXFGdnZmbUtDTDNWQzNJamFvSTE5Zms4WWNPdzZ5a0tyOFRp?=
- =?utf-8?B?SFZleEVhYUxVbjJab1NuUi83Ty91TU1lb1JLVDZvRzlUVEoyY3BOZnhlcnU0?=
- =?utf-8?B?bHlHZk5SZnUrNFdQdldEWWRrNGFmVUcwa296c09wS25LeVpyWHlBUEVJTHY0?=
- =?utf-8?B?MGM3S0htSnRNaFB5RzlGdmtxQ2xUWW5PTmpDd3hiTm5QdS83cUk5WjVXU0FF?=
- =?utf-8?B?cjB4Q2FJTEsvRHVzYyszdTdzOW9lUXlubldjUEEwS1ZMcTAzeUtIdElwVmVi?=
- =?utf-8?B?bVFaQ3prY2NoOGJKUnYzYlRZM0J6OXkrNlJ2YXB4RU50ZVRvTm94WEZMNUZX?=
- =?utf-8?B?R0lzelJKWXdrU2tONXhyMU9IWFRUN01xcVNORE5HYmp6Vlk1NUZpU1IwZWx6?=
- =?utf-8?B?aE1YZFlzOVlMQkJsdTl6ZkxPazZWUGI1QW8xa1NiK3pEdUhZTnZKTzZ0anFt?=
- =?utf-8?B?WlN1d1k1blU1Ukp5UHBWdWZVclJNc2NRdDdicThwZ1luNGtOUWd2VzkrUktk?=
- =?utf-8?B?M29SL1F0Zkt4ZmVuOVBtd01LQzFEQzBGUEo2S1lNWWhDMllDMDlDKzJBbnl0?=
- =?utf-8?B?YU1FUlU4MEFQSXppS3poZEQ0M1ZGSjAwNjRibFhDTkRIOFU4MGFEb2dzVWFu?=
- =?utf-8?B?eGt1NzZhejBHckRwMXZ1dnBOcXQxclZMVHZvU29sNS9BcVJLQmpraGdaRkZU?=
- =?utf-8?B?cUxWSUp0RzRaL1lmVXJrN21qZFhLYnM2SXZnS2tXUnp1Mmdyam1KTlBKaG9V?=
- =?utf-8?B?RGxmWkgrdG5rOW4rd3pQb0Zxd1MxNTJwL1hDYXpBY2k1RjFVVjQzTE9jOGQv?=
- =?utf-8?B?eG9jRVppOTlZczUvNHpnZU8zRFVMSlcxS0w0c3dXUW5Vb3A3cCtjNEw1MjRG?=
- =?utf-8?B?NzM5TWtUM1VzcUFhK2NOSDBDUm9IeUhVM05jL0krSDQwbyttcFp1eHBCeEcx?=
- =?utf-8?B?MHZsQW9KOVNzUzBPcWZtbkZTb0hVV2M4eklIb2hqMGVoR2pFQzdEVElKR1ZL?=
- =?utf-8?B?M1RIYXB3N3dRYW14dlk2NzJMdS9vRjJtTTlIeGpLN2c2WnJvRGZ6bzFqOEUy?=
- =?utf-8?B?cW5vd0VKdUxtb2QxaENIdTAxTm5icldqTmdFWWJQV2plaE9lQ0IyUUdFZHFG?=
- =?utf-8?B?MFdJTmlIM1ZWdWU0RUEweWFsMWhmYSs5TDVzOTlTR0FiZTlLcDRUUzU5aU9x?=
- =?utf-8?B?M2lFZk5PQkh1dlZ2ekpONVdDS29rbFZDN0JRTTg1RG9BemtQclpmaU5KTmtY?=
- =?utf-8?B?dFBUWXVPNFl2OFI2VmtNYXlLSUlwNldrRHk5R0MxbUhPV1NreFliZDZEVDZT?=
- =?utf-8?B?b2Z2MkhqajVrNDZsbWJabTNmbHNvTEI4Mm5jZ0lzUFl4bWp6dnl1S25kR0lG?=
- =?utf-8?B?Z3hUd2w1allxanRISFljcGxRdDkzeWhhZHdmVDU3U1ZvSlNKVkZFaUwxR0h1?=
- =?utf-8?B?SE9Bb3ZSV1pIR2dFSEVPR0QvVkJPY3V1SitxTDZjR0ZSMmV6N3JEMm1WT3NF?=
- =?utf-8?B?clV1Y3pBUkRTemJvT3Y5K0ozRFBWdUVTUTBiUEtTT0p3TStzQUphSGluWXZB?=
- =?utf-8?B?cXdzWWxQQzREVGQ0L1QyNFArV1psa3UwR0dpQTRkNUt1czFoV21RZ05SK2l2?=
- =?utf-8?B?TWtlOU14c3JsNlA5ZXZYRG5OV2F5WWZpTE05ZzNYYmFEaWw0UTRKZmsrdXFj?=
- =?utf-8?B?dVUzd0o3NmFRZDVQNUZHc1NMWG5iVWE2YTdXZ3VNZ1BvUi9vdk1HL3QzZ2lB?=
- =?utf-8?B?OFk0SjkwdVFod1ZySjJsMUs0VnNTQ2gwZWNwa25DWjF2MkdrYUhKUXYyMWFJ?=
- =?utf-8?B?dHRaZk9WQStoQWlRWk9KM2RxVGNUVWxlcnlxZkQ5WGw3MjRTUlMzaHMzdVgr?=
- =?utf-8?B?SXJQd2hxVXgxNGkzbFEyc3U0WURZOVgwelo0aUljSVFraGJNV0htY202aUxQ?=
- =?utf-8?B?UnhtVEJPakcrOFRkNEtkaStYbXNJSXdOT2JpN1lJcVhTdExOb1dlSXQvMTVn?=
- =?utf-8?B?bGdxYXlOSnc3Mk52RXJza2RkTUMzai9USm9YNkJHYU9hcy9lM2tCVXpwd1lx?=
- =?utf-8?B?cnZIazQrKzY4dStoSmJLU3hteWhPYXZIdUo5eDVVMlBwRDlaQ3poajJra0Jj?=
- =?utf-8?B?TTl0b0NFYWFkaTRYbmRTU1VkeTVtdWQ0eTlSN1R2cHV4NzNLOGlNUTRGdkJ5?=
- =?utf-8?B?Q2c9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <8DB6AB87C8A12944B7C1914A98AB9EF1@namprd10.prod.outlook.com>
-Content-Transfer-Encoding: base64
+To: Joelle van Dyne <j@getutm.app>, qemu-devel@nongnu.org
+Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Song Gao <gaosong@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>
+References: <20230714070931.23476-1-j@getutm.app>
+ <20230714070931.23476-11-j@getutm.app>
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <20230714070931.23476-11-j@getutm.app>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: SfKY1FEivocPTB_wT-fFyXJSyTs_fPo9
+X-Proofpoint-ORIG-GUID: uWHhROqxRsUFj1R7brPcPi_6Y3OKMQyf
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: hAaUg535ErJhRXx8E5g4C1R0TpzeDtQYg1m+hglkvFk5nYhykHairPalvCXNmz1cUcKsln7PXDFZUmfRYjrf4jPK4HcUrBI5gZdFp5dh3T0SKDc3/39gGSXX9OVGJW7hZnyCpPKP98JnLQI9Vs8Oce88FS8aU+NEkkdA8oENw9asJ6oFth07Y86HLxEZ6Rv8mcZdOIfZfmXiV7c84LfnRanyi7RXO1/yqvdJ9UVaUKqjTi1Yhd7KrfDXGOwV3Q0NRe8GYULgKosTvVUi/s0ZyK/pUHkwdX/7+HLAyjOeGSHxMOXQFnzoY7saHQ48dKuDlMa7IJwtQFnnKbQ3d0MSJ7cZLL/K/LQlxs3f4QS588ZaYsn72iVurxTvnPJL48tTx8snAw4Z58OipusQyay20WAtWvlyHVH9SJXWavuXGaGtY8eOzKw12MKUdr/WpFclt39MYVEo6R584Kf42L410nA81UoSLmjDhwq6kJE4ZlUCgsq7KnH0KmZakVbRtuP/74iolGo37vjz3vcqcwTJ2SO1zvSLpsrO9+IJY962J4Sqfo7G/voDsoyRGGQomufoKVTtaKy39XXE8Y4/o7hIu4MzJUI/SiEju8hoQnIAivYd4BziWT9kmVum8FvpmfAb1AB/6a9mt7qMBKafTM1DmmmwDUP1vQbz7l6yeZlJVreFZREzKmAH2LSEa8IU2zmONDYRip9pY/D+zfM6xTXwsr/mGSv81erYuCWXL1i6OJJ6JC+tL9ZOfoFGD6VRfkpopDEnDUOyCYomLTgNrllSBSRsoX4K5WKi+6T0zcD4WAd3I6pi9zmWFRfEognw5239udpD4TRU3BWgA4qxBOXpnw==
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB5433.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fc4110a6-12cb-48a7-7274-08db84683a0c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jul 2023 12:45:38.7943 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 4FdhnAJpDxGKwPypUwFLUtVVtFphpoTQfeQ7c3xlVJs1bXZfJUsHoDduiRnI/QvC4wReSJHXyXexm1EOx0s4UA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR10MB5190
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
  definitions=2023-07-14_06,2023-07-13_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- adultscore=0 suspectscore=0
- malwarescore=0 mlxscore=0 phishscore=0 bulkscore=0 mlxlogscore=999
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 malwarescore=0
+ priorityscore=1501 mlxlogscore=999 clxscore=1011 spamscore=0 adultscore=0
+ lowpriorityscore=0 impostorscore=0 phishscore=0 bulkscore=0 suspectscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2306200000
- definitions=main-2307140115
-X-Proofpoint-GUID: al8g_JimB_-80-XnogLckNCI8hRseXcL
-X-Proofpoint-ORIG-GUID: al8g_JimB_-80-XnogLckNCI8hRseXcL
-Received-SPF: pass client-ip=205.220.165.32;
- envelope-from=miguel.luis@oracle.com; helo=mx0a-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ definitions=main-2307140128
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o8KsoPmIgfkp
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EaPdKDGQIBwQ
 
-SGkgRXJpYywNCg0KVGhhbmtzIGluIGFkdmFuY2UgZm9yIHlvdXIgY29tbWVudC4NCg0KPiBPbiA2
-IEp1bCAyMDIzLCBhdCAwODoxNiwgRXJpYyBBdWdlciA8ZWF1Z2VyQHJlZGhhdC5jb20+IHdyb3Rl
-Og0KPiANCj4gSGkgTWlndWVsLA0KPiANCj4gT24gMi8yNy8yMyAxNzozNywgTWlndWVsIEx1aXMg
-d3JvdGU6DQo+PiBGcm9tOiBIYWlibyBYdSA8aGFpYm8ueHVAbGluYXJvLm9yZz4NCj4+IA0KPj4g
-S1ZNX0NBUF9BUk1fRUwyIG11c3QgYmUgc3VwcG9ydGVkIGJ5IHRoZSBjcHUgdG8gZW5hYmxlIEFS
-TV9GRUFUVVJFX0VMMi4NCj4+IEVMMiBiaXRzIG9uIElEX0FBNjRQRlIwIHN0YXRlIHVuc3VwcG9y
-dGVkIG9uIHRoZSB2YWx1ZSAwYjAwMDAuDQo+PiANCj4+IFJlZjogaHR0cHM6Ly9sb3JlLmtlcm5l
-bC5vcmcvcWVtdS1kZXZlbC9iN2MyNjI2ZTZjNzIwY2NjNDNlNTcxOTdkZmYzZGFjNzJkNjEzNjQw
-LjE2MTYwNTI4OTAuZ2l0LmhhaWJvLnh1QGxpbmFyby5vcmcvDQo+PiANCj4+IFNpZ25lZC1vZmYt
-Ynk6IEhhaWJvIFh1IDxoYWliby54dUBsaW5hcm8ub3JnPg0KPj4gW01pZ3VlbCBMdWlzOiB1c2Ug
-b2YgSURfQUE2NFBGUjAgZm9yIGNwdSBmZWF0dXJlc10NCj4+IFNpZ25lZC1vZmYtYnk6IE1pZ3Vl
-bCBMdWlzIDxtaWd1ZWwubHVpc0BvcmFjbGUuY29tPg0KPj4gLS0tDQo+PiB0YXJnZXQvYXJtL2Nw
-dS5oICAgfCAgMiArLQ0KPj4gdGFyZ2V0L2FybS9rdm02NC5jIHwgMTYgKysrKysrKysrKysrKysr
-Kw0KPj4gMiBmaWxlcyBjaGFuZ2VkLCAxNyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pDQo+
-PiANCj4+IGRpZmYgLS1naXQgYS90YXJnZXQvYXJtL2NwdS5oIGIvdGFyZ2V0L2FybS9jcHUuaA0K
-Pj4gaW5kZXggOWFlZWQzYzg0OC4uZGUyYTg4YjQzZSAxMDA2NDQNCj4+IC0tLSBhL3RhcmdldC9h
-cm0vY3B1LmgNCj4+ICsrKyBiL3RhcmdldC9hcm0vY3B1LmgNCj4+IEBAIC0zOTYxLDcgKzM5NjEs
-NyBAQCBzdGF0aWMgaW5saW5lIGJvb2wgaXNhcl9mZWF0dXJlX2FhNjRfYWEzMl9lbDEoY29uc3Qg
-QVJNSVNBUmVnaXN0ZXJzICppZCkNCj4+IA0KPj4gc3RhdGljIGlubGluZSBib29sIGlzYXJfZmVh
-dHVyZV9hYTY0X2FhMzJfZWwyKGNvbnN0IEFSTUlTQVJlZ2lzdGVycyAqaWQpDQo+PiB7DQo+PiAt
-ICAgIHJldHVybiBGSUVMRF9FWDY0KGlkLT5pZF9hYTY0cGZyMCwgSURfQUE2NFBGUjAsIEVMMikg
-Pj0gMjsNCj4+ICsgICAgcmV0dXJuIEZJRUxEX0VYNjQoaWQtPmlkX2FhNjRwZnIwLCBJRF9BQTY0
-UEZSMCwgRUwyKSAhPSAwOw0KPj4gfQ0KPj4gDQo+PiBzdGF0aWMgaW5saW5lIGJvb2wgaXNhcl9m
-ZWF0dXJlX2FhNjRfcmFzKGNvbnN0IEFSTUlTQVJlZ2lzdGVycyAqaWQpDQo+PiBkaWZmIC0tZ2l0
-IGEvdGFyZ2V0L2FybS9rdm02NC5jIGIvdGFyZ2V0L2FybS9rdm02NC5jDQo+PiBpbmRleCBiZTgx
-NDRhMmI1Li5mN2ViZDczMWFhIDEwMDY0NA0KPj4gLS0tIGEvdGFyZ2V0L2FybS9rdm02NC5jDQo+
-PiArKysgYi90YXJnZXQvYXJtL2t2bTY0LmMNCj4+IEBAIC01MDUsNiArNTA1LDcgQEAgYm9vbCBr
-dm1fYXJtX2dldF9ob3N0X2NwdV9mZWF0dXJlcyhBUk1Ib3N0Q1BVRmVhdHVyZXMgKmFoY2YpDQo+
-PiAgICAgICovDQo+PiAgICAgaW50IGZkYXJyYXlbM107DQo+PiAgICAgYm9vbCBzdmVfc3VwcG9y
-dGVkOw0KPj4gKyAgICBib29sIGVsMl9zdXBwb3J0ZWQ7DQo+PiAgICAgYm9vbCBwbXVfc3VwcG9y
-dGVkID0gZmFsc2U7DQo+PiAgICAgdWludDY0X3QgZmVhdHVyZXMgPSAwOw0KPj4gICAgIGludCBl
-cnI7DQo+PiBAQCAtNTM1LDYgKzUzNiwxNCBAQCBib29sIGt2bV9hcm1fZ2V0X2hvc3RfY3B1X2Zl
-YXR1cmVzKEFSTUhvc3RDUFVGZWF0dXJlcyAqYWhjZikNCj4+ICAgICAgICAgaW5pdC5mZWF0dXJl
-c1swXSB8PSAxIDw8IEtWTV9BUk1fVkNQVV9TVkU7DQo+PiAgICAgfQ0KPj4gDQo+PiArICAgIC8q
-DQo+PiArICAgICAqIEFzayBmb3IgRUwyIGlmIHN1cHBvcnRlZC4NCj4+ICsgICAgICovDQo+PiAr
-ICAgIGVsMl9zdXBwb3J0ZWQgPSBrdm1fYXJtX2VsMl9zdXBwb3J0ZWQoKTsNCj4+ICsgICAgaWYg
-KGVsMl9zdXBwb3J0ZWQpIHsNCj4+ICsgICAgICAgIGluaXQuZmVhdHVyZXNbMF0gfD0gMSA8PCBL
-Vk1fQVJNX1ZDUFVfSEFTX0VMMjsNCj4gVGhpcyBkb2Vzbid0IHdvcmsgaWYgeW91ciBob3N0IGJv
-dGggc3VwcG9ydHMgU1ZFICYgTlYuDQo+IA0KDQpNYXkgSSBhc2sgaWYgdGhpcyBwcmV2ZW50ZWQg
-eW91ciBMMSBvciBMMiBndWVzdCBmcm9tIGJvb3Rpbmc/IEnigJl2ZSBhZGRyZXNzZWQgYWxsDQp0
-aGUgcHJldmlvdXMgY29tbWVudHMgb24gdGhlIHRocmVhZCBmb3IgdGhlIG5ldyBSRkMgdmVyc2lv
-biBhbmQgdGhpcyB0b3BpYyBpcw0Kd2hhdCBJ4oCZbSBjdXJyZW50bHkgYWRkcmVzc2luZy4NCg0K
-U28gZmFyIHRoZSBMMSBndWVzdCBib290ZWQgc3VjY2Vzc2Z1bGx5IGJ1dCBub3QgdGhlIEwyIGd1
-ZXN0Lg0KDQo+IFRoZSBlcnJvciBvdXRwdXQgYnkgcWVtdSBpcyBub3Qgc3RyYWlnaHRmb3J3YXJk
-DQo+IA0KPiBxZW11LXN5c3RlbS1hYXJjaDY0OiBjYW4ndCBhcHBseSBnbG9iYWwgaG9zdC1hcm0t
-Y3B1LnN2ZT1vZmY6IFByb3BlcnR5DQo+ICdob3N0LWFybS1jcHUuc3ZlJyBub3QgZm91bmQNCj4g
-DQo+IFRoZSBwcm9ibGVtIGlzIHRoYXQgd2UgY3JlYXRlIGEgc2NyYXRjaCBWTSB3aXRoIGEgQ1BV
-IGZlYXR1cmluZyBib3RoIFNWRQ0KPiBhbmQgTlYgYW5kIHRoaXMgZmFpbHMgYXQga2VybmVsIGxl
-dmVsLCBJIHRoaW5rIG9uIHZjcHUgcmVzZXQuDQo+IA0KPiBUaGUgdHJvdWJsZSBpcyB0aGF0IHdl
-IGRvIHRoYXQgZXZlbiBpZiBzdmU9b2ZmIGF0IHFlbXUgbGV2ZWwuIFNvIEkgdGhpbmsNCj4gdGhp
-cyBpcyBhIG1vcmUgZ2VuZXJpYyBpc3N1ZSByZWxhdGVkIHRvIHRoZSB3YXkgd2UgdmFsaWRhdGUg
-aG9zdCBjcHUNCj4gZmVhdHVyZXMuDQo+IA0KDQpPSywgSeKAmW0gaGF2aW5nIGEgbG9vayBpbnRv
-IHRoYXQuDQoNClRoYW5rIHlvdQ0KDQpNaWd1ZWwNCg0KPiBUaGFua3MNCj4gDQo+IEVyaWMNCj4g
-DQo+IA0KPj4gKyAgICB9DQo+PiArDQo+PiAgICAgLyoNCj4+ICAgICAgKiBBc2sgZm9yIFBvaW50
-ZXIgQXV0aGVudGljYXRpb24gaWYgc3VwcG9ydGVkLCBzbyB0aGF0IHdlIGdldA0KPj4gICAgICAq
-IHRoZSB1bnNhbml0aXplZCBmaWVsZCB2YWx1ZXMgZm9yIEFBNjRJU0FSMV9FTDEuDQo+PiBAQCAt
-NzE0LDYgKzcyMywxMCBAQCBib29sIGt2bV9hcm1fZ2V0X2hvc3RfY3B1X2ZlYXR1cmVzKEFSTUhv
-c3RDUFVGZWF0dXJlcyAqYWhjZikNCj4+ICAgICBmZWF0dXJlcyB8PSAxVUxMIDw8IEFSTV9GRUFU
-VVJFX1BNVTsNCj4+ICAgICBmZWF0dXJlcyB8PSAxVUxMIDw8IEFSTV9GRUFUVVJFX0dFTkVSSUNf
-VElNRVI7DQo+PiANCj4+ICsgICAgaWYgKGVsMl9zdXBwb3J0ZWQpIHsNCj4+ICsgICAgICAgIGZl
-YXR1cmVzIHw9IDFVTEwgPDwgQVJNX0ZFQVRVUkVfRUwyOw0KPj4gKyAgICB9DQo+PiArDQo+PiAg
-ICAgYWhjZi0+ZmVhdHVyZXMgPSBmZWF0dXJlczsNCj4+IA0KPj4gICAgIHJldHVybiB0cnVlOw0K
-Pj4gQEAgLTg4MSw2ICs4OTQsOSBAQCBpbnQga3ZtX2FyY2hfaW5pdF92Y3B1KENQVVN0YXRlICpj
-cykNCj4+ICAgICAgICAgYXNzZXJ0KGt2bV9hcm1fc3ZlX3N1cHBvcnRlZCgpKTsNCj4+ICAgICAg
-ICAgY3B1LT5rdm1faW5pdF9mZWF0dXJlc1swXSB8PSAxIDw8IEtWTV9BUk1fVkNQVV9TVkU7DQo+
-PiAgICAgfQ0KPj4gKyAgICBpZiAoY3B1X2lzYXJfZmVhdHVyZShhYTY0X2FhMzJfZWwyLCBjcHUp
-KSB7DQo+PiArICAgICAgICBjcHUtPmt2bV9pbml0X2ZlYXR1cmVzWzBdIHw9IDEgPDwgS1ZNX0FS
-TV9WQ1BVX0hBU19FTDI7DQo+PiArICAgIH0NCj4+ICAgICBpZiAoY3B1X2lzYXJfZmVhdHVyZShh
-YTY0X3BhdXRoLCBjcHUpKSB7DQo+PiAgICAgICAgIGNwdS0+a3ZtX2luaXRfZmVhdHVyZXNbMF0g
-fD0gKDEgPDwgS1ZNX0FSTV9WQ1BVX1BUUkFVVEhfQUREUkVTUyB8DQo+PiAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIDEgPDwgS1ZNX0FSTV9WQ1BVX1BUUkFVVEhfR0VORVJJ
-Qyk7DQoNCg0K
+
+
+On 7/14/23 03:09, Joelle van Dyne wrote:
+> This SysBus variant of the CRB interface supports dynamically locating
+> the MMIO interface so that Virt machines can use it. This interface
+> is currently the only one supported by QEMU that works on Windows 11
+> ARM64. We largely follow the TPM TIS SysBus device as a template.
+> 
+> To try out this device with Windows 11 before OVMF is updated, you
+> will need to modify `sysbud-fdt.c` and change the added line from:
+> 
+> ```c
+>      TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, no_fdt_node),
+> ```
+> 
+> to
+> 
+> ```c
+>      TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, add_tpm_tis_fdt_node),
+> ```
+> 
+> This change was not included because it can confuse Linux (although
+> from testing, it seems like Linux is able to properly ignore the
+> device from the TPM TIS driver and recognize it from the ACPI device
+> in the TPM CRB driver). A proper fix would require OVMF to recognize
+> the ACPI device and not depend on the FDT node for recognizing TPM.
+> 
+> The command line to try out this device with SWTPM is:
+> 
+> ```
+> $ qemu-system-aarch64 \
+>      -chardev socket,id=chrtpm0,path=tpm.sock \
+>      -tpmdev emulator,id=tpm0,chardev=chrtpm0 \
+>      -device tpm-crb-device,tpmdev=tpm0
+> ```
+> 
+> along with SWTPM:
+> 
+> ```
+> $ swtpm \
+>      --ctrl type=unixio,path=tpm.sock,terminate \
+>      --tpmstate backend-uri=file://tpm.data \
+>      --tpm2
+> ```
+> 
+> Signed-off-by: Joelle van Dyne <j@getutm.app>
+> ---
+>   docs/specs/tpm.rst          |   1 +
+>   include/hw/acpi/aml-build.h |   1 +
+>   include/sysemu/tpm.h        |   3 +
+>   hw/acpi/aml-build.c         |   7 +-
+>   hw/arm/virt.c               |   1 +
+>   hw/core/sysbus-fdt.c        |   1 +
+>   hw/loongarch/virt.c         |   1 +
+>   hw/riscv/virt.c             |   1 +
+>   hw/tpm/tpm_crb_sysbus.c     | 170 ++++++++++++++++++++++++++++++++++++
+>   hw/arm/Kconfig              |   1 +
+>   hw/riscv/Kconfig            |   1 +
+>   hw/tpm/Kconfig              |   5 ++
+>   hw/tpm/meson.build          |   2 +
+>   13 files changed, 194 insertions(+), 1 deletion(-)
+>   create mode 100644 hw/tpm/tpm_crb_sysbus.c
+> 
+> diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
+> index 2bc29c9804..95aeb49220 100644
+> --- a/docs/specs/tpm.rst
+> +++ b/docs/specs/tpm.rst
+> @@ -46,6 +46,7 @@ operating system.
+>   QEMU files related to TPM CRB interface:
+>    - ``hw/tpm/tpm_crb.c``
+>    - ``hw/tpm/tpm_crb_common.c``
+> + - ``hw/tpm/tpm_crb_sysbus.c``
+> 
+
+If you added the command line to use for Windows guests to this document
+I think this would be helpful. And also mention that this must be used for Windows
+since the other ones don't work.
+
+
+>   SPAPR interface
+>   ---------------
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index d1fb08514b..9660e16148 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -3,6 +3,7 @@
+> 
+>   #include "hw/acpi/acpi-defs.h"
+>   #include "hw/acpi/bios-linker-loader.h"
+> +#include "exec/hwaddr.h"
+> 
+>   #define ACPI_BUILD_APPNAME6 "BOCHS "
+>   #define ACPI_BUILD_APPNAME8 "BXPC    "
+> diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+> index 66e3b45f30..f79c8f3575 100644
+> --- a/include/sysemu/tpm.h
+> +++ b/include/sysemu/tpm.h
+> @@ -47,6 +47,7 @@ struct TPMIfClass {
+>   #define TYPE_TPM_TIS_ISA            "tpm-tis"
+>   #define TYPE_TPM_TIS_SYSBUS         "tpm-tis-device"
+>   #define TYPE_TPM_CRB                "tpm-crb"
+> +#define TYPE_TPM_CRB_SYSBUS         "tpm-crb-device"
+>   #define TYPE_TPM_SPAPR              "tpm-spapr"
+>   #define TYPE_TPM_TIS_I2C            "tpm-tis-i2c"
+> 
+> @@ -56,6 +57,8 @@ struct TPMIfClass {
+>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
+>   #define TPM_IS_CRB(chr)                             \
+>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
+> +#define TPM_IS_CRB_SYSBUS(chr)                      \
+> +    object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB_SYSBUS)
+>   #define TPM_IS_SPAPR(chr)                           \
+>       object_dynamic_cast(OBJECT(chr), TYPE_TPM_SPAPR)
+>   #define TPM_IS_TIS_I2C(chr)                      \
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index ea331a20d1..f809137fc9 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -31,6 +31,7 @@
+>   #include "hw/pci/pci_bus.h"
+>   #include "hw/pci/pci_bridge.h"
+>   #include "qemu/cutils.h"
+> +#include "qom/object.h"
+> 
+>   static GArray *build_alloc_array(void)
+>   {
+> @@ -2218,7 +2219,7 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
+>   {
+>       uint8_t start_method_params[12] = {};
+>       unsigned log_addr_offset;
+> -    uint64_t control_area_start_address;
+> +    uint64_t baseaddr, control_area_start_address;
+>       TPMIf *tpmif = tpm_find();
+>       uint32_t start_method;
+>       AcpiTable table = { .sig = "TPM2", .rev = 4,
+> @@ -2236,6 +2237,10 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog,
+>       } else if (TPM_IS_CRB(tpmif)) {
+>           control_area_start_address = TPM_CRB_ADDR_CTRL;
+>           start_method = TPM2_START_METHOD_CRB;
+> +    } else if (TPM_IS_CRB_SYSBUS(tpmif)) {
+> +        baseaddr = object_property_get_uint(OBJECT(tpmif), "baseaddr", NULL);
+> +        control_area_start_address = baseaddr + A_CRB_CTRL_REQ;
+> +        start_method = TPM2_START_METHOD_CRB;
+>       } else {
+>           g_assert_not_reached();
+>       }
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 432148ef47..88e8b16103 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2977,6 +2977,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
+>   #ifdef CONFIG_TPM
+>       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
+>   #endif
+>       mc->block_default_type = IF_VIRTIO;
+>       mc->no_cdrom = 1;
+> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> index eebcd28f9a..9c783f88eb 100644
+> --- a/hw/core/sysbus-fdt.c
+> +++ b/hw/core/sysbus-fdt.c
+> @@ -493,6 +493,7 @@ static const BindingEntry bindings[] = {
+>   #endif
+>   #ifdef CONFIG_TPM
+>       TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
+> +    TYPE_BINDING(TYPE_TPM_CRB_SYSBUS, no_fdt_node),
+>   #endif
+>       TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+>       TYPE_BINDING("", NULL), /* last element */
+> diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+> index 9c536c52bc..eb59fb04ee 100644
+> --- a/hw/loongarch/virt.c
+> +++ b/hw/loongarch/virt.c
+> @@ -1194,6 +1194,7 @@ static void loongarch_class_init(ObjectClass *oc, void *data)
+>       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+>   #ifdef CONFIG_TPM
+>       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
+>   #endif
+>   }
+> 
+> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+> index d90286dc46..5d639a870a 100644
+> --- a/hw/riscv/virt.c
+> +++ b/hw/riscv/virt.c
+> @@ -1681,6 +1681,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+>   #ifdef CONFIG_TPM
+>       machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_CRB_SYSBUS);
+>   #endif
+> 
+>       if (tcg_enabled()) {
+> diff --git a/hw/tpm/tpm_crb_sysbus.c b/hw/tpm/tpm_crb_sysbus.c
+> new file mode 100644
+> index 0000000000..66be57a532
+> --- /dev/null
+> +++ b/hw/tpm/tpm_crb_sysbus.c
+> @@ -0,0 +1,170 @@
+> +/*
+> + * tpm_crb_sysbus.c - QEMU's TPM CRB interface emulator
+> + *
+> + * Copyright (c) 2018 Red Hat, Inc.
+> + *
+> + * Authors:
+> + *   Marc-André Lureau <marcandre.lureau@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + *
+> + * tpm_crb is a device for TPM 2.0 Command Response Buffer (CRB) Interface
+> + * as defined in TCG PC Client Platform TPM Profile (PTP) Specification
+> + * Family “2.0” Level 00 Revision 01.03 v22
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/acpi/acpi_aml_interface.h"
+> +#include "hw/acpi/tpm.h"
+> +#include "hw/qdev-properties.h"
+> +#include "migration/vmstate.h"
+> +#include "tpm_prop.h"
+> +#include "hw/pci/pci_ids.h"
+> +#include "hw/sysbus.h"
+> +#include "qapi/visitor.h"
+> +#include "qom/object.h"
+> +#include "sysemu/tpm_util.h"
+> +#include "trace.h"
+> +#include "tpm_crb.h"
+> +
+> +struct TPMCRBStateSysBus {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +
+> +    /*< public >*/
+> +    TPMCRBState state;
+> +    uint64_t baseaddr;
+> +    uint64_t size;
+> +};
+> +
+> +OBJECT_DECLARE_SIMPLE_TYPE(TPMCRBStateSysBus, TPM_CRB_SYSBUS)
+> +
+> +static void tpm_crb_sysbus_request_completed(TPMIf *ti, int ret)
+> +{
+> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(ti);
+> +
+> +    return tpm_crb_request_completed(&s->state, ret);
+> +}
+> +
+> +static enum TPMVersion tpm_crb_sysbus_get_tpm_version(TPMIf *ti)
+> +{
+> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(ti);
+> +
+> +    return tpm_crb_get_version(&s->state);
+> +}
+> +
+> +static int tpm_crb_sysbus_pre_save(void *opaque)
+> +{
+> +    TPMCRBStateSysBus *s = opaque;
+> +
+> +    return tpm_crb_pre_save(&s->state);
+> +}
+> +
+> +static const VMStateDescription vmstate_tpm_crb_sysbus = {
+> +    .name = "tpm-crb-sysbus",
+> +    .pre_save = tpm_crb_sysbus_pre_save,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_END_OF_LIST(),
+> +    }
+> +};
+> +
+> +static Property tpm_crb_sysbus_properties[] = {
+> +    DEFINE_PROP_TPMBE("tpmdev", TPMCRBStateSysBus, state.tpmbe),
+> +    DEFINE_PROP_UINT64("baseaddr", TPMCRBStateSysBus,
+> +                       baseaddr, TPM_CRB_ADDR_BASE),
+> +    DEFINE_PROP_UINT64("size", TPMCRBStateSysBus, size, TPM_CRB_ADDR_SIZE),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void tpm_crb_sysbus_initfn(Object *obj)
+> +{
+> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(obj);
+> +
+> +    tpm_crb_init_memory(obj, &s->state, NULL);
+> +
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->state.mmio);
+> +}
+> +
+> +static void tpm_crb_sysbus_reset(DeviceState *dev)
+> +{
+> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(dev);
+> +
+> +    return tpm_crb_reset(&s->state, s->baseaddr);
+> +}
+> +
+> +static void tpm_crb_sysbus_realizefn(DeviceState *dev, Error **errp)
+> +{
+> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(dev);
+> +
+> +    if (!tpm_find()) {
+> +        error_setg(errp, "at most one TPM device is permitted");
+> +        return;
+> +    }
+> +
+> +    if (!s->state.tpmbe) {
+> +        error_setg(errp, "'tpmdev' property is required");
+> +        return;
+> +    }
+> +
+> +    if (tpm_crb_sysbus_get_tpm_version(TPM_IF(s)) != TPM_VERSION_2_0) {
+> +        error_setg(errp, "TPM CRB only supports TPM 2.0 backends");
+> +        return;
+> +    }
+> +}
+> +
+> +static void build_tpm_crb_sysbus_aml(AcpiDevAmlIf *adev, Aml *scope)
+> +{
+> +    Aml *dev, *crs;
+> +    TPMCRBStateSysBus *s = TPM_CRB_SYSBUS(adev);
+> +    TPMIf *ti = TPM_IF(s);
+
+../hw/tpm/tpm_crb_sysbus.c: In function 'build_tpm_crb_sysbus_aml':
+../hw/tpm/tpm_crb_sysbus.c:120:12: error: unused variable 'ti' [-Werror=unused-variable]
+   120 |     TPMIf *ti = TPM_IF(s);
+       |            ^~
+
+
+Rest LGTM.
+
+> +
+> +    dev = aml_device("TPM");
+> +    aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
+> +    aml_append(dev, aml_name_decl("_STR", aml_string("TPM 2.0 Device")));
+> +    aml_append(dev, aml_name_decl("_UID", aml_int(1)));
+> +    aml_append(dev, aml_name_decl("_STA", aml_int(0xF)));
+> +    crs = aml_resource_template();
+> +    aml_append(crs, aml_memory32_fixed(s->baseaddr, s->size,
+> +                                      AML_READ_WRITE));
+> +    aml_append(dev, aml_name_decl("_CRS", crs));
+> +    aml_append(scope, dev);
+> +}
+> +
+> +static void tpm_crb_sysbus_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    TPMIfClass *tc = TPM_IF_CLASS(klass);
+> +    AcpiDevAmlIfClass *adevc = ACPI_DEV_AML_IF_CLASS(klass);
+> +
+> +    device_class_set_props(dc, tpm_crb_sysbus_properties);
+> +    dc->vmsd  = &vmstate_tpm_crb_sysbus;
+> +    tc->model = TPM_MODEL_TPM_CRB;
+> +    dc->realize = tpm_crb_sysbus_realizefn;
+> +    dc->user_creatable = true;
+> +    dc->reset = tpm_crb_sysbus_reset;
+> +    tc->request_completed = tpm_crb_sysbus_request_completed;
+> +    tc->get_version = tpm_crb_sysbus_get_tpm_version;
+> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> +    adevc->build_dev_aml = build_tpm_crb_sysbus_aml;
+> +}
+> +
+> +static const TypeInfo tpm_crb_sysbus_info = {
+> +    .name = TYPE_TPM_CRB_SYSBUS,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(TPMCRBStateSysBus),
+> +    .instance_init = tpm_crb_sysbus_initfn,
+> +    .class_init  = tpm_crb_sysbus_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { TYPE_TPM_IF },
+> +        { TYPE_ACPI_DEV_AML_IF },
+> +        { }
+> +    }
+> +};
+> +
+> +static void tpm_crb_sysbus_register(void)
+> +{
+> +    type_register_static(&tpm_crb_sysbus_info);
+> +}
+> +
+> +type_init(tpm_crb_sysbus_register)
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 7e68348440..efe1beaa7b 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -5,6 +5,7 @@ config ARM_VIRT
+>       imply VFIO_AMD_XGBE
+>       imply VFIO_PLATFORM
+>       imply VFIO_XGMAC
+> +    imply TPM_CRB_SYSBUS
+>       imply TPM_TIS_SYSBUS
+>       imply TPM_TIS_I2C
+>       imply NVDIMM
+> diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
+> index b6a5eb4452..d824cb58f9 100644
+> --- a/hw/riscv/Kconfig
+> +++ b/hw/riscv/Kconfig
+> @@ -29,6 +29,7 @@ config RISCV_VIRT
+>       imply PCI_DEVICES
+>       imply VIRTIO_VGA
+>       imply TEST_DEVICES
+> +    imply TPM_CRB_SYSBUS
+>       imply TPM_TIS_SYSBUS
+>       select RISCV_NUMA
+>       select GOLDFISH_RTC
+> diff --git a/hw/tpm/Kconfig b/hw/tpm/Kconfig
+> index 1fd73fe617..3f294a20ba 100644
+> --- a/hw/tpm/Kconfig
+> +++ b/hw/tpm/Kconfig
+> @@ -25,6 +25,11 @@ config TPM_CRB
+>       depends on TPM && ISA_BUS
+>       select TPM_BACKEND
+> 
+> +config TPM_CRB_SYSBUS
+> +    bool
+> +    depends on TPM
+> +    select TPM_BACKEND
+> +
+>   config TPM_SPAPR
+>       bool
+>       default y
+> diff --git a/hw/tpm/meson.build b/hw/tpm/meson.build
+> index cb8204d5bc..d96de92c16 100644
+> --- a/hw/tpm/meson.build
+> +++ b/hw/tpm/meson.build
+> @@ -4,6 +4,8 @@ system_ss.add(when: 'CONFIG_TPM_TIS_SYSBUS', if_true: files('tpm_tis_sysbus.c'))
+>   system_ss.add(when: 'CONFIG_TPM_TIS_I2C', if_true: files('tpm_tis_i2c.c'))
+>   system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb.c'))
+>   system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_crb_common.c'))
+> +system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm_crb_sysbus.c'))
+> +system_ss.add(when: 'CONFIG_TPM_CRB_SYSBUS', if_true: files('tpm_crb_common.c'))
+>   system_ss.add(when: 'CONFIG_TPM_TIS', if_true: files('tpm_ppi.c'))
+>   system_ss.add(when: 'CONFIG_TPM_CRB', if_true: files('tpm_ppi.c'))
+> 

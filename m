@@ -1,280 +1,189 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4133023eje;
-        Fri, 14 Jul 2023 08:48:01 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHC1NrdZCbHy1k+Ou+0ndqRVvO9dMdsrGho1Lcf+dOvrk9B8Ilib1aGYmNKhha7jlgBrLqo
-X-Received: by 2002:a37:f715:0:b0:767:54fd:65cd with SMTP id q21-20020a37f715000000b0076754fd65cdmr4833692qkj.38.1689349681086;
-        Fri, 14 Jul 2023 08:48:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689349681; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4133129eje;
+        Fri, 14 Jul 2023 08:48:12 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFXPUm6Kl/BsSsncN+SLo87ThTrXeX43hb91c9E3KOVDcJF7+SHrI8kIt1XHJx7qOA/vqQF
+X-Received: by 2002:a05:620a:408e:b0:766:77bb:8989 with SMTP id f14-20020a05620a408e00b0076677bb8989mr3974563qko.0.1689349692563;
+        Fri, 14 Jul 2023 08:48:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689349692; cv=none;
         d=google.com; s=arc-20160816;
-        b=V8U+itCuZz8EdQqWF7Cjxrk67JO/cv6ixYp3N1ZDT3CJZVmmVqYK6S5sykJFW0FT+g
-         Aq+Aq1nPKKoyeFjLDUmqYpYzvBqfEuXdqlC4U3cviXFo0L3RiG29v7Q7cPzThiqGyUhW
-         N0Z/q1lnlZhVHtxEjoqBreqw3YEB+G+1MTP5MPDe2Q5CN0FNvfij4st6oapGY5cbP3Zf
-         JUBci0dPw2sYkaGanjIwFxQMGUlyvDqiZGyS53H2LL6Yo+USa4Isnm1IgEDxvvq8Clwn
-         fSllFJz0Fo/thfe23GfJUP1f6RHZ+Um0L+EZoe2z9sVcZxabX4W5uqyjST6ZEVdnagLN
-         NG7A==
+        b=jW+G65nM8R1zM0u78+X6Q+hdvLy0n+hvBUThgiyaJV3+0iE8yFtOvW63Y15+nPH6Bz
+         njRmGjOYjjvSi2PHOmJPvQdooYehUWe260Wq27wriOdbr+6g4ngTISXIBMUvp5EnNMd0
+         4FgmAm6fCUqcdYOJqrwERluPl9brd7XlNt4fAhDnvPedSgw5swQ+gLodLDGDtbdogFNT
+         McmFk84ctszLpxx4ygZValDZgvvnTytzYPlpzJgnsbRHN9FYq5kj6ad1utDkNQo+hOTB
+         1nWLBSKp+384l7N5fr87fKtUVChjelC3MmxUlEIQuXFDOhUGdyaR8Lq94M11lMcvkVM2
+         5pRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=F6lmvGSCSTya37L8EMZF/NmWegbCLw9mDbZjRhmFpRA=;
+        bh=zHxdCpbn/xikj26GCA5/nQ2FBBTjRyE6yEPZb7eG12g=;
         fh=jvpdohKmRoZMO537s6xMKXXtj7EZws1LOMQI/oP4vXs=;
-        b=kwA5dpQ3P50VUZtcVfaO/3P4igJKjtJ6YQd1dXQuISshA30J9Gnq1y0+Uflb84t+n5
-         IhjWiG4iYVxp+bCcIdzxk+M8PNTQbhX9i3QdTFsSCaCfZsooxbuc6I9qZvFxcOCcx7X7
-         evls+klX9R8KjSR4uqMRS3I7xJqurSVKiJlZPGAbN+o5OmYaONIGMsYpqnDcKW6YhbtA
-         +FYijBQkkwAoE72Tg8q1JXO9AU+v+rurKs+1UzQ6eqGeI1/t7Z1W5QYdtvQx54jy+743
-         eixxw8/tsBsiCMRXBiTt1gidMjBlVL/C6WI+rD5b/Z7i41Nwe8/UlKyyRih6zcqtwDqo
-         92pg==
+        b=cj+ow0pr7u+xGI/EtXWI+4dsYixt8YloJgY3ZAdwPG1s/oAb05PrvY/XKP2f6UICwn
+         OmH4MiF9idG9mRHvH/CcMBEMguKPLg30aqf/Ev4y1tgU4bjnXv770hsGrJnBlgjtzukn
+         MCn1UAj6nr84azHEsaIlv6aHxNTlYm3Xi7O/3pWdQ8+wMtkdxMDKdhBxhJGr8lUhDiQG
+         hT/467Jk7zQRoBhlC2nYGaDwkhUB8V6ieaRX7mcmH3POt/7bu1dm+e1Xar/Bw/RmzHCr
+         SR+rS/X0rnlonSMGxcGraYuDeEQDUYjQXihU4hH7SMVY0UKv/Jgwsn/UO1Sw9RmEL3s+
+         IRIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="G/V++jxF";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ipnxl87x;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c21-20020ac87dd5000000b004035a0d1a76si4719478qte.425.2023.07.14.08.48.00
+        by mx.google.com with ESMTPS id u9-20020a05620a430900b00767471599e3si4665240qko.253.2023.07.14.08.48.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jul 2023 08:48:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Jul 2023 08:48:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="G/V++jxF";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ipnxl87x;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qKL0d-0007ME-TI; Fri, 14 Jul 2023 11:47:07 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qKL0s-0007VN-30; Fri, 14 Jul 2023 11:47:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qKL0c-0007KZ-Ds
- for qemu-devel@nongnu.org; Fri, 14 Jul 2023 11:47:06 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ id 1qKL0n-0007Om-Of
+ for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:47:20 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qKL0Q-00075L-4e
- for qemu-devel@nongnu.org; Fri, 14 Jul 2023 11:47:06 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-315adee6ac8so2179367f8f.2
- for <qemu-devel@nongnu.org>; Fri, 14 Jul 2023 08:46:53 -0700 (PDT)
+ id 1qKL0U-00077G-6U
+ for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:47:16 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-3fc04692e20so19554015e9.0
+ for <qemu-arm@nongnu.org>; Fri, 14 Jul 2023 08:46:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689349613; x=1691941613;
+ d=linaro.org; s=google; t=1689349617; x=1691941617;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=F6lmvGSCSTya37L8EMZF/NmWegbCLw9mDbZjRhmFpRA=;
- b=G/V++jxFlA04ODlPsp/oYMTi9fO7vKXEezCb1wjKVPtAqFTrcnBzt+7wx/7ckWY1Y0
- EVrS0w8+05ZoTGRshdTfZT+R/MkBaXiQG8w0yCwrsTi6mOiSzy9UedABx57otQ/axUuV
- s8TPTJJ058mynoxel6oIDfPhlNPGrcEroCEQuqadJZysYVQdup19PTeGel/dgLwHUIhC
- p5/QjqzJqXU5M03nHcLsZvmyX0+PzqV+IhCe1SaUSWXWWScxTmodZ8fHWuH9EVsFnobn
- iqKIDN9NYuDZRseJDEN7U+8Efw+bLnSKJzj1UeVD9ECaH2qKHqrSS0CvXYRzVLLFa6FR
- xZzw==
+ :reply-to; bh=zHxdCpbn/xikj26GCA5/nQ2FBBTjRyE6yEPZb7eG12g=;
+ b=ipnxl87x549TRe9EtTjHYF2xm42ZgXqEq8ek6wx3n03IvK4SsqMDWJcCZVY9G/RhFJ
+ s+IM6A9RxATPwiqoizS7n3rI/DnecPCrHmG8k+Tvr99LDaz+EsdvGq74JOUC9GVuO/UE
+ P7xNMTECYBcGkkloTIDoMdMdlRZY6jDaDhFOKcEYtB6hknL7afVx35qlJ1HNfXxJlasE
+ iNw0M+ZGxa/sO8vrSJDa4RlWAljKyD8sqFQ8W/9BrYQ1sBOc/gO+m90vYYL7bZPVstW+
+ LsRUYqtUIB33b8HVMeiBTtGIeYIegRo2tw7Uf5xUz173l6EDEg35JNG/rUeO8i+u889l
+ PcWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689349613; x=1691941613;
+ d=1e100.net; s=20221208; t=1689349617; x=1691941617;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=F6lmvGSCSTya37L8EMZF/NmWegbCLw9mDbZjRhmFpRA=;
- b=M2aWpWV7MhJecHVJnjqwUl3YPeVv+ntEzN6WDV73dbhrPnNMuo0Pc0qz+eGJGzEIrH
- 0DbEMibGiw3i/vYZ0qIXi81NpLHyl5//QU7CHBxLxDhiDbYSGshcCDf4qcO3GZ0ljSGx
- 288G3f0jL94fzgaw5oKmQ1TUmnVdDx7oiUU903kjhp7NzdUn2LQ4EkkdGuvRF9kb//ul
- 6TSlPpaull3mvTFV2JtG4DZfW75nAC/NrhYAuaZQJciXpNd3o1JogYlp86ZNbZmkAZNs
- 2lqFjcPTeytv5r5tTSlabYuubWuFjtozSBWnNih2XsYH6HhGnilbyByZ/j48q1vEVAgX
- vyyA==
-X-Gm-Message-State: ABy/qLY2L6EC1SM4Re7IykCtwZFIbo8dQSfwvtvzKNGt20wORrOvmPyb
- Qb4TTMPl9IwByVu+HjRbdtf4BNaiE0tZXS9mrQ0=
-X-Received: by 2002:a5d:5391:0:b0:314:c9c:94dd with SMTP id
- d17-20020a5d5391000000b003140c9c94ddmr4421091wrv.20.1689349612775; 
- Fri, 14 Jul 2023 08:46:52 -0700 (PDT)
+ bh=zHxdCpbn/xikj26GCA5/nQ2FBBTjRyE6yEPZb7eG12g=;
+ b=FihsrhiB950LTxcBm+WyFWUjUg67sfsxLFUJU2CcCI/SIo7twFpFwoN7Y26IZAnZij
+ 5L8vo98R69hOFG3DtvcM3YSINgcPKz9XpFS1d6osuhXkpQqNWf4x7SRwPZ5rKYWGFnMI
+ RK5i0gSb1WDcB072945ibE0rc/liLmZLdW6SmwgcyMk3t5D3QYpNu+JwU4rYiVQSb+bs
+ 5j/andGfLnEEFzMqq5whcsFJznawj6I5vxmM9fy3HC1AyYq5rzDfbhE9ueio+QoLRE8e
+ bpteOvUIuCVgBWpMJ21zvmZoV8suP5RLhKqQfqd8OZV8P+3Ukn96LujylqHhBDsRwDe9
+ +qnA==
+X-Gm-Message-State: ABy/qLbCgCl+MQ55ggXLHGB7GrXUfWXzhOIxIrwkL+lpatcYREs8lCJS
+ OQbnce2YBnJLUCoFYy+Gx6bdw7aPFvCfCnqJzL8=
+X-Received: by 2002:adf:d088:0:b0:313:ee2e:dae5 with SMTP id
+ y8-20020adfd088000000b00313ee2edae5mr4133319wrh.21.1689349616826; 
+ Fri, 14 Jul 2023 08:46:56 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- t16-20020a5d49d0000000b003143bb5ecd5sm11214025wrs.69.2023.07.14.08.46.52
+ t16-20020a5d49d0000000b003143bb5ecd5sm11214025wrs.69.2023.07.14.08.46.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Jul 2023 08:46:52 -0700 (PDT)
+ Fri, 14 Jul 2023 08:46:56 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 04/14] target/arm/ptw: Pass ptw into get_phys_addr_pmsa*() and
- get_phys_addr_disabled()
-Date: Fri, 14 Jul 2023 16:46:38 +0100
-Message-Id: <20230714154648.327466-5-peter.maydell@linaro.org>
+Subject: [PATCH 12/14] target/arm/ptw: Check for block descriptors at invalid
+ levels
+Date: Fri, 14 Jul 2023 16:46:46 +0100
+Message-Id: <20230714154648.327466-13-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230714154648.327466-1-peter.maydell@linaro.org>
 References: <20230714154648.327466-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wcxkaXYPLJDx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Y2IEsYui0sgv
 
-In commit 6d2654ffacea813916176 we created the S1Translate struct and
-used it to plumb through various arguments that we were previously
-passing one-at-a-time to get_phys_addr_v5(), get_phys_addr_v6(), and
-get_phys_addr_lpae().  Extend that pattern to get_phys_addr_pmsav5(),
-get_phys_addr_pmsav7(), get_phys_addr_pmsav8() and
-get_phys_addr_disabled(), so that all the get_phys_addr_* functions
-we call from get_phys_addr_nogpc() take the S1Translate struct rather
-than the mmu_idx and is_secure bool.
+The architecture doesn't permit block descriptors at any arbitrary
+level of the page table walk; it depends on the granule size which
+levels are permitted.  We implemented only a partial version of this
+check which assumes that block descriptors are valid at all levels
+except level 3, which meant that we wouldn't deliver the Translation
+fault for all cases of this sort of guest page table error.
 
-(This refactoring is a prelude to having the called functions look
-at ptw->is_space rather than using an is_secure boolean.)
+Implement the logic corresponding to the pseudocode
+AArch64.DecodeDescriptorType() and AArch64.BlockDescSupported().
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/ptw.c | 57 ++++++++++++++++++++++++++++++------------------
- 1 file changed, 36 insertions(+), 21 deletions(-)
+ target/arm/ptw.c | 25 +++++++++++++++++++++++--
+ 1 file changed, 23 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 67078ae3509..a873fbe0239 100644
+index e4210abc148..ed46bb82a75 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -2045,15 +2045,19 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     return true;
+@@ -1549,6 +1549,25 @@ static int check_s2_mmu_setup(ARMCPU *cpu, bool is_aa64, uint64_t tcr,
+     return INT_MIN;
  }
  
--static bool get_phys_addr_pmsav5(CPUARMState *env, uint32_t address,
--                                 MMUAccessType access_type, ARMMMUIdx mmu_idx,
--                                 bool is_secure, GetPhysAddrResult *result,
-+static bool get_phys_addr_pmsav5(CPUARMState *env,
-+                                 S1Translate *ptw,
-+                                 uint32_t address,
-+                                 MMUAccessType access_type,
-+                                 GetPhysAddrResult *result,
-                                  ARMMMUFaultInfo *fi)
- {
-     int n;
-     uint32_t mask;
-     uint32_t base;
-+    ARMMMUIdx mmu_idx = ptw->in_mmu_idx;
-     bool is_user = regime_is_user(env, mmu_idx);
-+    bool is_secure = arm_space_is_secure(ptw->in_space);
++static bool lpae_block_desc_valid(ARMCPU *cpu, bool ds,
++                                  ARMGranuleSize gran, int level)
++{
++    /*
++     * See pseudocode AArch46.BlockDescSupported(): block descriptors
++     * are not valid at all levels, depending on the page size.
++     */
++    switch (gran) {
++    case Gran4K:
++        return (level == 0 && ds) || level == 1 || level == 2;
++    case Gran16K:
++        return (level == 1 && ds) || level == 2;
++    case Gran64K:
++        return (level == 1 && arm_pamax(cpu) == 52) || level == 2;
++    default:
++        g_assert_not_reached();
++    }
++}
++
+ /**
+  * get_phys_addr_lpae: perform one stage of page table walk, LPAE format
+  *
+@@ -1784,8 +1803,10 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+     new_descriptor = descriptor;
  
-     if (regime_translation_disabled(env, mmu_idx, is_secure)) {
-         /* MPU disabled.  */
-@@ -2210,14 +2214,18 @@ static bool pmsav7_use_background_region(ARMCPU *cpu, ARMMMUIdx mmu_idx,
-     return regime_sctlr(env, mmu_idx) & SCTLR_BR;
- }
- 
--static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
--                                 MMUAccessType access_type, ARMMMUIdx mmu_idx,
--                                 bool secure, GetPhysAddrResult *result,
-+static bool get_phys_addr_pmsav7(CPUARMState *env,
-+                                 S1Translate *ptw,
-+                                 uint32_t address,
-+                                 MMUAccessType access_type,
-+                                 GetPhysAddrResult *result,
-                                  ARMMMUFaultInfo *fi)
- {
-     ARMCPU *cpu = env_archcpu(env);
-     int n;
-+    ARMMMUIdx mmu_idx = ptw->in_mmu_idx;
-     bool is_user = regime_is_user(env, mmu_idx);
-+    bool secure = arm_space_is_secure(ptw->in_space);
- 
-     result->f.phys_addr = address;
-     result->f.lg_page_size = TARGET_PAGE_BITS;
-@@ -2736,12 +2744,16 @@ void v8m_security_lookup(CPUARMState *env, uint32_t address,
-     }
- }
- 
--static bool get_phys_addr_pmsav8(CPUARMState *env, uint32_t address,
--                                 MMUAccessType access_type, ARMMMUIdx mmu_idx,
--                                 bool secure, GetPhysAddrResult *result,
-+static bool get_phys_addr_pmsav8(CPUARMState *env,
-+                                 S1Translate *ptw,
-+                                 uint32_t address,
-+                                 MMUAccessType access_type,
-+                                 GetPhysAddrResult *result,
-                                  ARMMMUFaultInfo *fi)
- {
-     V8M_SAttributes sattrs = {};
-+    ARMMMUIdx mmu_idx = ptw->in_mmu_idx;
-+    bool secure = arm_space_is_secure(ptw->in_space);
-     bool ret;
- 
-     if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-@@ -3045,12 +3057,15 @@ static ARMCacheAttrs combine_cacheattrs(uint64_t hcr,
-  * MMU disabled.  S1 addresses within aa64 translation regimes are
-  * still checked for bounds -- see AArch64.S1DisabledOutput().
-  */
--static bool get_phys_addr_disabled(CPUARMState *env, target_ulong address,
-+static bool get_phys_addr_disabled(CPUARMState *env,
-+                                   S1Translate *ptw,
-+                                   target_ulong address,
-                                    MMUAccessType access_type,
--                                   ARMMMUIdx mmu_idx, bool is_secure,
-                                    GetPhysAddrResult *result,
-                                    ARMMMUFaultInfo *fi)
- {
-+    ARMMMUIdx mmu_idx = ptw->in_mmu_idx;
-+    bool is_secure = arm_space_is_secure(ptw->in_space);
-     uint8_t memattr = 0x00;    /* Device nGnRnE */
-     uint8_t shareability = 0;  /* non-shareable */
-     int r_el;
-@@ -3252,8 +3267,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
-     case ARMMMUIdx_Phys_Root:
-     case ARMMMUIdx_Phys_Realm:
-         /* Checking Phys early avoids special casing later vs regime_el. */
--        return get_phys_addr_disabled(env, address, access_type, mmu_idx,
--                                      is_secure, result, fi);
-+        return get_phys_addr_disabled(env, ptw, address, access_type,
-+                                      result, fi);
- 
-     case ARMMMUIdx_Stage1_E0:
-     case ARMMMUIdx_Stage1_E1:
-@@ -3321,16 +3336,16 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
- 
-         if (arm_feature(env, ARM_FEATURE_V8)) {
-             /* PMSAv8 */
--            ret = get_phys_addr_pmsav8(env, address, access_type, mmu_idx,
--                                       is_secure, result, fi);
-+            ret = get_phys_addr_pmsav8(env, ptw, address, access_type,
-+                                       result, fi);
-         } else if (arm_feature(env, ARM_FEATURE_V7)) {
-             /* PMSAv7 */
--            ret = get_phys_addr_pmsav7(env, address, access_type, mmu_idx,
--                                       is_secure, result, fi);
-+            ret = get_phys_addr_pmsav7(env, ptw, address, access_type,
-+                                       result, fi);
-         } else {
-             /* Pre-v7 MPU */
--            ret = get_phys_addr_pmsav5(env, address, access_type, mmu_idx,
--                                       is_secure, result, fi);
-+            ret = get_phys_addr_pmsav5(env, ptw, address, access_type,
-+                                       result, fi);
-         }
-         qemu_log_mask(CPU_LOG_MMU, "PMSA MPU lookup for %s at 0x%08" PRIx32
-                       " mmu_idx %u -> %s (prot %c%c%c)\n",
-@@ -3348,8 +3363,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
-     /* Definitely a real MMU, not an MPU */
- 
-     if (regime_translation_disabled(env, mmu_idx, is_secure)) {
--        return get_phys_addr_disabled(env, address, access_type, mmu_idx,
--                                      is_secure, result, fi);
-+        return get_phys_addr_disabled(env, ptw, address, access_type,
-+                                      result, fi);
+  restart_atomic_update:
+-    if (!(descriptor & 1) || (!(descriptor & 2) && (level == 3))) {
+-        /* Invalid, or the Reserved level 3 encoding */
++    if (!(descriptor & 1) ||
++        (!(descriptor & 2) &&
++         !lpae_block_desc_valid(cpu, param.ds, param.gran, level))) {
++        /* Invalid, or a block descriptor at an invalid level */
+         goto do_translation_fault;
      }
  
-     if (regime_using_lpae_format(env, mmu_idx)) {
 -- 
 2.34.1
 

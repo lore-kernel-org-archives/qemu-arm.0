@@ -1,161 +1,165 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp5809848eje;
-        Mon, 17 Jul 2023 09:21:50 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFfuc574aolJQL58/fl9cq0bHV/NKF8AGiQ8t3derHwtsO5E5r5qG2BOEKDEsoy27QuOWVz
-X-Received: by 2002:a1c:4c13:0:b0:3fb:c225:1b21 with SMTP id z19-20020a1c4c13000000b003fbc2251b21mr9230871wmf.14.1689610909978;
-        Mon, 17 Jul 2023 09:21:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689610909; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp5846269eje;
+        Mon, 17 Jul 2023 10:26:43 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEn9UhZN6LiBcEOGEOOl8BxhbCQDphvKdRP9KxRNHvVz2D3h7rUPyFS6m+eK44svJANtXHd
+X-Received: by 2002:a2e:88c9:0:b0:2b6:dc55:c3c7 with SMTP id a9-20020a2e88c9000000b002b6dc55c3c7mr8660924ljk.20.1689614802954;
+        Mon, 17 Jul 2023 10:26:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689614802; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZaJexLos88h7+qVQA0VziswGbucBs+kmWgTmL/cHtz8gqWCb79GYmYokVmKlvkYfvm
-         sjX/n0IAo1lVAIdlfZ35iVYM7YpK8vyA4ZVzUnkf07/z5AqhXPg5pEvphe1asSxGv4vx
-         9Jj2ZwyrmV00f66GYtZPYNM3IVjtHH2wWurX9MhRH22u33AsgLZJ7vLRMvope8aO1RaX
-         Bf1UgN2L4B5XnWg2t5DPQfQZW9zo3xQsK9T+NesrXLwFIthHVqcWlt38F4BaqAfWfs+D
-         BH/ByaTSfzLYW6HGougZZ9yeHNyc5zMVNcD8k9dPnCOfGFYt/caudetGij9W1bSVPmOv
-         DJCA==
+        b=mUoAuRtbN7Ov3rO7ZeRj/fEzIJHaibuX1jeXQ7acxyGe5NQu3N4+wNniqM/ebWsdgO
+         YwvkPxvd8sV5OKqmw6luIBkfgA78HTvNJIdC8DCHCxp9xqCXqDcMkr+GmvsbIsv10nVl
+         19UObX7O/ywECKhDFrKa9GJjM1M+pjrGPEJ20bNXMKCiU/rtZ8hHKIthafznFIxtdZwP
+         86JCAlrs3zrieYq3MN5ymfPNOk7n8Bra3M/jESBm45SnCDmOucp4ttyzCBys6aF/fB7K
+         oFAlkb/ehWNVvKa0V6LPms+Ketv9y5fJRkandM1xO8vdgEqIpX3nFryXZyHVD5Y6Qrdl
+         nJuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=pfxMAgQSsYnpHAASTrWoEi4WGzS35lvo4o0nj+hUXeQ=;
-        fh=UbNHM5nxhoMHD4zZZ8E+sIUa2YHznfFb4wGrwsrLuvM=;
-        b=ODoxeSTYizbtEes8Il107dxgsSMFLOzxrI0uMt3rrODjCsc8a3LGdlmqMIXIRAhTRi
-         3Nfea7oG3KqVKk9IXvIvov7/jF6vkJHhkD24dU+8LRAL/oQ3Yt+WLgz1rBCKffbDBEXh
-         yE7CaGL1c+wH0HMdk7b1T0b3zafCYPDVVVakWsXG16FeGxX2CcGvfmbDoEw/KeEpTVNI
-         2Y1MEpWfuuCQnCcMlVcwmyB6UyA57wXCyKpmVofx5wcbVOgb2FRAROnzidggzPOknaOD
-         rQkynA9gwl1qZknIKJX45co5QXv/n+UHft9PfRYQR4c5M9f6ik3e0rdaqkxrcmQdcena
-         V1aQ==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=uyWXUaXJBGn/ZQkN1STyuunia33aswY3b5gERyJ1bV0=;
+        fh=oA6BL14K3G5T+rQcdua5hsJlTlR9ieO/Cb0lKvhDHWk=;
+        b=GewFOBJOrQloQkyaaz6WCetZxWigm4WSf/So35yuvHImnTsATPht5s+Gp0Wb9nlC44
+         xs/YV+VsaBKxr3x9ccbx1ZNrsQP+17qs/Y+rkg0vgBZvsnWhhIhzeuAPHSRh2sNBXYyx
+         7YrCccc2DcgVN6jo6jwqXDi2GBdY+aCh8/gTSfpVnaauQcqLf0sMdbbcgY7yrf36tj2L
+         KIzHedI9/sWU+UN16D/9ftajZ+hmW6/yLgF6GqdP9mVWa1gftmMqfz/WPXvN5ZJDBVBE
+         CiWcZWlL+yYkaQcsRP0z0CFAUvYNsGqW4yP5CcHIkd9rST9y4/vTswNBK6w5dhEXXD7E
+         yj1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EAyUq3Np;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=WxCLBx4Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q5-20020adfcd85000000b00315962f427esi7944215wrj.811.2023.07.17.09.21.49
+        by mx.google.com with ESMTPS id h2-20020a170906854200b0099329b35b84si4652541ejy.425.2023.07.17.10.26.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Jul 2023 09:21:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 17 Jul 2023 10:26:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EAyUq3Np;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=WxCLBx4Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qLQyg-00028x-EH; Mon, 17 Jul 2023 12:21:38 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qLRzW-0002ba-HX; Mon, 17 Jul 2023 13:26:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qLQyf-00023p-HA
- for qemu-arm@nongnu.org; Mon, 17 Jul 2023 12:21:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qLQye-0008LW-15
- for qemu-arm@nongnu.org; Mon, 17 Jul 2023 12:21:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1689610895;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=pfxMAgQSsYnpHAASTrWoEi4WGzS35lvo4o0nj+hUXeQ=;
- b=EAyUq3NpR0BGsjdqhZd41CQxqlTLiEG6lwK7pC/P/1h0BIw8NCG8obqC6c+ZiRvRzKouTr
- bZcGr38QLIdTsjn9JVzMmcp7IKsihitWtFd/ZtZXdJOmufksMZbd9Mr8P2bsMuEpViahyo
- 2uOrsf1um63jSDLMaQAJ5ihLrKee6QI=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-532-PXwDPZi7P6q6LoF9fGwJCQ-1; Mon, 17 Jul 2023 12:21:33 -0400
-X-MC-Unique: PXwDPZi7P6q6LoF9fGwJCQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D1C92857FD3;
- Mon, 17 Jul 2023 16:21:32 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.192.118])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 10A371454142;
- Mon, 17 Jul 2023 16:21:29 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org
-Cc: qemu-stable@nongnu.org,
-	mcascell@redhat.com,
-	taoym@zju.edu.cn
-Subject: [PATCH for-8.1 v2] hw/virtio-iommu: Fix potential OOB access in
- virtio_iommu_handle_command()
-Date: Mon, 17 Jul 2023 18:21:26 +0200
-Message-Id: <20230717162126.11693-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qLRzU-0002aK-DU
+ for qemu-devel@nongnu.org; Mon, 17 Jul 2023 13:26:32 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qLRzR-0006QK-J7
+ for qemu-devel@nongnu.org; Mon, 17 Jul 2023 13:26:32 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-315adee6ac8so4691267f8f.2
+ for <qemu-devel@nongnu.org>; Mon, 17 Jul 2023 10:26:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1689614787; x=1692206787;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=uyWXUaXJBGn/ZQkN1STyuunia33aswY3b5gERyJ1bV0=;
+ b=WxCLBx4Yx/TvyVeyudGDIVmMRopPg+nJ9Ul2iezojIhfG8yjC86r1o01YFUmqUwK3M
+ wpPriojoBKsLzrTHuo0K/Pl2gtlkaJVqF9ZbqIfjTUc6ylWvxkmYqrPYh4m7Zis6BASm
+ iQnpP1Nol5QBDqlCsI0ben/pmb1aYhMb7t5SSY7YA+YyxT3XYl4qQi30/dO3r24SsPgp
+ BAFcZDnPxlPINYuFaCYtalvpAZykFWl3ZGH2DIs0Qqh/ae1HLGKdRMo9ZxN1vE3AKb8r
+ 79vXO8iC7O3yaWg8FvbbRWt35qL+pGs8VLvEj2lnlMFHeFYktvypkmPQmnwD5qjVYzuj
+ ZlGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1689614787; x=1692206787;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=uyWXUaXJBGn/ZQkN1STyuunia33aswY3b5gERyJ1bV0=;
+ b=YoFttN+WvZX0lRJ2vBg5R0UeCWoppP4aD/XXhjoUQBezNe1odVSY5NPHfYObQDHxA/
+ oU/vmmyh6uOWpehp/WPOtHZvpb49UK8pREjhzYWs6aOfEoy3mgZ5iIZL4AgkhBnb+Yjt
+ rHdy3tp8ZvcR4GdjqH/B+jGBVmlq3cnYG/3jYvutj6ZYWSt70BKkweEOIn2q+DYXmd59
+ QzBRchpQEbUn7U73yT2C9rJgpI66V1EmAZii68bmsBVbTBXj43fUWFS0IlXjyM7fTOus
+ ZwQVUx7RPlgbXXh7ONImWDPF1cj6gtX9eMGM2IdBDPJmYn4b9EfhpU9lRzp8NyyoVcZi
+ munw==
+X-Gm-Message-State: ABy/qLYlg1er3o9W1ypzsbwsaJUS71i8u/NX87D37cOy+wRsCOZQ6Q1r
+ 9JqIm9Ah+dQ6b7AdeusHoxOK0g==
+X-Received: by 2002:a5d:5505:0:b0:313:f98a:1fd3 with SMTP id
+ b5-20020a5d5505000000b00313f98a1fd3mr11214632wrv.27.1689614787570; 
+ Mon, 17 Jul 2023 10:26:27 -0700 (PDT)
+Received: from [192.168.69.115] ([176.176.144.39])
+ by smtp.gmail.com with ESMTPSA id
+ n13-20020adff08d000000b0031433443265sm24422wro.53.2023.07.17.10.26.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Jul 2023 10:26:27 -0700 (PDT)
+Message-ID: <d28e1e4c-0c7c-e527-4f35-46ace2daa734@linaro.org>
+Date: Mon, 17 Jul 2023 19:26:23 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.13.0
+Subject: Re: [PATCH for-8.1 v2] hw/virtio-iommu: Fix potential OOB access in
+ virtio_iommu_handle_command()
+Content-Language: en-US
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com,
+ jean-philippe@linaro.org
+Cc: qemu-stable@nongnu.org, mcascell@redhat.com, taoym@zju.edu.cn
+References: <20230717162126.11693-1-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230717162126.11693-1-eric.auger@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.097,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: B6o/qSuj9nnK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dXuoSAFdHpZD
 
-In the virtio_iommu_handle_command() when a PROBE request is handled,
-output_size takes a value greater than the tail size and on a subsequent
-iteration we can get a stack out-of-band access. Initialize the
-output_size on each iteration.
+On 17/7/23 18:21, Eric Auger wrote:
+> In the virtio_iommu_handle_command() when a PROBE request is handled,
+> output_size takes a value greater than the tail size and on a subsequent
+> iteration we can get a stack out-of-band access. Initialize the
+> output_size on each iteration.
 
-The issue was found with ASAN. Credits to:
-Yiming Tao(Zhejiang University)
-Gaoning Pan(Zhejiang University)
+A backtrace would be helpful (or reproducer).
 
-Fixes: 1733eebb9e7 ("virtio-iommu: Implement RESV_MEM probe request")
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reported-by: Mauro Matteo Cascella <mcascell@redhat.com>
-Cc: qemu-stable@nongnu.org
+> The issue was found with ASAN. Credits to:
+> Yiming Tao(Zhejiang University)
+> Gaoning Pan(Zhejiang University)
+> 
+> Fixes: 1733eebb9e7 ("virtio-iommu: Implement RESV_MEM probe request")
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reported-by: Mauro Matteo Cascella <mcascell@redhat.com>
 
----
-- added the Cc: qemu-stable@nongnu.org and copied 2 persons involved
-  in the reporting loop
----
- hw/virtio/virtio-iommu.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Did you mean:
 
-diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index 201127c488..4dcf1d5c62 100644
---- a/hw/virtio/virtio-iommu.c
-+++ b/hw/virtio/virtio-iommu.c
-@@ -728,13 +728,15 @@ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
-     VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
-     struct virtio_iommu_req_head head;
-     struct virtio_iommu_req_tail tail = {};
--    size_t output_size = sizeof(tail), sz;
-     VirtQueueElement *elem;
-     unsigned int iov_cnt;
-     struct iovec *iov;
-     void *buf = NULL;
-+    size_t sz;
- 
-     for (;;) {
-+        size_t output_size = sizeof(tail);
-+
-         elem = virtqueue_pop(vq, sizeof(VirtQueueElement));
-         if (!elem) {
-             return;
--- 
-2.38.1
+Reported-by: Yiming Tao <taoym@zju.edu.cn>
+
+?
+
+> Cc: qemu-stable@nongnu.org
+> 
+> ---
+> - added the Cc: qemu-stable@nongnu.org and copied 2 persons involved
+>    in the reporting loop
+> ---
+>   hw/virtio/virtio-iommu.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

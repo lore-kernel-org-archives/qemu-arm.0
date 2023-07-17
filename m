@@ -1,269 +1,170 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp5702308eje;
-        Mon, 17 Jul 2023 06:27:28 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFFYKysE2L8fgRRlHnEFJ03KTPBMl7f54WJe4ESxEDPEwi+7l8vdgNOqt5XdRTocrpSDD5f
-X-Received: by 2002:a05:622a:13c6:b0:403:c1c6:2662 with SMTP id p6-20020a05622a13c600b00403c1c62662mr10463594qtk.2.1689600448174;
-        Mon, 17 Jul 2023 06:27:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689600448; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp5729475eje;
+        Mon, 17 Jul 2023 07:12:11 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlG46zYOqSCUL79M0/ZfKM5OwBWw8Zj+Pw7wnVLXKIsh0K5V8qnNpI+aW9ePns7UjJI/e0Ys
+X-Received: by 2002:a05:622a:1992:b0:403:2fe0:a445 with SMTP id u18-20020a05622a199200b004032fe0a445mr17125705qtc.13.1689603131383;
+        Mon, 17 Jul 2023 07:12:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689603131; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nqt2DMdCfXac2RtzrtszG8EIHqtdkJQ1mPf3Sm5xJazzHvNL5/POvsvqOwS6E1ds3/
-         bB2pxPSuc9m2/wccQeZWlzz0x8fi1FR/kkB/zhyUXtvJ6rcQLlrkS+ivnd5xZdlggJn1
-         0av26hr8WBeAIMKqGOTNnZMMFcoDP2RgFrP7UCDwiSGNWpY5Ah4pGi93wUlTpcb1lKmv
-         1hxR6QyJJJCYEvIMfK0WZpyQGPx77wev8t32DpjpPH7I3xAB6QPrMxKYs/C9cdRaQzZ7
-         UynhA+oqqoS4Mm23gJtgnaReNr6npUreFA8IfCkSURdj5igqRTlLINFl7ehM0AWmUP7G
-         Zjrw==
+        b=0FRZgDIhtlAuWhG6Dpv7phalzxcZhR+izqJajjaSJ6TrO1oZCEItaw5fQNIYNsAIjs
+         gc2kz83MDrHsUbQAbZkMF/mV6izsz8LpaesTSijepLLbCx+hq7mjzf9T4ATe3BCdglMz
+         GAzlbH6X3xOWUg3lpfCHwJzAkIli1esTVL+agWUs+qk+BRsSwFcO0FPVUYsOZjGYJ1gn
+         DOSE4BSvGR4/qbvECNK9VENwA9xnQ3x1GXQTP6qQIDE8a9dF1mtf9E0SmoRpcLWVJBKI
+         T0UAghtwW5C1mAzeIapW0O7ta/8Vpq+SvGXDOO6kkigNjGMHHYm5uaE/ry94b5JPi/X7
+         4jHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jHHNLuXxMyb4d2xXXOlpvCwb+ZTFaCXaYWj7j4hbv5Y=;
-        fh=bQJMnmQ0VoH+MwVuExw+aG4zUbzC1rnHjPO2njF07Lo=;
-        b=uLhUvNYUkOEpJo27f2jHUJtzEYiyIs77fPHkiiXqZ+kt2oaoBdIbJ8C16/NDqUiziP
-         GaeoZ8oREPiUds5TamwPYmL3XWDAL+Pjc/wzKjTIrblEyOsfw4bv+K0a7B+eHNSJ6t+D
-         jrB6PhXv8GF0vHklAO7ffV6SN3uwkLbw3ti5Ml9j9xiZfZhrHEHXHCUymudRkzjlpV2h
-         /5NkQR4kj7o/xsvOgtLlEoC55lo1Wm7nqqi0PvQ9X9fddPCkOVQV8hOqPKFTMXrt49IG
-         NLEZTSdvzd6mDI42IeC9HiqSE+BXu1ziEaI0Wymspx28P2O/TnrhBonPEsgMPoRV+ASl
-         4cbw==
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=GDqb+Yck5FSpqI2m5af3Do3k0WAk4wWd+pHmgZ0EuZg=;
+        fh=/lRmkoDywsnmHiNIlWm8e3AwWsp15JawbBU+IJLOxwo=;
+        b=ExSiNgUHxR7AQffxLztv5vKmrw0dl8OXUAZ0Egol9riqss0lQPrCjMIN47TBjRmU1Z
+         z3sfxi9QKCo524hf1xu+ngmKP0GA8lKiyGfgs7eN+0PGZp3j+vRLH8IR/rfwf6JkrA3e
+         UpO/x/mZtzJY8bOVrearRwXzLm5jR2QmShjJb17jNPo1qsuGrth/rah4CIHLx8ruB0G/
+         jiLa+9V9Rw8km3bvAGdoGGcN1LY7sCBLj8SxbGW+0LxS2rZaFeF/ZAeKgwaXtA3J3gAY
+         Jra1ze38T96SBxqlLlc/ThAFXuin1iaReT8IY3qVkl2VXXnSSuR2J78p/Hh1WIMRnbgN
+         5wAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="qu5/evbB";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=M8N+h3dg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v34-20020a05622a18a200b004008c7f5283si8356010qtc.261.2023.07.17.06.27.27
+        by mx.google.com with ESMTPS id b4-20020a05622a020400b00403e8a2a97dsi2388503qtx.546.2023.07.17.07.12.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Jul 2023 06:27:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 17 Jul 2023 07:12:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="qu5/evbB";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=M8N+h3dg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qLOFV-0005vs-90; Mon, 17 Jul 2023 09:26:49 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qLOxC-0006Wm-1G; Mon, 17 Jul 2023 10:11:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qLOFS-0005vJ-D0
- for qemu-devel@nongnu.org; Mon, 17 Jul 2023 09:26:46 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qLOFQ-0003JX-Fx
- for qemu-devel@nongnu.org; Mon, 17 Jul 2023 09:26:46 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-3fbab0d0b88so34384475e9.0
- for <qemu-devel@nongnu.org>; Mon, 17 Jul 2023 06:26:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689600402; x=1692192402;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=jHHNLuXxMyb4d2xXXOlpvCwb+ZTFaCXaYWj7j4hbv5Y=;
- b=qu5/evbBziVwv1AuxKjdmD5AkJJnTn+QLqV/sNP+VlQjYG1wVwOxZe6feIUqBgnu+a
- fsmkAB8FrCJ2bIG/ktEODNszGGSfu0Ls/MjuxvDTzfhokfukXLhAj8W+mkBor2Z6Lr1p
- WKjJb5XuQHhP1X1niXp/anAjTtYrIsJrylccbm+VgRslpDQp0/RQOLR+kTx6iWzQjjU+
- OsAYgA7NyNmYJ05UQ4L+XMI+o8Qy1yKqB4qxj/6zfwLywRrQMFXYJdpTeWnvnxPpDFu9
- fBQaUONdZ6bMnmYrM5kuNXFQowFwSabGzqWrQGNOog5J8+qmAJftXC3QtYa3KRJnOb5z
- nmIg==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qLOx8-0006PX-1v
+ for qemu-arm@nongnu.org; Mon, 17 Jul 2023 10:11:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qLOx6-0008Mp-M9
+ for qemu-arm@nongnu.org; Mon, 17 Jul 2023 10:11:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1689603111;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=GDqb+Yck5FSpqI2m5af3Do3k0WAk4wWd+pHmgZ0EuZg=;
+ b=M8N+h3dgVNf8yaogI61kS6dzIHCEIy+YgRpyAc8s6eHMRcrrZ6Lg+05a2z18mP+BCSwyxy
+ 1mZkHanPwdi/AqZ5lTerOYs4g7Aa1kXJ/rr///rMrnMvBEPXnisHi3LB9opyYB/kBkOY90
+ AsCWoCS8eQhsk+R0S6vaKAqtZQg430M=
+Received: from mail-ot1-f69.google.com (mail-ot1-f69.google.com
+ [209.85.210.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-59-v8_CUCgWO2OGHOew4cwLJw-1; Mon, 17 Jul 2023 10:11:49 -0400
+X-MC-Unique: v8_CUCgWO2OGHOew4cwLJw-1
+Received: by mail-ot1-f69.google.com with SMTP id
+ 46e09a7af769-6b9cf208fb5so2750846a34.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Jul 2023 07:11:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689600402; x=1692192402;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=jHHNLuXxMyb4d2xXXOlpvCwb+ZTFaCXaYWj7j4hbv5Y=;
- b=I5HIBMRUsF85Df75OunxS1urexszk0PSyRFnlWNUpSsJ4RnIHU+qMZa0bKiBifzZXR
- cZ/BmgRNQLJN/DquSbHhkeoP7/L9LVCSZWDj1l90Xjn2fCiBOuIlBM7Y50yy64GtTjgP
- XNdJz/jZVzKCkMsUuqAclNvv5aUlZOQCe4Wchje1Udx4kzzc4Vi1m6nIkFozYwo1A9jO
- NOjtMWMv9f7zfK8GhiKc/SY6Y6cfO52DuFWDrALbhhQEWOrDWAOYpilVZNzGaqo7D419
- +MXov5Pw30RSCqo0ct6qjfnPkeTuy5aYY1z85zpycbmK6id+rwpIYJjCgVc0BLBwyuxO
- U9+A==
-X-Gm-Message-State: ABy/qLYUiGGVvdVAyZ5VPCT/f/5SAI4X3KCh8FavII0ROuodACDsQ75X
- WyU+XSWfZRFKo8Hn8IpVKzvXJQ==
-X-Received: by 2002:a05:600c:3105:b0:3fa:9996:8e03 with SMTP id
- g5-20020a05600c310500b003fa99968e03mr7937260wmo.10.1689600402637; 
- Mon, 17 Jul 2023 06:26:42 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- z13-20020a7bc7cd000000b003fc05b89e5bsm7977646wmk.34.2023.07.17.06.26.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Jul 2023 06:26:42 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org,
-	Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH for-8.1] hw/arm/smmu: Handle big-endian hosts correctly
-Date: Mon, 17 Jul 2023 14:26:41 +0100
-Message-Id: <20230717132641.764660-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ d=1e100.net; s=20221208; t=1689603108; x=1692195108;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=GDqb+Yck5FSpqI2m5af3Do3k0WAk4wWd+pHmgZ0EuZg=;
+ b=GaVE8BQX1lWh0ZmvCVXrOkPPMhuQDjnJUcOd8YKVQ2A73n/es3A3c5PL26cHAOj4ym
+ +AX6tqntsPo6o4ojFcpkmHEHJoRR5aRnYSQctFX5Dj7vF9x2yiqwDEnsCpizVi3OwudG
+ AndXitNk7IAaIXsMwCmhHtpvCOL41gXZVgvU6y0CNRHymnW6bo+vvNxLe/LRwyZukHkg
+ mPgO0xhqO5Ha3wURGfsL/WcGQhSZUjGo4WS6CU5Kz31nY9HDUb6t7/n8rc2VpoWbvSMJ
+ 4ysZEjXBusirlE4P6rPdQ5faPEVNrE1IH0JSg5GxW2tGylclGc+Eq1jUQlPv29uiyOa8
+ gRbw==
+X-Gm-Message-State: ABy/qLZgDMSUztl61F+QTQr6K/lY70dPuHbloGenmvCpnNhxYwWxqQke
+ qR0jfue5lEvU0oU0eI8rPXLU1KqDg5OUUC8q75X3l4B3Fy2RNQnPemptHxPJht9xQhoSxJ/+c1y
+ 8H6/oU6IR8Btp
+X-Received: by 2002:a05:6870:d1d3:b0:1b7:8836:95c9 with SMTP id
+ b19-20020a056870d1d300b001b7883695c9mr13379542oac.42.1689603107169; 
+ Mon, 17 Jul 2023 07:11:47 -0700 (PDT)
+X-Received: by 2002:a05:6870:d1d3:b0:1b7:8836:95c9 with SMTP id
+ b19-20020a056870d1d300b001b7883695c9mr13379515oac.42.1689603106626; 
+ Mon, 17 Jul 2023 07:11:46 -0700 (PDT)
+Received: from [192.168.0.3] (ip-109-43-177-137.web.vodafone.de.
+ [109.43.177.137]) by smtp.gmail.com with ESMTPSA id
+ c14-20020ac81e8e000000b0040331f93ee0sm6370638qtm.77.2023.07.17.07.11.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Jul 2023 07:11:46 -0700 (PDT)
+Message-ID: <f1ec6d82-af18-b399-4ef3-7a1249e705f4@redhat.com>
+Date: Mon, 17 Jul 2023 16:11:44 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH for-8.1] hw/arm/smmu: Handle big-endian hosts correctly
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, Eric Auger <eric.auger@redhat.com>
+References: <20230717132641.764660-1-peter.maydell@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230717132641.764660-1-peter.maydell@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.097, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: faN1k1Qx167F
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: oel0WQfe0hm6
 
-The implementation of the SMMUv3 has multiple places where it reads a
-data structure from the guest and directly operates on it without
-doing a guest-to-host endianness conversion.  Since all SMMU data
-structures are little-endian, this means that the SMMU doesn't work
-on a big-endian host.  In particular, this causes the Avocado test
-  machine_aarch64_virt.py:Aarch64VirtMachine.test_alpine_virt_tcg_gic_max
-to fail on an s390x host.
+On 17/07/2023 15.26, Peter Maydell wrote:
+> The implementation of the SMMUv3 has multiple places where it reads a
+> data structure from the guest and directly operates on it without
+> doing a guest-to-host endianness conversion.  Since all SMMU data
+> structures are little-endian, this means that the SMMU doesn't work
+> on a big-endian host.  In particular, this causes the Avocado test
+>    machine_aarch64_virt.py:Aarch64VirtMachine.test_alpine_virt_tcg_gic_max
+> to fail on an s390x host.
+> 
+> Add appropriate byte-swapping on reads and writes of guest in-memory
+> data structures so that the device works correctly on big-endian
+> hosts.
+> 
+> As part of this we constrain queue_read() to operate only on Cmd
+> structs and queue_write() on Evt structs, because in practice these
+> are the only data structures the two functions are used with, and we
+> need to know what the data structure is to be able to byte-swap its
+> parts correctly.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-stable@nongnu.org
+> ---
+>   hw/arm/smmu-common.c |  3 +--
+>   hw/arm/smmuv3.c      | 39 +++++++++++++++++++++++++++++++--------
+>   2 files changed, 32 insertions(+), 10 deletions(-)
 
-Add appropriate byte-swapping on reads and writes of guest in-memory
-data structures so that the device works correctly on big-endian
-hosts.
+Thanks, this fixes the alpine test for me:
 
-As part of this we constrain queue_read() to operate only on Cmd
-structs and queue_write() on Evt structs, because in practice these
-are the only data structures the two functions are used with, and we
-need to know what the data structure is to be able to byte-swap its
-parts correctly.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-stable@nongnu.org
----
- hw/arm/smmu-common.c |  3 +--
- hw/arm/smmuv3.c      | 39 +++++++++++++++++++++++++++++++--------
- 2 files changed, 32 insertions(+), 10 deletions(-)
-
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 5ab9d45d58a..f35ae9aa22c 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -216,8 +216,7 @@ static int get_pte(dma_addr_t baseaddr, uint32_t index, uint64_t *pte,
-     dma_addr_t addr = baseaddr + index * sizeof(*pte);
- 
-     /* TODO: guarantee 64-bit single-copy atomicity */
--    ret = dma_memory_read(&address_space_memory, addr, pte, sizeof(*pte),
--                          MEMTXATTRS_UNSPECIFIED);
-+    ret = ldq_le_dma(&address_space_memory, addr, pte, MEMTXATTRS_UNSPECIFIED);
- 
-     if (ret != MEMTX_OK) {
-         info->type = SMMU_PTW_ERR_WALK_EABT;
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 932f0096974..1e9be8e89af 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -102,20 +102,34 @@ static void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
-     trace_smmuv3_write_gerrorn(toggled & pending, s->gerrorn);
- }
- 
--static inline MemTxResult queue_read(SMMUQueue *q, void *data)
-+static inline MemTxResult queue_read(SMMUQueue *q, Cmd *cmd)
- {
-     dma_addr_t addr = Q_CONS_ENTRY(q);
-+    MemTxResult ret;
-+    int i;
- 
--    return dma_memory_read(&address_space_memory, addr, data, q->entry_size,
--                           MEMTXATTRS_UNSPECIFIED);
-+    ret = dma_memory_read(&address_space_memory, addr, cmd, sizeof(Cmd),
-+                          MEMTXATTRS_UNSPECIFIED);
-+    if (ret != MEMTX_OK) {
-+        return ret;
-+    }
-+    for (i = 0; i < ARRAY_SIZE(cmd->word); i++) {
-+        le32_to_cpus(&cmd->word[i]);
-+    }
-+    return ret;
- }
- 
--static MemTxResult queue_write(SMMUQueue *q, void *data)
-+static MemTxResult queue_write(SMMUQueue *q, Evt *evt_in)
- {
-     dma_addr_t addr = Q_PROD_ENTRY(q);
-     MemTxResult ret;
-+    Evt evt = *evt_in;
-+    int i;
- 
--    ret = dma_memory_write(&address_space_memory, addr, data, q->entry_size,
-+    for (i = 0; i < ARRAY_SIZE(evt.word); i++) {
-+        cpu_to_le32s(&evt.word[i]);
-+    }
-+    ret = dma_memory_write(&address_space_memory, addr, &evt, sizeof(Evt),
-                            MEMTXATTRS_UNSPECIFIED);
-     if (ret != MEMTX_OK) {
-         return ret;
-@@ -298,7 +312,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
- static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
-                         SMMUEventInfo *event)
- {
--    int ret;
-+    int ret, i;
- 
-     trace_smmuv3_get_ste(addr);
-     /* TODO: guarantee 64-bit single-copy atomicity */
-@@ -311,6 +325,9 @@ static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
-         event->u.f_ste_fetch.addr = addr;
-         return -EINVAL;
-     }
-+    for (i = 0; i < ARRAY_SIZE(buf->word); i++) {
-+        le32_to_cpus(&buf->word[i]);
-+    }
-     return 0;
- 
- }
-@@ -320,7 +337,7 @@ static int smmu_get_cd(SMMUv3State *s, STE *ste, uint32_t ssid,
-                        CD *buf, SMMUEventInfo *event)
- {
-     dma_addr_t addr = STE_CTXPTR(ste);
--    int ret;
-+    int ret, i;
- 
-     trace_smmuv3_get_cd(addr);
-     /* TODO: guarantee 64-bit single-copy atomicity */
-@@ -333,6 +350,9 @@ static int smmu_get_cd(SMMUv3State *s, STE *ste, uint32_t ssid,
-         event->u.f_ste_fetch.addr = addr;
-         return -EINVAL;
-     }
-+    for (i = 0; i < ARRAY_SIZE(buf->word); i++) {
-+        le32_to_cpus(&buf->word[i]);
-+    }
-     return 0;
- }
- 
-@@ -569,7 +589,7 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
-         return -EINVAL;
-     }
-     if (s->features & SMMU_FEATURE_2LVL_STE) {
--        int l1_ste_offset, l2_ste_offset, max_l2_ste, span;
-+        int l1_ste_offset, l2_ste_offset, max_l2_ste, span, i;
-         dma_addr_t l1ptr, l2ptr;
-         STEDesc l1std;
- 
-@@ -593,6 +613,9 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
-             event->u.f_ste_fetch.addr = l1ptr;
-             return -EINVAL;
-         }
-+        for (i = 0; i < ARRAY_SIZE(l1std.word); i++) {
-+            le32_to_cpus(&l1std.word[i]);
-+        }
- 
-         span = L1STD_SPAN(&l1std);
- 
--- 
-2.34.1
+Tested-by: Thomas Huth <thuth@redhat.com>
 

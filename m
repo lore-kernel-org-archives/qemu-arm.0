@@ -1,316 +1,181 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp6292273eje;
-        Tue, 18 Jul 2023 04:15:20 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFlimC9tl6He1D7YIFlHwc09jZ5fSZYQoyvKhkKWpX4ejt/tpp80ivd5EH+GKEDr4/1yNnm
-X-Received: by 2002:a05:6e02:b2b:b0:345:d79d:228f with SMTP id e11-20020a056e020b2b00b00345d79d228fmr2227905ilu.29.1689678919906;
-        Tue, 18 Jul 2023 04:15:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689678919; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp6564821eje;
+        Tue, 18 Jul 2023 11:22:22 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEhiNMcol5Ivzx/UyV360PTsOGlbrip4PdFJU/ccXX3bC9gb+kBTq89AGSNo4LKM2lBgOgA
+X-Received: by 2002:a05:6214:29c2:b0:637:707:120 with SMTP id gh2-20020a05621429c200b0063707070120mr11494758qvb.15.1689704542367;
+        Tue, 18 Jul 2023 11:22:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689704542; cv=none;
         d=google.com; s=arc-20160816;
-        b=BLIgTdACR0dvLeFtJbI5dciwEcEKrIZZ9gWh4KIxPJgPyNPfUht5w9fNP6c7iO5Rfq
-         jL8SJjm6bP2iK5ruC2pYe2gP8TBx5BEwKWD9CjyR6m5d8TbYKMPYR/FFv+Ui8ke5p4Km
-         Ek0MNNI/sb6LNaMZRAhy9C8KlX4YhfNNeMhGDi0DrGz3IyHz8KrxtpDyjOiYOF3GmllC
-         qo3Ly3eVjYM4XpUGowcz8txRmEiYZp92wICxj9WPrsTf1kWZutYNb7H/Gi9px0r0hZY5
-         PRHPngTbXiCiEpKcpTUZA6tGacAnHi/AMlyLqp2sQmgi2O2CueYjMznRgU9hvZ+Pr8SN
-         40RA==
+        b=caeJ4eGplLCxtVBfryh8zZHrrBaykG+2j7Nh91WFsKD9aEqui5xzAtp94LcvBqBE38
+         vrBQDhUZmWQrPtzxGammQmTnkM/2lzZp5pNl51BFdCkk1bgIaurawDvudiGuP8LnsgBb
+         q+2vAXqUXoj+KXtks9/UAVVON3N3l3V2UShkX6MaIQmrRXRjvXRUZPGAh692CzFix83S
+         ndMP+ESBYQAEhTQ9AMvs/dcv75XdVfCbTXjNwkEUuEt2+vr/pofFQfqmRu4Q+3/YPawO
+         1/Fgddwr755Jmzt8Pf8HJV2LjCx5toP4X1s2iIgrxgb9/BhS+yqLecBsJifxIpzVG+xX
+         QEfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=6VjQZ/VhQRFxeTlxCQ+F15BB8+mqTDYu8x6ynIEKQEU=;
-        fh=uQr7pjt/ibS5vnjZSmQ1WGiQFIRklh5YUHGxKidwOlo=;
-        b=HK/zZv/gM5QEucs/rGvBBJKqGlTdvKubTlb+ht9lQAo5IpzlYVExLX8w6F6v/r+kvY
-         TZz5m9k2L8mSYE7sV+BfnBvIOL08BRyfHU5OsFJ4Uv7y+YanDh+14pcO+5mv8+N6pRUN
-         TzsnGXsX8V+UshN/nKw4ru4nqgghv5J7IbVBrpsWM13mth4LQCAFdzxAO5ODOEIwMqhr
-         TOXP1WRuyqFoHjOsERVvjDJaAeONWujJ3pGzW+T/UYAAb0hs7wPBA8bgpVZ5flN27bKF
-         eFr7fIMr56adURNeYvL1BZnNLBFA8JIG/zqAxuCeuM7Ti/9icmMf3gPdqd3/Lt+9fD34
-         AsaQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=2qEQaqKyMgIlf0PHl/5VaRa0YHppm9F9uoxUo8qKkCQ=;
+        fh=FkCO6MPNNARALThDnl2p7rOyJGiNMYjmxSOYO6HJa5k=;
+        b=U5ANvmVakIJNHV5ZpbFxCK8KC0gFIrhuf24goe0uO4iNhI8bwlNjdkfeSQG+ivgToM
+         V/l/GmCOWcEVQb9rT2kRCT/K35nlR3TOndLadCZQKLxHxt7pyradI6PIiIakVasgcKvd
+         h71mIYOIU9SqxF8rfh/tXAz+Jj/dvaBnBLF4HDbVYwAk9zY7jCiWnNirN4FFIP27HscY
+         IyDfp8GLKGO6fdTimsIu1ItqkrEbqggSARXwiiDfDJ7XbAtc8NymgVYetvM3zKLGavq3
+         dfiswcn9O4tSS8dd6UCeEfEhlw93UQhXOwsMQ5MB3jOKKljB9e624qvTs1J+5hoczO1P
+         VucA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YDEMEpep;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZDH6fViP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id h12-20020a63574c000000b0055337ca9ce9si1387803pgm.248.2023.07.18.04.15.19;
-        Tue, 18 Jul 2023 04:15:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e17-20020a0cd651000000b005df47f81d70si1623608qvj.234.2023.07.18.11.22.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 18 Jul 2023 11:22:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YDEMEpep;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZDH6fViP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S230328AbjGRLPS (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Tue, 18 Jul 2023 07:15:18 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:35472 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229496AbjGRLPR (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 18 Jul 2023 07:15:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id E5E2F10EF
-        for <kvm@vger.kernel.org>; Tue, 18 Jul 2023 04:14:24 -0700 (PDT)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qLpKh-00029S-28; Tue, 18 Jul 2023 14:21:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1qLpKf-00028n-1h
+ for qemu-devel@nongnu.org; Tue, 18 Jul 2023 14:21:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1qLpKd-0005PU-5o
+ for qemu-devel@nongnu.org; Tue, 18 Jul 2023 14:21:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1689678864;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=6VjQZ/VhQRFxeTlxCQ+F15BB8+mqTDYu8x6ynIEKQEU=;
-        b=YDEMEpepLPMXHfqQHW8Pdp/PHseMBLIefU9crc+OdwqQMtsIiTQE0ovlwG9pUbpxbj7J25
-        WCYB4BHhjo1eSdI+jbVz6HAO0a4oE5McSJougCred5yirQdO9bAsojRuug5vo2VSiIFQsI
-        x7hXzmmxFGujyC4kijh/7+fRIId8UgQ=
+ s=mimecast20190719; t=1689704514;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=2qEQaqKyMgIlf0PHl/5VaRa0YHppm9F9uoxUo8qKkCQ=;
+ b=ZDH6fViPduVpKyLtvFLP+0o4sBts8bBoYCDIAQOsIt2QxHnt7NsOe3qCQLBMz3lvqQagNH
+ uowF31A/wl+f6u/U9XwBSwzbqNEQspsaCX6MtMBXDHzyc2SzptTipIATU00Ihh6Xi0YzQ/
+ xgDfX+R/u4pEKx3mhCPqLEejqeVzqcU=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-343-63YcouFBNXmbrKigtV9tAA-1; Tue, 18 Jul 2023 07:14:20 -0400
-X-MC-Unique: 63YcouFBNXmbrKigtV9tAA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com [10.11.54.2])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BBC9A185A792;
-        Tue, 18 Jul 2023 11:14:19 +0000 (UTC)
-Received: from gondolin.redhat.com (unknown [10.39.193.57])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id B88C140C6F4C;
-        Tue, 18 Jul 2023 11:14:18 +0000 (UTC)
-From:   Cornelia Huck <cohuck@redhat.com>
-To:     Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>
-Cc:     qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
-        Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH for-8.2 2/2] arm/kvm: convert to kvm_get_one_reg
-Date:   Tue, 18 Jul 2023 13:14:04 +0200
-Message-ID: <20230718111404.23479-3-cohuck@redhat.com>
-In-Reply-To: <20230718111404.23479-1-cohuck@redhat.com>
-References: <20230718111404.23479-1-cohuck@redhat.com>
+ us-mta-646-d4L5UnhBPcq3m9Kesdsf3w-1; Tue, 18 Jul 2023 14:21:47 -0400
+X-MC-Unique: d4L5UnhBPcq3m9Kesdsf3w-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E0F9C82C8C9;
+ Tue, 18 Jul 2023 18:21:45 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.192.6])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2231F2166B25;
+ Tue, 18 Jul 2023 18:21:43 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org
+Cc: peter.maydell@linaro.org
+Subject: [PATCH for-8.1] virtio-iommu: Standardize granule extraction and
+ formatting
+Date: Tue, 18 Jul 2023 20:21:36 +0200
+Message-Id: <20230718182136.40096-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-        RCVD_IN_DNSWL_BLOCKED,RCVD_IN_MSPIKE_H4,RCVD_IN_MSPIKE_WL,
-        SPF_HELO_NONE,SPF_NONE,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: sq8C9vmQCMK0
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bgMdlKXFvfAB
 
-We can neaten the code by switching the callers that work on a
-CPUstate to the kvm_get_one_reg function.
+At several locations we compute the granule from the config
+page_size_mask using ctz() and then format it in traces using
+BIT(). As the page_size_mask is 64b we should use ctz64 and
+BIT_ULL() for formatting. We failed to be consistent.
 
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Note the page_size_mask is garanteed to be non null. The spec
+mandates the device to set at least one bit, so ctz64 cannot
+return 64. This is garanteed by the fact the device
+initializes the page_size_mask to qemu_target_page_mask()
+and then the page_size_mask is further constrained by
+virtio_iommu_set_page_size_mask() callback which can't
+result in a new mask being null. So if Coverity complains
+round those ctz64/BIT_ULL with CID 1517772 this is a false
+positive
+
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Fixes: 94df5b2180 ("virtio-iommu: Fix 64kB host page size VFIO device assignment")
 ---
- target/arm/kvm.c   | 15 +++---------
- target/arm/kvm64.c | 57 ++++++++++++----------------------------------
- 2 files changed, 18 insertions(+), 54 deletions(-)
+ hw/virtio/virtio-iommu.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index cdbffc3c6e0d..4123f6dc9d72 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -525,24 +525,19 @@ bool write_kvmstate_to_list(ARMCPU *cpu)
-     bool ok = true;
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 201127c488..c6ee4d7a3c 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -852,17 +852,19 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+     VirtIOIOMMUEndpoint *ep;
+     uint32_t sid, flags;
+     bool bypass_allowed;
++    int granule;
+     bool found;
+     int i;
  
-     for (i = 0; i < cpu->cpreg_array_len; i++) {
--        struct kvm_one_reg r;
-         uint64_t regidx = cpu->cpreg_indexes[i];
-         uint32_t v32;
-         int ret;
+     interval.low = addr;
+     interval.high = addr + 1;
++    granule = ctz64(s->config.page_size_mask);
  
--        r.id = regidx;
--
-         switch (regidx & KVM_REG_SIZE_MASK) {
-         case KVM_REG_SIZE_U32:
--            r.addr = (uintptr_t)&v32;
--            ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &r);
-+            ret = kvm_get_one_reg(cs, regidx, &v32);
-             if (!ret) {
-                 cpu->cpreg_values[i] = v32;
-             }
-             break;
-         case KVM_REG_SIZE_U64:
--            r.addr = (uintptr_t)(cpu->cpreg_values + i);
--            ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &r);
-+            ret = kvm_get_one_reg(cs, regidx, cpu->cpreg_values + i);
-             break;
-         default:
-             g_assert_not_reached();
-@@ -678,17 +673,13 @@ int kvm_arm_sync_mpstate_to_qemu(ARMCPU *cpu)
- void kvm_arm_get_virtual_time(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
--    struct kvm_one_reg reg = {
--        .id = KVM_REG_ARM_TIMER_CNT,
--        .addr = (uintptr_t)&cpu->kvm_vtime,
--    };
-     int ret;
+     IOMMUTLBEntry entry = {
+         .target_as = &address_space_memory,
+         .iova = addr,
+         .translated_addr = addr,
+-        .addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1,
++        .addr_mask = BIT_ULL(granule) - 1,
+         .perm = IOMMU_NONE,
+     };
  
-     if (cpu->kvm_vtime_dirty) {
-         return;
+@@ -1115,7 +1117,7 @@ static int virtio_iommu_set_page_size_mask(IOMMUMemoryRegion *mr,
+     if (s->granule_frozen) {
+         int cur_granule = ctz64(cur_mask);
+ 
+-        if (!(BIT(cur_granule) & new_mask)) {
++        if (!(BIT_ULL(cur_granule) & new_mask)) {
+             error_setg(errp, "virtio-iommu %s does not support frozen granule 0x%llx",
+                        mr->parent_obj.name, BIT_ULL(cur_granule));
+             return -1;
+@@ -1161,7 +1163,7 @@ static void virtio_iommu_freeze_granule(Notifier *notifier, void *data)
      }
+     s->granule_frozen = true;
+     granule = ctz64(s->config.page_size_mask);
+-    trace_virtio_iommu_freeze_granule(BIT(granule));
++    trace_virtio_iommu_freeze_granule(BIT_ULL(granule));
+ }
  
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    ret = kvm_get_one_reg(cs, KVM_REG_ARM_TIMER_CNT, &cpu->kvm_vtime);
-     if (ret) {
-         error_report("Failed to get KVM_REG_ARM_TIMER_CNT");
-         abort();
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index b4d02dff5381..66b52d6f8d23 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -908,14 +908,11 @@ int kvm_arch_put_registers(CPUState *cs, int level)
- static int kvm_arch_get_fpsimd(CPUState *cs)
- {
-     CPUARMState *env = &ARM_CPU(cs)->env;
--    struct kvm_one_reg reg;
-     int i, ret;
- 
-     for (i = 0; i < 32; i++) {
-         uint64_t *q = aa64_vfp_qreg(env, i);
--        reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
--        reg.addr = (uintptr_t)q;
--        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+        ret = kvm_get_one_reg(cs, AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]), q);
-         if (ret) {
-             return ret;
-         } else {
-@@ -939,15 +936,12 @@ static int kvm_arch_get_sve(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
--    struct kvm_one_reg reg;
-     uint64_t *r;
-     int n, ret;
- 
-     for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; ++n) {
-         r = &env->vfp.zregs[n].d[0];
--        reg.addr = (uintptr_t)r;
--        reg.id = KVM_REG_ARM64_SVE_ZREG(n, 0);
--        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+        ret = kvm_get_one_reg(cs, KVM_REG_ARM64_SVE_ZREG(n, 0), r);
-         if (ret) {
-             return ret;
-         }
-@@ -956,9 +950,7 @@ static int kvm_arch_get_sve(CPUState *cs)
- 
-     for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; ++n) {
-         r = &env->vfp.pregs[n].p[0];
--        reg.addr = (uintptr_t)r;
--        reg.id = KVM_REG_ARM64_SVE_PREG(n, 0);
--        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+        ret = kvm_get_one_reg(cs, KVM_REG_ARM64_SVE_PREG(n, 0), r);
-         if (ret) {
-             return ret;
-         }
-@@ -966,9 +958,7 @@ static int kvm_arch_get_sve(CPUState *cs)
-     }
- 
-     r = &env->vfp.pregs[FFR_PRED_NUM].p[0];
--    reg.addr = (uintptr_t)r;
--    reg.id = KVM_REG_ARM64_SVE_FFR(0);
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    ret = kvm_get_one_reg(cs, KVM_REG_ARM64_SVE_FFR(0), r);
-     if (ret) {
-         return ret;
-     }
-@@ -979,7 +969,6 @@ static int kvm_arch_get_sve(CPUState *cs)
- 
- int kvm_arch_get_registers(CPUState *cs)
- {
--    struct kvm_one_reg reg;
-     uint64_t val;
-     unsigned int el;
-     uint32_t fpr;
-@@ -989,31 +978,24 @@ int kvm_arch_get_registers(CPUState *cs)
-     CPUARMState *env = &cpu->env;
- 
-     for (i = 0; i < 31; i++) {
--        reg.id = AARCH64_CORE_REG(regs.regs[i]);
--        reg.addr = (uintptr_t) &env->xregs[i];
--        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+        ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
-+                              &env->xregs[i]);
-         if (ret) {
-             return ret;
-         }
-     }
- 
--    reg.id = AARCH64_CORE_REG(regs.sp);
--    reg.addr = (uintptr_t) &env->sp_el[0];
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.sp), &env->sp_el[0]);
-     if (ret) {
-         return ret;
-     }
- 
--    reg.id = AARCH64_CORE_REG(sp_el1);
--    reg.addr = (uintptr_t) &env->sp_el[1];
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(sp_el1), &env->sp_el[1]);
-     if (ret) {
-         return ret;
-     }
- 
--    reg.id = AARCH64_CORE_REG(regs.pstate);
--    reg.addr = (uintptr_t) &val;
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.pstate), &val);
-     if (ret) {
-         return ret;
-     }
-@@ -1030,9 +1012,7 @@ int kvm_arch_get_registers(CPUState *cs)
-      */
-     aarch64_restore_sp(env, 1);
- 
--    reg.id = AARCH64_CORE_REG(regs.pc);
--    reg.addr = (uintptr_t) &env->pc;
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.pc), &env->pc);
-     if (ret) {
-         return ret;
-     }
-@@ -1046,9 +1026,7 @@ int kvm_arch_get_registers(CPUState *cs)
-         aarch64_sync_64_to_32(env);
-     }
- 
--    reg.id = AARCH64_CORE_REG(elr_el1);
--    reg.addr = (uintptr_t) &env->elr_el[1];
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(elr_el1), &env->elr_el[1]);
-     if (ret) {
-         return ret;
-     }
-@@ -1058,9 +1036,8 @@ int kvm_arch_get_registers(CPUState *cs)
-      * KVM SPSRs 0-4 map to QEMU banks 1-5
-      */
-     for (i = 0; i < KVM_NR_SPSR; i++) {
--        reg.id = AARCH64_CORE_REG(spsr[i]);
--        reg.addr = (uintptr_t) &env->banked_spsr[i + 1];
--        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+        ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(spsr[i]),
-+                              &env->banked_spsr[i + 1]);
-         if (ret) {
-             return ret;
-         }
-@@ -1081,17 +1058,13 @@ int kvm_arch_get_registers(CPUState *cs)
-         return ret;
-     }
- 
--    reg.addr = (uintptr_t)(&fpr);
--    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    ret = kvm_get_one_reg(cs, AARCH64_SIMD_CTRL_REG(fp_regs.fpsr), &fpr);
-     if (ret) {
-         return ret;
-     }
-     vfp_set_fpsr(env, fpr);
- 
--    reg.addr = (uintptr_t)(&fpr);
--    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    ret = kvm_get_one_reg(cs, AARCH64_SIMD_CTRL_REG(fp_regs.fpcr), &fpr);
-     if (ret) {
-         return ret;
-     }
+ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
 -- 
-2.41.0
+2.38.1
+

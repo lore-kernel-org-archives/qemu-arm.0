@@ -1,127 +1,123 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp6621129eje;
-        Tue, 18 Jul 2023 13:14:42 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFl6PLDRbXdCBvwkkPx6aamAyv+sb5c0qxtz/J5JgAEchO/OIp0VGe9Rmq0ysDBpKKZYBOH
-X-Received: by 2002:a05:620a:4411:b0:767:e6cd:6f6d with SMTP id v17-20020a05620a441100b00767e6cd6f6dmr254012qkp.55.1689711282538;
-        Tue, 18 Jul 2023 13:14:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689711282; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp6806957eje;
+        Tue, 18 Jul 2023 20:38:13 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFymteYuU+zoD4Pib6C653kVI2XUSS0k+Gv2NHKj7sMaJ5U5/oWD3/aN5jV1IM1ZXOvEzMR
+X-Received: by 2002:a05:622a:1ba0:b0:403:f390:f911 with SMTP id bp32-20020a05622a1ba000b00403f390f911mr1281880qtb.34.1689737892877;
+        Tue, 18 Jul 2023 20:38:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689737892; cv=none;
         d=google.com; s=arc-20160816;
-        b=oxq7Niire+DE/oF/lO7U4QPM4zzP5uaqIDnTbym32MzgsBZKF+/2izv4GUOvNTt5xI
-         fmKr4wE2fNZwnPvpno61q3JXbdJYptZuktanZP3uTfJV8bOHHu7sfgrv39TOykcFF9cP
-         Hj0jDvLl3tqJS7W1GK67rEQRHxYgGWnbBOARpW++iDSXmNacU/tZoSgjVd0DlyLZI6tx
-         x8Vq5cUEH9w9ZWccEzr0omT4d/oxLJoRGGdk1AdgAF1RcrTrSrpvdz3tIHwvYY0SQoaM
-         5VtHHzVYBPABV7r8QGRebWyJ7/K/xbhUI8t0JjprNUq5RM6XP/YVb0FV91NytXvTu0/0
-         amsA==
+        b=wpVnIbb2OdB8QPW9g6Wx3t2r6wZTPr4ugXJCjCpHzBhPDRjWEByA8Llf4IYiWrGXwt
+         CBk4FszDNwOgjkmRT3zt1P+mH3PR8quohg7b+5A5avZ1vPKVK4Hgfhuc3EpGFky4mHuj
+         aVKKhW3ARAXEPzK3WqKFJA+Ct7gza0hbhi4L85ZRzEEilf1L9T/Rx9nrxquJ5Xg9PkST
+         hT52ZWeKKC7tk10BWivMRPraqDuykCa0G1MpsDSpPQvtV/zbV+tp8MMa4QHepoIydu7t
+         +KXQyBaCphsCfC7cBmC7jRQLWG3HybqSnTRjQVE66C+gqZmFm4Qex/shewUwwb+TCVDD
+         tUIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=eU1Bdve0cOXsTKzDfFC4x2PPwOz8kOLuM1JvSp9yquA=;
-        fh=NddmdC0H7Yvd15BYzKWOWZBS0FBdcJ9zE0BWGJ3GxJc=;
-        b=0BJfDJ1X2I+rjcttcwyn92YieICe8YBSfcfgBZ3BiQicKQ1yLve1pOwbG6guNKNnIS
-         rsL4BciJwYZZtH5+fC+hUbTg3R8v/9T6rD35xMjpq4AcVf2PiiEAtCRq+c5P4tVMc0IS
-         AhbhVVwezj1HbHvkUCElmx+4dbw8eruup1XI5/WkX750IVxjo0t3iqLa7776M3LvTVTk
-         dyjJpDHjMZ9bTEx8YM5zV5sUJW/IQSsDI8xFsTKvLWcftxD3oYTH9fAM766+bI4KkOwZ
-         3EaVHL4DzWPE9sNpwg33RY6u5437Jnkibpau8xM0hLIK7M9cqaYLzLANcSeQlCxrH86F
-         kFLg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=p4FSI+TJXz+i2rFMQzor+Uv2E1K8lVetu4ZigiR9to8=;
+        fh=NAUuxumPHgdi1FWvDCFAvbXPAtVjx/0RGbmXT0ZYQ4M=;
+        b=vocwEhSR9ou/ytrzH2z1mnmkokS5MyzVQ/qENNx8LIphSMWpoBn1iEmY4ma3nTiJnF
+         qeJcMOu7DFk0E1ObLeBzLUfCh4TirXnQ2BJ7QcQOgK4ETpfVcg5+vOHC0DNVtrtNoIFl
+         kYAHbn2TZlAIU+lmUV33iqmtK9yPjht/S2MwatfLzffaiDpzJ+WrBGW6XNWR8VYojMxf
+         85/sAcCllhflpJG0PZKkuQkAHY94YCyItVKu/af4zcbjucxRdHxgwak6esWGSCPIPnRX
+         4Xv/cVKHoIx7kA9Qvoe0K9UZMYIKBrkCi7wGSAoAGZbgnQYaqhiFmv7JPalxxwBQKR2v
+         x7XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Y+26k35I;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=QDUqkKJD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t16-20020a05620a005000b00767b861af13si1528682qkt.247.2023.07.18.13.14.42
+        by mx.google.com with ESMTPS id h24-20020a05620a13f800b007682b020d2asi2034683qkl.75.2023.07.18.20.38.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jul 2023 13:14:42 -0700 (PDT)
+        Tue, 18 Jul 2023 20:38:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Y+26k35I;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=QDUqkKJD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qLr56-00086P-0W; Tue, 18 Jul 2023 16:14:00 -0400
+	id 1qLy0o-00082C-PP; Tue, 18 Jul 2023 23:38:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1qLr54-00085K-6l
- for qemu-arm@nongnu.org; Tue, 18 Jul 2023 16:13:58 -0400
-Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qLy0m-00081Q-Ki
+ for qemu-arm@nongnu.org; Tue, 18 Jul 2023 23:38:00 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1qLr51-0008WS-LW
- for qemu-arm@nongnu.org; Tue, 18 Jul 2023 16:13:57 -0400
-Received: by mail-oa1-x2d.google.com with SMTP id
- 586e51a60fabf-1b3f281c4e1so4805194fac.3
- for <qemu-arm@nongnu.org>; Tue, 18 Jul 2023 13:13:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qLy0k-00059Z-Ff
+ for qemu-arm@nongnu.org; Tue, 18 Jul 2023 23:38:00 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id
+ 41be03b00d2f7-553ad54d3c6so3924455a12.1
+ for <qemu-arm@nongnu.org>; Tue, 18 Jul 2023 20:37:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1689711234; x=1692303234;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=eU1Bdve0cOXsTKzDfFC4x2PPwOz8kOLuM1JvSp9yquA=;
- b=Y+26k35IUj35HA1UCqoHAUssA1Ozud/C5KY9UbuWhGe2P5ybfvzz06I1izi8YoOCq/
- d/EYY51qX/ENE92EcVA7htgPaHTVVB6OjjuTajG7r//7Ew7FigIoE1b/3u0w6KIi7Ufy
- m6CPNqRFu0p7jM7xDv+JOGax9dQiH/PVWjycTrXAWpKefwZbfG8iZt2I/B51CxVG73R1
- JvOJk9qx/tBSgg+ntmgIQ4rAfIKTTPdgqPCQ+O7yJ9LlKX+9wcYd7w+jP9fNyutJOhBF
- abftGtUyUnQu6jgf9KtnXqteIoCbKkiYcn5dPLhkuNEYjkbwbLsaGNTR/TOXjpYQ3Dy7
- Qtyg==
+ d=ventanamicro.com; s=google; t=1689737876; x=1692329876;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=p4FSI+TJXz+i2rFMQzor+Uv2E1K8lVetu4ZigiR9to8=;
+ b=QDUqkKJDOnDucP6SMLgF+RvnSpsb7QIdkDcyMrM6VwtlmQlEOTQ8EYVIvPJDvM04B3
+ z2tGb6g5UbliY5gPA7RWQotrtiDBDgNTEJeMJoJNfo42TqhT2ncqc5LCuLHPELwRHf0o
+ zytZmjADH9yoNMX3LcS1pAmfMneB2iKk1IgSMnubxR8AaglbCZd+/rMdTAULomp/a4Xf
+ H6+oIlhJV1iU3pY4XrB6qeZ9zDbnWLrfEGA6upJgROKCGCunmZ9THM8YZxXxYZhPhrO9
+ USt/YaT9faMJlU3iqDUJrpt6cTJYytF4u+pY/i/Bv0HtgZDkqS94eadcN3qqjq6KafxK
+ sjYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689711234; x=1692303234;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=eU1Bdve0cOXsTKzDfFC4x2PPwOz8kOLuM1JvSp9yquA=;
- b=arzSK78HzOujoOU+VhsWqZYMbO3bYRT1Ggbu6rBYNuDtNZnuaoX/OV7xdADa2t5DBG
- Z95neOmZoKqDvePH1rJuNy4XOQhu6caHGWJfweKHAgJ5hFrPLFYLTDXJmIZR75N047ZY
- fIdZIKrGfHhIUNNMIumi92ClrX6Rx1kBzx9ZL2cPFJ2ZczbIKD7Rqwh8NVy+Rfga1r8x
- XcrYL/QJWxeUrtUHUAjm3ubirFN1nR4iXZRN/8WaFcx5RypVsXonA4JZcXml5JuFFkNy
- cPEPHikAghSz4prvFk8J0tbJphl9IaJzcOsnCQaxtdV7d5f7tQOSfG/8ZH6RKNdJM6TS
- l6YA==
-X-Gm-Message-State: ABy/qLYUnrmrOmKnSo3KdZF6J6T60j79iXpawsGv/EeP5wPjCXr+hCNO
- 6Abawtd23/HucbxP9D1ADTzEqA==
-X-Received: by 2002:a05:6870:9a02:b0:1a9:8bce:9c59 with SMTP id
- fo2-20020a0568709a0200b001a98bce9c59mr230269oab.13.1689711234386; 
- Tue, 18 Jul 2023 13:13:54 -0700 (PDT)
-Received: from [192.168.68.108] (201-69-66-211.dial-up.telesp.net.br.
- [201.69.66.211]) by smtp.gmail.com with ESMTPSA id
- n65-20020a4a4044000000b0056623671ffcsm1170712ooa.24.2023.07.18.13.13.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Jul 2023 13:13:54 -0700 (PDT)
-Message-ID: <6f156b1d-abaf-9a4c-3398-3d4eca37ccd5@ventanamicro.com>
-Date: Tue, 18 Jul 2023 17:13:48 -0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 10/10] hw/riscv/virt-acpi-build.c: Add IO controllers and
- devices
-Content-Language: en-US
-To: Sunil V L <sunilvl@ventanamicro.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-Cc: "Michael S . Tsirkin" <mst@redhat.com>,
+ d=1e100.net; s=20221208; t=1689737876; x=1692329876;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=p4FSI+TJXz+i2rFMQzor+Uv2E1K8lVetu4ZigiR9to8=;
+ b=Wzv0Xvmccppv7HLT8LDKxyTuSQNax/gj4cXvtBRMp25xjRBm+qYdoMO3HCfVSxSOCa
+ v0JPXgwOBrRrVcN+V9mC3DF2lQqLF7aof6ZwT1K57yGuhReDnJtoHe0SNcmGxwEQIUgm
+ evR/X5zIilvDe5wbOR3X1j3WDxxJERCTPpI8ojz/1aj63BNN6z9i/mXrmBk7hzi61hDD
+ 5SldiYS6eCSKtZuCvYhvD0RsgkKaIvcb9cPlyJAhaNkuZ50Q7dIRcRbUWp9iZWl5EX6r
+ YrnBOpamk9AB8FncJ4GGw5bMDudHBl0BRwN9eO0KQ9TwGqSVbNfo/j4bOFsJO8Ebc5KB
+ SV8A==
+X-Gm-Message-State: ABy/qLZesPr6KH6hN2zgNiREHzl/T7a2eB/vToAhiTYZvngDUzUeR3rZ
+ U0VN/hF4hVCBdCPWshlAjc3lhA==
+X-Received: by 2002:a17:902:ed54:b0:1a6:b496:4053 with SMTP id
+ y20-20020a170902ed5400b001a6b4964053mr1250581plb.59.1689737875925; 
+ Tue, 18 Jul 2023 20:37:55 -0700 (PDT)
+Received: from sunil-laptop ([106.51.83.242]) by smtp.gmail.com with ESMTPSA id
+ a22-20020a170902b59600b001b86dd825e7sm2654579pls.108.2023.07.18.20.37.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Jul 2023 20:37:55 -0700 (PDT)
+Date: Wed, 19 Jul 2023 09:07:48 +0530
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ "Michael S . Tsirkin" <mst@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
  Alistair Francis <alistair.francis@wdc.com>,
  Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Andrew Jones <ajones@ventanamicro.com>, Anup Patel <apatel@ventanamicro.com>
+ Andrew Jones <ajones@ventanamicro.com>,
+ Anup Patel <apatel@ventanamicro.com>
+Subject: Re: [PATCH 04/10] hw/riscv: virt: Add PCIe HIGHMEM in memmap
+Message-ID: <ZLdajOyuPXxxaVJO@sunil-laptop>
 References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
- <20230712163943.98994-11-sunilvl@ventanamicro.com>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20230712163943.98994-11-sunilvl@ventanamicro.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2d;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-oa1-x2d.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+ <20230712163943.98994-5-sunilvl@ventanamicro.com>
+ <6105a331-7c24-2c8e-a3ce-65c6080fd17f@ventanamicro.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <6105a331-7c24-2c8e-a3ce-65c6080fd17f@ventanamicro.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.095,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,165 +132,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Leer3YJsRQcT
+X-TUID: GyIz6u4aBlB1
 
-
-
-On 7/12/23 13:39, Sunil V L wrote:
-> Add basic IO controllers and devices like PCI, VirtIO and UART
-> in the ACPI namespace.
+On Tue, Jul 18, 2023 at 05:05:12PM -0300, Daniel Henrique Barboza wrote:
 > 
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> ---
-
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-
->   hw/riscv/Kconfig           |  1 +
->   hw/riscv/virt-acpi-build.c | 87 ++++++++++++++++++++++++++++++++++++++
->   2 files changed, 88 insertions(+)
 > 
-> diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
-> index b6a5eb4452..a50717be87 100644
-> --- a/hw/riscv/Kconfig
-> +++ b/hw/riscv/Kconfig
-> @@ -45,6 +45,7 @@ config RISCV_VIRT
->       select FW_CFG_DMA
->       select PLATFORM_BUS
->       select ACPI
-> +    select ACPI_PCI
->   
->   config SHAKTI_C
->       bool
-> diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-> index 25745eee4c..91f06fdc97 100644
-> --- a/hw/riscv/virt-acpi-build.c
-> +++ b/hw/riscv/virt-acpi-build.c
-> @@ -27,6 +27,7 @@
->   #include "hw/acpi/acpi-defs.h"
->   #include "hw/acpi/acpi.h"
->   #include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/pci.h"
->   #include "hw/acpi/utils.h"
->   #include "qapi/error.h"
->   #include "qemu/error-report.h"
-> @@ -35,6 +36,7 @@
->   #include "hw/riscv/virt.h"
->   #include "hw/riscv/numa.h"
->   #include "hw/intc/riscv_aclint.h"
-> +#include "hw/pci-host/gpex.h"
->   
->   #define ACPI_BUILD_TABLE_SIZE             0x20000
->   #define ACPI_BUILD_INTC_ID(socket, index) ((socket << 24) | (index))
-> @@ -138,6 +140,55 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtState *s)
->       }
->   }
->   
-> +static void
-> +acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
-> +                    uint32_t uart_irq)
-> +{
-> +    Aml *dev = aml_device("COM0");
-> +    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0501")));
-> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-> +
-> +    Aml *crs = aml_resource_template();
-> +    aml_append(crs, aml_memory32_fixed(uart_memmap->base,
-> +                                         uart_memmap->size, AML_READ_WRITE));
-> +    aml_append(crs,
-> +                aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-> +                               AML_EXCLUSIVE, &uart_irq, 1));
-> +    aml_append(dev, aml_name_decl("_CRS", crs));
-> +
-> +    Aml *pkg = aml_package(2);
-> +    aml_append(pkg, aml_string("clock-frequency"));
-> +    aml_append(pkg, aml_int(3686400));
-> +
-> +    Aml *UUID = aml_touuid("DAFFD814-6EBA-4D8C-8A91-BC9BBF4AA301");
-> +
-> +    Aml *pkg1 = aml_package(1);
-> +    aml_append(pkg1, pkg);
-> +
-> +    Aml *package = aml_package(2);
-> +    aml_append(package, UUID);
-> +    aml_append(package, pkg1);
-> +
-> +    aml_append(dev, aml_name_decl("_DSD", package));
-> +    aml_append(scope, dev);
-> +}
-> +
-> +static void
-> +acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-> +                   uint32_t irq, RISCVVirtState *s)
-> +{
-> +    struct GPEXConfig cfg = {
-> +        .mmio32 = memmap[VIRT_PCIE_MMIO],
-> +        .mmio64 = memmap[VIRT_HIGH_PCIE_MMIO],
-> +        .pio = memmap[VIRT_PCIE_PIO],
-> +        .ecam = memmap[VIRT_PCIE_ECAM],
-> +        .irq = irq,
-> +        .bus = s->bus,
-> +    };
-> +
-> +    acpi_dsdt_add_gpex(scope, &cfg);
-> +}
-> +
->   /* RHCT Node[N] starts at offset 56 */
->   #define RHCT_NODE_ARRAY_OFFSET 56
->   
-> @@ -318,6 +369,8 @@ static void build_dsdt(GArray *table_data,
->                          RISCVVirtState *s)
->   {
->       Aml *scope, *dsdt;
-> +    MachineState *ms = MACHINE(s);
-> +    uint8_t socket_count;
->       const MemMapEntry *memmap = s->memmap;
->       AcpiTable table = { .sig = "DSDT", .rev = 2, .oem_id = s->oem_id,
->                           .oem_table_id = s->oem_table_id };
-> @@ -337,6 +390,30 @@ static void build_dsdt(GArray *table_data,
->   
->       acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
->   
-> +    socket_count = riscv_socket_count(ms);
-> +
-> +    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0], UART0_IRQ);
-> +
-> +    if (socket_count == 1) {
-> +        acpi_dsdt_add_virtio(scope, &memmap[VIRT_VIRTIO],
-> +                             VIRTIO_IRQ, VIRTIO_COUNT);
-> +        acpi_dsdt_add_pci(scope, memmap, PCIE_IRQ, s);
-> +    } else if (socket_count == 2) {
-> +        acpi_dsdt_add_virtio(scope, &memmap[VIRT_VIRTIO],
-> +                             VIRTIO_IRQ + VIRT_IRQCHIP_NUM_SOURCES,
-> +                             VIRTIO_COUNT);
-> +        acpi_dsdt_add_pci(scope, memmap,
-> +                          PCIE_IRQ + VIRT_IRQCHIP_NUM_SOURCES,
-> +                          s);
-> +    } else {
-> +        acpi_dsdt_add_virtio(scope, &memmap[VIRT_VIRTIO],
-> +                             VIRTIO_IRQ + VIRT_IRQCHIP_NUM_SOURCES,
-> +                             VIRTIO_COUNT);
-> +        acpi_dsdt_add_pci(scope, memmap,
-> +                          PCIE_IRQ + VIRT_IRQCHIP_NUM_SOURCES * 2,
-> +                          s);
-> +    }
-> +
->       aml_append(dsdt, scope);
->   
->       /* copy AML table into ACPI tables blob and patch header there */
-> @@ -486,6 +563,16 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
->       acpi_add_table(table_offsets, tables_blob);
->       build_rhct(tables_blob, tables->linker, s);
->   
-> +    acpi_add_table(table_offsets, tables_blob);
-> +    {
-> +        AcpiMcfgInfo mcfg = {
-> +           .base = s->memmap[VIRT_PCIE_MMIO].base,
-> +           .size = s->memmap[VIRT_PCIE_MMIO].size,
-> +        };
-> +        build_mcfg(tables_blob, tables->linker, &mcfg, s->oem_id,
-> +                   s->oem_table_id);
-> +    }
-> +
->       /* XSDT is pointed to by RSDP */
->       xsdt = tables_blob->len;
->       build_xsdt(tables_blob, tables->linker, table_offsets, s->oem_id,
+> On 7/12/23 13:39, Sunil V L wrote:
+> > PCIe High MMIO base is actually dynamic and fixed at
+> > run time based on the RAM configured. Currently, this is
+> > not part of the memmap and kept in separate static variable
+> > in virt.c. However, ACPI code also needs this information
+> > to populate DSDT. So, once the base is discovered, merge
+> > this into the final memmap which can be used to create
+> > ACPI tables later.
+> > 
+> > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> > ---
+> >   hw/riscv/virt.c         | 31 ++++++++++++++++++++++++++++++-
+> >   include/hw/riscv/virt.h |  9 +++++++--
+> >   2 files changed, 37 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+> > index f6067db8ec..7aee06f021 100644
+> > --- a/hw/riscv/virt.c
+> > +++ b/hw/riscv/virt.c
+> > @@ -84,6 +84,22 @@ static const MemMapEntry virt_memmap[] = {
+> >   static MemMapEntry virt_high_pcie_memmap;
+> > +/*
+> > + * virt_memmap doesn't include floating High Mem IO address entry. To enable
+> > + * code organization in multiple files (ex: ACPI), it is better to have single
+> > + * memmap which has complete information.
+> > + *
+> > + * VIRT_HIGH_PCIE_MMIO is always greater than the last memmap entry and hence
+> > + * full_virt_memmap is capable of holding both virt_memmap and
+> > + * VIRT_HIGH_PCIE_MMIO entry.
+> > + *
+> > + * The values for these floating entries will be updated when top of RAM is
+> > + * discovered.
+> > + */
+> > +static MemMapEntry full_virt_memmap[] = {
+> > +    [VIRT_HIGH_PCIE_MMIO] =     { 0x0, 0 },
+> > +};
+> > +
+> >   #define VIRT_FLASH_SECTOR_SIZE (256 * KiB)
+> >   static PFlashCFI01 *virt_flash_create1(RISCVVirtState *s,
+> > @@ -1444,7 +1460,20 @@ static void virt_machine_init(MachineState *machine)
+> >               ROUND_UP(virt_high_pcie_memmap.base, virt_high_pcie_memmap.size);
+> >       }
+> > -    s->memmap = virt_memmap;
+> > +    /*
+> > +     * Initialize the floating values in full memory map
+> > +     */
+> > +    full_virt_memmap[VIRT_HIGH_PCIE_MMIO].base = virt_high_pcie_memmap.base;
+> > +    full_virt_memmap[VIRT_HIGH_PCIE_MMIO].size = virt_high_pcie_memmap.size;
+> > +
+> > +    s->memmap = full_virt_memmap;
+> > +    /*
+> > +     * Copy the base virt_memmap entries to full memmap
+> > +     */
+> > +    for (i = 0; i < ARRAY_SIZE(virt_memmap); i++) {
+> > +        s->memmap[i] = virt_memmap[i];
+> > +    }
+> > +
+> 
+> This change here kind of convinces me of the point I made earlier in patch 2:
+> we can simplify gpex_pcie_init() to use just the RISCVVirtState as a parameter
+> and get everything else from it.
+> 
+> It's also something for a follow-up. As for this patch:
+> 
+> Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+> 
+Thanks Daniel. I agree. I can send another follow-up patch to simplify
+gpex_pcie_init.
+
+Thanks,
+Sunil
+
+

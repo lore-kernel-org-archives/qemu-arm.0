@@ -1,123 +1,117 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp6806957eje;
-        Tue, 18 Jul 2023 20:38:13 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFymteYuU+zoD4Pib6C653kVI2XUSS0k+Gv2NHKj7sMaJ5U5/oWD3/aN5jV1IM1ZXOvEzMR
-X-Received: by 2002:a05:622a:1ba0:b0:403:f390:f911 with SMTP id bp32-20020a05622a1ba000b00403f390f911mr1281880qtb.34.1689737892877;
-        Tue, 18 Jul 2023 20:38:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689737892; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp7196616eje;
+        Wed, 19 Jul 2023 08:57:34 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFCg72opO/7d7TM4Imf+mi1grOszeCJyWo1+Nf42MvU31XXBAMw8BA+K09liB7vGrUCnHwc
+X-Received: by 2002:a05:622a:180e:b0:400:aaaf:cf0b with SMTP id t14-20020a05622a180e00b00400aaafcf0bmr4147016qtc.4.1689782254361;
+        Wed, 19 Jul 2023 08:57:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689782254; cv=none;
         d=google.com; s=arc-20160816;
-        b=wpVnIbb2OdB8QPW9g6Wx3t2r6wZTPr4ugXJCjCpHzBhPDRjWEByA8Llf4IYiWrGXwt
-         CBk4FszDNwOgjkmRT3zt1P+mH3PR8quohg7b+5A5avZ1vPKVK4Hgfhuc3EpGFky4mHuj
-         aVKKhW3ARAXEPzK3WqKFJA+Ct7gza0hbhi4L85ZRzEEilf1L9T/Rx9nrxquJ5Xg9PkST
-         hT52ZWeKKC7tk10BWivMRPraqDuykCa0G1MpsDSpPQvtV/zbV+tp8MMa4QHepoIydu7t
-         +KXQyBaCphsCfC7cBmC7jRQLWG3HybqSnTRjQVE66C+gqZmFm4Qex/shewUwwb+TCVDD
-         tUIg==
+        b=lj1HBL6sCzGEdRtefLdiw5eI6MIw+MWagsZO93Z0cqFQ3UxZDFBVy4Da38WX/+CywE
+         wJ5N3qbRR6cg1jdOQRjH/C1fWYPJEpzi+7lQFNoMLVOJixzU1IjCUgTXRZrPdKuU6LeO
+         Y/GKWqEJe3103mgmQco3KVQPl+LhNCL4jSz9VyLIWzdGV20lg19/PdUF3r+TMd8pGbjO
+         YsMm+YQELMbTBdC3Fx9IQVC0Kf7Mw5JzPoCUhJm/6G4ND+Y7Yrqn6y8QbvxdMGKPn84x
+         E//O0AhNwcE9nT4iez3rbaojXW/3RfaTUPx67aBUHlM3w/afd6i8dNvVwu9pbur2s8ce
+         vz5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=p4FSI+TJXz+i2rFMQzor+Uv2E1K8lVetu4ZigiR9to8=;
-        fh=NAUuxumPHgdi1FWvDCFAvbXPAtVjx/0RGbmXT0ZYQ4M=;
-        b=vocwEhSR9ou/ytrzH2z1mnmkokS5MyzVQ/qENNx8LIphSMWpoBn1iEmY4ma3nTiJnF
-         qeJcMOu7DFk0E1ObLeBzLUfCh4TirXnQ2BJ7QcQOgK4ETpfVcg5+vOHC0DNVtrtNoIFl
-         kYAHbn2TZlAIU+lmUV33iqmtK9yPjht/S2MwatfLzffaiDpzJ+WrBGW6XNWR8VYojMxf
-         85/sAcCllhflpJG0PZKkuQkAHY94YCyItVKu/af4zcbjucxRdHxgwak6esWGSCPIPnRX
-         4Xv/cVKHoIx7kA9Qvoe0K9UZMYIKBrkCi7wGSAoAGZbgnQYaqhiFmv7JPalxxwBQKR2v
-         x7XQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=gGmNjom1dWAWIl07haN1UV6R0kEmVNpwwthNJP86YHc=;
+        fh=zMLmPP9ozJY0jj0bAXqZquWHP0BgmjJZ9lKiHhJNaWU=;
+        b=b637VWRbZN5zQeLNoTQQcuG0JPfhbA9l6TOGbbOiumTnW8092lig9qRBPhGB2WRF3Z
+         E4Ch7A1vUhxZXDqrnpniiiXE7v4f9n0iI8SURTLdmGacD6ncPTZ/zo/hb0v3dAMCWqLv
+         vgnUoIKb5nT2c0U6MKLE2aHqxFHcd/vighZh3cgbiUCAwCakeDTXQbMNDIDG0TOvhNBB
+         YG2shvynrFPwMQc1bCHaMORRNS5vaNWFeDAS3mlk3B6oH82PCx1CMvQNkDrDd7h9ypsg
+         +mP9YnD5Wk2g4vHk2wlsry5RC0eUBjMsR4IgOgs7nb6iBJlfGAxIInHwdYQ+aQoEwLOf
+         fr8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=QDUqkKJD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=yc3U8vt2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h24-20020a05620a13f800b007682b020d2asi2034683qkl.75.2023.07.18.20.38.12
+        by mx.google.com with ESMTPS id a14-20020a05622a064e00b00403ff6b7767si1705517qtb.60.2023.07.19.08.57.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jul 2023 20:38:12 -0700 (PDT)
+        Wed, 19 Jul 2023 08:57:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=QDUqkKJD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=yc3U8vt2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qLy0o-00082C-PP; Tue, 18 Jul 2023 23:38:02 -0400
+	id 1qM9Xv-00038x-7d; Wed, 19 Jul 2023 11:56:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qLy0m-00081Q-Ki
- for qemu-arm@nongnu.org; Tue, 18 Jul 2023 23:38:00 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qM9Xp-000362-FG
+ for qemu-arm@nongnu.org; Wed, 19 Jul 2023 11:56:53 -0400
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qLy0k-00059Z-Ff
- for qemu-arm@nongnu.org; Tue, 18 Jul 2023 23:38:00 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id
- 41be03b00d2f7-553ad54d3c6so3924455a12.1
- for <qemu-arm@nongnu.org>; Tue, 18 Jul 2023 20:37:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qM9Xl-0007Im-8N
+ for qemu-arm@nongnu.org; Wed, 19 Jul 2023 11:56:53 -0400
+Received: by mail-lf1-x12e.google.com with SMTP id
+ 2adb3069b0e04-4f4b2bc1565so11930086e87.2
+ for <qemu-arm@nongnu.org>; Wed, 19 Jul 2023 08:56:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1689737876; x=1692329876;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=p4FSI+TJXz+i2rFMQzor+Uv2E1K8lVetu4ZigiR9to8=;
- b=QDUqkKJDOnDucP6SMLgF+RvnSpsb7QIdkDcyMrM6VwtlmQlEOTQ8EYVIvPJDvM04B3
- z2tGb6g5UbliY5gPA7RWQotrtiDBDgNTEJeMJoJNfo42TqhT2ncqc5LCuLHPELwRHf0o
- zytZmjADH9yoNMX3LcS1pAmfMneB2iKk1IgSMnubxR8AaglbCZd+/rMdTAULomp/a4Xf
- H6+oIlhJV1iU3pY4XrB6qeZ9zDbnWLrfEGA6upJgROKCGCunmZ9THM8YZxXxYZhPhrO9
- USt/YaT9faMJlU3iqDUJrpt6cTJYytF4u+pY/i/Bv0HtgZDkqS94eadcN3qqjq6KafxK
- sjYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689737876; x=1692329876;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1689782207; x=1690387007;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=p4FSI+TJXz+i2rFMQzor+Uv2E1K8lVetu4ZigiR9to8=;
- b=Wzv0Xvmccppv7HLT8LDKxyTuSQNax/gj4cXvtBRMp25xjRBm+qYdoMO3HCfVSxSOCa
- v0JPXgwOBrRrVcN+V9mC3DF2lQqLF7aof6ZwT1K57yGuhReDnJtoHe0SNcmGxwEQIUgm
- evR/X5zIilvDe5wbOR3X1j3WDxxJERCTPpI8ojz/1aj63BNN6z9i/mXrmBk7hzi61hDD
- 5SldiYS6eCSKtZuCvYhvD0RsgkKaIvcb9cPlyJAhaNkuZ50Q7dIRcRbUWp9iZWl5EX6r
- YrnBOpamk9AB8FncJ4GGw5bMDudHBl0BRwN9eO0KQ9TwGqSVbNfo/j4bOFsJO8Ebc5KB
- SV8A==
-X-Gm-Message-State: ABy/qLZesPr6KH6hN2zgNiREHzl/T7a2eB/vToAhiTYZvngDUzUeR3rZ
- U0VN/hF4hVCBdCPWshlAjc3lhA==
-X-Received: by 2002:a17:902:ed54:b0:1a6:b496:4053 with SMTP id
- y20-20020a170902ed5400b001a6b4964053mr1250581plb.59.1689737875925; 
- Tue, 18 Jul 2023 20:37:55 -0700 (PDT)
-Received: from sunil-laptop ([106.51.83.242]) by smtp.gmail.com with ESMTPSA id
- a22-20020a170902b59600b001b86dd825e7sm2654579pls.108.2023.07.18.20.37.51
+ bh=gGmNjom1dWAWIl07haN1UV6R0kEmVNpwwthNJP86YHc=;
+ b=yc3U8vt2vXQK75uiC3aDqfTR6BF9hOFQCZ2Qz6hdQlQHpPvknydPCn303pSPVXxxl7
+ xR6gnjZwtJK3HCGgZBxhvUGJDD711Kw/8XRlKjAFgJkItCjT9o62gBe9YnIiWLCjKgE5
+ B5/uSG6ZXMXlY6cnHbF38VgSkwsSm+r5DmQHxWqU4cGjjoip9sFbECzjdr6DtR8mW0W8
+ WuwqSXKqHApzyQoYj+SaXtYlU46h1FaR+6ohGA0BP1UDZDS/nCVvxPRWwnaozGQ0gRfm
+ xfw3viTwua33px84TKOYCYU7VPz7cTDSoFpYXO1+YhpunEk0vMdPUDpsckCm2KjIYKob
+ gKSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1689782207; x=1690387007;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=gGmNjom1dWAWIl07haN1UV6R0kEmVNpwwthNJP86YHc=;
+ b=R+CD95+/OSs1nBlwtVcMQ9HcGWjnC2f3pTa5vKhs7riyBfc2Wb0vdSeEm2u6H11TVq
+ LNRK2qzPGEeiaaqLTMBRrqMB/sayamMcNWn0UnLUBCzPhUpf3KQCYI8kV8etODXA8nO9
+ BKw1lyobu6TM39wlwdKT6EnVLaqibIS3vBBw/yuZd3GOHIagsUEz03j03bDnF27xxSmA
+ +TtaWjktpwVDVP/8Z+FvuFz0Vv3Muls8oA7Ajc2BjT0e2JaARyf/wQ14LisR9TeIN8J+
+ j5yKhlaq24PKmFCDHArMhzmX0W2fwGVRT/mDo2u16s4DCZZRoM5mxtOyvXQ9dKV+7zSe
+ XnhQ==
+X-Gm-Message-State: ABy/qLb10FlXpnnnYksypIKpbTP0Zl7uyX3xMfX+RcNxZ77hGhbtjiIt
+ 7bNGheXbf7Gc1XmkOMdQDBZrIw==
+X-Received: by 2002:a05:6512:3b8b:b0:4fb:89f2:594c with SMTP id
+ g11-20020a0565123b8b00b004fb89f2594cmr253129lfv.56.1689782206633; 
+ Wed, 19 Jul 2023 08:56:46 -0700 (PDT)
+Received: from localhost.localdomain ([2.219.138.198])
+ by smtp.gmail.com with ESMTPSA id
+ l14-20020a1c790e000000b003fc3b03caa4sm2351006wme.0.2023.07.19.08.56.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Jul 2023 20:37:55 -0700 (PDT)
-Date: Wed, 19 Jul 2023 09:07:48 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>
-Subject: Re: [PATCH 04/10] hw/riscv: virt: Add PCIe HIGHMEM in memmap
-Message-ID: <ZLdajOyuPXxxaVJO@sunil-laptop>
-References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
- <20230712163943.98994-5-sunilvl@ventanamicro.com>
- <6105a331-7c24-2c8e-a3ce-65c6080fd17f@ventanamicro.com>
+ Wed, 19 Jul 2023 08:56:46 -0700 (PDT)
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: peter.maydell@linaro.org
+Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: [PATCH 3/5] target/arm: Skip granule protection checks for AT
+ instructions
+Date: Wed, 19 Jul 2023 16:30:17 +0100
+Message-ID: <20230719153018.1456180-5-jean-philippe@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230719153018.1456180-2-jean-philippe@linaro.org>
+References: <20230719153018.1456180-2-jean-philippe@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6105a331-7c24-2c8e-a3ce-65c6080fd17f@ventanamicro.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x52b.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
+ envelope-from=jean-philippe@linaro.org; helo=mail-lf1-x12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,81 +126,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GyIz6u4aBlB1
+X-TUID: fLz5GMVGF+7T
 
-On Tue, Jul 18, 2023 at 05:05:12PM -0300, Daniel Henrique Barboza wrote:
-> 
-> 
-> On 7/12/23 13:39, Sunil V L wrote:
-> > PCIe High MMIO base is actually dynamic and fixed at
-> > run time based on the RAM configured. Currently, this is
-> > not part of the memmap and kept in separate static variable
-> > in virt.c. However, ACPI code also needs this information
-> > to populate DSDT. So, once the base is discovered, merge
-> > this into the final memmap which can be used to create
-> > ACPI tables later.
-> > 
-> > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> > ---
-> >   hw/riscv/virt.c         | 31 ++++++++++++++++++++++++++++++-
-> >   include/hw/riscv/virt.h |  9 +++++++--
-> >   2 files changed, 37 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> > index f6067db8ec..7aee06f021 100644
-> > --- a/hw/riscv/virt.c
-> > +++ b/hw/riscv/virt.c
-> > @@ -84,6 +84,22 @@ static const MemMapEntry virt_memmap[] = {
-> >   static MemMapEntry virt_high_pcie_memmap;
-> > +/*
-> > + * virt_memmap doesn't include floating High Mem IO address entry. To enable
-> > + * code organization in multiple files (ex: ACPI), it is better to have single
-> > + * memmap which has complete information.
-> > + *
-> > + * VIRT_HIGH_PCIE_MMIO is always greater than the last memmap entry and hence
-> > + * full_virt_memmap is capable of holding both virt_memmap and
-> > + * VIRT_HIGH_PCIE_MMIO entry.
-> > + *
-> > + * The values for these floating entries will be updated when top of RAM is
-> > + * discovered.
-> > + */
-> > +static MemMapEntry full_virt_memmap[] = {
-> > +    [VIRT_HIGH_PCIE_MMIO] =     { 0x0, 0 },
-> > +};
-> > +
-> >   #define VIRT_FLASH_SECTOR_SIZE (256 * KiB)
-> >   static PFlashCFI01 *virt_flash_create1(RISCVVirtState *s,
-> > @@ -1444,7 +1460,20 @@ static void virt_machine_init(MachineState *machine)
-> >               ROUND_UP(virt_high_pcie_memmap.base, virt_high_pcie_memmap.size);
-> >       }
-> > -    s->memmap = virt_memmap;
-> > +    /*
-> > +     * Initialize the floating values in full memory map
-> > +     */
-> > +    full_virt_memmap[VIRT_HIGH_PCIE_MMIO].base = virt_high_pcie_memmap.base;
-> > +    full_virt_memmap[VIRT_HIGH_PCIE_MMIO].size = virt_high_pcie_memmap.size;
-> > +
-> > +    s->memmap = full_virt_memmap;
-> > +    /*
-> > +     * Copy the base virt_memmap entries to full memmap
-> > +     */
-> > +    for (i = 0; i < ARRAY_SIZE(virt_memmap); i++) {
-> > +        s->memmap[i] = virt_memmap[i];
-> > +    }
-> > +
-> 
-> This change here kind of convinces me of the point I made earlier in patch 2:
-> we can simplify gpex_pcie_init() to use just the RISCVVirtState as a parameter
-> and get everything else from it.
-> 
-> It's also something for a follow-up. As for this patch:
-> 
-> Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-> 
-Thanks Daniel. I agree. I can send another follow-up patch to simplify
-gpex_pcie_init.
+GPC checks are not performed on the output address for AT instructions,
+as stated by ARM DDI 0487J in D8.12.2:
 
-Thanks,
-Sunil
+  When populating PAR_EL1 with the result of an address translation
+  instruction, granule protection checks are not performed on the final
+  output address of a successful translation.
 
+Rename get_phys_addr_with_secure(), since it's only used to handle AT
+instructions.
+
+Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+---
+This incidentally fixes a problem with AT S1E1 instructions which can
+output an IPA and should definitely not cause a GPC.
+---
+ target/arm/internals.h | 25 ++++++++++++++-----------
+ target/arm/helper.c    |  8 ++++++--
+ target/arm/ptw.c       | 11 ++++++-----
+ 3 files changed, 26 insertions(+), 18 deletions(-)
+
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 0f01bc32a8..fc90c364f7 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1190,12 +1190,11 @@ typedef struct GetPhysAddrResult {
+ } GetPhysAddrResult;
+ 
+ /**
+- * get_phys_addr_with_secure: get the physical address for a virtual address
++ * get_phys_addr: get the physical address for a virtual address
+  * @env: CPUARMState
+  * @address: virtual address to get physical address for
+  * @access_type: 0 for read, 1 for write, 2 for execute
+  * @mmu_idx: MMU index indicating required translation regime
+- * @is_secure: security state for the access
+  * @result: set on translation success.
+  * @fi: set to fault info if the translation fails
+  *
+@@ -1212,26 +1211,30 @@ typedef struct GetPhysAddrResult {
+  *  * for PSMAv5 based systems we don't bother to return a full FSR format
+  *    value.
+  */
+-bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
+-                               MMUAccessType access_type,
+-                               ARMMMUIdx mmu_idx, bool is_secure,
+-                               GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
++bool get_phys_addr(CPUARMState *env, target_ulong address,
++                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
++                   GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+     __attribute__((nonnull));
+ 
+ /**
+- * get_phys_addr: get the physical address for a virtual address
++ * get_phys_addr_with_secure_nogpc: get the physical address for a virtual
++ *                                  address
+  * @env: CPUARMState
+  * @address: virtual address to get physical address for
+  * @access_type: 0 for read, 1 for write, 2 for execute
+  * @mmu_idx: MMU index indicating required translation regime
++ * @is_secure: security state for the access
+  * @result: set on translation success.
+  * @fi: set to fault info if the translation fails
+  *
+- * Similarly, but use the security regime of @mmu_idx.
++ * Similar to get_phys_addr, but use the given security regime and don't perform
++ * a Granule Protection Check on the resulting address.
+  */
+-bool get_phys_addr(CPUARMState *env, target_ulong address,
+-                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                   GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
++bool get_phys_addr_with_secure_nogpc(CPUARMState *env, target_ulong address,
++                                     MMUAccessType access_type,
++                                     ARMMMUIdx mmu_idx, bool is_secure,
++                                     GetPhysAddrResult *result,
++                                     ARMMMUFaultInfo *fi)
+     __attribute__((nonnull));
+ 
+ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 07a9ac70f5..3ee2bb5fe1 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3365,8 +3365,12 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+     ARMMMUFaultInfo fi = {};
+     GetPhysAddrResult res = {};
+ 
+-    ret = get_phys_addr_with_secure(env, value, access_type, mmu_idx,
+-                                    is_secure, &res, &fi);
++    /*
++     * I_MXTJT: Granule protection checks are not performed on the final address
++     * of a successful translation.
++     */
++    ret = get_phys_addr_with_secure_nogpc(env, value, access_type, mmu_idx,
++                                          is_secure, &res, &fi);
+ 
+     /*
+      * ATS operations only do S1 or S1+S2 translations, so we never
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 6318e13b98..1aef2b8cef 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -3412,16 +3412,17 @@ static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
+     return false;
+ }
+ 
+-bool get_phys_addr_with_secure(CPUARMState *env, target_ulong address,
+-                               MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                               bool is_secure, GetPhysAddrResult *result,
+-                               ARMMMUFaultInfo *fi)
++bool get_phys_addr_with_secure_nogpc(CPUARMState *env, target_ulong address,
++                                     MMUAccessType access_type,
++                                     ARMMMUIdx mmu_idx, bool is_secure,
++                                     GetPhysAddrResult *result,
++                                     ARMMMUFaultInfo *fi)
+ {
+     S1Translate ptw = {
+         .in_mmu_idx = mmu_idx,
+         .in_space = arm_secure_to_space(is_secure),
+     };
+-    return get_phys_addr_gpc(env, &ptw, address, access_type, result, fi);
++    return get_phys_addr_nogpc(env, &ptw, address, access_type, result, fi);
+ }
+ 
+ bool get_phys_addr(CPUARMState *env, target_ulong address,
+-- 
+2.41.0
 

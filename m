@@ -1,102 +1,101 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp7949686eje;
-        Thu, 20 Jul 2023 09:29:11 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGJEPkofludn17yfeIzIix7GlR0rnVEWVE0900SQbwVX0JcyF7Wvv/WUfaSr0/AoPhiGrU7
-X-Received: by 2002:a05:622a:1b89:b0:403:a5b4:b6df with SMTP id bp9-20020a05622a1b8900b00403a5b4b6dfmr22836479qtb.55.1689870551383;
-        Thu, 20 Jul 2023 09:29:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689870551; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp7954208eje;
+        Thu, 20 Jul 2023 09:36:08 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlG053uVx4mHLsbHIEs0O+vKiyYUtUz8yMm//PAXL9Bx1kgUkJMLPekQytVJBKJOtC3bC362
+X-Received: by 2002:a05:620a:408b:b0:76a:ca95:a5fd with SMTP id f11-20020a05620a408b00b0076aca95a5fdmr2334209qko.61.1689870968576;
+        Thu, 20 Jul 2023 09:36:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689870968; cv=none;
         d=google.com; s=arc-20160816;
-        b=d2pGLVrZUJmqNCYdRxsfpEcHjZbgqdmycXoyKg+aIY9noxsJLaGys32o23q3VpISUj
-         whUJ/2yGxKm5XHvkNwQuiACkge0WzM09l1G74swHXhSKK14ECyo0kCO8Kkp/0J/nGf1G
-         q56XdNgM0TxXj+z0x2VIoGO5PdOX1AZGre6UNCASSUZIhAfMrc/+kNl1OtI/YKXFjfNi
-         DoMjXIe8ZbbPnqjfkY3MBmz8pOD4O8ct9+zSuBWiIkbjgDQEBDE1MIJo7RWJb3iP8McZ
-         HJjXUTr4ITHop46P2beY/LY/9kBQYHHDtcVV4+IS5BZMMyoyCRxQQ4eNmfZolHNyU4ja
-         3UoQ==
+        b=Cv8TKHfspVB8LSky/zEEHKIQ4hbTHdrRN2zJjfD2ylQ85TR1HO/OYTcY931oQaLFBm
+         Dgio35g84xPN0SLLF3b1nNUbi1+z0PR//DACFTq6vM4SwMb24hMSYmoFhh7bqs8+1eFH
+         1K244DX5e3aFqSIGf0QaN3Iu+JTGo7Xqhi7m/7fgpezR2iLZH4AO9YPOMiYBKJ7EOE+Z
+         m2M8kbgd6XjTYIuHaj8CiUv4Nwtg4LwJaWbv5iolj5YbFnorIfffatQzUS4bqUml4vdp
+         19mU4m7TPfzKGa194krUIo5CSWGrhw4avduzHOD0485gkgplE7QAUVSce+5E2/2EDQXx
+         qEDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=NmG4z32DKSrMHBIzEuBhLqUfjW/cR/ysKSc5rHDmPNM=;
+        bh=1te5QnsGdqFFgJE8Ufpgh1r9/Gv8HuA5cGaTx2tb6/k=;
         fh=CEa3UdY0L+UQ/2T/5R8rkDkdq4jlW1F1hWJjDNQD42w=;
-        b=oGNzeRzGTUSax64hLNpqED9LyuwdpRzPKD7noJ1D4I4w5dBrSELFnK/vV8871nDEUA
-         pWnXuXKJqUQ0JKqqYv4RO7+JmtA+Ruqjwv73gjfAsVyTjfRB6iz/Ng3izVvvYdYI3Dzp
-         9QV/45lxZJmU7KmRhwdzVEUTZJ10VZMP9F+oDKndpyG4YgL7xFs0hTceeBJ9e4tCrCdb
-         rclVwFNVKc37jMONIRm8kT2wIt87QOZ3XWDWEZmvBim9nF3SBlusz1MkKeXSbjOUaNJM
-         oNG7F+N0+UGbGr33e15e8+gkItnvoLc8iutJscrABD+ZnP9oFKzO7uopQai0YCEvohUC
-         BBqw==
+        b=EYBorRCV56NHY1KL6o0CyMC1OmLFnrQJApytrbvYf9I1y7g9dOCqy38BqJ4Wn9vTRU
+         1JugQVQ/oF/VgzP6eJoV0Dui6Mqpf3zONkzIpFWOOt+VsWe2XsX/52/xjmXAxNcxHTwa
+         RGhI2VxUQvZgWhD6CPMjqIcezKwO7hZyd+vgKbnSYWWxRdxSKymxg1wod+1cKpajpuiC
+         5WsJJwrUpQnJ1R5PhJNTS+Cm9DcHn7NXQb2Gb6MOInLxzPb1gQBxEN7RrjPRVY2q8d4+
+         +9DgvxMDec7PhtA/O8Wi7duWDwksx8suULWmaek4SdNcV/xp69XaJXXpwTHtIYCtt7WI
+         nrCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tn9hholp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=v97+vKq+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c22-20020ac87dd6000000b004009a75d84esi484032qte.241.2023.07.20.09.29.11
+        by mx.google.com with ESMTPS id m123-20020a375881000000b00767ce5a8d3fsi430102qkb.59.2023.07.20.09.36.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jul 2023 09:29:11 -0700 (PDT)
+        Thu, 20 Jul 2023 09:36:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tn9hholp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=v97+vKq+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qMWVy-0004K5-Kc; Thu, 20 Jul 2023 12:28:30 -0400
+	id 1qMWdJ-0007OG-HS; Thu, 20 Jul 2023 12:36:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qMWVy-0004Jw-0c
- for qemu-arm@nongnu.org; Thu, 20 Jul 2023 12:28:30 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ id 1qMWdI-0007Nn-8G
+ for qemu-arm@nongnu.org; Thu, 20 Jul 2023 12:36:04 -0400
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qMWVw-0003f6-Cv
- for qemu-arm@nongnu.org; Thu, 20 Jul 2023 12:28:29 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-51e56749750so1372399a12.0
- for <qemu-arm@nongnu.org>; Thu, 20 Jul 2023 09:28:27 -0700 (PDT)
+ id 1qMWdG-0007I5-IS
+ for qemu-arm@nongnu.org; Thu, 20 Jul 2023 12:36:04 -0400
+Received: by mail-lf1-x132.google.com with SMTP id
+ 2adb3069b0e04-4faaaa476a9so1596620e87.2
+ for <qemu-arm@nongnu.org>; Thu, 20 Jul 2023 09:36:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689870506; x=1690475306;
+ d=linaro.org; s=google; t=1689870960; x=1690475760;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=NmG4z32DKSrMHBIzEuBhLqUfjW/cR/ysKSc5rHDmPNM=;
- b=Tn9hholpY9DmEQbrqfqM3sSiTQiYYKHo3vLEYM3gsrUifodYq3/ncVgUCeOyP2jAr0
- 010LZdTRIjNheTCY4r4Fuw4OaCAiR60+YI2dEiDVtuf+LPg3xn1nElBTBvrpPWfcEDPm
- HbpSDA9mfYG5vechdR8lZIcY5X33J1vEmJ8kFNqjmDDHyDhiiAojBYhniUlYI7RuiOtV
- jo2mih1E6Zbr82dMAYUwcd5IuQnZZZ0tr/Hdz+jdd1AVZoQU12k4Ry2zrBPoYGDifxHK
- y6sysGa7C7sElFRWecdB5vRsWhfTttzz++EOVPmbdvlGeJrOJIdurPsyBAzo9AMkms4D
- 4bBA==
+ bh=1te5QnsGdqFFgJE8Ufpgh1r9/Gv8HuA5cGaTx2tb6/k=;
+ b=v97+vKq+RLntxc3OCeriVEI71u83ToMUoKrqfiA56avpm7YC+GVfnjtKZx0zqhNYJ1
+ VSP+HaH/PsgJ4iSsJkR5V6zE5+OdAW0HKLc8NAgAY1II3JsuWeSWuL4l7F+zaBqoNpLk
+ mpBBLexoP/1ziAPLsQyitcsmy+DpfQ2Fu2LhASnhD8G3/d53miS5uIJEvWuQXSrSjh5E
+ fhcIQsf+9TVSzIYboal8uRbeHozxFdNJI8GjcCK7i8jlyb1Z2fpbjJpSzWEAPdLGq6Qn
+ u8mSiFXY/oxmx9o93P4ydyPOXAM+2wWZpzJPWOifsDhwZ0L2tTnTQCEI8ZnDlMtfbP8l
+ EZkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689870506; x=1690475306;
+ d=1e100.net; s=20221208; t=1689870960; x=1690475760;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=NmG4z32DKSrMHBIzEuBhLqUfjW/cR/ysKSc5rHDmPNM=;
- b=LZVZejLMXaC8bxlyJTgWmWCWzDkPa7l7F9gmwN34m+sehoqVHBzzLiOr8tOwd6Nyy+
- eWHPx0jMrtzBe2+z1PNnFXvF7Nka6KXc0bDGcxt3wyLxz6Z/Oz147wzGlN/9IxJDRW5E
- JbXI+1jSbkC18V023s5jVQ99Yb/iZfHjwngHcSG4c3PHx3ECLUsz593KtMHgDtzp0rZA
- t+KJiGDOr2jdaav2z9w9jPYCypiI4JRQo0TeF+R59wJ/8CwWANBwqqHyzGMNfGFBS97v
- pp9Ox50PSNezPeal58r5AEXyblcNzxeoCbtaISewo+dxrIkXMNH5ZP00XLBp4IB8oriZ
- lpuw==
-X-Gm-Message-State: ABy/qLar/oPdpm3kDEgnYV0i9+55ojKgYMB9Na+6HFlz0eCQGoKjmHj4
- JBo8mVQ8fMZgFSjWWK9gTog0Y5/GGvLONGpoC1aErg==
-X-Received: by 2002:aa7:d54e:0:b0:521:d770:4753 with SMTP id
- u14-20020aa7d54e000000b00521d7704753mr2145797edr.13.1689870506685; Thu, 20
- Jul 2023 09:28:26 -0700 (PDT)
+ bh=1te5QnsGdqFFgJE8Ufpgh1r9/Gv8HuA5cGaTx2tb6/k=;
+ b=GAd7npJR2jszPs77wxzt45Gd74o8pWvdVXY0ARSLHfaJPiiq1v9LpFIbCfkgXR7dPZ
+ GMHl9B7fWR/EfGHhqMn46TNSYZZPEUiAkT50+gQTg7a1dNbTg0B0UD8MlsioZWUz0zPX
+ 2V6TwqopBFGjqGbiQElbC16THCYykuZ5qj+DG/OBAJEpmHGoIao35kXmJF9ohvDgN1q5
+ q66SNdVQMICnsNaejSBLZOKNnykA8Q/8Xh1DdM1hzxYQxgUaZ9MYorR8tU+lN03ehXMo
+ 0G6ZZC1uVRk7vWe4BTckH1+1Q61tdRCiGHrvgPQIFIgMWp5b8MxcdRWFQqTbkrA2n8QV
+ SXfw==
+X-Gm-Message-State: ABy/qLbyB8HPcz0pqWAHALl9LCyc25w18HwgsrBLWw9zKqxAqXQUr4BO
+ Iy+Csboy/2W5n702+SzcHQe7zbEbWZ1BTXRLot8OBg==
+X-Received: by 2002:ac2:5dea:0:b0:4fb:89e3:5ac6 with SMTP id
+ z10-20020ac25dea000000b004fb89e35ac6mr1846981lfq.62.1689870960297; Thu, 20
+ Jul 2023 09:36:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230719153018.1456180-2-jean-philippe@linaro.org>
- <20230719153018.1456180-3-jean-philippe@linaro.org>
-In-Reply-To: <20230719153018.1456180-3-jean-philippe@linaro.org>
+ <20230719153018.1456180-4-jean-philippe@linaro.org>
+In-Reply-To: <20230719153018.1456180-4-jean-philippe@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Jul 2023 17:28:15 +0100
-Message-ID: <CAFEAcA-qPRSrLievcUZsCJQ3MO0AzdfrkMM6gs+PHK-mZq51fw@mail.gmail.com>
-Subject: Re: [PATCH 1/5] target/arm/ptw: Load stage-2 tables from realm
- physical space
+Date: Thu, 20 Jul 2023 17:35:49 +0100
+Message-ID: <CAFEAcA9Wc00X3oqN2aLP1QeVbv4Ji+8x0a8nDUtgkA3fjyNWQg@mail.gmail.com>
+Subject: Re: [PATCH 2/5] target/arm/helper: Fix vae2_tlbmask()
 To: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,60 +117,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cN6KHgrecgN/
+X-TUID: YNwEnfLvV0Yr
 
 On Wed, 19 Jul 2023 at 16:56, Jean-Philippe Brucker
 <jean-philippe@linaro.org> wrote:
 >
-> In realm state, stage-2 translation tables are fetched from the realm
-> physical address space (R_PGRQD).
+> When HCR_EL2.E2H is enabled, TLB entries are formed using the EL2&0
+> translation regime, instead of the EL2 translation regime. The TLB VAE2*
+> instructions invalidate the regime that corresponds to the current value
+> of HCR_EL2.E2H.
+>
+> At the moment we only invalidate the EL2 translation regime. This causes
+> problems with RMM, which issues TLBI VAE2IS instructions with
+> HCR_EL2.E2H enabled. Update vae2_tlbmask() to take HCR_EL2.E2H into
+> account.
 >
 > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 > ---
->  target/arm/ptw.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
+>  target/arm/helper.c | 26 ++++++++++++++++++--------
+>  1 file changed, 18 insertions(+), 8 deletions(-)
 >
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index d1de934702..6318e13b98 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -164,7 +164,11 @@ static ARMMMUIdx ptw_idx_for_stage_2(CPUARMState *env, ARMMMUIdx stage2idx)
->       * an NS stage 1+2 lookup while the NS bit is 0.)
->       */
->      if (!arm_is_secure_below_el3(env) || !arm_el_is_aa64(env, 3)) {
-> -        return ARMMMUIdx_Phys_NS;
-> +        if (arm_security_space_below_el3(env) == ARMSS_Realm) {
-> +            return ARMMMUIdx_Phys_Realm;
-> +        } else {
-> +            return ARMMMUIdx_Phys_NS;
-> +        }
->      }
->      if (stage2idx == ARMMMUIdx_Stage2_S) {
->          s2walk_secure = !(env->cp15.vstcr_el2 & VSTCR_SW);
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index e1b3db6f5f..07a9ac70f5 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -4663,6 +4663,21 @@ static int vae1_tlbmask(CPUARMState *env)
+>      return mask;
+>  }
+>
+> +static int vae2_tlbmask(CPUARMState *env)
+> +{
+> +    uint64_t hcr = arm_hcr_el2_eff(env);
+> +    uint16_t mask;
+> +
+> +    if (hcr & HCR_E2H) {
+> +        mask = ARMMMUIdxBit_E20_2 |
+> +               ARMMMUIdxBit_E20_2_PAN |
+> +               ARMMMUIdxBit_E20_0;
+> +    } else {
+> +        mask = ARMMMUIdxBit_E2;
+> +    }
+> +    return mask;
+> +}
+> +
+>  /* Return 56 if TBI is enabled, 64 otherwise. */
+>  static int tlbbits_for_regime(CPUARMState *env, ARMMMUIdx mmu_idx,
+>                                uint64_t addr)
 
-This isn't wrong, but arm_is_secure_below_el3()
-calls arm_security_space_below_el3(), so we kinda
-duplicate work there. I think we should instead have:
+> @@ -4838,11 +4853,11 @@ static void tlbi_aa64_vae2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>                                     uint64_t value)
+>  {
+>      CPUState *cs = env_cpu(env);
+> +    int mask = vae2_tlbmask(env);
+>      uint64_t pageaddr = sextract64(value << 12, 0, 56);
+>      int bits = tlbbits_for_regime(env, ARMMMUIdx_E2, pageaddr);
 
-    if (!arm_el_is_aa64(env, 3)) {
-        return ARMMMUIdx_Phys_NS;
-    }
+Shouldn't the argument to tlbbits_for_regime() also change
+if we're dealing with the EL2&0 regime rather than EL2 ?
 
-    switch (arm_security_space_below_el3(env)) {
-    case ARMSS_NonSecure:
-        return ARMMUIdx_Phys_NS;
-    case ARMSS_Realm:
-        return ARMMMUIdx_Phys_Realm;
-    case ARMSS_Secure:
-        [existing code to look at the SW/NSW bits]
-        return s2walk_secure ? ...;
-    default:
-        g_assert_not_reached();
-    }
-
-The comment above the function also needs tweaking
-to say "SCR_EL3.NS or SCR_EL3.NSE bits" (we do already
-do the TLB flush in scr_write).
+>
+> -    tlb_flush_page_bits_by_mmuidx_all_cpus_synced(cs, pageaddr,
+> -                                                  ARMMMUIdxBit_E2, bits);
+> +    tlb_flush_page_bits_by_mmuidx_all_cpus_synced(cs, pageaddr, mask, bits);
+>  }
 
 thanks
 -- PMM

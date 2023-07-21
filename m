@@ -1,222 +1,196 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp132328ejb;
-        Fri, 21 Jul 2023 05:28:59 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHonQThYv/nUbf+xW3ORkzFZfrv/f2HXMFBV9CL9m9gKgSz8UUgCKltrNoYe9L67Dx23jEY
-X-Received: by 2002:a05:6358:3421:b0:134:d24d:86b with SMTP id h33-20020a056358342100b00134d24d086bmr2281180rwd.16.1689942538777;
-        Fri, 21 Jul 2023 05:28:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689942538; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp216099ejb;
+        Fri, 21 Jul 2023 07:33:17 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlF4Y9k1OuRz8sTiNcJZQf5m2Y1XHsgr/0a/m/0aU2jnnHiBsV3HrLCyYTaYsF2jAi2hwc0f
+X-Received: by 2002:a05:6808:8dc:b0:3a4:5063:dd94 with SMTP id k28-20020a05680808dc00b003a45063dd94mr2061233oij.42.1689949997542;
+        Fri, 21 Jul 2023 07:33:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689949997; cv=none;
         d=google.com; s=arc-20160816;
-        b=VgeYEQR7S1TKyfuvJrkozkyJx8lgCxx3vux2HVfXfn/1PXRUT7Qnq8HAuiedRVYNPT
-         z9z/E2vUaW5x0dx8zjQtXye53sCHFnPzsSzYEQrITPkqcyP+Hmr0YS1aMbgLHurq4MZg
-         +MmtcTO9F3q31M83OxG8EDtD2yZrAw+OxEP3P7ePy7kSiC95/GrhbWloTn+DIr7I04gy
-         +/454M7rh0ts+pd6oRVqgTU8RitvCFmlLBa11insZHsmUKE2PqSO9OVNJR38uUnCgwK7
-         yWCTxLrN5/akBXR25h5Hchdmbl/wTeMZ2JTQEwtCBsg0b+d9F0AY8GlDqPzVbvP0NGZq
-         MOmA==
+        b=d+GgMRaEXix2EIp0tCoVx0xwXXyJDrADXeRIoNymVB4aYGLu+fqqQCg2ndJEXBe6AF
+         9t4IzY3l94/UVESvezElzoIcBPSt/a4G/pBv5z1L90M4BLM82v32UlzpcEEIpH4XdKEF
+         kC0gGS3ls+I0ykECmQkU1q0UFMxR0RJ+zE4+htu+YVPa1vOMU2SXd9c3fRAZrcICdtHr
+         UZU+7m8jqF4k1NWYHLqt2PKQcG9jrmc323dgxe0dcyhbAbnnv/U8P0stQPIz2tvBMmMh
+         mfX1eAE2W4Xm3ogFsKh8AmE81i+XWR6/B4VdzgF9zpIE/oTLT4VGff6R7gudJsu20T6Z
+         2+4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:cc:to:subject
-         :message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=lMGrLA74ax3ZXDdbQTIvZqhbtdK8cEtRGYrB0J/L0kE=;
-        fh=ethwcqtPxHdO0tDt/06mmMOLky3+NTx1ENrIFzoo90I=;
-        b=SBWK7OmRzoD5hNtqE6f4Tbdnz8SpAyKJFeZ+8HHQNH4TawMajDYgbZ3N3NwjQxFUrJ
-         mywD+QZ8z1MHeKcb/e0JQULzHwOC8yA2q7LrVFrgCiCpJa2LYTnGZ0nTmxRJyb3RmsjO
-         m9Z5Rnw2RluRJQbzoFtoF+w5IsTZ70dfReeH5QVTBWqZr5IkoH0Y8PxOjgBDbZSIXW9o
-         TZQfCfJ/3aFIlZD0YF74ZHixH6CFkeUIaYUCwLXxemgopaY+CgxmvDMzI69hhEe00d/a
-         T2BRA83IDHeAVYQeGSF1iLPDSd+tkiowoN8kzmF80YBdL/Qq/dBMyyUaUfh7FcoQVg/y
-         Biug==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=9Eu0+efAdWmcM1kvXZ0gk+7iJlGZwvte0bs6QH7LutQ=;
+        fh=jvpdohKmRoZMO537s6xMKXXtj7EZws1LOMQI/oP4vXs=;
+        b=qCPx316S6tdv66AB6zl9c5YqVXtuXyS7w7qUYYXxNAgJxyTZGvXYq91G9wG7r8jgwO
+         ziN/dMjheNw3x0bJEy32fuYJrIPLFVooXYmTHXZXIt63bM+pJFLrIZ2J/iDEwwXaS7Si
+         XPF6h9UVbZCnfoyUYCQXb3/8BA1JPJBjDQ13KS9auKkXHHxuwv3QkCGOVWc/jQdtkBOm
+         soFaz74qDKxjp9g1NBTpqurFDYEAwTKa+CyLxTfQ+aQEG6uHMvdxYcbw87woM1llKgDA
+         PF7XW5Vyfugde9C2gVgFx70aI3Zi43zOAvqAs7+gMR9ylAr68A3Vzwwl0AZ4IC/CFfvT
+         A+0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a85fv4Tz;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="p+P/js7F";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id w17-20020a63f511000000b005404f8dd0easi2726884pgh.292.2023.07.21.05.28.58;
-        Fri, 21 Jul 2023 05:28:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g14-20020a0cf08e000000b00635edc7414bsi1527436qvk.387.2023.07.21.07.33.17
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 21 Jul 2023 07:33:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a85fv4Tz;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="p+P/js7F";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229847AbjGUM25 (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Fri, 21 Jul 2023 08:28:57 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:41918 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229601AbjGUM24 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 21 Jul 2023 08:28:56 -0400
-Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com [IPv6:2a00:1450:4864:20::52a])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id DD1F71731
-        for <kvm@vger.kernel.org>; Fri, 21 Jul 2023 05:28:54 -0700 (PDT)
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-51e6113437cso2508335a12.2
-        for <kvm@vger.kernel.org>; Fri, 21 Jul 2023 05:28:54 -0700 (PDT)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qMrBW-0005EA-NT; Fri, 21 Jul 2023 10:32:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qMrBV-0005Dr-Ht
+ for qemu-arm@nongnu.org; Fri, 21 Jul 2023 10:32:45 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qMrBT-00085t-Oh
+ for qemu-arm@nongnu.org; Fri, 21 Jul 2023 10:32:45 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-316feb137a7so1693848f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 21 Jul 2023 07:32:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689942533; x=1690547333;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lMGrLA74ax3ZXDdbQTIvZqhbtdK8cEtRGYrB0J/L0kE=;
-        b=a85fv4Tz9nVWuNNi+YAo/HFpozLqoOAh1YqMAiq7X6K3vPucvzi61+FHdM4mP5Q1km
-         KEKiB1fnydjd8groHB84sFPJE8ATy0EPvt6DapSQKLTbtv/QYMd1K/N24Q9geNbLm6Tm
-         zjW3cA+ufAjUgzDh+jwae+bsop1ZWrhFXszOaNWNaVbfbl3AO4ebsh3/iTMRnAG9Ctzq
-         TC4AFjBIwN+sz9mqTr/pPyinvD3ZDu9wAOn02vHNkFy5WyaJtnRXlgCdnXB+YwOEP+6X
-         gDtCphGeKhs6WamZ4YzvRzcoe+pnhBoUhWGIjziGShZcXuaq9YSJlSrHg9DnThAWS7OO
-         AEuA==
+ d=linaro.org; s=google; t=1689949961; x=1690554761;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=9Eu0+efAdWmcM1kvXZ0gk+7iJlGZwvte0bs6QH7LutQ=;
+ b=p+P/js7FdoZ0UlkJmWtnUKM5bZRYeVU7S5ga4C8XqVq0zxS+AMNuM63g//wk+ve+k8
+ l0bwSJ/KpOGfGXQWC6Lbal6yUg5Z4EXiHaYnSra6IiX0rCG3VrN6w3K0RMuYj3ialsLH
+ ycrelooUaA0C+ieDVW62KHAA7fA9NzFyP/hky/RLhYsfHq+r1AbYkOaH/9hJ5ru4z+fC
+ z3ev1ZCRyYWaUAwAGivpXdt8vBjwaQPQXXa37nps8AipfX2DHbnTd+1LwZ4lKr2xHwth
+ 6AuKb+zhEsQZQogZ/HbOIQ1PX1LJBgbra8StggTUHbjHHh6YDHSf8w/akYwrFMgvcAzF
+ WyoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689942533; x=1690547333;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lMGrLA74ax3ZXDdbQTIvZqhbtdK8cEtRGYrB0J/L0kE=;
-        b=b8Nqnr6DYmrxctmY7kPFfKAEyFwkW18egXl/dq4qVEUfrlKHMWRS9nO3OLk0tRmY6O
-         XPFZ1z1JXbfkcODx+AAaXfVW4NwoflpmZ3j8tcYU0oXmTHM4JTORzwPme8xMDXRsVXpv
-         iGnKTUlJsuZvLqWNxiFN8jPRrVCjJ6k9cCfIqthLeQCPYGZozujhT+qekb1sKT4cNqn4
-         NxdNpVkMafk9+DKGE/kcgXPkMFsySevWy+SZkiKQhRjPG9AYdLSICZyzGY8fTcwskZ1k
-         xvL52M4zek2ELn1sjTWC//PfdJ1kLB0Tn8E++LQy/Qq0t6jx5fyJX71+pUdbpov/i/WE
-         aNjg==
-X-Gm-Message-State: ABy/qLZU4gqYpx70O+ioLwB3kVajl9eLNdl3JALxb7ouWZXzcDXV0QZ5
-        F9mGWAvRIHclhLoXPz3XmgLpXTJP7LWjatpOTs9OYQ==
-X-Received: by 2002:aa7:d50f:0:b0:51d:d615:19af with SMTP id
- y15-20020aa7d50f000000b0051dd61519afmr1465566edq.28.1689942533305; Fri, 21
- Jul 2023 05:28:53 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1689949961; x=1690554761;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9Eu0+efAdWmcM1kvXZ0gk+7iJlGZwvte0bs6QH7LutQ=;
+ b=cXIbG+uu10n0lB2zMdKV/hLwIKfGlt+NMo7SrcVDqeNFCBrg4Rb4bRKwKfP7LcAOl2
+ p0W8GYE/jCZITZ6z4+1pOer7P9szFB2P2VEo0j5zFzgcUs/vL3HAE2wyC/xgqqd0cAgF
+ uODKTW2HXrpLBH6JDxHOjx3/qraHL4j1CVf4WG4M6XShPCPZ+Lw6KIrZNIqgL3ef9MeS
+ uZKXTZwglC+y4LdPNzdrJb7gxWjckjImFquXmqmMQz468aZeQ7zPJuB84Sn5VwWSevMD
+ fZG2QLhMcxhv6DwjNbaGId2ixURVRBAYdmt7KveysxTnjx9BP4ZJc7lvbDt83FL9m6pz
+ QLOQ==
+X-Gm-Message-State: ABy/qLZWy+kQWMo+yurfi4P2JgsxeV4MkhwB8GXN2P4xM01jdD1rCWEg
+ fUpFml5f5uE+0M6gVEyviBNxbuscq+67z7FMSog=
+X-Received: by 2002:adf:f488:0:b0:315:9fb7:bd9 with SMTP id
+ l8-20020adff488000000b003159fb70bd9mr1445146wro.69.1689949961429; 
+ Fri, 21 Jul 2023 07:32:41 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ j6-20020a5d6046000000b003143b14848dsm4304533wrt.102.2023.07.21.07.32.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Jul 2023 07:32:40 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-8.1] target/arm: Special case M-profile in debug_helper.c
+ code
+Date: Fri, 21 Jul 2023 15:32:39 +0100
+Message-Id: <20230721143239.1753066-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20230721062421.12017-1-akihiko.odaki@daynix.com> <05d4e5ff-dc5c-b2da-7ae8-ac135d4a73c9@linaro.org>
-In-Reply-To: <05d4e5ff-dc5c-b2da-7ae8-ac135d4a73c9@linaro.org>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Fri, 21 Jul 2023 13:28:42 +0100
-Message-ID: <CAFEAcA_xTAnZ+CO8L3yhUMht3fL=rspk94z-hmZKgdABLAgBNA@mail.gmail.com>
-Subject: Re: [PATCH v2] accel/kvm: Specify default IPA size for arm64
-To:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc:     Akihiko Odaki <akihiko.odaki@daynix.com>, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_BLOCKED,
-        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: zG3g8xcBij1/
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eEo+IDT889Nk
 
-On Fri, 21 Jul 2023 at 08:30, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Hi Akihiko,
->
-> On 21/7/23 08:24, Akihiko Odaki wrote:
-> > libvirt uses "none" machine type to test KVM availability. Before this
-> > change, QEMU used to pass 0 as machine type when calling KVM_CREATE_VM.
-> >
-> > The kernel documentation says:
-> >> On arm64, the physical address size for a VM (IPA Size limit) is
-> >> limited to 40bits by default. The limit can be configured if the host
-> >> supports the extension KVM_CAP_ARM_VM_IPA_SIZE. When supported, use
-> >> KVM_VM_TYPE_ARM_IPA_SIZE(IPA_Bits) to set the size in the machine type
-> >> identifier, where IPA_Bits is the maximum width of any physical
-> >> address used by the VM. The IPA_Bits is encoded in bits[7-0] of the
-> >> machine type identifier.
-> >>
-> >> e.g, to configure a guest to use 48bit physical address size::
-> >>
-> >>      vm_fd =3D ioctl(dev_fd, KVM_CREATE_VM, KVM_VM_TYPE_ARM_IPA_SIZE(4=
-8));
-> >>
-> >> The requested size (IPA_Bits) must be:
-> >>
-> >>   =3D=3D   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> >>    0   Implies default size, 40bits (for backward compatibility)
-> >>    N   Implies N bits, where N is a positive integer such that,
-> >>        32 <=3D N <=3D Host_IPA_Limit
-> >>   =3D=3D   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> >
-> >> Host_IPA_Limit is the maximum possible value for IPA_Bits on the host
-> >> and is dependent on the CPU capability and the kernel configuration.
-> >> The limit can be retrieved using KVM_CAP_ARM_VM_IPA_SIZE of the
-> >> KVM_CHECK_EXTENSION ioctl() at run-time.
-> >>
-> >> Creation of the VM will fail if the requested IPA size (whether it is
-> >> implicit or explicit) is unsupported on the host.
-> > https://docs.kernel.org/virt/kvm/api.html#kvm-create-vm
-> >
-> > So if Host_IPA_Limit < 40, such KVM_CREATE_VM will fail, and libvirt
-> > incorrectly thinks KVM is not available. This actually happened on M2
-> > MacBook Air.
-> >
-> > Fix this by specifying 32 for IPA_Bits as any arm64 system should
-> > support the value according to the documentation.
-> >
-> > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> > ---
-> > V1 -> V2: Introduced an arch hook
-> >
-> >   include/sysemu/kvm.h   | 1 +
-> >   accel/kvm/kvm-all.c    | 2 +-
-> >   target/arm/kvm.c       | 2 ++
-> >   target/i386/kvm/kvm.c  | 2 ++
-> >   target/mips/kvm.c      | 2 ++
-> >   target/ppc/kvm.c       | 2 ++
-> >   target/riscv/kvm.c     | 2 ++
-> >   target/s390x/kvm/kvm.c | 2 ++
-> >   8 files changed, 14 insertions(+), 1 deletion(-)
->
-> My understanding of Peter's suggestion would be smth like:
->
-> -- >8 --
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index 115f0cca79..c0af15eb6c 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -201,10 +201,15 @@ typedef struct KVMCapabilityInfo {
->
->   struct KVMState;
->
-> +struct KVMClass {
-> +    AccelClass parent_class;
-> +
-> +    int default_vm_type;
+A lot of the code called from helper_exception_bkpt_insn() is written
+assuming A-profile, but we will also call this helper on M-profile
+CPUs when they execute a BKPT insn.  This used to work by accident,
+but recent changes mean that we will hit an assert when some of this
+code calls down into lower level functions that end up calling
+arm_security_space_below_el3(), arm_el_is_aa64(), and other functions
+that now explicitly assert that the guest CPU is not M-profile.
 
-The kernel docs say you need to check for the
-KVM_CAP_ARM_VM_IPA_SIZE before you can pass something other
-than zero to the KVM_CREATE_VM ioctl, so this needs to be
-a method, not just a value. (kvm_arm_get_max_vm_ipa_size()
-will do this bit for you.)
+Handle M-profile directly to avoid the assertions:
+ * in arm_debug_target_el(), M-profile debug exceptions always
+   go to EL1
+ * in arm_debug_exception_fsr(), M-profile always uses the short
+   format FSR (compare commit d7fe699be54b2, though in this case
+   the code in arm_v7m_cpu_do_interrupt() does not need to
+   look at the FSR value at all)
 
-If the machine doesn't provide a kvm_type method, we
-should default to "largest the host supports", I think.
+Cc: qemu-stable@nongnu.org
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1775
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Not sure exactly when this assert() got in (probably in the
+semi-recent refactorings for realm support), but it won't hurt
+to backport the fix even if the older QEMU doesn't assert().
+---
+ target/arm/debug_helper.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
-I was wondering if we could have one per-arch
-method for "actually create the VM" that both was
-a place for arm to set the default vm type and
-also let us get the TARGET_S390X and TARGET_PPC
-ifdefs out of this bit of kvm-all.c, but maybe that would
-look just a bit too awkward:
-
-     if (kc->create_vm(s, board_sets_kvm_type, board_kvm_type) < 0) {
-         goto err;
+diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
+index 8362462a07e..abe72e35ae6 100644
+--- a/target/arm/debug_helper.c
++++ b/target/arm/debug_helper.c
+@@ -21,6 +21,10 @@ static int arm_debug_target_el(CPUARMState *env)
+     bool secure = arm_is_secure(env);
+     bool route_to_el2 = false;
+ 
++    if (arm_feature(env, ARM_FEATURE_M)) {
++        return 1;
++    }
++
+     if (arm_is_el2_enabled(env)) {
+         route_to_el2 = env->cp15.hcr_el2 & HCR_TGE ||
+                        env->cp15.mdcr_el2 & MDCR_TDE;
+@@ -434,18 +438,20 @@ static uint32_t arm_debug_exception_fsr(CPUARMState *env)
+ {
+     ARMMMUFaultInfo fi = { .type = ARMFault_Debug };
+     int target_el = arm_debug_target_el(env);
+-    bool using_lpae = false;
++    bool using_lpae;
+ 
+-    if (target_el == 2 || arm_el_is_aa64(env, target_el)) {
++    if (arm_feature(env, ARM_FEATURE_M)) {
++        using_lpae = false;
++    } else if (target_el == 2 || arm_el_is_aa64(env, target_el)) {
+         using_lpae = true;
+     } else if (arm_feature(env, ARM_FEATURE_PMSA) &&
+                arm_feature(env, ARM_FEATURE_V8)) {
+         using_lpae = true;
++    } else if (arm_feature(env, ARM_FEATURE_LPAE) &&
++               (env->cp15.tcr_el[target_el] & TTBCR_EAE)) {
++        using_lpae = true;
+     } else {
+-        if (arm_feature(env, ARM_FEATURE_LPAE) &&
+-            (env->cp15.tcr_el[target_el] & TTBCR_EAE)) {
+-            using_lpae = true;
+-        }
++        using_lpae = false;
      }
+ 
+     if (using_lpae) {
+-- 
+2.34.1
 
-where board_sets_kvm_type is a bool, true if board_kvm_type
-is valid, and board_kvm_type is whatever the board's
-mc->kvm_type method told us.
-
-(Default impl of the method: call KVM_CREATE_VM ioctl
-with retry-on-eintr, printing the simple error message;
-PPC and s390 versions similar but with their arch
-specific extra messages; arm version has a different
-default type if board_sets_kvm_type is false.)
-
-Not trying to do both of those things with one method
-would result in a simpler
-   type =3D kc->get_default_kvm_type(s);
-API.
-
-thanks
--- PMM

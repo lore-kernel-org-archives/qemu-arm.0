@@ -1,225 +1,385 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp8354549eje;
-        Fri, 21 Jul 2023 00:30:42 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFW6UgnKCCrE6okUQHDfjscw2GEaXeiSI/SpaUeT/Z1yL72de0oQW9lPISbD1s2Je8ZWOpy
-X-Received: by 2002:a05:6871:551:b0:1b7:2dfe:c221 with SMTP id t17-20020a056871055100b001b72dfec221mr1324399oal.33.1689924642499;
-        Fri, 21 Jul 2023 00:30:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689924642; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp1942ejb;
+        Fri, 21 Jul 2023 01:02:03 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEbSewkMhuAYWbmhdT6YSibI9XCfhaCPJAcu+IBP4BJ3KWSXeIQQs2ShpFZ6lUB/uI1OteQ
+X-Received: by 2002:a25:21c3:0:b0:c5d:f2af:5a24 with SMTP id h186-20020a2521c3000000b00c5df2af5a24mr1049754ybh.14.1689926523263;
+        Fri, 21 Jul 2023 01:02:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689926523; cv=none;
         d=google.com; s=arc-20160816;
-        b=QFhxmjnTOsUCPFGGlG1FQAGrU4N0gCLWE70LiQk4KWltURoEvE+ZgDX3VFIsOurMaY
-         HuxWPycbc74+D29Tg1c+HlwXtVUSAJ3QyNtE8vYLfC4NKlHaQ9Gp1vpzJCrDOMXKLTcd
-         WLCYLHzjq0jmZZRoR9ooPAEPeD1kXpYgbEBYmfxU2WZmll65JHvxXHdIXLqoQf9DDo0b
-         NR6qQNpj/e3K79j3OlfTvoEWQVW7JwYgno/BrdD47rb+uKcgKTqFv88jGlY5XO/aUGrZ
-         uq/wqcokfz1FGIx7l69JmcuEWPzXf1aLJbBotvt2PNQZLj0NcPHgQ64Xeu0LYCm92Hzy
-         rMGg==
+        b=qvxcTO0fJG1/G2+4PXHrezSKv1KB9iCcgvmWrV5Wt9OCI8I6se0S/23pR5CljKn33N
+         yhvSNdJlL9FD16WdW3DaF7QOvs3kI2a1Mo60uTTYuNBoKEw3Ld0ik28Y+l/mQjDOWmZX
+         D8RfFlUjOs2LiqZR+ETxZ8JycEXrZu9ICIl3NdsnQjvIKN0F9pyoUKjWHuSMHMgGCeDx
+         KN9BwHOARnl5DVgm5extUGuNi254AyjbyJi5icuA4iGXLO+ixMfzuOuUC/CDT788WWlC
+         KAoewXk3yYQFA+CN7u49NBlGt/B+DCXLFFISaztUipHKTWpkbd94+JKAtEsL7IMRJ3er
+         N5ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=sVrhGsRHqpb0SJmQRvO/9lQlxmoayB+lW1zezQyO9Ok=;
-        fh=zlpASWiFX/cotIFAyrriCRJDmFpobIKVCGxuAsr+eCQ=;
-        b=R5fnHu8v7u/uuaqCXcXGtCd7TmYhCGHulM9Tr+tDjr2Om42yUuVE9+sFax6Vi6YLpP
-         I92/H+VIHDgE3A8hsqNqt1mCRipzm0nVOaP03KC1yb0tjRNSq6b5DBdQVc/0bUfkYNBJ
-         oIX39hUDVKIMejaAyKwOY2nv6aT2l9R1v0F1W1PPB42dvbtO1dbvMJwtRCx+do/KXuEN
-         1lBYhwLGj5gUBcVRcdy7QZicuylXHDA0WRl59PETSobZFPjK6sDQhkdcOKLoEmoHdPjY
-         fz+1up1mOHUprCFfy8Oue1AJt16sfwHetE4g0Eea3s3JOaSly0CR0HkY9PlSrE1Jn9Qv
-         vXBA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:ui-outboundreport
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=awzrAyFoAKegcWCVSpcYGGrZU5o07C2lPMAqouzzhEM=;
+        fh=VPeKRTMc+Q/WwQVJ1eDKaSXVvis0xGIYsfROpR+tRow=;
+        b=SVn360aANyidhSEq4EAhGU7CUhqIkTCgInSdkheR5rNh6QyH5OjNqQ520I8kvOTMkm
+         8N7mDJ5VJ8sGWO+gsZWCaCg5DyZRF1kPEye79LnJmpEcxwgxw77/+AIp6lUlfBKSLiSJ
+         uuvOvrl5Fjm+ra0F3fooB9+ugKhB8wjvLfL1TujeXRjc82NVQjqL8uI28/RpaX/OThXH
+         4eyMspqgn5VGNnS1p2ZNABxXKpuqUGwvVUPx0V+h7TNhp8VHN972AvZASQZN7Gt4YVJH
+         1lULPiYrh9Xx0xPxPHQwQ2nsFesgXHq42nM5rP/jQFqLwwcx8AYNCGWDVoPuOY1vp0OT
+         YW8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="QpJl7S/e";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id c9-20020aa78e09000000b006824cda542fsi2315292pfr.395.2023.07.21.00.30.42;
-        Fri, 21 Jul 2023 00:30:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j2-20020a0cf302000000b0063cdc0f8f90si396040qvl.290.2023.07.21.01.02.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 21 Jul 2023 01:02:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="QpJl7S/e";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S230133AbjGUHak (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Fri, 21 Jul 2023 03:30:40 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:55874 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229832AbjGUHai (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 21 Jul 2023 03:30:38 -0400
-Received: from mail-lj1-x22d.google.com (mail-lj1-x22d.google.com [IPv6:2a00:1450:4864:20::22d])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 8F5C210DB
-        for <kvm@vger.kernel.org>; Fri, 21 Jul 2023 00:30:36 -0700 (PDT)
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2b962535808so23774621fa.0
-        for <kvm@vger.kernel.org>; Fri, 21 Jul 2023 00:30:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689924635; x=1690529435;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=sVrhGsRHqpb0SJmQRvO/9lQlxmoayB+lW1zezQyO9Ok=;
-        b=QpJl7S/e8badX8jT95+A/KHzGPwYS3CIgkPxSBAdlbXGEl84S3Prc7ajvX3bS3ZMLe
-         0bIcNJRnAcJ4lpsTOSf1+U3gXYSsCdzrZL41z41rZk0anVizEuY0AS0RsVF5bAZsWGqG
-         QFCWCBD2K8OtORWxx7alTRFoZcKbzdW/Fnkczw7/J+J/x2+je33unLiqN4Wi4T9erBvS
-         MFbe9434/epO2KOuq4tOS0qHmBuotT4snym+ndYn7RDNrBy0BwR3d3LLysT8Hzmq2Z6l
-         KLkkJU6Umev44R31K1w9dkkh5qgMkpSAOY9FCyrCpdQFqpO52x/T1LhQK22u5Tdb9yhV
-         Wmvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689924635; x=1690529435;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=sVrhGsRHqpb0SJmQRvO/9lQlxmoayB+lW1zezQyO9Ok=;
-        b=Tpb2bg162mtenFdNEs7hJJViC+Ras1r9iVaE9iLfkRbWsOCHZNQ5ZkLLGfMDEEObbo
-         F0TA4vmL9DyLx8eDQb+b7d1jSDCUR+nfu9VNBfqxXyyWiWgEURB7tCbwOCZ+j3EKYaGT
-         bWLUf91uy1gzxs1GuBgTgFrJ+fvwKpsz61Vhbo1B6i6Fm3FYigZgElxhfe04j5Y9UVwp
-         MeKb/y1R0uU1AtLPPvNKme/Ep4wj6exEtZA7ofEToVKhXZXA5K+zNi+cAq3SycMCAWWJ
-         WMvcdgrprJnCXf+Nr+pA4drhBBHbBnCjJHwYQJWzKAsw/4puJ2wEPCdWTMO6Ywef6Zmv
-         ASDg==
-X-Gm-Message-State: ABy/qLbyoxpD8imSt+ikejyuTCyrbmgwkpqu3sda2ZfcYN+XCE892RtF
-        0fBjmnHUl2yqcimgJOxMXp/50g==
-X-Received: by 2002:a2e:b0f0:0:b0:2b9:5b06:b724 with SMTP id h16-20020a2eb0f0000000b002b95b06b724mr1011423ljl.42.1689924634806;
-        Fri, 21 Jul 2023 00:30:34 -0700 (PDT)
-Received: from [192.168.96.175] (97.red-88-29-184.dynamicip.rima-tde.net. [88.29.184.97])
-        by smtp.gmail.com with ESMTPSA id y13-20020a05600c364d00b003fbb25da65bsm2795160wmq.30.2023.07.21.00.30.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Jul 2023 00:30:34 -0700 (PDT)
-Message-ID: <05d4e5ff-dc5c-b2da-7ae8-ac135d4a73c9@linaro.org>
-Date:   Fri, 21 Jul 2023 09:30:31 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qMl4p-0007Ar-98; Fri, 21 Jul 2023 04:01:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1qMl4m-0007AX-Ul; Fri, 21 Jul 2023 04:01:25 -0400
+Received: from mout.kundenserver.de ([212.227.126.135])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1qMl4k-0008FW-N3; Fri, 21 Jul 2023 04:01:24 -0400
+Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M7Jj2-1qHEkk47PI-007krL; Fri, 21 Jul 2023 10:01:03 +0200
+Message-ID: <97ec681b-786a-b65b-2e3b-d62c61b00c76@vivier.eu>
+Date: Fri, 21 Jul 2023 10:00:55 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [PATCH v2] accel/kvm: Specify default IPA size for arm64
-To:     Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>
-References: <20230721062421.12017-1-akihiko.odaki@daynix.com>
-Content-Language: en-US
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230721062421.12017-1-akihiko.odaki@daynix.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH] hw: Add compat machines for 8.2
+Content-Language: fr
+To: Cornelia Huck <cohuck@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org
+References: <20230718142235.135319-1-cohuck@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+In-Reply-To: <20230718142235.135319-1-cohuck@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-2.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,
-        RCVD_IN_DNSWL_BLOCKED,SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,
-        URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: bfkPGR2mX1MO
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:aSTYam1uo5cwxvh9a6B8qMKlBs3uV3mjfOgNUCwb6rZjQovQm3T
+ nkW+YPoudvt5S8V1mrxWxRNJ/5J1l6OLGbUjlsY2e+LTNOu3PT1DvRccjhYuTTZIaGwl4R7
+ dCM1QmfyULdJG2UM+sa+/Dl0MaDi5/JzeOcdttoC0EgMfMO/YN8Ec/6Ga54cFxa+sqfNAq+
+ i7kYDzy0UhxFcYPnFu4oQ==
+UI-OutboundReport: notjunk:1;M01:P0:vbmZv0mu2aQ=;VvegFnKIKMqrBWxWpgzdv+imVUD
+ Bhx7Y4LoZc4Qt/40h+olXhNuDo1vh6a5EG6xCvBc90a40v8EffVBTkC3j4XEvl5rJi3geG40G
+ 3h6JiCZ831Lx+tKrLGs57QDRwFyN03OVThJBZs1tV49nRspYbBAcD2yqi3usAhmESuCTtJ6oU
+ ebtM2s7ecYlZO6+FQYhe4MYYeXAV13NCUoyDtJrj1j9fwvyQvbc0sw6gS3GdtBOHIBM7/lWZs
+ bHiJ8u4jm337M1MbtbDOrYS9/+QhE51Zc+7MFGpz0NOQOU3mPg7jKC4RD7lKig8yIvDaoBK9M
+ 2dwD+Av1LWw6vkqa7B34hwZ37SjsA37Kxg8yLgLVNYkpjRHYWAqYElkVVJ6i1SxRDdVsgzihE
+ ZVSqAm+cMU1ehCi5Ug/EhmzbeqB8G2dxkzCkrCNzDTtaKQfkNou/SNKe7+uyq0p0L0umivmzp
+ V40qAJ89pyKHjgOiVMwSCEfH2RpdmrV34lhpMtxsJ5eN0MKg3sFpw1AFpCknYr2RMbm1k8jmu
+ yao6bHIy8o2sceRUDr2NDY+Pkbgqc8lP0TMpypUKopov7Hx8JG28oWDMs78841LuNj8VCK3vj
+ dBL+Kw4YhxkEBe6DLmTUrA/cyak1iQ8I5kKMaAtD0W2Z2I/zMZZ1m5MDRhh08A8AueQwJ1Aok
+ 8fodjx6VGtUsz+tHblOcblm0//uREh7wZioqjmy21w==
+Received-SPF: none client-ip=212.227.126.135; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.096,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dWJbvTltjZCa
 
-Hi Akihiko,
-
-On 21/7/23 08:24, Akihiko Odaki wrote:
-> libvirt uses "none" machine type to test KVM availability. Before this
-> change, QEMU used to pass 0 as machine type when calling KVM_CREATE_VM.
+Le 18/07/2023 à 16:22, Cornelia Huck a écrit :
+> Add 8.2 machine types for arm/i440fx/m68k/q35/s390x/spapr.
 > 
-> The kernel documentation says:
->> On arm64, the physical address size for a VM (IPA Size limit) is
->> limited to 40bits by default. The limit can be configured if the host
->> supports the extension KVM_CAP_ARM_VM_IPA_SIZE. When supported, use
->> KVM_VM_TYPE_ARM_IPA_SIZE(IPA_Bits) to set the size in the machine type
->> identifier, where IPA_Bits is the maximum width of any physical
->> address used by the VM. The IPA_Bits is encoded in bits[7-0] of the
->> machine type identifier.
->>
->> e.g, to configure a guest to use 48bit physical address size::
->>
->>      vm_fd = ioctl(dev_fd, KVM_CREATE_VM, KVM_VM_TYPE_ARM_IPA_SIZE(48));
->>
->> The requested size (IPA_Bits) must be:
->>
->>   ==   =========================================================
->>    0   Implies default size, 40bits (for backward compatibility)
->>    N   Implies N bits, where N is a positive integer such that,
->>        32 <= N <= Host_IPA_Limit
->>   ==   =========================================================
-> 
->> Host_IPA_Limit is the maximum possible value for IPA_Bits on the host
->> and is dependent on the CPU capability and the kernel configuration.
->> The limit can be retrieved using KVM_CAP_ARM_VM_IPA_SIZE of the
->> KVM_CHECK_EXTENSION ioctl() at run-time.
->>
->> Creation of the VM will fail if the requested IPA size (whether it is
->> implicit or explicit) is unsupported on the host.
-> https://docs.kernel.org/virt/kvm/api.html#kvm-create-vm
-> 
-> So if Host_IPA_Limit < 40, such KVM_CREATE_VM will fail, and libvirt
-> incorrectly thinks KVM is not available. This actually happened on M2
-> MacBook Air.
-> 
-> Fix this by specifying 32 for IPA_Bits as any arm64 system should
-> support the value according to the documentation.
-> 
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 > ---
-> V1 -> V2: Introduced an arch hook
+>   hw/arm/virt.c              |  9 ++++++++-
+>   hw/core/machine.c          |  3 +++
+>   hw/i386/pc.c               |  3 +++
+>   hw/i386/pc_piix.c          | 16 +++++++++++++---
+>   hw/i386/pc_q35.c           | 14 ++++++++++++--
+>   hw/m68k/virt.c             |  9 ++++++++-
+>   hw/ppc/spapr.c             | 15 +++++++++++++--
+>   hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>   include/hw/boards.h        |  3 +++
+>   include/hw/i386/pc.h       |  3 +++
+>   10 files changed, 79 insertions(+), 10 deletions(-)
 > 
->   include/sysemu/kvm.h   | 1 +
->   accel/kvm/kvm-all.c    | 2 +-
->   target/arm/kvm.c       | 2 ++
->   target/i386/kvm/kvm.c  | 2 ++
->   target/mips/kvm.c      | 2 ++
->   target/ppc/kvm.c       | 2 ++
->   target/riscv/kvm.c     | 2 ++
->   target/s390x/kvm/kvm.c | 2 ++
->   8 files changed, 14 insertions(+), 1 deletion(-)
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 7d9dbc26633a..2a560271b5fc 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -3170,10 +3170,17 @@ static void machvirt_machine_init(void)
+>   }
+>   type_init(machvirt_machine_init);
+>   
+> +static void virt_machine_8_2_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(8, 2)
+> +
+>   static void virt_machine_8_1_options(MachineClass *mc)
+>   {
+> +    virt_machine_8_2_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_8_1, hw_compat_8_1_len);
+>   }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(8, 1)
+> +DEFINE_VIRT_MACHINE(8, 1)
+>   
+>   static void virt_machine_8_0_options(MachineClass *mc)
+>   {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index f0d35c640184..da699cf4e147 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -39,6 +39,9 @@
+>   #include "hw/virtio/virtio.h"
+>   #include "hw/virtio/virtio-pci.h"
+>   
+> +GlobalProperty hw_compat_8_1[] = {};
+> +const size_t hw_compat_8_1_len = G_N_ELEMENTS(hw_compat_8_1);
+> +
+>   GlobalProperty hw_compat_8_0[] = {
+>       { "migration", "multifd-flush-after-each-section", "on"},
+>       { TYPE_PCI_DEVICE, "x-pcie-ari-nextfn-1", "on" },
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 3109d5e0e035..54838c0c411d 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -114,6 +114,9 @@
+>       { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
+>       { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
+>   
+> +GlobalProperty pc_compat_8_1[] = {};
+> +const size_t pc_compat_8_1_len = G_N_ELEMENTS(pc_compat_8_1);
+> +
+>   GlobalProperty pc_compat_8_0[] = {
+>       { "virtio-mem", "unplugged-inaccessible", "auto" },
+>   };
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index ac72e8f5bee1..ce1ac9527493 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -504,13 +504,25 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>       machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+>   }
+>   
+> -static void pc_i440fx_8_1_machine_options(MachineClass *m)
+> +static void pc_i440fx_8_2_machine_options(MachineClass *m)
+>   {
+>       pc_i440fx_machine_options(m);
+>       m->alias = "pc";
+>       m->is_default = true;
+>   }
+>   
+> +DEFINE_I440FX_MACHINE(v8_2, "pc-i440fx-8.2", NULL,
+> +                      pc_i440fx_8_2_machine_options);
+> +
+> +static void pc_i440fx_8_1_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_8_2_machine_options(m);
+> +    m->alias = NULL;
+> +    m->is_default = false;
+> +    compat_props_add(m->compat_props, hw_compat_8_1, hw_compat_8_1_len);
+> +    compat_props_add(m->compat_props, pc_compat_8_1, pc_compat_8_1_len);
+> +}
+> +
+>   DEFINE_I440FX_MACHINE(v8_1, "pc-i440fx-8.1", NULL,
+>                         pc_i440fx_8_1_machine_options);
+>   
+> @@ -519,8 +531,6 @@ static void pc_i440fx_8_0_machine_options(MachineClass *m)
+>       PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>   
+>       pc_i440fx_8_1_machine_options(m);
+> -    m->alias = NULL;
+> -    m->is_default = false;
+>       compat_props_add(m->compat_props, hw_compat_8_0, hw_compat_8_0_len);
+>       compat_props_add(m->compat_props, pc_compat_8_0, pc_compat_8_0_len);
+>   
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index dc27a9e223a2..37c4814bedf2 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -379,12 +379,23 @@ static void pc_q35_machine_options(MachineClass *m)
+>       machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+>   }
+>   
+> -static void pc_q35_8_1_machine_options(MachineClass *m)
+> +static void pc_q35_8_2_machine_options(MachineClass *m)
+>   {
+>       pc_q35_machine_options(m);
+>       m->alias = "q35";
+>   }
+>   
+> +DEFINE_Q35_MACHINE(v8_2, "pc-q35-8.2", NULL,
+> +                   pc_q35_8_2_machine_options);
+> +
+> +static void pc_q35_8_1_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_8_2_machine_options(m);
+> +    m->alias = NULL;
+> +    compat_props_add(m->compat_props, hw_compat_8_1, hw_compat_8_1_len);
+> +    compat_props_add(m->compat_props, pc_compat_8_1, pc_compat_8_1_len);
+> +}
+> +
+>   DEFINE_Q35_MACHINE(v8_1, "pc-q35-8.1", NULL,
+>                      pc_q35_8_1_machine_options);
+>   
+> @@ -393,7 +404,6 @@ static void pc_q35_8_0_machine_options(MachineClass *m)
+>       PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>   
+>       pc_q35_8_1_machine_options(m);
+> -    m->alias = NULL;
+>       compat_props_add(m->compat_props, hw_compat_8_0, hw_compat_8_0_len);
+>       compat_props_add(m->compat_props, pc_compat_8_0, pc_compat_8_0_len);
+>   
+> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+> index 731205b215b2..a0813f75c060 100644
+> --- a/hw/m68k/virt.c
+> +++ b/hw/m68k/virt.c
+> @@ -347,10 +347,17 @@ type_init(virt_machine_register_types)
+>       } \
+>       type_init(machvirt_machine_##major##_##minor##_init);
+>   
+> +static void virt_machine_8_2_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE(8, 2, true)
+> +
+>   static void virt_machine_8_1_options(MachineClass *mc)
+>   {
+> +    virt_machine_8_2_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_8_1, hw_compat_8_1_len);
+>   }
+> -DEFINE_VIRT_MACHINE(8, 1, true)
+> +DEFINE_VIRT_MACHINE(8, 1, false)
+>   
+>   static void virt_machine_8_0_options(MachineClass *mc)
+>   {
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 1c8b8d57a70a..622fea825605 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4752,15 +4752,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
+>       }                                                                \
+>       type_init(spapr_machine_register_##suffix)
+>   
+> +/*
+> + * pseries-8.2
+> + */
+> +static void spapr_machine_8_2_class_options(MachineClass *mc)
+> +{
+> +    /* Defaults for the latest behaviour inherited from the base class */
+> +}
+> +
+> +DEFINE_SPAPR_MACHINE(8_2, "8.2", true);
+> +
+>   /*
+>    * pseries-8.1
+>    */
+>   static void spapr_machine_8_1_class_options(MachineClass *mc)
+>   {
+> -    /* Defaults for the latest behaviour inherited from the base class */
+> +    spapr_machine_8_2_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_8_1, hw_compat_8_1_len);
+>   }
+>   
+> -DEFINE_SPAPR_MACHINE(8_1, "8.1", true);
+> +DEFINE_SPAPR_MACHINE(8_1, "8.1", false);
+>   
+>   /*
+>    * pseries-8.0
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index 4516d73ff5fc..c52a1fcf6700 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -828,14 +828,26 @@ bool css_migration_enabled(void)
+>       }                                                                         \
+>       type_init(ccw_machine_register_##suffix)
+>   
+> +static void ccw_machine_8_2_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_8_2_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE(8_2, "8.2", true);
+> +
+>   static void ccw_machine_8_1_instance_options(MachineState *machine)
+>   {
+> +    ccw_machine_8_2_instance_options(machine);
+>   }
+>   
+>   static void ccw_machine_8_1_class_options(MachineClass *mc)
+>   {
+> +    ccw_machine_8_2_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_8_1, hw_compat_8_1_len);
+>   }
+> -DEFINE_CCW_MACHINE(8_1, "8.1", true);
+> +DEFINE_CCW_MACHINE(8_1, "8.1", false);
+>   
+>   static void ccw_machine_8_0_instance_options(MachineState *machine)
+>   {
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index ed8336019801..3b541ffd2472 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -390,6 +390,9 @@ struct MachineState {
+>       } \
+>       type_init(machine_initfn##_register_types)
+>   
+> +extern GlobalProperty hw_compat_8_1[];
+> +extern const size_t hw_compat_8_1_len;
+> +
+>   extern GlobalProperty hw_compat_8_0[];
+>   extern const size_t hw_compat_8_0_len;
+>   
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index d54e8b1101e4..0fabece236cf 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -200,6 +200,9 @@ void pc_madt_cpu_entry(int uid, const CPUArchIdList *apic_ids,
+>   /* sgx.c */
+>   void pc_machine_init_sgx_epc(PCMachineState *pcms);
+>   
+> +extern GlobalProperty pc_compat_8_1[];
+> +extern const size_t pc_compat_8_1_len;
+> +
+>   extern GlobalProperty pc_compat_8_0[];
+>   extern const size_t pc_compat_8_0_len;
+>   
 
-My understanding of Peter's suggestion would be smth like:
-
--- >8 --
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 115f0cca79..c0af15eb6c 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -201,10 +201,15 @@ typedef struct KVMCapabilityInfo {
-
-  struct KVMState;
-
-+struct KVMClass {
-+    AccelClass parent_class;
-+
-+    int default_vm_type;
-+};
-+
-  #define TYPE_KVM_ACCEL ACCEL_CLASS_NAME("kvm")
-  typedef struct KVMState KVMState;
--DECLARE_INSTANCE_CHECKER(KVMState, KVM_STATE,
--                         TYPE_KVM_ACCEL)
-+OBJECT_DECLARE_TYPE(KVMState, KVMClass, KVM_ACCEL)
-
-  extern KVMState *kvm_state;
-  typedef struct Notifier Notifier;
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 373d876c05..fdd424e1a5 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2458,12 +2458,13 @@ static int kvm_init(MachineState *ms)
-      KVMState *s;
-      const KVMCapabilityInfo *missing_cap;
-      int ret;
--    int type = 0;
-+    int type;
-      uint64_t dirty_log_manual_caps;
-
-      qemu_mutex_init(&kml_slots_lock);
-
-      s = KVM_STATE(ms->accelerator);
-+    type = KVM_GET_CLASS(s)->default_vm_type;
-
-      /*
-       * On systems where the kernel can support different base page
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index b4c7654f49..5c13594fdf 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -1064,4 +1064,8 @@ bool kvm_arch_cpu_check_are_resettable(void)
-
-  void kvm_arch_accel_class_init(ObjectClass *oc)
-  {
-+    KVMClass *kc = KVM_CLASS(oc);
-+
-+    /* Host_IPA_Limit ... */
-+    kc->default_vm_type = 32;
-  }
----
+For m68k part:
+Acked-by: Laurent Vivier <laurent@vivier.eu>

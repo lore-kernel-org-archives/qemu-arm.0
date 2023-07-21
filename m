@@ -1,260 +1,225 @@
-Received: by 2002:a05:7022:1289:b0:68:74e2:90e5 with SMTP id oy9csp2258183dlb;
-        Thu, 20 Jul 2023 23:24:33 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGZRYm4Sp22ahYJBptkrdiTdPnihWRKh/gD5g9LuG9WT6k9bTtorKexjjbkM/ntUTGR9OJe
-X-Received: by 2002:a17:903:181:b0:1b8:6cae:3570 with SMTP id z1-20020a170903018100b001b86cae3570mr1272300plg.11.1689920673709;
-        Thu, 20 Jul 2023 23:24:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689920673; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp8354549eje;
+        Fri, 21 Jul 2023 00:30:42 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFW6UgnKCCrE6okUQHDfjscw2GEaXeiSI/SpaUeT/Z1yL72de0oQW9lPISbD1s2Je8ZWOpy
+X-Received: by 2002:a05:6871:551:b0:1b7:2dfe:c221 with SMTP id t17-20020a056871055100b001b72dfec221mr1324399oal.33.1689924642499;
+        Fri, 21 Jul 2023 00:30:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689924642; cv=none;
         d=google.com; s=arc-20160816;
-        b=nNw9PgDYW49HtItuurMvMLKuuj68j2wWF91tBmtU8xfzVGGbYw1xAetTZtwk0tvoFf
-         KbXNLTMEKNLrXkQ1BciB6r2xDBDZKCE/ZoRRibNkmdlGY60cPLmE0h9YIhFvpf/9tK+w
-         LW2SQJBMNmP0zh40daWImpHGBW8//1xlju8SICS0Ojk0rfKZJbHyRZg3YSSLj4J1kRHY
-         LBk1eYyF5V0kcIewvbk+GMbgniwuuwS71cP2EDTm19+twHTLtUx+AewI85iNS3SLhm+n
-         2XV8MBsdDrQiW1pKGIwbHzBd1GliUAk01dd3dC9NmTpbOVqP2MOAHnJ7wxxGPyE+ySNt
-         iT3g==
+        b=QFhxmjnTOsUCPFGGlG1FQAGrU4N0gCLWE70LiQk4KWltURoEvE+ZgDX3VFIsOurMaY
+         HuxWPycbc74+D29Tg1c+HlwXtVUSAJ3QyNtE8vYLfC4NKlHaQ9Gp1vpzJCrDOMXKLTcd
+         WLCYLHzjq0jmZZRoR9ooPAEPeD1kXpYgbEBYmfxU2WZmll65JHvxXHdIXLqoQf9DDo0b
+         NR6qQNpj/e3K79j3OlfTvoEWQVW7JwYgno/BrdD47rb+uKcgKTqFv88jGlY5XO/aUGrZ
+         uq/wqcokfz1FGIx7l69JmcuEWPzXf1aLJbBotvt2PNQZLj0NcPHgQ64Xeu0LYCm92Hzy
+         rMGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:to:content-transfer-encoding:mime-version
-         :message-id:date:subject:cc:from:dkim-signature;
-        bh=It+/Ia/9D13w5jiL9WD0ew4nsP/hfmMWdDncq/Y53N0=;
-        fh=mJ5OFdie2M3iVyZL5TpDz8DAfFZC9/SE7DnU60sOZu0=;
-        b=r8lnvTJ2UFZnrvDcTcrGXPvmenhV6SBaLREe1csHsdjNXGO5tfQ7MR4NL+VA3GbFtA
-         x1kFeqefBUQfzf3MrgLR0jwKm6BAifCFQq69ZpyeSAKWud4jfbbn/iKaG6cB+YXq+KA1
-         6CzAoBgHNMfJLupN9Xpt97gHHKf6WjWti3THjpo9/yeDODSeOOISkcHMl2CXg1fwjNjB
-         CIj9m6lf8kdMbwjWsrBaIdnl9cqoWpMY8R2ug0PnM1Ibio+nLXiO11fa3D40fbKaIV4L
-         oMLyTSMIlwxZOzr44i9uKx9/rjxezZ08UfZtPF9Ex8LwjrleyaGujVDVxxvJ+oEMqun0
-         pU+g==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=sVrhGsRHqpb0SJmQRvO/9lQlxmoayB+lW1zezQyO9Ok=;
+        fh=zlpASWiFX/cotIFAyrriCRJDmFpobIKVCGxuAsr+eCQ=;
+        b=R5fnHu8v7u/uuaqCXcXGtCd7TmYhCGHulM9Tr+tDjr2Om42yUuVE9+sFax6Vi6YLpP
+         I92/H+VIHDgE3A8hsqNqt1mCRipzm0nVOaP03KC1yb0tjRNSq6b5DBdQVc/0bUfkYNBJ
+         oIX39hUDVKIMejaAyKwOY2nv6aT2l9R1v0F1W1PPB42dvbtO1dbvMJwtRCx+do/KXuEN
+         1lBYhwLGj5gUBcVRcdy7QZicuylXHDA0WRl59PETSobZFPjK6sDQhkdcOKLoEmoHdPjY
+         fz+1up1mOHUprCFfy8Oue1AJt16sfwHetE4g0Eea3s3JOaSly0CR0HkY9PlSrE1Jn9Qv
+         vXBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="mm/vDjx/";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@linaro.org header.s=google header.b="QpJl7S/e";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id y23-20020a17090264d700b001b88c5005f7si2327806pli.278.2023.07.20.23.24.33;
-        Thu, 20 Jul 2023 23:24:33 -0700 (PDT)
+        by mx.google.com with ESMTP id c9-20020aa78e09000000b006824cda542fsi2315292pfr.395.2023.07.21.00.30.42;
+        Fri, 21 Jul 2023 00:30:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="mm/vDjx/";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@linaro.org header.s=google header.b="QpJl7S/e";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229801AbjGUGYb (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Fri, 21 Jul 2023 02:24:31 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:56834 "EHLO
+        id S230133AbjGUHak (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Fri, 21 Jul 2023 03:30:40 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:55874 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S230085AbjGUGY3 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 21 Jul 2023 02:24:29 -0400
-Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com [IPv6:2607:f8b0:4864:20::630])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D391BE65
-        for <kvm@vger.kernel.org>; Thu, 20 Jul 2023 23:24:27 -0700 (PDT)
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-1b89114266dso12273155ad.0
-        for <kvm@vger.kernel.org>; Thu, 20 Jul 2023 23:24:27 -0700 (PDT)
+        with ESMTP id S229832AbjGUHai (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 21 Jul 2023 03:30:38 -0400
+Received: from mail-lj1-x22d.google.com (mail-lj1-x22d.google.com [IPv6:2a00:1450:4864:20::22d])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 8F5C210DB
+        for <kvm@vger.kernel.org>; Fri, 21 Jul 2023 00:30:36 -0700 (PDT)
+Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2b962535808so23774621fa.0
+        for <kvm@vger.kernel.org>; Fri, 21 Jul 2023 00:30:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1689920667; x=1690525467;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=It+/Ia/9D13w5jiL9WD0ew4nsP/hfmMWdDncq/Y53N0=;
-        b=mm/vDjx/GY+rhtpH8Ld+Hul0wlAS0ORLaKCBuBH491s1hOz554hYt0UmGl4h2xQbvn
-         hc4VA5rw9kICl5m1sYyqdmJFnEw1UxVePht6bbqi5K3XjhW9AAQ39mHj+nL+ZyfAntyr
-         ZWkxnUlzL0ZyvS93NFiDRiukP8982+ri2ALyt/l1/t3E/kTHtgKDgHuaEhd5Haxwabtq
-         2lj4dNA6BWrlVJ9mWFxFsAYnFLWXOsuo5aKags/6b6fS10eJLeOcyecGYzijI68CHecE
-         k8ikgPTstcahW20RhwSBToYMibKfyCif6gjpd/Qfxve8YRGmULYeN01J6Y+8qWrt1KSz
-         0gcw==
+        d=linaro.org; s=google; t=1689924635; x=1690529435;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=sVrhGsRHqpb0SJmQRvO/9lQlxmoayB+lW1zezQyO9Ok=;
+        b=QpJl7S/e8badX8jT95+A/KHzGPwYS3CIgkPxSBAdlbXGEl84S3Prc7ajvX3bS3ZMLe
+         0bIcNJRnAcJ4lpsTOSf1+U3gXYSsCdzrZL41z41rZk0anVizEuY0AS0RsVF5bAZsWGqG
+         QFCWCBD2K8OtORWxx7alTRFoZcKbzdW/Fnkczw7/J+J/x2+je33unLiqN4Wi4T9erBvS
+         MFbe9434/epO2KOuq4tOS0qHmBuotT4snym+ndYn7RDNrBy0BwR3d3LLysT8Hzmq2Z6l
+         KLkkJU6Umev44R31K1w9dkkh5qgMkpSAOY9FCyrCpdQFqpO52x/T1LhQK22u5Tdb9yhV
+         Wmvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689920667; x=1690525467;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=It+/Ia/9D13w5jiL9WD0ew4nsP/hfmMWdDncq/Y53N0=;
-        b=SWZWSmg9YO6KkgcmxQJaNjWzxkmeyMOLeIUU3mcEGpm1XaDkYkvqfE4JDZoyNnwo/f
-         X84jkiLFT2OY17PrkEJhM7frnm+KDq8c5UFZppKCIMFGDYrhyo1lnf6HZOUyyIRB/Sc6
-         XyIqAZ7HTdYGOgAzQzEVnqCigpoFDV/oXKQWLCvbJO88m/w67Qi4xwlTv2s56Tq4K9ym
-         RZvgfj3s4MD5HtS/vFBGk0kkvGh3/ic246uJ9KbfPOZEDyTwTf6Cdx8n6kVK9ka0kDGg
-         UyOMvjdh0RWxdLBflTNG7ofdgdfgURgk/N1RY+ArXgZKXxICJKStS/NxrbeVj1Z/Nlac
-         abBw==
-X-Gm-Message-State: ABy/qLYXMmnq/yR2A0G9czhntxFSSmcRDkBMLgHL4F6iG5qgrs7D8KFf
-        /eAEHl0+srUDYpZzT1NPgLWMwQ==
-X-Received: by 2002:a17:902:c3c3:b0:1b6:b829:7065 with SMTP id j3-20020a170902c3c300b001b6b8297065mr1081317plj.63.1689920667147;
-        Thu, 20 Jul 2023 23:24:27 -0700 (PDT)
-Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id t5-20020a170902e84500b001b51b3e84cesm2535148plg.166.2023.07.20.23.24.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Jul 2023 23:24:26 -0700 (PDT)
-From:   Akihiko Odaki <akihiko.odaki@daynix.com>
+        d=1e100.net; s=20221208; t=1689924635; x=1690529435;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=sVrhGsRHqpb0SJmQRvO/9lQlxmoayB+lW1zezQyO9Ok=;
+        b=Tpb2bg162mtenFdNEs7hJJViC+Ras1r9iVaE9iLfkRbWsOCHZNQ5ZkLLGfMDEEObbo
+         F0TA4vmL9DyLx8eDQb+b7d1jSDCUR+nfu9VNBfqxXyyWiWgEURB7tCbwOCZ+j3EKYaGT
+         bWLUf91uy1gzxs1GuBgTgFrJ+fvwKpsz61Vhbo1B6i6Fm3FYigZgElxhfe04j5Y9UVwp
+         MeKb/y1R0uU1AtLPPvNKme/Ep4wj6exEtZA7ofEToVKhXZXA5K+zNi+cAq3SycMCAWWJ
+         WMvcdgrprJnCXf+Nr+pA4drhBBHbBnCjJHwYQJWzKAsw/4puJ2wEPCdWTMO6Ywef6Zmv
+         ASDg==
+X-Gm-Message-State: ABy/qLbyoxpD8imSt+ikejyuTCyrbmgwkpqu3sda2ZfcYN+XCE892RtF
+        0fBjmnHUl2yqcimgJOxMXp/50g==
+X-Received: by 2002:a2e:b0f0:0:b0:2b9:5b06:b724 with SMTP id h16-20020a2eb0f0000000b002b95b06b724mr1011423ljl.42.1689924634806;
+        Fri, 21 Jul 2023 00:30:34 -0700 (PDT)
+Received: from [192.168.96.175] (97.red-88-29-184.dynamicip.rima-tde.net. [88.29.184.97])
+        by smtp.gmail.com with ESMTPSA id y13-20020a05600c364d00b003fbb25da65bsm2795160wmq.30.2023.07.21.00.30.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 Jul 2023 00:30:34 -0700 (PDT)
+Message-ID: <05d4e5ff-dc5c-b2da-7ae8-ac135d4a73c9@linaro.org>
+Date:   Fri, 21 Jul 2023 09:30:31 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.13.0
+Subject: Re: [PATCH v2] accel/kvm: Specify default IPA size for arm64
+To:     Akihiko Odaki <akihiko.odaki@daynix.com>
 Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
         Paolo Bonzini <pbonzini@redhat.com>,
         Peter Maydell <peter.maydell@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2] accel/kvm: Specify default IPA size for arm64
-Date:   Fri, 21 Jul 2023 15:24:20 +0900
-Message-ID: <20230721062421.12017-1-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.41.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE,
-        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
+        Richard Henderson <richard.henderson@linaro.org>
+References: <20230721062421.12017-1-akihiko.odaki@daynix.com>
+Content-Language: en-US
+From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230721062421.12017-1-akihiko.odaki@daynix.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Spam-Status: No, score=-2.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,
+        RCVD_IN_DNSWL_BLOCKED,SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,
+        URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.6
 X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
         lindbergh.monkeyblade.net
-To:     unlisted-recipients:; (no To-header on input)
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: gFHFcPypriJB
+X-TUID: bfkPGR2mX1MO
 
-libvirt uses "none" machine type to test KVM availability. Before this
-change, QEMU used to pass 0 as machine type when calling KVM_CREATE_VM.
+Hi Akihiko,
 
-The kernel documentation says:
-> On arm64, the physical address size for a VM (IPA Size limit) is
-> limited to 40bits by default. The limit can be configured if the host
-> supports the extension KVM_CAP_ARM_VM_IPA_SIZE. When supported, use
-> KVM_VM_TYPE_ARM_IPA_SIZE(IPA_Bits) to set the size in the machine type
-> identifier, where IPA_Bits is the maximum width of any physical
-> address used by the VM. The IPA_Bits is encoded in bits[7-0] of the
-> machine type identifier.
->
-> e.g, to configure a guest to use 48bit physical address size::
->
->     vm_fd = ioctl(dev_fd, KVM_CREATE_VM, KVM_VM_TYPE_ARM_IPA_SIZE(48));
->
-> The requested size (IPA_Bits) must be:
->
->  ==   =========================================================
->   0   Implies default size, 40bits (for backward compatibility)
->   N   Implies N bits, where N is a positive integer such that,
->       32 <= N <= Host_IPA_Limit
->  ==   =========================================================
+On 21/7/23 08:24, Akihiko Odaki wrote:
+> libvirt uses "none" machine type to test KVM availability. Before this
+> change, QEMU used to pass 0 as machine type when calling KVM_CREATE_VM.
+> 
+> The kernel documentation says:
+>> On arm64, the physical address size for a VM (IPA Size limit) is
+>> limited to 40bits by default. The limit can be configured if the host
+>> supports the extension KVM_CAP_ARM_VM_IPA_SIZE. When supported, use
+>> KVM_VM_TYPE_ARM_IPA_SIZE(IPA_Bits) to set the size in the machine type
+>> identifier, where IPA_Bits is the maximum width of any physical
+>> address used by the VM. The IPA_Bits is encoded in bits[7-0] of the
+>> machine type identifier.
+>>
+>> e.g, to configure a guest to use 48bit physical address size::
+>>
+>>      vm_fd = ioctl(dev_fd, KVM_CREATE_VM, KVM_VM_TYPE_ARM_IPA_SIZE(48));
+>>
+>> The requested size (IPA_Bits) must be:
+>>
+>>   ==   =========================================================
+>>    0   Implies default size, 40bits (for backward compatibility)
+>>    N   Implies N bits, where N is a positive integer such that,
+>>        32 <= N <= Host_IPA_Limit
+>>   ==   =========================================================
+> 
+>> Host_IPA_Limit is the maximum possible value for IPA_Bits on the host
+>> and is dependent on the CPU capability and the kernel configuration.
+>> The limit can be retrieved using KVM_CAP_ARM_VM_IPA_SIZE of the
+>> KVM_CHECK_EXTENSION ioctl() at run-time.
+>>
+>> Creation of the VM will fail if the requested IPA size (whether it is
+>> implicit or explicit) is unsupported on the host.
+> https://docs.kernel.org/virt/kvm/api.html#kvm-create-vm
+> 
+> So if Host_IPA_Limit < 40, such KVM_CREATE_VM will fail, and libvirt
+> incorrectly thinks KVM is not available. This actually happened on M2
+> MacBook Air.
+> 
+> Fix this by specifying 32 for IPA_Bits as any arm64 system should
+> support the value according to the documentation.
+> 
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+> V1 -> V2: Introduced an arch hook
+> 
+>   include/sysemu/kvm.h   | 1 +
+>   accel/kvm/kvm-all.c    | 2 +-
+>   target/arm/kvm.c       | 2 ++
+>   target/i386/kvm/kvm.c  | 2 ++
+>   target/mips/kvm.c      | 2 ++
+>   target/ppc/kvm.c       | 2 ++
+>   target/riscv/kvm.c     | 2 ++
+>   target/s390x/kvm/kvm.c | 2 ++
+>   8 files changed, 14 insertions(+), 1 deletion(-)
 
-> Host_IPA_Limit is the maximum possible value for IPA_Bits on the host
-> and is dependent on the CPU capability and the kernel configuration.
-> The limit can be retrieved using KVM_CAP_ARM_VM_IPA_SIZE of the
-> KVM_CHECK_EXTENSION ioctl() at run-time.
->
-> Creation of the VM will fail if the requested IPA size (whether it is
-> implicit or explicit) is unsupported on the host.
-https://docs.kernel.org/virt/kvm/api.html#kvm-create-vm
+My understanding of Peter's suggestion would be smth like:
 
-So if Host_IPA_Limit < 40, such KVM_CREATE_VM will fail, and libvirt
-incorrectly thinks KVM is not available. This actually happened on M2
-MacBook Air.
-
-Fix this by specifying 32 for IPA_Bits as any arm64 system should
-support the value according to the documentation.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
-V1 -> V2: Introduced an arch hook
-
- include/sysemu/kvm.h   | 1 +
- accel/kvm/kvm-all.c    | 2 +-
- target/arm/kvm.c       | 2 ++
- target/i386/kvm/kvm.c  | 2 ++
- target/mips/kvm.c      | 2 ++
- target/ppc/kvm.c       | 2 ++
- target/riscv/kvm.c     | 2 ++
- target/s390x/kvm/kvm.c | 2 ++
- 8 files changed, 14 insertions(+), 1 deletion(-)
-
+-- >8 --
 diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 115f0cca79..7cc2eb1a8c 100644
+index 115f0cca79..c0af15eb6c 100644
 --- a/include/sysemu/kvm.h
 +++ b/include/sysemu/kvm.h
-@@ -347,6 +347,7 @@ bool kvm_device_supported(int vmfd, uint64_t type);
- 
- /* Arch specific hooks */
- 
-+extern const int kvm_arch_default_type;
- extern const KVMCapabilityInfo kvm_arch_required_capabilities[];
- 
- void kvm_arch_accel_class_init(ObjectClass *oc);
+@@ -201,10 +201,15 @@ typedef struct KVMCapabilityInfo {
+
+  struct KVMState;
+
++struct KVMClass {
++    AccelClass parent_class;
++
++    int default_vm_type;
++};
++
+  #define TYPE_KVM_ACCEL ACCEL_CLASS_NAME("kvm")
+  typedef struct KVMState KVMState;
+-DECLARE_INSTANCE_CHECKER(KVMState, KVM_STATE,
+-                         TYPE_KVM_ACCEL)
++OBJECT_DECLARE_TYPE(KVMState, KVMClass, KVM_ACCEL)
+
+  extern KVMState *kvm_state;
+  typedef struct Notifier Notifier;
 diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 373d876c05..914ade3ec3 100644
+index 373d876c05..fdd424e1a5 100644
 --- a/accel/kvm/kvm-all.c
 +++ b/accel/kvm/kvm-all.c
-@@ -2458,7 +2458,7 @@ static int kvm_init(MachineState *ms)
-     KVMState *s;
-     const KVMCapabilityInfo *missing_cap;
-     int ret;
+@@ -2458,12 +2458,13 @@ static int kvm_init(MachineState *ms)
+      KVMState *s;
+      const KVMCapabilityInfo *missing_cap;
+      int ret;
 -    int type = 0;
-+    int type = kvm_arch_default_type;
-     uint64_t dirty_log_manual_caps;
- 
-     qemu_mutex_init(&kml_slots_lock);
++    int type;
+      uint64_t dirty_log_manual_caps;
+
+      qemu_mutex_init(&kml_slots_lock);
+
+      s = KVM_STATE(ms->accelerator);
++    type = KVM_GET_CLASS(s)->default_vm_type;
+
+      /*
+       * On systems where the kernel can support different base page
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index b4c7654f49..f8203b9915 100644
+index b4c7654f49..5c13594fdf 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -32,6 +32,8 @@
- #include "hw/irq.h"
- #include "qemu/log.h"
- 
-+const int kvm_arch_default_type = 32;
+@@ -1064,4 +1064,8 @@ bool kvm_arch_cpu_check_are_resettable(void)
+
+  void kvm_arch_accel_class_init(ObjectClass *oc)
+  {
++    KVMClass *kc = KVM_CLASS(oc);
 +
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_LAST_INFO
- };
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index ebfaf3d24c..00bccffdfc 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -87,6 +87,8 @@
- 
- static void kvm_init_msrs(X86CPU *cpu);
- 
-+const int kvm_arch_default_type;
-+
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_INFO(SET_TSS_ADDR),
-     KVM_CAP_INFO(EXT_CPUID),
-diff --git a/target/mips/kvm.c b/target/mips/kvm.c
-index c14e8f550f..754366874e 100644
---- a/target/mips/kvm.c
-+++ b/target/mips/kvm.c
-@@ -33,6 +33,8 @@
- static int kvm_mips_fpu_cap;
- static int kvm_mips_msa_cap;
- 
-+const int kvm_arch_default_type;
-+
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_LAST_INFO
- };
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index a8a935e267..86f8b645a5 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -54,6 +54,8 @@
- #define DEBUG_RETURN_GUEST 0
- #define DEBUG_RETURN_GDB   1
- 
-+const int kvm_arch_default_type;
-+
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_LAST_INFO
- };
-diff --git a/target/riscv/kvm.c b/target/riscv/kvm.c
-index 9d8a8982f9..fbe56ec3bb 100644
---- a/target/riscv/kvm.c
-+++ b/target/riscv/kvm.c
-@@ -764,6 +764,8 @@ void kvm_riscv_init_user_properties(Object *cpu_obj)
-     kvm_riscv_destroy_scratch_vcpu(&kvmcpu);
- }
- 
-+const int kvm_arch_default_type;
-+
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_LAST_INFO
- };
-diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
-index a9e5880349..4b9347ffc8 100644
---- a/target/s390x/kvm/kvm.c
-+++ b/target/s390x/kvm/kvm.c
-@@ -144,6 +144,8 @@ static CPUWatchpoint hw_watchpoint;
- static struct kvm_hw_breakpoint *hw_breakpoints;
- static int nb_hw_breakpoints;
- 
-+const int kvm_arch_default_type;
-+
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_LAST_INFO
- };
--- 
-2.41.0
++    /* Host_IPA_Limit ... */
++    kc->default_vm_type = 32;
+  }
+---

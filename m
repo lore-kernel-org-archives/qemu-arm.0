@@ -1,185 +1,260 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp7978032eje;
-        Thu, 20 Jul 2023 10:14:01 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHxl8+gygCQ+PGmM2SH/JdJPx2ksi+unVzQG/N7ebJADgEMEaprEzoEcz5K0GBmoIOt1F3n
-X-Received: by 2002:a05:620a:3941:b0:768:2b02:d38 with SMTP id qs1-20020a05620a394100b007682b020d38mr10803576qkn.19.1689873241386;
-        Thu, 20 Jul 2023 10:14:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689873241; cv=none;
+Received: by 2002:a05:7022:1289:b0:68:74e2:90e5 with SMTP id oy9csp2258183dlb;
+        Thu, 20 Jul 2023 23:24:33 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGZRYm4Sp22ahYJBptkrdiTdPnihWRKh/gD5g9LuG9WT6k9bTtorKexjjbkM/ntUTGR9OJe
+X-Received: by 2002:a17:903:181:b0:1b8:6cae:3570 with SMTP id z1-20020a170903018100b001b86cae3570mr1272300plg.11.1689920673709;
+        Thu, 20 Jul 2023 23:24:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689920673; cv=none;
         d=google.com; s=arc-20160816;
-        b=c8+UZTPlce3c8xCv0DU7FYhZtUBt7vLvHU+FChkakEOsc/xu/Wg45Ke/plG4drHpuD
-         gi/uFI6kzXe8KHnxFwz3+ajZILpzcyTObJoxvmbrgTWbkkI92AOCVd36pebYFfbuxFsE
-         9CRzVKqcOt5PalLDiP1++wjNvbLrJFaNwmdVmJMPjwg/H0xxlwMKF0wYgNY0zPxPxSad
-         mOJWlSduYI7as4zPu4gp6S91/soMDCLrTyZgq2QRAghdwqWknZHA258zFB1Q+HnhwGrc
-         o4a9Afx+3zJTYtkf22JXdaURDb9xo2LNUbc+CDdGhw9fzPr5zlAIDGNRWeyitDRDqdje
-         7Kkw==
+        b=nNw9PgDYW49HtItuurMvMLKuuj68j2wWF91tBmtU8xfzVGGbYw1xAetTZtwk0tvoFf
+         KbXNLTMEKNLrXkQ1BciB6r2xDBDZKCE/ZoRRibNkmdlGY60cPLmE0h9YIhFvpf/9tK+w
+         LW2SQJBMNmP0zh40daWImpHGBW8//1xlju8SICS0Ojk0rfKZJbHyRZg3YSSLj4J1kRHY
+         LBk1eYyF5V0kcIewvbk+GMbgniwuuwS71cP2EDTm19+twHTLtUx+AewI85iNS3SLhm+n
+         2XV8MBsdDrQiW1pKGIwbHzBd1GliUAk01dd3dC9NmTpbOVqP2MOAHnJ7wxxGPyE+ySNt
+         iT3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=oYIdy46tK3NI6A6O2BGDVkdFa1vfkDkDHQQqK46fJxU=;
-        fh=CEa3UdY0L+UQ/2T/5R8rkDkdq4jlW1F1hWJjDNQD42w=;
-        b=xcrwza7LV7/768f/HukRIkIENXvCLRKlFZEa8pnP3bjTEwpZvBJdo2Hmbg79V65gkT
-         huRyTspfWCfU13Ngjkmxh1sJ7VADb63t0yJ552pqwWKvbZ8Q5wsi80hz4XtNRP6enAFG
-         hx67OcdnL7vu9aMqflcVy/yF76EGD6NRF5IqoK405VZYsH38PwhpxP+VRpGln2tpYotj
-         wzUKib9EQP8ZTcAtpI36uHLwMIHditOguVfBWKu5IVqfnTvkxIZ81CRXAAPjHrySVfpl
-         HLHThZC2EbJIXr+rhPM/oeEqzIcUmkpWDuIBQDJlbUGyzkf7Atau1K0E+baz7egebNs7
-         EauQ==
+        h=list-id:precedence:to:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:from:dkim-signature;
+        bh=It+/Ia/9D13w5jiL9WD0ew4nsP/hfmMWdDncq/Y53N0=;
+        fh=mJ5OFdie2M3iVyZL5TpDz8DAfFZC9/SE7DnU60sOZu0=;
+        b=r8lnvTJ2UFZnrvDcTcrGXPvmenhV6SBaLREe1csHsdjNXGO5tfQ7MR4NL+VA3GbFtA
+         x1kFeqefBUQfzf3MrgLR0jwKm6BAifCFQq69ZpyeSAKWud4jfbbn/iKaG6cB+YXq+KA1
+         6CzAoBgHNMfJLupN9Xpt97gHHKf6WjWti3THjpo9/yeDODSeOOISkcHMl2CXg1fwjNjB
+         CIj9m6lf8kdMbwjWsrBaIdnl9cqoWpMY8R2ug0PnM1Ibio+nLXiO11fa3D40fbKaIV4L
+         oMLyTSMIlwxZOzr44i9uKx9/rjxezZ08UfZtPF9Ex8LwjrleyaGujVDVxxvJ+oEMqun0
+         pU+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QZrkwbWu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v186-20020a3793c3000000b007623a3a109csi455187qkd.101.2023.07.20.10.14.01
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jul 2023 10:14:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="mm/vDjx/";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id y23-20020a17090264d700b001b88c5005f7si2327806pli.278.2023.07.20.23.24.33;
+        Thu, 20 Jul 2023 23:24:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QZrkwbWu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qMXDk-0005RK-6Y; Thu, 20 Jul 2023 13:13:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qMXDi-0005Qk-Jb
- for qemu-arm@nongnu.org; Thu, 20 Jul 2023 13:13:42 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qMXDh-0001VF-4K
- for qemu-arm@nongnu.org; Thu, 20 Jul 2023 13:13:42 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-51e344efd75so2307771a12.1
- for <qemu-arm@nongnu.org>; Thu, 20 Jul 2023 10:13:40 -0700 (PDT)
+       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="mm/vDjx/";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S229801AbjGUGYb (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Fri, 21 Jul 2023 02:24:31 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:56834 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S230085AbjGUGY3 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 21 Jul 2023 02:24:29 -0400
+Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com [IPv6:2607:f8b0:4864:20::630])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D391BE65
+        for <kvm@vger.kernel.org>; Thu, 20 Jul 2023 23:24:27 -0700 (PDT)
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-1b89114266dso12273155ad.0
+        for <kvm@vger.kernel.org>; Thu, 20 Jul 2023 23:24:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689873219; x=1690478019;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=oYIdy46tK3NI6A6O2BGDVkdFa1vfkDkDHQQqK46fJxU=;
- b=QZrkwbWu9J3p8tKVQx5vLqOo24jX+ysGsKC78CmVysh7q8Td3HHP03OZd7M2duYeGP
- RSzKXJhWJnJuU5Sx/1dC2VQdWH1o+KwqETMv+mQce8mpQnK9dDnAaofdgfKC8TImYf/G
- 77/MNZCmyU5ZvOuAiucBqH1wzPM8zLpnHCNwvx8d55mCG1hWt/zpG08EMYI0eONPvuVe
- 5Lo96rN+4h/VH8uaS77nUA28VREPaHrC+hcmwFdF1+dKe0QtHeuOFvIw4Xim0J8Hz5mu
- E5ztWxCLjHhC1j6UxzLfCBIkBGSmJZ7bts8FjbLSEYpHnUKslgL0W3jscFeN1CZfsWv3
- oTng==
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1689920667; x=1690525467;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=It+/Ia/9D13w5jiL9WD0ew4nsP/hfmMWdDncq/Y53N0=;
+        b=mm/vDjx/GY+rhtpH8Ld+Hul0wlAS0ORLaKCBuBH491s1hOz554hYt0UmGl4h2xQbvn
+         hc4VA5rw9kICl5m1sYyqdmJFnEw1UxVePht6bbqi5K3XjhW9AAQ39mHj+nL+ZyfAntyr
+         ZWkxnUlzL0ZyvS93NFiDRiukP8982+ri2ALyt/l1/t3E/kTHtgKDgHuaEhd5Haxwabtq
+         2lj4dNA6BWrlVJ9mWFxFsAYnFLWXOsuo5aKags/6b6fS10eJLeOcyecGYzijI68CHecE
+         k8ikgPTstcahW20RhwSBToYMibKfyCif6gjpd/Qfxve8YRGmULYeN01J6Y+8qWrt1KSz
+         0gcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689873219; x=1690478019;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=oYIdy46tK3NI6A6O2BGDVkdFa1vfkDkDHQQqK46fJxU=;
- b=X8fZ4iimMtQngT0YCWGxscTc8JWNNxFx/Cw1+VHH2UDYzTynnqWEVuud3SilgpvK3s
- Dyy82SQAdcHAhz+ZqCa/yWFhLdrxcOKczUsfGCtWWYqUq6n4WXFCfTh66dvPnXZF8wcO
- 4fOnDk6QlRTcTP3mRUiakcIKdd5yAC68K+7zxOTELNU0+gBsH9qBPS+lGFVSdpbO6Yoh
- fnn4BvapulWhixYjJCaDB1H4HSEgpfGqrGv2DW0/cwDTfDoD3jM3kunPfowNismdXjBr
- wK9F1us58/XIudQ/47OVssLpqFwYx7ARQIRynr5qxViXEfgqdFo3tDh6TWgHRf6JTy6U
- ZK6A==
-X-Gm-Message-State: ABy/qLYCLMItGfgDExIvmdSN1WNXg9hrYYhFLJ9MyNpUcLxncSszb0ma
- 56LLG8SK1DTWFXXFlVZ1AotaiffU7LA16qoeXwmXUA==
-X-Received: by 2002:a05:6402:42c6:b0:51e:5206:d69e with SMTP id
- i6-20020a05640242c600b0051e5206d69emr6810004edc.10.1689873219465; Thu, 20 Jul
- 2023 10:13:39 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1689920667; x=1690525467;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=It+/Ia/9D13w5jiL9WD0ew4nsP/hfmMWdDncq/Y53N0=;
+        b=SWZWSmg9YO6KkgcmxQJaNjWzxkmeyMOLeIUU3mcEGpm1XaDkYkvqfE4JDZoyNnwo/f
+         X84jkiLFT2OY17PrkEJhM7frnm+KDq8c5UFZppKCIMFGDYrhyo1lnf6HZOUyyIRB/Sc6
+         XyIqAZ7HTdYGOgAzQzEVnqCigpoFDV/oXKQWLCvbJO88m/w67Qi4xwlTv2s56Tq4K9ym
+         RZvgfj3s4MD5HtS/vFBGk0kkvGh3/ic246uJ9KbfPOZEDyTwTf6Cdx8n6kVK9ka0kDGg
+         UyOMvjdh0RWxdLBflTNG7ofdgdfgURgk/N1RY+ArXgZKXxICJKStS/NxrbeVj1Z/Nlac
+         abBw==
+X-Gm-Message-State: ABy/qLYXMmnq/yR2A0G9czhntxFSSmcRDkBMLgHL4F6iG5qgrs7D8KFf
+        /eAEHl0+srUDYpZzT1NPgLWMwQ==
+X-Received: by 2002:a17:902:c3c3:b0:1b6:b829:7065 with SMTP id j3-20020a170902c3c300b001b6b8297065mr1081317plj.63.1689920667147;
+        Thu, 20 Jul 2023 23:24:27 -0700 (PDT)
+Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
+        by smtp.gmail.com with ESMTPSA id t5-20020a170902e84500b001b51b3e84cesm2535148plg.166.2023.07.20.23.24.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Jul 2023 23:24:26 -0700 (PDT)
+From:   Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH v2] accel/kvm: Specify default IPA size for arm64
+Date:   Fri, 21 Jul 2023 15:24:20 +0900
+Message-ID: <20230721062421.12017-1-akihiko.odaki@daynix.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-References: <20230719153018.1456180-2-jean-philippe@linaro.org>
- <20230719153018.1456180-7-jean-philippe@linaro.org>
-In-Reply-To: <20230719153018.1456180-7-jean-philippe@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Jul 2023 18:13:28 +0100
-Message-ID: <CAFEAcA-2Sd6OvM5eYfGPaCSwZcu+oQkCqXgdkV-=YM2SkyYQmg@mail.gmail.com>
-Subject: Re: [PATCH 5/5] target/arm/helper: Implement CNTHCTL_EL2.CNT[VP]MASK
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qGv2R9RKlb52
+Content-Transfer-Encoding: 8bit
+X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE,
+        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+To:     unlisted-recipients:; (no To-header on input)
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: gFHFcPypriJB
 
-On Wed, 19 Jul 2023 at 16:56, Jean-Philippe Brucker
-<jean-philippe@linaro.org> wrote:
->
-> When FEAT_RME is implemented, these bits override the value of
-> CNT[VP]_CTL_EL0.IMASK in Realm and Root state.
->
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> ---
->  target/arm/helper.c | 21 +++++++++++++++++++--
->  1 file changed, 19 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 2017b11795..5b173a827f 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -2608,6 +2608,23 @@ static uint64_t gt_get_countervalue(CPUARMState *env)
->      return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) / gt_cntfrq_period_ns(cpu);
->  }
->
-> +static bool gt_is_masked(CPUARMState *env, int timeridx)
-> +{
-> +    ARMSecuritySpace ss = arm_security_space(env);
-> +
-> +    /*
-> +     * If bits CNTHCTL_EL2.CNT[VP]MASK are set, they override
-> +     * CNT[VP]_CTL_EL0.IMASK. They are RES0 in Secure and NonSecure state.
-> +     */
-> +    if ((ss == ARMSS_Root || ss == ARMSS_Realm) &&
-> +        ((timeridx == GTIMER_VIRT && extract64(env->cp15.cnthctl_el2, 18, 1)) ||
-> +         (timeridx == GTIMER_PHYS && extract64(env->cp15.cnthctl_el2, 19, 1)))) {
-> +        return true;
-> +    }
-> +
-> +    return env->cp15.c14_timer[timeridx].ctl & 2;
-> +}
-> +
->  static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
->  {
->      ARMGenericTimer *gt = &cpu->env.cp15.c14_timer[timeridx];
-> @@ -2627,7 +2644,7 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
->
->          gt->ctl = deposit32(gt->ctl, 2, 1, istatus);
->
-> -        irqstate = (istatus && !(gt->ctl & 2));
-> +        irqstate = (istatus && !gt_is_masked(&cpu->env, timeridx));
->          qemu_set_irq(cpu->gt_timer_outputs[timeridx], irqstate);
->
->          if (istatus) {
-> @@ -2759,7 +2776,7 @@ static void gt_ctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
->           * IMASK toggled: don't need to recalculate,
->           * just set the interrupt line based on ISTATUS
->           */
-> -        int irqstate = (oldval & 4) && !(value & 2);
-> +        int irqstate = (oldval & 4) && !gt_is_masked(env, timeridx);
->
->          trace_arm_gt_imask_toggle(timeridx, irqstate);
->          qemu_set_irq(cpu->gt_timer_outputs[timeridx], irqstate);
+libvirt uses "none" machine type to test KVM availability. Before this
+change, QEMU used to pass 0 as machine type when calling KVM_CREATE_VM.
 
-If these CNTHCTL bits now affect whether the timer interrupts
-are masked, then we need to update the timer irq state
-on writes to CNTHCTL that change the bits.
+The kernel documentation says:
+> On arm64, the physical address size for a VM (IPA Size limit) is
+> limited to 40bits by default. The limit can be configured if the host
+> supports the extension KVM_CAP_ARM_VM_IPA_SIZE. When supported, use
+> KVM_VM_TYPE_ARM_IPA_SIZE(IPA_Bits) to set the size in the machine type
+> identifier, where IPA_Bits is the maximum width of any physical
+> address used by the VM. The IPA_Bits is encoded in bits[7-0] of the
+> machine type identifier.
+>
+> e.g, to configure a guest to use 48bit physical address size::
+>
+>     vm_fd = ioctl(dev_fd, KVM_CREATE_VM, KVM_VM_TYPE_ARM_IPA_SIZE(48));
+>
+> The requested size (IPA_Bits) must be:
+>
+>  ==   =========================================================
+>   0   Implies default size, 40bits (for backward compatibility)
+>   N   Implies N bits, where N is a positive integer such that,
+>       32 <= N <= Host_IPA_Limit
+>  ==   =========================================================
 
-thanks
--- PMM
+> Host_IPA_Limit is the maximum possible value for IPA_Bits on the host
+> and is dependent on the CPU capability and the kernel configuration.
+> The limit can be retrieved using KVM_CAP_ARM_VM_IPA_SIZE of the
+> KVM_CHECK_EXTENSION ioctl() at run-time.
+>
+> Creation of the VM will fail if the requested IPA size (whether it is
+> implicit or explicit) is unsupported on the host.
+https://docs.kernel.org/virt/kvm/api.html#kvm-create-vm
+
+So if Host_IPA_Limit < 40, such KVM_CREATE_VM will fail, and libvirt
+incorrectly thinks KVM is not available. This actually happened on M2
+MacBook Air.
+
+Fix this by specifying 32 for IPA_Bits as any arm64 system should
+support the value according to the documentation.
+
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+---
+V1 -> V2: Introduced an arch hook
+
+ include/sysemu/kvm.h   | 1 +
+ accel/kvm/kvm-all.c    | 2 +-
+ target/arm/kvm.c       | 2 ++
+ target/i386/kvm/kvm.c  | 2 ++
+ target/mips/kvm.c      | 2 ++
+ target/ppc/kvm.c       | 2 ++
+ target/riscv/kvm.c     | 2 ++
+ target/s390x/kvm/kvm.c | 2 ++
+ 8 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index 115f0cca79..7cc2eb1a8c 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -347,6 +347,7 @@ bool kvm_device_supported(int vmfd, uint64_t type);
+ 
+ /* Arch specific hooks */
+ 
++extern const int kvm_arch_default_type;
+ extern const KVMCapabilityInfo kvm_arch_required_capabilities[];
+ 
+ void kvm_arch_accel_class_init(ObjectClass *oc);
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 373d876c05..914ade3ec3 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2458,7 +2458,7 @@ static int kvm_init(MachineState *ms)
+     KVMState *s;
+     const KVMCapabilityInfo *missing_cap;
+     int ret;
+-    int type = 0;
++    int type = kvm_arch_default_type;
+     uint64_t dirty_log_manual_caps;
+ 
+     qemu_mutex_init(&kml_slots_lock);
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index b4c7654f49..f8203b9915 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -32,6 +32,8 @@
+ #include "hw/irq.h"
+ #include "qemu/log.h"
+ 
++const int kvm_arch_default_type = 32;
++
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+     KVM_CAP_LAST_INFO
+ };
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index ebfaf3d24c..00bccffdfc 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -87,6 +87,8 @@
+ 
+ static void kvm_init_msrs(X86CPU *cpu);
+ 
++const int kvm_arch_default_type;
++
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+     KVM_CAP_INFO(SET_TSS_ADDR),
+     KVM_CAP_INFO(EXT_CPUID),
+diff --git a/target/mips/kvm.c b/target/mips/kvm.c
+index c14e8f550f..754366874e 100644
+--- a/target/mips/kvm.c
++++ b/target/mips/kvm.c
+@@ -33,6 +33,8 @@
+ static int kvm_mips_fpu_cap;
+ static int kvm_mips_msa_cap;
+ 
++const int kvm_arch_default_type;
++
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+     KVM_CAP_LAST_INFO
+ };
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index a8a935e267..86f8b645a5 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -54,6 +54,8 @@
+ #define DEBUG_RETURN_GUEST 0
+ #define DEBUG_RETURN_GDB   1
+ 
++const int kvm_arch_default_type;
++
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+     KVM_CAP_LAST_INFO
+ };
+diff --git a/target/riscv/kvm.c b/target/riscv/kvm.c
+index 9d8a8982f9..fbe56ec3bb 100644
+--- a/target/riscv/kvm.c
++++ b/target/riscv/kvm.c
+@@ -764,6 +764,8 @@ void kvm_riscv_init_user_properties(Object *cpu_obj)
+     kvm_riscv_destroy_scratch_vcpu(&kvmcpu);
+ }
+ 
++const int kvm_arch_default_type;
++
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+     KVM_CAP_LAST_INFO
+ };
+diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+index a9e5880349..4b9347ffc8 100644
+--- a/target/s390x/kvm/kvm.c
++++ b/target/s390x/kvm/kvm.c
+@@ -144,6 +144,8 @@ static CPUWatchpoint hw_watchpoint;
+ static struct kvm_hw_breakpoint *hw_breakpoints;
+ static int nb_hw_breakpoints;
+ 
++const int kvm_arch_default_type;
++
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+     KVM_CAP_LAST_INFO
+ };
+-- 
+2.41.0

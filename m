@@ -1,196 +1,219 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp216099ejb;
-        Fri, 21 Jul 2023 07:33:17 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlF4Y9k1OuRz8sTiNcJZQf5m2Y1XHsgr/0a/m/0aU2jnnHiBsV3HrLCyYTaYsF2jAi2hwc0f
-X-Received: by 2002:a05:6808:8dc:b0:3a4:5063:dd94 with SMTP id k28-20020a05680808dc00b003a45063dd94mr2061233oij.42.1689949997542;
-        Fri, 21 Jul 2023 07:33:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689949997; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp635396ejb;
+        Fri, 21 Jul 2023 23:21:24 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHxLFWVDJjmXR0M0C+KwKh2ZL23Y10pjw4saTpXxJ5mQuekvi8res365+DT3xcx8UeJM44q
+X-Received: by 2002:a05:6402:752:b0:521:d2ab:e4df with SMTP id p18-20020a056402075200b00521d2abe4dfmr4225057edy.19.1690006884396;
+        Fri, 21 Jul 2023 23:21:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690006884; cv=none;
         d=google.com; s=arc-20160816;
-        b=d+GgMRaEXix2EIp0tCoVx0xwXXyJDrADXeRIoNymVB4aYGLu+fqqQCg2ndJEXBe6AF
-         9t4IzY3l94/UVESvezElzoIcBPSt/a4G/pBv5z1L90M4BLM82v32UlzpcEEIpH4XdKEF
-         kC0gGS3ls+I0ykECmQkU1q0UFMxR0RJ+zE4+htu+YVPa1vOMU2SXd9c3fRAZrcICdtHr
-         UZU+7m8jqF4k1NWYHLqt2PKQcG9jrmc323dgxe0dcyhbAbnnv/U8P0stQPIz2tvBMmMh
-         mfX1eAE2W4Xm3ogFsKh8AmE81i+XWR6/B4VdzgF9zpIE/oTLT4VGff6R7gudJsu20T6Z
-         2+4w==
+        b=zAsT0cZnUopRwSAMLdn5yJhPdCxFfBgBdl6rlFEtIh8qT/irgRrIZ/93/keY0kEj6k
+         Y2EcnFdXXGuUn17rIF6aG1RON+nEXXDiQIVbAGYiscpqs0Sk0bcvosFMvnhRgnfuL6NE
+         Uqp223wxiRjAaFlS8QhF9CaYvEk0fa9hdybX5qsxwU80dw7y1cdEA0lnErbbnEY75+6N
+         aj/JXdcjLsPF6hXPPrWN2VyA/NXqMwFnuTDFS2pJAj83IXQhL3UfY+WnPc+AJ5embAHi
+         1raEtDJIX0nH+A1PmVbtx8Xgscs9Uz0VnYmiDAVwisgpOF2KSsSMPgog+IwATSVX3QVO
+         wZdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=9Eu0+efAdWmcM1kvXZ0gk+7iJlGZwvte0bs6QH7LutQ=;
-        fh=jvpdohKmRoZMO537s6xMKXXtj7EZws1LOMQI/oP4vXs=;
-        b=qCPx316S6tdv66AB6zl9c5YqVXtuXyS7w7qUYYXxNAgJxyTZGvXYq91G9wG7r8jgwO
-         ziN/dMjheNw3x0bJEy32fuYJrIPLFVooXYmTHXZXIt63bM+pJFLrIZ2J/iDEwwXaS7Si
-         XPF6h9UVbZCnfoyUYCQXb3/8BA1JPJBjDQ13KS9auKkXHHxuwv3QkCGOVWc/jQdtkBOm
-         soFaz74qDKxjp9g1NBTpqurFDYEAwTKa+CyLxTfQ+aQEG6uHMvdxYcbw87woM1llKgDA
-         PF7XW5Vyfugde9C2gVgFx70aI3Zi43zOAvqAs7+gMR9ylAr68A3Vzwwl0AZ4IC/CFfvT
-         A+0Q==
+        h=list-id:precedence:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=sCKadz1sa7B+pPByWCa2eSUlHWWYau2xZhNN+fFvTSE=;
+        fh=NlukSAySSqZW2WjsMYuBZRd0BJyEaudWDPNcN0vlzV0=;
+        b=WC12ytQHODVDKbxszT/GPp20ft3WngwV05C4B/VH8YcMINNBwiwUX/edgGKONWFa81
+         qXUEwh0xdIqjvCjkcH8xe1IUkJRtl9r3TR43cAfFuat6KRU3emnxwSDpxhWySjw4VyVc
+         qgTSgb1Z7soUJk8oT5XPat2GTHvcVdr0906EZe7cm1cg7ZUKNUWiS7YOD37+5mlq3G84
+         WmwHXKDVjamh2W99pxmPpwmhZNfv2vfRAAU1NfxxJ/LfyIM0kqYl1CeV7KMeJB0P28rb
+         yjj8jmDUIiHjXCXpO/B6qF2pAyvAWqjT1ij2NMSYktEJ3I97JboJShi8sUi891PIYVGe
+         nZZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="p+P/js7F";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g14-20020a0cf08e000000b00635edc7414bsi1527436qvk.387.2023.07.21.07.33.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Jul 2023 07:33:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=amHkH59E;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id z26-20020aa7c65a000000b0051dd487b0d6si3371553edr.361.2023.07.21.23.21.24;
+        Fri, 21 Jul 2023 23:21:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="p+P/js7F";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qMrBW-0005EA-NT; Fri, 21 Jul 2023 10:32:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qMrBV-0005Dr-Ht
- for qemu-arm@nongnu.org; Fri, 21 Jul 2023 10:32:45 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qMrBT-00085t-Oh
- for qemu-arm@nongnu.org; Fri, 21 Jul 2023 10:32:45 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-316feb137a7so1693848f8f.1
- for <qemu-arm@nongnu.org>; Fri, 21 Jul 2023 07:32:42 -0700 (PDT)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=amHkH59E;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S229563AbjGVGVV (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Sat, 22 Jul 2023 02:21:21 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47080 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229457AbjGVGVU (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sat, 22 Jul 2023 02:21:20 -0400
+Received: from mail-wr1-x42c.google.com (mail-wr1-x42c.google.com [IPv6:2a00:1450:4864:20::42c])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 8715A26BA
+        for <kvm@vger.kernel.org>; Fri, 21 Jul 2023 23:21:18 -0700 (PDT)
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-31297125334so1613412f8f.0
+        for <kvm@vger.kernel.org>; Fri, 21 Jul 2023 23:21:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689949961; x=1690554761;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=9Eu0+efAdWmcM1kvXZ0gk+7iJlGZwvte0bs6QH7LutQ=;
- b=p+P/js7FdoZ0UlkJmWtnUKM5bZRYeVU7S5ga4C8XqVq0zxS+AMNuM63g//wk+ve+k8
- l0bwSJ/KpOGfGXQWC6Lbal6yUg5Z4EXiHaYnSra6IiX0rCG3VrN6w3K0RMuYj3ialsLH
- ycrelooUaA0C+ieDVW62KHAA7fA9NzFyP/hky/RLhYsfHq+r1AbYkOaH/9hJ5ru4z+fC
- z3ev1ZCRyYWaUAwAGivpXdt8vBjwaQPQXXa37nps8AipfX2DHbnTd+1LwZ4lKr2xHwth
- 6AuKb+zhEsQZQogZ/HbOIQ1PX1LJBgbra8StggTUHbjHHh6YDHSf8w/akYwrFMgvcAzF
- WyoQ==
+        d=ventanamicro.com; s=google; t=1690006877; x=1690611677;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=sCKadz1sa7B+pPByWCa2eSUlHWWYau2xZhNN+fFvTSE=;
+        b=amHkH59ENGCnN2jKxyb6WgmweGcYn163+m+oXmMs6VrHrew3J0/0q6zB7Ot3PG37u/
+         CdIhwag54P2tJ14WmHKqpEw9Ie2mH4xeDr/KC+m6Bo5EThX43H+ePqcVOnkHZn7uWHja
+         WP0HJFHgzz3O5r9OkuQoaXMfQx1JRESri2TBZWWUlSLpEDbptXZMPA5CfZVDY1CUx05x
+         HF6rdNR/7N7QEEWhYRjVsd40DzchLpK/GMOyG1bK5LDS4OkE/A0Arqh0jph8NeJHfm5g
+         rAZO2WSgaWyzJekgH6FtrdWh3TjKf8uSwWrpXdSBQkJp8r2JiahS5xY0OhlrbbFGodli
+         Kd2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689949961; x=1690554761;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9Eu0+efAdWmcM1kvXZ0gk+7iJlGZwvte0bs6QH7LutQ=;
- b=cXIbG+uu10n0lB2zMdKV/hLwIKfGlt+NMo7SrcVDqeNFCBrg4Rb4bRKwKfP7LcAOl2
- p0W8GYE/jCZITZ6z4+1pOer7P9szFB2P2VEo0j5zFzgcUs/vL3HAE2wyC/xgqqd0cAgF
- uODKTW2HXrpLBH6JDxHOjx3/qraHL4j1CVf4WG4M6XShPCPZ+Lw6KIrZNIqgL3ef9MeS
- uZKXTZwglC+y4LdPNzdrJb7gxWjckjImFquXmqmMQz468aZeQ7zPJuB84Sn5VwWSevMD
- fZG2QLhMcxhv6DwjNbaGId2ixURVRBAYdmt7KveysxTnjx9BP4ZJc7lvbDt83FL9m6pz
- QLOQ==
-X-Gm-Message-State: ABy/qLZWy+kQWMo+yurfi4P2JgsxeV4MkhwB8GXN2P4xM01jdD1rCWEg
- fUpFml5f5uE+0M6gVEyviBNxbuscq+67z7FMSog=
-X-Received: by 2002:adf:f488:0:b0:315:9fb7:bd9 with SMTP id
- l8-20020adff488000000b003159fb70bd9mr1445146wro.69.1689949961429; 
- Fri, 21 Jul 2023 07:32:41 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- j6-20020a5d6046000000b003143b14848dsm4304533wrt.102.2023.07.21.07.32.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Jul 2023 07:32:40 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-8.1] target/arm: Special case M-profile in debug_helper.c
- code
-Date: Fri, 21 Jul 2023 15:32:39 +0100
-Message-Id: <20230721143239.1753066-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20221208; t=1690006877; x=1690611677;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=sCKadz1sa7B+pPByWCa2eSUlHWWYau2xZhNN+fFvTSE=;
+        b=CJJWsN/PwHU5L65susXFeELsQ7F2dyzvhURWNGy1FUKNK4J+c5fEYMjUo51wMjhvwd
+         aBIHWhIVMROkxO3FF9/cdTWnNiPVb1x2534Dl1vOVQm+ZXCTjMuls81vOR1mfWbmcP2B
+         ZL2YCenOo06wfGJpzdzCEIZ5st2FfYgSyuzcLY63kd3slvfij9Ozwp8/URxGH869T5Pi
+         mac4qTZXpNFpX8fvSpJhV/RMB0xb1DCcMNk4yNp43TiuX7bDnbjd1vgOgTYFqq1SuICB
+         WVUUyf83c4dSntHE/UOdLyf8hXBk6EGT5GC2crIjKmHQuwOUkbTJ38jx5TovloK/Wak4
+         1+ZA==
+X-Gm-Message-State: ABy/qLbnsfrv3Trn4m+UZuPUjjo2R4vH+cdMpXF3MllwggnPJi1m3JVI
+        bbBbs+6jck8r/jcH7hO5XkjYEA==
+X-Received: by 2002:adf:e9c7:0:b0:311:360e:ea3a with SMTP id l7-20020adfe9c7000000b00311360eea3amr7111321wrn.34.1690006876834;
+        Fri, 21 Jul 2023 23:21:16 -0700 (PDT)
+Received: from localhost (cst2-173-16.cust.vodafone.cz. [31.30.173.16])
+        by smtp.gmail.com with ESMTPSA id t16-20020a5d6a50000000b0030ae901bc54sm5983854wrw.62.2023.07.21.23.21.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Jul 2023 23:21:16 -0700 (PDT)
+From:   Andrew Jones <ajones@ventanamicro.com>
+To:     qemu-devel@nongnu.org
+Cc:     pbonzini@redhat.com, mtosatti@redhat.com, peter.maydell@linaro.org,
+        pasic@linux.ibm.com, borntraeger@linux.ibm.com, thuth@redhat.com,
+        dbarboza@ventanamicro.com, kvm@vger.kernel.org,
+        qemu-arm@nongnu.org, qemu-s390x@nongnu.org
+Subject: [PATCH] kvm: Remove KVM_CREATE_IRQCHIP support assumption
+Date:   Sat, 22 Jul 2023 08:21:16 +0200
+Message-ID: <20230722062115.11950-2-ajones@ventanamicro.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eEo+IDT889Nk
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_BLOCKED,
+        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: J9+xxDk0OZ9H
 
-A lot of the code called from helper_exception_bkpt_insn() is written
-assuming A-profile, but we will also call this helper on M-profile
-CPUs when they execute a BKPT insn.  This used to work by accident,
-but recent changes mean that we will hit an assert when some of this
-code calls down into lower level functions that end up calling
-arm_security_space_below_el3(), arm_el_is_aa64(), and other functions
-that now explicitly assert that the guest CPU is not M-profile.
+Since Linux commit 00f918f61c56 ("RISC-V: KVM: Skeletal in-kernel AIA
+irqchip support") checking KVM_CAP_IRQCHIP returns non-zero when the
+RISC-V platform has AIA. The cap indicates KVM supports at least one
+of the following ioctls:
 
-Handle M-profile directly to avoid the assertions:
- * in arm_debug_target_el(), M-profile debug exceptions always
-   go to EL1
- * in arm_debug_exception_fsr(), M-profile always uses the short
-   format FSR (compare commit d7fe699be54b2, though in this case
-   the code in arm_v7m_cpu_do_interrupt() does not need to
-   look at the FSR value at all)
+  KVM_CREATE_IRQCHIP
+  KVM_IRQ_LINE
+  KVM_GET_IRQCHIP
+  KVM_SET_IRQCHIP
+  KVM_GET_LAPIC
+  KVM_SET_LAPIC
 
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1775
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+but the cap doesn't imply that KVM must support any of those ioctls
+in particular. However, QEMU was assuming the KVM_CREATE_IRQCHIP
+ioctl was supported. Stop making that assumption by introducing a
+KVM parameter that each architecture which supports KVM_CREATE_IRQCHIP
+sets. Adding parameters isn't awesome, but given how the
+KVM_CAP_IRQCHIP isn't very helpful on its own, we don't have a lot of
+options.
+
+Signed-off-by: Andrew Jones <ajones@ventanamicro.com>
 ---
-Not sure exactly when this assert() got in (probably in the
-semi-recent refactorings for realm support), but it won't hurt
-to backport the fix even if the older QEMU doesn't assert().
----
- target/arm/debug_helper.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index 8362462a07e..abe72e35ae6 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -21,6 +21,10 @@ static int arm_debug_target_el(CPUARMState *env)
-     bool secure = arm_is_secure(env);
-     bool route_to_el2 = false;
+While this fixes booting guests on riscv KVM with AIA it's unlikely
+to get merged before the QEMU support for KVM AIA[1] lands, which
+would also fix the issue. I think this patch is still worth considering
+though since QEMU's assumption is wrong.
+
+[1] https://lore.kernel.org/all/20230714084429.22349-1-yongxuan.wang@sifive.com/
+
+
+ accel/kvm/kvm-all.c    | 5 ++++-
+ include/sysemu/kvm.h   | 1 +
+ target/arm/kvm.c       | 3 +++
+ target/i386/kvm/kvm.c  | 2 ++
+ target/s390x/kvm/kvm.c | 3 +++
+ 5 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 373d876c0580..0f5ff8630502 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -86,6 +86,7 @@ struct KVMParkedVcpu {
+ };
  
-+    if (arm_feature(env, ARM_FEATURE_M)) {
-+        return 1;
-+    }
-+
-     if (arm_is_el2_enabled(env)) {
-         route_to_el2 = env->cp15.hcr_el2 & HCR_TGE ||
-                        env->cp15.mdcr_el2 & MDCR_TDE;
-@@ -434,18 +438,20 @@ static uint32_t arm_debug_exception_fsr(CPUARMState *env)
+ KVMState *kvm_state;
++bool kvm_has_create_irqchip;
+ bool kvm_kernel_irqchip;
+ bool kvm_split_irqchip;
+ bool kvm_async_interrupts_allowed;
+@@ -2377,8 +2378,10 @@ static void kvm_irqchip_create(KVMState *s)
+         if (s->kernel_irqchip_split == ON_OFF_AUTO_ON) {
+             error_report("Split IRQ chip mode not supported.");
+             exit(1);
+-        } else {
++        } else if (kvm_has_create_irqchip) {
+             ret = kvm_vm_ioctl(s, KVM_CREATE_IRQCHIP);
++        } else {
++            return;
+         }
+     }
+     if (ret < 0) {
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index 115f0cca79d1..84b1bb3dc91e 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -32,6 +32,7 @@
+ #ifdef CONFIG_KVM_IS_POSSIBLE
+ 
+ extern bool kvm_allowed;
++extern bool kvm_has_create_irqchip;
+ extern bool kvm_kernel_irqchip;
+ extern bool kvm_split_irqchip;
+ extern bool kvm_async_interrupts_allowed;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index b4c7654f4980..2fa87b495d68 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -250,6 +250,9 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
+ int kvm_arch_init(MachineState *ms, KVMState *s)
  {
-     ARMMMUFaultInfo fi = { .type = ARMFault_Debug };
-     int target_el = arm_debug_target_el(env);
--    bool using_lpae = false;
-+    bool using_lpae;
- 
--    if (target_el == 2 || arm_el_is_aa64(env, target_el)) {
-+    if (arm_feature(env, ARM_FEATURE_M)) {
-+        using_lpae = false;
-+    } else if (target_el == 2 || arm_el_is_aa64(env, target_el)) {
-         using_lpae = true;
-     } else if (arm_feature(env, ARM_FEATURE_PMSA) &&
-                arm_feature(env, ARM_FEATURE_V8)) {
-         using_lpae = true;
-+    } else if (arm_feature(env, ARM_FEATURE_LPAE) &&
-+               (env->cp15.tcr_el[target_el] & TTBCR_EAE)) {
-+        using_lpae = true;
-     } else {
--        if (arm_feature(env, ARM_FEATURE_LPAE) &&
--            (env->cp15.tcr_el[target_el] & TTBCR_EAE)) {
--            using_lpae = true;
--        }
-+        using_lpae = false;
+     int ret = 0;
++
++    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_IRQCHIP);
++
+     /* For ARM interrupt delivery is always asynchronous,
+      * whether we are using an in-kernel VGIC or not.
+      */
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index ebfaf3d24c79..6363e67f092d 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -2771,6 +2771,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+         }
      }
  
-     if (using_lpae) {
++    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_IRQCHIP);
++
+     return 0;
+ }
+ 
+diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+index a9e5880349d9..c053304adf94 100644
+--- a/target/s390x/kvm/kvm.c
++++ b/target/s390x/kvm/kvm.c
+@@ -391,6 +391,9 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+     }
+ 
+     kvm_set_max_memslot_size(KVM_SLOT_MAX_BYTES);
++
++    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_S390_IRQCHIP);
++
+     return 0;
+ }
+ 
 -- 
-2.34.1
-
+2.41.0

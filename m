@@ -1,95 +1,91 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp636153ejb;
-        Fri, 21 Jul 2023 23:23:27 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEFlblTLLI6pL2Bx0UH+1P5NjHQcgzHdoinC8cz46T0WnLBijPcHICBXFsAR57m0wJTKbjK
-X-Received: by 2002:aa7:cb59:0:b0:521:d275:c5a0 with SMTP id w25-20020aa7cb59000000b00521d275c5a0mr3109902edt.15.1690007006900;
-        Fri, 21 Jul 2023 23:23:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690007006; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp668635ejb;
+        Sat, 22 Jul 2023 00:53:18 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFdHMImyGIHBtHiuU0Tu5nvNMs+GKlu7KOEsj5cOlVPMGKrHgnCJF7jlBXB+Rt8s8bHZWzr
+X-Received: by 2002:a17:90b:3b51:b0:263:f3d0:7ea2 with SMTP id ot17-20020a17090b3b5100b00263f3d07ea2mr6713269pjb.8.1690012398368;
+        Sat, 22 Jul 2023 00:53:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690012398; cv=none;
         d=google.com; s=arc-20160816;
-        b=XmAban/2q/HAY6Z0/jZP83wFetfMQpVaiIxLF3K4/whI/MJFd/fj2Pme+FgBIHvLmY
-         H97F8HYwRx7kreIYG92v1xVV8bi58pAIgaQP6m5V3OeFg5Fdk4OSrmUk5wNVTPhf312A
-         +Whf1qdoGw1xajjKExWRsF1WXU18HAmPA9U858OzMnHeKCa1+Udm1PhOA2m4gTufz5ur
-         aXDFKGYjqp1tkqDg8GmvRwKV5K/h0KCNcxWZHffkWMVAxIbxui1l7IvK4r/CSEy0kCi+
-         ANzTJ8t1nfhyl9ni+psVdOcNkF9mIKS86Zp44xoDRKgQLSMUhoUITXTG0rTA/DYTPAFF
-         +29A==
+        b=Rch28JxB2vv7n9CZVYGIuC3AVR1gGxtJtjTtTm5UXenM0d/XxgNg84UB3o5cqRGDVK
+         BoZWP/6JF0kdtvYh2Rmz236yhKBYPD13N1KmDtPMbCMyIxf+Et6femJUu3/VqzYRePAo
+         /P1KdDhDRIiA8wQzd/aFYehTvgQEc4+zTIqXa2KT3vSNLK7HOtoDRL4Sp+M+fKnFB4RJ
+         xrquyD8Apg228uM/S2DsoXIG5JOpYb/hN6KBFabnr3TK45kGDBwHXqoeQvJbMP2gKTgU
+         AAKjGdraXQJ4TKyVoS7WFH5D9vwpNNBH5/fTf/QW1anYM4ldyPIVAPNArn8H2nZ37pnO
+         eXZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:to:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:from
-         :dkim-signature;
-        bh=aiO61RFWQc576A2x8jBmto7Eq50nA+0j/FFgWXdA55I=;
+         :message-id:date:subject:cc:from:dkim-signature;
+        bh=bN+VKWG1+IOztgVSANu62XflYn5gYOmAgQC0VPwsiCw=;
         fh=mJ5OFdie2M3iVyZL5TpDz8DAfFZC9/SE7DnU60sOZu0=;
-        b=MxnEbVoGozCFWLgEB/KyFMskLexdH10Tn5bP07Knd3wK4Y01EVhyEpSLgo6InXDwfl
-         z8KdP8tHqorgBKqqBx0IQ4UYpB4Vbb03fYzr+LLz54/tmObVpYxZ6OjqLxnGFr86Nq4+
-         hkc4nyVc6+Cf+YWYtzJPTFcffTs6O7uq+jpKnfZrQkw6m5TSwh9baxsyuOvMIcFitZlF
-         uPV7PU55obmmR8b3cMC3mDjErk1zazVGv8nl25Myxnn/aqXs1bIIyOukCR6gXfw7do6w
-         IPne6MKB0ZBP8vJ33791jn41VwTMLbZ53TfMWZjLP/09s+NhZJWZSbCkVnWLlIdqj+qc
-         CyQA==
+        b=ccGuXTKxBsE/z/pFh7SSraO/hdq87kNAJKrc4vUDQXNdei5Eka6VnS/P1tA0Rg5vmo
+         JRHYBfZi17JuauQsxGqSIpdtmuXSU7CZ+u+zMqbA2GRf3GNVdxzTh3jgy4YAQq1LVnBC
+         yzxi72iAsbAqDbfzTF8UrhIWO9KrMwD09ABlZM3t+D5We9n73DMtet6DvqMWC7X9tSMR
+         0NfaUFmLVBLjJt3flYFHJIRbPKn+6tCB+qtMVvKWNpj0a9r7LxubIHOsPZbUCjkJG7ct
+         OzsywMG85ujGv/EDTvYzB16ECbp4pyD39jCXu8rLK49R0tc1C887SMo20nvFW08sqRn7
+         i07Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=hgwh4xKw;
+       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=jQon0Yf7;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id l21-20020a056402029500b00521cc0b3498si3268342edv.289.2023.07.21.23.23.26;
-        Fri, 21 Jul 2023 23:23:26 -0700 (PDT)
+        by mx.google.com with ESMTP id g7-20020a63e607000000b005575b3902c1si4687456pgh.346.2023.07.22.00.53.18;
+        Sat, 22 Jul 2023 00:53:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=hgwh4xKw;
+       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=jQon0Yf7;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S230037AbjGVGXN (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Sat, 22 Jul 2023 02:23:13 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47338 "EHLO
+        id S231371AbjGVHxR (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Sat, 22 Jul 2023 03:53:17 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:35828 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229615AbjGVGXL (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sat, 22 Jul 2023 02:23:11 -0400
-Received: from mail-ot1-x329.google.com (mail-ot1-x329.google.com [IPv6:2607:f8b0:4864:20::329])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 0E2D0EB
-        for <kvm@vger.kernel.org>; Fri, 21 Jul 2023 23:23:11 -0700 (PDT)
-Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-6b9e478e122so2382217a34.1
-        for <kvm@vger.kernel.org>; Fri, 21 Jul 2023 23:23:11 -0700 (PDT)
+        with ESMTP id S231318AbjGVHxQ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sat, 22 Jul 2023 03:53:16 -0400
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com [IPv6:2607:f8b0:4864:20::62d])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 6D4132708
+        for <kvm@vger.kernel.org>; Sat, 22 Jul 2023 00:53:14 -0700 (PDT)
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-1bb775625e2so4900275ad.1
+        for <kvm@vger.kernel.org>; Sat, 22 Jul 2023 00:53:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690006990; x=1690611790;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aiO61RFWQc576A2x8jBmto7Eq50nA+0j/FFgWXdA55I=;
-        b=hgwh4xKwD6Cu9z8Rs6iTIcQTBX5rYYn71p9QkLR9APikor7gEDD/qjke1FXbNnmBBb
-         yz/6yGgg2hmz3nsJRUKsMeKrnosf8i9Dqlp5AQoVrMJDDS1xzziNIDm5rPEuuCr62frx
-         mBrrhE+ODRiwmsjt4NudoC0PRpebzUISSExHamYBQzfmd3QTs2Kr7MLkpts3wbclBb6I
-         /HWPPU853maBPTYhnDtPyhhQ5OTXU9QsK8boN37SQj0jb6QP1wX0SN8QdUh0iDw3Kmia
-         Ng9+IRGnIQFZRTNzCxgGBxYcR0juQ1NTUoa/5kFdLWGtcUxzzr6WxR9D9/KvZsbDTgK0
-         7UpQ==
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690012394; x=1690617194;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=bN+VKWG1+IOztgVSANu62XflYn5gYOmAgQC0VPwsiCw=;
+        b=jQon0Yf7szj552v/VCJW+ipTm6W/fJ6WLkXV8j6S/O5zS6i6eBpUB1zltCWR3QiNfB
+         3DrbDOokD6olH0pQTQRiXfI2jXguQGmNIozBjB4OdQqQUyLANxYCFNp/KJXzYhUVRwGe
+         7nddYdqd0KTVHc6IN/VboBxvHON3PJW8Cti8wkAgHELYJrYaf8izW6o6IpGP+YGWQRmD
+         OBctte/l2ulLpFKFFfoSJi0hRhfm/F0oxcgJUy5ibrz9j3D2rFkyuSGTNG+nsmK9zf8u
+         gOt0jl94wFNZoatpSFDff3gvwAO+PHyyOqeocpyHadlfr7Vpk23eqeOe4bEMWvvUwcqt
+         a6Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690006990; x=1690611790;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aiO61RFWQc576A2x8jBmto7Eq50nA+0j/FFgWXdA55I=;
-        b=Sm5cPfLmUgiisluB+JiRB/mNmcygRcibfKKQ4OfDca48EolI7QXEBksFBdMuqdTqgd
-         xgBaRSYOH6gH4lnVmF49Mi7ZA5KBKXXFaeqvc/Q5RZs145fKsIe54vUZ5wE+6LLcJ9MT
-         0KbwkqlS5L1+59nL+vvddkplkZjtCtRFbWLfJYzwRwPIyQae3zC1SjciO3qLZYIBW+2H
-         pLGYbxG4+V7tSOunW/HKYBLonzDdaaMREnytgXwaHIG8fQ+/mlhqqpSvj96mKhQACMAn
-         jWd1syzbLCgxi1f/ZVOuxtCRZTqSvhsQgiqwlozfTPh6AqBIbA7OBTaGuJsEhUZRyG8C
-         9jog==
-X-Gm-Message-State: ABy/qLb/hrWCwevcdOlyoRwt8Rr25bFp5F9bf0NMTpOm/NBdPCZXAN8E
-        2vc0UwEYYsHvS9AJkBwRlxfmCQ==
-X-Received: by 2002:a9d:7319:0:b0:6b5:e816:b64d with SMTP id e25-20020a9d7319000000b006b5e816b64dmr2450464otk.37.1690006990385;
-        Fri, 21 Jul 2023 23:23:10 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1690012394; x=1690617194;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=bN+VKWG1+IOztgVSANu62XflYn5gYOmAgQC0VPwsiCw=;
+        b=lJ7PzOBGO+yCqe5aRmegsdNqsGArwlqY0NIBd0AluqiFlBMGQe/XNrVUUW19MyefVC
+         vHyQACpCAeTHNCKC5wbw5x1Ii241bIuwwdzBSV6Oi3FzdaaHki34JqQhhYLqQDuRsmUY
+         cmx/KihmnH1VsnTqOXhemfe9+I6pnpJxdAlWcq0Nz05heKLlZyC9WCg4bqsOjX7bCXA2
+         6cMcNIYEQt0s4CuSzD5G60yCBnimQE82+Qv6AFLBNKBAkjfBp6zNr8Co8jUUerIkSnKl
+         P3qaLz1jpyK4mIWuZq3ImPa6Cc62t9XB2myn4cQmEs2UCFhcA+TI9kfZxZtGQl+igliE
+         H85Q==
+X-Gm-Message-State: ABy/qLbzvhxGbNMBkHQVFfQonBH7cBb75yyC661bhFSO7MFnx/xgyyoc
+        UkW9eBG248y4vaHDehvK2F1xVvs2hkQdkf1FVwo=
+X-Received: by 2002:a17:902:f7d1:b0:1b8:76d1:f1e8 with SMTP id h17-20020a170902f7d100b001b876d1f1e8mr4644921plw.28.1690012393834;
+        Sat, 22 Jul 2023 00:53:13 -0700 (PDT)
 Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id s16-20020a170902989000b001b9be3b94e5sm4509198plp.303.2023.07.21.23.23.08
+        by smtp.gmail.com with ESMTPSA id i17-20020a17090332d100b001b86dd825e7sm4753119plr.108.2023.07.22.00.53.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Jul 2023 23:23:10 -0700 (PDT)
+        Sat, 22 Jul 2023 00:53:13 -0700 (PDT)
 From:   Akihiko Odaki <akihiko.odaki@daynix.com>
 Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
         Paolo Bonzini <pbonzini@redhat.com>,
         Peter Maydell <peter.maydell@linaro.org>,
         Richard Henderson <richard.henderson@linaro.org>,
         Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 2/2] accel/kvm: Specify default IPA size for arm64
-Date:   Sat, 22 Jul 2023 15:22:48 +0900
-Message-ID: <20230722062250.18111-3-akihiko.odaki@daynix.com>
+Subject: [PATCH v4 0/2] accel/kvm: Specify default IPA size for arm64
+Date:   Sat, 22 Jul 2023 16:53:04 +0900
+Message-ID: <20230722075308.26560-1-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230722062250.18111-1-akihiko.odaki@daynix.com>
-References: <20230722062250.18111-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,DKIM_SIGNED,
@@ -101,67 +97,31 @@ To:     unlisted-recipients:; (no To-header on input)
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: DOuUDRBZzOLC
+X-TUID: zkgSRr42LGYR
 
-Before this change, the default KVM type, which is used for non-virt
-machine models, was 0.
+Some Arm systems such as Apple Silicon Macs have IPA size smaller than the
+default used by KVM. Introduce our own default IPA size that fits on such a
+system.
 
-The kernel documentation says:
-> On arm64, the physical address size for a VM (IPA Size limit) is
-> limited to 40bits by default. The limit can be configured if the host
-> supports the extension KVM_CAP_ARM_VM_IPA_SIZE. When supported, use
-> KVM_VM_TYPE_ARM_IPA_SIZE(IPA_Bits) to set the size in the machine type
-> identifier, where IPA_Bits is the maximum width of any physical
-> address used by the VM. The IPA_Bits is encoded in bits[7-0] of the
-> machine type identifier.
->
-> e.g, to configure a guest to use 48bit physical address size::
->
->     vm_fd = ioctl(dev_fd, KVM_CREATE_VM, KVM_VM_TYPE_ARM_IPA_SIZE(48));
->
-> The requested size (IPA_Bits) must be:
->
->  ==   =========================================================
->   0   Implies default size, 40bits (for backward compatibility)
->   N   Implies N bits, where N is a positive integer such that,
->       32 <= N <= Host_IPA_Limit
->  ==   =========================================================
+V3 -> V4: Removed an inclusion of kvm_mips.h that is no longer needed.
+V2 -> V3: Changed to use the maximum IPA size as the default.
+V1 -> V2: Introduced an arch hook
 
-> Host_IPA_Limit is the maximum possible value for IPA_Bits on the host
-> and is dependent on the CPU capability and the kernel configuration.
-> The limit can be retrieved using KVM_CAP_ARM_VM_IPA_SIZE of the
-> KVM_CHECK_EXTENSION ioctl() at run-time.
->
-> Creation of the VM will fail if the requested IPA size (whether it is
-> implicit or explicit) is unsupported on the host.
-https://docs.kernel.org/virt/kvm/api.html#kvm-create-vm
+Akihiko Odaki (2):
+  kvm: Introduce kvm_arch_get_default_type hook
+  accel/kvm: Specify default IPA size for arm64
 
-So if Host_IPA_Limit < 40, specifying 0 as the type will fail. This
-actually confused libvirt, which uses "none" machine model to probe the
-KVM availability, on M2 MacBook Air.
+ include/sysemu/kvm.h     | 2 ++
+ target/mips/kvm_mips.h   | 9 ---------
+ accel/kvm/kvm-all.c      | 4 +++-
+ hw/mips/loongson3_virt.c | 2 --
+ target/arm/kvm.c         | 7 +++++++
+ target/i386/kvm/kvm.c    | 5 +++++
+ target/mips/kvm.c        | 2 +-
+ target/ppc/kvm.c         | 5 +++++
+ target/riscv/kvm.c       | 5 +++++
+ target/s390x/kvm/kvm.c   | 5 +++++
+ 10 files changed, 33 insertions(+), 13 deletions(-)
 
-Fix this by using Host_IPA_Limit as the default type when
-KVM_CAP_ARM_VM_IPA_SIZE is available.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- target/arm/kvm.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 40f577bfd5..23aeb09949 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -249,7 +249,9 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
- 
- int kvm_arch_get_default_type(MachineState *ms)
- {
--    return 0;
-+    bool fixed_ipa;
-+    int size = kvm_arm_get_max_vm_ipa_size(ms, &fixed_ipa);
-+    return fixed_ipa ? 0 : size;
- }
- 
- int kvm_arch_init(MachineState *ms, KVMState *s)
 -- 
 2.41.0

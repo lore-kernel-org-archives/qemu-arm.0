@@ -1,167 +1,162 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp668655ejb;
-        Sat, 22 Jul 2023 00:53:22 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHKK5rF9OMJDwKCfsYSjHtJPcmO93LhkbKpWiCCzudALcLBxNa/9Y7O5/oTKuAURWjYF1LU
-X-Received: by 2002:a05:6a20:549e:b0:12e:7ff9:b612 with SMTP id i30-20020a056a20549e00b0012e7ff9b612mr5376355pzk.45.1690012402330;
-        Sat, 22 Jul 2023 00:53:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690012402; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp825055ejb;
+        Sat, 22 Jul 2023 07:07:00 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHLTZOI2TB5eCjCGOqkLunZ/yCjCStXXboxpA+rkOAkqyo60LxyE3FuMkP93Y31dHJEOFsI
+X-Received: by 2002:a0c:e506:0:b0:639:ea27:701e with SMTP id l6-20020a0ce506000000b00639ea27701emr3413155qvm.1.1690034819978;
+        Sat, 22 Jul 2023 07:06:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690034819; cv=none;
         d=google.com; s=arc-20160816;
-        b=frFz3ucEV166Q14yRfS19cTIMZwQfg9Z9Rv/xFJff4zSeg7nGKgKx/2uWLZA5lWr7+
-         j5RYBnoHcG3tiGpv0H2YURKQ2dzPbscTLrzMVYRNZgalJeXZ37oAWtxSFd8GivSkHxXS
-         ZlcgmW1pBk+WDNqNs7QDQnXH3i9OYxdrbpAKacawcF6Y7pNiT9V1lQAk/fgbo0wAH5d6
-         FbykXRW9f+mU/PE1h58/WQ0w69RFWmewxq3mF9kD+5Y9OOI5u8YdChBtU3baQbkKoie3
-         1jqCai10mJeUcfui1PwWf///9HeKd0fp3QqZHr0sV9ZTmplbTYvQdPwrfvUAQM2mxwW/
-         Q5Uw==
+        b=NpE6UscsuRRlyOHQA1xJvqjrmrLcUDtuloBDQEsC1HOxuIj+rZFKLuuT4+UOigwPKk
+         RKuCfFV2ZQkcno/ieozxXkCXniSv7sTcOuRctsT+YCGMWnacDG/8uhXpI44FRvmtFpim
+         LECFqoDahQDe3/vPE84jWcQOgQO9N0pfLIbxpVCDxOaOlPd/LSI3n3c1ftyPGyKX05aJ
+         Df2TxYhBWBPxcJfrlm1L+1lIDelg4+k4G9rT1GjTlSImq4Diu3ThpF2zctuW2R2d8v4r
+         EZLp7nZmvY0SrAssI5zlDBwgXY46uPVk1AbaA+nOl7rpznrV57bBNlp6JyffJOgcYdoL
+         ToFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:to:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:from
-         :dkim-signature;
-        bh=aiO61RFWQc576A2x8jBmto7Eq50nA+0j/FFgWXdA55I=;
-        fh=mJ5OFdie2M3iVyZL5TpDz8DAfFZC9/SE7DnU60sOZu0=;
-        b=pzRMxnV92p9qWYpGb/aD4i66jeiU/zsoGAjdOT85lyf5rq9LsRBFQTkUTPTjGNYOI6
-         aGTyirPSBSSHl/kSqgQRhWucCERhplu3p0kDF6wzsGARubb1OY0XZryPfVxkBpZe9UGf
-         xiOraTfmHk+BaqitVXE7c0LDfooLYLN9xgCwY3W3EJZjEsqTPN1ru8TS+x7HTT8UByh2
-         dqtilr633u8F0aEeg032qb/jB46i4bwF9/0Mj8eJAW6E9KzZ3BISt5bYjr4v0vNDwBdB
-         XTA60q7q4pIpkT0KSZhsZ4t+UYV7m03fQ47QmmUx4ToIHsrNa5phQNW1b/cBJ7yqjCzH
-         OXAw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=J2FD2DJf0a/VP0RYOPU0CVDYFMhjJWhEaHNFT8pA9kw=;
+        fh=7ELSr/5sFo7qZWUWozFMp+B9CMHRnMDW7I5B4MPhJxE=;
+        b=yc+pNZe+I9xNgYUcdji4552DA8d2JNRvoYc7NLKpuAgdPNFnoqyqNIFEC5Q8yFKYtC
+         EAHrRHGZwkOuQ9mWewjztnUTLgueKhR8U03uteZGVTtO5K12b9ZHNTAt2ucSAZPsxZwF
+         9CQocmuVnsW0CIDO1DIrAsPtBKqTaUp+FpKi0XBYd/yj0Q76K5+ufz0CHAVkNeRFuNtW
+         aZoGwTHfZsuTfcsY/XHNAvBTeY56WGvFO4Gh2ucs8eVCke9ICxmSaIvcu/WD3KEO7VNZ
+         fUrwbaUuoy6idSamhUXnZcIoyBBE6IoqejcXeY4h+7YEXZfXOwxBfCiLK1CCeznrjZD5
+         91WQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=V7HDO7h9;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id g7-20020a63e607000000b005575b3902c1si4687456pgh.346.2023.07.22.00.53.22;
-        Sat, 22 Jul 2023 00:53:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YcT0MM1l;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u7-20020a0cb407000000b0063cb0c44abcsi2865468qve.373.2023.07.22.07.06.59
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 22 Jul 2023 07:06:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=V7HDO7h9;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S231377AbjGVHxU (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Sat, 22 Jul 2023 03:53:20 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:35852 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S231370AbjGVHxT (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sat, 22 Jul 2023 03:53:19 -0400
-Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com [IPv6:2607:f8b0:4864:20::631])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id BEFF22708
-        for <kvm@vger.kernel.org>; Sat, 22 Jul 2023 00:53:18 -0700 (PDT)
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-1bb1baf55f5so20598375ad.0
-        for <kvm@vger.kernel.org>; Sat, 22 Jul 2023 00:53:18 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=YcT0MM1l;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qNDFx-00017N-Hp; Sat, 22 Jul 2023 10:06:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qNDFo-000147-5s
+ for qemu-arm@nongnu.org; Sat, 22 Jul 2023 10:06:41 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qNDFm-0001gu-E1
+ for qemu-arm@nongnu.org; Sat, 22 Jul 2023 10:06:39 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-3158a5e64b6so2174245f8f.0
+ for <qemu-arm@nongnu.org>; Sat, 22 Jul 2023 07:06:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690012398; x=1690617198;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aiO61RFWQc576A2x8jBmto7Eq50nA+0j/FFgWXdA55I=;
-        b=V7HDO7h9cMJQuoPaix0ohqhZbGjhwfcE21W7k9j8a9RL0z4OSklK3Ozp1/pF/2D5Ze
-         wHNnIBVHARgb9QZGB2Q6IlSnZfLGP8GZiHrn+nGZNrR2P3oibMTlrfeKZ4WjqciR4e8P
-         /Ggu3omGCX/RjZeJdiFvz7mlZjl8FY+URnd1rEh/kdE+S4I0A/TGjQBPjl2kQIo9S+zi
-         eVkh4FJsbOH8ityr79518E4fKiy2YFOIbajqIh6vCNw2GFoGi0KPnlp800B4oLYL00Zh
-         D21ndlGqCOPoqc1A3lECbEpJSGRsNsDnGyCWmO2Bv7jokmk7L2hcOurnqcgQZRb62SpI
-         JNTg==
+ d=linaro.org; s=google; t=1690034796; x=1690639596;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=J2FD2DJf0a/VP0RYOPU0CVDYFMhjJWhEaHNFT8pA9kw=;
+ b=YcT0MM1lkzJl0d+NXEq520wiYBHBRQOrsSYIPJ2LH1fE9U7dInn5friEandlUW4FuV
+ R6dkK1DEl+/2JRrU+4mdOIOJPx2vt3xM5QbwRKDbp0ImZtcFjDHeW8qgKhhtINBMkU3x
+ MAI1wy4CPec0zbTkZUi8AP7P1kWkyMMF0Mh6KjYjeKffHG376F7lDpmg0UKctALbBXfE
+ 2a4sJz7db1MnrOtisZJWM277TOTYh+4KUfZMyt/SnpGy/AeCnzxP4MNEdrO8rKqnQstk
+ 7FKgMvU1SpiGYVKnOjgrCjmEQ6QUPfmN4xjGYVNy5nizZWIklO04C6tZIXQ4qL7rw3yr
+ 9Gzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690012398; x=1690617198;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aiO61RFWQc576A2x8jBmto7Eq50nA+0j/FFgWXdA55I=;
-        b=jsdZV5QRozblbGXw+UezkNMc/9UXp91P4PiXQT7fcDlq6Z918vG0P5DzlyzcLWbYhA
-         nsEY1dF3TEMBPy7i7+TKSC/5hjiTPtAM0nrwrkxYWRnVRI3Pxeiba6zL5yoRBT5IkfX2
-         3DZk0m8/qsceOPapkKScN7DEmYcqGc6LeSDpcuKNLD2Om3bSLs+1ZdqQqOKklRW0OX9P
-         7cbSQoBGT+cfJwWP/0ieGWVKOAthire/h7rh0nX90rBLRsh/ABH2LvK8D7BVmx+Rb46y
-         yjkLZH0YangjP375ZrbPIcKOsr9wAaA7NTR0ZmUZtaxY9H2yE5XYrdch0JZKfBx9K2QK
-         ayzA==
-X-Gm-Message-State: ABy/qLaY53E1Igse5GZFPXrLzhIuGBbsAKp4PfX7zDMRfHZ/WwVRvAHD
-        1PfYfG3OuAHqpoUs1glLdh2bjA==
-X-Received: by 2002:a17:902:d512:b0:1b6:c229:c350 with SMTP id b18-20020a170902d51200b001b6c229c350mr5599213plg.18.1690012398241;
-        Sat, 22 Jul 2023 00:53:18 -0700 (PDT)
-Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id i17-20020a17090332d100b001b86dd825e7sm4753119plr.108.2023.07.22.00.53.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 22 Jul 2023 00:53:17 -0700 (PDT)
-From:   Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v4 2/2] accel/kvm: Specify default IPA size for arm64
-Date:   Sat, 22 Jul 2023 16:53:06 +0900
-Message-ID: <20230722075308.26560-3-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230722075308.26560-1-akihiko.odaki@daynix.com>
-References: <20230722075308.26560-1-akihiko.odaki@daynix.com>
+ d=1e100.net; s=20221208; t=1690034796; x=1690639596;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=J2FD2DJf0a/VP0RYOPU0CVDYFMhjJWhEaHNFT8pA9kw=;
+ b=dbLgPMHwR1LuH0wlOMTNlHWRpuQjwPtKoQuO+XaN79EftXszBXkVb2Br/psnbheo0+
+ JdDoOc5yI523k4r+RqqwjNRFDn5b5e0maNdDswGU4pg1UwPgXXrN1I9tSiiaBOMOlwfb
+ FMXNC/pS6dPKUkOMwcnGIq93yVHT0ouurcaHBceKOeRn/MHpqrb80EthGoMCRgzRTCPi
+ nMQC8kzT/f9s97Tq9a9qMhXJ6thfyGOc34Iss7B8bB5fjHXjbUTMeI9NWcT1khOgpnlt
+ ob/SHn1TMTcN7i9HChElIi1S1OYhIFOQ+1KKjhrCh7O4noU1qt8QPoJaPD8Vdootu+/m
+ 7F6Q==
+X-Gm-Message-State: ABy/qLbMw/TTlVAKZKM8Pi80Ke4m0tmRTP6hwv0g8nsDHz6nJ3n6Nxf4
+ EnSzwB4s8O+v3q1NXwJqmuixFA==
+X-Received: by 2002:adf:e285:0:b0:314:11ea:480d with SMTP id
+ v5-20020adfe285000000b0031411ea480dmr3544867wri.9.1690034796326; 
+ Sat, 22 Jul 2023 07:06:36 -0700 (PDT)
+Received: from [172.20.15.195]
+ (179.181-106-213.static.virginmediabusiness.co.uk. [213.106.181.179])
+ by smtp.gmail.com with ESMTPSA id
+ w10-20020adfd4ca000000b003140f47224csm7029578wrk.15.2023.07.22.07.06.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 22 Jul 2023 07:06:35 -0700 (PDT)
+Message-ID: <d433a38a-ffe5-fb2d-faa4-6b537aecfdf9@linaro.org>
+Date: Sat, 22 Jul 2023 15:06:34 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,RCVD_IN_DNSWL_BLOCKED,SPF_HELO_NONE,SPF_NONE,
-        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-To:     unlisted-recipients:; (no To-header on input)
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: GAOiHTnMOkTa
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH for-8.1] target/arm: Special case M-profile in
+ debug_helper.c code
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20230721143239.1753066-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230721143239.1753066-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yfsJJadilSaE
 
-Before this change, the default KVM type, which is used for non-virt
-machine models, was 0.
+On 7/21/23 15:32, Peter Maydell wrote:
+> A lot of the code called from helper_exception_bkpt_insn() is written
+> assuming A-profile, but we will also call this helper on M-profile
+> CPUs when they execute a BKPT insn.  This used to work by accident,
+> but recent changes mean that we will hit an assert when some of this
+> code calls down into lower level functions that end up calling
+> arm_security_space_below_el3(), arm_el_is_aa64(), and other functions
+> that now explicitly assert that the guest CPU is not M-profile.
+> 
+> Handle M-profile directly to avoid the assertions:
+>   * in arm_debug_target_el(), M-profile debug exceptions always
+>     go to EL1
+>   * in arm_debug_exception_fsr(), M-profile always uses the short
+>     format FSR (compare commit d7fe699be54b2, though in this case
+>     the code in arm_v7m_cpu_do_interrupt() does not need to
+>     look at the FSR value at all)
+> 
+> Cc:qemu-stable@nongnu.org
+> Resolves:https://gitlab.com/qemu-project/qemu/-/issues/1775
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+> Not sure exactly when this assert() got in (probably in the
+> semi-recent refactorings for realm support), but it won't hurt
+> to backport the fix even if the older QEMU doesn't assert().
+> ---
 
-The kernel documentation says:
-> On arm64, the physical address size for a VM (IPA Size limit) is
-> limited to 40bits by default. The limit can be configured if the host
-> supports the extension KVM_CAP_ARM_VM_IPA_SIZE. When supported, use
-> KVM_VM_TYPE_ARM_IPA_SIZE(IPA_Bits) to set the size in the machine type
-> identifier, where IPA_Bits is the maximum width of any physical
-> address used by the VM. The IPA_Bits is encoded in bits[7-0] of the
-> machine type identifier.
->
-> e.g, to configure a guest to use 48bit physical address size::
->
->     vm_fd = ioctl(dev_fd, KVM_CREATE_VM, KVM_VM_TYPE_ARM_IPA_SIZE(48));
->
-> The requested size (IPA_Bits) must be:
->
->  ==   =========================================================
->   0   Implies default size, 40bits (for backward compatibility)
->   N   Implies N bits, where N is a positive integer such that,
->       32 <= N <= Host_IPA_Limit
->  ==   =========================================================
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-> Host_IPA_Limit is the maximum possible value for IPA_Bits on the host
-> and is dependent on the CPU capability and the kernel configuration.
-> The limit can be retrieved using KVM_CAP_ARM_VM_IPA_SIZE of the
-> KVM_CHECK_EXTENSION ioctl() at run-time.
->
-> Creation of the VM will fail if the requested IPA size (whether it is
-> implicit or explicit) is unsupported on the host.
-https://docs.kernel.org/virt/kvm/api.html#kvm-create-vm
-
-So if Host_IPA_Limit < 40, specifying 0 as the type will fail. This
-actually confused libvirt, which uses "none" machine model to probe the
-KVM availability, on M2 MacBook Air.
-
-Fix this by using Host_IPA_Limit as the default type when
-KVM_CAP_ARM_VM_IPA_SIZE is available.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- target/arm/kvm.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 40f577bfd5..23aeb09949 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -249,7 +249,9 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
- 
- int kvm_arch_get_default_type(MachineState *ms)
- {
--    return 0;
-+    bool fixed_ipa;
-+    int size = kvm_arm_get_max_vm_ipa_size(ms, &fixed_ipa);
-+    return fixed_ipa ? 0 : size;
- }
- 
- int kvm_arch_init(MachineState *ms, KVMState *s)
--- 
-2.41.0
+r~

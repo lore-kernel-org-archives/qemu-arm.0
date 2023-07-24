@@ -1,120 +1,128 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp1567060ejb;
-        Sun, 23 Jul 2023 18:54:12 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHFVtrToXkZbuyjMZJaOD7IiJRXpa4HKBQSfwJSAjcZcUTbyWFIEbMa/bQf9YHE4w0aqCC9
-X-Received: by 2002:ac8:5708:0:b0:406:9d38:50ee with SMTP id 8-20020ac85708000000b004069d3850eemr286028qtw.14.1690163651794;
-        Sun, 23 Jul 2023 18:54:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690163651; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp1577111ejb;
+        Sun, 23 Jul 2023 19:27:04 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHd9a4JJ5Tji0R5ZISuaamqFVj0gLfmGuj0l+dQ4kdXIrdul4uLU9FqnPDQnzQqKxIvumTP
+X-Received: by 2002:a05:622a:170c:b0:403:fcd9:963 with SMTP id h12-20020a05622a170c00b00403fcd90963mr8446386qtk.67.1690165624016;
+        Sun, 23 Jul 2023 19:27:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690165624; cv=none;
         d=google.com; s=arc-20160816;
-        b=cEYvRfIXcabC6917Xezt2+4r8353XkZfaYzhgZQIw+NPwoLWKE5B33plY9L1vhXrkX
-         lSFESPXJ8Rxas+6fPEnhk+zuwbM61cmUKGdPDrMTCZthpINSJXkINCfp1OpZCRFcGSeD
-         gK+veGVF0gtgeQLCn45y5xGUP5EIliD2+d/hthY4YYzLdD41WaAdj0yTStoLwsyYGu63
-         eICcThWP0O867QfIAZloP2rY72my6Ek2flNm7Ie2mZ0mxDi2qr6/0zIPYcH/YtLDdU59
-         lfZAEFOWq2+VlzKM2dIvyjENCHaRMKwGl5/x/HFymjUxC97yuIH3hjL6AHHL1Ujmuo+u
-         yzbg==
+        b=zpXgpr1BQxTaxG8UQsqRQyz5cVfvQyV+UNt7/3CuXbjpcWHpWL/+Vo3hJbWbVZoEyA
+         96C6+CQAcBi5hv1qCnbuIITrxX/BlQS/TkOAu/8qCTqyZKcml+XCCgwyxYM1Te2SMdU5
+         l35SCSTVmYq1MilBc4Z8I6cy8/V9dncdYZl/A4w3UCJdRMnSdRwPNxmKs4Z2+p4v5PLH
+         ANrCgZkBCiDO69Q/iDMc5l16Sh86W8MDuTNn8i819FJXPWuWMab8mLCVbMGFj9Hs7e3S
+         fGwxRDa9kkwSSEFoJsOczpuFMWv/chnQd3qJI+BaONR7ViwmT4AX5X47nM/hrJBgZN16
+         Ay8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=nOgKbsHcKBp18Ik30E4NzavS5ZCDmTBbUZ8nKA2gHoA=;
-        fh=t5P2QJgybaxZDuabJN4+EN00g1FWdT3a2w30ZXlVs9U=;
-        b=s80KTcXo/nj/i4RokrXgGzZdCocasj874gVDhN7EVo+2MdgvrhFv+t52+tYOj313pT
-         Tm6cYHZC5JVGPB2a6a12el3vmQuvdNJ3sbvMnPx/iHXwl91gehCXOpssOwe6Lnp7Oj1d
-         VAu28h1aj7nyRmTbUK3c5L+etRYqSbefkaU7hNPYC973tj5D2aDRbxs5Viz3T7zcQq8V
-         lqkTscInyaoRcH07sFuEygZYUjBMcvC4weba0xYyGl4pG+LBztSCVrwQK+LvtQ527QON
-         rflpVT9SEwDYcpx+edMewxi9h1SlbAOQDPU+bkIa7Dh8J3hg6uo1m2B6T1O5HfqdDhjT
-         kb8Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=vr63vJsetUCTOqbqYx8iyEflgHvCtl53gxJoykotGzo=;
+        fh=bhKRZPTQegM9ngYzHPCNUPwAe0pzdMQzbQuG7bFjfgA=;
+        b=zT3bSWiYVGxYqW+2deof8ryr2wmqWt4Ijtgs2CJah1b+YAREm1iAwK/LsYE58+RXcV
+         L0jliZUCdfGGBj4Uzo+ZSemtVL/v3AwQeozm+gOF5EXum8VFmLREmNqHL43DvBwgfJ6O
+         gxychTQKC6iFFDPEpn6d88dHK4vYx/kXsHc/UGJ2dPwidgPboi7k6MOCmaqE7GvAWYDC
+         bjkZdKFW2YeZnem+THi27Ofs7BL1AXadmGie1KHxKjNNuLnSHZCqRM/t4f89n6hwiq9k
+         be14Cma8HmFiWO/HLgkwGAt6JZY/C1M9Vous7t/oapusZdcokxAArteWmAUc96NriEXL
+         b/kA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=L7oTW04P;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ew+oogRh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p19-20020a05622a049300b00403dd3f7113si4763263qtx.322.2023.07.23.18.54.11
+        by mx.google.com with ESMTPS id p16-20020a05622a13d000b00401875aea68si4644212qtk.568.2023.07.23.19.27.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 23 Jul 2023 18:54:11 -0700 (PDT)
+        Sun, 23 Jul 2023 19:27:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=L7oTW04P;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ew+oogRh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qNklm-0000AI-F6; Sun, 23 Jul 2023 21:53:54 -0400
+	id 1qNlHS-0005S9-I2; Sun, 23 Jul 2023 22:26:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qNklk-00009m-Us; Sun, 23 Jul 2023 21:53:52 -0400
-Received: from mail-vk1-xa35.google.com ([2607:f8b0:4864:20::a35])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qNklj-00040z-AP; Sun, 23 Jul 2023 21:53:52 -0400
-Received: by mail-vk1-xa35.google.com with SMTP id
- 71dfb90a1353d-4814299c981so1411348e0c.0; 
- Sun, 23 Jul 2023 18:53:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1690163629; x=1690768429;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=nOgKbsHcKBp18Ik30E4NzavS5ZCDmTBbUZ8nKA2gHoA=;
- b=L7oTW04PPdyM1s3kqhfRxH6EeGQHBiyKyFOb0lgXekX22JWIz+NyR50uiLPQ8j5Rip
- M/uaR8AUmjqfIzzSJ/qcwSvVjjvW99tam4kT0a04FlPY2dVfxldG/mtNn5cK2jfb3Ujy
- vlzCdRrtaxPTQQMiH+XspvqqOql0iiz3UQeQTxQgnxmS4JZ7BbMCsIsULiFQNjMNEUy/
- Scs6vmYvr7IE48+LYxsJ3kYKAFIw7iYdSyoNIRWXa0xLFAuqPKRt6MjRgbz4FMY9djKP
- NnWXmf/Y5xMSnQpkOEt1spLRJlHgGL2i2D38+wIyaWifnrZsqlTyB9YKXFLumCE9oX7w
- cgJA==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qNlHR-0005Rt-5J
+ for qemu-arm@nongnu.org; Sun, 23 Jul 2023 22:26:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qNlHN-0002Na-1l
+ for qemu-arm@nongnu.org; Sun, 23 Jul 2023 22:26:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1690165591;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vr63vJsetUCTOqbqYx8iyEflgHvCtl53gxJoykotGzo=;
+ b=ew+oogRhE8imllg3ZRsSUiRV74hSIyVYCUgo7BpBuA3ebaDd9eYHaMQEksqyx45GGCWIvj
+ 5EK+DUJFAx8+AOYvsJvzWQFGEE5Wuhl7W1ixGB/mpzcw6yjy1Sfza0FaCZtJYXwimYytoz
+ 6UWDVrHH/xRs77OkN/Amcvgftu7QkaU=
+Received: from mail-oo1-f71.google.com (mail-oo1-f71.google.com
+ [209.85.161.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-473-S9sC8ifvNY2HbMCqWncT_A-1; Sun, 23 Jul 2023 22:26:26 -0400
+X-MC-Unique: S9sC8ifvNY2HbMCqWncT_A-1
+Received: by mail-oo1-f71.google.com with SMTP id
+ 006d021491bc7-565c44558b0so6968391eaf.0
+ for <qemu-arm@nongnu.org>; Sun, 23 Jul 2023 19:26:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690163629; x=1690768429;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=nOgKbsHcKBp18Ik30E4NzavS5ZCDmTBbUZ8nKA2gHoA=;
- b=HE8Aemt0hJf2PATL/cu1aLcfloICdIZJfQPkSliL5JxElPYuO+r05MLfeEr3NKU4by
- ddKi0jCNf+610ptmjXY/Y/r6sKHWcprWtMEQwp3NcV9cTvdPhpZCCBmT8XhZuyfoSr7T
- Qs8HBBTmbV9z3IzPcDliXzw7LRT0WoOVktRjn/yHWa+MekTpxPGpPT2S+//vpYsaamE/
- 8612Mc3FF6ccAR8+FYq7WYJAFNKaSSfSbkLh0ftYuSSHLUe95+Rp4EOEMPfH60DpGTze
- Lms9rhhufhyil4V8Cu0Vbi2/iJ3xGLdXuaHWKPEDP0Dmch+k/k4K78WBClVfS57xQNN8
- Eeig==
-X-Gm-Message-State: ABy/qLaP9CIdhgLzPWB8+jBbnu6TPHdKUoKS4447NA0q5uGxo/62BfY/
- Rh4C7oSLmm8qZIiBRIYunTqzDHFPlWDB//u99HM=
-X-Received: by 2002:a1f:cec6:0:b0:481:35ea:10cf with SMTP id
- e189-20020a1fcec6000000b0048135ea10cfmr3373403vkg.4.1690163629444; Sun, 23
- Jul 2023 18:53:49 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1690165586; x=1690770386;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=vr63vJsetUCTOqbqYx8iyEflgHvCtl53gxJoykotGzo=;
+ b=mCDo/BHmt9UQgCqiikAN1K2qCd+V2XHWamZ74lEciKHuBchekFAJewUT5F1mTglck7
+ qr1uP0nKWAPSWrH1To2bTMqIcRFGYbuy4UN6NCaotCNajmFNinC7wY4VWd8311oPFudR
+ AB1R7Bf8dFxZX5GhWke/IDwZ63qRwmXIq7wz/YU0ihZqH9FR8j+uypZLyD82KbjyOHmz
+ VVhGyFLPAgpYhaa5HDeO7H6KfKv14qsBlqAZqhM8VLDrGFfg/WE6x/qKhd+Ix7YULqqw
+ kg3HSlGJ/XbCTbrgNDsysKj7McRonXRc2qRJlCxLPQgD2g/v9JqiNmqOcBE8A11jsbU0
+ BRHw==
+X-Gm-Message-State: ABy/qLaHpXZyNHHc/8tXe1VU3qda8ahsxsarguEzq/m6x0SZHawTlDXT
+ c7Q4XvL3y5OdkLVxUvkHEG4r1WNmrtuqejPxiRui5CV2SFNdxXETyXlzUqWlUshxbzDvmEf0Don
+ +iDJmjxt6ulhJ
+X-Received: by 2002:a05:6358:4285:b0:135:afe6:4f83 with SMTP id
+ s5-20020a056358428500b00135afe64f83mr2526977rwc.29.1690165586093; 
+ Sun, 23 Jul 2023 19:26:26 -0700 (PDT)
+X-Received: by 2002:a05:6358:4285:b0:135:afe6:4f83 with SMTP id
+ s5-20020a056358428500b00135afe64f83mr2526957rwc.29.1690165585704; 
+ Sun, 23 Jul 2023 19:26:25 -0700 (PDT)
+Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
+ ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
+ by smtp.gmail.com with ESMTPSA id
+ p9-20020a639509000000b005633941a547sm7213949pgd.27.2023.07.23.19.26.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 23 Jul 2023 19:26:25 -0700 (PDT)
+Message-ID: <a5b93992-5576-04cf-3af0-2c237831f5c6@redhat.com>
+Date: Mon, 24 Jul 2023 12:26:20 +1000
 MIME-Version: 1.0
-References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
- <20230712163943.98994-4-sunilvl@ventanamicro.com>
-In-Reply-To: <20230712163943.98994-4-sunilvl@ventanamicro.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 24 Jul 2023 11:53:23 +1000
-Message-ID: <CAKmqyKOV7R3DLTfn2ZB4dRz_9BNYdd-SND1Qg4rW+Y-FuBKtdQ@mail.gmail.com>
-Subject: Re: [PATCH 03/10] hw/riscv: virt: Make few IMSIC macros and functions
- public
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>,
- Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Andrew Jones <ajones@ventanamicro.com>, 
- Anup Patel <apatel@ventanamicro.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a35;
- envelope-from=alistair23@gmail.com; helo=mail-vk1-xa35.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH for-8.2 1/2] arm/kvm: convert to kvm_set_one_reg
+To: Cornelia Huck <cohuck@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org
+References: <20230718111404.23479-1-cohuck@redhat.com>
+ <20230718111404.23479-2-cohuck@redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20230718111404.23479-2-cohuck@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.093, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -130,120 +138,264 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /wwjq05JjVn2
+X-TUID: MCq4Sp2Me1x6
 
-On Thu, Jul 13, 2023 at 2:42=E2=80=AFAM Sunil V L <sunilvl@ventanamicro.com=
-> wrote:
->
-> Some macros and static function related to IMSIC are defined
-> in virt.c. They are required in virt-acpi-build.c. So, make them
-> public.
->
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+Hi Connie,
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+On 7/18/23 21:14, Cornelia Huck wrote:
+> We can neaten the code by switching to the kvm_set_one_reg function.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 > ---
->  hw/riscv/virt.c         | 25 +------------------------
->  include/hw/riscv/virt.h | 25 +++++++++++++++++++++++++
->  2 files changed, 26 insertions(+), 24 deletions(-)
->
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index 46d3341113..f6067db8ec 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -37,7 +37,6 @@
->  #include "hw/riscv/numa.h"
->  #include "hw/intc/riscv_aclint.h"
->  #include "hw/intc/riscv_aplic.h"
-> -#include "hw/intc/riscv_imsic.h"
->  #include "hw/intc/sifive_plic.h"
->  #include "hw/misc/sifive_test.h"
->  #include "hw/platform-bus.h"
-> @@ -53,28 +52,6 @@
->  #include "hw/acpi/aml-build.h"
->  #include "qapi/qapi-visit-common.h"
->
-> -/*
-> - * The virt machine physical address space used by some of the devices
-> - * namely ACLINT, PLIC, APLIC, and IMSIC depend on number of Sockets,
-> - * number of CPUs, and number of IMSIC guest files.
-> - *
-> - * Various limits defined by VIRT_SOCKETS_MAX_BITS, VIRT_CPUS_MAX_BITS,
-> - * and VIRT_IRQCHIP_MAX_GUESTS_BITS are tuned for maximum utilization
-> - * of virt machine physical address space.
-> - */
-> -
-> -#define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT=
-)
-> -#if VIRT_IMSIC_GROUP_MAX_SIZE < \
-> -    IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
-> -#error "Can't accomodate single IMSIC group in address space"
-> -#endif
-> -
-> -#define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
-> -                                        VIRT_IMSIC_GROUP_MAX_SIZE)
-> -#if 0x4000000 < VIRT_IMSIC_MAX_SIZE
-> -#error "Can't accomodate all IMSIC groups in address space"
-> -#endif
-> -
->  static const MemMapEntry virt_memmap[] =3D {
->      [VIRT_DEBUG] =3D        {        0x0,         0x100 },
->      [VIRT_MROM] =3D         {     0x1000,        0xf000 },
-> @@ -505,7 +482,7 @@ static void create_fdt_socket_plic(RISCVVirtState *s,
->      g_free(plic_cells);
->  }
->
-> -static uint32_t imsic_num_bits(uint32_t count)
-> +uint32_t imsic_num_bits(uint32_t count)
->  {
->      uint32_t ret =3D 0;
->
-> diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
-> index 4ef1f660ab..00c22492a7 100644
-> --- a/include/hw/riscv/virt.h
-> +++ b/include/hw/riscv/virt.h
-> @@ -23,6 +23,7 @@
->  #include "hw/riscv/riscv_hart.h"
->  #include "hw/sysbus.h"
->  #include "hw/block/flash.h"
-> +#include "hw/intc/riscv_imsic.h"
->
->  #define VIRT_CPUS_MAX_BITS             9
->  #define VIRT_CPUS_MAX                  (1 << VIRT_CPUS_MAX_BITS)
-> @@ -128,4 +129,28 @@ enum {
->
->  bool virt_is_acpi_enabled(RISCVVirtState *s);
->  void virt_acpi_setup(RISCVVirtState *vms);
-> +uint32_t imsic_num_bits(uint32_t count);
-> +
-> +/*
-> + * The virt machine physical address space used by some of the devices
-> + * namely ACLINT, PLIC, APLIC, and IMSIC depend on number of Sockets,
-> + * number of CPUs, and number of IMSIC guest files.
-> + *
-> + * Various limits defined by VIRT_SOCKETS_MAX_BITS, VIRT_CPUS_MAX_BITS,
-> + * and VIRT_IRQCHIP_MAX_GUESTS_BITS are tuned for maximum utilization
-> + * of virt machine physical address space.
-> + */
-> +
-> +#define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT=
-)
-> +#if VIRT_IMSIC_GROUP_MAX_SIZE < \
-> +    IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
-> +#error "Can't accomodate single IMSIC group in address space"
-> +#endif
-> +
-> +#define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
-> +                                        VIRT_IMSIC_GROUP_MAX_SIZE)
-> +#if 0x4000000 < VIRT_IMSIC_MAX_SIZE
-> +#error "Can't accomodate all IMSIC groups in address space"
-> +#endif
-> +
->  #endif
-> --
-> 2.39.2
->
->
+>   target/arm/kvm.c   | 13 +++------
+>   target/arm/kvm64.c | 66 +++++++++++++---------------------------------
+>   2 files changed, 21 insertions(+), 58 deletions(-)
+> 
+
+Some wrong replacements to be fixed in kvm_arch_put_fpsimd() as below.
+Apart from that, LGTM:
+
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index b4c7654f4980..cdbffc3c6e0d 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -561,7 +561,6 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
+>       bool ok = true;
+>   
+>       for (i = 0; i < cpu->cpreg_array_len; i++) {
+> -        struct kvm_one_reg r;
+>           uint64_t regidx = cpu->cpreg_indexes[i];
+>           uint32_t v32;
+>           int ret;
+> @@ -570,19 +569,17 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
+>               continue;
+>           }
+>   
+> -        r.id = regidx;
+>           switch (regidx & KVM_REG_SIZE_MASK) {
+>           case KVM_REG_SIZE_U32:
+>               v32 = cpu->cpreg_values[i];
+> -            r.addr = (uintptr_t)&v32;
+> +            ret = kvm_set_one_reg(cs, regidx, &v32);
+>               break;
+>           case KVM_REG_SIZE_U64:
+> -            r.addr = (uintptr_t)(cpu->cpreg_values + i);
+> +            ret = kvm_set_one_reg(cs, regidx, cpu->cpreg_values + i);
+>               break;
+>           default:
+>               g_assert_not_reached();
+>           }
+> -        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &r);
+>           if (ret) {
+>               /* We might fail for "unknown register" and also for
+>                * "you tried to set a register which is constant with
+> @@ -703,17 +700,13 @@ void kvm_arm_get_virtual_time(CPUState *cs)
+>   void kvm_arm_put_virtual_time(CPUState *cs)
+>   {
+>       ARMCPU *cpu = ARM_CPU(cs);
+> -    struct kvm_one_reg reg = {
+> -        .id = KVM_REG_ARM_TIMER_CNT,
+> -        .addr = (uintptr_t)&cpu->kvm_vtime,
+> -    };
+>       int ret;
+>   
+>       if (!cpu->kvm_vtime_dirty) {
+>           return;
+>       }
+>   
+> -    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +    ret = kvm_set_one_reg(cs, KVM_REG_ARM_TIMER_CNT, &cpu->kvm_vtime);
+>       if (ret) {
+>           error_report("Failed to set KVM_REG_ARM_TIMER_CNT");
+>           abort();
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 94bbd9661fd3..b4d02dff5381 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -540,14 +540,10 @@ static int kvm_arm_sve_set_vls(CPUState *cs)
+>   {
+>       ARMCPU *cpu = ARM_CPU(cs);
+>       uint64_t vls[KVM_ARM64_SVE_VLS_WORDS] = { cpu->sve_vq.map };
+> -    struct kvm_one_reg reg = {
+> -        .id = KVM_REG_ARM64_SVE_VLS,
+> -        .addr = (uint64_t)&vls[0],
+> -    };
+>   
+>       assert(cpu->sve_max_vq <= KVM_ARM64_SVE_VQ_MAX);
+>   
+> -    return kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +    return kvm_set_one_reg(cs, KVM_REG_ARM64_SVE_VLS, &vls[0]);
+>   }
+>   
+>   #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
+> @@ -725,19 +721,17 @@ static void kvm_inject_arm_sea(CPUState *c)
+>   static int kvm_arch_put_fpsimd(CPUState *cs)
+>   {
+>       CPUARMState *env = &ARM_CPU(cs)->env;
+> -    struct kvm_one_reg reg;
+>       int i, ret;
+>   
+>       for (i = 0; i < 32; i++) {
+>           uint64_t *q = aa64_vfp_qreg(env, i);
+>   #if HOST_BIG_ENDIAN
+>           uint64_t fp_val[2] = { q[1], q[0] };
+> -        reg.addr = (uintptr_t)fp_val;
+> +        ret = kvm_set_one_reg(cs, AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]),
+> +                                                        &fp_val);
+                                                            ^^^^^^^
+                                                            s/&fp_val/fp_val
+>   #else
+> -        reg.addr = (uintptr_t)q;
+> +        ret = kvm_set_one_reg(cs, AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]), &q);
+                                                                               ^^^
+                                                                              s/&q/q
+                                                                               
+>   #endif
+> -        reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
+> -        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+>           if (ret) {
+>               return ret;
+>           }
+> @@ -758,14 +752,11 @@ static int kvm_arch_put_sve(CPUState *cs)
+>       CPUARMState *env = &cpu->env;
+>       uint64_t tmp[ARM_MAX_VQ * 2];
+>       uint64_t *r;
+> -    struct kvm_one_reg reg;
+>       int n, ret;
+>   
+>       for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; ++n) {
+>           r = sve_bswap64(tmp, &env->vfp.zregs[n].d[0], cpu->sve_max_vq * 2);
+> -        reg.addr = (uintptr_t)r;
+> -        reg.id = KVM_REG_ARM64_SVE_ZREG(n, 0);
+> -        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +        ret = kvm_set_one_reg(cs, KVM_REG_ARM64_SVE_ZREG(n, 0), r);
+>           if (ret) {
+>               return ret;
+>           }
+> @@ -774,9 +765,7 @@ static int kvm_arch_put_sve(CPUState *cs)
+>       for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; ++n) {
+>           r = sve_bswap64(tmp, r = &env->vfp.pregs[n].p[0],
+>                           DIV_ROUND_UP(cpu->sve_max_vq * 2, 8));
+> -        reg.addr = (uintptr_t)r;
+> -        reg.id = KVM_REG_ARM64_SVE_PREG(n, 0);
+> -        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +        ret = kvm_set_one_reg(cs, KVM_REG_ARM64_SVE_PREG(n, 0), r);
+>           if (ret) {
+>               return ret;
+>           }
+> @@ -784,9 +773,7 @@ static int kvm_arch_put_sve(CPUState *cs)
+>   
+>       r = sve_bswap64(tmp, &env->vfp.pregs[FFR_PRED_NUM].p[0],
+>                       DIV_ROUND_UP(cpu->sve_max_vq * 2, 8));
+> -    reg.addr = (uintptr_t)r;
+> -    reg.id = KVM_REG_ARM64_SVE_FFR(0);
+> -    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +    ret = kvm_set_one_reg(cs, KVM_REG_ARM64_SVE_FFR(0), r);
+>       if (ret) {
+>           return ret;
+>       }
+> @@ -796,7 +783,6 @@ static int kvm_arch_put_sve(CPUState *cs)
+>   
+>   int kvm_arch_put_registers(CPUState *cs, int level)
+>   {
+> -    struct kvm_one_reg reg;
+>       uint64_t val;
+>       uint32_t fpr;
+>       int i, ret;
+> @@ -813,9 +799,8 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+>       }
+>   
+>       for (i = 0; i < 31; i++) {
+> -        reg.id = AARCH64_CORE_REG(regs.regs[i]);
+> -        reg.addr = (uintptr_t) &env->xregs[i];
+> -        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +        ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
+> +                              &env->xregs[i]);
+>           if (ret) {
+>               return ret;
+>           }
+> @@ -826,16 +811,12 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+>        */
+>       aarch64_save_sp(env, 1);
+>   
+> -    reg.id = AARCH64_CORE_REG(regs.sp);
+> -    reg.addr = (uintptr_t) &env->sp_el[0];
+> -    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.sp), &env->sp_el[0]);
+>       if (ret) {
+>           return ret;
+>       }
+>   
+> -    reg.id = AARCH64_CORE_REG(sp_el1);
+> -    reg.addr = (uintptr_t) &env->sp_el[1];
+> -    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(sp_el1), &env->sp_el[1]);
+>       if (ret) {
+>           return ret;
+>       }
+> @@ -846,23 +827,17 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+>       } else {
+>           val = cpsr_read(env);
+>       }
+> -    reg.id = AARCH64_CORE_REG(regs.pstate);
+> -    reg.addr = (uintptr_t) &val;
+> -    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.pstate), &val);
+>       if (ret) {
+>           return ret;
+>       }
+>   
+> -    reg.id = AARCH64_CORE_REG(regs.pc);
+> -    reg.addr = (uintptr_t) &env->pc;
+> -    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.pc), &env->pc);
+>       if (ret) {
+>           return ret;
+>       }
+>   
+> -    reg.id = AARCH64_CORE_REG(elr_el1);
+> -    reg.addr = (uintptr_t) &env->elr_el[1];
+> -    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(elr_el1), &env->elr_el[1]);
+>       if (ret) {
+>           return ret;
+>       }
+> @@ -881,9 +856,8 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+>   
+>       /* KVM 0-4 map to QEMU banks 1-5 */
+>       for (i = 0; i < KVM_NR_SPSR; i++) {
+> -        reg.id = AARCH64_CORE_REG(spsr[i]);
+> -        reg.addr = (uintptr_t) &env->banked_spsr[i + 1];
+> -        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +        ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(spsr[i]),
+> +                              &env->banked_spsr[i + 1]);
+>           if (ret) {
+>               return ret;
+>           }
+> @@ -898,18 +872,14 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+>           return ret;
+>       }
+>   
+> -    reg.addr = (uintptr_t)(&fpr);
+>       fpr = vfp_get_fpsr(env);
+> -    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
+> -    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +    ret = kvm_set_one_reg(cs, AARCH64_SIMD_CTRL_REG(fp_regs.fpsr), &fpr);
+>       if (ret) {
+>           return ret;
+>       }
+>   
+> -    reg.addr = (uintptr_t)(&fpr);
+>       fpr = vfp_get_fpcr(env);
+> -    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
+> -    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> +    ret = kvm_set_one_reg(cs, AARCH64_SIMD_CTRL_REG(fp_regs.fpcr), &fpr);
+>       if (ret) {
+>           return ret;
+>       }
+
+Thanks,
+Gavin
+

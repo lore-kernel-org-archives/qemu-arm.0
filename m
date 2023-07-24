@@ -1,137 +1,198 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp1773383ejb;
-        Mon, 24 Jul 2023 03:53:33 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEpcu2Y6XN1X9Y23rwqQxVduC8A2S746lPrtYXUuhTx6YdXBfHO/hZn3MGTPRpLm0XvPbMQ
-X-Received: by 2002:a05:6e02:dcf:b0:348:c8a8:1ba0 with SMTP id l15-20020a056e020dcf00b00348c8a81ba0mr3592654ilj.10.1690196013069;
-        Mon, 24 Jul 2023 03:53:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690196013; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp1885203ejb;
+        Mon, 24 Jul 2023 06:42:37 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlH0WJItsgs3Qb9Xa1Ykd65OzPNU0CtdZrsnVkN3dgSYwRwJMJXauekUkKcveMoE32MvxTuM
+X-Received: by 2002:a05:620a:2916:b0:767:1c41:ed2d with SMTP id m22-20020a05620a291600b007671c41ed2dmr7637821qkp.33.1690206156944;
+        Mon, 24 Jul 2023 06:42:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690206156; cv=none;
         d=google.com; s=arc-20160816;
-        b=xPJA4iR4+27i+tkVDwFBvy5I4/aSVZhKPn/tflPtp+KwlnVGfSgmR1pqW877N0E+v5
-         LqleieoHAgtJDh3wG/G/za4gCD2nOlkzb9I/QND5QpFErQSIkUek1K+Moc7Fw1CaJAs2
-         LXJoh8Wt29aBqaXjxtyanQl9T7McbCUzcn7ZCPpxnz8NrHuJNfEDrdIpYFWlXKUr7zpF
-         9tX2psasBs6USBUyfDUNlsMjUuq2oKJzCFEiFIrOmBUbJeKjO0gMYeprtvTZ7T9I9WcB
-         Hvw94A4xE2BHlIIoaDRp+j4LEncIwkrFAiq4azCCi/y/RFE3bR5Wk1czG9vcPxczJEs0
-         vnOg==
+        b=HRnd1xtqOEZL0t5m1GukZ77jXObB/6am7peYWTjkUTGSMFcT1Tj+jdjSLgS9M1N+0z
+         dTGQVMGUqfzn/hlfEzQB5d/ewxAtJSPK+t1fr81+NtMzK9ownQYQYj1RG/0b6m2WoHKv
+         upYl+TEtcW2XhXkQ9umXH7+WoYrgEWDDJEgGna5ZemTkaIkimKdpZUaA0OmVEvWLfnKT
+         b/0ZZboJusKPi3gSz9GPceAKqqR8mbCRLA/RbjqsN13CHaC2Ly8+Ab+Q331s5iKdPzzz
+         PyzZZNZrKOecbGV9Dgfn4Wxv0phDDn4bpXD5FP1cbyyAzabj0WAoTD6dSE8PjMLEmYII
+         DemQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=72Vxid4lPGFAPqcNotszz48/hXCNrAO2F4A+SW1VaR4=;
-        fh=zlpASWiFX/cotIFAyrriCRJDmFpobIKVCGxuAsr+eCQ=;
-        b=xQsvIrWPYzp7EV2AQus99LsaiNYniIRaSXpm8kGYpVtLJY0VAzpgiqZgVNcekaBECD
-         suJB/J165MJZhPOsZZ3frHzoleWwU1WUxsJptlJDwmTorOxBEfY4MTHGguO43lByZXuP
-         z3sjrdlL7ol5BfWk559DIMhF78G11OWuzxoyZwz5QF2nLX984JUy/HuNA7WDmlx6ZKyY
-         JtOIRe9AQcb3S4nkCIxpJ5V/yxT22VyilxpWmKbq+xp02RvmM86SwVyc/bZ+xikR2zR7
-         oQ01joNl/Yz5/UBnApVSr4KQ65MiadNcVthROebMl4eRtdxiROWGhTH9keWA+SRHX5tw
-         SYdw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=+R6lerAYT645kWXDBPJglBoizZ56cPHfkf3Fy5CDRxI=;
+        fh=iByCkWWLbfzkUEAbrXL4bSVFGIA/zPAWHnBglvbE63U=;
+        b=h/8o73LMGh7DgRydufcxUCOt8zjFW8QC5HPKhxNKzAaSZlZEnfyBxT0MzCh4/kTstf
+         A7SpVTZEQE0dcpFAHWoDqvae6Mvrc+YWL+QJHi79PhOf2hmDWrj+GjS2Eyq4GCviUmme
+         OrMy+1xOwT9pHzsV1DDRHvx0jSLO2rJOzCiydfdc8H8OZggKgKduSnOGQuuDW4q0uRYi
+         bsZ23ei5bJ/FqHrrK9Ha05xdTa3m+W5dH+Sh9mQWUOlcIYfT5MXtOjHmgpjP1kHZe8+L
+         c0vwrUg/nr/W6B22xvAKehGTo3OJdNkH74Og43e5xzwWhT9OL+sA5tkt1QHgihqRXuWt
+         Wxuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sQOBzZct;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="n/CbVaJA";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id bs125-20020a632883000000b0055c3e6ada36si8304815pgb.354.2023.07.24.03.53.32;
-        Mon, 24 Jul 2023 03:53:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f15-20020a05620a408f00b0076813e81c12si5530175qko.239.2023.07.24.06.42.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 24 Jul 2023 06:42:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sQOBzZct;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="n/CbVaJA";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S232859AbjGXKxb (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Mon, 24 Jul 2023 06:53:31 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:48448 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S232799AbjGXKxa (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 24 Jul 2023 06:53:30 -0400
-Received: from mail-wr1-x42f.google.com (mail-wr1-x42f.google.com [IPv6:2a00:1450:4864:20::42f])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 77D53E5C
-        for <kvm@vger.kernel.org>; Mon, 24 Jul 2023 03:53:15 -0700 (PDT)
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-314172bac25so2949977f8f.3
-        for <kvm@vger.kernel.org>; Mon, 24 Jul 2023 03:53:15 -0700 (PDT)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qNvpZ-00026B-DP; Mon, 24 Jul 2023 09:42:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qNvpV-00021e-D3
+ for qemu-arm@nongnu.org; Mon, 24 Jul 2023 09:42:29 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qNvpS-0002Wp-Te
+ for qemu-arm@nongnu.org; Mon, 24 Jul 2023 09:42:28 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-51cff235226so9219007a12.0
+ for <qemu-arm@nongnu.org>; Mon, 24 Jul 2023 06:42:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690195994; x=1690800794;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=72Vxid4lPGFAPqcNotszz48/hXCNrAO2F4A+SW1VaR4=;
-        b=sQOBzZctSBnZ7py40vFsg1unHyBQ9XXalIA/kbqy75KmENsrvk93LxUJ+U29RWg1d4
-         xbcitWnMCF0PJpsSerM3TbONu3AK3V7XuvbCUVocEukr4E6aTKshGm4weE6UStiXiHbd
-         qFWGlgWo1QwQTjYiwuhMrbIZVYY1ZmaX2CRS/WKKarToYsWIAp1lX2JA73o5ff1Wys/0
-         GIelBcTNJRJcEQ4MVFZjZ8L5iSAO8ujPvr4FaTB/QSqpo2clAsf3Dy2OdjLt4mxz8e+U
-         /yFLgQTHantouv6/oDPS30wN1cmuqrERK8KddLJeAc8XALVdhzin57D5oiwWwZO56Icu
-         jbCg==
+ d=linaro.org; s=google; t=1690206143; x=1690810943;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=+R6lerAYT645kWXDBPJglBoizZ56cPHfkf3Fy5CDRxI=;
+ b=n/CbVaJACn32ytBJxbsRusDa1BLJcxgq/ghGBPOLgpnMEvvaaQv3ru+PJyWy9uABVT
+ tbeZjzi1SiH0vAwiDZV6MjgMb+KAsEoFb+/xlQG5vNkI61XtCG3158f9Tv0wjqYHJ584
+ a3MvcxJSz/Gdv8ud1sR/Ee+oqxgoQQ012K680SGuH8gF2xdabS4Pd1cQHH+4Ulihu/3R
+ mkPtbrtj2pOs2DMEymCFI5ldrWzJ8FUKsiOcVB9gcAc8mu3PCHiWY5uNhhNnb0P96/pn
+ HQgDAJ9+2ByqGwpMgJe1GPmV/4ZJjih7KQnVWiuA/bX4k2s+rUdjq734c8hpJY9bxHQy
+ CCWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690195994; x=1690800794;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=72Vxid4lPGFAPqcNotszz48/hXCNrAO2F4A+SW1VaR4=;
-        b=MKwTaKb0mmrx9SRQ4Dfw+xSOG1Ov09nGZu0A2yHyIwRz1Y9CYES8HIt4JOGvpZVPXR
-         x49s0j4gVqZJ1WoUdJg5dF/6AEC9qGgwc0raGWsvsFUV5wkUzs6J1hxTlP9I9U6aTImh
-         YIdh/9WQ1zihWHZ8zoleAL20df1oWWhKctDloDQAuOhc6kfK3SKpmX76xxkc7fjneI3h
-         a/7uR3AXSd4hrxi1kUsSn8TWnv2vLm8hlrObX8TUb/4qY8quxXZUwW3BX8Cg6o2RxtBt
-         DnfBsotMYpdiwIZcT69qewl2wYNH/OZegkDR6NdEnPSQ1LySfukLM9jBZYhRfgxunTug
-         RP5A==
-X-Gm-Message-State: ABy/qLa8FNJZOtw2/zQxUmo97dvlfLdrKQ7wnMX/J64QvM8c6TsKxzQa
-        UM2Esgs2h9nTd1NuTNVyR2Se4Q==
-X-Received: by 2002:adf:f185:0:b0:317:50b7:2ce3 with SMTP id h5-20020adff185000000b0031750b72ce3mr3713517wro.51.1690195993963;
-        Mon, 24 Jul 2023 03:53:13 -0700 (PDT)
-Received: from [192.168.69.115] ([176.187.210.255])
-        by smtp.gmail.com with ESMTPSA id q13-20020adff94d000000b003143c9beeaesm12673051wrr.44.2023.07.24.03.53.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Jul 2023 03:53:13 -0700 (PDT)
-Message-ID: <da9bf5ae-a61e-24da-9d17-6cfd8bdaf4b7@linaro.org>
-Date:   Mon, 24 Jul 2023 12:53:11 +0200
+ d=1e100.net; s=20221208; t=1690206143; x=1690810943;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+R6lerAYT645kWXDBPJglBoizZ56cPHfkf3Fy5CDRxI=;
+ b=V9ML98wkhvKnmD4dGi/oNnpxmZCXO6yy/i8nZ1VuWj1LE/dbbu6ixAz2ovEFRtpBr/
+ 3Rp3CnD1NjirLIeQZLaw7osyKruhH10BVF2jjSjVgyApN9ABpWjm4OnrIGvxKIzarvmv
+ wjabmbVaSA7//JlVaxT/WhamTlNp93xRBmK3oeWYnTPsSjvXRqwFU4movACjO7WJrM+R
+ 5rG2eHZBCg7wZGgVOt/xPS7NrTiLtpNRVlXUbkg7BY1zU5AS14gT2Bnuylv9wnbCP5Nf
+ 5QRvtN3Uo2pKTvXtzILIMCDBJSGvcPTbd6+5PnnLFENyzXBq9zhbNgi/oYTOXW0u2nfK
+ mNfQ==
+X-Gm-Message-State: ABy/qLbnnxbYki+bQk5EfZoJQMCMlk76VvN3EYQ3c2eRC7C/BTJMdAuv
+ nVXvBFEIhJj0ZfSzULnnGc2VeNAsccuAb6rmEnioZA==
+X-Received: by 2002:a50:ec93:0:b0:522:2add:5841 with SMTP id
+ e19-20020a50ec93000000b005222add5841mr3632712edr.7.1690206142724; Mon, 24 Jul
+ 2023 06:42:22 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [PATCH v3 1/2] kvm: Introduce kvm_arch_get_default_type hook
-Content-Language: en-US
-To:     Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>
-References: <20230722062250.18111-1-akihiko.odaki@daynix.com>
- <20230722062250.18111-2-akihiko.odaki@daynix.com>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230722062250.18111-2-akihiko.odaki@daynix.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-2.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ZUErp7TRYfVm
+References: <20230714154648.327466-1-peter.maydell@linaro.org>
+ <20230714154648.327466-7-peter.maydell@linaro.org>
+ <230dd650-846f-7105-7add-43fa2d03dad7@linaro.org>
+In-Reply-To: <230dd650-846f-7105-7add-43fa2d03dad7@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Jul 2023 14:42:11 +0100
+Message-ID: <CAFEAcA---QdS2vo3iAivTdBVAtFz5qOaC9Mdy2AhvXWGyaO7BQ@mail.gmail.com>
+Subject: Re: [PATCH 06/14] target/arm/ptw: Pass an ARMSecuritySpace to
+ arm_hcr_el2_eff_secstate()
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KodIuY4eRNQn
 
-On 22/7/23 08:22, Akihiko Odaki wrote:
-> kvm_arch_get_default_type() returns the default KVM type. This hook is
-> particularly useful to derive a KVM type that is valid for "none"
-> machine model, which is used by libvirt to probe the availability of
-> KVM.
-> 
-> For MIPS, the existing mips_kvm_type() is reused. This function ensures
-> the availability of VZ which is mandatory to use KVM on the current
-> QEMU.
+On Sun, 23 Jul 2023 at 16:24, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 7/14/23 16:46, Peter Maydell wrote:
+> > arm_hcr_el2_eff_secstate() takes a bool secure, which it uses to
+> > determine whether EL2 is enabled in the current security state.
+> > With the advent of FEAT_RME this is no longer sufficient, because
+> > EL2 can be enabled for Secure state but not for Root, and both
+> > of those will pass 'secure == true' in the callsites in ptw.c.
+> >
+> > As it happens in all of our callsites in ptw.c we either avoid making
+> > the call or else avoid using the returned value if we're doing a
+> > translation for Root, so this is not a behaviour change even if the
+> > experimental FEAT_RME is enabled.  But it is less confusing in the
+> > ptw.c code if we avoid the use of a bool secure that duplicates some
+> > of the information in the ArmSecuritySpace argument.
+> >
+> > Make arm_hcr_el2_eff_secstate() take an ARMSecuritySpace argument
+> > instead.
+> >
+> > Note that since arm_hcr_el2_eff() uses the return value from
+> > arm_security_space_below_el3() for the 'space' argument, its
+> > behaviour does not change even when at EL3 (Root security state) and
+> > it continues to tell you what EL2 would be if you were in it.
+> >
+> > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> > ---
+> >   target/arm/cpu.h    |  2 +-
+> >   target/arm/helper.c |  7 ++++---
+> >   target/arm/ptw.c    | 13 +++++--------
+> >   3 files changed, 10 insertions(+), 12 deletions(-)
+> >
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 4d6c0f95d59..3743a9e2f8a 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -2555,7 +2555,7 @@ static inline bool arm_is_el2_enabled(CPUARMState *env)
+> >    * "for all purposes other than a direct read or write access of HCR_EL2."
+> >    * Not included here is HCR_RW.
+> >    */
+> > -uint64_t arm_hcr_el2_eff_secstate(CPUARMState *env, bool secure);
+> > +uint64_t arm_hcr_el2_eff_secstate(CPUARMState *env, ARMSecuritySpace space);
+> >   uint64_t arm_hcr_el2_eff(CPUARMState *env);
+> >   uint64_t arm_hcrx_el2_eff(CPUARMState *env);
+> >
+> > diff --git a/target/arm/helper.c b/target/arm/helper.c
+> > index d08c058e424..1e45fdb47c9 100644
+> > --- a/target/arm/helper.c
+> > +++ b/target/arm/helper.c
+> > @@ -5731,11 +5731,12 @@ static void hcr_writelow(CPUARMState *env, const ARMCPRegInfo *ri,
+> >    * Bits that are not included here:
+> >    * RW       (read from SCR_EL3.RW as needed)
+> >    */
+> > -uint64_t arm_hcr_el2_eff_secstate(CPUARMState *env, bool secure)
+> > +uint64_t arm_hcr_el2_eff_secstate(CPUARMState *env, ARMSecuritySpace space)
+> >   {
+> >       uint64_t ret = env->cp15.hcr_el2;
+> >
+> > -    if (!arm_is_el2_enabled_secstate(env, secure)) {
+> > +    if (space == ARMSS_Root ||
+> > +        !arm_is_el2_enabled_secstate(env, arm_space_is_secure(space))) {
+> >           /*
+>
+> This is confusing, as without any larger context it certainly looks wrong.
 
-Pre-existing: mips_kvm_type() returns -1. Should we check for
-'type' in kvm_init() before calling kvm_ioctl()?
+Does it? HCR_EL2 says "behaves as 0 if EL2 is not enabled in the
+current Security state". If the current Security state is Root then
+EL2 isn't enabled (because there's no such thing as EL2 Root), so the
+function should return 0, shouldn't it?
 
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> ---
->   include/sysemu/kvm.h     | 2 ++
->   target/mips/kvm_mips.h   | 9 ---------
->   accel/kvm/kvm-all.c      | 4 +++-
->   hw/mips/loongson3_virt.c | 1 -
->   target/arm/kvm.c         | 5 +++++
->   target/i386/kvm/kvm.c    | 5 +++++
->   target/mips/kvm.c        | 2 +-
->   target/ppc/kvm.c         | 5 +++++
->   target/riscv/kvm.c       | 5 +++++
->   target/s390x/kvm/kvm.c   | 5 +++++
->   10 files changed, 31 insertions(+), 12 deletions(-)
+I did think about pushing the ARMSecuritySpace down further
+so arm_is_el2_enabled_secstate() also called it.
+
+thanks
+-- PMM

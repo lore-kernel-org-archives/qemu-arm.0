@@ -1,101 +1,102 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp1990102ejb;
-        Mon, 24 Jul 2023 09:18:35 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlF8GAijSBuCZUyATjNpFpdCsodCLk6CLpP80fpQvwyVq/klyoM4LqMTcwRRMRLt0aFu0gb2
-X-Received: by 2002:ac8:7c48:0:b0:3ec:490b:ce6e with SMTP id o8-20020ac87c48000000b003ec490bce6emr292324qtv.48.1690215514607;
-        Mon, 24 Jul 2023 09:18:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690215514; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp1990923ejb;
+        Mon, 24 Jul 2023 09:19:53 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlH++LZPbDvqghL8VaKFVomp2cki3GZUUZ5JXDL7mZ6YVDmDXG5JzJ9PID8Pe/xe2D/vKd6C
+X-Received: by 2002:a05:620a:28c7:b0:765:404b:b91a with SMTP id l7-20020a05620a28c700b00765404bb91amr244514qkp.31.1690215593292;
+        Mon, 24 Jul 2023 09:19:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690215593; cv=none;
         d=google.com; s=arc-20160816;
-        b=x/yFcKLt3VJ0fYiPrSzdurD1OvZJwyf3NqsHLUNdhp/EJuRBWBtkWTe1NjtGKqAT7Q
-         CJvQTFysf/tybqHMTfXDIwbmkBqCUujyjK/R93Rx9m2S0lhT1Sc7/uyKLvDaU788LCQJ
-         XC0N55bsxxcmVAXdeqUTF7CT1kkqFFUFN2yvJWn1vuzdzTdw7WawTmon5dgVxD0/Fmv+
-         wd+jr6DiW6ryHQpCx14Qt6vYeWfKAy2BexYkYSJpHrU21ehQoeJrZdJwJz/XCcz5L3dD
-         9N8QS60zkAEqKUhZK1hv70QvwPKuKHRuY+po8yue3rGqICQATXK95SOBDYihoUx3REZF
-         0xoA==
+        b=ubyk8JxPCxoGdnXOuUutISWgRKjrrLKroAHyJQo+e48N2G1QGk/LMrQwonyQNXHawI
+         EeG8FMf920sm5Ux301rUIAZAjyiM5koz2xusNRf5+oBXW29pGOkVFDy4eOJi/oo/YY3l
+         y/qaz6jSHzExMtdikLUn45BxaeC+7JhUzlA69JqD1cqKf6TMNqv3n43FgFlU6CPGTWV9
+         SSt4ILkA46ryiqLJdKNNVsKXU4Lg5aihG9BaDHopxwGjpqOjRl2r1l1W7M5ZGC46Lz37
+         HtmYhNqWPGMXAP5Vg/ieZ1m/W21gQap8bMJEXuT0oQEC/rEFmW7pnuLX7A0MczQqToGt
+         X4bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=utcIOUQy29pwxPWMk61rnbuXNjGfPHdb1RUnlocbdis=;
+        bh=vYE00vaBdpPYzW+lVPoa6hwTVALv4IpX9tYKH91AyxA=;
         fh=XBL7wuOnmyes3GPK3AEoJ+XBo7B8JI753uFIVICnU40=;
-        b=HelFYfQ1PYId2NGGBfE9b5Xrgs5hr1aScGq+CxWAuIIgXM++Lz4gM0HFFOAYZz/jlq
-         zGTtJtqCjDiqnNGootyXp998nQbxUFXx8NqGFbQXsWGNoDiWJAWcYy+KtCqNVE15ap8Z
-         SCIvB62YkhF60h9zGio4xW2f1vaOvydBX8zpkIIoWFI0ML69+HcKf7NM5UnvSosfYUpR
-         IBHTQBkaQEjWkCQFNGpjfiiUy202M5gvPAnmfKCWY36EKI+Y6rRx+okEegF2NzFaKqr1
-         /BND1j6yuAXqH6o8Rd7dRJDCvQq/gI1hlsYjX0mHUiuQxPr44sef/hPr9U+RNjhIQd/r
-         48FQ==
+        b=NMzrV5ak9BBOp/3iYtJx6XIx1K/Oym1d8rifsSXvd0UzC3cTsvp0mZJRh+bOyCjPPT
+         559GhnpA/n9NGuJVYpqYDlyRzOaDURmmbeuk+XeDAQezNnlBv8iONxrZ2IX5BigCZDSr
+         36LA4DKe0qRS5HGMoxSAimjTobNmB5r8QTH6pOlamwNH2c5smVn4oxhQrTDtkrKcbWNe
+         p0vF668Lag13MYJ3IcpxEfEZz+nv0CK2oS2A7ugRw705W8P63W0YswNSl+xoXkHJnHwh
+         6r3KrLNFFrITO+eRGpx44k0orcm0BxugPtaps5qXFYuldP/rY72iPCUUxmOFRnQefz8i
+         F1jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H6ucUkFS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bWuWazRO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d19-20020ac85ad3000000b00403aac689c7si5516464qtd.185.2023.07.24.09.18.34
+        by mx.google.com with ESMTPS id j185-20020a37b9c2000000b0076af62a09d3si2394143qkf.537.2023.07.24.09.19.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jul 2023 09:18:34 -0700 (PDT)
+        Mon, 24 Jul 2023 09:19:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H6ucUkFS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bWuWazRO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qNyGL-0008N4-M7; Mon, 24 Jul 2023 12:18:21 -0400
+	id 1qNyHY-0001EG-1A; Mon, 24 Jul 2023 12:19:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qNyGI-0008MI-8G
- for qemu-devel@nongnu.org; Mon, 24 Jul 2023 12:18:19 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1qNyHW-0001Dv-HT
+ for qemu-devel@nongnu.org; Mon, 24 Jul 2023 12:19:34 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qNyGF-00079M-Tr
- for qemu-devel@nongnu.org; Mon, 24 Jul 2023 12:18:18 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5221b90f763so3482771a12.0
- for <qemu-devel@nongnu.org>; Mon, 24 Jul 2023 09:18:14 -0700 (PDT)
+ id 1qNyHU-0007Os-V0
+ for qemu-devel@nongnu.org; Mon, 24 Jul 2023 12:19:34 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-51bece5d935so6927137a12.1
+ for <qemu-devel@nongnu.org>; Mon, 24 Jul 2023 09:19:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1690215493; x=1690820293;
+ d=linaro.org; s=google; t=1690215571; x=1690820371;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=utcIOUQy29pwxPWMk61rnbuXNjGfPHdb1RUnlocbdis=;
- b=H6ucUkFS7/76c3HgnTud1AyBJP8QynY+zt3BgOnEu+EjUrXNQ/fR5rSO740fevAtuR
- aB/+6ZBVFzg0lvB2ZHeulu4ZRH7qQSnW3Rxg21BhgYZ3OawywXvKgPB1m6KFmWQZp2Jt
- 2xju2dtAObQQfnWQGYhbHCOkFgPZ7YNTkxbp3La5FdAlxG0ycVnFGZumCl8lv2OyBDPU
- NimtaORWADt/SXfdqB2kSh1bAVNjLyid74L6F2Htd/GSl98wwvOgb+jK41QUDADZcJ1Q
- 8TNtxpmH0Bta7hlhphcUhgvP/+Tf4+0v7hx5TemjeZ8YpR4RcmA3qJBIl7iC9NDJSlJs
- 6fAw==
+ bh=vYE00vaBdpPYzW+lVPoa6hwTVALv4IpX9tYKH91AyxA=;
+ b=bWuWazROaHpa/oSz73vbEvQlRm/UrdydSOY/BpzJc4JvzXzPJuYPTFdqR1UElhHC0f
+ A3233P07oFFL2dhCM+v2DMKkJRM1CxawA7xR38jaL0CpKsF0GBFI+urspgMTF6xyZW+A
+ tHhWeOVwRKtwoBAUYdH5nKATF5qraMJK6GUdOUFnSVBtJl7gzrQ+o3oYBlKQdon5xyCs
+ ejPmx5YO1zAr9QC9PtOuic3H/1vOs0pnwY7EBUUaseGBT0l+uVIKWby0OIUDZBFawrhA
+ TUctCJk+NFzFDCcxEwzlfl9ml8gkX92dHJgY0PA5XDSQZ59k7e5G8GzlExi1Wjy4RKsv
+ lG+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690215493; x=1690820293;
+ d=1e100.net; s=20221208; t=1690215571; x=1690820371;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=utcIOUQy29pwxPWMk61rnbuXNjGfPHdb1RUnlocbdis=;
- b=jL+FwwrmIYUYCXtc/BBfB6dKppXboak0A+GXT7j9z9XnRu9LJcQCatEkuJ3TE3micj
- Cpz4Sw0tQKEqxeo7SQegOIbyr4Ox0ruCl6E8t10ykG4wTjACcIafDXZCAHeQPSFDvloy
- MGeDlRHHqfFXkCTvUTp89oJD1NkIUBkAOBa9+KbWWMtGNid+Xu/hiHOij4qIvkA3pShN
- OJqDTjhiHn9S9J4YO8Z/hY3l2VkEHorgwEHTNHOUZEy4gphVlxMHqadnfzROJDnVNTfT
- TC0krt3dW9YGrGwboCn5qNQuxxDdYn0vwzREY+b7YfubKRUP2EeemPVFDxlGyaHi+77A
- ik3Q==
-X-Gm-Message-State: ABy/qLZaVuCwa9KoRKEQQTDMO8Fv7wmU+0JwIrLbf6n3vDJyNK8lxTOC
- suPmSaf6gDGCWFSHFXEym1Rc6UFFsJnSUexlXyJWAN9hclzS1GLm
-X-Received: by 2002:aa7:d707:0:b0:522:3149:1596 with SMTP id
- t7-20020aa7d707000000b0052231491596mr2315996edq.13.1690215493523; Mon, 24 Jul
- 2023 09:18:13 -0700 (PDT)
+ bh=vYE00vaBdpPYzW+lVPoa6hwTVALv4IpX9tYKH91AyxA=;
+ b=O27kjIkGKBlWKdPAtTLY2DJjH2Hy3iYIKnVPbt6urpdDMiEByCuhKmKNrQvAN7EHe6
+ IS3kplzQY+sPVNgt8UErijZ9a+GoKR3ujthyBda/mxCSc6G8d/8HmNjYf0Cxd0rNssZu
+ sYKuC3RePZq+4I3tBm+9YJ3kDUDDRO/fSemxAz+XXAbYM1JW5ARvsyuFmnTevO8Fmjif
+ QWGDkoWf5ir53TK2rzcldZf0o1xKFOeBGMHjT4kzty50kzomygyYFKkw1wxSF2iDckha
+ 9lpUtes1Gu375CXPnh6ETQ9LGMMs7ds6QU85XYaKwXmxIgu45lBfiMRSc9EZYQUn6NkK
+ gYLQ==
+X-Gm-Message-State: ABy/qLYZBPdD9eXoKGUP48mDfXg1TID4MN0uW73fPxS2k52LeZdFdAAh
+ ReNTEL8SCf+EWrCKJA1OW0NANqcsarXS/Un7AA7Q4w==
+X-Received: by 2002:aa7:da03:0:b0:51e:166a:ac7f with SMTP id
+ r3-20020aa7da03000000b0051e166aac7fmr8592631eds.28.1690215571382; Mon, 24 Jul
+ 2023 09:19:31 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230714232659.76434-1-chris@laplante.io>
- <20230714232659.76434-5-chris@laplante.io>
-In-Reply-To: <20230714232659.76434-5-chris@laplante.io>
+ <20230714232659.76434-6-chris@laplante.io>
+In-Reply-To: <20230714232659.76434-6-chris@laplante.io>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Jul 2023 17:18:02 +0100
-Message-ID: <CAFEAcA_dxxi5SpnKiid4GZ+BbshT4xchx+ew=F1oiw6s4ZtX7Q@mail.gmail.com>
-Subject: Re: [PATCH 4/6] qtest: factor out qtest_install_gpio_out_intercepts
+Date: Mon, 24 Jul 2023 17:19:20 +0100
+Message-ID: <CAFEAcA_kfDP_RpQB=_u46tH6C0pSeB=crv2cBgfrCjLCbWmGBA@mail.gmail.com>
+Subject: Re: [PATCH 5/6] qtest: irq_intercept_[out/in]: return FAIL if no
+ intercepts are installed
 To: Chris Laplante <chris@laplante.io>
 Cc: qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,66 +118,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y3SiOOEVJusk
+X-TUID: YbHqZqjPzJj4
 
 On Sat, 15 Jul 2023 at 00:27, Chris Laplante <chris@laplante.io> wrote:
 >
-> Simplify the code a bit.
+> This is much better than just silently failing with OK.
 >
 > Signed-off-by: Chris Laplante <chris@laplante.io>
-> ---
->  softmmu/qtest.c | 23 +++++++++++------------
->  1 file changed, 11 insertions(+), 12 deletions(-)
->
-> diff --git a/softmmu/qtest.c b/softmmu/qtest.c
-> index 74482ce3cd..051bbf4177 100644
-> --- a/softmmu/qtest.c
-> +++ b/softmmu/qtest.c
-> @@ -365,6 +365,15 @@ void qtest_set_command_cb(bool (*pc_cb)(CharBackend *chr, gchar **words))
->      process_command_cb = pc_cb;
->  }
->
-> +static void qtest_install_gpio_out_intercepts(DeviceState *dev, const char *name, int n)
-> +{
-> +    qemu_irq *disconnected = g_new0(qemu_irq, 1);
-> +    qemu_irq icpt = qemu_allocate_irq(qtest_irq_handler,
-> +                                      disconnected, n);
-> +
-> +    *disconnected = qdev_intercept_gpio_out(dev, icpt,name, n);
-> +}
-> +
->  static void qtest_process_command(CharBackend *chr, gchar **words)
->  {
->      const gchar *command;
-> @@ -421,23 +430,13 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
->              if (is_outbound) {
->                  if (is_named) {
->                      if (ngl->name && strcmp(ngl->name, words[2]) == 0) {
-> -                        qemu_irq *disconnected = g_new0(qemu_irq, 1);
-> -                        qemu_irq icpt = qemu_allocate_irq(qtest_irq_handler,
-> -                                                          disconnected, 0);
-> -
-> -                        *disconnected = qdev_intercept_gpio_out(dev, icpt,
-> -                                                                ngl->name, 0);
-> +                        qtest_install_gpio_out_intercepts(dev, ngl->name, 0);
->                          break;
->                      }
->                  } else if (!ngl->name) {
->                      int i;
->                      for (i = 0; i < ngl->num_out; ++i) {
-> -                        qemu_irq *disconnected = g_new0(qemu_irq, 1);
-> -                        qemu_irq icpt = qemu_allocate_irq(qtest_irq_handler,
-> -                                                          disconnected, i);
-> -
-> -                        *disconnected = qdev_intercept_gpio_out(dev, icpt,
-> -                                                                ngl->name, i);
-> +                        qtest_install_gpio_out_intercepts(dev, ngl->name, i);
->                      }
 
-I think you should put this patch before patch 2 -- create the
-new function first, and then you can directly use it,
-rather than first creating the duplicate code and then
-getting rid of it.
+Makes sense. Did you do a 'make check' on an
+all-targets-enabled build just to confirm we haven't
+accidentally let any bogus uses of the command in while
+it was returning OK for these cases?
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

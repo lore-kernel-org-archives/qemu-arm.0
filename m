@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp2502384ejb;
-        Tue, 25 Jul 2023 03:25:01 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlESbonDryHLPWc+F3iu572MGbIr5oDFi3vDahFMTz9iBI3o5t+YC74JD4vmzOeUBWYGSzaX
-X-Received: by 2002:a05:6a20:1591:b0:137:db14:e87c with SMTP id h17-20020a056a20159100b00137db14e87cmr11569046pzj.13.1690280701541;
-        Tue, 25 Jul 2023 03:25:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690280701; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp2566053ejb;
+        Tue, 25 Jul 2023 05:19:47 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHIafslrDbK8fCfR7H6v+fHcTE0jY31EC/BIZqZA9nhClqBs+UnHHu7RThI+tq5DtizWnu/
+X-Received: by 2002:a05:6512:4026:b0:4fe:82c:5c8a with SMTP id br38-20020a056512402600b004fe082c5c8amr943047lfb.58.1690287586782;
+        Tue, 25 Jul 2023 05:19:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690287586; cv=none;
         d=google.com; s=arc-20160816;
-        b=nQ3CK11jZw3hEOo0TNBEDd297lQhXDomLee3xEI6mtyXGlAZX+iOM7V1Rpze3Phx82
-         Wz2Sg4WwLoodF2j9KOmcMVRA/tji6JrTvz6mCecrqLsBYXetg7EEYvE/JDDaDvnwOE3u
-         Td6uPuZ08s5KAvIvkzFHG7gnvcQltoR2p8seAvHD7k718IsDG0HQOaEp0/MZXY6grnZV
-         V6q17aAW1eTcAgHKuts9NRMTcnfPb8vuRxcQ6vcDzLxvTsCiLgwdvXI/eimgER2kLYz1
-         zUc/uaoAFoIWIJZ16ebr7o2zIOglQ/JZnzklbFQMiqCgQbcNRGrDPpdTFu6e0v4pUtq+
-         voag==
+        b=R4dV/XoxgnNEFy+oyKukvKg4C5EzINiLvGL1LSOEDLyAVcciqbA70LofPSuuXgMlMJ
+         g9Y/CQAklnUlV3tiTq+D8sQITu+ieD+bX7omPt49BUpT5Ly2zW3+p0vkedmf5CR2o5zJ
+         XZY5cwsH6lDlsOyZTFPyNZoQK/mxv/o72K6Dhs5KBPXCinV5WcWot8zp3/1ZZwnBH3Vb
+         NBVkMzuUZGHet9x+fyVCKGaKRKk2ofBKetLKUhFG0J36a+m7ch55px2b8TwAphFrnfvT
+         vblGkXobro1KL1vQm7NBoWyiRaU/LUds7iIZfcDz5hQDLpmSQx+8te4VBoy7bR8VJ1dZ
+         RmIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:in-reply-to:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=1p7MISDkCiYaiy9i9jbTvJ/hqGF3kuP6hXJ1xHmOvYA=;
+        bh=nYrCQRR/69uqvDwM5fk4fzz23/zdzo0otjNSbYd4kR4=;
         fh=kepB0lBWF2uweec7x7aFYUNoKjCepZRwFBxGSTFJf1Q=;
-        b=CvwQEMRQ/uskao101T8rQ3p+02kZ+W+heyVx7ekUMN5Ne8SDf7mZqlQ0ue9aHmkCIT
-         w7LEbwWo6VwLJdatnUNy0wdV2d2UoCte8GwiZ1KjZ8mHlaIg2DgO/AlIY48x9NNHGwxu
-         Hbd4Igfw3Mnmgfk0Qo8buEKdSIRl0hImokZI/e88cdwYJ+RAaO2pGVPqKrXopUdB5pLo
-         gav2BbpMWpEJSJW5ddDdT8nTQJqiBdGSd1kqgSNYy4EuavZV6AzGnirKDupOJgULdd0O
-         gqZmrB8koYlVgKhMn0CTQF0UdDvizgSrbaVNiEMhE5SMbUli2QpzdZxHBS48V66QLj//
-         SKzg==
+        b=gqsZsnXQaLxXjVPDot6qg3pYQsO2Rqsl09OWna0qoq+gmVCyH4O8HdHA/5w+4ore6c
+         5GhW6nOlJvLVdJCb5gRLbHsWIO7hiyt3qPwYwgUeYNWt16zpUpOhLYLOcr3o7IP2yx68
+         FkgmGwHs+ugL08tj30IpUGXGI8scJDuhf+Idl/0OdWnlYrvswtSorobC/Q1cqe3gqZ7g
+         UwHnSOPXQrmW8H0SWxQ/LxwVrG/Ire39gt5iuC5wSPgRQVjmektyAysX5WL+qZlKUKr/
+         TJUDSXkousddM3X2ge4sPusPkSGiTWCVpHZr83o2D5DU+b48avLx/NX27hv8Bo2hN9W2
+         I+AQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=oeG4F8sM;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=KECCAYKl;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id q13-20020a170902dacd00b001b9ffda162csi11828840plx.441.2023.07.25.03.25.01;
-        Tue, 25 Jul 2023 03:25:01 -0700 (PDT)
+        by mx.google.com with ESMTP id x21-20020aa7dad5000000b00522467311e0si1241261eds.634.2023.07.25.05.19.46;
+        Tue, 25 Jul 2023 05:19:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=oeG4F8sM;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=KECCAYKl;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S233520AbjGYKZA (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Tue, 25 Jul 2023 06:25:00 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:46550 "EHLO
+        id S233408AbjGYMTp (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Tue, 25 Jul 2023 08:19:45 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45534 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S233509AbjGYKY7 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 25 Jul 2023 06:24:59 -0400
-Received: from mail-ej1-x630.google.com (mail-ej1-x630.google.com [IPv6:2a00:1450:4864:20::630])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 72CB3199D
-        for <kvm@vger.kernel.org>; Tue, 25 Jul 2023 03:24:50 -0700 (PDT)
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-9936b3d0286so933100266b.0
-        for <kvm@vger.kernel.org>; Tue, 25 Jul 2023 03:24:50 -0700 (PDT)
+        with ESMTP id S232511AbjGYMTm (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 25 Jul 2023 08:19:42 -0400
+Received: from mail-ej1-x629.google.com (mail-ej1-x629.google.com [IPv6:2a00:1450:4864:20::629])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 9304E172A
+        for <kvm@vger.kernel.org>; Tue, 25 Jul 2023 05:19:39 -0700 (PDT)
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-992acf67388so804063666b.1
+        for <kvm@vger.kernel.org>; Tue, 25 Jul 2023 05:19:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ventanamicro.com; s=google; t=1690280689; x=1690885489;
+        d=ventanamicro.com; s=google; t=1690287578; x=1690892378;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=1p7MISDkCiYaiy9i9jbTvJ/hqGF3kuP6hXJ1xHmOvYA=;
-        b=oeG4F8sMUGN2oCm5jifaER8r5T10e2Ad3mlC67oCI4QwivfGP76xigVREoO4aeDDHf
-         AYgHi3cJL7ATjr1hd+vST5p0JV8j1tiAGgJDad69+85vkShSIRoMNoDOW1f/UQiDFsgP
-         5+KDPsnc4B6Q8ddRYn3QdBgHZVp1oXFyjCl80r7w+gblLYU/TTnWquMHSzDzJKs3IbiF
-         ncd5HoUlLHdtHeUs/TNoXfGT8UtKcwL0zL5u9V3kro6yNAwLsen92J90OqFke+7HXilz
-         8Nlm5IByIgvuGV+U8/T+0HuE0oP096NDTt2Od5AuUo+EkyzCrTUPUaojYqRQldjLKaQH
-         2RBA==
+        bh=nYrCQRR/69uqvDwM5fk4fzz23/zdzo0otjNSbYd4kR4=;
+        b=KECCAYKlu20hKqsaQ4cOSf/3XzAD8hYrj/Rq2i3xcScjjDq9v7gLd/Vebx9XKJy70R
+         L3ZHAfde1TfZJEfYJIz+7y538pVaLD4BXAl5n6z457PNa/O8z0wxZ9+i2S+kce2NKO3+
+         w4E62Zd36jyq63Hfa7x4SywHmX21aimGeLl9n+LUL/rBSkf+wXxvirER3kdFMqhX4gdY
+         KX458aMnUL9L8s21mq1nbCCgrK9bRnN0kUduRFISzfKl1AYfFovoZjMr5tROPR0jGJib
+         /iidJKWqni07Uk3c0D31vyZQpAUyis2tLLxy9k9amz0x0mwsMa2S5YzWVqKCj+BuB1gf
+         Ppyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690280689; x=1690885489;
+        d=1e100.net; s=20221208; t=1690287578; x=1690892378;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=1p7MISDkCiYaiy9i9jbTvJ/hqGF3kuP6hXJ1xHmOvYA=;
-        b=dCE6aXXD7zx6UMX/+HWZ7B5urFsiPt46h4Z/8Z7259QTDjEarKzTJ+YIgq8qEaPEsR
-         bCnqB/GdizY6TEWcsTBME5puRnCRHIXK/Vw4p+rKe0SLA31CLIYXdy1hqvajCZYQdwln
-         w+r7Qj7mZOc8kDo4ul1VmLyyZW0TucYbXDNom3X+mfHJ1TJOw0hulm9cBdqQ0yHKNTMJ
-         Av8wy7kXcIPIBUaTsXfgpvXoT0ptU/GjxrFO0EWuVs1gM3MtJTT6pij85YWy6kzSCnJK
-         +GmfOteBxkdrjG7jn0KpljevcaA81/h/I3uGgd69lVjsUj/mp2AAQGTchCYgNpchikM6
-         jI6w==
-X-Gm-Message-State: ABy/qLZ4Y4edqJ6uSysf+ChHa+uaiT+gwv3VttsKkosgQ35yxbgx7du+
-        1dmw6+gZuDbyN55sQPAxbMv7TMOXzdGvj3sZy50=
-X-Received: by 2002:a17:906:77d9:b0:99b:4edc:8a00 with SMTP id m25-20020a17090677d900b0099b4edc8a00mr12418127ejn.37.1690280688816;
-        Tue, 25 Jul 2023 03:24:48 -0700 (PDT)
+        bh=nYrCQRR/69uqvDwM5fk4fzz23/zdzo0otjNSbYd4kR4=;
+        b=in3TRl2+Mp7IPhUPgjn4Sx3KGxtR9RperpBGMhp2wB9Gi0Kuh0zOmKplYGpNB1XVTN
+         4g83x+Wwr03DLiTjrd519CWGWm3OFapW5gpiT6mJxXsjVRr3W/2caMVt5gJlUFrhTVRN
+         JCqWbMLVjYDQFJ7SNmfI4nth78ZE9xb8sy5YHYnXBVOFRHgcipjeDU4tWbCOOAvBsbl4
+         UO54CfnI7dpK/2G1YeVPcICxHjY/niStJddZMrj7PL8bhPVnJySoy5fGE2Qr3ZsL84D6
+         kpOL8UNMMavUqW/8VNZz935cYTpv9u/bwXVY2Kdfh64P9Dzgv527gPkcimWBCKTTi0EX
+         UJsQ==
+X-Gm-Message-State: ABy/qLZrauXg979FqxLi/Be/Ofg7SX3BOULH7oboNl1Ly4vfFcqw76AA
+        L1qx3pCLKUy7nuefFKmeDrGYTCIiNfhnFdZdpK0=
+X-Received: by 2002:a17:906:74d6:b0:993:d7f3:f055 with SMTP id z22-20020a17090674d600b00993d7f3f055mr11899478ejl.11.1690287577659;
+        Tue, 25 Jul 2023 05:19:37 -0700 (PDT)
 Received: from localhost (2001-1ae9-1c2-4c00-20f-c6b4-1e57-7965.ip6.tmcz.cz. [2001:1ae9:1c2:4c00:20f:c6b4:1e57:7965])
-        by smtp.gmail.com with ESMTPSA id v27-20020a170906339b00b00985ed2f1584sm8061846eja.187.2023.07.25.03.24.47
+        by smtp.gmail.com with ESMTPSA id e27-20020a170906375b00b00988f168811bsm8205127ejc.135.2023.07.25.05.19.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Jul 2023 03:24:48 -0700 (PDT)
-Date:   Tue, 25 Jul 2023 12:24:47 +0200
+        Tue, 25 Jul 2023 05:19:37 -0700 (PDT)
+Date:   Tue, 25 Jul 2023 14:19:36 +0200
 From:   Andrew Jones <ajones@ventanamicro.com>
 To:     Thomas Huth <thuth@redhat.com>
 Cc:     qemu-devel@nongnu.org, pbonzini@redhat.com, mtosatti@redhat.com,
@@ -84,7 +84,7 @@ Cc:     qemu-devel@nongnu.org, pbonzini@redhat.com, mtosatti@redhat.com,
         borntraeger@linux.ibm.com, dbarboza@ventanamicro.com,
         kvm@vger.kernel.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
 Subject: Re: [PATCH] kvm: Remove KVM_CREATE_IRQCHIP support assumption
-Message-ID: <20230725-2345f08d2b8dd875b8082259@orel>
+Message-ID: <20230725-539b009b8e15994408dbb47b@orel>
 References: <20230722062115.11950-2-ajones@ventanamicro.com>
  <81dd6b4c-200f-bb35-69fa-ed623eb7e6d1@redhat.com>
 MIME-Version: 1.0
@@ -92,7 +92,7 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <81dd6b4c-200f-bb35-69fa-ed623eb7e6d1@redhat.com>
 X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_BLOCKED,
         SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
         autolearn=ham autolearn_force=no version=3.4.6
 X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
@@ -100,7 +100,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 2Tx8982FOEin
+X-TUID: 0vz6awdMskiy
 
 On Mon, Jul 24, 2023 at 11:53:39AM +0200, Thomas Huth wrote:
 > On 22/07/2023 08.21, Andrew Jones wrote:
@@ -176,9 +176,14 @@ On Mon, Jul 24, 2023 at 11:53:39AM +0200, Thomas Huth wrote:
 > 
 > The "kvm_vm_enable_cap(s, KVM_CAP_S390_IRQCHIP, 0)" of course has to be
 > moved to the target/s390x/kvm/kvm.c file, too.
->
 
-Sounds good. I'll do that for v2.
+Actually, once we've moved the s390 cap enablement to the s390 file we can
+just drop the whole if-else chain. We don't want the
+if (!kvm_has_create_irqchip) at the top because we want to try
+kvm_arch_irqchip_create() even when kvm_has_create_irqchip is false, and
+we don't need to check KVM_CREATE_IRQCHIP for kvm_arch_irqchip_create()
+either. Keeping the check, as it is above in this v1, of
+kvm_has_create_irqchip for KVM_CREATE_IRQCHIP is still necessary, though.
 
 Thanks,
 drew

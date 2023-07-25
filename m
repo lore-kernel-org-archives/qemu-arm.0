@@ -1,162 +1,184 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp2473629ejb;
-        Tue, 25 Jul 2023 02:23:57 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlE2aRR56u8g/WzfhcESv8vZktUm+8CMOpuMY1vuYX1uqP5UnVRJyknuEQs41pwOjVXEB6Pd
-X-Received: by 2002:a0c:f88c:0:b0:635:93fb:fbf7 with SMTP id u12-20020a0cf88c000000b0063593fbfbf7mr2159740qvn.2.1690277037086;
-        Tue, 25 Jul 2023 02:23:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690277037; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp2502384ejb;
+        Tue, 25 Jul 2023 03:25:01 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlESbonDryHLPWc+F3iu572MGbIr5oDFi3vDahFMTz9iBI3o5t+YC74JD4vmzOeUBWYGSzaX
+X-Received: by 2002:a05:6a20:1591:b0:137:db14:e87c with SMTP id h17-20020a056a20159100b00137db14e87cmr11569046pzj.13.1690280701541;
+        Tue, 25 Jul 2023 03:25:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690280701; cv=none;
         d=google.com; s=arc-20160816;
-        b=OaLJXQlxhAuNjDsyLvpfMQig2g1aBUrOZZde5kMnXzlnaIj98v2L0ZlyPcWjAM1+2w
-         TAjPsDbvXgUzuEKBirgWZEmw+8gQS61ynNFHNRntxEsOeYZqh9GEqqGK1S+1+Je13PzE
-         pn+Nag8C6bPf4ZpbDVQAyeBrl1DTKsp/m0N4f8zeHGP9RlnDHREOzd4xbUSoS1gYDq8J
-         9Ss2uQDAHqI+1tkKFzHUqR8/khumarU2gOQcZJ7c+jNQxx5oNgMbP2bSXQYZMMGuFeRM
-         Nx8aZc08gi0YwqXbcTDD0hmYvyglihFcjGPU26dDEHprHg7xkB7q65DV5FtB0dzsavlJ
-         wHtQ==
+        b=nQ3CK11jZw3hEOo0TNBEDd297lQhXDomLee3xEI6mtyXGlAZX+iOM7V1Rpze3Phx82
+         Wz2Sg4WwLoodF2j9KOmcMVRA/tji6JrTvz6mCecrqLsBYXetg7EEYvE/JDDaDvnwOE3u
+         Td6uPuZ08s5KAvIvkzFHG7gnvcQltoR2p8seAvHD7k718IsDG0HQOaEp0/MZXY6grnZV
+         V6q17aAW1eTcAgHKuts9NRMTcnfPb8vuRxcQ6vcDzLxvTsCiLgwdvXI/eimgER2kLYz1
+         zUc/uaoAFoIWIJZ16ebr7o2zIOglQ/JZnzklbFQMiqCgQbcNRGrDPpdTFu6e0v4pUtq+
+         voag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=gOBnavCrna6JWt2dtfiq1zNbqJHIn7EWAHHgfrt55Es=;
-        fh=XBL7wuOnmyes3GPK3AEoJ+XBo7B8JI753uFIVICnU40=;
-        b=lxfKETCEW5q7EiDi/O283/syFZ0udk+4qov/O3OHZ5NZgEW+mO0cwf1Qv4x/Yo6Ntf
-         +NpZHxVKLiziTE+XVjexbxBy/Vw43pLYg5xhiwB0mN/xBGBQFhxTo2yMDQfolL7YE1YU
-         e5kVd4znBlBNJbUnD0+7XxmjHzsNBpv4QmmDWmwMsdhUo6ioEDgiAE+NNIzonKO7C3NY
-         jnx2B2a6c4jPDG0ot218LVa+5kaIrVTRTLPFCntyj0Mr97LtdIdlBRkfS/7SN2qUxjKf
-         zkWG3tFY6Mfqx0140J+MT9gr3Cmxp4vq1c12EbyGv/MMI9vIu0UbPTjMyq62PRQ8DTf1
-         C55A==
+        h=list-id:precedence:in-reply-to:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=1p7MISDkCiYaiy9i9jbTvJ/hqGF3kuP6hXJ1xHmOvYA=;
+        fh=kepB0lBWF2uweec7x7aFYUNoKjCepZRwFBxGSTFJf1Q=;
+        b=CvwQEMRQ/uskao101T8rQ3p+02kZ+W+heyVx7ekUMN5Ne8SDf7mZqlQ0ue9aHmkCIT
+         w7LEbwWo6VwLJdatnUNy0wdV2d2UoCte8GwiZ1KjZ8mHlaIg2DgO/AlIY48x9NNHGwxu
+         Hbd4Igfw3Mnmgfk0Qo8buEKdSIRl0hImokZI/e88cdwYJ+RAaO2pGVPqKrXopUdB5pLo
+         gav2BbpMWpEJSJW5ddDdT8nTQJqiBdGSd1kqgSNYy4EuavZV6AzGnirKDupOJgULdd0O
+         gqZmrB8koYlVgKhMn0CTQF0UdDvizgSrbaVNiEMhE5SMbUli2QpzdZxHBS48V66QLj//
+         SKzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g8yIqMXj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u6-20020a0cdd06000000b0063631ab5dd9si4700054qvk.164.2023.07.25.02.23.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jul 2023 02:23:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=oeG4F8sM;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id q13-20020a170902dacd00b001b9ffda162csi11828840plx.441.2023.07.25.03.25.01;
+        Tue, 25 Jul 2023 03:25:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g8yIqMXj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOEGe-0003Ux-NH; Tue, 25 Jul 2023 05:23:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qOEGd-0003US-FF
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 05:23:43 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qOEGb-00044F-Sk
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 05:23:43 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-51bece5d935so7978923a12.1
- for <qemu-arm@nongnu.org>; Tue, 25 Jul 2023 02:23:41 -0700 (PDT)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=oeG4F8sM;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S233520AbjGYKZA (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Tue, 25 Jul 2023 06:25:00 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:46550 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S233509AbjGYKY7 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 25 Jul 2023 06:24:59 -0400
+Received: from mail-ej1-x630.google.com (mail-ej1-x630.google.com [IPv6:2a00:1450:4864:20::630])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 72CB3199D
+        for <kvm@vger.kernel.org>; Tue, 25 Jul 2023 03:24:50 -0700 (PDT)
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-9936b3d0286so933100266b.0
+        for <kvm@vger.kernel.org>; Tue, 25 Jul 2023 03:24:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1690277020; x=1690881820;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=gOBnavCrna6JWt2dtfiq1zNbqJHIn7EWAHHgfrt55Es=;
- b=g8yIqMXjkOl1QcpGTWaXMJj7rHs3odpxOVlnazSQaKzFItMd8SDMNLJGsCIXza6UAf
- y3RbVqMFiobEVWlGx2WKlOiXwjXiy3DLfxMsrMI40KKnL6GC2iKEjosfPo+5UtWF6MTP
- I7sliRjiGl65nDC4QPSp4EsNFPEfxPQH+KDrwBRHf6j2tI/k66OXyRRJvGTHdAfYKK5M
- N5c22ota0jmMV9ClfHvaubhd/E7zUT3mhZk900d7l97XPrOd9jIxl/L0pUMbERUnX3cb
- GnUIPX+Jdg/zU74eSq8NHnKKBK+ol8oq4BeHhutmk8QtyAeaB7lc7dhK2HNEKOhtQeY/
- u9jw==
+        d=ventanamicro.com; s=google; t=1690280689; x=1690885489;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=1p7MISDkCiYaiy9i9jbTvJ/hqGF3kuP6hXJ1xHmOvYA=;
+        b=oeG4F8sMUGN2oCm5jifaER8r5T10e2Ad3mlC67oCI4QwivfGP76xigVREoO4aeDDHf
+         AYgHi3cJL7ATjr1hd+vST5p0JV8j1tiAGgJDad69+85vkShSIRoMNoDOW1f/UQiDFsgP
+         5+KDPsnc4B6Q8ddRYn3QdBgHZVp1oXFyjCl80r7w+gblLYU/TTnWquMHSzDzJKs3IbiF
+         ncd5HoUlLHdtHeUs/TNoXfGT8UtKcwL0zL5u9V3kro6yNAwLsen92J90OqFke+7HXilz
+         8Nlm5IByIgvuGV+U8/T+0HuE0oP096NDTt2Od5AuUo+EkyzCrTUPUaojYqRQldjLKaQH
+         2RBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690277020; x=1690881820;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=gOBnavCrna6JWt2dtfiq1zNbqJHIn7EWAHHgfrt55Es=;
- b=Ew3HJj1p72wio23r8lrcTOOEy/5BSlGotM4zVudcRteGXl6HxJiD6iAzbcV+f4wFxr
- akc56Yfaa/Ka/BtYvRaGmeQGN/A+Mm5R1i7ErZ9pvHHp5khRMbLu7XDD0eshwBggFTcC
- ABntMU2z6chS+DHf9bkFz96/GZf+e6gv2Z7XRVpfFNA1z+B0q4DDo+1VY/fjb+FXIIZF
- 1tmQyUM8FbawHAIT6Z2SwlBhZkXKE2G7BshwLGkuleKIW7/ft+jS+hayFjulCrTAkMnO
- SlFaqf2oMuhZAdRKdn2Od+m2bxxX14PG4ndYurqF5S68Qix+4B/owy9gD78nLqDuGpDZ
- pb2g==
-X-Gm-Message-State: ABy/qLZWHOsiXsacJIma2VW7e42zOrS9ZS7stiQ6DiZSn3371RTxeMEy
- OoS6rY8Tqrd/voMHbr35rIq+aAEOvi24X16NX7ibbQ==
-X-Received: by 2002:a05:6402:744:b0:522:37da:7920 with SMTP id
- p4-20020a056402074400b0052237da7920mr3515847edy.12.1690277019516; Tue, 25 Jul
- 2023 02:23:39 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1690280689; x=1690885489;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1p7MISDkCiYaiy9i9jbTvJ/hqGF3kuP6hXJ1xHmOvYA=;
+        b=dCE6aXXD7zx6UMX/+HWZ7B5urFsiPt46h4Z/8Z7259QTDjEarKzTJ+YIgq8qEaPEsR
+         bCnqB/GdizY6TEWcsTBME5puRnCRHIXK/Vw4p+rKe0SLA31CLIYXdy1hqvajCZYQdwln
+         w+r7Qj7mZOc8kDo4ul1VmLyyZW0TucYbXDNom3X+mfHJ1TJOw0hulm9cBdqQ0yHKNTMJ
+         Av8wy7kXcIPIBUaTsXfgpvXoT0ptU/GjxrFO0EWuVs1gM3MtJTT6pij85YWy6kzSCnJK
+         +GmfOteBxkdrjG7jn0KpljevcaA81/h/I3uGgd69lVjsUj/mp2AAQGTchCYgNpchikM6
+         jI6w==
+X-Gm-Message-State: ABy/qLZ4Y4edqJ6uSysf+ChHa+uaiT+gwv3VttsKkosgQ35yxbgx7du+
+        1dmw6+gZuDbyN55sQPAxbMv7TMOXzdGvj3sZy50=
+X-Received: by 2002:a17:906:77d9:b0:99b:4edc:8a00 with SMTP id m25-20020a17090677d900b0099b4edc8a00mr12418127ejn.37.1690280688816;
+        Tue, 25 Jul 2023 03:24:48 -0700 (PDT)
+Received: from localhost (2001-1ae9-1c2-4c00-20f-c6b4-1e57-7965.ip6.tmcz.cz. [2001:1ae9:1c2:4c00:20f:c6b4:1e57:7965])
+        by smtp.gmail.com with ESMTPSA id v27-20020a170906339b00b00985ed2f1584sm8061846eja.187.2023.07.25.03.24.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Jul 2023 03:24:48 -0700 (PDT)
+Date:   Tue, 25 Jul 2023 12:24:47 +0200
+From:   Andrew Jones <ajones@ventanamicro.com>
+To:     Thomas Huth <thuth@redhat.com>
+Cc:     qemu-devel@nongnu.org, pbonzini@redhat.com, mtosatti@redhat.com,
+        peter.maydell@linaro.org, pasic@linux.ibm.com,
+        borntraeger@linux.ibm.com, dbarboza@ventanamicro.com,
+        kvm@vger.kernel.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
+Subject: Re: [PATCH] kvm: Remove KVM_CREATE_IRQCHIP support assumption
+Message-ID: <20230725-2345f08d2b8dd875b8082259@orel>
+References: <20230722062115.11950-2-ajones@ventanamicro.com>
+ <81dd6b4c-200f-bb35-69fa-ed623eb7e6d1@redhat.com>
 MIME-Version: 1.0
-References: <20230714232659.76434-1-chris@laplante.io>
- <CAFEAcA_gGia=ckyv4=XHNX4=VHJJ=rmVGXQbdnOAGv5h1rzLzw@mail.gmail.com>
- <uJ83qRpjm3C76JRjI4OOm2NAz3uF-RDUa2WL8sp3ftAzoH16KDfxZhwxsqxqxrHTfXHKkZZXy0JY6UUpq7nD0jfYEUtYM_K340O6E6BFwJY=@laplante.io>
-In-Reply-To: <uJ83qRpjm3C76JRjI4OOm2NAz3uF-RDUa2WL8sp3ftAzoH16KDfxZhwxsqxqxrHTfXHKkZZXy0JY6UUpq7nD0jfYEUtYM_K340O6E6BFwJY=@laplante.io>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Jul 2023 10:23:28 +0100
-Message-ID: <CAFEAcA_HWapg170-7yu2cZ-ePTe4PaX-tWyL7FJzENgig=dq5g@mail.gmail.com>
-Subject: Re: [PATCH 0/6] Add nRF51 DETECT signal with test
-To: Chris Laplante <chris@laplante.io>
-Cc: qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /IxcS8yiD4uh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <81dd6b4c-200f-bb35-69fa-ed623eb7e6d1@redhat.com>
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 2Tx8982FOEin
 
-On Tue, 25 Jul 2023 at 04:25, Chris Laplante <chris@laplante.io> wrote:
+On Mon, Jul 24, 2023 at 11:53:39AM +0200, Thomas Huth wrote:
+> On 22/07/2023 08.21, Andrew Jones wrote:
+> > Since Linux commit 00f918f61c56 ("RISC-V: KVM: Skeletal in-kernel AIA
+> > irqchip support") checking KVM_CAP_IRQCHIP returns non-zero when the
+> > RISC-V platform has AIA. The cap indicates KVM supports at least one
+> > of the following ioctls:
+> > 
+> >    KVM_CREATE_IRQCHIP
+> >    KVM_IRQ_LINE
+> >    KVM_GET_IRQCHIP
+> >    KVM_SET_IRQCHIP
+> >    KVM_GET_LAPIC
+> >    KVM_SET_LAPIC
+> > 
+> > but the cap doesn't imply that KVM must support any of those ioctls
+> > in particular. However, QEMU was assuming the KVM_CREATE_IRQCHIP
+> > ioctl was supported. Stop making that assumption by introducing a
+> > KVM parameter that each architecture which supports KVM_CREATE_IRQCHIP
+> > sets. Adding parameters isn't awesome, but given how the
+> > KVM_CAP_IRQCHIP isn't very helpful on its own, we don't have a lot of
+> > options.
+> > 
+> > Signed-off-by: Andrew Jones <ajones@ventanamicro.com>
+> > ---
+> > 
+> > While this fixes booting guests on riscv KVM with AIA it's unlikely
+> > to get merged before the QEMU support for KVM AIA[1] lands, which
+> > would also fix the issue. I think this patch is still worth considering
+> > though since QEMU's assumption is wrong.
+> > 
+> > [1] https://lore.kernel.org/all/20230714084429.22349-1-yongxuan.wang@sifive.com/
+> > 
+> > 
+> >   accel/kvm/kvm-all.c    | 5 ++++-
+> >   include/sysemu/kvm.h   | 1 +
+> >   target/arm/kvm.c       | 3 +++
+> >   target/i386/kvm/kvm.c  | 2 ++
+> >   target/s390x/kvm/kvm.c | 3 +++
+> >   5 files changed, 13 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> > index 373d876c0580..0f5ff8630502 100644
+> > --- a/accel/kvm/kvm-all.c
+> > +++ b/accel/kvm/kvm-all.c
+> > @@ -86,6 +86,7 @@ struct KVMParkedVcpu {
+> >   };
+> >   KVMState *kvm_state;
+> > +bool kvm_has_create_irqchip;
+> >   bool kvm_kernel_irqchip;
+> >   bool kvm_split_irqchip;
+> >   bool kvm_async_interrupts_allowed;
+> > @@ -2377,8 +2378,10 @@ static void kvm_irqchip_create(KVMState *s)
+> >           if (s->kernel_irqchip_split == ON_OFF_AUTO_ON) {
+> >               error_report("Split IRQ chip mode not supported.");
+> >               exit(1);
+> > -        } else {
+> > +        } else if (kvm_has_create_irqchip) {
+> >               ret = kvm_vm_ioctl(s, KVM_CREATE_IRQCHIP);
+> > +        } else {
+> > +            return;
+> >           }
+> >       }
+> >       if (ret < 0) {
+> 
+> I think I'd do this differntly... at the beginning of the function, there is
+> a check for kvm_check_extension(s, KVM_CAP_IRQCHIP) etc. ... I think you
+> could now replace that check with a simple
+> 
+> 	if (!kvm_has_create_irqchip) {
+> 		return;
+> 	}
+> 
+> The "kvm_vm_enable_cap(s, KVM_CAP_S390_IRQCHIP, 0)" of course has to be
+> moved to the target/s390x/kvm/kvm.c file, too.
 >
-> Hi Peter,
->
-> > Thanks for this patchset and especially for the work
-> > improving the qtest infrastructure. I've given my
-> > comments on the different patches, and in some cases
-> > reviewed-by tags. (Where I've given one of those, you should
-> > add it to your commit message for the relevant patch under
-> > your Signed-off-by: line, so that when you send the version
-> > 2 of the patchset we know that those parts are already
-> > reviewed and don't need re-examining. If I said "make
-> > some change; otherwise Reviewed-by" that means "make
-> > that minor change, and then you can add the tag, etc".)
->
-> Thanks very much for the feedback and help!
->
-> > Do you have the parts of this feature that use the DETECT
-> > signal in the POWER device, or have you not written those
-> > yet ? If you have them, you could send those too in v2.
->
-> That part is halfway done, so I will work on finishing it before submitting v2. Two questions regarding that (to potentially save us a v3):
->
-> 1. The nRF51 POWER device overlaps with the memory maps of the CLOCK and MPU devices. So I have created a CPM (CLOCK, POWER, MPU) device in hw/misc. Does that sound reasonable naming-wise?
 
-Yes, I think from QEMU's point of view the massive register
-overlap makes them a single device. The name sounds OK
-(give it the same kind of nrf51 prefix the rng device has).
+Sounds good. I'll do that for v2.
 
-> 2. I also have some implementations for pieces of CLOCK, namely the HFCLKSTART/HFCLKSTOP events and HFCLKSTARTED event. Should I include that in this patch series, or would you prefer it in a separate series? It is unrelated to DETECT and POWER.
-
-If you think they're ready to go in, and it doesn't
-make the series more than about 12-15 patches long,
-you can put them on the end of the series. If the
-patchset is starting to get a bit big then it might
-be easier to get the POWER/DETECT parts reviewed
-first.
-
-thanks
--- PMM
+Thanks,
+drew

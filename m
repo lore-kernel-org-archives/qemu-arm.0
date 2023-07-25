@@ -1,80 +1,78 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp8512ejb;
-        Tue, 25 Jul 2023 11:05:09 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlH37n4geLVU3zgA2hB1aVG0M9qZKm2ByzY7Dp2EaHChapu21FRbb2vdD9qz5pgjeLAYJp+K
-X-Received: by 2002:a05:622a:1d0:b0:405:3799:d28a with SMTP id t16-20020a05622a01d000b004053799d28amr4830059qtw.60.1690308308938;
-        Tue, 25 Jul 2023 11:05:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690308308; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp8740ejb;
+        Tue, 25 Jul 2023 11:05:27 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHdJe1ow4VvSDDicON9QZHesJ14Cy4FEDuCKHlUcv/GTI7vQ2bFlD+TwgeMZQNw4da/nvkl
+X-Received: by 2002:a25:ad27:0:b0:d17:6abc:4695 with SMTP id y39-20020a25ad27000000b00d176abc4695mr2889763ybi.62.1690308327574;
+        Tue, 25 Jul 2023 11:05:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690308327; cv=none;
         d=google.com; s=arc-20160816;
-        b=qtEU1xdUf1xTCKdULVNrB0UIpHPsYYVbBE2MT3DRmOfbgRPiMzemM9tMov2X9D8LAN
-         wMa0sFISVuaDw1Fk3IQNlejdsXh+L5oehOiY21dvQNbiKTGAzG/jbc83ZR9WraGt1uJR
-         /nMt65etbD/Zt+RlcJcIQ88sd+F1ekwUwvkDlPrF5Z3SBaAgVZyiiuWKVjdahEOfDfms
-         sSowYm1FWRzMu0zKmBNpoOlXz4bzPk/gKy8iBIDiZY001IZNOILN7iolKQB/Ys4WgyRc
-         EzrDyImHt0+d96AWWa/RB4JDSIFNL3Q4hBTrUqxvRHCTCRIECgCK6Q2ZcI7s4+J1UdPh
-         I6aQ==
+        b=tK8u0F1VRadGFjsv+L6cuxHglabskvrUWdG/oyiSvJLa41iVb5M7ZYU/bLoVhck/V2
+         OdIgUdlt56HWHkKRC8MXTSMG1HNfESbq4zoPhI2mWe2ZPoOfGHyTiUyMln0KHQYAI/JA
+         kYJnF2rky8aesBTH4hUMxPPEkozyUuvfqpyLDbCmEjASIrLrkm/vfBARsaeY1V7aB7cR
+         zWYHoNdhdzRqKNg7ndjH8F+XpOuzlNuQR/Hp7er+MKEsb1hDka3iWr7TWTdFJDnll9/p
+         AmQ0Nd6qo3iRZeHsBebWbM/z+TJdplW3DmQwuhZvbd57mDhYFBPPLTQhufK2mEUMoPWM
+         7yfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=xUvOqbeDQTYh8S6UQ0zMhCATK2YD+KgKhLBUJIECPEw=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9XuN+LNWkwxemHuxadKoQ4qZ4P3yeKY65rhtqX/RMqE=;
         fh=VIjqXItD7ovqYEXpyxuqPkaQsOkVw6zkSP5vf471ryI=;
-        b=GLCBIm38/KGfJh2DrXl0A8d/8uUFGosNytO/uZoqnEft65FuRA9CGtVNTKLz0E+sZx
-         KR4Koi0rfQGgpAYzPQEreehsg92irmeUUwkfWr19ywWtGhB37imDaBWr7ypVOPH5xHIG
-         KNOw2DXCz3sx1cg80C9YSX/JqrkgJte+2RHZqgS6dVaHX9xJmlg8n/NA1QOshCaeQVo5
-         4xQHE2wiomEmACzkOfdsxpmuKAVv8fXjgq8N3IVq2kbmiuw27iJaJL8ptUcC5gxtXYbd
-         8T0Vk/2jO/SZZGbLmSqmdPd293q3Q7/6I6Ar0Pl/Jxi4LkE5QPqjlotCtVMPJM1TBUc6
-         wA6g==
+        b=U0HLq61gdpH/IOCCX9qQ4VBjHVlwGajIJNNd3pZUzMcjZDViJXynqMBaZGmxXdY20Z
+         mPuYtBdmLDe83EkSxfwxNczKuyb8ZpTrddsclDW2C0VIyQCoyeRgA0VyQ2XyJY+Vnvg/
+         03uwKDgMSW9dY/MbwBQ+kUg3c7uALIndAUl5/YZhBhkxXGjDAdGECgJyMIoCMuaqcJmh
+         8C6s7gCYJw44Yd9skWTGQwG81pZ0f/jbnc/QcCHnyHJ3gna4/zcoB2b2NgyW//0fn7eI
+         JxyY30nB0CmdKEfkgAbf+ntemLA4BdSmM606SvTlXMOmpG0CZimjamzQiIP3WkqqaeJX
+         YVrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fx1tIdqq;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RjZ6Q8mN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3-20020a05622a024300b004042849cfb3si6949145qtx.262.2023.07.25.11.05.08
+        by mx.google.com with ESMTPS id o4-20020ac87c44000000b00403676c96e8si7218222qtv.136.2023.07.25.11.05.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jul 2023 11:05:08 -0700 (PDT)
+        Tue, 25 Jul 2023 11:05:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fx1tIdqq;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RjZ6Q8mN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qOMO3-0002tI-0K; Tue, 25 Jul 2023 14:03:55 -0400
+	id 1qOMOK-00031d-19; Tue, 25 Jul 2023 14:04:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMO2-0002s8-4E
- for qemu-devel@nongnu.org; Tue, 25 Jul 2023 14:03:54 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMOI-0002zv-IG
+ for qemu-devel@nongnu.org; Tue, 25 Jul 2023 14:04:10 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNw-00014j-2P
- for qemu-devel@nongnu.org; Tue, 25 Jul 2023 14:03:53 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMOF-00018v-Sn
+ for qemu-devel@nongnu.org; Tue, 25 Jul 2023 14:04:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690308226;
+ s=mimecast20190719; t=1690308246;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xUvOqbeDQTYh8S6UQ0zMhCATK2YD+KgKhLBUJIECPEw=;
- b=Fx1tIdqqzTOCq1T+MWBFvC3gwWx3/lCg3cwBNWUeAKb1/+Hr5HX1C708mrIz7VRuylLGul
- h0/uhR9jQWYmwtHfhEaV9b6PMg7TwcqSYxYJKTu6v5/62VrIdTOYw9WVXIUSDjoSzUq+8e
- q1iJ2d6M6oNfjEm7RhpUpAwP9KSGYcQ=
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=9XuN+LNWkwxemHuxadKoQ4qZ4P3yeKY65rhtqX/RMqE=;
+ b=RjZ6Q8mNYt8K/mGX0H7JSho+ctwrSCzHSTan9dfLRNsf4YRUPpmLkF98MzfOko+LznKZmF
+ FvWvq9kuTfnrGq6vn+YHeb0mIr4UXw4FCVS1OsKQ1fe8CX/pX5wpQZr8/CasOTuzBH/6AL
+ yYUurl9hhN368GqR5g3QZ0QkZqfD4Fk=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-629-7TwATzIhPTqUNJZjv0xoVQ-1; Tue, 25 Jul 2023 14:03:42 -0400
-X-MC-Unique: 7TwATzIhPTqUNJZjv0xoVQ-1
+ us-mta-441-oZedKdsFMBGCjoPuuZdgGg-1; Tue, 25 Jul 2023 14:04:00 -0400
+X-MC-Unique: oZedKdsFMBGCjoPuuZdgGg-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 76717802666;
- Tue, 25 Jul 2023 18:03:41 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C11A2101A54E;
+ Tue, 25 Jul 2023 18:03:38 +0000 (UTC)
 Received: from scv.redhat.com (unknown [10.22.8.145])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D64F51454150;
- Tue, 25 Jul 2023 18:03:40 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B2BB21454154;
+ Tue, 25 Jul 2023 18:03:37 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
@@ -87,14 +85,12 @@ Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Beraldo Leal <bleal@redhat.com>, Daniel Berrange <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 4/6] python/machine: use socketpair() for console
- connections
-Date: Tue, 25 Jul 2023 14:03:35 -0400
-Message-ID: <20230725180337.2937292-5-jsnow@redhat.com>
-In-Reply-To: <20230725180337.2937292-1-jsnow@redhat.com>
-References: <20230725180337.2937292-1-jsnow@redhat.com>
+Subject: [PATCH v2 0/6] python/machine: use socketpair() for console socket
+Date: Tue, 25 Jul 2023 14:03:31 -0400
+Message-ID: <20230725180337.2937292-1-jsnow@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -120,97 +116,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KyeAzw5dhAUK
+X-TUID: cktK8p40iV5p
 
-Create a socketpair for the console output. This should help eliminate
-race conditions around console text early in the boot process that might
-otherwise have been dropped on the floor before being able to connect to
-QEMU under "server,nowait".
-
-Signed-off-by: John Snow <jsnow@redhat.com>
----
- python/qemu/machine/machine.py | 30 +++++++++++++++++++++++++++---
- 1 file changed, 27 insertions(+), 3 deletions(-)
-
-diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
-index 26f0fb8a81..09f214c95c 100644
---- a/python/qemu/machine/machine.py
-+++ b/python/qemu/machine/machine.py
-@@ -159,6 +159,8 @@ def __init__(self,
- 
-         self._name = name or f"{id(self):x}"
-         self._sock_pair: Optional[Tuple[socket.socket, socket.socket]] = None
-+        self._cons_sock_pair: Optional[
-+            Tuple[socket.socket, socket.socket]] = None
-         self._temp_dir: Optional[str] = None
-         self._base_temp_dir = base_temp_dir
-         self._sock_dir = sock_dir
-@@ -315,8 +317,9 @@ def _base_args(self) -> List[str]:
-         for _ in range(self._console_index):
-             args.extend(['-serial', 'null'])
-         if self._console_set:
--            chardev = ('socket,id=console,path=%s,server=on,wait=off' %
--                       self._console_address)
-+            assert self._cons_sock_pair is not None
-+            fd = self._cons_sock_pair[0].fileno()
-+            chardev = f"socket,id=console,fd={fd}"
-             args.extend(['-chardev', chardev])
-             if self._console_device_type is None:
-                 args.extend(['-serial', 'chardev:console'])
-@@ -351,6 +354,10 @@ def _pre_launch(self) -> None:
-                 nickname=self._name
-             )
- 
-+        if self._console_set:
-+            self._cons_sock_pair = socket.socketpair()
-+            os.set_inheritable(self._cons_sock_pair[0].fileno(), True)
-+
-         # NOTE: Make sure any opened resources are *definitely* freed in
-         # _post_shutdown()!
-         # pylint: disable=consider-using-with
-@@ -368,6 +375,9 @@ def _pre_launch(self) -> None:
-     def _post_launch(self) -> None:
-         if self._sock_pair:
-             self._sock_pair[0].close()
-+        if self._cons_sock_pair:
-+            self._cons_sock_pair[0].close()
-+
-         if self._qmp_connection:
-             if self._sock_pair:
-                 self._qmp.connect()
-@@ -518,6 +528,11 @@ def _early_cleanup(self) -> None:
-             self._console_socket.close()
-             self._console_socket = None
- 
-+        if self._cons_sock_pair:
-+            self._cons_sock_pair[0].close()
-+            self._cons_sock_pair[1].close()
-+            self._cons_sock_pair = None
-+
-     def _hard_shutdown(self) -> None:
-         """
-         Perform early cleanup, kill the VM, and wait for it to terminate.
-@@ -878,10 +893,19 @@ def console_socket(self) -> socket.socket:
-         Returns a socket connected to the console
-         """
-         if self._console_socket is None:
-+            if not self._console_set:
-+                raise QEMUMachineError(
-+                    "Attempt to access console socket with no connection")
-+            assert self._cons_sock_pair is not None
-+            # os.dup() is used here for sock_fd because otherwise we'd
-+            # have two rich python socket objects that would each try to
-+            # close the same underlying fd when either one gets garbage
-+            # collected.
-             self._console_socket = console_socket.ConsoleSocket(
--                self._console_address,
-+                sock_fd=os.dup(self._cons_sock_pair[1].fileno()),
-                 file=self._console_log_path,
-                 drain=self._drain_console)
-+            self._cons_sock_pair[1].close()
-         return self._console_socket
- 
-     @property
--- 
-2.41.0
+Like we did for the QMP socket, use socketpair() for the console socket=0D
+so that hopefully there isn't a race condition during early boot where=0D
+data might get dropped on the floor.=0D
+=0D
+May or may not help with various race conditions where early console=0D
+output is not showing up in the logs and/or potentially being missed by=0D
+wait_for_console_pattern.=0D
+=0D
+V2:=0D
+  - Fixed some Socket ownership/garbage collection problems=0D
+  - Fixed callers of now-dropped VM arguments/properties=0D
+  - added a dedicated sock_fd arg to ConsoleSocket()=0D
+  - now using socketpair() for qtest console, too.=0D
+  - dropped sock_dir arg from *all* machine.py classes=0D
+  - Tested quite a bit more thoroughly ...=0D
+=0D
+CI: https://gitlab.com/jsnow/qemu/-/pipelines/945067498=0D
+=0D
+John Snow (6):=0D
+  python/machine: move socket setup out of _base_args property=0D
+  python/machine: close sock_pair in cleanup path=0D
+  python/console_socket: accept existing FD in initializer=0D
+  python/machine: use socketpair() for console connections=0D
+  python/machine: use socketpair() for qtest connection=0D
+  python/machine: remove unused sock_dir argument=0D
+=0D
+ python/qemu/machine/console_socket.py      | 29 ++++++++---=0D
+ python/qemu/machine/machine.py             | 58 +++++++++++++---------=0D
+ python/qemu/machine/qtest.py               | 54 +++++++++++++++-----=0D
+ tests/avocado/acpi-bits.py                 |  5 +-=0D
+ tests/avocado/avocado_qemu/__init__.py     |  2 +-=0D
+ tests/avocado/machine_aspeed.py            |  5 +-=0D
+ tests/qemu-iotests/iotests.py              |  2 +-=0D
+ tests/qemu-iotests/tests/copy-before-write |  3 +-=0D
+ 8 files changed, 104 insertions(+), 54 deletions(-)=0D
+=0D
+-- =0D
+2.41.0=0D
+=0D
 

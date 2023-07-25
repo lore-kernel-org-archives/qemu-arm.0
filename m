@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp8096ejb;
-        Tue, 25 Jul 2023 11:04:36 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlF3OCObzRfMDa/z+FccgHGa7E5DIvl3GBLxzv/GOzIbF2TKzCpsq798j8baQSwYNNKuqlnz
-X-Received: by 2002:a05:622a:1104:b0:403:b395:33e3 with SMTP id e4-20020a05622a110400b00403b39533e3mr4510309qty.52.1690308276282;
-        Tue, 25 Jul 2023 11:04:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690308276; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp8466ejb;
+        Tue, 25 Jul 2023 11:05:05 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFVHHH7qehSMW2ZBGI0/t7iIHR40qBEq8qn5ndaGBaYPC45LaqcoMekJqSx1TMepMcxqs26
+X-Received: by 2002:a05:622a:1741:b0:403:b0e7:8e22 with SMTP id l1-20020a05622a174100b00403b0e78e22mr4411804qtk.59.1690308305305;
+        Tue, 25 Jul 2023 11:05:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690308305; cv=none;
         d=google.com; s=arc-20160816;
-        b=EMWiOXPkHoZkEI4boObNMnB95JFTitZ/BW+WcsB5InPOg4stnArRTJLuejHV7NcD1u
-         JTfAta3CVQlmR5vsv6QUowNWsj0TAsfgMWP42NSchVfWiMB/rkS6MLWZNs8oXQMIzgoy
-         w1EzADkeDwkHMK88fImSmwRFgPtkXw56K/x2I+5MZMIIvvTG9TChzufqdQZflNlmatid
-         rMsbfBdWPaE2vIoStdWFs3dUfeLwGFvciOFKuLJwTITn/kNpXXpC5gPHMAsFTEFZF+yr
-         T7McHnzwo161J0KKcxSWw+FnUJn5AAVudLdGa0bcNRgxIBACTPLA9NicU7nVpIdvsZkD
-         9tlw==
+        b=NJ5j11QN8C6uPTTdwriSKeHqtrBl/eiEVicj/s77Ih2pv2df2g5MmHKWdIxBx/dDOU
+         H9B80H0EZE1q0SpFkM3JsXsGy0g62UVRnBGyr8/HZybC4+MxqO1fwqDba/0Zl8/Uhwl7
+         S1VMohaqmFAMHyWgiGvI6kVEPmmP1jwKxz/nZQ8DorwbZThICgk6SNKeIcd0qLZJ49Qp
+         o46bHQYYi3LHgZx8cLcwXiL+Kr2o6qEUwI7gceEgrpSUXzGQZOan9AVLQmIihxkVKzAQ
+         xTqiZtvoaC8bDKKsuysWf9OfeEfPW0pQ7w+aO6y8AB/1d+1odEFNUZMR+oDLdeJEkYhb
+         8WcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=wJbYzUAiuY1J+AToZ2VcL3RWzbIvIazqmZJCElkyCBk=;
+        bh=8VMLovqoYzZHjKkEoyIvN1jmOhnMPX7MkDUcSq33qDs=;
         fh=VIjqXItD7ovqYEXpyxuqPkaQsOkVw6zkSP5vf471ryI=;
-        b=pCgbDP38wmzclu55+jHmLL206LQ+HBMwDU6ustdkGcWVy/cFn7aFa12M4Jkcufgp01
-         kSV1FbKlGXjM4YfdCxq6j1hP3HxRrZZPl10/RBQ90G5RaGWjADIkGZr2FJMX9qZB19uP
-         D/dG/FTudIuLP9nVYUCJQ2lBJ5v7L8SCVkLKCpw5h5pmqkD9Zn7VuFm8TDZ6UrCqIm3f
-         B9Z36BO4E23VQmBKHdxDe2PFV4j4Ejc8jQZI0+xp9x8F+6PpJ4fwETojt7UbkKX5VJ6O
-         kHHHn91cb5nrXlh7bCtusGxCJMbvmW01XbXnK6n4sV2sCRhQbddHqAVUsZIUbyR+WZIV
-         G6mw==
+        b=Ut1RaLeiMhJ4Cmy9PH+tTIfylRG9OG2r4fo42mrOKlFmA6E5QSBX7g5rTfzJaNS4Xl
+         r2GFKO8xBdGyJ0zv3JctnxDhkh+ceeM0jgCtZ+HgZoGU5Wu7uO97/jod9v0RPtSmQovy
+         5WWmHX4ZP8VJgBBl7A1muz1R7/yvf5Wl2Y2NrEjGI6ifA1VPVGuXbcdtOHNH52qHaaTJ
+         zl1Qww7uicrb9w0+5/SUlV4Bz0d7TxMPkNsO4YTCnAhSBu73fHVQoeX0dVNfkiCERnpy
+         D8zkWOmVPLtmYvtz3CV1/0ZpChW3s+VnJLfdWcbixwXo2Rn9gcHk+biRCM0ab7qCGhLL
+         QrXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FQZHCJx4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PT1gGSN2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p16-20020a05622a13d000b00401875aea68si6897968qtk.568.2023.07.25.11.04.36
+        by mx.google.com with ESMTPS id a17-20020a05622a065100b003f38d565188si6877558qtb.654.2023.07.25.11.05.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jul 2023 11:04:36 -0700 (PDT)
+        Tue, 25 Jul 2023 11:05:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FQZHCJx4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PT1gGSN2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOMO5-0002vC-2p; Tue, 25 Jul 2023 14:03:57 -0400
+	id 1qOMNy-0002iR-Vd; Tue, 25 Jul 2023 14:03:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMO3-0002uB-JJ
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNx-0002hi-Oj
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNx-00015c-SA
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:55 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNu-00013f-0k
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690308229;
+ s=mimecast20190719; t=1690308225;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wJbYzUAiuY1J+AToZ2VcL3RWzbIvIazqmZJCElkyCBk=;
- b=FQZHCJx4DnHjKA2nUv/ajv2f9kesrE4nsLOlIx03fXO1l0Cdcn6UVTLDQ/xD0NRsxzzGes
- u4Um+oq+ToMn7jBqnK2ZPjZMxs1XJaoNi5sdjW8BX5zdbRQOWToZ3vOfVxUWxjAGM1ofhl
- Y6a3NpTqeLMxt8Pp3JQBaB95MYGB3sM=
+ bh=8VMLovqoYzZHjKkEoyIvN1jmOhnMPX7MkDUcSq33qDs=;
+ b=PT1gGSN2wxdAY2cCCwirEFxnaGEiSzrkjags8vUObLwPOc7K/lPXyGto2QEBwOx1fGCYV5
+ 5BGGPK/KBQO3wq9+NJcTuTfzMpLG51TMZ8SoRrBBmskBixg//WpyUmc5zzww6exPckD63j
+ X3264vNCJ47vgNUCKaZSbq4JcpEK8WI=
 Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-493-wfSkgp-lNLSEv-k1FSlbjg-1; Tue, 25 Jul 2023 14:03:43 -0400
-X-MC-Unique: wfSkgp-lNLSEv-k1FSlbjg-1
+ us-mta-358-aWJQLU-tOsaWKLsN1x6UYw-1; Tue, 25 Jul 2023 14:03:41 -0400
+X-MC-Unique: aWJQLU-tOsaWKLsN1x6UYw-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3102B3C11A03;
- Tue, 25 Jul 2023 18:03:43 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C8D632800171;
+ Tue, 25 Jul 2023 18:03:40 +0000 (UTC)
 Received: from scv.redhat.com (unknown [10.22.8.145])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 373411454150;
- Tue, 25 Jul 2023 18:03:42 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 316261454150;
+ Tue, 25 Jul 2023 18:03:40 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
@@ -87,15 +87,16 @@ Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Beraldo Leal <bleal@redhat.com>, Daniel Berrange <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 6/6] python/machine: remove unused sock_dir argument
-Date: Tue, 25 Jul 2023 14:03:37 -0400
-Message-ID: <20230725180337.2937292-7-jsnow@redhat.com>
+Subject: [PATCH v2 3/6] python/console_socket: accept existing FD in
+ initializer
+Date: Tue, 25 Jul 2023 14:03:34 -0400
+Message-ID: <20230725180337.2937292-4-jsnow@redhat.com>
 In-Reply-To: <20230725180337.2937292-1-jsnow@redhat.com>
 References: <20230725180337.2937292-1-jsnow@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -104,7 +105,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,195 +120,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E8BTHYbml05u
+X-TUID: oyGPqI/ziiqr
 
-By using a socketpair for all of the sockets managed by the VM class and
-its extensions, we don't need the sock_dir argument anymore, so remove
-it.
-
-We only added this argument so that we could specify a second, shorter
-temporary directory for cases where the temp/log dirs were "too long" as
-a socket name on macOS. We don't need it for this class now. In one
-case, avocado testing takes over responsibility for creating an
-appropriate sockdir.
+Useful if we want to use ConsoleSocket() for a socket created by
+socketpair().
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- python/qemu/machine/machine.py             | 18 ------------------
- python/qemu/machine/qtest.py               |  5 +----
- tests/avocado/acpi-bits.py                 |  5 +----
- tests/avocado/avocado_qemu/__init__.py     |  2 +-
- tests/avocado/machine_aspeed.py            |  5 ++++-
- tests/qemu-iotests/iotests.py              |  2 +-
- tests/qemu-iotests/tests/copy-before-write |  3 +--
- 7 files changed, 9 insertions(+), 31 deletions(-)
+ python/qemu/machine/console_socket.py | 29 +++++++++++++++++++--------
+ 1 file changed, 21 insertions(+), 8 deletions(-)
 
-diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
-index 09f214c95c..1dd2de6da8 100644
---- a/python/qemu/machine/machine.py
-+++ b/python/qemu/machine/machine.py
-@@ -127,7 +127,6 @@ def __init__(self,
-                  name: Optional[str] = None,
-                  base_temp_dir: str = "/var/tmp",
-                  monitor_address: Optional[SocketAddrT] = None,
--                 sock_dir: Optional[str] = None,
-                  drain_console: bool = False,
-                  console_log: Optional[str] = None,
-                  log_dir: Optional[str] = None,
-@@ -141,7 +140,6 @@ def __init__(self,
-         @param name: prefix for socket and log file names (default: qemu-PID)
-         @param base_temp_dir: default location where temp files are created
-         @param monitor_address: address for QMP monitor
--        @param sock_dir: where to create socket (defaults to base_temp_dir)
-         @param drain_console: (optional) True to drain console socket to buffer
-         @param console_log: (optional) path to console log file
-         @param log_dir: where to create and keep log files
-@@ -163,7 +161,6 @@ def __init__(self,
-             Tuple[socket.socket, socket.socket]] = None
-         self._temp_dir: Optional[str] = None
-         self._base_temp_dir = base_temp_dir
--        self._sock_dir = sock_dir
-         self._log_dir = log_dir
+diff --git a/python/qemu/machine/console_socket.py b/python/qemu/machine/console_socket.py
+index 4e28ba9bb2..0a4e09ffc7 100644
+--- a/python/qemu/machine/console_socket.py
++++ b/python/qemu/machine/console_socket.py
+@@ -24,19 +24,32 @@ class ConsoleSocket(socket.socket):
+     """
+     ConsoleSocket represents a socket attached to a char device.
  
-         self._monitor_address = monitor_address
-@@ -189,9 +186,6 @@ def __init__(self,
-         self._console_index = 0
-         self._console_set = False
-         self._console_device_type: Optional[str] = None
--        self._console_address = os.path.join(
--            self.sock_dir, f"{self._name}.con"
--        )
-         self._console_socket: Optional[socket.socket] = None
-         self._remove_files: List[str] = []
-         self._user_killed = False
-@@ -334,9 +328,6 @@ def args(self) -> List[str]:
-         return self._args
- 
-     def _pre_launch(self) -> None:
--        if self._console_set:
--            self._remove_files.append(self._console_address)
+-    Optionally (if drain==True), drains the socket and places the bytes
+-    into an in memory buffer for later processing.
 -
-         if self._qmp_set:
-             if self._monitor_address is None:
-                 self._sock_pair = socket.socketpair()
-@@ -918,15 +909,6 @@ def temp_dir(self) -> str:
-                                               dir=self._base_temp_dir)
-         return self._temp_dir
- 
--    @property
--    def sock_dir(self) -> str:
--        """
--        Returns the directory used for sockfiles by this machine.
--        """
--        if self._sock_dir:
--            return self._sock_dir
--        return self.temp_dir
--
-     @property
-     def log_dir(self) -> str:
-         """
-diff --git a/python/qemu/machine/qtest.py b/python/qemu/machine/qtest.py
-index 8180d3ab01..4f5ede85b2 100644
---- a/python/qemu/machine/qtest.py
-+++ b/python/qemu/machine/qtest.py
-@@ -135,17 +135,14 @@ def __init__(self,
-                  wrapper: Sequence[str] = (),
-                  name: Optional[str] = None,
-                  base_temp_dir: str = "/var/tmp",
--                 sock_dir: Optional[str] = None,
-                  qmp_timer: Optional[float] = None):
-         # pylint: disable=too-many-arguments
- 
-         if name is None:
-             name = "qemu-%d" % os.getpid()
--        if sock_dir is None:
--            sock_dir = base_temp_dir
-         super().__init__(binary, args, wrapper=wrapper, name=name,
-                          base_temp_dir=base_temp_dir,
--                         sock_dir=sock_dir, qmp_timer=qmp_timer)
-+                         qmp_timer=qmp_timer)
-         self._qtest: Optional[QEMUQtestProtocol] = None
-         self._qtest_sock_pair: Optional[
-             Tuple[socket.socket, socket.socket]] = None
-diff --git a/tests/avocado/acpi-bits.py b/tests/avocado/acpi-bits.py
-index 3ed286dcbd..bc2b29671e 100644
---- a/tests/avocado/acpi-bits.py
-+++ b/tests/avocado/acpi-bits.py
-@@ -92,17 +92,14 @@ def __init__(self,
-                  base_temp_dir: str = "/var/tmp",
-                  debugcon_log: str = "debugcon-log.txt",
-                  debugcon_addr: str = "0x403",
--                 sock_dir: Optional[str] = None,
-                  qmp_timer: Optional[float] = None):
-         # pylint: disable=too-many-arguments
- 
-         if name is None:
-             name = "qemu-bits-%d" % os.getpid()
--        if sock_dir is None:
--            sock_dir = base_temp_dir
-         super().__init__(binary, args, wrapper=wrapper, name=name,
-                          base_temp_dir=base_temp_dir,
--                         sock_dir=sock_dir, qmp_timer=qmp_timer)
-+                         qmp_timer=qmp_timer)
-         self.debugcon_log = debugcon_log
-         self.debugcon_addr = debugcon_addr
-         self.base_temp_dir = base_temp_dir
-diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
-index 33090903f1..cfdaf9dab7 100644
---- a/tests/avocado/avocado_qemu/__init__.py
-+++ b/tests/avocado/avocado_qemu/__init__.py
-@@ -322,7 +322,7 @@ def require_multiprocess(self):
-     def _new_vm(self, name, *args):
-         self._sd = tempfile.TemporaryDirectory(prefix="qemu_")
-         vm = QEMUMachine(self.qemu_bin, base_temp_dir=self.workdir,
--                         sock_dir=self._sd.name, log_dir=self.logdir)
-+                         log_dir=self.logdir)
-         self.log.debug('QEMUMachine "%s" created', name)
-         self.log.debug('QEMUMachine "%s" temp_dir: %s', name, vm.temp_dir)
-         self.log.debug('QEMUMachine "%s" log_dir: %s', name, vm.log_dir)
-diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-index 724ee72c02..3e8a3b0da7 100644
---- a/tests/avocado/machine_aspeed.py
-+++ b/tests/avocado/machine_aspeed.py
-@@ -247,7 +247,10 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
-         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-                                       algorithm='sha256')
- 
--        socket = os.path.join(self.vm.sock_dir, 'swtpm-socket')
-+        # force creation of VM object, which also defines self._sd
-+        vm = self.vm
+-    Optionally a file path can be passed in and we will also
+-    dump the characters to this file for debugging purposes.
++    :param address: An AF_UNIX path or address.
++    :param sock_fd: Optionally, an existing socket file descriptor.
++                    One of address or sock_fd must be specified.
++    :param file: Optionally, a filename to log to.
++    :param drain: Optionally, drains the socket and places the bytes
++                  into an in memory buffer for later processing.
+     """
+-    def __init__(self, address: str, file: Optional[str] = None,
++    def __init__(self,
++                 address: Optional[str] = None,
++                 sock_fd: Optional[int] = None,
++                 file: Optional[str] = None,
+                  drain: bool = False):
++        if address is None and sock_fd is None:
++            raise ValueError("one of 'address' or 'sock_fd' must be specified")
++        if address is not None and sock_fd is not None:
++            raise ValueError("can't specify both 'address' and 'sock_fd'")
 +
-+        socket = os.path.join(self._sd.name, 'swtpm-socket')
- 
-         subprocess.run(['swtpm', 'socket', '-d', '--tpm2',
-                         '--tpmstate', f'dir={self.vm.temp_dir}',
-diff --git a/tests/qemu-iotests/iotests.py b/tests/qemu-iotests/iotests.py
-index ef66fbd62b..145c682713 100644
---- a/tests/qemu-iotests/iotests.py
-+++ b/tests/qemu-iotests/iotests.py
-@@ -823,7 +823,7 @@ def __init__(self, path_suffix=''):
-         super().__init__(qemu_prog, qemu_opts, wrapper=wrapper,
-                          name=name,
-                          base_temp_dir=test_dir,
--                         sock_dir=sock_dir, qmp_timer=timer)
-+                         qmp_timer=timer)
-         self._num_drives = 0
- 
-     def _post_shutdown(self) -> None:
-diff --git a/tests/qemu-iotests/tests/copy-before-write b/tests/qemu-iotests/tests/copy-before-write
-index 2ffe092b31..d3987db942 100755
---- a/tests/qemu-iotests/tests/copy-before-write
-+++ b/tests/qemu-iotests/tests/copy-before-write
-@@ -44,8 +44,7 @@ class TestCbwError(iotests.QMPTestCase):
- 
-         opts = ['-nodefaults', '-display', 'none', '-machine', 'none']
-         self.vm = QEMUMachine(iotests.qemu_prog, opts,
--                              base_temp_dir=iotests.test_dir,
--                              sock_dir=iotests.sock_dir)
-+                              base_temp_dir=iotests.test_dir)
-         self.vm.launch()
- 
-     def do_cbw_error(self, on_cbw_error):
+         self._recv_timeout_sec = 300.0
+         self._sleep_time = 0.5
+         self._buffer: Deque[int] = deque()
+-        socket.socket.__init__(self, socket.AF_UNIX, socket.SOCK_STREAM)
+-        self.connect(address)
++        if address is not None:
++            socket.socket.__init__(self, socket.AF_UNIX, socket.SOCK_STREAM)
++            self.connect(address)
++        else:
++            assert sock_fd is not None
++            socket.socket.__init__(self, fileno=sock_fd)
+         self._logfile = None
+         if file:
+             # pylint: disable=consider-using-with
 -- 
 2.41.0
 

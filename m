@@ -1,123 +1,110 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp2746832ejb;
-        Tue, 25 Jul 2023 09:51:08 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFUJg1fSK1l28ml7QO66tHTHx4nOlE2D4dWChe/yFggAfjfxSyX8n+wctdBMG2JDAwl00Xj
-X-Received: by 2002:a05:620a:4081:b0:767:6a23:bd3f with SMTP id f1-20020a05620a408100b007676a23bd3fmr4560551qko.12.1690303868390;
-        Tue, 25 Jul 2023 09:51:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690303868; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp7671ejb;
+        Tue, 25 Jul 2023 11:03:58 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGrpEKfI6jh24JOqHBBKCoE3xR4yTEfz6W1PsP2GnR+MA3bNqzrhuStRdmvxb2LRVEBBMhA
+X-Received: by 2002:a05:6830:3a16:b0:6b8:9705:5035 with SMTP id di22-20020a0568303a1600b006b897055035mr80585otb.33.1690308238364;
+        Tue, 25 Jul 2023 11:03:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690308238; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ql5gnPK7aNWpLDuCej24eX/TdqqTPtcPpkHa018hLRR9OikqR8z61pCuG9jjL3V7o/
-         JUns6CHXb4k8MNG7uN88Vuvyy0LMQPdMGrfyI+m6NHetLOgHb9EGL+kQlQqSnS09tPBd
-         bl5ZNRlctd/XNpxhDPidPsmmuveQEjm+6aRuOteoFWivdeSxIPMf9AYo+f01ADrEOUv6
-         bTawvXbf8VK5epeySVY3/Z2U/WyBLh1tZ/9MLWe6fC45gXloCo6xvqVUVopb1Ps7NqgH
-         /phSLdXlFjaXxoV0Z81CRkSkr2smAUQ0QO9LKqTnFzcOKxnnq+eg2L436PiSo1AQDJPp
-         s1Nw==
+        b=YEjooj1KCgNpDtbw7HH0hlbIDb0Gbr4C5bUdbHGSKQtQvWH0yktqS7wSqFLfnAbWVX
+         vV+99eI6XjmjqmJq0vaUIkbdIgWtYNTKE9ZpdnrT/AY678w7g2RCh/mbwbFJKWd0XtP1
+         oR43qCjXBxE5QYE1sVNqfmClYbyxDsMPl6PRl+29M/eUEaNInY6WMw4r99s+0o3T6VKb
+         BBzpmRAxIdW6UUJrux1SN9TJ8n/KoI5PO9j9bI16lvRjKgJe9uIst86QcHAQtorwFj/+
+         IZc1b24SbYr52uQ3rGYVHO46H76nZ4PqPEnNNisNDPMH0dLajfDMfPFK/g1FMJzG/fb2
+         xOug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=UupfCeLlOPr89U4fvrUq1hDfHjr6/3EmNi9g/vK4Vt4=;
-        fh=DkG+ttxLHkcAg3VOj5E08kJzyGu+8iD4VY1SDaQScCw=;
-        b=B28wQXc8YlCyVPN3PW3B2l7UCY4rBILgGk6LsG9skgPmANbiSe7gvoqWK9mJBfC+3C
-         qf31SAqdAOem1EhVzdkYcMEPFfw3z2PIA8hkkQODII4zfRjjv7GSELsKYC81m9Gj8itI
-         czh7E1KOyUBbCjo94lAonmD1yb8UJO9RLH5We+MYRGxwe2P1S2ss/iNzOJFo+2+wdLDA
-         WW15ZVF/frFvSoahnQovz1nWYzi+G6vLCy+r4DjEXjdg6E1LFAPT3RzX3VUS2zaARFQH
-         8HckfajoqRQ778qukPDRuldBeg5xKUIdEuAQRBLbU4cFlPSAf8g/Vk5S23uelZHX+gH6
-         mcsg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=ZQEjaImajQCAJb63at6vX9mIrvur84gIvRAOOVxPJco=;
+        fh=VIjqXItD7ovqYEXpyxuqPkaQsOkVw6zkSP5vf471ryI=;
+        b=jbagOtffj9aKazWFqSZDLwN+sXGNqSZozBQmIFuMGLSzZFKY6x+l8jskSFaFiYr1n5
+         GtgoiwksGeyhttVAd9ZicYl7cWVXIZdBHSIoj417ClL++TYjj1TzzQampRhsHeBpbYaQ
+         X6QyEt2AAIrQN6CRRwog522Fw2Q9KsN0zcVaZznoS9CX1XOVtQUOKp7QhYKWlRSdTHeF
+         /BY2sw1PPIN18oLG2+j0zmjAyYtiw+nkthrYq5R+zWH6NThDaUVvfLTeAyE/9ggmmkJN
+         ZnK8crhpySwvpvJsczV8q9ZFlQt+HeRabMi31jM3Z/s2LjYwNPdRJ0HOmRfBFRv+hfd7
+         CaKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=gH9YLatV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fFpxv2v4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o188-20020a375ac5000000b00767ce3a4516si6559006qkb.105.2023.07.25.09.51.08
+        by mx.google.com with ESMTPS id m1-20020a05622a118100b004035c106304si6924240qtk.470.2023.07.25.11.03.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jul 2023 09:51:08 -0700 (PDT)
+        Tue, 25 Jul 2023 11:03:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=gH9YLatV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fFpxv2v4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOLFL-0000fK-7M; Tue, 25 Jul 2023 12:50:51 -0400
+	id 1qOMNw-0002gI-Ek; Tue, 25 Jul 2023 14:03:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qOLFJ-0000eu-Fq
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 12:50:49 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qOLFI-0001JL-0y
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 12:50:49 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-1bbc2e1c6b2so3955795ad.3
- for <qemu-arm@nongnu.org>; Tue, 25 Jul 2023 09:50:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1690303846; x=1690908646;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=UupfCeLlOPr89U4fvrUq1hDfHjr6/3EmNi9g/vK4Vt4=;
- b=gH9YLatVpoOdgD1crPaqLNzV+tYtmbgMIOHLXnkZFFe68EwzCocbjhskLMgWa67/Pe
- 5IPj8gMxfSy6TsMfoaP1PKbwT+QAQxKrSbiz3neEZMqCk+Z2gJJgvWkZ0yOcx9TV55vX
- FeMSpBbI9ogPKl/vb0turq0uXyeAGbOzBBtQ4zVkSMkyK0V/ZocATNs4j7d51PvT+zIn
- 9WFJyoSm1wC8uiRx4n5NwKO03t9ff5zuzYQ+lliIVLdmaWE7fHpMULWOOHn0vLy6jYXM
- C2ZJeeT9STFwvlUKia6aOGCdL0Bf03QorjmQYOJJhqNukzp54UcCh5DffX1OqvhqJiA2
- VzZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690303846; x=1690908646;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UupfCeLlOPr89U4fvrUq1hDfHjr6/3EmNi9g/vK4Vt4=;
- b=UcoUaQz2IBOp/wlY1V9nRtHJ86V+BqU+u6kPFm24tsEHt0ugstduIyVsxE3X+yZyJr
- R0A/lZRwy728co2X06KFUg1DwzqdfKpbNs9ZraLD5ZHd56yqO0HDDRL6gQyeYN/Yf5kJ
- VIr9GCJrKmnsy2wRtFrC9OX7lOjyPAROsRnOZGToPOd59yFk3OGOgcb3tLuwxez+mVo0
- glleaUNRCU+t0mhIFqc/3U3nwPBVFgrsa2mv3mTN/r9ASnMPTA/RF1p7HvDn+MM1ZF4d
- QPGMSDRMaJw2zYdPJwn2CjtC1S6b+GP+aql/ncBbaTvS/twiNBK9GIk/t6FH2/3g/Krb
- USqg==
-X-Gm-Message-State: ABy/qLay8J9ioQxezVgRKSEY7xDHLdSOt8R4FENQ0lMVDlSXppiWD2Ry
- BYgCrZcPm/rH+Q91I1kY7gI82g==
-X-Received: by 2002:a17:903:2342:b0:1b8:b3f9:58eb with SMTP id
- c2-20020a170903234200b001b8b3f958ebmr13680551plh.31.1690303845959; 
- Tue, 25 Jul 2023 09:50:45 -0700 (PDT)
-Received: from sunil-laptop ([106.51.190.25]) by smtp.gmail.com with ESMTPSA id
- j4-20020a170902c3c400b001aaecc0b6ffsm11318253plj.160.2023.07.25.09.50.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Jul 2023 09:50:45 -0700 (PDT)
-Date: Tue, 25 Jul 2023 22:20:36 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNu-0002fS-Ip
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNs-000138-ND
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1690308223;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ZQEjaImajQCAJb63at6vX9mIrvur84gIvRAOOVxPJco=;
+ b=fFpxv2v4UZ8Z1jhwGouGczo02G1KKb+oQ6TDkw30jVmHjNtyT8yyLjoeijmz7kM4/z0wd/
+ VaxPoW4zdDEw537RwJNHnPlV3dSN0/Ip1dzIo/gYezF2aUSztuHHaeIyRzqEVpGoyNG+L9
+ gWIeVgLSBB8RPWz+quA93NMXE9fkN0Y=
+Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-198-_dPqLpDvMYSj9nqYIl4GGQ-1; Tue, 25 Jul 2023 14:03:40 -0400
+X-MC-Unique: _dPqLpDvMYSj9nqYIl4GGQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 74B753C11A06;
+ Tue, 25 Jul 2023 18:03:39 +0000 (UTC)
+Received: from scv.redhat.com (unknown [10.22.8.145])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D17C41454150;
+ Tue, 25 Jul 2023 18:03:38 +0000 (UTC)
+From: John Snow <jsnow@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Hanna Reitz <hreitz@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, Kevin Wolf <kwolf@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Beraldo Leal <bleal@redhat.com>, Daniel Berrange <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>
-Subject: Re: [PATCH 01/10] hw/arm/virt-acpi-build.c: Move fw_cfg and virtio
- to common location
-Message-ID: <ZL/9XO47yEnaNzyN@sunil-laptop>
-References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
- <20230712163943.98994-2-sunilvl@ventanamicro.com>
- <20230724171859.212fec62@imammedo.users.ipa.redhat.com>
+ "Michael S. Tsirkin" <mst@redhat.com>, John Snow <jsnow@redhat.com>
+Subject: [PATCH v2 1/6] python/machine: move socket setup out of _base_args
+ property
+Date: Tue, 25 Jul 2023 14:03:32 -0400
+Message-ID: <20230725180337.2937292-2-jsnow@redhat.com>
+In-Reply-To: <20230725180337.2937292-1-jsnow@redhat.com>
+References: <20230725180337.2937292-1-jsnow@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230724171859.212fec62@imammedo.users.ipa.redhat.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x62d.google.com
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -133,40 +120,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2Xp5NtB00esa
+X-TUID: LnQ1b5nYfSIP
 
-On Mon, Jul 24, 2023 at 05:18:59PM +0200, Igor Mammedov wrote:
-> On Wed, 12 Jul 2023 22:09:34 +0530
-> Sunil V L <sunilvl@ventanamicro.com> wrote:
-> 
-> > The functions which add fw_cfg and virtio to DSDT are same for ARM
-> > and RISC-V. So, instead of duplicating in RISC-V, move them from
-> > hw/arm/virt-acpi-build.c to common aml-build.c.
-> > 
-> > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> > ---
-> >  hw/acpi/aml-build.c         | 41 ++++++++++++++++++++++++++++++++++++
-> >  hw/arm/virt-acpi-build.c    | 42 -------------------------------------
-> >  hw/riscv/virt-acpi-build.c  | 16 --------------
-> >  include/hw/acpi/aml-build.h |  6 ++++++
-> >  4 files changed, 47 insertions(+), 58 deletions(-)
-> > 
-> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> 
-> patch looks fine modulo,
-> I'd put these into respective device files instead of generic
-> aml-build.c which was intended for basic AML primitives
-> (it 's got polluted over time with device specific functions
-> but that's not the reason to continue doing that).
-> 
-> Also having those functions along with devices models
-> goes along with self enumerating ACPI devices (currently
-> it works for x86 PCI/ISA device but there is no reason
-> that it can't work with other types as well when
-> I get there)
-> 
-Thanks!, Igor. Let me add them to device specific files as per your
-recommendation.
+This property isn't meant to do much else besides return a list of
+strings, so move this setup back out into _pre_launch().
 
-Thanks!
-Sunil
+Signed-off-by: John Snow <jsnow@redhat.com>
+---
+ python/qemu/machine/machine.py | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
+index c16a0b6fed..8be0f684fe 100644
+--- a/python/qemu/machine/machine.py
++++ b/python/qemu/machine/machine.py
+@@ -300,9 +300,7 @@ def _base_args(self) -> List[str]:
+ 
+         if self._qmp_set:
+             if self._sock_pair:
+-                fd = self._sock_pair[0].fileno()
+-                os.set_inheritable(fd, True)
+-                moncdev = f"socket,id=mon,fd={fd}"
++                moncdev = f"socket,id=mon,fd={self._sock_pair[0].fileno()}"
+             elif isinstance(self._monitor_address, tuple):
+                 moncdev = "socket,id=mon,host={},port={}".format(
+                     *self._monitor_address
+@@ -339,6 +337,7 @@ def _pre_launch(self) -> None:
+         if self._qmp_set:
+             if self._monitor_address is None:
+                 self._sock_pair = socket.socketpair()
++                os.set_inheritable(self._sock_pair[0].fileno(), True)
+                 sock = self._sock_pair[1]
+             if isinstance(self._monitor_address, str):
+                 self._remove_files.append(self._monitor_address)
+-- 
+2.41.0
+

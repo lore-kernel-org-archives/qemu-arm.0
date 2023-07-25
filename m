@@ -1,258 +1,172 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp2737662ejb;
-        Tue, 25 Jul 2023 09:35:31 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlE32/5mzHa3sLgGZmILYoUUCeaNQ9FbWcSxWtFSxpIXsx46V128wALlC7GOOUepdc5MOXeV
-X-Received: by 2002:a17:907:2cf2:b0:99b:b398:53b6 with SMTP id hz18-20020a1709072cf200b0099bb39853b6mr2329901ejc.34.1690302931676;
-        Tue, 25 Jul 2023 09:35:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690302931; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp2746832ejb;
+        Tue, 25 Jul 2023 09:51:08 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFUJg1fSK1l28ml7QO66tHTHx4nOlE2D4dWChe/yFggAfjfxSyX8n+wctdBMG2JDAwl00Xj
+X-Received: by 2002:a05:620a:4081:b0:767:6a23:bd3f with SMTP id f1-20020a05620a408100b007676a23bd3fmr4560551qko.12.1690303868390;
+        Tue, 25 Jul 2023 09:51:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690303868; cv=none;
         d=google.com; s=arc-20160816;
-        b=IwDJa+Q0bBqxGyn9lEwa9qqtASMQRRVIxgSSIBYRAqWv8mkPvWrx8khgMIXbjwFcU7
-         wvxz9hULfc7WN7CLaKA8Md3ISMtUh+nVS4NnX5iDaoS/XL8yW8t9lMf1sLfQltu5drjp
-         CZCSK8B9zZAPmU5WxDvDO5IyoiNqL3M3gsXHQGZDSFodTRLMMeBySLF08TsWJTzDG0LG
-         k01dcpoiuuBlYJnAboVecDjh0VzkHkLHKUBocgeb1AUY0rqc1hXeaSEhHTuCbdsJ0xfG
-         i2YomTMiE6ytW3fy32VNTnWsKnATt2S1YY3EvSHU5gszQm4lqjuD3YfFIjn2oMli/b5L
-         vxkQ==
+        b=Ql5gnPK7aNWpLDuCej24eX/TdqqTPtcPpkHa018hLRR9OikqR8z61pCuG9jjL3V7o/
+         JUns6CHXb4k8MNG7uN88Vuvyy0LMQPdMGrfyI+m6NHetLOgHb9EGL+kQlQqSnS09tPBd
+         bl5ZNRlctd/XNpxhDPidPsmmuveQEjm+6aRuOteoFWivdeSxIPMf9AYo+f01ADrEOUv6
+         bTawvXbf8VK5epeySVY3/Z2U/WyBLh1tZ/9MLWe6fC45gXloCo6xvqVUVopb1Ps7NqgH
+         /phSLdXlFjaXxoV0Z81CRkSkr2smAUQ0QO9LKqTnFzcOKxnnq+eg2L436PiSo1AQDJPp
+         s1Nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=j1zn/9mZBEEPMZ3SvwwpvL0Ph7iRqIpCjYP1QEBphQc=;
-        fh=4CJZ8q5pMzcJf6onE2fZm1CE6HPV//nEyG92oR8TJ9Q=;
-        b=iCyFIgUSF/lD3Cw3a9oGAxvR5Y6aBJU2NsbYcW320wZP5nY6NjbtXD7sjsQKxS1xwc
-         keXbdnHsyYNsDtxf14VeJI9aORGhRZipSPjnMeWn5sKECHcNrRAtU1cOF2z1AxqB+235
-         Qfx9u6ecK9BDb3976x7doaVUPr/It8HbAuHMFzeHE0Iguf2CaGeIbqk8FtFcL09xXlE8
-         hOX+AI/2o92NApQ8d0qE1o3h2GYA145VhQno5399/63vQvrx36wgCaiRddYBHQsQR+tb
-         rK764bALlLfxhgBUMBBjLzvXedcDEbAz5KSDkJGd2wngfFPRKuPsRbortSrzmbYJu7Wn
-         NHMA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=UupfCeLlOPr89U4fvrUq1hDfHjr6/3EmNi9g/vK4Vt4=;
+        fh=DkG+ttxLHkcAg3VOj5E08kJzyGu+8iD4VY1SDaQScCw=;
+        b=B28wQXc8YlCyVPN3PW3B2l7UCY4rBILgGk6LsG9skgPmANbiSe7gvoqWK9mJBfC+3C
+         qf31SAqdAOem1EhVzdkYcMEPFfw3z2PIA8hkkQODII4zfRjjv7GSELsKYC81m9Gj8itI
+         czh7E1KOyUBbCjo94lAonmD1yb8UJO9RLH5We+MYRGxwe2P1S2ss/iNzOJFo+2+wdLDA
+         WW15ZVF/frFvSoahnQovz1nWYzi+G6vLCy+r4DjEXjdg6E1LFAPT3RzX3VUS2zaARFQH
+         8HckfajoqRQ778qukPDRuldBeg5xKUIdEuAQRBLbU4cFlPSAf8g/Vk5S23uelZHX+gH6
+         mcsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=e1twazjp;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id y19-20020a17090614d300b009924806cd02si7620697ejc.392.2023.07.25.09.35.31;
-        Tue, 25 Jul 2023 09:35:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=gH9YLatV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o188-20020a375ac5000000b00767ce3a4516si6559006qkb.105.2023.07.25.09.51.08
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 25 Jul 2023 09:51:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=e1twazjp;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S231145AbjGYQfa (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Tue, 25 Jul 2023 12:35:30 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:33498 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229701AbjGYQf3 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 25 Jul 2023 12:35:29 -0400
-Received: from mail-ot1-x331.google.com (mail-ot1-x331.google.com [IPv6:2607:f8b0:4864:20::331])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 7A29C10C9
-        for <kvm@vger.kernel.org>; Tue, 25 Jul 2023 09:35:28 -0700 (PDT)
-Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-6b9b89627c3so4445239a34.1
-        for <kvm@vger.kernel.org>; Tue, 25 Jul 2023 09:35:28 -0700 (PDT)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=gH9YLatV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qOLFL-0000fK-7M; Tue, 25 Jul 2023 12:50:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qOLFJ-0000eu-Fq
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 12:50:49 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qOLFI-0001JL-0y
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 12:50:49 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-1bbc2e1c6b2so3955795ad.3
+ for <qemu-arm@nongnu.org>; Tue, 25 Jul 2023 09:50:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ventanamicro.com; s=google; t=1690302928; x=1690907728;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=j1zn/9mZBEEPMZ3SvwwpvL0Ph7iRqIpCjYP1QEBphQc=;
-        b=e1twazjp0/qMRNnTvnB9YM13KEt7bqPJlbvxQjiAFAWo8WtYTAP3qF+BRKh7TD7iDk
-         WKi802bE4cymQYCrxRB/j2qBqgHPbTna7eAIV8rfdx5Jpc6EBx9zl+zW/Ff1jqGmCSlX
-         N/Pyfu8eIqER6jQqHklAvXCGtLY8gdC9ChUv5XGswA9jeLZWDAze4K0NE6u+4aaKEUA+
-         vlMoVKirBJ6SU1x6mpvkN6olqUmVCLK8p8Z5ql3BEsLz03Iwe4wg9rlIVBtNMfzgB7Cz
-         em3f/GRv5gosLnV3I8IBjQFqudfVQSqeRSkhb9Z1bhRYXEGmt3jaWmwRDq1YXYGWFUrl
-         HcTw==
+ d=ventanamicro.com; s=google; t=1690303846; x=1690908646;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=UupfCeLlOPr89U4fvrUq1hDfHjr6/3EmNi9g/vK4Vt4=;
+ b=gH9YLatVpoOdgD1crPaqLNzV+tYtmbgMIOHLXnkZFFe68EwzCocbjhskLMgWa67/Pe
+ 5IPj8gMxfSy6TsMfoaP1PKbwT+QAQxKrSbiz3neEZMqCk+Z2gJJgvWkZ0yOcx9TV55vX
+ FeMSpBbI9ogPKl/vb0turq0uXyeAGbOzBBtQ4zVkSMkyK0V/ZocATNs4j7d51PvT+zIn
+ 9WFJyoSm1wC8uiRx4n5NwKO03t9ff5zuzYQ+lliIVLdmaWE7fHpMULWOOHn0vLy6jYXM
+ C2ZJeeT9STFwvlUKia6aOGCdL0Bf03QorjmQYOJJhqNukzp54UcCh5DffX1OqvhqJiA2
+ VzZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690302928; x=1690907728;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=j1zn/9mZBEEPMZ3SvwwpvL0Ph7iRqIpCjYP1QEBphQc=;
-        b=bDFRcndhmmgpAVC+KPumPcbikI7fu50XqrVPCuwC3oy16eA/zgmPbL625NHCs9zXEx
-         +Xs/IyMzSY/oUYkWw2y3vG41bFFsPX8EXN3SH8xIzcF6GzPxY+w4NfSBipoUgcw5ZCWu
-         UZk1oXwYs0zeeDy59zvlXQxyTb5IFSNqkkkOjlwhrcuktuUOpqzxNE1lK4zej92Y38M+
-         zl1Qo/7qnWezFg7FaCGR+h4hN7hgxDu2m20U4IKs9v7V1yBlSO4vcYQ7pKRLVtavPdt3
-         6YQbFzbY/3Hw17RK7QTSNnJioMcRnEG3wABhT3dwyUAhwsp2/p/2n4VwjvTydm4NLZXs
-         XIFw==
-X-Gm-Message-State: ABy/qLbTz1vN1rZWshiE6hnOXbLjMckqysAtVO1jKwjnZGZRgUfDY6O5
-        AEryZ7AcGvESsXyZRqYk1vHwJA==
-X-Received: by 2002:a9d:66c1:0:b0:6b9:8feb:7f1e with SMTP id t1-20020a9d66c1000000b006b98feb7f1emr11464058otm.35.1690302927790;
-        Tue, 25 Jul 2023 09:35:27 -0700 (PDT)
-Received: from [192.168.68.108] (201-69-66-36.dial-up.telesp.net.br. [201.69.66.36])
-        by smtp.gmail.com with ESMTPSA id k25-20020a0568301bf900b006b8a0c7e14asm5029381otb.55.2023.07.25.09.35.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 25 Jul 2023 09:35:27 -0700 (PDT)
-Message-ID: <d06e1004-adac-8c24-167c-c87978340baa@ventanamicro.com>
-Date:   Tue, 25 Jul 2023 13:35:22 -0300
+ d=1e100.net; s=20221208; t=1690303846; x=1690908646;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=UupfCeLlOPr89U4fvrUq1hDfHjr6/3EmNi9g/vK4Vt4=;
+ b=UcoUaQz2IBOp/wlY1V9nRtHJ86V+BqU+u6kPFm24tsEHt0ugstduIyVsxE3X+yZyJr
+ R0A/lZRwy728co2X06KFUg1DwzqdfKpbNs9ZraLD5ZHd56yqO0HDDRL6gQyeYN/Yf5kJ
+ VIr9GCJrKmnsy2wRtFrC9OX7lOjyPAROsRnOZGToPOd59yFk3OGOgcb3tLuwxez+mVo0
+ glleaUNRCU+t0mhIFqc/3U3nwPBVFgrsa2mv3mTN/r9ASnMPTA/RF1p7HvDn+MM1ZF4d
+ QPGMSDRMaJw2zYdPJwn2CjtC1S6b+GP+aql/ncBbaTvS/twiNBK9GIk/t6FH2/3g/Krb
+ USqg==
+X-Gm-Message-State: ABy/qLay8J9ioQxezVgRKSEY7xDHLdSOt8R4FENQ0lMVDlSXppiWD2Ry
+ BYgCrZcPm/rH+Q91I1kY7gI82g==
+X-Received: by 2002:a17:903:2342:b0:1b8:b3f9:58eb with SMTP id
+ c2-20020a170903234200b001b8b3f958ebmr13680551plh.31.1690303845959; 
+ Tue, 25 Jul 2023 09:50:45 -0700 (PDT)
+Received: from sunil-laptop ([106.51.190.25]) by smtp.gmail.com with ESMTPSA id
+ j4-20020a170902c3c400b001aaecc0b6ffsm11318253plj.160.2023.07.25.09.50.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Jul 2023 09:50:45 -0700 (PDT)
+Date: Tue, 25 Jul 2023 22:20:36 +0530
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Andrew Jones <ajones@ventanamicro.com>,
+ Anup Patel <apatel@ventanamicro.com>
+Subject: Re: [PATCH 01/10] hw/arm/virt-acpi-build.c: Move fw_cfg and virtio
+ to common location
+Message-ID: <ZL/9XO47yEnaNzyN@sunil-laptop>
+References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
+ <20230712163943.98994-2-sunilvl@ventanamicro.com>
+ <20230724171859.212fec62@imammedo.users.ipa.redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v2] kvm: Remove KVM_CREATE_IRQCHIP support assumption
-Content-Language: en-US
-To:     Andrew Jones <ajones@ventanamicro.com>, qemu-devel@nongnu.org
-Cc:     pbonzini@redhat.com, mtosatti@redhat.com, peter.maydell@linaro.org,
-        pasic@linux.ibm.com, borntraeger@linux.ibm.com, thuth@redhat.com,
-        kvm@vger.kernel.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
-References: <20230725122601.424738-2-ajones@ventanamicro.com>
-From:   Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20230725122601.424738-2-ajones@ventanamicro.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-2.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 7Vk9YWH1ISmd
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230724171859.212fec62@imammedo.users.ipa.redhat.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2Xp5NtB00esa
 
+On Mon, Jul 24, 2023 at 05:18:59PM +0200, Igor Mammedov wrote:
+> On Wed, 12 Jul 2023 22:09:34 +0530
+> Sunil V L <sunilvl@ventanamicro.com> wrote:
+> 
+> > The functions which add fw_cfg and virtio to DSDT are same for ARM
+> > and RISC-V. So, instead of duplicating in RISC-V, move them from
+> > hw/arm/virt-acpi-build.c to common aml-build.c.
+> > 
+> > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> > ---
+> >  hw/acpi/aml-build.c         | 41 ++++++++++++++++++++++++++++++++++++
+> >  hw/arm/virt-acpi-build.c    | 42 -------------------------------------
+> >  hw/riscv/virt-acpi-build.c  | 16 --------------
+> >  include/hw/acpi/aml-build.h |  6 ++++++
+> >  4 files changed, 47 insertions(+), 58 deletions(-)
+> > 
+> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> 
+> patch looks fine modulo,
+> I'd put these into respective device files instead of generic
+> aml-build.c which was intended for basic AML primitives
+> (it 's got polluted over time with device specific functions
+> but that's not the reason to continue doing that).
+> 
+> Also having those functions along with devices models
+> goes along with self enumerating ACPI devices (currently
+> it works for x86 PCI/ISA device but there is no reason
+> that it can't work with other types as well when
+> I get there)
+> 
+Thanks!, Igor. Let me add them to device specific files as per your
+recommendation.
 
-
-On 7/25/23 09:26, Andrew Jones wrote:
-> Since Linux commit 00f918f61c56 ("RISC-V: KVM: Skeletal in-kernel AIA
-> irqchip support") checking KVM_CAP_IRQCHIP returns non-zero when the
-> RISC-V platform has AIA. The cap indicates KVM supports at least one
-> of the following ioctls:
-> 
->    KVM_CREATE_IRQCHIP
->    KVM_IRQ_LINE
->    KVM_GET_IRQCHIP
->    KVM_SET_IRQCHIP
->    KVM_GET_LAPIC
->    KVM_SET_LAPIC
-> 
-> but the cap doesn't imply that KVM must support any of those ioctls
-> in particular. However, QEMU was assuming the KVM_CREATE_IRQCHIP
-> ioctl was supported. Stop making that assumption by introducing a
-> KVM parameter that each architecture which supports KVM_CREATE_IRQCHIP
-> sets. Adding parameters isn't awesome, but given how the
-> KVM_CAP_IRQCHIP isn't very helpful on its own, we don't have a lot of
-> options.
-> 
-> Signed-off-by: Andrew Jones <ajones@ventanamicro.com>
-> ---
-
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-
-> 
-> While this fixes booting guests on riscv KVM with AIA it's unlikely
-> to get merged before the QEMU support for KVM AIA[1] lands, which
-> would also fix the issue. I think this patch is still worth considering
-> though since QEMU's assumption is wrong.
-> 
-> [1] https://lore.kernel.org/all/20230714084429.22349-1-yongxuan.wang@sifive.com/
-> 
-> v2:
->    - Move the s390x code to an s390x file. [Thomas]
->    - Drop the KVM_CAP_IRQCHIP check from the top of kvm_irqchip_create(),
->      as it's no longer necessary.
-> 
->   accel/kvm/kvm-all.c    | 16 ++++------------
->   include/sysemu/kvm.h   |  1 +
->   target/arm/kvm.c       |  3 +++
->   target/i386/kvm/kvm.c  |  2 ++
->   target/s390x/kvm/kvm.c | 11 +++++++++++
->   5 files changed, 21 insertions(+), 12 deletions(-)
-> 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index 373d876c0580..cddcb6eca641 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -86,6 +86,7 @@ struct KVMParkedVcpu {
->   };
->   
->   KVMState *kvm_state;
-> +bool kvm_has_create_irqchip;
->   bool kvm_kernel_irqchip;
->   bool kvm_split_irqchip;
->   bool kvm_async_interrupts_allowed;
-> @@ -2358,17 +2359,6 @@ static void kvm_irqchip_create(KVMState *s)
->       int ret;
->   
->       assert(s->kernel_irqchip_split != ON_OFF_AUTO_AUTO);
-> -    if (kvm_check_extension(s, KVM_CAP_IRQCHIP)) {
-> -        ;
-> -    } else if (kvm_check_extension(s, KVM_CAP_S390_IRQCHIP)) {
-> -        ret = kvm_vm_enable_cap(s, KVM_CAP_S390_IRQCHIP, 0);
-> -        if (ret < 0) {
-> -            fprintf(stderr, "Enable kernel irqchip failed: %s\n", strerror(-ret));
-> -            exit(1);
-> -        }
-> -    } else {
-> -        return;
-> -    }
->   
->       /* First probe and see if there's a arch-specific hook to create the
->        * in-kernel irqchip for us */
-> @@ -2377,8 +2367,10 @@ static void kvm_irqchip_create(KVMState *s)
->           if (s->kernel_irqchip_split == ON_OFF_AUTO_ON) {
->               error_report("Split IRQ chip mode not supported.");
->               exit(1);
-> -        } else {
-> +        } else if (kvm_has_create_irqchip) {
->               ret = kvm_vm_ioctl(s, KVM_CREATE_IRQCHIP);
-> +        } else {
-> +            return;
->           }
->       }
->       if (ret < 0) {
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index 115f0cca79d1..84b1bb3dc91e 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -32,6 +32,7 @@
->   #ifdef CONFIG_KVM_IS_POSSIBLE
->   
->   extern bool kvm_allowed;
-> +extern bool kvm_has_create_irqchip;
->   extern bool kvm_kernel_irqchip;
->   extern bool kvm_split_irqchip;
->   extern bool kvm_async_interrupts_allowed;
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index b4c7654f4980..2fa87b495d68 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -250,6 +250,9 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
->   int kvm_arch_init(MachineState *ms, KVMState *s)
->   {
->       int ret = 0;
-> +
-> +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_IRQCHIP);
-> +
->       /* For ARM interrupt delivery is always asynchronous,
->        * whether we are using an in-kernel VGIC or not.
->        */
-> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-> index ebfaf3d24c79..6363e67f092d 100644
-> --- a/target/i386/kvm/kvm.c
-> +++ b/target/i386/kvm/kvm.c
-> @@ -2771,6 +2771,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->           }
->       }
->   
-> +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_IRQCHIP);
-> +
->       return 0;
->   }
->   
-> diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
-> index a9e5880349d9..bcc735227f7d 100644
-> --- a/target/s390x/kvm/kvm.c
-> +++ b/target/s390x/kvm/kvm.c
-> @@ -391,6 +391,17 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->       }
->   
->       kvm_set_max_memslot_size(KVM_SLOT_MAX_BYTES);
-> +
-> +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_S390_IRQCHIP);
-> +    if (kvm_has_create_irqchip) {
-> +        int ret = kvm_vm_enable_cap(s, KVM_CAP_S390_IRQCHIP, 0);
-> +
-> +        if (ret < 0) {
-> +            fprintf(stderr, "Enable kernel irqchip failed: %s\n", strerror(-ret));
-> +            exit(1);
-> +        }
-> +    }
-> +
->       return 0;
->   }
->   
+Thanks!
+Sunil

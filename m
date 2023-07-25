@@ -1,78 +1,80 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp8740ejb;
-        Tue, 25 Jul 2023 11:05:27 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHdJe1ow4VvSDDicON9QZHesJ14Cy4FEDuCKHlUcv/GTI7vQ2bFlD+TwgeMZQNw4da/nvkl
-X-Received: by 2002:a25:ad27:0:b0:d17:6abc:4695 with SMTP id y39-20020a25ad27000000b00d176abc4695mr2889763ybi.62.1690308327574;
-        Tue, 25 Jul 2023 11:05:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690308327; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp8746ejb;
+        Tue, 25 Jul 2023 11:05:28 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlH266z0goAnfLiv4mU2NcgoRc+UdQDBQFjciqlvT/5ezqNEggYwTeFJxeqnWw4HpdKeAies
+X-Received: by 2002:a05:620a:2916:b0:767:11b1:de09 with SMTP id m22-20020a05620a291600b0076711b1de09mr4354954qkp.4.1690308328062;
+        Tue, 25 Jul 2023 11:05:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690308328; cv=none;
         d=google.com; s=arc-20160816;
-        b=tK8u0F1VRadGFjsv+L6cuxHglabskvrUWdG/oyiSvJLa41iVb5M7ZYU/bLoVhck/V2
-         OdIgUdlt56HWHkKRC8MXTSMG1HNfESbq4zoPhI2mWe2ZPoOfGHyTiUyMln0KHQYAI/JA
-         kYJnF2rky8aesBTH4hUMxPPEkozyUuvfqpyLDbCmEjASIrLrkm/vfBARsaeY1V7aB7cR
-         zWYHoNdhdzRqKNg7ndjH8F+XpOuzlNuQR/Hp7er+MKEsb1hDka3iWr7TWTdFJDnll9/p
-         AmQ0Nd6qo3iRZeHsBebWbM/z+TJdplW3DmQwuhZvbd57mDhYFBPPLTQhufK2mEUMoPWM
-         7yfA==
+        b=O1+BBTWui1f1dOMndzn2F3BTKmRz8tRD3caNZUNff9AB1HnEqIxdZwKbUuKwjJEOib
+         x1NXOCDLSf59/QWhpfblRdo5/e1lKOROhQON5mmNtfMLwJ+LEc44i7Kt0G6YDwHWR6VI
+         75ZgRIi8DWSs9micIa1U5U9tfl62KMqz7Ovys0TjTfgCae/8GF8nmvFKxR/RlG5LrL//
+         RJ6h5jSDxO4XcO9uq2upNiYoCDWeYadWPPujsRxJw8Kjh9Ferx84gEe8njG/BiyDO8iT
+         B7n10FjKiqSB09FSUCH9N4z3qXYJnQHyxjDIp7eiCrjpSL0KR6WZG7n/p+GxaJsGEwRC
+         LHZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9XuN+LNWkwxemHuxadKoQ4qZ4P3yeKY65rhtqX/RMqE=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=3dCGafAZC4fFvm0cUoPwpMW44ojyHkgV3OMH9yftIuw=;
         fh=VIjqXItD7ovqYEXpyxuqPkaQsOkVw6zkSP5vf471ryI=;
-        b=U0HLq61gdpH/IOCCX9qQ4VBjHVlwGajIJNNd3pZUzMcjZDViJXynqMBaZGmxXdY20Z
-         mPuYtBdmLDe83EkSxfwxNczKuyb8ZpTrddsclDW2C0VIyQCoyeRgA0VyQ2XyJY+Vnvg/
-         03uwKDgMSW9dY/MbwBQ+kUg3c7uALIndAUl5/YZhBhkxXGjDAdGECgJyMIoCMuaqcJmh
-         8C6s7gCYJw44Yd9skWTGQwG81pZ0f/jbnc/QcCHnyHJ3gna4/zcoB2b2NgyW//0fn7eI
-         JxyY30nB0CmdKEfkgAbf+ntemLA4BdSmM606SvTlXMOmpG0CZimjamzQiIP3WkqqaeJX
-         YVrQ==
+        b=DWbw0KxPfyIbH/T6kM0RNawteWoTEspZo84RE44VyfGnSE5W/A2ZU9zyjM3PkzWmUj
+         Q1LgVzRFxRIE0NAnG/iX2OZEr0Fg627lrOXZWjzRYB1iYK0ibUC7oyLbcKcmXoIHRK2X
+         sssfPuUopvTikRtwVKDUoNUsHi6cCCcbyNftOjtlORkuCQTFx+ZOH4O829wB1G41YOaB
+         ci+e7vTk8BakAyzNbgSwUDICIHXW1Z9Q3/2X0cp+kDU/EIinR+Wk7FbM3+aJhFk4NgwT
+         zFZ1gqkt1PCnnAeVlpc5FxHYYtlSRljhkb9hpe1d8kZnZNq0a9HQgazWmhWUOulC58UV
+         K3Sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RjZ6Q8mN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PXdjebhq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o4-20020ac87c44000000b00403676c96e8si7218222qtv.136.2023.07.25.11.05.27
+        by mx.google.com with ESMTPS id c25-20020a37e119000000b00761fbbb1613si6628660qkm.626.2023.07.25.11.05.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jul 2023 11:05:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Jul 2023 11:05:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RjZ6Q8mN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PXdjebhq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qOMOK-00031d-19; Tue, 25 Jul 2023 14:04:12 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qOMO3-0002uI-MU; Tue, 25 Jul 2023 14:03:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMOI-0002zv-IG
- for qemu-devel@nongnu.org; Tue, 25 Jul 2023 14:04:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMO2-0002sK-91
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMOF-00018v-Sn
- for qemu-devel@nongnu.org; Tue, 25 Jul 2023 14:04:09 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNw-00014g-1H
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690308246;
+ s=mimecast20190719; t=1690308226;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=9XuN+LNWkwxemHuxadKoQ4qZ4P3yeKY65rhtqX/RMqE=;
- b=RjZ6Q8mNYt8K/mGX0H7JSho+ctwrSCzHSTan9dfLRNsf4YRUPpmLkF98MzfOko+LznKZmF
- FvWvq9kuTfnrGq6vn+YHeb0mIr4UXw4FCVS1OsKQ1fe8CX/pX5wpQZr8/CasOTuzBH/6AL
- yYUurl9hhN368GqR5g3QZ0QkZqfD4Fk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-441-oZedKdsFMBGCjoPuuZdgGg-1; Tue, 25 Jul 2023 14:04:00 -0400
-X-MC-Unique: oZedKdsFMBGCjoPuuZdgGg-1
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3dCGafAZC4fFvm0cUoPwpMW44ojyHkgV3OMH9yftIuw=;
+ b=PXdjebhqXgIWy4uEyGkx8cBIF5upthUZ97X859QVV6DVgte1LNAW0BnEc8mLXbuoZT0COk
+ WZqvCzvnX7b2i/W3I6xTt6RLAN0eaM1FIZoZh8lSeoyquq6tYGTKChh23gWlRh2yha/cwI
+ +/zZ1lEu9au7Tq+NwBhe2lntKZ8PSrE=
+Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-48-qYXX55CzP6eu68CgZPrMyA-1; Tue, 25 Jul 2023 14:03:42 -0400
+X-MC-Unique: qYXX55CzP6eu68CgZPrMyA-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C11A2101A54E;
- Tue, 25 Jul 2023 18:03:38 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2912E280016C;
+ Tue, 25 Jul 2023 18:03:42 +0000 (UTC)
 Received: from scv.redhat.com (unknown [10.22.8.145])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B2BB21454154;
- Tue, 25 Jul 2023 18:03:37 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8739A1454150;
+ Tue, 25 Jul 2023 18:03:41 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
@@ -85,14 +87,15 @@ Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Beraldo Leal <bleal@redhat.com>, Daniel Berrange <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 0/6] python/machine: use socketpair() for console socket
-Date: Tue, 25 Jul 2023 14:03:31 -0400
-Message-ID: <20230725180337.2937292-1-jsnow@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+Subject: [PATCH v2 5/6] python/machine: use socketpair() for qtest connection
+Date: Tue, 25 Jul 2023 14:03:36 -0400
+Message-ID: <20230725180337.2937292-6-jsnow@redhat.com>
+In-Reply-To: <20230725180337.2937292-1-jsnow@redhat.com>
+References: <20230725180337.2937292-1-jsnow@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -103,58 +106,143 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cktK8p40iV5p
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qrhghWVX0Y+N
 
-Like we did for the QMP socket, use socketpair() for the console socket=0D
-so that hopefully there isn't a race condition during early boot where=0D
-data might get dropped on the floor.=0D
-=0D
-May or may not help with various race conditions where early console=0D
-output is not showing up in the logs and/or potentially being missed by=0D
-wait_for_console_pattern.=0D
-=0D
-V2:=0D
-  - Fixed some Socket ownership/garbage collection problems=0D
-  - Fixed callers of now-dropped VM arguments/properties=0D
-  - added a dedicated sock_fd arg to ConsoleSocket()=0D
-  - now using socketpair() for qtest console, too.=0D
-  - dropped sock_dir arg from *all* machine.py classes=0D
-  - Tested quite a bit more thoroughly ...=0D
-=0D
-CI: https://gitlab.com/jsnow/qemu/-/pipelines/945067498=0D
-=0D
-John Snow (6):=0D
-  python/machine: move socket setup out of _base_args property=0D
-  python/machine: close sock_pair in cleanup path=0D
-  python/console_socket: accept existing FD in initializer=0D
-  python/machine: use socketpair() for console connections=0D
-  python/machine: use socketpair() for qtest connection=0D
-  python/machine: remove unused sock_dir argument=0D
-=0D
- python/qemu/machine/console_socket.py      | 29 ++++++++---=0D
- python/qemu/machine/machine.py             | 58 +++++++++++++---------=0D
- python/qemu/machine/qtest.py               | 54 +++++++++++++++-----=0D
- tests/avocado/acpi-bits.py                 |  5 +-=0D
- tests/avocado/avocado_qemu/__init__.py     |  2 +-=0D
- tests/avocado/machine_aspeed.py            |  5 +-=0D
- tests/qemu-iotests/iotests.py              |  2 +-=0D
- tests/qemu-iotests/tests/copy-before-write |  3 +-=0D
- 8 files changed, 104 insertions(+), 54 deletions(-)=0D
-=0D
--- =0D
-2.41.0=0D
-=0D
+Like the QMP and console sockets, begin using socketpairs for the qtest
+connection, too. After this patch, we'll be able to remove the vestigial
+sock_dir argument, but that cleanup is best done in its own patch.
+
+Signed-off-by: John Snow <jsnow@redhat.com>
+---
+ python/qemu/machine/qtest.py | 49 +++++++++++++++++++++++++++++-------
+ 1 file changed, 40 insertions(+), 9 deletions(-)
+
+diff --git a/python/qemu/machine/qtest.py b/python/qemu/machine/qtest.py
+index 1c46138bd0..8180d3ab01 100644
+--- a/python/qemu/machine/qtest.py
++++ b/python/qemu/machine/qtest.py
+@@ -24,6 +24,7 @@
+     Optional,
+     Sequence,
+     TextIO,
++    Tuple,
+ )
+ 
+ from qemu.qmp import SocketAddrT
+@@ -38,23 +39,41 @@ class QEMUQtestProtocol:
+     :param address: QEMU address, can be either a unix socket path (string)
+                     or a tuple in the form ( address, port ) for a TCP
+                     connection
+-    :param server: server mode, listens on the socket (bool)
++    :param sock: An existing socket can be provided as an alternative to
++                 an address. One of address or sock must be provided.
++    :param server: server mode, listens on the socket. Only meaningful
++                   in conjunction with an address and not an existing
++                   socket.
++
+     :raise socket.error: on socket connection errors
+ 
+     .. note::
+        No connection is established by __init__(), this is done
+        by the connect() or accept() methods.
+     """
+-    def __init__(self, address: SocketAddrT,
++    def __init__(self,
++                 address: Optional[SocketAddrT] = None,
++                 sock: Optional[socket.socket] = None,
+                  server: bool = False):
++        if address is None and sock is None:
++            raise ValueError("Either 'address' or 'sock' must be specified")
++        if address is not None and sock is not None:
++            raise ValueError(
++                "Either 'address' or 'sock' must be specified, but not both")
++        if sock is not None and server:
++            raise ValueError("server=True is meaningless when passing socket")
++
+         self._address = address
+-        self._sock = self._get_sock()
++        self._sock = sock or self._get_sock()
+         self._sockfile: Optional[TextIO] = None
++
+         if server:
++            assert self._address is not None
+             self._sock.bind(self._address)
+             self._sock.listen(1)
+ 
+     def _get_sock(self) -> socket.socket:
++        assert self._address is not None
+         if isinstance(self._address, tuple):
+             family = socket.AF_INET
+         else:
+@@ -67,7 +86,8 @@ def connect(self) -> None:
+ 
+         @raise socket.error on socket connection errors
+         """
+-        self._sock.connect(self._address)
++        if self._address is not None:
++            self._sock.connect(self._address)
+         self._sockfile = self._sock.makefile(mode='r')
+ 
+     def accept(self) -> None:
+@@ -127,29 +147,40 @@ def __init__(self,
+                          base_temp_dir=base_temp_dir,
+                          sock_dir=sock_dir, qmp_timer=qmp_timer)
+         self._qtest: Optional[QEMUQtestProtocol] = None
+-        self._qtest_path = os.path.join(sock_dir, name + "-qtest.sock")
++        self._qtest_sock_pair: Optional[
++            Tuple[socket.socket, socket.socket]] = None
+ 
+     @property
+     def _base_args(self) -> List[str]:
+         args = super()._base_args
++        assert self._qtest_sock_pair is not None
++        fd = self._qtest_sock_pair[0].fileno()
+         args.extend([
+-            '-qtest', f"unix:path={self._qtest_path}",
++            '-chardev', f"socket,id=qtest,fd={fd}",
++            '-qtest', 'chardev:qtest',
+             '-accel', 'qtest'
+         ])
+         return args
+ 
+     def _pre_launch(self) -> None:
++        self._qtest_sock_pair = socket.socketpair()
++        os.set_inheritable(self._qtest_sock_pair[0].fileno(), True)
+         super()._pre_launch()
+-        self._qtest = QEMUQtestProtocol(self._qtest_path, server=True)
++        self._qtest = QEMUQtestProtocol(sock=self._qtest_sock_pair[1])
+ 
+     def _post_launch(self) -> None:
+         assert self._qtest is not None
+         super()._post_launch()
+-        self._qtest.accept()
++        if self._qtest_sock_pair:
++            self._qtest_sock_pair[0].close()
++        self._qtest.connect()
+ 
+     def _post_shutdown(self) -> None:
++        if self._qtest_sock_pair:
++            self._qtest_sock_pair[0].close()
++            self._qtest_sock_pair[1].close()
++            self._qtest_sock_pair = None
+         super()._post_shutdown()
+-        self._remove_if_exists(self._qtest_path)
+ 
+     def qtest(self, cmd: str) -> str:
+         """
+-- 
+2.41.0
 

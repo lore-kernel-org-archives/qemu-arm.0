@@ -1,114 +1,145 @@
-Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp2581872ejb;
-        Tue, 25 Jul 2023 05:46:58 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHTruhMDXmTLrHvl42L0MgTpZx0TWoaHWetLN6NM3SZHxFpzwTxFafFeAJGbUIyEwEJGEXr
-X-Received: by 2002:a17:90b:a46:b0:268:1def:221c with SMTP id gw6-20020a17090b0a4600b002681def221cmr3730767pjb.45.1690289218623;
-        Tue, 25 Jul 2023 05:46:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690289218; cv=none;
+Received: by 2002:a17:906:b78f:b0:98d:b2f5:1316 with SMTP id dt15csp2582191ejb;
+        Tue, 25 Jul 2023 05:47:37 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGyqNG8CJ+YCiga166J6HS2dvK3P46HbVgAxmn1+TC38QIXIZ8AJe3ZQwMsOQ/JxYyRUqv7
+X-Received: by 2002:ae9:df84:0:b0:768:406a:2125 with SMTP id t126-20020ae9df84000000b00768406a2125mr2332076qkf.75.1690289257342;
+        Tue, 25 Jul 2023 05:47:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690289257; cv=none;
         d=google.com; s=arc-20160816;
-        b=nt9OwrQnKvB2+Jc0J9bZWMPrm0CDez6gSF23g+miNwX1KoslX9MYh7UCo44vS5fbxd
-         0WqGv3BvbtpZ1/QNEnizOBpIAaDHKkSHBqNyKLQziyBWBGPo1xeUICLQabF+JzV3e8Nn
-         EhrqM+y0lHlwsUdlK7EZzUrPBYZ6s2+TbCi2GbXVV5CDGE9gvFENTWYqtX1GZ6rN7mrZ
-         BpXbCoBNQycTSh+Zn73pdmgnGri+/wscl2K4QLvQyQlYHNY+Ci5Z03uAcL0OtVq19jiS
-         kVAtGr0TGenU7TNxk4UDSxCHc+dw5SStCG7JvWLMr6Ko9rv+pmFDnBakOFLolkd67eWk
-         ApjA==
+        b=N66bgxEvNUdst5NW6i8pwpy+nWLoRQW7kXRhT8qTn+0vUkGdDaCqQjkXrwUrH3nvwa
+         z+y9IdHBwadrNTUE1aZNSr+9mdbRGQoFg+klwsKIVvSxa1YKooklXnvrl6ZnOldEUiTe
+         3oMa2J1YlTVtfdLltVY7Z+qZyJ8Udx8OJ6O+e8/J1IZxwTRSgBw5cK1a0LVlUn2l0VRQ
+         lCausgNK+BWK1/8evf7SNC/FE6ci6GnFLqxPDiH/V0Pr2rBTNgecNWqYQhK3/jKESPGK
+         ZzbqK+5t79syCA2mU8yyiQmsKc1PZMvyuJhMH4b76hHyXDxjE7J9PjrM2eiAcLyq8tQp
+         iCGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=vGZfR87BHs9oeqzgBVuatJQdA+4mkMBaJLIsLtfbPMk=;
-        fh=BgEVFOurhIaCJGw0LLA9XMKGy4qYyEQLO+14s97UIjM=;
-        b=t6fUSNzBcDp/iYwHcybCdDl/n0OYPEPMX79V7DBQFo64tl5PtHIlfKtbk3vdFwj7zh
-         hGPJazUu3VVpjRTxzUNIHfUC4glWVieqjGyIzAYQogttinOyZmQ3jAyegWVeez0l/hxy
-         1muJr+QkgTZPQZw//+wPXRyfBpcnQ6o5lXi9RPDBk7ucAQLmjZbgpoubLz1NkahlFNGD
-         RTWtPWio033hXzGYtPaBrP+Bh+pSBRssuuegnbPbWWVQnMRmxuGQ6co2brx7NTbj9/UX
-         on0oF9gvifP8xovSwHdaXZctsqaL8EkhppMrs7Yz15pMw8QqvATYjC78acEaGz7DUYQi
-         mGjA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=sBEuv0tCJc8eX/yOWjLEnalpSx9cpWx5eKvD+ap8VqU=;
+        fh=0M0TlrJ9fkZsL3e0wS7ddJxfdinhoqiktylMZ0kLP30=;
+        b=EijdwFuDZXyxjOTF0F8o0U3YYsq4v4LUSiUtwsul41LiX0kiwN3YLjE+yJTxxu/MfW
+         1wU0wI+HpZNvI4a+DjgjES5GIzK8lVXg/f30gm17DSgLQyHg13J5SGEtnapMpcW/MiVc
+         NlybMMAEfkCcFW/lEm+IqWcbh3z26OkXULtZyhIql+/x3Gro9lw3DlTbsVNoK568aFTW
+         8cdYN3rD9oCyHpeRxfSxQ5HQkjv6ruwmhQNn2guRCfJ205yVyPV5JUOKZi/i1I3cjKNK
+         EpypSQieR2NFgYFpOEM9/J+W/eeTyhsWRuv6+HJxp/fLVoK4Ym9H9awsUQ63XqcpArmH
+         cnMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IdvQAPz4;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id r14-20020a17090a4dce00b00268198ef8efsi4622368pjl.39.2023.07.25.05.46.58;
-        Tue, 25 Jul 2023 05:46:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B7PqaKPE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g16-20020ac87d10000000b00403d7809e5fsi6394070qtb.62.2023.07.25.05.47.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 25 Jul 2023 05:47:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IdvQAPz4;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S233456AbjGYMq5 (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Tue, 25 Jul 2023 08:46:57 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:59258 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S233555AbjGYMqu (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 25 Jul 2023 08:46:50 -0400
-Received: from mail-wm1-x332.google.com (mail-wm1-x332.google.com [IPv6:2a00:1450:4864:20::332])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 4BA5C1FC2
-        for <kvm@vger.kernel.org>; Tue, 25 Jul 2023 05:46:45 -0700 (PDT)
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-3fbef8ad9bbso55214845e9.0
-        for <kvm@vger.kernel.org>; Tue, 25 Jul 2023 05:46:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690289204; x=1690894004;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=vGZfR87BHs9oeqzgBVuatJQdA+4mkMBaJLIsLtfbPMk=;
-        b=IdvQAPz4rzNdx7OL8RFglwYMiu6cp6MbguEYYalyfgi7NSkgrAQkZpthCM0XwLInGr
-         j+/HMKAampiViKRO0eA54kSBi6rADyaLSAcZ6PIL+dZxJ1OpkBjHUXWCNlcC9x+nmf7k
-         Qe6LCbezvt4NmXC7dnEKILuHWIvd7gnimZnCPnZGJD6POnyJq3u/FOgi1lfhqFhA6M3b
-         ReDzcZ5jHHVzu6ySPu41T497968lBBU2YeIdArFulHFOzROh91lwlVqxbhVxtsw9rX9o
-         F66+lw5Q8qkCKf3OR25EyClr9Eo8QEalfqR3kYtZGGTLjwWIFXlSE5r9OPNoDGLuP2L1
-         NWug==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B7PqaKPE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qOHRe-0007gJ-SJ; Tue, 25 Jul 2023 08:47:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qOHRa-0007b3-MW
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 08:47:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qOHRY-00059d-Fs
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 08:47:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1690289230;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sBEuv0tCJc8eX/yOWjLEnalpSx9cpWx5eKvD+ap8VqU=;
+ b=B7PqaKPE05+7MjJkpjXUczoKSAQXHBa4bLE6AqzyvxxBJkep2xdVu1MySk5RpEbf6nQsXC
+ iWc5D/46G2mOmdJWWFdnzkJt6g8u41yCix3sOl/7+6aFL4ECLYB6W+u/0PVgKiyYMqJRSU
+ PpJXLwYON58x6VtOHMuRCk/H/VEpAv0=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-584-8OO5X-w_OuKqi8_F8YsS7g-1; Tue, 25 Jul 2023 08:47:09 -0400
+X-MC-Unique: 8OO5X-w_OuKqi8_F8YsS7g-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-315a03cae87so3076749f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 25 Jul 2023 05:47:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690289204; x=1690894004;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vGZfR87BHs9oeqzgBVuatJQdA+4mkMBaJLIsLtfbPMk=;
-        b=eZtBIgDK3HPeLkad5v7xCYWWt/t4Ysg7JlRCoQFVe0mYr1FTSrWzHKTbrFePpLwrsN
-         TmtcP6txBez4QT85is4twCSb+ibHnuNLqy056Yq3W1NFR8qKlpnagG709ChnzyGnHoTm
-         rHfhmRk46rm0kFNA8X2nkcRBomFHLNi/yka3p5tIR5M0fY9jEyZLlM/+p78DYnGNrZed
-         1QGJcLr0yOOuDXDA5D9LCh04G6lkHO+l9yO5SeYkNHs498hPhWrik6kF2Typyxi6ani0
-         WQqJLc8zE5lkQurSM/h9gzMKu+wPgzuQE0va5/GwVIANTb6WH+a5pNliBMi9KLOyFgXF
-         J2sg==
-X-Gm-Message-State: ABy/qLZYbulvo+kG4bw+YS31gAtNr0Bv+Y94sBKxG23ztD6RsSg+/Y7f
-        HllPTahws1Q9ei15qfeXvnkjnA==
-X-Received: by 2002:a7b:c4d8:0:b0:3fb:d1db:545b with SMTP id g24-20020a7bc4d8000000b003fbd1db545bmr10280852wmk.20.1690289204286;
-        Tue, 25 Jul 2023 05:46:44 -0700 (PDT)
-Received: from [192.168.69.115] ([176.187.203.142])
-        by smtp.gmail.com with ESMTPSA id x3-20020a05600c21c300b003fa95890484sm13210500wmj.20.2023.07.25.05.46.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 25 Jul 2023 05:46:43 -0700 (PDT)
-Message-ID: <c090e018-9761-4cc0-61ce-780ff70e318a@linaro.org>
-Date:   Tue, 25 Jul 2023 14:46:41 +0200
+ d=1e100.net; s=20221208; t=1690289228; x=1690894028;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sBEuv0tCJc8eX/yOWjLEnalpSx9cpWx5eKvD+ap8VqU=;
+ b=DkhsKe6smSkdogUlvEzrgrXK6Nl/r9k6/f5QGwlmr26JQdec1YdLt360rz+dtY3ELb
+ axMnjaboRmul6G+ljX67U1OLuKAbBWzy15NL4Lpcz4/1KLN26aRJgMGRHb1g5HM5Ohrw
+ imc+Erl8NNqcW5wzPNEbKAXtTejKYBp6VQlWoY/rZFTxZsk69lt9WLDf5ydq15kdtn1+
+ ZqzaxCJewqjMRAL4LUC8VkdphHjTtWUsWR2englsvxkfVcUR13bFpR1+VYlAWZqLv7Ci
+ OFZvrTJnYjiLMXfNduo7Ke0uj+jhjPazCAwI3ymiiOBCQ1TgeZ0zREG6jdB4MsYgH1hG
+ eLrQ==
+X-Gm-Message-State: ABy/qLYbeU5crtq5welXRh0orswAeuZa7/bn689xaZeIwgC/UjYb7m5l
+ I2il9ZzDbbjDo/RRtwyIJQyusjt5MENT1Ro1sascsI8dNpYnWRMHB5klUlSqARAHHSnXMB2Quee
+ Cu0g4AwL/m2sG
+X-Received: by 2002:a05:6000:180d:b0:317:5cfb:44c7 with SMTP id
+ m13-20020a056000180d00b003175cfb44c7mr2171610wrh.30.1690289228485; 
+ Tue, 25 Jul 2023 05:47:08 -0700 (PDT)
+X-Received: by 2002:a05:6000:180d:b0:317:5cfb:44c7 with SMTP id
+ m13-20020a056000180d00b003175cfb44c7mr2171593wrh.30.1690289228225; 
+ Tue, 25 Jul 2023 05:47:08 -0700 (PDT)
+Received: from [192.168.0.3] (ip-109-43-177-31.web.vodafone.de.
+ [109.43.177.31]) by smtp.gmail.com with ESMTPSA id
+ f12-20020a7bcc0c000000b003fc0062f0f8sm13346012wmh.9.2023.07.25.05.47.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 25 Jul 2023 05:47:07 -0700 (PDT)
+Message-ID: <c6c1e1da-f5f1-1535-9b9d-88278c050cb9@redhat.com>
+Date: Tue, 25 Jul 2023 14:47:06 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.13.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
 Subject: Re: [PATCH v2] kvm: Remove KVM_CREATE_IRQCHIP support assumption
-Content-Language: en-US
-To:     Andrew Jones <ajones@ventanamicro.com>, qemu-devel@nongnu.org
-Cc:     pbonzini@redhat.com, mtosatti@redhat.com, peter.maydell@linaro.org,
-        pasic@linux.ibm.com, borntraeger@linux.ibm.com, thuth@redhat.com,
-        dbarboza@ventanamicro.com, kvm@vger.kernel.org,
-        qemu-arm@nongnu.org, qemu-s390x@nongnu.org
+To: Andrew Jones <ajones@ventanamicro.com>, qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, mtosatti@redhat.com, peter.maydell@linaro.org,
+ pasic@linux.ibm.com, borntraeger@linux.ibm.com, dbarboza@ventanamicro.com,
+ kvm@vger.kernel.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
 References: <20230725122601.424738-2-ajones@ventanamicro.com>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
 In-Reply-To: <20230725122601.424738-2-ajones@ventanamicro.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-2.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: gUoPgZNrv9QU
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.091, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: K0RjT8f1itmR
 
-On 25/7/23 14:26, Andrew Jones wrote:
+On 25/07/2023 14.26, Andrew Jones wrote:
 > Since Linux commit 00f918f61c56 ("RISC-V: KVM: Skeletal in-kernel AIA
 > irqchip support") checking KVM_CAP_IRQCHIP returns non-zero when the
 > RISC-V platform has AIA. The cap indicates KVM supports at least one
@@ -143,12 +174,9 @@ On 25/7/23 14:26, Andrew Jones wrote:
 >    - Move the s390x code to an s390x file. [Thomas]
 >    - Drop the KVM_CAP_IRQCHIP check from the top of kvm_irqchip_create(),
 >      as it's no longer necessary.
-> 
->   accel/kvm/kvm-all.c    | 16 ++++------------
->   include/sysemu/kvm.h   |  1 +
->   target/arm/kvm.c       |  3 +++
->   target/i386/kvm/kvm.c  |  2 ++
->   target/s390x/kvm/kvm.c | 11 +++++++++++
->   5 files changed, 21 insertions(+), 12 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Looks good now!
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+

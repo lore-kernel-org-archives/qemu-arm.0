@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp7671ejb;
-        Tue, 25 Jul 2023 11:03:58 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGrpEKfI6jh24JOqHBBKCoE3xR4yTEfz6W1PsP2GnR+MA3bNqzrhuStRdmvxb2LRVEBBMhA
-X-Received: by 2002:a05:6830:3a16:b0:6b8:9705:5035 with SMTP id di22-20020a0568303a1600b006b897055035mr80585otb.33.1690308238364;
-        Tue, 25 Jul 2023 11:03:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690308238; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp8097ejb;
+        Tue, 25 Jul 2023 11:04:36 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFYGnm6MTxmAcuck7fX3v4XY1SC9Rbd5D++xa9FsaKOoFgsJuCw6lXDKn6CThzMMYFeaexC
+X-Received: by 2002:a05:6808:1719:b0:3a3:53a0:9d2 with SMTP id bc25-20020a056808171900b003a353a009d2mr15966550oib.28.1690308276328;
+        Tue, 25 Jul 2023 11:04:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690308276; cv=none;
         d=google.com; s=arc-20160816;
-        b=YEjooj1KCgNpDtbw7HH0hlbIDb0Gbr4C5bUdbHGSKQtQvWH0yktqS7wSqFLfnAbWVX
-         vV+99eI6XjmjqmJq0vaUIkbdIgWtYNTKE9ZpdnrT/AY678w7g2RCh/mbwbFJKWd0XtP1
-         oR43qCjXBxE5QYE1sVNqfmClYbyxDsMPl6PRl+29M/eUEaNInY6WMw4r99s+0o3T6VKb
-         BBzpmRAxIdW6UUJrux1SN9TJ8n/KoI5PO9j9bI16lvRjKgJe9uIst86QcHAQtorwFj/+
-         IZc1b24SbYr52uQ3rGYVHO46H76nZ4PqPEnNNisNDPMH0dLajfDMfPFK/g1FMJzG/fb2
-         xOug==
+        b=UJX1ZJBUZvLGiiPkMvw7lGwKOgsMIEm5GmGaBGYi2xZZnbnhwiFzdcFG+A4y64yIoR
+         RmW9l6HRkT8DJZnBV9tNzqdktoT5Lp7FbIRYo4JdeaaW7KHwHiz1rK32a5mMONypKQSF
+         hLPihNzWq28em0JVNoGWneSDaI32hffCAkux/1Br4cs1hwAy/CJoOzVjWwYZtiNeH2UX
+         6eHHDBvN9HuGtZfUItbrcePG+lmsuUskBaM3V8z0SLZ9A2KSmoMRB+cWDFaZ+V+6Nt/L
+         yHXKH1+djUVF40sTfo8A8bsgO6pWwAAMpLXlVA9d3MzImsq7ridbrL+8wZcLhlWtR4IT
+         /v6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ZQEjaImajQCAJb63at6vX9mIrvur84gIvRAOOVxPJco=;
+        bh=73xGUTo0c+CFrR+eQPfzhiurmcItqlpOVDJXDCWMDfY=;
         fh=VIjqXItD7ovqYEXpyxuqPkaQsOkVw6zkSP5vf471ryI=;
-        b=jbagOtffj9aKazWFqSZDLwN+sXGNqSZozBQmIFuMGLSzZFKY6x+l8jskSFaFiYr1n5
-         GtgoiwksGeyhttVAd9ZicYl7cWVXIZdBHSIoj417ClL++TYjj1TzzQampRhsHeBpbYaQ
-         X6QyEt2AAIrQN6CRRwog522Fw2Q9KsN0zcVaZznoS9CX1XOVtQUOKp7QhYKWlRSdTHeF
-         /BY2sw1PPIN18oLG2+j0zmjAyYtiw+nkthrYq5R+zWH6NThDaUVvfLTeAyE/9ggmmkJN
-         ZnK8crhpySwvpvJsczV8q9ZFlQt+HeRabMi31jM3Z/s2LjYwNPdRJ0HOmRfBFRv+hfd7
-         CaKw==
+        b=c01G8SoIXzX5etfnb1C9wEO9CNSf8dJDa6HoUtg1M9rS2Djehc+VZODq5UlfN0ZgH3
+         YR0+BoxsTpB7xhZMcQbPrER5t4U4KuBkqrI2yltfbF383GWwgAAnj0uL6fSyUqQLK+oa
+         VkHsu6QdSQDCZ8K9MorN+iVsAA14d2TxULbZI/Rzm+9GwscS4P/XRXV6DSdgyMnbdGMR
+         pT+zvonRkpVufinFlaj3COGLw/cYVKuZB6ZSIcQ8NpmPpwj3jYmbW+9nTklgceM2ivNB
+         uDMO/oaezxgv7E4tlE4KZ2VhvMyf4Du9AMQMnxKyft/MMjR0wafVQg4E2ZUFcgPQEopK
+         4Mpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fFpxv2v4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MLBJUu8g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m1-20020a05622a118100b004035c106304si6924240qtk.470.2023.07.25.11.03.58
+        by mx.google.com with ESMTPS id x22-20020a0cb216000000b0063020a21b9csi6867278qvd.271.2023.07.25.11.04.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jul 2023 11:03:58 -0700 (PDT)
+        Tue, 25 Jul 2023 11:04:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fFpxv2v4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MLBJUu8g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOMNw-0002gI-Ek; Tue, 25 Jul 2023 14:03:48 -0400
+	id 1qOMNy-0002i2-AC; Tue, 25 Jul 2023 14:03:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNu-0002fS-Ip
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNw-0002gS-SY
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNs-000138-ND
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:46 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qOMNt-00013Y-R8
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 14:03:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690308223;
+ s=mimecast20190719; t=1690308225;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZQEjaImajQCAJb63at6vX9mIrvur84gIvRAOOVxPJco=;
- b=fFpxv2v4UZ8Z1jhwGouGczo02G1KKb+oQ6TDkw30jVmHjNtyT8yyLjoeijmz7kM4/z0wd/
- VaxPoW4zdDEw537RwJNHnPlV3dSN0/Ip1dzIo/gYezF2aUSztuHHaeIyRzqEVpGoyNG+L9
- gWIeVgLSBB8RPWz+quA93NMXE9fkN0Y=
-Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-198-_dPqLpDvMYSj9nqYIl4GGQ-1; Tue, 25 Jul 2023 14:03:40 -0400
-X-MC-Unique: _dPqLpDvMYSj9nqYIl4GGQ-1
+ bh=73xGUTo0c+CFrR+eQPfzhiurmcItqlpOVDJXDCWMDfY=;
+ b=MLBJUu8gRmevEFsGBri6fVn79tB4PxrYTrgySLZUHJ3iGxMVppQotJrkEHa757M0zebVn4
+ 3ynr0kDNwBGF4QOkdM1qLbNRaZNKYLSTuzc7aaKrcLI83tzFXVZ7H2RH3vlcx+RWRT9NAo
+ TMBmzcryZisFrqd5DRawKlBDBii09KU=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-249-26lMDEY0MN2ChhVuVYL3LQ-1; Tue, 25 Jul 2023 14:03:40 -0400
+X-MC-Unique: 26lMDEY0MN2ChhVuVYL3LQ-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 74B753C11A06;
- Tue, 25 Jul 2023 18:03:39 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 24290856F66;
+ Tue, 25 Jul 2023 18:03:40 +0000 (UTC)
 Received: from scv.redhat.com (unknown [10.22.8.145])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D17C41454150;
- Tue, 25 Jul 2023 18:03:38 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 825BC1454153;
+ Tue, 25 Jul 2023 18:03:39 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
@@ -87,16 +87,15 @@ Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Beraldo Leal <bleal@redhat.com>, Daniel Berrange <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 1/6] python/machine: move socket setup out of _base_args
- property
-Date: Tue, 25 Jul 2023 14:03:32 -0400
-Message-ID: <20230725180337.2937292-2-jsnow@redhat.com>
+Subject: [PATCH v2 2/6] python/machine: close sock_pair in cleanup path
+Date: Tue, 25 Jul 2023 14:03:33 -0400
+Message-ID: <20230725180337.2937292-3-jsnow@redhat.com>
 In-Reply-To: <20230725180337.2937292-1-jsnow@redhat.com>
 References: <20230725180337.2937292-1-jsnow@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -120,39 +119,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LnQ1b5nYfSIP
+X-TUID: jYkgDbdGM5rk
 
-This property isn't meant to do much else besides return a list of
-strings, so move this setup back out into _pre_launch().
+If everything has gone smoothly, we'll already have closed the socket we
+gave to the child during post_launch. The other half of the pair that we
+gave to the QMP connection should, likewise, be definitively closed by
+now.
+
+However, in the cleanup path, it's possible we've created the socketpair
+but flubbed the launch and need to clean up resources. These resources
+*would* be handled by the garbage collector, but that can happen at
+unpredictable times. Nicer to just clean them up synchronously on the
+exit path, here.
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- python/qemu/machine/machine.py | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ python/qemu/machine/machine.py | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
-index c16a0b6fed..8be0f684fe 100644
+index 8be0f684fe..26f0fb8a81 100644
 --- a/python/qemu/machine/machine.py
 +++ b/python/qemu/machine/machine.py
-@@ -300,9 +300,7 @@ def _base_args(self) -> List[str]:
+@@ -395,6 +395,11 @@ def _post_shutdown(self) -> None:
+         finally:
+             assert self._qmp_connection is None
  
-         if self._qmp_set:
-             if self._sock_pair:
--                fd = self._sock_pair[0].fileno()
--                os.set_inheritable(fd, True)
--                moncdev = f"socket,id=mon,fd={fd}"
-+                moncdev = f"socket,id=mon,fd={self._sock_pair[0].fileno()}"
-             elif isinstance(self._monitor_address, tuple):
-                 moncdev = "socket,id=mon,host={},port={}".format(
-                     *self._monitor_address
-@@ -339,6 +337,7 @@ def _pre_launch(self) -> None:
-         if self._qmp_set:
-             if self._monitor_address is None:
-                 self._sock_pair = socket.socketpair()
-+                os.set_inheritable(self._sock_pair[0].fileno(), True)
-                 sock = self._sock_pair[1]
-             if isinstance(self._monitor_address, str):
-                 self._remove_files.append(self._monitor_address)
++        if self._sock_pair:
++            self._sock_pair[0].close()
++            self._sock_pair[1].close()
++            self._sock_pair = None
++
+         self._close_qemu_log_file()
+ 
+         self._load_io_log()
 -- 
 2.41.0
 

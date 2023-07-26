@@ -1,101 +1,101 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp574954ejb;
-        Wed, 26 Jul 2023 07:10:12 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHASxmTSiiuExVSs5C/fkWYJHRy+ef7qfOvsYrx2jqQHHzxeVAfty8eME70CG/76uL1Gl2t
-X-Received: by 2002:a05:622a:1a13:b0:403:3ccc:39d3 with SMTP id f19-20020a05622a1a1300b004033ccc39d3mr2793510qtb.61.1690380612003;
-        Wed, 26 Jul 2023 07:10:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690380611; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp575410ejb;
+        Wed, 26 Jul 2023 07:10:46 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHSl8SbCMjITVaC7jBLEB7ewGP1d0bKgAr+fO7X3xHR2bDZGDBdLGGuGBwkmRktSX/0grs5
+X-Received: by 2002:a05:622a:180d:b0:400:8e9d:106a with SMTP id t13-20020a05622a180d00b004008e9d106amr2770436qtc.45.1690380646579;
+        Wed, 26 Jul 2023 07:10:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690380646; cv=none;
         d=google.com; s=arc-20160816;
-        b=xReyWbLr/SvLNsKN9/xn4YtPI9v1ox67iRGezBaPtjWfODOtCKqC7lGrw9ElOin3eo
-         8cOyovTh8fKLFcMs/wBmo80xR17o3jbtWG4RERe5wtOS/oX+Bo854Eo/gQknI2rMQ3mj
-         Z8S14ygsO7I68nb8yE5C0+xTaX4AyJDdAodVTktOUjgxh5tNVSXv5LE9n/tPk5St4X1H
-         BTxoiTM+5BxhTE75SblmRHNof11os0HdYXXtAAuBDRBuSOf6OiD97EXK5eP+aY8c0Ev9
-         EAiH2FBu0fMYWi4jTeoANNSxj3RDK1C14qTXH7zQ3bHRO3JIAc2UW+QlyE6AAEaO1Hoc
-         snTg==
+        b=A+81JzykTorD6k+BayExxCSlNvYh8Y7beC9gbmFeC4WqSYkDd5l0uyXpIk5I2hC5Fx
+         HvPXZxBBKCZwpkhVRK33nC2YPKdAYDr5O7kvWuCGFyzD5gd48wvpy/GposMyMBqeNxmr
+         TjspJ8Ok0Dt+T3cC/FDc4H7Q+0h9e374NjIIU7tn8qIsWDrVcO6Yt1Jw00doOX1haqz8
+         yX8KmFKyefBA+PiO+u4EfUwjfMLeG+Vt+nKqzWzLerFe5NjJn0a+Bf2KRRRb/AloRvNu
+         xGamJ9vvoIoMIqpaciyctr4vk3lEM01cEhA5JTFmxY8fAT/Jht+C5pT0mMHS1VzzuAH4
+         hx7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=AAaTzsuNoadCwImdM4uSLApmeXLeM35QxijtwxeAkTk=;
+        bh=/8TXbdqkkjhJHoVaXuhrzNVLx0BsIskBc09ZcYShoto=;
         fh=f5jt6gD4kTKAQV2ukO6ZfXPs+EJm4Q1+uDtHV6gcJRE=;
-        b=hEb/k6iqJxUmr5n6JN5hWunKomyIlDrOYOUd/wuyDyXIxJ/J9QI1x6oN8l7ounMK0e
-         dvpr7OyJBzRShyIVNe0NxgZNwxjd+VvkGZDxjKndBcYFvE8Lm9gg02KsY3O8baxMVVTh
-         FpLF2Duvhd6wHHtLUHAgmmSxy7MloO4ZMX9YkfAUMJ2hjch4U9gJ6c27l5CAz1okr923
-         m4wG5DTB8oXzFQt5fNlgS+Toyd67/718b7B15TUn6wXhEnH+FD1ge7pZHlReUURtBDe1
-         LXiSlBuW97PLEyZyYpZ4lyuq0APcNMw2Xd248KKeCS8WR33NvBp3iAHoENMPZ2/tt/of
-         LQHQ==
+        b=RzT78GseDV+dyGs6puzdpVJmi9Jc6OdgDyW7h4xqFt+6sjNsjJpklIHwx15rqQl4wz
+         PhH+mElDjiyWd1eG0dxmwC2A7GcJHqQSgWuCmYD4HkR5jZKYJ9bDbfrk2ExyzL1uRcR8
+         uqADaHCh87TXdqPU6zpdJL+pKLWSv902L535mNa2Lv52FOikTL4D+VhG4KcXJTHK7EpF
+         bIye+ZhbCT97GFOMhgIV+gwcNVtpYH06EaOqDjLxb8Gt0vXkz6ORp/p6hv61qRTHWrUU
+         etB6CL04a9y6vbFraXsLFEa62HdKjjUqT4B+x7TwB9ky9JteVl6UBOJm7vaut5q2weWr
+         KjXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b="XhP/xRXO";
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=SGPuunAT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n6-20020ac85b46000000b0040696bcc9f5si4663686qtw.281.2023.07.26.07.10.11
+        by mx.google.com with ESMTPS id i14-20020ac85c0e000000b004055a9783c2si5429530qti.495.2023.07.26.07.10.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jul 2023 07:10:11 -0700 (PDT)
+        Wed, 26 Jul 2023 07:10:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b="XhP/xRXO";
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=SGPuunAT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qOeWx-00039H-9Z; Wed, 26 Jul 2023 09:26:19 -0400
+	id 1qOeWx-00039c-Cf; Wed, 26 Jul 2023 09:26:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWk-0002vM-Af; Wed, 26 Jul 2023 09:26:07 -0400
+ id 1qOeWr-00034A-89; Wed, 26 Jul 2023 09:26:13 -0400
 Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWe-0003QZ-Sw; Wed, 26 Jul 2023 09:26:03 -0400
+ id 1qOeWo-0003WY-HX; Wed, 26 Jul 2023 09:26:12 -0400
 Received: by mail-lf1-x133.google.com with SMTP id
- 2adb3069b0e04-4fe1344b707so774769e87.1; 
- Wed, 26 Jul 2023 06:25:59 -0700 (PDT)
+ 2adb3069b0e04-4fb7dc16ff0so10519212e87.2; 
+ Wed, 26 Jul 2023 06:26:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1690377958; x=1690982758;
+ d=gmail.com; s=20221208; t=1690377967; x=1690982767;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AAaTzsuNoadCwImdM4uSLApmeXLeM35QxijtwxeAkTk=;
- b=XhP/xRXOQA3kqZ7ADi7VxaAQdoeb8XmEQGlrwW/JI0wAs3BTFFp6BYCJ0TKMWO+8E1
- mNFHJojHCGG9dUbWry4gMEBTT6+Uxhe47kP6/WwplTd4bi6ycXl/JwARm10CUN/JWLWR
- I5pIcHRq2NIkudA6RlYt9GABnCNHIbrbQZDfa53JzG2QkooZUIz4+DogX71ozzWZmnxB
- GG7/WglJOVNC7X+KhVN7rlzS/A1NGB12dk8Vi5zPqMs9TQ5NAgsz7uxj2H5/jBuKF+To
- qjNsJZbL6Im2/7xIXCq5pz4ix6TduXnBa0l1MZiCOMAR+mkE/7N8TwnH+nAqOVAt6e7U
- EL1w==
+ bh=/8TXbdqkkjhJHoVaXuhrzNVLx0BsIskBc09ZcYShoto=;
+ b=SGPuunAT98eoytvmUohHah72R2diMYey3cV9i4Tg4ai/TrcqkC42xq5SeouicfMdV7
+ OmepWWXuB+2AboO+Ug4ub+ekr2lu8NkbZJ7YlOJHmDRZcMxirqcf8YFjQ8q0yA2fP9Dz
+ Ari2vC1h8cXTR4cdcPt+nARamIQ+UCFqFoWE3tm4du+NYQQ3JNhETbl+dsH54chcXvhr
+ RG3HCo+Bl2tjo7up6jF1dZYjQjXUxqTYa/Z6HWLDXkF2jCC5DGGx4nXZAP5PBOlps25A
+ L4a4cWkoJt/N8qhgmQFyrkw7JsVOI0NSovKvvadIdHTkrlYWp2lhBtdg9JxXkfmwrbt+
+ P+GA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690377958; x=1690982758;
+ d=1e100.net; s=20221208; t=1690377967; x=1690982767;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AAaTzsuNoadCwImdM4uSLApmeXLeM35QxijtwxeAkTk=;
- b=EQogJnCQ0ffDe0Fv9g9Sn5SOahhoKOWq5HA6uAvNLKfKlc0N3NUbrWP1SzOhT19gNT
- QU5zzrPPJeQr3CtMH/qTtA/2QEUt03B7vg5LSpOaOdi6VV5QGoXSCKGEmR/7TmEOtzji
- y/YzWAXpWamJKeT7yq4fPvKDfkLzid9UvydoJkxEBnTqWXEQk+jU+mfp4X63Ldp2xnCh
- DGO9phcta1t8Rkxttxjzjb1oPdvAzklUTVHNQEIAfpSyzr2n9GYsUeGDJdjrDDZv1cC0
- wyZeLQRXjoiIMDi9a4AaiyYR96S8iB1nz5HwQxVQJdIO3zXHd637O8wV5g29Byd0nXrN
- C8nA==
-X-Gm-Message-State: ABy/qLYBXjUdpfg2GfUt6LzXrJXYL6x3iIX9TU6e6FumpvJzlBs01vva
- 46rmp5H0ACz9DzZAp90JEbq3RXI5uzM=
-X-Received: by 2002:a19:8c08:0:b0:4fb:9e1a:e592 with SMTP id
- o8-20020a198c08000000b004fb9e1ae592mr1334019lfd.4.1690377957933; 
- Wed, 26 Jul 2023 06:25:57 -0700 (PDT)
+ bh=/8TXbdqkkjhJHoVaXuhrzNVLx0BsIskBc09ZcYShoto=;
+ b=Tsdodj46uxUY7VPnGqPSG/z+SJHCOsvmh796PQ62FI411pnPvIUHtGRGmIoDnIhrxh
+ cx2+x5cySeRRDKjC6yrRaQCV1nnl37Tqb6JIiwY12V2v19yvz0JKCZ7Tdpp18bxIV3d7
+ XmIIcJuE2DhyfXcBvogLyXjXETSVPDOPnjHfoYoI2tbXJfvuPd0m/CZr3HpPRUNv9m8r
+ UcnZRL4s8k2ZJOVKgZLfiONXpMcfFYlaN75vjvSJbq7szAsT8taEqWTnNWUihwp+EkMq
+ G9U/KpBqUqcLA1o7ffX1gHV/UQJkB6d2YoAGg7PKiIfpTGs96l/13Pbq3B7DrAOGK3wu
+ 0cJQ==
+X-Gm-Message-State: ABy/qLafO7HlRGarAWouzJnWhORs5bzbmKxer2FXXkODQCLF6/XUIgZS
+ 4N+EyOrTO4jG1X0NnuVuhOh4UyiH7TY=
+X-Received: by 2002:ac2:5e2f:0:b0:4fb:caed:95c3 with SMTP id
+ o15-20020ac25e2f000000b004fbcaed95c3mr1536670lfg.53.1690377967396; 
+ Wed, 26 Jul 2023 06:26:07 -0700 (PDT)
 Received: from sergevik-thinkpad.localdomain ([213.197.136.186])
  by smtp.gmail.com with ESMTPSA id
- j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.56
+ j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.26.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Jul 2023 06:25:57 -0700 (PDT)
+ Wed, 26 Jul 2023 06:26:07 -0700 (PDT)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 32/44] Enable BCM2838 GENET controller
-Date: Wed, 26 Jul 2023 16:25:00 +0300
-Message-Id: <20230726132512.149618-33-sergey.kambalin@auriga.com>
+Subject: [PATCH 40/44] Add mailbox property tests. Part 1
+Date: Wed, 26 Jul 2023 16:25:08 +0300
+Message-Id: <20230726132512.149618-41-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
@@ -124,97 +124,213 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ckAuCNkAZpFi
+X-TUID: HyHTqRFzV2xz
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/bcm2838_peripherals.c         | 16 ++++++++++++++++
- hw/arm/raspi4b.c                     | 17 -----------------
- include/hw/arm/bcm2838_peripherals.h |  2 ++
- 3 files changed, 18 insertions(+), 17 deletions(-)
+ tests/qtest/bcm2838-mbox-property-test.c | 179 +++++++++++++++++++++++
+ tests/qtest/meson.build                  |   2 +-
+ 2 files changed, 180 insertions(+), 1 deletion(-)
+ create mode 100644 tests/qtest/bcm2838-mbox-property-test.c
 
-diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-index 60ed535673..e4ad8927fc 100644
---- a/hw/arm/bcm2838_peripherals.c
-+++ b/hw/arm/bcm2838_peripherals.c
-@@ -47,6 +47,15 @@ static void bcm2838_peripherals_init(Object *obj)
-     object_initialize_child(obj, "pcie-host", &s->pcie_host,
-                             TYPE_BCM2838_PCIE_HOST);
- 
-+    /* Gigabit Ethernet */
-+    object_initialize_child(obj, "genet", &s->genet, TYPE_BCM2838_GENET);
-+    for (int i = 0; i < nb_nics; i++) {
-+        if ((nd_table[i].used && nd_table[i].model) && !strcmp(nd_table[i].model, "bcmgenet")) {
-+            qdev_set_nic_properties(DEVICE(&s->genet), &nd_table[i]);
-+            break;
-+        }
-+    }
+diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
+new file mode 100644
+index 0000000000..ac173ed3ff
+--- /dev/null
++++ b/tests/qtest/bcm2838-mbox-property-test.c
+@@ -0,0 +1,179 @@
++/*
++ * Tests set for BCM2838 mailbox property interface.
++ *
++ * Copyright (c) 2022 Auriga
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
 +
-     /* Extended Mass Media Controller 2 */
-     object_initialize_child(obj, "emmc2", &s->emmc2, TYPE_SYSBUS_SDHCI);
- 
-@@ -227,6 +236,13 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-     memory_region_add_subregion(get_system_memory(), PCIE_MMIO_ARM_OFFSET,
-                                 &s->pcie_mmio_alias);
- 
-+    /* Gigabit Ethernet */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->genet), errp)) {
-+        return;
-+    }
-+    regs_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->genet), 0);
-+    memory_region_add_subregion(&s->peri_low_mr, GENET_OFFSET, regs_mr);
++#include "qemu/osdep.h"
++#include "libqtest-single.h"
++#include "bcm2838-mailbox.h"
 +
-     create_unimp(s_base, &s->clkisp, "bcm2835-clkisp", CLOCK_ISP_OFFSET,
-                  CLOCK_ISP_SIZE);
- 
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index c7fdf791d5..9a35e939f6 100644
---- a/hw/arm/raspi4b.c
-+++ b/hw/arm/raspi4b.c
-@@ -63,23 +63,6 @@ static int raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
- 
- static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
- {
--
--    /* Temporary disable following devices until they are implemented*/
--    const char *to_be_removed_from_dt_as_wa[] = {
--        "brcm,bcm2711-genet-v5",
--    };
--
--    for (int i = 0; i < ARRAY_SIZE(to_be_removed_from_dt_as_wa); i++) {
--        const char *dev_str = to_be_removed_from_dt_as_wa[i];
--
--        int offset = fdt_node_offset_by_compatible(fdt, -1, dev_str);
--        if (offset >= 0) {
--            if (!fdt_nop_node(fdt, offset)) {
--                warn_report("bcm2711 dtc: %s has been disabled!", dev_str);
--            }
--        }
--    }
--
-     uint64_t ram_size = board_ram_size(info->board_id);
- 
-     if (ram_size > UPPER_RAM_BASE) {
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index be4fc20f11..2cd405efc8 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -13,6 +13,7 @@
- #include "hw/misc/bcm2838_rng200.h"
- #include "hw/misc/bcm2838_thermal.h"
- #include "hw/arm/bcm2838_pcie.h"
-+#include "hw/net/bcm2838_genet.h"
- #include "hw/sd/sdhci.h"
- #include "hw/gpio/bcm2838_gpio.h"
- 
-@@ -75,6 +76,7 @@ struct BCM2838PeripheralState {
-     UnimplementedDeviceState clkisp;
-     BCM2838PcieHostState pcie_host;
-     BCM2838GpioState gpio;
-+    BCM2838GenetState genet;
- 
-     OrIRQState mmc_irq_orgate;
-     OrIRQState dma_7_8_irq_orgate;
++#define MBOX_TEST_MESSAGE_ADDRESS 0x10000000
++
++#define TEST_TAG(x) TAG_ ## x
++#define TEST_TAG_TYPE(x) TAG_##x##_t
++
++#define TEST_FN_NAME(test, subtest) \
++    test ## _ ## subtest ## _test
++
++#define SETUP_FN_NAME(test, subtest) \
++    test ## _ ## subtest ## _setup
++
++#define CHECK_FN_NAME(test, subtest) \
++    test ## _ ## subtest ## _spec_check
++
++#define DECLARE_TEST_CASE_SETUP(testname, ...)              \
++    void SETUP_FN_NAME(testname, __VA_ARGS__)               \
++                             (TEST_TAG_TYPE(testname) * tag)
++
++/*----------------------------------------------------------------------------*/
++#define DECLARE_TEST_CASE(testname, ...)                                       \
++    __attribute__((weak))                                                      \
++    void SETUP_FN_NAME(testname, __VA_ARGS__)                                  \
++                      (TEST_TAG_TYPE(testname) * tag);                         \
++    static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
++                             (TEST_TAG_TYPE(testname) *tag);                   \
++    static void TEST_FN_NAME(testname, __VA_ARGS__)(void) {                    \
++        struct {                                                               \
++            MboxBufHeader header;                                              \
++            TEST_TAG_TYPE(testname) tag;                                       \
++            uint32_t end_tag;                                                  \
++        } mailbox_buffer = { 0 };                                              \
++                                                                               \
++        QTestState *qts = qtest_init("-machine raspi4b2g");                    \
++                                                                               \
++        mailbox_buffer.header.size = sizeof(mailbox_buffer);                   \
++        mailbox_buffer.header.req_resp_code = MBOX_PROCESS_REQUEST;            \
++                                                                               \
++        mailbox_buffer.tag.id = TEST_TAG(testname);                            \
++        mailbox_buffer.tag.value_buffer_size = MAX(                            \
++            sizeof(mailbox_buffer.tag.request.value),                          \
++            sizeof(mailbox_buffer.tag.response.value));                        \
++        mailbox_buffer.tag.request.zero = 0;                                   \
++                                                                               \
++        mailbox_buffer.end_tag = TAG_END;                                      \
++                                                                               \
++        if (SETUP_FN_NAME(testname, __VA_ARGS__)) {                            \
++            SETUP_FN_NAME(testname, __VA_ARGS__)(&mailbox_buffer.tag);         \
++        }                                                                      \
++                                                                               \
++        qtest_memwrite(qts, MBOX_TEST_MESSAGE_ADDRESS,                         \
++                    &mailbox_buffer, sizeof(mailbox_buffer));                  \
++        qtest_mbox1_write_message(qts, MBOX_CHANNEL_ID_PROPERTY,               \
++                            MBOX_TEST_MESSAGE_ADDRESS);                        \
++                                                                               \
++        qtest_mbox0_read_message(qts, MBOX_CHANNEL_ID_PROPERTY,                \
++                            &mailbox_buffer, sizeof(mailbox_buffer));          \
++                                                                               \
++        g_assert_cmphex(mailbox_buffer.header.req_resp_code, ==, MBOX_SUCCESS);\
++                                                                               \
++        g_assert_cmphex(mailbox_buffer.tag.id, ==, TEST_TAG(testname));        \
++        g_assert_cmpint(mailbox_buffer.tag.response.size, ==,                  \
++                    sizeof(mailbox_buffer.tag.response.value));                \
++        g_assert_cmpint(mailbox_buffer.tag.response.success, ==, 1);           \
++                                                                               \
++        CHECK_FN_NAME(testname, __VA_ARGS__)(&mailbox_buffer.tag);             \
++                                                                               \
++        qtest_quit(qts);                                                       \
++    }                                                                          \
++    static void CHECK_FN_NAME(testname, __VA_ARGS__)                           \
++                             (TEST_TAG_TYPE(testname) * tag)
++
++/*----------------------------------------------------------------------------*/
++
++#define QTEST_ADD_TEST_CASE(testname, ...)                                     \
++    qtest_add_func(stringify(/bcm2838/mbox/property/                           \
++                   TEST_FN_NAME(testname, __VA_ARGS__)-test),                  \
++                   TEST_FN_NAME(testname, __VA_ARGS__))
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_FIRMWARE_REVISION) {
++    g_assert_cmpint(tag->response.value.revision, ==, FIRMWARE_REVISION);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_BOARD_REVISION) {
++    g_assert_cmpint(tag->response.value.revision, ==, BOARD_REVISION);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_ARM_MEMORY) {
++    g_assert_cmphex(tag->response.value.base, ==, ARM_MEMORY_BASE);
++    g_assert_cmphex(tag->response.value.size, ==, ARM_MEMORY_SIZE);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_VC_MEMORY) {
++    g_assert_cmphex(tag->response.value.base, ==, VC_MEMORY_BASE);
++    g_assert_cmphex(tag->response.value.size, ==, VC_MEMORY_SIZE);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_DEVICE_POWER_STATE) {
++    g_assert_cmphex(tag->response.value.device_id, ==, DEVICE_ID_UART0);
++    g_assert_cmpint(tag->response.value.enabled, ==, 1);
++    g_assert_cmpint(tag->response.value.wait, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(SET_DEVICE_POWER_STATE) {
++    tag->request.value.device_id = DEVICE_ID_UART0;
++    tag->request.value.enabled = 1;
++    tag->request.value.wait = 1;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_STATE) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_CORE);
++    g_assert_cmphex(tag->response.value.enabled, ==, 1);
++    g_assert_cmphex(tag->response.value.not_present, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_STATE) {
++   tag->request.value.clock_id = CLOCK_ID_CORE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_CLOCK_RATE, EMMC) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_EMMC);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_EMMC);
++}
++DECLARE_TEST_CASE_SETUP(GET_CLOCK_RATE, EMMC) {
++    tag->request.value.clock_id = CLOCK_ID_EMMC;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_EMMC);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_EMMC);
++}
++DECLARE_TEST_CASE_SETUP(GET_MAX_CLOCK_RATE, EMMC) {
++    tag->request.value.clock_id = CLOCK_ID_EMMC;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC) {
++    g_assert_cmphex(tag->response.value.clock_id, ==, CLOCK_ID_EMMC);
++    g_assert_cmphex(tag->response.value.rate, ==, CLOCK_RATE_EMMC);
++}
++DECLARE_TEST_CASE_SETUP(GET_MIN_CLOCK_RATE, EMMC) {
++    tag->request.value.clock_id = CLOCK_ID_EMMC;
++}
++
++/*----------------------------------------------------------------------------*/
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    QTEST_ADD_TEST_CASE(GET_FIRMWARE_REVISION);
++    QTEST_ADD_TEST_CASE(GET_BOARD_REVISION);
++    QTEST_ADD_TEST_CASE(GET_ARM_MEMORY);
++    QTEST_ADD_TEST_CASE(GET_VC_MEMORY);
++    QTEST_ADD_TEST_CASE(SET_DEVICE_POWER_STATE);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_STATE);
++    QTEST_ADD_TEST_CASE(GET_CLOCK_RATE, EMMC);
++    QTEST_ADD_TEST_CASE(GET_MAX_CLOCK_RATE, EMMC);
++    QTEST_ADD_TEST_CASE(GET_MIN_CLOCK_RATE, EMMC);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 61e9aab835..91393fcbd9 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -217,7 +217,7 @@ qtests_aarch64 = \
+     ['tpm-tis-device-test', 'tpm-tis-device-swtpm-test'] : []) +                                         \
+   (config_all_devices.has_key('CONFIG_XLNX_ZYNQMP_ARM') ? ['xlnx-can-test', 'fuzz-xlnx-dp-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_XLNX_VERSAL') ? ['xlnx-canfd-test'] : []) + \
+-  (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test'] : []) +  \
++  (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test', 'bcm2838-mbox-property-test'] : []) +  \
+   (config_all.has_key('CONFIG_TCG') and                                            \
+    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+   ['arm-cpu-features',
 -- 
 2.34.1
 

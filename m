@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp265946ejb;
-        Tue, 25 Jul 2023 20:32:58 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlExRoPuaZD51Ud9YUQkLrKPC6ZcNPFzsnXqemhlH0/9lkZlnkbWm88MCwFG4GISRt4VpFin
-X-Received: by 2002:ac8:5785:0:b0:403:b9ea:7b82 with SMTP id v5-20020ac85785000000b00403b9ea7b82mr998868qta.29.1690342378347;
-        Tue, 25 Jul 2023 20:32:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690342378; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp266048ejb;
+        Tue, 25 Jul 2023 20:33:16 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEH1k2RnRaW3qNeNwtaiIHZQig9A+x+c3EQh8S9+sA0Ig5VZhWlHG6R7+ydvPtdd41uwJtF
+X-Received: by 2002:a05:620a:1a22:b0:768:1f57:5bc with SMTP id bk34-20020a05620a1a2200b007681f5705bcmr912178qkb.51.1690342396431;
+        Tue, 25 Jul 2023 20:33:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690342396; cv=none;
         d=google.com; s=arc-20160816;
-        b=AdUteCQ1EV0htudH8MIpY+vVhZOGAQGZh7ESeYEZ/oyOoR553cE0tFKXjE8lqAKnAC
-         hj+K8gGBDnKjU/kkRFv0d5hYj9WjPFHSaIXFW/6RPusmnVx0SCzmY5bAt75DIVnYYIsD
-         6EQqeyWoz4OHnGZsFuN0Iq6Y9OrThEtaL3Q8jxHhpGWJAGHBlfdBIDFOvBEHz+FwU3Q3
-         s9hdhe1GT2DO1GOnZdmqJLkGwcQzQrr/DlNu3spgJrOWthT468KyQTo98xSK7BmHYEld
-         EHjtpYrfyaYNdU7WjBkvU0Libv9xRf71P9wf3yl9slWiiUHUNNGffyk9BGwVVfRtHtNL
-         qlTg==
+        b=miE5meAqNHm4udcAz+Ed6udbZZ8oj28du6+GOy1b/tW93pEqn4xGKs8eeWz3IGgjPx
+         9w/3D0X2mhOZart3Mppa8zy1viVENBTmfn0gt9NtS40tSeTt2MnsrQ0I1q8bk9ENaanT
+         0hTruW3x59R9BPXMbJx1PLVIW0cx8N54+Mi1xDOBE1t1lsohoLvo7IHf4gOIxpl/gVIA
+         Vm7gPVSTyn+/GVTWlq7zuVOFxbCO2gH9F0iGsD5tXsEpS3ohiDBgKgAVzWCpgNm1Dki8
+         I0I7ylE6aTyso5pmD0fHpcAzpOgdrHJs8l2iiJHkhEIn8xtKYw5ORurHA9x+fGkw7mU3
+         gfwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:feedback-id:references:in-reply-to:message-id:subject
          :cc:from:to:dkim-signature:date;
-        bh=CYxoj1AwwohRjVj/umFNzIRU2yOes9wWnbtuyhtBtvs=;
+        bh=+u4hReE1HgN+L3e9IZjGDlx7yBSheJRATufqrFnZkUo=;
         fh=51RBXPp2dGsIxW/A/2XX6J9OY4lNIg77Uvb7eAIehHk=;
-        b=dq/mW5gB+4bz5uEy5OOxahppImGdKKJHDvchEvzmlx+tNAWSgg/oxnV5bUwuj25pA7
-         IpZGV0S4KcxNpMGbGUiv5518uOJeDcGpJqjsgQU1iUtx1wkiCXgQNQ1tk0C2YQTIoyxE
-         RromOo5WrLFIqfe1FC9c2tBNPks9wMNmAUJVdAwAA7YUkR4/NCd7k2S6lmF9g9i+htvQ
-         jE9Wwmkt1117m9IICJuSvW78hO1ZGAP84ozEd30lxOWzeKUTBRgMJl5WawAUQdR3AweZ
-         IIGomNouznPm+WOyNnV9LdZzpzmPko1e4X7g9EBmNaL3yi9QZqaHhIV5b0OW3CIrhGvU
-         suEQ==
+        b=Qk5sFfqPkF3ZPLAGWBTlPlYhuzGoci9H+tKbjlPSuDbeKL8FDj5DeGAq4arLPpDpV8
+         3cHp9OdWmDnjOXkCQW59tZT+Be6rSVsT9gHM/71sAOCjqfOqmq5Ba9eyIaUtnuJBYjqv
+         0uL9wqoAty2POAo6L2wyYPm6D0HtYH9cbxElQtk9SYEY4WAinxycKcptQ9IqMfe/TqcF
+         QaM2VVLznof4ZC/ZuS/Ko9QVBw30jW36PcqrmTuUyROl2FZ0izpM0Xyb/19rylAYNyxx
+         vluVFVGhNWserjmFDvuaIyPvnVEMrGJML2GJXwHuALXvAZKU+2oRA74Cda1pZx4bu1iL
+         ZivQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=3rQrH1JR;
+       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=Lb9zVSPl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=laplante.io
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u12-20020ac858cc000000b00403cecf15c5si7572617qta.329.2023.07.25.20.32.58
+        by mx.google.com with ESMTPS id dl1-20020a05620a1d0100b00767e68138fasi7556714qkb.692.2023.07.25.20.33.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jul 2023 20:32:58 -0700 (PDT)
+        Tue, 25 Jul 2023 20:33:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=3rQrH1JR;
+       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=Lb9zVSPl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=laplante.io
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOVG4-0005Mu-MK; Tue, 25 Jul 2023 23:32:16 -0400
+	id 1qOVGT-0005Uv-H3; Tue, 25 Jul 2023 23:32:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chris@laplante.io>)
- id 1qOVG2-0005MJ-JL; Tue, 25 Jul 2023 23:32:14 -0400
-Received: from mail-40136.proton.ch ([185.70.40.136])
+ id 1qOVGS-0005UZ-I5; Tue, 25 Jul 2023 23:32:40 -0400
+Received: from mail-4323.proton.ch ([185.70.43.23])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chris@laplante.io>)
- id 1qOVG0-0006Qw-Qx; Tue, 25 Jul 2023 23:32:14 -0400
-Date: Wed, 26 Jul 2023 03:31:51 +0000
+ id 1qOVGQ-0007el-Mg; Tue, 25 Jul 2023 23:32:40 -0400
+Date: Wed, 26 Jul 2023 03:32:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=laplante.io;
- s=protonmail3; t=1690342322; x=1690601522;
- bh=CYxoj1AwwohRjVj/umFNzIRU2yOes9wWnbtuyhtBtvs=;
+ s=protonmail3; t=1690342356; x=1690601556;
+ bh=+u4hReE1HgN+L3e9IZjGDlx7yBSheJRATufqrFnZkUo=;
  h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
  Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
  Message-ID:BIMI-Selector;
- b=3rQrH1JRxpN/n3XGP+TAvZcWuLa8MzgTzVY+rpDoauM6WVuZ1al1V/BPAxlSUZP0W
- WI8A4QaSiBbMAZdOtk2Nd1Ehh7oTa4TkUPHRJD+SoNpPmF9Xsi6zlROxAhy5ffr4BL
- BGdHkAEuGO2VM5qczoGxq0Mru7GjaPb4Cd8i9ucDYaGYynUGRMIe0Ye+ymdN4VbEKS
- jWcZ5ciEhLXWwO1sEzoNgsYOKi45hrjlSGiHzaOm5UtNrKoun4hizY9+EgDhR8qzJ1
- saaQkQF/EBqWeN1LYhJRCoqOK6as/F9g3/ZNQUrmx9WBWYgXn4YWXP4+srRb9Grm0/
- EQKvxRMkeXagA==
+ b=Lb9zVSPlbAfonms12OjHRKO9w1+s48tJzsOFNGYs5zx+kLSpkNSLDd/XFRL4S6H/8
+ IU/7P5uAGOeIxwSgcUz/AXiiASlxRkPSWUsfPHxXZLKjN1OpCpiwzIXQys9emLWUR3
+ hb29xnFBveA03ghqPXVmqvScTauRLuMMo3xqTO4ueq/gEy67pC9YdxtXHPBOlZa+tS
+ /FrnfU2aoRHZGBc07z5men9ypjkBIqF9L86VOUCh78Q1tVozRe3Tb7XQjo1+rCrEo3
+ 2/aJJOCby2NAPiqvFX0PMGcRd/Xpy+DOkx6UHwUzz0lf6cKAku5eYOw52EgFsuVzmS
+ wtCUc/p6BIZeg==
 To: qemu-devel@nongnu.org
 From: Chris Laplante <chris@laplante.io>
 Cc: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Chris Laplante <chris@laplante.io>
-Subject: [PATCH v2 1/6] hw/gpio/nrf51: implement DETECT signal
-Message-ID: <20230726030450.757462-2-chris@laplante.io>
+Subject: [PATCH v2 4/6] qtest: bail from irq_intercept_in if name is specified
+Message-ID: <20230726030450.757462-5-chris@laplante.io>
 In-Reply-To: <20230726030450.757462-1-chris@laplante.io>
 References: <20230726030450.757462-1-chris@laplante.io>
 Feedback-ID: 43500449:user:proton
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=185.70.40.136; envelope-from=chris@laplante.io;
- helo=mail-40136.proton.ch
+Received-SPF: pass client-ip=185.70.43.23; envelope-from=chris@laplante.io;
+ helo=mail-4323.proton.ch
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,80 +99,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vTFrTDIx0eNq
+X-TUID: iKas7M+u5wcM
 
-Implement nRF51 DETECT signal in the GPIO peripheral.
-
-The reference manual makes mention of a per-pin DETECT signal, but these
-are not exposed to the user. See https://devzone.nordicsemi.com/f/nordic-q-=
-a/39858/gpio-per-pin-detect-signal-available
-for more information. Currently, I don't see a reason to model these.
+Named interception of in-GPIOs is not supported yet.
 
 Signed-off-by: Chris Laplante <chris@laplante.io>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/gpio/nrf51_gpio.c         | 14 +++++++++++++-
- include/hw/gpio/nrf51_gpio.h |  1 +
- 2 files changed, 14 insertions(+), 1 deletion(-)
+ softmmu/qtest.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/hw/gpio/nrf51_gpio.c b/hw/gpio/nrf51_gpio.c
-index b47fddf4ed..08396c69a4 100644
---- a/hw/gpio/nrf51_gpio.c
-+++ b/hw/gpio/nrf51_gpio.c
-@@ -78,6 +78,7 @@ static void update_state(NRF51GPIOState *s)
-     int pull;
-     size_t i;
-     bool connected_out, dir, connected_in, out, in, input;
-+    bool assert_detect =3D false;
-=20
-     for (i =3D 0; i < NRF51_GPIO_PINS; i++) {
-         pull =3D pull_value(s->cnf[i]);
-@@ -99,7 +100,15 @@ static void update_state(NRF51GPIOState *s)
-                 qemu_log_mask(LOG_GUEST_ERROR,
-                               "GPIO pin %zu short circuited\n", i);
-             }
--            if (!connected_in) {
-+            if (connected_in) {
-+                uint32_t detect_config =3D extract32(s->cnf[i], 16, 2);
-+                if ((detect_config =3D=3D 2) && (in =3D=3D 1)) {
-+                    assert_detect =3D true;
-+                }
-+                if ((detect_config =3D=3D 3) && (in =3D=3D 0)) {
-+                    assert_detect =3D true;
-+                }
-+            } else {
-                 /*
-                  * Floating input: the output stimulates IN if connected,
-                  * otherwise pull-up/pull-down resistors put a value on bo=
-th
-@@ -116,6 +125,8 @@ static void update_state(NRF51GPIOState *s)
+diff --git a/softmmu/qtest.c b/softmmu/qtest.c
+index 7fd8546ed2..1719bbddc3 100644
+--- a/softmmu/qtest.c
++++ b/softmmu/qtest.c
+@@ -410,6 +410,12 @@ static void qtest_process_command(CharBackend *chr, gc=
+har **words)
+             return;
          }
-         update_output_irq(s, i, connected_out, out);
-     }
+=20
++        if (is_named && !is_outbound) {
++            qtest_send_prefix(chr);
++            qtest_send(chr, "FAIL Interception of named in-GPIOs not yet s=
+upported\n");
++            return;
++        }
 +
-+    qemu_set_irq(s->detect, assert_detect);
- }
+         if (irq_intercept_dev) {
+             qtest_send_prefix(chr);
+             if (irq_intercept_dev !=3D dev) {
+@@ -421,7 +427,6 @@ static void qtest_process_command(CharBackend *chr, gch=
+ar **words)
+         }
 =20
- /*
-@@ -291,6 +302,7 @@ static void nrf51_gpio_init(Object *obj)
-=20
-     qdev_init_gpio_in(DEVICE(s), nrf51_gpio_set, NRF51_GPIO_PINS);
-     qdev_init_gpio_out(DEVICE(s), s->output, NRF51_GPIO_PINS);
-+    qdev_init_gpio_out_named(DEVICE(s), &s->detect, "detect", 1);
- }
-=20
- static void nrf51_gpio_class_init(ObjectClass *klass, void *data)
-diff --git a/include/hw/gpio/nrf51_gpio.h b/include/hw/gpio/nrf51_gpio.h
-index 8f9c2f86da..fcfa2bac17 100644
---- a/include/hw/gpio/nrf51_gpio.h
-+++ b/include/hw/gpio/nrf51_gpio.h
-@@ -64,6 +64,7 @@ struct NRF51GPIOState {
-     uint32_t old_out_connected;
-=20
-     qemu_irq output[NRF51_GPIO_PINS];
-+    qemu_irq detect;
- };
-=20
-=20
+         QLIST_FOREACH(ngl, &dev->gpios, node) {
+-            /* We don't support inbound interception of named GPIOs yet */
+             if (is_outbound) {
+                 if (is_named) {
+                     if (ngl->name && strcmp(ngl->name, words[2]) =3D=3D 0)=
+ {
 --=20
 2.41.0
 

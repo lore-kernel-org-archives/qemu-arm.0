@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp585669ejb;
-        Wed, 26 Jul 2023 07:24:52 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFBlbtEY2YgxG4nDgdSFyocw9arpoHC6v5pPj0O9uziyrV2ht6XwEZ/2LEUUieH5/V2WF1o
-X-Received: by 2002:a67:f54f:0:b0:440:cde6:b37e with SMTP id z15-20020a67f54f000000b00440cde6b37emr1107109vsn.33.1690381492460;
-        Wed, 26 Jul 2023 07:24:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690381492; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp585674ejb;
+        Wed, 26 Jul 2023 07:24:53 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlG3Ru0w+2HQ964kkh9MX0mmWBx4CXvLfloGaI8RVQjZaHsjBBf8eoUAB1C4aBTx1iWHzg2h
+X-Received: by 2002:a05:620a:2892:b0:767:ae40:1cae with SMTP id j18-20020a05620a289200b00767ae401caemr2391161qkp.7.1690381493328;
+        Wed, 26 Jul 2023 07:24:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690381493; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zzb4PXLr44Rm7rIpxDSvOytHUqNjJCt7WIMk6EA3L5EJZMekd8vszTjmjmlzPjmFCh
-         iigmuw3+COT2Z0ti4wTQ3MDRqjTDu8IiGMeMu+aq/wZ7eghkWlomIijPhT/yZOlKeqhR
-         hXqIsaztA8tIHi4MWIcSPLqE/ba1c8Iyhtsz+BrGGKcZpXXwsOUx4NDviI1nvAgQO4z6
-         7GXvGA3z0/hhXzXFTz0IV5mAsishOIC1ts9EIcamG7PnFQbsN+2Nk4Afi5hrcxYYeh19
-         Mqvv3a3/7IcbBs35BMGeLFYey3Fpk0bRUGKbHMzndnTsNchjt1NuBaaJozKDWh2mXICx
-         Pe6Q==
+        b=hZIIe16RWSQUHy2T043aeavpv7TdBRkiscHZbXRZDcLuBhwuYdRrnhsBFfG+CUjg7N
+         ZfxZ+Ne/9ou4OHcgpUUnLEEVktNyDymZ346jnV27ugKhR1ZRp+Kq5AmHyI4pcqfS5MC0
+         Mkwwp9Vvhr/oMppetQoGrV+rAoI5LTKa7YeSo4Jv21fI5sKrg77WZmHfKRtU59t7gv6N
+         UKeX4rCMK+KB0YikfahIC0Ls83H7nl9z0uHfoWom/jgCyOWcUnDOKGprbJAJwNcfOHKl
+         YF+5zfmnH/gRxYVsIu5Os1hPIkbh3PeiuyMBCKNNkzhRDWGGdEUjvQp0R8GFtuOjH+RG
+         uRyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=qZ8mQb2fwd3M0PxPOmfQ9zLHyNEYGhredwUsDYKTh9Q=;
+        bh=XMoLRrEeP6GlGwybUlQhvlY7X2S+PocFu4C8n4ArlZc=;
         fh=f5jt6gD4kTKAQV2ukO6ZfXPs+EJm4Q1+uDtHV6gcJRE=;
-        b=iKhvuj26RIHong2DN1vIJxcVC+C4J9uAI1uZNptfW8mwW/PFnNprOnDMMMBZ6np5K4
-         5FfmULddVbvudB1xe8U6wdfobdOLzZIGdY8rgX1vVqnrbDPhJeWrmc4A3UeGQHly/i4K
-         DT7VorTUP0YryoondP8qI6aEAjMpmcMFeUaBw2K5rorSmb6MfKQpouq0AJrgJOJorMl6
-         TcS+w2A3Z9XTTdTTuZIsL/hYQWq70+YA+/CoODG6dHCRt+MinT3YGtO8EE/ws3AFI+Xe
-         lh1JQytgpC2O9KY++GrHydOu0pLOVEgkn2CQmJhLviKsSPvoTu244QMRPRvvE8Z6xwW6
-         /0Sg==
+        b=hrhzicun05ayF1y4a0xAXETSY/oOMXJ3eT614JCvHPlNnsON+uyadazCfrRr+/29zr
+         hUFC8b5NOA+tRhtPMRHI9uQh+BvcwBU+OJyINkJa3DrNJRCdm9SiczinKljNPQl8hWUk
+         QW9mldFVwAbRUBbrwhkwRbF+tPsu06XVrXCr9ye5dxVXupA8sq+jXBmIrzEE8re7ZYEV
+         Jgk0jH9kln/JEim0mQtcXorS3jydYYsDZ94TNLbPhJBZod+z5Pjm0Sibm8QGxEQXHo6v
+         Qgmi4yin43h4dlu093k9tKT/f2+gZkzKF8bHwf+Mhfit70t5O9XcVaebzCsxhrdoT3HT
+         KE5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=DeiG0qtX;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=U3PNjKp5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j3-20020a05620a410300b0076718f8724asi8337022qko.310.2023.07.26.07.24.52
+        by mx.google.com with ESMTPS id y13-20020a05620a25cd00b00763a90661a1si8089283qko.516.2023.07.26.07.24.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jul 2023 07:24:52 -0700 (PDT)
+        Wed, 26 Jul 2023 07:24:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=DeiG0qtX;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=U3PNjKp5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOeXQ-0003IO-9w; Wed, 26 Jul 2023 09:26:48 -0400
+	id 1qOeWw-00038u-Tq; Wed, 26 Jul 2023 09:26:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWt-00037B-IT; Wed, 26 Jul 2023 09:26:15 -0400
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+ id 1qOeWk-0002vN-Cb; Wed, 26 Jul 2023 09:26:07 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWr-0003Yi-CM; Wed, 26 Jul 2023 09:26:15 -0400
-Received: by mail-lf1-x133.google.com with SMTP id
- 2adb3069b0e04-4fb7373dd35so1271996e87.1; 
- Wed, 26 Jul 2023 06:26:12 -0700 (PDT)
+ id 1qOeWe-0003Pc-Sw; Wed, 26 Jul 2023 09:26:04 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-4fe0d5f719dso1787928e87.2; 
+ Wed, 26 Jul 2023 06:25:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1690377971; x=1690982771;
+ d=gmail.com; s=20221208; t=1690377957; x=1690982757;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=qZ8mQb2fwd3M0PxPOmfQ9zLHyNEYGhredwUsDYKTh9Q=;
- b=DeiG0qtXzx1cnHACWBWSLkFbRrmqGcNF6UKBFkM4o74ylBatMNSLFne0NgVAsnQZMI
- SZbn/9YN53dKHb9BKtnTDKRyHGh5P5hjGZzFx2Ic3hyPLq9hfHeQymnPQYGUcDJnM69z
- iasrUTKsq6YvEWnjCQncXOfxtCOkqVd1pBsYyZGIcovXd35nflMrJloDtj5LaWLpy4kQ
- zlmWpVWOvC8NN4Tx6gXQOtXNNB5I8eEOeXkf4n4xA5FhaQbCGFMRMU9d9mDei5Jm+ejj
- c/o6ryfcDhGG+WlMPNs8STultpYkY83DGIxEQyZT+jSGp00YS0cdzMlDHGIsgvZkmyUP
- IjxA==
+ bh=XMoLRrEeP6GlGwybUlQhvlY7X2S+PocFu4C8n4ArlZc=;
+ b=U3PNjKp5S3bnGbOX1XHBxBHmIDdOJn5bh5RNTnPEzVXOtgX5IFSeKKiIm6vRBK0nQs
+ 2C2jF5he+BA1Wn/fVBGcKebO15Hi+TxFuzDBb91/mwChftuGwg6sbVDp7tSQYgSPaQxN
+ YXCwWbb2qj+J0m9/v1Hv+kyC3kEFOwb5v5B80dEHidcEBzw2sbKgYB/nRjF7kdFf4KDo
+ ktgA6L/fX2ha1MPiLzO0bSZhy1IIbiEwPHP1dP8cBpZNOwE+tacxJymQXExKvWXOpZS9
+ zmIix3OIoDlSUvTVSTBHRkPfvo+NjhI0ell6znkl34njXbsQNgDw1iRD/fwdFdmnPEA5
+ +OeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690377971; x=1690982771;
+ d=1e100.net; s=20221208; t=1690377957; x=1690982757;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=qZ8mQb2fwd3M0PxPOmfQ9zLHyNEYGhredwUsDYKTh9Q=;
- b=UBX31SnllhXZZlcbWOT3c4WB2oZG1cyIRzUfd1BM9sTZxAzGrNJBJmXUFex7cI4Py4
- tbF8zXmMVcolOk+Ln/ehL0IKMYbL+s6hEkJ+J71FGVksS/VMw8ARFXvFsYzcp8RjLCdS
- Eft57IRP3VFLYCvQT543ZnSSf1IRjf3kznlS/7AyY53cRRmdoHkEkgKhqt2B9u2XFol9
- tnsS4dvLzoTm3b2j1Gsvk/BuO0Okdyzz6X1l+ceZ9cjZu7O2tGUXvCXx473r7I6xzg0j
- 7B0Tkj7rFY8KKu0Mcycmh8tX4kCvRjTJMlIQ93HsjcZruUWzpU7Ltyc+oiD/HEDBpQqj
- 5TQQ==
-X-Gm-Message-State: ABy/qLYGWeH4V5m3t183AAKSi5c4vQlfa8qh1oa216KRZti90JreC3Y3
- +3pJZuVQJ8JEv0fdUXw2r/rz5Wxa60M=
-X-Received: by 2002:a05:6512:224a:b0:4fe:6ff:dfba with SMTP id
- i10-20020a056512224a00b004fe06ffdfbamr1626141lfu.1.1690377970884; 
- Wed, 26 Jul 2023 06:26:10 -0700 (PDT)
+ bh=XMoLRrEeP6GlGwybUlQhvlY7X2S+PocFu4C8n4ArlZc=;
+ b=ZbgOF/CemjC50m3lArks76fCwv6mA9vNTDNDWkRA1YkepHC0aL9iV8WRb2tExhAYZr
+ 6PIeJ0JSwSqtS1pAk4mDoBfAcdfB983IufJi++qkcmu44HkvYA3QaUVq42nzTYKfI3DD
+ ZnGN2E6O99RuqT+XzlLB/IC8oaS5N/cIhVB1/HiyMv6wMKJkkE5fp1a7aC1k0CGmy6qk
+ pi/p8QDPH8hRsR/yCmnhT6LIIW1F6WXsAj+/U4QPT2sbPA1+kJ/EIx2rJwNub9IP4szK
+ YQgnBpDFPe92ZXs0EGw9Ch3Y7zBeS9C/jGHgz9xD+a7tKaw7hN3pTZY9BC5GfPk+i374
+ Dy6w==
+X-Gm-Message-State: ABy/qLa0TcWpO9yMboZEfOKhZIWoM2BszNBN/oyILfNId760qB6OtAW0
+ TbY54OrCP4xeX21v9uJv3x+KbvzQPy8=
+X-Received: by 2002:ac2:52a6:0:b0:4fb:911b:4e19 with SMTP id
+ r6-20020ac252a6000000b004fb911b4e19mr1311212lfm.35.1690377956683; 
+ Wed, 26 Jul 2023 06:25:56 -0700 (PDT)
 Received: from sergevik-thinkpad.localdomain ([213.197.136.186])
  by smtp.gmail.com with ESMTPSA id
- j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.26.09
+ j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Jul 2023 06:26:10 -0700 (PDT)
+ Wed, 26 Jul 2023 06:25:56 -0700 (PDT)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 43/44] Add missed BCM2835 properties
-Date: Wed, 26 Jul 2023 16:25:11 +0300
-Message-Id: <20230726132512.149618-44-sergey.kambalin@auriga.com>
+Subject: [PATCH 31/44] Impl GENET RX path
+Date: Wed, 26 Jul 2023 16:24:59 +0300
+Message-Id: <20230726132512.149618-32-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::133;
- envelope-from=serg.oker@gmail.com; helo=mail-lf1-x133.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=serg.oker@gmail.com; helo=mail-lf1-x12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,243 +124,275 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iWRFEQmziudh
+X-TUID: UWXFWRwZrFEB
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/misc/bcm2835_property.c            | 170 ++++++++++++++++++++++++++
- include/hw/misc/raspberrypi-fw-defs.h |  11 ++
- 2 files changed, 181 insertions(+)
+ hw/net/bcm2838_genet.c         | 222 ++++++++++++++++++++++++++++++++-
+ include/hw/net/bcm2838_genet.h |   1 +
+ 2 files changed, 222 insertions(+), 1 deletion(-)
 
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index 4ed9faa54a..7d2d6e518d 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -19,6 +19,31 @@
- #include "trace.h"
- #include "hw/arm/raspi_platform.h"
+diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
+index 98030216f4..0686cb5002 100644
+--- a/hw/net/bcm2838_genet.c
++++ b/hw/net/bcm2838_genet.c
+@@ -251,6 +251,21 @@ static bool bcm2838_genet_tdma_ring_active(BCM2838GenetState *s,
+     return active;
+ }
  
-+#define RPI_EXP_GPIO_BASE       128
-+#define VC4_GPIO_EXPANDER_COUNT 8
-+#define VCHI_BUSADDR_SIZE       sizeof(uint32_t)
++static bool bcm2838_genet_rdma_ring_active(BCM2838GenetState *s,
++                                           unsigned int ring_index)
++{
++    uint32_t ring_mask = 1 << ring_index;
++    bool dma_en = s->regs.rdma.ctrl.fields.en == 1;
++    bool ring_en = (s->regs.rdma.ring_cfg.fields.en & ring_mask) != 0;
++    bool ring_buf_en = (s->regs.rdma.ctrl.fields.ring_buf_en & ring_mask) != 0;
++    bool active = dma_en && ring_en && ring_buf_en;
 +
-+struct vc4_display_settings_t {
-+    uint32_t display_num;
-+    uint32_t width;
-+    uint32_t height;
-+    uint32_t depth;
-+    uint16_t pitch;
-+    uint32_t virtual_width;
-+    uint32_t virtual_height;
-+    uint16_t virtual_width_offset;
-+    uint32_t virtual_height_offset;
-+    unsigned long fb_bus_address;
-+} QEMU_PACKED;
++    trace_bcm2838_genet_rx_dma_ring_active(ring_index,
++                                           active ? "active" : "halted");
 +
-+struct vc4_gpio_expander_t {
-+    uint32_t direction;
-+    uint32_t polarity;
-+    uint32_t term_en;
-+    uint32_t term_pull_up;
-+    uint32_t state;
-+} vc4_gpio_expander[VC4_GPIO_EXPANDER_COUNT];
++    return active;
++}
 +
- /* https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface */
- 
- static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-@@ -30,6 +55,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-     uint32_t tmp;
-     int n;
-     uint32_t offset, length, color;
-+    uint32_t gpio_num;
- 
-     /*
-      * Copy the current state of the framebuffer config; we will update
-@@ -138,6 +164,13 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             resplen = 8;
-             break;
- 
-+        case RPI_FWREQ_GET_CLOCKS:
-+            /* TODO: add more clock IDs if needed */
-+            stl_le_phys(&s->dma_as, value + 12, 0);
-+            stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_ARM_CLK_ID);
-+            resplen = 8;
-+            break;
-+
-         case RPI_FWREQ_SET_CLOCK_RATE:
-         case RPI_FWREQ_SET_MAX_CLOCK_RATE:
-         case RPI_FWREQ_SET_MIN_CLOCK_RATE:
-@@ -276,6 +309,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             stl_le_phys(&s->dma_as, value + 12, 0);
-             resplen = 4;
-             break;
-+
-         case RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS:
-             stl_le_phys(&s->dma_as, value + 12, 1);
-             resplen = 4;
-@@ -301,6 +335,142 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-                                     resplen);
-             break;
- 
-+        case RPI_FWREQ_GET_THROTTLED:
-+            stl_le_phys(&s->dma_as, value + 12, 0);
-+            resplen = 4;
-+            break;
-+
-+        case RPI_FWREQ_FRAMEBUFFER_GET_DISPLAY_SETTINGS:
-+            stl_le_phys(&s->dma_as, value + 12, 0); /* display_num */
-+            stl_le_phys(&s->dma_as, value + 16, 800); /* width */
-+            stl_le_phys(&s->dma_as, value + 20, 600); /* height */
-+            stl_le_phys(&s->dma_as, value + 24, 32); /* depth */
-+            stl_le_phys(&s->dma_as, value + 28, 32); /* pitch */
-+            stl_le_phys(&s->dma_as, value + 30, 0); /* virtual_width */
-+            stl_le_phys(&s->dma_as, value + 34, 0); /* virtual_height */
-+            stl_le_phys(&s->dma_as, value + 38, 0); /* virtual_width_offset */
-+            stl_le_phys(&s->dma_as, value + 40, 0); /* virtual_height_offset */
-+            stl_le_phys(&s->dma_as, value + 44, 0); /* fb_bus_address low */
-+            stl_le_phys(&s->dma_as, value + 48, 0); /* fb_bus_address hi */
-+            resplen = sizeof(struct vc4_display_settings_t);
-+            break;
-+
-+        case RPI_FWREQ_FRAMEBUFFER_SET_PITCH:
-+            resplen = 0;
-+            break;
-+
-+        case RPI_FWREQ_GET_GPIO_CONFIG:
-+            if (ldl_le_phys(&s->dma_as, value + 12) < RPI_EXP_GPIO_BASE) {
-+                qemu_log_mask(LOG_UNIMP, "RPI_FWREQ_GET_GPIO_CONFIG "
-+                              "not implemented for gpiochip0\n");
-+            } else {
-+                gpio_num = ldl_le_phys(&s->dma_as, value + 12)
-+                           - RPI_EXP_GPIO_BASE;
-+
-+                if (gpio_num < VC4_GPIO_EXPANDER_COUNT) {
-+                    stl_le_phys(&s->dma_as, value + 16,
-+                                vc4_gpio_expander[gpio_num].direction);
-+                    stl_le_phys(&s->dma_as, value + 20,
-+                                vc4_gpio_expander[gpio_num].polarity);
-+                    stl_le_phys(&s->dma_as, value + 24,
-+                                vc4_gpio_expander[gpio_num].term_en);
-+                    stl_le_phys(&s->dma_as, value + 28,
-+                                vc4_gpio_expander[gpio_num].term_pull_up);
-+                    /* must be equal 0 */
-+                    stl_le_phys(&s->dma_as, value + 12, 0);
-+                    resplen = 4 * 5;
-+                } else {
-+                    qemu_log_mask(LOG_GUEST_ERROR,
-+                                  "RPI_FWREQ_GET_GPIO_CONFIG "
-+                                  "gpio num must be < %d",
-+                                  RPI_EXP_GPIO_BASE + VC4_GPIO_EXPANDER_COUNT);
-+                }
-+            }
-+            break;
-+
-+        case RPI_FWREQ_SET_GPIO_CONFIG:
-+            if (ldl_le_phys(&s->dma_as, value + 12) < RPI_EXP_GPIO_BASE) {
-+                qemu_log_mask(LOG_UNIMP, "RPI_FWREQ_SET_GPIO_CONFIG "
-+                              "not implemented for gpiochip0\n");
-+            } else {
-+                gpio_num = ldl_le_phys(&s->dma_as, value + 12)
-+                           - RPI_EXP_GPIO_BASE;
-+
-+                if (gpio_num < VC4_GPIO_EXPANDER_COUNT) {
-+                    vc4_gpio_expander[gpio_num].direction =
-+                        ldl_le_phys(&s->dma_as, value + 16);
-+                    vc4_gpio_expander[gpio_num].polarity =
-+                        ldl_le_phys(&s->dma_as, value + 20);
-+                    vc4_gpio_expander[gpio_num].term_en =
-+                        ldl_le_phys(&s->dma_as, value + 24);
-+                    vc4_gpio_expander[gpio_num].term_pull_up =
-+                        ldl_le_phys(&s->dma_as, value + 28);
-+                    vc4_gpio_expander[gpio_num].state =
-+                        ldl_le_phys(&s->dma_as, value + 32);
-+                    /* must be equal 0 */
-+                    stl_le_phys(&s->dma_as, value + 12, 0);
-+                    resplen = 4;
-+                } else {
-+                    qemu_log_mask(LOG_GUEST_ERROR,
-+                                  "RPI_FWREQ_SET_GPIO_CONFIG "
-+                                  "gpio num must be < %d",
-+                                  RPI_EXP_GPIO_BASE + VC4_GPIO_EXPANDER_COUNT);
-+                }
-+            }
-+            break;
-+
-+        case RPI_FWREQ_GET_GPIO_STATE:
-+            if (ldl_le_phys(&s->dma_as, value + 12) < RPI_EXP_GPIO_BASE) {
-+                qemu_log_mask(LOG_UNIMP, "RPI_FWREQ_GET_GPIO_STATE "
-+                              "not implemented for gpiochip0\n");
-+            } else {
-+                gpio_num = ldl_le_phys(&s->dma_as, value + 12)
-+                           - RPI_EXP_GPIO_BASE;
-+
-+                if (gpio_num < VC4_GPIO_EXPANDER_COUNT) {
-+                    stl_le_phys(&s->dma_as, value + 16,
-+                                vc4_gpio_expander[gpio_num].state);
-+                    /* must be equal 0 */
-+                    stl_le_phys(&s->dma_as, value + 12, 0);
-+                    resplen = 8;
-+                } else {
-+                    qemu_log_mask(LOG_GUEST_ERROR,
-+                                  "RPI_FWREQ_GET_GPIO_STATE "
-+                                  "gpio num must be < %d",
-+                                  RPI_EXP_GPIO_BASE + VC4_GPIO_EXPANDER_COUNT);
-+                }
-+            }
-+            break;
-+
-+        case RPI_FWREQ_SET_GPIO_STATE:
-+            if (ldl_le_phys(&s->dma_as, value + 12) < RPI_EXP_GPIO_BASE) {
-+                qemu_log_mask(LOG_UNIMP, "RPI_FWREQ_SET_GPIO_STATE not "
-+                              "implemented for gpiochip0\n");
-+            } else {
-+                gpio_num = ldl_le_phys(&s->dma_as, value + 12)
-+                           - RPI_EXP_GPIO_BASE;
-+
-+                if (gpio_num < VC4_GPIO_EXPANDER_COUNT) {
-+                    vc4_gpio_expander[gpio_num].state = ldl_le_phys(&s->dma_as,
-+                                                                    value + 16);
-+                    /* must be equal 0 */
-+                    stl_le_phys(&s->dma_as, value + 12, 0);
-+                    resplen = 4;
-+                } else {
-+                    qemu_log_mask(LOG_GUEST_ERROR,
-+                                  "RPI_FWREQ_SET_GPIO_STATE "
-+                                  "gpio num must be < %d",
-+                                  RPI_EXP_GPIO_BASE + VC4_GPIO_EXPANDER_COUNT);
-+                }
-+            }
-+            break;
-+
-+        case RPI_FWREQ_VCHIQ_INIT:
-+            stl_le_phys(&s->dma_as,
-+                        value + offsetof(rpi_firmware_prop_request_t, payload),
-+                        0);
-+            resplen = VCHI_BUSADDR_SIZE;
-+            break;
-         default:
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: unhandled tag 0x%08x\n", tag);
-diff --git a/include/hw/misc/raspberrypi-fw-defs.h b/include/hw/misc/raspberrypi-fw-defs.h
-index 4551fe7450..d461b30749 100644
---- a/include/hw/misc/raspberrypi-fw-defs.h
-+++ b/include/hw/misc/raspberrypi-fw-defs.h
-@@ -160,4 +160,15 @@ enum rpi_firmware_clk_id {
-     RPI_FIRMWARE_NUM_CLK_ID,
+ static void bcm2838_genet_tdma(BCM2838GenetState *s, hwaddr offset,
+                                uint64_t value)
+ {
+@@ -434,9 +449,212 @@ static const MemoryRegionOps bcm2838_genet_ops = {
+     .valid = {.min_access_size = sizeof(uint32_t)},
  };
  
-+struct rpi_firmware_property_tag_header {
-+    uint32_t tag;
-+    uint32_t buf_size;
-+    uint32_t req_resp_size;
-+};
++static int32_t bcm2838_genet_filter(BCM2838GenetState *s, const void *buf,
++                                    size_t size)
++{
++    qemu_log_mask(LOG_UNIMP,
++                  "Packet filtration with HFB isn't implemented yet");
++    return -1;
++}
 +
-+typedef struct rpi_firmware_prop_request {
-+    struct rpi_firmware_property_tag_header hdr;
-+    uint8_t payload[0];
-+} rpi_firmware_prop_request_t;
++static int32_t bcm2838_genet_filter2ring(BCM2838GenetState *s,
++                                         uint32_t filter_idx)
++{
++    qemu_log_mask(LOG_UNIMP,
++                  "Packet filtration with HFB isn't implemented yet");
++    return -1;
++}
 +
- #endif /* INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_ */
++static bool is_packet_broadcast(const uint8_t *buf, size_t size)
++{
++    static const uint8_t bcst_addr[] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
++
++    if (size < sizeof(bcst_addr)) {
++        return false;
++    }
++
++    return !memcmp(buf, bcst_addr, sizeof(bcst_addr));
++}
++
++static bool is_packet_multicast(const uint8_t *buf, size_t size)
++{
++    return !!(buf[0] & 0x01);
++}
++
++static ssize_t bcm2838_genet_rdma(BCM2838GenetState *s, uint32_t ring_idx,
++                                  const void *buf, size_t size)
++{
++    const size_t DESC_WORD_SIZE =
++        sizeof(BCM2838GenetRdmaDesc) / sizeof(uint32_t);
++
++    ssize_t len = 0;
++    BCM2838GenetRegsRdma *rdma = &s->regs.rdma;
++    BCM2838GenetRdmaRing *ring = &rdma->rings[ring_idx];
++    hwaddr write_index =
++        (ring->write_ptr + ((hwaddr)ring->write_ptr_hi << 32)) / DESC_WORD_SIZE;
++    BCM2838GenetRdmaDesc *desc = &rdma->descs[write_index];
++
++    const hwaddr START_INDEX =
++        (ring->start_addr + ((hwaddr)ring->start_addr_hi << 32))
++            / DESC_WORD_SIZE;
++    const hwaddr END_INDEX =
++        (ring->end_addr + ((hwaddr)ring->end_addr_hi << 32)) / DESC_WORD_SIZE;
++
++    if (!bcm2838_genet_rdma_ring_active(s, ring_idx)) {
++        return -1;
++    }
++
++    desc->length_status.fields.sop = 1;
++
++    while (len < size) {
++        size_t l = size - len;
++        size_t buf_size = ring->ring_buf_size & 0xffff;
++        uint8_t *dma_buf = s->rx_packet;
++        hwaddr dma_buf_addr =
++            desc->address_lo + ((hwaddr)desc->address_hi << 32);
++        MemTxResult mem_tx_result = MEMTX_OK;
++        uint8_t *frame_buf = dma_buf + sizeof(BCM2838GenetXmitStatus) + 2;
++        BCM2838GenetXmitStatus *xmit_status = (BCM2838GenetXmitStatus *)dma_buf;
++        struct iovec iov;
++        bool isip4, isip6;
++        size_t l3hdr_off, l4hdr_off, l5hdr_off;
++        eth_ip6_hdr_info ip6hdr_info;
++        eth_ip4_hdr_info ip4hdr_info;
++        eth_l4_hdr_info  l4hdr_info;
++
++        if (l > ring->ring_buf_size) {
++            l = ring->ring_buf_size;
++        }
++
++        memcpy(frame_buf, buf + len, l);
++        iov.iov_base = frame_buf;
++        iov.iov_len = l;
++        eth_get_protocols(&iov, 1, 0,
++                          &isip4, &isip6,
++                          &l3hdr_off, &l4hdr_off, &l5hdr_off,
++                          &ip6hdr_info, &ip4hdr_info, &l4hdr_info);
++
++        len += l;
++
++        desc->length_status.fields.eop = !!(len >= size);
++        desc->length_status.fields.buflength = l
++            + sizeof(BCM2838GenetXmitStatus) + 2;
++        if (s->regs.umac.cmd.fields.crc_fwd) {
++            desc->length_status.fields.buflength += 4;
++        }
++        desc->length_status.fields.broadcast =
++            !!is_packet_broadcast(frame_buf, l);
++        desc->length_status.fields.multicast =
++            !!is_packet_multicast(frame_buf, l);
++
++        xmit_status->rx_csum = 0;
++        if (isip4) {
++            xmit_status->rx_csum = ip4hdr_info.ip4_hdr.ip_sum;
++        }
++        xmit_status->length_status = desc->length_status.value;
++
++        mem_tx_result = address_space_write(&s->dma_as, dma_buf_addr,
++                                            MEMTXATTRS_UNSPECIFIED,
++                                            dma_buf, buf_size);
++        if (mem_tx_result != MEMTX_OK) {
++            desc->length_status.fields.rxerr = 1;
++        }
++
++        if (desc->length_status.fields.rxerr) {
++            break;
++        }
++
++        ++ring->prod_index.fields.index;
++        if (++write_index > END_INDEX) {
++            write_index = START_INDEX;
++        }
++        desc = &rdma->descs[write_index];
++        ring->write_ptr = write_index * DESC_WORD_SIZE;
++        ring->write_ptr_hi = ((hwaddr)write_index * DESC_WORD_SIZE) >> 32;
++    }
++
++    if (ring_idx == BCM2838_GENET_DMA_RING_DEFAULT) {
++        s->regs.intrl0.stat.fields.rxdma_mbdone = 1;
++    } else {
++        s->regs.intrl1.stat.fields.rx_intrs |= 1 << ring_idx;
++    }
++
++    return len;
++}
++
++static ssize_t bcm2838_genet_receive(NetClientState *nc, const uint8_t *buf,
++                                     size_t size)
++{
++    BCM2838GenetState *s = (BCM2838GenetState *)qemu_get_nic_opaque(nc);
++    ssize_t bytes_received = -1;
++    int32_t filter_index = -1;
++    int32_t ring_index = -1;
++
++    if (s->regs.rdma.ctrl.fields.en) {
++        filter_index = bcm2838_genet_filter(s, buf, size);
++
++        if (filter_index >= 0) {
++            ring_index = bcm2838_genet_filter2ring(s, filter_index);
++        } else {
++            ring_index = BCM2838_GENET_DMA_RING_CNT - 1;
++        }
++
++        if (size <= MAX_PACKET_SIZE) {
++            bytes_received = bcm2838_genet_rdma(s, ring_index, buf, size);
++        }
++    }
++
++    bcm2838_genet_set_irq_default(s);
++    bcm2838_genet_set_irq_prio(s);
++
++    return bytes_received;
++}
++
++static void bcm2838_genet_phy_update_link(BCM2838GenetState *s)
++{
++    bool qemu_link_down = qemu_get_queue(s->nic)->link_down != 0;
++
++    if (qemu_link_down && s->phy_regs.bmsr.fields.lstatus == 1) {
++        trace_bcm2838_genet_phy_update_link("down");
++
++        s->phy_regs.bmsr.fields.anegcomplete = 0;
++
++        s->phy_regs.bmsr.fields.lstatus = 0;
++        s->regs.intrl0.stat.fields.link_down = 1;
++    } else if (!qemu_link_down && s->phy_regs.bmsr.fields.lstatus == 0) {
++        trace_bcm2838_genet_phy_update_link("up");
++
++        /*
++         * Complete auto-negotiation (fixed link partner's abilities for now:
++         * 1Gbps with flow control)
++         */
++        s->phy_regs.stat1000.fields._1000half = 1;
++        s->phy_regs.stat1000.fields._1000full = 1;
++
++        s->phy_regs.lpa.fields.pause_cap = 1;
++        s->phy_regs.lpa.fields.pause_asym = 1;
++        s->phy_regs.lpa.fields.lpack = 1;
++
++        s->phy_regs.bmsr.fields.anegcomplete = 1;
++
++        s->phy_regs.bmsr.fields.lstatus = 1;
++        s->regs.intrl0.stat.fields.link_up = 1;
++    }
++
++    bcm2838_genet_set_irq_default(s);
++}
++static void bcm2838_genet_set_link(NetClientState *nc)
++{
++    BCM2838GenetState *s = qemu_get_nic_opaque(nc);
++
++    bcm2838_genet_phy_update_link(s);
++}
++
+ static NetClientInfo bcm2838_genet_client_info = {
+     .type = NET_CLIENT_DRIVER_NIC,
+-    .size = sizeof(NICState)
++    .size = sizeof(NICState),
++    .receive = bcm2838_genet_receive,
++    .link_status_changed = bcm2838_genet_set_link,
+ };
+ 
+ static void bcm2838_genet_realize(DeviceState *dev, Error **errp)
+@@ -489,6 +707,8 @@ static void bcm2838_genet_phy_reset(BCM2838GenetState *s)
+     s->phy_aux_ctl_shd_regs.misc = 0x1E;
+ 
+     trace_bcm2838_genet_phy_reset("done");
++
++    bcm2838_genet_phy_update_link(s);
+ }
+ 
+ static void bcm2838_genet_reset(DeviceState *d)
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index 7fbe4d3ea5..8bcf560f87 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -726,6 +726,7 @@ struct BCM2838GenetState {
+     qemu_irq irq_prio;
+ 
+     uint8_t tx_packet[MAX_FRAME_SIZE];
++    uint8_t rx_packet[MAX_FRAME_SIZE];
+ };
+ 
+ #endif /* BCM2838_GENET_H */
 -- 
 2.34.1
 

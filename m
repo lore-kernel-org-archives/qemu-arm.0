@@ -1,80 +1,78 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp197625ejb;
-        Tue, 25 Jul 2023 17:34:00 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFT88cjOcE3fjj0eWd/PO9bCe2hbjHsLfCaX1wM10aR38Pd9mltYVE6qdo2oQYVGSnPWl1H
-X-Received: by 2002:a05:622a:114:b0:403:ef0a:7d0d with SMTP id u20-20020a05622a011400b00403ef0a7d0dmr656312qtw.50.1690331640352;
-        Tue, 25 Jul 2023 17:34:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690331640; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp197655ejb;
+        Tue, 25 Jul 2023 17:34:06 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHs9JowlIR21hF3JnpR1LRbi7EFxlF9nMc29fNtCtjan59FEKuL5bpnWlu2U3Mrh9IEYgvl
+X-Received: by 2002:ac8:7f13:0:b0:403:b3a2:f9c9 with SMTP id f19-20020ac87f13000000b00403b3a2f9c9mr677781qtk.3.1690331645888;
+        Tue, 25 Jul 2023 17:34:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690331645; cv=none;
         d=google.com; s=arc-20160816;
-        b=ir5RYlx9tJI1+q37UOAFX88pUtQqfF9kObri+oZpI6hYB1i0r6Hhach7cOZu1+cp8B
-         xpTsRY9sSYbAaEIQkxRsOHWT1M0Fy+oExV1w4a2y1bLiAbQzRdqjcJA+zQwehE6Q+URZ
-         1vUFAYbtjJ11yP3Aq2qHI68ben+Wx04fg7dqyIz171IIfRVZuIyHwnpV6IaJwGH9a7ux
-         DqiaRhdWagr7e10X/GjRVhfxVxEswI0cgoN2RvR+wvCT+dar/cUD3VTJ/GZ/AnnWyHla
-         2aPWQh6dBGzd9tHH/XBGKe3Bh143sz6sxMIpPMjNpz7OtODRWzBn6Uh3LqYgFQEbELTO
-         W3XQ==
+        b=XvrBisMyPXzbKweATDT/nf0DST+FwwgRPYtA/H80ZG2n7VWSmvi0q/pN8hmhnzfD7W
+         2eCTk3ddsukvE1NSkt8CSbkff7Y51K7lCWhUiRyGB1/xhAdNpjWaxI9PPKdlTvmTb5KF
+         YwotKAp4uz5Bx/kKt21BKdnEO2TB+RIQr6Rhh2bEOwKcO2Dhd6dfPOtK6RkK6VSYCrb8
+         9ipzxmsRn5RAyRDjX7mkAHhsav5X+ZIp5+FsfiTcTxoLXglbyqNvKj1bbAApqb1N+FDO
+         5m8OxYdOVczggtQ9oRk+uMdxQbcXIDrhlySZmYzX0vaATyvJmPd70uiZqXdEu9H/NMp7
+         HOMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=jF1mIBor31mE5IynmL+MzqSZLA280LeTAIhQhMoDghU=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=W16tekFmtJ4pSe/TsgfDc55GNpEBrYdT/oyvB8SOmnU=;
         fh=FuziOALKyXfrMoq6H15/q1ev+uC2b5q3xHaYPu2Bj/E=;
-        b=DR8uU7MIurr+uBBYeB9AHVySIvPd45zXGU1YdGxrsFGLl3J94YGLoVkd1dfH/TWda8
-         /MKC91mUsAaIz+UD4a3eowNTeaWv/2DYyAkE1wqgk4XZze3XznqB/5iMSZQsTRX1vaKk
-         iLxn5vT7hBCur7hEJzW8UoZhBaBZYZKmbkuLxov5JxIYw9LD6qv0wwIxQaXEbMYMGRWy
-         iSY69WPiYoJGNSAFoXOgDZ53lVCmPO6k2NWn4qddnRWlAjN0hoH76EanqEsdshbhsme5
-         Xzp0iaAUzGJbb5SOavuTuHuxBy7Ti3vtDYVdptCNj+r1XJuFf0LhW9EvPvYp2JmAc0U8
-         ZFng==
+        b=LrRGjw5eJMFIR7G0OvLxJao7SqX+fWYtmEnQ2zGsG+WbofkxWndfDsPPw7eoD3Lnf4
+         qmw/jBht//6XFCFHr+XtXGw8YCoBrNFm44T/dO4cKsy6tkUXjsQ9FCiCsaTSK/7DboSa
+         JyVuv3wuj31ZHzIXPa+bO4GPjTxqA9yIoBsVWPn3SfUICJAvGJK9ImzpfpLmIZWQbY2n
+         oRCJ/GYXKm9bEbTuWexc4/kQy7sg3877sa1RxEed4PPKYBoCkAKzlYYYGg2my/qrNbtR
+         2iieYs/VhL8XlbgYhNmZz8XrqeuPJkZRE9bdptZMYde+xin7jHw/nmED4PF0t2HmyVwW
+         rL2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sv+lwRkC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fM3ViOw1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o21-20020a05622a009500b00403ca7ad2dcsi7472160qtw.299.2023.07.25.17.34.00
+        by mx.google.com with ESMTPS id w14-20020a05622a190e00b00403a935d1d7si7443736qtc.412.2023.07.25.17.34.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jul 2023 17:34:00 -0700 (PDT)
+        Tue, 25 Jul 2023 17:34:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sv+lwRkC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fM3ViOw1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOSTB-0001WR-EQ; Tue, 25 Jul 2023 20:33:37 -0400
+	id 1qOSSv-0001Ru-Pa; Tue, 25 Jul 2023 20:33:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qOST9-0001W7-EA
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 20:33:35 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qOSSu-0001Rd-RD
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 20:33:20 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qOST7-000378-Nt
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 20:33:35 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qOSSs-00034r-B2
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 20:33:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690331612;
+ s=mimecast20190719; t=1690331594;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=jF1mIBor31mE5IynmL+MzqSZLA280LeTAIhQhMoDghU=;
- b=Sv+lwRkCmCLnpAW3r2Hvo2n8CL8RC2O7VW/Tx9wHY4MOqohM1pshEfO+kXuGtY9S0779kE
- 2Y2IHfqE5h3Elg0FGxe7ya49Dr/XH9qb1hfkiqo6REk49flevlTa/3Ht2aZL0t88wsyeKh
- dVjIz5QquLut0DlPFkpSGKX7e3Y57zs=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=W16tekFmtJ4pSe/TsgfDc55GNpEBrYdT/oyvB8SOmnU=;
+ b=fM3ViOw1WZSN4z6x2uFuEDJBOQWghSYjDXRqYZPZcJsUs/SB+B6quYOVu9PpmqmGaOwuo5
+ 6AAlw7/ks1x8ZZhlXZ8UwUhwFcOmZV8vsJN6PaD8pHDGKNRV0woDGdN6u9JOYc3K0Fow6Z
+ vuuPIXywz4AG8Zak0B2Sm2/Ygrmp2T8=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-56-pLPoaZ-2OQKUXNAp_TA4cw-1; Tue, 25 Jul 2023 20:33:29 -0400
-X-MC-Unique: pLPoaZ-2OQKUXNAp_TA4cw-1
+ us-mta-148-RSkP3gnnMFmokwRmACLDPQ-1; Tue, 25 Jul 2023 20:33:10 -0400
+X-MC-Unique: RSkP3gnnMFmokwRmACLDPQ-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
  [10.11.54.10])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EBBE4858290;
- Wed, 26 Jul 2023 00:33:27 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E071F8564EF;
+ Wed, 26 Jul 2023 00:33:08 +0000 (UTC)
 Received: from gshan.redhat.com (unknown [10.64.136.80])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 96BA946A3AA;
- Wed, 26 Jul 2023 00:33:18 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 65C16492C13;
+ Wed, 26 Jul 2023 00:32:55 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
@@ -88,11 +86,9 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  imammedo@redhat.com, cohuck@redhat.com, richard.henderson@linaro.org,
  pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v2 2/8] machine: Introduce helper is_cpu_type_supported()
-Date: Wed, 26 Jul 2023 10:31:59 +1000
-Message-ID: <20230726003205.1599788-3-gshan@redhat.com>
-In-Reply-To: <20230726003205.1599788-1-gshan@redhat.com>
-References: <20230726003205.1599788-1-gshan@redhat.com>
+Subject: [PATCH v2 0/8] machine: Unified CPU type check
+Date: Wed, 26 Jul 2023 10:31:57 +1000
+Message-ID: <20230726003205.1599788-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -121,126 +117,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EYMj5R1HPASY
+X-TUID: h3fNZmPAk4uj
 
-The logic of checking if the specified CPU type is supported in
-machine_run_board_init() is independent enough. Factor it out into
-helper is_cpu_type_supported(). With this, machine_run_board_init()
-looks a bit clean. Since we're here, @machine_class is renamed to
-@mc to avoid multiple line spanning of code. The comments are tweaked
-a bit either.
+There are two places where the user specified CPU type is checked to see
+if it's supported or allowed by the board: machine_run_board_init() and
+mc->init(). We don't have to maintain two duplicate sets of logic. This
+series intends to move the check to machine_run_board_init().
 
-No functional change intended.
+PATCH[1-3] Improves the check in machine_run_board_init()
+PATCH[4-8] Move the check mc->init() to machine_run_board_init()
 
-Signed-off-by: Gavin Shan <gshan@redhat.com>
----
- hw/core/machine.c | 82 +++++++++++++++++++++++++----------------------
- 1 file changed, 44 insertions(+), 38 deletions(-)
+v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00302.html
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index d7e7f8f120..fe110e9b0a 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -1349,12 +1349,50 @@ out:
-     return r;
- }
- 
-+static void is_cpu_type_supported(MachineState *machine, Error **errp)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(machine);
-+    ObjectClass *oc = object_class_by_name(machine->cpu_type);
-+    CPUClass *cc;
-+    int i;
-+
-+    /*
-+     * Check if the user specified CPU type is supported when the valid
-+     * CPU types have been determined. Note that the user specified CPU
-+     * type is provided through '-cpu' option.
-+     */
-+    if (mc->valid_cpu_types && machine->cpu_type) {
-+        for (i = 0; mc->valid_cpu_types[i]; i++) {
-+            if (object_class_dynamic_cast(oc, mc->valid_cpu_types[i])) {
-+                break;
-+            }
-+        }
-+
-+        /* The user specified CPU type isn't valid */
-+        if (!mc->valid_cpu_types[i]) {
-+            error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
-+            error_append_hint(errp, "The valid types are: %s",
-+                              mc->valid_cpu_types[0]);
-+            for (i = 1; mc->valid_cpu_types[i]; i++) {
-+                error_append_hint(errp, ", %s", mc->valid_cpu_types[i]);
-+            }
-+            error_append_hint(errp, "\n");
-+
-+            return;
-+        }
-+    }
-+
-+    /* Check if CPU type is deprecated and warn if so */
-+    cc = CPU_CLASS(oc);
-+    if (cc && cc->deprecation_note) {
-+        warn_report("CPU model %s is deprecated -- %s", machine->cpu_type,
-+                    cc->deprecation_note);
-+    }
-+}
- 
- void machine_run_board_init(MachineState *machine, const char *mem_path, Error **errp)
- {
-     MachineClass *machine_class = MACHINE_GET_CLASS(machine);
--    ObjectClass *oc = object_class_by_name(machine->cpu_type);
--    CPUClass *cc;
-     Error *local_err = NULL;
- 
-     /* This checkpoint is required by replay to separate prior clock
-@@ -1406,42 +1444,10 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
-         machine->ram = machine_consume_memdev(machine, machine->memdev);
-     }
- 
--    /* If the machine supports the valid_cpu_types check and the user
--     * specified a CPU with -cpu check here that the user CPU is supported.
--     */
--    if (machine_class->valid_cpu_types && machine->cpu_type) {
--        int i;
--
--        for (i = 0; machine_class->valid_cpu_types[i]; i++) {
--            if (object_class_dynamic_cast(oc,
--                                          machine_class->valid_cpu_types[i])) {
--                /* The user specificed CPU is in the valid field, we are
--                 * good to go.
--                 */
--                break;
--            }
--        }
--
--        if (!machine_class->valid_cpu_types[i]) {
--            /* The user specified CPU is not valid */
--            error_setg(&local_err, "Invalid CPU type: %s", machine->cpu_type);
--            error_append_hint(&local_err, "The valid types are: %s",
--                              machine_class->valid_cpu_types[0]);
--            for (i = 1; machine_class->valid_cpu_types[i]; i++) {
--                error_append_hint(&local_err, ", %s",
--                                  machine_class->valid_cpu_types[i]);
--            }
--            error_append_hint(&local_err, "\n");
--
--            error_propagate(errp, local_err);
--        }
--    }
--
--    /* Check if CPU type is deprecated and warn if so */
--    cc = CPU_CLASS(oc);
--    if (cc && cc->deprecation_note) {
--        warn_report("CPU model %s is deprecated -- %s", machine->cpu_type,
--                    cc->deprecation_note);
-+    /* Check if the CPU type is supported */
-+    is_cpu_type_supported(machine, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-     }
- 
-     if (machine->cgs) {
+Testing
+=======
+
+With the following command lines, the output messages are varied before
+and after the series is applied.
+
+  /home/gshan/sandbox/src/qemu/main/build/qemu-system-aarch64 \
+  -accel tcg -machine virt,gic-version=3,nvdimm=on            \
+  -cpu cortex-a8 -smp maxcpus=2,cpus=1                        \
+    :
+
+Before the series is applied:
+
+  qemu-system-aarch64: mach-virt: CPU type cortex-a8-arm-cpu not supported
+
+After the series is applied:
+
+  qemu-system-aarch64: Invalid CPU type: cortex-a8-arm-cpu
+  The valid models are: cortex-a7, cortex-a15, cortex-a35, cortex-a55,
+                        cortex-a72, cortex-a76, a64fx, neoverse-n1,
+                        neoverse-v1, cortex-a53, cortex-a57, max
+
+Changelog
+=========
+v2:
+  * Constify mc->valid_cpu_types                                (Richard)
+  * Print the supported CPU models, instead of typenames        (Peter)
+  * Misc improvements for the hleper to do the check            (Igor)
+  * More patches to move the check                              (Marcin)
+
+Gavin Shan (8):
+  machine: Use error handling when CPU type is checked
+  machine: Introduce helper is_cpu_type_supported()
+  machine: Print supported CPU models instead of typenames
+  hw/arm/virt: Check CPU type in machine_run_board_init()
+  hw/arm/virt: Unsupported host CPU model on TCG
+  hw/arm/sbsa-ref: Check CPU type in machine_run_board_init()
+  hw/arm: Check CPU type in machine_run_board_init()
+  hw/riscv/shakti_c: Check CPU type in machine_run_board_init()
+
+ hw/arm/bananapi_m2u.c   | 18 ++++++---
+ hw/arm/cubieboard.c     | 18 ++++++---
+ hw/arm/mps2-tz.c        | 34 ++++++++++++++---
+ hw/arm/mps2.c           | 44 ++++++++++++++++++---
+ hw/arm/msf2-som.c       | 18 ++++++---
+ hw/arm/musca.c          | 19 ++++++----
+ hw/arm/npcm7xx_boards.c | 19 ++++++----
+ hw/arm/orangepi.c       | 18 ++++++---
+ hw/arm/sbsa-ref.c       | 29 ++++++--------
+ hw/arm/virt.c           | 43 ++++++++++++---------
+ hw/core/machine.c       | 84 +++++++++++++++++++++++------------------
+ hw/m68k/q800.c          |  8 +++-
+ hw/riscv/shakti_c.c     | 17 ++++++---
+ include/hw/boards.h     |  3 +-
+ 14 files changed, 243 insertions(+), 129 deletions(-)
+
 -- 
 2.41.0
 

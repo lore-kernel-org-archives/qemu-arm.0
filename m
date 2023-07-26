@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp565176ejb;
-        Wed, 26 Jul 2023 06:58:37 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFb3AgtzR8hTMcitTtofTIiHJ6I3nWX0LI3eKPjyaa0Y537HZVPoRYY9Dc/Lxr8vmXZxi2N
-X-Received: by 2002:a67:e9d2:0:b0:447:4520:43b1 with SMTP id q18-20020a67e9d2000000b00447452043b1mr1411784vso.7.1690379916829;
-        Wed, 26 Jul 2023 06:58:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690379916; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp566365ejb;
+        Wed, 26 Jul 2023 07:00:32 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHYPc4V7VSP4Y5piIVWBsIYqpdqMtorDbbzotO/vJXJKOq0pYYN5QY4DY8JnJBObt8p1eiB
+X-Received: by 2002:ad4:44a1:0:b0:63c:f490:8771 with SMTP id n1-20020ad444a1000000b0063cf4908771mr2189553qvt.38.1690380032521;
+        Wed, 26 Jul 2023 07:00:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690380032; cv=none;
         d=google.com; s=arc-20160816;
-        b=jayfaGFC1vpGBtpkY5RrkEbKavttztnpuQG6gJmJkdj5yl9+bbgf0007nn664tnyWE
-         x9EIU0UiT/xvRSvd/8HKLTofQDOeuP6Zm5Ii2fmUv4CC5OOGfPbOIAr2c4UYwJM/qq2Y
-         iwsAVGJ48sCPAKCAVlLtCSgeAj5BdkPFJJPxhmkfsrUnhPtT2LP8qzdcdiER2RfyH5/4
-         SOt/pJrUETQRPqmWMJKC/ERXj7NoMq5dtUHwQYlv/3jpCUUM3DFpFS1C46XPban78ftt
-         6OTRLGndfmxLgihGk1CJmISKjdHTENxRvbDIrKu3DyH3aUx68PxrVVf5dzIg8UTkrCpt
-         ZxeQ==
+        b=f4cWcw+ghpomL9fIQL2GCexJN4A8pL3vemfry1CsOjJzzCoy/wImbvthm0ImoZ8TjB
+         X1WfnABOEDnaEXBf5Wu/rll+1qsGITFr1YVyrUmtXIAv93DkNJVFEeofORSHG5nen9gY
+         t4agE6BhYFn5zMbzwoTd9P3iVbf43gxWI6NrmtaMW9MCawWgbPyJT7TxBtKnuHTxFZtP
+         dEPdm2wX0tmpE6B//g4CmdIlucghSCI/o8yXEk9C/KhmNeXE/Hfz7NxFrnu83XSgn1mI
+         /ZBKyyi8CO0d7rbc09KrxJIHBaswSaUL1hEaOfBQg9STTbknet1pGOc1PhAmp60UOgPu
+         mJvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=lc2M6SSGOLe8/z1uJflfjXaw5jgSfBX004uJV6n1TgA=;
+        bh=7R6ByxcD9quQ0vOfh6O+IKGd8RB6TCxbEugxaAA7YcM=;
         fh=f5jt6gD4kTKAQV2ukO6ZfXPs+EJm4Q1+uDtHV6gcJRE=;
-        b=IXEkLy9T9r3yAknZqnFZiilbxaGE5yLhtOG4+T2QcJI4j4T8uS/EllQfbO3sVp8oaN
-         pFw4H3OAWlXY1w9S1WUc8Scx+GdKSpjlAS/JJg07Oxcvfs91aZzdwyjFJjTMoHDDWCBu
-         0vOOeN5LQ569KW+paE+yD4QjBw9Zf7ZnLAbvLQSgk1P8/hGqrF/Nz5d3fdwou3fSwTfx
-         JjgGwt7bVKvZRZ9Scam2q/+MBiPi57Ls2HTTMZQiZs6njhcN4MXjYONoWvRTYf12sV+B
-         LwAjbgHXWS8iAfkRmiBIjelmaRAoir0qQIua2wWpAHLqK5g8JvSPcPqpCxpdezGpYBwF
-         CrKA==
+        b=P2sUM7vtf0wlAh87wQ4I4haWUM/n4buGbgQBSNl7qkMLc22yLEv35if02nKpdS6Dtn
+         3WBbvEAQKEm+swdBzbOWqxgqXkcTnsxSllxcuhAiOX+uKu+HTyjfzNnm6RVMAkiPo5j0
+         uWls3vE+Ae1txwgZ55FMFh2cfxgwKrAlff6nNU0BJwlTTEMuuO7rI2BCUN6vTIFRe0XO
+         OfIq/PpHZnerAA3HDqOfihIOOp7kamusRKBMGrG/hxrnzZvQj0xqKn2oDUsTi72LBK+1
+         2A5KYKTfkQ8o5EVNnJJX0W0esrnGMu1KCQLykHaNGm8PmeT0AdbZ+EeRPu+IdzMbRMVb
+         E/Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=UsmQ4NwQ;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=J0hwCrsA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z4-20020a0cf244000000b0063d2f570fd5si502209qvl.142.2023.07.26.06.58.36
+        by mx.google.com with ESMTPS id ee5-20020a05620a800500b00765344b6e1fsi8050659qkb.759.2023.07.26.07.00.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jul 2023 06:58:36 -0700 (PDT)
+        Wed, 26 Jul 2023 07:00:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=UsmQ4NwQ;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=J0hwCrsA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qOeXR-0003JJ-I4; Wed, 26 Jul 2023 09:26:49 -0400
+	id 1qOeWc-0002po-HN; Wed, 26 Jul 2023 09:25:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWk-0002vL-AE; Wed, 26 Jul 2023 09:26:07 -0400
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+ id 1qOeWC-0002hQ-JH; Wed, 26 Jul 2023 09:25:33 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWc-0003OM-Qt; Wed, 26 Jul 2023 09:26:03 -0400
-Received: by mail-lf1-x135.google.com with SMTP id
- 2adb3069b0e04-4fb960b7c9dso10818797e87.0; 
- Wed, 26 Jul 2023 06:25:56 -0700 (PDT)
+ id 1qOeWA-0003Ad-Pb; Wed, 26 Jul 2023 09:25:32 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-4fb73ba3b5dso10768621e87.1; 
+ Wed, 26 Jul 2023 06:25:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1690377954; x=1690982754;
+ d=gmail.com; s=20221208; t=1690377928; x=1690982728;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=lc2M6SSGOLe8/z1uJflfjXaw5jgSfBX004uJV6n1TgA=;
- b=UsmQ4NwQ8ZI0XqKd96WTUFStddto/juiOwDY5m8U7Alz6/ZO6HQnnjHVgTiOMW9ICI
- qVjmz5Jh+c9HbdNHMtPXmkP0t9eGhQddbXNtaco1ovrRQ1D500HoxcGi6qk5SUncW7hD
- ozzIFqfy5eUC3a30LvJNaFfWGR5dEZF5OId8OIZ5Te5C/Rla9uc+m1am+7OWwNrplAOt
- 6PMmhyYrF0ZofApAQYhRgbfgYOy3ZXHoQx5lX2RwA7i513UhR9Y5N0v9nZMILQxc2k0Y
- oIDrhpUdr+8mmEkmDl+FBTHkWqsuCKc+yTEft5vZDdaM9N2cCAl1rha0ygtzd6hYWTs0
- dj2A==
+ bh=7R6ByxcD9quQ0vOfh6O+IKGd8RB6TCxbEugxaAA7YcM=;
+ b=J0hwCrsAiPgClz7AfwdtMDCavRFw56fNraufFQr5B+YQWgGx+3RmWOo+W4ZNtwB71d
+ BTccg+qU/Xp8NPN7qmfwQhxmm6MrWu2pC9ldZ0C+rjvRpr/qy4uC6c2aLsquwbsMQqpq
+ E2XPWup1V+nz9L+cc29nMdyXBchgxSGthmOQh+PBbRqMVapaBIF6NhIObyHb0qGG6L7O
+ MSF7P/KLrIhFnyWnm5hX+I6M9BjjbFnURIJqi24IAZhegaaFfrVjs+Ty160qyfCJ/5Ut
+ rWRdE3xIaV9hOvLobcZnjEJO61ui26NgYkT0OaNw++KT2j556V/xjpU4MWqy9ofFrWHm
+ /w0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690377954; x=1690982754;
+ d=1e100.net; s=20221208; t=1690377928; x=1690982728;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=lc2M6SSGOLe8/z1uJflfjXaw5jgSfBX004uJV6n1TgA=;
- b=VmcICrVBvFbYGABP3xQbPC91w8aw0N69OiB9/WqhpSnkjSA454wdXSgZnTymE0GCaY
- N+CmplDzCGdIO+4qKNqoM9KJ3hz6ULvSPflE+JvOtUclDGuKjAk71bTZQr1ANjTtMkyn
- ioWqHnPa/2TxYZSwwtDcASdbttUt7SephPPlQqjFx964T0Aj/SGHb7uu1XZqaxWqM+m5
- R0Ho7iOmWhxy7uksNBjexpjX2mZKFKtEC3aMn9N0uXZxTCE6MycXQwhi1C7IJUcLnLV+
- SqbD/kPRgVmPSNuRPCHjYZjER2oVjWGM1CjVhYLFuo4LMojSmVuuXNoPlXNE0WK16u11
- g0Qw==
-X-Gm-Message-State: ABy/qLZnWFnxfMvyal5nXcqUCvlc/SrNylf8cZqEzlr/g5w9Usq7Temf
- 7GuGtzpj7C9fAMDMxZWAk+mo3IElKrU=
-X-Received: by 2002:ac2:5e99:0:b0:4f9:5519:78b8 with SMTP id
- b25-20020ac25e99000000b004f9551978b8mr1336712lfq.63.1690377954498; 
- Wed, 26 Jul 2023 06:25:54 -0700 (PDT)
+ bh=7R6ByxcD9quQ0vOfh6O+IKGd8RB6TCxbEugxaAA7YcM=;
+ b=jmDidaS4eVC6Krbhc54iGO5EY0RFE7Sio1au7Qfrgc7C2vEsMVyKap0kmYktlVh1Hj
+ 9lLsr0nB2sqHY7x9liX92UwZsCbJSQ7100GsL80Ts4T4jyt1UMEQc+P1cO+YVYdHnkrC
+ vfIu1mYsmQAGc3OMPGcnayibZFOzm02oJtRGn40Xh4yQxKcNq9Uc/N3Ucj/dnUxTuUQf
+ Z6745gfxLe+FBgzFHeEIYa9aH/d3sTd6wBIBdrKkgta9a8OlJF2NGgBDsOOd5TLNsSUG
+ yjPxQwsLBEn9dL/bTZdrQCJnudAWghOHsagczFDe5Tr1BEIqALbrajiO0eEhohBW4m+7
+ noCA==
+X-Gm-Message-State: ABy/qLb8DiLRrztwU5stOZrFmOdqw84sjNhiMCMbAnUR2AIe3cwBmVZs
+ dTZdKk5uwtiUs6Rms7/g3LCveFH73sQ=
+X-Received: by 2002:a05:6512:200d:b0:4f8:7614:48a5 with SMTP id
+ a13-20020a056512200d00b004f8761448a5mr1271212lfb.66.1690377927973; 
+ Wed, 26 Jul 2023 06:25:27 -0700 (PDT)
 Received: from sergevik-thinkpad.localdomain ([213.197.136.186])
  by smtp.gmail.com with ESMTPSA id
- j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.53
+ j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Jul 2023 06:25:54 -0700 (PDT)
+ Wed, 26 Jul 2023 06:25:27 -0700 (PDT)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 29/44] Impl GENET MDIO
-Date: Wed, 26 Jul 2023 16:24:57 +0300
-Message-Id: <20230726132512.149618-30-sergey.kambalin@auriga.com>
+Subject: [PATCH 08/44] Connect SD controller to BCM2838 GPIO
+Date: Wed, 26 Jul 2023 16:24:36 +0300
+Message-Id: <20230726132512.149618-9-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::135;
- envelope-from=serg.oker@gmail.com; helo=mail-lf1-x135.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=serg.oker@gmail.com; helo=mail-lf1-x12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,149 +124,139 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hh5LOhQoOkes
+X-TUID: L05WzzRh7DXp
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/net/bcm2838_genet.c | 109 ++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 107 insertions(+), 2 deletions(-)
+ hw/gpio/bcm2838_gpio.c         | 52 +++++++++++++++++++++++++++++++++-
+ include/hw/gpio/bcm2838_gpio.h |  6 ++++
+ 2 files changed, 57 insertions(+), 1 deletion(-)
 
-diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
-index 01e6819df4..e633323d17 100644
---- a/hw/net/bcm2838_genet.c
-+++ b/hw/net/bcm2838_genet.c
-@@ -47,6 +47,108 @@ static void bcm2838_genet_set_irq_prio(BCM2838GenetState *s)
-     qemu_set_irq(s->irq_prio, level);
- }
+diff --git a/hw/gpio/bcm2838_gpio.c b/hw/gpio/bcm2838_gpio.c
+index cc9f4f74a0..7291e473dc 100644
+--- a/hw/gpio/bcm2838_gpio.c
++++ b/hw/gpio/bcm2838_gpio.c
+@@ -17,6 +17,7 @@
+ #include "qemu/timer.h"
+ #include "qapi/error.h"
+ #include "hw/sysbus.h"
++#include "hw/sd/sd.h"
+ #include "hw/gpio/bcm2838_gpio.h"
+ #include "hw/irq.h"
  
-+static void bcm2838_genet_phy_aux_ctl_write(BCM2838GenetState *s,
-+                                            uint16_t value)
-+{
-+    BCM2838GenetPhyAuxCtl phy_aux_ctl = {.value = value};
-+    uint16_t *phy_aux_ctl_shd_reg_id
-+        = (uint16_t *)&s->phy_aux_ctl_shd_regs + phy_aux_ctl.fields_1.reg_id;
-+    uint16_t *phy_aux_ctl_shd_reg_id_mask
-+        = (uint16_t *)&s->phy_aux_ctl_shd_regs + phy_aux_ctl.fields_1.reg_id_mask;
+@@ -63,6 +64,16 @@
+ 
+ #define BYTES_IN_WORD        4
+ 
++/* bcm,function property */
++#define BCM2838_FSEL_GPIO_IN    0
++#define BCM2838_FSEL_GPIO_OUT   1
++#define BCM2838_FSEL_ALT5       2
++#define BCM2838_FSEL_ALT4       3
++#define BCM2838_FSEL_ALT0       4
++#define BCM2838_FSEL_ALT1       5
++#define BCM2838_FSEL_ALT2       6
++#define BCM2838_FSEL_ALT3       7
 +
-+    if (phy_aux_ctl.fields_1.reg_id_mask == BCM2838_GENET_PHY_AUX_CTL_MISC) {
-+        if (phy_aux_ctl.fields_1.reg_id == BCM2838_GENET_PHY_AUX_CTL_MISC) {
-+            if (phy_aux_ctl.fields_1.misc_wren == 0) {
-+                /* write for subsequent read (8-bit from AUX_CTL_MISC) */
-+                phy_aux_ctl.fields_1.reg_data = *phy_aux_ctl_shd_reg_id;
-+            } else {
-+                /* write 8 bits to AUX_CTL_MISC */
-+                *phy_aux_ctl_shd_reg_id_mask = phy_aux_ctl.fields_1.reg_data;
-+            }
-+        } else {
-+            /* write for subsequent read (12-bit) */
-+            phy_aux_ctl.fields_2.reg_data = *phy_aux_ctl_shd_reg_id;
-+        }
-+    } else {
-+        /* write 12 bits */
-+        *phy_aux_ctl_shd_reg_id_mask = phy_aux_ctl.fields_2.reg_data;
-+    }
-+
-+    s->phy_regs.aux_ctl.value = phy_aux_ctl.value;
-+}
-+
-+static void bcm2838_genet_phy_shadow_write(BCM2838GenetState *s,
-+                                           uint16_t value)
-+{
-+    BCM2838GenetPhyShadow phy_shadow = {.value = value};
-+    uint16_t *phy_shd_reg
-+        = (uint16_t *)&s->phy_shd_regs + phy_shadow.fields.reg_id;
-+
-+    if (phy_shadow.fields.wr == 0) {
-+        phy_shadow.fields.reg_data = *phy_shd_reg;
-+    } else {
-+        *phy_shd_reg = phy_shadow.fields.reg_data;
-+    }
-+
-+    s->phy_regs.shd.value = phy_shadow.value;
-+}
-+
-+static void bcm2838_genet_phy_exp_shadow_write(BCM2838GenetState *s,
-+                                               uint16_t value)
-+{
-+    /* TODO Stub implementation without side effect,
-+            just storing registers values */
-+    BCM2838GenetPhyExpSel* exp_ctrl = &s->phy_regs.exp_ctrl;
-+    s->phy_exp_shd_regs.regs[exp_ctrl->block_id][exp_ctrl->reg_id] = value;
-+}
-+
-+static uint16_t bcm2838_genet_phy_exp_shadow_read(BCM2838GenetState *s)
-+{
-+    BCM2838GenetPhyExpSel* exp_ctrl = &s->phy_regs.exp_ctrl;
-+    return s->phy_exp_shd_regs.regs[exp_ctrl->block_id][exp_ctrl->reg_id];
-+}
-+
-+static uint64_t bcm2838_genet_mdio_cmd(BCM2838GenetState *s, uint64_t cmd)
-+{
-+    BCM2838GenetUmacMdioCmd umac_mdio_cmd = {.value = cmd};
-+    uint8_t phy_reg_id = umac_mdio_cmd.fields.reg_id;
-+    uint16_t phy_reg_data = umac_mdio_cmd.fields.reg_data;
-+    uint16_t *phy_reg = (uint16_t *)&s->phy_regs + phy_reg_id;
-+    BCM2838GenetPhyBmcr phy_bmcr = {.value = phy_reg_data};
-+
-+    if (umac_mdio_cmd.fields.start_busy != 0) {
-+        umac_mdio_cmd.fields.start_busy = 0;
-+
-+        if (umac_mdio_cmd.fields.rd != 0) {
-+            if (phy_reg_id == BCM2838_GENET_EXP_DATA) {
-+                umac_mdio_cmd.fields.reg_data
-+                    = bcm2838_genet_phy_exp_shadow_read(s);
-+            } else {
-+                umac_mdio_cmd.fields.reg_data = *phy_reg;
-+            }
-+        } else if (umac_mdio_cmd.fields.wr != 0) {
-+            if (phy_reg_id == BCM2838_GENET_PHY_AUX_CTL) {
-+                bcm2838_genet_phy_aux_ctl_write(s, phy_reg_data);
-+            } else if (phy_reg_id == BCM2838_GENET_PHY_SHD) {
-+                bcm2838_genet_phy_shadow_write(s, phy_reg_data);
-+            } else if (phy_reg_id == BCM2838_GENET_EXP_DATA) {
-+                bcm2838_genet_phy_exp_shadow_write(s, phy_reg_data);
-+            } else {
-+                if (phy_reg_id == BCM2838_GENET_PHY_BMCR) {
-+                    /* Initiate auto-negotiation once it has been restarted */
-+                    if (phy_bmcr.fields.anrestart == 1) {
-+                        phy_bmcr.fields.anrestart = 0;
-+                        phy_reg_data = phy_bmcr.value;
-+                    }
-+                }
-+                *phy_reg = phy_reg_data;
-+            }
-+        }
-+    }
-+
-+    return umac_mdio_cmd.value;
-+}
-+
- static uint64_t bcm2838_genet_read(void *opaque, hwaddr offset, unsigned size)
+ static uint32_t gpfsel_get(BCM2838GpioState *s, uint8_t reg)
  {
-     uint64_t value = ~0;
-@@ -134,10 +236,12 @@ static void bcm2838_genet_write(void *opaque, hwaddr offset, uint64_t value,
-             trace_bcm2838_genet_mac_address(ncs->info_str);
-             break;
-         case BCM2838_GENET_UMAC_MDIO_CMD:
-+            value = bcm2838_genet_mdio_cmd(s, value);
-+            s->regs.intrl0.stat.fields.mdio_done = 1;
-+            break;
-         case BCM2838_GENET_TDMA_REGS
-             ... BCM2838_GENET_TDMA_REGS + sizeof(BCM2838GenetRegsTdma) - 1:
--            qemu_log_mask(LOG_UNIMP,
--                "UMAC MDIO and TDMA aren't implemented yet");
-+            qemu_log_mask(LOG_UNIMP, "TDMA isn't implemented yet");
-             break;
-         default:
-             break;
-@@ -231,6 +335,7 @@ static void bcm2838_genet_reset(DeviceState *d)
- 
-     trace_bcm2838_genet_reset("done");
- 
-+    bcm2838_genet_set_qemu_mac(s);
-     bcm2838_genet_phy_reset(s);
+     int i;
+@@ -86,6 +97,31 @@ static void gpfsel_set(BCM2838GpioState *s, uint8_t reg, uint32_t value)
+             s->fsel[index] = fsel;
+         }
+     }
++
++    /* SD controller selection (48-53) */
++    if (s->sd_fsel != BCM2838_FSEL_GPIO_IN
++        && (s->fsel[48] == BCM2838_FSEL_GPIO_IN)
++        && (s->fsel[49] == BCM2838_FSEL_GPIO_IN)
++        && (s->fsel[50] == BCM2838_FSEL_GPIO_IN)
++        && (s->fsel[51] == BCM2838_FSEL_GPIO_IN)
++        && (s->fsel[52] == BCM2838_FSEL_GPIO_IN)
++        && (s->fsel[53] == BCM2838_FSEL_GPIO_IN)
++       ) {
++        /* SDHCI controller selected */
++        sdbus_reparent_card(s->sdbus_sdhost, s->sdbus_sdhci);
++        s->sd_fsel = BCM2838_FSEL_GPIO_IN;
++    } else if (s->sd_fsel != BCM2838_FSEL_ALT0
++               && (s->fsel[48] == BCM2838_FSEL_ALT0) /* SD_CLK_R */
++               && (s->fsel[49] == BCM2838_FSEL_ALT0) /* SD_CMD_R */
++               && (s->fsel[50] == BCM2838_FSEL_ALT0) /* SD_DATA0_R */
++               && (s->fsel[51] == BCM2838_FSEL_ALT0) /* SD_DATA1_R */
++               && (s->fsel[52] == BCM2838_FSEL_ALT0) /* SD_DATA2_R */
++               && (s->fsel[53] == BCM2838_FSEL_ALT0) /* SD_DATA3_R */
++              ) {
++        /* SDHost controller selected */
++        sdbus_reparent_card(s->sdbus_sdhci, s->sdbus_sdhost);
++        s->sd_fsel = BCM2838_FSEL_ALT0;
++    }
  }
  
+ static int gpfsel_is_out(BCM2838GpioState *s, int index)
+@@ -268,6 +304,11 @@ static void bcm2838_gpio_reset(DeviceState *dev)
+         gpfsel_set(s, i, 0);
+     }
+ 
++    s->sd_fsel = 0;
++
++    /* SDHCI is selected by default */
++    sdbus_reparent_card(&s->sdbus, s->sdbus_sdhci);
++
+     s->lev0 = 0;
+     s->lev1 = 0;
+ 
+@@ -289,6 +330,8 @@ static void bcm2838_gpio_init(Object *obj)
+     DeviceState *dev = DEVICE(obj);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+ 
++    qbus_init(&s->sdbus, sizeof(s->sdbus), TYPE_SD_BUS, DEVICE(s), "sd-bus");
++
+     memory_region_init_io(
+         &s->iomem, obj,
+         &bcm2838_gpio_ops, s, "bcm2838_gpio", BCM2838_GPIO_REGS_SIZE);
+@@ -298,7 +341,14 @@ static void bcm2838_gpio_init(Object *obj)
+ 
+ static void bcm2838_gpio_realize(DeviceState *dev, Error **errp)
+ {
+-    /* Temporary stub. Do nothing */
++    BCM2838GpioState *s = BCM2838_GPIO(dev);
++    Object *obj;
++
++    obj = object_property_get_link(OBJECT(dev), "sdbus-sdhci", &error_abort);
++    s->sdbus_sdhci = SD_BUS(obj);
++
++    obj = object_property_get_link(OBJECT(dev), "sdbus-sdhost", &error_abort);
++    s->sdbus_sdhost = SD_BUS(obj);
+ }
+ 
+ static void bcm2838_gpio_class_init(ObjectClass *klass, void *data)
+diff --git a/include/hw/gpio/bcm2838_gpio.h b/include/hw/gpio/bcm2838_gpio.h
+index 54baf01692..f2a57a697f 100644
+--- a/include/hw/gpio/bcm2838_gpio.h
++++ b/include/hw/gpio/bcm2838_gpio.h
+@@ -14,6 +14,7 @@
+ #ifndef BCM2838_GPIO_H
+ #define BCM2838_GPIO_H
+ 
++#include "hw/sd/sd.h"
+ #include "hw/sysbus.h"
+ #include "qom/object.h"
+ 
+@@ -29,9 +30,14 @@ struct BCM2838GpioState {
+ 
+     MemoryRegion iomem;
+ 
++    /* SDBus selector */
++    SDBus sdbus;
++    SDBus *sdbus_sdhci;
++    SDBus *sdbus_sdhost;
+ 
+     uint8_t fsel[BCM2838_GPIO_NUM];
+     uint32_t lev0, lev1;
++    uint8_t sd_fsel;
+     qemu_irq out[BCM2838_GPIO_NUM];
+     uint32_t pup_cntrl_reg[GPIO_PUP_PDN_CNTRL_NUM];
+ };
 -- 
 2.34.1
 

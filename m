@@ -1,125 +1,129 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp355009ejb;
-        Wed, 26 Jul 2023 00:23:41 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEdQRfRKLXpM+wlfMYRc/QepfBVtQd1spETexGOlfThhZbDRzBLm9XB6pj9ym7lx2PT2o7x
-X-Received: by 2002:a0c:db05:0:b0:63d:a05:bd30 with SMTP id d5-20020a0cdb05000000b0063d0a05bd30mr1072086qvk.5.1690356221680;
-        Wed, 26 Jul 2023 00:23:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690356221; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp382966ejb;
+        Wed, 26 Jul 2023 01:26:17 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHpD/TzegacLCz5iv+v8OOtySX0WtkhPSTUk9uzAX6quCLrOuEZJvXRzOlieEqEw/Ok1Ewj
+X-Received: by 2002:a0c:f185:0:b0:63c:f3a3:7ebb with SMTP id m5-20020a0cf185000000b0063cf3a37ebbmr994873qvl.65.1690359977179;
+        Wed, 26 Jul 2023 01:26:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690359977; cv=none;
         d=google.com; s=arc-20160816;
-        b=lJVBcmgA53Uh7jGxSyR1dmWIHnJZlh7dRSv+hcwX84vBQoIt6jOC+JRjNw4z9RvLbr
-         lZKew36oN4PM/LFg66Pz/NyAA4/CwovK9oowyB2CeaXiwhORJLCQaGoOeUup464qT0Wd
-         xVFCVWcYSenVFH9cLpQ6oZBiHsLX8Elc0eHKoQMbqhOSY+mS44NEuA1blghbGPLquI95
-         NxWGk6DVCBD8pCCOPImLgLxyp44vNjrFY7zaDaiwRJyKHaqttWQJ7FM5HF8UqHfWDszw
-         1yr4iUOOpudl3DqYTKlIbtqezt5NSBtm4jOMftiRf+5l0D2BOVutC0Dc/KhftLAuxXBS
-         n79Q==
+        b=ERRuqMzMgzaHbVpat9Q+dpPMwynNgjnJgcTTC5Nx9m114u7IhU97tgNegmj7w20FUf
+         sbMQ8e2KwF+76Vya775yb/2TV55PM5f81zwRuJPAw1TQclASUOxFK6aWviUe3+V8n6UR
+         ZpYO03uReqGgb1aRfbS5nxYFSGEzXl4ck33sUR994ykQ2ZVpLzA/c463GsuNtlUM1nTh
+         vtNImTEbekg3K84YKeNWoEIMqTeOX6i5ASOdOMgJEjwPVMWu55C7c9k7WKTTL+NrS3Xn
+         okXP38BCITngUFLBvUwzzdOJmdNu+aXsdsppbehUdDC7oHZFclbgHPWAzG142f9enw1Z
+         pXHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:cc:date:in-reply-to:from:subject
-         :mime-version:dkim-signature;
-        bh=Pmw6wl1dl2hF+adlNw6TZD6m3IUv+FWrjfWGf2H5N7s=;
-        fh=ML7TLAE1NBPq4KudwdwAEoeYD2ZC1E+Z2e1iXlWtMqI=;
-        b=hYd8zBFTIO+sQKT/11UH4w+BiiOZuHcc5qtQYYuQmuM4bUmTMg279OR5D2vv0T2VNF
-         SCBiOGbV2P3yWKwUClm3suXIpya5icQ/uRBXJ2KM+x//7dD1mfVjQjTWOF75jlS3MuZi
-         352+CdLYimRM70dzA6dx8biCWQJvsZX5y8i3ygd1mTCgpF3Q2KsXqg/OjreE/q6OIl1K
-         4lz6FycVF54rdbCACDFIho7yVfPxDrLuq1mcCjPP48Fq6zXUJNqWyfKuMrYrAnqfnBHZ
-         YTDsgv1CM6tk2jbp7+oR6qSQ6v9R3a5Hu7TeMpPPJ3SF1EhyU+qAVyVXyffEtoTRqf+K
-         yWYw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=qwVkhMb9iRcIIGT4ohZ6/VrshuYku0zY90Oa9pu3Adk=;
+        fh=Mzzz2ni5vP6alskqY7WSzZVGpkpjliVK9alKjrtsoe4=;
+        b=Zc6N/b+vgJRN4rItcoz+FhrsSxNBnCN6DYlXgv3Wp68UWFsySWp+Tp8w1kMBl8EnNZ
+         hdJr9WY2dQVk8mcjcxdfx8NIvGvHJV8PVdO3X5ybRbBTdRnsNmUdNR8KaApiC+0K/n3u
+         4F03mlgrRp96d11nTLcS9tZwdu+PPguIY9+XcuCVmzN2IkW0Hsw8cbM8CDwmQLO0PSQD
+         cp9qNcqUswdVEK2On1BcR91iiXGdZufokSi/bkPMWHFMXPdGL4iHXfAu2whtg7SlNsN6
+         TBb7k2zDVSbheJ63VQWs5MSB3Sm35mmYW2Wgqp2vph+cxMZ5y+HfXlHQ0karSgkFl30r
+         ZaiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VmtJQ6iK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fkAn/ofZ";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fh11-20020a0562141a0b00b0063009c96812si5826656qvb.3.2023.07.26.00.23.41
+        by mx.google.com with ESMTPS id a12-20020a0cca8c000000b0063cea6346fasi5783397qvk.396.2023.07.26.01.26.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jul 2023 00:23:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 26 Jul 2023 01:26:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VmtJQ6iK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fkAn/ofZ";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qOYro-0003E4-39; Wed, 26 Jul 2023 03:23:28 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qOZqH-0005zY-MR; Wed, 26 Jul 2023 04:25:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1qOYrm-0003DH-Fi
- for qemu-devel@nongnu.org; Wed, 26 Jul 2023 03:23:26 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1qOZqC-0005z2-O2
+ for qemu-arm@nongnu.org; Wed, 26 Jul 2023 04:25:53 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1qOYrk-0001WP-Pv
- for qemu-devel@nongnu.org; Wed, 26 Jul 2023 03:23:26 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1qOZqB-0004Sq-7Z
+ for qemu-arm@nongnu.org; Wed, 26 Jul 2023 04:25:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690356203;
+ s=mimecast20190719; t=1690359950;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Pmw6wl1dl2hF+adlNw6TZD6m3IUv+FWrjfWGf2H5N7s=;
- b=VmtJQ6iKvqYmc9ng90Fsovv3fThUsvNmME9k4/oF0NaBzENrToO8oj6OxKYKndd6oYxkLD
- ya7X9r8cWwsggq+E4hSCYrklYY+H0TsRCdRozGGYca6/ERW1VdLZIXqgBSfzntL9GsUEzV
- LobF7rEApW4erEKSzESqp7ipFfL3daQ=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=qwVkhMb9iRcIIGT4ohZ6/VrshuYku0zY90Oa9pu3Adk=;
+ b=fkAn/ofZw7XSBYgGbta7bL9bQ8H786R8b7YIkoNFa9/mOqtqrEvnQSmfbXZk70HtM/XeZM
+ Qd5MaUymNkzHshOITclj9mOE4mWBZATWTUHvWKmRpdoUgpXU1wW627jl0LZ5tn6GiIBM6+
+ Gk+wxwfs2nme4Gh+KOkwlZuFmS0Iq/0=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-155-okeFuGa_M_m1bRCK4v3_xQ-1; Wed, 26 Jul 2023 03:23:21 -0400
-X-MC-Unique: okeFuGa_M_m1bRCK4v3_xQ-1
-Received: by mail-pl1-f197.google.com with SMTP id
- d9443c01a7336-1bb8f751372so32318255ad.0
- for <qemu-devel@nongnu.org>; Wed, 26 Jul 2023 00:23:21 -0700 (PDT)
+ us-mta-67-MCJilTEnMACGkXV6lRjhNA-1; Wed, 26 Jul 2023 04:25:49 -0400
+X-MC-Unique: MCJilTEnMACGkXV6lRjhNA-1
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-99bc711a20eso28473366b.1
+ for <qemu-arm@nongnu.org>; Wed, 26 Jul 2023 01:25:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690356200; x=1690961000;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20221208; t=1690359948; x=1690964748;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Pmw6wl1dl2hF+adlNw6TZD6m3IUv+FWrjfWGf2H5N7s=;
- b=fi1tZ1SYVQVddapEnlfGBUp3PRowqmUkUXnxZ7j62spAqWw+BOua1JtyQhiv4xDb0I
- 2AhISt3xzm/NopIXGsZqrpwnQn6qpn75JzkRlD3ru1tMXWPxLlPo5Q4G91Xo4SXk71PC
- eMrNhBE60YaR1O+H4KL2YVmeY4JANechdUdaIH8Fbb9l/6CInNSID6G4TZIcwfLSBB60
- WUuBo23fCLSvbtGQhXffGI0SzHTKfCiXa8QCb86rfZigVvpgWtXpNqir/nVpw1OUUrtb
- ukQDF5/rJOhUnHqrZIzxBMvBtgPg+lEPWeViPnGrVhGeucKEJ+066nyL/4oaKOVfCWBo
- O7xA==
-X-Gm-Message-State: ABy/qLZRCkOR0jNN5wP8ig3aKwEDx+hiZu8LWz9HEUk6PVBirvwMw9aY
- 5wsgAVuWX7OSur0qqoY01va/11TSgvO2sE2+Sxz8qRmq3Xwt17Af9w/a5HmOwJiHdoyANuYFAMe
- S6HhDO+NdJyzX/dY=
-X-Received: by 2002:a17:903:1cd:b0:1bb:7d2f:7c19 with SMTP id
- e13-20020a17090301cd00b001bb7d2f7c19mr1349466plh.64.1690356200555; 
- Wed, 26 Jul 2023 00:23:20 -0700 (PDT)
-X-Received: by 2002:a17:903:1cd:b0:1bb:7d2f:7c19 with SMTP id
- e13-20020a17090301cd00b001bb7d2f7c19mr1349448plh.64.1690356200209; 
- Wed, 26 Jul 2023 00:23:20 -0700 (PDT)
-Received: from smtpclient.apple ([115.96.152.59])
- by smtp.gmail.com with ESMTPSA id
- y19-20020a170902ed5300b001b3bf8001a9sm3782491plb.48.2023.07.26.00.23.15
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 26 Jul 2023 00:23:19 -0700 (PDT)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.3\))
-Subject: Re: [PATCH v2 2/6] python/machine: close sock_pair in cleanup path
-From: Ani Sinha <anisinha@redhat.com>
-In-Reply-To: <ZMAR3L4O9sSEV4AL@redhat.com>
-Date: Wed, 26 Jul 2023 12:53:13 +0530
-Cc: John Snow <jsnow@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
- =?utf-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Hanna Reitz <hreitz@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>, Kevin Wolf <kwolf@redhat.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <1E4E4974-524B-497B-B605-8906ABB526DF@redhat.com>
-References: <20230725180337.2937292-1-jsnow@redhat.com>
- <20230725180337.2937292-3-jsnow@redhat.com> <ZMAR3L4O9sSEV4AL@redhat.com>
-To: =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>
-X-Mailer: Apple Mail (2.3696.120.41.1.3)
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
+ bh=qwVkhMb9iRcIIGT4ohZ6/VrshuYku0zY90Oa9pu3Adk=;
+ b=jmgMfJD1C0tz3FJ9mh4jZi3kM/eRnIExSBjYq1a85CWVurKQYA4peSKA/HCVWm3Qgr
+ tePFjkdFEoGlQnZWqIoPvoEQ1iGHHTKXoOA8zKjCGWnGkjh6tr5JR9/FxH8K/EZhYpVB
+ +/zRYWaihDx52yVPpb7VAL1hb6/g1Kc63M5QwySU9x2DgAWdzmI/4ZUi6UoB5WBncRs4
+ bJvpEnLTbUASD51z2MRuCtuYQSn7q/sPwp+TWHochqomQsX4ND5ZjINZl3MitUQLbHM7
+ etgzFKBm04q45rhlku7hq4XHlmNGXDnmQvlT6MTyAQAxfcxhQcpFwyHcmOQiFUbjvEgr
+ IsWw==
+X-Gm-Message-State: ABy/qLZTwDMIkgopLoldrzElhC9oU+OIbm7IsmjL+9kR4op8z3MzRkbr
+ 1edUSCDSEZ8vyrzWqvDFNv8AeHyjOOGAmp3RhZ1Bp17BjeskIl0LWVtbXYg4gHRGDKQ1oBX9+Hq
+ RVcClJVizT7nX
+X-Received: by 2002:a17:906:220c:b0:99b:4a6f:9c72 with SMTP id
+ s12-20020a170906220c00b0099b4a6f9c72mr1176690ejs.72.1690359948027; 
+ Wed, 26 Jul 2023 01:25:48 -0700 (PDT)
+X-Received: by 2002:a17:906:220c:b0:99b:4a6f:9c72 with SMTP id
+ s12-20020a170906220c00b0099b4a6f9c72mr1176672ejs.72.1690359947763; 
+ Wed, 26 Jul 2023 01:25:47 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ q15-20020a17090622cf00b0098e42bef732sm631390eja.183.2023.07.26.01.25.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 26 Jul 2023 01:25:47 -0700 (PDT)
+Date: Wed, 26 Jul 2023 10:25:46 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Sunil V L <sunilvl@ventanamicro.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Palmer
+ Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>, Daniel
+ Henrique Barboza <dbarboza@ventanamicro.com>, Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>, Andrew Jones <ajones@ventanamicro.com>,
+ Anup Patel <apatel@ventanamicro.com>
+Subject: Re: [PATCH 01/10] hw/arm/virt-acpi-build.c: Move fw_cfg and virtio
+ to common location
+Message-ID: <20230726102546.1cad6113@imammedo.users.ipa.redhat.com>
+In-Reply-To: <ZL/9XO47yEnaNzyN@sunil-laptop>
+References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
+ <20230712163943.98994-2-sunilvl@ventanamicro.com>
+ <20230724171859.212fec62@imammedo.users.ipa.redhat.com>
+ <ZL/9XO47yEnaNzyN@sunil-laptop>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -130,76 +134,63 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Rh5+5ddlqCv9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HWsuSMEyHbNk
 
+On Tue, 25 Jul 2023 22:20:36 +0530
+Sunil V L <sunilvl@ventanamicro.com> wrote:
 
+> On Mon, Jul 24, 2023 at 05:18:59PM +0200, Igor Mammedov wrote:
+> > On Wed, 12 Jul 2023 22:09:34 +0530
+> > Sunil V L <sunilvl@ventanamicro.com> wrote:
+> >   
+> > > The functions which add fw_cfg and virtio to DSDT are same for ARM
+> > > and RISC-V. So, instead of duplicating in RISC-V, move them from
+> > > hw/arm/virt-acpi-build.c to common aml-build.c.
+> > > 
+> > > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> > > ---
+> > >  hw/acpi/aml-build.c         | 41 ++++++++++++++++++++++++++++++++++++
+> > >  hw/arm/virt-acpi-build.c    | 42 -------------------------------------
+> > >  hw/riscv/virt-acpi-build.c  | 16 --------------
+> > >  include/hw/acpi/aml-build.h |  6 ++++++
+> > >  4 files changed, 47 insertions(+), 58 deletions(-)
+> > > 
+> > > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c  
+> > 
+> > patch looks fine modulo,
+> > I'd put these into respective device files instead of generic
+> > aml-build.c which was intended for basic AML primitives
+> > (it 's got polluted over time with device specific functions
+> > but that's not the reason to continue doing that).
+> > 
+> > Also having those functions along with devices models
+> > goes along with self enumerating ACPI devices (currently
+> > it works for x86 PCI/ISA device but there is no reason
+> > that it can't work with other types as well when
+> > I get there)
+> >   
+> Thanks!, Igor. Let me add them to device specific files as per your
+> recommendation.
+just be careful and build test other targets (while disabling the rest)
+at least no to regress them due to build deps. (I'd pick 2 with ACPI
+support that use and not uses affected code) and 1 that  uses device
+model but doesn't use ACPI at all (if such exists)
 
-> On 25-Jul-2023, at 11:48 PM, Daniel P. Berrang=C3=A9 =
-<berrange@redhat.com> wrote:
->=20
-> On Tue, Jul 25, 2023 at 02:03:33PM -0400, John Snow wrote:
->> If everything has gone smoothly, we'll already have closed the socket =
-we
->> gave to the child during post_launch. The other half of the pair that =
-we
->> gave to the QMP connection should, likewise, be definitively closed =
-by
->> now.
->>=20
->> However, in the cleanup path, it's possible we've created the =
-socketpair
->> but flubbed the launch and need to clean up resources. These =
-resources
->> *would* be handled by the garbage collector, but that can happen at
->> unpredictable times. Nicer to just clean them up synchronously on the
->> exit path, here.
->>=20
->> Signed-off-by: John Snow <jsnow@redhat.com>
-
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
-
->> ---
->> python/qemu/machine/machine.py | 5 +++++
->> 1 file changed, 5 insertions(+)
->>=20
->> diff --git a/python/qemu/machine/machine.py =
-b/python/qemu/machine/machine.py
->> index 8be0f684fe..26f0fb8a81 100644
->> --- a/python/qemu/machine/machine.py
->> +++ b/python/qemu/machine/machine.py
->> @@ -395,6 +395,11 @@ def _post_shutdown(self) -> None:
->>         finally:
->>             assert self._qmp_connection is None
->>=20
->> +        if self._sock_pair:
->> +            self._sock_pair[0].close()
->> +            self._sock_pair[1].close()
->> +            self._sock_pair =3D None
->> +
->=20
-> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->=20
-> With regards,
-> Daniel
-> --=20
-> |: https://berrange.com      -o-    =
-https://www.flickr.com/photos/dberrange :|
-> |: https://libvirt.org         -o-            =
-https://fstop138.berrange.com :|
-> |: https://entangle-photo.org    -o-    =
-https://www.instagram.com/dberrange :|
->=20
+> 
+> Thanks!
+> Sunil
+> 
 

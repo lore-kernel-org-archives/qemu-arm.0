@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp198311ejb;
-        Tue, 25 Jul 2023 17:35:40 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHl8v92pR4mSogs+7ejcK9bpcOXbhPXWtEjhIlsDXHZ6yVDXJYDgXVflezDjGs9X4u2Mr3S
-X-Received: by 2002:a05:620a:2494:b0:75e:bdee:367e with SMTP id i20-20020a05620a249400b0075ebdee367emr682303qkn.47.1690331739985;
-        Tue, 25 Jul 2023 17:35:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690331739; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp198442ejb;
+        Tue, 25 Jul 2023 17:35:56 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlH5Ip1xifUIHCinmkqKVgYUJkXE58YsSWa2pnvwmuclhMXcS0KYuaxE/nyaQkpuZbDbHbXo
+X-Received: by 2002:a05:622a:1446:b0:401:1960:34ba with SMTP id v6-20020a05622a144600b00401196034bamr674779qtx.51.1690331756586;
+        Tue, 25 Jul 2023 17:35:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690331756; cv=none;
         d=google.com; s=arc-20160816;
-        b=OPm+Ety/ZxHZdLBZO87oqxF0O2UtcaMMqjzAQHnwNnm+rmasbEaSXttwsVwxI69JP4
-         9hF7wI1bWNkFcTDRgMVTDQiTOrIUiqof0EozarIfdXIPatXaR5DEplPuXn9VgbgdmGg6
-         ES1E8eUK4XiByY21KNio3rbm2NkFqlG6gFWOos8PdaKe8fcV2mOPznb5LRz/HXWr3/V7
-         Fm3iSLaqgohoC7WMMbxYT/qIMawy/KUGepYmYQMiEmOQBghD/ZCLus7Kckuhhd0Zkptf
-         HStqAlPOA1YLQUk6sf1Bg9fbdpA1li5klaDeqTAhoD4o0OFKzqLsaPTbHFzYs31CnXd+
-         eGzw==
+        b=lvXNbxW3oahSXakBzGubsrzcBOlVfqiOipxfuaA0npHMRuXDoQxRmnPwDpai5472ex
+         qBcEUAi/2rMXzlnvy1rsvxOg53lVmeu7kXgptVQ74YzGW5162Gy3U0IiFfqqKo9LADC+
+         WDTXBcTbbsH8MXBU21XXiootyGZnaZBJh9YYigMpPCpF+U4dy7nbBaKbY1jDonRewypa
+         jqp1unqrFJVMOsW/TR4AdBxpU1VLOMyq3HPuAZRqk0TTz0nIdAttpJRcfy+ENfMyYZ68
+         HpdWlr8/MYy5myJ5NOUTcsezx+U6tX6gWuqH2zsEMSo8nCYCLEPwMxtoJnafKJIw9YmR
+         3aCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=J8S0eAWzN6EGtNTjC2qFLYW++XUaEL4oEsl8iKKMElY=;
+        bh=26N7Vh+u0KOHFAhb0L1Q0yfOwGybUwteYTG075B8U+o=;
         fh=FuziOALKyXfrMoq6H15/q1ev+uC2b5q3xHaYPu2Bj/E=;
-        b=wwAmbck6IR5HHchJtfl7WYeEgFfDWCLkJqEQvV+oos5BOrxYXZTfEGAheg+8y05Q09
-         fsiSATAkiRZjhV54HlwqgGJGbgOCJWlegD9vXqRPRh6GHp/PNZJtNJmmKSlfNIXtWgNn
-         6uAW94baVdo5SwY6Ax5steW5Mv9t4PWbOW0clb/zcRrTT2ArE3tdjPVNcT3dpwSLL91G
-         MhFJ0G8YX8vt6O2BXfoygIWyVsWUMEGS8tHfGvf4ptpG7JO0NXNCJaoa5whE2Ry/sFbJ
-         MFISgtfpaecr2hSnbiX0Vfhu/k5JI2ob+0tT9vF67yvaDnbjkz16nGTe1CCZjL7l+wyw
-         xx9A==
+        b=WSx4+mkuwj8PI7q7mOoyvqgY1PZWXeDuPjjazQ1RHNoEbxvWvv3vYis4ck295XxluQ
+         LwAjXWS20RhnHwj4zpYkpN2gduB3o45TcCEjFpKRCvL02pVvsTWYahWY9zQc6Ugahlw8
+         lL9DPvXZGbZ2lwDzN63P7vNPfVHUWMR8pQHSrk5K4n1ftQiGOlm2aPKwK3JCyvWviURb
+         pmYBSffSTDUI3gs5R6reIxcCofuTaye8u38zpcL2IJqTZN7NpETUi7k6IH5bSgeSkRP+
+         CGw1D72H8bRWP47ne61AXt5+vyUR9mE+/LKmP+SkRBCqsYFEmBuZrJQ+Kc/bkDPvZWrg
+         y3Tw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IY5WVeic;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eM2egqYN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a17-20020a0cb351000000b00636f5fd3bc6si7054299qvf.62.2023.07.25.17.35.39
+        by mx.google.com with ESMTPS id d18-20020ac85d92000000b00406a59248adsi2259142qtx.790.2023.07.25.17.35.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jul 2023 17:35:39 -0700 (PDT)
+        Tue, 25 Jul 2023 17:35:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IY5WVeic;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eM2egqYN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOSTi-0001wv-0J; Tue, 25 Jul 2023 20:34:10 -0400
+	id 1qOSTn-000239-0t; Tue, 25 Jul 2023 20:34:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qOSTg-0001uJ-A9
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 20:34:08 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qOSTm-00021R-0M
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 20:34:14 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qOSTd-0003BB-Az
- for qemu-arm@nongnu.org; Tue, 25 Jul 2023 20:34:08 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qOSTj-0003DL-BR
+ for qemu-arm@nongnu.org; Tue, 25 Jul 2023 20:34:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690331639;
+ s=mimecast20190719; t=1690331650;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=J8S0eAWzN6EGtNTjC2qFLYW++XUaEL4oEsl8iKKMElY=;
- b=IY5WVeiceHRIVmRaQJuVo+oNvQ8BtsBECERaudajt+AmsiqVSCpMVugENnca/ncUP0PhGp
- ODq8rrqAqOb5EAk7q0iqhQ2T9f+4+Crq+VT1fEfPdT6bPSBs2ab6Q8Q6ElXzA0JtA65MdY
- ZSeI+PlefBf/5+Loy331y8O2Z3m7S50=
+ bh=26N7Vh+u0KOHFAhb0L1Q0yfOwGybUwteYTG075B8U+o=;
+ b=eM2egqYNWFsqOW4OzY8fAe2nuyDsZYAAhhbpPPmRBfzv74qwY0g4LkkLMxS2Bl061BXSbm
+ 3yD4QUymCxTHt0twzXxVCbziYTcVxfkWJpjj4ng4/bUwTel3dtKQMVVIwPAHKCxCsP00wf
+ n3EMTof6NBKk8ap2/IJoekBeEDzkyIw=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-573-05eIoiskP4W0CGpOtJpIhA-1; Tue, 25 Jul 2023 20:33:57 -0400
-X-MC-Unique: 05eIoiskP4W0CGpOtJpIhA-1
+ us-mta-633-B4_NLybtPG2_zUm-kxJImQ-1; Tue, 25 Jul 2023 20:34:06 -0400
+X-MC-Unique: B4_NLybtPG2_zUm-kxJImQ-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
  [10.11.54.10])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E09FF8030AC;
- Wed, 26 Jul 2023 00:33:55 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3528A800B35;
+ Wed, 26 Jul 2023 00:34:05 +0000 (UTC)
 Received: from gshan.redhat.com (unknown [10.64.136.80])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6621F4A9004;
- Wed, 26 Jul 2023 00:33:47 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 708C1492C13;
+ Wed, 26 Jul 2023 00:33:56 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
@@ -88,9 +88,10 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  imammedo@redhat.com, cohuck@redhat.com, richard.henderson@linaro.org,
  pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v2 5/8] hw/arm/virt: Unsupported host CPU model on TCG
-Date: Wed, 26 Jul 2023 10:32:02 +1000
-Message-ID: <20230726003205.1599788-6-gshan@redhat.com>
+Subject: [PATCH v2 6/8] hw/arm/sbsa-ref: Check CPU type in
+ machine_run_board_init()
+Date: Wed, 26 Jul 2023 10:32:03 +1000
+Message-ID: <20230726003205.1599788-7-gshan@redhat.com>
 In-Reply-To: <20230726003205.1599788-1-gshan@redhat.com>
 References: <20230726003205.1599788-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -121,48 +122,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cg9sOj9RuzAc
+X-TUID: RrYOlGXcBXb6
 
-The 'host' CPU model isn't supported until KVM or HVF is enabled.
-For example, the following error messages are seen when the guest
-is started with option '-cpu cortex-a8'.
-
-  qemu-system-aarch64: Invalid CPU type: cortex-a8-arm-cpu
-  The valid models are: cortex-a7, cortex-a15, cortex-a35,
-  cortex-a55, cortex-a72, cortex-a76, a64fx, neoverse-n1,
-  neoverse-v1, cortex-a53, cortex-a57, host, max
-
-Hide 'host' CPU model until KVM or HVF is enabled.
+Set mc->valid_cpu_{types, models} so that the specified CPU type
+can be checked in machine_run_board_init(). We needn't to do the
+check by ourselves.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- hw/arm/virt.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/arm/sbsa-ref.c | 29 ++++++++++++-----------------
+ 1 file changed, 12 insertions(+), 17 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index debd85614e..2562ca0c1e 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -217,7 +217,9 @@ static const char * const valid_cpu_types[] = {
- #endif
-     ARM_CPU_TYPE_NAME("cortex-a53"),
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index bc89eb4806..66d171b745 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -149,25 +149,23 @@ static const int sbsa_ref_irqmap[] = {
+     [SBSA_GWDT_WS0] = 16,
+ };
+ 
+-static const char * const valid_cpus[] = {
++static const char * const valid_cpu_types[] = {
      ARM_CPU_TYPE_NAME("cortex-a57"),
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-     ARM_CPU_TYPE_NAME("host"),
-+#endif
+     ARM_CPU_TYPE_NAME("cortex-a72"),
+     ARM_CPU_TYPE_NAME("neoverse-n1"),
+     ARM_CPU_TYPE_NAME("neoverse-v1"),
      ARM_CPU_TYPE_NAME("max"),
-     NULL
++    NULL,
  };
-@@ -236,7 +238,9 @@ static const char * const valid_cpu_models[] = {
- #endif
-     "cortex-a53",
-     "cortex-a57",
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-     "host",
-+#endif
-     "max",
-     NULL
- };
+ 
+-static bool cpu_type_valid(const char *cpu)
+-{
+-    int i;
+-
+-    for (i = 0; i < ARRAY_SIZE(valid_cpus); i++) {
+-        if (strcmp(cpu, valid_cpus[i]) == 0) {
+-            return true;
+-        }
+-    }
+-    return false;
+-}
++static const char * const valid_cpu_models[] = {
++    "cortex-a57",
++    "cortex-a72",
++    "neoverse-n1",
++    "neoverse-v1",
++    "max",
++    NULL,
++};
+ 
+ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+ {
+@@ -730,11 +728,6 @@ static void sbsa_ref_init(MachineState *machine)
+     const CPUArchIdList *possible_cpus;
+     int n, sbsa_max_cpus;
+ 
+-    if (!cpu_type_valid(machine->cpu_type)) {
+-        error_report("sbsa-ref: CPU type %s not supported", machine->cpu_type);
+-        exit(1);
+-    }
+-
+     if (kvm_enabled()) {
+         error_report("sbsa-ref: KVM is not supported for this machine");
+         exit(1);
+@@ -899,6 +892,8 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
+     mc->init = sbsa_ref_init;
+     mc->desc = "QEMU 'SBSA Reference' ARM Virtual Machine";
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("neoverse-n1");
++    mc->valid_cpu_types = valid_cpu_types;
++    mc->valid_cpu_models = valid_cpu_models;
+     mc->max_cpus = 512;
+     mc->pci_allow_0_address = true;
+     mc->minimum_page_bits = 12;
 -- 
 2.41.0
 

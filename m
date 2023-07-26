@@ -1,138 +1,73 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp449195ejb;
-        Wed, 26 Jul 2023 03:51:15 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFYBo13oFKTV5UODW+Ay4AwjCEWIA60MSXB3iwx3Rl2oNvoSN9UvaOm1VxJrDLX6TJmUARR
-X-Received: by 2002:ad4:46ce:0:b0:63c:f835:4558 with SMTP id pm14-20020ad446ce000000b0063cf8354558mr1371018qvb.57.1690368675297;
-        Wed, 26 Jul 2023 03:51:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690368675; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp617782ejb;
+        Wed, 26 Jul 2023 08:12:51 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFzP+t1jqZwfTgx0fR9I3BNeAEnkm4bV+/y52mmtsMuimoq70xgLf1jleCfSu8KFB0k7tF6
+X-Received: by 2002:a05:6214:62a:b0:637:707:120 with SMTP id a10-20020a056214062a00b0063707070120mr7652826qvx.15.1690384370733;
+        Wed, 26 Jul 2023 08:12:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690384370; cv=none;
         d=google.com; s=arc-20160816;
-        b=S5UKDdnc8LV/7s++E9FTQGcBbdCzk6d+VuY2mYo8rTZOzLiwxtKPgP9U2iNHO+e2/R
-         ZISB/Y5LIjIzDkU3GQLoBbA8ZTQT2MvYmnvxA0GZENgyox2TRVnANcD8IrkBn6JZ9bF0
-         Ea+dpjI1GENmqmXUafcuxofJ7PVhfhnfN7FZVPK4YP+EMXI7f/uJfILq99BlP038fXFt
-         r9meZWoRD01Whf1Ke4QNT6MqOxoekpgWsi3Hkf72HcXB8+sWWo71FClB/vRswJaRFDF/
-         CanjKJAykwXYd8Mv80rES0AImt3E/RqmSQbIBsXTlrUqqHumtR2P99ww6gpD9xqsbYY9
-         5Zug==
+        b=iHC7UBwHGQDb1nnn6GVf+CBEK8E5QXW4BxtbLyYNbXSsWJ+wuCNQVaEf0Nv88gB/FN
+         Iu1lpUvOybtfkK5/tX3CG7j2+Tw2n5fnRSNMlHqJaXt9eH7XhNf9+B5affw7ERROSdol
+         baL9sFTxOnM1RpXZSfYs2FtSQbjU/C7vFFHNjucPbuvajwuSMeyCizQ1PoU942fkX3xc
+         RhhqxZ0ydjG6a07M18VfkqeZpubg8YiYeSnwBwH/OFWZJ0D5Y5VtJuQEgoTst5UrtV9Z
+         KYG9lA6bDi3AHNAwHOiG6rPGH9gs16TZZfNSTYFknJbv20/oQXsXJdMrnY2P0D0UiDBu
+         kvHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :references:message-id:cc:date:in-reply-to:from:subject:mime-version
-         :dkim-signature;
-        bh=070pEgKe4ZfrN7imjYhAHWaGkJ5QY32zhjnYBw2f830=;
-        fh=3mAJYZQhXDvlBNGaGFEUqy2PPsrVZf8Wh56w6B4PPoQ=;
-        b=mg+1uOOsuVfL3c9jJi7qrF5ZKOWKI1XniayWdOOh9MnK6z4AjWAGvF9ImS1WvtobAh
-         +WnbrLyP+WqTnbGFDA+EhdSMBYJENS31i4pfrRUJNEiUzadZ3B4DOfeKhX28RuM/EWyI
-         Ut7/59HclBKT4gu3RdL1cF303RePZ9/CIN650AXnnqT1v8YknUSRuX3omrmvCC4rEb+J
-         z/kWdf8ntSIC43H/BTet0i42FyKgGCscQs9qxC+wxC8zJGHIamixkXTbfL8Rb6fTsj2k
-         XgtjiQpUY1djkoN+7ftZZHdnjAvPAodxj0MXS66G9wJtqqG5WG2JKV0dil8yuNicuvts
-         8v1Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=vGd9BO2gWsDD5jiD7uGX7NI67n8YdnepoA7sxpi283w=;
+        fh=JgnsB9XLFuPngT7wqypJCHdtxW/PW9Tm1+2z4tmHVig=;
+        b=YgHxVHuph9Qq1GPMUNLOb5seE4Rk9jZt5C1BqG5nfX0+SwTpf8T4Ue/TQpVV3W2IyU
+         +Pf9YDkuv9b1q9sA0uxg7i5houShJPerl2MxZFwvE4c5bWnjnrtmbs0Vvj8qMu/2r+O9
+         fEP6Nn1J1DDG94GiocC1KK4m74SaX/Tt6SP3RqhuQZpyxPWilPC5g0iJfentznWVK2/d
+         zjKCWJkh8RpFrgCsTeNT1/G1ozCh/LTdZDZRi7EO7npEbPE1t3tq6XXHZbcREwpFkVnS
+         h4ET8qHyBhgQjwA8j4d5SlJYXzm8uhg7/MSalfwO3O5Dwp/mleB8YIQ2eqk3Rl5BtWH4
+         +VzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xb6a5e6A;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b10-20020a0cc98a000000b0063cf494ddacsi5091867qvk.58.2023.07.26.03.51.14
+        by mx.google.com with ESMTPS id k9-20020a0cb249000000b0063d1f9b0d6bsi2119421qve.282.2023.07.26.08.12.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jul 2023 03:51:15 -0700 (PDT)
+        Wed, 26 Jul 2023 08:12:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xb6a5e6A;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOc6U-0002mr-6o; Wed, 26 Jul 2023 06:50:50 -0400
+	id 1qOfz8-0006Pt-NA; Wed, 26 Jul 2023 10:59:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1qOc6R-0002mI-Oz
- for qemu-arm@nongnu.org; Wed, 26 Jul 2023 06:50:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
+ id 1qOfya-00066e-TI
+ for qemu-arm@nongnu.org; Wed, 26 Jul 2023 10:58:56 -0400
+Received: from relay8-d.mail.gandi.net ([217.70.183.201])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1qOc6Q-0006QJ-33
- for qemu-arm@nongnu.org; Wed, 26 Jul 2023 06:50:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690368645;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=070pEgKe4ZfrN7imjYhAHWaGkJ5QY32zhjnYBw2f830=;
- b=Xb6a5e6AQmJZWqhqb47vN0hbkhpBMeVplXePdT03DYIpZS87jTnRhFo0w3KyaOoAAzNwTF
- nLJe81NmN8UpGxn1aqzKshYpP1BiZNSUpxhOnhuYBTPjAgqLFk/pWxuq7EO/UhUR935NY8
- CFx97q+ropN9ydyZGeLeL+VvK5NMYPo=
-Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
- [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-328-9Fu_4x6eN0CdVvoJqgOeAA-1; Wed, 26 Jul 2023 06:50:42 -0400
-X-MC-Unique: 9Fu_4x6eN0CdVvoJqgOeAA-1
-Received: by mail-pl1-f199.google.com with SMTP id
- d9443c01a7336-1bb8f751372so33605155ad.0
- for <qemu-arm@nongnu.org>; Wed, 26 Jul 2023 03:50:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690368641; x=1690973441;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=PD5HhGgtAoKXVCR/fk7txnORSMgwH0u7OuToY6KcWoo=;
- b=WAKt8pmPegz1NSV+fVaZqGy/iWqZftkHX3M4Ytb/dybLw087vDYHihLtkgf9Cxr02H
- pGE8670DvrHrTHCD6QHc3JNmxo5j4br4HGGeDil8sGWVU9lZE/e0HwFXemyAvijl+dxl
- /P9WH9tfoHVKSKyMG4qPH6n6mPZwZy4PAaqPom1fDESoetSc7qu0AfddTfPpFInZu8/0
- I05NB8Bpxywp23MKnsfO6A0WSXYHmG+ZVvQEJwrewjOw6IYrkmrQyTH9TYH3IY66DsVE
- 3VjXj7ZurvQJNw3jgetgni+RIFVBiM3q/TLlfpXg9UN2pt7nITCJfu4IiEUVIW6aakPD
- dOmQ==
-X-Gm-Message-State: ABy/qLZyutnjnPmI17OU2N0aexOUy5WBdlLsKf/Fm3wl83yKIpaxXxlB
- 5Q0qU5Vd9IFq6F/vTPalAuF2mIJ1P+SgG44ZfoBpmqifkL+5BG6Ept8ONpNmZfNpGGlZ36lTYBA
- hKPpKKFTQ/Spb
-X-Received: by 2002:a17:902:e5c2:b0:1b8:987f:3f34 with SMTP id
- u2-20020a170902e5c200b001b8987f3f34mr2115678plf.25.1690368641054; 
- Wed, 26 Jul 2023 03:50:41 -0700 (PDT)
-X-Received: by 2002:a17:902:e5c2:b0:1b8:987f:3f34 with SMTP id
- u2-20020a170902e5c200b001b8987f3f34mr2115660plf.25.1690368640699; 
- Wed, 26 Jul 2023 03:50:40 -0700 (PDT)
-Received: from smtpclient.apple ([115.96.152.59])
- by smtp.gmail.com with ESMTPSA id
- 1-20020a170902c10100b001bb9aadfb04sm6938401pli.220.2023.07.26.03.50.35
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 26 Jul 2023 03:50:40 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.3\))
-Subject: Re: [PATCH v2 4/6] python/machine: use socketpair() for console
- connections
-From: Ani Sinha <anisinha@redhat.com>
-In-Reply-To: <20230725180337.2937292-5-jsnow@redhat.com>
-Date: Wed, 26 Jul 2023 16:20:33 +0530
-Cc: qemu-devel <qemu-devel@nongnu.org>,
- =?utf-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Hanna Reitz <hreitz@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>, Kevin Wolf <kwolf@redhat.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Beraldo Leal <bleal@redhat.com>, Daniel Berrange <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Message-Id: <B867C4E8-24FC-4C4E-9FE8-2353CC21320C@redhat.com>
-References: <20230725180337.2937292-1-jsnow@redhat.com>
- <20230725180337.2937292-5-jsnow@redhat.com>
-To: John Snow <jsnow@redhat.com>
-X-Mailer: Apple Mail (2.3696.120.41.1.3)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain;
-	charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
+ id 1qOfyY-00039Q-V0
+ for qemu-arm@nongnu.org; Wed, 26 Jul 2023 10:58:56 -0400
+Received: by mail.gandi.net (Postfix) with ESMTPA id 493031BF20F;
+ Wed, 26 Jul 2023 14:58:48 +0000 (UTC)
+From: Jean-Christophe Dubois <jcd@tribudubois.net>
+To: qemu-arm@nongnu.org
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
+Subject: [PATCH 0/3] Complete i.MX6UL and i.MX7 processor for bare metal
+Date: Wed, 26 Jul 2023 16:58:43 +0200
+Message-Id: <cover.1690380197.git.jcd@tribudubois.net>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: jcd@tribudubois.net
+Received-SPF: pass client-ip=217.70.183.201; envelope-from=jcd@tribudubois.net;
+ helo=relay8-d.mail.gandi.net
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,121 +82,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xaS9BSB88po5
+X-TUID: cSsjQybZu0sj
 
+This patch adds a few unimplemented TZ devices (TZASC and CSU) to
+i.MX6UL and i.MX7 processors to avoid bare metal application to
+experiment "bus error" when acccessing these devices.
 
+It also adds some internal memory segments (OCRAM) to the i.MX7 to
+allow bare metal application to use them.
 
-> On 25-Jul-2023, at 11:33 PM, John Snow <jsnow@redhat.com> wrote:
->=20
-> Create a socketpair for the console output. This should help eliminate
-> race conditions around console text early in the boot process that might
-> otherwise have been dropped on the floor before being able to connect to
-> QEMU under "server,nowait".
->=20
-> Signed-off-by: John Snow <jsnow@redhat.com>
+Last, it adds the SRC device to the i.MX7 processor to allow bare
+metal application to start the secondary Cortex-A7 core.
 
-Thanks for doing this. I recall we spoke about this late last year in the c=
-ontext of fixing my bios-bits avocado test and adding a console output ther=
-e.
-Except the concern below,
+Note: When running Linux inside Qemu, the secondary core is started
+by calling PSCI API and Qemu is emulating PSCI without needing access
+to the SRC device. This is why Linux is using the 2 cores in Qemu
+even if the SRC is not implemented. This is not the case when running
+bare metal application (like u-boot itself) that do not rely on the
+PSCI service being available.
 
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
+Jean-Christophe Dubois (3):
+  Rework i.MX6UL device implementation/instantiation
+  Rework i.MX7 device implementation/instantiation
+  Add i.MX7 SRC device implementation
 
+ hw/arm/fsl-imx6ul.c         | 163 ++++++++++++-----
+ hw/arm/fsl-imx7.c           | 204 ++++++++++++++++-----
+ hw/misc/imx7_src.c          | 289 ++++++++++++++++++++++++++++++
+ hw/misc/meson.build         |   1 +
+ include/hw/arm/fsl-imx6ul.h | 149 +++++++++++++--
+ include/hw/arm/fsl-imx7.h   | 348 +++++++++++++++++++++++++++---------
+ include/hw/misc/imx7_src.h  |  68 +++++++
+ 7 files changed, 1038 insertions(+), 184 deletions(-)
+ create mode 100644 hw/misc/imx7_src.c
+ create mode 100644 include/hw/misc/imx7_src.h
 
-> ---
-> python/qemu/machine/machine.py | 30 +++++++++++++++++++++++++++---
-> 1 file changed, 27 insertions(+), 3 deletions(-)
->=20
-> diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine=
-.py
-> index 26f0fb8a81..09f214c95c 100644
-> --- a/python/qemu/machine/machine.py
-> +++ b/python/qemu/machine/machine.py
-> @@ -159,6 +159,8 @@ def __init__(self,
->=20
->         self._name =3D name or f"{id(self):x}"
->         self._sock_pair: Optional[Tuple[socket.socket, socket.socket]] =
-=3D None
-> +        self._cons_sock_pair: Optional[
-> +            Tuple[socket.socket, socket.socket]] =3D None
->         self._temp_dir: Optional[str] =3D None
->         self._base_temp_dir =3D base_temp_dir
->         self._sock_dir =3D sock_dir
-> @@ -315,8 +317,9 @@ def _base_args(self) -> List[str]:
->         for _ in range(self._console_index):
->             args.extend(['-serial', 'null'])
->         if self._console_set:
-> -            chardev =3D ('socket,id=3Dconsole,path=3D%s,server=3Don,wait=
-=3Doff' %
-> -                       self._console_address)
-> +            assert self._cons_sock_pair is not None
-> +            fd =3D self._cons_sock_pair[0].fileno()
-> +            chardev =3D f"socket,id=3Dconsole,fd=3D{fd}"
->             args.extend(['-chardev', chardev])
->             if self._console_device_type is None:
->                 args.extend(['-serial', 'chardev:console'])
-> @@ -351,6 +354,10 @@ def _pre_launch(self) -> None:
->                 nickname=3Dself._name
->             )
->=20
-> +        if self._console_set:
-> +            self._cons_sock_pair =3D socket.socketpair()
-> +            os.set_inheritable(self._cons_sock_pair[0].fileno(), True)
-> +
->         # NOTE: Make sure any opened resources are *definitely* freed in
->         # _post_shutdown()!
->         # pylint: disable=3Dconsider-using-with
-> @@ -368,6 +375,9 @@ def _pre_launch(self) -> None:
->     def _post_launch(self) -> None:
->         if self._sock_pair:
->             self._sock_pair[0].close()
-> +        if self._cons_sock_pair:
-> +            self._cons_sock_pair[0].close()
-> +
->         if self._qmp_connection:
->             if self._sock_pair:
->                 self._qmp.connect()
-> @@ -518,6 +528,11 @@ def _early_cleanup(self) -> None:
->             self._console_socket.close()
->             self._console_socket =3D None
->=20
-> +        if self._cons_sock_pair:
-> +            self._cons_sock_pair[0].close()
-> +            self._cons_sock_pair[1].close()
-> +            self._cons_sock_pair =3D None
-> +
->     def _hard_shutdown(self) -> None:
->         """
->         Perform early cleanup, kill the VM, and wait for it to terminate.
-> @@ -878,10 +893,19 @@ def console_socket(self) -> socket.socket:
->         Returns a socket connected to the console
->         """
->         if self._console_socket is None:
-> +            if not self._console_set:
-> +                raise QEMUMachineError(
-> +                    "Attempt to access console socket with no connection=
-")
-> +            assert self._cons_sock_pair is not None
-> +            # os.dup() is used here for sock_fd because otherwise we'd
-> +            # have two rich python socket objects that would each try to
-> +            # close the same underlying fd when either one gets garbage
-> +            # collected.
->             self._console_socket =3D console_socket.ConsoleSocket(
-> -                self._console_address,
-> +                sock_fd=3Dos.dup(self._cons_sock_pair[1].fileno()),
->                 file=3Dself._console_log_path,
->                 drain=3Dself._drain_console)
-> +            self._cons_sock_pair[1].close()
-
-I am not 100% sure but should we save the new sock_fd here? Like
-self._cons_sock_pair[1] =3D sock_fd ;
-
-Then next time console_socket() is invoked, the correct fd will be duped.
-
->         return self._console_socket
->=20
->     @property
-> --=20
-> 2.41.0
->=20
+-- 
+2.34.1
 

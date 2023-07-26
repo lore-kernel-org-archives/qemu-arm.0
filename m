@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp563281ejb;
-        Wed, 26 Jul 2023 06:55:02 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFZVMr2yzDhwPMleSrpa9PmyD+VEjVn5vehXhrP49A71VLU57asAY1VNyiQ7h5oZgks3+Sn
-X-Received: by 2002:a05:622a:1485:b0:403:fbb3:8907 with SMTP id t5-20020a05622a148500b00403fbb38907mr2438067qtx.65.1690379702578;
-        Wed, 26 Jul 2023 06:55:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690379702; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp563943ejb;
+        Wed, 26 Jul 2023 06:56:11 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHW0LQfXXdV9Z5hTiPi8942YISM5CPE9eBY64hBcc97+d0rX581yq+vCJpea+N71OnpuOnz
+X-Received: by 2002:a05:622a:46:b0:404:76a0:c3e4 with SMTP id y6-20020a05622a004600b0040476a0c3e4mr2589127qtw.17.1690379771340;
+        Wed, 26 Jul 2023 06:56:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690379771; cv=none;
         d=google.com; s=arc-20160816;
-        b=xVYKh5l59Vk39dDohhdZHtA9zvtfX3QXPKwgZU4jXE/LBFVkvq2aaN/GxH1YPTvdH5
-         do+06jB6sOXtpXpRkJJalQcQAgmlMJTYUPDlV4uBosRiIbzZ5Z/62mVPXBN/XlIt4Nyr
-         C5DYb9xqIaDVT+eIYm+JI79rTY5CahE+2XFaVU0kdZz15gbBUEMU6b8bhyhF1N+NUwDR
-         uKQ+CNikS2LIhnPCFtr0CQLfx7iufPTxXlg2DTRd+Jd2CoS8TFWAS4uREvReYjsRZv8k
-         kucuXJD0RC0plYOKWD+h1YK5XNhqYV85Vn7TymH/Yo71efx+8fSHjShnYj0fZgx4P11I
-         +1bg==
+        b=LsQB0hAyZNQ5CsODe5Sy5hjTOs2CqztHBZ8G1rmpRtOjZRKcbntevEAIPbUHgo26SD
+         A1mrkKy+Yi4IVmprayImPadYxqD/NVDn1JR+Kb61U+opQwfrtcWRvOG40or0SlKzFVXR
+         V66AC9ThCK5fbyeAdyBeVLu8bHKqZ0TECMT8X9pWvEBNCLxmxF8m5N/QST7Tf7wSUT1T
+         1T54OjHDklRsOUUJh9frYZQZ7pKzpg5nKx2zZIFUiq9NWn9JxVS0z/AMoSWZ5kHE1+EF
+         0uP2Sb22b+TQswGfp32CeVpcvl8+FL4u3FQo+7Qd7HM15MxbAO967PBUtsXQMaiC1dEF
+         jMBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=/qANR99YnNIUbYven75G7/rKePRG7+0KMRhRw5KLj3k=;
+        bh=uKhEuIKwITdrcIVOAcQ7yfs/MBUjfcLpaxFMigaCLxc=;
         fh=f5jt6gD4kTKAQV2ukO6ZfXPs+EJm4Q1+uDtHV6gcJRE=;
-        b=CzFlMjbu4j7Phy+kcJgBNXxU7/DEvn2mfcWAup2n8PhqFVh+SOC+qkvcwrCaCU+D/E
-         wPTcjOenjcWDpYtml6F0PuiZ+boPiMZPFxEqCp0s9C3L+RUJFy5DqdersCsFPLnkfqtS
-         nwpgauWXj7pFQyujOZFfeM7M3gfT3EcLpiDwC0YXraj4jPUKZU3dPdS+DOxP1zTRTnq3
-         xfg5M/+32dOdwln7JvKrvDsKCTYugzNMlVZmCluVpSrjGtJWyg2QKqob5SfDObEqOUGu
-         dq3CtHLNTunUvMnJSgkvafOGhTM1Sq3WLnBApSWYLMT94D+eu7fviMxXcF20Bv7fmIxq
-         ypnA==
+        b=APhsI2q8/0PRrHgBotksh8zNL8my8R8WY7+RCjlK6s5lPX7bo9QtgoDhvySOxwwhWA
+         BJkLDxn0KgofzSfJIiBwMwKqJWvV4/BaD24UhqStSZqXSfr5BYir7vDmDUWCDd2d5IIY
+         gLypHInMGB0GrGol642TGBau5a4IzdUR/dNOe6DxZGK9P1L8WW0af8jZneaqcD6+zpfY
+         PGafOPThVFv8WY+ndRQHQvI1J29rsEYrBxigWcHUmx3cXICzmmvPTLE4TAZ8TVt0okWz
+         patSzNC6ADDqBsx2OyABAzf+9scFU+e7dv+ELwH2r4nOH9ZBuoyE+AKXLTegRLbvGs50
+         //vA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=aI78jG1U;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=KkJOHJ2r;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10-20020ac8588a000000b00406944090f6si4476535qta.222.2023.07.26.06.55.02
+        by mx.google.com with ESMTPS id c13-20020ac85a8d000000b00403b8559384si8025495qtc.576.2023.07.26.06.56.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jul 2023 06:55:02 -0700 (PDT)
+        Wed, 26 Jul 2023 06:56:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=aI78jG1U;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=KkJOHJ2r;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qOeWq-00033V-Kq; Wed, 26 Jul 2023 09:26:12 -0400
+	id 1qOeWo-0002zG-J4; Wed, 26 Jul 2023 09:26:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWS-0002lN-ML; Wed, 26 Jul 2023 09:25:48 -0400
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+ id 1qOeWH-0002ja-EV; Wed, 26 Jul 2023 09:25:37 -0400
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWP-0003Id-VD; Wed, 26 Jul 2023 09:25:48 -0400
-Received: by mail-lf1-x129.google.com with SMTP id
- 2adb3069b0e04-4fdddf92b05so10386526e87.3; 
- Wed, 26 Jul 2023 06:25:45 -0700 (PDT)
+ id 1qOeWF-0003DJ-LR; Wed, 26 Jul 2023 09:25:37 -0400
+Received: by mail-lf1-x12e.google.com with SMTP id
+ 2adb3069b0e04-4fbf09a9139so10670405e87.2; 
+ Wed, 26 Jul 2023 06:25:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1690377944; x=1690982744;
+ d=gmail.com; s=20221208; t=1690377933; x=1690982733;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=/qANR99YnNIUbYven75G7/rKePRG7+0KMRhRw5KLj3k=;
- b=aI78jG1UP1L7FEB6zZcke26x5Jm0Je0XygsXLmZ0YSUE4N7I3OCZ4GhQVlDow0e2HA
- dEbpoLI+eQHpPS5xhbhk3MscozYIg2auyVl4WCeW2xNcU068db92HUSIyFyfgQcPMiEM
- uPCLvdWQkfxsehitO+MWA1ji9Q039F6o7CHVlVzJ1hqhEXuWeYt/hz4vpt33QjpVsbOi
- IhLqR6ORVYQ94GsFuCyVNAFiA8aR9i9NJP8YXaFlV3sWUzP5YpSEa8CXYr02ZvwH/Azm
- j/ayP1PIPr0OnC2R8wxfbP18IbDLdpK+ZyJJP3BPmrPI40etej4uA816z1xM3pX1k2W8
- 9Ikg==
+ bh=uKhEuIKwITdrcIVOAcQ7yfs/MBUjfcLpaxFMigaCLxc=;
+ b=KkJOHJ2rlnEJRHDAhTs7R3YySgc87niv6qLGcSV3UcThqYr0SBk9xsiu7yZMLjUoyI
+ MO9NGc7dIJoEkynOz47G5ODo5P5DBrhT1PbLGL6qP8Rvb4zmgykcdeFnPQGDv6ebUr8w
+ 0CG/D7sSuOOhkRH8rHy14dxIYnpgcv2ekGmEteMSTgMPAuDkEoDllbwmL40ACY9D+mj/
+ qxuKSXzeb83+RdYBhMnE2qwzGf4FoivqFg8ou8DDy5zESScuRk1SdFg7n4FTyLLxt/pJ
+ WNfUC9fVVJvtkqUbCO6OUhmPqKnrvs88le7pscFGu4H3rNIF01R9k6rZldbMh71YpzIT
+ Nrtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690377944; x=1690982744;
+ d=1e100.net; s=20221208; t=1690377933; x=1690982733;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=/qANR99YnNIUbYven75G7/rKePRG7+0KMRhRw5KLj3k=;
- b=AhV6DD4L+uoPN478ONDHKqLTEE8WuPKbquEztEwR7Jcegzk0n0+Fnd61SFzvRZBg4Q
- bgKSCIQ8MKGlawxsHeoOWw7oNGUmSPvzYg0Cc1fDn31Q+9qNNV/mZMLkExM8sa+2We4r
- CQzSR7YMHo4rKuLvFCOGZqcyh6/U6RiPKCaNtvNcuQmwrcNWemRdk1qWj60GD5Cs9ums
- eB0Bog7RPMLMn3tjK2+gdSBpHuII7VDpBjH7DhBU1kDAy+dSfcZw6ABZawsqOsvspFP/
- rILtdCiYYfPG6qUCLEBlLw/pCSqt37kb4J2tiOCUVccvL+CvxzEsOZbs8I/CsIUa/NzQ
- mDhQ==
-X-Gm-Message-State: ABy/qLawzQY10RuRfpZZL6rhqjxZwZJHZTOfKBtXfIS33IFORHGzMhPQ
- 1Y4qHPb97wXpNRU4N5g8XBADeNidaOs=
-X-Received: by 2002:a05:6512:3e7:b0:4f8:5f32:b1da with SMTP id
- n7-20020a05651203e700b004f85f32b1damr1375893lfq.24.1690377943737; 
- Wed, 26 Jul 2023 06:25:43 -0700 (PDT)
+ bh=uKhEuIKwITdrcIVOAcQ7yfs/MBUjfcLpaxFMigaCLxc=;
+ b=JrPe9qgTTI1KrKdwk+/3B9vyhsfEVeuD0fVAMV7ZMWofruMpB9m+4/SZeQSpe033qM
+ Dp47k0wrdlP5wXbJlfxDue33WmFL1bj+PZMg+8i/DgiI0nmLjMj7giPiEAU7sp/Pe2ld
+ aacnFiTBQ1XhGVPVHAsB5YsV/mpeP366RXShWwWj24sLibn7KwYfNg6z/w8RMxq/N3j+
+ 0TbpWQo/CqHD5N5DGINw0T2bBC+pMd4XdSUmwY4HJKFUBkQCHONTc32nKo99IRqoygiu
+ hohR5mEbKRLtqgt/f/qENR4X0Mj3qxOPhzwyUQRtWwQaxFsIkiOsLwzPTa9YcF4icCTH
+ hgbg==
+X-Gm-Message-State: ABy/qLaGJ/fpeEnEJmmPygEKxkgao/qdrZmSuZB5wrNk9Vapx//S9UCW
+ j6OCSMQ1DdixhyXC0gR469LC3W22jWY=
+X-Received: by 2002:ac2:4d17:0:b0:4fe:f24:cbf3 with SMTP id
+ r23-20020ac24d17000000b004fe0f24cbf3mr1296650lfi.63.1690377933009; 
+ Wed, 26 Jul 2023 06:25:33 -0700 (PDT)
 Received: from sergevik-thinkpad.localdomain ([213.197.136.186])
  by smtp.gmail.com with ESMTPSA id
- j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.42
+ j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Jul 2023 06:25:43 -0700 (PDT)
+ Wed, 26 Jul 2023 06:25:32 -0700 (PDT)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 21/44] Add clock_isp stub
-Date: Wed, 26 Jul 2023 16:24:49 +0300
-Message-Id: <20230726132512.149618-22-sergey.kambalin@auriga.com>
+Subject: [PATCH 12/44] Temporary disable unimplemented rpi4b devices
+Date: Wed, 26 Jul 2023 16:24:40 +0300
+Message-Id: <20230726132512.149618-13-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::129;
- envelope-from=serg.oker@gmail.com; helo=mail-lf1-x129.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
+ envelope-from=serg.oker@gmail.com; helo=mail-lf1-x12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,50 +124,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +CdP66K7SDhM
+X-TUID: kI1Rns41yQiV
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/bcm2838_peripherals.c         | 6 ++++++
- include/hw/arm/bcm2838_peripherals.h | 1 +
- 2 files changed, 7 insertions(+)
+ hw/arm/raspi.c                  |  2 +-
+ hw/arm/raspi4b.c                | 63 +++++++++++++++++++++++++++++++++
+ include/hw/arm/raspi_platform.h |  1 +
+ 3 files changed, 65 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
-index e7a9db97ab..60ed535673 100644
---- a/hw/arm/bcm2838_peripherals.c
-+++ b/hw/arm/bcm2838_peripherals.c
-@@ -17,6 +17,9 @@
- #define PCIE_MMIO_ARM_OFFSET    0x600000000
- #define PCIE_MMIO_SIZE          0x40000000
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index da1e9e7c13..cffdd8de4e 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -75,7 +75,7 @@ static const struct {
+     [PROCESSOR_ID_BCM2838] = {TYPE_BCM2838, BCM283X_NCPUS},
+ };
  
-+#define CLOCK_ISP_OFFSET        0xc11000
-+#define CLOCK_ISP_SIZE          0x100
+-static uint64_t board_ram_size(uint32_t board_rev)
++uint64_t board_ram_size(uint32_t board_rev)
+ {
+     assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
+     return 256 * MiB << FIELD_EX32(board_rev, REV_CODE, MEMORY_SIZE);
+diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
+index 4096522d85..d2053c9380 100644
+--- a/hw/arm/raspi4b.c
++++ b/hw/arm/raspi4b.c
+@@ -21,6 +21,7 @@
+ #include "hw/arm/boot.h"
+ #include "qom/object.h"
+ #include "hw/arm/bcm2838.h"
++#include <libfdt.h>
+ 
+ #define TYPE_RASPI4B_MACHINE MACHINE_TYPE_NAME("raspi4b-common")
+ OBJECT_DECLARE_SIMPLE_TYPE(Raspi4bMachineState, RASPI4B_MACHINE)
+@@ -34,6 +35,61 @@ struct Raspi4bMachineState {
+     uint32_t vcram_size;
+ };
+ 
 +
- /* Lower peripheral base address on the VC (GPU) system bus */
- #define BCM2838_VC_PERI_LOW_BASE 0x7c000000
- 
-@@ -224,6 +227,9 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
-     memory_region_add_subregion(get_system_memory(), PCIE_MMIO_ARM_OFFSET,
-                                 &s->pcie_mmio_alias);
- 
-+    create_unimp(s_base, &s->clkisp, "bcm2835-clkisp", CLOCK_ISP_OFFSET,
-+                 CLOCK_ISP_SIZE);
++static int raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
++{
++    int ret;
++    uint32_t acells, scells;
++    char *nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
 +
-     /* GPIO */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
-         return;
-diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
-index bb26aceb13..be4fc20f11 100644
---- a/include/hw/arm/bcm2838_peripherals.h
-+++ b/include/hw/arm/bcm2838_peripherals.h
-@@ -72,6 +72,7 @@ struct BCM2838PeripheralState {
-     BCM2838Rng200State rng200;
-     Bcm2838ThermalState thermal;
-     SDHCIState emmc2;
-+    UnimplementedDeviceState clkisp;
-     BCM2838PcieHostState pcie_host;
-     BCM2838GpioState gpio;
++    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
++                                   NULL, &error_fatal);
++    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
++                                   NULL, &error_fatal);
++    if (acells == 0 || scells == 0) {
++        fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0)\n");
++        ret = -1;
++    } else {
++        qemu_fdt_add_subnode(fdt, nodename);
++        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
++        ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
++                                           acells, mem_base,
++                                           scells, mem_len);
++    }
++
++    g_free(nodename);
++    return ret;
++}
++
++static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
++{
++
++    /* Temporary disable following devices until they are implemented*/
++    const char *to_be_removed_from_dt_as_wa[] = {
++        "brcm,bcm2711-pcie",
++        "brcm,bcm2711-rng200",
++        "brcm,bcm2711-thermal",
++        "brcm,bcm2711-genet-v5",
++    };
++
++    for (int i = 0; i < ARRAY_SIZE(to_be_removed_from_dt_as_wa); i++) {
++        const char *dev_str = to_be_removed_from_dt_as_wa[i];
++
++        int offset = fdt_node_offset_by_compatible(fdt, -1, dev_str);
++        if (offset >= 0) {
++            if (!fdt_nop_node(fdt, offset)) {
++                warn_report("bcm2711 dtc: %s has been disabled!", dev_str);
++            }
++        }
++    }
++
++    uint64_t ram_size = board_ram_size(info->board_id);
++
++    if (ram_size > UPPER_RAM_BASE) {
++        raspi_add_memory_node(fdt, UPPER_RAM_BASE, ram_size - UPPER_RAM_BASE);
++    }
++}
++
+ static void raspi4b_machine_init(MachineState *machine)
+ {
+     Raspi4bMachineState *s = RASPI4B_MACHINE(machine);
+@@ -41,6 +97,13 @@ static void raspi4b_machine_init(MachineState *machine)
+     RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
+     BCM2838State *soc = &s->soc;
  
++    s_base->binfo.modify_dtb = raspi4_modify_dtb;
++    /*
++     * Hack to get board revision during device tree modification without
++     * changes of common code.
++     * The correct way is to set board_id to MACH_TYPE_BCM2708 and add board_rev
++     * to the arm_boot_info structure.
++     */
+     s_base->binfo.board_id = mc->board_rev;
+ 
+     object_initialize_child(OBJECT(machine), "soc", soc,
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index 45003e2425..30b114f6e0 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -59,6 +59,7 @@ void raspi_base_machine_init(MachineState *machine,
+ 
+ void raspi_machine_class_common_init(MachineClass *mc,
+                                      uint32_t board_rev);
++uint64_t board_ram_size(uint32_t board_rev);
+ 
+ #define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
+ #define CCPT_OFFSET             0x1000   /* Compact Camera Port 2 TX */
 -- 
 2.34.1
 

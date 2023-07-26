@@ -1,115 +1,116 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp550112ejb;
-        Wed, 26 Jul 2023 06:32:56 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHPtvFwTf2TbmdWPPYj/WDbCtLua3yPXnBRQq7ZtCSujXmZKQf8So6Mx/Co0WPMUJWACcEA
-X-Received: by 2002:a05:620a:cef:b0:765:aaa8:67ab with SMTP id c15-20020a05620a0cef00b00765aaa867abmr1900178qkj.26.1690378376163;
-        Wed, 26 Jul 2023 06:32:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690378376; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp550985ejb;
+        Wed, 26 Jul 2023 06:34:20 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHM2FmaaxijvqnASbZ9fytm/q4vj8DkxPhRZD1RnsRqjWBcSEJKEg7n+e+5Bm+8cWapDT2v
+X-Received: by 2002:a05:622a:19a3:b0:403:ce19:6b5f with SMTP id u35-20020a05622a19a300b00403ce196b5fmr2625450qtc.29.1690378460632;
+        Wed, 26 Jul 2023 06:34:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690378460; cv=none;
         d=google.com; s=arc-20160816;
-        b=UX9AcaYLOZRlr0V0qj8shEME3NqzludvOge0UQzXyC3gXEY8GvrGHDESS1fnIM1JLj
-         4YkCz0zkfxeDeq75MUo6eDAeQPDs46V6yy9/pMmKU3hcxHOcAVlJX7u+5AiLjVD8vTXz
-         InNyvdQUws1+sFB1ZveInLQpnvYwlj9j9cjp79vO1h7tBNd7UG2UuFDPGN0R+f7S2fhw
-         AP0TfHJzx3BxJz0ONfTfDWrQy3k/p6Lb0osJfX6vjkWXTCiIpI5VFiBJE22/jKXCFxD0
-         1QBs9rpiWyuknZqppAnG4O1CjE1RMr2cJI3fHtCZRRZCe/oUCJI+l7FUHwRp3dwagyjs
-         n3kg==
+        b=sNl0W1X+8aZP24z9lmo6pmmmJNkzz3nsJDfEQWvJskpszLBTiW/NWvEJGHclfZxVQ9
+         5asOSdWRJTL3EkNL72SKB7J9vsub1HBFs9mozJZeqMYY8ExsT2mGtVLgFjteQmIsrj7n
+         uI7gir0bM2ollVvoofOMWbsfuwoCPjcS2spqrHdY08JH7in5LJM2dQbYBsdP2E7q8hJP
+         Ekp29zMP4dhDpxy7C/zzORSl0l/vcJJqr2TJe8K3yTknvWSwhDhNYsQ2084tK9oLJItF
+         SASqO+tTFrwIkG346KaEJxWPz7vb8ZSbz2WO7syyYMYgE+YUgiOFzB5hDYrDutWw0lCq
+         yOGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=PguO5JkvGHdeHm5SqUYNrtZTm3//zM7amJ8hwjqYK7Q=;
+        bh=wG1D4Ma/JZJTJFnb417vchh1oBLdE5LjuMoc7/LtHd8=;
         fh=f5jt6gD4kTKAQV2ukO6ZfXPs+EJm4Q1+uDtHV6gcJRE=;
-        b=UDmnLdpoQYYX5e/Nyp3cVC+GXdkURk8g1EjZ8OkIUZZ3mP0qNtF50oY8mmAYG+XVIL
-         LyVX7yB1NjShGPzl6xBS72UjJ1Tys0rPx3yWYME7S82GpgbJdQjMl5vm5CFI1X4FU+IU
-         7gNCpYOUhfSA3Om0M+qn7j445707VVlpzTieZSbBhmbTNopE3BmBbzGkb+LRTdEnpYVM
-         Ac+ggfdxiXEM6umlJFNLGoeuPxiSMmbbCAcFf9cSGi75kRy+MKe2qdpP/voaogvmJeWb
-         L9D4j3gbSN5qoQP7Fvr/6Vq+3b3m4w4Y3ovQ7VqwEDcATi104ehq9OQ4JHzMs4rKkD2I
-         3N6g==
+        b=kfn8lr/mIbvydDnaslr3k/lRvxIGqlYK1hN1UC5Xajw7Gux4so5ZsYF+zwCyRl4iBT
+         MO8qkQJ0IZOATxm9aa8if924RQL7dYbqQzy46NugKM4xc3z4apbTVWlhpAo710Kq+HyJ
+         zlm4X0YYiDMgb/clTzNWIK4HDmGaKgyoXV/1oC2/iKtmWpJlYpxuqYsJjMfqU9pW9+J1
+         /lITnUJFt8tejILpUUEUye7i3+/F+QBq86U1MCLsCGORvNeMtkp8otE4TOOOi0xjg5YD
+         IfcE0tWDIV5Rb9ZpsGGcbElq6+1s9FAaocyiw/yHx4S+s6bgt7PWrqV1J6Fd4bhjtnfY
+         HQjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=fj3DeJZK;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=kG6DwNJ3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq15-20020a05620a468f00b007680efd52bdsi8180448qkb.368.2023.07.26.06.32.55
+        by mx.google.com with ESMTPS id y10-20020a05622a004a00b003f9a7314533si8342492qtw.127.2023.07.26.06.34.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jul 2023 06:32:56 -0700 (PDT)
+        Wed, 26 Jul 2023 06:34:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=fj3DeJZK;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=kG6DwNJ3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOeW9-0002Zf-9C; Wed, 26 Jul 2023 09:25:29 -0400
+	id 1qOeXP-0003IL-Tu; Wed, 26 Jul 2023 09:26:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeW7-0002Ri-6v; Wed, 26 Jul 2023 09:25:27 -0400
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+ id 1qOeWs-00036I-DQ; Wed, 26 Jul 2023 09:26:14 -0400
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeW5-00033h-0q; Wed, 26 Jul 2023 09:25:26 -0400
-Received: by mail-lf1-x12c.google.com with SMTP id
- 2adb3069b0e04-4fe0fe622c3so1211053e87.2; 
- Wed, 26 Jul 2023 06:25:24 -0700 (PDT)
+ id 1qOeWq-0003Xk-95; Wed, 26 Jul 2023 09:26:14 -0400
+Received: by mail-lf1-x134.google.com with SMTP id
+ 2adb3069b0e04-4fe1344b707so775120e87.1; 
+ Wed, 26 Jul 2023 06:26:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1690377922; x=1690982722;
+ d=gmail.com; s=20221208; t=1690377970; x=1690982770;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PguO5JkvGHdeHm5SqUYNrtZTm3//zM7amJ8hwjqYK7Q=;
- b=fj3DeJZKMmKU14we45ar46XfaI0WjCpyHbvRGuveQwG4BYpUPM2i6kfIFo295S3ZEM
- Z4/MWEZQ/yvHIm/TZLC65/jGlw9fNqKuiefnVVP9Ck137OGJd5HOdA8H10FKtiB/OjDE
- Bv609V9genJ0hSIkOqsyEeJYTYpB0oh7Sq1/YcFfNj/NDmBXTxLdM5+tcsF+zAI/kw/H
- Ynu2bENnimKcuMDULeTElOXfK/WhyVnfogoBsKx+5Eq+JMK43gVCZtpNomz/m+Wxj9FN
- YcDec05mKBruDdUuMhPlKfWHp62DrOozzrV3ynhKzlr00IH6bPrgj2aLGFvRXNiryc/z
- aoEA==
+ bh=wG1D4Ma/JZJTJFnb417vchh1oBLdE5LjuMoc7/LtHd8=;
+ b=kG6DwNJ3H9tnNYBzxEabrcgx/7m6H+c+jq70pbq8JxDVc2d6tvVaMNGS7iKP1aR/eS
+ DhtAahT7+5D12qBMsaTc8X1F6U0nbYCYZUtNt1Er6Qtf+mPNXNIhayzLqXIkhBWudqus
+ Ocie4JylnyVzX7ehxNRpLWn03/UWIjrNMy9pn4SYrQfAVj9V7DFm98KjMGIXqLMvOtor
+ VzitR4qwnNtdlqiwG/izJZz+7Nw0nAOELfOmJIFLus1/v6LMw9vxd1mLlDZqSWaU3DpB
+ 24BdfPBTQCNNNDxG9XaXBtMMXxUDtIgb2/lJdwklMZmzYFzPsgh/0QZdH6YS0zQ9Jd9z
+ vF8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690377922; x=1690982722;
+ d=1e100.net; s=20221208; t=1690377970; x=1690982770;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=PguO5JkvGHdeHm5SqUYNrtZTm3//zM7amJ8hwjqYK7Q=;
- b=PTmfa5n4L449MeFe7n3MB8JshkAxYgEqXCAz6Sl5gf0k+wQny9QvaJOdYw52yee/BU
- tqRTI59eiEL7Rohqms876ikPXTaG/TssZdrkBCP+76fswMfHiwoZsoY2n2kYNOGSA4af
- k0Djf1IKp01xH1dD9Gsv9lBcac12rMVhQRXWP01WdGl6f6g6RweOMc7T90rhytj19Jc4
- Ann3c5MYIZPVGUHIY1jX3UUi6xq7yA8cAbt6o8ekbXei+MRn9ANWjJsRezr/ryp5yCXl
- go9m2csF4fXLw9X6ItE1tPHhkFtZDKqa2ge0fS26H2a4yUT2QZqDdvlaiTGsxqwqGIPZ
- X+HA==
-X-Gm-Message-State: ABy/qLaBhUSp7n210Ey4c2H+RjHu91X5leYHLhNZPIL1/oNzrkl8l92d
- WueqJShdcnRceM8em45gZ8/Ow1GHx3k=
-X-Received: by 2002:a05:6512:159b:b0:4fb:9f93:365f with SMTP id
- bp27-20020a056512159b00b004fb9f93365fmr1912823lfb.38.1690377922223; 
- Wed, 26 Jul 2023 06:25:22 -0700 (PDT)
+ bh=wG1D4Ma/JZJTJFnb417vchh1oBLdE5LjuMoc7/LtHd8=;
+ b=ZaI1aCQtJKQsqBs5DW8h1u0FOdJAzG7i9nGgnRPGyai+wASAUSzPkzL4Ftp+ZR+DMC
+ zXzBHBVWkH+L2ndNF0FlYtlS7HYgEsMKHjXKuof8MH9D2PrHb0ftqV6v9y0Yl8Q76n8Y
+ 6lhuG3+fnzVtrj7SuaZEWwsWzQpkv6dVxTInycrJjJNT19K/6FnJ607T9dL/Q+ZNn9UK
+ rQpua1QgEnmvNrtk2FHWbkCezycSDEhY7UNyQ7t9JAXxZ9MnkPQ9PZGJRugrOe9L1X79
+ I2Ys5DHUXiPGeoiIGCwybpGM1xJgt3K+SewAxZjNYUTRIZntSdm5sjE1YL98hPmTqPgK
+ Ou3A==
+X-Gm-Message-State: ABy/qLbZ0tBhxjGLs0SlruvulhB+tlkf8IwJ4ezHaV9dwLT0cpOux51r
+ xUoZLgk2blfJbC608VcaPFYqHrbtloA=
+X-Received: by 2002:a19:5e56:0:b0:4fe:df7:bcf5 with SMTP id
+ z22-20020a195e56000000b004fe0df7bcf5mr1509562lfi.8.1690377969689; 
+ Wed, 26 Jul 2023 06:26:09 -0700 (PDT)
 Received: from sergevik-thinkpad.localdomain ([213.197.136.186])
  by smtp.gmail.com with ESMTPSA id
- j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.21
+ j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.26.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Jul 2023 06:25:21 -0700 (PDT)
+ Wed, 26 Jul 2023 06:26:09 -0700 (PDT)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 03/44] Split out raspi machine common part
-Date: Wed, 26 Jul 2023 16:24:31 +0300
-Message-Id: <20230726132512.149618-4-sergey.kambalin@auriga.com>
+Subject: [PATCH 42/44] Add mailbox property tests. Part 3
+Date: Wed, 26 Jul 2023 16:25:10 +0300
+Message-Id: <20230726132512.149618-43-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
- envelope-from=serg.oker@gmail.com; helo=mail-lf1-x12c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::134;
+ envelope-from=serg.oker@gmail.com; helo=mail-lf1-x134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ PDS_OTHER_BAD_TLD=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,290 +125,244 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HBGKUS3NvEeX
+X-TUID: h6M7ry3Tk3st
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/raspi.c                  | 112 ++++++++++++++++++--------------
- include/hw/arm/raspi_platform.h |  21 ++++++
- 2 files changed, 85 insertions(+), 48 deletions(-)
+ tests/qtest/bcm2838-mbox-property-test.c | 213 ++++++++++++++++++++++-
+ 1 file changed, 212 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index af866ebce2..7d04734cd2 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -18,6 +18,7 @@
- #include "qapi/error.h"
- #include "hw/arm/boot.h"
- #include "hw/arm/bcm2836.h"
-+#include "hw/arm/raspi_platform.h"
- #include "hw/registerfields.h"
- #include "qemu/error-report.h"
- #include "hw/boards.h"
-@@ -25,6 +26,9 @@
- #include "hw/arm/boot.h"
- #include "qom/object.h"
- 
-+#define TYPE_RASPI_MACHINE  MACHINE_TYPE_NAME("raspi-common")
-+OBJECT_DECLARE_SIMPLE_TYPE(RaspiMachineState, RASPI_MACHINE)
-+
- #define SMPBOOT_ADDR    0x300 /* this should leave enough space for ATAGS */
- #define MVBAR_ADDR      0x400 /* secure vectors */
- #define BOARDSETUP_ADDR (MVBAR_ADDR + 0x20) /* board setup code */
-@@ -37,25 +41,10 @@
- 
- struct RaspiMachineState {
-     /*< private >*/
--    MachineState parent_obj;
-+    RaspiBaseMachineState parent_obj;
-     /*< public >*/
-     BCM283XState soc;
--    struct arm_boot_info binfo;
--};
--typedef struct RaspiMachineState RaspiMachineState;
--
--struct RaspiMachineClass {
--    /*< private >*/
--    MachineClass parent_obj;
--    /*< public >*/
--    uint32_t board_rev;
- };
--typedef struct RaspiMachineClass RaspiMachineClass;
--
--#define TYPE_RASPI_MACHINE       MACHINE_TYPE_NAME("raspi-common")
--DECLARE_OBJ_CHECKERS(RaspiMachineState, RaspiMachineClass,
--                     RASPI_MACHINE, TYPE_RASPI_MACHINE)
--
- 
- /*
-  * Board revision codes:
-@@ -83,6 +72,11 @@ static const struct {
-     [PROCESSOR_ID_BCM2837] = {TYPE_BCM2837, BCM283X_NCPUS},
- };
- 
-+static void raspi_base_machine_init(MachineState *machine,
-+                             BCM283XBaseState *soc);
-+static void raspi_machine_class_common_init(MachineClass *mc,
-+                                     uint32_t board_rev);
-+
- static uint64_t board_ram_size(uint32_t board_rev)
- {
-     assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
-@@ -200,13 +194,12 @@ static void reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
-     cpu_set_pc(cs, info->smp_loader_start);
+diff --git a/tests/qtest/bcm2838-mbox-property-test.c b/tests/qtest/bcm2838-mbox-property-test.c
+index bcee9971c6..e833529a00 100644
+--- a/tests/qtest/bcm2838-mbox-property-test.c
++++ b/tests/qtest/bcm2838-mbox-property-test.c
+@@ -334,7 +334,194 @@ DECLARE_TEST_CASE_SETUP(SET_FB_VIRT_WIDTH) {
+     tag->request.value.height = 600;
  }
  
--static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
--                       size_t ram_size)
-+static void setup_boot(MachineState *machine, ARMCPU *cpu,
-+                       RaspiProcessorId processor_id, size_t ram_size)
- {
--    RaspiMachineState *s = RASPI_MACHINE(machine);
-+    RaspiBaseMachineState *s = RASPI_BASE_MACHINE(machine);
-     int r;
- 
--    s->binfo.board_id = MACH_TYPE_BCM2708;
-     s->binfo.ram_size = ram_size;
- 
-     if (processor_id <= PROCESSOR_ID_BCM2836) {
-@@ -252,13 +245,13 @@ static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
-         s->binfo.firmware_loaded = true;
-     }
- 
--    arm_load_kernel(&s->soc.parent_obj.cpu[0].core, machine, &s->binfo);
-+    arm_load_kernel(cpu, machine, &s->binfo);
- }
- 
--static void raspi_machine_init(MachineState *machine)
-+static void raspi_base_machine_init(MachineState *machine,
-+                             BCM283XBaseState *soc)
- {
--    RaspiMachineClass *mc = RASPI_MACHINE_GET_CLASS(machine);
--    RaspiMachineState *s = RASPI_MACHINE(machine);
-+    RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
-     uint32_t board_rev = mc->board_rev;
-     uint64_t ram_size = board_ram_size(board_rev);
-     uint32_t vcram_size;
-@@ -279,19 +272,17 @@ static void raspi_machine_init(MachineState *machine)
-                                         machine->ram, 0);
- 
-     /* Setup the SOC */
--    object_initialize_child(OBJECT(machine), "soc", &s->soc,
--                            board_soc_type(board_rev));
--    object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(machine->ram));
--    object_property_set_int(OBJECT(&s->soc), "board-rev", board_rev,
-+    object_property_add_const_link(OBJECT(soc), "ram", OBJECT(machine->ram));
-+    object_property_set_int(OBJECT(soc), "board-rev", board_rev,
-                             &error_abort);
--    object_property_set_str(OBJECT(&s->soc), "command-line",
-+    object_property_set_str(OBJECT(soc), "command-line",
-                             machine->kernel_cmdline, &error_abort);
--    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
-+    qdev_realize(DEVICE(soc), NULL, &error_fatal);
- 
-     /* Create and plug in the SD cards */
-     di = drive_get(IF_SD, 0, 0);
-     blk = di ? blk_by_legacy_dinfo(di) : NULL;
--    bus = qdev_get_child_bus(DEVICE(&s->soc), "sd-bus");
-+    bus = qdev_get_child_bus(DEVICE(soc), "sd-bus");
-     if (bus == NULL) {
-         error_report("No SD bus found in SOC object");
-         exit(1);
-@@ -300,19 +291,32 @@ static void raspi_machine_init(MachineState *machine)
-     qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
-     qdev_realize_and_unref(carddev, bus, &error_fatal);
- 
--    vcram_size = object_property_get_uint(OBJECT(&s->soc), "vcram-size",
-+    vcram_size = object_property_get_uint(OBJECT(soc), "vcram-size",
-                                           &error_abort);
--    setup_boot(machine, board_processor_id(mc->board_rev),
-+    setup_boot(machine, &soc->cpu[0].core, board_processor_id(board_rev),
-                machine->ram_size - vcram_size);
- }
- 
--static void raspi_machine_class_common_init(MachineClass *mc,
--                                            uint32_t board_rev)
-+static void raspi_machine_init(MachineState *machine)
-+{
-+    RaspiMachineState *s = RASPI_MACHINE(machine);
-+    RaspiBaseMachineState *s_base = RASPI_BASE_MACHINE(machine);
-+    RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
-+    BCM283XState *soc = &s->soc;
-+
-+    s_base->binfo.board_id = MACH_TYPE_BCM2708;
-+
-+    object_initialize_child(OBJECT(machine), "soc", soc,
-+                            board_soc_type(mc->board_rev));
-+    raspi_base_machine_init(machine, &soc->parent_obj);
+-//==============================================================================
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_FB_DEPTH) {
++    g_assert_cmpint(tag->response.value.bpp, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(TEST_FB_DEPTH) {
++    tag->request.value.bpp = DUMMY_VALUE;
 +}
 +
-+void raspi_machine_class_common_init(MachineClass *mc,
-+                                     uint32_t board_rev)
- {
-     mc->desc = g_strdup_printf("Raspberry Pi %s (revision 1.%u)",
-                                board_type(board_rev),
-                                FIELD_EX32(board_rev, REV_CODE, REVISION));
--    mc->init = raspi_machine_init;
-     mc->block_default_type = IF_SD;
-     mc->no_parallel = 1;
-     mc->no_floppy = 1;
-@@ -322,50 +326,57 @@ static void raspi_machine_class_common_init(MachineClass *mc,
-     mc->default_ram_id = "ram";
- };
- 
-+static void raspi_machine_class_init(MachineClass *mc,
-+                                     uint32_t board_rev)
-+{
-+    raspi_machine_class_common_init(mc, board_rev);
-+    mc->init = raspi_machine_init;
-+};
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_FB_DEPTH) {
++    g_assert_cmpint(tag->response.value.bpp, ==, 16);
++}
 +
- static void raspi0_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
--    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
- 
-     rmc->board_rev = 0x920092; /* Revision 1.2 */
--    raspi_machine_class_common_init(mc, rmc->board_rev);
-+    raspi_machine_class_init(mc, rmc->board_rev);
- };
- 
- static void raspi1ap_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
--    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
- 
-     rmc->board_rev = 0x900021; /* Revision 1.1 */
--    raspi_machine_class_common_init(mc, rmc->board_rev);
-+    raspi_machine_class_init(mc, rmc->board_rev);
- };
- 
- static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
--    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
- 
-     rmc->board_rev = 0xa21041;
--    raspi_machine_class_common_init(mc, rmc->board_rev);
-+    raspi_machine_class_init(mc, rmc->board_rev);
- };
- 
- #ifdef TARGET_AARCH64
- static void raspi3ap_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
--    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
- 
-     rmc->board_rev = 0x9020e0; /* Revision 1.0 */
--    raspi_machine_class_common_init(mc, rmc->board_rev);
-+    raspi_machine_class_init(mc, rmc->board_rev);
- };
- 
- static void raspi3b_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
--    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
- 
-     rmc->board_rev = 0xa02082;
--    raspi_machine_class_common_init(mc, rmc->board_rev);
-+    raspi_machine_class_init(mc, rmc->board_rev);
- };
- #endif /* TARGET_AARCH64 */
- 
-@@ -394,9 +405,14 @@ static const TypeInfo raspi_machine_types[] = {
- #endif
-     }, {
-         .name           = TYPE_RASPI_MACHINE,
--        .parent         = TYPE_MACHINE,
-+        .parent         = TYPE_RASPI_BASE_MACHINE,
-         .instance_size  = sizeof(RaspiMachineState),
--        .class_size     = sizeof(RaspiMachineClass),
-+        .abstract       = true,
-+    }, {
-+        .name           = TYPE_RASPI_BASE_MACHINE,
-+        .parent         = TYPE_MACHINE,
-+        .instance_size  = sizeof(RaspiBaseMachineState),
-+        .class_size     = sizeof(RaspiBaseMachineClass),
-         .abstract       = true,
-     }
- };
-diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
-index ede98e63c3..3018e8fcf3 100644
---- a/include/hw/arm/raspi_platform.h
-+++ b/include/hw/arm/raspi_platform.h
-@@ -28,6 +28,27 @@
- #ifndef HW_ARM_RASPI_PLATFORM_H
- #define HW_ARM_RASPI_PLATFORM_H
- 
-+#include "hw/boards.h"
-+#include "hw/arm/boot.h"
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_FB_DEPTH) {
++    g_assert_cmpint(tag->response.value.bpp, ==, 24);
++}
++DECLARE_TEST_CASE_SETUP(SET_FB_DEPTH) {
++    tag->request.value.bpp = 24;
++}
 +
-+#define TYPE_RASPI_BASE_MACHINE MACHINE_TYPE_NAME("raspi-base")
-+OBJECT_DECLARE_TYPE(RaspiBaseMachineState, RaspiBaseMachineClass,
-+                    RASPI_BASE_MACHINE)
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_PIXEL_ORDER) {
++    g_assert_cmphex(tag->response.value.pixel_order, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(TEST_PIXEL_ORDER) {
++    tag->request.value.pixel_order = DUMMY_VALUE;
++}
 +
-+struct RaspiBaseMachineState {
-+    /*< private >*/
-+    MachineState parent_obj;
-+    /*< public >*/
-+    struct arm_boot_info binfo;
-+};
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_PIXEL_ORDER) {
++    g_assert_cmphex(tag->response.value.pixel_order, ==, PIXEL_ORDER_RGB);
++}
 +
-+struct RaspiBaseMachineClass {
-+    /*< private >*/
-+    MachineClass parent_obj;
-+    /*< public >*/
-+    uint32_t board_rev;
-+};
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_PIXEL_ORDER, BGR) {
++    g_assert_cmphex(tag->response.value.pixel_order, ==, PIXEL_ORDER_BGR);
++}
++DECLARE_TEST_CASE_SETUP(SET_PIXEL_ORDER, BGR) {
++    tag->request.value.pixel_order = PIXEL_ORDER_BGR;
++}
 +
- #define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
- #define CCPT_OFFSET             0x1000   /* Compact Camera Port 2 TX */
- #define INTE_OFFSET             0x2000   /* VC Interrupt controller */
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_PIXEL_ORDER, RGB) {
++    g_assert_cmphex(tag->response.value.pixel_order, ==, PIXEL_ORDER_BGR);
++}
++DECLARE_TEST_CASE_SETUP(SET_PIXEL_ORDER, RGB) {
++    tag->request.value.pixel_order = PIXEL_ORDER_BGR;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_FB_ALPHA_MODE) {
++    g_assert_cmphex(tag->response.value.alpha_mode, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(TEST_FB_ALPHA_MODE) {
++    tag->request.value.alpha_mode = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_FB_ALPHA_MODE) {
++    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_IGNORED);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_FB_ALPHA_MODE, ENABLED) {
++    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_ENABLED);
++}
++DECLARE_TEST_CASE_SETUP(SET_FB_ALPHA_MODE, ENABLED) {
++    tag->request.value.alpha_mode = ALPHA_MODE_ENABLED;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_FB_ALPHA_MODE, REVERSED) {
++    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_REVERSED);
++}
++DECLARE_TEST_CASE_SETUP(SET_FB_ALPHA_MODE, REVERSED) {
++    tag->request.value.alpha_mode = ALPHA_MODE_REVERSED;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_FB_ALPHA_MODE, IGNORED) {
++    g_assert_cmphex(tag->response.value.alpha_mode, ==, ALPHA_MODE_IGNORED);
++}
++DECLARE_TEST_CASE_SETUP(SET_FB_ALPHA_MODE, IGNORED) {
++    tag->request.value.alpha_mode = ALPHA_MODE_IGNORED;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_PITCH) {
++    g_assert_cmpint(tag->response.value.pitch, ==, 1280);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_VIRTUAL_OFFSET) {
++    g_assert_cmpint(tag->response.value.x, ==, DUMMY_VALUE);
++    g_assert_cmpint(tag->response.value.y, ==, DUMMY_VALUE);
++}
++DECLARE_TEST_CASE_SETUP(TEST_VIRTUAL_OFFSET) {
++    tag->request.value.x = DUMMY_VALUE;
++    tag->request.value.y = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_VIRTUAL_OFFSET) {
++    g_assert_cmpint(tag->response.value.x, ==, 0);
++    g_assert_cmpint(tag->response.value.y, ==, 0);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_VIRTUAL_OFFSET, _0_) {
++    g_assert_cmpint(tag->response.value.x, ==, 0);
++    g_assert_cmpint(tag->response.value.y, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(SET_VIRTUAL_OFFSET, _0_) {
++    tag->request.value.x = 0;
++    tag->request.value.y = 0;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_VIRTUAL_OFFSET, _42_) {
++    g_assert_cmpint(tag->response.value.x, ==, 42);
++    g_assert_cmpint(tag->response.value.y, ==, 42);
++}
++DECLARE_TEST_CASE_SETUP(SET_VIRTUAL_OFFSET, _42_) {
++    tag->request.value.x = 42;
++    tag->request.value.y = 42;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_OVERSCAN) {
++    g_assert_cmpint(tag->response.value.top, ==, 0);
++    g_assert_cmpint(tag->response.value.bottom, ==, 0);
++    g_assert_cmpint(tag->response.value.left, ==, 0);
++    g_assert_cmpint(tag->response.value.right, ==, 0);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(TEST_OVERSCAN) {
++    g_assert_cmpint(tag->response.value.top, ==, 0);
++    g_assert_cmpint(tag->response.value.bottom, ==, 0);
++    g_assert_cmpint(tag->response.value.left, ==, 0);
++    g_assert_cmpint(tag->response.value.right, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(TEST_OVERSCAN) {
++    tag->request.value.top = DUMMY_VALUE;
++    tag->request.value.bottom = DUMMY_VALUE;
++    tag->request.value.left = DUMMY_VALUE;
++    tag->request.value.right = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_OVERSCAN) {
++    g_assert_cmpint(tag->response.value.top, ==, 0);
++    g_assert_cmpint(tag->response.value.bottom, ==, 0);
++    g_assert_cmpint(tag->response.value.left, ==, 0);
++    g_assert_cmpint(tag->response.value.right, ==, 0);
++}
++DECLARE_TEST_CASE_SETUP(SET_OVERSCAN) {
++    tag->request.value.top = DUMMY_VALUE;
++    tag->request.value.bottom = DUMMY_VALUE;
++    tag->request.value.left = DUMMY_VALUE;
++    tag->request.value.right = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_DMA_CHANNELS) {
++    g_assert_cmphex(tag->response.value.mask, ==, GPIO_MASK);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_COMMANDLINE) {
++    /* No special checks are needed for this test case */
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(GET_NUM_DISPLAYS) {
++    g_assert_cmpint(tag->response.value.num_displays, ==, 1);
++}
++
++/*----------------------------------------------------------------------------*/
++DECLARE_TEST_CASE(SET_PITCH) {
++    /* No special checks are needed for this test case */
++}
++DECLARE_TEST_CASE_SETUP(SET_PITCH) {
++    tag->request.value.pitch = DUMMY_VALUE;
++}
++
++/*----------------------------------------------------------------------------*/
+ int main(int argc, char **argv)
+ {
+     g_test_init(&argc, &argv, NULL);
+@@ -368,6 +555,30 @@ int main(int argc, char **argv)
+     QTEST_ADD_TEST_CASE(TEST_FB_VIRT_WIDTH);
+     QTEST_ADD_TEST_CASE(GET_FB_VIRT_WIDTH, INITIAL);
+     QTEST_ADD_TEST_CASE(SET_FB_VIRT_WIDTH);
++    QTEST_ADD_TEST_CASE(TEST_FB_DEPTH);
++    QTEST_ADD_TEST_CASE(GET_FB_DEPTH);
++    QTEST_ADD_TEST_CASE(SET_FB_DEPTH);
++    QTEST_ADD_TEST_CASE(TEST_PIXEL_ORDER);
++    QTEST_ADD_TEST_CASE(GET_PIXEL_ORDER);
++    QTEST_ADD_TEST_CASE(SET_PIXEL_ORDER, BGR);
++    QTEST_ADD_TEST_CASE(SET_PIXEL_ORDER, RGB);
++    QTEST_ADD_TEST_CASE(TEST_FB_ALPHA_MODE);
++    QTEST_ADD_TEST_CASE(GET_FB_ALPHA_MODE);
++    QTEST_ADD_TEST_CASE(SET_FB_ALPHA_MODE, ENABLED);
++    QTEST_ADD_TEST_CASE(SET_FB_ALPHA_MODE, REVERSED);
++    QTEST_ADD_TEST_CASE(SET_FB_ALPHA_MODE, IGNORED);
++    QTEST_ADD_TEST_CASE(GET_PITCH);
++    QTEST_ADD_TEST_CASE(TEST_VIRTUAL_OFFSET);
++    QTEST_ADD_TEST_CASE(GET_VIRTUAL_OFFSET);
++    QTEST_ADD_TEST_CASE(SET_VIRTUAL_OFFSET, _0_);
++    QTEST_ADD_TEST_CASE(SET_VIRTUAL_OFFSET, _42_);
++    QTEST_ADD_TEST_CASE(GET_OVERSCAN);
++    QTEST_ADD_TEST_CASE(TEST_OVERSCAN);
++    QTEST_ADD_TEST_CASE(SET_OVERSCAN);
++    QTEST_ADD_TEST_CASE(GET_DMA_CHANNELS);
++    QTEST_ADD_TEST_CASE(GET_COMMANDLINE);
++    QTEST_ADD_TEST_CASE(GET_NUM_DISPLAYS);
++    QTEST_ADD_TEST_CASE(SET_PITCH);
+ 
+     return g_test_run();
+ }
 -- 
 2.34.1
 

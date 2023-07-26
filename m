@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp561779ejb;
-        Wed, 26 Jul 2023 06:52:11 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFLo8xPYaLbW/05FKqhPZ2xTb+8u7tO3kWiygJEgxhTElx4LbM08fbof8Ahi6xoOXmevtDr
-X-Received: by 2002:ad4:4386:0:b0:631:ed13:b286 with SMTP id s6-20020ad44386000000b00631ed13b286mr1928751qvr.26.1690379530867;
-        Wed, 26 Jul 2023 06:52:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690379530; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp561933ejb;
+        Wed, 26 Jul 2023 06:52:25 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFTKEJst52zPdir+0oEwylh+Mg9ghURlVLG0mgojoLiSOGakWYWijTJQYJY6fbfbyJPQb1v
+X-Received: by 2002:ac8:5f93:0:b0:400:7ff8:db5b with SMTP id j19-20020ac85f93000000b004007ff8db5bmr2550175qta.33.1690379544822;
+        Wed, 26 Jul 2023 06:52:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690379544; cv=none;
         d=google.com; s=arc-20160816;
-        b=dNRAS/eJuj7KJvIAMWrTROirCU0IYGb6WI/y2BkION6oQ+h9/ohyMCirilSlSFMqZA
-         Rlqvk9UIDLLYQhw1EPJ2z96/I0683OSZ0PMKWGEWBzVFHNw2rS1U+hgGGnmvOaYqiCwo
-         V6Oja0KzQkMLG9TOBlzjuQ+1q0Z67EgoFFAx0Hw5PeFOxDwQVfO0U0aHqu82yOskdTOQ
-         0HSEasGrBdM6syqs1Qwoa5yQWhA+UJFdVaOjmG0MRTDNIIjXxUNVh1f3X0jPtyN6Ud9N
-         UdMVhpDYkjN+Rxylu3svDk8L7hm4RCs8zFmCYyiDgEP4zc0GH+5LDgFcFJZgIIVPQ4tE
-         lVWA==
+        b=Yp5D4h3H4RN4XWL7qZ2gwjbnWsVzZN2jlYfpNo60JZcSNjJU56FD0zSXpUYreBtmsk
+         RjZgguW82gurYUZkVbcqmKlQzlGdhmOZTooT2+ABQrvIBmupFa5uD92TfOmmlRAnPuc0
+         xSd5joi6BhdbC2Smk8fJMCQxPjd1PD5dBsb1O70gn+glzJ71nn5nFwt2FR3H1MHBseMy
+         gb8n69uPXZvtEvrfPYoKtJDl8ETddPqcnziYTAoqNJRDn2HaTsFjh3K5cnpgPiAS/H9d
+         6s3H+rifOXNcsyybcOuGJmMS2jGeSfIQycsx4BdtclU4Avl5zfKo+Q5KFecUwn0kOIY5
+         550A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=j7biyRujPtM3NOYIeI8gaS38CDX45zdlkT33++UCSsI=;
+        bh=3iHyCevS8yV4nw2DFNoLX3APtmRr5P5iCV+UVMyzNg4=;
         fh=f5jt6gD4kTKAQV2ukO6ZfXPs+EJm4Q1+uDtHV6gcJRE=;
-        b=emGYIMkiqV4pZ9arH/gp8q60p2LI49Y1tbWsJbQjorznwkwOSCsbvIvk0NzTIrl8UW
-         FTX0uhioFF/LAWIRIFAEpSUpCJ1JmLIOWYfimPze7+UHSi47eErimgO/7KP0P+neDxyc
-         ps2lVzcQFegEOYjRCI/MraCpxFySzYdQ1AswoGfRTRZ1znKLNtkFycwikq3vcp91Fuxt
-         p2saumaLOY8TOhww8LY2mnXh+QTde37I3UDKyNzU6MnL+XJ6vLHXbxDL2EtWtjg7MZOC
-         iPufHwpN40Pn9ZCPe07QrH9ZdzFKQg0+GenQycqBBd62sAuc9q8lyyQhAsm/dIdMDr/6
-         H+kA==
+        b=uk8YfEfwnOJNRNBZK9ki5iN3qsei1c4gC1tpYGFXTnJEQwmdAgvmN6zC8CPerLT+14
+         NH3+kLoOFPq8xCdaqN+5HGpfAm8BU6z+JODULIgJEdN1FMEb5JavevDNUGSWz8EUteeG
+         Rm8rm0YGNfPYgeluqZY9ifY4/JK8zt/BOEBkgcD3szb56n5ZG8bH9fRugtovUnxfa7by
+         4uF1M6G2zAR/BZD7Ovt71E4joXSZdk3BWlgwhWl2SmLeWzFjQqBNiC4agkgkY4ST2k5M
+         8FwaPNc8j2UFsV/BblNXREBEAtRJnFlv4BQwubK45EzCFGzpIQcEtS9q9IzjAteYQlGU
+         lj2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=WtKOH2op;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=ZQtTsTWC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bi26-20020a05620a319a00b00767d81d2106si8329773qkb.290.2023.07.26.06.52.10
+        by mx.google.com with ESMTPS id p19-20020a05622a049300b00403dd3f7113si8187170qtx.322.2023.07.26.06.52.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jul 2023 06:52:10 -0700 (PDT)
+        Wed, 26 Jul 2023 06:52:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=WtKOH2op;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=ZQtTsTWC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qOeWm-0002wK-6L; Wed, 26 Jul 2023 09:26:09 -0400
+	id 1qOeWC-0002fZ-Is; Wed, 26 Jul 2023 09:25:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWH-0002im-61; Wed, 26 Jul 2023 09:25:37 -0400
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+ id 1qOeW8-0002VW-4N; Wed, 26 Jul 2023 09:25:28 -0400
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWE-0003Cs-ML; Wed, 26 Jul 2023 09:25:36 -0400
-Received: by mail-lf1-x12a.google.com with SMTP id
- 2adb3069b0e04-4fb7dc16ff0so10518087e87.2; 
- Wed, 26 Jul 2023 06:25:33 -0700 (PDT)
+ id 1qOeW5-00035K-UG; Wed, 26 Jul 2023 09:25:27 -0400
+Received: by mail-lf1-x12e.google.com with SMTP id
+ 2adb3069b0e04-4fba8f2197bso10764220e87.3; 
+ Wed, 26 Jul 2023 06:25:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1690377932; x=1690982732;
+ d=gmail.com; s=20221208; t=1690377923; x=1690982723;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=j7biyRujPtM3NOYIeI8gaS38CDX45zdlkT33++UCSsI=;
- b=WtKOH2opt2V8xp7J0A6j7Mwiq4w0gJiC8F5GuN3EUIPOlal5XUEn7QYzmFVNZ4zMcV
- UEn79OIpBb/N5AFPBdjvzhMo4E4n8LASJj9e7WGp2UfNfpIlX5MLMPClM2WMGaSedMol
- k5TRbAVEeO9WneTneLvKVV1/UeZN9ajrryEqtgDXdknFRIumQ+u5As2JMsdjRNsQqRss
- 1gjsW5cU1OUBix+7kaMpkrT1SDk2pgxoOtw9YIkcPldvIVgCrJ7Jh0kALYOgG6XVcw9Q
- DRasvRkqVw1Ti3VAGBdm/OWbrGDehhWpAwDrp5Xu+CC9jdNgwmf/qUL1hokMEdwDtbQm
- 7pSw==
+ bh=3iHyCevS8yV4nw2DFNoLX3APtmRr5P5iCV+UVMyzNg4=;
+ b=ZQtTsTWCAzNxeP6S0Lqkh7i3nMNu0CzO22hHD1Y9rGt+wulgCie58gIbOs7/bfZ1T2
+ AwgKw5iBWN5s3JzeIFUp4CLCyLm7n0kN1fHyqRnZdiH32XriPb4A8IhB/Yx0SxDY5EAP
+ HWe1GEmqxeC+/57HFYZegzUKgOyEA52UCU/sqQ/NMhfUaD2Z9JAyLymj0dQzAzOZJB6F
+ 2bWDllxVlbG4GcDOkcqedbTpl9L+P0bGqdYYjYsCpL75N4VnS/GaiR8xGPHctZYcOrbD
+ bBmfiRWwXttJ2JO8wLAVzh/BcG2C2fUU+wf54rj6+Xu2mywr8SQh6QEvoTNBkzP2DZLp
+ 7oug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690377932; x=1690982732;
+ d=1e100.net; s=20221208; t=1690377923; x=1690982723;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=j7biyRujPtM3NOYIeI8gaS38CDX45zdlkT33++UCSsI=;
- b=ld4QkPx7kAllLElxA3Gx/Mu3MVEFj8pZ25I0FJNdAwZ9JDioDt3dt7jdTR1VttOTrp
- wR+j4f4qiUdp9sKGSTlj0hh9D2rWShsEuSonQjdx7chI72Fyb1OFEakTdSqQ5EnZFe54
- Buy5IMYZCUlI7aVZSB0a4yNG9g+rXqTsLhquE5KmG/CUqfeqJI/19tJXOXvWZWqjKrxI
- U0XcQRBfRVV/RzgGBamS76lYyY7LqVWAWRkyiEoaG+nd2he3xvZ1sYLqcM1SQcwMdEyP
- JwOeWzFZknd1Z5veyhx/THh2mCjJAif1TK/PBpTDGFIKC0PH9BRejqjauXD3ym3Uv/xT
- 1b3Q==
-X-Gm-Message-State: ABy/qLZOn4Pc7OVix0t/6hlirPrK+vn/oaWEPKsA4SRJPVB/ms+m5/u6
- 9aJgbSK6WSOpX8l4wGxBwds8zKRgDVg=
-X-Received: by 2002:a05:6512:200d:b0:4f8:66e1:14e8 with SMTP id
- a13-20020a056512200d00b004f866e114e8mr1517654lfb.69.1690377931677; 
- Wed, 26 Jul 2023 06:25:31 -0700 (PDT)
+ bh=3iHyCevS8yV4nw2DFNoLX3APtmRr5P5iCV+UVMyzNg4=;
+ b=cEPmw8zvnAROkqCGE2CxOgWfMrXrFH6ZuvNIpeXcWCO/tdgTcHUo00xu2/pqaK2brk
+ aJXWuaJT3EC95ObfsfrJAji/3SNcLaGU1qdaTvR2GpWBSq/J00XBqNXHFpyzYpxJSKt3
+ HVfXcKbBpdAM96UWApqoZ5GYmNhX/vhj1WvQ0k9UjODWiulL6OFuNwT2bLuDYJEcNDMy
+ lI8TK4bJvGj6QDF7D2Lx/wttTfW9ZHQlnNX9wffJrb6xWbvqr8ohxULdAmmn4ixuRaDb
+ /MDEZtXwJYjsX/0C4q15obEOr03b5ep2+OY97KXFe0YAiQD70soUiWV58vh704PU5Pqd
+ aBsw==
+X-Gm-Message-State: ABy/qLZ0gihuo72fvbVBmbQKM+bZohJl3WeERhSh+zCi6KHBv1oo4x4e
+ bVGkkEOxhgIBLvj1ZDpVYoFPqQMru7I=
+X-Received: by 2002:a05:6512:202f:b0:4fb:8ee0:b8a5 with SMTP id
+ s15-20020a056512202f00b004fb8ee0b8a5mr1272833lfs.46.1690377923288; 
+ Wed, 26 Jul 2023 06:25:23 -0700 (PDT)
 Received: from sergevik-thinkpad.localdomain ([213.197.136.186])
  by smtp.gmail.com with ESMTPSA id
- j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.30
+ j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Jul 2023 06:25:31 -0700 (PDT)
+ Wed, 26 Jul 2023 06:25:22 -0700 (PDT)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 11/44] Introduce Raspberry PI 4 machine
-Date: Wed, 26 Jul 2023 16:24:39 +0300
-Message-Id: <20230726132512.149618-12-sergey.kambalin@auriga.com>
+Subject: [PATCH 04/44] Introduce BCM2838 SoC
+Date: Wed, 26 Jul 2023 16:24:32 +0300
+Message-Id: <20230726132512.149618-5-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=serg.oker@gmail.com; helo=mail-lf1-x12a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
+ envelope-from=serg.oker@gmail.com; helo=mail-lf1-x12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,200 +124,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZMZuzBc9sLcg
+X-TUID: MoAKUTtsl6NS
 
 Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 ---
- hw/arm/bcm2835_peripherals.c    |  20 +++-
- hw/arm/bcm2836.c                |   2 +
- hw/arm/bcm2838.c                |   2 +
- hw/arm/meson.build              |   2 +-
- hw/arm/raspi.c                  |  28 +++--
- hw/arm/raspi4b.c                | 182 ++++++++++++++++++++++++++++++++
- include/hw/arm/raspi_platform.h |  11 ++
- include/hw/display/bcm2835_fb.h |   2 +
- 8 files changed, 235 insertions(+), 14 deletions(-)
- create mode 100644 hw/arm/raspi4b.c
+ hw/arm/bcm2838.c                     | 110 +++++++++++++++++++++++++++
+ hw/arm/bcm2838_peripherals.c         |  72 ++++++++++++++++++
+ hw/arm/meson.build                   |   2 +
+ include/hw/arm/bcm2838.h             |  26 +++++++
+ include/hw/arm/bcm2838_peripherals.h |  36 +++++++++
+ 5 files changed, 246 insertions(+)
+ create mode 100644 hw/arm/bcm2838.c
+ create mode 100644 hw/arm/bcm2838_peripherals.c
+ create mode 100644 include/hw/arm/bcm2838.h
+ create mode 100644 include/hw/arm/bcm2838_peripherals.h
 
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 4c0c0b1e7d..9e4153936f 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -108,6 +108,7 @@ static void raspi_peripherals_base_init(Object *obj)
-     /* Framebuffer */
-     object_initialize_child(obj, "fb", &s->fb, TYPE_BCM2835_FB);
-     object_property_add_alias(obj, "vcram-size", OBJECT(&s->fb), "vcram-size");
-+    object_property_add_alias(obj, "vcram-base", OBJECT(&s->fb), "vcram-base");
- 
-     object_property_add_const_link(OBJECT(&s->fb), "dma-mr",
-                                    OBJECT(&s->gpu_bus_mr));
-@@ -225,7 +226,7 @@ void raspi_peripherals_common_realize(DeviceState *dev, Error **errp)
-     Object *obj;
-     MemoryRegion *ram;
-     Error *err = NULL;
--    uint64_t ram_size, vcram_size;
-+    uint64_t ram_size, vcram_size, vcram_base;
-     int n;
- 
-     obj = object_property_get_link(OBJECT(dev), "ram", &error_abort);
-@@ -329,11 +330,24 @@ void raspi_peripherals_common_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    if (!object_property_set_uint(OBJECT(&s->fb), "vcram-base",
--                                  ram_size - vcram_size, errp)) {
-+    vcram_base = object_property_get_uint(OBJECT(s), "vcram-base", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-         return;
-     }
- 
-+    if (vcram_base == 0) {
-+        vcram_base = (ram_size > UPPER_RAM_BASE ? UPPER_RAM_BASE : ram_size)
-+            - vcram_size;
-+    } else {
-+        if (vcram_base + vcram_size > UPPER_RAM_BASE) {
-+            vcram_base = UPPER_RAM_BASE - vcram_size;
-+        }
-+    }
-+    if (!object_property_set_uint(OBJECT(&s->fb), "vcram-base", vcram_base,
-+                                  errp)) {
-+        return;
-+    }
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fb), errp)) {
-         return;
-     }
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index 8beafb97f0..34883d29ff 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -64,6 +64,8 @@ static void bcm283x_init(Object *obj)
-                               "command-line");
-     object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
-                               "vcram-size");
-+    object_property_add_alias(obj, "vcram-base", OBJECT(&s->peripherals),
-+                              "vcram-base");
- }
- 
- bool bcm283x_common_realize(DeviceState *dev, RaspiPeripheralBaseState *ps,
 diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
-index c687f38a39..a1980cc181 100644
---- a/hw/arm/bcm2838.c
-+++ b/hw/arm/bcm2838.c
-@@ -62,6 +62,8 @@ static void bcm2838_init(Object *obj)
-                               "board-rev");
-     object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
-                               "vcram-size");
-+    object_property_add_alias(obj, "vcram-base", OBJECT(&s->peripherals),
-+                              "vcram-base");
-     object_property_add_alias(obj, "command-line", OBJECT(&s->peripherals),
-                               "command-line");
- 
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 071819b527..768b2608c1 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -39,7 +39,7 @@ arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c', 'cubi
- arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c', 'orangepi.c'))
- arm_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40.c', 'bananapi_m2u.c'))
- arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
--arm_ss.add(when: ['CONFIG_RASPI', 'TARGET_AARCH64'], if_true: files('bcm2838.c'))
-+arm_ss.add(when: ['CONFIG_RASPI', 'TARGET_AARCH64'], if_true: files('bcm2838.c', 'raspi4b.c'))
- arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 7d04734cd2..da1e9e7c13 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -18,6 +18,7 @@
- #include "qapi/error.h"
- #include "hw/arm/boot.h"
- #include "hw/arm/bcm2836.h"
-+#include "hw/arm/bcm2838.h"
- #include "hw/arm/raspi_platform.h"
- #include "hw/registerfields.h"
- #include "qemu/error-report.h"
-@@ -61,6 +62,7 @@ typedef enum RaspiProcessorId {
-     PROCESSOR_ID_BCM2835 = 0,
-     PROCESSOR_ID_BCM2836 = 1,
-     PROCESSOR_ID_BCM2837 = 2,
-+    PROCESSOR_ID_BCM2838 = 3,
- } RaspiProcessorId;
- 
- static const struct {
-@@ -70,13 +72,9 @@ static const struct {
-     [PROCESSOR_ID_BCM2835] = {TYPE_BCM2835, 1},
-     [PROCESSOR_ID_BCM2836] = {TYPE_BCM2836, BCM283X_NCPUS},
-     [PROCESSOR_ID_BCM2837] = {TYPE_BCM2837, BCM283X_NCPUS},
-+    [PROCESSOR_ID_BCM2838] = {TYPE_BCM2838, BCM283X_NCPUS},
- };
- 
--static void raspi_base_machine_init(MachineState *machine,
--                             BCM283XBaseState *soc);
--static void raspi_machine_class_common_init(MachineClass *mc,
--                                     uint32_t board_rev);
--
- static uint64_t board_ram_size(uint32_t board_rev)
- {
-     assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
-@@ -93,7 +91,7 @@ static RaspiProcessorId board_processor_id(uint32_t board_rev)
-     return proc_id;
- }
- 
--static const char *board_soc_type(uint32_t board_rev)
-+const char *board_soc_type(uint32_t board_rev)
- {
-     return soc_property[board_processor_id(board_rev)].type;
- }
-@@ -248,13 +246,14 @@ static void setup_boot(MachineState *machine, ARMCPU *cpu,
-     arm_load_kernel(cpu, machine, &s->binfo);
- }
- 
--static void raspi_base_machine_init(MachineState *machine,
-+void raspi_base_machine_init(MachineState *machine,
-                              BCM283XBaseState *soc)
- {
-     RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
-     uint32_t board_rev = mc->board_rev;
-     uint64_t ram_size = board_ram_size(board_rev);
--    uint32_t vcram_size;
-+    uint32_t vcram_base, vcram_size;
-+    size_t boot_ram_size;
-     DriveInfo *di;
-     BlockBackend *blk;
-     BusState *bus;
-@@ -293,11 +292,20 @@ static void raspi_base_machine_init(MachineState *machine,
- 
-     vcram_size = object_property_get_uint(OBJECT(soc), "vcram-size",
-                                           &error_abort);
-+    vcram_base = object_property_get_uint(OBJECT(soc), "vcram-base",
-+                                          &error_abort);
-+    if (!vcram_base) {
-+        boot_ram_size = (ram_size > UPPER_RAM_BASE ? UPPER_RAM_BASE : ram_size)
-+            - vcram_size;
-+    } else {
-+        boot_ram_size = (vcram_base + vcram_size > UPPER_RAM_BASE ?
-+                                UPPER_RAM_BASE - vcram_size : vcram_base);
-+    }
-     setup_boot(machine, &soc->cpu[0].core, board_processor_id(board_rev),
--               machine->ram_size - vcram_size);
-+               boot_ram_size);
- }
- 
--static void raspi_machine_init(MachineState *machine)
-+void raspi_machine_init(MachineState *machine)
- {
-     RaspiMachineState *s = RASPI_MACHINE(machine);
-     RaspiBaseMachineState *s_base = RASPI_BASE_MACHINE(machine);
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
 new file mode 100644
-index 0000000000..4096522d85
+index 0000000000..dd650c8148
 --- /dev/null
-+++ b/hw/arm/raspi4b.c
-@@ -0,0 +1,182 @@
++++ b/hw/arm/bcm2838.c
+@@ -0,0 +1,110 @@
 +/*
-+ * Raspberry Pi 4B emulation
++ * BCM2838 SoC emulation
 + *
 + * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
 + *
@@ -325,214 +154,279 @@ index 0000000000..4096522d85
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "qemu/cutils.h"
 +#include "qapi/error.h"
-+#include "qapi/visitor.h"
++#include "qemu/module.h"
 +#include "hw/arm/raspi_platform.h"
-+#include "hw/display/bcm2835_fb.h"
-+#include "hw/registerfields.h"
-+#include "qemu/error-report.h"
-+#include "sysemu/device_tree.h"
-+#include "hw/boards.h"
-+#include "hw/loader.h"
-+#include "hw/arm/boot.h"
-+#include "qom/object.h"
++#include "hw/sysbus.h"
 +#include "hw/arm/bcm2838.h"
++#include "trace.h"
 +
-+#define TYPE_RASPI4B_MACHINE MACHINE_TYPE_NAME("raspi4b-common")
-+OBJECT_DECLARE_SIMPLE_TYPE(Raspi4bMachineState, RASPI4B_MACHINE)
-+
-+struct Raspi4bMachineState {
++struct BCM2838Class {
 +    /*< private >*/
-+    RaspiBaseMachineState parent_obj;
++    BCM283XBaseClass parent_class;
 +    /*< public >*/
-+    BCM2838State soc;
-+    uint32_t vcram_base;
-+    uint32_t vcram_size;
++    hwaddr peri_low_base; /* Lower peripheral base address seen by the CPU */
++    hwaddr gic_base; /* GIC base address inside ARM local peripherals region */
 +};
 +
-+static void raspi4b_machine_init(MachineState *machine)
++#define VIRTUAL_PMU_IRQ 7
++
++static void bcm2838_init(Object *obj)
 +{
-+    Raspi4bMachineState *s = RASPI4B_MACHINE(machine);
-+    RaspiBaseMachineState *s_base = RASPI_BASE_MACHINE(machine);
-+    RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
-+    BCM2838State *soc = &s->soc;
++    BCM2838State *s = BCM2838(obj);
 +
-+    s_base->binfo.board_id = mc->board_rev;
-+
-+    object_initialize_child(OBJECT(machine), "soc", soc,
-+                            board_soc_type(mc->board_rev));
-+
-+    if (s->vcram_base) {
-+        object_property_set_uint(OBJECT(soc), "vcram-base",
-+                                        s->vcram_base, NULL);
-+    }
-+
-+    if (s->vcram_size) {
-+        object_property_set_uint(OBJECT(soc), "vcram-size",
-+                                 s->vcram_size, NULL);
-+    }
-+
-+    raspi_base_machine_init(machine, &soc->parent_obj);
++    object_initialize_child(obj, "peripherals", &s->peripherals,
++                            TYPE_BCM2838_PERIPHERALS);
++    object_property_add_alias(obj, "board-rev", OBJECT(&s->peripherals),
++                              "board-rev");
++    object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
++                              "vcram-size");
++    object_property_add_alias(obj, "command-line", OBJECT(&s->peripherals),
++                              "command-line");
 +}
 +
-+static void get_vcram_base(Object *obj, Visitor *v, const char *name,
-+                            void *opaque, Error **errp)
++static void bcm2838_realize(DeviceState *dev, Error **errp)
 +{
-+    Raspi4bMachineState *ms = RASPI4B_MACHINE(obj);
-+    hwaddr value = ms->vcram_base;
++    int n;
++    BCM2838State *s = BCM2838(dev);
++    BCM283XBaseState *s_base = BCM283X_BASE(dev);
++    BCM2838Class *bc = BCM2838_GET_CLASS(dev);
++    BCM283XBaseClass *bc_base = BCM283X_BASE_GET_CLASS(dev);
++    BCM2838PeripheralState *ps = BCM2838_PERIPHERALS(&s->peripherals);
++    RaspiPeripheralBaseState *ps_base = RASPI_PERIPHERALS_BASE(&s->peripherals);
 +
-+    visit_type_uint64(v, name, &value, errp);
-+}
-+
-+static void set_vcram_base(Object *obj, Visitor *v, const char *name,
-+                            void *opaque, Error **errp)
-+{
-+    Raspi4bMachineState *ms = RASPI4B_MACHINE(obj);
-+    hwaddr value;
-+
-+    if (!visit_type_uint64(v, name, &value, errp)) {
++    if (!bcm283x_common_realize(dev, ps_base, errp)) {
 +        return;
 +    }
++    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(ps), 1, bc->peri_low_base, 1);
 +
-+    ms->vcram_base = value;
-+}
-+
-+static void get_vcram_size(Object *obj, Visitor *v, const char *name,
-+                            void *opaque, Error **errp)
-+{
-+    Raspi4bMachineState *ms = RASPI4B_MACHINE(obj);
-+    hwaddr value = ms->vcram_size;
-+
-+    visit_type_uint64(v, name, &value, errp);
-+}
-+
-+static void set_vcram_size(Object *obj, Visitor *v, const char *name,
-+                            void *opaque, Error **errp)
-+{
-+    Raspi4bMachineState *ms = RASPI4B_MACHINE(obj);
-+    hwaddr value;
-+
-+    if (!visit_type_uint64(v, name, &value, errp)) {
++    /* bcm2836 interrupt controller (and mailboxes, etc.) */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s_base->control), errp)) {
 +        return;
 +    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s_base->control), 0, bc_base->ctrl_base);
 +
-+    ms->vcram_size = value;
-+}
++    /* Create cores */
++    for (n = 0; n < bc_base->core_count; n++) {
++        /* TODO: this should be converted to a property of ARM_CPU */
++        s_base->cpu[n].core.mp_affinity = (bc_base->clusterid << 8) | n;
 +
-+static void raspi4b_machine_class_init(MachineClass *mc, uint32_t board_rev)
-+{
-+    object_class_property_add(OBJECT_CLASS(mc), "vcram-size", "uint32",
-+                              get_vcram_size, set_vcram_size, NULL, NULL);
-+    object_class_property_set_description(OBJECT_CLASS(mc), "vcram-size",
-+                                            "VideoCore RAM base address");
-+    object_class_property_add(OBJECT_CLASS(mc), "vcram-base", "uint32",
-+                              get_vcram_base, set_vcram_base, NULL, NULL);
-+    object_class_property_set_description(OBJECT_CLASS(mc), "vcram-base",
-+                                            "VideoCore RAM size");
++        /* start powered off if not enabled */
++        if (!object_property_set_bool(OBJECT(&s_base->cpu[n].core),
++                                      "start-powered-off",
++                                      n >= s_base->enabled_cpus,
++                                      errp)) {
++            return;
++        }
 +
-+    raspi_machine_class_common_init(mc, board_rev);
-+    mc->init = raspi4b_machine_init;
-+}
-+
-+static void raspi4b1g_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
-+
-+    rmc->board_rev = 0xa03111;
-+    raspi4b_machine_class_init(mc, rmc->board_rev);
-+}
-+
-+static void raspi4b2g_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
-+
-+    rmc->board_rev = 0xb03112;
-+    raspi4b_machine_class_init(mc, rmc->board_rev);
-+}
-+
-+static void raspi4b4g_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
-+
-+    rmc->board_rev = 0xc03114;
-+    raspi4b_machine_class_init(mc, rmc->board_rev);
-+}
-+
-+static void raspi4b8g_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
-+
-+    rmc->board_rev = 0xd03114;
-+    raspi4b_machine_class_init(mc, rmc->board_rev);
-+}
-+
-+static const TypeInfo raspi4b_machine_types[] = {
-+    {
-+        .name           = MACHINE_TYPE_NAME("raspi4b1g"),
-+        .parent         = TYPE_RASPI4B_MACHINE,
-+        .class_init     = raspi4b1g_machine_class_init,
-+    }, {
-+        .name           = MACHINE_TYPE_NAME("raspi4b2g"),
-+        .parent         = TYPE_RASPI4B_MACHINE,
-+        .class_init     = raspi4b2g_machine_class_init,
-+    }, {
-+        .name           = MACHINE_TYPE_NAME("raspi4b4g"),
-+        .parent         = TYPE_RASPI4B_MACHINE,
-+        .class_init     = raspi4b4g_machine_class_init,
-+    }, {
-+        .name           = MACHINE_TYPE_NAME("raspi4b8g"),
-+        .parent         = TYPE_RASPI4B_MACHINE,
-+        .class_init     = raspi4b8g_machine_class_init,
-+    }, {
-+        .name           = TYPE_RASPI4B_MACHINE,
-+        .parent         = TYPE_RASPI_BASE_MACHINE,
-+        .instance_size  = sizeof(Raspi4bMachineState),
-+        .abstract       = true,
++        if (!qdev_realize(DEVICE(&s_base->cpu[n].core), NULL, errp)) {
++            return;
++        }
 +    }
++}
++
++static void bcm2838_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    BCM2838Class *bc = BCM2838_CLASS(oc);
++    BCM283XBaseClass *bc_base = BCM283X_BASE_CLASS(oc);
++
++    bc_base->cpu_type = ARM_CPU_TYPE_NAME("cortex-a72");
++    bc_base->core_count = BCM283X_NCPUS;
++    bc_base->peri_base = 0xfe000000;
++    bc_base->ctrl_base = 0xff800000;
++    bc_base->clusterid = 0x0;
++    bc->peri_low_base = 0xfc000000;
++    dc->realize = bcm2838_realize;
++}
++
++static const TypeInfo bcm2838_type = {
++    .name           = TYPE_BCM2838,
++    .parent         = TYPE_BCM283X_BASE,
++    .instance_size  = sizeof(BCM2838State),
++    .instance_init  = bcm2838_init,
++    .class_size     = sizeof(BCM2838Class),
++    .class_init     = bcm2838_class_init,
 +};
 +
-+DEFINE_TYPES(raspi4b_machine_types)
-diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
-index 3018e8fcf3..45003e2425 100644
---- a/include/hw/arm/raspi_platform.h
-+++ b/include/hw/arm/raspi_platform.h
-@@ -49,6 +49,17 @@ struct RaspiBaseMachineClass {
-     uint32_t board_rev;
- };
++static void bcm2838_register_types(void)
++{
++    type_register_static(&bcm2838_type);
++}
++
++type_init(bcm2838_register_types);
+diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
+new file mode 100644
+index 0000000000..864941c231
+--- /dev/null
++++ b/hw/arm/bcm2838_peripherals.c
+@@ -0,0 +1,72 @@
++/*
++ * BCM2838 peripherals emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/module.h"
++#include "hw/arm/raspi_platform.h"
++#include "hw/arm/bcm2838_peripherals.h"
++
++/* Lower peripheral base address on the VC (GPU) system bus */
++#define BCM2838_VC_PERI_LOW_BASE 0x7c000000
++
++static void bcm2838_peripherals_init(Object *obj)
++{
++    BCM2838PeripheralState *s = BCM2838_PERIPHERALS(obj);
++    BCM2838PeripheralClass *bc = BCM2838_PERIPHERALS_GET_CLASS(obj);
++
++    /* Lower memory region for peripheral devices (exported to the Soc) */
++    memory_region_init(&s->peri_low_mr, obj, "bcm2838-peripherals",
++                       bc->peri_low_size);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_low_mr);
++
++}
++
++static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
++{
++    BCM2838PeripheralState *s = BCM2838_PERIPHERALS(dev);
++    RaspiPeripheralBaseState *s_base = RASPI_PERIPHERALS_BASE(dev);
++
++    raspi_peripherals_common_realize(dev, errp);
++
++    /* Map lower peripherals into the GPU address space */
++    memory_region_init_alias(&s->peri_low_mr_alias, OBJECT(s),
++                             "bcm2838-peripherals", &s->peri_low_mr, 0,
++                             memory_region_size(&s->peri_low_mr));
++    memory_region_add_subregion_overlap(&s_base->gpu_bus_mr,
++                                        BCM2838_VC_PERI_LOW_BASE,
++                                        &s->peri_low_mr_alias, 1);
++
++}
++
++static void bcm2838_peripherals_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    BCM2838PeripheralClass *bc = BCM2838_PERIPHERALS_CLASS(oc);
++    RaspiPeripheralBaseClass *bc_base = RASPI_PERIPHERALS_BASE_CLASS(oc);
++
++    bc->peri_low_size = 0x2000000;
++    bc_base->peri_size = 0x1800000;
++    dc->realize = bcm2838_peripherals_realize;
++}
++
++static const TypeInfo bcm2838_peripherals_type_info = {
++    .name = TYPE_BCM2838_PERIPHERALS,
++    .parent = TYPE_RASPI_PERIPHERALS_BASE,
++    .instance_size = sizeof(BCM2838PeripheralState),
++    .instance_init = bcm2838_peripherals_init,
++    .class_size = sizeof(BCM2838PeripheralClass),
++    .class_init = bcm2838_peripherals_class_init,
++};
++
++static void bcm2838_peripherals_register_types(void)
++{
++    type_register_static(&bcm2838_peripherals_type_info);
++}
++
++type_init(bcm2838_peripherals_register_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 11eb9112f8..071819b527 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -39,6 +39,7 @@ arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c', 'cubi
+ arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c', 'orangepi.c'))
+ arm_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40.c', 'bananapi_m2u.c'))
+ arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
++arm_ss.add(when: ['CONFIG_RASPI', 'TARGET_AARCH64'], if_true: files('bcm2838.c'))
+ arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
+ arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
+ arm_ss.add(when: 'CONFIG_STM32F405_SOC', if_true: files('stm32f405_soc.c'))
+@@ -69,6 +70,7 @@ arm_ss.add_all(xen_ss)
+ system_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
+ system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4_boards.c'))
+ system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
++system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_peripherals.c'))
+ system_ss.add(when: 'CONFIG_TOSA', if_true: files('tosa.c'))
  
-+/* Common functions for raspberry pi machines */
-+const char *board_soc_type(uint32_t board_rev);
-+void raspi_machine_init(MachineState *machine);
+ hw_arch += {'arm': arm_ss}
+diff --git a/include/hw/arm/bcm2838.h b/include/hw/arm/bcm2838.h
+new file mode 100644
+index 0000000000..6e5a8ec30e
+--- /dev/null
++++ b/include/hw/arm/bcm2838.h
+@@ -0,0 +1,26 @@
++/*
++ * BCM2838 SoC emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+typedef struct BCM283XBaseState BCM283XBaseState;
-+void raspi_base_machine_init(MachineState *machine,
-+                             BCM283XBaseState *soc);
++#ifndef BCM2838_H
++#define BCM2838_H
 +
-+void raspi_machine_class_common_init(MachineClass *mc,
-+                                     uint32_t board_rev);
++#include "hw/arm/bcm2836.h"
++#include "hw/arm/bcm2838_peripherals.h"
 +
- #define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
- #define CCPT_OFFSET             0x1000   /* Compact Camera Port 2 TX */
- #define INTE_OFFSET             0x2000   /* VC Interrupt controller */
-diff --git a/include/hw/display/bcm2835_fb.h b/include/hw/display/bcm2835_fb.h
-index 38671afffd..49541bf08f 100644
---- a/include/hw/display/bcm2835_fb.h
-+++ b/include/hw/display/bcm2835_fb.h
-@@ -16,6 +16,8 @@
- #include "ui/console.h"
- #include "qom/object.h"
- 
-+#define UPPER_RAM_BASE 0x40000000
++#define TYPE_BCM2838 "bcm2838"
 +
- #define TYPE_BCM2835_FB "bcm2835-fb"
- OBJECT_DECLARE_SIMPLE_TYPE(BCM2835FBState, BCM2835_FB)
- 
++OBJECT_DECLARE_TYPE(BCM2838State, BCM2838Class, BCM2838)
++
++struct BCM2838State {
++    /*< private >*/
++    BCM283XBaseState parent_obj;
++    /*< public >*/
++    BCM2838PeripheralState peripherals;
++};
++
++#endif /* BCM2838_H */
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+new file mode 100644
+index 0000000000..8214003baf
+--- /dev/null
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -0,0 +1,36 @@
++/*
++ * BCM2838 peripherals emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef BCM2838_PERIPHERALS_H
++#define BCM2838_PERIPHERALS_H
++
++#include "hw/arm/bcm2835_peripherals.h"
++
++
++#define TYPE_BCM2838_PERIPHERALS "bcm2838-peripherals"
++OBJECT_DECLARE_TYPE(BCM2838PeripheralState, BCM2838PeripheralClass,
++                    BCM2838_PERIPHERALS)
++
++struct BCM2838PeripheralState {
++    /*< private >*/
++    RaspiPeripheralBaseState parent_obj;
++
++    /*< public >*/
++    MemoryRegion peri_low_mr;
++    MemoryRegion peri_low_mr_alias;
++    MemoryRegion mphi_mr_alias;
++};
++
++struct BCM2838PeripheralClass {
++    /*< private >*/
++    RaspiPeripheralBaseClass parent_class;
++    /*< public >*/
++    uint64_t peri_low_size; /* Peripheral lower range size */
++};
++
++#endif /* BCM2838_PERIPHERALS_H */
 -- 
 2.34.1
 

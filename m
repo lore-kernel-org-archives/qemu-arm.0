@@ -1,108 +1,104 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp563943ejb;
-        Wed, 26 Jul 2023 06:56:11 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHW0LQfXXdV9Z5hTiPi8942YISM5CPE9eBY64hBcc97+d0rX581yq+vCJpea+N71OnpuOnz
-X-Received: by 2002:a05:622a:46:b0:404:76a0:c3e4 with SMTP id y6-20020a05622a004600b0040476a0c3e4mr2589127qtw.17.1690379771340;
-        Wed, 26 Jul 2023 06:56:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690379771; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp564268ejb;
+        Wed, 26 Jul 2023 06:56:48 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGh1XaWwg3M2iW/THkGci1nqvL6ahOxQs/lpIAqa0NBvD4EPA6+1KEdekHgVZB2uIU1qDt7
+X-Received: by 2002:ac8:7f51:0:b0:405:3a4d:f6bc with SMTP id g17-20020ac87f51000000b004053a4df6bcmr3244673qtk.42.1690379808134;
+        Wed, 26 Jul 2023 06:56:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690379808; cv=none;
         d=google.com; s=arc-20160816;
-        b=LsQB0hAyZNQ5CsODe5Sy5hjTOs2CqztHBZ8G1rmpRtOjZRKcbntevEAIPbUHgo26SD
-         A1mrkKy+Yi4IVmprayImPadYxqD/NVDn1JR+Kb61U+opQwfrtcWRvOG40or0SlKzFVXR
-         V66AC9ThCK5fbyeAdyBeVLu8bHKqZ0TECMT8X9pWvEBNCLxmxF8m5N/QST7Tf7wSUT1T
-         1T54OjHDklRsOUUJh9frYZQZ7pKzpg5nKx2zZIFUiq9NWn9JxVS0z/AMoSWZ5kHE1+EF
-         0uP2Sb22b+TQswGfp32CeVpcvl8+FL4u3FQo+7Qd7HM15MxbAO967PBUtsXQMaiC1dEF
-         jMBg==
+        b=wVfvkGjKaEfYny+rhXJd9TjhD8jZqu5UMS1SA8RpQwwJ0wS1KBwzY0T3EX1FRwgurx
+         8GVz7eVY9WYdr4UQlQj/w4oP8h6CpCdVwPmHOGQxHMgP4lgdpARpW8Gv58EnePk8jX8V
+         aByYG+ceRzx/Q9fM3ADt54lP5x40a9XV4UUwMxU9qdn2SSPC8wEQDEsw2jKSArKjBzkP
+         N9kV9wsFQdaZz4+NnOlKNJSeAzyyIB73b18Dfny6LR9PZeBlZMT9B8W6qglIx7Oh2p0x
+         1S1sw6hbKaD84WuBsxbLXTXumP3WNMbQJmrnA0oJyW0lwlmxSjsLDd5/ZBwEINVDEshe
+         cyyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=uKhEuIKwITdrcIVOAcQ7yfs/MBUjfcLpaxFMigaCLxc=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=RsNy9Hy1FVnRBYygcSGuJbreOH5QR/RlS6aSFKkHkPo=;
         fh=f5jt6gD4kTKAQV2ukO6ZfXPs+EJm4Q1+uDtHV6gcJRE=;
-        b=APhsI2q8/0PRrHgBotksh8zNL8my8R8WY7+RCjlK6s5lPX7bo9QtgoDhvySOxwwhWA
-         BJkLDxn0KgofzSfJIiBwMwKqJWvV4/BaD24UhqStSZqXSfr5BYir7vDmDUWCDd2d5IIY
-         gLypHInMGB0GrGol642TGBau5a4IzdUR/dNOe6DxZGK9P1L8WW0af8jZneaqcD6+zpfY
-         PGafOPThVFv8WY+ndRQHQvI1J29rsEYrBxigWcHUmx3cXICzmmvPTLE4TAZ8TVt0okWz
-         patSzNC6ADDqBsx2OyABAzf+9scFU+e7dv+ELwH2r4nOH9ZBuoyE+AKXLTegRLbvGs50
-         //vA==
+        b=kBrBgqsZ5PJvHaCBokkAt2i/Jo80yRkFdHbiPEym1GfY/cXrSNRzCMEirRqxKJfHgy
+         sFDANEF3soI0BgG3oTZoXyfOzZo9Mo+5hxc53dv4mkOYGlDMuSGQNV/s+lOUXClfXlSL
+         uMjUTKU7uyt4OEAQjvkYxUQGOtYJfAdKaKyiKD9CMma17DdZoonITVJ6tLXzTMHoAxTO
+         OwToEodofxRg3RlUSicYum1MixIVmfbSUzpAZzGgB5V9lU2IvKmYkADRUVM+hhJvuPEL
+         DX/YzSEoNHk6NHseRxFLE//2lx2+CKZ4uXkGzLU9OXvGlV8/R3ikdPWsKZFZgM/pcsX0
+         GPxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=KkJOHJ2r;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=pZtSKZ13;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c13-20020ac85a8d000000b00403b8559384si8025495qtc.576.2023.07.26.06.56.11
+        by mx.google.com with ESMTPS id f22-20020a05622a105600b004053df1583bsi7943871qte.180.2023.07.26.06.56.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jul 2023 06:56:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 26 Jul 2023 06:56:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=KkJOHJ2r;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=pZtSKZ13;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qOeWo-0002zG-J4; Wed, 26 Jul 2023 09:26:10 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qOeW4-0002N1-Lx; Wed, 26 Jul 2023 09:25:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWH-0002ja-EV; Wed, 26 Jul 2023 09:25:37 -0400
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+ id 1qOeW3-0002Mm-Dm; Wed, 26 Jul 2023 09:25:23 -0400
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1qOeWF-0003DJ-LR; Wed, 26 Jul 2023 09:25:37 -0400
-Received: by mail-lf1-x12e.google.com with SMTP id
- 2adb3069b0e04-4fbf09a9139so10670405e87.2; 
- Wed, 26 Jul 2023 06:25:34 -0700 (PDT)
+ id 1qOeW1-00030h-6T; Wed, 26 Jul 2023 09:25:23 -0400
+Received: by mail-lf1-x135.google.com with SMTP id
+ 2adb3069b0e04-4fe04882c66so3274346e87.3; 
+ Wed, 26 Jul 2023 06:25:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1690377933; x=1690982733;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uKhEuIKwITdrcIVOAcQ7yfs/MBUjfcLpaxFMigaCLxc=;
- b=KkJOHJ2rlnEJRHDAhTs7R3YySgc87niv6qLGcSV3UcThqYr0SBk9xsiu7yZMLjUoyI
- MO9NGc7dIJoEkynOz47G5ODo5P5DBrhT1PbLGL6qP8Rvb4zmgykcdeFnPQGDv6ebUr8w
- 0CG/D7sSuOOhkRH8rHy14dxIYnpgcv2ekGmEteMSTgMPAuDkEoDllbwmL40ACY9D+mj/
- qxuKSXzeb83+RdYBhMnE2qwzGf4FoivqFg8ou8DDy5zESScuRk1SdFg7n4FTyLLxt/pJ
- WNfUC9fVVJvtkqUbCO6OUhmPqKnrvs88le7pscFGu4H3rNIF01R9k6rZldbMh71YpzIT
- Nrtg==
+ d=gmail.com; s=20221208; t=1690377918; x=1690982718;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=RsNy9Hy1FVnRBYygcSGuJbreOH5QR/RlS6aSFKkHkPo=;
+ b=pZtSKZ13Av3E0GU/LvHqVRGihRFsKs403XOZSdbRxAyMe9OxgFhXiT2FBu2h+Ku3IR
+ kDqwfY+Mq/6ReW+fco97v7QTCg6zzDp3SVcsOXj5+JcA1PhhGbQScwlADz6LDIg8Podu
+ MwW1doIIGwb3z1i5NEZvt65mrK6leKY3NuoV5ZKrtuvZh2eTxo+3DqG3BXfM9YVuDhgX
+ RxZCxFQVOBS4i6dKCPG9vnY+H4aVZY3AXZP+3I2IGqPbPRrOC7ExZBAfG5iCHzRhBInl
+ R71WBJF27FOjHgpSItBhZQb+kXwr8AWVHIi2mWT4yyzfM9GmLe8vQQfVQFgzIjr6brLo
+ Ghiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690377933; x=1690982733;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=uKhEuIKwITdrcIVOAcQ7yfs/MBUjfcLpaxFMigaCLxc=;
- b=JrPe9qgTTI1KrKdwk+/3B9vyhsfEVeuD0fVAMV7ZMWofruMpB9m+4/SZeQSpe033qM
- Dp47k0wrdlP5wXbJlfxDue33WmFL1bj+PZMg+8i/DgiI0nmLjMj7giPiEAU7sp/Pe2ld
- aacnFiTBQ1XhGVPVHAsB5YsV/mpeP366RXShWwWj24sLibn7KwYfNg6z/w8RMxq/N3j+
- 0TbpWQo/CqHD5N5DGINw0T2bBC+pMd4XdSUmwY4HJKFUBkQCHONTc32nKo99IRqoygiu
- hohR5mEbKRLtqgt/f/qENR4X0Mj3qxOPhzwyUQRtWwQaxFsIkiOsLwzPTa9YcF4icCTH
- hgbg==
-X-Gm-Message-State: ABy/qLaGJ/fpeEnEJmmPygEKxkgao/qdrZmSuZB5wrNk9Vapx//S9UCW
- j6OCSMQ1DdixhyXC0gR469LC3W22jWY=
-X-Received: by 2002:ac2:4d17:0:b0:4fe:f24:cbf3 with SMTP id
- r23-20020ac24d17000000b004fe0f24cbf3mr1296650lfi.63.1690377933009; 
- Wed, 26 Jul 2023 06:25:33 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1690377918; x=1690982718;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=RsNy9Hy1FVnRBYygcSGuJbreOH5QR/RlS6aSFKkHkPo=;
+ b=a5kJPY6OelnkCCzU5woDn7QhVakDQd7+VrcdYhVTVp5I57JbtXtl0rM5xSTKL5RLdi
+ bwwYAFnwW/7SoWTJTjSN81SB1Z0O6NwT/ArZ9pjl/hwhaP48YCT2U7RQbvGT17xS7YVm
+ l8Yef/o+Y9ZwhZNjKD+7bBWgxYYTDkj2R5umk1P/R2bTueaSZ8Z1TI7zhyevMc22BLUX
+ AbGPkWSMNof0z/LOrUZMaQWLQ6384R6R+8ePrDnym1CTAcAss5MZnDJUf/yamDJdjEcq
+ wdpSBEyyNthZlZU3lkYFm+z16v3Eeubx1ZTbwO2yLvjLUDH3M2HXpmhExCpu2YsagxfO
+ r2ZA==
+X-Gm-Message-State: ABy/qLa3MFe2KHVo+eyzRSCMDsljIGWFIjVrAewj5jlWhepDeAwLEJ7f
+ x2QuegSKto7pqhafjpeNK5KYsAFl9w0=
+X-Received: by 2002:ac2:5f48:0:b0:4fe:676:8c0b with SMTP id
+ 8-20020ac25f48000000b004fe06768c0bmr1424894lfz.11.1690377918310; 
+ Wed, 26 Jul 2023 06:25:18 -0700 (PDT)
 Received: from sergevik-thinkpad.localdomain ([213.197.136.186])
  by smtp.gmail.com with ESMTPSA id
- j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.32
+ j22-20020a19f516000000b004fe0c3d8bb4sm565079lfb.84.2023.07.26.06.25.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Jul 2023 06:25:32 -0700 (PDT)
+ Wed, 26 Jul 2023 06:25:17 -0700 (PDT)
 From: Sergey Kambalin <serg.oker@gmail.com>
 X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH 12/44] Temporary disable unimplemented rpi4b devices
-Date: Wed, 26 Jul 2023 16:24:40 +0300
-Message-Id: <20230726132512.149618-13-sergey.kambalin@auriga.com>
+Subject: [PATCH 00/44] Raspberry Pi 4B machine
+Date: Wed, 26 Jul 2023 16:24:28 +0300
+Message-Id: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
-References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
- envelope-from=serg.oker@gmail.com; helo=mail-lf1-x12e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::135;
+ envelope-from=serg.oker@gmail.com; helo=mail-lf1-x135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,141 +107,147 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kI1Rns41yQiV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VIQV1dvxB5jS
 
-Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
----
- hw/arm/raspi.c                  |  2 +-
- hw/arm/raspi4b.c                | 63 +++++++++++++++++++++++++++++++++
- include/hw/arm/raspi_platform.h |  1 +
- 3 files changed, 65 insertions(+), 1 deletion(-)
+Introducing Raspberry Pi 4B model.
+It contains new BCM2838 SoC, PCIE subsystem,
+RNG200, Thermal sensor and Genet network controller.
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index da1e9e7c13..cffdd8de4e 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -75,7 +75,7 @@ static const struct {
-     [PROCESSOR_ID_BCM2838] = {TYPE_BCM2838, BCM283X_NCPUS},
- };
- 
--static uint64_t board_ram_size(uint32_t board_rev)
-+uint64_t board_ram_size(uint32_t board_rev)
- {
-     assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
-     return 256 * MiB << FIELD_EX32(board_rev, REV_CODE, MEMORY_SIZE);
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index 4096522d85..d2053c9380 100644
---- a/hw/arm/raspi4b.c
-+++ b/hw/arm/raspi4b.c
-@@ -21,6 +21,7 @@
- #include "hw/arm/boot.h"
- #include "qom/object.h"
- #include "hw/arm/bcm2838.h"
-+#include <libfdt.h>
- 
- #define TYPE_RASPI4B_MACHINE MACHINE_TYPE_NAME("raspi4b-common")
- OBJECT_DECLARE_SIMPLE_TYPE(Raspi4bMachineState, RASPI4B_MACHINE)
-@@ -34,6 +35,61 @@ struct Raspi4bMachineState {
-     uint32_t vcram_size;
- };
- 
-+
-+static int raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
-+{
-+    int ret;
-+    uint32_t acells, scells;
-+    char *nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
-+
-+    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
-+                                   NULL, &error_fatal);
-+    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
-+                                   NULL, &error_fatal);
-+    if (acells == 0 || scells == 0) {
-+        fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0)\n");
-+        ret = -1;
-+    } else {
-+        qemu_fdt_add_subnode(fdt, nodename);
-+        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-+        ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
-+                                           acells, mem_base,
-+                                           scells, mem_len);
-+    }
-+
-+    g_free(nodename);
-+    return ret;
-+}
-+
-+static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
-+{
-+
-+    /* Temporary disable following devices until they are implemented*/
-+    const char *to_be_removed_from_dt_as_wa[] = {
-+        "brcm,bcm2711-pcie",
-+        "brcm,bcm2711-rng200",
-+        "brcm,bcm2711-thermal",
-+        "brcm,bcm2711-genet-v5",
-+    };
-+
-+    for (int i = 0; i < ARRAY_SIZE(to_be_removed_from_dt_as_wa); i++) {
-+        const char *dev_str = to_be_removed_from_dt_as_wa[i];
-+
-+        int offset = fdt_node_offset_by_compatible(fdt, -1, dev_str);
-+        if (offset >= 0) {
-+            if (!fdt_nop_node(fdt, offset)) {
-+                warn_report("bcm2711 dtc: %s has been disabled!", dev_str);
-+            }
-+        }
-+    }
-+
-+    uint64_t ram_size = board_ram_size(info->board_id);
-+
-+    if (ram_size > UPPER_RAM_BASE) {
-+        raspi_add_memory_node(fdt, UPPER_RAM_BASE, ram_size - UPPER_RAM_BASE);
-+    }
-+}
-+
- static void raspi4b_machine_init(MachineState *machine)
- {
-     Raspi4bMachineState *s = RASPI4B_MACHINE(machine);
-@@ -41,6 +97,13 @@ static void raspi4b_machine_init(MachineState *machine)
-     RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
-     BCM2838State *soc = &s->soc;
- 
-+    s_base->binfo.modify_dtb = raspi4_modify_dtb;
-+    /*
-+     * Hack to get board revision during device tree modification without
-+     * changes of common code.
-+     * The correct way is to set board_id to MACH_TYPE_BCM2708 and add board_rev
-+     * to the arm_boot_info structure.
-+     */
-     s_base->binfo.board_id = mc->board_rev;
- 
-     object_initialize_child(OBJECT(machine), "soc", soc,
-diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
-index 45003e2425..30b114f6e0 100644
---- a/include/hw/arm/raspi_platform.h
-+++ b/include/hw/arm/raspi_platform.h
-@@ -59,6 +59,7 @@ void raspi_base_machine_init(MachineState *machine,
- 
- void raspi_machine_class_common_init(MachineClass *mc,
-                                      uint32_t board_rev);
-+uint64_t board_ram_size(uint32_t board_rev);
- 
- #define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
- #define CCPT_OFFSET             0x1000   /* Compact Camera Port 2 TX */
+It can work with recent linux kernels 6.x.x.
+Two avocado tests was added to check that.
+
+Unit tests has been made as read/write operations
+via mailbox properties.
+
+Genet integration test is under development.
+
+Every single commit
+1) builds without errors
+2) passes regression tests
+3) passes style check*
+*the only exception is bcm2838-mbox-property-test.c file
+containing heavy macros usage which cause a lot of
+false-positives of checkpatch.pl.
+
+I did my best to keep the commits less than 200 changes,
+but had to make some of them a bit more in order to
+keep their integrity.
+
+Sergey Kambalin (44):
+  Split out common part of BCM283X classes
+  Split out common part of peripherals
+  Split out raspi machine common part
+  Introduce BCM2838 SoC
+  Add GIC-400 to BCM2838 SoC
+  Add BCM2838 GPIO stub
+  Implement BCM2838 GPIO functionality
+  Connect SD controller to BCM2838 GPIO
+  Add GPIO and SD to BCM2838 periph
+  Add BCM2838 checkpoint support
+  Introduce Raspberry PI 4 machine
+  Temporary disable unimplemented rpi4b devices
+  Add memory region for BCM2837 RPiVid ASB
+  Add BCM2838 PCIE Root Complex
+  Add BCM2838 PCIE host
+  Enable BCM2838 PCIE
+  Add RNG200 skeleton
+  Add RNG200 RNG and RBG
+  Add RNG200 timer
+  Implement BCM2838 thermal sensor
+  Add clock_isp stub
+  Add GENET stub
+  Add GENET register structs. Part 1
+  Add GENET register structs. Part 2
+  Add GENET register structs. Part 3
+  Add GENET register structs. Part 4
+  Add GENET register access macros
+  Impl GENET register ops.
+  Impl GENET MDIO
+  Impl GENET TX path
+  Impl GENET RX path
+  Enable BCM2838 GENET controller
+  Connect RNG200, PCIE and GENET to GIC
+  Add Rpi4b boot tests
+  Add mailbox test stub
+  Add mailbox test constants
+  Add mailbox tests tags. Part 1
+  Add mailbox tests tags. Part 2
+  Add mailbox tests tags. Part 3
+  Add mailbox property tests. Part 1
+  Add mailbox property tests. Part 2
+  Add mailbox property tests. Part 3
+  Add missed BCM2835 properties
+  Append added properties to mailbox test
+
+ hw/arm/bcm2835_peripherals.c             | 218 ++++---
+ hw/arm/bcm2836.c                         | 116 ++--
+ hw/arm/bcm2838.c                         | 298 +++++++++
+ hw/arm/bcm2838_pcie.c                    | 293 +++++++++
+ hw/arm/bcm2838_peripherals.c             | 288 +++++++++
+ hw/arm/meson.build                       |   8 +-
+ hw/arm/raspi.c                           | 128 ++--
+ hw/arm/raspi4b.c                         | 225 +++++++
+ hw/arm/trace-events                      |   6 +
+ hw/gpio/bcm2838_gpio.c                   | 392 ++++++++++++
+ hw/gpio/meson.build                      |   5 +-
+ hw/misc/bcm2835_property.c               | 170 +++++
+ hw/misc/bcm2838_rng200.c                 | 419 +++++++++++++
+ hw/misc/bcm2838_thermal.c                |  96 +++
+ hw/misc/meson.build                      |   2 +
+ hw/misc/trace-events                     |  10 +
+ hw/net/bcm2838_genet.c                   | 756 +++++++++++++++++++++++
+ hw/net/meson.build                       |   2 +
+ hw/net/trace-events                      |  17 +
+ include/hw/arm/bcm2835_peripherals.h     |  29 +-
+ include/hw/arm/bcm2836.h                 |  27 +-
+ include/hw/arm/bcm2838.h                 |  28 +
+ include/hw/arm/bcm2838_pcie.h            |  67 ++
+ include/hw/arm/bcm2838_peripherals.h     |  95 +++
+ include/hw/arm/raspi_platform.h          |  34 +
+ include/hw/display/bcm2835_fb.h          |   2 +
+ include/hw/gpio/bcm2838_gpio.h           |  45 ++
+ include/hw/misc/bcm2838_rng200.h         |  77 +++
+ include/hw/misc/bcm2838_thermal.h        |  24 +
+ include/hw/misc/raspberrypi-fw-defs.h    |  11 +
+ include/hw/net/bcm2838_genet.h           | 732 ++++++++++++++++++++++
+ tests/avocado/boot_linux_console.py      |  92 +++
+ tests/qtest/bcm2838-mailbox.c            |  70 +++
+ tests/qtest/bcm2838-mailbox.h            | 603 ++++++++++++++++++
+ tests/qtest/bcm2838-mbox-property-test.c | 666 ++++++++++++++++++++
+ tests/qtest/meson.build                  |   3 +-
+ 36 files changed, 5857 insertions(+), 197 deletions(-)
+ create mode 100644 hw/arm/bcm2838.c
+ create mode 100644 hw/arm/bcm2838_pcie.c
+ create mode 100644 hw/arm/bcm2838_peripherals.c
+ create mode 100644 hw/arm/raspi4b.c
+ create mode 100644 hw/gpio/bcm2838_gpio.c
+ create mode 100644 hw/misc/bcm2838_rng200.c
+ create mode 100644 hw/misc/bcm2838_thermal.c
+ create mode 100644 hw/net/bcm2838_genet.c
+ create mode 100644 include/hw/arm/bcm2838.h
+ create mode 100644 include/hw/arm/bcm2838_pcie.h
+ create mode 100644 include/hw/arm/bcm2838_peripherals.h
+ create mode 100644 include/hw/gpio/bcm2838_gpio.h
+ create mode 100644 include/hw/misc/bcm2838_rng200.h
+ create mode 100644 include/hw/misc/bcm2838_thermal.h
+ create mode 100644 include/hw/net/bcm2838_genet.h
+ create mode 100644 tests/qtest/bcm2838-mailbox.c
+ create mode 100644 tests/qtest/bcm2838-mailbox.h
+ create mode 100644 tests/qtest/bcm2838-mbox-property-test.c
+
 -- 
 2.34.1
 

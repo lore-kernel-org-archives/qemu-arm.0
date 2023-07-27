@@ -1,171 +1,161 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1193630ejb;
-        Thu, 27 Jul 2023 03:54:10 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFtWD6a1Td+U2ZwiokJ5zuVBXwZXCp1pFbS8q0ntvaaB4f+8J4KPdzHcI2dvTs9ZTM/LQg2
-X-Received: by 2002:a05:6214:3c9b:b0:63c:a22e:ddaf with SMTP id ok27-20020a0562143c9b00b0063ca22eddafmr5106531qvb.16.1690455250561;
-        Thu, 27 Jul 2023 03:54:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690455250; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1203943ejb;
+        Thu, 27 Jul 2023 04:11:18 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlH+8jxx2Oa9KaiEbk+uCteVp/lOIhG4G/LXagGIOdEjit1dwW4smYAPgpCmsJz0W4xSBXZq
+X-Received: by 2002:a05:620a:4106:b0:767:6cd5:ec8b with SMTP id j6-20020a05620a410600b007676cd5ec8bmr2243356qko.27.1690456277944;
+        Thu, 27 Jul 2023 04:11:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690456277; cv=none;
         d=google.com; s=arc-20160816;
-        b=byIG28iWibiruS8vGppM3Oo5vsiCYscnPbP2BrJreuoTbz8gmdl45sf4+k6v4u08nx
-         76eXCwfapUL6bkFIoGJBjGOPfwAADRui3B9OOCrzZtwTPi4Njg4jrxdLvftD76d/sM3y
-         G8L2z7oI6H3yPFO6EwqfEjLsg6TQ4rbRPmTVFeQEBgAODA31FJdJk/+RSn1+BmYkBAeu
-         3tF9F7mmSoxbiAIumfpnGr4KI994L26k046VSM1Em/eXI9CRfXz2tmVQ9jbeItKYezTs
-         v3LW+JAz95CYEYzjdAZrb+oVvhUh5sA0/ylzc0BdN/GA/xYtjIdDCoG9Oc7d+AoYw1dl
-         x0Tg==
+        b=upTM2Mz8ug301AX0MNOuaNlV/cZBYdVDa88mhvZS7jEvCUJn03LEC98f6Q2O4sIs3T
+         D6xpeOpNQNXLgsL/8XfjQ4xPNawpwkENb6GA8KqRwXZYczqIvOj7F+Iry/id1DRhMpQa
+         fBFafR+qmQBwRWWZG6tqYV5JMS4QZJxssZyM63j8nLFlOIuLGVKCJ6PCdOWefxcPc5cS
+         qJ7dQnsxYofcqRBSGE+a9y/OEJ7TxQ0wkne3Q5iCSrjWi9QQuWDs3HpSihVX0GLPvlbq
+         51U8gpqKY7eAK4w/xNm2Lik9CTAEn30zlXC/9Rz48j2q35uEmEesUoMZBRd/2zDCOQR2
+         IPWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=BgVEgkjy0v24sA29rrQPBpaIveXcGiH1BPynrvViBF0=;
-        fh=9FR0g0A/nV1zzY3iyyxUnedT9olBbTtHSCYhpW4CK5I=;
-        b=ObnSEEXAbt16WkR60CX3bnUyFhuu+kPCTVfjqjvCFM8tAb061A7NoCRgRAATjFDObp
-         fm4FQpBd3HfRstMIvn7W8WKF43Z6IUub7Ep8o2i33agAkD2mr6mKIv1anvOuc4nRQGxg
-         F980DbCt/JSfFOpRNtrcKNjq0rN9/YBeRI+3XKscong3LFGcKLjWg+GPc9+qCBtNrXDA
-         Qwh/rdtRnAIqxsrlZ8evPeWgQ0H1WWjOL5XtjdGhLSqX6fd2vMVW7vp9Tj5gQ1RcQem+
-         g5vshlwWj9YeCg7hQX81GIuOPVBIPcqQ3M1fosmAQn/Bhre2s7RTbzVLzzy4D1YhEoI3
-         S2fQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=DcfOYcIc882/B76FusQE50IHX9X4DDFGkGqpqV/TZok=;
+        fh=DkG+ttxLHkcAg3VOj5E08kJzyGu+8iD4VY1SDaQScCw=;
+        b=MTMJXZj9DcAaxZoiQ4LVrN6Yj/eyui+qEYPJgkRvlUcwEDISLoWIAno0okqRLEaPOO
+         Wu2nYXZh68/mAmP1f5cJIXMvyjK62SkU3rz5KbOniHwNfBjbxATuaJ+esTvtNmW28cwP
+         sPmczM/Wh+pDcNymo1zXRIRoduGQ23vRmbuJv4IUH8L8AjNJbN06zRn7amN21sudPDRh
+         Kys2GmGlIEgU9Lgl2CBr6M/3vGfJ5CPekLbLxSSmLOgXkXg5hDTgs/nIT7pJxwXGQnZy
+         y7XUXLZkFhSCH81RSdl5CETJx7OqNTbulHsn9dgqNnolzXJuF4t+9Kdfkp59c6QvFwmm
+         zcSw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H4r8WNsh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=QwB3qy3U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1-20020a0ce341000000b0063d1238bbe6si516350qvm.533.2023.07.27.03.54.10
+        by mx.google.com with ESMTPS id u3-20020a05620a084300b007681384d675si557106qku.665.2023.07.27.04.11.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jul 2023 03:54:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Jul 2023 04:11:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H4r8WNsh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=QwB3qy3U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qOyR1-0005wl-BN; Thu, 27 Jul 2023 06:41:31 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qOyiU-0000N3-DX; Thu, 27 Jul 2023 06:59:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1qOyQy-0005vz-GA
- for qemu-devel@nongnu.org; Thu, 27 Jul 2023 06:41:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1qOyQw-0001Gd-RR
- for qemu-devel@nongnu.org; Thu, 27 Jul 2023 06:41:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690454485;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=BgVEgkjy0v24sA29rrQPBpaIveXcGiH1BPynrvViBF0=;
- b=H4r8WNshbtfXgZ+impoLc/eO/8PEIO+R8xN52oJv6zIg14I/pHSZKlFwQ5hZpxScsha/RT
- hqiFKeIWJwE9rypWIy9wpxkUmWd1skBRBbA6Hx/QfKnQqUlQsWS6WM0IF6Tyx0Y1hiGm03
- yMQyjp9+Pu4nZkaktHAhNIcwTRUx/i8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-145-WpodngWyNbKhEN4i_AZbWA-1; Thu, 27 Jul 2023 06:41:24 -0400
-X-MC-Unique: WpodngWyNbKhEN4i_AZbWA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4CCB5104458D;
- Thu, 27 Jul 2023 10:41:24 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.19])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E6759C2C7D3;
- Thu, 27 Jul 2023 10:41:21 +0000 (UTC)
-Date: Thu, 27 Jul 2023 11:41:18 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Ani Sinha <anisinha@redhat.com>
-Cc: John Snow <jsnow@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Hanna Reitz <hreitz@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Qemu-block <qemu-block@nongnu.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Kevin Wolf <kwolf@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH v2 4/6] python/machine: use socketpair() for console
- connections
-Message-ID: <ZMJJzkTaZaQ0z0Rj@redhat.com>
-References: <20230725180337.2937292-1-jsnow@redhat.com>
- <20230725180337.2937292-5-jsnow@redhat.com>
- <B867C4E8-24FC-4C4E-9FE8-2353CC21320C@redhat.com>
- <CAFn=p-bdA5cVMmsUkE0os0CVT6XMXzWk2M3UcKb0DFQmi130Mg@mail.gmail.com>
- <4EE2965D-F72B-4002-99BF-732F5F9734C6@redhat.com>
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qOyiS-0000LV-U8
+ for qemu-arm@nongnu.org; Thu, 27 Jul 2023 06:59:32 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qOyiQ-00071K-M2
+ for qemu-arm@nongnu.org; Thu, 27 Jul 2023 06:59:32 -0400
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-1b9c368f4b5so13341545ad.0
+ for <qemu-arm@nongnu.org>; Thu, 27 Jul 2023 03:59:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1690455569; x=1691060369;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=DcfOYcIc882/B76FusQE50IHX9X4DDFGkGqpqV/TZok=;
+ b=QwB3qy3U0NHNI3QIHaJPAA8H2NiLQUPKeaIx4hlFPKgX5a2yqc58shB7yPXnXzof3K
+ +vl4q62ldZfmPBTJ/u6zd2wOsBh6WkzfAVK353tqE92k4ALUayspbJhkOjtqDmNIVcZ9
+ t7adiECDX/G5i9VW3kpgYVceUr8XE0H8tLQyISboMOlClp06+pcFtlEPT73nTzXv5BiQ
+ ShIe0ukvkccBcA3dqn/W5D/32/powg55f3Iqxkjy7W19oqgh5PFD4JLkEL119ymyE9KT
+ fQDDKckzSU0fnK6GwUQY3sb0vE6gpLVqnGftJZ/WKef1YqNWZnLiPs1McBlTvtWrVvbh
+ Pudw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1690455569; x=1691060369;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DcfOYcIc882/B76FusQE50IHX9X4DDFGkGqpqV/TZok=;
+ b=UKqkX8gTSHr+N/Ts3rAP7MwuA4ZMOyL7DoAJzSZjKxCp1NAA7sg1N0+gB7rtaHN1+P
+ Tpn/JWghDZL40BX9O5XIAmnLaWhbozGxWUQG31Bn1vcYzhewXmuPPkVeRpQUt8N+cWs0
+ 5RLL/XLEKqPBL8G7sS31Bl9cEmabSgpP8Q8r+XjQIuKZOy463b2OpAWXv8KNVyOL0f6B
+ Bm7FmKyGkByjbRzlYs3453vP0RruqxS/9sxJENp2TwLc3aHC2hAqkE4/qak/J1nkzIpb
+ pir3wvvpduWyXbDH5JSbTHPYrdfBlxUx5aE4ssK7doGg6HoWrgM96GYy+1cAtIkQfQ2f
+ 2qwQ==
+X-Gm-Message-State: ABy/qLa+UwNR1nKh6RAGU7DrY5BoHH88hnMP/fr7wtGsR/acLOQOEeJf
+ IY14d9nbgOoGLIY36yeccQ5aAA==
+X-Received: by 2002:a17:903:1c7:b0:1b8:a6be:ea82 with SMTP id
+ e7-20020a17090301c700b001b8a6beea82mr2773600plh.26.1690455568905; 
+ Thu, 27 Jul 2023 03:59:28 -0700 (PDT)
+Received: from sunil-laptop ([106.51.190.25]) by smtp.gmail.com with ESMTPSA id
+ t28-20020a63b25c000000b00563dfd98982sm1219015pgo.42.2023.07.27.03.59.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 27 Jul 2023 03:59:28 -0700 (PDT)
+Date: Thu, 27 Jul 2023 16:29:19 +0530
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Andrew Jones <ajones@ventanamicro.com>,
+ Anup Patel <apatel@ventanamicro.com>
+Subject: Re: [PATCH 04/10] hw/riscv: virt: Add PCIe HIGHMEM in memmap
+Message-ID: <ZMJOB7qZGqzbvACZ@sunil-laptop>
+References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
+ <20230712163943.98994-5-sunilvl@ventanamicro.com>
+ <20230724173254.3423a204@imammedo.users.ipa.redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <4EE2965D-F72B-4002-99BF-732F5F9734C6@redhat.com>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+In-Reply-To: <20230724173254.3423a204@imammedo.users.ipa.redhat.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X935xM2bb8aG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KfqT59Uu6Q08
 
-On Thu, Jul 27, 2023 at 11:22:35AM +0530, Ani Sinha wrote:
+On Mon, Jul 24, 2023 at 05:32:54PM +0200, Igor Mammedov wrote:
+> On Wed, 12 Jul 2023 22:09:37 +0530
+> Sunil V L <sunilvl@ventanamicro.com> wrote:
 > 
+> > PCIe High MMIO base is actually dynamic and fixed at
+> > run time based on the RAM configured. Currently, this is
+> > not part of the memmap and kept in separate static variable
+> > in virt.c. However, ACPI code also needs this information
+> > to populate DSDT. So, once the base is discovered, merge
+> > this into the final memmap which can be used to create
+> > ACPI tables later.
 > 
-> > On 26-Jul-2023, at 10:51 PM, John Snow <jsnow@redhat.com> wrote:
-> > 
-> > 
-> > 
-> > On Wed, Jul 26, 2023, 6:50 AM Ani Sinha <anisinha@redhat.com> wrote:
-> > 
-> > 
-> > > On 25-Jul-2023, at 11:33 PM, John Snow <jsnow@redhat.com> wrote:
-> > > 
-> > > Create a socketpair for the console output. This should help eliminate
-> > > race conditions around console text early in the boot process that might
-> > > otherwise have been dropped on the floor before being able to connect to
-> > > QEMU under "server,nowait".
-> > > 
-> > > Signed-off-by: John Snow <jsnow@redhat.com>
-> > 
-> > Thanks for doing this. I recall we spoke about this late last year in the context of fixing my bios-bits avocado test and adding a console output there.
-> > 
-> > Yep! I think you need a few more changes to do what you wanted. IIRC, you also want to be able to drain the console log while waiting for the vm to terminate of its own accord, which I don't support yet.
-> > 
-> > (If you use console socket's self draining mode, it should be possible to forego the early termination of the console socket and allow this behavior. Maybe I can work that in now...)
+> can ACPI code fetch virt_high_pcie_memmap at runtime from
+> host bridge (like we do in pc/q35)?
 > 
-> yeah we want to collect all the console logs while the VM is running until it self terminates. Maybe you can add a flag for this behavior to not early terminate the socket. I think we need to add mathods to keep reading the socket and write to a file until the socket is closed. Maybe QemuMachine needs to be enhanced.
+Hi Igor,
 
+Looking at the current design of virt machines (arm/loongarch/riscv),
+getting this directly from the memmap looks simpler. ARM ACPI also uses
+the memmap to get the pcie_high space. It appears to me we need some
+more infrastructure code if ACPI needs to fetch from host bridge. I am
+not sure why that would be beneficial.
 
-There's no special code required for that - any -chardev backend can
-have logfile=/some/path added to it.
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+Thanks,
+Sunil

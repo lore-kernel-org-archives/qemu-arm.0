@@ -1,99 +1,99 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1100043ejb;
-        Thu, 27 Jul 2023 00:39:59 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlF4WtbIgTgcIJaKCRBSXPG8G50h/tA1jCwbB/5+0kdXfLatnnCfMZNouarVPyyVE5qhtMEb
-X-Received: by 2002:a05:6358:e4a3:b0:132:7a01:32ac with SMTP id by35-20020a056358e4a300b001327a0132acmr2070004rwb.16.1690443599254;
-        Thu, 27 Jul 2023 00:39:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690443599; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1100063ejb;
+        Thu, 27 Jul 2023 00:40:01 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGzBl+42YLEjcvImvD1qMxi/KE/FxfiFSnwoDHs0sYaEF8qMdLvttbfHC3WLYiiXTFx5AkP
+X-Received: by 2002:a05:6358:528e:b0:135:845f:431d with SMTP id g14-20020a056358528e00b00135845f431dmr2415508rwa.21.1690443601411;
+        Thu, 27 Jul 2023 00:40:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690443601; cv=none;
         d=google.com; s=arc-20160816;
-        b=FDolVimCH18dP4V1pVEVtxlDThjvkOFAJiUDThyDe0rQAxg/L1s34qs91DHs6VaFCs
-         62G6IG9DCwSNtxEsfViWTffUtY2yU9zZZqMJ0RuSFz/285guAbKnweVyGEA8XtuUN2z8
-         9KNRjz7i756P1l2cdQ0ng0YnnqFyGZfngJ+ef7RZduDDjU0HGQ1gajcNdnjpB8UYG+HU
-         LqqF3b6fvyR93JbXwXlZ+ujPsHaGQpvIqPqF1hIYx4PMg+OVJjsth0Jo+A8/V+MoJFPl
-         ZILpsDkizFiknFxSks8VDwiIPOdBKZfoX+bn5RxIQBnbd81v30ebiBhxv1y8AZd4y2Ii
-         VKlg==
+        b=MCzFVa5PsV5Ahi6DkjT4bSfBjy4U3CpJtdkleVmii6c21tHIihXrZ4ZehRr72i5JH6
+         ZynnSIo9XybMIjpzSgk0x5flKCYF/VrGS5ZfR0LKmM6mTrEa59PFNnL1IXGldD8JbWYx
+         gJE0q0k7C10Qccw01km+N8hEnWnpaN/cHM851lbmnz6hTTVhDM8Y0ZVG6NqAuMpGOyIe
+         tzQTEqluEw2VSACj3QrsQMgMbcy7vQfXoWxg7GcZYQWb6/ZypHMJht/u9fu52vZECiVx
+         dzzAyzCxMx92bjnz/dcxfw5MndLWTGbkv0SGCor9/tqZDh+4JBcuAHiei0R1zUUG5ESp
+         cZHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:to:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:from
          :dkim-signature;
-        bh=kND/sAP1+EQqRnqZy1RjucLWpLyH8kHXjE52zNB0+ZU=;
+        bh=26LP4jR8UCRhJyh1M0qdx1yDCFp8JOR+j4jZMhaZd5Y=;
         fh=mJ5OFdie2M3iVyZL5TpDz8DAfFZC9/SE7DnU60sOZu0=;
-        b=TkSM+IxGvPPQJC7wy9DGrnQ7tk5ynhrPYatfxwIaBNwK+0Y9xf5mhk9nGs0GUa6YMf
-         PSWfPKZ6lKUOxtab7zTZXyMD09Gse5vxvzczZSl9GhAqLoFaYlAqX08jhdbwfZS1EzVO
-         yQkab0ADNiQx8w3I5a8ya3JCR0YmrizSH7q0CTkCh8inEcf4GZjfbECr3RGpfhvtHUwl
-         Qjlpim6UPWm54A2LQ73pljul7aM1rB75oB3wc4HxyMUIHZWvY2/bJdDbJxAlOGj5XidC
-         l2J/VpYsve8kvo09zZ1soYSoXUDuS47P9qEVJasdcOfrSCty3rmFElhWdg6yXYxxTlLN
-         VDdA==
+        b=EBMvuuPQSbvqDGFwXQIwj/r4ZCV/SI7P0Nl9EkEsoWT9obwPVf6LpwceFZUTi+YU23
+         JrUz/jNZIFe6qb5RxOvGJGnHkvj73j9YhDQuYVsKcLndlqQ4M6sbu+9g8k+wX5RSOJcs
+         obRHehQ7PmTGPwI7CbhGaoGQ0ue3wzOQHuV9ix+eDgvAR6dYN1bEdWjwfUbwq7xNhlT0
+         Q7R1MrsN5LFHYGMNC2dC/BRXFYuvEipsreyzG/Q9JVh7JUFo1+3dg8MgYrOd33W98kxe
+         6CbYYS6BLSVMUVTFpuE95pK27I0pN/AtgvpuXrU3xS40QiV5LrxqO+GqZhed0arCsrHE
+         3SXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=1rmxoN6p;
+       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=FMXUAO4Y;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id e24-20020a635458000000b00553854417e2si848058pgm.244.2023.07.27.00.39.59;
-        Thu, 27 Jul 2023 00:39:59 -0700 (PDT)
+        by mx.google.com with ESMTP id e24-20020a635458000000b00553854417e2si848058pgm.244.2023.07.27.00.40.01;
+        Thu, 27 Jul 2023 00:40:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=1rmxoN6p;
+       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=FMXUAO4Y;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S232586AbjG0Hj5 (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Thu, 27 Jul 2023 03:39:57 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47522 "EHLO
+        id S231460AbjG0Hj7 (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Thu, 27 Jul 2023 03:39:59 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47552 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S232561AbjG0Hjk (ORCPT <rfc822;kvm@vger.kernel.org>);
+        with ESMTP id S232716AbjG0Hjk (ORCPT <rfc822;kvm@vger.kernel.org>);
         Thu, 27 Jul 2023 03:39:40 -0400
-Received: from mail-pf1-x431.google.com (mail-pf1-x431.google.com [IPv6:2607:f8b0:4864:20::431])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 514E592
-        for <kvm@vger.kernel.org>; Thu, 27 Jul 2023 00:31:47 -0700 (PDT)
-Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-666ecf9a0ceso525163b3a.2
-        for <kvm@vger.kernel.org>; Thu, 27 Jul 2023 00:31:47 -0700 (PDT)
+Received: from mail-pf1-x430.google.com (mail-pf1-x430.google.com [IPv6:2607:f8b0:4864:20::430])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 880A5F5
+        for <kvm@vger.kernel.org>; Thu, 27 Jul 2023 00:31:51 -0700 (PDT)
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-686b879f605so447454b3a.1
+        for <kvm@vger.kernel.org>; Thu, 27 Jul 2023 00:31:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690443107; x=1691047907;
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690443111; x=1691047911;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=kND/sAP1+EQqRnqZy1RjucLWpLyH8kHXjE52zNB0+ZU=;
-        b=1rmxoN6pK/bfF17VHISxfbhZSMK3pcw2ESQLTR6SKZxQJeCcFKU7EZnyx2Aw2KbKP6
-         nYtmSRCfskf6ZkQUEZWNxnMnhtwHLmTfMl3jVNa+5CvTStMxqyNqJw8xBKxvl7ipEfEj
-         91ClpsOXSJ6Mep0byoC/Tg0UIV/qjelJX5yAuB/YoUrY2d9jL4urO05nbQjLafwbC/df
-         EKy4TkWx7H0VbxpCUP8yLx7u2kV2zugjsVed1gpemPdFvj2pJBuNJ1SXPTirOhqrHQ1t
-         gzAjpFRa3H7MOYig5FHDbfDvpGnXrZPzGeSPziIqTWNcb4rex86hjLA7C9O6VvstLl5a
-         xkAw==
+        bh=26LP4jR8UCRhJyh1M0qdx1yDCFp8JOR+j4jZMhaZd5Y=;
+        b=FMXUAO4Yoxbd/c3ZDAJO2Eft2gOvbLIXf4hOBH5Dj9DW3gt3d58iYHeQbhg3l1Hpmg
+         I19AscWEwJNXso/G1WZ6tivdoRArUDtLLbJ6rH6XmR1/n+H4xd7fhr11URWhGi2HuOoM
+         YRIhUGNyDTY6U/j1ShMhaPgpHYqhrjN5joKZ+zuJf4vgAeLVFubAD1fgso1+zLlpEBIl
+         aQP0NIhtn5cgY5kVQCeKUcrAVL5klU7kvwre68iLoq9uUIhKDR+roXkSeTWsG2Nj05w3
+         m2v2Gg9ffatEkLhmzvEW8yEulbHU6UGF2Novf97q8cExbXPUMqDh0NstuyISfzWG1n6w
+         OJdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690443107; x=1691047907;
+        d=1e100.net; s=20221208; t=1690443111; x=1691047911;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=kND/sAP1+EQqRnqZy1RjucLWpLyH8kHXjE52zNB0+ZU=;
-        b=VMBP2eqj+QaDLgurO6HVTmTQ3Jr5ysEAVmwrLVjP4WMb20XJHsYAqBVuhKbdnnayXn
-         cfHVluE1Frz0KNEv7XZ/IFWV06ap9WPhS7HbGygnPpsIBpfdnN4KARrJKixFqRSk6QuQ
-         bwQdL1+V2/i/NiBOYGEgaew3bNlJWvRYBZxZIwH3VluCLQup7/L8LSDHCRMLPnGQovYR
-         4B/c5g7uNlQ7isWov9Dd63aG58BH6RU5B1kg8RTU/nq0MYnddtLYw5gqAbFdOF9AN8A0
-         3NhFPO/FJYEsMpY5ln5x2DAOVCHD1YET21UDy7qV5L1Q8pX6zYFo+K9GQrfMx1NRa6Tx
-         f7lg==
-X-Gm-Message-State: ABy/qLaurqrRz6Ae8M/5MZ+STLwmgjLGGhuYWcw/c9+dHucsIH0b6LuQ
-        YAlcP+KdQsr5MU54SVt4gjonnA==
-X-Received: by 2002:a05:6a20:2447:b0:13a:ccb9:d5b7 with SMTP id t7-20020a056a20244700b0013accb9d5b7mr4456373pzc.41.1690443106741;
-        Thu, 27 Jul 2023 00:31:46 -0700 (PDT)
+        bh=26LP4jR8UCRhJyh1M0qdx1yDCFp8JOR+j4jZMhaZd5Y=;
+        b=Bc/N2wiUW2glADLdfoX67hIqoX2Isf1tuNiifVvCXcvuA8kkbbA8/wVd/el4w5sxew
+         XURrR12mqU7WnQxKeNf+sbdLubKiVtI1MHLBFiLVf01ZDt5y9ygw+31R60MqyhlJGnBo
+         ndyOi2eSd/0tb0HYKzIZt4H4aWDN3obDaS3J1G/Ake1zXpO6kzK1MiJsJyYRKy01Ejkc
+         +kFN2bqpv/2YA5BxwCtcJWELGkJV2STPxYwVX39bBj4tLU58CUBRBNYogA5AR1kNTSKe
+         W1vidJ+boJFC9v/ezQtPHtrxP5Ykqfb6eOZymzG8BdmGpgmlhReDu6DsVVtkKf6/N35J
+         hZSw==
+X-Gm-Message-State: ABy/qLYhXBEsvtIjuB8YA09qlpraHmt3bDV3ckfNLpLOvoBa06IkzHZJ
+        hQxoKqxr3fKlvPhQnjudoDMY5g==
+X-Received: by 2002:a05:6a20:1610:b0:137:53d1:3e2 with SMTP id l16-20020a056a20161000b0013753d103e2mr4116444pzj.41.1690443111088;
+        Thu, 27 Jul 2023 00:31:51 -0700 (PDT)
 Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id d9-20020aa78689000000b0064fa2fdfa9esm802002pfo.81.2023.07.27.00.31.44
+        by smtp.gmail.com with ESMTPSA id d9-20020aa78689000000b0064fa2fdfa9esm802002pfo.81.2023.07.27.00.31.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Jul 2023 00:31:46 -0700 (PDT)
+        Thu, 27 Jul 2023 00:31:50 -0700 (PDT)
 From:   Akihiko Odaki <akihiko.odaki@daynix.com>
 Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
         Paolo Bonzini <pbonzini@redhat.com>,
         Peter Maydell <peter.maydell@linaro.org>,
         Richard Henderson <richard.henderson@linaro.org>,
         Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v5 1/6] kvm: Introduce kvm_arch_get_default_type hook
-Date:   Thu, 27 Jul 2023 16:31:26 +0900
-Message-ID: <20230727073134.134102-2-akihiko.odaki@daynix.com>
+Subject: [PATCH v5 3/6] mips: Report an error when KVM_VM_MIPS_VZ is unavailable
+Date:   Thu, 27 Jul 2023 16:31:28 +0900
+Message-ID: <20230727073134.134102-4-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230727073134.134102-1-akihiko.odaki@daynix.com>
 References: <20230727073134.134102-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,RCVD_IN_DNSWL_BLOCKED,SPF_HELO_NONE,SPF_NONE,
+        DKIM_VALID,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE,
         T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
 X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
         lindbergh.monkeyblade.net
@@ -101,196 +101,28 @@ To:     unlisted-recipients:; (no To-header on input)
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: pj/kAbeYBb4d
+X-TUID: r3IC3MsSeUKM
 
-kvm_arch_get_default_type() returns the default KVM type. This hook is
-particularly useful to derive a KVM type that is valid for "none"
-machine model, which is used by libvirt to probe the availability of
-KVM.
-
-For MIPS, the existing mips_kvm_type() is reused. This function ensures
-the availability of VZ which is mandatory to use KVM on the current
-QEMU.
+On MIPS, QEMU requires KVM_VM_MIPS_VZ type for KVM. Report an error in
+such a case as other architectures do when an error occurred during KVM
+type decision.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- include/sysemu/kvm.h     | 2 ++
- target/mips/kvm_mips.h   | 9 ---------
- accel/kvm/kvm-all.c      | 4 +++-
- hw/mips/loongson3_virt.c | 2 --
- target/arm/kvm.c         | 5 +++++
- target/i386/kvm/kvm.c    | 5 +++++
- target/mips/kvm.c        | 2 +-
- target/ppc/kvm.c         | 5 +++++
- target/riscv/kvm.c       | 5 +++++
- target/s390x/kvm/kvm.c   | 5 +++++
- 10 files changed, 31 insertions(+), 13 deletions(-)
+ target/mips/kvm.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 115f0cca79..ccaf55caf7 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -369,6 +369,8 @@ int kvm_arch_get_registers(CPUState *cpu);
- 
- int kvm_arch_put_registers(CPUState *cpu, int level);
- 
-+int kvm_arch_get_default_type(MachineState *ms);
-+
- int kvm_arch_init(MachineState *ms, KVMState *s);
- 
- int kvm_arch_init_vcpu(CPUState *cpu);
-diff --git a/target/mips/kvm_mips.h b/target/mips/kvm_mips.h
-index 171d53dbe1..c711269d0a 100644
---- a/target/mips/kvm_mips.h
-+++ b/target/mips/kvm_mips.h
-@@ -25,13 +25,4 @@ void kvm_mips_reset_vcpu(MIPSCPU *cpu);
- int kvm_mips_set_interrupt(MIPSCPU *cpu, int irq, int level);
- int kvm_mips_set_ipi_interrupt(MIPSCPU *cpu, int irq, int level);
- 
--#ifdef CONFIG_KVM
--int mips_kvm_type(MachineState *machine, const char *vm_type);
--#else
--static inline int mips_kvm_type(MachineState *machine, const char *vm_type)
--{
--    return 0;
--}
--#endif
--
- #endif /* KVM_MIPS_H */
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 373d876c05..d591b5079c 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2458,7 +2458,7 @@ static int kvm_init(MachineState *ms)
-     KVMState *s;
-     const KVMCapabilityInfo *missing_cap;
-     int ret;
--    int type = 0;
-+    int type;
-     uint64_t dirty_log_manual_caps;
- 
-     qemu_mutex_init(&kml_slots_lock);
-@@ -2523,6 +2523,8 @@ static int kvm_init(MachineState *ms)
-         type = mc->kvm_type(ms, kvm_type);
-     } else if (mc->kvm_type) {
-         type = mc->kvm_type(ms, NULL);
-+    } else {
-+        type = kvm_arch_get_default_type(ms);
-     }
- 
-     do {
-diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
-index 4018b8c1d3..a2c56f7a21 100644
---- a/hw/mips/loongson3_virt.c
-+++ b/hw/mips/loongson3_virt.c
-@@ -29,7 +29,6 @@
- #include "qemu/datadir.h"
- #include "qapi/error.h"
- #include "elf.h"
--#include "kvm_mips.h"
- #include "hw/char/serial.h"
- #include "hw/intc/loongson_liointc.h"
- #include "hw/mips/mips.h"
-@@ -612,7 +611,6 @@ static void loongson3v_machine_class_init(ObjectClass *oc, void *data)
-     mc->max_cpus = LOONGSON_MAX_VCPUS;
-     mc->default_ram_id = "loongson3.highram";
-     mc->default_ram_size = 1600 * MiB;
--    mc->kvm_type = mips_kvm_type;
-     mc->minimum_page_bits = 14;
-     mc->default_nic = "virtio-net-pci";
- }
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index b4c7654f49..40f577bfd5 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -247,6 +247,11 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
-     return ret > 0 ? ret : 40;
- }
- 
-+int kvm_arch_get_default_type(MachineState *ms)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_init(MachineState *ms, KVMState *s)
- {
-     int ret = 0;
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index ebfaf3d24c..b45ce20fd8 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -2556,6 +2556,11 @@ static void register_smram_listener(Notifier *n, void *unused)
-                                  &smram_address_space, 1, "kvm-smram");
- }
- 
-+int kvm_arch_get_default_type(MachineState *ms)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_init(MachineState *ms, KVMState *s)
- {
-     uint64_t identity_base = 0xfffbc000;
 diff --git a/target/mips/kvm.c b/target/mips/kvm.c
-index c14e8f550f..e98aad01bd 100644
+index e98aad01bd..e22e24ed97 100644
 --- a/target/mips/kvm.c
 +++ b/target/mips/kvm.c
-@@ -1266,7 +1266,7 @@ int kvm_arch_msi_data_to_gsi(uint32_t data)
-     abort();
+@@ -1278,6 +1278,7 @@ int kvm_arch_get_default_type(MachineState *machine)
+     }
+ #endif
+ 
++    error_report("KVM_VM_MIPS_VZ type is not available");
+     return -1;
  }
  
--int mips_kvm_type(MachineState *machine, const char *vm_type)
-+int kvm_arch_get_default_type(MachineState *machine)
- {
- #if defined(KVM_CAP_MIPS_VZ)
-     int r;
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index a8a935e267..dc1182cd37 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -108,6 +108,11 @@ static int kvm_ppc_register_host_cpu_type(void);
- static void kvmppc_get_cpu_characteristics(KVMState *s);
- static int kvmppc_get_dec_bits(void);
- 
-+int kvm_arch_get_default_type(MachineState *ms)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_init(MachineState *ms, KVMState *s)
- {
-     cap_interrupt_unset = kvm_check_extension(s, KVM_CAP_PPC_UNSET_IRQ);
-diff --git a/target/riscv/kvm.c b/target/riscv/kvm.c
-index 9d8a8982f9..4266dce092 100644
---- a/target/riscv/kvm.c
-+++ b/target/riscv/kvm.c
-@@ -907,6 +907,11 @@ int kvm_arch_add_msi_route_post(struct kvm_irq_routing_entry *route,
-     return 0;
- }
- 
-+int kvm_arch_get_default_type(MachineState *ms)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_init(MachineState *ms, KVMState *s)
- {
-     return 0;
-diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
-index a9e5880349..9117fab6e8 100644
---- a/target/s390x/kvm/kvm.c
-+++ b/target/s390x/kvm/kvm.c
-@@ -340,6 +340,11 @@ static void ccw_machine_class_foreach(ObjectClass *oc, void *opaque)
-     mc->default_cpu_type = S390_CPU_TYPE_NAME("host");
- }
- 
-+int kvm_arch_get_default_type(MachineState *ms)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_init(MachineState *ms, KVMState *s)
- {
-     object_class_foreach(ccw_machine_class_foreach, TYPE_S390_CCW_MACHINE,
 -- 
 2.41.0

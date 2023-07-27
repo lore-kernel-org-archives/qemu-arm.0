@@ -1,125 +1,116 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1263385ejb;
-        Thu, 27 Jul 2023 05:51:01 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEDzJknVmmOkLh8IS/L2zDb+DnIJRx7e9wjB8obJjknYQpGSGaa0lBQR25Uve9+XADuHqng
-X-Received: by 2002:a05:620a:8d3:b0:767:f116:193a with SMTP id z19-20020a05620a08d300b00767f116193amr4618821qkz.70.1690462261047;
-        Thu, 27 Jul 2023 05:51:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690462261; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1297982ejb;
+        Thu, 27 Jul 2023 06:40:16 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGVx+I2DTUGLtS7rRhwlbf7I63BHcvhvRu1HwyS5XG97CieDXSvGOMs8icRsfBCTVxzi4Mz
+X-Received: by 2002:a0c:cd11:0:b0:636:1daa:957 with SMTP id b17-20020a0ccd11000000b006361daa0957mr4231758qvm.63.1690465216420;
+        Thu, 27 Jul 2023 06:40:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690465216; cv=none;
         d=google.com; s=arc-20160816;
-        b=yQ95t0JTxDht3hRk/NeTBvrjdpzIHVLJNIn0OOWSjl5KzcaKwdN3N5kJe4czcO185B
-         zVAjDZlDfjocp/8JuqX54VxsOb5zXPRE0N1VY7YIoPvBP36kyG62qVNuM3b+e2ZZcddP
-         +UA+Oiu54vDjHj0HTpsDCwbHL1TDno8y29DHOHAycRBECriepatsmmjTXwtJJe/Q4O2j
-         wpnZpL2YGWns9FpX5+EC8m4o65bpgvksbv7wRFgcqZmbpsJILSH5v2o0yzV+8Pl3MCow
-         iDT/iEPJldC/libpr5M71ZJitEa4+eiRG8zDIlxfUBIkPSDq/ing6qCQXevPtBbCWfvx
-         M0NA==
+        b=lNdNwUW4hyaqb9a1eUde6bt+e5bqVCO/b77GW+PaZIWSDS++nJVia3hABITIJhzoes
+         eBpkTeT5vnFmTlMz5Z3CTzWFwT4XrtELxRcxe8CAmuyI5I+P5mRT20zkXj1K6ildWErE
+         Kla4o9Z3znst0Zg/k2yaq0ADLTnck3z5Tasz2oyni8NQaCPwyhOd3rwTQJWwHlwUkgs3
+         n7VjdFHFCUaaPgQE6YGc6xPIN0CGhp0nlsMbvuz+RvuTIBYs63b5vnipVHEShLP+4Bhl
+         dkr0Vwie9KCQ6XPkmN+S6wgzOA5AC/YIhDfkrxwAmM6Imu0LHyAhU4vl3HdM4Stu0YYW
+         rf5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=zIdwfgWq+zPXtz7uG9D1x7QB8jEPgnzU4g7wLDf2u98=;
-        fh=DkG+ttxLHkcAg3VOj5E08kJzyGu+8iD4VY1SDaQScCw=;
-        b=CFunUKhlrxl208APevTGjiFT+KVd2XmF9ejH9mNh4SDaWfi3TkSw99BtZywPjH6hca
-         XywWytam/v2+iFgQa+60BiKjgGIRCJtkYpeWj24B9rVMTyZSrBvXzoN94fuowrhRmv5x
-         sWYrBv//T+b9/NP44Az/ei54OWsCtNA6PnsJeAumP94Qbam3pTR/GpopqVAeJT8NmbTg
-         FnNUSoRE4D+rQ41+xRq1erqapmZriea7sgSERIZWWqH8YCWqAvIvq6UTNQy4/XKVCVzH
-         FFeByqOnEJM3D615AuQ76CpzWdp7MU3lcNjHiAKvlxTdljBas1dbDm6ZrbKQnQ7XuUK+
-         4ABw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=8qyDSDkajXCyk30Z5QuWV36IT8LpvE+bjKqjFlBeTjA=;
+        fh=VGPpri+qxgzq2MWd/TIBTZLgk3gIyeMMNXfKzAMzUns=;
+        b=dc4ZgZhemkSNcwt+hvOUEfmNQpaNXNRnBhaod/RaFwvhYzEzOfIAPzbp7nVEq8UyQJ
+         UQO9eqAwD+NhRhVlKMd45sKT+t5KflJo3h9fy4BNh0CNPfPATVR7YwEEnq9VBN4vkpAM
+         jaGbF4Mlp5qaISMeanc2vWvc66wLPBYyNQh+QnByXr40IcOjAekU+tThG4A4jeTTBmj2
+         rugkKCcwfSDOCgl2J5AuImNhzIIKKCHgNOQ9b9ZifYr3hWigQvK6htC1TApfnuTeAxab
+         FnC3DrklSQinRj78jjCvcZU0fQoTPygsFF3lpP/isc0FrRG+6Sks3X93tkfdsmafhL9H
+         O91Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=VwLsaDN2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=mATEbYpH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a28-20020a05620a02fc00b00767f1161b91si664845qko.616.2023.07.27.05.51.00
+        by mx.google.com with ESMTPS id i15-20020a0cf48f000000b0062616ba5397si725441qvm.99.2023.07.27.06.40.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jul 2023 05:51:01 -0700 (PDT)
+        Thu, 27 Jul 2023 06:40:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=VwLsaDN2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=mATEbYpH;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qP0AZ-0002GG-1a; Thu, 27 Jul 2023 08:32:40 -0400
+	id 1qP0h8-0001ze-3v; Thu, 27 Jul 2023 09:06:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qP0AE-0002C3-R9
- for qemu-devel@nongnu.org; Thu, 27 Jul 2023 08:32:20 -0400
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qP0h5-0001yx-UM
+ for qemu-devel@nongnu.org; Thu, 27 Jul 2023 09:06:15 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qP0AD-0002fx-7n
- for qemu-devel@nongnu.org; Thu, 27 Jul 2023 08:32:18 -0400
-Received: by mail-pj1-x1030.google.com with SMTP id
- 98e67ed59e1d1-2680a031283so539180a91.3
- for <qemu-devel@nongnu.org>; Thu, 27 Jul 2023 05:32:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qP0h2-0004tM-JK
+ for qemu-devel@nongnu.org; Thu, 27 Jul 2023 09:06:14 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-4f95bf5c493so1654875e87.3
+ for <qemu-devel@nongnu.org>; Thu, 27 Jul 2023 06:06:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1690461135; x=1691065935;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=zIdwfgWq+zPXtz7uG9D1x7QB8jEPgnzU4g7wLDf2u98=;
- b=VwLsaDN2IUL2b7OcZScHL6JXD25OM8ZeMAoY66mrIWit5kyg9JBQgwtaNGP+61vR+C
- dnUxJvcvVh1SNWBcs8GOj/AKpgcx6GngUsvQ5OEWPDR1/G6LeFZz8DG/Dsp3Qq3bJnND
- djHvZhisr8OQ47cBg0KnDaaEkUsKSDuk82wQKULQW549e2Dv0hGKUCIO2Tcp7KgHBC7A
- 9vgv935iIaGGKM0VaJ3qg2IhcFPrscDaz0lYBjoXbZ2TEMklH/cb/kD9dYezuHjU3Vtf
- F0JgGg03XMM4HAZ76zMODFR9iSbKF07jE/071KdwInx0kBWUHjxHf2kBqp1n6z6ZJB6h
- oxfA==
+ d=linaro.org; s=google; t=1690463170; x=1691067970;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=8qyDSDkajXCyk30Z5QuWV36IT8LpvE+bjKqjFlBeTjA=;
+ b=mATEbYpHuxnPnoXPapVur4nX2fJ9+4TD3FKmV/IYg3t9+hGg4FXvaOPU9mfSBHjPIq
+ OjdPDFo07WAj5D41NBKEnyJX07c3U9UicPRimHHSpaWQ6WpjIrl1DEEktH0mgmNaQZqB
+ KyJT48t6BEo/kPo89n20WeOXHJWOu5iLN7n3QAa22OR8WrCGSpMGv1mDqhGaQZ7UV1B4
+ 6ALlBUymiyjdSvB1qOtbYBALnXbbQhBay1BFTWQtM0XjrZrYZCFFVYnzA2nUDpFiG7Qa
+ 01yRdHTan25N3pcXq7c257POwRRI4WfYct53v7iuz5L28lfq1ctESTCS6LFFoFduzJJh
+ KzbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690461135; x=1691065935;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=zIdwfgWq+zPXtz7uG9D1x7QB8jEPgnzU4g7wLDf2u98=;
- b=M4FFwftP6XP3rd/PlZJyrWWnOEnOCuZlEu489TmW0JanCa///HOaxeRIt+LslQ9utg
- GB6s1QmevtB3qCBATqkOIECs/BY+Ay/UrfSBIP6ZrQELWTr+UXLfLn3quviAc1CfgDZH
- 9mtSmn9Cd+KBGTfghS9hfxRMzPFnxs+oJLx+ApRmOC/Y9W2s5tUPjaLHUTwTAYIrig3q
- dcqJjMSqVyTCNO1QM6humDWXAYKJKT2ZnzLVMuOZ43Y8056qbEjyG68jTjHKxKpiDcX0
- jqEumaFqAwchHGvykcQaFkBIfFwLFPDS4ik9TXy14SX4YEZusDLAES7+nT0DiGSj4Tgw
- NQfA==
-X-Gm-Message-State: ABy/qLZII6f3UUdP0D/QBLzjVdfWFi/lVLujMf7pmfDuscUTurlQ5zgu
- f8CXyZ1SfP4mGfIMCayi4563yg==
-X-Received: by 2002:a17:90a:e2ca:b0:268:2f2:cc88 with SMTP id
- fr10-20020a17090ae2ca00b0026802f2cc88mr4012232pjb.12.1690461135363; 
- Thu, 27 Jul 2023 05:32:15 -0700 (PDT)
-Received: from sunil-laptop ([106.51.190.25]) by smtp.gmail.com with ESMTPSA id
- 26-20020a17090a035a00b0025bd4db25f0sm1169440pjf.53.2023.07.27.05.32.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jul 2023 05:32:14 -0700 (PDT)
-Date: Thu, 27 Jul 2023 18:02:05 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Andrew Jones <ajones@ventanamicro.com>,
- Anup Patel <apatel@ventanamicro.com>
-Subject: Re: [PATCH 04/10] hw/riscv: virt: Add PCIe HIGHMEM in memmap
-Message-ID: <ZMJjxfYMgdVZpRPp@sunil-laptop>
-References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
- <20230712163943.98994-5-sunilvl@ventanamicro.com>
- <20230724173254.3423a204@imammedo.users.ipa.redhat.com>
- <ZMJOB7qZGqzbvACZ@sunil-laptop>
- <20230727140446.14f4c9f0@imammedo.users.ipa.redhat.com>
+ d=1e100.net; s=20221208; t=1690463170; x=1691067970;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8qyDSDkajXCyk30Z5QuWV36IT8LpvE+bjKqjFlBeTjA=;
+ b=F47sgFJ4KirrkwGQkxvLf3njBKW7RgGR4TVdWTNArIX/Q7y26rWJIfkB4AYD3I8jR3
+ fNvalu0YQP+t/gFVCGyPvefmXOsouH6HZ7SgSs+QHKigO+rLaz+P1KS6PiJhdPkCAzLf
+ duoHHE8gSCoHN3nPRU1zu81OPVJmn4WCra/pk8t1iW7+kzHZSTxRqXgnuBjMq799kQ40
+ EzjvFQdjGDz1k/pzZSAV3d6Ba6DRzH4nci2pNFwoafnQxKLZnMJrUc4ubZITgySJMSRE
+ X0kENyfRabmzZJDfWUB4gLCmGUMIO+uZc0A1+xcQ191wRPAUH3UhFqDgqaFd7usFqCBx
+ P46A==
+X-Gm-Message-State: ABy/qLaRGI5l2al8NeCY3qGJBZkTCxry33+h/GrU8bVTOT6uyxTlQbGC
+ kKiquUWSyZu8JfI7tEvaJin1U1iaFyUE5H1HXwsxpg==
+X-Received: by 2002:a05:6512:2386:b0:4fb:821e:2241 with SMTP id
+ c6-20020a056512238600b004fb821e2241mr2358984lfv.23.1690463170267; Thu, 27 Jul
+ 2023 06:06:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230727140446.14f4c9f0@imammedo.users.ipa.redhat.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x1030.google.com
+References: <20230725180337.2937292-1-jsnow@redhat.com>
+In-Reply-To: <20230725180337.2937292-1-jsnow@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Jul 2023 14:05:59 +0100
+Message-ID: <CAFEAcA8hGsXsfLECdRwe7u=DRtK6LE2twT3HaF7w_T2-SNYwgw@mail.gmail.com>
+Subject: Re: [PATCH v2 0/6] python/machine: use socketpair() for console socket
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Hanna Reitz <hreitz@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, 
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Kevin Wolf <kwolf@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Beraldo Leal <bleal@redhat.com>, Daniel Berrange <berrange@redhat.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01, WEIRD_PORT=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,47 +125,171 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Md2XpTmhhzLZ
+X-TUID: k7z3TxJPMrho
 
-On Thu, Jul 27, 2023 at 02:04:46PM +0200, Igor Mammedov wrote:
-> On Thu, 27 Jul 2023 16:29:19 +0530
-> Sunil V L <sunilvl@ventanamicro.com> wrote:
-> 
-> > On Mon, Jul 24, 2023 at 05:32:54PM +0200, Igor Mammedov wrote:
-> > > On Wed, 12 Jul 2023 22:09:37 +0530
-> > > Sunil V L <sunilvl@ventanamicro.com> wrote:
-> > >   
-> > > > PCIe High MMIO base is actually dynamic and fixed at
-> > > > run time based on the RAM configured. Currently, this is
-> > > > not part of the memmap and kept in separate static variable
-> > > > in virt.c. However, ACPI code also needs this information
-> > > > to populate DSDT. So, once the base is discovered, merge
-> > > > this into the final memmap which can be used to create
-> > > > ACPI tables later.  
-> > > 
-> > > can ACPI code fetch virt_high_pcie_memmap at runtime from
-> > > host bridge (like we do in pc/q35)?
-> > >   
-> > Hi Igor,
-> > 
-> > Looking at the current design of virt machines (arm/loongarch/riscv),
-> > getting this directly from the memmap looks simpler. ARM ACPI also uses
-> > the memmap to get the pcie_high space. It appears to me we need some
-> > more infrastructure code if ACPI needs to fetch from host bridge. I am
-> > not sure why that would be beneficial.
-> 
-> Sure it's possible to directly hardcode access, but it becomes machine
-> specific and hard to generalize/reuse (defaults might belong to machine,
-> but ACPI shall pickup these from actual owner - hostbridge).
-> 
-> And no extra infrastructure is need, x86 manages to do that by
-> using properties on host bridge (one can pre-program values on host bridge
-> during it's creation, firmware can also change them later when initializing PCI).
-> Then DSDT generator picks up uptodate values from hostbridge
-> (which is actual owner of these values) via properties.
-> (basically copy pc/q35 approach). 
-> 
-Ahh OK. Thanks!. Let me update.
+On Tue, 25 Jul 2023 at 19:04, John Snow <jsnow@redhat.com> wrote:
+>
+> Like we did for the QMP socket, use socketpair() for the console socket
+> so that hopefully there isn't a race condition during early boot where
+> data might get dropped on the floor.
+>
+> May or may not help with various race conditions where early console
+> output is not showing up in the logs and/or potentially being missed by
+> wait_for_console_pattern.
+>
 
-Thanks,
-Sunil
+This seems to improve the test I was having trouble with on s390
+(machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_edk2_firmware)
+
+However it still fails sometimes, apparently we get the first line
+of output from the guest but lose a couple of subsequent lines.
+Here's a failing log:
+
+2023-07-27 12:55:29,870 protocol         L0481 DEBUG| Transitioning
+from 'Runstate.CONNECTING' to 'Runstate.RUNNING'.
+2023-07-27 12:55:29,930 __init__         L0153 DEBUG| NOTICE:  Booting
+Trusted Firmware
+2023-07-27 12:55:29,955 __init__         L0153 DEBUG| NOTICE:  BL1: Booting BL2
+2023-07-27 12:55:29,955 __init__         L0153 DEBUG| NOTICE:  BL2:
+v2.9(release):v2.9.0-51-gc0d8ee386
+2023-07-27 12:55:29,955 __init__         L0153 DEBUG| NOTICE:  BL2:
+Built : 16:44:16, May 30 2023
+2023-07-27 12:55:30,092 __init__         L0153 DEBUG| NOTICE:  BL1: Booting BL31
+2023-07-27 12:55:30,092 __init__         L0153 DEBUG| NOTICE:  BL31:
+v2.9(release):v2.9.0-51-gc0d8ee386
+2023-07-27 12:55:30,092 __init__         L0153 DEBUG| NOTICE:  BL31:
+Built : 16:44:16, May 30 2023
+2023-07-27 12:55:30,092 __init__         L0153 DEBUG| UEFI firmware
+(version 1.0 built at 17:14:57 on Mar 21 2023)
+2023-07-27 12:55:45,281 __init__         L0153 DEBUG|
+ESC[2JESC[04DESC[=3hESC[2JESC[09DESC[2JESC[04DESC[0mESC[30mESC[40m
+2023-07-27 12:55:45,538 __init__         L0153 DEBUG|
+ESC[01;01HESC[0mESC[34mESC[47m
+2023-07-27 12:55:45,642 __init__         L0153 DEBUG|
+ESC[01;01HESC[02;02HQEMU SBSA-REF MachineESC[03;02Harm-virtESC[44C2.00
+GHzESC[04;02H1.0ESC[49C1024 MB
+RAMESC[05;02HESC[52CESC[06;02HESC[52CESC[0mESC[37mESC[40mESC[21;01H
+2023-07-27 12:55:45,840 __init__         L0153 DEBUG|
+ESC[21;01HESC[0mESC[30mESC[40mESC[25;53H  ESC[01D  ESC[01D  ESC[01D
+ESC[01D  ESC[01D  ESC[01D  ESC[01D  ESC[01D  ESC[01D  ESC[01D  ESC[01D
+ ESC[01D  ESC[01D  ESC[01D  ESC[01D  ESC[01D  ESC[01D  ESC[01D
+ESC[01D  ESC[01D  ESC[0mESC[30mESC[47mESC[07;01H
+2023-07-27 12:55:45,926 __init__         L0153 DEBUG| ESC[07;01H
+2023-07-27 12:55:46,032 __init__         L0153 DEBUG|
+ESC[0mESC[37mESC[40mESC[30C<Standard English>ESC[0mESC[30mESC[47m
+   ESC[57D   Select Language            ESC[0mESC[34mESC[47mESC[09;01H
+
+ESC[0mESC[30mESC[47mESC[10;01H   ESC[02D>ESC[01CDevice Manager
+                               ESC[11;01H   ESC[02D>ESC[01CBoot
+Manager                                          ESC[12;01H
+ESC[02D>ESC[01CBoot Maintenance Manager
+ESC[0mESC[34mESC[47mESC[13;01H
+                ESC[0mESC[30mESC[47mESC[14;01H   Continue
+                                ESC[15;01H   Reset
+                            ESC[16;01H
+                        ESC[17;01H
+                    ESC[18;01H
+                ESC[19;01H
+            ESC[20;01H
+2023-07-27 12:55:46,067 __init__         L0153 DEBUG|
+ESC[0mESC[37mESC[40mESC[23;02H ESC[22;02H ESC[50C
+   ESC[51D                          ESC[23;53H
+  ESC[77D^v=Move Highlight       ESC[22;03H
+ESC[23;27H<Enter>=Select Entry      ESC[0mESC[34mESC[47mESC[08;58HThis
+is the option
+2023-07-27 12:55:46,076 __init__         L0153 DEBUG| ESC[57Cone
+adjusts to change
+2023-07-27 12:55:46,076 __init__         L0153 DEBUG| ESC[57Cthe
+language for the
+2023-07-27 12:55:46,080 __init__         L0153 DEBUG| ESC[57Ccurrent system
+2023-07-27 12:55:46,085 __init__         L0153 DEBUG| ESC[57C
+2023-07-27 12:55:46,085 __init__         L0153 DEBUG| ESC[57C
+2023-07-27 12:55:46,087 __init__         L0153 DEBUG| ESC[57C
+2023-07-27 12:55:46,090 __init__         L0153 DEBUG| ESC[57C
+2023-07-27 12:55:46,094 __init__         L0153 DEBUG| ESC[57C
+2023-07-27 12:55:46,094 __init__         L0153 DEBUG| ESC[57C
+2023-07-27 12:55:46,100 __init__         L0153 DEBUG| ESC[57C
+2023-07-27 12:55:46,101 __init__         L0153 DEBUG| ESC[57C
+2023-07-27 12:58:25,379 stacktrace       L0039 ERROR|
+2023-07-27 12:58:25,380 stacktrace       L0041 ERROR| Reproduced
+traceback from:
+/home/linux1/qemu/build/aarch64/tests/venv/lib/python3.8/site-packages/avocado/core/test.py:770
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR| Traceback (most
+recent call last):
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|   File
+"/home/linux1/qemu/build/aarch64/tests/venv/lib/python3.8/site-packages/avocado/core/decorators.py",
+line 90, in wrapper
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|     return
+function(obj, *args, **kwargs)
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|   File
+"/home/linux1/qemu/build/aarch64/tests/avocado/machine_aarch64_sbsaref.py",
+line 96, in test_sbsaref_edk2_firmware
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|
+wait_for_console_pattern(self, "BL1: v2.9(release):v2.9")
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|   File
+"/home/linux1/qemu/build/aarch64/tests/avocado/avocado_qemu/__init__.py",
+line 199, in wait_for_console_pattern
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|
+_console_interaction(test, success_message, failure_message, None,
+vm=vm)
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|   File
+"/home/linux1/qemu/build/aarch64/tests/avocado/avocado_qemu/__init__.py",
+line 148, in _console_interaction
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|     msg =
+console.readline().decode().strip()
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|   File
+"/usr/lib/python3.8/socket.py", line 669, in readinto
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|     return
+self._sock.recv_into(b)
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|   File
+"/home/linux1/qemu/build/aarch64/tests/venv/lib/python3.8/site-packages/avocado/plugins/runner.py",
+line 77, in sigterm_handler
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR|     raise
+RuntimeError("Test interrupted by SIGTERM")
+2023-07-27 12:58:25,381 stacktrace       L0045 ERROR| RuntimeError:
+Test interrupted by SIGTERM
+
+Compared to the output logs for a passing run, you can see that
+although we captured the first line of output from the guest
+("Booting Trusted Firmware") we missed lines 2 and 3 (the
+BL1 version line and the BL1 Built: line).
+
+2023-07-27 12:54:07,676 protocol         L0481 DEBUG| Transitioning
+from 'Runstate.CONNECTING' to 'Runstate.RUNNING'.
+2023-07-27 12:54:07,690 __init__         L0153 DEBUG| NOTICE:  Booting
+Trusted Firmware
+2023-07-27 12:54:07,691 __init__         L0153 DEBUG| NOTICE:  BL1:
+v2.9(release):v2.9.0-51-gc0d8ee386
+2023-07-27 12:54:07,691 __init__         L0153 DEBUG| BL1: Built :
+16:44:16, May 30 2023
+2023-07-27 12:54:07,754 __init__         L0153 DEBUG| NOTICE:  BL1: Booting BL2
+2023-07-27 12:54:07,828 __init__         L0153 DEBUG| NOTICE:  BL2:
+v2.9(release):v2.9.0-51-gc0d8ee386
+2023-07-27 12:54:07,828 __init__         L0153 DEBUG| NOTICE:  BL2:
+Built : 16:44:16, May 30 2023
+2023-07-27 12:54:07,855 __init__         L0153 DEBUG| NOTICE:  BL1: Booting BL31
+2023-07-27 12:54:07,877 __init__         L0153 DEBUG| NOTICE:  BL31:
+v2.9(release):v2.9.0-51-gc0d8ee386
+2023-07-27 12:54:07,883 __init__         L0153 DEBUG| NOTICE:  BL31:
+Built : 16:44:16, May 30 2023
+2023-07-27 12:54:07,891 __init__         L0153 DEBUG| UEFI firmware
+(version 1.0 built at 17:14:57 on Mar 21 2023)
+2023-07-27 12:54:18,354 __init__         L0153 DEBUG|
+ESC[2JESC[04DESC[=3hESC[2JESC[09DESC[2JESC[04DESC[0mESC[30mESC[40m
+2023-07-27 12:54:18,539 __init__         L0153 DEBUG|
+ESC[01;01HESC[0mESC[34mESC[47m
+2023-07-27 12:54:18,631 __init__         L0153 DEBUG|
+ESC[01;01HESC[02;02HQEMU SBSA-REF MachineESC[03;02Harm-virtESC[44C2.00
+GHzESC[04;02H1.0ESC[49C1024 MB
+RAMESC[05;02HESC[52CESC[06;02HESC[52CESC[0mESC[37mESC[40mESC[21;01H
+2023-07-27 12:54:18,639 machine          L0627 DEBUG| Shutting down VM
+appliance; timeout=30
+2023-07-27 12:54:18,639 machine          L0551 DEBUG| Attempting
+graceful termination
+2023-07-27 12:54:18,639 machine          L0518 DEBUG| Closing console socket
+2023-07-27 12:54:18,640 machine          L0561 DEBUG| Politely asking
+QEMU to terminate
+
+
+thanks
+-- PMM

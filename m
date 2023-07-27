@@ -1,137 +1,171 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1165269ejb;
-        Thu, 27 Jul 2023 02:57:21 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGc6/5rURv4MGAs2xGhgGUCfuBW0jytrC7k9DibC/YxtEcwC9B7dUCyp8g0CPicWC8ucHHG
-X-Received: by 2002:a05:6871:b25:b0:1a6:a547:ffe1 with SMTP id fq37-20020a0568710b2500b001a6a547ffe1mr2697446oab.21.1690451841473;
-        Thu, 27 Jul 2023 02:57:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690451841; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1193630ejb;
+        Thu, 27 Jul 2023 03:54:10 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFtWD6a1Td+U2ZwiokJ5zuVBXwZXCp1pFbS8q0ntvaaB4f+8J4KPdzHcI2dvTs9ZTM/LQg2
+X-Received: by 2002:a05:6214:3c9b:b0:63c:a22e:ddaf with SMTP id ok27-20020a0562143c9b00b0063ca22eddafmr5106531qvb.16.1690455250561;
+        Thu, 27 Jul 2023 03:54:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690455250; cv=none;
         d=google.com; s=arc-20160816;
-        b=go8/6Lm8xW83SFrLZyIGaZp0dRp3/JXXtKsxzWSezlBVdN+dNiv5sh+HPLg+V0ZzSs
-         w4EBI7h67gOdcFiwqh8H0A7s3+T8L8A5PL+/cuPJba1zpnX5Zcs/kEl9MKls9k5RcPDM
-         S84+S+C6GcOUorgxrZIWfXS8OyaKuGiFK3kjg4o7+FeOfTl2IW65dUSnoP+te8RjGKxs
-         TbHrLC1+kmrHbHMpa1/JfqGdOyc+Z0aKgBFKr6z6LMzK1PrmIAaOgug1jocc9O4dK749
-         IaWfjzjrO3pf88BZ1rVjAq++SRjTnmjDXTLGAC0Cn33pvqMjCiaCZoyuFRZXY+JbQiZi
-         4Uog==
+        b=byIG28iWibiruS8vGppM3Oo5vsiCYscnPbP2BrJreuoTbz8gmdl45sf4+k6v4u08nx
+         76eXCwfapUL6bkFIoGJBjGOPfwAADRui3B9OOCrzZtwTPi4Njg4jrxdLvftD76d/sM3y
+         G8L2z7oI6H3yPFO6EwqfEjLsg6TQ4rbRPmTVFeQEBgAODA31FJdJk/+RSn1+BmYkBAeu
+         3tF9F7mmSoxbiAIumfpnGr4KI994L26k046VSM1Em/eXI9CRfXz2tmVQ9jbeItKYezTs
+         v3LW+JAz95CYEYzjdAZrb+oVvhUh5sA0/ylzc0BdN/GA/xYtjIdDCoG9Oc7d+AoYw1dl
+         x0Tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=7Et2+usQK1JlDG0GanNGbBu0x99mo/WvwuZuG01uDXE=;
-        fh=mtFkLDLvVWjLl+Z5ctdN30FnmxKYGkHHDXyuwFy73YE=;
-        b=SgEBUNTksqOy1Y014qUmFEp69CtzITZMx02aeGW4wDwjCOZ58fkOV1uBYIOOflr9SE
-         kPmnt6NB6VtgEbvAWz6s8efisbyf33Hsb9JXsIFv5rBSjLboUMe1Nok5KHV2VZpJCmlO
-         9BruEorAV0VaycD/y9yS3Q9g6Dz2rd4A4BMxyYmKwCiVBWE+J40jNpktJ2322ub/PScv
-         8AuuH9HJQFkE+e+h/IQgCdcnPzHIYW1L4/TvmbczGuEgum7vEB6BeDygw4lwBHW4akGf
-         2VggOHJnnoLRAtDpUagZrWSyy399wDinksmS2MsOt4LUZaQZ8p8Vo9pR0ndX0Duu5fab
-         wQCg==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=BgVEgkjy0v24sA29rrQPBpaIveXcGiH1BPynrvViBF0=;
+        fh=9FR0g0A/nV1zzY3iyyxUnedT9olBbTtHSCYhpW4CK5I=;
+        b=ObnSEEXAbt16WkR60CX3bnUyFhuu+kPCTVfjqjvCFM8tAb061A7NoCRgRAATjFDObp
+         fm4FQpBd3HfRstMIvn7W8WKF43Z6IUub7Ep8o2i33agAkD2mr6mKIv1anvOuc4nRQGxg
+         F980DbCt/JSfFOpRNtrcKNjq0rN9/YBeRI+3XKscong3LFGcKLjWg+GPc9+qCBtNrXDA
+         Qwh/rdtRnAIqxsrlZ8evPeWgQ0H1WWjOL5XtjdGhLSqX6fd2vMVW7vp9Tj5gQ1RcQem+
+         g5vshlwWj9YeCg7hQX81GIuOPVBIPcqQ3M1fosmAQn/Bhre2s7RTbzVLzzy4D1YhEoI3
+         S2fQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bJ/o5qNJ";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H4r8WNsh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id i1-20020a17090a64c100b00263aff4ccf0si1176800pjm.3.2023.07.27.02.57.21;
-        Thu, 27 Jul 2023 02:57:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a1-20020a0ce341000000b0063d1238bbe6si516350qvm.533.2023.07.27.03.54.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 27 Jul 2023 03:54:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bJ/o5qNJ";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=H4r8WNsh;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S232163AbjG0J5T (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Thu, 27 Jul 2023 05:57:19 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:39958 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S233216AbjG0J5C (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 27 Jul 2023 05:57:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5688B1B8
-        for <kvm@vger.kernel.org>; Thu, 27 Jul 2023 02:55:55 -0700 (PDT)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qOyR1-0005wl-BN; Thu, 27 Jul 2023 06:41:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1qOyQy-0005vz-GA
+ for qemu-devel@nongnu.org; Thu, 27 Jul 2023 06:41:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1qOyQw-0001Gd-RR
+ for qemu-devel@nongnu.org; Thu, 27 Jul 2023 06:41:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1690451754;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=7Et2+usQK1JlDG0GanNGbBu0x99mo/WvwuZuG01uDXE=;
-        b=bJ/o5qNJKJVYlVOedhiuob13/ZsfP4GqKXPle4TQSH18Z2rsuD8uhqBJdbdkQ5Lc9rE3Cj
-        ngDZyUt3lS+RM9BUfdHxUhvnzJGEnXUkrxizn9biHmISWuOkr4gvANXH1+/6JN96bZ2JZ9
-        pX/ANYEwz01vmwpA0eZZuO6kYW+ENt4=
-Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-531-dlBDvexKM1KbwVfNG8FutA-1; Thu, 27 Jul 2023 05:55:52 -0400
-X-MC-Unique: dlBDvexKM1KbwVfNG8FutA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 09ADD3C11CC0;
-        Thu, 27 Jul 2023 09:55:52 +0000 (UTC)
-Received: from localhost (dhcp-192-239.str.redhat.com [10.33.192.239])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id C455740C2063;
-        Thu, 27 Jul 2023 09:55:51 +0000 (UTC)
-From:   Cornelia Huck <cohuck@redhat.com>
-To:     Gavin Shan <gshan@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>
-Cc:     qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [PATCH for-8.2 2/2] arm/kvm: convert to kvm_get_one_reg
-In-Reply-To: <4a990b57-800c-6799-8c23-4488069ffb76@redhat.com>
-Organization: Red Hat GmbH
-References: <20230718111404.23479-1-cohuck@redhat.com>
- <20230718111404.23479-3-cohuck@redhat.com>
- <db578c20-22d9-3b76-63e7-d99b891f6d36@redhat.com>
- <878rb5g0f0.fsf@redhat.com>
- <4a990b57-800c-6799-8c23-4488069ffb76@redhat.com>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date:   Thu, 27 Jul 2023 11:55:50 +0200
-Message-ID: <875y6565ll.fsf@redhat.com>
+ s=mimecast20190719; t=1690454485;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=BgVEgkjy0v24sA29rrQPBpaIveXcGiH1BPynrvViBF0=;
+ b=H4r8WNshbtfXgZ+impoLc/eO/8PEIO+R8xN52oJv6zIg14I/pHSZKlFwQ5hZpxScsha/RT
+ hqiFKeIWJwE9rypWIy9wpxkUmWd1skBRBbA6Hx/QfKnQqUlQsWS6WM0IF6Tyx0Y1hiGm03
+ yMQyjp9+Pu4nZkaktHAhNIcwTRUx/i8=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-145-WpodngWyNbKhEN4i_AZbWA-1; Thu, 27 Jul 2023 06:41:24 -0400
+X-MC-Unique: WpodngWyNbKhEN4i_AZbWA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4CCB5104458D;
+ Thu, 27 Jul 2023 10:41:24 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.19])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E6759C2C7D3;
+ Thu, 27 Jul 2023 10:41:21 +0000 (UTC)
+Date: Thu, 27 Jul 2023 11:41:18 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Ani Sinha <anisinha@redhat.com>
+Cc: John Snow <jsnow@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Hanna Reitz <hreitz@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Qemu-block <qemu-block@nongnu.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Kevin Wolf <kwolf@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [PATCH v2 4/6] python/machine: use socketpair() for console
+ connections
+Message-ID: <ZMJJzkTaZaQ0z0Rj@redhat.com>
+References: <20230725180337.2937292-1-jsnow@redhat.com>
+ <20230725180337.2937292-5-jsnow@redhat.com>
+ <B867C4E8-24FC-4C4E-9FE8-2353CC21320C@redhat.com>
+ <CAFn=p-bdA5cVMmsUkE0os0CVT6XMXzWk2M3UcKb0DFQmi130Mg@mail.gmail.com>
+ <4EE2965D-F72B-4002-99BF-732F5F9734C6@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        RCVD_IN_MSPIKE_H4,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_NONE,
-        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: VeDaUk6EC9qe
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <4EE2965D-F72B-4002-99BF-732F5F9734C6@redhat.com>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: X935xM2bb8aG
 
-On Tue, Jul 25 2023, Gavin Shan <gshan@redhat.com> wrote:
+On Thu, Jul 27, 2023 at 11:22:35AM +0530, Ani Sinha wrote:
+> 
+> 
+> > On 26-Jul-2023, at 10:51 PM, John Snow <jsnow@redhat.com> wrote:
+> > 
+> > 
+> > 
+> > On Wed, Jul 26, 2023, 6:50 AM Ani Sinha <anisinha@redhat.com> wrote:
+> > 
+> > 
+> > > On 25-Jul-2023, at 11:33 PM, John Snow <jsnow@redhat.com> wrote:
+> > > 
+> > > Create a socketpair for the console output. This should help eliminate
+> > > race conditions around console text early in the boot process that might
+> > > otherwise have been dropped on the floor before being able to connect to
+> > > QEMU under "server,nowait".
+> > > 
+> > > Signed-off-by: John Snow <jsnow@redhat.com>
+> > 
+> > Thanks for doing this. I recall we spoke about this late last year in the context of fixing my bios-bits avocado test and adding a console output there.
+> > 
+> > Yep! I think you need a few more changes to do what you wanted. IIRC, you also want to be able to drain the console log while waiting for the vm to terminate of its own accord, which I don't support yet.
+> > 
+> > (If you use console socket's self draining mode, it should be possible to forego the early termination of the console socket and allow this behavior. Maybe I can work that in now...)
+> 
+> yeah we want to collect all the console logs while the VM is running until it self terminates. Maybe you can add a flag for this behavior to not early terminate the socket. I think we need to add mathods to keep reading the socket and write to a file until the socket is closed. Maybe QemuMachine needs to be enhanced.
 
-> On 7/24/23 18:48, Cornelia Huck wrote:
->> On Mon, Jul 24 2023, Gavin Shan <gshan@redhat.com> wrote:
->>>
->>> On 7/18/23 21:14, Cornelia Huck wrote:
->>>> We can neaten the code by switching the callers that work on a
->>>> CPUstate to the kvm_get_one_reg function.
->>>>
->>>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->>>> ---
->>>>    target/arm/kvm.c   | 15 +++---------
->>>>    target/arm/kvm64.c | 57 ++++++++++++----------------------------------
->>>>    2 files changed, 18 insertions(+), 54 deletions(-)
->>>>
->>>
->>> The replacements look good to me. However, I guess it's worty to apply
->>> the same replacements for target/arm/kvm64.c since we're here?
->>>
->>> [gshan@gshan arm]$ pwd
->>> /home/gshan/sandbox/q/target/arm
->>> [gshan@gshan arm]$ git grep KVM_GET_ONE_REG
->>> kvm64.c:    err = ioctl(fd, KVM_GET_ONE_REG, &idreg);
->>> kvm64.c:    return ioctl(fd, KVM_GET_ONE_REG, &idreg);
->>> kvm64.c:        ret = ioctl(fdarray[2], KVM_GET_ONE_REG, &reg);
->> 
->> These are the callers that don't work on a CPUState (all in initial
->> feature discovery IIRC), so they need to stay that way.
->> 
->
-> Right, All these ioctl commands are issued when CPUState isn't around. However, there
-> are two wrappers read_sys_{reg32, reg64}(). The ioctl call in kvm_arm_sve_get_vls()
-> can be replaced by read_sys_reg64(). I guess it'd better to do this in a separate
-> patch if you agree.
 
-Yes, we could do that, but I'm not sure how much it adds to the
-code... in any case, I agree that this would be a separate patch.
+There's no special code required for that - any -chardev backend can
+have logfile=/some/path added to it.
+
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

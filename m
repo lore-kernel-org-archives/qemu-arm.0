@@ -1,111 +1,136 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1228713ejb;
-        Thu, 27 Jul 2023 04:57:15 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGF9fI7xTHVKEIwDdzyJKAzfZvz/4oBnVmEH42H/XilTq2r+lLBI/WNFds2iPTlgT52iNcK
-X-Received: by 2002:a05:6358:990d:b0:135:51a5:4da0 with SMTP id w13-20020a056358990d00b0013551a54da0mr2206213rwa.1.1690459034766;
-        Thu, 27 Jul 2023 04:57:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690459034; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1243850ejb;
+        Thu, 27 Jul 2023 05:19:04 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGIehL1pzjmRPuGAEpqeMMu39Lij7pv4Y4uwxc0LIbycFV9ghh941qsSAd2Hlt1f+Y3M4By
+X-Received: by 2002:a05:622a:1302:b0:403:ff6d:1ec1 with SMTP id v2-20020a05622a130200b00403ff6d1ec1mr5987917qtk.48.1690460344304;
+        Thu, 27 Jul 2023 05:19:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690460344; cv=none;
         d=google.com; s=arc-20160816;
-        b=QOQvC6GQGqkIIwBdvHFjXYWNoVPiUi2lZrcF7BDAVQOhqNDfso2oandECO20473g/4
-         nySldUEfqFRrvCAvvgNBgonf//EDVkEQ08TSA2VcyLf4c6eh93S7bBN4ewvQkSAKnerU
-         LHq1ydGey/Hc4aToMrcfIkXA10uIdS9Kh0LhAyl6+jkjBzeV2/pjI+XzT0DORDQjle9Z
-         gYL5PegTQflkZvZSefXS1DMmL3sd+B4eSeESeEyW8wS7511CqW8YZRR8i6XaAs8TdyiA
-         SWr64y6ZJqeLWCr2pAs9ZCfFO0ZW12g1yptKE6SJJAaPgiY0R3/b+FIPCb5vOQwpOGB8
-         mZng==
+        b=wDIRMy6XeolvESEj6/ilUPom+3DxS8PynI+NhEjySyXH7vRXXWei3h8Oop8PUFidBr
+         qcy8ZxArZQrNa4xu6+653fxn6wfh2zmowZ+XM3DxcxG+hGlpZnPnl+TdjzdpehFjFAr+
+         9TEOsjX+QBP+ijVjS4xHULOtBV1ANL1zs7MY4+ohiNfKfa0VU7/ffs3Vh+idPkcv54XL
+         hQDi7O4J8fgJ1t0tXHkCtPZeXgSC7xtFJ0yPb6SqPRmitL8Z7krciar4rBveulfyEvzP
+         edtXMeoQtP1ezvZesW2Q3jgmI8gWNmynajPl6jfjOjisIds9CsWXAXi80lW+9t3PTEX8
+         7ZdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=uXfHqz+RHJ/O21c1DjEA4/cGZpHuHI1aduBBkgJ49gQ=;
-        fh=JUXg3dueAqP+mYuf9ko2qwG7+0qNEOa/D1sI5OKab+M=;
-        b=CEhFIGof4GaHdrVeAhllpxrexjcW1K8KOOIYnH00XtKb+LlAlRmMwehl5enJOEMSRV
-         rQS9BOgZKK3BpJlmL7Nv/i2/QTEZgD1rD3BJT421yDNIgPfgO6u9FtD56b1XrPFGmNKG
-         nyEKnr27lsqpKpc1+8Drpmj9TkA/qFO22dpWRNWaa3KiqEsp+BjHhBjMyXJOratxLz1M
-         +P+Tl+PeGinj1+6y1RGND+jgdXRALV91p+8ZDXBJTxnOTvNWd98vqc7w1WoRguL8V035
-         pyQRC4QiZi2UxrLZ8Q61i/m7KwDFKYjMdQjTTD03WGL6MwJFRxN4RaMOCCA3eNWpGeb1
-         LJKg==
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=ppN+bgpvwcevxBHrqVvwwOOCna8g1cmyqgFyZkevYtg=;
+        fh=Mzzz2ni5vP6alskqY7WSzZVGpkpjliVK9alKjrtsoe4=;
+        b=eqhE5g20YmqJZ4cuTrZ+sfXnb+9FdptEXCAsK/v2hcRa7inQVbgBkPzgevIG546S1f
+         EwV0QevaKVy/Jl4qyL2F++Ay3HPf2aBzBoau/+Utbe1ImPcS28vE90zkk0MbPZU6mWlR
+         pz95gk6YNHj1HJafnrJg3isbDqI0ux33Tmv1q/dMTuAHxrIbo6DZyH3YxtEkUhepw3o+
+         2JU3NOOJU9X+4YBlUtZ5li89CSPQr2C3/yjzUMRm3Nl5SBCxcqouKxYlnf7JPoauOjks
+         oLNiAIN0yv0gXqXm5tkLgysz95cUPUp4kVJX8BJv8jNMd8u3hEV6TckWV/lNn+mi+Txu
+         znBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v2ys6ePf;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hajwQ1AP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r3-20020a05620a298300b0076838b06660si660210qkp.373.2023.07.27.04.57.14
+        by mx.google.com with ESMTPS id u12-20020a05622a010c00b00403dd3f7113si692701qtw.322.2023.07.27.05.19.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jul 2023 04:57:14 -0700 (PDT)
+        Thu, 27 Jul 2023 05:19:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v2ys6ePf;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hajwQ1AP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qOyOm-0005d8-OG; Thu, 27 Jul 2023 06:39:12 -0400
+	id 1qOzjq-0004M2-Rj; Thu, 27 Jul 2023 08:05:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qOyOl-0005cH-EE
- for qemu-arm@nongnu.org; Thu, 27 Jul 2023 06:39:11 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qOyOj-0000TG-Qc
- for qemu-arm@nongnu.org; Thu, 27 Jul 2023 06:39:11 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-31751d7d96eso797879f8f.1
- for <qemu-arm@nongnu.org>; Thu, 27 Jul 2023 03:39:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1690454348; x=1691059148;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=uXfHqz+RHJ/O21c1DjEA4/cGZpHuHI1aduBBkgJ49gQ=;
- b=v2ys6ePfPlWbMK7qpNrCRyXx5ekx4+Tx32ThbEq0xZwfM0yOH4x7x/iPPuDPMEiwX3
- edOsRPIjRg2etXhBreUIXmc9SQHEhj8nLQ2cfKXdx+7t1ypSUjg5HXPhfJYM5SmjQjxh
- gkdMavaJlCrfjyQNJd17wxt/k3Ux4V3BqpnGAKCHT8WDAg0NZ4U6m02yluoB2uljZ8uP
- RiqGNg6pMMULXsoC8EsI/3h6u88n0avvuV9hSoo5LLD0OEo7vkORHaxB9ShSOo7wUQtd
- 9qslgr0L2KFVEQI4A1jZji5Tn66vejWjztn7daTcwXCIoOjIgvoh5IsobCag4JegOu+h
- roSw==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1qOzjg-0004KQ-Qw
+ for qemu-arm@nongnu.org; Thu, 27 Jul 2023 08:04:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1qOzjf-0002QJ-8X
+ for qemu-arm@nongnu.org; Thu, 27 Jul 2023 08:04:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1690459490;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ppN+bgpvwcevxBHrqVvwwOOCna8g1cmyqgFyZkevYtg=;
+ b=hajwQ1APsPzNMFx544BIWrZhHIup+p9BxN43WryubBj1KxO9EB5Sgf64GX2hONYSB7bh0F
+ 4XAXf3BM5NTZDAve5yir5F38DyPNW/LaWShW6U7PnMGEBMZwY8Y+cEYaYBuQSIZziBiGH5
+ +YJexUJCtF22BYDSvkOTgRmM4G+LoAo=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-286-bk4Blb06OXKSTSZhSvgkcA-1; Thu, 27 Jul 2023 08:04:49 -0400
+X-MC-Unique: bk4Blb06OXKSTSZhSvgkcA-1
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-99bb70a4b28so49468066b.0
+ for <qemu-arm@nongnu.org>; Thu, 27 Jul 2023 05:04:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690454348; x=1691059148;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=uXfHqz+RHJ/O21c1DjEA4/cGZpHuHI1aduBBkgJ49gQ=;
- b=czzgY1CNAX4czTlzT0z+WPom05cvjD6fcR5RlcDUeeZhd83PEbGz7iGwW4C/SHenQG
- QU47JZd6mSPPUVJ1f3UNFChUvNnWDuImNiTURvgCN03/xOTxQmEkrmmeJMIpCeQwKDIS
- SRrGGlYTpa0M2SQP1+Yjzm5SK05YUsYyLJIc6GE9H9B9BT9vRqiDkzEkkQJmou2TMyON
- BIFO5yJJSjSx7EKg92lhx7BoMOzrpavHVEBQ2JgF+AWyXIQKN/iTAlcPWaljz9fJV3r1
- h23kKN3RV92oGBXls+0iU4KDkosHeOm9x/DjZnLlWuXPHQNDD5V6FK1hQtnfrDnxwUJU
- utsg==
-X-Gm-Message-State: ABy/qLb63EePpll1QPeaa1BE8NK6URM/U89wRGIIa0gDYREEKco6eJwy
- mVta3peyx9NT/pMC6H2yLP3kwg1bewnB1aS9ngM=
-X-Received: by 2002:a5d:6706:0:b0:316:e422:38e8 with SMTP id
- o6-20020a5d6706000000b00316e42238e8mr1466785wru.66.1690454348154; 
- Thu, 27 Jul 2023 03:39:08 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- c4-20020a056000104400b003143b14848dsm1633205wrx.102.2023.07.27.03.39.07
+ d=1e100.net; s=20221208; t=1690459488; x=1691064288;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ppN+bgpvwcevxBHrqVvwwOOCna8g1cmyqgFyZkevYtg=;
+ b=JbKJYhiKnLPyfwOTOULqIa+rdz2cTNsW+NM1Om2DxoZYJph0dAee33coUuRswRVuFW
+ NqcKjWy/r4Q5ER1ibP6nbvBqUJzM1j7mUZmaV5rDLqX51ebGN/IqH/FRGoy3azN+jdja
+ uSOqViZmKf2+X4hky1n9zwOeiN7HdL32yKPECcxV+7rtFgE3rkLFEq6qa2npiwaf0wse
+ uq11QkhK2YIa9ZSI4v7jPbhAIB99w7tHDXAsUlwbUr4GD+mWP2OMfrXoKdj412z3xQ+N
+ ysozA+aE7d1Ea+2ifqS79o6xwP/qeNUnMBPsoq37Q4P4uUlbIMY8CA5eLNBM1gECV0ku
+ NHyA==
+X-Gm-Message-State: ABy/qLZ+nzB/Dr5yW9ALGW3TwePo9P8G5m3rl2WSeI4jbSDJrh4tkmIq
+ 2f8/aIgCtt/1cjrjVZmfOWsYARkDd+ylix+egUmmp9ePO7QFanr7nNl1/Ne6JXhI5tVD6Z6DrzX
+ WhoByfZylzohw
+X-Received: by 2002:a17:907:75e3:b0:99b:d784:f8f8 with SMTP id
+ jz3-20020a17090775e300b0099bd784f8f8mr1465534ejc.69.1690459488077; 
+ Thu, 27 Jul 2023 05:04:48 -0700 (PDT)
+X-Received: by 2002:a17:907:75e3:b0:99b:d784:f8f8 with SMTP id
+ jz3-20020a17090775e300b0099bd784f8f8mr1465510ejc.69.1690459487745; 
+ Thu, 27 Jul 2023 05:04:47 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ t10-20020a17090616ca00b0098d486d2bdfsm704106ejd.177.2023.07.27.05.04.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jul 2023 03:39:07 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-Subject: [PATCH] target/arm: Avoid writing to constant TCGv in trans_CSEL()
-Date: Thu, 27 Jul 2023 11:39:06 +0100
-Message-Id: <20230727103906.2641264-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ Thu, 27 Jul 2023 05:04:47 -0700 (PDT)
+Date: Thu, 27 Jul 2023 14:04:46 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Sunil V L <sunilvl@ventanamicro.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Palmer
+ Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>, Daniel
+ Henrique Barboza <dbarboza@ventanamicro.com>, Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>, Andrew Jones <ajones@ventanamicro.com>,
+ Anup Patel <apatel@ventanamicro.com>
+Subject: Re: [PATCH 04/10] hw/riscv: virt: Add PCIe HIGHMEM in memmap
+Message-ID: <20230727140446.14f4c9f0@imammedo.users.ipa.redhat.com>
+In-Reply-To: <ZMJOB7qZGqzbvACZ@sunil-laptop>
+References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
+ <20230712163943.98994-5-sunilvl@ventanamicro.com>
+ <20230724173254.3423a204@imammedo.users.ipa.redhat.com>
+ <ZMJOB7qZGqzbvACZ@sunil-laptop>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,79 +146,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 64zvNYRAW2Dx
+X-TUID: lBbTmmGTjUUO
 
-In commit 0b188ea05acb5 we changed the implementation of
-trans_CSEL() to use tcg_constant_i32(). However, this change
-was incorrect, because the implementation of the function
-sets up the TCGv_i32 rn and rm to be either zero or else
-a TCG temp created in load_reg(), and these TCG temps are
-then in both cases written to by the emitted TCG ops.
-The result is that we hit a TCG assertion:
+On Thu, 27 Jul 2023 16:29:19 +0530
+Sunil V L <sunilvl@ventanamicro.com> wrote:
 
-qemu-system-arm: ../../tcg/tcg.c:4455: tcg_reg_alloc_mov: Assertion `!temp_readonly(ots)' failed.
+> On Mon, Jul 24, 2023 at 05:32:54PM +0200, Igor Mammedov wrote:
+> > On Wed, 12 Jul 2023 22:09:37 +0530
+> > Sunil V L <sunilvl@ventanamicro.com> wrote:
+> >   
+> > > PCIe High MMIO base is actually dynamic and fixed at
+> > > run time based on the RAM configured. Currently, this is
+> > > not part of the memmap and kept in separate static variable
+> > > in virt.c. However, ACPI code also needs this information
+> > > to populate DSDT. So, once the base is discovered, merge
+> > > this into the final memmap which can be used to create
+> > > ACPI tables later.  
+> > 
+> > can ACPI code fetch virt_high_pcie_memmap at runtime from
+> > host bridge (like we do in pc/q35)?
+> >   
+> Hi Igor,
+> 
+> Looking at the current design of virt machines (arm/loongarch/riscv),
+> getting this directly from the memmap looks simpler. ARM ACPI also uses
+> the memmap to get the pcie_high space. It appears to me we need some
+> more infrastructure code if ACPI needs to fetch from host bridge. I am
+> not sure why that would be beneficial.
 
-(or on a non-debug build, just produce a garbage result)
+Sure it's possible to directly hardcode access, but it becomes machine
+specific and hard to generalize/reuse (defaults might belong to machine,
+but ACPI shall pickup these from actual owner - hostbridge).
 
-Adjust the code so that rn and rm are always writeable
-temporaries whether the instruction is using the special
-case "0" or a normal register as input.
+And no extra infrastructure is need, x86 manages to do that by
+using properties on host bridge (one can pre-program values on host bridge
+during it's creation, firmware can also change them later when initializing PCI).
+Then DSDT generator picks up uptodate values from hostbridge
+(which is actual owner of these values) via properties.
+(basically copy pc/q35 approach). 
 
-Cc: qemu-stable@nongnu.org
-Fixes: 0b188ea05acb5 ("target/arm: Use tcg_constant in trans_CSEL")
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-These insns are v8.1M-only, which is why this bug has
-lingered for so long.
----
- target/arm/tcg/translate.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 13c88ba1b9f..b71ac2d0d53 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -8799,7 +8799,7 @@ static bool trans_IT(DisasContext *s, arg_IT *a)
- /* v8.1M CSEL/CSINC/CSNEG/CSINV */
- static bool trans_CSEL(DisasContext *s, arg_CSEL *a)
- {
--    TCGv_i32 rn, rm, zero;
-+    TCGv_i32 rn, rm;
-     DisasCompare c;
- 
-     if (!arm_dc_feature(s, ARM_FEATURE_V8_1M)) {
-@@ -8817,16 +8817,17 @@ static bool trans_CSEL(DisasContext *s, arg_CSEL *a)
-     }
- 
-     /* In this insn input reg fields of 0b1111 mean "zero", not "PC" */
--    zero = tcg_constant_i32(0);
-+    rn = tcg_temp_new_i32();
-+    rm = tcg_temp_new_i32();
-     if (a->rn == 15) {
--        rn = zero;
-+        tcg_gen_movi_i32(rn, 0);
-     } else {
--        rn = load_reg(s, a->rn);
-+        load_reg_var(s, rn, a->rn);
-     }
-     if (a->rm == 15) {
--        rm = zero;
-+        tcg_gen_movi_i32(rm, 0);
-     } else {
--        rm = load_reg(s, a->rm);
-+        load_reg_var(s, rm, a->rm);
-     }
- 
-     switch (a->op) {
-@@ -8846,7 +8847,7 @@ static bool trans_CSEL(DisasContext *s, arg_CSEL *a)
-     }
- 
-     arm_test_cc(&c, a->fcond);
--    tcg_gen_movcond_i32(c.cond, rn, c.value, zero, rn, rm);
-+    tcg_gen_movcond_i32(c.cond, rn, c.value, tcg_constant_i32(0), rn, rm);
- 
-     store_reg(s, a->rd, rn);
-     return true;
--- 
-2.34.1
+> 
+> Thanks,
+> Sunil
+> 
 

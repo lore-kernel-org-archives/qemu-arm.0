@@ -1,152 +1,139 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1099990ejb;
-        Thu, 27 Jul 2023 00:39:54 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlE0WZN5nmMghWE+ak4IahA/9lPo3JoEoE1bj+hiPlvzji6iUAqjuHJw0BgmoKW+/gNM+5xD
-X-Received: by 2002:a05:620a:c44:b0:767:26ad:bb19 with SMTP id u4-20020a05620a0c4400b0076726adbb19mr5376430qki.66.1690443593842;
-        Thu, 27 Jul 2023 00:39:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690443593; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1100020ejb;
+        Thu, 27 Jul 2023 00:39:57 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGVPgTCYAL0khoUpkgKgHiXinJYN4WCB+Ejb9PYl4+Spz1XTcl+1MEAcFTREAZ8cVMSNAZ9
+X-Received: by 2002:a05:6a20:7348:b0:134:eee2:f9ce with SMTP id v8-20020a056a20734800b00134eee2f9cemr4458223pzc.11.1690443597026;
+        Thu, 27 Jul 2023 00:39:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690443597; cv=none;
         d=google.com; s=arc-20160816;
-        b=r4IWFDDOn8zceLB3ZX+CZNoWFXnW8/i4n6K50ndEjFdiNRoYsOqj/OvHlEgR74i28n
-         yQ1mCPe3Zu75hU7V2yh9OosMn36pZrTQc5gj3gHpi4u5t7TAtE4mMd+Ps4KagHqjhbqh
-         Y5oNHaUcSvawnhTD4ICMYkDdetkR3mi+Q6gS705EqMLJWXlKIZ4TZo/Hnk9mb+LcRPMe
-         j3xLegQux3Sx5Zt/e93yz6nJz6rZHUJ7zgZxNI6ngtS2z55W1//PC/8Xh+K3Ttxkas36
-         b+MqmWysd/9QrqDOnmbH6enCSdBTq+cQ9YbPP4GqMdwWI7vnnJY5BKC5bNwBj3ZbnyDU
-         EqrA==
+        b=uK9YKAWIr+e8BqD/Qh7FpoGkAQslPwWIWkIN82wMnWtoVZ2KwO1QvpVCx8cpB6if/Y
+         fZ7MjYTPkNuAvgpyQLdg+N1PcoSTHTn73zCmtlEr3KvL6ZmkzaG1yaE55IC8w4raW/2w
+         wkDMuYyEcQ69Lc0Jsec3IA5/deaEhYUkB558AhA7fYW0az/hpZCHZu2d1fecd+ipj4Fo
+         A1M2nN26iiPqNdBVJ71Ri7ZEedZ0NvdLyx1yJEshURlzkzMLfa1C56P/6rDA/TuurrLK
+         5PktbjG2vHh4HZmd8kNR1dPIuppSrRqfh6sUM9ROhdmsgIdl4pmJHZs6o313Eg7BiY+K
+         DS2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=8W/2glyFNghlOR8aLoJh4rtbBTz1uiLofQu+GK6+ib0=;
-        fh=TB1t5ja7BMrYhloVWc1ZmgGNYHWmYNN278P/MUv8RR4=;
-        b=Kcr+br9lEc4tvwITjqalCCsBiHE+RD3mK/FSF5SjB+88t/KnWP4ohcHQwXZE8+dPA7
-         CL4CPQQs3EbLHTHnRaaD4EgDKPAoqZwi5GAEqQHIClkuqO2nmLw0PjPyiP5TVKTq4B3L
-         HQL7LL2yVpWlTrw/Qa70QAMrdaf1zgBn0mMxHngU3bZaoB3BgVhCByqAMZDfznQDJWpA
-         QFsid4ANo3lsapE4GsNdKsqUZULWcAJT1YupSqwkZv2R5TIzi2PlmJuX6WXvokLKwnvN
-         Ac7729reH6Ib1gd9rp1fCg8VjQEx//NaKUYpeD67z/caWcY5JDp7fkddjF5FZ1sEALtx
-         leMQ==
+        h=list-id:precedence:to:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:from:dkim-signature;
+        bh=XNojA4zMzd30qUIFHT5IxiLGg6u2c9ZAs/+vQaBH6fU=;
+        fh=mJ5OFdie2M3iVyZL5TpDz8DAfFZC9/SE7DnU60sOZu0=;
+        b=al8hmmQqCIv7izlZqjV0S5Ev3JGt4eBTCQm8ZwUiSnq31OoUe6BPc0KuVy5ytZViGM
+         fMaxaCz8fD2VfnlTznIydA+soqXyTlJfausP4OrLLYTMmLdVTbNTujFONS4DTmu/t0WE
+         n0TgmCqSyKTCaBlsd4P/m/n0GA3f7Dr+tBZzJj7hWR31RM/thaIZ9g87a5nwxnMKXU/0
+         U7zaPGoh1tu41HHaciESHSpKK6NYG7LypM8dkoANLHybDBY6qlQx0ZcmMh+EyESlIV1e
+         v7sVXDX8gyKJd7r7ze1fVfY/E+9KDrU/EcL1UxHQhU7G/J3QpBvy1u4iTTRMMGJY9JFx
+         uxSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=TwyLkq7V;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d16-20020a05620a241000b00767f1da20c3si379140qkn.500.2023.07.27.00.39.53
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jul 2023 00:39:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=LhjJaoFI;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id e24-20020a635458000000b00553854417e2si848058pgm.244.2023.07.27.00.39.56;
+        Thu, 27 Jul 2023 00:39:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=TwyLkq7V;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qOvTc-0005H3-8B; Thu, 27 Jul 2023 03:32:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qOvTZ-0005FS-TF
- for qemu-devel@nongnu.org; Thu, 27 Jul 2023 03:31:57 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qOvTY-0003op-Ip
- for qemu-devel@nongnu.org; Thu, 27 Jul 2023 03:31:57 -0400
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-686ea67195dso506500b3a.2
- for <qemu-devel@nongnu.org>; Thu, 27 Jul 2023 00:31:56 -0700 (PDT)
+       dkim=fail header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=LhjJaoFI;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S232374AbjG0Hjz (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Thu, 27 Jul 2023 03:39:55 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47496 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S230058AbjG0Hjj (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 27 Jul 2023 03:39:39 -0400
+Received: from mail-pf1-x42a.google.com (mail-pf1-x42a.google.com [IPv6:2607:f8b0:4864:20::42a])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 347959C
+        for <kvm@vger.kernel.org>; Thu, 27 Jul 2023 00:31:45 -0700 (PDT)
+Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-686bc261111so524142b3a.3
+        for <kvm@vger.kernel.org>; Thu, 27 Jul 2023 00:31:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690443115; x=1691047915;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=8W/2glyFNghlOR8aLoJh4rtbBTz1uiLofQu+GK6+ib0=;
- b=TwyLkq7VkQVku7UEGEJGvOxpiLGKqGNn2Z8k57YpSS6ZkWHfSRznN+VshcyamJEJqB
- zMw97jUDWAXtbrKFdxDdZwZlTw6jMTuKDc69kpYGQ0SwXjls2dSoY2OhR7sH8bIrD4ut
- G0xxv4KpICYR9eGhbLk7VBV+IuNi87eZcDIuQc2fsSeQHyMLWy9i4ZRqjfD2vLbCVkaS
- gH2rgu9ptJReOtFpj98D23kSv1ELspNKBm2SZkYIDSxsUsfqx7DVi5tLI2e5vuNCLyJ3
- 6YmLAZvRauKh3Zadas84zdgYM3WKD/wsk1snqp9KY3I0KaeJVZx2HrbjHlfEjSasJF89
- 9OSQ==
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690443104; x=1691047904;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=XNojA4zMzd30qUIFHT5IxiLGg6u2c9ZAs/+vQaBH6fU=;
+        b=LhjJaoFIO3msBLNQYeOszTGi+0keE5rszVhxOFnadyd7/NHtSVHXCLuhR4RKxJUJnI
+         5TtMvuKGi/nZLKJKkiXtlNS7euW6Ort7K+6sPSwUIg98N9b0Im+psTxghbHI9ND0hIAi
+         OaOjQO4p79GnpVwb//4G/AKxayCkpCudZkY1Kx2ZhWTjWFEpIHZtTb1TofH4ln59wiir
+         GlQDunLexjW1adklQSpJmWkopkq9XfwGesFVuKbKhKtNENy11UirUdUGylQZ68Bqr+5W
+         aaH05c3B63s1qqdzQ1MJlP+vTeaZqhyLan5L2++ke3wwrnAS4rshT49GM8LMtWxtL7Hd
+         PKQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690443115; x=1691047915;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=8W/2glyFNghlOR8aLoJh4rtbBTz1uiLofQu+GK6+ib0=;
- b=dd9kpRXjKS1ok3SjWgDfyRHgaK69NWeVqVX6J+aPY0qb9PRdgBVkeS9htTJpNdFV+X
- PpI2ihw9D07glWLXWUET1APzEFl0sis/MtJW1bASRcBzxB3YnCakX0bzYzEYZWEzbuq4
- xUwVPW+dek2L9x9apCPd92FpasL5MxgxeGo31Y6tlVlKyLBUewDut9sQ04MVlCxIuXT5
- ATBCokeqDnWVB49+hZP1zL9Wj+V2wGMJCrC+59QVFLgltUZwB5xu3j9/rT8g18tnwqbz
- +aySOwjweZiNih4zxNcnbvIoZIPgNiMKgTAJuQ2S+OovKLVdackfPm50aeeUTbODsSn9
- tt4w==
-X-Gm-Message-State: ABy/qLbzVbPKEh/KVfbBh1iWtdX1ziE8H0cMzlk6D4jQtv8IqPWMs3F6
- lW2OcfWyJTKwv4g/KhbLenKloAkHNGoeUmES4bs=
-X-Received: by 2002:a05:6a00:1515:b0:668:74e9:8eea with SMTP id
- q21-20020a056a00151500b0066874e98eeamr5088101pfu.33.1690443115301; 
- Thu, 27 Jul 2023 00:31:55 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1690443104; x=1691047904;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XNojA4zMzd30qUIFHT5IxiLGg6u2c9ZAs/+vQaBH6fU=;
+        b=ieZVSNq/IFskLIzzeBo3qk87Ptj4UtFz02AnEatC3SfyzNLOXwleiIVjynrMDiWfoe
+         Dyt9b+xw6LknwvbI200uAJCxCkwDxTjOhLRK+wO7Q8EDqvJvoHto01M1/GkEetv4a2jb
+         OmT5HfKazgtyswPmuQf6sc8cbAQKQaAzcshyrBBljsH14aQWy5ayoHtjowbCbFYCu9al
+         iNzy0AiMrQGL2cvZjm9lU/aEqqpO2Y+5zml2yDCxjNgXnfsgy8AmJjdXaHfAFxbBaFAu
+         0zd8J8i6oqwhSZ1JkUaEnBAgxkMS41Wt8mfn2nSVNs66b5eq8TwCrUiUmX7c6d3Eta47
+         f8hw==
+X-Gm-Message-State: ABy/qLbxg26YDY2/TTX0q+OuK27rxEeXwF2GvNZis+h9b5cNm332Au2f
+        wQzRnsAlBA0saJid4V9fltVi8Q==
+X-Received: by 2002:a05:6a00:808:b0:686:b94a:3879 with SMTP id m8-20020a056a00080800b00686b94a3879mr4859980pfk.18.1690443104613;
+        Thu, 27 Jul 2023 00:31:44 -0700 (PDT)
 Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
- by smtp.gmail.com with ESMTPSA id
- d9-20020aa78689000000b0064fa2fdfa9esm802002pfo.81.2023.07.27.00.31.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jul 2023 00:31:55 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v5 5/6] accel/kvm: Free as when an error occurred
-Date: Thu, 27 Jul 2023 16:31:30 +0900
-Message-ID: <20230727073134.134102-6-akihiko.odaki@daynix.com>
+        by smtp.gmail.com with ESMTPSA id d9-20020aa78689000000b0064fa2fdfa9esm802002pfo.81.2023.07.27.00.31.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Jul 2023 00:31:44 -0700 (PDT)
+From:   Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH v5 0/6] accel/kvm: Specify default IPA size for arm64
+Date:   Thu, 27 Jul 2023 16:31:25 +0900
+Message-ID: <20230727073134.134102-1-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230727073134.134102-1-akihiko.odaki@daynix.com>
-References: <20230727073134.134102-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::434;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x434.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Zr5Nksfib9SW
+X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE,
+        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+To:     unlisted-recipients:; (no To-header on input)
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: Zs9tL3wjonSx
 
-An error may occur after s->as is allocated, for example while
-determining KVM type.
+Some Arm systems such as Apple Silicon Macs have IPA size smaller than the
+default used by KVM. Introduce our own default IPA size that fits on such a
+system.
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- accel/kvm/kvm-all.c | 1 +
- 1 file changed, 1 insertion(+)
+When reviewing this series, Philippe Mathieu-Daudé found the error handling
+around KVM type decision logic is flawed so I added a few patches for fixing
+the error handling path.
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 94a62efa3c..4591669d78 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2765,6 +2765,7 @@ err:
-     if (s->fd != -1) {
-         close(s->fd);
-     }
-+    g_free(s->as);
-     g_free(s->memory_listener.slots);
- 
-     return ret;
+V4 -> V5: Fixed KVM type error handling
+V3 -> V4: Removed an inclusion of kvm_mips.h that is no longer needed.
+V2 -> V3: Changed to use the maximum IPA size as the default.
+V1 -> V2: Introduced an arch hook
+
+Akihiko Odaki (6):
+  kvm: Introduce kvm_arch_get_default_type hook
+  accel/kvm: Specify default IPA size for arm64
+  mips: Report an error when KVM_VM_MIPS_VZ is unavailable
+  accel/kvm: Use negative KVM type for error propagation
+  accel/kvm: Free as when an error occurred
+  accel/kvm: Make kvm_dirty_ring_reaper_init() void
+
+ include/sysemu/kvm.h     |  2 ++
+ target/mips/kvm_mips.h   |  9 ---------
+ accel/kvm/kvm-all.c      | 19 +++++++++++--------
+ hw/arm/virt.c            |  2 +-
+ hw/mips/loongson3_virt.c |  2 --
+ hw/ppc/spapr.c           |  2 +-
+ target/arm/kvm.c         |  7 +++++++
+ target/i386/kvm/kvm.c    |  5 +++++
+ target/mips/kvm.c        |  3 ++-
+ target/ppc/kvm.c         |  5 +++++
+ target/riscv/kvm.c       |  5 +++++
+ target/s390x/kvm/kvm.c   |  5 +++++
+ 12 files changed, 44 insertions(+), 22 deletions(-)
+
 -- 
 2.41.0
-

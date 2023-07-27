@@ -1,134 +1,234 @@
-Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1301385ejb;
-        Thu, 27 Jul 2023 06:46:23 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGgK1vZ2ppNOGwZcb58a3PnPYBfOp1H9uv0VuZlHINcnm3UPGse4HQ7NaahtCCwk2l9P0AF
-X-Received: by 2002:ac8:7d03:0:b0:403:c667:e691 with SMTP id g3-20020ac87d03000000b00403c667e691mr24298qtb.22.1690465583482;
-        Thu, 27 Jul 2023 06:46:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690465583; cv=none;
+Received: by 2002:a17:906:2484:b0:98d:b2f5:1316 with SMTP id e4csp1337024ejb;
+        Thu, 27 Jul 2023 07:36:26 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFY9gQsYySLcpiT3VzhMBzogtebmkcMuaczUMLxdp7kxLcql5F5Kfms5MJ861xCQDddiCeu
+X-Received: by 2002:a05:620a:1a28:b0:767:dfcb:7094 with SMTP id bk40-20020a05620a1a2800b00767dfcb7094mr171724qkb.52.1690468586136;
+        Thu, 27 Jul 2023 07:36:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690468586; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZEqgOHZfhUilcwTw346lpT8Mb1EVtpUIl1tqO5CtpQklXZe1VWoIlFeq84gvR1MSAV
-         rgTuuOS7SEOS9iNA5BkyZCzDIMbrsQ7QBA1lv0f+XKytVRs0/JB78bHPlGIJgzX2cBzB
-         10lMU6B9g4tNNpIrG6GmHSmufTHFiVOj+RzabiMGSXKXkQ0ggRSpRy/W8VmtE1eR+Bbd
-         zaeW6zp2mBlEoo1OeCFTOolpNBnVW0nrjAFykd6+rxba1BH7mV7ncICzZwPWRJUROH8e
-         caNqTfGmDkiaO0t4cN/LxCZzXNC4pIytYJOfMRJefxYUzfEI9jdv1MUvK+5yhSCTwzQF
-         B4+Q==
+        b=lOcOgVKP1eL1jFvUQ2oY6GCpxNgwQhaGeRE7ilH1QLL+rnR+K3nd4F1hpnKZpZ82TX
+         vgD2Mi+68HMVD5/UNJgbhH1lb44zzw5qH9w6EznGa/fRdt9fV5PWyJNsn9OSpps2Pb7G
+         OxHngaFskSkr9XWq3LruNuRWIQKU9txuhGYGjYDqy/hWQfBqugO+fLxDaKr3bxL2o5w3
+         2N6Syud4p7oyo44SW4LPzBtwPLrHYd0w5IkhAqhtpZa7bEVyz9waBvsWsssXCMtolazm
+         EDNSOTd+FHza4+a1Jej4sJqXdXRND9w8ZTJ1xklDaj51Ei3FDZ06F/6Y8Ae7Y6xK94Zd
+         hd8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=y4TqWaihVPWhz2w3wfclf52xN4o5dm6ZXkSKe4EH2xQ=;
-        fh=fQSWUkMuRxigFAyrwqJDZVDXvGgDP9IGeNAJ2g03mw8=;
-        b=FDa6W53v/xbugDqV/mpWBGKuOHtnsQ/2pPTZ8TZoirQ/Qkue60etsdIbfdCYM7Ui4o
-         1j/wOV0fLmWOSQP+jLOJM+d53tCHE2PPY9j3mp/sQm9LSHWakvHAPhqgJn1blE8+Gmaj
-         w6enI3n5VSFLKhSaBQ3lqKZyfiIJqohYff7Tq2SFN5E7e7O7Czxb3lIGrS1HEr8YpWWy
-         D2SaPpErgWTYr+AEIK7Kq+8o1ICUTsA0Lavp52Eutjcw/6u8TAfprhbckTZWCNkMnhuZ
-         QWprDjhRSUbdlNT8Dm8RyPbbWuJ+nxFccPT/3Y1lOM7YfVzkMz3NC9aI9BR0j7tkfmhX
-         KoGg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=mnll3YnzAhuEV+dKxBZko/tIefx3NBcNIu5X1R+g1OY=;
+        fh=1aVn5a25rVKr0Rj0LasSZgOIvObbMro9VZPHwnqv/hc=;
+        b=m/DgFaMPFaAXxiw4sDdGvJ4MFsPKhDh+vhOudh84s5uPSJICYmT66czDl5u+gUTNCH
+         Ghas+8yQ9ewYQMQSuBIUVGXCVf+BQ+GJK77VKKEM8ADUWstCOpe2r9embylpsZRwLM7e
+         t6LU70qjgBHuJ+jVV8rJnm35lEdy7zAUKvC2WLU1ZyvCGCseYN8fBUIUjvN+73jc9DfS
+         P4EwFLKfmI95mv4RT17lVxbXh9LhT6LxPglhOFHoPGGOZ0tx4ERkM/+8f0eNbbnN5lE8
+         F0jCHBUlp1TEPPoJd9K8IbSK7h4RQFkh5CnajN4vddEmFP133dFgrw1ebld4LcTFUTSD
+         FGcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WpyLVoKW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fx0lJ8kW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y18-20020a05622a005200b00403a935d1d7si776921qtw.412.2023.07.27.06.46.23
+        by mx.google.com with ESMTPS id m185-20020a3758c2000000b007655a4d2ab0si788709qkb.85.2023.07.27.07.36.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jul 2023 06:46:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Jul 2023 07:36:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WpyLVoKW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fx0lJ8kW;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qP0mL-00034j-7j; Thu, 27 Jul 2023 09:11:41 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qP1y4-0006ZZ-GT; Thu, 27 Jul 2023 10:27:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qP0mD-00033c-Ez
- for qemu-arm@nongnu.org; Thu, 27 Jul 2023 09:11:35 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qP1y0-0006Sk-6f
+ for qemu-devel@nongnu.org; Thu, 27 Jul 2023 10:27:48 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qP0m8-0006MV-OY
- for qemu-arm@nongnu.org; Thu, 27 Jul 2023 09:11:33 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-52256241c66so1931226a12.1
- for <qemu-arm@nongnu.org>; Thu, 27 Jul 2023 06:11:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qP1xx-00068c-IL
+ for qemu-devel@nongnu.org; Thu, 27 Jul 2023 10:27:47 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-6862842a028so789025b3a.0
+ for <qemu-devel@nongnu.org>; Thu, 27 Jul 2023 07:27:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1690463484; x=1691068284;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=y4TqWaihVPWhz2w3wfclf52xN4o5dm6ZXkSKe4EH2xQ=;
- b=WpyLVoKW388OiH+eH/RfP1Xke8aVYlpQ+WbxA/vN7Jzth+IwYdEZixRMZzZVYBl7Ta
- 2f1LTUi0EfogBm8MUMiB3OHsIEk+WPXzieHC9x9rdhBv5ocuZRQpdOOszIqTtf+sHQYO
- JfdQ/Ya1vCcN9oZOiZcBRWVvvC9aJC13TO2ktPF25izYSc0sHwXX05IyExpslsAAM/ov
- IlnTVPI3Qt/kCZGc4rJ6fcRLMpUp2AuiUM61PHq8O8pWiBycIpoRFmqDzfM9QoZIikbU
- bEnfgRUHbfHMvgQDNwjm7A5L1Potx9Zzjhk0z2Qz0DMJs5SQ4ohy7Ssz21ziHBh7KKB6
- bV+w==
+ d=linaro.org; s=google; t=1690468064; x=1691072864;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mnll3YnzAhuEV+dKxBZko/tIefx3NBcNIu5X1R+g1OY=;
+ b=fx0lJ8kWrRDT0a4PFHouBRLMX3UqQ5H1OLkkszpedbZr73CGkrvYR4OMUONdQlmCPE
+ fNZT5N9WZT370pXtPQJfUAvOaF832YyWYy9Xj/911kDsm2AvWf06/r+G56dFfsWU8Ilr
+ nb/Pvi5z4rTb8BlqXLHMb+F2Mrsbcabo+cq1TTw9uzqcU0peg2kqsfPKjzWcroyZMX/6
+ Gnj0oC85os51jJoBRGM0ywdpKojG92hs3/pB/fz6u2BVvbF9gTMLjppjZrR+/SY7Cdw3
+ kfTY5eJskNrlcJkfxD4GqfmGFlX2+ltpYgipamOooBMFoLC2YbJI/EDtn/gDBZpqsQss
+ xQxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690463484; x=1691068284;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=y4TqWaihVPWhz2w3wfclf52xN4o5dm6ZXkSKe4EH2xQ=;
- b=b4g13svJhMHtRltmcNTucU8UVsZKO04LWkjS7mTCHMsF1lj87Zp06yAGmNkVkKVA2f
- mg0lktIgDezF4+iGFN9lCOpGpFgFo17xE2GTgaJZLZr5KO3icAeQVfHiAbh4CZkvjWOZ
- IjEjyK2KveHzitBtxonctoImPmN+tn8OxmaK6mMJtCmPCOppHzJ0YoJTzEspylZhxNgQ
- 5fj9zhBazm310Z7y1oxTZ/E1EbF96vBxgST03blAftPTaD8XCScsrriDHk1aHE+o3WuU
- un+zIYgnbXCNZ15N8it6uIr9X9v6grmYGmod+hNDAC4yXIk9vUqriZ2HQxEFSokYDBzD
- mAAg==
-X-Gm-Message-State: ABy/qLYza7bAAU/5hkTZOr1c2URucOh2CxIIaNBQQDSrW9IfFU+umdoQ
- nKypO0p8qBXldQZe97XDcNuVO79HOPk4vlS41amEQA==
-X-Received: by 2002:a05:6402:2690:b0:51e:5bd5:fe7e with SMTP id
- w16-20020a056402269000b0051e5bd5fe7emr2301857edd.17.1690463484487; Thu, 27
- Jul 2023 06:11:24 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1690468064; x=1691072864;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mnll3YnzAhuEV+dKxBZko/tIefx3NBcNIu5X1R+g1OY=;
+ b=ga4LbeOMRmfuJ9mk9mc4kOmJQdRePDtq22OuNdgTi5cAG/5zlXB0MBysavdgbfd9va
+ MM5Sy+c4d5RsdD17EUNeYk7OBn4Ks2siWA7dmgy/733PG3pDVC7QNewx04PPIkjhVLwh
+ TBIdIy0c/VPhARr1DLTxcqTsDw90kkXpkO2TqehmC/I229pMaU3Jx8XhMNm6f3/0u5iF
+ byaWT5RsBe9otvwbswiXuOVhO9ZRU8x3M6ADWPaQ9ABaLYVXMbWmqeSzFJGYiCchGGzB
+ 7gcrH5PoSc1E/cr42mo4n1AX2pdVfz934eUWVcQl6YwC063poa3XU55MWjTzv6dTTZF1
+ 2mMA==
+X-Gm-Message-State: ABy/qLZ9d04IjGcI8BJooz8S1ltPmjCXH/cZhEyK+Su55JwOySmNM6gW
+ l36at/N08UrudKm6f3LbPupOKg==
+X-Received: by 2002:a05:6a00:1882:b0:668:8596:752f with SMTP id
+ x2-20020a056a00188200b006688596752fmr5817168pfh.4.1690468063963; 
+ Thu, 27 Jul 2023 07:27:43 -0700 (PDT)
+Received: from ?IPV6:2602:ae:1598:4c01:3178:82f3:53ff:b9bb?
+ ([2602:ae:1598:4c01:3178:82f3:53ff:b9bb])
+ by smtp.gmail.com with ESMTPSA id
+ 5-20020a630105000000b0056353c0a03esm1598128pgb.37.2023.07.27.07.27.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 27 Jul 2023 07:27:43 -0700 (PDT)
+Message-ID: <af279f3d-35b9-e782-8d55-98cd6b3ceb80@linaro.org>
+Date: Thu, 27 Jul 2023 07:27:40 -0700
 MIME-Version: 1.0
-References: <20230726165416.309624-1-richard.henderson@linaro.org>
-In-Reply-To: <20230726165416.309624-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Jul 2023 14:11:13 +0100
-Message-ID: <CAFEAcA9f5h0wcq8==PMwcbt-jCKDxfFmOyysGiMaxy=WsSZYyQ@mail.gmail.com>
-Subject: Re: [PATCH for-8.1] target/arm: Fix MemOp for STGP
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v2 3/8] machine: Print supported CPU models instead of
+ typenames
+Content-Language: en-US
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
+ b.galvani@gmail.com, strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com,
+ kfting@nuvoton.com, wuhaotsh@google.com, nieklinnenbank@gmail.com,
+ rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
+ wangyanan55@huawei.com, laurent@vivier.eu, vijai@behindbytes.com,
+ palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
+ liweiwei@iscas.ac.cn, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, imammedo@redhat.com, cohuck@redhat.com,
+ pbonzini@redhat.com, shan.gavin@gmail.com
+References: <20230726003205.1599788-1-gshan@redhat.com>
+ <20230726003205.1599788-4-gshan@redhat.com>
+ <24e54bac-9149-20da-e4cf-5829a6dcb174@linaro.org>
+ <0454c1ad-314c-3df6-d6e9-1a05cb4c4050@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <0454c1ad-314c-3df6-d6e9-1a05cb4c4050@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Wjrk4OvbQscG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NQMaonVR6ILt
 
-On Wed, 26 Jul 2023 at 19:34, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> When converting to decodetree, the code to rebuild mop for the pair
-> only made it into trans_STP and not into trans_STGP.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1790
-> Fixes: 8c212eb6594 ("target/arm: Convert load/store-pair to decodetree")
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
+On 7/26/23 22:16, Gavin Shan wrote:
+> 
+> On 7/27/23 09:08, Richard Henderson wrote:
+>> On 7/25/23 17:32, Gavin Shan wrote:
+>>> -static const char *q800_machine_valid_cpu_types[] = {
+>>> +static const char * const q800_machine_valid_cpu_types[] = {
+>>>       M68K_CPU_TYPE_NAME("m68040"),
+>>>       NULL
+>>>   };
+>>> +static const char * const q800_machine_valid_cpu_models[] = {
+>>> +    "m68040",
+>>> +    NULL
+>>> +};
+>>
+>> I really don't like this replication.
+>>
+> 
+> Right, it's going to be lots of replications, but gives much flexibility.
+> There are 21 targets and we don't have fixed pattern for the mapping between
+> CPU model name and CPU typename. I'm summarizing the used patterns like below.
+> 
+>    1 All CPU model names are mappinged to fixed CPU typename;
+>    2 CPU model name is same to CPU typename;
+>    3 CPU model name is alias to CPU typename;
+>    4 CPU model name is prefix of CPU typename;
+> 
+>    Target         Categories    suffix-of-CPU-typename
+>    -------------------------------------------------------
+>    alpha          -234          -alpha-cpu
+>    arm            ---4          -arm-cpu
+>    avr            -2--
+>    cris           --34          -cris-cpu
+>    hexagon        ---4          -hexagon-cpu
+>    hppa           1---
+>    i386           ---4          -i386-cpu
+>    loongarch      -2-4          -loongarch-cpu
+>    m68k           ---4          -m68k-cpu
+>    microblaze     1---
+>    mips           ---4          -mips64-cpu  -mips-cpu
+>    nios2          1---
+>    openrisc       ---4          -or1k-cpu
+>    ppc            --34          -powerpc64-cpu  -powerpc-cpu
+>    riscv          ---4          -riscv-cpu
+>    rx             -2-4          -rx-cpu
+>    s390x          ---4          -s390x-cpu
+>    sh4            --34          -superh-cpu
+>    sparc          -2--
+>    tricore        ---4          -tricore-cpu
+>    xtensa         ---4          -xtensa-cpu
 
-Applied to target-arm.next, thanks.
+That is unfortunate, however...
 
--- PMM
+
+> There are several options as below. Please let me know which one or something
+> else is the best.
+> 
+> (a) Keep what we have and use mc->valid_{cpu_types, cpu_models}[] to track
+> the valid CPU typenames and CPU model names.
+> 
+> (b) Introduce CPUClass::model_name_by_typename(). Every target has their own
+> implementation to convert CPU typename to CPU model name. The CPU model name
+> is parsed from mc->valid_cpu_types[i].
+> 
+>      char *CPUClass::model_by_typename(const char *typename);
+> 
+> (c) As we discussed before, use mc->valid_cpu_type_suffix and mc->valid_cpu_models
+> because the CPU type check is currently needed by target arm/m68k/riscv where we
+> do have fixed pattern to convert CPU model names to CPU typenames. The CPU typename
+> is comprised of CPU model name and suffix. However, it won't be working when the CPU
+> type check is required by other target where we have patterns other than this.
+
+(d) Merge the two arrays together and use macro expansion, e.g.
+
+typedef struct {
+     const char *name;
+     const char *type;
+} Something;
+
+#define ARM_SOMETHING(x)  { x, ARM_CPU_TYPE_NAME(x) }
+
+static const Something valid[] = {
+     ARM_SOMETHING("cortex-a53"),
+     { NULL, NULL }
+};
+
+where Something ought to be better named.
+
+
+r~

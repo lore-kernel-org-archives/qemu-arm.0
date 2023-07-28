@@ -1,128 +1,138 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp46382ejb;
-        Thu, 27 Jul 2023 16:18:31 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEtOUi9MROX1KLNSi53veX7m59qgm3A8DT1uuz/IeggIbxtWHTptUaJzlpPBYW7pxfpZiPz
-X-Received: by 2002:a05:620a:1aa7:b0:767:ea44:daf9 with SMTP id bl39-20020a05620a1aa700b00767ea44daf9mr2117122qkb.31.1690499911586;
-        Thu, 27 Jul 2023 16:18:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690499911; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp334578ejb;
+        Fri, 28 Jul 2023 02:50:23 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHqWFhZUHh7xA7FTCshd1f6x4mWuw1GNRt8YsOqfiDxlNnCYwKrFjIZL6P/3aJNfzPrY2jW
+X-Received: by 2002:a05:620a:4503:b0:767:f1d8:64e1 with SMTP id t3-20020a05620a450300b00767f1d864e1mr2207820qkp.67.1690537823181;
+        Fri, 28 Jul 2023 02:50:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690537823; cv=none;
         d=google.com; s=arc-20160816;
-        b=a9EKV+iH8pCL3AptLN6x4dc31DLHLS06F0R8ZtpdzPfRqgKaETcWCKLlB3HGf7rvUm
-         SWUcygWS1trKHahIwd/L/8ByeBogYR79BJxe/Z+j8AreGywj/vksanfIbI2Ibj1Ixg03
-         gcppKkEp3IxgX0GOr+3mJWROTNRGpzB0ui1j8panYldc+om97dGkZJVhY/GZvRTCk0fF
-         WqYmrj7DT917F6li4jbfey2bui1gVW1n0tYTSLXJJzotwdaAdGNC+kdPE/4Kfa/Kj3N7
-         N5k+swmcO2j7q+HG8ge4KfsxpII+gw9ku1ektDQLxneAYnjVrTE6AjqLCTWXUKwlm0MD
-         E9og==
+        b=DOeFt4S684ZlqJuFfRtrwYP8XLOQYr0f6MctZ/R2WnrOw3reMzNOCM5i1JJo0mmR9j
+         ppd8fWqcVIRbgydXlLJLVdUHRvW+8hd+T/eZ2VXzJvquNQNk81Rp/YPOBkYv4pVIgvKm
+         Fp0GxdhZTYy2l/uEqudFl2A7aj7DNJGb3q3PBtCAStnwcKXTNRNTGAedQ0S8aHzrPGdx
+         bq4T4xYZuIjQobeHzoodxNPgNaGO0RlTc+IvfMwMI2ma3LR/NmKLNvh9x4q5osw7mj2o
+         bbcgP09nSpK5XnEw9i67jsWtVRek9a9EiBtI1fB6d6ylVOez+G27PNHZFc7gWBECOySn
+         C/sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:feedback-id:references:in-reply-to:message-id:subject
-         :cc:from:to:dkim-signature:date;
-        bh=GwWlYL2UvwlOrUg5NFvCC/4Xk3RqRiNQvjX65p9oWzU=;
-        fh=uvGlSLfcSt9vnSvrMWc6y0Q6mWiTDHJnOxMsFuBeqTg=;
-        b=LSPG+Ud4s4Epf3/bSsGQ/BUjU1ABwb27FxDguzi785HvitCbGfoC1oeqFyJaugzA7b
-         ONmG9HCplpgeCTU3dHcEBEYLkKSBKboEileIPvZoVr8EBsacTTxjx+trU1QSmy6l0Zec
-         8x7R8kY1vFJ/MKdYlqiEgV9Vvbpg0aAFeyDRaZZzmJwLHLbrZIBaw+ku4uiLpoXzzV54
-         IgNDbXZ9/ISPzAsVyAuYGlabb5CxEHcd3oQT7Amgv0F1clRSijCEm7ETWL2/bq++u+4L
-         wBOi6H1Tc2P9BaDOSaR87m6oHvV6ZcrYKofulAycj6qvu6T6FybHwMOT6lAgMgj19x/e
-         zpSw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=NyBEkovnm5CPZLyTe0slOz72n5iKc55o4cTAsnZkFns=;
+        fh=XBL7wuOnmyes3GPK3AEoJ+XBo7B8JI753uFIVICnU40=;
+        b=FMjMqpczMXeUCY17RWRqRl2oCMivhGrxWuANKePPOzYu96q70fAq4XUVlaRTH3YXAk
+         ORGq6TD/FcPFSa+2mDPqZnkziE9zrBpASJwuTw4L+enxuaIhzJeL2s7zIMu2LoEbL6U0
+         wx83qTfxpfbi7iII+fkFbEyiv6DizK9A3G8GjdC5MIWGmwZZuD8Q3CIq0078LAlz5OP9
+         aR5FQYTgCREYx1nlsMjgDk+vo53zfEO2U9DzOAaWswawJK7Wz3fsagtvRBbvyWXk+rbA
+         IIU0ZLDf2r3tT0HgNoApsyIiP5USc79G6lGAyhhcGXv3NcMYmkpZbTY5alID+FizKjVi
+         k5zQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=FNUlG1ao;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=laplante.io
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=mMtZnkyT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m10-20020a0c9d0a000000b00636725c42bdsi1499038qvf.192.2023.07.27.16.18.31
+        by mx.google.com with ESMTPS id w7-20020a05620a444700b0076c88e2b828si377876qkp.659.2023.07.28.02.50.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jul 2023 16:18:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 28 Jul 2023 02:50:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@laplante.io header.s=protonmail3 header.b=FNUlG1ao;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=laplante.io
+       dkim=pass header.i=@linaro.org header.s=google header.b=mMtZnkyT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qP9pU-0001cL-W3; Thu, 27 Jul 2023 18:51:33 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qPJp4-0004KE-QK; Fri, 28 Jul 2023 05:31:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chris@laplante.io>)
- id 1qP9pT-0001c4-0f; Thu, 27 Jul 2023 18:51:31 -0400
-Received: from mail-4323.proton.ch ([185.70.43.23])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chris@laplante.io>)
- id 1qP9pQ-0000OM-7s; Thu, 27 Jul 2023 18:51:30 -0400
-Date: Thu, 27 Jul 2023 22:51:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=laplante.io;
- s=protonmail3; t=1690498284; x=1690757484;
- bh=GwWlYL2UvwlOrUg5NFvCC/4Xk3RqRiNQvjX65p9oWzU=;
- h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
- Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
- Message-ID:BIMI-Selector;
- b=FNUlG1aoipHKGdQ224hIJ/ssoadO1F91Umh9ctxTDMVswdCHU2JXD6HDmwxo4HNmD
- hFaZvm/YMGT/U2th7rM8imA/l3T2kFX5IZdydd454bRMgraETP5QEZSDRWQfEQ9+CJ
- b2611Z03WK3X4w8dx1XUgPCMhUP+MYCswKn8H9K4EHDllQGR+yiELKx5CW3r/ot85q
- TCqATr4N9tHqTacPGThlbFyzIsN8oL0u5kPc+D2vCY5ZgipNFa/sqbzj6hro3Hzy6h
- SP0+6G7YlzKU5DKERe3jnFKEcTMnlikm4SQfGU5dCDz5b31/31cSqMlztoFEFlvkZF
- XQpI2jpwfj4tA==
-To: Peter Maydell <peter.maydell@linaro.org>
-From: Chris Laplante <chris@laplante.io>
-Cc: qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 0/6] Add nRF51 DETECT signal with test
-Message-ID: <yokIQT37oK_0HPVzoPJBD5moVrsM_9vvTfjLSATREN7NSvy794przKE2H0mtVB7Puff1nucD8N0Boa4tdRv8CcqFZHaM2FY6Wxty2-tkTjY=@laplante.io>
-In-Reply-To: <CAFEAcA_HWapg170-7yu2cZ-ePTe4PaX-tWyL7FJzENgig=dq5g@mail.gmail.com>
-References: <20230714232659.76434-1-chris@laplante.io>
- <CAFEAcA_gGia=ckyv4=XHNX4=VHJJ=rmVGXQbdnOAGv5h1rzLzw@mail.gmail.com>
- <uJ83qRpjm3C76JRjI4OOm2NAz3uF-RDUa2WL8sp3ftAzoH16KDfxZhwxsqxqxrHTfXHKkZZXy0JY6UUpq7nD0jfYEUtYM_K340O6E6BFwJY=@laplante.io>
- <CAFEAcA_HWapg170-7yu2cZ-ePTe4PaX-tWyL7FJzENgig=dq5g@mail.gmail.com>
-Feedback-ID: 43500449:user:proton
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qPJp2-0004I9-2y
+ for qemu-devel@nongnu.org; Fri, 28 Jul 2023 05:31:44 -0400
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qPJoz-00070P-H8
+ for qemu-devel@nongnu.org; Fri, 28 Jul 2023 05:31:43 -0400
+Received: by mail-lf1-x135.google.com with SMTP id
+ 2adb3069b0e04-4fe21e7f3d1so508754e87.3
+ for <qemu-devel@nongnu.org>; Fri, 28 Jul 2023 02:31:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1690536699; x=1691141499;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=NyBEkovnm5CPZLyTe0slOz72n5iKc55o4cTAsnZkFns=;
+ b=mMtZnkyTzkYvV7HKXSOb2g+8rd6cbHDEK2d/wRFZ5MMRHrMLp84qumuE9/0bGSrRZ9
+ zikNnR26PIv99uf6rC0lT/QRYdGIUuvdZiZUTAzCX1fcYAYs6mssVKHsEtIOSFDJo7/7
+ 7qGrJ9M2e8aZlcINYQYlNcDxJNCMSlDso4teuiJfbe9CC6J+yFvf3xq9KfGosabceO4Z
+ RK4+GHNw0P+VDYXU108rJXhCKr8aJidzy4nuOB+wG92fKTth1MwXn6T5fUiff2lXoSU+
+ FiCxOo+/OeaG88TAxM7Cl7FrExf1xfsedFxtBwvpogHZZ2cPFqo9NZBnzy71vXn1pssP
+ zQOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1690536699; x=1691141499;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=NyBEkovnm5CPZLyTe0slOz72n5iKc55o4cTAsnZkFns=;
+ b=LSrP8KM9rcCGLQhSoe4v17ghs+foQjUqi2Us4MHP5W7mFwEBlO53gAL60AiMZExjCp
+ 1b1qFRmREAAiuZX3lFy3VA0/bDaMrt1fMHeQVqWKV349+YB/K93BP8GJlU0JQkcZtzM2
+ DngSMB2cVSGOVTzArmoZT8niIi4wCp3RSHooGWl88MC0n+90ghdtW1j0CxkL90qvwz4L
+ iEnqgoZlj9IiWQMDnhIxGi+8RRCwpeonKauDAZ6mkh72tvKVLmRsrv2ga7hxraJVdfOd
+ fBBW4DqCRysTD6ozDXjehMcABFE3vNx75Ix1RR7vonpW19pW0w1Q1CVLzWfwnY37TZRD
+ 4lbA==
+X-Gm-Message-State: ABy/qLZSoGRhXvsm2R1sdGgLleejllOWWngn1qXoT5HBuUG8PyEGBGue
+ fvp1zj3cFHKTiKYRuv4dK7b1ouBypCjFRbHbfwAoEA==
+X-Received: by 2002:a05:6512:3e7:b0:4f8:587e:cbe0 with SMTP id
+ n7-20020a05651203e700b004f8587ecbe0mr1171494lfq.52.1690536699051; Fri, 28 Jul
+ 2023 02:31:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=185.70.43.23; envelope-from=chris@laplante.io;
- helo=mail-4323.proton.ch
+References: <20230726030450.757462-1-chris@laplante.io>
+ <20230726030450.757462-4-chris@laplante.io>
+ <CAFEAcA_K+Rzt8=0apiyO5tB3EwTRJMo8afKu3wkb2=jAsyLvmg@mail.gmail.com>
+ <EEsgXkv-Wn8WPzAg07I02DqCvpurTMkc4Vvb1kwHcAPi7jCW9gCRK7C0psplsefPiOL4ltRhb27ipChaC-nrnwOqNjXOjbtJCH_wwLh2_iA=@laplante.io>
+In-Reply-To: <EEsgXkv-Wn8WPzAg07I02DqCvpurTMkc4Vvb1kwHcAPi7jCW9gCRK7C0psplsefPiOL4ltRhb27ipChaC-nrnwOqNjXOjbtJCH_wwLh2_iA=@laplante.io>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 28 Jul 2023 10:31:28 +0100
+Message-ID: <CAFEAcA8GgY920QtMgj9EwjbrDey-GfiByOVGfgz-Aw7WABviYg@mail.gmail.com>
+Subject: Re: [PATCH v2 3/6] qtest: implement named interception of out-GPIO
+To: Chris Laplante <chris@laplante.io>
+Cc: qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uIpW4MPRSEEj
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dDrLDovi6kH8
 
-Hi Peter,
+On Thu, 27 Jul 2023 at 22:32, Chris Laplante <chris@laplante.io> wrote:
+>
+>
+> > (g_strcmp0() can handle the NULL case without having
+> > to special case it -- this is how qdev_get_named_gpio_list()
+> > finds entries in the ngl list.)
+> >
+> > Apologies for not noticing that on the first round of review.
+>
+> No worries - it makes the code much simpler anyway. Should we bother factoring out qtest_install_gpio_out_intercept still? It is only used in one place now, as before.
 
-> > 2. I also have some implementations for pieces of CLOCK, namely the HFC=
-LKSTART/HFCLKSTOP events and HFCLKSTARTED event. Should I include that in t=
-his patch series, or would you prefer it in a separate series? It is unrela=
-ted to DETECT and POWER.
->=20
->=20
-> If you think they're ready to go in, and it doesn't
-> make the series more than about 12-15 patches long,
-> you can put them on the end of the series. If the
-> patchset is starting to get a bit big then it might
-> be easier to get the POWER/DETECT parts reviewed
-> first.
+I'd keep the function, I think, since you've already written
+it. It's kind of usefully documenting of the intent.
 
-Unrelated question regarding the CLOCK module. Should I model the startup t=
-imes for the various crystal oscillators? Or should I just assume they star=
-t instantly for simplicity? External xtal startup time is 750-800 us. Inter=
-nal RC startup time is 4-5 us. I've already modeled the delay for the exter=
-nal xtal, but just wondering if its worth the extra code.
-
-Thanks,
-Chris
+-- PMM

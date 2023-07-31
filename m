@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2184892ejb;
-        Mon, 31 Jul 2023 06:45:53 -0700 (PDT)
-X-Received: by 2002:a05:6000:45:b0:317:5a99:a696 with SMTP id k5-20020a056000004500b003175a99a696mr7691895wrx.68.1690811153363;
-        Mon, 31 Jul 2023 06:45:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690811153; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2185447ejb;
+        Mon, 31 Jul 2023 06:46:50 -0700 (PDT)
+X-Received: by 2002:adf:f646:0:b0:314:423c:95a3 with SMTP id x6-20020adff646000000b00314423c95a3mr10449228wrp.9.1690811210741;
+        Mon, 31 Jul 2023 06:46:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690811210; cv=none;
         d=google.com; s=arc-20160816;
-        b=nwF84/dqT44SbOS2fKIJeaWEQKBtY/14tibNzEryEmYRNO/UWckKk5XE2B+W6MxPDT
-         6N2ELAyqYIR5lOufDg4mIAyJeVgiA94JKN/2pIHKl5pReTQ42D5zjPmVwyUa32rdt7QX
-         yAiiKNEG8FBJxWK6fF8MDPtV4C9oMK4LRWOpNfWMqh+ZvaRnadGOBTyN0Sr6XOMR1cPG
-         HSJd1+kdAPDDGVrjXTMTxCYhg/sUWo+3in3hnCTihUzTpLTa47ArakaTe82W0iBTMsVh
-         iiGptZY4moDHp/8LuWcNE3vq2i2inPQUIVVwBDer5OafXIFMQRIErMvRuXHh2jEsO3S1
-         hFxw==
+        b=XELYenCwL4y/eRUYEVR2sw1VwjM2Wr4nGnTAN1juheAdabrSLrF2TikQXW71JP19Qt
+         wh7f5eROsCFQslIqSdEl1oTZPEvohinn/lXrSch511p13gqes3k3HAqsT06gjq+rmb7k
+         biifi4wJVvtsa3C9Sg7P4RGT2gk5lQplXCCHU05wBno/PJSLDdTWSqCey7gU4MCUICUu
+         VOpqPfkQ5iItrvncSiAunn+zFHyY6ggRMVVVKiixEBIm9Qsq1LSBJGSHhl4vcy4tg/SI
+         PrZ0E9ijy7zPake4GEpvnkdB1SdakNI2C+GWwxdcxNg12SpnWKgAlWcwFKo56MF4/SSt
+         mPFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=nQ3reraINQ9aqfKUKaeldl1vlh1lyTB9JIH6X3eokKs=;
+        bh=dQ0I3HmeLwdb2CHpthEIho6U8+3evu764gXwyozJFJk=;
         fh=99M8M+8TD8TDQI1qe/4NtoIvOpLCBIu4dx5efhOEhl4=;
-        b=1DEuMYxa59b2mpBoENfQjWF8n7R0VYRCIHZs+q2+IB6IrHkiU5gU06bZo75CxCnEIw
-         c/uXI3IPLUVixichZpITezwaL2FFd7JGTvlI7H1TjfKXu2cMqnriV1vbcmH36VPyAEzE
-         5s5oJp2ebVFm99WBHqjN6cqa1a8uBrxIR9qmNH7d545/g88uPboAspe8jr1/WhytKcQp
-         yIvO/Jb3SutpM2ZFIdOhVIU1xS68v7DWpRYCHsEZlsCBqNU9xfig2zzXwtd8pK7fYOji
-         aHzBb3fCY9C30embFlpPsYJnjn2us77jDPZAnV1PuMUeEYSCUbhz0PGZQpxfD5Ckitvz
-         8uWQ==
+        b=FY4xAzKX+j25KKc+VAUZbTZM/oGXi0Lc9kxYrEzqD2vZrYFmArgNPGTnppi/Ft0Uvx
+         4aHIlT5Yyh1XzjUfbqHh0xH39Xo6rjhjvEWZmpzjLmRi6VvLXAEydbwHFQUc09p6C2GN
+         +mHXvchh+1ZLqpb4fJbS5K4nRa6mIW4TJdUtrQ7tXOpEX5N6OoIw9RpX9xbWAK+l5onF
+         yGPDR3ZYaNmF241pUvMPdz8oeQevM07D8KaoILodSV1uJNzFnD6mAo8eXk/pHwMw+bTK
+         Kp2PODfwM331a/5OOPiw4Ki125vtJaPGawsra/V4fwMlhads9/JKqIPWmw739bSupxWZ
+         /Vtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h9lwSGnc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cBIHIBOS;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v12-20020adfa1cc000000b00315a43d2715sor3496343wrv.9.2023.07.31.06.45.53
+        by mx.google.com with SMTPS id ck2-20020a5d5e82000000b00317618d0fffsor3213354wrb.2.2023.07.31.06.46.50
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 31 Jul 2023 06:45:53 -0700 (PDT)
+        Mon, 31 Jul 2023 06:46:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h9lwSGnc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cBIHIBOS;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690811153; x=1691415953;
+        d=linaro.org; s=google; t=1690811210; x=1691416010;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=nQ3reraINQ9aqfKUKaeldl1vlh1lyTB9JIH6X3eokKs=;
-        b=h9lwSGncjCHcAn12JKsftrabS4nfigm3sHN+MhY6qrIozYkfycqMaJwYAVGMULRLRl
-         hCIAFrlDlr5qOK4DzdtoxX0IeATQbS+bc7oRO3QQlbIQ3t+A010rT78zpKnbN1GqMa31
-         MTHUga9IVCtMFnLJBPb0UBswnRupNB6r8jzRRur33UAiwjLgczomFkN2LArkuSW2zie1
-         +VWN47jxXanCA0sq3gFMCibAmT8KqIJ6jxQT3dSmBE3a3FFc8zVhUORcIykbbs5tz9YQ
-         1VIlmgsjKh19oF8n7CP97ygzELRD5uY8v+I88WDDD9/1qnUdOM1f0lg1YWGbz62BF7fE
-         XwHQ==
+        bh=dQ0I3HmeLwdb2CHpthEIho6U8+3evu764gXwyozJFJk=;
+        b=cBIHIBOSLNObNV9EcCZWuJdAP3X/Yjf8MfPWDJ0xynWkhkAvOoCoeQ3ilBgYosgf0q
+         IqixA1oCTZtQ5WZRLM6Sp3mWD4Ei12jQRo8QEZ0zL050VpnJud2f2cbulxvqFnF2LcV4
+         TSxyxCWhp2FdO+Y9B37ehlsT6fvVD5nST6ZCzxWjKLAgCIRGzss02W+3Oi+8AjTpNeNk
+         iHkpi1tG/V4Yj1avZhXhTcXQJnFp1RGefp/CvNyJ6jEMJppRo9a/3bLdW1VSSIz2X4HU
+         TiiLHf+luOys2jBAoJnKgFfCD6u1aYYGd0E9UHSVdh9bwk5HWk7t/ywXn5GqUMjygicC
+         YLiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690811153; x=1691415953;
+        d=1e100.net; s=20221208; t=1690811210; x=1691416010;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nQ3reraINQ9aqfKUKaeldl1vlh1lyTB9JIH6X3eokKs=;
-        b=JCArcEz4aqDIamv9uSmlvjNAnB2KeRUwUdnWJ+JQljcAX3+mEUAYM7ZntHgEyQti8r
-         nllR54o3/sfwI5Avf4XttyImwaHI8Jj/vOOz4A51zYvh/bA7e+LnKUFEfE29wGjN2Dun
-         Lx1ZqH5bR9t54gqzbewWG8iRntJkvgx4j85ils3Z2mx0PH7fdg4uxWrfdj8Y7/fjfG2v
-         WxZh22934HUBRu1l6nIXQIy/5oavGGyAXP0t+mbKZ04VuPE/TlyG4pzhjkvXARjJTDWu
-         9BzuoodxQQOQ8iNMPtB0rBPiSDOR3LabnHv3RDs0IDUGE8cQnlNG2YaQn9XsC2fauu6B
-         tq0Q==
-X-Gm-Message-State: ABy/qLauIsz9UBOh7Qnm7/Nzc5qe0mAgv1sxchQIB7Kekt1Jxhhz1bcg
-	Dswv42NWGAhzfp00mVNRq6UYLFDx
-X-Google-Smtp-Source: APBJJlH4gyq7JrTkfEpvQa84k4NIFE18KTu4UsifBNdTs57wOfERvKO5Hcmx4G0JBwtVPCjxuezb3A==
-X-Received: by 2002:a5d:4acf:0:b0:316:e04a:29e8 with SMTP id y15-20020a5d4acf000000b00316e04a29e8mr7512961wrs.54.1690811152959;
-        Mon, 31 Jul 2023 06:45:52 -0700 (PDT)
+        bh=dQ0I3HmeLwdb2CHpthEIho6U8+3evu764gXwyozJFJk=;
+        b=Ja5yHUPV68Nr71M9h8XGyk0D4ehh+5HmZs4FBceWUcQpvIV6ITQgUOSnERSSWSdoDQ
+         53NLPBC7XAhljbdQ2MKbZejdC2d7tVdkUO+jsq3mI102AT4zOSqJky7UXWU55VQ3s0Tp
+         0FL+JHgMQSL1phPbUk6zCHVpRQrHlbyXza+Lx9bhXSB/umCUNFayVdJ1JS3uZzFvqp9v
+         ujZQSm+9e8/wK1U6WvmC17GFff7PFbnUaHOZW6CWn1GN+hHcG9xxDWEzsijXZOsS5Jii
+         pa5C/GsSv0fce735gIeUu2lM286oAhpdGbN2WN7FO2wG4Uhsxzw6nBzOKtN5wGEbIE5i
+         7DJg==
+X-Gm-Message-State: ABy/qLYmEhtz+u/ka1dEG9Rp8irwGJ/6ya37eSVVRKxd1WBu5w1g7Y4q
+	sX/Fx2Su2HVCa2j6VGXik4KGnFC6
+X-Google-Smtp-Source: APBJJlEGscdCdyrOOjocrIiffHS4ZOgq9nstpeavSp5NQ755reBaDEaDK7cpizfk0ROb2M0X1gS8Qw==
+X-Received: by 2002:a5d:4b85:0:b0:315:7f1d:7790 with SMTP id b5-20020a5d4b85000000b003157f1d7790mr7532962wrt.6.1690811210364;
+        Mon, 31 Jul 2023 06:46:50 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.115] ([176.187.198.42])
-        by smtp.gmail.com with ESMTPSA id y18-20020adff152000000b0031784ac0babsm12011439wro.28.2023.07.31.06.45.46
+        by smtp.gmail.com with ESMTPSA id a10-20020a5d508a000000b0031773e3cf46sm13250562wrt.61.2023.07.31.06.46.42
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 31 Jul 2023 06:45:52 -0700 (PDT)
-Message-ID: <6b4c6870-35a3-0f7f-b405-ca6e6634c4ab@linaro.org>
-Date: Mon, 31 Jul 2023 15:45:44 +0200
+        Mon, 31 Jul 2023 06:46:49 -0700 (PDT)
+Message-ID: <277b6422-7820-bd1e-74d8-5410d67bc09a@linaro.org>
+Date: Mon, 31 Jul 2023 15:46:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [RFC PATCH 08/24] target/ppc: Use GDBFeature for dynamic XML
+Subject: Re: [RFC PATCH 09/24] target/riscv: Use GDBFeature for dynamic XML
 Content-Language: en-US
 To: Akihiko Odaki <akihiko.odaki@daynix.com>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
@@ -114,12 +114,12 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org
 References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
- <20230731084354.115015-9-akihiko.odaki@daynix.com>
+ <20230731084354.115015-10-akihiko.odaki@daynix.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230731084354.115015-9-akihiko.odaki@daynix.com>
+In-Reply-To: <20230731084354.115015-10-akihiko.odaki@daynix.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: LZt4k5lxCIB1
+X-TUID: h7+CEM4pJfdI
 
 On 31/7/23 10:43, Akihiko Odaki wrote:
 > In preparation for a change to use GDBFeature as a parameter of
@@ -128,10 +128,24 @@ On 31/7/23 10:43, Akihiko Odaki wrote:
 > 
 > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 > ---
->   target/ppc/cpu-qom.h  |  3 +--
->   target/ppc/cpu.h      |  2 +-
->   target/ppc/cpu_init.c |  2 +-
->   target/ppc/gdbstub.c  | 13 +++++++------
->   4 files changed, 10 insertions(+), 10 deletions(-)
+>   target/riscv/cpu.h     |  4 ++--
+>   target/riscv/cpu.c     |  4 ++--
+>   target/riscv/gdbstub.c | 25 ++++++++++++++-----------
+>   3 files changed, 18 insertions(+), 15 deletions(-)
+> 
+> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+> index 6ea22e0eea..f67751d5b7 100644
+> --- a/target/riscv/cpu.h
+> +++ b/target/riscv/cpu.h
+> @@ -391,8 +391,8 @@ struct ArchCPU {
+>       CPUNegativeOffsetState neg;
+>       CPURISCVState env;
+>   
+> -    char *dyn_csr_xml;
+> -    char *dyn_vreg_xml;
+> +    GDBFeature dyn_csr_feature;
+> +    GDBFeature dyn_vreg_feature;
+
+Similar comment that ARM (dyn_features array).
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

@@ -1,92 +1,90 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2036615ejb;
-        Mon, 31 Jul 2023 02:11:48 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFwuziQdRViX4G1D6OcfQsz1Qp921Pn5C9pTFDfKaZBZkcGPer2+rX5E2kR7ebiKoSrktPF
-X-Received: by 2002:a05:620a:4416:b0:765:9e6b:138c with SMTP id v22-20020a05620a441600b007659e6b138cmr13026767qkp.34.1690794708343;
-        Mon, 31 Jul 2023 02:11:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690794708; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2036669ejb;
+        Mon, 31 Jul 2023 02:11:56 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHdfb9gXlahqg7iQb7mNBiMaW7rqau2ytfxss6v1LyImhz94F+0FS1yj9j9JGberD3NCxdP
+X-Received: by 2002:a05:622a:104d:b0:405:4816:7e15 with SMTP id f13-20020a05622a104d00b0040548167e15mr12174491qte.43.1690794716017;
+        Mon, 31 Jul 2023 02:11:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690794716; cv=none;
         d=google.com; s=arc-20160816;
-        b=rgvJQS3tXa9QNS8E//JhHJALhf880b5RluMmSTjKhbEDMlF3ZU+fqnxWkB8HLG3zTE
-         TE7AWdlD0ey7DhyfcFbwadluKB4rW+7jtYeckCu1XOhR4zRW1p4jbSAHrAGU9t5V3j3j
-         oD6mOhLG7vyne73tENfOjC6osJ7Ctp7yZkQLFZwO8grEhy3Xk4HxoANnjeQnzRsU80hd
-         BvKSMh4lvPBBF+53GRnTrBfSr0sV+HF3i/oVtx+Qz22wLcZw1B9+RaEno7z7+Vqvq1gp
-         du/TkkX15T5YH7Ez/Z1VM8PAgzmfGllapCd4Xpf0RS1pc9zyqPqFnOf3taoMqQK07hUs
-         jrBg==
+        b=H9+tNtOnPoDplmAqmDRSHvaKgU+lQ5H4C8ZpZmcY3GlgXkK+LUHYDeg5IV/cqVgCIy
+         i3XgZdlm5qwrYhu6IbFgxylrLjnFJOGcFHG9UjFVh4T5p+vz/9Vj70r2Eh+7KU1pvGxk
+         tl0Cak784w09ZEa/W00zhuypA01N/cUMg9tB/mVlpGJUTzpA79FlvRCjguIFgl7QK/4G
+         Zr16It3TgSozx+IWEiCeFy5FXdJXfQRA7se7GE0Pi4rDftAf9ACS426lZyJvz5jvgpVA
+         cf+e3SkC/m1zDqa3MPXWx1W9OsZiRY2HrfGX+t4tuFa5Mxrjuv8iZJPZ39b1F1/CGo4X
+         GR3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=0QScuJRMU4ixMa/1gO5xg54HCFVlbOwEsTWMxlZ9iNs=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=stHb44EFqAwCnYucBnH3WIBdFRhGcLwC/3ZzkYUmkbs=;
         fh=He1msQv7C2jF8RvcpN/Rxc3Sy54EePC4s0um1PixWsY=;
-        b=S93DmRTUBu/JjqtR6Bxl/7F0KHJU2uiKnD9KAW+CN7ZuNGmtYvOIV32MmwatB82Tqm
-         SeQ+oBTBuuxeU1SEKRn3WKLwDszIgh4VVTVcdbGjeEIMzUXBfbv8X39ShWPSH+kAWISn
-         GBDOAJAXTlSN4W+CZ5eLyV7bUwgOGmmKFrso5pPYAvluZ6EGrfY8YY/Lx9X+HJVK6Unh
-         szcnsnOSTjwahdlXU1M59uPSeJZ/yrc6ip/NGMrTUKee460w/XQ8GR00aBFIZHof8imu
-         Lv+4f/ruVkwgYivAy/1nKcdW+pxTk983o8OtfEGip2f45Eudvje55fiAajfMLVYe1BD1
-         eofA==
+        b=jePrRA277RzLjMIIqxkH+94J5aM5Y5mtuQIcfVCqJ5+Sg+4O3HBxpGf1kVgOQygF1T
+         /jUqPuFG2yqFArT9AsBEF/kk9GGC7RjcSMfWE7AwKhivJ6U96i6hHV5unRIeTKQ0d5TV
+         1upFILOLjsmnWpgTk47hbjCuEuzu6yWWItEnVNqpdAJ7qXfZueg0QP7u1EfhntvkOR2v
+         BrJgU54x5K4ziWy5UV4vVIf8acgUZqZDSq+auOx7Opmq1ReoaLkyCLoHAmrLA53ThZvg
+         QbtWk2dOY3CrK5IkUnuuIM19NUfMBxLv1PFmE2gFPyGYZzzsvrGA8Eqj+agRihbiMzmI
+         PIVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=R5fBkwEM;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=Dl3g3xCt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h16-20020a05620a401000b00767030954b9si5632078qko.230.2023.07.31.02.11.48
+        by mx.google.com with ESMTPS id a18-20020a05622a02d200b0040fc464f908si173552qtx.436.2023.07.31.02.11.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jul 2023 02:11:48 -0700 (PDT)
+        Mon, 31 Jul 2023 02:11:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=R5fBkwEM;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=Dl3g3xCt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qQOvj-0007lc-2Y; Mon, 31 Jul 2023 05:11:07 -0400
+	id 1qQOvg-0007ku-Mn; Mon, 31 Jul 2023 05:11:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qQOvg-0007jK-1j
- for qemu-arm@nongnu.org; Mon, 31 Jul 2023 05:11:04 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+ id 1qQOve-0007iS-AM
+ for qemu-arm@nongnu.org; Mon, 31 Jul 2023 05:11:03 -0400
+Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qQOve-0001Py-Gk
- for qemu-arm@nongnu.org; Mon, 31 Jul 2023 05:11:03 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-686ba29ccb1so2617996b3a.1
- for <qemu-arm@nongnu.org>; Mon, 31 Jul 2023 02:11:01 -0700 (PDT)
+ id 1qQOva-0001PM-Nc
+ for qemu-arm@nongnu.org; Mon, 31 Jul 2023 05:11:02 -0400
+Received: by mail-ot1-x32d.google.com with SMTP id
+ 46e09a7af769-6b9cf7e6ab2so3397481a34.1
+ for <qemu-arm@nongnu.org>; Mon, 31 Jul 2023 02:10:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690794661; x=1691399461;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=0QScuJRMU4ixMa/1gO5xg54HCFVlbOwEsTWMxlZ9iNs=;
- b=R5fBkwEMVaYXMy5KYwHGzehAFl6Wd2lg39Evu6jauf7SCxAkRHWtQaMWcizh3Cpsem
- s2GbeXG+cy4YHr0lArEgaGUyjInoKT+umizX3TMK33aWCbYXRE5Y87jKtGp85KMPepq2
- wXDqV0bDP1U9ckd3EyEUVCXq2QvdZW57RFTyOTSVhyqeLKi/xAZR6k/H53jsuGIa0xpJ
- /AjA3wNGxyee1DuScWTnooROU817g1DZjreT5jDNw8gU147GI7vZB3NepAFFqW4isXLo
- +q73x8e4eSeegKsW8RJ2zkzwQDaXb3OHmEtYNmFRGGMXaPkvKNa/rEuWXS2DXMsqfBNz
- hg0A==
+ d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690794655; x=1691399455;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=stHb44EFqAwCnYucBnH3WIBdFRhGcLwC/3ZzkYUmkbs=;
+ b=Dl3g3xCtIGyVccIgwFoQKI3Gk/zbHXNIb1WMQMQembE9bJZyHEQPDWywW3UGB83JTx
+ FqPJGgUi78Kjlt3sCPXquPFLXyIWnrK1WCXXtKx8xV2W9i1uivCLXpLuzKtDePbGrI1m
+ MivPVxSm27sSn9WqivgOrb6D37bRod5JpGJ7Gc24JeU5iYHAdGzfg/4x+9uvQnrIZgrp
+ 593zOi7eewqB8zdJ+hdr7SfJ3rkPzpQl6Sxu804CF43gax8rlBr5mOwMSFjDZJ6JrmJc
+ sKYz5sNnT2Iz9Ri+XyGyn+TLCc89L9i3srK2d34HZiYJ8V8o5ad3f6nrZBnPLVKLy9Jy
+ HLfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690794661; x=1691399461;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=0QScuJRMU4ixMa/1gO5xg54HCFVlbOwEsTWMxlZ9iNs=;
- b=GQRAf6rWZ8YFSU9ecqRRLfZcB3wVtJRLIM4ANdqvnAhzEBSxlQZnDEvXTnd2NhxZx5
- +Ud9y4quQNcNgUIQIpeLU9mSVHWcsEuJLIzD8ZDXjhBckX43/08LUAETR7+1M0Vau/qo
- /U+HlKCIp6KlpRcFgxTWGbuHsSM3oBy9v2RVJGOQ188E0kUPeCQbl2JtVY/cn3nYLoZx
- tn6HMZvfFqe+zo8UbZHJSQcDcQM3vTdPrkcDPso57dnQt6wxM0SvkCSMNOId/3uUsk5K
- PmV2oiTiUF8cRp1vPrwNbNFuaKLPLkwR0zPjx1Rc+RJ5gT04vzoZiTmf5I35b85/r7Ac
- ZeIg==
-X-Gm-Message-State: ABy/qLaT5h4J5A7QfAPa/gL1YghvR+0dKHBKe3B3s8CD7Vj29+ujBenh
- lmmcsKyhwkihpd/rOlHuTps8ZQ==
-X-Received: by 2002:a05:6a20:431f:b0:139:cef4:936a with SMTP id
- h31-20020a056a20431f00b00139cef4936amr9337274pzk.21.1690794660849; 
- Mon, 31 Jul 2023 02:11:00 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1690794655; x=1691399455;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=stHb44EFqAwCnYucBnH3WIBdFRhGcLwC/3ZzkYUmkbs=;
+ b=haG1Kjl7jMIaOx8XA6glaA+EUVY2zHA0jeY7z5FXf9wvDjhF9WglVLqoSn4PhVJnga
+ XImIsNYKeCk0IBL078NXqdzqOkRz36Rdwge0P+N0c+Ti89pyZjjQrSZ9mbIyCJd1Ulj1
+ 4J7l8YdP+H9Cj9+QJRt5OZetXwOWtvDWKtQ+CoOES0FxdnB42dXcAJm7X7WphM3SIzO8
+ r5qSPCVUpj/eV3hWJ5I9GxDkeaYtua26o6EHLQkJpQwWjV9xgWm+jxtudmhAEh5cITnG
+ Gt/tUDKGh8t0WO3Y/6HOkASIdiEPdlWM/UX5XAnlgVHHccVXKxeN2vLm79sgrM4o/KRJ
+ fNZw==
+X-Gm-Message-State: ABy/qLYPIPYVERpXiUIPwemKLqiEhloWk0lrfB09lu3cviwtKNiaPnc7
+ rmkA6klCiPuHm6bH9huijGGbGw==
+X-Received: by 2002:a05:6358:7e9a:b0:139:a0fd:780a with SMTP id
+ o26-20020a0563587e9a00b00139a0fd780amr5945500rwn.12.1690794655548; 
+ Mon, 31 Jul 2023 02:10:55 -0700 (PDT)
 Received: from alarm.. ([157.82.204.253]) by smtp.gmail.com with ESMTPSA id
- p22-20020a639516000000b005633941a547sm7714752pgd.27.2023.07.31.02.10.55
+ p22-20020a639516000000b005633941a547sm7714752pgd.27.2023.07.31.02.10.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 Jul 2023 02:11:00 -0700 (PDT)
+ Mon, 31 Jul 2023 02:10:55 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Christian Borntraeger <borntraeger@linux.ibm.com>,
@@ -106,22 +104,21 @@ Cc: Christian Borntraeger <borntraeger@linux.ibm.com>,
  David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
  qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
  Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 1/2] tests/migration: Add -fno-stack-protector
-Date: Mon, 31 Jul 2023 18:10:39 +0900
-Message-ID: <20230731091042.139159-2-akihiko.odaki@daynix.com>
+Subject: [PATCH v2 0/2] Accompany -nostdlib with -fno-stack-protector
+Date: Mon, 31 Jul 2023 18:10:38 +0900
+Message-ID: <20230731091042.139159-1-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230731091042.139159-1-akihiko.odaki@daynix.com>
-References: <20230731091042.139159-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::431;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x431.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::32d;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-ot1-x32d.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,35 +133,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kqRQ8w5BqtDH
+X-TUID: xQxNC96ic10I
 
-A build of GCC 13.2 will have stack protector enabled by default if it
-was configured with --enable-default-ssp option. For such a compiler,
-it is necessary to explicitly disable stack protector when linking
-without standard libraries.
+A build of GCC 13.2 will have stack protector enabled by default if it was
+configured with --enable-default-ssp option. For such a compiler, it is
+necessary to explicitly disable stack protector when linking without
+standard libraries.
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- tests/migration/s390x/Makefile | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+This is a tree-wide change to add -fno-stack-protector where -nostdlib is
+present.
 
-diff --git a/tests/migration/s390x/Makefile b/tests/migration/s390x/Makefile
-index 6393c3e5b9..6671de2efc 100644
---- a/tests/migration/s390x/Makefile
-+++ b/tests/migration/s390x/Makefile
-@@ -6,8 +6,8 @@ all: a-b-bios.h
- fwdir=../../../pc-bios/s390-ccw
- 
- CFLAGS+=-ffreestanding -fno-delete-null-pointer-checks -fPIE -Os \
--	-msoft-float -march=z900 -fno-asynchronous-unwind-tables -Wl,-pie \
--	-Wl,--build-id=none -nostdlib
-+	-msoft-float -march=z900 -fno-asynchronous-unwind-tables \
-+	-fno-stack-protector -Wl,-pie -Wl,--build-id=none -nostdlib
- 
- a-b-bios.h: s390x.elf
- 	echo "$$__note" > header.tmp
+V1 -> V2:
+  Dropped changes for pc-bios as they already had the option. (Thomas Huth)
+  Make the change for softmmu tests in a central place. (Thomas Huth)
+
+Akihiko Odaki (2):
+  tests/migration: Add -fno-stack-protector
+  tests/tcg: Add -fno-stack-protector
+
+ tests/tcg/mips/hello-mips.c       | 4 ++--
+ tests/migration/s390x/Makefile    | 4 ++--
+ tests/tcg/Makefile.target         | 2 +-
+ tests/tcg/aarch64/Makefile.target | 2 +-
+ tests/tcg/arm/Makefile.target     | 2 +-
+ tests/tcg/cris/Makefile.target    | 2 +-
+ tests/tcg/hexagon/Makefile.target | 2 +-
+ tests/tcg/i386/Makefile.target    | 2 +-
+ tests/tcg/minilib/Makefile.target | 2 +-
+ tests/tcg/mips/Makefile.target    | 2 +-
+ 10 files changed, 12 insertions(+), 12 deletions(-)
+
 -- 
 2.41.0
 

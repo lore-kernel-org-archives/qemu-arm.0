@@ -1,363 +1,167 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp1984580ejb;
-        Mon, 31 Jul 2023 00:00:54 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHZPWefQQ9iOvF9MzEctIW9lxyztUbQFvwBTnpnEKpilaI50CrZjuDXmD8jvXhVwXC/+kjH
-X-Received: by 2002:a05:620a:454b:b0:76c:a3bc:7fc2 with SMTP id u11-20020a05620a454b00b0076ca3bc7fc2mr6232767qkp.34.1690786854391;
-        Mon, 31 Jul 2023 00:00:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690786854; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp1989517ejb;
+        Mon, 31 Jul 2023 00:11:31 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlE0mPbtErbgFvod5uqHFFkE+XHTV1COKCXF5d5e154WFZXhiLTxhdtvAuZwE2v5SroPgquR
+X-Received: by 2002:ac8:584e:0:b0:400:a976:fc71 with SMTP id h14-20020ac8584e000000b00400a976fc71mr10930525qth.65.1690787490945;
+        Mon, 31 Jul 2023 00:11:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690787490; cv=none;
         d=google.com; s=arc-20160816;
-        b=XRkLUVsGZ9xzGCYMF+WLXVsHpVmooTDzU7XBXhRYp0W5OY4WKiWaBo8N9MBb1KRjjF
-         hh9bGnL89NsIjtV0SHgJgsw7MO+gQSMOffeOlhVhg/KXYv2zTvrBSqEU6+6vYWySzHo7
-         v1/dZGwQS3Qe+LuMwhyJtCJ0v/5yVrIhF1B8yv4e5J4oqmx9pKwdTJfxLmJna7qr7TdM
-         Gi18l0e+9NMRvagnapRYEhg/EceS0dG7bF2cSO8ESETH2jIon602nUgKu2F2SZOmrxSa
-         v/if9CEMbuGdL19AbIhVxwTy/Ur67UfZQFj2VqVg9nP2oRKDSSmJ5+a3FAd/x0clBDG0
-         Twug==
+        b=NpS4ZZqB9FspiJlC03yf9DXf07grnbXdBNCkkujsTLiMnroffexlHozk/eXC8l1t4L
+         jQcYEXYOCiKzG5Yf6Ejqw008uYzMeRlEctekxfGR8SQQfnv8hUUvV6cK5frUXHnIQgJ0
+         iEvB/cKKdeq4tCOyr8myDdRK87qtwuC5NR0KM4OIt9V1uuiDVqVW/gdce1jaQEgkf67D
+         P6roBzq/BrSfInjVBccYDkDgRE1wwPBJJjomKU4hKJKPGMikR7xMUDVrbg5l6efuUA1E
+         qzmwv0yoQ17fqwJYrKt+IQpS0JGql4icpvYnEv1u181fTJr9mrx/z7EZHspjlMWSM9nD
+         Jamw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :message-id:date:user-agent:references:in-reply-to:subject:cc:to
          :from:dkim-signature;
-        bh=6DYvTqXgC0HuTtAYRh6gTiT5Q7fqN8+LSUnzr3N+U04=;
-        fh=OCEWWSfbk1OI/p24ePgb3FWZF0yToCsB1weDXCG3NBM=;
-        b=I0x0ESULJHKHCNWMGsSHdlfJ4GRjwfIQ5H9mvXP+rQe8HIICGjp7szqRTNCaIsPIAu
-         dLOtYeVrIune3hRz2/aE7mr6+S1q1kRR7e9555Oo6uGz18/jYHO0K5AAEnn7zFmF40Qh
-         9WfAvvIK/wuhmQyuzuFkmc+u35EWYF2lBpUAqzAX69BX4QU+cN7SlgU5OWWPfkL9E11M
-         LJh1PnGQmsRGd/HM9DWsC+xsWwfQOw2or14yYRdaMp1uNNkzWByV8GRxA3tsjHf9yWU7
-         q0BTZ7RstqgbSbOb8wIAL4hlAqqCK/Ba1q137IlAYxQ59tGFNH8Wg8mgxEFzJRYnU5rQ
-         DUJA==
+        bh=97SZbhHhpKZJwViHq3gl/J7JMzp4oVlAu7PbuWvp4aM=;
+        fh=TCbab/j+qN4N0tNBD9x0jAar6g0smn1GdA420H+VR0g=;
+        b=LTWuugUo4bEP2BRC7Mg/ZAdylvt+2LcFTBcQXwmZXNXRJ4pXB0FIGPsV/KAFtcM6pA
+         QwB7FtjcqtU80rtjgYNEYLxiKjd23caNB1oH5W0UZXoeohATcUGDecmF7T9+eIWuhOyI
+         dCJjJsvqgVpDROog4rNnVPWRHI/j7jNCzSJSNkW9uhYWoWlKteGl20Nbmvqm3BU1Gm2h
+         54G+JQ5Ur115B3D7eJFU5mKJHlHIMNOFjoc6nvUfDJp40FgpwC1SgGRZ5NgIDHOYVVqs
+         UrJnCOJOQJg74N0MvX1oMEz3THAh6uR4UzlynYBZmp9jtNMBn9yi3CwnOEBC1D9/tmxc
+         nxBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=umsz1RVw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gOb6Hgzc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t23-20020a05622a181700b0040db839b5b3si1676002qtc.718.2023.07.31.00.00.54
+        by mx.google.com with ESMTPS id t9-20020a05622a180900b00403ea2fc4d0si5528060qtc.293.2023.07.31.00.11.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jul 2023 00:00:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 31 Jul 2023 00:11:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=umsz1RVw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gOb6Hgzc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qQMsV-0007kh-Vc; Mon, 31 Jul 2023 02:59:39 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qQN3V-000201-OB; Mon, 31 Jul 2023 03:11:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qQMsS-0007j0-QC
- for qemu-devel@nongnu.org; Mon, 31 Jul 2023 02:59:36 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qQMsQ-0001LG-L9
- for qemu-devel@nongnu.org; Mon, 31 Jul 2023 02:59:36 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-1bba54f7eefso32894545ad.1
- for <qemu-devel@nongnu.org>; Sun, 30 Jul 2023 23:59:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690786773; x=1691391573;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=6DYvTqXgC0HuTtAYRh6gTiT5Q7fqN8+LSUnzr3N+U04=;
- b=umsz1RVwPsjEqe/i4ojdN0v+m0aRKucs0oVY8nTTe3tcTQDMe87jNdJtuz5lv3PjLi
- BzNwgIUXeXeuMY2zpvfidnvNZzoXXJ4y8lN6LRMQylcw+plnTsONBsQied12YJTQRCaB
- XCV4XkXWIH+6hLxdOhW+Ob2FFyQHkcHwQ1ZIzdh/0IZc/SFV7vdt95eRHfRDk5F0eMH3
- dOW7orrES+pkp1Hyynqk6fAYfjLl+0teuDFn/aHsU7Yk1uOpi9lpKM2tOu7IJZiIAEzk
- Rf33widYlmse8lSgK4c5F6H/bAa5rd04LuHfJpwPzcQQDmbVTpdlItmKOJqnQcLLv3Cd
- EDKg==
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qQN3U-0001zi-Nn
+ for qemu-arm@nongnu.org; Mon, 31 Jul 2023 03:11:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qQN3S-0003XM-Ci
+ for qemu-arm@nongnu.org; Mon, 31 Jul 2023 03:11:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1690787457;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=97SZbhHhpKZJwViHq3gl/J7JMzp4oVlAu7PbuWvp4aM=;
+ b=gOb6HgzcrPfEh/v/sG923nFkOol+OW7VsYJxOrixlpSC7f8XjHtrSsTlSlbvt2CjQS6PEC
+ rvSZOWNXCAeTXyafTwR9czcMzeZJKKqUIzzCJOJ45AaRXcK4tNOp+Y0jOeNbaXKBKArwsS
+ OJtMByL2cWq8QLEj1QhzZukQtYKoLTc=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-124-tt8xSuRfOByZUD3i5nH4WA-1; Mon, 31 Jul 2023 03:10:55 -0400
+X-MC-Unique: tt8xSuRfOByZUD3i5nH4WA-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-3176c4de5bbso1880246f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 31 Jul 2023 00:10:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690786773; x=1691391573;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20221208; t=1690787454; x=1691392254;
+ h=mime-version:message-id:date:reply-to:user-agent:references
+ :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=6DYvTqXgC0HuTtAYRh6gTiT5Q7fqN8+LSUnzr3N+U04=;
- b=DpAMP4XRoc5WNk0qs8PBX9LohVgvj5MLaLWIFlXOFLCgufAT1/3V4RtbhNBkXcrZuj
- Jn12mUihP1IxKS6perVRTCeGg4ClwUz8IQfoXNu75XoP1WmIbsXCjwhI3LEwdtidZBFh
- BW247N4AitEZhPE65iFKLWfp3y54c+jLR+ukY+n5QPR3JeABYkCLIsp9awAW4YqTe2eT
- 0OqRgTqnQ/XfkNXdQ8HjDki82MXNEvAw7qzG4DkuxKie4zc8JcJjrX3o16oE1cTK01BB
- pQAhw/PXLXXeiiY/Nl5CKA9/APEF5lu7xA6i2HCyupqJlBax9tkJs0kwOAHfnPOpK4PG
- cD2Q==
-X-Gm-Message-State: ABy/qLaD+UdVWEGt52kKlx3SxjClJiv+PczbbGz7Lz5VdtFD+rz2yxau
- jn81LZaCgbIgg8kbPA2isFqlXw==
-X-Received: by 2002:a17:903:41d1:b0:1b0:3ab6:5140 with SMTP id
- u17-20020a17090341d100b001b03ab65140mr10379402ple.4.1690786773391; 
- Sun, 30 Jul 2023 23:59:33 -0700 (PDT)
-Received: from alarm.. ([157.82.204.253]) by smtp.gmail.com with ESMTPSA id
- l16-20020a170903121000b001b8af7f632asm7684988plh.176.2023.07.30.23.59.28
+ bh=97SZbhHhpKZJwViHq3gl/J7JMzp4oVlAu7PbuWvp4aM=;
+ b=J6DzZ4LZZUm33cbxRtXPsDLByrBysWEaWZYoSdZNWivmBxb5w/bxLtk1X1r6fWzZhY
+ HlObxi1nF0XrzTLxoomVHYkB7qV45IzpJP1YRAQm+syoqT3pyLAgeEJA/6+RY3CmaWXT
+ lDijNZiNEuW4Zjem6ZolyVqKSndrk+v+g7VOzG43kdK47QS3IhjHTmJZ5IXN4+DNaLSv
+ rqH359VWFmXjHwRYRrKCc5lKPbaJZ14HfXgcTYovtvxOrGQdZNxViQwsIUEiV3boOuOp
+ 9mIPGUumVlyaqc3XKzmWjwmAMGBZr44LVh5BbGUujFdz5oMOyqMXbvIStPh5bWrlLzXv
+ 57jA==
+X-Gm-Message-State: ABy/qLam0z/DCLxlNnFwD52BgX3lethFz0+t+xJAqgcf/vb/AEfkYt3z
+ 4Cppcr8+Qej5ohAwOG0YRbjj7V39BGpkaHD3jOQyi2gXuzl2dALnm2caf1lXOMBIMhrrrOXKzdQ
+ cNADB4RoWQmUY
+X-Received: by 2002:adf:e94f:0:b0:314:3611:3e54 with SMTP id
+ m15-20020adfe94f000000b0031436113e54mr5395526wrn.9.1690787454797; 
+ Mon, 31 Jul 2023 00:10:54 -0700 (PDT)
+X-Received: by 2002:adf:e94f:0:b0:314:3611:3e54 with SMTP id
+ m15-20020adfe94f000000b0031436113e54mr5395493wrn.9.1690787454457; 
+ Mon, 31 Jul 2023 00:10:54 -0700 (PDT)
+Received: from redhat.com (static-92-120-85-188.ipcom.comunitel.net.
+ [188.85.120.92]) by smtp.gmail.com with ESMTPSA id
+ u13-20020a5d514d000000b003172510d19dsm12144765wrt.73.2023.07.31.00.10.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 30 Jul 2023 23:59:33 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: Christian Borntraeger <borntraeger@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Peter Xu <peterx@redhat.com>, Leonardo Bras <leobras@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Brian Cain <bcain@quicinc.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Song Gao <gaosong@loongson.cn>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 3/3] tests/tcg: Add -fno-stack-protector
-Date: Mon, 31 Jul 2023 15:58:56 +0900
-Message-ID: <20230731065904.5869-4-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230731065904.5869-1-akihiko.odaki@daynix.com>
+ Mon, 31 Jul 2023 00:10:54 -0700 (PDT)
+From: Juan Quintela <quintela@redhat.com>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Christian Borntraeger <borntraeger@linux.ibm.com>,  Thomas Huth
+ <thuth@redhat.com>,  Peter Xu <peterx@redhat.com>,  Leonardo Bras
+ <leobras@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Richard
+ Henderson <richard.henderson@linaro.org>,  "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>,  Brian Cain <bcain@quicinc.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,
+ Song Gao <gaosong@loongson.cn>,  Xiaojuan Yang
+ <yangxiaojuan@loongson.cn>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Aurelien Jarno <aurelien@aurel32.net>,  Jiaxun Yang
+ <jiaxun.yang@flygoat.com>,  Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>,  Chris Wulff <crwulff@gmail.com>,  Marek
+ Vasut <marex@denx.de>,  David Hildenbrand <david@redhat.com>,  Ilya
+ Leoshkevich <iii@linux.ibm.com>,  qemu-devel@nongnu.org,
+ qemu-s390x@nongnu.org,  qemu-arm@nongnu.org
+Subject: Re: [PATCH 2/3] tests/migration: Add -fno-stack-protector
+In-Reply-To: <20230731065904.5869-3-akihiko.odaki@daynix.com> (Akihiko Odaki's
+ message of "Mon, 31 Jul 2023 15:58:55 +0900")
 References: <20230731065904.5869-1-akihiko.odaki@daynix.com>
+ <20230731065904.5869-3-akihiko.odaki@daynix.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+Date: Mon, 31 Jul 2023 09:10:53 +0200
+Message-ID: <875y60d08y.fsf@secure.mitica>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::62b;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pl1-x62b.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WKHbtRMqiDBa
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: quintela@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qxxKFONxCz8O
 
-A build of GCC 13.2 will have stack protector enabled by default if it
-was configured with --enable-default-ssp option. For such a compiler,
-it is necessary to explicitly disable stack protector when linking
-without standard libraries.
+Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+> A build of GCC 13.2 will have stack protector enabled by default if it
+> was configured with --enable-default-ssp option. For such a compiler,
+> it is necessary to explicitly disable stack protector when linking
+> without standard libraries.
+>
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- tests/tcg/mips/hello-mips.c                   | 4 ++--
- tests/tcg/aarch64/Makefile.softmmu-target     | 2 +-
- tests/tcg/aarch64/Makefile.target             | 2 +-
- tests/tcg/alpha/Makefile.softmmu-target       | 2 +-
- tests/tcg/arm/Makefile.target                 | 2 +-
- tests/tcg/cris/Makefile.target                | 2 +-
- tests/tcg/hexagon/Makefile.target             | 2 +-
- tests/tcg/i386/Makefile.softmmu-target        | 2 +-
- tests/tcg/i386/Makefile.target                | 2 +-
- tests/tcg/loongarch64/Makefile.softmmu-target | 2 +-
- tests/tcg/minilib/Makefile.target             | 2 +-
- tests/tcg/mips/Makefile.target                | 2 +-
- tests/tcg/nios2/Makefile.softmmu-target       | 2 +-
- tests/tcg/s390x/Makefile.softmmu-target       | 2 +-
- tests/tcg/x86_64/Makefile.softmmu-target      | 2 +-
- 15 files changed, 16 insertions(+), 16 deletions(-)
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 
-diff --git a/tests/tcg/mips/hello-mips.c b/tests/tcg/mips/hello-mips.c
-index 4e1cf501af..0ba5f1bf23 100644
---- a/tests/tcg/mips/hello-mips.c
-+++ b/tests/tcg/mips/hello-mips.c
-@@ -5,8 +5,8 @@
- * http://www.linux-mips.org/wiki/MIPSABIHistory
- * http://www.linux.com/howtos/Assembly-HOWTO/mips.shtml
- *
--* mipsel-linux-gcc -nostdlib -mno-abicalls -fno-PIC -mabi=32 \
--*                  -O2 -static -o hello-mips hello-mips.c
-+* mipsel-linux-gcc -nostdlib -mno-abicalls -fno-PIC -fno-stack-protector \
-+                   -mabi=32 -O2 -static -o hello-mips hello-mips.c
- *
- */
- #define __NR_SYSCALL_BASE	4000
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index b74a2534e3..11016ffab2 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -16,7 +16,7 @@ LINK_SCRIPT=$(AARCH64_SYSTEM_SRC)/kernel.ld
- LDFLAGS=-Wl,-T$(LINK_SCRIPT)
- TESTS+=$(AARCH64_TESTS) $(MULTIARCH_TESTS)
- EXTRA_RUNS+=$(MULTIARCH_RUNS)
--CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
-+CFLAGS+=-nostdlib -fno-stack-protector -ggdb -O0 $(MINILIB_INC)
- LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- 
- config-cc.mak: Makefile
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 617f821613..55f8609897 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -49,7 +49,7 @@ endif
- # bti-1 tests the elf notes, so we require special compiler support.
- ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
- AARCH64_TESTS += bti-1 bti-3
--bti-1 bti-3: CFLAGS += -mbranch-protection=standard
-+bti-1 bti-3: CFLAGS += -fno-stack-protector -mbranch-protection=standard
- bti-1 bti-3: LDFLAGS += -nostdlib
- endif
- # bti-2 tests PROT_BTI, so no special compiler support required.
-diff --git a/tests/tcg/alpha/Makefile.softmmu-target b/tests/tcg/alpha/Makefile.softmmu-target
-index 09193a62d6..99c23c2903 100644
---- a/tests/tcg/alpha/Makefile.softmmu-target
-+++ b/tests/tcg/alpha/Makefile.softmmu-target
-@@ -15,7 +15,7 @@ CRT_PATH=$(ALPHA_SYSTEM_SRC)
- LINK_SCRIPT=$(ALPHA_SYSTEM_SRC)/kernel.ld
- LDFLAGS=-Wl,-T$(LINK_SCRIPT)
- TESTS+=$(ALPHA_TESTS) $(MULTIARCH_TESTS)
--CFLAGS+=-nostdlib -g -O1 -mcpu=ev6 $(MINILIB_INC)
-+CFLAGS+=-fno-stack-protector -nostdlib -g -O1 -mcpu=ev6 $(MINILIB_INC)
- LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- 
- # building head blobs
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index 0038cef02c..3473f4619e 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -12,7 +12,7 @@ float_madds: CFLAGS+=-mfpu=neon-vfpv4
- 
- # Basic Hello World
- ARM_TESTS = hello-arm
--hello-arm: CFLAGS+=-marm -ffreestanding
-+hello-arm: CFLAGS+=-marm -ffreestanding -fno-stack-protector
- hello-arm: LDFLAGS+=-nostdlib
- 
- # IWMXT floating point extensions
-diff --git a/tests/tcg/cris/Makefile.target b/tests/tcg/cris/Makefile.target
-index 43587d2769..713e2a5b6c 100644
---- a/tests/tcg/cris/Makefile.target
-+++ b/tests/tcg/cris/Makefile.target
-@@ -30,7 +30,7 @@ AS	= $(CC) -x assembler-with-cpp
- LD      = $(CC)
- 
- # we rely on GCC inline:ing the stuff we tell it to in many places here.
--CFLAGS  = -Winline -Wall -g -O2 -static
-+CFLAGS  = -Winline -Wall -g -O2 -static -fno-stack-protector
- NOSTDFLAGS = -nostartfiles -nostdlib
- ASFLAGS += -mcpu=v10 -g -Wa,-I,$(SRC_PATH)/tests/tcg/cris/bare
- CRT_FILES = crt.o sys.o
-diff --git a/tests/tcg/hexagon/Makefile.target b/tests/tcg/hexagon/Makefile.target
-index 87ed2c90b9..f839b2c0d5 100644
---- a/tests/tcg/hexagon/Makefile.target
-+++ b/tests/tcg/hexagon/Makefile.target
-@@ -19,7 +19,7 @@
- EXTRA_RUNS =
- 
- CFLAGS += -Wno-incompatible-pointer-types -Wno-undefined-internal
--CFLAGS += -fno-unroll-loops
-+CFLAGS += -fno-unroll-loops -fno-stack-protector
- 
- HEX_SRC=$(SRC_PATH)/tests/tcg/hexagon
- VPATH += $(HEX_SRC)
-diff --git a/tests/tcg/i386/Makefile.softmmu-target b/tests/tcg/i386/Makefile.softmmu-target
-index 5266f2335a..8e9d0d7690 100644
---- a/tests/tcg/i386/Makefile.softmmu-target
-+++ b/tests/tcg/i386/Makefile.softmmu-target
-@@ -15,7 +15,7 @@ CRT_OBJS=boot.o
- CRT_PATH=$(I386_SYSTEM_SRC)
- LINK_SCRIPT=$(I386_SYSTEM_SRC)/kernel.ld
- LDFLAGS=-Wl,-T$(LINK_SCRIPT) -Wl,-melf_i386
--CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
-+CFLAGS+=-nostdlib -fno-stack-protector -ggdb -O0 $(MINILIB_INC)
- LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- 
- TESTS+=$(MULTIARCH_TESTS)
-diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index fdf757c6ce..3dec7c6c42 100644
---- a/tests/tcg/i386/Makefile.target
-+++ b/tests/tcg/i386/Makefile.target
-@@ -35,7 +35,7 @@ run-test-aes: QEMU_OPTS += -cpu max
- #
- # hello-i386 is a barebones app
- #
--hello-i386: CFLAGS+=-ffreestanding
-+hello-i386: CFLAGS+=-ffreestanding -fno-stack-protector
- hello-i386: LDFLAGS+=-nostdlib
- 
- # test-386 includes a couple of additional objects that need to be
-diff --git a/tests/tcg/loongarch64/Makefile.softmmu-target b/tests/tcg/loongarch64/Makefile.softmmu-target
-index 908f3a8c0f..4a348469f7 100644
---- a/tests/tcg/loongarch64/Makefile.softmmu-target
-+++ b/tests/tcg/loongarch64/Makefile.softmmu-target
-@@ -15,7 +15,7 @@ CRT_PATH=$(LOONGARCH64_SYSTEM_SRC)
- LINK_SCRIPT=$(LOONGARCH64_SYSTEM_SRC)/kernel.ld
- LDFLAGS=-Wl,-T$(LINK_SCRIPT)
- TESTS+=$(LOONGARCH64_TESTS) $(MULTIARCH_TESTS)
--CFLAGS+=-nostdlib -g -O1 -march=loongarch64 -mabi=lp64d $(MINILIB_INC)
-+CFLAGS+=-nostdlib -fno-stack-protector -g -O1 -march=loongarch64 -mabi=lp64d $(MINILIB_INC)
- LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- 
- # building head blobs
-diff --git a/tests/tcg/minilib/Makefile.target b/tests/tcg/minilib/Makefile.target
-index c821d2806a..af0bf54be9 100644
---- a/tests/tcg/minilib/Makefile.target
-+++ b/tests/tcg/minilib/Makefile.target
-@@ -12,7 +12,7 @@ SYSTEM_MINILIB_SRC=$(SRC_PATH)/tests/tcg/minilib
- MINILIB_SRCS=$(wildcard $(SYSTEM_MINILIB_SRC)/*.c)
- MINILIB_OBJS=$(patsubst $(SYSTEM_MINILIB_SRC)/%.c, %.o, $(MINILIB_SRCS))
- 
--MINILIB_CFLAGS+=-nostdlib -ggdb -O0
-+MINILIB_CFLAGS+=-nostdlib -fno-stack-protector -ggdb -O0
- MINILIB_INC=-isystem $(SYSTEM_MINILIB_SRC)
- 
- .PRECIOUS: $(MINILIB_OBJS)
-diff --git a/tests/tcg/mips/Makefile.target b/tests/tcg/mips/Makefile.target
-index 1a994d5525..5d17c1706e 100644
---- a/tests/tcg/mips/Makefile.target
-+++ b/tests/tcg/mips/Makefile.target
-@@ -14,6 +14,6 @@ MIPS_TESTS=hello-mips
- 
- TESTS += $(MIPS_TESTS)
- 
--hello-mips: CFLAGS+=-mno-abicalls -fno-PIC -mabi=32
-+hello-mips: CFLAGS+=-mno-abicalls -fno-PIC -fno-stack-protector -mabi=32
- hello-mips: LDFLAGS+=-nostdlib
- endif
-diff --git a/tests/tcg/nios2/Makefile.softmmu-target b/tests/tcg/nios2/Makefile.softmmu-target
-index bc7fd55060..96833b385f 100644
---- a/tests/tcg/nios2/Makefile.softmmu-target
-+++ b/tests/tcg/nios2/Makefile.softmmu-target
-@@ -12,7 +12,7 @@ VPATH += $(NIOS2_SYSTEM_SRC)
- CRT_OBJS = boot.o intr.o $(MINILIB_OBJS)
- LINK_SCRIPT = $(NIOS2_SYSTEM_SRC)/10m50-ghrd.ld
- 
--CFLAGS  += -nostdlib -g -O0 $(MINILIB_INC)
-+CFLAGS  += -nostdlib -fno-stack-protector -g -O0 $(MINILIB_INC)
- LDFLAGS += -Wl,-T$(LINK_SCRIPT) -static -nostdlib $(CRT_OBJS) -lgcc
- 
- %.o: %.S
-diff --git a/tests/tcg/s390x/Makefile.softmmu-target b/tests/tcg/s390x/Makefile.softmmu-target
-index 76345b6e64..27f2d68235 100644
---- a/tests/tcg/s390x/Makefile.softmmu-target
-+++ b/tests/tcg/s390x/Makefile.softmmu-target
-@@ -2,7 +2,7 @@ S390X_SRC=$(SRC_PATH)/tests/tcg/s390x
- VPATH+=$(S390X_SRC)
- QEMU_OPTS=-action panic=exit-failure -nographic -kernel
- LINK_SCRIPT=$(S390X_SRC)/softmmu.ld
--CFLAGS+=-ggdb -O0
-+CFLAGS+=-fno-stack-protector -ggdb -O0
- LDFLAGS=-nostdlib -static
- 
- %.o: %.S
-diff --git a/tests/tcg/x86_64/Makefile.softmmu-target b/tests/tcg/x86_64/Makefile.softmmu-target
-index 1bd763f2e6..23887a1660 100644
---- a/tests/tcg/x86_64/Makefile.softmmu-target
-+++ b/tests/tcg/x86_64/Makefile.softmmu-target
-@@ -15,7 +15,7 @@ CRT_OBJS=boot.o
- CRT_PATH=$(X64_SYSTEM_SRC)
- LINK_SCRIPT=$(X64_SYSTEM_SRC)/kernel.ld
- LDFLAGS=-Wl,-T$(LINK_SCRIPT) -Wl,-melf_x86_64
--CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
-+CFLAGS+=-nostdlib -fno-stack-protector -ggdb -O0 $(MINILIB_INC)
- LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- 
- TESTS+=$(MULTIARCH_TESTS)
--- 
-2.41.0
+For whatever is related to migration.
+My liker options skills are (very) rusty, so I will let others decided
+if this is the correct way to do it O:-)
 

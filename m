@@ -1,122 +1,122 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2155165ejb;
-        Mon, 31 Jul 2023 06:01:16 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlG+7+An1tVyt2j9EezE8/8Pq5MUVmmaTsHomwIbtxcugIDa6z7xijrmEoZFhXBpCB2SoIYq
-X-Received: by 2002:a17:903:22c1:b0:1b8:9552:ca with SMTP id y1-20020a17090322c100b001b8955200camr9578897plg.45.1690808476368;
-        Mon, 31 Jul 2023 06:01:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690808476; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2157537ejb;
+        Mon, 31 Jul 2023 06:03:51 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHcmvm56SEJg4xXJvDcq+rJ405RRdeCLrn0itPlsLHnCbgH0WPZD4tVxtRFmIua21UMGSiK
+X-Received: by 2002:a0c:d604:0:b0:628:6879:ee48 with SMTP id c4-20020a0cd604000000b006286879ee48mr6920395qvj.50.1690808630877;
+        Mon, 31 Jul 2023 06:03:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690808630; cv=none;
         d=google.com; s=arc-20160816;
-        b=QYHUyNR1qY//XFhCrEDl/cqX1eeTLE5Rj+L7Ry4cTW3NDGeQmRGd7N8UoVRblv8/Uf
-         ztj0d08Wg7W8u9LK2WJ7lbdJqU/+lEpT8Ym9mbXkCCTp/EFH+2sVeQrYTgct7iHddrMb
-         QX4fYaSulH9ukeT1MiheR4rERcOmuHnbG41byXGJhp/Xch6Ws1zbSq0V7knrq4ts5gkM
-         Gu4a8ain+dYqxDpOukLoVI0kRMXcKhU8v338+bEWeg1hGrD5R4Szo9v5GKdsO39ibq7Y
-         XX8I7iS9/47RF8GIq7+mxeIWgkNhZSFTGqA45YkURk4Fbvs9fINsXdl+JroIHKUXRwAb
-         x9Ng==
+        b=kUCRCceE/XQ9Ckyp3kJGUtXoTJBiMqqaKJjQ6C6RQnDjAWpvQmcDW6YwLU7P6ZSDY9
+         /QqL7u0x0cUhn2LYKCHbnwf72+6aP53j5Nx63EYmvWRTLX+deloqO0STFHUI58pI48fG
+         mlKThZSTYBAXLyaMSgjYWDpYrjoZOmMgBoqGlrkiiuwEKLb3F3rj8thyBO9EL9eLQyG1
+         r5b/eQJau3TVa0o6gDjalDgH1CwJG1fSvSIAuaQIX3gdZaeKWLbxWEMfO9CD6F6D7HNv
+         oqTWFqYCoLT23alHZ5HDbVnU6HjMJXG5fXUiF+Tj2UknxGJkT3/5u39pfzwPO8K1OB1k
+         WKVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:organization:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=BHnF+sy+d3zFQbgHmPB9jYr/hDJRe+YhEB6Mqx1kcUQ=;
-        fh=dw3lSPZff5XxabJq6f4ACgMtEd7HyMzouSYiQnyntmo=;
-        b=V01yzj7gRERn+yYpK4dqaFCa18jey7kBlb/5juyDE4sq851OrvHfHz2ZxBpWEG1U15
-         JdFnppgAYPLywfZtfzlgefph20MBr3M5JjbInV0HdKpFDi34G/yNP99cW++2WTXc97lc
-         ccTMvSQk0REZZH2tGRHLtp96WD4e8eUvOpGDAU1sp68PcmLTw/oF9CxReQjtLGdA4cr7
-         QIZxttmalRl6yzX7lxKOlAso2qpcbQY1R2ySuG/t3Dd6Sgpa4cp6iINhNYqNIOD+lJh1
-         fMiHbkTO7olu3SSyBkyeQ1lOVHZLEDvnaa16+uXP/9m5mXZ+NYRYSxri8Uv3CaRkmPRH
-         QVxQ==
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=EZg3dj7fZg1WDALPDyeGDR0/qrHkWE2blrqwfx5+n9M=;
+        fh=8xO7M/cxk3lS4ZAeSfab6/ScjrTIdhNbCWev05W/LTc=;
+        b=Z9fdihIP4nuISjVn7dNKsZFW/FA86Foc4rUlsqIs+V/sf/WU3vwk4Ep4BePgiGdpj8
+         ZPjDw35+BwEI96s0Hg5xy9a6ep70D4XDEqKB/6XmtbtnnHP0szlSGAtENnv6vCMs6GyR
+         OFKsmIH4ew3PVoWfEFLDHib2zSdCKtJ2YQGq7A+nyELe+A6fVU6Tb0rihJMeZ9x07BpM
+         rzEr2C8ieZNpWvJHsvmdJRxpV+90kfNc1ZhQrVgszVDmNDPVbbCd0nWIG0jsGTERcg1B
+         ib3bFK1ox4uvJkl4IW0xht0riiFZAF5W+M4Rkjo4/mZ0IBCTwTaF94ZT/le7nPcqhMAM
+         jasg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LXDNeojM;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="I/0WgAJu";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d10-20020a0ce44a000000b0062637fe2190si5615796qvm.167.2023.07.31.06.01.15
+        by mx.google.com with ESMTPS id k4-20020a0cf584000000b0063d214a16absi5809540qvm.535.2023.07.31.06.03.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jul 2023 06:01:16 -0700 (PDT)
+        Mon, 31 Jul 2023 06:03:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LXDNeojM;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="I/0WgAJu";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qQSVz-00082l-Hi; Mon, 31 Jul 2023 09:00:48 -0400
+	id 1qQSYc-0001BX-Hd; Mon, 31 Jul 2023 09:03:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qQSVr-0007tN-SL
- for qemu-arm@nongnu.org; Mon, 31 Jul 2023 09:00:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qQSYb-0001BH-A0
+ for qemu-arm@nongnu.org; Mon, 31 Jul 2023 09:03:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qQSVq-00005D-1w
- for qemu-arm@nongnu.org; Mon, 31 Jul 2023 09:00:39 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qQSYZ-0000sZ-Gw
+ for qemu-arm@nongnu.org; Mon, 31 Jul 2023 09:03:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690808437;
+ s=mimecast20190719; t=1690808606;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BHnF+sy+d3zFQbgHmPB9jYr/hDJRe+YhEB6Mqx1kcUQ=;
- b=LXDNeojMTemNKUYw0a4OR73mBSr2jGXaGKL/4brMX65M0ZPMdPdYT2eBqLzD6N82Odt/As
- BZ8dzrgrbirddN5+I9Iy2XcZ9rxzdJwLwAVsELpBDYsh/eTm62l5ovZxTBM7rgzsM2AK1T
- sayYmXRVDFYE3EbEZ9+7J5Fk05Xyltg=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=EZg3dj7fZg1WDALPDyeGDR0/qrHkWE2blrqwfx5+n9M=;
+ b=I/0WgAJutRJdp5wh4tkzW0QV9ClqboUJUTU79egRwMSgEJqmPEd+Y9WU+iDkU0M3LPGpdW
+ 40xKGkuCbrVWXV8fcb1Dnp/k0kajRLoIYS1DwUB5+XVXCFOd/BPnjW7UXrtfXXDv1i2ORu
+ cI4G8cWfeVcq7czEtcZjuEtnlhol9FI=
+Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com
+ [209.85.210.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-650-Iq2TX-XJOvyYuUKBibYI4Q-1; Mon, 31 Jul 2023 09:00:35 -0400
-X-MC-Unique: Iq2TX-XJOvyYuUKBibYI4Q-1
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-3fe216798e9so5349345e9.3
- for <qemu-arm@nongnu.org>; Mon, 31 Jul 2023 06:00:35 -0700 (PDT)
+ us-mta-597-KAL754jKP7iMfJVX5TnoXg-1; Mon, 31 Jul 2023 09:03:25 -0400
+X-MC-Unique: KAL754jKP7iMfJVX5TnoXg-1
+Received: by mail-pf1-f197.google.com with SMTP id
+ d2e1a72fcca58-687167290fbso3405178b3a.2
+ for <qemu-arm@nongnu.org>; Mon, 31 Jul 2023 06:03:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690808434; x=1691413234;
- h=content-transfer-encoding:in-reply-to:organization:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BHnF+sy+d3zFQbgHmPB9jYr/hDJRe+YhEB6Mqx1kcUQ=;
- b=OCT/HevY5T+VtYKW5JOjgHjfxAabdzRcAnnxKEhNOv69fx+Sw/ih/5O/gnwOZPzMen
- Qs5zTvBJqdOjIFfYH9NXmYNlUpc1dPRpQwPN4ap8iNGL09G0FeIjSbyPDI9zK7upEpr/
- uBOHyakG/3PzckVaY54dbt2I41ovmEhMy78t7WSoS4H1MDy5TkLqWnEFbAekpP/DXtKQ
- f3fnive3hZm/Wjn5MeGPSaLB8T1tc9CXp9UioAnlro/L1XTRpUqeRTwWaK7HH0yoJb5O
- SuQQG96hQgnAtVwe/K9pp/5822rIyU7RtspDiya5htZ0/VxWhgOHX4gDvSnS7cMgAGyQ
- EGNQ==
-X-Gm-Message-State: ABy/qLZmjNbO+Ye+9+2/+/TOm0tOLSSX5Xcxcgbd3IdyKfOfLKbswVqf
- EibnneN/ICj9azPnpRZctiCKlD0HLUgcGQSOKehOKUCnqE+GYWFifbSoVwYHZWGQblRFJJyr2xh
- 2igQ3ObNB1+8w
-X-Received: by 2002:a1c:f202:0:b0:3fb:a0fc:1ba1 with SMTP id
- s2-20020a1cf202000000b003fba0fc1ba1mr8373850wmc.35.1690808433998; 
- Mon, 31 Jul 2023 06:00:33 -0700 (PDT)
-X-Received: by 2002:a1c:f202:0:b0:3fb:a0fc:1ba1 with SMTP id
- s2-20020a1cf202000000b003fba0fc1ba1mr8373833wmc.35.1690808433548; 
- Mon, 31 Jul 2023 06:00:33 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c723:4c00:5c85:5575:c321:cea3?
- (p200300cbc7234c005c855575c321cea3.dip0.t-ipconnect.de.
- [2003:cb:c723:4c00:5c85:5575:c321:cea3])
+ d=1e100.net; s=20221208; t=1690808604; x=1691413404;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=EZg3dj7fZg1WDALPDyeGDR0/qrHkWE2blrqwfx5+n9M=;
+ b=E3JVNaiezAv1zqV4evBIiNA8n6grSYkhtYsgxaEN/ScfrIFWe4cpmysLIEszrPIP4d
+ WdO/5BRLiqaLU6BTRhJV+bHdYjN6CkHJi9UUaKEb9KLg+uEuxHB4aGDm/Xm+PerruTkf
+ 2ZX8jPfBqJxy2sJRkQDRfBkTWgJTwK57A0SjIVEHg9tl+QI8kyP25Aru8s7XiR4kvo3k
+ BKT1YNCuDyROT5AE0yc4abMYCffQfR/2NF90Pp35MOnjsSNvwf6q4HISSiSbJZ9ENjB+
+ RqAHzNwai9CBHJ9h8kAAW6l6tMK//KoXnBOUwx93WQfMN1YRAu1VOnWdv65I6KlJTfz2
+ TuLQ==
+X-Gm-Message-State: ABy/qLZs12POY5n+IHtvtO8DXL666FQ84vZpwxhyc/J7brX9ZrumsoMI
+ A7YLkXZ+PkhQ187b2HNdCyMV6qNXj6kqT9UftdIHbZ6TehxOkZRRwF6fVSNAPgE7p3UnS+DhRVJ
+ pAlSns/d1Fl86
+X-Received: by 2002:a05:6a20:32aa:b0:137:3b34:93e5 with SMTP id
+ g42-20020a056a2032aa00b001373b3493e5mr8347036pzd.59.1690808604166; 
+ Mon, 31 Jul 2023 06:03:24 -0700 (PDT)
+X-Received: by 2002:a05:6a20:32aa:b0:137:3b34:93e5 with SMTP id
+ g42-20020a056a2032aa00b001373b3493e5mr8347014pzd.59.1690808603735; 
+ Mon, 31 Jul 2023 06:03:23 -0700 (PDT)
+Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
+ ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
  by smtp.gmail.com with ESMTPSA id
- 9-20020a05600c230900b003fbe561f6a3sm14139827wmo.37.2023.07.31.06.00.32
+ p2-20020a62ab02000000b006826c9e4397sm7601291pff.48.2023.07.31.06.03.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 Jul 2023 06:00:33 -0700 (PDT)
-Message-ID: <008f4ae2-c5bb-3570-3ec9-4ace4b5c4788@redhat.com>
-Date: Mon, 31 Jul 2023 15:00:32 +0200
+ Mon, 31 Jul 2023 06:03:22 -0700 (PDT)
+Message-ID: <c86779f3-3d27-c67d-efb4-e1a664b2e5c6@redhat.com>
+Date: Mon, 31 Jul 2023 23:03:17 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v2] kvm: Fix crash due to access uninitialized kvm_state
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
+ Thunderbird/102.12.0
+Subject: Re: [PATCH] kvm: Fix crash by initializing kvm_state early
+To: Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, pbonzini@redhat.com,
  philmd@linaro.org, shan.gavin@gmail.com
-References: <20230731125946.2038742-1-gshan@redhat.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <20230731125946.2038742-1-gshan@redhat.com>
+References: <20230730234840.1989974-1-gshan@redhat.com>
+ <af597a7c-5580-ffc5-d435-dd7e0ccc63d2@redhat.com>
+ <CAFEAcA8Uc7S4oBzKi_9AGCEkNdeZX1U73bvit6RmQo8_A7QLoA@mail.gmail.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <CAFEAcA8Uc7S4oBzKi_9AGCEkNdeZX1U73bvit6RmQo8_A7QLoA@mail.gmail.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -140,65 +140,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iVGz5WqYuNEV
+X-TUID: VnmL4mxW9hFh
 
-On 31.07.23 14:59, Gavin Shan wrote:
-> Runs into core dump on arm64 and the backtrace extracted from the
-> core dump is shown as below. It's caused by accessing uninitialized
-> @kvm_state in kvm_flush_coalesced_mmio_buffer() due to commit 176d073029
-> ("hw/arm/virt: Use machine_memory_devices_init()"), where the machine's
-> memory region is added earlier than before.
+
+
+On 7/31/23 22:39, Peter Maydell wrote:
+> On Mon, 31 Jul 2023 at 08:18, David Hildenbrand <david@redhat.com> wrote:
+>>
+>> On 31.07.23 01:48, Gavin Shan wrote:
+>>> Runs into core dump on arm64 and the backtrace extracted from the
+>>> core dump is shown as below. It's caused by accessing @kvm_state which
+>>> isn't initialized at that point due to commit 176d073029 ("hw/arm/virt:
+>>> Use machine_memory_devices_init()"), where the machine's memory region
+>>> is added ealier than before.
+>>
+>> s/ealier/earlier/
+>>
+>>>
+>>>       main
+>>>       qemu_init
+>>>       configure_accelerators
+>>>       qemu_opts_foreach
+>>>       do_configure_accelerator
+>>>       accel_init_machine
+>>>       kvm_init
+>>>       virt_kvm_type
+>>>       virt_set_memmap
+>>>       machine_memory_devices_init
+>>>       memory_region_add_subregion
+>>>       memory_region_add_subregion_common
+>>>       memory_region_update_container_subregions
+>>>       memory_region_transaction_begin
+>>>       qemu_flush_coalesced_mmio_buffer
+>>>       kvm_flush_coalesced_mmio_buffer
+>>>
+>>> Fix it by initializing @kvm_state early. With this applied, no crash
+>>> is observed on arm64.
 > 
->      main
->      qemu_init
->      configure_accelerators
->      qemu_opts_foreach
->      do_configure_accelerator
->      accel_init_machine
->      kvm_init
->      virt_kvm_type
->      virt_set_memmap
->      machine_memory_devices_init
->      memory_region_add_subregion
->      memory_region_add_subregion_common
->      memory_region_update_container_subregions
->      memory_region_transaction_begin
->      qemu_flush_coalesced_mmio_buffer
->      kvm_flush_coalesced_mmio_buffer
+>> As an alternative, we might simply do nothing in
+>> kvm_flush_coalesced_mmio_buffer(), in case kvm_state is not setup yet.
+>> We don't have any notifier registered in that case.
 > 
-> Fix it by bailing early in kvm_flush_coalesced_mmio_buffer() on the
-> uninitialized @kvm_state. With this applied, no crash is observed on
-> arm64.
+> Yes, this seems better I think -- conceptually kvm_init()
+> probably ought to first set up the accelerator state and
+> then set kvm_state last, so that other code that looks
+> at the kvm_state global either sees NULL or else a
+> completely valid state, not a possibly half-initialised
+> one. (We should probably also NULL the global in the
+> error-exit path, though I imagine we're about to exit
+> in that case.)
 > 
-> Fixes: 176d073029 ("hw/arm/virt: Use machine_memory_devices_init()")
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> ---
-> v2: Bail early in kvm_flush_coalesced_mmio_buffer() on the uninitialized
->      @kvm_state and improved changelog        (David/Peter)
-> ---
->   accel/kvm/kvm-all.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> Is somebody able to write/test a patch for that today?
+> Ideally we'd fix this for tomorrow's rc...
 > 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index 373d876c05..7b3da8dc3a 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -2812,7 +2812,7 @@ void kvm_flush_coalesced_mmio_buffer(void)
->   {
->       KVMState *s = kvm_state;
->   
-> -    if (s->coalesced_flush_in_progress) {
-> +    if (!s || s->coalesced_flush_in_progress) {
->           return;
->       }
->   
 
-Thanks Gavin!
+Thanks for your comments, David and Peter. v2 was posted for a quick merge.
 
-Reviewed-by: David Hildenbrand <david@redhat.com>
+https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00702.html
 
--- 
-Cheers,
-
-David / dhildenb
+Thanks,
+Gavin
 

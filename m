@@ -1,148 +1,138 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2004723ejb;
-        Mon, 31 Jul 2023 00:52:16 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEt6XSVIbIWrPwauDLwTcHUSAILUTt3Jg1TRDsXeEM3vhWA1AzJ7GpwRaLDdJttVJIlFk2v
-X-Received: by 2002:a0c:efd0:0:b0:63c:e8c4:e9c8 with SMTP id a16-20020a0cefd0000000b0063ce8c4e9c8mr9388285qvt.16.1690789935846;
-        Mon, 31 Jul 2023 00:52:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690789935; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2005639ejb;
+        Mon, 31 Jul 2023 00:54:45 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHFZ0OyCV6dVy6hO9ZdmuxnM3Pz9v2BJ4HZ2Q4Iep9/fc0RwEUX9nFLiY3Dq53aexjGMFAN
+X-Received: by 2002:a05:620a:40c2:b0:767:fec4:1eb9 with SMTP id g2-20020a05620a40c200b00767fec41eb9mr11368153qko.69.1690790085200;
+        Mon, 31 Jul 2023 00:54:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690790085; cv=none;
         d=google.com; s=arc-20160816;
-        b=FSXh2n4C6zf7x4RtU8DWO1tR1JwenxxfXXSC+Tb6PF9PtvLmUC9yAAAnMCBrjmWPn+
-         mxUiPcXgJWGFMm5wHwnHPV+b31lOMOOx+jhiJrh8wiOB+gY6RIUpnRN7TiI8qSL/3Lz2
-         zmc3FnkQ9X8pNZmVZ81+lH6O1lBWWx/CNTKHKI80ImnVIy14LBDJr44hYCuKmd4PGSQq
-         RQssqNRQdBwugCHGHBriBu/JEdhTIaqAfGbXOHhZcNKXBvdzdzEa3/2/hj/WiYf6T07x
-         slb79i1w+Ko82l5PkYs3O/atnTkAhXG0ZERZ5WcHAvmA/Lyc7NyVD8EGiggKLB/48JzP
-         eYNA==
+        b=lUMONLa6LYgekfVXL35QnOoNgMvVInhHAzIyekGj5JD0lB1tFAN13Ku2MSSCuzpWUz
+         vAxpbeufhQ1S2Ws66syh9Bygt8XRBv3vK3KFPpVyH/5rkRDYnRMKNETc+xZtzVURqH0V
+         EFcdlGnJH1kPplih9g0ZidAuDabs2SBGD4tHE7DVuRFwuLOaZxeDz55EGnHAAeQzTMG5
+         3BGg9iMaq6fLIhNnwfrbT3XkvUNxmCqlUx/9OewiDBJHramvtldcDP6mKqdNUJVEF/7V
+         eulGjjBpZLUTUVtCQQn4jOy7SrpZkGuK/2xZKSjjXEe0n7RRVVqzIUMTowlQ7XzjYdFv
+         RgdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=fz6CRiO4ygE4G++UKuHt8gMGW4VyuwBQmleBWtYAuis=;
-        fh=Im9cDRH99dymvYcA3uZC4UQti/7OfT8f2n2PSjSCM5M=;
-        b=P62drC85hB/DV41LrfzvT3YyxhVMxOThON+jSX12B6UtpqMASJYX1vG/hHCddhMqZH
-         cFpT3QF6rq+WI7suW1zvGAPyTLntE8am9o6C23cxSOUFV8VFtYREXp8PQoReo3oWitGX
-         dfcuNS1jSQ3t1UElzt9+TCwHitewcx1mkn4VvZKnZUMYDYq2cRTAKKPnztYVLhsOPmAe
-         FWpUtllxv6gjYF7CVr+KFn3koGaSZsBww0Yc+GjvfKKpWy9sUmvdaQu8REwa5ZW0I4HL
-         yk1bPnmxOKk5Z8HoTZ5Dx1oXv/JHMF7pxRzDRkaLZ9M9yrwEPPoHbdaesedUnaTjE7Kf
-         Z6GQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=7ZO8/+xFrYFUUplmprpXkdk9gdtVNU+g6sTlEM4wmig=;
+        fh=o+KmjbnwQstJger2O7DN/SdbInfbsakgHzcDoCjU+rI=;
+        b=PYPo3e5xJMaO2E3pYDIYcfm8bv6zqMhJifIjZVZvOwdc+/J6mBTVfyU6fdBMXud5zc
+         EzVw64vu7HSJQ2Jjx9kSytUdhyFT78kKOwV05Xi01OwgFKn55ARmP5oV6HknNnBHpdQi
+         nZtF1F51cpSRxcJB6ZKB0sKC7zwmdUz/FH2s7SzNpFVNBWqfnsqashzJVgyLL5b9pjx2
+         DUoFY8+9u87z//6ZXDnC9gr5kNTFDvn5I8I2a+4bo4dcwf2VdW1Ft8wj7jIcuEsbiiwK
+         S/h85iiolgZbtJVGZE3MTHNF/anPbfRqg4f0ufx57lDFVZwKiH4TbHg6HNAs/QOUzuTE
+         vgTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=aLKEeH3h;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bSF5Hn1K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b3-20020a0cf043000000b0063d020d976asi5412291qvl.459.2023.07.31.00.52.15
+        by mx.google.com with ESMTPS id qh22-20020a05620a669600b00767185b2dfasi2277946qkn.622.2023.07.31.00.54.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jul 2023 00:52:15 -0700 (PDT)
+        Mon, 31 Jul 2023 00:54:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=aLKEeH3h;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bSF5Hn1K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qQNhD-0003X2-Bj; Mon, 31 Jul 2023 03:52:07 -0400
+	id 1qQNjc-0004eZ-TE; Mon, 31 Jul 2023 03:54:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1qQNh9-0003WZ-86; Mon, 31 Jul 2023 03:51:59 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qQNjb-0004dq-Av
+ for qemu-arm@nongnu.org; Mon, 31 Jul 2023 03:54:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1qQNh6-00049t-8V; Mon, 31 Jul 2023 03:51:58 -0400
-Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 36V7eUWB017717; Mon, 31 Jul 2023 07:51:28 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=fz6CRiO4ygE4G++UKuHt8gMGW4VyuwBQmleBWtYAuis=;
- b=aLKEeH3h4T0/XBhG9iDZLhXLxAX5/V0lGOX4bDCD6fjOlUj0Hqik/OgmDZ/o7RWhfqJJ
- C1k8yQDmyZ8M8N+2Bchg2Brhjf41JRE1sJIr2DObZMYKq9cnYGgEod55A0JEAM0tQxdp
- /+OR/CMjJQ1CMq4F1hhdsUAMHdK0Ee52aIMK5sdiZYyIVAY9tPcoJl9R8kC3XVauUDnj
- iEcbrVlFAgmpUYWAq91l/xie/KSH7wdka0+kb4SWaswzybqzi+7r6thwh8Ssyb/SJqhh
- 13tZuvBKKhsTcnT8XcKoavJqCGeyxJIP4ykpuZ2ZAii07MpDQzzPzSk6fl+2p2VJ1A2u nQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3s68cn0xaf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 31 Jul 2023 07:51:28 +0000
-Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 36V7eSqW017516;
- Mon, 31 Jul 2023 07:51:27 GMT
-Received: from ppma23.wdc07v.mail.ibm.com
- (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3s68cn0x9x-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 31 Jul 2023 07:51:27 +0000
-Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 36V71tEH019095; Mon, 31 Jul 2023 07:51:26 GMT
-Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
- by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3s5ekk1502-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 31 Jul 2023 07:51:26 +0000
-Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com
- [10.20.54.101])
- by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 36V7pOCR45810178
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 31 Jul 2023 07:51:24 GMT
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 4684020043;
- Mon, 31 Jul 2023 07:51:24 +0000 (GMT)
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A1AE020040;
- Mon, 31 Jul 2023 07:51:22 +0000 (GMT)
-Received: from [9.171.78.34] (unknown [9.171.78.34])
- by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Mon, 31 Jul 2023 07:51:22 +0000 (GMT)
-Message-ID: <1c35cba86f433178467f4f1bcf8727f8e83215ea.camel@linux.ibm.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qQNjZ-0004Ke-UL
+ for qemu-arm@nongnu.org; Mon, 31 Jul 2023 03:54:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1690790069;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7ZO8/+xFrYFUUplmprpXkdk9gdtVNU+g6sTlEM4wmig=;
+ b=bSF5Hn1KJU95KOoN3xBYymqnfKeHmmWCBvHiMNyi2bQI55Ey2BFcFcLBgF0kA+nmd4C8ad
+ 1uNaWYumze9n8mIoocEAiYYeuwB5TGvKo3OMlr/81iSc77DZ/8B6ltfkJ6BweMHssLr6Nk
+ z6K1IkkKfUxwOeI+RpLkiFEUihDxeKo=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-605-nF9F35hDMla47R9K8Mlqyg-1; Mon, 31 Jul 2023 03:54:27 -0400
+X-MC-Unique: nF9F35hDMla47R9K8Mlqyg-1
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-7623d5cb0caso431338585a.3
+ for <qemu-arm@nongnu.org>; Mon, 31 Jul 2023 00:54:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1690790067; x=1691394867;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=7ZO8/+xFrYFUUplmprpXkdk9gdtVNU+g6sTlEM4wmig=;
+ b=k+HAgk5YSwucAbHsIz4UNaLiA9w8TNezPHvoBnBUVQ3J2nekLUKnGV55Ri37vrD2qF
+ atpLdGAotgdPABPsdmh1Rs106PtnJFkbqnnHo3JzW6JdgdjJuisNfxzbNQICsL8DezkY
+ xbdfB9wrnlr3QpOgZvZ6iMp4Fdi/RnIyD3daPdgOqZ+s/6VZcyr1L2F2sBjIv/H4jN2R
+ 9qKb1DA1vUT1BI5ekHekw9t31dgTNHEyK/t69io0cXd0li/X0efGoJVBh4TVVxbLdB5N
+ PkcrYvT9QwfFOBShZlOL8gmURHxG93OVCFlE85sXZO/WJY21+Np6wo8U8fhWq6B9EPLj
+ Y62g==
+X-Gm-Message-State: ABy/qLaMZ7L9ny81y2+IiWUwCJZkCrekBZ1ZkkfF27G1ZyC0y8UCTFKT
+ igLQs4VzszAo60F1rifTRMiPXYVBLU6WXTVyr8JLKk62YUzMvzhJmPhavSDiMh76vhVmQekyoty
+ 9V3mQRoeCOTLv
+X-Received: by 2002:a05:620a:3189:b0:76c:54bc:ad1c with SMTP id
+ bi9-20020a05620a318900b0076c54bcad1cmr10030222qkb.18.1690790067234; 
+ Mon, 31 Jul 2023 00:54:27 -0700 (PDT)
+X-Received: by 2002:a05:620a:3189:b0:76c:54bc:ad1c with SMTP id
+ bi9-20020a05620a318900b0076c54bcad1cmr10030213qkb.18.1690790067011; 
+ Mon, 31 Jul 2023 00:54:27 -0700 (PDT)
+Received: from [10.33.192.205] (nat-pool-str-t.redhat.com. [149.14.88.106])
+ by smtp.gmail.com with ESMTPSA id
+ b26-20020a05620a119a00b0076c701c3e71sm3036372qkk.121.2023.07.31.00.54.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 31 Jul 2023 00:54:26 -0700 (PDT)
+Message-ID: <51ef9524-5550-1331-41e1-a349a6260ab4@redhat.com>
+Date: Mon, 31 Jul 2023 09:54:22 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
 Subject: Re: [PATCH 3/3] tests/tcg: Add -fno-stack-protector
-From: Ilya Leoshkevich <iii@linux.ibm.com>
 To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Christian Borntraeger <borntraeger@linux.ibm.com>, Thomas Huth
- <thuth@redhat.com>, Juan Quintela <quintela@redhat.com>, Peter Xu
- <peterx@redhat.com>, Leonardo Bras <leobras@redhat.com>, Peter Maydell
+Cc: Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Juan Quintela <quintela@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Leonardo Bras <leobras@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, Richard Henderson
  <richard.henderson@linaro.org>, "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>, Brian Cain <bcain@quicinc.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Song Gao
- <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>, Philippe
- =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Aurelien Jarno
- <aurelien@aurel32.net>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar
- Rikalo <aleksandar.rikalo@syrmia.com>,
+ <edgar.iglesias@gmail.com>, Brian Cain <bcain@quicinc.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
- David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org
-Date: Mon, 31 Jul 2023 09:51:22 +0200
-In-Reply-To: <20230731065904.5869-4-akihiko.odaki@daynix.com>
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org
 References: <20230731065904.5869-1-akihiko.odaki@daynix.com>
  <20230731065904.5869-4-akihiko.odaki@daynix.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
-User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
-MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: uLLQ3ybwebLuIRWqBezBPAG4Oipxt5kA
-X-Proofpoint-GUID: nIOZ4OwnHPviq3rjVc90_0MGltV1M1op
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-07-27_10,2023-07-26_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0
- lowpriorityscore=0 priorityscore=1501 mlxlogscore=678 impostorscore=0
- phishscore=0 bulkscore=0 clxscore=1011 malwarescore=0 mlxscore=0
- spamscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2306200000 definitions=main-2307310067
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=iii@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H5=-1,
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230731065904.5869-4-akihiko.odaki@daynix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.101, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01,
  RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -159,32 +149,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NixCb8cSRc/J
+X-TUID: zcaZq/063Of4
 
-T24gTW9uLCAyMDIzLTA3LTMxIGF0IDE1OjU4ICswOTAwLCBBa2loaWtvIE9kYWtpIHdyb3RlOgo+
-IEEgYnVpbGQgb2YgR0NDIDEzLjIgd2lsbCBoYXZlIHN0YWNrIHByb3RlY3RvciBlbmFibGVkIGJ5
-IGRlZmF1bHQgaWYKPiBpdAo+IHdhcyBjb25maWd1cmVkIHdpdGggLS1lbmFibGUtZGVmYXVsdC1z
-c3Agb3B0aW9uLiBGb3Igc3VjaCBhIGNvbXBpbGVyLAo+IGl0IGlzIG5lY2Vzc2FyeSB0byBleHBs
-aWNpdGx5IGRpc2FibGUgc3RhY2sgcHJvdGVjdG9yIHdoZW4gbGlua2luZwo+IHdpdGhvdXQgc3Rh
-bmRhcmQgbGlicmFyaWVzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEFraWhpa28gT2Rha2kgPGFraWhp
-a28ub2Rha2lAZGF5bml4LmNvbT4KPiAtLS0KPiDCoHRlc3RzL3RjZy9taXBzL2hlbGxvLW1pcHMu
-Y8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IDQgKystLQo+IMKgdGVzdHMv
-dGNnL2FhcmNoNjQvTWFrZWZpbGUuc29mdG1tdS10YXJnZXTCoMKgwqDCoCB8IDIgKy0KPiDCoHRl
-c3RzL3RjZy9hYXJjaDY0L01ha2VmaWxlLnRhcmdldMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
-IDIgKy0KPiDCoHRlc3RzL3RjZy9hbHBoYS9NYWtlZmlsZS5zb2Z0bW11LXRhcmdldMKgwqDCoMKg
-wqDCoCB8IDIgKy0KPiDCoHRlc3RzL3RjZy9hcm0vTWFrZWZpbGUudGFyZ2V0wqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAyICstCj4gwqB0ZXN0cy90Y2cvY3Jpcy9NYWtlZmlsZS50
-YXJnZXTCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAyICstCj4gwqB0ZXN0cy90Y2cv
-aGV4YWdvbi9NYWtlZmlsZS50YXJnZXTCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAyICstCj4g
-wqB0ZXN0cy90Y2cvaTM4Ni9NYWtlZmlsZS5zb2Z0bW11LXRhcmdldMKgwqDCoMKgwqDCoMKgIHwg
-MiArLQo+IMKgdGVzdHMvdGNnL2kzODYvTWFrZWZpbGUudGFyZ2V0wqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHwgMiArLQo+IMKgdGVzdHMvdGNnL2xvb25nYXJjaDY0L01ha2VmaWxlLnNv
-ZnRtbXUtdGFyZ2V0IHwgMiArLQo+IMKgdGVzdHMvdGNnL21pbmlsaWIvTWFrZWZpbGUudGFyZ2V0
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgMiArLQo+IMKgdGVzdHMvdGNnL21pcHMvTWFrZWZp
-bGUudGFyZ2V0wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgMiArLQo+IMKgdGVzdHMv
-dGNnL25pb3MyL01ha2VmaWxlLnNvZnRtbXUtdGFyZ2V0wqDCoMKgwqDCoMKgIHwgMiArLQo+IMKg
-dGVzdHMvdGNnL3MzOTB4L01ha2VmaWxlLnNvZnRtbXUtdGFyZ2V0wqDCoMKgwqDCoMKgIHwgMiAr
-LQo+IMKgdGVzdHMvdGNnL3g4Nl82NC9NYWtlZmlsZS5zb2Z0bW11LXRhcmdldMKgwqDCoMKgwqAg
-fCAyICstCj4gwqAxNSBmaWxlcyBjaGFuZ2VkLCAxNiBpbnNlcnRpb25zKCspLCAxNiBkZWxldGlv
-bnMoLSkKCkFja2VkLWJ5OiBJbHlhIExlb3Noa2V2aWNoIDxpaWlAbGludXguaWJtLmNvbT4K
+On 31/07/2023 08.58, Akihiko Odaki wrote:
+> A build of GCC 13.2 will have stack protector enabled by default if it
+> was configured with --enable-default-ssp option. For such a compiler,
+> it is necessary to explicitly disable stack protector when linking
+> without standard libraries.
+> 
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+>   tests/tcg/mips/hello-mips.c                   | 4 ++--
+>   tests/tcg/aarch64/Makefile.softmmu-target     | 2 +-
+>   tests/tcg/aarch64/Makefile.target             | 2 +-
+>   tests/tcg/alpha/Makefile.softmmu-target       | 2 +-
+>   tests/tcg/arm/Makefile.target                 | 2 +-
+>   tests/tcg/cris/Makefile.target                | 2 +-
+>   tests/tcg/hexagon/Makefile.target             | 2 +-
+>   tests/tcg/i386/Makefile.softmmu-target        | 2 +-
+>   tests/tcg/i386/Makefile.target                | 2 +-
+>   tests/tcg/loongarch64/Makefile.softmmu-target | 2 +-
+>   tests/tcg/minilib/Makefile.target             | 2 +-
+>   tests/tcg/mips/Makefile.target                | 2 +-
+>   tests/tcg/nios2/Makefile.softmmu-target       | 2 +-
+>   tests/tcg/s390x/Makefile.softmmu-target       | 2 +-
+>   tests/tcg/x86_64/Makefile.softmmu-target      | 2 +-
+>   15 files changed, 16 insertions(+), 16 deletions(-)
+
+I think the changes to the Makefile.softmmu-target files should rather be 
+done in a central place, in tests/tcg/Makefile.target, right after the 
+"EXTRA_CFLAGS += -ffreestanding" there.
+
+  Thomas
 

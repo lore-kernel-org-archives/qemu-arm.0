@@ -1,73 +1,73 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2026505ejb;
-        Mon, 31 Jul 2023 01:47:44 -0700 (PDT)
-X-Received: by 2002:a05:6358:9308:b0:134:e422:c500 with SMTP id x8-20020a056358930800b00134e422c500mr5276455rwa.27.1690793264149;
-        Mon, 31 Jul 2023 01:47:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690793264; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2026565ejb;
+        Mon, 31 Jul 2023 01:47:53 -0700 (PDT)
+X-Received: by 2002:a05:6300:8001:b0:130:835b:e260 with SMTP id an1-20020a056300800100b00130835be260mr8944866pzc.52.1690793273090;
+        Mon, 31 Jul 2023 01:47:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690793273; cv=none;
         d=google.com; s=arc-20160816;
-        b=FdhsRByEJvEW4TGTTiL+OFiicLFwwj+MeYqK6EWE5PRgO2XLq2V96t6IDQGg95OEys
-         e3xjqjIkwO3kEGVi4ytaIJBNVxSMWSsIPki4/PUVzGSVN/ywLolzgQsJPeYmpuQEMPOG
-         N9en6F2PYAUVBMN7E0MWb09GYBMJBBnAuhb/kBEAKkl1HMr6fLjGTGvmXuDCK82K0W4F
-         A9nz+ZVpc5w7gPWUyhuybyt8iek2esbBJo9tEJUhunG8H2On0HibK2jUMfZbmbYiXikh
-         dyihRVmuQ3biWnY72FEsSp4LPqHvE0w0LYKqbCZF5jcc5ZYM2J9ewq3nvpPYkgPVQuXg
-         6Liw==
+        b=HiTl76fwAIo1WqnQZjybx+y/a2HG5P8vWVcJAdAQzn5o+jXFIboAWA9QdVEPfk13Xy
+         +6lgdPthmkYhPPDcSsFRnyw0+7P/pGinnE0poRecL2RyFmt00ZzfJXvavSSudFL+XeiQ
+         yU0XWv2LBXYME8V1cx3y5Nter5lPL+UB8UlGBbfGAYaDyugPN0M6BBADyAw4lqR5hk2y
+         mLa7GDLoARlLMLILX357yhReJ7jMPYrmWdjbajsZdTjmn5Sgux3C1Z1wmtf5to3zi5st
+         q5RYp8nnkYHa/knePyJadEb9zlkcrYZv4f1zqPsz7z6MvthpSwFTzs92TTv4LWTkqlSa
+         +0IA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3o76KcQlFp/MuUPscQNwseGhYtySE7hW349U50r8SMs=;
+        bh=q/ljaudOPf1jdz+9rwGQeEP3d6AMU+42VcuNs3f2VA4=;
         fh=l3HXkgen+sp7qeKvX9FkHOJAUo4ziZShK2g6VutuFWs=;
-        b=nkJSGEwTVUPaOZOsHfqLRb7TCRCMZUxl3gH2OUWSg3iLxgN2eGVHWVTjAk35JjhA3C
-         KZXYEqFg/U6VT/rB+jyM81VD+xFMTFveNUCTzcE8VWVxdLmKf7FL1IATEuZC7voKCOpS
-         epnVsVyD4MWPlxg9ylH4UBbSuh+8djs8bZPaqQqVOCpfy8j5eFVEbOtsZgqze+klTYOr
-         LiW8zE4Xv7uxB/R1+ELWNEKKkTsQ4JpaYwbceFHC6pl5iOorbWqDOJFVi2SV+KR9O9PQ
-         OZur5EvPbSgXkuYjEZLP9dPXMCv0UP55mmeFugUmK/8okGLh4SF+++wgBzTYQk+07UTz
-         sa9A==
+        b=YdiBgI+NCMSnTLzaLBrx0EXA5FG4oyWku2jrftERLSLjmx6b1e2NXgkn8pC7yIIQmV
+         rvrvZuhVfewd95SCW1slC1Y2DbI3J4VjfbwVSZBcKoC27TXaKO5TE3NljnYmnjQgn4+u
+         LKB9HpIh8UcxzpQEfiQCziNtRFmCf3uzgahJzo3+mNesOCZ/wqaAYLDqHc1/hksVMzC+
+         L6BIrGTn+nYpfh9yUZxDqLvWaSKSDrdvztwplX4SUGY6vYu3aH0Q4KxCdD6VfUSymfMK
+         VJ+jk/UY6IAH6KQMZkZjjyiNeN0VJqOnEOM/vCxnaM31vpgtBXUHnkaCLiw+n0v2alW+
+         hPgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=y7u6jP89;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=nZhLxAvp;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z64-20020a633343000000b005642a79ae82sor1220143pgz.10.2023.07.31.01.47.43
+        by mx.google.com with SMTPS id c64-20020a624e43000000b0066392cf5b21sor3443905pfb.9.2023.07.31.01.47.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 31 Jul 2023 01:47:44 -0700 (PDT)
+        Mon, 31 Jul 2023 01:47:53 -0700 (PDT)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=y7u6jP89;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=nZhLxAvp;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690793263; x=1691398063;
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690793272; x=1691398072;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=3o76KcQlFp/MuUPscQNwseGhYtySE7hW349U50r8SMs=;
-        b=y7u6jP89IRQwFYemyUCc7xG0gnAOc6UdmwLMYKHPqhVV64B/3hHVL4MPPDtz7wqlA7
-         10yZVU9H/4k+HA54IqVn54qBfdzJZBgZDG5Q/xylLQlBEQ067qih3SvSuJYzKTvcJmjc
-         mrxi2zEuDLRUQdx80/tkyCb3ED+1QiEZws52SCZBk3yaVyIh5T5NQ5bhTTEAlGyGOrf3
-         SGfvTJF9Cc5V3n7kDlhmbTcHZ1oApB3rUp6rNP919WOivk9EBpEDr9HJlAfw+sYJk0gm
-         PDRE4rN7kgwMyNEgJFvdeJUd1lyD/ncCVmGusDXssoXlqcBDaRtCpwHb6+7lOCRKVef5
-         hdHQ==
+        bh=q/ljaudOPf1jdz+9rwGQeEP3d6AMU+42VcuNs3f2VA4=;
+        b=nZhLxAvp/2C33LdlnpYPZp34/slMDnUUx4cwF5RmfJ6JeoUf5Oi+vYGGAws4eolnvo
+         2p5xh7PGxwvPK9vYczLlb8vbfKvW52MbYRaJIksHnowC93XbrL1fFRT25YQ8WC0Rrz6F
+         PC0gA8Kdbt7LQt3g4kInIfJoo7rNRMyFX+6gfgaBGM3I07rFaJ3mhwWvRoZWc7EetuP0
+         BqxYXoWRuWFmNIFZNo+GGzzLxRt4cnE/JYJQIQnlW+QMJf2pV2Z1MUwCdWv4lWHbZrsb
+         v+W8T+m46sHcD8t7A4+qH+/9I1s4/ARsPTqGWdSUkzW+eiweuBa00AtSVTH1S9HYcLaE
+         TxWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690793263; x=1691398063;
+        d=1e100.net; s=20221208; t=1690793272; x=1691398072;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=3o76KcQlFp/MuUPscQNwseGhYtySE7hW349U50r8SMs=;
-        b=Hq658cV94vtdgy5iIjw0Khfw5Xb/KtMI9SLEP6O0M8PISt9RdedmSRYqDOyLdWdBG/
-         siSQKw9S0Rr5Sa9UFCwJHcgHqgKjzMcPs9Rk2GBqSUy0xXjOQvwHKvhS9HlAux5UuSBb
-         OBGMEDzfnr4iCipFNAKUXQschKequkDZmEWOM6+54zx9WeChWXtTNrMCZsDluKBf81jn
-         +ZjDYuTmi5G99xvUAtuQ1uWLyshcqbNJgrwTELNGmlHDIS+WJDYDfqbkhTWesf7EgP2c
-         8WU+bsitrWLbhk3tT1gwet3GamLxMlSVQ0vRRxgQabhB1doNgb6eNhIHimSp5FN7iMcn
-         yxUA==
-X-Gm-Message-State: ABy/qLa3vh4V0WzJbmh0aoICtn8aXpgXtualXlIUhgPp3+uMgo5ijbmZ
-	GioPfsNiyZF0v8Ut+g2oVKufRw==
-X-Google-Smtp-Source: APBJJlEaUUZeLz9nI9U553gFiXbqNs1uGKfoHWk0vvfK5zSNsIuJ4De3cguOxUIvGNrmixpzNVrxxA==
-X-Received: by 2002:a05:6a20:8e2a:b0:137:4bff:7c92 with SMTP id y42-20020a056a208e2a00b001374bff7c92mr9475935pzj.0.1690793263643;
-        Mon, 31 Jul 2023 01:47:43 -0700 (PDT)
+        bh=q/ljaudOPf1jdz+9rwGQeEP3d6AMU+42VcuNs3f2VA4=;
+        b=j6XhvMib274ncyCS5+eEadH9DKDdUA2Lahu+ZTaJT+LurhKJauIie+SoLPPXZHt+9t
+         sRG9bg7RP3jbxJ7O/VHeVPsGMXJ/mjILxhJ4Wlcn7okbt/OZ61pl92AxHeV0uBamvuVi
+         tyvbCiKMQkuE86cKxIGQsPpiyMxMd5D6EVEcClnlg1C2Sp4vM/sBFa9yuLG9MWD428HG
+         es4h/oV8jENS5fmMJ/6aetpmqjpkQEOamxj/SsLwkf6kduwTqFZgk9YJGvCPVqyHEQVG
+         pXzdFG86KsMyHa+yHgBn1JsRvH0VdV4p3r+BgwKznDSFRr1038A/eEmb1ropM5nbS7/s
+         7LHQ==
+X-Gm-Message-State: ABy/qLZ4Fh/NzcFrK1Wtnp/3qUgwpuoqn11BG6ndNtXq+nIdco6VsLe+
+	+sCq6uGyCIFoB1FecEaY3LMC2Z9MJfB72IQZHEU=
+X-Google-Smtp-Source: APBJJlEsp426D/hJ2qOs56A+RF7uySuqd1KXfb7I+eDTnz00qZVW1bhYr8MFZbAJbWbLrTQhqBDOpA==
+X-Received: by 2002:a05:6a00:c95:b0:686:6fa8:2b0d with SMTP id a21-20020a056a000c9500b006866fa82b0dmr11250632pfv.4.1690793272620;
+        Mon, 31 Jul 2023 01:47:52 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from alarm.. ([157.82.204.253])
-        by smtp.gmail.com with ESMTPSA id u19-20020aa78493000000b00666e649ca46sm7075563pfn.101.2023.07.31.01.47.34
+        by smtp.gmail.com with ESMTPSA id u19-20020aa78493000000b00666e649ca46sm7075563pfn.101.2023.07.31.01.47.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Jul 2023 01:47:43 -0700 (PDT)
+        Mon, 31 Jul 2023 01:47:52 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -120,42 +120,138 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-riscv@nongnu.org,
 	qemu-s390x@nongnu.org,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [RFC PATCH 23/24] plugins: Support C++
-Date: Mon, 31 Jul 2023 17:43:50 +0900
-Message-ID: <20230731084354.115015-24-akihiko.odaki@daynix.com>
+Subject: [RFC PATCH 24/24] contrib/plugins: Add cc plugin
+Date: Mon, 31 Jul 2023 17:43:51 +0900
+Message-ID: <20230731084354.115015-25-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230731084354.115015-1-akihiko.odaki@daynix.com>
 References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: Bpjt6dhvcfbp
+X-TUID: CjK1zlu7ZqqG
 
-Make qemu-plugin.h consumable for C++ platform.
+This demonstrates how to write a plugin in C++.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- include/qemu/qemu-plugin.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ docs/devel/tcg-plugins.rst |  8 ++++++++
+ configure                  | 15 ++++++++++++---
+ contrib/plugins/Makefile   |  5 +++++
+ contrib/plugins/cc.cc      | 15 +++++++++++++++
+ tests/tcg/Makefile.target  |  3 +++
+ 5 files changed, 43 insertions(+), 3 deletions(-)
+ create mode 100644 contrib/plugins/cc.cc
 
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index 214b12bfd6..8637e3d8cf 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -16,6 +16,8 @@
- #include <stdbool.h>
- #include <stddef.h>
+diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
+index c9f8b27590..0a11f8036c 100644
+--- a/docs/devel/tcg-plugins.rst
++++ b/docs/devel/tcg-plugins.rst
+@@ -584,6 +584,14 @@ The plugin has a number of arguments, all of them are optional:
+   configuration arguments implies ``l2=on``.
+   (default: N = 2097152 (2MB), B = 64, A = 16)
  
-+G_BEGIN_DECLS
++- contrib/plugins/cc.cc
 +
- /*
-  * For best performance, build the plugin with -fvisibility=hidden so that
-  * QEMU_PLUGIN_LOCAL is implicit. Then, just mark qemu_plugin_install with
-@@ -723,4 +725,6 @@ qemu_plugin_get_register_files(unsigned int vcpu_index, int *size);
-  */
- int qemu_plugin_read_register(GByteArray *buf, int reg);
++cc plugin demonstrates how to write a plugin in C++. It simply outputs
++"hello, world" to the plugin log::
++
++  $ qemu-system-arm $(QEMU_ARGS) \
++    -plugin ./contrib/plugins/libcc.so -d plugin
++
+ API
+ ---
  
-+G_END_DECLS
+diff --git a/configure b/configure
+index 26ec5e4f54..0065b0dfe0 100755
+--- a/configure
++++ b/configure
+@@ -293,10 +293,18 @@ else
+   cc="${CC-${cross_prefix}gcc}"
+ fi
+ 
+-if test -z "${CXX}${cross_prefix}"; then
+-  cxx="c++"
++if test -n "${CXX+x}"; then
++  cxx="$CXX"
+ else
+-  cxx="${CXX-${cross_prefix}g++}"
++  if test -n "${cross_prefix}"; then
++    cxx="${cross_prefix}g++"
++  else
++    cxx="c++"
++  fi
 +
- #endif /* QEMU_QEMU_PLUGIN_H */
++  if ! has "$cxx"; then
++    cxx=
++  fi
+ fi
+ 
+ # Preferred ObjC compiler:
+@@ -1702,6 +1710,7 @@ echo "MESON=$meson" >> $config_host_mak
+ echo "NINJA=$ninja" >> $config_host_mak
+ echo "PKG_CONFIG=${pkg_config}" >> $config_host_mak
+ echo "CC=$cc" >> $config_host_mak
++echo "CXX=$cxx" >> $config_host_mak
+ echo "EXESUF=$EXESUF" >> $config_host_mak
+ 
+ # use included Linux headers
+diff --git a/contrib/plugins/Makefile b/contrib/plugins/Makefile
+index b2b9db9f51..93d86b3d07 100644
+--- a/contrib/plugins/Makefile
++++ b/contrib/plugins/Makefile
+@@ -21,6 +21,9 @@ NAMES += lockstep
+ NAMES += hwprofile
+ NAMES += cache
+ NAMES += drcov
++ifneq ($(CXX),)
++NAMES += cc
++endif
+ 
+ SONAMES := $(addsuffix .so,$(addprefix lib,$(NAMES)))
+ 
+@@ -31,6 +34,8 @@ CFLAGS += -fPIC -Wall
+ CFLAGS += $(if $(CONFIG_DEBUG_TCG), -ggdb -O0)
+ CFLAGS += -I$(SRC_PATH)/include/qemu
+ 
++CXXFLAGS := $(CFLAGS)
++
+ all: $(SONAMES)
+ 
+ %.o: %.c
+diff --git a/contrib/plugins/cc.cc b/contrib/plugins/cc.cc
+new file mode 100644
+index 0000000000..e7270d7adc
+--- /dev/null
++++ b/contrib/plugins/cc.cc
+@@ -0,0 +1,15 @@
++#include <qemu-plugin.h>
++
++extern "C" {
++
++QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
++
++QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
++                                           const qemu_info_t *info, int argc,
++                                           char **argv)
++{
++    qemu_plugin_outs("hello, world\n");
++    return 0;
++}
++
++};
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 462289f47c..3d7837d3b8 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -149,6 +149,9 @@ PLUGIN_SRC=$(SRC_PATH)/tests/plugin
+ PLUGIN_LIB=../../plugin
+ VPATH+=$(PLUGIN_LIB)
+ PLUGINS=$(patsubst %.c, lib%.so, $(notdir $(wildcard $(PLUGIN_SRC)/*.c)))
++ifneq ($(CXX),)
++PLUGINS+=$(patsubst %.cc, lib%.so, $(notdir $(wildcard $(PLUGIN_SRC)/*.cc)))
++endif
+ 
+ # We need to ensure expand the run-plugin-TEST-with-PLUGIN
+ # pre-requistes manually here as we can't use stems to handle it. We
 -- 
 2.41.0

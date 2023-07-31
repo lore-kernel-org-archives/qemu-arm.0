@@ -1,92 +1,92 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp1984378ejb;
-        Mon, 31 Jul 2023 00:00:32 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFjyVI/Q+BYK+huQ87DHSTe1OZG1Lz3n2eb8wzn+8CP2xrDmuTMZ1BgNxG8YFDHhIAbyxub
-X-Received: by 2002:a05:620a:248d:b0:765:7a1e:a456 with SMTP id i13-20020a05620a248d00b007657a1ea456mr9667068qkn.54.1690786832504;
-        Mon, 31 Jul 2023 00:00:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690786832; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp1984573ejb;
+        Mon, 31 Jul 2023 00:00:54 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGH61N6zNl74yfBIkRAzbYTLstaTbweFiXp+7M6BaWLUebzvU0hJnxIRRKThVq9vMCd4pZ8
+X-Received: by 2002:a05:622a:15c3:b0:3f9:cb01:9dae with SMTP id d3-20020a05622a15c300b003f9cb019daemr13352378qty.50.1690786853994;
+        Mon, 31 Jul 2023 00:00:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690786853; cv=none;
         d=google.com; s=arc-20160816;
-        b=MPAaeeobUmGq61jKmDaCFo7ZwwPLej0IB4IHjM47p6uSdQSjoX8i9A11J7T30DANtC
-         jRifZVKXlGVaJBWCDOYz1HSkulYGTNj/AmK9nRu29hwW3ip7YvR9n8MJrf1OuObDMyf0
-         FnVyfTYQmppCCtELU1Y5m2WvJc0Hb5/tLlumkxkhfsyeS8eZldKTwcAfiY+iJXeNWNFt
-         lgz66u6gW/2KrHTuiiSENBmWW+ksEGTGxCJy1dZL9et8zpCEi1ZA8C7ocvvSYY0VWb7+
-         bI2c1T1HB/Hs0SR+QJoPPG44f1ASqBEKq4Jgv+y2rbT4Dk8lOLGRHWfmaLXzNe2nYAIt
-         EPTA==
+        b=dt4J3x0a9InbI6sgBqLnhwNHadTGD1bufzYELpl/lZWWrpJRnJlz7RP+97iT8CDuHo
+         uEGpn3JN6Ols+zRxY/0zxi4mmCvYFMMLRTtjG/yD5wmQTOa9yEAaaqbrWB/yDob02Vpl
+         09r07AHwD1H9ya32iNZkaIqaDxcNVQYVzCtw/xX6bfr9zW269wMXGYHd+PIAWYNf/Ue2
+         gLwnF7tnLoVKWT49PAfojPM0wjumurSh43I9nPE8oS925mQgojSCsZcky9eXv9kGmEBr
+         2YmK7dy8uWbtB/5lf4pQhwSljMNikXppXBOEWkVJzUAcGGkGb30VFdjuMjfpKW549TDs
+         9Gtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=CO7fy32xenrVhWZYD9ETTxnPRxcdVezcG1Q1gQ0RmBw=;
+        bh=77Gl1gR/CtV/Pj1pMJJnyApzrSwhQ8z1Fjifq2QlnZw=;
         fh=OCEWWSfbk1OI/p24ePgb3FWZF0yToCsB1weDXCG3NBM=;
-        b=bqkvfn+OB46YDJdfbguL2DO2yFQIcEoQIu+1d2TDH7466GeDgO2wdqVGxnwCEdpFSg
-         XaA/GziyPvW/RDHgS39u2DSrETtyt3icyDhSPgzt6aoyJ5P4T3gouJldE+Qdqi9I5AZh
-         aDTHfx13sXxeagn7GzMokXa+UVbjJIUP8Pt6sQIjgjeTUwePv0VF0F4jwnnUPmbbJkGh
-         g5RmCm23gAkU7/jsft4eknYxjrOl9OWp9292leUyEToQ5a/JGyo88//PBmqpGQ7IK051
-         xF3NWuvTnI1NVIXIBpep6auLT7RexVlVFthKb0I7IZNIyH0TZdea0A1lW+Sf9KT3kt5o
-         NKNg==
+        b=kPoVt/bLdPVlbpcAjPlNRTw2CGwhLwGfTN6halAgyzE29GSMzZKoBvJ90bQhqZkenY
+         OfeQsgpn8CPm6D0n4YIR7KnAqcHdpwbRAsEzWa/Iidb2i0oqS/lS5yoDKVz4ASN3dLe/
+         kupb0D/3bH6NssCGWFoyAHDEVOLDQgSyK8oFu524/tbZj1AZiYde2qMkf91rdqowBzCS
+         VRVK0I2JQOcDP45YL7558TP0zRrwqU+QcIlXccUbERy/saayYjWoEOrTP6gDMSRPWUle
+         P5Mh+jieO/ojntKOKVmfkzyYHKHZPUjXbSedPyYLTdXuDbdfvQXPIB99/Ij09WtdpD9k
+         yNag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=EfLF4fpp;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=FxGCQ10C;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t68-20020ae9df47000000b0076811f91fc2si5056000qkf.124.2023.07.31.00.00.32
+        by mx.google.com with ESMTPS id w11-20020ac857cb000000b004034b7077d7si2417741qta.399.2023.07.31.00.00.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jul 2023 00:00:32 -0700 (PDT)
+        Mon, 31 Jul 2023 00:00:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=EfLF4fpp;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=FxGCQ10C;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qQMsL-0007S1-1U; Mon, 31 Jul 2023 02:59:29 -0400
+	id 1qQMsN-0007VG-Jz; Mon, 31 Jul 2023 02:59:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qQMsI-0007RO-Uv
- for qemu-devel@nongnu.org; Mon, 31 Jul 2023 02:59:26 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ id 1qQMsN-0007Us-2J
+ for qemu-devel@nongnu.org; Mon, 31 Jul 2023 02:59:31 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qQMsG-0001Je-GR
- for qemu-devel@nongnu.org; Mon, 31 Jul 2023 02:59:26 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-1bbc7b2133fso25475935ad.1
- for <qemu-devel@nongnu.org>; Sun, 30 Jul 2023 23:59:24 -0700 (PDT)
+ id 1qQMsL-0001KM-JA
+ for qemu-devel@nongnu.org; Mon, 31 Jul 2023 02:59:30 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-1bb119be881so35439625ad.3
+ for <qemu-devel@nongnu.org>; Sun, 30 Jul 2023 23:59:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690786763; x=1691391563;
+ d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690786768; x=1691391568;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CO7fy32xenrVhWZYD9ETTxnPRxcdVezcG1Q1gQ0RmBw=;
- b=EfLF4fppayLzjItnuta8ctFqIoTgEF5mEpipkaNCKlIL/dJu9PaOgyWekixIJ6Zi4d
- Qjgoa772Y46aBa/lF2fmvLXjc7XmuHoNfOTKZoM6YFaeX5NZSl2ARf01FFauLhtQWa8E
- WRAyX2lAtF2x4npVbVup0L7HOBTdah9c3llVRdiPX4nWilbwKld9/30fu61cKK8eg0WT
- lq/W5+XAJ6clSzZbh93UErX0p9HFW9Ejm/uwFuDoSB5eswSgJ00cBIroB+/rLVCi0G5N
- xVUYJptcA4wBljSndj7/WnAfr+MWXmuaQ4F0n9lzma79rgUAzFYWjwII1+q4KY3jReuN
- hevg==
+ bh=77Gl1gR/CtV/Pj1pMJJnyApzrSwhQ8z1Fjifq2QlnZw=;
+ b=FxGCQ10Cz6y3wx5KwnEgTHTRROxg0d0sOHhPQTie1C13lvSdcbL3/JBxAQNq7juOwU
+ jSnkXiCYUWHOFlLgZVhgZmKpG885oFkEFza7zI8ur7nxVSw/HxgI0rbeDwhdZb07jdoZ
+ /OYDJPAGyOIpi85lzjNqboYOAYaiS0/ZR94s5WdQqN32Ue5d2jHxvSuJlG16OaGplPfZ
+ 2Fn0kOF3Kkjp/J75iPWj1QAybjrUJn1hkqHGD0fajP1kDiiZ8HCO3at0ETnMYiditOEe
+ 8RV2jbwfW9ReXQrz7efSJhgSF9dUkUcEhmxve83MO4zJFPmi70UY84rCZKiUaqPlp93L
+ Ri/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690786763; x=1691391563;
+ d=1e100.net; s=20221208; t=1690786768; x=1691391568;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=CO7fy32xenrVhWZYD9ETTxnPRxcdVezcG1Q1gQ0RmBw=;
- b=Iz9DL6UyMWFuZ1DlVCPvqkuXk/R6940Z1uahmiTEGCcBIZWteWxdJxuyTfOYFFqiof
- QJY1bZ/UEIl0XZGKI5Z1YdmWMlwAckg5rhHSE5OomD4TfhGCJEEv9+BcU0FDKBjGfUai
- hwF13iRW5dqp5wC8Uqga391Ce6zYzOMnNsgIvuB9ObMxn0WePVnb5uk8R/XZ15ESegdM
- L1gy5o7yeFPZYBuEnfFTM1J3d9w+UQuSJuLEGFxEtwgA00YQlrLo1ElMjw1FKH4bdGav
- ujPHX6hx0BruaqNxbVFxlSARl8QSKGNivNIlntBXuEjA8Tlp5GEdajV2QiqRt6SMP+HP
- T46Q==
-X-Gm-Message-State: ABy/qLYjOeAOgThxgcFZf4ZzyZrkBQz/KA8H4OkvoTTe8q13WAETTjlt
- gHh20vN6Jb3W4GZXWDtI+uZ9og==
-X-Received: by 2002:a17:902:82c3:b0:1bb:b86e:8d60 with SMTP id
- u3-20020a17090282c300b001bbb86e8d60mr8821519plz.46.1690786763130; 
- Sun, 30 Jul 2023 23:59:23 -0700 (PDT)
+ bh=77Gl1gR/CtV/Pj1pMJJnyApzrSwhQ8z1Fjifq2QlnZw=;
+ b=lIrYoFrmPK4lycCjBfs9Oq2evsE4a7tL55DpmoxBd9H0zXS+MZf8xhoDJWRkLilx/p
+ 18m69XTaqVE4ZkOkWgXIsWOGnW2+dZni+VvES3RzE09lum8SRbBSv2a2DL+33tvc8s5o
+ NHu3yWR+iytDO1XnSCBRCrPlzy5wb6jtsQ4aG2qAbVGXgRJoZ/FoeQgbt9wN/TE6xCKd
+ Bx/Ehc59Savs6PyMGlEwq7GGdJNu/QyU984sKv5trc+kV5eugV1EaqMfPVK/xbjDSXBZ
+ yz9C5yfEcNZh046qnwlyV29lTjj5gZDh48CX3L1S4GUsfcM8g4xf0fXemcTQKZUYde//
+ Dfig==
+X-Gm-Message-State: ABy/qLYR1DWFxNGqnCrvluePGrnkBIhOJhYQVO0RfKeThHE3PeVt4LAv
+ 3NjasU1wToSz9ZEXO6lSCJUSCA==
+X-Received: by 2002:a17:903:32c4:b0:1bb:1e69:28c0 with SMTP id
+ i4-20020a17090332c400b001bb1e6928c0mr10622243plr.30.1690786768234; 
+ Sun, 30 Jul 2023 23:59:28 -0700 (PDT)
 Received: from alarm.. ([157.82.204.253]) by smtp.gmail.com with ESMTPSA id
- l16-20020a170903121000b001b8af7f632asm7684988plh.176.2023.07.30.23.59.18
+ l16-20020a170903121000b001b8af7f632asm7684988plh.176.2023.07.30.23.59.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 30 Jul 2023 23:59:22 -0700 (PDT)
+ Sun, 30 Jul 2023 23:59:27 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Christian Borntraeger <borntraeger@linux.ibm.com>,
@@ -106,23 +106,22 @@ Cc: Christian Borntraeger <borntraeger@linux.ibm.com>,
  David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
  qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
  Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 1/3] pc-bios/optionrom: Add -fno-stack-protector
-Date: Mon, 31 Jul 2023 15:58:54 +0900
-Message-ID: <20230731065904.5869-2-akihiko.odaki@daynix.com>
+Subject: [PATCH 2/3] tests/migration: Add -fno-stack-protector
+Date: Mon, 31 Jul 2023 15:58:55 +0900
+Message-ID: <20230731065904.5869-3-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230731065904.5869-1-akihiko.odaki@daynix.com>
 References: <20230731065904.5869-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::62c;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pl1-x62c.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,7 +136,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: REdszOtl7GeT
+X-TUID: C/eedU94PdjZ
 
 A build of GCC 13.2 will have stack protector enabled by default if it
 was configured with --enable-default-ssp option. For such a compiler,
@@ -146,36 +145,24 @@ without standard libraries.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- pc-bios/optionrom/Makefile | 2 +-
- pc-bios/s390-ccw/Makefile  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ tests/migration/s390x/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/pc-bios/optionrom/Makefile b/pc-bios/optionrom/Makefile
-index b1fff0ba6c..f220d81f2c 100644
---- a/pc-bios/optionrom/Makefile
-+++ b/pc-bios/optionrom/Makefile
-@@ -19,7 +19,7 @@ quiet-command = $(call quiet-@,$2 $@)$1
- override CPPFLAGS += -MMD -MP -MT $@ -MF $(@D)/$(*F).d
+diff --git a/tests/migration/s390x/Makefile b/tests/migration/s390x/Makefile
+index 6393c3e5b9..6671de2efc 100644
+--- a/tests/migration/s390x/Makefile
++++ b/tests/migration/s390x/Makefile
+@@ -6,8 +6,8 @@ all: a-b-bios.h
+ fwdir=../../../pc-bios/s390-ccw
  
- override CFLAGS += -march=i486 -Wall $(EXTRA_CFLAGS) -m16
--override CFLAGS += -ffreestanding -I$(TOPSRC_DIR)/include
-+override CFLAGS += -ffreestanding -fno-stack-protector -I$(TOPSRC_DIR)/include
+ CFLAGS+=-ffreestanding -fno-delete-null-pointer-checks -fPIE -Os \
+-	-msoft-float -march=z900 -fno-asynchronous-unwind-tables -Wl,-pie \
+-	-Wl,--build-id=none -nostdlib
++	-msoft-float -march=z900 -fno-asynchronous-unwind-tables \
++	-fno-stack-protector -Wl,-pie -Wl,--build-id=none -nostdlib
  
- cc-test = $(CC) -Werror $1 -c -o /dev/null -xc /dev/null >/dev/null 2>/dev/null
- cc-option = if $(call cc-test, $1); then \
-diff --git a/pc-bios/s390-ccw/Makefile b/pc-bios/s390-ccw/Makefile
-index acfcd1e71a..446d448913 100644
---- a/pc-bios/s390-ccw/Makefile
-+++ b/pc-bios/s390-ccw/Makefile
-@@ -38,7 +38,7 @@ OBJECTS = start.o main.o bootmap.o jump2ipl.o sclp.o menu.o \
- EXTRA_CFLAGS += -Wall
- EXTRA_CFLAGS += -ffreestanding -fno-delete-null-pointer-checks -fno-common -fPIE
- EXTRA_CFLAGS += -fwrapv -fno-strict-aliasing -fno-asynchronous-unwind-tables
--EXTRA_CFLAGS += -msoft-float
-+EXTRA_CFLAGS += -fno-stack-protector -msoft-float
- EXTRA_CFLAGS += -std=gnu99
- LDFLAGS += -Wl,-pie -nostdlib
- 
+ a-b-bios.h: s390x.elf
+ 	echo "$$__note" > header.tmp
 -- 
 2.41.0
 

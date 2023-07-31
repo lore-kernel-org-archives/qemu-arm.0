@@ -1,169 +1,170 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2190890ejb;
-        Mon, 31 Jul 2023 06:56:11 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlF79rhNi2fAe1x/gOUF2JvJG4sO7gUPRhpsSiivuobR6wPWS1W4MDYPEAIBULoli6a0hxRg
-X-Received: by 2002:a37:2c04:0:b0:76c:8998:1866 with SMTP id s4-20020a372c04000000b0076c89981866mr8315560qkh.40.1690811771602;
-        Mon, 31 Jul 2023 06:56:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690811771; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2215872ejb;
+        Mon, 31 Jul 2023 07:31:54 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGYk5OjbBDj+rEM6/rO+K66Llqch8I0n0TliYh3C14Pw1EHWZXKRPd4IRI8IRT82wKzEGz7
+X-Received: by 2002:a05:6808:2a59:b0:3a7:17b6:3501 with SMTP id fa25-20020a0568082a5900b003a717b63501mr6051347oib.23.1690813914643;
+        Mon, 31 Jul 2023 07:31:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690813914; cv=none;
         d=google.com; s=arc-20160816;
-        b=eJXDgJtjK9TGH+E3aU4GAaDHQsftmmIgDQJzZjXtdONvtrTEJzUy/YHOI7P3om697C
-         gb+E2L9Eo1doAFBLJnsH3s/WHfNzuGgiTgKDGCBWu3Vny2YosL5XBkWNs4wpWfQiT5/J
-         jyw8ihV4ildBw8esKgrCKNnojsK9Sf286tv8wv5i18ibGLg7DWSb8fO91geN+b9dgbLP
-         76Un6hoBeXsriItlDF1GCVrX7Wxx38kfhjyNcHEAwUFZSvQXYnqW6PaybiSNc8ypoLY+
-         kkAB50bxHTLPMxI1BI/dxmkAnRrowa6TNGinWRjDB8EPZ84G/D9x/9mmzMjJWu2UGofQ
-         nVKQ==
+        b=tyWHySwVpCROq0q3m/vjHZt/DmNwkZdjOvH9YxOaNHVEufMiAtMs1sL1afVAl8Zaz0
+         brcPy7L+yNvjsrpwUzcun9u6hC4Gxp0k3Iso3UcQDKQGecDJhMoe5bLR5PWUmVrtd6zv
+         ADp9U0bEZkRXHIXyXpsl26SAnxsUW0owngWFfyQALrCus3oq5ZGkzXtspl3wrn7zkREB
+         O2l7n/WyVhuNOWqeP8pVjI7ae5niM5NQt1d1RNf0tvlck0lKy4x0/doaheAr+N4ynUYl
+         s2ZKb/RRasIirWvKhfFifWWZbkj6r6Vo31fxxGrV0+DRYgwSXs8AEm0iiuDU5Ag4nm37
+         HEXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=EtTFHe3TA4DmpqeL5bVv/5r0ddm4uFKQO3uoUzN2ypA=;
-        fh=CYaJyQcms2MHgTcSxg73OCJr0qgQUjQ2eybOL+pWvtw=;
-        b=yMxpr5B6K3orK0kpJ9WHULH5q+Q/yDq17AZgPb2aod4UMIcdGwnvVRLDitP8POhcDD
-         YjbdWIbczB1INUn0PpgbmRb7yTcPZXgSPP8Sdmd3qCjePr7ZGb0WmFJl1h6KdKymNha/
-         iUUyFuVEz+W5b2JzjGZAgb8h5jvkbP4TDagaFJin7PgCaOkJCagoUKymcPEzNTR+tUVq
-         FSRZf4X6rI8aMm0itu3DKD1TAu7xGJzrr3LczWV09EqiYzDDe7r1BUttqdtvvrSYmUuI
-         sCvWVoAeU/a5A4REHspQ8Sswn6mzPtqYhJBQLwVGdFptbSB/+7QP4XOJPa3qi3xbc7ES
-         7UJw==
+        bh=3HySA3W+K1+tfTye0CohDBSCFD3dSPCVOaxmgIA/hsE=;
+        fh=yiPsqyf7KBOryhDtE6f2DyvFmbOCnAEEkILwtbwiaqg=;
+        b=rU62jk1db5yZnMffeoXnCBnBYhEK6W/NSqIbPvZLvjE6hFQ+1iQwamu1UxO8zzwPRy
+         YVaRkta19wffqumr/hrEmruAt+hq0OLm91JdIM0DIKFShhd+qyFYtjsjduaq61yNPn7l
+         uFe8GrtjSBN5r0FHvU6X2BITdr83i63qlkqMFcSdb0NECr/bKBYiKyIp0WuSbA0LSnsk
+         MQJP1mxkvV73bJMyEsftgM8YWHYE+ORIvep6Dk6lC/5vV2kpUMhxZNhc1R8doMt7Tqog
+         Rd46MyvXIkscKG8rUhFonaU6qjNQpJeFViZqNCy13YHVSh15BN4j6v9Fp7fne0lz4e07
+         ZClw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NYtQP+ok;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=AzZo+uKt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dw11-20020a05620a600b00b0076ca6595ec6si2509539qkb.714.2023.07.31.06.56.11
+        by mx.google.com with ESMTPS id x12-20020a05620a448c00b007608c82b593si2317231qkp.215.2023.07.31.07.31.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jul 2023 06:56:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 31 Jul 2023 07:31:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NYtQP+ok;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=AzZo+uKt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qQTNM-0006bc-V7; Mon, 31 Jul 2023 09:55:57 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qQTvY-0008Rx-Da; Mon, 31 Jul 2023 10:31:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qQTNK-0006ar-Rn
- for qemu-devel@nongnu.org; Mon, 31 Jul 2023 09:55:54 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qQTvW-0008Re-Qn
+ for qemu-arm@nongnu.org; Mon, 31 Jul 2023 10:31:14 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qQTNJ-0003kE-DN
- for qemu-devel@nongnu.org; Mon, 31 Jul 2023 09:55:54 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-3fe078dcc3aso27378645e9.2
- for <qemu-devel@nongnu.org>; Mon, 31 Jul 2023 06:55:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qQTvV-0002Eb-73
+ for qemu-arm@nongnu.org; Mon, 31 Jul 2023 10:31:14 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-31763b2c5a4so4758345f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 31 Jul 2023 07:31:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1690811752; x=1691416552;
+ d=linaro.org; s=google; t=1690813871; x=1691418671;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=EtTFHe3TA4DmpqeL5bVv/5r0ddm4uFKQO3uoUzN2ypA=;
- b=NYtQP+okfbCxNWareRqdNBNzf0k8nVfVUs4j1aEVOUGdapI6GMIJWYFNUBNdsTbqN3
- v5F5Acg60EGmBW8Nads+paMWbvJaj/Ryau+R89vn2Rqym/KMOOpF2DlsNkXdhYtOgYj9
- gIQ4hqbVqNuqLQUnr/zRXwS9LrzCE3R7VfGmuJT5/gSIBCmACFKtSa4NPjwTglu0VNo2
- wU2y7r55/yRBJxqLokNEWDmnCBLKb5LNu85GQ3u21KrGj75YZm7FS+5fgzGwIFUhh/P0
- TgpJspmjQ1XNJXIeR+TY/TxsWF9Q17tDJcTBQKbAI0N5v6wdnlXXGI1OhqVpF7MVx2Mm
- EVfQ==
+ bh=3HySA3W+K1+tfTye0CohDBSCFD3dSPCVOaxmgIA/hsE=;
+ b=AzZo+uKtrjQ0CXM+n0MEdKhLSCOFQggQ5amnEedqOAa9PAKPO+EW+xzBWFgaY7D+Lz
+ xIKecPSUjNBqcgONGfoaH5ZykEzXARDDzvgbmlP2JrbYmYy7F6ifiC4e27EgbrgUikC4
+ isuT84K9koWUsNqzULZKfY75j/juah3+nkKY2F8OejEZUwdwTz0zW8jPfhyFNiFKeUvy
+ DQ92gjnmmMUroo0WJjBGNPZ4CGswuISvQdv4U8edGkCd1n5nNVka7qtGHyrV89QjtKvQ
+ AbJ5qQTY1gtrUzepFh1WFjlLWVWN7lz96Dxc6oNbGswI4D/cmW0BNth2eI97IxH81d66
+ xMXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690811752; x=1691416552;
+ d=1e100.net; s=20221208; t=1690813871; x=1691418671;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EtTFHe3TA4DmpqeL5bVv/5r0ddm4uFKQO3uoUzN2ypA=;
- b=BuHZDrjgTBfUM9XEEk/EOQVV/qqvwjjTnLzQdWJIyFpHq2V3AFJxe4tyNfj/PDqen/
- bg1VT30UJ7AyJbkjic7i2HyQDW9fFPJYXrhqcx8Gb98LNYMkJxoVbO1VGDf3PJg9oJ1q
- fyxNNZWPSTLERMVHKkO/Mj+7rebNg3zOy92u/WFYSWpWcHH6cpKblKtj7mMXQGiee92C
- a5Jg+B7RS/EGUuAUES4a59bnkvgt8raDFrheLQgVYc12JDQpNR5u8psuNm2ozRgtBouu
- utEg6oBb2G1X9mt1Lh2tmPoweUUGyRdEL4tAcB+ZcU1YIKLZ2vvIfsycO08H+HAXrAdS
- jx3A==
-X-Gm-Message-State: ABy/qLbSr2AO+0fBoyejkTHOIb6cTkpV4SloFQsUV8w9BzVg86ouJzIV
- 6yG8L1l+Qaw+RM3/3iM38x3aoI54lGnphfKFRKQ=
-X-Received: by 2002:a5d:49d1:0:b0:314:49e4:b0c4 with SMTP id
- t17-20020a5d49d1000000b0031449e4b0c4mr7642695wrs.70.1690811751772; 
- Mon, 31 Jul 2023 06:55:51 -0700 (PDT)
+ bh=3HySA3W+K1+tfTye0CohDBSCFD3dSPCVOaxmgIA/hsE=;
+ b=DCvJHL9DL1rhGg68pYmLWPnp9o/ZUV3VRMmxhkzMxWUf/RyddtaV99YwrT1Df4fd3M
+ f5JDtc8DuGob5Ky9I19j8Jt2YPhq7sn+ysRjAD5KcT/ZNUN9qIVPY4JH//b8E7CeXEji
+ G24PEiE2SiIiPUPbwxx36Hprhy04XShIdLvvoY3O9Kk88vQsH/6dzWnW0aBigg8UdkJ9
+ pX0lrKtLTMY3za/jSm15HxBQarDrlFcmx/gUdtia4fiulTax2bCi945Xnl0HlMMF4mGr
+ 93wshm/b2HRecWPzk+7sXM/XFqot5uw5NUNicKDlgJPGxyZisYQ+WGsB+2KbraOvHACm
+ p27w==
+X-Gm-Message-State: ABy/qLaU3CA7VnPGPOIiFh3DnQRYI6Fh7++3dZ3ODiCRltEVMBKZ6LYY
+ VWjK30na3xZuAz0oJIsqmPVHFw==
+X-Received: by 2002:adf:e98e:0:b0:317:5c82:10c2 with SMTP id
+ h14-20020adfe98e000000b003175c8210c2mr9258242wrm.59.1690813871265; 
+ Mon, 31 Jul 2023 07:31:11 -0700 (PDT)
 Received: from [192.168.69.115] ([176.187.198.42])
  by smtp.gmail.com with ESMTPSA id
- j4-20020a5d6184000000b003142c85fbcdsm13166173wru.11.2023.07.31.06.55.50
+ l11-20020adfe9cb000000b00314329f7d8asm13256202wrn.29.2023.07.31.07.31.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 Jul 2023 06:55:51 -0700 (PDT)
-Message-ID: <53cb9a48-af54-3fce-eb53-ebbc6d12fe62@linaro.org>
-Date: Mon, 31 Jul 2023 15:55:49 +0200
+ Mon, 31 Jul 2023 07:31:10 -0700 (PDT)
+Message-ID: <95b7fe87-0a0d-7182-7706-e119769d4d59@linaro.org>
+Date: Mon, 31 Jul 2023 16:31:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [PATCH v2] kvm: Fix crash due to access uninitialized kvm_state
+Subject: Re: [PATCH v2 1/5] Refactor i.MX6UL processor code
 Content-Language: en-US
-To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
- david@redhat.com, shan.gavin@gmail.com
-References: <20230731125946.2038742-1-gshan@redhat.com>
+To: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
+References: <cover.1690663106.git.jcd@tribudubois.net>
+ <6795fbc55daf5bdf196bf98f1ff8ac1891fe5a1e.1690663106.git.jcd@tribudubois.net>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230731125946.2038742-1-gshan@redhat.com>
+In-Reply-To: <6795fbc55daf5bdf196bf98f1ff8ac1891fe5a1e.1690663106.git.jcd@tribudubois.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.101,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Tqu0vTE6q+iq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /UTkBHkv1EAc
 
-On 31/7/23 14:59, Gavin Shan wrote:
-> Runs into core dump on arm64 and the backtrace extracted from the
-> core dump is shown as below. It's caused by accessing uninitialized
-> @kvm_state in kvm_flush_coalesced_mmio_buffer() due to commit 176d073029
-> ("hw/arm/virt: Use machine_memory_devices_init()"), where the machine's
-> memory region is added earlier than before.
+Hi Jean-Christophe,
+
+On 29/7/23 23:17, Jean-Christophe Dubois wrote:
+> * Add Addr and size definition for all i.MX6UL devices in i.MX6UL header file.
+> * Use those newly defined named constants whenever possible.
+> * Standardize the way we init a familly of unimplemented devices
+>    - SAI
+>    - PWM (add missing PWM instances)
+>    - CAN
+> * Add/rework few comments
 > 
->      main
->      qemu_init
->      configure_accelerators
->      qemu_opts_foreach
->      do_configure_accelerator
->      accel_init_machine
->      kvm_init
->      virt_kvm_type
->      virt_set_memmap
->      machine_memory_devices_init
->      memory_region_add_subregion
->      memory_region_add_subregion_common
->      memory_region_update_container_subregions
->      memory_region_transaction_begin
->      qemu_flush_coalesced_mmio_buffer
->      kvm_flush_coalesced_mmio_buffer
-> 
-> Fix it by bailing early in kvm_flush_coalesced_mmio_buffer() on the
-> uninitialized @kvm_state. With this applied, no crash is observed on
-> arm64.
-> 
-> Fixes: 176d073029 ("hw/arm/virt: Use machine_memory_devices_init()")
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
 > ---
-> v2: Bail early in kvm_flush_coalesced_mmio_buffer() on the uninitialized
->      @kvm_state and improved changelog        (David/Peter)
-> ---
->   accel/kvm/kvm-all.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/arm/fsl-imx6ul.c         | 149 ++++++++++++++++++++++++------------
+>   include/hw/arm/fsl-imx6ul.h | 149 +++++++++++++++++++++++++++++++++---
+>   2 files changed, 239 insertions(+), 59 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+>   enum FslIMX6ULMemoryMap {
+>       FSL_IMX6UL_MMDC_ADDR            = 0x80000000,
+> -    FSL_IMX6UL_MMDC_SIZE            = 2 * 1024 * 1024 * 1024UL,
+> +    FSL_IMX6UL_MMDC_SIZE            = (2 * 1024 * 1024 * 1024UL),
+>   
+>       FSL_IMX6UL_QSPI1_MEM_ADDR       = 0x60000000,
+> +    FSL_IMX6UL_QSPI1_MEM_SIZE       = (256 * 1024 * 1024UL),
+> +
+>       FSL_IMX6UL_EIM_ALIAS_ADDR       = 0x58000000,
+> +    FSL_IMX6UL_EIM_ALIAS_SIZE       = (128 * 1024 * 1024UL),
+> +
+>       FSL_IMX6UL_EIM_CS_ADDR          = 0x50000000,
+> +    FSL_IMX6UL_EIM_CS_SIZE          = (128 * 1024 * 1024UL),
+> +
+>       FSL_IMX6UL_AES_ENCRYPT_ADDR     = 0x10000000,
+> +    FSL_IMX6UL_AES_ENCRYPT_SIZE     = (1024 * 1024UL),
+> +
+>       FSL_IMX6UL_QSPI1_RX_ADDR        = 0x0C000000,
+> +    FSL_IMX6UL_QSPI1_RX_SIZE        = (32 * 1024 * 1024UL),
+
+Please use the KiB / MiB definitions from "qemu/units.h" (the
+resulting code is easier to read. No need for parenthesis.

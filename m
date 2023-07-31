@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2188331ejb;
-        Mon, 31 Jul 2023 06:51:51 -0700 (PDT)
-X-Received: by 2002:a5d:5312:0:b0:313:ee73:cc9a with SMTP id e18-20020a5d5312000000b00313ee73cc9amr7090842wrv.70.1690811511694;
-        Mon, 31 Jul 2023 06:51:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690811511; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2189107ejb;
+        Mon, 31 Jul 2023 06:53:05 -0700 (PDT)
+X-Received: by 2002:a7b:c4c5:0:b0:3fe:f99:1ba with SMTP id g5-20020a7bc4c5000000b003fe0f9901bamr30398wmk.2.1690811584836;
+        Mon, 31 Jul 2023 06:53:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690811584; cv=none;
         d=google.com; s=arc-20160816;
-        b=SJxDwrUcFydyx/TFmuB2gA5Y3YkVxgRf0vY66X2Eb+ihyHyi4iqIgFmLwUWrXLebcN
-         NK4OFkwIDwfJc+27juPBFp068Dt25UoKECYZlqs2h2p9Ox5KeKJPdCZx/biLJ+D0Nefn
-         sHkrnQNsIjRgcqeYi9oBWIUMVCrwc45kHYdZWKtkkzxBztfUR+9mw1ofRy2eRb0115gO
-         YlYRd1HVSATjzlZd/6XndsJUIQcHNTsPxJo37Yj9r/MiZiydqw6voBDdQXBo/ZKTocKo
-         KoY+arHGCLYfdTc2ib3PEJlZUfY5knYqgKJnZnzOf2YHXGdJQplS3ha4ftgDurGNDxsy
-         TrGg==
+        b=TkZY0PWhEA7r3CguHqTg9oknfiVmKR7hOulb7yA3yQz0ggaVB7eXsL8SxHvUoP1v1q
+         SVHVqADnDtUNB+gKQb5ZawWARVfF6DI4KHzJG0T9oE/AoSXRtqeYXFN/kvHSzHC486cl
+         wSLVxGagIdwpHGmf9AOQI9wIQwy3Nm6viFTZBpXAfq8S+lPhO0+0xmYThzIxEsD5w4Kb
+         MCfsqHafECTVabJq7locD5+y/guGkd0BkHTH7gNTwVmjKCJ20FSEpvvJ5S84Y6uIM0L5
+         YI4tfRrHNlCrUBtRIvrvW7Pt8/neG1aOlWEbgVgZRkSh0jen0uJ/ODsCC+hspUzlHaon
+         JuUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=9C61sNBuLzkP1k7MRGfWxhB6WPJh2Tq71aTnep3VwTY=;
+        bh=PYb25o9TpeL44fOb3xpjsBI4FbNNQ2EW5i5KDKsqu3k=;
         fh=99M8M+8TD8TDQI1qe/4NtoIvOpLCBIu4dx5efhOEhl4=;
-        b=mX2eyGTru+kkNblMdLIcYv8ulR82rdDgcW2UlvOdN3NJ8j5qlIdbC80laued5nFCS7
-         ibxxa8qqxt3uKo+pJS3svJ0tOYMBspI/DSadFbATR0YWoGtU4+Y1rTeVUCrBjp/lyW26
-         0As8ryInsyrtJOURC4Bw1uymkfNAQ5qzGO7/oz7oE66jQnz+T8gXXLNA5S8lCaAnoZu1
-         DMIrtCaVuHl6A6qKnPNx7GDipgSZw/Ei61hVL2n7cirPTDaynBtyFJpmuq6kq3uoln8K
-         oq9s1xy/m5GcKSNFMzRYlqXrL5UK4hpY1e4ND14uLsIAKND3dTW+eCDWqzXTiR3Vtwro
-         01OQ==
+        b=BgJuHx1SubO7HKoUdBhZQTx8vrNpVslxGoj8c5IavUxxB4flEKB4eXIj/uXWdtnn/G
+         Uy+PpvRwWMXHbddu6G8WYgm/BhTRq+xVYwA1A/ZEmG8izP1w9EKfzLqYT9ABLO9t2+e1
+         OPa+D5j7HYvE8VrFRV2FmOaoV2D/QukIIkhdqAlxNJaUvDHZUWp1/BZZAzCS0QPqYqWu
+         8x8koB7BnT2tgYiRfQYJhROoy4lHnJP2kbNBTER8jY3xVoNPz5DD+Sm2PwcoCaBFKylI
+         tII9IDmXTfyAgfl6C8ycp1njtBAGuktY4IAgJe3t7seVibAN4sobMDUboEb9/OvnVUg6
+         x5fA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hgL3LJ4U;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UIjQ2gGS;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q29-20020adfab1d000000b0031755246841sor3514610wrc.4.2023.07.31.06.51.51
+        by mx.google.com with SMTPS id c10-20020a7bc84a000000b003fe18bd0bd9sor1771243wml.9.2023.07.31.06.53.04
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 31 Jul 2023 06:51:51 -0700 (PDT)
+        Mon, 31 Jul 2023 06:53:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hgL3LJ4U;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UIjQ2gGS;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690811511; x=1691416311;
+        d=linaro.org; s=google; t=1690811584; x=1691416384;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=9C61sNBuLzkP1k7MRGfWxhB6WPJh2Tq71aTnep3VwTY=;
-        b=hgL3LJ4UbBI66bG/QiBth9eUNg5I+oqxWFsmTMTz1CCwJSbu61BSpk0r/IdaOeHuka
-         Gx3C7ghuD3CaQffRhxbvAaISlraH7FmeBl4U/lvb2m6BnJQwHjazCPFTJvbCpgKahCbZ
-         0BGtLzVHJ21k4/pyfYFYH0Na+Abts0XOdUYIZqMreN17bT5DnMsMdxAZbUkAYKwQxKDl
-         fZlUFoAkHd1QbHHDGDWPHgKT2HRtJsEkUIbJ5eH0KGP1FyzfSuZwfTGPAy11imywQxbH
-         qCLJBGB09vPQZWLgHMIFdpBumwCCTuqxcJKIlnVnuIqzPFY+hXkQYxvCbnRH363Tgp9s
-         l9zQ==
+        bh=PYb25o9TpeL44fOb3xpjsBI4FbNNQ2EW5i5KDKsqu3k=;
+        b=UIjQ2gGSy+jYPBMBq1tldQaAYXTXPs77jNiqJt9CeniXajehblRSvLglG2LmBAccxh
+         rS/DQ8I2aTnR4BkmqjBtDtZv+X5/3aYZwMgDzaMVlGtexZ7s1ohv6sZSK3TzNwS5HMGh
+         SRU7zO53mpfk4QFnz4Vnd/B1dXMtLfXwyYrq5dgZbJaMuwApTNTlFjk0OfUuSjaYoIiY
+         P/O1snTMRLNetDwqWWJxno2IHKPQGGBA8ZSWQaSg3/q68RmDHhFR6SCjjijCo88Fyieq
+         aJ6iZ12syciQH3WjKXERI/SV8tH0GNgyInHQlPaZxvIXj7AD7sntiyXQbRiAIUCfcsym
+         8Q1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690811511; x=1691416311;
+        d=1e100.net; s=20221208; t=1690811584; x=1691416384;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9C61sNBuLzkP1k7MRGfWxhB6WPJh2Tq71aTnep3VwTY=;
-        b=fWVAHlup8eq2Q/Wy+ePeMD6R6pyQNhFY/GEmF0Dn84XUKvRKMoteJkY77NJ2GwZ7Ox
-         ymC5o1YkAvWg2p2n/VLkrPcWbgbmTMJ1aZKj67JPA4JMkcNqOtr1RY9LZWcLAkLXW8gq
-         Cu5LIIl/2ig4bRzp5yoeWv0ad0ngaC65yqqWa28NtSJwNPYPQ/nlFLZ/ITnAEj3wNqGu
-         R32OxmbIXinLgYIp8/jwQSwK6O/LoLLxUj/oGkp5o9de3umHI1Vb31Z24SQk8tG+r1bi
-         5NywSEDD7eAERuh0zyjbRIV1BDGVcPz8Bm9CZMVvONLp9btuSON3JZW0fjbYBlcCbCs5
-         dpDQ==
-X-Gm-Message-State: ABy/qLa2njLl6alvNROG2wW2XIJQFwnT8lFDbMtVEai5Pae3AbR+uPav
-	m0JYQryCGBZeN6dyHsKs9OiVqTPXMYyQXDE2+TQxyg==
-X-Google-Smtp-Source: APBJJlHILCBJRNZrn5crmer00CWRWg2FEycLAoJ3X2ChQegv8+/byit6ZlNXsw37noTTEhadIYXccw==
-X-Received: by 2002:adf:ef05:0:b0:315:8f4f:81b8 with SMTP id e5-20020adfef05000000b003158f4f81b8mr8322326wro.50.1690811511118;
-        Mon, 31 Jul 2023 06:51:51 -0700 (PDT)
+        bh=PYb25o9TpeL44fOb3xpjsBI4FbNNQ2EW5i5KDKsqu3k=;
+        b=KuQ7GcfhOEB+dLcprnrA5aiK1teGoKtPgjDtLQQkhqRaQ9ectdBzuM8NhuDoc/wgJw
+         LX78NBIkVm+xuvsmYm487WJ9L59tlu/fqITJ2/If8biu/2ZWdWLFe2H0koagdUv8Hdxd
+         MTFvuVKcE9C9JQDUwK1F/khPurr9rEyohJSyZKRp8RoejWHGuULIEMz6WLtrZCzTdUCW
+         KZCwShJZPFycLJqGbWZoJrxUdQAjSxObLPBEy+GBmffZmwWN1VnD2SbWTvgC97/6AgBZ
+         ZbIhLX2DtqDeuP06seBOKpQ/x+BViNbB8GLSZ0fga0fMzZrBkUmPxOoZc+LgvoKxl0ys
+         iCzQ==
+X-Gm-Message-State: ABy/qLY7yAutSgUZQYjWi/O+zhSZkMoU0rIaeLnmHHV/5N8qJcYdGsgt
+	ceDhhkIfP7cNFYWhy+bUOe32gUmS
+X-Google-Smtp-Source: APBJJlFPzk5Nu7U0ttJ6pmM9RL12liha3SjICEr5rZuoE6S/5szC9pKQ6MiH0J0L4j42LA/msmfY8A==
+X-Received: by 2002:a1c:ed0d:0:b0:3f9:255e:ee3b with SMTP id l13-20020a1ced0d000000b003f9255eee3bmr9260364wmh.30.1690811584364;
+        Mon, 31 Jul 2023 06:53:04 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.115] ([176.187.198.42])
-        by smtp.gmail.com with ESMTPSA id h4-20020adffa84000000b0031417fd473csm13249602wrr.78.2023.07.31.06.51.45
+        by smtp.gmail.com with ESMTPSA id f2-20020a7bc8c2000000b003fbc9b9699dsm11520994wml.45.2023.07.31.06.52.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 31 Jul 2023 06:51:50 -0700 (PDT)
-Message-ID: <f087def2-31f9-f18a-c6e1-03243af04b5e@linaro.org>
-Date: Mon, 31 Jul 2023 15:51:43 +0200
+        Mon, 31 Jul 2023 06:53:03 -0700 (PDT)
+Message-ID: <dc296d6d-6959-c924-b0f0-97d122807d15@linaro.org>
+Date: Mon, 31 Jul 2023 15:52:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [RFC PATCH 02/24] gdbstub: Introduce GDBFeature structure
+Subject: Re: [RFC PATCH 04/24] gdbstub: Introduce gdb_find_static_feature()
 Content-Language: en-US
 To: Akihiko Odaki <akihiko.odaki@daynix.com>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
@@ -114,54 +114,64 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org
 References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
- <20230731084354.115015-3-akihiko.odaki@daynix.com>
+ <20230731084354.115015-5-akihiko.odaki@daynix.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230731084354.115015-3-akihiko.odaki@daynix.com>
+In-Reply-To: <20230731084354.115015-5-akihiko.odaki@daynix.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: EuLD7JrF9V41
+Content-Transfer-Encoding: 8bit
+X-TUID: nk2yGTR6/pXZ
 
 On 31/7/23 10:43, Akihiko Odaki wrote:
-> Before this change, the information from a XML file was stored in an
-> array that is not descriptive. Introduce a dedicated structure type to
-> make it easier to understand and to extend with more fields.
+> This function is useful to determine the number of registers exposed to
+> GDB from the XML name.
 > 
 > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 > ---
->   MAINTAINERS             |  2 +-
->   meson.build             |  2 +-
->   include/exec/gdbstub.h  |  9 ++++--
->   gdbstub/gdbstub.c       |  4 +--
->   stubs/gdbstub.c         |  6 ++--
->   scripts/feature_to_c.py | 44 ++++++++++++++++++++++++++
->   scripts/feature_to_c.sh | 69 -----------------------------------------
->   7 files changed, 58 insertions(+), 78 deletions(-)
->   create mode 100755 scripts/feature_to_c.py
->   delete mode 100644 scripts/feature_to_c.sh
-
-
+>   include/exec/gdbstub.h |  2 ++
+>   gdbstub/gdbstub.c      | 13 +++++++++++++
+>   2 files changed, 15 insertions(+)
+> 
 > diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-> index 7d743fe1e9..bd5bc91dda 100644
+> index 22e5add5b1..3115dc21c0 100644
 > --- a/include/exec/gdbstub.h
 > +++ b/include/exec/gdbstub.h
-> @@ -10,6 +10,11 @@
->   #define GDB_WATCHPOINT_READ      3
->   #define GDB_WATCHPOINT_ACCESS    4
->   
-> +typedef struct GDBFeature {
-> +    const char *xmlname;
-> +    const char *xml;
-> +} GDBFeature;
-> +
->   
->   /* Get or set a register.  Returns the size of the register.  */
->   typedef int (*gdb_get_reg_cb)(CPUArchState *env, GByteArray *buf, int reg);
-> @@ -38,7 +43,7 @@ void gdb_set_stop_cpu(CPUState *cpu);
+> @@ -34,6 +34,8 @@ void gdb_register_coprocessor(CPUState *cpu,
 >    */
->   extern bool gdb_has_xml;
+>   int gdbserver_start(const char *port_or_device);
 >   
-> -/* in gdbstub-xml.c, generated by scripts/feature_to_c.sh */
-> -extern const char *const xml_builtin[][2];
-> +/* in gdbstub-xml.c, generated by scripts/feature_to_c.py */
-> +extern const GDBFeature gdb_features[];
-Maybe clearer named gdb_static_features[].
+> +const GDBFeature *gdb_find_static_feature(const char *xmlname);
+> +
+>   void gdb_set_stop_cpu(CPUState *cpu);
+>   
+>   /**
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index fad70200d8..6d9cef5b95 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -414,6 +414,19 @@ static const char *get_feature_xml(const char *p, const char **newp,
+>       return name ? gdb_features[i].xml : NULL;
+>   }
+>   
+> +const GDBFeature *gdb_find_static_feature(const char *xmlname)
+> +{
+> +    const GDBFeature *feature;
+
+Alternatively (in case you consider the suggestion to use array
+of dyn_features):
+
+const GDBFeature *gdb_find_feature(const GDBFeature *gdb_features,
+                                    const char *xmlname)
+{
+     const GDBFeature *feature;
+     const GDBFeature *features = gdb_features ?: gdb_static_features;
+
+> +    for (feature = gdb_features; feature->xmlname; feature++) {
+> +        if (!strcmp(feature->xmlname, xmlname)) {
+> +            return feature;
+> +        }
+> +    }
+> +
+> +    return NULL;
+> +}
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

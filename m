@@ -1,93 +1,91 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2179244ejb;
-        Mon, 31 Jul 2023 06:36:08 -0700 (PDT)
-X-Received: by 2002:a05:600c:3484:b0:3fb:b18a:f32d with SMTP id a4-20020a05600c348400b003fbb18af32dmr10705023wmq.17.1690810568050;
-        Mon, 31 Jul 2023 06:36:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690810568; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2180029ejb;
+        Mon, 31 Jul 2023 06:37:25 -0700 (PDT)
+X-Received: by 2002:a05:6a00:1893:b0:66f:7076:a5b4 with SMTP id x19-20020a056a00189300b0066f7076a5b4mr11654064pfh.7.1690810644972;
+        Mon, 31 Jul 2023 06:37:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690810644; cv=none;
         d=google.com; s=arc-20160816;
-        b=UuCZpQs6yCSdJJBLyaqRW7xTRTA3GbqP4VylIE1wM3vJyTK028NIxSahgsxVRL30ih
-         iGvEvCmUMmMWUDWDNeKsX5jw4opG5ObJdoU76ou8wu24ayOjCUjYIRBk3UgfOPsjuPRc
-         sGiaAdBcI95dTu+uHjeYwjZxXd6maDj8AH+rv3bGdmu14A9SmKBb9QsKXSgugk+rbeTz
-         6te6iD94SzJggbCbx5kHn2Fe27e78h7OF9b3Y3llaXgz+k6d7l4dpR2ddIK03ysKWJgN
-         7eTyYphuTI2zY6KbQtd+ospn9gAM5At9VKl1Pezlh4N7hPL38iT5NUJNDGoYrRpQTCkM
-         nLoQ==
+        b=0rAVxUJocAuePSMDfvv+6Y3zbemoqsW9O9Lpi8SvQkKzvjzwCA+4UJxh+leLyIqJ+B
+         JSM3+geoWDH5Y/ik24834hJq7ZN+ktwG7SIkB+RvPGGiGmhvf0RQ4sLi5u9O/RD8eXIx
+         Rrjfod1DR5yU78yan0sPK6roTdVw1PLErVBgLUJMMhJEhPDKanU2bUEClQV/LTAB93yX
+         RCrTSx7jkPHK/fXqEHubyRkBTdZ6luxn/QsXKxjim5gLfz6ffXn/SzZ0R3kn0NebEN0H
+         eUJFW9/ddQOzBFu0+7CatW/XMt0rLJJBh64nSl4QRPNqyQQULw6dVLZQ6UFffd70lQM3
+         h4BA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=S0z9m68fumFWDSuz2IWQxIZ0SeaHB4wPDPgx2tio7qw=;
-        fh=99M8M+8TD8TDQI1qe/4NtoIvOpLCBIu4dx5efhOEhl4=;
-        b=cn+GEaI+aCH55Z7rw7LyaaUMj4EoJw/rmD1eFBuAhN2MOVa3UyNOLEpgcDdD+uXP40
-         SpEyYg2wNqLrJ8KO6qEgujiiXo5Os5QvtPCwRe8dPvrhcXLK8sCspeOXTqPICM17rLbX
-         fNFnskZoL1jxwy7RRFRA5JgtP9SMmXDjKcvRYG7OdPs4I3Kk6/+9MGtijNADpz4S5dgL
-         6rMk+1Agyed9a15yiNckN7HnEe1Tki+lUOIkb0Xux3NBtvtOzyoUkiv0Ihm3NYEdXW7F
-         0pgHCQtAX3ZyeqOzivtQYY9FFdL4VT0C/92yXxxelpd2tX6o8YWHgjmPa4bXxO9BapKW
-         kX+g==
+        bh=wz6Vx54FIU5ogvkImhwxegOc+8g8JAPNfio7xsw4wDc=;
+        fh=Vyq5/6xHMnUXaCcwNIruSPKpraLOPjqJ2O/oHLYr/lI=;
+        b=EV6uiT7o+jHFEXqrphqo+EyeE9TA3k6+vU67kShoVsFy5YjQ0aCY/geJs6Kra5bJa2
+         /wdw5Vp8Zzzyfiburbmb0vLLhIwRF6ZAJDLqcr5cYxwjowKqQ+lO/5YMxkgQQhmWxPYO
+         KmbetaYzzI9iB9XauCm/psOzCh9xKwAMsoz0ZjzbDtjG6DZD17Wswz/pxhTuzXTBNroo
+         8tmxR2rPz/tjtEgc4jciUdMz699y4gVolmKoXQOdc7GrUVoVGy9FBznSprJUuc0aOpAN
+         1z0zLDJ6OonjDHrw8FOBsxzBwbZCC1S7N5WnNU14JdH/oRqHqzrk3qPxZ8tSByLGNwsT
+         0rmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OxX6931Q;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=wF+1m525;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p15-20020a7bcc8f000000b003fe16dc954asor1228173wma.4.2023.07.31.06.36.07
+        by mx.google.com with SMTPS id bm2-20020a056a00320200b0067adbac7ab1sor3506327pfb.2.2023.07.31.06.37.24
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 31 Jul 2023 06:36:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 31 Jul 2023 06:37:24 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OxX6931Q;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=wF+1m525;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1690810567; x=1691415367;
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690810644; x=1691415444;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=S0z9m68fumFWDSuz2IWQxIZ0SeaHB4wPDPgx2tio7qw=;
-        b=OxX6931QTMcRV2b/y8dp4xkgJMbhPi/O4rOe3kq8HpIoUo4hg2NUi5vC+qcL8w77yQ
-         BA7fIeaI39JPzCxMCcoXzi1P0niV51Y08U7Ot+BerqEjfXyFbpAUjL/SgbO54YvZMiw8
-         SYZKwq3NArV3ildsW+rN3Bg1poWp2CRC0n4nm65zblZHA0fupvjky/5CVsN4BP5wbjUN
-         ZE7P42a535XXrT+LPbQEunlnfGMcD59y6EtS4wjZ4iKQWVTpYoDzupukYKN3r0WYA0YV
-         +w8TYcBpiYnpHACMaOe47+ydTvTDOjgLYiimisll9oFuAvRC7eRLJqhfS7AgXVMU+658
-         s+8A==
+        bh=wz6Vx54FIU5ogvkImhwxegOc+8g8JAPNfio7xsw4wDc=;
+        b=wF+1m525H0KInlRxDAVoygeysI63uzG64Vkwf9qLMZJGozFYGZJ6UzFS+Ugb0yYro9
+         lToi2DrUCcbGyzrskhFTIPqdlKqwdqcwm3VIbSEcAWTcnVvj0bB6L0Yv3GAArekfq0bs
+         N1EEexuzXIaN0zwIrQXsqZtwyNpqEEHlT2Ao7BxjKWm/StI0Gi0uy5DyktcsCnLl81r5
+         4KuQ3Bz9WEbELeiQ0lJGSoAJDKJesJT5XsmeQRta0jEGKXLWd2e6/42lnTUolAUE84QU
+         GtRK6P3PAZDHi6vUMzkcomhpGyAiVuWNRm9z25j8/cLaFv2iHTkQ1yc1DV6jCsoYqg9j
+         CeoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690810567; x=1691415367;
+        d=1e100.net; s=20221208; t=1690810644; x=1691415444;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=S0z9m68fumFWDSuz2IWQxIZ0SeaHB4wPDPgx2tio7qw=;
-        b=C47hnKodylS2qhkH7F37tddEVe9Ia20UcEe7Q8U3tn4Gd6luN8+bQwDlSt6IrlzVUr
-         w0SQsof1LLyVMvL++nqisjazyFvR+d/6nslciOwSBDX/p1qGARRDX4bmhkflEYZgKXa7
-         l5tMf+kOIwZ684K3yaVINv3kXuxJD2zE8h+lffTMf5wHj/1lBCXv5dau7HkDJuKGFsLv
-         jrmLrhDDlTTAkXjJaa81GWkT4HHp3OXy1jU2qOcC4i//C118f/saGJ8WASDFL/AeKtLO
-         ZZCE0O8laimobUfLbZDax7zL9bygGAbVSG/VJP/ogaGCqX9RIJdt+ExLOQt/o6raSX8e
-         JcEw==
-X-Gm-Message-State: ABy/qLasMM4UNEdXpCuWZd/98l3j8EMQp/PntIFZW0J/5YD5abTGl2NN
-	El84GH+1DQv8rpSLYY1ukkwLv3AYrt5+UeraPG9HwA==
-X-Google-Smtp-Source: APBJJlHphjBoN5iWkPwJPtmrbwnGtoqD5CFqMasC8/idVq/LLgnv1DQcqZHVBhdhnI7YCujdIYZzlQ==
-X-Received: by 2002:a05:600c:29a:b0:3fe:1c10:8d04 with SMTP id 26-20020a05600c029a00b003fe1c108d04mr3749092wmk.19.1690810567628;
-        Mon, 31 Jul 2023 06:36:07 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.115] ([176.187.198.42])
-        by smtp.gmail.com with ESMTPSA id m9-20020a7bce09000000b003fe1ddd6ac0sm4122960wmc.35.2023.07.31.06.35.57
+        bh=wz6Vx54FIU5ogvkImhwxegOc+8g8JAPNfio7xsw4wDc=;
+        b=PFxLCppz4Ao2T9psw6QGjqeiW6tpuMzo9Qy+SWUCGwhvK7e+jSdkZMtYjMvCk4cAPp
+         RuSGq1wTdhzZIedsHzvVSljgWZT+0wCp0NghREtRco04cArFGEnYly4vsTbjnq+LNoFF
+         XXcdqC2k6dMcDPYjokSgY4AuJCabbFBmi71qDmz/XUqQuF7NNfQGJTaBAfg+pQ5o3CiR
+         A4qK/nJrT0BSiDOS5aM3p6akRSHMZ14YL2nG+saQ6Vt/uF8cdbCJ+VJDUS4hbZ+6I36j
+         /4vleNWO7dK+vTrO99tcubmiimQBMkzzYHe6g0Zdq0IdP6JdOPg+F7BgDub8Gg2I6hQG
+         TyuA==
+X-Gm-Message-State: ABy/qLYRXo/OevLenTJtCwlxi5J1HORm1GuYuzoOY3Z/z5pY8kX9InUE
+	1C2m/XyXbGwETOu16Ejl6YTlmQ==
+X-Google-Smtp-Source: APBJJlFiuOnRmsCy7oUaEdzbUnuI+jsQ2FM7sZKGG6HwcOpUEPr39FUVgk+v8+IQYZ6JQ4LxEyyxnA==
+X-Received: by 2002:a05:6a20:160b:b0:133:bf18:ef7b with SMTP id l11-20020a056a20160b00b00133bf18ef7bmr11737737pzj.24.1690810644425;
+        Mon, 31 Jul 2023 06:37:24 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [10.4.77.224] ([118.103.63.129])
+        by smtp.gmail.com with ESMTPSA id c11-20020aa78e0b000000b00662c4ca18ebsm7631950pfr.128.2023.07.31.06.37.15
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 31 Jul 2023 06:36:06 -0700 (PDT)
-Message-ID: <b41b076e-e423-7399-c03d-1f002edd6324@linaro.org>
-Date: Mon, 31 Jul 2023 15:35:56 +0200
+        Mon, 31 Jul 2023 06:37:24 -0700 (PDT)
+Message-ID: <70355844-5c8f-4e3b-5ba5-d53a116349ac@daynix.com>
+Date: Mon, 31 Jul 2023 22:37:14 +0900
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [RFC PATCH 03/24] gdbstub: Add num_regs member to GDBFeature
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 06/24] hw/core/cpu: Replace gdb_core_xml_file with
+ gdb_core_feature
 Content-Language: en-US
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
  <alex.bennee@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
  <ma.mandourr@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Yanan Wang <wangyanan55@huawei.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Michael Rolnik
  <mrolnik@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -99,7 +97,7 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
  Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
  Stafford Horne <shorne@gmail.com>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
  Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
  Alistair Francis <alistair.francis@wdc.com>,
@@ -114,24 +112,78 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-s390x@nongnu.org
 References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
- <20230731084354.115015-4-akihiko.odaki@daynix.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230731084354.115015-4-akihiko.odaki@daynix.com>
+ <20230731084354.115015-7-akihiko.odaki@daynix.com>
+ <09cad822-85c2-3e0b-9414-e1da9de2a2d1@linaro.org>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <09cad822-85c2-3e0b-9414-e1da9de2a2d1@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 59zLftX4LW72
+X-TUID: +ATa3IOGb3RF
 
-On 31/7/23 10:43, Akihiko Odaki wrote:
-> Currently the number of registers exposed to GDB is written as magic
-> numbers in code. Derive the number of registers GDB actually see from
-> XML files to replace the magic numbers in code later.
+On 2023/07/31 22:27, Philippe Mathieu-Daudé wrote:
+> On 31/7/23 10:43, Akihiko Odaki wrote:
+>> This is a tree-wide change to replace gdb_core_xml_file, the path to
+>> GDB XML file with gdb_core_feature, the pointer to GDBFeature. This
+>> also replaces the values assigned to gdb_num_core_regs with the
+>> num_regs member of GDBFeature where applicable to remove magic numbers.
+>>
+>> A following change will utilize additional information provided by
+>> GDBFeature to simplify XML file lookup.
+>>
+>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+>> ---
+>>   include/hw/core/cpu.h   | 5 +++--
+>>   target/s390x/cpu.h      | 2 --
+>>   gdbstub/gdbstub.c       | 6 +++---
+>>   target/arm/cpu.c        | 4 ++--
+>>   target/arm/cpu64.c      | 4 ++--
+>>   target/arm/tcg/cpu32.c  | 3 ++-
+>>   target/avr/cpu.c        | 4 ++--
+>>   target/hexagon/cpu.c    | 2 +-
+>>   target/i386/cpu.c       | 7 +++----
+>>   target/loongarch/cpu.c  | 4 ++--
+>>   target/m68k/cpu.c       | 7 ++++---
+>>   target/microblaze/cpu.c | 4 ++--
+>>   target/ppc/cpu_init.c   | 4 ++--
+>>   target/riscv/cpu.c      | 7 ++++---
+>>   target/rx/cpu.c         | 4 ++--
+>>   target/s390x/cpu.c      | 4 ++--
+>>   16 files changed, 36 insertions(+), 35 deletions(-)
+> 
+> 
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index d71a162070..a206ab6b1b 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -2353,7 +2353,6 @@ static void arm_cpu_class_init(ObjectClass *oc, 
+>> void *data)
+>>   #ifndef CONFIG_USER_ONLY
+>>       cc->sysemu_ops = &arm_sysemu_ops;
+>>   #endif
+>> -    cc->gdb_num_core_regs = 26;
+>>       cc->gdb_arch_name = arm_gdb_arch_name;
+>>       cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
+>>       cc->gdb_stop_before_watchpoint = true;
+>> @@ -2378,7 +2377,8 @@ static void cpu_register_class_init(ObjectClass 
+>> *oc, void *data)
+>>       CPUClass *cc = CPU_CLASS(acc);
+>>       acc->info = data;
+>> -    cc->gdb_core_xml_file = "arm-core.xml";
+>> +    cc->gdb_core_feature = gdb_find_static_feature("arm-core.xml");
+> 
+> Can we have:
+> 
+>    cc->gdb_core_feature = gdb_find_static_feature(cc->gdb_core_xml_file);
+> 
+> once in hw/core/cpu-common.c::cpu_class_init()?
+> 
+> (haven't verified, just wondering)
 
-Nice :)
+Unfortunately no, cpu_class_init() earlier than this line. Also the 
+feature needs to be resolved here because the next line refers to it.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> ---
->   include/exec/gdbstub.h  |  1 +
->   scripts/feature_to_c.py | 46 +++++++++++++++++++++++++++++++++++++++--
->   2 files changed, 45 insertions(+), 2 deletions(-)
+> 
+>> +    cc->gdb_num_core_regs = cc->gdb_core_feature->num_regs;
+>>   }
+> 
+> 

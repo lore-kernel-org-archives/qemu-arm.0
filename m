@@ -1,73 +1,73 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2026042ejb;
-        Mon, 31 Jul 2023 01:46:40 -0700 (PDT)
-X-Received: by 2002:a05:620a:258b:b0:767:81fc:c6b8 with SMTP id x11-20020a05620a258b00b0076781fcc6b8mr10593023qko.6.1690793200460;
-        Mon, 31 Jul 2023 01:46:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690793200; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2026108ejb;
+        Mon, 31 Jul 2023 01:46:49 -0700 (PDT)
+X-Received: by 2002:a05:6a00:22c4:b0:687:4927:3df7 with SMTP id f4-20020a056a0022c400b0068749273df7mr477802pfj.20.1690793209378;
+        Mon, 31 Jul 2023 01:46:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690793209; cv=none;
         d=google.com; s=arc-20160816;
-        b=pvw3BGUROvHlqMYHMsU4sg1Bq8TmNBZJVsVL4ot1cdBp7ejjDrhy1pTeI9udvfp/Hu
-         P0nY7beC6p7BjBZEQtQ4GB8SQ7C8qtlRNXQrCtSTZxtF2VTn47kEKXt8D1G+Bsonp9C1
-         uxjZEX0bhx4SolJ/9tWGPjJG2vlO2SD++q0Sn2OZpBC9AiakygrgQNMdgtndn4l6GmSH
-         Gi5kfMT/WkAimnzF+SihwOmDO4BqZFEfI3CVW7AILfpeNKzGo7lMZW9uO8as4fgyckJu
-         DvqO0pbVasonBoOXkXXUGJMYSGgreight7WB1cH7LGJlejyy4qesPTnk0v+Dr8hbYXPa
-         yYQg==
+        b=zsx4LMEgarc5OVB3M/yjkRuQU1R5JuAViDWfETCy/1/TRCJ0nFcKZcOQJcvJ48ey9K
+         6on92zPwSDo+uuWYkEjipoBDBPaEG+d2Rs/HoGkdmrBylQXR+GAHEnw+dh6GfDPyaMeV
+         OkN0mZJYIUTaKj1LrB64n7w+hpcwHhtUHTHhlaA72L0kHqXjFZG2l8Ak2KI9WrN1xqk+
+         NeVvII9NOQFdhqc4icN4BbjPwojgyEvDh8Q47yFX4yNY1nji0Zp00U3vMY7v5RL32n8S
+         VFXzQjQvghtcNTf5Lx/NLk5XfxWz2f0nPLW4GQaAcoIzxUxKkeReuNdbW2JMflMp+9TM
+         exqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ANoP9Fpb4WsMF0Xvgw/Yso2QUviba5iZTbYCAi6ODvM=;
+        bh=i68gTXndm5g2JBfGSVbcpcLCWh9EafQ06rBdOr/hNg8=;
         fh=l3HXkgen+sp7qeKvX9FkHOJAUo4ziZShK2g6VutuFWs=;
-        b=AxaQE3ZtqHJwSGTKzWq++vsXvVwgSroAqY1d3wm/fGaQAR1byLvqr6OEZpF9lxh0ga
-         212ZX7Mq9Un7mFHiKZrpOArXg7gvpk4WGnJ42MghP8p1EmITURqQeznKM/kG3/hc1ZU8
-         dkLNFl0fQGcia55XZnwlV+CLSSSJ7jGbqdpW31wrAcvXVa6hEVM03fZtEJFh6CjoGuR6
-         kI3j69aabahRefuXedz3NzrIvSvCwz2osGAlWwoJTyw/SOe5jp04xPt4w0mR25VhkOMG
-         Pp/iR/FQqGAzuUzex2lsEpqXbU62TEak9zcN7QA4jHrrTutrsVkullEJUZg9ad8g009j
-         kTjA==
+        b=OYHbC0xDAj1lr/A5KmxGu2gNNN+5vY4bfKOD5edmKro5XvnWlbYDA4o8zYb6tgWyqJ
+         AGHbRJ7337AKG+zwYNG5zxdqjT9RWsryi0NmFat/YtVZ4BwlQT+Eru5OgrdLj5IA671p
+         VogZa5W+vhHd0NkabrWM+MSbDbp3RKNaVMj87Qsj8316LXeXmL82ZcOH0GMpVJaC5cQx
+         hHeNG84w1VBaCyv+Hfl5hPHDtqiUTfpL1O5uGWvnjsHgjgVNBvPggg/QxqZqLDrrkYEm
+         5o50TuSWDKeZzNJHmifw2NGks05PzdSaOI6sdLCf8RIMjWcc5GVXS5sd4UXhh9eTQ3KL
+         mlJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=0yconEKz;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="nC6x/hrD";
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4-20020a621804000000b00686deffa763sor3450156pfy.5.2023.07.31.01.46.40
+        by mx.google.com with SMTPS id b21-20020aa79515000000b0065ba0464406sor5409705pfp.1.2023.07.31.01.46.49
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 31 Jul 2023 01:46:40 -0700 (PDT)
+        Mon, 31 Jul 2023 01:46:49 -0700 (PDT)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=0yconEKz;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="nC6x/hrD";
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690793200; x=1691398000;
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690793209; x=1691398009;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ANoP9Fpb4WsMF0Xvgw/Yso2QUviba5iZTbYCAi6ODvM=;
-        b=0yconEKzvH6iMivH8TVS1PccUnN5hRxSWAfLCX0uRxT+jSYfIZrLGyRyMTsQ4B85WS
-         iS/9TevFK1qxkLJav5HBR2cEW8s+yWBV0YaGKX6ByHkJKkzkqqg82Xe0iI3W2zrMBtia
-         mwlJNTjQaR2uxyfwehuN4MfKMHqrSyfXNEEs28yqHXWM1s4Ba3hT7gwat66rShm6JyOK
-         djpkupwmEmKVjwONvvs4OCZqB5bVsjJgXDGimRSJNBi2WMe2VIp9KNHrZKL7RErO1SUT
-         zbsxZmX5VJ5/fjirEmGNUelThco4t5IOIfXuVymxwsoGPWoKSTdAh6h6YiUXZrJJ3buF
-         +M1Q==
+        bh=i68gTXndm5g2JBfGSVbcpcLCWh9EafQ06rBdOr/hNg8=;
+        b=nC6x/hrDw7RM2hyF01kPWOTN+B1vxbMARwlG2R+cm3uzFEtTGTvvv0hAHUbOiWJSm1
+         +oZD6x/27ed4ARu5S8X8QI6AXv590W8WESkEvqBL+kNvnQFwNBc2v6geEX4g89mtkatO
+         aaT/WoMCebIPOX05W7SrSC2Y0YD+Xw8sBSjHpHLp90kU9kQijGZFI7zp67qHR+CP093V
+         8lfb7qbBkqRvL1/gLBZSv5PjkhCH8PO4SyULmD7E+8SvDp9CgFCcZyhfmC8Kl+7+fRnQ
+         8cwgClpr3Cqdfn0sJZEndReB0DNsCIOPZwA9VRaa9X7UET6eGJ8jG3/tqiW+I0eRG5ZV
+         mIug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690793200; x=1691398000;
+        d=1e100.net; s=20221208; t=1690793209; x=1691398009;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ANoP9Fpb4WsMF0Xvgw/Yso2QUviba5iZTbYCAi6ODvM=;
-        b=EhMJgaTlLyUS2oYWuESZeJlKyCuxmLTARZKKFmz0x31SSbqAQrT4byK781zpTEbD3i
-         M9DRJXPPXoCkWJ9HwNzAlVmakqh8goPoaPtkM5Hf/wy1k1cU5ttWizEAFhzg9WYjSaHU
-         Dte4apkHF5rZN1eUrlfhuOiSxuGz6lJsWk3MQtdPCM6RTIDjgB2gUTQ0LfgrrqM97TJP
-         Ui0fJCGfDqhO8aNv0AR+R4rRcToD+Fv4vcrjE5K77kDdVlA8ZXg5+d+OZzJZ1NlRi9yJ
-         bHV85gj+sfyKFSy0sNgkMG90OkxDVlE99y2HTzvsvy1KYjFeltTgzsETWTdTsKrnGEmt
-         45kw==
-X-Gm-Message-State: ABy/qLYZ2unZUa5lpbY38nsXYknQKWs19/0AXdQPaUEs/1cHELM3gMxy
-	b9ihQuTAYdnR5SHNH1Jo2somBA==
-X-Google-Smtp-Source: APBJJlGqgcWI52kGX5FDVyWHcYVegjUSKTSw98VXjn25LmP/9ZYyTct+mU1oS+j1/xeQwY1xDgZMFQ==
-X-Received: by 2002:a05:6a00:1785:b0:679:bc89:e45 with SMTP id s5-20020a056a00178500b00679bc890e45mr10732242pfg.6.1690793199926;
-        Mon, 31 Jul 2023 01:46:39 -0700 (PDT)
+        bh=i68gTXndm5g2JBfGSVbcpcLCWh9EafQ06rBdOr/hNg8=;
+        b=QpbpZJ64ljFN05SOySILevRFOmbZsyxoUrRRGqzry9XYlqAjiwBWEaE1z6HhiJ7taU
+         2vltnu2gVgvlAy8TK8UrmjuRi0uM49r30jC9sS5xfuo7NTWn9Jt3X814Xv66Xthz7ilE
+         Mz7A0xW3gkqjFd/SVPyEqk3AK94IIf7auDZd1hBgFO+Yva/8dL1MOE2r8RoZwwtiB2/i
+         sRFAHr9cs98e5SZO6iK7/mcsowzhqmT7V6FOc4xmXbP7mvhVjsgDgVDThhjWVZw9UecI
+         3d/cep6qsgXw34aMoEhdLRc/SAYijeAHCSYn3sU3m/sazxoMewOUMQ6GYliWVMoYeT5P
+         mpxQ==
+X-Gm-Message-State: ABy/qLbaHs1o08rBM0Qw3TFLzdanC0BE+hR2xJIT+lIDrTDlrVCXOBb1
+	q0umP3RKmyvR302f5KCDH6/8YQ==
+X-Google-Smtp-Source: APBJJlGZcLds9//79Mo+76iCBHc3jp3+Z0ypqGuVU/Ww43E+kmyH9WV6RDVLVGfmft7WqgMHYa9iyg==
+X-Received: by 2002:a05:6a20:5510:b0:11d:8a8f:655d with SMTP id ko16-20020a056a20551000b0011d8a8f655dmr9020629pzb.4.1690793208923;
+        Mon, 31 Jul 2023 01:46:48 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from alarm.. ([157.82.204.253])
-        by smtp.gmail.com with ESMTPSA id u19-20020aa78493000000b00666e649ca46sm7075563pfn.101.2023.07.31.01.46.31
+        by smtp.gmail.com with ESMTPSA id u19-20020aa78493000000b00666e649ca46sm7075563pfn.101.2023.07.31.01.46.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Jul 2023 01:46:39 -0700 (PDT)
+        Mon, 31 Jul 2023 01:46:48 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -120,64 +120,93 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-riscv@nongnu.org,
 	qemu-s390x@nongnu.org,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [RFC PATCH 16/24] target/ppc: Fill new members of GDBFeature
-Date: Mon, 31 Jul 2023 17:43:43 +0900
-Message-ID: <20230731084354.115015-17-akihiko.odaki@daynix.com>
+Subject: [RFC PATCH 17/24] target/riscv: Fill new members of GDBFeature
+Date: Mon, 31 Jul 2023 17:43:44 +0900
+Message-ID: <20230731084354.115015-18-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230731084354.115015-1-akihiko.odaki@daynix.com>
 References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 4SDerNlzRxuI
+X-TUID: IvzEJCbzoErt
 
 These members will be used to help plugins to identify registers.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- target/ppc/gdbstub.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ target/riscv/gdbstub.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
 
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 19c4935260..ac4ed12371 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -323,7 +323,7 @@ void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu)
-     PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
-     CPUPPCState *env = &cpu->env;
-     GString *xml;
--    char *spr_name;
+diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
+index 224c69ea99..b3d4d4de3e 100644
+--- a/target/riscv/gdbstub.c
++++ b/target/riscv/gdbstub.c
+@@ -217,6 +217,7 @@ static GDBFeature *riscv_gen_dynamic_csr_feature(CPUState *cs, int base_reg)
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     CPURISCVState *env = &cpu->env;
+     GString *s = g_string_new(NULL);
++    const char **regs = g_new(const char *, CSR_TABLE_SIZE);
+     riscv_csr_predicate_fn predicate;
+     int bitsize = 16 << env->misa_mxl_max;
+     int i;
+@@ -240,11 +241,10 @@ static GDBFeature *riscv_gen_dynamic_csr_feature(CPUState *cs, int base_reg)
+         }
+         predicate = csr_ops[i].predicate;
+         if (predicate && (predicate(env, i) == RISCV_EXCP_NONE)) {
+-            if (csr_ops[i].name) {
+-                g_string_append_printf(s, "<reg name=\"%s\"", csr_ops[i].name);
+-            } else {
+-                g_string_append_printf(s, "<reg name=\"csr%03x\"", i);
+-            }
++            regs[i] =
++                csr_ops[i].name ?
++                    csr_ops[i].name : g_strdup_printf("csr%03x", i);
++            g_string_append_printf(s, "<reg name=\"%s\"", regs[i]);
+             g_string_append_printf(s, " bitsize=\"%d\"", bitsize);
+             g_string_append_printf(s, " regnum=\"%d\"/>", base_reg + i);
+         }
+@@ -252,6 +252,8 @@ static GDBFeature *riscv_gen_dynamic_csr_feature(CPUState *cs, int base_reg)
+ 
+     g_string_append_printf(s, "</feature>");
+ 
++    cpu->dyn_csr_feature.name = "org.gnu.gdb.riscv.csr";
++    cpu->dyn_csr_feature.regs = regs;
+     cpu->dyn_csr_feature.num_regs = CSR_TABLE_SIZE;
+     cpu->dyn_csr_feature.xmlname = "riscv-csr.xml";
+     cpu->dyn_csr_feature.xml = g_string_free(s, false);
+@@ -268,10 +270,12 @@ static GDBFeature *ricsv_gen_dynamic_vector_feature(CPUState *cs, int base_reg)
+     RISCVCPU *cpu = RISCV_CPU(cs);
+     GString *s = g_string_new(NULL);
+     g_autoptr(GString) ts = g_string_new("");
 +    const char **regs;
-     unsigned int num_regs = 0;
+     int reg_width = cpu->cfg.vlen;
      int i;
  
-@@ -350,6 +350,7 @@ void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu)
-         return;
+     cpu->dyn_vreg_feature.num_regs = 32;
++    regs = g_new(const char *, cpu->dyn_vreg_feature.num_regs);
+ 
+     g_string_printf(s, "<?xml version=\"1.0\"?>");
+     g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+@@ -297,15 +301,18 @@ static GDBFeature *ricsv_gen_dynamic_vector_feature(CPUState *cs, int base_reg)
+ 
+     /* Define vector registers */
+     for (i = 0; i < cpu->dyn_vreg_feature.num_regs; i++) {
++        regs[i] = g_strdup_printf("v%d", i);
+         g_string_append_printf(s,
+-                               "<reg name=\"v%d\" bitsize=\"%d\""
++                               "<reg name=\"%s\" bitsize=\"%d\""
+                                " regnum=\"%d\" group=\"vector\""
+                                " type=\"riscv_vector\"/>",
+-                               i, reg_width, base_reg++);
++                               regs[i], reg_width, base_reg++);
      }
  
-+    regs = g_new(const char *, num_regs);
-     xml = g_string_new("<?xml version=\"1.0\"?>");
-     g_string_append(xml, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
-     g_string_append(xml, "<feature name=\"org.qemu.power.spr\">");
-@@ -361,9 +362,8 @@ void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu)
-             continue;
-         }
+     g_string_append_printf(s, "</feature>");
  
--        spr_name = g_ascii_strdown(spr->name, -1);
--        g_string_append_printf(xml, "<reg name=\"%s\"", spr_name);
--        g_free(spr_name);
-+        regs[spr->gdb_id] = g_ascii_strdown(spr->name, -1);
-+        g_string_append_printf(xml, "<reg name=\"%s\"", regs[spr->gdb_id]);
- 
-         g_string_append_printf(xml, " bitsize=\"%d\"", TARGET_LONG_BITS);
-         g_string_append(xml, " group=\"spr\"/>");
-@@ -371,6 +371,8 @@ void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu)
- 
-     g_string_append(xml, "</feature>");
- 
-+    pcc->gdb_spr.name = "org.qemu.power.spr";
-+    pcc->gdb_spr.regs = regs;
-     pcc->gdb_spr.num_regs = num_regs;
-     pcc->gdb_spr.xmlname = "power-spr.xml";
-     pcc->gdb_spr.xml = g_string_free(xml, false);
++    cpu->dyn_vreg_feature.name = "org.gnu.gdb.riscv.vector";
++    cpu->dyn_vreg_feature.regs = regs;
+     cpu->dyn_vreg_feature.xmlname = "riscv-vector.xml";
+     cpu->dyn_vreg_feature.xml = g_string_free(s, false);
+     return &cpu->dyn_vreg_feature;
 -- 
 2.41.0

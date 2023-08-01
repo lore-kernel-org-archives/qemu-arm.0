@@ -1,226 +1,191 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp3014796ejb;
-        Tue, 1 Aug 2023 10:03:59 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlG6I2b7i2m8Vpe+EZBm+84nqcaQCqJC2RfPzejFylwgwVjaoebi1VqFWX2Dk9XH5AKfDoXy
-X-Received: by 2002:a0c:da83:0:b0:63d:6755:d1ce with SMTP id z3-20020a0cda83000000b0063d6755d1cemr6739350qvj.15.1690909439293;
-        Tue, 01 Aug 2023 10:03:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690909439; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp3087298ejb;
+        Tue, 1 Aug 2023 12:11:21 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGZbEYPzQ6wYRhPMDC70WYeh8ZT5K8+EkmDsEZuURI1SDAiw5BQmppkZwYIcTlyCDpDVNDs
+X-Received: by 2002:a05:620a:4084:b0:765:abeb:a13e with SMTP id f4-20020a05620a408400b00765abeba13emr17479086qko.60.1690917081255;
+        Tue, 01 Aug 2023 12:11:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690917081; cv=none;
         d=google.com; s=arc-20160816;
-        b=Otg6EG4jRKzmSdaGEGro4uBZcahD8YJveQDqN0BB4V2gSUBWa8+2WANZTyDVK7IK2Q
-         dW14U0ORY7fyk0aUd/mjN6eWUiV86f9Mt1NxTn4GQVA2jdFmW0LJn3CD8Y6LosFOnY5y
-         dkq79s+ReCaCnqP5PDod8weIGXNGH6+rnhAdQBdqHE1eJEMaI0bmCl42O6WX9Rx133VO
-         WUH9Q7nfCm3v67a3LB103IiQsoUgmpJHax2QiKTywcD3w1a340idNHKVAFsBWcDYlB4j
-         x1hnMvoItjQhNwX/TX2AVcz3+qA0xIEKwFiclKeU3OfEH5EIHzCdPvJowbC6CX2o+Yhv
-         igsg==
+        b=jBQ51kefKOeyRvIW7pz8nnwzpYxqRd98qFFRQlW8FWayH+h692vl5SHSaKzBvYOFIs
+         +sM8HT/TspdP/pPtlwQFGdxa93GnvKY2tGOoQDAcsH5cbKNMpk0cT/mxwFhzbumIWVPH
+         GO49+/gAbm+jfctfnNVkfbjeiSmmIsM2GHiGCf9zftnePL+CtBL8GUvr5PhqV1tPXf7I
+         3ZsrOnTbySZpRQxoW01YONxdwuC9zUJzLK7gotSdtScgbvlMaAPvNJVlQg5yU8EPy0Fq
+         71tS/OwqrSjyywi23whVHKgVH5xsxauTDGIdqpLFxQBgO97SYj45yM0P5/ESqeJOXaT4
+         8Jrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:subject:from:references:cc:to:content-language
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=nwjHOD/bDcTVCu/4XOe7iUE4KjdIb5EAC6hcQ6ZVkvk=;
-        fh=ErLPftEKNVjaZ8/A6ACapeRc/ul8ybVsqon52rAl7nc=;
-        b=An4O0lzwdJc+yttSVU39WJ+NdHRYjo0QInz2I7mRTGt5uY+toPzTMQU0XziaYJWPUu
-         gRsrmqxyOJW75o9EDQt8l/fk4tP6pcuCdHtdAr3VqCBwvNJ0vsLmzIzgbc2r0oX80VRJ
-         aoZFODymDGiQRO8iy3ECUuYKH0JYjUoIIqESYKefPCU8zIe30qortML6N3SR1xHdxHkB
-         kaD7PnZxqKIDAEIKX2fko6nA8SKKRP0OYcaxPdk8L5v3aokFu6khWOvRBuJzN7MsTUgQ
-         by9zAlsqpUwEvRT7zjJtjEzEquFB2NRVofZbVtOfbW8VqeaNQGB2QouREXV6sJB9exfg
-         sdGA==
+         :list-unsubscribe:list-id:precedence:ui-outboundreport
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=dN/dgMhkDgLJha2j6RXZjsw1lBwj+7VI/5m1maWpPpY=;
+        fh=baNk86TBkJ6mlBWrYGJJYOQrQlP7d816Km8U43m0Njg=;
+        b=CjyhtJqKXQ9U30hvKUprc9ua4QGTrbOvyPUTACLk8/3taOEh3EO3yOlr/CVlNQV8aT
+         YiXLqcXLOv2S1+Y8y14LsLdEcIk0MGLWAFKI4ax1eEEY7k2bbbQq35CrvNfkKrYxnqnb
+         OoRbUmt5y2RyGs5VhNvmRG2nh73X7sXxJGesgCfOGV22cJ5OqfyteC3dqkEgOfCp4YIp
+         /crOubrELDJptsGwtbVLUXhAM5+mO/VoRTHDqKOzfBOVV9ZNN36O5fEyZDD4iXqp9rXS
+         gYuztnlwTWmKJR3UE2+lieZLRXaGEdMlmLFkxklzD9D/tQ51IhgEPA2fXKDtr5xpmuV3
+         1bZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20221208 header.b=V5LHnRGw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=HLG7KUrU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h10-20020a0cf20a000000b0063d38abe9c0si7575476qvk.156.2023.08.01.10.03.59
+        by mx.google.com with ESMTPS id o189-20020a375ac6000000b007683249ea1csi7038997qkb.127.2023.08.01.12.11.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Aug 2023 10:03:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Aug 2023 12:11:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20221208 header.b=V5LHnRGw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=HLG7KUrU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qQsmg-0005Lv-PP; Tue, 01 Aug 2023 13:03:46 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qQulj-0002Zp-Ot; Tue, 01 Aug 2023 15:10:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1qQsmd-0005LW-SS; Tue, 01 Aug 2023 13:03:44 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1qQsmb-0000wW-W1; Tue, 01 Aug 2023 13:03:43 -0400
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-1b8ad8383faso50295595ad.0; 
- Tue, 01 Aug 2023 10:03:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1690909419; x=1691514219;
- h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
- :content-language:user-agent:mime-version:date:message-id:sender
- :from:to:cc:subject:date:message-id:reply-to;
- bh=nwjHOD/bDcTVCu/4XOe7iUE4KjdIb5EAC6hcQ6ZVkvk=;
- b=V5LHnRGwtJbcQnzA6DzLnYVF8fw2vvyrEO60yHsuIjcPqKn3d0OWdSUMEwGGBHDESh
- GGbkVBSYvXqRGYnGq16JUML9XvEogNijPmvXw2U/ReznwTxj5r5ljdYq6mUi5m9cdEVV
- FohzrAbrk2Diq8e+ouW/VoPV/hrj5WJKNkuZNnD+VaoZj9DWXNJGcWLI3KRtZjI11+ja
- chw22SW9JRyDbZzhXtKNckZUD7w4X3pSDXLatTeskAvUEOKKAk5EYVFesl6repnyGZMM
- y2v+O1TptgkkvopQ/HPwxWtoCy+scTdLfWOZe43DyEwCpuhL8IK2WgscSt1TyfXtbDrm
- TpQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690909419; x=1691514219;
- h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
- :content-language:user-agent:mime-version:date:message-id:sender
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nwjHOD/bDcTVCu/4XOe7iUE4KjdIb5EAC6hcQ6ZVkvk=;
- b=eAxmOhgJyt1H/eB/5sft5PIvSKNt0RaXIXSwFyriQDhZsfSTA0KkfF0HYHKsMnAbpp
- 4AeK5zegKhu8Uiw4THcZ5w6miswbMZ4j9COgksAHRgMvC9d3heIsXyuOjTNo/D+eQk5I
- oaoOXqcxrQkwQggOtJYu9OzN+G8bNWd8yR273BRUCc2bgk8ZfQMxE7K7obZLtABXqvqc
- 5RgLFci9HZmQkFQ12iXDP60Z+Se+bbYVa5eum9iB1W87MLS7VriYLL19sFbQP4NCrX0Z
- 96ZiuXUV512aVi4tdltg0ESb0mstA6lG+8QhCHwTZ/7GtiXVRNA4eNS4UDwhlb+20qu3
- 0hbQ==
-X-Gm-Message-State: ABy/qLbjhRsk9jKoReqWpV+dNdv2qo80Aj1ZPihr9QYU81sJMR/Zh4c+
- O+VzPu8Vd8PACa2UEEjoIgU=
-X-Received: by 2002:a17:902:ce86:b0:1b6:797d:33fb with SMTP id
- f6-20020a170902ce8600b001b6797d33fbmr14716501plg.64.1690909418940; 
- Tue, 01 Aug 2023 10:03:38 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
- ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- iw12-20020a170903044c00b001bbbc655ca1sm10740957plb.219.2023.08.01.10.03.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Aug 2023 10:03:38 -0700 (PDT)
-Message-ID: <33601690-df21-55ec-bc61-c720e8861aa4@roeck-us.net>
-Date: Tue, 1 Aug 2023 10:03:36 -0700
+ (Exim 4.90_1) (envelope-from <deller@gmx.de>)
+ id 1qQula-0002UV-81; Tue, 01 Aug 2023 15:10:48 -0400
+Received: from mout.gmx.net ([212.227.17.22])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <deller@gmx.de>)
+ id 1qQulX-0002DI-O5; Tue, 01 Aug 2023 15:10:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de;
+ s=s31663417; t=1690917037; x=1691521837; i=deller@gmx.de;
+ bh=x2WCk90r3kqILwUNojPe8GNq/6l5cw5ovlA7R/f2IzU=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=HLG7KUrUOlX6EiLTny+/V2iKCPTxX6+xBNTs8pReTpdkkWOx9n/0p9tkTGOQN9lvNpXLrtd
+ ZWx7+5cFbtNhpVheG0JPcH2YlX3v6qtwQkgLxG8BBBlALg9CuJoa3b1jLb2RO7DwPbaVLHSzf
+ /kTwlD2x2Xjk6amOxV1gFclJnr9LKXl3lvprLv8SfoJLiZ6mx+yW50DPPnW4mH4eqJyn5bqKZ
+ JqePzIxrWqKEXORcQ6bfZUleMqPmBgcwIpSDTnMpEQT8rik6i9TbMvXNz9vIwTduyiYyBtGiY
+ XXR59nVTGz4Yo/TrLmdjBEyIaMD78gkW92Da/G+SkNw0qyc3Mmww==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from p100.fritz.box ([94.134.150.247]) by mail.gmx.net (mrgmx104
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MnJhU-1q1n8y432y-00jEov; Tue, 01
+ Aug 2023 21:10:37 +0200
+From: Helge Deller <deller@gmx.de>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org, Helge Deller <deller@gmx.de>
+Subject: [PATCH 1/2] linux-user: Fix openat() emulation to correctly detect
+ accesses to /proc
+Date: Tue,  1 Aug 2023 21:10:34 +0200
+Message-ID: <20230801191035.374120-2-deller@gmx.de>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230801191035.374120-1-deller@gmx.de>
+References: <20230801191035.374120-1-deller@gmx.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qianfanguijin@163.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Niek Linnenbank <nieklinnenbank@gmail.com>
-References: <20230523100508.32564-1-qianfanguijin@163.com>
- <20230523100508.32564-2-qianfanguijin@163.com>
- <41e71eae-72ad-410d-9cd8-cc495c06dac4@roeck-us.net>
- <CAFEAcA8aEQWAap36CtHMrEkFQUPnDCH7=-X5+TE2GJ-qzm3Y9w@mail.gmail.com>
- <2044dc69-93de-d855-fe44-ee6f3ab3576b@roeck-us.net>
- <CAFEAcA8vtJNwbxBreDMFB6q-Z=G5FiOcWzAAz+F69A4-Er_4EA@mail.gmail.com>
- <a51c71c5-4c5e-8723-76f1-2cc9410f601b@roeck-us.net>
- <01087628-44c0-2b15-61bc-8677b7d1b459@roeck-us.net>
- <CAFEAcA_mRY3bULpX0Qst--8XkDP9DYJqFbRBPgEpvEB1QnDr_A@mail.gmail.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v5 01/11] hw: arm: Add bananapi M2-Ultra and allwinner-r40
- support
-In-Reply-To: <CAFEAcA_mRY3bULpX0Qst--8XkDP9DYJqFbRBPgEpvEB1QnDr_A@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=groeck7@gmail.com; helo=mail-pl1-x632.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.092,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:t2Qxvy/8uIfWsppEqM5abCnaRoULrkykz2ZZeXCLGXfQJOOPBAP
+ J27DaF0PPCWxDac6ygd3ozCHVLG5VyovwcyXD5SOyPxkXT9/KQedMBvsIr3666V1ljzzSP+
+ UK4plnoZgiQGmOvv6amqPweeqYQBGnHxUpxLFd+/G9P3mu72AAM7Rt31tLwuFj0Ppq/FelH
+ /aFyBLFlbACObr4uJw3/w==
+UI-OutboundReport: notjunk:1;M01:P0:zBl5iumgsRU=;vRj4BaMYLi2Ah55QRXZv1dNAIYC
+ MeDzHyAVn0i/6xLMETkxIbIPAKMEezsex/L9BnYGl9ALQvn6lxl968TFm0dHu3iyj0ZRsohk/
+ Gk4VJr2D9+pRfPNAwj5IulZ2OJmm4pxVlr1EweSdF1DtPOdSfWfiK1vDprkt6bwMxFtV8qvel
+ UFqHLU7keLrhW4tTFncKvb8q0DNqIbrzESDyUUM6xbP/xVYRuWZsaIoAkUxb+4V6g0N6bFeeP
+ azonhVqN9oF0HUliOprdxvTGRRtl8D/9qVhmWTzpBwLwo501VYcsKiBvzgAUphsXJE6KMbDhx
+ TMjvbmRUEDPpgt8/p1f2khIVLdZLyxI6HKzlQV3hWqiPQsJRRkuMWdM+Kp3G1sB4emj9JEyZK
+ cUqTVpxuVycwhFv7/6XsnuyCgYjXxXL31ly5fyBTSqzxQX2iP7HQwGvqhBEpelbRyPoOBx+23
+ eGFmC7M59id9B8TkIH+yLVYvhpk3TUMZGLSyl6r1dVpfBfWLhCjVCc77h+dLpQr6u4bHujCGb
+ anZm6J8uoZjNY9EFg6mmoYdeTjqvBhLqS9dpaNB3nLnNC6rjBdnRdCqG5FBO1HIEe6y5K97U3
+ 2cxptu6zO6HLqrMUEbfeIhzC556AtdcbrPMz5Grj62LBCa/tOzCallnHRFXh1cDAVSr0dc8da
+ if0chTETwORqRN2NB+1zb1Wgn85oxXYgE8E/xQsy6Qc46Ny5iLMeip78xqcDkPazcgfvQKW/q
+ OVsDjozgab5gNbYqFJ9LNaCuGJ4CcQV6bJCEoZzHPaklNlL0GvujeDVikTgGZcbD+szZKQMi0
+ PpovMEoA8yIJnrNq6YTQMpo78rfrvmzVoM2qJFr8zGwLUfTfKW1vE4DR/lNtr220BbT8nQWSi
+ mi2DW3SNioPDXhGXcvSsM3gBcRnysZSd/VeIISyeEnAcg//bSbAHCJkBrRdO8kPElt/z4rTQF
+ HedYIIlznfIkZqeuAMZeETt6x5k=
+Received-SPF: pass client-ip=212.227.17.22; envelope-from=deller@gmx.de;
+ helo=mout.gmx.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: f3a8TmwiluUQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: o+837tXi3UvU
 
-On 8/1/23 09:01, Peter Maydell wrote:
-> On Sat, 24 Jun 2023 at 16:02, Guenter Roeck <linux@roeck-us.net> wrote:
->>
->> On 6/24/23 07:23, Guenter Roeck wrote:
->>> On 6/24/23 03:40, Peter Maydell wrote:
->>>> On Fri, 23 Jun 2023 at 20:33, Guenter Roeck <linux@roeck-us.net> wrote:
->>>>>
->>>>> On 6/23/23 10:44, Peter Maydell wrote:
->>>>>> On Sat, 17 Jun 2023 at 17:29, Guenter Roeck <linux@roeck-us.net> wrote:
->>>>>>> Main problem is that the SD card gets instantiated randomly to
->>>>>>> mmc0, mmc1, or mmc2, making it all but impossible to specify a
->>>>>>> root file system device. The non-instantiated cards are always
->>>>>>> reported as non-removable, including mmc0. Example:
->>>>>>>
->>>>>>> mmc0: Failed to initialize a non-removable card
->>>>>>
->>>>>> Do you mean that QEMU randomly connects the SD card to
->>>>>> a different MMC controller each time, or that Linux is
->>>>>> randomly assigning mmc0 to a different MMC controller each
->>>>>> time ?
->>>>>>
->>>>>
->>>>> Good question. Given the workaround (fix ?) I suggested is
->>>>> in the devicetree file, I would assume it is the latter. I suspect
->>>>> that Linux assigns drive names based on hardware detection order,
->>>>> and that this is not deterministic for some reason. It is odd
->>>>> because I have never experienced that with any other emulation.
->>>>
->>>> Yeah, I don't really understand why it would be non-deterministic.
->>>> But it does make it sound like the right thing is for the
->>>> device tree file to explicitly say which MMC controller is
->>>> which -- presumably you might get unlucky with the timing
->>>> on real hardware too.
->>>>
->>>
->>> Agreed, only someone with real hardware would have to confirm
->>> that this is the case.
->>>
->>
->> Actually, the reason is quite simple. In the Linux kernel:
->>
->> static struct platform_driver sunxi_mmc_driver = {
->>           .driver = {
->>                   .name   = "sunxi-mmc",
->>                   .probe_type = PROBE_PREFER_ASYNCHRONOUS,
->>                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
->>                   .of_match_table = sunxi_mmc_of_match,
->>                   .pm = &sunxi_mmc_pm_ops,
->>           },
->>           .probe          = sunxi_mmc_probe,
->>           .remove         = sunxi_mmc_remove,
->> };
->>
->> All mmc devices instantiate at the same time, thus the
->> device name association is random. If I drop the probe_type
->> assignment, it becomes deterministic.
->>
->> On top of that, Linux does know which drives are removable
->> from the devicetree file. However, since probe order is
->> random, the assignment of the one removable drive to device
->> names is random. Sometimes mmc0 shows up as removable,
->> sometimes it is mmc1 or mmc2.
->>
->> So my conclusion is that qemu isn't doing anything wrong,
->> it is all happening in the Linux kernel.
-> 
-> Hi Guenter -- do you know if this "random MMC controller"
-> issue has been fixed in Linux ? If so, we might be able
-> to update our test case image to avoid the slightly ugly
-> "root=b300" workaround at some point.
-> 
+In qemu we catch accesses to files like /proc/cpuinfo or /proc/net/route
+and return to the guest contents which would be visible on a real system
+(instead what the host would show).
 
-No, it has not been fixed, or at least there is nothing in linux-next.
-I don't have real hardware, so I am not in a position to submit, much
-less test, a patch on it. Someone had mentioned that real hardware would
-handle the problem in initramfs. That seems wrong to me, but it is what
-it is.
+This patch fixes a bug, where for example the accesses
+    cat /proc////cpuinfo
+or
+    cd /proc && cat cpuinfo
+will not be recognized by qemu and where qemu will wrongly show
+the contents of the host's /proc/cpuinfo file.
 
-I changed my own test to use the "root=b300" hack. That seems highly kludgy,
-but at least it works.
+Signed-off-by: Helge Deller <deller@gmx.de>
 
-Guenter
+=2D-
+v2:
+- use g_autofree instead of pathname on stack
+  Daniel P. Berrang=C3=A9 requested to not put buffers on stack.
+  Using g_autofree keeps code much cleaner than using
+  extended semantics of realpath(), unless I can use g_autofree
+  on malloced area from realpath().
+=2D--
+ linux-user/syscall.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 95727a816a..a089463969 100644
+=2D-- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -8539,9 +8539,12 @@ static int open_hardware(CPUArchState *cpu_env, int=
+ fd)
+ }
+ #endif
+
+-int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathnam=
+e,
++
++int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *fname,
+                     int flags, mode_t mode, bool safe)
+ {
++    g_autofree char *proc_name =3D g_new(char, PATH_MAX);
++    const char *pathname;
+     struct fake_open {
+         const char *filename;
+         int (*fill)(CPUArchState *cpu_env, int fd);
+@@ -8567,6 +8570,13 @@ int do_guest_openat(CPUArchState *cpu_env, int dirf=
+d, const char *pathname,
+         { NULL, NULL, NULL }
+     };
+
++    /* if this is a file from /proc/ filesystem, expand full name */
++    if (realpath(fname, proc_name) && strncmp(proc_name, "/proc/", 6) =3D=
+=3D 0) {
++        pathname =3D proc_name;
++    } else {
++        pathname =3D fname;
++    }
++
+     if (is_proc_myself(pathname, "exe")) {
+         if (safe) {
+             return safe_openat(dirfd, exec_path, flags, mode);
+=2D-
+2.41.0
 

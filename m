@@ -1,108 +1,109 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2885351ejb;
-        Tue, 1 Aug 2023 06:57:42 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEI7WurC8wnibfsAbKPUK1/nwRyslFluoN3UxtZcIm8qDybrSb4dIYzVoyyJlisSx0ArfTC
-X-Received: by 2002:a1f:3f56:0:b0:481:2ea9:979e with SMTP id m83-20020a1f3f56000000b004812ea9979emr2518529vka.5.1690898262531;
-        Tue, 01 Aug 2023 06:57:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690898262; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2904837ejb;
+        Tue, 1 Aug 2023 07:23:13 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEgh7aTLEAmgC11zDZswDzOfVN5LBmnKeZ3QbLgefpB3shAZoOTVm6NkcMqOgqS/wjT31/9
+X-Received: by 2002:ac8:5a15:0:b0:401:e2b1:d28d with SMTP id n21-20020ac85a15000000b00401e2b1d28dmr15642114qta.20.1690899793237;
+        Tue, 01 Aug 2023 07:23:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690899793; cv=none;
         d=google.com; s=arc-20160816;
-        b=X0GB14F5A/9+xmVKGlcqxqFzrYmAyyYsbUiC+mxmO13sJ2CLzV7fSYo62+rhrKOT+R
-         4A4haziXqKio1OcIpg02xqiDp6ACfseOFCWZYh2was2vuDe8v9HCpJMfExUjmYeuIi3o
-         YgyYAlbrsCs4wKM2mx1N3TpWcHmi8AP8ESE6MP18PgVS5THRw6/J21Ts3QqzVK1hoUet
-         34Lu637dNqwdGkefyPWrXp6AiD3Y79f6KzIdFM2+gGxnsTnF7VsAKl3nw7Bq2ZYP9I+N
-         ozMdys9JwAVxdtoVfYJjz0912rZfGXlBSGzOJuy+8eeKsGXrFtkXrMfMOPOzsyVpYIyQ
-         O2vQ==
+        b=BXd3R3PBCEAnR5nH6QkGsWb7STb/WaihozIBE2hdtqnS1GrBJ+McKEvC2pg8gUy6dd
+         xtKCmTPNtJKURralU1l+4Hvdys4jKKhEvwbjZMeGLB4+kvd0I5ucjBs2zMZ1fkm5y8pE
+         iScGZIsKxvbnlozjBSIL1KquR3kW5H0/Hk5fvkxPkOhJQo0RfdoQyoYDp00SGsKoz4JK
+         AVJJKx7K/QwR1RmPiPsMWXZ+kEEK457DOUIl2GAXVCwjAO1gBlKxGFAiBZDrPlUnqKom
+         fWNa7vMo3MJdW+FGMnM4MG3eTL98yvv2S5XQZRFC8i59dhC72O55gkCV9OPgOau/QrfX
+         Ylag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :ui-outboundreport:content-disposition:mime-version:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=ej+zPoMb6arEeQwNMsEau9EEHBqEh6c1IXQDL1kyBDU=;
-        fh=YXcHndwRtvG0uag/5UZp2uR6WqtgMvPQbrBo3sIECwQ=;
-        b=H6exC8gytuOTfPTPSZtMoxugq5uiDJEa0iTkMwK94qTOKZTUh6f1fv+FW/WX9KXYpG
-         HcXm5VB7/N6INUsZIAjuyeWtwcJ4Dm9k66+FubqFIQ8UR/vezFIooZ99vZ1VYpix4sn+
-         OeTXF9hf2dXllaTddAcmwg+IMM0bplswsNzQUu0//eLBpyOK8yJyMESIpzuTYHhH0YAO
-         W6uy3fOW3RLNPDmdjeC8/OqzprHR4F5BLZEulvlODqaF+EQ5gkyPFxYgZdCXEml9cI/N
-         nrysyPz0vT+rvkYFElbn4VEtbaJvs6lNfV4fFCBPEBQNHrpRsOC8hUevYIMwrf3+6+2M
-         HxSg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Q+kuX/EChX1xOdMZ2LS/4H20RD3DMHGuUOy1vmhdta0=;
+        fh=jI2hgQY1g0wvMyxw33p9cbh4a/lNgpBuc7/Fp8cj8eI=;
+        b=H9pJIBmioXqEF80AFTG9yn/ZG2cb5OyE5rUCvFMG/jFTG3EPpbSfQLkfgBw7uEsgog
+         KJLfAY7+vqIaME6LclpAeLEt5bNp1x4eVQ4yaAcIKKuh5Hpx4sH7GdnOriEHF9zmpe/t
+         p5o3vAuf129LnLR6T5SvAyhvhkGjWc/K90XqgShrVc93dsFaYo9fDiKGiDJ+ylubDlJM
+         w+VbxKSpV7IfkWruARZirdDS9mR4wwSRBVrgqpbaIfTBzb6DdQXsYrvZo3hOEVXvOW+5
+         e3sOQCb3Ya6gRn1r+9neZSSjlIjlqTBjrMw0mCDAe0S7AOE2VEC7tQdHuAdXSFiTMCrD
+         QwEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=rLS8aoUs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZCEtL9l0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18-20020a05622a13d200b00403affd349bsi7142387qtk.168.2023.08.01.06.57.42
+        by mx.google.com with ESMTPS id q14-20020a05622a04ce00b004033859d205si3949617qtx.167.2023.08.01.07.23.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Aug 2023 06:57:42 -0700 (PDT)
+        Tue, 01 Aug 2023 07:23:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=rLS8aoUs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZCEtL9l0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qQpsU-0001a5-2W; Tue, 01 Aug 2023 09:57:34 -0400
+	id 1qQqGt-0005qc-OZ; Tue, 01 Aug 2023 10:22:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <deller@gmx.de>)
- id 1qQpsQ-0001ZG-DQ; Tue, 01 Aug 2023 09:57:30 -0400
-Received: from mout.gmx.net ([212.227.15.19])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <deller@gmx.de>)
- id 1qQpsO-0004GL-Ky; Tue, 01 Aug 2023 09:57:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de;
- s=s31663417; t=1690898245; x=1691503045; i=deller@gmx.de;
- bh=umcxsITwRNOeQ0dhUL3rB1X1FD18K8NrjAsZ7lxDBpU=;
- h=X-UI-Sender-Class:Date:From:To:Subject;
- b=rLS8aoUs6ofif4xGHZgq0Ytt+faSiAlWF0kwkfwe5Hc+g5KF6HI3H8H/lbBKDZ7p1JAHRdS
- NHVtXQyEhun+Z5GVw9IWIseJQ+QxTHGGGC+xTcIcURucXD0iIJmm+qScE6FTfKhx1Z5dYaEhJ
- Fz17ut87MceCmNtaJd34XUjrUb6y+280KV3KrJmKzE899oGSuI4qlcBxdWFyG9jpjmtd5EuoE
- nLMIr43VxywKH1m3Mi+6xe8lrsTRoYUokN65KmNh7SkDsnounUKKnGlp4IqMOJ2b+Iylug1Uq
- ECrJJvl27/edEo6EGAyMdcbIPyp71rY37Eh7VOGRzM8Ls8NVqI6w==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from p100 ([94.134.150.247]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MY6Cl-1qLARE2oaD-00YPgW; Tue, 01
- Aug 2023 15:57:25 +0200
-Date: Tue, 1 Aug 2023 15:57:24 +0200
-From: Helge Deller <deller@gmx.de>
-To: Laurent Vivier <laurent@vivier.eu>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH] linux-user: Emulate /proc/cpuinfo on aarch64 and arm
-Message-ID: <ZMkPRJ3subSuW+Rg@p100>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qQqGs-0005q5-2S
+ for qemu-arm@nongnu.org; Tue, 01 Aug 2023 10:22:46 -0400
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qQqGq-0004ta-Gk
+ for qemu-arm@nongnu.org; Tue, 01 Aug 2023 10:22:45 -0400
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-4fe3678010eso3586776e87.3
+ for <qemu-arm@nongnu.org>; Tue, 01 Aug 2023 07:22:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1690899763; x=1691504563;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Q+kuX/EChX1xOdMZ2LS/4H20RD3DMHGuUOy1vmhdta0=;
+ b=ZCEtL9l05AhGAU4KzxDAFuV7yifKF+sSoMYAm1qMrK8d939RFv96GZey6Lp8Don+vp
+ nXyL1wfVAiakUXGy+5vucAeA9Ty8oJQ3i3tucsHv86ZrdMsk0f99m/rY3Ox4qdt/kMkr
+ vgV0XCZ0TxGLOpa1WxKNIRt4XRb4N8ZINMOilSaJDRIBnEDBVrfnJFAjW3HjSlno2Vg2
+ i2H2TjEHLkK24MAGPjl9+/6hwrRkM1K8u97dC5/wqqrFMnOEiLNa2M6RZbIIJIaSwRgj
+ VRmskaDojB1LqcNMk4Z7M1ov8LERxQAur6n2RLl2vqnTTo5FCGIGFBT6M4DF8MJXiXB+
+ lSKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1690899763; x=1691504563;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Q+kuX/EChX1xOdMZ2LS/4H20RD3DMHGuUOy1vmhdta0=;
+ b=T+Ju7c5gdbUrEVSSJAyTli5k8ZgbxYcXHneCNRAtSofn036EKmVMDj76J3RI+FnZYz
+ ICA10F9Ptwu3OE89ktyiORPmWznKHWaUNGuFInosEVwEAYfKiLMz7ieJMRINdw6gH4PN
+ KPSTIHqQ5Y95WspliALdgAMRJ+3/UCs4dlTElAV9oE88hzME599PvUqtsrTSHnKo4gvs
+ rfROR8SrTZgm/mjf7PWHPL7+45a1j7O4HlV0oEgBNizDisBbv1pzen/j/e38Wjw/LGhs
+ HEvXnV4VcF3rASMQcykTsadbVzJkQsZpa2wW9PhATjCAqOQ6aYE/vF6wYzvdvGuis5MR
+ uLeg==
+X-Gm-Message-State: ABy/qLaVxah0CJm6BQFvYmnO7Bc/XzXM2pYsiDbkVGW/EodnRv9nkxul
+ fP478lwY8bISE+MlMBYmfYbGafa+MMAGw3ardUFavg==
+X-Received: by 2002:ac2:47ea:0:b0:4fe:3a2f:681 with SMTP id
+ b10-20020ac247ea000000b004fe3a2f0681mr1873949lfp.23.1690899762628; Tue, 01
+ Aug 2023 07:22:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-Provags-ID: V03:K1:NlTkvylLUFPyn89Be8eTfMxck9zWSUmI3ijFFhhlqGfxwZasKA6
- Y+/Fy+lW3lyWYfq37vYINnka+cs+bDW7+HTpR3yXtAbmC89Lbym8gCIwC27bAPImUfnKw7C
- uu0QiT32UCKJhfiFGAFYG9Hs3dQqtR9xc3oCpq+QKRPhu6K5M+DzYHhGT7onJqc2llu+LDs
- b2qQeViRw5IhJ0LzXIuWQ==
-UI-OutboundReport: notjunk:1;M01:P0:y22NqGAyzbI=;yajqhruky4Sd3u7v7Oy90GfXusr
- rvT6FVaoGIemjtanJ+QqmI0V5ueYtfcYhbDHpcHmmYZcUeRQ+sC6rV+Bi/9uC69ohOL7L9/Am
- dh4wrQQT2uO21c38fWKcW34j458AT76GwYIZIuJkR7KpBsyLjN8oK3Wp3ExXDusQRFwU9dY6l
- sGlPSX8UyxE5xJZxMVBevS4hK5Uav43jc5PSLkH5AiosY4eo4HU1PtlpaFw0Hd4v2SwUCaukN
- o04UgcRtdXsDnNYbSQf2TWtYU337otrvjl3287QGH1WbcPsQLHfkl5e1z27zP1eNbwikCARMv
- kGQs/+s/8MzZYnTZgAlm3IVhmgjZNNPonR0Hrp3rPwDhW9ATHunPzYlwK1RIufbYLNThAg9NP
- WQBHwqDPoEl8TBfaP6DgxXVDTnBsc5puY1ua8rLXhhSRDOVl1ay5airbw1YGl84W1nhToK/V2
- dNshKJe72n1rGbnM2yQtITh+ba9TgQ7Ngx6E3u3DbGX41rZcIvEG1Ke8fwesK4AgrI7Rto667
- 07GLaBAoMABupuHGI7cC6MRNMN92VlHLQGhu4cGogMJVYec3pNeQBwxhb2Te8YSiQ6uEdTn+Z
- Na9Dj8OHWBPjnkcDWsh92G40Dd2qzTtA2GaJvU/9b/X4U9Dn90FS4kOwlGEUmv1Taq7JhtjD8
- qXcbvDhknCRn9d00F8EJKfyhJ7QLYFGNYOIPuZbxAMH2eAAxh+sgUo+wPo9Z+6Prp3X4zX4or
- Y+N2arX/iCTw3asIjh445IytV6lElNh2tkKMGgT0PA5sdDSfr5ZY95/OT0FaywkeF+AzhHlHJ
- pt30IQ0XjEqUibCW6mbSS20wkBtwPjZyVGRbs4O4V4eJwR5dXEZl6ToeHefcxE66uCVhzLP+x
- nREjR4Q7iwC+BUmSVNMY0g5dnButxVvu5PXJZ7XHcjZ0lnokm2/uAYP+62mIN03tDy3qpWC3+
- YWqv7LatmalayEr1vCv/ZvlC5a8=
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=212.227.15.19; envelope-from=deller@gmx.de;
- helo=mout.gmx.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <ZMkPRJ3subSuW+Rg@p100>
+In-Reply-To: <ZMkPRJ3subSuW+Rg@p100>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 1 Aug 2023 15:22:31 +0100
+Message-ID: <CAFEAcA8cEp2_vc0i9QMNeb7KkxsJecXjuYhYUR6nkL6-LLyFqw@mail.gmail.com>
+Subject: Re: [PATCH] linux-user: Emulate /proc/cpuinfo on aarch64 and arm
+To: Helge Deller <deller@gmx.de>
+Cc: Laurent Vivier <laurent@vivier.eu>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,98 +118,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cj21vGDNEvJZ
+X-TUID: il7N8+SHLqVM
 
-Add emulation for /proc/cpuinfo for arm architecture.
-The output below mimics output as seen on debian porterboxes.
+On Tue, 1 Aug 2023 at 14:57, Helge Deller <deller@gmx.de> wrote:
+>
+> Add emulation for /proc/cpuinfo for arm architecture.
+> The output below mimics output as seen on debian porterboxes.
 
-aarch64 output example:
 
-processor       : 0
-BogoMIPS        : 100.00
-Features        : fp asimd evtstrm cpuid
-CPU implementer : 0x50
-CPU architecture: 8
-CPU variant     : 0x0
-CPU part        : 0x0
-CPU revision    : 1
+> +#if defined(TARGET_AARCH64) || defined(TARGET_ARM)
+> +static int open_cpuinfo(CPUArchState *cpu_env, int fd)
+> +{
+> +    int i, num_cpus;
+> +    const int is64 = TARGET_ABI_BITS == 64;
+> +
+> +    num_cpus = sysconf(_SC_NPROCESSORS_ONLN);
+> +    for (i = 0; i < num_cpus; i++) {
+> +        dprintf(fd, "processor\t: %d\n", i);
+> +        if (!is64) {
+> +            dprintf(fd, "model name\t: ARMv7 Processor rev 2 (v7l)\n");
+> +        }
+> +        dprintf(fd, "BogoMIPS\t: %d.00\n", is64 ? 100 : 50);
+> +        dprintf(fd, "Features\t: %s\n",
+> +                is64 ? "fp asimd evtstrm cpuid"
+> +                     : "half thumb fastmult vfp edsp thumbee vfpv3 " \
+> +                       "tls idiva idivt vfpd32 lpae");
+> +        dprintf(fd, "CPU implementer\t: 0x%d\n", is64 ? 50 : 56);
+> +        dprintf(fd, "CPU architecture: %d\n",    is64 ? 8 : 7);
+> +        dprintf(fd, "CPU variant\t: 0x%d\n",     is64 ? 0 : 2);
+> +        dprintf(fd, "CPU part\t: 0x%d\n",        is64 ? 0 : 584);
+> +        dprintf(fd, "CPU revision\t: %d\n\n",    is64 ? 1 : 2);
 
-arm output example:
+If you want to do this you should hook it up to what the
+CPU being emulated actually is and what features it has.
+(Compare how we set the hwcaps.)
 
-processor       : 0
-model name      : ARMv7 Processor rev 2 (v7l)
-BogoMIPS        : 50.00
-Features        : half thumb fastmult vfp edsp thumbee vfpv3 tls idiva idi=
-vt vfpd32 lpae
-CPU implementer : 0x56
-CPU architecture: 7
-CPU variant     : 0x2
-CPU part        : 0x584
-CPU revision    : 2
+> +    }
+> +    return 0;
+> +}
 
-Signed-off-by: Helge Deller <deller@gmx.de>
-
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index dc8266c073..917c388073 100644
-=2D-- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -8287,7 +8287,8 @@ void target_exception_dump(CPUArchState *env, const =
-char *fmt, int code)
-
- #if HOST_BIG_ENDIAN !=3D TARGET_BIG_ENDIAN || \
-     defined(TARGET_SPARC) || defined(TARGET_M68K) || defined(TARGET_HPPA)=
- || \
--    defined(TARGET_RISCV) || defined(TARGET_S390X)
-+    defined(TARGET_RISCV) || defined(TARGET_S390X) || defined(TARGET_ARM)=
- || \
-+    defined(TARGET_AARCH64)
- static int is_proc(const char *filename, const char *entry)
- {
-     return strcmp(filename, entry) =3D=3D 0;
-@@ -8503,6 +8504,33 @@ static int open_hardware(CPUArchState *cpu_env, int=
- fd)
- }
- #endif
-
-+#if defined(TARGET_AARCH64) || defined(TARGET_ARM)
-+static int open_cpuinfo(CPUArchState *cpu_env, int fd)
-+{
-+    int i, num_cpus;
-+    const int is64 =3D TARGET_ABI_BITS =3D=3D 64;
-+
-+    num_cpus =3D sysconf(_SC_NPROCESSORS_ONLN);
-+    for (i =3D 0; i < num_cpus; i++) {
-+        dprintf(fd, "processor\t: %d\n", i);
-+        if (!is64) {
-+            dprintf(fd, "model name\t: ARMv7 Processor rev 2 (v7l)\n");
-+        }
-+        dprintf(fd, "BogoMIPS\t: %d.00\n", is64 ? 100 : 50);
-+        dprintf(fd, "Features\t: %s\n",
-+                is64 ? "fp asimd evtstrm cpuid"
-+                     : "half thumb fastmult vfp edsp thumbee vfpv3 " \
-+                       "tls idiva idivt vfpd32 lpae");
-+        dprintf(fd, "CPU implementer\t: 0x%d\n", is64 ? 50 : 56);
-+        dprintf(fd, "CPU architecture: %d\n",    is64 ? 8 : 7);
-+        dprintf(fd, "CPU variant\t: 0x%d\n",     is64 ? 0 : 2);
-+        dprintf(fd, "CPU part\t: 0x%d\n",        is64 ? 0 : 584);
-+        dprintf(fd, "CPU revision\t: %d\n\n",    is64 ? 1 : 2);
-+    }
-+    return 0;
-+}
-+#endif
-+
- int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathnam=
-e,
-                     int flags, mode_t mode, bool safe)
- {
-@@ -8522,7 +8550,8 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd=
-, const char *pathname,
-         { "/proc/net/route", open_net_route, is_proc },
- #endif
- #if defined(TARGET_SPARC) || defined(TARGET_HPPA) || \
--    defined(TARGET_RISCV) || defined(TARGET_S390X)
-+    defined(TARGET_RISCV) || defined(TARGET_S390X) || \
-+    defined(TARGET_ARM)   || defined(TARGET_AARCH64)
-         { "/proc/cpuinfo", open_cpuinfo, is_proc },
- #endif
- #if defined(TARGET_M68K)
+thanks
+-- PMM

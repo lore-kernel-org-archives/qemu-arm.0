@@ -1,208 +1,484 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2193231ejb;
-        Mon, 31 Jul 2023 07:00:28 -0700 (PDT)
-X-Received: by 2002:a17:902:eccc:b0:1b8:1335:b775 with SMTP id a12-20020a170902eccc00b001b81335b775mr13043928plh.0.1690812028712;
-        Mon, 31 Jul 2023 07:00:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690812028; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2878820ejb;
+        Tue, 1 Aug 2023 06:45:27 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEDyFjPWHG2kMGnvkbeHL+0cYEDa88uzlpo9j2NDNjmEE1Sy2ynRVueLISyAZxcPmYrsxh2
+X-Received: by 2002:ac8:5889:0:b0:403:c1c6:2662 with SMTP id t9-20020ac85889000000b00403c1c62662mr14497600qta.2.1690897527606;
+        Tue, 01 Aug 2023 06:45:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690897527; cv=none;
         d=google.com; s=arc-20160816;
-        b=HvtfhnZdUtgHEDh2bgRSz8IKFyhoCpM1H88jPu0l+AGimrQJV/UhAt+aTdg5HY+Wwa
-         sp+6bz4RIIEtBaom1Ti7cPBrPpuxoRqqNJ8t1i2n66F1Sxu1v1wrelplUW01nFfRHVK1
-         9lA3Yeq5QqLH+Q2oxEVIel+flVEoJ/j95mryfcTgJ6KBpJdwZ6euS/DRdFr3qplHr9BF
-         cj3TzcntxLwNenxhNAIAe/3ewcK1gTbw8wKErViKcia1urx33Xz8mb9RKIJugcU1acPU
-         rVbCclaGKJjQHdqJUEb1ofgeVBDhM1XvtaVT/SHi4PoC1/fzHG++N9PS1B+CCYn76Bg8
-         wJ2g==
+        b=vjMw1AT0u/vXUjw5/tqWtAUcMmW3HdWRQu5yjxOp3kMVTKMQBbZltL9xy4/Kc6vYGo
+         rAgX3jDIOTDa2XHBnbFluuofl+5dnBzto6Y2BKpIrUz/335ReD7m4xuOCij1GOTpTIH6
+         zftcOtMV9CcLM5YHiiLlvNxDAstcSpfbrtEbIpsr/Ekl7o2WviAEryxvhy28Oi3lbVwm
+         eiBYlwX7iEtYJYg7who+L4eMMlSU/y/zCc/+Q2oDhSkGzM4zR7JSlc3akiMBKDiEqoy+
+         mO63rE9DwVw2Z2psuh6L97NfE0OVFDXkINN94GaWBRAx9PjHI5A9czwBjzPFibt0mPQA
+         TanA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:cc:to:from
          :dkim-signature;
-        bh=dFI5/dDGgtKfts1m9Qur3+hIlx9/w17jNCSRDR4ep4A=;
-        fh=Vyq5/6xHMnUXaCcwNIruSPKpraLOPjqJ2O/oHLYr/lI=;
-        b=SxbjCNiJSLqWLNYPE3y4M/rZW6IffROCBUc3a/PtYGeFbQjz55H1v1zsqODq9MfE2S
-         LkIy0/z+8HtSOi6/6sY8Rhseno0snPoiACpvaN5jsSnpzAPBWpYjx4IqilpN4qErYNzU
-         shFRt43BGNM4kc+bbvBueot2W65/JnyMG2GZw2DfNPLTTmdP/VWQsEG3Z4HmRe14hea+
-         tZFGjDchNYHTHF1YIJm2+JfK+4YrU2IX5YHGDsdb8+atvb5fj6CZKHsvUhydBIra4Itz
-         v1JLaBAPPTMmyrWCKcbJo92/CkPnFUzizViWdhQObxdmLRqGeKoCrIPG2/5QdElrqtN5
-         SU0Q==
+        bh=oR9dfhjvFij6cBEUrhg6rg/3iZt+GZhDHHGXAEzUU1Y=;
+        fh=YV5t7eEUA45yHBir5bTLy7B0jWu2YhirRpOuDfLnlRM=;
+        b=Oaqq5ND2OdELuHXzkFPmv3O5Em6bUEpREn58n8d4Qck5zRYJOkj+vq9GGf9OXYMbqH
+         r2c4Nfa8b063HUXjR1S8k/CDUrfrG+9VIznxBoZZinFDCmGxmSkrJcA/6e7OTbX56AAt
+         aB5dN3eEZypcPFrqAtGMmZDQScb3ujXr5/Zn0Cts8a8wRjlYV4sOP63WtEdwwFj0Tupq
+         AT4vksjxfHpUP8PfL0eJb/YTkIm7kyto2alCNmhXFSVrC5VZZOLhM3AFvcBrHabMMYsS
+         I9qwwENwmJUCkB8rr4x833rQZjzseK9Ai1jR0gsJAPMk2jU4jZTB3Ts3XtS6GQ31IQ89
+         kRPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=3EPqxcNQ;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id m3-20020a170902c44300b001bbe7f6887esor807669plm.7.2023.07.31.07.00.28
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GuLrWAgx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v10-20020a05622a188a00b003ff23c8747fsi7014684qtc.474.2023.08.01.06.45.27
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 31 Jul 2023 07:00:28 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 01 Aug 2023 06:45:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=3EPqxcNQ;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1690812028; x=1691416828;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=dFI5/dDGgtKfts1m9Qur3+hIlx9/w17jNCSRDR4ep4A=;
-        b=3EPqxcNQLkbIAN43BnvhYZVYFN8u1avdTBAov9OH4wtbeM2Z/NKEQdQOXqOQqaSA7W
-         wzU0t/EQvRuU+GjQjJd+AkPA1CQK5Yi1ZInbVUkjrnoYJxEmBDhASTvZUwboLnpe2ad9
-         evmGSq52GlcBtKeCA43f8XyfLcLGT8KVBN6A5jEhptsqms8uAcya+MkMvYG3aos3C/en
-         DtnP7HixhflynPBJNKOchyxMUeOHGLUfZMUN2EYFlBuV4ftryIydIWL7lVchim3/cobK
-         aNpaUWV3K5bOBUhPol7UOvmxMf7DKUfW07qLqq8sVTi4DBIWC1nu3XNbeaAjdd1+hqW/
-         GkNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1690812028; x=1691416828;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dFI5/dDGgtKfts1m9Qur3+hIlx9/w17jNCSRDR4ep4A=;
-        b=FSLlL4AuBJFy/7XiPGMtxVOSFQuINlx9HXji84awNlCv/akdFVke2EU7e8wauTmIFJ
-         AllCpLNeCCsYN9iM/t45T3yFjmILAgpbzl+fml4Xlb25un+phD67gFIbErBQ0cNk3NX3
-         vXcE7T7ZcmVqeJI/IZKuw3cCpa3ckBBzIB5W46dF/gRZHLSiNvbnpf7grWlUgTix+Rwe
-         XkHH5C/jsSCMXOgZW61kHabxcqMC0mUKJqdnJImb1uH+AKSt1UYkmhz3irySj3xOAC16
-         TuhsTlAGYdrb3som4t2I5sbN1G3pTlHJzaLriRYKue+umTT+GciY0B7ahRtttHBpfoM6
-         NCSg==
-X-Gm-Message-State: ABy/qLb4FMyAfD7XCI9QelcappjsLIMSeZ61N9lnQ5Ls1CSJIqz+tUXY
-	7l7hu2wkoWI4jNrSOoyGew5j8Q==
-X-Google-Smtp-Source: APBJJlFvL8s6ELhm4xoUw4u+DrnTuGXUQIjU2FysvwOYLzpco137/GPcI1hDqnIqDVUiZC9M1PCW4A==
-X-Received: by 2002:a17:903:1ce:b0:1b8:88c5:2d2f with SMTP id e14-20020a17090301ce00b001b888c52d2fmr11462865plh.64.1690812028070;
-        Mon, 31 Jul 2023 07:00:28 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from [10.4.77.242] ([118.103.63.133])
-        by smtp.gmail.com with ESMTPSA id c6-20020a170902c1c600b001acae9734c0sm8638603plc.266.2023.07.31.07.00.19
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 31 Jul 2023 07:00:27 -0700 (PDT)
-Message-ID: <e11c2c4b-fcf8-cd24-2735-0ea107b289d3@daynix.com>
-Date: Mon, 31 Jul 2023 23:00:18 +0900
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GuLrWAgx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qQpgL-0002cl-DT; Tue, 01 Aug 2023 09:45:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qQpgJ-0002bx-Dq
+ for qemu-arm@nongnu.org; Tue, 01 Aug 2023 09:44:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qQpgH-0006lh-33
+ for qemu-arm@nongnu.org; Tue, 01 Aug 2023 09:44:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1690897496;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=oR9dfhjvFij6cBEUrhg6rg/3iZt+GZhDHHGXAEzUU1Y=;
+ b=GuLrWAgxge4/Syl022TRD5IF5BVSkYo/WmX0E13S2fnBdrXX+KzQkqidjymVqvVrRBgS0I
+ 62SOTYypoaximY+HMglqrlbX8/z1P6GW4iIgDl/GSArCHFQBFgksNwXUHZ1P788nPln1m0
+ h4yaQ7MVTJa6e/bDW3vtRFgMLx+P+8s=
+Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-425-vfsyGM8qNAOs7GGpUzmUlA-1; Tue, 01 Aug 2023 09:44:53 -0400
+X-MC-Unique: vfsyGM8qNAOs7GGpUzmUlA-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D80ED1C0759B;
+ Tue,  1 Aug 2023 13:44:52 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.50])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 93ADC492B01;
+ Tue,  1 Aug 2023 13:44:52 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 8990D21E692A; Tue,  1 Aug 2023 15:44:51 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Dinah Baum <dinahbaum123@gmail.com>
+Cc: qemu-devel@nongnu.org,  Eduardo Habkost <eduardo@habkost.net>,  Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
+ =?utf-8?Q?=C3=A9?=
+ <philmd@linaro.org>,  Yanan Wang <wangyanan55@huawei.com>,  Richard
+ Henderson <richard.henderson@linaro.org>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Eric Blake <eblake@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  David Hildenbrand <david@redhat.com>,  Ilya
+ Leoshkevich <iii@linux.ibm.com>,  Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs),  qemu-s390x@nongnu.org
+ (open list:S390 TCG CPUs)
+Subject: Re: [PATCH v3 2/3] qapi, target/: Enable
+ 'query-cpu-model-expansion' on all architectures
+References: <20230730064057.357598-1-dinahbaum123@gmail.com>
+ <20230730064057.357598-3-dinahbaum123@gmail.com>
+Date: Tue, 01 Aug 2023 15:44:51 +0200
+In-Reply-To: <20230730064057.357598-3-dinahbaum123@gmail.com> (Dinah Baum's
+ message of "Sun, 30 Jul 2023 02:40:56 -0400")
+Message-ID: <877cqezxkc.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 07/24] target/arm: Use GDBFeature for dynamic XML
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Michael Rolnik
- <mrolnik@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Brian Cain <bcain@quicinc.com>, Song Gao <gaosong@loongson.cn>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Laurent Vivier
- <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
- Stafford Horne <shorne@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org
-References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
- <20230731084354.115015-8-akihiko.odaki@daynix.com>
- <6c92b326-d386-2dd4-c9a0-cbf9e7583243@linaro.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <6c92b326-d386-2dd4-c9a0-cbf9e7583243@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: vZCSMc44Aec7
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +5vTCDZj7kt7
 
-On 2023/07/31 22:44, Philippe Mathieu-Daudé wrote:
-> On 31/7/23 10:43, Akihiko Odaki wrote:
->> In preparation for a change to use GDBFeature as a parameter of
->> gdb_register_coprocessor(), convert the internal representation of
->> dynamic feature from plain XML to GDBFeature.
->>
->> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->> ---
->>   target/arm/cpu.h       | 20 +++++------
->>   target/arm/internals.h |  2 +-
->>   target/arm/gdbstub.c   | 80 +++++++++++++++++++++++-------------------
->>   target/arm/gdbstub64.c | 11 +++---
->>   4 files changed, 60 insertions(+), 53 deletions(-)
->>
->> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->> index 88e5accda6..d6c2378d05 100644
->> --- a/target/arm/cpu.h
->> +++ b/target/arm/cpu.h
->> @@ -136,23 +136,21 @@ enum {
->>    */
->>   /**
->> - * DynamicGDBXMLInfo:
->> - * @desc: Contains the XML descriptions.
->> - * @num: Number of the registers in this XML seen by GDB.
->> + * DynamicGDBFeatureInfo:
->> + * @desc: Contains the feature descriptions.
->>    * @data: A union with data specific to the set of registers
->>    *    @cpregs_keys: Array that contains the corresponding Key of
->>    *                  a given cpreg with the same order of the cpreg
->>    *                  in the XML description.
->>    */
->> -typedef struct DynamicGDBXMLInfo {
->> -    char *desc;
->> -    int num;
->> +typedef struct DynamicGDBFeatureInfo {
->> +    GDBFeature desc;
->>       union {
->>           struct {
->>               uint32_t *keys;
->>           } cpregs;
->>       } data;
->> -} DynamicGDBXMLInfo;
->> +} DynamicGDBFeatureInfo;
->>   /* CPU state for each instance of a generic timer (in cp15 c14) */
->>   typedef struct ARMGenericTimer {
->> @@ -881,10 +879,10 @@ struct ArchCPU {
->>       uint64_t *cpreg_vmstate_values;
->>       int32_t cpreg_vmstate_array_len;
->> -    DynamicGDBXMLInfo dyn_sysreg_xml;
->> -    DynamicGDBXMLInfo dyn_svereg_xml;
->> -    DynamicGDBXMLInfo dyn_m_systemreg_xml;
->> -    DynamicGDBXMLInfo dyn_m_secextreg_xml;
->> +    DynamicGDBFeatureInfo dyn_sysreg_feature;
->> +    DynamicGDBFeatureInfo dyn_svereg_feature;
->> +    DynamicGDBFeatureInfo dyn_m_systemreg_feature;
->> +    DynamicGDBFeatureInfo dyn_m_secextreg_feature;
-> 
-> Since now DynamicGDBFeatureInfo.desc contains xmlname, we can replace
-> all these by a generic 'DynamicGDBFeatureInfo *dyn_features' and have
-> arm_gdb_get_dynamic_xml() looking up the xmlname.
+Dinah Baum <dinahbaum123@gmail.com> writes:
 
-In patch 12, cpu-specific gdb_get_dynamic_xml() function is removed, and 
-gdbstub instead looks up an internal list it holds.
+> Only architectures that implement the command will return
+> results, others will return an error message as before.
 
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
->> @@ -489,14 +497,14 @@ const char *arm_gdb_get_dynamic_xml(CPUState 
->> *cs, const char *xmlname)
->>       ARMCPU *cpu = ARM_CPU(cs);
->>       if (strcmp(xmlname, "system-registers.xml") == 0) {
->> -        return cpu->dyn_sysreg_xml.desc;
->> +        return cpu->dyn_sysreg_feature.desc.xml;
->>       } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
->> -        return cpu->dyn_svereg_xml.desc;
->> +        return cpu->dyn_svereg_feature.desc.xml;
->>       } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
->> -        return cpu->dyn_m_systemreg_xml.desc;
->> +        return cpu->dyn_m_systemreg_feature.desc.xml;
->>   #ifndef CONFIG_USER_ONLY
->>       } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
->> -        return cpu->dyn_m_secextreg_xml.desc;
->> +        return cpu->dyn_m_secextreg_feature.desc.xml;
->>   #endif
->>       }
->>       return NULL;
-> 
+A brief explanation why this is useful would be nice.
+
+>
+> Signed-off-by: Dinah Baum <dinahbaum123@gmail.com>
+> ---
+>  cpu.c                            | 20 +++++++++++
+>  include/exec/cpu-common.h        |  7 ++++
+>  qapi/machine-target.json         | 60 --------------------------------
+>  qapi/machine.json                | 53 ++++++++++++++++++++++++++++
+>  target/arm/arm-qmp-cmds.c        |  7 ++--
+>  target/arm/cpu.h                 |  7 ++++
+>  target/i386/cpu-sysemu.c         |  7 ++--
+>  target/i386/cpu.h                |  6 ++++
+>  target/s390x/cpu.h               |  7 ++++
+>  target/s390x/cpu_models_sysemu.c |  6 ++--
+>  10 files changed, 110 insertions(+), 70 deletions(-)
+>
+> diff --git a/cpu.c b/cpu.c
+> index 1c948d1161..a99d09cd47 100644
+> --- a/cpu.c
+> +++ b/cpu.c
+> @@ -292,6 +292,26 @@ void list_cpus(void)
+>  #endif
+>  }
+>  
+> +CpuModelExpansionInfo *get_cpu_model_expansion_info(CpuModelExpansionType type,
+> +                                                    CpuModelInfo *model,
+> +                                                    Error **errp)
+> +{
+> +    /* XXX: implement cpu_model_expansion for targets that still miss it */
+> +#if defined(cpu_model_expansion)
+> +    return cpu_model_expansion(type, model, errp);
+> +#else
+> +    error_setg(errp, "Could not query cpu model information");
+> +    return NULL;
+> +#endif
+> +}
+
+This is vague enough to leave the user wondering what could be done to
+avoid this error and by whom.
+
+Before the patch, it's clear enough: "The command
+query-cpu-model-expansion has not been found".
+
+You could go with something like "command not supported for this
+target".
+
+The error class changes from CommandNotFound to GenericError.  Please
+verify libvirt is fine with that.
+
+> +
+> +CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+> +                                                     CpuModelInfo *model,
+> +                                                     Error **errp)
+> +{
+> +    return get_cpu_model_expansion_info(type, model, errp);
+> +}
+> +
+
+Why do you need qmp_query_cpu_model_expansion() to become a wrapper
+around the real function?
+
+>  #if defined(CONFIG_USER_ONLY)
+>  void tb_invalidate_phys_addr(hwaddr addr)
+>  {
+> diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+> index 87dc9a752c..653f8a9d2b 100644
+> --- a/include/exec/cpu-common.h
+> +++ b/include/exec/cpu-common.h
+> @@ -6,6 +6,7 @@
+>  #ifndef CONFIG_USER_ONLY
+>  #include "exec/hwaddr.h"
+>  #endif
+> +#include "qapi/qapi-commands-machine.h"
+>  
+>  /**
+>   * vaddr:
+> @@ -167,4 +168,10 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
+>  /* vl.c */
+>  void list_cpus(void);
+>  
+> +CpuModelExpansionInfo *get_cpu_model_expansion_info(CpuModelExpansionType type,
+> +                                                    CpuModelInfo *model,
+> +                                                    Error **errp);
+> +void list_cpu_model_expansion(CpuModelExpansionType type,
+> +                              CpuModelInfo *model, Error **errp);
+> +
+
+The declaration of list_cpu_model_expansion() belongs to the next patch.
+
+>  #endif /* CPU_COMMON_H */
+> diff --git a/qapi/machine-target.json b/qapi/machine-target.json
+> index 3ee2f7ca6b..a658b1754b 100644
+> --- a/qapi/machine-target.json
+> +++ b/qapi/machine-target.json
+> @@ -139,66 +139,6 @@
+>    'returns': 'CpuModelBaselineInfo',
+>    'if': 'TARGET_S390X' }
+>  
+> -##
+> -# @CpuModelExpansionInfo:
+> -#
+> -# The result of a cpu model expansion.
+> -#
+> -# @model: the expanded CpuModelInfo.
+> -#
+> -# Since: 2.8
+> -##
+> -{ 'struct': 'CpuModelExpansionInfo',
+> -  'data': { 'model': 'CpuModelInfo' },
+> -  'if': { 'any': [ 'TARGET_S390X',
+> -                   'TARGET_I386',
+> -                   'TARGET_ARM' ] } }
+> -
+> -##
+> -# @query-cpu-model-expansion:
+> -#
+> -# Expands a given CPU model (or a combination of CPU model +
+> -# additional options) to different granularities, allowing tooling to
+> -# get an understanding what a specific CPU model looks like in QEMU
+> -# under a certain configuration.
+> -#
+> -# This interface can be used to query the "host" CPU model.
+> -#
+> -# The data returned by this command may be affected by:
+> -#
+> -# * QEMU version: CPU models may look different depending on the QEMU
+> -#   version.  (Except for CPU models reported as "static" in
+> -#   query-cpu-definitions.)
+> -# * machine-type: CPU model may look different depending on the
+> -#   machine-type.  (Except for CPU models reported as "static" in
+> -#   query-cpu-definitions.)
+> -# * machine options (including accelerator): in some architectures,
+> -#   CPU models may look different depending on machine and accelerator
+> -#   options.  (Except for CPU models reported as "static" in
+> -#   query-cpu-definitions.)
+> -# * "-cpu" arguments and global properties: arguments to the -cpu
+> -#   option and global properties may affect expansion of CPU models.
+> -#   Using query-cpu-model-expansion while using these is not advised.
+> -#
+> -# Some architectures may not support all expansion types.  s390x
+> -# supports "full" and "static". Arm only supports "full".
+> -#
+> -# Returns: a CpuModelExpansionInfo.  Returns an error if expanding CPU
+> -#     models is not supported, if the model cannot be expanded, if the
+> -#     model contains an unknown CPU definition name, unknown
+> -#     properties or properties with a wrong type.  Also returns an
+> -#     error if an expansion type is not supported.
+> -#
+> -# Since: 2.8
+> -##
+> -{ 'command': 'query-cpu-model-expansion',
+> -  'data': { 'type': 'CpuModelExpansionType',
+> -            'model': 'CpuModelInfo' },
+> -  'returns': 'CpuModelExpansionInfo',
+> -  'if': { 'any': [ 'TARGET_S390X',
+> -                   'TARGET_I386',
+> -                   'TARGET_ARM' ] } }
+> -
+>  ##
+>  # @CpuDefinitionInfo:
+>  #
+> diff --git a/qapi/machine.json b/qapi/machine.json
+> index 192c781310..f24e19815e 100644
+> --- a/qapi/machine.json
+> +++ b/qapi/machine.json
+> @@ -1768,3 +1768,56 @@
+>  ##
+>  { 'enum': 'CpuModelCompareResult',
+>    'data': [ 'incompatible', 'identical', 'superset', 'subset' ] }
+> +
+> +##
+> +# @CpuModelExpansionInfo:
+> +#
+> +# The result of a cpu model expansion.
+> +#
+> +# @model: the expanded CpuModelInfo.
+> +#
+> +# Since: 2.8
+> +##
+> +{ 'struct': 'CpuModelExpansionInfo',
+> +  'data': { 'model': 'CpuModelInfo' }}
+> +
+> +##
+> +# @query-cpu-model-expansion:
+> +#
+> +# Expands a given CPU model (or a combination of CPU model +
+> +# additional options) to different granularities, allowing tooling to
+> +# get an understanding what a specific CPU model looks like in QEMU
+> +# under a certain configuration.
+> +#
+> +# This interface can be used to query the "host" CPU model.
+> +#
+> +# The data returned by this command may be affected by:
+> +#
+> +# * QEMU version: CPU models may look different depending on the QEMU
+> +#   version.  (Except for CPU models reported as "static" in
+> +#   query-cpu-definitions.)
+> +# * machine-type: CPU model may look different depending on the
+> +#   machine-type.  (Except for CPU models reported as "static" in
+> +#   query-cpu-definitions.)
+> +# * machine options (including accelerator): in some architectures,
+> +#   CPU models may look different depending on machine and accelerator
+> +#   options.  (Except for CPU models reported as "static" in
+> +#   query-cpu-definitions.)
+> +# * "-cpu" arguments and global properties: arguments to the -cpu
+> +#   option and global properties may affect expansion of CPU models.
+> +#   Using query-cpu-model-expansion while using these is not advised.
+> +#
+> +# Some architectures may not support all expansion types.  s390x
+> +# supports "full" and "static". Arm only supports "full".
+> +#
+> +# Returns: a CpuModelExpansionInfo. Returns an error if expanding CPU
+
+Accidental space change, line should remain
+
+   # Returns: a CpuModelExpansionInfo.  Returns an error if expanding CPU
+
+> +#     models is not supported, if the model cannot be expanded, if the
+> +#     model contains an unknown CPU definition name, unknown
+> +#     properties or properties with a wrong type.  Also returns an
+> +#     error if an expansion type is not supported.
+> +#
+> +# Since: 2.8
+> +##
+> +{ 'command': 'query-cpu-model-expansion',
+> +  'data': { 'type': 'CpuModelExpansionType', 'model': 'CpuModelInfo' },
+> +  'returns': 'CpuModelExpansionInfo'}
+> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+> index c8fa524002..295d690e93 100644
+> --- a/target/arm/arm-qmp-cmds.c
+> +++ b/target/arm/arm-qmp-cmds.c
+> @@ -22,6 +22,7 @@
+>  
+>  #include "qemu/osdep.h"
+>  #include "hw/boards.h"
+> +#include "cpu.h"
+>  #include "kvm_arm.h"
+>  #include "qapi/error.h"
+>  #include "qapi/visitor.h"
+> @@ -99,9 +100,9 @@ static const char *cpu_model_advertised_features[] = {
+>      NULL
+>  };
+>  
+> -CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+> -                                                     CpuModelInfo *model,
+> -                                                     Error **errp)
+> +CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
+> +                                               CpuModelInfo *model,
+> +                                               Error **errp)
+>  {
+>      CpuModelExpansionInfo *expansion_info;
+>      const QDict *qdict_in = NULL;
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 88e5accda6..71b15d4884 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2740,6 +2740,13 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
+>  
+>  #define cpu_list arm_cpu_list
+>  
+> +#ifdef CONFIG_SOFTMMU
+> +CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
+> +                                               CpuModelInfo *model,
+> +                                               Error **errp);
+> +#define cpu_model_expansion get_cpu_model_expansion
+
+What is this macro for?
+
+> +#endif
+> +
+>  /* ARM has the following "translation regimes" (as the ARM ARM calls them):
+>   *
+>   * If EL3 is 64-bit:
+> diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
+> index 28115edf44..c01c85839c 100644
+> --- a/target/i386/cpu-sysemu.c
+> +++ b/target/i386/cpu-sysemu.c
+> @@ -176,10 +176,9 @@ out:
+>      return xc;
+>  }
+>  
+> -CpuModelExpansionInfo *
+> -qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+> -                                                      CpuModelInfo *model,
+> -                                                      Error **errp)
+> +CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
+> +                                               CpuModelInfo *model,
+> +                                               Error **errp)
+>  {
+>      X86CPU *xc = NULL;
+>      Error *err = NULL;
+> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+> index e0771a1043..699b987d12 100644
+> --- a/target/i386/cpu.h
+> +++ b/target/i386/cpu.h
+> @@ -2249,6 +2249,12 @@ uint64_t cpu_get_tsc(CPUX86State *env);
+>  #endif
+>  
+>  #define cpu_list x86_cpu_list
+> +#ifdef CONFIG_SOFTMMU
+> +CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
+> +                                               CpuModelInfo *model,
+> +                                               Error **errp);
+> +#define cpu_model_expansion get_cpu_model_expansion
+
+Likewise.
+
+> +#endif
+>  
+>  /* MMU modes definitions */
+>  #define MMU_KSMAP_IDX   0
+> diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+> index eb5b65b7d3..932f8b642a 100644
+> --- a/target/s390x/cpu.h
+> +++ b/target/s390x/cpu.h
+> @@ -804,6 +804,13 @@ static inline uint8_t s390_cpu_get_state(S390CPU *cpu)
+>  /* cpu_models.c */
+>  void s390_cpu_list(void);
+>  #define cpu_list s390_cpu_list
+> +#ifdef CONFIG_SOFTMMU
+> +CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
+> +                                               CpuModelInfo *model,
+> +                                               Error **errp);
+> +#define cpu_model_expansion get_cpu_model_expansion
+
+Likewise.
+
+> +#endif
+> +
+>  void s390_set_qemu_cpu_model(uint16_t type, uint8_t gen, uint8_t ec_ga,
+>                               const S390FeatInit feat_init);
+>  
+> diff --git a/target/s390x/cpu_models_sysemu.c b/target/s390x/cpu_models_sysemu.c
+> index 63981bf36b..ef3845f11c 100644
+> --- a/target/s390x/cpu_models_sysemu.c
+> +++ b/target/s390x/cpu_models_sysemu.c
+> @@ -213,9 +213,9 @@ static void cpu_info_from_model(CpuModelInfo *info, const S390CPUModel *model,
+>      }
+>  }
+>  
+> -CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+> -                                                      CpuModelInfo *model,
+> -                                                      Error **errp)
+> +CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
+> +                                               CpuModelInfo *model,
+> +                                               Error **errp)
+>  {
+>      Error *err = NULL;
+>      CpuModelExpansionInfo *expansion_info = NULL;
+

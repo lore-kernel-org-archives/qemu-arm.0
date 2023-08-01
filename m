@@ -1,122 +1,112 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp3093500ejb;
-        Tue, 1 Aug 2023 12:23:08 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGZKlVF352yC7+u8P+5cwW5ONiyXY1d2WysOchNWMopPTJls2g28qjebuGDyAyrIzIhrQi0
-X-Received: by 2002:a05:620a:258e:b0:767:82e8:eb88 with SMTP id x14-20020a05620a258e00b0076782e8eb88mr14792569qko.7.1690917788391;
-        Tue, 01 Aug 2023 12:23:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690917788; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp3151854ejb;
+        Tue, 1 Aug 2023 14:27:55 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGnoX+Dxx58rg5MByrPfn4M/bH0qQKuLuv8Mu32zEibUa8gBSp9wcePS7hBlN+Dg+4eUY8/
+X-Received: by 2002:a05:622a:11cd:b0:40f:c547:c6a1 with SMTP id n13-20020a05622a11cd00b0040fc547c6a1mr6522910qtk.5.1690925275370;
+        Tue, 01 Aug 2023 14:27:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690925275; cv=none;
         d=google.com; s=arc-20160816;
-        b=ISZ8NIgEmnwCtzj5wZ4SRzqN77W1hjxOEXd4V5L4s4TPM3TDS6pCedEL3dhRp9YU3b
-         0p55qClH3Lp0x5n+afCdoAcBdGZ11GkSt6Ab4Iv5qTMUiiuXxHzaMpyyFolw1Mt9Xcn6
-         WzaKID04K4aVy1bmMSHijXWUP850XXYjnaLJ9biaak3OOAJ2d7lR8BLTrXcwC3B4jz3C
-         UEfnL/6ZOvjy7aNijevWkpNizX0yzQeSbPjRPrSBETeWEGpMqfAZ96YZv2PbR9MOqSCC
-         0fkyo78UOiySeRC2xkWgsCg85Iug/I4yKygS7rqICesS0GK5ug41EE1eDUU/xH+KGHrz
-         WQsg==
+        b=a33fIJx3Z4iPtj3oTOdNmSumcfwsarJ/3pKJDLzJSQtbZaRu0sQN4KiG4k5XyCy6uB
+         Sk634TGZ2G3+8obvCGC7EH+RyBUcLzvB4t1uS+oOhmqjtqFyOf3niO/bvjKSuGt2jB/7
+         XCqUbZ0TtQRpJSdqwpwdwSYKCYxPOuB0p4TTv+z+U1BfLN5KsWCTD7xoCXz7XnotA9n1
+         FJnCQDRflWcjerxP2xpL2RJMfsQd7aQr6nztmsmHYwASbA8mdERInZW4RVU5/vjQSVNN
+         ccXzM28qv0zv+QoyDE/eMRKk0s+ZuEB5P2swo/RKFjxTNI9V6BZ+wLPM2gV9AwL70lDv
+         QiDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2atCtTRN/JMfdPzafk/J+52jDOXsvph9ibReUCUBaMw=;
-        fh=i9LXiVq8J4CAuLQxBbfuxa8ZjFtDjhZS3IQYxdZgNus=;
-        b=TlyrEAC1l4VPtrIN6f/zICxvsiUtoXvmUVUET5fFSWUIM1hSLPJyvcGdYEjSaBGe9J
-         JSo+c1WL6/n4KaPIEo+pddy0Qq/mDRTD75uJ758OMqeUsc9+blTnI46lhHMwXzV00Vnr
-         3onakS8AKFNzOjrOEsw670l1DokmETrgCKdL57AejHNSWDFQUuxtmI75er2sHOr84h3i
-         fuikLXt4gsmwg54X65+vBGWRGTZaDXxa2M/5yZL6NeaWMji1wUTSj2dh1WldKta8nuvV
-         PUZJdtLVb+PESXL2qi2XdBLvDeVM1YQ8KmpA3QpvERUKY/iZMsjc4pQZXBXIGaKMN6Oy
-         quLQ==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=qWpzn6EDfV3epZYHPu3ZWiKxJPJcv6XZsVNadt1LM98=;
+        fh=SYsFp2iEL90nHLJUDqioV8rlUeUraaclr1fUXH6bNX4=;
+        b=UBnujERrO3eMSNoq0RSGzU4LW/CMIMdtVFWkch7+q8500/X0G6dUmoxa1RQ2XEUEYp
+         qYMuwQbMQl7BvzRhuE8PierRfm6yF6j9sq5IXzwzayHByJI0BPHES7B+5FqM2uce4cpq
+         wPUSvNPE0FYLesw5mlzA/Gg/xlQywyaXDJUNlsYbEjQMFMw7JN0kxs6BlmI8fZUJV0tg
+         N8/qkzxAI9iHLrZ03ANfZkMHNagXKhCGIjTobdApnBvRXFb9J+OkqLCEarsrlu3OamaB
+         zABYgvVaQY0w2zYmwKQzf7jY3LrAGdMTvEKjZD75B9hDkxp/V5UJXn+p/va9mu01ibeJ
+         CYBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W9AT+lRB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JkERyqeP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7-20020a37b607000000b0076cb9d1d455si2222384qkf.355.2023.08.01.12.23.08
+        by mx.google.com with ESMTPS id p19-20020a05622a00d300b0040fd6b6036dsi1266468qtw.290.2023.08.01.14.27.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Aug 2023 12:23:08 -0700 (PDT)
+        Tue, 01 Aug 2023 14:27:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W9AT+lRB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JkERyqeP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qQuxL-0007s8-Pw; Tue, 01 Aug 2023 15:22:55 -0400
+	id 1qQwth-0006CJ-6A; Tue, 01 Aug 2023 17:27:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qQuxJ-0007rq-UU
- for qemu-arm@nongnu.org; Tue, 01 Aug 2023 15:22:53 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qQuxI-0007aj-FW
- for qemu-arm@nongnu.org; Tue, 01 Aug 2023 15:22:53 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-68706d67ed9so3754618b3a.2
- for <qemu-arm@nongnu.org>; Tue, 01 Aug 2023 12:22:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1690917771; x=1691522571;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=2atCtTRN/JMfdPzafk/J+52jDOXsvph9ibReUCUBaMw=;
- b=W9AT+lRB+4FO3iFlE1WmmORBAtqi17CS3rfu9JDsFiZ3eyOLZk6J//Xo5oE/iUKGLq
- ox46oqo2TsT/yQtij9z/MMWkrNfCF2Wq6gvFAZvo872zNQcOvT0jE9F64k0Kec0Fh1W5
- z27n9eOgsgqCJw6NOhWQJhdul3I0yAnwXmPkDr5ER9lIqo83nCvjLG0sE4kgNdy3/HVx
- LEeLYL87/rIzdSH12OGZAM8rFgB0mM8b3Tf65rzcnIhXl7TQJAG4u+mw9GNuaDgUcavl
- 2KALhxdl18t7Uj7e02jRi/ytXiCG5QKhWCJxeFtagJQz9xPRXahFn+JGV/7r8JDFGEtC
- 61Gg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690917771; x=1691522571;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2atCtTRN/JMfdPzafk/J+52jDOXsvph9ibReUCUBaMw=;
- b=jLIjojibYD95ojNdJyAJxet5jaWkloxm5qoL5Nv6KpcRLcrlvfKqJs+hZUKQK0PU8g
- viWR66+P8pYaB5YhDqyEjmePGRkyRkaw5T+YZJVfVP4qcJ48EoldLcQ0YqXz/ArdNe1a
- WgGC2ZFWGEPXkEYFbq0uZuuxJ3nkuk1mxRV8pW9/AaiYA+u5we8inabyJWR9yvik7Y1R
- 8rhzmH4HJ2kOyuO6TUzDY8SaVUsyJwg+8QcO8emQ5Dfr3Faqe1udX9Wh5W77cEbkuxIq
- 4yAzWIY6kuMHluvHH08Qz2R+96EXAleQeGoiSSQHTxE2UsX2SUl/zJVn+iH/aRHNbTq7
- lbpA==
-X-Gm-Message-State: ABy/qLYeSOFehzH5dLsBmADBt7e5/5AfAqpGCa9iWaWtMCsDQ3XbkfAa
- zP7boYknQlRpaU6YhEjovnZ84A==
-X-Received: by 2002:a05:6a00:1590:b0:687:4bd8:159a with SMTP id
- u16-20020a056a00159000b006874bd8159amr5067377pfk.19.1690917771014; 
- Tue, 01 Aug 2023 12:22:51 -0700 (PDT)
-Received: from ?IPV6:2602:47:d490:6901:67b4:35b2:87e2:dccc?
- ([2602:47:d490:6901:67b4:35b2:87e2:dccc])
- by smtp.gmail.com with ESMTPSA id
- j63-20020a638b42000000b005637030d00csm10274761pge.30.2023.08.01.12.22.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Aug 2023 12:22:50 -0700 (PDT)
-Message-ID: <b4f4695c-5257-4ff2-060e-0c6865eb2250@linaro.org>
-Date: Tue, 1 Aug 2023 12:22:48 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 2/2] linux-user: Emulate /proc/cpuinfo on aarch64 and arm
-Content-Language: en-US
-To: Helge Deller <deller@gmx.de>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, qemu-arm@nongnu.org
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1qQwtg-0006Bv-51
+ for qemu-arm@nongnu.org; Tue, 01 Aug 2023 17:27:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1qQwtd-0005o8-TL
+ for qemu-arm@nongnu.org; Tue, 01 Aug 2023 17:27:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1690925232;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qWpzn6EDfV3epZYHPu3ZWiKxJPJcv6XZsVNadt1LM98=;
+ b=JkERyqePstRYoch4Qhef9WfC90+exuqH1f4ykWsx/Ghe69KuqD87zTYBbDOnaTQvuniuqB
+ NdfndXXarnfJMOJ/xMnvTUnHyyEfGsX6SSXfbX3ZMA3suh/tqgDrqGTbNq2rLSPLNHt5KL
+ RE8bBnqkcUeenF0oM2pYk68l1DZ9rD8=
+Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-108-e9nC9lpSP2Ctlxo3K2P79w-1; Tue, 01 Aug 2023 17:27:07 -0400
+X-MC-Unique: e9nC9lpSP2Ctlxo3K2P79w-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AA9461C05134;
+ Tue,  1 Aug 2023 21:27:06 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.93])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B7C0FC57963;
+ Tue,  1 Aug 2023 21:27:05 +0000 (UTC)
+Date: Tue, 1 Aug 2023 22:27:03 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Helge Deller <deller@gmx.de>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 1/2] linux-user: Fix openat() emulation to correctly
+ detect accesses to /proc
+Message-ID: <ZMl4p2oLv9vhGfAV@redhat.com>
 References: <20230801191035.374120-1-deller@gmx.de>
- <20230801191035.374120-3-deller@gmx.de>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230801191035.374120-3-deller@gmx.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+ <20230801191035.374120-2-deller@gmx.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230801191035.374120-2-deller@gmx.de>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.092,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,18 +119,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: O77YP0h4xOTG
+X-TUID: nnsUxbqOQUzd
 
-On 8/1/23 12:10, Helge Deller wrote:
-> +        dprintf(fd, "CPU implementer\t: 0x%d\n", is64 ? 50 : 56);
-> +        dprintf(fd, "CPU architecture: %d\n",    is64 ? 8 : 7);
-> +        dprintf(fd, "CPU variant\t: 0x%d\n",     is64 ? 0 : 2);
-> +        dprintf(fd, "CPU part\t: 0x%d\n",        is64 ? 0 : 584);
-> +        dprintf(fd, "CPU revision\t: %d\n\n",    is64 ? 1 : 2);
+On Tue, Aug 01, 2023 at 09:10:34PM +0200, Helge Deller wrote:
+> In qemu we catch accesses to files like /proc/cpuinfo or /proc/net/route
+> and return to the guest contents which would be visible on a real system
+> (instead what the host would show).
+> 
+> This patch fixes a bug, where for example the accesses
+>     cat /proc////cpuinfo
+> or
+>     cd /proc && cat cpuinfo
+> will not be recognized by qemu and where qemu will wrongly show
+> the contents of the host's /proc/cpuinfo file.
+> 
+> Signed-off-by: Helge Deller <deller@gmx.de>
+> 
+> --
+> v2:
+> - use g_autofree instead of pathname on stack
+>   Daniel P. Berrangé requested to not put buffers on stack.
+>   Using g_autofree keeps code much cleaner than using
+>   extended semantics of realpath(), unless I can use g_autofree
+>   on malloced area from realpath().
 
-These all come from cpu->midr.  See linux/arch/arm64/kernel/cpuinfo.c:232.
+g_autofree is backed by free(), so it is fine to use that
+with the realpath() allocated buffer.
 
+> ---
+>  linux-user/syscall.c | 12 +++++++++++-
+>  1 file changed, 11 insertions(+), 1 deletion(-)
+> 
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 95727a816a..a089463969 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -8539,9 +8539,12 @@ static int open_hardware(CPUArchState *cpu_env, int fd)
+>  }
+>  #endif
+> 
+> -int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+> +
+> +int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *fname,
+>                      int flags, mode_t mode, bool safe)
+>  {
+> +    g_autofree char *proc_name = g_new(char, PATH_MAX);
+> +    const char *pathname;
+>      struct fake_open {
+>          const char *filename;
+>          int (*fill)(CPUArchState *cpu_env, int fd);
+> @@ -8567,6 +8570,13 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+>          { NULL, NULL, NULL }
+>      };
+> 
+> +    /* if this is a file from /proc/ filesystem, expand full name */
+> +    if (realpath(fname, proc_name) && strncmp(proc_name, "/proc/", 6) == 0) {
+> +        pathname = proc_name;
+> +    } else {
+> +        pathname = fname;
+> +    }
+> +
+>      if (is_proc_myself(pathname, "exe")) {
+>          if (safe) {
+>              return safe_openat(dirfd, exec_path, flags, mode);
+> --
+> 2.41.0
+> 
 
-r~
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

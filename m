@@ -1,149 +1,107 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2667499ejb;
-        Mon, 31 Jul 2023 23:34:07 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGyaEDPSlN+bD177j0jcFWXrP7B1cP6ehNN2i7HMXCS+WTKRSTnROy7jZzNFJ038B9wXzdB
-X-Received: by 2002:ac8:5c82:0:b0:403:ed26:4083 with SMTP id r2-20020ac85c82000000b00403ed264083mr14211094qta.61.1690871647502;
-        Mon, 31 Jul 2023 23:34:07 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1690871647; cv=pass;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp2885351ejb;
+        Tue, 1 Aug 2023 06:57:42 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEI7WurC8wnibfsAbKPUK1/nwRyslFluoN3UxtZcIm8qDybrSb4dIYzVoyyJlisSx0ArfTC
+X-Received: by 2002:a1f:3f56:0:b0:481:2ea9:979e with SMTP id m83-20020a1f3f56000000b004812ea9979emr2518529vka.5.1690898262531;
+        Tue, 01 Aug 2023 06:57:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690898262; cv=none;
         d=google.com; s=arc-20160816;
-        b=GwHp3FyCTILjN9UfuO9ZqjYm1yyFIaoCP5kUzclpSjW6EaG+wyXqAWB65Ha0R+V/Q8
-         km/4D3DqNpqS6cAdA1HcnxvuJDwDnYlHTXbYz8Cb6OGMIvBPX5GMTlurpk/Cm8Y3b+kP
-         LZAfzP57lbAzT4dccQScKxE4c02JxSzRlW9x9WcjRNcaoUV5jpCVAHd6rx4Tm/Q4BVw3
-         KJiqfQNFTRHhTftC2fetSRa/j8L90rD+MpToluDmqt9tDKqGBpW8uzTjcvuJnOriWt2H
-         iCPKVJHJZyMs4ifFl8grpzY0PN5FijsQtgKONvFw6Irr4/m35HhJ2BhxA4RnaqTbxlDr
-         ftIA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=X0GB14F5A/9+xmVKGlcqxqFzrYmAyyYsbUiC+mxmO13sJ2CLzV7fSYo62+rhrKOT+R
+         4A4haziXqKio1OcIpg02xqiDp6ACfseOFCWZYh2was2vuDe8v9HCpJMfExUjmYeuIi3o
+         YgyYAlbrsCs4wKM2mx1N3TpWcHmi8AP8ESE6MP18PgVS5THRw6/J21Ts3QqzVK1hoUet
+         34Lu637dNqwdGkefyPWrXp6AiD3Y79f6KzIdFM2+gGxnsTnF7VsAKl3nw7Bq2ZYP9I+N
+         ozMdys9JwAVxdtoVfYJjz0912rZfGXlBSGzOJuy+8eeKsGXrFtkXrMfMOPOzsyVpYIyQ
+         O2vQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:content-language
-         :accept-language:message-id:date:thread-index:thread-topic:subject
-         :to:from;
-        bh=34kdK6UpX14kPMyFu+iv7mTsM9aT9LYuaV/X75DKi24=;
-        fh=ee7yagLBekD5i0z7f3lt/FVeoXWyYkFxjhYfWRCsrC0=;
-        b=l28OlvwI2TZLAgpGqI8/PBg5m5/mOGfNc9Z0Ib1jJQoS700Dz0uF8q2gbKAHWmAYaL
-         elBmqoVxhLO+oqwBOIGINE1zPYYyi+Qo/SN2n5SGmUcVTjnAbK7gcHjbFZhUwnWTMU8G
-         b4rB0+Ee188Pssfr2TQ2fViBmSfqHOi93UZ9XB7wzmpxpJanBvvRK5a+ESUe0WJlo1S2
-         ZiA95EVv/g0aisK+D24pjLtVub6IM8JgapPjbEofywyjmmj5ZBTuNgBVpqxzhAOEw71Q
-         ob4crj+SGZRZjFrr60qV/VTFVY4xEwge8Y3mVqFtw/Nj5Xp1sBNGUqCvhmcALJV3fTcZ
-         zf7g==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=indra.es dkim=pass dkdomain=indra.es dmarc=pass fromdomain=indra.es);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :ui-outboundreport:content-disposition:mime-version:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=ej+zPoMb6arEeQwNMsEau9EEHBqEh6c1IXQDL1kyBDU=;
+        fh=YXcHndwRtvG0uag/5UZp2uR6WqtgMvPQbrBo3sIECwQ=;
+        b=H6exC8gytuOTfPTPSZtMoxugq5uiDJEa0iTkMwK94qTOKZTUh6f1fv+FW/WX9KXYpG
+         HcXm5VB7/N6INUsZIAjuyeWtwcJ4Dm9k66+FubqFIQ8UR/vezFIooZ99vZ1VYpix4sn+
+         OeTXF9hf2dXllaTddAcmwg+IMM0bplswsNzQUu0//eLBpyOK8yJyMESIpzuTYHhH0YAO
+         W6uy3fOW3RLNPDmdjeC8/OqzprHR4F5BLZEulvlODqaF+EQ5gkyPFxYgZdCXEml9cI/N
+         nrysyPz0vT+rvkYFElbn4VEtbaJvs6lNfV4fFCBPEBQNHrpRsOC8hUevYIMwrf3+6+2M
+         HxSg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=rLS8aoUs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=indra.es
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b2-20020ac87fc2000000b0040fcb5032fdsi1282889qtk.350.2023.07.31.23.34.07
+        by mx.google.com with ESMTPS id p18-20020a05622a13d200b00403affd349bsi7142387qtk.168.2023.08.01.06.57.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Jul 2023 23:34:07 -0700 (PDT)
+        Tue, 01 Aug 2023 06:57:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=indra.es dkim=pass dkdomain=indra.es dmarc=pass fromdomain=indra.es);
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=rLS8aoUs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=indra.es
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qQixA-0004Bv-9T; Tue, 01 Aug 2023 02:33:56 -0400
+	id 1qQpsU-0001a5-2W; Tue, 01 Aug 2023 09:57:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ariom@indra.es>) id 1qQix8-0004A2-77
- for qemu-arm@nongnu.org; Tue, 01 Aug 2023 02:33:54 -0400
-Received: from mail-vi1eur05on2101.outbound.protection.outlook.com
- ([40.107.21.101] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <deller@gmx.de>)
+ id 1qQpsQ-0001ZG-DQ; Tue, 01 Aug 2023 09:57:30 -0400
+Received: from mout.gmx.net ([212.227.15.19])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ariom@indra.es>) id 1qQix6-000403-1T
- for qemu-arm@nongnu.org; Tue, 01 Aug 2023 02:33:53 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mdCACjmFdILhH61dmTma9cqlWWwB121tKx4O8gjvNee/253PqmlnQdEqKK9DFnwiJUqj641HOxrC5iJiHp0diHQtl5FfwMWpMdtiY23sUinpsFdMSezfWfvzxMPTyoChzovjyW3VuM8dWZEmPqUm3J4FUmeEO8+BC4WRIQUE5eMxMORWn+HI2DlGquohg8P0hkHvFpMbDak7gwIrolJBTbyxYlwqZ8q0i3lL0/0HGXjqV6I62ixAxmq5jsV6GUrQPqqOg321wj59GRSwGIs98edpwuA+ZkdnnrX9yWUsydSdoy864gOafFIMwUk9KAQVAjDJ3hJyOvjAPVuxL4XIRg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=34kdK6UpX14kPMyFu+iv7mTsM9aT9LYuaV/X75DKi24=;
- b=GbelFvfmF1BJz8/tmNg3U8zlJYD7CwkzX6XNHFiK592dsMeLxrv2PK1JiVW1FseMVCkt48uMLFPDM6Ef7mq0F7snrLh8aUg/p0hyGANbF0r7jO1mxqKl9qqF7/VzeeVJStSkT6ySwvmXpS4OLqq6XooI7sgtfceGfrQyHvkZpuNJvjZT7zvSE2qc/qcU3JgUHDPGMOayFzDuINH1AaFy609imeJPrl0xzHOllmywvngSFf1s6cB1xCFQAy5TgFWmCIKGYWW320GELE+5WErhPFDs8+QHmsX2oNMzXkozDsOfELZKcrjTeMUJPp8Qz7cfAQ6sueUVGyv1BTgL25zH/Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=indra.es; dmarc=pass action=none header.from=indra.es;
- dkim=pass header.d=indra.es; arc=none
-Received: from DBAP193MB0939.EURP193.PROD.OUTLOOK.COM (2603:10a6:10:1c6::7) by
- AS8P193MB2271.EURP193.PROD.OUTLOOK.COM (2603:10a6:20b:446::17) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6631.44; Tue, 1 Aug 2023 06:28:43 +0000
-Received: from DBAP193MB0939.EURP193.PROD.OUTLOOK.COM
- ([fe80::2d80:4a12:f663:ee31]) by DBAP193MB0939.EURP193.PROD.OUTLOOK.COM
- ([fe80::2d80:4a12:f663:ee31%6]) with mapi id 15.20.6631.043; Tue, 1 Aug 2023
- 06:28:43 +0000
-From: =?iso-8859-1?Q?R=EDo_Mart=EDnez=2C_Alberto?= <ariom@indra.es>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: Device remote-port from xlnx-zcu102 machine
-Thread-Topic: Device remote-port from xlnx-zcu102 machine
-Thread-Index: AdnEQWqGYOSU4eq6SrWboWZMt2FX2A==
-Date: Tue, 1 Aug 2023 06:28:43 +0000
-Message-ID: <DBAP193MB09397867852FAF63722DA7C4CA0AA@DBAP193MB0939.EURP193.PROD.OUTLOOK.COM>
-Accept-Language: es-ES, en-US
-Content-Language: es-ES
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=indra.es;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DBAP193MB0939:EE_|AS8P193MB2271:EE_
-x-ms-office365-filtering-correlation-id: dbc25f8f-ccbe-4334-a54f-08db92588da2
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MDaZ4YYPht884o5tiWo9bMGGHTNf8JWJIgHesYHVoVIVnKrUxKrD7WMNni2D6ENP8D9QdbVlg5yu3BIt7Fr0Tek4bUd/Zfb67pcLKJXEpXjrWk6mSVN26OPHPZuKw7ovzfexH2sJ6r3dKAAldrXbqmU9c/KXBgv50vmQRN+vuQhm6ExW3DUOjx/fP2JZgpLe1YlUJGKYzFDdXuD/th1SV6yyWwvhDhXa0PkvYYL7AkJc5JwxRPOL/DsGaacres/lQUym7uX8IIjSeq3Kezv+Yjy2S0mrLI+Z+pzJqJYX1EAmIDSbEXbn2QxFzrvJt24nXsKjaWaWt9KRiCMZuAxO4LhUc9SuoAQ4wQtuGhj8LzUK0i+bbBUNgjCTBJnTY4mHt953vS7UspIdhOiqg9zu2OHNXQ5FcvsspKkPvvOXsZuDk1IESTc72RZfnZmD5tFtBKDG7d6ACudr7YddohXPYAi3IoM0+Qs2oJh3HInNimMzpsdjZ8DqtylCeX7I8ln3+CBChPRUsCf1ul1QnOsijATNNhBwJrUaBg7Gy2jH17W90E7yw8rj+CZrvytz4Q1e1JCthmtabPHwbjTSIzs16g9y0HyacIfcoUd+xsiSviUZzfV9KfbsIgyaPAmHzAYq
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DBAP193MB0939.EURP193.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(366004)(376002)(396003)(39860400002)(136003)(346002)(451199021)(38070700005)(6916009)(83380400001)(2906002)(186003)(316002)(38100700002)(478600001)(41300700001)(86362001)(122000001)(9686003)(52536014)(55016003)(5660300002)(66556008)(66446008)(71200400001)(64756008)(66946007)(66476007)(76116006)(33656002)(6506007)(26005)(8676002)(8936002)(7696005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?f43Ruluw0HJz+CNNZzFU8T9gketRiJascxRc+dPsm3kr+GTKsmT+YjLB5W?=
- =?iso-8859-1?Q?4bGS7zLd0UbLlI3kimG12i7ckhaBYYvRQ3G4T2xxllGe0rNWktgKhbHkBx?=
- =?iso-8859-1?Q?6GZPPBZote4yU4Vs6O4GhoVKJ5cfzn47v9B9xSUKo9KmOGLWbZr2PsJqbA?=
- =?iso-8859-1?Q?lMvTdUGABhiCbxr/bNShKrQ4rmiM8+3RtcFqPFptB3fB+rpTuqJcjp9SYE?=
- =?iso-8859-1?Q?6vMqJ1H/qy6lXn87syUPEWd7olH55OqdJBu7cOxDx1zttecVcB1O+B0g2Q?=
- =?iso-8859-1?Q?yVTNkCEJx7a9uVDZObzPS9Sxe2h0sWTMRTfPByAg9hqltY93y9OtzRsAB8?=
- =?iso-8859-1?Q?WuYtWsnJU1Jxo+f5cbWnznrcTPLAGZvPsHH0Mts4lGjecfx/tM4jZnx2Lf?=
- =?iso-8859-1?Q?3EIlBB0Nij0agGyKwLZRP9C6xDlubQxSRyWukSFnAi7RXOv9pxv7I4vmhm?=
- =?iso-8859-1?Q?9MBrIfcl4GE4148p3CnhQKRMbcdAEZzYmN66jitYUctsgHBwIdVGgYvPIV?=
- =?iso-8859-1?Q?x3Jwx1qqQug/VrDTA/h/cwE29o3Sy7lzI7mImGRI6fK3mTgUDGC1+/ybqZ?=
- =?iso-8859-1?Q?jls6bLxB8hI6Zg0D5J8hOMWcPc1JD0jGnp+8zndzLvUTH0UXSmLrjG9Por?=
- =?iso-8859-1?Q?W2lC8vUfWbRmvuOrQmAEIaKGJGdDuu57g98QPkbrms6w1CYHAcli95hw0N?=
- =?iso-8859-1?Q?xSV2PS64RhElbzpZYxJTHdjnuvt8Uhop12HFD7lY9RtnM5UIAYQCZN0/gM?=
- =?iso-8859-1?Q?eatwaxalE1o30wT7GAdhZjsm4oL9r74Vjs9U51HDlHspDZVMEUMX5/asrf?=
- =?iso-8859-1?Q?7f3LhV7b7ZqkkrPsAWFzSUPkcNqhlNaFBVEOzjZgv6XVWOfoDg7Jyy/4/h?=
- =?iso-8859-1?Q?f/zsJUBaNcLpYPluIEfcVvkE0CTZZt400XCBklK/9VYp2r/uoupju2lCWa?=
- =?iso-8859-1?Q?fNmhTZcPrf7UFcymdWohTcCBdgDV4bs6RJBjbBkn5wbqlveo/VvB0CA2GB?=
- =?iso-8859-1?Q?Gydoa5p+6P3f/Sd2+3LiqhJfkJmEJUJvP0XsKqZZ7IA2HZvuBdDZ8uBl8Y?=
- =?iso-8859-1?Q?zzvxeUHWfIw5NjnbBvQ2en6tVvzGFwM/UK9KfoaMG0+f1cPB9SMpsR6hpN?=
- =?iso-8859-1?Q?rWXaxMF2SmTa42z8Gi0SLaTekkOQqOutcPYy6nfmWu3ucyFvti29S+SVP8?=
- =?iso-8859-1?Q?C+A1+JgukhD5JX2h0e5AW55OnK65iGZtOR9JVocOoCwuJuKRiCgY/k6iwb?=
- =?iso-8859-1?Q?taAYgYu0Yta0NCega/hi/Vt4a3PY2bHP85cACd026deyRIgblCXzdJ9sxB?=
- =?iso-8859-1?Q?DA3FKgFkZaZf5VD2idka2/Bls8Olx42l8iCcDX19cBnpnxvjmy28JAru1M?=
- =?iso-8859-1?Q?6ZNJ9et8W+Zrs0tr7chfsehuXmcmfsni1KJFhWDxyi9UWNazjPPQauY7kH?=
- =?iso-8859-1?Q?fs/VFEKiTGfK1Ss87fcG9GgYQ0lCXOi73Ee/sOFQcA4gcsq+rSaR0RCZZB?=
- =?iso-8859-1?Q?XdHGhhaOUVljLmIgQ9lOCqev6JPu/DHvda1Z4k9xjtc8ybnxNyME1I41bF?=
- =?iso-8859-1?Q?B8ioVjhA9L4eMcieeTiRs2qmM+w37V7unK/ETQQagxcIPjJIlzZCZvdRen?=
- =?iso-8859-1?Q?klhqV0ZukzMEY=3D?=
-Content-Type: multipart/alternative;
- boundary="_000_DBAP193MB09397867852FAF63722DA7C4CA0AADBAP193MB0939EURP_"
+ (Exim 4.90_1) (envelope-from <deller@gmx.de>)
+ id 1qQpsO-0004GL-Ky; Tue, 01 Aug 2023 09:57:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de;
+ s=s31663417; t=1690898245; x=1691503045; i=deller@gmx.de;
+ bh=umcxsITwRNOeQ0dhUL3rB1X1FD18K8NrjAsZ7lxDBpU=;
+ h=X-UI-Sender-Class:Date:From:To:Subject;
+ b=rLS8aoUs6ofif4xGHZgq0Ytt+faSiAlWF0kwkfwe5Hc+g5KF6HI3H8H/lbBKDZ7p1JAHRdS
+ NHVtXQyEhun+Z5GVw9IWIseJQ+QxTHGGGC+xTcIcURucXD0iIJmm+qScE6FTfKhx1Z5dYaEhJ
+ Fz17ut87MceCmNtaJd34XUjrUb6y+280KV3KrJmKzE899oGSuI4qlcBxdWFyG9jpjmtd5EuoE
+ nLMIr43VxywKH1m3Mi+6xe8lrsTRoYUokN65KmNh7SkDsnounUKKnGlp4IqMOJ2b+Iylug1Uq
+ ECrJJvl27/edEo6EGAyMdcbIPyp71rY37Eh7VOGRzM8Ls8NVqI6w==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from p100 ([94.134.150.247]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MY6Cl-1qLARE2oaD-00YPgW; Tue, 01
+ Aug 2023 15:57:25 +0200
+Date: Tue, 1 Aug 2023 15:57:24 +0200
+From: Helge Deller <deller@gmx.de>
+To: Laurent Vivier <laurent@vivier.eu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: [PATCH] linux-user: Emulate /proc/cpuinfo on aarch64 and arm
+Message-ID: <ZMkPRJ3subSuW+Rg@p100>
 MIME-Version: 1.0
-X-OriginatorOrg: indra.es
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DBAP193MB0939.EURP193.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-Network-Message-Id: dbc25f8f-ccbe-4334-a54f-08db92588da2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Aug 2023 06:28:43.3718 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 7808e005-1489-4374-954b-d3b08f193920
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: OUA1MzULzkfIiW2+Jjz/Gj4iynArFPoOS8lTBZi7h+ZBvJc0vS5oBJ6xzWKBq5br
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8P193MB2271
-Received-SPF: pass client-ip=40.107.21.101; envelope-from=ariom@indra.es;
- helo=EUR05-VI1-obe.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-Provags-ID: V03:K1:NlTkvylLUFPyn89Be8eTfMxck9zWSUmI3ijFFhhlqGfxwZasKA6
+ Y+/Fy+lW3lyWYfq37vYINnka+cs+bDW7+HTpR3yXtAbmC89Lbym8gCIwC27bAPImUfnKw7C
+ uu0QiT32UCKJhfiFGAFYG9Hs3dQqtR9xc3oCpq+QKRPhu6K5M+DzYHhGT7onJqc2llu+LDs
+ b2qQeViRw5IhJ0LzXIuWQ==
+UI-OutboundReport: notjunk:1;M01:P0:y22NqGAyzbI=;yajqhruky4Sd3u7v7Oy90GfXusr
+ rvT6FVaoGIemjtanJ+QqmI0V5ueYtfcYhbDHpcHmmYZcUeRQ+sC6rV+Bi/9uC69ohOL7L9/Am
+ dh4wrQQT2uO21c38fWKcW34j458AT76GwYIZIuJkR7KpBsyLjN8oK3Wp3ExXDusQRFwU9dY6l
+ sGlPSX8UyxE5xJZxMVBevS4hK5Uav43jc5PSLkH5AiosY4eo4HU1PtlpaFw0Hd4v2SwUCaukN
+ o04UgcRtdXsDnNYbSQf2TWtYU337otrvjl3287QGH1WbcPsQLHfkl5e1z27zP1eNbwikCARMv
+ kGQs/+s/8MzZYnTZgAlm3IVhmgjZNNPonR0Hrp3rPwDhW9ATHunPzYlwK1RIufbYLNThAg9NP
+ WQBHwqDPoEl8TBfaP6DgxXVDTnBsc5puY1ua8rLXhhSRDOVl1ay5airbw1YGl84W1nhToK/V2
+ dNshKJe72n1rGbnM2yQtITh+ba9TgQ7Ngx6E3u3DbGX41rZcIvEG1Ke8fwesK4AgrI7Rto667
+ 07GLaBAoMABupuHGI7cC6MRNMN92VlHLQGhu4cGogMJVYec3pNeQBwxhb2Te8YSiQ6uEdTn+Z
+ Na9Dj8OHWBPjnkcDWsh92G40Dd2qzTtA2GaJvU/9b/X4U9Dn90FS4kOwlGEUmv1Taq7JhtjD8
+ qXcbvDhknCRn9d00F8EJKfyhJ7QLYFGNYOIPuZbxAMH2eAAxh+sgUo+wPo9Z+6Prp3X4zX4or
+ Y+N2arX/iCTw3asIjh445IytV6lElNh2tkKMGgT0PA5sdDSfr5ZY95/OT0FaywkeF+AzhHlHJ
+ pt30IQ0XjEqUibCW6mbSS20wkBtwPjZyVGRbs4O4V4eJwR5dXEZl6ToeHefcxE66uCVhzLP+x
+ nREjR4Q7iwC+BUmSVNMY0g5dnButxVvu5PXJZ7XHcjZ0lnokm2/uAYP+62mIN03tDy3qpWC3+
+ YWqv7LatmalayEr1vCv/ZvlC5a8=
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=212.227.15.19; envelope-from=deller@gmx.de;
+ helo=mout.gmx.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -159,125 +117,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4TR+NuCZBcbh
+X-TUID: cj21vGDNEvJZ
 
---_000_DBAP193MB09397867852FAF63722DA7C4CA0AADBAP193MB0939EURP_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Add emulation for /proc/cpuinfo for arm architecture.
+The output below mimics output as seen on debian porterboxes.
 
-Good evening,
+aarch64 output example:
 
-My question is related with the use of device remote-port from xlnx-zcu102 =
-machine (aarch64 architecture). I don=B4t know how to add this device to th=
-e execution command and connect it to the emulated machine. Thanks for your=
- attention.
+processor       : 0
+BogoMIPS        : 100.00
+Features        : fp asimd evtstrm cpuid
+CPU implementer : 0x50
+CPU architecture: 8
+CPU variant     : 0x0
+CPU part        : 0x0
+CPU revision    : 1
 
-Sincerely,
+arm output example:
 
-Alberto R=EDo - Firmware Engineer in Indra
+processor       : 0
+model name      : ARMv7 Processor rev 2 (v7l)
+BogoMIPS        : 50.00
+Features        : half thumb fastmult vfp edsp thumbee vfpv3 tls idiva idi=
+vt vfpd32 lpae
+CPU implementer : 0x56
+CPU architecture: 7
+CPU variant     : 0x2
+CPU part        : 0x584
+CPU revision    : 2
 
-________________________________
+Signed-off-by: Helge Deller <deller@gmx.de>
 
-Este correo electr=F3nico y, en su caso, cualquier fichero anexo al mismo, =
-contiene informaci=F3n de car=E1cter confidencial exclusivamente dirigida a=
- su destinatario o destinatarios. Si no es vd. el destinatario indicado, qu=
-eda notificado que la lectura, utilizaci=F3n, divulgaci=F3n y/o copia sin a=
-utorizaci=F3n est=E1 prohibida en virtud de la legislaci=F3n vigente. En el=
- caso de haber recibido este correo electr=F3nico por error, se ruega notif=
-icar inmediatamente esta circunstancia mediante reenv=EDo a la direcci=F3n =
-electr=F3nica del remitente.
-Evite imprimir este mensaje si no es estrictamente necesario.
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index dc8266c073..917c388073 100644
+=2D-- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -8287,7 +8287,8 @@ void target_exception_dump(CPUArchState *env, const =
+char *fmt, int code)
 
-This email and any file attached to it (when applicable) contain(s) confide=
-ntial information that is exclusively addressed to its recipient(s). If you=
- are not the indicated recipient, you are informed that reading, using, dis=
-seminating and/or copying it without authorisation is forbidden in accordan=
-ce with the legislation in effect. If you have received this email by mista=
-ke, please immediately notify the sender of the situation by resending it t=
-o their email address.
-Avoid printing this message if it is not absolutely necessary.
+ #if HOST_BIG_ENDIAN !=3D TARGET_BIG_ENDIAN || \
+     defined(TARGET_SPARC) || defined(TARGET_M68K) || defined(TARGET_HPPA)=
+ || \
+-    defined(TARGET_RISCV) || defined(TARGET_S390X)
++    defined(TARGET_RISCV) || defined(TARGET_S390X) || defined(TARGET_ARM)=
+ || \
++    defined(TARGET_AARCH64)
+ static int is_proc(const char *filename, const char *entry)
+ {
+     return strcmp(filename, entry) =3D=3D 0;
+@@ -8503,6 +8504,33 @@ static int open_hardware(CPUArchState *cpu_env, int=
+ fd)
+ }
+ #endif
 
---_000_DBAP193MB09397867852FAF63722DA7C4CA0AADBAP193MB0939EURP_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
-//www.w3.org/TR/REC-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0cm;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-fareast-language:EN-US;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-family:"Calibri",sans-serif;
-	mso-fareast-language:EN-US;}
-@page WordSection1
-	{size:612.0pt 792.0pt;
-	margin:70.85pt 3.0cm 70.85pt 3.0cm;}
-div.WordSection1
-	{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]-->
-</head>
-<body lang=3D"ES" link=3D"#0563C1" vlink=3D"#954F72" style=3D"word-wrap:bre=
-ak-word">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal">Good evening,<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">My question is related with the use of device remote=
--port from xlnx-zcu102 machine (aarch64 architecture). I don=B4t know how t=
-o add this device to the execution command and connect it to the emulated m=
-achine. Thanks for your attention.<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">Sincerely,<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">Alberto R=EDo &#8211; Firmware Engineer in Indra<o:p=
-></o:p></p>
-</div>
-<br>
-<hr>
-<font face=3D"Arial" color=3D"Gray" size=3D"1"><br>
-Este correo electr=F3nico y, en su caso, cualquier fichero anexo al mismo, =
-contiene informaci=F3n de car=E1cter confidencial exclusivamente dirigida a=
- su destinatario o destinatarios. Si no es vd. el destinatario indicado, qu=
-eda notificado que la lectura, utilizaci=F3n,
- divulgaci=F3n y/o copia sin autorizaci=F3n est=E1 prohibida en virtud de l=
-a legislaci=F3n vigente. En el caso de haber recibido este correo electr=F3=
-nico por error, se ruega notificar inmediatamente esta circunstancia median=
-te reenv=EDo a la direcci=F3n electr=F3nica del
- remitente.<br>
-Evite imprimir este mensaje si no es estrictamente necesario.<br>
-<br>
-This email and any file attached to it (when applicable) contain(s) confide=
-ntial information that is exclusively addressed to its recipient(s). If you=
- are not the indicated recipient, you are informed that reading, using, dis=
-seminating and/or copying it without
- authorisation is forbidden in accordance with the legislation in effect. I=
-f you have received this email by mistake, please immediately notify the se=
-nder of the situation by resending it to their email address.<br>
-Avoid printing this message if it is not absolutely necessary.<br>
-</font>
-</body>
-</html>
-
---_000_DBAP193MB09397867852FAF63722DA7C4CA0AADBAP193MB0939EURP_--
++#if defined(TARGET_AARCH64) || defined(TARGET_ARM)
++static int open_cpuinfo(CPUArchState *cpu_env, int fd)
++{
++    int i, num_cpus;
++    const int is64 =3D TARGET_ABI_BITS =3D=3D 64;
++
++    num_cpus =3D sysconf(_SC_NPROCESSORS_ONLN);
++    for (i =3D 0; i < num_cpus; i++) {
++        dprintf(fd, "processor\t: %d\n", i);
++        if (!is64) {
++            dprintf(fd, "model name\t: ARMv7 Processor rev 2 (v7l)\n");
++        }
++        dprintf(fd, "BogoMIPS\t: %d.00\n", is64 ? 100 : 50);
++        dprintf(fd, "Features\t: %s\n",
++                is64 ? "fp asimd evtstrm cpuid"
++                     : "half thumb fastmult vfp edsp thumbee vfpv3 " \
++                       "tls idiva idivt vfpd32 lpae");
++        dprintf(fd, "CPU implementer\t: 0x%d\n", is64 ? 50 : 56);
++        dprintf(fd, "CPU architecture: %d\n",    is64 ? 8 : 7);
++        dprintf(fd, "CPU variant\t: 0x%d\n",     is64 ? 0 : 2);
++        dprintf(fd, "CPU part\t: 0x%d\n",        is64 ? 0 : 584);
++        dprintf(fd, "CPU revision\t: %d\n\n",    is64 ? 1 : 2);
++    }
++    return 0;
++}
++#endif
++
+ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathnam=
+e,
+                     int flags, mode_t mode, bool safe)
+ {
+@@ -8522,7 +8550,8 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd=
+, const char *pathname,
+         { "/proc/net/route", open_net_route, is_proc },
+ #endif
+ #if defined(TARGET_SPARC) || defined(TARGET_HPPA) || \
+-    defined(TARGET_RISCV) || defined(TARGET_S390X)
++    defined(TARGET_RISCV) || defined(TARGET_S390X) || \
++    defined(TARGET_ARM)   || defined(TARGET_AARCH64)
+         { "/proc/cpuinfo", open_cpuinfo, is_proc },
+ #endif
+ #if defined(TARGET_M68K)

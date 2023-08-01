@@ -1,69 +1,69 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp3087298ejb;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp3087300ejb;
         Tue, 1 Aug 2023 12:11:21 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGZbEYPzQ6wYRhPMDC70WYeh8ZT5K8+EkmDsEZuURI1SDAiw5BQmppkZwYIcTlyCDpDVNDs
-X-Received: by 2002:a05:620a:4084:b0:765:abeb:a13e with SMTP id f4-20020a05620a408400b00765abeba13emr17479086qko.60.1690917081255;
+X-Google-Smtp-Source: APBJJlFmNC+T3cal2wwn6yMofWK5KqMWU50Bu/dMiK6KsTb8/A87sVyhw95rbgJyXKmUI99adAFQ
+X-Received: by 2002:a05:6102:1cc:b0:447:6c24:7d93 with SMTP id s12-20020a05610201cc00b004476c247d93mr3108503vsq.20.1690917081309;
         Tue, 01 Aug 2023 12:11:21 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1690917081; cv=none;
         d=google.com; s=arc-20160816;
-        b=jBQ51kefKOeyRvIW7pz8nnwzpYxqRd98qFFRQlW8FWayH+h692vl5SHSaKzBvYOFIs
-         +sM8HT/TspdP/pPtlwQFGdxa93GnvKY2tGOoQDAcsH5cbKNMpk0cT/mxwFhzbumIWVPH
-         GO49+/gAbm+jfctfnNVkfbjeiSmmIsM2GHiGCf9zftnePL+CtBL8GUvr5PhqV1tPXf7I
-         3ZsrOnTbySZpRQxoW01YONxdwuC9zUJzLK7gotSdtScgbvlMaAPvNJVlQg5yU8EPy0Fq
-         71tS/OwqrSjyywi23whVHKgVH5xsxauTDGIdqpLFxQBgO97SYj45yM0P5/ESqeJOXaT4
-         8Jrg==
+        b=xlVKphAq4adMSTDJ/F/bQ8qLBqu9dApUoqQPHXatD/8JpSX6/9b15On6Knb6dhT0M9
+         y6k3aWjG4Mo8ojQsxmNCIyNIH5s7+dQtyJ2KeQvdmsOz46tSD7I6OKqUdE79SIhESeBx
+         b/TkkKf6kdm4RreHqDPCRaz/26CI1LZ+fHaghBYWe4YtjbrySUoRzmyjvdQ42zqxW+tE
+         qIcDxh+NI6dACLCV42pesWsPgww05X01u7XKBw8zsCSh+uVvbCFi6PLBVWxIQ2ELdpEC
+         Myyjj67LNAV0yrmYcAU5/lKAhOWDoyszHlFoYwHkiAFRxm2sImMIYFJ1f//GkuRnpQjr
+         1RFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:ui-outboundreport
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dN/dgMhkDgLJha2j6RXZjsw1lBwj+7VI/5m1maWpPpY=;
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=ea2Ul9RtC7oqzUYL1XRbLkvaM7N/pE+X5RkkQGphESw=;
         fh=baNk86TBkJ6mlBWrYGJJYOQrQlP7d816Km8U43m0Njg=;
-        b=CjyhtJqKXQ9U30hvKUprc9ua4QGTrbOvyPUTACLk8/3taOEh3EO3yOlr/CVlNQV8aT
-         YiXLqcXLOv2S1+Y8y14LsLdEcIk0MGLWAFKI4ax1eEEY7k2bbbQq35CrvNfkKrYxnqnb
-         OoRbUmt5y2RyGs5VhNvmRG2nh73X7sXxJGesgCfOGV22cJ5OqfyteC3dqkEgOfCp4YIp
-         /crOubrELDJptsGwtbVLUXhAM5+mO/VoRTHDqKOzfBOVV9ZNN36O5fEyZDD4iXqp9rXS
-         gYuztnlwTWmKJR3UE2+lieZLRXaGEdMlmLFkxklzD9D/tQ51IhgEPA2fXKDtr5xpmuV3
-         1bZQ==
+        b=pw1QDr9DvXm3U4+7Pfy+l6lYmMYIi74nztnd+H4tcXNO2V97L6ONIB0ph20ZZJzt25
+         jsMYpMrpcS9ALPltfXM2+FQik8w4iQ/ciPqa610RibWiXPhNiw7TNXjkwTqzUAqnGnKA
+         WKEkw3M6RsO/83TAZR/68DUeaizIiefDC7W45hWWDFjdodEO6ygcqXPISY2RAl1tk/xX
+         DQwj0f+HlGJB1e5Y1EviVxCQJeOkhdkmYyrUJrdioLVdxHqBuAIyUuRta7/5N/Do+gRd
+         JHW4VpJkaQVykUpPVB4psYYIkidifpjxKzQtgnXEuvrELpdjgMClC31KFST+9uDNZXMI
+         7kJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=HLG7KUrU;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=SQGDJWAS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o189-20020a375ac6000000b007683249ea1csi7038997qkb.127.2023.08.01.12.11.21
+        by mx.google.com with ESMTPS id o5-20020a375a05000000b0076ca9e2baffsi3358244qkb.163.2023.08.01.12.11.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 01 Aug 2023 12:11:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=HLG7KUrU;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=SQGDJWAS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qQulj-0002Zp-Ot; Tue, 01 Aug 2023 15:10:57 -0400
+	id 1qQull-0002dr-TW; Tue, 01 Aug 2023 15:10:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <deller@gmx.de>)
- id 1qQula-0002UV-81; Tue, 01 Aug 2023 15:10:48 -0400
-Received: from mout.gmx.net ([212.227.17.22])
+ id 1qQula-0002UW-87; Tue, 01 Aug 2023 15:10:49 -0400
+Received: from mout.gmx.net ([212.227.17.20])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <deller@gmx.de>)
- id 1qQulX-0002DI-O5; Tue, 01 Aug 2023 15:10:45 -0400
+ id 1qQulX-0002D8-OG; Tue, 01 Aug 2023 15:10:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de;
- s=s31663417; t=1690917037; x=1691521837; i=deller@gmx.de;
- bh=x2WCk90r3kqILwUNojPe8GNq/6l5cw5ovlA7R/f2IzU=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=HLG7KUrUOlX6EiLTny+/V2iKCPTxX6+xBNTs8pReTpdkkWOx9n/0p9tkTGOQN9lvNpXLrtd
- ZWx7+5cFbtNhpVheG0JPcH2YlX3v6qtwQkgLxG8BBBlALg9CuJoa3b1jLb2RO7DwPbaVLHSzf
- /kTwlD2x2Xjk6amOxV1gFclJnr9LKXl3lvprLv8SfoJLiZ6mx+yW50DPPnW4mH4eqJyn5bqKZ
- JqePzIxrWqKEXORcQ6bfZUleMqPmBgcwIpSDTnMpEQT8rik6i9TbMvXNz9vIwTduyiYyBtGiY
- XXR59nVTGz4Yo/TrLmdjBEyIaMD78gkW92Da/G+SkNw0qyc3Mmww==
+ s=s31663417; t=1690917036; x=1691521836; i=deller@gmx.de;
+ bh=uDGEymMeuxbJm7iG659JvfKB+IkoK8ZuaJ/NcV7oLs4=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=SQGDJWASUozXwS1uK0HSQk9PSfn9dfxUQxO2TFNH3XuW8aXGxeiA6P1eE4mOIAMGwxMvl1H
+ kWfc8+qlhUx7RzY86Zzj10tS+0AFFzzhx7Pdw9PurmPlb+nazIcSg8cA3QtMMhEdoK0uSplfB
+ CxGhfj38+CDcqHKzlxChtCZ8vYEM/Jm99Ev/JEuu9nRmCz/k5eI4rkM5dJpH1Ksjf3ScpsDtH
+ F8hmHJYFVpU+N2IOPGLqpaaMuOOoDpSc64s20gpiq+nX2hQu/M1Z2Z5d+nCz153L2cpiNk5vI
+ wkSlBb9TnRAaXXAXVnvwdsF4V6fnJtSwqneEHdjFgjYxGHJjObGg==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from p100.fritz.box ([94.134.150.247]) by mail.gmx.net (mrgmx104
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MnJhU-1q1n8y432y-00jEov; Tue, 01
- Aug 2023 21:10:37 +0200
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MbRjt-1ppN5R2uFN-00bqxM; Tue, 01
+ Aug 2023 21:10:36 +0200
 From: Helge Deller <deller@gmx.de>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -71,44 +71,41 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-arm@nongnu.org, Helge Deller <deller@gmx.de>
-Subject: [PATCH 1/2] linux-user: Fix openat() emulation to correctly detect
- accesses to /proc
-Date: Tue,  1 Aug 2023 21:10:34 +0200
-Message-ID: <20230801191035.374120-2-deller@gmx.de>
+Subject: [PATCH 0/2] linux-user: /proc/cpuinfo fix and content emulation for
+ arm
+Date: Tue,  1 Aug 2023 21:10:33 +0200
+Message-ID: <20230801191035.374120-1-deller@gmx.de>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230801191035.374120-1-deller@gmx.de>
-References: <20230801191035.374120-1-deller@gmx.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:t2Qxvy/8uIfWsppEqM5abCnaRoULrkykz2ZZeXCLGXfQJOOPBAP
- J27DaF0PPCWxDac6ygd3ozCHVLG5VyovwcyXD5SOyPxkXT9/KQedMBvsIr3666V1ljzzSP+
- UK4plnoZgiQGmOvv6amqPweeqYQBGnHxUpxLFd+/G9P3mu72AAM7Rt31tLwuFj0Ppq/FelH
- /aFyBLFlbACObr4uJw3/w==
-UI-OutboundReport: notjunk:1;M01:P0:zBl5iumgsRU=;vRj4BaMYLi2Ah55QRXZv1dNAIYC
- MeDzHyAVn0i/6xLMETkxIbIPAKMEezsex/L9BnYGl9ALQvn6lxl968TFm0dHu3iyj0ZRsohk/
- Gk4VJr2D9+pRfPNAwj5IulZ2OJmm4pxVlr1EweSdF1DtPOdSfWfiK1vDprkt6bwMxFtV8qvel
- UFqHLU7keLrhW4tTFncKvb8q0DNqIbrzESDyUUM6xbP/xVYRuWZsaIoAkUxb+4V6g0N6bFeeP
- azonhVqN9oF0HUliOprdxvTGRRtl8D/9qVhmWTzpBwLwo501VYcsKiBvzgAUphsXJE6KMbDhx
- TMjvbmRUEDPpgt8/p1f2khIVLdZLyxI6HKzlQV3hWqiPQsJRRkuMWdM+Kp3G1sB4emj9JEyZK
- cUqTVpxuVycwhFv7/6XsnuyCgYjXxXL31ly5fyBTSqzxQX2iP7HQwGvqhBEpelbRyPoOBx+23
- eGFmC7M59id9B8TkIH+yLVYvhpk3TUMZGLSyl6r1dVpfBfWLhCjVCc77h+dLpQr6u4bHujCGb
- anZm6J8uoZjNY9EFg6mmoYdeTjqvBhLqS9dpaNB3nLnNC6rjBdnRdCqG5FBO1HIEe6y5K97U3
- 2cxptu6zO6HLqrMUEbfeIhzC556AtdcbrPMz5Grj62LBCa/tOzCallnHRFXh1cDAVSr0dc8da
- if0chTETwORqRN2NB+1zb1Wgn85oxXYgE8E/xQsy6Qc46Ny5iLMeip78xqcDkPazcgfvQKW/q
- OVsDjozgab5gNbYqFJ9LNaCuGJ4CcQV6bJCEoZzHPaklNlL0GvujeDVikTgGZcbD+szZKQMi0
- PpovMEoA8yIJnrNq6YTQMpo78rfrvmzVoM2qJFr8zGwLUfTfKW1vE4DR/lNtr220BbT8nQWSi
- mi2DW3SNioPDXhGXcvSsM3gBcRnysZSd/VeIISyeEnAcg//bSbAHCJkBrRdO8kPElt/z4rTQF
- HedYIIlznfIkZqeuAMZeETt6x5k=
-Received-SPF: pass client-ip=212.227.17.22; envelope-from=deller@gmx.de;
+X-Provags-ID: V03:K1:LmUdfw4mDpzYk+PZxXdWMdUMj6KMTlX0DL7Xd0ZLO5jLQbr8lqF
+ qXSpF3BPdBowA3PACJJyrt5LwTVhA59yPv6kLQkQ8RBWkRqbZNRADlTKahuR0+O1OJn/VNv
+ aDJ+ll2ZilMjtHNdAq6rmM+KON0MNBwUUVuA9Fb2FX8u2LFI/jZBLxgzMYMHW9ZSYduIpWF
+ Kp5ReMN6/PRLQokktloHw==
+UI-OutboundReport: notjunk:1;M01:P0:zRnIdzBKIx0=;Kja0hvd8hqtKjIDQo9kKkhzbqaq
+ G35N4lcs0R6ZZDcBluuOKU7MdU3gT2FbbR57viDdnbIEaKYlmPgkwv7M1Q32KGZuDWr9Cn8Pb
+ bZZ2WOAd/mKsLmhVVBSsz7MGPx6oVgSRLaVsiNz626gkNKJCTzpKxlsLi++f3PNF75IwKg6fv
+ A/Rs4LkbbMUjQUD1vvsET6S+/0tqunSy0U9sXEI686vIrRw+1KWa01n6mlPDmgYC6hhzSJkMF
+ 0blPgAQJDxKYkhT5atsiCfOsWMeRVwYshTOkE8kE2arkXbbVQBHTqHtw8Xe393oDIvo96Mkvn
+ qFO20uRpjzaFWGrPGvmm5P4KX7LDakeUqb2pNgmJq2otIGZlfySLjHxykouT+rKbrpYwhiaiR
+ J09/G6jtrTBd2u4uyLuPJX4RqpNtpxaed4R7Jm/YTQZk72kMv6TaRb0yrqL140cti4362fPzn
+ q/2cCNnlxMqInOl4uClQvOhtNH/vVU/T2OadbGca232PROBS7j2gN1gXUabfME4UfMhec/Wc4
+ e+E/TePYUEBTrhXgIKmu5CyuGulAFEDD97XlaGVROs9+H4/nFaHl0SuWFJN8nKknoumqV8ckc
+ Z+Lqvj/8xW9vOOogK9BYarI3+/pFEWpC5yloOxKa0NHgOAIm4l/jP8OgcF4dkN2ShSSIEBZQf
+ vksJIljkWecKRurg19lxL7iA97eNSNIx7m1ESd9O8HeDueIIycsBbdkIfvi/QArCKDDKl5QqS
+ Fd7035XaeKLs015yhLaqdvQ+jMvU+mtbVmeGQA5VJ2vdxF9rdr00kEl8J5qUAWjvpcZCMaiz4
+ 2GTO5EFVzq1FvVte/JI3shzU3tj1juTUQIFGTnvcowZGK3QNtPpmNRzan/NlgcmveW8H7xqOO
+ VNnoaM6AAtVrWkVljahaJ1E+IRJzY2dPzzBLvxggCIby4ewcdm6f8+wnudY7SRvSMctyHzAe7
+ FDjwuZBfbrKrHgzxM4LjWBnd0MY=
+Received-SPF: pass client-ip=212.227.17.20; envelope-from=deller@gmx.de;
  helo=mout.gmx.net
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -124,68 +121,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o+837tXi3UvU
+X-TUID: uf81+9cBvlEn
 
-In qemu we catch accesses to files like /proc/cpuinfo or /proc/net/route
-and return to the guest contents which would be visible on a real system
-(instead what the host would show).
+One fix for correctly detecting /proc/cpuinfo access
+and new /proc/cpuinfo output for arm/arm64
 
-This patch fixes a bug, where for example the accesses
-    cat /proc////cpuinfo
-or
-    cd /proc && cat cpuinfo
-will not be recognized by qemu and where qemu will wrongly show
-the contents of the host's /proc/cpuinfo file.
+Helge Deller (2):
+  linux-user: Fix openat() emulation to correctly detect accesses to
+    /proc
+  linux-user: Emulate /proc/cpuinfo on aarch64 and arm
 
-Signed-off-by: Helge Deller <deller@gmx.de>
+ linux-user/elfload.c | 130 +++++++++++++++++++++++++++++++++++++++++--
+ linux-user/loader.h  |   6 +-
+ linux-user/syscall.c |  70 ++++++++++++++++++++++-
+ 3 files changed, 198 insertions(+), 8 deletions(-)
 
-=2D-
-v2:
-- use g_autofree instead of pathname on stack
-  Daniel P. Berrang=C3=A9 requested to not put buffers on stack.
-  Using g_autofree keeps code much cleaner than using
-  extended semantics of realpath(), unless I can use g_autofree
-  on malloced area from realpath().
-=2D--
- linux-user/syscall.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
-
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 95727a816a..a089463969 100644
-=2D-- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -8539,9 +8539,12 @@ static int open_hardware(CPUArchState *cpu_env, int=
- fd)
- }
- #endif
-
--int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathnam=
-e,
-+
-+int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *fname,
-                     int flags, mode_t mode, bool safe)
- {
-+    g_autofree char *proc_name =3D g_new(char, PATH_MAX);
-+    const char *pathname;
-     struct fake_open {
-         const char *filename;
-         int (*fill)(CPUArchState *cpu_env, int fd);
-@@ -8567,6 +8570,13 @@ int do_guest_openat(CPUArchState *cpu_env, int dirf=
-d, const char *pathname,
-         { NULL, NULL, NULL }
-     };
-
-+    /* if this is a file from /proc/ filesystem, expand full name */
-+    if (realpath(fname, proc_name) && strncmp(proc_name, "/proc/", 6) =3D=
-=3D 0) {
-+        pathname =3D proc_name;
-+    } else {
-+        pathname =3D fname;
-+    }
-+
-     if (is_proc_myself(pathname, "exe")) {
-         if (safe) {
-             return safe_openat(dirfd, exec_path, flags, mode);
 =2D-
 2.41.0
 

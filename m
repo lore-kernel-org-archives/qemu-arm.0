@@ -1,111 +1,129 @@
-Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp3151854ejb;
-        Tue, 1 Aug 2023 14:27:55 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGnoX+Dxx58rg5MByrPfn4M/bH0qQKuLuv8Mu32zEibUa8gBSp9wcePS7hBlN+Dg+4eUY8/
-X-Received: by 2002:a05:622a:11cd:b0:40f:c547:c6a1 with SMTP id n13-20020a05622a11cd00b0040fc547c6a1mr6522910qtk.5.1690925275370;
-        Tue, 01 Aug 2023 14:27:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690925275; cv=none;
+Received: by 2002:a17:906:fc12:b0:98d:b2f5:1316 with SMTP id ov18csp3160340ejb;
+        Tue, 1 Aug 2023 14:48:59 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHUPFs1A48KmHwbOXaFvkk63VfI1QP9EpcfXqlQLPUDTKeWsRbyHEsbbVFqbsK2Uu4iCNAC
+X-Received: by 2002:a67:eb89:0:b0:443:7b05:ab23 with SMTP id e9-20020a67eb89000000b004437b05ab23mr3604959vso.20.1690926539024;
+        Tue, 01 Aug 2023 14:48:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690926539; cv=none;
         d=google.com; s=arc-20160816;
-        b=a33fIJx3Z4iPtj3oTOdNmSumcfwsarJ/3pKJDLzJSQtbZaRu0sQN4KiG4k5XyCy6uB
-         Sk634TGZ2G3+8obvCGC7EH+RyBUcLzvB4t1uS+oOhmqjtqFyOf3niO/bvjKSuGt2jB/7
-         XCqUbZ0TtQRpJSdqwpwdwSYKCYxPOuB0p4TTv+z+U1BfLN5KsWCTD7xoCXz7XnotA9n1
-         FJnCQDRflWcjerxP2xpL2RJMfsQd7aQr6nztmsmHYwASbA8mdERInZW4RVU5/vjQSVNN
-         ccXzM28qv0zv+QoyDE/eMRKk0s+ZuEB5P2swo/RKFjxTNI9V6BZ+wLPM2gV9AwL70lDv
-         QiDw==
+        b=YuDjmsk2QLuYIouOhRlJ8NHgkxV2iqsve4m40e3uAIpMvWVnW7jmmM+kLr/3PyaBj2
+         VtgA1y2HpV5Qmz0Q/uFUSYY5FHLppo2ygEYle5u+W0ggkCzIaIJMCH+YznvksluVpOca
+         Ti6a2LCXtk9+zVR2DfPZjvMnUWhrUmif7UUi2YXzHded5UNDw+a13FpU8sHSw7XZPKd2
+         ryQsoHWAlRtGYaa9IILPChIeix2/1z32Bze878eahSLxyRAIAPzrK+jDD4KTB6vZ74GY
+         DlT65++fUGF2eAh532NuOXwfbqVKommg9vv5XzkEXWkOtKoM6WwmNT4KHNmsoTnxl/10
+         IfCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=qWpzn6EDfV3epZYHPu3ZWiKxJPJcv6XZsVNadt1LM98=;
-        fh=SYsFp2iEL90nHLJUDqioV8rlUeUraaclr1fUXH6bNX4=;
-        b=UBnujERrO3eMSNoq0RSGzU4LW/CMIMdtVFWkch7+q8500/X0G6dUmoxa1RQ2XEUEYp
-         qYMuwQbMQl7BvzRhuE8PierRfm6yF6j9sq5IXzwzayHByJI0BPHES7B+5FqM2uce4cpq
-         wPUSvNPE0FYLesw5mlzA/Gg/xlQywyaXDJUNlsYbEjQMFMw7JN0kxs6BlmI8fZUJV0tg
-         N8/qkzxAI9iHLrZ03ANfZkMHNagXKhCGIjTobdApnBvRXFb9J+OkqLCEarsrlu3OamaB
-         zABYgvVaQY0w2zYmwKQzf7jY3LrAGdMTvEKjZD75B9hDkxp/V5UJXn+p/va9mu01ibeJ
-         CYBA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=fG70qcc+1kQrlSnAh1H0yZsx4R6wJoKoDd2s3u55gh8=;
+        fh=dYbBGCgGTocyNmrgaL6yD9QGcsN13jYupk7i6wm77Cw=;
+        b=ijXJA1aviXm7jg2Cdl9gFp1pv+bQTf60Z82ljt03np1NHtTZDpDX/d/r8tVzkUGPuu
+         ZaxdZc42wKLSpVoVDEgeyxArP0vgbuex1XqLlWWn+7XlQk4p8Z9markOVh3r0Od7TCDa
+         G2hUkV7e6YhrHQx0oNOnaEaxsoGR/6g3knoKLqLjOW9EOFWrUYj/CK4EeQk7EHgRrqye
+         8CmiL3CbY8DO87Bl0Lg25RbIBP75a4ygJrANR0/Tgx1pPCLlM0L1JXIrnrnW4XOyUOdC
+         ajOFDhvb+BsTq03gO4eAgowy4uldWgjhSnRsX3uayntIT5PXI4IQmJkWgC7FwYTe/Dzt
+         01Og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JkERyqeP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nR7NhdNN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p19-20020a05622a00d300b0040fd6b6036dsi1266468qtw.290.2023.08.01.14.27.55
+        by mx.google.com with ESMTPS id c12-20020a0ce14c000000b0063d35a7acadsi7547839qvl.28.2023.08.01.14.48.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Aug 2023 14:27:55 -0700 (PDT)
+        Tue, 01 Aug 2023 14:48:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JkERyqeP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nR7NhdNN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qQwth-0006CJ-6A; Tue, 01 Aug 2023 17:27:17 -0400
+	id 1qQxEU-00017l-2J; Tue, 01 Aug 2023 17:48:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1qQwtg-0006Bv-51
- for qemu-arm@nongnu.org; Tue, 01 Aug 2023 17:27:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1qQwtd-0005o8-TL
- for qemu-arm@nongnu.org; Tue, 01 Aug 2023 17:27:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690925232;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qWpzn6EDfV3epZYHPu3ZWiKxJPJcv6XZsVNadt1LM98=;
- b=JkERyqePstRYoch4Qhef9WfC90+exuqH1f4ykWsx/Ghe69KuqD87zTYBbDOnaTQvuniuqB
- NdfndXXarnfJMOJ/xMnvTUnHyyEfGsX6SSXfbX3ZMA3suh/tqgDrqGTbNq2rLSPLNHt5KL
- RE8bBnqkcUeenF0oM2pYk68l1DZ9rD8=
-Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-108-e9nC9lpSP2Ctlxo3K2P79w-1; Tue, 01 Aug 2023 17:27:07 -0400
-X-MC-Unique: e9nC9lpSP2Ctlxo3K2P79w-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AA9461C05134;
- Tue,  1 Aug 2023 21:27:06 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.93])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B7C0FC57963;
- Tue,  1 Aug 2023 21:27:05 +0000 (UTC)
-Date: Tue, 1 Aug 2023 22:27:03 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Helge Deller <deller@gmx.de>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 1/2] linux-user: Fix openat() emulation to correctly
- detect accesses to /proc
-Message-ID: <ZMl4p2oLv9vhGfAV@redhat.com>
-References: <20230801191035.374120-1-deller@gmx.de>
- <20230801191035.374120-2-deller@gmx.de>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qQxES-00016h-7q
+ for qemu-arm@nongnu.org; Tue, 01 Aug 2023 17:48:44 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qQxEQ-0003oR-OC
+ for qemu-arm@nongnu.org; Tue, 01 Aug 2023 17:48:43 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-314417861b9so5226792f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 01 Aug 2023 14:48:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1690926520; x=1691531320;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=fG70qcc+1kQrlSnAh1H0yZsx4R6wJoKoDd2s3u55gh8=;
+ b=nR7NhdNNx1gSO8um4jMbC2UsVzyIb5poMeBomiTtg4rlmLFM0pOJxK+061YwankVqf
+ rAHGXTq96w6P/kAGU8ib4cJgi5kxW/YztqdzXg6FgFEI634C1c9iaT2tSCCiRExh1Byr
+ oLNbpgkqacuJ9INz8tNV051Gq0Ric9WfcF4eyd6pPAKhtKBFVdW44OWcoab7dqZStSy5
+ +CpGqydPT//tdUqJrd4xljkKfBM0X1rG6ZiesZw680rDW/dvaEw0TlG4N+WerlZ1+uho
+ 972Xj8vSRcQVYq0P4mRjUJN8EE1eArI4zKaB+PCm+jvNsDUT0DMhGTA7pKHtL1rcRT5d
+ l1Qw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1690926520; x=1691531320;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=fG70qcc+1kQrlSnAh1H0yZsx4R6wJoKoDd2s3u55gh8=;
+ b=iFbCcJxj4WU02KBcToZmAnCH2ue4pIVQOaWA/BPE0MKeHC0vE0avPjoAVPF7D6oky3
+ 7WYwkdUgg398TdsZMYOHgZKji24NGjJuHLlFMO3jSemtkAX/WXAXnFWtN2r7hCH3BXdR
+ Yuq59BhzKl0/shEx/Kr59Ibvy5fR04LCkusKbMr9EBtNA5eV4+fCUXnRWPNQkl4j6Inb
+ z78hgdcmc+WxA20MEDjDdO4fNAtoL7glPNID5W0rLkjP00hN329s2KYYzgmzzS8Q4IYk
+ ECO6+HMivQl6g21E0BzC7mrRXPf7H2quDZ0IzlvyaZ+UzblgapjEpyxd0zkV04Dd2K6J
+ bfhg==
+X-Gm-Message-State: ABy/qLayK9TqBFf6QJWpIA4mLNT3Asn8raOIxLiuyr+zGrLPlQWyCNlu
+ s4TDqE1xv6mQbCwsOFcQ6yP3ug==
+X-Received: by 2002:adf:e9cf:0:b0:313:f61c:42b2 with SMTP id
+ l15-20020adfe9cf000000b00313f61c42b2mr3061083wrn.69.1690926520487; 
+ Tue, 01 Aug 2023 14:48:40 -0700 (PDT)
+Received: from [192.168.69.115] ([176.176.174.59])
+ by smtp.gmail.com with ESMTPSA id
+ d14-20020adff2ce000000b003176053506fsm13386334wrp.99.2023.08.01.14.48.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Aug 2023 14:48:40 -0700 (PDT)
+Message-ID: <9de18290-27c5-c269-31c8-5c371a7858aa@linaro.org>
+Date: Tue, 1 Aug 2023 23:48:36 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230801191035.374120-2-deller@gmx.de>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.13.0
+Subject: Re: [PATCH 2/3] tests/migration: Add -fno-stack-protector
+Content-Language: en-US
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Leonardo Bras <leobras@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Brian Cain <bcain@quicinc.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Song Gao <gaosong@loongson.cn>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org
+References: <20230731065904.5869-1-akihiko.odaki@daynix.com>
+ <20230731065904.5869-3-akihiko.odaki@daynix.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230731065904.5869-3-akihiko.odaki@daynix.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.092,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,80 +137,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nnsUxbqOQUzd
+X-TUID: a5BEXDfqwexH
 
-On Tue, Aug 01, 2023 at 09:10:34PM +0200, Helge Deller wrote:
-> In qemu we catch accesses to files like /proc/cpuinfo or /proc/net/route
-> and return to the guest contents which would be visible on a real system
-> (instead what the host would show).
+On 31/7/23 08:58, Akihiko Odaki wrote:
+> A build of GCC 13.2 will have stack protector enabled by default if it
+> was configured with --enable-default-ssp option. For such a compiler,
+> it is necessary to explicitly disable stack protector when linking
+> without standard libraries.
 > 
-> This patch fixes a bug, where for example the accesses
->     cat /proc////cpuinfo
-> or
->     cd /proc && cat cpuinfo
-> will not be recognized by qemu and where qemu will wrongly show
-> the contents of the host's /proc/cpuinfo file.
-> 
-> Signed-off-by: Helge Deller <deller@gmx.de>
-> 
-> --
-> v2:
-> - use g_autofree instead of pathname on stack
->   Daniel P. Berrangé requested to not put buffers on stack.
->   Using g_autofree keeps code much cleaner than using
->   extended semantics of realpath(), unless I can use g_autofree
->   on malloced area from realpath().
-
-g_autofree is backed by free(), so it is fine to use that
-with the realpath() allocated buffer.
-
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 > ---
->  linux-user/syscall.c | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
-> 
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 95727a816a..a089463969 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -8539,9 +8539,12 @@ static int open_hardware(CPUArchState *cpu_env, int fd)
->  }
->  #endif
-> 
-> -int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
-> +
-> +int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *fname,
->                      int flags, mode_t mode, bool safe)
->  {
-> +    g_autofree char *proc_name = g_new(char, PATH_MAX);
-> +    const char *pathname;
->      struct fake_open {
->          const char *filename;
->          int (*fill)(CPUArchState *cpu_env, int fd);
-> @@ -8567,6 +8570,13 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
->          { NULL, NULL, NULL }
->      };
-> 
-> +    /* if this is a file from /proc/ filesystem, expand full name */
-> +    if (realpath(fname, proc_name) && strncmp(proc_name, "/proc/", 6) == 0) {
-> +        pathname = proc_name;
-> +    } else {
-> +        pathname = fname;
-> +    }
-> +
->      if (is_proc_myself(pathname, "exe")) {
->          if (safe) {
->              return safe_openat(dirfd, exec_path, flags, mode);
-> --
-> 2.41.0
-> 
+>   tests/migration/s390x/Makefile | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+Queuing this single patch via misc-fixes.

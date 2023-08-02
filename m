@@ -1,244 +1,333 @@
-Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp501246ejb;
-        Wed, 2 Aug 2023 10:02:26 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHDRT0/ysGJTExMNnnu4Oj+xLKuqYKUeM31xS4AlYKt8r49+lh72d8D3725TDYseYsYZziJ
-X-Received: by 2002:a1f:5fcb:0:b0:486:484d:3053 with SMTP id t194-20020a1f5fcb000000b00486484d3053mr5107129vkb.5.1690995746477;
-        Wed, 02 Aug 2023 10:02:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1690995746; cv=none;
+Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp502172ejb;
+        Wed, 2 Aug 2023 10:03:23 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFTkI5gAg+pNASiZqRRyamoQ6n8vxzJAbjqoaoaDYAtzPQrQiDNcjJeH+mHoCz2Bhat6kdX
+X-Received: by 2002:a05:620a:489:b0:76c:c055:aa32 with SMTP id 9-20020a05620a048900b0076cc055aa32mr5998950qkr.24.1690995803308;
+        Wed, 02 Aug 2023 10:03:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1690995803; cv=none;
         d=google.com; s=arc-20160816;
-        b=rZRrR5fmkLXca7yVm3PGdEhxOueWO+yrASwFqgD/wN4POhHqIZJw4fpYOUB7XApfp8
-         pA+MkjwkTWrSLrn6vVQcde/VQ0iTc8P1cc7NYRYHiQEqssP3QyFCHrwrvggkv95p4NRr
-         GME8Ll+oT1d41B2Td7fLQzeOGUJsK4y9ryh+iW05uHuypodtmkhNMUnEjcDGhi7OYgh7
-         5+2fl33vabTadT7FS/GBjvyD7d6xKZ9rwuW+jVv4pNZGrVECNtyU2cDpxct+618AQ6vx
-         cFS9qLbHNPwPIkW0j7rr0Ugge67cZXsXcNcxZjP7oNNXJazApbAWBhP5dYu/BuzvWJ7J
-         yB4g==
+        b=KBHETRSiLlxt0Hn5nZKbjOrDsD16uyV0ndsZrfaeuyEjznds6l3czYOyWm0GOU6Fgl
+         tJF57/D01YiR0dmGA3ZKy+lCNUrKGFqrd1wwGkUQeFAG/eszMSnV0UDKMH1i1o4W0Ik4
+         N2oIm/3umxx0jcuN6hDsyV6u2XxnjK6WKIlgbuBKI5oAWohNFPWwmlcqtDUwZpHvIpWv
+         HmgEOOtL4Oit+Vg9iHgzoWxkshhL3qMRRfXEb3l8SG2bMI2JKiFAn/XHpFthLoYh/fX7
+         Uv6mt+HqAfkP6DUv5EoiD8RVbnXVeeAZPNJtYMI3gDCYvxyHogaBrXxBbdqpc/FxOzM+
+         oKOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Xq4dJu2qLFemtsjvmEmG9U0HnzxKpgcrkh7e2iGXkwo=;
+        bh=xA8fBj98FjuofQKoymExQL2re0GZGratjLN/CLg4U2g=;
         fh=zMLmPP9ozJY0jj0bAXqZquWHP0BgmjJZ9lKiHhJNaWU=;
-        b=fbZG4vi8oBXXTfxjNhghPu5MKHOBxgQiZ7emGnUyketF/TQtOBAHCT5b7iWGZDUXWW
-         iwqohkBGBfMDKdI1EY0e2hnCDENrDjy7T3DZ5yIen1iYVSdNx5lrRHmQD9xaRehHS7vj
-         /G8cDMCRMn84WUSMs2SYqy9YOFUY5pNIcaI62jZ5VFkPVaa/a9+GPL0lEWkt9k78pa8T
-         HeCarlrDty3KMQLBjsLiiuLzCAcbl+nvqsJJTceBXaCOypPsWeHBUTZveGT8BzWZQXz5
-         8AA5UMu6xO6Nv7iLfIUIJfJoPaM4rlwuFlm5Vk0ast+1A4MYlC1dXrcT9EQNintCxf5l
-         5HBw==
+        b=yPOfJEmIMUNxicBhXkTQAafvaie3vxRmtLdXtck95OUKC8SbxMlHk4K1RNrOKk0pXK
+         4eu3w6tzQ/i3++Za1RsyOmgXQJC/zaW1Q3Zed6uvUUUr9Wwo9jK0tMecN767qf9cJARq
+         PBJu+olpBVBGJLuUix9DxFL8oQPnwA2s6eeTzLfeEeAQCMp7MIx9o4KltFMegpDVgvAX
+         DNwpm3daN4bN0q43MFjCTsJLsRK3ZOlR06g9RMHRmXAicfaUidn3OQzDQIgHE6r3TRXu
+         FB/DZJSKuXSGwrFLvvqKdLzpEckqhpVhuTrU/tni4tLO5zS2N5uJplkQH4NfNZ8DlreV
+         JKgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IIAXE27q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CIUYtFK+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ej11-20020a056102474b00b00447506544c2si1239531vsb.127.2023.08.02.10.02.26
+        by mx.google.com with ESMTPS id ea20-20020a05620a489400b0076cd5c411a0si710831qkb.241.2023.08.02.10.03.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Aug 2023 10:02:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Aug 2023 10:03:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IIAXE27q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=CIUYtFK+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qRFEh-0000PO-W0; Wed, 02 Aug 2023 13:02:12 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qRFEk-0000SS-BS; Wed, 02 Aug 2023 13:02:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qRFEe-0000NH-TG
- for qemu-arm@nongnu.org; Wed, 02 Aug 2023 13:02:10 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1qRFEh-0000Os-Pw
+ for qemu-devel@nongnu.org; Wed, 02 Aug 2023 13:02:11 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qRFEd-0003UA-2e
- for qemu-arm@nongnu.org; Wed, 02 Aug 2023 13:02:08 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-3fe24dd8898so716905e9.2
- for <qemu-arm@nongnu.org>; Wed, 02 Aug 2023 10:02:06 -0700 (PDT)
+ id 1qRFEe-0003Ue-5z
+ for qemu-devel@nongnu.org; Wed, 02 Aug 2023 13:02:11 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-3fe24dd8898so717125e9.2
+ for <qemu-devel@nongnu.org>; Wed, 02 Aug 2023 10:02:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1690995725; x=1691600525;
+ d=linaro.org; s=google; t=1690995726; x=1691600526;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Xq4dJu2qLFemtsjvmEmG9U0HnzxKpgcrkh7e2iGXkwo=;
- b=IIAXE27qu6FnXpfPbME37q9fpI8BmLW0kAwbw94Xt32DzNhSLLI/ryeGI1pVdocs6l
- I9J+Hql/DzmZgDitLjw+sAryGxkl/U+QHwt1rNiDuVouslSSvwLfzvCPx9UesBbKFODL
- Maa0Xej6Yd6WGZSvNN7YKurRqMqp9wlcsRykIHIaB1dyjgeu1X25hsCr5AL3hog9rXmb
- PRVjt9xu4gV+NWWK0015w2ZqMayqyE2hn2A+L+8ZdOaciMckmzailo3OSZWx30FA2lMq
- mocIba8mRCTwZQ7tyL1r1Z5QAjTaZ4VOPFVJ+FDBhZZ4dfKA5/pX+Zwmv3GnuFA0rhLx
- /bJA==
+ bh=xA8fBj98FjuofQKoymExQL2re0GZGratjLN/CLg4U2g=;
+ b=CIUYtFK+LGslO5DhCEXYn3NGtj1MoQSRSRiUvghW+uxhuaz7AYNge+JOZH9GGS8qmQ
+ js61+6b/qKHhq1bbBkGatV5MXO696kanXq9HjnoL51ERgJNYapkGzHnMDNKxQDdezTFD
+ oTiolJQ2bbNFFBSRB3jY07dUK+/83OMZZ0k/2xWivEO03rjdyhINbR2IkJghN0ToaAMF
+ E7H2M3WL0c0Tqcc4XIhkjZ9vdnoWZgHEBSJsN8PNaXatB9cxcIkCT7NanKJtTAPVVPti
+ oP0CiHAIWL2tyYrCryfkTFI7JdibayCR4EZV7j+v5lKSpPZUw92U/xJlNHvAwDE3XBBR
+ N8tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690995725; x=1691600525;
+ d=1e100.net; s=20221208; t=1690995726; x=1691600526;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Xq4dJu2qLFemtsjvmEmG9U0HnzxKpgcrkh7e2iGXkwo=;
- b=JFLLoj9Rz2B6arPKU73N/OFrj23yDMw6wPgayYHqYomhBHuomFwuFaIMsacsDYqYM4
- Mv1H9WIsgnfRjp/9norC0yNzpWy7sPFWWb+P6oTZBk24c3ItPa3uc787YqRdNwhSI6w+
- RwDbikUbtx6YFVB0SxXrQFMsBUndC2LooxPfCHF8jvuqfPFH5RTy4v3O5E75yqFm0XPJ
- y7bwyFZbrBO/CG6XfZ+hcC9K0roaxTOTnLwEtt+ej37vIYxQ2KmXRvgJLykBiTt2wQRX
- ruwEzf9iSuSOqwaeFWwde0lZBW6UawOym8a6YS6K2ynCY46NfNNotwUe4C7hG7tGkUrC
- VY6g==
-X-Gm-Message-State: ABy/qLbGprTFM6BuJvh8Q/VkimMJdUKmgLU5th9pSfFzsuLv/LxA4U7q
- 9Zg6cIc3MyfZ1HoSjjBrTixEmA==
-X-Received: by 2002:a05:600c:281:b0:3fb:dff2:9f17 with SMTP id
- 1-20020a05600c028100b003fbdff29f17mr5373883wmk.15.1690995725356; 
- Wed, 02 Aug 2023 10:02:05 -0700 (PDT)
+ bh=xA8fBj98FjuofQKoymExQL2re0GZGratjLN/CLg4U2g=;
+ b=TBLAPzwJea1xxREKNUWNLTuqFC1u43J7LVVATGcs68ki/jyxpD7FfVaqPx1jPsUAah
+ zKTqe2bUsAOj/K2IxSKRNi63mID+p4scKsq+pn28OqeCKuHVZ+Qi5W+rY62NK+nkFTgj
+ yRHkhoEzFjuHpySMd1qicbpIeckum5OKvCAjiFMTJVriy7iv7Xh0jTDru41oHBjEzN5s
+ 9tNZ1n89q1lU6oQFg0RDaJ782lF10tmVHGCu11xOQAZexdc9gK7hy1gZ2EU69Oq+HD7Q
+ aLvfGL7DV4y1lr22cCUIG1JSd+3WHHkaVT26aKFMSsOSgUYo37yiBkTF0wHUgovrJKOA
+ SXfA==
+X-Gm-Message-State: ABy/qLa87F6YVBbOpaKE9yBulD2tUFmIT0v7C9s65pcrtRO/XI/z/ZBT
+ 31qIM1us5VyXuaGz6h7+i1Z7VA==
+X-Received: by 2002:a05:600c:3657:b0:3fe:1287:d2a0 with SMTP id
+ y23-20020a05600c365700b003fe1287d2a0mr5037476wmq.21.1690995726652; 
+ Wed, 02 Aug 2023 10:02:06 -0700 (PDT)
 Received: from localhost.localdomain ([2.219.138.198])
  by smtp.gmail.com with ESMTPSA id
- q7-20020a1cf307000000b003fa98908014sm2149081wmq.8.2023.08.02.10.02.04
+ q7-20020a1cf307000000b003fa98908014sm2149081wmq.8.2023.08.02.10.02.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Aug 2023 10:02:05 -0700 (PDT)
+ Wed, 02 Aug 2023 10:02:06 -0700 (PDT)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 2/6] target/arm/helper: Fix tlbmask and tlbbits for TLBI
- VAE2*
-Date: Wed,  2 Aug 2023 18:01:53 +0100
-Message-ID: <20230802170157.401491-3-jean-philippe@linaro.org>
+Subject: [PATCH v2 4/6] target/arm: Pass security space rather than flag for
+ AT instructions
+Date: Wed,  2 Aug 2023 18:01:55 +0100
+Message-ID: <20230802170157.401491-5-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230802170157.401491-1-jean-philippe@linaro.org>
 References: <20230802170157.401491-1-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XY5+O2GUVhs2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: H80YG4EMq7j9
 
-When HCR_EL2.E2H is enabled, TLB entries are formed using the EL2&0
-translation regime, instead of the EL2 translation regime. The TLB VAE2*
-instructions invalidate the regime that corresponds to the current value
-of HCR_EL2.E2H.
+At the moment we only handle Secure and Nonsecure security spaces for
+the AT instructions. Add support for Realm and Root.
 
-At the moment we only invalidate the EL2 translation regime. This causes
-problems with RMM, which issues TLBI VAE2IS instructions with
-HCR_EL2.E2H enabled. Update vae2_tlbmask() to take HCR_EL2.E2H into
-account.
+For AArch64, arm_security_space() gives the desired space. ARM DDI0487J
+says (R_NYXTL):
 
-Add vae2_tlbbits() as well, since the top-byte-ignore configuration is
-different between the EL2&0 and EL2 regime.
+  If EL3 is implemented, then when an address translation instruction
+  that applies to an Exception level lower than EL3 is executed, the
+  Effective value of SCR_EL3.{NSE, NS} determines the target Security
+  state that the instruction applies to.
+
+For AArch32, some instructions can access NonSecure space from Secure,
+so we still need to pass the state explicitly to do_ats_write().
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 50 ++++++++++++++++++++++++++++++++++++---------
- 1 file changed, 40 insertions(+), 10 deletions(-)
+ target/arm/internals.h | 18 +++++++++---------
+ target/arm/helper.c    | 27 ++++++++++++---------------
+ target/arm/ptw.c       | 12 ++++++------
+ 3 files changed, 27 insertions(+), 30 deletions(-)
 
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index fc90c364f7..cf13bb94f5 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1217,24 +1217,24 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+     __attribute__((nonnull));
+ 
+ /**
+- * get_phys_addr_with_secure_nogpc: get the physical address for a virtual
+- *                                  address
++ * get_phys_addr_with_space_nogpc: get the physical address for a virtual
++ *                                 address
+  * @env: CPUARMState
+  * @address: virtual address to get physical address for
+  * @access_type: 0 for read, 1 for write, 2 for execute
+  * @mmu_idx: MMU index indicating required translation regime
+- * @is_secure: security state for the access
++ * @space: security space for the access
+  * @result: set on translation success.
+  * @fi: set to fault info if the translation fails
+  *
+- * Similar to get_phys_addr, but use the given security regime and don't perform
++ * Similar to get_phys_addr, but use the given security space and don't perform
+  * a Granule Protection Check on the resulting address.
+  */
+-bool get_phys_addr_with_secure_nogpc(CPUARMState *env, target_ulong address,
+-                                     MMUAccessType access_type,
+-                                     ARMMMUIdx mmu_idx, bool is_secure,
+-                                     GetPhysAddrResult *result,
+-                                     ARMMMUFaultInfo *fi)
++bool get_phys_addr_with_space_nogpc(CPUARMState *env, target_ulong address,
++                                    MMUAccessType access_type,
++                                    ARMMMUIdx mmu_idx, ARMSecuritySpace space,
++                                    GetPhysAddrResult *result,
++                                    ARMMMUFaultInfo *fi)
+     __attribute__((nonnull));
+ 
+ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2959d27543..a4c2c1bde5 100644
+index 427de6bd2a..fbb03c364b 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -4663,6 +4663,21 @@ static int vae1_tlbmask(CPUARMState *env)
-     return mask;
- }
+@@ -3357,7 +3357,7 @@ static int par_el1_shareability(GetPhysAddrResult *res)
  
-+static int vae2_tlbmask(CPUARMState *env)
-+{
-+    uint64_t hcr = arm_hcr_el2_eff(env);
-+    uint16_t mask;
-+
-+    if (hcr & HCR_E2H) {
-+        mask = ARMMMUIdxBit_E20_2 |
-+               ARMMMUIdxBit_E20_2_PAN |
-+               ARMMMUIdxBit_E20_0;
-+    } else {
-+        mask = ARMMMUIdxBit_E2;
-+    }
-+    return mask;
-+}
-+
- /* Return 56 if TBI is enabled, 64 otherwise. */
- static int tlbbits_for_regime(CPUARMState *env, ARMMMUIdx mmu_idx,
-                               uint64_t addr)
-@@ -4689,6 +4704,25 @@ static int vae1_tlbbits(CPUARMState *env, uint64_t addr)
-     return tlbbits_for_regime(env, mmu_idx, addr);
- }
- 
-+static int vae2_tlbbits(CPUARMState *env, uint64_t addr)
-+{
-+    uint64_t hcr = arm_hcr_el2_eff(env);
-+    ARMMMUIdx mmu_idx;
-+
-+    /*
-+     * Only the regime of the mmu_idx below is significant.
-+     * Regime EL2&0 has two ranges with separate TBI configuration, while EL2
-+     * only has one.
-+     */
-+    if (hcr & HCR_E2H) {
-+        mmu_idx = ARMMMUIdx_E20_2;
-+    } else {
-+        mmu_idx = ARMMMUIdx_E2;
-+    }
-+
-+    return tlbbits_for_regime(env, mmu_idx, addr);
-+}
-+
- static void tlbi_aa64_vmalle1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                       uint64_t value)
+ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+                              MMUAccessType access_type, ARMMMUIdx mmu_idx,
+-                             bool is_secure)
++                             ARMSecuritySpace ss)
  {
-@@ -4781,10 +4815,11 @@ static void tlbi_aa64_vae2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-      * flush-last-level-only.
+     bool ret;
+     uint64_t par64;
+@@ -3369,8 +3369,8 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+      * I_MXTJT: Granule protection checks are not performed on the final address
+      * of a successful translation.
       */
-     CPUState *cs = env_cpu(env);
--    int mask = e2_tlbmask(env);
-+    int mask = vae2_tlbmask(env);
-     uint64_t pageaddr = sextract64(value << 12, 0, 56);
-+    int bits = vae2_tlbbits(env, pageaddr);
+-    ret = get_phys_addr_with_secure_nogpc(env, value, access_type, mmu_idx,
+-                                          is_secure, &res, &fi);
++    ret = get_phys_addr_with_space_nogpc(env, value, access_type, mmu_idx, ss,
++                                         &res, &fi);
  
--    tlb_flush_page_by_mmuidx(cs, pageaddr, mask);
-+    tlb_flush_page_bits_by_mmuidx(cs, pageaddr, mask, bits);
+     /*
+      * ATS operations only do S1 or S1+S2 translations, so we never
+@@ -3535,7 +3535,7 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+     uint64_t par64;
+     ARMMMUIdx mmu_idx;
+     int el = arm_current_el(env);
+-    bool secure = arm_is_secure_below_el3(env);
++    ARMSecuritySpace ss = arm_security_space(env);
+ 
+     switch (ri->opc2 & 6) {
+     case 0:
+@@ -3543,10 +3543,9 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+         switch (el) {
+         case 3:
+             mmu_idx = ARMMMUIdx_E3;
+-            secure = true;
+             break;
+         case 2:
+-            g_assert(!secure);  /* ARMv8.4-SecEL2 is 64-bit only */
++            g_assert(ss != ARMSS_Secure);  /* ARMv8.4-SecEL2 is 64-bit only */
+             /* fall through */
+         case 1:
+             if (ri->crm == 9 && (env->uncached_cpsr & CPSR_PAN)) {
+@@ -3564,10 +3563,9 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+         switch (el) {
+         case 3:
+             mmu_idx = ARMMMUIdx_E10_0;
+-            secure = true;
+             break;
+         case 2:
+-            g_assert(!secure);  /* ARMv8.4-SecEL2 is 64-bit only */
++            g_assert(ss != ARMSS_Secure);  /* ARMv8.4-SecEL2 is 64-bit only */
+             mmu_idx = ARMMMUIdx_Stage1_E0;
+             break;
+         case 1:
+@@ -3580,18 +3578,18 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+     case 4:
+         /* stage 1+2 NonSecure PL1: ATS12NSOPR, ATS12NSOPW */
+         mmu_idx = ARMMMUIdx_E10_1;
+-        secure = false;
++        ss = ARMSS_NonSecure;
+         break;
+     case 6:
+         /* stage 1+2 NonSecure PL0: ATS12NSOUR, ATS12NSOUW */
+         mmu_idx = ARMMMUIdx_E10_0;
+-        secure = false;
++        ss = ARMSS_NonSecure;
+         break;
+     default:
+         g_assert_not_reached();
+     }
+ 
+-    par64 = do_ats_write(env, value, access_type, mmu_idx, secure);
++    par64 = do_ats_write(env, value, access_type, mmu_idx, ss);
+ 
+     A32_BANKED_CURRENT_REG_SET(env, par, par64);
+ #else
+@@ -3608,7 +3606,8 @@ static void ats1h_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     uint64_t par64;
+ 
+     /* There is no SecureEL2 for AArch32. */
+-    par64 = do_ats_write(env, value, access_type, ARMMMUIdx_E2, false);
++    par64 = do_ats_write(env, value, access_type, ARMMMUIdx_E2,
++                         ARMSS_NonSecure);
+ 
+     A32_BANKED_CURRENT_REG_SET(env, par, par64);
+ #else
+@@ -3633,7 +3632,6 @@ static void ats_write64(CPUARMState *env, const ARMCPRegInfo *ri,
+ #ifdef CONFIG_TCG
+     MMUAccessType access_type = ri->opc2 & 1 ? MMU_DATA_STORE : MMU_DATA_LOAD;
+     ARMMMUIdx mmu_idx;
+-    int secure = arm_is_secure_below_el3(env);
+     uint64_t hcr_el2 = arm_hcr_el2_eff(env);
+     bool regime_e20 = (hcr_el2 & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE);
+ 
+@@ -3653,7 +3651,6 @@ static void ats_write64(CPUARMState *env, const ARMCPRegInfo *ri,
+             break;
+         case 6: /* AT S1E3R, AT S1E3W */
+             mmu_idx = ARMMMUIdx_E3;
+-            secure = true;
+             break;
+         default:
+             g_assert_not_reached();
+@@ -3673,7 +3670,7 @@ static void ats_write64(CPUARMState *env, const ARMCPRegInfo *ri,
+     }
+ 
+     env->cp15.par_el[1] = do_ats_write(env, value, access_type,
+-                                       mmu_idx, secure);
++                                       mmu_idx, arm_security_space(env));
+ #else
+     /* Handled by hardware accelerator. */
+     g_assert_not_reached();
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 33179f3471..6c5ecd37cd 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -3418,15 +3418,15 @@ static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
+     return false;
  }
  
- static void tlbi_aa64_vae3_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -4838,11 +4873,11 @@ static void tlbi_aa64_vae2is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    uint64_t value)
+-bool get_phys_addr_with_secure_nogpc(CPUARMState *env, target_ulong address,
+-                                     MMUAccessType access_type,
+-                                     ARMMMUIdx mmu_idx, bool is_secure,
+-                                     GetPhysAddrResult *result,
+-                                     ARMMMUFaultInfo *fi)
++bool get_phys_addr_with_space_nogpc(CPUARMState *env, target_ulong address,
++                                    MMUAccessType access_type,
++                                    ARMMMUIdx mmu_idx, ARMSecuritySpace space,
++                                    GetPhysAddrResult *result,
++                                    ARMMMUFaultInfo *fi)
  {
-     CPUState *cs = env_cpu(env);
-+    int mask = vae2_tlbmask(env);
-     uint64_t pageaddr = sextract64(value << 12, 0, 56);
--    int bits = tlbbits_for_regime(env, ARMMMUIdx_E2, pageaddr);
-+    int bits = vae2_tlbbits(env, pageaddr);
- 
--    tlb_flush_page_bits_by_mmuidx_all_cpus_synced(cs, pageaddr,
--                                                  ARMMMUIdxBit_E2, bits);
-+    tlb_flush_page_bits_by_mmuidx_all_cpus_synced(cs, pageaddr, mask, bits);
+     S1Translate ptw = {
+         .in_mmu_idx = mmu_idx,
+-        .in_space = arm_secure_to_space(is_secure),
++        .in_space = space,
+     };
+     return get_phys_addr_nogpc(env, &ptw, address, access_type, result, fi);
  }
- 
- static void tlbi_aa64_vae3is_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -5014,11 +5049,6 @@ static void tlbi_aa64_rvae1is_write(CPUARMState *env,
-     do_rvae_write(env, value, vae1_tlbmask(env), true);
- }
- 
--static int vae2_tlbmask(CPUARMState *env)
--{
--    return ARMMMUIdxBit_E2;
--}
--
- static void tlbi_aa64_rvae2_write(CPUARMState *env,
-                                   const ARMCPRegInfo *ri,
-                                   uint64_t value)
 -- 
 2.41.0
 

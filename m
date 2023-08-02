@@ -1,128 +1,76 @@
-Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp595870ejb;
-        Wed, 2 Aug 2023 13:04:09 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEBYPFcSV5qOa72PeHJ7uCU1K1wcmrmVCsxNLo0W6AXdrh3UCvTRI3AjM+er6QZeIUX2Yni
-X-Received: by 2002:a05:620a:121b:b0:76c:6f89:e5f1 with SMTP id u27-20020a05620a121b00b0076c6f89e5f1mr17740302qkj.18.1691006649171;
-        Wed, 02 Aug 2023 13:04:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691006649; cv=none;
+Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp623960ejb;
+        Wed, 2 Aug 2023 14:08:43 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGzJxidwpwTYqku0i3OhSkh2Prvt0AVapksABsdqUfAQ1nZHpOk8ml4b3MyzI+VYd9f93v7
+X-Received: by 2002:a67:fd48:0:b0:447:68d1:270c with SMTP id g8-20020a67fd48000000b0044768d1270cmr5632173vsr.22.1691010523122;
+        Wed, 02 Aug 2023 14:08:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691010523; cv=none;
         d=google.com; s=arc-20160816;
-        b=YpHEZAfXVxrDUrvrOiJgfFEui+hGl19wi5baLQeGr52v2dY4g4qlCDMxtBjD0GW1HT
-         Sc09nldjdspcTWJrO0JVWW+Vzvrf2m3H3OnHCxvbzQ27fq6kaK/+Wx0kPksUxJQHg8xR
-         FBg+cZmp1zoA/ArRvqoZeEMaKlWWP+Htwm8sdtWruDwT/CAr4fgB+tPSHPd+LnmAAvbN
-         CyTerwqYFZarE1u/Pon5NbokkES4ajVxg03Nm67+02SebSXe3kzkFpMgnuE34A32XeNc
-         Ng41y56oMQbSNIqdsb/3d2MMeSA0uQKCmuv07LEeOaBCPlVB+elHm18rnCf8wYBxzI0y
-         vjWg==
+        b=iqllXRCbov9Vctdn1z4CR1SnCaB/i9SQ8lGSpfvLLRfv32jHprzeM2W6N3Yyl110Ag
+         Ttimamxrz9dTL02R6tVVRIq8p8gcWJXdk0Ox0OZa5XelHI2/b3jYhvzY3IQ3cbIKy8Ua
+         3IndvrIJQzI/qgwD1kaDt9OKYU8x9bpIvzRYGpEqiadB4esaVu3wMK9fSWQjdgkDW0Ud
+         +NAg+3MkvvVDTpyhWq874BBJUazC24Z3GD7oUL+9e6P9IkIIH0LgzN+mB+/BRSel35k1
+         EK1bbOPz7ovj6+s5RfJ6Re1hy+pstG+YETmHead6C9TeNsPVXIIN8id7Biu5guK3wJpl
+         Txvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:content-language
-         :accept-language:message-id:date:thread-index:thread-topic:subject
-         :to:from:dkim-signature;
-        bh=BNgzD4jjIJyoBNHAX+Nm9FQyHv/N12u9iQos8WHZvBw=;
-        fh=wTuZIrxLcWc+8gegFLTD0CSAaLr16AiWkokK+KQeIXI=;
-        b=J72NEAa7ab4jNafnyo8QZnRo28Zws7LjIqk2CWshjvVf9/JMsE3X6T4TsHKh+5e+sr
-         LQsmvB1ufjUZH2hufT8VgRUBbTRsQKW8MLOuJL8ICvXGJzCQL8tVPzDqrHPMquX0vNhm
-         SS3xcDAx1o/FLBlsMDIlRQBb1QKLr95QEJQlulssmxIRnAAcVuACgf+aCBJLQ2dsP6mm
-         cM6SLI7gPScgKjJ4jrpgakLBO2ZDyT/pV/vfnyHoOON8SqorJlCSNFB7Fvc1z/y8HI2Q
-         lLZn8E6Lmms1X7Gdh9ihFULj/+2YnGw2pburqZSjLSJs9FnoiAK2F216tHz+DMZKdbk3
-         Ugmw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=NEk2bMA1TwPoTywK9E7dafq5frT0d7FhchfTuREoAhA=;
+        fh=+WBZG3uX9FXOqUEW7dRrAA3LgeoMrjfTvks8rWRkhTI=;
+        b=UK+56mUxuvuLEh4BT5SToO7sg1GpbmxGD5pkl92ilWPsO8RxS0Oiy3q7+1XuFrtlSJ
+         /9WYMjHbSKZmeDdtHcGNDPE4nbFXYg7oru0+VD5RcXZ7Afj7ZPCpbtQBE43uYIYjE9LN
+         53qF1H8U7SSMScz72m5/zJhCEy1phxQyzvONNLbeq17h/x7IwBrthqxXOyiLwfweekDr
+         DZmA6vRP0i7KgOtIjcG2dhALJOBfCZH+d0LI9jdpnrwPcy1CjXFZsm6/I8OLleIF/qV1
+         FRaJtVbWKSKT0VJqx9KCzFAn8RYKdKkwLdVa1boMD5lQi5PW1XP5YF8yOr35YYtSAcnw
+         bvXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=PS5vuKcF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v3-20020a379303000000b00767dcd66303si8673565qkd.20.2023.08.02.13.04.08
+        by mx.google.com with ESMTPS id i16-20020a05620a249000b00767205c4ddbsi422507qkn.332.2023.08.02.14.08.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Aug 2023 13:04:09 -0700 (PDT)
+        Wed, 02 Aug 2023 14:08:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=PS5vuKcF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qRI4X-00006X-Nf; Wed, 02 Aug 2023 16:03:53 -0400
+	id 1qRJ5B-000428-3i; Wed, 02 Aug 2023 17:08:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_chadk@quicinc.com>)
- id 1qRHTK-0008Fk-SU
- for qemu-arm@nongnu.org; Wed, 02 Aug 2023 15:25:27 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
+ id 1qRJ5A-00041w-BI; Wed, 02 Aug 2023 17:08:36 -0400
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_chadk@quicinc.com>)
- id 1qRHTI-000631-Oo
- for qemu-arm@nongnu.org; Wed, 02 Aug 2023 15:25:26 -0400
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 372HattF032466
- for <qemu-arm@nongnu.org>; Wed, 2 Aug 2023 19:25:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
- h=from : to : subject
- : date : message-id : content-type : mime-version; s=qcppdkim1;
- bh=BNgzD4jjIJyoBNHAX+Nm9FQyHv/N12u9iQos8WHZvBw=;
- b=PS5vuKcFlOOn6JptGEfuha3te3dvjeKaCrY8pcG7mRT713XrEYT65TZGwbXik6MlWKLa
- o4Nabu6RJk7fkv9ITgLWNyWK/2W3J9X9+uL5NRgVRq1eUEt5gv8qplPtwBji19y4o0Y9
- 23xEyA5VpGZsGKRAUofLC5GmqWnGDqQtFHYj7DsYvNGi2s/Glx5UXECgBRDvqmvDlK+y
- Hoc2QfKuK2GX4HePZtFn/8EiPUnZptkajCzF0Phfj4fQWmCt6ci6Pkx9oIF+D4DG7dEj
- pDv7jEz9LX3Xtnaezu8a6Hu2jL6Ir+TAbeasKNCLVazacr4G2PKpgvS90TVjzbT73v6i ag== 
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com
- [199.106.103.254])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3s7upp08r4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 02 Aug 2023 19:25:20 +0000
-Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com
- [10.52.223.231])
- by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 372JPJig018602
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 2 Aug 2023 19:25:19 GMT
-Received: from nasanex01a.na.qualcomm.com (10.52.223.231) by
- nasanex01a.na.qualcomm.com (10.52.223.231) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.30; Wed, 2 Aug 2023 12:25:18 -0700
-Received: from nasanex01a.na.qualcomm.com ([fe80::482d:250d:70b6:e1c5]) by
- nasanex01a.na.qualcomm.com ([fe80::482d:250d:70b6:e1c5%12]) with mapi id
- 15.02.1118.030; Wed, 2 Aug 2023 12:25:18 -0700
-From: "Chad Karaginides (QUIC)" <quic_chadk@quicinc.com>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: ARM64 EL3 Exception SP_EL3 Issue?
-Thread-Topic: ARM64 EL3 Exception SP_EL3 Issue?
-Thread-Index: AdnFdhwK+23wUfZ8QmKETJsE742LSw==
-Date: Wed, 2 Aug 2023 19:25:18 +0000
-Message-ID: <6b1211f5bb004b12a57c142b54fa82a3@quicinc.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.110.78.4]
-Content-Type: multipart/alternative;
- boundary="_000_6b1211f5bb004b12a57c142b54fa82a3quicinccom_"
+ (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
+ id 1qRJ58-0007PM-2C; Wed, 02 Aug 2023 17:08:36 -0400
+Received: by mail.gandi.net (Postfix) with ESMTPSA id AD5AAFF803;
+ Wed,  2 Aug 2023 21:08:31 +0000 (UTC)
+From: Jean-Christophe Dubois <jcd@tribudubois.net>
+To: qemu-arm@nongnu.org
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
+	qemu-devel@nongnu.org
+Subject: [PATCH v3 5/5] Add i.MX7 SRC device implementation
+Date: Wed,  2 Aug 2023 23:08:08 +0200
+Message-Id: <0f53f1ec92eebc4cfa7acd6b170a9d1f6ef754b1.1691010283.git.jcd@tribudubois.net>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <cover.1691010283.git.jcd@tribudubois.net>
+References: <cover.1691010283.git.jcd@tribudubois.net>
 MIME-Version: 1.0
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-GUID: bBn-wOMOXWDbYshV5DLRK_4yk-YcXBVL
-X-Proofpoint-ORIG-GUID: bBn-wOMOXWDbYshV5DLRK_4yk-YcXBVL
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-08-02_16,2023-08-01_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 clxscore=1011
- malwarescore=0 spamscore=0 lowpriorityscore=0 mlxlogscore=781 bulkscore=0
- impostorscore=0 priorityscore=1501 adultscore=0 mlxscore=0 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2306200000
- definitions=main-2308020170
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=quic_chadk@quicinc.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-GND-Sasl: jcd@tribudubois.net
+Received-SPF: pass client-ip=2001:4b98:dc4:8::229;
+ envelope-from=jcd@tribudubois.net; helo=relay9-d.mail.gandi.net
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 02 Aug 2023 16:03:51 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,90 +84,461 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 756nnJB9U839
+X-TUID: ZlB+vanH4jej
 
---_000_6b1211f5bb004b12a57c142b54fa82a3quicinccom_
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+The SRC device is normaly used to start the secondary CPU.
 
-Hello,
+When running Linux directly, Qemu is emulating a PSCI interface that UBOOT
+is installing at boot time and therefore the fact that the SRC device is
+unimplemented is hidden as Qemu respond directly to PSCI requets without
+using the SRC device.
 
-I am executing the Zephyr RTOS on a QEMU A53 core with Trace32 as the front=
-end.  I am seeing a behavior difference between the QEMU A53 core and real =
-hardware.  Execution is in EL1h and an SMC call is made.  Execution transit=
-ions to EL3h but the EL1 stack pointer is not propagated to SP_EL3.  Is thi=
-s a potential bug or is this functionality covered in a test case somewhere=
-?  If it is a bug I have no problem diving in and trying to help fix it.  I=
- am new to QEMU but willing to help.  Just wanted to make sure I am not doi=
-ng something wrong first.
+But if you try to run a more bare metal application (maybe uboot itself),
+then it is not possible to start the secondary CPU as the SRC is an
+unimplemented device.
 
-Thank you in advance,
-Chad
+This patch adds the ability to start the secondary CPU through the SRC
+device so that you can use this feature in bare metal application.
 
---_000_6b1211f5bb004b12a57c142b54fa82a3quicinccom_
-Content-Type: text/html; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
+---
+ hw/arm/fsl-imx7.c          |   8 +-
+ hw/misc/imx7_src.c         | 276 +++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build        |   1 +
+ hw/misc/trace-events       |   4 +
+ include/hw/arm/fsl-imx7.h  |   2 +
+ include/hw/misc/imx7_src.h |  66 +++++++++
+ 6 files changed, 356 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/imx7_src.c
+ create mode 100644 include/hw/misc/imx7_src.h
 
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
-//www.w3.org/TR/REC-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
->
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0in;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-ligatures:standardcontextual;}
-span.EmailStyle17
-	{mso-style-type:personal-compose;
-	font-family:"Calibri",sans-serif;
-	color:windowtext;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-family:"Calibri",sans-serif;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-	{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]-->
-</head>
-<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72" style=3D"word-wrap:=
-break-word">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal">Hello,<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">I am executing the Zephyr RTOS on a QEMU A53 core wi=
-th Trace32 as the frontend.&nbsp; I am seeing a behavior difference between=
- the QEMU A53 core and real hardware.&nbsp; Execution is in EL1h and an SMC=
- call is made.&nbsp; Execution transitions to EL3h
- but the EL1 stack pointer is not propagated to SP_EL3.&nbsp; Is this a pot=
-ential bug or is this functionality covered in a test case somewhere?&nbsp;=
- If it is a bug I have no problem diving in and trying to help fix it.&nbsp=
-; I am new to QEMU but willing to help.&nbsp; Just wanted
- to make sure I am not doing something wrong first.<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">Thank you in advance,<o:p></o:p></p>
-<p class=3D"MsoNormal">Chad<o:p></o:p></p>
-</div>
-</body>
-</html>
+diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+index 7ca105fd24..e7fe4f808e 100644
+--- a/hw/arm/fsl-imx7.c
++++ b/hw/arm/fsl-imx7.c
+@@ -82,6 +82,11 @@ static void fsl_imx7_init(Object *obj)
+      */
+     object_initialize_child(obj, "gpcv2", &s->gpcv2, TYPE_IMX_GPCV2);
+ 
++    /*
++     * SRC
++     */
++    object_initialize_child(obj, "src", &s->src, TYPE_IMX7_SRC);
++
+     /*
+      * ECSPIs
+      */
+@@ -490,7 +495,8 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+     /*
+      * SRC
+      */
+-    create_unimplemented_device("src", FSL_IMX7_SRC_ADDR, FSL_IMX7_SRC_SIZE);
++    sysbus_realize(SYS_BUS_DEVICE(&s->src), &error_abort);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->src), 0, FSL_IMX7_SRC_ADDR);
+ 
+     /*
+      * Watchdogs
+diff --git a/hw/misc/imx7_src.c b/hw/misc/imx7_src.c
+new file mode 100644
+index 0000000000..983251e86f
+--- /dev/null
++++ b/hw/misc/imx7_src.c
+@@ -0,0 +1,276 @@
++/*
++ * IMX7 System Reset Controller
++ *
++ * Copyright (c) 2023 Jean-Christophe Dubois <jcd@tribudubois.net>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ *
++ */
++
++#include "qemu/osdep.h"
++#include "hw/misc/imx7_src.h"
++#include "migration/vmstate.h"
++#include "qemu/bitops.h"
++#include "qemu/log.h"
++#include "qemu/main-loop.h"
++#include "qemu/module.h"
++#include "target/arm/arm-powerctl.h"
++#include "hw/core/cpu.h"
++#include "hw/registerfields.h"
++
++#include "trace.h"
++
++static const char *imx7_src_reg_name(uint32_t reg)
++{
++    static char unknown[20];
++
++    switch (reg) {
++    case SRC_SCR:
++        return "SRC_SCR";
++    case SRC_A7RCR0:
++        return "SRC_A7RCR0";
++    case SRC_A7RCR1:
++        return "SRC_A7RCR1";
++    case SRC_M4RCR:
++        return "SRC_M4RCR";
++    case SRC_ERCR:
++        return "SRC_ERCR";
++    case SRC_HSICPHY_RCR:
++        return "SRC_HSICPHY_RCR";
++    case SRC_USBOPHY1_RCR:
++        return "SRC_USBOPHY1_RCR";
++    case SRC_USBOPHY2_RCR:
++        return "SRC_USBOPHY2_RCR";
++    case SRC_PCIEPHY_RCR:
++        return "SRC_PCIEPHY_RCR";
++    case SRC_SBMR1:
++        return "SRC_SBMR1";
++    case SRC_SRSR:
++        return "SRC_SRSR";
++    case SRC_SISR:
++        return "SRC_SISR";
++    case SRC_SIMR:
++        return "SRC_SIMR";
++    case SRC_SBMR2:
++        return "SRC_SBMR2";
++    case SRC_GPR1:
++        return "SRC_GPR1";
++    case SRC_GPR2:
++        return "SRC_GPR2";
++    case SRC_GPR3:
++        return "SRC_GPR3";
++    case SRC_GPR4:
++        return "SRC_GPR4";
++    case SRC_GPR5:
++        return "SRC_GPR5";
++    case SRC_GPR6:
++        return "SRC_GPR6";
++    case SRC_GPR7:
++        return "SRC_GPR7";
++    case SRC_GPR8:
++        return "SRC_GPR8";
++    case SRC_GPR9:
++        return "SRC_GPR9";
++    case SRC_GPR10:
++        return "SRC_GPR10";
++    default:
++        sprintf(unknown, "%u ?", reg);
++        return unknown;
++    }
++}
++
++static const VMStateDescription vmstate_imx7_src = {
++    .name = TYPE_IMX7_SRC,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, IMX7SRCState, SRC_MAX),
++        VMSTATE_END_OF_LIST()
++    },
++};
++
++static void imx7_src_reset(DeviceState *dev)
++{
++    IMX7SRCState *s = IMX7_SRC(dev);
++
++    memset(s->regs, 0, sizeof(s->regs));
++
++    /* Set reset values */
++    s->regs[SRC_SCR] = 0xA0;
++    s->regs[SRC_SRSR] = 0x1;
++    s->regs[SRC_SIMR] = 0x1F;
++}
++
++static uint64_t imx7_src_read(void *opaque, hwaddr offset, unsigned size)
++{
++    uint32_t value = 0;
++    IMX7SRCState *s = (IMX7SRCState *)opaque;
++    uint32_t index = offset >> 2;
++
++    if (index < SRC_MAX) {
++        value = s->regs[index];
++    } else {
++        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
++                      HWADDR_PRIx "\n", TYPE_IMX7_SRC, __func__, offset);
++    }
++
++    trace_imx7_src_read(imx7_src_reg_name(index), value);
++
++    return value;
++}
++
++
++/*
++ * The reset is asynchronous so we need to defer clearing the reset
++ * bit until the work is completed.
++ */
++
++struct SRCSCRResetInfo {
++    IMX7SRCState *s;
++    uint32_t reset_bit;
++};
++
++static void imx7_clear_reset_bit(CPUState *cpu, run_on_cpu_data data)
++{
++    struct SRCSCRResetInfo *ri = data.host_ptr;
++    IMX7SRCState *s = ri->s;
++
++    assert(qemu_mutex_iothread_locked());
++
++    s->regs[SRC_A7RCR0] = deposit32(s->regs[SRC_A7RCR0], ri->reset_bit, 1, 0);
++
++    trace_imx7_src_write(imx7_src_reg_name(SRC_A7RCR0), s->regs[SRC_A7RCR0]);
++
++    g_free(ri);
++}
++
++static void imx7_defer_clear_reset_bit(uint32_t cpuid,
++                                       IMX7SRCState *s,
++                                       uint32_t reset_shift)
++{
++    struct SRCSCRResetInfo *ri;
++    CPUState *cpu = arm_get_cpu_by_id(cpuid);
++
++    if (!cpu) {
++        return;
++    }
++
++    ri = g_new(struct SRCSCRResetInfo, 1);
++    ri->s = s;
++    ri->reset_bit = reset_shift;
++
++    async_run_on_cpu(cpu, imx7_clear_reset_bit, RUN_ON_CPU_HOST_PTR(ri));
++}
++
++
++static void imx7_src_write(void *opaque, hwaddr offset, uint64_t value,
++                           unsigned size)
++{
++    IMX7SRCState *s = (IMX7SRCState *)opaque;
++    uint32_t index = offset >> 2;
++    long unsigned int change_mask;
++    uint32_t current_value = value;
++
++    if (index >= SRC_MAX) {
++        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
++                      HWADDR_PRIx "\n", TYPE_IMX7_SRC, __func__, offset);
++        return;
++    }
++
++    trace_imx7_src_write(imx7_src_reg_name(SRC_A7RCR0), s->regs[SRC_A7RCR0]);
++
++    change_mask = s->regs[index] ^ (uint32_t)current_value;
++
++    switch (index) {
++    case SRC_A7RCR0:
++        if (FIELD_EX32(change_mask, CORE0, RST)) {
++            arm_reset_cpu(0);
++            imx7_defer_clear_reset_bit(0, s, R_CORE0_RST_SHIFT);
++        }
++        if (FIELD_EX32(change_mask, CORE1, RST)) {
++            arm_reset_cpu(1);
++            imx7_defer_clear_reset_bit(1, s, R_CORE1_RST_SHIFT);
++        }
++        s->regs[index] = current_value;
++        break;
++    case SRC_A7RCR1:
++        /*
++         * On real hardware when the system reset controller starts a
++         * secondary CPU it runs through some boot ROM code which reads
++         * the SRC_GPRX registers controlling the start address and branches
++         * to it.
++         * Here we are taking a short cut and branching directly to the
++         * requested address (we don't want to run the boot ROM code inside
++         * QEMU)
++         */
++        if (FIELD_EX32(change_mask, CORE1, ENABLE)) {
++            if (FIELD_EX32(current_value, CORE1, ENABLE)) {
++                /* CORE 1 is brought up */
++                arm_set_cpu_on(1, s->regs[SRC_GPR3], s->regs[SRC_GPR4],
++                               3, false);
++            } else {
++                /* CORE 1 is shut down */
++                arm_set_cpu_off(1);
++            }
++            /* We clear the reset bits as the processor changed state */
++            imx7_defer_clear_reset_bit(1, s, R_CORE1_RST_SHIFT);
++            clear_bit(R_CORE1_RST_SHIFT, &change_mask);
++        }
++        s->regs[index] = current_value;
++        break;
++    default:
++        s->regs[index] = current_value;
++        break;
++    }
++}
++
++static const struct MemoryRegionOps imx7_src_ops = {
++    .read = imx7_src_read,
++    .write = imx7_src_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        /*
++         * Our device would not work correctly if the guest was doing
++         * unaligned access. This might not be a limitation on the real
++         * device but in practice there is no reason for a guest to access
++         * this device unaligned.
++         */
++        .min_access_size = 4,
++        .max_access_size = 4,
++        .unaligned = false,
++    },
++};
++
++static void imx7_src_realize(DeviceState *dev, Error **errp)
++{
++    IMX7SRCState *s = IMX7_SRC(dev);
++
++    memory_region_init_io(&s->iomem, OBJECT(dev), &imx7_src_ops, s,
++                          TYPE_IMX7_SRC, 0x1000);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
++}
++
++static void imx7_src_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = imx7_src_realize;
++    dc->reset = imx7_src_reset;
++    dc->vmsd = &vmstate_imx7_src;
++    dc->desc = "i.MX6 System Reset Controller";
++}
++
++static const TypeInfo imx7_src_info = {
++    .name          = TYPE_IMX7_SRC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(IMX7SRCState),
++    .class_init    = imx7_src_class_init,
++};
++
++static void imx7_src_register_types(void)
++{
++    type_register_static(&imx7_src_info);
++}
++
++type_init(imx7_src_register_types)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 892f8b91c5..d9a370c1de 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -60,6 +60,7 @@ system_ss.add(when: 'CONFIG_IMX', if_true: files(
+   'imx6_src.c',
+   'imx6ul_ccm.c',
+   'imx7_ccm.c',
++  'imx7_src.c',
+   'imx7_gpr.c',
+   'imx7_snvs.c',
+   'imx_ccm.c',
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 4d1a0e17af..e8b2be14c0 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -199,6 +199,10 @@ ccm_clock_freq(uint32_t clock, uint32_t freq) "(Clock = %d) = %d"
+ ccm_read_reg(const char *reg_name, uint32_t value) "reg[%s] <= 0x%" PRIx32
+ ccm_write_reg(const char *reg_name, uint32_t value) "reg[%s] => 0x%" PRIx32
+ 
++# imx7_src.c
++imx7_src_read(const char *reg_name, uint32_t value) "reg[%s] => 0x%" PRIx32
++imx7_src_write(const char *reg_name, uint32_t value) "reg[%s] <= 0x%" PRIx32
++
+ # iotkit-sysinfo.c
+ iotkit_sysinfo_read(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysInfo read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ iotkit_sysinfo_write(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysInfo write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
+index 629c385987..1f11f39750 100644
+--- a/include/hw/arm/fsl-imx7.h
++++ b/include/hw/arm/fsl-imx7.h
+@@ -25,6 +25,7 @@
+ #include "hw/misc/imx7_ccm.h"
+ #include "hw/misc/imx7_snvs.h"
+ #include "hw/misc/imx7_gpr.h"
++#include "hw/misc/imx7_src.h"
+ #include "hw/watchdog/wdt_imx2.h"
+ #include "hw/gpio/imx_gpio.h"
+ #include "hw/char/imx_serial.h"
+@@ -74,6 +75,7 @@ struct FslIMX7State {
+     IMX7CCMState       ccm;
+     IMX7AnalogState    analog;
+     IMX7SNVSState      snvs;
++    IMX7SRCState       src;
+     IMXGPCv2State      gpcv2;
+     IMXSPIState        spi[FSL_IMX7_NUM_ECSPIS];
+     IMXI2CState        i2c[FSL_IMX7_NUM_I2CS];
+diff --git a/include/hw/misc/imx7_src.h b/include/hw/misc/imx7_src.h
+new file mode 100644
+index 0000000000..b4b97dcb1c
+--- /dev/null
++++ b/include/hw/misc/imx7_src.h
+@@ -0,0 +1,66 @@
++/*
++ * IMX7 System Reset Controller
++ *
++ * Copyright (C) 2023 Jean-Christophe Dubois <jcd@tribudubois.net>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef IMX7_SRC_H
++#define IMX7_SRC_H
++
++#include "hw/sysbus.h"
++#include "qemu/bitops.h"
++#include "qom/object.h"
++
++#define SRC_SCR 0
++#define SRC_A7RCR0 1
++#define SRC_A7RCR1 2
++#define SRC_M4RCR 3
++#define SRC_ERCR 5
++#define SRC_HSICPHY_RCR 7
++#define SRC_USBOPHY1_RCR 8
++#define SRC_USBOPHY2_RCR 9
++#define SRC_MPIPHY_RCR 10
++#define SRC_PCIEPHY_RCR 11
++#define SRC_SBMR1 22
++#define SRC_SRSR 23
++#define SRC_SISR 26
++#define SRC_SIMR 27
++#define SRC_SBMR2 28
++#define SRC_GPR1 29
++#define SRC_GPR2 30
++#define SRC_GPR3 31
++#define SRC_GPR4 32
++#define SRC_GPR5 33
++#define SRC_GPR6 34
++#define SRC_GPR7 35
++#define SRC_GPR8 36
++#define SRC_GPR9 37
++#define SRC_GPR10 38
++#define SRC_MAX 39
++
++/* SRC_A7SCR1 */
++#define R_CORE1_ENABLE_SHIFT     1
++#define R_CORE1_ENABLE_LENGTH    1
++/* SRC_A7SCR0 */
++#define R_CORE1_RST_SHIFT        5
++#define R_CORE1_RST_LENGTH       1
++#define R_CORE0_RST_SHIFT        4
++#define R_CORE0_RST_LENGTH       1
++
++#define TYPE_IMX7_SRC "imx7.src"
++OBJECT_DECLARE_SIMPLE_TYPE(IMX7SRCState, IMX7_SRC)
++
++struct IMX7SRCState {
++    /* <private> */
++    SysBusDevice parent_obj;
++
++    /* <public> */
++    MemoryRegion iomem;
++
++    uint32_t regs[SRC_MAX];
++};
++
++#endif /* IMX7_SRC_H */
+-- 
+2.34.1
 
---_000_6b1211f5bb004b12a57c142b54fa82a3quicinccom_--

@@ -1,69 +1,69 @@
-Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1326100ejb;
-        Thu, 3 Aug 2023 14:45:47 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEtJSag0ggZ0r+wLrS0/umjskOJdmDKoJeK/73rG+7TZShP+vXzhJEppjmXzceaDTtBBseU
-X-Received: by 2002:a05:620a:2451:b0:768:4d95:19a8 with SMTP id h17-20020a05620a245100b007684d9519a8mr24769205qkn.9.1691099147539;
-        Thu, 03 Aug 2023 14:45:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691099147; cv=none;
+Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1326142ejb;
+        Thu, 3 Aug 2023 14:45:53 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHQ4I7z5YeDA7vxR196XYxUcQBpfk4XiJnsg1aUtMRbktbeEwmuwGGRKeosWFjCjaSWa79t
+X-Received: by 2002:a05:620a:403:b0:76c:b0d2:fb75 with SMTP id 3-20020a05620a040300b0076cb0d2fb75mr12764078qkp.66.1691099153214;
+        Thu, 03 Aug 2023 14:45:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691099153; cv=none;
         d=google.com; s=arc-20160816;
-        b=bD+Oubv62V2mKaDCTJeSW85q0G8CE/IE27G/JjSMp7kkk7eVSfyO2Y1oe2oPDzhVRl
-         7VfdNKDb3BOq95/hv8MzEOZZCHHSDJ4TgiYOsUFREeV/DWDWOzapdAALqVJbSwEd33cg
-         YL0PFs8cwO0DhTXBEvPHtoeLg7o43wvD4va98BHznhclojjY935kNZ2TxIwIc1BWLT77
-         RRjP/CAOyZGoSNFN12MlwCt2FX+pvPYwUs3rugk4eym9h/02v5FvCak8cX/Kx60Wqs13
-         LkybervGmv9NLyYEb14gQg6LEOeW1giTtPqs+PoOmvDr+w7edoV4I33gqmTRKieUZt6K
-         R7hw==
+        b=Fluo6JHHgZdR3cL3dF/tZ/YA2fo1zloeYEZi2mW84OfGUxZ6IYx7132ummdXNLHRlS
+         YxNBbj+/O6xImbeZgDgJpGur2eFAKFe9sBGWdlbwsWJqzohzRiI57S30My/x6XBci75p
+         ECJY0PjOaD8BQ5Om0pYeempjzg5nrlOmf/+yd8KZo1SV2Fm+36hnbQZxPeWoezN4qIgk
+         3TqlVj97nT+8Ue9sTVxMk0g41A1GyGW7b6j99wYzxYwlliyGKOUsI+eI2rtni3ZLlxA2
+         flvSC5pWdfKqu+M8rxViveEdobFcHa2atTyLtNfYG6jkbXCFmxHrDD6m+xiixsRXgzTe
+         PHSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:ui-outboundreport
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ZPGGHbSS4icm1ZfCA9cPZxyRTNyya4+y+pZuyrRJ1MA=;
-        fh=+9hnjSkTJ8G7w3IXAjDQiPAZbewfxNjxE3sIfEEYqVY=;
-        b=HC4x0k9joYKahxNLjKPLocObzuKbCBxaOtUvXbb23Ky0Uw+iDN+PLC2+1ECmlC129R
-         PmldkCsJAaaS/ZZVM2KlaGMZS2jVSnKdYp8P0GCojlnNk5VDECxvbg9s4OgxJWldtCD2
-         3Pcl6fweH78AIk0SIw58as83zaCqK4RQfW7NaSByPEVmynXuNYsScacD42FQXpQr0VLx
-         hbmebumqExpQzxmb39ME4ZstXqPjoS7xm6msGWz2QDMBjsiapVBiFnuhn6Q2LysCfrYm
-         2k+p2HAE5DxHJZx4lXCXpJDhvGS8Bpt38nj+5sVL6t8lpKnyd7cJADFvl442ESxaMAsv
-         aPew==
+        bh=8eXtCBaGaYUO0TyywE6NhIj856TzNPzJDpqTWyPeGaw=;
+        fh=yk9k0vIavAL73BR+lqFxTGHpT1QJ/zoAzUSbL2BPzuI=;
+        b=XgGrFFTbJU6xDyEJOD8SqNWbr2If2HjZzpYdZEMkO3WT0sYkUuSjU5Da8cnTd7jNpa
+         CZxZMDggno83Y7lWxrOgjkDk8TCgR0/vr6h73osrfngTo2oEpoCf2JvrbXkZh+gT44bj
+         Ai/XC4oCfQ/7A4QitN9Fj6b5EruFTurQ1DDu65riwLLFE630K3ohiqOuo6MmIYH9JVD1
+         ZNQccI99E5Sv92h/si5fr1f3ZXpSkWB+YcYlzkSYQrdJu1UMEjUvgkzil+tN5zLfzHoX
+         pEaIpTCu5V5zy/4h42YplDVm+6i/OkrkaQUFLe589gv2H+ib81SBM4qOSceZpHPH60Sm
+         P2wA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=rc5N8fRZ;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=C9WbPzkx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g1-20020a37b601000000b007681f612243si330966qkf.746.2023.08.03.14.45.47
+        by mx.google.com with ESMTPS id rg3-20020a05620a8ec300b007675309a546si340360qkn.81.2023.08.03.14.45.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Aug 2023 14:45:47 -0700 (PDT)
+        Thu, 03 Aug 2023 14:45:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=rc5N8fRZ;
+       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=C9WbPzkx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qRg7y-0003sc-60; Thu, 03 Aug 2023 17:45:02 -0400
+	id 1qRg82-0003t3-Kq; Thu, 03 Aug 2023 17:45:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <deller@gmx.de>)
- id 1qRg7u-0003qA-EH; Thu, 03 Aug 2023 17:44:58 -0400
-Received: from mout.gmx.net ([212.227.17.20])
+ id 1qRg81-0003sn-7Z; Thu, 03 Aug 2023 17:45:05 -0400
+Received: from mout.gmx.net ([212.227.17.21])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <deller@gmx.de>)
- id 1qRg7s-0001FK-GT; Thu, 03 Aug 2023 17:44:58 -0400
+ id 1qRg7y-0001Gs-8O; Thu, 03 Aug 2023 17:45:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de;
  s=s31663417; t=1691099091; x=1691703891; i=deller@gmx.de;
- bh=xwz6aMde3YBdcmDS3z738t66mXpAPMuyqhPYVzFaalo=;
+ bh=/02ufWd4kJoEc7JJHuyZDWsKtIMBSraIfCOSIvVAJPc=;
  h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=rc5N8fRZrbH1QQXpKMmfnEBKkv7QxxqcfgSvsRzshO7no5q0eWmk7EYwocYSX66UnqaNElf
- 92XLGOdTduDRxsXTGLRwpr7lSM3wj6/TuPu7pIkvIzIvWjVtmkRayAtPQeF7c0vuYmHyrJMEF
- xCFI+1Z2V0TmLjAWWHQ5sRp8pSFuHO30rquvpkR8nIuHgEGOl46M6kYJNZHamZlmnN0a1AFBR
- 2vi4dYjstBmJv6FRMccJ6BTk62ZjZFqZ99I0OYtF5+KR4aQxiJgXpVI5XVr8vKjTjwK7EwXfH
- Yp+8D3vwyCo/4+Vmw9CcH4mN5idFOqU2y+FMjUXx86+qSKEbNiXQ==
+ b=C9WbPzkx96QAAhRajMhO/EgKwCU5Q1c0TI1f22HU4v6b2kgSbN7oJlBpTnM1iE36A+973+K
+ M2X+UFmR0ATIux0K9K887i4VTY5/472/KwDiJl/HS4TiuIV7XEhrP6gsxEPUKI10LYliN6ynA
+ c8mYNlA3gY6p4z/wdnAkUFb/U5QgTzKdB04e5BLmIgbt+T3bG+NUDEX+3avTNnJC0s6jzdeKK
+ P/JqcPUaN7FpGuUi4GVUsNrJN/hsOu2mUuqdjOUzvZrDfT05BMTQMPP2d2UdRFICr16hQS4aM
+ 4BrHDeKSF/JpxTRQQ9/5mwavxqGyvqe7/WozcHJrvKEhX+XMkzTg==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
 Received: from p100.fritz.box ([94.134.147.53]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MCbEp-1qbKm93OOB-009eks; Thu, 03
- Aug 2023 23:44:50 +0200
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MnJlc-1q0LbD1Bxs-00jGDt; Thu, 03
+ Aug 2023 23:44:51 +0200
 From: Helge Deller <deller@gmx.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -71,45 +71,43 @@ Cc: qemu-arm@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>
-Subject: [PATCH v4 1/3] linux-user: Fix openat() emulation to correctly detect
- accesses to /proc
-Date: Thu,  3 Aug 2023 23:44:47 +0200
-Message-ID: <20230803214450.647040-2-deller@gmx.de>
+ Helge Deller <deller@gmx.de>, Michael Cree <mcree@orcon.net.nz>
+Subject: [PATCH v4 3/3] linux-user: Emulate /proc/cpuinfo for Alpha
+Date: Thu,  3 Aug 2023 23:44:49 +0200
+Message-ID: <20230803214450.647040-4-deller@gmx.de>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230803214450.647040-1-deller@gmx.de>
 References: <20230803214450.647040-1-deller@gmx.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:E6jZmUD8b9E4Kc2BiDPx9ahwQlCwmzsuwv39p5tnJPirMIpqap7
- ZGpvUoueICd/At7m2DudLYMbnYG+bm/f3jg88apRy42KYHPHBdP5RqpFkzfg0fzLhpRcVFG
- DVtLC+Pwzk64iuIXou0vxaDJASZQXY41dzsOfjGSsZtZ8tJUdoNtQxjBZgOqW4xSxWBTbQK
- OfmC54jWPe1gZpKWpTO5g==
-UI-OutboundReport: notjunk:1;M01:P0:zqCNsq0Ssgw=;2hUdO9/keL3wmlQfYAMEEthQsol
- TpJ8255dQIpsmDrOunxqNefMpxM7ee0f+QzF4d7jd7RkjQN9yOdUYLcJFnSllAzVRZF8HuR2a
- 2ekFIULzXjle6Eylxyc98fCsPluchi0eJcINXDmRvI4Zm2pCw06fkvHoOs5VvL1YoMoogVW6u
- iezWKnJdeh443oxb5mLMCbP1LDWn83mfHg9WrtxvpiJT9DQhAp5rG7zkT1qXL24RaMLLwELVs
- 5LXIi6StHMaAhvr9cekhhgKT0Y1FSj5mttoFBJAFLS/ezNTVHs5x6EwR/KZHjK6RvFE7Qq6qI
- tOA+9VD+RpRK5U2vdTDaVo8SdvFLd3reMtV2c3oRoyKnB+Nr4GxGD8O4sQBie1iXTA75UmLRV
- K4vAS1xI9UOJi4wpzGBDoE7hyCDv5l3GhAzThV5/99rWhpc+q41uCj8CTtnx1I5knlxUD5dD/
- F5ZFFkeAQsDXMmXcGc3Be8o/tKjiqAZN5ByRptaHJiUitUbY4cfRNFvYpf6k612IIJ8fEp6H8
- ugbjghnsIg5bhAPnPdT73tzecnbe5tdQoCGo8wHsdgvMxaaFXLrZz1TpBcFwWKmOeLHWBS2MX
- PJI+KyutEytc47wonRy6N9GekT1I3Z3Ap2AC7KRlUl8ZhejDDhsmEqxKO7yhlSBl9ETxfzDVv
- uVGG7tdYzFRb31lpRwkJIzziCgZqeJYG0KPzqKIBHv14wfLsdZiQnpziymKsYzVAOGIMt0Syg
- wcwLplafTp7H9Kz3gIOA5oDMyrcc7aQQA4sLaToSwW0bXrK7W+b0k6xsfevlyaRiTR2rhBfEE
- 2n1yyzxVidQlHgAzhCfzuscSoNWUcD1A8gZMKe5LGsBpG/teVgqrWG92K4zIRaQruVTOXdMJe
- d/9YJHbjshgIMXdXqam1pdBR/cmoO1DVag1eAg70CyTAuYr5YGWi6EJx2nEUS4zhXx+3D9D9B
- dvsuULP2aifYD6WKSMAWN4ru9qw=
-Received-SPF: pass client-ip=212.227.17.20; envelope-from=deller@gmx.de;
+X-Provags-ID: V03:K1:QS5FUNJmVRwQhUXSAdGoGAtQszlnLdkshwjiRZoAmkagIH3tdrA
+ x2NBwsRtxKWGDIGJGkOVYtvApN4O91lDOl0YKa7NyOpKD2ejHbP0C3ZyjPugrMXPWygPMEl
+ b/Chj/Q/zsGEJxJVrvWH26EJ25lh601ObDB29+T2xtoaa1gouGzoyfEC5wHmlAW2p5fUGCD
+ 8bIXYHvdTME6/AIMFaSsA==
+UI-OutboundReport: notjunk:1;M01:P0:RPwYYEAgkIY=;UvBbEzdgYu8O+bHQENtIh5q8WCE
+ H6vGHN9z5APgMCprWrORQ0XC8pwqQbLpymRc0pLhqVdZZbzlXj/1xH6YFkS1ULvj/XDp/zgxK
+ LJTSxDWNunUezGKNeGcSYImt/tU0nnWor51PLpb00i+XQPBuPSW1LW3aAg3hGU8js+4fKUFa1
+ n2dN8V+UQMCoetdaO+mDN9adzQTdUEe+zCwfYzjCN/P31UJWQmTZx2Wk+kbzq8mDEuGdO8E07
+ veqYLSX6Tm+H+2eQPyp4SFWAPS3VBmUW+sjij/b183KipFE++Rjn4eGnLcFuApH6+q6jK1bPm
+ lIlBb8LxuVYRpN2dP+2e0bQSLqijhRdCr4Yy4aEHtRJMbq4Gi6BioM865gDCeIdoYZ6ubZIjD
+ P+Hu1RFBmF++v/Ko6Bi6jVDRu4AlZwtZHFuVbKBwv3WV9Ts4guVvhg2N1pWKjACYAFyv+vn+K
+ oQpkrQvewyMCTx7UTKB0/XkFv14oIDVhTaBoc91UL8mhL8m9X269cuDFoHrriMH8lfkKKjI9g
+ FoLhI9Mv6myITfwcKakKB9MdK2Ao5PDZ6IRkGce3ZDTtmL6LzSh+D6v9II9JN3XSL2/9oyTap
+ xsGCLGQ0E1adcwBqVo/ZWpsDULDoviQa/+4Uv+61E2GxKBl7F4XqUtEo7VlLArghKeeM0fnvx
+ eSCO9LvcJVtIM/pODhB5Uiw/DBeq2NwZfUl6j0uZeGyvVLKqiRXJNPpuP+4uaN44OPsBy8JVT
+ khLKZHXZLybEU2CVbEvNxrb9JluqhQfY7X9vlUSFUSY3MYhoX+HcDglEANRVA9ncQBYiAyRQR
+ 6lAVkdgCe8lsa9Poit9Ot8uieHnht26HMxerhq5uNJCXN7RQGoiSoPFws6/cINt/ducvoL3JH
+ XTOgXEq9NU9EbH9/caSiVJN0VvR0rnZC9OdP8aUnZvkDwS/d+EWzFUiXuT1Ovo4idW1bVYiuH
+ OU21/Q==
+Received-SPF: pass client-ip=212.227.17.21; envelope-from=deller@gmx.de;
  helo=mout.gmx.net
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,71 +122,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: elC2vkOMaJ8K
+X-TUID: ErzuTGudZfLq
 
-In qemu we catch accesses to files like /proc/cpuinfo or /proc/net/route
-and return to the guest contents which would be visible on a real system
-(instead what the host would show).
+Add emulation for /proc/cpuinfo for the alpha architecture.
 
-This patch fixes a bug, where for example the accesses
-    cat /proc////cpuinfo
-or
-    cd /proc && cat cpuinfo
-will not be recognized by qemu and where qemu will wrongly show
-the contents of the host's /proc/cpuinfo file.
+alpha output example:
+
+(alpha-chroot)root@p100:/# cat /proc/cpuinfo
+cpu                     : Alpha
+cpu model               : ev67
+cpu variation           : 7
+cpu revision            : 0
+cpu serial number       : JA00000000
+system type             : QEMU
+system variation        : QEMU_v8.0.92
+system revision         : 0
+system serial number    : AY00000000
+cycle frequency [Hz]    : 250000000
+timer frequency [Hz]    : 250.00
+page size [bytes]       : 8192
+phys. address bits      : 44
+max. addr. space #      : 255
+BogoMIPS                : 2500.00
+platform string         : AlphaServer QEMU user-mode VM
+cpus detected           : 8
+cpus active             : 4
+cpu active mask         : 0000000000000095
+L1 Icache               : n/a
+L1 Dcache               : n/a
+L2 cache                : n/a
+L3 cache                : n/a
 
 Signed-off-by: Helge Deller <deller@gmx.de>
+Cc: Michael Cree <mcree@orcon.net.nz>
 
-=2D-
 v3:
-- use g_autofree on returned value from realpath
-
+- use PRIx64 instead of casting to long long
 v2:
-- use g_autofree instead of pathname on stack
-  Daniel P. Berrang=C3=A9 requested to not put buffers on stack.
-  Using g_autofree keeps code much cleaner than using
-  extended semantics of realpath(), unless I can use g_autofree
-  on malloced area from realpath().
+- revised platform string and system variation output
+- show cpus detected/active/active mask based on
+  current physical machine configuration
 =2D--
- linux-user/syscall.c | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
+ linux-user/syscall.c | 56 ++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 54 insertions(+), 2 deletions(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 95727a816a..1ec7d27e37 100644
+index 6328d7f434..aa470c465d 100644
 =2D-- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -8539,9 +8539,12 @@ static int open_hardware(CPUArchState *cpu_env, int=
- fd)
+@@ -8324,7 +8324,7 @@ void target_exception_dump(CPUArchState *env, const =
+char *fmt, int code)
+ #if HOST_BIG_ENDIAN !=3D TARGET_BIG_ENDIAN || \
+     defined(TARGET_SPARC) || defined(TARGET_M68K) || defined(TARGET_HPPA)=
+ || \
+     defined(TARGET_RISCV) || defined(TARGET_S390X) || defined(TARGET_ARM)=
+ || \
+-    defined(TARGET_AARCH64)
++    defined(TARGET_AARCH64) || defined(TARGET_ALPHA)
+ static int is_proc(const char *filename, const char *entry)
+ {
+     return strcmp(filename, entry) =3D=3D 0;
+@@ -8376,6 +8376,57 @@ static int open_net_route(CPUArchState *cpu_env, in=
+t fd)
  }
  #endif
 
--int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathnam=
-e,
++#if defined(TARGET_ALPHA)
++static int open_cpuinfo(CPUArchState *cpu_env, int fd)
++{
++    int max_cpus =3D sysconf(_SC_NPROCESSORS_CONF);
++    int num_cpus =3D sysconf(_SC_NPROCESSORS_ONLN);
++    uint64_t cpu_mask;
++    char model[32];
++    char *p;
++    AlphaCPU *cpu =3D env_archcpu(cpu_env);
++    CPUAlphaState *env =3D &cpu->env;
 +
-+int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *fname,
-                     int flags, mode_t mode, bool safe)
- {
-+    g_autofree char *proc_name =3D NULL;
-+    const char *pathname;
-     struct fake_open {
-         const char *filename;
-         int (*fill)(CPUArchState *cpu_env, int fd);
-@@ -8567,6 +8570,14 @@ int do_guest_openat(CPUArchState *cpu_env, int dirf=
-d, const char *pathname,
-         { NULL, NULL, NULL }
-     };
-
-+    /* if this is a file from /proc/ filesystem, expand full name */
-+    proc_name =3D realpath(fname, NULL);
-+    if (proc_name && strncmp(proc_name, "/proc/", 6) =3D=3D 0) {
-+        pathname =3D proc_name;
-+    } else {
-+        pathname =3D fname;
++    g_strlcpy(model, object_class_get_name(
++                        OBJECT_CLASS(CPU_GET_CLASS(env_cpu(cpu_env)))),
++              sizeof(model));
++    p =3D strchr(model, '-');
++    if (p) {
++        *p =3D '\0';
++    }
++    if (sched_getaffinity(getpid(), sizeof(cpu_mask),
++                          (cpu_set_t *) &cpu_mask) < 0) {
++        cpu_mask =3D (1ULL << num_cpus) - 1;
 +    }
 +
-     if (is_proc_myself(pathname, "exe")) {
-         if (safe) {
-             return safe_openat(dirfd, exec_path, flags, mode);
++    dprintf(fd, "cpu\t\t\t: Alpha\n");
++    dprintf(fd, "cpu model\t\t: %s\n", model);
++    dprintf(fd, "cpu variation\t\t: %d\n", env->implver + 5);
++    dprintf(fd, "cpu revision\t\t: 0\n");
++    dprintf(fd, "cpu serial number\t: JA00000000\n");
++    dprintf(fd, "system type\t\t: QEMU\n");
++    dprintf(fd, "system variation\t: QEMU_v%s\n", QEMU_VERSION);
++    dprintf(fd, "system revision\t\t: 0\n");
++    dprintf(fd, "system serial number\t: AY00000000\n");
++    dprintf(fd, "cycle frequency [Hz]\t: 250000000\n");
++    dprintf(fd, "timer frequency [Hz]\t: 250.00\n");
++    dprintf(fd, "page size [bytes]\t: %d\n", TARGET_PAGE_SIZE);
++    dprintf(fd, "phys. address bits\t: %d\n", TARGET_PHYS_ADDR_SPACE_BITS=
+);
++    dprintf(fd, "max. addr. space #\t: 255\n");
++    dprintf(fd, "BogoMIPS\t\t: 2500.00\n");
++    dprintf(fd, "platform string\t\t: AlphaServer QEMU user-mode VM\n");
++    dprintf(fd, "cpus detected\t\t: %d\n", max_cpus);
++    dprintf(fd, "cpus active\t\t: %d\n", num_cpus);
++    dprintf(fd, "cpu active mask\t\t: %016"PRIx64"\n", cpu_mask);
++    dprintf(fd, "L1 Icache\t\t: n/a\n");
++    dprintf(fd, "L1 Dcache\t\t: n/a\n");
++    dprintf(fd, "L2 cache\t\t: n/a\n");
++    dprintf(fd, "L3 cache\t\t: n/a\n");
++    return 0;
++}
++#endif
++
++
+ #if defined(TARGET_SPARC)
+ static int open_cpuinfo(CPUArchState *cpu_env, int fd)
+ {
+@@ -8633,7 +8684,8 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd=
+, const char *fname,
+ #endif
+ #if defined(TARGET_SPARC) || defined(TARGET_HPPA) || \
+     defined(TARGET_RISCV) || defined(TARGET_S390X) || \
+-    defined(TARGET_ARM)   || defined(TARGET_AARCH64)
++    defined(TARGET_ARM)   || defined(TARGET_AARCH64) || \
++    defined(TARGET_ALPHA)
+         { "/proc/cpuinfo", open_cpuinfo, is_proc },
+ #endif
+ #if defined(TARGET_M68K)
 =2D-
 2.41.0
 

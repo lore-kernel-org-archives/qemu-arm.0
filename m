@@ -1,102 +1,102 @@
-Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1156160ejb;
-        Thu, 3 Aug 2023 09:16:25 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFuWH8Oxi009j4ydLcriqZJDIDPq00GZPKgmA56eHzCaxDEZ7aDBpm4DEiu/gaJ+bkSmSL9
-X-Received: by 2002:a05:6830:1646:b0:6bc:86f1:f24e with SMTP id h6-20020a056830164600b006bc86f1f24emr19379427otr.12.1691079385566;
-        Thu, 03 Aug 2023 09:16:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691079385; cv=none;
+Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1165979ejb;
+        Thu, 3 Aug 2023 09:32:00 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEFwxcpbg4Py5ewbMcQmw9Ga6ql4nQWBMBhnzJYPt4VP5hmkBW8Mz/r7kuu1uUoakJbq3lD
+X-Received: by 2002:a0d:e907:0:b0:577:3561:8a81 with SMTP id s7-20020a0de907000000b0057735618a81mr19101922ywe.22.1691080320364;
+        Thu, 03 Aug 2023 09:32:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691080320; cv=none;
         d=google.com; s=arc-20160816;
-        b=UVIrZ+31AJrC4OX0ZjGmlA4UtLnpL+jI61fHokq5E0JD1suHynEqtoWFaJ1e+TTXbu
-         RehEU/9LxSwpfAfNIcYFG7QPXK1epCD9x0bWXbwqpH2sXzWmpW1wqU1OGubtnp9/i+WT
-         CBpoF6TQvPSIQAyPifYhfxR/4ehIqfTTDylubwtKkTONH9e5CCJRv+pm1FfytX1wOt/C
-         HtVr6u9AfRb6fc0Bwx5Jc6LKIDHWi/OZZ38wM8rS55xx51RcR4C4eQXvfNvylej+rn7c
-         4HxxHhRLqgpSFv+lc4jcZqQB/6D4MsZ5/Y0dKN+xh3wwNXZ6RAynB6QwChjoqU2qW18u
-         82Xg==
+        b=cK1zBw2ilFgTLMycNEzDWUwwc4A4XmPY126k2YfhqosBihodTPIEWYMOxPbpe+dBKs
+         ty5jKj3v00VATj0wbjPJQxKP56GFMYSXloRuiaQSljEvpSUZZ70taJZaq/1chQ7RedjD
+         VPRLGgrR1OclrJeaXBPPa2eUSPoQkyuJgcbZc60UpetcsbaLiX6+7BALypB0C0yC1MOM
+         wiZWjzDWJMZgqbAWHSgxAHlyZnzrLG51dHWRrbujZTDXa77b10Vvdi19M/kKtdkd6LBq
+         kcDc3MoHH1sjRppxJoBwm5DuuQY75OAB8kB7ZSXRVqRksC6bxLzgFIpRsUcAyC3YkrBQ
+         +rXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=hGvBPvFqSUYeXV6Thm4UF5fp4yvklhVIGy45xkUmcsE=;
+        bh=8ML4c12rEx1eZW5TZLSmBhtPzewN8g7REXOd4fE7o8Y=;
         fh=Pe/MIC7yvB073Sd6/4lunpd6aUW6AVi1jfN++S25pLo=;
-        b=olQd1ReiRQcE4zYWHgOrA5B/yVqM/6spDf0E3Ex95rd14nPBnXP0kUvpdSV/sm82Oi
-         Fquv9N8mUUtN8P/PLynraRufQRz1K8l7h1ledWB1KfJ6pKYYBrHrMAIm6Qjs+YkxycuB
-         qb2wT6viw7vEOYY+IcgrbvTGukdb8TQY3B39SpxX5bz3yAh9HwueWxxYnityfO9Ocd53
-         stM37enkMAmhLLKK5c+KrYU/+2tELaD9v/Z9eLLwwTZig6u3b1/uWmUoOnJqQlK39kdX
-         eiicBNNmDnhbr/zqhEpC7lpCRStnD8ONsD7Hm3F400bL7w9wKGP1W8FVs5o+hE83miQ/
-         +lsA==
+        b=rIA8WydAqFbJjuHySkofPeJomiRYyjmZNfj3N8mzdXbC3j6048UY0yBuZZFcsX9/az
+         CTT34LbyvJGvKk8qvlelKULm5hdgxmD9gRud2imKIOAtzy7s/uQn2mIqtKmHYih8d7Hp
+         MXwwpUnNnQEV0WgljW30xS+FnJEgGEotoU63g9/7H/Et4a96LeW8gPESavNLHA/eGwAC
+         sh4zlUU3on6xCcIZ5iiwqrOJDl28xx+CjQWzBuQCUDsAxCKsiNFrWl1Np0+5IAM2Endp
+         FA6TuBd/rIRWAwfIA84gaA76IH4+sVqWnZLBLXdW2r1k9Ds7eN4Ag8tLda3LG1vYaBCB
+         EXPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Xf34b6gm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Rz5nBSiA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v1-20020ac85781000000b0040c34202141si67894qta.504.2023.08.03.09.16.25
+        by mx.google.com with ESMTPS id f11-20020ac859cb000000b004036139c672si111788qtf.85.2023.08.03.09.32.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Aug 2023 09:16:25 -0700 (PDT)
+        Thu, 03 Aug 2023 09:32:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Xf34b6gm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Rz5nBSiA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qRazY-0003FF-DM; Thu, 03 Aug 2023 12:16:00 -0400
+	id 1qRbEq-00028H-B9; Thu, 03 Aug 2023 12:31:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qRazW-0003Ed-1m
- for qemu-arm@nongnu.org; Thu, 03 Aug 2023 12:15:58 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1qRbEn-00020V-7s
+ for qemu-arm@nongnu.org; Thu, 03 Aug 2023 12:31:45 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qRazU-0006tg-HK
- for qemu-arm@nongnu.org; Thu, 03 Aug 2023 12:15:57 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-5230f8da574so970877a12.3
- for <qemu-arm@nongnu.org>; Thu, 03 Aug 2023 09:15:55 -0700 (PDT)
+ id 1qRbEl-0004z0-H0
+ for qemu-arm@nongnu.org; Thu, 03 Aug 2023 12:31:44 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-52164adea19so1459925a12.1
+ for <qemu-arm@nongnu.org>; Thu, 03 Aug 2023 09:31:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691079354; x=1691684154;
+ d=linaro.org; s=google; t=1691080299; x=1691685099;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=hGvBPvFqSUYeXV6Thm4UF5fp4yvklhVIGy45xkUmcsE=;
- b=Xf34b6gmUl4RlNl+zBzOROrv5cN9byTAAfLtXnJ6YlIbfpwylvn6SuDccCHWTqkc5/
- BovmGCsNl02LFJrtB+OyhJ1e7lO2pLi0/tEseAwMohv46/dkGYT9uDUd2lFvkhHEvn+1
- 8+D4gB65Unkiws8qR1YGMQuy+rGNhzBT0zPCycad2pbe6LJrczm9d21yKD1LbD7h6uoz
- TSyRZAgULgYa5fHp7/k7ZTWQW3ptP0gc+Hf8LQWzPU0PQXFhSXBmepPhZZXq+TfZl3G8
- lCCZcbC+mUiapovTWI1i/5NcNYTdfnSC1vNvbQ7PjYWcZgsoULNL9XFQmaab9qYRdnZ2
- QswQ==
+ bh=8ML4c12rEx1eZW5TZLSmBhtPzewN8g7REXOd4fE7o8Y=;
+ b=Rz5nBSiAzbBus3cJF9UAHmrqvQSf41WNfxdQX3Hvex/OA+NTezCzk6DkGmVnF1Q4N4
+ wet9iswzKF581gNq+ZnZ9kmDK2jusp3JIL3iE9tTBg5jAA5J3eIyEhbf5t9XBw5ID6Ys
+ ZZS9O7AZlKLlGuYOaqlR9nX5fN7QLbc8kArGvlaIJpusI0MFPOJ/EKBjcfLVGrDu3VxX
+ Yamk1QAYYb5A1LESAjDM2CzqH/ZoC0w7GPoY/TToJyj8ubDMnLQiylGkqssrlf3ZckDq
+ 4bWgYKGLO5WVvFhqqSq0MCcl4OWd5nLaH2WDHV0ObJBRC7vMLCMOzHtg/7xGsO5KRWfe
+ F6yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691079354; x=1691684154;
+ d=1e100.net; s=20221208; t=1691080299; x=1691685099;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=hGvBPvFqSUYeXV6Thm4UF5fp4yvklhVIGy45xkUmcsE=;
- b=ZpU/7u8hem6CUQNN/Y5cMZK83JUsKzHqpVsVZhzkO6g74OdaUUxuvBXtx6gLaDiytb
- w5qpAV3fNVgnqGS13WdUczF4Qz/rTSXU9pLkgxSHXMXGxWh6s31zkA/FYCvtvJyxLAcN
- 79Kpgg9eWmwjRQ3OHTzR0jUoj0L4OzH6gM3DTcA0wDi4FOL7Dcxp+AMCZUrqGpbBNDm3
- WLcbeIazUSCPXQopOKhP2UBKqRgH50b1JebWm9wmUMJHqt1EMK8Mvo43dzKgP50nBWnr
- UlVVOhOnol58p67B86fKKqE0t6bnSj2wWt6S00M59ZaSKU4/PR8cvyXYTIZWQ3224yIw
- g0jA==
-X-Gm-Message-State: AOJu0Yy7948a46s9XQD2xfbwjnEzcEw1wop+JRqNnXLLGTESJizcAYAn
- w5hVkRDP8g2YfBq6cutqwn1ZF+Jg9sBc/z2MnQS9hZmm9Q1kiwiS
-X-Received: by 2002:aa7:c744:0:b0:523:1400:2d7c with SMTP id
- c4-20020aa7c744000000b0052314002d7cmr675449eds.35.1691079353841; Thu, 03 Aug
- 2023 09:15:53 -0700 (PDT)
+ bh=8ML4c12rEx1eZW5TZLSmBhtPzewN8g7REXOd4fE7o8Y=;
+ b=HjquMoFOkRRxRrKMeOichIk3mXctrpvJEakA5h89otk+T+oPxItR2mXjx7z7vwFbMk
+ YQKDashoJVISWBRyECbgUcoJM6ssLoyewmiveQ9kei2suvcy0fm+xhPjzXi4nEyQKSmr
+ cI88HgNoGExFdyDkrSwmT12QDnO6yZC38YJQhPkkpzQClhEwIP2sqQWEQ9JXJbrKwFP6
+ 4IKA6C/3eqZWL/fPxww7R29uKnjbthmJMy3VEBl7TrluPA2YKNO/18jV0hM8alFf4Puq
+ zkwJJuoau5I6NpEUcPvStRoLl76D/7zeC1xSua4bhpFLe9V1Nk/V20RCILC6HO6O1FO3
+ kGvA==
+X-Gm-Message-State: ABy/qLa/7EvArFcxYNGSmGADrnqvKMg1RN8endRZMXZNCy2hn+/1z15M
+ HcyoImj2tyFdgM41uwPmbSfkUHQtIx+HHpRnTBsYog==
+X-Received: by 2002:aa7:cd74:0:b0:521:9d92:5863 with SMTP id
+ ca20-20020aa7cd74000000b005219d925863mr6323146edb.42.1691080298772; Thu, 03
+ Aug 2023 09:31:38 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
- <20230726132512.149618-2-sergey.kambalin@auriga.com>
-In-Reply-To: <20230726132512.149618-2-sergey.kambalin@auriga.com>
+ <20230726132512.149618-5-sergey.kambalin@auriga.com>
+In-Reply-To: <20230726132512.149618-5-sergey.kambalin@auriga.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Aug 2023 17:15:42 +0100
-Message-ID: <CAFEAcA9oKFF7bRvKUWLMEvyaPobmShyf=i57oYombD3oWAbEkA@mail.gmail.com>
-Subject: Re: [PATCH 01/44] Split out common part of BCM283X classes
+Date: Thu, 3 Aug 2023 17:31:27 +0100
+Message-ID: <CAFEAcA8h3Kv1oSOeidufLAjjmDanp-nR=YJRutejNWOXTS8u8Q@mail.gmail.com>
+Subject: Re: [PATCH 04/44] Introduce BCM2838 SoC
 To: Sergey Kambalin <serg.oker@gmail.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Sergey Kambalin <sergey.kambalin@auriga.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,18 +118,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eJ95OOXvY/0E
+X-TUID: UDKPwUjf1RGs
 
-On Wed, 26 Jul 2023 at 14:43, Sergey Kambalin <serg.oker@gmail.com> wrote:
+On Wed, 26 Jul 2023 at 14:52, Sergey Kambalin <serg.oker@gmail.com> wrote:
 >
 > Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 > ---
->  hw/arm/bcm2836.c         | 102 ++++++++++++++++++++++-----------------
->  hw/arm/raspi.c           |   2 +-
->  include/hw/arm/bcm2836.h |  26 +++++++++-
->  3 files changed, 83 insertions(+), 47 deletions(-)
+>  hw/arm/bcm2838.c                     | 110 +++++++++++++++++++++++++++
+>  hw/arm/bcm2838_peripherals.c         |  72 ++++++++++++++++++
+>  hw/arm/meson.build                   |   2 +
+>  include/hw/arm/bcm2838.h             |  26 +++++++
+>  include/hw/arm/bcm2838_peripherals.h |  36 +++++++++
+>  5 files changed, 246 insertions(+)
+>  create mode 100644 hw/arm/bcm2838.c
+>  create mode 100644 hw/arm/bcm2838_peripherals.c
+>  create mode 100644 include/hw/arm/bcm2838.h
+>  create mode 100644 include/hw/arm/bcm2838_peripherals.h
+>
+> diff --git a/hw/arm/bcm2838.c b/hw/arm/bcm2838.c
+> new file mode 100644
+> index 0000000000..dd650c8148
+> --- /dev/null
+> +++ b/hw/arm/bcm2838.c
+> @@ -0,0 +1,110 @@
+> +/*
+> + * BCM2838 SoC emulation
+> + *
+> + * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qemu/module.h"
+> +#include "hw/arm/raspi_platform.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/arm/bcm2838.h"
+> +#include "trace.h"
+> +
+> +struct BCM2838Class {
+> +    /*< private >*/
+> +    BCM283XBaseClass parent_class;
+> +    /*< public >*/
+> +    hwaddr peri_low_base; /* Lower peripheral base address seen by the CPU */
+> +    hwaddr gic_base; /* GIC base address inside ARM local peripherals region */
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Are these actually variable across different BCM2838 versions?
+If not, don't bother making them configurable like this, just
+have a #define of the address values and use it directly.
+The BCM283[567] code only does this for peri_base and
+ctrl_base so it can have one class that handles all three SoCs.
+
+> +};
 
 thanks
 -- PMM

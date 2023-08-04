@@ -1,102 +1,102 @@
-Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1712556ejb;
-        Fri, 4 Aug 2023 05:31:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHuZf4eIcsqjgIGQwdUPkQQ3f4n23u8VTvedN3Wr2DA3EUAC/nRbsO9NPfVQ/CA5lrXjIiZ
-X-Received: by 2002:a05:620a:2993:b0:767:e714:e9f0 with SMTP id r19-20020a05620a299300b00767e714e9f0mr2222229qkp.64.1691152278479;
-        Fri, 04 Aug 2023 05:31:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691152278; cv=none;
+Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1717965ejb;
+        Fri, 4 Aug 2023 05:39:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFDjo/VNb/v0hWkikc2otgW2fBGgaia+CGDE9pz3dAnotk47qzS3vaPsT8RrX037JHGNlcT
+X-Received: by 2002:a05:622a:452:b0:406:cadc:ff35 with SMTP id o18-20020a05622a045200b00406cadcff35mr2304104qtx.54.1691152792809;
+        Fri, 04 Aug 2023 05:39:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691152792; cv=none;
         d=google.com; s=arc-20160816;
-        b=ox259NUA6Sll5p796d43/jT2OywhXk0e8dtBiNrNW0kqmNcN43NpmnIa3Gitl88BX3
-         q6D1tGjJdtXkyvtvrQkrLRCNCp/f+7ZWOwaCAn7An7D9L65n0SNPob2mPW/932r0LvbE
-         OPuLgMZZkKS4KW9bGTwE40gzVqJ4d51JB7VxHj/mTpKp7d/wvOl0kEX8wrP9sXMQweTB
-         ujL6vH0aT89SWuwfka4p4y+dfAm19zWlk6uuG6FzjTszO5017JhSFMJtvJ73GNkaVYUK
-         kBkqKzk4W7ZpsnJ/f0GT25zrW8aRraTNuapt7h45w0mhG5ACL3nSm9Hp7uje3U6SbJYq
-         XBIQ==
+        b=HA3jxUHZiXK6VNE7nKMgVUNXoj0liLZAfw+0szP2TcjJxvmnIcnUAKfiqoZqKwkyCf
+         1A5jx0vnyFpSEv8/BIeJMyEp5IniwALIN1Rj09/czhcaSROTTESEB8meRTA7/YRSeXP/
+         bHkiIKKMYLBtRqoxpvLQM/UBHJcAPdYQr/LytWwZiWU0W/wYaSrbtiWIVIeIHrvYA2RG
+         rhKj/UO+CgD3+FUKejNXE+jXU9cuqospSe7oRedlj3BrfGcxNnjZAzEANQ+l8St3524U
+         FoBrv77tejbifdTyVzl+N6wo3E5ISRWPs3QAw7TBv2p+kX8Topkna3pdPLemFfuxRy9W
+         qUAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=e7e//X0qElnMjAaBtivMTTkIxlU6UVNq5a0mOLXxlNI=;
+        bh=naOmLennGTxHrohODDi5gs9ofcm0ixIk7U39lYwPomo=;
         fh=Pe/MIC7yvB073Sd6/4lunpd6aUW6AVi1jfN++S25pLo=;
-        b=0qrHlSKEt8nLy0IfGWoeSjbW3KvWv/Tnq1GrmtI47zY7xNdvMQdc51+H1KfoYhG1i/
-         4YPTy2OspIu5PKfrhGqLowr5gAva/ttBV6oartaZ8HuryB2tP+M8j7XiFZQZDtVT4hjg
-         UQGpy/yMt+Joc8sO1mlsQsxrNkYHHELYv5OMbkNYVlbeb1s1DgBnOCY1sQ+9W9F+YiXT
-         WeUVzlyPdfItuCGQGCpQuwfVsbQfR/NAuFtbhMT8xoU0GGOC7T1cnVF1HCC10HzaD9vf
-         Prq4Vuo1HkGEJAob4MrhD1MKdLAzsznVG4t3ph/GbnDkTAh+4swf8WQHvkPbsWvBdPLH
-         yC1Q==
+        b=DqVP81LVYJMdN10zO6CkK4I1EKbSdQWW0eMfcPagncnb/suhBuIWQ/cjBHdbwBzdbA
+         v45LPQGyTG2tMK/pJWYteew9aGHQH1Iaqw1aEfUkwhCtxxx7ssu1VicVRaBnY860t9yw
+         F6aH9U5d/bkHUX49P/dBD6OWPuFRtUuG3JQZi8c/ywwXXvUoaYcaT2+9TNkWFX4uay6o
+         Bsed8uFmDS74iUvGdTGKd+RwLThC9p3ZJvWA2jYoTDgsLcLpXlSxnYK8jRVAgwCvtT9A
+         wWCgMZhMX8Ibvgh45ufxA0thkLaE2ZHzHrxnm2DIGX+GAWdZ4Bk9OmjzMhinXES3wv/0
+         rWrw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DmsilKL1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x1K+baHq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h4-20020a05620a284400b007671a6a0bb2si1129640qkp.601.2023.08.04.05.31.18
+        by mx.google.com with ESMTPS id p16-20020a05622a049000b0040556bb3b65si1195540qtx.674.2023.08.04.05.39.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Aug 2023 05:31:18 -0700 (PDT)
+        Fri, 04 Aug 2023 05:39:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DmsilKL1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x1K+baHq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qRtxT-0003Kf-Oc; Fri, 04 Aug 2023 08:31:07 -0400
+	id 1qRu5Z-0000Rs-K9; Fri, 04 Aug 2023 08:39:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qRtxC-0002QV-IH
- for qemu-arm@nongnu.org; Fri, 04 Aug 2023 08:30:52 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ id 1qRu5X-0000R8-IZ
+ for qemu-arm@nongnu.org; Fri, 04 Aug 2023 08:39:28 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qRtxA-0001Hb-Rn
- for qemu-arm@nongnu.org; Fri, 04 Aug 2023 08:30:50 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-5223fbd54c6so2682763a12.3
- for <qemu-arm@nongnu.org>; Fri, 04 Aug 2023 05:30:48 -0700 (PDT)
+ id 1qRu5V-0005vt-Mk
+ for qemu-arm@nongnu.org; Fri, 04 Aug 2023 08:39:27 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-523108efb36so1953124a12.1
+ for <qemu-arm@nongnu.org>; Fri, 04 Aug 2023 05:39:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691152247; x=1691757047;
+ d=linaro.org; s=google; t=1691152764; x=1691757564;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=e7e//X0qElnMjAaBtivMTTkIxlU6UVNq5a0mOLXxlNI=;
- b=DmsilKL14v4OBmM23PftkpTmQ8dYIUPdoMEeDE2nf8cXMCQpU34ZUN9vUOWscX3eYR
- bOslX2QgcRWrbD/tuvhzSc+9FWRZKOUzfpYQmBdzARrElgK+BrigMkVuh+npeBKdcFAG
- lIIgF362iUcSuB/z/egBfKI1Hk+6Osn5D7LFc8mHKs6I3Ky4xByXlDdf3cH48SQHMOVm
- JhPx0G0kyM0kGs3mcnsj8dozHahj6zwvqdFUUviSHKR+hCaYWl2FxOKvO3YYNehcGsVn
- J2ymdPJM88QdDsNNB+5ElHxJo2vx8Z21yvWqLR2ARKDco0hy2mUeL5ICM85vLkpEN9Rc
- 8q1g==
+ bh=naOmLennGTxHrohODDi5gs9ofcm0ixIk7U39lYwPomo=;
+ b=x1K+baHq1bvTcYXDFjUaWXD/kv1Uv13CbTwSF6QpWuNIL5RQLo12YLygQO6x9vqvPT
+ 2DQlVYmRhEveT3PwvLhd/JocbAf2KGiOosWMyh4xPm/6rI4zrc2YxalfLN4UthwnIhb8
+ LDgGiz4IXrc4GkJwQ6++z4B/uPqtHRd4qz9LIEfr2ERb0NvZOjEo6qJB5Jk9T0WGlyjn
+ mJsEV/TOUdjPhXPjD2akqqCstTwQiu+zVDykqnR2BfO0dFejdSLXCTZZNGyYFUDABgg9
+ k8FSmj2meb8oCaXIjXVuPbdqo/nGPPtbMQM6KPMgCpcpM0n4ooarwh7gIhWbpB7vOqdY
+ zOQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691152247; x=1691757047;
+ d=1e100.net; s=20221208; t=1691152764; x=1691757564;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=e7e//X0qElnMjAaBtivMTTkIxlU6UVNq5a0mOLXxlNI=;
- b=j57iDjYStAtKa6bSO2tLq/JSDKPAYdGrm5sy5ngqQk8NitVct+si57RpbRiE3hbWFS
- 2f7SAAa2sTuBKJQLilXeURxlsyNUGchz3CMXW75FH/9hWFHlVIjoXCw4D+v+3Mgq/2Uv
- v2OlYG8W+6lAGxiZKwrti6BczVb06ItkCdnfjaNgGe/K9lyZ129jA3CbYg/qnjgzYscw
- 082RL7doRlq6Q2QK11B44dqM/0wZCKRgx9UpFdbBb2rJN1Sr/4vb9UP5VlhhwYvVeuZh
- q4cUq56map7aIOD1jRncwsPZfjf1QUbukCWGaNnhm/7ZsaxfzIHOttrCSmoKEIkUw80T
- p1Hg==
-X-Gm-Message-State: AOJu0YzijDDYm1wVcIxYHhM1C0UIBesAq4RuQA94Z5FN0WKLaZe3TmfY
- 13CkdeifQ0UT/sX7lecKsDa9buioQZWtNnSYvxyeag==
-X-Received: by 2002:aa7:dc12:0:b0:522:cb97:f198 with SMTP id
- b18-20020aa7dc12000000b00522cb97f198mr1327319edu.38.1691152247283; Fri, 04
- Aug 2023 05:30:47 -0700 (PDT)
+ bh=naOmLennGTxHrohODDi5gs9ofcm0ixIk7U39lYwPomo=;
+ b=kvg/7WdmQ4FWR+tC6/9tP4U5QuPI3tCQvm2/G8mrgKaoCBGR2RJkXe+cgXKbCAAWs7
+ ZwpMB+iJ8CUSd3yEFK9EqEcJnM1BLisnTB+UmFf8cfSvV+otgy8n4AP/nviLIwomW+sc
+ /+KILKj/XmxRfrhvLYVmKO61aJB5ncuF0qkBalXXb5j/NRZD8JmXZeMO/0Ro+O1yGEvf
+ OwzBmR8KOwSV5LD6oSfLQGEVBfCBDDqIXHUEsj/4dwtWglzqItXL6d7E7n1y3xR0/VM/
+ kLPNc4y16Fd3TuYp69H7KoLzgQ9Q/+9bq+eFtsC7AOiQSYvl/ZJSV3IWNpSNut5q6M0C
+ v47A==
+X-Gm-Message-State: AOJu0Yy/+sy4NOXejhI2ahSxw38rn02cpic4mp5Qb5GAFNiWiYvCSvjj
+ cgba1vccsZ4thzSSEqQnndHW5JT8m5a63rOBB5pO7g==
+X-Received: by 2002:a05:6402:12d9:b0:51d:8aaf:5adc with SMTP id
+ k25-20020a05640212d900b0051d8aaf5adcmr1526340edx.14.1691152764042; Fri, 04
+ Aug 2023 05:39:24 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
- <20230726132512.149618-11-sergey.kambalin@auriga.com>
-In-Reply-To: <20230726132512.149618-11-sergey.kambalin@auriga.com>
+ <20230726132512.149618-12-sergey.kambalin@auriga.com>
+In-Reply-To: <20230726132512.149618-12-sergey.kambalin@auriga.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Aug 2023 13:30:36 +0100
-Message-ID: <CAFEAcA9Zo7LcPTmBNrtCs2931EEDkqd-WSpYW-By=tuo=8bijw@mail.gmail.com>
-Subject: Re: [PATCH 10/44] Add BCM2838 checkpoint support
+Date: Fri, 4 Aug 2023 13:39:13 +0100
+Message-ID: <CAFEAcA95uedoxQf2aGLr++AJdmBALgGxNXTCHYrzGLO1QVyqUQ@mail.gmail.com>
+Subject: Re: [PATCH 11/44] Introduce Raspberry PI 4 machine
 To: Sergey Kambalin <serg.oker@gmail.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Sergey Kambalin <sergey.kambalin@auriga.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,61 +118,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8HIoHnld+d7F
+X-TUID: YvXFdED+t+FK
 
-On Wed, 26 Jul 2023 at 14:26, Sergey Kambalin <serg.oker@gmail.com> wrote:
+On Wed, 26 Jul 2023 at 14:52, Sergey Kambalin <serg.oker@gmail.com> wrote:
 >
 > Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 > ---
->  hw/gpio/bcm2838_gpio.c | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
->
-> diff --git a/hw/gpio/bcm2838_gpio.c b/hw/gpio/bcm2838_gpio.c
-> index 7291e473dc..f1121f9c58 100644
-> --- a/hw/gpio/bcm2838_gpio.c
-> +++ b/hw/gpio/bcm2838_gpio.c
-> @@ -17,6 +17,7 @@
->  #include "qemu/timer.h"
->  #include "qapi/error.h"
->  #include "hw/sysbus.h"
-> +#include "migration/vmstate.h"
->  #include "hw/sd/sd.h"
->  #include "hw/gpio/bcm2838_gpio.h"
->  #include "hw/irq.h"
-> @@ -324,6 +325,21 @@ static const MemoryRegionOps bcm2838_gpio_ops = {
->      .endianness = DEVICE_NATIVE_ENDIAN,
->  };
->
-> +static const VMStateDescription vmstate_bcm2838_gpio = {
-> +    .name = "bcm2838_gpio",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT8_ARRAY(fsel, BCM2838GpioState, BCM2838_GPIO_NUM),
-> +        VMSTATE_UINT32(lev0, BCM2838GpioState),
-> +        VMSTATE_UINT32(lev1, BCM2838GpioState),
-> +        VMSTATE_UINT8(sd_fsel, BCM2838GpioState),
-> +        VMSTATE_UINT32_ARRAY(pup_cntrl_reg, BCM2838GpioState,
-> +                             GPIO_PUP_PDN_CNTRL_NUM),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static void bcm2838_gpio_init(Object *obj)
->  {
->      BCM2838GpioState *s = BCM2838_GPIO(obj);
-> @@ -355,6 +371,7 @@ static void bcm2838_gpio_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
->
-> +    dc->vmsd = &vmstate_bcm2838_gpio;
->      dc->realize = &bcm2838_gpio_realize;
->      dc->reset = &bcm2838_gpio_reset;
+>  hw/arm/bcm2835_peripherals.c    |  20 +++-
+>  hw/arm/bcm2836.c                |   2 +
+>  hw/arm/bcm2838.c                |   2 +
+>  hw/arm/meson.build              |   2 +-
+>  hw/arm/raspi.c                  |  28 +++--
+>  hw/arm/raspi4b.c                | 182 ++++++++++++++++++++++++++++++++
+>  include/hw/arm/raspi_platform.h |  11 ++
+>  include/hw/display/bcm2835_fb.h |   2 +
+>  8 files changed, 235 insertions(+), 14 deletions(-)
+>  create mode 100644 hw/arm/raspi4b.c
 
-Oh, this is where the vmstate struct ended up. I think
-I would suggest putting this in patch 6, since that's
-where you add the struct fields. (Define the sd_fsel
-field there too.)
+
+> +static void raspi4b_machine_class_init(MachineClass *mc, uint32_t board_rev)
+> +{
+> +    object_class_property_add(OBJECT_CLASS(mc), "vcram-size", "uint32",
+> +                              get_vcram_size, set_vcram_size, NULL, NULL);
+> +    object_class_property_set_description(OBJECT_CLASS(mc), "vcram-size",
+> +                                            "VideoCore RAM base address");
+> +    object_class_property_add(OBJECT_CLASS(mc), "vcram-base", "uint32",
+> +                              get_vcram_base, set_vcram_base, NULL, NULL);
+> +    object_class_property_set_description(OBJECT_CLASS(mc), "vcram-base",
+> +                                            "VideoCore RAM size");
+
+What are these properties for? I assume you can't change them
+on a real raspi 4b board, so why do we need to expose them
+to users?
+
+> +
+> +    raspi_machine_class_common_init(mc, board_rev);
+> +    mc->init = raspi4b_machine_init;
+> +}
+> +
+> +static void raspi4b1g_machine_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
+> +
+> +    rmc->board_rev = 0xa03111;
+> +    raspi4b_machine_class_init(mc, rmc->board_rev);
+> +}
+> +
+> +static void raspi4b2g_machine_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
+> +
+> +    rmc->board_rev = 0xb03112;
+> +    raspi4b_machine_class_init(mc, rmc->board_rev);
+> +}
+> +
+> +static void raspi4b4g_machine_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
+> +
+> +    rmc->board_rev = 0xc03114;
+> +    raspi4b_machine_class_init(mc, rmc->board_rev);
+> +}
+> +
+> +static void raspi4b8g_machine_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    RaspiBaseMachineClass *rmc = RASPI_BASE_MACHINE_CLASS(oc);
+> +
+> +    rmc->board_rev = 0xd03114;
+> +    raspi4b_machine_class_init(mc, rmc->board_rev);
+> +}
+
+The only differences between these machine types are the
+amount of RAM, right? We shouldn't expose that to users
+via different board names. Provide a single board
+"raspi4b", give it whichever default amount of memory
+seems reasonable (I would suggest 1GB or 2GB, it avoids
+annoying problems with "make check" on 32-bit hosts), and
+let the user pick a different amount of RAM with the -m option
+as they usually would. (You can sanitize that to check they
+only picked a valid amount of RAM.)
+
+This seems also like a good point to ask for an extra patch
+which updates docs/system/arm/raspi.rst to document the
+new board type.
 
 thanks
 -- PMM

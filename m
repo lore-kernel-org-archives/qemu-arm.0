@@ -1,109 +1,108 @@
-Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1700519ejb;
-        Fri, 4 Aug 2023 05:11:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFtZNpFGlVcY+IwZJ59sgJ1wJ2Z/ghD3JhrHBdLD9pxPmpaaXu+uEvLV1MAf/r7YEfWuAFj
-X-Received: by 2002:a05:620a:4145:b0:76c:4388:faa4 with SMTP id k5-20020a05620a414500b0076c4388faa4mr2446327qko.6.1691151104129;
-        Fri, 04 Aug 2023 05:11:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691151104; cv=none;
+Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1701659ejb;
+        Fri, 4 Aug 2023 05:13:24 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHpJgOCNqrDeuJbx9YPSB9vx1M52dnaePyDI2S96AnkRf19xWNkZ10soyWOvHQirKLZw4/5
+X-Received: by 2002:a67:f1d6:0:b0:445:1ede:4e7d with SMTP id v22-20020a67f1d6000000b004451ede4e7dmr1158803vsm.21.1691151204492;
+        Fri, 04 Aug 2023 05:13:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691151204; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rp69aszHSwOcxEhWI6bfcEfe+LcAwKQ4yT9300QsPLuO4+YOjlpXDpfJAwavWnRSQe
-         +Wkd5qt9bJlq25wcDgTWzaMN6j/1VVoN3dalBb+0LKL29eAiuIxospkFQVC3uMNIpSYb
-         Mnrco1+I2WhmovpZuBq8tnetJUgSllWSh0ZrtVP5ZxcaooogTGVgOFn2WVOYTIHdfK+v
-         lq8/bE4EjUirHL2CpnHH4xKuxgZ4WBnkXzB+wCKk1y/F60G7zSSZztW3l/zYiXYIXAJr
-         /LWmWJhuapRpLb3BIctOJz+L7CqAkKWTWj8+qt30TgKGiPKFTRmwVkNaIMmoyu4tbZgY
-         th5w==
+        b=t4F9ZUcmAvggQtX3mC4ONTTyH2kw1vG/tsSELdFR5GmW2xmV7NGPrbmJ5WgkbrbAh2
+         qMgw49WKN9hbCLKcYq17pDQ0K1uMf3ZsYGYgQRs88hqhTJBMLYpjmsRthWrlF7r+pJEw
+         qXymbR73yLv/w94Pa3dDYQWSWdvFY3KqkkUVTKo4J3qktVMxP06+sdvuPoYis0/UHzbP
+         yvzaXxhPsEZsaEF3kBJQvDLrvRjMwvGid4O9W9aniQGfzrUHy1Ypsrm0aY1vwcjp1kDB
+         3IlISDGMMyry7yc0MnHeNRJlcJdWCk+XitQqolOS1w2sDgW4PvBt73kLWA7UK5piGfuX
+         9g9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Y+Hv8BQzh4Qs4BvB0g70cY4FhUBuz2y/muRQNDegEyg=;
+        bh=oP6Nv/sWOF7ZKHuQERNU0H3pM8N2LUjQWlVQj7efbV0=;
         fh=Pe/MIC7yvB073Sd6/4lunpd6aUW6AVi1jfN++S25pLo=;
-        b=ubqVepRk9yAaylQU61MdU7kuhVIwhZjzHeHVtHEZf8yJA5oRvvH5pbu37qnzkc2+15
-         Nxm6ecg0B4+w8Mexf6HiMnPaAyA9HSs7aKYp9UImKCBho1qJj0c87T5rWVnlfkHnkLyK
-         xNZ7gH6j5Kz/g1qAHeG9ba7UHr2D4UdXX24im1lSezpHxtWMVUPEFKagYrzHl8kZX5ud
-         0qKjdh76td7UZrGShdO921kWrzRs/xrzbG5Cr7n1ylrd8zpSO6apXneU+T6hg/Vxfz6Q
-         iEyWGBOTaOnfhaGubBV3Wci4bQKcC4DbP6Wy5/Ol+xwtoOV+4weDxbNcTnX85ujqSmbe
-         rXmA==
+        b=0hsJrmR/Ra5TcksZiOud68yTugw6FEZXZym/+utVVI29MAKd5UGJLrYjHwAKBjT6Af
+         wIt7KC3br+vWtEcLrcZw2dQV25+IVoVyqCBkCwtFRaAipO/VpYU9ilOH0tty7S3FdDla
+         PAakGn4jVuGfIi8BJdmmBTDWaYmLCwdmn4Y3mxo2ByHjmdcEpQPAu9zHP0UuL52dTv9l
+         yyzWmfXeXsuYt9gOb+ahgZpRUipfg8e17rdQIZM60TVbgz+vtb3g9dBYgSpzriLucW06
+         mh8P04a8GL5Yc6+wc+ZOZF395fCjvP8gkwpxLi8kBv6uMsGshQrDG7DKrITUuk7NVGtJ
+         xQrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="RMBP2/cT";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KU0YAg8K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d5-20020a37b405000000b0076caee4b64esi1101145qkf.262.2023.08.04.05.11.43
+        by mx.google.com with ESMTPS id n13-20020a05622a11cd00b00403bf9d2091si1175092qtk.363.2023.08.04.05.13.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Aug 2023 05:11:44 -0700 (PDT)
+        Fri, 04 Aug 2023 05:13:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="RMBP2/cT";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KU0YAg8K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qRtea-0006iu-07; Fri, 04 Aug 2023 08:11:36 -0400
+	id 1qRtgH-0000eQ-Dl; Fri, 04 Aug 2023 08:13:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qRteY-0006iD-KO
- for qemu-arm@nongnu.org; Fri, 04 Aug 2023 08:11:34 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1qRtgG-0000bG-4Z
+ for qemu-arm@nongnu.org; Fri, 04 Aug 2023 08:13:20 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qRteV-0003eU-KD
- for qemu-arm@nongnu.org; Fri, 04 Aug 2023 08:11:34 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-5223fbd54c6so2657811a12.3
- for <qemu-arm@nongnu.org>; Fri, 04 Aug 2023 05:11:30 -0700 (PDT)
+ id 1qRtgE-0003vP-DY
+ for qemu-arm@nongnu.org; Fri, 04 Aug 2023 08:13:19 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-523100882f2so1955505a12.2
+ for <qemu-arm@nongnu.org>; Fri, 04 Aug 2023 05:13:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691151089; x=1691755889;
+ d=linaro.org; s=google; t=1691151197; x=1691755997;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Y+Hv8BQzh4Qs4BvB0g70cY4FhUBuz2y/muRQNDegEyg=;
- b=RMBP2/cTO2MSckCH71oWmoDZQM79td7Ireayn8dTbjrfBA+7DSs4P2XudZvKaerZCO
- ewIj6RKwvqQvITJfhthE1JcBfFxrjQzwg8uhSjzz56phLiy+oWMvhqeAcN708YjDqL7p
- qR2NtUeOhw3Y7kGlVBuftfRTec34G/9J1capE0G9JpWZL43viDacQdkHPJNw/WhGA+8O
- 8yym2lnNHR5P0Hac8r1UUAjae8pqk44pl2D+s3ufG7lV2ncBe9STb8pzFABsUxl64Zio
- tlxYpOetghbaXPjixMI58eT+0SjPDRXg3bIRjVft5iIgDmutux/wMpuzX68lIp6LzTLq
- HDyw==
+ bh=oP6Nv/sWOF7ZKHuQERNU0H3pM8N2LUjQWlVQj7efbV0=;
+ b=KU0YAg8KfSJc9VaiF0NMiDu43sMOBsVp7AyiqOJUSxfCPkufmsnQjMLYVQ9BSTvWBv
+ LiR7sCzwj4riQfwLTBinf/JpGfgxJsLZMsvz6bpJT5jHJe4uh9eMjlRQZRIUGMbc9aFN
+ AuRJaZbjny5C2dM3KJU5gqp/0xUJ/27244QuX50L2TYrC2O+Mm8sEYydkWGw8KNx5oXp
+ s4ZEZvctq51DLAUmknnpjlaKBox2vo3kRoOKipwNwvRXtwXOimy8KCzz9Uu1ZXcJ6gDK
+ nKf97mOraF+CSI7zN1TL65TA8Xre9varf9JWgx2285K/WUaJRX9LIgEHkpnR2AUqQvgQ
+ dgFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691151089; x=1691755889;
+ d=1e100.net; s=20221208; t=1691151197; x=1691755997;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Y+Hv8BQzh4Qs4BvB0g70cY4FhUBuz2y/muRQNDegEyg=;
- b=Y8JYcKYCjIj1oekfIXmmxEZaOr8LOoRuKmRtmJYBwstwYvGbdh88qjn2+FwRugDQKn
- Zzho14tQ20A4D/H7x+88ZPh2t7rtdeL1SdHJLsuQFA49PQ/lqT7sbtnU0KPlavUnWZTr
- 5TzAZFh1d01m0GIzSknpvTi2CLU6qK91G4nmciaDXnUMkol03pCZmBFoErL4uJZhfFDW
- nv6mWTf9NruKR07nTK8jdTKB+xWYKrrq7mlKfJ/G7HGgIHhFKHTqzqhLqQlCamLNPXeG
- SSycRJfCWL40hDVetl6U9u2U1GVQRNGDcoabChoW0Z3P9VWYgUG1cj9JFgEpji59X/t4
- rgQQ==
-X-Gm-Message-State: AOJu0YwithJfJtohrYTfzckUL/iA7MxZXkm30oHiLkPj5l9Xm3KZY2nu
- i6i1qB1fgdYkNAEF4EUMj3OnDXDOjWO4zhr9o+nybw==
-X-Received: by 2002:a05:6402:110c:b0:523:1465:8876 with SMTP id
- u12-20020a056402110c00b0052314658876mr1439593edv.14.1691151089523; Fri, 04
- Aug 2023 05:11:29 -0700 (PDT)
+ bh=oP6Nv/sWOF7ZKHuQERNU0H3pM8N2LUjQWlVQj7efbV0=;
+ b=Fuq6tuW05F2xFJ32WgZLYVpaW5MtMwRbGpraxk8lZbUvO52BpmIOl5ExJbNXVBFYEv
+ M4gHloBK3gwlFcGT/igNMURH5FyPazDV63z/5o/n/7YTod173aeJXmj+0Bu8aSogNDkW
+ BfSg00kPgzUE3zUb3A96V3xUsZEor7BwDINf2y4d/79RHNLnGbPlSAx3PP5S4i2/BbgZ
+ VxlidhV+GL9zw5m8BPDLQ48+A07CTqvMy2WuI2DVrHEaoaW7XjSRUE0sJUHvnLkKdjaR
+ 00Lx99GQnZJwgj2V2nk+pWZnuWAEuAPVK0lZhgeNbNp4PdU2HirRtM89cFYaEykXNz8/
+ 7/GQ==
+X-Gm-Message-State: AOJu0YwTQvLGJVTTZ8eVX86A1aRB21KlIneJ/LIFln4/p0gqGlf2dBQc
+ BC+NpYoYD3QD0tudcBIu4Oy0ET5a/1pPMsySkASFgA==
+X-Received: by 2002:a50:fe8c:0:b0:522:472c:cc36 with SMTP id
+ d12-20020a50fe8c000000b00522472ccc36mr1261764edt.4.1691151196867; Fri, 04 Aug
+ 2023 05:13:16 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
- <20230726132512.149618-7-sergey.kambalin@auriga.com>
-In-Reply-To: <20230726132512.149618-7-sergey.kambalin@auriga.com>
+In-Reply-To: <20230726132512.149618-1-sergey.kambalin@auriga.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Aug 2023 13:11:18 +0100
-Message-ID: <CAFEAcA-b8z09mRCH5ZarvSng7sCXyVqEyoF5VvHiscfcr6H72A@mail.gmail.com>
-Subject: Re: [PATCH 06/44] Add BCM2838 GPIO stub
+Date: Fri, 4 Aug 2023 13:13:05 +0100
+Message-ID: <CAFEAcA_xyq3KjKVkrbtGktbS5OySZU2Q-gh_qqzv_iqnnDbQqQ@mail.gmail.com>
+Subject: Re: [PATCH 00/44] Raspberry Pi 4B machine
 To: Sergey Kambalin <serg.oker@gmail.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Sergey Kambalin <sergey.kambalin@auriga.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,174 +117,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a/hSJQc7mnvo
+X-TUID: OOVoBtTqGovU
 
-On Wed, 26 Jul 2023 at 15:29, Sergey Kambalin <serg.oker@gmail.com> wrote:
+On Wed, 26 Jul 2023 at 14:56, Sergey Kambalin <serg.oker@gmail.com> wrote:
 >
-> Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
-> ---
->  hw/gpio/bcm2838_gpio.c         | 136 +++++++++++++++++++++++++++++++++
->  hw/gpio/meson.build            |   5 +-
->  include/hw/gpio/bcm2838_gpio.h |  39 ++++++++++
->  3 files changed, 179 insertions(+), 1 deletion(-)
->  create mode 100644 hw/gpio/bcm2838_gpio.c
->  create mode 100644 include/hw/gpio/bcm2838_gpio.h
+> Introducing Raspberry Pi 4B model.
+> It contains new BCM2838 SoC, PCIE subsystem,
+> RNG200, Thermal sensor and Genet network controller.
 >
-> diff --git a/hw/gpio/bcm2838_gpio.c b/hw/gpio/bcm2838_gpio.c
-> new file mode 100644
-> index 0000000000..59be608250
-> --- /dev/null
-> +++ b/hw/gpio/bcm2838_gpio.c
-> @@ -0,0 +1,136 @@
-> +/*
-> + * Raspberry Pi (BCM2838) GPIO Controller
-> + * This implementation is based on bcm2835_gpio (hw/gpio/bcm2835_gpio.c)
-> + *
-> + * Copyright (c) 2022 Auriga LLC
-> + *
-> + * Authors:
-> + *  Lotosh, Aleksey <aleksey.lotosh@auriga.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "qemu/module.h"
-> +#include "qemu/timer.h"
-> +#include "qapi/error.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/gpio/bcm2838_gpio.h"
-> +
-> +#define GPFSEL0   0x00
-> +#define GPFSEL1   0x04
-> +#define GPFSEL2   0x08
-> +#define GPFSEL3   0x0C
-> +#define GPFSEL4   0x10
-> +#define GPFSEL5   0x14
-> +#define GPSET0    0x1C
-> +#define GPSET1    0x20
-> +#define GPCLR0    0x28
-> +#define GPCLR1    0x2C
-> +#define GPLEV0    0x34
-> +#define GPLEV1    0x38
-> +#define GPEDS0    0x40
-> +#define GPEDS1    0x44
-> +#define GPREN0    0x4C
-> +#define GPREN1    0x50
-> +#define GPFEN0    0x58
-> +#define GPFEN1    0x5C
-> +#define GPHEN0    0x64
-> +#define GPHEN1    0x68
-> +#define GPLEN0    0x70
-> +#define GPLEN1    0x74
-> +#define GPAREN0   0x7C
-> +#define GPAREN1   0x80
-> +#define GPAFEN0   0x88
-> +#define GPAFEN1   0x8C
-> +
-> +#define GPIO_PUP_PDN_CNTRL_REG0 0xE4
-> +#define GPIO_PUP_PDN_CNTRL_REG1 0xE8
-> +#define GPIO_PUP_PDN_CNTRL_REG2 0xEC
-> +#define GPIO_PUP_PDN_CNTRL_REG3 0xF0
-> +
-> +#define RESET_VAL_CNTRL_REG0 0xAAA95555;
-> +#define RESET_VAL_CNTRL_REG1 0xA0AAAAAA;
-> +#define RESET_VAL_CNTRL_REG2 0x50AAA95A;
-> +#define RESET_VAL_CNTRL_REG3 0x00055555;
-> +
-> +#define BYTES_IN_WORD        4
-> +
-> +static uint64_t bcm2838_gpio_read(void *opaque, hwaddr offset, unsigned size)
-> +{
-> +    uint64_t value = 0;
-> +
-> +    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
-> +                    TYPE_BCM2838_GPIO, __func__, offset);
+> It can work with recent linux kernels 6.x.x.
+> Two avocado tests was added to check that.
+>
+> Unit tests has been made as read/write operations
+> via mailbox properties.
+>
+> Genet integration test is under development.
+>
+> Every single commit
+> 1) builds without errors
+> 2) passes regression tests
+> 3) passes style check*
+> *the only exception is bcm2838-mbox-property-test.c file
+> containing heavy macros usage which cause a lot of
+> false-positives of checkpatch.pl.
+>
+> I did my best to keep the commits less than 200 changes,
+> but had to make some of them a bit more in order to
+> keep their integrity.
 
-Indentation is a bit off here -- usual QEMU standard is that on
-subsequent lines, the first character of the argument lines
-up with the first character of the argument on line 1, like this:
+Thanks for doing this -- I really like the way the split
+has turned out, and the overall structure of the patchseries
+is good. I'm going through the patches individually
+(which will probably take me into next week to finish)
+but I'm not seeing anything major, just some smaller
+issues.
 
-
-    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
-                  TYPE_BCM2838_GPIO, __func__, offset);
-
-> +
-> +    return value;
-> +}
-> +
-> +static void bcm2838_gpio_write(void *opaque, hwaddr offset, uint64_t value,
-> +                               unsigned size)
-> +{
-> +    qemu_log_mask(LOG_UNIMP, "%s: %s: not implemented for %"HWADDR_PRIx"\n",
-> +                    TYPE_BCM2838_GPIO, __func__, offset);
-> +}
-> +
-> +static void bcm2838_gpio_reset(DeviceState *dev)
-> +{
-> +    BCM2838GpioState *s = BCM2838_GPIO(dev);
-> +
-> +    s->lev0 = 0;
-> +    s->lev1 = 0;
-> +
-> +    s->pup_cntrl_reg[0] = RESET_VAL_CNTRL_REG0;
-> +    s->pup_cntrl_reg[1] = RESET_VAL_CNTRL_REG1;
-> +    s->pup_cntrl_reg[2] = RESET_VAL_CNTRL_REG2;
-> +    s->pup_cntrl_reg[3] = RESET_VAL_CNTRL_REG3;
-> +}
-> +
-> +static const MemoryRegionOps bcm2838_gpio_ops = {
-> +    .read = bcm2838_gpio_read,
-> +    .write = bcm2838_gpio_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +};
-> +
-> +static void bcm2838_gpio_init(Object *obj)
-> +{
-> +    BCM2838GpioState *s = BCM2838_GPIO(obj);
-> +    DeviceState *dev = DEVICE(obj);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +
-> +    memory_region_init_io(
-> +        &s->iomem, obj,
-> +        &bcm2838_gpio_ops, s, "bcm2838_gpio", BCM2838_GPIO_REGS_SIZE);
-
-Indentation is weird here too.
-
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +    qdev_init_gpio_out(dev, s->out, BCM2838_GPIO_NUM);
-> +}
-> +
-> +static void bcm2838_gpio_realize(DeviceState *dev, Error **errp)
-> +{
-> +    /* Temporary stub. Do nothing */
-> +}
-> +
-> +static void bcm2838_gpio_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->realize = &bcm2838_gpio_realize;
-> +    dc->reset = &bcm2838_gpio_reset;
-
-You also need a vmstate struct, for migration and vmsave/load.
-
-> +}
-> +
-> +static const TypeInfo bcm2838_gpio_info = {
-> +    .name          = TYPE_BCM2838_GPIO,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(BCM2838GpioState),
-> +    .instance_init = bcm2838_gpio_init,
-> +    .class_init    = bcm2838_gpio_class_init,
-> +};
-> +
-> +static void bcm2838_gpio_register_types(void)
-> +{
-> +    type_register_static(&bcm2838_gpio_info);
-> +}
-
-thanks
 -- PMM

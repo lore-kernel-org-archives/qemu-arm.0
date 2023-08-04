@@ -1,202 +1,145 @@
-Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1818978ejb;
-        Fri, 4 Aug 2023 08:13:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFC2sPi3fCJpRXt9N6rxDsRXwPNEBBGTS++iiy07TOBfRGk9Pol2Runo+hOIlTsooy/8zEx
-X-Received: by 2002:a05:620a:430b:b0:765:7d7b:7197 with SMTP id u11-20020a05620a430b00b007657d7b7197mr2185964qko.31.1691162007751;
-        Fri, 04 Aug 2023 08:13:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691162007; cv=none;
+Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1907072ejb;
+        Fri, 4 Aug 2023 10:27:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHSqDCfo4kAEM0Ql1pXXFCMQuGzoTf5y0UtLgjb99Q8pfBPTzFPf2nOXr1Axd3CrWn63qRd
+X-Received: by 2002:a17:90a:be16:b0:262:d661:2963 with SMTP id a22-20020a17090abe1600b00262d6612963mr2064238pjs.39.1691170026780;
+        Fri, 04 Aug 2023 10:27:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691170026; cv=none;
         d=google.com; s=arc-20160816;
-        b=m1O1SwYuoxX4coESQOsJ4wXRi5htnmE6AmOde6rDNPe2/gd6aiq04p8uBKCw/cZDSl
-         PgCWSIVUDOPYHZXAjR0eg1sWYEmUDGwtZUqVhI2nEvnbWk47EHL+hF4rnLBpTlr61yoP
-         LQUVJG7pVFLPAnB8/OY3hs9KD4B4AIc0JWJWLBf1wkT5LEQXZ7bHwP4isLxHBmk4UEOP
-         1su38wZ/KNACQLuxKbgqCKfNwkHGpRDROHsIIoQCHWvBJjDAdfw69oKmxGkjyCvxu2eg
-         M+SdmMmVAE3g6Horz7ejnktqIq/PPnk8ompXsm7x4ZM8pG70UHCg8O13em9hMvX/Av35
-         6dmw==
+        b=roWFxpHRn1ypoL+g85GDET49chysPFjWqc4RGnSuUHYRyNMkUSAleCWrqgzR+gKcbL
+         lbuVatnmFzs3v+jZI7iXw6xrUWB/qe9Z4p/FHZGJ+V/ZwZRUq71emXcADFfYUYUXDM09
+         YOtBMiXtLjzQETvuU9PmuW+FvB9nQTTpACxwaWvk+gqVISJ18oQj2uF/l5wvz0LYoOrl
+         LiaqNAMVcglmtytYq1u9DfL3Wvpdr8SWe6XYTcfptxbooVQJszlCAjqFuJj5pNmI63B2
+         9V6NkgKMaC/ibS7lfuUflJ1M3b4UnfWSIR9ZI5F2Zx9Xipf+1uJX9sYGg1YcQ+T61rll
+         TyRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=GCVl8zUDpczZnc+TFfUIxMXu3DiI2oN6XNnU4nWDf5I=;
-        fh=H5dLeUdSkLHkiHWerK+v0sq3PEX59ronF5ibH0oAUoI=;
-        b=Da8c2UXZMUrAWJYSP2idkxwI34RRSIlEtiSaWKSa6LMDPhxuwZSOo98htlBosT89LV
-         2+ohnF+/V3fKP9RMvbU7RW19ezeagEOiI0NkbNAY8jtycLUpFGypvuhM2BboEMs00Qjk
-         ZauJ9+6RHorPLsbm87KDRrHDa6dxm+BjaL5rpgsUcepXq9YroXfLkjPJWWFMHQTzDqbj
-         V9gpNuh7bvlTFdBAjcDgOxoDoTVGBSatB7mrYpy2ZXg+LVVnq4EE9zzXTbEDCPDvNW0i
-         avcZf51xyVVbcscvoPcptZhVSDHW0A15iivDj8gjiPSuRCllfwPjZmlT/eZa+rNps0/J
-         y8zA==
+        h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=t0nTOeFqnFzKnRnAXx88oyJs4DA0yn0GoPkWdFMCgC4=;
+        fh=XsubhDhda3Jy2jwSl6ul4B/gOYNpncuz9O4UsSnbTZg=;
+        b=ojHF60Z/WOFmNontT6z/elFPv7GOtKnFMXpCGbJ3+uJDEDUkQxvzeg7oTPk10EYqjK
+         AOrMYg+/tthDfTpMk2DIAaTM1WX0OM7dMCMHms67uVClAgZ8DB5eu6LExMpjZSpQvV+/
+         qcZB7jPoxEx8rGe4TMkmzWhiDxH/wxnF9Jm5/s+gbeGmdDw6vfwrpMjzpWTwatqAcd5s
+         YOPrffJN6e6jgRuOkYaiL30cgTusZcU+8bgVgCpu70UVgKtOGz5FL9FYE0l14azBnlPo
+         aN3U5sIlZQtC/6+eC03PU6aALFc7IAiErA4ZXCEwWVy6rk3gbRnDp0vkGWM8LOVSwtL7
+         6Wcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f5-20020a05620a408500b0076772fddf89si1427203qko.439.2023.08.04.08.13.27
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Aug 2023 08:13:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NnbURue9;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id lt14-20020a17090b354e00b0026811da0fafsi2091326pjb.65.2023.08.04.10.27.06;
+        Fri, 04 Aug 2023 10:27:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qRwUU-0006qA-8y; Fri, 04 Aug 2023 11:13:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <francisyuu@B-L8MBMD6R-2342.local>)
- id 1qRpv4-00069V-Cy; Fri, 04 Aug 2023 04:12:22 -0400
-Received: from [2401:b180:8000:2:9109:19ec:a055:9652]
- (helo=B-L8MBMD6R-2342.local) by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <francisyuu@B-L8MBMD6R-2342.local>)
- id 1qRpv1-0002sj-3F; Fri, 04 Aug 2023 04:12:22 -0400
-Received: by B-L8MBMD6R-2342.local (Postfix, from userid 502)
- id A63C7343C41; Fri,  4 Aug 2023 15:50:54 +0800 (CST)
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?=E4=BA=8E=E8=88=AA?= <1339236493@qq.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org (open list:ASPEED BMCs)
-Subject: [PATCH] Aspeed: i2c: Fixed Tx and Rx error in BUFF Mode
-Date: Fri,  4 Aug 2023 15:50:42 +0800
-Message-Id: <20230804075042.51204-1-1339236493@qq.com>
-X-Mailer: git-send-email 2.39.2 (Apple Git-143)
+       dkim=pass header.i=@linaro.org header.s=google header.b=NnbURue9;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S231733AbjHDR1F (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Fri, 4 Aug 2023 13:27:05 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:52972 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S231771AbjHDR1D (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 4 Aug 2023 13:27:03 -0400
+Received: from mail-ed1-x533.google.com (mail-ed1-x533.google.com [IPv6:2a00:1450:4864:20::533])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D282746A6
+        for <kvm@vger.kernel.org>; Fri,  4 Aug 2023 10:27:02 -0700 (PDT)
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-5231f439968so916533a12.0
+        for <kvm@vger.kernel.org>; Fri, 04 Aug 2023 10:27:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1691170021; x=1691774821;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=t0nTOeFqnFzKnRnAXx88oyJs4DA0yn0GoPkWdFMCgC4=;
+        b=NnbURue9QVpbCAE6+MyqLRHPNIAYc3jnsxxUWAn1hNTR523mEqOhomdRB+QV5vKg8y
+         hWAD+Kl6pcZGFnJuUzufsnFqHcwCqyaUncLztoFqyY6AiGMsGj/kv3MbJmSmOcqDqt8r
+         dMdS6/gGEwb/uFNviF5mrNqoFe242pm/PuCccQsoSiBsmHqUqrkuqSMYmbsiF/JlYo8G
+         eCG6hW5uyrWN/NVJz5eo9amz5pU25QNonY9L9aJ/vwjeAbLoFdedeO0LaNMpCoQDH+3K
+         LhdIxvwpQMDXFlnDGVx3oEUmv+D0kfmT06YDxPqxup6HARxJghQsVHCEBsHJSjLxife/
+         Accg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691170021; x=1691774821;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=t0nTOeFqnFzKnRnAXx88oyJs4DA0yn0GoPkWdFMCgC4=;
+        b=NnpOmFcWdERuxwR37ecwR/trfea3C+9yfmhUVH8LHHSCeYS/fInL+khmlNfsiPtK5i
+         dfnto4RaNblTIpoHzJJOLyHHsnDSrt4NPlBd7z25i5jhdf2lCZuzR6tZdQ4Po0Pljf4L
+         n77B2vnkyOA/dUERWdJtep+5qtZv+JsBXXKcayQV2tDB01G9XRmXI1RW9tn8W6oca0zq
+         87HAUNBTaeZiPoAjvKM328/NWUqc4Q/Ka/LCMgw2p6JdQHPoCAwIy4VYVkaO8lBZrUpw
+         ZtMP/wnb+fuwnIQNbCLfDNMIX5VA9MCTihkWGGoukIJfHjVJDqAEDVxbiUKPmCMrIP/6
+         D11A==
+X-Gm-Message-State: AOJu0YydtjXJ/hboOcV50GMH+FEurt1XtFIzwjufK8eUNLpyl8rBvd3+
+        vgHBezDUDFYGc++6fmSrSLd8j0a4VnpTfaKqdEyPwRpfM8StzU/T
+X-Received: by 2002:aa7:c383:0:b0:522:219b:ce05 with SMTP id
+ k3-20020aa7c383000000b00522219bce05mr2343717edq.7.1691170021093; Fri, 04 Aug
+ 2023 10:27:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for
- 2401:b180:8000:2:9109:19ec:a055:9652 (failed)
-Received-SPF: none client-ip=2401:b180:8000:2:9109:19ec:a055:9652;
- envelope-from=francisyuu@B-L8MBMD6R-2342.local; helo=B-L8MBMD6R-2342.local
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.249, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NO_DNS_FOR_FROM=0.001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001, SPOOFED_FREEMAIL=0.001,
- SPOOFED_FREEMAIL_NO_RDNS=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 04 Aug 2023 11:13:21 -0400
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  =?UTF-8?q?=E4=BA=8E=E8=88=AA?= <1339236493@qq.com>
-From:  =?UTF-8?q?=E4=BA=8E=E8=88=AA?= via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8ou2Qgvw9GEP
+References: <20230727073134.134102-1-akihiko.odaki@daynix.com> <20230727073134.134102-2-akihiko.odaki@daynix.com>
+In-Reply-To: <20230727073134.134102-2-akihiko.odaki@daynix.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Fri, 4 Aug 2023 18:26:49 +0100
+Message-ID: <CAFEAcA_26e2G_qLA8DEcv74MADgquhiVkWEZkh_wL0+JxAf91Q@mail.gmail.com>
+Subject: Re: [PATCH v5 1/6] kvm: Introduce kvm_arch_get_default_type hook
+To:     Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+        version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: aMoqCAZQcE7p
 
-1. Fixed inconsistency between the bit field definition in register
-I2CD_POOL_CTRL and the ast2600 datasheet
-2. Fixed issue of confusing RXSIZE and RXCOUNT, as well as forgetting
-to add one to TXCOUNT and RXSIZE in buff mode
-3. Fixed issue with TXBUF transmission start position error in buff mode
-4. Added support for the BUFFER ORGANIZATION option in reg I2CC_POOL_CTRL
-After adding these changes, QEMU can support driver code:
-https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v5.15
-/drivers/i2c/busses/i2c-ast2600.c
+On Thu, 27 Jul 2023 at 08:31, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+>
+> kvm_arch_get_default_type() returns the default KVM type. This hook is
+> particularly useful to derive a KVM type that is valid for "none"
+> machine model, which is used by libvirt to probe the availability of
+> KVM.
+>
+> For MIPS, the existing mips_kvm_type() is reused. This function ensures
+> the availability of VZ which is mandatory to use KVM on the current
+> QEMU.
+>
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+>  include/sysemu/kvm.h     | 2 ++
+>  target/mips/kvm_mips.h   | 9 ---------
+>  accel/kvm/kvm-all.c      | 4 +++-
+>  hw/mips/loongson3_virt.c | 2 --
+>  target/arm/kvm.c         | 5 +++++
+>  target/i386/kvm/kvm.c    | 5 +++++
+>  target/mips/kvm.c        | 2 +-
+>  target/ppc/kvm.c         | 5 +++++
+>  target/riscv/kvm.c       | 5 +++++
+>  target/s390x/kvm/kvm.c   | 5 +++++
+>  10 files changed, 31 insertions(+), 13 deletions(-)
+>
+> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> index 115f0cca79..ccaf55caf7 100644
+> --- a/include/sysemu/kvm.h
+> +++ b/include/sysemu/kvm.h
+> @@ -369,6 +369,8 @@ int kvm_arch_get_registers(CPUState *cpu);
+>
+>  int kvm_arch_put_registers(CPUState *cpu, int level);
+>
+> +int kvm_arch_get_default_type(MachineState *ms);
+> +
 
-Signed-off-by:于航<1339236493@qq.com>
----
- hw/i2c/aspeed_i2c.c         | 21 ++++++---------------
- include/hw/i2c/aspeed_i2c.h |  5 +++--
- 2 files changed, 9 insertions(+), 17 deletions(-)
+New global functions should have a doc comment that explains
+what they do, what their API is, etc. For instance, is
+this allowed to return an error, and if so, how ?
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 1f071a3811..0e380d0bba 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -236,7 +236,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
-     uint32_t reg_byte_buf = aspeed_i2c_bus_byte_buf_offset(bus);
-     uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
-     int pool_tx_count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl,
--                                                TX_COUNT);
-+                                                TX_COUNT)+1;
- 
-     if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
-         for (i = pool_start; i < pool_tx_count; i++) {
-@@ -293,10 +293,12 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
-     uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
-     uint32_t reg_dma_addr = aspeed_i2c_bus_dma_addr_offset(bus);
-     int pool_rx_count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl,
--                                                RX_COUNT);
-+                                                RX_SIZE)+1;
- 
-     if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_BUFF_EN)) {
--        uint8_t *pool_base = aic->bus_pool_base(bus);
-+        uint8_t *pool_base ;
-+        if(ARRAY_FIELD_EX32(bus->regs,I2CC_POOL_CTRL,BUF_ORGANIZATION))pool_base=aic->bus_pool_base(bus)+16;
-+        else pool_base= aic->bus_pool_base(bus);
- 
-         for (i = 0; i < pool_rx_count; i++) {
-             pool_base[i] = i2c_recv(bus->bus);
-@@ -418,7 +420,7 @@ static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
-     uint32_t reg_intr_sts = aspeed_i2c_bus_intr_sts_offset(bus);
-     uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
-     if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_BUFF_EN)) {
--        count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT);
-+        count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT)+1;
-     } else if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_DMA_EN)) {
-         count = bus->regs[reg_dma_len];
-     } else { /* BYTE mode */
-@@ -449,7 +451,6 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
-     uint8_t pool_start = 0;
-     uint32_t reg_intr_sts = aspeed_i2c_bus_intr_sts_offset(bus);
-     uint32_t reg_cmd = aspeed_i2c_bus_cmd_offset(bus);
--    uint32_t reg_pool_ctrl = aspeed_i2c_bus_pool_ctrl_offset(bus);
-     uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
- 
-     if (!aspeed_i2c_check_sram(bus)) {
-@@ -489,16 +490,6 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
-          * else needs to be sent in this sequence.
-          */
-         if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
--            if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT)
--                == 1) {
--                SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_TX_CMD, 0);
--            } else {
--                /*
--                 * Increase the start index in the TX pool buffer to
--                 * skip the address byte.
--                 */
--                pool_start++;
--            }
-         } else if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_DMA_EN)) {
-             if (bus->regs[reg_dma_len] == 0) {
-                 SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_TX_CMD, 0);
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index 51c944efea..88b144a599 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -139,9 +139,9 @@ REG32(I2CD_CMD, 0x14) /* I2CD Command/Status */
- REG32(I2CD_DEV_ADDR, 0x18) /* Slave Device Address */
-     SHARED_FIELD(SLAVE_DEV_ADDR1, 0, 7)
- REG32(I2CD_POOL_CTRL, 0x1C) /* Pool Buffer Control */
--    SHARED_FIELD(RX_COUNT, 24, 5)
-+    SHARED_FIELD(RX_COUNT, 24, 6)
-     SHARED_FIELD(RX_SIZE, 16, 5)
--    SHARED_FIELD(TX_COUNT, 9, 5)
-+    SHARED_FIELD(TX_COUNT, 8, 5)
-     FIELD(I2CD_POOL_CTRL, OFFSET, 2, 6) /* AST2400 */
- REG32(I2CD_BYTE_BUF, 0x20) /* Transmit/Receive Byte Buffer */
-     SHARED_FIELD(RX_BUF, 8, 8)
-@@ -162,6 +162,7 @@ REG32(I2CC_MS_TXRX_BYTE_BUF, 0x08)
-     /* 15:0  shared with I2CD_BYTE_BUF[15:0] */
- REG32(I2CC_POOL_CTRL, 0x0c)
-     /* 31:0 shared with I2CD_POOL_CTRL[31:0] */
-+    FIELD(I2CC_POOL_CTRL, BUF_ORGANIZATION, 0, 1) /* AST2600 */
- REG32(I2CM_INTR_CTRL, 0x10)
- REG32(I2CM_INTR_STS, 0x14)
-     FIELD(I2CM_INTR_STS, PKT_STATE, 28, 4)
--- 
-2.39.2 (Apple Git-143)
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+thanks
+-- PMM

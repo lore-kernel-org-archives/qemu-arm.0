@@ -1,38 +1,38 @@
-Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1818927ejb;
-        Fri, 4 Aug 2023 08:13:24 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGy1uooj4yTSE5n5kWY2HBebGwjHdL8ExtqCnRkR1+fyxedp2LQpvKHLdpL6u5Ace/zvz2A
-X-Received: by 2002:ad4:53ab:0:b0:637:a513:25ef with SMTP id j11-20020ad453ab000000b00637a51325efmr1892712qvv.36.1691162003631;
-        Fri, 04 Aug 2023 08:13:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691162003; cv=none;
+Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1818978ejb;
+        Fri, 4 Aug 2023 08:13:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFC2sPi3fCJpRXt9N6rxDsRXwPNEBBGTS++iiy07TOBfRGk9Pol2Runo+hOIlTsooy/8zEx
+X-Received: by 2002:a05:620a:430b:b0:765:7d7b:7197 with SMTP id u11-20020a05620a430b00b007657d7b7197mr2185964qko.31.1691162007751;
+        Fri, 04 Aug 2023 08:13:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691162007; cv=none;
         d=google.com; s=arc-20160816;
-        b=rBHRcCLidtnbhNGuz1FImqPuGfrUmc44xmUwCFeJVLf+WyYZG0mT9CyXxdENBg9Jcg
-         5gz4EI2OFWwZT50iq3C8SJNZjiPQKrNKVs910dvXPuaGf1+sdFMTOIAsNP++f95yqNb5
-         yLQFYcaKmIBeqzW4CfcU47VYcpdNEJyenVk1SIzAzWQ1wjPp+r5JDXZ02RoZf7jaYpHb
-         83BsyWT3sNx80q4uTwjpATtr0zWGpVeuDrjeSClaa6Ui2Bj2bH3dTicyVkp22efI+eB3
-         /lML48vk8hSW4AUfXrwx6yFWv+2k+XF/5U7Lz6dWBvSovghl5nv3BO/RT1aEyxEoTkVY
-         Lwig==
+        b=m1O1SwYuoxX4coESQOsJ4wXRi5htnmE6AmOde6rDNPe2/gd6aiq04p8uBKCw/cZDSl
+         PgCWSIVUDOPYHZXAjR0eg1sWYEmUDGwtZUqVhI2nEvnbWk47EHL+hF4rnLBpTlr61yoP
+         LQUVJG7pVFLPAnB8/OY3hs9KD4B4AIc0JWJWLBf1wkT5LEQXZ7bHwP4isLxHBmk4UEOP
+         1su38wZ/KNACQLuxKbgqCKfNwkHGpRDROHsIIoQCHWvBJjDAdfw69oKmxGkjyCvxu2eg
+         M+SdmMmVAE3g6Horz7ejnktqIq/PPnk8ompXsm7x4ZM8pG70UHCg8O13em9hMvX/Av35
+         6dmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to;
-        bh=OTSofsSisbfAdh8rqbt6D92uYFpZj3oJDirCOZ2XpPs=;
-        fh=vQFBeAw3Taj7+5cdNTf/uGiAuQJc1rzye/YBZsaU1GY=;
-        b=i42ImxhPd1Qauq61JGgKMlXEeXsdqhDwvPBeJG6JQVz2Sof9HhC5gmNi6j7RxJ0BTu
-         N0zuT5eg3Jy3YDJJ+6ET+n6/SjyIotu31USKCaUCc650BD8tUUU3EwUiTAz//VWAmvOj
-         fuzZ62D385+d1IDhNZu57AvmPyinFPz/eaWrpxGZgf4mSFALmIX3aFhxyTMcpLwJIx19
-         VKzT/ukKJxmi9yJG4Q/EFNkS7EhnQGRENs+cjND3mkkkZcWWOqSbLGSJ4Rw3d6rkSiO8
-         AeZDnCCEfFQv4Q1wsdutzXlINPMn4GGanJ92wRxWjJc9KdsfUvdEcNdL9XF3K2M3/w49
-         Eq2Q==
+        bh=GCVl8zUDpczZnc+TFfUIxMXu3DiI2oN6XNnU4nWDf5I=;
+        fh=H5dLeUdSkLHkiHWerK+v0sq3PEX59ronF5ibH0oAUoI=;
+        b=Da8c2UXZMUrAWJYSP2idkxwI34RRSIlEtiSaWKSa6LMDPhxuwZSOo98htlBosT89LV
+         2+ohnF+/V3fKP9RMvbU7RW19ezeagEOiI0NkbNAY8jtycLUpFGypvuhM2BboEMs00Qjk
+         ZauJ9+6RHorPLsbm87KDRrHDa6dxm+BjaL5rpgsUcepXq9YroXfLkjPJWWFMHQTzDqbj
+         V9gpNuh7bvlTFdBAjcDgOxoDoTVGBSatB7mrYpy2ZXg+LVVnq4EE9zzXTbEDCPDvNW0i
+         avcZf51xyVVbcscvoPcptZhVSDHW0A15iivDj8gjiPSuRCllfwPjZmlT/eZa+rNps0/J
+         y8zA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e17-20020a0caa51000000b0063d45c90703si1284222qvb.124.2023.08.04.08.13.23
+        by mx.google.com with ESMTPS id f5-20020a05620a408500b0076772fddf89si1427203qko.439.2023.08.04.08.13.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Aug 2023 08:13:23 -0700 (PDT)
+        Fri, 04 Aug 2023 08:13:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -40,27 +40,28 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qRwUU-0006q6-6M; Fri, 04 Aug 2023 11:13:22 -0400
+	id 1qRwUU-0006qA-8y; Fri, 04 Aug 2023 11:13:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <francisyuu@B-L8MBMD6R-2342.local>)
- id 1qRpv4-00069U-Cu; Fri, 04 Aug 2023 04:12:22 -0400
+ id 1qRpv4-00069V-Cy; Fri, 04 Aug 2023 04:12:22 -0400
 Received: from [2401:b180:8000:2:9109:19ec:a055:9652]
  (helo=B-L8MBMD6R-2342.local) by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <francisyuu@B-L8MBMD6R-2342.local>)
- id 1qRpv1-0002sm-0M; Fri, 04 Aug 2023 04:12:22 -0400
+ id 1qRpv1-0002sj-3F; Fri, 04 Aug 2023 04:12:22 -0400
 Received: by B-L8MBMD6R-2342.local (Postfix, from userid 502)
- id 452233446D1; Fri,  4 Aug 2023 16:12:13 +0800 (CST)
+ id A63C7343C41; Fri,  4 Aug 2023 15:50:54 +0800 (CST)
 To: qemu-devel@nongnu.org
-Cc: Hang Yu <1339236493@qq.com>,
+Cc: =?UTF-8?q?=E4=BA=8E=E8=88=AA?= <1339236493@qq.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org (open list:ASPEED BMCs)
 Subject: [PATCH] Aspeed: i2c: Fixed Tx and Rx error in BUFF Mode
-Date: Fri,  4 Aug 2023 16:11:42 +0800
-Message-Id: <20230804081142.52539-1-1339236493@qq.com>
+Date: Fri,  4 Aug 2023 15:50:42 +0800
+Message-Id: <20230804075042.51204-1-1339236493@qq.com>
 X-Mailer: git-send-email 2.39.2 (Apple Git-143)
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Host-Lookup-Failed: Reverse DNS lookup failed for
  2401:b180:8000:2:9109:19ec:a055:9652 (failed)
@@ -88,11 +89,11 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Hang Yu <1339236493@qq.com>
-From:  Hang Yu via <qemu-arm@nongnu.org>
+Reply-to:  =?UTF-8?q?=E4=BA=8E=E8=88=AA?= <1339236493@qq.com>
+From:  =?UTF-8?q?=E4=BA=8E=E8=88=AA?= via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hh1wxnMB9E/F
+X-TUID: 8ou2Qgvw9GEP
 
 1. Fixed inconsistency between the bit field definition in register
 I2CD_POOL_CTRL and the ast2600 datasheet
@@ -104,7 +105,7 @@ After adding these changes, QEMU can support driver code:
 https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v5.15
 /drivers/i2c/busses/i2c-ast2600.c
 
-Signed-off-by: Hang Yu <1339236493@qq.com>
+Signed-off-by:于航<1339236493@qq.com>
 ---
  hw/i2c/aspeed_i2c.c         | 21 ++++++---------------
  include/hw/i2c/aspeed_i2c.h |  5 +++--

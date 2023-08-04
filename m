@@ -1,261 +1,178 @@
-Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1725402ejb;
-        Fri, 4 Aug 2023 05:53:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGExbEElIgSDpfYBKJahWCu7c55k7E/bnoVGK/9hmyOYqfJpwTaX8TyP6w/hSk1miB6UXNZ
-X-Received: by 2002:a0c:e24f:0:b0:62d:f04b:b51 with SMTP id x15-20020a0ce24f000000b0062df04b0b51mr1790039qvl.29.1691153639081;
-        Fri, 04 Aug 2023 05:53:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691153639; cv=none;
+Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1726714ejb;
+        Fri, 4 Aug 2023 05:56:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHECTxN16nOxGIJYcadrHYvYGVOm+fyhSLiVSuyKBnmbJQuFYgEU61i/FLken0u7ECGquDs
+X-Received: by 2002:a05:622a:1648:b0:40a:fc6a:e86e with SMTP id y8-20020a05622a164800b0040afc6ae86emr1929823qtj.62.1691153804265;
+        Fri, 04 Aug 2023 05:56:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691153804; cv=none;
         d=google.com; s=arc-20160816;
-        b=KIYU+C86yqCJ2BbN1Gn5QyiZlH5KRCsTemoIlRmBtzu+uR42afpMLi3ckrnmI93/hE
-         JQAki3p+ErDU1dXQYEVrrsWB1DxeZfIPKvpdI404leN/y/AYx5oKni7npzXK4uX6jfz0
-         1JvlQCP/T1imjBZSva4M2GST7VYWo5qJO+jO1M8/D/g5+sURbsY5HUzlvzBRM4XgY1j7
-         bKFFRmXqJEk5ntuPSNUXqM26tp9r+yXRGaURvdKHQqnDDLGiosWoO6mhy90mkOdoYoLn
-         QZzklYoDCWwr5ffJfvjqPQgBDQAXYxOpBF4vqYThusT5Lu70ws4iN7W/C88RdYw3UiTx
-         2ekQ==
+        b=lXMjZ7P+UrD0qcanvBYIfOsdyrxCC2WwRAWMHFBz/YZqvqHPezrMkEOaDUSpiiInhn
+         tmGLjDjDYkpN/OgBOe5F8D0/JihrnvYESNxBWqQ7rOJZHWW29OZZ5b5iSR6YxhQAqQ4O
+         7ZlX4we0+9gO7kx7OSTIyCyEy0D8fCMuI/UouG7rVlUheenV46Z1ohG1JR3luT2lzP51
+         0Hlj7lHvrzZ4ov/XsbAoLyh/hKXHXyU15CShdb+QGBYo2Vkaq+ZE92spFaAZM92LyGy0
+         cRLZgW/KAalev+akIiiQyGnZmmX4uzf2Cu3LUdox1HaPWimJUqqZqZ6WNXS1v9PmJsoD
+         +f+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=cLixGaYVMlT8KQNTYX8Vc9UsltoccqnmzBpAwDwULgk=;
+        bh=6U61MjXLtP3NkaKUtU+YZZFVPUnYtCxQmJilaj4LaMY=;
         fh=Pe/MIC7yvB073Sd6/4lunpd6aUW6AVi1jfN++S25pLo=;
-        b=ja1R43+MI8930F7LPGhotW+r+2srGaqEYRcva+Wb8VnopXu6Yy5EeTo2O4EPT4bNRo
-         /cf/kNJhP921gc7Vt/2awNJwku6CTvJJg6GdVMJM9lG3GjDBYlOthTsYBQHz5zvIZOj/
-         x3d4nDXbKb0CImiVoiz9U6TvDMrzNhUljMe/tGK1tlaoIX3i7d9ByjaldzwWK483N6jy
-         QdDmgnwT3+ta4MCmpjXJJAAjhvPDiAa3vfSeAPI5wMupqxeaugBa9M7SiePiOk53F8wi
-         PG5VJQKodbMRaf9Hg5Z9phN0UIpLYEL1WJqwZr+aAnyNKZJJZxSPWAfg1bUwOd6XSQss
-         H6bg==
+        b=aBCroEJi5NtrT3w72+D7/94CGcxI7YKPWRTUUlImtb07g/LIYJpZrSS9V9Zn9cHgd9
+         5qoPkRRKVUMqx+0fzxalHkm2rYXXCZq31os5NIWel+FMOtCfWPPCqyf6zzmAj13cGe+i
+         UOh5VUBwyYNwv1QbMPxJQFKf4K4B2Dczw9vK/93rS36bM8hRn8JrF+3rSUYPJJRB1lZl
+         aVBfjh5u3Y8gyV5nD8Ir+jlKN3Kh6P7KWtA4G68cbGpPzJfq4XAF8oUSPZDbM1LRaDl8
+         781UD1SZ0CPyMHt4WqUvvnF7MmjUnJfkM9Sy3EIPcY9D1kj29YCk1iNudM4rzbYTtGWz
+         2jSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pY7TQVP3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QvJf6e+b;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p11-20020a0ce18b000000b0063d14c26f8fsi1174733qvl.337.2023.08.04.05.53.58
+        by mx.google.com with ESMTPS id t5-20020a05622a01c500b00403f3141703si1213150qtw.619.2023.08.04.05.56.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Aug 2023 05:53:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 04 Aug 2023 05:56:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pY7TQVP3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QvJf6e+b;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qRuJ3-0003rE-72; Fri, 04 Aug 2023 08:53:25 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qRuLw-0006N0-KG; Fri, 04 Aug 2023 08:56:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qRuJ0-0003qn-0y
- for qemu-arm@nongnu.org; Fri, 04 Aug 2023 08:53:22 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ id 1qRuLv-0006Df-As
+ for qemu-devel@nongnu.org; Fri, 04 Aug 2023 08:56:23 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qRuIx-0003nt-H3
- for qemu-arm@nongnu.org; Fri, 04 Aug 2023 08:53:21 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-52227884855so2740060a12.1
- for <qemu-arm@nongnu.org>; Fri, 04 Aug 2023 05:53:19 -0700 (PDT)
+ id 1qRuLt-00054I-KL
+ for qemu-devel@nongnu.org; Fri, 04 Aug 2023 08:56:23 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-52256241c66so4467518a12.1
+ for <qemu-devel@nongnu.org>; Fri, 04 Aug 2023 05:56:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691153597; x=1691758397;
+ d=linaro.org; s=google; t=1691153780; x=1691758580;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=cLixGaYVMlT8KQNTYX8Vc9UsltoccqnmzBpAwDwULgk=;
- b=pY7TQVP3RFynmuMxsKx+uYnybgXbLzthG1R7+OYs30LupDxwsloysW9eLl+3z7egFK
- obXzwefT6b9lUNsQ0teHUU4kv+EDCOjOgEQI77G5TRhsR2Vv94oRvBzfgPGjMcnCHrpC
- aNLjPoklVWLL0ZeQBgpMIJwO0snXLchsFQxRz34evaRybTBqxO1IOoIxnB/nyTJZsCEd
- 1ibhpSyCp6P1hkZ0XVtcCcr41w8Vt/wKWi0xm50ckYgZUb2Sg3/CuzSil5gnqkDdvTQQ
- 5KgB7i7GFi1pTdyjJotNtUdzEseIF9r/2ekPcmn+hZBUNnqlysOd8tEQusbEIn+inFjD
- NsEQ==
+ bh=6U61MjXLtP3NkaKUtU+YZZFVPUnYtCxQmJilaj4LaMY=;
+ b=QvJf6e+bhz2+08a0ab3k0FkaW42OOU/NAlioA7pOC23XN18RIueCEZ/DjPQx9muHbN
+ ZQmK545Bc/My5TMcy1Tk82i8t75QNqv0ZxaPZ9e1tfXVM4Y0pdaSeYc4CDqdoo762VGe
+ eLy+TIVLf+wGKe+mhpckImFhGEv1MUYy0YLMGLE1wOUNA/L26elHPD+3t84KMDVKwhjQ
+ nekT+Of0Aa0i34yE0l4MwDLaD0IHTdik2t8agz75RVm9hPeIJLymUAZgpFMTF+TfUzFh
+ 0ZCKxgZxcVNAez940o6m7yQwGJdvsQEF6RIjsZrRnhJvqhQ1jJCyacFgLHyhlIygyalq
+ B7GQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691153597; x=1691758397;
+ d=1e100.net; s=20221208; t=1691153780; x=1691758580;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=cLixGaYVMlT8KQNTYX8Vc9UsltoccqnmzBpAwDwULgk=;
- b=MGddAptJgSnVvmI5B2djy/u8PJ+Lkt9E/xLk2TGH5p26SJhaSSAA4g7JAs84PSTWxu
- iDWMtEvW5blGs802bCsZlJGDC1q0gCZzwB/rTCQr3MVFcWtYZHqbo3xasqlVswmCnU/V
- juDCrBnGEFqXHX/hJ8HPM3C7rO/sDIFD4WRcqvj6/gkYakSf1XMqkdV2z2WZUecNi+lk
- yOE5A52/UfKKZaFZheOi9Q+kmoe5G8caqmqIPMQa6RoKaJLKAykGkQ8fGwbAQTp1DID4
- fshPSI4q3NWaJ9N06Hh5YqCLWu5zYeE7EWfknmROwmVt2TsR31+62ZErlddvFcbwKFMW
- SmxA==
-X-Gm-Message-State: AOJu0YwJH10SY8SYWFUw11l2LnEbu8xftkpKLsnwu+KE4dN/1H4OtX35
- wU1sBq4asR0J0upKeSxOAc97EOp6fhAD2TxggR/Ajw==
-X-Received: by 2002:aa7:c147:0:b0:523:1410:a47d with SMTP id
- r7-20020aa7c147000000b005231410a47dmr1908289edp.24.1691153597078; Fri, 04 Aug
- 2023 05:53:17 -0700 (PDT)
+ bh=6U61MjXLtP3NkaKUtU+YZZFVPUnYtCxQmJilaj4LaMY=;
+ b=ihUhMmugDWEpgmhVJm9AhYjLL+zIiHbewtdLkjBJKBocNPqqOiDq3zv+AqHQgq39mR
+ p+RIBQfFub4W7bUJb9ST7ThiQcFSCo/OHR166ZE19JtIEq53xcGVqM4CEUcmeaH6YYrP
+ g2N8ugwbiNfc89kdmhtXldVRrcumcnBXmKGclEpTUO4uHNLxXQX1Bhvsz4O004a6nM7O
+ zChV+bDEVVzI8Gj9srhgIgPzYIUBaVwHnK7XpKoU8W/nXQJggE8Dsge1clMvYF4QYuRL
+ 5S+v5iNAw/OytQduoDX4cGH6FWu2tddsi975Zqd2tO4oROCNn/r+NOsHxPaqUpcFPAAW
+ C/Jg==
+X-Gm-Message-State: AOJu0YxeyvNIHiDXYEF8EgIwecYRruSLibu73k3hbqNYU2xMsSugKoio
+ lXr+JcfGFDMLFKQ3q6uCNKnf7IVFhSMRPrrz8ZD22je3BdCx5hbq
+X-Received: by 2002:a05:6402:3507:b0:522:ddeb:cdcb with SMTP id
+ b7-20020a056402350700b00522ddebcdcbmr1996213edd.18.1691153780047; Fri, 04 Aug
+ 2023 05:56:20 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
- <20230726132512.149618-13-sergey.kambalin@auriga.com>
-In-Reply-To: <20230726132512.149618-13-sergey.kambalin@auriga.com>
+ <20230726132512.149618-14-sergey.kambalin@auriga.com>
+In-Reply-To: <20230726132512.149618-14-sergey.kambalin@auriga.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Aug 2023 13:53:05 +0100
-Message-ID: <CAFEAcA_w_TezAo2xLNrtSHZ+Fnz6foV_9fckgcghS0Er+cqtqQ@mail.gmail.com>
-Subject: Re: [PATCH 12/44] Temporary disable unimplemented rpi4b devices
+Date: Fri, 4 Aug 2023 13:56:09 +0100
+Message-ID: <CAFEAcA8VBK5orZWSUVRs5bOVK3kgTxkCCwpKRPWowRQeo=kA0g@mail.gmail.com>
+Subject: Re: [PATCH 13/44] Add memory region for BCM2837 RPiVid ASB
 To: Sergey Kambalin <serg.oker@gmail.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Sergey Kambalin <sergey.kambalin@auriga.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1yXytxV1vZwY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GZR/lk09ZoOA
 
-On Wed, 26 Jul 2023 at 14:56, Sergey Kambalin <serg.oker@gmail.com> wrote:
+On Wed, 26 Jul 2023 at 14:34, Sergey Kambalin <serg.oker@gmail.com> wrote:
 
-"Temporarily".
+I notice that all these patches have no commit message
+except for the subject line. Generally we prefer commits
+to have more description of what they're doing and why than
+that, although for simple patches it doesn't need to be
+very much.
 
-It would be good to note in the commit message that the
-"remove devices from dt" code will all go away in following
-commits but that it allows a kernel to boot at this point
-(assuming that is what it does). That documents the motivation
-for what is otherwise a slightly ugly looking hack.
-
->
 > Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 > ---
->  hw/arm/raspi.c                  |  2 +-
->  hw/arm/raspi4b.c                | 63 +++++++++++++++++++++++++++++++++
->  include/hw/arm/raspi_platform.h |  1 +
->  3 files changed, 65 insertions(+), 1 deletion(-)
+>  hw/arm/bcm2838_peripherals.c         | 3 +++
+>  include/hw/arm/bcm2838_peripherals.h | 3 ++-
+>  include/hw/arm/raspi_platform.h      | 1 +
+>  3 files changed, 6 insertions(+), 1 deletion(-)
 >
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index da1e9e7c13..cffdd8de4e 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -75,7 +75,7 @@ static const struct {
->      [PROCESSOR_ID_BCM2838] = {TYPE_BCM2838, BCM283X_NCPUS},
->  };
+> diff --git a/hw/arm/bcm2838_peripherals.c b/hw/arm/bcm2838_peripherals.c
+> index 0c5e716853..f689e16535 100644
+> --- a/hw/arm/bcm2838_peripherals.c
+> +++ b/hw/arm/bcm2838_peripherals.c
+> @@ -182,6 +182,9 @@ static void bcm2838_peripherals_realize(DeviceState *dev, Error **errp)
+>          sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gpio), 0));
 >
-> -static uint64_t board_ram_size(uint32_t board_rev)
-> +uint64_t board_ram_size(uint32_t board_rev)
->  {
->      assert(FIELD_EX32(board_rev, REV_CODE, STYLE)); /* Only new style */
->      return 256 * MiB << FIELD_EX32(board_rev, REV_CODE, MEMORY_SIZE);
-> diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-> index 4096522d85..d2053c9380 100644
-> --- a/hw/arm/raspi4b.c
-> +++ b/hw/arm/raspi4b.c
-> @@ -21,6 +21,7 @@
->  #include "hw/arm/boot.h"
->  #include "qom/object.h"
->  #include "hw/arm/bcm2838.h"
-> +#include <libfdt.h>
+>      object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus");
+> +
+> +    /* BCM2838 RPiVid ASB must be mapped to prevent kernel crash */
+> +    create_unimp(s_base, &s->asb, "bcm2838-asb", RPI4B_ASB_OFFSET, 0x24);
+>  }
 >
->  #define TYPE_RASPI4B_MACHINE MACHINE_TYPE_NAME("raspi4b-common")
->  OBJECT_DECLARE_SIMPLE_TYPE(Raspi4bMachineState, RASPI4B_MACHINE)
-> @@ -34,6 +35,61 @@ struct Raspi4bMachineState {
->      uint32_t vcram_size;
->  };
+>  static void bcm2838_peripherals_class_init(ObjectClass *oc, void *data)
+> diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+> index aba38a18f0..ebed11dd40 100644
+> --- a/include/hw/arm/bcm2838_peripherals.h
+> +++ b/include/hw/arm/bcm2838_peripherals.h
+> @@ -66,12 +66,13 @@ struct BCM2838PeripheralState {
+>      MemoryRegion mphi_mr_alias;
 >
-> +
-> +static int raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
-> +{
-> +    int ret;
-> +    uint32_t acells, scells;
-> +    char *nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
-> +
-> +    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
-> +                                   NULL, &error_fatal);
-> +    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
-> +                                   NULL, &error_fatal);
-> +    if (acells == 0 || scells == 0) {
-> +        fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0)\n");
-> +        ret = -1;
-> +    } else {
-> +        qemu_fdt_add_subnode(fdt, nodename);
-> +        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-> +        ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
-> +                                           acells, mem_base,
-> +                                           scells, mem_len);
-> +    }
-> +
-> +    g_free(nodename);
-> +    return ret;
-> +}
+>      SDHCIState emmc2;
+> -    UnimplementedDeviceState clkisp;
 
-Why do we need to add a memory node ? The commit message
-doesn't say anything about doing this.
+Rebase/patch split artefact ? This got added in an earlier
+patch, so rather than adding and then removing it, better
+to not add the line at all.
 
-> +static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
-> +{
-> +
-> +    /* Temporary disable following devices until they are implemented*/
-> +    const char *to_be_removed_from_dt_as_wa[] = {
-> +        "brcm,bcm2711-pcie",
-> +        "brcm,bcm2711-rng200",
-> +        "brcm,bcm2711-thermal",
-> +        "brcm,bcm2711-genet-v5",
-> +    };
-> +
-> +    for (int i = 0; i < ARRAY_SIZE(to_be_removed_from_dt_as_wa); i++) {
-> +        const char *dev_str = to_be_removed_from_dt_as_wa[i];
-> +
-> +        int offset = fdt_node_offset_by_compatible(fdt, -1, dev_str);
-> +        if (offset >= 0) {
-> +            if (!fdt_nop_node(fdt, offset)) {
-> +                warn_report("bcm2711 dtc: %s has been disabled!", dev_str);
-> +            }
-> +        }
-> +    }
-> +
-> +    uint64_t ram_size = board_ram_size(info->board_id);
-
-If you need to get at board-specific info in this hook,
-the standard way to do it is to get the MachineState pointer
-from the arm_boot_info pointer, like this:
-    RaspiBaseMachineState *s_base = container_of(binfo,
-RaspiBaseMachineState, binfo);
-
-(which works because the arm_boot_info struct is embedded inside the
-RaspiBaseMachineState struct).
-
-But in this specific case I think you can probably work with
-info->ram_size (it's the ram size adjusted by the vcram_size, I
-think, but that's probably OK.)
-
-> +
-> +    if (ram_size > UPPER_RAM_BASE) {
-> +        raspi_add_memory_node(fdt, UPPER_RAM_BASE, ram_size - UPPER_RAM_BASE);
-> +    }
-> +}
-> +
->  static void raspi4b_machine_init(MachineState *machine)
->  {
->      Raspi4bMachineState *s = RASPI4B_MACHINE(machine);
-> @@ -41,6 +97,13 @@ static void raspi4b_machine_init(MachineState *machine)
->      RaspiBaseMachineClass *mc = RASPI_BASE_MACHINE_GET_CLASS(machine);
->      BCM2838State *soc = &s->soc;
+>      BCM2838GpioState gpio;
 >
-> +    s_base->binfo.modify_dtb = raspi4_modify_dtb;
-> +    /*
-> +     * Hack to get board revision during device tree modification without
-> +     * changes of common code.
-> +     * The correct way is to set board_id to MACH_TYPE_BCM2708 and add board_rev
-> +     * to the arm_boot_info structure.
-> +     */
->      s_base->binfo.board_id = mc->board_rev;
+>      OrIRQState mmc_irq_orgate;
+>      OrIRQState dma_7_8_irq_orgate;
+>      OrIRQState dma_9_10_irq_orgate;
+> +
+> +    UnimplementedDeviceState asb;
 
-Then you can avoid this hack.
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

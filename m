@@ -1,116 +1,96 @@
-Received: by 2002:a17:906:f20a:b0:98d:b2f5:1316 with SMTP id gt10csp1878657ejb;
-        Mon, 7 Aug 2023 20:17:24 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF1CqPdHwmPs4u31CqjkAB36WZne8i+kDpWdSedza9vfryrxblFz6m7KavuB4somIk0cqvX
-X-Received: by 2002:a0c:f48f:0:b0:63c:fe27:79ac with SMTP id i15-20020a0cf48f000000b0063cfe2779acmr11452978qvm.1.1691464644506;
-        Mon, 07 Aug 2023 20:17:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691464644; cv=none;
+Received: by 2002:a17:906:f20a:b0:98d:b2f5:1316 with SMTP id gt10csp2279392ejb;
+        Tue, 8 Aug 2023 08:43:12 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHRj4GftZu3mo7+sPgALCMz1AjQsSFhJ4VihCafK7O5/1xtAiv+TQOLk5RDxKr/yu3w3Asa
+X-Received: by 2002:ac8:5c47:0:b0:400:8d99:48db with SMTP id j7-20020ac85c47000000b004008d9948dbmr52028qtj.41.1691509392716;
+        Tue, 08 Aug 2023 08:43:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691509392; cv=none;
         d=google.com; s=arc-20160816;
-        b=DJ9+IRfOT1SvQLyG2Q68+Y/9+HIzNB0gO5pj1fV9WVVL8Hz1kY98c2HdjbKAm87Pbi
-         lofw6fJeGr1g5k/iSsE1HgDekyDRO3CL7O6mHNNwvmhimnfSp0IuzZbLvBkKC/0/zaVp
-         OUnaYwveBsxalVk/g2QdKref6Ej3cHUf7tQcXlZt1mS9TJvusaYGnpxXR82JkaoHqjsK
-         B5/LChUWWtDYCLLVI/d7Fa0cGJw207sZhVVdJe8cdCW9fiG6kIRU3IoabetC4Sw3L083
-         1hNM8AN8kZV/j752tbEqxfjGX7jh3+bjYQ6IbVNM3LBRVYibWmmMSPWA6he/E46W2ZPK
-         rNMg==
+        b=w/9ez+VPH/tW4VALPDarc7K7wf4cer1S3L6AVAo67KGru+UewVN5PFT7VkgpVv60wR
+         O5Tf/6qRGAXL0lSOlR2MQuOC2YqRTKNeQ67VdCBuw/hdYCr59DfFLYWO0MuJdpaeGauA
+         CTi+A35+RjSkLr1V4ufYz8pHZzxBrDDIQ6C+1KZVIZNcJSXwGR3Nysyycgxu1NPPE7+A
+         dEyNk+TlvmzeOVYczqvOX4I+zlrSw9gRaJjFo3hqZgnI10C45FT8iaSpsLdCpPt4G/3S
+         Z2MxmbVG6d/BPvdzftfZSW1+GpGE3sSn0eMvYTQY2Y8y4B/AWMbLEfOva4uVk6pyf2lA
+         ftZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ZfPoEwU2O4IK9AqxqstJxMdbJLfYwviBA2IVblhOckE=;
-        fh=hqs26moy805PsHbwd88lUczy2QdlfF59ojSMxj/DeWg=;
-        b=F6VbOf07yT5mN5lhsz0MG5LdmJUtf3VzZkRwIlfj1p8dsnG6YHQUl30HxJidymt08Q
-         qL8H704jeu5KoyqjrCLsd+TI0PI4kwsIZ+khkjDZgm4vkExFQwYDvuAi4VUetDtP0rod
-         Db6OXNCeNtik7vgKWNLNDHiKXOoodTrHrgXV7lr47aJQ3hDUbPJJ2L0IK+Rgq9sp6z2A
-         hri0d49JRY9JLGdrHsBlFR3NFQvu0JSkbGid4We296ipShh4YzGDHZCylsvaAdzP36pd
-         6Fa3E0XOA49b1nn4xqSCrcrKEUHUhMGnXyi2m0v7sGIJWTKA+fgZcWy65obB7ZSSijqZ
-         bFhw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=91G9Pk0Exz2mrf4Mv1KaJG1Ne+IHpYla8z7w4QzCQVw=;
+        fh=fQnwaKIEQMqsAzE+eYhY7gj6V931W5BTEhkADypqRyw=;
+        b=HomnUHKqbtVWrTJklqpMbmptH6TFvAK3yUCj4vzPP9CiTYObuAD8SLMsUoF14Gp24c
+         l1TXcKM5kgEopbcA9kgaaSfmHevW+YDp2LhMy2fgzyIJHqnhLI39CgaY73nbgoiPuQil
+         NO9AYv5TNGaPtg/f/JdW0o5rkeSCvqudbLH7VLqLBMP0d9aSF9RJ8d+m1HEfYXl6lMx3
+         T/Y3ifk7ol8AQ4lu+PUGI9HZTDBUFQNJpwx9fi91eMrYwQ1R3Yo10cq+5WX1s6WGnhGp
+         fUp8a1rGrukY/AFH5EJXXMK0jSkzkehBmto3w+vt41rdUXX5Waj5+bJoVQquBFoufToM
+         2bmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CYy0zxEg;
+       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=qcsIPBCW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7-20020a0cf507000000b0063f7aae913esi4072344qvm.71.2023.08.07.20.17.24
+        by mx.google.com with ESMTPS id o15-20020a05622a044f00b004009b446cd7si6344575qtx.258.2023.08.08.08.43.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Aug 2023 20:17:24 -0700 (PDT)
+        Tue, 08 Aug 2023 08:43:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CYy0zxEg;
+       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=qcsIPBCW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qTD8Z-0000Da-7J; Mon, 07 Aug 2023 23:11:59 -0400
+	id 1qTOrF-00067W-2f; Tue, 08 Aug 2023 11:42:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qTD8Y-0000C3-3f
- for qemu-devel@nongnu.org; Mon, 07 Aug 2023 23:11:58 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qTD8Q-00009b-Hl
- for qemu-devel@nongnu.org; Mon, 07 Aug 2023 23:11:57 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-686efa1804eso3761938b3a.3
- for <qemu-devel@nongnu.org>; Mon, 07 Aug 2023 20:11:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691464309; x=1692069109;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ZfPoEwU2O4IK9AqxqstJxMdbJLfYwviBA2IVblhOckE=;
- b=CYy0zxEgPdbPeNcZuGP69o6VeEYuvsty2f4ROFOJ90mZsLLrkgA6Art9rAOOSsXJws
- o6tXLUdxlG0DhMwE/criK95ovC/ncOfkU4/0Deih/j2uFOjVHCrIiZVIndxJx7UtqRWo
- Trkv+G4JThfcJV2hkhKI8MY+IpsDKaW2kGUQfW4tc3Wqoql94PfRWDEu6fmVGzOYrVWG
- RmhEMkJNUn4w33TupHt+BTB9XaGAn64KlFopd28D9RXnQdIOYbgmDu0XTiwJMz4Sa02Q
- D/C0zGxmC14P1QwtiubvAy1VmZtfwIYqEndenTKDgw+LkHp2qaoh2TThkbdlLY13Xy/P
- x6LA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691464309; x=1692069109;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ZfPoEwU2O4IK9AqxqstJxMdbJLfYwviBA2IVblhOckE=;
- b=afhGQn/GJAknV2Z8JWmtqC7iq2km4iZnTmeltmZtF/nEm5SI7lL+ezLYuAFWg0Gqwj
- 89iZ35uMb6z4ghLbmWEZ3SwR57fFW3Wz7ERf/HPp5Zkkp4YY0ykMKX/yHM9bySoPOXIk
- CCCUQf0DNjFbIY59LlU1zI3xEIok4vaX4uu1bWZSTLWfOMhabgiVh9YIc4SXIvSilL2/
- GmWd5zAAZ1HQVBbNb2cmSHVrIKl+9aGXhhE598qygeoUeMx+DRQ8sfz/hHeVGAPAAqEV
- lFSe1y+Lbbu+zD2CihE9F2Owh0lZitvZIyhAceTHlqQdAi3Ed19Mk3BKXhMoOvM2ckMn
- rmig==
-X-Gm-Message-State: AOJu0Yztq9zhS40HbESfURTT+fSwzwFTNY5bTuNAVeSYBCsr0tD+CqVR
- pDKV/+tVyfg+yBP0EmbK5PbRK8DfPpfogZxByD0=
-X-Received: by 2002:a05:6a20:4312:b0:140:f1d2:4fc with SMTP id
- h18-20020a056a20431200b00140f1d204fcmr4154408pzk.45.1691464309192; 
- Mon, 07 Aug 2023 20:11:49 -0700 (PDT)
-Received: from stoup.. ([2602:47:d490:6901:e306:567a:e0a1:341])
- by smtp.gmail.com with ESMTPSA id
- g64-20020a636b43000000b0055bf96b11d9sm5639087pgc.89.2023.08.07.20.11.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Aug 2023 20:11:48 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org
-Subject: [PATCH 05/24] target/m68k: Use tcg_gen_negsetcond_*
-Date: Mon,  7 Aug 2023 20:11:24 -0700
-Message-Id: <20230808031143.50925-6-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230808031143.50925-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1qTOrE-00067K-0i; Tue, 08 Aug 2023 11:42:52 -0400
+Received: from collins.uni-paderborn.de ([2001:638:502:c003::14])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1qTOrB-0000af-S1; Tue, 08 Aug 2023 11:42:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=mail.uni-paderborn.de; s=20170601; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=91G9Pk0Exz2mrf4Mv1KaJG1Ne+IHpYla8z7w4QzCQVw=; b=qcsIPBCW/vDZKar83LXCiFUh4Z
+ SaXGG+ZnklQThYtxlVJaYU2kjjY0Mfub+l6ZlvgT3Y0yl+407uRaC0NAzm0aOHBIFj1p36g/995vB
+ ujhAw5ZaBI8JdcytHYayMuFsdzvTUXJJfLFLVrAOBRE9oZwQRWHgZE1jLkIu4wE+jUYA=;
+Date: Tue, 8 Aug 2023 17:42:37 +0200
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
+ qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Subject: Re: [PATCH 09/24] target/tricore: Replace gen_cond_w with
+ tcg_gen_negsetcond_tl
+Message-ID: <sodhcladibb7xf7ibqdirlwqfmcsj3xabthqheixzldqwhpogw@kujjnqe4aoed>
 References: <20230808031143.50925-1-richard.henderson@linaro.org>
+ <20230808031143.50925-10-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230808031143.50925-10-richard.henderson@linaro.org>
+X-IMT-Source: Extern
+X-IMT-Spam-Score: 0.0 ()
+X-IMT-rspamd-score: 14
+X-IMT-rspamd-bar: +
+X-PMX-Version: 6.4.9.2830568, Antispam-Engine: 2.7.2.2107409,
+ Antispam-Data: 2023.8.8.153316, AntiVirus-Engine: 6.0.2,
+ AntiVirus-Data: 2023.8.6.602002
+X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
+Received-SPF: pass client-ip=2001:638:502:c003::14;
+ envelope-from=kbastian@mail.uni-paderborn.de; helo=collins.uni-paderborn.de
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
+ SUSPICIOUS_RECIPS=2.51 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,95 +105,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: r8Dkffb5/6D9
+X-TUID: NQioX/31W3q3
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/m68k/translate.c | 24 ++++++++++--------------
- 1 file changed, 10 insertions(+), 14 deletions(-)
+On Mon, Aug 07, 2023 at 08:11:28PM -0700, Richard Henderson wrote:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/tricore/translate.c | 16 ++++++----------
+>  1 file changed, 6 insertions(+), 10 deletions(-)
+> 
+> diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+> index 1947733870..6ae5ccbf72 100644
+> --- a/target/tricore/translate.c
+> +++ b/target/tricore/translate.c
 
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index e07161d76f..37954d11a6 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -1357,8 +1357,7 @@ static void gen_cc_cond(DisasCompare *c, DisasContext *s, int cond)
-     case 14: /* GT (!(Z || (N ^ V))) */
-     case 15: /* LE (Z || (N ^ V)) */
-         c->v1 = tmp = tcg_temp_new();
--        tcg_gen_setcond_i32(TCG_COND_EQ, tmp, QREG_CC_Z, c->v2);
--        tcg_gen_neg_i32(tmp, tmp);
-+        tcg_gen_negsetcond_i32(TCG_COND_EQ, tmp, QREG_CC_Z, c->v2);
-         tmp2 = tcg_temp_new();
-         tcg_gen_xor_i32(tmp2, QREG_CC_N, QREG_CC_V);
-         tcg_gen_or_i32(tmp, tmp, tmp2);
-@@ -1437,9 +1436,8 @@ DISAS_INSN(scc)
-     gen_cc_cond(&c, s, cond);
- 
-     tmp = tcg_temp_new();
--    tcg_gen_setcond_i32(c.tcond, tmp, c.v1, c.v2);
-+    tcg_gen_negsetcond_i32(c.tcond, tmp, c.v1, c.v2);
- 
--    tcg_gen_neg_i32(tmp, tmp);
-     DEST_EA(env, insn, OS_BYTE, tmp, NULL);
- }
- 
-@@ -2771,13 +2769,14 @@ DISAS_INSN(mull)
-             tcg_gen_muls2_i32(QREG_CC_N, QREG_CC_V, src1, DREG(ext, 12));
-             /* QREG_CC_V is -(QREG_CC_V != (QREG_CC_N >> 31)) */
-             tcg_gen_sari_i32(QREG_CC_Z, QREG_CC_N, 31);
--            tcg_gen_setcond_i32(TCG_COND_NE, QREG_CC_V, QREG_CC_V, QREG_CC_Z);
-+            tcg_gen_negsetcond_i32(TCG_COND_NE, QREG_CC_V,
-+                                   QREG_CC_V, QREG_CC_Z);
-         } else {
-             tcg_gen_mulu2_i32(QREG_CC_N, QREG_CC_V, src1, DREG(ext, 12));
-             /* QREG_CC_V is -(QREG_CC_V != 0), use QREG_CC_C as 0 */
--            tcg_gen_setcond_i32(TCG_COND_NE, QREG_CC_V, QREG_CC_V, QREG_CC_C);
-+            tcg_gen_negsetcond_i32(TCG_COND_NE, QREG_CC_V,
-+                                   QREG_CC_V, QREG_CC_C);
-         }
--        tcg_gen_neg_i32(QREG_CC_V, QREG_CC_V);
-         tcg_gen_mov_i32(DREG(ext, 12), QREG_CC_N);
- 
-         tcg_gen_mov_i32(QREG_CC_Z, QREG_CC_N);
-@@ -3346,14 +3345,13 @@ static inline void shift_im(DisasContext *s, uint16_t insn, int opsize)
-         if (!logical && m68k_feature(s->env, M68K_FEATURE_M68K)) {
-             /* if shift count >= bits, V is (reg != 0) */
-             if (count >= bits) {
--                tcg_gen_setcond_i32(TCG_COND_NE, QREG_CC_V, reg, QREG_CC_V);
-+                tcg_gen_negsetcond_i32(TCG_COND_NE, QREG_CC_V, reg, QREG_CC_V);
-             } else {
-                 TCGv t0 = tcg_temp_new();
-                 tcg_gen_sari_i32(QREG_CC_V, reg, bits - 1);
-                 tcg_gen_sari_i32(t0, reg, bits - count - 1);
--                tcg_gen_setcond_i32(TCG_COND_NE, QREG_CC_V, QREG_CC_V, t0);
-+                tcg_gen_negsetcond_i32(TCG_COND_NE, QREG_CC_V, QREG_CC_V, t0);
-             }
--            tcg_gen_neg_i32(QREG_CC_V, QREG_CC_V);
-         }
-     } else {
-         tcg_gen_shri_i32(QREG_CC_C, reg, count - 1);
-@@ -3437,9 +3435,8 @@ static inline void shift_reg(DisasContext *s, uint16_t insn, int opsize)
-             /* Ignore the bits below the sign bit.  */
-             tcg_gen_andi_i64(t64, t64, -1ULL << (bits - 1));
-             /* If any bits remain set, we have overflow.  */
--            tcg_gen_setcondi_i64(TCG_COND_NE, t64, t64, 0);
-+            tcg_gen_negsetcond_i64(TCG_COND_NE, t64, t64, tcg_constant_i64(0));
-             tcg_gen_extrl_i64_i32(QREG_CC_V, t64);
--            tcg_gen_neg_i32(QREG_CC_V, QREG_CC_V);
-         }
-     } else {
-         tcg_gen_shli_i64(t64, t64, 32);
-@@ -5318,9 +5315,8 @@ DISAS_INSN(fscc)
-     gen_fcc_cond(&c, s, cond);
- 
-     tmp = tcg_temp_new();
--    tcg_gen_setcond_i32(c.tcond, tmp, c.v1, c.v2);
-+    tcg_gen_negsetcond_i32(c.tcond, tmp, c.v1, c.v2);
- 
--    tcg_gen_neg_i32(tmp, tmp);
-     DEST_EA(env, insn, OS_BYTE, tmp, NULL);
- }
- 
--- 
-2.34.1
+Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 
+Cheers,
+Bastian

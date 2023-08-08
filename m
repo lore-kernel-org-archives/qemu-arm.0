@@ -1,203 +1,183 @@
-Received: by 2002:a17:906:f20a:b0:98d:b2f5:1316 with SMTP id gt10csp1877110ejb;
-        Mon, 7 Aug 2023 20:13:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGhPuxy5mgzGfhBl5gQ0aj5oQWnLXKYKZABj4QQ369NSztHybbU/Tv/WenDMdtKmZHlh4QP
-X-Received: by 2002:a05:622a:c5:b0:40f:dd5f:d36b with SMTP id p5-20020a05622a00c500b0040fdd5fd36bmr14300405qtw.23.1691464415527;
-        Mon, 07 Aug 2023 20:13:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691464415; cv=none;
+Received: by 2002:a17:906:f20a:b0:98d:b2f5:1316 with SMTP id gt10csp2220768ejb;
+        Tue, 8 Aug 2023 07:19:42 -0700 (PDT)
+X-Received: by 2002:a17:903:44f:b0:1bb:b91b:2b3c with SMTP id iw15-20020a170903044f00b001bbb91b2b3cmr10206905plb.34.1691504382381;
+        Tue, 08 Aug 2023 07:19:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691504382; cv=none;
         d=google.com; s=arc-20160816;
-        b=OjhWzjO69bpZYuQQS8ybCdIAy+z/v7z5FDPk+V0guaG5sDo14QYDQTYai/8HR6rN8k
-         pe9Q22uCHm3VMGekX0TiRE+js6vMiP6S0c0A2ikbzwygThblr5rBG3oGHcrpV5ynWV3c
-         C66a0VfB6Z10r3HxLNwifbkN/lUz7+5R3u7X3TvhSqo+cAP5rpGTS21tEFejj07Jyi4U
-         TZKyVgoTtlr+yO/0sdjxxNeE0yqT75gzW3sQKTLgg66Og8pYVHNwOOUFtAGyYVuXLpCS
-         wOJldliBGZdY0xvAe2MWoVKtBJ0rw7jxIehAgikjcREp2YD3qZ9oqO58EZ0BlmMnibjB
-         XT0w==
+        b=vwjHkP1bboYS+1YdQ/pZP41rUdFOluVhSff+4Qr8jHYlQYN+jilmrJhQWtRJO8LIFZ
+         tOaL85qbwAePH1gj2ggiD2aoO0//I4dJT3XzU+NWYX7DziJQ2vn7ZA3AFcT0QM2/S9RL
+         1cD56n0wkAANTLE1x4DpB9iu3YujE0NeB6K2G1Kc0hCteEWYiEhgN/PnWHK3Y0afaHry
+         rOevviIjJITq2Dr6lYgTylRaid/VXNgRo+ecB0R+/Km7HKLIK/4oqjNhZwty24Y/6974
+         XGCiATRu/DReYajmIHdr1Sa6nSbjHm1G7xj4CFdWEdxQAIPMU6p/WQSNCTKkW18AXefr
+         nDMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=beXQyTRLGdD+zrgylrsHYTELdRMMXnrVVBuGcJOXCHg=;
-        fh=hqs26moy805PsHbwd88lUczy2QdlfF59ojSMxj/DeWg=;
-        b=M6w4o2OFVpgRJdoidGGH/QaAv/32ueMZsKdn6bNLNcI78vnBngDolae0GmITJvzHdy
-         4eghfkr39WfBtXf1S44jMHcWjoLZg8Z4fEyxFhg9Ectd+LJ22/M5J02wQCImkjzSqW4m
-         VASg9ewbdJ0iZXE/VbqGx0oqinsKcDUUE7mP8IgdDTe+OPI1/fqzQAVrBii+T8O+CRUw
-         uXaLGwI6MWntcWz6k7Sofn05cy9/H/9MLUgay3+JmdvcvJ+tpiwRZ7+YnC07sN9VLto6
-         Y8rbYEyBWnAeERbd6SOqWBiN6AEksGxzCRx0nqa52JINi8RfVRPxt2NSFWonis2/ONSj
-         8Zcg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=mf2N6SezX4W3DKkhSHLdtBmZLWd1QdX4LdESVzPnYbo=;
+        fh=TnbiiC1OrbFGzN+QyfS9fCWM7WpVW05O2z3CL0h3NOs=;
+        b=kxTPJLedJnnSoEvB3A6Oz+7OE3JQ2Sk18LpWAIIkpfqS81tCOmH0crCrK23iNdr/f8
+         M++sFXqHWGtKlz4AuVIRdJkDTeEpwOfRF0GcEXorXFz15gUqlkh02X/0V1lGu9bj517u
+         G6yPFSQoUoR3zbMsd6eZcwRtp1m3s2vJhDpMT6S5bSRhjKAhgrja8oo26uyMB8mb803Y
+         x0ow/ez5ar6a4cTycT+St6b9exzMMSHOGj40ALzThjebZAhfyy/LIJFxc31CsjfOqboE
+         O4cNuEosyWQoWVJ9ysWHYEYUHPnYI4jCI+eAgaIcSBVbhtmD8ZhmzXbnquT/WelrDVuf
+         o/1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iDVMP18r;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n1-20020ac85b41000000b00403a491f7e1si5803512qtw.50.2023.08.07.20.13.35
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Aug 2023 20:13:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=QIrgOx3Q;
+       spf=pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=fufuyqqqqqq@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <fufuyqqqqqq@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id t12-20020a170902d14c00b001bb779f53a3sor3817471plt.13.2023.08.08.07.19.42
+        (Google Transport Security);
+        Tue, 08 Aug 2023 07:19:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iDVMP18r;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qTD8R-0008Ri-0W; Mon, 07 Aug 2023 23:11:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qTD8P-0008Q0-Nl
- for qemu-arm@nongnu.org; Mon, 07 Aug 2023 23:11:49 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qTD8M-00006m-Jq
- for qemu-arm@nongnu.org; Mon, 07 Aug 2023 23:11:49 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-686f0d66652so4949747b3a.2
- for <qemu-arm@nongnu.org>; Mon, 07 Aug 2023 20:11:45 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=QIrgOx3Q;
+       spf=pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=fufuyqqqqqq@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691464304; x=1692069104;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=beXQyTRLGdD+zrgylrsHYTELdRMMXnrVVBuGcJOXCHg=;
- b=iDVMP18rzv9csWNh0WdGZIWaCPqWys/mxgMYr0W1vj2iiEHZhsjWfDozIi+ovBKLoX
- lkK6hFeyxu9BOv5x5CLNiWhIsPU8vduD6z2XaHrfJM6npn+om9dPKIvmCJU/0tB/VTBQ
- 2OEc4RQrlNMH2Qzhs/BGRvabkZNxNG/OPQrOl0AvAlwb/qas79DvN8BDwdk/nN6BYAZv
- TcrMHSybUsvHVKYkK2wjCnX7iE9yK3J9/gkQ5j8kX9k9j98aDAlHDgajMWvipLGoRLnH
- RAoWhGvx1zw+tprzQA2lpZGT09axpFLngJnr2/ys/s16f1AG9xPjKkUrgZa2v4jZB2pt
- xSpw==
+        d=gmail.com; s=20221208; t=1691504381; x=1692109181;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mf2N6SezX4W3DKkhSHLdtBmZLWd1QdX4LdESVzPnYbo=;
+        b=QIrgOx3QmetwrI/AsEqyVSIGu3U5LKvGC0y/4Ots6XzUyKv6ugBd6jz/IEvP03knRZ
+         Yzw9TrXirpQEy0itWF5lleJN9Og+bg1FTD0uxi76mDYY8ccmnsmpTdS5Q6G8bmPEjgzr
+         r4LKIYgCuxG3c1eY/bnBLWxWMG1mvALCxK1zwfqU9ZRFp4P96oAHbR+KrR/mBSJcsUCU
+         ZJAiEQb7YwPjaXAI4r1P2NYVg8o/uR0j/3yVsqACYR4fEZftpVlqldSgCg0mG+ur7E/9
+         6stk47FGwNSVCQ+BeTDYx38FpRcJwvHPQ9S2YYOIQRJNcpO2YZUlE5+ancvWKbjmwSyZ
+         EuiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691464304; x=1692069104;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=beXQyTRLGdD+zrgylrsHYTELdRMMXnrVVBuGcJOXCHg=;
- b=SbgHS6o7VAXTEuaXgDuAs03BOhNRiTThOsUeCxlEHVqOZVRM10rjs1eW4KuSDfsDe8
- Ps3lVsReknJmQLKYU56+YFtgvQds/OmnVq6fbAR+xJbnMVFa0lNqEbJ+LT5IPTnHSMVN
- rTBiczeJg/9g28hHAZIVHXXHaF2Y3Ro9Ajmh6BcDlVFY1LU6gzkHSYUdsvwAKyBWIWzR
- BVw4QjkhUe1kHTFp5u2cAfP2AEob4CpQIMxI0w1YuisyCqkdwnv53OF771wioIyNPtB4
- N3dEarJo6r+vyWWQ4c8Pf/Ur+/vGcWruOqJ9eTh/Iny6XBrqSyPObZYKjWwHQmnx74Tj
- kYQw==
-X-Gm-Message-State: AOJu0Yw1lVek47d4EpzVXElOMp3bWarSRxrsdvsCZEqR8bPN0SBrBUC4
- x2viG3p4aLgvIl5wB6cNvPvf6Q==
-X-Received: by 2002:a05:6a20:549f:b0:12f:bc36:4c67 with SMTP id
- i31-20020a056a20549f00b0012fbc364c67mr14021987pzk.61.1691464304626; 
- Mon, 07 Aug 2023 20:11:44 -0700 (PDT)
-Received: from stoup.. ([2602:47:d490:6901:e306:567a:e0a1:341])
- by smtp.gmail.com with ESMTPSA id
- g64-20020a636b43000000b0055bf96b11d9sm5639087pgc.89.2023.08.07.20.11.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Aug 2023 20:11:44 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org
-Subject: [PATCH for-8.2 00/24] tcg: Introduce negsetcond opcodes
-Date: Mon,  7 Aug 2023 20:11:19 -0700
-Message-Id: <20230808031143.50925-1-richard.henderson@linaro.org>
+        d=1e100.net; s=20221208; t=1691504381; x=1692109181;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mf2N6SezX4W3DKkhSHLdtBmZLWd1QdX4LdESVzPnYbo=;
+        b=cUFLFI8C+rXuQ+FaBt5Cz4W9IrY0iZrgXCkc8pyMeYVmbRIu1S9dbzSaUSJyZlgPG/
+         8GQtYWzGV2fXJ3XVAXm9EWYnkuHtSj1hnsAo9EKlFzQn/IEfXCrwkm5P1a8u/kW3Ynb1
+         fQcTg+0MSHUyTIDnIYJl4ObY/LPszS8iaorZbaGtz20WvjaYNA9bFbGGk5HhpTZRZheJ
+         PLeKOWGBR3CsOzD+zo1IW+x4NIfEaMhc/fxxRatq09wmOdotpDfgWfRUNsLqbRG7G4BF
+         BJHCXZLiGruswPewnyq3baAdZFYAvJQKu9OlO0foNn2SRqEP8tapaqvNtORy/0/f3KOc
+         hgrQ==
+X-Gm-Message-State: AOJu0YxO4OrniPrcpYeUMV4Wam09xdaPTnjWhkhmK8v+sAVYhfZJgaec
+	FYCq9ERRAIZvbSstKvLjgcToII+Sadbti9mI
+X-Google-Smtp-Source: AGHT+IF5r0w7UHfokoRrcnZ3Ohll5jr5lhOigingkY1h78bNSaGTyYwKqJR/OaVGyhPqycbUaI4dmQ==
+X-Received: by 2002:a17:903:22c6:b0:1bc:6707:f451 with SMTP id y6-20020a17090322c600b001bc6707f451mr6712771plg.42.1691504381474;
+        Tue, 08 Aug 2023 07:19:41 -0700 (PDT)
+Return-Path: <fufuyqqqqqq@gmail.com>
+Received: from localhost.localdomain ([223.104.41.22])
+        by smtp.gmail.com with ESMTPSA id c3-20020a170902b68300b001bb1f0605b2sm9043985pls.214.2023.08.08.07.19.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Aug 2023 07:19:41 -0700 (PDT)
+From: Yeqi Fu <fufuyqqqqqq@gmail.com>
+To: alex.bennee@linaro.org
+Cc: richard.henderson@linaro.org,
+	qemu-devel@nongnu.org,
+	Yeqi Fu <fufuyqqqqqq@gmail.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC v4 09/11] target/arm: Add support for native library calls
+Date: Tue,  8 Aug 2023 22:17:37 +0800
+Message-Id: <20230808141739.3110740-10-fufuyqqqqqq@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230808141739.3110740-1-fufuyqqqqqq@gmail.com>
+References: <20230808141739.3110740-1-fufuyqqqqqq@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aOGygNmmr2GA
+X-TUID: 6ANPRhJZOQ9u
 
-Introduce two new setcond opcode variants which produce -1 instead
-of 1 when the condition.  For most of our hosts, producing -1 is
-just as easy as 1, and avoid requiring a separate negate instruction.
+This commit introduces support for native library calls on the
+arm target. When special instructions reserved for native calls
+are encountered, the code now performs address translation and
+generates the corresponding native call.
 
-Use the new opcode in tcg/tcg-op-gvec.c for integral expansion of
-generic vector operations.  I looked through target/ for obvious
-pairings of setcond and neg.
+Signed-off-by: Yeqi Fu <fufuyqqqqqq@gmail.com>
+---
+ configs/targets/aarch64-linux-user.mak |  1 +
+ configs/targets/arm-linux-user.mak     |  1 +
+ target/arm/tcg/translate-a64.c         | 14 ++++++++++++++
+ target/arm/tcg/translate.c             | 11 +++++++++++
+ 4 files changed, 27 insertions(+)
 
-
-r~
-
-
-Richard Henderson (24):
-  tcg: Introduce negsetcond opcodes
-  tcg: Use tcg_gen_negsetcond_*
-  target/alpha: Use tcg_gen_movcond_i64 in gen_fold_mzero
-  target/arm: Use tcg_gen_negsetcond_*
-  target/m68k: Use tcg_gen_negsetcond_*
-  target/openrisc: Use tcg_gen_negsetcond_*
-  target/ppc: Use tcg_gen_negsetcond_*
-  target/sparc: Use tcg_gen_movcond_i64 in gen_edge
-  target/tricore: Replace gen_cond_w with tcg_gen_negsetcond_tl
-  tcg/ppc: Implement negsetcond_*
-  tcg/ppc: Use the Set Boolean Extension
-  tcg/aarch64: Implement negsetcond_*
-  tcg/arm: Implement negsetcond_i32
-  tcg/riscv: Implement negsetcond_*
-  tcg/s390x: Implement negsetcond_*
-  tcg/sparc64: Implement negsetcond_*
-  tcg/i386: Merge tcg_out_brcond{32,64}
-  tcg/i386: Merge tcg_out_setcond{32,64}
-  tcg/i386: Merge tcg_out_movcond{32,64}
-  tcg/i386: Add cf parameter to tcg_out_cmp
-  tcg/i386: Use CMP+SBB in tcg_out_setcond
-  tcg/i386: Clear dest first in tcg_out_setcond if possible
-  tcg/i386: Use shift in tcg_out_setcond
-  tcg/i386: Implement negsetcond_*
-
- docs/devel/tcg-ops.rst                     |   6 +
- include/tcg/tcg-op-common.h                |   4 +
- include/tcg/tcg-op.h                       |   2 +
- include/tcg/tcg-opc.h                      |   2 +
- include/tcg/tcg.h                          |   1 +
- tcg/aarch64/tcg-target.h                   |   2 +
- tcg/arm/tcg-target.h                       |   1 +
- tcg/i386/tcg-target.h                      |   2 +
- tcg/loongarch64/tcg-target.h               |   3 +
- tcg/mips/tcg-target.h                      |   2 +
- tcg/ppc/tcg-target.h                       |   2 +
- tcg/riscv/tcg-target.h                     |   2 +
- tcg/s390x/tcg-target.h                     |   2 +
- tcg/sparc64/tcg-target.h                   |   2 +
- tcg/tci/tcg-target.h                       |   2 +
- target/alpha/translate.c                   |   7 +-
- target/arm/tcg/translate-a64.c             |  22 +-
- target/arm/tcg/translate.c                 |  12 +-
- target/m68k/translate.c                    |  24 +-
- target/openrisc/translate.c                |   6 +-
- target/sparc/translate.c                   |  17 +-
- target/tricore/translate.c                 |  16 +-
- tcg/optimize.c                             |  41 +++-
- tcg/tcg-op-gvec.c                          |   6 +-
- tcg/tcg-op.c                               |  42 +++-
- tcg/tcg.c                                  |   6 +
- target/ppc/translate/fixedpoint-impl.c.inc |   6 +-
- target/ppc/translate/vmx-impl.c.inc        |   8 +-
- tcg/aarch64/tcg-target.c.inc               |  12 +
- tcg/arm/tcg-target.c.inc                   |   9 +
- tcg/i386/tcg-target.c.inc                  | 265 +++++++++++++--------
- tcg/ppc/tcg-target.c.inc                   | 149 ++++++++----
- tcg/riscv/tcg-target.c.inc                 |  45 ++++
- tcg/s390x/tcg-target.c.inc                 |  78 ++++--
- tcg/sparc64/tcg-target.c.inc               |  36 ++-
- 35 files changed, 572 insertions(+), 270 deletions(-)
-
+diff --git a/configs/targets/aarch64-linux-user.mak b/configs/targets/aarch64-linux-user.mak
+index ba8bc5fe3f..5a8fd98cd9 100644
+--- a/configs/targets/aarch64-linux-user.mak
++++ b/configs/targets/aarch64-linux-user.mak
+@@ -4,3 +4,4 @@ TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch
+ TARGET_HAS_BFLT=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
++CONFIG_NATIVE_CALL=y
+diff --git a/configs/targets/arm-linux-user.mak b/configs/targets/arm-linux-user.mak
+index 7f5d65794c..f934fb82da 100644
+--- a/configs/targets/arm-linux-user.mak
++++ b/configs/targets/arm-linux-user.mak
+@@ -5,3 +5,4 @@ TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml
+ TARGET_HAS_BFLT=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
++CONFIG_NATIVE_CALL=y
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 3baab6aa60..422d943f92 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -25,6 +25,7 @@
+ #include "arm_ldst.h"
+ #include "semihosting/semihost.h"
+ #include "cpregs.h"
++#include "native/native.h"
+ 
+ static TCGv_i64 cpu_X[32];
+ static TCGv_i64 cpu_pc;
+@@ -2400,6 +2401,19 @@ static bool trans_HLT(DisasContext *s, arg_i *a)
+      * it is required for halting debug disabled: it will UNDEF.
+      * Secondly, "HLT 0xf000" is the A64 semihosting syscall instruction.
+      */
++    if (native_bypass_enabled() && (a->imm == 0xffff)) {
++        TCGv_i64 arg1 = tcg_temp_new_i64();
++        TCGv_i64 arg2 = tcg_temp_new_i64();
++        TCGv_i64 arg3 = tcg_temp_new_i64();
++        TCGv_i64 ret = tcg_temp_new_i64();
++        const char *fun_name = lookup_symbol((s->base.pc_next) & 0xfff);
++        tcg_gen_mov_i64(arg1, cpu_reg(s, 0));
++        tcg_gen_mov_i64(arg2, cpu_reg(s, 1));
++        tcg_gen_mov_i64(arg3, cpu_reg(s, 2));
++        gen_native_call_i64(fun_name, ret, arg1, arg2, arg3);
++        tcg_gen_mov_i64(cpu_reg(s, 0), ret);
++        return true;
++    }
+     if (semihosting_enabled(s->current_el == 0) && a->imm == 0xf000) {
+         gen_exception_internal_insn(s, EXCP_SEMIHOST);
+     } else {
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 13c88ba1b9..a095ebcea6 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -27,6 +27,7 @@
+ #include "arm_ldst.h"
+ #include "semihosting/semihost.h"
+ #include "cpregs.h"
++#include "native/native.h"
+ #include "exec/helper-proto.h"
+ 
+ #define HELPER_H "helper.h"
+@@ -1139,6 +1140,16 @@ static inline void gen_hlt(DisasContext *s, int imm)
+      * semihosting, to provide some semblance of security
+      * (and for consistency with our 32-bit semihosting).
+      */
++    if (native_bypass_enabled() && (imm == 0xffff)) {
++        TCGv_i32 arg1 = load_reg(s, 0);
++        TCGv_i32 arg2 = load_reg(s, 1);
++        TCGv_i32 arg3 = load_reg(s, 2);
++        TCGv_i32 ret = tcg_temp_new_i32();
++        const char *fun_name = lookup_symbol((s->base.pc_next) & 0xfff);
++        gen_native_call_i32(fun_name, ret, arg1, arg2, arg3);
++        store_reg(s, 0, ret);
++        return;
++    }
+     if (semihosting_enabled(s->current_el == 0) &&
+         (imm == (s->thumb ? 0x3c : 0xf000))) {
+         gen_exception_internal_insn(s, EXCP_SEMIHOST);
 -- 
 2.34.1
-

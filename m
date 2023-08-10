@@ -1,260 +1,266 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp599685ejc;
-        Thu, 10 Aug 2023 04:29:23 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGZ4xfysNFn2vMqgO6ZNGhtgCW7ky9oKabn/fbzH3BAZh8owSuH+bROTCqYecXMbD45pSD5
-X-Received: by 2002:a05:6512:a95:b0:4fe:b04:dfac with SMTP id m21-20020a0565120a9500b004fe0b04dfacmr2215445lfu.0.1691666963767;
-        Thu, 10 Aug 2023 04:29:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691666963; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp604826ejc;
+        Thu, 10 Aug 2023 04:38:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFf83U6eIA2uEMUasdHKlLBM8DRpbsvVWYABJQfzyJUreK64n0U1dOw+6yThS3HQsPHid2m
+X-Received: by 2002:a05:6e02:926:b0:348:a144:d858 with SMTP id o6-20020a056e02092600b00348a144d858mr2209893ilt.13.1691667527167;
+        Thu, 10 Aug 2023 04:38:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691667527; cv=none;
         d=google.com; s=arc-20160816;
-        b=iCTdI8O9EIUIzzuFiWyWxPRSWA/9vCkgBWjJB8VgGfbiEHcIkrAughV0UK2PORO+2t
-         mJ8x9QQ+/qWwJrtGjD3cTg6WpoP9XbTHcZLMv2jGU9vuQmExfRy5e9eDlRMeEp01DOei
-         iM2IYofLVKARIvjpU2brr+pl1eVvu55R0nd9G84LbaGjWW9lHZTtraDDMZ26won/4WIV
-         V5bW5EopnhlUjL8H4G9asvxlQXLDQFCRRFLQTHiEQjWVAU9ymbJ1g0Iuy6dBEvJaNx7M
-         S8IC88yoOvDextvCf/jB9LUVTqYMYbx7j71l4OmeTVdc8cDJJzSrjEKXkPXx9dUVI8uj
-         w9Qg==
+        b=ZQ1NNN/HrqP0+Z5A6N7yUlubVBoyfv5CvECiCPoFfrbhq8h1BgJp9fZcFGL4BPps6g
+         wehZuR09MwoIyjlIXOQrL8tL+ViHx/ggWqLz+X+za68HeAIPxm2VumzDcJnKurOGpi6y
+         PkcOJNDYIWDWMB48UdrJ8o8nrYiH87x/m4LpzYF6FH7HBfF5AAcf4b09E3AQpXqXyLRh
+         RXw/DxF4652vfkwm6ufAdynMgHrPFye4JItw/YMUjucWEWvX1bP4/Fk9izzkKZb4mn3P
+         VJ5LFWQtRbRNUNlkqh44iQlTYsuQIGWOoJVeRaFj1exlmFc0BrngeDOZNrXDPxtPbg50
+         NaUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:in-reply-to:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Bh7Sj+kqkRV0gqlbNRjiH2S8kOFmPRbp90ZFvA+uUh8=;
-        fh=NlukSAySSqZW2WjsMYuBZRd0BJyEaudWDPNcN0vlzV0=;
-        b=ar1KjY/arcnf3Lc2FcMvi2xVofwB1Px3WSOpvmibH2ckW3whdBh/QdMlGAOw8/DlrG
-         E3+njfYnlMEEhGTe2L7k27O4CCKaX8VAQ+gaBH+/rtjbMaN55qAfhPoHHP90lhacxLGs
-         bk7Idz/0r1JMr0bvOGnIsEgkS1kpAQUsaFehyrobaEi7s9UseOemEqCjkGH8xdTSnB/o
-         KKc8WogaQkm6iD1hsT1roCpMKbTRoEv/b2FaACKRLQ6mH2AvUCt/M6ozO7DCYqv0n6/3
-         foiYqNYw2GHEv478GvZDyNr7sAixaSyn/5r9Mj9bNhkhn69pAx5ZL6yOfBvgzEWqKFtl
-         wI1w==
+        h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=u8BlrjfKyS0XzZleStxvCQDwuXM/ozhO8WeUHPV+lJs=;
+        fh=7c4l7maM4Zwa6hKnHuvKsDz8vNscz/KlDmWl81vDKKw=;
+        b=z5mKFC9ENJHDQkW0Dw2Wu5D0HQIu47FCKaT92jDP4fvNjba4Bue6vYuqbabi3sU/O4
+         sLJAJ0DdLyfRgkYV418SjSRdTO0FFpIUraQaMlI6+pkWwNu7hWgIqNCPoyrGv5duV+DC
+         r/Us8UlxxGQU4lxsKE9um5rJHN3ldryqakXWS9mo1R4R5DUM0uSqlp9DHM4w8fbUEeDO
+         srl+hpp9RqaiNnQR8yQkzLgzAe4aa6oNLnS7B1g5MWBGK+DHe1h73sIcitJLGCiyw/2N
+         GqyofM08WU8NkOaRmG1QljZOJJD6v1o2YRzKjxHo9YkgNJ/Ce+vNS0Ug12L9eZCo/kCd
+         9DCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=njS7eVWH;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=KA3CsJ1x;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id ba10-20020a0564021aca00b005236976ed7csi1310751edb.479.2023.08.10.04.29.23;
-        Thu, 10 Aug 2023 04:29:23 -0700 (PDT)
+        by mx.google.com with ESMTP id m3-20020a632603000000b00564acb691e0si1417850pgm.643.2023.08.10.04.38.46;
+        Thu, 10 Aug 2023 04:38:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=njS7eVWH;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=KA3CsJ1x;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S234905AbjHJL3W (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Thu, 10 Aug 2023 07:29:22 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:34706 "EHLO
+        id S235382AbjHJLiq (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Thu, 10 Aug 2023 07:38:46 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:43284 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S234850AbjHJL3V (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 10 Aug 2023 07:29:21 -0400
-Received: from mail-ed1-x542.google.com (mail-ed1-x542.google.com [IPv6:2a00:1450:4864:20::542])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 2E16A10D
-        for <kvm@vger.kernel.org>; Thu, 10 Aug 2023 04:29:20 -0700 (PDT)
-Received: by mail-ed1-x542.google.com with SMTP id 4fb4d7f45d1cf-523100882f2so963666a12.2
-        for <kvm@vger.kernel.org>; Thu, 10 Aug 2023 04:29:20 -0700 (PDT)
+        with ESMTP id S235374AbjHJLip (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 10 Aug 2023 07:38:45 -0400
+Received: from mail-ed1-x536.google.com (mail-ed1-x536.google.com [IPv6:2a00:1450:4864:20::536])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 14DB92701
+        for <kvm@vger.kernel.org>; Thu, 10 Aug 2023 04:38:41 -0700 (PDT)
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-51bece5d935so1021758a12.1
+        for <kvm@vger.kernel.org>; Thu, 10 Aug 2023 04:38:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ventanamicro.com; s=google; t=1691666958; x=1692271758;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Bh7Sj+kqkRV0gqlbNRjiH2S8kOFmPRbp90ZFvA+uUh8=;
-        b=njS7eVWH5G+R+/A4ergoX3MehKu1XSxT1vmjDt7KX4+LQTgyFZ5Ky6E7UcdqTAziwW
-         WNktRK+SL2+d6nrpD1mo+onRX5spVPZNNFDOiC5eVkUWhssc4PFO0HShTbEQQZA1cyd1
-         gt6paar0QrRZnkKxS8DZmXy8Ribt90VlUCZDfZqGel68ZsZP3oBwmuxMoDZvkSsf768d
-         hIvFC2DbqEEa5CdEw0Kua0EPlJuEdC+gOiKSUW8rgV3lLKJK/+tc4nN6JLe774bV5apq
-         k1MKTOnBftYiWmVA2QlOIH5nTXdijG0j7v3tNCzC4kGpu5r0EJcI6dkve/gA2QLqKECE
-         hKBg==
+        d=linaro.org; s=google; t=1691667519; x=1692272319;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=u8BlrjfKyS0XzZleStxvCQDwuXM/ozhO8WeUHPV+lJs=;
+        b=KA3CsJ1xuUdfjaE4BfWCJQyNxuFCvFlEtF/RTai/3mLxyiYCKjtxOS4Na8Luml7jPQ
+         aJhxn9MNWZkKNbyDfL4uGoS2xTB8UUkWdmfgYplqqQfvN0LG3Ru+JHZcuWG6J3mfL4DF
+         vyvK7gtthd59xhENQXfJb4ldPDvpLjxtUYljRVYGUv3LMGBXRXyOiGJ1Vqh5YhUEs76i
+         ejiz5vI2i41I/bdySHKvmnUurCxxBLNZE8fszYf/dmCsvx2KQQxXCtGsK+NK7HDuATSy
+         2OOpFb0T/226o39rwMYK7HfDxTX2OohbY9XJsZUjkFf039cgbKGIom02eOm/4NEdQpOC
+         W54w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691666958; x=1692271758;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Bh7Sj+kqkRV0gqlbNRjiH2S8kOFmPRbp90ZFvA+uUh8=;
-        b=T2AsnRzeAGx8b2uxL8+INqy+RSXDTQOnMI/T1Oa4EBwwkbKTJ9XFDsWMAvOuWMshc1
-         nDJ92kAsgXznHFzxSQBK4HQlHbzOikvLtl7Ky9YHcfCajizfacXfK0VRliPfwi+ngAKC
-         rciR80JC/rOeumknuOyUX7GpY9VeUoT3mb7PD2g9VbJIHHC7MjxtrzdPy0nogtzF5MWH
-         Va2uY/JSs1MWwplKz2tYg4Hbbz2Nxg8mnGpMuDjzEFgioN9rPuQUBr9FsU5E5hFa5pi7
-         jiCCUqtHLGw3Rpi0p60vInf2Vyc/neZYl6XzbXDDvvGGztHiVaTgoNpp3x3hA3gFAWwX
-         jzsA==
-X-Gm-Message-State: AOJu0Yw389hB1tsZPI+AVc7ZLpQgby3Z48nb1zvbWO5edhvaEeKHlmsD
-        1PtgoQBMTUEmJV94pAZEAkxpyQ==
-X-Received: by 2002:aa7:c70a:0:b0:523:3510:b22 with SMTP id i10-20020aa7c70a000000b0052335100b22mr1515698edq.42.1691666958541;
-        Thu, 10 Aug 2023 04:29:18 -0700 (PDT)
-Received: from localhost (2001-1ae9-1c2-4c00-20f-c6b4-1e57-7965.ip6.tmcz.cz. [2001:1ae9:1c2:4c00:20f:c6b4:1e57:7965])
-        by smtp.gmail.com with ESMTPSA id d7-20020aa7d5c7000000b0052286e8dee1sm675097eds.76.2023.08.10.04.29.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Aug 2023 04:29:18 -0700 (PDT)
-Date:   Thu, 10 Aug 2023 13:29:17 +0200
-From:   Andrew Jones <ajones@ventanamicro.com>
-To:     qemu-devel@nongnu.org
-Cc:     pbonzini@redhat.com, mtosatti@redhat.com, peter.maydell@linaro.org,
+        d=1e100.net; s=20221208; t=1691667519; x=1692272319;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=u8BlrjfKyS0XzZleStxvCQDwuXM/ozhO8WeUHPV+lJs=;
+        b=EzHQp18TLLd6XmsyGeRt0lI/06Q9odMP5aSKH14l6gjhY9P7NVU2F7Dx4zZtghwv5u
+         luUyQV/DMGorfot+5m86Kfl0VZGYOAeJvqG9d2r51E+Mq5q21u/dijXvSZb3k2iuGoQy
+         6m7b8GcCOqWEy7TYsnY4OAPsbJksjurZxPiaIngNZ88L1qFa2yVdMfcqLyZTmTPGdC7H
+         JLc4wOIPWpGQR7V++Hya5Zo+LfqpEHdiRSK0P9sOkU9pFl/h+VurI++JMauto9Bpjal8
+         /8kNg031WStgEBWKSn9oAyQ2BFQT8sSn/DzSlsb6mG8ROp7946g/32PmyxlVlfz9RQGB
+         5M0A==
+X-Gm-Message-State: AOJu0Yy5w1RBYF/Dg6uSn9MEzWgVZH2S6pJ6F2qXvz1MirzLBmU0sDtO
+        znKO2l2kui2YTu1TdpTV1jsmybxFhyVy0Kr5uwkg1g==
+X-Received: by 2002:a05:6402:1211:b0:523:10c0:9dc with SMTP id
+ c17-20020a056402121100b0052310c009dcmr2108404edw.8.1691667519485; Thu, 10 Aug
+ 2023 04:38:39 -0700 (PDT)
+MIME-Version: 1.0
+References: <20230725122601.424738-2-ajones@ventanamicro.com> <20230810-3326d0a412d01fe729f7e6e4@orel>
+In-Reply-To: <20230810-3326d0a412d01fe729f7e6e4@orel>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Thu, 10 Aug 2023 12:38:28 +0100
+Message-ID: <CAFEAcA9Yj+9oWgjU1t=df+As0K7FhaE4YLJ9ee2oRpSEejTjCg@mail.gmail.com>
+Subject: Re: [PATCH v2] kvm: Remove KVM_CREATE_IRQCHIP support assumption
+To:     Andrew Jones <ajones@ventanamicro.com>
+Cc:     qemu-devel@nongnu.org, pbonzini@redhat.com, mtosatti@redhat.com,
         pasic@linux.ibm.com, borntraeger@linux.ibm.com, thuth@redhat.com,
         dbarboza@ventanamicro.com, kvm@vger.kernel.org,
         qemu-arm@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [PATCH v2] kvm: Remove KVM_CREATE_IRQCHIP support assumption
-Message-ID: <20230810-3326d0a412d01fe729f7e6e4@orel>
-References: <20230725122601.424738-2-ajones@ventanamicro.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230725122601.424738-2-ajones@ventanamicro.com>
+Content-Type: text/plain; charset="UTF-8"
 X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_BLOCKED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
         SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
 X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
         lindbergh.monkeyblade.net
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Odya3S4+jcEs
+X-TUID: +oV/+U+pVEqO
 
+On Thu, 10 Aug 2023 at 12:29, Andrew Jones <ajones@ventanamicro.com> wrote:
+>
+>
+> Hi Paolo,
+>
+> Is this good for 8.1?
 
-Hi Paolo,
+Is it fixing a regression since 8.0 ?
 
-Is this good for 8.1?
+thanks
+-- PMM
 
-Thanks,
-drew
-
-
-On Tue, Jul 25, 2023 at 02:26:02PM +0200, Andrew Jones wrote:
-> Since Linux commit 00f918f61c56 ("RISC-V: KVM: Skeletal in-kernel AIA
-> irqchip support") checking KVM_CAP_IRQCHIP returns non-zero when the
-> RISC-V platform has AIA. The cap indicates KVM supports at least one
-> of the following ioctls:
-> 
->   KVM_CREATE_IRQCHIP
->   KVM_IRQ_LINE
->   KVM_GET_IRQCHIP
->   KVM_SET_IRQCHIP
->   KVM_GET_LAPIC
->   KVM_SET_LAPIC
-> 
-> but the cap doesn't imply that KVM must support any of those ioctls
-> in particular. However, QEMU was assuming the KVM_CREATE_IRQCHIP
-> ioctl was supported. Stop making that assumption by introducing a
-> KVM parameter that each architecture which supports KVM_CREATE_IRQCHIP
-> sets. Adding parameters isn't awesome, but given how the
-> KVM_CAP_IRQCHIP isn't very helpful on its own, we don't have a lot of
-> options.
-> 
-> Signed-off-by: Andrew Jones <ajones@ventanamicro.com>
-> ---
-> 
-> While this fixes booting guests on riscv KVM with AIA it's unlikely
-> to get merged before the QEMU support for KVM AIA[1] lands, which
-> would also fix the issue. I think this patch is still worth considering
-> though since QEMU's assumption is wrong.
-> 
-> [1] https://lore.kernel.org/all/20230714084429.22349-1-yongxuan.wang@sifive.com/
-> 
-> v2:
->   - Move the s390x code to an s390x file. [Thomas]
->   - Drop the KVM_CAP_IRQCHIP check from the top of kvm_irqchip_create(),
->     as it's no longer necessary.
-> 
->  accel/kvm/kvm-all.c    | 16 ++++------------
->  include/sysemu/kvm.h   |  1 +
->  target/arm/kvm.c       |  3 +++
->  target/i386/kvm/kvm.c  |  2 ++
->  target/s390x/kvm/kvm.c | 11 +++++++++++
->  5 files changed, 21 insertions(+), 12 deletions(-)
-> 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index 373d876c0580..cddcb6eca641 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -86,6 +86,7 @@ struct KVMParkedVcpu {
->  };
->  
->  KVMState *kvm_state;
-> +bool kvm_has_create_irqchip;
->  bool kvm_kernel_irqchip;
->  bool kvm_split_irqchip;
->  bool kvm_async_interrupts_allowed;
-> @@ -2358,17 +2359,6 @@ static void kvm_irqchip_create(KVMState *s)
->      int ret;
->  
->      assert(s->kernel_irqchip_split != ON_OFF_AUTO_AUTO);
-> -    if (kvm_check_extension(s, KVM_CAP_IRQCHIP)) {
-> -        ;
-> -    } else if (kvm_check_extension(s, KVM_CAP_S390_IRQCHIP)) {
-> -        ret = kvm_vm_enable_cap(s, KVM_CAP_S390_IRQCHIP, 0);
-> -        if (ret < 0) {
-> -            fprintf(stderr, "Enable kernel irqchip failed: %s\n", strerror(-ret));
-> -            exit(1);
-> -        }
-> -    } else {
-> -        return;
-> -    }
->  
->      /* First probe and see if there's a arch-specific hook to create the
->       * in-kernel irqchip for us */
-> @@ -2377,8 +2367,10 @@ static void kvm_irqchip_create(KVMState *s)
->          if (s->kernel_irqchip_split == ON_OFF_AUTO_ON) {
->              error_report("Split IRQ chip mode not supported.");
->              exit(1);
-> -        } else {
-> +        } else if (kvm_has_create_irqchip) {
->              ret = kvm_vm_ioctl(s, KVM_CREATE_IRQCHIP);
-> +        } else {
-> +            return;
->          }
->      }
->      if (ret < 0) {
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index 115f0cca79d1..84b1bb3dc91e 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -32,6 +32,7 @@
->  #ifdef CONFIG_KVM_IS_POSSIBLE
->  
->  extern bool kvm_allowed;
-> +extern bool kvm_has_create_irqchip;
->  extern bool kvm_kernel_irqchip;
->  extern bool kvm_split_irqchip;
->  extern bool kvm_async_interrupts_allowed;
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index b4c7654f4980..2fa87b495d68 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -250,6 +250,9 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
->  int kvm_arch_init(MachineState *ms, KVMState *s)
->  {
->      int ret = 0;
-> +
-> +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_IRQCHIP);
-> +
->      /* For ARM interrupt delivery is always asynchronous,
->       * whether we are using an in-kernel VGIC or not.
->       */
-> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-> index ebfaf3d24c79..6363e67f092d 100644
-> --- a/target/i386/kvm/kvm.c
-> +++ b/target/i386/kvm/kvm.c
-> @@ -2771,6 +2771,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->          }
->      }
->  
-> +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_IRQCHIP);
-> +
->      return 0;
->  }
->  
-> diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
-> index a9e5880349d9..bcc735227f7d 100644
-> --- a/target/s390x/kvm/kvm.c
-> +++ b/target/s390x/kvm/kvm.c
-> @@ -391,6 +391,17 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->      }
->  
->      kvm_set_max_memslot_size(KVM_SLOT_MAX_BYTES);
-> +
-> +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_S390_IRQCHIP);
-> +    if (kvm_has_create_irqchip) {
-> +        int ret = kvm_vm_enable_cap(s, KVM_CAP_S390_IRQCHIP, 0);
-> +
-> +        if (ret < 0) {
-> +            fprintf(stderr, "Enable kernel irqchip failed: %s\n", strerror(-ret));
-> +            exit(1);
-> +        }
-> +    }
-> +
->      return 0;
->  }
->  
-> -- 
-> 2.41.0
-> 
+>
+> Thanks,
+> drew
+>
+>
+> On Tue, Jul 25, 2023 at 02:26:02PM +0200, Andrew Jones wrote:
+> > Since Linux commit 00f918f61c56 ("RISC-V: KVM: Skeletal in-kernel AIA
+> > irqchip support") checking KVM_CAP_IRQCHIP returns non-zero when the
+> > RISC-V platform has AIA. The cap indicates KVM supports at least one
+> > of the following ioctls:
+> >
+> >   KVM_CREATE_IRQCHIP
+> >   KVM_IRQ_LINE
+> >   KVM_GET_IRQCHIP
+> >   KVM_SET_IRQCHIP
+> >   KVM_GET_LAPIC
+> >   KVM_SET_LAPIC
+> >
+> > but the cap doesn't imply that KVM must support any of those ioctls
+> > in particular. However, QEMU was assuming the KVM_CREATE_IRQCHIP
+> > ioctl was supported. Stop making that assumption by introducing a
+> > KVM parameter that each architecture which supports KVM_CREATE_IRQCHIP
+> > sets. Adding parameters isn't awesome, but given how the
+> > KVM_CAP_IRQCHIP isn't very helpful on its own, we don't have a lot of
+> > options.
+> >
+> > Signed-off-by: Andrew Jones <ajones@ventanamicro.com>
+> > ---
+> >
+> > While this fixes booting guests on riscv KVM with AIA it's unlikely
+> > to get merged before the QEMU support for KVM AIA[1] lands, which
+> > would also fix the issue. I think this patch is still worth considering
+> > though since QEMU's assumption is wrong.
+> >
+> > [1] https://lore.kernel.org/all/20230714084429.22349-1-yongxuan.wang@sifive.com/
+> >
+> > v2:
+> >   - Move the s390x code to an s390x file. [Thomas]
+> >   - Drop the KVM_CAP_IRQCHIP check from the top of kvm_irqchip_create(),
+> >     as it's no longer necessary.
+> >
+> >  accel/kvm/kvm-all.c    | 16 ++++------------
+> >  include/sysemu/kvm.h   |  1 +
+> >  target/arm/kvm.c       |  3 +++
+> >  target/i386/kvm/kvm.c  |  2 ++
+> >  target/s390x/kvm/kvm.c | 11 +++++++++++
+> >  5 files changed, 21 insertions(+), 12 deletions(-)
+> >
+> > diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> > index 373d876c0580..cddcb6eca641 100644
+> > --- a/accel/kvm/kvm-all.c
+> > +++ b/accel/kvm/kvm-all.c
+> > @@ -86,6 +86,7 @@ struct KVMParkedVcpu {
+> >  };
+> >
+> >  KVMState *kvm_state;
+> > +bool kvm_has_create_irqchip;
+> >  bool kvm_kernel_irqchip;
+> >  bool kvm_split_irqchip;
+> >  bool kvm_async_interrupts_allowed;
+> > @@ -2358,17 +2359,6 @@ static void kvm_irqchip_create(KVMState *s)
+> >      int ret;
+> >
+> >      assert(s->kernel_irqchip_split != ON_OFF_AUTO_AUTO);
+> > -    if (kvm_check_extension(s, KVM_CAP_IRQCHIP)) {
+> > -        ;
+> > -    } else if (kvm_check_extension(s, KVM_CAP_S390_IRQCHIP)) {
+> > -        ret = kvm_vm_enable_cap(s, KVM_CAP_S390_IRQCHIP, 0);
+> > -        if (ret < 0) {
+> > -            fprintf(stderr, "Enable kernel irqchip failed: %s\n", strerror(-ret));
+> > -            exit(1);
+> > -        }
+> > -    } else {
+> > -        return;
+> > -    }
+> >
+> >      /* First probe and see if there's a arch-specific hook to create the
+> >       * in-kernel irqchip for us */
+> > @@ -2377,8 +2367,10 @@ static void kvm_irqchip_create(KVMState *s)
+> >          if (s->kernel_irqchip_split == ON_OFF_AUTO_ON) {
+> >              error_report("Split IRQ chip mode not supported.");
+> >              exit(1);
+> > -        } else {
+> > +        } else if (kvm_has_create_irqchip) {
+> >              ret = kvm_vm_ioctl(s, KVM_CREATE_IRQCHIP);
+> > +        } else {
+> > +            return;
+> >          }
+> >      }
+> >      if (ret < 0) {
+> > diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> > index 115f0cca79d1..84b1bb3dc91e 100644
+> > --- a/include/sysemu/kvm.h
+> > +++ b/include/sysemu/kvm.h
+> > @@ -32,6 +32,7 @@
+> >  #ifdef CONFIG_KVM_IS_POSSIBLE
+> >
+> >  extern bool kvm_allowed;
+> > +extern bool kvm_has_create_irqchip;
+> >  extern bool kvm_kernel_irqchip;
+> >  extern bool kvm_split_irqchip;
+> >  extern bool kvm_async_interrupts_allowed;
+> > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> > index b4c7654f4980..2fa87b495d68 100644
+> > --- a/target/arm/kvm.c
+> > +++ b/target/arm/kvm.c
+> > @@ -250,6 +250,9 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
+> >  int kvm_arch_init(MachineState *ms, KVMState *s)
+> >  {
+> >      int ret = 0;
+> > +
+> > +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_IRQCHIP);
+> > +
+> >      /* For ARM interrupt delivery is always asynchronous,
+> >       * whether we are using an in-kernel VGIC or not.
+> >       */
+> > diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+> > index ebfaf3d24c79..6363e67f092d 100644
+> > --- a/target/i386/kvm/kvm.c
+> > +++ b/target/i386/kvm/kvm.c
+> > @@ -2771,6 +2771,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+> >          }
+> >      }
+> >
+> > +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_IRQCHIP);
+> > +
+> >      return 0;
+> >  }
+> >
+> > diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+> > index a9e5880349d9..bcc735227f7d 100644
+> > --- a/target/s390x/kvm/kvm.c
+> > +++ b/target/s390x/kvm/kvm.c
+> > @@ -391,6 +391,17 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+> >      }
+> >
+> >      kvm_set_max_memslot_size(KVM_SLOT_MAX_BYTES);
+> > +
+> > +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_S390_IRQCHIP);
+> > +    if (kvm_has_create_irqchip) {
+> > +        int ret = kvm_vm_enable_cap(s, KVM_CAP_S390_IRQCHIP, 0);
+> > +
+> > +        if (ret < 0) {
+> > +            fprintf(stderr, "Enable kernel irqchip failed: %s\n", strerror(-ret));
+> > +            exit(1);
+> > +        }
+> > +    }
+> > +
+> >      return 0;
+> >  }
+> >
+> > --
+> > 2.41.0
+> >

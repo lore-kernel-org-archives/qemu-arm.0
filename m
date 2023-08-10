@@ -1,257 +1,272 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp711527ejc;
-        Thu, 10 Aug 2023 07:24:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE8Xtql2sAoTvuh0epKRBV6/tZ8T7+Z9Brd1kTtWMb707fWgbyWu6wORV5JFS2YUE9FpaB+
-X-Received: by 2002:a0c:f78e:0:b0:63f:89ef:556a with SMTP id s14-20020a0cf78e000000b0063f89ef556amr2494073qvn.27.1691677468448;
-        Thu, 10 Aug 2023 07:24:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691677468; cv=none;
-        d=google.com; s=arc-20160816;
-        b=hTdEwU3aiCM0fiN3LSIOUP0Mb2neY8xwtZvQ2AMgy7DfqOJuyG7cD/lmCAe6xrWB2O
-         IUBMEZCmiRU+/Ct1T9AVjTAa1q2eCCFgMsL5aD6RB/Y5UG5m0+t6W/Jvk+OSZSrZlNDk
-         6YDIL7dMSnJPJ6dz0dgOn4CgOYNwoFuHVPTzaKYK5v4nz++aPiFShRxDU4edwaZtPnT6
-         0/DPlp1NKq4F+FZZKlpZoJ/kuc+x9KkdDtorLPg3lxEt8uahcTCWGf957XtWXDhy3Mkq
-         7eXJo+/u9MCXSpIhPkRfdMg/eHhT48GX6hZmI8kUFeuiP5i6aH2VMsnUWrii8Chvq1/t
-         6zAw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=8cIROWgM81ULThBkGHmsA3T76gE+Z0o8J/hwau0oBOk=;
-        fh=fQSWUkMuRxigFAyrwqJDZVDXvGgDP9IGeNAJ2g03mw8=;
-        b=TvlpNzdXAp5qIS+n3nqkSLWFLVopauV0O8CmNg7q2S9KUUKXkZhW1kMMEtNm/DXS/e
-         o7vAXYZ9qq0awMjPRgJOb5VgS57mp3xVuk4E1gQGMr32wZpnCRBhrPggSMRbxV+K7Ml0
-         hEs/O19qsry6gvsvQ7B2f43fFz0ncbIIGH30GJhZzsER/8E01SY1mnMiwDwyaCkxqtk2
-         nafiekEw4Xkan3RjhtVPUPd3Wm8mXqVNtUhCInSsXkVZKrtSZNm54oQXG3zll1/UkXrO
-         c1/3uOEizthxybAjrNwQDH+X+nJdnE2SydPZiUrAD6K7ygvgtTpUPllHLlxIJT5jON/I
-         Q2zA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="QJIQt/Oi";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d15-20020a0ce44f000000b0063d57c2050asi907033qvm.46.2023.08.10.07.24.28
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Aug 2023 07:24:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="QJIQt/Oi";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qU6aF-00027w-25; Thu, 10 Aug 2023 10:24:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qU6aC-000278-UB
- for qemu-devel@nongnu.org; Thu, 10 Aug 2023 10:24:12 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qU6aB-0005uQ-6r
- for qemu-devel@nongnu.org; Thu, 10 Aug 2023 10:24:12 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-522bd411679so1219585a12.0
- for <qemu-devel@nongnu.org>; Thu, 10 Aug 2023 07:24:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691677449; x=1692282249;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=8cIROWgM81ULThBkGHmsA3T76gE+Z0o8J/hwau0oBOk=;
- b=QJIQt/OiZ0JNpvXTD9Trc73kzlz1FMnspf0w9JPcUCmitH/XqGV6nIRqEvhzOVlNbu
- NQcXWJxzoBlA1C2F3asUYqvvMyJEo3BXSW0dPEQUhOiqkKVJ4tGUh/2lA4TpOzQhHhkd
- WgeQCKxxGopiViR8xNI0wEB9GTr2plQGDdoSDID9SlXKMvqddTLIFkTDHpLR3lzCZnLf
- 1GPXlmHXJOEhYApapEJdPQW3lnoXMyba0TRcJLoLGaTp4vf9Gc7E4dIQsh8F2elG8nQA
- qH0mLAgpx/5BA41o6vBlfnC+WSaFf8/G29Dj6+wwdIXnbI+WsocaK5l1jTu+dT8Gy+hc
- 5J2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691677449; x=1692282249;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8cIROWgM81ULThBkGHmsA3T76gE+Z0o8J/hwau0oBOk=;
- b=KXUSq8we5oezegDWQH5nkLgoBvzfoVR3ZXiMToJzIcb7b17bVt2q7gGeUk6fGl331P
- C9fWllyT86EdIlXtWfR2erMdfWPgBzpHCwcjmu+Rwo0To2siKFADkfuSlsuSfC49btlJ
- N/P0Ua4WpnRJH+dprsWqvPwz5umUMeFviJm+E1atsHYqU5Q3yPQ6UK+cZrFW2HDXNNIW
- 8F1N708lhCp5QZahONERMq7kYJ29KsHCai8EoJZXfW4rZGOZfCRRoi3iRcEwY6ESvd5w
- LgeYsyVQDbeDyJB1KHGpwi7fiTlkw0A90Yimp3tD5pHMsjzLKaoZU3C/1/m1DwMDhCjP
- 6dWA==
-X-Gm-Message-State: AOJu0YwWKH67zTUlBSGgEHCUdneiIt5KWGlRwyCqtG5zLGsb0xHgwnMk
- hyc1G9W1LA8ydma5k3/cqa/1uqkWMnhCn66ahxFmIQ==
-X-Received: by 2002:a50:fb81:0:b0:523:47b0:9077 with SMTP id
- e1-20020a50fb81000000b0052347b09077mr2322442edq.38.1691677449363; Thu, 10 Aug
- 2023 07:24:09 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id k3-20020a056000004300b003177074f830sm2550327wrx.59.2023.08.10.08.36.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Aug 2023 08:36:41 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id D2AD71FFBC;
+	Thu, 10 Aug 2023 16:36:40 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Yonggang Luo <luoyonggang@gmail.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	qemu-arm@nongnu.org,
+	qemu-s390x@nongnu.org,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 1/8] gitlab: enable ccache for many build jobs
+Date: Thu, 10 Aug 2023 16:36:33 +0100
+Message-Id: <20230810153640.1879717-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230810153640.1879717-1-alex.bennee@linaro.org>
+References: <20230810153640.1879717-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-References: <20230810023548.412310-1-richard.henderson@linaro.org>
- <20230810023548.412310-5-richard.henderson@linaro.org>
-In-Reply-To: <20230810023548.412310-5-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Aug 2023 15:23:58 +0100
-Message-ID: <CAFEAcA8YcX0qq392chnpVdB2-qjk7Jb-4gBEu-e2uDGka3Ccvg@mail.gmail.com>
-Subject: Re: [PATCH 4/5] target/arm: Support more GM blocksizes
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d2v2P406Hyq6
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: /fuaL9iawAAv
 
-On Thu, 10 Aug 2023 at 03:36, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Support all of the easy GM block sizes.
-> Use direct memory operations, since the pointers are aligned.
->
-> While BS=2 (16 bytes, 1 tag) is a legal setting, that requires
-> an atomic store of one nibble.  This is not difficult, but there
-> is also no point in supporting it until required.
->
-> Note that cortex-a710 sets GM blocksize to match its cacheline
-> size of 64 bytes.  I expect many implementations will also
-> match the cacheline, which makes 16 bytes very unlikely.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/tcg/mte_helper.c | 61 ++++++++++++++++++++++++++++++++-----
->  1 file changed, 53 insertions(+), 8 deletions(-)
->
-> diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-> index 3640c6e57f..6faf4e42d5 100644
-> --- a/target/arm/tcg/mte_helper.c
-> +++ b/target/arm/tcg/mte_helper.c
-> @@ -428,6 +428,8 @@ uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr)
->      int gm_bs = env_archcpu(env)->gm_blocksize;
->      int gm_bs_bytes = 4 << gm_bs;
->      void *tag_mem;
-> +    uint64_t ret;
-> +    int shift;
->
->      ptr = QEMU_ALIGN_DOWN(ptr, gm_bs_bytes);
->
-> @@ -443,16 +445,39 @@ uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr)
->
->      /*
->       * The ordering of elements within the word corresponds to
-> -     * a little-endian operation.
-> +     * a little-endian operation.  Computation of shift comes from
-> +     *
-> +     *     index = address<LOG2_TAG_GRANULE+3:LOG2_TAG_GRANULE>
-> +     *     data<index*4+3:index*4> = tag
-> +     *
-> +     * Because of the alignment of ptr above, BS=6 has shift=0.
-> +     * All memory operations are aligned.
->       */
->      switch (gm_bs) {
-> -    case 6:
-> -        /* 256 bytes -> 16 tags -> 64 result bits */
-> -        return ldq_le_p(tag_mem);
-> -    default:
-> +    case 2:
->          /* cpu configured with unsupported gm blocksize. */
->          g_assert_not_reached();
-> +    case 3:
-> +        /* 32 bytes -> 2 tags -> 8 result bits */
-> +        ret = *(uint8_t *)tag_mem;
-> +        break;
-> +    case 4:
-> +        /* 64 bytes -> 4 tags -> 16 result bits */
-> +        ret = cpu_to_le16(*(uint16_t *)tag_mem);
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-Does this really make a difference compared to ldw_le_p() ?
+The `ccache` tool can be very effective at reducing compilation times
+when re-running pipelines with only minor changes each time. For example
+a fresh 'build-system-fedora' job will typically take 20 minutes on the
+gitlab.com shared runners. With ccache this is reduced to as little as
+6 minutes.
 
-> +        break;
-> +    case 5:
-> +        /* 128 bytes -> 8 tags -> 32 result bits */
-> +        ret = cpu_to_le32(*(uint32_t *)tag_mem);
-> +        break;
-> +    case 6:
-> +        /* 256 bytes -> 16 tags -> 64 result bits */
-> +        return cpu_to_le64(*(uint64_t *)tag_mem);
-> +    default:
-> +        /* cpu configured with invalid gm blocksize. */
-> +        g_assert_not_reached();
+Normally meson would auto-detect existance of ccache in $PATH and use
+it automatically, but the way we wrap meson from configure breaks this,
+as we're passing in an config file with explicitly set compiler paths.
+Thus we need to add $CCACHE_WRAPPERSPATH to the front of $PATH. For
+unknown reasons if doing this in msys though, gcc becomes unable to
+invoke 'cc1' when run from meson. For msys we thus set CC='ccache gcc'
+before invoking 'configure' instead.
 
-Is it worth having an assert in CPU realize for an invalid
-blocksize, so that we can catch duff ID register values
-without having to rely on there being a test run that
-uses ldgm/stgm ?
+A second problem with msys is that cache misses are incredibly
+expensive, so enabling ccache massively slows down the build when
+the cache isn't well populated. This is suspected to be a result of
+the cost of spawning processes under the msys architecture. To deal
+with this we set CCACHE_DEPEND=1 which enables ccache's 'depend_only'
+strategy. This avoids extra spawning of the pre-processor during
+cache misses, with the downside that is it less likely ccache will
+find a cache hit after semantically benign compiler flag changes.
+This is the lesser of two evils, as otherwise we can't use ccache
+at all under msys and remain inside the job time limit.
 
->      }
-> +    shift = extract64(ptr, LOG2_TAG_GRANULE, 4) * 4;
-> +    return ret << shift;
->  }
->
->  void HELPER(stgm)(CPUARMState *env, uint64_t ptr, uint64_t val)
-> @@ -462,6 +487,7 @@ void HELPER(stgm)(CPUARMState *env, uint64_t ptr, uint64_t val)
->      int gm_bs = env_archcpu(env)->gm_blocksize;
->      int gm_bs_bytes = 4 << gm_bs;
->      void *tag_mem;
-> +    int shift;
->
->      ptr = QEMU_ALIGN_DOWN(ptr, gm_bs_bytes);
->
-> @@ -480,14 +506,33 @@ void HELPER(stgm)(CPUARMState *env, uint64_t ptr, uint64_t val)
->
->      /*
->       * The ordering of elements within the word corresponds to
-> -     * a little-endian operation.
-> +     * a little-endian operation.  See LDGM for comments on shift.
-> +     * All memory operations are aligned.
->       */
-> +    shift = extract64(ptr, LOG2_TAG_GRANULE, 4) * 4;
-> +    val >>= shift;
->      switch (gm_bs) {
-> +    case 2:
-> +        /* cpu configured with unsupported gm blocksize. */
-> +        g_assert_not_reached();
-> +    case 3:
-> +        /* 32 bytes -> 2 tags -> 8 result bits */
-> +        *(uint8_t *)tag_mem = val;
-> +        break;
-> +    case 4:
-> +        /* 64 bytes -> 4 tags -> 16 result bits */
-> +        *(uint16_t *)tag_mem = cpu_to_le16(val);
-> +        break;
-> +    case 5:
-> +        /* 128 bytes -> 8 tags -> 32 result bits */
-> +        *(uint32_t *)tag_mem = cpu_to_le32(val);
-> +        break;
->      case 6:
-> -        stq_le_p(tag_mem, val);
-> +        /* 256 bytes -> 16 tags -> 64 result bits */
-> +        *(uint64_t *)tag_mem = cpu_to_le64(val);
->          break;
->      default:
-> -        /* cpu configured with unsupported gm blocksize. */
-> +        /* cpu configured with invalid gm blocksize. */
->          g_assert_not_reached();
->      }
->  }
-> --
-> 2.34.1
+If people are finding ccache to hurt their pipelines, it can be
+disabled by setting the 'CCACHE_DISABLE=1' env variable against
+their gitlab fork CI settings.
 
-thanks
--- PMM
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-Id: <20230804111054.281802-2-berrange@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ docs/devel/ci-jobs.rst.inc                    |  7 +++++
+ .gitlab-ci.d/buildtest-template.yml           | 11 ++++++++
+ .gitlab-ci.d/crossbuild-template.yml          | 26 +++++++++++++++++++
+ .gitlab-ci.d/windows.yml                      | 13 ++++++++--
+ .../dockerfiles/debian-hexagon-cross.docker   |  9 ++++++-
+ 5 files changed, 63 insertions(+), 3 deletions(-)
+
+diff --git a/docs/devel/ci-jobs.rst.inc b/docs/devel/ci-jobs.rst.inc
+index 3f6802d51e..4c39cdb2d9 100644
+--- a/docs/devel/ci-jobs.rst.inc
++++ b/docs/devel/ci-jobs.rst.inc
+@@ -188,3 +188,10 @@ If you've got access to a CentOS Stream 8 x86_64 host that can be
+ used as a gitlab-CI runner, you can set this variable to enable the
+ tests that require this kind of host. The runner should be tagged with
+ both "centos_stream_8" and "x86_64".
++
++CCACHE_DISABLE
++~~~~~~~~~~~~~~
++The jobs are configured to use "ccache" by default since this typically
++reduces compilation time, at the cost of increased storage. If the
++use of "ccache" is suspected to be hurting the overall job execution
++time, setting the "CCACHE_DISABLE=1" env variable to disable it.
+diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
+index f3e39b7eb1..4fbfeb6667 100644
+--- a/.gitlab-ci.d/buildtest-template.yml
++++ b/.gitlab-ci.d/buildtest-template.yml
+@@ -2,11 +2,21 @@
+   extends: .base_job_template
+   stage: build
+   image: $CI_REGISTRY_IMAGE/qemu/$IMAGE:$QEMU_CI_CONTAINER_TAG
++  cache:
++    paths:
++      - ccache
++    key: "$CI_JOB_NAME"
++    when: always
+   before_script:
+     - JOBS=$(expr $(nproc) + 1)
+   script:
++    - export CCACHE_BASEDIR="$(pwd)"
++    - export CCACHE_DIR="$CCACHE_BASEDIR/ccache"
++    - export CCACHE_MAXSIZE="500M"
++    - export PATH="$CCACHE_WRAPPERSDIR:$PATH"
+     - mkdir build
+     - cd build
++    - ccache --zero-stats
+     - ../configure --enable-werror --disable-docs --enable-fdt=system
+           ${TARGETS:+--target-list="$TARGETS"}
+           $CONFIGURE_ARGS ||
+@@ -20,6 +30,7 @@
+       then
+         make -j"$JOBS" $MAKE_CHECK_ARGS ;
+       fi
++    - ccache --show-stats
+ 
+ # We jump some hoops in common_test_job_template to avoid
+ # rebuilding all the object files we skip in the artifacts
+diff --git a/.gitlab-ci.d/crossbuild-template.yml b/.gitlab-ci.d/crossbuild-template.yml
+index d97611053b..3e5f4d9cd8 100644
+--- a/.gitlab-ci.d/crossbuild-template.yml
++++ b/.gitlab-ci.d/crossbuild-template.yml
+@@ -2,10 +2,20 @@
+   extends: .base_job_template
+   stage: build
+   image: $CI_REGISTRY_IMAGE/qemu/$IMAGE:$QEMU_CI_CONTAINER_TAG
++  cache:
++    paths:
++      - ccache
++    key: "$CI_JOB_NAME"
++    when: always
+   timeout: 80m
+   script:
++    - export CCACHE_BASEDIR="$(pwd)"
++    - export CCACHE_DIR="$CCACHE_BASEDIR/ccache"
++    - export CCACHE_MAXSIZE="500M"
++    - export PATH="$CCACHE_WRAPPERSDIR:$PATH"
+     - mkdir build
+     - cd build
++    - ccache --zero-stats
+     - ../configure --enable-werror --disable-docs --enable-fdt=system
+         --disable-user $QEMU_CONFIGURE_OPTS $EXTRA_CONFIGURE_OPTS
+         --target-list-exclude="arm-softmmu cris-softmmu
+@@ -18,6 +28,7 @@
+       version="$(git describe --match v[0-9]* 2>/dev/null || git rev-parse --short HEAD)";
+       mv -v qemu-setup*.exe qemu-setup-${version}.exe;
+       fi
++    - ccache --show-stats
+ 
+ # Job to cross-build specific accelerators.
+ #
+@@ -29,7 +40,15 @@
+   stage: build
+   image: $CI_REGISTRY_IMAGE/qemu/$IMAGE:$QEMU_CI_CONTAINER_TAG
+   timeout: 30m
++  cache:
++    paths:
++      - ccache/
++    key: "$CI_JOB_NAME"
+   script:
++    - export CCACHE_BASEDIR="$(pwd)"
++    - export CCACHE_DIR="$CCACHE_BASEDIR/ccache"
++    - export CCACHE_MAXSIZE="500M"
++    - export PATH="$CCACHE_WRAPPERSDIR:$PATH"
+     - mkdir build
+     - cd build
+     - ../configure --enable-werror --disable-docs $QEMU_CONFIGURE_OPTS
+@@ -40,7 +59,14 @@
+   extends: .base_job_template
+   stage: build
+   image: $CI_REGISTRY_IMAGE/qemu/$IMAGE:$QEMU_CI_CONTAINER_TAG
++  cache:
++    paths:
++      - ccache/
++    key: "$CI_JOB_NAME"
+   script:
++    - export CCACHE_BASEDIR="$(pwd)"
++    - export CCACHE_DIR="$CCACHE_BASEDIR/ccache"
++    - export CCACHE_MAXSIZE="500M"
+     - mkdir build
+     - cd build
+     - ../configure --enable-werror --disable-docs $QEMU_CONFIGURE_OPTS
+diff --git a/.gitlab-ci.d/windows.yml b/.gitlab-ci.d/windows.yml
+index cd7622a761..12a987cd71 100644
+--- a/.gitlab-ci.d/windows.yml
++++ b/.gitlab-ci.d/windows.yml
+@@ -5,13 +5,14 @@
+   - windows
+   - windows-1809
+   cache:
+-    key: "${CI_JOB_NAME}-cache"
++    key: "$CI_JOB_NAME"
+     paths:
+       - msys64/var/cache
++      - ccache
+     when: always
+   needs: []
+   stage: build
+-  timeout: 80m
++  timeout: 100m
+   variables:
+     # This feature doesn't (currently) work with PowerShell, it stops
+     # the echo'ing of commands being run and doesn't show any timing
+@@ -72,6 +73,7 @@
+       bison diffutils flex
+       git grep make sed
+       $MINGW_TARGET-capstone
++      $MINGW_TARGET-ccache
+       $MINGW_TARGET-curl
+       $MINGW_TARGET-cyrus-sasl
+       $MINGW_TARGET-dtc
+@@ -101,11 +103,18 @@
+   - Write-Output "Running build at $(Get-Date -Format u)"
+   - $env:CHERE_INVOKING = 'yes'  # Preserve the current working directory
+   - $env:MSYS = 'winsymlinks:native' # Enable native Windows symlink
++  - $env:CCACHE_BASEDIR = "$env:CI_PROJECT_DIR"
++  - $env:CCACHE_DIR = "$env:CCACHE_BASEDIR/ccache"
++  - $env:CCACHE_MAXSIZE = "500M"
++  - $env:CCACHE_DEPEND = 1 # cache misses are too expensive with preprocessor mode
++  - $env:CC = "ccache gcc"
+   - mkdir build
+   - cd build
++  - ..\msys64\usr\bin\bash -lc "ccache --zero-stats"
+   - ..\msys64\usr\bin\bash -lc "../configure --enable-fdt=system $CONFIGURE_ARGS"
+   - ..\msys64\usr\bin\bash -lc "make"
+   - ..\msys64\usr\bin\bash -lc "make check MTESTARGS='$TEST_ARGS' || { cat meson-logs/testlog.txt; exit 1; } ;"
++  - ..\msys64\usr\bin\bash -lc "ccache --show-stats"
+   - Write-Output "Finished build at $(Get-Date -Format u)"
+ 
+ msys2-64bit:
+diff --git a/tests/docker/dockerfiles/debian-hexagon-cross.docker b/tests/docker/dockerfiles/debian-hexagon-cross.docker
+index c2cfb6a5d0..578269766c 100644
+--- a/tests/docker/dockerfiles/debian-hexagon-cross.docker
++++ b/tests/docker/dockerfiles/debian-hexagon-cross.docker
+@@ -15,6 +15,7 @@ RUN apt-get update && \
+ # Install common build utilities
+     apt-get install -y --no-install-recommends \
+         curl \
++        ccache \
+         xz-utils \
+         ca-certificates \
+         bison \
+@@ -24,13 +25,19 @@ RUN apt-get update && \
+         python3-venv && \
+ # Install QEMU build deps for use in CI
+     DEBIAN_FRONTEND=noninteractive eatmydata \
+-    apt build-dep -yy --arch-only qemu
++    apt build-dep -yy --arch-only qemu && \
++    mkdir -p /usr/libexec/ccache-wrappers && \
++    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/c++ && \
++    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/cc && \
++    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/g++ && \
++    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
+ 
+ 
+ ENV TOOLCHAIN_INSTALL /opt
+ ENV TOOLCHAIN_RELEASE 16.0.0
+ ENV TOOLCHAIN_BASENAME "clang+llvm-${TOOLCHAIN_RELEASE}-cross-hexagon-unknown-linux-musl"
+ ENV TOOLCHAIN_URL https://codelinaro.jfrog.io/artifactory/codelinaro-toolchain-for-hexagon/v${TOOLCHAIN_RELEASE}/${TOOLCHAIN_BASENAME}.tar.xz
++ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
+ 
+ RUN curl -#SL "$TOOLCHAIN_URL" | tar -xJC "$TOOLCHAIN_INSTALL"
+ ENV PATH $PATH:${TOOLCHAIN_INSTALL}/${TOOLCHAIN_BASENAME}/x86_64-linux-gnu/bin
+-- 
+2.39.2

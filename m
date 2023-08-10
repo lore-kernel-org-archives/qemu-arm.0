@@ -1,111 +1,85 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp365885ejc;
-        Wed, 9 Aug 2023 19:36:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEzH1mvwmHT80EIONhA9TNCPqDBAc1z6QSZrRgtZjJxaEPUnRAkp35/hOzqaw6msNszGYyG
-X-Received: by 2002:a05:622a:108:b0:40f:dcda:ea2f with SMTP id u8-20020a05622a010800b0040fdcdaea2fmr1259007qtw.29.1691634963691;
-        Wed, 09 Aug 2023 19:36:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691634963; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp529027ejc;
+        Thu, 10 Aug 2023 02:14:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGGzndEf+kvK4+8el6VD7UXo10wtkaOXf4t7TrjiYr+jg8PyM1cL7UccOnQdcUHowAHhNAQ
+X-Received: by 2002:a05:620a:4714:b0:76c:c41a:f1a1 with SMTP id bs20-20020a05620a471400b0076cc41af1a1mr1897584qkb.8.1691658843376;
+        Thu, 10 Aug 2023 02:14:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691658843; cv=none;
         d=google.com; s=arc-20160816;
-        b=0HWorAGtNSSMWDYfrpRIcr+H1AMhYuiUowyj9uP9BazKFuCBbJVCQHbpJ7Aipd/beV
-         MBnd/a6KHTVl+vEN5jwb35DJKqZmJzWH/LrweBZnGKY+0L0TdyVppejIK1Wp9YKAkZNO
-         2bdDAM33psc7VQGa7WXffO0CoHltb4jISqTzKzoDjjDZ87/TlnTR4ISj78Tp9MbtwxHu
-         rR8SSFptycASa4kOZY/1ksy6gbaHOWzZdtXc01QVCXXx+16DFl90vkLz67UnATwq9oBc
-         tvOSxVzbD3G7y/qOVZ2KFADslAgA5P842sxidNYiwPFULWQda5esP72ZycTs0ocMurFA
-         Ef1w==
+        b=fFLCNbhO9MgDnKfgu0fY9I1CDoEMdSrwxxBmNugjiOpxZzIrTc9k421pYQHfe3GJAs
+         z1zdy3/AmsW/z2X55v9D5xW+n7EKXJmkdx/qxFqT3JNldZ+QSelYG+AdJk47QnE4tiGJ
+         gCCWQ6v3SvGR5oW7+J3q1dC2Li6nhD3CpYnCFxnmG3JFL5bMAmGqaeEIxwN1cg3XRzqd
+         H+BUrbicFGDQudId3J9eq7lJDyn9jvDu8smWh320gteCdKAcwJk8/FQgFX3Vp3qcVfuM
+         BvTTSwBKErsngZTYeoACyTY4QH0kxsvorDrhFzcx6/pWkGXGUoaciYm/urT75oqi9+e0
+         HPAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CpX0550wKMCux/3GBST6e64zt0DiUd6H3+LGhoX5Le4=;
-        fh=oweadga+1U1BKjDqlK8hSmEWEC1EUfcsKuPkDinEDsU=;
-        b=gphqkuDIZ08Sk/YtHFBNl3a9nuYGTTcd3EhtCw49D2dPPtHa8/NngPsM+bpuysGCMX
-         WptAaMEPNFE/eHihsHJQrhhQgzIHnQgVML6zm5tyv0IBPcUv8mJaJt1cAa7e/w4c0zC3
-         1TTjfobQd0jCW1lyZfZPl4TNPvpr1hgEHE8ChhInFXVMOeuChGjMkHr24jSkZrGZFfOP
-         z4YuP/+glsTYjhh0wfGNdFb1nthCcSnYaFgEwTyNake1aUOGKrHBwx9GiDtcJOfWNyHI
-         aN1yyEN6xi4LXLx2XPBwiuJQePAj1V9bg00D1/9C32qhupxlKEdMtUIGfUjJ7kV5L63p
-         MzAA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=JoA9tEsfgCbXlP9JNmKRE2up6ZCiUrVv5faRnSzzclg=;
+        fh=1nuEoKRZGTl6oJPCwSAS7VDHkxIqGl3eRO68QMQPx6g=;
+        b=neOLL3rnIsTqOzfdJoWrv/KNqc19YNudJslm493glRntPMpEFVMQrABE0QwtzdN3Pv
+         JDykNoUGxzJLImCZW07gHzWAWlw4UCC6+8vBFi7wapq4JP7uyauMiTrNX9T6NtjO6aja
+         +SWm1xOayfBhPN0Vpfw7mDgShluTvIac6HbdhO6ZG0jBOlbc/od1g9OFWO4CSSAp0PbK
+         gViX2elS6BVeMwl3tPL6GNyJT/8IIPgaVNUSJ9Jo5Vd8ACsCTvRolMcEQFdjx7i0um8n
+         BCVxuuD2Pw7f7SYTAqh4BMSGp6HMzTiqqIJdWhjivF2xz0U+/2nuXO/7nR4EPqiZRJZw
+         8A2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nxE6HNRC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t29-20020a05622a181d00b00403f05ae952si326610qtc.578.2023.08.09.19.36.03
+        by mx.google.com with ESMTPS id h17-20020a0cf211000000b0063d3863fcbfsi541206qvk.594.2023.08.10.02.14.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Aug 2023 19:36:03 -0700 (PDT)
+        Thu, 10 Aug 2023 02:14:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nxE6HNRC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qTvWm-0000wn-2w; Wed, 09 Aug 2023 22:35:57 -0400
+	id 1qU1jM-0008O3-QB; Thu, 10 Aug 2023 05:13:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qTvWj-0000uT-N0
- for qemu-arm@nongnu.org; Wed, 09 Aug 2023 22:35:53 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qTvWh-0004x0-Ov
- for qemu-arm@nongnu.org; Wed, 09 Aug 2023 22:35:53 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-686ed1d2594so396091b3a.2
- for <qemu-arm@nongnu.org>; Wed, 09 Aug 2023 19:35:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691634950; x=1692239750;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=CpX0550wKMCux/3GBST6e64zt0DiUd6H3+LGhoX5Le4=;
- b=nxE6HNRCusB6fZYY6XNCichRSFLYz/wJ+Z80eX+cTtzkebnHEr7zNV/9ryCAMh/VX9
- xa9dGe5ZUocQ1flZzigcxXUPIFGccTSyLGesSW4yFyd6kA+GF+FV0XZi6h4x6+P2Pmyy
- nDenJJBTgak0vLbieRfJqbJh+zUOBmW0olwE4qBVYhcwtwLb6366JA1RzdjRfbBVYtlP
- KT/Fo/Y/usHC8XJxEhcjEeO4RcKBGJxJDOYUwayOfy64lOl67qzOTMiQBPvXwZ727lwU
- JXpXyiOO58QRMER1Y5U08BrjpUw7xNBA0/wX335ELzn11snWJvp36BvIBqiBXFySH3FF
- YOHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691634950; x=1692239750;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=CpX0550wKMCux/3GBST6e64zt0DiUd6H3+LGhoX5Le4=;
- b=fbg5+b6w8KVCRJbSXh63FqlHewNcerF/4XesvP+HHSCux5WXZX1B4Z69pLt0Lg0Kp+
- hA/fj7jYrD/d9APwcTlpHL932Fj+w03maFVgSb7/BkPltafQbc9F36VhhsF6eM+SASg3
- BZAWBB+qB8P+iIYW65m5ZJQdfrWL76xAlFxynA+x8kc5zBRG1493PuPx+D2X8SIBZSt7
- 4WEQZZWfJZfCvCs7YaNjDWnezqBia6aNxd4SaTimQ9ocvjUoPKMA0GlAmfpRWTeN8JTn
- pux/xQr9b0GUXLTvQAuOYi/oyy/0k7lFX4vSBt8mAsCF33Gm3QDb0ZkCbMQ2fYQjn0BB
- KN3A==
-X-Gm-Message-State: AOJu0YyEgQF/6bK7ZcmPY1QbWlpTF6TlDk728stcWDQHlgmM7GqFpyLH
- QSk6yfiKvQSuH4hm9epm2V+O4A==
-X-Received: by 2002:a05:6a20:1583:b0:11d:8a8f:655d with SMTP id
- h3-20020a056a20158300b0011d8a8f655dmr1541785pzj.4.1691634950092; 
- Wed, 09 Aug 2023 19:35:50 -0700 (PDT)
-Received: from stoup.. ([2602:47:d483:7301:6bf0:9674:6ac4:f74c])
- by smtp.gmail.com with ESMTPSA id
- z7-20020aa791c7000000b0066ebaeb149dsm287283pfa.88.2023.08.09.19.35.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Aug 2023 19:35:49 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH for-8.2 0/5] target/arm: Implement cortex-a710
-Date: Wed,  9 Aug 2023 19:35:43 -0700
-Message-Id: <20230810023548.412310-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <SRS0=YB0G=D3=kaod.org=clg@ozlabs.org>)
+ id 1qU1jM-0008Na-CZ; Thu, 10 Aug 2023 05:13:20 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=YB0G=D3=kaod.org=clg@ozlabs.org>)
+ id 1qU1jJ-0007AL-OS; Thu, 10 Aug 2023 05:13:20 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4RM1Rl4qC4z4wy7;
+ Thu, 10 Aug 2023 19:13:07 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4RM1Rj4F8Zz4wxm;
+ Thu, 10 Aug 2023 19:13:04 +1000 (AEST)
+Message-ID: <7683a189-53cb-63f4-486b-534abbd5fd1d@kaod.org>
+Date: Thu, 10 Aug 2023 11:13:02 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH] Aspeed: i2c: Fixed Tx and Rx error in BUFF Mode
+Content-Language: en-US
+To: Hang Yu <1339236493@qq.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
+ <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+References: <20230804081142.52539-1-1339236493@qq.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230804081142.52539-1-1339236493@qq.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=YB0G=D3=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -57
+X-Spam_score: -5.8
+X-Spam_bar: -----
+X-Spam_report: (-5.8 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-4.14, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,40 +94,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cW0+1Fx30gpc
+X-TUID: xvu2KVbnL94i
 
-This is one of the first generation Armv9 cores, and gives us something
-concrete to test in that area.  Notably, it supports MTE.
+Hello,
 
-The first patch is a bug fix of sorts for neoverse-v1, as we don't,
-and won't, support FEAT_TRF.
-
-The only thing missing for the a710 is FEAT_MPAM.  I haven't looked
-at that properly, and I believe that there may already be some work
-done on that within Linaro -- even if a stub implementation.
-
-
-r~
+On 8/4/23 10:11, Hang Yu via wrote:
+> 1. Fixed inconsistency between the bit field definition in register
+> I2CD_POOL_CTRL and the ast2600 datasheet
+> 2. Fixed issue of confusing RXSIZE and RXCOUNT, as well as forgetting
+> to add one to TXCOUNT and RXSIZE in buff mode
+> 3. Fixed issue with TXBUF transmission start position error in buff mode
+> 4. Added support for the BUFFER ORGANIZATION option in reg I2CC_POOL_CTRL
 
 
-Richard Henderson (5):
-  target/arm: Disable FEAT_TRF in neoverse-v1
-  target/arm: Reduce dcz_blocksize to uint8_t
-  target/arm: Allow cpu to configure GM blocksize
-  target/arm: Support more GM blocksizes
-  target/arm: Implement cortex-a710
+This looks like 4 patches. Could split and resend a series please ?
 
- docs/system/arm/virt.rst       |   1 +
- target/arm/cpu.h               |   5 +-
- target/arm/internals.h         |   6 --
- target/arm/tcg/translate.h     |   2 +
- hw/arm/virt.c                  |   1 +
- target/arm/helper.c            |  11 ++-
- target/arm/tcg/cpu64.c         | 172 ++++++++++++++++++++++++++++++++-
- target/arm/tcg/mte_helper.c    |  91 ++++++++++++++---
- target/arm/tcg/translate-a64.c |   5 +-
- 9 files changed, 263 insertions(+), 31 deletions(-)
+Also, Cc: these persons
 
--- 
-2.34.1
+   Joe Komlodi <komlodi@google.com>
+   Peter Delevoryas <peter@pjd.dev>
+
+since they have been involved with the AST2600 I2C implementation.
+
+> After adding these changes, QEMU can support driver code:
+> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v5.15
+> /drivers/i2c/busses/i2c-ast2600.c
+> 
+> Signed-off-by: Hang Yu <1339236493@qq.com>
+
+  This is very cryptic. Don't you have a corporate email ?
+
+Thanks,
+
+C.
+
+
+
+> ---
+>   hw/i2c/aspeed_i2c.c         | 21 ++++++---------------
+>   include/hw/i2c/aspeed_i2c.h |  5 +++--
+>   2 files changed, 9 insertions(+), 17 deletions(-)
+> 
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 1f071a3811..0e380d0bba 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -236,7 +236,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
+>       uint32_t reg_byte_buf = aspeed_i2c_bus_byte_buf_offset(bus);
+>       uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
+>       int pool_tx_count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl,
+> -                                                TX_COUNT);
+> +                                                TX_COUNT)+1;
+>   
+>       if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
+>           for (i = pool_start; i < pool_tx_count; i++) {
+> @@ -293,10 +293,12 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+>       uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
+>       uint32_t reg_dma_addr = aspeed_i2c_bus_dma_addr_offset(bus);
+>       int pool_rx_count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl,
+> -                                                RX_COUNT);
+> +                                                RX_SIZE)+1;
+>   
+>       if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_BUFF_EN)) {
+> -        uint8_t *pool_base = aic->bus_pool_base(bus);
+> +        uint8_t *pool_base ;
+> +        if(ARRAY_FIELD_EX32(bus->regs,I2CC_POOL_CTRL,BUF_ORGANIZATION))pool_base=aic->bus_pool_base(bus)+16;
+> +        else pool_base= aic->bus_pool_base(bus);
+>   
+>           for (i = 0; i < pool_rx_count; i++) {
+>               pool_base[i] = i2c_recv(bus->bus);
+> @@ -418,7 +420,7 @@ static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
+>       uint32_t reg_intr_sts = aspeed_i2c_bus_intr_sts_offset(bus);
+>       uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
+>       if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_BUFF_EN)) {
+> -        count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT);
+> +        count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT)+1;
+>       } else if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_DMA_EN)) {
+>           count = bus->regs[reg_dma_len];
+>       } else { /* BYTE mode */
+> @@ -449,7 +451,6 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
+>       uint8_t pool_start = 0;
+>       uint32_t reg_intr_sts = aspeed_i2c_bus_intr_sts_offset(bus);
+>       uint32_t reg_cmd = aspeed_i2c_bus_cmd_offset(bus);
+> -    uint32_t reg_pool_ctrl = aspeed_i2c_bus_pool_ctrl_offset(bus);
+>       uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
+>   
+>       if (!aspeed_i2c_check_sram(bus)) {
+> @@ -489,16 +490,6 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
+>            * else needs to be sent in this sequence.
+>            */
+>           if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
+> -            if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT)
+> -                == 1) {
+> -                SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_TX_CMD, 0);
+> -            } else {
+> -                /*
+> -                 * Increase the start index in the TX pool buffer to
+> -                 * skip the address byte.
+> -                 */
+> -                pool_start++;
+> -            }
+>           } else if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_DMA_EN)) {
+>               if (bus->regs[reg_dma_len] == 0) {
+>                   SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_TX_CMD, 0);
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index 51c944efea..88b144a599 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -139,9 +139,9 @@ REG32(I2CD_CMD, 0x14) /* I2CD Command/Status */
+>   REG32(I2CD_DEV_ADDR, 0x18) /* Slave Device Address */
+>       SHARED_FIELD(SLAVE_DEV_ADDR1, 0, 7)
+>   REG32(I2CD_POOL_CTRL, 0x1C) /* Pool Buffer Control */
+> -    SHARED_FIELD(RX_COUNT, 24, 5)
+> +    SHARED_FIELD(RX_COUNT, 24, 6)
+>       SHARED_FIELD(RX_SIZE, 16, 5)
+> -    SHARED_FIELD(TX_COUNT, 9, 5)
+> +    SHARED_FIELD(TX_COUNT, 8, 5)
+>       FIELD(I2CD_POOL_CTRL, OFFSET, 2, 6) /* AST2400 */
+>   REG32(I2CD_BYTE_BUF, 0x20) /* Transmit/Receive Byte Buffer */
+>       SHARED_FIELD(RX_BUF, 8, 8)
+> @@ -162,6 +162,7 @@ REG32(I2CC_MS_TXRX_BYTE_BUF, 0x08)
+>       /* 15:0  shared with I2CD_BYTE_BUF[15:0] */
+>   REG32(I2CC_POOL_CTRL, 0x0c)
+>       /* 31:0 shared with I2CD_POOL_CTRL[31:0] */
+> +    FIELD(I2CC_POOL_CTRL, BUF_ORGANIZATION, 0, 1) /* AST2600 */
+>   REG32(I2CM_INTR_CTRL, 0x10)
+>   REG32(I2CM_INTR_STS, 0x14)
+>       FIELD(I2CM_INTR_STS, PKT_STATE, 28, 4)
 

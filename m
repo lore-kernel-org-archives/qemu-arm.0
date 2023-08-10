@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id v9-20020a5d6b09000000b0031759e6b43fsm2564444wrw.39.2023.08.10.08.36.41
+        by smtp.gmail.com with ESMTPSA id y10-20020a1c4b0a000000b003fe2f3a89d4sm2510343wma.7.2023.08.10.08.36.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 10 Aug 2023 08:36:41 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id EA76E1FFBD;
-	Thu, 10 Aug 2023 16:36:40 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 121F01FFBE;
+	Thu, 10 Aug 2023 16:36:41 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -20,43 +20,54 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org,
 	qemu-s390x@nongnu.org,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH 2/8] tests/docker: cleanup non-verbose output
-Date: Thu, 10 Aug 2023 16:36:34 +0100
-Message-Id: <20230810153640.1879717-3-alex.bennee@linaro.org>
+Subject: [PATCH 3/8] tests/tcg: remove quoting for info output
+Date: Thu, 10 Aug 2023 16:36:35 +0100
+Message-Id: <20230810153640.1879717-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230810153640.1879717-1-alex.bennee@linaro.org>
 References: <20230810153640.1879717-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: +Ghj79tPh3ZU
+X-TUID: puyHs6n5vI0o
 
-Even with --quiet docker will spam the sha256 to the console. Avoid
-this by redirecting stdout. While we are at it fix the name we echo
-which was broken during 0b1a649047 (tests/docker: use direct RUNC call
-to build containers).
+This avoids ugly multi-line wrapping for the test on non V=1 builds.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/Makefile.include | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ tests/tcg/aarch64/Makefile.target                  | 2 +-
+ tests/tcg/multiarch/system/Makefile.softmmu-target | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index 142e8605ee..dfabafab92 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -46,9 +46,9 @@ docker-image-%: $(DOCKER_FILES_DIR)/%.docker
- 		--build-arg BUILDKIT_INLINE_CACHE=1 	\
- 		$(if $(NOUSER),,			\
- 			--build-arg USER=$(USER)	\
--			--build-arg UID=$(UID))	\
--		-t qemu/$* - < $<, 			\
--		"BUILD", $1)
-+			--build-arg UID=$(UID))		\
-+		-t qemu/$* - < $< $(if $V,,> /dev/null),\
-+		"BUILD", $*)
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 617f821613..75347ebe70 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -14,7 +14,7 @@ AARCH64_TESTS=fcvt pcalign-a64
+ fcvt: LDFLAGS+=-lm
  
- # Special rule for debootstraped binfmt linux-user images
- docker-binfmt-image-debian-%: $(DOCKER_FILES_DIR)/debian-bootstrap.docker
+ run-fcvt: fcvt
+-	$(call run-test,$<,$(QEMU) $<, "$< on $(TARGET_NAME)")
++	$(call run-test,$<,$(QEMU) $<)
+ 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
+ 
+ config-cc.mak: Makefile
+diff --git a/tests/tcg/multiarch/system/Makefile.softmmu-target b/tests/tcg/multiarch/system/Makefile.softmmu-target
+index 7ba9053375..a051d689d7 100644
+--- a/tests/tcg/multiarch/system/Makefile.softmmu-target
++++ b/tests/tcg/multiarch/system/Makefile.softmmu-target
+@@ -37,10 +37,10 @@ run-gdbstub-untimely-packet: hello
+ 		--qemu $(QEMU) \
+ 		--bin $< --qargs \
+ 		"-monitor none -display none -chardev file$(COMMA)path=untimely-packet.out$(COMMA)id=output $(QEMU_OPTS)", \
+-	"softmmu gdbstub untimely packets")
++	softmmu gdbstub untimely packets)
+ 	$(call quiet-command, \
+ 		(! grep -Fq 'Packet instead of Ack, ignoring it' untimely-packet.gdb.err), \
+-		"GREP", "file  untimely-packet.gdb.err")
++		"GREP", file untimely-packet.gdb.err)
+ else
+ run-gdbstub-%:
+ 	$(call skip-test, "gdbstub test $*", "no guest arch support")
 -- 
 2.39.2

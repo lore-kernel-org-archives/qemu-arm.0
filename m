@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id z4-20020a5d4d04000000b00314398e4dd4sm2503902wrt.54.2023.08.10.08.36.42
+        by smtp.gmail.com with ESMTPSA id k18-20020a056000005200b00317d2be2e59sm2513473wrx.73.2023.08.10.08.36.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 10 Aug 2023 08:36:43 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 8AA4E1FFC2;
+	by zen.linaroharston (Postfix) with ESMTP id A2D1E1FFC3;
 	Thu, 10 Aug 2023 16:36:41 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -20,60 +20,48 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org,
 	qemu-s390x@nongnu.org,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
-Subject: [PATCH 7/8] gdbstub: more fixes for client Ctrl-C handling
-Date: Thu, 10 Aug 2023 16:36:39 +0100
-Message-Id: <20230810153640.1879717-8-alex.bennee@linaro.org>
+	gdb-patches@sourceware.org
+Subject: [PATCH 8/8] gdbstub: don't complain about preemptive ACK chars
+Date: Thu, 10 Aug 2023 16:36:40 +0100
+Message-Id: <20230810153640.1879717-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230810153640.1879717-1-alex.bennee@linaro.org>
 References: <20230810153640.1879717-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: PtCpxvSwykKP
+X-TUID: 2ny/QJPPWZj0
 
-The original fix caused problems with spurious characters on other
-system emulation. So:
+When starting a remote connection GDB sends an '+':
 
-  - instead of spamming output make the warning a trace point
-  - ensure we only allow a stop reply if it was 0x3
+  /* Ack any packet which the remote side has already sent.  */
+  remote_serial_write ("+", 1);
 
-Suggested-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+which gets flagged as a garbage character in the gdbstub state
+machine. As gdb does send it out lets be permissive about the handling
+so we can better see real issues.
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <456ed3318421dd7946bdfb5ceda7e05332da368c.1690910333.git.quic_mathbern@quicinc.com>
+Cc: gdb-patches@sourceware.org
 ---
- gdbstub/gdbstub.c    | 5 +++--
- gdbstub/trace-events | 1 +
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ gdbstub/gdbstub.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index e74ecc78cc..20b6fe03fb 100644
+index 20b6fe03fb..5f28d5cf57 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -2059,9 +2059,10 @@ void gdb_read_byte(uint8_t ch)
-          * here, but it does expect a stop reply.
-          */
-         if (ch != 0x03) {
--            warn_report("gdbstub: client sent packet while target running\n");
-+            trace_gdbstub_err_unexpected_runpkt(ch);
-+        } else {
-+            gdbserver_state.allow_stop_reply = true;
-         }
--        gdbserver_state.allow_stop_reply = true;
-         vm_stop(RUN_STATE_PAUSED);
-     } else
- #endif
-diff --git a/gdbstub/trace-events b/gdbstub/trace-events
-index 0c18a4d70a..b383bf8d29 100644
---- a/gdbstub/trace-events
-+++ b/gdbstub/trace-events
-@@ -26,6 +26,7 @@ gdbstub_err_invalid_repeat(uint8_t ch) "got invalid RLE count: 0x%02x"
- gdbstub_err_invalid_rle(void) "got invalid RLE sequence"
- gdbstub_err_checksum_invalid(uint8_t ch) "got invalid command checksum digit: 0x%02x"
- gdbstub_err_checksum_incorrect(uint8_t expected, uint8_t got) "got command packet with incorrect checksum, expected=0x%02x, received=0x%02x"
-+gdbstub_err_unexpected_runpkt(uint8_t ch) "unexpected packet (%c) while target running"
- 
- # softmmu.c
- gdbstub_hit_watchpoint(const char *type, int cpu_gdb_index, uint64_t vaddr) "Watchpoint hit, type=\"%s\" cpu=%d, vaddr=0x%" PRIx64 ""
+@@ -2074,6 +2074,11 @@ void gdb_read_byte(uint8_t ch)
+                 gdbserver_state.line_buf_index = 0;
+                 gdbserver_state.line_sum = 0;
+                 gdbserver_state.state = RS_GETLINE;
++            } else if (ch == '+') {
++                /*
++                 * do nothing, gdb may preemptively send out ACKs on
++                 * initial connection
++                 */
+             } else {
+                 trace_gdbstub_err_garbage(ch);
+             }
 -- 
 2.39.2

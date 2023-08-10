@@ -1,101 +1,100 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp530906ejc;
-        Thu, 10 Aug 2023 02:17:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEuRFGOKK/5WkOrgLXLKSFUVJeZkszM7fFX8Gt33i/Bp/8vJ6kht4w0B9Qw7Lc9A326Dzer
-X-Received: by 2002:ac8:5ccb:0:b0:403:ab73:9d55 with SMTP id s11-20020ac85ccb000000b00403ab739d55mr2797091qta.6.1691659060129;
-        Thu, 10 Aug 2023 02:17:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691659060; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp666348ejc;
+        Thu, 10 Aug 2023 06:17:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHYYduJztIw1yMSr9PniAQfyDQRXqxQer57lQlt1HZl71kZWVV6Crk/D0fiIzn/nW/dybeP
+X-Received: by 2002:a1f:41d6:0:b0:486:53f4:12ec with SMTP id o205-20020a1f41d6000000b0048653f412ecmr1395962vka.8.1691673437906;
+        Thu, 10 Aug 2023 06:17:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691673437; cv=none;
         d=google.com; s=arc-20160816;
-        b=bhw64ry77IWHcV3If4uF3gY0aO+YtHYKrXNN2fMKzFX0KPesoOReXBtG9jxkfqE9vV
-         ilwUN/7XRbsWSrL65tMm/kPNlDQdFCJzkKozEBpkf40LZf95XVkTqQvBaDgQGpfiQ6RE
-         RvQDMqsnLqXJq/XLx3oZpoR9SMZsglnWekPihdHf3bmWSHNIta2j2eMQeWKA8AyMi8pw
-         +opONMp3h1pqKLRAk68JNP0/I+WkbmzI6sxE/ADWl1pnWcmoY+u0CNr3enylcqslJCEO
-         6tBICNMGgYQp2UHL6dHMvWipLdiRGOo+irFJahOMjo5xghgR5duwKRCxskQxDcJZSTb6
-         juyw==
+        b=uEheTSALQ/3/+iuALrM58eu1X8fsl4znJFTNI8NEpWi8Z9THjiknrdEmcrWzYM3GjF
+         mncMNgvQQr4Cn2ZaLZp1Gdk48LKs73gdWJFKKKG5Z4mutF6w5fskW73m9Q4VNm3n/rBO
+         ThCk4RDv699IugtBCB3ZXM61VarF9v8UpxIDbmTnseDISAIqkoKp0zEKxYY78dVJ+JAb
+         keKFYe86XRnoLRH+Wxlhog7Ob335f9nbg1/ukYEiSm2t6ximbqf9J6II4VTdcbOy8Yft
+         zxxgh9BCP4JL4ExfSFLWAJCNGVArgPQlPEBHojjLknKaRgY77HPwxb1bK16OQDRxFnZV
+         gccw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=cROljJL0g0JpQ4Zaq6M6Leunnnywaeha3HFbFJAjtMg=;
-        fh=qQktnNHMF63/lvoaUW87qKTlrnLutpTDl+gH+pSxVgA=;
-        b=m0T9peQgbxnjOlpmQXdsKQ6bxFts1rz3OuHxE/puXo5qLwXKWM7EposwyQm0lnx/dI
-         KC/lfqufQ/D98OvjL+YETDm+I6ioxUsQTAxCNV2a5oghGQQEwoSW4bUH9FCUbwE0Sr12
-         SddGqbPiqP6dZANx5HS16um2qUQvfBZVqIOLyY3TxBgcZ9Ft8cXy72iSfX/aidm9uA3F
-         uRshnbOyqcl4HbcVPt4RzjDNeadmCGcAy7/IdUiKUmuBJTgogDx2PAr6slO7XxxGX7dI
-         AGbNt6S2wdTPyv9nK6TPQFjNKL3LmQAYSELJiFhYWK0rFpxa6UtWlH7Cobkb5Gj3WHkJ
-         MjrQ==
+        bh=XvznmDeo1oK14c9Q6GLwEOoHv2gSi+p2PJZSwYjMG3M=;
+        fh=CEa3UdY0L+UQ/2T/5R8rkDkdq4jlW1F1hWJjDNQD42w=;
+        b=vvrJOW7AwWAjMo9IkQD9l0OludsPMHCDh2XfzZKWEdrPiG5raEoLw8+YoyGm+4khYC
+         l0d9oDdDBEJxXc3oulfV2fMd96vcqK7+RpV2vpLycioJjHKFKY4fG/BwQd3EXb+7Z6ve
+         8pFo1uc+XSIukOyCRYjaIC5eYCIX94kCYeXFgYQ6SkrPLnCrALlKb1n1ZbWsXjRumzjh
+         T+jTuvKXFrgFfa3Z/aG/YdJKVRXsVNwKxhc5ZmHDcZ/EKQccX5RnNybb1nbnHR2R6VLJ
+         xz8VrHkdqpHGhGB+lu6GTyb1fI4F8FVEh1mhNGNh8xrdb//td5/lNM3PXHkXYWO37SGy
+         VKWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="S/XS9zm1";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nnR84Gmh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f1-20020ac859c1000000b0040ff9749944si640235qtf.732.2023.08.10.02.17.39
+        by mx.google.com with ESMTPS id f145-20020a1f1f97000000b00486cec0290fsi110242vkf.170.2023.08.10.06.17.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Aug 2023 02:17:40 -0700 (PDT)
+        Thu, 10 Aug 2023 06:17:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="S/XS9zm1";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nnR84Gmh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qU1nK-0002cZ-6n; Thu, 10 Aug 2023 05:17:26 -0400
+	id 1qU5XM-0003Ls-Kg; Thu, 10 Aug 2023 09:17:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qU1n6-0002R2-11
- for qemu-arm@nongnu.org; Thu, 10 Aug 2023 05:17:16 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1qU5XL-0003LZ-6w
+ for qemu-arm@nongnu.org; Thu, 10 Aug 2023 09:17:11 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qU1n1-000063-V2
- for qemu-arm@nongnu.org; Thu, 10 Aug 2023 05:17:10 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-5236a9788a7so874007a12.0
- for <qemu-arm@nongnu.org>; Thu, 10 Aug 2023 02:17:07 -0700 (PDT)
+ id 1qU5XJ-0007Hf-Ab
+ for qemu-arm@nongnu.org; Thu, 10 Aug 2023 09:17:10 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-51cff235226so1913779a12.0
+ for <qemu-arm@nongnu.org>; Thu, 10 Aug 2023 06:17:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691659026; x=1692263826;
+ d=linaro.org; s=google; t=1691673427; x=1692278227;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=cROljJL0g0JpQ4Zaq6M6Leunnnywaeha3HFbFJAjtMg=;
- b=S/XS9zm1x+2jN7SIU5iFOPbaEVricnXezMf0e4+3Jk3PSeBw8g7XMXHHa4Yk2ZknHZ
- IPfQvu/xhu3y6xwoyUtoVxCxb5yHO303bR/bqCgMmHVyL1ujAjIafM74wjoG2WLgenfH
- R2Rd8chPDYyL+YXyWWsjpguPWp38QzsH2DJBERXXoVzKkB3Wn96UZPfXohbDz39mYnuu
- Kz5enXx/xGeJzLKECh9N7eE4c+wA646fj5Ph18le1LSwmq7QIZVGeRqVvdNSEVophAr3
- dRTz4dA8YItodDjVp0QYev+oiavBWrgKySDnj6lZmLIFhT2RclSvOE2+j4QqqqX1SQoH
- eklQ==
+ bh=XvznmDeo1oK14c9Q6GLwEOoHv2gSi+p2PJZSwYjMG3M=;
+ b=nnR84GmhTb05gN8QkrFnD3XJzIblingTgWVOf0ps6C/SytLNl4Rnf7mrUDObUQQV2d
+ 2473t34WiIvcF9JsDFNkmE7Ztvaig1h3r+G9nVmO6FC/EWDoGnV0EoKwEFC5C4QeAL7V
+ OkmAV42RDn8TUHzxB8sAtd+lYRqxj/YCeEjs2bbrDGoC8A/RCLLULa62sf6gYT41gmes
+ RzCTygRiLlErHaQQpeKQjZHSYIN2Ip+oxNC943lDPqed0tRv3GkEB81GaHL3Whc/wcZY
+ mgcfZXjEUnar08mqFyyaXKF7WhdV1yur5En3R52u7Q5PaIRsVjuFchsD8dEsCY5AgjLe
+ Emhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691659026; x=1692263826;
+ d=1e100.net; s=20221208; t=1691673427; x=1692278227;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=cROljJL0g0JpQ4Zaq6M6Leunnnywaeha3HFbFJAjtMg=;
- b=OoJ71z8E9oeCpSr2dgnE6uacaN0Bf5ugIq5sG6ObQDqzOsiDhcUF5WT9swrX7aQGyw
- NOCRrs0GWlU8G8acIDEvxkisudpSL9bVNkwEKToDqRH72xyg7G+j4FWgwv8DfWWlu9jX
- 0ziK8XCQR3T2WIuYi/y8cgyoRv7WgAuV+9dyCk9s5pYuKqBeGtsh7TAlY/iaKEFCLwIO
- zs2BYQVkR/PEbTnyT2UfEJX5tB+sWsjH8VU1pli7/Kst8ZPLGv9e2EaIJ0aGR6qAkxpB
- bMJtYDkqlnNSGMKMU9TKdUjdntwYGdzsukOvwaaagcJ08YBC5IvMDvmEY6vgvZb4Ljqq
- Kz4A==
-X-Gm-Message-State: AOJu0YxmdP+2EPlKLiWLHi9HvB9BV57zyX+VVqJLzmhEjSq8RinaUXx8
- Zxi9P6ms7wjKD8BV34XQktq8BvbQdntiDo1/MBwrWYCRpmDVF6Yi
-X-Received: by 2002:aa7:d814:0:b0:522:2ba9:6fce with SMTP id
- v20-20020aa7d814000000b005222ba96fcemr1816474edq.8.1691659026097; Thu, 10 Aug
- 2023 02:17:06 -0700 (PDT)
+ bh=XvznmDeo1oK14c9Q6GLwEOoHv2gSi+p2PJZSwYjMG3M=;
+ b=LH/yWZDAPJhdr8glJvg9ANwQBuMlwQG9qiZQzUO4nVepXfXXlgi01/F0iJdP7iZB56
+ KOCr0A9ygmoeG5FIqFbpkWRT2B39pvih5eIw8al2Qo6QTy7JhK6roIYPsfNCtZi7AeoH
+ Lvi9jUlerV2qPdtUhHr2TgTXqHSFD19y1kTT1dO7EFuwpHSA/qp916MJguferCjMIXRI
+ VrEQ0QLyjNdj4kLlX4LEqMmsritITv1SDOfQC+XDWeQWlpMztrQat2tKH6f2nGCQz6Mu
+ 7IDq7gWRUfC7CZ9t+k9TFglmE06pLNiKqCjjpSazTWVinm3kEwFmTDwA5aLfvajBMlap
+ kClA==
+X-Gm-Message-State: AOJu0YzSQAmVQWv9yLreMRwxXEWpqTx1DAEhcM34Zqu+DSyR4PeRU3b5
+ 2qSGAbU/a/Vndi3zeGMps4S8Z/fIDIBU579Vg5PEjw==
+X-Received: by 2002:a05:6402:1ac9:b0:523:e25:5656 with SMTP id
+ ba9-20020a0564021ac900b005230e255656mr2517110edb.5.1691673427593; Thu, 10 Aug
+ 2023 06:17:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230810023548.412310-1-richard.henderson@linaro.org>
- <20230810023548.412310-2-richard.henderson@linaro.org>
-In-Reply-To: <20230810023548.412310-2-richard.henderson@linaro.org>
+References: <20230809123706.1842548-1-jean-philippe@linaro.org>
+In-Reply-To: <20230809123706.1842548-1-jean-philippe@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Aug 2023 10:16:54 +0100
-Message-ID: <CAFEAcA_utXHbmNydvQZoNVciuj8XnTjRW8zdGRbruyr2QK70ZA@mail.gmail.com>
-Subject: Re: [PATCH 1/5] target/arm: Disable FEAT_TRF in neoverse-v1
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-stable@nongnu.org
+Date: Thu, 10 Aug 2023 14:16:56 +0100
+Message-ID: <CAFEAcA8wh35V4ivo2cMP6zUGgCDi6t9-AHS0FVfeLThvjHtV9A@mail.gmail.com>
+Subject: Re: [PATCH v3 0/6] target/arm: Fixes for RME
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,23 +116,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: t39NBRJfbUS+
+X-TUID: Q9pRnMxW6vJj
 
-On Thu, 10 Aug 2023 at 03:36, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, 9 Aug 2023 at 13:37, Jean-Philippe Brucker
+<jean-philippe@linaro.org> wrote:
 >
-> Self-hosted trace is out of scope for QEMU.
+> A few patches to fix RME support and allow booting a realm guest, based
+> on "[PATCH v2 00/15] target/arm/ptw: Cleanups and a few bugfixes"
+> https://lore.kernel.org/all/20230807141514.19075-1-peter.maydell@linaro.org/
+>
+> Since v2:
+>
+> * Updated the comment in patch 5. I also removed the check for FEAT_RME,
+>   because as pointed out in "target/arm: Catch illegal-exception-return
+>   from EL3 with bad NSE/NS", the SCR_NSE bit can only be set with
+>   FEAT_RME enabled. Because of this additional change, I didn't add the
+>   Reviewed-by.
+>
+> * Added an EL-change hook to patch 6, to update the timer IRQ
+>   when changing the security state. I was wondering whether the
+>   el_change function should filter security state changes, since we only
+>   need to update IRQ state when switching between Root and
+>   Secure/NonSecure. But with a small syscall benchmark exercising
+>   EL0-EL1 switch with FEAT_RME enabled, I couldn't see any difference
+>   with and without the el_change hook, so I kept it simple.
+>
+> * Also added the .raw_write callback for CNTHCTL_EL2.
+>
+> v2: https://lore.kernel.org/all/20230802170157.401491-1-jean-philippe@linaro.org/
 
-True, but we already disable this in arm_cpu_realizefn()
-along with FEAT_SPE, FEAT_AMU and a bunch of other "out
-of scope" or not-yet-implemented features. I thought
-it more reliable to do the disabling globally rather
-than rely on everybody adding a new CPU to remember
-to adjust the ID register values. (Plus if we ever do
-implement some approximation to one of these features
-we only need to change one place in the code, not
-re-look-up all the CPU ID register values.) See
-commit 7d8c283e10dd81.
+This didn't build for the linux-user targets. I squashed
+this into patch 6:
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 7df1f7600b1..d906d2b1caa 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2169,9 +2169,11 @@ static void arm_cpu_realizefn(DeviceState *dev,
+Error **errp)
+         set_feature(env, ARM_FEATURE_VBAR);
+     }
+
+-    if (cpu_isar_feature(aa64_rme, cpu)) {
++#ifndef CONFIG_USER_ONLY
++    if (tcg_enabled() && cpu_isar_feature(aa64_rme, cpu)) {
+         arm_register_el_change_hook(cpu, &gt_rme_post_el_change, 0);
+     }
++#endif
+
+     register_cp_regs_for_features(cpu);
+     arm_cpu_register_gdb_regs_for_features(cpu);
+
+With that, I've applied the series to target-arm-for-8.2.
 
 thanks
 -- PMM

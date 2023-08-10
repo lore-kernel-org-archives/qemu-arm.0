@@ -1,170 +1,260 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp554932ejc;
-        Thu, 10 Aug 2023 03:04:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGstXbCfNPTrmhJm7V+SeRVa+wHAZ4jDpeY4bEcBTEqQ+pAaO3y5ZzEvQzecGiXgltM3qsY
-X-Received: by 2002:a1f:5f46:0:b0:487:2263:54f7 with SMTP id t67-20020a1f5f46000000b00487226354f7mr1767974vkb.9.1691661885787;
-        Thu, 10 Aug 2023 03:04:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691661885; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp599685ejc;
+        Thu, 10 Aug 2023 04:29:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGZ4xfysNFn2vMqgO6ZNGhtgCW7ky9oKabn/fbzH3BAZh8owSuH+bROTCqYecXMbD45pSD5
+X-Received: by 2002:a05:6512:a95:b0:4fe:b04:dfac with SMTP id m21-20020a0565120a9500b004fe0b04dfacmr2215445lfu.0.1691666963767;
+        Thu, 10 Aug 2023 04:29:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691666963; cv=none;
         d=google.com; s=arc-20160816;
-        b=fsbNwG5acvOhVS587a2nLiLOifK/3RGz06bTyf9L4ytO1XBv6Gq5q++48zWYFdeYkw
-         iEGoFnFbMuQkeelHsvHiXYV5FOF+GKTSGK/hkKiplUDzatmpgtaGIpvg6lt/Vew3mWBD
-         /nubmANDnX4xgnmRs93Cjkdm7x+gAx+RF3ytLqEafJVT461JBscH2qpJboIJU8VINPbf
-         DDdFENs1PuaZrla96MUJJjwZ4AFLCTrDwBYu8XNBZwYu8rpCNWmMNR92nH5jXMre0b/x
-         Uvl+2D3nPOysgRX8C2VosMR8GVzSpTrFBCGpVcvubX3KWl0wexIdWo78ae+M8FAvysrA
-         YAVA==
+        b=iCTdI8O9EIUIzzuFiWyWxPRSWA/9vCkgBWjJB8VgGfbiEHcIkrAughV0UK2PORO+2t
+         mJ8x9QQ+/qWwJrtGjD3cTg6WpoP9XbTHcZLMv2jGU9vuQmExfRy5e9eDlRMeEp01DOei
+         iM2IYofLVKARIvjpU2brr+pl1eVvu55R0nd9G84LbaGjWW9lHZTtraDDMZ26won/4WIV
+         V5bW5EopnhlUjL8H4G9asvxlQXLDQFCRRFLQTHiEQjWVAU9ymbJ1g0Iuy6dBEvJaNx7M
+         S8IC88yoOvDextvCf/jB9LUVTqYMYbx7j71l4OmeTVdc8cDJJzSrjEKXkPXx9dUVI8uj
+         w9Qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=75KuGIAgmf3HbiIYrdGCaehbEbmSJ/QI8gL7GShkFOI=;
-        fh=Jb84UiWp9DpEav/08maLmT6NHd4eBDwxnb4HbYuUoiY=;
-        b=fadeiABKP2xJsnwehG+W0SuGCmVd9OU/52bFo9ZiBASPGJjOxN19hzEWX5Ikf60kOm
-         nuQfhclXeeCPrVH1tBUydqQSBd1BMnWdv+iIaZfBTg8IwUo0uW0ru10wm9eCyO6XU6oj
-         2sg3ETJsVXT/ildVDnJL+2rX/0V3Z2EWbYKM40AzPFMMKOzIRykHfm1Qpy5A+SDQN3RH
-         3UMpRG2XqUL9jGD3rie5NpGU4NIg5A5ph3/QDLi+PJMvIK+MhulBx654niv+CmtKfZ+1
-         wyvVnIfK4x5atHNTFzYSM4tXJJI4cewWDxX9VoaKzi+R8bDyi60TuCzoHxm8p7GfmJmj
-         3fNg==
+        h=list-id:precedence:in-reply-to:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Bh7Sj+kqkRV0gqlbNRjiH2S8kOFmPRbp90ZFvA+uUh8=;
+        fh=NlukSAySSqZW2WjsMYuBZRd0BJyEaudWDPNcN0vlzV0=;
+        b=ar1KjY/arcnf3Lc2FcMvi2xVofwB1Px3WSOpvmibH2ckW3whdBh/QdMlGAOw8/DlrG
+         E3+njfYnlMEEhGTe2L7k27O4CCKaX8VAQ+gaBH+/rtjbMaN55qAfhPoHHP90lhacxLGs
+         bk7Idz/0r1JMr0bvOGnIsEgkS1kpAQUsaFehyrobaEi7s9UseOemEqCjkGH8xdTSnB/o
+         KKc8WogaQkm6iD1hsT1roCpMKbTRoEv/b2FaACKRLQ6mH2AvUCt/M6ozO7DCYqv0n6/3
+         foiYqNYw2GHEv478GvZDyNr7sAixaSyn/5r9Mj9bNhkhn69pAx5ZL6yOfBvgzEWqKFtl
+         wI1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b11-20020a0ccd0b000000b0063d578ee027si587782qvm.355.2023.08.10.03.04.45
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Aug 2023 03:04:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=njS7eVWH;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id ba10-20020a0564021aca00b005236976ed7csi1310751edb.479.2023.08.10.04.29.23;
+        Thu, 10 Aug 2023 04:29:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qU2X0-0000kE-NX; Thu, 10 Aug 2023 06:04:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qU2Wz-0000k3-Ck
- for qemu-arm@nongnu.org; Thu, 10 Aug 2023 06:04:37 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qU2Ww-0000fJ-B3
- for qemu-arm@nongnu.org; Thu, 10 Aug 2023 06:04:37 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.200])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RM2Zy0Plpz6HJY6;
- Thu, 10 Aug 2023 18:04:26 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 10 Aug
- 2023 11:04:30 +0100
-Date: Thu, 10 Aug 2023 11:04:29 +0100
-To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-CC: qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: CXL Namespaces of ACPI disappearing in Qemu demo
-Message-ID: <20230810110429.000041cb@Huawei.com>
-In-Reply-To: <2023081017304217150830@phytium.com.cn>
-References: <2023061615433049315231@phytium.com.cn>
- <2023081017304217150830@phytium.com.cn>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=njS7eVWH;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S234905AbjHJL3W (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Thu, 10 Aug 2023 07:29:22 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:34706 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S234850AbjHJL3V (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 10 Aug 2023 07:29:21 -0400
+Received: from mail-ed1-x542.google.com (mail-ed1-x542.google.com [IPv6:2a00:1450:4864:20::542])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 2E16A10D
+        for <kvm@vger.kernel.org>; Thu, 10 Aug 2023 04:29:20 -0700 (PDT)
+Received: by mail-ed1-x542.google.com with SMTP id 4fb4d7f45d1cf-523100882f2so963666a12.2
+        for <kvm@vger.kernel.org>; Thu, 10 Aug 2023 04:29:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ventanamicro.com; s=google; t=1691666958; x=1692271758;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Bh7Sj+kqkRV0gqlbNRjiH2S8kOFmPRbp90ZFvA+uUh8=;
+        b=njS7eVWH5G+R+/A4ergoX3MehKu1XSxT1vmjDt7KX4+LQTgyFZ5Ky6E7UcdqTAziwW
+         WNktRK+SL2+d6nrpD1mo+onRX5spVPZNNFDOiC5eVkUWhssc4PFO0HShTbEQQZA1cyd1
+         gt6paar0QrRZnkKxS8DZmXy8Ribt90VlUCZDfZqGel68ZsZP3oBwmuxMoDZvkSsf768d
+         hIvFC2DbqEEa5CdEw0Kua0EPlJuEdC+gOiKSUW8rgV3lLKJK/+tc4nN6JLe774bV5apq
+         k1MKTOnBftYiWmVA2QlOIH5nTXdijG0j7v3tNCzC4kGpu5r0EJcI6dkve/gA2QLqKECE
+         hKBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1691666958; x=1692271758;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Bh7Sj+kqkRV0gqlbNRjiH2S8kOFmPRbp90ZFvA+uUh8=;
+        b=T2AsnRzeAGx8b2uxL8+INqy+RSXDTQOnMI/T1Oa4EBwwkbKTJ9XFDsWMAvOuWMshc1
+         nDJ92kAsgXznHFzxSQBK4HQlHbzOikvLtl7Ky9YHcfCajizfacXfK0VRliPfwi+ngAKC
+         rciR80JC/rOeumknuOyUX7GpY9VeUoT3mb7PD2g9VbJIHHC7MjxtrzdPy0nogtzF5MWH
+         Va2uY/JSs1MWwplKz2tYg4Hbbz2Nxg8mnGpMuDjzEFgioN9rPuQUBr9FsU5E5hFa5pi7
+         jiCCUqtHLGw3Rpi0p60vInf2Vyc/neZYl6XzbXDDvvGGztHiVaTgoNpp3x3hA3gFAWwX
+         jzsA==
+X-Gm-Message-State: AOJu0Yw389hB1tsZPI+AVc7ZLpQgby3Z48nb1zvbWO5edhvaEeKHlmsD
+        1PtgoQBMTUEmJV94pAZEAkxpyQ==
+X-Received: by 2002:aa7:c70a:0:b0:523:3510:b22 with SMTP id i10-20020aa7c70a000000b0052335100b22mr1515698edq.42.1691666958541;
+        Thu, 10 Aug 2023 04:29:18 -0700 (PDT)
+Received: from localhost (2001-1ae9-1c2-4c00-20f-c6b4-1e57-7965.ip6.tmcz.cz. [2001:1ae9:1c2:4c00:20f:c6b4:1e57:7965])
+        by smtp.gmail.com with ESMTPSA id d7-20020aa7d5c7000000b0052286e8dee1sm675097eds.76.2023.08.10.04.29.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Aug 2023 04:29:18 -0700 (PDT)
+Date:   Thu, 10 Aug 2023 13:29:17 +0200
+From:   Andrew Jones <ajones@ventanamicro.com>
+To:     qemu-devel@nongnu.org
+Cc:     pbonzini@redhat.com, mtosatti@redhat.com, peter.maydell@linaro.org,
+        pasic@linux.ibm.com, borntraeger@linux.ibm.com, thuth@redhat.com,
+        dbarboza@ventanamicro.com, kvm@vger.kernel.org,
+        qemu-arm@nongnu.org, qemu-s390x@nongnu.org
+Subject: Re: [PATCH v2] kvm: Remove KVM_CREATE_IRQCHIP support assumption
+Message-ID: <20230810-3326d0a412d01fe729f7e6e4@orel>
+References: <20230725122601.424738-2-ajones@ventanamicro.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500005.china.huawei.com (7.191.163.240) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7tzFCa4FhD8B
-
-On Thu, 10 Aug 2023 17:30:43 +0800
-Yuquan Wang <wangyuquan1236@phytium.com.cn> wrote:
-
-> Hi, Jonathan
->=20
-> When I tested the CXL topology in qemu, I found the linux kernel could fi=
-nd=20
-> and match the ACPI0016&ACPI0017 in relevant drivers, however, I could not=
-=20
-> find these information in dumped ACPI tables (like DSDT).=20
->=20
-> Hence, I guess there is some problem in my method, maybe you have some=20
-> suggestions if you have some time to look at this email.
->=20
-> My environment:
-> qemu: Jonathan_qemu/cxl-2023-08-07
-> Linux: v6.3.0
-> ACPI Disassembler: iasl/version 20230628
->=20
-> My qemu script is the same as the first example in qemu/docs/system/devic=
-es/cxl.rst,=20
-> as below:
->   qemu-system-x86_64 -M q35,cxl=3Don -m 4G,maxmem=3D8G,slots=3D8 -smp 4 \
->   ...
->   -object memory-backend-file,id=3Dcxl-mem1,share=3Don,mem-path=3D/tmp/cx=
-ltest.raw,size=3D256M \
->   -object memory-backend-file,id=3Dcxl-lsa1,share=3Don,mem-path=3D/tmp/ls=
-a.raw,size=3D256M \
->   -device pxb-cxl,bus_nr=3D12,bus=3Dpcie.0,id=3Dcxl.1 \
->   -device cxl-rp,port=3D0,bus=3Dcxl.1,id=3Droot_port13,chassis=3D0,slot=
-=3D2 \
->   -device cxl-type3,bus=3Droot_port13,persistent-memdev=3Dcxl-mem1,lsa=3D=
-cxl-lsa1,id=3Dcxl-pmem0 \
->   -M cxl-fmw.0.targets.0=3Dcxl.1,cxl-fmw.0.size=3D4G
-
-Hi Yuquan,
-
-Ah. I may have messed up dropping a patch set that was factoring out all th=
-e PXB stuff to SSDT
-in my latest tree.
-
-I dropped it because it was nasty to rebase and didn=E2=80=99t seem likely =
-to go upstream particularly
-quickly as we pushed the decision on it back behind a load of other PCI cha=
-nges.
-
-I tested the latest tree heavily on arm, but was lazy on the x86 front :(
-as I forgot that that change might have broken things (and all the new stuf=
-f was architecture
-agnostic).
-
-Right now for x86 tests with my tree I'm getting a freeze on booting so som=
-e debug needed.
-Even better, on upstream qemu with near vanilla kernel I get a segfault ins=
-tead in pretty
-much the same place.
-This is going to be a 'fun' day I guess.=20
-
-Jonathan
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230725122601.424738-2-ajones@ventanamicro.com>
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_BLOCKED,
+        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: Odya3S4+jcEs
 
 
+Hi Paolo,
 
->=20
->=20
-> Many thanks
-> Yuquan
+Is this good for 8.1?
 
+Thanks,
+drew
+
+
+On Tue, Jul 25, 2023 at 02:26:02PM +0200, Andrew Jones wrote:
+> Since Linux commit 00f918f61c56 ("RISC-V: KVM: Skeletal in-kernel AIA
+> irqchip support") checking KVM_CAP_IRQCHIP returns non-zero when the
+> RISC-V platform has AIA. The cap indicates KVM supports at least one
+> of the following ioctls:
+> 
+>   KVM_CREATE_IRQCHIP
+>   KVM_IRQ_LINE
+>   KVM_GET_IRQCHIP
+>   KVM_SET_IRQCHIP
+>   KVM_GET_LAPIC
+>   KVM_SET_LAPIC
+> 
+> but the cap doesn't imply that KVM must support any of those ioctls
+> in particular. However, QEMU was assuming the KVM_CREATE_IRQCHIP
+> ioctl was supported. Stop making that assumption by introducing a
+> KVM parameter that each architecture which supports KVM_CREATE_IRQCHIP
+> sets. Adding parameters isn't awesome, but given how the
+> KVM_CAP_IRQCHIP isn't very helpful on its own, we don't have a lot of
+> options.
+> 
+> Signed-off-by: Andrew Jones <ajones@ventanamicro.com>
+> ---
+> 
+> While this fixes booting guests on riscv KVM with AIA it's unlikely
+> to get merged before the QEMU support for KVM AIA[1] lands, which
+> would also fix the issue. I think this patch is still worth considering
+> though since QEMU's assumption is wrong.
+> 
+> [1] https://lore.kernel.org/all/20230714084429.22349-1-yongxuan.wang@sifive.com/
+> 
+> v2:
+>   - Move the s390x code to an s390x file. [Thomas]
+>   - Drop the KVM_CAP_IRQCHIP check from the top of kvm_irqchip_create(),
+>     as it's no longer necessary.
+> 
+>  accel/kvm/kvm-all.c    | 16 ++++------------
+>  include/sysemu/kvm.h   |  1 +
+>  target/arm/kvm.c       |  3 +++
+>  target/i386/kvm/kvm.c  |  2 ++
+>  target/s390x/kvm/kvm.c | 11 +++++++++++
+>  5 files changed, 21 insertions(+), 12 deletions(-)
+> 
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index 373d876c0580..cddcb6eca641 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -86,6 +86,7 @@ struct KVMParkedVcpu {
+>  };
+>  
+>  KVMState *kvm_state;
+> +bool kvm_has_create_irqchip;
+>  bool kvm_kernel_irqchip;
+>  bool kvm_split_irqchip;
+>  bool kvm_async_interrupts_allowed;
+> @@ -2358,17 +2359,6 @@ static void kvm_irqchip_create(KVMState *s)
+>      int ret;
+>  
+>      assert(s->kernel_irqchip_split != ON_OFF_AUTO_AUTO);
+> -    if (kvm_check_extension(s, KVM_CAP_IRQCHIP)) {
+> -        ;
+> -    } else if (kvm_check_extension(s, KVM_CAP_S390_IRQCHIP)) {
+> -        ret = kvm_vm_enable_cap(s, KVM_CAP_S390_IRQCHIP, 0);
+> -        if (ret < 0) {
+> -            fprintf(stderr, "Enable kernel irqchip failed: %s\n", strerror(-ret));
+> -            exit(1);
+> -        }
+> -    } else {
+> -        return;
+> -    }
+>  
+>      /* First probe and see if there's a arch-specific hook to create the
+>       * in-kernel irqchip for us */
+> @@ -2377,8 +2367,10 @@ static void kvm_irqchip_create(KVMState *s)
+>          if (s->kernel_irqchip_split == ON_OFF_AUTO_ON) {
+>              error_report("Split IRQ chip mode not supported.");
+>              exit(1);
+> -        } else {
+> +        } else if (kvm_has_create_irqchip) {
+>              ret = kvm_vm_ioctl(s, KVM_CREATE_IRQCHIP);
+> +        } else {
+> +            return;
+>          }
+>      }
+>      if (ret < 0) {
+> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> index 115f0cca79d1..84b1bb3dc91e 100644
+> --- a/include/sysemu/kvm.h
+> +++ b/include/sysemu/kvm.h
+> @@ -32,6 +32,7 @@
+>  #ifdef CONFIG_KVM_IS_POSSIBLE
+>  
+>  extern bool kvm_allowed;
+> +extern bool kvm_has_create_irqchip;
+>  extern bool kvm_kernel_irqchip;
+>  extern bool kvm_split_irqchip;
+>  extern bool kvm_async_interrupts_allowed;
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index b4c7654f4980..2fa87b495d68 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -250,6 +250,9 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
+>  int kvm_arch_init(MachineState *ms, KVMState *s)
+>  {
+>      int ret = 0;
+> +
+> +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_IRQCHIP);
+> +
+>      /* For ARM interrupt delivery is always asynchronous,
+>       * whether we are using an in-kernel VGIC or not.
+>       */
+> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+> index ebfaf3d24c79..6363e67f092d 100644
+> --- a/target/i386/kvm/kvm.c
+> +++ b/target/i386/kvm/kvm.c
+> @@ -2771,6 +2771,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>          }
+>      }
+>  
+> +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_IRQCHIP);
+> +
+>      return 0;
+>  }
+>  
+> diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+> index a9e5880349d9..bcc735227f7d 100644
+> --- a/target/s390x/kvm/kvm.c
+> +++ b/target/s390x/kvm/kvm.c
+> @@ -391,6 +391,17 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>      }
+>  
+>      kvm_set_max_memslot_size(KVM_SLOT_MAX_BYTES);
+> +
+> +    kvm_has_create_irqchip = kvm_check_extension(s, KVM_CAP_S390_IRQCHIP);
+> +    if (kvm_has_create_irqchip) {
+> +        int ret = kvm_vm_enable_cap(s, KVM_CAP_S390_IRQCHIP, 0);
+> +
+> +        if (ret < 0) {
+> +            fprintf(stderr, "Enable kernel irqchip failed: %s\n", strerror(-ret));
+> +            exit(1);
+> +        }
+> +    }
+> +
+>      return 0;
+>  }
+>  
+> -- 
+> 2.41.0
+> 

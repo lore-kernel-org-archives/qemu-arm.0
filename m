@@ -1,118 +1,119 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp794462ejc;
-        Thu, 10 Aug 2023 09:26:49 -0700 (PDT)
-X-Received: by 2002:a17:90a:2c0f:b0:268:10a3:ceaa with SMTP id m15-20020a17090a2c0f00b0026810a3ceaamr2385948pjd.21.1691684809592;
-        Thu, 10 Aug 2023 09:26:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691684809; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp800285ejc;
+        Thu, 10 Aug 2023 09:36:01 -0700 (PDT)
+X-Received: by 2002:a17:903:1206:b0:1af:e302:123 with SMTP id l6-20020a170903120600b001afe3020123mr3974758plh.3.1691685361216;
+        Thu, 10 Aug 2023 09:36:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691685361; cv=none;
         d=google.com; s=arc-20160816;
-        b=RKIv7PzxLK5d4loZhGICZHY0E1eblU0MnqI0nlw3Z2P4vVmBBQMq3QyT+JM/7JZjLu
-         CyRAPuVNd72K3bVpLwrw191R9NIaCUzSbEmY/Ph0f8NKx6juB3ow18lFrljvb0Okupm8
-         jLY6nJY+iR9OEQAY1hz47VZ5q3Spy3u/LNQzEd8Xrh+1CC4ygOs7QMtgRaODsTVCqNcR
-         7jjJ1UKEaX43CWSG0ZRMgmR24N+LZ+GZjMYgtyGickU6YDZX811u79R18VYvEti22nDi
-         IY8F+IS9mAfyjS+9a7U1BaOJXgxmJU1srCyjdhVO1l+Re+Ot/rQ2Hq+TflEySrRKrtgp
-         4c2g==
+        b=oo9WM+BZcJo05FXpWH1ZN0CfTg2/f5huUry+RzshATUUPJKZ9Y2EsjASSv1vTJMxF+
+         DiXf+614Yjh691QQ0/9HgR0aFcmXCBA3EGvn+EBHnbHE773PV6TY2NEYKuN6PLSbUgZK
+         n75jVQm3zOt9czfU18Uk3sAN0UA3vIkD0fLQ/XdJ8rBE9OTTtQkQcg5wDQsQxvErA9YS
+         WXa7TPJxgCGVK7B7fAh+Vx8lH2TxwYsgUcZUmZqQQhQQRpHna/kEsOkSedbvwo4TMwej
+         BMHkAF3YPIQ5UERaueqHcz3owQ71l2JBW9cStRVj+Zy8lb4ZAbJ+tMwEowvTc6qHyK4Y
+         FU7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=px4jMCORn8BkTnGqbwmcdQPd6+jq/StZOLagI2oIQ6g=;
-        fh=x3rIgb6pR76UcwmIiKFS64lv55q8E/mgwU5uoS8O4yU=;
-        b=ARQtckKOwKxHJVpY0nSpflQNe8gol/qD8N418+e1cb2IsTsAodgU74xJJBHOab0LcA
-         qw8FXPLDYZ/KQJ+ASjORKy7GWYtCqxvH6IV7Mimibw3YvBmpIJ28CDNdbDcSmOQb/edK
-         YxGJUMqTYn1ANkYrPYiUSk+h192VJF4/CARkDs2NOWYZw9rgDZEW1lPrxjAoHpHrIOV3
-         unGBS2BaEZMWWcLzp9JUnaTkFZPWcXrJxV0PZbYZs/ZjWmiXweBw4HLc+rnXbz+CcA3a
-         dKl8fkQuMonJILYy7nEXYZq1E7RkJoy8YpwftYSoHgu7Qj/I79raVb/UP8+XzBNRG+zQ
-         O5aA==
+        bh=/fB2jB8/Dp4ZCXvVFDjbyAyDrvHeNEfl9bPkIXNKtXc=;
+        fh=4AqlbZu7L1l+i0ZcU4tGJhAlcFZr6n1q0P3d+vk5y0Q=;
+        b=smWsstt+B22x0IpIXjcvPHuUlPDaoqPZJqgm4MTZmuxShLc4SqJxTpuCZXMc0e7iUk
+         UATb1eFeXGJqbfN7OppxOsVp2bK42dBspAqMCpoqXw1/vSexe7kS/XaFATkUruVUd6P8
+         xEH745W2V8jayeuv8tWPxFTHcvgdpTs9onXBVJI7pT7zM4bokTLgPjcOaiAn+BWpiMcd
+         LPBbUL1m3KMX1PHHLp1SFxtXd4bzQshfzgJnda4uC0A6qd95eIYYyCOiWDaWfy2dzFux
+         nfpkqU+Z52HEQwT5lJiWGxp5VEfkv0Im6vQwiXHun5aauzCLr+eEi8udmt1RUfUsPni1
+         OGQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g67sP9wh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jnmVzGyR;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d12-20020a17090a628c00b002681dd9aaf6sor825518pjj.5.2023.08.10.09.26.49
+        by mx.google.com with SMTPS id q8-20020a170902a3c800b001bc16a33963sor1015953plb.9.2023.08.10.09.36.01
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 10 Aug 2023 09:26:49 -0700 (PDT)
+        Thu, 10 Aug 2023 09:36:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g67sP9wh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jnmVzGyR;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1691684809; x=1692289609;
+        d=linaro.org; s=google; t=1691685361; x=1692290161;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=px4jMCORn8BkTnGqbwmcdQPd6+jq/StZOLagI2oIQ6g=;
-        b=g67sP9whDCA1vrgY2/P/A0GabJVA4ISYYoogp/kUSnW5XTYDA7jUg+o3lUzhrGAv59
-         iovEGUXoa9eY+JGhYr1FhkbZ198hI43R9diAXcYEQtXSLu0O65gJVAaic+mBjAclK50t
-         8vYGkCOCUZkrmiXP282P1qNp43zZ1ZjUvqAxVp6V+qmGb+hAZqhzXFsCrHExfIRdghbp
-         K91NAZJkN78xXfFNkTKus9I0QpRqenKIhrYVlF1nt4sj+kKECJcxy36wB0iH0a5+TMfm
-         qcsf0krOvZ0CSL+sggUD1bKFijuJs1hSubzUcv4OtkwlGqvv7H9NwHUUBWQkKqVO4Ag/
-         RCkw==
+        bh=/fB2jB8/Dp4ZCXvVFDjbyAyDrvHeNEfl9bPkIXNKtXc=;
+        b=jnmVzGyR062CsZFVn8JxB0ZQAfcLot6frlE6YC61LGEmvaFqKoj2OdQCbsDNy9+fZ+
+         A2h1T6yxZhUwnGSIAz/NQmMTg6c1vufKFEgpcN2sq9V03SmtvrZwfJMGusQBC/I6NGmg
+         EkacUAb6SN1WoI/HEnBRg2gZYEdlQW0cAITIL8bSRfq4cRd+kfZVfnY0zIYt3ha7kcj9
+         V+UfqQqxFp7FbSThbswO9Vf11b0jekPpR9DA4RamJ7Ki0nJAc0I40jd9tcBNqlYqbJuk
+         FdujA46Law3+rsQAMmeX/xzB5RHsYadwhrTJZS0QMyqUu2E1uo7x9kQEKBSLVStT8gKP
+         n+ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691684809; x=1692289609;
+        d=1e100.net; s=20221208; t=1691685361; x=1692290161;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=px4jMCORn8BkTnGqbwmcdQPd6+jq/StZOLagI2oIQ6g=;
-        b=J7KJSS7Ac6hWeYGlSrMiG+3qExr5g1M/uCVdvzSckxFioXzExlEZy45gytgfHl6bsw
-         e1l5gCQPAbiHGaAFv0JoQb0vF8bFPX4q3x5uhqYFgYpUjUbbRhemto0VkNacm01d1Cmv
-         zr7t0200vcuxvD2/zy3yBLiXg+f3zLAG9N6aEwJLsIy/Shv47oCs7d5mL59FzCiFPrl4
-         hIwqwM6Rwu4S59XYRBEX9npVfKqFauUxvckOJCvDlMkagMH2fBNwP/+N913I7dimmgGX
-         X3i0ssxtnPVkJ96hKK4jQF6EYLliOpl1BGT/Tu8c/fVF2efSl2Fp6KOAx5v9kZOUbhac
-         i52Q==
-X-Gm-Message-State: AOJu0YzEBEObpmNwk29etfXgy9AzIYjlVUWEdaiGffB7KQJmy8REpgka
-	jqnu7sGBubmCOGDxDRUWpy1l/U9iniI7MkXZ/pEUAA==
-X-Google-Smtp-Source: AGHT+IEcKIVYgPm/YHDHpCTz19NMa0Y8hxmBQOrDAG9CU8MhoDKTAl71gw+b522eJ1nUtp9/Tv2mDA==
-X-Received: by 2002:a17:90a:a88b:b0:263:e133:b9c9 with SMTP id h11-20020a17090aa88b00b00263e133b9c9mr2396592pjq.34.1691684809096;
-        Thu, 10 Aug 2023 09:26:49 -0700 (PDT)
+        bh=/fB2jB8/Dp4ZCXvVFDjbyAyDrvHeNEfl9bPkIXNKtXc=;
+        b=g9A2VJKWOzwMJYtD014bYSNKgZZ/9Z5aL7gPjUCP+ibN+2uQvG1asU5IqvS550pgMW
+         qh6OvzDluDzc3wT5/1ovI4Jm2qb1MWOr608tHQL1HtWPfkunHBLsqS1RuwXImrYGGajY
+         04jFBYWBp+mzHyHK14tvSudizKrOliGAKIoMPYwqSQ9QqWDWRg86Zg0/Cw6E/dHgKb62
+         pubFSSn7KUNRaayrJR3pMhejB6k3xlFBnEb/p/42WM3Qz0yHNIYZFkokKqTRV5n/Aa+y
+         brbr9694wx3Z8Q+S4sXEkqKxV4T0tAb0cRvceOKATFpQ1LPc/l6pfj5nIkSrLjqoYCtm
+         PdGQ==
+X-Gm-Message-State: AOJu0YxUWixzdXZRDPy/3svAanxOHSfyCcRVZ4y0neD1sMcUrN4xGD+4
+	lcbEJeueoUSJSPeINbf725Yrhr5Q
+X-Google-Smtp-Source: AGHT+IGlm6Cha62z2DTFwWT1s1jAX6kGToO2ivmSpqyzJuEUq9jHo3GiF3Aq54bx/tBqUKTl3E+LWQ==
+X-Received: by 2002:a17:902:d48a:b0:1b0:3ab6:5140 with SMTP id c10-20020a170902d48a00b001b03ab65140mr3235924plg.4.1691685360463;
+        Thu, 10 Aug 2023 09:36:00 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from ?IPV6:2602:47:d483:7301:9e4d:b830:d4fd:9164? ([2602:47:d483:7301:9e4d:b830:d4fd:9164])
-        by smtp.gmail.com with ESMTPSA id v10-20020a17090a898a00b00263fc1ef1aasm3565912pjn.10.2023.08.10.09.26.48
+        by smtp.gmail.com with ESMTPSA id f2-20020a170902ab8200b001bbbc655ca1sm1984287plr.219.2023.08.10.09.35.59
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Aug 2023 09:26:48 -0700 (PDT)
-Message-ID: <ea1034db-68b6-8644-7fc0-309596ede0e1@linaro.org>
-Date: Thu, 10 Aug 2023 09:26:46 -0700
+        Thu, 10 Aug 2023 09:36:00 -0700 (PDT)
+Message-ID: <2773d29d-80cf-93db-ea09-06ba769cfdb6@linaro.org>
+Date: Thu, 10 Aug 2023 09:35:58 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH 7/8] gdbstub: more fixes for client Ctrl-C handling
+Subject: Re: [PATCH 0/8] some testing and gdbstub fixes
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Ilya Leoshkevich <iii@linux.ibm.com>, Yonggang Luo
- <luoyonggang@gmail.com>, Beraldo Leal <bleal@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Yonggang Luo <luoyonggang@gmail.com>, Beraldo Leal <bleal@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
  qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
 References: <20230810153640.1879717-1-alex.bennee@linaro.org>
- <20230810153640.1879717-8-alex.bennee@linaro.org>
+ <CAFEAcA9bOS7tJDe_TRKOUGFcCDq_CjUfzAF7dYYRJbZA=5hvqw@mail.gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230810153640.1879717-8-alex.bennee@linaro.org>
+In-Reply-To: <CAFEAcA9bOS7tJDe_TRKOUGFcCDq_CjUfzAF7dYYRJbZA=5hvqw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: doLcoDaB5pon
+X-TUID: IuvAYip7CFDf
 
-On 8/10/23 08:36, Alex Bennée wrote:
-> The original fix caused problems with spurious characters on other
-> system emulation. So:
+On 8/10/23 08:58, Peter Maydell wrote:
+> On Thu, 10 Aug 2023 at 16:36, Alex Bennée <alex.bennee@linaro.org> wrote:
+>>
+>> This is mostly gdbstub focused but I cleaned up some bits while I was
+>> in the testing makefiles. This is mostly to make the "check-tcg"
+>> output as clean as possible without ugly line wraps. I tried to
+>> eliminate the gdbstub info() output but sadly this is harder than
+>> expected.
+>>
+>> I've tweaked the gdbstub handling for Ctrl-c packets as suggested by
+>> Matheus. While I was there I also noticed we were being a bit precious
+>> about gdb sending preemptive ACKS so I fixed that as well.
+>>
+>> I don't know if this is all late 8.1-rc material but its fairly simple
+>> testing updates and the ccache stuff from Daniel should help as well.
 > 
->    - instead of spamming output make the warning a trace point
->    - ensure we only allow a stop reply if it was 0x3
-> 
-> Suggested-by: Matheus Tavares Bernardino<quic_mathbern@quicinc.com>
-> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
-> Message-Id:<456ed3318421dd7946bdfb5ceda7e05332da368c.1690910333.git.quic_mathbern@quicinc.com>
-> ---
->   gdbstub/gdbstub.c    | 5 +++--
->   gdbstub/trace-events | 1 +
->   2 files changed, 4 insertions(+), 2 deletions(-)
+> At this point in the cycle I would favour putting in
+> the minimum that actually fixes bugs / test failure issues.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Tested-by: Richard Henderson <richard.henderson@linaro.org>
+Indeed.  Which I think would be patches 7 and 8.
 
 
 r~

@@ -1,198 +1,172 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp532741ejc;
-        Thu, 10 Aug 2023 02:21:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEN9LAI3S4A8m8Y+TI1Ml6WkLjPo2+5/ajhE00X5WAC+6YzA/lzI1AjMpRdP2vbYirTwIcS
-X-Received: by 2002:a05:622a:355:b0:405:5337:4166 with SMTP id r21-20020a05622a035500b0040553374166mr2438399qtw.68.1691659293146;
-        Thu, 10 Aug 2023 02:21:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691659293; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp538051ejc;
+        Thu, 10 Aug 2023 02:31:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFjrRYeuoExzktmEZG0BXtRmhCfstXuQRWNgmrUZTuRxcMYIQCf8FnlL95QyeUThTOI5ZB5
+X-Received: by 2002:a05:620a:24c8:b0:763:d32b:5091 with SMTP id m8-20020a05620a24c800b00763d32b5091mr1700430qkn.8.1691659882772;
+        Thu, 10 Aug 2023 02:31:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691659882; cv=none;
         d=google.com; s=arc-20160816;
-        b=CgrLM6ST4IQPvN99Y642DUo/ZbE39eHR4U/ASXIU3TUxGvxDY1k3A/RX1eookA1UKk
-         QzuM5DpoGK+kp0E12FH4OFDSNLwRrJ62HedGkeaRyg01My/OYZtJhYj4pT0aHlVHw70w
-         XeuqZ/FdUSnZDZqHSgZciheluq+vOT1EbKgxeKw4tsGmBiWXlTXxoItU+ZuQfuAaGbNB
-         wlgZVYKxreg4T/fQcC+aD/39Xa7Pi/zgvdp5OAhovJ5dLD3V+WEuKlD7v/K1OmxeGuBr
-         d/18AFpwxcrWF4i3BLW2vrOXbruNr1eWIo5Ei09DXSNSExBv32iQiuy1iMMIm1Ke9orK
-         FdTg==
+        b=rRMP7IC8qFlaN7JP+2Vo8/yo86Dc0JmjICk5LEp0YeT8EA27nI9L7IKJzoXiG/FF1B
+         QIpPGWmzpCYlKVU7iaRgO0plB2YZuk48TE/JbJKq3oyfLjAjQMjCIsbPYKw6bhUmVAUl
+         pqv7wBSu470T9Fdt563ZxDzyT6G/owvSRD/tFfbaFX4Yqi12GnwLR/sGKbuemHX1K0Kc
+         aKh+w8G93OPflCWymKG7UUGfYVqSU7PemGKmwyooDaxPcdbS2uboOY0Ti01LA2bl0pkh
+         RJ1C4GotIZwC0EFlDL/YrHuzN8MfsS5ajt8CiA8InvizuTXuZgHlsxqTc5GILmYJpOqP
+         eRDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=wAGRahBwpiagiszDDcvDgRWO7a+yNxGSUwvwQuKCeaY=;
-        fh=WvC2J/gNdKSywoEm3MfVIajfWVvxrIBPvBNjBfoy7Ac=;
-        b=G6oDNwe+L0E6uMTFsbhpicujZW2ecazCDBE42g2F7+kpjV0RmkjjC588CtaQtX37oC
-         mzCV6Ons8Z/GeojionlFLy0iDYzpj9ik4DU9jSb9RLF/VEIkwLqf0/XhZTQpj4Q6koWw
-         rtsOH1K7yMln8QQ5kTU8+bbW/4L2OhWKHbE1zddVoRCo2zvVAPJ7DqYv4eomVwmgjumM
-         hj5igDLuejsK8EopYsl/irAt39IZoEFe9SFk8tS3UU99M6uGNbcPMRmxbx5z9R3dHA2I
-         8XNLpNJqNbSxW2uvu12EHYvXF9gARVdelpWUwddC9hu9oLPSilYyqf0TOfpM/DGQ8iLL
-         3tAw==
+         :list-unsubscribe:list-id:precedence:message-id:mime-version
+         :references:subject:cc:to:from:date;
+        bh=lonDnDBZv1qlD96A+hg+rHOgMje0W1zLD0ekCnC+6Oo=;
+        fh=iueHeHAJkSFiIJrqayicYFMsvSV98gYef1wBHnyI2rg=;
+        b=Olnsgz1akzmSjyf5mmecjWugO5SCR7WR1MfY4cfS93zkPod7EhxdP01balItiFvPTX
+         BOQvzz4rgUPVxhKZPhNtCUqBh4U8SNsM0dqQVtDNoN6fVSUsFwCOK3OojhzMlVBafFYV
+         SsDCr7YGNSbE2OKwxfPftBc7o8/goujVShU8ljhO7J0BJcYfxSpFBvLaV+qf8RWoK1+P
+         gUrN9AjBZAOHMCVF9xJFZE02GPxIj3vEg9ddSmni56nAqkDmDSSKpWPk+ZpyQf0qAtky
+         nI+P9LLaTlULkUu1XJLiYp/jvNgUR7s40SggmS80bWipj0c8+PWpGyJzQdxH8GtKVMvc
+         /4ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="bg/eGuc6";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w19-20020ac87e93000000b00403270b9319si638533qtj.246.2023.08.10.02.21.33
+        by mx.google.com with ESMTPS id t20-20020a05620a0b1400b00767cc37dc22si571719qkg.209.2023.08.10.02.31.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Aug 2023 02:21:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 10 Aug 2023 02:31:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="bg/eGuc6";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qU1qu-0006as-Jx; Thu, 10 Aug 2023 05:21:08 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qU20R-0001VN-7K; Thu, 10 Aug 2023 05:31:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qU1qs-0006a5-J8
- for qemu-devel@nongnu.org; Thu, 10 Aug 2023 05:21:06 -0400
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qU1qq-0001PU-Rk
- for qemu-devel@nongnu.org; Thu, 10 Aug 2023 05:21:06 -0400
-Received: by mail-lj1-x231.google.com with SMTP id
- 38308e7fff4ca-2b9dc1bff38so10123231fa.1
- for <qemu-devel@nongnu.org>; Thu, 10 Aug 2023 02:21:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691659263; x=1692264063;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=wAGRahBwpiagiszDDcvDgRWO7a+yNxGSUwvwQuKCeaY=;
- b=bg/eGuc6Astpeu+qMEd+ZFDHBJkGCckQKSGVlCi4yBZ+wxzfxUcoAwZRbjLqsDNM/Q
- WFQDEmf4FCss/+dp2wn1nf8xqZpg0ewBOZ6bEdvlSfxRLF/bbHNWoumwKxGJSDmSKYkP
- uHKqqOeUP6qRK0giM3hpO8Oe3hhlEWsaHgbFahEmq1p6xBogdLEeyrXaYj3TplhTOUN/
- qwt4mmdOLm+MeHhQLz3HbBBTnJK3LjYoYPG9nfj/koXGPKkHY+nbJGMcC1XbobllZKyW
- KMSg3CgdWrbIsFb8SSI/LbFDXc3zsYqw77A3odz1SHj6OjSbrBHo6Nm8In1zfCuzjdKL
- 6d2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691659263; x=1692264063;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wAGRahBwpiagiszDDcvDgRWO7a+yNxGSUwvwQuKCeaY=;
- b=In3cJiHEbye2g8RERLI7rLtUyneOoQqcIalpnNcBSwDIy5jiD7S5APDax+ESo7Fpzm
- gjyxwOJplM8dgR+HzJslZZy75s6bXo6DesDST0GQfI7r+xiNAtNmJvB4mGYutS1nkKR6
- b6NHzJNKoGrboSgkSDeuT3VW0+9EjwagbmNS1MOzBJB3KkN4BqwfZviQiVfyeT8shTW6
- utvo0x4SuaOmvrWxv94yozWH8OC7rvasRxx79lMzaemE2OaY6/zIzg7mmoCIglfn0vuB
- /V9EYn9Fi5L9Pdjqn4FpmiZ10DVq0H5n5U5kB6tONRzdXVPIT5iYCQKukVDgEm0DmsTp
- 1w9w==
-X-Gm-Message-State: AOJu0YzCTwJ9VhhfASIeN3AxvyZSzwzgnHwJL68P0v/2dIExCL+cmFRa
- UkKhOfnBhq6tiZ9ZiP6/OLcLztM6X4RYn+Kb3F4=
-X-Received: by 2002:a2e:9cd5:0:b0:2b6:9fdf:d8f4 with SMTP id
- g21-20020a2e9cd5000000b002b69fdfd8f4mr1385560ljj.29.1691659262860; 
- Thu, 10 Aug 2023 02:21:02 -0700 (PDT)
-Received: from [192.168.69.115] ([176.176.158.65])
- by smtp.gmail.com with ESMTPSA id
- h14-20020a05600c260e00b003fa8dbb7b5dsm1514313wma.25.2023.08.10.02.21.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Aug 2023 02:21:02 -0700 (PDT)
-Message-ID: <2039f2b3-e916-411e-1987-fa15a03144b7@linaro.org>
-Date: Thu, 10 Aug 2023 11:21:00 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [PATCH v5 1/6] kvm: Introduce kvm_arch_get_default_type hook
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20230727073134.134102-1-akihiko.odaki@daynix.com>
- <20230727073134.134102-2-akihiko.odaki@daynix.com>
- <CAFEAcA_26e2G_qLA8DEcv74MADgquhiVkWEZkh_wL0+JxAf91Q@mail.gmail.com>
- <CAFEAcA9gkKy=GBXNw0rRLeN80ekFY5JQB1Jn2b+F70oC1C5uxg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA9gkKy=GBXNw0rRLeN80ekFY5JQB1Jn2b+F70oC1C5uxg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::231;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x231.google.com
-X-Spam_score_int: -61
-X-Spam_score: -6.2
-X-Spam_bar: ------
-X-Spam_report: (-6.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-4.14,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1qU20P-0001V4-Lw
+ for qemu-arm@nongnu.org; Thu, 10 Aug 2023 05:30:57 -0400
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <wangyuquan1236@phytium.com.cn>) id 1qU20N-0002mv-0b
+ for qemu-arm@nongnu.org; Thu, 10 Aug 2023 05:30:57 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDXYGJErtRksYGYCA--.17383S2;
+ Thu, 10 Aug 2023 17:30:44 +0800 (CST)
+Received: from WYQ-S (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwDnixFCrtRkP6EAAA--.4300S3;
+ Thu, 10 Aug 2023 17:30:42 +0800 (CST)
+Date: Thu, 10 Aug 2023 17:30:43 +0800
+From: "Yuquan Wang" <wangyuquan1236@phytium.com.cn>
+To: jonathan.cameron <Jonathan.Cameron@Huawei.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Subject: CXL Namespaces of ACPI disappearing in Qemu demo
+References: <2023061615433049315231@phytium.com.cn>, 
+ <ZIylkIt38MXaTytx@memverge.com>, 
+ <20230619105809.000007b9@Huawei.com>
+X-Priority: 3
+X-GUID: 812B777E-1F1E-4A1C-9788-CB167984BDE3
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.25.228[cn]
+Mime-Version: 1.0
+Message-ID: <2023081017304217150830@phytium.com.cn>
+Content-Type: multipart/alternative;
+ boundary="----=_001_NextPart204403610872_=----"
+X-CM-TRANSID: AQAAfwDnixFCrtRkP6EAAA--.4300S3
+X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAHAWTT5SsDIwACsc
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=wangyuquan
+ 1236@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7KY7
+ ZEXasCq-sGcSsGvfJ3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2Kfnx
+ nUUI43ZEXa7xR_UUUUUUUUU==
+Received-SPF: pass client-ip=162.243.164.118;
+ envelope-from=wangyuquan1236@phytium.com.cn;
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_FONT_LOW_CONTRAST=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_KAM_HTML_FONT_INVALID=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JHOwj+F69SUS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: H9uadV1J7PDh
 
-On 4/8/23 19:38, Peter Maydell wrote:
-> On Fri, 4 Aug 2023 at 18:26, Peter Maydell <peter.maydell@linaro.org> wrote:
->>
->> On Thu, 27 Jul 2023 at 08:31, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
->>>
->>> kvm_arch_get_default_type() returns the default KVM type. This hook is
->>> particularly useful to derive a KVM type that is valid for "none"
->>> machine model, which is used by libvirt to probe the availability of
->>> KVM.
->>>
->>> For MIPS, the existing mips_kvm_type() is reused. This function ensures
->>> the availability of VZ which is mandatory to use KVM on the current
->>> QEMU.
->>>
->>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->>> ---
->>>   include/sysemu/kvm.h     | 2 ++
->>>   target/mips/kvm_mips.h   | 9 ---------
->>>   accel/kvm/kvm-all.c      | 4 +++-
->>>   hw/mips/loongson3_virt.c | 2 --
->>>   target/arm/kvm.c         | 5 +++++
->>>   target/i386/kvm/kvm.c    | 5 +++++
->>>   target/mips/kvm.c        | 2 +-
->>>   target/ppc/kvm.c         | 5 +++++
->>>   target/riscv/kvm.c       | 5 +++++
->>>   target/s390x/kvm/kvm.c   | 5 +++++
->>>   10 files changed, 31 insertions(+), 13 deletions(-)
->>>
->>> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
->>> index 115f0cca79..ccaf55caf7 100644
->>> --- a/include/sysemu/kvm.h
->>> +++ b/include/sysemu/kvm.h
->>> @@ -369,6 +369,8 @@ int kvm_arch_get_registers(CPUState *cpu);
->>>
->>>   int kvm_arch_put_registers(CPUState *cpu, int level);
->>>
->>> +int kvm_arch_get_default_type(MachineState *ms);
->>> +
->>
->> New global functions should have a doc comment that explains
->> what they do, what their API is, etc. For instance, is
->> this allowed to return an error, and if so, how ?
-> 
-> Looks like this was the only issue with this patchset. So
-> I propose to take this into my target-arm queue for 8.2,
-> with the following doc comment added:
-> 
-> /**
->   * kvm_arch_get_default_type: Return default KVM type
->   * @ms: MachineState of the VM being created
->   *
->   * Return the default type argument to use in the
->   * KVM_CREATE_VM ioctl when creating the VM. This will
->   * only be used when the machine model did not specify a
->   * type to use via the MachineClass::kvm_type method.
->   *
->   * Returns: type to use, or a negative value on error.
->   */
+This is a multi-part message in MIME format.
 
-Thank you.
+------=_001_NextPart204403610872_=----
+Content-Type: text/plain;
+	charset="ISO-8859-1"
+Content-Transfer-Encoding: base64
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+SGksIEpvbmF0aGFuDQoNCldoZW4gSSB0ZXN0ZWQgdGhlIENYTCB0b3BvbG9neSBpbiBxZW11LCBJ
+IGZvdW5kIHRoZSBsaW51eCBrZXJuZWwgY291bGQgZmluZCANCmFuZCBtYXRjaCB0aGUgQUNQSTAw
+MTYmQUNQSTAwMTcgaW4gcmVsZXZhbnQgZHJpdmVycywgaG93ZXZlciwgSSBjb3VsZCBub3QgDQpm
+aW5kIHRoZXNlIGluZm9ybWF0aW9uIGluIGR1bXBlZCBBQ1BJIHRhYmxlcyAobGlrZSBEU0RUKS4g
+DQoNCkhlbmNlLCBJIGd1ZXNzIHRoZXJlIGlzIHNvbWUgcHJvYmxlbSBpbiBteSBtZXRob2QsIG1h
+eWJlIHlvdSBoYXZlIHNvbWUgDQpzdWdnZXN0aW9ucyBpZiB5b3UgaGF2ZSBzb21lIHRpbWUgdG8g
+bG9vayBhdCB0aGlzIGVtYWlsLg0KDQpNeSBlbnZpcm9ubWVudDoNCnFlbXU6IEpvbmF0aGFuX3Fl
+bXUvY3hsLTIwMjMtMDgtMDcNCkxpbnV4OiB2Ni4zLjANCkFDUEkgRGlzYXNzZW1ibGVyOiBpYXNs
+L3ZlcnNpb24gMjAyMzA2MjgNCg0KTXkgcWVtdSBzY3JpcHQgaXMgdGhlIHNhbWUgYXMgdGhlIGZp
+cnN0IGV4YW1wbGUgaW4gcWVtdS9kb2NzL3N5c3RlbS9kZXZpY2VzL2N4bC5yc3QsIA0KYXMgYmVs
+b3c6DQogIHFlbXUtc3lzdGVtLXg4Nl82NCAtTSBxMzUsY3hsPW9uIC1tIDRHLG1heG1lbT04Ryxz
+bG90cz04IC1zbXAgNCBcDQogIC4uLg0KICAtb2JqZWN0IG1lbW9yeS1iYWNrZW5kLWZpbGUsaWQ9
+Y3hsLW1lbTEsc2hhcmU9b24sbWVtLXBhdGg9L3RtcC9jeGx0ZXN0LnJhdyxzaXplPTI1Nk0gXA0K
+ICAtb2JqZWN0IG1lbW9yeS1iYWNrZW5kLWZpbGUsaWQ9Y3hsLWxzYTEsc2hhcmU9b24sbWVtLXBh
+dGg9L3RtcC9sc2EucmF3LHNpemU9MjU2TSBcDQogIC1kZXZpY2UgcHhiLWN4bCxidXNfbnI9MTIs
+YnVzPXBjaWUuMCxpZD1jeGwuMSBcDQogIC1kZXZpY2UgY3hsLXJwLHBvcnQ9MCxidXM9Y3hsLjEs
+aWQ9cm9vdF9wb3J0MTMsY2hhc3Npcz0wLHNsb3Q9MiBcDQogIC1kZXZpY2UgY3hsLXR5cGUzLGJ1
+cz1yb290X3BvcnQxMyxwZXJzaXN0ZW50LW1lbWRldj1jeGwtbWVtMSxsc2E9Y3hsLWxzYTEsaWQ9
+Y3hsLXBtZW0wIFwNCiAgLU0gY3hsLWZtdy4wLnRhcmdldHMuMD1jeGwuMSxjeGwtZm13LjAuc2l6
+ZT00Rw0KDQoNCk1hbnkgdGhhbmtzDQpZdXF1YW4NCg==
+
+------=_001_NextPart204403610872_=----
+Content-Type: text/html;
+	charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charse=
+t=3DISO-8859-1"><style>body { line-height: 1.5; }body { font-size: 13px; f=
+ont-family: "Times New Roman"; color: rgb(0, 0, 0); line-height: 1.5; }</s=
+tyle></head><body>=0A =0A<div>Hi,&nbsp;<span style=3D"background-color: rg=
+ba(0, 0, 0, 0); color: rgb(0, 0, 0);">Jonathan</span></div><div><br></div>=
+<div>When I tested the CXL topology in qemu, I found the linux kernel coul=
+d&nbsp;<span style=3D"background-color: transparent;">find&nbsp;</span></d=
+iv><div><span style=3D"background-color: transparent;">and match the ACPI0=
+016&amp;ACPI0017 in relevant drivers, however, I could not&nbsp;</span></d=
+iv><div>find these information in dumped ACPI tables (like DSDT).&nbsp;</d=
+iv><div><br></div><div>Hence, I guess there is some problem in my method,&=
+nbsp;<span style=3D"background-color: transparent;">maybe you have some&nb=
+sp;</span></div><div><span style=3D"background-color: transparent;">sugges=
+tions if&nbsp;you&nbsp;have&nbsp;some&nbsp;time&nbsp;to&nbsp;look&nbsp;at&=
+nbsp;this&nbsp;email.</span></div><div><br></div><div>My environment:</div=
+><div>qemu:&nbsp;Jonathan_qemu/cxl-2023-08-07</div><div>Linux: v6.3.0</div=
+><div>ACPI&nbsp;Disassembler: iasl/version 20230628</div><div><br></div><d=
+iv>My qemu script is the same as the first example in qemu/docs/system/dev=
+ices/cxl.rst,&nbsp;</div><div>as below:</div><div><span style=3D"color: rg=
+b(0, 0, 0); background-color: rgba(0, 0, 0, 0);">&nbsp; qemu-system-x86_64=
+&nbsp;-M&nbsp;q35,cxl=3Don&nbsp;-m&nbsp;4G,maxmem=3D8G,slots=3D8&nbsp;-smp=
+&nbsp;4&nbsp;\<br>&nbsp;&nbsp;...<br>&nbsp;&nbsp;-object&nbsp;memory-backe=
+nd-file,id=3Dcxl-mem1,share=3Don,mem-path=3D/tmp/cxltest.raw,size=3D256M&n=
+bsp;\<br>&nbsp;&nbsp;-object&nbsp;memory-backend-file,id=3Dcxl-lsa1,share=
+=3Don,mem-path=3D/tmp/lsa.raw,size=3D256M&nbsp;\<br>&nbsp;&nbsp;-device&nb=
+sp;pxb-cxl,bus_nr=3D12,bus=3Dpcie.0,id=3Dcxl.1&nbsp;\<br>&nbsp;&nbsp;-devi=
+ce&nbsp;cxl-rp,port=3D0,bus=3Dcxl.1,id=3Droot_port13,chassis=3D0,slot=3D2&=
+nbsp;\<br>&nbsp;&nbsp;-device&nbsp;cxl-type3,bus=3Droot_port13,persistent-=
+memdev=3Dcxl-mem1,lsa=3Dcxl-lsa1,id=3Dcxl-pmem0&nbsp;\<br>&nbsp;&nbsp;-M&n=
+bsp;cxl-fmw.0.targets.0=3Dcxl.1,cxl-fmw.0.size=3D4G</span></div><div><span=
+ style=3D"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);"><br></=
+span></div><div><span style=3D"color: rgb(0, 0, 0); background-color: rgba=
+(0, 0, 0, 0);"><br></span></div><div>Many thanks</div><div>Yuquan</div></b=
+ody></html>
+------=_001_NextPart204403610872_=------
 

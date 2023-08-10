@@ -1,125 +1,111 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp231659ejc;
-        Wed, 9 Aug 2023 14:25:25 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGsg/i2uItC11n5SA7dlrK/gK4HV9MS6WYCM+obOEIwVyyZ5QClq9tfiAUWsJrBEzLTIVFd
-X-Received: by 2002:a05:620a:47a5:b0:76c:8e37:49b5 with SMTP id dt37-20020a05620a47a500b0076c8e3749b5mr246563qkb.47.1691616324784;
-        Wed, 09 Aug 2023 14:25:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691616324; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp365885ejc;
+        Wed, 9 Aug 2023 19:36:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEzH1mvwmHT80EIONhA9TNCPqDBAc1z6QSZrRgtZjJxaEPUnRAkp35/hOzqaw6msNszGYyG
+X-Received: by 2002:a05:622a:108:b0:40f:dcda:ea2f with SMTP id u8-20020a05622a010800b0040fdcdaea2fmr1259007qtw.29.1691634963691;
+        Wed, 09 Aug 2023 19:36:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691634963; cv=none;
         d=google.com; s=arc-20160816;
-        b=p6hz/sCBqBSh/Z1e/dQkYQJ2fjCiFxnGHfCFXaifPeXML6RfSusekirYJ4CIyOXFdd
-         jUuhHDswLzORqnCoIVW0fd9iJOAg5f7VthM83QOlmKpVU82/Uq+McGzM7iZpyKdkLOIr
-         ljNlPH2cir8+b+R+tFSwaa9N7VSQBGdmAYXHnLvgJkFq8bQRpj6QlCU4wp68nhEHnSUk
-         PI0xdFUgn44GcixU+J2VOyyC2PlJiSVxK57TyeNVinzaU3UIJdzGWgxMNnT7Xu0H1k+S
-         FcVcYM+q8UAmg6NSwaKL7VcjdP84sVJebcw+2dZSNM1rB2vqrC98jGjJKAToLZ+4sesP
-         ldQA==
+        b=0HWorAGtNSSMWDYfrpRIcr+H1AMhYuiUowyj9uP9BazKFuCBbJVCQHbpJ7Aipd/beV
+         MBnd/a6KHTVl+vEN5jwb35DJKqZmJzWH/LrweBZnGKY+0L0TdyVppejIK1Wp9YKAkZNO
+         2bdDAM33psc7VQGa7WXffO0CoHltb4jISqTzKzoDjjDZ87/TlnTR4ISj78Tp9MbtwxHu
+         rR8SSFptycASa4kOZY/1ksy6gbaHOWzZdtXc01QVCXXx+16DFl90vkLz67UnATwq9oBc
+         tvOSxVzbD3G7y/qOVZ2KFADslAgA5P842sxidNYiwPFULWQda5esP72ZycTs0ocMurFA
+         Ef1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=umdNypH+rFz/fDMq+B3MPfHFLbSFUqS8VdJV8sfoYM8=;
-        fh=uBNIY/CAS6I5cWHIcA9m+bJY4ETHRClVYpxlVTH4os0=;
-        b=OKHNEiWOgaGBpq4KhEhZ3j7mwDu/daaAxAQs/JwL4848HwotINygvVDWhOgbCDKgIj
-         KqpVqD46Pa7f61xQBDkTod9pAJ3YJnQQbOhV/aTO2sV1B0JIUTwI2wyYCTGbhnFMYsB6
-         yg1nRqtY9qrs+a0aAJKIYMTAHWR/eOHdrrCkVzE780lAWmGZD87Igo2oqpQHXumItc7N
-         1hIcSi7RxhTYavcn494/a590H161azwaDZEknNXvGZj56d+g9+TkOC7pVjLFkl/9Dy/H
-         j0z8FJMsrY4OPRQDpYWzQt4mR/JJcZEcxZUkqhe2dUvzSZVlXqnxBrpLp51ImYcH06Ji
-         bioQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=CpX0550wKMCux/3GBST6e64zt0DiUd6H3+LGhoX5Le4=;
+        fh=oweadga+1U1BKjDqlK8hSmEWEC1EUfcsKuPkDinEDsU=;
+        b=gphqkuDIZ08Sk/YtHFBNl3a9nuYGTTcd3EhtCw49D2dPPtHa8/NngPsM+bpuysGCMX
+         WptAaMEPNFE/eHihsHJQrhhQgzIHnQgVML6zm5tyv0IBPcUv8mJaJt1cAa7e/w4c0zC3
+         1TTjfobQd0jCW1lyZfZPl4TNPvpr1hgEHE8ChhInFXVMOeuChGjMkHr24jSkZrGZFfOP
+         z4YuP/+glsTYjhh0wfGNdFb1nthCcSnYaFgEwTyNake1aUOGKrHBwx9GiDtcJOfWNyHI
+         aN1yyEN6xi4LXLx2XPBwiuJQePAj1V9bg00D1/9C32qhupxlKEdMtUIGfUjJ7kV5L63p
+         MzAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dEp5D71d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nxE6HNRC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t23-20020a05622a181700b00403c200b5f1si34407qtc.477.2023.08.09.14.25.24
+        by mx.google.com with ESMTPS id t29-20020a05622a181d00b00403f05ae952si326610qtc.578.2023.08.09.19.36.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Aug 2023 14:25:24 -0700 (PDT)
+        Wed, 09 Aug 2023 19:36:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dEp5D71d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nxE6HNRC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qTqff-0006YV-Eu; Wed, 09 Aug 2023 17:24:47 -0400
+	id 1qTvWm-0000wn-2w; Wed, 09 Aug 2023 22:35:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qTqfd-0006Xj-9n
- for qemu-arm@nongnu.org; Wed, 09 Aug 2023 17:24:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qTqfa-0007PN-IX
- for qemu-arm@nongnu.org; Wed, 09 Aug 2023 17:24:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1691616281;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=umdNypH+rFz/fDMq+B3MPfHFLbSFUqS8VdJV8sfoYM8=;
- b=dEp5D71d5ZtxcGiPKv76FeA00fp4ct0DPbOyxXifg9+LDAwKD98WMNYJq62UJP3jFrdUYO
- CiftBk8MeIa88DN2HCEK6VkbEKIj4sqhZ2E86UexCSDTi6YXBspWyhFdQ32VfvMb5P0oK5
- 7OfAwMWEJ63pOkJ6Jd7AcyfpaQoMVIM=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-556-tqhcjvHAPUqSWxCRNUp3vw-1; Wed, 09 Aug 2023 17:24:38 -0400
-X-MC-Unique: tqhcjvHAPUqSWxCRNUp3vw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-3fe4cca36b7so1429365e9.3
- for <qemu-arm@nongnu.org>; Wed, 09 Aug 2023 14:24:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qTvWj-0000uT-N0
+ for qemu-arm@nongnu.org; Wed, 09 Aug 2023 22:35:53 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qTvWh-0004x0-Ov
+ for qemu-arm@nongnu.org; Wed, 09 Aug 2023 22:35:53 -0400
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-686ed1d2594so396091b3a.2
+ for <qemu-arm@nongnu.org>; Wed, 09 Aug 2023 19:35:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1691634950; x=1692239750;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=CpX0550wKMCux/3GBST6e64zt0DiUd6H3+LGhoX5Le4=;
+ b=nxE6HNRCusB6fZYY6XNCichRSFLYz/wJ+Z80eX+cTtzkebnHEr7zNV/9ryCAMh/VX9
+ xa9dGe5ZUocQ1flZzigcxXUPIFGccTSyLGesSW4yFyd6kA+GF+FV0XZi6h4x6+P2Pmyy
+ nDenJJBTgak0vLbieRfJqbJh+zUOBmW0olwE4qBVYhcwtwLb6366JA1RzdjRfbBVYtlP
+ KT/Fo/Y/usHC8XJxEhcjEeO4RcKBGJxJDOYUwayOfy64lOl67qzOTMiQBPvXwZ727lwU
+ JXpXyiOO58QRMER1Y5U08BrjpUw7xNBA0/wX335ELzn11snWJvp36BvIBqiBXFySH3FF
+ YOHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691616277; x=1692221077;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=umdNypH+rFz/fDMq+B3MPfHFLbSFUqS8VdJV8sfoYM8=;
- b=Sn7ngUTPhZm/MFJYZS8ZW2SWryh6Pz5yCOIn30kvTTvhkMVVGxOyfQcEL5/tv7ZIo7
- 4fwPkcim3x/Zq0z+Qos3dStu5VlF1f8G6Hl7cI9533ghVgPmPSgpv2WOM03xGAt15c37
- RxjbarqGJp5n4XlX1LkXTxP48OyRMYZ6JGELqTIKdo24j8wb/nO+D6kYSQxRigUGJVw5
- h/sWCQFzaZTSUHo8SijcH5ryyvXDd7AXSW7HxG09ePlH+CjTB5RFFzbwI+ZgnjnN940K
- PHVmKl0F0iyi8Ue1BdPmaQGeRoEY8FWvWlz8UTgoZppJmuV2VXdpPCMoozJIJqwutO5w
- x72g==
-X-Gm-Message-State: AOJu0YxllXz1BUSPW0zBIRLKCz2HfhEr2KNrJtaxyjTr5fVx4yvBBWPo
- 8VI9PpYLfv/Og4EyHpqEeLgONYf92rxezwrLF3/b0tntoSvTK/npYn6ZdAAGfYmprX2q+0OqFvw
- PzdZgmHxpTiZ6
-X-Received: by 2002:a7b:cb85:0:b0:3fe:485f:ed13 with SMTP id
- m5-20020a7bcb85000000b003fe485fed13mr274374wmi.29.1691616277536; 
- Wed, 09 Aug 2023 14:24:37 -0700 (PDT)
-X-Received: by 2002:a7b:cb85:0:b0:3fe:485f:ed13 with SMTP id
- m5-20020a7bcb85000000b003fe485fed13mr274360wmi.29.1691616277180; 
- Wed, 09 Aug 2023 14:24:37 -0700 (PDT)
-Received: from redhat.com ([2.52.137.93]) by smtp.gmail.com with ESMTPSA id
- u11-20020a05600c00cb00b003fe29f6b61bsm97146wmm.46.2023.08.09.14.24.35
+ d=1e100.net; s=20221208; t=1691634950; x=1692239750;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=CpX0550wKMCux/3GBST6e64zt0DiUd6H3+LGhoX5Le4=;
+ b=fbg5+b6w8KVCRJbSXh63FqlHewNcerF/4XesvP+HHSCux5WXZX1B4Z69pLt0Lg0Kp+
+ hA/fj7jYrD/d9APwcTlpHL932Fj+w03maFVgSb7/BkPltafQbc9F36VhhsF6eM+SASg3
+ BZAWBB+qB8P+iIYW65m5ZJQdfrWL76xAlFxynA+x8kc5zBRG1493PuPx+D2X8SIBZSt7
+ 4WEQZZWfJZfCvCs7YaNjDWnezqBia6aNxd4SaTimQ9ocvjUoPKMA0GlAmfpRWTeN8JTn
+ pux/xQr9b0GUXLTvQAuOYi/oyy/0k7lFX4vSBt8mAsCF33Gm3QDb0ZkCbMQ2fYQjn0BB
+ KN3A==
+X-Gm-Message-State: AOJu0YyEgQF/6bK7ZcmPY1QbWlpTF6TlDk728stcWDQHlgmM7GqFpyLH
+ QSk6yfiKvQSuH4hm9epm2V+O4A==
+X-Received: by 2002:a05:6a20:1583:b0:11d:8a8f:655d with SMTP id
+ h3-20020a056a20158300b0011d8a8f655dmr1541785pzj.4.1691634950092; 
+ Wed, 09 Aug 2023 19:35:50 -0700 (PDT)
+Received: from stoup.. ([2602:47:d483:7301:6bf0:9674:6ac4:f74c])
+ by smtp.gmail.com with ESMTPSA id
+ z7-20020aa791c7000000b0066ebaeb149dsm287283pfa.88.2023.08.09.19.35.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Aug 2023 14:24:36 -0700 (PDT)
-Date: Wed, 9 Aug 2023 17:24:33 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Jason Chien <jason.chien@sifive.com>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Greg Kurz <groug@kaod.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH] hw/pci-host: Allow extended config space access for
- Designware PCIe host
-Message-ID: <20230809172413-mutt-send-email-mst@kernel.org>
-References: <20230809102257.25121-1-jason.chien@sifive.com>
+ Wed, 09 Aug 2023 19:35:49 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH for-8.2 0/5] target/arm: Implement cortex-a710
+Date: Wed,  9 Aug 2023 19:35:43 -0700
+Message-Id: <20230810023548.412310-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-In-Reply-To: <20230809102257.25121-1-jason.chien@sifive.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,37 +120,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ploGi0VXSoBX
+X-TUID: cW0+1Fx30gpc
 
-On Wed, Aug 09, 2023 at 10:22:50AM +0000, Jason Chien wrote:
-> In pcie_bus_realize(), a root bus is realized as a PCIe bus and a non-root
-> bus is realized as a PCIe bus if its parent bus is a PCIe bus. However,
-> the child bus "dw-pcie" is realized before the parent bus "pcie" which is
-> the root PCIe bus. Thus, the extended configuration space is not accessible
-> on "dw-pcie". The issue can be resolved by adding the
-> PCI_BUS_EXTENDED_CONFIG_SPACE flag to "pcie" before "dw-pcie" is realized.
-> 
-> Signed-off-by: Jason Chien <jason.chien@sifive.com>
+This is one of the first generation Armv9 cores, and gives us something
+concrete to test in that area.  Notably, it supports MTE.
 
-I think we should fix the order of initialization rather than
-hack around it.
+The first patch is a bug fix of sorts for neoverse-v1, as we don't,
+and won't, support FEAT_TRF.
 
-> ---
->  hw/pci-host/designware.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-> index 9e183caa48..388d252ee2 100644
-> --- a/hw/pci-host/designware.c
-> +++ b/hw/pci-host/designware.c
-> @@ -694,6 +694,7 @@ static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
->                                       &s->pci.io,
->                                       0, 4,
->                                       TYPE_PCIE_BUS);
-> +    pci->bus->flags |= PCI_BUS_EXTENDED_CONFIG_SPACE;
->  
->      memory_region_init(&s->pci.address_space_root,
->                         OBJECT(s),
-> -- 
-> 2.17.1
+The only thing missing for the a710 is FEAT_MPAM.  I haven't looked
+at that properly, and I believe that there may already be some work
+done on that within Linaro -- even if a stub implementation.
+
+
+r~
+
+
+Richard Henderson (5):
+  target/arm: Disable FEAT_TRF in neoverse-v1
+  target/arm: Reduce dcz_blocksize to uint8_t
+  target/arm: Allow cpu to configure GM blocksize
+  target/arm: Support more GM blocksizes
+  target/arm: Implement cortex-a710
+
+ docs/system/arm/virt.rst       |   1 +
+ target/arm/cpu.h               |   5 +-
+ target/arm/internals.h         |   6 --
+ target/arm/tcg/translate.h     |   2 +
+ hw/arm/virt.c                  |   1 +
+ target/arm/helper.c            |  11 ++-
+ target/arm/tcg/cpu64.c         | 172 ++++++++++++++++++++++++++++++++-
+ target/arm/tcg/mte_helper.c    |  91 ++++++++++++++---
+ target/arm/tcg/translate-a64.c |   5 +-
+ 9 files changed, 263 insertions(+), 31 deletions(-)
+
+-- 
+2.34.1
 

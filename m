@@ -1,199 +1,109 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp824766ejc;
-        Thu, 10 Aug 2023 10:13:26 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGBHuMuR9Ux7p2gF3rF9Nh9bUsiT8SIivvqwUgD5drSuViF6RQPfbb2XJcDbzK9ycFyZ9WH
-X-Received: by 2002:a05:620a:47af:b0:767:f1b8:219a with SMTP id dt47-20020a05620a47af00b00767f1b8219amr2967335qkb.16.1691687605951;
-        Thu, 10 Aug 2023 10:13:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691687605; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp836538ejc;
+        Thu, 10 Aug 2023 10:33:35 -0700 (PDT)
+X-Received: by 2002:a17:903:2445:b0:1bb:ee1b:3cdf with SMTP id l5-20020a170903244500b001bbee1b3cdfmr3690289pls.67.1691688815361;
+        Thu, 10 Aug 2023 10:33:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691688815; cv=none;
         d=google.com; s=arc-20160816;
-        b=vQvcWAjof203w/p72Q175MUP1XIPEaGeFlIMbW0v5ixb0y0ennd5ZfMQcbNvTFTtHe
-         h37ncb7GvmUkOhFC59gjPvxycHdNTfCfnXg/7wxG23wOhORPmpntisqoSRTYNvp5nuTl
-         f3IoIA8DNUm9JxlveFO+BexMHIM16sqvUBYJ/5gE2QzBVNLa+/ZIhIx/SqYWKM3kSF2K
-         KURVoOoHtqt6v0R3BwOAYfi/o3VY0DmyQLr5WkIOtmJjRy6nfAUwmSWGyUUSe6Mobo3B
-         wadfP+jycgi7oItaae8LJJ28mNAzifrz0M+skF//FDxAWNtpDdmYOFcWmj/ORzBSf9Sm
-         wWSA==
+        b=D/0l58f1m+hDNCtaDj5pKZfXoXakMeNdUfZNS9lJI9+vSKGBTUbXnNFgV0sFdKbKpB
+         cb0AXFnmueLJ3rHzwNCAXtkxuEKnrY1cNVfWOGyO8QAsDFWTZDPR4ukHBvLBm6erYIFk
+         dWFI4beEfnybld6vSUqpN38H9GZ2l3riFyWF9xOzla7OB/+BdKFR/ZUu2aepRwe1VZ8u
+         cWB3bziA4ktGQOmdQw4UzIVo9bF5e3LuRnldizamVuXxgrQkErY4wd1MYr2+P1/e/MDY
+         94SeNcTcKENdKwBxjG2KZo3H04AbWtPFxbnHnkIYph/K3kemUEwR8sB71+y9mNaxovSd
+         4Olw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=EiAV9WEj5eIkPc4Jq+fte4QSUn33GtcJgdcXqbMLuSw=;
-        fh=fQSWUkMuRxigFAyrwqJDZVDXvGgDP9IGeNAJ2g03mw8=;
-        b=djBZ7Z6tiXWMvkUwv4Ath5s+36x1A6IkFE1kKleCKRc2Q6VqFDLdf1dVfN22sjaX5f
-         XUmfb2pDi1JZECcPlb0YTrvaQyAE2txvjZrBvi8xFGeT9WUww8om4qfxCm5LedgzIaNn
-         AJnkPLlO9eS04BQIaIge7AynosRDOuw3/T2A6bzYsbzKFlre1/TZcIGSH0cIWqDPPqap
-         nSCn3AMDQsyEv2ZGg0Vvt5sJP15gnAN9JxcpSFv7VneRXYKJUQJqRoqk96xz1KKp7hjy
-         n0A/AI2A3uLwL8AkMEjIQ/uG51powNOpDJjhNCEPI/Va8Z9eMXkgSOHzibb2GGB2Nk1P
-         WorA==
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=2JnnLrcqUSR/cO44gL/tnfJEOUA8DNDbgFdFPXVws/A=;
+        fh=6u86b2/d09c2l5plPjyfBdZnLryRDgLrmlIae32vOyE=;
+        b=VuOXAS8d1ICNubS9ZyrBK6cyXn9KDJeVMWL0I15z87EeXCA9KHBMgGrL8THAgQgTQI
+         YUuwbZWSEh6DwBRtG8dG9ggON7Dqewimq9egqzwgEdfyj1YpmPGfcabigZ127ega+wDk
+         PuevDNYuOkAIRY8GuPxZKFbyXwEhIBvGFgrLVF+xZ+svOWMiQP1zME+W4GuXntIh4eef
+         NRVIl8/SoydewAxtp/9pOBuKOPN2XY2KlozkIcg2EsU+euEdLnv8asK3yrK4sA5eKfQU
+         j0nDr7BeI1TogfnGmbfy2YEDE/pGi3B/3jYSlhtm13aWZ1tygeVXftrQGlhBcI8qdWH5
+         98Ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UpK8woqy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Wf/2SgHl";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id br12-20020a05620a460c00b0076cab653f6asi1187315qkb.153.2023.08.10.10.13.25
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id c20-20020a170902c1d400b001bda1372139sor1034626plc.14.2023.08.10.10.33.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Aug 2023 10:13:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 10 Aug 2023 10:33:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UpK8woqy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Wf/2SgHl";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qU9Dk-0006zo-Tv; Thu, 10 Aug 2023 13:13:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qU9Di-0006zR-DT
- for qemu-arm@nongnu.org; Thu, 10 Aug 2023 13:13:10 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qU9Dg-0007Nk-99
- for qemu-arm@nongnu.org; Thu, 10 Aug 2023 13:13:09 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-52327d63d7cso1423608a12.1
- for <qemu-arm@nongnu.org>; Thu, 10 Aug 2023 10:13:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691687586; x=1692292386;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=EiAV9WEj5eIkPc4Jq+fte4QSUn33GtcJgdcXqbMLuSw=;
- b=UpK8woqyYnFX4UCzyEEypyhlkKXlE+Wm5SGQ4NTb0WvXFYm5i2ZdjRwEwpKzsvc3JG
- kMWqQ0a15gyfOuLKXz9Ly/G8K189DmKyKv9nMgcBJ4M6qgeVbp6yqky97qN+adE/Bj1G
- FmW54GiCUN9LaIlEUDGWCg4HwRdwKKFb9WFp+nq/PUodBNJrTjww93Lr6DhQ7hXPamsy
- Gz3iEPZoVJIlOfQ+lXjUA6p7cxL9gHK+RnFhtlr0DxHl+AmBXalcqTOZWoP50aDpiVRq
- vTc8HQ2povhFFMEdravMfyNWAbzwTSQF4WM0Ryo0jv0pVpHx76bgeisr81hwzj/HB2/j
- PWXg==
+        d=linaro.org; s=google; t=1691688815; x=1692293615;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=2JnnLrcqUSR/cO44gL/tnfJEOUA8DNDbgFdFPXVws/A=;
+        b=Wf/2SgHl8Dt3WWbbZ3mCqtphG69JUc0lxM+4ajyNW+1zaoTioPuSo/HjzoRAuCWRbC
+         ys7FQTrsSywH5o3YtXkYR75E4fT2k2jJC0ZBKfivfJ24WA6LACdOZYVor6vhh855dA/d
+         ctux9jkyYFsDq08k0H4t79wn/iiC4W51fh0BtaWQgKwEfmlUvEbnn3ObsOjvJZ125kCs
+         X35hrOE4B+6uurxdM7uegYU/eVL9kXbyQBWv0EXw1BFviZxKR2Vsth16jcG8pSXt+9AD
+         KzC3A9BAsJokbUIW7aM0irN92vYLWvmiqaSOQIU8oLcobGx2AP9gLYnyZ/aWmtPNg5xG
+         KziA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691687586; x=1692292386;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=EiAV9WEj5eIkPc4Jq+fte4QSUn33GtcJgdcXqbMLuSw=;
- b=N3aBh/ZQYAdzFa/5CszmAFibzKlfJoxQq0YFzi3ELu4GD1PGZvp/BOCpwTKDVcl1tO
- mnb2yZ9E36FOM9KLBWS4HDyNU6u54rR0yFwbrYioisuC/y1RSKLSIYWNGn5Qccieqo0g
- +v6JBb1dZrQ8wNXmAkrYSY3T937unCvd5Y2JddnjySAVf46Al9YDmN9U6MyFqHZeQMIO
- 9r9+QUrda5Z2zSWuPyXRkyfhkdE59+4VWMpiZpmMoTGvyuxhK2FQVNSeoOZwfuM5XsTR
- Er1V/DkNSA8I19RmDqKL5cIVc8/cwtuIkUeMklVyTewIWnJ3yVM6yzKhr/vWdf2xS0WX
- 6clQ==
-X-Gm-Message-State: AOJu0Ywlm8C0IjbL1Sc/XsXT377dBOeU4iTPaE0oOj+SJ2YEJOR54bv4
- g7amDpBL6IebOUIjro1KIehVEZkm9/JxiPCNoT1hpuDfs5ffEfoY
-X-Received: by 2002:aa7:c245:0:b0:522:1d47:2d81 with SMTP id
- y5-20020aa7c245000000b005221d472d81mr2435184edo.17.1691687586513; Thu, 10 Aug
- 2023 10:13:06 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1691688815; x=1692293615;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2JnnLrcqUSR/cO44gL/tnfJEOUA8DNDbgFdFPXVws/A=;
+        b=Tvt9AbVSgLHSd+8iIaXyqVg1K6RzwDzF04/OfQeFVK3H8QB9WFKI/z34wG6lz5KySt
+         GZR+MzRiGQ9NjmAqX2FW7FnvuqOF1jQ9RNLGggWAs1aUAG2Nrudz7gErnjakAcLddw1H
+         dazddhTks4UR+buiJILInxiKk0svh+W77WO3NnR0FzH/sVSUHMGMfP+LoN3lrbdbzStd
+         AgYZbgd3NKUVK/urd2nz4ErSBI032Tc7FcFazl8dXIEWI2izDzN2YfpHeyNLKWCNZy+E
+         QzzDvXIQWM5EtnmMyecenKIDWuEqs93maiuC65DzKoCaQT6oNxdKFLQkGZQR5rIEiW/f
+         pqNA==
+X-Gm-Message-State: AOJu0YyhArt5wqWLG0BaGlhxljcF1FKxrCByAi67HnaAwFTAPEKGXOaE
+	TYg/aOFBCHOerc5wDeRAplDhrBu1MaSc6nddc7Kcdg==
+X-Google-Smtp-Source: AGHT+IE20S2Fu48Rsp1XvuJyFTL2uDROvOry2JFMln4B2jgSUVDitPrW5/5nA5dkAULl87bQrxVjVA==
+X-Received: by 2002:a17:902:a9c1:b0:1bb:1523:b311 with SMTP id b1-20020a170902a9c100b001bb1523b311mr2363701plr.41.1691688814878;
+        Thu, 10 Aug 2023 10:33:34 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPV6:2602:47:d483:7301:9e4d:b830:d4fd:9164? ([2602:47:d483:7301:9e4d:b830:d4fd:9164])
+        by smtp.gmail.com with ESMTPSA id jc3-20020a17090325c300b001b86492d724sm2052124plb.223.2023.08.10.10.33.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 10 Aug 2023 10:33:34 -0700 (PDT)
+Message-ID: <e7b03309-aa23-9144-eb01-a117a2d71dde@linaro.org>
+Date: Thu, 10 Aug 2023 10:33:32 -0700
 MIME-Version: 1.0
-References: <20230810023548.412310-1-richard.henderson@linaro.org>
- <20230810023548.412310-6-richard.henderson@linaro.org>
- <CAFEAcA_Lzj1LEutMro72fCfqiCWtOpd+5b-YPcfKv8Bg1f+rCg@mail.gmail.com>
- <17230fdc-6daf-82be-e665-97ca64d16feb@linaro.org>
-In-Reply-To: <17230fdc-6daf-82be-e665-97ca64d16feb@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Aug 2023 18:12:55 +0100
-Message-ID: <CAFEAcA8viVtMGqBJ9D-2rehecb7QB7-F8PObhNTY9U-D=aNMTg@mail.gmail.com>
-Subject: Re: [PATCH 5/5] target/arm: Implement cortex-a710
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2WGfE0BEhmX8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 0/8] some testing and gdbstub fixes
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Yonggang Luo <luoyonggang@gmail.com>, Beraldo Leal <bleal@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
+ qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
+References: <20230810153640.1879717-1-alex.bennee@linaro.org>
+ <CAFEAcA9bOS7tJDe_TRKOUGFcCDq_CjUfzAF7dYYRJbZA=5hvqw@mail.gmail.com>
+ <87il9m3ld7.fsf@linaro.org> <3fb6e5ac-5887-2947-b431-4a15394c347b@linaro.org>
+In-Reply-To: <3fb6e5ac-5887-2947-b431-4a15394c347b@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: Ky7wxD/gJ2UW
 
-On Thu, 10 Aug 2023 at 18:05, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 8/10/23 08:49, Peter Maydell wrote:
-> > On Thu, 10 Aug 2023 at 03:36, Richard Henderson
-> > <richard.henderson@linaro.org> wrote:
-> >>
-> >> The cortex-a710 is a first generation ARMv9.0-A processor.
-> >>
-> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> >> ---
-> >>   docs/system/arm/virt.rst |   1 +
-> >>   hw/arm/virt.c            |   1 +
-> >>   target/arm/tcg/cpu64.c   | 167 +++++++++++++++++++++++++++++++++++++++
-> >>   3 files changed, 169 insertions(+)
-> >>
-> >> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-> >> index 51cdac6841..e1697ac8f4 100644
-> >> --- a/docs/system/arm/virt.rst
-> >> +++ b/docs/system/arm/virt.rst
-> >> @@ -58,6 +58,7 @@ Supported guest CPU types:
-> >>   - ``cortex-a57`` (64-bit)
-> >>   - ``cortex-a72`` (64-bit)
-> >>   - ``cortex-a76`` (64-bit)
-> >> +- ``cortex-a710`` (64-bit)
-> >>   - ``a64fx`` (64-bit)
-> >>   - ``host`` (with KVM only)
-> >>   - ``neoverse-n1`` (64-bit)
-> >> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> >> index 7d9dbc2663..d1522c305d 100644
-> >> --- a/hw/arm/virt.c
-> >> +++ b/hw/arm/virt.c
-> >> @@ -211,6 +211,7 @@ static const char *valid_cpus[] = {
-> >>       ARM_CPU_TYPE_NAME("cortex-a55"),
-> >>       ARM_CPU_TYPE_NAME("cortex-a72"),
-> >>       ARM_CPU_TYPE_NAME("cortex-a76"),
-> >> +    ARM_CPU_TYPE_NAME("cortex-a710"),
-> >>       ARM_CPU_TYPE_NAME("a64fx"),
-> >>       ARM_CPU_TYPE_NAME("neoverse-n1"),
-> >>       ARM_CPU_TYPE_NAME("neoverse-v1"),
-> >
-> > Will sbsa-ref want this core ?
->
-> It only has 40 PA bits, and I think sbsa-ref requires 48.
+On 8/10/23 09:43, Richard Henderson wrote:
+> On 8/10/23 09:35, Alex Bennée wrote:
+>> So 7 and 8? I would argue for 6 as well given that's a foot gun just
+>> waiting to happen.
+> 
+> Yes, the timing issues with 6 are nasty.
 
-Yes, it does want 48 (we ran into that with some other core).
+I'm going to queue 6-8 to tcg-next, along with the %x change Phil suggested for logging 
+non-ASCII characters.
 
-> >> +    cpu->isar.id_mmfr4 = 0x21021110;
-> >
-> > I don't think we implement HPDS == 2 (that's FEAT_HPDS2).
-> > I guess we should push it down to HPDS 1 only in cpu.c
-> > for now. (Or implement it, it's probably simple.)
->
-> Feh.  I thought I'd double-checked all of the features.
-> I'll have a look at implementing that.
 
-I think we (meaning Linaro) kind of noted a lot of features
-as architecturally optional and then didn't think through
-that we might need them anyway for specific implementations.
-(I got surprised by FEAT_NV that way for the Neoverse-V1.)
-
-> >> +    cpu->ctr               = 0x00000004b444c004ull; /* with DIC set */
-> >
-> > Why set DIC? The h/w doesn't.
->
-> Heh.  From the comment in neoverse-v1, I thought you had force enabled it there.  But it
-> must simply be a h/w option?
-
-Yes, the Neoverse-V1 TRM documents a config option of
-"instruction cache hardware coherency" (which sets DIC),
-and that the IDC pin "reflects the inverse value of the
-BROADCASTCACHEMAINTPOU pin". So I opted for the config
-choices that happen to be faster for QEMU.
-
-thanks
--- PMM
+r~

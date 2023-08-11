@@ -1,124 +1,80 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp846706ejc;
-        Thu, 10 Aug 2023 10:52:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFKbg7McIEMIKWNVw3MycU1W3endR2qbWyzggZNItJiE8DJ61RWfhsfK+tcDiJdiOTKEqdY
-X-Received: by 2002:a05:6214:3f87:b0:625:1c04:6761 with SMTP id ow7-20020a0562143f8700b006251c046761mr3241615qvb.27.1691689942608;
-        Thu, 10 Aug 2023 10:52:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691689942; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp1145015ejc;
+        Thu, 10 Aug 2023 22:50:24 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFrrbfVXfFH5Kl8Kdi6vslZgEaDQt+AF0KEDndMIHW7k4r/ea9Ct5oLeDZg0XygSmtTMhwm
+X-Received: by 2002:ac8:5fce:0:b0:405:49e0:899f with SMTP id k14-20020ac85fce000000b0040549e0899fmr1124449qta.39.1691733024453;
+        Thu, 10 Aug 2023 22:50:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691733024; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kv4XC2t067X/dcWGLHxrPgB/MswFh6v+gqtJji+c5RmFCHb+WyGM1M/vSjlU5bCAKO
-         H5+ocv6S63eCHWsPIdgpPplYjJ2bEuCKAILknQ+wvDoPFoju0BNq/CliD7uW3oz7g3Xz
-         vGpI/0Om/oFLs99FGCY7mJWjShHFNOML0UKnF06H5d+ssTINUoWH4ub+ETmXYhf3ms0p
-         Mx1h5LabYt+yUXJgHVWZ227+0nOw0iGEtJO7aXaPvztAhOhhFW3Ut0vVlw6SwVhALSaU
-         SHC4nnuzhd0Broh9sHDCpV6/uhupnGgieZ08UVGZHZHov3UTgsD4IdpprNBIDQ5mz4FM
-         u15A==
+        b=lckU1BIqPWSOoGpwMpn3rGuuX/XwSeCh4/IrtShwR5rDA4OHV4ll/CKN80txQdEvC8
+         ZLOK7qoxFrHGmPjoUAR+ct9k9i/mGzmbFHMHZMFiGfVQiSQglNlciyiL2BN8Ilcbb9Dy
+         kgCrMgBM5wq0c3I66weCUpxGfVjKei3NI9MLNpUiBScJic1g3HzelqBmBjqVjnOv/l5n
+         +52ZEm73ut50deXYNsU+G19BNTUsUhEsK4gKZS+LJahGeH5M9DPxnm4GzVTfavT40Io9
+         XyoVcJ5d3VI+RIxe2qD57yoZe8tkTZwsR9ktxGONN4o+/y+eHvOmQmOaDK6QWUH5fPz0
+         ypbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=/1mnsrBv9dg9AfHx1DCsV2pSiqRCQFxw5iHOER8p6sc=;
-        fh=uBNIY/CAS6I5cWHIcA9m+bJY4ETHRClVYpxlVTH4os0=;
-        b=HnD/vbUE+y5Wlg3jrsHqMTTxpX6W68PvPDwm2Ub9a+vZdxBDG/FNAKwc0CcvQLaLOz
-         yTW2UKRQeC7qUpLcIs1EZsM9f15MHkhHJqRdcabRj7phBAu+uB1eQsFxB0tUjqaYql0D
-         foV//1da2ihbtDZLqVBnv403REUUSKdmZdxJ+Hm9wCB+99YeVnU0YIua1sQG3WH0Gh2Q
-         b/KT72Ao7vP75QwKcsIRJDGX8nXKQaJMejw+X//FJ6TxdN89PQJPMNsdslhhnNBzHxmz
-         vJCG7oZc3BO7zBKRWCCFBGE/3PGxj9KSK98zkxUjA3TsKgNyfMzlH3VcnCaI+qXgeG88
-         2ieQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=3uiSJr3/aO5IcLe0yFFWTRemrluX44+NMqNcEERfLA0=;
+        fh=AMR19zN7UeIFFKOHDQxut6BsIZvSGFg2htn/sF8xGRE=;
+        b=q+mvkrFoiz/MksK/Wgk41lby5fpzEiuaUDqxQAW2nG+RwXqC3dFv9w0KhUxPtTNemZ
+         7wbxe9RCn0fXFzEsePbb56hyS6UX9bkn2p+8VnUm8HiZkNshMxmuXG3aeEJYowBCKYcE
+         t2mwgkzu5yCJsbRuhXRS+CRhV8ho9awUxhoPi4/dnifI3d2w2RXMatsbEmlvRvnV4mau
+         8Lv9QXqceXxR/cDsjrcwczGJ+Lni2GatFN1MIKZFMBknWXzQisLGkJxu4BUDFO3NMRkF
+         2f2jgdXgFvxvBiPtQPdAfA8wpICPxi0UZrN7c1+t5ewKhFh2sUJ15uwnuPXon3W9Qydi
+         sSRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iHsMEnoR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=stu.pku.edu.cn
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6-20020a0cca06000000b006261423027esi1141843qvk.510.2023.08.10.10.52.22
+        by mx.google.com with ESMTPS id ov5-20020a05620a628500b0076cab6e9e69si1662193qkn.158.2023.08.10.22.50.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Aug 2023 10:52:22 -0700 (PDT)
+        Thu, 10 Aug 2023 22:50:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iHsMEnoR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=stu.pku.edu.cn
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qU9pH-00032v-O5; Thu, 10 Aug 2023 13:51:59 -0400
+	id 1qUL1l-0007w8-W6; Fri, 11 Aug 2023 01:49:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qU9pG-00032T-Ix
- for qemu-devel@nongnu.org; Thu, 10 Aug 2023 13:51:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qU9pF-0006QU-5B
- for qemu-devel@nongnu.org; Thu, 10 Aug 2023 13:51:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1691689916;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/1mnsrBv9dg9AfHx1DCsV2pSiqRCQFxw5iHOER8p6sc=;
- b=iHsMEnoREEm7lCwdXM5jkp2Jvn4DBrLVMrG09nCYnb1CiZ+SuU4T799Ve8RG3qM2sZYX+j
- QJ0KvSYrJKWo+/nbnE2+waWl2Y5aev2sGfiHl/DxqlhU6/1mD8LvtYn/8+C7s7qHS2Q+MO
- W3qc4wqFyWkPJqpnAJu0n/yX4cUQwvY=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-96-5vOil2mqOrGrSWwqUywchQ-1; Thu, 10 Aug 2023 13:51:55 -0400
-X-MC-Unique: 5vOil2mqOrGrSWwqUywchQ-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-3fe1d5e2982so7004705e9.1
- for <qemu-devel@nongnu.org>; Thu, 10 Aug 2023 10:51:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691689914; x=1692294714;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/1mnsrBv9dg9AfHx1DCsV2pSiqRCQFxw5iHOER8p6sc=;
- b=K0iKbwP+mEdgTPvdNrbfK9ywB0Inr5JaSCfV3nRqiUVu88PCuohrA6oEur/FOrYeZw
- Fgvbv6rMPFiCvwfHOxfWUumjuVnr3Yi+6tX8zT0aE9VO91qjWmub/gy7s9mGK+KD+ts3
- MYtcGvmsm53NqcocC/KFSokSaB+VhQ8D0XX8KkwnUYUxQxTiD1yOp+HybM439mdZXBt+
- /cRGcuYHcOxKrejf/EGieCPK6aPE1V1zo//pzdOUSLF751VHU4MnZktdtlrW89oWUxu8
- PYpYPO2gfMtOZ2JlYdoZRuqBGvxi4iCCBqlVFTo9x2CKgauGvU1SY5rIR31wyfipNK4h
- e1LQ==
-X-Gm-Message-State: AOJu0YxS0KI73EFjK+rY0l3XzM4IlVbkn9WXMvwEpcAnDTPwCj6YFWts
- dEQuHoydn5R+8rO6+YgiIH71EIQDdr0qYHeJ5MdvJW08w3l6PGP4VqLvAVZAwWThhun27sWVTDL
- 0saSTb3ux4ALbbH8=
-X-Received: by 2002:a05:600c:2196:b0:3fc:9e:eead with SMTP id
- e22-20020a05600c219600b003fc009eeeadmr2424875wme.20.1691689913904; 
- Thu, 10 Aug 2023 10:51:53 -0700 (PDT)
-X-Received: by 2002:a05:600c:2196:b0:3fc:9e:eead with SMTP id
- e22-20020a05600c219600b003fc009eeeadmr2424864wme.20.1691689913584; 
- Thu, 10 Aug 2023 10:51:53 -0700 (PDT)
-Received: from redhat.com ([2.55.42.146]) by smtp.gmail.com with ESMTPSA id
- c19-20020a7bc853000000b003fbc0a49b57sm2794967wml.6.2023.08.10.10.51.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Aug 2023 10:51:53 -0700 (PDT)
-Date: Thu, 10 Aug 2023 13:51:49 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Jason Chien <jason.chien@sifive.com>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Greg Kurz <groug@kaod.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH] hw/pci-host: Allow extended config space access for
- Designware PCIe host
-Message-ID: <20230810135050-mutt-send-email-mst@kernel.org>
-References: <20230809102257.25121-1-jason.chien@sifive.com>
+ (Exim 4.90_1) (envelope-from <francisyuu@B-L8MBMD6R-2342.local>)
+ id 1qUKvX-0006Kt-Mf; Fri, 11 Aug 2023 01:43:11 -0400
+Received: from [2401:b180:8000:2:9109:19ec:a055:9652]
+ (helo=B-L8MBMD6R-2342.local) by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <francisyuu@B-L8MBMD6R-2342.local>)
+ id 1qUKvV-0000JX-HX; Fri, 11 Aug 2023 01:43:11 -0400
+Received: by B-L8MBMD6R-2342.local (Postfix, from userid 502)
+ id 5F01F38B141; Fri, 11 Aug 2023 13:42:52 +0800 (CST)
+From: Hang Yu <francis_yuu@stu.pku.edu.cn>
+To: qemu-devel@nongnu.org
+Cc: komlodi@google.com, peter@pjd.dev, Hang Yu <francis_yuu@stu.pku.edu.cn>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org (open list:ASPEED BMCs)
+Subject: [PATCH v2 1/4] hw/i2c/aspeed: Fix I2CD_POOL_CTRL register bit field
+ defination
+Date: Fri, 11 Aug 2023 13:42:16 +0800
+Message-Id: <20230811054220.99562-1-francis_yuu@stu.pku.edu.cn>
+X-Mailer: git-send-email 2.39.2 (Apple Git-143)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230809102257.25121-1-jason.chien@sifive.com>
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for
+ 2401:b180:8000:2:9109:19ec:a055:9652 (failed)
+Received-SPF: none client-ip=2401:b180:8000:2:9109:19ec:a055:9652;
+ envelope-from=francisyuu@B-L8MBMD6R-2342.local; helo=B-L8MBMD6R-2342.local
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, NO_DNS_FOR_FROM=0.001, RDNS_NONE=0.793,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 11 Aug 2023 01:49:26 -0400
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -132,40 +88,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q8qtcqvOGPzE
+X-TUID: egSBoZuihobs
 
-On Wed, Aug 09, 2023 at 10:22:50AM +0000, Jason Chien wrote:
-> In pcie_bus_realize(), a root bus is realized as a PCIe bus and a non-root
-> bus is realized as a PCIe bus if its parent bus is a PCIe bus. However,
-> the child bus "dw-pcie" is realized before the parent bus "pcie" which is
-> the root PCIe bus. Thus, the extended configuration space is not accessible
-> on "dw-pcie". The issue can be resolved by adding the
-> PCI_BUS_EXTENDED_CONFIG_SPACE flag to "pcie" before "dw-pcie" is realized.
-> 
-> Signed-off-by: Jason Chien <jason.chien@sifive.com>
+Fixed inconsistency between the regisiter bit field defination in headfile
+and the ast2600 datasheet. The reg name is I2CD1C:Pool Buffer Control
+Register in old register mode and  I2CC0C: Master/Slave Pool Buffer Control
+Register in new register mode. They share bit field
+[12:8]:Transmit Data Byte Count and bit field
+[29:24]:Actual Received Pool Buffer Size according to the datasheet.
 
+Signed-off-by: Hang Yu <francis_yuu@stu.pku.edu.cn>
+---
+ include/hw/i2c/aspeed_i2c.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-
-I'm not planning another pull before release, hopefully
-another maintainer can pick it up? Peter?
-
-> ---
->  hw/pci-host/designware.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-> index 9e183caa48..388d252ee2 100644
-> --- a/hw/pci-host/designware.c
-> +++ b/hw/pci-host/designware.c
-> @@ -694,6 +694,7 @@ static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
->                                       &s->pci.io,
->                                       0, 4,
->                                       TYPE_PCIE_BUS);
-> +    pci->bus->flags |= PCI_BUS_EXTENDED_CONFIG_SPACE;
->  
->      memory_region_init(&s->pci.address_space_root,
->                         OBJECT(s),
-> -- 
-> 2.17.1
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index 51c944efea..2e1e15aaf0 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -139,9 +139,9 @@ REG32(I2CD_CMD, 0x14) /* I2CD Command/Status */
+ REG32(I2CD_DEV_ADDR, 0x18) /* Slave Device Address */
+     SHARED_FIELD(SLAVE_DEV_ADDR1, 0, 7)
+ REG32(I2CD_POOL_CTRL, 0x1C) /* Pool Buffer Control */
+-    SHARED_FIELD(RX_COUNT, 24, 5)
++    SHARED_FIELD(RX_COUNT, 24, 6)
+     SHARED_FIELD(RX_SIZE, 16, 5)
+-    SHARED_FIELD(TX_COUNT, 9, 5)
++    SHARED_FIELD(TX_COUNT, 8, 5)
+     FIELD(I2CD_POOL_CTRL, OFFSET, 2, 6) /* AST2400 */
+ REG32(I2CD_BYTE_BUF, 0x20) /* Transmit/Receive Byte Buffer */
+     SHARED_FIELD(RX_BUF, 8, 8)
+-- 
+2.39.2 (Apple Git-143)
 

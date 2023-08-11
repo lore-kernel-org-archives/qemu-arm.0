@@ -1,103 +1,102 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp1272954ejc;
-        Fri, 11 Aug 2023 03:46:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGbL4orLzK3GTVVroanWHFLhHMOyaiHIvfybfuTyOr4f+cmrvH+75USDvPfYcAijlmtIkRk
-X-Received: by 2002:a0c:b205:0:b0:63d:77d:be74 with SMTP id x5-20020a0cb205000000b0063d077dbe74mr1275152qvd.59.1691750772012;
-        Fri, 11 Aug 2023 03:46:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691750771; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp1318707ejc;
+        Fri, 11 Aug 2023 05:08:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEMLTRyh2ovumpAiQYq9JEYVfADNWG18ZMRqgEoRGahANY7HQLAymFcdXg/PatH3VvrpSiB
+X-Received: by 2002:a0c:dc08:0:b0:63d:218:c83f with SMTP id s8-20020a0cdc08000000b0063d0218c83fmr1477497qvk.36.1691755709107;
+        Fri, 11 Aug 2023 05:08:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691755709; cv=none;
         d=google.com; s=arc-20160816;
-        b=J94Pozb35jO5wpC0j9uzqSveoTKy3Sw2MZ/MVqdXineIcYTxdjVKs6Acem6a4WvTVx
-         ctjOQYsPSVAeY6B7wtxIXbMKcvT9kuFFD0ifN5rRhGbvNWzaSWf+ArOWHVehdAtCfiR0
-         LEMjLl0Qsx2dJOcLIGyyJEcPOM2VO6Aj414Jon5658z0RI/KriT9veSnZjj5V90y500h
-         LJV5u71PuqsFzm/J2lcaIdNXhsYqSpcXk+d9A78Gx7fY0RMcUaEkPOCDLyre+Vic0kst
-         1aX8WEWXzpB0IW/bMhlIcvIZG60vVcT5lXeYgUADtCM4nrheYb+wVMsADHQb/sSZxA7Y
-         Z7Vw==
+        b=Ee+HPDGX0/XvKMoXar60iOcz5xxvnolgqKcjs9ReEVEr7yUxVpC6X/FH80S6IULq2S
+         VGpRnhlecXvJW9IwQS4R20jflTIZqUtlQxALqGfYwyLFsHWxOhXouOEkgibSNbozny7Q
+         I2kJdB8nA5ResvialFBbivqeEZhL8T7Q2HF4bNnnCWFXIkoPyR9IY85ShxHwJ1H/NX+W
+         6puaXS5lNkF8yjDsQWQ6t1QfMp/dYtD/smY8OVI0SeUx5ERi4OpikgupQ445ycggmngp
+         UQwgMaoXNnrCZ4J9TR7jIUz8CkP/ifiITw1rK/96z0ZxPkFXlqV0CKEPzdDJdvKEVsqF
+         lCwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=N2FvBgkiIdUsjB/FxaUZBa1ZB141qaGSBWUTFySHBvs=;
+        bh=ndQEBja9XdSNCO3BDSnJc/BVCJ7aH9kI+WenktxzA8o=;
         fh=2HckukKM1aDIhwR4Gf5EB0R8biZDVGAD3ibhLJ8HTaA=;
-        b=oR0ZNBB/FtMQI1ahSRREvbZZK0zN2l4bTFJxaMY5o5t0eF38W1Aq38ShAbWHH0ulAn
-         GLF8tUboD3Y+DxvcIe2A7EWQn5UXEGLHV2iX6Q/3dcE+h8IcY+eeuv8d+L+OPsaFvBV3
-         tqtF4lWwecJlcPMmfbM/gtKi9RTdFO307tWC8vOn5nIJqR/eTNQwC8iduWRbmliIe+ZU
-         Rl0qyUaz4pJGBKs0mZoj/IvAvMiTVHN3scdhlHITVwmH+9rS2PUmn/+egPPh0Bz3OhX4
-         LdrjumFDq1MzqJzHTwgCi6kqAE+0A5umgZQ+XY2MeKypo8WHvsTlfIPWZdjLb/KPxxxi
-         J/Og==
+        b=uZfPTgn6VfEVnnA05AlJeWEKttfmUQc5kFKOF0x/c24S52DmDyN2CRWaKl7C+EYSwS
+         6WNhn/ngjykD+7fC0o1xsHwvZtqMVeDwWfB3lIThkEWnYBTVuwi5y0js84t6oT1HK6Wo
+         DO+gGBeBcxiNYej6fSccS+5RnHu1+wb6ElCXPzBmlE0GLlv17RTvEDJ3IQaOIgqMgrBE
+         Ro3O/t5DVmcBPDoV0+NC6ERgSCRENPIMXoVFJTpUyHHVAxAWrzAKPijTbRSEYEnIrMTt
+         6yMkDO7sxGctRkX6YHNct0jfVrTCLaBf4d+RRfjJYY+CaL2X47xweYUIAOhHwr1WaF5V
+         GZrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=blBPD6HD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=giPLu4gu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o12-20020a0ce40c000000b006418a6cd14fsi1332243qvl.245.2023.08.11.03.46.11
+        by mx.google.com with ESMTPS id l10-20020a0ce08a000000b0063cf3391f11si313872qvk.524.2023.08.11.05.08.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Aug 2023 03:46:11 -0700 (PDT)
+        Fri, 11 Aug 2023 05:08:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=blBPD6HD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=giPLu4gu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qUPeV-0001J0-KA; Fri, 11 Aug 2023 06:45:55 -0400
+	id 1qUQwC-0003ws-Jh; Fri, 11 Aug 2023 08:08:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qUPeO-0001Gu-3T
- for qemu-arm@nongnu.org; Fri, 11 Aug 2023 06:45:50 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ id 1qUQw4-0003vy-St
+ for qemu-arm@nongnu.org; Fri, 11 Aug 2023 08:08:09 -0400
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qUPeM-0002bf-F4
- for qemu-arm@nongnu.org; Fri, 11 Aug 2023 06:45:47 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-52327d63d7cso2322130a12.1
- for <qemu-arm@nongnu.org>; Fri, 11 Aug 2023 03:45:33 -0700 (PDT)
+ id 1qUQw3-0002uh-7O
+ for qemu-arm@nongnu.org; Fri, 11 Aug 2023 08:08:08 -0400
+Received: by mail-lf1-x136.google.com with SMTP id
+ 2adb3069b0e04-4fe0d5f719dso3137346e87.2
+ for <qemu-arm@nongnu.org>; Fri, 11 Aug 2023 05:08:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691750732; x=1692355532;
+ d=linaro.org; s=google; t=1691755685; x=1692360485;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=N2FvBgkiIdUsjB/FxaUZBa1ZB141qaGSBWUTFySHBvs=;
- b=blBPD6HD8/SYnvzrcjkchCddZQJyt0JDrSYgcCnx9gotMlBW5gmYWVLDWqOWZOWYFY
- 4hG73rLMNShtzjl3af52L6v9ZVYsYoJSrZ40w+t/UnkXWMnG7QgJQfivV1eIS5RS9SjH
- 4ybPMGh86PXphuatyJYmYTstWQMq/AA3NJnZeVG44zaVD69N0uhcZLZEN+1M1kZ8WHb2
- CJojja2Y5hhcFzEt+3FKykoeFC5uyibJ/IY7m4KnrdwOjOed4gfSBblXNL7xOFJkoPpu
- 7YPiVeNih+VhGg0W3zb/w3gIor9ZeBhwvEa5B/8jHB0ChQ8lGyI4X29hBaNSk/3Np6Mg
- TvLw==
+ bh=ndQEBja9XdSNCO3BDSnJc/BVCJ7aH9kI+WenktxzA8o=;
+ b=giPLu4gu3lWYuAaVRJbmMefAG1G6H9QxIXDdgL5msg5Mhl3UVKe/yP14dxX5N7eRn+
+ b9t5XsXeBJgAMP5XI6GmOaCWaQrX1pN2rCL+J7fGHsDT20krk0UOh/8uB4oEBMcOsyaC
+ G78nCXTWY+AMUj1oVZ2KgmQnplmezVjs9sbMvH0gWRkYvf8PQxNOexe9QHLWg1SJg2nB
+ t37rgYMt6xerxDn0fqqCGGhiW4FVkChB77AdFlFPZ8sz3n5bHlBbxUn2GSToxu2X2IJu
+ bOGtIRAqLN1xoH9UFMGq+tqJ/uz6z7bk4SxcVhgpaSrHr3vkgYLFV30VjpmME2BbiSR6
+ pZeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691750732; x=1692355532;
+ d=1e100.net; s=20221208; t=1691755685; x=1692360485;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=N2FvBgkiIdUsjB/FxaUZBa1ZB141qaGSBWUTFySHBvs=;
- b=TGe2zxtqimUld24nGdyD5+uJcAaGZlAOmxjdD8e6SpmjqukiV6hfmO3JW4iX4yYz8D
- MUMA0MGy1JBwQzfDURiE633BZxDvuCiD3TRI/19c1u3Xx2Jocgj8NYGrw5giAUNIOmm+
- hd1cUZVa9QJjvPPboN8RYLEYyIJW1/tetAygfAeymfZ/FO9PfnAJ/hdKankeYGRYyhDV
- 7OF6eZDol/A59tgChvi4BYyeW1mMJXnAtqYz/s035xKQMFmdSz7qyw8W98LnH51Xbyxu
- A2y+PTNK45b5n7zD8Zhh+dCgh9JyBHJHfPyR43SRxEWIqJnB6apI/YMmyjQSsxFIIpuW
- haWA==
-X-Gm-Message-State: AOJu0YxJafH9hqIE55VKS+1g8TbI5EWhW9oWYRVu2a3z+xDFdp5a9hYz
- AJeEn+3Aatak1W9GtVO1o8sNnt4MOjkrMSqHhUceFxcckrzYOV7e
-X-Received: by 2002:aa7:c557:0:b0:522:cef7:83c3 with SMTP id
- s23-20020aa7c557000000b00522cef783c3mr1291540edr.8.1691750732278; Fri, 11 Aug
- 2023 03:45:32 -0700 (PDT)
+ bh=ndQEBja9XdSNCO3BDSnJc/BVCJ7aH9kI+WenktxzA8o=;
+ b=UEJnYf/MPAOpI9PiXOnTvwCfVFkWdYWUMRXoOcHeYNhDv0C5tMtFPCd/+ygTG/DCSm
+ hf1HdBXIUDuVE9ctECIjRw5BqUI6ItbjclKBb1pwWOoBKWgKOamEe+Y+IiZCrfAQWVCZ
+ 8ehXY8tf1CZnByiu43a1wGDQJ2oxtuWc1lTGJPW0Y3NhRgB8bWp0RABHd6KRdfTPejYn
+ vgYZcva3c3iGfn7dZuthfZTHnVurAU8soZukb+D2DsJ6gcYFCDWVHxKl9WU9F+p9RDn4
+ Y1jYclCXBjC5gFURUZCMg16REn/JFO9Ea9+jmCsvPq9IQ6+LQ9m/sSNzWyg9zBbYx0wT
+ ScnA==
+X-Gm-Message-State: AOJu0YwDaDCeCPXlFQgLVXFFuN5upPnyshGKtfg2Scru21dQPqCV9Eq+
+ RD5UbAsOU4q6OenF1cIF8HjbXmQL5zQ60a/mBCdn5A==
+X-Received: by 2002:a05:6512:1320:b0:4fd:d3aa:e425 with SMTP id
+ x32-20020a056512132000b004fdd3aae425mr1381540lfu.27.1691755685028; Fri, 11
+ Aug 2023 05:08:05 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230808031143.50925-1-richard.henderson@linaro.org>
- <20230808031143.50925-21-richard.henderson@linaro.org>
- <CAFEAcA-N-QWQXcHgMNnXTr+Bmf7fhdSKYQwS-kkWGdR+UHvT-Q@mail.gmail.com>
-In-Reply-To: <CAFEAcA-N-QWQXcHgMNnXTr+Bmf7fhdSKYQwS-kkWGdR+UHvT-Q@mail.gmail.com>
+ <20230808031143.50925-22-richard.henderson@linaro.org>
+In-Reply-To: <20230808031143.50925-22-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 11 Aug 2023 11:45:21 +0100
-Message-ID: <CAFEAcA9xsPHOeorJvjfO7mrpX_TfYHMNcMHi3dyt41+CktyXsg@mail.gmail.com>
-Subject: Re: [PATCH 20/24] tcg/i386: Add cf parameter to tcg_out_cmp
+Date: Fri, 11 Aug 2023 13:07:54 +0100
+Message-ID: <CAFEAcA8kDbOkbV3227OJ8xodkFmH+nDTZrEDzXGf4Piaeo-ypg@mail.gmail.com>
+Subject: Re: [PATCH 21/24] tcg/i386: Use CMP+SBB in tcg_out_setcond
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x136.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -119,61 +118,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: x0UoG+38/48N
+X-TUID: KC0nVr87hInG
 
-On Fri, 11 Aug 2023 at 11:26, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, 8 Aug 2023 at 04:16, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> On Tue, 8 Aug 2023 at 04:13, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
-> >
-> > Add the parameter to avoid TEST and pass along to tgen_arithi.
-> > All current users pass false.
-> >
-> > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> > ---
-> >  tcg/i386/tcg-target.c.inc | 16 ++++++++--------
-> >  1 file changed, 8 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
-> > index b88fc14afd..56549ff2a0 100644
-> > --- a/tcg/i386/tcg-target.c.inc
-> > +++ b/tcg/i386/tcg-target.c.inc
-> > @@ -1418,15 +1418,15 @@ static void tcg_out_jxx(TCGContext *s, int opc, TCGLabel *l, bool small)
-> >      }
-> >  }
-> >
-> > -static void tcg_out_cmp(TCGContext *s, TCGArg arg1, TCGArg arg2,
-> > -                        int const_arg2, int rexw)
-> > +static void tcg_out_cmp(TCGContext *s, int rexw, TCGArg arg1, TCGArg arg2,
-> > +                        int const_arg2, bool cf)
-> >  {
-> >      if (const_arg2) {
-> > -        if (arg2 == 0) {
-> > +        if (arg2 == 0 && !cf) {
-> >              /* test r, r */
-> >              tcg_out_modrm(s, OPC_TESTL + rexw, arg1, arg1);
-> >          } else {
-> > -            tgen_arithi(s, ARITH_CMP + rexw, arg1, arg2, 0);
-> > +            tgen_arithi(s, ARITH_CMP + rexw, arg1, arg2, cf);
-> >          }
-> >      } else {
-> >          tgen_arithr(s, ARITH_CMP + rexw, arg1, arg2);
+> Use the carry bit to optimize some forms of setcond.
 >
-> I don't really understand the motivation here.
-> Why are some uses of this function fine with using the TEST
-> insn, but some must avoid it? What does 'cf' stand for?
-> A comment would help here if there isn't a clearer argument
-> name available...
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-Looking at the following patch suggests perhaps:
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-/**
- * tcg_out_cmp: Emit a compare, setting the X, Y, Z flags accordingly.
- * @need_cf : true if the comparison must also set CF
- */
-
-(fill in which XYZ flags you can rely on even if need_cf is false)
-
-?
-
+thanks
 -- PMM

@@ -1,13 +1,13 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id q5-20020a7bce85000000b003fe17e04269sm14281629wmj.40.2023.08.14.06.21.15
+        by smtp.gmail.com with ESMTPSA id d2-20020a5d6dc2000000b00317f70240afsm14426724wrz.27.2023.08.14.06.29.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Aug 2023 06:21:15 -0700 (PDT)
+        Mon, 14 Aug 2023 06:29:24 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D93D21FFBB;
-	Mon, 14 Aug 2023 14:21:14 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 08F5B1FFBB;
+	Mon, 14 Aug 2023 14:29:24 +0100 (BST)
 References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
- <20230731084354.115015-7-akihiko.odaki@daynix.com>
+ <20230731084354.115015-13-akihiko.odaki@daynix.com>
 User-agent: mu4e 1.11.14; emacs 29.1.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Akihiko Odaki <akihiko.odaki@daynix.com>
@@ -41,49 +41,105 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Max Filippov
  <jcmvbkbc@gmail.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [RFC PATCH 06/24] hw/core/cpu: Replace gdb_core_xml_file with
- gdb_core_feature
-Date: Mon, 14 Aug 2023 14:19:38 +0100
-In-reply-to: <20230731084354.115015-7-akihiko.odaki@daynix.com>
-Message-ID: <87o7j9rc8l.fsf@linaro.org>
+Subject: Re: [RFC PATCH 12/24] gdbstub: Simplify XML lookup
+Date: Mon, 14 Aug 2023 14:27:08 +0100
+In-reply-to: <20230731084354.115015-13-akihiko.odaki@daynix.com>
+Message-ID: <87jztxrbv0.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: L1bGlaLlAY4b
+X-TUID: xleC+501HIxb
 
 
 Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-> This is a tree-wide change to replace gdb_core_xml_file, the path to
-> GDB XML file with gdb_core_feature, the pointer to GDBFeature. This
-> also replaces the values assigned to gdb_num_core_regs with the
-> num_regs member of GDBFeature where applicable to remove magic numbers.
+> Now we know all instances of GDBFeature that is used in CPU so we can
+> traverse them to find XML. This removes the need for a CPU-specific
+> lookup function for dynamic XMLs.
 >
-> A following change will utilize additional information provided by
-> GDBFeature to simplify XML file lookup.
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+>  gdbstub/gdbstub.c | 28 +++++++++-------------------
+>  1 file changed, 9 insertions(+), 19 deletions(-)
+>
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index 182efe7e0f..e5bb2c89ba 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -354,8 +354,7 @@ static const char *get_feature_xml(const char *p, con=
+st char **newp,
+>                                     GDBProcess *process)
+>  {
+>      size_t len;
+> -    int i;
+> -    const char *name;
+> +    GDBRegisterState *r;
+>      CPUState *cpu =3D gdb_get_first_cpu_in_process(process);
+>      CPUClass *cc =3D CPU_GET_CLASS(cpu);
+>=20=20
+> @@ -364,15 +363,12 @@ static const char *get_feature_xml(const char *p, c=
+onst char **newp,
+>          len++;
+>      *newp =3D p + len;
+>=20=20
+> -    name =3D NULL;
+>      if (strncmp(p, "target.xml", len) =3D=3D 0) {
+>          char *buf =3D process->target_xml;
+>          const size_t buf_sz =3D sizeof(process->target_xml);
+>=20=20
+>          /* Generate the XML description for this CPU.  */
+>          if (!buf[0]) {
+> -            GDBRegisterState *r;
+> -
+>              pstrcat(buf, buf_sz,
+>                      "<?xml version=3D\"1.0\"?>"
+>                      "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
+> @@ -389,28 +385,22 @@ static const char *get_feature_xml(const char *p, c=
+onst char **newp,
+>              pstrcat(buf, buf_sz, "\"/>");
+>              for (r =3D cpu->gdb_regs; r; r =3D r->next) {
+>                  pstrcat(buf, buf_sz, "<xi:include href=3D\"");
+> -                pstrcat(buf, buf_sz, r->feature->xml);
+> +                pstrcat(buf, buf_sz, r->feature->xmlname);
+>                  pstrcat(buf, buf_sz, "\"/>");
+>              }
+>              pstrcat(buf, buf_sz, "</target>");
+>          }
+>          return buf;
+>      }
 
-re: other comment about assert(). Maybe gdb_find_static_feature() needs to =
-assert
-success because:
+It would be nice to modernise this code before adding to it. The static
+target_xml buffer and use of pstrcat could be replaced by GString code
+that is less sketchy.
 
-Thread 1 "qemu-loongarch6" received signal SIGSEGV, Segmentation fault.
-loongarch_cpu_class_init (c=3D<optimized out>, data=3D<optimized out>) at .=
-./../target/loongarch/cpu.c:726
-726         cc->gdb_num_core_regs =3D cc->gdb_core_feature->num_regs;
-(gdb) p/x cc->gdb_core_feature=20
-$1 =3D 0x0
-(gdb) l
-721         cc->disas_set_info =3D loongarch_cpu_disas_set_info;
-722         cc->gdb_read_register =3D loongarch_cpu_gdb_read_register;
-723         cc->gdb_write_register =3D loongarch_cpu_gdb_write_register;
-724         cc->disas_set_info =3D loongarch_cpu_disas_set_info;
-725         cc->gdb_core_feature =3D gdb_find_static_feature("loongarch-bas=
-e64.xml");
-726         cc->gdb_num_core_regs =3D cc->gdb_core_feature->num_regs;
-727         cc->gdb_stop_before_watchpoint =3D true;
-728         cc->gdb_arch_name =3D loongarch_gdb_arch_name;
-729
-730     #ifdef CONFIG_TCG
+
+> -    if (cc->gdb_get_dynamic_xml) {
+> -        char *xmlname =3D g_strndup(p, len);
+> -        const char *xml =3D cc->gdb_get_dynamic_xml(cpu, xmlname);
+> -
+> -        g_free(xmlname);
+> -        if (xml) {
+> -            return xml;
+> -        }
+> +    if (strncmp(p, cc->gdb_core_feature->xmlname, len) =3D=3D 0) {
+> +        return cc->gdb_core_feature->xml;
+>      }
+> -    for (i =3D 0; ; i++) {
+> -        name =3D gdb_features[i].xmlname;
+> -        if (!name || (strncmp(name, p, len) =3D=3D 0 && strlen(name) =3D=
+=3D len))
+> -            break;
+> +    for (r =3D cpu->gdb_regs; r; r =3D r->next) {
+> +        if (strncmp(p, r->feature->xmlname, len) =3D=3D 0) {
+> +            return r->feature->xml;
+> +        }
+>      }
+> -    return name ? gdb_features[i].xml : NULL;
+> +    return NULL;
+>  }
+>=20=20
+>  const GDBFeature *gdb_find_static_feature(const char *xmlname)
+
 
 --=20
 Alex Benn=C3=A9e

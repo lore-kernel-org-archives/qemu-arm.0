@@ -1,13 +1,13 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id v2-20020a5d6102000000b003141e629cb6sm14506898wrt.101.2023.08.14.07.59.15
+        by smtp.gmail.com with ESMTPSA id q4-20020adff944000000b003143c9beeaesm14735998wrr.44.2023.08.14.08.23.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Aug 2023 07:59:15 -0700 (PDT)
+        Mon, 14 Aug 2023 08:23:42 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 5B5381FFBB;
-	Mon, 14 Aug 2023 15:59:15 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id E5DF21FFBB;
+	Mon, 14 Aug 2023 16:23:41 +0100 (BST)
 References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
- <20230731084354.115015-16-akihiko.odaki@daynix.com>
+ <20230731084354.115015-23-akihiko.odaki@daynix.com>
 User-agent: mu4e 1.11.14; emacs 29.1.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Akihiko Odaki <akihiko.odaki@daynix.com>
@@ -41,254 +41,300 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Max Filippov
  <jcmvbkbc@gmail.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [RFC PATCH 15/24] target/arm: Fill new members of GDBFeature
-Date: Mon, 14 Aug 2023 15:56:59 +0100
-In-reply-to: <20230731084354.115015-16-akihiko.odaki@daynix.com>
-Message-ID: <87350lr7p8.fsf@linaro.org>
+Subject: Re: [RFC PATCH 22/24] contrib/plugins: Allow to log registers
+Date: Mon, 14 Aug 2023 16:21:15 +0100
+In-reply-to: <20230731084354.115015-23-akihiko.odaki@daynix.com>
+Message-ID: <87ttt1ps02.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: GQF6YQJ0LjJC
+X-TUID: fLQ3JzWrva+E
 
 
 Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-> These members will be used to help plugins to identify registers.
+> This demonstrates how a register can be read from a plugin.
+
+I think it would be a little more useful as a demo if it tracked changes
+to the register state rather than dumping it for every line executed.
+
 >
 > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 > ---
->  target/arm/gdbstub.c   | 46 +++++++++++++++++++++++++++---------------
->  target/arm/gdbstub64.c | 42 +++++++++++++++++++++++++-------------
->  2 files changed, 58 insertions(+), 30 deletions(-)
+>  docs/devel/tcg-plugins.rst |  10 ++-
+>  contrib/plugins/execlog.c  | 130 ++++++++++++++++++++++++++++---------
+>  2 files changed, 108 insertions(+), 32 deletions(-)
 >
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index 100a6eed15..56d24028f6 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -270,6 +270,7 @@ static void arm_gen_one_feature_sysreg(GString *s,
->      g_string_append_printf(s, " regnum=3D\"%d\"", regnum);
->      g_string_append_printf(s, " group=3D\"cp_regs\"/>");
->      dyn_feature->data.cpregs.keys[dyn_feature->desc.num_regs] =3D ri_key;
-> +    ((const char **)dyn_feature->desc.regs)[dyn_feature->desc.num_regs] =
-=3D ri->name;
->      dyn_feature->desc.num_regs++;
->  }
+> diff --git a/docs/devel/tcg-plugins.rst b/docs/devel/tcg-plugins.rst
+> index 81dcd43a61..c9f8b27590 100644
+> --- a/docs/devel/tcg-plugins.rst
+> +++ b/docs/devel/tcg-plugins.rst
+> @@ -497,6 +497,15 @@ arguments if required::
+>    $ qemu-system-arm $(QEMU_ARGS) \
+>      -plugin ./contrib/plugins/libexeclog.so,ifilter=3Dst1w,afilter=3D0x4=
+0001808 -d plugin
 >=20=20
-> @@ -316,6 +317,8 @@ static GDBFeature *arm_gen_dynamic_sysreg_feature(CPU=
-State *cs, int base_reg)
->      DynamicGDBFeatureInfo *dyn_feature =3D &cpu->dyn_sysreg_feature;
->      gsize num_regs =3D g_hash_table_size(cpu->cp_regs);
+> +This plugin can also dump a specified register. The specification of reg=
+ister
+> +follows `GDB standard target features <https://sourceware.org/gdb/online=
+docs/gdb/Standard-Target-Features.html>`__.
+> +
+> +Specify the name of the feature that contains the register and the name =
+of the
+> +register with ``rfile`` and ``reg`` options, respectively::
+> +
+> +  $ qemu-system-arm $(QEMU_ARGS) \
+> +    -plugin ./contrib/plugins/libexeclog.so,rfile=3Dorg.gnu.gdb.arm.core=
+,reg=3Dsp -d plugin
+> +
+>  - contrib/plugins/cache.c
 >=20=20
-> +    dyn_feature->desc.name =3D "org.qemu.gdb.arm.sys.regs";
-> +    dyn_feature->desc.regs =3D g_new(const char *, num_regs);
-
-AIUI this means we now have an array of register names which mirrors the
-names embedded in the XML. This smells like a few steps away from just
-abstracting the whole XML away from the targets and generating them
-inside gdbstub when we need them. As per my stalled attempt I referenced
-earlier.
-
-
->      dyn_feature->desc.num_regs =3D 0;
->      dyn_feature->data.cpregs.keys =3D g_new(uint32_t, num_regs);
->      g_string_printf(s, "<?xml version=3D\"1.0\"?>");
-> @@ -418,30 +421,34 @@ static int arm_gdb_set_m_systemreg(CPUARMState *env=
-, uint8_t *buf, int reg)
->  }
+>  Cache modelling plugin that measures the performance of a given L1 cache
+> @@ -583,4 +592,3 @@ The following API is generated from the inline docume=
+ntation in
+>  include the full kernel-doc annotations.
 >=20=20
->  static GDBFeature *arm_gen_dynamic_m_systemreg_feature(CPUState *cs,
-> -                                                       int orig_base_reg)
-> +                                                       int base_reg)
+>  .. kernel-doc:: include/qemu/qemu-plugin.h
+> -
+> diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
+> index ce67acf145..031ad67fbb 100644
+> --- a/contrib/plugins/execlog.c
+> +++ b/contrib/plugins/execlog.c
+> @@ -15,27 +15,42 @@
+>=20=20
+>  #include <qemu-plugin.h>
+>=20=20
+> +typedef struct CPU {
+> +    /* Store last executed instruction on each vCPU as a GString */
+> +    GString *last_exec;
+> +    GByteArray *reg_buf;
+> +
+> +    int reg;
+> +} CPU;
+> +
+>  QEMU_PLUGIN_EXPORT int qemu_plugin_version =3D QEMU_PLUGIN_VERSION;
+>=20=20
+> -/* Store last executed instruction on each vCPU as a GString */
+> -static GPtrArray *last_exec;
+> +static CPU *cpus;
+> +static int num_cpus;
+>  static GRWLock expand_array_lock;
+>=20=20
+>  static GPtrArray *imatches;
+>  static GArray *amatches;
+>=20=20
+> +static char *rfile_name;
+> +static char *reg_name;
+> +
+>  /*
+> - * Expand last_exec array.
+> + * Expand cpu array.
+>   *
+>   * As we could have multiple threads trying to do this we need to
+>   * serialise the expansion under a lock.
+>   */
+> -static void expand_last_exec(int cpu_index)
+> +static void expand_cpu(int cpu_index)
 >  {
->      ARMCPU *cpu =3D ARM_CPU(cs);
->      CPUARMState *env =3D &cpu->env;
->      GString *s =3D g_string_new(NULL);
-> -    int base_reg =3D orig_base_reg;
-> -    int i;
-> +    const char **regs =3D g_new(const char *, ARRAY_SIZE(m_sysreg_def));
-> +    int i =3D 0;
-> +    int j;
+> -    g_rw_lock_writer_unlock(&expand_array_lock);
+> -    while (cpu_index >=3D last_exec->len) {
+> -        GString *s =3D g_string_new(NULL);
+> -        g_ptr_array_add(last_exec, s);
+> +    g_rw_lock_writer_lock(&expand_array_lock);
+> +    if (cpu_index >=3D num_cpus) {
+> +        cpus =3D g_realloc_n(cpus, cpu_index + 1, sizeof(*cpus));
+> +        while (cpu_index >=3D num_cpus) {
+> +            cpus[num_cpus].last_exec =3D g_string_new(NULL);
+> +            cpus[num_cpus].reg_buf =3D g_byte_array_new();
+> +            num_cpus++;
+> +        }
+>      }
+>      g_rw_lock_writer_unlock(&expand_array_lock);
+>  }
+> @@ -50,8 +65,8 @@ static void vcpu_mem(unsigned int cpu_index, qemu_plugi=
+n_meminfo_t info,
 >=20=20
->      g_string_printf(s, "<?xml version=3D\"1.0\"?>");
->      g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\=
-">");
->      g_string_append_printf(s, "<feature name=3D\"org.gnu.gdb.arm.m-syste=
-m\">\n");
+>      /* Find vCPU in array */
+>      g_rw_lock_reader_lock(&expand_array_lock);
+> -    g_assert(cpu_index < last_exec->len);
+> -    s =3D g_ptr_array_index(last_exec, cpu_index);
+> +    g_assert(cpu_index < num_cpus);
+> +    s =3D cpus[cpu_index].last_exec;
+>      g_rw_lock_reader_unlock(&expand_array_lock);
 >=20=20
-> -    for (i =3D 0; i < ARRAY_SIZE(m_sysreg_def); i++) {
-> -        if (arm_feature(env, m_sysreg_def[i].feature)) {
-> +    for (j =3D 0; j < ARRAY_SIZE(m_sysreg_def); j++) {
-> +        if (arm_feature(env, m_sysreg_def[j].feature)) {
-> +            regs[i] =3D m_sysreg_def[j].name;
->              g_string_append_printf(s,
->                  "<reg name=3D\"%s\" bitsize=3D\"32\" regnum=3D\"%d\"/>\n=
-",
-> -                m_sysreg_def[i].name, base_reg++);
-> +                m_sysreg_def[j].name, base_reg + i++);
+>      /* Indicate type of memory access */
+> @@ -77,28 +92,35 @@ static void vcpu_mem(unsigned int cpu_index, qemu_plu=
+gin_meminfo_t info,
+>   */
+>  static void vcpu_insn_exec(unsigned int cpu_index, void *udata)
+>  {
+> -    GString *s;
+> +    CPU cpu;
+> +    int n;
+> +    int i;
+>=20=20
+>      /* Find or create vCPU in array */
+>      g_rw_lock_reader_lock(&expand_array_lock);
+> -    if (cpu_index >=3D last_exec->len) {
+> -        g_rw_lock_reader_unlock(&expand_array_lock);
+> -        expand_last_exec(cpu_index);
+> -        g_rw_lock_reader_lock(&expand_array_lock);
+> -    }
+> -    s =3D g_ptr_array_index(last_exec, cpu_index);
+> +    cpu =3D cpus[cpu_index];
+>      g_rw_lock_reader_unlock(&expand_array_lock);
+>=20=20
+>      /* Print previous instruction in cache */
+> -    if (s->len) {
+> -        qemu_plugin_outs(s->str);
+> +    if (cpu.last_exec->len) {
+> +        qemu_plugin_outs(cpu.last_exec->str);
+>          qemu_plugin_outs("\n");
+>      }
+>=20=20
+>      /* Store new instruction in cache */
+>      /* vcpu_mem will add memory access information to last_exec */
+> -    g_string_printf(s, "%u, ", cpu_index);
+> -    g_string_append(s, (char *)udata);
+> +    g_string_printf(cpu.last_exec, "%u, ", cpu_index);
+> +    g_string_append(cpu.last_exec, (char *)udata);
+> +
+> +    if (cpu.reg >=3D 0) {
+> +        g_string_append(cpu.last_exec, ", reg,");
+> +        n =3D qemu_plugin_read_register(cpu.reg_buf, cpu.reg);
+> +        for (i =3D 0; i < n; i++) {
+> +            g_string_append_printf(cpu.last_exec, " 0x%02X",
+> +                                   cpu.reg_buf->data[i]);
+> +        }
+
+so instead of:
+
+  0, 0x4001b4, 0xd10043ff, "sub sp, sp, #0x10", reg, 0x70 0xFF 0x7F 0x00 0x=
+00 0x40 0x00 0x00
+
+we could aim for something like:
+
+  0, 0x4001b4, 0xd10043ff, "sub sp, sp, #0x10", sp =3D> 0x70ff7f0000400000
+
+
+> +        g_byte_array_set_size(cpu.reg_buf, 0);
+> +    }
+>  }
+>=20=20
+>  /**
+> @@ -167,8 +189,10 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struc=
+t qemu_plugin_tb *tb)
+>                                               QEMU_PLUGIN_MEM_RW, NULL);
+>=20=20
+>              /* Register callback on instruction */
+> -            qemu_plugin_register_vcpu_insn_exec_cb(insn, vcpu_insn_exec,
+> -                                                   QEMU_PLUGIN_CB_NO_REG=
+S, output);
+> +            qemu_plugin_register_vcpu_insn_exec_cb(
+> +                insn, vcpu_insn_exec,
+> +                rfile_name ? QEMU_PLUGIN_CB_R_REGS : QEMU_PLUGIN_CB_NO_R=
+EGS,
+> +                output);
+>=20=20
+>              /* reset skip */
+>              skip =3D (imatches || amatches);
+> @@ -177,17 +201,53 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, stru=
+ct qemu_plugin_tb *tb)
+>      }
+>  }
+>=20=20
+> +static void vcpu_init(qemu_plugin_id_t id, unsigned int vcpu_index)
+> +{
+> +    int reg =3D 0;
+> +    bool found =3D false;
+> +
+> +    expand_cpu(vcpu_index);
+> +
+> +    if (rfile_name) {
+> +        int i;
+> +        int j;
+> +        int n;
+> +
+> +        qemu_plugin_register_file_t *rfiles =3D
+> +            qemu_plugin_get_register_files(vcpu_index, &n);
+> +
+> +        for (i =3D 0; i < n; i++) {
+> +            if (g_strcmp0(rfiles[i].name, rfile_name) =3D=3D 0) {
+> +                for (j =3D 0; j < rfiles[i].num_regs; j++) {
+> +                    if (g_strcmp0(rfiles[i].regs[j], reg_name) =3D=3D 0)=
+ {
+> +                        reg +=3D j;
+> +                        found =3D true;
+> +                        break;
+> +                    }
+> +                }
+> +                break;
+> +            }
+> +
+> +            reg +=3D rfiles[i].num_regs;
+> +        }
+> +
+> +        g_free(rfiles);
+> +    }
+> +
+> +    g_rw_lock_writer_lock(&expand_array_lock);
+> +    cpus[vcpu_index].reg =3D found ? reg : -1;
+> +    g_rw_lock_writer_unlock(&expand_array_lock);
+> +}
+> +
+>  /**
+>   * On plugin exit, print last instruction in cache
+>   */
+>  static void plugin_exit(qemu_plugin_id_t id, void *p)
+>  {
+>      guint i;
+> -    GString *s;
+> -    for (i =3D 0; i < last_exec->len; i++) {
+> -        s =3D g_ptr_array_index(last_exec, i);
+> -        if (s->str) {
+> -            qemu_plugin_outs(s->str);
+> +    for (i =3D 0; i < num_cpus; i++) {
+> +        if (cpus[i].last_exec->str) {
+> +            qemu_plugin_outs(cpus[i].last_exec->str);
+>              qemu_plugin_outs("\n");
+>          }
+>      }
+> @@ -224,9 +284,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugi=
+n_id_t id,
+>       * we don't know the size before emulation.
+>       */
+>      if (info->system_emulation) {
+> -        last_exec =3D g_ptr_array_sized_new(info->system.max_vcpus);
+> -    } else {
+> -        last_exec =3D g_ptr_array_new();
+> +        cpus =3D g_new(CPU, info->system.max_vcpus);
+>      }
+>=20=20
+>      for (int i =3D 0; i < argc; i++) {
+> @@ -236,13 +294,23 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plu=
+gin_id_t id,
+>              parse_insn_match(tokens[1]);
+>          } else if (g_strcmp0(tokens[0], "afilter") =3D=3D 0) {
+>              parse_vaddr_match(tokens[1]);
+> +        } else if (g_strcmp0(tokens[0], "rfile") =3D=3D 0) {
+> +            rfile_name =3D g_strdup(tokens[1]);
+> +        } else if (g_strcmp0(tokens[0], "reg") =3D=3D 0) {
+> +            reg_name =3D g_strdup(tokens[1]);
+>          } else {
+>              fprintf(stderr, "option parsing failed: %s\n", opt);
+>              return -1;
 >          }
 >      }
 >=20=20
->      g_string_append_printf(s, "</feature>");
-> +    cpu->dyn_m_systemreg_feature.desc.name =3D "org.gnu.gdb.arm.m-system=
-";
->      cpu->dyn_m_systemreg_feature.desc.xmlname =3D "arm-m-system.xml";
->      cpu->dyn_m_systemreg_feature.desc.xml =3D g_string_free(s, false);
-> -    cpu->dyn_m_systemreg_feature.desc.num_regs =3D base_reg - orig_base_=
-reg;
-> +    cpu->dyn_m_systemreg_feature.desc.regs =3D regs;
-> +    cpu->dyn_m_systemreg_feature.desc.num_regs =3D i;
->=20=20
->      return &cpu->dyn_m_systemreg_feature.desc;
->  }
-> @@ -462,30 +469,37 @@ static int arm_gdb_set_m_secextreg(CPUARMState *env=
-, uint8_t *buf, int reg)
->  }
->=20=20
->  static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
-> -                                                       int orig_base_reg)
-> +                                                       int base_reg)
->  {
->      ARMCPU *cpu =3D ARM_CPU(cs);
->      GString *s =3D g_string_new(NULL);
-> -    int base_reg =3D orig_base_reg;
-> -    int i;
-> +    const char **regs =3D g_new(const char *, ARRAY_SIZE(m_sysreg_def) *=
- 2);
-> +    int i =3D 0;
-> +    int j;
->=20=20
->      g_string_printf(s, "<?xml version=3D\"1.0\"?>");
->      g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\=
-">");
->      g_string_append_printf(s, "<feature name=3D\"org.gnu.gdb.arm.secext\=
-">\n");
->=20=20
-> -    for (i =3D 0; i < ARRAY_SIZE(m_sysreg_def); i++) {
-> +    for (j =3D 0; j < ARRAY_SIZE(m_sysreg_def); j++) {
-> +        regs[i] =3D g_strconcat(m_sysreg_def[j].name, "_ns", NULL);
->          g_string_append_printf(s,
-> -            "<reg name=3D\"%s_ns\" bitsize=3D\"32\" regnum=3D\"%d\"/>\n",
-> -            m_sysreg_def[i].name, base_reg++);
-> +            "<reg name=3D\"%s\" bitsize=3D\"32\" regnum=3D\"%d\"/>\n",
-> +            regs[i], base_reg + i);
-> +        i++;
-> +        regs[i] =3D g_strconcat(m_sysreg_def[j].name, "_s", NULL);
->          g_string_append_printf(s,
-> -            "<reg name=3D\"%s_s\" bitsize=3D\"32\" regnum=3D\"%d\"/>\n",
-> -            m_sysreg_def[i].name, base_reg++);
-> +            "<reg name=3D\"%s\" bitsize=3D\"32\" regnum=3D\"%d\"/>\n",
-> +            regs[i], base_reg + i);
-> +        i++;
->      }
->=20=20
->      g_string_append_printf(s, "</feature>");
-> +    cpu->dyn_m_secextreg_feature.desc.name =3D "org.gnu.gdb.arm.secext";
->      cpu->dyn_m_secextreg_feature.desc.xmlname =3D "arm-m-secext.xml";
->      cpu->dyn_m_secextreg_feature.desc.xml =3D g_string_free(s, false);
-> -    cpu->dyn_m_secextreg_feature.desc.num_regs =3D base_reg - orig_base_=
-reg;
-> +    cpu->dyn_m_secextreg_feature.desc.regs =3D regs;
-> +    cpu->dyn_m_secextreg_feature.desc.num_regs =3D i;
->=20=20
->      return &cpu->dyn_m_secextreg_feature.desc;
->  }
-> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-> index 20483ef9bc..c5ed7c0aa3 100644
-> --- a/target/arm/gdbstub64.c
-> +++ b/target/arm/gdbstub64.c
-> @@ -316,15 +316,21 @@ static void output_vector_union_type(GString *s, in=
-t reg_width,
->      g_string_append(s, "</union>");
->  }
->=20=20
-> -GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int orig_base_r=
-eg)
-> +GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int base_reg)
->  {
->      ARMCPU *cpu =3D ARM_CPU(cs);
->      GString *s =3D g_string_new(NULL);
->      DynamicGDBFeatureInfo *info =3D &cpu->dyn_svereg_feature;
-> +    const char **regs;
->      int reg_width =3D cpu->sve_max_vq * 128;
->      int pred_width =3D cpu->sve_max_vq * 16;
-> -    int base_reg =3D orig_base_reg;
-> -    int i;
-> +    int i =3D 0;
-> +    int j;
+> +    if ((!rfile_name) !=3D (!reg_name)) {
+> +        fputs("file and reg need to be set at the same time\n", stderr);
+> +        return -1;
+> +    }
 > +
-> +    info->desc.name =3D "org.gnu.gdb.aarch64.sve";
-> +    info->desc.num_regs =3D 32 + 16 + 4;
-> +    regs =3D g_new(const char *, info->desc.num_regs);
-> +    info->desc.regs =3D regs;
->=20=20
->      g_string_printf(s, "<?xml version=3D\"1.0\"?>");
->      g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\=
-">");
-> @@ -339,44 +345,52 @@ GDBFeature *arm_gen_dynamic_svereg_feature(CPUState=
- *cs, int orig_base_reg)
->                             pred_width / 8);
->=20=20
->      /* Define the vector registers. */
-> -    for (i =3D 0; i < 32; i++) {
-> +    for (j =3D 0; j < 32; j++) {
-> +        regs[i] =3D g_strdup_printf("z%d", j);
->          g_string_append_printf(s,
-> -                               "<reg name=3D\"z%d\" bitsize=3D\"%d\""
-> +                               "<reg name=3D\"%s\" bitsize=3D\"%d\""
->                                 " regnum=3D\"%d\" type=3D\"svev\"/>",
-> -                               i, reg_width, base_reg++);
-> +                               regs[i], reg_width, base_reg + i);
-> +        i++;
->      }
->=20=20
->      /* fpscr & status registers */
-> +    regs[i] =3D "fpsr";
->      g_string_append_printf(s, "<reg name=3D\"fpsr\" bitsize=3D\"32\""
->                             " regnum=3D\"%d\" group=3D\"float\""
-> -                           " type=3D\"int\"/>", base_reg++);
-> +                           " type=3D\"int\"/>", base_reg + i++);
-> +    regs[i] =3D "fpcr";
->      g_string_append_printf(s, "<reg name=3D\"fpcr\" bitsize=3D\"32\""
->                             " regnum=3D\"%d\" group=3D\"float\""
-> -                           " type=3D\"int\"/>", base_reg++);
-> +                           " type=3D\"int\"/>", base_reg + i++);
->=20=20
->      /* Define the predicate registers. */
-> -    for (i =3D 0; i < 16; i++) {
-> +    for (j =3D 0; j < 16; j++) {
-> +        regs[i] =3D g_strdup_printf("p%d", j);
->          g_string_append_printf(s,
-> -                               "<reg name=3D\"p%d\" bitsize=3D\"%d\""
-> +                               "<reg name=3D\"%s\" bitsize=3D\"%d\""
->                                 " regnum=3D\"%d\" type=3D\"svep\"/>",
-> -                               i, pred_width, base_reg++);
-> +                               regs[i], pred_width, base_reg + i);
-> +        i++;
->      }
-> +    regs[i] =3D "ffr";
->      g_string_append_printf(s,
->                             "<reg name=3D\"ffr\" bitsize=3D\"%d\""
->                             " regnum=3D\"%d\" group=3D\"vector\""
->                             " type=3D\"svep\"/>",
-> -                           pred_width, base_reg++);
-> +                           pred_width, base_reg + i++);
->=20=20
->      /* Define the vector length pseudo-register. */
-> +    regs[i] =3D "vg";
->      g_string_append_printf(s,
->                             "<reg name=3D\"vg\" bitsize=3D\"64\""
->                             " regnum=3D\"%d\" type=3D\"int\"/>",
-> -                           base_reg++);
-> +                           base_reg + i++);
->=20=20
->      g_string_append_printf(s, "</feature>");
->=20=20
->      info->desc.xmlname =3D "sve-registers.xml";
->      info->desc.xml =3D g_string_free(s, false);
-> -    info->desc.num_regs =3D base_reg - orig_base_reg;
-> +    assert(info->desc.num_regs =3D=3D i);
->      return &info->desc;
->  }
+>      /* Register translation block and exit callbacks */
+> +    qemu_plugin_register_vcpu_init_cb(id, vcpu_init);
+>      qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
+>      qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
 
 
 --=20

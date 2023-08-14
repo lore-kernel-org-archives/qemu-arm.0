@@ -1,158 +1,134 @@
-Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp1526910ejc;
-        Fri, 11 Aug 2023 10:30:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGhtJ5F5sJMwPqj1oizJnheTefghjUiA9Y0V8n4iMBVclrSggSCxNy1aIW53Ao/3QzZHksZ
-X-Received: by 2002:ac8:580a:0:b0:3ff:2923:48a with SMTP id g10-20020ac8580a000000b003ff2923048amr3295655qtg.3.1691775048387;
-        Fri, 11 Aug 2023 10:30:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691775048; cv=none;
+Received: by 2002:a17:906:3683:b0:98d:b2f5:1316 with SMTP id a3csp2904692ejc;
+        Mon, 14 Aug 2023 00:59:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGz4a3EZZAwz161HJwcxTEIkm2vNUQt7cAtql6XZR9reBa4mfP8npXKThKamK30S/qAdxM5
+X-Received: by 2002:a0c:ca92:0:b0:636:afa1:3448 with SMTP id a18-20020a0cca92000000b00636afa13448mr8114342qvk.13.1691999956692;
+        Mon, 14 Aug 2023 00:59:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1691999956; cv=none;
         d=google.com; s=arc-20160816;
-        b=uNxVHPvNEfcnrx3UHYc8PqzP7W81crV5eUpS3dKevo3M8uNbzrZN49AwG2dC+ma9lz
-         2dCLeeZe7kvu37vxkhCna3W0vbzRgeF+tgCfrWCwHxGEFfEVyhL2Ce2SO35CxWT1a6XL
-         3/chcmjnr0DCeOu/g7BHpDJ8eX4L7b8CV6Spry85FIFJ/h21fuxm/rpcqDZTaYmEzy6d
-         rbkuAsR1brKLhWuMmPQXcYN+EemssF0s21Vc0jfI6eRMbEyR706VBCI7hSc/awZl5AXL
-         f5iPXUekIjKJDYWtzdx/TCehtd4Kak80Ndic8beACY6pqZ0wLkwJ/4LMH+Y4WTAhZXlg
-         JGrQ==
+        b=jBFnYI6NgJynONJOiqNMXL3oBTBk+YrB9gzOW1x+rD/KgYqwU3Lgrs/36bn2FeFEnL
+         AyesxwtX6smYEvGgktwopVld4mMSg/FPC6OYi9MnPXg7a3b6XymMf/bH7WeyfkIch+rq
+         HpAWyZUzdSRYkz8Kgs8m6O1GLVs5gk64v5dThb/oDGytbZMmn+0u5o0WYktF/iA+2hX7
+         8G6jAc3/s1hfwLchY8k7LuOwovwktQTHcVWk+nGtu46mkGXa90GaDiFlnsWYRKUJskdP
+         O6eRXs+P2UI+D6Fi6tOSUKt4LX3F4G+9nOeN+afnwLJddd+Y82u7vnMfyasUkFU6/96r
+         OOUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=nLc7FbLhOnq2DIpEXkd5oX3SDFqmQkc87Ir3u2nOo0Q=;
-        fh=/5hvLOtwf3ttgpRABJl/whYaKrYuVuKqgBf3BPtM9uQ=;
-        b=k+AYftNwi1ztTSnA28X6/5Vd1oaLPcVQTqp5duxLJ1T7EWwHaSMcnzp7uDUTZU1DN2
-         xvBSr2370Kx1XdZw3E7CGJuWnH7mrzQIBaxBz24plABrELo5draTJVJqEfFTEdsiPcq2
-         //52KWbvtxtoHjkVD1J2zeTV7cFeL6OLiLKJfpiB0J5Wn1Jpg5+MV8e4MmyxjMnXs1lf
-         doQAXVpVXaB1SF1OvCWX6XB20+mBTteNESQOV8mVNvg3psNhNyf48YPBtBVXnRKMzf/Q
-         gmlt57CIhr9KbR9GuhIKeQqN4Nv3km4/IXo5FDwIRezJDKr6iCPhsFga0LxBayPsa3yw
-         b/mA==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=j6t9KFibenm2vigzkYJ6LK8kiAtL5HjAZ2G+nYUDeAI=;
+        fh=dZxqR4ED3waUSuKsKRDY5kotIieBuuAyHOv/1XQ8jmo=;
+        b=uXHy+kP11SVS05NsxP+qIxMvMXVG3k3F3D1LdrRGxcJUlqF7lMaGJlwMB4Pu+0x9wM
+         3kjtkCe/TTxlVFhFlG2dMgW3tKofTp8e4WeTtXipPYnI5sEBvblUWlmDRvaLFesH4Pvh
+         DDbaMwr9cy8QDNIEKj60I9jKo9s6Mtb/bWEytYHigr3twO2xxos2Q/17XqczIhx6wxcf
+         Fs9y5E9Cmipvi4W8Qb5rLVGb8XHMuzklJhk/nAINiOIKGv4LX282prYhd4RQE2vjyYk5
+         QmgM4MqFc4lFT8fFgH5CP3a4SFPkYEGiWoBsVRCgeP46JZcje7uTAICKHttulw2DRwhe
+         gZkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eGNLs0D+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t2-20020a05622a01c200b0040c34202141si2506153qtw.504.2023.08.11.10.30.48
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OeeG0ZdN;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id p14-20020a0ccb8e000000b0064729b85376si140023qvk.131.2023.08.14.00.59.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Aug 2023 10:30:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Aug 2023 00:59:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eGNLs0D+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qUVy2-00086V-FN; Fri, 11 Aug 2023 13:30:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qUVxz-00085i-CP
- for qemu-arm@nongnu.org; Fri, 11 Aug 2023 13:30:29 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qUVxq-0001Od-Ns
- for qemu-arm@nongnu.org; Fri, 11 Aug 2023 13:30:21 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-3090d3e9c92so1962124f8f.2
- for <qemu-arm@nongnu.org>; Fri, 11 Aug 2023 10:30:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691775017; x=1692379817;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=nLc7FbLhOnq2DIpEXkd5oX3SDFqmQkc87Ir3u2nOo0Q=;
- b=eGNLs0D+gSKeANK+bRRqlH2twcyDQ+2ATenZIoBU/O7lBwGHgM8RK/PQSfn8gGG4WO
- CoDVaBqltMRgJHS4JR1nhcu2MixoUoEfdEP0BIfiLYTA/QKdv3kjeQ9ebNvyouLub8WF
- uGovQRWyNRp9kq0CG9eNDkvsc92/kEolpFAEpc4RdK8Fl5hGkphkuQOR0swKmhVAO9+S
- Jyww4AJLBQGRl9L83s7Uw/5cZsr8Hk/KHcjtbuABtwWG2cLR8RxVjFm3pBkj2sn0c0vG
- AxHGU66PUvcq6jJerp6vD2CqpYQWyHn4v0p08bOGd3U4KkqjDwjjzf6f8Yf8jcf2ngvS
- 1Opg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OeeG0ZdN;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1691999956;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=j6t9KFibenm2vigzkYJ6LK8kiAtL5HjAZ2G+nYUDeAI=;
+	b=OeeG0ZdNzkJGIfkwMohZ+H4Tdw+AM2PP0k6a6B3gEUuJAKh2vt/y0FBG5SuNcsnpObrhIa
+	zc6FXN4Bn3w3mJd3yQa+YvR1EsfdymCLBve94lhlGkefN7UUgzn4JfCUzfCIZU59OaShLZ
+	THCt1DqiQmmxXS6FWZrxcYGmMVFzp5o=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-460-DXFKwT2nO7-WNGeZdjhpLg-1; Mon, 14 Aug 2023 03:59:12 -0400
+X-MC-Unique: DXFKwT2nO7-WNGeZdjhpLg-1
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3196e92c3f6so523577f8f.1
+        for <alex.bennee@linaro.org>; Mon, 14 Aug 2023 00:59:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691775017; x=1692379817;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nLc7FbLhOnq2DIpEXkd5oX3SDFqmQkc87Ir3u2nOo0Q=;
- b=HGt9wzcNvq/clV4qSNH0KSrnP6bwXwaQby/Ih+RU6KPaLrCKo+mxuWpOoYs1xLgMbG
- cMsZanlqVvURErDz9Jlv7HntsOoqOC4GmzHyB/7Q1UWRi4mtYAbcqOYC58x3Uj5iYph+
- xlWXmTBQz1qskcQo+qJ0z5uXAvYCTWt/ihqB2ucqdMD0FDKFUxWBilGrRW9BjcfET+Vv
- /Mr8iFgAhWbTuruHhMpqrKSrHPjTQevXWrG4kj2Y6mDY/vj+wX4629PZd/la9BxDfL76
- UljtTa7oE8V0HsvhdIOsGTxYw6ICJmxToLl/bV/C0jRPbeWkXIhyTPqqMQEiCeC+Y9AS
- OdCg==
-X-Gm-Message-State: AOJu0Yw1NnR8c5a+F6fOtF5wDhglbqqdG3pHzS4LrRwsGc+vwSmRQfId
- tu2ekEfLT3skF8UugAfuE5Rc6Q==
-X-Received: by 2002:a05:6000:137c:b0:317:5c82:10c2 with SMTP id
- q28-20020a056000137c00b003175c8210c2mr2086439wrz.59.1691775016767; 
- Fri, 11 Aug 2023 10:30:16 -0700 (PDT)
-Received: from [192.168.69.115] ([176.187.219.164])
- by smtp.gmail.com with ESMTPSA id
- a9-20020a5d5089000000b0031434c08bb7sm6069567wrt.105.2023.08.11.10.30.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 11 Aug 2023 10:30:16 -0700 (PDT)
-Message-ID: <410cf104-74a8-08d1-2907-7c015a156327@linaro.org>
-Date: Fri, 11 Aug 2023 19:30:13 +0200
+        d=1e100.net; s=20221208; t=1691999951; x=1692604751;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=j6t9KFibenm2vigzkYJ6LK8kiAtL5HjAZ2G+nYUDeAI=;
+        b=M80meZQbmqZuCufB9Civq96UdrFx/dXvj7l/DMUlbJXJRzaxBAln/dXZMNx+jd3yCP
+         Y+0vszoGIeuy5lBDsf5zr7PQR6h/xrdgiYE/0JkG1gSssEFfQLBGX/TfKQINPScXyK6j
+         cKAlxM6b/9EkcnFbxtdgszuxiN0ojjmYz2lGbtaFNzxbslPyfGkfLtDDei6TU2c3M0R2
+         UksQboUE1jp59v66+YPYel+WaZzsoE1ocApfoZKUH80DYPBfuuCh0sdoTrdZyz82TMUY
+         HQZHd8Qy4zTJuNhJouiQkqA7bLtFt6vJazS00xxzusfPv4Tkvi2e4DX34WLK2HBdzzbj
+         /Bfw==
+X-Gm-Message-State: AOJu0YzaAdcSu7r1ogL1RecmeSowsJ86etQFOOIZTjiBE3a/BIveMfzr
+	gGHnXuzVCQGIIK2tqxtHK6y2mfQPP9GiLdSrnOzIntj6bUvdaMEg4zBj0oheEOktQFfov/oU5Ik
+	+Asbuojb/xLgpdRSPklE5Cl568rpsNvH4OPLrPZ/uFHb8RtL4huyLgtZTJiaeyMBMPggNxXcF
+X-Received: by 2002:adf:e80a:0:b0:319:789f:fcda with SMTP id o10-20020adfe80a000000b00319789ffcdamr1217207wrm.9.1691999951604;
+        Mon, 14 Aug 2023 00:59:11 -0700 (PDT)
+X-Received: by 2002:adf:e80a:0:b0:319:789f:fcda with SMTP id o10-20020adfe80a000000b00319789ffcdamr1217185wrm.9.1691999951233;
+        Mon, 14 Aug 2023 00:59:11 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.8.105] (dynamic-046-114-244-033.46.114.pool.telefonica.de. [46.114.244.33])
+        by smtp.gmail.com with ESMTPSA id y14-20020adff6ce000000b00317e9f8f194sm13619021wrp.34.2023.08.14.00.59.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 14 Aug 2023 00:59:10 -0700 (PDT)
+Message-ID: <2b541550-162f-cd97-1836-72cf64951415@redhat.com>
+Date: Mon, 14 Aug 2023 09:59:07 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.14.0
-Subject: Re: [PULL 1/2] hw/pci-host: Allow extended config space access for
- Designware PCIe host
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 2/8] tests/docker: cleanup non-verbose output
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Ilya Leoshkevich <iii@linux.ibm.com>, Yonggang Luo
+ <luoyonggang@gmail.com>, Beraldo Leal <bleal@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ David Hildenbrand <david@redhat.com>, qemu-arm@nongnu.org,
+ qemu-s390x@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>
+References: <20230810153640.1879717-1-alex.bennee@linaro.org>
+ <20230810153640.1879717-3-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230810153640.1879717-3-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Jason Chien <jason.chien@sifive.com>, Frank Chang <frank.chang@sifive.com>,
- Jason Wang <jasowang@redhat.com>, Chien@redhat.com, &lt@redhat.com,
- Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org
-References: <cover.1691770630.git.mst@redhat.com>
- <3d449bc6030904ead784a4e4644c9640c2152796.1691770630.git.mst@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <3d449bc6030904ead784a4e4644c9640c2152796.1691770630.git.mst@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.972,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +v6RRuqVb8Cd
+Content-Transfer-Encoding: 8bit
+X-TUID: iRTUxjwYjCPp
 
-On 11/8/23 18:18, Michael S. Tsirkin wrote:
-> From: Jason Chien <jason.chien@sifive.com>
+On 10/08/2023 17.36, Alex Bennée wrote:
+> Even with --quiet docker will spam the sha256 to the console. Avoid
+> this by redirecting stdout. While we are at it fix the name we echo
+> which was broken during 0b1a649047 (tests/docker: use direct RUNC call
+> to build containers).
 > 
-> In pcie_bus_realize(), a root bus is realized as a PCIe bus and a non-root
-> bus is realized as a PCIe bus if its parent bus is a PCIe bus. However,
-> the child bus "dw-pcie" is realized before the parent bus "pcie" which is
-> the root PCIe bus. Thus, the extended configuration space is not accessible
-> on "dw-pcie". The issue can be resolved by adding the
-> PCI_BUS_EXTENDED_CONFIG_SPACE flag to "pcie" before "dw-pcie" is realized.
-> 
-> Signed-off-by: Jason Chien <jason.chien@sifive.com>
-> Message-Id: <20230809102257.25121-1-jason.chien@sifive.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-> Reviewed-by: Frank Chang <frank.chang@sifive.com>
-> Signed-off-by: Jason Chien &lt;<a href="mailto:jason.chien@sifive.com" target="_blank">jason.chien@sifive.com</a>&gt;<br>
-
-<8^)
-
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   hw/pci-host/designware.c | 1 +
->   1 file changed, 1 insertion(+)
+>   tests/docker/Makefile.include | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+> index 142e8605ee..dfabafab92 100644
+> --- a/tests/docker/Makefile.include
+> +++ b/tests/docker/Makefile.include
+> @@ -46,9 +46,9 @@ docker-image-%: $(DOCKER_FILES_DIR)/%.docker
+>   		--build-arg BUILDKIT_INLINE_CACHE=1 	\
+>   		$(if $(NOUSER),,			\
+>   			--build-arg USER=$(USER)	\
+> -			--build-arg UID=$(UID))	\
+> -		-t qemu/$* - < $<, 			\
+> -		"BUILD", $1)
+> +			--build-arg UID=$(UID))		\
+> +		-t qemu/$* - < $< $(if $V,,> /dev/null),\
+> +		"BUILD", $*)
 
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>

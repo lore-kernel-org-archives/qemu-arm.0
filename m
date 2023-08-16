@@ -1,357 +1,331 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp394209ejs;
-        Wed, 16 Aug 2023 07:23:17 -0700 (PDT)
-X-Received: by 2002:a17:903:234e:b0:1b8:987f:3f34 with SMTP id c14-20020a170903234e00b001b8987f3f34mr2304263plh.25.1692195796752;
-        Wed, 16 Aug 2023 07:23:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692195796; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp396047ejs;
+        Wed, 16 Aug 2023 07:26:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEEbXGyYiVgePJBwMwdlNmTlUYXwP5tWfhxJey81yIFzWK1jvQP7t2fGspCbxDOk9Ierw0t
+X-Received: by 2002:aca:2412:0:b0:3a7:c2e8:5e7c with SMTP id n18-20020aca2412000000b003a7c2e85e7cmr2185330oic.43.1692195960478;
+        Wed, 16 Aug 2023 07:26:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692195960; cv=none;
         d=google.com; s=arc-20160816;
-        b=NlufJh0a1mIZbTmjihsTHknf4nM5EMcdN42XHHmKlCTMuepxG/4qzp4YEyXT8M2Iom
-         VZRcKakB95pMkXMIGLTTREIHTJGmNGW4i3M/yyT9jCc6T7cBafuIAoV7cZ4wFQh2RUTg
-         DTyub7kSh1ImYVljs/vWtKz8Hx11V7IFr39hMVSKBs+raxRoTqfD4LdFdt9xjMJ/JXoE
-         7Gq6eb5iCMqQl8/CszULEWWZ7bf9EKGOQJWLDvzCCkACrt2mWH96rTP507M2c6YsGMPw
-         9phM2a5in3FfIFD5Tu9W0T0MBS8901T6osy2v/vQsG8CqO3Mm1vHtusfBP7d6dfXkSgL
-         Rwsg==
+        b=av0BvUrqmRlQ02LU0+qnBqFgm1NKI3rSJmIAA9eMgRKjghE+eoqQNH7S3u3xU5YlQJ
+         JRClyDu0YRoL7HRoc3WBaBmRTzCeWYOzL7AVeJrT7ZanQMTAIQ8F/F/RR2ABm/WMOezt
+         frzA1e0i1QmRejBuTZNM6GlMlQddHaiedwOBJLVrj+v6p67+mXlWIKEj8+NCKQwedbhb
+         4r38TXcicWcvq9FytrMj7Mp5QZxS8D4la5uleVQ2sIMU5V1qjpZm7u53jp5UE7aIGKip
+         CJx7bH7iREeozyBfme2E9yV+cvlpbuByJxGEl2LUdvwwwQ9n0WfZpCTwIHJ2fM3UUIVk
+         FwVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Pi0YzRrxHtvfsCB/kPsntD6VRIE4uQVeB/AwCXtwNpk=;
-        fh=EcO5he7kBhkq1+blo3bftTd/gQjAs68nzvCtO96H+rw=;
-        b=aeFyRhAjYLVaY5vY0ZO7PQ3F9+b8TceBR/lAxrvlkxYYlmRv9saHMv1vzMCnHV8PTx
-         X4IlEyfvXyXM9savP2zd940bDvCgh5TnMAeQmIaE9QIkOmYwkLyxczwZERgQZS55M8KA
-         LcnfjRCw2lF7vu08OpYIuks4wPvtbGqmyHNa6vrOzqd6ObWs6nmqR9OiccGOLSWzXpSi
-         bESKayJE52bzVQXRCWN/oGWWnRS52/VoTQEV6RqdUMmxXhvEunZt1njIUQ0bznE9uo/s
-         VbA6F5bxrZBHhxLM2DW8USHo15cB12mkEtq2YmR5V3t/Bpsl7ELH6boMSiXUS43/vquF
-         uxJw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=ytPLWEpmbfdK58FGAwysOP9qejUkqmu+jjj36juN9v8=;
+        fh=MjZ0MyDeSGAFTsF+giMF46Ww3kUdzgx7P9v6DEIERu0=;
+        b=C8rIjjOcHTHLXDrMhBlLlJ2gHjiiIEEnTUL1X0i5KFL4amznOebwiF9jh6FliQXWZa
+         WbJ6ECoePZbJAnmUjHgFsIroehTn+ZlfHmd9yrAAqn4gYK26u48bsguZMAqALtp053xM
+         mdxQ7t7g1LiDKUJVEo58N1JFjkyzT98u+IPZKTZ6s5H2/EjykiSAMZ2dZCkO6sOXRRAJ
+         RTheFsd7dRku8QOyt6IXWHA1aux2iN6jjJciVVvNMzuUR2UCGiQ2eGvETVVAG3KOTLW1
+         5Ta3RlffiPeEeoLy75w8xAedjKuU3AJEDBrUgIz6MUpeVwtrDZLLa7ZMqeSmFz82q4gk
+         HOnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=kxKXkZ+I;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b15-20020a170902650f00b001b7f966330csor8940564plk.11.2023.08.16.07.23.16
+       dkim=pass header.i=@linaro.org header.s=google header.b=BH3FtdE8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i23-20020a0cab57000000b0063d2e70423asi8666030qvb.502.2023.08.16.07.26.00
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 16 Aug 2023 07:23:16 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 16 Aug 2023 07:26:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=kxKXkZ+I;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=BH3FtdE8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qWHSf-0003xJ-Os; Wed, 16 Aug 2023 10:25:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qWHSd-0003uY-QG
+ for qemu-arm@nongnu.org; Wed, 16 Aug 2023 10:25:23 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qWHSa-0003jb-06
+ for qemu-arm@nongnu.org; Wed, 16 Aug 2023 10:25:23 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-68872cadc7cso1184837b3a.1
+ for <qemu-arm@nongnu.org>; Wed, 16 Aug 2023 07:25:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692195796; x=1692800596;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Pi0YzRrxHtvfsCB/kPsntD6VRIE4uQVeB/AwCXtwNpk=;
-        b=kxKXkZ+IfhVJpXkACKad/noDIRf/048BfSCTmLHWv2hXPpCFyRnxfOqPR8N6V/vkiQ
-         8teD85jSWqzmBwq7UXbtenIn1mLDZ4Kd1122t0YaTzhZU04DmAHifr6NijqTLl7nbiSU
-         ZjRjY7hCaB92Qrb2+92WUbb8lqPVFlDqBtkTeGshh6YRcoCHCC5kET4f5QwEu1fzPyvJ
-         aseuaF/G1uh97sIQSChs0IT5SspEFzmB40kA8uN6kU0G8U1lmN5mcRUT2oF73+fu6tPz
-         5vH4TVuyxStH09bPqcYvC9FqJ9UfcU9hm1BRc21xURDQ2/L9hYC1wModWIjmBtJwqUEc
-         4/dg==
+ d=linaro.org; s=google; t=1692195918; x=1692800718;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ytPLWEpmbfdK58FGAwysOP9qejUkqmu+jjj36juN9v8=;
+ b=BH3FtdE8f5yH/vbwS7D2X04U5PPeUc8NUpTE2Ac8XKPCNc5cdjtw7rsrTDUTaErLmK
+ XT7ZE3+gnsFTJUTbtmMTLgT8+x6e8Wwh8tsAhZHS+/8ZUx2T0++lItaSVzZbYeYU1XD0
+ JCpRT2Cwih5lHz55Lm5TYegDDjJzX1cdv8udlcw60wJQ/EezFj91Vc+qs5YxRoy2U1BK
+ 6jHtUoOmvACZ63PNhvyCK20ABdxUwNxEl1D0s3vvKyntPU7AD4m1DMbigVyzolUCXFU4
+ r+c9gKfJSx/4MRe4DmfYsBZ+LRxw/QL0rz9cDxpm5/F5Nyu701UAhC1z4VdpZJ+llT8G
+ Y9hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692195796; x=1692800596;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Pi0YzRrxHtvfsCB/kPsntD6VRIE4uQVeB/AwCXtwNpk=;
-        b=Bogo3v+4VYuFoNjStrIVZQ0eEWMA4KvNtSAZE5Dbd2bZcfUTNRwCG7UTNqNcQ5aDxZ
-         rkWMLi9cbLajWveITYV5N8yRJOpqHI195FrRLnPRFAxOyE+BY4f+flwuyWRdGWScgHE9
-         6HeBOtwJsuHSlRr7ZYcX6IQXlydqV+JiyCYVC6d/ttuxJMpwiRMCP46L+JwKH8yWCLTI
-         ffyJ+ge85l4tsuF43d1hLPQzY4pbXKTpybDLbNdkX3TC4EF/8+bM36dBecwi1JaIETs+
-         IVW2X86l+msikOFnKCVraXmqPsvowqnAvH2dGXhf5KodTFsNHmSsJteQ5+cnbnqPgkqa
-         /bmQ==
-X-Gm-Message-State: AOJu0YzdlLIRjl0x6YPJJeJrCkhvVOydoNTbNxO4VbrJPNWK+9tcrfS4
-	DtdVhBPrIzZWOUKYLRbEz0bD3F5guL4tx8GLvpc=
-X-Google-Smtp-Source: AGHT+IEwdmbvmVU9SqavBTJy822BarEwR1/PmAEiYWnJ8YZEcatMYJyLmDhtopd8xEYxxpjZ4Qugpg==
-X-Received: by 2002:a17:903:25cf:b0:1b8:8dbd:e1a0 with SMTP id jc15-20020a17090325cf00b001b88dbde1a0mr2102598plb.13.1692195796060;
-        Wed, 16 Aug 2023 07:23:16 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from ?IPV6:2400:4050:a840:1e00:78d2:b862:10a7:d486? ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id w14-20020a170902e88e00b001bbdf33b878sm13147681plg.272.2023.08.16.07.23.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Aug 2023 07:23:15 -0700 (PDT)
-Message-ID: <f41aae27-8538-46b5-93fa-67de41602077@daynix.com>
-Date: Wed, 16 Aug 2023 23:23:06 +0900
+ d=1e100.net; s=20221208; t=1692195918; x=1692800718;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ytPLWEpmbfdK58FGAwysOP9qejUkqmu+jjj36juN9v8=;
+ b=fUqOh1jUa0wrQH3uXND8XtgKZwLmb0TsMJfljC8VXzf9zwYimT8G0dZgUYje/+1t8U
+ psGQb5m1rAEWpsUhzfZ4y0HsFqsxz+dfwW9a9PYwhpxsB9eQwTICfMAnSjnfYZQI2KmL
+ s51zi6vT8mL1xUVP34FW1yf4VFpjpy0QRGwLPuJ4vvknNm8wzdATycsqs7/5luxFLCoG
+ GHA2fmbVcRhBodq6j1l345z2bgAtL7+NGEW9K4O303KSjVkhuGkU02t18SeWuDjaa9+X
+ DsiFTT6LZ2mz9Un2G5Mqy8D1tFAL3PAQYn10HYzZZkZAw3GyK8A42eLcbZ45sypXuLeV
+ rghw==
+X-Gm-Message-State: AOJu0YyVfb/g+4TDpQMNFcCVwfdyR6Te1ClEi5SPvWDd3L+ATNICafEf
+ Z6Va7h5IgDRJhaLj7WpC+9ciOg==
+X-Received: by 2002:a05:6a20:729d:b0:129:c38e:cdd7 with SMTP id
+ o29-20020a056a20729d00b00129c38ecdd7mr2583715pzk.38.1692195918645; 
+ Wed, 16 Aug 2023 07:25:18 -0700 (PDT)
+Received: from stoup.. ([2602:47:d483:7301:a064:e3f9:a812:973b])
+ by smtp.gmail.com with ESMTPSA id
+ i12-20020aa78b4c000000b00678cb337353sm11156019pfd.208.2023.08.16.07.25.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Aug 2023 07:25:18 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Jordan Niethe <jniethe5@gmail.com>
+Subject: [PATCH 1/4] tcg: Add tcg_out_tb_start backend hook
+Date: Wed, 16 Aug 2023 07:25:13 -0700
+Message-Id: <20230816142516.469743-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230816142516.469743-1-richard.henderson@linaro.org>
+References: <20230816142516.469743-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 15/24] target/arm: Fill new members of GDBFeature
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Michael Rolnik
- <mrolnik@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Brian Cain <bcain@quicinc.com>, Song Gao <gaosong@loongson.cn>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Laurent Vivier
- <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
- Stafford Horne <shorne@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org
-References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
- <20230731084354.115015-16-akihiko.odaki@daynix.com>
- <87350lr7p8.fsf@linaro.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <87350lr7p8.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Cjawl6d2Opyh
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: o0WpxeLv8A4g
 
-On 2023/08/14 23:56, Alex Bennée wrote:
-> 
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> 
->> These members will be used to help plugins to identify registers.
->>
->> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->> ---
->>   target/arm/gdbstub.c   | 46 +++++++++++++++++++++++++++---------------
->>   target/arm/gdbstub64.c | 42 +++++++++++++++++++++++++-------------
->>   2 files changed, 58 insertions(+), 30 deletions(-)
->>
->> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
->> index 100a6eed15..56d24028f6 100644
->> --- a/target/arm/gdbstub.c
->> +++ b/target/arm/gdbstub.c
->> @@ -270,6 +270,7 @@ static void arm_gen_one_feature_sysreg(GString *s,
->>       g_string_append_printf(s, " regnum=\"%d\"", regnum);
->>       g_string_append_printf(s, " group=\"cp_regs\"/>");
->>       dyn_feature->data.cpregs.keys[dyn_feature->desc.num_regs] = ri_key;
->> +    ((const char **)dyn_feature->desc.regs)[dyn_feature->desc.num_regs] = ri->name;
->>       dyn_feature->desc.num_regs++;
->>   }
->>   
->> @@ -316,6 +317,8 @@ static GDBFeature *arm_gen_dynamic_sysreg_feature(CPUState *cs, int base_reg)
->>       DynamicGDBFeatureInfo *dyn_feature = &cpu->dyn_sysreg_feature;
->>       gsize num_regs = g_hash_table_size(cpu->cp_regs);
->>   
->> +    dyn_feature->desc.name = "org.qemu.gdb.arm.sys.regs";
->> +    dyn_feature->desc.regs = g_new(const char *, num_regs);
-> 
-> AIUI this means we now have an array of register names which mirrors the
-> names embedded in the XML. This smells like a few steps away from just
-> abstracting the whole XML away from the targets and generating them
-> inside gdbstub when we need them. As per my stalled attempt I referenced
-> earlier.
+This hook may emit code at the beginning of the TB.
 
-The abstraction is strictly limited for identifiers. Most plugin should 
-already have some knowledge of how registers are used. For example, a 
-plugin that tracks stack frame for RISC-V should know sp is the stack 
-pointer register. Similarly, a cycle simulator plugin should know how 
-registers are used in a program. Only identifiers matter in such cases.
+Suggested-by: Jordan Niethe <jniethe5@gmail.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ tcg/tcg.c                        | 3 +++
+ tcg/aarch64/tcg-target.c.inc     | 5 +++++
+ tcg/arm/tcg-target.c.inc         | 5 +++++
+ tcg/i386/tcg-target.c.inc        | 5 +++++
+ tcg/loongarch64/tcg-target.c.inc | 5 +++++
+ tcg/mips/tcg-target.c.inc        | 5 +++++
+ tcg/ppc/tcg-target.c.inc         | 5 +++++
+ tcg/riscv/tcg-target.c.inc       | 5 +++++
+ tcg/s390x/tcg-target.c.inc       | 5 +++++
+ tcg/sparc64/tcg-target.c.inc     | 5 +++++
+ tcg/tci/tcg-target.c.inc         | 5 +++++
+ 11 files changed, 53 insertions(+)
 
-I'm definitely *not* in favor of abstracting the whole XML for plugins. 
-It will be too hard to maintain ABI compatibility when a new attribute 
-emerges, for example.
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index ddfe9a96cb..1e9b7433bb 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -108,6 +108,7 @@ static void tcg_register_jit_int(const void *buf, size_t size,
+     __attribute__((unused));
+ 
+ /* Forward declarations for functions declared and used in tcg-target.c.inc. */
++static void tcg_out_tb_start(TCGContext *s);
+ static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg1,
+                        intptr_t arg2);
+ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg);
+@@ -6009,6 +6010,8 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb, uint64_t pc_start)
+     s->gen_insn_data =
+         tcg_malloc(sizeof(uint64_t) * s->gen_tb->icount * start_words);
+ 
++    tcg_out_tb_start(s);
++
+     num_insns = -1;
+     QTAILQ_FOREACH(op, &s->ops, link) {
+         TCGOpcode opc = op->opc;
+diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
+index 35ca80cd56..8d71ac68f6 100644
+--- a/tcg/aarch64/tcg-target.c.inc
++++ b/tcg/aarch64/tcg-target.c.inc
+@@ -3123,6 +3123,11 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+     tcg_out_insn(s, 3207, RET, TCG_REG_LR);
+ }
+ 
++static void tcg_out_tb_start(TCGContext *s)
++{
++    /* nothing to do */
++}
++
+ static void tcg_out_nop_fill(tcg_insn_unit *p, int count)
+ {
+     int i;
+diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
+index 83e286088f..7473b23672 100644
+--- a/tcg/arm/tcg-target.c.inc
++++ b/tcg/arm/tcg-target.c.inc
+@@ -2951,6 +2951,11 @@ static void tcg_out_epilogue(TCGContext *s)
+                   (1 << TCG_REG_R10) | (1 << TCG_REG_R11) | (1 << TCG_REG_PC));
+ }
+ 
++static void tcg_out_tb_start(TCGContext *s)
++{
++    /* nothing to do */
++}
++
+ typedef struct {
+     DebugFrameHeader h;
+     uint8_t fde_def_cfa[4];
+diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
+index a6b2eae995..05581dd89d 100644
+--- a/tcg/i386/tcg-target.c.inc
++++ b/tcg/i386/tcg-target.c.inc
+@@ -4114,6 +4114,11 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+     tcg_out_opc(s, OPC_RET, 0, 0, 0);
+ }
+ 
++static void tcg_out_tb_start(TCGContext *s)
++{
++    /* nothing to do */
++}
++
+ static void tcg_out_nop_fill(tcg_insn_unit *p, int count)
+ {
+     memset(p, 0x90, count);
+diff --git a/tcg/loongarch64/tcg-target.c.inc b/tcg/loongarch64/tcg-target.c.inc
+index baf5fc3819..29281e954b 100644
+--- a/tcg/loongarch64/tcg-target.c.inc
++++ b/tcg/loongarch64/tcg-target.c.inc
+@@ -1698,6 +1698,11 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+     tcg_out_opc_jirl(s, TCG_REG_ZERO, TCG_REG_RA, 0);
+ }
+ 
++static void tcg_out_tb_start(TCGContext *s)
++{
++    /* nothing to do */
++}
++
+ static void tcg_target_init(TCGContext *s)
+ {
+     unsigned long hwcap = qemu_getauxval(AT_HWCAP);
+diff --git a/tcg/mips/tcg-target.c.inc b/tcg/mips/tcg-target.c.inc
+index 9faa8bdf0b..b4da737dbb 100644
+--- a/tcg/mips/tcg-target.c.inc
++++ b/tcg/mips/tcg-target.c.inc
+@@ -2628,6 +2628,11 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+     tcg_out_opc_reg(s, OPC_OR, TCG_TMP3, TCG_TMP3, TCG_TMP1);
+ }
+ 
++static void tcg_out_tb_start(TCGContext *s)
++{
++    /* nothing to do */
++}
++
+ static void tcg_target_init(TCGContext *s)
+ {
+     tcg_target_detect_isa();
+diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
+index 511e14b180..a3255851fe 100644
+--- a/tcg/ppc/tcg-target.c.inc
++++ b/tcg/ppc/tcg-target.c.inc
+@@ -2482,6 +2482,11 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+     tcg_out32(s, BCLR | BO_ALWAYS);
+ }
+ 
++static void tcg_out_tb_start(TCGContext *s)
++{
++    /* nothing to do */
++}
++
+ static void tcg_out_exit_tb(TCGContext *s, uintptr_t arg)
+ {
+     tcg_out_movi(s, TCG_TYPE_PTR, TCG_REG_R3, arg);
+diff --git a/tcg/riscv/tcg-target.c.inc b/tcg/riscv/tcg-target.c.inc
+index eeaeb6b6e3..22834d087b 100644
+--- a/tcg/riscv/tcg-target.c.inc
++++ b/tcg/riscv/tcg-target.c.inc
+@@ -2054,6 +2054,11 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+     tcg_out_opc_imm(s, OPC_JALR, TCG_REG_ZERO, TCG_REG_RA, 0);
+ }
+ 
++static void tcg_out_tb_start(TCGContext *s)
++{
++    /* nothing to do */
++}
++
+ static volatile sig_atomic_t got_sigill;
+ 
+ static void sigill_handler(int signo, siginfo_t *si, void *data)
+diff --git a/tcg/s390x/tcg-target.c.inc b/tcg/s390x/tcg-target.c.inc
+index a94f7908d6..379aaef1e5 100644
+--- a/tcg/s390x/tcg-target.c.inc
++++ b/tcg/s390x/tcg-target.c.inc
+@@ -3457,6 +3457,11 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+     tcg_out_insn(s, RR, BCR, S390_CC_ALWAYS, TCG_REG_R14);
+ }
+ 
++static void tcg_out_tb_start(TCGContext *s)
++{
++    /* nothing to do */
++}
++
+ static void tcg_out_nop_fill(tcg_insn_unit *p, int count)
+ {
+     memset(p, 0x07, count * sizeof(tcg_insn_unit));
+diff --git a/tcg/sparc64/tcg-target.c.inc b/tcg/sparc64/tcg-target.c.inc
+index ffcb879211..6458ca202d 100644
+--- a/tcg/sparc64/tcg-target.c.inc
++++ b/tcg/sparc64/tcg-target.c.inc
+@@ -955,6 +955,11 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+     tcg_out_movi_s13(s, TCG_REG_O0, 0);
+ }
+ 
++static void tcg_out_tb_start(TCGContext *s)
++{
++    /* nothing to do */
++}
++
+ static void tcg_out_nop_fill(tcg_insn_unit *p, int count)
+ {
+     int i;
+diff --git a/tcg/tci/tcg-target.c.inc b/tcg/tci/tcg-target.c.inc
+index 253f27f174..95b3352f82 100644
+--- a/tcg/tci/tcg-target.c.inc
++++ b/tcg/tci/tcg-target.c.inc
+@@ -955,6 +955,11 @@ static inline void tcg_target_qemu_prologue(TCGContext *s)
+ {
+ }
+ 
++static void tcg_out_tb_start(TCGContext *s)
++{
++    /* nothing to do */
++}
++
+ bool tcg_target_has_memory_bswap(MemOp memop)
+ {
+     return true;
+-- 
+2.34.1
 
-> 
-> 
->>       dyn_feature->desc.num_regs = 0;
->>       dyn_feature->data.cpregs.keys = g_new(uint32_t, num_regs);
->>       g_string_printf(s, "<?xml version=\"1.0\"?>");
->> @@ -418,30 +421,34 @@ static int arm_gdb_set_m_systemreg(CPUARMState *env, uint8_t *buf, int reg)
->>   }
->>   
->>   static GDBFeature *arm_gen_dynamic_m_systemreg_feature(CPUState *cs,
->> -                                                       int orig_base_reg)
->> +                                                       int base_reg)
->>   {
->>       ARMCPU *cpu = ARM_CPU(cs);
->>       CPUARMState *env = &cpu->env;
->>       GString *s = g_string_new(NULL);
->> -    int base_reg = orig_base_reg;
->> -    int i;
->> +    const char **regs = g_new(const char *, ARRAY_SIZE(m_sysreg_def));
->> +    int i = 0;
->> +    int j;
->>   
->>       g_string_printf(s, "<?xml version=\"1.0\"?>");
->>       g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
->>       g_string_append_printf(s, "<feature name=\"org.gnu.gdb.arm.m-system\">\n");
->>   
->> -    for (i = 0; i < ARRAY_SIZE(m_sysreg_def); i++) {
->> -        if (arm_feature(env, m_sysreg_def[i].feature)) {
->> +    for (j = 0; j < ARRAY_SIZE(m_sysreg_def); j++) {
->> +        if (arm_feature(env, m_sysreg_def[j].feature)) {
->> +            regs[i] = m_sysreg_def[j].name;
->>               g_string_append_printf(s,
->>                   "<reg name=\"%s\" bitsize=\"32\" regnum=\"%d\"/>\n",
->> -                m_sysreg_def[i].name, base_reg++);
->> +                m_sysreg_def[j].name, base_reg + i++);
->>           }
->>       }
->>   
->>       g_string_append_printf(s, "</feature>");
->> +    cpu->dyn_m_systemreg_feature.desc.name = "org.gnu.gdb.arm.m-system";
->>       cpu->dyn_m_systemreg_feature.desc.xmlname = "arm-m-system.xml";
->>       cpu->dyn_m_systemreg_feature.desc.xml = g_string_free(s, false);
->> -    cpu->dyn_m_systemreg_feature.desc.num_regs = base_reg - orig_base_reg;
->> +    cpu->dyn_m_systemreg_feature.desc.regs = regs;
->> +    cpu->dyn_m_systemreg_feature.desc.num_regs = i;
->>   
->>       return &cpu->dyn_m_systemreg_feature.desc;
->>   }
->> @@ -462,30 +469,37 @@ static int arm_gdb_set_m_secextreg(CPUARMState *env, uint8_t *buf, int reg)
->>   }
->>   
->>   static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
->> -                                                       int orig_base_reg)
->> +                                                       int base_reg)
->>   {
->>       ARMCPU *cpu = ARM_CPU(cs);
->>       GString *s = g_string_new(NULL);
->> -    int base_reg = orig_base_reg;
->> -    int i;
->> +    const char **regs = g_new(const char *, ARRAY_SIZE(m_sysreg_def) * 2);
->> +    int i = 0;
->> +    int j;
->>   
->>       g_string_printf(s, "<?xml version=\"1.0\"?>");
->>       g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
->>       g_string_append_printf(s, "<feature name=\"org.gnu.gdb.arm.secext\">\n");
->>   
->> -    for (i = 0; i < ARRAY_SIZE(m_sysreg_def); i++) {
->> +    for (j = 0; j < ARRAY_SIZE(m_sysreg_def); j++) {
->> +        regs[i] = g_strconcat(m_sysreg_def[j].name, "_ns", NULL);
->>           g_string_append_printf(s,
->> -            "<reg name=\"%s_ns\" bitsize=\"32\" regnum=\"%d\"/>\n",
->> -            m_sysreg_def[i].name, base_reg++);
->> +            "<reg name=\"%s\" bitsize=\"32\" regnum=\"%d\"/>\n",
->> +            regs[i], base_reg + i);
->> +        i++;
->> +        regs[i] = g_strconcat(m_sysreg_def[j].name, "_s", NULL);
->>           g_string_append_printf(s,
->> -            "<reg name=\"%s_s\" bitsize=\"32\" regnum=\"%d\"/>\n",
->> -            m_sysreg_def[i].name, base_reg++);
->> +            "<reg name=\"%s\" bitsize=\"32\" regnum=\"%d\"/>\n",
->> +            regs[i], base_reg + i);
->> +        i++;
->>       }
->>   
->>       g_string_append_printf(s, "</feature>");
->> +    cpu->dyn_m_secextreg_feature.desc.name = "org.gnu.gdb.arm.secext";
->>       cpu->dyn_m_secextreg_feature.desc.xmlname = "arm-m-secext.xml";
->>       cpu->dyn_m_secextreg_feature.desc.xml = g_string_free(s, false);
->> -    cpu->dyn_m_secextreg_feature.desc.num_regs = base_reg - orig_base_reg;
->> +    cpu->dyn_m_secextreg_feature.desc.regs = regs;
->> +    cpu->dyn_m_secextreg_feature.desc.num_regs = i;
->>   
->>       return &cpu->dyn_m_secextreg_feature.desc;
->>   }
->> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
->> index 20483ef9bc..c5ed7c0aa3 100644
->> --- a/target/arm/gdbstub64.c
->> +++ b/target/arm/gdbstub64.c
->> @@ -316,15 +316,21 @@ static void output_vector_union_type(GString *s, int reg_width,
->>       g_string_append(s, "</union>");
->>   }
->>   
->> -GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int orig_base_reg)
->> +GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int base_reg)
->>   {
->>       ARMCPU *cpu = ARM_CPU(cs);
->>       GString *s = g_string_new(NULL);
->>       DynamicGDBFeatureInfo *info = &cpu->dyn_svereg_feature;
->> +    const char **regs;
->>       int reg_width = cpu->sve_max_vq * 128;
->>       int pred_width = cpu->sve_max_vq * 16;
->> -    int base_reg = orig_base_reg;
->> -    int i;
->> +    int i = 0;
->> +    int j;
->> +
->> +    info->desc.name = "org.gnu.gdb.aarch64.sve";
->> +    info->desc.num_regs = 32 + 16 + 4;
->> +    regs = g_new(const char *, info->desc.num_regs);
->> +    info->desc.regs = regs;
->>   
->>       g_string_printf(s, "<?xml version=\"1.0\"?>");
->>       g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
->> @@ -339,44 +345,52 @@ GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int orig_base_reg)
->>                              pred_width / 8);
->>   
->>       /* Define the vector registers. */
->> -    for (i = 0; i < 32; i++) {
->> +    for (j = 0; j < 32; j++) {
->> +        regs[i] = g_strdup_printf("z%d", j);
->>           g_string_append_printf(s,
->> -                               "<reg name=\"z%d\" bitsize=\"%d\""
->> +                               "<reg name=\"%s\" bitsize=\"%d\""
->>                                  " regnum=\"%d\" type=\"svev\"/>",
->> -                               i, reg_width, base_reg++);
->> +                               regs[i], reg_width, base_reg + i);
->> +        i++;
->>       }
->>   
->>       /* fpscr & status registers */
->> +    regs[i] = "fpsr";
->>       g_string_append_printf(s, "<reg name=\"fpsr\" bitsize=\"32\""
->>                              " regnum=\"%d\" group=\"float\""
->> -                           " type=\"int\"/>", base_reg++);
->> +                           " type=\"int\"/>", base_reg + i++);
->> +    regs[i] = "fpcr";
->>       g_string_append_printf(s, "<reg name=\"fpcr\" bitsize=\"32\""
->>                              " regnum=\"%d\" group=\"float\""
->> -                           " type=\"int\"/>", base_reg++);
->> +                           " type=\"int\"/>", base_reg + i++);
->>   
->>       /* Define the predicate registers. */
->> -    for (i = 0; i < 16; i++) {
->> +    for (j = 0; j < 16; j++) {
->> +        regs[i] = g_strdup_printf("p%d", j);
->>           g_string_append_printf(s,
->> -                               "<reg name=\"p%d\" bitsize=\"%d\""
->> +                               "<reg name=\"%s\" bitsize=\"%d\""
->>                                  " regnum=\"%d\" type=\"svep\"/>",
->> -                               i, pred_width, base_reg++);
->> +                               regs[i], pred_width, base_reg + i);
->> +        i++;
->>       }
->> +    regs[i] = "ffr";
->>       g_string_append_printf(s,
->>                              "<reg name=\"ffr\" bitsize=\"%d\""
->>                              " regnum=\"%d\" group=\"vector\""
->>                              " type=\"svep\"/>",
->> -                           pred_width, base_reg++);
->> +                           pred_width, base_reg + i++);
->>   
->>       /* Define the vector length pseudo-register. */
->> +    regs[i] = "vg";
->>       g_string_append_printf(s,
->>                              "<reg name=\"vg\" bitsize=\"64\""
->>                              " regnum=\"%d\" type=\"int\"/>",
->> -                           base_reg++);
->> +                           base_reg + i++);
->>   
->>       g_string_append_printf(s, "</feature>");
->>   
->>       info->desc.xmlname = "sve-registers.xml";
->>       info->desc.xml = g_string_free(s, false);
->> -    info->desc.num_regs = base_reg - orig_base_reg;
->> +    assert(info->desc.num_regs == i);
->>       return &info->desc;
->>   }
-> 
-> 

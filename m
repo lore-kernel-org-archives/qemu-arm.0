@@ -1,73 +1,73 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp364074ejs;
-        Wed, 16 Aug 2023 06:40:48 -0700 (PDT)
-X-Received: by 2002:a05:6a20:96c2:b0:137:53d1:405 with SMTP id hq2-20020a056a2096c200b0013753d10405mr2053686pzc.26.1692193247668;
-        Wed, 16 Aug 2023 06:40:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692193247; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp364159ejs;
+        Wed, 16 Aug 2023 06:40:57 -0700 (PDT)
+X-Received: by 2002:a05:6808:1910:b0:3a7:b1de:bb70 with SMTP id bf16-20020a056808191000b003a7b1debb70mr3056705oib.6.1692193256873;
+        Wed, 16 Aug 2023 06:40:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692193256; cv=none;
         d=google.com; s=arc-20160816;
-        b=oFPf0wgd6NXyxnxaOZWgnqTn1EQn7gr7QUbB7Gc4ync4wVL8NqLGLzagc8jnkFavm/
-         Ed9mNKRPBxH00JR8u8NJxhtgJv7YiUtYVVjISPkbHCrpkbuFQiDLMzV8s6qYSKC+Sh2F
-         rQrY1f5gMnBwHpg1/5aeFbjLvMqOngCku1azRqpYqcqUig7uxRj39IR6tcosJoR6lY4w
-         mDhEjKa1n0P7kST6Nrr3uEHc8nRAXXe50hCyL17E4tI+7xdoVHN5la9RQwBsgul1csbe
-         mEr4+C1kS0n9VTKPgt7d7eN086r0F1pj7OK4zLA3b+F/GAAwN1jKJ7i/pZrni2Wkfk5F
-         Yezg==
+        b=NxEy7zPf7IwoGjHbtVLaw8+5tPOr5oECBsxqVEegElmA3xKwM7dwyRhHQQg35FEwDF
+         UdOthbPnfYcZSOK/xHxrOFyFlOU8YFwzxODOg7vsaofA5F4WRVyz4a4Nay8AcblCiohE
+         vyDCZlZsJB1u2MfnwSlqVtTqbLUChLjTi8qLoS2PkCfDtgpwHJjOrskPKyalMDYn5VmE
+         uzGvmLeV6D+g/UnAsi7UOmliUg8QPfmIQVRFd1LH6zAJ+Nvj+pSdPRga6ruwaZMTvl9Z
+         VPIBUchSF1Q4mqbXzAjEmsC6Lxv9v7jPZumUwLj4IRQ8e6HNJXBS6uiXq6OWZaWIzM2e
+         y0Cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Q7pUOq6IPFvx1k2W2dQWmkO3YzfVeoPk1QwhHtWlA7g=;
+        bh=Z8QC8ufyB7xcDBCvHI4qa5+GakxSnSbOuWxZo6h21Sw=;
         fh=fUiTdP13jeKk8+/DO5sZ9YFnMdWUGYQSHAZ2p4VPlgw=;
-        b=XcAbW3kqCXEP6MCPMknPjcTbAYGGzMCiSgkb9A/91fGHVZP+XOjvi6+rDQDZSlqGN5
-         obdaGhdIErrFcuYomf2er9drVoD4VbiSaDjaCua9+LIuTpGYVojdGhIcrzCDqIsuw11S
-         5Qf7LhEwy0EZltzius6v1JPtvLnhHhIgA+epYQ7Im7Hu0KffL3I2NhfgFPJTi04SQYhe
-         Hk2ghUktkhjI3pJO95zgJVkbw011eljQeflrJJWNsMNmrfilbtrZYdASRceXQNDKZU2z
-         OSe613ayPtRhdz6p0qGENaFHp9TGXdG1ZBvNMAtHSNtzHywfa6oTEkbjpu/SMkLkow3d
-         gR3A==
+        b=f+z10a71/CyUatFh4NObFXdRc/HTCKZ37uq0htXQc7ge41fN80nwyU1CMhXO18zqX2
+         TvSRjt/Dv/bA+mAABv/Mao6yrXdN+SoecsTbHisl6NymyfVpSnPQdcH+hjdqrguiKWYA
+         1Tik0iDMI3JQemB8DoXaaQRTWPBUQ4uJRq6L9E3Jf/l6OH/8JZytY9ao0ho4RW1//4Fu
+         XcmTtwRArmps2huq2YpJHyhl9fB4tIGTL+sh3HImPp/Wv5qsEKyJsdjcXm2Z+NCz5kWk
+         0Hk3QY8KmfTiBsEr0bqvz0A3kvgQJhZgqdCd4HXO4rC4EfjwCsve2ZhBqtDeiyFwTGCx
+         dMiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=vwCKtoyf;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=KB+ZhSsG;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2-20020a63a702000000b00565ea31ca15sor1714897pgf.2.2023.08.16.06.40.47
+        by mx.google.com with SMTPS id o7-20020a05680803c700b0039ee08b9e20sor8615874oie.8.2023.08.16.06.40.56
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 16 Aug 2023 06:40:47 -0700 (PDT)
+        Wed, 16 Aug 2023 06:40:56 -0700 (PDT)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=vwCKtoyf;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=KB+ZhSsG;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193247; x=1692798047;
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193256; x=1692798056;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Q7pUOq6IPFvx1k2W2dQWmkO3YzfVeoPk1QwhHtWlA7g=;
-        b=vwCKtoyfrrk42/4HH+3+hSvBoqmzUBm5MLSxVppI2oq2egx0NnB9Vs4S7e+YN1dZZF
-         2JkO4VguFG0rI04pEkZzQR/GWxBEFdNpY/tjO7CmFIWOFQY7Hw2ABL5oP9iHS1ZV0ARG
-         MQkx05gDzEyY0XHiSQrpE1fgdyw9En/Vzb0/VCZX9kmy7i1AUJR46tNu3GTpXAz2/l/c
-         yIG96kA5Jv2MSkm04324GUE3uFsxejmO/QlNfFJH2wmUpb9jjJjB25sbZRThglVzM06r
-         TLUWu6Ypt7hDdQLDxAE6mbOqo1TRqnX0TfObSg1qXSmGwFXZdswGyUY9b7+sid03ndMO
-         BXrA==
+        bh=Z8QC8ufyB7xcDBCvHI4qa5+GakxSnSbOuWxZo6h21Sw=;
+        b=KB+ZhSsGWWNlUgmIiGVU0IV0uRlGbkE0kmuM4ahSNEAyMhCiiqtQF3EQPd1ytNNqgt
+         1YbbUWh4AMCoAPRH/+3M1xUlzNZkdTIKph5hITkFWf7cs29YkoAl6T8Eqgu4qPmBLpsU
+         1mT8L7hRfqPMtAT6usZMQGNnVJ//UJyFjB+AEPBssrQKUlqJ/ADHCBT6V55rafUNUFMW
+         hLz2WgrbB+QDCCuBbXp8Shjog3Qui4Ed04new4IG+CpoflWWLtb8vTEWckf6zWsEDtNo
+         cw/z6sk1enaKaFbGcHE0ZE+bTtaV16MtLS5G3HK52QBFEKUWJfnd4tO8vWYEA8pl44rj
+         +L7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692193247; x=1692798047;
+        d=1e100.net; s=20221208; t=1692193256; x=1692798056;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Q7pUOq6IPFvx1k2W2dQWmkO3YzfVeoPk1QwhHtWlA7g=;
-        b=dKwGJi/3riSHAjFYC6uSE1K+VOKIBwh3bP9QQ7HmyQnws3RrvWIBAEzBBPknPJRCyO
-         gT5ocpVPY/5eEwutdMTtDghjYFsoy8a9yD3iVFjhBFOP6Vl2U7pXZA/aSxELTwolkHSx
-         F+vrMO2JPp5oR5G63E76GcoyGC9kkvCSq+v1Y9NG/S+j42/C5n+dbES7lKg3vHBR6nR6
-         MK3Nh4qvXjyAKK3o9O87x4pBG+0BHgg3rFhWKJwJUG/zSaGADGTfp/yhB32UzHaOkLVv
-         UDY6gMEHpQLH+/A9G2M7PHZYGa1xYtydKZ2vYIVzs5JV6u2LtGqQMNZcPylkoEl6afS6
-         hcQA==
-X-Gm-Message-State: AOJu0YyfhRPoFlieK27Ffz2/1K68EXKTsPX7JwdDzKPo+9eJA9a5JxN7
-	YoeEp34/13wuTWhvVMpuwv+6ag==
-X-Google-Smtp-Source: AGHT+IF73ab4ODGSTuDdXiRfCqRWNV8FCLniM5IHFM4TtcBfNVUdVkYCHtTIOwZ/arFkLGT/B3a1yg==
-X-Received: by 2002:a05:6a20:7f8f:b0:134:8d7f:f4d9 with SMTP id d15-20020a056a207f8f00b001348d7ff4d9mr3116593pzj.52.1692193247152;
-        Wed, 16 Aug 2023 06:40:47 -0700 (PDT)
+        bh=Z8QC8ufyB7xcDBCvHI4qa5+GakxSnSbOuWxZo6h21Sw=;
+        b=iuyaU5+Ygz39nKicwFdBicOBW5bZXjqohQbts5JcKbYizlki63o5zUoKvB8SZks/rD
+         hvT/CiuB1y4DBO5JMtZRY3Mf71QMWCceHGvLRgktlkYTJEbR2Wum8OLwhwCfj6mJenkp
+         RmEAeNtQv8Uu5to8PONppZURk0YPCUW72HqPknxdwvgPCzwYf8elkADrAQhg7F4I3lZ/
+         OQDxaD61djd9c7Y/wmZsI1Hgpj8Vb2NAkgJt2XzGr2HuWLC1OOBd8V+btBoOhxPTzVPc
+         laeq0pgoCr2OeyijCZ9rRA/2nvv/YBSGEt0yvECSy2BDBvMe2UXEX30DLX1fcHraKXG5
+         SjuQ==
+X-Gm-Message-State: AOJu0YxItveBtN1EdvdyhDJ1dQNWvdE5bXryeOfYFUDRuO7f+B5Tye/3
+	q6IrlVKyO/P/Ico5IG3xqWlIwx4SmAGAXEdpGWY=
+X-Google-Smtp-Source: AGHT+IFTUvui/nl/vsy6zAXPwCT3gqu/lH1t7o2otH3xEHC7Ko4K5o8auN7iMm8kKlAKxvkKSQvHpg==
+X-Received: by 2002:a05:6808:3c2:b0:3a7:6213:6898 with SMTP id o2-20020a05680803c200b003a762136898mr2007034oie.12.1692193256475;
+        Wed, 16 Aug 2023 06:40:56 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id k3-20020a637b43000000b0056601f864aesm928355pgn.2.2023.08.16.06.40.37
+        by smtp.gmail.com with ESMTPSA id k3-20020a637b43000000b0056601f864aesm928355pgn.2.2023.08.16.06.40.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Aug 2023 06:40:46 -0700 (PDT)
+        Wed, 16 Aug 2023 06:40:56 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -121,64 +121,51 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-s390x@nongnu.org,
 	Anton Kochkov <anton.kochkov@proton.me>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 04/25] gdbstub: Introduce gdb_find_static_feature()
-Date: Wed, 16 Aug 2023 22:39:14 +0900
-Message-ID: <20230816133938.18310-5-akihiko.odaki@daynix.com>
+Subject: [PATCH v3 05/25] target/arm: Move the reference to arm-core.xml
+Date: Wed, 16 Aug 2023 22:39:15 +0900
+Message-ID: <20230816133938.18310-6-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230816133938.18310-1-akihiko.odaki@daynix.com>
 References: <20230816133938.18310-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bxOIvyo8tcgQ
+X-TUID: 2sdQQgZ40Dfn
 
-This function is useful to determine the number of registers exposed to
-GDB from the XML name.
+Some subclasses overwrite gdb_core_xml_file member but others don't.
+Always initialize the member in the subclasses for consistency.
+
+This especially helps for AArch64; in a following change, the file
+specified by gdb_core_xml_file is always looked up even if it's going to
+be overwritten later. Looking up arm-core.xml results in an error as
+it will not be embedded in the AArch64 build.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/exec/gdbstub.h |  2 ++
- gdbstub/gdbstub.c      | 13 +++++++++++++
- 2 files changed, 15 insertions(+)
+ target/arm/cpu.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 9b484d7eef..d0dcc99ed4 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -34,6 +34,8 @@ void gdb_register_coprocessor(CPUState *cpu,
-  */
- int gdbserver_start(const char *port_or_device);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 93c28d50e5..d71a162070 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2354,7 +2354,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     cc->sysemu_ops = &arm_sysemu_ops;
+ #endif
+     cc->gdb_num_core_regs = 26;
+-    cc->gdb_core_xml_file = "arm-core.xml";
+     cc->gdb_arch_name = arm_gdb_arch_name;
+     cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
+     cc->gdb_stop_before_watchpoint = true;
+@@ -2376,8 +2375,10 @@ static void arm_cpu_instance_init(Object *obj)
+ static void cpu_register_class_init(ObjectClass *oc, void *data)
+ {
+     ARMCPUClass *acc = ARM_CPU_CLASS(oc);
++    CPUClass *cc = CPU_CLASS(acc);
  
-+const GDBFeature *gdb_find_static_feature(const char *xmlname);
-+
- void gdb_set_stop_cpu(CPUState *cpu);
- 
- /**
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 2772f07bbe..5829e82073 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -414,6 +414,19 @@ static const char *get_feature_xml(const char *p, const char **newp,
-     return name ? gdb_static_features[i].xml : NULL;
+     acc->info = data;
++    cc->gdb_core_xml_file = "arm-core.xml";
  }
  
-+const GDBFeature *gdb_find_static_feature(const char *xmlname)
-+{
-+    const GDBFeature *feature;
-+
-+    for (feature = gdb_static_features; feature->xmlname; feature++) {
-+        if (!strcmp(feature->xmlname, xmlname)) {
-+            return feature;
-+        }
-+    }
-+
-+    abort();
-+}
-+
- static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
+ void arm_cpu_register(const ARMCPUInfo *info)
 -- 
 2.41.0

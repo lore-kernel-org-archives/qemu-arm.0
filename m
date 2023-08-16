@@ -1,163 +1,144 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id w4-20020adfcd04000000b003176eab8868sm18259844wrm.82.2023.08.15.07.51.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Aug 2023 07:51:29 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C73DD1FFBB;
-	Tue, 15 Aug 2023 15:51:27 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp245667ejs;
+        Wed, 16 Aug 2023 03:20:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH9QpfaGrCcEfaJqEYd25AVKkr/zX3FfRXophaBNGKWXTOrZHa713nnyOSZACg5ROtCjcr3
+X-Received: by 2002:a05:6902:504:b0:d14:b4bc:d574 with SMTP id x4-20020a056902050400b00d14b4bcd574mr2050867ybs.34.1692181221222;
+        Wed, 16 Aug 2023 03:20:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692181221; cv=none;
+        d=google.com; s=arc-20160816;
+        b=flctOrdTYtUUqfeblSA0KbW5VeAZ4ZSiF8tVCKMtJ095a2dk2DfOyoiE1Q8IEnhnsj
+         VDMYOx6vJM6thcf3rBORocRKrKHgTCluyS3NBf48V4rUbqO0+/QOE5IkEpn3ozGeK7Aq
+         wt9XNKQW8tAQR++36DNZOPqQeJm1POztWkMARbI34sEXhuN+RBS65UBWNkuW57kS+AH+
+         GbnR9bcAOrbcd78Ijn/C6ay/xb7PvllP3/khkRzjKWfwt0pufir/2DMIONg8LbyVBHyd
+         u4aRE6a2t/HXsrrwDE8s8sq5Btvhxv3IHzy+h9L5/XvnCxV4krTlxmyKt5hTKQwc6haE
+         0DdQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=9u900TCHbujvcFWLfqN5QGm8BAQg5s0UB5ycX/mLN88=;
+        fh=DJ3cW1lhZUD6rdt+wp48oldBTaPOco977KIJI8tUevE=;
+        b=FtTkCOUwnekk/uTPHRq1qdyruw7KJAUYEEpRai1ZY4unRk2knxf3KhytxxduSEuoxn
+         ceDKNlwz9iCsdS9lRdOZGtgoLmJJk0kyt1vbTAEwdtZMZgKuGu/018FoqR9UmvJ2W+yi
+         olVE15B5VZ34TQ1ryOXfdydYSXYfQ0LNdXfplJTlOR8h6QAAcfY5L9KrOp9q1Y8mAJXh
+         4SHoSa97i7dQLQfCXzU/KM+GUYqxgtmxmTwQu0ds7c4yd0j1XAksDvWgoXeLWtgw4dn3
+         krD5zAyOLJW+spmUTTOUVkmngUEA3V3yF5GUjUyFWKp0bmWvPu6O9EG77tvonkZBxPTA
+         HX5Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=kCHxSDQR;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id p191-20020a2542c8000000b00d66b71b402dsi9549166yba.471.2023.08.16.03.20.20
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 16 Aug 2023 03:20:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=kCHxSDQR;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 37GAAGUs010194;
+	Wed, 16 Aug 2023 10:20:07 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=9u900TCHbujvcFWLfqN5QGm8BAQg5s0UB5ycX/mLN88=;
+ b=kCHxSDQRcrFoxqP3in4ab13FZUA0E2W7rWTy55E8rHMbcBgq6cF5x/qiFlsw+cBEqeuy
+ /nKiGYrxiYwvPqd0E0sUKsX1ymb1vW4WswKNW9uhFe+GRLb0weqWDS0ifgrktmLVblT3
+ ZtEtjEPREzfdoPo43H0aFCjC15vM/rwPiV4/4kkyss3qeTC8jgqky5lnkATiHOoekMlt
+ YMznEdIci5P1AH0Mq0PRZZw19OxcIHnf75FpJqTAqZ+tr1ILaUzHPpcx8OOGavEiKlN0
+ +xLonj62ueCoMUOx+Kg/9YEjZhMlnMboIHaPHKS5diZeV1lglZd4PWaje/QTDT0E0xXG TA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sgv49s6cr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 16 Aug 2023 10:20:06 +0000
+Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37GAB3cY016667;
+	Wed, 16 Aug 2023 10:20:05 GMT
+Received: from ppma21.wdc07v.mail.ibm.com (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sgv49s6c9-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 16 Aug 2023 10:20:05 +0000
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 37G8sVlb002418;
+	Wed, 16 Aug 2023 10:20:04 GMT
+Received: from smtprelay06.fra02v.mail.ibm.com ([9.218.2.230])
+	by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3sendnbgyc-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 16 Aug 2023 10:20:04 +0000
+Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com [10.20.54.106])
+	by smtprelay06.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 37GAK1nc43123036
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 16 Aug 2023 10:20:02 GMT
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id A55352004D;
+	Wed, 16 Aug 2023 10:20:01 +0000 (GMT)
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 2F9362004B;
+	Wed, 16 Aug 2023 10:20:01 +0000 (GMT)
+Received: from [9.155.200.166] (unknown [9.155.200.166])
+	by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Wed, 16 Aug 2023 10:20:01 +0000 (GMT)
+Message-ID: <130aa9ee49dffd9ecc1006b17b9e82734837d7d9.camel@linux.ibm.com>
+Subject: Re: [PATCH 4/9] tests: remove test-gdbstub.py
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+        qemu-devel@nongnu.org
 Cc: Beraldo Leal <bleal@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Thomas Huth <thuth@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Yonggang Luo <luoyonggang@gmail.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	qemu-s390x@nongnu.org,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	qemu-ppc@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Nicholas Piggin <npiggin@gmail.com>
-Subject: [PATCH 8/9] gdbstub: refactor get_feature_xml
-Date: Tue, 15 Aug 2023 15:51:25 +0100
-Message-Id: <20230815145126.3444183-9-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230815145126.3444183-1-alex.bennee@linaro.org>
+        Wainer dos Santos Moschetta
+ <wainersm@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Akihiko
+ Odaki <akihiko.odaki@daynix.com>,
+        Thomas Huth <thuth@redhat.com>, David
+ Hildenbrand <david@redhat.com>,
+        Yonggang Luo <luoyonggang@gmail.com>, qemu-arm@nongnu.org,
+        Daniel Henrique Barboza <danielhb413@gmail.com>,
+        David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+        =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+        Richard Henderson
+ <richard.henderson@linaro.org>,
+        qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+        Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+        Nicholas
+ Piggin <npiggin@gmail.com>
+Date: Wed, 16 Aug 2023 12:20:01 +0200
+In-Reply-To: <20230815145126.3444183-5-alex.bennee@linaro.org>
 References: <20230815145126.3444183-1-alex.bennee@linaro.org>
+	 <20230815145126.3444183-5-alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 2v0jIwcX+i9k
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: FWSOOWtZ3zsaCxVSnJ9iK_iQImQnL2Hi
+X-Proofpoint-GUID: y5vWNht9k8vlPQaD1DUiIywo0YhqueDm
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-08-16_08,2023-08-15_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ phishscore=0 impostorscore=0 suspectscore=0 clxscore=1011 mlxscore=0
+ mlxlogscore=929 lowpriorityscore=0 malwarescore=0 spamscore=0 bulkscore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2306200000 definitions=main-2308160090
+X-TUID: oPRX0g+uYXcv
 
-Try to bring up the code to more modern standards by:
-
-  - use dynamic GString built xml over a fixed buffer
-  - use autofree to save on explicit g_free() calls
-  - don't hand hack strstr to find the delimiter
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- gdbstub/internals.h |  2 +-
- gdbstub/gdbstub.c   | 62 ++++++++++++++++++++++-----------------------
- 2 files changed, 31 insertions(+), 33 deletions(-)
-
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index f2b46cce41..4876ebd74f 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -33,7 +33,7 @@ typedef struct GDBProcess {
-     uint32_t pid;
-     bool attached;
- 
--    char target_xml[1024];
-+    char *target_xml;
- } GDBProcess;
- 
- enum RSState {
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 8e9bc17e07..0f9032d793 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -354,54 +354,52 @@ static CPUState *gdb_get_cpu(uint32_t pid, uint32_t tid)
- static const char *get_feature_xml(const char *p, const char **newp,
-                                    GDBProcess *process)
- {
--    size_t len;
-     int i;
-     const char *name;
-     CPUState *cpu = gdb_get_first_cpu_in_process(process);
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
--    len = 0;
--    while (p[len] && p[len] != ':')
--        len++;
--    *newp = p + len;
-+    /* ‘qXfer:features:read:annex:offset,length' */
-+    char *term = g_strstr_len(p, -1, ":");
-+    size_t len = term - p;
-+    g_autofree char *annex = g_strndup(p, len);
-+    /* leave newp at offset,length for the rest of the params */
-+    *newp = term + 1;
- 
--    name = NULL;
--    if (strncmp(p, "target.xml", len) == 0) {
--        char *buf = process->target_xml;
--        const size_t buf_sz = sizeof(process->target_xml);
- 
--        /* Generate the XML description for this CPU.  */
--        if (!buf[0]) {
-+    name = NULL;
-+    if (g_strcmp0(annex, "target.xml") == 0) {
-+        if (!process->target_xml) {
-             GDBRegisterState *r;
-+            GString *xml = g_string_new("<?xml version=\"1.0\"?>");
-+
-+            g_string_append(xml,
-+                            "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
-+                            "<target>");
- 
--            pstrcat(buf, buf_sz,
--                    "<?xml version=\"1.0\"?>"
--                    "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
--                    "<target>");
-             if (cc->gdb_arch_name) {
--                gchar *arch = cc->gdb_arch_name(cpu);
--                pstrcat(buf, buf_sz, "<architecture>");
--                pstrcat(buf, buf_sz, arch);
--                pstrcat(buf, buf_sz, "</architecture>");
--                g_free(arch);
-+                g_autofree gchar *arch = cc->gdb_arch_name(cpu);
-+                g_string_append_printf(xml,
-+                                       "<architecture>%s</architecture>",
-+                                       arch);
-             }
--            pstrcat(buf, buf_sz, "<xi:include href=\"");
--            pstrcat(buf, buf_sz, cc->gdb_core_xml_file);
--            pstrcat(buf, buf_sz, "\"/>");
-+            g_string_append(xml, "<xi:include href=\"");
-+            g_string_append(xml, cc->gdb_core_xml_file);
-+            g_string_append(xml, "\"/>");
-             for (r = cpu->gdb_regs; r; r = r->next) {
--                pstrcat(buf, buf_sz, "<xi:include href=\"");
--                pstrcat(buf, buf_sz, r->xml);
--                pstrcat(buf, buf_sz, "\"/>");
-+                g_string_append(xml, "<xi:include href=\"");
-+                g_string_append(xml, r->xml);
-+                g_string_append(xml, "\"/>");
-             }
--            pstrcat(buf, buf_sz, "</target>");
-+            g_string_append(xml, "</target>");
-+
-+            process->target_xml = g_string_free(xml, false);
-+            return process->target_xml;
-         }
--        return buf;
-     }
-     if (cc->gdb_get_dynamic_xml) {
--        char *xmlname = g_strndup(p, len);
-+        g_autofree char *xmlname = g_strndup(p, len);
-         const char *xml = cc->gdb_get_dynamic_xml(cpu, xmlname);
+On Tue, 2023-08-15 at 15:51 +0100, Alex Benn=C3=A9e wrote:
+> This isn't directly called by our CI and because it doesn't run via
+> our run-test.py script does things slightly differently. Lets remove
+> it as we have plenty of working in-tree tests now for various aspects
+> of gdbstub.
+>=20
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> ---
+> =C2=A0tests/guest-debug/test-gdbstub.py | 177 ---------------------------=
 -
--        g_free(xmlname);
-         if (xml) {
-             return xml;
-         }
-@@ -2245,6 +2243,6 @@ void gdb_create_default_process(GDBState *s)
-     process = &s->processes[s->process_num - 1];
-     process->pid = pid;
-     process->attached = false;
--    process->target_xml[0] = '\0';
-+    process->target_xml = NULL;
- }
- 
--- 
-2.39.2
+> --
+> =C2=A01 file changed, 177 deletions(-)
+> =C2=A0delete mode 100644 tests/guest-debug/test-gdbstub.py
+
+There doesn't seem to be a hbreak test elsewhere, but according to a
+comment in tcg/multiarch/gdbstub/memory.py it would be mapped to a
+normal break anyway.
+
+Acked-by: Ilya Leoshkevich <iii@linux.ibm.com>

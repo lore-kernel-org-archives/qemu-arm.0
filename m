@@ -1,72 +1,73 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp363692ejs;
-        Wed, 16 Aug 2023 06:40:10 -0700 (PDT)
-X-Received: by 2002:a05:6a00:882:b0:676:20f8:be41 with SMTP id q2-20020a056a00088200b0067620f8be41mr2509263pfj.16.1692193210437;
-        Wed, 16 Aug 2023 06:40:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692193210; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp364882ejs;
+        Wed, 16 Aug 2023 06:42:02 -0700 (PDT)
+X-Received: by 2002:a05:6a00:14d3:b0:686:bbfa:68e3 with SMTP id w19-20020a056a0014d300b00686bbfa68e3mr2657246pfu.15.1692193322251;
+        Wed, 16 Aug 2023 06:42:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692193322; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZU6uW2agAuAAdgxl+wNgm4qmYJO8gueK9sU3W0ZnPGX8WaV//YyHFoBhX1KJHLJ4C3
-         Kyc6jGbiwNdogywEnJls2jA75bB4VwuCLJnjWesZ+U7liWlWdik4sYLC5GeqTk7RaUjz
-         QZ0jn9Lx033I/ld3zcejiTCxsddfKbSs1Cy+EfTcixvP6hKzVJ03NS6+HREbycHTtmVF
-         w90MRrrVEPIHrCAw5lsRAGvdx2lxnbzHsrCMAl28JMfj84xH5XHQaM8H/09COyTLUbdM
-         tMtUJfXV43h97JZbZPwud9859sxR509B2yDx7fRv4bHPBA98hacHX9cEmR40ASHJHXM+
-         3vyw==
+        b=bEgMppxwENoQgxcewfG5KEQu7ghKdWvY6BvMaMfFXnfiJl0Jh6yIPyWh/bwC3Oilvu
+         ptS6J6YEKm0PSahBNvTfv+6PARXXA4XKX7hCEm29uVEZUchfyE4MKmTsDCVfbM+FPpn3
+         5HUGkgYd0wzwHUUPDsrTU4yEZYLmUyEag8CYU6BfR+DohDZvmpOuv7LsgfAs7e4cShlx
+         HvNiF2ySQ9tU4WKjUQpePHahrCdgKAux5ET4VVtKWIwY5St0SH33pBE1GFuIdzSmFdG6
+         LJt3D93+x9N5X4ICJun0+H/XMFxKufKNPFGl7p5IbOfra7ny5x8qAJmexleA4q7A44wR
+         4Rag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=Q21wFUBTdzz1toaXf+VkWZ8RFW1Ogy6h00eP92hlyR4=;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=06lruvuER2JmmjzWPkvhn7tl3HrqMHtHO/EfWEPYAug=;
         fh=fUiTdP13jeKk8+/DO5sZ9YFnMdWUGYQSHAZ2p4VPlgw=;
-        b=hJWUSNcgJBHyQECs7heifpnXkAehtcR/fVk04d5J1a6xLlugBz0GqO4gW/rWobAqa5
-         MX1NNjwNxvbTihTZ0ofER6Lr3ku1ZvtlqfkenqTSnMJ0Q/oo/UzzBro/P1fvNfl/vE0p
-         9kan1JUaHk1ruJ0xNAxuzKtqse6hDDJ6jYfonyRpMtenRERwp5HGNGAgawRGr5fPV7k/
-         vrSBu7nNwuZEQgWh5gb982t9dG6uUljSWynYUOWn3rXv3lWckukIGIgCfS5f3VX8caa0
-         jJupxd0aMv7EgFGNgD5XMw+od6YtN8urGGOFKS21teNrVLWST4eebCTTcjAxIR/xlY2H
-         A/Kg==
+        b=YeBaPIWp7KqM3LEH74a0GXh97mQ88QCi52kSH1+mEr9Jym9ij34/T60DAy8Hw93pSF
+         v+oeUSyQX5K0xkqFziXe7Urh9hl1By8rlIgQAaIWG/l2B7MViVIaOYKFuoCgGoXBzAjH
+         6yyItAQbf8ABprydriJkZSR4Ablz9RsFd5vRiUomqE5wq5Cwv6wGm+AjmlmQCcVr0SSX
+         TPqAZHb66oNDHwDVGcdTp7OgXBk6fbnmFnnFBjLQhSabsjqm816UzWN4vFoqjGMmCrFn
+         ZhJ4uBnJLj/SlfQxW7EIoasX71SBo4vS8dRS5U0rocJRZJtUcZcxW5Sj9845q3S6TteX
+         0w5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="f4oufeW/";
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=KHgEaARY;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a1-20020aa794a1000000b00687805097f8sor8441952pfl.5.2023.08.16.06.40.10
+        by mx.google.com with SMTPS id v6-20020aa799c6000000b00686be6e227bsor11824987pfi.4.2023.08.16.06.42.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 16 Aug 2023 06:40:10 -0700 (PDT)
+        Wed, 16 Aug 2023 06:42:02 -0700 (PDT)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="f4oufeW/";
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=KHgEaARY;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193210; x=1692798010;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Q21wFUBTdzz1toaXf+VkWZ8RFW1Ogy6h00eP92hlyR4=;
-        b=f4oufeW/Vf+mytzfJfLrP73ipJlPLbdLkgCSt6SNVEg+OH5PQLQaobFJnCULgA9Mbh
-         vjwxCITRptstcE7FnMCWFNgeJ9YWTLNtHJ3NR9O7yrYsrFcTyEiMMM+D+rjVi+s4I+h9
-         YA/Ydlz5slg6GPGvgufrOZ7HR7N4NL3f08f/LwjyJ+Ui0G8YUYWAYCTBKz5XjLsi7f27
-         00szxW7itinsC6hWwGwCTM3uwhjTPO209DInOqI7X+pwYjfDlmsUPzk0bPSPxF97bL8h
-         tj6YCaZjWGemSmASnqMw05kKPSWsGgf6JSiJqSLK+Nz/Iwx8B0CX21crBbwUZNvoxLFG
-         vTSg==
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193322; x=1692798122;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=06lruvuER2JmmjzWPkvhn7tl3HrqMHtHO/EfWEPYAug=;
+        b=KHgEaARYbzVy5//3CQO+8mLbySWKl5KXD+/DxQlrlW3n1VVyT/EX5Jk+/dYZVxlx/Z
+         mFKdLnoV2S8qJ+wZ6OQsTgSf6ZhIPNq5WNdT6KTMPPYtl1Y5IWF6ajl5fKq62/O32/KC
+         6xTCakQxdKWmHrYyqOvF460ZMAXqpxj72A5OzoCbAce5e76z3yzMiDp7OHh0WEU+Ljo3
+         4SZV3Xw/ogdAE7MVsxQQ8Q7j8C3UHy94NWymKV6/CuYLkDtQidttqd0AlK516b5HecAT
+         wahBy8I+XtGqybbRBEGhNBh8AR7EbP0MLy86veISNKqUoCPAv2iecGgP/tV/YFD4+6Vf
+         dxrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692193210; x=1692798010;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Q21wFUBTdzz1toaXf+VkWZ8RFW1Ogy6h00eP92hlyR4=;
-        b=Y6jnMYspCNQ8a+v7dfmOqzp2MYiD57GTbIN2wnRgmcn50j9JsXoIYVdSPJNGELJlOi
-         tyz9XhdJikBMHFBKIEEJ1GndUOC5kf75ykA55iTtQfZZqNnMJl7STjG9S0tI6HECGYeZ
-         +gIv2Et3ilFBZE2dXYj8MvPC4pCSVxzPSnvnsUJRJgyfus6yFd+xTjuRe+hwxqH7svbl
-         UVPZroHeXwQXgElxePy8QQd8BZaJyTHQPAymYBmXOJajrotmDTF4VCEC/Dx/lIN3672h
-         lyH2MbI3WP9R/QNrMGbQ3w60f7ghoU1CAhOT1nY/DbP6tFlqvNp3P9+SzpjXK7MPiNmT
-         NFwg==
-X-Gm-Message-State: AOJu0YwocZRuc/QQ0H42CuhaYXhcGewZLwVKTltr+T7JyE6ZyEeRBvP3
-	ER3PS+RupyGTqoPvFqM6HyuKYQ==
-X-Google-Smtp-Source: AGHT+IH/lpuT4+iZB+Nkasgh73RbF+jZYjWwFp0DV8ASqVErIyFmoKEXP1T9SRp8+yZROV2ClG1fYg==
-X-Received: by 2002:a05:6a00:c89:b0:682:2e99:9de0 with SMTP id a9-20020a056a000c8900b006822e999de0mr2164929pfv.23.1692193209148;
-        Wed, 16 Aug 2023 06:40:09 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1692193322; x=1692798122;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=06lruvuER2JmmjzWPkvhn7tl3HrqMHtHO/EfWEPYAug=;
+        b=lnbIB/iOZVM4RO89tCMdkYLY3yIZQqbFbmYBHYDhiT4jbaCFu/OITjeFJ6rF8AN1O7
+         cprYnjJ9U8LRJtp73l5IDfJ4lS2GbylyTclpN9oCKp7eqnhs4BlSsGKTNkUOUVxkC9kG
+         s3z6l+hky52DGzc+IZIXgDwbMyoPwSIPmzZFSRxMcI8Qml7fEshs88fxwN0QBESf1xdo
+         +ys7fmzLt5XZjEQrRZDCMbdBomlajCC0pgJl2Klw51145VlXxyX6n/1ELNgR2LcP22NS
+         ge5e1nxMkrCDGxRjXsJutOUX1kt5CFupjGnH9oQ67LE0yU0Tgb5zCMjVXMQRrJaY1uO9
+         3DUA==
+X-Gm-Message-State: AOJu0YwkKMYH9zRdXC7KgJ/yeunkGF/bdV54YAsi/iwzicWDdyaIug6c
+	ehRNZOEHA6DWfAU8mi6mi5m22g==
+X-Google-Smtp-Source: AGHT+IGNro2yIoJ0WZ8sctDWlgSib5Lb+HgRigNfIkyW3NPrJXQ8shmsCYWNtyqJjfol+h5imo2xtw==
+X-Received: by 2002:a05:6a20:2587:b0:134:1011:8582 with SMTP id k7-20020a056a20258700b0013410118582mr2718835pzd.47.1692193321696;
+        Wed, 16 Aug 2023 06:42:01 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id k3-20020a637b43000000b0056601f864aesm928355pgn.2.2023.08.16.06.39.59
+        by smtp.gmail.com with ESMTPSA id k3-20020a637b43000000b0056601f864aesm928355pgn.2.2023.08.16.06.41.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Aug 2023 06:40:08 -0700 (PDT)
+        Wed, 16 Aug 2023 06:42:01 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -120,184 +121,86 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-s390x@nongnu.org,
 	Anton Kochkov <anton.kochkov@proton.me>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 00/25] plugins: Allow to read registers
-Date: Wed, 16 Aug 2023 22:39:10 +0900
-Message-ID: <20230816133938.18310-1-akihiko.odaki@daynix.com>
+Subject: [PATCH v3 12/25] gdbstub: Use GDBFeature for GDBRegisterState
+Date: Wed, 16 Aug 2023 22:39:22 +0900
+Message-ID: <20230816133938.18310-13-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230816133938.18310-1-akihiko.odaki@daynix.com>
+References: <20230816133938.18310-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Es30XX62cGgX
+X-TUID: e1qr2E5qxwSS
 
-I and other people in the University of Tokyo, where I research processor
-design, found TCG plugins are very useful for processor design exploration.
+Simplify GDBRegisterState by replacing num_regs and xml members with
+one member that points to GDBFeature.
 
-The feature we find missing is the capability to read registers from
-plugins. In this series, I propose to add such a capability by reusing
-gdbstub code.
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+---
+ gdbstub/gdbstub.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
-The reuse of gdbstub code ensures the long-term stability of the TCG plugin
-interface for register access without incurring a burden to maintain yet
-another interface for register access.
-
-This process to add TCG plugin involves four major changes. The first one
-is to add GDBFeature structure that represents a GDB feature, which usually
-includes registers. GDBFeature can be generated from static XML files or
-dynamically generated by architecture-specific code. In fact, this is a
-refactoring independent of the feature this series adds, and potentially
-it's benefitial even without the plugin feature. The plugin feature will
-utilize this new structure to describe registers exposed to plugins.
-
-The second one is to make gdb_read_register/gdb_write_register usable
-outside of gdbstub context.
-
-The third one is to actually make registers readable for plugins.
-
-The last one is to allow to implement a QEMU plugin in C++. A plugin that
-I'll describe later is written in C++.
-
-The below is a summary of patches:
-Patch 01 fixes a bug in execlog plugin.
-Patch [02, 13] introduces GDBFeature.
-Patch [14, 17] adds information useful for plugins to GDBFeature.
-Patch [18, 20] makes registers readable outside of gdbstub context.
-Patch [21, 23] adds the feature to read registers from plugins.
-Patch [24, 25] makes it possible to write plugins in C++.
-
-The execlog plugin will have new options to demonstrate the new feature.
-I also have a plugin that uses this new feature to generate execution traces for
-Sniper processor simulator, which is available at:
-https://github.com/shioya-lab/sniper/tree/akihikodaki/bb
-
-V2 -> V3:
-  Added patch "hw/core/cpu: Return static value with gdb_arch_name()"
-  Added patch "gdbstub: Dynamically allocate target.xml buffer" (Alex Bennée)
-  Added patch "gdbstub: Introduce GDBFeatureBuilder" (Alex Bennée)
-  Dropped Reviewed-by tags for "target/*: Use GDBFeature for dynamic XML"
-  Changed gdb_find_static_feature() to abort on failure (Alex Bennée)
-  Changed the execlog plugin to log the register value only when changed
-  (Alex Bennée)
-  Dropped 0x prefixes for register value logs for conciseness
-
-V1 -> V2:
-  Added SPDX-License-Identifier: GPL-2.0-or-later (Philippe Mathieu-Daudé)
-  Split long lines. (Philippe Mathieu-Daudé)
-  Renamed gdb_features to gdb_static_features (Philippe Mathieu-Daudé)
-  Dropped RFC.
-
-Akihiko Odaki (25):
-  contrib/plugins: Use GRWLock in execlog
-  gdbstub: Introduce GDBFeature structure
-  gdbstub: Add num_regs member to GDBFeature
-  gdbstub: Introduce gdb_find_static_feature()
-  target/arm: Move the reference to arm-core.xml
-  hw/core/cpu: Replace gdb_core_xml_file with gdb_core_feature
-  gdbstub: Introduce GDBFeatureBuilder
-  target/arm: Use GDBFeature for dynamic XML
-  target/ppc: Use GDBFeature for dynamic XML
-  target/riscv: Use GDBFeature for dynamic XML
-  gdbstub: Use GDBFeature for gdb_register_coprocessor
-  gdbstub: Use GDBFeature for GDBRegisterState
-  hw/core/cpu: Return static value with gdb_arch_name()
-  gdbstub: Dynamically allocate target.xml buffer
-  gdbstub: Simplify XML lookup
-  hw/core/cpu: Remove gdb_get_dynamic_xml member
-  gdbstub: Add members to identify registers to GDBFeature
-  hw/core/cpu: Add a parameter to gdb_read_register/gdb_write_register
-  gdbstub: Hide gdb_has_xml
-  gdbstub: Expose functions to read registers
-  cpu: Call plugin hooks only when ready
-  plugins: Allow to read registers
-  contrib/plugins: Allow to log registers
-  plugins: Support C++
-  contrib/plugins: Add cc plugin
-
- MAINTAINERS                   |   2 +-
- docs/devel/tcg-plugins.rst    |  18 ++-
- configure                     |  15 ++-
- meson.build                   |   2 +-
- gdbstub/internals.h           |  10 +-
- include/exec/gdbstub.h        |  51 +++++++--
- include/hw/core/cpu.h         |  17 ++-
- include/qemu/qemu-plugin.h    |  69 +++++++++++-
- target/alpha/cpu.h            |   6 +-
- target/arm/cpu.h              |  37 +++----
- target/arm/internals.h        |   2 +-
- target/avr/cpu.h              |   6 +-
- target/cris/cpu.h             |   9 +-
- target/hexagon/internal.h     |   6 +-
- target/hppa/cpu.h             |   6 +-
- target/i386/cpu.h             |   6 +-
- target/loongarch/internals.h  |   6 +-
- target/m68k/cpu.h             |   6 +-
- target/microblaze/cpu.h       |   6 +-
- target/mips/internal.h        |   6 +-
- target/openrisc/cpu.h         |   6 +-
- target/ppc/cpu-qom.h          |   3 +-
- target/ppc/cpu.h              |  15 ++-
- target/ppc/internal.h         |   2 +-
- target/riscv/cpu.h            |  10 +-
- target/rx/cpu.h               |   6 +-
- target/s390x/cpu.h            |   2 -
- target/s390x/s390x-internal.h |   6 +-
- target/sh4/cpu.h              |   6 +-
- target/sparc/cpu.h            |   6 +-
- target/tricore/cpu.h          |   6 +-
- target/xtensa/cpu.h           |   6 +-
- contrib/plugins/execlog.c     | 150 +++++++++++++++++++------
- cpu.c                         |  11 --
- gdbstub/gdbstub.c             | 203 ++++++++++++++++++++++++----------
- gdbstub/softmmu.c             |   2 +-
- hw/core/cpu-common.c          |  16 ++-
- plugins/api.c                 |  40 +++++++
- stubs/gdbstub.c               |   6 +-
- target/alpha/gdbstub.c        |   6 +-
- target/arm/cpu.c              |  12 +-
- target/arm/cpu64.c            |   8 +-
- target/arm/gdbstub.c          | 184 +++++++++++++-----------------
- target/arm/gdbstub64.c        |  96 +++++++---------
- target/arm/tcg/cpu32.c        |   3 +-
- target/avr/cpu.c              |   4 +-
- target/avr/gdbstub.c          |   6 +-
- target/cris/gdbstub.c         |   9 +-
- target/hexagon/cpu.c          |   5 +-
- target/hexagon/gdbstub.c      |   6 +-
- target/hppa/gdbstub.c         |   6 +-
- target/i386/cpu.c             |  13 +--
- target/i386/gdbstub.c         |  10 +-
- target/loongarch/cpu.c        |   8 +-
- target/loongarch/gdbstub.c    |   8 +-
- target/m68k/cpu.c             |   7 +-
- target/m68k/gdbstub.c         |   6 +-
- target/m68k/helper.c          |   6 +-
- target/microblaze/cpu.c       |   9 +-
- target/microblaze/gdbstub.c   |   6 +-
- target/mips/gdbstub.c         |   6 +-
- target/nios2/cpu.c            |   6 +-
- target/openrisc/gdbstub.c     |   6 +-
- target/ppc/cpu_init.c         |   9 +-
- target/ppc/gdbstub.c          |  90 ++++++---------
- target/riscv/cpu.c            |  27 ++---
- target/riscv/gdbstub.c        |  95 +++++++---------
- target/rx/cpu.c               |   4 +-
- target/rx/gdbstub.c           |   6 +-
- target/s390x/cpu.c            |   8 +-
- target/s390x/gdbstub.c        |  34 ++----
- target/sh4/gdbstub.c          |   6 +-
- target/sparc/gdbstub.c        |   6 +-
- target/tricore/cpu.c          |   4 +-
- target/tricore/gdbstub.c      |   6 +-
- target/xtensa/gdbstub.c       |   6 +-
- contrib/plugins/Makefile      |   5 +
- contrib/plugins/cc.cc         |  17 +++
- plugins/qemu-plugins.symbols  |   2 +
- scripts/feature_to_c.py       | 102 +++++++++++++++++
- scripts/feature_to_c.sh       |  69 ------------
- tests/tcg/Makefile.target     |   3 +
- 82 files changed, 1045 insertions(+), 678 deletions(-)
- create mode 100644 contrib/plugins/cc.cc
- create mode 100755 scripts/feature_to_c.py
- delete mode 100644 scripts/feature_to_c.sh
-
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 7fa4b8b51f..7a4775633e 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -47,10 +47,9 @@
+ 
+ typedef struct GDBRegisterState {
+     int base_reg;
+-    int num_regs;
+     gdb_get_reg_cb get_reg;
+     gdb_set_reg_cb set_reg;
+-    const char *xml;
++    const GDBFeature *feature;
+     struct GDBRegisterState *next;
+ } GDBRegisterState;
+ 
+@@ -390,7 +389,7 @@ static const char *get_feature_xml(const char *p, const char **newp,
+             pstrcat(buf, buf_sz, "\"/>");
+             for (r = cpu->gdb_regs; r; r = r->next) {
+                 pstrcat(buf, buf_sz, "<xi:include href=\"");
+-                pstrcat(buf, buf_sz, r->xml);
++                pstrcat(buf, buf_sz, r->feature->xmlname);
+                 pstrcat(buf, buf_sz, "\"/>");
+             }
+             pstrcat(buf, buf_sz, "</target>");
+@@ -497,7 +496,7 @@ static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
+     }
+ 
+     for (r = cpu->gdb_regs; r; r = r->next) {
+-        if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
++        if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
+             return r->get_reg(env, buf, reg - r->base_reg);
+         }
+     }
+@@ -515,7 +514,7 @@ static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
+     }
+ 
+     for (r = cpu->gdb_regs; r; r = r->next) {
+-        if (r->base_reg <= reg && reg < r->base_reg + r->num_regs) {
++        if (r->base_reg <= reg && reg < r->base_reg + r->feature->num_regs) {
+             return r->set_reg(env, mem_buf, reg - r->base_reg);
+         }
+     }
+@@ -538,17 +537,16 @@ void gdb_register_coprocessor(CPUState *cpu,
+     p = &cpu->gdb_regs;
+     while (*p) {
+         /* Check for duplicates.  */
+-        if (strcmp((*p)->xml, feature->xmlname) == 0)
++        if ((*p)->feature == feature)
+             return;
+         p = &(*p)->next;
+     }
+ 
+     s = g_new0(GDBRegisterState, 1);
+     s->base_reg = cpu->gdb_num_regs;
+-    s->num_regs = feature->num_regs;
+     s->get_reg = get_reg;
+     s->set_reg = set_reg;
+-    s->xml = feature->xml;
++    s->feature = feature;
+ 
+     /* Add to end of list.  */
+     cpu->gdb_num_regs += feature->num_regs;
 -- 
 2.41.0

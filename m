@@ -1,117 +1,117 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp646837ejs;
-        Wed, 16 Aug 2023 14:37:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEZy6cmyWkcL86a5a5doeYxBqztwmk4lcd1Fn7ltGG99+gv4O4bZ37FJn+rM+JZqGsoU/8O
-X-Received: by 2002:a0c:b2c8:0:b0:63c:fd89:f045 with SMTP id d8-20020a0cb2c8000000b0063cfd89f045mr2189202qvf.54.1692221860443;
-        Wed, 16 Aug 2023 14:37:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692221860; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp664588ejs;
+        Wed, 16 Aug 2023 15:14:19 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH35cWFqrw8mByp+dFeSxvbNvwDOy+z2zKx0TBAHOIB9wzWlKey7XOyHO95pIVPnkjtLdZc
+X-Received: by 2002:ac8:5c4d:0:b0:40f:f0e0:a000 with SMTP id j13-20020ac85c4d000000b0040ff0e0a000mr4000022qtj.31.1692224059682;
+        Wed, 16 Aug 2023 15:14:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692224059; cv=none;
         d=google.com; s=arc-20160816;
-        b=dE8jcCHNnJNJ7ypnWGOiUbO/MsxYgqQB6RJVD5zBxBhPuUvoDbm0K/eOcBqoyeJ1TG
-         CXe4HRwNtE6vsp9b9885iDDYHf6iN/2/cXoEqC8nY6B+ORbvjCUqN4AStmTkfEwueu4f
-         YP3OynRBtyMlcbRQaQ3Fn7EH8i33U3brb9ZFL9ijIWAWvoWfwJ39JWlW1umBVWuEFTz7
-         ErdeWAX2wnne8AX77qq4VUJHKwPiT4tQpPidAePEsZq/x1a17G6FNG6zVyXzLUtFcLAy
-         bXXDCrGINDeoRtBKWW32UIsBeRCdluqS3mqHjJCM1YOdF+qk/oTr8L8IEDTIpX/OQVpl
-         b4QQ==
+        b=SYjbZWHfG1WAmJKUOwjkvsmlCxWUt0XYMIF8SRrDkzuqME+TRpMZ7lX0pe4dEs0t38
+         9VF4tHWRZXlVYVOdp8j19B7KrAxyJPh2l0rguLNBwGguAskhHXGtnhSfYN7nZouzH1zE
+         HWhu4ljxy4j8YFxQAJM1uFFYjdrwMDVYuSX/V3M4JYfe63NqZ3haV6IizHcbh+GvxbU+
+         8qtgr6o/QsQyPPX2FFXum6zwb6ap05Bjvlq8No8PWyvbFtI9pVYLcVoRZNQDTURf66vG
+         nPsad2ZAEhc/SohvVsBAqaoBiB3SAJICKO2gs7W2nrdgqTOtpRxZ94MvssjwraRHSgDt
+         sTcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=VZsPmh3euSheMWIDgUIopUjXqOluereIHAZc7FTWXy8=;
-        fh=WMRjIW8SxRhJzSxXV2TOZJwwi2fPtxqsT1yI+qxoMU4=;
-        b=rJXoLQjSatwf3VdMzQmE9YG7Vbs7MeYdHyPhROBdlmcmz6EqNHPnQVKPVUhyQirpzp
-         sPzvk8lKak5gkeczMpWArhGDgw3AZQYdZIAfAoKuwFgQAbyExPhFUbMBRaULwXn1vFbG
-         zj9xVbYI42naHO2BX4U7ntc6//t6nQk7c9aqCf5aNzsgydrDCD+Cs4PbGwKTG+OtNjVm
-         ttMSkQNh5Vp6NQ15iwM/WXCljBXdIQ3Pgm5P9u/xOiUGwe4ctnStyim1rJ4/UBTFRYLj
-         dJMcYebqsnhNOxG6uiAYLLVt7+YeU21rQAiQpxuyFZDqdiqPFMujQV4g/bdzhn47gaB+
-         N/dg==
+        bh=zEJhz2IPLHDaEP85ICczZLGFLyYPkVCbOGyIXuOX1Mo=;
+        fh=nEXqv9i1uqY7bP09kpZ+htKSAWniAdF2A8Obui6akuo=;
+        b=OKXhiIZSOz/YGVdBZeQ1K8NLvMuzOlXL2ZIfQnlg8Ep/l+afa0tMa8RgXZ2g4+vOHD
+         PZ8XML+ZIMqx5ccjB7lmKOuAMdGUseN5JSlyBt7SFGkhKs4GOUvSAGi5KLY8U8RZO3jR
+         uthcjaxHgogoLqBG0jGJndv9W9435sfSCtMnDVUFTTgL7x7Fl5ywAGXSAqjzAJbswt9C
+         r/NVsiVT96/g4FAH48cz0cs4JUzOvAkgeove54o/ssrApjketkheSBcg7HMvn5xW50Gi
+         O2RdwBf4awYq1x33K7OGnJyYiKRcLCieQU3+17hWfFMXjrdZ2v0u4mZziOLadbfMLPwN
+         8AMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QwmjxkaB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CmyroviC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t9-20020a0cde09000000b006473387fe46si2814866qvk.267.2023.08.16.14.37.40
+        by mx.google.com with ESMTPS id n18-20020ac85b52000000b00403cbe7e009si9425081qtw.301.2023.08.16.15.14.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Aug 2023 14:37:40 -0700 (PDT)
+        Wed, 16 Aug 2023 15:14:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QwmjxkaB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CmyroviC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qWOCW-0005zy-Fm; Wed, 16 Aug 2023 17:37:13 -0400
+	id 1qWOmA-0003mE-Td; Wed, 16 Aug 2023 18:14:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qWOCU-0005yX-NL
- for qemu-arm@nongnu.org; Wed, 16 Aug 2023 17:37:10 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qWOm8-0003lq-Lh
+ for qemu-arm@nongnu.org; Wed, 16 Aug 2023 18:14:01 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qWOCQ-0007LU-PN
- for qemu-arm@nongnu.org; Wed, 16 Aug 2023 17:37:08 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-99c136ee106so930293566b.1
- for <qemu-arm@nongnu.org>; Wed, 16 Aug 2023 14:37:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qWOm6-0002mS-AJ
+ for qemu-arm@nongnu.org; Wed, 16 Aug 2023 18:14:00 -0400
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-99d937b83efso580366566b.3
+ for <qemu-arm@nongnu.org>; Wed, 16 Aug 2023 15:13:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1692221825; x=1692826625;
+ d=linaro.org; s=google; t=1692224036; x=1692828836;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=VZsPmh3euSheMWIDgUIopUjXqOluereIHAZc7FTWXy8=;
- b=QwmjxkaBuwO0Kpu97iAiO2wCF/vYSZ1sN5rHPr/8PITRM/83qjbfw8EXhZ/EtLf+Bo
- Iwo7YHEXBB1iu6d6ENkWmLuNSxldYZaWmXKPSPT139sSozkM4etH07lrmG+KQOx0Yg2S
- QTp0Rc2GMh7a9PfTSGNdT7OJh1gnYYcfbgl689l0Rx1EpZ9t61apoSzYmpWKF53Zelxx
- SkgFgV3d4nYtBbTqB3ymuSGxjsQ4uDD/S6d9VFvoRe0xQ9L7Y5hTulJVMLsidkbvDpDk
- wZF3BFYQ3+NiiLuWKp6V3WnMpJVrcLw1r5AwbsEWbbPn42euwFJW0/MKZjlXx0bSQbNU
- jWNQ==
+ bh=zEJhz2IPLHDaEP85ICczZLGFLyYPkVCbOGyIXuOX1Mo=;
+ b=CmyroviCHiKVwgOQXNIQiig+CyMxbN3y6ENyJWAa0zJj+dqB0+AksS+vWL7IYDb3U1
+ 7rp+9VWhFhTiNQZzVEbqR0ZQ3FC2gvV2+oBlNGSWIJMStGfUb6X+hReaTs2t34uVdUL1
+ Dl9JK+qQaWpZ5Jm/9FyYU4Q1Re9UTOWV+J2pC+qsiTGwtsqe0WEaqc5zdVPvlfzqNav+
+ OB2uMmYcLHqlP/POHyM6yPR82feDpAeRu2Qoia/E/T3qodpok9jFPElRfPyuwQY75jw5
+ 2ggW46caEnj+R8XJiEecUi4epfueCqWhdkFPn4cOTWUsVpYzkzD7RNFBZzZxOtZsq6Af
+ 5FDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1692221825; x=1692826625;
+ d=1e100.net; s=20221208; t=1692224036; x=1692828836;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=VZsPmh3euSheMWIDgUIopUjXqOluereIHAZc7FTWXy8=;
- b=L4TRNjTMYy3lWlAE8ITumiyJKerCyOXfXYtoWtEYryc3Z1ZFF/3MreOjK8b0qkwlhr
- 8SukzyUKQt5i3HpUiFt8NdcO4aRCa28Uy/WszznK75MsfQ9IN6Ebg//vLYxH62PGW1tB
- cuQG/qSzUk1Rdne0fLwP3C4nDiVLnVD9qrPY4ab51WPTAjl5lhEi1Zx0JeByoHmUXCOi
- xS9n80KMs4oM4Gfl4BWUi3prqNtcTlUcWPJsx34tWdYf3m9TvhICIoGGYZkqXiMAoBnX
- o+G4iTFquwUqA1eM2/Y5PPWBuUGCFVDrUIC+P0h4zwGSVrICgDiadJm1EpuVlMXAgLyD
- oZ/g==
-X-Gm-Message-State: AOJu0YxgFQXtgko4e033/3WZJ4BTru1wuQIgtN8h1RAw/aX1UepA5jvq
- GPsMwGkLP5lfw7QmD5DmSqexxh3rzIRwQKtJXyM=
-X-Received: by 2002:a17:907:7709:b0:993:d47f:3c84 with SMTP id
- kw9-20020a170907770900b00993d47f3c84mr2873316ejc.7.1692221825134; 
- Wed, 16 Aug 2023 14:37:05 -0700 (PDT)
+ bh=zEJhz2IPLHDaEP85ICczZLGFLyYPkVCbOGyIXuOX1Mo=;
+ b=e/91iSw0pYIaQZVZcAqYj1YkO69DxQe+vn5vme27LvfmkxKRQVim833K3KSrslDdk/
+ L6Gs2CHQT/I1R5ApjhRjS7RXY42AQ2AnJdtmNBqTzKCPeCo52aR61GQ2VglNoK2Y421p
+ MUFrgVypSQTBppOpFz/mxcUHpgLOdSLkyupyL2bK77RghfL0oe4oC8KsyHXStIdxwKeP
+ i2rvbrWSliC1Uvra7RZO0rzeuoaFIvsvsQz+losrmTUBl9akGmhkvBWLTeZUF3BqauAj
+ cKelIZVCYvopdS5ebDnZoIr8RdzlZlj5DvVWu/9MMF2lVbrEjXKJCsJSvkA+Gte2maAG
+ 1lDQ==
+X-Gm-Message-State: AOJu0Yx00TglwtvicChKqZBS1D4e5BldDJo8VVKldEScfFdSzaJTG8wb
+ yG0cERplq7/9oSZrqplj+jjGwg==
+X-Received: by 2002:a17:906:cc0d:b0:99d:7336:728c with SMTP id
+ ml13-20020a170906cc0d00b0099d7336728cmr2317995ejb.35.1692224036443; 
+ Wed, 16 Aug 2023 15:13:56 -0700 (PDT)
 Received: from [192.168.69.115] (mna75-h02-176-184-40-35.dsl.sta.abo.bbox.fr.
  [176.184.40.35]) by smtp.gmail.com with ESMTPSA id
- ks19-20020a170906f85300b0098733a40bb7sm9087018ejb.155.2023.08.16.14.37.03
+ jw13-20020a17090776ad00b0099275c59bc9sm9115158ejc.33.2023.08.16.15.13.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 16 Aug 2023 14:37:04 -0700 (PDT)
-Message-ID: <8fdd9ed6-64aa-c4f3-6136-3363193f200b@linaro.org>
-Date: Wed, 16 Aug 2023 23:37:01 +0200
+ Wed, 16 Aug 2023 15:13:56 -0700 (PDT)
+Message-ID: <167f8783-9592-6245-7e74-58a1cd9ac437@linaro.org>
+Date: Thu, 17 Aug 2023 00:13:54 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.14.0
-Subject: Re: [PATCH 2/4] util/cpuinfo-aarch64: Add CPUINFO_BTI
+Subject: Re: [PATCH 4/4] tcg: Map code_gen_buffer with PROT_BTI
 Content-Language: en-US
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
+Cc: qemu-arm@nongnu.org, Joelle van Dyne <j@getutm.app>
 References: <20230816142516.469743-1-richard.henderson@linaro.org>
- <20230816142516.469743-3-richard.henderson@linaro.org>
+ <20230816142516.469743-5-richard.henderson@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230816142516.469743-3-richard.henderson@linaro.org>
+In-Reply-To: <20230816142516.469743-5-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -52
 X-Spam_score: -5.3
 X-Spam_bar: -----
 X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.165,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,14 +126,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A0ykt1q5XrEf
+X-TUID: hTo6iiFuGejI
+
+(Cc'ing Joelle)
 
 On 16/8/23 16:25, Richard Henderson wrote:
+> For linux aarch64 host supporting BTI, map the buffer
+> to require BTI instructions at branch landing pads.
+> 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   host/include/aarch64/host/cpuinfo.h | 1 +
->   util/cpuinfo-aarch64.c              | 4 ++++
->   2 files changed, 5 insertions(+)
+>   tcg/region.c | 39 ++++++++++++++++++++++++++++-----------
+>   1 file changed, 28 insertions(+), 11 deletions(-)
+> 
+> diff --git a/tcg/region.c b/tcg/region.c
+> index 2b28ed3556..58cb68c6c8 100644
+> --- a/tcg/region.c
+> +++ b/tcg/region.c
+> @@ -33,8 +33,19 @@
+>   #include "tcg/tcg.h"
+>   #include "exec/translation-block.h"
+>   #include "tcg-internal.h"
+> +#include "host/cpuinfo.h"
+>   
+>   
+> +/*
+> + * Local source-level compatibility with Unix.
+> + * Used by tcg_region_init below.
+> + */
+> +#if defined(_WIN32)
+> +#define PROT_READ   1
+> +#define PROT_WRITE  2
+> +#define PROT_EXEC   4
+> +#endif
+> +
+>   struct tcg_region_tree {
+>       QemuMutex lock;
+>       QTree *tree;
+> @@ -83,6 +94,16 @@ bool in_code_gen_buffer(const void *p)
+>       return (size_t)(p - region.start_aligned) <= region.total_size;
+>   }
+>   
+> +static int host_prot_read_exec(void)
+> +{
+> +#if defined(CONFIG_LINUX) && defined(HOST_AARCH64) && defined(PROT_BTI)
+> +    if (cpuinfo & CPUINFO_BTI) {
+> +        return PROT_READ | PROT_EXEC | PROT_BTI;
+> +    }
+> +#endif
+> +    return PROT_READ | PROT_EXEC;
+> +}
+> +
+>   #ifdef CONFIG_DEBUG_TCG
+>   const void *tcg_splitwx_to_rx(void *rw)
+>   {
+> @@ -505,14 +526,6 @@ static int alloc_code_gen_buffer(size_t tb_size, int splitwx, Error **errp)
+>       return PROT_READ | PROT_WRITE;
+>   }
+>   #elif defined(_WIN32)
+> -/*
+> - * Local source-level compatibility with Unix.
+> - * Used by tcg_region_init below.
+> - */
+> -#define PROT_READ   1
+> -#define PROT_WRITE  2
+> -#define PROT_EXEC   4
+> -
+>   static int alloc_code_gen_buffer(size_t size, int splitwx, Error **errp)
+>   {
+>       void *buf;
+> @@ -567,7 +580,7 @@ static int alloc_code_gen_buffer_splitwx_memfd(size_t size, Error **errp)
+>           goto fail;
+>       }
+>   
+> -    buf_rx = mmap(NULL, size, PROT_READ | PROT_EXEC, MAP_SHARED, fd, 0);
+> +    buf_rx = mmap(NULL, size, host_prot_read_exec(), MAP_SHARED, fd, 0);
+>       if (buf_rx == MAP_FAILED) {
+>           goto fail_rx;
+>       }
+> @@ -642,7 +655,7 @@ static int alloc_code_gen_buffer_splitwx_vmremap(size_t size, Error **errp)
+>           return -1;
+>       }
+>   
+> -    if (mprotect((void *)buf_rx, size, PROT_READ | PROT_EXEC) != 0) {
+> +    if (mprotect((void *)buf_rx, size, host_prot_read_exec()) != 0) {
+>           error_setg_errno(errp, errno, "mprotect for jit splitwx");
+>           munmap((void *)buf_rx, size);
+>           munmap((void *)buf_rw, size);
+> @@ -805,7 +818,7 @@ void tcg_region_init(size_t tb_size, int splitwx, unsigned max_cpus)
+>       need_prot = PROT_READ | PROT_WRITE;
+>   #ifndef CONFIG_TCG_INTERPRETER
+>       if (tcg_splitwx_diff == 0) {
+> -        need_prot |= PROT_EXEC;
+> +        need_prot |= host_prot_read_exec();
+>       }
+>   #endif
+>       for (size_t i = 0, n = region.n; i < n; i++) {
+> @@ -820,7 +833,11 @@ void tcg_region_init(size_t tb_size, int splitwx, unsigned max_cpus)
+>               } else if (need_prot == (PROT_READ | PROT_WRITE)) {
+>                   rc = qemu_mprotect_rw(start, end - start);
+>               } else {
+> +#ifdef CONFIG_POSIX
+> +                rc = mprotect(start, end - start, need_prot);
+
+Hmm this bypass the qemu_real_host_page_mask() checks in
+qemu_mprotect__osdep(), but I guess this is acceptable.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+> +#else
+>                   g_assert_not_reached();
+> +#endif
+>               }
+>               if (rc) {
+>                   error_setg_errno(&error_fatal, errno,
 

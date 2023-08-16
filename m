@@ -1,254 +1,169 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp365294ejs;
-        Wed, 16 Aug 2023 06:42:49 -0700 (PDT)
-X-Received: by 2002:a05:6a21:99a7:b0:134:6839:c497 with SMTP id ve39-20020a056a2199a700b001346839c497mr2233487pzb.11.1692193368757;
-        Wed, 16 Aug 2023 06:42:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692193368; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp395886ejs;
+        Wed, 16 Aug 2023 07:25:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHXSmxIHFGpsoB8sGnZ+KJCT+zcFT0D3rLOCWjush8njz96bY4Zq3nhd2KJSDUFtpLvWJ4V
+X-Received: by 2002:a05:6358:c11:b0:13a:18c0:77ec with SMTP id f17-20020a0563580c1100b0013a18c077ecmr3070130rwj.3.1692195947970;
+        Wed, 16 Aug 2023 07:25:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692195947; cv=none;
         d=google.com; s=arc-20160816;
-        b=NiHHc5OqsIosu0TzrnQiUSG+L4yhtuGTnVIRkAdUUhiVUT/yU08KQ0eAlU12E05jOm
-         sSQCO5lEIZbr2B/12hK4PSWArY70uO2c1zj79x3NZiO1rNa+u3MMuRFd8OrRTnFt+Tc8
-         oQMTuhaWkMx/+lc9LwWaw3R2OGc5y29xKO9ESms2GF7cJrLGy8UuuEwyIv9Jxa/asuIE
-         S6P4e4lO0Qh8cZI1BLXf7L+Tv5ju1NZKZOwvLIMH28TSeqq++z5BCMqZaidpizqjGD/+
-         zxkCiPEbGF5+6YQ6TYLZlAJFn1SjG8yCTh8TBJImtmtIVqTXRbmTHkPN5J5oGZJ0vxf9
-         YQLQ==
+        b=hhQkKqV0AlQBgaziYHIIftWXnhD8U82cLfn7e2Ja+3OmqBkprKMGrBIb+6A7OPkwtQ
+         CZKQ4Hxau4DAQAh0VA6HfLlSWxEFVNlIL1Zz+dIJVsVF6qZkVGi8yIl4GMyQJudxZEXF
+         JgC7QQpKfeM5KfIvf/NDEvM1o0+BuBU2CtKuiDrBtIoxF2zFEJkBbAA8xh0tM/zwDaDx
+         kBTz0kQMrUASBw7V7nzmU5Wn11kPhLLxL5DntfeVQSeSeo7h2gXrBcfCbBx19J/bNcNG
+         76+U7ERIoLavLG/pngNlScbUSt6tmnwZ7bOGKyF1MBcQjd+1VpXwhj3757uhGw9YxzD8
+         h8mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6gfAeaNLA+PIokoYBBdAB0dQ8PQLZuwdbWdYv4LmQmA=;
-        fh=fUiTdP13jeKk8+/DO5sZ9YFnMdWUGYQSHAZ2p4VPlgw=;
-        b=CFvxegqd5LwdLmdvBt0RNL+y0Bqi8iXdHFQLh7DyoP8qNxB2KiXCHXlBRW2qbdCsdW
-         gPu4EO5M5ZL2URVjJPecvymPXOJ2BMlE2E6jON02h+Ybk9PE5sZ4OJWa5AMrbswFZFv4
-         gtWNBVitjWGCvHszxaa6IYb8Oivuc4HgsXGB7eaBfE6Uwie+WaifsmOvL17PJs0HOWeu
-         knhhf3mZKvWeUDcGKccr9vi/0fKJrX9/AOWU0jMVzvzGBjR/CTtzCQH8ioA5FPeH6/zD
-         s2k5SLeDAmaXE1pd3FRn33CiXioDxWdLO1fQStFk6amLKT2ajfG0wjW3eRQyZeot00V9
-         fzkw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=2WfUiBV4R48StsRGeWaef0j9aTh/ONctxiuXo83IRGs=;
+        fh=oweadga+1U1BKjDqlK8hSmEWEC1EUfcsKuPkDinEDsU=;
+        b=ifpA1dZEsA74AReQ7km3t8gzwdiPGdc/+IJBikAP/AHIVeQS1kYGpe1hgfhDir7/oc
+         VzAZ1ZEY9iVttiKB6KZ+qZ6SPEJ6ueLwco7A5G0X1VWm4znbZRGnUloc85TsusW/ZbhJ
+         /+l6CEIyTHqsVQ7kff2QqjCm/GhOjN3XQSlR9Y/vE7uED2QIH/W7DQwh6IvS9nMrPz4K
+         H7l3i6y71glqqMCIJemzKzU3kdKq1Y3sUQG6RHiKviyJbI87VxHK+C1R3rkiL6raEpT6
+         s7E6KEkAPsdunqRe8/3cDtOrajoMkgDtuqJW/JhBvK7CBuviphA3+2LoF2jVxtYOUr8S
+         vuWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=p4jIPIW8;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id i16-20020aa796f0000000b00687b2cd8240sor8523821pfq.12.2023.08.16.06.42.48
+       dkim=pass header.i=@linaro.org header.s=google header.b=er27MzP+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d3-20020ac85ac3000000b0040cb20e8fd2si8744135qtd.73.2023.08.16.07.25.47
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 16 Aug 2023 06:42:48 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 16 Aug 2023 07:25:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=p4jIPIW8;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=er27MzP+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qWHSf-0003wr-Fi; Wed, 16 Aug 2023 10:25:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qWHSd-0003uO-Ko
+ for qemu-arm@nongnu.org; Wed, 16 Aug 2023 10:25:23 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qWHSb-0003k7-93
+ for qemu-arm@nongnu.org; Wed, 16 Aug 2023 10:25:23 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-6887ccba675so570021b3a.3
+ for <qemu-arm@nongnu.org>; Wed, 16 Aug 2023 07:25:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193368; x=1692798168;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6gfAeaNLA+PIokoYBBdAB0dQ8PQLZuwdbWdYv4LmQmA=;
-        b=p4jIPIW8F7FZ15gXgrZC0bslxfBNgPtWNcSyqtzraoqaroZwOzPaiIInO0TSmMYZzO
-         9xAqaEfDmfZLwfb0fnEmPtLVcNT+DUGPC5gaywX8DrZ9xm9zvJJCjA47A7K4jQknlo9Q
-         bw55ibQKAIbh2jEjcBVBBUQ+B9oRxSvDmd21LavG8NQCug3VsVYYb7C04lCLDPStO3Ur
-         SUNHiyFzPZcXQkAP1l0Yx2ti90H2QwtO6vSvoT/IJR6nuhxmi081YviOJ6fshy4827Qj
-         XKTVZlG5YmKTwzhJ9yms+S+wW1FS3/eCQpdtxn25EG8JmapGcoacFSG3jht+MVs/91o/
-         gmtg==
+ d=linaro.org; s=google; t=1692195920; x=1692800720;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2WfUiBV4R48StsRGeWaef0j9aTh/ONctxiuXo83IRGs=;
+ b=er27MzP+gSmorkX/8Xc1MNooYKFHycdKoxgHrnnJF93qmqML5QCzqsT7SceFsZFKfS
+ oxcQVeiCiUqX9ElvbhaZIT9ek6KorYpZR3nR6Gu0WdsSRpQY0XTIVTUfCXd/9iUYb9/w
+ pRKqt2JiKNyE59Udx2iX4FKaBKMtbWXEazkts+pAREml7sIf7J2qGrJPnuwqzakh2KFi
+ Kbh2doJIItF4RxAtbcjXvIplFryYOPg70l8bDpNniCmAnAWLNWzGF3LEb/PogAnSAmwG
+ mW55LJ8kjUmthwNTXWx3O2J4tejT5lgCRV9mPvwCBRVpbMR5IhEhCMOOB2lzXEVjUX6g
+ CO8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692193368; x=1692798168;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6gfAeaNLA+PIokoYBBdAB0dQ8PQLZuwdbWdYv4LmQmA=;
-        b=GgyVPoLb0+O4o7MyB8hp1R8OXFKf3ECxd811bi4P1jIhRnCJjJINcYPcN5/GZiJD0p
-         dMtYlTDHpCn3uyOXgARRSx5qt5Iqjmpio3vnPd3yuG5rHnXBrjVQVYp6gkUAJ9nvJhxZ
-         KVEhyghC6xmc7iTCI7POTn9xOUsCoPhZouj8KqdFzgD3XGZB/4n9Y8Pvd/cI3imsh0Cy
-         5VJZKfizrPnPpEBVDe+YtSBt9G6sEFNzk3IvBKgi+M+ESZZVrQZvqw6L0ZugXdwC55Tk
-         a4JSaAkaA802/t1qqKVtYVID6T2/sHCiFwfeaPkpfTmPwQEDU5Rjr39s1GlbdC1kXaTL
-         3iSQ==
-X-Gm-Message-State: AOJu0YyqPcdESOROzXav2xsaOL/NdkdHxH+056wFi+bdwpcvnr9cKl2B
-	xXgeOyr6Ro/VNGThw6dqFMni0A==
-X-Google-Smtp-Source: AGHT+IG/nPYMSYK6MQ6Gu1ZAPxNnHYFIvZlhimH4Pb3Ek6ZXKHGwleUsB56z7RG7mu/EGmUiIRX2Hg==
-X-Received: by 2002:a05:6a20:258a:b0:125:f3d8:e65b with SMTP id k10-20020a056a20258a00b00125f3d8e65bmr2046108pzd.18.1692193368270;
-        Wed, 16 Aug 2023 06:42:48 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id k3-20020a637b43000000b0056601f864aesm928355pgn.2.2023.08.16.06.42.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Aug 2023 06:42:48 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Brian Cain <bcain@quicinc.com>,
-	Song Gao <gaosong@loongson.cn>,
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Stafford Horne <shorne@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	David Hildenbrand <david@redhat.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org,
-	qemu-s390x@nongnu.org,
-	Anton Kochkov <anton.kochkov@proton.me>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 17/25] gdbstub: Add members to identify registers to GDBFeature
-Date: Wed, 16 Aug 2023 22:39:27 +0900
-Message-ID: <20230816133938.18310-18-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230816133938.18310-1-akihiko.odaki@daynix.com>
-References: <20230816133938.18310-1-akihiko.odaki@daynix.com>
+ d=1e100.net; s=20221208; t=1692195920; x=1692800720;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=2WfUiBV4R48StsRGeWaef0j9aTh/ONctxiuXo83IRGs=;
+ b=S06iuU+EjfHQIAthErd7+Fa57kQxPV+MkmizKUIS/Y1F/grLbgVqRWCJb3TPZiAr5a
+ AwpAYkUZbZY5xfdjwcvngZOtBTCC3Eik5nor7WHJ6RWriP63d5TJf6+C75A0uN3U3zAh
+ PhldWfec7pKvPOAYaKd0VqaHTSQmT96KDqOdiDjZUL8E2ai33RkFzV56u1iad9gEYp49
+ rN1RYUaBxqP1+S0ml/wrE5torcIf7y5Xh0dOV+X6sXp5wRTJLKDjUwe/7Ozz63JOhTmA
+ UxDJeAPq+czRXsjdKzgRtNjxKZEvkaoezRtzbupT17sUsd6LbJzWm2f1NaII+qXsymi4
+ AmlQ==
+X-Gm-Message-State: AOJu0YwmK2ZLXON491n1YF3bfmUAxvTGvzJNNCZhDZRV2AetCg2uqMhE
+ rkCL01T30dU5qL3fEkUHLQi/IQ==
+X-Received: by 2002:a05:6a00:2444:b0:687:3f06:5939 with SMTP id
+ d4-20020a056a00244400b006873f065939mr1818513pfj.32.1692195919804; 
+ Wed, 16 Aug 2023 07:25:19 -0700 (PDT)
+Received: from stoup.. ([2602:47:d483:7301:a064:e3f9:a812:973b])
+ by smtp.gmail.com with ESMTPSA id
+ i12-20020aa78b4c000000b00678cb337353sm11156019pfd.208.2023.08.16.07.25.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Aug 2023 07:25:19 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 2/4] util/cpuinfo-aarch64: Add CPUINFO_BTI
+Date: Wed, 16 Aug 2023 07:25:14 -0700
+Message-Id: <20230816142516.469743-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230816142516.469743-1-richard.henderson@linaro.org>
+References: <20230816142516.469743-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 9bAUxdwUf+lg
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rlwmfzHD+nYE
 
-These members will be used to help plugins to identify registers.
-The added members in instances of GDBFeature dynamically generated by
-CPUs will be filled in later changes.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/gdbstub.h  |  3 +++
- gdbstub/gdbstub.c       |  8 ++++++--
- target/arm/gdbstub.c    |  2 +-
- scripts/feature_to_c.py | 14 +++++++++++++-
- 4 files changed, 23 insertions(+), 4 deletions(-)
+ host/include/aarch64/host/cpuinfo.h | 1 +
+ util/cpuinfo-aarch64.c              | 4 ++++
+ 2 files changed, 5 insertions(+)
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 572abada63..f3f2c40b1a 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -13,12 +13,15 @@
- typedef struct GDBFeature {
-     const char *xmlname;
-     const char *xml;
-+    const char *name;
-+    const char * const *regs;
-     int num_regs;
- } GDBFeature;
+diff --git a/host/include/aarch64/host/cpuinfo.h b/host/include/aarch64/host/cpuinfo.h
+index 769626b098..a59c8418d2 100644
+--- a/host/include/aarch64/host/cpuinfo.h
++++ b/host/include/aarch64/host/cpuinfo.h
+@@ -10,6 +10,7 @@
+ #define CPUINFO_LSE             (1u << 1)
+ #define CPUINFO_LSE2            (1u << 2)
+ #define CPUINFO_AES             (1u << 3)
++#define CPUINFO_BTI             (1u << 4)
  
- typedef struct GDBFeatureBuilder {
-     GDBFeature *feature;
-     GPtrArray *xml;
-+    GPtrArray *regs;
- } GDBFeatureBuilder;
- 
- 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index ccb4ed9d4b..e4fbdebca4 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -418,9 +418,10 @@ void gdb_feature_builder_init(GDBFeatureBuilder *builder, GDBFeature *feature,
- 
-     builder->feature = feature;
-     builder->xml = g_ptr_array_new();
-+    builder->regs = g_ptr_array_new();
-     g_ptr_array_add(builder->xml, header);
-     feature->xmlname = xmlname;
--    feature->num_regs = 0;
-+    feature->name = name;
- }
- 
- void gdb_feature_builder_append_tag(const GDBFeatureBuilder *builder,
-@@ -449,7 +450,7 @@ void gdb_feature_builder_append_reg(const GDBFeatureBuilder *builder,
-             name, bitsize, type);
-     }
- 
--    builder->feature->num_regs++;
-+    g_ptr_array_add(builder->regs, (void *)name);
- }
- 
- void gdb_feature_builder_end(const GDBFeatureBuilder *builder)
-@@ -464,6 +465,9 @@ void gdb_feature_builder_end(const GDBFeatureBuilder *builder)
-     }
- 
-     g_ptr_array_free(builder->xml, TRUE);
+ /* Initialized with a constructor. */
+ extern unsigned cpuinfo;
+diff --git a/util/cpuinfo-aarch64.c b/util/cpuinfo-aarch64.c
+index ababc39550..97f5548a95 100644
+--- a/util/cpuinfo-aarch64.c
++++ b/util/cpuinfo-aarch64.c
+@@ -57,11 +57,15 @@ unsigned __attribute__((constructor)) cpuinfo_init(void)
+     info |= (hwcap & HWCAP_ATOMICS ? CPUINFO_LSE : 0);
+     info |= (hwcap & HWCAP_USCAT ? CPUINFO_LSE2 : 0);
+     info |= (hwcap & HWCAP_AES ? CPUINFO_AES: 0);
 +
-+    builder->feature->num_regs = builder->regs->len;
-+    builder->feature->regs = (void *)g_ptr_array_free(builder->regs, FALSE);
- }
++    unsigned long hwcap2 = qemu_getauxval(AT_HWCAP2);
++    info |= (hwcap2 & HWCAP2_BTI ? CPUINFO_BTI : 0);
+ #endif
+ #ifdef CONFIG_DARWIN
+     info |= sysctl_for_bool("hw.optional.arm.FEAT_LSE") * CPUINFO_LSE;
+     info |= sysctl_for_bool("hw.optional.arm.FEAT_LSE2") * CPUINFO_LSE2;
+     info |= sysctl_for_bool("hw.optional.arm.FEAT_AES") * CPUINFO_AES;
++    info |= sysctl_for_bool("hw.optional.arm.FEAT_BTI") * CPUINFO_BTI;
+ #endif
  
- const GDBFeature *gdb_find_static_feature(const char *xmlname)
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index fc5ed89e80..dbc396a88b 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -264,7 +264,7 @@ static void arm_gen_one_feature_sysreg(GDBFeatureBuilder *builder,
-                                        ARMCPRegInfo *ri, uint32_t ri_key,
-                                        int bitsize)
- {
--    dyn_feature->data.cpregs.keys[dyn_feature->desc.num_regs] = ri_key;
-+    dyn_feature->data.cpregs.keys[builder->regs->len] = ri_key;
- 
-     gdb_feature_builder_append_reg(builder, ri->name, bitsize,
-                                    "int", "cp_regs");
-diff --git a/scripts/feature_to_c.py b/scripts/feature_to_c.py
-index e04d6b2df7..807af0e685 100755
---- a/scripts/feature_to_c.py
-+++ b/scripts/feature_to_c.py
-@@ -50,7 +50,9 @@ def writeliteral(indent, bytes):
-         sys.stderr.write(f'unexpected start tag: {element.tag}\n')
-         exit(1)
- 
-+    feature_name = element.attrib['name']
-     regnum = 0
-+    regnames = []
-     regnums = []
-     tags = ['feature']
-     for event, element in events:
-@@ -67,6 +69,7 @@ def writeliteral(indent, bytes):
-                 if 'regnum' in element.attrib:
-                     regnum = int(element.attrib['regnum'])
- 
-+                regnames.append(element.attrib['name'])
-                 regnums.append(regnum)
-                 regnum += 1
- 
-@@ -85,6 +88,15 @@ def writeliteral(indent, bytes):
-     writeliteral(8, bytes(os.path.basename(input), 'utf-8'))
-     sys.stdout.write(',\n')
-     writeliteral(8, read)
--    sys.stdout.write(f',\n        {num_regs},\n    }},\n')
-+    sys.stdout.write(',\n')
-+    writeliteral(8, bytes(feature_name, 'utf-8'))
-+    sys.stdout.write(',\n        (const char * const []) {\n')
-+
-+    for index, regname in enumerate(regnames):
-+        sys.stdout.write(f'            [{regnums[index] - base_reg}] =\n')
-+        writeliteral(16, bytes(regname, 'utf-8'))
-+        sys.stdout.write(',\n')
-+
-+    sys.stdout.write(f'        }},\n        {num_regs},\n    }},\n')
- 
- sys.stdout.write('    { NULL }\n};\n')
+     cpuinfo = info;
 -- 
-2.41.0
+2.34.1
+

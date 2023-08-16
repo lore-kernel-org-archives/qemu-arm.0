@@ -1,15 +1,15 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t11-20020adfe44b000000b0030fd03e3d25sm21832382wrm.75.2023.08.16.08.02.33
+        by smtp.gmail.com with ESMTPSA id t1-20020a5d5341000000b0031763fd36c4sm21636148wrv.104.2023.08.16.08.04.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Aug 2023 08:02:33 -0700 (PDT)
+        Wed, 16 Aug 2023 08:04:04 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D85EA1FFBB;
-	Wed, 16 Aug 2023 16:02:32 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 6E4681FFBB;
+	Wed, 16 Aug 2023 16:04:04 +0100 (BST)
 References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
- <20230731084354.115015-7-akihiko.odaki@daynix.com>
- <871qg5sryb.fsf@linaro.org>
- <ee599577-f185-4f12-b985-209a6322d2f7@daynix.com>
+ <20230731084354.115015-16-akihiko.odaki@daynix.com>
+ <87350lr7p8.fsf@linaro.org>
+ <f41aae27-8538-46b5-93fa-67de41602077@daynix.com>
 User-agent: mu4e 1.11.14; emacs 29.1.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Akihiko Odaki
@@ -44,148 +44,68 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Max Filippov
  <jcmvbkbc@gmail.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [RFC PATCH 06/24] hw/core/cpu: Replace gdb_core_xml_file with
- gdb_core_feature
-Date: Wed, 16 Aug 2023 16:00:48 +0100
-In-reply-to: <ee599577-f185-4f12-b985-209a6322d2f7@daynix.com>
-Message-ID: <87v8dfni7r.fsf@linaro.org>
+Subject: Re: [RFC PATCH 15/24] target/arm: Fill new members of GDBFeature
+Date: Wed, 16 Aug 2023 16:03:31 +0100
+In-reply-to: <f41aae27-8538-46b5-93fa-67de41602077@daynix.com>
+Message-ID: <87r0o3ni57.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: PAGDYHHmryHn
+X-TUID: saIqk7kX3GYw
 
 
 Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-> On 2023/08/14 20:59, Alex Benn=C3=A9e wrote:
+> On 2023/08/14 23:56, Alex Benn=C3=A9e wrote:
 >> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 >>=20
->>> This is a tree-wide change to replace gdb_core_xml_file, the path to
->>> GDB XML file with gdb_core_feature, the pointer to GDBFeature. This
->>> also replaces the values assigned to gdb_num_core_regs with the
->>> num_regs member of GDBFeature where applicable to remove magic numbers.
->>>
->>> A following change will utilize additional information provided by
->>> GDBFeature to simplify XML file lookup.
+>>> These members will be used to help plugins to identify registers.
 >>>
 >>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 >>> ---
->>>   include/hw/core/cpu.h   | 5 +++--
->>>   target/s390x/cpu.h      | 2 --
->>>   gdbstub/gdbstub.c       | 6 +++---
->>>   target/arm/cpu.c        | 4 ++--
->>>   target/arm/cpu64.c      | 4 ++--
->>>   target/arm/tcg/cpu32.c  | 3 ++-
->>>   target/avr/cpu.c        | 4 ++--
->>>   target/hexagon/cpu.c    | 2 +-
->>>   target/i386/cpu.c       | 7 +++----
->>>   target/loongarch/cpu.c  | 4 ++--
->>>   target/m68k/cpu.c       | 7 ++++---
->>>   target/microblaze/cpu.c | 4 ++--
->>>   target/ppc/cpu_init.c   | 4 ++--
->>>   target/riscv/cpu.c      | 7 ++++---
->>>   target/rx/cpu.c         | 4 ++--
->>>   target/s390x/cpu.c      | 4 ++--
->>>   16 files changed, 36 insertions(+), 35 deletions(-)
+>>>   target/arm/gdbstub.c   | 46 +++++++++++++++++++++++++++---------------
+>>>   target/arm/gdbstub64.c | 42 +++++++++++++++++++++++++-------------
+>>>   2 files changed, 58 insertions(+), 30 deletions(-)
 >>>
->>> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
->>> index fdcbe87352..84219c1885 100644
->>> --- a/include/hw/core/cpu.h
->>> +++ b/include/hw/core/cpu.h
->>> @@ -23,6 +23,7 @@
->>>   #include "hw/qdev-core.h"
->>>   #include "disas/dis-asm.h"
->>>   #include "exec/cpu-common.h"
->>> +#include "exec/gdbstub.h"
->>>   #include "exec/hwaddr.h"
->>>   #include "exec/memattrs.h"
->>>   #include "qapi/qapi-types-run-state.h"
->>> @@ -127,7 +128,7 @@ struct SysemuCPUOps;
->>>    *       breakpoint.  Used by AVR to handle a gdb mis-feature with
->>>    *       its Harvard architecture split code and data.
->>>    * @gdb_num_core_regs: Number of core registers accessible to GDB.
->> It seems redundant to have this when gdb_core_features already
->> encapsulates this, especially since...
->>=20
->>> - * @gdb_core_xml_file: File name for core registers GDB XML descriptio=
-n.
->>> + * @gdb_core_feature: GDB core feature description.
->>>    * @gdb_stop_before_watchpoint: Indicates whether GDB expects the CPU=
- to stop
->>>    *           before the insn which triggers a watchpoint rather than =
-after it.
->>>    * @gdb_arch_name: Optional callback that returns the architecture na=
-me known
->>> @@ -163,7 +164,7 @@ struct CPUClass {
->>>       int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
->>>       vaddr (*gdb_adjust_breakpoint)(CPUState *cpu, vaddr addr);
->>>   -    const char *gdb_core_xml_file;
->>> +    const GDBFeature *gdb_core_feature;
->>>       gchar * (*gdb_arch_name)(CPUState *cpu);
->>>       const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xm=
-lname);
->>>=20=20=20
->> <snip>
->>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->>> index d71a162070..a206ab6b1b 100644
->>> --- a/target/arm/cpu.c
->>> +++ b/target/arm/cpu.c
->>> @@ -2353,7 +2353,6 @@ static void arm_cpu_class_init(ObjectClass *oc, v=
-oid *data)
->>>   #ifndef CONFIG_USER_ONLY
->>>       cc->sysemu_ops =3D &arm_sysemu_ops;
->>>   #endif
->>> -    cc->gdb_num_core_regs =3D 26;
->>>       cc->gdb_arch_name =3D arm_gdb_arch_name;
->>>       cc->gdb_get_dynamic_xml =3D arm_gdb_get_dynamic_xml;
->>>       cc->gdb_stop_before_watchpoint =3D true;
->>> @@ -2378,7 +2377,8 @@ static void cpu_register_class_init(ObjectClass *=
-oc, void *data)
->>>       CPUClass *cc =3D CPU_CLASS(acc);
->>>         acc->info =3D data;
->>> -    cc->gdb_core_xml_file =3D "arm-core.xml";
->>> +    cc->gdb_core_feature =3D gdb_find_static_feature("arm-core.xml");
->>> +    cc->gdb_num_core_regs =3D cc->gdb_core_feature->num_regs;
->> You are doing assignments like this. I think something like this in
->> gdbstub:
->> modified   gdbstub/gdbstub.c
->> @@ -440,7 +440,7 @@ int gdb_read_register(CPUState *cpu, GByteArray *buf=
-, int reg, bool has_xml)
->>       CPUArchState *env =3D cpu->env_ptr;
->>       GDBRegisterState *r;
->>   -    if (reg < cc->gdb_num_core_regs) {
->> +    if (reg < cc->gdb_core_feature->num_regs) {
->>           return cc->gdb_read_register(cpu, buf, reg, has_xml);
->>       }
->>   @@ -459,7 +459,7 @@ static int gdb_write_register(CPUState *cpu,
->> uint8_t *mem_buf, int reg,
->>       CPUArchState *env =3D cpu->env_ptr;
->>       GDBRegisterState *r;
->>   -    if (reg < cc->gdb_num_core_regs) {
->> +    if (reg < cc->gdb_core_feature->num_regs) {
->>           return cc->gdb_write_register(cpu, mem_buf, reg, has_xml);
->>       }
->> makes most of the uses go away. Some of the other arches might need
->> target specific tweaks.
+>>> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+>>> index 100a6eed15..56d24028f6 100644
+>>> --- a/target/arm/gdbstub.c
+>>> +++ b/target/arm/gdbstub.c
+>>> @@ -270,6 +270,7 @@ static void arm_gen_one_feature_sysreg(GString *s,
+>>>       g_string_append_printf(s, " regnum=3D\"%d\"", regnum);
+>>>       g_string_append_printf(s, " group=3D\"cp_regs\"/>");
+>>>       dyn_feature->data.cpregs.keys[dyn_feature->desc.num_regs] =3D ri_=
+key;
+>>> +    ((const char **)dyn_feature->desc.regs)[dyn_feature->desc.num_regs=
+] =3D ri->name;
+>>>       dyn_feature->desc.num_regs++;
+>>>   }
+>>>   @@ -316,6 +317,8 @@ static GDBFeature
+>>> *arm_gen_dynamic_sysreg_feature(CPUState *cs, int base_reg)
+>>>       DynamicGDBFeatureInfo *dyn_feature =3D &cpu->dyn_sysreg_feature;
+>>>       gsize num_regs =3D g_hash_table_size(cpu->cp_regs);
+>>>   +    dyn_feature->desc.name =3D "org.qemu.gdb.arm.sys.regs";
+>>> +    dyn_feature->desc.regs =3D g_new(const char *, num_regs);
+>> AIUI this means we now have an array of register names which mirrors
+>> the
+>> names embedded in the XML. This smells like a few steps away from just
+>> abstracting the whole XML away from the targets and generating them
+>> inside gdbstub when we need them. As per my stalled attempt I referenced
+>> earlier.
 >
-> The problem is how to deal with the target specific tweaks. ppc
-> requires gdb_num_core_regs to have some value greater than
-> cc->gdb_core_feature->num_regs for compatibility with legacy GDB.
-> Other architectures simply do not have XMLs. Simply replacing
-> cc->gdb_num_core_regs with cc->gdb_core_feature->num_regs will break
-> those architectures.
-
-How about:
-
-  int core_regs =3D cc->gdb_core_feature ? cc->gdb_core_feature->num_regs
-  : cc->gdb_num_core_regs
-
-And document the field as for legacy gdb use only?
-
+> The abstraction is strictly limited for identifiers. Most plugin
+> should already have some knowledge of how registers are used. For
+> example, a plugin that tracks stack frame for RISC-V should know sp is
+> the stack pointer register. Similarly, a cycle simulator plugin should
+> know how registers are used in a program. Only identifiers matter in
+> such cases.
 >
->> <snip>
->>=20
+> I'm definitely *not* in favor of abstracting the whole XML for
+> plugins. It will be too hard to maintain ABI compatibility when a new
+> attribute emerges, for example.
 
+No I agree the XML shouldn't go near the plugins. I was just looking to
+avoid having an XML builder for every target.
 
 --=20
 Alex Benn=C3=A9e

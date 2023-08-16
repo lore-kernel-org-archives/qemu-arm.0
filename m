@@ -1,312 +1,303 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp336572ejs;
-        Wed, 16 Aug 2023 06:01:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFDHVrtpoYPsgmmHbJQbW188d6w3U9AkpbZD6EEX6MTc15WZV4cJIYbHY5RrugIb9IEiG0z
-X-Received: by 2002:a05:622a:1448:b0:403:b849:a18d with SMTP id v8-20020a05622a144800b00403b849a18dmr2198037qtx.30.1692190919175;
-        Wed, 16 Aug 2023 06:01:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692190919; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp363692ejs;
+        Wed, 16 Aug 2023 06:40:10 -0700 (PDT)
+X-Received: by 2002:a05:6a00:882:b0:676:20f8:be41 with SMTP id q2-20020a056a00088200b0067620f8be41mr2509263pfj.16.1692193210437;
+        Wed, 16 Aug 2023 06:40:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692193210; cv=none;
         d=google.com; s=arc-20160816;
-        b=e6CFnRiRV9dUJTPEnIDeDmMKQ2U7MQU+INRTPJPPwhoAIJEmUso0HrpcGVC06WQy0q
-         AhGqaIhMaZM2Sgfb2124tIsUjGFm41d02jyU9pvoya04Q5/yLlEsDfyrWBoMhivGIoPg
-         Evi0rOw1HpEdJW5t9E1rBfd13TONzWYOXOInGvlFSJQqI7MpEOLuO3Ba3Ln4QUUlbqSm
-         90cN/exsOKr/+ykS2gWNDxjZhFFkvPkaD6iAs4wJQ6efJpA0+/ko20SZ3t4j2eHi6vEz
-         2PN/8S9EQJGhBYpuX6HNgOetlXsTRPI6IaQAPsqmof8i44sCEcvwh7xuqMK6FxwzipLe
-         WXAQ==
+        b=ZU6uW2agAuAAdgxl+wNgm4qmYJO8gueK9sU3W0ZnPGX8WaV//YyHFoBhX1KJHLJ4C3
+         Kyc6jGbiwNdogywEnJls2jA75bB4VwuCLJnjWesZ+U7liWlWdik4sYLC5GeqTk7RaUjz
+         QZ0jn9Lx033I/ld3zcejiTCxsddfKbSs1Cy+EfTcixvP6hKzVJ03NS6+HREbycHTtmVF
+         w90MRrrVEPIHrCAw5lsRAGvdx2lxnbzHsrCMAl28JMfj84xH5XHQaM8H/09COyTLUbdM
+         tMtUJfXV43h97JZbZPwud9859sxR509B2yDx7fRv4bHPBA98hacHX9cEmR40ASHJHXM+
+         3vyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:date:from:mime-version
-         :references:in-reply-to:subject:cc:to:message-id;
-        bh=f4Svch4QD7mvkaELQfh/zKuWvH+3sH8uiVMPPtrmJi4=;
-        fh=UXW/8B2oKNuFNHssSN1sP1guAyKI867cLtB/Bidmphg=;
-        b=Ef2lPJPXcl4CZPy0ekQHVKN8S2uGg2EfNZsNctozUGz+aiXRFyp+aRSOCBGV17a52r
-         Hu44wHxfZ1s5Hhqq9npmULGExr5R39sqApWhooh4rgo0lPC7jETSjgwg/5/WN/CXyxwa
-         b7rc8W2BfEm7Bmnmn2A4wzTZiZTItk9big3o7N71jVpcm0BAPfWknt/pFbsDepKvQ6Lh
-         zbuGnbAqRsJVfXDyKHKkdRHZl7vOAcUAut6b28Q6dHNVrP87opX18p0ghFQGHHoIeXnO
-         x65Mjwa5ksV1y6tMk3siK3wG4woghDjzo6wPqO3r64wFoowEOf2CNoruMRuu1IKoSuOe
-         M06w==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Q21wFUBTdzz1toaXf+VkWZ8RFW1Ogy6h00eP92hlyR4=;
+        fh=fUiTdP13jeKk8+/DO5sZ9YFnMdWUGYQSHAZ2p4VPlgw=;
+        b=hJWUSNcgJBHyQECs7heifpnXkAehtcR/fVk04d5J1a6xLlugBz0GqO4gW/rWobAqa5
+         MX1NNjwNxvbTihTZ0ofER6Lr3ku1ZvtlqfkenqTSnMJ0Q/oo/UzzBro/P1fvNfl/vE0p
+         9kan1JUaHk1ruJ0xNAxuzKtqse6hDDJ6jYfonyRpMtenRERwp5HGNGAgawRGr5fPV7k/
+         vrSBu7nNwuZEQgWh5gb982t9dG6uUljSWynYUOWn3rXv3lWckukIGIgCfS5f3VX8caa0
+         jJupxd0aMv7EgFGNgD5XMw+od6YtN8urGGOFKS21teNrVLWST4eebCTTcjAxIR/xlY2H
+         A/Kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=stu.pku.edu.cn
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j10-20020a05622a038a00b0040fc464f907si8898027qtx.772.2023.08.16.06.01.58
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="f4oufeW/";
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a1-20020aa794a1000000b00687805097f8sor8441952pfl.5.2023.08.16.06.40.10
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Aug 2023 06:01:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 16 Aug 2023 06:40:10 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=stu.pku.edu.cn
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qWG9L-0008Rt-05; Wed, 16 Aug 2023 09:01:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2101213280@stu.pku.edu.cn>)
- id 1qWDDk-0000NZ-Me; Wed, 16 Aug 2023 05:53:44 -0400
-Received: from mail-m12747.qiye.163.com ([115.236.127.47])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <2101213280@stu.pku.edu.cn>)
- id 1qWDDf-00060U-KB; Wed, 16 Aug 2023 05:53:44 -0400
-Received: from stu.pku.edu.cn (localhost [127.0.0.1])
- by mail-m12747.qiye.163.com (Hmail) with ESMTP id 53A9B8059D;
- Wed, 16 Aug 2023 17:44:18 +0800 (CST)
-Content-Type: multipart/alternative;
- BOUNDARY="=_Part_323823_1116829200.1692179058336"
-Message-ID: <ABMAhQB8F78vlG3HwlVoSKrZ.3.1692179058336.Hmail.2101213280@stu.pku.edu.cn>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-devel@nongnu.org, komlodi@google.com, peter@pjd.dev, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, qemu-stable@nongnu.org
-Subject: =?UTF-8?B?UmU6UmU6IFtQQVRDSCB2MyAxLzNdIGh3L2kyYy9hc3BlZWQ6IEZpeCBUeCBjb3VudCBhbmQgUnggc2l6ZSBlcnJvciBpbiBidWZmZXIgcG9vbCBtb2Rl?=
-X-Priority: 3
-X-Mailer: HMail Webmail Server V2.0 Copyright (c) 2016-163.com
-X-Originating-IP: 2401:b180:8000:2:d432:711:a8c6:1106
-In-Reply-To: <73d307ba-263c-b059-06f7-244ee4c4aa45@kaod.org>
-References: <73d307ba-263c-b059-06f7-244ee4c4aa45@kaod.org>
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="f4oufeW/";
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193210; x=1692798010;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Q21wFUBTdzz1toaXf+VkWZ8RFW1Ogy6h00eP92hlyR4=;
+        b=f4oufeW/Vf+mytzfJfLrP73ipJlPLbdLkgCSt6SNVEg+OH5PQLQaobFJnCULgA9Mbh
+         vjwxCITRptstcE7FnMCWFNgeJ9YWTLNtHJ3NR9O7yrYsrFcTyEiMMM+D+rjVi+s4I+h9
+         YA/Ydlz5slg6GPGvgufrOZ7HR7N4NL3f08f/LwjyJ+Ui0G8YUYWAYCTBKz5XjLsi7f27
+         00szxW7itinsC6hWwGwCTM3uwhjTPO209DInOqI7X+pwYjfDlmsUPzk0bPSPxF97bL8h
+         tj6YCaZjWGemSmASnqMw05kKPSWsGgf6JSiJqSLK+Nz/Iwx8B0CX21crBbwUZNvoxLFG
+         vTSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1692193210; x=1692798010;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Q21wFUBTdzz1toaXf+VkWZ8RFW1Ogy6h00eP92hlyR4=;
+        b=Y6jnMYspCNQ8a+v7dfmOqzp2MYiD57GTbIN2wnRgmcn50j9JsXoIYVdSPJNGELJlOi
+         tyz9XhdJikBMHFBKIEEJ1GndUOC5kf75ykA55iTtQfZZqNnMJl7STjG9S0tI6HECGYeZ
+         +gIv2Et3ilFBZE2dXYj8MvPC4pCSVxzPSnvnsUJRJgyfus6yFd+xTjuRe+hwxqH7svbl
+         UVPZroHeXwQXgElxePy8QQd8BZaJyTHQPAymYBmXOJajrotmDTF4VCEC/Dx/lIN3672h
+         lyH2MbI3WP9R/QNrMGbQ3w60f7ghoU1CAhOT1nY/DbP6tFlqvNp3P9+SzpjXK7MPiNmT
+         NFwg==
+X-Gm-Message-State: AOJu0YwocZRuc/QQ0H42CuhaYXhcGewZLwVKTltr+T7JyE6ZyEeRBvP3
+	ER3PS+RupyGTqoPvFqM6HyuKYQ==
+X-Google-Smtp-Source: AGHT+IH/lpuT4+iZB+Nkasgh73RbF+jZYjWwFp0DV8ASqVErIyFmoKEXP1T9SRp8+yZROV2ClG1fYg==
+X-Received: by 2002:a05:6a00:c89:b0:682:2e99:9de0 with SMTP id a9-20020a056a000c8900b006822e999de0mr2164929pfv.23.1692193209148;
+        Wed, 16 Aug 2023 06:40:09 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
+        by smtp.gmail.com with ESMTPSA id k3-20020a637b43000000b0056601f864aesm928355pgn.2.2023.08.16.06.39.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Aug 2023 06:40:08 -0700 (PDT)
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+To: 
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	John Snow <jsnow@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Michael Rolnik <mrolnik@gmail.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+	Brian Cain <bcain@quicinc.com>,
+	Song Gao <gaosong@loongson.cn>,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Marek Vasut <marex@denx.de>,
+	Stafford Horne <shorne@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Greg Kurz <groug@kaod.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Weiwei Li <liweiwei@iscas.ac.cn>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	David Hildenbrand <david@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org,
+	qemu-riscv@nongnu.org,
+	qemu-s390x@nongnu.org,
+	Anton Kochkov <anton.kochkov@proton.me>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH v3 00/25] plugins: Allow to read registers
+Date: Wed, 16 Aug 2023 22:39:10 +0900
+Message-ID: <20230816133938.18310-1-akihiko.odaki@daynix.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Received: from 2101213280@stu.pku.edu.cn(
- [2401:b180:8000:2:d432:711:a8c6:1106) ] by ajax-webmail ( [127.0.0.1] ) ;
- Wed, 16 Aug 2023 17:44:18 +0800 (GMT+08:00)
-From: Hang Yu <2101213280@stu.pku.edu.cn>
-Date: Wed, 16 Aug 2023 17:44:18 +0800 (GMT+08:00)
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
- tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCThgYVh0fQ0weQ0tJHkgfGFUTARMWGhIXJBQOD1
- lXWRgSC1lBWUlPS0pBGUpDS0FDS0tLQUlBH09ISUFMSkpBGkMYTUFKSktNWVdZFhoPEhUdFFlBWU
- 9LSFVKSEpOTUlVSktLVUtZBg++
-X-HM-Tid: 0a89fdb9c83ab21akuuu189e3981e50
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kJHlYWEh9ZQUpLSkxJSEhISU9ISjdXWQweGVlBDwkOHldZEh8eFQ9Z
- QVlHOjk2OhMqOUM9TEMNFzxIMwwXLRQoMAkhVUhVSk1CSUpMQktOQ0NKQlUzFhoSF1VJSktKSUpI
- SUNLOwgPDlULEA5VHh8OVRgVRVlXWRILWUFZSU9LSkEZSkNLQUNLS0tBSUEfT0hJQUxKSkEaQxhN
- QUpKS01ZV1kIAVlBSkxDSEg3V1kUCw8SFBUIWUFLNwY+
-Received-SPF: pass client-ip=115.236.127.47;
- envelope-from=2101213280@stu.pku.edu.cn; helo=mail-m12747.qiye.163.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- MSGID_FROM_MTA_HEADER=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 16 Aug 2023 09:01:19 -0400
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zCG3mQQnb+4f
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Es30XX62cGgX
 
---=_Part_323823_1116829200.1692179058336
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
+I and other people in the University of Tokyo, where I research processor
+design, found TCG plugins are very useful for processor design exploration.
 
-SGVsbG8hIFRoYW5rIHlvdSBmb3IgeW91ciByZXZpZXchU29ycnkgSSBmb3Jnb3QgdG8gY2Mgb3Ro
-ZXIgbWFpbnRhaW5lcnMgc28gSSByZXNlbmQgdGhpcyBtYWlsLgoKCkZyb206ICJDw6lkcmljIExl
-IEdvYXRlciIgPGNsZ0BrYW9kLm9yZz4KRGF0ZTogMjAyMy0wOC0xNiAxNjozMjo1OApUbzogIEhh
-bmcgWXUgPGZyYW5jaXNfeXV1QHN0dS5wa3UuZWR1LmNuPixxZW11LWRldmVsQG5vbmdudS5vcmcK
-Q2M6ICBrb21sb2RpQGdvb2dsZS5jb20scGV0ZXJAcGpkLmRldixQZXRlciBNYXlkZWxsIDxwZXRl
-ci5tYXlkZWxsQGxpbmFyby5vcmc+LEFuZHJldyBKZWZmZXJ5IDxhbmRyZXdAYWouaWQuYXU+LEpv
-ZWwgU3RhbmxleSA8am9lbEBqbXMuaWQuYXU+LCJvcGVuIGxpc3Q6QVNQRUVEIEJNQ3MiIDxxZW11
-LWFybUBub25nbnUub3JnPixxZW11LXN0YWJsZUBub25nbnUub3JnClN1YmplY3Q6IFJlOiBbUEFU
-Q0ggdjMgMS8zXSBody9pMmMvYXNwZWVkOiBGaXggVHggY291bnQgYW5kIFJ4IHNpemUgZXJyb3Ig
-aW4gYnVmZmVyIHBvb2wgbW9kZT5PbiA4LzEyLzIzIDA4OjUyLCBIYW5nIFl1IHdyb3RlOgo+PiBG
-aXhlZCBpbmNvbnNpc3RlbmN5IGJldHdlZW4gdGhlIHJlZ2lzaXRlciBiaXQgZmllbGQgZGVmaW5p
-dGlvbiBoZWFkZXIgZmlsZQo+PiBhbmQgdGhlIGFzdDI2MDAgZGF0YXNoZWV0LiBUaGUgcmVnIG5h
-bWUgaXMgSTJDRDFDOlBvb2wgQnVmZmVyIENvbnRyb2wKPj4gUmVnaXN0ZXIgaW4gb2xkIHJlZ2lz
-dGVyIG1vZGUgYW5kICBJMkNDMEM6IE1hc3Rlci9TbGF2ZSBQb29sIEJ1ZmZlciBDb250cm9sCj4+
-IFJlZ2lzdGVyIGluIG5ldyByZWdpc3RlciBtb2RlLiBUaGV5IHNoYXJlIGJpdCBmaWVsZAo+PiBb
-MTI6OF06VHJhbnNtaXQgRGF0YSBCeXRlIENvdW50IGFuZCBiaXQgZmllbGQKPj4gWzI5OjI0XTpB
-Y3R1YWwgUmVjZWl2ZWQgUG9vbCBCdWZmZXIgU2l6ZSBhY2NvcmRpbmcgdG8gdGhlIGRhdGFzaGVl
-dC4KPj4gQWNjb3JkaW5nIHRvIHRoZSBhc3QyNjAwIGRhdGFzaGVldCx0aGUgYWN0dWFsIFR4IGNv
-dW50IGlzCj4+IFRyYW5zbWl0IERhdGEgQnl0ZSBDb3VudCBwbHVzIDEsIGFuZCB0aGUgbWF4IFJ4
-IHNpemUgaXMKPj4gUmVjZWl2ZSBQb29sIEJ1ZmZlciBTaXplIHBsdXMgMSwgYm90aCBpbiBQb29s
-IEJ1ZmZlciBDb250cm9sIFJlZ2lzdGVyLgo+PiBUaGUgdmVyc2lvbiBiZWZvcmUgZm9yZ290IHRv
-IHBsdXMgMSwgYW5kIG1pc3Rha2UgUnggY291bnQgZm9yIFJ4IHNpemUuCj4+IAo+PiBTaWduZWQt
-b2ZmLWJ5OiBIYW5nIFl1IDxmcmFuY2lzX3l1dUBzdHUucGt1LmVkdS5jbj4KPj4gRml4ZXM6IDNi
-ZTNkNmNjZjJhZCAoImFzcGVlZDogaTJjOiBNaWdyYXRlIHRvIHJlZ2lzdGVyZmllbGRzIEFQSSIp
-Cj4KPlRoaXMgaXMgLXN0YWJsZSBtYXRlcmlhbCB3aXRoIHRoZSBmb2xsb3dpbmcgcGF0Y2guIEl0
-IGZpeGVzIHN1cHBvcnQgZm9yCj50aGUgdjA4LjA2IFNESy4KU2hvdWxkIEkgYWRkIHRoaXMgbGlu
-ZSBpbnRvIHRoZSBjb21taXQgaW4gbmV4dCB2ZXJzaW9uPwoKPgo+UmV2aWV3ZWQtYnk6IEPDqWRy
-aWMgTGUgR29hdGVyIDxjbGdAa2FvZC5vcmc+ClNob3VsZCBJIGFkZCB5b3VyIFJldmlld2VkLWJ5
-IHRhZyBhbmQgc2VuZCB2NCBub3c/T3IganVzdCB3YWl0IGZvciAKb3RoZXIgbWFpbnRhaW5lcnMg
-dG8gcmVwbHk/CgoKVGhhbmtzLApIYW5nLgo+Cj5UaGFua3MsCj4KPkMuCj4KPgo+PiAtLS0KPj4g
-djItLT52MzoKPj4gMS4gTWVyZ2VkIHBhdGNoMSBhbmQgcGF0Y2gyIGluIHYyCj4+IDIuIGFkZGVk
-IGZpeGVzIHRhZwo+PiAzLiBGaXhlZCB0eXBvcwo+PiAKPj4gICBody9pMmMvYXNwZWVkX2kyYy5j
-ICAgICAgICAgfCA4ICsrKystLS0tCj4+ICAgaW5jbHVkZS9ody9pMmMvYXNwZWVkX2kyYy5oIHwg
-NCArKy0tCj4+ICAgMiBmaWxlcyBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25z
-KC0pCj4+IAo+PiBkaWZmIC0tZ2l0IGEvaHcvaTJjL2FzcGVlZF9pMmMuYyBiL2h3L2kyYy9hc3Bl
-ZWRfaTJjLmMKPj4gaW5kZXggMWYwNzFhMzgxMS4uZTQ4NWQ4YmZiOCAxMDA2NDQKPj4gLS0tIGEv
-aHcvaTJjL2FzcGVlZF9pMmMuYwo+PiArKysgYi9ody9pMmMvYXNwZWVkX2kyYy5jCj4+IEBAIC0y
-MzYsNyArMjM2LDcgQEAgc3RhdGljIGludCBhc3BlZWRfaTJjX2J1c19zZW5kKEFzcGVlZEkyQ0J1
-cyAqYnVzLCB1aW50OF90IHBvb2xfc3RhcnQpCj4+ICAgICAgIHVpbnQzMl90IHJlZ19ieXRlX2J1
-ZiA9IGFzcGVlZF9pMmNfYnVzX2J5dGVfYnVmX29mZnNldChidXMpOwo+PiAgICAgICB1aW50MzJf
-dCByZWdfZG1hX2xlbiA9IGFzcGVlZF9pMmNfYnVzX2RtYV9sZW5fb2Zmc2V0KGJ1cyk7Cj4+ICAg
-ICAgIGludCBwb29sX3R4X2NvdW50ID0gU0hBUkVEX0FSUkFZX0ZJRUxEX0VYMzIoYnVzLT5yZWdz
-LCByZWdfcG9vbF9jdHJsLAo+PiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgVFhfQ09VTlQpOwo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgVFhfQ09VTlQpICsgMTsKPj4gICAKPj4gICAgICAgaWYgKFNIQVJF
-RF9BUlJBWV9GSUVMRF9FWDMyKGJ1cy0+cmVncywgcmVnX2NtZCwgVFhfQlVGRl9FTikpIHsKPj4g
-ICAgICAgICAgIGZvciAoaSA9IHBvb2xfc3RhcnQ7IGkgPCBwb29sX3R4X2NvdW50OyBpKyspIHsK
-Pj4gQEAgLTI5Myw3ICsyOTMsNyBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfaTJjX2J1c19yZWN2KEFz
-cGVlZEkyQ0J1cyAqYnVzKQo+PiAgICAgICB1aW50MzJfdCByZWdfZG1hX2xlbiA9IGFzcGVlZF9p
-MmNfYnVzX2RtYV9sZW5fb2Zmc2V0KGJ1cyk7Cj4+ICAgICAgIHVpbnQzMl90IHJlZ19kbWFfYWRk
-ciA9IGFzcGVlZF9pMmNfYnVzX2RtYV9hZGRyX29mZnNldChidXMpOwo+PiAgICAgICBpbnQgcG9v
-bF9yeF9jb3VudCA9IFNIQVJFRF9BUlJBWV9GSUVMRF9FWDMyKGJ1cy0+cmVncywgcmVnX3Bvb2xf
-Y3RybCwKPj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IFJYX0NPVU5UKTsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIFJYX1NJWkUpICsgMTsKPj4gICAKPj4gICAgICAgaWYgKFNIQVJFRF9BUlJBWV9GSUVM
-RF9FWDMyKGJ1cy0+cmVncywgcmVnX2NtZCwgUlhfQlVGRl9FTikpIHsKPj4gICAgICAgICAgIHVp
-bnQ4X3QgKnBvb2xfYmFzZSA9IGFpYy0+YnVzX3Bvb2xfYmFzZShidXMpOwo+PiBAQCAtNDE4LDcg
-KzQxOCw3IEBAIHN0YXRpYyB2b2lkIGFzcGVlZF9pMmNfYnVzX2NtZF9kdW1wKEFzcGVlZEkyQ0J1
-cyAqYnVzKQo+PiAgICAgICB1aW50MzJfdCByZWdfaW50cl9zdHMgPSBhc3BlZWRfaTJjX2J1c19p
-bnRyX3N0c19vZmZzZXQoYnVzKTsKPj4gICAgICAgdWludDMyX3QgcmVnX2RtYV9sZW4gPSBhc3Bl
-ZWRfaTJjX2J1c19kbWFfbGVuX29mZnNldChidXMpOwo+PiAgICAgICBpZiAoU0hBUkVEX0FSUkFZ
-X0ZJRUxEX0VYMzIoYnVzLT5yZWdzLCByZWdfY21kLCBSWF9CVUZGX0VOKSkgewo+PiAtICAgICAg
-ICBjb3VudCA9IFNIQVJFRF9BUlJBWV9GSUVMRF9FWDMyKGJ1cy0+cmVncywgcmVnX3Bvb2xfY3Ry
-bCwgVFhfQ09VTlQpOwo+PiArICAgICAgICBjb3VudCA9IFNIQVJFRF9BUlJBWV9GSUVMRF9FWDMy
-KGJ1cy0+cmVncywgcmVnX3Bvb2xfY3RybCwgVFhfQ09VTlQpICsgMTsKPj4gICAgICAgfSBlbHNl
-IGlmIChTSEFSRURfQVJSQVlfRklFTERfRVgzMihidXMtPnJlZ3MsIHJlZ19jbWQsIFJYX0RNQV9F
-TikpIHsKPj4gICAgICAgICAgIGNvdW50ID0gYnVzLT5yZWdzW3JlZ19kbWFfbGVuXTsKPj4gICAg
-ICAgfSBlbHNlIHsgLyogQllURSBtb2RlICovCj4+IEBAIC00OTAsNyArNDkwLDcgQEAgc3RhdGlj
-IHZvaWQgYXNwZWVkX2kyY19idXNfaGFuZGxlX2NtZChBc3BlZWRJMkNCdXMgKmJ1cywgdWludDY0
-X3QgdmFsdWUpCj4+ICAgICAgICAgICAgKi8KPj4gICAgICAgICAgIGlmIChTSEFSRURfQVJSQVlf
-RklFTERfRVgzMihidXMtPnJlZ3MsIHJlZ19jbWQsIFRYX0JVRkZfRU4pKSB7Cj4+ICAgICAgICAg
-ICAgICAgaWYgKFNIQVJFRF9BUlJBWV9GSUVMRF9FWDMyKGJ1cy0+cmVncywgcmVnX3Bvb2xfY3Ry
-bCwgVFhfQ09VTlQpCj4+IC0gICAgICAgICAgICAgICAgPT0gMSkgewo+PiArICAgICAgICAgICAg
-ICAgID09IDApIHsKPj4gICAgICAgICAgICAgICAgICAgU0hBUkVEX0FSUkFZX0ZJRUxEX0RQMzIo
-YnVzLT5yZWdzLCByZWdfY21kLCBNX1RYX0NNRCwgMCk7Cj4+ICAgICAgICAgICAgICAgfSBlbHNl
-IHsKPj4gICAgICAgICAgICAgICAgICAgLyoKPj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvaHcvaTJj
-L2FzcGVlZF9pMmMuaCBiL2luY2x1ZGUvaHcvaTJjL2FzcGVlZF9pMmMuaAo+PiBpbmRleCA1MWM5
-NDRlZmVhLi4yZTFlMTVhYWYwIDEwMDY0NAo+PiAtLS0gYS9pbmNsdWRlL2h3L2kyYy9hc3BlZWRf
-aTJjLmgKPj4gKysrIGIvaW5jbHVkZS9ody9pMmMvYXNwZWVkX2kyYy5oCj4+IEBAIC0xMzksOSAr
-MTM5LDkgQEAgUkVHMzIoSTJDRF9DTUQsIDB4MTQpIC8qIEkyQ0QgQ29tbWFuZC9TdGF0dXMgKi8K
-Pj4gICBSRUczMihJMkNEX0RFVl9BRERSLCAweDE4KSAvKiBTbGF2ZSBEZXZpY2UgQWRkcmVzcyAq
-Lwo+PiAgICAgICBTSEFSRURfRklFTEQoU0xBVkVfREVWX0FERFIxLCAwLCA3KQo+PiAgIFJFRzMy
-KEkyQ0RfUE9PTF9DVFJMLCAweDFDKSAvKiBQb29sIEJ1ZmZlciBDb250cm9sICovCj4+IC0gICAg
-U0hBUkVEX0ZJRUxEKFJYX0NPVU5ULCAyNCwgNSkKPj4gKyAgICBTSEFSRURfRklFTEQoUlhfQ09V
-TlQsIDI0LCA2KQo+PiAgICAgICBTSEFSRURfRklFTEQoUlhfU0laRSwgMTYsIDUpCj4+IC0gICAg
-U0hBUkVEX0ZJRUxEKFRYX0NPVU5ULCA5LCA1KQo+PiArICAgIFNIQVJFRF9GSUVMRChUWF9DT1VO
-VCwgOCwgNSkKPj4gICAgICAgRklFTEQoSTJDRF9QT09MX0NUUkwsIE9GRlNFVCwgMiwgNikgLyog
-QVNUMjQwMCAqLwo+PiAgIFJFRzMyKEkyQ0RfQllURV9CVUYsIDB4MjApIC8qIFRyYW5zbWl0L1Jl
-Y2VpdmUgQnl0ZSBCdWZmZXIgKi8KPj4gICAgICAgU0hBUkVEX0ZJRUxEKFJYX0JVRiwgOCwgOCkK
-PgoKCgoNCg0K
---=_Part_323823_1116829200.1692179058336
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: base64
+The feature we find missing is the capability to read registers from
+plugins. In this series, I propose to add such a capability by reusing
+gdbstub code.
 
-PGRpdiBzdHlsZT0ibGluZS1oZWlnaHQ6MS43O2NvbG9yOiMwMDAwMDA7Zm9udC1zaXplOjE0cHg7
-Zm9udC1mYW1pbHk6QXJpYWwiPjxwcmU+PGRpdj5IZWxsbyEgVGhhbmsgeW91IGZvciB5b3VyIHJl
-dmlldyFTb3JyeSBJIGZvcmdvdCB0byBjYyBvdGhlciBtYWludGFpbmVycyBzbyBJIHJlc2VuZCB0
-aGlzIG1haWwuPC9kaXY+PGRpdj48YnI+PC9kaXY+PGRpdj5Gcm9tOiAiQ8OpZHJpYyBMZSBHb2F0
-ZXIiICZsdDtjbGdAa2FvZC5vcmcmZ3Q7PC9kaXY+RGF0ZTogMjAyMy0wOC0xNiAxNjozMjo1OApU
-bzogIEhhbmcgWXUgJmx0O2ZyYW5jaXNfeXV1QHN0dS5wa3UuZWR1LmNuJmd0OyxxZW11LWRldmVs
-QG5vbmdudS5vcmcKQ2M6ICBrb21sb2RpQGdvb2dsZS5jb20scGV0ZXJAcGpkLmRldixQZXRlciBN
-YXlkZWxsICZsdDtwZXRlci5tYXlkZWxsQGxpbmFyby5vcmcmZ3Q7LEFuZHJldyBKZWZmZXJ5ICZs
-dDthbmRyZXdAYWouaWQuYXUmZ3Q7LEpvZWwgU3RhbmxleSAmbHQ7am9lbEBqbXMuaWQuYXUmZ3Q7
-LCJvcGVuIGxpc3Q6QVNQRUVEIEJNQ3MiICZsdDtxZW11LWFybUBub25nbnUub3JnJmd0OyxxZW11
-LXN0YWJsZUBub25nbnUub3JnClN1YmplY3Q6IFJlOiBbUEFUQ0ggdjMgMS8zXSBody9pMmMvYXNw
-ZWVkOiBGaXggVHggY291bnQgYW5kIFJ4IHNpemUgZXJyb3IgaW4gYnVmZmVyIHBvb2wgbW9kZSZn
-dDtPbiA4LzEyLzIzIDA4OjUyLCBIYW5nIFl1IHdyb3RlOgomZ3Q7Jmd0OyBGaXhlZCBpbmNvbnNp
-c3RlbmN5IGJldHdlZW4gdGhlIHJlZ2lzaXRlciBiaXQgZmllbGQgZGVmaW5pdGlvbiBoZWFkZXIg
-ZmlsZQomZ3Q7Jmd0OyBhbmQgdGhlIGFzdDI2MDAgZGF0YXNoZWV0LiBUaGUgcmVnIG5hbWUgaXMg
-STJDRDFDOlBvb2wgQnVmZmVyIENvbnRyb2wKJmd0OyZndDsgUmVnaXN0ZXIgaW4gb2xkIHJlZ2lz
-dGVyIG1vZGUgYW5kICBJMkNDMEM6IE1hc3Rlci9TbGF2ZSBQb29sIEJ1ZmZlciBDb250cm9sCiZn
-dDsmZ3Q7IFJlZ2lzdGVyIGluIG5ldyByZWdpc3RlciBtb2RlLiBUaGV5IHNoYXJlIGJpdCBmaWVs
-ZAomZ3Q7Jmd0OyBbMTI6OF06VHJhbnNtaXQgRGF0YSBCeXRlIENvdW50IGFuZCBiaXQgZmllbGQK
-Jmd0OyZndDsgWzI5OjI0XTpBY3R1YWwgUmVjZWl2ZWQgUG9vbCBCdWZmZXIgU2l6ZSBhY2NvcmRp
-bmcgdG8gdGhlIGRhdGFzaGVldC4KJmd0OyZndDsgQWNjb3JkaW5nIHRvIHRoZSBhc3QyNjAwIGRh
-dGFzaGVldCx0aGUgYWN0dWFsIFR4IGNvdW50IGlzCiZndDsmZ3Q7IFRyYW5zbWl0IERhdGEgQnl0
-ZSBDb3VudCBwbHVzIDEsIGFuZCB0aGUgbWF4IFJ4IHNpemUgaXMKJmd0OyZndDsgUmVjZWl2ZSBQ
-b29sIEJ1ZmZlciBTaXplIHBsdXMgMSwgYm90aCBpbiBQb29sIEJ1ZmZlciBDb250cm9sIFJlZ2lz
-dGVyLgomZ3Q7Jmd0OyBUaGUgdmVyc2lvbiBiZWZvcmUgZm9yZ290IHRvIHBsdXMgMSwgYW5kIG1p
-c3Rha2UgUnggY291bnQgZm9yIFJ4IHNpemUuCiZndDsmZ3Q7IAomZ3Q7Jmd0OyBTaWduZWQtb2Zm
-LWJ5OiBIYW5nIFl1ICZsdDtmcmFuY2lzX3l1dUBzdHUucGt1LmVkdS5jbiZndDsKJmd0OyZndDsg
-Rml4ZXM6IDNiZTNkNmNjZjJhZCAoImFzcGVlZDogaTJjOiBNaWdyYXRlIHRvIHJlZ2lzdGVyZmll
-bGRzIEFQSSIpCiZndDsKJmd0O1RoaXMgaXMgLXN0YWJsZSBtYXRlcmlhbCB3aXRoIHRoZSBmb2xs
-b3dpbmcgcGF0Y2guIEl0IGZpeGVzIHN1cHBvcnQgZm9yCjxkaXY+Jmd0O3RoZSB2MDguMDYgU0RL
-LjwvZGl2PjxkaXY+U2hvdWxkIEkgYWRkIHRoaXMgbGluZSBpbnRvIHRoZSBjb21taXQgaW4gbmV4
-dCB2ZXJzaW9uPzxicj48L2Rpdj4mZ3Q7CjxkaXY+Jmd0O1Jldmlld2VkLWJ5OiBDw6lkcmljIExl
-IEdvYXRlciAmbHQ7Y2xnQGthb2Qub3JnJmd0OzwvZGl2PjxkaXY+U2hvdWxkIEkgYWRkIHlvdXIg
-UmV2aWV3ZWQtYnkgdGFnIGFuZCBzZW5kIHY0IG5vdz9PciBqdXN0IHdhaXQgZm9yIDwvZGl2Pjxk
-aXY+b3RoZXIgbWFpbnRhaW5lcnMgdG8gcmVwbHk/PC9kaXY+PGRpdj48YnI+PC9kaXY+PGRpdj5U
-aGFua3MsPC9kaXY+PGRpdj5IYW5nLjwvZGl2PiZndDsKJmd0O1RoYW5rcywKJmd0OwomZ3Q7Qy4K
-Jmd0OwomZ3Q7CiZndDsmZ3Q7IC0tLQomZ3Q7Jmd0OyB2Mi0tJmd0O3YzOgomZ3Q7Jmd0OyAxLiBN
-ZXJnZWQgcGF0Y2gxIGFuZCBwYXRjaDIgaW4gdjIKJmd0OyZndDsgMi4gYWRkZWQgZml4ZXMgdGFn
-CiZndDsmZ3Q7IDMuIEZpeGVkIHR5cG9zCiZndDsmZ3Q7IAomZ3Q7Jmd0OyAgIGh3L2kyYy9hc3Bl
-ZWRfaTJjLmMgICAgICAgICB8IDggKysrKy0tLS0KJmd0OyZndDsgICBpbmNsdWRlL2h3L2kyYy9h
-c3BlZWRfaTJjLmggfCA0ICsrLS0KJmd0OyZndDsgICAyIGZpbGVzIGNoYW5nZWQsIDYgaW5zZXJ0
-aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKJmd0OyZndDsgCiZndDsmZ3Q7IGRpZmYgLS1naXQgYS9o
-dy9pMmMvYXNwZWVkX2kyYy5jIGIvaHcvaTJjL2FzcGVlZF9pMmMuYwomZ3Q7Jmd0OyBpbmRleCAx
-ZjA3MWEzODExLi5lNDg1ZDhiZmI4IDEwMDY0NAomZ3Q7Jmd0OyAtLS0gYS9ody9pMmMvYXNwZWVk
-X2kyYy5jCiZndDsmZ3Q7ICsrKyBiL2h3L2kyYy9hc3BlZWRfaTJjLmMKJmd0OyZndDsgQEAgLTIz
-Niw3ICsyMzYsNyBAQCBzdGF0aWMgaW50IGFzcGVlZF9pMmNfYnVzX3NlbmQoQXNwZWVkSTJDQnVz
-ICpidXMsIHVpbnQ4X3QgcG9vbF9zdGFydCkKJmd0OyZndDsgICAgICAgdWludDMyX3QgcmVnX2J5
-dGVfYnVmID0gYXNwZWVkX2kyY19idXNfYnl0ZV9idWZfb2Zmc2V0KGJ1cyk7CiZndDsmZ3Q7ICAg
-ICAgIHVpbnQzMl90IHJlZ19kbWFfbGVuID0gYXNwZWVkX2kyY19idXNfZG1hX2xlbl9vZmZzZXQo
-YnVzKTsKJmd0OyZndDsgICAgICAgaW50IHBvb2xfdHhfY291bnQgPSBTSEFSRURfQVJSQVlfRklF
-TERfRVgzMihidXMtJmd0O3JlZ3MsIHJlZ19wb29sX2N0cmwsCiZndDsmZ3Q7IC0gICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBUWF9DT1VOVCk7CiZndDsmZ3Q7
-ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBUWF9DT1VO
-VCkgKyAxOwomZ3Q7Jmd0OyAgIAomZ3Q7Jmd0OyAgICAgICBpZiAoU0hBUkVEX0FSUkFZX0ZJRUxE
-X0VYMzIoYnVzLSZndDtyZWdzLCByZWdfY21kLCBUWF9CVUZGX0VOKSkgewomZ3Q7Jmd0OyAgICAg
-ICAgICAgZm9yIChpID0gcG9vbF9zdGFydDsgaSAmbHQ7IHBvb2xfdHhfY291bnQ7IGkrKykgewom
-Z3Q7Jmd0OyBAQCAtMjkzLDcgKzI5Myw3IEBAIHN0YXRpYyB2b2lkIGFzcGVlZF9pMmNfYnVzX3Jl
-Y3YoQXNwZWVkSTJDQnVzICpidXMpCiZndDsmZ3Q7ICAgICAgIHVpbnQzMl90IHJlZ19kbWFfbGVu
-ID0gYXNwZWVkX2kyY19idXNfZG1hX2xlbl9vZmZzZXQoYnVzKTsKJmd0OyZndDsgICAgICAgdWlu
-dDMyX3QgcmVnX2RtYV9hZGRyID0gYXNwZWVkX2kyY19idXNfZG1hX2FkZHJfb2Zmc2V0KGJ1cyk7
-CiZndDsmZ3Q7ICAgICAgIGludCBwb29sX3J4X2NvdW50ID0gU0hBUkVEX0FSUkFZX0ZJRUxEX0VY
-MzIoYnVzLSZndDtyZWdzLCByZWdfcG9vbF9jdHJsLAomZ3Q7Jmd0OyAtICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUlhfQ09VTlQpOwomZ3Q7Jmd0OyArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUlhfU0laRSkgKyAx
-OwomZ3Q7Jmd0OyAgIAomZ3Q7Jmd0OyAgICAgICBpZiAoU0hBUkVEX0FSUkFZX0ZJRUxEX0VYMzIo
-YnVzLSZndDtyZWdzLCByZWdfY21kLCBSWF9CVUZGX0VOKSkgewomZ3Q7Jmd0OyAgICAgICAgICAg
-dWludDhfdCAqcG9vbF9iYXNlID0gYWljLSZndDtidXNfcG9vbF9iYXNlKGJ1cyk7CiZndDsmZ3Q7
-IEBAIC00MTgsNyArNDE4LDcgQEAgc3RhdGljIHZvaWQgYXNwZWVkX2kyY19idXNfY21kX2R1bXAo
-QXNwZWVkSTJDQnVzICpidXMpCiZndDsmZ3Q7ICAgICAgIHVpbnQzMl90IHJlZ19pbnRyX3N0cyA9
-IGFzcGVlZF9pMmNfYnVzX2ludHJfc3RzX29mZnNldChidXMpOwomZ3Q7Jmd0OyAgICAgICB1aW50
-MzJfdCByZWdfZG1hX2xlbiA9IGFzcGVlZF9pMmNfYnVzX2RtYV9sZW5fb2Zmc2V0KGJ1cyk7CiZn
-dDsmZ3Q7ICAgICAgIGlmIChTSEFSRURfQVJSQVlfRklFTERfRVgzMihidXMtJmd0O3JlZ3MsIHJl
-Z19jbWQsIFJYX0JVRkZfRU4pKSB7CiZndDsmZ3Q7IC0gICAgICAgIGNvdW50ID0gU0hBUkVEX0FS
-UkFZX0ZJRUxEX0VYMzIoYnVzLSZndDtyZWdzLCByZWdfcG9vbF9jdHJsLCBUWF9DT1VOVCk7CiZn
-dDsmZ3Q7ICsgICAgICAgIGNvdW50ID0gU0hBUkVEX0FSUkFZX0ZJRUxEX0VYMzIoYnVzLSZndDty
-ZWdzLCByZWdfcG9vbF9jdHJsLCBUWF9DT1VOVCkgKyAxOwomZ3Q7Jmd0OyAgICAgICB9IGVsc2Ug
-aWYgKFNIQVJFRF9BUlJBWV9GSUVMRF9FWDMyKGJ1cy0mZ3Q7cmVncywgcmVnX2NtZCwgUlhfRE1B
-X0VOKSkgewomZ3Q7Jmd0OyAgICAgICAgICAgY291bnQgPSBidXMtJmd0O3JlZ3NbcmVnX2RtYV9s
-ZW5dOwomZ3Q7Jmd0OyAgICAgICB9IGVsc2UgeyAvKiBCWVRFIG1vZGUgKi8KJmd0OyZndDsgQEAg
-LTQ5MCw3ICs0OTAsNyBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfaTJjX2J1c19oYW5kbGVfY21kKEFz
-cGVlZEkyQ0J1cyAqYnVzLCB1aW50NjRfdCB2YWx1ZSkKJmd0OyZndDsgICAgICAgICAgICAqLwom
-Z3Q7Jmd0OyAgICAgICAgICAgaWYgKFNIQVJFRF9BUlJBWV9GSUVMRF9FWDMyKGJ1cy0mZ3Q7cmVn
-cywgcmVnX2NtZCwgVFhfQlVGRl9FTikpIHsKJmd0OyZndDsgICAgICAgICAgICAgICBpZiAoU0hB
-UkVEX0FSUkFZX0ZJRUxEX0VYMzIoYnVzLSZndDtyZWdzLCByZWdfcG9vbF9jdHJsLCBUWF9DT1VO
-VCkKJmd0OyZndDsgLSAgICAgICAgICAgICAgICA9PSAxKSB7CiZndDsmZ3Q7ICsgICAgICAgICAg
-ICAgICAgPT0gMCkgewomZ3Q7Jmd0OyAgICAgICAgICAgICAgICAgICBTSEFSRURfQVJSQVlfRklF
-TERfRFAzMihidXMtJmd0O3JlZ3MsIHJlZ19jbWQsIE1fVFhfQ01ELCAwKTsKJmd0OyZndDsgICAg
-ICAgICAgICAgICB9IGVsc2UgewomZ3Q7Jmd0OyAgICAgICAgICAgICAgICAgICAvKgomZ3Q7Jmd0
-OyBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9ody9pMmMvYXNwZWVkX2kyYy5oIGIvaW5jbHVkZS9ody9p
-MmMvYXNwZWVkX2kyYy5oCiZndDsmZ3Q7IGluZGV4IDUxYzk0NGVmZWEuLjJlMWUxNWFhZjAgMTAw
-NjQ0CiZndDsmZ3Q7IC0tLSBhL2luY2x1ZGUvaHcvaTJjL2FzcGVlZF9pMmMuaAomZ3Q7Jmd0OyAr
-KysgYi9pbmNsdWRlL2h3L2kyYy9hc3BlZWRfaTJjLmgKJmd0OyZndDsgQEAgLTEzOSw5ICsxMzks
-OSBAQCBSRUczMihJMkNEX0NNRCwgMHgxNCkgLyogSTJDRCBDb21tYW5kL1N0YXR1cyAqLwomZ3Q7
-Jmd0OyAgIFJFRzMyKEkyQ0RfREVWX0FERFIsIDB4MTgpIC8qIFNsYXZlIERldmljZSBBZGRyZXNz
-ICovCiZndDsmZ3Q7ICAgICAgIFNIQVJFRF9GSUVMRChTTEFWRV9ERVZfQUREUjEsIDAsIDcpCiZn
-dDsmZ3Q7ICAgUkVHMzIoSTJDRF9QT09MX0NUUkwsIDB4MUMpIC8qIFBvb2wgQnVmZmVyIENvbnRy
-b2wgKi8KJmd0OyZndDsgLSAgICBTSEFSRURfRklFTEQoUlhfQ09VTlQsIDI0LCA1KQomZ3Q7Jmd0
-OyArICAgIFNIQVJFRF9GSUVMRChSWF9DT1VOVCwgMjQsIDYpCiZndDsmZ3Q7ICAgICAgIFNIQVJF
-RF9GSUVMRChSWF9TSVpFLCAxNiwgNSkKJmd0OyZndDsgLSAgICBTSEFSRURfRklFTEQoVFhfQ09V
-TlQsIDksIDUpCiZndDsmZ3Q7ICsgICAgU0hBUkVEX0ZJRUxEKFRYX0NPVU5ULCA4LCA1KQomZ3Q7
-Jmd0OyAgICAgICBGSUVMRChJMkNEX1BPT0xfQ1RSTCwgT0ZGU0VULCAyLCA2KSAvKiBBU1QyNDAw
-ICovCiZndDsmZ3Q7ICAgUkVHMzIoSTJDRF9CWVRFX0JVRiwgMHgyMCkgLyogVHJhbnNtaXQvUmVj
-ZWl2ZSBCeXRlIEJ1ZmZlciAqLwomZ3Q7Jmd0OyAgICAgICBTSEFSRURfRklFTEQoUlhfQlVGLCA4
-LCA4KQomZ3Q7Cgo8L3ByZT48L2Rpdj48YnI+
---=_Part_323823_1116829200.1692179058336--
+The reuse of gdbstub code ensures the long-term stability of the TCG plugin
+interface for register access without incurring a burden to maintain yet
+another interface for register access.
+
+This process to add TCG plugin involves four major changes. The first one
+is to add GDBFeature structure that represents a GDB feature, which usually
+includes registers. GDBFeature can be generated from static XML files or
+dynamically generated by architecture-specific code. In fact, this is a
+refactoring independent of the feature this series adds, and potentially
+it's benefitial even without the plugin feature. The plugin feature will
+utilize this new structure to describe registers exposed to plugins.
+
+The second one is to make gdb_read_register/gdb_write_register usable
+outside of gdbstub context.
+
+The third one is to actually make registers readable for plugins.
+
+The last one is to allow to implement a QEMU plugin in C++. A plugin that
+I'll describe later is written in C++.
+
+The below is a summary of patches:
+Patch 01 fixes a bug in execlog plugin.
+Patch [02, 13] introduces GDBFeature.
+Patch [14, 17] adds information useful for plugins to GDBFeature.
+Patch [18, 20] makes registers readable outside of gdbstub context.
+Patch [21, 23] adds the feature to read registers from plugins.
+Patch [24, 25] makes it possible to write plugins in C++.
+
+The execlog plugin will have new options to demonstrate the new feature.
+I also have a plugin that uses this new feature to generate execution traces for
+Sniper processor simulator, which is available at:
+https://github.com/shioya-lab/sniper/tree/akihikodaki/bb
+
+V2 -> V3:
+  Added patch "hw/core/cpu: Return static value with gdb_arch_name()"
+  Added patch "gdbstub: Dynamically allocate target.xml buffer" (Alex Bennée)
+  Added patch "gdbstub: Introduce GDBFeatureBuilder" (Alex Bennée)
+  Dropped Reviewed-by tags for "target/*: Use GDBFeature for dynamic XML"
+  Changed gdb_find_static_feature() to abort on failure (Alex Bennée)
+  Changed the execlog plugin to log the register value only when changed
+  (Alex Bennée)
+  Dropped 0x prefixes for register value logs for conciseness
+
+V1 -> V2:
+  Added SPDX-License-Identifier: GPL-2.0-or-later (Philippe Mathieu-Daudé)
+  Split long lines. (Philippe Mathieu-Daudé)
+  Renamed gdb_features to gdb_static_features (Philippe Mathieu-Daudé)
+  Dropped RFC.
+
+Akihiko Odaki (25):
+  contrib/plugins: Use GRWLock in execlog
+  gdbstub: Introduce GDBFeature structure
+  gdbstub: Add num_regs member to GDBFeature
+  gdbstub: Introduce gdb_find_static_feature()
+  target/arm: Move the reference to arm-core.xml
+  hw/core/cpu: Replace gdb_core_xml_file with gdb_core_feature
+  gdbstub: Introduce GDBFeatureBuilder
+  target/arm: Use GDBFeature for dynamic XML
+  target/ppc: Use GDBFeature for dynamic XML
+  target/riscv: Use GDBFeature for dynamic XML
+  gdbstub: Use GDBFeature for gdb_register_coprocessor
+  gdbstub: Use GDBFeature for GDBRegisterState
+  hw/core/cpu: Return static value with gdb_arch_name()
+  gdbstub: Dynamically allocate target.xml buffer
+  gdbstub: Simplify XML lookup
+  hw/core/cpu: Remove gdb_get_dynamic_xml member
+  gdbstub: Add members to identify registers to GDBFeature
+  hw/core/cpu: Add a parameter to gdb_read_register/gdb_write_register
+  gdbstub: Hide gdb_has_xml
+  gdbstub: Expose functions to read registers
+  cpu: Call plugin hooks only when ready
+  plugins: Allow to read registers
+  contrib/plugins: Allow to log registers
+  plugins: Support C++
+  contrib/plugins: Add cc plugin
+
+ MAINTAINERS                   |   2 +-
+ docs/devel/tcg-plugins.rst    |  18 ++-
+ configure                     |  15 ++-
+ meson.build                   |   2 +-
+ gdbstub/internals.h           |  10 +-
+ include/exec/gdbstub.h        |  51 +++++++--
+ include/hw/core/cpu.h         |  17 ++-
+ include/qemu/qemu-plugin.h    |  69 +++++++++++-
+ target/alpha/cpu.h            |   6 +-
+ target/arm/cpu.h              |  37 +++----
+ target/arm/internals.h        |   2 +-
+ target/avr/cpu.h              |   6 +-
+ target/cris/cpu.h             |   9 +-
+ target/hexagon/internal.h     |   6 +-
+ target/hppa/cpu.h             |   6 +-
+ target/i386/cpu.h             |   6 +-
+ target/loongarch/internals.h  |   6 +-
+ target/m68k/cpu.h             |   6 +-
+ target/microblaze/cpu.h       |   6 +-
+ target/mips/internal.h        |   6 +-
+ target/openrisc/cpu.h         |   6 +-
+ target/ppc/cpu-qom.h          |   3 +-
+ target/ppc/cpu.h              |  15 ++-
+ target/ppc/internal.h         |   2 +-
+ target/riscv/cpu.h            |  10 +-
+ target/rx/cpu.h               |   6 +-
+ target/s390x/cpu.h            |   2 -
+ target/s390x/s390x-internal.h |   6 +-
+ target/sh4/cpu.h              |   6 +-
+ target/sparc/cpu.h            |   6 +-
+ target/tricore/cpu.h          |   6 +-
+ target/xtensa/cpu.h           |   6 +-
+ contrib/plugins/execlog.c     | 150 +++++++++++++++++++------
+ cpu.c                         |  11 --
+ gdbstub/gdbstub.c             | 203 ++++++++++++++++++++++++----------
+ gdbstub/softmmu.c             |   2 +-
+ hw/core/cpu-common.c          |  16 ++-
+ plugins/api.c                 |  40 +++++++
+ stubs/gdbstub.c               |   6 +-
+ target/alpha/gdbstub.c        |   6 +-
+ target/arm/cpu.c              |  12 +-
+ target/arm/cpu64.c            |   8 +-
+ target/arm/gdbstub.c          | 184 +++++++++++++-----------------
+ target/arm/gdbstub64.c        |  96 +++++++---------
+ target/arm/tcg/cpu32.c        |   3 +-
+ target/avr/cpu.c              |   4 +-
+ target/avr/gdbstub.c          |   6 +-
+ target/cris/gdbstub.c         |   9 +-
+ target/hexagon/cpu.c          |   5 +-
+ target/hexagon/gdbstub.c      |   6 +-
+ target/hppa/gdbstub.c         |   6 +-
+ target/i386/cpu.c             |  13 +--
+ target/i386/gdbstub.c         |  10 +-
+ target/loongarch/cpu.c        |   8 +-
+ target/loongarch/gdbstub.c    |   8 +-
+ target/m68k/cpu.c             |   7 +-
+ target/m68k/gdbstub.c         |   6 +-
+ target/m68k/helper.c          |   6 +-
+ target/microblaze/cpu.c       |   9 +-
+ target/microblaze/gdbstub.c   |   6 +-
+ target/mips/gdbstub.c         |   6 +-
+ target/nios2/cpu.c            |   6 +-
+ target/openrisc/gdbstub.c     |   6 +-
+ target/ppc/cpu_init.c         |   9 +-
+ target/ppc/gdbstub.c          |  90 ++++++---------
+ target/riscv/cpu.c            |  27 ++---
+ target/riscv/gdbstub.c        |  95 +++++++---------
+ target/rx/cpu.c               |   4 +-
+ target/rx/gdbstub.c           |   6 +-
+ target/s390x/cpu.c            |   8 +-
+ target/s390x/gdbstub.c        |  34 ++----
+ target/sh4/gdbstub.c          |   6 +-
+ target/sparc/gdbstub.c        |   6 +-
+ target/tricore/cpu.c          |   4 +-
+ target/tricore/gdbstub.c      |   6 +-
+ target/xtensa/gdbstub.c       |   6 +-
+ contrib/plugins/Makefile      |   5 +
+ contrib/plugins/cc.cc         |  17 +++
+ plugins/qemu-plugins.symbols  |   2 +
+ scripts/feature_to_c.py       | 102 +++++++++++++++++
+ scripts/feature_to_c.sh       |  69 ------------
+ tests/tcg/Makefile.target     |   3 +
+ 82 files changed, 1045 insertions(+), 678 deletions(-)
+ create mode 100644 contrib/plugins/cc.cc
+ create mode 100755 scripts/feature_to_c.py
+ delete mode 100644 scripts/feature_to_c.sh
+
+-- 
+2.41.0

@@ -1,73 +1,73 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp365049ejs;
-        Wed, 16 Aug 2023 06:42:21 -0700 (PDT)
-X-Received: by 2002:a05:6a21:35c8:b0:143:51ee:b142 with SMTP id ba8-20020a056a2135c800b0014351eeb142mr1735554pzc.59.1692193340917;
-        Wed, 16 Aug 2023 06:42:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692193340; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp365294ejs;
+        Wed, 16 Aug 2023 06:42:49 -0700 (PDT)
+X-Received: by 2002:a05:6a21:99a7:b0:134:6839:c497 with SMTP id ve39-20020a056a2199a700b001346839c497mr2233487pzb.11.1692193368757;
+        Wed, 16 Aug 2023 06:42:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692193368; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ptr9LGzpETDclUUf0hfOAae2O+06J7LeCV84F7PmcqeYBIiL68t5+b0WWx9mr+Q3Sn
-         dPipw6T90lGjddHNb1mKevD1TIZyClVzeWvKGTicwjoLF+7ZgOQscmNUWs/dZ/zYSsPx
-         Rrwts43qU6bgTfyXJvedx4TY5qQCwgnBHTB5WW3sDMWgqC7RKe/QjGYi9fO/VlbVw4oE
-         rY1aKvzS51Jv40qu18tbhdEzJl1DMVZ2XDXPH/W7egYonJ726F5ZEcy6LmiwIoOl4vJw
-         W7D8/D0MZmoTotudTJZJnTUusBiB6JFPsQO++AP9H7SFpi+6Nls90P1UarpuJohhsuHS
-         HhKg==
+        b=NiHHc5OqsIosu0TzrnQiUSG+L4yhtuGTnVIRkAdUUhiVUT/yU08KQ0eAlU12E05jOm
+         sSQCO5lEIZbr2B/12hK4PSWArY70uO2c1zj79x3NZiO1rNa+u3MMuRFd8OrRTnFt+Tc8
+         oQMTuhaWkMx/+lc9LwWaw3R2OGc5y29xKO9ESms2GF7cJrLGy8UuuEwyIv9Jxa/asuIE
+         S6P4e4lO0Qh8cZI1BLXf7L+Tv5ju1NZKZOwvLIMH28TSeqq++z5BCMqZaidpizqjGD/+
+         zxkCiPEbGF5+6YQ6TYLZlAJFn1SjG8yCTh8TBJImtmtIVqTXRbmTHkPN5J5oGZJ0vxf9
+         YQLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LoU2pS/znq+kjt+yrgvrxMpANXrwQzKAPttvmhpfpts=;
+        bh=6gfAeaNLA+PIokoYBBdAB0dQ8PQLZuwdbWdYv4LmQmA=;
         fh=fUiTdP13jeKk8+/DO5sZ9YFnMdWUGYQSHAZ2p4VPlgw=;
-        b=royldIstnshHXyQyWaLz2YX48ZOFFwiIZFXjJ9W0trP8UyXimUO3qEJiFMpwAzOptE
-         vhmxJ/QBJAd6uZJHRSZV1bVnJhQ/bG0CQKAFNXu0Ix8uwpVY5IigjhMpkKiN7gus03md
-         rlIcsgJp0lOCOnuegqPiZq8oiSgA/XatIFM9K0+9KxDkPbFBKwuseEKEJ5WTiTHrGdZ5
-         wPgbkooFY9uWKgqcfaPaly81rC84l5I2H1WOl4tLLYtuBX8gHKqkOX8OI36NWeEp55wC
-         1gjym1y8sQkMp1NET5cTh+9qh0z5OE9EPQhnRrygo1aW2vUESIH2T0l6OEue9/T566rG
-         eXuQ==
+        b=CFvxegqd5LwdLmdvBt0RNL+y0Bqi8iXdHFQLh7DyoP8qNxB2KiXCHXlBRW2qbdCsdW
+         gPu4EO5M5ZL2URVjJPecvymPXOJ2BMlE2E6jON02h+Ybk9PE5sZ4OJWa5AMrbswFZFv4
+         gtWNBVitjWGCvHszxaa6IYb8Oivuc4HgsXGB7eaBfE6Uwie+WaifsmOvL17PJs0HOWeu
+         knhhf3mZKvWeUDcGKccr9vi/0fKJrX9/AOWU0jMVzvzGBjR/CTtzCQH8ioA5FPeH6/zD
+         s2k5SLeDAmaXE1pd3FRn33CiXioDxWdLO1fQStFk6amLKT2ajfG0wjW3eRQyZeot00V9
+         fzkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=dL0piSXX;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=p4jIPIW8;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u72-20020a63794b000000b00565dd068152sor1829451pgc.8.2023.08.16.06.42.20
+        by mx.google.com with SMTPS id i16-20020aa796f0000000b00687b2cd8240sor8523821pfq.12.2023.08.16.06.42.48
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 16 Aug 2023 06:42:20 -0700 (PDT)
+        Wed, 16 Aug 2023 06:42:48 -0700 (PDT)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=dL0piSXX;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=p4jIPIW8;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193340; x=1692798140;
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193368; x=1692798168;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LoU2pS/znq+kjt+yrgvrxMpANXrwQzKAPttvmhpfpts=;
-        b=dL0piSXXpBJvuNXShqVnu09g1FrmM45clKUEBwID7vM0Z9U06VBkhTlyPwVmE9naWP
-         oazBoP9wnM5Pthb6ZpU4+w4b5SKxa+vljLaQgZ/mbEiePaUTqGK3Hh8CEWA66PgXlb3x
-         Td972ZLI3rJ2IWpzjMEFkKzRQagAkSORs0uoayv967cE6aPZLc6kDRLYVXM0d0z4Jwgc
-         2UkvnHqhzA8eQ9snjyeUpuSmVLyi+Jm+E0IxjH5B6L2rpP+5QOVV8gMdNUzvvAoh3SeX
-         tbehLN4Y5EGzwLvwOfN7o29dbhaHHnSlyPTmAHbvA6V4+vRFamvOrZx4fbXJatEFx6Tj
-         Goug==
+        bh=6gfAeaNLA+PIokoYBBdAB0dQ8PQLZuwdbWdYv4LmQmA=;
+        b=p4jIPIW8F7FZ15gXgrZC0bslxfBNgPtWNcSyqtzraoqaroZwOzPaiIInO0TSmMYZzO
+         9xAqaEfDmfZLwfb0fnEmPtLVcNT+DUGPC5gaywX8DrZ9xm9zvJJCjA47A7K4jQknlo9Q
+         bw55ibQKAIbh2jEjcBVBBUQ+B9oRxSvDmd21LavG8NQCug3VsVYYb7C04lCLDPStO3Ur
+         SUNHiyFzPZcXQkAP1l0Yx2ti90H2QwtO6vSvoT/IJR6nuhxmi081YviOJ6fshy4827Qj
+         XKTVZlG5YmKTwzhJ9yms+S+wW1FS3/eCQpdtxn25EG8JmapGcoacFSG3jht+MVs/91o/
+         gmtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692193340; x=1692798140;
+        d=1e100.net; s=20221208; t=1692193368; x=1692798168;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=LoU2pS/znq+kjt+yrgvrxMpANXrwQzKAPttvmhpfpts=;
-        b=KKEEEAVBBUwfg4FCALGRQNVHwU194TPJCHteJtB63K0QBR79KCAYx9rrPzP20BhuHM
-         NNkBNJtSgJ0quRPy0ZUACqCgBoZSOsiZZ7kmoyBqujRSEW+jYLmVwNduv4uukeoCvQSW
-         aqa9E7tf7J0un1xTIkykTSyItGn3YtBO34oNSXnBPx02zUD45lOwOrOPAYeZ0/pfaFaj
-         9Zi26wuUrvqtwvwoBpajdjdkXzAgHXSESkmidTfJZl4yttdPfEx+Ey6JyRwZfBl58Ytu
-         rBCMhqQt0SGFGDJ3HlL0hMrE2IFkLw18xV1EcH+h4CoU24hNQqwAvjrnw5ZcOmedSzmc
-         2gaQ==
-X-Gm-Message-State: AOJu0YxGT0b+uPf1Wrs3NlzJjDxm9AeJlkxK/LxvbjZLlt8qaeG7J76o
-	SPMh51UTqPcBK8xznthpa46xWg==
-X-Google-Smtp-Source: AGHT+IFLp2aEC2TKIdJM1ahnC1nevUCd8qPpGWVeOoVFE918g8rIKGLF3x7hTxd7IWZjmNejkW0fRA==
-X-Received: by 2002:a05:6a21:35c8:b0:143:51ee:b142 with SMTP id ba8-20020a056a2135c800b0014351eeb142mr1735537pzc.59.1692193340436;
-        Wed, 16 Aug 2023 06:42:20 -0700 (PDT)
+        bh=6gfAeaNLA+PIokoYBBdAB0dQ8PQLZuwdbWdYv4LmQmA=;
+        b=GgyVPoLb0+O4o7MyB8hp1R8OXFKf3ECxd811bi4P1jIhRnCJjJINcYPcN5/GZiJD0p
+         dMtYlTDHpCn3uyOXgARRSx5qt5Iqjmpio3vnPd3yuG5rHnXBrjVQVYp6gkUAJ9nvJhxZ
+         KVEhyghC6xmc7iTCI7POTn9xOUsCoPhZouj8KqdFzgD3XGZB/4n9Y8Pvd/cI3imsh0Cy
+         5VJZKfizrPnPpEBVDe+YtSBt9G6sEFNzk3IvBKgi+M+ESZZVrQZvqw6L0ZugXdwC55Tk
+         a4JSaAkaA802/t1qqKVtYVID6T2/sHCiFwfeaPkpfTmPwQEDU5Rjr39s1GlbdC1kXaTL
+         3iSQ==
+X-Gm-Message-State: AOJu0YyqPcdESOROzXav2xsaOL/NdkdHxH+056wFi+bdwpcvnr9cKl2B
+	xXgeOyr6Ro/VNGThw6dqFMni0A==
+X-Google-Smtp-Source: AGHT+IG/nPYMSYK6MQ6Gu1ZAPxNnHYFIvZlhimH4Pb3Ek6ZXKHGwleUsB56z7RG7mu/EGmUiIRX2Hg==
+X-Received: by 2002:a05:6a20:258a:b0:125:f3d8:e65b with SMTP id k10-20020a056a20258a00b00125f3d8e65bmr2046108pzd.18.1692193368270;
+        Wed, 16 Aug 2023 06:42:48 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id k3-20020a637b43000000b0056601f864aesm928355pgn.2.2023.08.16.06.42.11
+        by smtp.gmail.com with ESMTPSA id k3-20020a637b43000000b0056601f864aesm928355pgn.2.2023.08.16.06.42.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Aug 2023 06:42:20 -0700 (PDT)
+        Wed, 16 Aug 2023 06:42:48 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -121,123 +121,134 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-s390x@nongnu.org,
 	Anton Kochkov <anton.kochkov@proton.me>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 14/25] gdbstub: Dynamically allocate target.xml buffer
-Date: Wed, 16 Aug 2023 22:39:24 +0900
-Message-ID: <20230816133938.18310-15-akihiko.odaki@daynix.com>
+Subject: [PATCH v3 17/25] gdbstub: Add members to identify registers to GDBFeature
+Date: Wed, 16 Aug 2023 22:39:27 +0900
+Message-ID: <20230816133938.18310-18-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230816133938.18310-1-akihiko.odaki@daynix.com>
 References: <20230816133938.18310-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: HtfmphGoCVb3
+X-TUID: 9bAUxdwUf+lg
 
-There is no guarantee that target.xml fits in 1024 bytes, and the fixed
-buffer length requires tedious buffer overflow check. Dynamically
-allocate the target.xml buffer to resolve these problems.
+These members will be used to help plugins to identify registers.
+The added members in instances of GDBFeature dynamically generated by
+CPUs will be filled in later changes.
 
-Suggested-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- gdbstub/internals.h |  2 +-
- gdbstub/gdbstub.c   | 44 ++++++++++++++++++++++++--------------------
- gdbstub/softmmu.c   |  2 +-
- 3 files changed, 26 insertions(+), 22 deletions(-)
+ include/exec/gdbstub.h  |  3 +++
+ gdbstub/gdbstub.c       |  8 ++++++--
+ target/arm/gdbstub.c    |  2 +-
+ scripts/feature_to_c.py | 14 +++++++++++++-
+ 4 files changed, 23 insertions(+), 4 deletions(-)
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index f2b46cce41..4876ebd74f 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -33,7 +33,7 @@ typedef struct GDBProcess {
-     uint32_t pid;
-     bool attached;
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index 572abada63..f3f2c40b1a 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -13,12 +13,15 @@
+ typedef struct GDBFeature {
+     const char *xmlname;
+     const char *xml;
++    const char *name;
++    const char * const *regs;
+     int num_regs;
+ } GDBFeature;
  
--    char target_xml[1024];
-+    char *target_xml;
- } GDBProcess;
+ typedef struct GDBFeatureBuilder {
+     GDBFeature *feature;
+     GPtrArray *xml;
++    GPtrArray *regs;
+ } GDBFeatureBuilder;
  
- enum RSState {
+ 
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index c2ce970c98..452b5bf0ef 100644
+index ccb4ed9d4b..e4fbdebca4 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -366,33 +366,37 @@ static const char *get_feature_xml(const char *p, const char **newp,
+@@ -418,9 +418,10 @@ void gdb_feature_builder_init(GDBFeatureBuilder *builder, GDBFeature *feature,
  
-     name = NULL;
-     if (strncmp(p, "target.xml", len) == 0) {
--        char *buf = process->target_xml;
--        const size_t buf_sz = sizeof(process->target_xml);
--
-         /* Generate the XML description for this CPU.  */
--        if (!buf[0]) {
-+        if (!process->target_xml) {
-+            g_autoptr(GPtrArray) a = g_ptr_array_new_with_free_func(g_free);
-             GDBRegisterState *r;
- 
--            pstrcat(buf, buf_sz,
--                    "<?xml version=\"1.0\"?>"
--                    "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
--                    "<target>");
-+            g_ptr_array_add(
-+                a,
-+                g_strdup("<?xml version=\"1.0\"?>"
-+                         "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
-+                         "<target>"));
-             if (cc->gdb_arch_name) {
--                pstrcat(buf, buf_sz, "<architecture>");
--                pstrcat(buf, buf_sz, cc->gdb_arch_name(cpu));
--                pstrcat(buf, buf_sz, "</architecture>");
-+                g_ptr_array_add(
-+                    a,
-+                    g_markup_printf_escaped("<architecture>%s</architecture>",
-+                                            cc->gdb_arch_name(cpu)));
-             }
--            pstrcat(buf, buf_sz, "<xi:include href=\"");
--            pstrcat(buf, buf_sz, cc->gdb_core_feature->xmlname);
--            pstrcat(buf, buf_sz, "\"/>");
-+            g_ptr_array_add(
-+                a,
-+                g_markup_printf_escaped("<xi:include href=\"%s\"/>",
-+                                        cc->gdb_core_feature->xmlname));
-             for (r = cpu->gdb_regs; r; r = r->next) {
--                pstrcat(buf, buf_sz, "<xi:include href=\"");
--                pstrcat(buf, buf_sz, r->feature->xmlname);
--                pstrcat(buf, buf_sz, "\"/>");
-+                g_ptr_array_add(
-+                    a,
-+                    g_markup_printf_escaped("<xi:include href=\"%s\"/>",
-+                                            r->feature->xmlname));
-             }
--            pstrcat(buf, buf_sz, "</target>");
-+            g_ptr_array_add(a, g_strdup("</target>"));
-+            g_ptr_array_add(a, NULL);
-+            process->target_xml = g_strjoinv(NULL, (void *)a->pdata);
-         }
--        return buf;
-+        return process->target_xml;
-     }
-     if (cc->gdb_get_dynamic_xml) {
-         char *xmlname = g_strndup(p, len);
-@@ -2270,6 +2274,6 @@ void gdb_create_default_process(GDBState *s)
-     process = &s->processes[s->process_num - 1];
-     process->pid = pid;
-     process->attached = false;
--    process->target_xml[0] = '\0';
-+    process->target_xml = NULL;
+     builder->feature = feature;
+     builder->xml = g_ptr_array_new();
++    builder->regs = g_ptr_array_new();
+     g_ptr_array_add(builder->xml, header);
+     feature->xmlname = xmlname;
+-    feature->num_regs = 0;
++    feature->name = name;
  }
  
-diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index f509b7285d..5282324764 100644
---- a/gdbstub/softmmu.c
-+++ b/gdbstub/softmmu.c
-@@ -293,7 +293,7 @@ static int find_cpu_clusters(Object *child, void *opaque)
-         assert(cluster->cluster_id != UINT32_MAX);
-         process->pid = cluster->cluster_id + 1;
-         process->attached = false;
--        process->target_xml[0] = '\0';
-+        process->target_xml = NULL;
- 
-         return 0;
+ void gdb_feature_builder_append_tag(const GDBFeatureBuilder *builder,
+@@ -449,7 +450,7 @@ void gdb_feature_builder_append_reg(const GDBFeatureBuilder *builder,
+             name, bitsize, type);
      }
+ 
+-    builder->feature->num_regs++;
++    g_ptr_array_add(builder->regs, (void *)name);
+ }
+ 
+ void gdb_feature_builder_end(const GDBFeatureBuilder *builder)
+@@ -464,6 +465,9 @@ void gdb_feature_builder_end(const GDBFeatureBuilder *builder)
+     }
+ 
+     g_ptr_array_free(builder->xml, TRUE);
++
++    builder->feature->num_regs = builder->regs->len;
++    builder->feature->regs = (void *)g_ptr_array_free(builder->regs, FALSE);
+ }
+ 
+ const GDBFeature *gdb_find_static_feature(const char *xmlname)
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index fc5ed89e80..dbc396a88b 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -264,7 +264,7 @@ static void arm_gen_one_feature_sysreg(GDBFeatureBuilder *builder,
+                                        ARMCPRegInfo *ri, uint32_t ri_key,
+                                        int bitsize)
+ {
+-    dyn_feature->data.cpregs.keys[dyn_feature->desc.num_regs] = ri_key;
++    dyn_feature->data.cpregs.keys[builder->regs->len] = ri_key;
+ 
+     gdb_feature_builder_append_reg(builder, ri->name, bitsize,
+                                    "int", "cp_regs");
+diff --git a/scripts/feature_to_c.py b/scripts/feature_to_c.py
+index e04d6b2df7..807af0e685 100755
+--- a/scripts/feature_to_c.py
++++ b/scripts/feature_to_c.py
+@@ -50,7 +50,9 @@ def writeliteral(indent, bytes):
+         sys.stderr.write(f'unexpected start tag: {element.tag}\n')
+         exit(1)
+ 
++    feature_name = element.attrib['name']
+     regnum = 0
++    regnames = []
+     regnums = []
+     tags = ['feature']
+     for event, element in events:
+@@ -67,6 +69,7 @@ def writeliteral(indent, bytes):
+                 if 'regnum' in element.attrib:
+                     regnum = int(element.attrib['regnum'])
+ 
++                regnames.append(element.attrib['name'])
+                 regnums.append(regnum)
+                 regnum += 1
+ 
+@@ -85,6 +88,15 @@ def writeliteral(indent, bytes):
+     writeliteral(8, bytes(os.path.basename(input), 'utf-8'))
+     sys.stdout.write(',\n')
+     writeliteral(8, read)
+-    sys.stdout.write(f',\n        {num_regs},\n    }},\n')
++    sys.stdout.write(',\n')
++    writeliteral(8, bytes(feature_name, 'utf-8'))
++    sys.stdout.write(',\n        (const char * const []) {\n')
++
++    for index, regname in enumerate(regnames):
++        sys.stdout.write(f'            [{regnums[index] - base_reg}] =\n')
++        writeliteral(16, bytes(regname, 'utf-8'))
++        sys.stdout.write(',\n')
++
++    sys.stdout.write(f'        }},\n        {num_regs},\n    }},\n')
+ 
+ sys.stdout.write('    { NULL }\n};\n')
 -- 
 2.41.0

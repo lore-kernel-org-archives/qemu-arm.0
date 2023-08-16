@@ -1,73 +1,73 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp365548ejs;
-        Wed, 16 Aug 2023 06:43:18 -0700 (PDT)
-X-Received: by 2002:a05:6a21:7781:b0:13e:9451:53ee with SMTP id bd1-20020a056a21778100b0013e945153eemr2088681pzc.38.1692193397708;
-        Wed, 16 Aug 2023 06:43:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692193397; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp365653ejs;
+        Wed, 16 Aug 2023 06:43:26 -0700 (PDT)
+X-Received: by 2002:a05:6a00:88f:b0:682:7d8a:f891 with SMTP id q15-20020a056a00088f00b006827d8af891mr2695210pfj.20.1692193406492;
+        Wed, 16 Aug 2023 06:43:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692193406; cv=none;
         d=google.com; s=arc-20160816;
-        b=z4YkJexpZVK2eWVOQpoJd8GvlY1Ek+b/tQuv2393ZaNBVju2/zM8a9jkkIU4i+Pi2E
-         Z0xk4BfW7EDaG4QfsPpYFm8oO+XHnSpKItDeFWzAQkZLHIKyhvRw245TyOxnmAkttPsI
-         nmSTHIwubIyMuxr8FtH2IfzmgyjEJpEMif+zv/nnSUqE/3w3wWWdSJWu8zQQS4veiGkA
-         dtXmPzSnB316UCPtz3fI/GeaWuclpVPG4AHbOnRZSx5imW+gt5N/OEXTM/bLcJrjldxj
-         XfwXuPDf7XU5PNjPnr5+WjX/hFZH9x1KQn3Xf7vyigK6g86BYiv17kUGHbCPC9uVjwYR
-         0gvw==
+        b=0imtJD3D5ccrDUNT4/KQ4NxfdnyKEOb08ZZDCLCMNciyl1X3TdDeVl8OA9CGHJiKQz
+         Y45AkY8A1+qlbT2dEIfOBspWzYc5Tyhs8ehPMw6ZMDDrrM+mL2Q4TmKHWHU9xKfgpGUx
+         aYYD56X5MUVL1xpWYv/OAUU5SefbPbO3Z9usWcn6pdVZrnVjg8RNKijyLhEUSd7I4JZN
+         4wIhzpJ/U7/BhZtBj3s1c9of4y4jRiSoSeZs2UQNh/PsAIwr6jlWZ8ZRBMKH853onVJm
+         FEKLs4VvXxyKUhqkwqKWyYo91pkOFoz/QUhgOOuI/NnjZM3JWUki1fiyROWPKhYIivNn
+         jsHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=FeKiYP9xrSKexWAO9b8A0nNhOs6FhnCu3ht5OqePfRY=;
+        bh=0qn3f+dV41vakExUKDLgOPwYM5dZMF/vR3FB6T+MC1c=;
         fh=fUiTdP13jeKk8+/DO5sZ9YFnMdWUGYQSHAZ2p4VPlgw=;
-        b=fgDPNWOEAeZIom4p92icQWuINQN6S/A7gKi/tDCobamxWu0d07VFkcybbMH+HMLCdU
-         qo768iUkUrv52Qnw6dvjd5XI2Qk+Tzd+o9KGopjUnvgEup2YMbjb+rsuW96nEBGBKSEV
-         amMkZdlkusCcV7MVfTL6hiSSJfuYtxBTp8zzaiCFfzxUbeXxXtUqgpP5yvJ+8GYioZxS
-         8uSJQz/lWzJQwZZ221IR1FoldOjNDAMiMmad7+Iiofh4l74EwGRj1xZJXP9K9gC5rS3m
-         tBtIyoOiV43R0Ve7ksygAXkCQtfILNlPgoU1lwhS5vanS9FQdVOJ+L3ARE4pIia0HCUr
-         3DRA==
+        b=LbgRH+R2Sg/KZ9PxR7HTQrigNSMi2+eOxZom01U8Q+tzM1yA2lJ9HMDn07V7HXwnXw
+         OQeXBEpkOJce0BcAMvOUUV4iz3R70+oulvGNefKGI00hkcUcBE3oRrua343sk9pfhDxS
+         8siX+vXeiT/xULPG+mM7y22gqCuUp5Z0g5ixOB8CyTlbYtjfHwsxqwtH3riQrGYISzxB
+         qwxK6eiPYznC9raOP2PtEbqj0QJQ+5O9f4THg47lHsrGlDQ9yb357oKyFaoMqTJ72Qbu
+         a5p7JlanEoSQmO6olOotQZQP332KUXq1TXnxB0PHM1KSPRHYIQ7ag2vn/LPjq7BTJYe2
+         1YOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=zG4Vpa+1;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=s6ES09GX;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q6-20020a656a86000000b00553c0de36f0sor6831032pgu.10.2023.08.16.06.43.16
+        by mx.google.com with SMTPS id d123-20020a633681000000b00565eb0b675esor1612799pga.10.2023.08.16.06.43.26
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 16 Aug 2023 06:43:17 -0700 (PDT)
+        Wed, 16 Aug 2023 06:43:26 -0700 (PDT)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=zG4Vpa+1;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=s6ES09GX;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193396; x=1692798196;
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193406; x=1692798206;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=FeKiYP9xrSKexWAO9b8A0nNhOs6FhnCu3ht5OqePfRY=;
-        b=zG4Vpa+1bHJWs5uT7JEFhopN09hzSdvwrr51pIbR8uIWP2z+tTju1TsfSnRPUjLSGg
-         l7SBDjihWmYWtMsT/jahQBi8dTX8SikraOjSzkx41dbNwRvbS7ma2rWOS7brJk0YEDfq
-         WWvFXN4c6J08+uIo7cyXWo2w4A7czuzVmoqq8vtSCh7Z7EGduVavIMxrtxnGIp0mGjcz
-         Lg0WjAIRPgaaTwrEI96mhVCKa0/12yKd7FME8gHhvmJLS92U9kqf1RRmhFb1RH9wLNoH
-         FQvP4/AbEDTmGMAnXtjEBHoHLuDM+6IHt4DAZxi2RiNQtfHMs3v7gKCH1TTTl/5H+DT3
-         Zb1w==
+        bh=0qn3f+dV41vakExUKDLgOPwYM5dZMF/vR3FB6T+MC1c=;
+        b=s6ES09GXwAd0fqEkEwKu0lX63fhQI9WnvlcsRwm0KOPq4BMPK6+3GGxt2sOrfc4bSN
+         mh8Cjgz0SrBGhwDqgfkI1u2h8D8Cb7dV9icQwv+Wn+ALCp/vahe1MQtYDoj1yjZHz2eB
+         JjXvhnIpMbDGDBLMdMedb+Ydbo4nYqCHD6/QnHJHkiP/LEe1/gjMx8Nn09EOvTAJnHLw
+         h482DyCdO4NgtXe1F/oW7WXnZkREyrsCe9ag2suMUeI8+Dl4oWCCJYKZN8yTPwfSre0w
+         6T5217hBqZRuvb/V8SgnX6x25yaL1Y+yiXUbdcRmH4MvB0bQkGSsXcy8opHyDsVLDA8P
+         IsAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692193396; x=1692798196;
+        d=1e100.net; s=20221208; t=1692193406; x=1692798206;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=FeKiYP9xrSKexWAO9b8A0nNhOs6FhnCu3ht5OqePfRY=;
-        b=fgZF2cTemZ3d03Y9N4O4K8F0S4yZZ7cYADtsHG9A+SZ2W+woNMTTr4Ps+Q0I48dh7X
-         Hlg8v+bF36pk8Wkw1U/ic40cVgO2/S6BnMLFVlbFJiRfsaUXNwE+o4cv9oV7r7NUqaF9
-         clvq39M8qNcSr0gur/T4Lwto6+nvSTTYjPCU4nzmFQN61bCpjQKpUJg4hEd5rwPyldKC
-         gt4JcV1hqY9WM1lft2exOSqUSoUETrp8eVRChq+NokBXdastRHEoeKbOOxMCIcs/8wdS
-         2UQvjEEvwtuLLMs2k6WvfdSCU/lz5AWDN3Rq3FtM12EJiBcvyUGIp3Ce5QOqEsf3YMp2
-         2GjA==
-X-Gm-Message-State: AOJu0YzmAgJ38UrlafiOwgiv4HnApYrOzUUmK2YLX2HF97S/jRa3mP+i
-	yhpHtT2Yw/K2gL865g+E5e3akg==
-X-Google-Smtp-Source: AGHT+IGtEhNmlyU4gpOyiAuSErTWEb4DF6l1/uj7/5GgR03iJXKDK9tbyR4hSxGerYyDp1LAsF5JjA==
-X-Received: by 2002:a05:6a20:3953:b0:140:6979:295d with SMTP id r19-20020a056a20395300b001406979295dmr2266571pzg.2.1692193396610;
-        Wed, 16 Aug 2023 06:43:16 -0700 (PDT)
+        bh=0qn3f+dV41vakExUKDLgOPwYM5dZMF/vR3FB6T+MC1c=;
+        b=Wy64qxd82+/uoNzJJ9oAOK5a/zUUXdpBrRplTG5euNN1H+9dzIdODxxfs3n2WYiaAL
+         3QuFHIM4F0cKf6kDT938+QbVaRiCDh5qESv7bmp3deI4SZBpkp4JyUGWyOlABbKYFcgv
+         nHRW93eodM3/CzitCZkq7Vc/NoBJOlBgw0/s4ZPWkd4zSfhhdkbt5v/UjCx8mnYZoGmh
+         269kj7w9xRDIXJdYqA2JRdKtEzWP9bGe4LUTpUNG55tNsTjpmmHaPic6eWWzX0pn1F80
+         ARS0+Fg/58B4itqZSlS5KbaLLthTKI+UW4mvkvhZ/i672LjPwbPL2Cj4BdkeXZpXKSaP
+         xNjQ==
+X-Gm-Message-State: AOJu0YyfASWzPUEcl/vdOnH+TjJdZsPKS6MVEzP9WQHvb9EZe701gHB6
+	/cN3wDBppz/2obfAt7yQ41EFVg==
+X-Google-Smtp-Source: AGHT+IEE6zg1iisf/BY2GI7OfzNzFpNOMNhKi2CMjEzPXIMNiLOzvHWmfvFey3Dqe/KWNFVdtTdkKg==
+X-Received: by 2002:a05:6a20:3d07:b0:13b:7848:9515 with SMTP id y7-20020a056a203d0700b0013b78489515mr2597217pzi.13.1692193405971;
+        Wed, 16 Aug 2023 06:43:25 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id k3-20020a637b43000000b0056601f864aesm928355pgn.2.2023.08.16.06.43.07
+        by smtp.gmail.com with ESMTPSA id k3-20020a637b43000000b0056601f864aesm928355pgn.2.2023.08.16.06.43.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Aug 2023 06:43:16 -0700 (PDT)
+        Wed, 16 Aug 2023 06:43:25 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -121,137 +121,90 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-s390x@nongnu.org,
 	Anton Kochkov <anton.kochkov@proton.me>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v3 20/25] gdbstub: Expose functions to read registers
-Date: Wed, 16 Aug 2023 22:39:30 +0900
-Message-ID: <20230816133938.18310-21-akihiko.odaki@daynix.com>
+Subject: [PATCH v3 21/25] cpu: Call plugin hooks only when ready
+Date: Wed, 16 Aug 2023 22:39:31 +0900
+Message-ID: <20230816133938.18310-22-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230816133938.18310-1-akihiko.odaki@daynix.com>
 References: <20230816133938.18310-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: cwCFdUisjDnW
+X-TUID: +hniW9GNakQi
 
-gdb_foreach_feature() enumerates features that are useful to identify
-registers. gdb_read_register() actually reads registers.
+The initialization and exit hooks will not affect the state of vCPU,
+but they may depend on the state of vCPU. Therefore, it's better to
+call plugin hooks after the vCPU state is fully initialized and before
+it gets uninitialized.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- include/exec/gdbstub.h |  6 ++++++
- gdbstub/gdbstub.c      | 38 ++++++++++++++++++++++++++++++--------
- 2 files changed, 36 insertions(+), 8 deletions(-)
+ cpu.c                | 11 -----------
+ hw/core/cpu-common.c | 10 ++++++++++
+ 2 files changed, 10 insertions(+), 11 deletions(-)
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 5cba2933d2..151e9e81c6 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -59,6 +59,12 @@ void gdb_feature_builder_end(const GDBFeatureBuilder *builder);
+diff --git a/cpu.c b/cpu.c
+index 1c948d1161..2552c85249 100644
+--- a/cpu.c
++++ b/cpu.c
+@@ -42,7 +42,6 @@
+ #include "hw/core/accel-cpu.h"
+ #include "trace/trace-root.h"
+ #include "qemu/accel.h"
+-#include "qemu/plugin.h"
  
- const GDBFeature *gdb_find_static_feature(const char *xmlname);
+ uintptr_t qemu_host_page_size;
+ intptr_t qemu_host_page_mask;
+@@ -148,11 +147,6 @@ void cpu_exec_realizefn(CPUState *cpu, Error **errp)
+     /* Wait until cpu initialization complete before exposing cpu. */
+     cpu_list_add(cpu);
  
-+void gdb_foreach_feature(CPUState *cpu,
-+                         void (* callback)(void *, const GDBFeature *, int),
-+                         void *opaque);
-+
-+int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg, bool has_xml);
-+
- void gdb_set_stop_cpu(CPUState *cpu);
+-    /* Plugin initialization must wait until cpu_index assigned. */
+-    if (tcg_enabled()) {
+-        qemu_plugin_vcpu_init_hook(cpu);
+-    }
+-
+ #ifdef CONFIG_USER_ONLY
+     assert(qdev_get_vmsd(DEVICE(cpu)) == NULL ||
+            qdev_get_vmsd(DEVICE(cpu))->unmigratable);
+@@ -179,11 +173,6 @@ void cpu_exec_unrealizefn(CPUState *cpu)
+     }
+ #endif
  
- /* in gdbstub-xml.c, generated by scripts/feature_to_c.py */
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 5974af7c8f..e395a58db4 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -483,14 +483,32 @@ const GDBFeature *gdb_find_static_feature(const char *xmlname)
-     abort();
- }
+-    /* Call the plugin hook before clearing cpu->cpu_index in cpu_list_remove */
+-    if (tcg_enabled()) {
+-        qemu_plugin_vcpu_exit_hook(cpu);
+-    }
+-
+     cpu_list_remove(cpu);
+     /*
+      * Now that the vCPU has been removed from the RCU list, we can call
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index 549f52f46f..e06a70007a 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -211,6 +211,11 @@ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
+         cpu_resume(cpu);
+     }
  
--static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-+void gdb_foreach_feature(CPUState *cpu,
-+                         void (* callback)(void *, const GDBFeature *, int),
-+                         void *opaque)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+    GDBRegisterState *r;
-+
-+    if (!cc->gdb_core_feature) {
-+        return;
++    /* Plugin initialization must wait until the cpu is fully realized. */
++    if (tcg_enabled()) {
++        qemu_plugin_vcpu_init_hook(cpu);
 +    }
 +
-+    callback(opaque, cc->gdb_core_feature, 0);
-+
-+    for (r = cpu->gdb_regs; r; r = r->next) {
-+        callback(opaque, r->feature, r->base_reg);
+     /* NOTE: latest generic point where the cpu is fully realized */
+ }
+ 
+@@ -218,6 +223,11 @@ static void cpu_common_unrealizefn(DeviceState *dev)
+ {
+     CPUState *cpu = CPU(dev);
+ 
++    /* Call the plugin hook before clearing the cpu is fully unrealized */
++    if (tcg_enabled()) {
++        qemu_plugin_vcpu_exit_hook(cpu);
 +    }
-+}
 +
-+int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg, bool has_xml)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
-     CPUArchState *env = cpu->env_ptr;
-     GDBRegisterState *r;
- 
-     if (reg < cc->gdb_num_core_regs) {
--        return cc->gdb_read_register(cpu, buf, reg, gdb_has_xml);
-+        return cc->gdb_read_register(cpu, buf, reg, has_xml);
-     }
- 
-     for (r = cpu->gdb_regs; r; r = r->next) {
-@@ -501,14 +519,15 @@ static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-     return 0;
+     /* NOTE: latest generic point before the cpu is fully unrealized */
+     cpu_exec_unrealizefn(cpu);
  }
- 
--static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
-+static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg,
-+                              bool has_xml)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
-     CPUArchState *env = cpu->env_ptr;
-     GDBRegisterState *r;
- 
-     if (reg < cc->gdb_num_core_regs) {
--        return cc->gdb_write_register(cpu, mem_buf, reg, gdb_has_xml);
-+        return cc->gdb_write_register(cpu, mem_buf, reg, has_xml);
-     }
- 
-     for (r = cpu->gdb_regs; r; r = r->next) {
-@@ -1134,7 +1153,7 @@ static void handle_set_reg(GArray *params, void *user_ctx)
-     reg_size = strlen(get_param(params, 1)->data) / 2;
-     gdb_hextomem(gdbserver_state.mem_buf, get_param(params, 1)->data, reg_size);
-     gdb_write_register(gdbserver_state.g_cpu, gdbserver_state.mem_buf->data,
--                       get_param(params, 0)->val_ull);
-+                       get_param(params, 0)->val_ull, gdb_has_xml);
-     gdb_put_packet("OK");
- }
- 
-@@ -1154,7 +1173,8 @@ static void handle_get_reg(GArray *params, void *user_ctx)
- 
-     reg_size = gdb_read_register(gdbserver_state.g_cpu,
-                                  gdbserver_state.mem_buf,
--                                 get_param(params, 0)->val_ull);
-+                                 get_param(params, 0)->val_ull,
-+                                 gdb_has_xml);
-     if (!reg_size) {
-         gdb_put_packet("E14");
-         return;
-@@ -1241,7 +1261,8 @@ static void handle_write_all_regs(GArray *params, void *user_ctx)
-     for (reg_id = 0;
-          reg_id < gdbserver_state.g_cpu->gdb_num_g_regs && len > 0;
-          reg_id++) {
--        reg_size = gdb_write_register(gdbserver_state.g_cpu, registers, reg_id);
-+        reg_size = gdb_write_register(gdbserver_state.g_cpu, registers, reg_id,
-+                                      gdb_has_xml);
-         len -= reg_size;
-         registers += reg_size;
-     }
-@@ -1259,7 +1280,8 @@ static void handle_read_all_regs(GArray *params, void *user_ctx)
-     for (reg_id = 0; reg_id < gdbserver_state.g_cpu->gdb_num_g_regs; reg_id++) {
-         len += gdb_read_register(gdbserver_state.g_cpu,
-                                  gdbserver_state.mem_buf,
--                                 reg_id);
-+                                 reg_id,
-+                                 gdb_has_xml);
-     }
-     g_assert(len == gdbserver_state.mem_buf->len);
- 
 -- 
 2.41.0

@@ -1,68 +1,69 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp194251ejs;
-        Wed, 16 Aug 2023 01:33:47 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGqVmjgqOzoL48XLN9CDL1ihkoqOolFiUFAkoEoNaadaIHaW7crnEL9VPpzUDJ/bmNV8kcW
-X-Received: by 2002:a0c:aa93:0:b0:63c:efa5:2860 with SMTP id f19-20020a0caa93000000b0063cefa52860mr1017919qvb.25.1692174827311;
-        Wed, 16 Aug 2023 01:33:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692174827; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp194287ejs;
+        Wed, 16 Aug 2023 01:33:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEcRwTk2KD9aOm9oVbpXXwPo6zNsaP+WPvVQvqvyQRtJAJ5icLBFQz5yxCRd4WRwaAtOFHQ
+X-Received: by 2002:a0c:8e45:0:b0:642:a5da:f0a7 with SMTP id w5-20020a0c8e45000000b00642a5daf0a7mr1032199qvb.26.1692174833509;
+        Wed, 16 Aug 2023 01:33:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692174833; cv=none;
         d=google.com; s=arc-20160816;
-        b=NNS0sJ5reGzrgXMOvd/+UYFWkeZTY5mRcdlvBr7W7oAiA2fN0eHI5ZncG+0TSYjj+k
-         WOtkl/lq3EFxZbqqBoXozTaP6vBiMZp+h42QeY00QJ2emqIGjyBbj32Bjnwlrcidzwf6
-         SDci1hZHYrLDp97GQQA5Hugu41jCHT84id0XfUeRbzseXcrb8NQNlZ1hXdjtDjziWcpe
-         bqWXUPGJ+kKL1gDsjkKQHHuSF3RS5TTXSj5WTVQ8CpmgIeFHwOzqdbUJxDAE+6f4btGN
-         lH7gZbe9X3BkOtqtKOhfWKlQwoiRuylRBV9+gki0xum2G2h65hVT9metEDupu0EmoIDA
-         zkGg==
+        b=FDxBT+YzZFyXqg/tLci+vAtHBSkAORm63BQTv4RCzs1I7UVDdvtX3VRVazZS+QOkEb
+         HxwDiVO8FPrGeibobzFe2wGar5LFjxLjnWi7veVTXtxNZcff/dVhGNwGSFLeSwoCFlIv
+         4MR+oqAjraabrN9v0zQyeWWVbQqA9A/5JXYoNglSneU1Fpbu5TUvuORGTeluEwUyATfr
+         90BivIj4uelD9S1dKZsbjYyEGuR5Px05DOJDreTuNWgvyl3YNNdYvJ1GeVEMGmpkNUur
+         gfm19UTdhOH7G+jZzuYEtdnsRm9zH6/EwA4YlS58SFCcebclbWzQqXTWPEVr3ddsprLy
+         YJIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=t89Vxrd+rxiPHmZup8msBFFSrXyOfeLva0gDuWtuAog=;
+        bh=+uqFttVPoe9Lpmlx4eFKXpIeIo4xKpkdgP4Z5o1Tuso=;
         fh=v8+VPibdS732NXshY3GJywSKaWylPS6pTBiDBgrZNi8=;
-        b=FgQc5RhdOYUcTUGgdd7S8PDVnOAPO2qu+Sf7O7H4ktStmLCK/TLXeSU59q7dcJ3bCS
-         bq0N9FCu56Fc3DLOSKPPS9hAtYaOSj/O4dhrn/fgJQdSTv9olqAbR0I5S9758yJCrAhE
-         6bbFdfvnhEJSUcf8Yq1Usmto0vtlhmPZuMywpYf8F2eob0zVkypjWKWxnPSh60GejC3f
-         xJjHLOsqcDvx/EkrFWl/CVCbaCmlpZwjSxotlqBjHr8U3982u16H2kHgD2DU7wa9bXaB
-         fUPIOgywv3IGj7yltgM2wqXCXn3jRycAnE66HOjiZUQxdlUYvRYiXUERQ4Rhtlcv8UtF
-         WV9Q==
+        b=jPsVnK3RrogeHODxepjpSea7zj28Z8FDMEGVYBvyfAFt3TdLnyasla1DBFVphE1HAR
+         iPCoYeLcxPEtR6hL0EOezfyxc0zDONVYa6th3Ex7VHDI/Kd5DqNb6iZE43rAwFtkU6ng
+         mCEdM8P6xwiYlB/TMIQ/UVgccUWUSHxWGN+YA1kdBERXdln22AARYM0UJKKLZ5OunjdO
+         qCZAxj8YBictoFNQWJ8YzeLu38kcwts2OieAvclMYFLVbBFdkNAysNNa9PmY5DUtMSiP
+         a93UM6PwermVDuwz3Jl6z0fGrSkqj5lZCI/pdqV5X+Pw9Nrgsy0aG1SieQZ4Z2sM5BA6
+         BdNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x4-20020a0ce0c4000000b006473a4de10fsi1616836qvk.350.2023.08.16.01.33.47
+        by mx.google.com with ESMTPS id a4-20020a0ca984000000b0063d226f8f5esi6846103qvb.516.2023.08.16.01.33.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Aug 2023 01:33:47 -0700 (PDT)
+        Wed, 16 Aug 2023 01:33:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qWByC-00062y-Sc; Wed, 16 Aug 2023 04:33:37 -0400
+	id 1qWByD-000639-Ev; Wed, 16 Aug 2023 04:33:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=V02R=EB=kaod.org=clg@ozlabs.org>)
- id 1qWBy3-00062X-Fk; Wed, 16 Aug 2023 04:33:29 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1qWBy2-00062V-W9; Wed, 16 Aug 2023 04:33:28 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=V02R=EB=kaod.org=clg@ozlabs.org>)
- id 1qWBxz-0006E7-Ls; Wed, 16 Aug 2023 04:33:26 -0400
+ id 1qWBxz-0006E9-Oz; Wed, 16 Aug 2023 04:33:26 -0400
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4RQhGv4v2jz4wy3;
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4RQhGv530qz4wy4;
  Wed, 16 Aug 2023 18:33:11 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4RQhGq6Wkbz4wxN;
- Wed, 16 Aug 2023 18:33:07 +1000 (AEST)
-Message-ID: <1780d401-ffe0-d1a6-54cf-93709848b056@kaod.org>
-Date: Wed, 16 Aug 2023 10:33:05 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4RQhGq70G0z4wxn;
+ Wed, 16 Aug 2023 18:33:04 +1000 (AEST)
+Message-ID: <73d307ba-263c-b059-06f7-244ee4c4aa45@kaod.org>
+Date: Wed, 16 Aug 2023 10:32:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH v3 2/3] hw/i2c/aspeed: Fix TXBUF transmission start
- position error
+Subject: Re: [PATCH v3 1/3] hw/i2c/aspeed: Fix Tx count and Rx size error in
+ buffer pool mode
 Content-Language: en-US
 To: Hang Yu <francis_yuu@stu.pku.edu.cn>, qemu-devel@nongnu.org
 Cc: komlodi@google.com, peter@pjd.dev,
@@ -70,18 +71,19 @@ Cc: komlodi@google.com, peter@pjd.dev,
  Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, qemu-stable@nongnu.org
 References: <20230812065230.8839-1-francis_yuu@stu.pku.edu.cn>
- <20230812065230.8839-3-francis_yuu@stu.pku.edu.cn>
+ <20230812065230.8839-2-francis_yuu@stu.pku.edu.cn>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20230812065230.8839-3-francis_yuu@stu.pku.edu.cn>
+In-Reply-To: <20230812065230.8839-2-francis_yuu@stu.pku.edu.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=V02R=EB=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.045, SPF_HELO_PASS=-0.001,
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.045,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -97,23 +99,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aC2vBgaibqEn
+X-TUID: PJJXiZ7zH5IV
 
 On 8/12/23 08:52, Hang Yu wrote:
-> According to the ast2600 datasheet and the linux aspeed i2c driver,
-> the TXBUF transmission start position should be TXBUF[0] instead
-> of TXBUF[1],so the arg pool_start is useless,and the address is not
-> included in TXBUF.So even if Tx Count equals zero,there is at least
-> 1 byte data needs to be transmitted,and M_TX_CMD should not be cleared
-> at this condition.The driver url is:
-> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v5.15/drivers/i2c/busses/i2c-ast2600.c
+> Fixed inconsistency between the regisiter bit field definition header file
+> and the ast2600 datasheet. The reg name is I2CD1C:Pool Buffer Control
+> Register in old register mode and  I2CC0C: Master/Slave Pool Buffer Control
+> Register in new register mode. They share bit field
+> [12:8]:Transmit Data Byte Count and bit field
+> [29:24]:Actual Received Pool Buffer Size according to the datasheet.
+> According to the ast2600 datasheet,the actual Tx count is
+> Transmit Data Byte Count plus 1, and the max Rx size is
+> Receive Pool Buffer Size plus 1, both in Pool Buffer Control Register.
+> The version before forgot to plus 1, and mistake Rx count for Rx size.
 > 
 > Signed-off-by: Hang Yu <francis_yuu@stu.pku.edu.cn>
+> Fixes: 3be3d6ccf2ad ("aspeed: i2c: Migrate to registerfields API")
 
-This is -stable material with the previous patch. It fixes support for
+This is -stable material with the following patch. It fixes support for
 the v08.06 SDK.
-
-Fixes: 6054fc73e8f4 ("aspeed/i2c: Add support for pool buffer transfers")
 
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
@@ -124,90 +128,68 @@ C.
 
 > ---
 > v2-->v3:
-> No change.
+> 1. Merged patch1 and patch2 in v2
+> 2. added fixes tag
+> 3. Fixed typos
 > 
->   hw/i2c/aspeed_i2c.c | 30 ++++++------------------------
->   1 file changed, 6 insertions(+), 24 deletions(-)
+>   hw/i2c/aspeed_i2c.c         | 8 ++++----
+>   include/hw/i2c/aspeed_i2c.h | 4 ++--
+>   2 files changed, 6 insertions(+), 6 deletions(-)
 > 
 > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index e485d8bfb8..44905d7899 100644
+> index 1f071a3811..e485d8bfb8 100644
 > --- a/hw/i2c/aspeed_i2c.c
 > +++ b/hw/i2c/aspeed_i2c.c
-> @@ -226,7 +226,7 @@ static int aspeed_i2c_dma_read(AspeedI2CBus *bus, uint8_t *data)
->       return 0;
->   }
->   
-> -static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
-> +static int aspeed_i2c_bus_send(AspeedI2CBus *bus)
->   {
->       AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
->       int ret = -1;
-> @@ -239,7 +239,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
->                                                   TX_COUNT) + 1;
+> @@ -236,7 +236,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
+>       uint32_t reg_byte_buf = aspeed_i2c_bus_byte_buf_offset(bus);
+>       uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
+>       int pool_tx_count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl,
+> -                                                TX_COUNT);
+> +                                                TX_COUNT) + 1;
 >   
 >       if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
-> -        for (i = pool_start; i < pool_tx_count; i++) {
-> +        for (i = 0; i < pool_tx_count; i++) {
->               uint8_t *pool_base = aic->bus_pool_base(bus);
->   
->               trace_aspeed_i2c_bus_send("BUF", i + 1, pool_tx_count,
-> @@ -273,7 +273,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
->           }
->           SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, TX_DMA_EN, 0);
->       } else {
-> -        trace_aspeed_i2c_bus_send("BYTE", pool_start, 1,
-> +        trace_aspeed_i2c_bus_send("BYTE", 0, 1,
->                                     bus->regs[reg_byte_buf]);
->           ret = i2c_send(bus->bus, bus->regs[reg_byte_buf]);
->       }
-> @@ -446,10 +446,8 @@ static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
->    */
->   static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
->   {
-> -    uint8_t pool_start = 0;
->       uint32_t reg_intr_sts = aspeed_i2c_bus_intr_sts_offset(bus);
->       uint32_t reg_cmd = aspeed_i2c_bus_cmd_offset(bus);
-> -    uint32_t reg_pool_ctrl = aspeed_i2c_bus_pool_ctrl_offset(bus);
+>           for (i = pool_start; i < pool_tx_count; i++) {
+> @@ -293,7 +293,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
 >       uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
+>       uint32_t reg_dma_addr = aspeed_i2c_bus_dma_addr_offset(bus);
+>       int pool_rx_count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl,
+> -                                                RX_COUNT);
+> +                                                RX_SIZE) + 1;
 >   
->       if (!aspeed_i2c_check_sram(bus)) {
-> @@ -483,27 +481,11 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
->   
->           SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_START_CMD, 0);
->   
-> -        /*
-> -         * The START command is also a TX command, as the slave
-> -         * address is sent on the bus. Drop the TX flag if nothing
-> -         * else needs to be sent in this sequence.
-> -         */
-> -        if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
-> -            if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT)
-> -                == 0) {
-> -                SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_TX_CMD, 0);
-> -            } else {
-> -                /*
-> -                 * Increase the start index in the TX pool buffer to
-> -                 * skip the address byte.
-> -                 */
-> -                pool_start++;
-> -            }
-> -        } else if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_DMA_EN)) {
-> +        if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_DMA_EN)) {
->               if (bus->regs[reg_dma_len] == 0) {
+>       if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_BUFF_EN)) {
+>           uint8_t *pool_base = aic->bus_pool_base(bus);
+> @@ -418,7 +418,7 @@ static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
+>       uint32_t reg_intr_sts = aspeed_i2c_bus_intr_sts_offset(bus);
+>       uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
+>       if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_BUFF_EN)) {
+> -        count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT);
+> +        count = SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT) + 1;
+>       } else if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_DMA_EN)) {
+>           count = bus->regs[reg_dma_len];
+>       } else { /* BYTE mode */
+> @@ -490,7 +490,7 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
+>            */
+>           if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
+>               if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT)
+> -                == 1) {
+> +                == 0) {
 >                   SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_TX_CMD, 0);
->               }
-> -        } else {
-> +        } else if (!SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
->               SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_TX_CMD, 0);
->           }
->   
-> @@ -520,7 +502,7 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
->   
->       if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, M_TX_CMD)) {
->           aspeed_i2c_set_state(bus, I2CD_MTXD);
-> -        if (aspeed_i2c_bus_send(bus, pool_start)) {
-> +        if (aspeed_i2c_bus_send(bus)) {
->               SHARED_ARRAY_FIELD_DP32(bus->regs, reg_intr_sts, TX_NAK, 1);
->               i2c_end_transfer(bus->bus);
->           } else {
+>               } else {
+>                   /*
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index 51c944efea..2e1e15aaf0 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -139,9 +139,9 @@ REG32(I2CD_CMD, 0x14) /* I2CD Command/Status */
+>   REG32(I2CD_DEV_ADDR, 0x18) /* Slave Device Address */
+>       SHARED_FIELD(SLAVE_DEV_ADDR1, 0, 7)
+>   REG32(I2CD_POOL_CTRL, 0x1C) /* Pool Buffer Control */
+> -    SHARED_FIELD(RX_COUNT, 24, 5)
+> +    SHARED_FIELD(RX_COUNT, 24, 6)
+>       SHARED_FIELD(RX_SIZE, 16, 5)
+> -    SHARED_FIELD(TX_COUNT, 9, 5)
+> +    SHARED_FIELD(TX_COUNT, 8, 5)
+>       FIELD(I2CD_POOL_CTRL, OFFSET, 2, 6) /* AST2400 */
+>   REG32(I2CD_BYTE_BUF, 0x20) /* Transmit/Receive Byte Buffer */
+>       SHARED_FIELD(RX_BUF, 8, 8)
 

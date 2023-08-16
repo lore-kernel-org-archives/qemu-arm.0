@@ -1,86 +1,86 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp246174ejs;
-        Wed, 16 Aug 2023 03:21:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHbsqlkS/jpRh0+wfGOycrOMTw8U8GBlT/m12GZlalZCFQ50TW7dUEF5mKsYemSSuh9jfH+
-X-Received: by 2002:a0d:eb81:0:b0:58c:b8b4:2785 with SMTP id u123-20020a0deb81000000b0058cb8b42785mr1238368ywe.45.1692181286848;
-        Wed, 16 Aug 2023 03:21:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692181286; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp308477ejs;
+        Wed, 16 Aug 2023 05:15:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHQD0cdEPjF31N7y6UqwjaWQIKe2mvxlsJB06QL9qZ2MUwy6v+K/X1ONaAS6a8P6LsblIAD
+X-Received: by 2002:a25:e091:0:b0:d71:696a:25f2 with SMTP id x139-20020a25e091000000b00d71696a25f2mr1806382ybg.28.1692188107976;
+        Wed, 16 Aug 2023 05:15:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692188107; cv=none;
         d=google.com; s=arc-20160816;
-        b=euE/Mv2dEqCtX7MgRhRfe+wGI4zgAf+LS2PJIhFz4ZtHe0b8JH0jbAaIPW589mEf9m
-         ZDfxxzmUUdPei/g17Xkynz+VX4g7+2v85o78Cqw4eKK2LqrHZIW+v/V/Y+KlsR/52Px4
-         +G7OKSOkLKS38a8ZF68TSYbUZZmDaYRd/peqd9PB5tl/UZGQLzMIh0G/M2Ywwrw7x4qg
-         6nJ/eLxZtZcW4fWKiFd3m53faXyMUHDHasgBpfH4cHnPGHOhJoTf+d3XX5A7/aTYRzde
-         0LpuGLJVg/bqUtegC9LnPKTjnz4dK8tI0qxmk9DPQMiXjee1lClazf7eoMJ53AkyeYJn
-         RxpA==
+        b=cI/L4VvZlRLfTNqhX/RrN6k+fKaWClYOPDpwyBXwFfj7nnnIZSNu627jlD1I5YPGPq
+         wtTd4lzlcE0j3yNxS6fy7JS6QpRGCLPBp4WyviGLG7EeuTbbmWXdYNxOBigKby8nispw
+         fiv/6WJRr2KiUliExAiGPPNguFBnDv7OlbrpIvwJ+wAq4iHQg7NxHDB2Th1ovwcCtNDI
+         v2siWTtGMck6tNN4pUep2ZA02oRFKomFaSVENnkdDblJI9x2GHE9FCHSGTOBIPHr0w7Y
+         jS/YwzL6iKijznnS2elMNcQ7B5J4vOOSTvThUMtwPxpEuWFPyMvQ5uQWc4+VG7O6esda
+         Spsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:user-agent:content-transfer-encoding:references
          :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=my98DqpJsGjhJRWyTjoeT8RWhtWMpxbap4VzCASW7+8=;
+        bh=fkcoUQO65x6p8ntqiks4DWdDPSArzB/Mrz2hQCYPFos=;
         fh=DJ3cW1lhZUD6rdt+wp48oldBTaPOco977KIJI8tUevE=;
-        b=v/1yAbegkrIZmL9BCf9ZIugweoi4hnZvLP4bYQDPc2hybEX81Ume+7VPlGBDta8k7r
-         zdw8x6zbpzxoIVAGSf8WvxAYvKWENuId7xO0BwhBkjoMhn0fFBKCFof92u5/PDjbDU8d
-         Ik65uL4k/sDQr1crvsyazVkmPDVRH50VPg1EPBvxWmndN5vVfxSX34lRkISe18OBOzJy
-         /OGD4oCdd+Zf8VyjdO3po61br7C5UVt1iHcR1MNgUjanF2LxATFI74GzwbFc1DjeTvAz
-         4Z0+cBdTukMmrJlYQHsi2fRrE64Y7HsDHswRagiCGsuLAtjWklW6d4OzwgcMbM64ysqJ
-         CzvQ==
+        b=MnIAH9HMz8/YG13ZESVA17HaOc9AWczivZ7x1sbfLhgNn3XWg8S2hf8v4EcFP3A81e
+         Xb6yX+4fB7CvuGkrSau0Sw8i6aXYkCf1r+eoo5J53xtDDNsIU5/Klpx1yD0mM5Z6WQV/
+         ykLRoRC5hy6ijHYQvu0Bm7BwHWSfu9KB+lnQgj3kiHdnyZVH6XCa6Vf/oesVDTO67ZZ9
+         hEdl50GeAS4mIp1iqdcQlBf3BoXKFdeoloVibEX2vWvu4hm1fIUNDrMSSLmipJak9KO2
+         gNGrJVNKboMdDiYl1qi5lWcDrdKrbEmVH+eszLPXIqUgIVeVRo47xppU1lxS14pKSphG
+         pwFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=WfjkkTrU;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=k+ZIlFUP;
        spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <iii@linux.ibm.com>
 Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id i7-20020a81aa07000000b00576c835770asi11771432ywh.204.2023.08.16.03.21.26
+        by mx.google.com with ESMTPS id n194-20020a25dacb000000b00d7254bfa848si339304ybf.85.2023.08.16.05.15.07
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 16 Aug 2023 03:21:26 -0700 (PDT)
+        Wed, 16 Aug 2023 05:15:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=WfjkkTrU;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=k+ZIlFUP;
        spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 37GA9kDV029758;
-	Wed, 16 Aug 2023 10:21:15 GMT
+Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 37GCCJUM021627;
+	Wed, 16 Aug 2023 12:14:55 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
  from : to : cc : date : in-reply-to : references : content-type :
  content-transfer-encoding : mime-version; s=pp1;
- bh=my98DqpJsGjhJRWyTjoeT8RWhtWMpxbap4VzCASW7+8=;
- b=WfjkkTrUAEYdjCVGCLBfFQ6ytDlNo33R6A3Uu4stfk94gj31VXuZWi3AlMiU/sX+eT/+
- iXBOhW+6Z/DM24XOUw5wFcO67GdEtbr/10RzU0v5bLHoRCH2DfPKMdCso48J5qF4dqAL
- tTLWp9Uh2h1iBjJOZRlcPg8ZzQ6FsnO9PvttTzhLTE389cQEgTfOYgBuaLh7YD0yMrEV
- i4wVjAC/tCTKPd4eu7V0mSSQXHqaWYCDHll4gG/yVU5SBRcaFqzRPkkDXxrV29PD9pTN
- j2NBib+iIpvFUf1XTUakEcLEZSzVwKXK2nXxvDJM6jXBZJEyf0erGn03fwltUxMqBhGj Xg== 
+ bh=fkcoUQO65x6p8ntqiks4DWdDPSArzB/Mrz2hQCYPFos=;
+ b=k+ZIlFUPL1mawNKExdn4S0FPQM6K7+MEexwWXrBn/9+VXjWQjl0h+PaiaFDNDdo5yr0H
+ 31Gmm+cYut7zpQugK3Vs5BhyCqI3AjJYoAtvuno3hDRwPc3GjuIzUWch5Udv0WwgN6Fn
+ YmhUmcaYfOsQ0h/uHe59N8uh26bPo2fdLxdWqFaq9NpQWAbUt5K1mZ3L20kCJySffAJq
+ /QilrL2f6vJx/QwTz2wokk97xHx6NtMgDJChZI9RCBvQHBtv2e/rGsFs5MTl8TATWDW7
+ NR090Nd4rao8xNfOcrTtNI/b6NAYwXj3RnK0EFZIAR3+ylDe7oP10GxSqmmthHAlg/lz MQ== 
 Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sgv96grry-1
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sgx1dgca3-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 16 Aug 2023 10:21:14 +0000
-Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37GAAqX8003918;
-	Wed, 16 Aug 2023 10:21:14 GMT
-Received: from ppma22.wdc07v.mail.ibm.com (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sgv96grrm-1
+	Wed, 16 Aug 2023 12:14:54 +0000
+Received: from m0353722.ppops.net (m0353722.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37GCDVNn027079;
+	Wed, 16 Aug 2023 12:14:54 GMT
+Received: from ppma13.dal12v.mail.ibm.com (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sgx1dgc9d-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 16 Aug 2023 10:21:14 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 37G7tKhf001073;
-	Wed, 16 Aug 2023 10:21:13 GMT
-Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
-	by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3semsybu46-1
+	Wed, 16 Aug 2023 12:14:54 +0000
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 37GAgE3Z013234;
+	Wed, 16 Aug 2023 12:14:52 GMT
+Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
+	by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3sepmjukbx-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 16 Aug 2023 10:21:13 +0000
-Received: from smtpav03.fra02v.mail.ibm.com (smtpav03.fra02v.mail.ibm.com [10.20.54.102])
-	by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 37GALB7m13238934
+	Wed, 16 Aug 2023 12:14:52 +0000
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
+	by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 37GCEolq27263584
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 16 Aug 2023 10:21:11 GMT
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 4A20520043;
-	Wed, 16 Aug 2023 10:21:11 +0000 (GMT)
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id EC7A920040;
-	Wed, 16 Aug 2023 10:21:10 +0000 (GMT)
+	Wed, 16 Aug 2023 12:14:50 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 3ABCB20040;
+	Wed, 16 Aug 2023 12:14:50 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id DD72320043;
+	Wed, 16 Aug 2023 12:14:49 +0000 (GMT)
 Received: from [9.155.200.166] (unknown [9.155.200.166])
-	by smtpav03.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Wed, 16 Aug 2023 10:21:10 +0000 (GMT)
-Message-ID: <500264e15aa52df6350474407533722451b03667.camel@linux.ibm.com>
-Subject: Re: [PATCH 5/9] tests/tcg: clean-up gdb confirm/pagination settings
+	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Wed, 16 Aug 2023 12:14:49 +0000 (GMT)
+Message-ID: <f4819a35a00829516ba6bee70701bb8f2f4f965a.camel@linux.ibm.com>
+Subject: Re: [PATCH 7/9] gdbstub: remove unused user_ctx field
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 To: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
         qemu-devel@nongnu.org
@@ -102,45 +102,33 @@ Cc: Beraldo Leal <bleal@redhat.com>,
         Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
         Nicholas
  Piggin <npiggin@gmail.com>
-Date: Wed, 16 Aug 2023 12:20:55 +0200
-In-Reply-To: <20230815145126.3444183-6-alex.bennee@linaro.org>
+Date: Wed, 16 Aug 2023 14:14:49 +0200
+In-Reply-To: <20230815145126.3444183-8-alex.bennee@linaro.org>
 References: <20230815145126.3444183-1-alex.bennee@linaro.org>
-	 <20230815145126.3444183-6-alex.bennee@linaro.org>
+	 <20230815145126.3444183-8-alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: gXdsJjk_pGp47ClM3elmEkTFF1VRImsQ
-X-Proofpoint-ORIG-GUID: FQRAqIT9N_0wfRphBCdyYLBfyJBE5SC9
+X-Proofpoint-ORIG-GUID: Hx5v_GGu1mogj0fQ-8zvnvAKyplehSej
+X-Proofpoint-GUID: uSxrTQp8i7dePoeXXTTOtl-Fo1FZZNDd
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-08-16_08,2023-08-15_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501 mlxscore=0
- bulkscore=0 adultscore=0 suspectscore=0 mlxlogscore=999 impostorscore=0
- lowpriorityscore=0 spamscore=0 malwarescore=0 clxscore=1015 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2306200000
- definitions=main-2308160090
-X-TUID: o2HustSjcYqM
+ definitions=2023-08-16_10,2023-08-15_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0
+ lowpriorityscore=0 clxscore=1015 impostorscore=0 mlxscore=0 adultscore=0
+ mlxlogscore=749 suspectscore=0 phishscore=0 bulkscore=0 malwarescore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2306200000 definitions=main-2308160105
+X-TUID: 8s6y6cHSirzD
 
-T24gVHVlLCAyMDIzLTA4LTE1IGF0IDE1OjUxICswMTAwLCBBbGV4IEJlbm7DqWUgd3JvdGU6Cj4g
-V2UgY2FuIGRvIHRoaXMgYWxsIGluIHRoZSBydW4tdGVzdC5weSBzY3JpcHQgc28gcmVtb3ZlIHRo
-ZSBleHRyYW5lb3VzCj4gYml0cyBmcm9tIHRoZSBpbmRpdmlkdWFsIHRlc3RzIHdoaWNoIGdvdCBj
-b3BpZWQgZnJvbSB0aGUgb3JpZ2luYWwKPiBub24tQ0kgZ2RiIHRlc3RzLgo+IAo+IFNpZ25lZC1v
-ZmYtYnk6IEFsZXggQmVubsOpZSA8YWxleC5iZW5uZWVAbGluYXJvLm9yZz4KPiAtLS0KPiDCoHRl
-c3RzL2d1ZXN0LWRlYnVnL3J1bi10ZXN0LnB5wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIHwgMiArKwo+IMKgdGVzdHMvdGNnL2FhcmNoNjQvZ2Ric3R1Yi90
-ZXN0LXN2ZS1pb2N0bC5wecKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgMyAtLS0KPiDCoHRlc3RzL3Rj
-Zy9hYXJjaDY0L2dkYnN0dWIvdGVzdC1zdmUucHnCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCB8IDMgLS0tCj4gwqB0ZXN0cy90Y2cvbXVsdGlhcmNoL2dkYnN0dWIvbWVtb3J5LnB5wqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAzIC0tLQo+IMKgdGVzdHMvdGNnL211bHRp
-YXJjaC9nZGJzdHViL3NoYTEucHnCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-fCA0IC0tLS0KPiDCoHRlc3RzL3RjZy9tdWx0aWFyY2gvZ2Ric3R1Yi90ZXN0LXByb2MtbWFwcGlu
-Z3MucHnCoMKgwqDCoCB8IDQgLS0tLQo+IMKgdGVzdHMvdGNnL211bHRpYXJjaC9nZGJzdHViL3Rl
-c3QtcXhmZXItYXV4di1yZWFkLnB5wqDCoCB8IDQgLS0tLQo+IMKgdGVzdHMvdGNnL211bHRpYXJj
-aC9nZGJzdHViL3Rlc3QtdGhyZWFkLWJyZWFrcG9pbnQucHkgfCA0IC0tLS0KPiDCoHRlc3RzL3Rj
-Zy9zMzkweC9nZGJzdHViL3Rlc3Qtc2lnbmFscy1zMzkweC5wecKgwqDCoMKgwqDCoMKgwqAgfCA0
-IC0tLS0KPiDCoHRlc3RzL3RjZy9zMzkweC9nZGJzdHViL3Rlc3Qtc3ZjLnB5wqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgNCAtLS0tCj4gwqAxMCBmaWxlcyBjaGFuZ2VkLCAy
-IGluc2VydGlvbnMoKyksIDMzIGRlbGV0aW9ucygtKQoKQWNrZWQtYnk6IElseWEgTGVvc2hrZXZp
-Y2ggPGlpaUBsaW51eC5pYm0uY29tPgo=
+On Tue, 2023-08-15 at 15:51 +0100, Alex Benn=C3=A9e wrote:
+> This was always NULL so drop it.
+>=20
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> ---
+> =C2=A0gdbstub/gdbstub.c | 16 ++++++++--------
+> =C2=A01 file changed, 8 insertions(+), 8 deletions(-)
+
+Acked-by: Ilya Leoshkevich <iii@linux.ibm.com>

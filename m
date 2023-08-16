@@ -1,215 +1,177 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp370652ejs;
-        Wed, 16 Aug 2023 06:51:53 -0700 (PDT)
-X-Received: by 2002:a17:902:c1c5:b0:1b8:a697:3719 with SMTP id c5-20020a170902c1c500b001b8a6973719mr1973664plc.25.1692193913513;
-        Wed, 16 Aug 2023 06:51:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692193913; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp371150ejs;
+        Wed, 16 Aug 2023 06:52:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHqmvYAmCtz0BLPQ4/eEYTHSypcbK8z/bbZz6v94lExokzp4REEZ8PVy8yss9f15jG9QwV7
+X-Received: by 2002:a05:6a20:ce9c:b0:131:5f8b:9c7d with SMTP id if28-20020a056a20ce9c00b001315f8b9c7dmr1608722pzb.22.1692193968689;
+        Wed, 16 Aug 2023 06:52:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692193968; cv=none;
         d=google.com; s=arc-20160816;
-        b=VXrNp6FPkUruDauz58rlvakfq3AVgCtU90dWyTpuJlzwH3oPg8l0lIVlwHh4K3tIdI
-         iNrWHeip63QtDoyK80BXHB73XASHLwEoACT9nES3N5MVKSwSwQTcCSr2E32/BXprHd3U
-         9PMO/2gKXjDLR//jiLhOohuiPDWU9w7Umf7c6SxVHISDaoZDcNQ16MrME1zHSYY/X9f6
-         5z30GLi6RQKatRdI6WrJbU8s3bZgyXZRyJpaLpleUN03J/6lC4bz4gLf3ATO0hrA4XWN
-         n5bYhrZu3KqRIxKT8L8PU7srEtO2aPUXgrF51KtJSSQmbNiNCDI+iK6boCqKgFMoLRvr
-         UBKA==
+        b=MKRIt5Qti0koE08Nu9AE2+BgTa2udpXcYYj0LXEBCMgkA3NJrZc+fjbR6MLbAzp5yI
+         h0d9tqA172OcQBhjPyN2FECfma2+zinKtGVOhjNFJh5ATXaZAJrsj5braHyNr1UeI3vP
+         BRWSTXHEhX3rMRa/FTmQPx1DFqBeZCwoE+hua6hddJgJ358YSLy3WmGSFNPzaNQHoiSk
+         fOz1PVMWjOUI8pvmoKRC+ODGXEVasSHbjvrshHBjzyC3thQch1fuoQjumq0uCmDwIRXT
+         +fOo2UVX00LV3wIYWdPilK+fgmM1lIiLOVp/htI9n7Sil2/clYkMW4icy7MDV7+JwD5w
+         lkIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=mZPCtM4gFlUO1eqBWQfyY/Y18ssOpc6HOYefevkB3hs=;
-        fh=EcO5he7kBhkq1+blo3bftTd/gQjAs68nzvCtO96H+rw=;
-        b=CCEyDjV9+7ma5lwA5Wp3R+96gPLeVCkJCM0B1FATzEicNf6P3FFB4Wl3Onzc4szU5P
-         YQGv8kzCBCpD1cfYM27WibL0ilFGikFDQdAYfcW+Jy0J4kyvMjTexKWDHttfRJk6o9o0
-         nNIu6Mf7TzSxv+E2W77unUJRVC/JaC5xekF+bkVtcLS/2jYkGXHMRrA6Jy8CxIFP0H24
-         Zj0V/gbWkQXwgrgQHE4xLrMYU9kX8HpdhzJ5Xt6tcUbaTcytlbguRz1kzccqj6SQyutu
-         ZiTWYaFSOPAliNQPYFvuexDM5PO7y2EYz2lyLJwTwHz6NP6oNNy3f6Ux2FkrRJGcEcPf
-         HyVQ==
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=xRRU3RFSZsbdvilORURzGUYmelh6TkAb5D63J+up9Hc=;
+        fh=DJ3cW1lhZUD6rdt+wp48oldBTaPOco977KIJI8tUevE=;
+        b=pO5R0Pkh8XKwm0G31qP/3MXT3N+iX9zumCbx/IEV8aWG9IRqdsRO8Vs34WfNFFJ66k
+         SCoER+5HPN3T4yiurZyqFVetw3llvRPlxZWZP4ADOqHRhyKdQrEXJvFtiq/zq4MaFnsq
+         b9ETlh8fXS0jH3g9j8zqyqv325iZcWd3U3ctBrIQyUzI5YQbyykr+c97EWsIp22qogt8
+         rpntRztdSxfP0JNZP8YaCSVRm3jbKQKXFG5+fIt5hd9JVu/0pYsogdxip4SmSvk29tGu
+         nRmUSZcxFnnOkL36Rhba4jWP7l6N7a9cGl+aBTas9Ue0cV9/nTeb8qRMpj60/3SPj0/t
+         2Wjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=E60lamU4;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d3-20020a170902e14300b001bee7088912sor1756069pla.2.2023.08.16.06.51.53
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 16 Aug 2023 06:51:53 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=lUYlyyF2;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id r81-20020a632b54000000b0056572b7e0dcsi9392063pgr.664.2023.08.16.06.52.47
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 16 Aug 2023 06:52:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=E60lamU4;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692193913; x=1692798713;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=mZPCtM4gFlUO1eqBWQfyY/Y18ssOpc6HOYefevkB3hs=;
-        b=E60lamU47sZQxI2mdxzaxIpzQ585cW73J6EcnIGUtt0mZ/TNXdyWMp2/dzxmLzyAfE
-         Mu9LEylJIpAXxmDtu/izPvlfN/2tTaEfobzongnhiN/H75mF1tZM5KtcMx7wvcKqdGi6
-         q22Oz6PXtIByw2bMo+CyND45GwR4JhJ74HXkvd2h5zmd7Py98uy4BGoGPVopqHtB8LSs
-         AeH0zL/KiendIdwPw+xkOFfAHbOK7N/mIXRFAl63WX+dt3nS24h8J5RTTAORqtZfdL8r
-         bZDS5s0hCOOkaMA5VCy1sdeKYT7TyloC8v5VknLg8AjYzAnMerp5cNFZ1K4wWw822ChR
-         HS8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692193913; x=1692798713;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mZPCtM4gFlUO1eqBWQfyY/Y18ssOpc6HOYefevkB3hs=;
-        b=Z4+qpi8YDS2hLXeePm9ZbL4LiydKqu3a1XPoEbkw0SZz42Z6fiHpAsRywicUuyVjsw
-         J8Y83NkO15OWKKpFrEy9GoNrOoU83YTDL+e9jPo2QrIOXvJw0FJm8VVebLfeNyoQhYL9
-         4avyc+vm534v4BxvDGCRrWSGz3pawLPjFFTNiQ1GwZwtHe7zeG2pmYlJOury88S15Exg
-         7dJANNUUCVL85fUPFiFma6CqgsLb08SdWtUT7vUe+MZPFb9vu4n+BEKVtfCdU6louvRi
-         3bONyhmNHzsmB7DfzEPczN9AUR5SHxCduRL/KicYmYObhuOZorUOsgtF7IgnLqqCegmo
-         ogjg==
-X-Gm-Message-State: AOJu0YwL2plRzT92vbLeXUY77zYdXwnNNTYGa5EvMUcMeGqMDIlqlXx9
-	MlUQRQo6tYPrlOg6BlIEH/wcQfSDyMmcYEkyCOg=
-X-Google-Smtp-Source: AGHT+IF76m2gteYuU/ME8SyVTBxUSaRFmuZxrPHwMaaIRkLTBOKQwLw0o3YjJK7lICXb524S6ruUtA==
-X-Received: by 2002:a17:902:bc89:b0:1bd:af7e:965d with SMTP id bb9-20020a170902bc8900b001bdaf7e965dmr2060152plb.51.1692193912914;
-        Wed, 16 Aug 2023 06:51:52 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from ?IPV6:2400:4050:a840:1e00:78d2:b862:10a7:d486? ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id 8-20020a17090a034800b00262e485156esm14092117pjf.57.2023.08.16.06.51.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Aug 2023 06:51:52 -0700 (PDT)
-Message-ID: <b1b4843e-038c-43ac-8aa0-b95312b0806a@daynix.com>
-Date: Wed, 16 Aug 2023 22:51:43 +0900
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=lUYlyyF2;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 37GDgCdA032398;
+	Wed, 16 Aug 2023 13:52:28 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=xRRU3RFSZsbdvilORURzGUYmelh6TkAb5D63J+up9Hc=;
+ b=lUYlyyF2HCmOmi2D8bk3928bKcx5hKFDYWD1emlWCx/rz/eIlUeq5DcXjgaBKtOo7bZj
+ MX+klAZr0Oq2KRXc0gXqnZ9dpEpd6r4tFDi4FRMAWCUEX8nTo3+8lytfYS8GISFj1nu8
+ PLM17gmjhri4gypkNz85vLOmKb2vWshBshV7G8a//OgV5Cst39YAg1SF7KBuV7M2vNWa
+ X/tmyitrSU/fpbZe314oTEDeeXY0SbZ8HpLLk0TCaYe29/7q+xngwOAcUHIX+ys6YZMD
+ 4i/4ZmkkeIss0Duf9GQmHArypqsLGP4jV9AKEKbDfqs0Vnu2m4I86j7Qt3mS6b63Y8th nA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sgyjrg9u6-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 16 Aug 2023 13:52:27 +0000
+Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37GDhiSh005124;
+	Wed, 16 Aug 2023 13:52:27 GMT
+Received: from ppma21.wdc07v.mail.ibm.com (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sgyjrg9tc-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 16 Aug 2023 13:52:27 +0000
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 37GBgctF002421;
+	Wed, 16 Aug 2023 13:52:18 GMT
+Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
+	by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3sendncmk0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 16 Aug 2023 13:52:18 +0000
+Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com [10.20.54.106])
+	by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 37GDqGnK12583654
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 16 Aug 2023 13:52:16 GMT
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 24A5520074;
+	Wed, 16 Aug 2023 13:52:16 +0000 (GMT)
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 9C5142004B;
+	Wed, 16 Aug 2023 13:52:15 +0000 (GMT)
+Received: from [9.155.200.166] (unknown [9.155.200.166])
+	by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Wed, 16 Aug 2023 13:52:15 +0000 (GMT)
+Message-ID: <16b706dc49021acca0b3f490eb23b379b4e999d7.camel@linux.ibm.com>
+Subject: Re: [PATCH 4/9] tests: remove test-gdbstub.py
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+        qemu-devel@nongnu.org
+Cc: Beraldo Leal <bleal@redhat.com>,
+        Wainer dos Santos Moschetta
+ <wainersm@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Akihiko
+ Odaki <akihiko.odaki@daynix.com>,
+        Thomas Huth <thuth@redhat.com>, David
+ Hildenbrand <david@redhat.com>,
+        Yonggang Luo <luoyonggang@gmail.com>, qemu-arm@nongnu.org,
+        Daniel Henrique Barboza <danielhb413@gmail.com>,
+        David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+        =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+        Richard Henderson
+ <richard.henderson@linaro.org>,
+        qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+        Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+        Nicholas
+ Piggin <npiggin@gmail.com>
+Date: Wed, 16 Aug 2023 15:52:15 +0200
+In-Reply-To: <87zg2rnoyv.fsf@linaro.org>
+References: <20230815145126.3444183-1-alex.bennee@linaro.org>
+	 <20230815145126.3444183-5-alex.bennee@linaro.org>
+	 <130aa9ee49dffd9ecc1006b17b9e82734837d7d9.camel@linux.ibm.com>
+	 <87zg2rnoyv.fsf@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 12/24] gdbstub: Simplify XML lookup
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Michael Rolnik
- <mrolnik@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Brian Cain <bcain@quicinc.com>, Song Gao <gaosong@loongson.cn>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Laurent Vivier
- <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
- Stafford Horne <shorne@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org
-References: <20230731084354.115015-1-akihiko.odaki@daynix.com>
- <20230731084354.115015-13-akihiko.odaki@daynix.com>
- <87jztxrbv0.fsf@linaro.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <87jztxrbv0.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: ZTp/LzeRooib
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: yftG0zrRJWNDMVrXyGzINXIVVFVh82O2
+X-Proofpoint-ORIG-GUID: xuVwqsxBOWEj0EvLViU1shn3ZqW6yxKH
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-08-16_13,2023-08-15_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 clxscore=1015
+ adultscore=0 impostorscore=0 phishscore=0 bulkscore=0 spamscore=0
+ priorityscore=1501 lowpriorityscore=0 mlxscore=0 malwarescore=0
+ mlxlogscore=906 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2306200000 definitions=main-2308160116
+X-TUID: iWqGGqGWOCgM
 
-On 2023/08/14 22:27, Alex Bennée wrote:
-> 
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> 
->> Now we know all instances of GDBFeature that is used in CPU so we can
->> traverse them to find XML. This removes the need for a CPU-specific
->> lookup function for dynamic XMLs.
->>
->> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->> ---
->>   gdbstub/gdbstub.c | 28 +++++++++-------------------
->>   1 file changed, 9 insertions(+), 19 deletions(-)
->>
->> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
->> index 182efe7e0f..e5bb2c89ba 100644
->> --- a/gdbstub/gdbstub.c
->> +++ b/gdbstub/gdbstub.c
->> @@ -354,8 +354,7 @@ static const char *get_feature_xml(const char *p, const char **newp,
->>                                      GDBProcess *process)
->>   {
->>       size_t len;
->> -    int i;
->> -    const char *name;
->> +    GDBRegisterState *r;
->>       CPUState *cpu = gdb_get_first_cpu_in_process(process);
->>       CPUClass *cc = CPU_GET_CLASS(cpu);
->>   
->> @@ -364,15 +363,12 @@ static const char *get_feature_xml(const char *p, const char **newp,
->>           len++;
->>       *newp = p + len;
->>   
->> -    name = NULL;
->>       if (strncmp(p, "target.xml", len) == 0) {
->>           char *buf = process->target_xml;
->>           const size_t buf_sz = sizeof(process->target_xml);
->>   
->>           /* Generate the XML description for this CPU.  */
->>           if (!buf[0]) {
->> -            GDBRegisterState *r;
->> -
->>               pstrcat(buf, buf_sz,
->>                       "<?xml version=\"1.0\"?>"
->>                       "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
->> @@ -389,28 +385,22 @@ static const char *get_feature_xml(const char *p, const char **newp,
->>               pstrcat(buf, buf_sz, "\"/>");
->>               for (r = cpu->gdb_regs; r; r = r->next) {
->>                   pstrcat(buf, buf_sz, "<xi:include href=\"");
->> -                pstrcat(buf, buf_sz, r->feature->xml);
->> +                pstrcat(buf, buf_sz, r->feature->xmlname);
->>                   pstrcat(buf, buf_sz, "\"/>");
->>               }
->>               pstrcat(buf, buf_sz, "</target>");
->>           }
->>           return buf;
->>       }
-> 
-> It would be nice to modernise this code before adding to it. The static
-> target_xml buffer and use of pstrcat could be replaced by GString code
-> that is less sketchy.
+On Wed, 2023-08-16 at 13:33 +0100, Alex Benn=C3=A9e wrote:
+>=20
+> Ilya Leoshkevich <iii@linux.ibm.com> writes:
+>=20
+> > On Tue, 2023-08-15 at 15:51 +0100, Alex Benn=C3=A9e wrote:
+> > > This isn't directly called by our CI and because it doesn't run
+> > > via
+> > > our run-test.py script does things slightly differently. Lets
+> > > remove
+> > > it as we have plenty of working in-tree tests now for various
+> > > aspects
+> > > of gdbstub.
+> > >=20
+> > > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> > > ---
+> > > =C2=A0tests/guest-debug/test-gdbstub.py | 177 -----------------------=
+-
+> > > ----
+> > > --
+> > > =C2=A01 file changed, 177 deletions(-)
+> > > =C2=A0delete mode 100644 tests/guest-debug/test-gdbstub.py
+> >=20
+> > There doesn't seem to be a hbreak test elsewhere, but according to
+> > a
+> > comment in tcg/multiarch/gdbstub/memory.py it would be mapped to a
+> > normal break anyway.
+>=20
+> It is for TCG but for other accelerators there will be different
+> handling (although I'm fairly sure only x86 and aarch64 are currently
+> plumbed to use the CPUs hbreak bits on KVM).
+>=20
+> However this particular script was a very early addition when I was
+> testing stuff manually with images I'd built on my system. If we want
+> to
+> exercise the gdbstub for accelerators it might be better porting the
+> test to avocado?
 
-I saw you did that yourself. Nevertheless I included my own 
-implementation for the suggestion in v3. It uses 
-g_markup_printf_escaped() for extra caution and better readability (i.e. 
-the xi:include tags are written in a format: <xi:include href=\"%s\"/>).
+That would be good, yes.
 
-> 
-> 
->> -    if (cc->gdb_get_dynamic_xml) {
->> -        char *xmlname = g_strndup(p, len);
->> -        const char *xml = cc->gdb_get_dynamic_xml(cpu, xmlname);
->> -
->> -        g_free(xmlname);
->> -        if (xml) {
->> -            return xml;
->> -        }
->> +    if (strncmp(p, cc->gdb_core_feature->xmlname, len) == 0) {
->> +        return cc->gdb_core_feature->xml;
->>       }
->> -    for (i = 0; ; i++) {
->> -        name = gdb_features[i].xmlname;
->> -        if (!name || (strncmp(name, p, len) == 0 && strlen(name) == len))
->> -            break;
->> +    for (r = cpu->gdb_regs; r; r = r->next) {
->> +        if (strncmp(p, r->feature->xmlname, len) == 0) {
->> +            return r->feature->xml;
->> +        }
->>       }
->> -    return name ? gdb_features[i].xml : NULL;
->> +    return NULL;
->>   }
->>   
->>   const GDBFeature *gdb_find_static_feature(const char *xmlname)
-> 
-> 
+I was always wondering if the TCG sotfmmu tests could be used to test
+the other accelerators? At least for s390x there is nothing
+TCG-specific there (besides that they try to trigger TCG-specific
+problems), and I sometimes run them manually with KVM as a sanity
+check.
+
+>=20
+> >=20
+> > Acked-by: Ilya Leoshkevich <iii@linux.ibm.com>
+>=20
+>=20

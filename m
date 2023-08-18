@@ -1,282 +1,129 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp838898ejs;
-        Wed, 16 Aug 2023 22:30:46 -0700 (PDT)
-X-Received: by 2002:a05:6358:4407:b0:129:d242:f782 with SMTP id z7-20020a056358440700b00129d242f782mr4485118rwc.0.1692250245875;
-        Wed, 16 Aug 2023 22:30:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692250245; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp1529063ejs;
+        Thu, 17 Aug 2023 20:37:06 -0700 (PDT)
+X-Received: by 2002:a05:6a21:3387:b0:138:1980:1837 with SMTP id yy7-20020a056a21338700b0013819801837mr2153413pzb.13.1692329825966;
+        Thu, 17 Aug 2023 20:37:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692329825; cv=none;
         d=google.com; s=arc-20160816;
-        b=LrjUwbcfM4YSQ2TXlJek4uioxT6KoC3MK0HXrpbZ5HeS6rGyqB+hFiC3Kh6NGhd86Q
-         8GAc/QPaEUCAldwfOU5K1MQ2z00iRy/JdzgLKuhpfhmoXM3B/Uz7gRedPWEZjNtG0+TI
-         q0QISkVTtpPolFIgg4a8jE/kPPBgoTqgregde9SohEsBQTtMDezZjQQ2ZutUFtQZKJyC
-         GFkCG5zBkGDVS3TzOXD4u3MldT4cYAZocs0N8h2EdklIvKPVPRRQI5bXhrc/quKRoj1s
-         hJmz9ruB4eNGPJSZXdY9GX4XsRc/ja6MqhdKfFFOEVQCFjozPys10gGw3vZdx2HvwUgW
-         mYNw==
+        b=Pt+rxe/5t/0tXQ8+Qs9HRUp+VAh2WDvyWR2eE26dqLCO1LQ5oK5GBmy5RwVuOJ69NP
+         6lHd6ce4201MGcIAujDNetY8c7A/uOeZOs1hh6lo0VOiIULP7Mw3ShbY1/bFPqgvOH+E
+         3hU6RE6YGpSrgJuYxSS9AaIKhUXGDXlM+Q4GvwSWBaPJBjXAyVmSLqpClfM5v545JOwc
+         QEvodphu/CmoA8kXs32fAOlvZeNXtJRxqoaRlpmRT/LEMqUJXbsX4ObK/yRXNcMtpzbG
+         djHGuPxFHqHkidm2NSBjuzbK1guqRI8ByaydWNVVA5ZO5ApWNlZedx0S+yOk8r8tlpgw
+         RWJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=mQyi6gfRgbfl9Ba+HuBYDjs0BflAbozpyrrSa1VYhO8=;
-        fh=fUiTdP13jeKk8+/DO5sZ9YFnMdWUGYQSHAZ2p4VPlgw=;
-        b=NXlllGvWoXvRqmjuu8Z/2LjJgRxbCDr3lJZt3A9zNaiYhkZt7RsEiKok0WyyH3kbET
-         I+P0SO4oTIkT3jfQX8NfhbpyxnTmLAjxXjAmCHxSoawb7RknnSCp8oogRgX7d9jJnFjJ
-         lfJnhaTTP1yFLyKhzn590m1QC3jGL9LzUA/p+ddpEAjh/UggRoSl416bNawAV3ahD2C2
-         r1U/Udwa/7nE7pdv3Mc1IOruGNhaXHr+Hdut3eLpgIpzpmcDVHy4yyLCilMPk1E80QP/
-         +Gol3q+jo/ivE53qy/HMqHLg6/nwNHKCoXpznaZ5s5YDMpevx5Mx9YU4JYglrO7HNKRm
-         TK1Q==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=fDgcaTMJn76IqBG3wvUQ8hqaBU+41zfZWx/0YdFh8Js=;
+        fh=IdxtL+U8HJ8TOThHm/miJa94PO4pGqoNzDP1s6nycNM=;
+        b=YAIcrWHRS3rGyh9bK2BhicGlsGMn7fueJl36rSzvrm2h2kkVLoysc1yPdu5Tbrnu2w
+         nR9Jg/W6t/TkVhBXW7b0ir0tHeTPpJh/yhuTG4L/7Z7x5kYLMFxl8jTijXqMEOCBw/Uz
+         sbefFp70VAqNezW1yAL4FrH8cM5rU3HmrpSTUbM/juDNi020yRl4A9PGG6AZkUylgd+1
+         AaWUGxrGdApocA3YF3oT/f20qrWLuP+ruRoGhywE9AXYD6hljrCIyctZJJT9SIRGl5zI
+         hmz9CNZEfHhl60lJpv2GXxU6DXKKbf9x13YpQiyBep8xYmyb5RlgAJ1JyxVx9U8uYscd
+         dmxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="foDAMsj/";
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=c7pfO67b;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x17-20020a63b211000000b00563dddb2015sor7837663pge.1.2023.08.16.22.30.45
+        by mx.google.com with SMTPS id w28-20020aa7955c000000b0068859d136casor773528pfq.2.2023.08.17.20.37.05
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 16 Aug 2023 22:30:45 -0700 (PDT)
+        Thu, 17 Aug 2023 20:37:05 -0700 (PDT)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="foDAMsj/";
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=c7pfO67b;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692250245; x=1692855045;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=mQyi6gfRgbfl9Ba+HuBYDjs0BflAbozpyrrSa1VYhO8=;
-        b=foDAMsj/Luf3JT0hF77ecWbCMXR62K/pt13rcHFIsAZecLufRI8U+vJeMkICee3tbc
-         A2srfIbdFPgJ9EWMcmJQtXyeGs+nMTAeolhp1KLy0/t+oFI2Xb23lS285rPG5vBfOgjf
-         +6B/Qk7f90KrqSgUxsYyTFoUPVwwLQlKy5zrSKCtl9uhrVf4Kd4zhJV7Uwda19LdJSn9
-         j1g8rwy76DBFRh17khvu/zqyK/V/pnfcSEP/kyVOsrhfpNOLgaX0lQ+ohALH34YgPcVs
-         a1ZV45juk2ebZIHrrOXGBLCjDzMZvt7vZ8zhPB8v2OhHM/F98vnFn48GkJFWpMmu3lp2
-         i7YQ==
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692329825; x=1692934625;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fDgcaTMJn76IqBG3wvUQ8hqaBU+41zfZWx/0YdFh8Js=;
+        b=c7pfO67bYGep/CCalwpSzQG73w6V+Wq8aUEy1/TqMFx8xgzK28E+fDPp8pfIVeG8rC
+         wk0RhCkymVULa08xi2JB0CM0XGMHosMmbNW+xL4TmPxXF3mwJrNKRU9AcVinI8oN/n5S
+         sO3kwc+26u5FrTWSnzVPVdbNVCi9MSPZ3h2+/DY77FFjL8tb8UV+oP6zT5I532eOzyYp
+         f05tFCkne7kfeJilswYf5n5yg1vwA8BvYNESzKm5HGUBfHxAfKOL4Bx+u78zbOKf05Ar
+         swVbG0Vv6U7vmovlaRHCCKemmW88YUvKM8mhyjlNTdcAcU9DVedGqENLiM7CryZ5sJC9
+         hbLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692250245; x=1692855045;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=mQyi6gfRgbfl9Ba+HuBYDjs0BflAbozpyrrSa1VYhO8=;
-        b=UfKPJ12vGgzZW046ZuikyjC/FqwoPhjjZ/oi5O1U64Y6FBwWjIAxf0YA/WpkbroiLC
-         DFnahHf0X2aBKrZZ+fK+/pwS4qW9EmddePQY2sqqrB5Iu6m2afbat4f2HJN2ViO1wLpk
-         iTLDW1arxemjjjWbZcjLXUDBGMbmYR3oFRUo9ahD2bT3/ZvdMFjtWn+M7uPyDUxcHeQY
-         /l3bQB1w0lMbNxDnA9JQHb2+UuFF23Q+Tnmhy0lIKm3eSNsPq3hCucjTo+pzqJZVRQJq
-         96m0oyH9BnS17pl6gyRSwVhNbE+/VRhaK4ke8FiwuNrsPFmDtrPWyAc1fhrhDPg9Aj1m
-         f1kw==
-X-Gm-Message-State: AOJu0Yx8TFZOrKinwQnbnQRb76SYzPsVoT3DGyOq+92H7KVWJ/rOhaxf
-	AQoYXW2IpGwrsSysrkU8/M9gAw==
-X-Google-Smtp-Source: AGHT+IGfYhrcUvpGzOTYqb82+q9qq2vUi7LvrswIp9J2Txc3w26+L40Re4cMZJpHZ5HqbFY3M4ZlFQ==
-X-Received: by 2002:a05:6a20:729d:b0:13d:ee19:771f with SMTP id o29-20020a056a20729d00b0013dee19771fmr5340005pzk.8.1692250245092;
-        Wed, 16 Aug 2023 22:30:45 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1692329825; x=1692934625;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=fDgcaTMJn76IqBG3wvUQ8hqaBU+41zfZWx/0YdFh8Js=;
+        b=BtoCoRqD6Jx6lJEhBv+xVBLG+p8hUsov4f7NfTvzAPCpSdh6+fWrYbSLdA4OtDtQkA
+         M4JXmdc2mnawZ4SqZs/+bVZ9F2gvjhskTNJmTM40uphX8M4Th8rqlGybEwQdIw3S2pMD
+         89v2eFVomSjHz+k59S70LY88fEitUcpW14rFJRkqz+7a+q1SSlOKW0jpxsW6clOvFVy2
+         qBnAUiGeNXmCPozHwZM9OZ8GWTv1Z/MRvUef7R+KCNl4wM9lSPogXxLPI9ahm5MLWjIi
+         O0IUTzH7gAD2dl9RhuDSXkV/9QWYiHTTzq0MN5MmkSu1DDNVpqIgSqjPgeXU6NfSVeW1
+         O9BA==
+X-Gm-Message-State: AOJu0YwtdkXpC3ReSj502SXmcH9rbfYoCVHcBNcnOKNccZ0zs26Jz6+a
+	Wz45mXHI+4Iob22tLYLMB3+Z7wlVUpUSTV2CE4Q=
+X-Google-Smtp-Source: AGHT+IFa3N0QJqMVNgBzjvZogXkFwo/w52Z3xa2M3kQCbTREqvBV/Uu6/tDrmpVOIgYgwPr/0jK66w==
+X-Received: by 2002:a05:6a00:290c:b0:67e:18c6:d2c6 with SMTP id cg12-20020a056a00290c00b0067e18c6d2c6mr1390306pfb.5.1692329825194;
+        Thu, 17 Aug 2023 20:37:05 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id j18-20020aa783d2000000b00662610cf7a8sm12339407pfn.172.2023.08.16.22.30.35
+        by smtp.gmail.com with ESMTPSA id c24-20020aa781d8000000b00686a80f431dsm484135pfn.126.2023.08.17.20.37.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Aug 2023 22:30:44 -0700 (PDT)
+        Thu, 17 Aug 2023 20:37:04 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 To: 
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Brian Cain <bcain@quicinc.com>,
-	Song Gao <gaosong@loongson.cn>,
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Stafford Horne <shorne@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	David Hildenbrand <david@redhat.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Mikhail Tyutin <m.tyutin@yadro.com>,
+	Aleksandr Anenkov <a.anenkov@yadro.com>,
 	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org,
-	qemu-s390x@nongnu.org,
-	Anton Kochkov <anton.kochkov@proton.me>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v5 00/26] plugins: Allow to read registers
-Date: Thu, 17 Aug 2023 14:29:47 +0900
-Message-ID: <20230817053017.24207-1-akihiko.odaki@daynix.com>
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH RESEND v5 05/26] target/arm: Move the reference to arm-core.xml
+Date: Fri, 18 Aug 2023 12:36:24 +0900
+Message-ID: <20230818033648.8326-6-akihiko.odaki@daynix.com>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230818033648.8326-1-akihiko.odaki@daynix.com>
+References: <20230818033648.8326-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: cdz7S9jWCbUU
+X-TUID: HzfkMzSn6VOt
 
-I and other people in the University of Tokyo, where I research processor
-design, found TCG plugins are very useful for processor design exploration.
+Some subclasses overwrite gdb_core_xml_file member but others don't.
+Always initialize the member in the subclasses for consistency.
 
-The feature we find missing is the capability to read registers from
-plugins. In this series, I propose to add such a capability by reusing
-gdbstub code.
+This especially helps for AArch64; in a following change, the file
+specified by gdb_core_xml_file is always looked up even if it's going to
+be overwritten later. Looking up arm-core.xml results in an error as
+it will not be embedded in the AArch64 build.
 
-The reuse of gdbstub code ensures the long-term stability of the TCG plugin
-interface for register access without incurring a burden to maintain yet
-another interface for register access.
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-This process to add TCG plugin involves four major changes. The first one
-is to add GDBFeature structure that represents a GDB feature, which usually
-includes registers. GDBFeature can be generated from static XML files or
-dynamically generated by architecture-specific code. In fact, this is a
-refactoring independent of the feature this series adds, and potentially
-it's benefitial even without the plugin feature. The plugin feature will
-utilize this new structure to describe registers exposed to plugins.
-
-The second one is to make gdb_read_register/gdb_write_register usable
-outside of gdbstub context.
-
-The third one is to actually make registers readable for plugins.
-
-The last one is to allow to implement a QEMU plugin in C++. A plugin that
-I'll describe later is written in C++.
-
-The below is a summary of patches:
-Patch 01 fixes a bug in execlog plugin.
-Patch [02, 16] introduce GDBFeature.
-Patch 17 adds information useful for plugins to GDBFeature.
-Patch [18, 21] make registers readable outside of gdbstub context.
-Patch [22, 24] add the feature to read registers from plugins.
-Patch [25, 26] make it possible to write plugins in C++.
-
-The execlog plugin will have new options to demonstrate the new feature.
-I also have a plugin that uses this new feature to generate execution
-traces for Sniper processor simulator, which is available at:
-https://github.com/shioya-lab/sniper/tree/akihikodaki/bb
-
-V4 -> V5:
-  Corrected g_rw_lock_writer_lock() call. (Richard Henderson)
-  Replaced abort() with g_assert_not_reached(). (Richard Henderson)
-  Fixed CSR name leak in target/riscv. (Richard Henderson)
-  Removed gdb_has_xml variable.
-
-V3 -> V4:
-  Added execlog changes I forgot to include in the last version.
-
-V2 -> V3:
-  Added patch "hw/core/cpu: Return static value with gdb_arch_name()".
-  Added patch "gdbstub: Dynamically allocate target.xml buffer".
-  (Alex Bennée)
-  Added patch "gdbstub: Introduce GDBFeatureBuilder". (Alex Bennée)
-  Dropped Reviewed-by tags for "target/*: Use GDBFeature for dynamic XML".
-  Changed gdb_find_static_feature() to abort on failure. (Alex Bennée)
-  Changed the execlog plugin to log the register value only when changed.
-  (Alex Bennée)
-  Dropped 0x prefixes for register value logs for conciseness.
-
-V1 -> V2:
-  Added SPDX-License-Identifier: GPL-2.0-or-later. (Philippe Mathieu-Daudé)
-  Split long lines. (Philippe Mathieu-Daudé)
-  Renamed gdb_features to gdb_static_features (Philippe Mathieu-Daudé)
-  Dropped RFC.
-
-Akihiko Odaki (26):
-  contrib/plugins: Use GRWLock in execlog
-  gdbstub: Introduce GDBFeature structure
-  gdbstub: Add num_regs member to GDBFeature
-  gdbstub: Introduce gdb_find_static_feature()
-  target/arm: Move the reference to arm-core.xml
-  hw/core/cpu: Replace gdb_core_xml_file with gdb_core_feature
-  gdbstub: Introduce GDBFeatureBuilder
-  target/arm: Use GDBFeature for dynamic XML
-  target/ppc: Use GDBFeature for dynamic XML
-  target/riscv: Use GDBFeature for dynamic XML
-  gdbstub: Use GDBFeature for gdb_register_coprocessor
-  gdbstub: Use GDBFeature for GDBRegisterState
-  hw/core/cpu: Return static value with gdb_arch_name()
-  gdbstub: Dynamically allocate target.xml buffer
-  gdbstub: Simplify XML lookup
-  hw/core/cpu: Remove gdb_get_dynamic_xml member
-  gdbstub: Add members to identify registers to GDBFeature
-  target/arm: Remove references to gdb_has_xml
-  target/ppc: Remove references to gdb_has_xml
-  gdbstub: Remove gdb_has_xml variable
-  gdbstub: Expose functions to read registers
-  cpu: Call plugin hooks only when ready
-  plugins: Allow to read registers
-  contrib/plugins: Allow to log registers
-  plugins: Support C++
-  contrib/plugins: Add cc plugin
-
- MAINTAINERS                  |   2 +-
- docs/devel/tcg-plugins.rst   |  18 +++-
- configure                    |  15 ++-
- meson.build                  |   2 +-
- gdbstub/internals.h          |   2 +-
- include/exec/gdbstub.h       |  51 +++++++--
- include/hw/core/cpu.h        |  11 +-
- include/qemu/qemu-plugin.h   |  69 +++++++++++-
- target/arm/cpu.h             |  26 ++---
- target/arm/internals.h       |   2 +-
- target/ppc/cpu-qom.h         |   3 +-
- target/ppc/cpu.h             |   3 +-
- target/ppc/internal.h        |   2 +-
- target/riscv/cpu.h           |   4 +-
- target/s390x/cpu.h           |   2 -
- contrib/plugins/execlog.c    | 150 ++++++++++++++++++++------
- cpu.c                        |  11 --
- gdbstub/gdbstub.c            | 198 +++++++++++++++++++++++-----------
- gdbstub/softmmu.c            |   3 +-
- gdbstub/user.c               |   1 -
- hw/core/cpu-common.c         |  10 ++
- plugins/api.c                |  40 +++++++
- stubs/gdbstub.c              |   6 +-
- target/arm/cpu.c             |  12 +--
- target/arm/cpu64.c           |   8 +-
- target/arm/gdbstub.c         | 202 +++++++++++++----------------------
- target/arm/gdbstub64.c       |  90 +++++++---------
- target/arm/tcg/cpu32.c       |   3 +-
- target/avr/cpu.c             |   4 +-
- target/hexagon/cpu.c         |   5 +-
- target/i386/cpu.c            |  13 ++-
- target/loongarch/cpu.c       |   8 +-
- target/loongarch/gdbstub.c   |   2 +-
- target/m68k/cpu.c            |   7 +-
- target/m68k/helper.c         |   6 +-
- target/microblaze/cpu.c      |   9 +-
- target/ppc/cpu_init.c        |   9 +-
- target/ppc/gdbstub.c         |  80 ++++----------
- target/riscv/cpu.c           |  27 ++---
- target/riscv/gdbstub.c       |  89 +++++++--------
- target/rx/cpu.c              |   4 +-
- target/s390x/cpu.c           |   8 +-
- target/s390x/gdbstub.c       |  28 ++---
- target/tricore/cpu.c         |   4 +-
- contrib/plugins/Makefile     |   5 +
- contrib/plugins/cc.cc        |  17 +++
- plugins/qemu-plugins.symbols |   2 +
- scripts/feature_to_c.py      | 102 ++++++++++++++++++
- scripts/feature_to_c.sh      |  69 ------------
- tests/tcg/Makefile.target    |   3 +
- 50 files changed, 825 insertions(+), 622 deletions(-)
- create mode 100644 contrib/plugins/cc.cc
- create mode 100755 scripts/feature_to_c.py
- delete mode 100644 scripts/feature_to_c.sh
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 93c28d50e5..d71a162070 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2354,7 +2354,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     cc->sysemu_ops = &arm_sysemu_ops;
+ #endif
+     cc->gdb_num_core_regs = 26;
+-    cc->gdb_core_xml_file = "arm-core.xml";
+     cc->gdb_arch_name = arm_gdb_arch_name;
+     cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
+     cc->gdb_stop_before_watchpoint = true;
+@@ -2376,8 +2375,10 @@ static void arm_cpu_instance_init(Object *obj)
+ static void cpu_register_class_init(ObjectClass *oc, void *data)
+ {
+     ARMCPUClass *acc = ARM_CPU_CLASS(oc);
++    CPUClass *cc = CPU_CLASS(acc);
+ 
+     acc->info = data;
++    cc->gdb_core_xml_file = "arm-core.xml";
+ }
+ 
+ void arm_cpu_register(const ARMCPUInfo *info)
 -- 
 2.41.0

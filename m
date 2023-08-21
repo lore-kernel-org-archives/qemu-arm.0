@@ -1,227 +1,138 @@
-Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp839088ejs;
-        Wed, 16 Aug 2023 22:31:14 -0700 (PDT)
-X-Received: by 2002:a05:6830:1d7c:b0:6bc:f85e:ab0 with SMTP id l28-20020a0568301d7c00b006bcf85e0ab0mr4119542oti.3.1692250273935;
-        Wed, 16 Aug 2023 22:31:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692250273; cv=none;
+Received: by 2002:a17:906:5ac8:b0:98d:b2f5:1316 with SMTP id x8csp3471055ejs;
+        Mon, 21 Aug 2023 04:56:51 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFrG7S+tIoFLQDK5gTGw2VjMFduG0RaUeWL7+7qt1EOkswzK5KouixWA3tJ51aqaai+pE1+
+X-Received: by 2002:ac8:57d6:0:b0:410:9b0f:e67b with SMTP id w22-20020ac857d6000000b004109b0fe67bmr2876084qta.22.1692619011189;
+        Mon, 21 Aug 2023 04:56:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692619011; cv=none;
         d=google.com; s=arc-20160816;
-        b=xPjc0yLsiRCnbNL2dpPYC1wY80T0q5POkdyonb6Tu7dT5qobYCRmX3SSC+/w1Z5zpy
-         1MTF4FZrYHoNs48r/Tp3LSPZ3F+p48k8xsV9SOREA3frKdDefKVopI5rO4FtWZBmfbX3
-         ynZNcmmLGcI8pjiPRT4Ikygcn+6pfep4ScHTgxLPZzjToNRX0jNVPGAZ1XngX+dqtWzm
-         4jV7m+jMd9qlXAENPdeB14yjAJ40mvmDDaqva7rlM7V8XZBGHpLUz0ziJBRJ1ewgSIlF
-         gIF/8beOZAarwOg5blCb/KLGrX625Sq5TcKRJTSBwpsxq1sY8Swq/YqpIz7bHB+36QOC
-         s/gA==
+        b=QDobwZ7Dy8BqeAOu3+qV3Y23nInpX0Yx3cfq9/SMdZE/hiZZ2jt0wK6zbXYB0Ak8d8
+         qMzYP1sJvU/96jRkOo5DoCXjl8+JrBB7zGg3tB5v9Pngk/V21JdwV61McSYL1hiwFUva
+         FW3wORIqIpkxZTVj9kyGQLtrBMcV7iV6rwC6/LFJ/9wvhA5x6/I9CZofaQs2jVlIPA/h
+         eTM0geWLp5wXgEC9EX4V0t+20dXCr2tb7H2AaCa7/B4ab76tFBG631rbcnETsfU+9nLZ
+         iM0+mvIVbSiS0t+QPBT88vcbESPhndeZtthZJz4HCWqClr71KN33rew70NTCeA9CNExi
+         QEhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lqwUBKCsJIu6Kok3irpDq8wqJUl9JGbLYq58wXaDnQ0=;
-        fh=fUiTdP13jeKk8+/DO5sZ9YFnMdWUGYQSHAZ2p4VPlgw=;
-        b=Xhad7WjvPx7eVfbj1VHVyVRROZCVff1giugoiMuvUlKOMzY5YL8ziPaYh6uYAvEQ2n
-         ssvw2u4VJKu0bX7dKlFL+vYC/NrQ0zwZJsWSWLz69ef4ZQdtET2/47vQ8D6gxi4kZrEA
-         Qv72g+geBvdwmVOlwPLfi2TH2EfpPtKJPTDSoszSfRhwqfoLlnSjrywdskr94+SCMEQs
-         w9uJsyVxnqnyrZsW5vklnMoTwFlACDbrfzkwKUiltD0LqQFNJmcGWHSyz1GmGMlTuYA8
-         125z7/2oXWGM/D8FXBaVt1WO9XoAUDQduiHxk3Lj4KxmlJH3mfZJcitC6HGBj39Ip5Qk
-         bHXQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=BHbqbw9lCv5JbzlWO4/rmwrp+1ykFuyqXQjbq/f4UEY=;
+        fh=qQktnNHMF63/lvoaUW87qKTlrnLutpTDl+gH+pSxVgA=;
+        b=o85vmEPqXjEUFL4bDUXkO+/pJZzEqccSU9Pzaxbm0xA8yRRSgj/3LN6th+FSGuizZ7
+         xmqDifKSBCnhiEXvfmKos/petIPpnujHV/AJXfMm+qo0vD9HN23t215bZSalCsC9CzP+
+         /gu1wlZznuNDdbg6s2YzSBqV2/0HB8Hnj54cgimAVc1GBoUEKhJV3uZHoquE8JDPIaVa
+         KHDAbrRXUs3zl/fVbvNuJ7rbHWTiphxqdYo5eW87cRqMw22QXnqtl5ir5vinZVpp5mge
+         fJpEFoE0R/2KOvQUiW0B6EOIplK8/euPQrCsscF8I4EL59DJdBBV4PpLEX/j6iT8H9Kr
+         Tjmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="1gu5/KBt";
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n7-20020a9d7107000000b006bd0802ef85sor8075598otj.21.2023.08.16.22.31.13
+       dkim=pass header.i=@linaro.org header.s=google header.b=lcswyzAe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h16-20020ac85850000000b0041092ca3dd6si1875012qth.306.2023.08.21.04.56.51
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 16 Aug 2023 22:31:13 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 21 Aug 2023 04:56:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b="1gu5/KBt";
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=lcswyzAe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qY3WK-0003bN-CF; Mon, 21 Aug 2023 07:56:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qY3WF-0003Tz-DA
+ for qemu-arm@nongnu.org; Mon, 21 Aug 2023 07:56:28 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qY3WB-0003yZ-W9
+ for qemu-arm@nongnu.org; Mon, 21 Aug 2023 07:56:27 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-523476e868dso4031353a12.3
+ for <qemu-arm@nongnu.org>; Mon, 21 Aug 2023 04:56:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1692250273; x=1692855073;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lqwUBKCsJIu6Kok3irpDq8wqJUl9JGbLYq58wXaDnQ0=;
-        b=1gu5/KBtHaxsjhSshR4TffmkUjm9NNZqkA2HPqW47cQkgYgjBIwJ1rEYLhK2dMrbfk
-         KCpEEVFKK6kW2W3VBB+K/2m9mjsRav0hCsIBVA7zS3EPEwSTzNh4JfSMfprwnCX1LBGN
-         cuYWA8Ft3VtloG2xnFrYOD/lW+NKkKJB3bf3auwbxr5P+1xUiybf4/xgh7Tc8BcnZV2I
-         O4SlFoBoybwhodyGt0zAr0kyYpXJ4pc2ehBMvgtq1rionxX9fwEIZYmOf/GGrAS6HvQb
-         MuhziZ4+uhHfeXXGLbU/UcXAeSNQdVsUqqhV8hO5r2IW2xoazbF0wKAHyWjlMwpEYQiG
-         nvRQ==
+ d=linaro.org; s=google; t=1692618982; x=1693223782;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=BHbqbw9lCv5JbzlWO4/rmwrp+1ykFuyqXQjbq/f4UEY=;
+ b=lcswyzAe8h2BcwHoioN+dlMVvqacPRm/sOyA6gsNCm8fWcopANlrAgP6SMxMOghiHl
+ cVKdMMSk8Wrm+HxETFENh/iOYub35K4hs1Cr6VNTpFHRf3JIHLVWpzILa7aHJ6jLPlF4
+ ewYaykupV4ElZmdc3fy/iuu/WFSR6fPsXGVNlAi3JOPNg3F7z3LaBbRrp+aYZ1Am4tWk
+ uoDLSHbr1JF0FrM64sKuecjNxNy0vI9T5u9Y4U3ddDOhf6DezEkMtUoueiabRnQViqB6
+ PJyylQD1FvwqSECjQZeOGXnxbLS28NRQnKp1xXqH6adUZZuZn2ZNLWNFyFaqmPmBFA69
+ fifA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692250273; x=1692855073;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lqwUBKCsJIu6Kok3irpDq8wqJUl9JGbLYq58wXaDnQ0=;
-        b=PeH/tH8w2dyx404zCJfyTZM+MBiTR40gr1OdF+O2u8ozUjt1QZ8v9FUVG6igXsmOwJ
-         /LZtXMXeIbpyh0zI4Ojzk2f55LfAvB+QQlrT6FrwL9Egf5fDBb9NyTOCutHMOEikoXOw
-         mjAMz+SjKEsKFMRz6mUNnFdW8uYuUItnFoCJG4sufhw5LLgdEgsMdNcp4He2nABWb9Ys
-         +XIE1VolRvSHpiL4w9/vDeHBS5jYPrqgc8Li7gpIgU/14BtKBuKD91au6BWnWbRiaiYo
-         Kg+hbfSRUID39AruYZZ7w3OEKBy4Upb/P3rM6ISyJFNhVzdGg5sLhFwF7F/EOEn7QRfv
-         avGQ==
-X-Gm-Message-State: AOJu0YxPBGg8TBwkhwPr0/zrIW2Cakf5/2Fz8aw5fHZw2FzTxnvUq7zl
-	2o+9kyYu3M21LaWYxfXG5tC8lw==
-X-Google-Smtp-Source: AGHT+IF3SYiv+QLBhO40iLnk+nijyWoh0NOYk76NZi+ZZu5c10QkTfpkv1zIIUkiZDdBrVJvdZFvKg==
-X-Received: by 2002:a05:6870:4711:b0:1b3:715c:463e with SMTP id b17-20020a056870471100b001b3715c463emr4818745oaq.0.1692250273292;
-        Wed, 16 Aug 2023 22:31:13 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id j18-20020aa783d2000000b00662610cf7a8sm12339407pfn.172.2023.08.16.22.31.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Aug 2023 22:31:12 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Brian Cain <bcain@quicinc.com>,
-	Song Gao <gaosong@loongson.cn>,
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Stafford Horne <shorne@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	David Hildenbrand <david@redhat.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org,
-	qemu-s390x@nongnu.org,
-	Anton Kochkov <anton.kochkov@proton.me>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v5 03/26] gdbstub: Add num_regs member to GDBFeature
-Date: Thu, 17 Aug 2023 14:29:50 +0900
-Message-ID: <20230817053017.24207-4-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230817053017.24207-1-akihiko.odaki@daynix.com>
-References: <20230817053017.24207-1-akihiko.odaki@daynix.com>
+ d=1e100.net; s=20221208; t=1692618982; x=1693223782;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=BHbqbw9lCv5JbzlWO4/rmwrp+1ykFuyqXQjbq/f4UEY=;
+ b=h76sD7FAZ9XGEUul5tjVj5aVbj2boYwNlBDeurwZ8q9cf1DUjpCHSgio2+v2+uyukz
+ VbAmoezMoE0hqw6Cu2bld+rnHuB6i0icLRAEbYaF4EkMPX05+4Jh20rU1qRZUTnek9vo
+ +dZ0t6Mh73jyVh8JgKhCd695Mv2WknxyqfYrcDWmVzM5bXL59z5Wh9sNIsP0TGsGOPaW
+ El9+p/xLRy2mGuRiHc/CQwaRtMLMwBHbBa5SYiQLD1klgg+R/XjZdCj0wt9ipPBrS/z+
+ zJfIFz/phbksFeGoFnlE4v+dnfPyKj3CN5P92+RfHJiXAt7fdWEpMyYinPLg1wn8/1h5
+ vCdQ==
+X-Gm-Message-State: AOJu0YwGBUF1V7tFVqhN6lGpceRLFARxqUe44eNsLlViEXvqb683ySFm
+ 38NzZu77vktMdhiQrbOEFIu8CGSso2rFSxhHG1mB0w==
+X-Received: by 2002:aa7:d6cd:0:b0:526:9cfb:c12 with SMTP id
+ x13-20020aa7d6cd000000b005269cfb0c12mr4985171edr.38.1692618982420; Mon, 21
+ Aug 2023 04:56:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: C1XJyLNGBEgH
+References: <20230821022025.397682-1-richard.henderson@linaro.org>
+In-Reply-To: <20230821022025.397682-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 21 Aug 2023 12:56:11 +0100
+Message-ID: <CAFEAcA9n_AMw5LYdwhgmsGMRCzQ4uoEtxUyjQjhJp+AALVUZrw@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Fix 64-bit SSRA
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-stable@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SB0EU7TCeBC1
 
-Currently the number of registers exposed to GDB is written as magic
-numbers in code. Derive the number of registers GDB actually see from
-XML files to replace the magic numbers in code later.
+On Mon, 21 Aug 2023 at 03:20, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Typo applied byte-wise shift instead of double-word shift.
+>
+> Cc: qemu-stable@nongnu.org
+> Fixes: 631e565450c ("target/arm: Create gen_gvec_[us]sra")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1779
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/tcg/translate.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
----
- include/exec/gdbstub.h  |  1 +
- scripts/feature_to_c.py | 46 +++++++++++++++++++++++++++++++++++++++--
- 2 files changed, 45 insertions(+), 2 deletions(-)
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 3f08093321..9b484d7eef 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -13,6 +13,7 @@
- typedef struct GDBFeature {
-     const char *xmlname;
-     const char *xml;
-+    int num_regs;
- } GDBFeature;
- 
- 
-diff --git a/scripts/feature_to_c.py b/scripts/feature_to_c.py
-index bcbcb83beb..e04d6b2df7 100755
---- a/scripts/feature_to_c.py
-+++ b/scripts/feature_to_c.py
-@@ -1,7 +1,7 @@
- #!/usr/bin/env python3
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
--import os, sys
-+import os, sys, xml.etree.ElementTree
- 
- def writeliteral(indent, bytes):
-     sys.stdout.write(' ' * indent)
-@@ -39,10 +39,52 @@ def writeliteral(indent, bytes):
-     with open(input, 'rb') as file:
-         read = file.read()
- 
-+    parser = xml.etree.ElementTree.XMLPullParser(['start', 'end'])
-+    parser.feed(read)
-+    events = parser.read_events()
-+    event, element = next(events)
-+    if event != 'start':
-+        sys.stderr.write(f'unexpected event: {event}\n')
-+        exit(1)
-+    if element.tag != 'feature':
-+        sys.stderr.write(f'unexpected start tag: {element.tag}\n')
-+        exit(1)
-+
-+    regnum = 0
-+    regnums = []
-+    tags = ['feature']
-+    for event, element in events:
-+        if event == 'end':
-+            if element.tag != tags[len(tags) - 1]:
-+                sys.stderr.write(f'unexpected end tag: {element.tag}\n')
-+                exit(1)
-+
-+            tags.pop()
-+            if element.tag == 'feature':
-+                break
-+        elif event == 'start':
-+            if len(tags) < 2 and element.tag == 'reg':
-+                if 'regnum' in element.attrib:
-+                    regnum = int(element.attrib['regnum'])
-+
-+                regnums.append(regnum)
-+                regnum += 1
-+
-+            tags.append(element.tag)
-+        else:
-+            raise Exception(f'unexpected event: {event}\n')
-+
-+    if len(tags):
-+        sys.stderr.write('unterminated feature tag\n')
-+        exit(1)
-+
-+    base_reg = min(regnums)
-+    num_regs = max(regnums) - base_reg + 1 if len(regnums) else 0
-+
-     sys.stdout.write('    {\n')
-     writeliteral(8, bytes(os.path.basename(input), 'utf-8'))
-     sys.stdout.write(',\n')
-     writeliteral(8, read)
--    sys.stdout.write('\n    },\n')
-+    sys.stdout.write(f',\n        {num_regs},\n    }},\n')
- 
- sys.stdout.write('    { NULL }\n};\n')
--- 
-2.41.0
+
+Applied to target-arm-for-8.2 with the gitlab URL fixed, thanks.
+
+-- PMM

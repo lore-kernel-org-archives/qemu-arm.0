@@ -1,98 +1,98 @@
-Received: by 2002:a17:906:80c9:b0:9a1:ac8c:26bb with SMTP id a9csp657143ejx;
-        Tue, 22 Aug 2023 04:45:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGE/vAuc8FDoawujRAZoWmS5OPd7BakrPJqqqeVexOQrb8O7pfxgqoSukOLLqPjZKbJ4ySY
-X-Received: by 2002:a0c:e206:0:b0:64f:430b:cabe with SMTP id q6-20020a0ce206000000b0064f430bcabemr6083180qvl.32.1692704719242;
-        Tue, 22 Aug 2023 04:45:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692704719; cv=none;
+Received: by 2002:a17:906:80c9:b0:9a1:ac8c:26bb with SMTP id a9csp663085ejx;
+        Tue, 22 Aug 2023 04:58:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHOP5dZvZYQWhxWLisR9Oevw1ia0iB+sLqbiHGdcJxObos5omLmW+T6lo8D5PA/mOaI/rzY
+X-Received: by 2002:a0c:de08:0:b0:64f:4dbf:b21a with SMTP id t8-20020a0cde08000000b0064f4dbfb21amr1879733qvk.29.1692705482347;
+        Tue, 22 Aug 2023 04:58:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692705482; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Uap/CqV5lduC4YwdZc1ymINLVaj3EfZyu0x7D0ytQxBtPDT9xx4U19lhcZdABl5iB
-         /DcDUCQpRl3YM5DEl95ymRrOQxq3GVPvIRevzjbS2lTMM02ydptxrkTF5wmHQiYy9dmH
-         qm1QasFvWEsAcRFIzk51dXloCpb+xThmeliubOfSMhXOm+Fur7N6H3ixT4ED1X5OpT1Y
-         x9IquOa+9T3uaT9uCeST5i3ETDqNiWdDXovaTC/xkDM5BNh5vKj+3pzDWC3ufInrhzGZ
-         hWH3Vjcpk0kJDK3KVrxANZdmc6LrweRv5uQESDtnP9fL7X/sxk2fu8iXokbx2D+gz76k
-         3xOQ==
+        b=grP3p9+0vewDmWosOyG8KRwK3lqNMvm8xw8g1NF7rgTu+4EeTRW7d6aMFKFc6qYUrC
+         c4Y5TCTyYW2Q/albzSyNwTLNOk5DTV67qd17ncJ0zyM4eaifF1JABI3RSLtvmVExyBd2
+         QzCt15jfHYdWCidf4MktDfzMotsf5yFd50c2Pcimp+lH0SxAsYfwHnH6KA79x46ZV4rv
+         SZeHCGKGeO0BuEMiQqtGxPH3zwPCpRjYvg4C4jbRpB0fuvOa3yTS1W/oBfEYXgU3ElFQ
+         dAzxCNfM1DY02jzlHKtNkXK32z7ryOSLVYoM9utQjRDa03qOjYUWJmdPWXoPr84wITL7
+         wfiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=NrQ0nn/R+ah4RfL4YqoGKD8z4L73n4KEcrCq0geYfv0=;
+        bh=PgqrI3T3hOuQEDML+sVpS9zcCtCaRRyYRjkYaQ3SPyE=;
         fh=2n2TGmFa1ri6Gm+ryyd12WVJ0xNvvL53TsASRxKHK5I=;
-        b=GGLgYzwLZ42/X+2vftLn1KlGWx+R0MAN1ZGyguctTzexa2uoPgqNRd3cXxQ6heg1jO
-         VB16ZH3GfaysJl8GT76UaNwxLCBaW7kxHqkjdQySit+Tb/f5BeAyJ1gy046xDkBsk8En
-         6SM2ccTo44IYakT7fKBNLKGh7JhFIMvtvtcvyKCFADy2MW/n6BN/sd6Gk1YGi41Aldbg
-         8El65OU4qLj0fn7aRaC7fG2A1hS3tEBZl2ZRZL5ahC50Zg6Pu5ofBvx6uLmjs0Rgkwm3
-         RGZBAJHN+H6TM6y7MyeK7g72TyY/KFNyVdQFXDa6zItPmXtQGPY8S05iEwsTdyAAJ9yQ
-         l07Q==
+        b=PNWesY1NnB3GbpIAgXMNVbQnxN2F0MBsdqVezRos4PsFd4t9ver+aMEfNj4iKuxtGS
+         rB+r5HQO3JBarLRkDP3XNT3rRPqSQTPJIxEq8LpfNchz23hJYl0AnpwJaE/ls+PWpjw5
+         wIfWf4SIykk9MRYTvVJ8y8WSzhNqJTEwPhbLAzqLeYdPQqxjpRXzDVIUFjk0o4wvzPv1
+         1jlgJjGqzooDkvvXcvK2ZyNwGjLTe/fqRNu5s2h7j8lK1NbAanmHcpv2a9k6lntAd77E
+         RDFGypwICTGUtKvvaG6vOjYNBuOwPX/MQas13o+ZiWXdof5NUWFmgJXLKgwZ2GZ5uRK8
+         yG2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ni0IT5CW;
+       dkim=pass header.i=@linaro.org header.s=google header.b="lrTAwuF/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x1-20020a0ce241000000b006418d1582b2si5824502qvl.392.2023.08.22.04.45.19
+        by mx.google.com with ESMTPS id e24-20020a0cb458000000b00636497373d1si1117430qvf.483.2023.08.22.04.58.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Aug 2023 04:45:19 -0700 (PDT)
+        Tue, 22 Aug 2023 04:58:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ni0IT5CW;
+       dkim=pass header.i=@linaro.org header.s=google header.b="lrTAwuF/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qYPor-0003Uk-3r; Tue, 22 Aug 2023 07:45:09 -0400
+	id 1qYQ0o-0004R0-4T; Tue, 22 Aug 2023 07:57:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qYPon-0003UE-Bg
- for qemu-arm@nongnu.org; Tue, 22 Aug 2023 07:45:06 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1qYQ0n-0004QV-0v
+ for qemu-arm@nongnu.org; Tue, 22 Aug 2023 07:57:29 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qYPoi-00066W-MQ
- for qemu-arm@nongnu.org; Tue, 22 Aug 2023 07:45:03 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-51cff235226so9043034a12.0
- for <qemu-arm@nongnu.org>; Tue, 22 Aug 2023 04:44:59 -0700 (PDT)
+ id 1qYQ0k-0002eL-EJ
+ for qemu-arm@nongnu.org; Tue, 22 Aug 2023 07:57:28 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-5298e43bb67so7837404a12.1
+ for <qemu-arm@nongnu.org>; Tue, 22 Aug 2023 04:57:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1692704698; x=1693309498;
+ d=linaro.org; s=google; t=1692705444; x=1693310244;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=NrQ0nn/R+ah4RfL4YqoGKD8z4L73n4KEcrCq0geYfv0=;
- b=Ni0IT5CW+haVBHOuKiICtnG5pAUT8jfczPf/ScQX80Z952HQWBBtWUKVeWssCCNwt8
- /rRrtLKNeteXofO+FxOqWzYVr5VHyEswK0xXdu0AaeWwnIgHlevgSPAQZys0misY4E1s
- B35Q73qYOretcZypL9m9Oseahh0tlrwAy5XeOk61CqA7IIzTrI5V8bi31Do/6/4a2HQz
- 3APwRGrFBhiKWTf6uIzLEO+sd7AwnmSpSIqRrKwVhsUXpZ1pvpj/DEAgMLddYucbSAfp
- upaG8Lx9LHv86jssCcorJkr9Br7d5g0SFiFMPSc+aMzew9qLQ3A9yjNWYC/doOxgdrRb
- K20Q==
+ bh=PgqrI3T3hOuQEDML+sVpS9zcCtCaRRyYRjkYaQ3SPyE=;
+ b=lrTAwuF/+Sl4oKcU3i6cFc6QeCkvI2BhC38SUyxRy0hGgJdsG5pbkmKARH+v1UuHDf
+ zzl3Sjb5lxfqdAQpHn4oS9whCll+X7oJs0ckmV4Fv9/Zwnz1Eyb3muS0kBV8wWH0lpHq
+ FUFOmylitRh8SICa0CbqlI9HwteELoHiwVBKlcxVJ7ioaOIOL2DlZHs991ON1UefUjAI
+ 5EtHoGkWL8awLiZYRxFwXWAp1Ri2xFSylNMP2Dj6d0/MaRrFDjehXMAOYuvKsqSzQ1uG
+ Q2fjdVmSDgdI3C05jSPglV+8Hl0bQcUK+xymbtABA8e4g/jsfsT7KnLDLgrPeFzFadGH
+ 4dMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1692704698; x=1693309498;
+ d=1e100.net; s=20221208; t=1692705444; x=1693310244;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=NrQ0nn/R+ah4RfL4YqoGKD8z4L73n4KEcrCq0geYfv0=;
- b=gOR+u5B31Ou4ViYXCepgiOXPSNvBEUj/AWcrHnaNn30iVsj+e6QbIAdaK0OtmpGSrs
- uOv30kC9uIFNqpEm8eKMPMPcUd5xt9nkWr451iikgTs+POJvZ3IhZSORHaKEqs37Cd/n
- 3xX43udcLFi2OaSP7lvnGvCItMxXlbwKEqB9ceAQwrC1togsMRIg2igmnVGqIA2t2ioU
- IDoGwRAtv7vkBAeve/lWpMrghwjUUkEXSVT1cUQjpeOAohXQmmZahI3a+ZtTOffwNTQl
- mTLIEqzb5NrR9H9qJ/xikErJ6MmiUTNw56oyXY2+qjP/8GxsBYFXmX3h1zlYF+rGr+TY
- xAAA==
-X-Gm-Message-State: AOJu0Yx+Vt9B6sTeasBuoLA6lHjO2Gii9ntFi3sACZJ0dfJw+EbRZprk
- zf2IhzzWv2M/wD/6JPkDX5ZteXT0upuq/hKQEt7PCA==
-X-Received: by 2002:a05:6402:348b:b0:522:ab20:368a with SMTP id
- v11-20020a056402348b00b00522ab20368amr10369244edc.13.1692704697794; Tue, 22
- Aug 2023 04:44:57 -0700 (PDT)
+ bh=PgqrI3T3hOuQEDML+sVpS9zcCtCaRRyYRjkYaQ3SPyE=;
+ b=FxEvJ7WCThKd+aCV5tjcD0UBfzRtvRmTail8C4G7Ss7iWD88UOchV73IGvyaU3SOPX
+ WtO9+nNTHCgozuS5nz4Vq5Iu3KNRYufYgKQyT2UbuG7B5zbdk3EfEjR/50OOclaUtp8N
+ LOQlasp6lC0dWHsT3KmjtUFMyoYdC8UoHSc/vZd8qG8WpDuFi/osbn52gtJfzAJCaPJ4
+ 7kj0FZRna+tHeiuZaGpHM36hlyQ2LOE9NQzExamFAvRiQbay/mTUI9DaKc7XIvVQIU/1
+ fymW64aTZvPtQH7GpUWDP0LKOU4HTXILzHpwsy+gWmKxR5/eZ8tEtXlawCMuzHOzM9yY
+ W1ZQ==
+X-Gm-Message-State: AOJu0Yx48XEbOs7Rr46HZ0196WAvlob18iVxiW5yYrz8ukIdmKAszWhh
+ Ge2kXYnaM/4COg0T3+0pAn3kxqQ7hSxadudhkXLSTQ==
+X-Received: by 2002:a05:6402:1d4c:b0:51f:ef58:da87 with SMTP id
+ dz12-20020a0564021d4c00b0051fef58da87mr12708958edb.2.1692705444165; Tue, 22
+ Aug 2023 04:57:24 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230822110129.41022-1-philmd@linaro.org>
- <20230822110129.41022-3-philmd@linaro.org>
-In-Reply-To: <20230822110129.41022-3-philmd@linaro.org>
+ <20230822110129.41022-6-philmd@linaro.org>
+In-Reply-To: <20230822110129.41022-6-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Aug 2023 12:44:46 +0100
-Message-ID: <CAFEAcA-36XE-9ikSp0F4EMUKysz=ms2JyLCc8GOWcgJq3sb=hw@mail.gmail.com>
-Subject: Re: [PATCH 2/6] target/cris: Use hswap_i32() in SWAPW opcode
+Date: Tue, 22 Aug 2023 12:57:13 +0100
+Message-ID: <CAFEAcA-GJiVX5kbx58MNAHQ1z4-bJzjFzJsha_Lp7XB674-NUA@mail.gmail.com>
+Subject: Re: [PATCH 5/6] target/mips: Use hswap_i64() in DSHD opcode
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, 
  Xiaojuan Yang <yangxiaojuan@loongson.cn>,
@@ -103,8 +103,8 @@ Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
  Song Gao <gaosong@loongson.cn>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,73 +126,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: joKj1zMszaG2
+X-TUID: KlvYkWtKZZob
 
-On Tue, 22 Aug 2023 at 12:01, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+On Tue, 22 Aug 2023 at 12:02, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
 g> wrote:
 >
 > Commit 46be8425ff ("tcg: Implement tcg_gen_{h,w}swap_{i32,i64}")
 > introduced the generic hswap_i32(). Use it instead of open-coding
-> it as t_gen_swapw().
+> it in gen_bshfl().
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
->  target/cris/translate.c         | 14 +-------------
->  target/cris/translate_v10.c.inc |  2 +-
->  2 files changed, 2 insertions(+), 14 deletions(-)
+>  target/mips/tcg/translate.c | 14 +-------------
+>  1 file changed, 1 insertion(+), 13 deletions(-)
 >
-> diff --git a/target/cris/translate.c b/target/cris/translate.c
-> index 42103b5558..925ed2c6f6 100644
-> --- a/target/cris/translate.c
-> +++ b/target/cris/translate.c
-> @@ -399,18 +399,6 @@ static inline void t_gen_swapb(TCGv d, TCGv s)
->      tcg_gen_or_tl(d, d, t);
->  }
->
-> -/* Swap the halfwords of the s operand.  */
-> -static inline void t_gen_swapw(TCGv d, TCGv s)
-> -{
-> -    TCGv t;
-> -    /* d and s refer the same object.  */
-> -    t =3D tcg_temp_new();
-> -    tcg_gen_mov_tl(t, s);
-> -    tcg_gen_shli_tl(d, t, 16);
-> -    tcg_gen_shri_tl(t, t, 16);
-> -    tcg_gen_or_tl(d, d, t);
-> -}
+> diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
+> index 9bb40f1849..4f34ea9b6a 100644
+> --- a/target/mips/tcg/translate.c
+> +++ b/target/mips/tcg/translate.c
+> @@ -4948,19 +4948,7 @@ static void gen_bshfl(DisasContext *ctx, uint32_t =
+op2, int rt, int rd)
+>          }
+>          break;
+>      case OPC_DSHD:
+> -        {
+> -            TCGv t1 =3D tcg_temp_new();
+> -            TCGv t2 =3D tcg_constant_tl(0x0000FFFF0000FFFFULL);
 > -
->  /*
->   * Reverse the bits within each byte.
->   *
-> @@ -1675,7 +1663,7 @@ static int dec_swap_r(CPUCRISState *env, DisasConte=
-xt *dc)
->          tcg_gen_not_tl(t0, t0);
->      }
->      if (dc->op2 & 4) {
-> -        t_gen_swapw(t0, t0);
-> +        tcg_gen_hswap_i32(t0, t0);
->      }
->      if (dc->op2 & 2) {
->          t_gen_swapb(t0, t0);
-> diff --git a/target/cris/translate_v10.c.inc b/target/cris/translate_v10.=
-c.inc
-> index b7b0517982..0ff15769ec 100644
-> --- a/target/cris/translate_v10.c.inc
-> +++ b/target/cris/translate_v10.c.inc
-> @@ -506,7 +506,7 @@ static void dec10_reg_swap(DisasContext *dc)
->      if (dc->dst & 8)
->          tcg_gen_not_tl(t0, t0);
->      if (dc->dst & 4)
-> -        t_gen_swapw(t0, t0);
-> +        tcg_gen_hswap_i32(t0, t0);
+> -            tcg_gen_shri_tl(t1, t0, 16);
+> -            tcg_gen_and_tl(t1, t1, t2);
+> -            tcg_gen_and_tl(t0, t0, t2);
+> -            tcg_gen_shli_tl(t0, t0, 16);
+> -            tcg_gen_or_tl(t0, t0, t1);
+> -            tcg_gen_shri_tl(t1, t0, 32);
+> -            tcg_gen_shli_tl(t0, t0, 32);
+> -            tcg_gen_or_tl(cpu_gpr[rd], t0, t1);
+> -        }
+> +        tcg_gen_hswap_i64(cpu_gpr[rd], t0);
 
-Both these are operating on TCGv, not TCGv_i32, so I think this
-should be tcg_gen_hswap_tl(). (Compare the tcg_gen_not_tl()
-calls.)
-
->      if (dc->dst & 2)
->          t_gen_swapb(t0, t0);
->      if (dc->dst & 1)
+We know that target_long here is 64 bits, but for consistency
+with the rest of the function maybe tcg_gen_hswap_tl()
+is better? I'm not sure...
 
 thanks
 -- PMM

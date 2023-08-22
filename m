@@ -1,85 +1,129 @@
-Received: by 2002:a05:7023:c086:b0:69:9a19:fb41 with SMTP id ip6csp2747570dlc;
-        Tue, 22 Aug 2023 08:23:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHxuc8zPLMHbDFEIK8/FJFmeGRv17aLEeekYxokeV5OovORYngaSO/iuRsWDLYmqkp8lFpc
-X-Received: by 2002:a05:622a:18f:b0:40f:df1f:87a9 with SMTP id s15-20020a05622a018f00b0040fdf1f87a9mr12331566qtw.18.1692717828777;
-        Tue, 22 Aug 2023 08:23:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692717828; cv=none;
+Received: by 2002:a17:906:f150:b0:9a1:ac8c:26bb with SMTP id gw16csp39305ejb;
+        Tue, 22 Aug 2023 09:11:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEgMsOXDWKKX+VOWEoSRXa+8+stJ+bY0CsGJPLgDTmjR4rDBqdy/UTpBIArpAOdq4qx0HIG
+X-Received: by 2002:a05:620a:4546:b0:76c:cac4:5560 with SMTP id u6-20020a05620a454600b0076ccac45560mr14135079qkp.52.1692720693038;
+        Tue, 22 Aug 2023 09:11:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692720693; cv=none;
         d=google.com; s=arc-20160816;
-        b=tyec/14jkZwF31BhMnbv/bhE83t2Z4ELfUTUdlMdPAkyCxMlyb36PsWS6Q8cAAWJsk
-         aCHiNowxAv701h0sQsxzCdOAZ5XgRpO9j8Qay8nzRv15ZggsGMmMKUc3jIn7ZDgxPieW
-         EcxuRJrVFE+cg1/VR01l4mqvKL6CxQ9Pc/IxFUywWEDE/ktIQ+oU5jDxzNCjtTA9QJD9
-         GD9xUOzX8DoNIrUawT/uPcllcMxXE1AwPmtxnNzMQJBjWhR1N/YDbAGzwlVXeUrkMRvg
-         6Wbj54OEP1lIyFMlvTXHC/knBSbsr8MoxaUb8mvlpG66EXD/64m0hE4DmdctLuk9ZC2A
-         D82g==
+        b=J4RXy4zW7k9r/qxnH8bhDiZAXIiydrzRwquofC99KzyFao6Rzbs1XyFxjo2T9Gks9S
+         G5oqLinoZ714igtNHjbh3gEHmDESaMMC0dd+TgAyD00B+oFYo2zQbRDAR3zzJl3Op40b
+         HK3RfZHsuT9uYdLRhWomovjZzZuiAyHCznid4ZR7Y6bMu6EahJv6nTmn5fmY7ccF4Zi/
+         kqFrtrn/XsMeZoe/LyOpNaw/b0xM9MB0jG4BIjHNR/3UC4ZLLvyvvjpjlbXflMJ/GbU+
+         uaOMN6TXtePJmRroZPmmJzGYtAo4Tq9wh6/M3V3bCv/wZm4l4fWI1oWXMgtq7r/KuI7u
+         Q2eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=FTxrnq6I4ZEMH2pMfhgsLfFCy9i8p1LxnTdumk5f7bM=;
-        fh=AuNRXjyCNAzIR7g5RYFRdwdUTwCjaB4cQpp0A9ttT/4=;
-        b=F8tx372Eaa7XqmhMtYYYNDM18/Ro/CoJsT6ul4/4RYqOSUsGmowsBvNm+xylexteC1
-         UxhbDrBWdMrlvRXLL526gkAgpWX1WLGUuF+bIAA2jicpJjL1DxgcszvYS0Nek3kqkYJK
-         RUXtohFdwEo4kid0n1gbI5Ihwf78hnST7Efv4eORhFo0IgEv5lkNWN7JB2NANE/z+u2h
-         WHoAjp00qFok3tElA4lWPusGh2QbEb4wYbJBhx8Ob5elvpV+e8stAqD3+F3TIX72zb73
-         0EZ3/fFnVEnd5voGErmQ2k/zQGLJNJ4M79wuEwrP5DS8+KwEcPhTywTt8fvvFNPa20+o
-         zsvw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:references:cc:to:from:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=fYXOxCO8GCfJ+uJeY+lM2xEQWVhSlqX7B6CBlP/rDRw=;
+        fh=8L+Y0sX5ka1vdDXPooEkad+lygkQX3M6wbqmj3mQddc=;
+        b=s09th9qnygmZ3W04hvLJSXSnB4R3JE4ODlFMQErVD6V7/YSBJTrL/HohdydoEbYCR2
+         /VpeKAk6a8IaeyN0v1iPC/BGub35Ei3wgc+030kXtGb56Pzlr4gdwGBXDgjOtQyb/dg9
+         u8aa6bs4TOf7iMkdtc6g1GljugAdu/0XOOiEhGRtCUYxKUjp5eizZ9JSZ5N8ty30gjrh
+         uXXtTOz/i75tfFRGoGh2jI9WWnnWIKom7v0O9O32X0kC9LvzJ5Y2rD9M19uOtLnVpK7Y
+         vJa69FY3VGH8PTcDR1rrywAjj3+DVUAFgBT/Q8Y+BvbAtQbNzX4NF+QivP14muY8NAGe
+         wTAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=k6njMkkD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b3-20020ac87fc3000000b0040694778c33si6481135qtk.32.2023.08.22.08.23.48
+        by mx.google.com with ESMTPS id py4-20020a05620a878400b00767c533af76si5941326qkn.686.2023.08.22.09.11.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Aug 2023 08:23:48 -0700 (PDT)
+        Tue, 22 Aug 2023 09:11:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=k6njMkkD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qYTE5-0003zO-OP; Tue, 22 Aug 2023 11:23:26 -0400
+	id 1qYTyY-0003ZA-JF; Tue, 22 Aug 2023 12:11:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qYTE4-0003yx-MR; Tue, 22 Aug 2023 11:23:24 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qYTE0-0003nV-Ak; Tue, 22 Aug 2023 11:23:24 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RVY0245VBz6J6xl;
- Tue, 22 Aug 2023 23:18:42 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Tue, 22 Aug
- 2023 16:23:04 +0100
-Date: Tue, 22 Aug 2023 16:23:03 +0100
-To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-CC: qemu-arm <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: CXL Namespaces of ACPI disappearing in Qemu demo
-Message-ID: <20230822162303.00007def@Huawei.com>
-In-Reply-To: <2023081118312729037834@phytium.com.cn>
-References: <2023061615433049315231@phytium.com.cn>
- <2023081118312729037834@phytium.com.cn>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qYTyX-0003Yp-DR
+ for qemu-arm@nongnu.org; Tue, 22 Aug 2023 12:11:25 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qYTyU-0007ve-QU
+ for qemu-arm@nongnu.org; Tue, 22 Aug 2023 12:11:25 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-3fee5ddc23eso32588205e9.1
+ for <qemu-arm@nongnu.org>; Tue, 22 Aug 2023 09:11:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1692720681; x=1693325481;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=fYXOxCO8GCfJ+uJeY+lM2xEQWVhSlqX7B6CBlP/rDRw=;
+ b=k6njMkkDDgSKtykAiW2sykCWDPGt4ZOWHGn+6pHzR7EZB+3R6gveFge3obp6bhsxEh
+ QpnkhOTnoc7saRf0V9pvs2cjniV4Dr8bxuNmK8mJLsK1RrIXRYwqEs+O/VE6BhiE0EPq
+ pG5X7AuT/glrKVY09mOSZxqpfdhfTpK5IOhd/HQt3Ut7KcaX150ZlppnQHHRWkSmEb43
+ hpqHzSD47oqDzSs8z5SrgiyvhhruY/fwAZTTzuLBnWAuYYuzarGL4bWS9vLEeNjuwpBz
+ kyzQeHbiXXKMZnS6DR9TDZc4PfhvlAk0PWMK9ckOmrKGMf41GENt7AEv1uQQxMr/Q/DH
+ 1ZKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1692720681; x=1693325481;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=fYXOxCO8GCfJ+uJeY+lM2xEQWVhSlqX7B6CBlP/rDRw=;
+ b=FAprnvW76fVt9IB+Ltc+bBCZmisxCmg40Y+FxUug1qjrYcKmAdErEUPuQwIeud4QSz
+ 7D1L0GGOiXXDi8z4bLNRIzse1UId50YH0dQOjTz2UOmHyXX/P7WlLQNEqRAsCFXTHdo9
+ u2ZR4LdlMrTGrb8BnAdZlhhVUzRFaxG3A96c15gtsR+8oAd0IJY3c2oVbu5H9oOxy1Ng
+ mJXFdSbPz3H6TtPcQ0tUn61Q/TaEKX84/VH04IV2foin009cwxV+u/UjK/JNARz9w1y8
+ iQ4wOmrkp5Va4ysMrdxlcA66AkgDQdtoupF7Nvy0QvgKWVEz6SDG9Wm4c024XAhOunmN
+ 7GBg==
+X-Gm-Message-State: AOJu0Yy4STFBaz6WqzY41fuseWpQB8gAxXa2Y/e2pKjIUeZAxzqFdwDl
+ MNmQ5/nir+Ew9OzqGcSbFRGmyQ==
+X-Received: by 2002:a5d:4389:0:b0:306:46c4:d313 with SMTP id
+ i9-20020a5d4389000000b0030646c4d313mr6435045wrq.28.1692720681057; 
+ Tue, 22 Aug 2023 09:11:21 -0700 (PDT)
+Received: from [10.2.0.2] ([37.19.214.4]) by smtp.gmail.com with ESMTPSA id
+ b4-20020adff904000000b003197c7d08ddsm16289194wrr.71.2023.08.22.09.11.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 22 Aug 2023 09:11:20 -0700 (PDT)
+Message-ID: <9ad24cdc-adf4-0a38-9362-e46c559fae7d@linaro.org>
+Date: Tue, 22 Aug 2023 18:11:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.14.0
+Subject: Re: [PATCH 11/12] target/loongarch: Use generic hrev64_i32() in
+ REVB.2H opcode
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Song Gao <gaosong@loongson.cn>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Greg Kurz
+ <groug@kaod.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Nicholas Piggin <npiggin@gmail.com>, Xiaojuan Yang
+ <yangxiaojuan@loongson.cn>, qemu-arm@nongnu.org
+References: <20230822124042.54739-1-philmd@linaro.org>
+ <20230822125221.55046-1-philmd@linaro.org>
+ <1ea2097b-fb72-29c4-622a-79f96f69c2c1@linaro.org>
+In-Reply-To: <1ea2097b-fb72-29c4-622a-79f96f69c2c1@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.767,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -93,73 +137,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fCHmcZmZyFVd
+X-TUID: qhHjgtAEYOPO
 
-On Fri, 11 Aug 2023 18:31:28 +0800
-Yuquan Wang <wangyuquan1236@phytium.com.cn> wrote:
+On 22/8/23 15:30, Philippe Mathieu-Daudé wrote:
+> On 22/8/23 14:52, Philippe Mathieu-Daudé wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   target/loongarch/insn_trans/trans_bit.c.inc | 15 +--------------
+>>   1 file changed, 1 insertion(+), 14 deletions(-)
+>>
+>> diff --git a/target/loongarch/insn_trans/trans_bit.c.inc 
+>> b/target/loongarch/insn_trans/trans_bit.c.inc
+>> index c04806dc21..9d564a0999 100644
+>> --- a/target/loongarch/insn_trans/trans_bit.c.inc
+>> +++ b/target/loongarch/insn_trans/trans_bit.c.inc
+>> @@ -111,19 +111,6 @@ static void gen_revb_2w(TCGv dest, TCGv src1)
+>>       tcg_gen_rotri_i64(dest, dest, 32);
+>>   }
+>> -static void gen_revb_2h(TCGv dest, TCGv src1)
+>> -{
+>> -    TCGv mask = tcg_constant_tl(0x00FF00FF);
+>> -    TCGv t0 = tcg_temp_new();
+>> -    TCGv t1 = tcg_temp_new();
+>> -
+>> -    tcg_gen_shri_tl(t0, src1, 8);
+>> -    tcg_gen_and_tl(t0, t0, mask);
+>> -    tcg_gen_and_tl(t1, src1, mask);
+>> -    tcg_gen_shli_tl(t1, t1, 8);
 
-> Hi, 
-> On 2023-08-10 21:56,  jonathan.cameron wrote:
->  
-> So took a look at your issue - be it on the cxl-2023-08-07 branch rebased on qemu/master
-> from today (side effect of looking at the segfault that was stopping me getting to this).
->  
-> For me at least the branch does create an ACPI0017 DSDT entry and an ACPI0016 one
-> and all the CXL devices turn up in /sys/bus/cxl/devices as expected.
->  
-> 
-> Oh, thanks for your guidance. It works so now I can get  ACPI0017 & ACPI0016 information in DSDT.   : )
-> 
-> By the way,  I found that if we add a pcie root port which create the same bus number as we assigned to pxb-cxl, 
-> the enumeration of cxl and pcie would be different from what we expected.  In this case,  we cannot find 
-> CXL devices in /sys/bus/cxl/devices. 
+Looking at 
+https://loongson.github.io/LoongArch-Documentation/LoongArch-Vol1-EN.html#_revb_2h4h2wd
+the sign extension is missing, so the next line:
 
-So this seems to be a case of shooting ourselves in the foot, but not catching the nonsensical configuration
-(as you observer later! :)
-pxb-pcie complains if you try and add two at the same bus number, but that doesn't protect against overlapping
-ranges because they aren't known until after enumeration (which is done by the bios - and I guess the bios
-doesn't sanity check for this insanity).  Qemu could take another look when it builds the ACPI tables a
-second time though.
+>> -    tcg_gen_or_tl(dest, t0, t1);
 
-Looking at edk2 logs I can see it is happily populating the root bus 1 on my arm64 setup and that it
-observes there are no subordinate buses available for the main PCIe bus (0) that QEMU is creating by
-default. The _CRS entries look correct but the kernel ignores them it seems. 
+should be replaced by smth like:
 
-It is very much not a valid configuration so there is no reason the kernel should cope with it.
+         tcg_gen_or_tl(t0, t0, t1);
+         tcg_gen_ext32s_tl(dest, t0);
 
-Maybe it's worth considering some hardening code?
-
-
-> 
-> According to my test, the error happened in 
-> "devm_cxl_register_pci_bus()"  of  "add_host_bridge_uport" in  "cxl_acpi_probe".
-> Actually,  in above case, the incorrect enumeration of pcie will also occur with pxb-pcie except for pxb-cxl, 
-> hence I guess the kernel did not deal with such case and users just need to avoid it if they need a correct
-> enumeration result.
-
-Agreed - Protecting against ever corner case of impossible configuration is tricky to
-do.
-
-> 
-> My qemu script (which will cause the incorrect enumeration):
-> qemu-system-x86_64 \
-> -M q35,nvdimm=on,cxl=on \
-> -m 4G,maxmem=8G,slots=8 \
-> -smp 1 \
-> -object memory-backend-file,id=cxl-mem1,share=on,mem-path=./memfile/cxltest3.raw,size=256M \
-> -object memory-backend-file,id=cxl-lsa1,share=on,mem-path=./memfile/lsa3.raw,size=256M \
-> -device ioh3420,bus=pcie.0,id=root_port1,chassis=0,slot=1,addr=04 \
-> -device qemu-xhci,bus=root_port1 \
-> -device pxb-cxl,bus_nr=1,bus=pcie.0,id=cxl.1 \
-> -device cxl-rp,port=0,bus=cxl.1,id=root_port13,chassis=0,slot=2 \
-> -device cxl-type3,bus=root_port13,memdev=cxl-mem1,lsa=cxl-lsa1,id=cxl-pmem0 \
-> -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G \
-> ......
-> 
-> Many thanks
-> Yuquan
+>> -}
 

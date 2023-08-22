@@ -1,116 +1,116 @@
-Received: by 2002:a17:906:80c9:b0:9a1:ac8c:26bb with SMTP id a9csp467442ejx;
-        Mon, 21 Aug 2023 21:26:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGZ3Lg+HL1ZbtMscOGX4sWz5p04/LctqndbB42JG9oFVnJmTGWnoAmV039n9oFq20nvjXFj
-X-Received: by 2002:ac8:5b4b:0:b0:400:7bb9:45cb with SMTP id n11-20020ac85b4b000000b004007bb945cbmr12013159qtw.27.1692678390132;
-        Mon, 21 Aug 2023 21:26:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692678390; cv=none;
+Received: by 2002:a17:906:80c9:b0:9a1:ac8c:26bb with SMTP id a9csp467515ejx;
+        Mon, 21 Aug 2023 21:26:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHszgMypYObB6iFv1lyFD4X0F/iUF4/dbopSOfXWMzoeyTEDH7AWokaB1Yim1kHomAGCME8
+X-Received: by 2002:a0c:b31e:0:b0:64f:4c95:89ad with SMTP id s30-20020a0cb31e000000b0064f4c9589admr1608915qve.9.1692678403943;
+        Mon, 21 Aug 2023 21:26:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692678403; cv=none;
         d=google.com; s=arc-20160816;
-        b=hfDZ6PNvTyDKXLk8v9TTQfk6W7D1GAYR1QJNPvhytEIBsCZT8vQmCdVD90qc8UetTj
-         u3jBFgVA3Rve2XS3Sb0sR1F5C/j53PkDHU1PebpvjYhGgclZ8m6FZFCZ39fs2ShxW+tz
-         glMByKNFupG/mNFfTNkNcPWuQNGTvM65wCHTKD7PatAwDogbTZHX0orbswh68DxvFv9e
-         hQv81NYL8cT+ZODtcwIhpa6wQJHQmK61JbdDYsAUhWaViFRNju+KM5LzAWYtyuaywo0D
-         pP7pdEyi5GjFcXeTTgiFgk0bvEaV34/5thizzdItJkdCyNF3fVbDe5OTyqga28zgBrIL
-         mQ0g==
+        b=WgCAqACvNWL8t2RSxkCs2u/WCrbrEIAzLbYTxyrS5UIey9pKs2d4f5FAr61+4SSp9c
+         5rYh433uPisXhrbfvL+fhiC8sh8O7CBH1X/wfU2JpCbsfg0ijrBMABp7LHxam+SRvfAY
+         RVEVs63QKID7BMa5Dxlwl9zvy88GeIOmb9cqSeMrpjgIk5/j7KQIOIQyNpvp4fgIKPBw
+         5KqICQkw4VXlqok8JKx4r0cmvOgqYW9e3aUOeFi0x47QCA04XwiD8+Fr9PYXLbXPeLLB
+         bAosEMaDmvxM/oQt8DXfsZb70biMZIJZdgS6J6kLQRRWWPdRq7BYBHAyjtOhEN/2acaA
+         CM+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vhkbaseSYctv0PKDmJHETTELtOUQpyXPx69wgq43tTw=;
+        bh=bAwmXTwcFFMzvNP46Fhn48bF6t5BDNw+gR/v3nt7Fy0=;
         fh=lg8/ckKb61gDlKZ2NmTq/Hk94gXqE66TCPFK/Ovz1LA=;
-        b=CsOx5ZAWHszhR6Z91PhVsEnE97nSjjqYBcMui93LBiSCktF6ZH0XN+a5enBQpjyRKc
-         NZqh8RBhN5FPcYrFMVSBcKR+Vg2s6WEbxB0ovKFctIPdQ8ZQFT86MzIqxos2pydOv4BS
-         m7UsYcdRcktNeESurYSJEVFfFaDe9e1OSVIAq3UDByBDQHW/MEcpTRk6DO8FsM1YhB8m
-         ExjyvcyVkUVizns8jLLGm1Lk0AQvniPcKyCueKrbpo7bpH9WE8Bes5eHzmjq0j+izsxu
-         MvgjAAM1UqtHAcEYtbrESIwa/GxcISXTAmlT/hMCrHjkv8QSE+ZrjMXdif6ESu1ywLMZ
-         Grcg==
+        b=R9iZHsPq/+JDbwOSbEl9YjMJm1TEBke9O7mWApO0uTuh6S7R/4qEx/r3NQ+pxw6TMj
+         ZSW718YRTyNbT7mpQo6A/Y6PeT4ZdNHE98K0IOg5qqJTr3aCxyqDZfZVNd2PywE2oIu4
+         TfW/k3CZjcSDAZWJomWSKI3ZEqqxVZZQ1eB1FeF6OQuZjeGdQ3MA+Wa71lXuGXPkL/aX
+         4cCimx13f+osIDwqM5ptzwHSWGf4bznOBwioinHqtv5b1ExDy2DEuRovbawkIXUGGaKc
+         vXbaQeODHGYS+CwTZtTHDYJ0o8Bhscy6sBFOqyufJ7joox49uVj5OsrCZXN+aCaqhGiK
+         uwAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sNkof9U0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=knfaL33L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j8-20020ac85f88000000b003f86195769dsi5727902qta.408.2023.08.21.21.26.30
+        by mx.google.com with ESMTPS id u6-20020a0cdd06000000b006418e876d08si625806qvk.147.2023.08.21.21.26.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Aug 2023 21:26:30 -0700 (PDT)
+        Mon, 21 Aug 2023 21:26:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sNkof9U0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=knfaL33L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qYIxX-0006GX-PK; Tue, 22 Aug 2023 00:25:39 -0400
+	id 1qYIxe-0006P0-5d; Tue, 22 Aug 2023 00:25:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qYIxW-0006Ej-N5
- for qemu-arm@nongnu.org; Tue, 22 Aug 2023 00:25:38 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ id 1qYIxb-0006L9-JC
+ for qemu-arm@nongnu.org; Tue, 22 Aug 2023 00:25:43 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qYIxT-0007WF-J0
- for qemu-arm@nongnu.org; Tue, 22 Aug 2023 00:25:38 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-68a40d85593so1226986b3a.2
- for <qemu-arm@nongnu.org>; Mon, 21 Aug 2023 21:25:34 -0700 (PDT)
+ id 1qYIxV-0007X1-Rh
+ for qemu-arm@nongnu.org; Tue, 22 Aug 2023 00:25:43 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-68a40d85593so1227014b3a.2
+ for <qemu-arm@nongnu.org>; Mon, 21 Aug 2023 21:25:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1692678334; x=1693283134;
+ d=linaro.org; s=google; t=1692678336; x=1693283136;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vhkbaseSYctv0PKDmJHETTELtOUQpyXPx69wgq43tTw=;
- b=sNkof9U0i1la53JWZ0rew/LsdcEath104n5xTgdMWxgQ1gtaw0Xm8Ntg73duZbtTUF
- SMooTCsacl7qZW4vvndr2P3PlyuzZtEb0coYO4KVv8OmgnJtRBXihyfKN7kXWJuyOpS4
- +KLxTJalFK25Gy+/lAS2y6s3lj2/21SCPc9+dpC4sk5cGdkPt4I4Pbs7GBmlbvygXqX/
- nxTUkTwuWF+b5N8CpmugsEABw7Cj55COV0gKlNJLzvMnAZNeETbaJpYSJEnTGskoxgI5
- +rI+EKM1Gckr4rLDzDUdgZHPAkR00sLaNWysyTK9aEToJmcCInEuQaVy5+8e5KtLI++y
- Rn+g==
+ bh=bAwmXTwcFFMzvNP46Fhn48bF6t5BDNw+gR/v3nt7Fy0=;
+ b=knfaL33LKQj6QkkDXh5aCNaTUDiWBPSIR54Tcd5NyOaHG8J0tUK1413yhD0BYjoJ5T
+ O+cpDcb6xX7vey11MzZg/rCzBdkkxPA4FHuBr7UVA+Mdiih06amfohNKUk4HKq/TRvo0
+ LuMymMCkdxW2o5TSx28ffZ/20HxeaJ/3C2TT7ePTemajRH/t7iTlYs/+S22ysWuyoj9g
+ sJNwYwmA7/zyTL4b6eJsDWFNT1Z76S6+Od0VKnk5fDGoi+w1+RHzJifnWJNDr4+SHGRW
+ hHkV75W3tlkJHigVSAVCp3sWDe4LP7vYWmHL68cdrtKQMWdvo7fnORy1j9IRhxRzXRB1
+ h6DA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1692678334; x=1693283134;
+ d=1e100.net; s=20221208; t=1692678336; x=1693283136;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=vhkbaseSYctv0PKDmJHETTELtOUQpyXPx69wgq43tTw=;
- b=QheEqg4dEgs75jhQVbmETWu401LhldHOxEM9uhYoXwmBWXIz5udkERENc63CgSn5d2
- 8skSh6U/HvQQHt9J79gnbnUJ4lGS1sw49g5bhyBYizveut6cQ9L+kK9vdGgc4T3RcaHU
- cjsgXnFqHWZz2IZ0tRfkQf3r3ogzu1nxyH3DEAS9HExoLbPlTDU3ijF5ptQdTxbFRnGP
- Z5cURIwvWAfIl99X7/jDfFNu89hV15kFsatM0+QcFtd1wr78Gp2S+izwkEp9WEXIB94x
- jzqXFzbFyDdPvNxDBRNe/kRGgOmBuiyPerVcR8LUzRC3GLHxlouMEh8/9ZrwCVkTKwqT
- Kxpg==
-X-Gm-Message-State: AOJu0YyM6kvfOcnpmZ/dsH3//phyzzDOV8BMvHX1pOo3lMgwAGXrTpRA
- 1p7w7Pg7FteiVQp+v8MIizh1HQ==
-X-Received: by 2002:a05:6a00:16c5:b0:66e:4df5:6c10 with SMTP id
- l5-20020a056a0016c500b0066e4df56c10mr7028734pfc.34.1692678333930; 
- Mon, 21 Aug 2023 21:25:33 -0700 (PDT)
+ bh=bAwmXTwcFFMzvNP46Fhn48bF6t5BDNw+gR/v3nt7Fy0=;
+ b=A7cFxxYY3HAHplo+6lKdYP23zfodrf7bHrq6bU3q8UMm89zkQfXnXjcUIOSZxQGE+7
+ Mu7sspsAxhQhyqBtJxG+xUrQDHeW275Gay/ZSqe1nfk6AKCkFDNBm5vqjyzHxpvbuIf/
+ 0CsVWJmYkswuicXG4k2kuSeD6JZkqzIeuZebq9JIEoVU9w2XXyyz3Xjuu3FpvVvKqNjh
+ zdL3BavqUZgorcmefbjjxRz/8CavlFzedrF4+k4jr+3Zf3gN/H2oyYEvluYVCUDxMucb
+ XNsi5CQ9BCEN9g0ONJPpE2wpdWS8p1g+gtvH9JlEgR83C15QXHSSAh1BsQa3zELY2nQX
+ 8fOQ==
+X-Gm-Message-State: AOJu0YxoWuUizygwZX9vGODkBLtuhp02YSLsakkxI/fuKZuYPTVJCZql
+ jb6sFyO1Qbmpq7NThz6Yp2QMaw==
+X-Received: by 2002:a05:6a00:14ce:b0:687:78fc:e961 with SMTP id
+ w14-20020a056a0014ce00b0068778fce961mr7524872pfu.22.1692678336312; 
+ Mon, 21 Aug 2023 21:25:36 -0700 (PDT)
 Received: from stoup.. ([2602:47:d483:7301:2c08:e710:4459:46f1])
  by smtp.gmail.com with ESMTPSA id
- m14-20020aa7900e000000b0068a3f861b24sm3364908pfo.195.2023.08.21.21.25.33
+ m14-20020aa7900e000000b0068a3f861b24sm3364908pfo.195.2023.08.21.21.25.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Aug 2023 21:25:33 -0700 (PDT)
+ Mon, 21 Aug 2023 21:25:35 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Aaron Lindsay <aaron@os.amperecomputing.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v4 2/9] target/arm: Add ID_AA64ISAR2_EL1
-Date: Mon, 21 Aug 2023 21:25:23 -0700
-Message-Id: <20230822042530.1026751-3-richard.henderson@linaro.org>
+Subject: [PATCH v4 5/9] target/arm: Implement FEAT_PACQARMA3
+Date: Mon, 21 Aug 2023 21:25:26 -0700
+Message-Id: <20230822042530.1026751-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230822042530.1026751-1-richard.henderson@linaro.org>
 References: <20230822042530.1026751-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,76 +125,320 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R/5rozHXxx32
+X-TUID: SW9xw6uh7KwI
 
-From: Aaron Lindsay <aaron@os.amperecomputing.com>
+Implement the QARMA3 cryptographic algorithm for PAC calculation.
+Implement a cpu feature to select the algorithm and document it.
 
 Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
-[PMM: drop the HVF part of the patch and just comment that
- we need to do something when the register appears in that API]
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230609172324.982888-4-aaron@os.amperecomputing.com>
+[rth: Merge cpu feature addition from another patch.]
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h     | 1 +
- target/arm/helper.c  | 4 ++--
- target/arm/hvf/hvf.c | 1 +
- target/arm/kvm64.c   | 2 ++
- 4 files changed, 6 insertions(+), 2 deletions(-)
+ docs/system/arm/cpu-features.rst | 21 ++++++++-----
+ docs/system/arm/emulation.rst    |  3 ++
+ target/arm/cpu.h                 |  1 +
+ target/arm/arm-qmp-cmds.c        |  2 +-
+ target/arm/cpu64.c               | 24 ++++++++++++--
+ target/arm/tcg/pauth_helper.c    | 54 ++++++++++++++++++++++++++------
+ tests/qtest/arm-cpu-features.c   | 12 ++++++-
+ 7 files changed, 94 insertions(+), 23 deletions(-)
 
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index 6bb88a40c7..a5fb929243 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -210,15 +210,20 @@ TCG VCPU Features
+ TCG VCPU features are CPU features that are specific to TCG.
+ Below is the list of TCG VCPU features and their descriptions.
+ 
+-``pauth-impdef``
+-  When ``FEAT_Pauth`` is enabled, either the *impdef* (Implementation
+-  Defined) algorithm is enabled or the *architected* QARMA algorithm
+-  is enabled.  By default the impdef algorithm is disabled, and QARMA
+-  is enabled.
++``pauth``
++  Enable or disable ``FEAT_Pauth`` entirely.
+ 
+-  The architected QARMA algorithm has good cryptographic properties,
+-  but can be quite slow to emulate.  The impdef algorithm used by QEMU
+-  is non-cryptographic but significantly faster.
++``pauth-impdef``
++  When ``pauth`` is enabled, select the QEMU implementation defined algorithm.
++
++``pauth-qarma3``
++  When ``pauth`` is enabled, select the architected QARMA3 algorithm.
++
++Without either ``pauth-impdef`` or ``pauth-qarma3`` enabled,
++the architected QARMA5 algorithm is used.  The architected QARMA5
++and QARMA3 algorithms have good cryptographic properties, but can
++be quite slow to emulate.  The impdef algorithm used by QEMU is
++non-cryptographic but significantly faster.
+ 
+ SVE CPU Properties
+ ==================
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index bdafc68819..06af20d10f 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -55,6 +55,9 @@ the following architecture extensions:
+ - FEAT_MTE (Memory Tagging Extension)
+ - FEAT_MTE2 (Memory Tagging Extension)
+ - FEAT_MTE3 (MTE Asymmetric Fault Handling)
++- FEAT_PACIMP (Pointer authentication - IMPLEMENTATION DEFINED algorithm)
++- FEAT_PACQARMA3 (Pointer authentication - QARMA3 algorithm)
++- FEAT_PACQARMA5 (Pointer authentication - QARMA5 algorithm)
+ - FEAT_PAN (Privileged access never)
+ - FEAT_PAN2 (AT S1E1R and AT S1E1W instruction variants affected by PSTATE.PAN)
+ - FEAT_PAN3 (Support for SCTLR_ELx.EPAN)
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 88e5accda6..fbdbf2df7f 100644
+index e9fe268453..678ddd17a4 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -1033,6 +1033,7 @@ struct ArchCPU {
-         uint32_t dbgdevid1;
-         uint64_t id_aa64isar0;
-         uint64_t id_aa64isar1;
-+        uint64_t id_aa64isar2;
-         uint64_t id_aa64pfr0;
-         uint64_t id_aa64pfr1;
-         uint64_t id_aa64mmfr0;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 50f61e42ca..3bae262b2f 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -8334,11 +8334,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .accessfn = access_aa64_tid3,
-               .resetvalue = cpu->isar.id_aa64isar1 },
--            { .name = "ID_AA64ISAR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+            { .name = "ID_AA64ISAR2_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 2,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .accessfn = access_aa64_tid3,
--              .resetvalue = 0 },
-+              .resetvalue = cpu->isar.id_aa64isar2 },
-             { .name = "ID_AA64ISAR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 3,
-               .access = PL1_R, .type = ARM_CP_CONST,
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 8fce64bbf6..c366f7f517 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -847,6 +847,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-         { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
-         { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
-         { HV_SYS_REG_ID_AA64ISAR1_EL1, &host_isar.id_aa64isar1 },
-+        /* Add ID_AA64ISAR2_EL1 here when HVF supports it */
-         { HV_SYS_REG_ID_AA64MMFR0_EL1, &host_isar.id_aa64mmfr0 },
-         { HV_SYS_REG_ID_AA64MMFR1_EL1, &host_isar.id_aa64mmfr1 },
-         { HV_SYS_REG_ID_AA64MMFR2_EL1, &host_isar.id_aa64mmfr2 },
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 94bbd9661f..e2d05d7fc0 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -306,6 +306,8 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-                               ARM64_SYS_REG(3, 0, 0, 6, 0));
-         err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar1,
-                               ARM64_SYS_REG(3, 0, 0, 6, 1));
-+        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar2,
-+                              ARM64_SYS_REG(3, 0, 0, 6, 2));
-         err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr0,
-                               ARM64_SYS_REG(3, 0, 0, 7, 0));
-         err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64mmfr1,
+@@ -1072,6 +1072,7 @@ struct ArchCPU {
+      */
+     bool prop_pauth;
+     bool prop_pauth_impdef;
++    bool prop_pauth_qarma3;
+     bool prop_lpa2;
+ 
+     /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index c8fa524002..b53d5efe13 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -95,7 +95,7 @@ static const char *cpu_model_advertised_features[] = {
+     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
+     "kvm-no-adjvtime", "kvm-steal-time",
+-    "pauth", "pauth-impdef",
++    "pauth", "pauth-impdef", "pauth-qarma3",
+     NULL
+ };
+ 
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index fd584a31da..f3d87e001f 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -474,7 +474,7 @@ void aarch64_add_sme_properties(Object *obj)
+ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+ {
+     ARMPauthFeature features = cpu_isar_feature(pauth_feature, cpu);
+-    uint64_t isar1;
++    uint64_t isar1, isar2;
+ 
+     /*
+      * These properties enable or disable Pauth as a whole, or change
+@@ -490,6 +490,10 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+     isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, API, 0);
+     isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, GPI, 0);
+ 
++    isar2 = cpu->isar.id_aa64isar2;
++    isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, APA3, 0);
++    isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, GPA3, 0);
++
+     if (kvm_enabled() || hvf_enabled()) {
+         /*
+          * Exit early if PAuth is enabled and fall through to disable it.
+@@ -510,26 +514,39 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+         }
+ 
+         if (cpu->prop_pauth) {
++            if (cpu->prop_pauth_impdef && cpu->prop_pauth_qarma3) {
++                error_setg(errp,
++                           "cannot enable both pauth-impdef and pauth-qarma3");
++                return;
++            }
++
+             if (cpu->prop_pauth_impdef) {
+                 isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, API, features);
+                 isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, GPI, 1);
++            } else if (cpu->prop_pauth_qarma3) {
++                isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, APA3, features);
++                isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, GPA3, 1);
+             } else {
+                 isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, APA, features);
+                 isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, GPA, 1);
+             }
+-        } else if (cpu->prop_pauth_impdef) {
+-            error_setg(errp, "cannot enable pauth-impdef without pauth");
++        } else if (cpu->prop_pauth_impdef || cpu->prop_pauth_qarma3) {
++            error_setg(errp, "cannot enable pauth-impdef or "
++                       "pauth-qarma3 without pauth");
+             error_append_hint(errp, "Add pauth=on to the CPU property list.\n");
+         }
+     }
+ 
+     cpu->isar.id_aa64isar1 = isar1;
++    cpu->isar.id_aa64isar2 = isar2;
+ }
+ 
+ static Property arm_cpu_pauth_property =
+     DEFINE_PROP_BOOL("pauth", ARMCPU, prop_pauth, true);
+ static Property arm_cpu_pauth_impdef_property =
+     DEFINE_PROP_BOOL("pauth-impdef", ARMCPU, prop_pauth_impdef, false);
++static Property arm_cpu_pauth_qarma3_property =
++    DEFINE_PROP_BOOL("pauth-qarma3", ARMCPU, prop_pauth_qarma3, false);
+ 
+ void aarch64_add_pauth_properties(Object *obj)
+ {
+@@ -549,6 +566,7 @@ void aarch64_add_pauth_properties(Object *obj)
+         cpu->prop_pauth = cpu_isar_feature(aa64_pauth, cpu);
+     } else {
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_impdef_property);
++        qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_qarma3_property);
+     }
+ }
+ 
+diff --git a/target/arm/tcg/pauth_helper.c b/target/arm/tcg/pauth_helper.c
+index 6271a84ec9..bb03409ee5 100644
+--- a/target/arm/tcg/pauth_helper.c
++++ b/target/arm/tcg/pauth_helper.c
+@@ -96,6 +96,21 @@ static uint64_t pac_sub(uint64_t i)
+     return o;
+ }
+ 
++static uint64_t pac_sub1(uint64_t i)
++{
++    static const uint8_t sub1[16] = {
++        0xa, 0xd, 0xe, 0x6, 0xf, 0x7, 0x3, 0x5,
++        0x9, 0x8, 0x0, 0xc, 0xb, 0x1, 0x2, 0x4,
++    };
++    uint64_t o = 0;
++    int b;
++
++    for (b = 0; b < 64; b += 4) {
++        o |= (uint64_t)sub1[(i >> b) & 0xf] << b;
++    }
++    return o;
++}
++
+ static uint64_t pac_inv_sub(uint64_t i)
+ {
+     static const uint8_t inv_sub[16] = {
+@@ -209,7 +224,7 @@ static uint64_t tweak_inv_shuffle(uint64_t i)
+ }
+ 
+ static uint64_t pauth_computepac_architected(uint64_t data, uint64_t modifier,
+-                                             ARMPACKey key)
++                                             ARMPACKey key, bool isqarma3)
+ {
+     static const uint64_t RC[5] = {
+         0x0000000000000000ull,
+@@ -219,6 +234,7 @@ static uint64_t pauth_computepac_architected(uint64_t data, uint64_t modifier,
+         0x452821E638D01377ull,
+     };
+     const uint64_t alpha = 0xC0AC29B7C97C50DDull;
++    int iterations = isqarma3 ? 2 : 4;
+     /*
+      * Note that in the ARM pseudocode, key0 contains bits <127:64>
+      * and key1 contains bits <63:0> of the 128-bit key.
+@@ -231,7 +247,7 @@ static uint64_t pauth_computepac_architected(uint64_t data, uint64_t modifier,
+     runningmod = modifier;
+     workingval = data ^ key0;
+ 
+-    for (i = 0; i <= 4; ++i) {
++    for (i = 0; i <= iterations; ++i) {
+         roundkey = key1 ^ runningmod;
+         workingval ^= roundkey;
+         workingval ^= RC[i];
+@@ -239,32 +255,48 @@ static uint64_t pauth_computepac_architected(uint64_t data, uint64_t modifier,
+             workingval = pac_cell_shuffle(workingval);
+             workingval = pac_mult(workingval);
+         }
+-        workingval = pac_sub(workingval);
++        if (isqarma3) {
++            workingval = pac_sub1(workingval);
++        } else {
++            workingval = pac_sub(workingval);
++        }
+         runningmod = tweak_shuffle(runningmod);
+     }
+     roundkey = modk0 ^ runningmod;
+     workingval ^= roundkey;
+     workingval = pac_cell_shuffle(workingval);
+     workingval = pac_mult(workingval);
+-    workingval = pac_sub(workingval);
++    if (isqarma3) {
++        workingval = pac_sub1(workingval);
++    } else {
++        workingval = pac_sub(workingval);
++    }
+     workingval = pac_cell_shuffle(workingval);
+     workingval = pac_mult(workingval);
+     workingval ^= key1;
+     workingval = pac_cell_inv_shuffle(workingval);
+-    workingval = pac_inv_sub(workingval);
++    if (isqarma3) {
++        workingval = pac_sub1(workingval);
++    } else {
++        workingval = pac_inv_sub(workingval);
++    }
+     workingval = pac_mult(workingval);
+     workingval = pac_cell_inv_shuffle(workingval);
+     workingval ^= key0;
+     workingval ^= runningmod;
+-    for (i = 0; i <= 4; ++i) {
+-        workingval = pac_inv_sub(workingval);
+-        if (i < 4) {
++    for (i = 0; i <= iterations; ++i) {
++        if (isqarma3) {
++            workingval = pac_sub1(workingval);
++        } else {
++            workingval = pac_inv_sub(workingval);
++        }
++        if (i < iterations) {
+             workingval = pac_mult(workingval);
+             workingval = pac_cell_inv_shuffle(workingval);
+         }
+         runningmod = tweak_inv_shuffle(runningmod);
+         roundkey = key1 ^ runningmod;
+-        workingval ^= RC[4 - i];
++        workingval ^= RC[iterations - i];
+         workingval ^= roundkey;
+         workingval ^= alpha;
+     }
+@@ -283,7 +315,9 @@ static uint64_t pauth_computepac(CPUARMState *env, uint64_t data,
+                                  uint64_t modifier, ARMPACKey key)
+ {
+     if (cpu_isar_feature(aa64_pauth_qarma5, env_archcpu(env))) {
+-        return pauth_computepac_architected(data, modifier, key);
++        return pauth_computepac_architected(data, modifier, key, false);
++    } else if (cpu_isar_feature(aa64_pauth_qarma3, env_archcpu(env))) {
++        return pauth_computepac_architected(data, modifier, key, true);
+     } else {
+         return pauth_computepac_impdef(data, modifier, key);
+     }
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 3fc33fc24d..a8a4c668ad 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -417,12 +417,22 @@ static void pauth_tests_default(QTestState *qts, const char *cpu_type)
+ {
+     assert_has_feature_enabled(qts, cpu_type, "pauth");
+     assert_has_feature_disabled(qts, cpu_type, "pauth-impdef");
++    assert_has_feature_disabled(qts, cpu_type, "pauth-qarma3");
+     assert_set_feature(qts, cpu_type, "pauth", false);
+     assert_set_feature(qts, cpu_type, "pauth", true);
+     assert_set_feature(qts, cpu_type, "pauth-impdef", true);
+     assert_set_feature(qts, cpu_type, "pauth-impdef", false);
+-    assert_error(qts, cpu_type, "cannot enable pauth-impdef without pauth",
++    assert_set_feature(qts, cpu_type, "pauth-qarma3", true);
++    assert_set_feature(qts, cpu_type, "pauth-qarma3", false);
++    assert_error(qts, cpu_type,
++                 "cannot enable pauth-impdef or pauth-qarma3 without pauth",
+                  "{ 'pauth': false, 'pauth-impdef': true }");
++    assert_error(qts, cpu_type,
++                 "cannot enable pauth-impdef or pauth-qarma3 without pauth",
++                 "{ 'pauth': false, 'pauth-qarma3': true }");
++    assert_error(qts, cpu_type,
++                 "cannot enable both pauth-impdef and pauth-qarma3",
++                 "{ 'pauth': true, 'pauth-impdef': true, 'pauth-qarma3': true }");
+ }
+ 
+ static void test_query_cpu_model_expansion(const void *data)
 -- 
 2.34.1
 

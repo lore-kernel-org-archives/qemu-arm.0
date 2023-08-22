@@ -1,127 +1,86 @@
-Received: by 2002:a05:7023:c086:b0:69:9a19:fb41 with SMTP id ip6csp2739336dlc;
-        Tue, 22 Aug 2023 08:12:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEVG4lHH4djhw1+0hKqjlXBaU3JONQ2rLqd2mYFcGh+zOFM1beMTdJ4OCIJkB2+5v9jjFqR
-X-Received: by 2002:a05:622a:6695:b0:40f:de47:9b6c with SMTP id hx21-20020a05622a669500b0040fde479b6cmr7648186qtb.30.1692717141686;
-        Tue, 22 Aug 2023 08:12:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692717141; cv=none;
+Received: by 2002:a05:7023:c086:b0:69:9a19:fb41 with SMTP id ip6csp2747570dlc;
+        Tue, 22 Aug 2023 08:23:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHxuc8zPLMHbDFEIK8/FJFmeGRv17aLEeekYxokeV5OovORYngaSO/iuRsWDLYmqkp8lFpc
+X-Received: by 2002:a05:622a:18f:b0:40f:df1f:87a9 with SMTP id s15-20020a05622a018f00b0040fdf1f87a9mr12331566qtw.18.1692717828777;
+        Tue, 22 Aug 2023 08:23:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692717828; cv=none;
         d=google.com; s=arc-20160816;
-        b=YDMGlOi6RgXHwrR6imbVcxbkvyHTp341kpJSGNmh1hh2XjiOY1HJdFr8qI0sAjp7p5
-         Lgjsu80DFEGQ8KtEWZohG0rCEyjdFgNrWXt4+SzxOy3rbIousY98Z3LnlXg2WLXcvJff
-         +LB95W+tmB4gPwFQbNjzEYg/K/R73Amq1BcYja9Zb2A/d7Kv9+Bs4tAkfHvc8yXGfFEn
-         4bNxXeahincrGvOyAPnUi9l7wNvrjZRODDek7XmSmZGf6qVIFTgzDYGSm1MxcujFyU7T
-         wxCXy1Jw0FePtkbwCrAtwovDWF2iWCDXI9KUFOg9azVB9NVcdwy4u+ZH+A/Z6L6eIc1T
-         rX6A==
+        b=tyec/14jkZwF31BhMnbv/bhE83t2Z4ELfUTUdlMdPAkyCxMlyb36PsWS6Q8cAAWJsk
+         aCHiNowxAv701h0sQsxzCdOAZ5XgRpO9j8Qay8nzRv15ZggsGMmMKUc3jIn7ZDgxPieW
+         EcxuRJrVFE+cg1/VR01l4mqvKL6CxQ9Pc/IxFUywWEDE/ktIQ+oU5jDxzNCjtTA9QJD9
+         GD9xUOzX8DoNIrUawT/uPcllcMxXE1AwPmtxnNzMQJBjWhR1N/YDbAGzwlVXeUrkMRvg
+         6Wbj54OEP1lIyFMlvTXHC/knBSbsr8MoxaUb8mvlpG66EXD/64m0hE4DmdctLuk9ZC2A
+         D82g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=1xii/lB8E9xyRJssEMiiQEzD981/lW0wSZRI3rNo2JI=;
-        fh=IzkshJUGWO2UnAxhT0rhoUSUmHocHU9nyHGLKQhM9qc=;
-        b=XGxhPCIBS+BOw0tb0RmXvMO42gDSbNu9tKXUpSF2ge5J2VOX+4fOr+UxlPWIurDVDD
-         ahaAQsiZeV9YwrwlH+fJs98vFXPIfeWGQhY358acrVZse6MUqqFbICUjaQCH8LlBPdQt
-         tTJEr3rxIT1mOWC+wzJqdHl2JyZKmJPX0Wl6vgcuy0VWMZJ+W+l+e+PbMz9OqBGApXII
-         MSFGzkWtFri7B0VG12lQJQ/p4fjY5neZs3kAxkNpfP6uZ9KmCO5j/+2twjZ61MF4Xkzg
-         gWorPER0uSs/tb1CUtun+k/f8Z/rVrUAw/dqc1RlCFTgpt1PtjhRuoRErcn+X4jItpPH
-         5N7Q==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=FTxrnq6I4ZEMH2pMfhgsLfFCy9i8p1LxnTdumk5f7bM=;
+        fh=AuNRXjyCNAzIR7g5RYFRdwdUTwCjaB4cQpp0A9ttT/4=;
+        b=F8tx372Eaa7XqmhMtYYYNDM18/Ro/CoJsT6ul4/4RYqOSUsGmowsBvNm+xylexteC1
+         UxhbDrBWdMrlvRXLL526gkAgpWX1WLGUuF+bIAA2jicpJjL1DxgcszvYS0Nek3kqkYJK
+         RUXtohFdwEo4kid0n1gbI5Ihwf78hnST7Efv4eORhFo0IgEv5lkNWN7JB2NANE/z+u2h
+         WHoAjp00qFok3tElA4lWPusGh2QbEb4wYbJBhx8Ob5elvpV+e8stAqD3+F3TIX72zb73
+         0EZ3/fFnVEnd5voGErmQ2k/zQGLJNJ4M79wuEwrP5DS8+KwEcPhTywTt8fvvFNPa20+o
+         zsvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bpddwhnv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s41-20020a05622a1aa900b003fff01022f8si6356976qtc.520.2023.08.22.08.12.21
+        by mx.google.com with ESMTPS id b3-20020ac87fc3000000b0040694778c33si6481135qtk.32.2023.08.22.08.23.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Aug 2023 08:12:21 -0700 (PDT)
+        Tue, 22 Aug 2023 08:23:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bpddwhnv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qYT39-0007px-Jc; Tue, 22 Aug 2023 11:12:07 -0400
+	id 1qYTE5-0003zO-OP; Tue, 22 Aug 2023 11:23:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qYT2y-0007nK-Kh
- for qemu-arm@nongnu.org; Tue, 22 Aug 2023 11:11:57 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qYT2w-0001lm-1K
- for qemu-arm@nongnu.org; Tue, 22 Aug 2023 11:11:56 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-1bf1935f6c2so31100395ad.1
- for <qemu-arm@nongnu.org>; Tue, 22 Aug 2023 08:11:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1692717112; x=1693321912;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=1xii/lB8E9xyRJssEMiiQEzD981/lW0wSZRI3rNo2JI=;
- b=BpddwhnvVS2WnGcdm06QrUhpcVAvRTf57NN1ThZZEYYg4JFBFU5gzmcCcIqble+RTo
- QXrsOWXeQb/zwC0T8pW8C7fHhOnxpk52CPGzRo/NaZgczJa6fuVvHzF2TO2ppilzB6e9
- Y0KsQUj20xAsjgLQ/GtlOplplxIh+0BRf3Lko6HyOLxNvoKnUEu27bvICNP8QrWN6x/T
- +x/g1mYKQyhGrqkxUK3gpMIozJZ+D6Pmlis+JMwbFHD60HMKceKB7nI8BPiNuEnwE8Wg
- /Fprm/suGYjM50p02POFjnbaJXK4bXRp+mY4TBqHuIZRaylFOMNR4MxEDOX7vzMN9PWg
- PEXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1692717112; x=1693321912;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1xii/lB8E9xyRJssEMiiQEzD981/lW0wSZRI3rNo2JI=;
- b=OPSWPD4m24KJd+UoC7CdeXvcNhGv4IswyOAykKOGfw6WIdWlOUxaE73Rlg88jh1j1u
- EHI0jDzYHDj53sQEkBShIym244cNVXC97y98nOrN9tsKvl4neH1AzwoBC6fEk1IYRq1u
- 9AIVujlOCJ91R3ng+X5mN4g3gENxrVmNeqZDqQaSjkSBIb9LXYuDuQf4c5Re4lSt2rxU
- ixNY2JDoU+/xyufhXesZHQiW4k3s5PRpRdFapYC0iMjtGDViPgh6s/sKfNDK2CXx8aTu
- xqYbjmdLIyn/W3RWdCg37s29UkBI3769v5OaI3/vbWrAe+Kgbc70IvBqQ37e+GNs+1IL
- Oujg==
-X-Gm-Message-State: AOJu0YximQh0UcAlraFGX6twKnqO4cQsq+Pyws3pvKTmpjc+RtUU4w+j
- CEc5zwcRunewU812ajwfWs8buQ==
-X-Received: by 2002:a17:902:c1cd:b0:1c0:91f9:aca4 with SMTP id
- c13-20020a170902c1cd00b001c091f9aca4mr2471055plc.22.1692717111987; 
- Tue, 22 Aug 2023 08:11:51 -0700 (PDT)
-Received: from ?IPV6:2602:47:d483:7301:4e3c:f4a4:b92a:b5ab?
- ([2602:47:d483:7301:4e3c:f4a4:b92a:b5ab])
- by smtp.gmail.com with ESMTPSA id
- j10-20020a170902da8a00b001a5fccab02dsm9173848plx.177.2023.08.22.08.11.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 22 Aug 2023 08:11:51 -0700 (PDT)
-Message-ID: <ff04a8bb-375f-bbdf-f9af-af4a03aefdaf@linaro.org>
-Date: Tue, 22 Aug 2023 08:11:49 -0700
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qYTE4-0003yx-MR; Tue, 22 Aug 2023 11:23:24 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qYTE0-0003nV-Ak; Tue, 22 Aug 2023 11:23:24 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RVY0245VBz6J6xl;
+ Tue, 22 Aug 2023 23:18:42 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Tue, 22 Aug
+ 2023 16:23:04 +0100
+Date: Tue, 22 Aug 2023 16:23:03 +0100
+To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+CC: qemu-arm <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: CXL Namespaces of ACPI disappearing in Qemu demo
+Message-ID: <20230822162303.00007def@Huawei.com>
+In-Reply-To: <2023081118312729037834@phytium.com.cn>
+References: <2023061615433049315231@phytium.com.cn>
+ <2023081118312729037834@phytium.com.cn>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 6/6] target/loongarch: Use hswap_i64() in REVH.D opcode
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Aurelien Jarno <aurelien@aurel32.net>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Song Gao <gaosong@loongson.cn>
-References: <20230822110129.41022-1-philmd@linaro.org>
- <20230822110129.41022-7-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230822110129.41022-7-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.767,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,20 +93,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qxzAhL6efQ0o
+X-TUID: fCHmcZmZyFVd
 
-On 8/22/23 04:01, Philippe Mathieu-Daudé wrote:
-> Commit 46be8425ff ("tcg: Implement tcg_gen_{h,w}swap_{i32,i64}")
-> introduced the generic hswap_i32(). Use it instead of open-coding
-> it as gen_revh_d().
+On Fri, 11 Aug 2023 18:31:28 +0800
+Yuquan Wang <wangyuquan1236@phytium.com.cn> wrote:
+
+> Hi, 
+> On 2023-08-10 21:56,  jonathan.cameron wrote:
+>  
+> So took a look at your issue - be it on the cxl-2023-08-07 branch rebased on qemu/master
+> from today (side effect of looking at the segfault that was stopping me getting to this).
+>  
+> For me at least the branch does create an ACPI0017 DSDT entry and an ACPI0016 one
+> and all the CXL devices turn up in /sys/bus/cxl/devices as expected.
+>  
 > 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
->   target/loongarch/insn_trans/trans_bit.c.inc | 16 +---------------
->   1 file changed, 1 insertion(+), 15 deletions(-)
+> Oh, thanks for your guidance. It works so now I can get  ACPI0017 & ACPI0016 information in DSDT.   : )
+> 
+> By the way,  I found that if we add a pcie root port which create the same bus number as we assigned to pxb-cxl, 
+> the enumeration of cxl and pcie would be different from what we expected.  In this case,  we cannot find 
+> CXL devices in /sys/bus/cxl/devices. 
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+So this seems to be a case of shooting ourselves in the foot, but not catching the nonsensical configuration
+(as you observer later! :)
+pxb-pcie complains if you try and add two at the same bus number, but that doesn't protect against overlapping
+ranges because they aren't known until after enumeration (which is done by the bios - and I guess the bios
+doesn't sanity check for this insanity).  Qemu could take another look when it builds the ACPI tables a
+second time though.
 
-r~
+Looking at edk2 logs I can see it is happily populating the root bus 1 on my arm64 setup and that it
+observes there are no subordinate buses available for the main PCIe bus (0) that QEMU is creating by
+default. The _CRS entries look correct but the kernel ignores them it seems. 
+
+It is very much not a valid configuration so there is no reason the kernel should cope with it.
+
+Maybe it's worth considering some hardening code?
+
+
+> 
+> According to my test, the error happened in 
+> "devm_cxl_register_pci_bus()"  of  "add_host_bridge_uport" in  "cxl_acpi_probe".
+> Actually,  in above case, the incorrect enumeration of pcie will also occur with pxb-pcie except for pxb-cxl, 
+> hence I guess the kernel did not deal with such case and users just need to avoid it if they need a correct
+> enumeration result.
+
+Agreed - Protecting against ever corner case of impossible configuration is tricky to
+do.
+
+> 
+> My qemu script (which will cause the incorrect enumeration):
+> qemu-system-x86_64 \
+> -M q35,nvdimm=on,cxl=on \
+> -m 4G,maxmem=8G,slots=8 \
+> -smp 1 \
+> -object memory-backend-file,id=cxl-mem1,share=on,mem-path=./memfile/cxltest3.raw,size=256M \
+> -object memory-backend-file,id=cxl-lsa1,share=on,mem-path=./memfile/lsa3.raw,size=256M \
+> -device ioh3420,bus=pcie.0,id=root_port1,chassis=0,slot=1,addr=04 \
+> -device qemu-xhci,bus=root_port1 \
+> -device pxb-cxl,bus_nr=1,bus=pcie.0,id=cxl.1 \
+> -device cxl-rp,port=0,bus=cxl.1,id=root_port13,chassis=0,slot=2 \
+> -device cxl-type3,bus=root_port13,memdev=cxl-mem1,lsa=cxl-lsa1,id=cxl-pmem0 \
+> -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G \
+> ......
+> 
+> Many thanks
+> Yuquan
+

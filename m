@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp743438ejc;
-        Thu, 24 Aug 2023 07:33:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH6xjFxWcZ758kZYAGMUgF8qjZr61WgQhVWYD7Gzw9tLwCs6EYNY2az3pW58Ikgp7SvStaq
-X-Received: by 2002:a05:620a:90e:b0:76c:a9cd:5224 with SMTP id v14-20020a05620a090e00b0076ca9cd5224mr15314099qkv.36.1692887619565;
-        Thu, 24 Aug 2023 07:33:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692887619; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp744145ejc;
+        Thu, 24 Aug 2023 07:34:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGzyflBhhNy+2SK3ggOi6q3xOEQW2TTjamC/rwVMwi3AmuIHevu9fjQYB/xrKNh14H8nY1u
+X-Received: by 2002:a05:6214:2f0c:b0:63c:f51f:6bfc with SMTP id od12-20020a0562142f0c00b0063cf51f6bfcmr16849982qvb.37.1692887679567;
+        Thu, 24 Aug 2023 07:34:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692887679; cv=none;
         d=google.com; s=arc-20160816;
-        b=DXhfL5CRba1v9ptkaI6b2CRG7VKe1oFFkTBX1bVHCZKJg5KgMjz873Aus8nb/E8Esz
-         6WVK5AE6J24XJ42fq27Ch/yQFdhRW4m9ivMzeb2aorqYQWXKAhzNnHZCMfmSzf9cFcsf
-         62oCsX76eIafH09xyipanTQKf8r7R/LdowA43QaG/nvPcJgdDaQPxa7ltyLAf7kUMTeh
-         wJ9md3/5gWXktva8HvWLqY+9rPD0QQ3yKN/DaGlZSWx9ZrYpSg549SXxm63ONSlgdHIu
-         mx5tHgckFv3WWkRLBWnNSIxcq9nhcbG/2ioAVA/lJKeJGNKJzdHgUuKOTnY0/jLVRlhI
-         nxnQ==
+        b=NuSkBFqG6mOPRSgObwHt/sZkqsNDusRnYt511F232lxf788QEja1pSrADZb2i7w9Wf
+         tyH8Z/pKFIDmglM+9cl3SsV9F829k75nWpoghHZ03eVCy6c43JBQQNTw2datd+svCtqI
+         DrCSQi7XjcSQ5SQmHLjCV37PO4MVgYVp+6XotJjWSQSlMbwsKjP0kEvDelCDkaD7rzaQ
+         GgUdiD5h7uRIm83/D5vogVypxEFNwP3lUnZOK1Dy8gpZTrrmULb3mqrQrpsUbnoja5Vk
+         TWKlAGeOQnjpWdtdr/xSiIjo8vTLAe9abdGESOkxVxISL+yffDKZISsxQbdCyxkQFfi0
+         J7wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+vd2aBB1In0LC63LjX9eSja/NaZe9kRTvQdkij/XSFw=;
+        bh=ke3CIbiZzrEAJhnXzs0Tt9eyJ5dSeZXPJ36uEraMzCU=;
         fh=FstQSHJ5xalY0qvCfwQnzF4rG/Wi+NaC2f1qQ65wDU0=;
-        b=iXmNo3c4qrjemaXmOw4ghghNFg3rbzmZ0GQ5H0cBbz2m9wDqV0A4Mx7079VwUSlFGF
-         I9rApagfgiBQM/LBxDBHi37JZPPev6wMDQvnTSGCHRCJ9/P73Dll0gHVhiH9SVVcOf/4
-         TNyzf+Co+eDjoETYUmKWRumPwca2VHMC3n5cDjxCRkTcNaD0JCMt8lC0eKyouSOGT1KC
-         3bNYbPJ445R3lO62w67Fr1Ac3NB+gZYKGZICjvEq59GXkC0CpM8GASKvcXYYGA2mObiF
-         JKjEf+CPcZkuHicXcH4xjokFMeFO0MwaIDQiIS7C80Xdg0RjFlJXVT/tzleqIgUPYP0I
-         M+8g==
+        b=zcg2jWQ/wIRK49FGDyOOgV/eLA0m6cbZbZOne0q6M1paICMxESiQsMPjCoGz5OOY0p
+         XptuGnR2+xO5RCAW8JSGYpLSTMWmyR7ATvJpqiSg9hV4PC5U0uHzFzGdK2gQUU7Zrx3e
+         CAypjEIW6xTn1Dys7AWCU8FOx10CVDzUaRKl1e9YZQhfZTh0F0j8e7VsKY2V4y1nK1cn
+         tUAIQJhw07ySnWX9dBSAbmGsEJ11l3yMUnu0Z4MxNwlz+9VNZzRUpNAyLgakbHVbv5La
+         ik3N1kOF8JIhYlGT2v/X4YQqH0yQXB50JIFngkdpiHsIt/uz0NjsK60aZ9Li3663Z+h9
+         nC+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=J1RYi3hk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=J1zjNuG3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m9-20020a05620a24c900b0075cd16ef9a3si1111297qkn.504.2023.08.24.07.33.39
+        by mx.google.com with ESMTPS id c3-20020a0cf2c3000000b0064f6ab4d034si817858qvm.512.2023.08.24.07.34.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Aug 2023 07:33:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 24 Aug 2023 07:34:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=J1RYi3hk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=J1zjNuG3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qZBN7-00014d-5y; Thu, 24 Aug 2023 10:31:41 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qZBNP-0002kz-Hi; Thu, 24 Aug 2023 10:31:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qZBMr-0000m1-AJ
- for qemu-devel@nongnu.org; Thu, 24 Aug 2023 10:31:27 -0400
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+ id 1qZBNO-0002ZM-5R
+ for qemu-arm@nongnu.org; Thu, 24 Aug 2023 10:31:58 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qZBMn-0000jp-B7
- for qemu-devel@nongnu.org; Thu, 24 Aug 2023 10:31:23 -0400
-Received: by mail-pg1-x52d.google.com with SMTP id
- 41be03b00d2f7-564b6276941so4278662a12.3
- for <qemu-devel@nongnu.org>; Thu, 24 Aug 2023 07:31:20 -0700 (PDT)
+ id 1qZBNJ-0000yN-Rf
+ for qemu-arm@nongnu.org; Thu, 24 Aug 2023 10:31:57 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ 98e67ed59e1d1-26f3e26e55aso3152347a91.3
+ for <qemu-arm@nongnu.org>; Thu, 24 Aug 2023 07:31:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1692887480; x=1693492280;
+ d=ventanamicro.com; s=google; t=1692887512; x=1693492312;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+vd2aBB1In0LC63LjX9eSja/NaZe9kRTvQdkij/XSFw=;
- b=J1RYi3hkWKsAFjLg2anLcZMfY5VwYO+Ey1ug8CGEwGEgq2PLwDcSCr1DDCGFbwZ/vH
- IfDUSDS/h86Sz34YtMnwsm87eXjPl2YlQL//UUm5BjWqGvC8uE8IJgMApWN8bH4j7YSv
- sx0wWIV4jRJUo33Fesoa0/jzSTknwo4gZU/CDCzauWyQn2D9E4G6k0LtKKYriWAi9WK+
- kpmpWZ40e1E32VFiCzww9/Z9trsECsphRl/wCyxX2zoVAuEZfNCJAiVgDkHnAXx2HWoS
- QDsXjZ8SsRoidwbZ+OuinuuilcLcEF3I9KHWY+10XZk44brb+iE3dGTri6Gth+s3JQII
- zYjg==
+ bh=ke3CIbiZzrEAJhnXzs0Tt9eyJ5dSeZXPJ36uEraMzCU=;
+ b=J1zjNuG3AR3uBySmR1KPq442WEWdYmKFICzuig8LaQ4WA1IeZ0MIP58Sr80oiVVqU6
+ aT2VMZKus7vEXJ2A249tNz+fuQ8K7Hr+ddz66Rz35bQhlKCqBThdaW7dJckwUjwRdRcQ
+ CMiijlaPDtGi6IJxtKr3JXE32gF8zznKEMvUTSGLcNQqKT/wCgpribmVvl6mjXcUFt4r
+ u1w8keATWD5Vu+53WILFPnmd/ESwGLZsXv5brwrNGZ4HeYAXtVFQOomHII34A31Cxp76
+ j6J6jXb5qb2X1zoqkXuKkWPYflQpH7TJ4mrZAO04z0lzBCwItEq5UqSdQlipNbjuwoWt
+ dDEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1692887480; x=1693492280;
+ d=1e100.net; s=20221208; t=1692887512; x=1693492312;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+vd2aBB1In0LC63LjX9eSja/NaZe9kRTvQdkij/XSFw=;
- b=M2HL9T/LSlKNaDRfJZCL67sY13syXlWQBXGl3BWaGlg/OS+FG2W8fyIKeJXSD4QWpq
- bFsyOke2fcfZ5vn18dEIzE+rSpYY9DOqdHZ2fJ5vEWIWAfAs1mgJMi76poTF4jhT7I8G
- c33M6N6Q8U2O935CiJoyWZbKNcTfzEBKAbsp4L7VHvllCNIkaZ4Uar9lvoGli/RZJrdU
- 9RCKVkYl7GwLDBX5KpxvdErL66IJUf5bkJswi4NwMsjtx8imwNEPDva9REN5Q4IStqFi
- W0LvtWD7HlbwOHwvsIDZrqw/hIG4eBt63uAD0Bv7WC27v6iRTAIBiipr7wLXpVYiMqv7
- PZ8A==
-X-Gm-Message-State: AOJu0YzdjVr5wIrbRRP7zbxzDCccUPOVM/TB+hJGJFpLc1sHSgoRhzwr
- As4H5+1bJ4X/ac2zIdaBfRHDYw==
-X-Received: by 2002:a17:90b:3690:b0:25c:8b5e:814 with SMTP id
- mj16-20020a17090b369000b0025c8b5e0814mr14473828pjb.44.1692887479491; 
- Thu, 24 Aug 2023 07:31:19 -0700 (PDT)
+ bh=ke3CIbiZzrEAJhnXzs0Tt9eyJ5dSeZXPJ36uEraMzCU=;
+ b=b6xa9lGmvXwYITnBj2W7k1H66eq+24CF1bnxINCEObBSOuCgryKimftjSEWUPl2MeE
+ dVLi/EjLDA2CgoWIWJbzQA6/AHDIvsMG4gDVOM8czvG11BSyUVLu+bVuX4HYR5KkfV0X
+ Ojqpa8iQiya/QBR9XRybmqtVC2cbB/1RhXFB19juzSMiYBbx6sZTsp4JcPuBXuA++JwL
+ hDJiYUwPZThG00Dn72xRFuqwDRqF2ebeKqg0TTcAlVuVZYjTvKqAVMGF56BkqCyY02Sx
+ sk6x0H7HNvtKxKN22bKZmza959NQgNuiaEwQwVqDaBG3Vp6H/joi66cx1Xk/U8jb/zu4
+ 5/iA==
+X-Gm-Message-State: AOJu0YyTW+BOAG0pTDdOyEpFtNQRqdnOlX1jkXDRpy5yYuYBruDNGXGT
+ 8D1eU9Z3+J0IRbJzsAk7cNDdt8mBhksjjmL7IAw=
+X-Received: by 2002:a17:90b:3718:b0:26b:2576:1e48 with SMTP id
+ mg24-20020a17090b371800b0026b25761e48mr12289878pjb.34.1692887511777; 
+ Thu, 24 Aug 2023 07:31:51 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.191.205])
  by smtp.gmail.com with ESMTPSA id
- n6-20020a17090a2bc600b00262fc3d911esm1666864pje.28.2023.08.24.07.31.08
+ n6-20020a17090a2bc600b00262fc3d911esm1666864pje.28.2023.08.24.07.31.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Aug 2023 07:31:14 -0700 (PDT)
+ Thu, 24 Aug 2023 07:31:50 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
@@ -107,156 +107,182 @@ Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
  Andrew Jones <ajones@ventanamicro.com>,
  Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>,
  Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH v2 07/12] hw/riscv/virt-acpi-build.c: Add CMO information in
- RHCT
-Date: Thu, 24 Aug 2023 19:59:37 +0530
-Message-Id: <20230824142942.3983650-8-sunilvl@ventanamicro.com>
+Subject: [PATCH v2 11/12] hw/riscv/virt-acpi-build.c: Add IO controllers and
+ devices
+Date: Thu, 24 Aug 2023 19:59:41 +0530
+Message-Id: <20230824142942.3983650-12-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230824142942.3983650-1-sunilvl@ventanamicro.com>
 References: <20230824142942.3983650-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x52d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /2P3LjvhS7/P
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 20boojT71Qpf
 
-When CMO related extensions like Zicboz, Zicbom and Zicbop are enabled, the
-block size for those extensions need to be communicated via CMO node in
-RHCT. Add CMO node in RHCT if any of those CMO extensions are detected.
+Add basic IO controllers and devices like PCI, VirtIO and UART in the ACPI
+namespace.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
 Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 ---
- hw/riscv/virt-acpi-build.c | 64 +++++++++++++++++++++++++++++++++-----
- 1 file changed, 56 insertions(+), 8 deletions(-)
+ hw/riscv/Kconfig           |  1 +
+ hw/riscv/virt-acpi-build.c | 76 ++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 73 insertions(+), 4 deletions(-)
 
+diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
+index b6a5eb4452..a50717be87 100644
+--- a/hw/riscv/Kconfig
++++ b/hw/riscv/Kconfig
+@@ -45,6 +45,7 @@ config RISCV_VIRT
+     select FW_CFG_DMA
+     select PLATFORM_BUS
+     select ACPI
++    select ACPI_PCI
+ 
+ config SHAKTI_C
+     bool
 diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index 8fa358d034..72c2a3e45f 100644
+index 40bd43efd0..bd0f9f3d87 100644
 --- a/hw/riscv/virt-acpi-build.c
 +++ b/hw/riscv/virt-acpi-build.c
-@@ -147,6 +147,7 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtState *s)
-  * 5.2.36 RISC-V Hart Capabilities Table (RHCT)
-  * REF: https://github.com/riscv-non-isa/riscv-acpi/issues/16
-  *      https://drive.google.com/file/d/1nP3nFiH4jkPMp6COOxP6123DCZKR-tia/view
-+ *      https://drive.google.com/file/d/1sKbOa8m1UZw1JkquZYe3F1zQBN1xXsaf/view
-  */
- static void build_rhct(GArray *table_data,
-                        BIOSLinker *linker,
-@@ -156,8 +157,8 @@ static void build_rhct(GArray *table_data,
-     MachineState *ms = MACHINE(s);
-     const CPUArchIdList *arch_ids = mc->possible_cpu_arch_ids(ms);
-     size_t len, aligned_len;
--    uint32_t isa_offset, num_rhct_nodes;
--    RISCVCPU *cpu;
-+    uint32_t isa_offset, num_rhct_nodes, cmo_offset = 0;
-+    RISCVCPU *cpu = &s->soc[0].harts[0];
-     char *isa;
+@@ -27,15 +27,18 @@
+ #include "hw/acpi/acpi-defs.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/aml-build.h"
++#include "hw/acpi/pci.h"
+ #include "hw/acpi/utils.h"
++#include "hw/intc/riscv_aclint.h"
+ #include "hw/nvram/fw_cfg_acpi.h"
++#include "hw/pci-host/gpex.h"
++#include "hw/riscv/virt.h"
++#include "hw/riscv/numa.h"
++#include "hw/virtio/virtio-acpi.h"
++#include "migration/vmstate.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/reset.h"
+-#include "migration/vmstate.h"
+-#include "hw/riscv/virt.h"
+-#include "hw/riscv/numa.h"
+-#include "hw/intc/riscv_aclint.h"
  
-     AcpiTable table = { .sig = "RHCT", .rev = 1, .oem_id = s->oem_id,
-@@ -173,6 +174,9 @@ static void build_rhct(GArray *table_data,
- 
-     /* ISA + N hart info */
-     num_rhct_nodes = 1 + ms->smp.cpus;
-+    if (cpu->cfg.ext_icbom || cpu->cfg.ext_icboz) {
-+        num_rhct_nodes++;
-+    }
- 
-     /* Number of RHCT nodes*/
-     build_append_int_noprefix(table_data, num_rhct_nodes, 4);
-@@ -184,7 +188,6 @@ static void build_rhct(GArray *table_data,
-     isa_offset = table_data->len - table.table_offset;
-     build_append_int_noprefix(table_data, 0, 2);   /* Type 0 */
- 
--    cpu = &s->soc[0].harts[0];
-     isa = riscv_isa_string(cpu);
-     len = 8 + strlen(isa) + 1;
-     aligned_len = (len % 2) ? (len + 1) : len;
-@@ -200,14 +203,59 @@ static void build_rhct(GArray *table_data,
-         build_append_int_noprefix(table_data, 0x0, 1);   /* Optional Padding */
+ #define ACPI_BUILD_TABLE_SIZE             0x20000
+ #define ACPI_BUILD_INTC_ID(socket, index) ((socket << 24) | (index))
+@@ -139,6 +142,39 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtState *s)
      }
+ }
  
-+    /* CMO node */
-+    if (cpu->cfg.ext_icbom || cpu->cfg.ext_icboz) {
-+        cmo_offset = table_data->len - table.table_offset;
-+        build_append_int_noprefix(table_data, 1, 2);    /* Type */
-+        build_append_int_noprefix(table_data, 10, 2);   /* Total Length */
-+        build_append_int_noprefix(table_data, 0x1, 2);  /* Revision */
-+        build_append_int_noprefix(table_data, 0, 1);    /* Reserved */
++static void
++acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
++                    uint32_t uart_irq)
++{
++    Aml *dev = aml_device("COM0");
++    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0501")));
++    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
 +
-+        /* CBOM block size */
-+        if (cpu->cfg.cbom_blocksize) {
-+            build_append_int_noprefix(table_data,
-+                                      __builtin_ctz(cpu->cfg.cbom_blocksize),
-+                                      1);
-+        } else {
-+            build_append_int_noprefix(table_data, 0, 1);
-+        }
++    Aml *crs = aml_resource_template();
++    aml_append(crs, aml_memory32_fixed(uart_memmap->base,
++                                         uart_memmap->size, AML_READ_WRITE));
++    aml_append(crs,
++                aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
++                               AML_EXCLUSIVE, &uart_irq, 1));
++    aml_append(dev, aml_name_decl("_CRS", crs));
 +
-+        /* CBOP block size */
-+        build_append_int_noprefix(table_data, 0, 1);
++    Aml *pkg = aml_package(2);
++    aml_append(pkg, aml_string("clock-frequency"));
++    aml_append(pkg, aml_int(3686400));
 +
-+        /* CBOZ block size */
-+        if (cpu->cfg.cboz_blocksize) {
-+            build_append_int_noprefix(table_data,
-+                                      __builtin_ctz(cpu->cfg.cboz_blocksize),
-+                                      1);
-+        } else {
-+            build_append_int_noprefix(table_data, 0, 1);
-+        }
++    Aml *UUID = aml_touuid("DAFFD814-6EBA-4D8C-8A91-BC9BBF4AA301");
++
++    Aml *pkg1 = aml_package(1);
++    aml_append(pkg1, pkg);
++
++    Aml *package = aml_package(2);
++    aml_append(package, UUID);
++    aml_append(package, pkg1);
++
++    aml_append(dev, aml_name_decl("_DSD", package));
++    aml_append(scope, dev);
++}
++
+ /* RHCT Node[N] starts at offset 56 */
+ #define RHCT_NODE_ARRAY_OFFSET 56
+ 
+@@ -319,6 +355,8 @@ static void build_dsdt(GArray *table_data,
+                        RISCVVirtState *s)
+ {
+     Aml *scope, *dsdt;
++    MachineState *ms = MACHINE(s);
++    uint8_t socket_count;
+     const MemMapEntry *memmap = s->memmap;
+     AcpiTable table = { .sig = "DSDT", .rev = 2, .oem_id = s->oem_id,
+                         .oem_table_id = s->oem_table_id };
+@@ -338,6 +376,26 @@ static void build_dsdt(GArray *table_data,
+ 
+     fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+ 
++    socket_count = riscv_socket_count(ms);
++
++    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0], UART0_IRQ);
++
++    if (socket_count == 1) {
++        virtio_acpi_dsdt_add(scope, &memmap[VIRT_VIRTIO],
++                             VIRTIO_IRQ, VIRTIO_COUNT);
++        acpi_dsdt_add_gpex_host(scope, PCIE_IRQ);
++    } else if (socket_count == 2) {
++        virtio_acpi_dsdt_add(scope, &memmap[VIRT_VIRTIO],
++                             VIRTIO_IRQ + VIRT_IRQCHIP_NUM_SOURCES,
++                             VIRTIO_COUNT);
++        acpi_dsdt_add_gpex_host(scope, PCIE_IRQ + VIRT_IRQCHIP_NUM_SOURCES);
++    } else {
++        virtio_acpi_dsdt_add(scope, &memmap[VIRT_VIRTIO],
++                             VIRTIO_IRQ + VIRT_IRQCHIP_NUM_SOURCES,
++                             VIRTIO_COUNT);
++        acpi_dsdt_add_gpex_host(scope, PCIE_IRQ + VIRT_IRQCHIP_NUM_SOURCES * 2);
 +    }
 +
-     /* Hart Info Node */
-     for (int i = 0; i < arch_ids->len; i++) {
-+        len = 16;
-+        int num_offsets = 1;
-         build_append_int_noprefix(table_data, 0xFFFF, 2);  /* Type */
--        build_append_int_noprefix(table_data, 16, 2);      /* Length */
--        build_append_int_noprefix(table_data, 0x1, 2);     /* Revision */
--        build_append_int_noprefix(table_data, 1, 2);    /* Number of offsets */
--        build_append_int_noprefix(table_data, i, 4);    /* ACPI Processor UID */
--        build_append_int_noprefix(table_data, isa_offset, 4); /* Offsets[0] */
-+
-+        /* Length */
-+        if (cmo_offset) {
-+            len += 4;
-+            num_offsets++;
-+        }
-+
-+        build_append_int_noprefix(table_data, len, 2);
-+        build_append_int_noprefix(table_data, 0x1, 2); /* Revision */
-+        /* Number of offsets */
-+        build_append_int_noprefix(table_data, num_offsets, 2);
-+        build_append_int_noprefix(table_data, i, 4);   /* ACPI Processor UID */
-+
-+        /* Offsets */
-+        build_append_int_noprefix(table_data, isa_offset, 4);
-+        if (cmo_offset) {
-+            build_append_int_noprefix(table_data, cmo_offset, 4);
-+        }
-     }
+     aml_append(dsdt, scope);
  
-     acpi_table_end(linker, &table);
+     /* copy AML table into ACPI tables blob and patch header there */
+@@ -487,6 +545,16 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_rhct(tables_blob, tables->linker, s);
+ 
++    acpi_add_table(table_offsets, tables_blob);
++    {
++        AcpiMcfgInfo mcfg = {
++           .base = s->memmap[VIRT_PCIE_MMIO].base,
++           .size = s->memmap[VIRT_PCIE_MMIO].size,
++        };
++        build_mcfg(tables_blob, tables->linker, &mcfg, s->oem_id,
++                   s->oem_table_id);
++    }
++
+     /* XSDT is pointed to by RSDP */
+     xsdt = tables_blob->len;
+     build_xsdt(tables_blob, tables->linker, table_offsets, s->oem_id,
 -- 
 2.39.2
 

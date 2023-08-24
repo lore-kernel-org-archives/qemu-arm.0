@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id e1-20020adff341000000b003177f57e79esm22618406wrp.88.2023.08.24.09.39.14
+        by smtp.gmail.com with ESMTPSA id i12-20020adffdcc000000b0031ae8d86af4sm20385986wrs.103.2023.08.24.09.39.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Aug 2023 09:39:16 -0700 (PDT)
+        Thu, 24 Aug 2023 09:39:17 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A84281FFC7;
+	by zen.linaroharston (Postfix) with ESMTP id 67CBD1FFC5;
 	Thu, 24 Aug 2023 17:39:11 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -30,62 +30,141 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 12/12] gdbstub: move comment for gdb_register_coprocessor
-Date: Thu, 24 Aug 2023 17:39:10 +0100
-Message-Id: <20230824163910.1737079-13-alex.bennee@linaro.org>
+Subject: [PATCH v2 10/12] gdbstub: refactor get_feature_xml
+Date: Thu, 24 Aug 2023 17:39:08 +0100
+Message-Id: <20230824163910.1737079-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230824163910.1737079-1-alex.bennee@linaro.org>
 References: <20230824163910.1737079-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: IARehtyDZYe8
+X-TUID: hQxYKEiq+gkF
 
-Use proper kdoc style comments for this API function.
+Try to bring up the code to more modern standards by:
+
+  - use dynamic GString built xml over a fixed buffer
+  - use autofree to save on explicit g_free() calls
+  - don't hand hack strstr to find the delimiter
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- include/exec/gdbstub.h | 10 ++++++++++
- gdbstub/gdbstub.c      |  6 ------
- 2 files changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 0ee39cfdd1..16a139043f 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -14,6 +14,16 @@
- /* Get or set a register.  Returns the size of the register.  */
- typedef int (*gdb_get_reg_cb)(CPUArchState *env, GByteArray *buf, int reg);
- typedef int (*gdb_set_reg_cb)(CPUArchState *env, uint8_t *buf, int reg);
-+
-+/**
-+ * gdb_register_coprocessor() - register a supplemental set of registers
-+ * @cpu - the CPU associated with registers
-+ * @get_reg - get function (gdb reading)
-+ * @set_reg - set function (gdb modifying)
-+ * @num_regs - number of registers in set
-+ * @xml - xml name of set
-+ * @gpos - non-zero to append to "general" register set at @gpos
-+ */
- void gdb_register_coprocessor(CPUState *cpu,
-                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-                               int num_regs, const char *xml, int g_pos);
+---
+v2
+  - avoid needless g_strndup for copy of annex
+---
+ gdbstub/internals.h |  2 +-
+ gdbstub/gdbstub.c   | 63 +++++++++++++++++++++------------------------
+ 2 files changed, 31 insertions(+), 34 deletions(-)
+
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index f2b46cce41..4876ebd74f 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -33,7 +33,7 @@ typedef struct GDBProcess {
+     uint32_t pid;
+     bool attached;
+ 
+-    char target_xml[1024];
++    char *target_xml;
+ } GDBProcess;
+ 
+ enum RSState {
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 10fb755390..1fb0db747f 100644
+index 8e9bc17e07..31a2451f27 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -450,12 +450,6 @@ static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
-     return 0;
+@@ -354,54 +354,51 @@ static CPUState *gdb_get_cpu(uint32_t pid, uint32_t tid)
+ static const char *get_feature_xml(const char *p, const char **newp,
+                                    GDBProcess *process)
+ {
+-    size_t len;
+     int i;
+     const char *name;
+     CPUState *cpu = gdb_get_first_cpu_in_process(process);
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
+-    len = 0;
+-    while (p[len] && p[len] != ':')
+-        len++;
+-    *newp = p + len;
++    /* ‘qXfer:features:read:annex:offset,length' */
++    char *term = g_strstr_len(p, -1, ":");
++    size_t len = term - p;
++    g_autofree char *annex = g_strndup(p, len);
++    /* leave newp at offset,length for the rest of the params */
++    *newp = term + 1;
+ 
+-    name = NULL;
+-    if (strncmp(p, "target.xml", len) == 0) {
+-        char *buf = process->target_xml;
+-        const size_t buf_sz = sizeof(process->target_xml);
+ 
+-        /* Generate the XML description for this CPU.  */
+-        if (!buf[0]) {
++    name = NULL;
++    if (g_strcmp0(annex, "target.xml") == 0) {
++        if (!process->target_xml) {
+             GDBRegisterState *r;
++            GString *xml = g_string_new("<?xml version=\"1.0\"?>");
++
++            g_string_append(xml,
++                            "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
++                            "<target>");
+ 
+-            pstrcat(buf, buf_sz,
+-                    "<?xml version=\"1.0\"?>"
+-                    "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
+-                    "<target>");
+             if (cc->gdb_arch_name) {
+-                gchar *arch = cc->gdb_arch_name(cpu);
+-                pstrcat(buf, buf_sz, "<architecture>");
+-                pstrcat(buf, buf_sz, arch);
+-                pstrcat(buf, buf_sz, "</architecture>");
+-                g_free(arch);
++                g_autofree gchar *arch = cc->gdb_arch_name(cpu);
++                g_string_append_printf(xml,
++                                       "<architecture>%s</architecture>",
++                                       arch);
+             }
+-            pstrcat(buf, buf_sz, "<xi:include href=\"");
+-            pstrcat(buf, buf_sz, cc->gdb_core_xml_file);
+-            pstrcat(buf, buf_sz, "\"/>");
++            g_string_append(xml, "<xi:include href=\"");
++            g_string_append(xml, cc->gdb_core_xml_file);
++            g_string_append(xml, "\"/>");
+             for (r = cpu->gdb_regs; r; r = r->next) {
+-                pstrcat(buf, buf_sz, "<xi:include href=\"");
+-                pstrcat(buf, buf_sz, r->xml);
+-                pstrcat(buf, buf_sz, "\"/>");
++                g_string_append(xml, "<xi:include href=\"");
++                g_string_append(xml, r->xml);
++                g_string_append(xml, "\"/>");
+             }
+-            pstrcat(buf, buf_sz, "</target>");
++            g_string_append(xml, "</target>");
++
++            process->target_xml = g_string_free(xml, false);
++            return process->target_xml;
+         }
+-        return buf;
+     }
+     if (cc->gdb_get_dynamic_xml) {
+-        char *xmlname = g_strndup(p, len);
+-        const char *xml = cc->gdb_get_dynamic_xml(cpu, xmlname);
+-
+-        g_free(xmlname);
++        const char *xml = cc->gdb_get_dynamic_xml(cpu, annex);
+         if (xml) {
+             return xml;
+         }
+@@ -2245,6 +2242,6 @@ void gdb_create_default_process(GDBState *s)
+     process = &s->processes[s->process_num - 1];
+     process->pid = pid;
+     process->attached = false;
+-    process->target_xml[0] = '\0';
++    process->target_xml = NULL;
  }
  
--/* Register a supplemental set of CPU registers.  If g_pos is nonzero it
--   specifies the first register number and these registers are included in
--   a standard "g" packet.  Direction is relative to gdb, i.e. get_reg is
--   gdb reading a CPU register, and set_reg is gdb modifying a CPU register.
-- */
--
- void gdb_register_coprocessor(CPUState *cpu,
-                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-                               int num_regs, const char *xml, int g_pos)
 -- 
 2.39.2

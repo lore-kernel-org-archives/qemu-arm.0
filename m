@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp744145ejc;
-        Thu, 24 Aug 2023 07:34:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGzyflBhhNy+2SK3ggOi6q3xOEQW2TTjamC/rwVMwi3AmuIHevu9fjQYB/xrKNh14H8nY1u
-X-Received: by 2002:a05:6214:2f0c:b0:63c:f51f:6bfc with SMTP id od12-20020a0562142f0c00b0063cf51f6bfcmr16849982qvb.37.1692887679567;
-        Thu, 24 Aug 2023 07:34:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692887679; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp745483ejc;
+        Thu, 24 Aug 2023 07:36:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHp4O0KijKggB7LEEE14QQx0M8iGiqhrLrlrK8ppYSCkSbm/PVT6IxZ+Kly0f+/cQqMryEt
+X-Received: by 2002:a0c:f18e:0:b0:647:3387:fe37 with SMTP id m14-20020a0cf18e000000b006473387fe37mr18723108qvl.20.1692887810280;
+        Thu, 24 Aug 2023 07:36:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692887810; cv=none;
         d=google.com; s=arc-20160816;
-        b=NuSkBFqG6mOPRSgObwHt/sZkqsNDusRnYt511F232lxf788QEja1pSrADZb2i7w9Wf
-         tyH8Z/pKFIDmglM+9cl3SsV9F829k75nWpoghHZ03eVCy6c43JBQQNTw2datd+svCtqI
-         DrCSQi7XjcSQ5SQmHLjCV37PO4MVgYVp+6XotJjWSQSlMbwsKjP0kEvDelCDkaD7rzaQ
-         GgUdiD5h7uRIm83/D5vogVypxEFNwP3lUnZOK1Dy8gpZTrrmULb3mqrQrpsUbnoja5Vk
-         TWKlAGeOQnjpWdtdr/xSiIjo8vTLAe9abdGESOkxVxISL+yffDKZISsxQbdCyxkQFfi0
-         J7wg==
+        b=QLzM+8mwqoQ8M2qpx9lDsLzdXepmNd2Y2GemkD7aJGOtSeSFatTC/MYCSK55MnIPuL
+         LPd2nsQkSZqLT4Z9wBvsVgAsCNNqiMAF14Q/+2sPAszVBn5ON4KM6f3Agit1Fn2JA9Uq
+         3HrRAuap5uled1GCpWpODQ4PsD7F6FGAOz/nvASfmhdODB73E2FtTc1m4zE6sBnD05Rw
+         iJTNrWFJf8dgDMaIe7O2oti4M2QmJRwVwaPq2zW9wXDb/t6ccc05eerzOdZmOlK6Q/AL
+         B+olL5B2JpHqnLhg7VS1L/m5M18yLTnnGficQedNlGObdUReX/x0YaPGKb08N9n46Jhm
+         F9KQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ke3CIbiZzrEAJhnXzs0Tt9eyJ5dSeZXPJ36uEraMzCU=;
+        bh=qP3Pkjbm6eW/U4aYn+Kgix5mmDk+c87xv3QAatzmioE=;
         fh=FstQSHJ5xalY0qvCfwQnzF4rG/Wi+NaC2f1qQ65wDU0=;
-        b=zcg2jWQ/wIRK49FGDyOOgV/eLA0m6cbZbZOne0q6M1paICMxESiQsMPjCoGz5OOY0p
-         XptuGnR2+xO5RCAW8JSGYpLSTMWmyR7ATvJpqiSg9hV4PC5U0uHzFzGdK2gQUU7Zrx3e
-         CAypjEIW6xTn1Dys7AWCU8FOx10CVDzUaRKl1e9YZQhfZTh0F0j8e7VsKY2V4y1nK1cn
-         tUAIQJhw07ySnWX9dBSAbmGsEJ11l3yMUnu0Z4MxNwlz+9VNZzRUpNAyLgakbHVbv5La
-         ik3N1kOF8JIhYlGT2v/X4YQqH0yQXB50JIFngkdpiHsIt/uz0NjsK60aZ9Li3663Z+h9
-         nC+Q==
+        b=SaF1LuXC33THqlZYZFFHGtcvXVaSep2Ph0530pH/Yu+0i5t3znVbgjDg7B1LXbY5r4
+         I32oKLKMXG3QqIOJNnZfbd3Fs33p0AvXhxTiF4nctK0ePvSUCInnztmnFexc8ge+0R0f
+         myW3P/v34QPSX+zGnHXu9frFjihvkWIKY3tmbHx/iBeQ5ku5hJODGrOgkuCs/JasbMqA
+         /1w3kyNquj525liE81G4yrvKNpawtq8fzWJeSBXfl5B2tkMiiKYAiSTv9P9ByQsNOfo/
+         XVBJY5ZBS7xghfP+Zst9HPWjhFFH6cE+ykLUAflujnhjdbFvWP6un1Y4GG2wr1Hrrmm1
+         8VzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=J1zjNuG3;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=joTW2Ry1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3-20020a0cf2c3000000b0064f6ab4d034si817858qvm.512.2023.08.24.07.34.39
+        by mx.google.com with ESMTPS id l13-20020a0cac0d000000b0063d576a9a2csi8347152qvb.69.2023.08.24.07.36.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Aug 2023 07:34:39 -0700 (PDT)
+        Thu, 24 Aug 2023 07:36:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=J1zjNuG3;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=joTW2Ry1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qZBNP-0002kz-Hi; Thu, 24 Aug 2023 10:31:59 -0400
+	id 1qZBMD-00006Q-6R; Thu, 24 Aug 2023 10:30:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qZBNO-0002ZM-5R
- for qemu-arm@nongnu.org; Thu, 24 Aug 2023 10:31:58 -0400
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+ id 1qZBMA-00005A-Ie
+ for qemu-arm@nongnu.org; Thu, 24 Aug 2023 10:30:43 -0400
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qZBNJ-0000yN-Rf
- for qemu-arm@nongnu.org; Thu, 24 Aug 2023 10:31:57 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id
- 98e67ed59e1d1-26f3e26e55aso3152347a91.3
- for <qemu-arm@nongnu.org>; Thu, 24 Aug 2023 07:31:53 -0700 (PDT)
+ id 1qZBM4-0000P9-Eh
+ for qemu-arm@nongnu.org; Thu, 24 Aug 2023 10:30:42 -0400
+Received: by mail-pj1-x1031.google.com with SMTP id
+ 98e67ed59e1d1-26b47df332eso3847613a91.2
+ for <qemu-arm@nongnu.org>; Thu, 24 Aug 2023 07:30:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1692887512; x=1693492312;
+ d=ventanamicro.com; s=google; t=1692887434; x=1693492234;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ke3CIbiZzrEAJhnXzs0Tt9eyJ5dSeZXPJ36uEraMzCU=;
- b=J1zjNuG3AR3uBySmR1KPq442WEWdYmKFICzuig8LaQ4WA1IeZ0MIP58Sr80oiVVqU6
- aT2VMZKus7vEXJ2A249tNz+fuQ8K7Hr+ddz66Rz35bQhlKCqBThdaW7dJckwUjwRdRcQ
- CMiijlaPDtGi6IJxtKr3JXE32gF8zznKEMvUTSGLcNQqKT/wCgpribmVvl6mjXcUFt4r
- u1w8keATWD5Vu+53WILFPnmd/ESwGLZsXv5brwrNGZ4HeYAXtVFQOomHII34A31Cxp76
- j6J6jXb5qb2X1zoqkXuKkWPYflQpH7TJ4mrZAO04z0lzBCwItEq5UqSdQlipNbjuwoWt
- dDEA==
+ bh=qP3Pkjbm6eW/U4aYn+Kgix5mmDk+c87xv3QAatzmioE=;
+ b=joTW2Ry1S5pspxRBqCYoliu/BmX+B9iA7CaGLH33LV2xzgyrq2e00jFz5IlcxvjM2g
+ TfS+ATDBWG+IiKMgJ5D5TxExfcxIF1A3yQeDSQwtU2p5uOXl+yALvP/Lyuelas6kaRN5
+ yoCuC+7vL2pWjelU7GAp1IxjX/y16OBAMUO+9ZpwipAbtZxZj1nGWALfyUpBJ+0Aly4/
+ ZuCmYBPPm/nm2k+ki3HfCG/4LBNC96DXEgaZhNEtxnebxEa8lxUHVxPrSPHtSOVw5EW1
+ tC34M9Um85KkNueX1XjI9QQE3dn+Cj3noBmlKqXiVLQrE21LHmMy1IWiWae9nwmNXoNx
+ aLrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1692887512; x=1693492312;
+ d=1e100.net; s=20221208; t=1692887434; x=1693492234;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ke3CIbiZzrEAJhnXzs0Tt9eyJ5dSeZXPJ36uEraMzCU=;
- b=b6xa9lGmvXwYITnBj2W7k1H66eq+24CF1bnxINCEObBSOuCgryKimftjSEWUPl2MeE
- dVLi/EjLDA2CgoWIWJbzQA6/AHDIvsMG4gDVOM8czvG11BSyUVLu+bVuX4HYR5KkfV0X
- Ojqpa8iQiya/QBR9XRybmqtVC2cbB/1RhXFB19juzSMiYBbx6sZTsp4JcPuBXuA++JwL
- hDJiYUwPZThG00Dn72xRFuqwDRqF2ebeKqg0TTcAlVuVZYjTvKqAVMGF56BkqCyY02Sx
- sk6x0H7HNvtKxKN22bKZmza959NQgNuiaEwQwVqDaBG3Vp6H/joi66cx1Xk/U8jb/zu4
- 5/iA==
-X-Gm-Message-State: AOJu0YyTW+BOAG0pTDdOyEpFtNQRqdnOlX1jkXDRpy5yYuYBruDNGXGT
- 8D1eU9Z3+J0IRbJzsAk7cNDdt8mBhksjjmL7IAw=
-X-Received: by 2002:a17:90b:3718:b0:26b:2576:1e48 with SMTP id
- mg24-20020a17090b371800b0026b25761e48mr12289878pjb.34.1692887511777; 
- Thu, 24 Aug 2023 07:31:51 -0700 (PDT)
+ bh=qP3Pkjbm6eW/U4aYn+Kgix5mmDk+c87xv3QAatzmioE=;
+ b=BwnSxWU5PrpJaOf63RRUBiWwl9lmD5VAkGWOEFu6ZACVd25xzRjv3B3hHVZvWAaXTj
+ srUMONz6bYwnSMSpjjcr5LdZ0RpOJAU0Lhl74+fsYbzRaOyfhTB+FmiPjLT3Wg6unFjL
+ RcP3dYVIwnNPbkQWPU5Q/D4vqB9qQ4XyFIr6WMdHA2TfFy83kwmIFtNY/doGt8qcxd/v
+ H6QLlu7BGjD581sHsvWCUNh0VenRsZ9lu4JKZB3DGYgsJ7ZXy0ZxS1iXChG06+cWOK3s
+ RAjn90pt6HA2OkA1+4xnzZZelVyXL0/pf9aZAXevdu4eQ7JiAnTBYRuVj8QC3SmVvQzE
+ /+yg==
+X-Gm-Message-State: AOJu0YyznMIdeTQ1oufZmwdx51E92tRwX3Jlc6P9K9FPRrb+Ei5pb1bk
+ Sw/uxBbC/aN1XOXr3JTImZ/jkUkTsYmiOZZ+oOw=
+X-Received: by 2002:a17:90b:23c7:b0:26b:17ef:7365 with SMTP id
+ md7-20020a17090b23c700b0026b17ef7365mr10929749pjb.48.1692887434318; 
+ Thu, 24 Aug 2023 07:30:34 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.191.205])
  by smtp.gmail.com with ESMTPSA id
- n6-20020a17090a2bc600b00262fc3d911esm1666864pje.28.2023.08.24.07.31.44
+ n6-20020a17090a2bc600b00262fc3d911esm1666864pje.28.2023.08.24.07.30.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Aug 2023 07:31:50 -0700 (PDT)
+ Thu, 24 Aug 2023 07:30:24 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
@@ -107,17 +107,17 @@ Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
  Andrew Jones <ajones@ventanamicro.com>,
  Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>,
  Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH v2 11/12] hw/riscv/virt-acpi-build.c: Add IO controllers and
- devices
-Date: Thu, 24 Aug 2023 19:59:41 +0530
-Message-Id: <20230824142942.3983650-12-sunilvl@ventanamicro.com>
+Subject: [PATCH v2 03/12] hw/riscv: virt: Make few IMSIC macros and functions
+ public
+Date: Thu, 24 Aug 2023 19:59:33 +0530
+Message-Id: <20230824142942.3983650-4-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230824142942.3983650-1-sunilvl@ventanamicro.com>
 References: <20230824142942.3983650-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x102a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pj1-x1031.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,150 +139,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 20boojT71Qpf
+X-TUID: w/yKTPe/xWSZ
 
-Add basic IO controllers and devices like PCI, VirtIO and UART in the ACPI
-namespace.
+Some macros and static function related to IMSIC are defined in virt.c.
+They are required in virt-acpi-build.c. So, make them public.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
 Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- hw/riscv/Kconfig           |  1 +
- hw/riscv/virt-acpi-build.c | 76 ++++++++++++++++++++++++++++++++++++--
- 2 files changed, 73 insertions(+), 4 deletions(-)
+ hw/riscv/virt.c         | 25 +------------------------
+ include/hw/riscv/virt.h | 25 +++++++++++++++++++++++++
+ 2 files changed, 26 insertions(+), 24 deletions(-)
 
-diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
-index b6a5eb4452..a50717be87 100644
---- a/hw/riscv/Kconfig
-+++ b/hw/riscv/Kconfig
-@@ -45,6 +45,7 @@ config RISCV_VIRT
-     select FW_CFG_DMA
-     select PLATFORM_BUS
-     select ACPI
-+    select ACPI_PCI
- 
- config SHAKTI_C
-     bool
-diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index 40bd43efd0..bd0f9f3d87 100644
---- a/hw/riscv/virt-acpi-build.c
-+++ b/hw/riscv/virt-acpi-build.c
-@@ -27,15 +27,18 @@
- #include "hw/acpi/acpi-defs.h"
- #include "hw/acpi/acpi.h"
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 388e52a294..7b65a847e2 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -38,7 +38,6 @@
+ #include "kvm_riscv.h"
+ #include "hw/intc/riscv_aclint.h"
+ #include "hw/intc/riscv_aplic.h"
+-#include "hw/intc/riscv_imsic.h"
+ #include "hw/intc/sifive_plic.h"
+ #include "hw/misc/sifive_test.h"
+ #include "hw/platform-bus.h"
+@@ -54,28 +53,6 @@
  #include "hw/acpi/aml-build.h"
-+#include "hw/acpi/pci.h"
- #include "hw/acpi/utils.h"
-+#include "hw/intc/riscv_aclint.h"
- #include "hw/nvram/fw_cfg_acpi.h"
-+#include "hw/pci-host/gpex.h"
-+#include "hw/riscv/virt.h"
-+#include "hw/riscv/numa.h"
-+#include "hw/virtio/virtio-acpi.h"
-+#include "migration/vmstate.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "sysemu/reset.h"
--#include "migration/vmstate.h"
--#include "hw/riscv/virt.h"
--#include "hw/riscv/numa.h"
--#include "hw/intc/riscv_aclint.h"
+ #include "qapi/qapi-visit-common.h"
  
- #define ACPI_BUILD_TABLE_SIZE             0x20000
- #define ACPI_BUILD_INTC_ID(socket, index) ((socket << 24) | (index))
-@@ -139,6 +142,39 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtState *s)
-     }
+-/*
+- * The virt machine physical address space used by some of the devices
+- * namely ACLINT, PLIC, APLIC, and IMSIC depend on number of Sockets,
+- * number of CPUs, and number of IMSIC guest files.
+- *
+- * Various limits defined by VIRT_SOCKETS_MAX_BITS, VIRT_CPUS_MAX_BITS,
+- * and VIRT_IRQCHIP_MAX_GUESTS_BITS are tuned for maximum utilization
+- * of virt machine physical address space.
+- */
+-
+-#define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT)
+-#if VIRT_IMSIC_GROUP_MAX_SIZE < \
+-    IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
+-#error "Can't accomodate single IMSIC group in address space"
+-#endif
+-
+-#define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
+-                                        VIRT_IMSIC_GROUP_MAX_SIZE)
+-#if 0x4000000 < VIRT_IMSIC_MAX_SIZE
+-#error "Can't accomodate all IMSIC groups in address space"
+-#endif
+-
+ /* KVM AIA only supports APLIC MSI. APLIC Wired is always emulated by QEMU. */
+ static bool virt_use_kvm_aia(RISCVVirtState *s)
+ {
+@@ -512,7 +489,7 @@ static void create_fdt_socket_plic(RISCVVirtState *s,
+     g_free(plic_cells);
  }
  
-+static void
-+acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
-+                    uint32_t uart_irq)
-+{
-+    Aml *dev = aml_device("COM0");
-+    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0501")));
-+    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-+
-+    Aml *crs = aml_resource_template();
-+    aml_append(crs, aml_memory32_fixed(uart_memmap->base,
-+                                         uart_memmap->size, AML_READ_WRITE));
-+    aml_append(crs,
-+                aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-+                               AML_EXCLUSIVE, &uart_irq, 1));
-+    aml_append(dev, aml_name_decl("_CRS", crs));
-+
-+    Aml *pkg = aml_package(2);
-+    aml_append(pkg, aml_string("clock-frequency"));
-+    aml_append(pkg, aml_int(3686400));
-+
-+    Aml *UUID = aml_touuid("DAFFD814-6EBA-4D8C-8A91-BC9BBF4AA301");
-+
-+    Aml *pkg1 = aml_package(1);
-+    aml_append(pkg1, pkg);
-+
-+    Aml *package = aml_package(2);
-+    aml_append(package, UUID);
-+    aml_append(package, pkg1);
-+
-+    aml_append(dev, aml_name_decl("_DSD", package));
-+    aml_append(scope, dev);
-+}
-+
- /* RHCT Node[N] starts at offset 56 */
- #define RHCT_NODE_ARRAY_OFFSET 56
- 
-@@ -319,6 +355,8 @@ static void build_dsdt(GArray *table_data,
-                        RISCVVirtState *s)
+-static uint32_t imsic_num_bits(uint32_t count)
++uint32_t imsic_num_bits(uint32_t count)
  {
-     Aml *scope, *dsdt;
-+    MachineState *ms = MACHINE(s);
-+    uint8_t socket_count;
-     const MemMapEntry *memmap = s->memmap;
-     AcpiTable table = { .sig = "DSDT", .rev = 2, .oem_id = s->oem_id,
-                         .oem_table_id = s->oem_table_id };
-@@ -338,6 +376,26 @@ static void build_dsdt(GArray *table_data,
+     uint32_t ret = 0;
  
-     fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
+index e5c474b26e..5b03575ed3 100644
+--- a/include/hw/riscv/virt.h
++++ b/include/hw/riscv/virt.h
+@@ -23,6 +23,7 @@
+ #include "hw/riscv/riscv_hart.h"
+ #include "hw/sysbus.h"
+ #include "hw/block/flash.h"
++#include "hw/intc/riscv_imsic.h"
  
-+    socket_count = riscv_socket_count(ms);
-+
-+    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0], UART0_IRQ);
-+
-+    if (socket_count == 1) {
-+        virtio_acpi_dsdt_add(scope, &memmap[VIRT_VIRTIO],
-+                             VIRTIO_IRQ, VIRTIO_COUNT);
-+        acpi_dsdt_add_gpex_host(scope, PCIE_IRQ);
-+    } else if (socket_count == 2) {
-+        virtio_acpi_dsdt_add(scope, &memmap[VIRT_VIRTIO],
-+                             VIRTIO_IRQ + VIRT_IRQCHIP_NUM_SOURCES,
-+                             VIRTIO_COUNT);
-+        acpi_dsdt_add_gpex_host(scope, PCIE_IRQ + VIRT_IRQCHIP_NUM_SOURCES);
-+    } else {
-+        virtio_acpi_dsdt_add(scope, &memmap[VIRT_VIRTIO],
-+                             VIRTIO_IRQ + VIRT_IRQCHIP_NUM_SOURCES,
-+                             VIRTIO_COUNT);
-+        acpi_dsdt_add_gpex_host(scope, PCIE_IRQ + VIRT_IRQCHIP_NUM_SOURCES * 2);
-+    }
-+
-     aml_append(dsdt, scope);
+ #define VIRT_CPUS_MAX_BITS             9
+ #define VIRT_CPUS_MAX                  (1 << VIRT_CPUS_MAX_BITS)
+@@ -127,4 +128,28 @@ enum {
  
-     /* copy AML table into ACPI tables blob and patch header there */
-@@ -487,6 +545,16 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
-     acpi_add_table(table_offsets, tables_blob);
-     build_rhct(tables_blob, tables->linker, s);
- 
-+    acpi_add_table(table_offsets, tables_blob);
-+    {
-+        AcpiMcfgInfo mcfg = {
-+           .base = s->memmap[VIRT_PCIE_MMIO].base,
-+           .size = s->memmap[VIRT_PCIE_MMIO].size,
-+        };
-+        build_mcfg(tables_blob, tables->linker, &mcfg, s->oem_id,
-+                   s->oem_table_id);
-+    }
+ bool virt_is_acpi_enabled(RISCVVirtState *s);
+ void virt_acpi_setup(RISCVVirtState *vms);
++uint32_t imsic_num_bits(uint32_t count);
 +
-     /* XSDT is pointed to by RSDP */
-     xsdt = tables_blob->len;
-     build_xsdt(tables_blob, tables->linker, table_offsets, s->oem_id,
++/*
++ * The virt machine physical address space used by some of the devices
++ * namely ACLINT, PLIC, APLIC, and IMSIC depend on number of Sockets,
++ * number of CPUs, and number of IMSIC guest files.
++ *
++ * Various limits defined by VIRT_SOCKETS_MAX_BITS, VIRT_CPUS_MAX_BITS,
++ * and VIRT_IRQCHIP_MAX_GUESTS_BITS are tuned for maximum utilization
++ * of virt machine physical address space.
++ */
++
++#define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT)
++#if VIRT_IMSIC_GROUP_MAX_SIZE < \
++    IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
++#error "Can't accomodate single IMSIC group in address space"
++#endif
++
++#define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
++                                        VIRT_IMSIC_GROUP_MAX_SIZE)
++#if 0x4000000 < VIRT_IMSIC_MAX_SIZE
++#error "Can't accomodate all IMSIC groups in address space"
++#endif
++
+ #endif
 -- 
 2.39.2
 

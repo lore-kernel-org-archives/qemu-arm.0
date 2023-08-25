@@ -1,195 +1,262 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp1226845ejc;
-        Fri, 25 Aug 2023 00:58:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHsqTbFHZhmzWwXKnog707a+VotRDvF0KuuVPu0U3w2Sblf82OirI7VzHRFNJS1mG3vzAmJ
-X-Received: by 2002:a0c:dd93:0:b0:64f:802b:7e05 with SMTP id v19-20020a0cdd93000000b0064f802b7e05mr304666qvk.34.1692950330753;
-        Fri, 25 Aug 2023 00:58:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692950330; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp1304622ejc;
+        Fri, 25 Aug 2023 03:47:47 -0700 (PDT)
+X-Received: by 2002:a17:902:ed0b:b0:1bf:78d:5cd9 with SMTP id b11-20020a170902ed0b00b001bf078d5cd9mr13875712pld.67.1692960467582;
+        Fri, 25 Aug 2023 03:47:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692960467; cv=none;
         d=google.com; s=arc-20160816;
-        b=yjJJbQ/MhcfDlF6lVTS9++62A+tleCSWRbP35QTnXH2g2qOLElzkCEbZSzS448ar+m
-         yvcP+smY0JUyKBNBlj7ktKha88wvjxbCPtVN+cW5GuLix0xega2shSV5MJZwku2esGNO
-         xNDQtXm0WSYXlmMHtaSX9bYXp5HE65ytypROCQLyXWUnL9P+29XxMIDoe1vvAWAhXNXr
-         m5w+H5Nk75jD4I0wlwH7uC9jxnP8sngiFT1PJfIYBXOL4Tf5TsTerTEA0HFLxFwccL1i
-         KUUufLYTbQNGl4Ld46m47y60+DUofuD/5dc8hnhkG5fgLoum4cXYf5vjkbPEm5gmThkP
-         adAw==
+        b=ccC0yqSP5tA4blv2SxPnCxKsCr2fbMZ3sKV9ADJ7pEK4Op7ahNCtgZM27bCoBE+6W4
+         aQuLMdHudKQgqQDNL3cQz4XNH8YcJt2osSJMmIUo5uAt581XbeZRLGNG2kbVH2MrmFPm
+         aTdL3VRG37c9QLyvf/THb5+rAiEuMNVfgoebBqc4tLL9/+wN2ZRfyyqL8GRx3TDslF4g
+         jSFz0rSf3ibIHB8oTb/vJkEugy79LOTxbsW6AZdlKbt5NxeLU1FctgRq/u+RjS8WmxLp
+         p1c5cCpwY9wfs7C1Io63QdRhSa2B+WiSKwtk7DQrvJ8FYvr/UrEFlC7R/39IROfzEf9S
+         m/iA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:references:subject
-         :cc:to:from:message-id:date:content-transfer-encoding:mime-version
-         :dkim-signature;
-        bh=2Ex5eUDLlGoTe6YDjrCyOFPB52kSWDwBSB4UinefOKU=;
-        fh=VYcavEyLebx7Hxd39NcSqrOJoQqy/vf2EGW9Yi/BGUE=;
-        b=HgBP3qSVGZIqaQ9bCLaM/0hJovcohMCYyB1dM1K5ZuLAzB8YapFcEv0/+GmfYKQh/S
-         NU+zmz2jo5RjlN/i1zdmQArZM+rAm5WC8IuulVlHG9TYt7Lqh3qq9EktM37f9p2bwPBK
-         Cy/AygcPwvqE3xPVjKAXu8evyRQflhXRgSa7Lxa5MIu7hopGJ10dmMuh05B02DVx618n
-         c+pCVFTarSyKKVYMsqNf/Ur0KVHl5W+ufZK6IdYE8wSUpYX4H8X4nt7WIjdr0gbvAzj3
-         jirzHNWZcma+K9UGLYQiyNt4NGh6LaIhoezxxgEAuemIKhTAB9ptWNxnvcRQLpo6LvJk
-         U0pA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9TxVNCt55j2RDXKCtEFmWtR8i3BWYROEgmzJcjpsl2I=;
+        fh=8ofdNWWEjf4kZAJKfS4vu1J+LvZ/Z/0IiNtZxBjYGBc=;
+        b=JqLFl6cGR8QgY9JO7+bfMaO15qxcqkU0rJ3vN2czRmqVmUsg3mLXl8Lk9bYYeXvF9C
+         sFCgub3DahzwK5Xp9nyMgfY5MKpLfLp6yJ7Z2MmvP8iX51QJgLShkKF1RJ78ZPi2WOhf
+         YbsXuxFfeB0/b4ZyLua6VXl7vTyq8YefxEdE651+hQcng8kVaUoANu01JOcRBUDLNxu0
+         nNa5hrxokP2oQ2TAAwv/UTOLz2NMwUmwJsQJ1dmJ8KqLcfSRj+9DnBob81c0tbYDoKlp
+         jydnRRtqigGuw/cC7X/Ns/PUWc8wzfR+eGJ0fowSdeKvmT8iqQgyPsqsTx45oM5+shDB
+         Ir9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Ufpuyw5o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=f7J+4JAJ;
+       spf=pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=fufuyqqqqqq@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m9-20020a0cf189000000b0064e94f7a593si649446qvl.141.2023.08.25.00.58.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Aug 2023 00:58:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <fufuyqqqqqq@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p6-20020a170902780600b001bde639b393sor614728pll.18.2023.08.25.03.47.47
+        (Google Transport Security);
+        Fri, 25 Aug 2023 03:47:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Ufpuyw5o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=f7J+4JAJ;
+       spf=pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=fufuyqqqqqq@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qZRiR-0003gx-9b; Fri, 25 Aug 2023 03:58:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <npiggin@gmail.com>)
- id 1qZRiP-0003gN-Tw; Fri, 25 Aug 2023 03:58:45 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <npiggin@gmail.com>)
- id 1qZRiN-0002Dd-OD; Fri, 25 Aug 2023 03:58:45 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-1bf48546ccfso5056505ad.2; 
- Fri, 25 Aug 2023 00:58:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1692950321; x=1693555121;
- h=in-reply-to:references:subject:cc:to:from:message-id:date
- :content-transfer-encoding:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=2Ex5eUDLlGoTe6YDjrCyOFPB52kSWDwBSB4UinefOKU=;
- b=Ufpuyw5ob/Y8nuem1RqwxRWo5ufA41YQP7nEt4CGxu/V5lbZoYym+nJfAgaGUBkRAt
- nMQpBtQaPPakPafUACbEPWCyg4/TXrWD5TyZU7Mz9MBP7ntPULjsWxRBVkio1ZddzYue
- OA/q9/JsS0diFvduNo4WDI6VdTl+v9LLEGH1JGTYoq8EhHR4/W74XPbqiN7TotdQEIO6
- 0zd5SPaJHbZAPxuGTHK71EszVk3T2mqLFFkV9vyVbkojL2RzdRwLFyDHyFpPU9vPwS7S
- tyelhXMn9Pzkipz0GZNNPFRXCLpyYBgOD8zZSPwhQ1i9u8P3IlNGClSy6R/BQ+Hp2Bzy
- Nqpw==
+        d=gmail.com; s=20221208; t=1692960466; x=1693565266;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=9TxVNCt55j2RDXKCtEFmWtR8i3BWYROEgmzJcjpsl2I=;
+        b=f7J+4JAJzRwpnwsC71h3WVUJcMgRHtfGIcNmehYWs0HtDRYiHnmLlnUoUkuDQELYPm
+         YqZAlR+gw38tzM0uYxzX8JyXGMRNGNPrH2WK8irVRFfySoBjeBQ+Nd/4lDJ5HqP0aAf/
+         DNTL5d/2OcPpVho0byQ+ZLpShFnY8sA7ZiOEoburpgCFWjiWotA84T5bGZDIhUUy80BA
+         ZZUIfW3bJ35yhr5fGLXh287bDxmt+jRANiubmrVEJC48yf+8plAM6/HDo0RIU14fv7Ld
+         tVyxg6uADyK4zZv5MK9aAzagY04AFFByaWDPP9Qiin+EViGQf3PORdUgZ4gi06KiCTJN
+         8SuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1692950321; x=1693555121;
- h=in-reply-to:references:subject:cc:to:from:message-id:date
- :content-transfer-encoding:mime-version:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=2Ex5eUDLlGoTe6YDjrCyOFPB52kSWDwBSB4UinefOKU=;
- b=UxNl4jydyrAYU8Acu+P5cnxa/dP79Z3XlgCmcR4GjyVirAVaYkQa8IptHwhFLn6+aC
- HeDgw07NQPIX3cuDvqKYLZiDQz7f755jMXASRmUngBRO0MKN6ONG36S6jFpL1vD50jyK
- Ih0DpJAik41s/CALgGGXs7H+vRI83mVILMZtTXNoSOxdLQnsqxKedEhh69DlWydOI0Q+
- l0Q9nLZ5D9XIacxG0DmAFj0k1DL/+42xZBh6Z0On1zGUxuIckEbbTu8Dp6NHAWiEqB6c
- +JGT+mH5PiS9Xd3pE+ERQm2dn2excI5qE2+fEC8fx2iJyFJHiG3n6haPdYlyctLkZtLb
- ez6Q==
-X-Gm-Message-State: AOJu0Yx76b/X5YjK58fcAa4BXcx0bOPXqffEnOHo4V0LrzrujQ28uqp5
- 2PQv266mb1IrWEL8PswPQMc=
-X-Received: by 2002:a17:902:c155:b0:1bb:d280:5e0b with SMTP id
- 21-20020a170902c15500b001bbd2805e0bmr14988495plj.18.1692950321047; 
- Fri, 25 Aug 2023 00:58:41 -0700 (PDT)
-Received: from localhost ([1.146.69.243]) by smtp.gmail.com with ESMTPSA id
- jj14-20020a170903048e00b001bbaf09ce15sm997183plb.152.2023.08.25.00.58.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Aug 2023 00:58:40 -0700 (PDT)
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Fri, 25 Aug 2023 17:58:32 +1000
-Message-Id: <CV1GSSQY2ZP3.35GU250DO5E39@wheely>
-From: "Nicholas Piggin" <npiggin@gmail.com>
-To: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- <qemu-devel@nongnu.org>
-Cc: "Song Gao" <gaosong@loongson.cn>, "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>, "Richard Henderson"
- <richard.henderson@linaro.org>, "Greg Kurz" <groug@kaod.org>, "Aurelien
- Jarno" <aurelien@aurel32.net>, "Peter Maydell" <peter.maydell@linaro.org>,
- <qemu-ppc@nongnu.org>, "Daniel Henrique Barboza" <danielhb413@gmail.com>,
- "Aleksandar Rikalo" <aleksandar.rikalo@syrmia.com>, "Paolo Bonzini"
- <pbonzini@redhat.com>, "David Gibson" <david@gibson.dropbear.id.au>,
- "Jiaxun Yang" <jiaxun.yang@flygoat.com>, =?utf-8?q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, "Yoshinori Sato" <ysato@users.sourceforge.jp>, "Xiaojuan
- Yang" <yangxiaojuan@loongson.cn>, <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 00/12] tcg: Factor hrev{32,64}_{i32,i64,tl} out
-X-Mailer: aerc 0.15.2
-References: <20230822124042.54739-1-philmd@linaro.org>
-In-Reply-To: <20230822124042.54739-1-philmd@linaro.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=npiggin@gmail.com; helo=mail-pl1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZK9ap2nKInbB
+        d=1e100.net; s=20221208; t=1692960466; x=1693565266;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=9TxVNCt55j2RDXKCtEFmWtR8i3BWYROEgmzJcjpsl2I=;
+        b=eK8Z+w+KkHER/cyBZTT3pUfncmQPLqXoUAcC8UmyyK0++rqTN99l0afnSyLKCvInTq
+         GZi7zBWaMVot/1xdz9i0iWAEWlJjQyw/+zaTEUuCYO3FNqf4C8ttMwUzElNp8OUvSAi+
+         u1mEJTpEgRkM84w5H3dKUZ+1ynWM4NecaFWdpFwD4pduCsv+FJL32dTm855vLWKnrNgW
+         v+Qy+onguE7loMKayRP6AGoVuGhkxIntc7S8EDKZyk9031YusXe/4zbTSH78MuIWjjF5
+         FVkPOM67MSxM0/N2Byt14XuwQo9k6Aj6lT9kGhcsXGA0O9b3dnCVVDUYmW3LfeTUVEOC
+         AyAg==
+X-Gm-Message-State: AOJu0YyfA1FKwW1i2xncBj6FQ/FY3FUXzxlzZvt+1DV+4asAqQgdI550
+	yueRZFN5WhDlarZ/5tLHTOihnvTxuCdRbQ==
+X-Google-Smtp-Source: AGHT+IGwNQXBLkt/tZUfLHQDHKGVorrQMZwJmOPJDoJizzGzA2lRKzWccVtkUx9jmBzjATNGcohu4g==
+X-Received: by 2002:a17:902:c18b:b0:1be:f2a1:22d8 with SMTP id d11-20020a170902c18b00b001bef2a122d8mr15134951pld.14.1692960466320;
+        Fri, 25 Aug 2023 03:47:46 -0700 (PDT)
+Return-Path: <fufuyqqqqqq@gmail.com>
+Received: from localhost.localdomain ([223.104.40.15])
+        by smtp.gmail.com with ESMTPSA id f5-20020a170902ce8500b001b89891bfc4sm1346985plg.199.2023.08.25.03.47.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Aug 2023 03:47:45 -0700 (PDT)
+From: Yeqi Fu <fufuyqqqqqq@gmail.com>
+To: alex.bennee@linaro.org
+Cc: richard.henderson@linaro.org,
+	qemu-devel@nongnu.org,
+	Yeqi Fu <fufuyqqqqqq@gmail.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC v5 08/10] target/arm: Add support for native library calls
+Date: Fri, 25 Aug 2023 18:45:24 +0800
+Message-Id: <20230825104526.1754950-9-fufuyqqqqqq@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230825104526.1754950-6-fufuyqqqqqq@gmail.com>
+References: <20230825104526.1754950-6-fufuyqqqqqq@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TUID: 390275RgFH7l
 
-On Tue Aug 22, 2023 at 10:40 PM AEST, Philippe Mathieu-Daud=C3=A9 wrote:
-> This series factor the "byteswap each halfword within a
-> 32/64-bit value" code duplication as generic helpers.
->
-> Modulo the documentation added, there is a good negative
-> diff-stat, so I believe this is a win from a maintainance
-> point of view.
->
-> I used "hrev" to follow the other bswap/hswap/rev helpers
-> but it isn't very descriptive, so any better name suggestion
-> is welcomed.
-> (In particular because there are other patterns I'd like to
-> factor out and then naming is getting worse, such 'wrev').
+This commit introduces support for native library calls on the
+arm target. When encountering special instructions reserved
+for native calls, this commit extracts the function name and
+generates the corresponding native call.
 
-I know bswap has alrady precedent, but you could drop the bit
-size when it matches the operand size, hrev_i64.
+Signed-off-by: Yeqi Fu <fufuyqqqqqq@gmail.com>
+---
+ configs/targets/aarch64-linux-user.mak |  1 +
+ configs/targets/arm-linux-user.mak     |  1 +
+ target/arm/tcg/translate-a64.c         | 31 ++++++++++++++++++++++++++
+ target/arm/tcg/translate.c             | 28 +++++++++++++++++++++++
+ target/arm/tcg/translate.h             |  5 +++++
+ 5 files changed, 66 insertions(+)
 
-Could possibly also follow ppc and call it brevh, which tells
-you the units being swapped and the size they are swapped in.
-Then you could add brevw or hrevw etc. and it might be a bit
-less ambiguous.
-
-Looks like a nice cleanup though.
-
-Thanks,
-Nick
-
->
-> Philippe Mathieu-Daud=C3=A9 (12):
->   tcg/tcg-op: Factor tcg_gen_hrev32_i32() out
->   target/arm: Use generic hrev32_i32() in ARM REV16 and VREV16 opcodes
->   target/cris: Use generic hrev32_i32() in SWAPB opcode
->   target/rx: Use generic hrev32_i32() in REVW opcode
->   tcg/tcg-op: Factor tcg_gen_hrev64_i64() out
->   target/mips: Use generic hrev64_i64() in DSBH opcode
->   target/ppc: Use generic hrev64_i64() in BRH / BSWAP16x8 opcodes
->   target/loongarch: Use generic hrev64_i64() in REVB.4H opcode
->   tcg/tcg-op: Add tcg_gen_hrev32_i64() and tcg_gen_hrev_i64()
->   target/arm: Use generic hrev_i64() in Aarch64 REV16 opcode
->   target/loongarch: Use generic hrev64_i32() in REVB.2H opcode
->   target/mips: Use generic hrev32_tl() in WSBH opcode
->
->  docs/devel/tcg-ops.rst                      | 10 +++
->  include/tcg/tcg-op-common.h                 |  4 +
->  include/tcg/tcg-op.h                        |  2 +
->  target/arm/tcg/translate-a32.h              |  1 -
->  target/arm/tcg/translate-a64.c              | 11 +--
->  target/arm/tcg/translate-neon.c             |  2 +-
->  target/arm/tcg/translate.c                  | 14 +---
->  target/cris/translate.c                     | 20 +----
->  target/mips/tcg/translate.c                 | 24 +-----
->  target/ppc/translate.c                      | 10 +--
->  target/rx/translate.c                       |  8 +-
->  tcg/tcg-op.c                                | 81 ++++++++++++++++++---
->  target/cris/translate_v10.c.inc             |  2 +-
->  target/loongarch/insn_trans/trans_bit.c.inc | 30 +-------
->  target/ppc/translate/vsx-impl.c.inc         | 19 +----
->  15 files changed, 99 insertions(+), 139 deletions(-)
-
+diff --git a/configs/targets/aarch64-linux-user.mak b/configs/targets/aarch64-linux-user.mak
+index ba8bc5fe3f..5a8fd98cd9 100644
+--- a/configs/targets/aarch64-linux-user.mak
++++ b/configs/targets/aarch64-linux-user.mak
+@@ -4,3 +4,4 @@ TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch
+ TARGET_HAS_BFLT=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
++CONFIG_NATIVE_CALL=y
+diff --git a/configs/targets/arm-linux-user.mak b/configs/targets/arm-linux-user.mak
+index 7f5d65794c..f934fb82da 100644
+--- a/configs/targets/arm-linux-user.mak
++++ b/configs/targets/arm-linux-user.mak
+@@ -5,3 +5,4 @@ TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml
+ TARGET_HAS_BFLT=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
++CONFIG_NATIVE_CALL=y
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 3baab6aa60..0cb9228a35 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -25,6 +25,8 @@
+ #include "arm_ldst.h"
+ #include "semihosting/semihost.h"
+ #include "cpregs.h"
++#include "exec/cpu_ldst.h"
++#include "native/native.h"
+ 
+ static TCGv_i64 cpu_X[32];
+ static TCGv_i64 cpu_pc;
+@@ -2400,6 +2402,10 @@ static bool trans_HLT(DisasContext *s, arg_i *a)
+      * it is required for halting debug disabled: it will UNDEF.
+      * Secondly, "HLT 0xf000" is the A64 semihosting syscall instruction.
+      */
++    if (native_bypass_enabled() && (a->imm == 0xffff)) {
++        s->native_call_status = true;
++        return true;
++    }
+     if (semihosting_enabled(s->current_el == 0) && a->imm == 0xf000) {
+         gen_exception_internal_insn(s, EXCP_SEMIHOST);
+     } else {
+@@ -13392,6 +13398,24 @@ void gen_gvec_rax1(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+     tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, &op);
+ }
+ 
++static void gen_native_call(CPUState *cpu, DisasContext *s, CPUARMState *env)
++{
++#ifdef CONFIG_USER_ONLY
++    TCGv_i64 arg1 = tcg_temp_new_i64();
++    TCGv_i64 arg2 = tcg_temp_new_i64();
++    TCGv_i64 arg3 = tcg_temp_new_i64();
++    TCGv_i64 ret = tcg_temp_new_i64();
++    uint64_t func_tmp = translator_ldq_swap(env, &s->base, s->base.pc_next,
++                                            bswap_code(s->sctlr_b));
++    char *func_name = g2h(cpu, func_tmp);
++    tcg_gen_mov_i64(arg1, cpu_reg(s, 0));
++    tcg_gen_mov_i64(arg2, cpu_reg(s, 1));
++    tcg_gen_mov_i64(arg3, cpu_reg(s, 2));
++    gen_native_call_i64(func_name, ret, arg1, arg2, arg3);
++    tcg_gen_mov_i64(cpu_reg(s, 0), ret);
++#endif
++}
++
+ /* Crypto three-reg SHA512
+  *  31                   21 20  16 15  14  13 12  11  10  9    5 4    0
+  * +-----------------------+------+---+---+-----+--------+------+------+
+@@ -13950,6 +13974,13 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     uint64_t pc = s->base.pc_next;
+     uint32_t insn;
+ 
++    if (native_bypass_enabled() && s->native_call_status) {
++        gen_native_call(cpu, s, env);
++        s->base.pc_next = pc + 8;
++        s->native_call_status = false;
++        return;
++    }
++
+     /* Singlestep exceptions have the highest priority. */
+     if (s->ss_active && !s->pstate_ss) {
+         /* Singlestep state is Active-pending.
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 13c88ba1b9..d5eaed65f5 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -28,6 +28,8 @@
+ #include "semihosting/semihost.h"
+ #include "cpregs.h"
+ #include "exec/helper-proto.h"
++#include "exec/cpu_ldst.h"
++#include "native/native.h"
+ 
+ #define HELPER_H "helper.h"
+ #include "exec/helper-info.c.inc"
+@@ -1125,6 +1127,21 @@ void gen_lookup_tb(DisasContext *s)
+     s->base.is_jmp = DISAS_EXIT;
+ }
+ 
++static void gen_native_call(CPUState *cpu, DisasContext *dc, CPUARMState *env)
++{
++#ifdef CONFIG_USER_ONLY
++    TCGv_i32 arg1 = load_reg(dc, 0);
++    TCGv_i32 arg2 = load_reg(dc, 1);
++    TCGv_i32 arg3 = load_reg(dc, 2);
++    TCGv_i32 ret = tcg_temp_new_i32();
++    uint32_t func_tmp =
++        arm_ldl_code(env, &dc->base, dc->base.pc_next, dc->sctlr_b);
++    char *func_name = g2h(cpu, func_tmp);
++    gen_native_call_i32(func_name, ret, arg1, arg2, arg3);
++    store_reg(dc, 0, ret);
++#endif
++}
++
+ static inline void gen_hlt(DisasContext *s, int imm)
+ {
+     /* HLT. This has two purposes.
+@@ -1139,6 +1156,10 @@ static inline void gen_hlt(DisasContext *s, int imm)
+      * semihosting, to provide some semblance of security
+      * (and for consistency with our 32-bit semihosting).
+      */
++    if (native_bypass_enabled() && (imm == 0xffff)) {
++        s->native_call_status = true;
++        return;
++    }
+     if (semihosting_enabled(s->current_el == 0) &&
+         (imm == (s->thumb ? 0x3c : 0xf000))) {
+         gen_exception_internal_insn(s, EXCP_SEMIHOST);
+@@ -9329,6 +9350,13 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     uint32_t pc = dc->base.pc_next;
+     unsigned int insn;
+ 
++    if (native_bypass_enabled() && dc->native_call_status) {
++        gen_native_call(cpu, dc, env);
++        dc->base.pc_next = pc + 4;
++        dc->native_call_status = false;
++        return;
++    }
++
+     /* Singlestep exceptions have the highest priority. */
+     if (arm_check_ss_active(dc)) {
+         dc->base.pc_next = pc + 4;
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index d1cacff0b2..3854a801e6 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -157,6 +157,11 @@ typedef struct DisasContext {
+     int c15_cpar;
+     /* TCG op of the current insn_start.  */
+     TCGOp *insn_start;
++    /*
++     * Indicate whether the next instruction is a native function call (true)
++     * or not (false).
++     */
++    bool native_call_status;
+ } DisasContext;
+ 
+ typedef struct DisasCompare {
+-- 
+2.34.1

@@ -1,82 +1,83 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp1215175ejc;
-        Fri, 25 Aug 2023 00:31:29 -0700 (PDT)
-X-Received: by 2002:a05:6512:2813:b0:4fb:896d:bd70 with SMTP id cf19-20020a056512281300b004fb896dbd70mr14835760lfb.46.1692948688906;
-        Fri, 25 Aug 2023 00:31:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692948688; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp1216184ejc;
+        Fri, 25 Aug 2023 00:33:25 -0700 (PDT)
+X-Received: by 2002:a5d:54cd:0:b0:314:4237:8832 with SMTP id x13-20020a5d54cd000000b0031442378832mr12270597wrv.48.1692948805264;
+        Fri, 25 Aug 2023 00:33:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692948805; cv=none;
         d=google.com; s=arc-20160816;
-        b=maqrzQsN5jjKfSQlACt0umKBZ0Hig8j/rQ1RTe9spphOkdoFKEkVesExcsKqpLrvhe
-         KanpgYth+xfYPJrpa/Neurg1zuZzVKUaLpBtyZZLCmG3ivhEJikxzRctrx7QHSQbGcuJ
-         Rd6n/z7sbDrjdAFen/sDSJi9QqRIssgTcepMmt5DqBre/vccDUygR2xGJWUvyLGzkTYR
-         NJdYfLnvK3FLW0i5YTv544r/0d8NnprmAehgzDmaoznOIyMeoHU2c6LBEj01lidqu0JF
-         EcMRXa9o3s91JxskI1l5T6+WzJPsdFVs5B9k1UD9W1142ktfHMLQboiOJWL1UWnnyzeH
-         6D5g==
+        b=v8BlaLQGbsNoSbH61I18kMT5Oz793hszgPM2r6v7/JFBRowFQsDdEQrMItRtzyTRty
+         HR968vsW+kWTc6bWRJXq+RCiFKDWCbS8iNTVO2IGt/tREsbNwLcb9g3RWAD8vPYUJknz
+         MyITb1vIX1CUtFUn5I6ctjPLJ4omhXB6BHfeNauADyQ33+FCdF8eSKIwGQGolnT4vYy4
+         pJT8Hfxml/pM3sC8soOngIGO3mY2MpOb1zhiOITWyNAQo65eWEYCC+jVEHY6JJlvkRfk
+         15M8tCrivasNK3BAfxkSGnNHtThyYOlQR/ZPC2FCiBwy0kG3AC2TG/JHod5w9yk/jhFf
+         0dUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=QtUKgvKARl40I7Fd/UN9egDPP0h5VEUmBVJ6Nb1u2fU=;
+        bh=W5DcnYU6BQqu8Jy69UM40Ie+RxQfeMOCtE/JzbvU2jk=;
         fh=qmZ05mhLeMuz4yNBZ/q0UYaw6VXqQk8kLliJ08JnGGo=;
-        b=T6k5BgfMRYsyhDkyLViG0W7Mk10cHXtxlhk1p23GT8GY6GvBh0ETsHOrswqOofRQv+
-         UocJWGPyNioR+eobVR46H+KhvU2Wbb+2rwwqDD0UqOI7nFrhx9FKvAStMdSBMeSBk3dY
-         YLYgzUi1+YXRhWzn4DxX7V7g5+4jifTBJnKc6KyPwFenPwWQskhi/a8DWvkFIJ938P8m
-         7M4o25rE4idyej8yMNtgV+Eqv7JZjDtTmbql4MuNsgW/YOt8eqNRS41quoopy/xDWUFw
-         /UHcpmwdL4MZ87MO5XxxsdBDy/r/wkSesqG/14cWnh/nLoG1nO3XXUKYOgKkDNpWf9tZ
-         Vllw==
+        b=wvRCiGYWkEyi/KYAlN7qoO2m0QS91UBg9AyQ5f+RY9cR++2T6EhvvT6qZTY5ztStXe
+         wnk1Xc8FnRBguasp5WBs7C7D+G4LP2qNPTYFYQSHG2opJDve2s7gxWVAus7oYGe8nvLq
+         9fx/k7wKdwkQQA3g+iGGLRMAnqw8+lDL9hGckqz/OCh14NpqHgqgPOUKNeo/1eTABca9
+         x5JbKJIOZDTNNR7lPCXbVzrh1RfXIni15D53J5xdiy241V36D1s+oDDk9ZbgNT3iDJRj
+         I1P4nKhfLwH0EGb8yy6c/N3NesmAqdnJ7nAJ9PdDLnO6kMS18ZZzsF3oCwu/+6dH5lFQ
+         7t1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fr26ym6A;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uMfCfw9E;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id j29-20020a056512029d00b004ffaf8fccfcsor399672lfp.5.2023.08.25.00.31.28
+        by mx.google.com with SMTPS id m19-20020adfa3d3000000b00317ddc9bb7bsor446894wrb.4.2023.08.25.00.33.25
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 25 Aug 2023 00:31:28 -0700 (PDT)
+        Fri, 25 Aug 2023 00:33:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fr26ym6A;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uMfCfw9E;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692948688; x=1693553488;
+        d=linaro.org; s=google; t=1692948804; x=1693553604;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=QtUKgvKARl40I7Fd/UN9egDPP0h5VEUmBVJ6Nb1u2fU=;
-        b=fr26ym6AHvoshWMNWRYTe3qFCxj2ShXDBqErVsibOh11pvnNINHtLgKpP+80Jbyv/t
-         lR9mg1pc467H/WgiaPZ9RmjWac8V6Kr6Sg8NAZaLylQtUcRNSBDsBmZ5v4l8JUm/ODOx
-         UMqQ3ISWGbVrOmzhPaAz7yFyHNJrbySL8r7ESwm0W7rR00ZrdCYhXSRzAhyB/1n5PxIV
-         UQHWvVuC6Twd1VhgyBmCyPMwJOp3MQrq6aytbNLCAYkk1dBBS4wyrzPaauCGdYbJjN8L
-         cNXEk19BrUUJ1AJL09uZXcax4sLFjE0rWyvpiDbVtmKI5p1coWIZQBAR/LB61fapSWaR
-         z5SA==
+        bh=W5DcnYU6BQqu8Jy69UM40Ie+RxQfeMOCtE/JzbvU2jk=;
+        b=uMfCfw9E1+TdO05zcipSLViFi8+FHH3uroLRUYLqoPonpC9cs2wLnaY0dyiH0ORVzE
+         h8rvkCQ+knWOXUXc2XMqm7tb2b5Wm2/H+GUM35J924ezel/tEAesP+qd1ogyF1yppHk8
+         ByuNsQS32H4KB5w3QBzinl4oD7s/PknNAekc1oMzzlKTxX7HMNSUSJdzxVN8w7bh6Bt5
+         hKwuCP/14gH7+Z+vxbc4VxlGFuWWa5bw3KoD006sU4F5RzcTT7usNPhOF1RU/UmYf6y7
+         8jM4WH1L7jUkZ33ivn5ydJ7FAJ7lVHeOLGWczvygsobLvScYC6WlZJtqbS3QhBsVPXH9
+         PHLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692948688; x=1693553488;
+        d=1e100.net; s=20221208; t=1692948804; x=1693553604;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QtUKgvKARl40I7Fd/UN9egDPP0h5VEUmBVJ6Nb1u2fU=;
-        b=RE9Fwb7gL+mdv8hl2656H6VU/KkPeRelSi1NpjLYHLznW/zQzynjDZMpMTbjbxQbp0
-         egg305ag3nUGkHFTm/zXit8KJdDl/WBQtZB7LXE4a2BCJrRgwstL/EwxuU0Y8jPIIV3J
-         aVSh89nIK11Kbj1aIHVX2dX9f59wcECFcbdO3yBrrvQzqhe8/uDaRcxHvJCYaAIzqeSt
-         Tz3u+8+FSZx51XtubK7d5eB+8+4S/2gZdEMCg5lYmvIfu9+s49syhgoH50ijjpSwM6Yq
-         derqq/Id5WdWJL7Xdx9YOW3H09sVlTGfV2iDPrxjsg/aTctXS96BQkiSbXH40BuZVdL+
-         A8xw==
-X-Gm-Message-State: AOJu0YzpHq9hSu7c3E5gLbhMY9fPPa5UuPA2Sxi0etgwd5QXaQJZXr4h
-	63XETnECFnu+r4lWbNkb/HXc4/WZklKHbLEVqf4Uzg==
-X-Google-Smtp-Source: AGHT+IGQK+tbW+b/sW3c9kYHBzbF/JrctTB0fzkD9PAGgwdoWsomRzS+bT7A2KZIL/tzKbOs7gT7Aw==
-X-Received: by 2002:a05:6512:aca:b0:500:9f7b:e6a4 with SMTP id n10-20020a0565120aca00b005009f7be6a4mr3805893lfu.32.1692948688145;
-        Fri, 25 Aug 2023 00:31:28 -0700 (PDT)
+        bh=W5DcnYU6BQqu8Jy69UM40Ie+RxQfeMOCtE/JzbvU2jk=;
+        b=KrwL+UCYLlwi19eeO86XaQZ8LW+z5tdXRkgEgBzXVEUOKmZaqD3fVISbyk8BnqrNcc
+         zQpwC7FgAptNSoFs7ZoxGMIUkCsIDgUEU66CPdSC/oMtUIWA548geuLSrStDnMjjwoQ+
+         ojqm+SeuXiXB/gu8EfecMTF5VpKm/NvqRueB4NCa1X+EbQhnj8Qtm/W/Mov1Ag6iRr6i
+         j7bU9hOGV0fRaeWDklvrSKgpnPeZneboPsmY/Gp0CeilFIhf35khmXjVDkyZZpZOlnKT
+         Kup4BqjxtaxqKRON+5ae6e9IQfiZVzXz6eLSdJg1uDYc2dQnLRfw/W7Tindam5BAuAec
+         H3pQ==
+X-Gm-Message-State: AOJu0YxfvQc8RIKfApoWf0Vg53tGh5W7Puyz90vcyTeQToDCqrQ6j6d+
+	w05qsFUK5do9fxnrqXlVeiPu5K81IcIhxUMic44jVg==
+X-Google-Smtp-Source: AGHT+IHt/eLgsDdBEQAGJzsqccpclu+sDPMzQpFf5gp97c7NROk2904JVqQh4MO4v6bWK9/LmoTYhg==
+X-Received: by 2002:a5d:53cc:0:b0:319:8cc9:6d9b with SMTP id a12-20020a5d53cc000000b003198cc96d9bmr12284868wrw.8.1692948804624;
+        Fri, 25 Aug 2023 00:33:24 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.115] ([176.164.69.26])
-        by smtp.gmail.com with ESMTPSA id n23-20020a7bcbd7000000b003fef6881350sm1412685wmi.25.2023.08.25.00.31.25
+        by smtp.gmail.com with ESMTPSA id h8-20020a056000000800b0031759e6b43fsm1376439wrx.39.2023.08.25.00.33.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Aug 2023 00:31:27 -0700 (PDT)
-Message-ID: <e81f9d03-b52d-6ea5-4f4e-1bdc69a88d56@linaro.org>
-Date: Fri, 25 Aug 2023 09:31:24 +0200
+        Fri, 25 Aug 2023 00:33:24 -0700 (PDT)
+Message-ID: <3f278596-1091-a7d5-ad72-68a03a1b0d2f@linaro.org>
+Date: Fri, 25 Aug 2023 09:33:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.14.0
-Subject: Re: [PATCH v2 09/12] gdbstub: remove unused user_ctx field
+Subject: Re: [PATCH v2 11/12] gdbstub: replace global gdb_has_xml with a
+ function
 Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
@@ -94,20 +95,28 @@ Cc: Beraldo Leal <bleal@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
 References: <20230824163910.1737079-1-alex.bennee@linaro.org>
- <20230824163910.1737079-10-alex.bennee@linaro.org>
+ <20230824163910.1737079-12-alex.bennee@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230824163910.1737079-10-alex.bennee@linaro.org>
+In-Reply-To: <20230824163910.1737079-12-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 9nB2FGgpgtNF
+X-TUID: WGFiZhGXVbt8
 
 On 24/8/23 18:39, Alex Bennée wrote:
-> This was always NULL so drop it.
+> Try and make the self reported global hack a little less hackish by
+> providing a query function instead. As gdb_has_xml was always set if
+> we negotiated XML we can now use the presence of ->target_xml as the
+> test instead.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Acked-by: Ilya Leoshkevich <iii@linux.ibm.com>
 > ---
->   gdbstub/gdbstub.c | 16 ++++++++--------
->   1 file changed, 8 insertions(+), 8 deletions(-)
+>   gdbstub/internals.h    |  1 +
+>   include/exec/gdbstub.h | 10 +++++-----
+>   gdbstub/gdbstub.c      | 12 +++++++-----
+>   gdbstub/softmmu.c      |  1 -
+>   gdbstub/user.c         |  1 -
+>   target/arm/gdbstub.c   |  8 ++++----
+>   target/ppc/gdbstub.c   |  4 ++--
+>   7 files changed, 19 insertions(+), 18 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

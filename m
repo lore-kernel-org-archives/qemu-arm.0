@@ -1,119 +1,116 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp1218979ejc;
-        Fri, 25 Aug 2023 00:39:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGtPlmMvLtkj4BGQgEzuGdWjfIT95XQVhZNzApSmi4apLaQORwx4II31yguEZGtBomJwN3Y
-X-Received: by 2002:ac8:7d56:0:b0:403:fbb3:8907 with SMTP id h22-20020ac87d56000000b00403fbb38907mr20357200qtb.65.1692949170101;
-        Fri, 25 Aug 2023 00:39:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692949170; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp1226845ejc;
+        Fri, 25 Aug 2023 00:58:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHsqTbFHZhmzWwXKnog707a+VotRDvF0KuuVPu0U3w2Sblf82OirI7VzHRFNJS1mG3vzAmJ
+X-Received: by 2002:a0c:dd93:0:b0:64f:802b:7e05 with SMTP id v19-20020a0cdd93000000b0064f802b7e05mr304666qvk.34.1692950330753;
+        Fri, 25 Aug 2023 00:58:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1692950330; cv=none;
         d=google.com; s=arc-20160816;
-        b=VdJGFJii+dTzi1G0WLu8w8pTOHg7bkgZgGGK5dBg58gTP8NGENuiMqG1hwg1VZhQr7
-         Gh5+RnD7xoy1BCwmrzlYBNCW1TVveIZGPV/ZLVBLaB2K+2j/KyCmNY5lthcRIkKVadXZ
-         0d38zaYCPm1O2mbV74lER2MT/6mBRYiLiiM1kwKh6m4GzjOBW7aPYmfjzSRKsQg8fT69
-         RvD19hwhRJJf7P9jpOAbMmLvLasGYzRyrRMddnIl76F5gsP9ywcYOwLeyq/BtGq4/top
-         DNRx/gtGJ25NUe9llmjFNf+Wxhtkxi6KhrPWS6w8QWPuqhczS2+isRdJX7DnxRJU+nda
-         1+yg==
+        b=yjJJbQ/MhcfDlF6lVTS9++62A+tleCSWRbP35QTnXH2g2qOLElzkCEbZSzS448ar+m
+         yvcP+smY0JUyKBNBlj7ktKha88wvjxbCPtVN+cW5GuLix0xega2shSV5MJZwku2esGNO
+         xNDQtXm0WSYXlmMHtaSX9bYXp5HE65ytypROCQLyXWUnL9P+29XxMIDoe1vvAWAhXNXr
+         m5w+H5Nk75jD4I0wlwH7uC9jxnP8sngiFT1PJfIYBXOL4Tf5TsTerTEA0HFLxFwccL1i
+         KUUufLYTbQNGl4Ld46m47y60+DUofuD/5dc8hnhkG5fgLoum4cXYf5vjkbPEm5gmThkP
+         adAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:references:to:from
-         :subject:cc:message-id:date:content-transfer-encoding:mime-version
+         :list-unsubscribe:list-id:precedence:in-reply-to:references:subject
+         :cc:to:from:message-id:date:content-transfer-encoding:mime-version
          :dkim-signature;
-        bh=SlKNG7FuFzHEneUgzBD6cy+xvFnIDPBAozu/WWrCKG8=;
-        fh=ZfEWRfW+GvhjjPKqTb+9UWxXa0ABZMTMyglO5jvs5kg=;
-        b=erqPiIQAb2+NZi32Sy4EsfZYVBZLvSisf5w/ORoP+PWaTCbN8+nmIxU0mfx4rBagg7
-         U8WkrTQdwH1n4v8S8qjceGE8+sltv4YdpTS9n5nMnWSIYZVjGo8eo0De3s/MwMtnIXTm
-         huRKJwzyF40omMKHPG4jOMDS/vVc+e1v/vtQiL+2M+Dkwmt4waynwfL6QFCjVHHd/Tx+
-         +LHq2BNTA/D0Jwfc0k/luHRzJuvuhUaZGPIntMU1Jnr+EsZPwcqz33ovmSI8TE2NDoO8
-         REyoeGKwpnU0K2gTGVx8VwCZENQzFbZ0XNvm3S13tYjRqI/Iqj7UyLSE3bh7sgrSTbYY
-         IuOw==
+        bh=2Ex5eUDLlGoTe6YDjrCyOFPB52kSWDwBSB4UinefOKU=;
+        fh=VYcavEyLebx7Hxd39NcSqrOJoQqy/vf2EGW9Yi/BGUE=;
+        b=HgBP3qSVGZIqaQ9bCLaM/0hJovcohMCYyB1dM1K5ZuLAzB8YapFcEv0/+GmfYKQh/S
+         NU+zmz2jo5RjlN/i1zdmQArZM+rAm5WC8IuulVlHG9TYt7Lqh3qq9EktM37f9p2bwPBK
+         Cy/AygcPwvqE3xPVjKAXu8evyRQflhXRgSa7Lxa5MIu7hopGJ10dmMuh05B02DVx618n
+         c+pCVFTarSyKKVYMsqNf/Ur0KVHl5W+ufZK6IdYE8wSUpYX4H8X4nt7WIjdr0gbvAzj3
+         jirzHNWZcma+K9UGLYQiyNt4NGh6LaIhoezxxgEAuemIKhTAB9ptWNxnvcRQLpo6LvJk
+         U0pA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=inM3w3yW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Ufpuyw5o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t9-20020ac85889000000b00411fe22d561si692303qta.770.2023.08.25.00.39.29
+        by mx.google.com with ESMTPS id m9-20020a0cf189000000b0064e94f7a593si649446qvl.141.2023.08.25.00.58.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Aug 2023 00:39:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 25 Aug 2023 00:58:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=inM3w3yW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Ufpuyw5o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qZRP5-00079S-EV; Fri, 25 Aug 2023 03:38:47 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qZRiR-0003gx-9b; Fri, 25 Aug 2023 03:58:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <npiggin@gmail.com>)
- id 1qZRP4-00070O-4i; Fri, 25 Aug 2023 03:38:46 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1qZRiP-0003gN-Tw; Fri, 25 Aug 2023 03:58:45 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <npiggin@gmail.com>)
- id 1qZRP1-0006kt-RX; Fri, 25 Aug 2023 03:38:45 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-68a440a8a20so596027b3a.3; 
- Fri, 25 Aug 2023 00:38:42 -0700 (PDT)
+ id 1qZRiN-0002Dd-OD; Fri, 25 Aug 2023 03:58:45 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-1bf48546ccfso5056505ad.2; 
+ Fri, 25 Aug 2023 00:58:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1692949121; x=1693553921;
- h=in-reply-to:references:to:from:subject:cc:message-id:date
+ d=gmail.com; s=20221208; t=1692950321; x=1693555121;
+ h=in-reply-to:references:subject:cc:to:from:message-id:date
  :content-transfer-encoding:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SlKNG7FuFzHEneUgzBD6cy+xvFnIDPBAozu/WWrCKG8=;
- b=inM3w3yWbMeNy/3IuJwZTfMiYBojxXw2VWIlBraoT1Ln3X+8s6jNMveDHx/9VVPJHo
- na0YHxOdQLY+/YesaWcwVRlw+wqAAKz6tsMQnN2RMA+21Olra1O3pr4YTrdaESJCNjZP
- wkMPMAOfMMOSCI1+fXsLpnmxTdBaqWfdXRticDa4XSJCHuOYBPsXcr59hYYbhwLCOl/e
- 1aYJ7juE158RDTu5wbsZInbXXe9bdHObY5cirxDQMiPgtGwWjnEQ44/bC6tqxPAphoqI
- 0s5P/pKI7u0cC4xGzFCWKaLZGhfTwosceQiYSSedDIGfU6SR8hkeBkpq8BmgsY8i5E7C
- B6Vg==
+ bh=2Ex5eUDLlGoTe6YDjrCyOFPB52kSWDwBSB4UinefOKU=;
+ b=Ufpuyw5ob/Y8nuem1RqwxRWo5ufA41YQP7nEt4CGxu/V5lbZoYym+nJfAgaGUBkRAt
+ nMQpBtQaPPakPafUACbEPWCyg4/TXrWD5TyZU7Mz9MBP7ntPULjsWxRBVkio1ZddzYue
+ OA/q9/JsS0diFvduNo4WDI6VdTl+v9LLEGH1JGTYoq8EhHR4/W74XPbqiN7TotdQEIO6
+ 0zd5SPaJHbZAPxuGTHK71EszVk3T2mqLFFkV9vyVbkojL2RzdRwLFyDHyFpPU9vPwS7S
+ tyelhXMn9Pzkipz0GZNNPFRXCLpyYBgOD8zZSPwhQ1i9u8P3IlNGClSy6R/BQ+Hp2Bzy
+ Nqpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1692949121; x=1693553921;
- h=in-reply-to:references:to:from:subject:cc:message-id:date
+ d=1e100.net; s=20221208; t=1692950321; x=1693555121;
+ h=in-reply-to:references:subject:cc:to:from:message-id:date
  :content-transfer-encoding:mime-version:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=SlKNG7FuFzHEneUgzBD6cy+xvFnIDPBAozu/WWrCKG8=;
- b=aOib9CadqwDYCNYMvKTt7SBPjQTOJQu85udq6vOfIzz/REydfsi0DgbTVv3VF7EVe4
- WjwITKORTZHaozy/kloCyqwz8encs7LcM8vbZuAix4FRcKAfwkHbqeYiCr8oMXXdoBsI
- d65VRvVZxovvv++5mvN54g5ZmkY2NV3a+/0PXLDlhqJfdB2IFrDEi445PiHFokcig3EL
- yX7fJnNZ6QMS4VjcNxS/tpUyGZwJJzTyMDNwilZ4h7mPGdzCyJuORJ52BTZsW62zR8IB
- ajF2tIj3+SbuVE5dS3sI/Yg7ncjJOuQx7ow/n0AgUGRkn54AHmLGoEDiCcRvZu/ukJBM
- 5a3w==
-X-Gm-Message-State: AOJu0YxrT+n4efdfvjdth5EB+c9ucU5HBgMUGTgAXrwsMjRLhTMSrAEh
- qgj0YiWdidiTrYid8KMEK5Y=
-X-Received: by 2002:a05:6a00:190e:b0:68b:bf47:d7b0 with SMTP id
- y14-20020a056a00190e00b0068bbf47d7b0mr8555979pfi.3.1692949121101; 
- Fri, 25 Aug 2023 00:38:41 -0700 (PDT)
+ bh=2Ex5eUDLlGoTe6YDjrCyOFPB52kSWDwBSB4UinefOKU=;
+ b=UxNl4jydyrAYU8Acu+P5cnxa/dP79Z3XlgCmcR4GjyVirAVaYkQa8IptHwhFLn6+aC
+ HeDgw07NQPIX3cuDvqKYLZiDQz7f755jMXASRmUngBRO0MKN6ONG36S6jFpL1vD50jyK
+ Ih0DpJAik41s/CALgGGXs7H+vRI83mVILMZtTXNoSOxdLQnsqxKedEhh69DlWydOI0Q+
+ l0Q9nLZ5D9XIacxG0DmAFj0k1DL/+42xZBh6Z0On1zGUxuIckEbbTu8Dp6NHAWiEqB6c
+ +JGT+mH5PiS9Xd3pE+ERQm2dn2excI5qE2+fEC8fx2iJyFJHiG3n6haPdYlyctLkZtLb
+ ez6Q==
+X-Gm-Message-State: AOJu0Yx76b/X5YjK58fcAa4BXcx0bOPXqffEnOHo4V0LrzrujQ28uqp5
+ 2PQv266mb1IrWEL8PswPQMc=
+X-Received: by 2002:a17:902:c155:b0:1bb:d280:5e0b with SMTP id
+ 21-20020a170902c15500b001bbd2805e0bmr14988495plj.18.1692950321047; 
+ Fri, 25 Aug 2023 00:58:41 -0700 (PDT)
 Received: from localhost ([1.146.69.243]) by smtp.gmail.com with ESMTPSA id
- e12-20020aa7824c000000b0068bc6a75848sm895227pfn.156.2023.08.25.00.38.34
+ jj14-20020a170903048e00b001bbaf09ce15sm997183plb.152.2023.08.25.00.58.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Aug 2023 00:38:40 -0700 (PDT)
+ Fri, 25 Aug 2023 00:58:40 -0700 (PDT)
 Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
-Date: Fri, 25 Aug 2023 17:38:31 +1000
-Message-Id: <CV1GDHA1R3DJ.1LZ6DG73V2VVU@wheely>
-Cc: "Song Gao" <gaosong@loongson.cn>, "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>, "Richard Henderson"
- <richard.henderson@linaro.org>, "Greg Kurz" <groug@kaod.org>, "Aurelien
- Jarno" <aurelien@aurel32.net>, <qemu-ppc@nongnu.org>, "Peter Maydell"
- <peter.maydell@linaro.org>, "Daniel Henrique Barboza"
- <danielhb413@gmail.com>, "Aleksandar Rikalo"
- <aleksandar.rikalo@syrmia.com>, "Paolo Bonzini" <pbonzini@redhat.com>,
- "David Gibson" <david@gibson.dropbear.id.au>, "Jiaxun Yang"
- <jiaxun.yang@flygoat.com>, =?utf-8?q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, "Yoshinori Sato" <ysato@users.sourceforge.jp>, "Xiaojuan
- Yang" <yangxiaojuan@loongson.cn>, <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 07/12] target/ppc: Use generic hrev64_i64() in BRH /
- BSWAP16x8 opcodes
+Date: Fri, 25 Aug 2023 17:58:32 +1000
+Message-Id: <CV1GSSQY2ZP3.35GU250DO5E39@wheely>
 From: "Nicholas Piggin" <npiggin@gmail.com>
 To: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  <qemu-devel@nongnu.org>
+Cc: "Song Gao" <gaosong@loongson.cn>, "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>, "Richard Henderson"
+ <richard.henderson@linaro.org>, "Greg Kurz" <groug@kaod.org>, "Aurelien
+ Jarno" <aurelien@aurel32.net>, "Peter Maydell" <peter.maydell@linaro.org>,
+ <qemu-ppc@nongnu.org>, "Daniel Henrique Barboza" <danielhb413@gmail.com>,
+ "Aleksandar Rikalo" <aleksandar.rikalo@syrmia.com>, "Paolo Bonzini"
+ <pbonzini@redhat.com>, "David Gibson" <david@gibson.dropbear.id.au>,
+ "Jiaxun Yang" <jiaxun.yang@flygoat.com>, =?utf-8?q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, "Yoshinori Sato" <ysato@users.sourceforge.jp>, "Xiaojuan
+ Yang" <yangxiaojuan@loongson.cn>, <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 00/12] tcg: Factor hrev{32,64}_{i32,i64,tl} out
 X-Mailer: aerc 0.15.2
 References: <20230822124042.54739-1-philmd@linaro.org>
- <20230822125332.55086-1-philmd@linaro.org>
-In-Reply-To: <20230822125332.55086-1-philmd@linaro.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=npiggin@gmail.com; helo=mail-pf1-x42a.google.com
+In-Reply-To: <20230822124042.54739-1-philmd@linaro.org>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=npiggin@gmail.com; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,81 +119,77 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 83I9zeYHO+2+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZK9ap2nKInbB
 
-On Tue Aug 22, 2023 at 10:53 PM AEST, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  target/ppc/translate.c              | 10 +---------
->  target/ppc/translate/vsx-impl.c.inc | 19 ++-----------------
->  2 files changed, 3 insertions(+), 26 deletions(-)
+On Tue Aug 22, 2023 at 10:40 PM AEST, Philippe Mathieu-Daud=C3=A9 wrote:
+> This series factor the "byteswap each halfword within a
+> 32/64-bit value" code duplication as generic helpers.
 >
-> diff --git a/target/ppc/translate.c b/target/ppc/translate.c
-> index 74796ec7ba..91a9ec2d1c 100644
-> --- a/target/ppc/translate.c
-> +++ b/target/ppc/translate.c
-> @@ -6435,15 +6435,7 @@ static void gen_brw(DisasContext *ctx)
->  /* brh */
->  static void gen_brh(DisasContext *ctx)
->  {
-> -    TCGv_i64 mask =3D tcg_constant_i64(0x00ff00ff00ff00ffull);
-> -    TCGv_i64 t1 =3D tcg_temp_new_i64();
-> -    TCGv_i64 t2 =3D tcg_temp_new_i64();
-> -
-> -    tcg_gen_shri_i64(t1, cpu_gpr[rS(ctx->opcode)], 8);
-> -    tcg_gen_and_i64(t2, t1, mask);
-> -    tcg_gen_and_i64(t1, cpu_gpr[rS(ctx->opcode)], mask);
-> -    tcg_gen_shli_i64(t1, t1, 8);
-> -    tcg_gen_or_i64(cpu_gpr[rA(ctx->opcode)], t1, t2);
-> +    tcg_gen_hrev64_i64(cpu_gpr[rA(ctx->opcode)], cpu_gpr[rS(ctx->opcode)=
-]);
->  }
->  #endif
-> =20
-> diff --git a/target/ppc/translate/vsx-impl.c.inc b/target/ppc/translate/v=
-sx-impl.c.inc
-> index 0f5b0056f1..639ab7f1bc 100644
-> --- a/target/ppc/translate/vsx-impl.c.inc
-> +++ b/target/ppc/translate/vsx-impl.c.inc
-> @@ -154,23 +154,8 @@ static void gen_lxvdsx(DisasContext *ctx)
->  static void gen_bswap16x8(TCGv_i64 outh, TCGv_i64 outl,
->                            TCGv_i64 inh, TCGv_i64 inl)
->  {
-> -    TCGv_i64 mask =3D tcg_constant_i64(0x00FF00FF00FF00FF);
-> -    TCGv_i64 t0 =3D tcg_temp_new_i64();
-> -    TCGv_i64 t1 =3D tcg_temp_new_i64();
-> -
-> -    /* outh =3D ((inh & mask) << 8) | ((inh >> 8) & mask) */
-> -    tcg_gen_and_i64(t0, inh, mask);
-> -    tcg_gen_shli_i64(t0, t0, 8);
-> -    tcg_gen_shri_i64(t1, inh, 8);
-> -    tcg_gen_and_i64(t1, t1, mask);
-> -    tcg_gen_or_i64(outh, t0, t1);
-> -
-> -    /* outl =3D ((inl & mask) << 8) | ((inl >> 8) & mask) */
-> -    tcg_gen_and_i64(t0, inl, mask);
-> -    tcg_gen_shli_i64(t0, t0, 8);
-> -    tcg_gen_shri_i64(t1, inl, 8);
-> -    tcg_gen_and_i64(t1, t1, mask);
-> -    tcg_gen_or_i64(outl, t0, t1);
-> +    tcg_gen_hrev64_i64(outh, inh);
-> +    tcg_gen_hrev64_i64(outl, inl);
->  }
-> =20
->  static void gen_bswap32x4(TCGv_i64 outh, TCGv_i64 outl,
+> Modulo the documentation added, there is a good negative
+> diff-stat, so I believe this is a win from a maintainance
+> point of view.
+>
+> I used "hrev" to follow the other bswap/hswap/rev helpers
+> but it isn't very descriptive, so any better name suggestion
+> is welcomed.
+> (In particular because there are other patterns I'd like to
+> factor out and then naming is getting worse, such 'wrev').
 
-Reviewed-by: Nicholas Piggin <npiggin@gmail.com>
+I know bswap has alrady precedent, but you could drop the bit
+size when it matches the operand size, hrev_i64.
+
+Could possibly also follow ppc and call it brevh, which tells
+you the units being swapped and the size they are swapped in.
+Then you could add brevw or hrevw etc. and it might be a bit
+less ambiguous.
+
+Looks like a nice cleanup though.
+
+Thanks,
+Nick
+
+>
+> Philippe Mathieu-Daud=C3=A9 (12):
+>   tcg/tcg-op: Factor tcg_gen_hrev32_i32() out
+>   target/arm: Use generic hrev32_i32() in ARM REV16 and VREV16 opcodes
+>   target/cris: Use generic hrev32_i32() in SWAPB opcode
+>   target/rx: Use generic hrev32_i32() in REVW opcode
+>   tcg/tcg-op: Factor tcg_gen_hrev64_i64() out
+>   target/mips: Use generic hrev64_i64() in DSBH opcode
+>   target/ppc: Use generic hrev64_i64() in BRH / BSWAP16x8 opcodes
+>   target/loongarch: Use generic hrev64_i64() in REVB.4H opcode
+>   tcg/tcg-op: Add tcg_gen_hrev32_i64() and tcg_gen_hrev_i64()
+>   target/arm: Use generic hrev_i64() in Aarch64 REV16 opcode
+>   target/loongarch: Use generic hrev64_i32() in REVB.2H opcode
+>   target/mips: Use generic hrev32_tl() in WSBH opcode
+>
+>  docs/devel/tcg-ops.rst                      | 10 +++
+>  include/tcg/tcg-op-common.h                 |  4 +
+>  include/tcg/tcg-op.h                        |  2 +
+>  target/arm/tcg/translate-a32.h              |  1 -
+>  target/arm/tcg/translate-a64.c              | 11 +--
+>  target/arm/tcg/translate-neon.c             |  2 +-
+>  target/arm/tcg/translate.c                  | 14 +---
+>  target/cris/translate.c                     | 20 +----
+>  target/mips/tcg/translate.c                 | 24 +-----
+>  target/ppc/translate.c                      | 10 +--
+>  target/rx/translate.c                       |  8 +-
+>  tcg/tcg-op.c                                | 81 ++++++++++++++++++---
+>  target/cris/translate_v10.c.inc             |  2 +-
+>  target/loongarch/insn_trans/trans_bit.c.inc | 30 +-------
+>  target/ppc/translate/vsx-impl.c.inc         | 19 +----
+>  15 files changed, 99 insertions(+), 139 deletions(-)
 

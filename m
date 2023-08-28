@@ -1,112 +1,112 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp3301380ejc;
-        Mon, 28 Aug 2023 15:59:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGcONcwHTkBsp+yO2q+mEFBPFdIPZuVs5M0oc8+i9EEM005Vh7y5WkehRpW5FObVBNXnUUD
-X-Received: by 2002:ad4:5cc4:0:b0:647:30f9:4b79 with SMTP id iu4-20020ad45cc4000000b0064730f94b79mr1487258qvb.7.1693263575077;
-        Mon, 28 Aug 2023 15:59:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693263575; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp3301445ejc;
+        Mon, 28 Aug 2023 15:59:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGbs28qmhndG5AXdhROmn3myPNn/MOcUq9XI74YmXa1Bv7PEQlYwl6QiyqndWcZQBHUctnb
+X-Received: by 2002:a05:622a:1884:b0:410:9668:530a with SMTP id v4-20020a05622a188400b004109668530amr1356659qtc.21.1693263583038;
+        Mon, 28 Aug 2023 15:59:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693263583; cv=none;
         d=google.com; s=arc-20160816;
-        b=tndwEOvZAcbuRnidD26ynfaVO1obdWnqQFwm+j5x7PZ9ZdKEwQDZESsUBS6NRdI3eW
-         niE+Kxzit4BM/n4z0hJl6aF7O26KELjlVVHzyJahmLz29nv2RcmPUI2Jbm9ifOmsgH2l
-         QJfFvIldS1wfHcBLEPHbntPvF8aPiKaBr11L7zE28lvzAlQfOuDtAfBmcwOyPehb2EUB
-         U5F4Ga3UQUf1mUrv6HxR6atw58kHzMoBXvgIE+SKb8BURWtAhpmiq4zEMSPKt15pU3X/
-         BTvwKYc11ZjfZHrzix5p8K4cKJdhe0OxYXAElyAjTT/Hef+7uRXYVAfe4fpt8sK8/Xcv
-         IHVg==
+        b=GqR4tvZlBd2CQUfBhe9LKU2iJfgbQ5Zh6CApf5etCTRhbzk3ToZPrJmS0hH9Q/yxMf
+         W4HYuG2zAEj6BFfXDvt58BOoc5vedrbl/BlpjF3T9TT2+tGeq+xl/iF27Zt/bID0nXUB
+         s3k29FGNiYy4i6q3IMQlhvpyHwfCrtGTGv2vCNiOG1m7BrofU9N3eT0p4gSITq2kMGSA
+         G/RqJXAcbXTJLzLvZ/SBWl/TktyhCFe3ER4rvmv1toY4mm6lcsGOSZoqyckgERnj5dXH
+         ePq7sNzJCjfd5x6hkRTKf8IiwrqqkeVT9qaR5yWvUNye2Exr4kZ3cHih4fvdZTSkL/yo
+         7D1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UxNaDgMrqTxRDdabXe2ADM5wu1MC/WhedZWCORt64dM=;
+        bh=CZpvWwG5osVsPBSD7k4Ah0f+3NYJWSTikZ+VfYS1+QQ=;
         fh=C/KtYd05D41HubKubB0TAXx0MuCcZNJfThg2b49Vtb4=;
-        b=qeBEMJM+jLZdGslgOxeZbDug9qXKEVqqbfsLt+rVuQ4q5j/nPGaa7RgmHXgx3dwkB8
-         ENiJnAbGHSvZGP8VONzzAvSSxmc7pTXHlxPLbrjCRZeUYoO8MrUebYQ7lUx7t8zIBNRY
-         YBAmt0J4S6zeQwfSiO9Jtg63BvmfBw83aMWpb7/IHAVLF6coxKkmMo5Oeo9oBR9r2y/k
-         6rIwsjM+5SV9BP0FkX5NWkVpWBP82KcNobzUEwC/WKCzdekfSuJTUmZts6IBo3HJey5D
-         yA7qbxRGctU2/TGkGHPI6gDrvcgiMoJvPj2XJ2patQX4CTe3sJ4zsLm5vbzKPoIiK0NW
-         IHSA==
+        b=HbN2JCwR7km283Iz5iEbHJsNK1zWmgzv1k+WWArNrJ4N5LHb5Y0UGsUNmiESXDSBI0
+         rEToUYwV5mzU79KbBMFiuEPI6P7+dAUiIM4Zkhz3Anlpaj8Z75IVIEuXxbprt6nMJp9R
+         wjGl6FLpwpAS+SyGv2Yin/0oOB1LgR3lbU3s3VBJofNdLjIquoXyYuzUWO/Sqe55zNQY
+         o16vzLdK5SUonMyWb3KxYF6yUSMwgCw2sMrT4MlawTFQnhoZteqqPo3AUNBJX7RfPKX8
+         bBKQMaSvLKK/JQFjGUsNyuNpMNkUq6k2G/gH7x7UBhNm4N5GGDW1lcGFhlnEFVADLmvh
+         7gxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Wk7314Yt;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=XnOb2kHr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17-20020a0cf0d1000000b006260a87dc5bsi5172856qvl.55.2023.08.28.15.59.34
+        by mx.google.com with ESMTPS id n10-20020a05622a11ca00b00403eb7b883esi5372978qtk.613.2023.08.28.15.59.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Aug 2023 15:59:35 -0700 (PDT)
+        Mon, 28 Aug 2023 15:59:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Wk7314Yt;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=XnOb2kHr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qalCX-0006C5-0e; Mon, 28 Aug 2023 18:59:17 -0400
+	id 1qalCX-0006EC-OH; Mon, 28 Aug 2023 18:59:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qalCN-0005oa-PL; Mon, 28 Aug 2023 18:59:11 -0400
+ id 1qalCP-0005rz-Ja; Mon, 28 Aug 2023 18:59:11 -0400
 Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qalCL-0004p6-6K; Mon, 28 Aug 2023 18:59:07 -0400
-Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+ id 1qalCM-0004pY-Ok; Mon, 28 Aug 2023 18:59:09 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 37SM3unN001347; Mon, 28 Aug 2023 22:58:47 GMT
+ 37SMTh6K030118; Mon, 28 Aug 2023 22:58:49 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=from : to : cc : subject
  : date : message-id : in-reply-to : references : mime-version :
  content-type : content-transfer-encoding; s=pp1;
- bh=UxNaDgMrqTxRDdabXe2ADM5wu1MC/WhedZWCORt64dM=;
- b=Wk7314YttxtssNPHM5KCiGt9efP48b1Hl8GcYXevak1aU6+/oO46FYuJsBVxXFQGNyG6
- rZIh2iPCPMQH1t70JlzXsi2x0D23sIjUduT3hbXzioucQ+EjgD9UCJVnS6tFPjLIL097
- EV1f9fxlRgUzjmVfBpQAt9njugKBl9lknAix9QCxRbByQmvARjl0u4jOimWBHOy1glJJ
- EcN7sfawCpetV50a5xhM0XBbAOeZ+9VkP/gt8gBktPOtvHJXfa5kdebwTA6BaEJdB4Cv
- vVUMGOVuSqEoEply0qA0gmGnhJ481dX4DQI7cBtW86aKPmio0nN0Cx0UYev37wNVGavh pA== 
+ bh=CZpvWwG5osVsPBSD7k4Ah0f+3NYJWSTikZ+VfYS1+QQ=;
+ b=XnOb2kHreScY2Q4FP99dC6QYdQ5qXm7jpiBpWX7RLXQ4BNmyTvWxqviT9LUctQVNWXWI
+ oOdbtjWwItvbPDoP3BjPSlMD95n0F3Ulka86iT2/ll95uT7t2Z/IcFG0afheLaTJGzKN
+ Ty/8Naq6/h8QKziN9QWa6lrM5CiH8js+7NOmt3pJLxd8NY7GY4YI3UG8He4Kwq8ptfh7
+ jpB+TaHToi2O6pzZaIyR91rNqpOPxn/DOMRJQgAMZUOOXKCNZbChx5z0HU0eru9MxtVa
+ vniOmRcMMZXvZ+HeQpqaeQh3FhQNJa+NPMjEJR5Ck9F8yckNJPvStk88KQz+NZc9sGh4 Cw== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sra09aqep-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sr8s6uajm-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 28 Aug 2023 22:58:47 +0000
-Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37SMwkuP008552;
- Mon, 28 Aug 2023 22:58:46 GMT
-Received: from ppma11.dal12v.mail.ibm.com
- (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sra09aqe7-1
+ Mon, 28 Aug 2023 22:58:48 +0000
+Received: from m0360083.ppops.net (m0360083.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37SM6hES021965;
+ Mon, 28 Aug 2023 22:58:48 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sr8s6uaja-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 28 Aug 2023 22:58:48 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 37SMI0Cn020520; Mon, 28 Aug 2023 22:58:46 GMT
+Received: from smtprelay05.dal12v.mail.ibm.com ([172.16.1.7])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3sqv3y7310-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
  Mon, 28 Aug 2023 22:58:46 +0000
-Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
- by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 37SM9qMk019180; Mon, 28 Aug 2023 22:58:45 GMT
-Received: from smtprelay04.dal12v.mail.ibm.com ([172.16.1.6])
- by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3sqxe1e9u9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 28 Aug 2023 22:58:45 +0000
 Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
  [10.241.53.100])
- by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 37SMwj2m16777942
+ by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 37SMwkV72753174
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Aug 2023 22:58:45 GMT
+ Mon, 28 Aug 2023 22:58:46 GMT
 Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0FC0558057;
+ by IMSVA (Postfix) with ESMTP id F2F3658057;
  Mon, 28 Aug 2023 22:58:45 +0000 (GMT)
 Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id BDD2C58059;
- Mon, 28 Aug 2023 22:58:44 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id B723158061;
+ Mon, 28 Aug 2023 22:58:45 +0000 (GMT)
 Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
  by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Mon, 28 Aug 2023 22:58:44 +0000 (GMT)
+ Mon, 28 Aug 2023 22:58:45 +0000 (GMT)
 From: Ninad Palsule <ninad@linux.ibm.com>
 To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
  andrew@aj.id.au, joel@jms.id.au, pbonzini@redhat.com,
  marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
  philmd@linaro.org
 Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
-Subject: [PATCH v2 2/7] hw/fsi: Introduce IBM's scratchpad
-Date: Mon, 28 Aug 2023 17:58:37 -0500
-Message-Id: <20230828225842.4045510-3-ninad@linux.ibm.com>
+Subject: [PATCH v2 5/7] hw/fsi: IBM's On-chip Peripheral Bus
+Date: Mon, 28 Aug 2023 17:58:40 -0500
+Message-Id: <20230828225842.4045510-6-ninad@linux.ibm.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230828225842.4045510-1-ninad@linux.ibm.com>
 References: <20230828225842.4045510-1-ninad@linux.ibm.com>
@@ -114,17 +114,17 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: GwCTvtgiMQWs85SH3WXHY0Vanumakpg7
-X-Proofpoint-GUID: RPFNqszZEqDBjXRdQhUSjsvRtzzhPe-Y
+X-Proofpoint-GUID: 97OKwKASMwHQxFnzftDG3k-Cyp8AUWwI
+X-Proofpoint-ORIG-GUID: vQ0853rVZ4S7c1ZMsJ2FfsNdL6lNxvGK
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
  definitions=2023-08-28_18,2023-08-28_04,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015
- lowpriorityscore=0 suspectscore=0 spamscore=0 bulkscore=0 mlxscore=0
- priorityscore=1501 adultscore=0 mlxlogscore=703 impostorscore=0
- malwarescore=0 phishscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2308100000 definitions=main-2308280194
+ bulkscore=0
+ priorityscore=1501 spamscore=0 lowpriorityscore=0 suspectscore=0
+ adultscore=0 malwarescore=0 mlxlogscore=899 mlxscore=0 impostorscore=0
+ phishscore=0 clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2308280194
 Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -19
@@ -148,53 +148,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RoH2HX6giZiM
+X-TUID: 0tt5Cq3oTeF3
 
 This is a part of patchset where IBM's Flexible Service Interface is
 introduced.
 
-The LBUS device is embeded inside the scratchpad. The scratchpad
-provides a non-functional registers. There is a 1-1 relation between
-scratchpad and LBUS devices. Each LBUS device has 1K memory mapped in
-the LBUS.
+The On-Chip Peripheral Bus (OPB): A low-speed bus typically found in
+POWER processors. This now makes an appearance in the ASPEED SoC due
+to tight integration of the FSI master IP with the OPB, mainly the
+existence of an MMIO-mapping of the CFAM address straight onto a
+sub-region of the OPB address space.
 
 Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
 ---
 v2:
-- Incorporated Joel's review comments.
+- Incorporated review comment by Joel.
 ---
- hw/fsi/Kconfig                     |   4 ++
- hw/fsi/engine-scratchpad.c         | 100 +++++++++++++++++++++++++++++
- hw/fsi/meson.build                 |   1 +
- include/hw/fsi/engine-scratchpad.h |  33 ++++++++++
- 4 files changed, 138 insertions(+)
- create mode 100644 hw/fsi/engine-scratchpad.c
- create mode 100644 include/hw/fsi/engine-scratchpad.h
+ hw/fsi/Kconfig       |   4 +
+ hw/fsi/fsi-master.c  |   6 +-
+ hw/fsi/meson.build   |   1 +
+ hw/fsi/opb.c         | 194 +++++++++++++++++++++++++++++++++++++++++++
+ include/hw/fsi/opb.h |  43 ++++++++++
+ 5 files changed, 244 insertions(+), 4 deletions(-)
+ create mode 100644 hw/fsi/opb.c
+ create mode 100644 include/hw/fsi/opb.h
 
 diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
-index 687449e14e..2a9c49f2c9 100644
+index 087980be22..560ce536db 100644
 --- a/hw/fsi/Kconfig
 +++ b/hw/fsi/Kconfig
-@@ -1,2 +1,6 @@
-+config SCRATCHPAD
+@@ -1,3 +1,7 @@
++config OPB
 +    bool
-+    select LBUS
++    select CFAM
 +
- config LBUS
+ config CFAM
      bool
-diff --git a/hw/fsi/engine-scratchpad.c b/hw/fsi/engine-scratchpad.c
+     select FSI
+diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
+index fe1693539a..46103f84e9 100644
+--- a/hw/fsi/fsi-master.c
++++ b/hw/fsi/fsi-master.c
+@@ -7,14 +7,12 @@
+ 
+ #include "qemu/osdep.h"
+ 
++#include "qemu/bitops.h"
+ #include "qapi/error.h"
+-
+ #include "qemu/log.h"
+ 
+-#include "hw/fsi/bits.h"
+ #include "hw/fsi/fsi-master.h"
+-
+-#define TYPE_OP_BUS "opb"
++#include "hw/fsi/opb.h"
+ 
+ #define TO_REG(x)                               ((x) >> 2)
+ 
+diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+index ca80d11cb9..cab645f4ea 100644
+--- a/hw/fsi/meson.build
++++ b/hw/fsi/meson.build
+@@ -2,3 +2,4 @@ system_ss.add(when: 'CONFIG_LBUS', if_true: files('lbus.c'))
+ system_ss.add(when: 'CONFIG_SCRATCHPAD', if_true: files('engine-scratchpad.c'))
+ system_ss.add(when: 'CONFIG_CFAM', if_true: files('cfam.c'))
+ system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi.c','fsi-master.c','fsi-slave.c'))
++system_ss.add(when: 'CONFIG_OPB', if_true: files('opb.c'))
+diff --git a/hw/fsi/opb.c b/hw/fsi/opb.c
 new file mode 100644
-index 0000000000..15a8f8cc66
+index 0000000000..ac7693c001
 --- /dev/null
-+++ b/hw/fsi/engine-scratchpad.c
-@@ -0,0 +1,100 @@
++++ b/hw/fsi/opb.c
+@@ -0,0 +1,194 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + * Copyright (C) 2023 IBM Corp.
 + *
-+ * IBM scratchpad engine
++ * IBM On-chip Peripheral Bus
 + */
 +
 +#include "qemu/osdep.h"
@@ -202,140 +235,237 @@ index 0000000000..15a8f8cc66
 +#include "qapi/error.h"
 +#include "qemu/log.h"
 +
-+#include "hw/fsi/engine-scratchpad.h"
++#include "hw/fsi/opb.h"
 +
-+static uint64_t scratchpad_read(void *opaque, hwaddr addr, unsigned size)
++static MemTxResult opb_read(OPBus *opb, hwaddr addr, void *data, size_t len)
 +{
-+    ScratchPad *s = SCRATCHPAD(opaque);
++    return address_space_read(&opb->as, addr, MEMTXATTRS_UNSPECIFIED, data,
++                              len);
++}
 +
++uint8_t opb_read8(OPBus *opb, hwaddr addr)
++{
++    MemTxResult tx;
++    uint8_t data;
++
++    tx = opb_read(opb, addr, &data, sizeof(data));
++    /* FIXME: improve error handling */
++    assert(!tx);
++
++    return data;
++}
++
++uint16_t opb_read16(OPBus *opb, hwaddr addr)
++{
++    MemTxResult tx;
++    uint16_t data;
++
++    tx = opb_read(opb, addr, &data, sizeof(data));
++    /* FIXME: improve error handling */
++    assert(!tx);
++
++    return data;
++}
++
++uint32_t opb_read32(OPBus *opb, hwaddr addr)
++{
++    MemTxResult tx;
++    uint32_t data;
++
++    tx = opb_read(opb, addr, &data, sizeof(data));
++    /* FIXME: improve error handling */
++    assert(!tx);
++
++    return data;
++}
++
++static MemTxResult opb_write(OPBus *opb, hwaddr addr, void *data, size_t len)
++{
++    return address_space_write(&opb->as, addr, MEMTXATTRS_UNSPECIFIED, data,
++                               len);
++}
++
++void opb_write8(OPBus *opb, hwaddr addr, uint8_t data)
++{
++    MemTxResult tx;
++
++    tx = opb_write(opb, addr, &data, sizeof(data));
++    /* FIXME: improve error handling */
++    assert(!tx);
++}
++
++void opb_write16(OPBus *opb, hwaddr addr, uint16_t data)
++{
++    MemTxResult tx;
++
++    tx = opb_write(opb, addr, &data, sizeof(data));
++    /* FIXME: improve error handling */
++    assert(!tx);
++}
++
++void opb_write32(OPBus *opb, hwaddr addr, uint32_t data)
++{
++    MemTxResult tx;
++
++    tx = opb_write(opb, addr, &data, sizeof(data));
++    /* FIXME: improve error handling */
++    assert(!tx);
++}
++
++void opb_fsi_master_address(OPBus *opb, hwaddr addr)
++{
++    memory_region_transaction_begin();
++    memory_region_set_address(&opb->fsi.iomem, addr);
++    memory_region_transaction_commit();
++}
++
++void opb_opb2fsi_address(OPBus *opb, hwaddr addr)
++{
++    memory_region_transaction_begin();
++    memory_region_set_address(&opb->fsi.opb2fsi, addr);
++    memory_region_transaction_commit();
++}
++
++static uint64_t opb_unimplemented_read(void *opaque, hwaddr addr, unsigned size)
++{
 +    qemu_log_mask(LOG_UNIMP, "%s: read @0x%" HWADDR_PRIx " size=%d\n",
 +                  __func__, addr, size);
 +
-+    if (addr) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
-+        return 0;
-+    }
-+
-+    return s->reg;
++    return 0;
 +}
 +
-+static void scratchpad_write(void *opaque, hwaddr addr, uint64_t data,
++static void opb_unimplemented_write(void *opaque, hwaddr addr, uint64_t data,
 +                                 unsigned size)
 +{
-+    ScratchPad *s = SCRATCHPAD(opaque);
-+
 +    qemu_log_mask(LOG_UNIMP, "%s: write @0x%" HWADDR_PRIx " size=%d "
 +                  "value=%"PRIx64"\n", __func__, addr, size, data);
-+
-+    if (addr) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds write: 0x%"HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
-+        return;
-+    }
-+
-+    s->reg = data;
 +}
 +
-+static const struct MemoryRegionOps scratchpad_ops = {
-+    .read = scratchpad_read,
-+    .write = scratchpad_write,
++static const struct MemoryRegionOps opb_unimplemented_ops = {
++    .read = opb_unimplemented_read,
++    .write = opb_unimplemented_write,
 +    .endianness = DEVICE_BIG_ENDIAN,
 +};
 +
-+static void scratchpad_realize(DeviceState *dev, Error **errp)
++static void opb_realize(BusState *bus, Error **errp)
 +{
-+    LBusDevice *ldev = LBUS_DEVICE(dev);
++    OPBus *opb = OP_BUS(bus);
++    Error *err = NULL;
 +
-+    memory_region_init_io(&ldev->iomem, OBJECT(ldev), &scratchpad_ops,
-+                          ldev, TYPE_SCRATCHPAD, 0x400);
++    memory_region_init_io(&opb->mr, OBJECT(opb), &opb_unimplemented_ops, opb,
++                          NULL, UINT32_MAX);
++    address_space_init(&opb->as, &opb->mr, "opb");
++
++    object_property_set_bool(OBJECT(&opb->fsi), "realized", true, &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    memory_region_add_subregion(&opb->mr, 0x80000000, &opb->fsi.iomem);
++
++    /* OPB2FSI region */
++    /*
++     * Avoid endianness issues by mapping each slave's memory region directly.
++     * Manually bridging multiple address-spaces causes endian swapping
++     * headaches as memory_region_dispatch_read() and
++     * memory_region_dispatch_write() correct the endianness based on the
++     * target machine endianness and not relative to the device endianness on
++     * either side of the bridge.
++     */
++    /*
++     * XXX: This is a bit hairy and will need to be fixed when I sort out the
++     * bus/slave relationship and any changes to the CFAM modelling (multiple
++     * slaves, LBUS)
++     */
++    memory_region_add_subregion(&opb->mr, 0xa0000000, &opb->fsi.opb2fsi);
 +}
 +
-+static void scratchpad_reset(DeviceState *dev)
++static void opb_init(Object *o)
 +{
-+    ScratchPad *s = SCRATCHPAD(dev);
++    OPBus *opb = OP_BUS(o);
 +
-+    s->reg = 0;
++    object_initialize_child(o, "fsi-master", &opb->fsi, TYPE_FSI_MASTER);
++    qdev_set_parent_bus(DEVICE(&opb->fsi), BUS(o), &error_abort);
 +}
 +
-+static void scratchpad_class_init(ObjectClass *klass, void *data)
++static void opb_finalize(Object *o)
 +{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    LBusDeviceClass *ldc = LBUS_DEVICE_CLASS(klass);
++    OPBus *opb = OP_BUS(o);
 +
-+    dc->realize = scratchpad_realize;
-+    dc->reset = scratchpad_reset;
-+
-+    ldc->config =
-+          ENGINE_CONFIG_NEXT            /* valid */
-+        | 0x00010000                    /* slots */
-+        | 0x00001000                    /* version */
-+        | ENGINE_CONFIG_TYPE_SCRATCHPAD /* type */
-+        | 0x00000007;                   /* crc */
++    address_space_destroy(&opb->as);
 +}
 +
-+static const TypeInfo scratchpad_info = {
-+    .name = TYPE_SCRATCHPAD,
-+    .parent = TYPE_LBUS_DEVICE,
-+    .instance_size = sizeof(ScratchPad),
-+    .class_init = scratchpad_class_init,
-+    .class_size = sizeof(LBusDeviceClass),
++static void opb_class_init(ObjectClass *klass, void *data)
++{
++    BusClass *bc = BUS_CLASS(klass);
++    bc->realize = opb_realize;
++}
++
++static const TypeInfo opb_info = {
++    .name = TYPE_OP_BUS,
++    .parent = TYPE_BUS,
++    .instance_init = opb_init,
++    .instance_finalize = opb_finalize,
++    .instance_size = sizeof(OPBus),
++    .class_init = opb_class_init,
++    .class_size = sizeof(OPBusClass),
 +};
 +
-+static void scratchpad_register_types(void)
++static void opb_register_types(void)
 +{
-+    type_register_static(&scratchpad_info);
++    type_register_static(&opb_info);
 +}
 +
-+type_init(scratchpad_register_types);
-diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
-index e1007d5fea..f90e09ddab 100644
---- a/hw/fsi/meson.build
-+++ b/hw/fsi/meson.build
-@@ -1 +1,2 @@
- system_ss.add(when: 'CONFIG_LBUS', if_true: files('lbus.c'))
-+system_ss.add(when: 'CONFIG_SCRATCHPAD', if_true: files('engine-scratchpad.c'))
-diff --git a/include/hw/fsi/engine-scratchpad.h b/include/hw/fsi/engine-scratchpad.h
++type_init(opb_register_types);
+diff --git a/include/hw/fsi/opb.h b/include/hw/fsi/opb.h
 new file mode 100644
-index 0000000000..63bf89ac5a
+index 0000000000..f8ce00383e
 --- /dev/null
-+++ b/include/hw/fsi/engine-scratchpad.h
-@@ -0,0 +1,33 @@
++++ b/include/hw/fsi/opb.h
+@@ -0,0 +1,43 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + * Copyright (C) 2023 IBM Corp.
 + *
-+ * IBM scratchpad engne
++ * IBM On-Chip Peripheral Bus
 + */
-+#ifndef FSI_ENGINE_SCRATCHPAD_H
-+#define FSI_ENGINE_SCRATCHPAD_H
++#ifndef FSI_OPB_H
++#define FSI_OPB_H
 +
-+#include "qemu/bitops.h"
++#include "exec/memory.h"
++#include "hw/fsi/fsi-master.h"
 +
-+#include "hw/fsi/lbus.h"
++#define TYPE_OP_BUS "opb"
++OBJECT_DECLARE_SIMPLE_TYPE(OPBus, OP_BUS)
 +
-+#define ENGINE_CONFIG_NEXT              BE_BIT(0)
-+#define ENGINE_CONFIG_VPD               BE_BIT(1)
-+#define ENGINE_CONFIG_SLOTS             BE_GENMASK(8, 15)
-+#define ENGINE_CONFIG_VERSION           BE_GENMASK(16, 19)
-+#define ENGINE_CONFIG_TYPE              BE_GENMASK(20, 27)
-+#define   ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
-+#define   ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
-+#define   ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
-+#define ENGINE_CONFIG_CRC              BE_GENMASK(28, 31)
++typedef struct OPBus {
++        /*< private >*/
++        BusState bus;
 +
-+#define TYPE_SCRATCHPAD "scratchpad"
-+#define SCRATCHPAD(obj) OBJECT_CHECK(ScratchPad, (obj), TYPE_SCRATCHPAD)
++        /*< public >*/
++        MemoryRegion mr;
++        AddressSpace as;
 +
-+typedef struct ScratchPad {
-+        LBusDevice parent;
++        /* Model OPB as dumb enough just to provide an address-space */
++        /* TODO: Maybe don't store device state in the bus? */
++        FSIMasterState fsi;
++} OPBus;
 +
-+        uint32_t reg;
-+} ScratchPad;
++typedef struct OPBusClass {
++        BusClass parent_class;
++} OPBusClass;
 +
-+#endif /* FSI_ENGINE_SCRATCHPAD_H */
++uint8_t opb_read8(OPBus *opb, hwaddr addr);
++uint16_t opb_read16(OPBus *opb, hwaddr addr);
++uint32_t opb_read32(OPBus *opb, hwaddr addr);
++void opb_write8(OPBus *opb, hwaddr addr, uint8_t data);
++void opb_write16(OPBus *opb, hwaddr addr, uint16_t data);
++void opb_write32(OPBus *opb, hwaddr addr, uint32_t data);
++
++void opb_fsi_master_address(OPBus *opb, hwaddr addr);
++void opb_opb2fsi_address(OPBus *opb, hwaddr addr);
++
++#endif /* FSI_OPB_H */
 -- 
 2.39.2
 

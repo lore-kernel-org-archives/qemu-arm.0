@@ -1,103 +1,103 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp2685334ejc;
-        Sun, 27 Aug 2023 17:03:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFLtoFdx+uavUjja7bIyncPoeQTel0Jk/+4muJUUXk5nkrwXaEDI8jgEvDtftReq9pqQtlm
-X-Received: by 2002:ac8:7f07:0:b0:3f6:bb5b:8111 with SMTP id f7-20020ac87f07000000b003f6bb5b8111mr29775830qtk.60.1693180989983;
-        Sun, 27 Aug 2023 17:03:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693180989; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp2686481ejc;
+        Sun, 27 Aug 2023 17:05:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGYsvn1UhN4woYEN+aM0m7GK/N4TKNLPAqhBKM4u2lirjW4t46R2rzqRE5RKmArwBxan55x
+X-Received: by 2002:a0c:dc81:0:b0:63c:dde2:5a20 with SMTP id n1-20020a0cdc81000000b0063cdde25a20mr26636835qvk.0.1693181143698;
+        Sun, 27 Aug 2023 17:05:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693181143; cv=none;
         d=google.com; s=arc-20160816;
-        b=SaWq1VgX8qbn9L1K7eW/SHJCWEJCUEt0NyY5s/WfSV5CD6fC2UkcFZZANdV6lCWNN9
-         XarpTfYob/3ezEZ6L1Axpvq+9dvnJRJgF8dDcUT7bUIhFVxaziy3VFj1f3beSXL34FW3
-         JOTfhAQ9oV2RN6C+tlCUh0xTuZhV1MxN9YiHY7NfaYYoFidX84AzxhEIs7YGtyCICvi6
-         bkEhzShE5hc8XafGLEVcO+BLbHyUKyj7NjwI1Jtj+XSjzyTpVDulFhem5N+i7Mib241p
-         YYiAZARCnuqLh7ikYK3j0LQ2uEHacxEOlrO/4eckZFSfOarEO+8befjWin0OBSb7DnZv
-         x1Nw==
+        b=WkVAJxzAV7BGQXnqX/lS2Ac/IgHNcy6fhdiVNjWrF4Bh9LvwpGGz3CIKxBPlrYXJrZ
+         xGg4ZeVytcovB8g8TSRRlS2bRXowrBekO0Dn/+qqUllIK14by2PCaKGb2QMVLRG6/oYY
+         za2e+0wn5uV9htsGvSkhhJlB06jihAfYYQW3bBQataiHF2rfmZzYy++MOY0ytzWSl6Tj
+         rn2U0QBIxLpBJxY7Cm+xbjAlqYm39pB6TjBbQlO3adZVhZ36Jj2Ys7N8kD0Eu+cGr0ac
+         lAALVRnn9ijYFBdTaUkprxhnSlMhqpVN2wi+zCkgVlsgPsWoPRDdsLmh1Pmiv7xtvtz5
+         BNHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:from:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=xpHPOqpS/BopQCNTxUES7lap/T1aoNZFxwlnvj3+xR8=;
+        bh=ibbxsoxCKoBvkUXcOjeA5GRQGxS837QbGPrgrI0q1/A=;
         fh=FlL2vwXm5t7Wqdka0+/pww+HVy3xKwVN1Pa+X1z19WY=;
-        b=A3ELWRvOSa772lOETYJcP63NQEaek79xwcNJEsYOkFnqC84FuC5c7Edz3lnowZmeHX
-         m75Ml1VgBno0mCK57BzxAvGiILa1qAAu4U3Zhjnqj0gdq8tNxu33IuoOheIBUfYFoHac
-         Zlyca035QQ0rFfrc1bQokZJ9DM8i2a9rDo0HIjbf+55pqKrFHyUUf6QR+b+Rk05K6kFm
-         2WmruWGAZp0kfA3LquK+IjIcxiVXCJLrornTw+dgN6uNF/6VWS+l8657Rd/2oS8/6ejw
-         Vs7sjidgbZJp/IeNZUR5mA7HcoTbKoiiaHcHBmbg0orWevjsOkOWsXczpRaiooPdWqW8
-         tQ4w==
+        b=XsNrelJsbM4QMZaaabIagNLHd25wedM3vY9LEOTGlBRNKr4/0Y/rel99njbfZ6WdAh
+         Yc/DYfm4gThcV7vbF5FLWO/Ye45T4A96XKW3HvdIvCqPC0UzEhKSaB0AzeW8dyEZsCyp
+         zSPRITZFWTi0hmg7EmQn5YQM+staGg2T3Q2VT+BeI0SlEISdoyOtllc8TbUN1NXO/4DF
+         iosuiR/1kS9wTLuM2R/6l0FqXpZ7Cw1vZcnSzwcS8HdrZGq2EIyEq2+aYp+WDexc+CuX
+         uoTjr0nAYPIpXXbcWWHTL0RS+20JWI4VyEqgAgJfe4Rrr9PD5MnUHGPuvAmlWUcXgsFE
+         +rUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DMvfzGOp;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/8Tpsl5";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z6-20020ac87f86000000b00403c6d9ee71si4055969qtj.635.2023.08.27.17.03.09
+        by mx.google.com with ESMTPS id v20-20020a0cdd94000000b0063d453959fesi2599299qvk.369.2023.08.27.17.05.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 27 Aug 2023 17:03:09 -0700 (PDT)
+        Sun, 27 Aug 2023 17:05:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DMvfzGOp;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/8Tpsl5";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qaPiM-0004kD-6S; Sun, 27 Aug 2023 20:02:42 -0400
+	id 1qaPl3-0006Aa-RT; Sun, 27 Aug 2023 20:05:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qaPiK-0004k0-Sf
- for qemu-arm@nongnu.org; Sun, 27 Aug 2023 20:02:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qaPl0-0006AB-0b
+ for qemu-arm@nongnu.org; Sun, 27 Aug 2023 20:05:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qaPiG-0000lM-Fx
- for qemu-arm@nongnu.org; Sun, 27 Aug 2023 20:02:40 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qaPku-00016L-9y
+ for qemu-arm@nongnu.org; Sun, 27 Aug 2023 20:05:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1693180953;
+ s=mimecast20190719; t=1693181118;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xpHPOqpS/BopQCNTxUES7lap/T1aoNZFxwlnvj3+xR8=;
- b=DMvfzGOpWqdApa3lIiymAIgdBjOSeGknIjp6LilCS/G+fArm74a7UPg+av6Ai/BHHsXKZG
- 193q621ywVlX/t0ks12pD9DV+Ezjf3hUfrgU53GOnKnwjOFh2BxIdRJdlWxfyeJVY5Zogo
- m9l7vOdCStIn5LFEhb3YLzGVYKwyHiM=
-Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
- [209.85.166.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ibbxsoxCKoBvkUXcOjeA5GRQGxS837QbGPrgrI0q1/A=;
+ b=g/8Tpsl5o3GeWffUmOeKIZ8pvO14MIcMGkyukXsjj7u3cEXpfn5M0A2rzwORet0Mt/Fndf
+ DTtuNOUWBdE4v+RkdqgutNnZ3lb2ueN5qThvfqXgHz7bIWYALwRlTgYpGdTawZwj4GXSEr
+ YUYnEFXyIm54sRMiTClHPpOY0WaeAhw=
+Received: from mail-yw1-f198.google.com (mail-yw1-f198.google.com
+ [209.85.128.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-517-GtvFpVkiOFavU1wm-y1NcA-1; Sun, 27 Aug 2023 20:02:31 -0400
-X-MC-Unique: GtvFpVkiOFavU1wm-y1NcA-1
-Received: by mail-io1-f70.google.com with SMTP id
- ca18e2360f4ac-791aeb3f3d4so191453739f.0
- for <qemu-arm@nongnu.org>; Sun, 27 Aug 2023 17:02:31 -0700 (PDT)
+ us-mta-374-9Oe-m1GVNBqmWyEAmZw5Jw-1; Sun, 27 Aug 2023 20:05:17 -0400
+X-MC-Unique: 9Oe-m1GVNBqmWyEAmZw5Jw-1
+Received: by mail-yw1-f198.google.com with SMTP id
+ 00721157ae682-58ee4df08fbso40532627b3.3
+ for <qemu-arm@nongnu.org>; Sun, 27 Aug 2023 17:05:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693180951; x=1693785751;
+ d=1e100.net; s=20221208; t=1693181116; x=1693785916;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xpHPOqpS/BopQCNTxUES7lap/T1aoNZFxwlnvj3+xR8=;
- b=dQTXXFlwiUSRuMV32sBWafYZJElzVLEt9YaisVG4+GaKptFXMBtPVjTsWrZSziPXQC
- PnvIc9eNZoITtAsfYD25bP6nDSLbjlNKzZmyaK0IVkZd6w4RNeyG5aNA+F/1NoIn33NK
- 8PiEqgkc2TPpf9EWeUPPhP/+HT4DG8tuoI+a7fID3U29qHHZ4S8y//7DGUfWAAbfly1j
- CLglK7wYzMvavLj/GQJr95GmVokBkTXJ9AqjLsiY/lqfl3nAoZusjHUmtIRTnd2MRXn8
- R3S5kzCcIElX5O4w4LFgd1w66HnYYGL+hPZ5UrHQ9kCoHyaZr/XOfL8o/QUGiq0HE6zc
- cCaw==
-X-Gm-Message-State: AOJu0YyczBWq4m4TgBufxIDDtncEWgfZZojRNoj5CYXFvuEtt0WZ9aQL
- T8NFONI0qoY3ofGdbv6Ru3JiJ1gP8aqOnQNqVTq1U6JyaR/TjRxhjKqtNHiBqoNQMpMSUBeBe0j
- td4bEHTf6oGKL
-X-Received: by 2002:a6b:d201:0:b0:792:6963:df3b with SMTP id
- q1-20020a6bd201000000b007926963df3bmr12962633iob.14.1693180951058; 
- Sun, 27 Aug 2023 17:02:31 -0700 (PDT)
-X-Received: by 2002:a6b:d201:0:b0:792:6963:df3b with SMTP id
- q1-20020a6bd201000000b007926963df3bmr12962610iob.14.1693180950704; 
- Sun, 27 Aug 2023 17:02:30 -0700 (PDT)
+ bh=ibbxsoxCKoBvkUXcOjeA5GRQGxS837QbGPrgrI0q1/A=;
+ b=MQg3f1RQvX5YNfY+IAG8z+MPKH/Q9HZ57B7fHli67po5JzGB+HuD/YgXFT0jx33Gqe
+ C8XP7iTolc5MkcKYM85EaSxiEutY+o7OykxldwEdDUQiMHP5ScI/JhaMNcol3FhBVBQF
+ CIRsjZklDc+kkShDlDROPrLshtuOwgCPBhcUU9tgtdZ3B9dvPIEr539g2YsWtH/LINRX
+ YudlU6ykPhscvLTfJK5y1b81Vkg2ioM7jFhiIXRVg65AtFPkfrI+5yww0SWFEQzNx8LQ
+ q/4FMHuJIG65O3wcgaD4oFfGbe2JA2EqRkbZJ42x+0HsMYi9jRudgDpMfE5rw9pY+98s
+ ZUGw==
+X-Gm-Message-State: AOJu0YwB05sQIlQA6Am78173weadK2vFFYaoO3VlENh2GXc3alk8sUOP
+ CY5ZAK50v0oj5v1tjNG6t40O9ybrTFxnOM9XqYERPd9IgIVUXBNttum5Ua3DXeqCi+JdZp5LkNs
+ mf0Zs1VMBOZc8
+X-Received: by 2002:a5b:c4d:0:b0:c6c:e4f4:2fb1 with SMTP id
+ d13-20020a5b0c4d000000b00c6ce4f42fb1mr23159085ybr.3.1693181116680; 
+ Sun, 27 Aug 2023 17:05:16 -0700 (PDT)
+X-Received: by 2002:a5b:c4d:0:b0:c6c:e4f4:2fb1 with SMTP id
+ d13-20020a5b0c4d000000b00c6ce4f42fb1mr23159074ybr.3.1693181116446; 
+ Sun, 27 Aug 2023 17:05:16 -0700 (PDT)
 Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
  ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
  by smtp.gmail.com with ESMTPSA id
- y19-20020aa78553000000b00682af93093dsm5339822pfn.45.2023.08.27.17.02.26
+ g10-20020a63b14a000000b00566095dac12sm5920524pgp.19.2023.08.27.17.05.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 27 Aug 2023 17:02:30 -0700 (PDT)
-Message-ID: <9fc460ef-bb6b-8b67-d52a-f2d5aea887f1@redhat.com>
-Date: Mon, 28 Aug 2023 10:02:24 +1000
+ Sun, 27 Aug 2023 17:05:15 -0700 (PDT)
+Message-ID: <4bd99ea8-46de-f66f-8e9e-aa981b26dc43@redhat.com>
+Date: Mon, 28 Aug 2023 10:05:10 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
@@ -115,7 +115,7 @@ X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
@@ -139,7 +139,8 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0R4HadDqRwQR
+X-TUID: hX9OjV9zBrXG
+
 
 Hi Shameer,
 
@@ -164,124 +165,9 @@ On 8/15/23 19:27, Shameer Kolothum wrote:
 >   target/arm/kvm.c         | 62 ++++++++++++++++++++++++++++++++++++++++
 >   3 files changed, 77 insertions(+)
 > 
-> diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-> index 511b42bde5..03a1660d40 100644
-> --- a/include/sysemu/kvm_int.h
-> +++ b/include/sysemu/kvm_int.h
-> @@ -116,6 +116,7 @@ struct KVMState
->       uint64_t kvm_dirty_ring_bytes;  /* Size of the per-vcpu dirty ring */
->       uint32_t kvm_dirty_ring_size;   /* Number of dirty GFNs per ring */
->       bool kvm_dirty_ring_with_bitmap;
-> +    uint64_t kvm_eager_split_size; /* Eager Page Splitting chunk size */
 
-One more space is needed before the comments, to have same alignment as
-we had. Besides, it needs to be initialized to zero in kvm-all.c::kvm_accel_instance_init()
-as we're doing for @kvm_dirty_ring_size.
+[...]
 
->       struct KVMDirtyRingReaper reaper;
->       NotifyVmexitOption notify_vmexit;
->       uint32_t notify_window;
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 29b98c3d4c..6ef7b89013 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -186,6 +186,7 @@ DEF("accel", HAS_ARG, QEMU_OPTION_accel,
->       "                split-wx=on|off (enable TCG split w^x mapping)\n"
->       "                tb-size=n (TCG translation block cache size)\n"
->       "                dirty-ring-size=n (KVM dirty ring GFN count, default 0)\n"
-> +    "                eager-split-size=n (KVM Eager Page Split chunk size, default 0, disabled. ARM only)\n"
->       "                notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)\n"
->       "                thread=single|multi (enable multi-threaded TCG)\n", QEMU_ARCH_ALL)
->   SRST
-> @@ -244,6 +245,19 @@ SRST
->           is disabled (dirty-ring-size=0).  When enabled, KVM will instead
->           record dirty pages in a bitmap.
->   
-> +    ``eager-split-size=n``
-> +        KVM implements dirty page logging at the PAGE_SIZE granularity and
-> +        enabling dirty-logging on a huge-page requires breaking it into
-> +        PAGE_SIZE pages in the first place. KVM on ARM does this splitting
-> +        lazily by default. There are performance benefits in doing huge-page
-> +        split eagerly, especially in situations where TLBI costs associated
-> +        with break-before-make sequences are considerable and also if guest
-> +        workloads are read intensive. The size here specifies how many pages
-> +        to break at a time and needs to be a valid block page size(eg: 4KB |
-> +        2M | 1G when PAGE_SIZE is 4K). Be wary of specifying a higher size as
-> +        it will have an impact on the memory. By default, this feature is
-> +        disabled (eager-split-size=0).
-> +
-
-Since 64KB base page size is another popular option, it's worthy to mention the
-supported block sizes for 64KB base page size. I'm not sure about 16KB though.
-For this, the comments can be improved as below if you agree. With the improvement,
-users needn't look into the code to figure out the valid block sizes.
-
-The size here specifies how many pages to be split at a time and needs to be a valid
-block size, which is 1GB/2MB/4KB, 32MB/16KB and 512MB/64KB for 4KB/16KB/64KB PAGE_SIZE
-respectively.
-
->       ``notify-vmexit=run|internal-error|disable,notify-window=n``
->           Enables or disables notify VM exit support on x86 host and specify
->           the corresponding notify window to trigger the VM exit if enabled.
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index b4c7654f49..6ceba673d9 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -30,6 +30,7 @@
->   #include "exec/address-spaces.h"
->   #include "hw/boards.h"
->   #include "hw/irq.h"
-> +#include "qapi/visitor.h"
->   #include "qemu/log.h"
->   
->   const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-> @@ -247,6 +248,11 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
->       return ret > 0 ? ret : 40;
->   }
->   
-> +static bool kvm_arm_eager_split_size_valid(uint64_t req_size, uint32_t sizes)
-> +{
-> +    return req_size & sizes;
-> +}
-> +
-
-It's worthy to be a inline function.
-
->   int kvm_arch_init(MachineState *ms, KVMState *s)
->   {
->       int ret = 0;
-> @@ -280,6 +286,22 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->           }
->       }
->   
-> +    if (s->kvm_eager_split_size) {
-> +        uint32_t sizes;
-> +
-> +        sizes = kvm_vm_check_extension(s, KVM_CAP_ARM_SUPPORTED_BLOCK_SIZES);
-> +        if (!sizes) {
-> +            s->kvm_eager_split_size = 0;
-> +            warn_report("Eager Page Split support not available");
-> +        } else if (!kvm_arm_eager_split_size_valid(s->kvm_eager_split_size,
-> +                                                   sizes)) {
-> +            error_report("Eager Page Split requested chunk size not valid");
-> +        } else if (kvm_vm_enable_cap(s, KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE, 0,
-> +                                     s->kvm_eager_split_size)) {
-> +            error_report("Failed to set Eager Page Split chunk size");
-
-Lets print the errno here. It's indicative to tell what happens inside the host
-kernel and why it's failing to enable the feature.
-
-		error_report("Enabling of Eager Page Split failed: %s.", strerror(-ret));
-
-> +        }
-> +    }
-> +
->       kvm_arm_init_debug(s);
->   
->       return ret;
-> @@ -1062,6 +1084,46 @@ bool kvm_arch_cpu_check_are_resettable(void)
->       return true;
->   }
 >   
 > +static void kvm_arch_get_eager_split_size(Object *obj, Visitor *v,
 > +                                          const char *name, void *opaque,
@@ -306,43 +192,11 @@ kernel and why it's failing to enable the feature.
 > +    }
 > +
 
-Lets be more obvious here?
+Errors spotted by './scripts/checkpatch.pl', as below:
 
-	error_setg(errp, "Unable to set early-split-size after KVM has been initialized");
-
-> +    if (!visit_type_size(v, name, &value, errp)) {
-> +        return;
-> +    }
-> +
-> +    if (is_power_of_2(value)) {
-> +        error_setg(errp, "early-split-size must be a power of two.");
-> +        return;
-> +    }
-> +
-
-This condition looks wrong to me. 'value = 0' is accepted to disable the early
-page splitting. Besides, we actually need to warn on !is_power_of_2(value)
-
-	if (value && !is_power_of_2(value)) {
-             error_setg(errp, "early-split-size must be a power of two.");
-             return;
-         }
-
-> +    s->kvm_eager_split_size = value;
-> +}
-> +
->   void kvm_arch_accel_class_init(ObjectClass *oc)
->   {
-> +    object_class_property_add(oc, "eager-split-size", "size",
-> +                              kvm_arch_get_eager_split_size,
-> +                              kvm_arch_set_eager_split_size, NULL, NULL);
-> +
-> +    object_class_property_set_description(oc, "eager-split-size",
-> +        "Configure Eager Page Split chunk size for hugepages. (default: 0, disabled)");
-
-"Configure" needs to be dropped since the property has both read/write permission.
-
->   }
+ERROR: line over 90 characters
+#139: FILE: target/arm/kvm.c:1112:
++        error_setg(errp, "Cannot set properties after the accelerator has been initialized");
 
 Thanks,
 Gavin

@@ -1,121 +1,121 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp2686481ejc;
-        Sun, 27 Aug 2023 17:05:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGYsvn1UhN4woYEN+aM0m7GK/N4TKNLPAqhBKM4u2lirjW4t46R2rzqRE5RKmArwBxan55x
-X-Received: by 2002:a0c:dc81:0:b0:63c:dde2:5a20 with SMTP id n1-20020a0cdc81000000b0063cdde25a20mr26636835qvk.0.1693181143698;
-        Sun, 27 Aug 2023 17:05:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693181143; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp2791288ejc;
+        Sun, 27 Aug 2023 22:53:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEBrl+ktzaD71TLRaAyaE7SJhLQi9v/dJFO5g3Xbj85ZLndhgxu/4mL6Q1SNoU0ymGxBJsU
+X-Received: by 2002:a05:622a:18a:b0:410:9bf7:f51c with SMTP id s10-20020a05622a018a00b004109bf7f51cmr24574831qtw.49.1693202006609;
+        Sun, 27 Aug 2023 22:53:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693202006; cv=none;
         d=google.com; s=arc-20160816;
-        b=WkVAJxzAV7BGQXnqX/lS2Ac/IgHNcy6fhdiVNjWrF4Bh9LvwpGGz3CIKxBPlrYXJrZ
-         xGg4ZeVytcovB8g8TSRRlS2bRXowrBekO0Dn/+qqUllIK14by2PCaKGb2QMVLRG6/oYY
-         za2e+0wn5uV9htsGvSkhhJlB06jihAfYYQW3bBQataiHF2rfmZzYy++MOY0ytzWSl6Tj
-         rn2U0QBIxLpBJxY7Cm+xbjAlqYm39pB6TjBbQlO3adZVhZ36Jj2Ys7N8kD0Eu+cGr0ac
-         lAALVRnn9ijYFBdTaUkprxhnSlMhqpVN2wi+zCkgVlsgPsWoPRDdsLmh1Pmiv7xtvtz5
-         BNHw==
+        b=a/yIunDNOVFuAsGsVv5nr6Tphs99FkxzD6EclrRfqi5H7mtlAIXtH+2mIcBXwlIEdX
+         +LqLysnGqD0PYC/iU+LbwICZoQh2ynMsdKXXwCu5grYbBWBvdEs3w5vxk3BYOrwluose
+         PS9wa5vkqfviZKwsmuzMM6iU0V/Fj9jJ4qVs7fqdF5cUg6dlVzLM4JquYzVviIyMYjI5
+         Ned3LB4m3eS8HRfdLOMKA/IyyUjirc7B3TIckaVu7kZAqE2qA1RTutABOfMDT277UshV
+         gwkMFDdhWe1EkAxhiXOMLy0O+gR/GcqnxdABEapy/sNFJik3ZrhirT0WP9giGOXEDwgc
+         B3rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:from:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ibbxsoxCKoBvkUXcOjeA5GRQGxS837QbGPrgrI0q1/A=;
-        fh=FlL2vwXm5t7Wqdka0+/pww+HVy3xKwVN1Pa+X1z19WY=;
-        b=XsNrelJsbM4QMZaaabIagNLHd25wedM3vY9LEOTGlBRNKr4/0Y/rel99njbfZ6WdAh
-         Yc/DYfm4gThcV7vbF5FLWO/Ye45T4A96XKW3HvdIvCqPC0UzEhKSaB0AzeW8dyEZsCyp
-         zSPRITZFWTi0hmg7EmQn5YQM+staGg2T3Q2VT+BeI0SlEISdoyOtllc8TbUN1NXO/4DF
-         iosuiR/1kS9wTLuM2R/6l0FqXpZ7Cw1vZcnSzwcS8HdrZGq2EIyEq2+aYp+WDexc+CuX
-         uoTjr0nAYPIpXXbcWWHTL0RS+20JWI4VyEqgAgJfe4Rrr9PD5MnUHGPuvAmlWUcXgsFE
-         +rUQ==
+        bh=wwtUsOUVBZeWYQBTl04B2bpXYlQCvc5VNPgH/+En7fg=;
+        fh=IMDJiWjKw/NXyQcApkVEEe4t38zkTbW/kp1lqzNWEkM=;
+        b=Tnm/mSd5LflyT9HB6y2pZpVhZqI5bBn0X6BvQrh2UfprU95l3a8qH6KktZCzd+RVgd
+         ZWvvhWXGoUv1vHY4H/DlH0maAOs/fVTRczPL1RlwyQq0FeKsNAKD/USgfCicew2iobBV
+         1rYrb+DlMge/WkfYFSjpY/DqxedtR+JKON+8fnbRuY6KnaIJCQUmg7FX8qrNq2Nu14Cm
+         SsG2GiEBj5QMba6MHsmf0Ql+xnAlAr7QbajRyr9V50ldKAeNTiuUtoFQCoXHzeu3S+BT
+         HR1I3obRFONOrMnmc0552/ACubaNxcpNI1vfqjcprdqTMnxM9sHhEfNmEnShb8NBviUF
+         gM0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/8Tpsl5";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Exu463q1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v20-20020a0cdd94000000b0063d453959fesi2599299qvk.369.2023.08.27.17.05.43
+        by mx.google.com with ESMTPS id h5-20020ac87d45000000b00410a4cb9039si2081272qtb.157.2023.08.27.22.53.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 27 Aug 2023 17:05:43 -0700 (PDT)
+        Sun, 27 Aug 2023 22:53:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/8Tpsl5";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Exu463q1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qaPl3-0006Aa-RT; Sun, 27 Aug 2023 20:05:33 -0400
+	id 1qaVBR-0005u8-T7; Mon, 28 Aug 2023 01:53:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qaPl0-0006AB-0b
- for qemu-arm@nongnu.org; Sun, 27 Aug 2023 20:05:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qaVBQ-0005tr-5U
+ for qemu-arm@nongnu.org; Mon, 28 Aug 2023 01:53:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qaPku-00016L-9y
- for qemu-arm@nongnu.org; Sun, 27 Aug 2023 20:05:22 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qaVBN-0002yp-J3
+ for qemu-arm@nongnu.org; Mon, 28 Aug 2023 01:53:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1693181118;
+ s=mimecast20190719; t=1693201954;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ibbxsoxCKoBvkUXcOjeA5GRQGxS837QbGPrgrI0q1/A=;
- b=g/8Tpsl5o3GeWffUmOeKIZ8pvO14MIcMGkyukXsjj7u3cEXpfn5M0A2rzwORet0Mt/Fndf
- DTtuNOUWBdE4v+RkdqgutNnZ3lb2ueN5qThvfqXgHz7bIWYALwRlTgYpGdTawZwj4GXSEr
- YUYnEFXyIm54sRMiTClHPpOY0WaeAhw=
-Received: from mail-yw1-f198.google.com (mail-yw1-f198.google.com
- [209.85.128.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=wwtUsOUVBZeWYQBTl04B2bpXYlQCvc5VNPgH/+En7fg=;
+ b=Exu463q1XtaivRLCi6AA9QpQ2391Ffay/W3uBduns1OsBtRyA8DO2OL6l0ee9K8pDYH2ZJ
+ 3EpOIHyrrlE4dk4kpFRYm5qIsd3EJdejrNqdTJBkKEI9jJ+/OFzhuGGMsPFS7nLBsqfkEf
+ sHZj6fk85GGJbKv7AQfIXbCnxJY7slA=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-374-9Oe-m1GVNBqmWyEAmZw5Jw-1; Sun, 27 Aug 2023 20:05:17 -0400
-X-MC-Unique: 9Oe-m1GVNBqmWyEAmZw5Jw-1
-Received: by mail-yw1-f198.google.com with SMTP id
- 00721157ae682-58ee4df08fbso40532627b3.3
- for <qemu-arm@nongnu.org>; Sun, 27 Aug 2023 17:05:17 -0700 (PDT)
+ us-mta-81-fUn6M_07PZqsLAjx8XcHqg-1; Mon, 28 Aug 2023 01:52:33 -0400
+X-MC-Unique: fUn6M_07PZqsLAjx8XcHqg-1
+Received: by mail-ej1-f69.google.com with SMTP id
+ a640c23a62f3a-94a355c9028so210389766b.3
+ for <qemu-arm@nongnu.org>; Sun, 27 Aug 2023 22:52:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693181116; x=1693785916;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20221208; t=1693201952; x=1693806752;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ibbxsoxCKoBvkUXcOjeA5GRQGxS837QbGPrgrI0q1/A=;
- b=MQg3f1RQvX5YNfY+IAG8z+MPKH/Q9HZ57B7fHli67po5JzGB+HuD/YgXFT0jx33Gqe
- C8XP7iTolc5MkcKYM85EaSxiEutY+o7OykxldwEdDUQiMHP5ScI/JhaMNcol3FhBVBQF
- CIRsjZklDc+kkShDlDROPrLshtuOwgCPBhcUU9tgtdZ3B9dvPIEr539g2YsWtH/LINRX
- YudlU6ykPhscvLTfJK5y1b81Vkg2ioM7jFhiIXRVg65AtFPkfrI+5yww0SWFEQzNx8LQ
- q/4FMHuJIG65O3wcgaD4oFfGbe2JA2EqRkbZJ42x+0HsMYi9jRudgDpMfE5rw9pY+98s
- ZUGw==
-X-Gm-Message-State: AOJu0YwB05sQIlQA6Am78173weadK2vFFYaoO3VlENh2GXc3alk8sUOP
- CY5ZAK50v0oj5v1tjNG6t40O9ybrTFxnOM9XqYERPd9IgIVUXBNttum5Ua3DXeqCi+JdZp5LkNs
- mf0Zs1VMBOZc8
-X-Received: by 2002:a5b:c4d:0:b0:c6c:e4f4:2fb1 with SMTP id
- d13-20020a5b0c4d000000b00c6ce4f42fb1mr23159085ybr.3.1693181116680; 
- Sun, 27 Aug 2023 17:05:16 -0700 (PDT)
-X-Received: by 2002:a5b:c4d:0:b0:c6c:e4f4:2fb1 with SMTP id
- d13-20020a5b0c4d000000b00c6ce4f42fb1mr23159074ybr.3.1693181116446; 
- Sun, 27 Aug 2023 17:05:16 -0700 (PDT)
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
- ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
- by smtp.gmail.com with ESMTPSA id
- g10-20020a63b14a000000b00566095dac12sm5920524pgp.19.2023.08.27.17.05.12
+ bh=wwtUsOUVBZeWYQBTl04B2bpXYlQCvc5VNPgH/+En7fg=;
+ b=d+Iy9nW+7ee/qvs3F014ReDzaaKRxYnM/b74mv8wQgGa/LzGqwvSlvqVybeGJ3iTpy
+ SuNLYFk0yzpJy8/Nk7rIUnfqlKfWfXK4/n877g26K7BFHuwmx6Jp5M81tRUpzer/BCv/
+ KkTduq63BMMO9fWe7AvK9SXOLKvmTgMtHy5LZCOM/heBDmpiw+fpr/Fx++19xdLXWnUl
+ TZJtc0y+Qd/36Xhmxv9Om1qemDdDiuNGENQdEunzVkOGHiQBaiJ9+eqE9nWoRjnS5jFZ
+ m0qjT/6dX9AH1V+hNlcytPykIgy3SCW21mzAJwP3nTIT5YY48ELDl0EGnuP8OCxNEIbd
+ 8DxQ==
+X-Gm-Message-State: AOJu0YxFHMgxuvyKGwHH5lt2jRxnXZg9+oJlKosG2Z0gvNS28uRfmJ3Y
+ MdHtL6PnA05i5jIuCnNzGH7w5d2UvTqj18DOr8/y173P/PMFeRMm1bJgtRD0vt9vOTpyamUJvC8
+ o7Tfx5TV4vIsz
+X-Received: by 2002:a17:906:748c:b0:9a1:ffec:aadd with SMTP id
+ e12-20020a170906748c00b009a1ffecaaddmr7019782ejl.56.1693201951989; 
+ Sun, 27 Aug 2023 22:52:31 -0700 (PDT)
+X-Received: by 2002:a17:906:748c:b0:9a1:ffec:aadd with SMTP id
+ e12-20020a170906748c00b009a1ffecaaddmr7019763ejl.56.1693201951674; 
+ Sun, 27 Aug 2023 22:52:31 -0700 (PDT)
+Received: from [192.168.8.103] (tmo-098-91.customers.d1-online.com.
+ [80.187.98.91]) by smtp.gmail.com with ESMTPSA id
+ e8-20020a170906044800b009a57d30df89sm3918282eja.132.2023.08.27.22.52.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 27 Aug 2023 17:05:15 -0700 (PDT)
-Message-ID: <4bd99ea8-46de-f66f-8e9e-aa981b26dc43@redhat.com>
-Date: Mon, 28 Aug 2023 10:05:10 +1000
+ Sun, 27 Aug 2023 22:52:31 -0700 (PDT)
+Message-ID: <6d153709-8099-7737-8fbd-3988a35af71a@redhat.com>
+Date: Mon, 28 Aug 2023 07:52:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v2] arm/kvm: Enable support for
- KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, ricarkol@google.com, kvm@vger.kernel.org,
- jonathan.cameron@huawei.com, linuxarm@huawei.com
-References: <20230815092709.1290-1-shameerali.kolothum.thodi@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230815092709.1290-1-shameerali.kolothum.thodi@huawei.com>
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v1 2/7] hw/fsi: Introduce IBM's scratchpad
+To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org, clg@kaod.org, 
+ peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ philmd@linaro.org
+Cc: qemu-arm@nongnu.org
+References: <20230825203046.3692467-1-ninad@linux.ibm.com>
+ <20230825203046.3692467-3-ninad@linux.ibm.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230825203046.3692467-3-ninad@linux.ibm.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
@@ -124,7 +124,7 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  NICE_REPLY_A=-0.414, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01,
  RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,65 +139,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hX9OjV9zBrXG
+X-TUID: PsS4MPnVIklg
 
-
-Hi Shameer,
-
-On 8/15/23 19:27, Shameer Kolothum wrote:
-> Now that we have Eager Page Split support added for ARM in the kernel,
-> enable it in Qemu. This adds,
->   -eager-split-size to -accel sub-options to set the eager page split chunk size.
->   -enable KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE.
+On 25/08/2023 22.30, Ninad Palsule wrote:
+> This is a part of patchset where IBM's Flexible Service Interface is
+> introduced.
 > 
-> The chunk size specifies how many pages to break at a time, using a
-> single allocation. Bigger the chunk size, more pages need to be
-> allocated ahead of time.
+> The LBUS device is embeded inside the scratchpad. The scratchpad
+> provides a non-functional registers. There is a 1-1 relation between
+> scratchpad and LBUS devices. Each LBUS device has 1K memory mapped in
+> the LBUS.
 > 
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
 > ---
-> RFC v1: https://lore.kernel.org/qemu-devel/20230725150002.621-1-shameerali.kolothum.thodi@huawei.com/
->    -Updated qemu-options.hx with description
->    -Addressed review comments from Peter and Gavin(Thanks).
-> ---
->   include/sysemu/kvm_int.h |  1 +
->   qemu-options.hx          | 14 +++++++++
->   target/arm/kvm.c         | 62 ++++++++++++++++++++++++++++++++++++++++
->   3 files changed, 77 insertions(+)
+>   hw/fsi/Kconfig                     |   4 ++
+>   hw/fsi/engine-scratchpad.c         | 100 +++++++++++++++++++++++++++++
+>   hw/fsi/meson.build                 |   1 +
+>   include/hw/fsi/engine-scratchpad.h |  32 +++++++++
+>   4 files changed, 137 insertions(+)
+>   create mode 100644 hw/fsi/engine-scratchpad.c
+>   create mode 100644 include/hw/fsi/engine-scratchpad.h
 > 
-
-[...]
-
->   
-> +static void kvm_arch_get_eager_split_size(Object *obj, Visitor *v,
-> +                                          const char *name, void *opaque,
-> +                                          Error **errp)
-> +{
-> +    KVMState *s = KVM_STATE(obj);
-> +    uint64_t value = s->kvm_eager_split_size;
+> diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
+> index 687449e14e..2a9c49f2c9 100644
+> --- a/hw/fsi/Kconfig
+> +++ b/hw/fsi/Kconfig
+> @@ -1,2 +1,6 @@
+> +config SCRATCHPAD
+> +    bool
+> +    select LBUS
 > +
-> +    visit_type_size(v, name, &value, errp);
-> +}
-> +
-> +static void kvm_arch_set_eager_split_size(Object *obj, Visitor *v,
-> +                                          const char *name, void *opaque,
-> +                                          Error **errp)
-> +{
-> +    KVMState *s = KVM_STATE(obj);
-> +    uint64_t value;
-> +
-> +    if (s->fd != -1) {
-> +        error_setg(errp, "Cannot set properties after the accelerator has been initialized");
-> +        return;
-> +    }
-> +
+>   config LBUS
+>       bool
 
-Errors spotted by './scripts/checkpatch.pl', as below:
+The config names sound pretty generic ... could you maybe name them 
+FSI_SCRATCHPAD and FSI_LBUS instead?
 
-ERROR: line over 90 characters
-#139: FILE: target/arm/kvm.c:1112:
-+        error_setg(errp, "Cannot set properties after the accelerator has been initialized");
+  Thomas
 
-Thanks,
-Gavin
 

@@ -1,88 +1,152 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp1261003ejc;
-        Fri, 25 Aug 2023 02:13:54 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGfDgTovUzx6novnOb2bm/Fg6F7C8irlVrhS2oIx3KTio3VdFY1Aq3mQ05XIgWF+9SSPVOn
-X-Received: by 2002:a2e:3c11:0:b0:2bc:d889:2d89 with SMTP id j17-20020a2e3c11000000b002bcd8892d89mr6850555lja.44.1692954834140;
-        Fri, 25 Aug 2023 02:13:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1692954834; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp2861517ejc;
+        Mon, 28 Aug 2023 02:01:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEUDCc68PNY6aAp9a/LL5sKBpmvHCY9yM2tphPRWixztNMOXI+frrI7o9XcaMPsIDoEz9vL
+X-Received: by 2002:a0c:c247:0:b0:647:18f8:36eb with SMTP id w7-20020a0cc247000000b0064718f836ebmr35558347qvh.27.1693213301498;
+        Mon, 28 Aug 2023 02:01:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693213301; cv=none;
         d=google.com; s=arc-20160816;
-        b=NLJI22JEAZoAeCxGKxk1FsFnTvfEl30pxAUbCvUTqvd1chYbC1gwenhLC0cSQrmA46
-         YS7pbxgUJoYYn5r8h04f0lMsgHk6kcpLYCVV1aElRi72zRx2RPvFRr1tlz5MeLAp4AHX
-         rMQ1sNvpACDzuKCgNj65ftKhv+M/TiRJobgCb34Bwue44tiskGGUqssAQTgKdXWM/LZT
-         ixJYwJRIkx2oKqgwVTGT4DQJWUbGVntB9bYCb7md7fXlqEkJvqs1xaLtmPHbHpqHnOPL
-         6Wf9hsjtDHghisYpPqBo6AYmiS2w9BUV9WbgbR626dpjPUcs3ZsgIwL+zb5ezn/Ugh2i
-         AHiQ==
+        b=us/jooq6KUM8YlEBp26OMzA5pQ/MgTsYfRLg3fK0sWCQ8F8wbzU3bzx4T9lKyE1qp4
+         yFi7gFDiCgVkZRMR2LjhkygrOt4/X9COLqXotHHhUW8muBPtshvjaTlHHv3vvvk0Ww7/
+         L8UlHYSI/xDKEdBTJZvNzoPBvIADVAAONOkX9nn3W1g9Cg6Y/TY/Jzm7pdfVmZ7FgYX+
+         dnBg2iD8gSUVnSthkV6A8cs0Mo6lN5+Voi+9sRwHgmQyBJeQ1ItY6Ld0rhU5dgxiiJxR
+         m8lAWQdwKCCBo1U4pnBYSqH/RBvYSf9Fsv9eM90w58drzueVPcJSruhtXa7+ZpgOMKvt
+         CfVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=AD0hGnH+8ytNjJUy2zBgU3wM8IjHIM1YchR6by9t0Tg=;
-        fh=jsIeZ0b/TaDicE8p632+oUq1qz0GT6bvbzWCj6/50b0=;
-        b=oVJbfX6Xg3PNSKdsPx7AAA4ZBWnmRAYsgN6FqmPeJo0niXjnwOdYiPCvmwlO/Xovck
-         c3y+cdoI0pQ5OfskYVYbfK3JInaIU9HUsfhq1IY3c4F86ZuaE5XEERfCI6HZnsJRhfgi
-         tYFsXwOqJZKvO/EizpYWweJucgubYrCfWPX2nkQ9hMmZGNl4hC60w58xBn8R2/U8YPQO
-         rH3sC+ktoxU06k/9KCj85RoL/RBk64IFLmzvjzLDu3O2C/VD62xJCNOrRiZMPXurSbEn
-         GWdhwDMGBpvcR8NrsqlCpPYgjrePbQCVtRLunol72VFPI8Tlqjq/DPBcQm4uTa9nR+h1
-         DVCg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=aaGH28yiUBUIMO4+aOJy5c8C71JQpsiBHEvvNCuESRk=;
+        fh=d4RmNI9fgM2+16SHaHAZOINZPaITjYl9Mn96OMI2zUY=;
+        b=DgBy092qnRucJSYumbHb0noMhIbcaTs59dsqWBv3U33LjdpiOQzGwO3Z+HPhJJ7GjS
+         Thxexp4kVYKeJt3UIJYPqK19Ytu9eT7DOveZUOv67q0pjcT6QwZJUqa4DHcabwaCMakC
+         TRCqiGx6Ta2/jRItcWDmL1iw5cuHvaFVxJLrN5AGTrj1faNFM5ENY7WT318Ueh910ug0
+         lC4EnpsfunjYI23H3nwdHgpGthNdaao94cMsqCxq3BA7QhaOBI9nwe3Ojf1hFQfNqs6P
+         fwyeCXuBgLrImoZ+fRDTvGAXtxeiujiauqlD3t/+eFxnDeW8h+6ZtwGNSAk7Uv9ZctyI
+         Uunw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) smtp.mailfrom=mjt@tls.msk.ru
-Return-Path: <mjt@tls.msk.ru>
-Received: from isrv.corpit.ru (isrv.corpit.ru. [86.62.121.231])
-        by mx.google.com with ESMTPS id h17-20020a2e3a11000000b002bcb8a89211si407762lja.540.2023.08.25.02.13.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Aug 2023 02:13:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) client-ip=86.62.121.231;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u3-20020a0cdd03000000b0063cd7637668si4230340qvk.233.2023.08.28.02.01.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 28 Aug 2023 02:01:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) smtp.mailfrom=mjt@tls.msk.ru
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 36E321CD9F;
-	Fri, 25 Aug 2023 12:14:15 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
-	by tsrv.corpit.ru (Postfix) with ESMTP id AD35D21BEB;
-	Fri, 25 Aug 2023 12:13:52 +0300 (MSK)
-Message-ID: <1eb41c65-7557-49b2-8a3a-bd8459791a17@tls.msk.ru>
-Date: Fri, 25 Aug 2023 12:13:52 +0300
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qaY7i-0001vY-2L; Mon, 28 Aug 2023 05:01:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=DaUQ=EN=kaod.org=clg@ozlabs.org>)
+ id 1qaY7g-0001tv-7R; Mon, 28 Aug 2023 05:01:24 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=DaUQ=EN=kaod.org=clg@ozlabs.org>)
+ id 1qaY7c-0002qv-RB; Mon, 28 Aug 2023 05:01:23 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4RZ4Kl2j0rz4wxy;
+ Mon, 28 Aug 2023 19:01:15 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4RZ4Kf4Lwmz4wxx;
+ Mon, 28 Aug 2023 19:01:10 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Hang Yu <francis_yuu@stu.pku.edu.cn>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH] tests/avocado/machine_aspeed.py: Update SDK images
+Date: Mon, 28 Aug 2023 11:01:01 +0200
+Message-ID: <20230828090101.74357-1-clg@kaod.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Subject: Re: [PATCH v2 01/12] gitlab: enable ccache for many build jobs
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Cc: Beraldo Leal <bleal@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, Yonggang Luo <luoyonggang@gmail.com>,
- qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-s390x@nongnu.org,
- Akihiko Odaki <akihiko.odaki@daynix.com>, qemu-arm@nongnu.org,
- Juan Quintela <quintela@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- David Hildenbrand <david@redhat.com>, Greg Kurz <groug@kaod.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-References: <20230824163910.1737079-1-alex.bennee@linaro.org>
- <20230824163910.1737079-2-alex.bennee@linaro.org>
- <20abecb3-b330-0303-0f4a-b0b5d0cfade1@tls.msk.ru>
- <97490761-c138-d496-c59a-f71b86e57c3d@linaro.org>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <97490761-c138-d496-c59a-f71b86e57c3d@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: FCaVWDI+7Nk9
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=DaUQ=EN=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: d1RnNneetUBP
 
-25.08.2023 11:34, Philippe Mathieu-Daudé wrote:
-...
-> __FILE__ is used by assert() family, some DEBUG_PRINTF(), but mainly
-> by "qapi/error.h", so all error_setg*() calls.
-> 
-> This has been bugging me since quite some time, since if you build
-> the same QEMU in different paths (usually on different machines) then
-> the output doesn't match.
-> 
-> GCC 8 & Clang 10 provides -ffile-prefix-map, but
+Switch to the latest v8.06 release which introduces interesting
+changes for the AST2600 I2C and I3C models. Also take the AST2600 A2
+images instead of the default since QEMU tries to model The AST2600 A3
+SoC.
 
-This option is automatically enabled on debian.  Still, ccache does
-not use the old cache contents when building in a different directory.
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
 
-/mjt
+  Requires patches from Hang Yu [1]
+  
+  [1] https://lore.kernel.org/qemu-devel/20230812065230.8839-1-francis_yuu@stu.pku.edu.cn/
+
+
+ tests/avocado/machine_aspeed.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 724ee72c0208..90f1b7cb77a1 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -316,8 +316,8 @@ def test_arm_ast2500_evb_sdk(self):
+         """
+ 
+         image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+-                     'download/v08.01/ast2500-default-obmc.tar.gz')
+-        image_hash = ('5375f82b4c43a79427909342a1e18b4e48bd663e38466862145d27bb358796fd')
++                     'download/v08.06/ast2500-default-obmc.tar.gz')
++        image_hash = ('e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
+         archive.extract(image_path, self.workdir)
+@@ -334,8 +334,8 @@ def test_arm_ast2600_evb_sdk(self):
+         """
+ 
+         image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+-                     'download/v08.01/ast2600-default-obmc.tar.gz')
+-        image_hash = ('f12ef15e8c1f03a214df3b91c814515c5e2b2f56119021398c1dbdd626817d15')
++                     'download/v08.06/ast2600-a2-obmc.tar.gz')
++        image_hash = ('9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
+         archive.extract(image_path, self.workdir)
+@@ -345,8 +345,8 @@ def test_arm_ast2600_evb_sdk(self):
+         self.vm.add_args('-device',
+                          'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
+         self.do_test_arm_aspeed_sdk_start(
+-            self.workdir + '/ast2600-default/image-bmc')
+-        self.wait_for_console_pattern('nodistro.0 ast2600-default ttyS4')
++            self.workdir + '/ast2600-a2/image-bmc')
++        self.wait_for_console_pattern('nodistro.0 ast2600-a2 ttyS4')
+ 
+         self.ssh_connect('root', '0penBmc', False)
+         self.ssh_command('dmesg -c > /dev/null')
+-- 
+2.41.0
+

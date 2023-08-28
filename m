@@ -1,107 +1,87 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp3013933ejc;
-        Mon, 28 Aug 2023 06:55:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IECLX9hZiAsRp2XlDbld1w58mNWy+bSbivY5CSwJ9FjRB4um5+z01RY7oDgRnfnLKMg0Gtn
-X-Received: by 2002:a05:6358:e48f:b0:133:84c:a085 with SMTP id by15-20020a056358e48f00b00133084ca085mr23348644rwb.1.1693230921753;
-        Mon, 28 Aug 2023 06:55:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693230921; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp3041811ejc;
+        Mon, 28 Aug 2023 07:33:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFMJrrNmMTEv5ytQg8Nc8JS1dsxnxBQ7SHEN5wMiPT+FqNBczp2kGf9S8+iLYRf+ZSc6Jwm
+X-Received: by 2002:a67:cd04:0:b0:44e:9dd2:4dab with SMTP id u4-20020a67cd04000000b0044e9dd24dabmr9221595vsl.16.1693233213718;
+        Mon, 28 Aug 2023 07:33:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693233213; cv=none;
         d=google.com; s=arc-20160816;
-        b=w5jNwujrguRbaufYK6HeVhg3E68St53mCDDktFdz3wGF8kGWp3RBf6Yll1VZIHxNdy
-         uidx1y6uQ8w2g6hG1Nn1WuKyOjjy+qG4Gg3Wmk4och0srHIofAT75TkZaBz+jzuP7+FF
-         8rfSvBbb95KHs3n9i1i174c/PF9UaHn+4LEEy+hQc360d02/afawTXv52zlf16MEp+6D
-         Dl6iGdYMuTMDsRQ5YTrhmQYSwD1+3z5HswjdUmSfya0nfKISim3M9ktcr8c6pENJcbFH
-         c44YnUsnbGEJ+BFRTTuWE9d+MHcgKvlT5cCboD63PkzPlhmjjwpf25y8WqHuvTXe0bls
-         HYAw==
+        b=NEhGMx5Evgy+SFq1iD9dNMTZNeuamMel6qGmIdBoUqdb0rD9x9c9Y4a4IUGfgXuGjf
+         RU3VedQ4bOuWfFFXASqCHGNP7I3vfDs11xrBl27IN70P1Bf8+JyytD2KoKxhuG1SWnFh
+         YEyGn6QN6AT52QnYRUdxriRgC1Fz/7d1wuaQJwtxC4+st562iVm6wKREjGxtRhPL6+ku
+         1+evlZlcHmt40C+E86HO6NBikis57EixbxdknXs76E0XYg3Sik0dHMDBnmopEzgqcn3q
+         m2dzLkuu6gZ01a76PS1jw/ZSxi9IQfNb2vUYpvRIcPs2ilMn5YZzwJEaDQlMN8lptGHg
+         v9/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=ZkuNOEu8z3nGdSdxiZcGzrZgMXnvKJUHQ+2W1hwOFhs=;
-        fh=tq1pEzpNjRn/2DzdUbKtgGbbW+NButvAbSSOxRMP7Wo=;
-        b=qOo2YJ67RU/h52+Z1Z/7owgiP1dGBtu5O0O23apHgd8ceIP0AlwAoSLyEc2oIHo3A3
-         xCwCfoA1rcy9PsBftcWUj6tCm8uAdl1mgBia+Z19S0Wx3FrW3lzL1r21IzfxUlhys+Vc
-         1LiobuXaPQbLAsfkdbzPEmzBARDgs77psTixE9fFgFBEZO0HLvYIgoD3c42Qj+02qhyW
-         G283Z2mu4lL8FyEtPPq6zxrJD6UcD5EjTabM0BXDcxgfnPOxg9F2iWJzJqFF2dnApwqX
-         Hey4hGmMOt0h8+fhkQBYhVuhAhkCRYFIJYkP962fBjtwy/o0oCayf3nOpJ5ZYSR6M9r8
-         ZPYA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=1tkvq2ZT4yHiHl98a1u1YZcY2mobYb8h5KCmHs3pH0s=;
+        fh=5zkn8Ocs0EOIixunaXokMyeRJ4vvr5nZHaoXqhNtN8M=;
+        b=pqLXaZAeEVNSHsf6qy5ihQFOzgCgSdMUtqgEMwlU9Hbm6zrLCV0OVfWd17Nstp6F9q
+         wqhJ2T/BNeTnKdC+c5zI0Qmzu5wqwbg3kaTtKAznH3h8G1JBj+KDkZltGS0cQ0TL3mNm
+         USHRIcp4KBlantAKmAhpjCTEU8n0Am/f9rDNvs0cd8s9F0VQix9PMMJ7sVbuxn1hw/sS
+         V+kiXGyXPcmEPG26tbG0PuovL+Q1UMpjYys9fZImtel/pSEIiHFxugDe9d9B9HEAPf94
+         U+lWHrWojM/BmsiRYjEMqpGdOEZLg/pD/L0uJXqLy0GAH/83pabr8Hjs7m/0DO4DsqQ5
+         81/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=SOEVcoHx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u16-20020a0cf1d0000000b0063d0cf6f1dcsi4613853qvl.476.2023.08.28.06.55.21
+        by mx.google.com with ESMTPS id a4-20020a67d304000000b0044d486da238si704080vsj.216.2023.08.28.07.33.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Aug 2023 06:55:21 -0700 (PDT)
+        Mon, 28 Aug 2023 07:33:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=SOEVcoHx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qachb-0005eA-8l; Mon, 28 Aug 2023 09:54:47 -0400
+	id 1qadIw-00046B-S4; Mon, 28 Aug 2023 10:33:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1qachX-0005dL-7E; Mon, 28 Aug 2023 09:54:43 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1qachT-00048x-Ej; Mon, 28 Aug 2023 09:54:42 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-99357737980so415077966b.2; 
- Mon, 28 Aug 2023 06:54:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=jms.id.au; s=google; t=1693230877; x=1693835677;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ZkuNOEu8z3nGdSdxiZcGzrZgMXnvKJUHQ+2W1hwOFhs=;
- b=SOEVcoHxGttpzoWg7Z3DRCCGwDFRchzw4M2wGnTyXuO8Kd1Pz5VL1Tz7eWwT2iq2vY
- /tgUFDedcJ+18T9XhNMHbd1ekAyuN/sJqCZbQkVJG2c3oXIzLLtXp7z8EKS77f0YouuS
- j7zalJdHiINKEuz9fRufzFWQCTDPIDziagVlE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693230877; x=1693835677;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ZkuNOEu8z3nGdSdxiZcGzrZgMXnvKJUHQ+2W1hwOFhs=;
- b=ZPFsmjB7fq5RW8TbDVwSbzD/HZDBzBq9kzDz6GMrlGnQTjf5mraaC49FI90AfsZcgI
- oXyoAA1eD3v3WCHkZKiZaBNMSqw3GzpAHoJ9UZRZU/5xom94+pVwDyZYir38alAV/SZg
- lFRFK/WvJZ24ARS60+SVA3YUtBx5Cm2eBC2kDDlyGh0jDs8fyqVJxc3OkDfDLspaAVNt
- tUvXHEel/lYmcoq9Q9LValXFbmIp8dovQaIjvCCxu10ZmGhcXmrVFFmeRHJ4vzQuT76I
- 0AfpwaVVnBGb1VLTLZylRXiPaANKOol1XXAmu8W+fYTcVTjzkbG2/0o22Jr5CMX57sVw
- YsUg==
-X-Gm-Message-State: AOJu0YzTMqSi0DijOgye4XH3qlldZSiy7nmT+YSXn8Xc684smvhydiSv
- eSaKahf42yyKlBeF6KoRQ8JFfS+5dDUdlXbKwo8=
-X-Received: by 2002:a17:906:5199:b0:9a1:b6e1:c2e with SMTP id
- y25-20020a170906519900b009a1b6e10c2emr15260954ejk.33.1693230877062; Mon, 28
- Aug 2023 06:54:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <SRS0=DaUQ=EN=kaod.org=clg@ozlabs.org>)
+ id 1qadIw-00045v-C5; Mon, 28 Aug 2023 10:33:22 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=DaUQ=EN=kaod.org=clg@ozlabs.org>)
+ id 1qadIt-0004ad-60; Mon, 28 Aug 2023 10:33:22 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4RZChn2sZJz4wy0;
+ Tue, 29 Aug 2023 00:33:13 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4RZChj1bLDz4wxx;
+ Tue, 29 Aug 2023 00:33:08 +1000 (AEST)
+Message-ID: <7930d670-8d1d-04a2-d8c8-83fa48b19681@kaod.org>
+Date: Mon, 28 Aug 2023 16:33:03 +0200
 MIME-Version: 1.0
-References: <20230828090101.74357-1-clg@kaod.org>
-In-Reply-To: <20230828090101.74357-1-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Mon, 28 Aug 2023 13:54:24 +0000
-Message-ID: <CACPK8XfMn5PJaM9dBkck=jxhLuusJmGnAv_RE3Dp-kdezYM+-A@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
 Subject: Re: [PATCH] tests/avocado/machine_aspeed.py: Update SDK images
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, 
+Content-Language: en-US
+To: Joel Stanley <joel@jms.id.au>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  Hang Yu <francis_yuu@stu.pku.edu.cn>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+References: <20230828090101.74357-1-clg@kaod.org>
+ <CACPK8XfMn5PJaM9dBkck=jxhLuusJmGnAv_RE3Dp-kdezYM+-A@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CACPK8XfMn5PJaM9dBkck=jxhLuusJmGnAv_RE3Dp-kdezYM+-A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=DaUQ=EN=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -37
+X-Spam_score: -3.8
+X-Spam_bar: ---
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-2.169, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,80 +96,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Z6CsuvoQX2Xs
+X-TUID: NgvlwR4TeRnw
 
-On Mon, 28 Aug 2023 at 09:01, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> Switch to the latest v8.06 release which introduces interesting
-> changes for the AST2600 I2C and I3C models. Also take the AST2600 A2
-> images instead of the default since QEMU tries to model The AST2600 A3
-> SoC.
+On 8/28/23 15:54, Joel Stanley wrote:
+> On Mon, 28 Aug 2023 at 09:01, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> Switch to the latest v8.06 release which introduces interesting
+>> changes for the AST2600 I2C and I3C models. Also take the AST2600 A2
+>> images instead of the default since QEMU tries to model The AST2600 A3
+>> SoC.
+> 
+> Is there any value in testing both the old and the new images?
 
-Is there any value in testing both the old and the new images?
+For QEMU default tests, I think using the latest version of a test image
+is just fine, or we will end up with a very long avocado test run. That
+said we could make an exception when a HW feature is only activated in a
+specific version.
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+I run pre-PR tests with more images (buildroot, mainline, sdk, openbmc,
+provided by other vendors) but only the SDK v08.X images have decent
+results. v07.02 and v04.05 have issues. It could be a software issue.
 
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->
->   Requires patches from Hang Yu [1]
->
->   [1] https://lore.kernel.org/qemu-devel/20230812065230.8839-1-francis_yu=
-u@stu.pku.edu.cn/
->
->
->  tests/avocado/machine_aspeed.py | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspe=
-ed.py
-> index 724ee72c0208..90f1b7cb77a1 100644
-> --- a/tests/avocado/machine_aspeed.py
-> +++ b/tests/avocado/machine_aspeed.py
-> @@ -316,8 +316,8 @@ def test_arm_ast2500_evb_sdk(self):
->          """
->
->          image_url =3D ('https://github.com/AspeedTech-BMC/openbmc/releas=
-es/'
-> -                     'download/v08.01/ast2500-default-obmc.tar.gz')
-> -        image_hash =3D ('5375f82b4c43a79427909342a1e18b4e48bd663e3846686=
-2145d27bb358796fd')
-> +                     'download/v08.06/ast2500-default-obmc.tar.gz')
-> +        image_hash =3D ('e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d=
-3d5540fc4851d38ca')
->          image_path =3D self.fetch_asset(image_url, asset_hash=3Dimage_ha=
-sh,
->                                        algorithm=3D'sha256')
->          archive.extract(image_path, self.workdir)
-> @@ -334,8 +334,8 @@ def test_arm_ast2600_evb_sdk(self):
->          """
->
->          image_url =3D ('https://github.com/AspeedTech-BMC/openbmc/releas=
-es/'
-> -                     'download/v08.01/ast2600-default-obmc.tar.gz')
-> -        image_hash =3D ('f12ef15e8c1f03a214df3b91c814515c5e2b2f561190213=
-98c1dbdd626817d15')
-> +                     'download/v08.06/ast2600-a2-obmc.tar.gz')
-> +        image_hash =3D ('9083506135f622d5e7351fcf7d4e1c7125cee5ba1614122=
-0c0ba88931f3681a4')
->          image_path =3D self.fetch_asset(image_url, asset_hash=3Dimage_ha=
-sh,
->                                        algorithm=3D'sha256')
->          archive.extract(image_path, self.workdir)
-> @@ -345,8 +345,8 @@ def test_arm_ast2600_evb_sdk(self):
->          self.vm.add_args('-device',
->                           'ds1338,bus=3Daspeed.i2c.bus.5,address=3D0x32')=
-;
->          self.do_test_arm_aspeed_sdk_start(
-> -            self.workdir + '/ast2600-default/image-bmc')
-> -        self.wait_for_console_pattern('nodistro.0 ast2600-default ttyS4'=
-)
-> +            self.workdir + '/ast2600-a2/image-bmc')
-> +        self.wait_for_console_pattern('nodistro.0 ast2600-a2 ttyS4')
->
->          self.ssh_connect('root', '0penBmc', False)
->          self.ssh_command('dmesg -c > /dev/null')
-> --
-> 2.41.0
->
+C.
+
+
+> 
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> 
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>
+>>    Requires patches from Hang Yu [1]
+>>
+>>    [1] https://lore.kernel.org/qemu-devel/20230812065230.8839-1-francis_yuu@stu.pku.edu.cn/
+>>
+>>
+>>   tests/avocado/machine_aspeed.py | 12 ++++++------
+>>   1 file changed, 6 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+>> index 724ee72c0208..90f1b7cb77a1 100644
+>> --- a/tests/avocado/machine_aspeed.py
+>> +++ b/tests/avocado/machine_aspeed.py
+>> @@ -316,8 +316,8 @@ def test_arm_ast2500_evb_sdk(self):
+>>           """
+>>
+>>           image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+>> -                     'download/v08.01/ast2500-default-obmc.tar.gz')
+>> -        image_hash = ('5375f82b4c43a79427909342a1e18b4e48bd663e38466862145d27bb358796fd')
+>> +                     'download/v08.06/ast2500-default-obmc.tar.gz')
+>> +        image_hash = ('e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
+>>           image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+>>                                         algorithm='sha256')
+>>           archive.extract(image_path, self.workdir)
+>> @@ -334,8 +334,8 @@ def test_arm_ast2600_evb_sdk(self):
+>>           """
+>>
+>>           image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+>> -                     'download/v08.01/ast2600-default-obmc.tar.gz')
+>> -        image_hash = ('f12ef15e8c1f03a214df3b91c814515c5e2b2f56119021398c1dbdd626817d15')
+>> +                     'download/v08.06/ast2600-a2-obmc.tar.gz')
+>> +        image_hash = ('9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
+>>           image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+>>                                         algorithm='sha256')
+>>           archive.extract(image_path, self.workdir)
+>> @@ -345,8 +345,8 @@ def test_arm_ast2600_evb_sdk(self):
+>>           self.vm.add_args('-device',
+>>                            'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
+>>           self.do_test_arm_aspeed_sdk_start(
+>> -            self.workdir + '/ast2600-default/image-bmc')
+>> -        self.wait_for_console_pattern('nodistro.0 ast2600-default ttyS4')
+>> +            self.workdir + '/ast2600-a2/image-bmc')
+>> +        self.wait_for_console_pattern('nodistro.0 ast2600-a2 ttyS4')
+>>
+>>           self.ssh_connect('root', '0penBmc', False)
+>>           self.ssh_command('dmesg -c > /dev/null')
+>> --
+>> 2.41.0
+>>
+

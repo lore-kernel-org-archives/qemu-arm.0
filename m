@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 13-20020a05600c228d00b003fefd46df47sm17577554wmf.29.2023.08.29.09.15.28
+        by smtp.gmail.com with ESMTPSA id h14-20020a05600c260e00b003fefb94ccc9sm14326506wma.11.2023.08.29.09.15.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Aug 2023 09:15:29 -0700 (PDT)
+        Tue, 29 Aug 2023 09:15:30 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 8F0CE1FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id BEE061FFC0;
 	Tue, 29 Aug 2023 17:15:28 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -30,54 +30,42 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Beraldo Leal <bleal@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v3 03/12] tests/tcg: remove quoting for info output
-Date: Tue, 29 Aug 2023 17:15:19 +0100
-Message-Id: <20230829161528.2707696-4-alex.bennee@linaro.org>
+Subject: [PATCH v3 05/12] .gitlab-ci.d/cirrus.yml: Update FreeBSD to v13.2
+Date: Tue, 29 Aug 2023 17:15:21 +0100
+Message-Id: <20230829161528.2707696-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230829161528.2707696-1-alex.bennee@linaro.org>
 References: <20230829161528.2707696-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2MMDJQO3+gk4
+X-TUID: 50sL02SduVHH
 
-This avoids ugly multi-line wrapping for the test on non V=1 builds.
+From: Thomas Huth <thuth@redhat.com>
 
+The FreeBSD CI job started to fail due to linking problems ... time
+to update to the latest version to get this fixed.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-Id: <20230823144533.230477-1-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/aarch64/Makefile.target                  | 2 +-
- tests/tcg/multiarch/system/Makefile.softmmu-target | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ .gitlab-ci.d/cirrus.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 681dfa077c..b77bbd9b3c 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -14,7 +14,7 @@ AARCH64_TESTS=fcvt pcalign-a64 lse2-fault
- fcvt: LDFLAGS+=-lm
- 
- run-fcvt: fcvt
--	$(call run-test,$<,$(QEMU) $<, "$< on $(TARGET_NAME)")
-+	$(call run-test,$<,$(QEMU) $<)
- 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
- 
- config-cc.mak: Makefile
-diff --git a/tests/tcg/multiarch/system/Makefile.softmmu-target b/tests/tcg/multiarch/system/Makefile.softmmu-target
-index 7ba9053375..a051d689d7 100644
---- a/tests/tcg/multiarch/system/Makefile.softmmu-target
-+++ b/tests/tcg/multiarch/system/Makefile.softmmu-target
-@@ -37,10 +37,10 @@ run-gdbstub-untimely-packet: hello
- 		--qemu $(QEMU) \
- 		--bin $< --qargs \
- 		"-monitor none -display none -chardev file$(COMMA)path=untimely-packet.out$(COMMA)id=output $(QEMU_OPTS)", \
--	"softmmu gdbstub untimely packets")
-+	softmmu gdbstub untimely packets)
- 	$(call quiet-command, \
- 		(! grep -Fq 'Packet instead of Ack, ignoring it' untimely-packet.gdb.err), \
--		"GREP", "file  untimely-packet.gdb.err")
-+		"GREP", file untimely-packet.gdb.err)
- else
- run-gdbstub-%:
- 	$(call skip-test, "gdbstub test $*", "no guest arch support")
+diff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml
+index 1507c928e5..41d64d6680 100644
+--- a/.gitlab-ci.d/cirrus.yml
++++ b/.gitlab-ci.d/cirrus.yml
+@@ -50,7 +50,7 @@ x64-freebsd-13-build:
+     NAME: freebsd-13
+     CIRRUS_VM_INSTANCE_TYPE: freebsd_instance
+     CIRRUS_VM_IMAGE_SELECTOR: image_family
+-    CIRRUS_VM_IMAGE_NAME: freebsd-13-1
++    CIRRUS_VM_IMAGE_NAME: freebsd-13-2
+     CIRRUS_VM_CPUS: 8
+     CIRRUS_VM_RAM: 8G
+     UPDATE_COMMAND: pkg update; pkg upgrade -y
 -- 
 2.39.2

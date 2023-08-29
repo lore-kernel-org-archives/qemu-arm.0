@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id m9-20020a7bcb89000000b003fee777fd84sm14309471wmi.41.2023.08.29.09.15.30
+        by smtp.gmail.com with ESMTPSA id o12-20020adfcf0c000000b0031ad2663ed0sm14191827wrj.66.2023.08.29.09.15.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 29 Aug 2023 09:15:30 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 681B11FFBC;
+	by zen.linaroharston (Postfix) with ESMTP id 10CB61FFC2;
 	Tue, 29 Aug 2023 17:15:29 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -30,167 +30,182 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Beraldo Leal <bleal@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v3 10/12] gdbstub: refactor get_feature_xml
-Date: Tue, 29 Aug 2023 17:15:26 +0100
-Message-Id: <20230829161528.2707696-11-alex.bennee@linaro.org>
+Subject: [PATCH v3 07/12] tests/tcg: clean-up gdb confirm/pagination settings
+Date: Tue, 29 Aug 2023 17:15:23 +0100
+Message-Id: <20230829161528.2707696-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230829161528.2707696-1-alex.bennee@linaro.org>
 References: <20230829161528.2707696-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: NWnKQwAMoV5k
+X-TUID: zM0e8RIvS7fP
 
-Try to bring up the code to more modern standards by:
-
-  - use dynamic GString built xml over a fixed buffer
-  - use autofree to save on explicit g_free() calls
-  - don't hand hack strstr to find the delimiter
-  - fix up style of xml_builtin and invert loop
+We can do this all in the run-test.py script so remove the extraneous
+bits from the individual tests which got copied from the original
+non-CI gdb tests.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
+Acked-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v3
-  - also clean-up xml_builtin loop
-  - use strchr and defere copy for only xml case
-v2
-  - avoid needless g_strndup for copy of annex
----
- gdbstub/internals.h |  2 +-
- gdbstub/gdbstub.c   | 81 +++++++++++++++++++++++----------------------
- 2 files changed, 43 insertions(+), 40 deletions(-)
+ tests/guest-debug/run-test.py                         | 2 ++
+ tests/tcg/aarch64/gdbstub/test-sve-ioctl.py           | 3 ---
+ tests/tcg/aarch64/gdbstub/test-sve.py                 | 3 ---
+ tests/tcg/multiarch/gdbstub/memory.py                 | 3 ---
+ tests/tcg/multiarch/gdbstub/sha1.py                   | 4 ----
+ tests/tcg/multiarch/gdbstub/test-proc-mappings.py     | 4 ----
+ tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py   | 4 ----
+ tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py | 4 ----
+ tests/tcg/s390x/gdbstub/test-signals-s390x.py         | 4 ----
+ tests/tcg/s390x/gdbstub/test-svc.py                   | 4 ----
+ 10 files changed, 2 insertions(+), 33 deletions(-)
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index f2b46cce41..4876ebd74f 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -33,7 +33,7 @@ typedef struct GDBProcess {
-     uint32_t pid;
-     bool attached;
+diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
+index a032e01f79..b13b27d4b1 100755
+--- a/tests/guest-debug/run-test.py
++++ b/tests/guest-debug/run-test.py
+@@ -83,6 +83,8 @@ def log(output, msg):
+         gdb_cmd += " %s" % (args.gdb_args)
+     # run quietly and ignore .gdbinit
+     gdb_cmd += " -q -n -batch"
++    # disable pagination
++    gdb_cmd += " -ex 'set pagination off'"
+     # disable prompts in case of crash
+     gdb_cmd += " -ex 'set confirm off'"
+     # connect to remote
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+index b9ef169c1a..ee8d467e59 100644
+--- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
++++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+@@ -76,9 +76,6 @@ def run_test():
+     exit(0)
  
--    char target_xml[1024];
-+    char *target_xml;
- } GDBProcess;
- 
- enum RSState {
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 8e9bc17e07..729e54139a 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -354,64 +354,67 @@ static CPUState *gdb_get_cpu(uint32_t pid, uint32_t tid)
- static const char *get_feature_xml(const char *p, const char **newp,
-                                    GDBProcess *process)
- {
--    size_t len;
--    int i;
--    const char *name;
-     CPUState *cpu = gdb_get_first_cpu_in_process(process);
-     CPUClass *cc = CPU_GET_CLASS(cpu);
-+    size_t len;
- 
--    len = 0;
--    while (p[len] && p[len] != ':')
--        len++;
--    *newp = p + len;
-+    /*
-+     * qXfer:features:read:ANNEX:OFFSET,LENGTH'
-+     *                     ^p    ^newp
-+     */
-+    char *term = strchr(p, ':');
-+    *newp = term + 1;
-+    len = term - p;
- 
--    name = NULL;
-+    /* Is it the main target xml? */
-     if (strncmp(p, "target.xml", len) == 0) {
--        char *buf = process->target_xml;
--        const size_t buf_sz = sizeof(process->target_xml);
+ try:
+-    # These are not very useful in scripts
+-    gdb.execute("set pagination off")
 -
--        /* Generate the XML description for this CPU.  */
--        if (!buf[0]) {
-+        if (!process->target_xml) {
-             GDBRegisterState *r;
-+            GString *xml = g_string_new("<?xml version=\"1.0\"?>");
-+
-+            g_string_append(xml,
-+                            "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
-+                            "<target>");
+     # Run the actual tests
+     run_test()
+ except:
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve.py b/tests/tcg/aarch64/gdbstub/test-sve.py
+index ef57c7412c..afd8ece98d 100644
+--- a/tests/tcg/aarch64/gdbstub/test-sve.py
++++ b/tests/tcg/aarch64/gdbstub/test-sve.py
+@@ -66,9 +66,6 @@ def run_test():
+     exit(0)
  
--            pstrcat(buf, buf_sz,
--                    "<?xml version=\"1.0\"?>"
--                    "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
--                    "<target>");
-             if (cc->gdb_arch_name) {
--                gchar *arch = cc->gdb_arch_name(cpu);
--                pstrcat(buf, buf_sz, "<architecture>");
--                pstrcat(buf, buf_sz, arch);
--                pstrcat(buf, buf_sz, "</architecture>");
--                g_free(arch);
-+                g_autofree gchar *arch = cc->gdb_arch_name(cpu);
-+                g_string_append_printf(xml,
-+                                       "<architecture>%s</architecture>",
-+                                       arch);
-             }
--            pstrcat(buf, buf_sz, "<xi:include href=\"");
--            pstrcat(buf, buf_sz, cc->gdb_core_xml_file);
--            pstrcat(buf, buf_sz, "\"/>");
-+            g_string_append(xml, "<xi:include href=\"");
-+            g_string_append(xml, cc->gdb_core_xml_file);
-+            g_string_append(xml, "\"/>");
-             for (r = cpu->gdb_regs; r; r = r->next) {
--                pstrcat(buf, buf_sz, "<xi:include href=\"");
--                pstrcat(buf, buf_sz, r->xml);
--                pstrcat(buf, buf_sz, "\"/>");
-+                g_string_append(xml, "<xi:include href=\"");
-+                g_string_append(xml, r->xml);
-+                g_string_append(xml, "\"/>");
-             }
--            pstrcat(buf, buf_sz, "</target>");
-+            g_string_append(xml, "</target>");
-+
-+            process->target_xml = g_string_free(xml, false);
-+            return process->target_xml;
-         }
--        return buf;
-     }
-+    /* Is it dynamically generated by the target? */
-     if (cc->gdb_get_dynamic_xml) {
--        char *xmlname = g_strndup(p, len);
-+        g_autofree char *xmlname = g_strndup(p, len);
-         const char *xml = cc->gdb_get_dynamic_xml(cpu, xmlname);
+ try:
+-    # These are not very useful in scripts
+-    gdb.execute("set pagination off")
 -
--        g_free(xmlname);
-         if (xml) {
-             return xml;
-         }
-     }
--    for (i = 0; ; i++) {
--        name = xml_builtin[i][0];
--        if (!name || (strncmp(name, p, len) == 0 && strlen(name) == len))
--            break;
-+    /* Is it one of the encoded gdb-xml/ files? */
-+    for (int i = 0; xml_builtin[i][0]; i++) {
-+        const char *name = xml_builtin[i][0];
-+        if ((strncmp(name, p, len) == 0) &&
-+            strlen(name) == len) {
-+            return xml_builtin[i][1];
-+        }
-     }
--    return name ? xml_builtin[i][1] : NULL;
-+
-+    /* failed */
-+    return NULL;
- }
+     # Run the actual tests
+     run_test()
+ except:
+diff --git a/tests/tcg/multiarch/gdbstub/memory.py b/tests/tcg/multiarch/gdbstub/memory.py
+index 67864ad902..dd25e72281 100644
+--- a/tests/tcg/multiarch/gdbstub/memory.py
++++ b/tests/tcg/multiarch/gdbstub/memory.py
+@@ -115,9 +115,6 @@ def run_test():
+     exit(0)
  
- static int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
-@@ -2245,6 +2248,6 @@ void gdb_create_default_process(GDBState *s)
-     process = &s->processes[s->process_num - 1];
-     process->pid = pid;
-     process->attached = false;
--    process->target_xml[0] = '\0';
-+    process->target_xml = NULL;
- }
+ try:
+-    # These are not very useful in scripts
+-    gdb.execute("set pagination off")
+-
+     # Run the actual tests
+     run_test()
+ except (gdb.error):
+diff --git a/tests/tcg/multiarch/gdbstub/sha1.py b/tests/tcg/multiarch/gdbstub/sha1.py
+index 423b720e6d..416728415f 100644
+--- a/tests/tcg/multiarch/gdbstub/sha1.py
++++ b/tests/tcg/multiarch/gdbstub/sha1.py
+@@ -73,10 +73,6 @@ def run_test():
+     exit(0)
  
+ try:
+-    # These are not very useful in scripts
+-    gdb.execute("set pagination off")
+-    gdb.execute("set confirm off")
+-
+     # Run the actual tests
+     run_test()
+ except (gdb.error):
+diff --git a/tests/tcg/multiarch/gdbstub/test-proc-mappings.py b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
+index 5e3e5a2fb7..04ec61d219 100644
+--- a/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
++++ b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
+@@ -51,10 +51,6 @@ def main():
+         exit(0)
+ 
+     try:
+-        # These are not very useful in scripts
+-        gdb.execute("set pagination off")
+-        gdb.execute("set confirm off")
+-
+         # Run the actual tests
+         run_test()
+     except gdb.error:
+diff --git a/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py b/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
+index d91e8fdf19..926fa962b7 100644
+--- a/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
++++ b/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
+@@ -42,10 +42,6 @@ def run_test():
+     exit(0)
+ 
+ try:
+-    # These are not very useful in scripts
+-    gdb.execute("set pagination off")
+-    gdb.execute("set confirm off")
+-
+     # Run the actual tests
+     run_test()
+ except (gdb.error):
+diff --git a/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py b/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
+index 798d508bc7..e57d2a8db8 100644
+--- a/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
++++ b/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
+@@ -45,10 +45,6 @@ def run_test():
+     exit(0)
+ 
+ try:
+-    # These are not very useful in scripts
+-    gdb.execute("set pagination off")
+-    gdb.execute("set confirm off")
+-
+     # Run the actual tests
+     run_test()
+ except (gdb.error):
+diff --git a/tests/tcg/s390x/gdbstub/test-signals-s390x.py b/tests/tcg/s390x/gdbstub/test-signals-s390x.py
+index 80a284b475..ca2bbc0b03 100644
+--- a/tests/tcg/s390x/gdbstub/test-signals-s390x.py
++++ b/tests/tcg/s390x/gdbstub/test-signals-s390x.py
+@@ -61,10 +61,6 @@ def run_test():
+     exit(0)
+ 
+ try:
+-    # These are not very useful in scripts
+-    gdb.execute("set pagination off")
+-    gdb.execute("set confirm off")
+-
+     # Run the actual tests
+     run_test()
+ except (gdb.error):
+diff --git a/tests/tcg/s390x/gdbstub/test-svc.py b/tests/tcg/s390x/gdbstub/test-svc.py
+index 18fad3f163..804705fede 100644
+--- a/tests/tcg/s390x/gdbstub/test-svc.py
++++ b/tests/tcg/s390x/gdbstub/test-svc.py
+@@ -49,10 +49,6 @@ def main():
+         exit(0)
+ 
+     try:
+-        # These are not very useful in scripts
+-        gdb.execute("set pagination off")
+-        gdb.execute("set confirm off")
+-
+         # Run the actual tests
+         run_test()
+     except gdb.error:
 -- 
 2.39.2

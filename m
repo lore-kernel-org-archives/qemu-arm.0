@@ -1,115 +1,115 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp3989212ejc;
-        Tue, 29 Aug 2023 16:24:25 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEu1YyCUFT/1QqUpztYAbsuMGvFfPLBVratapxWUc6hhj7KuRI23tsknlyPh8f0HkDnRzr2
-X-Received: by 2002:a05:622a:58a:b0:406:8bc4:2530 with SMTP id c10-20020a05622a058a00b004068bc42530mr504158qtb.43.1693351465033;
-        Tue, 29 Aug 2023 16:24:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693351465; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp3989751ejc;
+        Tue, 29 Aug 2023 16:25:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH0nFtZx8Qi+vPAfqA4EqLX6Io+Azfz4heEVgxlXGVO7WUwkFBZeUkxZgMiy4WsQWxQYXMo
+X-Received: by 2002:a05:6214:29e6:b0:63d:580:9c68 with SMTP id jv6-20020a05621429e600b0063d05809c68mr4043045qvb.32.1693351544307;
+        Tue, 29 Aug 2023 16:25:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693351544; cv=none;
         d=google.com; s=arc-20160816;
-        b=rLBMcTA4B8anHX/igVWA6QA9Kj8JrVKUE/cDwzEaIw+Rut1kbuBcB9HQtCmvVQoe/B
-         +OmPU939yutkVb/azstQ2tzWdWpGoyE9poyIM/2qe2yNaV5XDnSUtKEr1VgHXfKoXc+P
-         xgjuhTMeNQ4TsOhYEEgXQxpzGmZov8EAhRVjQSZvY5DKmldGxgH6vCKD0m5t5RBcT1vF
-         Q6wBM28Inn+g6TAXdwDfjdc5Jd+i26A1cseRtlWy58GhW5cko1zj4F1+/bj7/nJ0JrM2
-         aMTEzZ7OVa3pbEZyEXyFC/gacHjSss6EPeGjf7u5jl/zdc9DaPcCgE/YkiK8lUYCZPXr
-         ih6g==
+        b=uxbgwqV6+hQAjZQk/zuYZk7BJNT3YIYTPgNuo9XQIwEWq3Zqw+Q7LyKzC75C8q2yYU
+         8Hd5flMQ+SXPaRyNaP7zsI0ryRjfbSo9FDngTWhv4NPxfrHapuuu8hgrsLIOFiPvhYCC
+         s7wVHLfKJJSGER049kiUiP5qCpbGrf7tmMvSiaBF/3y2wlSe1nlCaQwO66GUnCq6w/mS
+         Nu8+MB7NAPhTi8VdtbuzRmOdx5qDs9dwBLPcrwFvfwmJxZxwMCmxHikDWMSa/vw2pZ91
+         1PgRGJquQbN4hoDMJLE22KvGnHgUpinUu0p3pWpjpg4OYBQ07UYp+jk+HSfirEjGc691
+         dFdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=fonDp/wXRvCIKOTr9zFpwn6DY7PZ+KvY5INrQDOWD5c=;
-        fh=EfLVKF30PRMlBBLnPfTKrxZS/PAO9ADHBdRXKXa4nd0=;
-        b=NuRHU+7K8wIhxdDQKkgwUnVaZKyExfhEHppYr8YoXmJBm6KTm4d1ahcBWX0jJ5mApD
-         i6mptVn+cXfTZgMY1D4huBTZYxkQoWW3g5CdDkBmoVx9uvIETlAgtrn5fdLIX8/lgEX8
-         7nGMB8/sWzIEGrRrtqFg1CNP7Crd56dnhub1h7895Wo0mswc8L/oJNT1mGBK1SadkD+j
-         OPCxBpZcOJu/jO6ECMowsOzV0POHBsq7FtElTpXLwfX/UC4PlCpGAoxDttCM10fJnNgq
-         EpRyOI5Ya259AJfs5FttlDVy3UoSgQb9BN1GnH2ADtuhhcJ91P+bgtYTbiuPS5qQHFsg
-         2NKg==
+        bh=J5PvsEisUhmViwuTX1kAnQipV1YYI3hKBjw90v7ICj0=;
+        fh=L6OjQZ2TPsHFQEGPRBuboSqhQBavDZ5pPqlyX67xn3A=;
+        b=wHLUKCsvb7SrzRTQEB6Wjz/ZI67DcNKzkmsH/chBcXrRChBH07TU4X4znCxLtHFspz
+         Q/2kkSzyQjE8kkpk1o8mp9aQPqcEUUUxjr0tGcVDOi4ID1HXCjafZgFP9t15VkkFLsyF
+         hvDINyZnm39QvR5oArSkq+/WaP+VkDvs621k47lf6xKqjkoFE4j+27jfWCzJ5dr0wReB
+         aw36jSBA9C/8/nduL2AeU1pieGSEYX8cYtj0iPed6o3JcRcKy1U3j09XduPoUJA/YiRi
+         ZumMdJRHT7jbjLDK6m1CR1/GlHnkQO0nfKsPeulukrx0MIPxK3GoXO+c2ulIJuuWUo4m
+         hCmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kcwbcAEZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gJw5cozj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bv18-20020a05622a0a1200b004135d628beasi652216qtb.788.2023.08.29.16.24.24
+        by mx.google.com with ESMTPS id c2-20020a0ce642000000b0064f93526abfsi4561823qvn.122.2023.08.29.16.25.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Aug 2023 16:24:25 -0700 (PDT)
+        Tue, 29 Aug 2023 16:25:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kcwbcAEZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gJw5cozj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qb83z-0004p6-NN; Tue, 29 Aug 2023 19:23:59 -0400
+	id 1qb83q-0003oG-M8; Tue, 29 Aug 2023 19:23:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qb83t-0004AS-Ix
- for qemu-devel@nongnu.org; Tue, 29 Aug 2023 19:23:53 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ id 1qb83o-0003dp-T2
+ for qemu-devel@nongnu.org; Tue, 29 Aug 2023 19:23:48 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qb83n-0001OU-K5
- for qemu-devel@nongnu.org; Tue, 29 Aug 2023 19:23:53 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-68a402c1fcdso3466475b3a.1
- for <qemu-devel@nongnu.org>; Tue, 29 Aug 2023 16:23:47 -0700 (PDT)
+ id 1qb83j-0001Mh-55
+ for qemu-devel@nongnu.org; Tue, 29 Aug 2023 19:23:48 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-1bf57366ccdso2210695ad.1
+ for <qemu-devel@nongnu.org>; Tue, 29 Aug 2023 16:23:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693351426; x=1693956226; darn=nongnu.org;
+ d=linaro.org; s=google; t=1693351422; x=1693956222; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fonDp/wXRvCIKOTr9zFpwn6DY7PZ+KvY5INrQDOWD5c=;
- b=kcwbcAEZ5WahBfHQjzYIpa0UrmbF2krCmwTtOJZyFfrbRcPT/2XUESjI7jNrgnY3m5
- nu4NrJEMCwVKpCH/UcXPKbmDSgNMJkPFv4ebWiqzGys1n1mXXZO3BdshyTxfs+GRDvN1
- Jomu9DtDwm7tCKGDcad84a5OqOLu5cqQZEBVPTScdF6j2ePjbAU2Mw6By1057VfV/ubX
- oyKziDgadVrkoDhhqmeeYFv/rpH6g3wEju4jayGV3W/Bm4lRmLVocOX9JqCylq6VTG/s
- hgMTeCcBiyOzulwFK07oRMRIbvVLoZwNNfDqWCPtzZoIFSU8w+rboaQWLbPMbykOFl30
- d90Q==
+ bh=J5PvsEisUhmViwuTX1kAnQipV1YYI3hKBjw90v7ICj0=;
+ b=gJw5cozjVpEviyGyfZfGykTLkXQfc2HTUmdKH1diieOEI3dRQ9JM8PwKBwTeZTDPvY
+ GbS0G54VgiGzae2CM0U8T+oCc+QiPk7k3ZxWeetvOs7VTsMxuODu5KLF+zSruRAKhhlI
+ XnczB5BZRhULibelN2nBdNsdgO9a9R+5Bqx/Vjsp75TC1iS/7L0CQ5sMjGsekn/XRIbY
+ StpOC9u2R57dYiBC0r/SbXbzQHTWZUyVA0xXvuxoyu1u4UPe9b2CBUwJia8hcaDpbvG1
+ gP2uaLfYyzU262UW68EoCthc+dPKV+gn5sY0DPgy2nPHUT2NoyGNiuKOnReuSF38C2lo
+ tVRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693351426; x=1693956226;
+ d=1e100.net; s=20221208; t=1693351422; x=1693956222;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=fonDp/wXRvCIKOTr9zFpwn6DY7PZ+KvY5INrQDOWD5c=;
- b=Y51zJzRgbigzfAGWgJTzmJcxkeE2uW4QFRqPZo8/UDDNKG1N54liw+dP7Pe3NRc8wZ
- hsnt2pjoEUdOv394yuZWBU/3JVa3oNOK3L6fKP/G7JrsNhcPzXT5jK5Y3kGMXHr8VqYQ
- mPJNwFcsJiWGUlEpnMHsWPETIuozsLMTjilYT2UPKEv6tS6xx50PXujnkMMlMF/afNGW
- SGYk8sFo35SVeNY7wPKxrN1oZgS8nXe3Sqhh9zNwO/vfV9IgvEq7DqGxYcdvT71QuDgu
- /ja6oTnqxeso3cfv7ATC/nlCm1rLVGOWtVh95Q+FhJ0sEhzJf14vQ2AJSNrrWrBV51Tm
- 9iIg==
-X-Gm-Message-State: AOJu0YzY3IOj15gYa8B83Qm7mZYW2rLztJpLR02ltu6PeS4N+nvzMZga
- VpTwa+Dc7zOy9gii4fyG00Tgxgd3jiN4uvK/mkk=
-X-Received: by 2002:a05:6a20:6a1a:b0:133:e3e3:dc07 with SMTP id
- p26-20020a056a206a1a00b00133e3e3dc07mr893323pzk.49.1693351426151; 
- Tue, 29 Aug 2023 16:23:46 -0700 (PDT)
+ bh=J5PvsEisUhmViwuTX1kAnQipV1YYI3hKBjw90v7ICj0=;
+ b=fX+WXdpk+FlWIKJK3mZVKTFiEEtsDf7Z0LpKW7zqhJvIzrwMaUC+L70bpUAVhS3thh
+ k3i4t3BIJ9u23zY44enKqvVBh48gSMU343w3dFPDHV5dbV8BjavLC8R3+6YxwCzxbxe7
+ 1IIMovFYOYiNecZGmTfIt9u1+BhZHTdkjQnAIH+GtboLgSYxRFlSfrdJSEKNCB8nASGF
+ Taeubj88nZqWpd+8Bx7/tFtUoJnkXgoK9VNR8vybyRjMGHX/F/Ea/BNrEha79UZwU1/a
+ qMis554HbPjJDgDUNySHulzfh9H5JUGlvttrh964I5JBeOgU5NGL5s0S70pnf1skSzSR
+ 8dnw==
+X-Gm-Message-State: AOJu0YziK9mtI2knA6IMVJWQNqaq8gRPopjgmyQxA5qYXyOXEihW23x+
+ Y855hIejr6LyAu2Pr+yAENPYs2t8xBKHTQhq+HE=
+X-Received: by 2002:a17:902:c950:b0:1bd:e258:a256 with SMTP id
+ i16-20020a170902c95000b001bde258a256mr1020157pla.32.1693351421791; 
+ Tue, 29 Aug 2023 16:23:41 -0700 (PDT)
 Received: from stoup.. ([71.212.131.115]) by smtp.gmail.com with ESMTPSA id
- t9-20020a170902e84900b001b9dadf8bd2sm9829970plg.190.2023.08.29.16.23.45
+ t9-20020a170902e84900b001b9dadf8bd2sm9829970plg.190.2023.08.29.16.23.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Aug 2023 16:23:45 -0700 (PDT)
+ Tue, 29 Aug 2023 16:23:41 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: aaron@os.amperecomputing.com,
-	qemu-arm@nongnu.org
-Subject: [PATCH v5 10/12] linux-user/aarch64: Add ESR signal frame for SIGSEGV, SIGBUS
-Date: Tue, 29 Aug 2023 16:23:33 -0700
-Message-Id: <20230829232335.965414-11-richard.henderson@linaro.org>
+Cc: aaron@os.amperecomputing.com, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v5 05/12] target/arm: Implement FEAT_PACQARMA3
+Date: Tue, 29 Aug 2023 16:23:28 -0700
+Message-Id: <20230829232335.965414-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230829232335.965414-1-richard.henderson@linaro.org>
 References: <20230829232335.965414-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,148 +124,320 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JiKGrBlrXYx8
+X-TUID: kGaP5i6TBeQd
 
-These are all synchronous exceptions for which the kernel
-passes on ESR to the user signal handler.
+Implement the QARMA3 cryptographic algorithm for PAC calculation.
+Implement a cpu feature to select the algorithm and document it.
 
+Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230609172324.982888-4-aaron@os.amperecomputing.com>
+[rth: Merge cpu feature addition from another patch.]
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/signal.c | 52 ++++++++++++++++++++++++++++++++++++-
- target/arm/tcg/tlb_helper.c |  8 +++++-
- 2 files changed, 58 insertions(+), 2 deletions(-)
+ docs/system/arm/cpu-features.rst | 21 ++++++++-----
+ docs/system/arm/emulation.rst    |  3 ++
+ target/arm/cpu.h                 |  1 +
+ target/arm/arm-qmp-cmds.c        |  2 +-
+ target/arm/cpu64.c               | 24 ++++++++++++--
+ target/arm/tcg/pauth_helper.c    | 54 ++++++++++++++++++++++++++------
+ tests/qtest/arm-cpu-features.c   | 12 ++++++-
+ 7 files changed, 94 insertions(+), 23 deletions(-)
 
-diff --git a/linux-user/aarch64/signal.c b/linux-user/aarch64/signal.c
-index b265cfd470..40a476c33e 100644
---- a/linux-user/aarch64/signal.c
-+++ b/linux-user/aarch64/signal.c
-@@ -21,6 +21,7 @@
- #include "user-internals.h"
- #include "signal-common.h"
- #include "linux-user/trace.h"
-+#include "target/arm/syndrome.h"
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index 6bb88a40c7..a5fb929243 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -210,15 +210,20 @@ TCG VCPU Features
+ TCG VCPU features are CPU features that are specific to TCG.
+ Below is the list of TCG VCPU features and their descriptions.
  
- struct target_sigcontext {
-     uint64_t fault_address;
-@@ -64,6 +65,13 @@ struct target_fpsimd_context {
-     uint64_t vregs[32 * 2]; /* really uint128_t vregs[32] */
+-``pauth-impdef``
+-  When ``FEAT_Pauth`` is enabled, either the *impdef* (Implementation
+-  Defined) algorithm is enabled or the *architected* QARMA algorithm
+-  is enabled.  By default the impdef algorithm is disabled, and QARMA
+-  is enabled.
++``pauth``
++  Enable or disable ``FEAT_Pauth`` entirely.
+ 
+-  The architected QARMA algorithm has good cryptographic properties,
+-  but can be quite slow to emulate.  The impdef algorithm used by QEMU
+-  is non-cryptographic but significantly faster.
++``pauth-impdef``
++  When ``pauth`` is enabled, select the QEMU implementation defined algorithm.
++
++``pauth-qarma3``
++  When ``pauth`` is enabled, select the architected QARMA3 algorithm.
++
++Without either ``pauth-impdef`` or ``pauth-qarma3`` enabled,
++the architected QARMA5 algorithm is used.  The architected QARMA5
++and QARMA3 algorithms have good cryptographic properties, but can
++be quite slow to emulate.  The impdef algorithm used by QEMU is
++non-cryptographic but significantly faster.
+ 
+ SVE CPU Properties
+ ==================
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index bdafc68819..06af20d10f 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -55,6 +55,9 @@ the following architecture extensions:
+ - FEAT_MTE (Memory Tagging Extension)
+ - FEAT_MTE2 (Memory Tagging Extension)
+ - FEAT_MTE3 (MTE Asymmetric Fault Handling)
++- FEAT_PACIMP (Pointer authentication - IMPLEMENTATION DEFINED algorithm)
++- FEAT_PACQARMA3 (Pointer authentication - QARMA3 algorithm)
++- FEAT_PACQARMA5 (Pointer authentication - QARMA5 algorithm)
+ - FEAT_PAN (Privileged access never)
+ - FEAT_PAN2 (AT S1E1R and AT S1E1W instruction variants affected by PSTATE.PAN)
+ - FEAT_PAN3 (Support for SCTLR_ELx.EPAN)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 0e2545d631..cfca42293a 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1072,6 +1072,7 @@ struct ArchCPU {
+      */
+     bool prop_pauth;
+     bool prop_pauth_impdef;
++    bool prop_pauth_qarma3;
+     bool prop_lpa2;
+ 
+     /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index c8fa524002..b53d5efe13 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -95,7 +95,7 @@ static const char *cpu_model_advertised_features[] = {
+     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
+     "kvm-no-adjvtime", "kvm-steal-time",
+-    "pauth", "pauth-impdef",
++    "pauth", "pauth-impdef", "pauth-qarma3",
+     NULL
  };
  
-+#define TARGET_ESR_MAGIC    0x45535201
-+
-+struct target_esr_context {
-+    struct target_aarch64_ctx head;
-+    uint64_t esr;
-+};
-+
- #define TARGET_EXTRA_MAGIC  0x45585401
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index fd584a31da..f3d87e001f 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -474,7 +474,7 @@ void aarch64_add_sme_properties(Object *obj)
+ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+ {
+     ARMPauthFeature features = cpu_isar_feature(pauth_feature, cpu);
+-    uint64_t isar1;
++    uint64_t isar1, isar2;
  
- struct target_extra_context {
-@@ -191,6 +199,14 @@ static void target_setup_end_record(struct target_aarch64_ctx *end)
-     __put_user(0, &end->size);
+     /*
+      * These properties enable or disable Pauth as a whole, or change
+@@ -490,6 +490,10 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+     isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, API, 0);
+     isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, GPI, 0);
+ 
++    isar2 = cpu->isar.id_aa64isar2;
++    isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, APA3, 0);
++    isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, GPA3, 0);
++
+     if (kvm_enabled() || hvf_enabled()) {
+         /*
+          * Exit early if PAuth is enabled and fall through to disable it.
+@@ -510,26 +514,39 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+         }
+ 
+         if (cpu->prop_pauth) {
++            if (cpu->prop_pauth_impdef && cpu->prop_pauth_qarma3) {
++                error_setg(errp,
++                           "cannot enable both pauth-impdef and pauth-qarma3");
++                return;
++            }
++
+             if (cpu->prop_pauth_impdef) {
+                 isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, API, features);
+                 isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, GPI, 1);
++            } else if (cpu->prop_pauth_qarma3) {
++                isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, APA3, features);
++                isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, GPA3, 1);
+             } else {
+                 isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, APA, features);
+                 isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, GPA, 1);
+             }
+-        } else if (cpu->prop_pauth_impdef) {
+-            error_setg(errp, "cannot enable pauth-impdef without pauth");
++        } else if (cpu->prop_pauth_impdef || cpu->prop_pauth_qarma3) {
++            error_setg(errp, "cannot enable pauth-impdef or "
++                       "pauth-qarma3 without pauth");
+             error_append_hint(errp, "Add pauth=on to the CPU property list.\n");
+         }
+     }
+ 
+     cpu->isar.id_aa64isar1 = isar1;
++    cpu->isar.id_aa64isar2 = isar2;
  }
  
-+static void target_setup_esr_record(struct target_esr_context *esr,
-+                                    CPUARMState *env)
-+{
-+    __put_user(TARGET_ESR_MAGIC, &esr->head.magic);
-+    __put_user(sizeof(struct target_esr_context), &esr->head.size);
-+    __put_user(env->exception.syndrome, &esr->esr);
-+}
-+
- static void target_setup_sve_record(struct target_sve_context *sve,
-                                     CPUARMState *env, int size)
- {
-@@ -443,6 +459,10 @@ static int target_restore_sigframe(CPUARMState *env,
-             fpsimd = (struct target_fpsimd_context *)ctx;
-             break;
+ static Property arm_cpu_pauth_property =
+     DEFINE_PROP_BOOL("pauth", ARMCPU, prop_pauth, true);
+ static Property arm_cpu_pauth_impdef_property =
+     DEFINE_PROP_BOOL("pauth-impdef", ARMCPU, prop_pauth_impdef, false);
++static Property arm_cpu_pauth_qarma3_property =
++    DEFINE_PROP_BOOL("pauth-qarma3", ARMCPU, prop_pauth_qarma3, false);
  
-+        case TARGET_ESR_MAGIC:
-+            /* ignore */
-+            break;
-+
-         case TARGET_SVE_MAGIC:
-             if (sve || size < sizeof(struct target_sve_context)) {
-                 goto err;
-@@ -558,6 +578,27 @@ static int alloc_sigframe_space(int this_size, target_sigframe_layout *l)
-     return this_loc;
+ void aarch64_add_pauth_properties(Object *obj)
+ {
+@@ -549,6 +566,7 @@ void aarch64_add_pauth_properties(Object *obj)
+         cpu->prop_pauth = cpu_isar_feature(aa64_pauth, cpu);
+     } else {
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_impdef_property);
++        qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_qarma3_property);
+     }
  }
  
-+static bool need_save_esr(target_siginfo_t *info, CPUARMState *env)
+diff --git a/target/arm/tcg/pauth_helper.c b/target/arm/tcg/pauth_helper.c
+index 6271a84ec9..bb03409ee5 100644
+--- a/target/arm/tcg/pauth_helper.c
++++ b/target/arm/tcg/pauth_helper.c
+@@ -96,6 +96,21 @@ static uint64_t pac_sub(uint64_t i)
+     return o;
+ }
+ 
++static uint64_t pac_sub1(uint64_t i)
 +{
-+    int sig = info->si_signo;
-+    int type = info->si_code >> 16;
++    static const uint8_t sub1[16] = {
++        0xa, 0xd, 0xe, 0x6, 0xf, 0x7, 0x3, 0x5,
++        0x9, 0x8, 0x0, 0xc, 0xb, 0x1, 0x2, 0x4,
++    };
++    uint64_t o = 0;
++    int b;
 +
-+    if (type != QEMU_SI_FAULT) {
-+        return false;
++    for (b = 0; b < 64; b += 4) {
++        o |= (uint64_t)sub1[(i >> b) & 0xf] << b;
 +    }
-+
-+    /*
-+     * See arch/arm64/mm/fault.c, for invocations of set_thread_esr.
-+     * We populate ESR in arm_cpu_record_sigsegv or arm_cpu_record_sigbus,
-+     * called via cpu_loop_exit_{sigsegv,sigbus}.
-+     */
-+    if (sig == TARGET_SIGSEGV || sig == TARGET_SIGBUS) {
-+        return true;
-+    }
-+
-+    return false;
++    return o;
 +}
 +
- static void target_setup_frame(int usig, struct target_sigaction *ka,
-                                target_siginfo_t *info, target_sigset_t *set,
-                                CPUARMState *env)
-@@ -567,7 +608,7 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-         .total_size = offsetof(struct target_rt_sigframe,
-                                uc.tuc_mcontext.__reserved),
-     };
--    int fpsimd_ofs, fr_ofs, sve_ofs = 0, za_ofs = 0;
-+    int fpsimd_ofs, fr_ofs, esr_ofs = 0, sve_ofs = 0, za_ofs = 0;
-     int sve_size = 0, za_size = 0;
-     struct target_rt_sigframe *frame;
-     struct target_rt_frame_record *fr;
-@@ -577,6 +618,12 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-     fpsimd_ofs = alloc_sigframe_space(sizeof(struct target_fpsimd_context),
-                                       &layout);
- 
-+    /* ESR state needs saving only for certain signals. */
-+    if (need_save_esr(info, env)) {
-+        esr_ofs = alloc_sigframe_space(sizeof(struct target_esr_context),
-+                                       &layout);
-+    }
-+
-     /* SVE state needs saving only if it exists.  */
-     if (cpu_isar_feature(aa64_sve, env_archcpu(env)) ||
-         cpu_isar_feature(aa64_sme, env_archcpu(env))) {
-@@ -637,6 +684,9 @@ static void target_setup_frame(int usig, struct target_sigaction *ka,
-                                   layout.extra_size);
-         target_setup_end_record((void *)frame + layout.extra_end_ofs);
-     }
-+    if (esr_ofs) {
-+        target_setup_esr_record((void *)frame + esr_ofs, env);
-+    }
-     if (sve_ofs) {
-         target_setup_sve_record((void *)frame + sve_ofs, env, sve_size);
-     }
-diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-index b22b2a4c6e..27bf30e9e2 100644
---- a/target/arm/tcg/tlb_helper.c
-+++ b/target/arm/tcg/tlb_helper.c
-@@ -354,7 +354,13 @@ void arm_cpu_record_sigsegv(CPUState *cs, vaddr addr,
+ static uint64_t pac_inv_sub(uint64_t i)
  {
-     ARMMMUFaultInfo fi = {
-         .type = maperr ? ARMFault_Translation : ARMFault_Permission,
--        .level = 3,
-+        /*
-+         * In arch/arm64/mm/fault.c, set_thread_esr, for kernel-space
-+         * addresses (i.e. TTBR1) the kernel cleans the ESR value to
-+         * always report level 0.  Since we're manufacturing a level
-+         * here, we might as well pick 0 always.
-+         */
-+        .level = 0,
-     };
-     ARMCPU *cpu = ARM_CPU(cs);
+     static const uint8_t inv_sub[16] = {
+@@ -209,7 +224,7 @@ static uint64_t tweak_inv_shuffle(uint64_t i)
+ }
  
+ static uint64_t pauth_computepac_architected(uint64_t data, uint64_t modifier,
+-                                             ARMPACKey key)
++                                             ARMPACKey key, bool isqarma3)
+ {
+     static const uint64_t RC[5] = {
+         0x0000000000000000ull,
+@@ -219,6 +234,7 @@ static uint64_t pauth_computepac_architected(uint64_t data, uint64_t modifier,
+         0x452821E638D01377ull,
+     };
+     const uint64_t alpha = 0xC0AC29B7C97C50DDull;
++    int iterations = isqarma3 ? 2 : 4;
+     /*
+      * Note that in the ARM pseudocode, key0 contains bits <127:64>
+      * and key1 contains bits <63:0> of the 128-bit key.
+@@ -231,7 +247,7 @@ static uint64_t pauth_computepac_architected(uint64_t data, uint64_t modifier,
+     runningmod = modifier;
+     workingval = data ^ key0;
+ 
+-    for (i = 0; i <= 4; ++i) {
++    for (i = 0; i <= iterations; ++i) {
+         roundkey = key1 ^ runningmod;
+         workingval ^= roundkey;
+         workingval ^= RC[i];
+@@ -239,32 +255,48 @@ static uint64_t pauth_computepac_architected(uint64_t data, uint64_t modifier,
+             workingval = pac_cell_shuffle(workingval);
+             workingval = pac_mult(workingval);
+         }
+-        workingval = pac_sub(workingval);
++        if (isqarma3) {
++            workingval = pac_sub1(workingval);
++        } else {
++            workingval = pac_sub(workingval);
++        }
+         runningmod = tweak_shuffle(runningmod);
+     }
+     roundkey = modk0 ^ runningmod;
+     workingval ^= roundkey;
+     workingval = pac_cell_shuffle(workingval);
+     workingval = pac_mult(workingval);
+-    workingval = pac_sub(workingval);
++    if (isqarma3) {
++        workingval = pac_sub1(workingval);
++    } else {
++        workingval = pac_sub(workingval);
++    }
+     workingval = pac_cell_shuffle(workingval);
+     workingval = pac_mult(workingval);
+     workingval ^= key1;
+     workingval = pac_cell_inv_shuffle(workingval);
+-    workingval = pac_inv_sub(workingval);
++    if (isqarma3) {
++        workingval = pac_sub1(workingval);
++    } else {
++        workingval = pac_inv_sub(workingval);
++    }
+     workingval = pac_mult(workingval);
+     workingval = pac_cell_inv_shuffle(workingval);
+     workingval ^= key0;
+     workingval ^= runningmod;
+-    for (i = 0; i <= 4; ++i) {
+-        workingval = pac_inv_sub(workingval);
+-        if (i < 4) {
++    for (i = 0; i <= iterations; ++i) {
++        if (isqarma3) {
++            workingval = pac_sub1(workingval);
++        } else {
++            workingval = pac_inv_sub(workingval);
++        }
++        if (i < iterations) {
+             workingval = pac_mult(workingval);
+             workingval = pac_cell_inv_shuffle(workingval);
+         }
+         runningmod = tweak_inv_shuffle(runningmod);
+         roundkey = key1 ^ runningmod;
+-        workingval ^= RC[4 - i];
++        workingval ^= RC[iterations - i];
+         workingval ^= roundkey;
+         workingval ^= alpha;
+     }
+@@ -283,7 +315,9 @@ static uint64_t pauth_computepac(CPUARMState *env, uint64_t data,
+                                  uint64_t modifier, ARMPACKey key)
+ {
+     if (cpu_isar_feature(aa64_pauth_qarma5, env_archcpu(env))) {
+-        return pauth_computepac_architected(data, modifier, key);
++        return pauth_computepac_architected(data, modifier, key, false);
++    } else if (cpu_isar_feature(aa64_pauth_qarma3, env_archcpu(env))) {
++        return pauth_computepac_architected(data, modifier, key, true);
+     } else {
+         return pauth_computepac_impdef(data, modifier, key);
+     }
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 3fc33fc24d..a8a4c668ad 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -417,12 +417,22 @@ static void pauth_tests_default(QTestState *qts, const char *cpu_type)
+ {
+     assert_has_feature_enabled(qts, cpu_type, "pauth");
+     assert_has_feature_disabled(qts, cpu_type, "pauth-impdef");
++    assert_has_feature_disabled(qts, cpu_type, "pauth-qarma3");
+     assert_set_feature(qts, cpu_type, "pauth", false);
+     assert_set_feature(qts, cpu_type, "pauth", true);
+     assert_set_feature(qts, cpu_type, "pauth-impdef", true);
+     assert_set_feature(qts, cpu_type, "pauth-impdef", false);
+-    assert_error(qts, cpu_type, "cannot enable pauth-impdef without pauth",
++    assert_set_feature(qts, cpu_type, "pauth-qarma3", true);
++    assert_set_feature(qts, cpu_type, "pauth-qarma3", false);
++    assert_error(qts, cpu_type,
++                 "cannot enable pauth-impdef or pauth-qarma3 without pauth",
+                  "{ 'pauth': false, 'pauth-impdef': true }");
++    assert_error(qts, cpu_type,
++                 "cannot enable pauth-impdef or pauth-qarma3 without pauth",
++                 "{ 'pauth': false, 'pauth-qarma3': true }");
++    assert_error(qts, cpu_type,
++                 "cannot enable both pauth-impdef and pauth-qarma3",
++                 "{ 'pauth': true, 'pauth-impdef': true, 'pauth-qarma3': true }");
+ }
+ 
+ static void test_query_cpu_model_expansion(const void *data)
 -- 
 2.34.1
 

@@ -1,139 +1,144 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp3301554ejc;
-        Mon, 28 Aug 2023 15:59:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHUBTkZKaAdrJL+g3EDcCK/eTmOOqn3atVx8/c6/2BnjG1HCe09iYxj17HkTdeLH75kfaId
-X-Received: by 2002:ac8:4e95:0:b0:412:13e4:fe27 with SMTP id 21-20020ac84e95000000b0041213e4fe27mr10894833qtp.37.1693263598479;
-        Mon, 28 Aug 2023 15:59:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693263598; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp3461349ejc;
+        Mon, 28 Aug 2023 23:29:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEqSOuYIPGxQs2PvHCYkmf1a1zCgWeq45GCOqhZk0BJPy2tiqbABqsNUT9NX0CJnOGX+ry4
+X-Received: by 2002:a05:6214:f28:b0:63f:8839:658 with SMTP id iw8-20020a0562140f2800b0063f88390658mr2320376qvb.1.1693290578750;
+        Mon, 28 Aug 2023 23:29:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693290578; cv=none;
         d=google.com; s=arc-20160816;
-        b=HMIgsLV20nHl4Inh3WVjStf6/y94gJbn6xO2z2MsWzXx7iEb/sovPcCi10jSuuiA3Q
-         6j5CbCYYnK6E/WyD6sSil205OskmNVMJ9qUvtuNpVcY8UcUKHARIMUeHYi8YGdqiZLdr
-         1Iskwn74pfpGRJLzUYnbxYlabOER0cDgPh41z0ODH7H3a8462axGHLdWE2zcDm19bi/F
-         12goiW3qn6TK1VQs/Wwh3uwl61i/DRyRN09Z603fdAfHR6yC06tOeYKVF2JhAf2j5/mK
-         D3yZwk0cwGS5B4YXS11dRAzw9LxJ4NruovUjKr0don0QC51rT+oqCRFBp9mcXes5njbh
-         iy0w==
+        b=kb6rQhGi2kL+vOhdtAAg8kXkgAiKRMvbR8rY5Rv7upoBj5rocgaegq2M/G7KdLdE6M
+         uAxrHh52LywdFG1hmFSjWIO5BvU33TEtE6cbYj3S1nWatyHZJQ6X2lQJXDaIyTev0dBj
+         5w/gfR4gECMupxGIq/53q9WThpc6tcKdAu1qFXoufvgi3v2JNXiP2D+T2nYqS2d3hqoC
+         aCt1El13sNK1uwqgfGD6Km1mst4DchVewB8r1SaCjhlYL4vfifs5nuUCxA205/c8+T4S
+         ursx7SboWD1tu2iVczXFTW63Si/b/sv7xTSTx199/rfAJxY8/0vQk4uupmvegp/cQ6Ff
+         tLkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=F9k7WXb4iuJtUiav4ziga1ga/9fMj848gQr7L65w/ls=;
-        fh=C/KtYd05D41HubKubB0TAXx0MuCcZNJfThg2b49Vtb4=;
-        b=CPugr2mjZ5LG2gjaNCyQO96wkPGtmStjpLvYKwTx0OYEJbCkbSjux7oTm/0UbiBqJQ
-         WG5h36oQEyIl6YtpaaP3IeXjDXNuGmbnfeziIm1IbveWJNv9QZ8YOeToCdZ8WxvtY+dA
-         TBZH5brcUONFObvvegcs2GX5OWUAy4N9LMcHAhuXx6vBjrji1hkZn6X0fl7d5nXvnTEV
-         xzcmJhqFTqW2U7ho2m+s8JBndyHvIWuaUL2ng8XZQ1f5gohPpTRbu8D0VMIcoTBEjLPK
-         xT4Wf9WL27XCXyyhM3Gh0gJ0uHPsTarXpBrrkoP9Z7Z3XQ1ryesWFu38NNVtlyGhCoiQ
-         H0zQ==
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=xqTcTUnxGyOhFDX56VtW12SIM/4LwGwq9sp19msbWqI=;
+        fh=jW+/Z6j5OOVkUj2O5cy47A3XiBm3LedLlRHnZsgGrII=;
+        b=y5Kv1qM+iBgghC8PXIqi0RCXpw/my2qK/5EbQTs9tE1/s+lzbrFuHmYbCiolq5UOhY
+         WU/SjXrUEHVGaVBU9lD8ZDrzoWvdeO+WoCf+BWnklgOLQFKC4DMXQ2xn1gkvR9+Dj3hf
+         s5Fl0MxPst4rzH2Auz3FVP/JEBLp+YQcW1eIG3+2aZWErSwuUFEFaBUy54jQL/076ZQj
+         borOGXxiW6lhgy3jjZm7amEoyQA1v+ZDC3K1W0eT55vH+Crp8hj/PsT4+Aj09RWoVK2U
+         5M9Djsz2rZZT6Ncloysse3eyDipf/SDTHsNu8/C4Mee6A8M0eT4kbGy90ahorKrt5smD
+         em/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=gyK9cSZz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VOeGhLvy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e5-20020a05622a110500b003f6a82e276bsi5284803qty.574.2023.08.28.15.59.58
+        by mx.google.com with ESMTPS id d17-20020a0cf0d1000000b0064f5138c43fsi5555983qvl.449.2023.08.28.23.29.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Aug 2023 15:59:58 -0700 (PDT)
+        Mon, 28 Aug 2023 23:29:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=gyK9cSZz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VOeGhLvy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qalCW-00067y-5l; Mon, 28 Aug 2023 18:59:16 -0400
+	id 1qasE2-0006at-6h; Tue, 29 Aug 2023 02:29:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qalCF-0005il-OU; Mon, 28 Aug 2023 18:59:00 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qasDv-0006Zy-6s
+ for qemu-arm@nongnu.org; Tue, 29 Aug 2023 02:29:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qalCB-0004mc-89; Mon, 28 Aug 2023 18:58:59 -0400
-Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 37SMO71A020727; Mon, 28 Aug 2023 22:58:47 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=pp1;
- bh=F9k7WXb4iuJtUiav4ziga1ga/9fMj848gQr7L65w/ls=;
- b=gyK9cSZzPtrv17LQgTrGAmDhklmB7hiHhchwVrrvTAgLgTyPM7QqZeL1oM4XpvRxwCLf
- z4bMkRPJ6DLsG18arEC3kWSYf8H9qAwyned9bYSC+Dr+97pOBjO8Q9DyNa36JEOwBQ65
- jAiU49PoiU0Afrlfg9s1xSppShYWFnsQRVfODcpqaudnUf31ZYfsKC6R1Q7TIrmXRiih
- qc4TqVoqH28q/xuI8sv+1kLUtd+ZuYQsUor/UoBv1HEH9C2P7qgR3JpYPfFkztGVnFl7
- zb0L1VaPxLrIYftjTv7Vh36ozx8VOkNn2+a0MFtq/FMG1xZYKJri9pN/TN1E90wkjBWU +Q== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sr8q7jqat-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 28 Aug 2023 22:58:47 +0000
-Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37SMjwlG020397;
- Mon, 28 Aug 2023 22:58:46 GMT
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sr8q7jqaj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 28 Aug 2023 22:58:46 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 37SMZxW0020180; Mon, 28 Aug 2023 22:58:46 GMT
-Received: from smtprelay04.dal12v.mail.ibm.com ([172.16.1.6])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3sqv3y730y-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 28 Aug 2023 22:58:46 +0000
-Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
- [10.241.53.100])
- by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 37SMwjfM18612768
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 28 Aug 2023 22:58:45 GMT
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 66D0158059;
- Mon, 28 Aug 2023 22:58:45 +0000 (GMT)
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1B3C058061;
- Mon, 28 Aug 2023 22:58:45 +0000 (GMT)
-Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
- by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Mon, 28 Aug 2023 22:58:45 +0000 (GMT)
-From: Ninad Palsule <ninad@linux.ibm.com>
-To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
- andrew@aj.id.au, joel@jms.id.au, pbonzini@redhat.com,
- marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
- philmd@linaro.org
-Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
-Subject: [PATCH v2 3/7] hw/fsi: Introduce IBM's cfam,fsi-slave
-Date: Mon, 28 Aug 2023 17:58:38 -0500
-Message-Id: <20230828225842.4045510-4-ninad@linux.ibm.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230828225842.4045510-1-ninad@linux.ibm.com>
-References: <20230828225842.4045510-1-ninad@linux.ibm.com>
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qasDn-0007j2-Vd
+ for qemu-arm@nongnu.org; Tue, 29 Aug 2023 02:29:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1693290542;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xqTcTUnxGyOhFDX56VtW12SIM/4LwGwq9sp19msbWqI=;
+ b=VOeGhLvyJNK9HsfFJRRdhRGnAHNb9dcPt0UTB7heDyq70gTOTtMZf9EW9zFGALgXypiN12
+ U0i6sCfjTC/D1DNPdqmkGcYgp6apcbg/nOxDKyu/3Uq9iUbcnOIbjAzcqZQhO1lZ6e7zln
+ MqE8FdLqUcs+HXMT6Vj6XePF4ZGPm8M=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-352-_G46Hm5SPfiFUvujVx26Dw-1; Tue, 29 Aug 2023 02:28:59 -0400
+X-MC-Unique: _G46Hm5SPfiFUvujVx26Dw-1
+Received: by mail-pl1-f200.google.com with SMTP id
+ d9443c01a7336-1bb29dc715bso45684375ad.1
+ for <qemu-arm@nongnu.org>; Mon, 28 Aug 2023 23:28:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1693290538; x=1693895338;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xqTcTUnxGyOhFDX56VtW12SIM/4LwGwq9sp19msbWqI=;
+ b=AhWzP8rtZhOiuHp8GB/aWZ/nB2YcWMUPFaTsqDSEWJzT+d6FcHPNko2fUv5Ww1w8G7
+ jpHBwM4PMBf4f9Cca3tKk6/32LZoniP1qmmT/DRWhz+KRrFB7saeGtWDGo83xuozKHiO
+ 2QnqgLJ86szN0ec8MVcmM0rdc8k/qbsdKr1ZAZbrzR2Xs3igokOVqwpJv/4FbTpkNGNZ
+ tLrxo1nEPeLtCwPjPTQEoUhQDeWnpK8cLE4h9n6wWxhX2EK6hmvuxpcTRpvQsWBC8z40
+ v2kKwwMNostE45UFsNLEFcTGZYBvEi7xUBfHUGNKQnK/0BIpedTBwNTFojC0KzPswMzL
+ La7w==
+X-Gm-Message-State: AOJu0Yy7VGsVngbeHGC2qEg2fqdaKjIMIU0uGdjSBOeHj1f539gy1gpO
+ To/HHqoaOPTjNDLWBVGv/WftAX0J8MZ4QmpDQrNoT6Pry6MUj9DwkDhGK9XfHFhlDOnqdw7idXQ
+ PfzcA9qc/O0i3
+X-Received: by 2002:a17:903:2308:b0:1b8:a67f:1c15 with SMTP id
+ d8-20020a170903230800b001b8a67f1c15mr2609705plh.25.1693290538502; 
+ Mon, 28 Aug 2023 23:28:58 -0700 (PDT)
+X-Received: by 2002:a17:903:2308:b0:1b8:a67f:1c15 with SMTP id
+ d8-20020a170903230800b001b8a67f1c15mr2609668plh.25.1693290538024; 
+ Mon, 28 Aug 2023 23:28:58 -0700 (PDT)
+Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
+ ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
+ by smtp.gmail.com with ESMTPSA id
+ 19-20020a170902c11300b001bf20c80684sm8551878pli.6.2023.08.28.23.28.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 28 Aug 2023 23:28:57 -0700 (PDT)
+Message-ID: <6e637717-b739-3ee8-ac12-a339ea5fb166@redhat.com>
+Date: Tue, 29 Aug 2023 16:28:45 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v2 3/8] machine: Print supported CPU models instead of
+ typenames
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, qemu-riscv@nongnu.org, peter.maydell@linaro.org,
+ b.galvani@gmail.com, strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com,
+ kfting@nuvoton.com, wuhaotsh@google.com, nieklinnenbank@gmail.com,
+ rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
+ wangyanan55@huawei.com, laurent@vivier.eu, vijai@behindbytes.com,
+ palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
+ liweiwei@iscas.ac.cn, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, cohuck@redhat.com, pbonzini@redhat.com,
+ shan.gavin@gmail.com, qemu-ppc@nongnu.org
+References: <20230726003205.1599788-1-gshan@redhat.com>
+ <20230726003205.1599788-4-gshan@redhat.com>
+ <24e54bac-9149-20da-e4cf-5829a6dcb174@linaro.org>
+ <0454c1ad-314c-3df6-d6e9-1a05cb4c4050@redhat.com>
+ <20230727110010.648b61a6@imammedo.users.ipa.redhat.com>
+ <5f26299e-f1e0-a2ab-db83-87011fe524d5@redhat.com>
+ <20230828164637.52c2b5b0@imammedo.users.ipa.redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20230828164637.52c2b5b0@imammedo.users.ipa.redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: HZmC-6fCCnXiNV3rzjIfzrlkRKevTijr
-X-Proofpoint-ORIG-GUID: qNcCwtRFjElwLNH2NXKQcMM1sm10feJY
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-08-28_18,2023-08-28_04,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 adultscore=0
- mlxlogscore=999 suspectscore=0 bulkscore=0 spamscore=0 malwarescore=0
- priorityscore=1501 lowpriorityscore=0 phishscore=0 mlxscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2308100000 definitions=main-2308280194
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.169, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,525 +153,258 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lfK4BF+iAQvo
+X-TUID: RhRrW47B9Ish
 
-This is a part of patchset where IBM's Flexible Service Interface is
-introduced.
+Hi Igor,
 
-The Common FRU Access Macro (CFAM), an address space containing
-various "engines" that drive accesses on busses internal and external
-to the POWER chip. Examples include the SBEFIFO and I2C masters. The
-engines hang off of an internal Local Bus (LBUS) which is described
-by the CFAM configuration block.
+On 8/29/23 00:46, Igor Mammedov wrote:
+> On Mon, 31 Jul 2023 15:07:30 +1000
+> Gavin Shan <gshan@redhat.com> wrote:
+>> On 7/27/23 19:00, Igor Mammedov wrote:
+>>> On Thu, 27 Jul 2023 15:16:18 +1000
+>>> Gavin Shan <gshan@redhat.com> wrote:
+>>>    
+>>>> On 7/27/23 09:08, Richard Henderson wrote:
+>>>>> On 7/25/23 17:32, Gavin Shan wrote:
+>>>>>> -static const char *q800_machine_valid_cpu_types[] = {
+>>>>>> +static const char * const q800_machine_valid_cpu_types[] = {
+>>>>>>         M68K_CPU_TYPE_NAME("m68040"),
+>>>>>>         NULL
+>>>>>>     };
+>>>>>> +static const char * const q800_machine_valid_cpu_models[] = {
+>>>>>> +    "m68040",
+>>>>>> +    NULL
+>>>>>> +};
+>>>>>
+>>>>> I really don't like this replication.
+>>>>>       
+>>>>
+>>>> Right, it's going to be lots of replications, but gives much flexibility.
+>>>> There are 21 targets and we don't have fixed pattern for the mapping between
+>>>> CPU model name and CPU typename. I'm summarizing the used patterns like below.
+>>>>
+>>>>      1 All CPU model names are mappinged to fixed CPU typename;
+>>>
+>>>           plainly spelled it would be: cpu_model name ignored and
+>>>           a cpu type is returned anyways.
+>>>
+>>> I'd make this hard error right away, as "junk in => error out"
+>>> it's clearly user error. I think we don't even have to follow
+>>> deprecation process for that.
+>>>    
+>>
+>> Right, It's not expected behavior to map ambiguous CPU model names to
+>> the fixed CPU typename.
+> 
+> to be nice we can deprecate those and then later remove.
+> (while deprecating make those targets accept typenames)
+> 
 
-The FSI slave: The slave is the terminal point of the FSI bus for
-FSI symbols addressed to it. Slaves can be cascaded off of one
-another. The slave's configuration registers appear in address space
-of the CFAM to which it is attached.
+Lets put it aside for now and revisit it later, so that we can focus on
+the conversion from the CPU type name to the CPU model name for now.
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
----
-v2:
-- Incorporated Joel's review comments.
----
- hw/fsi/Kconfig             |   9 ++
- hw/fsi/cfam.c              | 235 +++++++++++++++++++++++++++++++++++++
- hw/fsi/fsi-slave.c         | 109 +++++++++++++++++
- hw/fsi/meson.build         |   2 +
- include/hw/fsi/cfam.h      |  61 ++++++++++
- include/hw/fsi/fsi-slave.h |  29 +++++
- 6 files changed, 445 insertions(+)
- create mode 100644 hw/fsi/cfam.c
- create mode 100644 hw/fsi/fsi-slave.c
- create mode 100644 include/hw/fsi/cfam.h
- create mode 100644 include/hw/fsi/fsi-slave.h
+>>
+>>>>      2 CPU model name is same to CPU typename;
+>>>>      3 CPU model name is alias to CPU typename;
+>>>>      4 CPU model name is prefix of CPU typename;
+>>>
+>>> and some more:
+>>>       5. cpu model names aren't names at all sometimes, and some other
+>>>          CPU property is used. (ppc)
+>>> This one I'd prefer to get rid of and ppc handling more consistent
+>>> with other targets, which would need PPC folks to persuaded to drop
+>>> PVR lookup.
+>>>    
+>>
+>> I put this into class 3, meaning the PVRs are regarded as aliases to CPU
+>> typenames.
+> 
+> with PPC using 'true' aliases, -cpu input is lost after it's translated into typename.
+> (same for alpha)
+> 
+> it also adds an extra fun with 'max' cpu model but that boils down to above statement.
+> (same for
+>    * sh4
+>    * cris(in user mode only, but you are making sysemu extension, so it doesn't count)
+> )
+> For this class of aliases reverse translation won't yield the same
+> result as used -cpu. The only option you have is to store -cpu cpu_model
+> somewhere (use qemu_opts??, and then fetch it later to print in error message)
+> 
+> x86 has 'aliases' as well, but in reality it creates distinct cpu types
+> for each 'alias', so it's possible to do reverse translation.
+> 
 
-diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
-index 2a9c49f2c9..087980be22 100644
---- a/hw/fsi/Kconfig
-+++ b/hw/fsi/Kconfig
-@@ -1,3 +1,12 @@
-+config CFAM
-+    bool
-+    select FSI
-+    select SCRATCHPAD
-+    select LBUS
-+
-+config FSI
-+    bool
-+
- config SCRATCHPAD
-     bool
-     select LBUS
-diff --git a/hw/fsi/cfam.c b/hw/fsi/cfam.c
-new file mode 100644
-index 0000000000..19256050bd
---- /dev/null
-+++ b/hw/fsi/cfam.c
-@@ -0,0 +1,235 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM Common FRU Access Macro
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+
-+#include "hw/fsi/bits.h"
-+#include "hw/fsi/cfam.h"
-+#include "hw/fsi/engine-scratchpad.h"
-+
-+#include "hw/qdev-properties.h"
-+
-+#define TO_REG(x)                          ((x) >> 2)
-+
-+#define CFAM_ENGINE_CONFIG                  TO_REG(0x04)
-+
-+#define CFAM_CONFIG_CHIP_ID                TO_REG(0x00)
-+#define CFAM_CONFIG_CHIP_ID_P9             0xc0022d15
-+#define   CFAM_CONFIG_CHIP_ID_BREAK        0xc0de0000
-+
-+static uint64_t cfam_config_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    CFAMConfig *config;
-+    CFAMState *cfam;
-+    LBusNode *node;
-+    int i;
-+
-+    config = CFAM_CONFIG(opaque);
-+    cfam = container_of(config, CFAMState, config);
-+
-+    qemu_log_mask(LOG_UNIMP, "%s: read @0x%" HWADDR_PRIx " size=%d\n",
-+                  __func__, addr, size);
-+
-+    assert(size == 4);
-+    assert(!(addr & 3));
-+
-+    switch (addr) {
-+    case 0x00:
-+        return CFAM_CONFIG_CHIP_ID_P9;
-+    case 0x04:
-+        return ENGINE_CONFIG_NEXT
-+            | 0x00010000                    /* slots */
-+            | 0x00001000                    /* version */
-+            | ENGINE_CONFIG_TYPE_PEEK   /* type */
-+            | 0x0000000c;                   /* crc */
-+    case 0x08:
-+        return ENGINE_CONFIG_NEXT
-+            | 0x00010000                    /* slots */
-+            | 0x00005000                    /* version */
-+            | ENGINE_CONFIG_TYPE_FSI    /* type */
-+            | 0x0000000a;                   /* crc */
-+        break;
-+    default:
-+        /* FIXME: Improve this */
-+        i = 0xc;
-+        QLIST_FOREACH(node, &cfam->lbus.devices, next) {
-+            if (i == addr) {
-+                return LBUS_DEVICE_GET_CLASS(node->ldev)->config;
-+            }
-+            i += size;
-+        }
-+
-+        if (i == addr) {
-+            return 0;
-+        }
-+
-+        return 0xc0de0000;
-+    }
-+}
-+
-+static void cfam_config_write(void *opaque, hwaddr addr, uint64_t data,
-+                                 unsigned size)
-+{
-+    CFAMConfig *s = CFAM_CONFIG(opaque);
-+
-+    qemu_log_mask(LOG_UNIMP, "%s: write @0x%" HWADDR_PRIx " size=%d "
-+                  "value=%"PRIx64"\n", __func__, addr, size, data);
-+
-+    assert(size == 4);
-+    assert(!(addr & 3));
-+
-+    switch (TO_REG(addr)) {
-+    case CFAM_CONFIG_CHIP_ID:
-+    case CFAM_CONFIG_CHIP_ID + 4:
-+        if (data == CFAM_CONFIG_CHIP_ID_BREAK) {
-+            bus_cold_reset(qdev_get_parent_bus(DEVICE(s)));
-+        }
-+    break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Not implemented: 0x%"
-+                      HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
-+    }
-+}
-+
-+static const struct MemoryRegionOps cfam_config_ops = {
-+    .read = cfam_config_read,
-+    .write = cfam_config_write,
-+    .endianness = DEVICE_BIG_ENDIAN,
-+};
-+
-+static void cfam_config_realize(DeviceState *dev, Error **errp)
-+{
-+    CFAMConfig *s = CFAM_CONFIG(dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &cfam_config_ops, s,
-+                          TYPE_CFAM_CONFIG, 0x400);
-+}
-+
-+static void cfam_config_reset(DeviceState *dev)
-+{
-+    /* Config is read-only */
-+}
-+
-+static void cfam_config_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->bus_type = TYPE_LBUS;
-+    dc->realize = cfam_config_realize;
-+    dc->reset = cfam_config_reset;
-+}
-+
-+static const TypeInfo cfam_config_info = {
-+    .name = TYPE_CFAM_CONFIG,
-+    .parent = TYPE_DEVICE,
-+    .instance_size = sizeof(CFAMConfig),
-+    .class_init = cfam_config_class_init,
-+};
-+
-+static uint64_t cfam_unimplemented_read(void *opaque, hwaddr addr,
-+                                        unsigned size)
-+{
-+    qemu_log_mask(LOG_UNIMP, "%s: read @0x%" HWADDR_PRIx " size=%d\n",
-+                  __func__, addr, size);
-+
-+    return 0;
-+}
-+
-+static void cfam_unimplemented_write(void *opaque, hwaddr addr, uint64_t data,
-+                                     unsigned size)
-+{
-+    qemu_log_mask(LOG_UNIMP, "%s: write @0x%" HWADDR_PRIx " size=%d "
-+                  "value=%"PRIx64"\n", __func__, addr, size, data);
-+}
-+
-+static const struct MemoryRegionOps cfam_unimplemented_ops = {
-+    .read = cfam_unimplemented_read,
-+    .write = cfam_unimplemented_write,
-+    .endianness = DEVICE_BIG_ENDIAN,
-+};
-+
-+static void cfam_realize(DeviceState *dev, Error **errp)
-+{
-+    CFAMState *cfam = CFAM(dev);
-+    FSISlaveState *slave = FSI_SLAVE(dev);
-+    Error *err = NULL;
-+
-+    /* Each slave has a 2MiB address space */
-+    memory_region_init_io(&cfam->mr, OBJECT(cfam), &cfam_unimplemented_ops,
-+                          cfam, TYPE_CFAM, 2 * 1024 * 1024);
-+    address_space_init(&cfam->as, &cfam->mr, TYPE_CFAM);
-+
-+    qbus_init(&cfam->lbus, sizeof(cfam->lbus), TYPE_LBUS,
-+                        DEVICE(cfam), NULL);
-+
-+    lbus_create_device(&cfam->lbus, TYPE_SCRATCHPAD, 0);
-+
-+    object_property_set_bool(OBJECT(&cfam->config), "realized", true, &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    qdev_set_parent_bus(DEVICE(&cfam->config), BUS(&cfam->lbus), &error_abort);
-+
-+    object_property_set_bool(OBJECT(&cfam->lbus), "realized", true, &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    memory_region_add_subregion(&cfam->mr, 0, &cfam->config.iomem);
-+    /* memory_region_add_subregion(&cfam->mr, 0x800, &cfam->lbus.peek.iomem); */
-+    memory_region_add_subregion(&cfam->mr, 0x800, &slave->iomem);
-+    memory_region_add_subregion(&cfam->mr, 0xc00, &cfam->lbus.mr);
-+}
-+
-+static void cfam_reset(DeviceState *dev)
-+{
-+    /* TODO: Figure out how inherited reset works */
-+}
-+
-+static void cfam_init(Object *o)
-+{
-+    CFAMState *s = CFAM(o);
-+
-+    object_initialize_child(o, TYPE_CFAM_CONFIG, &s->config, TYPE_CFAM_CONFIG);
-+}
-+
-+static void cfam_finalize(Object *o)
-+{
-+    CFAMState *s = CFAM(o);
-+
-+    address_space_destroy(&s->as);
-+}
-+
-+static void cfam_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->bus_type = TYPE_FSI_BUS;
-+    dc->realize = cfam_realize;
-+    dc->reset = cfam_reset;
-+}
-+
-+static const TypeInfo cfam_info = {
-+    .name = TYPE_CFAM,
-+    .parent = TYPE_FSI_SLAVE,
-+    .instance_init = cfam_init,
-+    .instance_finalize = cfam_finalize,
-+    .instance_size = sizeof(CFAMState),
-+    .class_init = cfam_class_init,
-+};
-+
-+static void cfam_register_types(void)
-+{
-+    type_register_static(&cfam_config_info);
-+    type_register_static(&cfam_info);
-+}
-+
-+type_init(cfam_register_types);
-diff --git a/hw/fsi/fsi-slave.c b/hw/fsi/fsi-slave.c
-new file mode 100644
-index 0000000000..10df5b243f
---- /dev/null
-+++ b/hw/fsi/fsi-slave.c
-@@ -0,0 +1,109 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface slave
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "qemu/bitops.h"
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+
-+#include "hw/fsi/fsi-slave.h"
-+
-+#define TO_REG(x)                               ((x) >> 2)
-+
-+#define FSI_SMODE               TO_REG(0x00)
-+#define   FSI_SMODE_WSTART      BE_BIT(0)
-+#define   FSI_SMODE_AUX_EN      BE_BIT(1)
-+#define   FSI_SMODE_SLAVE_ID    BE_GENMASK(6, 7)
-+#define   FSI_SMODE_ECHO_DELAY  BE_GENMASK(8, 11)
-+#define   FSI_SMODE_SEND_DELAY  BE_GENMASK(12, 15)
-+#define   FSI_SMODE_LBUS_DIV    BE_GENMASK(20, 23)
-+#define   FSI_SMODE_BRIEF_LEFT  BE_GENMASK(24, 27)
-+#define   FSI_SMODE_BRIEF_RIGHT BE_GENMASK(28, 31)
-+
-+#define FSI_SDMA                TO_REG(0x04)
-+#define FSI_SISC                TO_REG(0x08)
-+#define FSI_SCISC               TO_REG(0x08)
-+#define FSI_SISM                TO_REG(0x0c)
-+#define FSI_SISS                TO_REG(0x10)
-+#define FSI_SSISM               TO_REG(0x10)
-+#define FSI_SCISM               TO_REG(0x14)
-+
-+static uint64_t fsi_slave_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    FSISlaveState *s = FSI_SLAVE(opaque);
-+
-+    qemu_log_mask(LOG_UNIMP, "%s: read @0x%" HWADDR_PRIx " size=%d\n",
-+                  __func__, addr, size);
-+
-+    if (addr + size > sizeof(s->regs)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
-+        return 0;
-+    }
-+
-+    return s->regs[TO_REG(addr)];
-+}
-+
-+static void fsi_slave_write(void *opaque, hwaddr addr, uint64_t data,
-+                                 unsigned size)
-+{
-+    FSISlaveState *s = FSI_SLAVE(opaque);
-+
-+    qemu_log_mask(LOG_UNIMP, "%s: write @0x%" HWADDR_PRIx " size=%d "
-+                  "value=%"PRIx64"\n", __func__, addr, size, data);
-+
-+    if (addr + size > sizeof(s->regs)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out of bounds write: 0x%"HWADDR_PRIx" for %u\n",
-+                      __func__, addr, size);
-+        return;
-+    }
-+
-+    s->regs[TO_REG(addr)] = data;
-+}
-+
-+static const struct MemoryRegionOps fsi_slave_ops = {
-+    .read = fsi_slave_read,
-+    .write = fsi_slave_write,
-+    .endianness = DEVICE_BIG_ENDIAN,
-+};
-+
-+static void fsi_slave_init(Object *o)
-+{
-+    FSISlaveState *s = FSI_SLAVE(o);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &fsi_slave_ops,
-+                          s, TYPE_FSI_SLAVE, 0x400);
-+}
-+
-+static void fsi_slave_reset(DeviceState *dev)
-+{
-+    /* FIXME */
-+}
-+
-+static void fsi_slave_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->reset = fsi_slave_reset;
-+}
-+
-+static const TypeInfo fsi_slave_info = {
-+    .name = TYPE_FSI_SLAVE,
-+    .parent = TYPE_DEVICE,
-+    .instance_init = fsi_slave_init,
-+    .instance_size = sizeof(FSISlaveState),
-+    .class_init = fsi_slave_class_init,
-+};
-+
-+static void fsi_slave_register_types(void)
-+{
-+    type_register_static(&fsi_slave_info);
-+}
-+
-+type_init(fsi_slave_register_types);
-diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
-index f90e09ddab..5600502b33 100644
---- a/hw/fsi/meson.build
-+++ b/hw/fsi/meson.build
-@@ -1,2 +1,4 @@
- system_ss.add(when: 'CONFIG_LBUS', if_true: files('lbus.c'))
- system_ss.add(when: 'CONFIG_SCRATCHPAD', if_true: files('engine-scratchpad.c'))
-+system_ss.add(when: 'CONFIG_CFAM', if_true: files('cfam.c'))
-+system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi-slave.c'))
-diff --git a/include/hw/fsi/cfam.h b/include/hw/fsi/cfam.h
-new file mode 100644
-index 0000000000..af9f88cb22
---- /dev/null
-+++ b/include/hw/fsi/cfam.h
-@@ -0,0 +1,61 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM Common FRU Access Macro
-+ */
-+#ifndef FSI_CFAM_H
-+#define FSI_CFAM_H
-+
-+#include "exec/memory.h"
-+
-+#include "hw/fsi/fsi-slave.h"
-+#include "hw/fsi/lbus.h"
-+
-+#define TYPE_FSI_BUS "fsi.bus"
-+
-+#define TYPE_CFAM "cfam"
-+#define CFAM(obj) OBJECT_CHECK(CFAMState, (obj), TYPE_CFAM)
-+
-+#define CFAM_NR_REGS ((0x2e0 >> 2) + 1)
-+
-+#define TYPE_CFAM_CONFIG "cfam.config"
-+#define CFAM_CONFIG(obj) \
-+    OBJECT_CHECK(CFAMConfig, (obj), TYPE_CFAM_CONFIG)
-+/* P9-ism */
-+#define CFAM_CONFIG_NR_REGS 0x28
-+
-+typedef struct CFAMState CFAMState;
-+
-+/* TODO: Generalise this accommodate different CFAM configurations */
-+typedef struct CFAMConfig {
-+    DeviceState parent;
-+
-+    MemoryRegion iomem;
-+} CFAMConfig;
-+
-+#define TYPE_CFAM_PEEK "cfam.peek"
-+#define CFAM_PEEK(obj) \
-+    OBJECT_CHECK(CFAMPeek, (obj), TYPE_CFAM_PEEK)
-+#define CFAM_PEEK_NR_REGS ((0x130 >> 2) + 1)
-+
-+typedef struct CFAMPeek {
-+    DeviceState parent;
-+
-+    MemoryRegion iomem;
-+} CFAMPeek;
-+
-+struct CFAMState {
-+    /* < private > */
-+    FSISlaveState parent;
-+
-+    MemoryRegion mr;
-+    AddressSpace as;
-+
-+    CFAMConfig config;
-+    CFAMPeek peek;
-+
-+    LBus lbus;
-+};
-+
-+#endif /* FSI_CFAM_H */
-diff --git a/include/hw/fsi/fsi-slave.h b/include/hw/fsi/fsi-slave.h
-new file mode 100644
-index 0000000000..bff807ff20
---- /dev/null
-+++ b/include/hw/fsi/fsi-slave.h
-@@ -0,0 +1,29 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2023 IBM Corp.
-+ *
-+ * IBM Flexible Service Interface slave
-+ */
-+#ifndef FSI_FSI_SLAVE_H
-+#define FSI_FSI_SLAVE_H
-+
-+#include "exec/memory.h"
-+#include "hw/qdev-core.h"
-+
-+#include "hw/fsi/lbus.h"
-+
-+#include <stdint.h>
-+
-+#define TYPE_FSI_SLAVE "fsi.slave"
-+#define FSI_SLAVE(obj) \
-+    OBJECT_CHECK(FSISlaveState, (obj), TYPE_FSI_SLAVE)
-+#define FSI_SLAVE_CONTROL_NR_REGS ((0x40 >> 2) + 1)
-+
-+typedef struct FSISlaveState {
-+    DeviceState parent;
-+
-+    MemoryRegion iomem;
-+    uint32_t regs[FSI_SLAVE_CONTROL_NR_REGS];
-+} FSISlaveState;
-+
-+#endif /* FSI_FSI_H */
--- 
-2.39.2
+It's true that '-cpu input' gets lost in these cases. However, the CPU type
+name instead of the CPU model name is printed in the error message when the
+CPU type is validated in hw/core/machine.c::machine_run_board_init(). It looks
+good to me to print the CPU type name instead of the model name there.
+
+Another error message is printed when the CPU model specified in '-cpu input'
+isn't valid. The CPU model has been printed and it looks good either.
+
+   # qemu-system-aarch64 -M virt -cpu aaa
+   qemu-system-aarch64: unable to find CPU model 'aaa'
+
+Are there other cases I missed where we need to print the CPU model name, which
+is specified by user through '-cpu input'?
+
+>>>>
+>>>>      Target         Categories    suffix-of-CPU-typename
+>>>>      -------------------------------------------------------
+>>>>      alpha          -234          -alpha-cpu
+>>>>      arm            ---4          -arm-cpu
+>>>>      avr            -2--
+>>>>      cris           --34          -cris-cpu
+>>>>      hexagon        ---4          -hexagon-cpu
+>>>>      hppa           1---
+>>>>      i386           ---4          -i386-cpu
+>>>>      loongarch      -2-4          -loongarch-cpu
+>>>>      m68k           ---4          -m68k-cpu
+>>>>      microblaze     1---
+>>>>      mips           ---4          -mips64-cpu  -mips-cpu
+>>>>      nios2          1---
+>>>>      openrisc       ---4          -or1k-cpu
+>>>>      ppc            --34          -powerpc64-cpu  -powerpc-cpu
+>>>>      riscv          ---4          -riscv-cpu
+>>>>      rx             -2-4          -rx-cpu
+>>>>      s390x          ---4          -s390x-cpu
+>>>>      sh4            --34          -superh-cpu
+>>>>      sparc          -2--
+> 
+> it's case 4
+> 
+
+Yes.
+
+>>>>      tricore        ---4          -tricore-cpu
+>>>>      xtensa         ---4          -xtensa-cpu
+>>>>
+>>>> There are several options as below. Please let me know which one or something
+>>>> else is the best.
+>>>>
+>>>> (a) Keep what we have and use mc->valid_{cpu_types, cpu_models}[] to track
+>>>> the valid CPU typenames and CPU model names.
+>>>>
+>>>> (b) Introduce CPUClass::model_name_by_typename(). Every target has their own
+>>>> implementation to convert CPU typename to CPU model name. The CPU model name
+>>>> is parsed from mc->valid_cpu_types[i].
+>>>>
+>>>>        char *CPUClass::model_by_typename(const char *typename);
+>>>>
+>>>> (c) As we discussed before, use mc->valid_cpu_type_suffix and mc->valid_cpu_models
+>>>> because the CPU type check is currently needed by target arm/m68k/riscv where we
+>>>> do have fixed pattern to convert CPU model names to CPU typenames. The CPU typename
+>>>> is comprised of CPU model name and suffix. However, it won't be working when the CPU
+>>>> type check is required by other target where we have patterns other than this.
+>>>
+>>> none of above is really good, that's why I was objecting to introducing
+>>> reverse type->name mapping. That ends up with increased amount junk,
+>>> and it's not because your patches are bad, but because you are trying
+>>> to deal with cpu model names (which is a historically evolved mess).
+>>> The best from engineering POV would be replacing CPU models with
+>>> type names.
+>>>
+>>> Even though it's a bit radical, I very much prefer replacing
+>>> cpu_model names with '-cpu type'usage directly. Making it
+>>> consistent with -device/other interfaces and coincidentally that
+>>> obsoletes need in reverse name mapping.
+>>>
+>>> It's painful for end users who will need to change configs/scripts,
+>>> but it's one time job. Additionally from QEMU pov, codebase
+>>> will be less messy => more maintainable which benefits not only
+>>> developers but end-users in the end.
+>>>    
+>>
+>> I have to clarify the type->model mapping has been existing since the
+>> model->type mapping was introduced with the help of CPU_RESOLVING_TYPE.
+>> I mean the logic has been existing since the existence of CPU_RESOLVING_TYPE,
+>> even the code wasn't there.
+>>
+>> I'm not sure about the idea to switch to '-cpu <cpu-type-name>' since
+>> it was rejected by Peter Maydell before. Hope Peter can double confirm
+>> for this. For me, the shorter name is beneficial. For example, users
+>> needn't to have '-cpu host-arm-cpu' for '-cpu host'.
+>>
+>>
+>>> [rant:
+>>> It's the same story repeating over and over, when it comes to
+>>> changing QEMU CLI, which hits resistance wall. But with QEMU
+>>> deprecation process we've changed CLI behavior before,
+>>> despite of that world didn't cease to exist and users
+>>> have adapted to new QEMU and arguably QEMU became a tiny
+>>> bit more maintainable since we don't have to deal some
+>>> legacy behavior.
+>>> ]
+>>>    
+>>
+>> I need more context about 'deprecation process' here. My understanding
+>> is both CPU typename and model name will be accepted for a fixed period
+>> of time. However, a warning message will be given to indicate that the
+>> model name will be obsoleted soon. Eventually, we switch to CPU typename
+>> completely. Please correct me if there are anything wrong.
+> 
+> yep, that's the gist of deprecation in this case.
+> 
+
+Ok. Thanks for your confirm.
+   
+>>> Another idea back in the days was (as a compromise),
+>>>    1. keep using keep valid_cpu_types
+>>>    2. instead of introducing yet another way to do reverse mapping,
+>>>       clean/generalize/make it work everywhere list_cpus (which
+>>>       already does that mapping) and then use that to do your thing.
+>>>       It will have drawbacks you've listed above, but hopefully
+>>>       that will clean up and reuse existing list_cpus.
+>>>       (only this time, I'd build it around  query-cpu-model-expansion,
+>>>        which output is used by generic list_cpus)
+>>>       [and here I'm asking to rewrite directly unrelated QEMU part yet again]
+>>>    
+>>
+>> I'm afraid that list_cpus() is hard to be reused. All available CPU model names
+>> are listed by list_cpus(). mc->valid_cpu_types[] are just part of them and variable
+>> on basis of boards. Generally speaking, we need a function to do reverse things
+>> as to CPUClass::class_by_name(). So I would suggest to introduce CPUClass::model_from_type(),
+>> as below. Could you please suggest if it sounds reasonable to you?
+>>
+>> - CPUClass::class_by_name() is modified to
+>>     char *CPUClass::model_to_type(const char *model)
+>>
+>> - char *CPUClass::type_to_model(const char *type)
+>>
+>> - CPUClass::type_to_model() is used in cpu_list() for every target when CPU
+>>     model name, fetched from CPU type name, is printed in xxx_cpu_list_entry()
+>>
+>> - CPUClass::type_to_model() is reused in hw/core/machine.c to get the CPU
+>>     model name from CPU type names in mc->valid_cpu_types[].
+> 
+> instead of per target hooks (which are atm mostly open-coded in several places)
+> how about adding generic handler for cases 2,4:
+>    cpu_type_to_model(typename)
+>       cpu_suffix = re'-*-cpu'
+>       if (class_exists(typename - cpu_suffix))
+>           return typename - cpu_suffix
+>       else if (class_exists(typename))
+>           return typename
+>       explode
+> 
+> that should work for translating valid_cpus typenames to cpumodel names
+> and once that in place cleanup all open-coded translations with it tree-wide
+> 
+> you can find those easily by:
+> git grep _CPU_TYPE_SUFFIX
+> git grep query_cpu_definitions
+> 
+
+Thanks for the advice. I think it's enough for now since the CPU type
+invalidation is currently done for arm/mips/riscv for now. On these
+targets, the CPU type name is always the combination of the CPU model
+name and suffix. I will add helper qemu/cpu.c::cpu_model_by_name()
+as you suggested. Note that, the suffix can be gained by ("-" CPU_RESOLVING_TYPE)
+
+Yes, the newly added helper cpu_model_by_name() needs to be applied
+to targets where query_cpu_definitions and cpu_list are defined.
+
+Thanks,
+Gavin
 

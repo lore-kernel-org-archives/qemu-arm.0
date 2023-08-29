@@ -1,141 +1,119 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp3660066ejc;
-        Tue, 29 Aug 2023 06:22:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG+rrmOQCRomk9rrR/K6uUMPK6bm1cJWTGn114ae5W1BZyjLE2ryQ7d5m9pri3tnJbtgBek
-X-Received: by 2002:a05:622a:1a97:b0:410:acd5:a000 with SMTP id s23-20020a05622a1a9700b00410acd5a000mr25118833qtc.21.1693315336099;
-        Tue, 29 Aug 2023 06:22:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693315336; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp3819716ejc;
+        Tue, 29 Aug 2023 10:27:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGnyowwbGx4/e4fJaww6nxHskHw6i1Frp07oXU+wgvVdFf97fgGyscFj6Az4+bafWCRCLoZ
+X-Received: by 2002:a05:622a:a0b:b0:403:f438:1803 with SMTP id bv11-20020a05622a0a0b00b00403f4381803mr3959703qtb.3.1693330054885;
+        Tue, 29 Aug 2023 10:27:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693330054; cv=none;
         d=google.com; s=arc-20160816;
-        b=g85t0uHwPvEbuCXIYuYxyWPnrhtx8+7ZLw9H/swYvE2/uA6UZ9CNny1BufcdtHIGDd
-         ihTTD+SUB2Oms+AAv3UYKAtAdnIZ1TlEiAe4v9u6wiwPBCXJRJfFOQSW2iWMhaTalfs4
-         /T1T41wn66tf1nai+s1NHuoG2FgYrP+3dX1Sy/Y/fF+OT2CKJvLlVDs20LM6SKdjQPOV
-         etVrM5vjD3i2yTKWRMkJWc3+k92oaAIidP4TuHQ7h4PgPoHderGat4z2F+6IJWxrqLtE
-         0A/n7eY3tWpho+yU3vCLtaTXYh6jj/TvEAagkzDG1W9WQphA7GBlucc/fQoa4wmOoZio
-         rUZQ==
+        b=r8l/7asrpt5+1dmikwH8JmIq/u+KqwUAo/hk3NDOEXnNqcLI0hHhVRRzGzUqLP8BUc
+         gahPt0UgpK7VqWuWyAOCwXF+lwgPKAaaaJLvDgyfkRUGAYZko9/s4dBOEoQtwcAaCOJt
+         vV6uNhc9VfzmbGmyh+BD2PnCf9zpKiodc4CWlKxdU2jkbUdqjbV1DJT4TZ66sPxoydX4
+         PS6aAzucQ8vssATHWvazYkt/OCJ0hYL1PeJsiop7rJSbFr2F6TKvWtCHlMscrK1jUrEB
+         jwpLW0s07+vkFvjAJzMIee/88zQLmDfuUM4j1yQZIzSjS8ABNCB1vTR68OC7DFNLD4zG
+         KXKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=if/UmBRbHks8AhQkajFRWvHYh/7FmeO9jsi7m060SvI=;
-        fh=HXFIYFUTPsIGoWOOaxJIIObVrQwOW75f30cUG330MvM=;
-        b=LCibYzMJepYoxUd/GNGmr8hylEtfhfuGUKV8r/ToICG1VylU834x1cp25n9u1Nhh9n
-         BwmUqYWo27js10QIsTMvzC1M2xbm/wiivyjzbHloEgXfsafUuJ/yf7v6z08MsnrWXGTj
-         HVCioYkMjIrkEqGKoVeACDS08NAhvxdnlSa14YR8S6sl1I7Ge1KpUyvXRbt1/ZfjqB0R
-         Zc87lcdHSI5hDOg4YumBAp8U+U9I8BtETDaR//Ra6j+7LV0BozV7SaJzg2+9VzEA3BDn
-         B0Gu07f3vFYywP++0NKVEKITuXInlsssQbNOy66lrfT6yiT+cVOMT9Iz9XR7GYL7wSKJ
-         3xmg==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=Lyv+D+KGyuTqw+YAmZ9qDtHxL9wczkbZBa4v+NA3PLo=;
+        fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
+        b=L6ZckE/F/CrsieWCMd2d5OwgQPx0391l4jcTFLK38uS0UanMsOqQaLI0xbT9mEu57k
+         PE4HO1DDwF5ThkYkj56KIg1e2zQkISuJGjN2eogi2uZEGmhIeqpRmYeWBGUdSMwhGA0l
+         S+WMLzc7nNvcROxiWd+QhKZxIiEYUzIsS91a0x89itHKHb03LXyhm0myCFbT+nyVCzp4
+         JekAV4qQGCuriM9Mt+EizOrMc7cdQNGesEoPLRnEO6mhdHVxPTCt/iHtg9zFYHFLcrU9
+         ktTzLV62gJwNMeAwdt8qbBFeDXALN4kmEZE7QDAzofAFxbHmCxUX/EemTIIOgQBfCuuT
+         LI/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b="fFdpa3+/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=r2NURfWJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z9-20020a05622a060900b0040fddae7b20si6295153qta.663.2023.08.29.06.22.15
+        by mx.google.com with ESMTPS id l8-20020a05622a174800b004120cdcb199si6062905qtk.796.2023.08.29.10.27.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Aug 2023 06:22:16 -0700 (PDT)
+        Tue, 29 Aug 2023 10:27:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b="fFdpa3+/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=r2NURfWJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qayfR-0004Iv-A4; Tue, 29 Aug 2023 09:22:01 -0400
+	id 1qb2UE-00063q-0d; Tue, 29 Aug 2023 13:26:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qayfO-0004H8-An; Tue, 29 Aug 2023 09:21:58 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qayfL-0003KX-F5; Tue, 29 Aug 2023 09:21:57 -0400
-Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 37TD6wQZ024159; Tue, 29 Aug 2023 13:21:37 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=if/UmBRbHks8AhQkajFRWvHYh/7FmeO9jsi7m060SvI=;
- b=fFdpa3+/OdaWJaYU4ScPrdtMqV/htABG9ii9564kIRj++Q5jeSzC+nlUFOwvp9/6+59l
- 29aYdHZrZ+6vMgmdZDjHGQ/f6yJ+wakn4p1d07YSmO9AkeyGr6xhrQiccPKaWTZOS4Dh
- FADjAB/gMxKOR5YHqdbq50gLH5J0pnluJGm53pToPckxa7PbYrnbCXQafb6TkBSZFA24
- GjEHif3sv+KegHb9jy7HXvFd8RxfamBTQcpYAvY3OICkXBrvjGdJ1r9nHZMDeZWinbhY
- 8NaSwYdLz/ZMuc7h8eWujCeqH4vuf0yl2RTjXO7bkJtwm2aW7tlsM8MEf1AS/rfjHtss kw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sr7vywgy3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 29 Aug 2023 13:21:36 +0000
-Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37TDFjwN008005;
- Tue, 29 Aug 2023 13:21:36 GMT
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sr7vywgxh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 29 Aug 2023 13:21:36 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 37TBwIge020514; Tue, 29 Aug 2023 13:21:34 GMT
-Received: from smtprelay06.dal12v.mail.ibm.com ([172.16.1.8])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3sqv3ybu3y-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 29 Aug 2023 13:21:34 +0000
-Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
- [10.241.53.101])
- by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 37TDLYAv4850210
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 29 Aug 2023 13:21:34 GMT
-Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 01BA65805C;
- Tue, 29 Aug 2023 13:21:34 +0000 (GMT)
-Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8E59C58051;
- Tue, 29 Aug 2023 13:21:33 +0000 (GMT)
-Received: from [9.61.30.201] (unknown [9.61.30.201])
- by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Tue, 29 Aug 2023 13:21:33 +0000 (GMT)
-Message-ID: <bce207e1-8a79-431f-9f87-665d234eed70@linux.ibm.com>
-Date: Tue, 29 Aug 2023 08:21:33 -0500
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qb2UA-00062x-Dh
+ for qemu-devel@nongnu.org; Tue, 29 Aug 2023 13:26:38 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qb2U7-0001Za-1z
+ for qemu-devel@nongnu.org; Tue, 29 Aug 2023 13:26:37 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-1c0bae4da38so349155ad.0
+ for <qemu-devel@nongnu.org>; Tue, 29 Aug 2023 10:26:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1693329993; x=1693934793;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Lyv+D+KGyuTqw+YAmZ9qDtHxL9wczkbZBa4v+NA3PLo=;
+ b=r2NURfWJBWbcyEdktyan5AEXSYvjbzjN5NyJo2+QBLmMiaGem0kGumu2ZQmXG9bCi/
+ kEoty3bbmaXn6vXwPpjUjuNmVMzlTQAHH+3ZKR5jgGu7gA9eKBrhGevpSxZHa2oKcKb4
+ evNkXTGZmiN50E/+Ja7I3R2EThhMUXQSzBo4VR5ScxdVtsZMTSN99mjPoRve0435yrJt
+ VVdDxz/B+IVfXvGVwcSmAazgWdRf8IyZ0SNee5Uf6e1A/o/AH+DmLCXOAOJdzT5INKhO
+ WaOraxRO8jEcq0RJK8lKU9BGzFI60w5mFZVGj/4kdSBtI4D3KxEfxDAzsYzCJmQQgqvT
+ STVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1693329993; x=1693934793;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Lyv+D+KGyuTqw+YAmZ9qDtHxL9wczkbZBa4v+NA3PLo=;
+ b=N6TGrcB6h8YgDOBQ2kcDWyMs2sWIbsH7d8ftc7ZpMFncmCahgOiEMV/EAjUsrIVoXi
+ k5YH+2yxFUXVriMtEBcMtaQUW30Cm1L8UnKQUiYQqyHAzde6bq9U6coF/10y64UPfUSr
+ d2gtRAl5US0LUaxnmFkez+a08tFJWOyZVGD6AQC0bk5S5YOw3PRFycIKE3YlH7xMOY4t
+ UzOjDxZWDnI+Ji/BCkT2FoeYILn02EBdnbsZ8LfwshT1itKuK/eFRft7KdnJSphX5meD
+ VzZMx1hHcmuO4DFFVr6U+aN2l2uBLISsfpCOI5dI7QuqbSPWPdgFZDigYtVb3VkO22oS
+ EDhQ==
+X-Gm-Message-State: AOJu0YwWaIpo2fcP9iNlBuEHBqBIqkQmG1piRqCC7s249IZ5hcmuxr24
+ N2Vj1icUdL4tDNzHaVEuSaDO5g==
+X-Received: by 2002:a17:902:e881:b0:1c0:afda:7707 with SMTP id
+ w1-20020a170902e88100b001c0afda7707mr4413488plg.34.1693329993368; 
+ Tue, 29 Aug 2023 10:26:33 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.131.115])
+ by smtp.gmail.com with ESMTPSA id
+ bd10-20020a170902830a00b001bc59cd718asm9520927plb.278.2023.08.29.10.26.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 29 Aug 2023 10:26:32 -0700 (PDT)
+Message-ID: <cc27c688-ec22-7f7a-5e7e-f681176f7c60@linaro.org>
+Date: Tue, 29 Aug 2023 10:26:31 -0700
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/7] hw/fsi: Introduce IBM's scratchpad
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH for-8.2 3/3] hw/arm: Set number of MPU regions correctly
+ for an505, an521, an524
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, clg@kaod.org,
- peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- philmd@linaro.org
-Cc: qemu-arm@nongnu.org
-References: <20230825203046.3692467-1-ninad@linux.ibm.com>
- <20230825203046.3692467-3-ninad@linux.ibm.com>
- <6d153709-8099-7737-8fbd-3988a35af71a@redhat.com>
-From: Ninad Palsule <ninad@linux.ibm.com>
-In-Reply-To: <6d153709-8099-7737-8fbd-3988a35af71a@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20230724174335.2150499-1-peter.maydell@linaro.org>
+ <20230724174335.2150499-4-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230724174335.2150499-4-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: C1adgvMOD0_mAp78b_n-0d65gA-G7bTJ
-X-Proofpoint-GUID: b0adT_c0eyEuzCrzSqPoUbSX-j8mIvDn
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-08-29_10,2023-08-29_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 phishscore=0
- spamscore=0 lowpriorityscore=0 adultscore=0 mlxlogscore=576
- priorityscore=1501 suspectscore=0 bulkscore=0 impostorscore=0
- clxscore=1015 malwarescore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2308100000 definitions=main-2308290113
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.242,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -151,54 +129,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EyqzYQ67PKoK
+X-TUID: 7OAOP0JVFxil
 
-Hello Thomas,
+On 7/24/23 10:43, Peter Maydell wrote:
+> The IoTKit, SSE200 and SSE300 all default to 8 MPU regions.  The
+> MPS2/MPS3 FPGA images don't override these except in the case of
+> AN547, which uses 16 MPU regions.
+> 
+> Define properties on the ARMSSE object for the MPU regions (using the
+> same names as the documented RTL configuration settings, and
+> following the pattern we already have for this device of using
+> all-caps names as the RTL does), and set them in the board code.
+> 
+> We don't actually need to override the default except on AN547,
+> but it's simpler code to have the board code set them always
+> rather than tracking which board subtypes want to set them to
+> a non-default value separately from what that value is.
+> 
+> Tho overall effect is that for mps2-an505, mps2-an521 and mps3-an524
+> we now correctly use 8 MPU regions, while mps3-an547 stays at its
+> current 16 regions.
+> 
+> It's possible some guest code wrongly depended on the previous
+> incorrectly modeled number of memory regions. (Such guest code
+> should ideally check the number of regions via the MPU_TYPE
+> register.) The old behaviour can be obtained with additional
+> -global arguments to QEMU:
+> 
+> For mps2-an521 and mps2-an524:
+>   -global sse-200.CPU0_MPU_NS=16 -global sse-200.CPU0_MPU_S=16 -global sse-200.CPU1_MPU_NS=16 -global sse-200.CPU1_MPU_S=16
+> 
+> For mps2-an505:
+>   -global sse-200.CPU0_MPU_NS=16 -global sse-200.CPU0_MPU_S=16
+> 
+> NB that the way the implementation allows this use of -global
+> is slightly fragile: if the board code explicitly sets the
+> properties on the sse-200 object, this overrides the -global
+> command line option. So we rely on:
+>   - the boards that need fixing all happen to use the SSE defaults
+>   - we can write the board code to only set the property if it
+>     is different from the default, rather than having all boards
+>     explicitly set the property
+>   - the board that does need to use a non-default value happens
+>     to need to set it to the same value (16) we previously used
+> This works, but there are some kinds of refactoring of the
+> mps2-tz.c code that would break the support for -global here.
+> 
+> Resolves:https://gitlab.com/qemu-project/qemu/-/issues/1772
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+> I'm not super-enthusiastic about the -global handling here, as you
+> may have guessed from the wording above, though it does avoid having
+> explicit back-compat code.  The other option for back-compat would be
+> to add an explicit board property to say "use the old values".
+> ---
+>   include/hw/arm/armsse.h |  5 +++++
+>   hw/arm/armsse.c         | 16 ++++++++++++++++
+>   hw/arm/mps2-tz.c        | 29 +++++++++++++++++++++++++++++
+>   3 files changed, 50 insertions(+)
 
-On 8/28/23 20:52, Thomas Huth wrote:
-> On 25/08/2023 22.30, Ninad Palsule wrote:
->> This is a part of patchset where IBM's Flexible Service Interface is
->> introduced.
->>
->> The LBUS device is embeded inside the scratchpad. The scratchpad
->> provides a non-functional registers. There is a 1-1 relation between
->> scratchpad and LBUS devices. Each LBUS device has 1K memory mapped in
->> the LBUS.
->>
->> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
->> ---
->>   hw/fsi/Kconfig                     |   4 ++
->>   hw/fsi/engine-scratchpad.c         | 100 +++++++++++++++++++++++++++++
->>   hw/fsi/meson.build                 |   1 +
->>   include/hw/fsi/engine-scratchpad.h |  32 +++++++++
->>   4 files changed, 137 insertions(+)
->>   create mode 100644 hw/fsi/engine-scratchpad.c
->>   create mode 100644 include/hw/fsi/engine-scratchpad.h
->>
->> diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
->> index 687449e14e..2a9c49f2c9 100644
->> --- a/hw/fsi/Kconfig
->> +++ b/hw/fsi/Kconfig
->> @@ -1,2 +1,6 @@
->> +config SCRATCHPAD
->> +    bool
->> +    select LBUS
->> +
->>   config LBUS
->>       bool
->
-> The config names sound pretty generic ... could you maybe name them 
-> FSI_SCRATCHPAD and FSI_LBUS instead?
+Looks reasonable.  I can't think of any global properties that are better.
 
-OK, I fixed it by adding the FSI prefix.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Thank you for the review.
 
-Ninad
-
->
->  Thomas
->
->
+r~

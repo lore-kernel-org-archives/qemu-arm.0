@@ -1,215 +1,60 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n8-20020a7bcbc8000000b00401d8810c8bsm2501252wmi.15.2023.08.30.07.54.10
+        by smtp.gmail.com with ESMTPSA id j14-20020adfea4e000000b003142ea7a661sm16947763wrn.21.2023.08.30.08.01.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Aug 2023 07:54:12 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id DE1081FFBD;
-	Wed, 30 Aug 2023 15:54:08 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs)
-Subject: [PULL 11/12] gdbstub: replace global gdb_has_xml with a function
-Date: Wed, 30 Aug 2023 15:54:06 +0100
-Message-Id: <20230830145407.3064249-12-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230830145407.3064249-1-alex.bennee@linaro.org>
-References: <20230830145407.3064249-1-alex.bennee@linaro.org>
+        Wed, 30 Aug 2023 08:01:01 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 5165E1FFBB;
+	Wed, 30 Aug 2023 16:01:01 +0100 (BST)
+References: <20230818033648.8326-1-akihiko.odaki@daynix.com>
+ <20230818033648.8326-14-akihiko.odaki@daynix.com>
+User-agent: mu4e 1.11.16; emacs 29.1.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Mikhail Tyutin <m.tyutin@yadro.com>, Aleksandr Anenkov
+ <a.anenkov@yadro.com>, qemu-devel@nongnu.org, Philippe =?utf-8?Q?Mathieu-?=
+ =?utf-8?Q?Daud=C3=A9?=
+ <philmd@linaro.org>, Eduardo Habkost <eduardo@habkost.net>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, Yanan Wang
+ <wangyanan55@huawei.com>, Peter Maydell <peter.maydell@linaro.org>, Song
+ Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, =?utf-8?Q?C=C3=A9dric?= Le
+ Goater
+ <clg@kaod.org>, David Gibson <david@gibson.dropbear.id.au>, Greg Kurz
+ <groug@kaod.org>, Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt
+ <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>, Bin
+ Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>, Liu
+ Zhiwei <zhiwei_liu@linux.alibaba.com>, Richard Henderson
+ <richard.henderson@linaro.org>, David Hildenbrand <david@redhat.com>, Ilya
+ Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, Bastian
+ Koppelmann <kbastian@mail.uni-paderborn.de>, "open list:ARM TCG CPUs"
+ <qemu-arm@nongnu.org>, "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>, "open list:S390 TCG
+ CPUs" <qemu-s390x@nongnu.org>
+Subject: Re: [PATCH RESEND v5 13/26] hw/core/cpu: Return static value with
+ gdb_arch_name()
+Date: Wed, 30 Aug 2023 16:00:56 +0100
+In-reply-to: <20230818033648.8326-14-akihiko.odaki@daynix.com>
+Message-ID: <87r0nkr2vm.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: q4BRr9tIF1Vs
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 9D5btklerzCT
 
-Try and make the self reported global hack a little less hackish by
-providing a query function instead. As gdb_has_xml was always set if
-we negotiated XML we can now use the presence of ->target_xml as the
-test instead.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230829161528.2707696-12-alex.bennee@linaro.org>
+Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 4876ebd74f..fee243081f 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -33,6 +33,7 @@ typedef struct GDBProcess {
-     uint32_t pid;
-     bool attached;
- 
-+    /* If gdb sends qXfer:features:read:target.xml this will be populated */
-     char *target_xml;
- } GDBProcess;
- 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 7d743fe1e9..0ee39cfdd1 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -31,12 +31,12 @@ int gdbserver_start(const char *port_or_device);
- void gdb_set_stop_cpu(CPUState *cpu);
- 
- /**
-- * gdb_has_xml:
-- * This is an ugly hack to cope with both new and old gdb.
-- * If gdb sends qXfer:features:read then assume we're talking to a newish
-- * gdb that understands target descriptions.
-+ * gdb_has_xml() - report of gdb supports modern target descriptions
-+ *
-+ * This will report true if the gdb negotiated qXfer:features:read
-+ * target descriptions.
-  */
--extern bool gdb_has_xml;
-+bool gdb_has_xml(void);
- 
- /* in gdbstub-xml.c, generated by scripts/feature_to_c.sh */
- extern const char *const xml_builtin[][2];
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 729e54139a..fdebfe25ea 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -75,8 +75,6 @@ void gdb_init_gdbserver_state(void)
-     gdbserver_state.sstep_flags &= gdbserver_state.supported_sstep_flags;
- }
- 
--bool gdb_has_xml;
--
- /* writes 2*len+1 bytes in buf */
- void gdb_memtohex(GString *buf, const uint8_t *mem, int len)
- {
-@@ -351,6 +349,11 @@ static CPUState *gdb_get_cpu(uint32_t pid, uint32_t tid)
-     }
- }
- 
-+bool gdb_has_xml(void)
-+{
-+    return !!gdb_get_cpu_process(gdbserver_state.g_cpu)->target_xml;
-+}
-+
- static const char *get_feature_xml(const char *p, const char **newp,
-                                    GDBProcess *process)
- {
-@@ -1084,7 +1087,7 @@ static void handle_set_reg(GArray *params, void *user_ctx)
- {
-     int reg_size;
- 
--    if (!gdb_has_xml) {
-+    if (!gdb_get_cpu_process(gdbserver_state.g_cpu)->target_xml) {
-         gdb_put_packet("");
-         return;
-     }
-@@ -1105,7 +1108,7 @@ static void handle_get_reg(GArray *params, void *user_ctx)
- {
-     int reg_size;
- 
--    if (!gdb_has_xml) {
-+    if (!gdb_get_cpu_process(gdbserver_state.g_cpu)->target_xml) {
-         gdb_put_packet("");
-         return;
-     }
-@@ -1572,7 +1575,6 @@ static void handle_query_xfer_features(GArray *params, void *user_ctx)
-         return;
-     }
- 
--    gdb_has_xml = true;
-     p = get_param(params, 0)->data;
-     xml = get_feature_xml(p, &p, process);
-     if (!xml) {
-diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index f509b7285d..9f0b8b5497 100644
---- a/gdbstub/softmmu.c
-+++ b/gdbstub/softmmu.c
-@@ -97,7 +97,6 @@ static void gdb_chr_event(void *opaque, QEMUChrEvent event)
- 
-         vm_stop(RUN_STATE_PAUSED);
-         replay_gdb_attached();
--        gdb_has_xml = false;
-         break;
-     default:
-         break;
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 5b375be1d9..7ab6e5d975 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -198,7 +198,6 @@ static void gdb_accept_init(int fd)
-     gdbserver_state.c_cpu = gdb_first_attached_cpu();
-     gdbserver_state.g_cpu = gdbserver_state.c_cpu;
-     gdbserver_user_state.fd = fd;
--    gdb_has_xml = false;
- }
- 
- static bool gdb_accept_socket(int gdb_fd)
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index f421c5d041..8fc8351df7 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -48,7 +48,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-     }
-     if (n < 24) {
-         /* FPA registers.  */
--        if (gdb_has_xml) {
-+        if (gdb_has_xml()) {
-             return 0;
-         }
-         return gdb_get_zeroes(mem_buf, 12);
-@@ -56,7 +56,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-     switch (n) {
-     case 24:
-         /* FPA status register.  */
--        if (gdb_has_xml) {
-+        if (gdb_has_xml()) {
-             return 0;
-         }
-         return gdb_get_reg32(mem_buf, 0);
-@@ -102,7 +102,7 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-     }
-     if (n < 24) { /* 16-23 */
-         /* FPA registers (ignored).  */
--        if (gdb_has_xml) {
-+        if (gdb_has_xml()) {
-             return 0;
-         }
-         return 12;
-@@ -110,7 +110,7 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-     switch (n) {
-     case 24:
-         /* FPA status register (ignored).  */
--        if (gdb_has_xml) {
-+        if (gdb_has_xml()) {
-             return 0;
-         }
-         return 4;
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index ca39efdc35..2ad11510bf 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -56,7 +56,7 @@ static int ppc_gdb_register_len(int n)
-         return sizeof(target_ulong);
-     case 32 ... 63:
-         /* fprs */
--        if (gdb_has_xml) {
-+        if (gdb_has_xml()) {
-             return 0;
-         }
-         return 8;
-@@ -76,7 +76,7 @@ static int ppc_gdb_register_len(int n)
-         return sizeof(target_ulong);
-     case 70:
-         /* fpscr */
--        if (gdb_has_xml) {
-+        if (gdb_has_xml()) {
-             return 0;
-         }
-         return sizeof(target_ulong);
--- 
-2.39.2
+> All implementations of gdb_arch_name() returns dynamic duplicates of
+> static strings. It's also unlikely that there will be an implementation
+> of gdb_arch_name() that returns a truly dynamic value due to the nature
+> of the function returning a well-known identifiers. Qualify the value
+> gdb_arch_name() with const and make all of its implementations return
+> static strings.
+>
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

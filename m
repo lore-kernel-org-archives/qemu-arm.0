@@ -1,118 +1,145 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4211602ejc;
-        Wed, 30 Aug 2023 01:33:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH+2cRWNn4w81fOCR9m5F9kMXkNYNKspUqRchmWP0gI97tD/8CivFBy9jvrWRNeFaGWau0V
-X-Received: by 2002:a05:620a:1794:b0:765:6923:623e with SMTP id ay20-20020a05620a179400b007656923623emr1629062qkb.29.1693384426358;
-        Wed, 30 Aug 2023 01:33:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693384426; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4067271ejc;
+        Tue, 29 Aug 2023 19:36:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG8j5OA6Xjd9RwZ2z8q3pbN71W0qhFrqK1SKVvW4f8Aqb75y8NTdSw+UGhUJg76wBflYUiI
+X-Received: by 2002:a05:620a:bc7:b0:769:89c8:4fae with SMTP id s7-20020a05620a0bc700b0076989c84faemr839643qki.52.1693363016815;
+        Tue, 29 Aug 2023 19:36:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693363016; cv=none;
         d=google.com; s=arc-20160816;
-        b=clcUUhCBotE8FJAJ5eySQUYYa4FDgLkREEMT2mBOOdbHcCeUc+wRe7P1qo1C9dffbS
-         Hr/ToTWkNdSIr/UmE23W3nAghM0mOHGeCTwFIZ0kODiCqJXAql3nHOx/ANsr8b0LWvbj
-         RuanqF+OTP3NPoQ2RXKZsPmq905rut3DxrgOMQKdG0PotjV7Hu0TGm+vBMjikeqnuYJT
-         cbEBmHkScyDQeOAwQYNrxzXHj4vRwnyL2OIjHkAvuW+WpxvLH9ExyyHZFfZ50B9UT6Et
-         K+5xBqnEms9nJ4sPYAqGELhSf04lR0jeQCRNg5PMEEPrc3xXeRfp83pWxJQX/0xivmST
-         nuuQ==
+        b=KfZ3KiTw5dbox9Tj4KehN1HGn1pcfVWhHrcDsUjYxy9Oe4aJqQyw6IGxj+jUDsTH/F
+         hGlkyeoL/j5vfjDE9m75NCB78NwuriV764ePrn9LUOEVqHYOUlY7WWdcpZzNkePyNr7h
+         thhV5EcFjneq/LML01G/gzVVBJBe6yAyOTOqnx9DIVTwMwVF086EzrzlW2yyXkbtKlo9
+         kvzN+0i9V0lx5AHOHNupE8Cm5U+eZDqRIkaXuD2Er3nIYcHKkpSSTsUaYdXAejEP/yxI
+         6Is9VwMduWV2huWo4K/qkI//MqGbhEE0lt7dmO11iBBFnJ4F9ScQHR/bkXH+0qHv4T1I
+         Qh9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=LkrL4NdYmvE3rPS5Wg2IOg1d5N37QWBFCErJIfFx3jk=;
-        fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=y7yjt+sVc4/dySAOWqH5VBhvyzlkK3kH5dlYwSVpvNjFBx/9pd1R2o9cSAx5wJnIjD
-         1qLMyIat34C9S7Gp1Bba+NQOaRJF+Wsu4/n68P8WSD3N+/Le439i6bDj0TIeNHzA8hS+
-         L6nTRbsXsore9Yr6ETTOXrcV7DNe4Fi7FBWoFW03277ti/ItTd0A6jFYAN40bTXwGKaZ
-         tjS+OARlbDiIHoSId/AWzSQNvcBRLAqb9sm310fSiMBICd0ZUoRhwjAatFhQsNLIvTuK
-         9U4eMEqIXmSR9095wMe0GtfhbIpRG7mB5VzCuGcvgIXmkdUB3EDKRWO1W9DXp0vgTL1i
-         sG+A==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=L+gHQM/PuEScJklaepL9Uidzc5bZ/fNhFlEGXtE7WZM=;
+        fh=72BxJRehML6by6nfr8JRUoEUQurOl+rxVo6rJ0YdYCI=;
+        b=I6gbyJgvrgesgx2nm1sKWixvladyw/LkejS7ZqUbBQP1xiWqe2VrNPp7hiHD/FDOec
+         iJLMaMx2MPQ+qwtlCLAgu8xbZnlEYQn6cDOY4ipnN0J1FJ/GGrY2lAS0oUcedpYI62Qn
+         QFYhqpTXWcC/dU9IuNQKoEtiNQx5aJpvAWMRwHAebXLrAm1kwTT94E70Q67DVN3MF51B
+         Q3+r5SkKcdV3Z6UZI6UvwAVsw5FffJKxzrobm9CclhYNYtBmh8pIpcL5bcPIBmvDGCzY
+         z8wyadqgdENjDGRbFxr/SncLobHixmNRWA3Kcnf020eWk2yPbUoJHfkh/0iOcGVupYnn
+         BGVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UGwoK9Oh;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dqVRfKVo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d2-20020a05620a240200b0076f2eb0a46dsi123242qkn.560.2023.08.30.01.33.46
+        by mx.google.com with ESMTPS id az14-20020a05620a170e00b0076f2546e880si1071224qkb.156.2023.08.29.19.36.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Aug 2023 01:33:46 -0700 (PDT)
+        Tue, 29 Aug 2023 19:36:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UGwoK9Oh;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dqVRfKVo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qbGdT-0000gS-46; Wed, 30 Aug 2023 04:33:11 -0400
+	id 1qbB47-00071s-4P; Tue, 29 Aug 2023 22:36:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbGdS-0000bf-5m
- for qemu-arm@nongnu.org; Wed, 30 Aug 2023 04:33:10 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbGdP-0004OS-AO
- for qemu-arm@nongnu.org; Wed, 30 Aug 2023 04:33:09 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-31ad9155414so4199060f8f.3
- for <qemu-arm@nongnu.org>; Wed, 30 Aug 2023 01:33:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693384385; x=1693989185; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=LkrL4NdYmvE3rPS5Wg2IOg1d5N37QWBFCErJIfFx3jk=;
- b=UGwoK9OhuuI2rFzOEgBQ+AsLlQKuO/S5seK7xYpOTpa4OQ6Zyd5A65XKabUFJsejHq
- 1zcCqZ+y+jCf4YNAZ8R3YHX1vyLfWQpFZYdahugvMVdSMlpjEZeCXlORYZsgU87Nt3GB
- rl4h1BiaQtxg2h1l9t8l06ckPdKhhk7ArqWhFqo4AWyTaIKzD/9DFzGXsCSBmdl6kdk7
- dQ16EiNfSc9ztrN+/V5QDM0nwFzsHgA5lm3TjkqQQnt3w2kJ5kgSOanc/JFgIaG1BpO9
- Pv9cX8CHaa4oH4rGPpSKN8GFK7a4kUaBwIqm/szckeI+ga5j+WhmcPZBGn4E1txafmZD
- yG7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693384385; x=1693989185;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=LkrL4NdYmvE3rPS5Wg2IOg1d5N37QWBFCErJIfFx3jk=;
- b=RAryaim66wdNx9iFxkWRLYNXNaq3gv5GUhxLEhM3f7hNl/77YTpYKVz55VYLGHvBmD
- yqPs+/39Qv07KG8wXtmF0leakKhbcR6sEIfK4CIkUiWL/qbTpWgnmW2ZNjDAGQmIvgqo
- DncZSug42EtThLy+UXCFFFA5jUgh0syZfdpN1QbfISFHPOKYMDDdjJDbLOpbAlDg4+XJ
- pgL/1o334IujmsXHxCKG1Pv6UAD6LHlRmGODXpWjVsAWYKJNiK8sj7EcFOwAQP0zZv6v
- jjHMOQZwth5gm9nQeInTLYlYptXZDWYJrfSrqvWTF0UZBuxY14MOhp12AbZcG8n6i5il
- E+Uw==
-X-Gm-Message-State: AOJu0Yz+e+GSEqTcAIDljKvR8QpIiANDE5tX7Y5Wp+OVEKe7yZ0RdI4q
- JQ60qFMsc+bgml6h0+jdC8lZ1g==
-X-Received: by 2002:adf:f9c2:0:b0:319:7134:a3cf with SMTP id
- w2-20020adff9c2000000b003197134a3cfmr1195845wrr.31.1693384385529; 
- Wed, 30 Aug 2023 01:33:05 -0700 (PDT)
-Received: from [192.168.32.175] (123.red-95-127-43.staticip.rima-tde.net.
- [95.127.43.123]) by smtp.gmail.com with ESMTPSA id
- w12-20020a5d4b4c000000b0031416362e23sm16038420wrs.3.2023.08.30.01.33.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Aug 2023 01:33:05 -0700 (PDT)
-Message-ID: <eab126a5-7d4e-5251-3a85-d6e95cd2c491@linaro.org>
-Date: Wed, 30 Aug 2023 10:33:03 +0200
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qbB44-00071B-Om; Tue, 29 Aug 2023 22:36:16 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qbB42-000426-AT; Tue, 29 Aug 2023 22:36:16 -0400
+Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 37U1wbuU028657; Wed, 30 Aug 2023 02:36:06 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=L+gHQM/PuEScJklaepL9Uidzc5bZ/fNhFlEGXtE7WZM=;
+ b=dqVRfKVoBMm2jkbo6GabhvzKYX3jHUfb9U/D2gwX/zzPMFqJA+LF0QAs/4yloopzuPpv
+ 8svzVlGsy5STl3ZZFzmyiqgwJdzu0mq4hW6SnhK+2x9bjP2BsNWJIHwd2QjXUfjg/WJ7
+ 0/9JFqHZa6oDnt2xbexJ4DxNZfuJmxBrmokZ+n+cqTVD5YqH7bPQs16t78Tltakad5at
+ by+KZMA8q0WMnObdGhdO8nGsIccaT5OH0p75/TS4gitm/eEbNfuXOSCvYvpKCcQ8GI9q
+ /aEMH0rTJUyiWhuI8jPu9KTOTi5mQyj3MzsWOxqiQDXoBkG8nYCb7cRI1jue2yyZC3PS Hw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3ssukaja2g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 30 Aug 2023 02:36:06 +0000
+Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37U2P4B7030432;
+ Wed, 30 Aug 2023 02:36:05 GMT
+Received: from ppma21.wdc07v.mail.ibm.com
+ (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3ssukaja22-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 30 Aug 2023 02:36:05 +0000
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 37U0O89n014331; Wed, 30 Aug 2023 02:31:04 GMT
+Received: from smtprelay05.wdc07v.mail.ibm.com ([172.16.1.72])
+ by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3sqvqn8f65-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 30 Aug 2023 02:31:04 +0000
+Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
+ [10.241.53.101])
+ by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 37U2V4V966453912
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 30 Aug 2023 02:31:04 GMT
+Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 13C3B5805A;
+ Wed, 30 Aug 2023 02:31:04 +0000 (GMT)
+Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DEAD158051;
+ Wed, 30 Aug 2023 02:31:02 +0000 (GMT)
+Received: from [9.61.171.165] (unknown [9.61.171.165])
+ by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Wed, 30 Aug 2023 02:31:02 +0000 (GMT)
+Message-ID: <698b2258-b179-4689-8000-7468b92a0823@linux.ibm.com>
+Date: Tue, 29 Aug 2023 21:31:02 -0500
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.14.0
-Subject: Re: [PATCH for-8.2 3/3] hw/arm: Set number of MPU regions correctly
- for an505, an521, an524
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 3/7] hw/fsi: Introduce IBM's cfam,fsi-slave
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20230724174335.2150499-1-peter.maydell@linaro.org>
- <20230724174335.2150499-4-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230724174335.2150499-4-peter.maydell@linaro.org>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ philmd@linaro.org
+Cc: qemu-arm@nongnu.org
+References: <20230825203046.3692467-1-ninad@linux.ibm.com>
+ <20230825203046.3692467-4-ninad@linux.ibm.com>
+ <e2a8e6eb-b9fd-8011-32c0-e5c310bf1135@redhat.com>
+ <11681172-0fe9-4e1d-9f8f-03f57b0b09a2@linux.ibm.com>
+ <f6edea23-f11c-2119-ebaf-222d9f0813b6@kaod.org>
+From: Ninad Palsule <ninad@linux.ibm.com>
+In-Reply-To: <f6edea23-f11c-2119-ebaf-222d9f0813b6@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.242,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: gGTDsx8jJDqVBZzW7TbfMm-uFS9pQdDp
+X-Proofpoint-ORIG-GUID: ksdMLa8E1eIuZi3RdpbstoRwTYsvCibc
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-08-29_16,2023-08-29_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 adultscore=0 impostorscore=0 mlxscore=0 suspectscore=0
+ lowpriorityscore=0 spamscore=0 clxscore=1015 bulkscore=0 mlxlogscore=999
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2308300021
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,64 +154,148 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3JVZ6GzWmDsl
+X-TUID: iO8yJY6ChGt3
 
-On 24/7/23 19:43, Peter Maydell wrote:
-> The IoTKit, SSE200 and SSE300 all default to 8 MPU regions.  The
-> MPS2/MPS3 FPGA images don't override these except in the case of
-> AN547, which uses 16 MPU regions.
-> 
-> Define properties on the ARMSSE object for the MPU regions (using the
-> same names as the documented RTL configuration settings, and
-> following the pattern we already have for this device of using
-> all-caps names as the RTL does), and set them in the board code.
-> 
-> We don't actually need to override the default except on AN547,
-> but it's simpler code to have the board code set them always
-> rather than tracking which board subtypes want to set them to
-> a non-default value separately from what that value is.
-> 
-> Tho overall effect is that for mps2-an505, mps2-an521 and mps3-an524
-> we now correctly use 8 MPU regions, while mps3-an547 stays at its
-> current 16 regions.
-> 
-> It's possible some guest code wrongly depended on the previous
-> incorrectly modeled number of memory regions. (Such guest code
-> should ideally check the number of regions via the MPU_TYPE
-> register.) The old behaviour can be obtained with additional
-> -global arguments to QEMU:
-> 
-> For mps2-an521 and mps2-an524:
->   -global sse-200.CPU0_MPU_NS=16 -global sse-200.CPU0_MPU_S=16 -global sse-200.CPU1_MPU_NS=16 -global sse-200.CPU1_MPU_S=16
-> 
-> For mps2-an505:
->   -global sse-200.CPU0_MPU_NS=16 -global sse-200.CPU0_MPU_S=16
-> 
-> NB that the way the implementation allows this use of -global
-> is slightly fragile: if the board code explicitly sets the
-> properties on the sse-200 object, this overrides the -global
-> command line option. So we rely on:
->   - the boards that need fixing all happen to use the SSE defaults
->   - we can write the board code to only set the property if it
->     is different from the default, rather than having all boards
->     explicitly set the property
->   - the board that does need to use a non-default value happens
->     to need to set it to the same value (16) we previously used
-> This works, but there are some kinds of refactoring of the
-> mps2-tz.c code that would break the support for -global here.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1772
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I'm not super-enthusiastic about the -global handling here, as you
-> may have guessed from the wording above, though it does avoid having
-> explicit back-compat code.  The other option for back-compat would be
-> to add an explicit board property to say "use the old values".
-> ---
->   include/hw/arm/armsse.h |  5 +++++
->   hw/arm/armsse.c         | 16 ++++++++++++++++
->   hw/arm/mps2-tz.c        | 29 +++++++++++++++++++++++++++++
->   3 files changed, 50 insertions(+)
+Hello Cedric,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On 8/29/23 08:43, Cédric Le Goater wrote:
+> On 8/29/23 15:39, Ninad Palsule wrote:
+>> Hello Thomas,
+>>
+>> On 8/28/23 21:03, Thomas Huth wrote:
+>>> On 25/08/2023 22.30, Ninad Palsule wrote:
+>>>> This is a part of patchset where IBM's Flexible Service Interface is
+>>>> introduced.
+>>>>
+>>>> The Common FRU Access Macro (CFAM), an address space containing
+>>>> various "engines" that drive accesses on busses internal and external
+>>>> to the POWER chip. Examples include the SBEFIFO and I2C masters. The
+>>>> engines hang off of an internal Local Bus (LBUS) which is described
+>>>> by the CFAM configuration block.
+>>>>
+>>>> The FSI slave: The slave is the terminal point of the FSI bus for
+>>>> FSI symbols addressed to it. Slaves can be cascaded off of one
+>>>> another. The slave's configuration registers appear in address space
+>>>> of the CFAM to which it is attached.
+>>>>
+>>>> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+>>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>>>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+>>>> ---
+>>> ...
+>>>> diff --git a/hw/fsi/cfam.c b/hw/fsi/cfam.c
+>>>> new file mode 100644
+>>>> index 0000000000..19256050bd
+>>>> --- /dev/null
+>>>> +++ b/hw/fsi/cfam.c
+>>>> @@ -0,0 +1,235 @@
+>>>> +/*
+>>>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>>>> + * Copyright (C) 2023 IBM Corp.
+>>>> + *
+>>>> + * IBM Common FRU Access Macro
+>>>> + */
+>>>> +
+>>>> +#include "qemu/osdep.h"
+>>>> +
+>>>> +#include "qapi/error.h"
+>>>> +#include "qemu/log.h"
+>>>> +
+>>>> +#include "hw/fsi/bits.h"
+>>>> +#include "hw/fsi/cfam.h"
+>>>> +#include "hw/fsi/engine-scratchpad.h"
+>>>> +
+>>>> +#include "hw/qdev-properties.h"
+>>>> +
+>>>> +#define TO_REG(x)                          ((x) >> 2)
+>>>> +
+>>>> +#define CFAM_ENGINE_CONFIG                  TO_REG(0x04)
+>>>> +
+>>>> +#define CFAM_CONFIG_CHIP_ID                TO_REG(0x00)
+>>>> +#define CFAM_CONFIG_CHIP_ID_P9             0xc0022d15
+>>>> +#define   CFAM_CONFIG_CHIP_ID_BREAK        0xc0de0000
+>>>> +
+>>>> +static uint64_t cfam_config_read(void *opaque, hwaddr addr, 
+>>>> unsigned size)
+>>>> +{
+>>>> +    CFAMConfig *config;
+>>>> +    CFAMState *cfam;
+>>>> +    LBusNode *node;
+>>>> +    int i;
+>>>> +
+>>>> +    config = CFAM_CONFIG(opaque);
+>>>> +    cfam = container_of(config, CFAMState, config);
+>>>> +
+>>>> +    qemu_log_mask(LOG_UNIMP, "%s: read @0x%" HWADDR_PRIx " 
+>>>> size=%d\n",
+>>>> +                  __func__, addr, size);
+>>>> +
+>>>> +    assert(size == 4);
+>>>> +    assert(!(addr & 3));
+>>>> +
+>>>> +    switch (addr) {
+>>>> +    case 0x00:
+>>>> +        return CFAM_CONFIG_CHIP_ID_P9;
+>>>> +    case 0x04:
+>>>> +        return ENGINE_CONFIG_NEXT
+>>>> +            | 0x00010000                    /* slots */
+>>>> +            | 0x00001000                    /* version */
+>>>> +            | ENGINE_CONFIG_TYPE_PEEK   /* type */
+>>>> +            | 0x0000000c;                   /* crc */
+>>>> +    case 0x08:
+>>>> +        return ENGINE_CONFIG_NEXT
+>>>> +            | 0x00010000                    /* slots */
+>>>> +            | 0x00005000                    /* version */
+>>>> +            | ENGINE_CONFIG_TYPE_FSI    /* type */
+>>>> +            | 0x0000000a;                   /* crc */
+>>>> +        break;
+>>>> +    default:
+>>>> +        /* FIXME: Improve this */
+>>>> +        i = 0xc;
+>>>> +        QLIST_FOREACH(node, &cfam->lbus.devices, next) {
+>>>> +            if (i == addr) {
+>>>> +                return LBUS_DEVICE_GET_CLASS(node->ldev)->config;
+>>>> +            }
+>>>> +            i += size;
+>>>> +        }
+>>>> +
+>>>> +        if (i == addr) {
+>>>> +            return 0;
+>>>> +        }
+>>>> +
+>>>> +        return 0xc0de0000;
+>>>
+>>> Can you explain the magic number at least with a comment?
+>> Added comment for the magic number 0xc0de0000
+>>>
+>>> Maybe it would also make sense to add a 
+>>> qemu_log_mask(LOG_GUEST_ERROR, ...) or qemu_log_mask(LOG_UNIMP, ...) 
+>>> statement here?
+>> There is LOG_UNIMP most of the function. I added it in the reset 
+>> function.
+>
+> I took a quick look at the series and I think that all the
+> qemu_log_mask(LOG_UNIMP, ..) as the one above should be replaced
+> by trace events instead.
 
+I have converted 4 logs into trace.
+
+Thank you for the review.
+
+~Ninad
+
+>
+> Thanks,
+>
+> C.
+>
+>
+>>>
+>>>  Thomas
+>>>
+>>
+>> Thank you for the review.
+>>
+>> Ninad
+>>
+>

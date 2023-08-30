@@ -1,186 +1,215 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id z8-20020adff1c8000000b0031c612146f1sm16659748wro.100.2023.08.30.07.54.08
+        by smtp.gmail.com with ESMTPSA id n8-20020a7bcbc8000000b00401d8810c8bsm2501252wmi.15.2023.08.30.07.54.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Aug 2023 07:54:09 -0700 (PDT)
+        Wed, 30 Aug 2023 07:54:12 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 66A6B1FFC2;
+	by zen.linaroharston (Postfix) with ESMTP id DE1081FFBD;
 	Wed, 30 Aug 2023 15:54:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	David Hildenbrand <david@redhat.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Greg Kurz <groug@kaod.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
-Subject: [PULL 07/12] tests/tcg: clean-up gdb confirm/pagination settings
-Date: Wed, 30 Aug 2023 15:54:02 +0100
-Message-Id: <20230830145407.3064249-8-alex.bennee@linaro.org>
+	qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs)
+Subject: [PULL 11/12] gdbstub: replace global gdb_has_xml with a function
+Date: Wed, 30 Aug 2023 15:54:06 +0100
+Message-Id: <20230830145407.3064249-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230830145407.3064249-1-alex.bennee@linaro.org>
 References: <20230830145407.3064249-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: f4VME0fIhFzT
+X-TUID: q4BRr9tIF1Vs
 
-We can do this all in the run-test.py script so remove the extraneous
-bits from the individual tests which got copied from the original
-non-CI gdb tests.
+Try and make the self reported global hack a little less hackish by
+providing a query function instead. As gdb_has_xml was always set if
+we negotiated XML we can now use the presence of ->target_xml as the
+test instead.
 
-Acked-by: Ilya Leoshkevich <iii@linux.ibm.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230829161528.2707696-8-alex.bennee@linaro.org>
+Message-Id: <20230829161528.2707696-12-alex.bennee@linaro.org>
 
-diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
-index a032e01f79..b13b27d4b1 100755
---- a/tests/guest-debug/run-test.py
-+++ b/tests/guest-debug/run-test.py
-@@ -83,6 +83,8 @@ def log(output, msg):
-         gdb_cmd += " %s" % (args.gdb_args)
-     # run quietly and ignore .gdbinit
-     gdb_cmd += " -q -n -batch"
-+    # disable pagination
-+    gdb_cmd += " -ex 'set pagination off'"
-     # disable prompts in case of crash
-     gdb_cmd += " -ex 'set confirm off'"
-     # connect to remote
-diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-index b9ef169c1a..ee8d467e59 100644
---- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-+++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
-@@ -76,9 +76,6 @@ def run_test():
-     exit(0)
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index 4876ebd74f..fee243081f 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -33,6 +33,7 @@ typedef struct GDBProcess {
+     uint32_t pid;
+     bool attached;
  
- try:
--    # These are not very useful in scripts
--    gdb.execute("set pagination off")
--
-     # Run the actual tests
-     run_test()
- except:
-diff --git a/tests/tcg/aarch64/gdbstub/test-sve.py b/tests/tcg/aarch64/gdbstub/test-sve.py
-index ef57c7412c..afd8ece98d 100644
---- a/tests/tcg/aarch64/gdbstub/test-sve.py
-+++ b/tests/tcg/aarch64/gdbstub/test-sve.py
-@@ -66,9 +66,6 @@ def run_test():
-     exit(0)
++    /* If gdb sends qXfer:features:read:target.xml this will be populated */
+     char *target_xml;
+ } GDBProcess;
  
- try:
--    # These are not very useful in scripts
--    gdb.execute("set pagination off")
--
-     # Run the actual tests
-     run_test()
- except:
-diff --git a/tests/tcg/multiarch/gdbstub/memory.py b/tests/tcg/multiarch/gdbstub/memory.py
-index 67864ad902..dd25e72281 100644
---- a/tests/tcg/multiarch/gdbstub/memory.py
-+++ b/tests/tcg/multiarch/gdbstub/memory.py
-@@ -115,9 +115,6 @@ def run_test():
-     exit(0)
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index 7d743fe1e9..0ee39cfdd1 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -31,12 +31,12 @@ int gdbserver_start(const char *port_or_device);
+ void gdb_set_stop_cpu(CPUState *cpu);
  
- try:
--    # These are not very useful in scripts
--    gdb.execute("set pagination off")
--
-     # Run the actual tests
-     run_test()
- except (gdb.error):
-diff --git a/tests/tcg/multiarch/gdbstub/sha1.py b/tests/tcg/multiarch/gdbstub/sha1.py
-index 423b720e6d..416728415f 100644
---- a/tests/tcg/multiarch/gdbstub/sha1.py
-+++ b/tests/tcg/multiarch/gdbstub/sha1.py
-@@ -73,10 +73,6 @@ def run_test():
-     exit(0)
+ /**
+- * gdb_has_xml:
+- * This is an ugly hack to cope with both new and old gdb.
+- * If gdb sends qXfer:features:read then assume we're talking to a newish
+- * gdb that understands target descriptions.
++ * gdb_has_xml() - report of gdb supports modern target descriptions
++ *
++ * This will report true if the gdb negotiated qXfer:features:read
++ * target descriptions.
+  */
+-extern bool gdb_has_xml;
++bool gdb_has_xml(void);
  
- try:
--    # These are not very useful in scripts
--    gdb.execute("set pagination off")
--    gdb.execute("set confirm off")
--
-     # Run the actual tests
-     run_test()
- except (gdb.error):
-diff --git a/tests/tcg/multiarch/gdbstub/test-proc-mappings.py b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-index 5e3e5a2fb7..04ec61d219 100644
---- a/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-+++ b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-@@ -51,10 +51,6 @@ def main():
-         exit(0)
+ /* in gdbstub-xml.c, generated by scripts/feature_to_c.sh */
+ extern const char *const xml_builtin[][2];
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 729e54139a..fdebfe25ea 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -75,8 +75,6 @@ void gdb_init_gdbserver_state(void)
+     gdbserver_state.sstep_flags &= gdbserver_state.supported_sstep_flags;
+ }
  
-     try:
--        # These are not very useful in scripts
--        gdb.execute("set pagination off")
--        gdb.execute("set confirm off")
+-bool gdb_has_xml;
 -
-         # Run the actual tests
-         run_test()
-     except gdb.error:
-diff --git a/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py b/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
-index d91e8fdf19..926fa962b7 100644
---- a/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
-+++ b/tests/tcg/multiarch/gdbstub/test-qxfer-auxv-read.py
-@@ -42,10 +42,6 @@ def run_test():
-     exit(0)
+ /* writes 2*len+1 bytes in buf */
+ void gdb_memtohex(GString *buf, const uint8_t *mem, int len)
+ {
+@@ -351,6 +349,11 @@ static CPUState *gdb_get_cpu(uint32_t pid, uint32_t tid)
+     }
+ }
  
- try:
--    # These are not very useful in scripts
--    gdb.execute("set pagination off")
--    gdb.execute("set confirm off")
--
-     # Run the actual tests
-     run_test()
- except (gdb.error):
-diff --git a/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py b/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
-index 798d508bc7..e57d2a8db8 100644
---- a/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
-+++ b/tests/tcg/multiarch/gdbstub/test-thread-breakpoint.py
-@@ -45,10 +45,6 @@ def run_test():
-     exit(0)
++bool gdb_has_xml(void)
++{
++    return !!gdb_get_cpu_process(gdbserver_state.g_cpu)->target_xml;
++}
++
+ static const char *get_feature_xml(const char *p, const char **newp,
+                                    GDBProcess *process)
+ {
+@@ -1084,7 +1087,7 @@ static void handle_set_reg(GArray *params, void *user_ctx)
+ {
+     int reg_size;
  
- try:
--    # These are not very useful in scripts
--    gdb.execute("set pagination off")
--    gdb.execute("set confirm off")
--
-     # Run the actual tests
-     run_test()
- except (gdb.error):
-diff --git a/tests/tcg/s390x/gdbstub/test-signals-s390x.py b/tests/tcg/s390x/gdbstub/test-signals-s390x.py
-index 80a284b475..ca2bbc0b03 100644
---- a/tests/tcg/s390x/gdbstub/test-signals-s390x.py
-+++ b/tests/tcg/s390x/gdbstub/test-signals-s390x.py
-@@ -61,10 +61,6 @@ def run_test():
-     exit(0)
+-    if (!gdb_has_xml) {
++    if (!gdb_get_cpu_process(gdbserver_state.g_cpu)->target_xml) {
+         gdb_put_packet("");
+         return;
+     }
+@@ -1105,7 +1108,7 @@ static void handle_get_reg(GArray *params, void *user_ctx)
+ {
+     int reg_size;
  
- try:
--    # These are not very useful in scripts
--    gdb.execute("set pagination off")
--    gdb.execute("set confirm off")
--
-     # Run the actual tests
-     run_test()
- except (gdb.error):
-diff --git a/tests/tcg/s390x/gdbstub/test-svc.py b/tests/tcg/s390x/gdbstub/test-svc.py
-index 18fad3f163..804705fede 100644
---- a/tests/tcg/s390x/gdbstub/test-svc.py
-+++ b/tests/tcg/s390x/gdbstub/test-svc.py
-@@ -49,10 +49,6 @@ def main():
-         exit(0)
+-    if (!gdb_has_xml) {
++    if (!gdb_get_cpu_process(gdbserver_state.g_cpu)->target_xml) {
+         gdb_put_packet("");
+         return;
+     }
+@@ -1572,7 +1575,6 @@ static void handle_query_xfer_features(GArray *params, void *user_ctx)
+         return;
+     }
  
-     try:
--        # These are not very useful in scripts
--        gdb.execute("set pagination off")
--        gdb.execute("set confirm off")
--
-         # Run the actual tests
-         run_test()
-     except gdb.error:
+-    gdb_has_xml = true;
+     p = get_param(params, 0)->data;
+     xml = get_feature_xml(p, &p, process);
+     if (!xml) {
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index f509b7285d..9f0b8b5497 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -97,7 +97,6 @@ static void gdb_chr_event(void *opaque, QEMUChrEvent event)
+ 
+         vm_stop(RUN_STATE_PAUSED);
+         replay_gdb_attached();
+-        gdb_has_xml = false;
+         break;
+     default:
+         break;
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index 5b375be1d9..7ab6e5d975 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -198,7 +198,6 @@ static void gdb_accept_init(int fd)
+     gdbserver_state.c_cpu = gdb_first_attached_cpu();
+     gdbserver_state.g_cpu = gdbserver_state.c_cpu;
+     gdbserver_user_state.fd = fd;
+-    gdb_has_xml = false;
+ }
+ 
+ static bool gdb_accept_socket(int gdb_fd)
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index f421c5d041..8fc8351df7 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -48,7 +48,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+     }
+     if (n < 24) {
+         /* FPA registers.  */
+-        if (gdb_has_xml) {
++        if (gdb_has_xml()) {
+             return 0;
+         }
+         return gdb_get_zeroes(mem_buf, 12);
+@@ -56,7 +56,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+     switch (n) {
+     case 24:
+         /* FPA status register.  */
+-        if (gdb_has_xml) {
++        if (gdb_has_xml()) {
+             return 0;
+         }
+         return gdb_get_reg32(mem_buf, 0);
+@@ -102,7 +102,7 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+     }
+     if (n < 24) { /* 16-23 */
+         /* FPA registers (ignored).  */
+-        if (gdb_has_xml) {
++        if (gdb_has_xml()) {
+             return 0;
+         }
+         return 12;
+@@ -110,7 +110,7 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+     switch (n) {
+     case 24:
+         /* FPA status register (ignored).  */
+-        if (gdb_has_xml) {
++        if (gdb_has_xml()) {
+             return 0;
+         }
+         return 4;
+diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
+index ca39efdc35..2ad11510bf 100644
+--- a/target/ppc/gdbstub.c
++++ b/target/ppc/gdbstub.c
+@@ -56,7 +56,7 @@ static int ppc_gdb_register_len(int n)
+         return sizeof(target_ulong);
+     case 32 ... 63:
+         /* fprs */
+-        if (gdb_has_xml) {
++        if (gdb_has_xml()) {
+             return 0;
+         }
+         return 8;
+@@ -76,7 +76,7 @@ static int ppc_gdb_register_len(int n)
+         return sizeof(target_ulong);
+     case 70:
+         /* fpscr */
+-        if (gdb_has_xml) {
++        if (gdb_has_xml()) {
+             return 0;
+         }
+         return sizeof(target_ulong);
 -- 
 2.39.2

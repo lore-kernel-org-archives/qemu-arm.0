@@ -1,98 +1,138 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4293170ejc;
-        Wed, 30 Aug 2023 04:29:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IExh3lwnu5Rl607iAmxYSeSBK3jwi5AXW6uD8XzqVRSHVk+4iOpfnMPfxNvczht7AtUfteR
-X-Received: by 2002:a05:620a:29d1:b0:76f:1828:4f36 with SMTP id s17-20020a05620a29d100b0076f18284f36mr2349810qkp.27.1693394989230;
-        Wed, 30 Aug 2023 04:29:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693394989; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4063855ejc;
+        Tue, 29 Aug 2023 19:27:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGF6a6EdwuxMlhGIjHsYSBbAKrfFw7S06Ymiwhv8kfS4f5YOGFkQAUk+cR/onYdoSillM7j
+X-Received: by 2002:a05:622a:1823:b0:412:1c40:729d with SMTP id t35-20020a05622a182300b004121c40729dmr1018281qtc.39.1693362437482;
+        Tue, 29 Aug 2023 19:27:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693362437; cv=none;
         d=google.com; s=arc-20160816;
-        b=HSfpHAdT/PX5cdWzhZ6Ri7QkSKcnS5t9lyeS/95o0H5aSnf8i2PwACXGT93+OjRlo6
-         SrR8Z1FxqntWmWnl0COl/V61Tp8e8iJw5Mc8+LqwWFg1/zq2uJSj3b7PXQfT8vKaVJWH
-         oPfeGYS0SI+7SlEHgghQXRNDDkcMf4ubA+31KdmQLwFYa6wS7SDmJnD6ngjti2mqoiMg
-         PeAu5K9dvDi5nMvVDZbyHd2TKTJePm3ue5wD+7rtxt+TaFiOz85kXr/tkwk4YQqJEDNv
-         WffhWY01bFOs/qrNEwHSxKE8f6xUbGV+7FgoMe5I/Lpe97gUpzLqQDkYrJSOF2YjWRV9
-         BaVg==
+        b=zqVkardMV+vZ3GlUNlGcZJgLOH8DCqpryh1S1VGn1yrR71y/AenAnHJMYI2z5jUS6g
+         wjBhqbryQnEpS6hK8g5OP+E/4Wxb9rZLfKjOYxXCYp/+9jFhnf7KW5NjtwXtqcclOyJq
+         qmxCq2GCZ1LhvDGgNuGaa/fJtkJKNpsfmHMEk7zio41MxzX9kAq4XtKlWWNYOaakWk6w
+         VS3FwYxJY9Sx/yyW5kQT0+woM1ergaQRcE0KRnwjwR8j27jrLJZxsjzvUrZ6lfNBv0DE
+         bKIQPtrPS9/gg3QzV3o9YS2PAQGQtpcO2U+0hVNh0VM9V4Gm1BEprXMuZAV2hV7iOzQC
+         UlaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=zlEqK2LtssYURw2QtHrTu9Z/ttHoOjLGUgdL1zrMHv0=;
-        fh=Xlvu2CGzhc9Dof5H7mwc6MNIHUCb3MnPlwgraT2JIoM=;
-        b=NCu+u61EPS7AI8+L0Z6w7Iv+sNxlEWiCCtGohbstCBYx9gNiONiWwUS6JR86thlyLH
-         uL7YNhcGyizG9pQfyyXfYnJV+9+Vpa2+/LpPPx2ne2NzyD/ETtrvM/EtiiutY4L8N/Sp
-         LHW3Ys8f1w4AYTNCjBTAogen4DmXJ0ETYIrmvQUSVUbkkk5eHA+dzcq8ozTnMivc9/W6
-         HcRuNxpaICmnVEQltXHiEVbuiiP/viP5VZXPn7uuRO6x5cabav2/e/RqUeRqaz5xRti0
-         bXr5/fznMfhrfW3JjUozQw5S3ywR4kVU3l2UtEdR5JXmyYFBXLtDV/268fguPxWoCwIx
-         kXMg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=7Gpf+3wqZx8nzNJ7ghjnvFM+NPMARlI5xq84sXTSpgg=;
+        fh=/Ww3feT/iFt+UtShtcSrm/ZkK0mSMJwi4QyqgqL+GT0=;
+        b=RyC319b3OOrpiHXk60TgxM+hK3eKEfPgfgwq0LZPhc70Y6WqX98dTTXx6h1/2MPJch
+         Xm5puLU2GMOnZLx8OJGoIwHjh/91aGU9R5NiVNXQyQeb8RO/7citFVnCt/8VxpZSuw33
+         ALnUghdvPlAPCjpk6k9DpAyQimHJvbJ7IOOAnmY8YHCB4yYQ2sGo4WAV/vFMTzh36+gI
+         h384iBvFRiWyFWhRK/tX16RjsvQBTTWUaA3fomw/NlVvvMjWVHyf4xpcRG78tdqxBpl8
+         pAL39g955m1lpppU4HQPJtYRU0Bl16tVSLqkf6y4rrFcfJACJU+Blf6pg3F/O1NmxPcu
+         KHjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=RYI6BlRs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d11-20020a05620a240b00b00767f86fc1f5si7303111qkn.474.2023.08.30.04.29.49
+        by mx.google.com with ESMTPS id 4-20020ac85944000000b00403baeb5dd0si7041845qtz.481.2023.08.29.19.27.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Aug 2023 04:29:49 -0700 (PDT)
+        Tue, 29 Aug 2023 19:27:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=RYI6BlRs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qbJO6-0001Mz-1O; Wed, 30 Aug 2023 07:29:30 -0400
+	id 1qbAvF-0002do-39; Tue, 29 Aug 2023 22:27:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1qbJO5-0001MN-3z; Wed, 30 Aug 2023 07:29:29 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qbAvA-0002Xj-Qu; Tue, 29 Aug 2023 22:27:04 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1qbJO1-0007pu-4Q; Wed, 30 Aug 2023 07:29:28 -0400
-Received: from lhrpeml100003.china.huawei.com (unknown [172.18.147.206])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RbMQX0fL9z67FR3;
- Wed, 30 Aug 2023 19:24:52 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
- lhrpeml100003.china.huawei.com (7.191.160.210) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Wed, 30 Aug 2023 12:29:11 +0100
-Received: from lhrpeml500005.china.huawei.com ([7.191.163.240]) by
- lhrpeml500005.china.huawei.com ([7.191.163.240]) with mapi id 15.01.2507.031; 
- Wed, 30 Aug 2023 12:29:11 +0100
-To: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "ricarkol@google.com" <ricarkol@google.com>, "kvm@vger.kernel.org"
- <kvm@vger.kernel.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH v2] arm/kvm: Enable support for
- KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE
-Thread-Topic: [PATCH v2] arm/kvm: Enable support for
- KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE
-Thread-Index: AQHZz1rBh96g1+Cwu0Gwaz2o/+lpEK/+1l8AgAP05VA=
-Date: Wed, 30 Aug 2023 11:29:11 +0000
-Message-ID: <2586f98a0999408aa3a88495dd72489c@huawei.com>
-References: <20230815092709.1290-1-shameerali.kolothum.thodi@huawei.com>
- <9fc460ef-bb6b-8b67-d52a-f2d5aea887f1@redhat.com>
-In-Reply-To: <9fc460ef-bb6b-8b67-d52a-f2d5aea887f1@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.178]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qbAv5-0002Co-6N; Tue, 29 Aug 2023 22:27:03 -0400
+Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 37U29Dhe020814; Wed, 30 Aug 2023 02:26:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=7Gpf+3wqZx8nzNJ7ghjnvFM+NPMARlI5xq84sXTSpgg=;
+ b=RYI6BlRsZkZ9icCkUU6uS5wPxaR3GT1cOlAGmhWV9vbpG2jmKjO6UsxIh3SsdccnRPFb
+ lP6cRiEyMPR9BM9FVrRRGkyFPCckvP7FEP7pG5nnKGQCaeej1FWpnsQ2kOEI/4zC8ovx
+ IrLOmsCMBeCzkWV/kXrzLSRa8WwswpvsEq68n2EiNvsa2NoPgPV4CDJlLjOBlpglbw7X
+ EX/E0NNDKLue7Fsxg6S28Eb2PapAG6PiuGfkrZcze+gQSq+Ot2M+YFGHur/8o1wct0Fd
+ ntKYC8R9NFsVwlLLIivXiK9n7v35bacAjjwU8nHYxkXkFoE4UUYRQE95GdgqKqt14aFO Yw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3ssu57sxhj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 30 Aug 2023 02:26:45 +0000
+Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37U2CuGO000644;
+ Wed, 30 Aug 2023 02:26:45 GMT
+Received: from ppma13.dal12v.mail.ibm.com
+ (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3ssu57sxh9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 30 Aug 2023 02:26:44 +0000
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 37U1TLEo014115; Wed, 30 Aug 2023 02:26:44 GMT
+Received: from smtprelay01.wdc07v.mail.ibm.com ([172.16.1.68])
+ by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3sqwxk00cb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 30 Aug 2023 02:26:44 +0000
+Received: from smtpav04.wdc07v.mail.ibm.com (smtpav04.wdc07v.mail.ibm.com
+ [10.39.53.231])
+ by smtprelay01.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 37U2QhGr33948054
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 30 Aug 2023 02:26:43 GMT
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 87FEC58050;
+ Wed, 30 Aug 2023 02:26:43 +0000 (GMT)
+Received: from smtpav04.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DBDB058056;
+ Wed, 30 Aug 2023 02:26:42 +0000 (GMT)
+Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
+ by smtpav04.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Wed, 30 Aug 2023 02:26:42 +0000 (GMT)
+From: Ninad Palsule <ninad@linux.ibm.com>
+To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
+ andrew@aj.id.au, joel@jms.id.au, pbonzini@redhat.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
+ philmd@linaro.org, lvivier@redhat.com
+Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
+Subject: [PATCH v3 1/8] hw/fsi: Introduce IBM's Local bus
+Date: Tue, 29 Aug 2023 21:26:31 -0500
+Message-Id: <20230830022638.4183766-2-ninad@linux.ibm.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230830022638.4183766-1-ninad@linux.ibm.com>
+References: <20230830022638.4183766-1-ninad@linux.ibm.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: axKzhnzasZuWvenNy-phLg6IZNZQ7CTF
+X-Proofpoint-ORIG-GUID: rY3BLrBRJzd16Ce1jig67Fs2-dIuP2tG
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-08-29_16,2023-08-29_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 mlxscore=0
+ adultscore=0 malwarescore=0 spamscore=0 mlxlogscore=999 bulkscore=0
+ lowpriorityscore=0 clxscore=1015 suspectscore=0 impostorscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2308100000 definitions=main-2308300017
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -106,177 +146,248 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4PNgn3fBFHeI
+X-TUID: k/tiiSC1E3QR
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBHYXZpbiBTaGFuIFttYWlsdG86
-Z3NoYW5AcmVkaGF0LmNvbV0NCj4gU2VudDogMjggQXVndXN0IDIwMjMgMDE6MDINCj4gVG86IFNo
-YW1lZXJhbGkgS29sb3RodW0gVGhvZGkgPHNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2Vp
-LmNvbT47DQo+IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsgcWVtdS1hcm1Abm9uZ251Lm9yZw0KPiBD
-YzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyByaWNhcmtvbEBnb29nbGUuY29tOyBrdm1Admdl
-ci5rZXJuZWwub3JnOw0KPiBKb25hdGhhbiBDYW1lcm9uIDxqb25hdGhhbi5jYW1lcm9uQGh1YXdl
-aS5jb20+OyBMaW51eGFybQ0KPiA8bGludXhhcm1AaHVhd2VpLmNvbT4NCj4gU3ViamVjdDogUmU6
-IFtQQVRDSCB2Ml0gYXJtL2t2bTogRW5hYmxlIHN1cHBvcnQgZm9yDQo+IEtWTV9DQVBfQVJNX0VB
-R0VSX1NQTElUX0NIVU5LX1NJWkUNCj4gDQo+IEhpIFNoYW1lZXIsDQoNCkhpIEdhdmluLA0KDQpB
-Z3JlZSB3aXRoIGFsbCB0aGUgY29tbWVudHMuIFdpbGwgc2VuZCBvdXQgYSB2MyBzb29uLg0KDQpU
-aGFua3MsDQpTaGFtZWVyDQogDQo+IE9uIDgvMTUvMjMgMTk6MjcsIFNoYW1lZXIgS29sb3RodW0g
-d3JvdGU6DQo+ID4gTm93IHRoYXQgd2UgaGF2ZSBFYWdlciBQYWdlIFNwbGl0IHN1cHBvcnQgYWRk
-ZWQgZm9yIEFSTSBpbiB0aGUga2VybmVsLA0KPiA+IGVuYWJsZSBpdCBpbiBRZW11LiBUaGlzIGFk
-ZHMsDQo+ID4gICAtZWFnZXItc3BsaXQtc2l6ZSB0byAtYWNjZWwgc3ViLW9wdGlvbnMgdG8gc2V0
-IHRoZSBlYWdlciBwYWdlIHNwbGl0IGNodW5rDQo+IHNpemUuDQo+ID4gICAtZW5hYmxlIEtWTV9D
-QVBfQVJNX0VBR0VSX1NQTElUX0NIVU5LX1NJWkUuDQo+ID4NCj4gPiBUaGUgY2h1bmsgc2l6ZSBz
-cGVjaWZpZXMgaG93IG1hbnkgcGFnZXMgdG8gYnJlYWsgYXQgYSB0aW1lLCB1c2luZyBhDQo+ID4g
-c2luZ2xlIGFsbG9jYXRpb24uIEJpZ2dlciB0aGUgY2h1bmsgc2l6ZSwgbW9yZSBwYWdlcyBuZWVk
-IHRvIGJlDQo+ID4gYWxsb2NhdGVkIGFoZWFkIG9mIHRpbWUuDQo+ID4NCj4gPiBTaWduZWQtb2Zm
-LWJ5OiBTaGFtZWVyIEtvbG90aHVtDQo+IDxzaGFtZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1YXdl
-aS5jb20+DQo+ID4gLS0tDQo+ID4gUkZDIHYxOg0KPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9x
-ZW11LWRldmVsLzIwMjMwNzI1MTUwMDAyLjYyMS0xLXNoYW1lZXJhbGkua29sbw0KPiB0aHVtLnRo
-b2RpQGh1YXdlaS5jb20vDQo+ID4gICAgLVVwZGF0ZWQgcWVtdS1vcHRpb25zLmh4IHdpdGggZGVz
-Y3JpcHRpb24NCj4gPiAgICAtQWRkcmVzc2VkIHJldmlldyBjb21tZW50cyBmcm9tIFBldGVyIGFu
-ZCBHYXZpbihUaGFua3MpLg0KPiA+IC0tLQ0KPiA+ICAgaW5jbHVkZS9zeXNlbXUva3ZtX2ludC5o
-IHwgIDEgKw0KPiA+ICAgcWVtdS1vcHRpb25zLmh4ICAgICAgICAgIHwgMTQgKysrKysrKysrDQo+
-ID4gICB0YXJnZXQvYXJtL2t2bS5jICAgICAgICAgfCA2Mg0KPiArKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrDQo+ID4gICAzIGZpbGVzIGNoYW5nZWQsIDc3IGluc2VydGlv
-bnMoKykNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL3N5c2VtdS9rdm1faW50LmggYi9p
-bmNsdWRlL3N5c2VtdS9rdm1faW50LmggaW5kZXgNCj4gPiA1MTFiNDJiZGU1Li4wM2ExNjYwZDQw
-IDEwMDY0NA0KPiA+IC0tLSBhL2luY2x1ZGUvc3lzZW11L2t2bV9pbnQuaA0KPiA+ICsrKyBiL2lu
-Y2x1ZGUvc3lzZW11L2t2bV9pbnQuaA0KPiA+IEBAIC0xMTYsNiArMTE2LDcgQEAgc3RydWN0IEtW
-TVN0YXRlDQo+ID4gICAgICAgdWludDY0X3Qga3ZtX2RpcnR5X3JpbmdfYnl0ZXM7ICAvKiBTaXpl
-IG9mIHRoZSBwZXItdmNwdSBkaXJ0eSByaW5nDQo+ICovDQo+ID4gICAgICAgdWludDMyX3Qga3Zt
-X2RpcnR5X3Jpbmdfc2l6ZTsgICAvKiBOdW1iZXIgb2YgZGlydHkgR0ZOcyBwZXIgcmluZw0KPiAq
-Lw0KPiA+ICAgICAgIGJvb2wga3ZtX2RpcnR5X3Jpbmdfd2l0aF9iaXRtYXA7DQo+ID4gKyAgICB1
-aW50NjRfdCBrdm1fZWFnZXJfc3BsaXRfc2l6ZTsgLyogRWFnZXIgUGFnZSBTcGxpdHRpbmcgY2h1
-bmsgc2l6ZQ0KPiA+ICsgKi8NCj4gDQo+IE9uZSBtb3JlIHNwYWNlIGlzIG5lZWRlZCBiZWZvcmUg
-dGhlIGNvbW1lbnRzLCB0byBoYXZlIHNhbWUgYWxpZ25tZW50IGFzDQo+IHdlIGhhZC4gQmVzaWRl
-cywgaXQgbmVlZHMgdG8gYmUgaW5pdGlhbGl6ZWQgdG8gemVybyBpbg0KPiBrdm0tYWxsLmM6Omt2
-bV9hY2NlbF9pbnN0YW5jZV9pbml0KCkNCj4gYXMgd2UncmUgZG9pbmcgZm9yIEBrdm1fZGlydHlf
-cmluZ19zaXplLg0KPiANCj4gPiAgICAgICBzdHJ1Y3QgS1ZNRGlydHlSaW5nUmVhcGVyIHJlYXBl
-cjsNCj4gPiAgICAgICBOb3RpZnlWbWV4aXRPcHRpb24gbm90aWZ5X3ZtZXhpdDsNCj4gPiAgICAg
-ICB1aW50MzJfdCBub3RpZnlfd2luZG93Ow0KPiA+IGRpZmYgLS1naXQgYS9xZW11LW9wdGlvbnMu
-aHggYi9xZW11LW9wdGlvbnMuaHggaW5kZXgNCj4gPiAyOWI5OGMzZDRjLi42ZWY3Yjg5MDEzIDEw
-MDY0NA0KPiA+IC0tLSBhL3FlbXUtb3B0aW9ucy5oeA0KPiA+ICsrKyBiL3FlbXUtb3B0aW9ucy5o
-eA0KPiA+IEBAIC0xODYsNiArMTg2LDcgQEAgREVGKCJhY2NlbCIsIEhBU19BUkcsIFFFTVVfT1BU
-SU9OX2FjY2VsLA0KPiA+ICAgICAgICIgICAgICAgICAgICAgICAgc3BsaXQtd3g9b258b2ZmIChl
-bmFibGUgVENHIHNwbGl0IHdeeA0KPiBtYXBwaW5nKVxuIg0KPiA+ICAgICAgICIgICAgICAgICAg
-ICAgICAgdGItc2l6ZT1uIChUQ0cgdHJhbnNsYXRpb24gYmxvY2sgY2FjaGUgc2l6ZSlcbiINCj4g
-PiAgICAgICAiICAgICAgICAgICAgICAgIGRpcnR5LXJpbmctc2l6ZT1uIChLVk0gZGlydHkgcmlu
-ZyBHRk4gY291bnQsDQo+IGRlZmF1bHQgMClcbiINCj4gPiArICAgICIgICAgICAgICAgICAgICAg
-ZWFnZXItc3BsaXQtc2l6ZT1uIChLVk0gRWFnZXIgUGFnZSBTcGxpdCBjaHVuaw0KPiBzaXplLCBk
-ZWZhdWx0IDAsIGRpc2FibGVkLiBBUk0gb25seSlcbiINCj4gPiAgICAgICAiDQo+IG5vdGlmeS12
-bWV4aXQ9cnVufGludGVybmFsLWVycm9yfGRpc2FibGUsbm90aWZ5LXdpbmRvdz1uIChlbmFibGUg
-bm90aWZ5IFZNDQo+IGV4aXQgYW5kIHNldCBub3RpZnkgd2luZG93LCB4ODYgb25seSlcbiINCj4g
-PiAgICAgICAiICAgICAgICAgICAgICAgIHRocmVhZD1zaW5nbGV8bXVsdGkgKGVuYWJsZSBtdWx0
-aS10aHJlYWRlZA0KPiBUQ0cpXG4iLCBRRU1VX0FSQ0hfQUxMKQ0KPiA+ICAgU1JTVA0KPiA+IEBA
-IC0yNDQsNiArMjQ1LDE5IEBAIFNSU1QNCj4gPiAgICAgICAgICAgaXMgZGlzYWJsZWQgKGRpcnR5
-LXJpbmctc2l6ZT0wKS4gIFdoZW4gZW5hYmxlZCwgS1ZNIHdpbGwNCj4gaW5zdGVhZA0KPiA+ICAg
-ICAgICAgICByZWNvcmQgZGlydHkgcGFnZXMgaW4gYSBiaXRtYXAuDQo+ID4NCj4gPiArICAgIGBg
-ZWFnZXItc3BsaXQtc2l6ZT1uYGANCj4gPiArICAgICAgICBLVk0gaW1wbGVtZW50cyBkaXJ0eSBw
-YWdlIGxvZ2dpbmcgYXQgdGhlIFBBR0VfU0laRSBncmFudWxhcml0eQ0KPiBhbmQNCj4gPiArICAg
-ICAgICBlbmFibGluZyBkaXJ0eS1sb2dnaW5nIG9uIGEgaHVnZS1wYWdlIHJlcXVpcmVzIGJyZWFr
-aW5nIGl0IGludG8NCj4gPiArICAgICAgICBQQUdFX1NJWkUgcGFnZXMgaW4gdGhlIGZpcnN0IHBs
-YWNlLiBLVk0gb24gQVJNIGRvZXMgdGhpcw0KPiBzcGxpdHRpbmcNCj4gPiArICAgICAgICBsYXpp
-bHkgYnkgZGVmYXVsdC4gVGhlcmUgYXJlIHBlcmZvcm1hbmNlIGJlbmVmaXRzIGluIGRvaW5nDQo+
-IGh1Z2UtcGFnZQ0KPiA+ICsgICAgICAgIHNwbGl0IGVhZ2VybHksIGVzcGVjaWFsbHkgaW4gc2l0
-dWF0aW9ucyB3aGVyZSBUTEJJIGNvc3RzIGFzc29jaWF0ZWQNCj4gPiArICAgICAgICB3aXRoIGJy
-ZWFrLWJlZm9yZS1tYWtlIHNlcXVlbmNlcyBhcmUgY29uc2lkZXJhYmxlIGFuZCBhbHNvIGlmDQo+
-IGd1ZXN0DQo+ID4gKyAgICAgICAgd29ya2xvYWRzIGFyZSByZWFkIGludGVuc2l2ZS4gVGhlIHNp
-emUgaGVyZSBzcGVjaWZpZXMgaG93IG1hbnkNCj4gcGFnZXMNCj4gPiArICAgICAgICB0byBicmVh
-ayBhdCBhIHRpbWUgYW5kIG5lZWRzIHRvIGJlIGEgdmFsaWQgYmxvY2sgcGFnZSBzaXplKGVnOg0K
-PiA0S0IgfA0KPiA+ICsgICAgICAgIDJNIHwgMUcgd2hlbiBQQUdFX1NJWkUgaXMgNEspLiBCZSB3
-YXJ5IG9mIHNwZWNpZnlpbmcgYSBoaWdoZXINCj4gc2l6ZSBhcw0KPiA+ICsgICAgICAgIGl0IHdp
-bGwgaGF2ZSBhbiBpbXBhY3Qgb24gdGhlIG1lbW9yeS4gQnkgZGVmYXVsdCwgdGhpcyBmZWF0dXJl
-IGlzDQo+ID4gKyAgICAgICAgZGlzYWJsZWQgKGVhZ2VyLXNwbGl0LXNpemU9MCkuDQo+ID4gKw0K
-PiANCj4gU2luY2UgNjRLQiBiYXNlIHBhZ2Ugc2l6ZSBpcyBhbm90aGVyIHBvcHVsYXIgb3B0aW9u
-LCBpdCdzIHdvcnRoeSB0byBtZW50aW9uDQo+IHRoZSBzdXBwb3J0ZWQgYmxvY2sgc2l6ZXMgZm9y
-IDY0S0IgYmFzZSBwYWdlIHNpemUuIEknbSBub3Qgc3VyZSBhYm91dCAxNktCDQo+IHRob3VnaC4N
-Cj4gRm9yIHRoaXMsIHRoZSBjb21tZW50cyBjYW4gYmUgaW1wcm92ZWQgYXMgYmVsb3cgaWYgeW91
-IGFncmVlLiBXaXRoIHRoZQ0KPiBpbXByb3ZlbWVudCwgdXNlcnMgbmVlZG4ndCBsb29rIGludG8g
-dGhlIGNvZGUgdG8gZmlndXJlIG91dCB0aGUgdmFsaWQgYmxvY2sNCj4gc2l6ZXMuDQo+IA0KPiBU
-aGUgc2l6ZSBoZXJlIHNwZWNpZmllcyBob3cgbWFueSBwYWdlcyB0byBiZSBzcGxpdCBhdCBhIHRp
-bWUgYW5kIG5lZWRzIHRvIGJlDQo+IGEgdmFsaWQgYmxvY2sgc2l6ZSwgd2hpY2ggaXMgMUdCLzJN
-Qi80S0IsIDMyTUIvMTZLQiBhbmQgNTEyTUIvNjRLQiBmb3INCj4gNEtCLzE2S0IvNjRLQiBQQUdF
-X1NJWkUgcmVzcGVjdGl2ZWx5Lg0KPiANCj4gPiAgICAgICBgYG5vdGlmeS12bWV4aXQ9cnVufGlu
-dGVybmFsLWVycm9yfGRpc2FibGUsbm90aWZ5LXdpbmRvdz1uYGANCj4gPiAgICAgICAgICAgRW5h
-YmxlcyBvciBkaXNhYmxlcyBub3RpZnkgVk0gZXhpdCBzdXBwb3J0IG9uIHg4NiBob3N0IGFuZA0K
-PiBzcGVjaWZ5DQo+ID4gICAgICAgICAgIHRoZSBjb3JyZXNwb25kaW5nIG5vdGlmeSB3aW5kb3cg
-dG8gdHJpZ2dlciB0aGUgVk0gZXhpdCBpZg0KPiBlbmFibGVkLg0KPiA+IGRpZmYgLS1naXQgYS90
-YXJnZXQvYXJtL2t2bS5jIGIvdGFyZ2V0L2FybS9rdm0uYyBpbmRleA0KPiA+IGI0Yzc2NTRmNDku
-LjZjZWJhNjczZDkgMTAwNjQ0DQo+ID4gLS0tIGEvdGFyZ2V0L2FybS9rdm0uYw0KPiA+ICsrKyBi
-L3RhcmdldC9hcm0va3ZtLmMNCj4gPiBAQCAtMzAsNiArMzAsNyBAQA0KPiA+ICAgI2luY2x1ZGUg
-ImV4ZWMvYWRkcmVzcy1zcGFjZXMuaCINCj4gPiAgICNpbmNsdWRlICJody9ib2FyZHMuaCINCj4g
-PiAgICNpbmNsdWRlICJody9pcnEuaCINCj4gPiArI2luY2x1ZGUgInFhcGkvdmlzaXRvci5oIg0K
-PiA+ICAgI2luY2x1ZGUgInFlbXUvbG9nLmgiDQo+ID4NCj4gPiAgIGNvbnN0IEtWTUNhcGFiaWxp
-dHlJbmZvIGt2bV9hcmNoX3JlcXVpcmVkX2NhcGFiaWxpdGllc1tdID0geyBAQA0KPiA+IC0yNDcs
-NiArMjQ4LDExIEBAIGludCBrdm1fYXJtX2dldF9tYXhfdm1faXBhX3NpemUoTWFjaGluZVN0YXRl
-DQo+ICptcywgYm9vbCAqZml4ZWRfaXBhKQ0KPiA+ICAgICAgIHJldHVybiByZXQgPiAwID8gcmV0
-IDogNDA7DQo+ID4gICB9DQo+ID4NCj4gPiArc3RhdGljIGJvb2wga3ZtX2FybV9lYWdlcl9zcGxp
-dF9zaXplX3ZhbGlkKHVpbnQ2NF90IHJlcV9zaXplLA0KPiA+ICt1aW50MzJfdCBzaXplcykgew0K
-PiA+ICsgICAgcmV0dXJuIHJlcV9zaXplICYgc2l6ZXM7DQo+ID4gK30NCj4gPiArDQo+IA0KPiBJ
-dCdzIHdvcnRoeSB0byBiZSBhIGlubGluZSBmdW5jdGlvbi4NCj4gDQo+ID4gICBpbnQga3ZtX2Fy
-Y2hfaW5pdChNYWNoaW5lU3RhdGUgKm1zLCBLVk1TdGF0ZSAqcykNCj4gPiAgIHsNCj4gPiAgICAg
-ICBpbnQgcmV0ID0gMDsNCj4gPiBAQCAtMjgwLDYgKzI4NiwyMiBAQCBpbnQga3ZtX2FyY2hfaW5p
-dChNYWNoaW5lU3RhdGUgKm1zLCBLVk1TdGF0ZQ0KPiAqcykNCj4gPiAgICAgICAgICAgfQ0KPiA+
-ICAgICAgIH0NCj4gPg0KPiA+ICsgICAgaWYgKHMtPmt2bV9lYWdlcl9zcGxpdF9zaXplKSB7DQo+
-ID4gKyAgICAgICAgdWludDMyX3Qgc2l6ZXM7DQo+ID4gKw0KPiA+ICsgICAgICAgIHNpemVzID0g
-a3ZtX3ZtX2NoZWNrX2V4dGVuc2lvbihzLA0KPiBLVk1fQ0FQX0FSTV9TVVBQT1JURURfQkxPQ0tf
-U0laRVMpOw0KPiA+ICsgICAgICAgIGlmICghc2l6ZXMpIHsNCj4gPiArICAgICAgICAgICAgcy0+
-a3ZtX2VhZ2VyX3NwbGl0X3NpemUgPSAwOw0KPiA+ICsgICAgICAgICAgICB3YXJuX3JlcG9ydCgi
-RWFnZXIgUGFnZSBTcGxpdCBzdXBwb3J0IG5vdCBhdmFpbGFibGUiKTsNCj4gPiArICAgICAgICB9
-IGVsc2UgaWYNCj4gKCFrdm1fYXJtX2VhZ2VyX3NwbGl0X3NpemVfdmFsaWQocy0+a3ZtX2VhZ2Vy
-X3NwbGl0X3NpemUsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIHNpemVzKSkgew0KPiA+ICsgICAgICAgICAgICBlcnJvcl9yZXBvcnQoIkVh
-Z2VyIFBhZ2UgU3BsaXQgcmVxdWVzdGVkIGNodW5rIHNpemUgbm90DQo+IHZhbGlkIik7DQo+ID4g
-KyAgICAgICAgfSBlbHNlIGlmIChrdm1fdm1fZW5hYmxlX2NhcChzLA0KPiBLVk1fQ0FQX0FSTV9F
-QUdFUl9TUExJVF9DSFVOS19TSVpFLCAwLA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgcy0+a3ZtX2VhZ2VyX3NwbGl0X3NpemUpKSB7DQo+ID4gKyAgICAgICAgICAg
-IGVycm9yX3JlcG9ydCgiRmFpbGVkIHRvIHNldCBFYWdlciBQYWdlIFNwbGl0IGNodW5rDQo+ID4g
-KyBzaXplIik7DQo+IA0KPiBMZXRzIHByaW50IHRoZSBlcnJubyBoZXJlLiBJdCdzIGluZGljYXRp
-dmUgdG8gdGVsbCB3aGF0IGhhcHBlbnMgaW5zaWRlIHRoZSBob3N0DQo+IGtlcm5lbCBhbmQgd2h5
-IGl0J3MgZmFpbGluZyB0byBlbmFibGUgdGhlIGZlYXR1cmUuDQo+IA0KPiAJCWVycm9yX3JlcG9y
-dCgiRW5hYmxpbmcgb2YgRWFnZXIgUGFnZSBTcGxpdCBmYWlsZWQ6ICVzLiIsDQo+IHN0cmVycm9y
-KC1yZXQpKTsNCj4gDQo+ID4gKyAgICAgICAgfQ0KPiA+ICsgICAgfQ0KPiA+ICsNCj4gPiAgICAg
-ICBrdm1fYXJtX2luaXRfZGVidWcocyk7DQo+ID4NCj4gPiAgICAgICByZXR1cm4gcmV0Ow0KPiA+
-IEBAIC0xMDYyLDYgKzEwODQsNDYgQEAgYm9vbA0KPiBrdm1fYXJjaF9jcHVfY2hlY2tfYXJlX3Jl
-c2V0dGFibGUodm9pZCkNCj4gPiAgICAgICByZXR1cm4gdHJ1ZTsNCj4gPiAgIH0NCj4gPg0KPiA+
-ICtzdGF0aWMgdm9pZCBrdm1fYXJjaF9nZXRfZWFnZXJfc3BsaXRfc2l6ZShPYmplY3QgKm9iaiwg
-VmlzaXRvciAqdiwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgY29uc3QgY2hhciAqbmFtZSwgdm9pZA0KPiAqb3BhcXVlLA0KPiA+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBFcnJvciAqKmVycnApIHsNCj4gPiArICAgIEtW
-TVN0YXRlICpzID0gS1ZNX1NUQVRFKG9iaik7DQo+ID4gKyAgICB1aW50NjRfdCB2YWx1ZSA9IHMt
-Pmt2bV9lYWdlcl9zcGxpdF9zaXplOw0KPiA+ICsNCj4gPiArICAgIHZpc2l0X3R5cGVfc2l6ZSh2
-LCBuYW1lLCAmdmFsdWUsIGVycnApOyB9DQo+ID4gKw0KPiA+ICtzdGF0aWMgdm9pZCBrdm1fYXJj
-aF9zZXRfZWFnZXJfc3BsaXRfc2l6ZShPYmplY3QgKm9iaiwgVmlzaXRvciAqdiwNCj4gPiArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29uc3QgY2hhciAqbmFtZSwg
-dm9pZA0KPiAqb3BhcXVlLA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBFcnJvciAqKmVycnApIHsNCj4gPiArICAgIEtWTVN0YXRlICpzID0gS1ZNX1NUQVRF
-KG9iaik7DQo+ID4gKyAgICB1aW50NjRfdCB2YWx1ZTsNCj4gPiArDQo+ID4gKyAgICBpZiAocy0+
-ZmQgIT0gLTEpIHsNCj4gPiArICAgICAgICBlcnJvcl9zZXRnKGVycnAsICJDYW5ub3Qgc2V0IHBy
-b3BlcnRpZXMgYWZ0ZXIgdGhlIGFjY2VsZXJhdG9yIGhhcw0KPiBiZWVuIGluaXRpYWxpemVkIik7
-DQo+ID4gKyAgICAgICAgcmV0dXJuOw0KPiA+ICsgICAgfQ0KPiA+ICsNCj4gDQo+IExldHMgYmUg
-bW9yZSBvYnZpb3VzIGhlcmU/DQo+IA0KPiAJZXJyb3Jfc2V0ZyhlcnJwLCAiVW5hYmxlIHRvIHNl
-dCBlYXJseS1zcGxpdC1zaXplIGFmdGVyIEtWTSBoYXMgYmVlbg0KPiBpbml0aWFsaXplZCIpOw0K
-PiANCj4gPiArICAgIGlmICghdmlzaXRfdHlwZV9zaXplKHYsIG5hbWUsICZ2YWx1ZSwgZXJycCkp
-IHsNCj4gPiArICAgICAgICByZXR1cm47DQo+ID4gKyAgICB9DQo+ID4gKw0KPiA+ICsgICAgaWYg
-KGlzX3Bvd2VyX29mXzIodmFsdWUpKSB7DQo+ID4gKyAgICAgICAgZXJyb3Jfc2V0ZyhlcnJwLCAi
-ZWFybHktc3BsaXQtc2l6ZSBtdXN0IGJlIGEgcG93ZXIgb2YgdHdvLiIpOw0KPiA+ICsgICAgICAg
-IHJldHVybjsNCj4gPiArICAgIH0NCj4gPiArDQo+IA0KPiBUaGlzIGNvbmRpdGlvbiBsb29rcyB3
-cm9uZyB0byBtZS4gJ3ZhbHVlID0gMCcgaXMgYWNjZXB0ZWQgdG8gZGlzYWJsZSB0aGUgZWFybHkN
-Cj4gcGFnZSBzcGxpdHRpbmcuIEJlc2lkZXMsIHdlIGFjdHVhbGx5IG5lZWQgdG8gd2FybiBvbiAh
-aXNfcG93ZXJfb2ZfMih2YWx1ZSkNCj4gDQo+IAlpZiAodmFsdWUgJiYgIWlzX3Bvd2VyX29mXzIo
-dmFsdWUpKSB7DQo+ICAgICAgICAgICAgICBlcnJvcl9zZXRnKGVycnAsICJlYXJseS1zcGxpdC1z
-aXplIG11c3QgYmUgYSBwb3dlciBvZiB0d28uIik7DQo+ICAgICAgICAgICAgICByZXR1cm47DQo+
-ICAgICAgICAgIH0NCj4gDQo+ID4gKyAgICBzLT5rdm1fZWFnZXJfc3BsaXRfc2l6ZSA9IHZhbHVl
-Ow0KPiA+ICt9DQo+ID4gKw0KPiA+ICAgdm9pZCBrdm1fYXJjaF9hY2NlbF9jbGFzc19pbml0KE9i
-amVjdENsYXNzICpvYykNCj4gPiAgIHsNCj4gPiArICAgIG9iamVjdF9jbGFzc19wcm9wZXJ0eV9h
-ZGQob2MsICJlYWdlci1zcGxpdC1zaXplIiwgInNpemUiLA0KPiA+ICsgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBrdm1fYXJjaF9nZXRfZWFnZXJfc3BsaXRfc2l6ZSwNCj4gPiArICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAga3ZtX2FyY2hfc2V0X2VhZ2VyX3NwbGl0X3NpemUsIE5V
-TEwsDQo+ID4gKyBOVUxMKTsNCj4gPiArDQo+ID4gKyAgICBvYmplY3RfY2xhc3NfcHJvcGVydHlf
-c2V0X2Rlc2NyaXB0aW9uKG9jLCAiZWFnZXItc3BsaXQtc2l6ZSIsDQo+ID4gKyAgICAgICAgIkNv
-bmZpZ3VyZSBFYWdlciBQYWdlIFNwbGl0IGNodW5rIHNpemUgZm9yIGh1Z2VwYWdlcy4NCj4gPiAr
-IChkZWZhdWx0OiAwLCBkaXNhYmxlZCkiKTsNCj4gDQo+ICJDb25maWd1cmUiIG5lZWRzIHRvIGJl
-IGRyb3BwZWQgc2luY2UgdGhlIHByb3BlcnR5IGhhcyBib3RoIHJlYWQvd3JpdGUNCj4gcGVybWlz
-c2lvbi4NCj4gDQo+ID4gICB9DQo+IA0KPiBUaGFua3MsDQo+IEdhdmluDQoNCg==
+This is a part of patchset where IBM's Flexible Service Interface is
+introduced.
+
+The LBUS is modelled to maintain the qdev bus hierarchy and to take
+advantage of the object model to automatically generate the CFAM
+configuration block. The configuration block presents engines in the
+order they are attached to the CFAM's LBUS. Engine implementations
+should subclass the LBusDevice and set the 'config' member of
+LBusDeviceClass to match the engine's type.
+
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+---
+v2:
+- Incorporated Joel's review comments.
+---
+ hw/Kconfig            |  1 +
+ hw/fsi/Kconfig        |  2 +
+ hw/fsi/lbus.c         | 94 +++++++++++++++++++++++++++++++++++++++++++
+ hw/fsi/meson.build    |  1 +
+ hw/meson.build        |  1 +
+ include/hw/fsi/lbus.h | 48 ++++++++++++++++++++++
+ include/qemu/bitops.h |  6 +++
+ 7 files changed, 153 insertions(+)
+ create mode 100644 hw/fsi/Kconfig
+ create mode 100644 hw/fsi/lbus.c
+ create mode 100644 hw/fsi/meson.build
+ create mode 100644 include/hw/fsi/lbus.h
+
+diff --git a/hw/Kconfig b/hw/Kconfig
+index ba62ff6417..2ccb73add5 100644
+--- a/hw/Kconfig
++++ b/hw/Kconfig
+@@ -9,6 +9,7 @@ source core/Kconfig
+ source cxl/Kconfig
+ source display/Kconfig
+ source dma/Kconfig
++source fsi/Kconfig
+ source gpio/Kconfig
+ source hyperv/Kconfig
+ source i2c/Kconfig
+diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
+new file mode 100644
+index 0000000000..687449e14e
+--- /dev/null
++++ b/hw/fsi/Kconfig
+@@ -0,0 +1,2 @@
++config LBUS
++    bool
+diff --git a/hw/fsi/lbus.c b/hw/fsi/lbus.c
+new file mode 100644
+index 0000000000..afb26ef7ea
+--- /dev/null
++++ b/hw/fsi/lbus.c
+@@ -0,0 +1,94 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2023 IBM Corp.
++ *
++ * IBM Local bus where FSI slaves are connected
++ */
++
++#include "qemu/osdep.h"
++
++#include "qapi/error.h"
++#include "qemu/log.h"
++
++#include "hw/fsi/lbus.h"
++
++#include "hw/qdev-properties.h"
++
++static void lbus_realize(BusState *bus, Error **errp)
++{
++    LBusNode *node;
++    LBus *lbus = LBUS(bus);
++
++    memory_region_init(&lbus->mr, OBJECT(lbus), TYPE_LBUS,
++                       (2 * 1024 * 1024) - 0x400);
++
++    QLIST_FOREACH(node, &lbus->devices, next) {
++        memory_region_add_subregion(&lbus->mr, node->ldev->address,
++                                    &node->ldev->iomem);
++    }
++}
++
++static void lbus_init(Object *o)
++{
++}
++
++static void lbus_class_init(ObjectClass *klass, void *data)
++{
++    BusClass *k = BUS_CLASS(klass);
++    k->realize = lbus_realize;
++}
++
++static const TypeInfo lbus_info = {
++    .name = TYPE_LBUS,
++    .parent = TYPE_BUS,
++    .instance_init = lbus_init,
++    .instance_size = sizeof(LBus),
++    .class_init = lbus_class_init,
++};
++
++static Property lbus_device_props[] = {
++    DEFINE_PROP_UINT32("address", LBusDevice, address, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++DeviceState *lbus_create_device(LBus *bus, const char *type, uint32_t addr)
++{
++    DeviceState *dev;
++    LBusNode *node;
++
++    dev = qdev_new(type);
++    qdev_prop_set_uint8(dev, "address", addr);
++    qdev_realize_and_unref(dev, &bus->bus, &error_fatal);
++
++    /* Move to post_load */
++    node = g_malloc(sizeof(struct LBusNode));
++    node->ldev = LBUS_DEVICE(dev);
++    QLIST_INSERT_HEAD(&bus->devices, node, next);
++
++    return dev;
++}
++
++static void lbus_device_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->bus_type = TYPE_LBUS;
++    device_class_set_props(dc, lbus_device_props);
++}
++
++static const TypeInfo lbus_device_type_info = {
++    .name = TYPE_LBUS_DEVICE,
++    .parent = TYPE_DEVICE,
++    .instance_size = sizeof(LBusDevice),
++    .abstract = true,
++    .class_init = lbus_device_class_init,
++    .class_size = sizeof(LBusDeviceClass),
++};
++
++static void lbus_register_types(void)
++{
++    type_register_static(&lbus_info);
++    type_register_static(&lbus_device_type_info);
++}
++
++type_init(lbus_register_types);
+diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+new file mode 100644
+index 0000000000..e1007d5fea
+--- /dev/null
++++ b/hw/fsi/meson.build
+@@ -0,0 +1 @@
++system_ss.add(when: 'CONFIG_LBUS', if_true: files('lbus.c'))
+diff --git a/hw/meson.build b/hw/meson.build
+index c7ac7d3d75..6c71ee9cfa 100644
+--- a/hw/meson.build
++++ b/hw/meson.build
+@@ -43,6 +43,7 @@ subdir('virtio')
+ subdir('watchdog')
+ subdir('xen')
+ subdir('xenpv')
++subdir('fsi')
+ 
+ subdir('alpha')
+ subdir('arm')
+diff --git a/include/hw/fsi/lbus.h b/include/hw/fsi/lbus.h
+new file mode 100644
+index 0000000000..fafc065178
+--- /dev/null
++++ b/include/hw/fsi/lbus.h
+@@ -0,0 +1,48 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2023 IBM Corp.
++ *
++ * IBM Local bus and connected device structures.
++ */
++#ifndef FSI_LBUS_H
++#define FSI_LBUS_H
++
++#include "exec/memory.h"
++#include "hw/qdev-core.h"
++
++#define TYPE_LBUS_DEVICE "lbus.device"
++OBJECT_DECLARE_TYPE(LBusDevice, LBusDeviceClass, LBUS_DEVICE)
++
++typedef struct LBusDevice {
++    DeviceState parent;
++
++    MemoryRegion iomem;
++    uint32_t address;
++} LBusDevice;
++
++typedef struct LBusDeviceClass {
++    DeviceClass parent;
++
++    uint32_t config;
++} LBusDeviceClass;
++
++typedef struct LBusNode {
++    LBusDevice *ldev;
++
++    QLIST_ENTRY(LBusNode) next;
++} LBusNode;
++
++#define TYPE_LBUS "lbus"
++OBJECT_DECLARE_SIMPLE_TYPE(LBus, LBUS)
++
++typedef struct LBus {
++    BusState bus;
++
++    MemoryRegion mr;
++
++    QLIST_HEAD(, LBusNode) devices;
++} LBus;
++
++DeviceState *lbus_create_device(LBus *bus, const char *type, uint32_t addr);
++int lbus_add_device(LBus *bus, LBusDevice *dev);
++#endif /* FSI_LBUS_H */
+diff --git a/include/qemu/bitops.h b/include/qemu/bitops.h
+index cb3526d1f4..e12496f619 100644
+--- a/include/qemu/bitops.h
++++ b/include/qemu/bitops.h
+@@ -618,4 +618,10 @@ static inline uint64_t half_unshuffle64(uint64_t x)
+     return x;
+ }
+ 
++/* Bitwise operations at the word level. */
++#define BE_BIT(x)                          BIT(31 - (x))
++#define GENMASK(t, b) \
++    (((1ULL << ((t) + 1)) - 1) & ~((1ULL << (b)) - 1))
++#define BE_GENMASK(t, b)                   GENMASK(BE_BIT(t), BE_BIT(b))
++
+ #endif
+-- 
+2.39.2
+

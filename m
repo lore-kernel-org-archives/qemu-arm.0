@@ -1,145 +1,83 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4067271ejc;
-        Tue, 29 Aug 2023 19:36:57 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG8j5OA6Xjd9RwZ2z8q3pbN71W0qhFrqK1SKVvW4f8Aqb75y8NTdSw+UGhUJg76wBflYUiI
-X-Received: by 2002:a05:620a:bc7:b0:769:89c8:4fae with SMTP id s7-20020a05620a0bc700b0076989c84faemr839643qki.52.1693363016815;
-        Tue, 29 Aug 2023 19:36:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693363016; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4302367ejc;
+        Wed, 30 Aug 2023 04:49:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFBVbzu+zLKCbB0GNRq0Q1Nx3NSzVdxTkV3mFXNfKOco+Xi6MO71wAMRP7MxD87xG4ng+0u
+X-Received: by 2002:ac8:5bd5:0:b0:412:2571:a5a0 with SMTP id b21-20020ac85bd5000000b004122571a5a0mr2145649qtb.7.1693396141074;
+        Wed, 30 Aug 2023 04:49:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693396141; cv=none;
         d=google.com; s=arc-20160816;
-        b=KfZ3KiTw5dbox9Tj4KehN1HGn1pcfVWhHrcDsUjYxy9Oe4aJqQyw6IGxj+jUDsTH/F
-         hGlkyeoL/j5vfjDE9m75NCB78NwuriV764ePrn9LUOEVqHYOUlY7WWdcpZzNkePyNr7h
-         thhV5EcFjneq/LML01G/gzVVBJBe6yAyOTOqnx9DIVTwMwVF086EzrzlW2yyXkbtKlo9
-         kvzN+0i9V0lx5AHOHNupE8Cm5U+eZDqRIkaXuD2Er3nIYcHKkpSSTsUaYdXAejEP/yxI
-         6Is9VwMduWV2huWo4K/qkI//MqGbhEE0lt7dmO11iBBFnJ4F9ScQHR/bkXH+0qHv4T1I
-         Qh9A==
+        b=DV0wyglpJpb9cNNVbCsinsSrQqcGoMs8vCao5PUK0la5WcSkjp70P4ydekHN0FYUzG
+         Cta/daSNkTAFZmpMivOoYkPOwXidLdaBihgYOSf/XQ+7bheRlCQInKOLK9m1qDwk3+7J
+         D0Sg/9BLtFZHykyNxro17ZYj4iahUvhVyMi96H1txQ69OuLKKFyf7aQULjWTt1pIyrvC
+         46N8l2jUDDWD/Sh7q3MB0ZlGFIDibpVtvfbfo9ehjJpyjKMb4z7vlhI7ZIxxJmSb0Jh7
+         pjntXCfmoCE6GO9fgRaVnDCUU7fcENmYzn/XGl1txlC8syWKAdGKXI8wbhW2b3OsEE6W
+         rHTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=L+gHQM/PuEScJklaepL9Uidzc5bZ/fNhFlEGXtE7WZM=;
-        fh=72BxJRehML6by6nfr8JRUoEUQurOl+rxVo6rJ0YdYCI=;
-        b=I6gbyJgvrgesgx2nm1sKWixvladyw/LkejS7ZqUbBQP1xiWqe2VrNPp7hiHD/FDOec
-         iJLMaMx2MPQ+qwtlCLAgu8xbZnlEYQn6cDOY4ipnN0J1FJ/GGrY2lAS0oUcedpYI62Qn
-         QFYhqpTXWcC/dU9IuNQKoEtiNQx5aJpvAWMRwHAebXLrAm1kwTT94E70Q67DVN3MF51B
-         Q3+r5SkKcdV3Z6UZI6UvwAVsw5FffJKxzrobm9CclhYNYtBmh8pIpcL5bcPIBmvDGCzY
-         z8wyadqgdENjDGRbFxr/SncLobHixmNRWA3Kcnf020eWk2yPbUoJHfkh/0iOcGVupYnn
-         BGVw==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :message-id:date:subject:cc:to;
+        bh=/kOCG2UXgImpVbxBJxM4uCOYAIbYtxOstJWZ5YYetFk=;
+        fh=9b190+TVKlRAUWo3m9Xzhy2uD5wr0Q5Frn8i7qoKqbw=;
+        b=IQuRyRRksb/wHT+gNnKZKUAF/KTQGb90uPed+TkoZUrT3y2jtrXj0A3iX7Cow6VAg+
+         JP7ce5GISE3L3vCtdKtqLp4GEmeprGRR5KvQ3Dr0quf6DDW7LPEdKrtZcI315pce6lWX
+         zYMj53QlI/J634wZdQ7y49CEPuiQJ3y8ZWIy5Pa4IJnwQQm+CgTRLjeGqqI+Y9eRHYIK
+         rT1y2sODUC541b/TUZdAUligsWmkbGfTlL7N5DyLMHVgbdqYvlpcD6NisDqShWnPi2aM
+         EhlPOcXelzQPiFA4bJ1gxKJQiokqxgQozAgDwnt+6MuR+HRZ9oFP6/f+nDB9j3eU2sAI
+         Vhqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dqVRfKVo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id az14-20020a05620a170e00b0076f2546e880si1071224qkb.156.2023.08.29.19.36.56
+        by mx.google.com with ESMTPS id t17-20020a05622a01d100b004008b55393bsi7510307qtw.403.2023.08.30.04.49.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Aug 2023 19:36:56 -0700 (PDT)
+        Wed, 30 Aug 2023 04:49:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dqVRfKVo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qbB47-00071s-4P; Tue, 29 Aug 2023 22:36:19 -0400
+	id 1qbJgp-0001ME-TQ; Wed, 30 Aug 2023 07:48:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qbB44-00071B-Om; Tue, 29 Aug 2023 22:36:16 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1qbJgo-0001DY-2Q; Wed, 30 Aug 2023 07:48:50 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qbB42-000426-AT; Tue, 29 Aug 2023 22:36:16 -0400
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 37U1wbuU028657; Wed, 30 Aug 2023 02:36:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=L+gHQM/PuEScJklaepL9Uidzc5bZ/fNhFlEGXtE7WZM=;
- b=dqVRfKVoBMm2jkbo6GabhvzKYX3jHUfb9U/D2gwX/zzPMFqJA+LF0QAs/4yloopzuPpv
- 8svzVlGsy5STl3ZZFzmyiqgwJdzu0mq4hW6SnhK+2x9bjP2BsNWJIHwd2QjXUfjg/WJ7
- 0/9JFqHZa6oDnt2xbexJ4DxNZfuJmxBrmokZ+n+cqTVD5YqH7bPQs16t78Tltakad5at
- by+KZMA8q0WMnObdGhdO8nGsIccaT5OH0p75/TS4gitm/eEbNfuXOSCvYvpKCcQ8GI9q
- /aEMH0rTJUyiWhuI8jPu9KTOTi5mQyj3MzsWOxqiQDXoBkG8nYCb7cRI1jue2yyZC3PS Hw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3ssukaja2g-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 30 Aug 2023 02:36:06 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37U2P4B7030432;
- Wed, 30 Aug 2023 02:36:05 GMT
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3ssukaja22-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 30 Aug 2023 02:36:05 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 37U0O89n014331; Wed, 30 Aug 2023 02:31:04 GMT
-Received: from smtprelay05.wdc07v.mail.ibm.com ([172.16.1.72])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3sqvqn8f65-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 30 Aug 2023 02:31:04 +0000
-Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
- [10.241.53.101])
- by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 37U2V4V966453912
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 30 Aug 2023 02:31:04 GMT
-Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 13C3B5805A;
- Wed, 30 Aug 2023 02:31:04 +0000 (GMT)
-Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id DEAD158051;
- Wed, 30 Aug 2023 02:31:02 +0000 (GMT)
-Received: from [9.61.171.165] (unknown [9.61.171.165])
- by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Wed, 30 Aug 2023 02:31:02 +0000 (GMT)
-Message-ID: <698b2258-b179-4689-8000-7468b92a0823@linux.ibm.com>
-Date: Tue, 29 Aug 2023 21:31:02 -0500
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1qbJgk-0003Vm-G1; Wed, 30 Aug 2023 07:48:49 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.207])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RbMwp3w51z6HJcB;
+ Wed, 30 Aug 2023 19:47:38 +0800 (CST)
+Received: from A2006125610.china.huawei.com (10.202.227.178) by
+ lhrpeml500005.china.huawei.com (7.191.163.240) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Wed, 30 Aug 2023 12:48:36 +0100
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <peter.maydell@linaro.org>, <gshan@redhat.com>, <ricarkol@google.com>,
+ <jonathan.cameron@huawei.com>, <kvm@vger.kernel.org>, <linuxarm@huawei.com>
+Subject: [PATCH v3] arm/kvm: Enable support for
+ KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE
+Date: Wed, 30 Aug 2023 12:48:18 +0100
+Message-ID: <20230830114818.641-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 3/7] hw/fsi: Introduce IBM's cfam,fsi-slave
-Content-Language: en-US
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- philmd@linaro.org
-Cc: qemu-arm@nongnu.org
-References: <20230825203046.3692467-1-ninad@linux.ibm.com>
- <20230825203046.3692467-4-ninad@linux.ibm.com>
- <e2a8e6eb-b9fd-8011-32c0-e5c310bf1135@redhat.com>
- <11681172-0fe9-4e1d-9f8f-03f57b0b09a2@linux.ibm.com>
- <f6edea23-f11c-2119-ebaf-222d9f0813b6@kaod.org>
-From: Ninad Palsule <ninad@linux.ibm.com>
-In-Reply-To: <f6edea23-f11c-2119-ebaf-222d9f0813b6@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: gGTDsx8jJDqVBZzW7TbfMm-uFS9pQdDp
-X-Proofpoint-ORIG-GUID: ksdMLa8E1eIuZi3RdpbstoRwTYsvCibc
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-08-29_16,2023-08-29_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 adultscore=0 impostorscore=0 mlxscore=0 suspectscore=0
- lowpriorityscore=0 spamscore=0 clxscore=1015 bulkscore=0 mlxlogscore=999
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2308100000 definitions=main-2308300021
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [10.202.227.178]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=shameerali.kolothum.thodi@huawei.com;
+ helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) AC_FROM_MANY_DOTS=0.001, BAYES_00=-1.9,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -152,150 +90,192 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+From:  Shameer Kolothum via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iO8yJY6ChGt3
+X-TUID: HsEgLPpuLrOH
 
-Hello Cedric,
+Now that we have Eager Page Split support added for ARM in the kernel,
+enable it in Qemu. This adds,
+ -eager-split-size to -accel sub-options to set the eager page split chunk size.
+ -enable KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE.
 
-On 8/29/23 08:43, Cédric Le Goater wrote:
-> On 8/29/23 15:39, Ninad Palsule wrote:
->> Hello Thomas,
->>
->> On 8/28/23 21:03, Thomas Huth wrote:
->>> On 25/08/2023 22.30, Ninad Palsule wrote:
->>>> This is a part of patchset where IBM's Flexible Service Interface is
->>>> introduced.
->>>>
->>>> The Common FRU Access Macro (CFAM), an address space containing
->>>> various "engines" that drive accesses on busses internal and external
->>>> to the POWER chip. Examples include the SBEFIFO and I2C masters. The
->>>> engines hang off of an internal Local Bus (LBUS) which is described
->>>> by the CFAM configuration block.
->>>>
->>>> The FSI slave: The slave is the terminal point of the FSI bus for
->>>> FSI symbols addressed to it. Slaves can be cascaded off of one
->>>> another. The slave's configuration registers appear in address space
->>>> of the CFAM to which it is attached.
->>>>
->>>> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
->>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
->>>> ---
->>> ...
->>>> diff --git a/hw/fsi/cfam.c b/hw/fsi/cfam.c
->>>> new file mode 100644
->>>> index 0000000000..19256050bd
->>>> --- /dev/null
->>>> +++ b/hw/fsi/cfam.c
->>>> @@ -0,0 +1,235 @@
->>>> +/*
->>>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>>> + * Copyright (C) 2023 IBM Corp.
->>>> + *
->>>> + * IBM Common FRU Access Macro
->>>> + */
->>>> +
->>>> +#include "qemu/osdep.h"
->>>> +
->>>> +#include "qapi/error.h"
->>>> +#include "qemu/log.h"
->>>> +
->>>> +#include "hw/fsi/bits.h"
->>>> +#include "hw/fsi/cfam.h"
->>>> +#include "hw/fsi/engine-scratchpad.h"
->>>> +
->>>> +#include "hw/qdev-properties.h"
->>>> +
->>>> +#define TO_REG(x)                          ((x) >> 2)
->>>> +
->>>> +#define CFAM_ENGINE_CONFIG                  TO_REG(0x04)
->>>> +
->>>> +#define CFAM_CONFIG_CHIP_ID                TO_REG(0x00)
->>>> +#define CFAM_CONFIG_CHIP_ID_P9             0xc0022d15
->>>> +#define   CFAM_CONFIG_CHIP_ID_BREAK        0xc0de0000
->>>> +
->>>> +static uint64_t cfam_config_read(void *opaque, hwaddr addr, 
->>>> unsigned size)
->>>> +{
->>>> +    CFAMConfig *config;
->>>> +    CFAMState *cfam;
->>>> +    LBusNode *node;
->>>> +    int i;
->>>> +
->>>> +    config = CFAM_CONFIG(opaque);
->>>> +    cfam = container_of(config, CFAMState, config);
->>>> +
->>>> +    qemu_log_mask(LOG_UNIMP, "%s: read @0x%" HWADDR_PRIx " 
->>>> size=%d\n",
->>>> +                  __func__, addr, size);
->>>> +
->>>> +    assert(size == 4);
->>>> +    assert(!(addr & 3));
->>>> +
->>>> +    switch (addr) {
->>>> +    case 0x00:
->>>> +        return CFAM_CONFIG_CHIP_ID_P9;
->>>> +    case 0x04:
->>>> +        return ENGINE_CONFIG_NEXT
->>>> +            | 0x00010000                    /* slots */
->>>> +            | 0x00001000                    /* version */
->>>> +            | ENGINE_CONFIG_TYPE_PEEK   /* type */
->>>> +            | 0x0000000c;                   /* crc */
->>>> +    case 0x08:
->>>> +        return ENGINE_CONFIG_NEXT
->>>> +            | 0x00010000                    /* slots */
->>>> +            | 0x00005000                    /* version */
->>>> +            | ENGINE_CONFIG_TYPE_FSI    /* type */
->>>> +            | 0x0000000a;                   /* crc */
->>>> +        break;
->>>> +    default:
->>>> +        /* FIXME: Improve this */
->>>> +        i = 0xc;
->>>> +        QLIST_FOREACH(node, &cfam->lbus.devices, next) {
->>>> +            if (i == addr) {
->>>> +                return LBUS_DEVICE_GET_CLASS(node->ldev)->config;
->>>> +            }
->>>> +            i += size;
->>>> +        }
->>>> +
->>>> +        if (i == addr) {
->>>> +            return 0;
->>>> +        }
->>>> +
->>>> +        return 0xc0de0000;
->>>
->>> Can you explain the magic number at least with a comment?
->> Added comment for the magic number 0xc0de0000
->>>
->>> Maybe it would also make sense to add a 
->>> qemu_log_mask(LOG_GUEST_ERROR, ...) or qemu_log_mask(LOG_UNIMP, ...) 
->>> statement here?
->> There is LOG_UNIMP most of the function. I added it in the reset 
->> function.
->
-> I took a quick look at the series and I think that all the
-> qemu_log_mask(LOG_UNIMP, ..) as the one above should be replaced
-> by trace events instead.
+The chunk size specifies how many pages to break at a time, using a
+single allocation. Bigger the chunk size, more pages need to be
+allocated ahead of time.
 
-I have converted 4 logs into trace.
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+---
+v2: https://lore.kernel.org/qemu-devel/20230815092709.1290-1-shameerali.kolothum.thodi@huawei.com/
+   -Addressed comments from Gavin(Thanks).
+RFC v1: https://lore.kernel.org/qemu-devel/20230725150002.621-1-shameerali.kolothum.thodi@huawei.com/
+  -Updated qemu-options.hx with description
+  -Addressed review comments from Peter and Gavin(Thanks).
+---
+ accel/kvm/kvm-all.c      |  1 +
+ include/sysemu/kvm_int.h |  1 +
+ qemu-options.hx          | 15 +++++++++
+ target/arm/kvm.c         | 68 ++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 85 insertions(+)
 
-Thank you for the review.
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 2ba7521695..ff1578bb32 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -3763,6 +3763,7 @@ static void kvm_accel_instance_init(Object *obj)
+     /* KVM dirty ring is by default off */
+     s->kvm_dirty_ring_size = 0;
+     s->kvm_dirty_ring_with_bitmap = false;
++    s->kvm_eager_split_size = 0;
+     s->notify_vmexit = NOTIFY_VMEXIT_OPTION_RUN;
+     s->notify_window = 0;
+     s->xen_version = 0;
+diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
+index 511b42bde5..a5b9122cb8 100644
+--- a/include/sysemu/kvm_int.h
++++ b/include/sysemu/kvm_int.h
+@@ -116,6 +116,7 @@ struct KVMState
+     uint64_t kvm_dirty_ring_bytes;  /* Size of the per-vcpu dirty ring */
+     uint32_t kvm_dirty_ring_size;   /* Number of dirty GFNs per ring */
+     bool kvm_dirty_ring_with_bitmap;
++    uint64_t kvm_eager_split_size;  /* Eager Page Splitting chunk size */
+     struct KVMDirtyRingReaper reaper;
+     NotifyVmexitOption notify_vmexit;
+     uint32_t notify_window;
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 29b98c3d4c..2e70704ee8 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -186,6 +186,7 @@ DEF("accel", HAS_ARG, QEMU_OPTION_accel,
+     "                split-wx=on|off (enable TCG split w^x mapping)\n"
+     "                tb-size=n (TCG translation block cache size)\n"
+     "                dirty-ring-size=n (KVM dirty ring GFN count, default 0)\n"
++    "                eager-split-size=n (KVM Eager Page Split chunk size, default 0, disabled. ARM only)\n"
+     "                notify-vmexit=run|internal-error|disable,notify-window=n (enable notify VM exit and set notify window, x86 only)\n"
+     "                thread=single|multi (enable multi-threaded TCG)\n", QEMU_ARCH_ALL)
+ SRST
+@@ -244,6 +245,20 @@ SRST
+         is disabled (dirty-ring-size=0).  When enabled, KVM will instead
+         record dirty pages in a bitmap.
+ 
++    ``eager-split-size=n``
++        KVM implements dirty page logging at the PAGE_SIZE granularity and
++        enabling dirty-logging on a huge-page requires breaking it into
++        PAGE_SIZE pages in the first place. KVM on ARM does this splitting
++        lazily by default. There are performance benefits in doing huge-page
++        split eagerly, especially in situations where TLBI costs associated
++        with break-before-make sequences are considerable and also if guest
++        workloads are read intensive. The size here specifies how many pages
++        to break at a time and needs to be a valid block size which is
++        1GB/2MB/4KB, 32MB/16KB and 512MB/64KB for 4KB/16KB/64KB PAGE_SIZE
++        respectively. Be wary of specifying a higher size as it will have an
++        impact on the memory. By default, this feature is disabled
++        (eager-split-size=0).
++
+     ``notify-vmexit=run|internal-error|disable,notify-window=n``
+         Enables or disables notify VM exit support on x86 host and specify
+         the corresponding notify window to trigger the VM exit if enabled.
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 23aeb09949..28d81ca790 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -30,6 +30,7 @@
+ #include "exec/address-spaces.h"
+ #include "hw/boards.h"
+ #include "hw/irq.h"
++#include "qapi/visitor.h"
+ #include "qemu/log.h"
+ 
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+@@ -247,6 +248,12 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
+     return ret > 0 ? ret : 40;
+ }
+ 
++static inline bool kvm_arm_eager_split_size_valid(uint64_t req_size,
++                                                  uint32_t sizes)
++{
++    return req_size & sizes;
++}
++
+ int kvm_arch_get_default_type(MachineState *ms)
+ {
+     bool fixed_ipa;
+@@ -287,6 +294,27 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+         }
+     }
+ 
++    if (s->kvm_eager_split_size) {
++        uint32_t sizes;
++
++        sizes = kvm_vm_check_extension(s, KVM_CAP_ARM_SUPPORTED_BLOCK_SIZES);
++        if (!sizes) {
++            s->kvm_eager_split_size = 0;
++            warn_report("Eager Page Split support not available");
++        } else if (!kvm_arm_eager_split_size_valid(s->kvm_eager_split_size,
++                                                   sizes)) {
++            error_report("Eager Page Split requested chunk size not valid");
++            ret = -EINVAL;
++        } else {
++            ret = kvm_vm_enable_cap(s, KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE, 0,
++                                    s->kvm_eager_split_size);
++            if (ret < 0) {
++                error_report("Enabling of Eager Page Split failed: %s",
++                             strerror(-ret));
++            }
++        }
++    }
++
+     kvm_arm_init_debug(s);
+ 
+     return ret;
+@@ -1069,6 +1097,46 @@ bool kvm_arch_cpu_check_are_resettable(void)
+     return true;
+ }
+ 
++static void kvm_arch_get_eager_split_size(Object *obj, Visitor *v,
++                                          const char *name, void *opaque,
++                                          Error **errp)
++{
++    KVMState *s = KVM_STATE(obj);
++    uint64_t value = s->kvm_eager_split_size;
++
++    visit_type_size(v, name, &value, errp);
++}
++
++static void kvm_arch_set_eager_split_size(Object *obj, Visitor *v,
++                                          const char *name, void *opaque,
++                                          Error **errp)
++{
++    KVMState *s = KVM_STATE(obj);
++    uint64_t value;
++
++    if (s->fd != -1) {
++        error_setg(errp, "Unable to set early-split-size after KVM has been initialized");
++        return;
++    }
++
++    if (!visit_type_size(v, name, &value, errp)) {
++        return;
++    }
++
++    if (value && !is_power_of_2(value)) {
++        error_setg(errp, "early-split-size must be a power of two");
++        return;
++    }
++
++    s->kvm_eager_split_size = value;
++}
++
+ void kvm_arch_accel_class_init(ObjectClass *oc)
+ {
++    object_class_property_add(oc, "eager-split-size", "size",
++                              kvm_arch_get_eager_split_size,
++                              kvm_arch_set_eager_split_size, NULL, NULL);
++
++    object_class_property_set_description(oc, "eager-split-size",
++        "Eager Page Split chunk size for hugepages. (default: 0, disabled)");
+ }
+-- 
+2.34.1
 
-~Ninad
-
->
-> Thanks,
->
-> C.
->
->
->>>
->>>  Thomas
->>>
->>
->> Thank you for the review.
->>
->> Ninad
->>
->

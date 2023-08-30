@@ -1,39 +1,159 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f11-20020a7bcd0b000000b003fedcd02e2asm2539785wmj.35.2023.08.30.08.02.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Aug 2023 08:02:22 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 460E71FFBB;
-	Wed, 30 Aug 2023 16:02:22 +0100 (BST)
-References: <20230818033648.8326-1-akihiko.odaki@daynix.com>
- <20230818033648.8326-19-akihiko.odaki@daynix.com>
-User-agent: mu4e 1.11.16; emacs 29.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Mikhail Tyutin <m.tyutin@yadro.com>, Aleksandr Anenkov
- <a.anenkov@yadro.com>, qemu-devel@nongnu.org, Peter Maydell
- <peter.maydell@linaro.org>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH RESEND v5 18/26] target/arm: Remove references to
- gdb_has_xml
-Date: Wed, 30 Aug 2023 16:02:17 +0100
-In-reply-to: <20230818033648.8326-19-akihiko.odaki@daynix.com>
-Message-ID: <87msy8r2td.fsf@linaro.org>
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4444826ejc;
+        Wed, 30 Aug 2023 08:25:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFgZFqT19UznwpvAfwF7RCuEs2g790W5+eFfi7etrY/saFZMDRlkPIRluRBPcMoh2CJb5SC
+X-Received: by 2002:a05:622a:1115:b0:412:2493:d7fe with SMTP id e21-20020a05622a111500b004122493d7femr107821qty.29.1693409147787;
+        Wed, 30 Aug 2023 08:25:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693409147; cv=none;
+        d=google.com; s=arc-20160816;
+        b=MfvDudxF3sKpQ/f4yJxnUsbn++ln069h/Ezu9u41FR5Wx2eeH37lxfYCMzeO3jc2PM
+         zXSCfYVlo4/h1YTzZrI1DQgfoqdNFZOqtSyAJhF7yEsW2Sy6vAu+hyppgRP5TkSk8CUZ
+         s0W3iWJymZcCj2migdNDHRje/3L7vRT4MeDIUKTnVdC9MtWQERdHBSCjyjLpEXgiD8zb
+         t1L+iCKK8/T4fROSJjCvGdQbyY0FEvFzQAwW2tj2YV+lk67dwu2I5b5W9r4FZLrvTo1P
+         TLBk+7PjNmae9z/rAGVazoqjmraACKWqRDs8By8MTAhDWi4e27eYm+OFbREAiBGBEJej
+         3QDw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Ivrglc4YP6SuS5Vm+jZAsGr1koeCbx+EG330WyUoBY0=;
+        fh=5g/9YF/RHtCNJ99mTvav3LRw4IcanNriEkxTPzRawcY=;
+        b=OJ2Jih+KR9o0KVowYyzZUBMmW4UzIO6OBTTsIS9cnz25hdsUzzr+v6lMPQitaRran8
+         3UqVWGTq7EOSCK5wZdWnQUJaURsvzs9yuBGABWPuqa3SDfXCnwWSbaMYkrvbLrHCzjmu
+         JNnnPcn1+XfN/6lQUsSt13Rw7aL81eir6oBRBLKMIEjESbll9EfO3RIUIF76BoBTYG9J
+         JTFqUgqb8jqm0bB2j4Zdd8QucQsO0duKALjH/5p+0UJLSwLk7mKg1LAqqujunOPj1tba
+         eHyL5cXqz+sUU28bL/uJlQZViIbGGxl+q7B79wtjYegJgDlFGQCoe+vsNpf9IXK6IEy/
+         wO0Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=diTcYbar;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d20-20020ac85d94000000b004049e9da5b3si7732836qtx.104.2023.08.30.08.25.47
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 30 Aug 2023 08:25:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=diTcYbar;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qbN4L-0000PC-68; Wed, 30 Aug 2023 11:25:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbN4J-0000P3-QC
+ for qemu-devel@nongnu.org; Wed, 30 Aug 2023 11:25:19 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbN4F-0000Ns-SX
+ for qemu-devel@nongnu.org; Wed, 30 Aug 2023 11:25:19 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-3fef56f7223so51803335e9.3
+ for <qemu-devel@nongnu.org>; Wed, 30 Aug 2023 08:25:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1693409113; x=1694013913; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Ivrglc4YP6SuS5Vm+jZAsGr1koeCbx+EG330WyUoBY0=;
+ b=diTcYbarMArhf7YlvrLF37wurRU3qWtNO0NRMZvtcCmUz6BQ7oAKf+SKxHjk/w9rqS
+ RlKkFN5cEOoIDAvbDDuL4TLjCKHPmuKOOSSdN42C2Mt53j5AJiFREcAGnpWSJcbi+J/U
+ CpwgsGWJqLv/gKoRuzQmo5p2In1EiBg6k2g6yuKui36d83dnhy0wMFZuzL7Dh0dnw9nQ
+ SOaaFu7w2gxm8sKqQncIpTX1h6BKYT1BlKjxUgliNQ6D+CGLyRp7X8oXUYsqswXnhEKa
+ 9TwFMMUSlT9UZcsVvl2ddnXVyYMZ5wtuHt2pn0/txUOZtSx6ECvK+1UBHlMaChBEL5Td
+ yuZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1693409113; x=1694013913;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Ivrglc4YP6SuS5Vm+jZAsGr1koeCbx+EG330WyUoBY0=;
+ b=UAapUGfQk0phm/j8xfi9/yTGvzZzVNEN8v+VdBnr0LL+/VxWYAbuBdlklTeCVnhTdS
+ Wn9cIWalbY7a/qXrT9Q/QwbPHzC3BQZ3RDAwxg4p8tcP+MoXVkY2iDjgBFfQd1BO8/Cq
+ 8ou7kNk45MYeIpq4cckCOZ2/FMKMU62LqHrlT1ZUO09/Qo4LEwo4ngIelclIKEBfBTPe
+ edK0V0G1BN/5gyNIacpAXWJtKhNPuHu5P6Y1VTuyhYEvzSLRU0ZNP3PbJBO5hfvdCPJT
+ xVf1NURe6Z7CpoV3pO4I1wp2G5Wo6poUuU8xQCUEeI0o9VEXyMdf7nL276XCa4hsKpKf
+ /8Hg==
+X-Gm-Message-State: AOJu0Yz5F6LoFExBqXNKoIRLQaF2oypObgdPJeCzYHDz3UcwN0IFTAz7
+ vdaDFa17VkNfgvPwXjE9XWo67g==
+X-Received: by 2002:a05:600c:2288:b0:3fb:a100:2581 with SMTP id
+ 8-20020a05600c228800b003fba1002581mr2012057wmf.14.1693409113253; 
+ Wed, 30 Aug 2023 08:25:13 -0700 (PDT)
+Received: from [192.168.69.115] ([176.176.142.89])
+ by smtp.gmail.com with ESMTPSA id
+ z23-20020a1c4c17000000b00401d8181f8bsm2575633wmf.25.2023.08.30.08.25.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Aug 2023 08:25:12 -0700 (PDT)
+Message-ID: <9d2d6517-7f2d-6bbf-fbd5-879a1fec81ab@linaro.org>
+Date: Wed, 30 Aug 2023 17:25:11 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: XIi+duXjVEFq
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.14.0
+Subject: Re: [PATCH 64/67] arm/kconfig: XLNX_ZYNQMP_ARM depends on PIXMAN
+Content-Language: en-US
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20230830093843.3531473-1-marcandre.lureau@redhat.com>
+ <20230830093843.3531473-65-marcandre.lureau@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230830093843.3531473-65-marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.242,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: K3cYUJclICNW
 
+On 30/8/23 11:38, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+> 
+> The Display Port has some strong PIXMAN dependency.
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>   hw/arm/Kconfig | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 7e68348440..7ea956b286 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -451,7 +451,7 @@ config STM32F405_SOC
+>   config XLNX_ZYNQMP_ARM
+>       bool
+>       default y
+> -    depends on TCG && AARCH64
+> +    depends on TCG && AARCH64 && PIXMAN
 
-Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+Better would be to add a proper Kconfig XLNX_DISPLAYPORT.
 
-> GDB has XML support since 6.7 which was released in 2007.
-> It's time to remove support for old GDB versions without XML support.
->
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+>       select AHCI
+>       select ARM_GIC
+>       select CADENCE
 
-Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro

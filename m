@@ -1,83 +1,83 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4477568ejc;
-        Wed, 30 Aug 2023 09:15:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFCR/0wbxeB0FXwVz/2sgnlqmUxPPCThvGkJJPsGZ797EXI6OVrFLS2aA0/mRvnqpsuc+b9
-X-Received: by 2002:a67:fd58:0:b0:44e:bc13:b765 with SMTP id g24-20020a67fd58000000b0044ebc13b765mr94017vsr.9.1693412143622;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4477569ejc;
+        Wed, 30 Aug 2023 09:15:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGRsAtp15WEbNEBlpV1cafLrQ+u8MNh/5XU95TbqP+nWsFc8WtLF2h8o4Gn6JnFykaJI6MW
+X-Received: by 2002:ae9:f44b:0:b0:76f:1eac:e723 with SMTP id z11-20020ae9f44b000000b0076f1eace723mr144113qkl.76.1693412143805;
         Wed, 30 Aug 2023 09:15:43 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1693412143; cv=none;
         d=google.com; s=arc-20160816;
-        b=eHR+TgxZf/uicoWkSSAUtJD33y1vz9Wp0yJyon0HdjVZLJx8UikFDKi+nPd5b/xDZI
-         N1Oh6myj3rRKIO333V3kOKW9LGwC3WaZnXbsbZOL0bA9A7wrnE4wSRG9Q2hiCW/NujKr
-         HwXrFFXcwPblIkze4X77eOhfvftpvnyUu3ACwidVKj3Rlf0b2L0dNqCaU1HIVvH/+AA5
-         VB4F9ajvcq7oREAbF2mqExg3cOqxuw6YN1Juek563HHq6FjRZe+Tr5IP0BR84u/J2Mk/
-         NTBa7nB/M/FjHIyACF00vPY+enfme8IQgyoKU96fccTZkepGJB2HbOrItyca9Nk7A5dr
-         n6Ow==
+        b=NGBH0rp0g9hJEmePXEotC/iBcprYA1X9sS5Dz8uSCMhymsCfALzwVBQCMTrJ1pAzUq
+         MGjJmhTyde9QrcjLuHwExYdm5uqU7p16/Vu3p6M3S9rEwZHhM1pcKpIOnrkElap8bn+3
+         48ri7QBCNvwklbobnLQUGO+PuQYAdN9zPHD30/o0y+5XUPupaUZjGzXK/ViRDsb6Gu1s
+         VnloqiqNWs1TUkdk8S0soOwl73s/MlLIFbABhAlBrZzm9m+czOQ6q5cxtqGLFNIT0u2o
+         Oi6h6FwqGqoMrsDUViP5fYvF7ome/r/3rdgyz1ZY5TH3BbiDhWCb5q1GFIxrKl/fbQbz
+         sHPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:content-transfer-encoding:precedence
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=60CfxM2CnF/paVsMzJ4VPvu4hWJW8Jp9HkIT4YXTfP0=;
+        bh=jkd/TbKF4zKphwA63UObWx34SP0PZ7brpUplZxBqtQA=;
         fh=OBt2Y58vDLuJaQUxvn8ibOYWL7kLsVUqWZDsmWaxWv4=;
-        b=wbEYipdDMTi1z0DHFqtW3NsPOOU2Mn+IHLJeq1yFcgbZlz0DuPeN4V4HEZNJgCjqMr
-         E8d+5DvSOQWKFrV1nEGd6z+3ZaBJ8S6HkKaSmbBSYq1hjWp4Sm/Q5gealFJTTSL3PnN1
-         scyEtsnGaTdOmEnjigfN+GTiRHvhRnqTliVrgFWV1i6V8Ck5kRD0FTwKWiScFF1QztRG
-         VFKzgqNN67ipOekk1TbP+p5AG113kL8DxJjMS31XGUxWusiqhoVIUuuW9QNyChVTTpBL
-         UyCl7dZ/TAvvqUraThaoKTSPlIcaLWPMeQPM8wKIFWLHLRc+5W91oYJ0H8r87CLTMUAy
-         kZ4A==
+        b=FwZE7sEyI7Sj1rLMts8f+JPqtwnlvox55qqzmbb0NIkRDcgnn0Lkq7qt/JZcB2Yv1/
+         USEeBx3valzJFX0QfZRIUiODmGhqJw5x0541snwaPoggWcaLsH/t01ai6KThMllIMPCY
+         h5KX0bt4bigcw/X41sTDPLysLhmfCc8DQYWrhlT0/4rXP8Gkgsm2wumeITM9QYm5/6o+
+         sbI2CDrbA4rx+TxpZZ8t8Pc1orRRaVCbYE4HHCrSrsrzV1scNjUCiXvxrjqktIwgN9+T
+         dwfml/nt6h/YUbh78aZ4JTQjawtk6NGMccEKSo1p/df9ddcywE+d5Rpj6Xjrzvm3eorF
+         ovsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=XIk2jKli;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=KXG38Hzl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i30-20020a67c21e000000b0044d5b7f5cfdsi1156987vsj.598.2023.08.30.09.15.43
+        by mx.google.com with ESMTPS id l22-20020a05620a28d600b0076da695e1d9si7571189qkp.431.2023.08.30.09.15.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 30 Aug 2023 09:15:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=XIk2jKli;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=KXG38Hzl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qbNq9-0002z0-3i; Wed, 30 Aug 2023 12:14:45 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qbNqF-00031C-8V; Wed, 30 Aug 2023 12:14:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=599fd62c5=graf@amazon.de>)
- id 1qbNq8-0002yd-9A; Wed, 30 Aug 2023 12:14:44 -0400
-Received: from smtp-fw-52005.amazon.com ([52.119.213.156])
+ id 1qbNqD-00030O-Ln; Wed, 30 Aug 2023 12:14:49 -0400
+Received: from smtp-fw-80006.amazon.com ([99.78.197.217])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=599fd62c5=graf@amazon.de>)
- id 1qbNq5-0003bL-Eh; Wed, 30 Aug 2023 12:14:44 -0400
+ id 1qbNqB-0003cP-Fp; Wed, 30 Aug 2023 12:14:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1693412081; x=1724948081;
+ t=1693412088; x=1724948088;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=60CfxM2CnF/paVsMzJ4VPvu4hWJW8Jp9HkIT4YXTfP0=;
- b=XIk2jKliT0KTT4gQvqKbD6yK1B8wshh3VnvH32gWTx3TzFQoNtWLwsBd
- Asb+fm5FZnRZHvZ6qSCUl0QCvAPKk8wq9bD203X0GXI4rGOdv7Ges7bhn
- ZQ+Dw7ZGk83xeZxP1ZcpcGclPiplPoNPZS9YRGsGy2ltVy+VJWvNyd0UE 4=;
-X-IronPort-AV: E=Sophos;i="6.02,214,1688428800"; d="scan'208";a="601819024"
-Received: from iad12-co-svc-p1-lb1-vlan3.amazon.com (HELO
- email-inbound-relay-iad-1d-m6i4x-f05d30a1.us-east-1.amazon.com) ([10.43.8.6])
- by smtp-border-fw-52005.iad7.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2023 16:14:39 +0000
-Received: from EX19MTAUWA002.ant.amazon.com
- (iad12-ws-svc-p26-lb9-vlan3.iad.amazon.com [10.40.163.38])
- by email-inbound-relay-iad-1d-m6i4x-f05d30a1.us-east-1.amazon.com (Postfix)
- with ESMTPS id 0EDDB80629; Wed, 30 Aug 2023 16:14:35 +0000 (UTC)
+ bh=jkd/TbKF4zKphwA63UObWx34SP0PZ7brpUplZxBqtQA=;
+ b=KXG38Hzlaq3WUFxHhyRGwHQEpWW1ikFKcDQnxAFoHCr9ap/GV6ntW9fV
+ Qn3WiS4/gDn68N2bdVNUKVVWbWPiTJD/6uWA9MLz3uPPoJg27iUAFzBHd
+ pBKmQyZD5vqWoWCxXwkmr9fZP5q3TzBQecawKu0YzY8l3lfm7RRk9BPJ3 s=;
+X-IronPort-AV: E=Sophos;i="6.02,214,1688428800"; d="scan'208";a="235835012"
+Received: from pdx4-co-svc-p1-lb2-vlan3.amazon.com (HELO
+ email-inbound-relay-pdx-2a-m6i4x-1cca8d67.us-west-2.amazon.com)
+ ([10.25.36.214]) by smtp-border-fw-80006.pdx80.corp.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2023 16:14:46 +0000
+Received: from EX19MTAUWC002.ant.amazon.com
+ (pdx1-ws-svc-p6-lb9-vlan2.pdx.amazon.com [10.236.137.194])
+ by email-inbound-relay-pdx-2a-m6i4x-1cca8d67.us-west-2.amazon.com (Postfix)
+ with ESMTPS id 9C55C8AA6C; Wed, 30 Aug 2023 16:14:44 +0000 (UTC)
 Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
- EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
+ EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.37; Wed, 30 Aug 2023 16:14:34 +0000
+ 15.2.1118.37; Wed, 30 Aug 2023 16:14:41 +0000
 Received: from dev-dsk-graf-1a-5ce218e4.eu-west-1.amazon.com (10.253.83.51) by
  EX19D020UWC004.ant.amazon.com (10.13.138.149) with Microsoft SMTP
  Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.37; Wed, 30 Aug 2023 16:14:32 +0000
+ 15.2.1118.37; Wed, 30 Aug 2023 16:14:39 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-block@nongnu.org>, <qemu-arm@nongnu.org>, Cameron Esfahani
@@ -89,21 +89,21 @@ CC: <qemu-block@nongnu.org>, <qemu-arm@nongnu.org>, Cameron Esfahani
  <mads@ynddal.dk>, =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?=
  <berrange@redhat.com>, Bernhard Beschow <shentey@gmail.com>, Gerd Hoffmann
  <kraxel@redhat.com>
-Subject: [PATCH v2 02/12] hw/misc/pvpanic: Add MMIO interface
-Date: Wed, 30 Aug 2023 16:14:15 +0000
-Message-ID: <20230830161425.91946-3-graf@amazon.com>
+Subject: [PATCH v2 04/12] hvf: arm: Ignore writes to CNTP_CTL_EL0
+Date: Wed, 30 Aug 2023 16:14:17 +0000
+Message-ID: <20230830161425.91946-5-graf@amazon.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230830161425.91946-1-graf@amazon.com>
 References: <20230830161425.91946-1-graf@amazon.com>
 MIME-Version: 1.0
 X-Originating-IP: [10.253.83.51]
-X-ClientProxiedBy: EX19D036UWC003.ant.amazon.com (10.13.139.214) To
+X-ClientProxiedBy: EX19D038UWC003.ant.amazon.com (10.13.139.209) To
  EX19D020UWC004.ant.amazon.com (10.13.138.149)
 Precedence: Bulk
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Received-SPF: pass client-ip=52.119.213.156;
- envelope-from=prvs=599fd62c5=graf@amazon.de; helo=smtp-fw-52005.amazon.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=99.78.197.217;
+ envelope-from=prvs=599fd62c5=graf@amazon.de; helo=smtp-fw-80006.amazon.com
 X-Spam_score_int: -39
 X-Spam_score: -4.0
 X-Spam_bar: ----
@@ -113,89 +113,82 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kAk8I2cWy3OS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GM3or7uJaW5r
 
-SW4gYWRkaXRpb24gdG8gdGhlIElTQSBhbmQgUENJIHZhcmlhbnRzIG9mIHB2cGFuaWMsIGxldCdz
-IGFkZCBhbiBNTUlPCnBsYXRmb3JtIGRldmljZSB0aGF0IHdlIGNhbiB1c2UgaW4gZW1iZWRkZWQg
-YXJtIGVudmlyb25tZW50cy4KClNpZ25lZC1vZmYtYnk6IEFsZXhhbmRlciBHcmFmIDxncmFmQGFt
-YXpvbi5jb20+ClJldmlld2VkLWJ5OiBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSA8cGhpbG1kQGxp
-bmFyby5vcmc+ClRlc3RlZC1ieTogUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgPHBoaWxtZEBsaW5h
-cm8ub3JnPgoKLS0tCgp2MSAtPiB2MjoKCiAgLSBVc2UgU1BEWCBoZWFkZXIKICAtIFJlbW92ZSB1
-c2VsZXNzIGluY2x1ZGVzCiAgLSBBZGFwdCB0byBuZXcgbWVzb24uYnVpbGQgdGFyZ2V0IChzeXN0
-ZW1fc3MpCi0tLQogaW5jbHVkZS9ody9taXNjL3B2cGFuaWMuaCB8ICAxICsKIGh3L21pc2MvcHZw
-YW5pYy1tbWlvLmMgICAgfCA2MSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysKIGh3L21pc2MvS2NvbmZpZyAgICAgICAgICAgfCAgNCArKysKIGh3L21pc2MvbWVzb24uYnVp
-bGQgICAgICAgfCAgMSArCiA0IGZpbGVzIGNoYW5nZWQsIDY3IGluc2VydGlvbnMoKykKIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBody9taXNjL3B2cGFuaWMtbW1pby5jCgpkaWZmIC0tZ2l0IGEvaW5jbHVk
-ZS9ody9taXNjL3B2cGFuaWMuaCBiL2luY2x1ZGUvaHcvbWlzYy9wdnBhbmljLmgKaW5kZXggZmFi
-OTQxNjVkMC4uZjllN2MxZWExNyAxMDA2NDQKLS0tIGEvaW5jbHVkZS9ody9taXNjL3B2cGFuaWMu
-aAorKysgYi9pbmNsdWRlL2h3L21pc2MvcHZwYW5pYy5oCkBAIC0yMCw2ICsyMCw3IEBACiAKICNk
-ZWZpbmUgVFlQRV9QVlBBTklDX0lTQV9ERVZJQ0UgInB2cGFuaWMiCiAjZGVmaW5lIFRZUEVfUFZQ
-QU5JQ19QQ0lfREVWSUNFICJwdnBhbmljLXBjaSIKKyNkZWZpbmUgVFlQRV9QVlBBTklDX01NSU9f
-REVWSUNFICJwdnBhbmljLW1taW8iCiAKICNkZWZpbmUgUFZQQU5JQ19JT1BPUlRfUFJPUCAiaW9w
-b3J0IgogCmRpZmYgLS1naXQgYS9ody9taXNjL3B2cGFuaWMtbW1pby5jIGIvaHcvbWlzYy9wdnBh
-bmljLW1taW8uYwpuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwMDAwLi45OWEyNGYx
-MDRjCi0tLSAvZGV2L251bGwKKysrIGIvaHcvbWlzYy9wdnBhbmljLW1taW8uYwpAQCAtMCwwICsx
-LDYxIEBACisvKgorICogUUVNVSBzaW11bGF0ZWQgcHZwYW5pYyBkZXZpY2UgKE1NSU8gZnJvbnRl
-bmQpCisgKgorICogQ29weXJpZ2h0IMKpIDIwMjMgQW1hem9uLmNvbSwgSW5jLiBvciBpdHMgYWZm
-aWxpYXRlcy4gQWxsIFJpZ2h0cyBSZXNlcnZlZC4KKyAqCisgKiBTUERYLUxpY2Vuc2UtSWRlbnRp
-ZmllcjogR1BMLTIuMC1vci1sYXRlcgorICovCisKKyNpbmNsdWRlICJxZW11L29zZGVwLmgiCisK
-KyNpbmNsdWRlICJody9xZGV2LXByb3BlcnRpZXMuaCIKKyNpbmNsdWRlICJody9taXNjL3B2cGFu
-aWMuaCIKKyNpbmNsdWRlICJody9zeXNidXMuaCIKKyNpbmNsdWRlICJzdGFuZGFyZC1oZWFkZXJz
-L2xpbnV4L3B2cGFuaWMuaCIKKworT0JKRUNUX0RFQ0xBUkVfU0lNUExFX1RZUEUoUFZQYW5pY01N
-SU9TdGF0ZSwgUFZQQU5JQ19NTUlPX0RFVklDRSkKKworI2RlZmluZSBQVlBBTklDX01NSU9fU0la
-RSAweDIKKworc3RydWN0IFBWUGFuaWNNTUlPU3RhdGUgeworICAgIFN5c0J1c0RldmljZSBwYXJl
-bnRfb2JqOworCisgICAgUFZQYW5pY1N0YXRlIHB2cGFuaWM7Cit9OworCitzdGF0aWMgdm9pZCBw
-dnBhbmljX21taW9faW5pdGZuKE9iamVjdCAqb2JqKQoreworICAgIFBWUGFuaWNNTUlPU3RhdGUg
-KnMgPSBQVlBBTklDX01NSU9fREVWSUNFKG9iaik7CisKKyAgICBwdnBhbmljX3NldHVwX2lvKCZz
-LT5wdnBhbmljLCBERVZJQ0UocyksIFBWUEFOSUNfTU1JT19TSVpFKTsKKyAgICBzeXNidXNfaW5p
-dF9tbWlvKFNZU19CVVNfREVWSUNFKG9iaiksICZzLT5wdnBhbmljLm1yKTsKK30KKworc3RhdGlj
-IFByb3BlcnR5IHB2cGFuaWNfbW1pb19wcm9wZXJ0aWVzW10gPSB7CisgICAgREVGSU5FX1BST1Bf
-VUlOVDgoImV2ZW50cyIsIFBWUGFuaWNNTUlPU3RhdGUsIHB2cGFuaWMuZXZlbnRzLAorICAgICAg
-ICAgICAgICAgICAgICAgIFBWUEFOSUNfUEFOSUNLRUQgfCBQVlBBTklDX0NSQVNIX0xPQURFRCks
-CisgICAgREVGSU5FX1BST1BfRU5EX09GX0xJU1QoKSwKK307CisKK3N0YXRpYyB2b2lkIHB2cGFu
-aWNfbW1pb19jbGFzc19pbml0KE9iamVjdENsYXNzICprbGFzcywgdm9pZCAqZGF0YSkKK3sKKyAg
-ICBEZXZpY2VDbGFzcyAqZGMgPSBERVZJQ0VfQ0xBU1Moa2xhc3MpOworCisgICAgZGV2aWNlX2Ns
-YXNzX3NldF9wcm9wcyhkYywgcHZwYW5pY19tbWlvX3Byb3BlcnRpZXMpOworICAgIHNldF9iaXQo
-REVWSUNFX0NBVEVHT1JZX01JU0MsIGRjLT5jYXRlZ29yaWVzKTsKK30KKworc3RhdGljIGNvbnN0
-IFR5cGVJbmZvIHB2cGFuaWNfbW1pb19pbmZvID0geworICAgIC5uYW1lICAgICAgICAgID0gVFlQ
-RV9QVlBBTklDX01NSU9fREVWSUNFLAorICAgIC5wYXJlbnQgICAgICAgID0gVFlQRV9TWVNfQlVT
-X0RFVklDRSwKKyAgICAuaW5zdGFuY2Vfc2l6ZSA9IHNpemVvZihQVlBhbmljTU1JT1N0YXRlKSwK
-KyAgICAuaW5zdGFuY2VfaW5pdCA9IHB2cGFuaWNfbW1pb19pbml0Zm4sCisgICAgLmNsYXNzX2lu
-aXQgICAgPSBwdnBhbmljX21taW9fY2xhc3NfaW5pdCwKK307CisKK3N0YXRpYyB2b2lkIHB2cGFu
-aWNfcmVnaXN0ZXJfdHlwZXModm9pZCkKK3sKKyAgICB0eXBlX3JlZ2lzdGVyX3N0YXRpYygmcHZw
-YW5pY19tbWlvX2luZm8pOworfQorCit0eXBlX2luaXQocHZwYW5pY19yZWdpc3Rlcl90eXBlcykK
-ZGlmZiAtLWdpdCBhL2h3L21pc2MvS2NvbmZpZyBiL2h3L21pc2MvS2NvbmZpZwppbmRleCA2OTk2
-ZDI2NWU0Li5iNjk3NDZhNjBhIDEwMDY0NAotLS0gYS9ody9taXNjL0tjb25maWcKKysrIGIvaHcv
-bWlzYy9LY29uZmlnCkBAIC0xMjUsNiArMTI1LDEwIEBAIGNvbmZpZyBQVlBBTklDX0lTQQogICAg
-IGRlcGVuZHMgb24gSVNBX0JVUwogICAgIHNlbGVjdCBQVlBBTklDX0NPTU1PTgogCitjb25maWcg
-UFZQQU5JQ19NTUlPCisgICAgYm9vbAorICAgIHNlbGVjdCBQVlBBTklDX0NPTU1PTgorCiBjb25m
-aWcgQVVYCiAgICAgYm9vbAogICAgIHNlbGVjdCBJMkMKZGlmZiAtLWdpdCBhL2h3L21pc2MvbWVz
-b24uYnVpbGQgYi9ody9taXNjL21lc29uLmJ1aWxkCmluZGV4IDg5MmY4YjkxYzUuLjYzODIxZDYw
-NDAgMTAwNjQ0Ci0tLSBhL2h3L21pc2MvbWVzb24uYnVpbGQKKysrIGIvaHcvbWlzYy9tZXNvbi5i
-dWlsZApAQCAtMTE2LDYgKzExNiw3IEBAIHN5c3RlbV9zcy5hZGQod2hlbjogJ0NPTkZJR19BUk1T
-U0VfTUhVJywgaWZfdHJ1ZTogZmlsZXMoJ2FybXNzZS1taHUuYycpKQogCiBzeXN0ZW1fc3MuYWRk
-KHdoZW46ICdDT05GSUdfUFZQQU5JQ19JU0EnLCBpZl90cnVlOiBmaWxlcygncHZwYW5pYy1pc2Eu
-YycpKQogc3lzdGVtX3NzLmFkZCh3aGVuOiAnQ09ORklHX1BWUEFOSUNfUENJJywgaWZfdHJ1ZTog
-ZmlsZXMoJ3B2cGFuaWMtcGNpLmMnKSkKK3N5c3RlbV9zcy5hZGQod2hlbjogJ0NPTkZJR19QVlBB
-TklDX01NSU8nLCBpZl90cnVlOiBmaWxlcygncHZwYW5pYy1tbWlvLmMnKSkKIHN5c3RlbV9zcy5h
-ZGQod2hlbjogJ0NPTkZJR19BVVgnLCBpZl90cnVlOiBmaWxlcygnYXV4YnVzLmMnKSkKIHN5c3Rl
-bV9zcy5hZGQod2hlbjogJ0NPTkZJR19BU1BFRURfU09DJywgaWZfdHJ1ZTogZmlsZXMoCiAgICdh
-c3BlZWRfaGFjZS5jJywKLS0gCjIuMzkuMiAoQXBwbGUgR2l0LTE0MykKCgoKCkFtYXpvbiBEZXZl
-bG9wbWVudCBDZW50ZXIgR2VybWFueSBHbWJICktyYXVzZW5zdHIuIDM4CjEwMTE3IEJlcmxpbgpH
-ZXNjaGFlZnRzZnVlaHJ1bmc6IENocmlzdGlhbiBTY2hsYWVnZXIsIEpvbmF0aGFuIFdlaXNzCkVp
-bmdldHJhZ2VuIGFtIEFtdHNnZXJpY2h0IENoYXJsb3R0ZW5idXJnIHVudGVyIEhSQiAxNDkxNzMg
-QgpTaXR6OiBCZXJsaW4KVXN0LUlEOiBERSAyODkgMjM3IDg3OQoKCg==
+MacOS unconditionally disables interrupts of the physical timer on boot
+and then continues to use the virtual one. We don't really want to support
+a full physical timer emulation, so let's just ignore those writes.
+
+Signed-off-by: Alexander Graf <graf@amazon.com>
+
+---
+
+v1 -> v2:
+
+  - Add log message on write
+---
+ target/arm/hvf/hvf.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 486f90be1d..02db3dc908 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -11,6 +11,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
++#include "qemu/log.h"
+ 
+ #include "sysemu/runstate.h"
+ #include "sysemu/hvf.h"
+@@ -179,6 +180,7 @@ void hvf_arm_init_debug(void)
+ #define SYSREG_OSLSR_EL1      SYSREG(2, 0, 1, 1, 4)
+ #define SYSREG_OSDLR_EL1      SYSREG(2, 0, 1, 3, 4)
+ #define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 14, 0, 1)
++#define SYSREG_CNTP_CTL_EL0   SYSREG(3, 3, 14, 2, 1)
+ #define SYSREG_PMCR_EL0       SYSREG(3, 3, 9, 12, 0)
+ #define SYSREG_PMUSERENR_EL0  SYSREG(3, 3, 9, 14, 0)
+ #define SYSREG_PMCNTENSET_EL0 SYSREG(3, 3, 9, 12, 1)
+@@ -1551,6 +1553,13 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     case SYSREG_OSLAR_EL1:
+         env->cp15.oslsr_el1 = val & 1;
+         break;
++    case SYSREG_CNTP_CTL_EL0:
++        /*
++         * Guests should not rely on the physical counter, but macOS emits
++         * disable writes to it. Let it do so, but ignore the requests.
++         */
++        qemu_log_mask(LOG_UNIMP, "Unsupported write to CNTP_CTL_EL0\n");
++        break;
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         break;
+-- 
+2.39.2 (Apple Git-143)
+
+
+
+
+Amazon Development Center Germany GmbH
+Krausenstr. 38
+10117 Berlin
+Geschaeftsfuehrung: Christian Schlaeger, Jonathan Weiss
+Eingetragen am Amtsgericht Charlottenburg unter HRB 149173 B
+Sitz: Berlin
+Ust-ID: DE 289 237 879
+
+
 

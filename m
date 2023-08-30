@@ -1,96 +1,117 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4419244ejc;
-        Wed, 30 Aug 2023 07:48:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IExiVmWD+wKFJLR8bMguZLjFpHxS+yJ2YSS/klB8bCqOgZ4yDDD4VKP+6AlVGHvnJ04StQQ
-X-Received: by 2002:a05:6214:914:b0:63c:eb1e:e004 with SMTP id dj20-20020a056214091400b0063ceb1ee004mr1954047qvb.3.1693406901993;
-        Wed, 30 Aug 2023 07:48:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693406901; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp4424761ejc;
+        Wed, 30 Aug 2023 07:58:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGcxxTX2ERyz2dQvKQS32y951Y2sYktQ8Fsd6DyMbjLPLbphw8NCpvy5xAAcILf0vIn6yN7
+X-Received: by 2002:a05:620a:10a5:b0:76c:c601:367f with SMTP id h5-20020a05620a10a500b0076cc601367fmr2029163qkk.36.1693407529302;
+        Wed, 30 Aug 2023 07:58:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693407529; cv=none;
         d=google.com; s=arc-20160816;
-        b=l7T1fomYU6i5rdnBfWC8uqjg1+LmpqIWw9aqLF1oYuc2QGVBpbIJ4BwOBMTfeTlp+1
-         Tiuf4a51wtiLhqaXckzNStGp9nxUwmc1QM6UQrxnxrfnd+ZYkYgBlGDQlgi5dCkovlwm
-         JFiqxojZ6VuTg7+IHgdeEPvH8j1a9LOikPniYvY3mPISlhx3qxFB4Ucx9dwVQFxj/63d
-         VwS8iNHFRDscbAi9y3rSVNkLrrL/2yQU8ntRjA8fGPZ8P0HHsrOlnp6afYGfPyl/GycU
-         sd0HLUvgnFv4XXGb5912gUuYZ5VLQus8SZygSERiTldELQVvuh0wejvXRz32qgetgp35
-         vgxg==
+        b=UNlC/aat5dbHydw/E7X0toF8yKfLAOumN1JsO84aSUPLmMvnU2ElvwPw4rFPfkwWxc
+         9Oshu420LxUyR9q65V9PqlKnyRf9sV+KqZ/JpRTEtueS6/XKYHCpXkb52222Vz32kzuB
+         hEuXAZv+tX7U5Lqf7KWlMucPeJji+qjDNIt9dmG461rM04A8ldPI8jXVzvJb6HtuNhGW
+         6DLqyjCe7ZaqSWAe0VrkTUCJLu2cymVlTb8R3xmMwq3bHeQqIg0NSsLmldk8DEzjc33e
+         7k0Atb0SzFnEyhtQnTcs4h6pAM09pIMEybJpRtqkcudOlQxFWb5Abt3n+EMSxPmW8hv4
+         9uqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=aMwgUWYML/Dm0J+VzWHXFbE7f5RvzDqeit68OiyM3h4=;
-        fh=7yy96vKsaDsvcJ6a94ZD+eukO8Ada+9E4Kgz2MHHiWE=;
-        b=enY0l9bOnzQ93PHsRwJvXpzUE29jYg07jG7iSkQCzaixXpODbFjzw/nLyBw9iaz0eW
-         y8amc9/vAAZ5EEjuwn2+Wj1x8pJAgK/AGXKHzRGZXJ9cmuX3dZVLgQF6GPh4jzclBSE1
-         zMgBwglrSSTUixarDEeCIFgx7KKNAYZDEH4PlzHQPkmtXoFk8yaj2DK0Wxa0Iu9+zOCI
-         ovehHyRRH7fF1ahMFVeZEuoEcv5cSpAv/dNp49VA7IJU0dVMdh7rxlZbJkOwSIthQKr5
-         MjjqEtrSwIEJr/akdP+iIIthXcRec06DIwjJTtivB719f+lSTtUkWkmN+DrtWsafVmkK
-         /Q8A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:content-transfer-encoding:precedence
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=r/HPMTJk6dp3XM/SXn8KqltP7i7cQN1WskDvy/MnlBE=;
+        fh=IRLVHcvohtF0eEpRHLM9uOD4pPd7LMbYVVlh36goJjY=;
+        b=sUIeDF+K/+1KH24XiZzcz79FjbO6Srs5aRE97MIhgK/7RIlr36MetO7cdPAsXwSNYM
+         MKa/m5yIEXYFqgdLQn2HrsStTsg00xT3rzlTn7+EQV5++9qPnnTVDpMXA+MIwQWWyW7C
+         JadUy1ekYrta7tKZ/2VsaiaYc+n9UryUONAqlUghyGj8RU9xdXwzD/ydPQ5egcejL+SJ
+         UMhPiGf4DK1LC8bN21rr1R4EhL9ZqwXKLjkJKsaAuFQ2uGc+Hm6HkHQjngpGtH6tBpJq
+         AaTMCK0sNMnBqIbwfo4vYvb1mumCuFV1hHYRNRQt2TEpP6Is2vu3ddLspyfdR7t+06Im
+         DpLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=NT8C2WLu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13-20020a0cf4cd000000b0064f4a25b3desi7549228qvm.47.2023.08.30.07.48.21
+        by mx.google.com with ESMTPS id s15-20020a05620a254f00b0076cb41869casi7280829qko.595.2023.08.30.07.58.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Aug 2023 07:48:21 -0700 (PDT)
+        Wed, 30 Aug 2023 07:58:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=NT8C2WLu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qbMTg-0007WE-VX; Wed, 30 Aug 2023 10:47:30 -0400
+	id 1qbMec-0001wF-Aj; Wed, 30 Aug 2023 10:58:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qbMTa-0007Ih-LB; Wed, 30 Aug 2023 10:47:22 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <prvs=599fd62c5=graf@amazon.de>)
+ id 1qbMea-0001vy-Nr; Wed, 30 Aug 2023 10:58:44 -0400
+Received: from smtp-fw-52003.amazon.com ([52.119.213.152])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qbMTT-0007qc-4T; Wed, 30 Aug 2023 10:47:22 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.200])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RbRpy0TS0z67yc8;
- Wed, 30 Aug 2023 22:42:50 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 30 Aug
- 2023 15:47:09 +0100
-Date: Wed, 30 Aug 2023 15:47:08 +0100
-To: Klaus Jensen <its@irrelevant.dk>
-CC: Corey Minyard <cminyard@mvista.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Keith Busch <kbusch@kernel.org>, Lior Weintraub <liorw@pliops.com>, Jeremy
- Kerr <jk@codeconstruct.com.au>, Matt Johnston <matt@codeconstruct.com.au>,
- Peter Delevoryas <peter@pjd.dev>, <qemu-devel@nongnu.org>,
- <qemu-arm@nongnu.org>, <qemu-block@nongnu.org>, "Klaus Jensen"
- <k.jensen@samsung.com>
-Subject: Re: [PATCH v4 3/3] hw/nvme: add nvme management interface model
-Message-ID: <20230830154708.000045ef@Huawei.com>
-In-Reply-To: <20230823-nmi-i2c-v4-3-2b0f86e5be25@samsung.com>
-References: <20230823-nmi-i2c-v4-0-2b0f86e5be25@samsung.com>
- <20230823-nmi-i2c-v4-3-2b0f86e5be25@samsung.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <prvs=599fd62c5=graf@amazon.de>)
+ id 1qbMeW-0001nm-Tm; Wed, 30 Aug 2023 10:58:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1693407521; x=1724943521;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=r/HPMTJk6dp3XM/SXn8KqltP7i7cQN1WskDvy/MnlBE=;
+ b=NT8C2WLuMZIS8SkZHJCLtbHmaylrntzgM/E+Aae5+BXxREGlBUy75UXk
+ Xnxk45ofNJy1w+8zyt7pCaIsYwL9zLfUFB+WuASTU0tqzQ1L7igpKIFbS
+ DLWx6CgDWjYPZLyfP2ZcihdTVVhLzFu1o6+6PXiMtgIgddLV7Pq7DRb9/ M=;
+X-IronPort-AV: E=Sophos;i="6.02,214,1688428800"; d="scan'208";a="605174950"
+Received: from iad12-co-svc-p1-lb1-vlan3.amazon.com (HELO
+ email-inbound-relay-pdx-2c-m6i4x-fad5e78e.us-west-2.amazon.com) ([10.43.8.6])
+ by smtp-border-fw-52003.iad7.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2023 14:58:35 +0000
+Received: from EX19MTAUWC001.ant.amazon.com
+ (pdx1-ws-svc-p6-lb9-vlan2.pdx.amazon.com [10.236.137.194])
+ by email-inbound-relay-pdx-2c-m6i4x-fad5e78e.us-west-2.amazon.com (Postfix)
+ with ESMTPS id 72505A0AAA; Wed, 30 Aug 2023 14:58:33 +0000 (UTC)
+Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
+ EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.37; Wed, 30 Aug 2023 14:58:33 +0000
+Received: from [0.0.0.0] (10.253.83.51) by EX19D020UWC004.ant.amazon.com
+ (10.13.138.149) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.37; Wed, 30 Aug
+ 2023 14:58:30 +0000
+Message-ID: <9fbdcca3-e965-4879-9695-84bc5785c16e@amazon.com>
+Date: Wed, 30 Aug 2023 16:58:28 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500003.china.huawei.com (7.191.162.67) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/12] hw/vmapple/vmapple: Add vmapple machine type
+Content-Language: en-GB
+To: Bernhard Beschow <shentey@gmail.com>, <qemu-devel@nongnu.org>
+CC: <qemu-block@nongnu.org>, <qemu-arm@nongnu.org>, Cameron Esfahani
+ <dirty@apple.com>, Stefan Hajnoczi <stefanha@redhat.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Hanna Reitz
+ <hreitz@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, "Paolo
+ Bonzini" <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <20230614224038.86148-1-graf>
+ <20230614225734.806-1-graf@amazon.com> <20230614225734.806-3-graf@amazon.com>
+ <4854EBDC-AB24-45AD-A890-06382993F507@gmail.com>
+From: Alexander Graf <graf@amazon.com>
+In-Reply-To: <4854EBDC-AB24-45AD-A890-06382993F507@gmail.com>
+X-Originating-IP: [10.253.83.51]
+X-ClientProxiedBy: EX19D037UWC004.ant.amazon.com (10.13.139.254) To
+ EX19D020UWC004.ant.amazon.com (10.13.138.149)
+Precedence: Bulk
+Content-Type: text/plain; charset="utf-8"; format="flowed"
+Content-Transfer-Encoding: base64
+Received-SPF: pass client-ip=52.119.213.152;
+ envelope-from=prvs=599fd62c5=graf@amazon.de; helo=smtp-fw-52003.amazon.com
+X-Spam_score_int: -40
+X-Spam_score: -4.1
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
-Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
@@ -99,234 +120,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bgCQiHm16MD4
+X-TUID: fgXKsrFkRkNZ
 
-On Wed, 23 Aug 2023 11:22:00 +0200
-Klaus Jensen <its@irrelevant.dk> wrote:
-
-> From: Klaus Jensen <k.jensen@samsung.com>
-> 
-> Add the 'nmi-i2c' device that emulates an NVMe Management Interface
-> controller.
-> 
-> Initial support is very basic (Read NMI DS, Configuration Get).
-> 
-> This is based on previously posted code by Padmakar Kalghatgi, Arun
-> Kumar Agasar and Saurav Kumar.
-> 
-> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
-
-Hi Klaus
-
-Minor suggestions inline.  Either way given how trivial they are
-
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
-> diff --git a/hw/nvme/nmi-i2c.c b/hw/nvme/nmi-i2c.c
-> new file mode 100644
-> index 000000000000..9040ba28a87c
-> --- /dev/null
-> +++ b/hw/nvme/nmi-i2c.c
-> @@ -0,0 +1,418 @@
-...
-
-> +#define NMI_MAX_MESSAGE_LENGTH 4224
-
-Spec reference or similar would be good for this.
-
-...
-
-> +
-> +static void nmi_set_error(NMIDevice *nmi, uint8_t status)
-> +{
-> +    uint8_t buf[4] = {};
-> +
-> +    buf[0] = status;
-
-Could just do
-
-    uint8_t buf[4] = { status, };
-
-> +
-> +    memcpy(nmi->scratch + nmi->pos, buf, 4);
-> +    nmi->pos += 4;
-sizeof(buf)
-
-> +}
-> +
-> +static void nmi_handle_mi_read_nmi_ds(NMIDevice *nmi, NMIRequest *request)
-> +{
-> +    I2CSlave *i2c = I2C_SLAVE(nmi);
-> +
-> +    uint32_t dw0 = le32_to_cpu(request->dw0);
-> +    uint8_t dtyp = (dw0 >> 24) & 0xf;
-
-Maybe FIELD_EX32() with appropriate defines?
-
-> +    uint8_t *buf;
-> +    size_t len;
-> +
-> +    trace_nmi_handle_mi_read_nmi_ds(dtyp);
-> +
-> +    static uint8_t nmi_ds_subsystem[36] = {
-> +        0x00,       /* success */
-> +        0x20, 0x00, /* response data length */
-> +        0x00,       /* reserved */
-> +        0x00,       /* number of ports */
-> +        0x01,       /* major version */
-> +        0x01,       /* minor version */
-> +    };
-> +
-> +    /* cannot be static since we need to patch in the i2c address */
-> +    uint8_t nmi_ds_ports[36] = {
-> +        0x00,       /* success */
-> +        0x20, 0x00, /* response data length */
-> +        0x00,       /* reserved */
-> +        0x02,       /* port type (smbus) */
-> +        0x00,       /* reserved */
-> +        0x40, 0x00, /* maximum mctp transission unit size (64 bytes) */
-> +        0x00, 0x00, 0x00, 0x00, /* management endpoint buffer size */
-> +        0x00,       /* vpd i2c address */
-> +        0x00,       /* vpd i2c frequency */
-> +        0x00,       /* management endpoint i2c address */
-> +        0x01,       /* management endpoint i2c frequency */
-> +        0x00,       /* nvme basic management command NOT supported */
-> +    };
-> +
-> +    /**
-> +     * Controller Information is zeroed, since there are no associated
-> +     * controllers at this point.
-> +     */
-> +    static uint8_t nmi_ds_ctrl[36] = {};
-> +
-> +    /**
-> +     * For the Controller List, Optionally Supported Command List and
-> +     * Management Endpoint Buffer Supported Command List data structures.
-> +     *
-> +     * The Controller List data structure is defined in the NVM Express Base
-> +     * Specification, revision 2.0b, Figure 134.
-> +     */
-> +    static uint8_t nmi_ds_empty[6] = {
-> +        0x00,       /* success */
-> +        0x02,       /* response data length */
-> +        0x00, 0x00, /* reserved */
-> +        0x00, 0x00, /* number of entries (zero) */
-> +    };
-> +
-> +    switch (dtyp) {
-> +    case NMI_CMD_READ_NMI_DS_SUBSYSTEM:
-> +        len = sizeof(nmi_ds_subsystem);
-> +        buf = nmi_ds_subsystem;
-> +
-> +        break;
-> +
-> +    case NMI_CMD_READ_NMI_DS_PORTS:
-> +        len = sizeof(nmi_ds_ports);
-> +        buf = nmi_ds_ports;
-> +
-> +        /* patch in the i2c address of the endpoint */
-> +        buf[14] = i2c->address;
-> +
-> +        break;
-> +
-> +    case NMI_CMD_READ_NMI_DS_CTRL_INFO:
-> +        len = sizeof(nmi_ds_ctrl);
-> +        buf = nmi_ds_ctrl;
-> +
-> +        break;
-> +
-> +    case NMI_CMD_READ_NMI_DS_CTRL_LIST:
-> +    case NMI_CMD_READ_NMI_DS_OPT_CMD_SUPPORT:
-> +    case NMI_CMD_READ_NMI_DS_MEB_CMD_SUPPORT:
-> +        len = sizeof(nmi_ds_empty);
-> +        buf = nmi_ds_empty;
-> +
-> +        break;
-> +
-> +    default:
-> +        nmi_set_parameter_error(nmi, offsetof(NMIRequest, dw0) + 4, 0);
-> +
-> +        return;
-> +    }
-> +
-> +    memcpy(nmi->scratch + nmi->pos, buf, len);
-> +    nmi->pos += len;
-> +}
-> +
-
-> +static void nmi_handle_mi_config_get(NMIDevice *nmi, NMIRequest *request)
-> +{
-> +    uint32_t dw0 = le32_to_cpu(request->dw0);
-> +    uint8_t identifier = dw0 & 0xff;
-> +    uint8_t *buf;
-> +
-> +    static uint8_t smbus_freq[4] = {
-> +        0x00,               /* success */
-> +        0x01, 0x00, 0x00,   /* 100 kHz */
-> +    };
-
-const for these? Same for other similar buffers.
-
-> +
-> +    static uint8_t mtu[4] = {
-> +        0x00,       /* success */
-> +        0x40, 0x00, /* 64 */
-> +        0x00,       /* reserved */
-> +    };
-> +
-> +    trace_nmi_handle_mi_config_get(identifier);
-> +
-> +    switch (identifier) {
-> +    case NMI_CMD_CONFIGURATION_GET_SMBUS_FREQ:
-> +        buf = smbus_freq;
-> +        break;
-> +
-> +    case NMI_CMD_CONFIGURATION_GET_MCTP_TRANSMISSION_UNIT:
-> +        buf = mtu;
-> +        break;
-> +
-> +    default:
-> +        nmi_set_parameter_error(nmi, 0x0, offsetof(NMIRequest, dw0));
-> +        return;
-> +    }
-> +
-> +    memcpy(nmi->scratch + nmi->pos, buf, 4);
-> +    nmi->pos += 4;
-> +}
-> +
-
-
-
-> +static void nmi_handle(MCTPI2CEndpoint *mctp)
-> +{
-> +    NMIDevice *nmi = NMI_I2C_DEVICE(mctp);
-> +    NMIMessage *msg = (NMIMessage *)nmi->buffer;
-> +    uint32_t crc;
-> +    uint8_t nmimt;
-> +
-> +    uint8_t buf[] = {
-
-const?
-
-> +        msg->mctpd,
-> +        FIELD_DP8(msg->nmp, NMI_NMP, ROR, 1),
-> +        0x0, 0x0,
-> +    };
-> +
-> +    if (FIELD_EX8(msg->mctpd, NMI_MCTPD, MT) != NMI_MCTPD_MT_NMI) {
-> +        goto drop;
-> +    }
-> +
-> +    if (FIELD_EX8(msg->mctpd, NMI_MCTPD, IC) != NMI_MCTPD_IC_ENABLED) {
-> +        goto drop;
-> +    }
-> +
-> +    memcpy(nmi->scratch, buf, sizeof(buf));
-
-Jonathan
-
+Ck9uIDIwLjA2LjIzIDE5OjM1LCBCZXJuaGFyZCBCZXNjaG93IHdyb3RlOgo+Cj4KPiBBbSAxNC4g
+SnVuaSAyMDIzIDIyOjU3OjM0IFVUQyBzY2hyaWViIEFsZXhhbmRlciBHcmFmIDxncmFmQGFtYXpv
+bi5jb20+Ogo+PiBBcHBsZSBkZWZpbmVzIGEgbmV3ICJ2bWFwcGxlIiBtYWNoaW5lIHR5cGUgYXMg
+cGFydCBvZiBpdHMgcHJvcHJpZXRhcnkKPj4gbWFjT1MgVmlydHVhbGl6YXRpb24uRnJhbWV3b3Jr
+IHZtbS4gVGhpcyBtYWNoaW5lIHR5cGUgaXMgc2ltaWxhciB0byB0aGUKPj4gdmlydCBvbmUsIGJ1
+dCB3aXRoIHN1YnRsZSBkaWZmZXJlbmNlcyBpbiBiYXNlIGRldmljZXMsIGEgZmV3IHNwZWNpYWwK
+Pj4gdm1hcHBsZSBkZXZpY2UgYWRkaXRpb25zIGFuZCBhIHZhc3RseSBkaWZmZXJlbnQgYm9vdCBj
+aGFpbi4KPj4KPj4gVGhpcyBwYXRjaCByZWltcGxlbWVudHMgdGhpcyBtYWNoaW5lIHR5cGUgaW4g
+UUVNVS4gVG8gdXNlIGl0LCB5b3UKPj4gaGF2ZSB0byBoYXZlIGEgcmVhZGlseSBpbnN0YWxsZWQg
+dmVyc2lvbiBvZiBtYWNPUyBmb3IgVk1BcHBsZSwKPj4gcnVuIG9uIG1hY09TIHdpdGggLWFjY2Vs
+IGh2ZiwgcGFzcyB0aGUgVmlydHVhbGl6YXRpb24uRnJhbWV3b3JrCj4+IGJvb3Qgcm9tIChBVlBC
+b290ZXIpIGluIHZpYSAtYmlvcywgcGFzcyB0aGUgYXV4IGFuZCByb290IHZvbHVtZSBhcyBwZmxh
+c2gKPj4gYW5kIHBhc3MgYXV4IGFuZCByb290IHZvbHVtZSBhcyB2aXJ0aW8gZHJpdmVzLiBJbiBh
+ZGRpdGlvbiwgeW91IGFsc28KPj4gbmVlZCB0byBmaW5kIHRoZSBtYWNoaW5lIFVVSUQgYW5kIHBh
+c3MgdGhhdCBhcyAtTSB2bWFwcGxlLHV1aWQ9IHBhcmFtZXRlcjoKPj4KPj4gJCBxZW11LXN5c3Rl
+bS1hYXJjaDY0IC1hY2NlbCBodmYgLU0gdm1hcHBsZSx1dWlkPTB4MTIzNCAtbSA0RyBcCj4+ICAg
+ICAtYmlvcyAvU3lzdGVtL0xpYnJhcnkvRnJhbWV3b3Jrcy9WaXJ0dWFsaXphdGlvbi5mcmFtZXdv
+cmsvVmVyc2lvbnMvQS9SZXNvdXJjZXMvQVZQQm9vdGVyLnZtYXBwbGUyLmJpbgo+PiAgICAgLWRy
+aXZlIGZpbGU9YXV4LGlmPXBmbGFzaCxmb3JtYXQ9cmF3IFwKPj4gICAgIC1kcml2ZSBmaWxlPXJv
+b3QsaWY9cGZsYXNoLGZvcm1hdD1yYXcgXAo+PiAgICAgLWRyaXZlIGZpbGU9YXV4LGlmPW5vbmUs
+aWQ9YXV4LGZvcm1hdD1yYXcgXAo+PiAgICAgLWRldmljZSB2aXJ0aW8tYmxrLXBjaSxkcml2ZT1h
+dXgseC1hcHBsZS10eXBlPTIgXAo+PiAgICAgLWRyaXZlIGZpbGU9cm9vdCxpZj1ub25lLGlkPXJv
+b3QsZm9ybWF0PXJhdyBcCj4+ICAgICAtZGV2aWNlIHZpcnRpby1ibGstcGNpLGRyaXZlPXJvb3Qs
+eC1hcHBsZS10eXBlPTEKPj4KPj4gV2l0aCBhbGwgdGhlc2UgaW4gcGxhY2UsIHlvdSBzaG91bGQg
+YmUgYWJsZSB0byBzZWUgbWFjT1MgYm9vdGluZwo+PiBzdWNjZXNzZnVsbHkuCj4gVGhpcyBkb2N1
+bWVudGF0aW9uIHNlZW1zIHZhbHVhYmxlIGZvciB0aGUgUUVNVSBtYW51YWwuIEJ1dCBBRkFJQ1Mg
+dGhlcmUgaXMgbm8gZG9jdW1lbnRhdGlvbiBsaWtlIHRoaXMgYWRkZWQgdG8gdGhlIFFFTVUgbWFu
+dWFsIGluIHRoaXMgc2VyaWVzLiBUaGlzIG1lYW5zIHRoYXQgaXQnbGwgZ2V0ICJsb3N0Ii4gSG93
+IGFib3V0IGFkZGluZyBpdCwgcG9zc2libHkgaW4gdGhpcyBwYXRjaD8KCgpUaGFua3MsIEkgbG92
+ZSB0aGUgaWRlYSA6KS4gTGV0IG1lIGRvIHRoYXQgZm9yIHYyIQoKCj4KPiBOb3RlIHRoYXQgSSdt
+IG5vdCBhYmxlIHRvIHRlc3QgdGhpcyBzZXJpZXMuIEknbSBqdXN0IHNlZWluZyB0aGUgdmFsdWFi
+bGUtaW5mb3JtYXRpb24taW4tdGhlLWNvbW1pdC1tZXNzYWdlLXdoaWNoLXdpbGwtZ2V0LWxvc3Qg
+cGF0dGVybi4KPgo+PiBTaWduZWQtb2ZmLWJ5OiBBbGV4YW5kZXIgR3JhZiA8Z3JhZkBhbWF6b24u
+Y29tPgo+PiAtLS0KPj4gaHcvdm1hcHBsZS9LY29uZmlnICAgICB8ICAxOSArKwo+PiBody92bWFw
+cGxlL21lc29uLmJ1aWxkIHwgICAxICsKPj4gaHcvdm1hcHBsZS92bWFwcGxlLmMgICB8IDY2MSAr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+PiAzIGZpbGVzIGNoYW5n
+ZWQsIDY4MSBpbnNlcnRpb25zKCspCj4+IGNyZWF0ZSBtb2RlIDEwMDY0NCBody92bWFwcGxlL3Zt
+YXBwbGUuYwo+Pgo+PiBkaWZmIC0tZ2l0IGEvaHcvdm1hcHBsZS9LY29uZmlnIGIvaHcvdm1hcHBs
+ZS9LY29uZmlnCj4+IGluZGV4IGJhMzdmYzViODEuLjdhMjM3NWRjOTUgMTAwNjQ0Cj4+IC0tLSBh
+L2h3L3ZtYXBwbGUvS2NvbmZpZwo+PiArKysgYi9ody92bWFwcGxlL0tjb25maWcKPj4gQEAgLTks
+MyArOSwyMiBAQCBjb25maWcgVk1BUFBMRV9DRkcKPj4KPj4gY29uZmlnIFZNQVBQTEVfUFZHCj4+
+ICAgICAgYm9vbAo+PiArCj4+ICtjb25maWcgVk1BUFBMRQo+PiArICAgIGJvb2wKPj4gKyAgICBk
+ZXBlbmRzIG9uIEFSTSAmJiBIVkYKPj4gKyAgICBkZWZhdWx0IHkgaWYgQVJNICYmIEhWRgo+PiAr
+ICAgIGltcGx5IFBDSV9ERVZJQ0VTCj4+ICsgICAgc2VsZWN0IEFSTV9HSUMKPj4gKyAgICBzZWxl
+Y3QgUExBVEZPUk1fQlVTCj4+ICsgICAgc2VsZWN0IFBDSV9FWFBSRVNTCj4+ICsgICAgc2VsZWN0
+IFBDSV9FWFBSRVNTX0dFTkVSSUNfQlJJREdFCj4+ICsgICAgc2VsZWN0IFBMMDExICMgVUFSVAo+
+PiArICAgIHNlbGVjdCBQTDAzMSAjIFJUQwo+PiArICAgIHNlbGVjdCBQTDA2MSAjIEdQSU8KPj4g
+KyAgICBzZWxlY3QgR1BJT19QV1IKPj4gKyAgICBzZWxlY3QgUFZQQU5JQ19NTUlPCj4+ICsgICAg
+c2VsZWN0IFZNQVBQTEVfQUVTCj4+ICsgICAgc2VsZWN0IFZNQVBQTEVfQkRJRgo+PiArICAgIHNl
+bGVjdCBWTUFQUExFX0NGRwo+PiArICAgIHNlbGVjdCBWTUFQUExFX1BWRwo+PiBkaWZmIC0tZ2l0
+IGEvaHcvdm1hcHBsZS9tZXNvbi5idWlsZCBiL2h3L3ZtYXBwbGUvbWVzb24uYnVpbGQKPj4gaW5k
+ZXggMzFmZWM4NzE1Ni4uZDczMjg3M2QzNSAxMDA2NDQKPj4gLS0tIGEvaHcvdm1hcHBsZS9tZXNv
+bi5idWlsZAo+PiArKysgYi9ody92bWFwcGxlL21lc29uLmJ1aWxkCj4+IEBAIC0yLDMgKzIsNCBA
+QCBzb2Z0bW11X3NzLmFkZCh3aGVuOiAnQ09ORklHX1ZNQVBQTEVfQUVTJywgIGlmX3RydWU6IGZp
+bGVzKCdhZXMuYycpKQo+PiBzb2Z0bW11X3NzLmFkZCh3aGVuOiAnQ09ORklHX1ZNQVBQTEVfQkRJ
+RicsIGlmX3RydWU6IGZpbGVzKCdiZGlmLmMnKSkKPj4gc29mdG1tdV9zcy5hZGQod2hlbjogJ0NP
+TkZJR19WTUFQUExFX0NGRycsICBpZl90cnVlOiBmaWxlcygnY2ZnLmMnKSkKPj4gc29mdG1tdV9z
+cy5hZGQod2hlbjogJ0NPTkZJR19WTUFQUExFX1BWRycsICBpZl90cnVlOiBbZmlsZXMoJ2FwcGxl
+LWdmeC5tJyksIHB2ZywgbWV0YWxdKQo+PiArc3BlY2lmaWNfc3MuYWRkKHdoZW46ICdDT05GSUdf
+Vk1BUFBMRScsICAgICBpZl90cnVlOiBmaWxlcygndm1hcHBsZS5jJykpCj4+IGRpZmYgLS1naXQg
+YS9ody92bWFwcGxlL3ZtYXBwbGUuYyBiL2h3L3ZtYXBwbGUvdm1hcHBsZS5jCj4+IG5ldyBmaWxl
+IG1vZGUgMTAwNjQ0Cj4+IGluZGV4IDAwMDAwMDAwMDAuLjVkM2ZlNTRiOTYKPj4gLS0tIC9kZXYv
+bnVsbAo+PiArKysgYi9ody92bWFwcGxlL3ZtYXBwbGUuYwo+PiBAQCAtMCwwICsxLDY2MSBAQAo+
+PiArLyoKPj4gKyAqIFZNQXBwbGUgbWFjaGluZSBlbXVsYXRpb24KPj4gKyAqCj4+ICsgKiBDb3B5
+cmlnaHQgwqkgMjAyMyBBbWF6b24uY29tLCBJbmMuIG9yIGl0cyBhZmZpbGlhdGVzLiBBbGwgUmln
+aHRzIFJlc2VydmVkLgo+IElzIGFuICJBbGwgUmlnaHRzIFJlc2VydmVkIiB3b3JkaW5nIGNvbXBh
+dGlibGUgd2l0aCB0aGUgR1BMPwoKCklBTkFMLiBZb3Ugd2lsbCBmaW5kIHRoZSBwYXR0ZXJuIGNv
+bW1vbmx5IGFjcm9zcyB0aGUgY29kZSBiYXNlIGFscmVhZHkuIApNeSB1bmRlcnN0YW5kaW5nIGlz
+IHRoYXQgYWxsIHJpZ2h0cyBhcmUgcmVzZXJ2ZWQsIGJ1dCBhZGRpdGlvbmFsbHkgSSAKZ3JhbnQg
+eW91IHRoZSBwZXJtaXNzaW9ucyBvZiB0aGUgR1BMLgoKCkFsZXgKCgoKCgpBbWF6b24gRGV2ZWxv
+cG1lbnQgQ2VudGVyIEdlcm1hbnkgR21iSApLcmF1c2Vuc3RyLiAzOAoxMDExNyBCZXJsaW4KR2Vz
+Y2hhZWZ0c2Z1ZWhydW5nOiBDaHJpc3RpYW4gU2NobGFlZ2VyLCBKb25hdGhhbiBXZWlzcwpFaW5n
+ZXRyYWdlbiBhbSBBbXRzZ2VyaWNodCBDaGFybG90dGVuYnVyZyB1bnRlciBIUkIgMTQ5MTczIEIK
+U2l0ejogQmVybGluClVzdC1JRDogREUgMjg5IDIzNyA4NzkKCgo=
 

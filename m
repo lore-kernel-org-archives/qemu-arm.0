@@ -1,107 +1,107 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp261056ejc;
-        Thu, 31 Aug 2023 16:25:52 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHSugNVpkfuDQRnQErWUXxD2hf4Wv9qvQcrv+uQcjFmVFYY1YW9XIy/uoakNZGh0QsAXIui
-X-Received: by 2002:ac8:5907:0:b0:403:971a:44ab with SMTP id 7-20020ac85907000000b00403971a44abmr1128540qty.58.1693524351746;
-        Thu, 31 Aug 2023 16:25:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693524351; cv=none;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp261132ejc;
+        Thu, 31 Aug 2023 16:26:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGd1c3LP+MxGplAfH3T8fIED04MW5eH7ysxhdvQt7qlM59svmMy0VonHImZPoBXSRS7vK/y
+X-Received: by 2002:ac8:5c55:0:b0:412:130b:9f86 with SMTP id j21-20020ac85c55000000b00412130b9f86mr1249514qtj.33.1693524363519;
+        Thu, 31 Aug 2023 16:26:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693524363; cv=none;
         d=google.com; s=arc-20160816;
-        b=LIgPR4Zbzieso2mJBfTOtk0FzEvPGG8mOs4+3IcUR8UBQWiS9TgjLAa25lQ3KoPWzT
-         uWVyILe65hFQpvuqtLGZjJKB2TbQEPdFJwak36k5UkaWvDZWL5kaA/Zltx2oKrEqxFes
-         6hZpD6R50bzuxhDkn2yir6duKd8XIsFNRxxiZMUDWLoeD80px/ljW4/56Xf5jAZWEYAX
-         MT0gpot9SqP9pFSPXvHpGSyrarQ4zLIgJZtbRPujVgAvxgS5yqWImNFvkXW8ZnDL9fxl
-         mbP0gzrstFCwzpCdR05wjeoik8t05WiLYUH2AmixSJV+aUpBzmfTaXSmWbqrx/+k9PxP
-         S61Q==
+        b=fEM+ZGX/7HpHCG9/6oEuuomOYnO2rpzsx1OpbZx8mBaCaTbgALUyD2YxxFYO839Smc
+         5UXTLVu2ITHMVngUB65HWY1RzgRXwae03NfY0kxvfM1u5NO6Rgpyzo46wYdyICf/uIEw
+         GAaQvwvwz0GVwlOnSGHmppGOdekr0YQGwxY/GlEJ1oNCn1KiFRdCkR1iepe0Ys4Eql0G
+         NrgSDLZFBY3evdCN3pARWKkI/W4bTMPYqE87IjHg4VLHqgFhirU1WqbHMDVTX8pfV9QN
+         88cD2pdAKkDGHd0vi6c9kJ5nBW2LfRMXEFIa48W4p8xyRLHgigB0VASjNFjSWEmC0puJ
+         WBYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=fKdHQlw/TcgzSbe1vD4Z7Y3NFBfF1rOhXjA2KTi3TfI=;
+        bh=h+xlV3SGZMVXNVWkGKftcbyBWtbVebk+6sY7EU3bpYY=;
         fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=WNXNbO76hFdOpEKiJv0BTqC0juOUiT4yEyE8qRdvxtnIhW1TSn7jsoQjmRjrhh8s6L
-         MYbXbDmc2vr+K0DVPzBtiq6Ev48SLKGb+ZosZIEMt6nM9MALFTDhXB/Bk/KRauhBxKa7
-         b5E2qU7fycJgr7YIh7fmCcYjqMXak4KwN5bv0VVtZqr6W28Cg0IaXlmi0WBGqLqQ6onM
-         B53rOkfOtL0yg7pAoc2iTnU7WfCkteHmp17wI48GFsKk7Y1k3ks3gItzk9efiUH/t/Y5
-         6nDN1jLDKw/EVophvmR2ZN7A+gtpWSUflFVrlQEHtJKV/F+JeAZVlPzDFiHijvxSax1j
-         hU7A==
+        b=kpyiGnxXL6WiLHabT8W1ZWqdtQfdTypgMwfrHxvyjcMZcqH11qS8bL1N6hwhh9TnCt
+         OfQwhTI96qZXUcuYLtJBfw1kwkutAOq+dHE5gzlmlyanPftJ7xRi2D5uCuES/F6AJuLd
+         VwLf2a2ohunCMbikjPPE17XGICMPUL+AxgP+RyIPLkgrRDGfb8cDdUcK9+Audsi+BuND
+         t4i1OjkCtVa/l/T74lpeKup4cNPjiPvPTt9nVzUL9H/UdALk/OWYwUojI1Lwk3yHU9gF
+         mgfA5AzCrn/orwMpPVSxg4wMzHpNmJUygxBUPgCrrQF5R55Zx0whekBlgJCfWGTxPqu9
+         Wb/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QRN6LwKa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UNjaB68Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 21-20020ac84e95000000b00403cad59323si1550165qtp.779.2023.08.31.16.25.51
+        by mx.google.com with ESMTPS id s9-20020a05622a178900b004120307705dsi1493670qtk.797.2023.08.31.16.26.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 16:25:51 -0700 (PDT)
+        Thu, 31 Aug 2023 16:26:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QRN6LwKa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UNjaB68Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qbr1z-0006nU-ST; Thu, 31 Aug 2023 19:24:55 -0400
+	id 1qbr21-0006o8-20; Thu, 31 Aug 2023 19:24:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qbr1y-0006mk-83
- for qemu-arm@nongnu.org; Thu, 31 Aug 2023 19:24:54 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ id 1qbr1z-0006nS-R9
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 19:24:55 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qbr1r-0002HS-2Q
- for qemu-arm@nongnu.org; Thu, 31 Aug 2023 19:24:54 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-1c0db66af1bso9874805ad.2
- for <qemu-arm@nongnu.org>; Thu, 31 Aug 2023 16:24:45 -0700 (PDT)
+ id 1qbr1q-0002HZ-J0
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 19:24:55 -0400
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-1bdb7b0c8afso10588825ad.3
+ for <qemu-arm@nongnu.org>; Thu, 31 Aug 2023 16:24:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693524284; x=1694129084; darn=nongnu.org;
+ d=linaro.org; s=google; t=1693524285; x=1694129085; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fKdHQlw/TcgzSbe1vD4Z7Y3NFBfF1rOhXjA2KTi3TfI=;
- b=QRN6LwKa/XQRaOUZuZF5BP/hwEnKI77VVaLV8q8EP8tknm+133PZR7uZ2L8ESc7Frl
- 2c4rWYig2nUjtkbhTjON7UyFP3m5km0RsdmBjo7lU7KSJPXbc6Bomp1WJBnomkhZLdnI
- wYWcOYdjSrbQec8KzJT8sA/6BFVkVMYNko7+vvK2fiePYcKP6gDTliyBqqXo3WCkKOtm
- D3wXlyAU6ZMFG34qSsPAld8IYY3jRd6SHxLOa6K1NZT29x9bJ+O/jlxmJtWgWHg4UnAB
- sG7gJ0zK88ePrivY3clwfK27pX7EHQPQFXoEXpDUV6dO+9r3vuF8J/rPGyfBOeiW7zG3
- 2cuA==
+ bh=h+xlV3SGZMVXNVWkGKftcbyBWtbVebk+6sY7EU3bpYY=;
+ b=UNjaB68YDDIRwEWVvxyeK2ZRUu3iLlAu4fYyaJvxIVO9U74IS8Yr69KSJeAno4ATa0
+ AjapMPmMQe8ZTyvnb+bTfDaUVEQuJHg6Xs1w2IGaOVhF2foWt/M5oKb0WuE8kTxkizg8
+ 7e5AXGfMZFzSbDxt75QMDAKBSXFNOupLI7nKargJ61l2e3Of0rqhdi0FpFGj3rhTKvp3
+ IFOq/s+I5XbzC6YKX0pfPQNYkmNqm9MdvXjHSLbRLqUlzKX7MqHJopnD3PrpVw9R8Gzy
+ jKa+FiZBzgV0UF6UKfCT2zk19xU6pgIJbWxPKNTKKoHNwDf6QqjAHdVPIeAdO2aRi0g1
+ DFAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693524284; x=1694129084;
+ d=1e100.net; s=20221208; t=1693524285; x=1694129085;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=fKdHQlw/TcgzSbe1vD4Z7Y3NFBfF1rOhXjA2KTi3TfI=;
- b=MkB6cpjqxOplDA/3uPJDRxZk1lHCugds2H641BkYtT2XIEH7Ic8u72ddUBKBGT+OcL
- NJSqBHf6OSFHOMByoQI/K2pyb3qbCE053whmSloGTHm4t/qRct59PpDmhbO3fuWZaira
- FO0/FqibA6LP6YMsBqwEBJkTz+1ZU7rahrhavFetQrPe5VeQHmoX6bXXeh0n1VE4mWjw
- DRK7sGXqQ6e2A628NM3FnQSPo7UShyWE300QuVWZjcsAjj8Mb00BRh8mRrQRt1xpBv8a
- 5FdUq0FjSeJpF648ZNaFAajhBcOca1ohnVbztvL5I58F78Tgv5yI9dF0UhJzM6+1PyEM
- MyqQ==
-X-Gm-Message-State: AOJu0YyzZ/XDxN2vK723YgxB+lalUIG7fVdhTxzpe+MNbP7OUKE6jPtT
- q0ELWz+MLPYLSoHtTCA+WYpk/w==
-X-Received: by 2002:a17:902:d2cb:b0:1c2:193e:1106 with SMTP id
- n11-20020a170902d2cb00b001c2193e1106mr1354166plc.50.1693524284157; 
+ bh=h+xlV3SGZMVXNVWkGKftcbyBWtbVebk+6sY7EU3bpYY=;
+ b=iwoumLPJ0twQ6maPrGLs7izz0xOgVksdgDcQ9WxwHnvtv4Lac98xhD7sop+F3ryAzZ
+ XOme7LjzyqrU1N8opKaUI0VarHAkzAqfvywQ3DFlYS8mpso/cvmQoLzt8V7NQKEBmH/U
+ 2QoM3+vJfVOPhC5SY3gkSTf9byPHAvnFp5ALg2qrpNcYXe2SrdSRgJAXcG7Ina8xb3rv
+ Geh9o7Eh9ZubHQFCVOKqHQrEs0yITmoUHIslDRx2Nzu7CQl/xf4zfPNzPCmZ7fWvRI5F
+ 7uUdH375ewxo38546Hl8B9oB6h9E7ZVfqmS9Z3KG1JSFsSlbQUFKCJiOIyT+3n4v5t7h
+ k8Rg==
+X-Gm-Message-State: AOJu0Yy0bsERvBBUgx2kpTov/dHYplSCr7OpmWKN8rjRM/FwpYl4PG8w
+ czn8YVOcyPSa+fAKrii/f1IZ7/MA03+2VZl20ac=
+X-Received: by 2002:a17:902:ef8c:b0:1b6:af1a:7dd3 with SMTP id
+ iz12-20020a170902ef8c00b001b6af1a7dd3mr1108532plb.23.1693524284892; 
  Thu, 31 Aug 2023 16:24:44 -0700 (PDT)
 Received: from stoup.. ([71.212.131.115]) by smtp.gmail.com with ESMTPSA id
- jd5-20020a170903260500b001bb8895848bsm1732711plb.71.2023.08.31.16.24.43
+ jd5-20020a170903260500b001bb8895848bsm1732711plb.71.2023.08.31.16.24.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 31 Aug 2023 16:24:43 -0700 (PDT)
+ Thu, 31 Aug 2023 16:24:44 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 2/5] target/arm: Implement cortex-a710
-Date: Thu, 31 Aug 2023 16:24:38 -0700
-Message-Id: <20230831232441.66020-3-richard.henderson@linaro.org>
+Subject: [PATCH v3 3/5] target/arm: Implement HCR_EL2.TIDCP
+Date: Thu, 31 Aug 2023 16:24:39 -0700
+Message-Id: <20230831232441.66020-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230831232441.66020-1-richard.henderson@linaro.org>
 References: <20230831232441.66020-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,271 +123,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2pKmwqX0aARS
+X-TUID: xSBnF/4YOLSj
 
-The cortex-a710 is a first generation ARMv9.0-A processor.
+Perform the check for EL2 enabled in the security space and the
+TIDCP bit in an out-of-line helper.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- docs/system/arm/virt.rst |   1 +
- hw/arm/virt.c            |   1 +
- target/arm/tcg/cpu64.c   | 212 +++++++++++++++++++++++++++++++++++++++
- 3 files changed, 214 insertions(+)
+ target/arm/helper.h            |  1 +
+ target/arm/tcg/op_helper.c     | 13 +++++++++++++
+ target/arm/tcg/translate-a64.c | 16 ++++++++++++++--
+ target/arm/tcg/translate.c     | 27 +++++++++++++++++++++++++++
+ 4 files changed, 55 insertions(+), 2 deletions(-)
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index 51cdac6841..e1697ac8f4 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -58,6 +58,7 @@ Supported guest CPU types:
- - ``cortex-a57`` (64-bit)
- - ``cortex-a72`` (64-bit)
- - ``cortex-a76`` (64-bit)
-+- ``cortex-a710`` (64-bit)
- - ``a64fx`` (64-bit)
- - ``host`` (with KVM only)
- - ``neoverse-n1`` (64-bit)
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a13c658bbf..8ad78b23c2 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -211,6 +211,7 @@ static const char *valid_cpus[] = {
-     ARM_CPU_TYPE_NAME("cortex-a55"),
-     ARM_CPU_TYPE_NAME("cortex-a72"),
-     ARM_CPU_TYPE_NAME("cortex-a76"),
-+    ARM_CPU_TYPE_NAME("cortex-a710"),
-     ARM_CPU_TYPE_NAME("a64fx"),
-     ARM_CPU_TYPE_NAME("neoverse-n1"),
-     ARM_CPU_TYPE_NAME("neoverse-v1"),
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 0f8972950d..ab63526bea 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -745,6 +745,217 @@ static void aarch64_neoverse_v1_initfn(Object *obj)
-     aarch64_add_sve_properties(obj);
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 95e32a697a..cf5c55a12b 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -81,6 +81,7 @@ DEF_HELPER_FLAGS_2(check_bxj_trap, TCG_CALL_NO_WG, void, env, i32)
+ 
+ DEF_HELPER_4(access_check_cp_reg, cptr, env, i32, i32, i32)
+ DEF_HELPER_FLAGS_2(lookup_cp_reg, TCG_CALL_NO_RWG_SE, cptr, env, i32)
++DEF_HELPER_FLAGS_2(tidcp_el1, TCG_CALL_NO_WG, void, env, i32)
+ DEF_HELPER_3(set_cp_reg, void, env, cptr, i32)
+ DEF_HELPER_2(get_cp_reg, i32, env, cptr)
+ DEF_HELPER_3(set_cp_reg64, void, env, cptr, i64)
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index 3baf8004f6..9014c3ca46 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -764,6 +764,19 @@ const void *HELPER(lookup_cp_reg)(CPUARMState *env, uint32_t key)
+     return ri;
  }
  
-+static const ARMCPRegInfo cortex_a710_cp_reginfo[] = {
-+    { .name = "CPUACTLR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 1, .opc2 = 0,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-+      .accessfn = access_actlr_w },
-+    { .name = "CPUACTLR2_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 1, .opc2 = 1,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-+      .accessfn = access_actlr_w },
-+    { .name = "CPUACTLR3_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 1, .opc2 = 2,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-+      .accessfn = access_actlr_w },
-+    { .name = "CPUACTLR4_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 1, .opc2 = 3,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-+      .accessfn = access_actlr_w },
-+    { .name = "CPUECTLR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 1, .opc2 = 4,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-+      .accessfn = access_actlr_w },
-+    { .name = "CPUECTLR2_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 1, .opc2 = 5,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-+      .accessfn = access_actlr_w },
-+    { .name = "CPUPPMCR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 2, .opc2 = 4,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPWRCTLR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 2, .opc2 = 7,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-+      .accessfn = access_actlr_w },
-+    { .name = "ATCR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 7, .opc2 = 0,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUACTLR5_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 8, .opc2 = 0,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-+      .accessfn = access_actlr_w },
-+    { .name = "CPUACTLR6_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 8, .opc2 = 1,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-+      .accessfn = access_actlr_w },
-+    { .name = "CPUACTLR7_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 8, .opc2 = 2,
-+      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-+      .accessfn = access_actlr_w },
-+    { .name = "ATCR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 15, .crm = 7, .opc2 = 0,
-+      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "AVTCR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 15, .crm = 7, .opc2 = 1,
-+      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPPMCR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 2, .opc2 = 0,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPPMCR2_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 2, .opc2 = 1,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPPMCR4_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 2, .opc2 = 4,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPPMCR5_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 2, .opc2 = 5,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPPMCR6_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 2, .opc2 = 6,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUACTLR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 4, .opc2 = 0,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "ATCR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 7, .opc2 = 0,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPSELR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 8, .opc2 = 0,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPCR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 8, .opc2 = 1,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPOR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 8, .opc2 = 2,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPMR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 8, .opc2 = 3,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPOR2_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 8, .opc2 = 4,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPMR2_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 8, .opc2 = 5,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "CPUPFR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 8, .opc2 = 6,
-+      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
-+
-+    /*
-+     * Stub RAMINDEX, as we don't actually implement caches, BTB,
-+     * or anything else with cpu internal memory.
-+     * "Read" zeros into the IDATA* and DDATA* output registers.
-+     */
-+    { .name = "RAMINDEX_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 15, .crm = 0, .opc2 = 0,
-+      .access = PL3_W, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "IDATA0_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 0, .opc2 = 0,
-+      .access = PL3_R, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "IDATA1_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 0, .opc2 = 1,
-+      .access = PL3_R, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "IDATA2_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 0, .opc2 = 2,
-+      .access = PL3_R, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "DDATA0_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 1, .opc2 = 0,
-+      .access = PL3_R, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "DDATA1_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 1, .opc2 = 1,
-+      .access = PL3_R, .type = ARM_CP_CONST, .resetvalue = 0 },
-+    { .name = "DDATA2_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 1, .opc2 = 2,
-+      .access = PL3_R, .type = ARM_CP_CONST, .resetvalue = 0 },
-+};
-+
-+static void aarch64_a710_initfn(Object *obj)
++/*
++ * Test for HCR_EL2.TIDCP at EL1.
++ * Since implementation defined registers are rare, and within QEMU
++ * most of them are no-op, do not waste HFLAGS space for this and
++ * always use a helper.
++ */
++void HELPER(tidcp_el1)(CPUARMState *env, uint32_t syndrome)
 +{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    cpu->dtb_compatible = "arm,cortex-a710";
-+    set_feature(&cpu->env, ARM_FEATURE_V8);
-+    set_feature(&cpu->env, ARM_FEATURE_NEON);
-+    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-+    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-+    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-+    set_feature(&cpu->env, ARM_FEATURE_EL2);
-+    set_feature(&cpu->env, ARM_FEATURE_EL3);
-+    set_feature(&cpu->env, ARM_FEATURE_PMU);
-+
-+    /* Ordered by Section B.4: AArch64 registers */
-+    cpu->midr          = 0x412FD471; /* r2p1 */
-+    cpu->revidr        = 0;
-+    cpu->isar.id_pfr0  = 0x21110131;
-+    cpu->isar.id_pfr1  = 0x00010000; /* GIC filled in later */
-+    cpu->isar.id_dfr0  = 0x16011099;
-+    cpu->id_afr0       = 0;
-+    cpu->isar.id_mmfr0 = 0x10201105;
-+    cpu->isar.id_mmfr1 = 0x40000000;
-+    cpu->isar.id_mmfr2 = 0x01260000;
-+    cpu->isar.id_mmfr3 = 0x02122211;
-+    cpu->isar.id_isar0 = 0x02101110;
-+    cpu->isar.id_isar1 = 0x13112111;
-+    cpu->isar.id_isar2 = 0x21232042;
-+    cpu->isar.id_isar3 = 0x01112131;
-+    cpu->isar.id_isar4 = 0x00010142;
-+    cpu->isar.id_isar5 = 0x11011121; /* with Crypto */
-+    cpu->isar.id_mmfr4 = 0x21021110;
-+    cpu->isar.id_isar6 = 0x01111111;
-+    cpu->isar.mvfr0    = 0x10110222;
-+    cpu->isar.mvfr1    = 0x13211111;
-+    cpu->isar.mvfr2    = 0x00000043;
-+    cpu->isar.id_pfr2  = 0x00000011;
-+    cpu->isar.id_aa64pfr0  = 0x1201111120111112ull; /* GIC filled in later */
-+    cpu->isar.id_aa64pfr1  = 0x0000000000000221ull;
-+    cpu->isar.id_aa64zfr0  = 0x0000110100110021ull; /* with Crypto */
-+    cpu->isar.id_aa64dfr0  = 0x000011f010305611ull;
-+    cpu->isar.id_aa64dfr1  = 0;
-+    cpu->id_aa64afr0       = 0;
-+    cpu->id_aa64afr1       = 0;
-+    cpu->isar.id_aa64isar0 = 0x0221111110212120ull; /* with Crypto */
-+    cpu->isar.id_aa64isar1 = 0x0010111101211032ull;
-+    cpu->isar.id_aa64mmfr0 = 0x0000022200101122ull;
-+    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
-+    cpu->isar.id_aa64mmfr2 = 0x1221011110101011ull;
-+    cpu->clidr             = 0x0000001482000023ull;
-+    cpu->gm_blocksize      = 4;
-+    cpu->ctr               = 0x000000049444c004ull;
-+    cpu->dcz_blocksize     = 4;
-+    /* TODO FEAT_MPAM: mpamidr_el1 = 0x0000_0001_0006_003f */
-+
-+    /* Section B.5.2: PMCR_EL0 */
-+    cpu->isar.reset_pmcr_el0 = 0xa000;  /* with 20 counters */
-+
-+    /* Section B.6.7: ICH_VTR_EL2 */
-+    cpu->gic_num_lrs = 4;
-+    cpu->gic_vpribits = 5;
-+    cpu->gic_vprebits = 5;
-+    cpu->gic_pribits = 5;
-+
-+    /* Section 14: Scalable Vector Extensions support */
-+    cpu->sve_vq.supported = 1 << 0;  /* 128bit */
-+
-+    /*
-+     * The cortex-a710 TRM does not list CCSIDR values.  The layout of
-+     * the caches are in text in Table 7-1, Table 8-1, and Table 9-1.
-+     *
-+     * L1: 4-way set associative 64-byte line size, total either 32K or 64K.
-+     * L2: 8-way set associative 64 byte line size, total either 256K or 512K.
-+     */
-+    cpu->ccsidr[0] = make_ccsidr64(4, 64, 64 * KiB);   /* L1 dcache */
-+    cpu->ccsidr[1] = cpu->ccsidr[0];                   /* L1 icache */
-+    cpu->ccsidr[2] = make_ccsidr64(8, 64, 512 * KiB);  /* L2 cache */
-+
-+    /* FIXME: Not documented -- copied from neoverse-v1 */
-+    cpu->reset_sctlr = 0x30c50838;
-+
-+    define_arm_cp_regs(cpu, cortex_a710_cp_reginfo);
-+
-+    aarch64_add_pauth_properties(obj);
-+    aarch64_add_sve_properties(obj);
++    if (arm_hcr_el2_eff(env) & HCR_TIDCP) {
++        raise_exception_ra(env, EXCP_UDEF, syndrome, 2, GETPC());
++    }
 +}
 +
- /*
-  * -cpu max: a CPU with as many features enabled as our emulation supports.
-  * The version of '-cpu max' for qemu-system-arm is defined in cpu32.c;
-@@ -934,6 +1145,7 @@ static const ARMCPUInfo aarch64_cpus[] = {
-     { .name = "cortex-a55",         .initfn = aarch64_a55_initfn },
-     { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
-     { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
-+    { .name = "cortex-a710",        .initfn = aarch64_a710_initfn },
-     { .name = "a64fx",              .initfn = aarch64_a64fx_initfn },
-     { .name = "neoverse-n1",        .initfn = aarch64_neoverse_n1_initfn },
-     { .name = "neoverse-v1",        .initfn = aarch64_neoverse_v1_initfn },
+ void HELPER(set_cp_reg)(CPUARMState *env, const void *rip, uint32_t value)
+ {
+     const ARMCPRegInfo *ri = rip;
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 0b77c92437..786a568d31 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2154,6 +2154,20 @@ static void handle_sys(DisasContext *s, bool isread,
+     bool need_exit_tb = false;
+     TCGv_ptr tcg_ri = NULL;
+     TCGv_i64 tcg_rt;
++    uint32_t syndrome;
++
++    if (crn == 11 || crn == 15) {
++        /*
++         * Check for TIDCP trap, which must take precedence over
++         * the UNDEF for "no such register" etc.
++         */
++        syndrome = syn_aa64_sysregtrap(op0, op1, op2, crn, crm, rt, isread);
++        switch (s->current_el) {
++        case 1:
++            gen_helper_tidcp_el1(cpu_env, tcg_constant_i32(syndrome));
++            break;
++        }
++    }
+ 
+     if (!ri) {
+         /* Unknown register; this might be a guest error or a QEMU
+@@ -2176,8 +2190,6 @@ static void handle_sys(DisasContext *s, bool isread,
+         /* Emit code to perform further access permissions checks at
+          * runtime; this may result in an exception.
+          */
+-        uint32_t syndrome;
+-
+         syndrome = syn_aa64_sysregtrap(op0, op1, op2, crn, crm, rt, isread);
+         gen_a64_update_pc(s, 0);
+         tcg_ri = tcg_temp_new_ptr();
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 38ad8dd4bd..47d3bc5fd5 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -4538,6 +4538,20 @@ void gen_gvec_uaba(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+     tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, &ops[vece]);
+ }
+ 
++static bool aa32_cpreg_encoding_in_impdef_space(uint8_t crn, uint8_t crm)
++{
++    static const uint16_t mask[3] = {
++        0b0000000111100111,  /* crn ==  9, crm == {c0-c2, c5-c8}   */
++        0b0000000100010011,  /* crn == 10, crm == {c0, c1, c4, c8} */
++        0b1000000111111111,  /* crn == 11, crm == {c0-c8, c15}     */
++    };
++
++    if (crn >= 9 && crn <= 11) {
++        return (mask[crn - 9] >> crm) & 1;
++    }
++    return false;
++}
++
+ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+                            int opc1, int crn, int crm, int opc2,
+                            bool isread, int rt, int rt2)
+@@ -4619,6 +4633,19 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
+         }
+     }
+ 
++    if (cpnum == 15 && aa32_cpreg_encoding_in_impdef_space(crn, crm)) {
++        /*
++         * Check for TIDCP trap, which must take precedence over the UNDEF
++         * for "no such register" etc.  It shares precedence with HSTR,
++         * but raises the same exception, so order doesn't matter.
++         */
++        switch (s->current_el) {
++        case 1:
++            gen_helper_tidcp_el1(cpu_env, tcg_constant_i32(syndrome));
++            break;
++        }
++    }
++
+     if (!ri) {
+         /*
+          * Unknown register; this might be a guest error or a QEMU
 -- 
 2.34.1
 

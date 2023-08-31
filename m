@@ -1,85 +1,84 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp72295ejc;
-        Thu, 31 Aug 2023 10:19:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGe1cxDAkJ2jYuGPcBbW0I3cczkfdvzqT5rZMQdIXtvSSSIHYAyzVmZk2zdC9PzocePq7fA
-X-Received: by 2002:a0c:8d8b:0:b0:63c:dde2:5a20 with SMTP id t11-20020a0c8d8b000000b0063cdde25a20mr3439603qvb.0.1693502347972;
-        Thu, 31 Aug 2023 10:19:07 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1693502347; cv=pass;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp72419ejc;
+        Thu, 31 Aug 2023 10:19:19 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGbLDL/rpZMf3yTVyHswjqoYB40gJ+7VwboEG5ddtHP+5WwGLL533SnExk+OJseVUmMa5M6
+X-Received: by 2002:a1f:d984:0:b0:48d:e15:c010 with SMTP id q126-20020a1fd984000000b0048d0e15c010mr169380vkg.12.1693502358768;
+        Thu, 31 Aug 2023 10:19:18 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1693502358; cv=pass;
         d=google.com; s=arc-20160816;
-        b=0D+sBDpcCG363Kxsc5FNam/HQIPKkH/sKhFxwvtHTVfldJt27ODkr1DV8vnLLnw+NW
-         vh6tZvfv71Xlvx8sHNTkTaPOuw3/qVm/Azn8xXvDMru/dnbOzTDJGurojGn9LlKrCRAB
-         t8F8lyZTiZEVUDAGWF0peXzmLIjHgJhJKEwqFeCFrO7Qt6UVYwCHJCHU14/NkYTNiCp6
-         fJ2YQQ1WO1tZ1gGaXYqeeEr0Nghtb+RBkeJ/HMvlls4djQOf6ZeHgvhkgdPDgkdwHgz1
-         T5MkZ0M6NpLsybpYGJHkxFEY2ZPNT4I0NBFVS32bZZG8DrVCAW/9l/CULHVBM/5VxCUF
-         N6tA==
+        b=cQZapJRkwDw+Nih1qT8w3D3kdaTmbEHZtbjdv8rpHBynrxsWwNr701lyRexgqFGi5M
+         Hxkq1p/gG/PDyfKk9k6bUWV5EkmmN3taGZBIA/k9qH0Aofl5O+hI3g4ryemqcDyJFpBn
+         6aTkakTW0l+xQJYq6hC3/o3Ig4t7xk+9Ft82NTGWjmera1uYizRwsajwOv+0mTpV/+qm
+         36gii1MF/AKhKmPi4vOCEjG6E2elPxz27egls09Spg6/SfA4uij8YLaegEdXyMIEMfnX
+         om0FQZYHwCP5d12zO72q37WFVXaC0x0ZEnrZ/XchxQehs0g8QqJhL8RshlQPvh8mcg8H
+         inHg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=O7tuUNi+bgqUFHnJ+Rl3ddXSdLMaoX10zW01xm0s1jQ=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8EnDUgUc3qTw/RNMR37PEezNAVJvfhhU9I37o14tguU=;
         fh=pznRVeWJ4hItCECwjrqjAIWwbloInRzLO7Vuww0WCHg=;
-        b=ABQqIkoKMliqaNiQUZH0DxCjNuZSg0WWYMxbOPPY6Xc43+yBjGdA2SWchopLhHfk+S
-         lXhhjEqPgLZTPizzlRQxLykE2bB4r/V81Wj+Gsh4b5XSvyWTNj4UhE8Oro9K5Am0CYoK
-         BOVmfiW9BZoVKToyMobijbhqea5IErcHGa8GULkLt9Ibz4uKABOr9pJktBXYtw5GsogQ
-         SuMt8s/KdPkzzVuL9KDI+ajqy0OocxWDHf7FRUhVZTXJIBq6v23ecmuvP56NtM37mv9I
-         MsKige6P8lYKHLoSa/F3y2lCtDLXVc8CM1EUnpScXk91Yt4VBNxNervexd+VcGvVv8TE
-         tKOQ==
+        b=sULcsYf+RvzzaaIF+yu3Fwm4MENFWByXBBNIBq9iIj7MUv4oRUNIDcBMFCJ+OxdTBC
+         N0iSjKKpoqeNHNptl3+I7k4HpJ3LY2maN6g9/VCP1ToxlyqNZskjwFrb1jNcMm/h7LzG
+         0ZuAbF2hswYn/IcF7sTm4BTxqhf1pkCcuz+TAXSGf5a689Y+yB37l4lUOlBcFWSSaf6K
+         vs8GYKtQZen0dLpN6hMdeoqg57mH7n82s3Qa/Qx231oj9H8vBxfO2fXCsQKqbwAgetYy
+         ND7LDV8E/7+0Rbcihmx83JKdqa54MOP06ORL4UENhNqqSrHBB0B57PP/NoYM9nIntdUs
+         PftA==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=3nnZ3BzG;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=mFelVaCd;
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y26-20020a0c9a9a000000b006238ad6d2d2si1171379qvd.577.2023.08.31.10.19.07
+        by mx.google.com with ESMTPS id t20-20020a05622a149400b00403c7a46698si1209642qtx.440.2023.08.31.10.19.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 10:19:07 -0700 (PDT)
+        Thu, 31 Aug 2023 10:19:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=3nnZ3BzG;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=mFelVaCd;
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qblJv-0001sA-19; Thu, 31 Aug 2023 13:19:03 -0400
+	id 1qblJu-0001s7-W7; Thu, 31 Aug 2023 13:19:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1qblJt-0001rg-Er; Thu, 31 Aug 2023 13:19:01 -0400
-Received: from mail-dm6nam10on20618.outbound.protection.outlook.com
- ([2a01:111:f400:7e88::618]
- helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+ id 1qblJt-0001rf-EK; Thu, 31 Aug 2023 13:19:01 -0400
+Received: from mail-sn1nam02on20603.outbound.protection.outlook.com
+ ([2a01:111:f400:7ea9::603]
+ helo=NAM02-SN1-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1qblJq-0005ua-7T; Thu, 31 Aug 2023 13:19:01 -0400
+ id 1qblJq-0005uV-7a; Thu, 31 Aug 2023 13:19:01 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iSmPxkW7+MeqKawOG3JLio3jt9lrxKXpE9ia0IPhJUUFJstbVP2e2zpzpkB9N3SkHBx2V+pZmNO4nl9/bOUqRTBPIFS1wmvyx9DWybmGa3xUtc63FgGpoTeAMS8AY6RG93WwhXHQxHy+LqfyKp1Lbipn6lnhGHebHDyb9xYVyWRmb5KSSPg7l1XCctMlGKdcd5m4UiWlQu1lyHDaWxcE5wTaMqmP5MWT27ttbVmLW/neivJQiLkS1uExj/HB1XsgqW597o3E3AnZ6+h7UAVa9Hw0gkchqSYg3+i171pRHeHUTxUW2WEftodm3o973Ga6XiVvLFYkaQ08J4I1b+4XiQ==
+ b=SodR19civSaYezaXZ7fkG9E/0X0kKFqbHwef2yH0zCaPtQB1a3E2VECBDXS/lqfOoosidSQtS6bdqsfT9CWZ1PnDNMB31Dg/5ZDHuVcLP8LNB8hWmmuhZ6CPA9OTRyRcj1PJmDZdkTm+cMOtAxSdz8zsQ65+f3VckVvB4cKDizON1udmFlAW2VLIiUHGWgsZCkFRS/N5VqsbsZtgrrWqfx4JQnXzrCW+SnfQgDbabJhzcRTnX92fTSDeyPUikLoZ4H5sHf/pJrNzFFmZDAGnYERX1t0eNQdnzOFZirgEcSoTb29J60rmHFmSciaKhXkzgiKOb1YR8khYV2qcxP1JtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=O7tuUNi+bgqUFHnJ+Rl3ddXSdLMaoX10zW01xm0s1jQ=;
- b=EasgZmSOZP7ttBmNN4p9HJciY4ctWJT5So4GGeGw9WX3HGF5e6+DNlhLctFQ4xRpBvhY6a6aRyYRev7JZ+88C9PVhNIWWHN0dk9Yoqa9hy+8zLrcXFuj+gCJuDAY3cvNZCaZdv0jR8kCbKqhXRMRILKYqVbtWA0EEyqtr0I47FiFAuVxr+noecnDsZQfdylQ3hV5AvJxIqakzBKTPuSNmDYqSMMg8EHN4bEgYFicq+3fJ/3RLBSZV1t0GKi8Yo/YJaEn1sSEBR65X4ksEAa62XnWiOSxGj9f8nsjl0oXUkXoQrTGisF+LD+FzyNP97ikJf4cwHm368X+2bEW5leKoQ==
+ bh=8EnDUgUc3qTw/RNMR37PEezNAVJvfhhU9I37o14tguU=;
+ b=gFfI9XnawWfWqYvNRBIsoIOXpzKMoNbzML0dhBodoiYE/7W2tUP/NobfEc5gxnFA29378S9TC7VSYlcmB+Wxq6p9/Kgzce53kd8kL81hx8TtiUaL0SvMuYCxZwNusxFdwVY9s73ARl39ybmfZfmobwOdJq8ah1rF3tbYEsvHbM0GaQwQ1KDUFvNJBZQvqpG8tWIgfEAUrVLaQ8l+BA3K+I8J98zvxcToH+Sma9QsGaxhZy0I/PNZ2yYMT1ytIK5qHBqMwpRJ73Bzk+zhPpL8wEHjmXmOHPR6NYPI2UBtxn2O10wcFCq5MhXwrEvPJ9pzGHnewMy6TyKV5A4q7VGigQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=O7tuUNi+bgqUFHnJ+Rl3ddXSdLMaoX10zW01xm0s1jQ=;
- b=3nnZ3BzG7oKfeBAkydO9/fKbdMUq9uqszL+WBtUhEjvtGBWwuAQSlmbnx3KiOTN/HgGANa2QSwGiiZp9Y2B51p4ALpeG2Go9N8y5KmUuwv9CE4arlfz+LSGCtEQBdRKPXhD0C0KdBhOIUgVGtYisM8IwGZomrQakWO6+1cOP38g=
-Received: from DS7PR03CA0034.namprd03.prod.outlook.com (2603:10b6:5:3b5::9) by
- DM6PR12MB4121.namprd12.prod.outlook.com (2603:10b6:5:220::14) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6745.20; Thu, 31 Aug 2023 17:18:52 +0000
-Received: from CY4PEPF0000E9D5.namprd05.prod.outlook.com
- (2603:10b6:5:3b5:cafe::9e) by DS7PR03CA0034.outlook.office365.com
- (2603:10b6:5:3b5::9) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6745.21 via Frontend
- Transport; Thu, 31 Aug 2023 17:18:52 +0000
+ bh=8EnDUgUc3qTw/RNMR37PEezNAVJvfhhU9I37o14tguU=;
+ b=mFelVaCdKyedpgix6Er5U4hHFSk4xbXtNOuJuBwDhxpv32O7wV5EwEY6j9ovDX75cwoUNkVqKZBYGZLaEu0Pasj9kce6WwudujsSwPr8Sf2uYDTU7nyRqMJQrMxCtqAXy2Dcc+YYNSgHtq8kVqZ0Ezb+UDBTT5KiwGvkks8/PhU=
+Received: from CY5PR03CA0015.namprd03.prod.outlook.com (2603:10b6:930:8::43)
+ by DS7PR12MB6167.namprd12.prod.outlook.com (2603:10b6:8:98::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6745.20; Thu, 31 Aug
+ 2023 17:18:51 +0000
+Received: from CY4PEPF0000E9D8.namprd05.prod.outlook.com
+ (2603:10b6:930:8:cafe::15) by CY5PR03CA0015.outlook.office365.com
+ (2603:10b6:930:8::43) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6745.22 via Frontend
+ Transport; Thu, 31 Aug 2023 17:18:51 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
@@ -87,54 +86,52 @@ Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
  client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
 Received: from SATLEXMB03.amd.com (165.204.84.17) by
- CY4PEPF0000E9D5.mail.protection.outlook.com (10.167.241.76) with Microsoft
+ CY4PEPF0000E9D8.mail.protection.outlook.com (10.167.241.83) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6745.17 via Frontend Transport; Thu, 31 Aug 2023 17:18:52 +0000
+ 15.20.6745.17 via Frontend Transport; Thu, 31 Aug 2023 17:18:50 +0000
 Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB03.amd.com
  (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 31 Aug
- 2023 12:18:51 -0500
+ 2023 12:18:50 -0500
 Received: from xsjtongh40.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
  (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.27 via Frontend
- Transport; Thu, 31 Aug 2023 12:18:51 -0500
+ Transport; Thu, 31 Aug 2023 12:18:49 -0500
 From: Tong Ho <tong.ho@amd.com>
 To: <qemu-arm@nongnu.org>
 CC: <qemu-devel@nongnu.org>, <alistair@alistair23.me>,
  <edgar.iglesias@gmail.com>, <peter.maydell@linaro.org>, <tong.ho@amd.com>
-Subject: [PATCH 2/3] hw/arm: xlnx-versal-virt: Add AMD/Xilinx TRNG device
-Date: Thu, 31 Aug 2023 10:18:48 -0700
-Message-ID: <20230831171849.3297497-3-tong.ho@amd.com>
+Subject: [PATCH 0/3] AMD/Xilinx Versal TRNG support
+Date: Thu, 31 Aug 2023 10:18:46 -0700
+Message-ID: <20230831171849.3297497-1-tong.ho@amd.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20230831171849.3297497-1-tong.ho@amd.com>
-References: <20230831171849.3297497-1-tong.ho@amd.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000E9D5:EE_|DM6PR12MB4121:EE_
-X-MS-Office365-Filtering-Correlation-Id: b9878fbc-18ae-462b-477f-08dbaa465942
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000E9D8:EE_|DS7PR12MB6167:EE_
+X-MS-Office365-Filtering-Correlation-Id: 312038fb-d358-4e6a-7e24-08dbaa465862
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: dgs670kd+5b5x6599okR5vSXNkz4Z6LqOhQ+xfRDF57bgLYhr7tKUDaDyDM28Ru3Z6ULMNf1JDjNJlFHc87xBsjR5Bm6NvUJUtPniZVGIEjVqN6sNvqEiyKGbSOwg6f0CkYC7pSef3glDumm2RV2u67CFIoMoKZrxlBs1/c9neBc1mltab8EHgVCq+W/Mzv0SXaWrsU0UD+xA9pQKi1oiGHTkIGoWPFAnOxSqmDplFU3ukEZ5ARU/MT2jg98232ljwe28H7lFNbZCIA5cXQXd0vQ5y8GIUZR/PU+kyT9XEhT38FRO0N3WTcdTfKI1ai1gAklRQKCiwybE4pQ/ZXLPAbL7P7A84KVaVycP2vFpQf/tXzj+cizRlD5imsu2Otulr5rjgfB2jvJClCoAu9WXU0YlmUYIH5JP8N7JognfZ6z0ew3GGyDl4u0Ue4FlZQBWOOn3rlJ5wnMjoVqNJ3MCzh2vOWvb6gKtlRiqpeLevZH7xISUS7rJSYW+O9ZaroQo+hih8l/CKxhmmSfyv+zijX3Fs5/ORtfDuRUNcnag58ZnBh8ndXO5mmMibxNqlEkHjjgx2pT+L5hAGusAcBCR6fTT9yasLlMvS7gLM+049GkGK2wD6x6AcWQqejJzI4NclzAM6KdCt/28TG5Ftf2c4DBHCbBxRaOZDIAQXG00DeJF+KqEVy+EUhHue8dvpRgSlCFbPtxQJtiA6450iurPnDJtcYpPfjxVzwao2xW0WL0IAFvX3U/tsH9jSzx/tvEjHi3s8T/drgFQBnoXLmWNw==
+X-Microsoft-Antispam-Message-Info: +pWSvSiXsTRabO6eaaVs8AmJ/2tE5pq1ngTJP4PJAlIi1C7hic8TR4/cb9aDLkWYFf3zRQQufYb9S5s8Y0oY4UxVdRQVc77pbyPtPNLAaq6OFCa1tX9sTNSBzsH4Wb5RkVhTobF+HYcGEVdBSw4YOnDJCix0oGU37X1B7tpY3fzjm97iZyiVsP3lh7xopaGxSk76PlHV5TV6r1CcZKmyM9mBmLP7eUpkWzzAyJsOuWGKdHMXR4YgLXs2INfc5I4ZoTWaKhhG9AIdMOfmwjmigrxA3FrXtsPL5/3PIm3a4uAw6s6wg9j+DjJhWhVhpFwGmdyWHMEAzwEmoUBNlCfSSq0JghbzYp0OW+wesnr+ZrjaWLxvPXg60+RBYSgd1Kmg2ru7nOB7g23tnomaP1VxiwKOF6W8q3BSAPYVdXEkLuhtrRqdXl0lcX6K+8zjbEjkRBUnMTtWPuH9op+yksTEezy03++zd9HNU66WKmLzSwvcnLF205BZg87Eoe0DmP8Gt+Rl+0bDcPwc0c3kcvzvgXxTtDalEw+MvNHIuymwiiNBvJHiGVh0QrJ2EQEF9ZdzjOCf6xqWzOnNH/rKjTbafRcSM0UqHAEryoDufzKHRhYiQYJ7T/Aha6yGlRY2BJNATDeFoDINcThjKXE1AxKTdD2QzzVQLbjqb5IJ0+h+Y64vfunKp5UpGXtuzuKnPko4n8tkSt0VuYR8uN0AXTrlPF9fphzRNcnDTU/4ofJHvgLzsw+d5JzwpNWD4awtAsqS9GpD3s/MfDPwEpDUwRvgDw==
 X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(396003)(136003)(376002)(39860400002)(346002)(1800799009)(82310400011)(451199024)(186009)(36840700001)(40470700004)(46966006)(70206006)(2906002)(36756003)(40460700003)(5660300002)(86362001)(44832011)(356005)(82740400003)(81166007)(40480700001)(4326008)(8676002)(47076005)(36860700001)(336012)(41300700001)(8936002)(83380400001)(426003)(1076003)(2616005)(316002)(26005)(54906003)(6666004)(478600001)(70586007)(6916009)(36900700001);
+ SFS:(13230031)(4636009)(39860400002)(376002)(346002)(136003)(396003)(451199024)(186009)(1800799009)(82310400011)(40470700004)(36840700001)(46966006)(70206006)(8936002)(41300700001)(47076005)(83380400001)(4326008)(40480700001)(8676002)(36860700001)(478600001)(966005)(6666004)(54906003)(426003)(336012)(26005)(1076003)(6916009)(316002)(70586007)(2616005)(2906002)(44832011)(81166007)(82740400003)(86362001)(356005)(40460700003)(5660300002)(36756003)(36900700001);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Aug 2023 17:18:52.4068 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b9878fbc-18ae-462b-477f-08dbaa465942
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Aug 2023 17:18:50.9245 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 312038fb-d358-4e6a-7e24-08dbaa465862
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
  Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000E9D5.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000E9D8.namprd05.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4121
-Received-SPF: softfail client-ip=2a01:111:f400:7e88::618;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB6167
+Received-SPF: softfail client-ip=2a01:111:f400:7ea9::603;
  envelope-from=tong.ho@amd.com;
- helo=NAM10-DM6-obe.outbound.protection.outlook.com
+ helo=NAM02-SN1-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -155,143 +152,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2LO9S+NSHSrj
+X-TUID: Qdd6GvkY8hMA
 
-Connect the support for Versal True Random Number Generator
-(TRNG) device.
+This series adds support for the True Random Number Generator
+(TRNG) in the AMD/Xilinx Versal family of devices.
 
-Warning: unlike the TRNG component in a real device from the
-Versal device familiy, the connected TRNG model is not of
-cryptographic grade and is not intended for use cases when
-cryptograpically strong TRNG is needed.
+The series starts by introducing a non-cryptographic grade model
+of the TRNG controller in the Versal family of devices, followed
+by instantiating the model in Xilinx Versal machine.
 
-Signed-off-by: Tong Ho <tong.ho@amd.com>
----
- hw/arm/Kconfig               |  1 +
- hw/arm/xlnx-versal-virt.c    | 20 ++++++++++++++++++++
- hw/arm/xlnx-versal.c         | 16 ++++++++++++++++
- include/hw/arm/xlnx-versal.h |  5 +++++
- 4 files changed, 42 insertions(+)
+The series ends with a q-test for sanity check of the TRNG model
+in the Xilinx Versal machine.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 7e68348440..0a3ff6748d 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -482,6 +482,7 @@ config XLNX_VERSAL
-     select XLNX_BBRAM
-     select XLNX_EFUSE_VERSAL
-     select XLNX_USB_SUBSYS
-+    select XLNX_VERSAL_TRNG
- 
- config NPCM7XX
-     bool
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 1ee2b8697f..c0704f416e 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -391,6 +391,25 @@ static void fdt_add_rtc_node(VersalVirt *s)
-     g_free(name);
- }
- 
-+static void fdt_add_trng_node(VersalVirt *s)
-+{
-+    const char compat[] = TYPE_XLNX_VERSAL_TRNG;
-+    const char interrupt_names[] = "trng";
-+    g_autofree char *name = g_strdup_printf("/trng@%x", MM_PMC_TRNG);
-+
-+    qemu_fdt_add_subnode(s->fdt, name);
-+
-+    qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-+                           GIC_FDT_IRQ_TYPE_SPI, VERSAL_TRNG_IRQ,
-+                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+    qemu_fdt_setprop(s->fdt, name, "interrupt-names",
-+                     interrupt_names, sizeof(interrupt_names));
-+    qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-+                                 2, MM_PMC_TRNG,
-+                                 2, MM_PMC_TRNG_SIZE);
-+    qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
-+}
-+
- static void fdt_add_bbram_node(VersalVirt *s)
- {
-     const char compat[] = TYPE_XLNX_BBRAM;
-@@ -690,6 +709,7 @@ static void versal_virt_init(MachineState *machine)
-     fdt_add_usb_xhci_nodes(s);
-     fdt_add_sd_nodes(s);
-     fdt_add_rtc_node(s);
-+    fdt_add_trng_node(s);
-     fdt_add_bbram_node(s);
-     fdt_add_efuse_ctrl_node(s);
-     fdt_add_efuse_cache_node(s);
-diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-index 60bf5fe657..4fd1924cf6 100644
---- a/hw/arm/xlnx-versal.c
-+++ b/hw/arm/xlnx-versal.c
-@@ -372,6 +372,21 @@ static void versal_create_rtc(Versal *s, qemu_irq *pic)
-                        qdev_get_gpio_in(DEVICE(&s->pmc.apb_irq_orgate), 0));
- }
- 
-+static void versal_create_trng(Versal *s, qemu_irq *pic)
-+{
-+    SysBusDevice *sbd;
-+    MemoryRegion *mr;
-+
-+    object_initialize_child(OBJECT(s), "trng", &s->pmc.trng,
-+                            TYPE_XLNX_VERSAL_TRNG);
-+    sbd = SYS_BUS_DEVICE(&s->pmc.trng);
-+    sysbus_realize(sbd, &error_fatal);
-+
-+    mr = sysbus_mmio_get_region(sbd, 0);
-+    memory_region_add_subregion(&s->mr_ps, MM_PMC_TRNG, mr);
-+    sysbus_connect_irq(sbd, 0, pic[VERSAL_TRNG_IRQ]);
-+}
-+
- static void versal_create_xrams(Versal *s, qemu_irq *pic)
- {
-     int nr_xrams = ARRAY_SIZE(s->lpd.xram.ctrl);
-@@ -757,6 +772,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
-     versal_create_sds(s, pic);
-     versal_create_pmc_apb_irq_orgate(s, pic);
-     versal_create_rtc(s, pic);
-+    versal_create_trng(s, pic);
-     versal_create_xrams(s, pic);
-     versal_create_bbram(s, pic);
-     versal_create_efuse(s, pic);
-diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-index 39ee31185c..159ee26aad 100644
---- a/include/hw/arm/xlnx-versal.h
-+++ b/include/hw/arm/xlnx-versal.h
-@@ -31,6 +31,7 @@
- #include "hw/dma/xlnx_csu_dma.h"
- #include "hw/misc/xlnx-versal-crl.h"
- #include "hw/misc/xlnx-versal-pmc-iou-slcr.h"
-+#include "hw/misc/xlnx-versal-trng.h"
- #include "hw/net/xlnx-versal-canfd.h"
- 
- #define TYPE_XLNX_VERSAL "xlnx-versal"
-@@ -113,6 +114,7 @@ struct Versal {
-         } iou;
- 
-         XlnxZynqMPRTC rtc;
-+        XlnxVersalTRng trng;
-         XlnxBBRam bbram;
-         XlnxEFuse efuse;
-         XlnxVersalEFuseCtrl efuse_ctrl;
-@@ -151,6 +153,7 @@ struct Versal {
- #define VERSAL_OSPI_IRQ            124
- #define VERSAL_SD0_IRQ_0           126
- #define VERSAL_EFUSE_IRQ           139
-+#define VERSAL_TRNG_IRQ            141
- #define VERSAL_RTC_ALARM_IRQ       142
- #define VERSAL_RTC_SECONDS_IRQ     143
- 
-@@ -244,4 +247,6 @@ struct Versal {
- #define MM_PMC_CRP_SIZE             0x10000
- #define MM_PMC_RTC                  0xf12a0000
- #define MM_PMC_RTC_SIZE             0x10000
-+#define MM_PMC_TRNG                 0xf1230000
-+#define MM_PMC_TRNG_SIZE            0x10000
- #endif
+Best regards,
+Tong Ho
+
+References:
+[1] https://docs.xilinx.com/r/en-US/am011-versal-acap-trm/True-Random-Number-Generator
+
+Tong Ho (3):
+  hw/misc: Introduce AMD/Xilix Versal TRNG device
+  hw/arm: xlnx-versal-virt: Add AMD/Xilinx TRNG device
+  tests/qtest: Introduce tests for AMD/Xilinx Versal TRNG device
+
+ hw/arm/Kconfig                      |   1 +
+ hw/arm/xlnx-versal-virt.c           |  20 +
+ hw/arm/xlnx-versal.c                |  16 +
+ hw/misc/Kconfig                     |   3 +
+ hw/misc/meson.build                 |   3 +
+ hw/misc/xlnx-versal-trng.c          | 725 ++++++++++++++++++++++++++++
+ include/hw/arm/xlnx-versal.h        |   5 +
+ include/hw/misc/xlnx-versal-trng.h  |  58 +++
+ tests/qtest/meson.build             |   2 +-
+ tests/qtest/xlnx-versal-trng-test.c | 490 +++++++++++++++++++
+ 10 files changed, 1322 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/xlnx-versal-trng.c
+ create mode 100644 include/hw/misc/xlnx-versal-trng.h
+ create mode 100644 tests/qtest/xlnx-versal-trng-test.c
+
 -- 
 2.25.1
 

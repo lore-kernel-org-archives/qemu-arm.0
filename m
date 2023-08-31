@@ -1,156 +1,262 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5073470ejc;
-        Thu, 31 Aug 2023 06:01:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHiRJ6rEbNuwfJCMbvRfVSX97/h/53K4xJrxfier3/UGDf7sYU8/VoZTnTdZLNLUJFcC7OF
-X-Received: by 2002:a05:6214:4012:b0:628:ed0e:a165 with SMTP id kd18-20020a056214401200b00628ed0ea165mr3745947qvb.58.1693486862527;
-        Thu, 31 Aug 2023 06:01:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693486862; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5073690ejc;
+        Thu, 31 Aug 2023 06:01:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFSdM9JTUx/v3O9FjRkQcuGYUQzDjs3YJstA8jg2/fjvv8/o99ZDOm12ec80uui4Qe1jl28
+X-Received: by 2002:a92:caca:0:b0:34b:bc95:7541 with SMTP id m10-20020a92caca000000b0034bbc957541mr4679359ilq.0.1693486877473;
+        Thu, 31 Aug 2023 06:01:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693486877; cv=none;
         d=google.com; s=arc-20160816;
-        b=WddOlxvzWMHG/vlRasKX0pclBFXrSbIw7OE12tjfGBC5VqplUUhIWquxRhjoYcqq3n
-         OTMtLy8CZ7s+VF5d8ZICKxo6ZSmLmY7LcYCAR8pU5vPd0VdAhIJKKyxR2J3MDo22Qk/l
-         OHYyVladOlbjIYhexuKq/R8z8PAxjLlWpQIfJnzP9ZamdNX2aO6DWkSlVejutzfrwU7v
-         dYSpgL/JDQ0dBV+WVcO+a6GkG5wAcr2s5HfOkEsqmpZ9L9Xmcg+Wfnna/gpuIiY5+eat
-         drxED3HrHbzBEQV5qQlVo4pL0NVOKQZjoSRfURbAF8bamRfjmLAxCIoE4oK2oIAnUCkX
-         b00A==
+        b=UA0oN6xNs+aa6TBrlh8u/tdb8vKAxrQdYyhmvHIqOHUBaD9unmunTxmlSB1xkZYQMl
+         8gy9jW1WfdU2KPnk5Nui6/UxOSc66yVNR9efQMQ6TEcPDsy1a16/Nj/scKGkrNkGv0xp
+         mXU2Gdz8zrD9g/86wWqOVCYTbE21eQcfKgD22Bx6Sp5rCawqO5bDM9/AU7KkuP1AznOd
+         rGbURACXQmELMAjPmJbhw4Ecs/Y4PAEyzbaLI3D97qqaKsrTAjNPfuFPo+XhojHjkHJZ
+         /dcwbjU1Yvy4rL4Vmhzr9R9cSqO2HyvMa1Sj84yO8OOPNiqd/oiwO5sj8PgDfi3WktWY
+         p5mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=aVa0NtnHK7rvI035uHhcp5vIA6pkk4dL+deBSQt+atY=;
-        fh=8HLhek0fCRY9CNhIbsrpPv2KS3B438mEPZtUlmXQ5xA=;
-        b=tApW35H8z1ckUqzT/+6iEyNwdRJCEbYGLIGdXpwxU+viPEtQ+bSK8lXMoS1huPrf+E
-         3MwhIcazgvjyn42hQod31hSXrR/BJEx5NC4RVHYVnUEtSuzq4EsQJ4pluFRLADOP05yJ
-         LITTn07k/Bl/BfopCp/4ckPC1OQSughZYmlY8zAQlHCiX2RomL4Hw+xDNolqNvjKJMUw
-         creRhgLEZy9m0K/jgtyxa/Qv4LqiBxib6nZG+2x21kcTojvao6X/Eu9KobzVBhjsQg+4
-         cVeZ/MDQHa0VdkYK+W0aAIm1OA9Cx4B+zrDsNoc2+Xxt3ZpX2Dlh1LLjtiVcFgnwOKc9
-         iTDQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
+         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
+         :list-id;
+        bh=jz+mAPNcv06ru/xM4IbBW81pQuhSFU668av4pwZWy+k=;
+        fh=J+xs5LJB+ftaxRF8J8DLV4w6VLlN0d0Fa3SPCWHnYuE=;
+        b=cXoAnkY9URVO2ipfHkT5wZGBnBsh33DqlrN1k2I6E3XovNFkWJRVjEvMYctdbOe0YU
+         sb6DpVm3DzIHIpdMTPea7TcxlMFhckZiOWwJCkk0NUewt7aP/2PhttNx78R31BUxrVAG
+         GX1UJwx9hHaiB4bCpel59/O6rZsoEwT6/p9P6y9+E//ZW2rwbUr/RABTCQUoZGTN2OpZ
+         rLd+kJhPDlOjsCIIU0KPpU7VB0VpGjG8NuOyBFezaQn+N2Wj2iZ6GPtBeCA2B09p9mT3
+         /Yrq8pejpfJLdBarsXNFk4aha0Z8oHEHCQiDba+wHugnxtWR0k7tDBjO+W43QCzs/JBd
+         wtDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EDSohC7P;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=blGhXQZH;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n14-20020a0ce48e000000b0062529d9a496si842163qvl.608.2023.08.31.06.01.02
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 06:01:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id r7-20020a92d987000000b0034658f538adsi485618iln.117.2023.08.31.06.01.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 31 Aug 2023 06:01:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EDSohC7P;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=blGhXQZH;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qbhEo-0002eg-2h; Thu, 31 Aug 2023 08:57:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhEW-0002KR-Gq
- for qemu-devel@nongnu.org; Thu, 31 Aug 2023 08:57:13 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhET-00058H-6a
- for qemu-devel@nongnu.org; Thu, 31 Aug 2023 08:57:12 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-40078c4855fso7014915e9.3
- for <qemu-devel@nongnu.org>; Thu, 31 Aug 2023 05:57:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693486626; x=1694091426; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=aVa0NtnHK7rvI035uHhcp5vIA6pkk4dL+deBSQt+atY=;
- b=EDSohC7PA2zAbK5akzAukNSivCLGisvbINZHctfF65M0Qk3TJcnrEnXb8FYg7fnZhY
- DZKdy1fSsAA5V/ogs0nkmmfnCf/jarlJUhutRBNkaksVnMEdCtIrlRJmoeSwdUOpkwqs
- lpNl9w7dgDfiMLVPeMw7QbP+aOBilH/ZdTD4FG1n3P+UQI8ZyrkIfJU5dr8tcWKsjMYs
- pojw03rwh6OKTOOLiP81rgF2YpwZ8ZVUPfoD/C55uRa496WOKFYieihZMTDni4MEfUb1
- HnobqqGn5s76K6cgqnNd6/ESV7BmsMteofWEHMBqeumh3xqz7a8dK7ceYGx9dH0GAfmm
- vohA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693486626; x=1694091426;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=aVa0NtnHK7rvI035uHhcp5vIA6pkk4dL+deBSQt+atY=;
- b=RRM2uW8I/S1b/NokQZHb4GbH4KS33KqUgeYy1gM63q6JoMl/rysIjcwbRz8frCSghA
- TjxaYtJFdw7SAW84jJuQWZQmB6VJJUgqchgqYhZp1X8+9aKRkGUvu3hvxuQ4Zd9WWo7X
- DAFhteHrpkMyBj5Y2k7ckkOvfrXmWQHVXFTRIJTXvAd1cNfJ9LTJ6NKI/OkNK5SCUa+Y
- JomVfxhZftTSCYqA0xO/wfR07/y7WLoJo53yOmrfQ8HjmqvLl8Aq8UA/L/u+t8P4okmo
- QOflpll88Q7biRwVHL8fOApaj2yicOnlN1pbcZie/JWmA2F54UCPSpfJQpotSqHMAh3W
- m55w==
-X-Gm-Message-State: AOJu0YwCPsnYfLbVuopC4EzxqyaO37zBnCUE4gvFgrBIYek1ryz47Jk0
- ArRB8GEdZpgtxGqQ573Tz4HSU5y74wlMmDRQFWw=
-X-Received: by 2002:a5d:6150:0:b0:319:6d3c:c5e5 with SMTP id
- y16-20020a5d6150000000b003196d3cc5e5mr3909177wrt.58.1693486626202; 
- Thu, 31 Aug 2023 05:57:06 -0700 (PDT)
+Received: from list by lists.xenproject.org with outflank-mailman.593875.926993 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1qbhHC-0003he-Lz; Thu, 31 Aug 2023 12:59:58 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 593875.926993; Thu, 31 Aug 2023 12:59:58 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1qbhHC-0003hX-JO; Thu, 31 Aug 2023 12:59:58 +0000
+Received: by outflank-mailman (input) for mailman id 593875;
+ Thu, 31 Aug 2023 12:59:58 +0000
+Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
+ helo=se1-gles-sth1.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92)
+ (envelope-from <SRS0=nRSd=EQ=linaro.org=philmd@srs-se1.protection.inumbo.net>)
+ id 1qbhHC-0003hR-0u
+ for xen-devel@lists.xenproject.org; Thu, 31 Aug 2023 12:59:58 +0000
+Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com
+ [2a00:1450:4864:20::432])
+ by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
+ id 48ca3867-47fe-11ee-8783-cb3800f73035;
+ Thu, 31 Aug 2023 14:59:56 +0200 (CEST)
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-31adc5c899fso642743f8f.2
+ for <xen-devel@lists.xenproject.org>; Thu, 31 Aug 2023 05:59:56 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.199.245])
  by smtp.gmail.com with ESMTPSA id
- r16-20020a05600c299000b00400268671c6sm1911549wmd.13.2023.08.31.05.57.04
+ d4-20020adfe884000000b0030ae53550f5sm2144827wrm.51.2023.08.31.05.59.54
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Aug 2023 05:57:05 -0700 (PDT)
+ Thu, 31 Aug 2023 05:59:55 -0700 (PDT)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
+Precedence: list
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 48ca3867-47fe-11ee-8783-cb3800f73035
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1693486796; x=1694091596; darn=lists.xenproject.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jz+mAPNcv06ru/xM4IbBW81pQuhSFU668av4pwZWy+k=;
+        b=blGhXQZHgx71cZa/eXIqaqj9XDCzNa18ND9iuOzi+IJIN/XA9NKRaWZgNAowF1Dl4H
+         DCUBxwRBppgdfxlWZrACiGmNMCHqmkBQ4vhklZ4e9NlEDGDUzdtGYtDMxQExRV/P+2Z/
+         q8RBJ4RD6lGxP2KVQv6z/iMTnoZ1fKRdhtM96pm7Q07W8uOi6y4SwlY2+iDsCGUjHn7Y
+         DP1qGR6rOP/9xxBNmsgWeceledWps6ms+2slNJWuP8p14RbIWDT3k/1meK/C1/p29E73
+         wx3TQJMIESJIwZmw8CyUvk6Gio1HbZdW++GnE3Rfu8XLWsrgKS4FpkDlq0pyMzyhxyRP
+         lYjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693486796; x=1694091596;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=jz+mAPNcv06ru/xM4IbBW81pQuhSFU668av4pwZWy+k=;
+        b=F6RSIHOj5NJiyd156uvY75imoNp5cbi5Fgmslhai2oivljt8Bpe0GvNUUC5o6fT6e8
+         bH871z/CrsCovROiJgOpqaajtq4bP/LBfyNWG2txbbYmEw09pfvirmWzraHxpJ8KqlHl
+         2r6D+GJUBqSSRgMrYz4imsD4R+tUVGA5WNc444vcTOvQkSp0ZYonstjd6+4pKVOPd3WR
+         tFZY0nMzcIatRtxv3VLsr9QTt3kDd9VI5U4RUPBVxt76bcjjbDtMbWcYZPc7T2ahCdJn
+         QCZBkxUwJgII/iWxhXPaaZzGRRWTyX4euXSZWT1oSCC6Qzvh7rbHU4X+zXcPKoEQ6070
+         JjuA==
+X-Gm-Message-State: AOJu0YyeWvPlDXoosdOQn9tN1ml6UHJiv+kAKHD0HjfI3OXbEAM1Hl2o
+	HEW8dBeX6GVRuMBywdSRbPtNzA==
+X-Received: by 2002:a5d:54c8:0:b0:317:5e5e:60e0 with SMTP id x8-20020a5d54c8000000b003175e5e60e0mr4055046wrv.28.1693486795961;
+        Thu, 31 Aug 2023 05:59:55 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 03/41] qemu/uri: Use QueryParams type definition
-Date: Thu, 31 Aug 2023 14:56:05 +0200
-Message-ID: <20230831125646.67855-4-philmd@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	qemu-s390x@nongnu.org,
+	qemu-ppc@nongnu.org,
+	qemu-riscv@nongnu.org,
+	qemu-block@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Paul Durrant <paul@xen.org>,
+	xen-devel@lists.xenproject.org
+Subject: [PULL 31/41] hw/usb: spelling fixes
+Date: Thu, 31 Aug 2023 14:56:33 +0200
+Message-ID: <20230831125646.67855-32-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230831125646.67855-1-philmd@linaro.org>
 References: <20230831125646.67855-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: D05yhHGkjHFE
+X-TUID: +OiSHsfqH91w
 
-Follow QEMU CODING_STYLE, use the type definition,
-making that prototype match the following two.
+From: Michael Tokarev <mjt@tls.msk.ru>
 
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20230823065335.1919380-14-mjt@tls.msk.ru>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20230605175647.88395-4-philmd@linaro.org>
 ---
- include/qemu/uri.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/usb/quirks.h             | 2 +-
+ hw/usb/ccid-card-emulated.c | 2 +-
+ hw/usb/hcd-ehci.c           | 6 +++---
+ hw/usb/hcd-ohci.c           | 2 +-
+ hw/usb/redirect.c           | 2 +-
+ hw/usb/xen-usb.c            | 2 +-
+ hw/usb/trace-events         | 2 +-
+ 7 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/include/qemu/uri.h b/include/qemu/uri.h
-index b43f35a6a6..2875c51417 100644
---- a/include/qemu/uri.h
-+++ b/include/qemu/uri.h
-@@ -96,7 +96,7 @@ typedef struct QueryParams {
-   QueryParam *p;       /* array of parameters */
- } QueryParams;
+diff --git a/hw/usb/quirks.h b/hw/usb/quirks.h
+index c3e595f40b..94b2c95341 100644
+--- a/hw/usb/quirks.h
++++ b/hw/usb/quirks.h
+@@ -67,7 +67,7 @@ static const struct usb_device_id usbredir_raw_serial_ids[] = {
+     { USB_DEVICE(0x10C4, 0x800A) }, /* SPORTident BSM7-D-USB main station */
+     { USB_DEVICE(0x10C4, 0x803B) }, /* Pololu USB-serial converter */
+     { USB_DEVICE(0x10C4, 0x8044) }, /* Cygnal Debug Adapter */
+-    { USB_DEVICE(0x10C4, 0x804E) }, /* Software Bisque Paramount ME build-in converter */
++    { USB_DEVICE(0x10C4, 0x804E) }, /* Software Bisque Paramount ME built-in converter */
+     { USB_DEVICE(0x10C4, 0x8053) }, /* Enfora EDG1228 */
+     { USB_DEVICE(0x10C4, 0x8054) }, /* Enfora GSM2228 */
+     { USB_DEVICE(0x10C4, 0x8066) }, /* Argussoft In-System Programmer */
+diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
+index c328660075..3ee9c73b87 100644
+--- a/hw/usb/ccid-card-emulated.c
++++ b/hw/usb/ccid-card-emulated.c
+@@ -518,7 +518,7 @@ static void emulated_realize(CCIDCardState *base, Error **errp)
+         goto out2;
+     }
  
--struct QueryParams *query_params_new (int init_alloc);
-+QueryParams *query_params_new (int init_alloc);
- extern QueryParams *query_params_parse (const char *query);
- extern void query_params_free (QueryParams *ps);
+-    /* TODO: a passthru backened that works on local machine. third card type?*/
++    /* TODO: a passthru backend that works on local machine. third card type?*/
+     if (card->backend == BACKEND_CERTIFICATES) {
+         if (card->cert1 != NULL && card->cert2 != NULL && card->cert3 != NULL) {
+             ret = emulated_initialize_vcard_from_certificates(card);
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+index c930c60921..19b4534c20 100644
+--- a/hw/usb/hcd-ehci.c
++++ b/hw/usb/hcd-ehci.c
+@@ -1464,7 +1464,7 @@ static int ehci_process_itd(EHCIState *ehci,
+                     usb_handle_packet(dev, &ehci->ipacket);
+                     usb_packet_unmap(&ehci->ipacket, &ehci->isgl);
+                 } else {
+-                    DPRINTF("ISOCH: attempt to addess non-iso endpoint\n");
++                    DPRINTF("ISOCH: attempt to address non-iso endpoint\n");
+                     ehci->ipacket.status = USB_RET_NAK;
+                     ehci->ipacket.actual_length = 0;
+                 }
+@@ -1513,7 +1513,7 @@ static int ehci_process_itd(EHCIState *ehci,
  
+ 
+ /*  This state is the entry point for asynchronous schedule
+- *  processing.  Entry here consitutes a EHCI start event state (4.8.5)
++ *  processing.  Entry here constitutes a EHCI start event state (4.8.5)
+  */
+ static int ehci_state_waitlisthead(EHCIState *ehci,  int async)
+ {
+@@ -2458,7 +2458,7 @@ static void usb_ehci_vm_state_change(void *opaque, bool running, RunState state)
+     /*
+      * The schedule rebuilt from guest memory could cause the migration dest
+      * to miss a QH unlink, and fail to cancel packets, since the unlinked QH
+-     * will never have existed on the destination. Therefor we must flush the
++     * will never have existed on the destination. Therefore we must flush the
+      * async schedule on savevm to catch any not yet noticed unlinks.
+      */
+     if (state == RUN_STATE_SAVE_VM) {
+diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+index cc5cde6983..7ff1b65ced 100644
+--- a/hw/usb/hcd-ohci.c
++++ b/hw/usb/hcd-ohci.c
+@@ -1355,7 +1355,7 @@ static uint32_t ohci_get_frame_remaining(OHCIState *ohci)
+     if ((ohci->ctl & OHCI_CTL_HCFS) != OHCI_USB_OPERATIONAL) {
+         return ohci->frt << 31;
+     }
+-    /* Being in USB operational state guarnatees sof_time was set already. */
++    /* Being in USB operational state guarantees sof_time was set already. */
+     tks = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) - ohci->sof_time;
+     if (tks < 0) {
+         tks = 0;
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index 4bbf8afb33..c9893df867 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -471,7 +471,7 @@ static int bufp_alloc(USBRedirDevice *dev, uint8_t *data, uint16_t len,
+         DPRINTF("bufpq overflow, dropping packets ep %02X\n", ep);
+         dev->endpoint[EP2I(ep)].bufpq_dropping_packets = 1;
+     }
+-    /* Since we're interupting the stream anyways, drop enough packets to get
++    /* Since we're interrupting the stream anyways, drop enough packets to get
+        back to our target buffer size */
+     if (dev->endpoint[EP2I(ep)].bufpq_dropping_packets) {
+         if (dev->endpoint[EP2I(ep)].bufpq_size >
+diff --git a/hw/usb/xen-usb.c b/hw/usb/xen-usb.c
+index 38ee660a30..09ec326aea 100644
+--- a/hw/usb/xen-usb.c
++++ b/hw/usb/xen-usb.c
+@@ -451,7 +451,7 @@ static int usbback_check_and_submit(struct usbback_req *usbback_req)
+     wValue = le16_to_cpu(ctrl->wValue);
+ 
+     /*
+-     * When the device is first connected or resetted, USB device has no
++     * When the device is first connected or reset, USB device has no
+      * address. In this initial state, following requests are sent to device
+      * address (#0),
+      *
+diff --git a/hw/usb/trace-events b/hw/usb/trace-events
+index 6bb9655c8d..ed7dc210d3 100644
+--- a/hw/usb/trace-events
++++ b/hw/usb/trace-events
+@@ -248,7 +248,7 @@ usb_set_device_feature(int addr, int feature, int ret) "dev %d, feature %d, ret
+ 
+ # dev-hub.c
+ usb_hub_reset(int addr) "dev %d"
+-usb_hub_control(int addr, int request, int value, int index, int length) "dev %d, req 0x%x, value %d, index %d, langth %d"
++usb_hub_control(int addr, int request, int value, int index, int length) "dev %d, req 0x%x, value %d, index %d, length %d"
+ usb_hub_get_port_status(int addr, int nr, int status, int changed) "dev %d, port %d, status 0x%x, changed 0x%x"
+ usb_hub_set_port_feature(int addr, int nr, const char *f) "dev %d, port %d, feature %s"
+ usb_hub_clear_port_feature(int addr, int nr, const char *f) "dev %d, port %d, feature %s"
 -- 
 2.41.0
 

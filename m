@@ -1,246 +1,184 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp246754ejc;
-        Thu, 31 Aug 2023 15:57:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHZTiJo5wNiTYsvoZ89SLiPMx75DEvMKB/h+c2eQgNPa64Y+p9Nx3El6UzBNiiR+oOThrTp
-X-Received: by 2002:a05:620a:4155:b0:76d:331f:3683 with SMTP id k21-20020a05620a415500b0076d331f3683mr931806qko.33.1693522647599;
-        Thu, 31 Aug 2023 15:57:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693522647; cv=none;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp246880ejc;
+        Thu, 31 Aug 2023 15:57:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFisBsFMV+a36//YgRBDv7rUD5nVA8p+GlC7yYr3eUKnVAdb44wFcTepTXkd+HwR7XcgZj6
+X-Received: by 2002:a67:b349:0:b0:44d:4aa1:9d44 with SMTP id b9-20020a67b349000000b0044d4aa19d44mr1072177vsm.8.1693522668718;
+        Thu, 31 Aug 2023 15:57:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693522668; cv=none;
         d=google.com; s=arc-20160816;
-        b=FEM2lXEIL3mMCwmococfZy5Vkh7kGvNFS0D9+Ozdh5AwCqpSGwuDue/iCFGEsyi9LQ
-         3MR6tq0D7Oc6HnXaTK/CweGLQkhQs1eYIDH5tL2cyJuZnqJBOBGZkpJc9eSxtOl4JbmL
-         gtzfupzlCeqbGG+xFwg4J0t0TJwqwoBuifyjSHtoDIfZXhqMI85o/yP31kEa83mv7mb9
-         s7/7hFNxpq6TmetGL3ckfcp3D3udhcrMUAnzrwfwgIIXmpCvWb/1u42ssEfRGu8oD4pS
-         NTM9uW7Q5g1e+hxO6I/rHLGRB4x225UF+TSTuH5ayqrSM+Bl+ZpTykEQzf0bZQnZ8m93
-         vpaQ==
+        b=Wfg5VetgcV+fTv3WkGLM3NccbZu3TMC+mEfExM9evu4nuFVubSJsQ2ns7awPvX5u6R
+         wVZvr+n9B+xYsaUU40zZC7HMxaPxPz+Gzq0bUabN9huj2BxMDjsXch1eSQyzg6lzSJDU
+         qOgCxHLdOQbwU8mA/WjueNrSyr2dhWVwo9zkM+OuR9g2/1O7KOZC2z7bNWDxn+kCvAH4
+         /aYAm/XZQcIQpnDVA9Co8Mefq3b8ZH1GfvLeC3F9453mxLjUYDZnNPNtUp758WL9/9kD
+         Lq5jzk+TlXkfJACx+qnRujfkTugdbmycoFPCV9GCuHDYhcX9Ogoys60MWBSEyB6VkM7+
+         qs2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Qu4c9RFtBaI++TDfUfro9qCLzzwcVfWMk2RIqvZtG8c=;
-        fh=7PFit5CQEoRTxJAteJl+Ot/K6xlaybd7DKjcYZSUX/Y=;
-        b=xBRWuZ30vZm9CNyTNdjpUcUSEGHfdzJUDeVdLYNPtZ4YIBKD1NoRZF7K99gTO3hHT2
-         5nARCGWp2OaCG6HoMJ7B6LpUw3Gavj4OKDohgq66b7dI3c9Dfv0vk0wEDg9xTqVtledo
-         AQJC1sHlevdRpxh6dYsG0ZL92+8yEa3+HUjlJMTF8VOLewo81aluVsgDaWe3yboxTMI4
-         XJJyJ5QwkImUvcSC4q1xYHSsENUJfsjvgXOfpwHvw3CTVHsxfwEFX4riLeL5lX+rlEjk
-         Pfq6mJMxyptLnBd45/BlZWQLbNzs2TUK6SdS26f0es4ysyo052KQG6BzLj4kn/3jKOVp
-         UlNQ==
+        bh=YH1ZsJfL6odLNAdY06q9TX6w45RtA1ESU5uhuRXFuvE=;
+        fh=A08pzt7tFDng4dMuda6EQbX7ZokwbpVz0mNhIbO+ujY=;
+        b=CTrcZTG2uYUo/O8jUAcn2JfFagh/2c7HfFQhFPXDX2PxD42xti9bYVV5rQlgkMIsOo
+         0v4nrmqTDtSB/fOMf/G67w2rrLttszmasIUEOYWLXtJlQ7HmxMcWbiaBlWWCclWwl6hU
+         yWZOKZexpFgLRsLiIaeG1Zix736VvfwHw1iMljXHVn9qLIcnispujEKsLt1PhxMMumoL
+         KmKZ/hhH9kyr8UZlRrdM112dayyQE7kUCxDd0dx5SLrT0b6ysaI4A3gXrx4knj5BH/dZ
+         hf6ZL/W9aLyFf57fWb8vQliGNN0n3FBNVDnmkxyDVSAixaKUEZwdnzecnB4zK3Zq6Ioo
+         wfaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GTfYsgqo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=GfTNNTLC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12-20020a05620a0d8c00b0076cb7c7d9d1si1602822qkl.637.2023.08.31.15.57.27
+        by mx.google.com with ESMTPS id m7-20020a05622a118700b004053a81da96si1472833qtk.141.2023.08.31.15.57.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 15:57:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 31 Aug 2023 15:57:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GTfYsgqo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=GfTNNTLC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qbqaf-0003w1-1h; Thu, 31 Aug 2023 18:56:43 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qbqat-00044P-CY; Thu, 31 Aug 2023 18:56:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbqaZ-0003vV-MX
- for qemu-devel@nongnu.org; Thu, 31 Aug 2023 18:56:36 -0400
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbqao-00040H-PI
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 18:56:51 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbqaV-0002rA-OP
- for qemu-devel@nongnu.org; Thu, 31 Aug 2023 18:56:35 -0400
-Received: by mail-lj1-x232.google.com with SMTP id
- 38308e7fff4ca-2b9c907bc68so24071511fa.2
- for <qemu-devel@nongnu.org>; Thu, 31 Aug 2023 15:56:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbqal-0002w8-Fc
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 18:56:49 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-3fee8af9cb9so13986095e9.1
+ for <qemu-arm@nongnu.org>; Thu, 31 Aug 2023 15:56:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693522589; x=1694127389; darn=nongnu.org;
+ d=linaro.org; s=google; t=1693522606; x=1694127406; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Qu4c9RFtBaI++TDfUfro9qCLzzwcVfWMk2RIqvZtG8c=;
- b=GTfYsgqo7ijh+8jeEQAnVC3XyjzS8eBS3JPUxKmtWU4J0AG/axnP8xLvWJgRYCZ8uT
- sQ0Wlz7kIQZoYTNXE55CsxEuKxDqDBenvJStG2Pl46QEcsENwV3ZdqP041Z1bO7Bn59D
- BdTVsUwSrCu6UlB4KmnHcF7PYdI8higLijkeFmSe3ZTStX7LGNmvDvXcH3LM/HXqd9AW
- RyOniZM2qchb+eqRVXPHV285ZK5q7Vd729AJkm0e9X5Lnc0zLOHkdZLwcubsb1DbqMzt
- 2UxuHw0LfH/CbTm2UOBYyCwonzlxRzpOjI29AwqYXkN7J8RAHwlFEuoMZiKYzjJSn5GV
- 8Ezw==
+ bh=YH1ZsJfL6odLNAdY06q9TX6w45RtA1ESU5uhuRXFuvE=;
+ b=GfTNNTLCOssgT8ThaAdd2nVWOSr/BgMaJcLSADuegdNXnggMm243a98KIbcTT1bI73
+ 5uVMbBa0QEy4niLsUVI1bevwSskGpXVzCZcWqihZ0fxqZA/JuZEgr8De78gTsk3+SrrB
+ b0T63CYf4LFf0ZEMikRZUuZjqpzCUiMjiZ5rqYc52gs86v5cX3wlQEHL+b4hbaoRzdg8
+ KL3VpHbuhjnpYX095tFK5hJBYLY6zmZ69oU/HA1RUP2KfXFHU8ZTD5lb/jqQ8RJkKAR9
+ Itk1fCczb8N7dLVvDmx3yZmIX6ABztJ1U3ygym6JX2Vd/RtrPYpc2h9PDHxD+6IxP5yP
+ UfrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693522589; x=1694127389;
+ d=1e100.net; s=20221208; t=1693522606; x=1694127406;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Qu4c9RFtBaI++TDfUfro9qCLzzwcVfWMk2RIqvZtG8c=;
- b=Guph8hvurGhxx5j/UFtPvLrDzuLnuxUErNVgageNzYWuhlY7VuawyOntAOv3+ymQQM
- qeKWobFHl1bU3oPSe6jVek62/No/gqSOOb6468WGRJLs+Ihvj1OYqWCGdZ2txSCKAM+I
- zUgHBT+3hS989qXvlyVGfHUjTbJldppQtbvY7xpHVP/uBE/rpeOLMabcX/m9LF1oWlya
- UQbKkZTJ+iH/DxKnRp+2pdRn2O5266ItJ4eDaImnvJqODcP3/8M6YgJvgoYGvQPhts02
- s+O9kHlUzRotCA2NA8QoWthM5/eb6IaxLAlXSvbqWzSjGw5IWmIiKpZalXLP6oUU5G+Q
- +AYA==
-X-Gm-Message-State: AOJu0YzyHOy7pU02R11pdBhRJoBjMRf9+BBuSa1Er0M7EpmqauKjH6YX
- 5B0QUt0myFZabM4W0ig0HLNWvJNzKQS3/v5Gw1U=
-X-Received: by 2002:a05:6512:33d5:b0:4f8:631b:bf77 with SMTP id
- d21-20020a05651233d500b004f8631bbf77mr513403lfg.22.1693522589028; 
- Thu, 31 Aug 2023 15:56:29 -0700 (PDT)
+ bh=YH1ZsJfL6odLNAdY06q9TX6w45RtA1ESU5uhuRXFuvE=;
+ b=NbuEaii0scV03xRfdMHrCRQHjJc2vQ8UGSi0U8hwuh3DweN/vGYJvFaS+Gk83rdkdM
+ r3PHM3FE7LNDZdgLRL0oJMrzHEsc6URHEHzuBSYv+lh7onTRclIZf35ApsDvCXlnTxLB
+ p6+7MLSWaEu53rxq/nZqCPOWqmH7z1vrF/bvPF3YMq4/H8euXTtq9TX+takNWRJ89ujf
+ J1tslfcjr8UEB9PrD6Yipg1+aUliIgEa8x9xokm+0MCS4poWHM8jYfEfOlzljTS/gcgj
+ +xfpJ2gsEVVCmxcI0bGAQY1l0T8gtluv7tiEo5c2mtFe85SRYGAcxVChabB0RoXQUdLi
+ yP2A==
+X-Gm-Message-State: AOJu0YxWthaUE5d3BaSp1NrRJpg0DvlaAiVWafKWzGAKWXZwavt2YyFO
+ gVLizsZS6/TI3nNxYdp9rVH+WQ==
+X-Received: by 2002:a7b:cbcb:0:b0:3fe:22a9:910 with SMTP id
+ n11-20020a7bcbcb000000b003fe22a90910mr468242wmi.14.1693522606141; 
+ Thu, 31 Aug 2023 15:56:46 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.199.245])
  by smtp.gmail.com with ESMTPSA id
- j4-20020aa7c0c4000000b005232e637c24sm1302592edp.84.2023.08.31.15.56.27
+ rn1-20020a170906d92100b00992665694f7sm1239358ejb.107.2023.08.31.15.56.44
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Aug 2023 15:56:28 -0700 (PDT)
+ Thu, 31 Aug 2023 15:56:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org,
  David Gibson <david@gibson.dropbear.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Subject: [PATCH 03/11] target/mips: Clean up local variable shadowing
-Date: Fri,  1 Sep 2023 00:55:58 +0200
-Message-ID: <20230831225607.30829-4-philmd@linaro.org>
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Subject: [PATCH 06/11] hw/arm/allwinner: Clean up local variable shadowing
+Date: Fri,  1 Sep 2023 00:56:01 +0200
+Message-ID: <20230831225607.30829-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230831225607.30829-1-philmd@linaro.org>
 References: <20230831225607.30829-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::232;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x232.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aCbfYDZTHlfy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /uMafIRomyNq
 
 Fix:
 
-  target/mips/tcg/nanomips_translate.c.inc:4410:33: error: declaration shadows a local variable [-Werror,-Wshadow]
-                        int32_t imm = extract32(ctx->opcode, 1, 13) |
-                                ^
-  target/mips/tcg/nanomips_translate.c.inc:3577:9: note: previous declaration is here
-    int imm;
-        ^
-  target/mips/tcg/translate.c:15578:19: error: declaration shadows a local variable [-Werror,-Wshadow]
-    for (unsigned i = 1; i < 32; i++) {
-                  ^
-  target/mips/tcg/translate.c:15567:9: note: previous declaration is here
-    int i;
-        ^
-  target/mips/tcg/msa_helper.c:7478:13: error: declaration shadows a local variable [-Werror,-Wshadow]
-            MSA_FLOAT_MAXOP(pwx->w[0], min, pws->w[0], pws->w[0], 32);
-            ^
-  target/mips/tcg/msa_helper.c:7434:23: note: expanded from macro 'MSA_FLOAT_MAXOP'
-        float_status *status = &env->active_tc.msa_fp_status;
-                      ^
+  hw/arm/allwinner-r40.c:412:14: error: declaration shadows a local variable [-Werror,-Wshadow]
+    for (int i = 0; i < AW_R40_NUM_MMCS; i++) {
+             ^
+  hw/arm/allwinner-r40.c:299:14: note: previous declaration is here
+    unsigned i;
+             ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/mips/tcg/msa_helper.c             | 8 ++++----
- target/mips/tcg/translate.c              | 8 +++-----
- target/mips/tcg/nanomips_translate.c.inc | 6 +++---
- 3 files changed, 10 insertions(+), 12 deletions(-)
+ hw/arm/allwinner-r40.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/target/mips/tcg/msa_helper.c b/target/mips/tcg/msa_helper.c
-index 29b31d70fe..391a5fca26 100644
---- a/target/mips/tcg/msa_helper.c
-+++ b/target/mips/tcg/msa_helper.c
-@@ -7431,15 +7431,15 @@ void helper_msa_ftq_df(CPUMIPSState *env, uint32_t df, uint32_t wd,
- 
- #define MSA_FLOAT_MAXOP(DEST, OP, ARG1, ARG2, BITS)                         \
-     do {                                                                    \
--        float_status *status = &env->active_tc.msa_fp_status;               \
-+        float_status *status_ = &env->active_tc.msa_fp_status;              \
-         int c;                                                              \
-                                                                             \
--        set_float_exception_flags(0, status);                               \
--        DEST = float ## BITS ## _ ## OP(ARG1, ARG2, status);                \
-+        set_float_exception_flags(0, status_);                              \
-+        DEST = float ## BITS ## _ ## OP(ARG1, ARG2, status_);               \
-         c = update_msacsr(env, 0, 0);                                       \
-                                                                             \
-         if (get_enabled_exceptions(env, c)) {                               \
--            DEST = ((FLOAT_SNAN ## BITS(status) >> 6) << 6) | c;            \
-+            DEST = ((FLOAT_SNAN ## BITS(status_) >> 6) << 6) | c;           \
-         }                                                                   \
-     } while (0)
- 
-diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
-index 9bb40f1849..26d741d960 100644
---- a/target/mips/tcg/translate.c
-+++ b/target/mips/tcg/translate.c
-@@ -15564,10 +15564,8 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb, int *max_insns,
- 
- void mips_tcg_init(void)
+diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+index 7d29eb224f..a0d367c60d 100644
+--- a/hw/arm/allwinner-r40.c
++++ b/hw/arm/allwinner-r40.c
+@@ -296,10 +296,9 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
  {
--    int i;
--
-     cpu_gpr[0] = NULL;
--    for (i = 1; i < 32; i++)
-+    for (unsigned i = 1; i < 32; i++)
-         cpu_gpr[i] = tcg_global_mem_new(cpu_env,
-                                         offsetof(CPUMIPSState,
-                                                  active_tc.gpr[i]),
-@@ -15584,7 +15582,7 @@ void mips_tcg_init(void)
-                                                rname);
-     }
- #endif /* !TARGET_MIPS64 */
--    for (i = 0; i < 32; i++) {
-+    for (unsigned i = 0; i < 32; i++) {
-         int off = offsetof(CPUMIPSState, active_fpu.fpr[i].wr.d[0]);
+     const char *r40_nic_models[] = { "gmac", "emac", NULL };
+     AwR40State *s = AW_R40(dev);
+-    unsigned i;
  
-         fpu_f64[i] = tcg_global_mem_new_i64(cpu_env, off, fregnames[i]);
-@@ -15592,7 +15590,7 @@ void mips_tcg_init(void)
-     msa_translate_init();
-     cpu_PC = tcg_global_mem_new(cpu_env,
-                                 offsetof(CPUMIPSState, active_tc.PC), "PC");
--    for (i = 0; i < MIPS_DSP_ACC; i++) {
-+    for (unsigned i = 0; i < MIPS_DSP_ACC; i++) {
-         cpu_HI[i] = tcg_global_mem_new(cpu_env,
-                                        offsetof(CPUMIPSState, active_tc.HI[i]),
-                                        regnames_HI[i]);
-diff --git a/target/mips/tcg/nanomips_translate.c.inc b/target/mips/tcg/nanomips_translate.c.inc
-index a98dde0d2e..d81a7c2d11 100644
---- a/target/mips/tcg/nanomips_translate.c.inc
-+++ b/target/mips/tcg/nanomips_translate.c.inc
-@@ -4407,8 +4407,8 @@ static int decode_nanomips_32_48_opc(CPUMIPSState *env, DisasContext *ctx)
-                 case NM_BPOSGE32C:
-                     check_dsp_r3(ctx);
-                     {
--                        int32_t imm = extract32(ctx->opcode, 1, 13) |
--                                      extract32(ctx->opcode, 0, 1) << 13;
-+                        imm = extract32(ctx->opcode, 1, 13)
-+                            | extract32(ctx->opcode, 0, 1) << 13;
+     /* CPUs */
+-    for (i = 0; i < AW_R40_NUM_CPUS; i++) {
++    for (unsigned i = 0; i < AW_R40_NUM_CPUS; i++) {
  
-                         gen_compute_branch_nm(ctx, OPC_BPOSGE32, 4, -1, -2,
-                                               imm << 1);
-@@ -4635,7 +4635,7 @@ static int decode_isa_nanomips(CPUMIPSState *env, DisasContext *ctx)
-         break;
-     case NM_LI16:
-         {
--            int imm = extract32(ctx->opcode, 0, 7);
-+            imm = extract32(ctx->opcode, 0, 7);
-             imm = (imm == 0x7f ? -1 : imm);
-             if (rt != 0) {
-                 tcg_gen_movi_tl(cpu_gpr[rt], imm);
+         /*
+          * Disable secondary CPUs. Guest EL3 firmware will start
+@@ -335,7 +334,7 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+      * maintenance interrupt signal to the appropriate GIC PPI inputs,
+      * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
+      */
+-    for (i = 0; i < AW_R40_NUM_CPUS; i++) {
++    for (unsigned i = 0; i < AW_R40_NUM_CPUS; i++) {
+         DeviceState *cpudev = DEVICE(&s->cpus[i]);
+         int ppibase = AW_R40_GIC_NUM_SPI + i * GIC_INTERNAL + GIC_NR_SGIS;
+         int irq;
+@@ -494,7 +493,7 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+                        qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_EMAC));
+ 
+     /* Unimplemented devices */
+-    for (i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
++    for (unsigned i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
+         create_unimplemented_device(r40_unimplemented[i].device_name,
+                                     r40_unimplemented[i].base,
+                                     r40_unimplemented[i].size);
 -- 
 2.41.0
 

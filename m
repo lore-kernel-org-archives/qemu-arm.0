@@ -1,139 +1,220 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp129476ejc;
-        Thu, 31 Aug 2023 12:01:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHbHm3Es+xOJerWUAMDZ5CAQUf8udYI/r1rwKrWB/Wf/XFoOWWHXiWNotZeSLSPkODC2BFj
-X-Received: by 2002:aa7:cd7a:0:b0:522:1f09:dde3 with SMTP id ca26-20020aa7cd7a000000b005221f09dde3mr393005edb.3.1693508476367;
-        Thu, 31 Aug 2023 12:01:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693508476; cv=none;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp246493ejc;
+        Thu, 31 Aug 2023 15:56:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHzQvf7ZWEv4ktTa5vUWhNw0a8rq902W7tYWY2F+mSCDYPOwDnfptfr/pbrHgf8QVLmIj/e
+X-Received: by 2002:ac8:590c:0:b0:411:f5c0:5db with SMTP id 12-20020ac8590c000000b00411f5c005dbmr929912qty.26.1693522605364;
+        Thu, 31 Aug 2023 15:56:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693522605; cv=none;
         d=google.com; s=arc-20160816;
-        b=FSgzEuJmDaPEJa7Bk3iIfBQEdl5GFp/hc7jr949T1Zo6n820QooOImZV72QYZQ/Mhd
-         86oJAz5hfAb+xDvYGkjv9lTuGwG/wEqSZhwmBmnph1Mwo2VGn7svtc4lvQLIjChXyXPn
-         zBn50EV7s3FjcGnzLeBIkDX/u9D1c4B+8Ha6mCC0SJN8FNODtljhIX28PbIjqRPJmKXt
-         CxEkuGLD3YUD9lKXfRng01vO/9gCGGiNs6cuLkvoJLg8sNPkAWJTAg+A71DeZBENGugL
-         6wxIXwNWTkhcU+wEoIbJGdOhVko5J8VVIkDc33yEnMx0cZhrOai/OAZpvpupgUeuUu0x
-         bvaw==
+        b=Q3PTTbDyxQ9GCpE89XjNCh4cBhP5wcftgjXFykdLJIpQGfekmncbxprLs0TaIfzFhY
+         UGwQ75nxkrSyYou2KQ2uu+I3FdwzRXqj7zy1InvI05qv1HUEyPdgicDkap2PtUsKv6U3
+         fZ0ryI54/Dfy3QMZpYpHhoqh6ioi1s27jLFexNRdmCnz27w1Z9wkVjCUm1W9ttcU0Ch3
+         NO9HH/PEF7YN6yCapjCWq4OeCvVa+nvo7eg4V/oCUybHo0lALcTJ5yQ8oRIdqIlozDdo
+         0vDEblMZxyBI+kazalv7Nwx+o4/oY4B5T8V8dzbQVA+oYvyo7nY+xm63ChpT23rCfBIA
+         ngng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:cc:to:from:subject:message-id:mime-version:date
-         :dkim-signature;
-        bh=w6Yyv6ujwYagqpF1MJSJZ41XD5zmN9Sx2XGwawvqoDw=;
-        fh=CbxwL8DkOrGDn108oDa/bldLEumz3knHa9SNylRBRCg=;
-        b=E9CJk2UQ1viduSe8p2vWCXjgNEQN84P3P/w4lLPA2ur+ikhpda74JiUm9av4r42aU6
-         88T0t7eadpI6aiz4+JEo2/NM4V825XIeuDMsnfIbsIBF1p+2kfse/UvIyWr4RJMotRmO
-         BWGlIsKLBQJRNyLvmGTgf/pRpKmCxzyN5aaKNcaytjoYiZPeQpQlZ124MSbHjQSLOpx9
-         5kXv1hvX6Y6ItzrIJn7RooPOMp+uUWAGtRdgbC+w0EDVnKGH5N2/Ue+u4ZIAQRu3kKjR
-         PZCqpMGyn9oZQlquDQwKSEoXMSVko5h6Pm3TGuQlprbC+cJTWFbdIK7w26d/k+ydWJ0G
-         gHIg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=kEesyLIbjrA7oeyx/iNQirg7zO4jKel4RvIBPMrDvkc=;
+        fh=CMH4F3RZ59Ef3SLg0ppc7vxpUPvCiZChm09KUhwMALI=;
+        b=QM7YQDoSfDv73X6MLL6ZLDtGy4r1XDheWzwynWEFA2wFhOhaWYDArI9um2ZLZnSGyx
+         Yp0HjOdwyOvrlnUwbD2d/RvPioZxALSUise04YnwMtvVU4Pd/J1h/oQO+sdYJyvQmpXh
+         Z76KhzVEPVea4c40b2nYc5G2mouBofU4I0ytkqOcXz3T6fOXZk++C/3jeh1bpmDzZuUi
+         3lIJ1Jdv1I52I4zGdTnJs+CM6+3lYhTLpBrtnlVUF/SWO04pR8DNSyGTCyA+ZghOQReK
+         GUt+2jjgW6fl19ssnYZedR7xmoitFq7uFSRNEtgv+XIMfZ+424oaUNa2WPq0XiRgAf0z
+         a7ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20221208 header.b=iJeZlol6;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id b14-20020aa7cd0e000000b005256886827esi1400138edw.607.2023.08.31.12.01.16;
-        Thu, 31 Aug 2023 12:01:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@linaro.org header.s=google header.b="F4jVEE/E";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c21-20020ac85a95000000b0040fe2787c6dsi1416235qtc.542.2023.08.31.15.56.45
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 31 Aug 2023 15:56:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20221208 header.b=iJeZlol6;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S241453AbjHaTBR (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Thu, 31 Aug 2023 15:01:17 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:53338 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S236263AbjHaTBR (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 31 Aug 2023 15:01:17 -0400
-Received: from mail-yw1-x114a.google.com (mail-yw1-x114a.google.com [IPv6:2607:f8b0:4864:20::114a])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 611E8E64
-        for <kvm@vger.kernel.org>; Thu, 31 Aug 2023 12:01:14 -0700 (PDT)
-Received: by mail-yw1-x114a.google.com with SMTP id 00721157ae682-58c9d29588aso15535907b3.0
-        for <kvm@vger.kernel.org>; Thu, 31 Aug 2023 12:01:14 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="F4jVEE/E";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qbqaT-0003u5-V9; Thu, 31 Aug 2023 18:56:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbqaR-0003t2-EX
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 18:56:27 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbqaP-0002q7-4A
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 18:56:27 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-9a58dbd5daeso168505966b.2
+ for <qemu-arm@nongnu.org>; Thu, 31 Aug 2023 15:56:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20221208; t=1693508473; x=1694113273; darn=vger.kernel.org;
-        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=w6Yyv6ujwYagqpF1MJSJZ41XD5zmN9Sx2XGwawvqoDw=;
-        b=iJeZlol6pcGftJ258RQQGOomkR47eYg5nDMqFvI+bTce6J2mBjA0VCK5w/RNRP/QJN
-         /0bB9g5g6uPIvZIkvDwwk+K/m+DSaNa+AQRH9B0CT5soCYKedO/ZHe+Y0CjejK72CC0l
-         NdJrkGdWIzSCagAZnPwefHtHetDZH1ZYVDaMoyeNWkG7iIHf6AbOZVYDgOC+hmZ+WuPz
-         LmqhaEk5BZ74pODgWkFp4DquzCGrTuMXIqfkg+KzCQWeaoJi2jGHBQSiOZpS29c6rT6N
-         9q689fxZDcUiibHCJYjE1JMGvL4R7gAKNywGTeBPHksb2VESKPczgWmGLmLt0a1UnDTj
-         dgeg==
+ d=linaro.org; s=google; t=1693522584; x=1694127384; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=kEesyLIbjrA7oeyx/iNQirg7zO4jKel4RvIBPMrDvkc=;
+ b=F4jVEE/EC9e8pVSN7jp1DFlKqcEYCPgMMV8Kt3Y42JeEYljU7v5fkFy1wY1OVuYPUD
+ YKLN4EOH6ZU4dwVr7wd7qY4HE2FkSJFDnQRx2+rmtiFxKlJME2wen2Y+TujK5dqgizcn
+ 5CwB/dN/lfSgqGIhhLtJurGa4CIwVf3p7tlH+XY1E10DxCl4P4k1yXTdYu2sPqDl4pQm
+ o8lSsoy+wip0ruywOYrEpYLTJoAl2Ydi98FSsp3V9PrkQJtPGhmL2rcTd7nOGzbfVU81
+ xt21lZT6yPV64kUaU9cRnvfDHz6rd5LoSDnoapxICq3wwXFDcWU0Nwx0X92Pg8yYZUDy
+ /gMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693508473; x=1694113273;
-        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=w6Yyv6ujwYagqpF1MJSJZ41XD5zmN9Sx2XGwawvqoDw=;
-        b=PsbtkYS/csgCIWLxmlBBqZex/mjNSeHQe04y5evBuIIIVbvHx4uJoRHHQFyswHGXBz
-         dYSJ6b/G2shGtltllcl5VhnILj3aoGqLj01J2dHdQtPXm7l5ilBXnnILJBTg0gUR0gHS
-         nbD5sZDnmEh32UlFfYRc8ucsKJtxP79hSL+ovHwmNNE0nMlepv9DQwXcE8i5F/yh/jqa
-         9jB7ZdGZxoXhZ88XQowmRmwvVWtlrYw52PovusylUziLyep16M8BoJ6Z8MOzcZyEU2Pa
-         Bq6U3AufWQQFV9nOpUMebl6PDZfyUa0df0a9Cm1Ha/dMvhDwptFrYD+9o7siDCMG24iE
-         2/jw==
-X-Gm-Message-State: AOJu0YwYMfTAXQv/aZkqxba/YyovytpTqBqi8UY6fUqSeb6xC0zcLMhZ
-        ePY5D7mCq2jFpiNZE46Km64GOHi2TSbQQkWH5Q==
-X-Received: from coltonlewis-kvm.c.googlers.com ([fda3:e722:ac3:cc00:2b:ff92:c0a8:14ce])
- (user=coltonlewis job=sendgmr) by 2002:a05:6902:11c9:b0:d20:7752:e384 with
- SMTP id n9-20020a05690211c900b00d207752e384mr16197ybu.3.1693508473694; Thu,
- 31 Aug 2023 12:01:13 -0700 (PDT)
-Date:   Thu, 31 Aug 2023 19:00:52 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.42.0.283.g2d96d420d3-goog
-Message-ID: <20230831190052.129045-1-coltonlewis@google.com>
-Subject: [PATCH] arm64: Restore trapless ptimer access
-From:   Colton Lewis <coltonlewis@google.com>
-To:     qemu-devel@nongnu.org
-Cc:     Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-        kvm@vger.kernel.org, Andrew Jones <andrew.jones@linux.dev>,
-        qemu-trivial@nongnu.org, Colton Lewis <coltonlewis@google.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Spam-Status: No, score=-9.6 required=5.0 tests=BAYES_00,DKIMWL_WL_MED,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS,USER_IN_DEF_DKIM_WL autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: z00Tg1NMKe0X
+ d=1e100.net; s=20221208; t=1693522584; x=1694127384;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=kEesyLIbjrA7oeyx/iNQirg7zO4jKel4RvIBPMrDvkc=;
+ b=WnAqS12Ny3Xhd2LmBhsNQqRiW+MksTSwQ8tj2hLG943ECPpJnZzm2JeDOmcX0tCUsX
+ 7DJifoBGwKEKqZmJnXLqGwoKA0DvUdHGLo/RSL879AvRIyYIPK2PHr2GM1d5DyEQExIb
+ NWMD97XHH/sfpBvHbUIT5VVGeQPaqNcVIMMImJKWCU/pI/wGbd0GUn8uJOEvxj/Ogg2Z
+ yXO3MxhKcrHQKyDOjLq/woi1ATLI/J1w4lkxAbXha1Ppv4S/ybenhfpgB9oN6hGSB5T7
+ p3beSjGPlNbT09rvtYkFnwrQSuoKRc/9B/gEH06KfpZhXd0RRtDE10k4+7l7RKXVuBqy
+ yo2Q==
+X-Gm-Message-State: AOJu0Yzr83EPwThGhzn7Bfs87SGSuxDz3zXfoghEwyMlVd9Ep8zpVQ/Y
+ Ar4KWgsG74ll37kdmG6iMwu7Fg==
+X-Received: by 2002:a17:906:224b:b0:9a1:bee8:9252 with SMTP id
+ 11-20020a170906224b00b009a1bee89252mr542069ejr.29.1693522583206; 
+ Thu, 31 Aug 2023 15:56:23 -0700 (PDT)
+Received: from m1x-phil.lan ([176.187.199.245])
+ by smtp.gmail.com with ESMTPSA id
+ jw26-20020a17090776ba00b00982a92a849asm1252665ejc.91.2023.08.31.15.56.21
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 31 Aug 2023 15:56:22 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 02/11] target/arm: Clean up local variable shadowing
+Date: Fri,  1 Sep 2023 00:55:57 +0200
+Message-ID: <20230831225607.30829-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230831225607.30829-1-philmd@linaro.org>
+References: <20230831225607.30829-1-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: j3aF83v7hFKS
 
-Due to recent KVM changes, QEMU is setting a ptimer offset resulting
-in unintended trap and emulate access and a consequent performance
-hit. Filter out the PTIMER_CNT register to restore trapless ptimer
-access.
+Fix:
 
-Quoting Andrew Jones:
+  target/arm/tcg/translate-m-nocp.c:509:18: error: declaration shadows a local variable [-Werror,-Wshadow]
+        TCGv_i32 tmp = load_cpu_field(v7m.fpdscr[M_REG_NS]);
+                 ^
+  target/arm/tcg/translate-m-nocp.c:433:14: note: previous declaration is here
+    TCGv_i32 tmp;
+             ^
+  target/arm/tcg/mve_helper.c:2463:17: error: declaration shadows a local variable [-Werror,-Wshadow]
+        int64_t extval = sextract64(src << shift, 0, 48);
+                ^
+  target/arm/tcg/mve_helper.c:2443:18: note: previous declaration is here
+    int64_t val, extval;
+                 ^
+  target/arm/hvf/hvf.c:1936:13: error: declaration shadows a local variable [-Werror,-Wshadow]
+        int ret = 0;
+            ^
+  target/arm/hvf/hvf.c:1807:9: note: previous declaration is here
+    int ret;
+        ^
 
-Simply reading the CNT register and writing back the same value is
-enough to set an offset, since the timer will have certainly moved
-past whatever value was read by the time it's written.  QEMU
-frequently saves and restores all registers in the get-reg-list array,
-unless they've been explicitly filtered out (with Linux commit
-680232a94c12, KVM_REG_ARM_PTIMER_CNT is now in the array). So, to
-restore trapless ptimer accesses, we need a QEMU patch to filter out
-the register.
-
-See
-https://lore.kernel.org/kvmarm/gsntttsonus5.fsf@coltonlewis-kvm.c.googlers.com/T/#m0770023762a821db2a3f0dd0a7dc6aa54e0d0da9
-for additional context.
-
-Signed-off-by: Andrew Jones <andrew.jones@linux.dev>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/kvm64.c | 1 +
- 1 file changed, 1 insertion(+)
+ target/arm/hvf/hvf.c              | 1 -
+ target/arm/tcg/mve_helper.c       | 8 ++++----
+ target/arm/tcg/translate-m-nocp.c | 2 +-
+ 3 files changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 4d904a1d11..2dd46e0a99 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -672,6 +672,7 @@ typedef struct CPRegStateLevel {
-  */
- static const CPRegStateLevel non_runtime_cpregs[] = {
-     { KVM_REG_ARM_TIMER_CNT, KVM_PUT_FULL_STATE },
-+    { KVM_REG_ARM_PTIMER_CNT, KVM_PUT_FULL_STATE },
- };
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 486f90be1d..20d534faef 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1933,7 +1933,6 @@ int hvf_vcpu_exec(CPUState *cpu)
+         uint32_t rt = (syndrome >> 5) & 0x1f;
+         uint32_t reg = syndrome & SYSREG_MASK;
+         uint64_t val;
+-        int ret = 0;
  
- int kvm_arm_cpreg_level(uint64_t regidx)
+         if (isread) {
+             ret = hvf_sysreg_read(cpu, reg, rt);
+diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
+index 403b345ea3..32087b6f0a 100644
+--- a/target/arm/tcg/mve_helper.c
++++ b/target/arm/tcg/mve_helper.c
+@@ -924,8 +924,8 @@ DO_1OP_IMM(vorri, DO_ORRI)
+         bool qc = false;                                                \
+         for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE) {              \
+             bool sat = false;                                           \
+-            TYPE r = FN(n[H##ESIZE(e)], m[H##ESIZE(e)], &sat);          \
+-            mergemask(&d[H##ESIZE(e)], r, mask);                        \
++            TYPE r_ = FN(n[H##ESIZE(e)], m[H##ESIZE(e)], &sat);         \
++            mergemask(&d[H##ESIZE(e)], r_, mask);                       \
+             qc |= sat & mask & 1;                                       \
+         }                                                               \
+         if (qc) {                                                       \
+@@ -2460,7 +2460,7 @@ static inline int64_t do_sqrshl48_d(int64_t src, int64_t shift,
+             return extval;
+         }
+     } else if (shift < 48) {
+-        int64_t extval = sextract64(src << shift, 0, 48);
++        extval = sextract64(src << shift, 0, 48);
+         if (!sat || src == (extval >> shift)) {
+             return extval;
+         }
+@@ -2492,7 +2492,7 @@ static inline uint64_t do_uqrshl48_d(uint64_t src, int64_t shift,
+             return extval;
+         }
+     } else if (shift < 48) {
+-        uint64_t extval = extract64(src << shift, 0, 48);
++        extval = extract64(src << shift, 0, 48);
+         if (!sat || src == (extval >> shift)) {
+             return extval;
+         }
+diff --git a/target/arm/tcg/translate-m-nocp.c b/target/arm/tcg/translate-m-nocp.c
+index 33f6478bb9..42308c4db5 100644
+--- a/target/arm/tcg/translate-m-nocp.c
++++ b/target/arm/tcg/translate-m-nocp.c
+@@ -506,7 +506,7 @@ static bool gen_M_fp_sysreg_read(DisasContext *s, int regno,
+ 
+         gen_branch_fpInactive(s, TCG_COND_EQ, lab_active);
+         /* fpInactive case: reads as FPDSCR_NS */
+-        TCGv_i32 tmp = load_cpu_field(v7m.fpdscr[M_REG_NS]);
++        tmp = load_cpu_field(v7m.fpdscr[M_REG_NS]);
+         storefn(s, opaque, tmp, true);
+         lab_end = gen_new_label();
+         tcg_gen_br(lab_end);
 -- 
-2.42.0.283.g2d96d420d3-goog
+2.41.0
+

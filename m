@@ -1,88 +1,114 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp199091ejc;
-        Thu, 31 Aug 2023 14:13:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEfyZj6OkljKvzTfepCfAQmS0+dSy7dDCMAakrWpDLBi1/HQzN0l9cQkxn2OKPpjKzv8G4D
-X-Received: by 2002:a05:6808:1446:b0:3a7:2524:6d3b with SMTP id x6-20020a056808144600b003a725246d3bmr828048oiv.12.1693516431052;
-        Thu, 31 Aug 2023 14:13:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693516431; cv=none;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp155217ejc;
+        Thu, 31 Aug 2023 12:47:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH6PMxReGoaCTXVkr52UGIaDwpxRCskytwkVcan7gpGQKFJUWK360h11KuRYMzrcHjAlivZ
+X-Received: by 2002:ac8:4e89:0:b0:410:ace2:3d9 with SMTP id 9-20020ac84e89000000b00410ace203d9mr639293qtp.30.1693511235992;
+        Thu, 31 Aug 2023 12:47:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693511235; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sg4e1OX2ZDLY1jyBmZeYtYSWIutWT3xr/byP555DMv+wiuIp/5VV2ucJLK4kh+H5mv
-         L08WfNNi5c4Ft6+Yq69Bbh8jm4oIj9+HqAKlIaRvK/T8I1teNPlAnWtzO3ahDraVUbrx
-         XBx2q2YhW7WByH7PmYk5KTXPDOeNgvCYtI5rvYGegoYqMbJ1ijhWdUO7YCIpqRvJIhbd
-         PUJ40iAHtKoXBOH3UcS3/k/s0aug6yifmXIiX2cQQMWrjDk1I84CzDHjEEJD8qOyfEiQ
-         SFe4OsjRcQ67+P0IsTXeEs2nm7d6J4KCHjOzeiO8LEMvFT0wSdJDWBfPpRFCKuR7a4Wx
-         4FTw==
+        b=S15NW2LrCoCppNkF8DeRZq98shOECiRYc3wLyPdSx57Ary9qxBcdRh78dwivcSQLBn
+         casNoBt8GsoG4YY5mPpV3H5AtLLRrFdypGfZ+qzw7c7sNLP0YLzpfHkJt4cSq03HHrKs
+         sqDBSx6VeROsjeIqV6VSxkHehx/A77aCySDZNBRGAi85vC6aTJMGjFkruc+nW9A+arIA
+         GS0BRJfSau2c/XeFEM6zZYhMiej3BsACg1x+Ts4MZ/ayyh6PcL2Hg1kL3jIG/Xiedtvv
+         zPuDPxoAtBUuxj6LWjjJNkdWNMze/00t4PorUtq5LA2kr3ttVugFMiE5fy0pX1z8ceQk
+         YKig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=5JSY7CvpsggFZlMCpUTnTaiVma0/pwsF22amnTMgpNA=;
-        fh=8T7ZrRXJnn/1MDlZiFdq9U1WoKGMfaO+nuott9+mo2s=;
-        b=MlyF5nZZrRZkYQCArX9JsebxPAJa13t9q8E2fJok1HUeesjd8YJIQKHD36F/3bHNhq
-         pjfJkZSTOANLvMooVMOyBxfeD9OwyzmQOyU3u5w/fuRGNqUKSgKPO/rFmj9c13UtwNwr
-         4sq1QwPQtG3GFYvskUQZ/nyEeD1rbAZi8uCukje69oD1sgYvMKyn1H10lzwq6MZmiomy
-         cKxts3dISkfWVK4wH4tJlctilcWVZv3bNn8TlsAnpsUXVDSWYklB5xurL7Sj84a5jfZd
-         m4Vb+3miTIT8ASFXanp58/iUlS8KINu0DR7JVlAe2hd9J/x7VFVDRvxPgae+utzDdHDH
-         OddQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=QGnlElHHr3wTjqvHK6Of41sL3B2HP5xl8hpvoa4Uvo4=;
+        fh=lSXA+KOWLNRmm2qEyx7AMyW+7C72n3a9PMZAQAHTKe4=;
+        b=tW3UFW0LMnEPp4e+2F1v1r3aNTnU8FLFiHj894klyePokuM+QjxROAVmm1yzRbS2M9
+         3NyJDlMWZ1ns39lIOupMwXgoWrgdSG1/VM7cEFUpC+KSLRGSwlvxW9socOwW2mXbwhyK
+         mHhNAHpRKjVZ7719bPqMWcBxRUjPIK2VfOLbzfqG6GMAxd/i8QlrvYcI6NIGMyAiUIwI
+         bgWYxHCAQmeNWw4crKpD7uLxH5NlpErKU+1IvAq887DuunkMx+TfFrCPof+UdYebRoCO
+         00xrJBfaceWpvrKnIRtiQER8XE5IZa3xDVtFCLVY+dyNLAbgPSXpgdWx1ozQjTJlDgOn
+         +UMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mpxyxy8w;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t3-20020a0cb383000000b006474060106dsi1333199qve.272.2023.08.31.14.13.50
+        by mx.google.com with ESMTPS id q15-20020a05622a030f00b0040357313971si1354323qtw.662.2023.08.31.12.47.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 14:13:51 -0700 (PDT)
+        Thu, 31 Aug 2023 12:47:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mpxyxy8w;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qboyi-0002Aw-It; Thu, 31 Aug 2023 17:13:24 -0400
+	id 1qbnci-0000rR-Av; Thu, 31 Aug 2023 15:46:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=TXcQ=EQ=kaod.org=clg@ozlabs.org>)
- id 1qboyh-000265-0H; Thu, 31 Aug 2023 17:13:23 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qbncf-0000qz-Vr
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 15:46:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=TXcQ=EQ=kaod.org=clg@ozlabs.org>)
- id 1qboye-0003h8-0a; Thu, 31 Aug 2023 17:13:22 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcDQx3sRDz4x2D;
- Fri,  1 Sep 2023 07:13:13 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qbncd-0007zI-17
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 15:46:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1693511189;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=QGnlElHHr3wTjqvHK6Of41sL3B2HP5xl8hpvoa4Uvo4=;
+ b=Mpxyxy8wNg60p/I7jLGxqj8eDt4PaewvLhyxl1Ph108QTElHYeU1muH6sqOtkGr89vB+IZ
+ EeNT95LdcYinRYfhJZvN89lk5JHXw9uQqwp3v0Kbx2ZbldkpSD+QqD4Oy9ZL17SVm/75vW
+ 2yY+/r1/7vBtUzmqgTD7EzzEO2iRCx4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-658-UIz-Ab5BNzGMxJFnkkr0_Q-1; Thu, 31 Aug 2023 15:46:27 -0400
+X-MC-Unique: UIz-Ab5BNzGMxJFnkkr0_Q-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcDQv3JZXz4wy8;
- Fri,  1 Sep 2023 07:13:11 +1000 (AEST)
-Message-ID: <b6c8df57-c6e4-9962-40a3-f01d5fd2a6dc@kaod.org>
-Date: Thu, 31 Aug 2023 23:13:07 +0200
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9C8BB833951;
+ Thu, 31 Aug 2023 19:46:26 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.52])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C7F66140E96E;
+ Thu, 31 Aug 2023 19:46:25 +0000 (UTC)
+Date: Thu, 31 Aug 2023 15:46:24 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Alexander Graf <graf@amazon.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Mads Ynddal <mads@ynddal.dk>,
+ Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+ Bernhard Beschow <shentey@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [PATCH v2 08/12] hw/vmapple/bdif: Introduce vmapple backdoor
+ interface
+Message-ID: <20230831194624.GE532982@fedora>
+References: <20230830161425.91946-1-graf@amazon.com>
+ <20230830161425.91946-9-graf@amazon.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: [PATCH v3.2 5/7] aspeed: Create flash devices only when defaults are
- enabled
-Content-Language: en-US
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <20230831123922.105200-1-clg@kaod.org>
- <20230831123922.105200-6-clg@kaod.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20230831123922.105200-6-clg@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=TXcQ=EQ=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="BkagG4ZhWHPJdn3E"
+Content-Disposition: inline
+In-Reply-To: <20230830161425.91946-9-graf@amazon.com>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,112 +123,419 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rPAZUJwICMot
+X-TUID: wOL91tylDDAK
 
-When the -nodefaults option is set, flash devices should be created
-with :
 
-     -blockdev node-name=fmc0,driver=file,filename=./flash.img \
-     -device mx66u51235f,cs=0x0,bus=ssi.0,drive=fmc0 \
+--BkagG4ZhWHPJdn3E
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-To be noted that in this case, the ROM will not be installed and the
-initial boot sequence (U-Boot loading) will fetch instructions using
-SPI transactions which is significantly slower. That's exactly how HW
-operates though.
+On Wed, Aug 30, 2023 at 04:14:21PM +0000, Alexander Graf wrote:
+> The VMApple machine exposes AUX and ROOT block devices (as well as USB OTG
+> emulation) via virtio-pci as well as a special, simple backdoor platform
+> device.
+>=20
+> This patch implements this backdoor platform device to the best of my
+> understanding. I left out any USB OTG parts; they're only needed for
+> guest recovery and I don't understand the protocol yet.
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
-  docs/system/arm/aspeed.rst | 35 +++++++++++++++++++++++++++++------
-  hw/arm/aspeed.c            |  6 ++++--
-  2 files changed, 33 insertions(+), 8 deletions(-)
+Out of curiosity: This interface has no way to check the size of the
+block device? I guess that's not necessary in a boot loader that just
+parses a boot record and then loads the next stage...
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 80538422a1a4..b2dea54eedad 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -104,7 +104,7 @@ To boot a kernel directly from a Linux build tree:
-          -dtb arch/arm/boot/dts/aspeed-ast2600-evb.dtb \
-          -initrd rootfs.cpio
-  
--The image should be attached as an MTD drive. Run :
-+To boot the machine from the flash image, use an MTD drive :
-  
-  .. code-block:: bash
-  
-@@ -117,23 +117,46 @@ Options specific to Aspeed machines are :
-     device by using the FMC controller to load the instructions, and
-     not simply from RAM. This takes a little longer.
-  
-- * ``fmc-model`` to change the FMC Flash model. FW needs support for
--   the chip model to boot.
-+ * ``fmc-model`` to change the default FMC Flash model. FW needs
-+   support for the chip model to boot.
-  
-- * ``spi-model`` to change the SPI Flash model.
-+ * ``spi-model`` to change the default SPI Flash model.
-  
-   * ``bmc-console`` to change the default console device. Most of the
-     machines use the ``UART5`` device for a boot console, which is
-     mapped on ``/dev/ttyS4`` under Linux, but it is not always the
-     case.
-  
--For instance, to start the ``ast2500-evb`` machine with a different
--FMC chip and a bigger (64M) SPI chip, use :
-+To use other flash models, for instance a different FMC chip and a
-+bigger (64M) SPI for the ``ast2500-evb`` machine, run :
-  
-  .. code-block:: bash
-  
-    -M ast2500-evb,fmc-model=mx25l25635e,spi-model=mx66u51235f
-  
-+When more flexibility is needed to define the flash devices, to use
-+different flash models or define all flash devices (up to 8), the
-+``-nodefaults`` QEMU option can be used to avoid creating the default
-+flash devices.
-+
-+Flash devices should then be created from the command line and attached
-+to a block device :
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M ast2600-evb \
-+        -blockdev node-name=fmc0,driver=file,filename=/path/to/fmc0.img \
-+	-device mx66u51235f,bus=ssi.0,cs=0x0,drive=fmc0 \
-+	-blockdev node-name=fmc1,driver=file,filename=/path/to/fmc1.img \
-+	-device mx66u51235f,bus=ssi.0,cs=0x1,drive=fmc1 \
-+	-blockdev node-name=spi1,driver=file,filename=/path/to/spi1.img \
-+	-device mx66u51235f,cs=0x0,bus=ssi.1,drive=spi1 \
-+	-nographic -nodefaults
-+
-+In that case, the machine boots fetching instructions from the FMC0
-+device. It is slower to start but closer to what HW does. Using the
-+machine option ``execute-in-place`` has a similar effect.
-+
-  To change the boot console and use device ``UART3`` (``/dev/ttyS2``
-  under Linux), use :
-  
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index cd92cf9ce0bb..271512ce5ced 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -396,12 +396,14 @@ static void aspeed_machine_init(MachineState *machine)
-      connect_serial_hds_to_uarts(bmc);
-      qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
-  
--    aspeed_board_init_flashes(&bmc->soc.fmc,
-+    if (defaults_enabled()) {
-+        aspeed_board_init_flashes(&bmc->soc.fmc,
-                                bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
-                                amc->num_cs, 0);
--    aspeed_board_init_flashes(&bmc->soc.spi[0],
-+        aspeed_board_init_flashes(&bmc->soc.spi[0],
-                                bmc->spi_model ? bmc->spi_model : amc->spi_model,
-                                1, amc->num_cs);
-+    }
-  
-      if (machine->kernel_filename && sc->num_cpus > 1) {
-          /* With no u-boot we must set up a boot stub for the secondary CPU */
--- 
-2.41.0
+I posted comments below. Otherwise:
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
+>=20
+> Signed-off-by: Alexander Graf <graf@amazon.com>
+>=20
+> ---
+>=20
+> v1 -> v2:
+>=20
+>   - Adapt to system_ss meson.build target
+> ---
+>  include/hw/vmapple/bdif.h |  31 +++++
+>  hw/vmapple/bdif.c         | 245 ++++++++++++++++++++++++++++++++++++++
+>  hw/vmapple/Kconfig        |   2 +
+>  hw/vmapple/meson.build    |   1 +
+>  hw/vmapple/trace-events   |   5 +
+>  5 files changed, 284 insertions(+)
+>  create mode 100644 include/hw/vmapple/bdif.h
+>  create mode 100644 hw/vmapple/bdif.c
+>=20
+> diff --git a/include/hw/vmapple/bdif.h b/include/hw/vmapple/bdif.h
+> new file mode 100644
+> index 0000000000..65ee43457b
+> --- /dev/null
+> +++ b/include/hw/vmapple/bdif.h
+> @@ -0,0 +1,31 @@
+> +/*
+> + * VMApple Backdoor Interface
+> + *
+> + * Copyright =A9 2023 Amazon.com, Inc. or its affiliates. All Rights Res=
+erved.
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef HW_VMAPPLE_BDIF_H
+> +#define HW_VMAPPLE_BDIF_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "qom/object.h"
+> +
+> +#define TYPE_VMAPPLE_BDIF "vmapple-bdif"
+> +OBJECT_DECLARE_SIMPLE_TYPE(VMAppleBdifState, VMAPPLE_BDIF)
+> +
+> +struct VMAppleBdifState {
+> +    /* <private> */
+> +    SysBusDevice parent_obj;
+> +
+> +    /* <public> */
+> +    BlockBackend *aux;
+> +    BlockBackend *root;
+> +    MemoryRegion mmio;
+> +};
+> +
+> +#define VMAPPLE_BDIF_SIZE 0x00200000
+> +
+> +#endif /* HW_VMAPPLE_BDIF_H */
+> diff --git a/hw/vmapple/bdif.c b/hw/vmapple/bdif.c
+> new file mode 100644
+> index 0000000000..36b5915ff3
+> --- /dev/null
+> +++ b/hw/vmapple/bdif.c
+> @@ -0,0 +1,245 @@
+> +/*
+> + * VMApple Backdoor Interface
+> + *
+> + * Copyright =A9 2023 Amazon.com, Inc. or its affiliates. All Rights Res=
+erved.
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/vmapple/bdif.h"
+> +#include "qemu/log.h"
+> +#include "qemu/module.h"
+> +#include "qapi/error.h"
+> +#include "trace.h"
+> +#include "hw/block/block.h"
+> +#include "sysemu/block-backend.h"
+> +
+> +#define REG_DEVID_MASK      0xffff0000
+> +#define DEVID_ROOT          0x00000000
+> +#define DEVID_AUX           0x00010000
+> +#define DEVID_USB           0x00100000
+> +
+> +#define REG_STATUS          0x0
+> +#define REG_STATUS_ACTIVE     BIT(0)
+> +#define REG_CFG             0x4
+> +#define REG_CFG_ACTIVE        BIT(1)
+> +#define REG_UNK1            0x8
+> +#define REG_BUSY            0x10
+> +#define REG_BUSY_READY        BIT(0)
+> +#define REG_UNK2            0x400
+> +#define REG_CMD             0x408
+> +#define REG_NEXT_DEVICE     0x420
+> +#define REG_UNK3            0x434
+> +
+> +typedef struct vblk_sector {
+> +    uint32_t pad;
+> +    uint32_t pad2;
+> +    uint32_t sector;
+> +    uint32_t pad3;
+> +} VblkSector;
+> +
+> +typedef struct vblk_req_cmd {
+> +    uint64_t addr;
+> +    uint32_t len;
+> +    uint32_t flags;
+> +} VblkReqCmd;
+> +
+> +typedef struct vblk_req {
+> +    VblkReqCmd sector;
+> +    VblkReqCmd data;
+> +    VblkReqCmd retval;
+> +} VblkReq;
+> +
+> +#define VBLK_DATA_FLAGS_READ  0x00030001
+> +#define VBLK_DATA_FLAGS_WRITE 0x00010001
+> +
+> +#define VBLK_RET_SUCCESS  0
+> +#define VBLK_RET_FAILED   1
+> +
+> +static uint64_t bdif_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    uint64_t ret =3D -1;
+> +    uint64_t devid =3D (offset & REG_DEVID_MASK);
+> +
+> +    switch (offset & ~REG_DEVID_MASK) {
+> +    case REG_STATUS:
+> +        ret =3D REG_STATUS_ACTIVE;
+> +        break;
+> +    case REG_CFG:
+> +        ret =3D REG_CFG_ACTIVE;
+> +        break;
+> +    case REG_UNK1:
+> +        ret =3D 0x420;
+> +        break;
+> +    case REG_BUSY:
+> +        ret =3D REG_BUSY_READY;
+> +        break;
+> +    case REG_UNK2:
+> +        ret =3D 0x1;
+> +        break;
+> +    case REG_UNK3:
+> +        ret =3D 0x0;
+> +        break;
+> +    case REG_NEXT_DEVICE:
+> +        switch (devid) {
+> +        case DEVID_ROOT:
+> +            ret =3D 0x8000000;
+> +            break;
+> +        case DEVID_AUX:
+> +            ret =3D 0x10000;
+> +            break;
+> +        }
+> +        break;
+> +    }
+> +
+> +    trace_bdif_read(offset, size, ret);
+> +    return ret;
+> +}
+> +
+> +static void le2cpu_sector(VblkSector *sector)
+> +{
+> +    sector->sector =3D le32_to_cpu(sector->sector);
+> +}
+> +
+> +static void le2cpu_reqcmd(VblkReqCmd *cmd)
+> +{
+> +    cmd->addr =3D le64_to_cpu(cmd->addr);
+> +    cmd->len =3D le32_to_cpu(cmd->len);
+> +    cmd->flags =3D le32_to_cpu(cmd->flags);
+> +}
+> +
+> +static void le2cpu_req(VblkReq *req)
+> +{
+> +    le2cpu_reqcmd(&req->sector);
+> +    le2cpu_reqcmd(&req->data);
+> +    le2cpu_reqcmd(&req->retval);
+> +}
+> +
+> +static void vblk_cmd(uint64_t devid, BlockBackend *blk, uint64_t value,
+> +                     uint64_t static_off)
+> +{
+> +    VblkReq req;
+> +    VblkSector sector;
+> +    uint64_t off =3D 0;
+> +    char *buf =3D NULL;
+> +    uint8_t ret =3D VBLK_RET_FAILED;
+> +    int r;
+> +
+> +    cpu_physical_memory_read(value, &req, sizeof(req));
+
+Please zero req first so that when value is bogus and
+cpu_physical_memory_read() does not store to &req, we don't process
+req's uninitialized stack memory:
+
+  VblkReq req =3D {};
+
+> +    le2cpu_req(&req);
+> +
+> +    if (req.sector.len !=3D sizeof(sector)) {
+> +        ret =3D VBLK_RET_FAILED;
+> +        goto out;
+> +    }
+> +
+> +    /* Read the vblk command */
+> +    cpu_physical_memory_read(req.sector.addr, &sector, sizeof(sector));
+
+Same here:
+
+  VblkSectors sector =3D {};
+
+> +    le2cpu_sector(&sector);
+> +
+> +    off =3D sector.sector * 512ULL + static_off;
+> +
+> +    /* Sanity check that we're not allocating bogus sizes */
+> +    if (req.data.len > (128 * 1024 * 1024)) {
+> +        goto out;
+> +    }
+> +
+> +    buf =3D g_malloc0(req.data.len);
+> +    switch (req.data.flags) {
+> +    case VBLK_DATA_FLAGS_READ:
+> +        r =3D blk_pread(blk, off, req.data.len, buf, 0);
+> +        trace_bdif_vblk_read(devid =3D=3D DEVID_AUX ? "aux" : "root",
+> +                             req.data.addr, off, req.data.len, r);
+> +        if (r < 0) {
+> +            goto out;
+> +        }
+> +        cpu_physical_memory_write(req.data.addr, buf, req.data.len);
+> +        ret =3D VBLK_RET_SUCCESS;
+> +        break;
+> +    case VBLK_DATA_FLAGS_WRITE:
+> +        /* Not needed, iBoot only reads */
+> +        break;
+> +    default:
+> +        break;
+> +    }
+> +
+> +out:
+> +    g_free(buf);
+> +    cpu_physical_memory_write(req.retval.addr, &ret, 1);
+> +}
+> +
+> +static void bdif_write(void *opaque, hwaddr offset,
+> +                       uint64_t value, unsigned size)
+> +{
+> +    VMAppleBdifState *s =3D opaque;
+> +    uint64_t devid =3D (offset & REG_DEVID_MASK);
+> +
+> +    trace_bdif_write(offset, size, value);
+> +
+> +    switch (offset & ~REG_DEVID_MASK) {
+> +    case REG_CMD:
+> +        switch (devid) {
+> +        case DEVID_ROOT:
+> +            vblk_cmd(devid, s->root, value, 0x0);
+> +            break;
+> +        case DEVID_AUX:
+> +            vblk_cmd(devid, s->aux, value, 0x0);
+> +            break;
+> +        }
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps bdif_ops =3D {
+> +    .read =3D bdif_read,
+> +    .write =3D bdif_write,
+> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> +    .valid =3D {
+> +        .min_access_size =3D 1,
+> +        .max_access_size =3D 8,
+> +    },
+> +    .impl =3D {
+> +        .min_access_size =3D 1,
+> +        .max_access_size =3D 8,
+> +    },
+> +};
+> +
+> +static void bdif_init(Object *obj)
+> +{
+> +    VMAppleBdifState *s =3D VMAPPLE_BDIF(obj);
+> +
+> +    memory_region_init_io(&s->mmio, obj, &bdif_ops, obj,
+> +                         "VMApple Backdoor Interface", VMAPPLE_BDIF_SIZE=
+);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> +}
+> +
+> +static Property bdif_properties[] =3D {
+> +    DEFINE_PROP_DRIVE("aux", VMAppleBdifState, aux),
+> +    DEFINE_PROP_DRIVE("root", VMAppleBdifState, root),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void bdif_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +
+> +    dc->desc =3D "VMApple Backdoor Interface";
+> +    device_class_set_props(dc, bdif_properties);
+> +}
+> +
+> +static const TypeInfo bdif_info =3D {
+> +    .name          =3D TYPE_VMAPPLE_BDIF,
+> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
+> +    .instance_size =3D sizeof(VMAppleBdifState),
+> +    .instance_init =3D bdif_init,
+> +    .class_init    =3D bdif_class_init,
+> +};
+> +
+> +static void bdif_register_types(void)
+> +{
+> +    type_register_static(&bdif_info);
+> +}
+> +
+> +type_init(bdif_register_types)
+> diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
+> index a73504d599..388a2bc60c 100644
+> --- a/hw/vmapple/Kconfig
+> +++ b/hw/vmapple/Kconfig
+> @@ -1,3 +1,5 @@
+>  config VMAPPLE_AES
+>      bool
+> =20
+> +config VMAPPLE_BDIF
+> +    bool
+> diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
+> index bcd4dcb28d..d4624713de 100644
+> --- a/hw/vmapple/meson.build
+> +++ b/hw/vmapple/meson.build
+> @@ -1 +1,2 @@
+>  system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files('aes.c'))
+> +system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'))
+> diff --git a/hw/vmapple/trace-events b/hw/vmapple/trace-events
+> index 03585cdf0f..45c69de2e0 100644
+> --- a/hw/vmapple/trace-events
+> +++ b/hw/vmapple/trace-events
+> @@ -18,3 +18,8 @@ aes_2_read(uint64_t offset, uint64_t res) "offset=3D0x%=
+"PRIx64" res=3D0x%"PRIx64
+>  aes_2_write_unknown(uint64_t offset) "offset=3D0x%"PRIx64
+>  aes_2_write(uint64_t offset, uint64_t val) "offset=3D0x%"PRIx64" val=3D0=
+x%"PRIx64
+>  aes_dump_data(const char *desc, const char *hex) "%s%s"
+> +
+> +# bdif.c
+> +bdif_read(uint64_t offset, uint32_t size, uint64_t value) "offset=3D0x%"=
+PRIx64" size=3D0x%x value=3D0x%"PRIx64
+> +bdif_write(uint64_t offset, uint32_t size, uint64_t value) "offset=3D0x%=
+"PRIx64" size=3D0x%x value=3D0x%"PRIx64
+> +bdif_vblk_read(const char *dev, uint64_t addr, uint64_t offset, uint32_t=
+ len, int r) "dev=3D%s addr=3D0x%"PRIx64" off=3D0x%"PRIx64" size=3D0x%x r=
+=3D%d"
+> --=20
+> 2.39.2 (Apple Git-143)
+>=20
+>=20
+>=20
+>=20
+> Amazon Development Center Germany GmbH
+> Krausenstr. 38
+> 10117 Berlin
+> Geschaeftsfuehrung: Christian Schlaeger, Jonathan Weiss
+> Eingetragen am Amtsgericht Charlottenburg unter HRB 149173 B
+> Sitz: Berlin
+> Ust-ID: DE 289 237 879
+>=20
+>=20
+
+--BkagG4ZhWHPJdn3E
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEyBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmTw7hAACgkQnKSrs4Gr
+c8hZ8wf3Z5bYYGLruvrl1CC95tBWHX7s6Hzb+QPL3xbBAE2NfAh6N+uMUUe2oHzt
+GHF+BwP2Kehoh+2C9CZ11848HwiEEBTDTIFYuymm7BduENFCQhJkPb6/0uFUeOkI
+A3+kKe3xIinTedIuaI3KIhpXncn0Bus7JSu4ZDcNPusuIKuipFh06ZMB2Jv87qHx
+pc+0mpOv4UWRZAk1PgigDEIaL2BwWZdtM430ZIegcDOxHo8skC6r5J5ZTm1DjVJL
+chm0kZwzZvc7Dl6onPWR3xi5sUB1mqRVioeDqdxzLNv/W+Spj8Q2FF4djeeTh4rh
+RsER49h6eKdio63mUxwTaMMpAUj5
+=cJY7
+-----END PGP SIGNATURE-----
+
+--BkagG4ZhWHPJdn3E--
 

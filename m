@@ -1,90 +1,112 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5092452ejc;
-        Thu, 31 Aug 2023 06:23:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEAyC8hNk7YWGLDltmfpkseaS9o6yqO0NLQ6BRQoFoX2k1tmeomTCSJYoAacnFGf5MBsNui
-X-Received: by 2002:adf:f4c5:0:b0:319:8161:ce74 with SMTP id h5-20020adff4c5000000b003198161ce74mr4079425wrp.42.1693488215401;
-        Thu, 31 Aug 2023 06:23:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693488215; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5113529ejc;
+        Thu, 31 Aug 2023 06:57:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGbmQJG7FoSKFbfZZb5cZuspws7jBaZvvAo3CY+6oeRhnLeJXFHG+A4GKZXAHuDppy74SNT
+X-Received: by 2002:a0c:aa5b:0:b0:63d:2fa3:441f with SMTP id e27-20020a0caa5b000000b0063d2fa3441fmr2806665qvb.11.1693490267954;
+        Thu, 31 Aug 2023 06:57:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693490267; cv=none;
         d=google.com; s=arc-20160816;
-        b=q6ZVChFQbxOId6he1UmJZi/CnMTkIzqHKhlL3BlKkRMgqV7AlQXW1a+6wO6wBiXbrE
-         zPniWbru8PHfBeqcjDaC9uwb64lY14M7AgdBZ7kYYglI5W05NsoopksWUtco9tJeca7n
-         mfFwlTp7FE0qcXxpD+HYksfCYXmOY+js6dzui0PYgr/CetBsrLJhhVMvnjKBa+BTNdwO
-         qiVvpBNLi7/i45Euaon6VnuQE6Ob+U+cWo/nu2LfHGgaRm2SAsPUmFINerhjF5HiBCVy
-         7TRHeDivhAy+2/H8b+uIt8wgzIWvcS5lLI2ZI8w/JB3UosRIm2vhnx0UwbymjArhTFRJ
-         sRjQ==
+        b=kJWaMlPFoLWFIsCePW69WEiepkDniXVYeKqF8x22NUsUHjqIh6aPsysl+zECSU8lpN
+         Zudr1z+HXnNYOIv34/5qPw9CUb7C+qIckTjn0HSzkFB3ICE1iZNj2IPaNF4RC/Vz6ZKi
+         UdH/gYFOBplCrAZdNA7BmTU2mN1wD3HwiJ73HudDtCDKxriiH/6i6XQHDi39IdZdfdTK
+         xgBgOif6pcqE1fTcIc0a0948W57m+nsAHfFjoSMGZZRNSTir33oIAC+56SGoPxXSGxJb
+         XsSuya/nE+aKYiVOPcTRa+cP3gZ5JDutv4mfchVmghpfMPyW8BGSRu7aTZUp6bRctQfY
+         Qj+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=OBbX22Dwx3G4tnKxq/RSkEGqjvUYUwCgsVCMvTpxv+c=;
-        fh=i+96vQNY8t1No7UWaog5wIxdlSPaYig9YfB19JjHc2k=;
-        b=UHUukbSV0T/8IGHwDAvSJbvxzncaOVUKA6bV7h0SCJzQeNWhrfEr3HMpranHX2Av2s
-         oxxRobG6bjutw5vNlDaXQxsR0yZ/YbKXCPoCVuL0IhrY7v75RZhu1capDXLslyPyoNyN
-         rrR5sYtz3OEUvZPJOU+UF9rsMx1dM8G3fHNl5Ptx1EU/FnewwKtHyBybLKI4gBJ1wvKk
-         WKuCYyE8rd0zrwmbE7bG/Q4448vzbVlZ86k2BDoq1bKAz3kL5ZhwtYsn9IYvNAKUhsQj
-         9KBBNnBrej2hrl/HYnwNbNHw9jEkiEocH2O+qJBxUv4iYKKsQcoyfbgH9EYfrRNOvyZV
-         SocQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=BX9A/0WqAsYmEzevmP0RGXmXJ+7uJtTPN2VT+4cm2Qs=;
+        fh=U1e7HA0AK52lY5DbASg/nZMKcUUJN5eWuHLusMs0Bg8=;
+        b=Z85/70q47p57xILh1El5OLxwE3WuK1KsrHjkvuthmZ1oQBS6UxEUy3/TeWNbx6pWda
+         mink43N3x/bNPILYmAd3EfaXqIf41YUHaswJ/jWp3wW2Im/oTOSbQjTx7xLzguqNfmQy
+         tbIaMVwspNa6aiFRmIlIK2tDjCpuvGIpZwJL5tjzKt9xS1tyNf0zB4QQVsqi2D+7xKG1
+         lSWlHCS7F4SjH/mvLnw+KUmhFpMkJqTFIavAlI2KUL6+7zC++g21hCkJ+HSHznSzUuWM
+         +3qpw1dNxRnMcG7jzV8TuKa+Daq4LSe/WTPI313QKaEqc8VhwJE1Z8TS8nLcnhi4zvOV
+         HUNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=yOCbpoJB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j34-20020a05600c1c2200b003f8ca12123fsi803523wms.45.2023.08.31.06.23.35
+        by mx.google.com with ESMTPS id y2-20020a0cc542000000b0064f92d244f5si910021qvi.396.2023.08.31.06.57.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 06:23:35 -0700 (PDT)
+        Thu, 31 Aug 2023 06:57:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=yOCbpoJB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qbhdZ-0001Ry-VF; Thu, 31 Aug 2023 09:23:05 -0400
+	id 1qbiAa-0002fj-8k; Thu, 31 Aug 2023 09:57:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=TXcQ=EQ=kaod.org=clg@ozlabs.org>)
- id 1qbhdN-000198-FI; Thu, 31 Aug 2023 09:22:55 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=TXcQ=EQ=kaod.org=clg@ozlabs.org>)
- id 1qbhdJ-0006QB-SM; Thu, 31 Aug 2023 09:22:53 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Rc2045srmz4wy9;
- Thu, 31 Aug 2023 23:22:44 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Rc2026xrpz4wb5;
- Thu, 31 Aug 2023 23:22:42 +1000 (AEST)
-Message-ID: <a35c9605-7bea-0252-359e-86855e8ee304@kaod.org>
-Date: Thu, 31 Aug 2023 15:22:40 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbiAV-0002cJ-Gt
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 09:57:07 -0400
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbiAP-0006r5-DB
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 09:57:04 -0400
+Received: by mail-lj1-x22b.google.com with SMTP id
+ 38308e7fff4ca-2b9338e4695so14837491fa.2
+ for <qemu-arm@nongnu.org>; Thu, 31 Aug 2023 06:57:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1693490219; x=1694095019; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=BX9A/0WqAsYmEzevmP0RGXmXJ+7uJtTPN2VT+4cm2Qs=;
+ b=yOCbpoJBF/4FEg9fRRhtXgSEayEGIvuYZxCxa/FUpCBysTlP+fHaJeEdscERGGQ/xJ
+ 9rpvWJAL4Xd1ofhKlH+NvMR5U4j6VH/wiXO/yriwiClnelFBH7L5HvOr3SGi+vNz63Y2
+ JUnu6NjUbCm/y+3AvJO+rU6CNlHIR/iO9DEhe0nnK7NgUi8XI56O0Ztgh5dBY0uYqU6t
+ zxbGr8C3jLIPKIHOh79FDcIh7psu0XI2ftYnmDb22mzjlmSRO7pPDaxcGDvuHkTD6cYM
+ RCngSCsTJEQKMRkTknuj6e71GcQCO59hDg856Or0yrWZpiMvUXLDN0ZtI20Whczk9KqB
+ t+Pg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1693490219; x=1694095019;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=BX9A/0WqAsYmEzevmP0RGXmXJ+7uJtTPN2VT+4cm2Qs=;
+ b=bS3ENcRWjt1jIc5GfMVmbUnaCtSbp1nfv/4rDzd3U5DjYebR8uB0YfuB/oYeAXtdcC
+ PEbZ+F1Y49gNSsVVZQDqd0RPun2F5qCFjnp7qyDstJp2Z6yVjW0WBnYtak+pNEHNd70t
+ IciG4OkQ30xlPeWizfcBYv8NJS1iwJSLfl7vXAT51pt58pQEvN3M8QwU3PWkjZu0+J7F
+ +QSac9d3bIH3FinLpHKRJYefnpHNzLRzUo7DFcB6u6GRrOVd7nMgcLeszaswPrkVJUY6
+ lKEH86M892zv52L7cl+XIThzy1ONs2iYu6vDirWc38c6nMPm2qRATx161TSyj8uRq97z
+ IonQ==
+X-Gm-Message-State: AOJu0Yzwe2imWOijRwTqpRB/mL8AayhUsUZx5YC0p6FhhOLQ1KUaA/c5
+ a7gJ+fK2Z4fAzkKMpcxmuDNPEA==
+X-Received: by 2002:a2e:9857:0:b0:2bc:e02f:8f50 with SMTP id
+ e23-20020a2e9857000000b002bce02f8f50mr4711074ljj.14.1693490219059; 
+ Thu, 31 Aug 2023 06:56:59 -0700 (PDT)
+Received: from m1x-phil.lan ([176.187.199.245])
+ by smtp.gmail.com with ESMTPSA id
+ x24-20020a170906299800b0099cadcf13cesm789346eje.66.2023.08.31.06.56.57
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 31 Aug 2023 06:56:58 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL v2 00/40] Misc patches for 2023-08-31
+Date: Thu, 31 Aug 2023 15:56:42 +0200
+Message-ID: <20230831135642.75413-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 5/7] aspeed: Create flash devices only when defaults
- are enabled
-Content-Language: en-US
-To: Joel Stanley <joel@jms.id.au>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <20230831123922.105200-1-clg@kaod.org>
- <20230831123922.105200-6-clg@kaod.org>
- <CACPK8XdiTpONmuLag5HnTCPXtoz+Zg-Yo+rrzt+Wuz17hbdDRg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CACPK8XdiTpONmuLag5HnTCPXtoz+Zg-Yo+rrzt+Wuz17hbdDRg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=TXcQ=EQ=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -73
-X-Spam_score: -7.4
-X-Spam_bar: -------
-X-Spam_report: (-7.4 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.478,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x22b.google.com
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,70 +121,296 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Qc01aBUZWYet
+X-TUID: S3PwBp3o0+2a
 
-On 8/31/23 15:00, Joel Stanley wrote:
-> On Thu, 31 Aug 2023 at 12:39, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> When the -nodefaults option is set, flash devices should be created
->> with :
->>
->>      -blockdev node-name=fmc0,driver=file,filename=./flash.img \
->>      -device mx66u51235f,cs=0x0,bus=ssi.0,drive=fmc0 \
->>
->> To be noted that in this case, the ROM will not be installed and the
->> initial boot sequence (U-Boot loading) will fetch instructions using
->> SPI transactions which is significantly slower. That's exactly how HW
->> operates though.
->>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> 
-> I think this is the first foray for the aspeed machines into
-> nodefaults removing things that previously would have just worked.
+v2: Dropped "Fix MESONINTROSPECT parsing" (mjt)
 
-This is true. It is change from the previous behavior.
+The following changes since commit 156618d9ea67f2f2e31d9dedd97f2dcccbe6808c:
 
-QEMU should probably complain if no fmc0 are found to boot from.
-Would that be ok ? And yes, documentation needs some update.
+  Merge tag 'block-pull-request' of https://gitlab.com/stefanha/qemu into staging (2023-08-30 09:20:27 -0400)
 
-Thanks,
+are available in the Git repository at:
 
-C.
+  https://github.com/philmd/qemu.git tags/misc-20230831
 
-> I
-> know we haven't had it in our recommended command lines for a long
-> time, so that's fine.
-> 
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> 
-> Should the content of your commit message go in the docs?
-> 
->> ---
->>   hw/arm/aspeed.c | 6 ++++--
->>   1 file changed, 4 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->> index cd92cf9ce0bb..271512ce5ced 100644
->> --- a/hw/arm/aspeed.c
->> +++ b/hw/arm/aspeed.c
->> @@ -396,12 +396,14 @@ static void aspeed_machine_init(MachineState *machine)
->>       connect_serial_hds_to_uarts(bmc);
->>       qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
->>
->> -    aspeed_board_init_flashes(&bmc->soc.fmc,
->> +    if (defaults_enabled()) {
->> +        aspeed_board_init_flashes(&bmc->soc.fmc,
->>                                 bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
->>                                 amc->num_cs, 0);
->> -    aspeed_board_init_flashes(&bmc->soc.spi[0],
->> +        aspeed_board_init_flashes(&bmc->soc.spi[0],
->>                                 bmc->spi_model ? bmc->spi_model : amc->spi_model,
->>                                 1, amc->num_cs);
->> +    }
->>
->>       if (machine->kernel_filename && sc->num_cpus > 1) {
->>           /* With no u-boot we must set up a boot stub for the secondary CPU */
->> --
->> 2.41.0
->>
+for you to fetch changes up to e1298bc7dc4ea05fb84f017eabec967816f7de6e:
+
+  build: Only define OS_OBJECT_USE_OBJC with gcc (2023-08-31 15:51:41 +0200)
+
+----------------------------------------------------------------
+Misc patches queue
+
+Overall cleanups:
+- Do not declare function prototypes using 'extern' keyword
+- Remove unmaintained HAX accelerator
+- Have FEWatchFunc handlers return G_SOURCE_CONTINUE/REMOVE instead of boolean
+- Avoid modifying QOM class internals from instance in pmbus_device
+- Avoid variable-length array in xhci_get_port_bandwidth
+- Remove unuseful kvmclock_create() stub
+- Style: permit inline loop variables
+- Various header cleanups
+- Various spelling fixes
+
+Build fixes:
+- Only define OS_OBJECT_USE_OBJC with gcc
+
+----------------------------------------------------------------
+
+Alex Bennée (1):
+  docs/style: permit inline loop variables
+
+Alexander Graf (1):
+  build: Only define OS_OBJECT_USE_OBJC with gcc
+
+Michael Tokarev (9):
+  accel/tcg: spelling fixes
+  hw/i2c: spelling fixes
+  hw/ide: spelling fixes
+  hw/display: spelling fixes
+  hw/mips: spelling fixes
+  hw/sd: spelling fixes
+  hw/usb: spelling fixes
+  util: spelling fixes
+  ui: spelling fixes
+
+Peter Maydell (1):
+  hw/usb/hcd-xhci: Avoid variable-length array in
+    xhci_get_port_bandwidth()
+
+Philippe Mathieu-Daudé (28):
+  accel: Remove HAX accelerator
+  qemu/uri: Use QueryParams type definition
+  bulk: Do not declare function prototypes using 'extern' keyword
+  hw/net/i82596: Include missing 'exec/address-spaces.h' header
+  hw/dma/etraxfs: Include missing 'exec/memory.h' header
+  exec/address-spaces.h: Remove unuseful 'exec/memory.h' include
+  target/ppc/pmu: Include missing 'qemu/timer.h' header
+  target/riscv/pmu: Restrict 'qemu/log.h' include to source
+  target/translate: Include missing 'exec/cpu_ldst.h' header
+  target/translate: Remove unnecessary 'exec/cpu_ldst.h' header
+  target/translate: Restrict 'exec/cpu_ldst.h' to user emulation
+  target/helpers: Remove unnecessary 'exec/cpu_ldst.h' header
+  target/helpers: Remove unnecessary 'qemu/main-loop.h' header
+  target/mips: Remove unused headers in lcsr_helper.c
+  target/xtensa: Include missing 'qemu/atomic.h' header
+  qemu/processor: Remove unused 'qemu/atomic.h' header
+  exec/translation-block: Clean up includes
+  chardev/char-fe: Document FEWatchFunc typedef
+  hw/char: Have FEWatchFunc handlers return G_SOURCE_CONTINUE/REMOVE
+  hw/char/pl011: Restrict MemoryRegionOps implementation access sizes
+  hw/char/pl011: Display register name in trace events
+  hw/char/pl011: Remove duplicated PL011_INT_[RT]X definitions
+  hw/char/pl011: Replace magic values by register field definitions
+  hw/i2c/pmbus_device: Fix modifying QOM class internals from instance
+  hw/i386: Remove unuseful kvmclock_create() stub
+  hw/i386: Rename 'hw/kvm/clock.h' -> 'hw/i386/kvm/clock.h'
+  util/fifo8: Fix typo in fifo8_push_all() description
+  tests/tcg/aarch64: Rename bti-crt.inc.c -> bti-crt.c.inc
+
+ MAINTAINERS                                   |    8 -
+ docs/about/build-platforms.rst                |    2 +-
+ docs/about/deprecated.rst                     |    6 -
+ docs/about/index.rst                          |    2 +-
+ docs/about/removed-features.rst               |   11 +-
+ docs/devel/style.rst                          |    9 +-
+ docs/system/index.rst                         |    2 +-
+ docs/system/introduction.rst                  |    3 -
+ meson.build                                   |   11 +-
+ bsd-user/bsd-file.h                           |    6 +-
+ crypto/hmacpriv.h                             |   13 +-
+ {include/hw => hw/i386}/kvm/clock.h           |   14 +-
+ hw/ide/ahci_internal.h                        |    4 +-
+ hw/usb/quirks.h                               |    2 +-
+ hw/xen/xen_pt.h                               |    8 +-
+ include/chardev/char-fe.h                     |   14 +
+ include/crypto/secret_common.h                |   14 +-
+ include/elf.h                                 |    4 +-
+ include/exec/address-spaces.h                 |    2 -
+ include/exec/exec-all.h                       |    2 +-
+ include/exec/page-vary.h                      |    4 +-
+ include/exec/poison.h                         |    1 -
+ include/exec/translation-block.h              |    6 +-
+ include/hw/core/cpu.h                         |    2 +-
+ include/hw/core/tcg-cpu-ops.h                 |    2 +-
+ include/hw/i2c/npcm7xx_smbus.h                |    2 +-
+ include/hw/misc/aspeed_scu.h                  |    2 +-
+ include/hw/misc/auxbus.h                      |    2 +-
+ include/hw/nvram/npcm7xx_otp.h                |    4 +-
+ include/hw/qdev-core.h                        |    4 +-
+ include/io/channel-socket.h                   |    4 +-
+ include/io/task.h                             |    2 +-
+ include/qemu/crc-ccitt.h                      |    4 +-
+ include/qemu/fifo8.h                          |    2 +-
+ include/qemu/iova-tree.h                      |    4 +-
+ include/qemu/osdep.h                          |    4 +-
+ include/qemu/processor.h                      |    2 -
+ include/qemu/rcu.h                            |   14 +-
+ include/qemu/sys_membarrier.h                 |    4 +-
+ include/qemu/uri.h                            |    6 +-
+ include/qemu/yank.h                           |    2 +-
+ include/sysemu/accel-blocker.h                |   14 +-
+ include/sysemu/hax.h                          |   49 -
+ include/sysemu/hw_accel.h                     |    1 -
+ include/sysemu/os-win32.h                     |    4 +-
+ include/tcg/helper-info.h                     |    2 +-
+ include/tcg/tcg.h                             |    4 +-
+ include/ui/kbd-state.h                        |    2 +-
+ include/ui/spice-display.h                    |    2 +-
+ include/user/safe-syscall.h                   |    6 +-
+ target/i386/hax/hax-accel-ops.h               |   31 -
+ target/i386/hax/hax-i386.h                    |   98 --
+ target/i386/hax/hax-interface.h               |  369 ------
+ target/i386/hax/hax-posix.h                   |   61 -
+ target/i386/hax/hax-windows.h                 |   88 --
+ target/i386/sev.h                             |    6 +-
+ target/mips/cpu.h                             |    4 +-
+ target/riscv/pmu.h                            |    3 -
+ tcg/tcg-internal.h                            |    4 +-
+ ui/keymaps.h                                  |    2 +-
+ ui/vnc-enc-zywrle.h                           |    4 +-
+ include/exec/memory_ldst.h.inc                |   42 +-
+ accel/stubs/hax-stub.c                        |   24 -
+ accel/tcg/tb-maint.c                          |    2 +-
+ contrib/plugins/cache.c                       |    2 +-
+ contrib/plugins/lockstep.c                    |    2 +-
+ hw/char/cadence_uart.c                        |    8 +-
+ hw/char/cmsdk-apb-uart.c                      |    6 +-
+ hw/char/ibex_uart.c                           |    8 +-
+ hw/char/nrf51_uart.c                          |    4 +-
+ hw/char/pl011.c                               |   58 +-
+ hw/char/serial.c                              |    2 +-
+ hw/char/virtio-console.c                      |    2 +-
+ hw/display/bochs-display.c                    |    2 +-
+ hw/display/qxl.c                              |    2 +-
+ hw/display/ssd0303.c                          |    2 +-
+ hw/display/ssd0323.c                          |    2 +-
+ hw/display/xlnx_dp.c                          |    2 +-
+ hw/dma/etraxfs_dma.c                          |    1 +
+ hw/i2c/pm_smbus.c                             |    2 +-
+ hw/i2c/pmbus_device.c                         |   19 +-
+ hw/i2c/smbus_slave.c                          |    2 +-
+ hw/i386/kvm/clock.c                           |    6 +-
+ hw/i386/microvm.c                             |    6 +-
+ hw/i386/pc_piix.c                             |    4 +-
+ hw/i386/pc_q35.c                              |    6 +-
+ hw/ide/cmd646.c                               |    2 +-
+ hw/ide/core.c                                 |    2 +-
+ hw/intc/apic_common.c                         |    3 +-
+ hw/mips/malta.c                               |    2 +-
+ hw/net/i82596.c                               |    1 +
+ hw/sd/sd.c                                    |    2 +-
+ hw/sd/sdhci.c                                 |    2 +-
+ hw/sensor/isl_pmbus_vr.c                      |    2 +-
+ hw/sensor/max34451.c                          |    2 +-
+ hw/usb/ccid-card-emulated.c                   |    2 +-
+ hw/usb/hcd-ehci.c                             |    6 +-
+ hw/usb/hcd-ohci.c                             |    2 +-
+ hw/usb/hcd-xhci.c                             |   10 +-
+ hw/usb/redirect.c                             |    4 +-
+ hw/usb/xen-usb.c                              |    2 +-
+ hw/xtensa/pic_cpu.c                           |    1 +
+ linux-user/flatload.c                         |    2 +-
+ linux-user/syscall.c                          |    4 +-
+ monitor/monitor.c                             |    2 +-
+ net/vhost-user.c                              |    2 +-
+ semihosting/config.c                          |    2 +-
+ semihosting/syscalls.c                        |    4 +-
+ softmmu/cpus.c                                |    6 -
+ softmmu/icount.c                              |    2 +-
+ softmmu/ioport.c                              |    2 +-
+ softmmu/vl.c                                  |    6 -
+ target/alpha/translate.c                      |    1 -
+ target/avr/helper.c                           |    1 +
+ target/cris/op_helper.c                       |    1 -
+ target/hexagon/translate.c                    |    1 -
+ target/hppa/translate.c                       |    1 -
+ target/i386/hax/hax-accel-ops.c               |  105 --
+ target/i386/hax/hax-all.c                     | 1141 -----------------
+ target/i386/hax/hax-mem.c                     |  323 -----
+ target/i386/hax/hax-posix.c                   |  305 -----
+ target/i386/hax/hax-windows.c                 |  485 -------
+ target/i386/tcg/fpu_helper.c                  |    1 +
+ target/i386/tcg/sysemu/excp_helper.c          |    1 +
+ target/loongarch/cpu.c                        |    1 +
+ target/loongarch/iocsr_helper.c               |    1 -
+ target/loongarch/op_helper.c                  |    1 -
+ target/m68k/translate.c                       |    1 -
+ target/microblaze/translate.c                 |    1 -
+ target/mips/tcg/fpu_helper.c                  |    1 -
+ target/mips/tcg/ldst_helper.c                 |    1 +
+ target/mips/tcg/msa_helper.c                  |   13 +-
+ target/mips/tcg/mxu_translate.c               |    6 +-
+ target/mips/tcg/sysemu/lcsr_helper.c          |    5 -
+ target/nios2/op_helper.c                      |    1 -
+ target/nios2/translate.c                      |    1 -
+ target/openrisc/translate.c                   |    1 -
+ target/ppc/int_helper.c                       |    1 -
+ target/ppc/machine.c                          |    1 -
+ target/ppc/mem_helper.c                       |    1 -
+ target/ppc/mmu_common.c                       |    1 -
+ target/ppc/mmu_helper.c                       |    1 -
+ target/ppc/power8-pmu.c                       |    2 +-
+ target/ppc/translate.c                        |    2 -
+ target/riscv/csr.c                            |    1 -
+ target/riscv/m128_helper.c                    |    1 -
+ target/riscv/op_helper.c                      |    2 +-
+ target/riscv/pmu.c                            |    1 +
+ target/riscv/vector_helper.c                  |    1 +
+ target/s390x/tcg/crypto_helper.c              |    1 -
+ target/s390x/tcg/excp_helper.c                |    1 -
+ target/s390x/tcg/fpu_helper.c                 |    1 -
+ target/s390x/tcg/misc_helper.c                |    1 -
+ target/sh4/translate.c                        |    1 -
+ target/sparc/translate.c                      |    1 -
+ target/xtensa/dbg_helper.c                    |    1 -
+ target/xtensa/exc_helper.c                    |    1 +
+ target/xtensa/fpu_helper.c                    |    1 -
+ target/xtensa/mmu_helper.c                    |    2 -
+ target/xtensa/op_helper.c                     |    3 +-
+ target/xtensa/win_helper.c                    |    1 -
+ tests/tcg/aarch64/bti-1.c                     |    2 +-
+ tests/tcg/aarch64/bti-3.c                     |    2 +-
+ ui/sdl2-2d.c                                  |    2 +-
+ ui/sdl2.c                                     |    2 +-
+ util/cpuinfo-aarch64.c                        |    4 +-
+ util/cpuinfo-i386.c                           |    4 +-
+ util/cpuinfo-ppc.c                            |    2 +-
+ util/main-loop.c                              |    2 +-
+ util/oslib-posix.c                            |    2 +-
+ util/qdist.c                                  |    2 +-
+ util/qemu-sockets.c                           |    2 +-
+ util/rcu.c                                    |    2 +-
+ target/mips/cpu-defs.c.inc                    |    2 +-
+ .../aarch64/{bti-crt.inc.c => bti-crt.c.inc}  |    0
+ ui/vnc-enc-zrle.c.inc                         |    2 +-
+ accel/Kconfig                                 |    3 -
+ accel/stubs/meson.build                       |    1 -
+ hw/char/trace-events                          |    4 +-
+ hw/usb/trace-events                           |    2 +-
+ meson_options.txt                             |    2 -
+ qemu-options.hx                               |    8 +-
+ .../ci/org.centos/stream/8/x86_64/configure   |    1 -
+ scripts/meson-buildoptions.sh                 |    3 -
+ target/i386/hax/meson.build                   |    7 -
+ target/i386/meson.build                       |    1 -
+ ui/cocoa.m                                    |    2 +-
+ 187 files changed, 315 insertions(+), 3442 deletions(-)
+ rename {include/hw => hw/i386}/kvm/clock.h (65%)
+ delete mode 100644 include/sysemu/hax.h
+ delete mode 100644 target/i386/hax/hax-accel-ops.h
+ delete mode 100644 target/i386/hax/hax-i386.h
+ delete mode 100644 target/i386/hax/hax-interface.h
+ delete mode 100644 target/i386/hax/hax-posix.h
+ delete mode 100644 target/i386/hax/hax-windows.h
+ delete mode 100644 accel/stubs/hax-stub.c
+ delete mode 100644 target/i386/hax/hax-accel-ops.c
+ delete mode 100644 target/i386/hax/hax-all.c
+ delete mode 100644 target/i386/hax/hax-mem.c
+ delete mode 100644 target/i386/hax/hax-posix.c
+ delete mode 100644 target/i386/hax/hax-windows.c
+ rename tests/tcg/aarch64/{bti-crt.inc.c => bti-crt.c.inc} (100%)
+ delete mode 100644 target/i386/hax/meson.build
+
+-- 
+2.41.0
 

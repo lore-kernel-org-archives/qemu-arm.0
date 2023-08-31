@@ -1,121 +1,90 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5088390ejc;
-        Thu, 31 Aug 2023 06:17:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFleBEiX5HlRnRoIb3gX+HKBFfHsoWYT2C1EYfJO9D6WYG/vXA0zSfoMEfANb4QlDtgMwas
-X-Received: by 2002:a05:622a:30a:b0:403:eb5b:1f6 with SMTP id q10-20020a05622a030a00b00403eb5b01f6mr2980176qtw.63.1693487873151;
-        Thu, 31 Aug 2023 06:17:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693487873; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5092452ejc;
+        Thu, 31 Aug 2023 06:23:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEAyC8hNk7YWGLDltmfpkseaS9o6yqO0NLQ6BRQoFoX2k1tmeomTCSJYoAacnFGf5MBsNui
+X-Received: by 2002:adf:f4c5:0:b0:319:8161:ce74 with SMTP id h5-20020adff4c5000000b003198161ce74mr4079425wrp.42.1693488215401;
+        Thu, 31 Aug 2023 06:23:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693488215; cv=none;
         d=google.com; s=arc-20160816;
-        b=ngb8v/g964gUpDwXPtlamcBnmUoKZ6ccV21SBvvyN/mX40SjpgZ+EoWg49L7Qtt49h
-         6L/WBGeLS8k6PLYNfajvMuDF7Ue/naTGFN2iMtSqDR9IDEjiTZn7dpT9xAr6FMPmc/Fz
-         BmhNsTjl3F1JZwK9P/+cF6XaFdd0t+Dzlfm2yo6aY2YFlqoTE2nWC00Hx9h85CPeCeX/
-         M7edi4n9nmlQjJF5FFtvoWhrhzmdHNWnhQZXYnG7Jp7bDWAt2i9z/CDynzONSYwpOsyS
-         SMMyOq2aIxauybvBwxFFdzLKOkuaZGa8lH4PCvIkbpXmY186Qz6vbkERmLi2X/027LZy
-         W/HQ==
+        b=q6ZVChFQbxOId6he1UmJZi/CnMTkIzqHKhlL3BlKkRMgqV7AlQXW1a+6wO6wBiXbrE
+         zPniWbru8PHfBeqcjDaC9uwb64lY14M7AgdBZ7kYYglI5W05NsoopksWUtco9tJeca7n
+         mfFwlTp7FE0qcXxpD+HYksfCYXmOY+js6dzui0PYgr/CetBsrLJhhVMvnjKBa+BTNdwO
+         qiVvpBNLi7/i45Euaon6VnuQE6Ob+U+cWo/nu2LfHGgaRm2SAsPUmFINerhjF5HiBCVy
+         7TRHeDivhAy+2/H8b+uIt8wgzIWvcS5lLI2ZI8w/JB3UosRIm2vhnx0UwbymjArhTFRJ
+         sRjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=fujFUeasp++TV/A3YKYPJrj4eV9vCNVc0Wd8QFOx7Zc=;
-        fh=1hhhGUrGyKjTCPPv9yz9vWTUDafZk+zbQ6MVse3CJ6U=;
-        b=KkVvqIMHo3Uf2i1vnYJtXpzctQaz9oFPFaXc/ezyDKR0mTLQPu5vJEZFTjdTBmIWJr
-         ta2B7+lCOhlOkB1xS7FD+5JxCF6pjX05a7437bk0ADBOn6qGTtSEQooTQaYY8cMMy78K
-         s5ErCWyKSqYeKeeQHDqzhuIoMjxNGjp5nSNziHJDjzNflgRU0YxXZ046dSBb6s1dAkNO
-         u81+cGCyUAstX1BDqKhFZ0U6u5ABoP3bR2OOsLd8I2SZkLO9NT5ShLmcxI18zBKUSEAM
-         l7Zg6uCkCqk1vXgxLAvXLPWBBHhrdwoGNKx2jrV6kLB2PdOC/3ifR/glD7h63fuyB7Es
-         jW5g==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=OBbX22Dwx3G4tnKxq/RSkEGqjvUYUwCgsVCMvTpxv+c=;
+        fh=i+96vQNY8t1No7UWaog5wIxdlSPaYig9YfB19JjHc2k=;
+        b=UHUukbSV0T/8IGHwDAvSJbvxzncaOVUKA6bV7h0SCJzQeNWhrfEr3HMpranHX2Av2s
+         oxxRobG6bjutw5vNlDaXQxsR0yZ/YbKXCPoCVuL0IhrY7v75RZhu1capDXLslyPyoNyN
+         rrR5sYtz3OEUvZPJOU+UF9rsMx1dM8G3fHNl5Ptx1EU/FnewwKtHyBybLKI4gBJ1wvKk
+         WKuCYyE8rd0zrwmbE7bG/Q4448vzbVlZ86k2BDoq1bKAz3kL5ZhwtYsn9IYvNAKUhsQj
+         9KBBNnBrej2hrl/HYnwNbNHw9jEkiEocH2O+qJBxUv4iYKKsQcoyfbgH9EYfrRNOvyZV
+         SocQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TPBo9FqS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13-20020ac85c4d000000b004136cb7caadsi825411qtj.577.2023.08.31.06.17.52
+        by mx.google.com with ESMTPS id j34-20020a05600c1c2200b003f8ca12123fsi803523wms.45.2023.08.31.06.23.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 06:17:53 -0700 (PDT)
+        Thu, 31 Aug 2023 06:23:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TPBo9FqS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qbhLV-0008Bf-QM; Thu, 31 Aug 2023 09:04:25 -0400
+	id 1qbhdZ-0001Ry-VF; Thu, 31 Aug 2023 09:23:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhHl-0006c4-Aw
- for qemu-arm@nongnu.org; Thu, 31 Aug 2023 09:00:37 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhHf-0006eL-5Z
- for qemu-arm@nongnu.org; Thu, 31 Aug 2023 09:00:32 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-3fe4cdb72b9so8144735e9.0
- for <qemu-arm@nongnu.org>; Thu, 31 Aug 2023 06:00:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693486824; x=1694091624; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fujFUeasp++TV/A3YKYPJrj4eV9vCNVc0Wd8QFOx7Zc=;
- b=TPBo9FqSN77AGishxIoazYzIc3ghkeNMS+P3wjFpB17aqbHKmI1Qb1W2a+/lbEh1Gy
- C/k3CUeaFoKw4p/fSj2RjZSJVPelvvmqDMSn67rtXVQ9n3hTJKwJznRcxHs9aIxOQAB/
- JzLdCTb+97ex/evB5MXoYZl+lMEzzaYw/GMcE5Ux95P5sl/AQ1LiBQ59g5CMtLjvTEdP
- Z/h/yTQ3VXy1TXskEKUpqua8/gM925A/MR0YIAWNyJOyBA1OuaYXBUcqWziEQC9yK0yX
- AUHeZsQMy0lPe6g+Pg9Ya2+yvc2w0Wjl1HQh13zqfRS5ogLvt1X24GCdViB2C/A88lTa
- I+OA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693486824; x=1694091624;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fujFUeasp++TV/A3YKYPJrj4eV9vCNVc0Wd8QFOx7Zc=;
- b=cdusrY9LzhCCNxmvbiZpMBBQBGzfYdNzwsXAoLuYkv90IopTD3EfWOHefLAb16H6qJ
- xXM7o+Vwpyf33jObuF5BIMvRsg8zNLJCkWNLWDXJ6A4TC/8m92ORFfoEKycU48rqAo/T
- 3Gh4y9nXYCQ7DzbCuDGamdR8let4TTyWYHcB10C4PzdHHVnJpBTKUf6U1w976LDNfdyv
- 3Qq1MdGbF0QdQdM52eMERceadAC2Fv8hBf43kQDeF0ptKtsg1a/9pvKilJ49Jc0ljHDO
- VVCJITnyDSiI2if/lcOnDMt+4MTwn/ooJ5fh6UVNYVVXFXucLzdyJXfE5Nqu6Re5fo7A
- zYFA==
-X-Gm-Message-State: AOJu0YzkIp3Tqpfq+0HB0lGwvCweeQByl0zDBrqWgMw1BXM/daRmRGN+
- 5/j0cyuG3IOjaz64/0n+A6gRuw==
-X-Received: by 2002:a5d:46cb:0:b0:319:6afc:7a3c with SMTP id
- g11-20020a5d46cb000000b003196afc7a3cmr3807766wrs.10.1693486824263; 
- Thu, 31 Aug 2023 06:00:24 -0700 (PDT)
-Received: from m1x-phil.lan ([176.187.199.245])
- by smtp.gmail.com with ESMTPSA id
- a2-20020adff7c2000000b003177074f830sm2165517wrq.59.2023.08.31.06.00.22
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Aug 2023 06:00:23 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, qemu-block@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Xu <peterx@redhat.com>, Lukas Straub <lukasstraub2@web.de>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PULL 36/41] util: spelling fixes
-Date: Thu, 31 Aug 2023 14:56:38 +0200
-Message-ID: <20230831125646.67855-37-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230831125646.67855-1-philmd@linaro.org>
-References: <20230831125646.67855-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <SRS0=TXcQ=EQ=kaod.org=clg@ozlabs.org>)
+ id 1qbhdN-000198-FI; Thu, 31 Aug 2023 09:22:55 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=TXcQ=EQ=kaod.org=clg@ozlabs.org>)
+ id 1qbhdJ-0006QB-SM; Thu, 31 Aug 2023 09:22:53 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Rc2045srmz4wy9;
+ Thu, 31 Aug 2023 23:22:44 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Rc2026xrpz4wb5;
+ Thu, 31 Aug 2023 23:22:42 +1000 (AEST)
+Message-ID: <a35c9605-7bea-0252-359e-86855e8ee304@kaod.org>
+Date: Thu, 31 Aug 2023 15:22:40 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v3 5/7] aspeed: Create flash devices only when defaults
+ are enabled
+Content-Language: en-US
+To: Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+References: <20230831123922.105200-1-clg@kaod.org>
+ <20230831123922.105200-6-clg@kaod.org>
+ <CACPK8XdiTpONmuLag5HnTCPXtoz+Zg-Yo+rrzt+Wuz17hbdDRg@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CACPK8XdiTpONmuLag5HnTCPXtoz+Zg-Yo+rrzt+Wuz17hbdDRg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=TXcQ=EQ=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -73
+X-Spam_score: -7.4
+X-Spam_bar: -------
+X-Spam_report: (-7.4 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.478,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,235 +99,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: g9uYOoHK3h/Z
+X-TUID: Qc01aBUZWYet
 
-From: Michael Tokarev <mjt@tls.msk.ru>
+On 8/31/23 15:00, Joel Stanley wrote:
+> On Thu, 31 Aug 2023 at 12:39, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> When the -nodefaults option is set, flash devices should be created
+>> with :
+>>
+>>      -blockdev node-name=fmc0,driver=file,filename=./flash.img \
+>>      -device mx66u51235f,cs=0x0,bus=ssi.0,drive=fmc0 \
+>>
+>> To be noted that in this case, the ROM will not be installed and the
+>> initial boot sequence (U-Boot loading) will fetch instructions using
+>> SPI transactions which is significantly slower. That's exactly how HW
+>> operates though.
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> 
+> I think this is the first foray for the aspeed machines into
+> nodefaults removing things that previously would have just worked.
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20230823065335.1919380-3-mjt@tls.msk.ru>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/elf.h               | 4 ++--
- include/io/channel-socket.h | 4 ++--
- include/io/task.h           | 2 +-
- include/qemu/iova-tree.h    | 4 ++--
- include/qemu/yank.h         | 2 +-
- util/cpuinfo-aarch64.c      | 4 ++--
- util/cpuinfo-i386.c         | 4 ++--
- util/cpuinfo-ppc.c          | 2 +-
- util/main-loop.c            | 2 +-
- util/oslib-posix.c          | 2 +-
- util/qdist.c                | 2 +-
- util/qemu-sockets.c         | 2 +-
- util/rcu.c                  | 2 +-
- 13 files changed, 18 insertions(+), 18 deletions(-)
+This is true. It is change from the previous behavior.
 
-diff --git a/include/elf.h b/include/elf.h
-index ec9755e73b..e7259ec366 100644
---- a/include/elf.h
-+++ b/include/elf.h
-@@ -1125,9 +1125,9 @@ typedef struct {
- #define EFA_PARISC_1_1      0x0210 /* PA-RISC 1.1 big-endian.  */
- #define EFA_PARISC_2_0      0x0214 /* PA-RISC 2.0 big-endian.  */
- 
--/* Additional section indeces.  */
-+/* Additional section indices.  */
- 
--#define SHN_PARISC_ANSI_COMMON  0xff00   /* Section for tenatively declared
-+#define SHN_PARISC_ANSI_COMMON  0xff00   /* Section for tentatively declared
-                                               symbols in ANSI C.  */
- #define SHN_PARISC_HUGE_COMMON  0xff01   /* Common blocks in huge model.  */
- 
-diff --git a/include/io/channel-socket.h b/include/io/channel-socket.h
-index 513c428fe4..ab15577d38 100644
---- a/include/io/channel-socket.h
-+++ b/include/io/channel-socket.h
-@@ -124,7 +124,7 @@ void qio_channel_socket_connect_async(QIOChannelSocket *ioc,
-  * qio_channel_socket_listen_sync:
-  * @ioc: the socket channel object
-  * @addr: the address to listen to
-- * @num: the expected ammount of connections
-+ * @num: the expected amount of connections
-  * @errp: pointer to a NULL-initialized error object
-  *
-  * Attempt to listen to the address @addr. This method
-@@ -141,7 +141,7 @@ int qio_channel_socket_listen_sync(QIOChannelSocket *ioc,
-  * qio_channel_socket_listen_async:
-  * @ioc: the socket channel object
-  * @addr: the address to listen to
-- * @num: the expected ammount of connections
-+ * @num: the expected amount of connections
-  * @callback: the function to invoke on completion
-  * @opaque: user data to pass to @callback
-  * @destroy: the function to free @opaque
-diff --git a/include/io/task.h b/include/io/task.h
-index beec4f5cfd..dc7d32ebd0 100644
---- a/include/io/task.h
-+++ b/include/io/task.h
-@@ -145,7 +145,7 @@ typedef void (*QIOTaskWorker)(QIOTask *task,
-  * The QIOTask module can also be used to perform operations
-  * in a background thread context, while still reporting the
-  * results in the main event thread. This allows code which
-- * cannot easily be rewritten to be asychronous (such as DNS
-+ * cannot easily be rewritten to be asynchronous (such as DNS
-  * lookups) to be easily run non-blocking. Reporting the
-  * results in the main thread context means that the caller
-  * typically does not need to be concerned about thread
-diff --git a/include/qemu/iova-tree.h b/include/qemu/iova-tree.h
-index 8528e5c98f..2a10a7052e 100644
---- a/include/qemu/iova-tree.h
-+++ b/include/qemu/iova-tree.h
-@@ -15,7 +15,7 @@
-  * Currently the iova tree will only allow to keep ranges
-  * information, and no extra user data is allowed for each element.  A
-  * benefit is that we can merge adjacent ranges internally within the
-- * tree.  It can save a lot of memory when the ranges are splitted but
-+ * tree.  It can save a lot of memory when the ranges are split but
-  * mostly continuous.
-  *
-  * Note that current implementation does not provide any thread
-@@ -128,7 +128,7 @@ const DMAMap *iova_tree_find_address(const IOVATree *tree, hwaddr iova);
-  * iova_tree_foreach:
-  *
-  * @tree: the iova tree to iterate on
-- * @iterator: the interator for the mappings, return true to stop
-+ * @iterator: the iterator for the mappings, return true to stop
-  *
-  * Iterate over the iova tree.
-  *
-diff --git a/include/qemu/yank.h b/include/qemu/yank.h
-index 5375a1f195..1907150933 100644
---- a/include/qemu/yank.h
-+++ b/include/qemu/yank.h
-@@ -25,7 +25,7 @@ typedef void (YankFn)(void *opaque);
-  * @instance: The instance.
-  * @errp: Error object.
-  *
-- * Returns true on success or false if an error occured.
-+ * Returns true on success or false if an error occurred.
-  */
- bool yank_register_instance(const YankInstance *instance, Error **errp);
- 
-diff --git a/util/cpuinfo-aarch64.c b/util/cpuinfo-aarch64.c
-index ababc39550..7d39f47e3b 100644
---- a/util/cpuinfo-aarch64.c
-+++ b/util/cpuinfo-aarch64.c
-@@ -1,6 +1,6 @@
- /*
-  * SPDX-License-Identifier: GPL-2.0-or-later
-- * Host specific cpu indentification for AArch64.
-+ * Host specific cpu identification for AArch64.
-  */
- 
- #include "qemu/osdep.h"
-@@ -33,7 +33,7 @@ static bool sysctl_for_bool(const char *name)
-     /*
-      * We might in the future ask for properties not present in older kernels,
-      * but we're only asking about static properties, all of which should be
--     * 'int'.  So we shouln't see ENOMEM (val too small), or any of the other
-+     * 'int'.  So we shouldn't see ENOMEM (val too small), or any of the other
-      * more exotic errors.
-      */
-     assert(errno == ENOENT);
-diff --git a/util/cpuinfo-i386.c b/util/cpuinfo-i386.c
-index 3a7b7e0ad1..b2ed65bb10 100644
---- a/util/cpuinfo-i386.c
-+++ b/util/cpuinfo-i386.c
-@@ -1,6 +1,6 @@
- /*
-  * SPDX-License-Identifier: GPL-2.0-or-later
-- * Host specific cpu indentification for x86.
-+ * Host specific cpu identification for x86.
-  */
- 
- #include "qemu/osdep.h"
-@@ -74,7 +74,7 @@ unsigned __attribute__((constructor)) cpuinfo_init(void)
-                  * of their memory operands to be 16-byte aligned.
-                  *
-                  * AMD has provided an even stronger guarantee that processors
--                 * with AVX provide 16-byte atomicity for all cachable,
-+                 * with AVX provide 16-byte atomicity for all cacheable,
-                  * naturally aligned single loads and stores, e.g. MOVDQU.
-                  *
-                  * See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=104688
-diff --git a/util/cpuinfo-ppc.c b/util/cpuinfo-ppc.c
-index 7212afa45d..1ea3db0ac8 100644
---- a/util/cpuinfo-ppc.c
-+++ b/util/cpuinfo-ppc.c
-@@ -1,6 +1,6 @@
- /*
-  * SPDX-License-Identifier: GPL-2.0-or-later
-- * Host specific cpu indentification for ppc.
-+ * Host specific cpu identification for ppc.
-  */
- 
- #include "qemu/osdep.h"
-diff --git a/util/main-loop.c b/util/main-loop.c
-index 014c795916..797b640c41 100644
---- a/util/main-loop.c
-+++ b/util/main-loop.c
-@@ -47,7 +47,7 @@
-  */
- /*
-  * Disable CFI checks.
-- * We are going to call a signal hander directly. Such handler may or may not
-+ * We are going to call a signal handler directly. Such handler may or may not
-  * have been defined in our binary, so there's no guarantee that the pointer
-  * used to set the handler is a cfi-valid pointer. Since the handlers are
-  * stored in kernel memory, changing the handler to an attacker-defined
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 760390b31e..4d583da7ce 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -671,7 +671,7 @@ void qemu_free_stack(void *stack, size_t sz)
- 
- /*
-  * Disable CFI checks.
-- * We are going to call a signal hander directly. Such handler may or may not
-+ * We are going to call a signal handler directly. Such handler may or may not
-  * have been defined in our binary, so there's no guarantee that the pointer
-  * used to set the handler is a cfi-valid pointer. Since the handlers are
-  * stored in kernel memory, changing the handler to an attacker-defined
-diff --git a/util/qdist.c b/util/qdist.c
-index 5f75e24c29..ef3566b03a 100644
---- a/util/qdist.c
-+++ b/util/qdist.c
-@@ -210,7 +210,7 @@ void qdist_bin__internal(struct qdist *to, const struct qdist *from, size_t n)
- 
-         /*
-          * To avoid double-counting we capture [left, right) ranges, except for
--         * the righmost bin, which captures a [left, right] range.
-+         * the rightmost bin, which captures a [left, right] range.
-          */
-         while (j < from->n && (from->entries[j].x < right || i == n - 1)) {
-             struct qdist_entry *o = &from->entries[j];
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index 892d33f5e6..83e84b1186 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -929,7 +929,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
- 
-     if (pathbuf != NULL) {
-         /*
--         * This dummy fd usage silences the mktemp() unsecure warning.
-+         * This dummy fd usage silences the mktemp() insecure warning.
-          * Using mkstemp() doesn't make things more secure here
-          * though.  bind() complains about existing files, so we have
-          * to unlink first and thus re-open the race window.  The
-diff --git a/util/rcu.c b/util/rcu.c
-index 30a7e22026..e587bcc483 100644
---- a/util/rcu.c
-+++ b/util/rcu.c
-@@ -355,7 +355,7 @@ void drain_call_rcu(void)
-      *
-      * Note that since we have only one global queue of the RCU callbacks,
-      * we also end up waiting for most of RCU callbacks that were registered
--     * on the other threads, but this is a side effect that shoudn't be
-+     * on the other threads, but this is a side effect that shouldn't be
-      * assumed.
-      */
- 
--- 
-2.41.0
+QEMU should probably complain if no fmc0 are found to boot from.
+Would that be ok ? And yes, documentation needs some update.
+
+Thanks,
+
+C.
+
+> I
+> know we haven't had it in our recommended command lines for a long
+> time, so that's fine.
+> 
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> 
+> Should the content of your commit message go in the docs?
+> 
+>> ---
+>>   hw/arm/aspeed.c | 6 ++++--
+>>   1 file changed, 4 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>> index cd92cf9ce0bb..271512ce5ced 100644
+>> --- a/hw/arm/aspeed.c
+>> +++ b/hw/arm/aspeed.c
+>> @@ -396,12 +396,14 @@ static void aspeed_machine_init(MachineState *machine)
+>>       connect_serial_hds_to_uarts(bmc);
+>>       qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
+>>
+>> -    aspeed_board_init_flashes(&bmc->soc.fmc,
+>> +    if (defaults_enabled()) {
+>> +        aspeed_board_init_flashes(&bmc->soc.fmc,
+>>                                 bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+>>                                 amc->num_cs, 0);
+>> -    aspeed_board_init_flashes(&bmc->soc.spi[0],
+>> +        aspeed_board_init_flashes(&bmc->soc.spi[0],
+>>                                 bmc->spi_model ? bmc->spi_model : amc->spi_model,
+>>                                 1, amc->num_cs);
+>> +    }
+>>
+>>       if (machine->kernel_filename && sc->num_cpus > 1) {
+>>           /* With no u-boot we must set up a boot stub for the secondary CPU */
+>> --
+>> 2.41.0
+>>
 

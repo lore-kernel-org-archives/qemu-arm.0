@@ -1,115 +1,113 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5081556ejc;
-        Thu, 31 Aug 2023 06:09:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEx/dPqievihsRrpTshN/rNR5jR7d3iF/CI0aZ8GSKauC7MjXefKir60rTIa2P6qrUmrIZI
-X-Received: by 2002:ac8:5cc1:0:b0:40a:eb3e:b27b with SMTP id s1-20020ac85cc1000000b0040aeb3eb27bmr3274069qta.43.1693487370174;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5081567ejc;
+        Thu, 31 Aug 2023 06:09:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGqZRe+Wp55ffzIfyhmXl1Z42IWUnzB8n3TRAVpkh+qYKKdoUUEBUikxOjth9X19FY3lc40
+X-Received: by 2002:a05:622a:18a4:b0:412:b64:9f45 with SMTP id v36-20020a05622a18a400b004120b649f45mr2725623qtc.4.1693487370924;
         Thu, 31 Aug 2023 06:09:30 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1693487370; cv=none;
         d=google.com; s=arc-20160816;
-        b=wAmXyGW0zYV7ZBgEKejRS09Eiw3xFSMObreEail269TnAc2Xni2e56oCfVB9zFf+Zb
-         0A+swUqBVcM0UBUdgo8vieGJg2PhrJxDFKkFqDyEpV+TjqrvkV8eDwO3m2WpqaNZErct
-         pt+cP57I1ERozi6t3sYubH/f//RuOaRa6dOxeNBH2hpdkrNJ1evFFLvcs6Grr3H/ti+0
-         LDUt/O5pxc0TYw/T+z54b7HdYhczsONvJXhFX5UL7oQgefEQz7Tls/lyYuSN2C4KEm5t
-         KwWbnDlRfOpJcSbtg+K/qOq5Hw6NGym57NTi7p+Z4pJq3NGvhLI0DqIBJKIklSRPe0rq
-         h31g==
+        b=tVC6ICs5ep6mRV9JP+L8TSr/JXFdseTHl1FGXldGL0Zfyf9iGtBHrbaQ2FX4m97nSW
+         /dNbQpvHhauib1exIUG5eKv7XtRTdNRYoujaBDZHq5ZeQdTLxiioEs6DbWJIIPspwYQ4
+         184jgeU4nesU3ZXJknCRzO8NsCLHKWWjvmVK4i9GloxSVSnI6GSWbVwnv7ZuhnztpNiM
+         3uCwhYORzITBY+euLsIGMfSK3jWIT0PbZQG8CYp6giyt1ZWLk1lfVRpKQNa5yyNLxiRv
+         P6d/h7GzeYyBK9SREuH8h2ZZP9jZi2jOrMdn1T3nU3xaSiwnL+TafOeKs07DdiNV9ePR
+         0Diw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=7hmpcKbPMiCB1lRYiTD63IbOGzz5WRqg6JB5CP58x9E=;
-        fh=dTAPLjpUkGoqjwwcraRm4ZPxty7wZk6pgB0ZZE+vNWc=;
-        b=SK5+5yb1jPPBsQNHu27GB0Wyil6y/tHeR88cscGddz7L8Xt4Ye/T/0RAB7tmIlpI7c
-         YAYtAOwcnuIxZ2RrcwBJCyvEMGVyQwI0uNrM5emYWj8XIQPEWtdV9OpiAS+UQoQkyjMl
-         QvocroDszBwypA+VSBnCJI5ckTajYVVdgHCqE+1ROzaWuOLQGYPzpfxfhdiFUoMSvZjy
-         Og6zH6eMk3lwSz/2CRrfdnO3KSCnPYlxaUKXtfYi1z0oj1IcKXta8ouXdPdM4xqRbtqZ
-         SlB0SRoRqZqo49ffoG76fN6h5pOgRHbvamj9eTENl6WseUFWbvNAqBYKMzSo+b5ZY0aY
-         kJYQ==
+        bh=Occ8BC5H/FvkONSrz36OUIh3zPM4NWg3GVGnui/y/PY=;
+        fh=9Q0cuBcSk3/xqkgTyQq17rTjHRbQHS04J5UiK5/uHcI=;
+        b=QkNtEEHIeHL/jWSOLqJ9G/pUh7HXTYDobcABIdcJupjuEHdfuK2xYDxFvO9yxlfMgN
+         bOhzUL5egPhXxJXrz9ktAQARoyk9ZykABN5HdGCMphD3EfR4dvU68yf5z6NFwVDrU6he
+         Xql7W81N5H56oeVvH9cI12kZF8H2fObmL4gUt1IejfqO6SnzNkYrsBsrQIiBR9KYSANB
+         1x1qSxODpdIVeuB9+7OV6wlV70EVH0QSIp/JG7WlW9UW9NUwPHC/Oyspokgo+k5Kh25S
+         31G/S6xL5OS4gZHGZ9IJ5N5d3VJuLgaJLZRXaLKzBJ9XEIWCjc1BRUGsDKMbVB0goA+a
+         b86g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ei5+GZYK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vV04mWAP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d10-20020a05622a05ca00b0040ceeb5d4dcsi831710qtb.254.2023.08.31.06.09.30
+        by mx.google.com with ESMTPS id m21-20020ac85b15000000b0041092c39f52si817389qtw.229.2023.08.31.06.09.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 31 Aug 2023 06:09:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ei5+GZYK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vV04mWAP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qbhLZ-0008CA-8q; Thu, 31 Aug 2023 09:04:29 -0400
+	id 1qbhL2-0007VV-H9; Thu, 31 Aug 2023 09:03:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhI1-00088u-De
- for qemu-devel@nongnu.org; Thu, 31 Aug 2023 09:00:49 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhGs-0004ga-2o
+ for qemu-devel@nongnu.org; Thu, 31 Aug 2023 08:59:40 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhHx-0006ou-5F
- for qemu-devel@nongnu.org; Thu, 31 Aug 2023 09:00:48 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-31dcf18f9e2so638590f8f.0
- for <qemu-devel@nongnu.org>; Thu, 31 Aug 2023 06:00:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhGn-0005zQ-4s
+ for qemu-devel@nongnu.org; Thu, 31 Aug 2023 08:59:37 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-317c3ac7339so595246f8f.0
+ for <qemu-devel@nongnu.org>; Thu, 31 Aug 2023 05:59:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693486843; x=1694091643; darn=nongnu.org;
+ d=linaro.org; s=google; t=1693486768; x=1694091568; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7hmpcKbPMiCB1lRYiTD63IbOGzz5WRqg6JB5CP58x9E=;
- b=Ei5+GZYK8/+CY0aIOgA2fVUBPVljAjgdxJcdBubH6rGLe9ByOEBsiPYDYCvJ2QVZ0e
- 1lE7Tm1oWylsWX6+v5B5oP7XPo701MD2Tl0OfxQ4OE9MDerWhcc6bmLkI/cL8fvSg7W3
- TQBJIDFMcwpFxbZkx2mwaMXR3NUIrM+OJJqXRXVtVyaDQ/fBqmDXOZL2QEs3b20f2H+b
- gloOzkZ6t/fcHeJEvLuSTLBdJG5jgC//C7ZIyvohXmj1n5YN0mYQSX/aofNEToF0jMka
- wWIeT2HTK8xDqMyjpkH/Z+VK3eDrNy0L21pdymlTGn1ZnJY5FHjupl+MFzRgcPWaQePz
- yzUA==
+ bh=Occ8BC5H/FvkONSrz36OUIh3zPM4NWg3GVGnui/y/PY=;
+ b=vV04mWAPJeIR0CGQpZ3qrfQ58XeCAoG0Ny49MobdXAFE6LarKEXdLOmdqe92uyxVxw
+ qVSkAVRTrQEA3vxp9QGGcjUaIRbkNb5ia/TCBBxuVYW7EZf5Fvkw0fnOViRbhUphY1gf
+ MaguKATs+C81+SC/r33L3Z695he65Iz9gq/uvaKiEjpySStT0UwcUQ/KJ9n7DMtLG/Dc
+ Hymiiee2keG+jkvTxirknxquATr2y+vv0IlAbMcq5+/OXTmMH8cReexa1veXEh0dz51P
+ qIv0czqYfuBnMyMPOuE1mzKUqzp237XHhGe/dhMQ5o45X9/SkJdsPdDMcqyFVtbg1Cpx
+ 7wuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693486843; x=1694091643;
+ d=1e100.net; s=20221208; t=1693486768; x=1694091568;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7hmpcKbPMiCB1lRYiTD63IbOGzz5WRqg6JB5CP58x9E=;
- b=RbMO3kBeiCgLqsLzdckAB2yb0W1Fc+FdzrDRtwTBqzTuLh3FiwawMNWDJAGwhtUrvT
- IpR3LbMMt4pZ02PXmFK87nrNf/id8FCDnLr8yZNUbvnrTEyYTZndUrsBZ2bwNjGrPIw9
- vv3neiAoMGv74CGl8DGqKoPBitC/viCvvggTzvmUTYZVef+FrKabhSIFM+2Ml4/JkpoW
- wq1+UdZcPtBYn9O4EwZVbKcElysxNdp9zhyzxqSyuiUHCRyUFZ/T0r6+cUlM48mcLOTb
- c7KKq6gk+cq3cB0NpOn/gfOJ3mIlzhMOeoN+Qm44XDg5TOI21s/F+RVpd58x8FMf1jZ7
- 6FcQ==
-X-Gm-Message-State: AOJu0YwSEDuA1w8X4emJqwS7T0tqWWnw7KfpgVHM3VzS7DE1oyuA/xRO
- oIHQ5T/OfiNnzyEviI0QvXaBzcZA6p6y3gKgaIw=
-X-Received: by 2002:a5d:5487:0:b0:317:6310:a616 with SMTP id
- h7-20020a5d5487000000b003176310a616mr3810958wrv.36.1693486843054; 
- Thu, 31 Aug 2023 06:00:43 -0700 (PDT)
+ bh=Occ8BC5H/FvkONSrz36OUIh3zPM4NWg3GVGnui/y/PY=;
+ b=GpbtfV/gOdWMo+GhA8p/wjNfTc6CJU+UJ17PMRiWlIHGwF5bc3g8eSteDj6TbxtVzo
+ s/8Icy9bUY8V4Ij3lmSesD5AV5n5DPtfmRiZAsqaG+VTo3eEUzuIzjXwnmesv0fcWmNc
+ li/jFzmpw63Z37h0yUI+LxadhYA2x1C9Bfmgmz3yS7PtvkiQ2NznOGFWjNkMyOuS46iT
+ M4gN86m3Vb/yB8nFkz1XyO5DgSM/7T3ItDoTqGVKtERfe90Hu/6f0kCT4Hq5WSGguPuw
+ Iyesq11cL21u3vQCYXVUdhlWfrGD22qdzFjP++epJHx8Vx0LNQee41+/meBQpg7MWyA+
+ k8fQ==
+X-Gm-Message-State: AOJu0YyXInsLtJbgbOXCBYWN2v1VTQtMBNImFcFLA2E38HYpK4nXTHIC
+ sDyIvF8e1XPWtsZKSV/3L3NXIUoCzduBQccbOOw=
+X-Received: by 2002:a5d:6706:0:b0:319:63f3:c0cb with SMTP id
+ o6-20020a5d6706000000b0031963f3c0cbmr4341696wru.40.1693486767862; 
+ Thu, 31 Aug 2023 05:59:27 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.199.245])
  by smtp.gmail.com with ESMTPSA id
- b17-20020a5d6351000000b0030fd03e3d25sm2183922wrw.75.2023.08.31.06.00.41
+ 16-20020a05600c025000b003fee7b67f67sm1901789wmj.31.2023.08.31.05.59.26
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Aug 2023 06:00:42 -0700 (PDT)
+ Thu, 31 Aug 2023 05:59:27 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, qemu-block@nongnu.org,
- Akihiko Odaki <akihiko.odaki@daynix.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
- Cleber Rosa <crosa@redhat.com>
-Subject: [PULL 39/41] meson: Fix MESONINTROSPECT parsing
-Date: Thu, 31 Aug 2023 14:56:41 +0200
-Message-ID: <20230831125646.67855-40-philmd@linaro.org>
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Titus Rwantare <titusr@google.com>, Corey Minyard <cminyard@mvista.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>
+Subject: [PULL 26/41] hw/i2c: spelling fixes
+Date: Thu, 31 Aug 2023 14:56:28 +0200
+Message-ID: <20230831125646.67855-27-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230831125646.67855-1-philmd@linaro.org>
 References: <20230831125646.67855-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,46 +129,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SWlkMUxG5W1A
+X-TUID: u+BJKmrVX58G
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
 
-The arguments in MESONINTROSPECT are quoted with shlex.quote() so it
-must be parsed with shlex.split().
-
-Fixes: cf60ccc330 ("cutils: Introduce bundle mechanism")
-Reported-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Tested-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Message-ID: <20230823065335.1919380-14-mjt@tls.msk.ru>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20230812061540.5398-1-akihiko.odaki@daynix.com>
 ---
- scripts/symlink-install-tree.py | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ include/hw/i2c/npcm7xx_smbus.h | 2 +-
+ include/hw/misc/auxbus.h       | 2 +-
+ hw/i2c/pm_smbus.c              | 2 +-
+ hw/i2c/pmbus_device.c          | 2 +-
+ hw/i2c/smbus_slave.c           | 2 +-
+ hw/sensor/isl_pmbus_vr.c       | 2 +-
+ hw/sensor/max34451.c           | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/scripts/symlink-install-tree.py b/scripts/symlink-install-tree.py
-index 8ed97e3c94..b72563895c 100644
---- a/scripts/symlink-install-tree.py
-+++ b/scripts/symlink-install-tree.py
-@@ -4,6 +4,7 @@
- import errno
- import json
- import os
-+import shlex
- import subprocess
- import sys
+diff --git a/include/hw/i2c/npcm7xx_smbus.h b/include/hw/i2c/npcm7xx_smbus.h
+index 3555e6836f..dc45963c0e 100644
+--- a/include/hw/i2c/npcm7xx_smbus.h
++++ b/include/hw/i2c/npcm7xx_smbus.h
+@@ -58,7 +58,7 @@ typedef enum NPCM7xxSMBusStatus {
+  * @sclht: The SCL high time register.
+  * @fif_ctl: The FIFO control register.
+  * @fif_cts: The FIFO control status register.
+- * @fair_per: The fair preriod register.
++ * @fair_per: The fair period register.
+  * @txf_ctl: The transmit FIFO control register.
+  * @t_out: The SMBus timeout register.
+  * @txf_sts: The transmit FIFO status register.
+diff --git a/include/hw/misc/auxbus.h b/include/hw/misc/auxbus.h
+index b05799d2f7..03cacdee42 100644
+--- a/include/hw/misc/auxbus.h
++++ b/include/hw/misc/auxbus.h
+@@ -106,7 +106,7 @@ void aux_bus_realize(AUXBus *bus);
+  *
+  * Returns the reply of the request.
+  *
+- * @bus Ths bus where the request happen.
++ * @bus The bus where the request happen.
+  * @cmd The command requested.
+  * @address The 20bits address of the slave.
+  * @len The length of the read or write.
+diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+index d7eae548cb..9ad6a47739 100644
+--- a/hw/i2c/pm_smbus.c
++++ b/hw/i2c/pm_smbus.c
+@@ -1,6 +1,6 @@
+ /*
+  * PC SMBus implementation
+- * splitted from acpi.c
++ * split from acpi.c
+  *
+  * Copyright (c) 2006 Fabrice Bellard
+  *
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index 8bc9d5108a..cef51663d0 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -1626,7 +1626,7 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
+         break;
  
-@@ -14,7 +15,7 @@ def destdir_join(d1: str, d2: str) -> str:
-     return str(PurePath(d1, *PurePath(d2).parts[1:]))
+ passthrough:
+-    /* Unimplimented registers get passed to the device */
++    /* Unimplemented registers get passed to the device */
+     default:
+         if (pmdc->write_data) {
+             ret = pmdc->write_data(pmdev, buf, len);
+diff --git a/hw/i2c/smbus_slave.c b/hw/i2c/smbus_slave.c
+index feb3ec6333..2ef2c7c5f6 100644
+--- a/hw/i2c/smbus_slave.c
++++ b/hw/i2c/smbus_slave.c
+@@ -2,7 +2,7 @@
+  * QEMU SMBus device emulation.
+  *
+  * This code is a helper for SMBus device emulation.  It implements an
+- * I2C device inteface and runs the SMBus protocol from the device
++ * I2C device interface and runs the SMBus protocol from the device
+  * point of view and maps those to simple calls to emulate.
+  *
+  * Copyright (c) 2007 CodeSourcery.
+diff --git a/hw/sensor/isl_pmbus_vr.c b/hw/sensor/isl_pmbus_vr.c
+index eb344dd5a9..e51269f6b8 100644
+--- a/hw/sensor/isl_pmbus_vr.c
++++ b/hw/sensor/isl_pmbus_vr.c
+@@ -101,7 +101,7 @@ static void isl_pmbus_vr_exit_reset(Object *obj)
+     }
+ }
  
- introspect = os.environ.get('MESONINTROSPECT')
--out = subprocess.run([*introspect.split(' '), '--installed'],
-+out = subprocess.run([*shlex.split(introspect), '--installed'],
-                      stdout=subprocess.PIPE, check=True).stdout
- for source, dest in json.loads(out).items():
-     bundle_dest = destdir_join('qemu-bundle', dest)
+-/* The raa228000 uses different direct mode coefficents from most isl devices */
++/* The raa228000 uses different direct mode coefficients from most isl devices */
+ static void raa228000_exit_reset(Object *obj)
+ {
+     PMBusDevice *pmdev = PMBUS_DEVICE(obj);
+diff --git a/hw/sensor/max34451.c b/hw/sensor/max34451.c
+index a91d8bd487..9db52ef677 100644
+--- a/hw/sensor/max34451.c
++++ b/hw/sensor/max34451.c
+@@ -734,7 +734,7 @@ static void max34451_init(Object *obj)
+ 
+     /*
+      * get and set the temperature of the internal temperature sensor in
+-     * centidegrees Celcius i.e.: 2500 -> 25.00 C, max is 327.67 C
++     * centidegrees Celsius i.e.: 2500 -> 25.00 C, max is 327.67 C
+      */
+     for (int i = 0; i < MAX34451_NUM_TEMP_DEVICES; i++) {
+         object_property_add(obj, "temperature[*]", "uint16",
 -- 
 2.41.0
 

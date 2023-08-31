@@ -1,114 +1,146 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp163675ejc;
-        Thu, 31 Aug 2023 13:04:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF+ItRNb42LT9qUIx1/3yubPUDb+gW+xL8wKJKZoTLcFzoE8GDOuaHBbfjd7hSlcfKVLAww
-X-Received: by 2002:a05:622a:189b:b0:406:cadc:ff35 with SMTP id v27-20020a05622a189b00b00406cadcff35mr641141qtc.54.1693512260381;
-        Thu, 31 Aug 2023 13:04:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693512260; cv=none;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp72295ejc;
+        Thu, 31 Aug 2023 10:19:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGe1cxDAkJ2jYuGPcBbW0I3cczkfdvzqT5rZMQdIXtvSSSIHYAyzVmZk2zdC9PzocePq7fA
+X-Received: by 2002:a0c:8d8b:0:b0:63c:dde2:5a20 with SMTP id t11-20020a0c8d8b000000b0063cdde25a20mr3439603qvb.0.1693502347972;
+        Thu, 31 Aug 2023 10:19:07 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1693502347; cv=pass;
         d=google.com; s=arc-20160816;
-        b=x7sstgA5QRVbSabcGPfLlK3DDWL0HhQUQ0oD+qf21hOqfFgcAsdTlhmKJm1LkXsulo
-         eV5BTvLiNFNiOm76SB7oYsmR9pNSf8EFtT0a3yPOMASAcFvgBmOTXKOmi98v/njRzGzf
-         oo4BuqUTJMxR0o86Lp96qU0qHVb1LtBrQnl8zL4Wd1ZJ7mTq4pEOS/acnh6L2r6lgrJ0
-         KYopDgiPbOxOkI0B2DalBLInMpW6h6cknmuyVuQzZfb5ZSQWc3Lf1G/YsyXpR3GC56RG
-         lqAehUL32YiKo7N1jH0z05+SI6wgOumbaGjWjip/SQtt6LXUNHVamkMX5H00qdcxShy4
-         przA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=0D+sBDpcCG363Kxsc5FNam/HQIPKkH/sKhFxwvtHTVfldJt27ODkr1DV8vnLLnw+NW
+         vh6tZvfv71Xlvx8sHNTkTaPOuw3/qVm/Azn8xXvDMru/dnbOzTDJGurojGn9LlKrCRAB
+         t8F8lyZTiZEVUDAGWF0peXzmLIjHgJhJKEwqFeCFrO7Qt6UVYwCHJCHU14/NkYTNiCp6
+         fJ2YQQ1WO1tZ1gGaXYqeeEr0Nghtb+RBkeJ/HMvlls4djQOf6ZeHgvhkgdPDgkdwHgz1
+         T5MkZ0M6NpLsybpYGJHkxFEY2ZPNT4I0NBFVS32bZZG8DrVCAW/9l/CULHVBM/5VxCUF
+         N6tA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=AcKCTvHinaemMP4MaRz+3FlPYQ2mgOnZDdKIyfqpGVk=;
-        fh=lSXA+KOWLNRmm2qEyx7AMyW+7C72n3a9PMZAQAHTKe4=;
-        b=U86AbJi75q3E47KtSjEZKJLb4CdALMpZrl/FvNDH8rUPSp76Ex2sMDD3Mx3n8I3wtP
-         qB4fBkQV4KuZ1/1+nwlVfRMsdga6xQrSdrtgs9EwxOEaOUHnhHv/QqwkAP8vjhfjVrCH
-         /8ItkZ9QAl2/XbupNZunXbVWH3s27lPO4PPXY4WTUy0OEVvRa5bVVSaR1rqeiSOVcKly
-         Q5B+RiPTlB7fg5wZffv8+cQpkBBqWS2HM4DWTBZivihSyxgeykbbVB9vcFJIeOxhFd47
-         PIusdoF1UN1ttp5mwBpqE0Eb+5m/diUAgYPvcrCYN/28Khy0NXf1S44xgrNgepL6H7Kz
-         j0PQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gp4LCtQ8;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=O7tuUNi+bgqUFHnJ+Rl3ddXSdLMaoX10zW01xm0s1jQ=;
+        fh=pznRVeWJ4hItCECwjrqjAIWwbloInRzLO7Vuww0WCHg=;
+        b=ABQqIkoKMliqaNiQUZH0DxCjNuZSg0WWYMxbOPPY6Xc43+yBjGdA2SWchopLhHfk+S
+         lXhhjEqPgLZTPizzlRQxLykE2bB4r/V81Wj+Gsh4b5XSvyWTNj4UhE8Oro9K5Am0CYoK
+         BOVmfiW9BZoVKToyMobijbhqea5IErcHGa8GULkLt9Ibz4uKABOr9pJktBXYtw5GsogQ
+         SuMt8s/KdPkzzVuL9KDI+ajqy0OocxWDHf7FRUhVZTXJIBq6v23ecmuvP56NtM37mv9I
+         MsKige6P8lYKHLoSa/F3y2lCtDLXVc8CM1EUnpScXk91Yt4VBNxNervexd+VcGvVv8TE
+         tKOQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=3nnZ3BzG;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i14-20020ac85c0e000000b00403f05ae952si1297684qti.578.2023.08.31.13.04.20
+        by mx.google.com with ESMTPS id y26-20020a0c9a9a000000b006238ad6d2d2si1171379qvd.577.2023.08.31.10.19.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 13:04:20 -0700 (PDT)
+        Thu, 31 Aug 2023 10:19:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gp4LCtQ8;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=3nnZ3BzG;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qbntV-0005Xg-Cg; Thu, 31 Aug 2023 16:03:57 -0400
+	id 1qblJv-0001sA-19; Thu, 31 Aug 2023 13:19:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qbntQ-0005WH-Bb
- for qemu-arm@nongnu.org; Thu, 31 Aug 2023 16:03:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qblJt-0001rg-Er; Thu, 31 Aug 2023 13:19:01 -0400
+Received: from mail-dm6nam10on20618.outbound.protection.outlook.com
+ ([2a01:111:f400:7e88::618]
+ helo=NAM10-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qbntN-0005Jz-CS
- for qemu-arm@nongnu.org; Thu, 31 Aug 2023 16:03:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1693512228;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=AcKCTvHinaemMP4MaRz+3FlPYQ2mgOnZDdKIyfqpGVk=;
- b=Gp4LCtQ8Urb6SyCT9W0qLJFlFu7ZJF9IPG6etZ+t6fmP7s0e3XBIYkMjwVVl8pxCZ+cJoj
- Vt/PwuVe37sbuzjsGIS7/hSZzDAojAdBybktPaBLUMXjY87vVoJI7lbIBULkSH5EfZ+rLX
- 8GIrGK+M4cE7mSfTQM0eZKYvKs+eiKg=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-348-vNUXNvY8MQuWngffP7iXyw-1; Thu, 31 Aug 2023 16:03:45 -0400
-X-MC-Unique: vNUXNvY8MQuWngffP7iXyw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 826E33C025AC;
- Thu, 31 Aug 2023 20:03:44 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.52])
- by smtp.corp.redhat.com (Postfix) with ESMTP id ADF1EC15BAE;
- Thu, 31 Aug 2023 20:03:43 +0000 (UTC)
-Date: Thu, 31 Aug 2023 16:03:42 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Alexander Graf <graf@amazon.com>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- Cameron Esfahani <dirty@apple.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Mads Ynddal <mads@ynddal.dk>,
- Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
- Bernhard Beschow <shentey@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH v2 11/12] hw/vmapple/virtio-blk: Add support for apple
- virtio-blk
-Message-ID: <20230831200342.GF532982@fedora>
-References: <20230830161425.91946-1-graf@amazon.com>
- <20230830161425.91946-12-graf@amazon.com>
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qblJq-0005ua-7T; Thu, 31 Aug 2023 13:19:01 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=iSmPxkW7+MeqKawOG3JLio3jt9lrxKXpE9ia0IPhJUUFJstbVP2e2zpzpkB9N3SkHBx2V+pZmNO4nl9/bOUqRTBPIFS1wmvyx9DWybmGa3xUtc63FgGpoTeAMS8AY6RG93WwhXHQxHy+LqfyKp1Lbipn6lnhGHebHDyb9xYVyWRmb5KSSPg7l1XCctMlGKdcd5m4UiWlQu1lyHDaWxcE5wTaMqmP5MWT27ttbVmLW/neivJQiLkS1uExj/HB1XsgqW597o3E3AnZ6+h7UAVa9Hw0gkchqSYg3+i171pRHeHUTxUW2WEftodm3o973Ga6XiVvLFYkaQ08J4I1b+4XiQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=O7tuUNi+bgqUFHnJ+Rl3ddXSdLMaoX10zW01xm0s1jQ=;
+ b=EasgZmSOZP7ttBmNN4p9HJciY4ctWJT5So4GGeGw9WX3HGF5e6+DNlhLctFQ4xRpBvhY6a6aRyYRev7JZ+88C9PVhNIWWHN0dk9Yoqa9hy+8zLrcXFuj+gCJuDAY3cvNZCaZdv0jR8kCbKqhXRMRILKYqVbtWA0EEyqtr0I47FiFAuVxr+noecnDsZQfdylQ3hV5AvJxIqakzBKTPuSNmDYqSMMg8EHN4bEgYFicq+3fJ/3RLBSZV1t0GKi8Yo/YJaEn1sSEBR65X4ksEAa62XnWiOSxGj9f8nsjl0oXUkXoQrTGisF+LD+FzyNP97ikJf4cwHm368X+2bEW5leKoQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=O7tuUNi+bgqUFHnJ+Rl3ddXSdLMaoX10zW01xm0s1jQ=;
+ b=3nnZ3BzG7oKfeBAkydO9/fKbdMUq9uqszL+WBtUhEjvtGBWwuAQSlmbnx3KiOTN/HgGANa2QSwGiiZp9Y2B51p4ALpeG2Go9N8y5KmUuwv9CE4arlfz+LSGCtEQBdRKPXhD0C0KdBhOIUgVGtYisM8IwGZomrQakWO6+1cOP38g=
+Received: from DS7PR03CA0034.namprd03.prod.outlook.com (2603:10b6:5:3b5::9) by
+ DM6PR12MB4121.namprd12.prod.outlook.com (2603:10b6:5:220::14) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6745.20; Thu, 31 Aug 2023 17:18:52 +0000
+Received: from CY4PEPF0000E9D5.namprd05.prod.outlook.com
+ (2603:10b6:5:3b5:cafe::9e) by DS7PR03CA0034.outlook.office365.com
+ (2603:10b6:5:3b5::9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6745.21 via Frontend
+ Transport; Thu, 31 Aug 2023 17:18:52 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ CY4PEPF0000E9D5.mail.protection.outlook.com (10.167.241.76) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6745.17 via Frontend Transport; Thu, 31 Aug 2023 17:18:52 +0000
+Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 31 Aug
+ 2023 12:18:51 -0500
+Received: from xsjtongh40.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.27 via Frontend
+ Transport; Thu, 31 Aug 2023 12:18:51 -0500
+From: Tong Ho <tong.ho@amd.com>
+To: <qemu-arm@nongnu.org>
+CC: <qemu-devel@nongnu.org>, <alistair@alistair23.me>,
+ <edgar.iglesias@gmail.com>, <peter.maydell@linaro.org>, <tong.ho@amd.com>
+Subject: [PATCH 2/3] hw/arm: xlnx-versal-virt: Add AMD/Xilinx TRNG device
+Date: Thu, 31 Aug 2023 10:18:48 -0700
+Message-ID: <20230831171849.3297497-3-tong.ho@amd.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230831171849.3297497-1-tong.ho@amd.com>
+References: <20230831171849.3297497-1-tong.ho@amd.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="1SzFviYoAvpIfnZo"
-Content-Disposition: inline
-In-Reply-To: <20230830161425.91946-12-graf@amazon.com>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000E9D5:EE_|DM6PR12MB4121:EE_
+X-MS-Office365-Filtering-Correlation-Id: b9878fbc-18ae-462b-477f-08dbaa465942
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: dgs670kd+5b5x6599okR5vSXNkz4Z6LqOhQ+xfRDF57bgLYhr7tKUDaDyDM28Ru3Z6ULMNf1JDjNJlFHc87xBsjR5Bm6NvUJUtPniZVGIEjVqN6sNvqEiyKGbSOwg6f0CkYC7pSef3glDumm2RV2u67CFIoMoKZrxlBs1/c9neBc1mltab8EHgVCq+W/Mzv0SXaWrsU0UD+xA9pQKi1oiGHTkIGoWPFAnOxSqmDplFU3ukEZ5ARU/MT2jg98232ljwe28H7lFNbZCIA5cXQXd0vQ5y8GIUZR/PU+kyT9XEhT38FRO0N3WTcdTfKI1ai1gAklRQKCiwybE4pQ/ZXLPAbL7P7A84KVaVycP2vFpQf/tXzj+cizRlD5imsu2Otulr5rjgfB2jvJClCoAu9WXU0YlmUYIH5JP8N7JognfZ6z0ew3GGyDl4u0Ue4FlZQBWOOn3rlJ5wnMjoVqNJ3MCzh2vOWvb6gKtlRiqpeLevZH7xISUS7rJSYW+O9ZaroQo+hih8l/CKxhmmSfyv+zijX3Fs5/ORtfDuRUNcnag58ZnBh8ndXO5mmMibxNqlEkHjjgx2pT+L5hAGusAcBCR6fTT9yasLlMvS7gLM+049GkGK2wD6x6AcWQqejJzI4NclzAM6KdCt/28TG5Ftf2c4DBHCbBxRaOZDIAQXG00DeJF+KqEVy+EUhHue8dvpRgSlCFbPtxQJtiA6450iurPnDJtcYpPfjxVzwao2xW0WL0IAFvX3U/tsH9jSzx/tvEjHi3s8T/drgFQBnoXLmWNw==
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(396003)(136003)(376002)(39860400002)(346002)(1800799009)(82310400011)(451199024)(186009)(36840700001)(40470700004)(46966006)(70206006)(2906002)(36756003)(40460700003)(5660300002)(86362001)(44832011)(356005)(82740400003)(81166007)(40480700001)(4326008)(8676002)(47076005)(36860700001)(336012)(41300700001)(8936002)(83380400001)(426003)(1076003)(2616005)(316002)(26005)(54906003)(6666004)(478600001)(70586007)(6916009)(36900700001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Aug 2023 17:18:52.4068 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: b9878fbc-18ae-462b-477f-08dbaa465942
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000E9D5.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4121
+Received-SPF: softfail client-ip=2a01:111:f400:7e88::618;
+ envelope-from=tong.ho@amd.com;
+ helo=NAM10-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,513 +155,143 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OoRJ5k1eqDxU
+X-TUID: 2LO9S+NSHSrj
 
+Connect the support for Versal True Random Number Generator
+(TRNG) device.
 
---1SzFviYoAvpIfnZo
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Warning: unlike the TRNG component in a real device from the
+Versal device familiy, the connected TRNG model is not of
+cryptographic grade and is not intended for use cases when
+cryptograpically strong TRNG is needed.
 
-On Wed, Aug 30, 2023 at 04:14:24PM +0000, Alexander Graf wrote:
-> Apple has its own virtio-blk PCI device ID where it deviates from the
-> official virtio-pci spec slightly: It puts a new "apple type"
-> field at a static offset in config space and introduces a new barrier
-> command.
->=20
-> This patch first creates a mechanism for virtio-blk downstream classes to
-> handle unknown commands. It then creates such a downstream class and a new
-> vmapple-virtio-blk-pci class which support the additional apple type conf=
-ig
-> identifier as well as the barrier command.
->=20
-> It then exposes 2 subclasses from that that we can use to expose root and
-> aux virtio-blk devices: "vmapple-virtio-root" and "vmapple-virtio-aux".
->=20
-> Signed-off-by: Alexander Graf <graf@amazon.com>
+Signed-off-by: Tong Ho <tong.ho@amd.com>
+---
+ hw/arm/Kconfig               |  1 +
+ hw/arm/xlnx-versal-virt.c    | 20 ++++++++++++++++++++
+ hw/arm/xlnx-versal.c         | 16 ++++++++++++++++
+ include/hw/arm/xlnx-versal.h |  5 +++++
+ 4 files changed, 42 insertions(+)
 
-Aside from my comments below:
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
->=20
-> ---
->=20
-> v1 -> v2:
->=20
->   - Rework to make all vmapple virtio-blk logic a subclass
-> ---
->  include/hw/pci/pci_ids.h        |   1 +
->  include/hw/virtio/virtio-blk.h  |  12 +-
->  include/hw/vmapple/virtio-blk.h |  39 ++++++
->  hw/block/virtio-blk.c           |  19 ++-
->  hw/vmapple/virtio-blk.c         | 212 ++++++++++++++++++++++++++++++++
->  hw/vmapple/Kconfig              |   3 +
->  hw/vmapple/meson.build          |   1 +
->  7 files changed, 282 insertions(+), 5 deletions(-)
->  create mode 100644 include/hw/vmapple/virtio-blk.h
->  create mode 100644 hw/vmapple/virtio-blk.c
->=20
-> diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
-> index e4386ebb20..74e589a298 100644
-> --- a/include/hw/pci/pci_ids.h
-> +++ b/include/hw/pci/pci_ids.h
-> @@ -188,6 +188,7 @@
->  #define PCI_DEVICE_ID_APPLE_UNI_N_AGP    0x0020
->  #define PCI_DEVICE_ID_APPLE_U3_AGP       0x004b
->  #define PCI_DEVICE_ID_APPLE_UNI_N_GMAC   0x0021
-> +#define PCI_DEVICE_ID_APPLE_VIRTIO_BLK   0x1a00
-> =20
->  #define PCI_VENDOR_ID_SUN                0x108e
->  #define PCI_DEVICE_ID_SUN_EBUS           0x1000
-> diff --git a/include/hw/virtio/virtio-blk.h b/include/hw/virtio/virtio-bl=
-k.h
-> index dafec432ce..381a906410 100644
-> --- a/include/hw/virtio/virtio-blk.h
-> +++ b/include/hw/virtio/virtio-blk.h
-> @@ -23,7 +23,7 @@
->  #include "qom/object.h"
-> =20
->  #define TYPE_VIRTIO_BLK "virtio-blk-device"
-> -OBJECT_DECLARE_SIMPLE_TYPE(VirtIOBlock, VIRTIO_BLK)
-> +OBJECT_DECLARE_TYPE(VirtIOBlock, VirtIOBlkClass, VIRTIO_BLK)
-> =20
->  /* This is the last element of the write scatter-gather list */
->  struct virtio_blk_inhdr
-> @@ -91,6 +91,16 @@ typedef struct MultiReqBuffer {
->      bool is_write;
->  } MultiReqBuffer;
-> =20
-> +typedef struct VirtIOBlkClass {
-> +    /*< private >*/
-> +    VirtioDeviceClass parent;
-> +    /*< public >*/
-> +    bool (*handle_unknown_request)(VirtIOBlockReq *req, MultiReqBuffer *=
-mrb,
-> +                                   uint32_t type);
-
-Vendor-specific commands ;_;
-
-> +} VirtIOBlkClass;
-> +
->  void virtio_blk_handle_vq(VirtIOBlock *s, VirtQueue *vq);
-> +void virtio_blk_free_request(VirtIOBlockReq *req);
-> +void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status);
-> =20
->  #endif
-> diff --git a/include/hw/vmapple/virtio-blk.h b/include/hw/vmapple/virtio-=
-blk.h
-> new file mode 100644
-> index 0000000000..b23106a3df
-> --- /dev/null
-> +++ b/include/hw/vmapple/virtio-blk.h
-> @@ -0,0 +1,39 @@
-> +/*
-> + * VMApple specific VirtIO Block implementation
-> + *
-> + * Copyright =A9 2023 Amazon.com, Inc. or its affiliates. All Rights Res=
-erved.
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#ifndef HW_VMAPPLE_CFG_H
-> +#define HW_VMAPPLE_CFG_H
-> +
-> +#include "hw/sysbus.h"
-
-I'm surprised to see this header since this isn't a SysBus device. Is it
-really needed?
-
-> +#include "qom/object.h"
-> +#include "hw/virtio/virtio-pci.h"
-> +#include "hw/virtio/virtio-blk.h"
-> +
-> +#define TYPE_VMAPPLE_VIRTIO_BLK "vmapple-virtio-blk"
-> +#define TYPE_VMAPPLE_VIRTIO_ROOT "vmapple-virtio-root"
-> +#define TYPE_VMAPPLE_VIRTIO_AUX "vmapple-virtio-aux"
-> +
-> +OBJECT_DECLARE_TYPE(VMAppleVirtIOBlk, VMAppleVirtIOBlkClass, VMAPPLE_VIR=
-TIO_BLK)
-> +
-> +typedef struct VMAppleVirtIOBlkClass {
-> +    /*< private >*/
-> +    VirtIOBlkClass parent;
-> +    /*< public >*/
-> +    void (*get_config)(VirtIODevice *vdev, uint8_t *config);
-> +} VMAppleVirtIOBlkClass;
-> +
-> +typedef struct VMAppleVirtIOBlk {
-> +    /* <private> */
-> +    VirtIOBlock parent_obj;
-> +
-> +    /* <public> */
-> +    uint32_t apple_type;
-> +} VMAppleVirtIOBlk;
-> +
-> +#endif /* HW_VMAPPLE_CFG_H */
-> diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-> index 39e7f23fab..1645cdccbe 100644
-> --- a/hw/block/virtio-blk.c
-> +++ b/hw/block/virtio-blk.c
-> @@ -48,12 +48,12 @@ static void virtio_blk_init_request(VirtIOBlock *s, V=
-irtQueue *vq,
->      req->mr_next =3D NULL;
->  }
-> =20
-> -static void virtio_blk_free_request(VirtIOBlockReq *req)
-> +void virtio_blk_free_request(VirtIOBlockReq *req)
->  {
->      g_free(req);
->  }
-> =20
-> -static void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char s=
-tatus)
-> +void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status)
->  {
->      VirtIOBlock *s =3D req->dev;
->      VirtIODevice *vdev =3D VIRTIO_DEVICE(s);
-> @@ -1121,8 +1121,18 @@ static int virtio_blk_handle_request(VirtIOBlockRe=
-q *req, MultiReqBuffer *mrb)
->          break;
->      }
->      default:
-> -        virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
-> -        virtio_blk_free_request(req);
-> +    {
-> +        /*
-> +         * Give subclasses a chance to handle unknown requests. This way=
- the
-> +         * class lookup is not in the hot path.
-> +         */
-> +        VirtIOBlkClass *vbk =3D VIRTIO_BLK_GET_CLASS(s);
-> +        if (!vbk->handle_unknown_request ||
-> +            !vbk->handle_unknown_request(req, mrb, type)) {
-> +            virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
-> +            virtio_blk_free_request(req);
-> +        }
-> +    }
->      }
->      return 0;
->  }
-> @@ -1764,6 +1774,7 @@ static const TypeInfo virtio_blk_info =3D {
->      .instance_size =3D sizeof(VirtIOBlock),
->      .instance_init =3D virtio_blk_instance_init,
->      .class_init =3D virtio_blk_class_init,
-> +    .class_size =3D sizeof(VirtIOBlkClass),
->  };
-> =20
->  static void virtio_register_types(void)
-> diff --git a/hw/vmapple/virtio-blk.c b/hw/vmapple/virtio-blk.c
-> new file mode 100644
-> index 0000000000..720eaa61a8
-> --- /dev/null
-> +++ b/hw/vmapple/virtio-blk.c
-> @@ -0,0 +1,212 @@
-> +/*
-> + * VMApple specific VirtIO Block implementation
-> + *
-> + * Copyright =A9 2023 Amazon.com, Inc. or its affiliates. All Rights Res=
-erved.
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> + * See the COPYING file in the top-level directory.
-> + *
-> + * VMApple uses almost standard VirtIO Block, but with a few key differe=
-nces:
-> + *
-> + *  - Different PCI device/vendor ID
-> + *  - An additional "type" identifier to differentiate AUX and Root volu=
-mes
-
-Strange, virtio-blk has a serial string that is intended for
-differentiating between devices. Maybe that is already being used as a
-volume label that varies between root volumes, but I would have expected
-that identifier to live in the file system superblock, partition tables,
-etc.
-
-> + *  - An additional BARRIER command
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/vmapple/virtio-blk.h"
-> +#include "qemu/log.h"
-> +#include "qemu/module.h"
-> +#include "qapi/error.h"
-> +
-> +#define VIRTIO_BLK_T_APPLE_BARRIER     0x10000
-> +
-> +#define VIRTIO_APPLE_TYPE_ROOT 1
-> +#define VIRTIO_APPLE_TYPE_AUX  2
-> +
-> +static bool vmapple_virtio_blk_handle_unknown_request(VirtIOBlockReq *re=
-q,
-> +                                                      MultiReqBuffer *mr=
-b,
-> +                                                      uint32_t type)
-> +{
-> +    switch (type) {
-> +    case VIRTIO_BLK_T_APPLE_BARRIER:
-> +        /* We ignore barriers for now. YOLO. */
-> +        virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-> +        virtio_blk_free_request(req);
-> +        return true;
-
-This is fine when --blockdev/--drive have cache=3Dunsafe. Can you add a
-check into .realize() that refuses to start when block_get_flags(blk) &
-BDRV_O_NO_FLUSH =3D=3D 0?
-
-> +    default:
-> +        return false;
-> +    }
-> +}
-> +
-> +/*
-> + * VMApple virtio-blk uses the same config format as normal virtio, with=
- one
-> + * exception: It adds an "apple type" specififer at the same location th=
-at
-
-"specifier"
-
-> + * the spec reserves for max_secure_erase_sectors. Let's hook into the
-> + * get_config code path here, run it as usual and then patch in the appl=
-e type.
-> + */
-> +static void vmapple_virtio_blk_get_config(VirtIODevice *vdev, uint8_t *c=
-onfig)
-> +{
-> +    VMAppleVirtIOBlk *dev =3D VMAPPLE_VIRTIO_BLK(vdev);
-> +    VMAppleVirtIOBlkClass *vvbk =3D VMAPPLE_VIRTIO_BLK_GET_CLASS(dev);
-> +    struct virtio_blk_config *blkcfg =3D (struct virtio_blk_config *)con=
-fig;
-> +
-> +    vvbk->get_config(vdev, config);
-> +
-> +    g_assert(dev->parent_obj.config_size >=3D endof(struct virtio_blk_co=
-nfig, zoned));
-> +
-> +    /* Apple abuses the field for max_secure_erase_sectors as type id */
-> +    blkcfg->max_secure_erase_sectors =3D dev->apple_type;
-> +}
-> +
-> +static Property vmapple_virtio_blk_properties[] =3D {
-> +    DEFINE_PROP_UINT32("apple-type", VMAppleVirtIOBlk, apple_type, 0),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
-> +static void vmapple_virtio_blk_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    VirtIOBlkClass *vbk =3D VIRTIO_BLK_CLASS(klass);
-> +    VirtioDeviceClass *vdc =3D VIRTIO_DEVICE_CLASS(klass);
-> +    VMAppleVirtIOBlkClass *vvbk =3D VMAPPLE_VIRTIO_BLK_CLASS(klass);
-> +
-> +    vbk->handle_unknown_request =3D vmapple_virtio_blk_handle_unknown_re=
-quest;
-> +    vvbk->get_config =3D vdc->get_config;
-> +    vdc->get_config =3D vmapple_virtio_blk_get_config;
-> +    device_class_set_props(dc, vmapple_virtio_blk_properties);
-> +}
-> +
-> +static const TypeInfo vmapple_virtio_blk_info =3D {
-> +    .name          =3D TYPE_VMAPPLE_VIRTIO_BLK,
-> +    .parent        =3D TYPE_VIRTIO_BLK,
-> +    .instance_size =3D sizeof(VMAppleVirtIOBlk),
-> +    .class_init    =3D vmapple_virtio_blk_class_init,
-> +};
-> +
-> +/* PCI Devices */
-> +
-> +typedef struct VMAppleVirtIOBlkPCI {
-> +    VirtIOPCIProxy parent_obj;
-> +    VMAppleVirtIOBlk vdev;
-> +    uint32_t apple_type;
-> +} VMAppleVirtIOBlkPCI;
-> +
-> +/*
-> + * vmapple-virtio-blk-pci: This extends VirtioPCIProxy.
-> + */
-> +#define TYPE_VMAPPLE_VIRTIO_BLK_PCI "vmapple-virtio-blk-pci-base"
-> +DECLARE_INSTANCE_CHECKER(VMAppleVirtIOBlkPCI, VMAPPLE_VIRTIO_BLK_PCI,
-> +                         TYPE_VMAPPLE_VIRTIO_BLK_PCI)
-> +
-> +static Property vmapple_virtio_blk_pci_properties[] =3D {
-> +    DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
-> +    DEFINE_PROP_BIT("ioeventfd", VirtIOPCIProxy, flags,
-> +                    VIRTIO_PCI_FLAG_USE_IOEVENTFD_BIT, true),
-> +    DEFINE_PROP_UINT32("vectors", VirtIOPCIProxy, nvectors,
-> +                       DEV_NVECTORS_UNSPECIFIED),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
-> +static void vmapple_virtio_blk_pci_realize(VirtIOPCIProxy *vpci_dev, Err=
-or **errp)
-> +{
-> +    VMAppleVirtIOBlkPCI *dev =3D VMAPPLE_VIRTIO_BLK_PCI(vpci_dev);
-> +    DeviceState *vdev =3D DEVICE(&dev->vdev);
-> +    VirtIOBlkConf *conf =3D &dev->vdev.parent_obj.conf;
-> +
-> +    if (conf->num_queues =3D=3D VIRTIO_BLK_AUTO_NUM_QUEUES) {
-> +        conf->num_queues =3D virtio_pci_optimal_num_queues(0);
-> +    }
-> +
-> +    if (vpci_dev->nvectors =3D=3D DEV_NVECTORS_UNSPECIFIED) {
-> +        vpci_dev->nvectors =3D conf->num_queues + 1;
-> +    }
-> +
-> +    /*
-> +     * We don't support zones, but we need the additional config space s=
-ize.
-> +     * Let's just expose the feature so the rest of the virtio-blk logic
-> +     * allocates enough space for us. The guest will ignore zones anyway.
-> +     */
-> +    virtio_add_feature(&dev->vdev.parent_obj.host_features, VIRTIO_BLK_F=
-_ZONED);
-> +    /* Propagate the apple type down to the virtio-blk device */
-> +    qdev_prop_set_uint32(DEVICE(&dev->vdev), "apple-type", dev->apple_ty=
-pe);
-> +    /* and spawn the virtio-blk device */
-> +    qdev_realize(vdev, BUS(&vpci_dev->bus), errp);
-> +
-> +    /*
-> +     * The virtio-pci machinery adjusts its vendor/device ID based on wh=
-ether
-> +     * we support modern or legacy virtio. Let's patch it back to the Ap=
-ple
-> +     * identifiers here.
-> +     */
-> +    pci_config_set_vendor_id(vpci_dev->pci_dev.config, PCI_VENDOR_ID_APP=
-LE);
-> +    pci_config_set_device_id(vpci_dev->pci_dev.config, PCI_DEVICE_ID_APP=
-LE_VIRTIO_BLK);
-> +}
-> +
-> +static void vmapple_virtio_blk_pci_class_init(ObjectClass *klass, void *=
-data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +    VirtioPCIClass *k =3D VIRTIO_PCI_CLASS(klass);
-> +    PCIDeviceClass *pcidev_k =3D PCI_DEVICE_CLASS(klass);
-> +
-> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
-> +    device_class_set_props(dc, vmapple_virtio_blk_pci_properties);
-> +    k->realize =3D vmapple_virtio_blk_pci_realize;
-> +    pcidev_k->vendor_id =3D PCI_VENDOR_ID_APPLE;
-> +    pcidev_k->device_id =3D PCI_DEVICE_ID_APPLE_VIRTIO_BLK;
-> +    pcidev_k->revision =3D VIRTIO_PCI_ABI_VERSION;
-> +    pcidev_k->class_id =3D PCI_CLASS_STORAGE_SCSI;
-> +}
-> +
-> +static void vmapple_virtio_blk_pci_instance_init(Object *obj)
-> +{
-> +    VMAppleVirtIOBlkPCI *dev =3D VMAPPLE_VIRTIO_BLK_PCI(obj);
-> +
-> +    virtio_instance_init_common(obj, &dev->vdev, sizeof(dev->vdev),
-> +                                TYPE_VMAPPLE_VIRTIO_BLK);
-> +}
-> +
-> +static const VirtioPCIDeviceTypeInfo vmapple_virtio_blk_pci_info =3D {
-> +    .base_name     =3D TYPE_VMAPPLE_VIRTIO_BLK_PCI,
-> +    .generic_name  =3D "vmapple-virtio-blk-pci",
-> +    .instance_size =3D sizeof(VMAppleVirtIOBlkPCI),
-> +    .instance_init =3D vmapple_virtio_blk_pci_instance_init,
-> +    .class_init    =3D vmapple_virtio_blk_pci_class_init,
-> +};
-> +
-> +static void vmapple_virtio_root_instance_init(Object *obj)
-> +{
-> +    VMAppleVirtIOBlkPCI *dev =3D VMAPPLE_VIRTIO_BLK_PCI(obj);
-> +
-> +    dev->apple_type =3D VIRTIO_APPLE_TYPE_ROOT;
-> +}
-> +
-> +static const TypeInfo vmapple_virtio_root_info =3D {
-> +    .name          =3D TYPE_VMAPPLE_VIRTIO_ROOT,
-> +    .parent        =3D "vmapple-virtio-blk-pci",
-> +    .instance_size =3D sizeof(VMAppleVirtIOBlkPCI),
-> +    .instance_init =3D vmapple_virtio_root_instance_init,
-> +};
-> +
-> +static void vmapple_virtio_aux_instance_init(Object *obj)
-> +{
-> +    VMAppleVirtIOBlkPCI *dev =3D VMAPPLE_VIRTIO_BLK_PCI(obj);
-> +
-> +    dev->apple_type =3D VIRTIO_APPLE_TYPE_AUX;
-> +}
-> +
-> +static const TypeInfo vmapple_virtio_aux_info =3D {
-> +    .name          =3D TYPE_VMAPPLE_VIRTIO_AUX,
-> +    .parent        =3D "vmapple-virtio-blk-pci",
-> +    .instance_size =3D sizeof(VMAppleVirtIOBlkPCI),
-> +    .instance_init =3D vmapple_virtio_aux_instance_init,
-> +};
-> +
-> +static void vmapple_virtio_blk_register_types(void)
-> +{
-> +    type_register_static(&vmapple_virtio_blk_info);
-> +    virtio_pci_types_register(&vmapple_virtio_blk_pci_info);
-> +    type_register_static(&vmapple_virtio_root_info);
-> +    type_register_static(&vmapple_virtio_aux_info);
-> +}
-> +
-> +type_init(vmapple_virtio_blk_register_types)
-> diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
-> index ba37fc5b81..f06eae8039 100644
-> --- a/hw/vmapple/Kconfig
-> +++ b/hw/vmapple/Kconfig
-> @@ -9,3 +9,6 @@ config VMAPPLE_CFG
-> =20
->  config VMAPPLE_PVG
->      bool
-> +
-> +config VMAPPLE_VIRTIO_BLK
-> +    bool
-> diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
-> index 74a0d7a5f1..3b4a16f619 100644
-> --- a/hw/vmapple/meson.build
-> +++ b/hw/vmapple/meson.build
-> @@ -2,3 +2,4 @@ system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files=
-('aes.c'))
->  system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'))
->  system_ss.add(when: 'CONFIG_VMAPPLE_CFG',  if_true: files('cfg.c'))
->  system_ss.add(when: 'CONFIG_VMAPPLE_PVG',  if_true: [files('apple-gfx.m'=
-), pvg, metal])
-> +system_ss.add(when: 'CONFIG_VMAPPLE_VIRTIO_BLK',  if_true: files('virtio=
--blk.c'))
-> --=20
-> 2.39.2 (Apple Git-143)
->=20
->=20
->=20
->=20
-> Amazon Development Center Germany GmbH
-> Krausenstr. 38
-> 10117 Berlin
-> Geschaeftsfuehrung: Christian Schlaeger, Jonathan Weiss
-> Eingetragen am Amtsgericht Charlottenburg unter HRB 149173 B
-> Sitz: Berlin
-> Ust-ID: DE 289 237 879
->=20
->=20
-
---1SzFviYoAvpIfnZo
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmTw8h4ACgkQnKSrs4Gr
-c8jYawf/ez8JFM/aCtIF6ocfTurdDcXu1wurEluE6VUlHY/jVSb8ESHTp5eJ8E0S
-hB/lBZaxqKi9S/Cxq9HO+BwhfkhIDszVfk2vXuc7JVDNLvYeZpMc32Oyj5ZxU63b
-hP9giDoQYCxMlqaL/5/VC3X08L1gXfkE6EhBy6dnUkc9i2vKZE4PI0sbGcrwC65W
-sjJBvupnGsU2EJ0adVBMf97SYz4XfOw7SHKbTZDcw2rTBaMrpcEWhnH+AzZVShL+
-YnxnaW5cxaH7zVE9EWk4e1iTqagFv4TWuGlYhyhn+hY4VqkFfaezfsmqWRLmcUqN
-uWeGJdGODyFbJCt3ckV+c/Q8zhIgcw==
-=6wcS
------END PGP SIGNATURE-----
-
---1SzFviYoAvpIfnZo--
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 7e68348440..0a3ff6748d 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -482,6 +482,7 @@ config XLNX_VERSAL
+     select XLNX_BBRAM
+     select XLNX_EFUSE_VERSAL
+     select XLNX_USB_SUBSYS
++    select XLNX_VERSAL_TRNG
+ 
+ config NPCM7XX
+     bool
+diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+index 1ee2b8697f..c0704f416e 100644
+--- a/hw/arm/xlnx-versal-virt.c
++++ b/hw/arm/xlnx-versal-virt.c
+@@ -391,6 +391,25 @@ static void fdt_add_rtc_node(VersalVirt *s)
+     g_free(name);
+ }
+ 
++static void fdt_add_trng_node(VersalVirt *s)
++{
++    const char compat[] = TYPE_XLNX_VERSAL_TRNG;
++    const char interrupt_names[] = "trng";
++    g_autofree char *name = g_strdup_printf("/trng@%x", MM_PMC_TRNG);
++
++    qemu_fdt_add_subnode(s->fdt, name);
++
++    qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
++                           GIC_FDT_IRQ_TYPE_SPI, VERSAL_TRNG_IRQ,
++                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
++    qemu_fdt_setprop(s->fdt, name, "interrupt-names",
++                     interrupt_names, sizeof(interrupt_names));
++    qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
++                                 2, MM_PMC_TRNG,
++                                 2, MM_PMC_TRNG_SIZE);
++    qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
++}
++
+ static void fdt_add_bbram_node(VersalVirt *s)
+ {
+     const char compat[] = TYPE_XLNX_BBRAM;
+@@ -690,6 +709,7 @@ static void versal_virt_init(MachineState *machine)
+     fdt_add_usb_xhci_nodes(s);
+     fdt_add_sd_nodes(s);
+     fdt_add_rtc_node(s);
++    fdt_add_trng_node(s);
+     fdt_add_bbram_node(s);
+     fdt_add_efuse_ctrl_node(s);
+     fdt_add_efuse_cache_node(s);
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+index 60bf5fe657..4fd1924cf6 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -372,6 +372,21 @@ static void versal_create_rtc(Versal *s, qemu_irq *pic)
+                        qdev_get_gpio_in(DEVICE(&s->pmc.apb_irq_orgate), 0));
+ }
+ 
++static void versal_create_trng(Versal *s, qemu_irq *pic)
++{
++    SysBusDevice *sbd;
++    MemoryRegion *mr;
++
++    object_initialize_child(OBJECT(s), "trng", &s->pmc.trng,
++                            TYPE_XLNX_VERSAL_TRNG);
++    sbd = SYS_BUS_DEVICE(&s->pmc.trng);
++    sysbus_realize(sbd, &error_fatal);
++
++    mr = sysbus_mmio_get_region(sbd, 0);
++    memory_region_add_subregion(&s->mr_ps, MM_PMC_TRNG, mr);
++    sysbus_connect_irq(sbd, 0, pic[VERSAL_TRNG_IRQ]);
++}
++
+ static void versal_create_xrams(Versal *s, qemu_irq *pic)
+ {
+     int nr_xrams = ARRAY_SIZE(s->lpd.xram.ctrl);
+@@ -757,6 +772,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
+     versal_create_sds(s, pic);
+     versal_create_pmc_apb_irq_orgate(s, pic);
+     versal_create_rtc(s, pic);
++    versal_create_trng(s, pic);
+     versal_create_xrams(s, pic);
+     versal_create_bbram(s, pic);
+     versal_create_efuse(s, pic);
+diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+index 39ee31185c..159ee26aad 100644
+--- a/include/hw/arm/xlnx-versal.h
++++ b/include/hw/arm/xlnx-versal.h
+@@ -31,6 +31,7 @@
+ #include "hw/dma/xlnx_csu_dma.h"
+ #include "hw/misc/xlnx-versal-crl.h"
+ #include "hw/misc/xlnx-versal-pmc-iou-slcr.h"
++#include "hw/misc/xlnx-versal-trng.h"
+ #include "hw/net/xlnx-versal-canfd.h"
+ 
+ #define TYPE_XLNX_VERSAL "xlnx-versal"
+@@ -113,6 +114,7 @@ struct Versal {
+         } iou;
+ 
+         XlnxZynqMPRTC rtc;
++        XlnxVersalTRng trng;
+         XlnxBBRam bbram;
+         XlnxEFuse efuse;
+         XlnxVersalEFuseCtrl efuse_ctrl;
+@@ -151,6 +153,7 @@ struct Versal {
+ #define VERSAL_OSPI_IRQ            124
+ #define VERSAL_SD0_IRQ_0           126
+ #define VERSAL_EFUSE_IRQ           139
++#define VERSAL_TRNG_IRQ            141
+ #define VERSAL_RTC_ALARM_IRQ       142
+ #define VERSAL_RTC_SECONDS_IRQ     143
+ 
+@@ -244,4 +247,6 @@ struct Versal {
+ #define MM_PMC_CRP_SIZE             0x10000
+ #define MM_PMC_RTC                  0xf12a0000
+ #define MM_PMC_RTC_SIZE             0x10000
++#define MM_PMC_TRNG                 0xf1230000
++#define MM_PMC_TRNG_SIZE            0x10000
+ #endif
+-- 
+2.25.1
 

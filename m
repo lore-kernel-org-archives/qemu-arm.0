@@ -1,262 +1,173 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5073690ejc;
-        Thu, 31 Aug 2023 06:01:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFSdM9JTUx/v3O9FjRkQcuGYUQzDjs3YJstA8jg2/fjvv8/o99ZDOm12ec80uui4Qe1jl28
-X-Received: by 2002:a92:caca:0:b0:34b:bc95:7541 with SMTP id m10-20020a92caca000000b0034bbc957541mr4679359ilq.0.1693486877473;
-        Thu, 31 Aug 2023 06:01:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693486877; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5074222ejc;
+        Thu, 31 Aug 2023 06:01:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHDHPQWXX1ovUYx/ApnLqGo4TWZmy0Ka01F2N8AAFXArLjkc5VozeBzPwYh8hO6FiaZjBmA
+X-Received: by 2002:a05:6214:518e:b0:651:6c05:2c91 with SMTP id kl14-20020a056214518e00b006516c052c91mr2778047qvb.25.1693486909582;
+        Thu, 31 Aug 2023 06:01:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693486909; cv=none;
         d=google.com; s=arc-20160816;
-        b=UA0oN6xNs+aa6TBrlh8u/tdb8vKAxrQdYyhmvHIqOHUBaD9unmunTxmlSB1xkZYQMl
-         8gy9jW1WfdU2KPnk5Nui6/UxOSc66yVNR9efQMQ6TEcPDsy1a16/Nj/scKGkrNkGv0xp
-         mXU2Gdz8zrD9g/86wWqOVCYTbE21eQcfKgD22Bx6Sp5rCawqO5bDM9/AU7KkuP1AznOd
-         rGbURACXQmELMAjPmJbhw4Ecs/Y4PAEyzbaLI3D97qqaKsrTAjNPfuFPo+XhojHjkHJZ
-         /dcwbjU1Yvy4rL4Vmhzr9R9cSqO2HyvMa1Sj84yO8OOPNiqd/oiwO5sj8PgDfi3WktWY
-         p5mw==
+        b=pIk+yQo2eUfifWrS7AFYkgZffTcNNpCheWUAb7jQmzUK95WV90mNBibOCMSjAaf4Cr
+         r3BS8JZhe2umhQnG8jly28seaP/DhD6AVZxLqqUfVnSHDSEBYDoI954LLPBYyM3mRcdi
+         9EXVJFn/lYJGusJm7AlyT1nz2Uplqc1lse+8uUgDZ41ymhVL6+YXBXCV8opeJlyZScn4
+         Fcr3/+I5awZmKLyeNx9u3uNRVPjbWJVxCxHJjDYPYcXA5EpozJsRGzv2GXBwHmba6YO6
+         gC1ScEZL+lYbgJH1S7NrB6U5PDYjYSpCMMvfo33DVWpoqnNIrqXZRFGaB0oJ4jA9jSon
+         Zqag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
-         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
-         :list-id;
-        bh=jz+mAPNcv06ru/xM4IbBW81pQuhSFU668av4pwZWy+k=;
-        fh=J+xs5LJB+ftaxRF8J8DLV4w6VLlN0d0Fa3SPCWHnYuE=;
-        b=cXoAnkY9URVO2ipfHkT5wZGBnBsh33DqlrN1k2I6E3XovNFkWJRVjEvMYctdbOe0YU
-         sb6DpVm3DzIHIpdMTPea7TcxlMFhckZiOWwJCkk0NUewt7aP/2PhttNx78R31BUxrVAG
-         GX1UJwx9hHaiB4bCpel59/O6rZsoEwT6/p9P6y9+E//ZW2rwbUr/RABTCQUoZGTN2OpZ
-         rLd+kJhPDlOjsCIIU0KPpU7VB0VpGjG8NuOyBFezaQn+N2Wj2iZ6GPtBeCA2B09p9mT3
-         /Yrq8pejpfJLdBarsXNFk4aha0Z8oHEHCQiDba+wHugnxtWR0k7tDBjO+W43QCzs/JBd
-         wtDA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=OEBOMsh/2YnVXzixxLDyYqxUdUQOvziVNTmEZMBX0zo=;
+        fh=+j9mkJWFeBlg3tgjNCfKQ2d5Q02bvruS5zHcYwno2d8=;
+        b=uR1dE8p+0dkvL4zvZFZ7ND3jIWixVIH1jGIxofrCQIMcZ/skaRpKLyzLEhdpARh2u2
+         Clbqcne5VUYP43BPILli6nvUINvL3eJPVELhiOGJZsD6I8QPnB7lkGxQOS+NAe9PE/Bq
+         mBrj5pdARoKiBG90ZIN96A4B3gKnJVVpsmB2KzGL09G0PZiUnsm1IrhF+nfLsieNveol
+         p9sVAgrasUEriaKZSMrY54YdPYFIweP/0Q+IAnxXrzOg3bSwnzqyU6JAU7IZbnBdgAbt
+         nglk6lISpHOHobQMXIAckyOuKQ4ajtZjWBAkCAG9HD2iv9bB34UxFX+kFq6QODRg7qlK
+         otZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=blGhXQZH;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q7gXQi51;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id r7-20020a92d987000000b0034658f538adsi485618iln.117.2023.08.31.06.01.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 31 Aug 2023 06:01:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m6-20020a0c9d06000000b0064f49d13ff1si821864qvf.92.2023.08.31.06.01.49
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 31 Aug 2023 06:01:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=blGhXQZH;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q7gXQi51;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from list by lists.xenproject.org with outflank-mailman.593875.926993 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1qbhHC-0003he-Lz; Thu, 31 Aug 2023 12:59:58 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 593875.926993; Thu, 31 Aug 2023 12:59:58 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1qbhHC-0003hX-JO; Thu, 31 Aug 2023 12:59:58 +0000
-Received: by outflank-mailman (input) for mailman id 593875;
- Thu, 31 Aug 2023 12:59:58 +0000
-Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
- helo=se1-gles-sth1.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <SRS0=nRSd=EQ=linaro.org=philmd@srs-se1.protection.inumbo.net>)
- id 1qbhHC-0003hR-0u
- for xen-devel@lists.xenproject.org; Thu, 31 Aug 2023 12:59:58 +0000
-Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com
- [2a00:1450:4864:20::432])
- by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
- id 48ca3867-47fe-11ee-8783-cb3800f73035;
- Thu, 31 Aug 2023 14:59:56 +0200 (CEST)
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-31adc5c899fso642743f8f.2
- for <xen-devel@lists.xenproject.org>; Thu, 31 Aug 2023 05:59:56 -0700 (PDT)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qbhI4-00007E-Uh; Thu, 31 Aug 2023 09:00:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhFB-0002xf-Ok
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 08:57:54 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhF2-0005L7-6s
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 08:57:48 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-31c5c06e8bbso634514f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 31 Aug 2023 05:57:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1693486661; x=1694091461; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=OEBOMsh/2YnVXzixxLDyYqxUdUQOvziVNTmEZMBX0zo=;
+ b=q7gXQi51bkl/faqbG5DeWykzANSO+dP0F+d7XfJxrzOdVly4o1roQGyTdru02vHDEP
+ 2Epwcn2T6N95iwOKH96OVRpXswy4bkE+G7x9dKR1LkymX6UTaPqp0sEAJhh2s3AmlBZ+
+ L4L6ubkQ1UwsC50F0h/nQzi6i61GbkJxr+crpx6Uji96IGlWb921sXTeMFnjyj9lyH/h
+ aXzcbg8QH4MFhQpy2zirkHME6QpW6AMAoEVcYcHnYeBCYJsPblVJaFD6Ji7gqj6c7od7
+ m7f9yGIVdrNA3Ue4FN6n/cY6xyiZWj8872G/Q5BQqc1QWq1URvgylGURo1BwwNKW5V3F
+ A71g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1693486661; x=1694091461;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=OEBOMsh/2YnVXzixxLDyYqxUdUQOvziVNTmEZMBX0zo=;
+ b=HjNczSAML1d72HVjEvVdvIXBD1val25J8BAQz4HjZjxvNUKI1SUbTnOZP04486dnAG
+ uI71X+JXIMMHgLMD73Gb54PvBZaCQb97JaNfF2GZUgW05PFsdq7H+/I0DqJ1g8pvQWtC
+ NmPR5SprlnJlYjQfqPhv48M/Ehzhrm/B9orCbOrBHCQjSMI3reCg/H5Hv2le4P1JdwuY
+ lLtK2fiXLvRcXqC5yLmptlxFIpUSDfAdXBoHyPqByinY2Kph8cY+3x/NO8WPnvj4vK2B
+ H9xKSk8Dsb6QW6Jexm8wsjpTBexhi6nowyI+ggvFcG5e76larZT+aSGF971mdXrOvv5P
+ NGtQ==
+X-Gm-Message-State: AOJu0YzsX2/j8OTBabSDz4OpSBktUlnWs7dYq2lTJAub4lsIEWbgp2fh
+ BEBH9TJMCf0typERXjSaIBS33OwycUFm+vKeos4=
+X-Received: by 2002:adf:e6ce:0:b0:319:74d5:a2d7 with SMTP id
+ y14-20020adfe6ce000000b0031974d5a2d7mr4511339wrm.32.1693486661117; 
+ Thu, 31 Aug 2023 05:57:41 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.199.245])
  by smtp.gmail.com with ESMTPSA id
- d4-20020adfe884000000b0030ae53550f5sm2144827wrm.51.2023.08.31.05.59.54
+ h18-20020adff4d2000000b003141e629cb6sm2158792wrp.101.2023.08.31.05.57.39
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Aug 2023 05:59:55 -0700 (PDT)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 48ca3867-47fe-11ee-8783-cb3800f73035
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1693486796; x=1694091596; darn=lists.xenproject.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=jz+mAPNcv06ru/xM4IbBW81pQuhSFU668av4pwZWy+k=;
-        b=blGhXQZHgx71cZa/eXIqaqj9XDCzNa18ND9iuOzi+IJIN/XA9NKRaWZgNAowF1Dl4H
-         DCUBxwRBppgdfxlWZrACiGmNMCHqmkBQ4vhklZ4e9NlEDGDUzdtGYtDMxQExRV/P+2Z/
-         q8RBJ4RD6lGxP2KVQv6z/iMTnoZ1fKRdhtM96pm7Q07W8uOi6y4SwlY2+iDsCGUjHn7Y
-         DP1qGR6rOP/9xxBNmsgWeceledWps6ms+2slNJWuP8p14RbIWDT3k/1meK/C1/p29E73
-         wx3TQJMIESJIwZmw8CyUvk6Gio1HbZdW++GnE3Rfu8XLWsrgKS4FpkDlq0pyMzyhxyRP
-         lYjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693486796; x=1694091596;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=jz+mAPNcv06ru/xM4IbBW81pQuhSFU668av4pwZWy+k=;
-        b=F6RSIHOj5NJiyd156uvY75imoNp5cbi5Fgmslhai2oivljt8Bpe0GvNUUC5o6fT6e8
-         bH871z/CrsCovROiJgOpqaajtq4bP/LBfyNWG2txbbYmEw09pfvirmWzraHxpJ8KqlHl
-         2r6D+GJUBqSSRgMrYz4imsD4R+tUVGA5WNc444vcTOvQkSp0ZYonstjd6+4pKVOPd3WR
-         tFZY0nMzcIatRtxv3VLsr9QTt3kDd9VI5U4RUPBVxt76bcjjbDtMbWcYZPc7T2ahCdJn
-         QCZBkxUwJgII/iWxhXPaaZzGRRWTyX4euXSZWT1oSCC6Qzvh7rbHU4X+zXcPKoEQ6070
-         JjuA==
-X-Gm-Message-State: AOJu0YyeWvPlDXoosdOQn9tN1ml6UHJiv+kAKHD0HjfI3OXbEAM1Hl2o
-	HEW8dBeX6GVRuMBywdSRbPtNzA==
-X-Received: by 2002:a5d:54c8:0:b0:317:5e5e:60e0 with SMTP id x8-20020a5d54c8000000b003175e5e60e0mr4055046wrv.28.1693486795961;
-        Thu, 31 Aug 2023 05:59:55 -0700 (PDT)
+ Thu, 31 Aug 2023 05:57:40 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	qemu-s390x@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org,
-	qemu-block@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Paul Durrant <paul@xen.org>,
-	xen-devel@lists.xenproject.org
-Subject: [PULL 31/41] hw/usb: spelling fixes
-Date: Thu, 31 Aug 2023 14:56:33 +0200
-Message-ID: <20230831125646.67855-32-philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-block@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+Subject: [PULL 09/41] target/riscv/pmu: Restrict 'qemu/log.h' include to source
+Date: Thu, 31 Aug 2023 14:56:11 +0200
+Message-ID: <20230831125646.67855-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230831125646.67855-1-philmd@linaro.org>
 References: <20230831125646.67855-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: +OiSHsfqH91w
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MOSt6o5xBWa3
 
-From: Michael Tokarev <mjt@tls.msk.ru>
+Declarations from "riscv/pmu.h" don't need anything from "qemu/log.h",
+reduce it's inclusion to the source.
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20230823065335.1919380-14-mjt@tls.msk.ru>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230828221314.18435-3-philmd@linaro.org>
 ---
- hw/usb/quirks.h             | 2 +-
- hw/usb/ccid-card-emulated.c | 2 +-
- hw/usb/hcd-ehci.c           | 6 +++---
- hw/usb/hcd-ohci.c           | 2 +-
- hw/usb/redirect.c           | 2 +-
- hw/usb/xen-usb.c            | 2 +-
- hw/usb/trace-events         | 2 +-
- 7 files changed, 9 insertions(+), 9 deletions(-)
+ target/riscv/pmu.h | 1 -
+ target/riscv/pmu.c | 1 +
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/usb/quirks.h b/hw/usb/quirks.h
-index c3e595f40b..94b2c95341 100644
---- a/hw/usb/quirks.h
-+++ b/hw/usb/quirks.h
-@@ -67,7 +67,7 @@ static const struct usb_device_id usbredir_raw_serial_ids[] = {
-     { USB_DEVICE(0x10C4, 0x800A) }, /* SPORTident BSM7-D-USB main station */
-     { USB_DEVICE(0x10C4, 0x803B) }, /* Pololu USB-serial converter */
-     { USB_DEVICE(0x10C4, 0x8044) }, /* Cygnal Debug Adapter */
--    { USB_DEVICE(0x10C4, 0x804E) }, /* Software Bisque Paramount ME build-in converter */
-+    { USB_DEVICE(0x10C4, 0x804E) }, /* Software Bisque Paramount ME built-in converter */
-     { USB_DEVICE(0x10C4, 0x8053) }, /* Enfora EDG1228 */
-     { USB_DEVICE(0x10C4, 0x8054) }, /* Enfora GSM2228 */
-     { USB_DEVICE(0x10C4, 0x8066) }, /* Argussoft In-System Programmer */
-diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
-index c328660075..3ee9c73b87 100644
---- a/hw/usb/ccid-card-emulated.c
-+++ b/hw/usb/ccid-card-emulated.c
-@@ -518,7 +518,7 @@ static void emulated_realize(CCIDCardState *base, Error **errp)
-         goto out2;
-     }
- 
--    /* TODO: a passthru backened that works on local machine. third card type?*/
-+    /* TODO: a passthru backend that works on local machine. third card type?*/
-     if (card->backend == BACKEND_CERTIFICATES) {
-         if (card->cert1 != NULL && card->cert2 != NULL && card->cert3 != NULL) {
-             ret = emulated_initialize_vcard_from_certificates(card);
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index c930c60921..19b4534c20 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -1464,7 +1464,7 @@ static int ehci_process_itd(EHCIState *ehci,
-                     usb_handle_packet(dev, &ehci->ipacket);
-                     usb_packet_unmap(&ehci->ipacket, &ehci->isgl);
-                 } else {
--                    DPRINTF("ISOCH: attempt to addess non-iso endpoint\n");
-+                    DPRINTF("ISOCH: attempt to address non-iso endpoint\n");
-                     ehci->ipacket.status = USB_RET_NAK;
-                     ehci->ipacket.actual_length = 0;
-                 }
-@@ -1513,7 +1513,7 @@ static int ehci_process_itd(EHCIState *ehci,
- 
- 
- /*  This state is the entry point for asynchronous schedule
-- *  processing.  Entry here consitutes a EHCI start event state (4.8.5)
-+ *  processing.  Entry here constitutes a EHCI start event state (4.8.5)
+diff --git a/target/riscv/pmu.h b/target/riscv/pmu.h
+index 0c819ca983..d2be06a133 100644
+--- a/target/riscv/pmu.h
++++ b/target/riscv/pmu.h
+@@ -16,7 +16,6 @@
+  * this program.  If not, see <http://www.gnu.org/licenses/>.
   */
- static int ehci_state_waitlisthead(EHCIState *ehci,  int async)
- {
-@@ -2458,7 +2458,7 @@ static void usb_ehci_vm_state_change(void *opaque, bool running, RunState state)
-     /*
-      * The schedule rebuilt from guest memory could cause the migration dest
-      * to miss a QH unlink, and fail to cancel packets, since the unlinked QH
--     * will never have existed on the destination. Therefor we must flush the
-+     * will never have existed on the destination. Therefore we must flush the
-      * async schedule on savevm to catch any not yet noticed unlinks.
-      */
-     if (state == RUN_STATE_SAVE_VM) {
-diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-index cc5cde6983..7ff1b65ced 100644
---- a/hw/usb/hcd-ohci.c
-+++ b/hw/usb/hcd-ohci.c
-@@ -1355,7 +1355,7 @@ static uint32_t ohci_get_frame_remaining(OHCIState *ohci)
-     if ((ohci->ctl & OHCI_CTL_HCFS) != OHCI_USB_OPERATIONAL) {
-         return ohci->frt << 31;
-     }
--    /* Being in USB operational state guarnatees sof_time was set already. */
-+    /* Being in USB operational state guarantees sof_time was set already. */
-     tks = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) - ohci->sof_time;
-     if (tks < 0) {
-         tks = 0;
-diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-index 4bbf8afb33..c9893df867 100644
---- a/hw/usb/redirect.c
-+++ b/hw/usb/redirect.c
-@@ -471,7 +471,7 @@ static int bufp_alloc(USBRedirDevice *dev, uint8_t *data, uint16_t len,
-         DPRINTF("bufpq overflow, dropping packets ep %02X\n", ep);
-         dev->endpoint[EP2I(ep)].bufpq_dropping_packets = 1;
-     }
--    /* Since we're interupting the stream anyways, drop enough packets to get
-+    /* Since we're interrupting the stream anyways, drop enough packets to get
-        back to our target buffer size */
-     if (dev->endpoint[EP2I(ep)].bufpq_dropping_packets) {
-         if (dev->endpoint[EP2I(ep)].bufpq_size >
-diff --git a/hw/usb/xen-usb.c b/hw/usb/xen-usb.c
-index 38ee660a30..09ec326aea 100644
---- a/hw/usb/xen-usb.c
-+++ b/hw/usb/xen-usb.c
-@@ -451,7 +451,7 @@ static int usbback_check_and_submit(struct usbback_req *usbback_req)
-     wValue = le16_to_cpu(ctrl->wValue);
  
-     /*
--     * When the device is first connected or resetted, USB device has no
-+     * When the device is first connected or reset, USB device has no
-      * address. In this initial state, following requests are sent to device
-      * address (#0),
-      *
-diff --git a/hw/usb/trace-events b/hw/usb/trace-events
-index 6bb9655c8d..ed7dc210d3 100644
---- a/hw/usb/trace-events
-+++ b/hw/usb/trace-events
-@@ -248,7 +248,7 @@ usb_set_device_feature(int addr, int feature, int ret) "dev %d, feature %d, ret
+-#include "qemu/log.h"
+ #include "cpu.h"
+ #include "qemu/main-loop.h"
+ #include "exec/exec-all.h"
+diff --git a/target/riscv/pmu.c b/target/riscv/pmu.c
+index db06b3882f..36f6307d28 100644
+--- a/target/riscv/pmu.c
++++ b/target/riscv/pmu.c
+@@ -17,6 +17,7 @@
+  */
  
- # dev-hub.c
- usb_hub_reset(int addr) "dev %d"
--usb_hub_control(int addr, int request, int value, int index, int length) "dev %d, req 0x%x, value %d, index %d, langth %d"
-+usb_hub_control(int addr, int request, int value, int index, int length) "dev %d, req 0x%x, value %d, index %d, length %d"
- usb_hub_get_port_status(int addr, int nr, int status, int changed) "dev %d, port %d, status 0x%x, changed 0x%x"
- usb_hub_set_port_feature(int addr, int nr, const char *f) "dev %d, port %d, feature %s"
- usb_hub_clear_port_feature(int addr, int nr, const char *f) "dev %d, port %d, feature %s"
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "cpu.h"
+ #include "pmu.h"
+ #include "sysemu/cpu-timers.h"
 -- 
 2.41.0
 

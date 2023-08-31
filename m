@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5084908ejc;
-        Thu, 31 Aug 2023 06:13:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH7Q+7/5on47yDQujnEiJJOo0hrNrcAHCHwL1Bp6BZ5WdGHzoTun+tSuBZGzpqVA7rVkOsM
-X-Received: by 2002:a05:6830:55:b0:6bf:f75:1ad6 with SMTP id d21-20020a056830005500b006bf0f751ad6mr5139102otp.26.1693487613538;
-        Thu, 31 Aug 2023 06:13:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693487613; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5085268ejc;
+        Thu, 31 Aug 2023 06:14:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHXYyFtcxCkiiklhe3c9X8z1pJPUYX5OI6qCgaT61U8Scm5UhYc18h+IEPfsTlGWWlu0KXH
+X-Received: by 2002:a05:620a:24d6:b0:76c:dbbd:6df3 with SMTP id m22-20020a05620a24d600b0076cdbbd6df3mr3450627qkn.62.1693487642125;
+        Thu, 31 Aug 2023 06:14:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693487642; cv=none;
         d=google.com; s=arc-20160816;
-        b=fzc/YVVrmg4aUKSYSS6iaWIdEYeVkue6IxXTvTPhzJIyunxMWqbeE19Kqn6NR6B4Qt
-         vjjK860bWHiDiqnWMAwTieUpOKlZTqlRcjHR2g80OrMWsV5rZA6FrQbfUoBlUCF1lBcG
-         FxKH9oYZ0zTln3VlOTsSruAyKQt/7NoRKklx8kQzcdSRIM6pLXP1K8ovx5Y9gANhkVmb
-         cfoqYwTsVJ03Wl2xNxbroI0l49w1Ha6BO8jdxJNV9PjygN4Fpnh1U31wvgShqGL4190q
-         aBgrDLFNmNnS+NKK3qfkvOl8RO9IXJ1FcX4yalZv6/P3XNg9/Rkzc23dqrdjK3eIXBGT
-         wRUA==
+        b=ATU1/IXIbDj/6sj5rQBFqe8o4IS5jgOcPDs55sRW4BHIFVzMRB3oz/I6FrTkNeNVwc
+         2L6cgjB82UfwTXIssukS9sT86LnL/yZHsPFlF59XMgpqMXFOUZ3jqCHLUDpeunhXun3H
+         vj/rzcQpA1hLZufj92u6a9SapIvz9m8j/K0XyJsulEnfJfhVB2sgFq2rZ/Hhj9heqENt
+         VB6ah+8NI4oVw7lMXrAHarNnVVbpm4ai7q2k0svLNfXHhjxbRWBFSGzjtTebRJrP4Uva
+         9aGee5hKtGmocBj2SNujcVNTBJ+7hdFQtT5xy6Rkq+NdnEjNycBKBUUWisJentIsHZZM
+         uikw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ur9xi937dzz6Bl2U4bEFfYnHfQ2+6Mk7VLbsIy+yiQY=;
-        fh=UMEEZ23ufbME07a4BnDtKsZVuwgHq/4Dtzvq5ho03g0=;
-        b=ia8fEgklzBnikdzEQ6MYrAmL9C5/Yya1t+CGzGep9M/8NRfWtWBGbA/8nyp5bUvKt5
-         OXTk5obOYrINkPAvc3deU/L7iVf9mtDGIWFWfhuPNS44rR9PTuFhqUcbVk5uXrYQzCEj
-         kd3oDV0+AOCEtNpW0svF+mMM5XiWjJA32092qiEl9ixGusu43OGYwNBkn/eItAhL3RB1
-         tk5Yf0OvTMvj1KQQRuQA7+HR7DRKHTSfgrrvQSYvT+77de0hVBeDxT8qpYRSulPBMf+O
-         iBJiRQnWtg+PgiDeh9qgrdI8wOhhNH3cv/He9hOFLE9M0YfcqElC86txufTmAPkZGzhY
-         R78g==
+        bh=eBc3U04Z410g0QX/hz9VaosKX9rxbbm4KG7R96HSrHc=;
+        fh=GwDQgbQsvzgefuna/OMlmquBRDVrylXRzBMgkP2ZNfw=;
+        b=h1hBMpdIGj3GGD3EPdBXXgULF0R9hoQr5LWNKCBlX27itFSPN+F9fMnY01G0wT0AcF
+         oJ63ryBH0ddHqiBEvymX6p5v87ELXE9Y01EGunt034h41Cu3KkeBeIPJg27MGZJv6f39
+         xVmfZ2hXON6gL0PG/DLWJBipqBtl72xH6TIw3mPF4zdobla2q2b/o3jn5FcezaZmmAEF
+         8QYI4MgIo6e67dHaDa8vxxfjzF6mjRGIYU6D6UNZAlPjP994z/VXgSJH4fzf33NjPHcU
+         jUD2fnNr/YCmlhP28Uk7a+uY2oDfDUTOC22lj1XN5fb7Ycr7ZIB0imHdYsbauXKnZtXU
+         axJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p93qFbrX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fwIEO7fk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r8-20020a05622a034800b0041364fcbeb1si818997qtw.636.2023.08.31.06.13.33
+        by mx.google.com with ESMTPS id b1-20020a05620a270100b0076f180e4e64si868680qkp.757.2023.08.31.06.14.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 06:13:33 -0700 (PDT)
+        Thu, 31 Aug 2023 06:14:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p93qFbrX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fwIEO7fk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qbhLL-00089R-P2; Thu, 31 Aug 2023 09:04:15 -0400
+	id 1qbhLO-0008Aa-E1; Thu, 31 Aug 2023 09:04:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhGz-0004pQ-OA
- for qemu-devel@nongnu.org; Thu, 31 Aug 2023 08:59:49 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhHp-0006h8-Mg
+ for qemu-devel@nongnu.org; Thu, 31 Aug 2023 09:00:38 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhGu-00065p-IY
- for qemu-devel@nongnu.org; Thu, 31 Aug 2023 08:59:45 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-401f68602a8so7216475e9.3
- for <qemu-devel@nongnu.org>; Thu, 31 Aug 2023 05:59:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhHk-0006jf-Gj
+ for qemu-devel@nongnu.org; Thu, 31 Aug 2023 09:00:37 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-31dcd553fecso589819f8f.2
+ for <qemu-devel@nongnu.org>; Thu, 31 Aug 2023 06:00:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693486779; x=1694091579; darn=nongnu.org;
+ d=linaro.org; s=google; t=1693486831; x=1694091631; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ur9xi937dzz6Bl2U4bEFfYnHfQ2+6Mk7VLbsIy+yiQY=;
- b=p93qFbrXQ6SN01gFC+mCDwinPT864Vc7iDNXuSaBjHtdOEM6rBKil8dKQMPYY2qjUY
- OtECUlmpp0yZSFIxBJB6tJq/vCr3YSyj+aM8gKaY63Yizrw5i60UeqyprRtf2k/ie+Pi
- hYJ86rk0Vu59s3rdEe3YbLm5746nZv6Wn+DU6nN6tsMEARtzQewj2zH+gG7x706l8ADh
- 1di5McuhMV0ZrWI+0aF8QQaq8m2M8XBvqTi2sTkDAaYHIPK/ib4NpVwFh8chxmWXTHOp
- OIO0FiXolg9WGjacQB/aIjGDDUCe/MVhzPzFvOQnGjKUKN7jipPA4ZFZ1WZ/FftdDV9N
- usrw==
+ bh=eBc3U04Z410g0QX/hz9VaosKX9rxbbm4KG7R96HSrHc=;
+ b=fwIEO7fkbC/qaXVQZcpOWw8L/4oVWJZtCVa6fnlti2EPIes4rT49y1xfGdyV5Abxjq
+ 58aWjA/uGo+1VIYEWptHTJadiQCjMQo0/QvELQm4p+Jsnoj6waPchU49t0ARg350GQHN
+ vstQPvwQOHr4W/9qZxkmR9+iBHcBSDxmmGvbOhDRhz2nvWmNtEE7y/rjI2HeloLGwTxt
+ h0NyKLezYFSZUUe3lSSuZWoUsTZQFMwuXr9/0iHTSkht+zpbEIYXk/p+uZchscAm/v04
+ HAb9oM/+y+ean1Fv3O7sRooo1yOPVJHiKF5ayXzExAgUwkvQC0WjXls2VSEQswjH742W
+ 2W/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693486779; x=1694091579;
+ d=1e100.net; s=20221208; t=1693486831; x=1694091631;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ur9xi937dzz6Bl2U4bEFfYnHfQ2+6Mk7VLbsIy+yiQY=;
- b=Zrz0pVpYdpzEzFx8FuB03/3U8/F8UXFJQjjEXs/AnhMMJRksHslFUKZxUjo1TQWN1r
- vldWIxUYBPQmyQmf7kW30lX/GCdvTON3nOghj9x0ITxSFF0BpEW/kcZJ+UNp01+IPcu/
- bS/8ntlM5n5RVwredHh9Ib1BU0qksx3qROj54gF0ZJMC2eIwV/yHJ26+G9q94K0dl1Q1
- r7+UGKSRcM3aKPChbUuxtl7Wg9f49WdJ1InYJ1hL0fKkCtQheBOOwM02ccxbH4Ql09+h
- BM/udhbxmQL9QKXStDr5AsnP3JnPhcDbFtLJ3l2WvVOoO/eDFrhpdOaXIjDt9mZYjgAP
- lIHw==
-X-Gm-Message-State: AOJu0YzB+iksPTWm4Ea9qrUQbYIlcqyL1/DBDMx9XpScOx5qOYdsD8BF
- Wtkty62HPtcTJszzesNeROUPynZwR9WFWfVFDrc=
-X-Received: by 2002:a05:600c:220d:b0:3fc:92:73d6 with SMTP id
- z13-20020a05600c220d00b003fc009273d6mr3971473wml.11.1693486778822; 
- Thu, 31 Aug 2023 05:59:38 -0700 (PDT)
+ bh=eBc3U04Z410g0QX/hz9VaosKX9rxbbm4KG7R96HSrHc=;
+ b=Cs5/Pu4X8e62QPQxlQ16WG010pOuSjxkCjS4dsx2kgcR/A+pUS98HThgU7eb7OYkC1
+ 0mtgap0cKO5lD9V0LcVjzAPtbpxxN4GLeS3zcJqWXlgPnkTvQkPiIcRNKar/DNJTwsRS
+ eC0CR/HM3bWgOx2cPrySiDNWyo6vFnsnDyEgyZZIFebEfmu8QDTGOFySHFkxlZXy7h5g
+ eNG8es1UJN2L0JpEmM5kugFJzyFwlJd/QRb8AKTtW2rPJMrLKuR7JnqyBhF4j+b9raGI
+ 98e8ndJTRhVZeC2xXJaMaUPmLbUwbBtFpAZLownIgIIiYIeZ+iRmcSM6Hm7jfugbHl77
+ zkyg==
+X-Gm-Message-State: AOJu0Yx0xcdgbm2PmvMc6IrSocXrGVxmP/QOxAcQvQnas/1FqnAn7nyy
+ tZP8LCVtOfNHBXAyS7aT01l/kEWpH2guquHM/qc=
+X-Received: by 2002:adf:f6c7:0:b0:31a:c6b2:8c63 with SMTP id
+ y7-20020adff6c7000000b0031ac6b28c63mr3695259wrp.21.1693486830391; 
+ Thu, 31 Aug 2023 06:00:30 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.199.245])
  by smtp.gmail.com with ESMTPSA id
- q9-20020adff789000000b003180027d67asm2141739wrp.19.2023.08.31.05.59.37
+ e33-20020a5d5961000000b0031433443265sm2162158wri.53.2023.08.31.06.00.28
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Aug 2023 05:59:38 -0700 (PDT)
+ Thu, 31 Aug 2023 06:00:30 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
@@ -95,20 +95,20 @@ Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Gerd Hoffmann <kraxel@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 28/41] hw/display: spelling fixes
-Date: Thu, 31 Aug 2023 14:56:30 +0200
-Message-ID: <20230831125646.67855-29-philmd@linaro.org>
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PULL 37/41] ui: spelling fixes
+Date: Thu, 31 Aug 2023 14:56:39 +0200
+Message-ID: <20230831125646.67855-38-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230831125646.67855-1-philmd@linaro.org>
 References: <20230831125646.67855-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,87 +130,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pP2yc1KXs72z
+X-TUID: RmqREEViUMQs
 
 From: Michael Tokarev <mjt@tls.msk.ru>
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20230823065335.1919380-15-mjt@tls.msk.ru>
+Message-ID: <20230823065335.1919380-2-mjt@tls.msk.ru>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/display/bochs-display.c | 2 +-
- hw/display/qxl.c           | 2 +-
- hw/display/ssd0303.c       | 2 +-
- hw/display/ssd0323.c       | 2 +-
- hw/display/xlnx_dp.c       | 2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+ include/ui/kbd-state.h     | 2 +-
+ include/ui/spice-display.h | 2 +-
+ ui/keymaps.h               | 2 +-
+ ui/vnc-enc-zywrle.h        | 4 ++--
+ ui/sdl2-2d.c               | 2 +-
+ ui/sdl2.c                  | 2 +-
+ ui/vnc-enc-zrle.c.inc      | 2 +-
+ ui/cocoa.m                 | 2 +-
+ 8 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/hw/display/bochs-display.c b/hw/display/bochs-display.c
-index e7ec268184..9138e98c3b 100644
---- a/hw/display/bochs-display.c
-+++ b/hw/display/bochs-display.c
-@@ -164,7 +164,7 @@ static int bochs_display_get_mode(BochsDisplayState *s,
-     memset(mode, 0, sizeof(*mode));
-     switch (vbe[VBE_DISPI_INDEX_BPP]) {
-     case 16:
--        /* best effort: support native endianess only */
-+        /* best effort: support native endianness only */
-         mode->format = PIXMAN_r5g6b5;
-         mode->bytepp = 2;
-         break;
-diff --git a/hw/display/qxl.c b/hw/display/qxl.c
-index f1c0eb7dfc..af941fb0c2 100644
---- a/hw/display/qxl.c
-+++ b/hw/display/qxl.c
-@@ -1544,7 +1544,7 @@ static void qxl_create_guest_primary(PCIQXLDevice *qxl, int loadvm,
-     }
- }
- 
--/* return 1 if surface destoy was initiated (in QXL_ASYNC case) or
-+/* return 1 if surface destroy was initiated (in QXL_ASYNC case) or
-  * done (in QXL_SYNC case), 0 otherwise. */
- static int qxl_destroy_primary(PCIQXLDevice *d, qxl_async_io async)
- {
-diff --git a/hw/display/ssd0303.c b/hw/display/ssd0303.c
-index d67b0ad7b5..32b32a3044 100644
---- a/hw/display/ssd0303.c
-+++ b/hw/display/ssd0303.c
-@@ -8,7 +8,7 @@
+diff --git a/include/ui/kbd-state.h b/include/ui/kbd-state.h
+index eb9067dd53..fb79776128 100644
+--- a/include/ui/kbd-state.h
++++ b/include/ui/kbd-state.h
+@@ -65,7 +65,7 @@ void qkbd_state_key_event(QKbdState *kbd, QKeyCode qcode, bool down);
+  * using qemu_input_event_send_key_delay().
+  *
+  * @kbd: state tracker state.
+- * @delay_ms: the delay in miliseconds.
++ * @delay_ms: the delay in milliseconds.
   */
+ void qkbd_state_set_delay(QKbdState *kbd, int delay_ms);
  
- /* The controller can support a variety of different displays, but we only
--   implement one.  Most of the commends relating to brightness and geometry
-+   implement one.  Most of the commands relating to brightness and geometry
-    setup are ignored. */
+diff --git a/include/ui/spice-display.h b/include/ui/spice-display.h
+index 5aa13664d6..e1a9b36185 100644
+--- a/include/ui/spice-display.h
++++ b/include/ui/spice-display.h
+@@ -42,7 +42,7 @@
+ #define NUM_MEMSLOTS_GROUPS 2
  
- #include "qemu/osdep.h"
-diff --git a/hw/display/ssd0323.c b/hw/display/ssd0323.c
-index ab229d32b7..09b1bbed0a 100644
---- a/hw/display/ssd0323.c
-+++ b/hw/display/ssd0323.c
-@@ -8,7 +8,7 @@
-  */
+ /*
+- * Internal enum to differenciate between options for
++ * Internal enum to differentiate between options for
+  * io calls that have a sync (old) version and an _async (new)
+  * version:
+  *  QXL_SYNC: use the old version
+diff --git a/ui/keymaps.h b/ui/keymaps.h
+index 6473405485..3d52c0882a 100644
+--- a/ui/keymaps.h
++++ b/ui/keymaps.h
+@@ -44,7 +44,7 @@ typedef struct {
+ /* "up" flag */
+ #define SCANCODE_UP     0x80
  
- /* The controller can support a variety of different displays, but we only
--   implement one.  Most of the commends relating to brightness and geometry
-+   implement one.  Most of the commands relating to brightness and geometry
-    setup are ignored. */
+-/* Additional modifiers to use if not catched another way. */
++/* Additional modifiers to use if not caught another way. */
+ #define SCANCODE_SHIFT  0x100
+ #define SCANCODE_CTRL   0x200
+ #define SCANCODE_ALT    0x400
+diff --git a/ui/vnc-enc-zywrle.h b/ui/vnc-enc-zywrle.h
+index e661ec117d..64fbc90ee7 100644
+--- a/ui/vnc-enc-zywrle.h
++++ b/ui/vnc-enc-zywrle.h
+@@ -485,7 +485,7 @@ static inline void wavelet(int *buf, int width, int height, int level)
  
- #include "qemu/osdep.h"
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index b0828d65aa..822355ecc6 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -380,7 +380,7 @@ static inline void xlnx_dp_audio_mix_buffer(XlnxDPState *s)
- static void xlnx_dp_audio_callback(void *opaque, int avail)
+ /*
+   RGB <=> YUV conversion stuffs.
+-  YUV coversion is explained as following formula in strict meaning:
++  YUV conversion is explained as following formula in strict meaning:
+   Y =  0.299R + 0.587G + 0.114B (   0<=Y<=255)
+   U = -0.169R - 0.331G + 0.500B (-128<=U<=127)
+   V =  0.500R - 0.419G - 0.081B (-128<=V<=127)
+@@ -539,7 +539,7 @@ static inline void wavelet(int *buf, int width, int height, int level)
+    +------+------+
+ 
+  So, we must transfer each sub images individually in strict meaning.
+- But at least ZRLE meaning, following one decompositon image is same as
++ But at least ZRLE meaning, following one decomposition image is same as
+  avobe individual sub image. I use this format.
+  (Strictly saying, transfer order is reverse(Hxy->Hy->Hx->L)
+   for simplified procedure for any wavelet level.)
+diff --git a/ui/sdl2-2d.c b/ui/sdl2-2d.c
+index bfebbdeaea..06468cd493 100644
+--- a/ui/sdl2-2d.c
++++ b/ui/sdl2-2d.c
+@@ -150,7 +150,7 @@ bool sdl2_2d_check_format(DisplayChangeListener *dcl,
  {
      /*
--     * Get some data from the DPDMA and compute these datas.
-+     * Get some data from the DPDMA and compute these data.
-      * Then wait for QEMU's audio subsystem to call this callback.
+      * We let SDL convert for us a few more formats than,
+-     * the native ones. Thes are the ones I have tested.
++     * the native ones. These are the ones I have tested.
       */
-     XlnxDPState *s = XLNX_DP(opaque);
+     return (format == PIXMAN_x8r8g8b8 ||
+             format == PIXMAN_a8r8g8b8 ||
+diff --git a/ui/sdl2.c b/ui/sdl2.c
+index 0d91b555e3..ea4a92cd36 100644
+--- a/ui/sdl2.c
++++ b/ui/sdl2.c
+@@ -860,7 +860,7 @@ static void sdl2_display_init(DisplayState *ds, DisplayOptions *o)
+     SDL_SetHint(SDL_HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR, "0");
+ #endif
+ #ifndef CONFIG_WIN32
+-    /* QEMU uses its own low level keyboard hook procecure on Windows */
++    /* QEMU uses its own low level keyboard hook procedure on Windows */
+     SDL_SetHint(SDL_HINT_GRAB_KEYBOARD, "1");
+ #endif
+ #ifdef SDL_HINT_ALLOW_ALT_TAB_WHILE_GRABBED
+diff --git a/ui/vnc-enc-zrle.c.inc b/ui/vnc-enc-zrle.c.inc
+index c107d8affc..a8ca37d05e 100644
+--- a/ui/vnc-enc-zrle.c.inc
++++ b/ui/vnc-enc-zrle.c.inc
+@@ -110,7 +110,7 @@ static void ZRLE_ENCODE_TILE(VncState *vs, ZRLE_PIXEL *data, int w, int h,
+     ZRLE_PIXEL *end = ptr + h * w;
+     *end = ~*(end-1); /* one past the end is different so the while loop ends */
+ 
+-    /* Real limit is 127 but we wan't a way to know if there is more than 127 */
++    /* Real limit is 127 but we want a way to know if there is more than 127 */
+     palette_init(palette, 256, ZRLE_BPP);
+ 
+     while (ptr < end) {
+diff --git a/ui/cocoa.m b/ui/cocoa.m
+index 0c2153d17c..4d8989c4eb 100644
+--- a/ui/cocoa.m
++++ b/ui/cocoa.m
+@@ -2045,7 +2045,7 @@ static void cocoa_display_init(DisplayState *ds, DisplayOptions *opts)
+ 
+     /*
+      * Create the menu entries which depend on QEMU state (for consoles
+-     * and removeable devices). These make calls back into QEMU functions,
++     * and removable devices). These make calls back into QEMU functions,
+      * which is OK because at this point we know that the second thread
+      * holds the iothread lock and is synchronously waiting for us to
+      * finish.
 -- 
 2.41.0
 

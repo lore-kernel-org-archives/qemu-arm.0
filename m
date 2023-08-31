@@ -1,112 +1,114 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5086849ejc;
-        Thu, 31 Aug 2023 06:16:00 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEegGhtLkFbqrNSmAZOu+Vx1GDne9ZwmNyIOkv+9BQ2lm8/RZ4gP6/Ng0ekV5z6FbFcQxCE
-X-Received: by 2002:a05:620a:2848:b0:767:18b5:f6d6 with SMTP id h8-20020a05620a284800b0076718b5f6d6mr3025102qkp.2.1693487760570;
-        Thu, 31 Aug 2023 06:16:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693487760; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5088390ejc;
+        Thu, 31 Aug 2023 06:17:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFleBEiX5HlRnRoIb3gX+HKBFfHsoWYT2C1EYfJO9D6WYG/vXA0zSfoMEfANb4QlDtgMwas
+X-Received: by 2002:a05:622a:30a:b0:403:eb5b:1f6 with SMTP id q10-20020a05622a030a00b00403eb5b01f6mr2980176qtw.63.1693487873151;
+        Thu, 31 Aug 2023 06:17:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693487873; cv=none;
         d=google.com; s=arc-20160816;
-        b=eTavBGipI/WTUFGTz5srFCgDRSkc1APWqLxSR1PlsaPx5z7wa7e0psocqb+V1VPzZN
-         bk+NmdjeDHIiNlTpaYQ/hW9v6gR9zONgppbQhOIj5gYniOYSPR4UzAQUJHzAXd9jjFOq
-         AzSncoSfcuFW7C7R+GdvFwcIvfiWBd+bVa1JrXx7as8fOw0DKXlieJuIv1mTuXCJuL5E
-         KWdRUYsnGDltZyydEclPDjJMUyOsj9eCFyoMBfe0fNY5bJqNrvbnHfSTE5xNwDeOHK0A
-         E7bn5A7QHP+OZ1akr35gchfYZXS1oATNXkADCD+l4zecIPZal9eBeyrKRwSwAkWUPBCO
-         wuHw==
+        b=ngb8v/g964gUpDwXPtlamcBnmUoKZ6ccV21SBvvyN/mX40SjpgZ+EoWg49L7Qtt49h
+         6L/WBGeLS8k6PLYNfajvMuDF7Ue/naTGFN2iMtSqDR9IDEjiTZn7dpT9xAr6FMPmc/Fz
+         BmhNsTjl3F1JZwK9P/+cF6XaFdd0t+Dzlfm2yo6aY2YFlqoTE2nWC00Hx9h85CPeCeX/
+         M7edi4n9nmlQjJF5FFtvoWhrhzmdHNWnhQZXYnG7Jp7bDWAt2i9z/CDynzONSYwpOsyS
+         SMMyOq2aIxauybvBwxFFdzLKOkuaZGa8lH4PCvIkbpXmY186Qz6vbkERmLi2X/027LZy
+         W/HQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=A8EundCVxScMr4tt/7YFkt/7+4fhMJQyHAWZWT88veQ=;
-        fh=bxlmc0kDB2ue1a5ZbVi6JhaimuipZzd6pB0uojMRF9s=;
-        b=nBPYDozsFyCzwGdK7anTQmEE72JmLggqIBQU7HRmoyIZZ3NDfNgrmA8XmeVBDyu4Zp
-         7kizAOfVMXW4V3jDjdpY12Ek00ZvuuxO3DlbYDBl4zen4c0UcrG7rRNQQo4qUQsPlkrp
-         iXRm6LedJtkfghvK19v2ntzIr/VfS7EAYMWP+NXRc1UyDxKJ0gRxqGjl1YZc5U3f8WBJ
-         hbedexWHLV0XkSqaKb8s72pQzj3KRftDSOuw2AddzDRgYWbOfFjgYDyoclMPKNVJ0rXo
-         KL8pnsMIpLdaFznistOvY3EiPbzMq7W1bIkUUFmJKOnSkpbXBF8Xnf2I5FUqrKK7lB0D
-         f9LQ==
+        bh=fujFUeasp++TV/A3YKYPJrj4eV9vCNVc0Wd8QFOx7Zc=;
+        fh=1hhhGUrGyKjTCPPv9yz9vWTUDafZk+zbQ6MVse3CJ6U=;
+        b=KkVvqIMHo3Uf2i1vnYJtXpzctQaz9oFPFaXc/ezyDKR0mTLQPu5vJEZFTjdTBmIWJr
+         ta2B7+lCOhlOkB1xS7FD+5JxCF6pjX05a7437bk0ADBOn6qGTtSEQooTQaYY8cMMy78K
+         s5ErCWyKSqYeKeeQHDqzhuIoMjxNGjp5nSNziHJDjzNflgRU0YxXZ046dSBb6s1dAkNO
+         u81+cGCyUAstX1BDqKhFZ0U6u5ABoP3bR2OOsLd8I2SZkLO9NT5ShLmcxI18zBKUSEAM
+         l7Zg6uCkCqk1vXgxLAvXLPWBBHhrdwoGNKx2jrV6kLB2PdOC/3ifR/glD7h63fuyB7Es
+         jW5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=egQjO4qI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TPBo9FqS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id tn18-20020a05620a3c1200b0076d1ee4a8absi915446qkn.287.2023.08.31.06.16.00
+        by mx.google.com with ESMTPS id j13-20020ac85c4d000000b004136cb7caadsi825411qtj.577.2023.08.31.06.17.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 06:16:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 31 Aug 2023 06:17:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=egQjO4qI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TPBo9FqS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qbhLL-000895-5C; Thu, 31 Aug 2023 09:04:15 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qbhLV-0008Bf-QM; Thu, 31 Aug 2023 09:04:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhHP-0005an-RZ
- for qemu-devel@nongnu.org; Thu, 31 Aug 2023 09:00:14 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhHl-0006c4-Aw
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 09:00:37 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhHL-0006Gz-Ew
- for qemu-devel@nongnu.org; Thu, 31 Aug 2023 09:00:11 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-31c6cd238e0so1311057f8f.0
- for <qemu-devel@nongnu.org>; Thu, 31 Aug 2023 06:00:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhHf-0006eL-5Z
+ for qemu-arm@nongnu.org; Thu, 31 Aug 2023 09:00:32 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-3fe4cdb72b9so8144735e9.0
+ for <qemu-arm@nongnu.org>; Thu, 31 Aug 2023 06:00:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693486801; x=1694091601; darn=nongnu.org;
+ d=linaro.org; s=google; t=1693486824; x=1694091624; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=A8EundCVxScMr4tt/7YFkt/7+4fhMJQyHAWZWT88veQ=;
- b=egQjO4qICOsafCqxEjgccVxk7EjRDY8muzWAaojzCgMDoJ4l0+gyYcxQIVffhJM1G+
- TxEwGJ4AHMmLSqZf86FCglZO/IbL5vypGVaWM3iSAkpyYcTpn7j9qOEiZJelY74dN+Nr
- ehaBWXOHgHohegynh3rhOvrB5fh62grEzBGhFsSuATbpKJCcoQS/iTINU8kQb/uyc4fp
- eMCKbSKmojcq7XKkZR7VBtwPgwq7GpXCzdZRjT2oxnwmF85ZYSCam2zWrw9qguJlG0YU
- upeks5kYZawH7xdnm5RKEMgFVZ8nKkhqwUN7whvRwGzFr4IMpf2NV2mJXuBxCAJ3GcfP
- F7Ag==
+ bh=fujFUeasp++TV/A3YKYPJrj4eV9vCNVc0Wd8QFOx7Zc=;
+ b=TPBo9FqSN77AGishxIoazYzIc3ghkeNMS+P3wjFpB17aqbHKmI1Qb1W2a+/lbEh1Gy
+ C/k3CUeaFoKw4p/fSj2RjZSJVPelvvmqDMSn67rtXVQ9n3hTJKwJznRcxHs9aIxOQAB/
+ JzLdCTb+97ex/evB5MXoYZl+lMEzzaYw/GMcE5Ux95P5sl/AQ1LiBQ59g5CMtLjvTEdP
+ Z/h/yTQ3VXy1TXskEKUpqua8/gM925A/MR0YIAWNyJOyBA1OuaYXBUcqWziEQC9yK0yX
+ AUHeZsQMy0lPe6g+Pg9Ya2+yvc2w0Wjl1HQh13zqfRS5ogLvt1X24GCdViB2C/A88lTa
+ I+OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693486801; x=1694091601;
+ d=1e100.net; s=20221208; t=1693486824; x=1694091624;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=A8EundCVxScMr4tt/7YFkt/7+4fhMJQyHAWZWT88veQ=;
- b=W/8PTWM/tZTtfULKivEjUEIGcHz4vw4p9lkJi0dF+YMHtL/10MB63s+vCn0/x7xQho
- xTXRO4IPYwEaYuwlix8dfrTSu7yff2+fegnQYQCNZCwOJtMhWNgytRnEgBijpTwMDjac
- x9oMUzG+dQyCqtpAnuJBf6KRkKbEy4wnkMc21iy0afACm01J0IxQXNxLV4DgyaHf3zx8
- l/z94vAuHn9l62jT3LDfik/yNFsjivo5Ial9wgdBmI6zbC58Rjk3+RKKdJfqHqvaYoHb
- 396eMPR/hPJbmKMbdtwpZkJZ56ECae+O4RfIJFeh0FGP15gZvoEajDd7/nsS49tVW1nT
- zesQ==
-X-Gm-Message-State: AOJu0YycCUlFuwGPmyVGH6WLGYXKZ/kZpCbsDHaGNkKxin6c9JmkPr7A
- jMbNm98oyD3Q710wDq5yL53usomO2OKxlmIYslU=
-X-Received: by 2002:a5d:44d2:0:b0:317:f3fd:21b0 with SMTP id
- z18-20020a5d44d2000000b00317f3fd21b0mr1976615wrr.7.1693486801382; 
- Thu, 31 Aug 2023 06:00:01 -0700 (PDT)
+ bh=fujFUeasp++TV/A3YKYPJrj4eV9vCNVc0Wd8QFOx7Zc=;
+ b=cdusrY9LzhCCNxmvbiZpMBBQBGzfYdNzwsXAoLuYkv90IopTD3EfWOHefLAb16H6qJ
+ xXM7o+Vwpyf33jObuF5BIMvRsg8zNLJCkWNLWDXJ6A4TC/8m92ORFfoEKycU48rqAo/T
+ 3Gh4y9nXYCQ7DzbCuDGamdR8let4TTyWYHcB10C4PzdHHVnJpBTKUf6U1w976LDNfdyv
+ 3Qq1MdGbF0QdQdM52eMERceadAC2Fv8hBf43kQDeF0ptKtsg1a/9pvKilJ49Jc0ljHDO
+ VVCJITnyDSiI2if/lcOnDMt+4MTwn/ooJ5fh6UVNYVVXFXucLzdyJXfE5Nqu6Re5fo7A
+ zYFA==
+X-Gm-Message-State: AOJu0YzkIp3Tqpfq+0HB0lGwvCweeQByl0zDBrqWgMw1BXM/daRmRGN+
+ 5/j0cyuG3IOjaz64/0n+A6gRuw==
+X-Received: by 2002:a5d:46cb:0:b0:319:6afc:7a3c with SMTP id
+ g11-20020a5d46cb000000b003196afc7a3cmr3807766wrs.10.1693486824263; 
+ Thu, 31 Aug 2023 06:00:24 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.199.245])
  by smtp.gmail.com with ESMTPSA id
- b11-20020adfee8b000000b0031aeca90e1fsm2162331wro.70.2023.08.31.06.00.00
+ a2-20020adff7c2000000b003177074f830sm2165517wrq.59.2023.08.31.06.00.22
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Aug 2023 06:00:01 -0700 (PDT)
+ Thu, 31 Aug 2023 06:00:23 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, qemu-block@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PULL 32/41] hw/usb/hcd-xhci: Avoid variable-length array in
- xhci_get_port_bandwidth()
-Date: Thu, 31 Aug 2023 14:56:34 +0200
-Message-ID: <20230831125646.67855-33-philmd@linaro.org>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Lukas Straub <lukasstraub2@web.de>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PULL 36/41] util: spelling fixes
+Date: Thu, 31 Aug 2023 14:56:38 +0200
+Message-ID: <20230831125646.67855-37-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230831125646.67855-1-philmd@linaro.org>
 References: <20230831125646.67855-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,69 +117,248 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U+x3o5LsBNuV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: g9uYOoHK3h/Z
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
 
-In xhci_get_port_bandwidth(), we use a variable-length array to
-construct the buffer to send back to the guest. Avoid the VLA
-by using dma_memory_set() to directly request the memory system
-to fill the guest memory with a string of '80's.
-
-The codebase has very few VLAs, and if we can get rid of them all we
-can make the compiler error on new additions.  This is a defensive
-measure against security bugs where an on-stack dynamic allocation
-isn't correctly size-checked (e.g.  CVE-2021-3527).
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20230823065335.1919380-3-mjt@tls.msk.ru>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20230824164818.2652452-1-peter.maydell@linaro.org>
 ---
- hw/usb/hcd-xhci.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ include/elf.h               | 4 ++--
+ include/io/channel-socket.h | 4 ++--
+ include/io/task.h           | 2 +-
+ include/qemu/iova-tree.h    | 4 ++--
+ include/qemu/yank.h         | 2 +-
+ util/cpuinfo-aarch64.c      | 4 ++--
+ util/cpuinfo-i386.c         | 4 ++--
+ util/cpuinfo-ppc.c          | 2 +-
+ util/main-loop.c            | 2 +-
+ util/oslib-posix.c          | 2 +-
+ util/qdist.c                | 2 +-
+ util/qemu-sockets.c         | 2 +-
+ util/rcu.c                  | 2 +-
+ 13 files changed, 18 insertions(+), 18 deletions(-)
 
-diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-index b89b618ec2..324177ad5d 100644
---- a/hw/usb/hcd-xhci.c
-+++ b/hw/usb/hcd-xhci.c
-@@ -2434,7 +2434,6 @@ static void xhci_detach_slot(XHCIState *xhci, USBPort *uport)
- static TRBCCode xhci_get_port_bandwidth(XHCIState *xhci, uint64_t pctx)
- {
-     dma_addr_t ctx;
--    uint8_t bw_ctx[xhci->numports+1];
+diff --git a/include/elf.h b/include/elf.h
+index ec9755e73b..e7259ec366 100644
+--- a/include/elf.h
++++ b/include/elf.h
+@@ -1125,9 +1125,9 @@ typedef struct {
+ #define EFA_PARISC_1_1      0x0210 /* PA-RISC 1.1 big-endian.  */
+ #define EFA_PARISC_2_0      0x0214 /* PA-RISC 2.0 big-endian.  */
  
-     DPRINTF("xhci_get_port_bandwidth()\n");
+-/* Additional section indeces.  */
++/* Additional section indices.  */
  
-@@ -2442,11 +2441,10 @@ static TRBCCode xhci_get_port_bandwidth(XHCIState *xhci, uint64_t pctx)
+-#define SHN_PARISC_ANSI_COMMON  0xff00   /* Section for tenatively declared
++#define SHN_PARISC_ANSI_COMMON  0xff00   /* Section for tentatively declared
+                                               symbols in ANSI C.  */
+ #define SHN_PARISC_HUGE_COMMON  0xff01   /* Common blocks in huge model.  */
  
-     DPRINTF("xhci: bandwidth context at "DMA_ADDR_FMT"\n", ctx);
+diff --git a/include/io/channel-socket.h b/include/io/channel-socket.h
+index 513c428fe4..ab15577d38 100644
+--- a/include/io/channel-socket.h
++++ b/include/io/channel-socket.h
+@@ -124,7 +124,7 @@ void qio_channel_socket_connect_async(QIOChannelSocket *ioc,
+  * qio_channel_socket_listen_sync:
+  * @ioc: the socket channel object
+  * @addr: the address to listen to
+- * @num: the expected ammount of connections
++ * @num: the expected amount of connections
+  * @errp: pointer to a NULL-initialized error object
+  *
+  * Attempt to listen to the address @addr. This method
+@@ -141,7 +141,7 @@ int qio_channel_socket_listen_sync(QIOChannelSocket *ioc,
+  * qio_channel_socket_listen_async:
+  * @ioc: the socket channel object
+  * @addr: the address to listen to
+- * @num: the expected ammount of connections
++ * @num: the expected amount of connections
+  * @callback: the function to invoke on completion
+  * @opaque: user data to pass to @callback
+  * @destroy: the function to free @opaque
+diff --git a/include/io/task.h b/include/io/task.h
+index beec4f5cfd..dc7d32ebd0 100644
+--- a/include/io/task.h
++++ b/include/io/task.h
+@@ -145,7 +145,7 @@ typedef void (*QIOTaskWorker)(QIOTask *task,
+  * The QIOTask module can also be used to perform operations
+  * in a background thread context, while still reporting the
+  * results in the main event thread. This allows code which
+- * cannot easily be rewritten to be asychronous (such as DNS
++ * cannot easily be rewritten to be asynchronous (such as DNS
+  * lookups) to be easily run non-blocking. Reporting the
+  * results in the main thread context means that the caller
+  * typically does not need to be concerned about thread
+diff --git a/include/qemu/iova-tree.h b/include/qemu/iova-tree.h
+index 8528e5c98f..2a10a7052e 100644
+--- a/include/qemu/iova-tree.h
++++ b/include/qemu/iova-tree.h
+@@ -15,7 +15,7 @@
+  * Currently the iova tree will only allow to keep ranges
+  * information, and no extra user data is allowed for each element.  A
+  * benefit is that we can merge adjacent ranges internally within the
+- * tree.  It can save a lot of memory when the ranges are splitted but
++ * tree.  It can save a lot of memory when the ranges are split but
+  * mostly continuous.
+  *
+  * Note that current implementation does not provide any thread
+@@ -128,7 +128,7 @@ const DMAMap *iova_tree_find_address(const IOVATree *tree, hwaddr iova);
+  * iova_tree_foreach:
+  *
+  * @tree: the iova tree to iterate on
+- * @iterator: the interator for the mappings, return true to stop
++ * @iterator: the iterator for the mappings, return true to stop
+  *
+  * Iterate over the iova tree.
+  *
+diff --git a/include/qemu/yank.h b/include/qemu/yank.h
+index 5375a1f195..1907150933 100644
+--- a/include/qemu/yank.h
++++ b/include/qemu/yank.h
+@@ -25,7 +25,7 @@ typedef void (YankFn)(void *opaque);
+  * @instance: The instance.
+  * @errp: Error object.
+  *
+- * Returns true on success or false if an error occured.
++ * Returns true on success or false if an error occurred.
+  */
+ bool yank_register_instance(const YankInstance *instance, Error **errp);
  
--    /* TODO: actually implement real values here */
--    bw_ctx[0] = 0;
--    memset(&bw_ctx[1], 80, xhci->numports); /* 80% */
--    if (dma_memory_write(xhci->as, ctx, bw_ctx, sizeof(bw_ctx),
--                     MEMTXATTRS_UNSPECIFIED) != MEMTX_OK) {
-+    /* TODO: actually implement real values here. This is 80% for all ports. */
-+    if (stb_dma(xhci->as, ctx, 0, MEMTXATTRS_UNSPECIFIED) != MEMTX_OK ||
-+        dma_memory_set(xhci->as, ctx + 1, 80, xhci->numports,
-+                       MEMTXATTRS_UNSPECIFIED) != MEMTX_OK) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA memory write failed!\n",
-                       __func__);
-         return CC_TRB_ERROR;
+diff --git a/util/cpuinfo-aarch64.c b/util/cpuinfo-aarch64.c
+index ababc39550..7d39f47e3b 100644
+--- a/util/cpuinfo-aarch64.c
++++ b/util/cpuinfo-aarch64.c
+@@ -1,6 +1,6 @@
+ /*
+  * SPDX-License-Identifier: GPL-2.0-or-later
+- * Host specific cpu indentification for AArch64.
++ * Host specific cpu identification for AArch64.
+  */
+ 
+ #include "qemu/osdep.h"
+@@ -33,7 +33,7 @@ static bool sysctl_for_bool(const char *name)
+     /*
+      * We might in the future ask for properties not present in older kernels,
+      * but we're only asking about static properties, all of which should be
+-     * 'int'.  So we shouln't see ENOMEM (val too small), or any of the other
++     * 'int'.  So we shouldn't see ENOMEM (val too small), or any of the other
+      * more exotic errors.
+      */
+     assert(errno == ENOENT);
+diff --git a/util/cpuinfo-i386.c b/util/cpuinfo-i386.c
+index 3a7b7e0ad1..b2ed65bb10 100644
+--- a/util/cpuinfo-i386.c
++++ b/util/cpuinfo-i386.c
+@@ -1,6 +1,6 @@
+ /*
+  * SPDX-License-Identifier: GPL-2.0-or-later
+- * Host specific cpu indentification for x86.
++ * Host specific cpu identification for x86.
+  */
+ 
+ #include "qemu/osdep.h"
+@@ -74,7 +74,7 @@ unsigned __attribute__((constructor)) cpuinfo_init(void)
+                  * of their memory operands to be 16-byte aligned.
+                  *
+                  * AMD has provided an even stronger guarantee that processors
+-                 * with AVX provide 16-byte atomicity for all cachable,
++                 * with AVX provide 16-byte atomicity for all cacheable,
+                  * naturally aligned single loads and stores, e.g. MOVDQU.
+                  *
+                  * See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=104688
+diff --git a/util/cpuinfo-ppc.c b/util/cpuinfo-ppc.c
+index 7212afa45d..1ea3db0ac8 100644
+--- a/util/cpuinfo-ppc.c
++++ b/util/cpuinfo-ppc.c
+@@ -1,6 +1,6 @@
+ /*
+  * SPDX-License-Identifier: GPL-2.0-or-later
+- * Host specific cpu indentification for ppc.
++ * Host specific cpu identification for ppc.
+  */
+ 
+ #include "qemu/osdep.h"
+diff --git a/util/main-loop.c b/util/main-loop.c
+index 014c795916..797b640c41 100644
+--- a/util/main-loop.c
++++ b/util/main-loop.c
+@@ -47,7 +47,7 @@
+  */
+ /*
+  * Disable CFI checks.
+- * We are going to call a signal hander directly. Such handler may or may not
++ * We are going to call a signal handler directly. Such handler may or may not
+  * have been defined in our binary, so there's no guarantee that the pointer
+  * used to set the handler is a cfi-valid pointer. Since the handlers are
+  * stored in kernel memory, changing the handler to an attacker-defined
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index 760390b31e..4d583da7ce 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -671,7 +671,7 @@ void qemu_free_stack(void *stack, size_t sz)
+ 
+ /*
+  * Disable CFI checks.
+- * We are going to call a signal hander directly. Such handler may or may not
++ * We are going to call a signal handler directly. Such handler may or may not
+  * have been defined in our binary, so there's no guarantee that the pointer
+  * used to set the handler is a cfi-valid pointer. Since the handlers are
+  * stored in kernel memory, changing the handler to an attacker-defined
+diff --git a/util/qdist.c b/util/qdist.c
+index 5f75e24c29..ef3566b03a 100644
+--- a/util/qdist.c
++++ b/util/qdist.c
+@@ -210,7 +210,7 @@ void qdist_bin__internal(struct qdist *to, const struct qdist *from, size_t n)
+ 
+         /*
+          * To avoid double-counting we capture [left, right) ranges, except for
+-         * the righmost bin, which captures a [left, right] range.
++         * the rightmost bin, which captures a [left, right] range.
+          */
+         while (j < from->n && (from->entries[j].x < right || i == n - 1)) {
+             struct qdist_entry *o = &from->entries[j];
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index 892d33f5e6..83e84b1186 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -929,7 +929,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
+ 
+     if (pathbuf != NULL) {
+         /*
+-         * This dummy fd usage silences the mktemp() unsecure warning.
++         * This dummy fd usage silences the mktemp() insecure warning.
+          * Using mkstemp() doesn't make things more secure here
+          * though.  bind() complains about existing files, so we have
+          * to unlink first and thus re-open the race window.  The
+diff --git a/util/rcu.c b/util/rcu.c
+index 30a7e22026..e587bcc483 100644
+--- a/util/rcu.c
++++ b/util/rcu.c
+@@ -355,7 +355,7 @@ void drain_call_rcu(void)
+      *
+      * Note that since we have only one global queue of the RCU callbacks,
+      * we also end up waiting for most of RCU callbacks that were registered
+-     * on the other threads, but this is a side effect that shoudn't be
++     * on the other threads, but this is a side effect that shouldn't be
+      * assumed.
+      */
+ 
 -- 
 2.41.0
 

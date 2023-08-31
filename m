@@ -1,318 +1,613 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5070619ejc;
-        Thu, 31 Aug 2023 05:57:01 -0700 (PDT)
-X-Received: by 2002:a5d:558b:0:b0:319:67ac:4191 with SMTP id i11-20020a5d558b000000b0031967ac4191mr4073538wrv.37.1693486621178;
-        Thu, 31 Aug 2023 05:57:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693486621; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5070798ejc;
+        Thu, 31 Aug 2023 05:57:20 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHDw9bA0/BrXC755HWnLUrnwb/VPwbsWU4PzMwTUo5ob6hkSbyaetS+6W4w8KCaNGyI7QPd
+X-Received: by 2002:a17:906:8442:b0:9a1:e329:770c with SMTP id e2-20020a170906844200b009a1e329770cmr3714744ejy.70.1693486639995;
+        Thu, 31 Aug 2023 05:57:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693486639; cv=none;
         d=google.com; s=arc-20160816;
-        b=EYpA0hlEu7fOZRInLmHcsS2TQCwbKKzvfLpQowBmCqM1KJpPsVeo+wT/Nulhf6/FS6
-         gmFIqToQMGwzTbdTmCISta0V76KqvkYVd8kimr8wnRvK6Cdr9UkEabEZF1IjC30hwt/H
-         epHZ984wLrnOLuTNbkSJjsUxfAj4e+3WAo8TODyj+Wxe0y6+OZiZLkFtH/nBlwED4Rk0
-         LM9DKTbTfTcyKTc9NHgsscdg3ntTEMNzNt/pftbTaITqmBTgij4rkOLf60hXxP6lmzgy
-         F0tFsYkzT+XUB4cNTbjsYwcmHP2+Fu6MvoBuD1ZgA0Kodj4HnTMTSsCYFb6j580nCA6N
-         J/Ng==
+        b=t+H4ZMxPuzOjTNAiPrLnO7SuLLIQ38RmZfGZLYamw3fapuDJjQvVl/e+xbnw/3gzDZ
+         Iull+ZbTk5a9dXKx/XObtd6wdBodzLKYTQWzF7XTf3VPfdLcLQMqh0L8Iw5RWZ/M3MBD
+         3IxGVCcTUeXJE264nyzetq6/QIC8st/jECqhcuuLUWzJfB4h7js6nxdve4ly4c9dqHQl
+         h8Gdlu0zQRDiCqHNhpGuhfbYFUm/Xafu29cktewHbVyNixwnK/9tC0IwyHpnhlQMEhEU
+         oy5f4REuvUE7Z/J6KrvkA8LpWu71+2rpCt25B2hKkYStsTCvKTuI3aeVoR7jLo490+/R
+         RFIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=uyAFkv08soXTPpT+cRfZCYJSEeJIQENRamQ8RwwrU9I=;
-        fh=Hk+asnoAIE/cJ1B7Fk+B6dLh/nhza2YRAoue5tchXI0=;
-        b=rBRcRYLjkrzyM3VYlgQHPPtm22Htr0DbdaYQJ8M24uF6MKFPO/1gFOU491S7CC0Hsl
-         +eJuh8pAm4QlqS71GTpwyGOzFWkeJSmpdhEsRgHCy4nOeMqDNj8RRKeEEgGAPI0LZRc8
-         8OEYpHengOCKqFoahayAqiGyAwbH2nOS6EucWhGeAkUcL5WVC4NIjEv6Lu31GryVCoMg
-         2Ddxp22abvs40CE1seXioftxSdmybx+DLJDgW97p62yJd7c8mWmEDA4o/f4BU+efr+Rl
-         4Ceg2ybtAHCJ9l+B+llUbKhyctMaXGEvRtizvQgfqXQGSBOsZ5/5IbVL0KwyLjCRSD/G
-         87jA==
+        h=list-id:precedence:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=BBmbYhwWUokJXrJxrg7jVrc5Nfzg+L5Sye1331NUuIk=;
+        fh=5zgNio/lZ7neYmRg9wOGplJTyVIGjv4tnz7GFoxSFrs=;
+        b=doMhjMjiDbLkLnFHsy91fbTjRKxl2hbw9pK8q93MUZhcGMwH+uugFKeYpvQjP8qkN4
+         17fNjjZErqJzQCi3gw2En1UalMqZhwWWYgX6ePbmV4+V+JQbZdQ+Ych5FMFFbf+a0H0U
+         iGy0lf/P+8XGYwE1Jht88So1otDt7l54MLnORAacS5n6ndVO2D/ZlT2s/eHbiLzggmNd
+         j2gTdQZgX0fCsDP1E0th5rOwqj3KjWTW3/NU/8IXf1atkTQqSuoanV2RHEI8oO2nc5u4
+         zhbk1N3m7HCz1KS6sgkq6mmGin5F4NSWfcWBxkQ+IjMaL4eEZPIF+Lp/SOeVJBp1HaNW
+         GicQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zmzaK2Tl;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=owvR4Q0+;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t29-20020adfa2dd000000b0031c8aa6dcf0sor292207wra.2.2023.08.31.05.57.01
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 31 Aug 2023 05:57:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id eq6-20020a170907290600b00992d6fae2bfsi910874ejc.953.2023.08.31.05.57.19;
+        Thu, 31 Aug 2023 05:57:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zmzaK2Tl;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=owvR4Q0+;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S241376AbjHaM5U (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Thu, 31 Aug 2023 08:57:20 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:58608 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229716AbjHaM5T (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 31 Aug 2023 08:57:19 -0400
+Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com [IPv6:2a00:1450:4864:20::334])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id BA1CACEE
+        for <kvm@vger.kernel.org>; Thu, 31 Aug 2023 05:57:14 -0700 (PDT)
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-401f503b529so7237235e9.0
+        for <kvm@vger.kernel.org>; Thu, 31 Aug 2023 05:57:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1693486621; x=1694091421; darn=linaro.org;
+        d=linaro.org; s=google; t=1693486633; x=1694091433; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=uyAFkv08soXTPpT+cRfZCYJSEeJIQENRamQ8RwwrU9I=;
-        b=zmzaK2TlQQijXqjpJV5XcqsA8Yn9H9xiCz+t0rEyiJeOxB2tI4Jt2Cyr6abKc5YgT4
-         xeTglKBiobDT64CF5qzDC5k/kn6OGm1nQe9JJcgLtSBnk43Mt2dmDwVC1oULC8KZb4iY
-         5w9NcF30VTtQSCjfvCE/FwntrhS+KSC0oJKhCfD1rSaBYQTkTzT7eXL0lz1Y3JduXjIe
-         fvyrVYgP0gzFJ1XvZcRVTDkGeUAS9A5KdsyhzyY3CnJK9MXckG66CEmCVMMpNyv0rvB3
-         REhyb/6Mdg+Z1GPlirLs9faoIfzjWB9jOQTi/v6nugmwXLGIvBwCeKHDem4LNfCql0iv
-         5FzA==
+        bh=BBmbYhwWUokJXrJxrg7jVrc5Nfzg+L5Sye1331NUuIk=;
+        b=owvR4Q0+9oPvsqMuY7phn1sLvU23nnpCdhSU1oAzmt3pfYmUiQUe3CFmTfpqe/3CBm
+         08iIWmqHDF3sMxqGHJw8k/q0uBDiCh1X1B02F+et5+05CQq6nkA/V859GDp/fjnjSIpc
+         FfZYqBWZtCVQSzxxIPkJMKxJ8Ccp+NDBa6AosuHzFkmHoB5lI+9NFvtgTmHNuLkuWS9c
+         HGvi2/5zu2WUZAQhXaXyfS2Emz0qs+Mh4kvzodt+A4QUVuT+sD1YFzWsu6OiZODtm8X1
+         POyPXx/8Z9XriooEXoGvDsCcX804zRgtic3kucODcvfrSi+RghTyDJphWnsUQEg+ihFR
+         B/tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693486621; x=1694091421;
+        d=1e100.net; s=20221208; t=1693486633; x=1694091433;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=uyAFkv08soXTPpT+cRfZCYJSEeJIQENRamQ8RwwrU9I=;
-        b=V6MNxtdPS/sbOUwW/tAQCg0aYvBNgPKZ8ZGHFpoYplH2ww3DO4BRpgSPVFvMxydqkh
-         //R8uEZcy4T75XTSrsMKgFHteJBpfmXoA9rUr1eNvGNY8UuipTOa+fUIHE3D0f4axV56
-         agfQJzPwkS8JVJAZ1ZIyUfLKFLZvZ9Sxk7VBQ8yETU5ZJ7VhQYRIuYh7h8jX2ipOSpvb
-         sZvvGyTBUxXz/+HCN4U8GqbsHbgrdyS6bTQ4sE5303cK9U5O1y2bcs/pAMbNKOre11Mr
-         2w4X055oIwQyTZGTcAREBMgC2ssIUT1Ex6hXNv7Mosm0nowEyJVD1v9D19bfq/OFLoBq
-         wZjw==
-X-Gm-Message-State: AOJu0YwHy29vAPPvOKsvnbFBCFzgOtQge0uNipfWuCMXb4+2eB0174wr
-	E8wxyx56oP4fn0FTH/Yt0zK1uIzw
-X-Google-Smtp-Source: AGHT+IE/+TTWcuKg3pjqRq41MInDnsJmMNB+fa7jHy/J0ubfI+VvPd5H36wvl9FF4xhLY/Png/X4eg==
-X-Received: by 2002:a5d:40cf:0:b0:314:1b4d:bb27 with SMTP id b15-20020a5d40cf000000b003141b4dbb27mr4035422wrq.64.1693486620800;
-        Thu, 31 Aug 2023 05:57:00 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
+        bh=BBmbYhwWUokJXrJxrg7jVrc5Nfzg+L5Sye1331NUuIk=;
+        b=Qg1wzig79jkBuADpSOQ/L44vkIobvUZMNv8EoSGuVg0hSse050FayDRTb7uGO9N58M
+         x67LHLN8RBLYQGhVynXWCt6HI5ySPNYAsv84luaeaMSt0fw2EJX1eoGPqMUHHkMx0/Ko
+         LYxCjm2uee2gIvHEw4/MggDxDnjkcFF1kagJU+EJ62L3Ua3rGFBjqWBj2Z25jxDhsRPO
+         qepiTfRwFVU9/xrMMI9TffmhnthxLI908vcBphJLDrA3DfEUHNXi+35Qg4WuZqPqzHeX
+         vKlal8agxAaze3ZMJReY1TR5O5ryX9yhXmqIRLJFDb24L8dFrOJkdsl0dHOi6ti1G0yG
+         NxBA==
+X-Gm-Message-State: AOJu0YwnKCK0bZUzNAcAH9BJdfqCkglcjJ8/13Lc0AXXzFIk7XAlLb9V
+        MnOWkyY15ZfzEVHnKs2euanz2Q==
+X-Received: by 2002:a7b:cd06:0:b0:401:519:d2 with SMTP id f6-20020a7bcd06000000b00401051900d2mr3641584wmj.23.1693486633253;
+        Thu, 31 Aug 2023 05:57:13 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.199.245])
-        by smtp.gmail.com with ESMTPSA id s16-20020adfecd0000000b0030ada01ca78sm2172105wro.10.2023.08.31.05.56.59
+        by smtp.gmail.com with ESMTPSA id n5-20020a05600c294500b003fa96fe2bd9sm5055144wmd.22.2023.08.31.05.57.10
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 31 Aug 2023 05:57:00 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	qemu-s390x@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org,
-	qemu-block@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Peter Xu <peterx@redhat.com>,
-	David Hildenbrand <david@redhat.com>
-Subject: [PULL 02/41] accel/tcg: spelling fixes
-Date: Thu, 31 Aug 2023 14:56:04 +0200
-Message-ID: <20230831125646.67855-3-philmd@linaro.org>
+        Thu, 31 Aug 2023 05:57:12 -0700 (PDT)
+From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To:     qemu-devel@nongnu.org
+Cc:     qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+        qemu-riscv@nongnu.org, qemu-block@nongnu.org,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>,
+        =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Paul Durrant <paul@xen.org>,
+        =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+        Andrew Jeffery <andrew@aj.id.au>,
+        Joel Stanley <joel@jms.id.au>,
+        Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Eduardo Habkost <eduardo@habkost.net>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Stefan Weil <sw@weilnetz.de>, Riku Voipio <riku.voipio@iki.fi>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        xen-devel@lists.xenproject.org, kvm@vger.kernel.org
+Subject: [PULL 04/41] bulk: Do not declare function prototypes using 'extern' keyword
+Date:   Thu, 31 Aug 2023 14:56:06 +0200
+Message-ID: <20230831125646.67855-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230831125646.67855-1-philmd@linaro.org>
 References: <20230831125646.67855-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: WAD+odfyRoT0
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_BLOCKED,
+        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: KKspZ5DS+ZEA
 
-From: Michael Tokarev <mjt@tls.msk.ru>
+By default, C function prototypes declared in headers are visible,
+so there is no need to declare them as 'extern' functions.
+Remove this redundancy in a single bulk commit; do not modify:
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Message-ID: <20230823065335.1919380-18-mjt@tls.msk.ru>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-ID: <20230823065335.1919380-19-mjt@tls.msk.ru>
+  - meson.build (used to check function availability at runtime)
+  - pc-bios/
+  - libdecnumber/
+  - tests/
+  - *.c
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20230605175647.88395-5-philmd@linaro.org>
 ---
- include/hw/core/tcg-cpu-ops.h | 2 +-
- include/tcg/helper-info.h     | 2 +-
- include/tcg/tcg.h             | 4 ++--
- include/user/safe-syscall.h   | 2 +-
- accel/tcg/tb-maint.c          | 2 +-
- contrib/plugins/cache.c       | 2 +-
- contrib/plugins/lockstep.c    | 2 +-
- linux-user/flatload.c         | 2 +-
- linux-user/syscall.c          | 4 ++--
- semihosting/config.c          | 2 +-
- semihosting/syscalls.c        | 4 ++--
- softmmu/icount.c              | 2 +-
- softmmu/ioport.c              | 2 +-
- 13 files changed, 16 insertions(+), 16 deletions(-)
+ bsd-user/bsd-file.h            |  6 ++---
+ crypto/hmacpriv.h              | 13 +++++------
+ hw/xen/xen_pt.h                |  8 +++----
+ include/crypto/secret_common.h | 14 +++++-------
+ include/exec/page-vary.h       |  4 ++--
+ include/hw/misc/aspeed_scu.h   |  2 +-
+ include/hw/nvram/npcm7xx_otp.h |  4 ++--
+ include/hw/qdev-core.h         |  4 ++--
+ include/qemu/crc-ccitt.h       |  4 ++--
+ include/qemu/osdep.h           |  4 ++--
+ include/qemu/rcu.h             | 14 ++++++------
+ include/qemu/sys_membarrier.h  |  4 ++--
+ include/qemu/uri.h             |  6 ++---
+ include/sysemu/accel-blocker.h | 14 ++++++------
+ include/sysemu/os-win32.h      |  4 ++--
+ include/user/safe-syscall.h    |  4 ++--
+ target/i386/sev.h              |  6 ++---
+ target/mips/cpu.h              |  4 ++--
+ tcg/tcg-internal.h             |  4 ++--
+ include/exec/memory_ldst.h.inc | 42 +++++++++++++++++-----------------
+ 20 files changed, 79 insertions(+), 86 deletions(-)
 
-diff --git a/include/hw/core/tcg-cpu-ops.h b/include/hw/core/tcg-cpu-ops.h
-index 3e8b1b737a..479713a36e 100644
---- a/include/hw/core/tcg-cpu-ops.h
-+++ b/include/hw/core/tcg-cpu-ops.h
-@@ -14,7 +14,7 @@
+diff --git a/bsd-user/bsd-file.h b/bsd-user/bsd-file.h
+index 588e0c50d4..3c00dc0056 100644
+--- a/bsd-user/bsd-file.h
++++ b/bsd-user/bsd-file.h
+@@ -51,10 +51,8 @@ do {                                        \
+     unlock_user(p1, arg1, 0);               \
+ } while (0)
  
- struct TCGCPUOps {
-     /**
--     * @initialize: Initalize TCG state
-+     * @initialize: Initialize TCG state
-      *
-      * Called when the first CPU is realized.
-      */
-diff --git a/include/tcg/helper-info.h b/include/tcg/helper-info.h
-index 4b6c9b43e8..7c27d6164a 100644
---- a/include/tcg/helper-info.h
-+++ b/include/tcg/helper-info.h
-@@ -1,5 +1,5 @@
+-extern struct iovec *lock_iovec(int type, abi_ulong target_addr, int count,
+-        int copy);
+-extern void unlock_iovec(struct iovec *vec, abi_ulong target_addr, int count,
+-        int copy);
++struct iovec *lock_iovec(int type, abi_ulong target_addr, int count, int copy);
++void unlock_iovec(struct iovec *vec, abi_ulong target_addr, int count, int copy);
+ 
+ int safe_open(const char *path, int flags, mode_t mode);
+ int safe_openat(int fd, const char *path, int flags, mode_t mode);
+diff --git a/crypto/hmacpriv.h b/crypto/hmacpriv.h
+index 4387ca2587..62dfe8257a 100644
+--- a/crypto/hmacpriv.h
++++ b/crypto/hmacpriv.h
+@@ -28,19 +28,18 @@ struct QCryptoHmacDriver {
+     void (*hmac_free)(QCryptoHmac *hmac);
+ };
+ 
+-extern void *qcrypto_hmac_ctx_new(QCryptoHashAlgorithm alg,
+-                                  const uint8_t *key, size_t nkey,
+-                                  Error **errp);
++void *qcrypto_hmac_ctx_new(QCryptoHashAlgorithm alg,
++                           const uint8_t *key, size_t nkey,
++                           Error **errp);
+ extern QCryptoHmacDriver qcrypto_hmac_lib_driver;
+ 
+ #ifdef CONFIG_AF_ALG
+ 
+ #include "afalgpriv.h"
+ 
+-extern QCryptoAFAlg *
+-qcrypto_afalg_hmac_ctx_new(QCryptoHashAlgorithm alg,
+-                           const uint8_t *key, size_t nkey,
+-                           Error **errp);
++QCryptoAFAlg *qcrypto_afalg_hmac_ctx_new(QCryptoHashAlgorithm alg,
++                                         const uint8_t *key, size_t nkey,
++                                         Error **errp);
+ extern QCryptoHmacDriver qcrypto_hmac_afalg_driver;
+ 
+ #endif
+diff --git a/hw/xen/xen_pt.h b/hw/xen/xen_pt.h
+index b20744f7c7..31bcfdf705 100644
+--- a/hw/xen/xen_pt.h
++++ b/hw/xen/xen_pt.h
+@@ -340,11 +340,9 @@ static inline bool xen_pt_has_msix_mapping(XenPCIPassthroughState *s, int bar)
+     return s->msix && s->msix->bar_index == bar;
+ }
+ 
+-extern void *pci_assign_dev_load_option_rom(PCIDevice *dev,
+-                                            int *size,
+-                                            unsigned int domain,
+-                                            unsigned int bus, unsigned int slot,
+-                                            unsigned int function);
++void *pci_assign_dev_load_option_rom(PCIDevice *dev, int *size,
++                                     unsigned int domain, unsigned int bus,
++                                     unsigned int slot, unsigned int function);
+ static inline bool is_igd_vga_passthrough(XenHostPCIDevice *dev)
+ {
+     return (xen_igd_gfx_pt_enabled()
+diff --git a/include/crypto/secret_common.h b/include/crypto/secret_common.h
+index 42c7ff7af6..a0a22e1abd 100644
+--- a/include/crypto/secret_common.h
++++ b/include/crypto/secret_common.h
+@@ -48,13 +48,11 @@ struct QCryptoSecretCommonClass {
+ };
+ 
+ 
+-extern int qcrypto_secret_lookup(const char *secretid,
+-                                 uint8_t **data,
+-                                 size_t *datalen,
+-                                 Error **errp);
+-extern char *qcrypto_secret_lookup_as_utf8(const char *secretid,
+-                                           Error **errp);
+-extern char *qcrypto_secret_lookup_as_base64(const char *secretid,
+-                                             Error **errp);
++int qcrypto_secret_lookup(const char *secretid,
++                          uint8_t **data,
++                          size_t *datalen,
++                          Error **errp);
++char *qcrypto_secret_lookup_as_utf8(const char *secretid, Error **errp);
++char *qcrypto_secret_lookup_as_base64(const char *secretid, Error **errp);
+ 
+ #endif /* QCRYPTO_SECRET_COMMON_H */
+diff --git a/include/exec/page-vary.h b/include/exec/page-vary.h
+index ebbe9b169b..54ddde308a 100644
+--- a/include/exec/page-vary.h
++++ b/include/exec/page-vary.h
+@@ -27,8 +27,8 @@ typedef struct {
+ } TargetPageBits;
+ 
+ #ifdef IN_PAGE_VARY
+-extern bool set_preferred_target_page_bits_common(int bits);
+-extern void finalize_target_page_bits_common(int min);
++bool set_preferred_target_page_bits_common(int bits);
++void finalize_target_page_bits_common(int min);
+ #endif
+ 
+ /**
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index 5c7c04eedf..7cb6018dbc 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -51,7 +51,7 @@ struct AspeedSCUState {
+ 
+ #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
+ 
+-extern bool is_supported_silicon_rev(uint32_t silicon_rev);
++bool is_supported_silicon_rev(uint32_t silicon_rev);
+ 
+ 
+ struct AspeedSCUClass {
+diff --git a/include/hw/nvram/npcm7xx_otp.h b/include/hw/nvram/npcm7xx_otp.h
+index 156bbd151a..ea4b5d0731 100644
+--- a/include/hw/nvram/npcm7xx_otp.h
++++ b/include/hw/nvram/npcm7xx_otp.h
+@@ -73,7 +73,7 @@ typedef struct NPCM7xxOTPClass NPCM7xxOTPClass;
+  * Each nibble of data is encoded into a byte, so the number of bytes written
+  * to the array will be @len * 2.
+  */
+-extern void npcm7xx_otp_array_write(NPCM7xxOTPState *s, const void *data,
+-                                    unsigned int offset, unsigned int len);
++void npcm7xx_otp_array_write(NPCM7xxOTPState *s, const void *data,
++                             unsigned int offset, unsigned int len);
+ 
+ #endif /* NPCM7XX_OTP_H */
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index 884c726a87..151d968238 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -1086,7 +1086,7 @@ typedef enum MachineInitPhase {
+     PHASE_MACHINE_READY,
+ } MachineInitPhase;
+ 
+-extern bool phase_check(MachineInitPhase phase);
+-extern void phase_advance(MachineInitPhase phase);
++bool phase_check(MachineInitPhase phase);
++void phase_advance(MachineInitPhase phase);
+ 
+ #endif
+diff --git a/include/qemu/crc-ccitt.h b/include/qemu/crc-ccitt.h
+index d6eb49146d..8918dafe07 100644
+--- a/include/qemu/crc-ccitt.h
++++ b/include/qemu/crc-ccitt.h
+@@ -17,8 +17,8 @@
+ extern uint16_t const crc_ccitt_table[256];
+ extern uint16_t const crc_ccitt_false_table[256];
+ 
+-extern uint16_t crc_ccitt(uint16_t crc, const uint8_t *buffer, size_t len);
+-extern uint16_t crc_ccitt_false(uint16_t crc, const uint8_t *buffer, size_t len);
++uint16_t crc_ccitt(uint16_t crc, const uint8_t *buffer, size_t len);
++uint16_t crc_ccitt_false(uint16_t crc, const uint8_t *buffer, size_t len);
+ 
+ static inline uint16_t crc_ccitt_byte(uint16_t crc, const uint8_t c)
+ {
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index 2cae135280..2897720fac 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -250,7 +250,7 @@ extern "C" {
+  * supports QEMU_ERROR, this will be reported at compile time; otherwise
+  * this will be reported at link time due to the missing symbol.
+  */
+-G_NORETURN extern
++G_NORETURN
+ void QEMU_ERROR("code path is reachable")
+     qemu_build_not_reached_always(void);
+ #if defined(__OPTIMIZE__) && !defined(__NO_INLINE__)
+@@ -506,7 +506,7 @@ void qemu_anon_ram_free(void *ptr, size_t size);
+  * See MySQL bug #7156 (http://bugs.mysql.com/bug.php?id=7156) for discussion
+  * about Solaris missing the madvise() prototype.
+  */
+-extern int madvise(char *, size_t, int);
++int madvise(char *, size_t, int);
+ #endif
+ 
+ #if defined(CONFIG_LINUX)
+diff --git a/include/qemu/rcu.h b/include/qemu/rcu.h
+index 661c1a1468..fea058aa9f 100644
+--- a/include/qemu/rcu.h
++++ b/include/qemu/rcu.h
+@@ -118,19 +118,19 @@ static inline void rcu_read_unlock(void)
+     }
+ }
+ 
+-extern void synchronize_rcu(void);
++void synchronize_rcu(void);
+ 
  /*
-- * TCG Helper Infomation Structure
-+ * TCG Helper Information Structure
-  *
-  * Copyright (c) 2023 Linaro Ltd
-  *
-diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
-index 61d7c81b44..c9c6d770d0 100644
---- a/include/tcg/tcg.h
-+++ b/include/tcg/tcg.h
-@@ -879,7 +879,7 @@ enum {
-     /* Instruction operands are 64-bits (otherwise 32-bits).  */
-     TCG_OPF_64BIT        = 0x10,
-     /* Instruction is optional and not implemented by the host, or insn
--       is generic and should not be implemened by the host.  */
-+       is generic and should not be implemented by the host.  */
-     TCG_OPF_NOT_PRESENT  = 0x20,
-     /* Instruction operands are vectors.  */
-     TCG_OPF_VECTOR       = 0x40,
-@@ -1123,7 +1123,7 @@ static inline int tcg_can_emit_vec_op(TCGOpcode o, TCGType t, unsigned ve)
- /* Expand the tuple (opc, type, vece) on the given arguments.  */
- void tcg_expand_vec_op(TCGOpcode, TCGType, unsigned, TCGArg, ...);
+  * Reader thread registration.
+  */
+-extern void rcu_register_thread(void);
+-extern void rcu_unregister_thread(void);
++void rcu_register_thread(void);
++void rcu_unregister_thread(void);
  
--/* Replicate a constant C accoring to the log2 of the element size.  */
-+/* Replicate a constant C according to the log2 of the element size.  */
- uint64_t dup_const(unsigned vece, uint64_t c);
+ /*
+  * Support for fork().  fork() support is enabled at startup.
+  */
+-extern void rcu_enable_atfork(void);
+-extern void rcu_disable_atfork(void);
++void rcu_enable_atfork(void);
++void rcu_disable_atfork(void);
  
- #define dup_const(VECE, C)                                         \
+ struct rcu_head;
+ typedef void RCUCBFunc(struct rcu_head *head);
+@@ -140,8 +140,8 @@ struct rcu_head {
+     RCUCBFunc *func;
+ };
+ 
+-extern void call_rcu1(struct rcu_head *head, RCUCBFunc *func);
+-extern void drain_call_rcu(void);
++void call_rcu1(struct rcu_head *head, RCUCBFunc *func);
++void drain_call_rcu(void);
+ 
+ /* The operands of the minus operator must have the same type,
+  * which must be the one that we specify in the cast.
+diff --git a/include/qemu/sys_membarrier.h b/include/qemu/sys_membarrier.h
+index b5bfa21d52..e7774891f8 100644
+--- a/include/qemu/sys_membarrier.h
++++ b/include/qemu/sys_membarrier.h
+@@ -14,8 +14,8 @@
+  * side.  The slow side forces processor-level ordering on all other cores
+  * through a system call.
+  */
+-extern void smp_mb_global_init(void);
+-extern void smp_mb_global(void);
++void smp_mb_global_init(void);
++void smp_mb_global(void);
+ #define smp_mb_placeholder()       barrier()
+ #else
+ /* Keep it simple, execute a real memory barrier on both sides.  */
+diff --git a/include/qemu/uri.h b/include/qemu/uri.h
+index 2875c51417..1855b764f2 100644
+--- a/include/qemu/uri.h
++++ b/include/qemu/uri.h
+@@ -96,8 +96,8 @@ typedef struct QueryParams {
+   QueryParam *p;       /* array of parameters */
+ } QueryParams;
+ 
+-QueryParams *query_params_new (int init_alloc);
+-extern QueryParams *query_params_parse (const char *query);
+-extern void query_params_free (QueryParams *ps);
++QueryParams *query_params_new(int init_alloc);
++QueryParams *query_params_parse(const char *query);
++void query_params_free(QueryParams *ps);
+ 
+ #endif /* QEMU_URI_H */
+diff --git a/include/sysemu/accel-blocker.h b/include/sysemu/accel-blocker.h
+index 0733783bcc..f07f368358 100644
+--- a/include/sysemu/accel-blocker.h
++++ b/include/sysemu/accel-blocker.h
+@@ -16,7 +16,7 @@
+ 
+ #include "sysemu/cpus.h"
+ 
+-extern void accel_blocker_init(void);
++void accel_blocker_init(void);
+ 
+ /*
+  * accel_{cpu_}ioctl_begin/end:
+@@ -26,10 +26,10 @@ extern void accel_blocker_init(void);
+  * called, preventing new ioctls to run. They will continue only after
+  * accel_ioctl_inibith_end().
+  */
+-extern void accel_ioctl_begin(void);
+-extern void accel_ioctl_end(void);
+-extern void accel_cpu_ioctl_begin(CPUState *cpu);
+-extern void accel_cpu_ioctl_end(CPUState *cpu);
++void accel_ioctl_begin(void);
++void accel_ioctl_end(void);
++void accel_cpu_ioctl_begin(CPUState *cpu);
++void accel_cpu_ioctl_end(CPUState *cpu);
+ 
+ /*
+  * accel_ioctl_inhibit_begin: start critical section
+@@ -42,7 +42,7 @@ extern void accel_cpu_ioctl_end(CPUState *cpu);
+  * This allows the caller to access shared data or perform operations without
+  * worrying of concurrent vcpus accesses.
+  */
+-extern void accel_ioctl_inhibit_begin(void);
++void accel_ioctl_inhibit_begin(void);
+ 
+ /*
+  * accel_ioctl_inhibit_end: end critical section started by
+@@ -50,6 +50,6 @@ extern void accel_ioctl_inhibit_begin(void);
+  *
+  * This function allows blocked accel_{cpu_}ioctl_begin() to continue.
+  */
+-extern void accel_ioctl_inhibit_end(void);
++void accel_ioctl_inhibit_end(void);
+ 
+ #endif /* ACCEL_BLOCKER_H */
+diff --git a/include/sysemu/os-win32.h b/include/sysemu/os-win32.h
+index 91aa0d7ec0..83104e332f 100644
+--- a/include/sysemu/os-win32.h
++++ b/include/sysemu/os-win32.h
+@@ -66,8 +66,8 @@ extern "C" {
+  * setjmp to _setjmpex instead. However, they are still defined in libmingwex.a,
+  * which gets linked automatically.
+  */
+-extern int __mingw_setjmp(jmp_buf);
+-extern void __attribute__((noreturn)) __mingw_longjmp(jmp_buf, int);
++int __mingw_setjmp(jmp_buf);
++void __attribute__((noreturn)) __mingw_longjmp(jmp_buf, int);
+ #define setjmp(env) __mingw_setjmp(env)
+ #define longjmp(env, val) __mingw_longjmp(env, val)
+ #elif defined(_WIN64)
 diff --git a/include/user/safe-syscall.h b/include/user/safe-syscall.h
-index ddceef12e2..195cedac04 100644
+index 195cedac04..27b71cdbd8 100644
 --- a/include/user/safe-syscall.h
 +++ b/include/user/safe-syscall.h
-@@ -91,7 +91,7 @@
-  *
-  * The basic setup is that we make the host syscall via a known
-  * section of host native assembly. If a signal occurs, our signal
-- * handler checks the interrupted host PC against the addresse of that
-+ * handler checks the interrupted host PC against the address of that
-  * known section. If the PC is before or at the address of the syscall
-  * instruction then we change the PC to point at a "return
-  * -QEMU_ERESTARTSYS" code path instead, and then exit the signal handler
-diff --git a/accel/tcg/tb-maint.c b/accel/tcg/tb-maint.c
-index c406b2f7b7..32ae8af61c 100644
---- a/accel/tcg/tb-maint.c
-+++ b/accel/tcg/tb-maint.c
-@@ -1,5 +1,5 @@
+@@ -126,8 +126,8 @@
+  */
+ 
+ /* The core part of this function is implemented in assembly */
+-extern long safe_syscall_base(int *pending, long number, ...);
+-extern long safe_syscall_set_errno_tail(int value);
++long safe_syscall_base(int *pending, long number, ...);
++long safe_syscall_set_errno_tail(int value);
+ 
+ /* These are defined by the safe-syscall.inc.S file */
+ extern char safe_syscall_start[];
+diff --git a/target/i386/sev.h b/target/i386/sev.h
+index 7b1528248a..e7499c95b1 100644
+--- a/target/i386/sev.h
++++ b/target/i386/sev.h
+@@ -46,9 +46,9 @@ bool sev_es_enabled(void);
+ #define sev_es_enabled() 0
+ #endif
+ 
+-extern uint32_t sev_get_cbit_position(void);
+-extern uint32_t sev_get_reduced_phys_bits(void);
+-extern bool sev_add_kernel_loader_hashes(SevKernelLoaderContext *ctx, Error **errp);
++uint32_t sev_get_cbit_position(void);
++uint32_t sev_get_reduced_phys_bits(void);
++bool sev_add_kernel_loader_hashes(SevKernelLoaderContext *ctx, Error **errp);
+ 
+ int sev_encrypt_flash(uint8_t *ptr, uint64_t len, Error **errp);
+ int sev_inject_launch_secret(const char *hdr, const char *secret,
+diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+index f81bd06f5e..6d6af1f2a8 100644
+--- a/target/mips/cpu.h
++++ b/target/mips/cpu.h
+@@ -1224,8 +1224,8 @@ void mips_cpu_list(void);
+ 
+ #define cpu_list mips_cpu_list
+ 
+-extern void cpu_wrdsp(uint32_t rs, uint32_t mask_num, CPUMIPSState *env);
+-extern uint32_t cpu_rddsp(uint32_t mask_num, CPUMIPSState *env);
++void cpu_wrdsp(uint32_t rs, uint32_t mask_num, CPUMIPSState *env);
++uint32_t cpu_rddsp(uint32_t mask_num, CPUMIPSState *env);
+ 
  /*
-- * Translation Block Maintaince
-+ * Translation Block Maintenance
-  *
-  *  Copyright (c) 2003 Fabrice Bellard
-  *
-diff --git a/contrib/plugins/cache.c b/contrib/plugins/cache.c
-index 5036213f1b..dea4a56c8d 100644
---- a/contrib/plugins/cache.c
-+++ b/contrib/plugins/cache.c
-@@ -350,7 +350,7 @@ static int in_cache(Cache *cache, uint64_t addr)
-  * @cache: The cache under simulation
-  * @addr: The address of the requested memory location
-  *
-- * Returns true if the requsted data is hit in the cache and false when missed.
-+ * Returns true if the requested data is hit in the cache and false when missed.
-  * The cache is updated on miss for the next access.
-  */
- static bool access_cache(Cache *cache, uint64_t addr)
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index 3614c3564c..850f7b2941 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -108,7 +108,7 @@ static void report_divergance(ExecState *us, ExecState *them)
+  * MMU modes definitions. We carefully match the indices with our
+diff --git a/tcg/tcg-internal.h b/tcg/tcg-internal.h
+index fbe62b31b8..40a69e6e6e 100644
+--- a/tcg/tcg-internal.h
++++ b/tcg/tcg-internal.h
+@@ -64,8 +64,8 @@ static inline TCGv_i32 TCGV_HIGH(TCGv_i64 t)
+     return temp_tcgv_i32(tcgv_i64_temp(t) + !HOST_BIG_ENDIAN);
+ }
+ #else
+-extern TCGv_i32 TCGV_LOW(TCGv_i64) QEMU_ERROR("32-bit code path is reachable");
+-extern TCGv_i32 TCGV_HIGH(TCGv_i64) QEMU_ERROR("32-bit code path is reachable");
++TCGv_i32 TCGV_LOW(TCGv_i64) QEMU_ERROR("32-bit code path is reachable");
++TCGv_i32 TCGV_HIGH(TCGv_i64) QEMU_ERROR("32-bit code path is reachable");
+ #endif
  
-     /*
-      * If we have diverged before did we get back on track or are we
--     * totally loosing it?
-+     * totally losing it?
-      */
-     if (divergence_log) {
-         DivergeState *last = (DivergeState *) divergence_log->data;
-diff --git a/linux-user/flatload.c b/linux-user/flatload.c
-index 8f5e9f489b..4331a11bf0 100644
---- a/linux-user/flatload.c
-+++ b/linux-user/flatload.c
-@@ -780,7 +780,7 @@ int load_flt_binary(struct linux_binprm *bprm, struct image_info *info)
-     /* Enforce final stack alignment of 16 bytes.  This is sufficient
-        for all current targets, and excess alignment is harmless.  */
-     stack_len = bprm->envc + bprm->argc + 2;
--    stack_len += flat_argvp_envp_on_stack() ? 2 : 0; /* arvg, argp */
-+    stack_len += flat_argvp_envp_on_stack() ? 2 : 0; /* argv, argp */
-     stack_len += 1; /* argc */
-     stack_len *= sizeof(abi_ulong);
-     sp -= (sp - stack_len) & 15;
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 9353268cc1..7ccd3affbe 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -1809,7 +1809,7 @@ static inline abi_long target_to_host_cmsg(struct msghdr *msgh,
-             uint32_t *dst = (uint32_t *)data;
- 
-             memcpy(dst, target_data, len);
--            /* fix endianess of first 32-bit word */
-+            /* fix endianness of first 32-bit word */
-             if (len >= sizeof(uint32_t)) {
-                 *dst = tswap32(*dst);
-             }
-@@ -2920,7 +2920,7 @@ get_timeout:
-                 unlock_user(results, optval_addr, 0);
-                 return ret;
-             }
--            /* swap host endianess to target endianess. */
-+            /* swap host endianness to target endianness. */
-             for (i = 0; i < (len / sizeof(uint32_t)); i++) {
-                 results[i] = tswap32(results[i]);
-             }
-diff --git a/semihosting/config.c b/semihosting/config.c
-index 89a1759687..8ca569735d 100644
---- a/semihosting/config.c
-+++ b/semihosting/config.c
-@@ -8,7 +8,7 @@
-  * targets that support it. Architecture specific handling is handled
-  * in target/HW/HW-semi.c
-  *
-- * Semihosting is sightly strange in that it is also supported by some
-+ * Semihosting is slightly strange in that it is also supported by some
-  * linux-user targets. However in that use case no configuration of
-  * the outputs and command lines is supported.
-  *
-diff --git a/semihosting/syscalls.c b/semihosting/syscalls.c
-index 68899ebb1c..d27574a1e2 100644
---- a/semihosting/syscalls.c
-+++ b/semihosting/syscalls.c
-@@ -720,7 +720,7 @@ void semihost_sys_read_gf(CPUState *cs, gdb_syscall_complete_cb complete,
-                           GuestFD *gf, target_ulong buf, target_ulong len)
- {
-     /*
--     * Bound length for 64-bit guests on 32-bit hosts, not overlowing ssize_t.
-+     * Bound length for 64-bit guests on 32-bit hosts, not overflowing ssize_t.
-      * Note the Linux kernel does this with MAX_RW_COUNT, so it's not a bad
-      * idea to do this unconditionally.
-      */
-@@ -761,7 +761,7 @@ void semihost_sys_write_gf(CPUState *cs, gdb_syscall_complete_cb complete,
-                            GuestFD *gf, target_ulong buf, target_ulong len)
- {
-     /*
--     * Bound length for 64-bit guests on 32-bit hosts, not overlowing ssize_t.
-+     * Bound length for 64-bit guests on 32-bit hosts, not overflowing ssize_t.
-      * Note the Linux kernel does this with MAX_RW_COUNT, so it's not a bad
-      * idea to do this unconditionally.
-      */
-diff --git a/softmmu/icount.c b/softmmu/icount.c
-index a5cef9c60a..144e24829c 100644
---- a/softmmu/icount.c
-+++ b/softmmu/icount.c
-@@ -325,7 +325,7 @@ void icount_start_warp_timer(void)
-              * vCPU is sleeping and warp can't be started.
-              * It is probably a race condition: notification sent
-              * to vCPU was processed in advance and vCPU went to sleep.
--             * Therefore we have to wake it up for doing someting.
-+             * Therefore we have to wake it up for doing something.
-              */
-             if (replay_has_event()) {
-                 qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
-diff --git a/softmmu/ioport.c b/softmmu/ioport.c
-index b66e0a5a8e..1824aa808c 100644
---- a/softmmu/ioport.c
-+++ b/softmmu/ioport.c
-@@ -22,7 +22,7 @@
-  * THE SOFTWARE.
-  */
- /*
-- * splitted out ioport related stuffs from vl.c.
-+ * split out ioport related stuffs from vl.c.
+ static inline TCGv_i64 TCGV128_LOW(TCGv_i128 t)
+diff --git a/include/exec/memory_ldst.h.inc b/include/exec/memory_ldst.h.inc
+index 7c3a641f7e..92ad74e956 100644
+--- a/include/exec/memory_ldst.h.inc
++++ b/include/exec/memory_ldst.h.inc
+@@ -20,48 +20,48 @@
   */
  
- #include "qemu/osdep.h"
+ #ifdef TARGET_ENDIANNESS
+-extern uint16_t glue(address_space_lduw, SUFFIX)(ARG1_DECL,
++uint16_t glue(address_space_lduw, SUFFIX)(ARG1_DECL,
+     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
+-extern uint32_t glue(address_space_ldl, SUFFIX)(ARG1_DECL,
++uint32_t glue(address_space_ldl, SUFFIX)(ARG1_DECL,
+     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
+-extern uint64_t glue(address_space_ldq, SUFFIX)(ARG1_DECL,
++uint64_t glue(address_space_ldq, SUFFIX)(ARG1_DECL,
+     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stl_notdirty, SUFFIX)(ARG1_DECL,
++void glue(address_space_stl_notdirty, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint32_t val, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stw, SUFFIX)(ARG1_DECL,
++void glue(address_space_stw, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint16_t val, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stl, SUFFIX)(ARG1_DECL,
++void glue(address_space_stl, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint32_t val, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stq, SUFFIX)(ARG1_DECL,
++void glue(address_space_stq, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint64_t val, MemTxAttrs attrs, MemTxResult *result);
+ #else
+-extern uint8_t glue(address_space_ldub, SUFFIX)(ARG1_DECL,
++uint8_t glue(address_space_ldub, SUFFIX)(ARG1_DECL,
+     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
+-extern uint16_t glue(address_space_lduw_le, SUFFIX)(ARG1_DECL,
++uint16_t glue(address_space_lduw_le, SUFFIX)(ARG1_DECL,
+     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
+-extern uint16_t glue(address_space_lduw_be, SUFFIX)(ARG1_DECL,
++uint16_t glue(address_space_lduw_be, SUFFIX)(ARG1_DECL,
+     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
+-extern uint32_t glue(address_space_ldl_le, SUFFIX)(ARG1_DECL,
++uint32_t glue(address_space_ldl_le, SUFFIX)(ARG1_DECL,
+     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
+-extern uint32_t glue(address_space_ldl_be, SUFFIX)(ARG1_DECL,
++uint32_t glue(address_space_ldl_be, SUFFIX)(ARG1_DECL,
+     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
+-extern uint64_t glue(address_space_ldq_le, SUFFIX)(ARG1_DECL,
++uint64_t glue(address_space_ldq_le, SUFFIX)(ARG1_DECL,
+     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
+-extern uint64_t glue(address_space_ldq_be, SUFFIX)(ARG1_DECL,
++uint64_t glue(address_space_ldq_be, SUFFIX)(ARG1_DECL,
+     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stb, SUFFIX)(ARG1_DECL,
++void glue(address_space_stb, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint8_t val, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stw_le, SUFFIX)(ARG1_DECL,
++void glue(address_space_stw_le, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint16_t val, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stw_be, SUFFIX)(ARG1_DECL,
++void glue(address_space_stw_be, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint16_t val, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stl_le, SUFFIX)(ARG1_DECL,
++void glue(address_space_stl_le, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint32_t val, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stl_be, SUFFIX)(ARG1_DECL,
++void glue(address_space_stl_be, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint32_t val, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stq_le, SUFFIX)(ARG1_DECL,
++void glue(address_space_stq_le, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint64_t val, MemTxAttrs attrs, MemTxResult *result);
+-extern void glue(address_space_stq_be, SUFFIX)(ARG1_DECL,
++void glue(address_space_stq_be, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint64_t val, MemTxAttrs attrs, MemTxResult *result);
+ #endif
+ 
 -- 
 2.41.0

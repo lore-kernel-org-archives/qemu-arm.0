@@ -1,419 +1,139 @@
-Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5070758ejc;
-        Thu, 31 Aug 2023 05:57:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEuFI0XzJuQvpu16MD4eb0eRe3LDNOw9CmI4jRu/57kdIRg3Ak50MyW6DdrL9TgVMX669aB
-X-Received: by 2002:a05:6870:171a:b0:1b3:8cfb:78c5 with SMTP id h26-20020a056870171a00b001b38cfb78c5mr6012480oae.34.1693486635769;
-        Thu, 31 Aug 2023 05:57:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693486635; cv=none;
+Received: by 2002:a17:907:76f8:b0:9a1:fa4e:495e with SMTP id kg24csp5073065ejc;
+        Thu, 31 Aug 2023 06:00:37 -0700 (PDT)
+X-Received: by 2002:a5d:5502:0:b0:31c:84e9:20fd with SMTP id b2-20020a5d5502000000b0031c84e920fdmr4080794wrv.13.1693486837237;
+        Thu, 31 Aug 2023 06:00:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693486837; cv=none;
         d=google.com; s=arc-20160816;
-        b=zeAufr9GEHYZ+BpzMK+/BJnoP9ASTqYUL9hpe1YaDN3q01CoSJO/IH6RQQiVZmOuTF
-         lUhnRHWHD/ZDzprXCdmfcLzlhxSXtHL75VL7+sA0j9AUiorzP9bECdSEU90vAbyl0jNI
-         TaSZbaalzDyAOtnj0ft7tlqys3GPxYRyfdp3wjEJ4Uj/SrwZDV7e0GA0btkvmNyyHA4q
-         oViQTnhcNc2UWfoQ5lR+98YR6p96/FRoeSVE2+6YDI8relake9ckWZ1CvXKqG4hoVxiS
-         1mYOlTHhNpIb2jPWCuaQpRpOtyw7IKdoWufl6/BmvkqLJwgErlDsWC651HcFunPuUiKL
-         PSMQ==
+        b=rU72H+o4iDuYu1l+1uKCnM1awkQd81RYNhnh2rzuvY9b4nS+MNIDyQ5AMcZVHEkeei
+         h/QhJ+CiL1qgQhi5w1L9FL494LWWwOhsMfVuN2y/hqelEb8905Fb8dfcFYBvU+dH7RdB
+         oz1Rwnc08PQ8lEHUU8JixiHSQD2/QQpWbFs+MqmjjToEGF1IN6Ixj6PQfkKR5cVv3TaG
+         6fvWgsOzFWQ0xIh2b3aZOwDpzbZRYruDxAR4OVOjNc75POa+Fzq62bfmyvP2w6K/NDpI
+         H/qf6L1oGNoImGhEPTSZHQQpQe2QJeMzD1SM9sN5yOgv7XsEb5Qs4VSWong7YwyhjAwZ
+         j3Ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+jnFtIYkbkrfE0MLO5x3DuHTjGy4+uBY4BoKz1fGHss=;
-        fh=kUkF4K65t53WJTaUFO6gEMuzYx1zcxFjL2/ZiCndy48=;
-        b=UfD4XLH0/K+OTKC4biwnNbjlqqXGIYeQtI3/MrHkBMEA4IoZ8ReH5eGwbZGnEPWUT/
-         Rlr46ITSa0p6gdzAxQxASYIkig+Z2xrqtxqVrJywgPZH5OmD+o7xf02B6Kw/1RzGDAAh
-         LClOky615pxG1LaAnYI+3gw4q28rXFMjFUEFEZsXs0gQfg6Sn0snRl78e0xkIdWU1B9g
-         KOouQ+O8woLCjdW9jPz92LUEIa7go1ic71yzObW1j18wg8et20NadCtvvmrZ4/+cAQDT
-         ipbuAV9hWPVAxG+doQECSn9pblndi2tz4y+MTR1X6ngoCvzfQgpBi2hcy7vuMUjf26jq
-         kBwg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=uHTYP96hxROQBfiRHrUY1wrTC25GMnf+igTYqzxdbDE=;
+        fh=zn6o0f0gv5ZkC2kYOnqwo2ZvBbLYdyI8P1mhTaqTiyI=;
+        b=0ZpWDjM//SUEnkNif0mcfo0m4lkHqGEZG02EVefC/GWcQZnYpJmCxyn/Y+q+uAaxeY
+         tA4Di90xrTEgsrdFqox0ij8jcAYiBfALBo6XHY8EAGChWerI+xmYyjWUM8/nAZhGt2LG
+         u3db6XhIHgidNvanZZKyGyIiQTh8K50ytqxFGXUmGz8Ai/630EUQ7DKgSex5yB46jM3f
+         O+pVvhDgkstFAky++RF90eHrStFVgOROKGSNGafpKqc9Br7fB2d2LlynoccMXDctH9Ov
+         kEYAfVgq8KppUfLUA0zHeGKuA6pLQbSazFnZpLoMA0t9/SbZoe/8tkrytrRlbRjJvTFd
+         vDhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YeelZHF5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="XSd/++v6";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17-20020a0cf291000000b0064f4d3bc784si801329qvl.144.2023.08.31.05.57.15
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m12-20020adfa3cc000000b003177b461658sor614098wrb.1.2023.08.31.06.00.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 05:57:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 31 Aug 2023 06:00:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YeelZHF5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="XSd/++v6";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qbhEK-0002Do-Pj; Thu, 31 Aug 2023 08:57:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhEJ-0002DI-SP
- for qemu-arm@nongnu.org; Thu, 31 Aug 2023 08:56:59 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qbhEC-000526-Kn
- for qemu-arm@nongnu.org; Thu, 31 Aug 2023 08:56:59 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-401f68602a8so7187535e9.3
- for <qemu-arm@nongnu.org>; Thu, 31 Aug 2023 05:56:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693486608; x=1694091408; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=+jnFtIYkbkrfE0MLO5x3DuHTjGy4+uBY4BoKz1fGHss=;
- b=YeelZHF5na2KPnISP0Q/GYuza52rq0HA3Jsyi1VyJ9lJhnmq7ebNewSvywlCs5tZKD
- Ko/Y0UcSEjuUhsbgcDFTqBVTTQjg/l6YR1+quxH4XQ2pWrNoUiUb/vPblxU4Eb0YMTaO
- WEXtKuC45kC5HMd9tuYNMNJvwXp1SKKsdcHmMGfBvOyhYblFKpMZcTS56/sNPz9As6mS
- 8MK0iNZmGZZRf409roaRYNYnXgqyP1xkciC9Av+fcGwjy1rHxrPAGKaNKBDB9F9K73Ja
- A4IXeSmzlL9zXwImlgQsFLDhLvtxrFhesvFtZ4pqItnpLsCY1qRZ6OJP3UfUGsynSG0y
- C56Q==
+        d=linaro.org; s=google; t=1693486837; x=1694091637; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=uHTYP96hxROQBfiRHrUY1wrTC25GMnf+igTYqzxdbDE=;
+        b=XSd/++v6QZt8QNr57kbnuJt4fAvJA/8gbY0Nho7Pxv2kEvcZm8BEK3ybvJjZddKogh
+         YkNev9lRb++LeJP8l26dwh15Hlj0CII9VC6cvk0TI4eC+XpDawW8efx5Y2CD+FA0vjf/
+         SRZ4D0xjGyhCZAU8hUWCMtavh9jxgaMG4Z+OgJw2fO9ngNTP8so3IHK/LAuT9ocxXdNa
+         hAij4ksfFgE1DnIr0EA6a0EGi9aKYL68IjonXSz8bO5mezEAzg6edNy8o0WeNOQEmv5t
+         qunC8kOASw94XjqW4A/DG49JVALvzxePkBweNZX93yS5r3qNR/8gEiWRvzgjX77yZxyL
+         d6/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693486608; x=1694091408;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+jnFtIYkbkrfE0MLO5x3DuHTjGy4+uBY4BoKz1fGHss=;
- b=D21buYD1Dm+3ZUk9DUftS//Fej75yPlk4b469aS5TAPB5/zVrO7I254f2+GeJ/eEh/
- A+tnu+uYaQeOMhWTL+r++ZEU1RyWH+EoXA6zV7yYiRd6CXVfYnczrDXAB7y9oo7r7FVu
- tLJjmm0fegkBuT1iX4oalqDAoI4kXVC6GwHxYtNKkD1GbXMOJUzNtfrsTbofNBY3SDAZ
- dpl8QMvAVlJqY37Qp0+FyUSVIod6DKYrr8AWVbRHHSGeFMqt85fYyPyhfisw2HFaEjV/
- o3zp5lzwRrW+VFpZXsvnp2t6lQNOrGUaeBHMqKf04pXlEXd0M4VyOJ/sDIKJyYrpHYl5
- heEA==
-X-Gm-Message-State: AOJu0YxdiN/zVkVvMEp7gx6WNbmfxFX+n6u0H2WP3bLKNTv6zc05MadQ
- 9jx7GFPRBvfTN8UDgraVu7HsVg==
-X-Received: by 2002:a7b:c394:0:b0:401:b307:7ba5 with SMTP id
- s20-20020a7bc394000000b00401b3077ba5mr4237124wmj.6.1693486608364; 
- Thu, 31 Aug 2023 05:56:48 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1693486837; x=1694091637;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=uHTYP96hxROQBfiRHrUY1wrTC25GMnf+igTYqzxdbDE=;
+        b=QGI6DHyCQ9A2xtHLJVsyd1ACEc4uF7enlw1KGlbwucKnXwNpXdjNqbjVzH4g82cKOE
+         TacSwfSS/gUYMDhArjqTfA1MG7qTLjojVbT/XYvEXFz+DUzF8VLghgpCzRzEA5j0yiQj
+         iQiRNzzlC/eTdPnAHZoBIKzYURHIvu2sjdZGXQ4o32zFtjCJLNqalhBT3FpWLwdbz2nN
+         ZXJhT5Q+vHEpL8BGmakhqHUQFIEskqo4lbLWcdt8lj4OkC8taEM0lUDm41K0Eow/eKNe
+         sTNTgQQQrcHLl7b51s2UCju/62hJe0110Up8CBym7CKAuiMu/dZM2zWci0P6oJ4GjX+1
+         yTKA==
+X-Gm-Message-State: AOJu0YxXSptXpxXnhBlsRJ4+n1JULr73iBe2q1eTlbP4RHCzjCv1ArKx
+	1iZ/dl9BP5DxRwo2xz6hTsR7ooZZ
+X-Google-Smtp-Source: AGHT+IHSfjXXbD7/9ei3HXX1kSg6gDM000wd3/dTlZv3LZYaKRVUta2cW+0Bh9erRMeVWfzJCTAoYw==
+X-Received: by 2002:adf:f5c6:0:b0:314:3b02:a8a8 with SMTP id k6-20020adff5c6000000b003143b02a8a8mr3761369wrp.55.1693486836365;
+        Thu, 31 Aug 2023 06:00:36 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.187.199.245])
- by smtp.gmail.com with ESMTPSA id
- y11-20020a05600c20cb00b003fc02e8ea68sm5032034wmm.13.2023.08.31.05.56.47
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 31 Aug 2023 05:56:48 -0700 (PDT)
+        by smtp.gmail.com with ESMTPSA id r5-20020adfe685000000b003143867d2ebsm2189041wrm.63.2023.08.31.06.00.34
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 31 Aug 2023 06:00:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 00/41] Misc patches for 2023-08-31
-Date: Thu, 31 Aug 2023 14:56:02 +0200
-Message-ID: <20230831125646.67855-1-philmd@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	qemu-s390x@nongnu.org,
+	qemu-ppc@nongnu.org,
+	qemu-riscv@nongnu.org,
+	qemu-block@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Juan Quintela <quintela@redhat.com>
+Subject: [PULL 38/41] docs/style: permit inline loop variables
+Date: Thu, 31 Aug 2023 14:56:40 +0200
+Message-ID: <20230831125646.67855-39-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230831125646.67855-1-philmd@linaro.org>
+References: <20230831125646.67855-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: y6Lq1C0eraIX
+X-TUID: 1P5iFz1JUbO7
 
-The following changes since commit 156618d9ea67f2f2e31d9dedd97f2dcccbe6808c:
+From: Alex Bennée <alex.bennee@linaro.org>
 
-  Merge tag 'block-pull-request' of https://gitlab.com/stefanha/qemu into staging (2023-08-30 09:20:27 -0400)
+I've already wasted enough of my time debugging aliased variables in
+deeply nested loops. While not scattering variable declarations around
+is a good aim I think we can make an exception for stuff used inside a
+loop.
 
-are available in the Git repository at:
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Acked-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20230822155004.1158931-1-alex.bennee@linaro.org>
+---
+ docs/devel/style.rst | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-  https://github.com/philmd/qemu.git tags/misc-20230831
-
-for you to fetch changes up to b4283914d64b2486c1fc1938280ee7041a569159:
-
-  tests/tcg/aarch64: Rename bti-crt.inc.c -> bti-crt.c.inc (2023-08-31 14:51:12 +0200)
-
-----------------------------------------------------------------
-Misc patches queue
-
-Overall cleanups:
-- Do not declare function prototypes using 'extern' keyword
-- Remove unmaintained HAX accelerator
-- Have FEWatchFunc handlers return G_SOURCE_CONTINUE/REMOVE instead of boolean
-- Avoid modifying QOM class internals from instance in pmbus_device
-- Avoid variable-length array in xhci_get_port_bandwidth
-- Remove unuseful kvmclock_create() stub
-- Style: permit inline loop variables
-- Various header cleanups
-- Various spelling fixes
-
-Build fixes:
-- Fix MESONINTROSPECT parsing
-- Only define OS_OBJECT_USE_OBJC with gcc
-
-----------------------------------------------------------------
-
-Akihiko Odaki (1):
-  meson: Fix MESONINTROSPECT parsing
-
-Alex Bennée (1):
-  docs/style: permit inline loop variables
-
-Alexander Graf (1):
-  build: Only define OS_OBJECT_USE_OBJC with gcc
-
-Michael Tokarev (9):
-  accel/tcg: spelling fixes
-  hw/i2c: spelling fixes
-  hw/ide: spelling fixes
-  hw/display: spelling fixes
-  hw/mips: spelling fixes
-  hw/sd: spelling fixes
-  hw/usb: spelling fixes
-  util: spelling fixes
-  ui: spelling fixes
-
-Peter Maydell (1):
-  hw/usb/hcd-xhci: Avoid variable-length array in
-    xhci_get_port_bandwidth()
-
-Philippe Mathieu-Daudé (28):
-  accel: Remove HAX accelerator
-  qemu/uri: Use QueryParams type definition
-  bulk: Do not declare function prototypes using 'extern' keyword
-  hw/net/i82596: Include missing 'exec/address-spaces.h' header
-  hw/dma/etraxfs: Include missing 'exec/memory.h' header
-  exec/address-spaces.h: Remove unuseful 'exec/memory.h' include
-  target/ppc/pmu: Include missing 'qemu/timer.h' header
-  target/riscv/pmu: Restrict 'qemu/log.h' include to source
-  target/translate: Include missing 'exec/cpu_ldst.h' header
-  target/translate: Remove unnecessary 'exec/cpu_ldst.h' header
-  target/translate: Restrict 'exec/cpu_ldst.h' to user emulation
-  target/helpers: Remove unnecessary 'exec/cpu_ldst.h' header
-  target/helpers: Remove unnecessary 'qemu/main-loop.h' header
-  target/mips: Remove unused headers in lcsr_helper.c
-  target/xtensa: Include missing 'qemu/atomic.h' header
-  qemu/processor: Remove unused 'qemu/atomic.h' header
-  exec/translation-block: Clean up includes
-  chardev/char-fe: Document FEWatchFunc typedef
-  hw/char: Have FEWatchFunc handlers return G_SOURCE_CONTINUE/REMOVE
-  hw/char/pl011: Restrict MemoryRegionOps implementation access sizes
-  hw/char/pl011: Display register name in trace events
-  hw/char/pl011: Remove duplicated PL011_INT_[RT]X definitions
-  hw/char/pl011: Replace magic values by register field definitions
-  hw/i2c/pmbus_device: Fix modifying QOM class internals from instance
-  hw/i386: Remove unuseful kvmclock_create() stub
-  hw/i386: Rename 'hw/kvm/clock.h' -> 'hw/i386/kvm/clock.h'
-  util/fifo8: Fix typo in fifo8_push_all() description
-  tests/tcg/aarch64: Rename bti-crt.inc.c -> bti-crt.c.inc
-
- MAINTAINERS                                   |    8 -
- docs/about/build-platforms.rst                |    2 +-
- docs/about/deprecated.rst                     |    6 -
- docs/about/index.rst                          |    2 +-
- docs/about/removed-features.rst               |   11 +-
- docs/devel/style.rst                          |    9 +-
- docs/system/index.rst                         |    2 +-
- docs/system/introduction.rst                  |    3 -
- meson.build                                   |   11 +-
- bsd-user/bsd-file.h                           |    6 +-
- crypto/hmacpriv.h                             |   13 +-
- {include/hw => hw/i386}/kvm/clock.h           |   14 +-
- hw/ide/ahci_internal.h                        |    4 +-
- hw/usb/quirks.h                               |    2 +-
- hw/xen/xen_pt.h                               |    8 +-
- include/chardev/char-fe.h                     |   14 +
- include/crypto/secret_common.h                |   14 +-
- include/elf.h                                 |    4 +-
- include/exec/address-spaces.h                 |    2 -
- include/exec/exec-all.h                       |    2 +-
- include/exec/page-vary.h                      |    4 +-
- include/exec/poison.h                         |    1 -
- include/exec/translation-block.h              |    6 +-
- include/hw/core/cpu.h                         |    2 +-
- include/hw/core/tcg-cpu-ops.h                 |    2 +-
- include/hw/i2c/npcm7xx_smbus.h                |    2 +-
- include/hw/misc/aspeed_scu.h                  |    2 +-
- include/hw/misc/auxbus.h                      |    2 +-
- include/hw/nvram/npcm7xx_otp.h                |    4 +-
- include/hw/qdev-core.h                        |    4 +-
- include/io/channel-socket.h                   |    4 +-
- include/io/task.h                             |    2 +-
- include/qemu/crc-ccitt.h                      |    4 +-
- include/qemu/fifo8.h                          |    2 +-
- include/qemu/iova-tree.h                      |    4 +-
- include/qemu/osdep.h                          |    4 +-
- include/qemu/processor.h                      |    2 -
- include/qemu/rcu.h                            |   14 +-
- include/qemu/sys_membarrier.h                 |    4 +-
- include/qemu/uri.h                            |    6 +-
- include/qemu/yank.h                           |    2 +-
- include/sysemu/accel-blocker.h                |   14 +-
- include/sysemu/hax.h                          |   49 -
- include/sysemu/hw_accel.h                     |    1 -
- include/sysemu/os-win32.h                     |    4 +-
- include/tcg/helper-info.h                     |    2 +-
- include/tcg/tcg.h                             |    4 +-
- include/ui/kbd-state.h                        |    2 +-
- include/ui/spice-display.h                    |    2 +-
- include/user/safe-syscall.h                   |    6 +-
- target/i386/hax/hax-accel-ops.h               |   31 -
- target/i386/hax/hax-i386.h                    |   98 --
- target/i386/hax/hax-interface.h               |  369 ------
- target/i386/hax/hax-posix.h                   |   61 -
- target/i386/hax/hax-windows.h                 |   88 --
- target/i386/sev.h                             |    6 +-
- target/mips/cpu.h                             |    4 +-
- target/riscv/pmu.h                            |    3 -
- tcg/tcg-internal.h                            |    4 +-
- ui/keymaps.h                                  |    2 +-
- ui/vnc-enc-zywrle.h                           |    4 +-
- include/exec/memory_ldst.h.inc                |   42 +-
- accel/stubs/hax-stub.c                        |   24 -
- accel/tcg/tb-maint.c                          |    2 +-
- contrib/plugins/cache.c                       |    2 +-
- contrib/plugins/lockstep.c                    |    2 +-
- hw/char/cadence_uart.c                        |    8 +-
- hw/char/cmsdk-apb-uart.c                      |    6 +-
- hw/char/ibex_uart.c                           |    8 +-
- hw/char/nrf51_uart.c                          |    4 +-
- hw/char/pl011.c                               |   58 +-
- hw/char/serial.c                              |    2 +-
- hw/char/virtio-console.c                      |    2 +-
- hw/display/bochs-display.c                    |    2 +-
- hw/display/qxl.c                              |    2 +-
- hw/display/ssd0303.c                          |    2 +-
- hw/display/ssd0323.c                          |    2 +-
- hw/display/xlnx_dp.c                          |    2 +-
- hw/dma/etraxfs_dma.c                          |    1 +
- hw/i2c/pm_smbus.c                             |    2 +-
- hw/i2c/pmbus_device.c                         |   19 +-
- hw/i2c/smbus_slave.c                          |    2 +-
- hw/i386/kvm/clock.c                           |    6 +-
- hw/i386/microvm.c                             |    6 +-
- hw/i386/pc_piix.c                             |    4 +-
- hw/i386/pc_q35.c                              |    6 +-
- hw/ide/cmd646.c                               |    2 +-
- hw/ide/core.c                                 |    2 +-
- hw/intc/apic_common.c                         |    3 +-
- hw/mips/malta.c                               |    2 +-
- hw/net/i82596.c                               |    1 +
- hw/sd/sd.c                                    |    2 +-
- hw/sd/sdhci.c                                 |    2 +-
- hw/sensor/isl_pmbus_vr.c                      |    2 +-
- hw/sensor/max34451.c                          |    2 +-
- hw/usb/ccid-card-emulated.c                   |    2 +-
- hw/usb/hcd-ehci.c                             |    6 +-
- hw/usb/hcd-ohci.c                             |    2 +-
- hw/usb/hcd-xhci.c                             |   10 +-
- hw/usb/redirect.c                             |    4 +-
- hw/usb/xen-usb.c                              |    2 +-
- hw/xtensa/pic_cpu.c                           |    1 +
- linux-user/flatload.c                         |    2 +-
- linux-user/syscall.c                          |    4 +-
- monitor/monitor.c                             |    2 +-
- net/vhost-user.c                              |    2 +-
- semihosting/config.c                          |    2 +-
- semihosting/syscalls.c                        |    4 +-
- softmmu/cpus.c                                |    6 -
- softmmu/icount.c                              |    2 +-
- softmmu/ioport.c                              |    2 +-
- softmmu/vl.c                                  |    6 -
- target/alpha/translate.c                      |    1 -
- target/avr/helper.c                           |    1 +
- target/cris/op_helper.c                       |    1 -
- target/hexagon/translate.c                    |    1 -
- target/hppa/translate.c                       |    1 -
- target/i386/hax/hax-accel-ops.c               |  105 --
- target/i386/hax/hax-all.c                     | 1141 -----------------
- target/i386/hax/hax-mem.c                     |  323 -----
- target/i386/hax/hax-posix.c                   |  305 -----
- target/i386/hax/hax-windows.c                 |  485 -------
- target/i386/tcg/fpu_helper.c                  |    1 +
- target/i386/tcg/sysemu/excp_helper.c          |    1 +
- target/loongarch/cpu.c                        |    1 +
- target/loongarch/iocsr_helper.c               |    1 -
- target/loongarch/op_helper.c                  |    1 -
- target/m68k/translate.c                       |    1 -
- target/microblaze/translate.c                 |    1 -
- target/mips/tcg/fpu_helper.c                  |    1 -
- target/mips/tcg/ldst_helper.c                 |    1 +
- target/mips/tcg/msa_helper.c                  |   13 +-
- target/mips/tcg/mxu_translate.c               |    6 +-
- target/mips/tcg/sysemu/lcsr_helper.c          |    5 -
- target/nios2/op_helper.c                      |    1 -
- target/nios2/translate.c                      |    1 -
- target/openrisc/translate.c                   |    1 -
- target/ppc/int_helper.c                       |    1 -
- target/ppc/machine.c                          |    1 -
- target/ppc/mem_helper.c                       |    1 -
- target/ppc/mmu_common.c                       |    1 -
- target/ppc/mmu_helper.c                       |    1 -
- target/ppc/power8-pmu.c                       |    2 +-
- target/ppc/translate.c                        |    2 -
- target/riscv/csr.c                            |    1 -
- target/riscv/m128_helper.c                    |    1 -
- target/riscv/op_helper.c                      |    2 +-
- target/riscv/pmu.c                            |    1 +
- target/riscv/vector_helper.c                  |    1 +
- target/s390x/tcg/crypto_helper.c              |    1 -
- target/s390x/tcg/excp_helper.c                |    1 -
- target/s390x/tcg/fpu_helper.c                 |    1 -
- target/s390x/tcg/misc_helper.c                |    1 -
- target/sh4/translate.c                        |    1 -
- target/sparc/translate.c                      |    1 -
- target/xtensa/dbg_helper.c                    |    1 -
- target/xtensa/exc_helper.c                    |    1 +
- target/xtensa/fpu_helper.c                    |    1 -
- target/xtensa/mmu_helper.c                    |    2 -
- target/xtensa/op_helper.c                     |    3 +-
- target/xtensa/win_helper.c                    |    1 -
- tests/tcg/aarch64/bti-1.c                     |    2 +-
- tests/tcg/aarch64/bti-3.c                     |    2 +-
- ui/sdl2-2d.c                                  |    2 +-
- ui/sdl2.c                                     |    2 +-
- util/cpuinfo-aarch64.c                        |    4 +-
- util/cpuinfo-i386.c                           |    4 +-
- util/cpuinfo-ppc.c                            |    2 +-
- util/main-loop.c                              |    2 +-
- util/oslib-posix.c                            |    2 +-
- util/qdist.c                                  |    2 +-
- util/qemu-sockets.c                           |    2 +-
- util/rcu.c                                    |    2 +-
- target/mips/cpu-defs.c.inc                    |    2 +-
- .../aarch64/{bti-crt.inc.c => bti-crt.c.inc}  |    0
- ui/vnc-enc-zrle.c.inc                         |    2 +-
- accel/Kconfig                                 |    3 -
- accel/stubs/meson.build                       |    1 -
- hw/char/trace-events                          |    4 +-
- hw/usb/trace-events                           |    2 +-
- meson_options.txt                             |    2 -
- qemu-options.hx                               |    8 +-
- .../ci/org.centos/stream/8/x86_64/configure   |    1 -
- scripts/meson-buildoptions.sh                 |    3 -
- scripts/symlink-install-tree.py               |    3 +-
- target/i386/hax/meson.build                   |    7 -
- target/i386/meson.build                       |    1 -
- ui/cocoa.m                                    |    2 +-
- 188 files changed, 317 insertions(+), 3443 deletions(-)
- rename {include/hw => hw/i386}/kvm/clock.h (65%)
- delete mode 100644 include/sysemu/hax.h
- delete mode 100644 target/i386/hax/hax-accel-ops.h
- delete mode 100644 target/i386/hax/hax-i386.h
- delete mode 100644 target/i386/hax/hax-interface.h
- delete mode 100644 target/i386/hax/hax-posix.h
- delete mode 100644 target/i386/hax/hax-windows.h
- delete mode 100644 accel/stubs/hax-stub.c
- delete mode 100644 target/i386/hax/hax-accel-ops.c
- delete mode 100644 target/i386/hax/hax-all.c
- delete mode 100644 target/i386/hax/hax-mem.c
- delete mode 100644 target/i386/hax/hax-posix.c
- delete mode 100644 target/i386/hax/hax-windows.c
- rename tests/tcg/aarch64/{bti-crt.inc.c => bti-crt.c.inc} (100%)
- delete mode 100644 target/i386/hax/meson.build
-
+diff --git a/docs/devel/style.rst b/docs/devel/style.rst
+index 3cfcdeb9cd..2f68b50079 100644
+--- a/docs/devel/style.rst
++++ b/docs/devel/style.rst
+@@ -204,7 +204,14 @@ Declarations
+ 
+ Mixed declarations (interleaving statements and declarations within
+ blocks) are generally not allowed; declarations should be at the beginning
+-of blocks.
++of blocks. To avoid accidental re-use it is permissible to declare
++loop variables inside for loops:
++
++.. code-block:: c
++
++    for (int i = 0; i < ARRAY_SIZE(thing); i++) {
++        /* do something loopy */
++    }
+ 
+ Every now and then, an exception is made for declarations inside a
+ #ifdef or #ifndef block: if the code looks nicer, such declarations can
 -- 
 2.41.0
-

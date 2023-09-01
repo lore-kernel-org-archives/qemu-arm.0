@@ -1,206 +1,164 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp495969ejc;
-        Fri, 1 Sep 2023 02:43:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGs8GwvrycMsBSnSuSPt08vNAxrUqhyml15FZSa2boxO3x2RYBB4mlZK10olu3uvWaRCyp9
-X-Received: by 2002:a05:622a:42:b0:3f9:d1c3:cc45 with SMTP id y2-20020a05622a004200b003f9d1c3cc45mr6938672qtw.28.1693561419460;
-        Fri, 01 Sep 2023 02:43:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693561419; cv=none;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp495998ejc;
+        Fri, 1 Sep 2023 02:43:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEjycr1Bsv/xEBdpm9upVu6+yDu1TB1omjk/vhD3CmL32utBiWyb3n/2nxVCFcyB2aj99le
+X-Received: by 2002:a0c:b295:0:b0:64f:5b21:f162 with SMTP id r21-20020a0cb295000000b0064f5b21f162mr1459102qve.61.1693561421278;
+        Fri, 01 Sep 2023 02:43:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693561421; cv=none;
         d=google.com; s=arc-20160816;
-        b=vYEdBJKDdlRl0kkGFhl4IyHnTUX3laskxpVwdWYMu2knimO2RgRhyyeJeAQdc6dyNN
-         A0NDntFDgV4cMxZ9xUJxW+zMDH7Z01wKa4q1hWOhFPcriWgBAu0ZJwjlrxrQDrY/rc6T
-         WkzNbm4cJX7vCaCNulT8WGmZ5oArAktIXzpL4mh9+qTfFL6m5mfx/LAgNqG5iHS7/h3E
-         lcLnTSe81V2cZgxzhtFQNUGT28yG49MfW5bY+ZqA9ZT9kjfxr9w6DesRWKwKELx0C17U
-         vUWXA4QpeZS12V4qqnABMIbaDS9/fQ/4esgDdNbzVzZ1At1JEEek4vD7NyJOCKIzSVwn
-         whmw==
+        b=pxv2WUr2fgiGnJTeLvfrmWCSgcxdpCS7t1bKQbPsghkE43X/4MZmMh3iAORp2sENEi
+         1Rt8g44nTu7NY2LLJnmA0sNhr3rSWohBDXfBF5r6d7RGTuvziBrCYsGnKK8svOGUUuHO
+         +pljlB6Ou7DWAps+MkCSs2MJ+DNEJhVfPZ5tZkWyNxF2KJ6+8kYbzrrbogPjG0GcKEQX
+         fK6NdsbDA9aey313syPL1g4/VlVWPiMTMyr7JtnwervkloLftkb7vhZYXowB3CnJPO4P
+         sza1ijC/QxlixPceTlqgpnVMkM3hKiCFAPuee477Xc8DG/ODwhve07VlwOM2t7sLmKRd
+         AFiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=RvDh5p2xsBSje4X+btPQ7SfvnUwxMAdsPf/GkIXsHzw=;
-        fh=mvgX9fHDajzR32GFB0oGHVCpUskYzLFjgR7dhiEaFlU=;
-        b=E5BgIHLPoI66w+xYQPl1Si8eXydC/guJnFooM4aYqArD1Chr5Vd/IiPmJoMNMfoIDo
-         XJpA80sma3thCX6lWY915hAo91Adl0PbVv2JmH2BsqJ+kARguConzzRW+hLQWl7WcLFW
-         P5DByC2l9kb+wXer7PESITvbxIJYOdrefb39sCPrTcgjiRpqJnngabs0fLfscwSF0LDk
-         xX+m0RYfW5OOlmkWRPbGc20hWei0SqIrAs9r7wajO4n4h3syh2H9XRjbGc1ClF51JOK7
-         N4Tr2gzgS9K2BTWAtR1yFj9pLJm0I/0kIzmu/QULgAO0ufU/I6Mk3u/K0+RaOyxAvpFO
-         8sMw==
+        bh=+CTTTKQHko9I2Piqkl0LV9I1BDWlxcSVOegYIjRRIco=;
+        fh=sAFxsovMRUpeK1m2ZrUTkWk2zuchzNgVidyR5jMbIm8=;
+        b=lkO1ZWLdaqckMpApZxQGxypDgUg1lohc3OvpMZsASJHkOegqnM50tQGOF8XckkJHEI
+         Ofm/KCb4Md0hK4G1m5MYPrAb+Bn6Lvf1tmlfUn8+6J0tiCY0lcQ/KXkduf1Q7tdej+sB
+         jMfLIxlvZjjVvExuqjHV9F09vMUSvcumVlfpu0i28M0sgXRZOB4PkiMyJ3zRmXFzOoPk
+         CGdUo2dT/pUsF2enJv9bAhUWQ4L4rPXSD+LG96i+7ieb5NPJ0eGM6SBlF9sjEiyM7SXa
+         yHcKPG2Ib8qQcaj1F4xNddcVdzsRsfXn0OxiPvABqBh0dReJr0K24ZylOSScQIBuh2wA
+         ufMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n15-20020a05622a040f00b0040349a5a1acsi2120960qtx.134.2023.09.01.02.43.39
+        by mx.google.com with ESMTPS id k17-20020a0cf291000000b00646be73c680si2033515qvl.133.2023.09.01.02.43.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Sep 2023 02:43:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Sep 2023 02:43:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qc0g9-00023r-6q; Fri, 01 Sep 2023 05:43:01 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qc0gT-00032p-Tr; Fri, 01 Sep 2023 05:43:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>)
- id 1qc0g3-0001w9-Jj; Fri, 01 Sep 2023 05:42:55 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ id 1qc0gR-0002sf-JA; Fri, 01 Sep 2023 05:43:19 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>)
- id 1qc0fv-00032X-GH; Fri, 01 Sep 2023 05:42:55 -0400
+ id 1qc0gO-0003Bb-Ge; Fri, 01 Sep 2023 05:43:19 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcY3m15Pqz4x2b;
- Fri,  1 Sep 2023 19:42:44 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcY4K1Cfrz4x2n;
+ Fri,  1 Sep 2023 19:43:13 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcY3k4XNZz4wy6;
- Fri,  1 Sep 2023 19:42:42 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcY4H2tHgz4x2b;
+ Fri,  1 Sep 2023 19:43:11 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Subject: [PULL 10/26] aspeed: Create flash devices only when defaults are
- enabled
-Date: Fri,  1 Sep 2023 11:41:58 +0200
-Message-ID: <20230901094214.296918-11-clg@kaod.org>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Bin Meng <bmeng.cn@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 23/26] hw/sd: Add sd_cmd_SEND_RELATIVE_ADDR() handler
+Date: Fri,  1 Sep 2023 11:42:11 +0200
+Message-ID: <20230901094214.296918-24-clg@kaod.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230901094214.296918-1-clg@kaod.org>
 References: <20230901094214.296918-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=SnXb=ER=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nvhE55VfsEXy
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YtDkZP/1HGgJ
 
-When the -nodefaults option is set, flash devices should be created
-with :
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-    -blockdev node-name=fmc0,driver=file,filename=./flash.img \
-    -device mx66u51235f,cs=0x0,bus=ssi.0,drive=fmc0 \
-
-To be noted that in this case, the ROM will not be installed and the
-initial boot sequence (U-Boot loading) will fetch instructions using
-SPI transactions which is significantly slower. That's exactly how HW
-operates though.
-
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Message-Id: <20210624142209.1193073-11-f4bug@amsat.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- docs/system/arm/aspeed.rst | 35 +++++++++++++++++++++++++++++------
- hw/arm/aspeed.c            |  6 ++++--
- 2 files changed, 33 insertions(+), 8 deletions(-)
+ hw/sd/sd.c | 28 +++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 80538422a1a4..b2dea54eedad 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -104,7 +104,7 @@ To boot a kernel directly from a Linux build tree:
-         -dtb arch/arm/boot/dts/aspeed-ast2600-evb.dtb \
-         -initrd rootfs.cpio
+diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+index 33ecff496ade..b46072424108 100644
+--- a/hw/sd/sd.c
++++ b/hw/sd/sd.c
+@@ -1048,6 +1048,20 @@ static sd_rsp_type_t sd_cmd_ALL_SEND_CID(SDState *sd, SDRequest req)
+     return sd_r2_i;
+ }
  
--The image should be attached as an MTD drive. Run :
-+To boot the machine from the flash image, use an MTD drive :
- 
- .. code-block:: bash
- 
-@@ -117,23 +117,46 @@ Options specific to Aspeed machines are :
-    device by using the FMC controller to load the instructions, and
-    not simply from RAM. This takes a little longer.
- 
-- * ``fmc-model`` to change the FMC Flash model. FW needs support for
--   the chip model to boot.
-+ * ``fmc-model`` to change the default FMC Flash model. FW needs
-+   support for the chip model to boot.
- 
-- * ``spi-model`` to change the SPI Flash model.
-+ * ``spi-model`` to change the default SPI Flash model.
- 
-  * ``bmc-console`` to change the default console device. Most of the
-    machines use the ``UART5`` device for a boot console, which is
-    mapped on ``/dev/ttyS4`` under Linux, but it is not always the
-    case.
- 
--For instance, to start the ``ast2500-evb`` machine with a different
--FMC chip and a bigger (64M) SPI chip, use :
-+To use other flash models, for instance a different FMC chip and a
-+bigger (64M) SPI for the ``ast2500-evb`` machine, run :
- 
- .. code-block:: bash
- 
-   -M ast2500-evb,fmc-model=mx25l25635e,spi-model=mx66u51235f
- 
-+When more flexibility is needed to define the flash devices, to use
-+different flash models or define all flash devices (up to 8), the
-+``-nodefaults`` QEMU option can be used to avoid creating the default
-+flash devices.
++static sd_rsp_type_t sd_cmd_SEND_RELATIVE_ADDR(SDState *sd, SDRequest req)
++{
++    switch (sd->state) {
++    case sd_identification_state:
++    case sd_standby_state:
++        sd->state = sd_standby_state;
++        sd_set_rca(sd);
++        return sd_r6;
 +
-+Flash devices should then be created from the command line and attached
-+to a block device :
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M ast2600-evb \
-+        -blockdev node-name=fmc0,driver=file,filename=/path/to/fmc0.img \
-+	-device mx66u51235f,bus=ssi.0,cs=0x0,drive=fmc0 \
-+	-blockdev node-name=fmc1,driver=file,filename=/path/to/fmc1.img \
-+	-device mx66u51235f,bus=ssi.0,cs=0x1,drive=fmc1 \
-+	-blockdev node-name=spi1,driver=file,filename=/path/to/spi1.img \
-+	-device mx66u51235f,cs=0x0,bus=ssi.1,drive=spi1 \
-+	-nographic -nodefaults
-+
-+In that case, the machine boots fetching instructions from the FMC0
-+device. It is slower to start but closer to what HW does. Using the
-+machine option ``execute-in-place`` has a similar effect.
-+
- To change the boot console and use device ``UART3`` (``/dev/ttyS2``
- under Linux), use :
- 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index cd92cf9ce0bb..271512ce5ced 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -396,12 +396,14 @@ static void aspeed_machine_init(MachineState *machine)
-     connect_serial_hds_to_uarts(bmc);
-     qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
- 
--    aspeed_board_init_flashes(&bmc->soc.fmc,
-+    if (defaults_enabled()) {
-+        aspeed_board_init_flashes(&bmc->soc.fmc,
-                               bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
-                               amc->num_cs, 0);
--    aspeed_board_init_flashes(&bmc->soc.spi[0],
-+        aspeed_board_init_flashes(&bmc->soc.spi[0],
-                               bmc->spi_model ? bmc->spi_model : amc->spi_model,
-                               1, amc->num_cs);
++    default:
++        return sd_invalid_state_for_cmd(sd, req);
 +    }
++}
++
+ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
+ {
+     uint32_t rca = 0x0000;
+@@ -1087,19 +1101,6 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
  
-     if (machine->kernel_filename && sc->num_cpus > 1) {
-         /* With no u-boot we must set up a boot stub for the secondary CPU */
+     switch (req.cmd) {
+     /* Basic commands (Class 0 and Class 1) */
+-    case 3:  /* CMD3:   SEND_RELATIVE_ADDR */
+-        switch (sd->state) {
+-        case sd_identification_state:
+-        case sd_standby_state:
+-            sd->state = sd_standby_state;
+-            sd_set_rca(sd);
+-            return sd_r6;
+-
+-        default:
+-            break;
+-        }
+-        break;
+-
+     case 4:  /* CMD4:   SEND_DSR */
+         switch (sd->state) {
+         case sd_standby_state:
+@@ -2149,6 +2150,7 @@ static const SDProto sd_proto_sd = {
+         [0]         = sd_cmd_GO_IDLE_STATE,
+         [1]         = sd_cmd_illegal,
+         [2]         = sd_cmd_ALL_SEND_CID,
++        [3]         = sd_cmd_SEND_RELATIVE_ADDR,
+         [5]         = sd_cmd_illegal,
+         [52 ... 54] = sd_cmd_illegal,
+         [58]        = sd_cmd_illegal,
 -- 
 2.41.0
 

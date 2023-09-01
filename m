@@ -1,149 +1,164 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp497090ejc;
-        Fri, 1 Sep 2023 02:45:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHwczAJ6MeMmb2se1EqzX1tFeUJIjvIv+T9p/ZWhqw54Do8lCxj8qe9sgLxapmFKUp7vYFi
-X-Received: by 2002:a05:622a:5193:b0:411:fa39:c340 with SMTP id ex19-20020a05622a519300b00411fa39c340mr2184695qtb.17.1693561551036;
-        Fri, 01 Sep 2023 02:45:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693561551; cv=none;
+Received: by 2002:a05:7022:e10:b0:69:9a19:fb41 with SMTP id dx16csp1162989dlb;
+        Fri, 1 Sep 2023 12:23:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHPbKdb8GunhkFk0WI28HY1JiZ6pyTYQwef013zZP2IvHOC02wT7Q6ld85GlSaPgS09Huxh
+X-Received: by 2002:a50:ee15:0:b0:52b:d187:61c2 with SMTP id g21-20020a50ee15000000b0052bd18761c2mr2472578eds.29.1693596207430;
+        Fri, 01 Sep 2023 12:23:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693596207; cv=none;
         d=google.com; s=arc-20160816;
-        b=kFzLCTsljc7IsfzRffw4CQl0okdMSyhIgSXNBQTvUl74hpoWrURidj5hBB9cJhxnfd
-         rGqXINKe3ib0U1Cy9KV3iUQd8Fl6EiJH5/tzWkz8jEAzZCDl+Rh65oVYxc1IYuMMuzuG
-         bqIuFKxYPnaGWPtI63xqaqTVlfIwBci6GOm+zOb0LWJBAWGX3ih81FozTUetxx5kbhAc
-         8+/1rykTF7t6J4XG6UNh6qK8rXo3NTHdV17KozilQhDJecIxNS0vD1Q0dC5F49zKTd76
-         O5n2b8tj0+l1yYq9mubgVnTDBYusEzpOHMLvwCEpPXgYudwVONBcoz7lUT/tYrn+PCsJ
-         mXmw==
+        b=oUSGaVlKMEDObf7noQV314oXpCHIYN0/Ixe3v5bKWRDqOHwub1s0QSzjmCrxNa+gD7
+         PjyKMGiszznWex+T9ACD818r1FkXxtNkaiuYXpcKP/7iptsO/nR3v5MFUJjDZ2TLeKNw
+         Lv25snAOjO/EQRBkUlTjJnLoy5U7IEzwpSEvXqIBfYe5S11diRmhywTtZ+tt4KDzCPsj
+         T/iVnwdLOd4HkozAZIPL8P49/YrDI7TqXSPs/gIXuFqtJRnTyNUoqp93izHoQU5FxooD
+         vY3YtOh2AOzQdTKOghgTvpw3VX5Mz3IoLVHiZTmLaKOPyScgOstZPPKkXC277lFXR9pm
+         dmgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=r9W7WJjpqG/Y6Z1wvy6YFZgrIfTMPMaCiUm11YrHTzs=;
-        fh=mvgX9fHDajzR32GFB0oGHVCpUskYzLFjgR7dhiEaFlU=;
-        b=ajg6YFnrePGehkxQH30nrBVa3ad566fCm3v571Si3SXVvBg7/CiI7X1kfPQNp74r7w
-         QL2ru82aMmU1hJIPvKh5+eiTa/CV/O3snFsggGJECbvEHPUpwRtCKweJWig7c7AIUJnd
-         pPEuJ677UYj9VNDoDhGJmEWSzRLTT643S0H7QdCwLUqnd0AVOmIaH6EBomV8Z9L5Qdyg
-         tjXy/Hd6qgw160uA+OhjlPoyfB8Kk7PqbY0rUGpiEjyKkGq4wQoUxIETlopcCILoSWUS
-         tYKK7ofo90lOk2Pf48tSXiiAcUd2debH5cnFGqRZKYy2uV5ck7gbiB6r5wFqjx38rwDG
-         4S6Q==
+        h=list-id:precedence:in-reply-to:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Jk8eU1YUzlGph2kkfy1NgH1ax2sGgPgvKzoaDKemgb4=;
+        fh=xbG7lXg1EnmYaPrY5E/uKTSdLqCSxKn7Y1kmT7J4cUo=;
+        b=XTAX7RID3bM5YAXO8a2bgfNZZYwaKPfS4oNb1FDgnN80NrguGMvwf3OnefV99cywuQ
+         ubXDidHQ4th25Fc/2Qacpzh65y/2vmviQ5r6itNhgg8Hz+fj3q6Uy0DKbDS35mqWdy8Y
+         8Cryi06dE5bOAIswYEsTfzVWAfF4gF3ebviEJunwL1/GPiO1qeBkV9dLvCf07SoufKww
+         3nJXZYW5Ul4AH44z2GzPzJaCqd26j0QX9YLZ+u6vfYejBVAI/WpqKcKdHycCNXDYLdIu
+         D1hmOGq2UEYyNDZsLsiJbCPFr3CyAvIHh5YFvsTGXxDc+vvR2MffCJOwzABUR1cpoba3
+         K6YQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y3-20020a05622a004300b00410a640d410si2003645qtw.594.2023.09.01.02.45.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Sep 2023 02:45:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@google.com header.s=20221208 header.b=Ot+3td20;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id s25-20020aa7d799000000b0052a46e12565si3051946edq.194.2023.09.01.12.23.27;
+        Fri, 01 Sep 2023 12:23:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qc0fn-0001OF-Lb; Fri, 01 Sep 2023 05:42:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>)
- id 1qc0fl-0001NY-Rf; Fri, 01 Sep 2023 05:42:37 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>)
- id 1qc0fi-0002t1-KS; Fri, 01 Sep 2023 05:42:37 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcY3X26CZz4x3j;
- Fri,  1 Sep 2023 19:42:32 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcY3V5Z2cz4wxW;
- Fri,  1 Sep 2023 19:42:30 +1000 (AEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Subject: [PULL 05/26] tests/avocado/machine_aspeed.py: Update SDK images
-Date: Fri,  1 Sep 2023 11:41:53 +0200
-Message-ID: <20230901094214.296918-6-clg@kaod.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230901094214.296918-1-clg@kaod.org>
-References: <20230901094214.296918-1-clg@kaod.org>
+       dkim=pass header.i=@google.com header.s=20221208 header.b=Ot+3td20;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S243373AbjIATX1 (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Fri, 1 Sep 2023 15:23:27 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:50938 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229750AbjIATX1 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 1 Sep 2023 15:23:27 -0400
+Received: from mail-il1-x130.google.com (mail-il1-x130.google.com [IPv6:2607:f8b0:4864:20::130])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 776FF10DF
+        for <kvm@vger.kernel.org>; Fri,  1 Sep 2023 12:23:24 -0700 (PDT)
+Received: by mail-il1-x130.google.com with SMTP id e9e14a558f8ab-34b4b2608e3so7987875ab.3
+        for <kvm@vger.kernel.org>; Fri, 01 Sep 2023 12:23:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20221208; t=1693596204; x=1694201004; darn=vger.kernel.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Jk8eU1YUzlGph2kkfy1NgH1ax2sGgPgvKzoaDKemgb4=;
+        b=Ot+3td20zRC5TQ5TGtiiXj8uJP35Gw26KIKOyw0DOG28VudLa7bkvPiOS6M1fzBP4y
+         rbP+G3IOjE6U+uG/ILpLLh83pnvAdgcbBqGhAV7yd8QZLA10pR9761rOxnysP8CkC2do
+         eji+iWIYYJzmwNPHGYglyKX2LJVSq482Lrlc+QUWJbEf2gShKnDdr2yFWiN/9DTEp0E3
+         gw5moI419cugO/TF42WHrBB6LHjOSRQo8J+Xc6ysqmNid7eFaWwg6NXqstv7xw1NRbmR
+         wvqNoJYGKofBERXWzRqlgCSzV9trKvezzWqin4zR2KLNwIeXNYowPs33Dzr7pNhGPCwk
+         arIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693596204; x=1694201004;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Jk8eU1YUzlGph2kkfy1NgH1ax2sGgPgvKzoaDKemgb4=;
+        b=flbBk2+FAYdU3CKJuiV14pT0ESHycjT61boFj/5YNnPqWGPuHVmz9Rp/JVSzxNBYIy
+         kfHifFS1WP6KoPpXff0qWmH/SoUGTaxSCruoMbsaopvRMBb3JUTBMwxImoLK/Ppomzi5
+         zFO4DDphV27TcjkOzlREkudnSkpfm6lHstJODYJwGCeVC4LlT+Oq04qbv5/WW9L5bWqN
+         zOVbqul4QB48vnBF3Hgo/KRWlHkzNffbFGO9mvFCqMePbV5C7TnGjAlN+HCaJsSm2k1B
+         +EqRAopyvvNhDx4NYJZ2XyWr9SI2zBdSqCFHTS+BXyunY/EOjiBg22ia/EzzHTRiNsue
+         /r7g==
+X-Gm-Message-State: AOJu0Yxt3soGNOwmNjA07V/rt6Yso6HgjQ8fDUBSmPe4d4MlrXe3g4yK
+        fYLKrCTYS1E7RgF3BhBb5bdTXw==
+X-Received: by 2002:a92:d284:0:b0:349:3c0:395d with SMTP id p4-20020a92d284000000b0034903c0395dmr3617488ilp.1.1693596203704;
+        Fri, 01 Sep 2023 12:23:23 -0700 (PDT)
+Received: from google.com (30.64.135.34.bc.googleusercontent.com. [34.135.64.30])
+        by smtp.gmail.com with ESMTPSA id v12-20020a92d24c000000b00345d6e8ded4sm1252896ilg.25.2023.09.01.12.23.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Sep 2023 12:23:23 -0700 (PDT)
+Date:   Fri, 1 Sep 2023 19:23:20 +0000
+From:   Colton Lewis <coltonlewis@google.com>
+To:     Andrew Jones <andrew.jones@linux.dev>
+Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+        kvm@vger.kernel.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] arm64: Restore trapless ptimer access
+Message-ID: <ZPI6KNqGGTxxHhCh@google.com>
+References: <20230831190052.129045-1-coltonlewis@google.com>
+ <20230901-16232ff17690fc32a0feb5df@orel>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=SnXb=ER=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E683jmr36TI8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230901-16232ff17690fc32a0feb5df@orel>
+X-Spam-Status: No, score=-17.6 required=5.0 tests=BAYES_00,DKIMWL_WL_MED,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+        ENV_AND_HDR_SPF_MATCH,RCVD_IN_DNSWL_BLOCKED,SPF_HELO_NONE,SPF_PASS,
+        USER_IN_DEF_DKIM_WL,USER_IN_DEF_SPF_WL autolearn=ham
+        autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 1aJTNX5E+3Mx
 
-Switch to the latest v8.06 release which introduces interesting
-changes for the AST2600 I2C and I3C models. Also take the AST2600 A2
-images instead of the default since QEMU tries to model The AST2600 A3
-SoC.
+On Fri, Sep 01, 2023 at 09:35:47AM +0200, Andrew Jones wrote:
+> On Thu, Aug 31, 2023 at 07:00:52PM +0000, Colton Lewis wrote:
+> > Due to recent KVM changes, QEMU is setting a ptimer offset resulting
+> > in unintended trap and emulate access and a consequent performance
+> > hit. Filter out the PTIMER_CNT register to restore trapless ptimer
+> > access.
+> >
+> > Quoting Andrew Jones:
+> >
+> > Simply reading the CNT register and writing back the same value is
+> > enough to set an offset, since the timer will have certainly moved
+> > past whatever value was read by the time it's written.  QEMU
+> > frequently saves and restores all registers in the get-reg-list array,
+> > unless they've been explicitly filtered out (with Linux commit
+> > 680232a94c12, KVM_REG_ARM_PTIMER_CNT is now in the array). So, to
+> > restore trapless ptimer accesses, we need a QEMU patch to filter out
+> > the register.
+> >
+> > See
+> > https://lore.kernel.org/kvmarm/gsntttsonus5.fsf@coltonlewis-kvm.c.googlers.com/T/#m0770023762a821db2a3f0dd0a7dc6aa54e0d0da9
+>
+> The link can be shorter with
+>
+> https://lore.kernel.org/all/20230823200408.1214332-1-coltonlewis@google.com/
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- tests/avocado/machine_aspeed.py | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+I will keep that in mind next time.
 
-diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-index 724ee72c0208..90f1b7cb77a1 100644
---- a/tests/avocado/machine_aspeed.py
-+++ b/tests/avocado/machine_aspeed.py
-@@ -316,8 +316,8 @@ def test_arm_ast2500_evb_sdk(self):
-         """
- 
-         image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
--                     'download/v08.01/ast2500-default-obmc.tar.gz')
--        image_hash = ('5375f82b4c43a79427909342a1e18b4e48bd663e38466862145d27bb358796fd')
-+                     'download/v08.06/ast2500-default-obmc.tar.gz')
-+        image_hash = ('e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
-         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-                                       algorithm='sha256')
-         archive.extract(image_path, self.workdir)
-@@ -334,8 +334,8 @@ def test_arm_ast2600_evb_sdk(self):
-         """
- 
-         image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
--                     'download/v08.01/ast2600-default-obmc.tar.gz')
--        image_hash = ('f12ef15e8c1f03a214df3b91c814515c5e2b2f56119021398c1dbdd626817d15')
-+                     'download/v08.06/ast2600-a2-obmc.tar.gz')
-+        image_hash = ('9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
-         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-                                       algorithm='sha256')
-         archive.extract(image_path, self.workdir)
-@@ -345,8 +345,8 @@ def test_arm_ast2600_evb_sdk(self):
-         self.vm.add_args('-device',
-                          'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
-         self.do_test_arm_aspeed_sdk_start(
--            self.workdir + '/ast2600-default/image-bmc')
--        self.wait_for_console_pattern('nodistro.0 ast2600-default ttyS4')
-+            self.workdir + '/ast2600-a2/image-bmc')
-+        self.wait_for_console_pattern('nodistro.0 ast2600-a2 ttyS4')
- 
-         self.ssh_connect('root', '0penBmc', False)
-         self.ssh_command('dmesg -c > /dev/null')
--- 
-2.41.0
+> > for additional context.
+> >
+> > Signed-off-by: Andrew Jones <andrew.jones@linux.dev>
+>
+> Thanks for the testing and posting, Colton. Please add your s-o-b and a
+> Tested-by tag as well.
 
+Assuming it is sufficient to add here instead of reposting the whole patch:
+
+Signed-off-by: Colton Lewis <coltonlewis@google.com>
+Tested-by: Colton Lewis <coltonlewis@google.com>
+
+> > ---
+> >  target/arm/kvm64.c | 1 +
+> >  1 file changed, 1 insertion(+)
+> >
+> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> > index 4d904a1d11..2dd46e0a99 100644
+> > --- a/target/arm/kvm64.c
+> > +++ b/target/arm/kvm64.c
+> > @@ -672,6 +672,7 @@ typedef struct CPRegStateLevel {
+> >   */
+> >  static const CPRegStateLevel non_runtime_cpregs[] = {
+> >      { KVM_REG_ARM_TIMER_CNT, KVM_PUT_FULL_STATE },
+> > +    { KVM_REG_ARM_PTIMER_CNT, KVM_PUT_FULL_STATE },
+> >  };
+> >
+> >  int kvm_arm_cpreg_level(uint64_t regidx)
+> > --
+> > 2.42.0.283.g2d96d420d3-goog
+> >

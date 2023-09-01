@@ -1,82 +1,83 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp389488ejc;
-        Thu, 31 Aug 2023 22:20:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEjlC1e8vuvC/BvfIELqbQaTXUtf5onr6Hc8LPpf5NnOgRILxrQ/NutREoQPAKARnyTxEJ+
-X-Received: by 2002:a05:620a:44cb:b0:76c:b7f0:2bb4 with SMTP id y11-20020a05620a44cb00b0076cb7f02bb4mr1944186qkp.51.1693545634275;
-        Thu, 31 Aug 2023 22:20:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693545634; cv=none;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp398840ejc;
+        Thu, 31 Aug 2023 22:46:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFRGELYoa3ulY91lmI1gSXDerC7CrfvFuRxznkXYT2DtVXBaGLHOV1cfS/HOZa2W2jk+tEW
+X-Received: by 2002:a0c:d607:0:b0:63f:8677:34a with SMTP id c7-20020a0cd607000000b0063f8677034amr1310738qvj.50.1693547218922;
+        Thu, 31 Aug 2023 22:46:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693547218; cv=none;
         d=google.com; s=arc-20160816;
-        b=jkDWQwVhzbd/j0GJxHiaqXExJZ/T8SKg/0utbkgqFjsCDz/+kc94/ROLenVJG6wlxt
-         KA5LQj+pJbnWij1QE7+UCo0em1+To6eEkFypNv/mi+e7Cd/2/U50qW8YqVxVlUSFLJeb
-         dq9hH00T0vfFhFZZ3IaLGgRqTEsnKecxpJHqiZfdDCTSkN0fUitzmPNkJxdQRAvyXe5o
-         JJs/7cQWJVHCW7AtWfqYkUQQOtqUPyTaa3Hpq2qTltzjhVwTwZtw5uTe+g6N01tC2MJB
-         Z9IzOdNGm716eHWFXyvGNRdjf2Jbw1BdT3So/LRb8keZaAlwAirgvN733FgaplZBMCi/
-         QMFw==
+        b=OJv8dl4YA1GIUp4nBPQx7L2DWAr3aEQj4guSohp/h4gYge6nJffZkU/IX721S3wRDn
+         2gPxybyor9T/h5O074E0T3EdeA0xn/Q7xIZnRNNFUFEI2GDIolrYjK+Qf1RkFCb21YHp
+         fhhtIKEn9kMyoYl+C7ow52uw9bcm30XrKJZvCrNuw4S9yGgpr6RcHfq/RCy8iPBNz0z2
+         lx9k+RSDdhJjQhhXIdI2XRpa5iFNrveIrqv3NVK8yxw6fjGxen8bN2FLaWEcpaGpVpil
+         YZYp70B2jeZmxZzcta26rtdR6+rCr3KCU1kbUmAU0rZWrChl1eVRqEELYIEE1ND9MYJ3
+         ohBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:user-agent:mime-version:date:message-id
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=6o+SkscDBZQHxO4IPoXk2b6VpWaf2BDVtjcSJ5cypVY=;
+        bh=bJwxh5hq03oHv1iIcgNDGo/CGHaj19TaFfiEr/+xc/c=;
         fh=4x3mzvj/d8qs4zPDcmmmvZALyvd3/3Q9NFYHo7v58t0=;
-        b=1IGZ28pEhAdyg9Ll8KCzqVqVQHHu3S9Jclah+IsjyeRQmrmx3eNQUp0/+iJ6PysRVk
-         jhUlbNX6FZlxYZEu51suRP2KRJVkddL6ty/LYM2bxIzOWrQxOBz46IQ55a/+rtTR7BGM
-         +oS8gVEYcdgExXtLkXVm9YPKw3zGWT6SQdQeo9QGJb6BCzvToY/PD5wVF5wDQTHAstxo
-         4rjF2UOKEOsdxu0hDCslRLH9IWVvYBGx7Dp1PpHgbtsefsCBPmakZ7sxKtNPxaMVRNB5
-         55BQP0u3uKMir3E2u7bJja/s9lH0I6J5S06MM6RsSK/Zwn+5LcUZE0P3DP+o3UKnVAhi
-         DHPQ==
+        b=euocSyGhfgtRzrXkT42fdEB+gz5+ntDpXugVmDpJzk5IvgYWcy+nRSqDqqHSQ6R8lX
+         pmiZJsyy4Bla0gArfP++kr7T3iZmSlXdFSvgSEUS/pNAfd3wqaf9uhq0hFuk51TjN1Yx
+         8nuUTuYhiNbDZQnmXcdcpX/e0WeM8WRKutSY9hUkZNHgK1AFLLr9bJa2WgNdgNOskrKY
+         wZUOms0f+BOBdZ1eeOOHK19hHAxPhWzqhTQ0wWglVGb3xyvzvBUFrs+EjFw7+ynzby17
+         93a11DrPYqwY4IDUq8RihUUYl4zQikazES3DHO86rTe1wZ/JdEZEkSQCwro74BTAYlSZ
+         UgXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=Nlv+qFmz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=AMR5ixrw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dv13-20020a05620a1b8d00b0076d743132absi1900091qkb.353.2023.08.31.22.20.34
+        by mx.google.com with ESMTPS id x17-20020a0ce0d1000000b0063fd7b8d13esi1863353qvk.203.2023.08.31.22.46.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Aug 2023 22:20:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 31 Aug 2023 22:46:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=Nlv+qFmz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=AMR5ixrw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qbwZU-00048l-Lr; Fri, 01 Sep 2023 01:19:52 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qbwzO-00070u-Bf; Fri, 01 Sep 2023 01:46:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qbwZP-00047h-1I; Fri, 01 Sep 2023 01:19:47 -0400
+ id 1qbwzM-000704-0d; Fri, 01 Sep 2023 01:46:36 -0400
 Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qbwZL-0003VH-G2; Fri, 01 Sep 2023 01:19:46 -0400
+ id 1qbwzI-0001DW-Lv; Fri, 01 Sep 2023 01:46:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
  In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=6o+SkscDBZQHxO4IPoXk2b6VpWaf2BDVtjcSJ5cypVY=; b=Nlv+qFmzy3W8ioaB3pick0Neaw
- dXlZXYhw4bZjD8zEARqJf8z8DNMlE63WKWFdfxlkSaEqftA7v9jCr4HZf+DsiXNYWiverKTt2kgHi
- dsOPC3EDQ4rJklkiKKQhvkrXsxFGLC5gTsCjyUvPk5Xreu6uCYBD4ZLcJs6uAvEpebhgGS6/xZaHf
- 2sqW1lVimCdpu3EZoc+h17HuvvUJGDVlfUy0BZydvztwwQzMvqhekLNPX5DA3DQCWw6m7qqJFMkjs
- ++byBWKhGjwFO2u7vsFIBgE7Pfi368Idm5NR9/cWAPnXLSxRUusT62RXEveGSKZ+oFJEO3ctjllmA
- FlNOJUHxR/5XqellTXwYHmZP8/cSw2GA38Cz7SCk7vbWNd8UkziBXRmTGz2W1sMIeSRuh2AduAciI
- wIBLX8IB+W0VhwBUhKJq3SWH8ilzujcj4Y3Ykv1iA6dNWcHGeVPtcJ9U4oqRRNefry+hQ5BBgl0OG
- VWgA3d4RG5zZ3eR3D9hESAavUIFBwFY43bBhZO4rTrdukVIMO7cCXmyL8H44kmi/+I813UzkroxW+
- Jx1h5Yw363uvHLfRfx1mt7bMW0DUcr5w12kixjL6QlhtaceE/Gz7kvVpLp13hFMhM15o/DkGe7hTa
- +ZGShjDZ0zBkQbwAdX3fKVDLpy8d0xy7k+sMYXx0A=;
-Received: from [2a00:23c4:8bae:9a00:e29b:2528:c042:5a0c]
+ bh=bJwxh5hq03oHv1iIcgNDGo/CGHaj19TaFfiEr/+xc/c=; b=AMR5ixrwFY8FXzCXZUpFadQ1hB
+ ZICcSyyCNUHh1IDGbeEvuuBJCJULEoicxzMja1bQaDtwqe3x9HHOz5xBAozzCkSNoMVQruBmHnGqe
+ H/0tDRi5tS2DWXerNg+kRhOHsVPcqOku9vb3rnkCmKvZAf+UVnBJFLhCGFKrZfMmabLGFpxWCVDPc
+ intMtvhnI8WgqoBsvor+oeU9y5S4n7JlqOKa/VVZLJd0GrP5VzAXGbKPKpo73Z1sKgRQFWmj0Kjrs
+ AjSsQxRFJnoHbX2gtjhUB+xRJY/z3i7IddK3N4p+zkSIvrVmKkyrq2tSzqnc0BOaPfldgJPD4hoaR
+ Dou65D1A0ewykeH56eSuJqfvfWM3eQhoJJ/b15sK2t8ISHL75e8ohguinzGYPA+0EfZsVpVsfxbwZ
+ xjoyabVOELD3vnD2bRypMkmLXOk4pEa5si//TTPvXI9xP093FKKlY8yqlx3LtlBHASYFzo1+9P2Y9
+ i49JzNk+ml7K7Nj5jNx8nquMLk4uHosGbwruQTU4qoGpTrOvD8lIyxGBtlSrUKtbCuinhRom8LrQi
+ lW27BepIrulRLxyjw+LemSQO2xoivNPIFmeWBiQYlbxQYlxGaS13lNMVnktP1AJfaSizD3oTr5tv3
+ VDouHeK55F8omOQ7UDIByVyGmcTM6mdosLK0F8Euo=;
+Received: from [2a00:23c4:8bae:9a00:dd88:5208:9abb:2b35]
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qbwYg-0000Et-0K; Fri, 01 Sep 2023 06:19:06 +0100
-Message-ID: <10c161a3-e22b-5319-4d6e-6f24abfe564a@ilande.co.uk>
-Date: Fri, 1 Sep 2023 06:19:29 +0100
+ id 1qbwyh-0000QA-77; Fri, 01 Sep 2023 06:45:59 +0100
+Message-ID: <89405935-ffd3-f7b5-1a25-d6d99daf0e0c@ilande.co.uk>
+Date: Fri, 1 Sep 2023 06:46:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
+Content-Language: en-US
 To: Alexander Graf <graf@amazon.com>, qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org,
  Cameron Esfahani <dirty@apple.com>, Stefan Hajnoczi <stefanha@redhat.com>,
@@ -89,15 +90,14 @@ Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  Bernhard Beschow <shentey@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>
 References: <20230830161425.91946-1-graf@amazon.com>
- <20230830161425.91946-3-graf@amazon.com>
-Content-Language: en-US
+ <20230830161425.91946-10-graf@amazon.com>
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20230830161425.91946-3-graf@amazon.com>
+In-Reply-To: <20230830161425.91946-10-graf@amazon.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bae:9a00:e29b:2528:c042:5a0c
+X-SA-Exim-Connect-IP: 2a00:23c4:8bae:9a00:dd88:5208:9abb:2b35
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v2 02/12] hw/misc/pvpanic: Add MMIO interface
+Subject: Re: [PATCH v2 09/12] hw/vmapple/cfg: Introduce vmapple cfg region
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -109,157 +109,269 @@ X-Spam_report: (-5.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.478,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Gl3cIEnVHIcU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iiaV+9lx1N1v
 
 On 30/08/2023 17:14, Alexander Graf wrote:
 
 Hi Alex,
 
-> In addition to the ISA and PCI variants of pvpanic, let's add an MMIO
-> platform device that we can use in embedded arm environments.
+> Instead of device tree or other more standardized means, VMApple passes
+> platform configuration to the first stage boot loader in a binary encoded
+> format that resides at a dedicated RAM region in physical address space.
+> 
+> This patch models this configuration space as a qdev device which we can
+> then map at the fixed location in the address space. That way, we can
+> influence and annotate all configuration fields easily.
 > 
 > Signed-off-by: Alexander Graf <graf@amazon.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > 
 > ---
 > 
 > v1 -> v2:
 > 
->    - Use SPDX header
->    - Remove useless includes
->    - Adapt to new meson.build target (system_ss)
+>    - Adapt to system_ss meson.build target
 > ---
->   include/hw/misc/pvpanic.h |  1 +
->   hw/misc/pvpanic-mmio.c    | 61 +++++++++++++++++++++++++++++++++++++++
->   hw/misc/Kconfig           |  4 +++
->   hw/misc/meson.build       |  1 +
->   4 files changed, 67 insertions(+)
->   create mode 100644 hw/misc/pvpanic-mmio.c
+>   include/hw/vmapple/cfg.h |  68 +++++++++++++++++++++++++
+>   hw/vmapple/cfg.c         | 105 +++++++++++++++++++++++++++++++++++++++
+>   hw/vmapple/Kconfig       |   3 ++
+>   hw/vmapple/meson.build   |   1 +
+>   4 files changed, 177 insertions(+)
+>   create mode 100644 include/hw/vmapple/cfg.h
+>   create mode 100644 hw/vmapple/cfg.c
 > 
-> diff --git a/include/hw/misc/pvpanic.h b/include/hw/misc/pvpanic.h
-> index fab94165d0..f9e7c1ea17 100644
-> --- a/include/hw/misc/pvpanic.h
-> +++ b/include/hw/misc/pvpanic.h
-> @@ -20,6 +20,7 @@
->   
->   #define TYPE_PVPANIC_ISA_DEVICE "pvpanic"
->   #define TYPE_PVPANIC_PCI_DEVICE "pvpanic-pci"
-> +#define TYPE_PVPANIC_MMIO_DEVICE "pvpanic-mmio"
->   
->   #define PVPANIC_IOPORT_PROP "ioport"
->   
-> diff --git a/hw/misc/pvpanic-mmio.c b/hw/misc/pvpanic-mmio.c
+> diff --git a/include/hw/vmapple/cfg.h b/include/hw/vmapple/cfg.h
 > new file mode 100644
-> index 0000000000..99a24f104c
+> index 0000000000..3337064e44
 > --- /dev/null
-> +++ b/hw/misc/pvpanic-mmio.c
-> @@ -0,0 +1,61 @@
+> +++ b/include/hw/vmapple/cfg.h
+> @@ -0,0 +1,68 @@
 > +/*
-> + * QEMU simulated pvpanic device (MMIO frontend)
+> + * VMApple Configuration Region
 > + *
 > + * Copyright © 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 > + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef HW_VMAPPLE_CFG_H
+> +#define HW_VMAPPLE_CFG_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "qom/object.h"
+> +#include "net/net.h"
+> +
+> +typedef struct VMAppleCfg {
+> +    uint32_t version;         /* 0x000 */
+> +    uint32_t nr_cpus;         /* 0x004 */
+> +    uint32_t unk1;            /* 0x008 */
+> +    uint32_t unk2;            /* 0x00c */
+> +    uint32_t unk3;            /* 0x010 */
+> +    uint32_t unk4;            /* 0x014 */
+> +    uint64_t ecid;            /* 0x018 */
+> +    uint64_t ram_size;        /* 0x020 */
+> +    uint32_t run_installer1;  /* 0x028 */
+> +    uint32_t unk5;            /* 0x02c */
+> +    uint32_t unk6;            /* 0x030 */
+> +    uint32_t run_installer2;  /* 0x034 */
+> +    uint32_t rnd;             /* 0x038 */
+> +    uint32_t unk7;            /* 0x03c */
+> +    MACAddr mac_en0;          /* 0x040 */
+> +    uint8_t pad1[2];
+> +    MACAddr mac_en1;          /* 0x048 */
+> +    uint8_t pad2[2];
+> +    MACAddr mac_wifi0;        /* 0x050 */
+> +    uint8_t pad3[2];
+> +    MACAddr mac_bt0;          /* 0x058 */
+> +    uint8_t pad4[2];
+> +    uint8_t reserved[0xa0];   /* 0x060 */
+> +    uint32_t cpu_ids[0x80];   /* 0x100 */
+> +    uint8_t scratch[0x200];   /* 0x180 */
+> +    char serial[32];          /* 0x380 */
+> +    char unk8[32];            /* 0x3a0 */
+> +    char model[32];           /* 0x3c0 */
+> +    uint8_t unk9[32];         /* 0x3e0 */
+> +    uint32_t unk10;           /* 0x400 */
+> +    char soc_name[32];        /* 0x404 */
+> +} VMAppleCfg;
+> +
+> +#define TYPE_VMAPPLE_CFG "vmapple-cfg"
+> +OBJECT_DECLARE_SIMPLE_TYPE(VMAppleCfgState, VMAPPLE_CFG)
+> +
+> +struct VMAppleCfgState {
+> +    /* <private> */
+> +    SysBusDevice parent_obj;
+
+Missing newline after parent_obj here (we do this so that it's obvious looking 
+through a file that if you see the first member of parent_obj followed by a newline 
+then you know that struct belongs to a QOM type).
+
+> +    VMAppleCfg cfg;
+> +
+> +    /* <public> */
+> +    MemoryRegion mem;
+> +    char *serial;
+> +    char *model;
+> +    char *soc_name;
+> +};
+
+And again please drop the private/public comments.
+
+> +#define VMAPPLE_CFG_SIZE 0x00010000
+> +
+> +#endif /* HW_VMAPPLE_CFG_H */
+> diff --git a/hw/vmapple/cfg.c b/hw/vmapple/cfg.c
+> new file mode 100644
+> index 0000000000..d48e3c3afa
+> --- /dev/null
+> +++ b/hw/vmapple/cfg.c
+> @@ -0,0 +1,105 @@
+> +/*
+> + * VMApple Configuration Region
+> + *
+> + * Copyright © 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
 > + */
 > +
 > +#include "qemu/osdep.h"
+> +#include "hw/vmapple/cfg.h"
+> +#include "qemu/log.h"
+> +#include "qemu/module.h"
+> +#include "qapi/error.h"
 > +
-> +#include "hw/qdev-properties.h"
-> +#include "hw/misc/pvpanic.h"
-> +#include "hw/sysbus.h"
-> +#include "standard-headers/linux/pvpanic.h"
-> +
-> +OBJECT_DECLARE_SIMPLE_TYPE(PVPanicMMIOState, PVPANIC_MMIO_DEVICE)
-> +
-> +#define PVPANIC_MMIO_SIZE 0x2
-> +
-> +struct PVPanicMMIOState {
-> +    SysBusDevice parent_obj;
-> +
-> +    PVPanicState pvpanic;
-> +};
-> +
-> +static void pvpanic_mmio_initfn(Object *obj)
+> +static void vmapple_cfg_reset(DeviceState *dev)
 > +{
-> +    PVPanicMMIOState *s = PVPANIC_MMIO_DEVICE(obj);
+> +    VMAppleCfgState *s = VMAPPLE_CFG(dev);
+> +    VMAppleCfg *cfg;
 > +
-> +    pvpanic_setup_io(&s->pvpanic, DEVICE(s), PVPANIC_MMIO_SIZE);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->pvpanic.mr);
+> +    cfg = memory_region_get_ram_ptr(&s->mem);
+> +    memset((void *)cfg, 0, VMAPPLE_CFG_SIZE);
+> +    *cfg = s->cfg;
+
+Is this last line needed?
+
+> +}
+
+And again for SysBusDevice you can use the Resettable interface instead of the legacy 
+DeviceClass::reset.
+
+> +static void vmapple_cfg_realize(DeviceState *dev, Error **errp)
+> +{
+> +    VMAppleCfgState *s = VMAPPLE_CFG(dev);
+> +    uint32_t i;
+> +
+> +    strncpy(s->cfg.serial, s->serial, sizeof(s->cfg.serial));
+> +    strncpy(s->cfg.model, s->model, sizeof(s->cfg.model));
+> +    strncpy(s->cfg.soc_name, s->soc_name, sizeof(s->cfg.soc_name));
+> +    strncpy(s->cfg.unk8, "D/A", sizeof(s->cfg.soc_name));
+> +    s->cfg.ecid = cpu_to_be64(s->cfg.ecid);
+> +    s->cfg.version = 2;
+> +    s->cfg.unk1 = 1;
+> +    s->cfg.unk2 = 1;
+> +    s->cfg.unk3 = 0x20;
+> +    s->cfg.unk4 = 0;
+> +    s->cfg.unk5 = 1;
+> +    s->cfg.unk6 = 1;
+> +    s->cfg.unk7 = 0;
+> +    s->cfg.unk10 = 1;
+> +
+> +    g_assert(s->cfg.nr_cpus < ARRAY_SIZE(s->cfg.cpu_ids));
+> +    for (i = 0; i < s->cfg.nr_cpus; i++) {
+> +        s->cfg.cpu_ids[i] = i;
+> +    }
 > +}
 > +
-> +static Property pvpanic_mmio_properties[] = {
-> +    DEFINE_PROP_UINT8("events", PVPanicMMIOState, pvpanic.events,
-> +                      PVPANIC_PANICKED | PVPANIC_CRASH_LOADED),
+> +static void vmapple_cfg_init(Object *obj)
+> +{
+> +    VMAppleCfgState *s = VMAPPLE_CFG(obj);
+> +
+> +    memory_region_init_ram(&s->mem, obj, "VMApple Config", VMAPPLE_CFG_SIZE,
+> +                           &error_fatal);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mem);
+> +
+> +    s->serial = (char *)"1234";
+> +    s->model = (char *)"VM0001";
+> +    s->soc_name = (char *)"Apple M1 (Virtual)";
+> +}
+> +
+> +static Property vmapple_cfg_properties[] = {
+> +    DEFINE_PROP_UINT32("nr-cpus", VMAppleCfgState, cfg.nr_cpus, 1),
+> +    DEFINE_PROP_UINT64("ecid", VMAppleCfgState, cfg.ecid, 0),
+> +    DEFINE_PROP_UINT64("ram-size", VMAppleCfgState, cfg.ram_size, 0),
+> +    DEFINE_PROP_UINT32("run_installer1", VMAppleCfgState, cfg.run_installer1, 0),
+> +    DEFINE_PROP_UINT32("run_installer2", VMAppleCfgState, cfg.run_installer2, 0),
+> +    DEFINE_PROP_UINT32("rnd", VMAppleCfgState, cfg.rnd, 0),
+> +    DEFINE_PROP_MACADDR("mac-en0", VMAppleCfgState, cfg.mac_en0),
+> +    DEFINE_PROP_MACADDR("mac-en1", VMAppleCfgState, cfg.mac_en1),
+> +    DEFINE_PROP_MACADDR("mac-wifi0", VMAppleCfgState, cfg.mac_wifi0),
+> +    DEFINE_PROP_MACADDR("mac-bt0", VMAppleCfgState, cfg.mac_bt0),
+> +    DEFINE_PROP_STRING("serial", VMAppleCfgState, serial),
+> +    DEFINE_PROP_STRING("model", VMAppleCfgState, model),
+> +    DEFINE_PROP_STRING("soc_name", VMAppleCfgState, soc_name),
 > +    DEFINE_PROP_END_OF_LIST(),
 > +};
 > +
-> +static void pvpanic_mmio_class_init(ObjectClass *klass, void *data)
+> +static void vmapple_cfg_class_init(ObjectClass *klass, void *data)
 > +{
 > +    DeviceClass *dc = DEVICE_CLASS(klass);
 > +
-> +    device_class_set_props(dc, pvpanic_mmio_properties);
-> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> +    dc->realize = vmapple_cfg_realize;
+> +    dc->desc = "VMApple Configuration Region";
+> +    device_class_set_props(dc, vmapple_cfg_properties);
+> +    dc->reset = vmapple_cfg_reset;
 > +}
 > +
-> +static const TypeInfo pvpanic_mmio_info = {
-> +    .name          = TYPE_PVPANIC_MMIO_DEVICE,
+> +static const TypeInfo vmapple_cfg_info = {
+> +    .name          = TYPE_VMAPPLE_CFG,
 > +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(PVPanicMMIOState),
-> +    .instance_init = pvpanic_mmio_initfn,
-> +    .class_init    = pvpanic_mmio_class_init,
+> +    .instance_size = sizeof(VMAppleCfgState),
+> +    .instance_init = vmapple_cfg_init,
+> +    .class_init    = vmapple_cfg_class_init,
 > +};
 > +
-> +static void pvpanic_register_types(void)
+> +static void vmapple_cfg_register_types(void)
 > +{
-> +    type_register_static(&pvpanic_mmio_info);
+> +    type_register_static(&vmapple_cfg_info);
 > +}
 > +
-> +type_init(pvpanic_register_types)
+> +type_init(vmapple_cfg_register_types)
 
-Instead of using the above boilerplate, the current recommended way to register QOM 
-types is with the DEFINE_TYPES() macro.
+And DEFINE_TYPES() here again.
 
-> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-> index 6996d265e4..b69746a60a 100644
-> --- a/hw/misc/Kconfig
-> +++ b/hw/misc/Kconfig
-> @@ -125,6 +125,10 @@ config PVPANIC_ISA
->       depends on ISA_BUS
->       select PVPANIC_COMMON
+> diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
+> index 388a2bc60c..542426a740 100644
+> --- a/hw/vmapple/Kconfig
+> +++ b/hw/vmapple/Kconfig
+> @@ -3,3 +3,6 @@ config VMAPPLE_AES
 >   
-> +config PVPANIC_MMIO
-> +    bool
-> +    select PVPANIC_COMMON
-> +
->   config AUX
+>   config VMAPPLE_BDIF
 >       bool
->       select I2C
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 892f8b91c5..63821d6040 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -116,6 +116,7 @@ system_ss.add(when: 'CONFIG_ARMSSE_MHU', if_true: files('armsse-mhu.c'))
->   
->   system_ss.add(when: 'CONFIG_PVPANIC_ISA', if_true: files('pvpanic-isa.c'))
->   system_ss.add(when: 'CONFIG_PVPANIC_PCI', if_true: files('pvpanic-pci.c'))
-> +system_ss.add(when: 'CONFIG_PVPANIC_MMIO', if_true: files('pvpanic-mmio.c'))
->   system_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
->   system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
->     'aspeed_hace.c',
+> +
+> +config VMAPPLE_CFG
+> +    bool
+> diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
+> index d4624713de..64b78693a3 100644
+> --- a/hw/vmapple/meson.build
+> +++ b/hw/vmapple/meson.build
+> @@ -1,2 +1,3 @@
+>   system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files('aes.c'))
+>   system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'))
+> +system_ss.add(when: 'CONFIG_VMAPPLE_CFG',  if_true: files('cfg.c'))
 
 
 ATB,

@@ -1,72 +1,71 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp496430ejc;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp496432ejc;
         Fri, 1 Sep 2023 02:44:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGcvQ6TSDRbVPQKYWyUSjBxKpDJIV+sfpJixeD1XKLmm46p9ueShPxIN6PFxq7x5DH4d1qk
-X-Received: by 2002:a0c:e193:0:b0:651:6123:867a with SMTP id p19-20020a0ce193000000b006516123867amr1888852qvl.5.1693561472846;
+X-Google-Smtp-Source: AGHT+IEuFXj7w8iHqEX2Y9A/UEq1oa9dvQt8BieK3Nxo+jxxffV/Z2j+SzhDH3Spcjhfp+A2hyQg
+X-Received: by 2002:a0c:f4d2:0:b0:647:2f8f:8c29 with SMTP id o18-20020a0cf4d2000000b006472f8f8c29mr1700885qvm.48.1693561472865;
         Fri, 01 Sep 2023 02:44:32 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1693561472; cv=none;
         d=google.com; s=arc-20160816;
-        b=TqkUpMYreJQOaXpLjiht1A2QhiB+U/qPkD1KZbVSevKeTbnURbjQIcv6pjhvrp6X/c
-         tJnaihl0x0d21pBx/QPKG3u5E3DI7in/JUVgeO6LWfaxdykv4raQ5K6m48z/vexy+YNm
-         OtE+KfSpxpk9OMr133E4/TU1gvggEbIAwcu6Ent/kCWCZt3CHZIBVI+CtJS93NvBIa1p
-         UopsTKU7LpZduBl8v+Q8KtBoKIK+iRBG3JH4r6iNgYrzHJYrPZmVag7xJIsyNcDNO9SV
-         t82DaJRxA+A9jC3UQmdm3Iho2qhber3m5MbjruAdshdmaKGrEAujVNHqpvbjQPnkvFbl
-         Ur6A==
+        b=sZshrpnszRxArPmVFDskTPNtpB0VPqqXW/A4qH83tJXXfi+t+q7eFQEhAhH2xD9LRy
+         DZowxGaush55p7l8t7XNO7xfG95zTXfqbdBhw6LUR2VvvGoxjPXL3xA3CljJXOOZrty5
+         DmsSVWExPVzMVpm+leM4Y2Eyj3gsM33jNWeGoAfK6/TJdFtCEhfDfBkn8aEwOY5SPrEm
+         +Et7miIvVo+lL04mBPAgGFjOSX8i5k3h3FXEEOF+lvRgjyJT+oCdoB8X5ilqXVDunHEs
+         IU4/ZMOeTmUQeg0c0Lwb+/bJpqa9RKGfP7+L0oXcoktjdVFw0ngvOyTq7W/1s09DKFDm
+         cmjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=CBCePsvUZ78JjNEoJDeWVKnBd+GnyYE1sTPIvomDaHc=;
-        fh=4jctf1SUPkov0c0IvxiKECRneLh+aY640s7QBLGg/KU=;
-        b=SAnaT0F2LFTAE9eJqRami3yKAExm9kyKCb24Vvl0FOpzORuAss41uvfZEDdOD6+Vrh
-         DBR3H85uKT9Swx9ZFX4OVCc7suqellVdU0lmciyI45pjLVOv9h3TeMiINmMAvCOscdT9
-         O7Z7XRLKtQgop7OoVeAFzQe/ubuQBc5m+bfZezNEojRci5N2ZHANg+B3aDLyj+nM9ctt
-         tnrfpfQZ9xnWa9hyiO87xgqWyL3XX3ngXEAF5LF8DkXZ8QRzkZCZ1x36X7NcRGp4tSl/
-         C8vnREtb8eUDI11xbWb+LYXMrjLF87PpcPG71+fk9tpPcHuHuz9rno4imYloaAOCZECp
-         kznw==
+        bh=1BLIrNyVfCivsjfZ5ORSKPavJojsslslzD2FBIGPVoY=;
+        fh=0FldW4XPCIVeBr3v546UBzvfCk0aVDrArGpyFJOOCns=;
+        b=ZKlY53j5Q3CqJEKEHneFUnZgMlD2+Z3BFcI8DW02wNhXEhOBtEPER+EocylyhEBK+P
+         k9TSYq0lzbxJYjVZGl5oRHOXqhRxjJ66ScQsku1stnsQ2nSeeKoH/LAfP8fYdffkukXO
+         Ir8bknzPV8x3Pv7iV0b0iOLofx9F4FDUXOWzu/wxHm045MYAJmdrHBvcxdRVNQJMPCa6
+         pdpzeG5isIYSppeWUZrwyDLZRF+d1lECMUsMZKqSiFhpHXgUmUY3NMfZyAFnMkfmzl/w
+         Iy69lQWI+CDSdAR74ucc61M6bi10BHvI7q47sF+nzeD4JKSWxMqUbU7BF+/xWsYKKdhh
+         Ha/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i1-20020a0cf381000000b0062fe9266d13si1985132qvk.439.2023.09.01.02.44.32
+        by mx.google.com with ESMTPS id dp14-20020a05620a2b4e00b0076da7b8732bsi2199782qkb.175.2023.09.01.02.44.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 01 Sep 2023 02:44:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qc0fq-0001Vn-LS; Fri, 01 Sep 2023 05:42:42 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qc0gI-0002WG-RA; Fri, 01 Sep 2023 05:43:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>)
- id 1qc0fn-0001OA-LZ; Fri, 01 Sep 2023 05:42:39 -0400
+ id 1qc0g8-000206-Td; Fri, 01 Sep 2023 05:43:00 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>)
- id 1qc0fl-0002tv-9R; Fri, 01 Sep 2023 05:42:39 -0400
+ id 1qc0g5-00032X-GX; Fri, 01 Sep 2023 05:42:59 -0400
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcY3Z5r3Sz4x3k;
- Fri,  1 Sep 2023 19:42:34 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcY3z3gK2z4wy6;
+ Fri,  1 Sep 2023 19:42:55 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcY3X5h8Cz4x3H;
- Fri,  1 Sep 2023 19:42:32 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcY3x75Njz4x2D;
+ Fri,  1 Sep 2023 19:42:53 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Joel Stanley <joel@jms.id.au>
-Subject: [PULL 06/26] hw/ssi: Add a "cs" property to SSIPeripheral
-Date: Fri,  1 Sep 2023 11:41:54 +0200
-Message-ID: <20230901094214.296918-7-clg@kaod.org>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 15/26] hw/sd: When card is in wrong state,
+ log which spec version is used
+Date: Fri,  1 Sep 2023 11:42:03 +0200
+Message-ID: <20230901094214.296918-16-clg@kaod.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230901094214.296918-1-clg@kaod.org>
 References: <20230901094214.296918-1-clg@kaod.org>
@@ -82,79 +81,67 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YYrqXZwm8BsH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VKm19jNS8COg
 
-Boards will use this new property to identify the device CS line and
-wire the SPI controllers accordingly.
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Cc: Alistair Francis <alistair@alistair23.me>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+Add the sd_version_str() helper.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/ssi/ssi.h | 3 +++
- hw/ssi/ssi.c         | 7 +++++++
- 2 files changed, 10 insertions(+)
+ hw/sd/sd.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
-index 6950f86810d3..c5bdf1f2165f 100644
---- a/include/hw/ssi/ssi.h
-+++ b/include/hw/ssi/ssi.h
-@@ -64,6 +64,9 @@ struct SSIPeripheral {
+diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+index 4412559c05be..20e62aff70b6 100644
+--- a/hw/sd/sd.c
++++ b/hw/sd/sd.c
+@@ -145,6 +145,19 @@ struct SDState {
  
-     /* Chip select state */
-     bool cs;
+ static void sd_realize(DeviceState *dev, Error **errp);
+ 
++static const char *sd_version_str(enum SDPhySpecificationVersion version)
++{
++    static const char *sdphy_version[] = {
++        [SD_PHY_SPECv1_10_VERS]     = "v1.10",
++        [SD_PHY_SPECv2_00_VERS]     = "v2.00",
++        [SD_PHY_SPECv3_01_VERS]     = "v3.01",
++    };
++    if (version >= ARRAY_SIZE(sdphy_version)) {
++        return "unsupported version";
++    }
++    return sdphy_version[version];
++}
 +
-+    /* Chip select index */
-+    uint8_t cs_index;
- };
- 
- extern const VMStateDescription vmstate_ssi_peripheral;
-diff --git a/hw/ssi/ssi.c b/hw/ssi/ssi.c
-index d54a109beeb5..4e33e0ea5bc2 100644
---- a/hw/ssi/ssi.c
-+++ b/hw/ssi/ssi.c
-@@ -13,6 +13,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "hw/qdev-properties.h"
- #include "hw/ssi/ssi.h"
- #include "migration/vmstate.h"
- #include "qemu/module.h"
-@@ -71,6 +72,11 @@ static void ssi_peripheral_realize(DeviceState *dev, Error **errp)
-     ssc->realize(s, errp);
- }
- 
-+static Property ssi_peripheral_properties[] = {
-+    DEFINE_PROP_UINT8("cs", SSIPeripheral, cs_index, 0),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void ssi_peripheral_class_init(ObjectClass *klass, void *data)
+ static const char *sd_state_name(enum SDCardStates state)
  {
-     SSIPeripheralClass *ssc = SSI_PERIPHERAL_CLASS(klass);
-@@ -81,6 +87,7 @@ static void ssi_peripheral_class_init(ObjectClass *klass, void *data)
-     if (!ssc->transfer_raw) {
-         ssc->transfer_raw = ssi_transfer_raw_default;
-     }
-+    device_class_set_props(dc, ssi_peripheral_properties);
- }
+     static const char *state_name[] = {
+@@ -968,8 +981,9 @@ static bool address_in_range(SDState *sd, const char *desc,
  
- static const TypeInfo ssi_peripheral_info = {
+ static sd_rsp_type_t sd_invalid_state_for_cmd(SDState *sd, SDRequest req)
+ {
+-    qemu_log_mask(LOG_GUEST_ERROR, "SD: CMD%i in a wrong state: %s\n",
+-                  req.cmd, sd_state_name(sd->state));
++    qemu_log_mask(LOG_GUEST_ERROR, "SD: CMD%i in a wrong state: %s (spec %s)\n",
++                  req.cmd, sd_state_name(sd->state),
++                  sd_version_str(sd->spec_version));
+ 
+     return sd_illegal;
+ }
 -- 
 2.41.0
 

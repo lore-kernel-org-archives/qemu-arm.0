@@ -1,134 +1,118 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp441932ejc;
-        Fri, 1 Sep 2023 00:35:54 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFjuku2voKYFwMaw8jZkdj6ylSwtuXdn3Zq43ajgQotxCMPj/GXvECvUe0nxxwoY4P6B518
-X-Received: by 2002:a05:6a00:2312:b0:68a:49bc:e094 with SMTP id h18-20020a056a00231200b0068a49bce094mr2256227pfh.25.1693553754572;
-        Fri, 01 Sep 2023 00:35:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693553754; cv=none;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp495376ejc;
+        Fri, 1 Sep 2023 02:42:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEcrQJxs3+8qut27dAGAJ0vz2utEhHnBAmNjdrDOYDXHfXRfEM6JNtR6odeFThrOfaOoCnC
+X-Received: by 2002:a17:902:e54c:b0:1bd:a22a:d406 with SMTP id n12-20020a170902e54c00b001bda22ad406mr2420155plf.21.1693561346804;
+        Fri, 01 Sep 2023 02:42:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693561346; cv=none;
         d=google.com; s=arc-20160816;
-        b=U9liI729VspOeiql+StnBmYmqy9ZhaU4lhDYGOkNW85qGe/oMM1AhOxJ7rKuQwI3rj
-         xElhjpb9nJOjTY8jqE3NmxOOtd5mtv3G0qWvrdt5L7+FO4M0gue61IHhelT7PjW1AGYU
-         +q7jdHc83HKbz4KrRyHDepMJ6RriZmlTPZQUaUovCWXlPS01obgT5GjrrYAzS9/Dab1n
-         Hw9SW+3ija7h8tQ92NMWtk0mi2H6S53GH25xTWEydExq49PmSuf6aLk6hRMrYxVFiJ/D
-         SS9BzalPiHSu4N8k3tYItWy+AYBg5zTy7VgpQdpkEHqF2YJL/mGk0JZUVavAIw1VRdXx
-         14cQ==
+        b=NwjFXQobLH/dFB9emOzJ5xCrzourb3o6dhU4jQi2ozB/AsMBNj1tbG3Qoov3xvjnOZ
+         LEHZe/zuvawdVxAnN7pj5uNVNJFb4T9MbR/NiWExcMWq3Pn1dOVQ2s6zktBwxzCsgm1g
+         SqBSQgSf03pOK7YWiq3UEdHIgzQ3ewgNx8AizZca9La6Mea5hkdFLa1nS4ow2CKp3knF
+         EUjOaF0OegEridnxBcjwyPofO8TU04MpiaaNe4xdW8SZ08cD/yUUIjyxZZnEJDQXmD4X
+         yjlTJVdb3VgOu+xAFcVzSwn/LFa0/54mm0NHNYUQJZxdzE/i17RTXfUZPY4z/gYFhng4
+         qTHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:in-reply-to:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:dkim-signature:date;
-        bh=uSTkpiBeyJOSrDyBqH5u+QE0xVO5xgn5RZNE7JKVcac=;
-        fh=Np9y3epmhxH8ZlLvZu6f+TflFieSH50SDa7sDSCsMbs=;
-        b=fDGCfVDnPiu+GySsLKRAMLAACYcdepURxZs8ds1PJoFmGlGS+vQ8qBUVlY77UA9FIy
-         S0ClZePbuotmfp0Id4J5lvmI13NcDADyK4+vXApqCOQXkNTK7tgnT9WixnCjk6FVnGW8
-         dDIRaEbmKjcajwOWoNNrTw4IidqYdod3oeSA5+8LJtGH/rCEh3Wtx5KlACukU8k+6LZB
-         DTJmHcVOOESmfqi7ld9eTTk0htrxLWOisJZD1ztXs9qrtY47rMn7qoAwursUgx9OdzEw
-         Xo71+T4F6SJ5CxbDd94BRadKA/aNx98kN8ByQSsFwIv93Xs5neJbNO1RZl6G+k/kwj2x
-         4xNQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=PCBSawVSTAElFKVNchaPE4h+CVyhodQmWDQs9T4MSDw=;
+        fh=zx2WzN4fa+h13VrTWaWF47GQYxTIpFi98HVeG5gD4pE=;
+        b=WWNZMwbJZ1aKbVKhkM1CAVdQIUkcV+0iChsAoUymZ6QuyVEoIJHbrWoomNtQZTwNZo
+         z92yZRK+us97xQrxuoVI1erLanpR3RlqEPOnq9BhqTbXDaxl/4Aimy+FRXcR+YeAJhLA
+         M/uvNBMbA6e7q5OeHE8fPNKEZV7mTmISs78DwNR7GkvPAECBcHtqZuXH1GbXsGhkxxR0
+         BV66gybuEb2OAIfrEESGQeFgBZBOTX4tGFJoxHc7HAS6hRTOHeEKMC5Qnvi1Ga/Xoq7i
+         KLD++goe28BS5Z/3uW4MMkabCcLJJ9Q5MkKvdFWWBF21ov9rPzWzPwOQy3JwZyUUKjr/
+         7gzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linux.dev header.s=key1 header.b=YunA2qSY;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id b30-20020a63931e000000b0056a6ea68141si2604309pge.59.2023.09.01.00.35.54;
-        Fri, 01 Sep 2023 00:35:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       spf=pass (google.com: domain of srs0=snxb=er=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=SnXb=ER=kaod.org=clg@ozlabs.org"
+Return-Path: <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
+        by mx.google.com with ESMTPS id v7-20020a170903238700b001bb1504b696si2476757plh.4.2023.09.01.02.42.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Sep 2023 02:42:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srs0=snxb=er=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linux.dev header.s=key1 header.b=YunA2qSY;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S238181AbjIAHfz (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Fri, 1 Sep 2023 03:35:55 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:57956 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S234471AbjIAHfx (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 1 Sep 2023 03:35:53 -0400
-Received: from out-235.mta0.migadu.com (out-235.mta0.migadu.com [91.218.175.235])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id E1F7310D2
-        for <kvm@vger.kernel.org>; Fri,  1 Sep 2023 00:35:50 -0700 (PDT)
-Date:   Fri, 1 Sep 2023 09:35:47 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-        t=1693553749;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=uSTkpiBeyJOSrDyBqH5u+QE0xVO5xgn5RZNE7JKVcac=;
-        b=YunA2qSYy4vcIkBJ5DQbT7RYLD/OWgVFsES3gy7S0S3TpjGK/GdAZrCZgktwl4SABbAmV4
-        v8IwiGnGXpVDM/6UsvuPyoH+He74lAdYDdEYiIWvqsGO/7CEIAE9D5BfBWG1uCUjeyVAco
-        dRtzNx/jHIO+Bak/lzkbHN1MJvP+T0A=
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From:   Andrew Jones <andrew.jones@linux.dev>
-To:     Colton Lewis <coltonlewis@google.com>
-Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-        kvm@vger.kernel.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] arm64: Restore trapless ptimer access
-Message-ID: <20230901-16232ff17690fc32a0feb5df@orel>
-References: <20230831190052.129045-1-coltonlewis@google.com>
+       spf=pass (google.com: domain of srs0=snxb=er=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=SnXb=ER=kaod.org=clg@ozlabs.org"
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcY3M4gZVz4x2b;
+	Fri,  1 Sep 2023 19:42:23 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcY3K5sDGz4wxW;
+	Fri,  1 Sep 2023 19:42:21 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PULL 01/26] aspeed: Introduce helper for 32-bit hosts limitation
+Date: Fri,  1 Sep 2023 11:41:49 +0200
+Message-ID: <20230901094214.296918-2-clg@kaod.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230901094214.296918-1-clg@kaod.org>
+References: <20230901094214.296918-1-clg@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230831190052.129045-1-coltonlewis@google.com>
-X-Migadu-Flow: FLOW_OUT
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_BLOCKED,
-        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: wIma2JWIGi22
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: lVAtqtPQkvvW
 
-On Thu, Aug 31, 2023 at 07:00:52PM +0000, Colton Lewis wrote:
-> Due to recent KVM changes, QEMU is setting a ptimer offset resulting
-> in unintended trap and emulate access and a consequent performance
-> hit. Filter out the PTIMER_CNT register to restore trapless ptimer
-> access.
-> 
-> Quoting Andrew Jones:
-> 
-> Simply reading the CNT register and writing back the same value is
-> enough to set an offset, since the timer will have certainly moved
-> past whatever value was read by the time it's written.  QEMU
-> frequently saves and restores all registers in the get-reg-list array,
-> unless they've been explicitly filtered out (with Linux commit
-> 680232a94c12, KVM_REG_ARM_PTIMER_CNT is now in the array). So, to
-> restore trapless ptimer accesses, we need a QEMU patch to filter out
-> the register.
-> 
-> See
-> https://lore.kernel.org/kvmarm/gsntttsonus5.fsf@coltonlewis-kvm.c.googlers.com/T/#m0770023762a821db2a3f0dd0a7dc6aa54e0d0da9
+On 32-bit hosts, RAM has a 2047 MB limit. Use a macro to define the
+default ram size of machines (AST2600 SoC) that can have 2 GB.
 
-The link can be shorter with
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/arm/aspeed.c | 21 +++++++++------------
+ 1 file changed, 9 insertions(+), 12 deletions(-)
 
-https://lore.kernel.org/all/20230823200408.1214332-1-coltonlewis@google.com/
-
-> for additional context.
-> 
-> Signed-off-by: Andrew Jones <andrew.jones@linux.dev>
-
-Thanks for the testing and posting, Colton. Please add your s-o-b and a
-Tested-by tag as well.
-
-Thanks,
-drew
-
-> ---
->  target/arm/kvm64.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 4d904a1d11..2dd46e0a99 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -672,6 +672,7 @@ typedef struct CPRegStateLevel {
->   */
->  static const CPRegStateLevel non_runtime_cpregs[] = {
->      { KVM_REG_ARM_TIMER_CNT, KVM_PUT_FULL_STATE },
-> +    { KVM_REG_ARM_PTIMER_CNT, KVM_PUT_FULL_STATE },
->  };
->  
->  int kvm_arm_cpreg_level(uint64_t regidx)
-> -- 
-> 2.42.0.283.g2d96d420d3-goog
-> 
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 263626abeae1..b922a2c491cc 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -47,6 +47,13 @@ struct AspeedMachineState {
+     char *spi_model;
+ };
+ 
++/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
++#if HOST_LONG_BITS == 32
++#define ASPEED_RAM_SIZE(sz) MIN((sz), 1 * GiB)
++#else
++#define ASPEED_RAM_SIZE(sz) (sz)
++#endif
++
+ /* Palmetto hardware value: 0x120CE416 */
+ #define PALMETTO_BMC_HW_STRAP1 (                                        \
+         SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |               \
+@@ -1423,12 +1430,7 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+-/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
+-#if HOST_LONG_BITS == 32
+-#define FUJI_BMC_RAM_SIZE (1 * GiB)
+-#else
+-#define FUJI_BMC_RAM_SIZE (2 * GiB)
+-#endif
++#define FUJI_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+ 
+ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
+ {
+@@ -1450,12 +1452,7 @@ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+-/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
+-#if HOST_LONG_BITS == 32
+-#define BLETCHLEY_BMC_RAM_SIZE (1 * GiB)
+-#else
+-#define BLETCHLEY_BMC_RAM_SIZE (2 * GiB)
+-#endif
++#define BLETCHLEY_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+ 
+ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
+ {
+-- 
+2.41.0

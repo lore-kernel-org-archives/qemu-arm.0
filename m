@@ -1,86 +1,86 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp496162ejc;
-        Fri, 1 Sep 2023 02:44:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE1OJk/6FtiYMtw1tcmyQ09ODRhwLuKG44Y5qyTb3Aa/qcVznTPrn2Q8snbMYPUn3W0ItCl
-X-Received: by 2002:ac8:5d86:0:b0:403:fee8:7fdc with SMTP id d6-20020ac85d86000000b00403fee87fdcmr2015651qtx.39.1693561442098;
-        Fri, 01 Sep 2023 02:44:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693561442; cv=none;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp496331ejc;
+        Fri, 1 Sep 2023 02:44:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGZKH9uujHWcWhpCABSV7tkEpsU5w2sxKYC3YlFQLk2kupnYEtOC5JLWEYsnXJpfXBbhCtJ
+X-Received: by 2002:a05:620a:2408:b0:76e:e66c:92f8 with SMTP id d8-20020a05620a240800b0076ee66c92f8mr3062398qkn.8.1693561458211;
+        Fri, 01 Sep 2023 02:44:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693561458; cv=none;
         d=google.com; s=arc-20160816;
-        b=N7KiJmv2Z2vGq7MG2A/GH6dBcGEcSAZYQzFepSeKohuxtNGpsi6NLeHIno7J9LtbFJ
-         Cxu1v9CyO4AMF9/4RfDJPSSh1XAK0CtxcT1JK/+ZSrRsPbuP7CLFw6qsXNVpj5VXdf37
-         xfZC/qFxjabg7fT0euMUnJDQX6J/gW4Zk6voNZEc61R7YyTHFAOWGH4hp4cVwEUWgOgC
-         qXga6tNN9snTlMesPsN6IKtLRAGDrbzQ00fL+tCJ+uDRFcguoJrnvtHdrraI13v7DOq6
-         xOsga4rBDv7w3ljjeenHYf9JVtmz98FQ8HAhiPJwI32kTpg0U9551XNgkwRf38Xo91OU
-         atAQ==
+        b=T0RDOsEDtv6tG6pb+9ojmteLj8o4AFfZPKXbfHzRajUz9Xru1t3S260qHDlx8lBkQ2
+         x13mUJbnEQlG2qNH3P2p2ePGql3dcIh2sBa9JZ1rbRmLLyBiNRItQBFLcM6eZtxbrNuL
+         AkUIbDHFB92dX6St4g5kl68IvQSquFJt18k9Ql9Wh3Eab6p1qc5V6VYj6EOmZ4dQc0S9
+         S5lAglaHAbHPFOBXd1tp1kqQf2QrnKAOz7qi2vt/yTuQyUvoUUpTn5FseimrPdtz947t
+         8vHkBzcqrYZl/493Mjwu4lJIdEvoi4l0n3/C7BJMup5y17rdG8ueO7RE7Kk3YhUqIyDn
+         0REg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=mVkmChyE7jt3h13uMcctW5ava26/o47TUBP3YO8gDPY=;
-        fh=1Jxhf+9Nb+8r7Uf3Z24eyiFG706BexBUOuvmFi7HxA0=;
-        b=NSTWL0hLQkAmo95H5Jb4xr3psiP0/UL2QFLD31IS7ggk8xqo7Qet4VkKqKafQEBRRf
-         xS6zhZAcK1rtidkJmK4ivGfw4H3PUsuU0nI13oPyMTNHgIJE6jvHM9+E32VHV21X9BPw
-         +GLk5eGR+zzM8Q2aVnnC/1yk1S/DAvv9tg2W1OlgS+eAlMh6iZhqSA9uMVnxlxqvdOUY
-         FrmopJ93601nXjbYBxpwiKppKcAb657Igj7TNBq4r8YkM1PmZlPAjUKVsuOL2A74Od4Y
-         zwNsCEXLY5B1IUqCGGnFa+ltztfWrdzbXhadVwrBFvASzVdrCu0tWbSG6CSJdfYPlMJB
-         sTIA==
+        bh=Bho2ZC5PMS/GMiVTVmKTYhEWvUB5WGA2o2VijYaWBL8=;
+        fh=sAFxsovMRUpeK1m2ZrUTkWk2zuchzNgVidyR5jMbIm8=;
+        b=DbdtufRduIOJSy4ikuswMcx0QnVR1BpK4JoZqOb7HBN3kDBeOjM7mP8uAGlFJ+aPcP
+         ndFiQIFod5bNkJZSqGFSrdmQX0fVRIpbdjoaBrtaMSQBi0/RirU6VzsZpE0+yqY/QVgb
+         uH/y2nqhKTTXxcEhTDND2XsXFix2hlWg09Hqp/wpfNy/tkC+BjX0zaD4nQYqStnm3zt5
+         hc4qeg8Edlx0MUnovkc0VdcEaMooyDz3OuVEYW/dzRnlpfDJSj8W/fyCFbcMoVeCGXSm
+         yVhkdDricejR7nJekODchxtxpvwjINXBJp35h16spnuv2yfz0iMQ8daKkX8j79EjzFYd
+         piVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n13-20020a05622a040d00b00408c10b50e0si2134890qtx.204.2023.09.01.02.44.01
+        by mx.google.com with ESMTPS id z16-20020a05620a08d000b0076d8816ff26si2148527qkz.126.2023.09.01.02.44.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Sep 2023 02:44:02 -0700 (PDT)
+        Fri, 01 Sep 2023 02:44:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qc0fm-0001Nk-4W; Fri, 01 Sep 2023 05:42:38 -0400
+	id 1qc0gE-0002DG-Fk; Fri, 01 Sep 2023 05:43:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>)
- id 1qc0fj-0001Mc-Qv; Fri, 01 Sep 2023 05:42:35 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ id 1qc0g4-0001wj-0o; Fri, 01 Sep 2023 05:42:57 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>)
- id 1qc0ff-0002r4-Mi; Fri, 01 Sep 2023 05:42:35 -0400
+ id 1qc0g1-000370-Fp; Fri, 01 Sep 2023 05:42:55 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcY3S1tcDz4x3D;
- Fri,  1 Sep 2023 19:42:28 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcY3v1bSVz4x2Y;
+ Fri,  1 Sep 2023 19:42:51 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcY3Q5L6Gz4wxW;
- Fri,  1 Sep 2023 19:42:26 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcY3s3CXNz4x2D;
+ Fri,  1 Sep 2023 19:42:49 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Hang Yu <francis_yuu@stu.pku.edu.cn>,
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Bin Meng <bmeng.cn@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 03/26] hw/i2c/aspeed: Fix TXBUF transmission start position
- error
-Date: Fri,  1 Sep 2023 11:41:51 +0200
-Message-ID: <20230901094214.296918-4-clg@kaod.org>
+Subject: [PULL 13/26] hw/sd/sdcard: Return ILLEGAL for CMD19/CMD23 prior SD
+ spec v3.01
+Date: Fri,  1 Sep 2023 11:42:01 +0200
+Message-ID: <20230901094214.296918-14-clg@kaod.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230901094214.296918-1-clg@kaod.org>
 References: <20230901094214.296918-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=SnXb=ER=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,107 +95,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eW6RRsn6QI7d
+X-TUID: GzNsCN1c11ft
 
-From: Hang Yu <francis_yuu@stu.pku.edu.cn>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-According to the ast2600 datasheet and the linux aspeed i2c driver,
-the TXBUF transmission start position should be TXBUF[0] instead
-of TXBUF[1],so the arg pool_start is useless,and the address is not
-included in TXBUF.So even if Tx Count equals zero,there is at least
-1 byte data needs to be transmitted,and M_TX_CMD should not be cleared
-at this condition.The driver url is:
-https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v5.15/drivers/i2c/busses/i2c-ast2600.c
+CMD19 (SEND_TUNING_BLOCK) and CMD23 (SET_BLOCK_COUNT) were
+added in the Physical Layer Simplified Specification v3.01.
+When earlier spec version is requested, we should return ILLEGAL.
 
-Signed-off-by: Hang Yu <francis_yuu@stu.pku.edu.cn>
-Fixes: 6054fc73e8f4 ("aspeed/i2c: Add support for pool buffer transfers")
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Message-Id: <20220509141320.98374-1-philippe.mathieu.daude@gmail.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/i2c/aspeed_i2c.c | 30 ++++++------------------------
- 1 file changed, 6 insertions(+), 24 deletions(-)
+ hw/sd/sd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index e485d8bfb836..44905d789998 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -226,7 +226,7 @@ static int aspeed_i2c_dma_read(AspeedI2CBus *bus, uint8_t *data)
-     return 0;
- }
+diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+index 77a717d35507..0be9ee965ac9 100644
+--- a/hw/sd/sd.c
++++ b/hw/sd/sd.c
+@@ -1263,7 +1263,7 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
  
--static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
-+static int aspeed_i2c_bus_send(AspeedI2CBus *bus)
- {
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
-     int ret = -1;
-@@ -239,7 +239,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
-                                                 TX_COUNT) + 1;
- 
-     if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
--        for (i = pool_start; i < pool_tx_count; i++) {
-+        for (i = 0; i < pool_tx_count; i++) {
-             uint8_t *pool_base = aic->bus_pool_base(bus);
- 
-             trace_aspeed_i2c_bus_send("BUF", i + 1, pool_tx_count,
-@@ -273,7 +273,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, uint8_t pool_start)
+     case 19:    /* CMD19: SEND_TUNING_BLOCK (SD) */
+         if (sd->spec_version < SD_PHY_SPECv3_01_VERS) {
+-            break;
++            goto bad_cmd;
          }
-         SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, TX_DMA_EN, 0);
-     } else {
--        trace_aspeed_i2c_bus_send("BYTE", pool_start, 1,
-+        trace_aspeed_i2c_bus_send("BYTE", 0, 1,
-                                   bus->regs[reg_byte_buf]);
-         ret = i2c_send(bus->bus, bus->regs[reg_byte_buf]);
-     }
-@@ -446,10 +446,8 @@ static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
-  */
- static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
- {
--    uint8_t pool_start = 0;
-     uint32_t reg_intr_sts = aspeed_i2c_bus_intr_sts_offset(bus);
-     uint32_t reg_cmd = aspeed_i2c_bus_cmd_offset(bus);
--    uint32_t reg_pool_ctrl = aspeed_i2c_bus_pool_ctrl_offset(bus);
-     uint32_t reg_dma_len = aspeed_i2c_bus_dma_len_offset(bus);
+         if (sd->state == sd_transfer_state) {
+             sd->state = sd_sendingdata_state;
+@@ -1274,7 +1274,7 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
  
-     if (!aspeed_i2c_check_sram(bus)) {
-@@ -483,27 +481,11 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
- 
-         SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_START_CMD, 0);
- 
--        /*
--         * The START command is also a TX command, as the slave
--         * address is sent on the bus. Drop the TX flag if nothing
--         * else needs to be sent in this sequence.
--         */
--        if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
--            if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_pool_ctrl, TX_COUNT)
--                == 0) {
--                SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_TX_CMD, 0);
--            } else {
--                /*
--                 * Increase the start index in the TX pool buffer to
--                 * skip the address byte.
--                 */
--                pool_start++;
--            }
--        } else if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_DMA_EN)) {
-+        if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_DMA_EN)) {
-             if (bus->regs[reg_dma_len] == 0) {
-                 SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_TX_CMD, 0);
-             }
--        } else {
-+        } else if (!SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_BUFF_EN)) {
-             SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_TX_CMD, 0);
+     case 23:    /* CMD23: SET_BLOCK_COUNT */
+         if (sd->spec_version < SD_PHY_SPECv3_01_VERS) {
+-            break;
++            goto bad_cmd;
          }
- 
-@@ -520,7 +502,7 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
- 
-     if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, M_TX_CMD)) {
-         aspeed_i2c_set_state(bus, I2CD_MTXD);
--        if (aspeed_i2c_bus_send(bus, pool_start)) {
-+        if (aspeed_i2c_bus_send(bus)) {
-             SHARED_ARRAY_FIELD_DP32(bus->regs, reg_intr_sts, TX_NAK, 1);
-             i2c_end_transfer(bus->bus);
-         } else {
+         switch (sd->state) {
+         case sd_transfer_state:
 -- 
 2.41.0
 

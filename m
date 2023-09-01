@@ -1,70 +1,71 @@
-Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp496998ejc;
-        Fri, 1 Sep 2023 02:45:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFA3PrSS6rzYtK8ySaB/OJBLS7LVhlAL2H4HSEq2TwnpBeM5/YvdQoieor5j6kQQEYWRJQD
-X-Received: by 2002:a0c:aa93:0:b0:64f:4d8e:574e with SMTP id f19-20020a0caa93000000b0064f4d8e574emr1343686qvb.7.1693561541420;
-        Fri, 01 Sep 2023 02:45:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693561541; cv=none;
+Received: by 2002:a17:907:76b5:b0:9a1:fa4e:495e with SMTP id jw21csp497025ejc;
+        Fri, 1 Sep 2023 02:45:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHj9m0/gW4ZS3sRZMlwwc+vmuNJ7AXJH9M/+qBYjnzpkIg9dQcgnTTOvZKXyU1Ab2Js3Ajo
+X-Received: by 2002:ac8:580f:0:b0:403:a9aa:56d6 with SMTP id g15-20020ac8580f000000b00403a9aa56d6mr2663513qtg.58.1693561544840;
+        Fri, 01 Sep 2023 02:45:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693561544; cv=none;
         d=google.com; s=arc-20160816;
-        b=wE9p/p1c6y4VFAmLwG0Kp0ZIbb3wOX+tHMjoTjwDs1uIEDWnwU6McOb7WZsysLVCTw
-         OK810O04DGoa80UfLCpXau9jE6HotHLNbamDsAJuzAQlFBaWVEQ6ZbnuP/eB5fippzMt
-         xsnTirCvWKDV+8rykU+AnDrsrSuY/IKWYUeG2WnCwon5WgIvt0zDJGvVMgMuXG1d2gVA
-         QPN1Rb7E3m6x67lCyIc+85r/QamKhrVcYiBIjPoXmJO+w1t+X8ayBxeJFgRuldHABvpi
-         Jxfc6eEtF7j3vAMbMCqHcN0yVrCAwJzGwYEEF8dW2xaLGl/eHNMN45fmsDsRhyOA6puk
-         qLHQ==
+        b=kBpGm+zpHJ/XBlxmLcglwPWPaoR8ibZPPC7YH4/6Qz/AcO0zctFVDA7pcbonTK8B84
+         ZOdcwOXdPL1ELYoF9gQmqMvDcBw8ziowU+Ti6tPmvhDOCD6yyDhUpFKCzrKba8oPw2z8
+         85G7t56B0wAmRGTv1OL1Ga1W2GJKke2lTGanximLs8Si2YdnwkKaFU9Q6cIE9CWmRtBE
+         Vp1+u51SVBkxzigKDi3OZ2v1waYRThefzUSZPEQ1Fbol2hl8K4sTJrc+R9sQFnk3PFr7
+         Es8FS1mss1Npqk6GccyzujuYNIzanDm5h2imq4stlQWYHMMdJtjZ0DExr+BOT4JKtvwn
+         fdXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=6vt5K+CaBe/Ns0kzYd3tGa67+5j1tNq0VycydKeZN/I=;
-        fh=nW2EDWaA0NfutwHNH8Wlni1Vcvpciwlib9wohJgNS8U=;
-        b=wXiyre4hoSkFuMu718Kl/Gj+VXu/llBgkdWLiRdJN6wprDVKGK2bA+CUxhAk4vATKI
-         GCdpW2BWaA5ZLRdXnuSXMEZOeK4w6GaJyXXBr0P/1cBNsHKL3gDS13qrj/hmnxGbLHEI
-         FwsfsmemHFjmiLPtUweFLpzAmXbEYc1/F7EWJZ49GYczUMO14lwSsikwPkxx6dagKL/Z
-         VolNw8sSrCOksChHOSIi4z6VONnB8vkYbZMLjU7s3tDD88c69VWlCX2QiZQWC2b85XFm
-         CTr0y+5MjMA12ypPxTRkt3BEFZOvADWBRI9DrgsJdo6yfXhVt3HsSdkiiozAHmrvcqpm
-         k82w==
+        bh=laSCXRuI0WgUEvINvw9vpQy5W/8jzIb8mbvxlhYEp5w=;
+        fh=sAFxsovMRUpeK1m2ZrUTkWk2zuchzNgVidyR5jMbIm8=;
+        b=t6Rf1p8tW3krOAJqegYuDgtW9YYSJnZa+4SwLtQM4UOg4d4HdK39+S5YQ1J5mu1AHe
+         1GVntf68VZ6L2hpTshjehdlA+9hXZ8lUvU5xNZSuXZFExrlgOHYHYsGthNixnmzuSMZK
+         6kql0xJfYyT4EXLl6Ff/kIOOShisgITfE0E70y3lbg53WzkjXyc8TyEhv9OTG9Zk9cvx
+         322pwB61YtOulbCYaIMnnfwkVva0Ddgma5P5Jepg0iJDzKLDZ3w2620gFu3VmRTbm1r8
+         V2EBRd6nUAWJ90dnxB/tvE16nCh2/q+K3iUPbzwx0HPIvyC/Soozi2/tLKtDZoUI+sqY
+         Zifw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k3-20020a0cb243000000b0064f53ba19cbsi2097959qve.87.2023.09.01.02.45.41
+        by mx.google.com with ESMTPS id d12-20020ac85acc000000b004039e75c91csi2165841qtd.345.2023.09.01.02.45.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Sep 2023 02:45:41 -0700 (PDT)
+        Fri, 01 Sep 2023 02:45:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qc0gY-0003Ne-1d; Fri, 01 Sep 2023 05:43:26 -0400
+	id 1qc0gV-00035P-M7; Fri, 01 Sep 2023 05:43:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>)
- id 1qc0gX-0003Iq-Da; Fri, 01 Sep 2023 05:43:25 -0400
+ id 1qc0gU-00032r-0n; Fri, 01 Sep 2023 05:43:22 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=SnXb=ER=kaod.org=clg@ozlabs.org>)
- id 1qc0gT-0003Bb-EC; Fri, 01 Sep 2023 05:43:25 -0400
+ id 1qc0gF-000398-Ks; Fri, 01 Sep 2023 05:43:21 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcY4R3Sjbz4wxW;
- Fri,  1 Sep 2023 19:43:19 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4RcY4B4Pgbz4x2W;
+ Fri,  1 Sep 2023 19:43:06 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcY4P6wPHz4x2b;
- Fri,  1 Sep 2023 19:43:17 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4RcY48629Qz4wy6;
+ Fri,  1 Sep 2023 19:43:04 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 26/26] hw/sd: Introduce a "sd-card" SPI variant model
-Date: Fri,  1 Sep 2023 11:42:14 +0200
-Message-ID: <20230901094214.296918-27-clg@kaod.org>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Bin Meng <bmeng.cn@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 20/26] hw/sd: Add sd_cmd_GO_IDLE_STATE() handler
+Date: Fri,  1 Sep 2023 11:42:08 +0200
+Message-ID: <20230901094214.296918-21-clg@kaod.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230901094214.296918-1-clg@kaod.org>
 References: <20230901094214.296918-1-clg@kaod.org>
@@ -93,232 +94,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rOhGXw0Z7/q2
+X-TUID: lrXe8lRUWJQT
 
-and replace the SDState::spi attribute with a test checking the
-SDProto array of commands.
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Message-Id: <20210624142209.1193073-8-f4bug@amsat.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/sd/sd.h  |  3 +++
- hw/arm/stellaris.c  |  3 +--
- hw/riscv/sifive_u.c |  3 +--
- hw/sd/sd.c          | 54 +++++++++++++++++++++++++++++++++------------
- 4 files changed, 45 insertions(+), 18 deletions(-)
+ hw/sd/sd.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
-index b322d8f19b17..2c8748fb9b97 100644
---- a/include/hw/sd/sd.h
-+++ b/include/hw/sd/sd.h
-@@ -93,6 +93,9 @@ typedef struct {
- #define TYPE_SD_CARD "sd-card"
- OBJECT_DECLARE_TYPE(SDState, SDCardClass, SD_CARD)
- 
-+#define TYPE_SD_CARD_SPI "sd-card-spi"
-+DECLARE_INSTANCE_CHECKER(SDState, SD_CARD_SPI, TYPE_SD_CARD_SPI)
-+
- struct SDCardClass {
-     /*< private >*/
-     DeviceClass parent_class;
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index 5a3106e00939..aa5b0ddfaa5a 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -1235,9 +1235,8 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
- 
-             dinfo = drive_get(IF_SD, 0, 0);
-             blk = dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
--            carddev = qdev_new(TYPE_SD_CARD);
-+            carddev = qdev_new(TYPE_SD_CARD_SPI);
-             qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
--            qdev_prop_set_bit(carddev, "spi", true);
-             qdev_realize_and_unref(carddev,
-                                    qdev_get_child_bus(sddev, "sd-bus"),
-                                    &error_fatal);
-diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-index 35a335b8d0ba..ec76dce6c952 100644
---- a/hw/riscv/sifive_u.c
-+++ b/hw/riscv/sifive_u.c
-@@ -674,9 +674,8 @@ static void sifive_u_machine_init(MachineState *machine)
- 
-     dinfo = drive_get(IF_SD, 0, 0);
-     blk = dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
--    card_dev = qdev_new(TYPE_SD_CARD);
-+    card_dev = qdev_new(TYPE_SD_CARD_SPI);
-     qdev_prop_set_drive_err(card_dev, "drive", blk, &error_fatal);
--    qdev_prop_set_bit(card_dev, "spi", true);
-     qdev_realize_and_unref(card_dev,
-                            qdev_get_child_bus(sd_dev, "sd-bus"),
-                            &error_fatal);
 diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index d1c0b132c227..132daba4bd13 100644
+index e88bfcb8c802..535b72ff5c2a 100644
 --- a/hw/sd/sd.c
 +++ b/hw/sd/sd.c
-@@ -115,7 +115,6 @@ struct SDState {
- 
-     uint8_t spec_version;
-     BlockBackend *blk;
--    bool spi;
- 
-     /* Runtime changeables */
- 
-@@ -159,6 +158,13 @@ static const struct SDProto *sd_proto(SDState *sd)
-     return sc->proto;
+@@ -1020,6 +1020,16 @@ static sd_rsp_type_t sd_cmd_unimplemented(SDState *sd, SDRequest req)
+     return sd_illegal;
  }
  
-+static const SDProto sd_proto_spi;
-+
-+static bool sd_is_spi(SDState *sd)
++static sd_rsp_type_t sd_cmd_GO_IDLE_STATE(SDState *sd, SDRequest req)
 +{
-+    return sd_proto(sd) == &sd_proto_spi;
++    if (sd->state != sd_inactive_state) {
++        sd->state = sd_idle_state;
++        sd_reset(DEVICE(sd));
++    }
++
++    return sd->spi ? sd_r1 : sd_r0;
 +}
 +
- static const char *sd_version_str(enum SDPhySpecificationVersion version)
+ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
  {
-     static const char *sdphy_version[] = {
-@@ -336,7 +342,7 @@ static void sd_set_ocr(SDState *sd)
-     /* All voltages OK */
-     sd->ocr = R_OCR_VDD_VOLTAGE_WIN_HI_MASK;
+     uint32_t rca = 0x0000;
+@@ -1059,18 +1069,6 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
  
--    if (sd->spi) {
-+    if (sd_is_spi(sd)) {
-         /*
-          * We don't need to emulate power up sequence in SPI-mode.
-          * Thus, the card's power up status bit should be set to 1 when reset.
-@@ -741,13 +747,12 @@ SDState *sd_init(BlockBackend *blk, bool is_spi)
-     SDState *sd;
-     Error *err = NULL;
- 
--    obj = object_new(TYPE_SD_CARD);
-+    obj = object_new(is_spi ? TYPE_SD_CARD_SPI : TYPE_SD_CARD);
-     dev = DEVICE(obj);
-     if (!qdev_prop_set_drive_err(dev, "drive", blk, &err)) {
-         error_reportf_err(err, "sd_init failed: ");
-         return NULL;
-     }
--    qdev_prop_set_bit(dev, "spi", is_spi);
- 
-     /*
-      * Realizing the device properly would put it into the QOM
-@@ -1027,7 +1032,7 @@ static sd_rsp_type_t sd_cmd_GO_IDLE_STATE(SDState *sd, SDRequest req)
-         sd_reset(DEVICE(sd));
-     }
- 
--    return sd->spi ? sd_r1 : sd_r0;
-+    return sd_is_spi(sd) ? sd_r1 : sd_r0;
- }
- 
- static sd_rsp_type_t sd_cmd_SEND_OP_CMD(SDState *sd, SDRequest req)
-@@ -1203,7 +1208,7 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
- 
-         /* No response if not exactly one VHS bit is set.  */
-         if (!(req.arg >> 8) || (req.arg >> (ctz32(req.arg & ~0xff) + 1))) {
--            return sd->spi ? sd_r7 : sd_r0;
-+            return sd_is_spi(sd) ? sd_r7 : sd_r0;
-         }
- 
-         /* Accept.  */
-@@ -1219,8 +1224,9 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
-             return sd_r2_s;
- 
-         case sd_transfer_state:
--            if (!sd->spi)
-+            if (!sd_is_spi(sd)) {
-                 break;
-+            }
-             sd->state = sd_sendingdata_state;
-             memcpy(sd->data, sd->csd, 16);
-             sd->data_start = addr;
-@@ -1241,8 +1247,9 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
-             return sd_r2_i;
- 
-         case sd_transfer_state:
--            if (!sd->spi)
-+            if (!sd_is_spi(sd)) {
-                 break;
-+            }
-             sd->state = sd_sendingdata_state;
-             memcpy(sd->data, sd->cid, 16);
-             sd->data_start = addr;
-@@ -1274,7 +1281,7 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
-     case 13:  /* CMD13:  SEND_STATUS */
-         switch (sd->mode) {
-         case sd_data_transfer_mode:
--            if (!sd->spi && sd->rca != rca) {
-+            if (!sd_is_spi(sd) && sd->rca != rca) {
-                 return sd_r0;
-             }
- 
-@@ -1531,7 +1538,7 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
-         default:
-             break;
-         }
--        if (!sd->spi) {
-+        if (!sd_is_spi(sd)) {
-             if (sd->rca != rca) {
-                 return sd_r0;
-             }
-@@ -2184,11 +2191,8 @@ static void sd_instance_finalize(Object *obj)
- static void sd_realize(DeviceState *dev, Error **errp)
- {
-     SDState *sd = SD_CARD(dev);
--    SDCardClass *sc = SD_CARD_GET_CLASS(sd);
-     int ret;
- 
--    sc->proto = sd->spi ? &sd_proto_spi : &sd_proto_sd;
+     switch (req.cmd) {
+     /* Basic commands (Class 0 and Class 1) */
+-    case 0:  /* CMD0:   GO_IDLE_STATE */
+-        switch (sd->state) {
+-        case sd_inactive_state:
+-            return sd->spi ? sd_r1 : sd_r0;
 -
-     switch (sd->spec_version) {
-     case SD_PHY_SPECv1_10_VERS
-      ... SD_PHY_SPECv3_01_VERS:
-@@ -2245,7 +2249,6 @@ static Property sd_properties[] = {
-      * whether card should be in SSI or MMC/SD mode.  It is also up to the
-      * board to ensure that ssi transfers only occur when the chip select
-      * is asserted.  */
--    DEFINE_PROP_BOOL("spi", SDState, spi, false),
-     DEFINE_PROP_END_OF_LIST()
- };
- 
-@@ -2272,6 +2275,7 @@ static void sd_class_init(ObjectClass *klass, void *data)
-     sc->enable = sd_enable;
-     sc->get_inserted = sd_get_inserted;
-     sc->get_readonly = sd_get_readonly;
-+    sc->proto = &sd_proto_sd;
- }
- 
- static const TypeInfo sd_info = {
-@@ -2284,9 +2288,31 @@ static const TypeInfo sd_info = {
-     .instance_finalize = sd_instance_finalize,
- };
- 
-+/*
-+ * We do not model the chip select pin, so allow the board to select
-+ * whether card should be in SSI or MMC/SD mode.  It is also up to the
-+ * board to ensure that ssi transfers only occur when the chip select
-+ * is asserted.
-+ */
-+static void sd_spi_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    SDCardClass *sc = SD_CARD_CLASS(klass);
-+
-+    dc->desc = "SD SPI";
-+    sc->proto = &sd_proto_spi;
-+}
-+
-+static const TypeInfo sd_spi_info = {
-+    .name = TYPE_SD_CARD_SPI,
-+    .parent = TYPE_SD_CARD,
-+    .class_init = sd_spi_class_init,
-+};
-+
- static void sd_register_types(void)
- {
-     type_register_static(&sd_info);
-+    type_register_static(&sd_spi_info);
- }
- 
- type_init(sd_register_types)
+-        default:
+-            sd->state = sd_idle_state;
+-            sd_reset(DEVICE(sd));
+-            return sd->spi ? sd_r1 : sd_r0;
+-        }
+-        break;
+-
+     case 1:  /* CMD1:   SEND_OP_CMD */
+         sd->state = sd_transfer_state;
+         return sd_r1;
+@@ -2132,6 +2130,7 @@ void sd_enable(SDState *sd, bool enable)
+ static const SDProto sd_proto_spi = {
+     .name = "SPI",
+     .cmd = {
++        [0]         = sd_cmd_GO_IDLE_STATE,
+         [2 ... 4]   = sd_cmd_illegal,
+         [5]         = sd_cmd_illegal,
+         [7]         = sd_cmd_illegal,
+@@ -2147,6 +2146,7 @@ static const SDProto sd_proto_spi = {
+ static const SDProto sd_proto_sd = {
+     .name = "SD",
+     .cmd = {
++        [0]         = sd_cmd_GO_IDLE_STATE,
+         [1]         = sd_cmd_illegal,
+         [5]         = sd_cmd_illegal,
+         [52 ... 54] = sd_cmd_illegal,
 -- 
 2.41.0
 

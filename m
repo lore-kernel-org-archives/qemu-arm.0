@@ -1,91 +1,91 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1175851ejb;
-        Mon, 4 Sep 2023 01:07:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFCRgWRuG32yHU/RnHU9AV1HtEfS17knlF7VVMmUzvDSwiNr3NBs4ywqbnjKUrPMiQ5CtsN
-X-Received: by 2002:a05:6214:21a5:b0:649:a662:ce3b with SMTP id t5-20020a05621421a500b00649a662ce3bmr15006085qvc.17.1693814861109;
-        Mon, 04 Sep 2023 01:07:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693814861; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1176137ejb;
+        Mon, 4 Sep 2023 01:08:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHvXy1VzX7VOdb8mykhOTz/UOyPA4qce7MyseUGWsBvUjvmDsUCcI5dwnDObZCDRF7o0run
+X-Received: by 2002:a05:620a:29ca:b0:768:134e:1d41 with SMTP id s10-20020a05620a29ca00b00768134e1d41mr10355223qkp.7.1693814897508;
+        Mon, 04 Sep 2023 01:08:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693814897; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hlxo8i2tVlJ2/woyIyvMAq+WKQKxuVtId2zJHsy9VTQ56qUsQR3akFg/0BUdtrsSiL
-         GwdqVUBZUIyTrDEmrYaK2zlazYVr+FKtVGUkirxQo0ZVQfNIdcpcFYRFl35yk3mIOGJn
-         Q3bMda1a0YwTXUvkfcmRpMd58QVFpfkLyxAx2Qb+dGwHMahlNUBD75zYaox55NE2XpqM
-         R+uCUKko0NALb7tEpvSQxCGo0uyRdu3zk0o9iX92vqtfodBUDziIx3Ns+zNVLRCGHT6o
-         0rKNs8m1p1DCyQZw/7b6OSsa1YgmvExVy22TBxxqp+h1y8K3wuBSUqUsrTur78vr6wld
-         /dZg==
+        b=TOuGVw4jjB96pQtOtymmRW34ibIBuzLTLs66SCUsOhYQRBCYp7LZNDfmLbRcFWxLIn
+         rqVfpVDWBmBBvSaUaUjwEQVVxnkwNRLczeEonR/4PH/Lff55eQg3/VzJiibkPOEh3l22
+         7XXWkuUBJYIEXBKR/VV3869dwe2cTlGOiT6Qeb1e5xzxprhUSFUnTVyMYLXk7rAstf3D
+         eSn5thS8SlfFz6AbE2DEiJqqCgm6aDBevwPaK1DosV3eemlIivDHA6qCxqh1UnolaTgE
+         CjlWw5+5HMti+hur0Cm3+k8TYY9UXzOo7TbuF3PmRuXfkakmU+Dv17TwayGTqo5hifDT
+         geKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=k2oowtsVMHgV/gX0BOO0dY/1y0XnnvK0ZYYn6+GB3/M=;
+        bh=cdJyzro/1PW1wpTBijWjAZMD3UPhZ9MGOFDP+xuEvXk=;
         fh=vPp9P9nRoVzg/+h2e3p9KngL/viJb9qzJXYZDzy4B8s=;
-        b=z+leI6HarcOLnwk1NDZ9NPJxEab4NQSqHfLunsV3OPr0nRAszGgTKwEzQPYJ8O/4Kw
-         +REm/iXW+jcqLXtILA3pHvqFIwiz4jLqS0TUhO2H0+1l6iR0f25Fr5MziV3rJffqBppH
-         HwGepRTWPGteyn4OPeTM70+OB3SaAUZmELfKYayaiszjAHAhQ6zBGFxstV7JevgaEW6J
-         A7B2upKh0Aw7WRcV2yTJzmt11poKDlxRO7rdUtqui48y+pMHfsPq6lavtJ+UDr5Lf7b7
-         unPMjUHbzy0rWnbmm+jPzVkUv3G98YPjhnu7GhPQJ35JkpzZCaBheedAGxDYLvYFJTyu
-         XIfg==
+        b=W68A8Sl2jusD0sR0ygEIXBsm3I5e7aR8ZIZu8W8XpxYXvAxF71zUGuB5iaYldm2sgd
+         38S8TOp0poCuga/uVCzv080UfNso4wUSTXWXCR5iBpzO4T38/28kL9zWQ3EjqzPhtN4Q
+         Y+4qTIIn1RIxWzc+b2a3xcwyG95KKHET2XkQ1z75pGxYBGmlSmOvjUe34fXe1DMeP+8X
+         pf4RP8rhq6ejNlMkr0oJi6odGsjFsuHDTNexu8sQCx8XVYpKYr+J2p/riq6gW2E8QClz
+         su96160+Z16/VnN1t3UebEf6h8sQKvH4AGdTJx8T6fe/2SvjeqiO67Z81lAqL0MKFHGI
+         cYDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G3ci9UHY;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qbe4nkw+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w16-20020a0ce110000000b0064f45b8c035si6014610qvk.374.2023.09.04.01.07.40
+        by mx.google.com with ESMTPS id s1-20020a05620a0bc100b0076cc8d130easi6198873qki.620.2023.09.04.01.08.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Sep 2023 01:07:41 -0700 (PDT)
+        Mon, 04 Sep 2023 01:08:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G3ci9UHY;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qbe4nkw+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qd4c1-0002Fk-SU; Mon, 04 Sep 2023 04:07:10 -0400
+	id 1qd4bx-0001zy-OW; Mon, 04 Sep 2023 04:07:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qd4by-00022k-78
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 04:07:06 -0400
+ id 1qd4bw-0001zD-3a
+ for qemu-arm@nongnu.org; Mon, 04 Sep 2023 04:07:04 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qd4bu-0006XD-HK
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 04:07:05 -0400
+ id 1qd4bt-0006Ws-Oo
+ for qemu-arm@nongnu.org; Mon, 04 Sep 2023 04:07:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1693814821;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=k2oowtsVMHgV/gX0BOO0dY/1y0XnnvK0ZYYn6+GB3/M=;
- b=G3ci9UHYBHdphjoI5VilKRQIIRNDsR/vaM5w+80TwiVLbK0RxPIYoRf37Pgxnj1pXn++0y
- 1ajtu76SmOUPJj5aP5uXodTINGeWQdSMqH9roZwD6y7hD2S3z7YYvzRH1QMC5ser/VkEBT
- RbdEJAh3eR4ygNvkDB/z+ky36J9kYyk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-353-_0rgm7GvMgSy4SMH_2zrvQ-1; Mon, 04 Sep 2023 04:05:21 -0400
-X-MC-Unique: _0rgm7GvMgSy4SMH_2zrvQ-1
+ bh=cdJyzro/1PW1wpTBijWjAZMD3UPhZ9MGOFDP+xuEvXk=;
+ b=Qbe4nkw+lvP6YcAG+qdRdQuC0JK2ietyHiN4sWV8BNjRNeIdlgi63ryFDfEQkk4clftK4b
+ OlWpzt1WDKrNx0tVXQmepOaDuZnnuI6DXvzq8uU7jvMTZ4Z9gVvUle6ZW1WPEg8ae/+DRU
+ qTyKdkQLAg2ocUpmdlVelgwJcv6OmOw=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-594-fRGHcY_WMvqyLpc1b289WA-1; Mon, 04 Sep 2023 04:05:36 -0400
+X-MC-Unique: fRGHcY_WMvqyLpc1b289WA-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
  [10.11.54.2])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3F36A8EE7C5;
- Mon,  4 Sep 2023 08:05:21 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C953F3804519;
+ Mon,  4 Sep 2023 08:05:35 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.192.53])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 28AD440C6CCC;
- Mon,  4 Sep 2023 08:05:18 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 271A740C6CCC;
+ Mon,  4 Sep 2023 08:05:32 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, alex.williamson@redhat.com, clg@redhat.com,
  jean-philippe@linaro.org, mst@redhat.com, pbonzini@redhat.com
 Cc: peter.maydell@linaro.org, peterx@redhat.com, david@redhat.com,
  philmd@linaro.org
-Subject: [PATCH 08/13] range: Make range_compare() public
-Date: Mon,  4 Sep 2023 10:03:51 +0200
-Message-ID: <20230904080451.424731-9-eric.auger@redhat.com>
+Subject: [PATCH 13/13] vfio: Remove 64-bit IOVA address space assumption
+Date: Mon,  4 Sep 2023 10:03:56 +0200
+Message-ID: <20230904080451.424731-14-eric.auger@redhat.com>
 In-Reply-To: <20230904080451.424731-1-eric.auger@redhat.com>
 References: <20230904080451.424731-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -99,7 +99,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,51 +114,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SVqMLxk59Mbu
+X-TUID: IV5tZCGHHj5m
 
-Let's expose range_compare() in the header so that it can be
-reused outside of util/range.c
+Now we retrieve the usable IOVA ranges from the host,
+let's remove the assumption of 64b IOVA space when calling
+vfio_host_win_add().
+
+Make sure the vfio_find_hostwin() gets called after we get
+a chance to call set_iova_regions and resize the IOMMU MR
+according to the actual physical GAW.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/qemu/range.h | 6 ++++++
- util/range.c         | 6 +-----
- 2 files changed, 7 insertions(+), 5 deletions(-)
+ hw/vfio/common.c | 25 ++++++++++++-------------
+ 1 file changed, 12 insertions(+), 13 deletions(-)
 
-diff --git a/include/qemu/range.h b/include/qemu/range.h
-index fc1d3dabe6..52641dfb79 100644
---- a/include/qemu/range.h
-+++ b/include/qemu/range.h
-@@ -217,6 +217,12 @@ static inline int ranges_overlap(uint64_t first1, uint64_t len1,
-     return !(last2 < first1 || last1 < first2);
- }
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 26da38de05..40cac1ca91 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -1112,13 +1112,6 @@ static void vfio_listener_region_add(MemoryListener *listener,
+ #endif
+     }
  
-+/*
-+ * Return -1 if @a < @b, 1 @a > @b, and 0 if they touch or overlap.
-+ * Both @a and @b must not be empty.
-+ */
-+int range_compare(Range *a, Range *b);
+-    hostwin = vfio_find_hostwin(container, iova, end);
+-    if (!hostwin) {
+-        error_setg(&err, "Container %p can't map guest IOVA region"
+-                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
+-        goto fail;
+-    }
+-
+     memory_region_ref(section->mr);
+ 
+     if (memory_region_is_iommu(section->mr)) {
+@@ -1177,6 +1170,14 @@ static void vfio_listener_region_add(MemoryListener *listener,
+         return;
+     }
+ 
++    hostwin = vfio_find_hostwin(container, iova, end);
++    if (!hostwin) {
++        error_setg(&err, "Container %p can't map guest IOVA region"
++                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
++        goto fail;
++    }
 +
- GList *range_list_insert(GList *list, Range *data);
++
+     /* Here we assume that memory_region_is_ram(section->mr)==true */
  
- void range_inverse_array(uint32_t nr_ranges, Range *ranges,
-diff --git a/util/range.c b/util/range.c
-index 11c4ff0b78..1fc399e88f 100644
---- a/util/range.c
-+++ b/util/range.c
-@@ -20,11 +20,7 @@
- #include "qemu/osdep.h"
- #include "qemu/range.h"
+     /*
+@@ -2594,12 +2595,10 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+         vfio_get_iommu_info_migration(container, info);
+         g_free(info);
  
--/*
-- * Return -1 if @a < @b, 1 @a > @b, and 0 if they touch or overlap.
-- * Both @a and @b must not be empty.
-- */
--static inline int range_compare(Range *a, Range *b)
-+int range_compare(Range *a, Range *b)
- {
-     assert(!range_is_empty(a) && !range_is_empty(b));
+-        /*
+-         * FIXME: We should parse VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE
+-         * information to get the actual window extent rather than assume
+-         * a 64-bit IOVA address space.
+-         */
+-        vfio_host_win_add(container, 0, (hwaddr)-1, container->pgsizes);
++        g_assert(container->nr_iovas);
++        vfio_host_win_add(container, 0,
++                          container->iova_ranges[container->nr_iovas - 1].end,
++                          container->pgsizes);
  
+         break;
+     }
 -- 
 2.41.0
 

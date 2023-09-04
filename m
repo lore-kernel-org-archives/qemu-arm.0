@@ -1,119 +1,117 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1446176ejb;
-        Mon, 4 Sep 2023 09:17:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHueBw7zfOj4WvZYUY95wRgsw85qJIp8ndvSOM26zLsecILiQB6Xtuz6W+G9WI5Wyads0IO
-X-Received: by 2002:a67:eb99:0:b0:44d:47c2:7471 with SMTP id e25-20020a67eb99000000b0044d47c27471mr7763372vso.27.1693844235469;
-        Mon, 04 Sep 2023 09:17:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693844235; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1446232ejb;
+        Mon, 4 Sep 2023 09:17:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHHCCmg0saVWkuWj+71wVrF/3eIdiSpr3Hg8f/vdmDmta0gHW88MZG802xjhQ1ROohSwtiv
+X-Received: by 2002:a67:b403:0:b0:44d:53de:cf2c with SMTP id x3-20020a67b403000000b0044d53decf2cmr7430706vsl.26.1693844242250;
+        Mon, 04 Sep 2023 09:17:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693844242; cv=none;
         d=google.com; s=arc-20160816;
-        b=rZMbjzfvp07P1aUZMq3C0U5pNjV2JLyJXkv/FY9Qje7B1uoOeE/NMmGtFFXHlsAymp
-         rR6Db6W/vir4DkfMlK9PB8bG8/LaX1imvBuDYRcSt/eOfrMsApFszcrQkOehAVMrW37w
-         BvJJyk9K0/3HM5j9/glD1p4uCaDRjlSEFgujo8cQVGiAcFpKfdr9fuwF5S+ZTussz+lP
-         LwnGpIkkDTZ6wndChsQGAEIvLkX5BYWV6vBGXyyQAvCTCiHSHofhe2sEbuFq3FBqgSRH
-         5tE1xaDe3ffQxzARmdox+8KQSBFdiiFyZpF/MdN/30tNYaTGizf2sYaiVSPxbubqQ9Yd
-         vzMg==
+        b=lnf4TtIdLYJP0l/e2OhpEvdGxQ8pncg0QDPGSI3PUzTZuIuPO7nm8bRYk3gBecyKXO
+         KCb4EAtWp+QXDmxxohwJsk1ytQ+kVzowUgRZnTmNUkCgMLPg1dH/HD3Oiu7NEpG5Q+Un
+         AYuq8FEXrCW1LSh/aG5JIRqYgZAumVo59pWqJqeLswwhDINEPysljK/tuZaVAewVp2m+
+         2cs/0xXA8jLefWpOpBMyfJLpiLtdLaAx2ItNhnuex+wf3GRdcdjkROnaeoSzs2GF7A9H
+         5AWuV2UPs3A9/DdCVrH9eOG+u9P4OdcWEqqY/RJHiw0IykHwQ0ChFTqrgtrB1sldP4gF
+         mAGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ChksAbLKNbEJCfQvP2AD4Ev1dT6yyMkl8ntg7rzJ2Ek=;
-        fh=9tQSUb+DvnBd23CPtpbknJd6QpRis8yIWJGoCvKV/dQ=;
-        b=QnPGh6X5lIUwI8NPB2ABc2XuFz+RXGsExYQOg0gPCtYf1wtmnLm1V8/mXRDJmI+w91
-         olr6v59/CrxTelQiAKdroCgkCmmfQoWIUzNrNo7NmazkZBKWvbolbnwlFLAwIto+egS2
-         lzkbzTsuiNfJjI7PrjV7XHV7Q5h61oD0+zcGTUx0AtBr+IvhzRbnWg38LY5jvsRldHzH
-         Ltafzeb9L98as/6FShQQjY15A+l4wd7eNyNBw2ZN5NVQHaCKdAElYDPkqXuosP/SiiZQ
-         bV/wByd9xUACIm0yiriI07Qir2Q506I7ZIApzmHKXlWmWSx3XX5/Npx4MP2cg0lo/KUl
-         +vZA==
+        bh=JNPPdU1CGcusx0u924J/XsX1Bvc+NbZUFtzocy+B04M=;
+        fh=JiW2z4nACjvivIcmH8UztD+5iohCy/JDZINC166FmPE=;
+        b=EWrZ3j558P+9CP8HdQ1DCWbB+gPSCO8d2GLY8yskvaKhykHS/IkWGgcYP0YXBF995x
+         VZQaLzHJmMnqKrvweUAj0KNJjOzvisKxbVERSbFjQ45DVHTo/LYoHJlIQuw4D6nTVeSY
+         xKCEF4nXL0GaDqVW3bYl4KT6fzHoZohPY0VHJ9RKhc9Om5l/o3FwqGIFH+ECm4whVQbP
+         XH4HuIhLwiX0/TTqGHKchHuokbTw2FWkLgzIccX+RjclDxG1WLgaOV368fR5BGJsn0Hh
+         5XlzTO6dmVJ10mkY+ZFZEUkrwEkmENGEbkIiaW9zOHKJFWQF5nh+U7TbbHMytLyQyRvX
+         06Lg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s+7o8NOH;
+       dkim=pass header.i=@linaro.org header.s=google header.b="iI/gjPg5";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l18-20020a0ce092000000b0064729427bc6si6819720qvk.450.2023.09.04.09.17.15
+        by mx.google.com with ESMTPS id r28-20020a0cb29c000000b0064f51fe859esi6667864qve.281.2023.09.04.09.17.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Sep 2023 09:17:15 -0700 (PDT)
+        Mon, 04 Sep 2023 09:17:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s+7o8NOH;
+       dkim=pass header.i=@linaro.org header.s=google header.b="iI/gjPg5";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qdCCs-0002xx-5S; Mon, 04 Sep 2023 12:13:42 -0400
+	id 1qdCCh-0002o0-Ji; Mon, 04 Sep 2023 12:13:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCCp-0002uC-1P
- for qemu-devel@nongnu.org; Mon, 04 Sep 2023 12:13:39 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCCd-0002hv-Ek
+ for qemu-devel@nongnu.org; Mon, 04 Sep 2023 12:13:27 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCCm-0007bG-NY
- for qemu-devel@nongnu.org; Mon, 04 Sep 2023 12:13:38 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-52a5c0d949eso2152127a12.0
- for <qemu-devel@nongnu.org>; Mon, 04 Sep 2023 09:13:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCCb-0007XZ-9x
+ for qemu-devel@nongnu.org; Mon, 04 Sep 2023 12:13:27 -0400
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-99c4923195dso250222266b.2
+ for <qemu-devel@nongnu.org>; Mon, 04 Sep 2023 09:13:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693844015; x=1694448815; darn=nongnu.org;
+ d=linaro.org; s=google; t=1693844003; x=1694448803; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ChksAbLKNbEJCfQvP2AD4Ev1dT6yyMkl8ntg7rzJ2Ek=;
- b=s+7o8NOHFY/Qvg6keK/csogYOKCRKKZD1B+QcJut41kmffiZXk6nVoh+re/ZYugg4O
- dgj7l5wMh3bop2IrjJDsMTZRHFGP6UDkRKu/mfIc+YUW8O1ISf5KEHSLZtxAhegHwQcx
- A5djzvP1JlKzsLNcMR8Pit7Ghg15W6ukSY5EOt0UNPYH+FavaWGjDeOl3S2fNti8BIg3
- 4lcq3cxyzueQbo/EBpQTXjmZs9v18TlWVKIMVv6XcIY0UZajUMM20oOFs9JqWuYu8s7e
- pJneyATXa33Z75HKE/qqS4rVUw3xqHCqE54jGIu5ek9rNC1y+cGBZkVcXyW/QXrzETpX
- c/4w==
+ bh=JNPPdU1CGcusx0u924J/XsX1Bvc+NbZUFtzocy+B04M=;
+ b=iI/gjPg5YC9lf+lJZE/YZFoOKeIgHxt0kqREw0hBNgvKNLxXV6Oq0Ngg9J/eU+uuKl
+ OMjo8ECrTPGdPoTGMo7Cmdnt3KjSfsB2YaLe8He6gwmyYo2I2BtesPkCC+q43kqoN/XF
+ sqytf1iwj2RwobE20Jw1r/O2pG99VudebmcqsZUxalLbJcS+N5vHkPcirp52eShCRByi
+ VpXm3C4NOYS4GQDoc3PR86/LGsrhQJbkPHB1pTkIXjn3DNklgfSL6IO3iZqLRXYTTy3N
+ D8Zn9Nv3xK8+nHKf1ZXNPt5qyQmF98WW/A+6WrMpNJQPYFotyEhA1JRFTmJdfeu2Tea3
+ /mNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693844015; x=1694448815;
+ d=1e100.net; s=20221208; t=1693844003; x=1694448803;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ChksAbLKNbEJCfQvP2AD4Ev1dT6yyMkl8ntg7rzJ2Ek=;
- b=Lf/1aZ7djQ+uGQQGpSsoJ+KS7Vpa018QPu5PEw2I5cQndUJuEi14r1UR1P7KEY+gNo
- Y2exJSUGl91gjfB5yTELoBSqsm2caHWCV0InSoH52DsJ4iOlfcBVIovQHNX6pKjc3ANG
- KLW3f3odzUI79Y2f+8giNMwZnI4c8G+Xa5fDpDod5FT0J08jYwjQ6RFjbX54b14X+9tS
- /sLBVRQphQGz7VBK3mrgnWFPIp6sfhaTxWjQZdkOVKl2lHFa0ikbezWhbRBhHKI1DtRL
- WEKYUBvTHvVGcscVBQLNh2NVU6Y15qQ2NkO/H7h3I3VGTT0a3t5cJBAmhVuGN5bGRSeM
- s3Mw==
-X-Gm-Message-State: AOJu0YxqJczPibl07oGw/IFLRUhLbO8waKJACOGNikIyLAlaCqCW5gAq
- 71nPEVR4raTI7HiB7gmYGNrzzQ==
-X-Received: by 2002:a17:906:8a76:b0:9a1:9284:11b with SMTP id
- hy22-20020a1709068a7600b009a19284011bmr7550965ejc.7.1693844014959; 
- Mon, 04 Sep 2023 09:13:34 -0700 (PDT)
+ bh=JNPPdU1CGcusx0u924J/XsX1Bvc+NbZUFtzocy+B04M=;
+ b=IGJdQw8/oI6TRFmVzxa6r2KFZBqA6CZarM3/SIRNH9F57+3iuXBQBDeq7UvECOYx6s
+ 0hiRxeSTXrfPqRkLmuzINi2hNPso4jV1sLmTKQX1iqp9HNm/V+QyPevLtdeUwmzFl/iK
+ iR0enFbU9KpbPvctO9Fe/pZbsX3RzGivv9gZQZWcGelSurc4FtvHvc+WZpEdiC5vY8zE
+ hiwaqzvJ52d5FECco+oI90UhnU7wDSy/a2npilrqSPRdrq7mQ61TgCAz6D47T5/acgA/
+ zPA/EfaPF6pDL4ibSJpZQuH9t8EL3XZurCEDuzPpKTDlPEEcRaylITIeWmx6v2qr7jeP
+ 06Ww==
+X-Gm-Message-State: AOJu0YxDoENlrYA+fAOWYVnS5Tm9EkQ6n10+OlNo53N9BjZ6ft1zB/NU
+ lC9Fe/d4VD0dOHJhtW58Ha9m8f328ICsqNw8sU0=
+X-Received: by 2002:a17:907:2ccb:b0:9a1:e293:987e with SMTP id
+ hg11-20020a1709072ccb00b009a1e293987emr8525152ejc.50.1693844003111; 
+ Mon, 04 Sep 2023 09:13:23 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.209.227])
  by smtp.gmail.com with ESMTPSA id
- ox29-20020a170907101d00b00992ea405a79sm6360088ejb.166.2023.09.04.09.13.33
+ u23-20020a170906951700b0099d0a8ccb5fsm6383573ejx.152.2023.09.04.09.13.21
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 04 Sep 2023 09:13:34 -0700 (PDT)
+ Mon, 04 Sep 2023 09:13:22 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Markus Armbruster <armbru@redhat.com>,
 	qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>
-Subject: [PATCH v2 10/22] hw/arm/aspeed: Clean up local variable shadowing
-Date: Mon,  4 Sep 2023 18:12:22 +0200
-Message-ID: <20230904161235.84651-11-philmd@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 08/22] hw/arm/virt: Clean up local variable shadowing
+Date: Mon,  4 Sep 2023 18:12:20 +0200
+Message-ID: <20230904161235.84651-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230904161235.84651-1-philmd@linaro.org>
 References: <20230904161235.84651-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,50 +126,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IhUw2QPwpXnL
+X-TUID: qp5pOfIIV3Ck
 
 Fix:
 
-  hw/arm/aspeed_ast2600.c:391:18: error: declaration shadows a local variable [-Werror,-Wshadow]
-        qemu_irq irq = aspeed_soc_get_irq(s, ASPEED_DEV_TIMER1 + i);
-                 ^
-  hw/arm/aspeed_ast2600.c:283:14: note: previous declaration is here
-    qemu_irq irq;
-             ^
-
-  hw/arm/aspeed_ast2600.c:416:18: error: declaration shadows a local variable [-Werror,-Wshadow]
-        qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->a7mpcore),
-                 ^
-  hw/arm/aspeed_ast2600.c:283:14: note: previous declaration is here
-    qemu_irq irq;
-             ^
+  hw/arm/virt.c:821:22: error: declaration shadows a local variable [-Werror,-Wshadow]
+            qemu_irq irq = qdev_get_gpio_in(vms->gic,
+                     ^
+  hw/arm/virt.c:803:13: note: previous declaration is here
+        int irq;
+            ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/aspeed_ast2600.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/virt.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index a8b3a8065a..f54063445d 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -280,7 +280,6 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     AspeedSoCState *s = ASPEED_SOC(dev);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-     Error *err = NULL;
--    qemu_irq irq;
-     g_autofree char *sram_name = NULL;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a13c658bbf..32a964b572 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -800,7 +800,6 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+     for (i = 0; i < smp_cpus; i++) {
+         DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
+         int ppibase = NUM_IRQS + i * GIC_INTERNAL + GIC_NR_SGIS;
+-        int irq;
+         /* Mapping from the output timer irq lines from the CPU to the
+          * GIC PPI inputs we use for the virt board.
+          */
+@@ -811,7 +810,7 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+             [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
+         };
  
-     /* Default boot region (SPI memory or ROMs) */
-@@ -339,6 +338,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     for (i = 0; i < sc->num_cpus; i++) {
-         SysBusDevice *sbd = SYS_BUS_DEVICE(&s->a7mpcore);
-         DeviceState  *d   = DEVICE(&s->cpu[i]);
-+        qemu_irq irq;
- 
-         irq = qdev_get_gpio_in(d, ARM_CPU_IRQ);
-         sysbus_connect_irq(sbd, i, irq);
+-        for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
++        for (unsigned irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
+             qdev_connect_gpio_out(cpudev, irq,
+                                   qdev_get_gpio_in(vms->gic,
+                                                    ppibase + timer_irq[irq]));
 -- 
 2.41.0
 

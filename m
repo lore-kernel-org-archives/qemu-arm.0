@@ -1,280 +1,200 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp604405ejb;
-        Sat, 2 Sep 2023 22:04:20 -0700 (PDT)
-X-Received: by 2002:a05:6a21:3d82:b0:149:8cc1:f30b with SMTP id bj2-20020a056a213d8200b001498cc1f30bmr5961058pzc.38.1693717460202;
-        Sat, 02 Sep 2023 22:04:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693717460; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1175412ejb;
+        Mon, 4 Sep 2023 01:06:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGdDWPXLmT+idWwdJaF98lksTHaCk/mDtVEDA0ZOiID8/kBcobrUk4x4glR3tK2VNe2Fx30
+X-Received: by 2002:a05:622a:1a11:b0:403:9fd0:d43e with SMTP id f17-20020a05622a1a1100b004039fd0d43emr16449791qtb.21.1693814803358;
+        Mon, 04 Sep 2023 01:06:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693814803; cv=none;
         d=google.com; s=arc-20160816;
-        b=Da5Vz0Yb2AiGj/WzowkfpAsfSoWw/c3a5xCZnnM8lDWWLN0mrjdF99c2HTMJfUdBFA
-         3THkXoiriCCOrFyVZkbK76iC+G8PawKKllUOWRmGGd6gTkAglqhzttPejWVqcO3RjATH
-         xPHraS4dLLscPehLvgdSMckcnHbvVWkSihl2dL/UI8S9YaWTXdIJvRpwLQFruA+zG/VG
-         c5PwLu71AKTh1Qm6k72XvDGBiqBGRDkiukYflGDNVbFMI5mCtNjvrABH/1iwAGbc7dkN
-         HEmAjOFFvh4Gpdh23y9er4SDBB97mi8AMuHHE8V3uqXd+Kae9CAgCg0Gn8UVvI7vWWKy
-         XSNA==
+        b=05PVW1Dr8XtY5NB9UjaHWEK2jycdX7V3U0K88DV184kZ/b5QJtgHFadNz8uMwWUVhB
+         LLgqcDWog9gtcxE4cJ3Wrk71Zm0O6YASEv0moDdE+Qvw+0CVHWsejMuEUPNl1qV5Nyke
+         igpAdLzoFLOVlqkIqIEZByOnJGovv0xVofmOSb2xUEuWkle76r10y4b27d4IRc8o6PJa
+         4sfbBJRFr6eiEpjPTYzsms5UyQVFAWv1v0HMIcdYqnkX4TJpE8t9DEP6InDga+q5+Plf
+         z4vcioBvXjsYRNokH1LZYBIWxXvoh6CA5YI4ZlSF8RWni5Lb6of8HEJ3nkIzxTbEjDyW
+         hTGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YIdFEj2N/i23jaZLgTO+etAiClTgViqlBh5mj6WAZSw=;
-        fh=DXWEo+1hOi9Yz+S7grPeJImNb6hOfnJUS946L7RlWPg=;
-        b=coeYxrvFhKCYQHpZNRS3D+dI7ZyRGaxHCJQLdqcHWvcaI1XKJ+EL/eVRSKQKi7z/kB
-         LV4ZPuIrpXZSO9q4vBNWnUTgfsio8E8Poa7Sy9ISdbGm7UmR1M/+UcvN3KaqxUWH/+rJ
-         MqbBOKJFLhQUa3xskBJK9SzO/3M8bCZgBIeBO4//96WEANfT5w/7IRNBhS0VseIFiaRw
-         BjXJ3BCkOYR7KWyKBusHkAzmuohJzVJ+wQZD99JyuiTUzmtqI9VhQ2s8TpzFjr49zpIt
-         dGLRxf/G3y6f41U0bWJFSQIwXt4nZB9PjGfeP4yVKCfcbVdc1oWN+fmQn+2WgUf1c28f
-         sx9Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=0fClSLFNTnj1PBBeNErEhvIOOlv5XDQmnbvHzzG3f0E=;
+        fh=vPp9P9nRoVzg/+h2e3p9KngL/viJb9qzJXYZDzy4B8s=;
+        b=StIdLJVxiB4JA2FFXX74Vr4GSlnBmitJjVu81yMiGwRIMex5s3f95qt7+XmHxDhzcy
+         JijYsKazo6yQQweOYt5l0xoi4AnZPX8YObIfTgDklSTjxYBeeuGo5w6BnI8FJpAuZml0
+         HRu/4NjAqmg80NhsG4FSJUk5LOIi82lZ8PgReAih1xn9hauf3SmKZwV/EX8G21f9AXGW
+         APdY27A5Pqyq1SqVWqjjDvNfJyz+MtMths1NaeV2ceDl+hLRymoMP8a66JoJZCZhEEGi
+         re+9YCJK7PxFPqD16Fpp3dYCpe+1zZyA4CiLa2hsk6qN5ugulE+roEcbZ+ugf6IvS2O5
+         z5rQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=K3EdFws8;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g1-20020a170902e38100b001bb779f53a3sor3364579ple.13.2023.09.02.22.04.20
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UQgBpjXP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d1-20020a05622a100100b0040547dc28d6si5993086qte.93.2023.09.04.01.06.43
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 02 Sep 2023 22:04:20 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 04 Sep 2023 01:06:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=K3EdFws8;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1693717459; x=1694322259; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YIdFEj2N/i23jaZLgTO+etAiClTgViqlBh5mj6WAZSw=;
-        b=K3EdFws8Jl3JeQYLp6OVskRVB6KgRZ1uc6bMR7Eue4wZXL/Ig7fCWRvdiN4e5URDD9
-         PPMfiCeChBIKTw+TmGIQY3QbE8U0PpLMaJOmiwBW1m+1Ebv5Uq2gMnt8liMzVq7LrnC3
-         M1vgqcLX6u2HY/avVYnXBpHThCiVIm09yj9ptF/rpu2M7uo1TM2WpWu0vwjrPPOg5sMg
-         91aDWVXHjZdjy5W+IZh26oKzjC2Cs9jWA005fSj5q5gcvUB72yXBiE1BA17MEvGnLt2f
-         VbwWHRBg0pzH4CAlLWmsr1ElKED4xYsKZX76qNTw8ozYEl2f+kNnIAbBGhUcRPLGEycb
-         CbPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1693717459; x=1694322259;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YIdFEj2N/i23jaZLgTO+etAiClTgViqlBh5mj6WAZSw=;
-        b=FNZ5U4zKZvn+vNWJGkDiTF/nItCs7Ouo5HfZEBsGMB6ClQn25GvgpD3A+PDBn0j074
-         M5w/lliAqsJDvSon13CC2okL7GDeFJ3sREQh/1hY7gCUh4pMAz6D7lW4KJdb0e5atQv7
-         hWKMgfMKWrGlQImtYH8Yg2sqFehk9IX1yZsWYgMTccjQgNpo5XpjEPMXJBNR1i/oByUx
-         2d6O7ZNX4xJzl4GOM1k0qBM8vF+8Z61BwTvPdNQwiHniu1nowrxaJzkJY3rXvcVXOleF
-         wDZVlp1QhiaWt9gTNa4KZ+rA7QYefCshI7PNLbg7NZNvL7J4Mmti7are1d5kFnP85mWH
-         7dSg==
-X-Gm-Message-State: AOJu0YxfBEjiAsH6Fj6EavY2uWIk/hLxEMdIGjMsXI+IplMcXZ5E4pVB
-	wFvZiSDKGI0gKS5YMIJDfIXM4YC3mcheJ96zRJI=
-X-Google-Smtp-Source: AGHT+IH2ZyuXg6obzQjmD40pdAfkToUPv3XQTLm3G2lhdRj2Cu6T8HnXb7yNHXR5mqm4OA7dS8+i2w==
-X-Received: by 2002:a17:902:db10:b0:1c3:25ba:e204 with SMTP id m16-20020a170902db1000b001c325bae204mr2366319plx.54.1693717459597;
-        Sat, 02 Sep 2023 22:04:19 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id l11-20020a170902f68b00b001b8af7f632asm5324835plg.176.2023.09.02.22.04.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 02 Sep 2023 22:04:19 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Mikhail Tyutin <m.tyutin@yadro.com>,
-	Aleksandr Anenkov <a.anenkov@yadro.com>,
-	qemu-devel@nongnu.org,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
-	qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
-Subject: [PATCH v6 11/18] hw/core/cpu: Remove gdb_get_dynamic_xml member
-Date: Sun,  3 Sep 2023 14:03:19 +0900
-Message-ID: <20230903050338.35256-12-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20230903050338.35256-1-akihiko.odaki@daynix.com>
-References: <20230903050338.35256-1-akihiko.odaki@daynix.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UQgBpjXP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qd4bQ-00010f-0r; Mon, 04 Sep 2023 04:06:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1qd4bA-0000v5-2U
+ for qemu-arm@nongnu.org; Mon, 04 Sep 2023 04:06:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1qd4b7-0006A9-Eo
+ for qemu-arm@nongnu.org; Mon, 04 Sep 2023 04:06:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1693814772;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0fClSLFNTnj1PBBeNErEhvIOOlv5XDQmnbvHzzG3f0E=;
+ b=UQgBpjXPFRF9zAIbIbINQ7HN5CLSYRCXLGvXGV62iw6M0jeUwiYe7sS9/GVpqJH0C6W8Xq
+ zD8QPGeQYnXzZ0BeZUP6RlH41uXEgwDnMRXpR2wn/YWnJnvIDAFcvO+wRzQkbYyBNY8zf1
+ vbYl+VumzmjpAulGv5fbIu5OH3pTaXE=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-295-CBDaXKdjPeGayDcBfJDI3A-1; Mon, 04 Sep 2023 04:05:02 -0400
+X-MC-Unique: CBDaXKdjPeGayDcBfJDI3A-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 01F0D8015AA;
+ Mon,  4 Sep 2023 08:05:02 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.192.53])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A1592400D277;
+ Mon,  4 Sep 2023 08:04:59 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, alex.williamson@redhat.com, clg@redhat.com,
+ jean-philippe@linaro.org, mst@redhat.com, pbonzini@redhat.com
+Cc: peter.maydell@linaro.org, peterx@redhat.com, david@redhat.com,
+ philmd@linaro.org
+Subject: [PATCH 02/13] memory: Introduce memory_region_iommu_set_iova_ranges
+Date: Mon,  4 Sep 2023 10:03:45 +0200
+Message-ID: <20230904080451.424731-3-eric.auger@redhat.com>
+In-Reply-To: <20230904080451.424731-1-eric.auger@redhat.com>
+References: <20230904080451.424731-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: XwERVp0WP4aA
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jckmb9QfbXql
 
-This function is no longer used.
+This helper will allow to convey information about valid
+IOVA ranges to virtual IOMMUS.
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/hw/core/cpu.h |  4 ----
- target/arm/cpu.h      |  6 ------
- target/ppc/cpu.h      |  1 -
- target/arm/cpu.c      |  1 -
- target/arm/gdbstub.c  | 18 ------------------
- target/ppc/cpu_init.c |  3 ---
- target/ppc/gdbstub.c  | 10 ----------
- target/riscv/cpu.c    | 14 --------------
- 8 files changed, 57 deletions(-)
+ include/exec/memory.h | 26 ++++++++++++++++++++++++++
+ softmmu/memory.c      | 15 +++++++++++++++
+ 2 files changed, 41 insertions(+)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 09f1aca624..8fc9a1a140 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -133,9 +133,6 @@ struct SysemuCPUOps;
-  *           before the insn which triggers a watchpoint rather than after it.
-  * @gdb_arch_name: Optional callback that returns the architecture name known
-  * to GDB. The caller must free the returned string with g_free.
-- * @gdb_get_dynamic_xml: Callback to return dynamically generated XML for the
-- *   gdb stub. Returns a pointer to the XML contents for the specified XML file
-- *   or NULL if the CPU doesn't have a dynamically generated content for it.
-  * @disas_set_info: Setup architecture specific components of disassembly info
-  * @adjust_watchpoint_address: Perform a target-specific adjustment to an
-  * address before attempting to match it against watchpoints.
-@@ -166,7 +163,6 @@ struct CPUClass {
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 184cb3a01b..f6fb99dd3f 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -519,6 +519,27 @@ struct IOMMUMemoryRegionClass {
+      int (*iommu_set_page_size_mask)(IOMMUMemoryRegion *iommu,
+                                      uint64_t page_size_mask,
+                                      Error **errp);
++    /**
++     * @iommu_set_iova_ranges:
++     *
++     * Propagate information about the usable IOVA ranges for a given IOMMU
++     * memory region. Used for example to propagate host physical device
++     * reserved memory region constraints to the virtual IOMMU.
++     *
++     * Optional method: if this method is not provided, then the default IOVA
++     * aperture is used.
++     *
++     * @nr_ranges: number of IOVA ranges
++     *
++     * @iova_ranges: an array of @nr_ranges usable IOVA ranges
++     *
++     * Returns 0 on success, or a negative error. In case of failure, the error
++     * object must be created.
++     */
++     int (*iommu_set_iova_ranges)(IOMMUMemoryRegion *iommu,
++                                  uint32_t nr_ranges,
++                                  struct Range *iova_ranges,
++                                  Error **errp);
+ };
  
-     const GDBFeature *gdb_core_feature;
-     const gchar * (*gdb_arch_name)(CPUState *cpu);
--    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
+ typedef struct RamDiscardListener RamDiscardListener;
+@@ -1845,6 +1866,11 @@ int memory_region_iommu_set_page_size_mask(IOMMUMemoryRegion *iommu_mr,
+                                            uint64_t page_size_mask,
+                                            Error **errp);
  
-     void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index d6c2378d05..09bf82034d 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1131,12 +1131,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
- int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- 
--/* Returns the dynamically generated XML for the gdb stub.
-- * Returns a pointer to the XML contents for the specified XML file or NULL
-- * if the XML name doesn't match the predefined one.
-- */
--const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
--
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, DumpState *s);
- int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 5f251bdffe..3dc6e545e3 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1382,7 +1382,6 @@ int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
- #ifndef CONFIG_USER_ONLY
- hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu);
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
- #endif
- int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                                int cpuid, DumpState *s);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5f07133419..f26c0ded18 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2354,7 +2354,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
-     cc->gdb_arch_name = arm_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->disas_set_info = arm_disas_set_info;
- 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 99040e0c4c..40c3f50c89 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -442,24 +442,6 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs)
- #endif
- #endif /* CONFIG_TCG */
- 
--const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--
--    if (strcmp(xmlname, "system-registers.xml") == 0) {
--        return cpu->dyn_sysreg_feature.desc.xml;
--    } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
--        return cpu->dyn_svereg_feature.desc.xml;
--    } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
--        return cpu->dyn_m_systemreg_feature.desc.xml;
--#ifndef CONFIG_USER_ONLY
--    } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
--        return cpu->dyn_m_secextreg_feature.desc.xml;
--#endif
--    }
--    return NULL;
--}
--
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
- {
-     CPUState *cs = CPU(cpu);
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index 938cd2b7e1..a3153c4e9f 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7370,9 +7370,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
- #endif
- 
-     cc->gdb_num_core_regs = 71;
--#ifndef CONFIG_USER_ONLY
--    cc->gdb_get_dynamic_xml = ppc_gdb_get_dynamic_xml;
--#endif
- #ifdef USE_APPLE_GDB
-     cc->gdb_read_register = ppc_cpu_gdb_read_register_apple;
-     cc->gdb_write_register = ppc_cpu_gdb_write_register_apple;
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 9f2aad7aa9..5af9a0cbe3 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -339,16 +339,6 @@ void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu)
- 
-     gdb_feature_builder_end(&builder);
- }
--
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
--{
--    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
--
--    if (strcmp(xml_name, "power-spr.xml") == 0) {
--        return pcc->gdb_spr.xml;
--    }
--    return NULL;
--}
- #endif
- 
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 86a477bfc0..e12b6ef7f6 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -1957,19 +1957,6 @@ static const gchar *riscv_gdb_arch_name(CPUState *cs)
-     }
++int memory_region_iommu_set_iova_ranges(IOMMUMemoryRegion *iommu,
++                                        uint32_t nr_ranges,
++                                        struct Range *iova_ranges,
++                                        Error **errp);
++
+ /**
+  * memory_region_name: get a memory region's name
+  *
+diff --git a/softmmu/memory.c b/softmmu/memory.c
+index 7d9494ce70..07499457aa 100644
+--- a/softmmu/memory.c
++++ b/softmmu/memory.c
+@@ -1905,6 +1905,21 @@ int memory_region_iommu_set_page_size_mask(IOMMUMemoryRegion *iommu_mr,
+     return ret;
  }
  
--static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    RISCVCPU *cpu = RISCV_CPU(cs);
--
--    if (strcmp(xmlname, "riscv-csr.xml") == 0) {
--        return cpu->dyn_csr_feature.xml;
--    } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
--        return cpu->dyn_vreg_feature.xml;
--    }
--
--    return NULL;
--}
--
- #ifndef CONFIG_USER_ONLY
- static int64_t riscv_get_arch_id(CPUState *cs)
++int memory_region_iommu_set_iova_ranges(IOMMUMemoryRegion *iommu_mr,
++                                        uint32_t nr_ranges,
++                                        struct Range *iova_ranges,
++                                        Error **errp)
++{
++    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
++    int ret = 0;
++
++    if (imrc->iommu_set_iova_ranges) {
++        ret = imrc->iommu_set_iova_ranges(iommu_mr, nr_ranges,
++                                          iova_ranges, errp);
++    }
++    return ret;
++}
++
+ int memory_region_register_iommu_notifier(MemoryRegion *mr,
+                                           IOMMUNotifier *n, Error **errp)
  {
-@@ -2147,7 +2134,6 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
-     cc->get_arch_id = riscv_get_arch_id;
- #endif
-     cc->gdb_arch_name = riscv_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = riscv_gdb_get_dynamic_xml;
-     cc->tcg_ops = &riscv_tcg_ops;
- 
-     object_class_property_add(c, "mvendorid", "uint32", cpu_get_mvendorid,
 -- 
-2.42.0
+2.41.0
+

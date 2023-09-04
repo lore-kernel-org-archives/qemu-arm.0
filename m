@@ -1,110 +1,111 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1444435ejb;
-        Mon, 4 Sep 2023 09:14:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGC1qF3kUzzImGDkneVa35t0fzvgbyFSSQnZMU1gjvpIM3nswjHcU3lahAuvGxl6dNb4iof
-X-Received: by 2002:a05:622a:c4:b0:403:eb5b:9569 with SMTP id p4-20020a05622a00c400b00403eb5b9569mr12109779qtw.21.1693844079600;
-        Mon, 04 Sep 2023 09:14:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693844079; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1444585ejb;
+        Mon, 4 Sep 2023 09:14:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHn3UrIJEtfzyL0EOgIH+XEjeRIJQ9ufhMPJ2NyO6fQP9H/NMobZ426h6doF90druimXXrI
+X-Received: by 2002:a05:6358:4299:b0:134:c1eb:8744 with SMTP id s25-20020a056358429900b00134c1eb8744mr11344869rwc.9.1693844095156;
+        Mon, 04 Sep 2023 09:14:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693844095; cv=none;
         d=google.com; s=arc-20160816;
-        b=gWS+cawoIkUSUn+ARnWv0t3a68eD+NWxNqcUNqm+pHyLzNMHsPXOkmG3/rYEUmgImu
-         WJXs+ZqD4RlkRuS8iTNRKmCXrlaJvtFxnI7cLIrbozCGz+MKoZz9J1989//asqz/e4p5
-         OhdDeQivf9PP9w2Vww+Eiq6930D7tt+ve31y2Uwy9p2Pt9RWDvGJ3o3PxDashxPm4slG
-         ZtE1Apo8+QAgLlfqrE06JDuGkDd2Vdo8/UopeLEseaFS9ugXauL/67t3nQpnpB3agyjb
-         r9TeZLLl6/k2Au1xdGzyIRmAwb76EYvdFSaL85RqO+w+FjNEz9yTFev9lodmtZsKAhjl
-         GjSg==
+        b=mvo4vj1NqwMSj79+kbxTmqtcNHh9gZBpuBs96JAmxATCH0eUxv8X4xAK7665rZSFTR
+         iBBdp2PSx7QtBwCS+ZEMmV5IWzeH7ckSVCiYAB9WkhJ7N7DCtb2TP/kIvW625RmCNqpZ
+         gLCh1atPlkd5uUbdAResB2NED3D26r6/7HLpaRY01DXAaa20ggMSLabYX7EB4Y/YcYi9
+         u6gDK1UoyoAcWKV+aSZx3HbmXjdudFpYwH0nHqnHWBPjPYH5875YLHKgTT789DQRGXGI
+         uCH8VsSmcbebJF5LoqyU1isGfFBc9OIMp1YYxg1DLTK/XnOdh1oVaXF37TXPco87l7Q8
+         axJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ZsTnNe2odIs1TlMwUjNe64GWSQVkGVh+b8/mlWNguvM=;
-        fh=M4+wifAeNQ6fagA7lq67eYgVVAfcj+heqTkZZhMPaG0=;
-        b=Pa+dKQ3WqeC6DeKqfTx9N5wt0IarrUGoIXPYN2U2b3JJI4Cx/BK8GVpnZkUxLDeQeo
-         gWZ6BfnMAC+zKGuZuWi6qUgHxTw9f5P7mzs+nkWpKXl3vaHPkgPE+V7WJVMPjybCZmle
-         gcEgULbJVyK2g9iD3W3Q1LS2XH/94tnFEmGtljTU1KiSzQmcT8DCiylbNGSXuahh6kuZ
-         1/5gfHthCEvQc8J/rIo6RpLNFNl5IC6LvNpC1H2dyMijVfFmxJaHLb3LalclYtn/s4z8
-         WhIRK3jYE3O9HpZNNP4ecoa2V/Cyph2D5OaZFX2fAsO4PACAwYVQCARkNsln8jInE6LR
-         8Gjw==
+        bh=4GNi2AOj7YBZidVqMdiMTsl/wL7uqVeokPItco5CZ1w=;
+        fh=cMEDuaLQl2rndB/NRBV5I98EXlThcHP/dGz6BGvLChg=;
+        b=TELaqFfSDRO3rurk+UAcJAIDJsQggRVOrgSGQmRIm7GAWNw/XXNy5tmpMfLfFsCLLm
+         j/rGy5exTZIqKdzjYsKmAyqDo4AsLNFuUAM6B+lalMx0DH4ze+q4AwXmqdYHfvj1xqfz
+         nvFkKH2T2bKEzf6o/f3yT9403ZEQiwXaNwRpBVRB/nr+QRcUbCNQp3ldv84g2M4rQeMu
+         1qA32HGcMy6onWUA5+ACOZQTdk6sqJjc1n/P5KMIGh8IkyzI6m4NPY5xbPCeIEwIBEwE
+         Yp28GNvTyrgVXOasIIfht0EqA+RxesjHF0u+Ra7URGFgFDNIo5eufdlU/HurayEopKNZ
+         Zr5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g9QVPfK4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=h21mdo5j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d13-20020ac85acd000000b00403b102697fsi6827091qtd.294.2023.09.04.09.14.39
+        by mx.google.com with ESMTPS id ra18-20020a05620a8c9200b0076dae328b6fsi6443436qkn.109.2023.09.04.09.14.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Sep 2023 09:14:39 -0700 (PDT)
+        Mon, 04 Sep 2023 09:14:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g9QVPfK4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=h21mdo5j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qdCDf-0005hA-Eb; Mon, 04 Sep 2023 12:14:31 -0400
+	id 1qdCDk-0005sb-OO; Mon, 04 Sep 2023 12:14:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCDc-0005aE-La
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:14:28 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCDj-0005nJ-Fu
+ for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:14:35 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCDa-0007mQ-Eg
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:14:28 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-9a63b2793ecso240037166b.2
- for <qemu-arm@nongnu.org>; Mon, 04 Sep 2023 09:14:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCDf-0007nT-NR
+ for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:14:33 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-52c4d3ff424so2368539a12.0
+ for <qemu-arm@nongnu.org>; Mon, 04 Sep 2023 09:14:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693844065; x=1694448865; darn=nongnu.org;
+ d=linaro.org; s=google; t=1693844070; x=1694448870; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZsTnNe2odIs1TlMwUjNe64GWSQVkGVh+b8/mlWNguvM=;
- b=g9QVPfK4eZnVme7n94l/byTu2MOkqs/7+pfhpNlvhSSd0M99+ZL5OK59FjqmdoEL8u
- VgHW9cHqYqj5epCqSn1gETL0OQvsBXHUzWJ9bSdMe477etsXWR4ngCOh8yG8kcjd1btS
- z+U8pqD7Jzmd61Gq6atqUFUEie/q1yoT6sRV9T+gJNbu9k0pwXxwNMgQCzk4llc5AUqN
- 2DKg+8KUO5DBn607uhsra33KwbegPgKc1NA+tPaA3qDA808Y5abKAyOmGxbyoLdsbMLb
- xUK0rWmAcu8B5DpFIZaPCmGNoy5MLtK/WqAp2j8MNkvjUVVbNKYiEXJJF7dVjCgSdWo+
- VMyA==
+ bh=4GNi2AOj7YBZidVqMdiMTsl/wL7uqVeokPItco5CZ1w=;
+ b=h21mdo5jeZ3kRCvq2SP/f6C4WDo/xWOTeLsY9vOo0fq7vH54j9u/J07N+NWmXchhHN
+ ZTiRWPsFxHTh8v3VINzmFvAAtays/Rjr45UyTx+r1Lf33C4H92RDTJsYkXwEbIR6EBMR
+ i7psqeEOfECjjOa/XdfQvjZ6G1VyBX+HSBqAxaX/7QM5xBic188TwNJySItNXTArry7l
+ tifaZmKOeb5Xtm37Osl6Ah1NxMIQUxab+7AgSiB6say7qhYKH55t96S6+enpJGbGTdte
+ ImbwqcMYAZPSF3BXerkWDmf+MoCWWxOap2OxuHMNBlJ9yYdCDlAdhmpZFKu29o5dd6MT
+ 3kWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693844065; x=1694448865;
+ d=1e100.net; s=20221208; t=1693844070; x=1694448870;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ZsTnNe2odIs1TlMwUjNe64GWSQVkGVh+b8/mlWNguvM=;
- b=PTWxbjZHMhsu8hDxGkSUWgRX7rSEcOqREaJ1nNKu34ho2mHG0Z+nZWv5fVbiGpkJLO
- F9SEI+Dnr0meoVPA+WZoFXZBfpOinbFMlcExJNYroZnBpMDrrY36046l0G0EEYLTfLu0
- P3VV8ywuhp0UOcXzUVoYh5hysrutHsdK4flmv49tAdJAriNfgwRSs1zgrFKfzBBO8fES
- DSNuDZ6Wn7lPuDqGMv9Dc+tJ4vsHf+CjoRSX04NcQbj7UZUuansaMPlCrWyVtcY90oVH
- xTYIBhTj7eChYkNMgUbxUlaXpZ0/xnzRaUf0uSSmyA7YXFo6sjRiCP7A3ekGntXzUjCm
- EY+Q==
-X-Gm-Message-State: AOJu0YzERHLu7KQ21JKSj2rCOXrXjutZgaqKiWUwgfZ52JPOLrz9lWxg
- UIXbgRktZi0qRr/z/NaY4lzbDQ==
-X-Received: by 2002:a17:907:75e6:b0:988:9b29:5653 with SMTP id
- jz6-20020a17090775e600b009889b295653mr6541467ejc.77.1693844065083; 
- Mon, 04 Sep 2023 09:14:25 -0700 (PDT)
+ bh=4GNi2AOj7YBZidVqMdiMTsl/wL7uqVeokPItco5CZ1w=;
+ b=DhlxU6p4G1uSKlst4ckLRik9miMwFjCq/fXR9Kt/Z1AzZ0UvMHaYgSnDobuleanl2b
+ Bvw+stYziJAzzaKTL7+GIGD55VbyLsBy9vPd3BhnfI8Nc7tv2Okupuycpv4bxxMbbv3b
+ ki6xvkj9+yP0Ic0GOax3Nva2WjEfOHOLVrFKlE6sEGAvQYsUpLiuabLufk3rkFvWSoYP
+ P92djeEdo3sA9v/qnJI2Y0WYLkNJByb/nhT12jD1DNOoQ3Don+DDZc8MmaXw3jCf5lTM
+ hBpfi9tyGKROrjurX9KWS26M3Lm7968WFpU3sWP9oMbzNnCGsIj/NsvJU4GU5I3254kk
+ TyvA==
+X-Gm-Message-State: AOJu0YzbiSrIdAglluhZIt+q6RVSIO2XH2YDMDYXYPZp70gB++bWGG0j
+ x8HRvCHJk2acA/k++Aa6x2EEQw==
+X-Received: by 2002:a05:6402:3202:b0:52e:585a:e95 with SMTP id
+ g2-20020a056402320200b0052e585a0e95mr452717eda.2.1693844070498; 
+ Mon, 04 Sep 2023 09:14:30 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.209.227])
  by smtp.gmail.com with ESMTPSA id
- f3-20020a170906824300b0099b921de301sm6338473ejx.159.2023.09.04.09.14.24
+ c21-20020aa7df15000000b005254b41f507sm6024930edy.32.2023.09.04.09.14.29
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 04 Sep 2023 09:14:24 -0700 (PDT)
+ Mon, 04 Sep 2023 09:14:30 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Markus Armbruster <armbru@redhat.com>,
 	qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2 19/22] linux-user/strace: Clean up local variable shadowing
-Date: Mon,  4 Sep 2023 18:12:31 +0200
-Message-ID: <20230904161235.84651-20-philmd@linaro.org>
+ Alistair Francis <alistair.francis@wdc.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Subject: [PATCH v2 20/22] sysemu/device_tree: Clean up local variable shadowing
+Date: Mon,  4 Sep 2023 18:12:32 +0200
+Message-ID: <20230904161235.84651-21-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230904161235.84651-1-philmd@linaro.org>
 References: <20230904161235.84651-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,35 +127,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wivQpfPbZU6Z
+X-TUID: OKF3mJOjMNyh
 
 Fix:
 
-  linux-user/strace.c: In function ‘print_sockaddr’:
-  linux-user/strace.c:370:17: warning: declaration of ‘i’ shadows a previous local [-Wshadow=compatible-local]
-    370 |             int i;
-        |                 ^
-  linux-user/strace.c:361:9: note: shadowed declaration is here
-    361 |     int i;
-        |         ^
+  hw/mips/boston.c:472:5: error: declaration shadows a local variable [-Werror,-Wshadow]
+    qemu_fdt_setprop_cells(fdt, name, "reg", reg_base, reg_size);
+    ^
+  include/sysemu/device_tree.h:129:13: note: expanded from macro 'qemu_fdt_setprop_cells'
+        int i;
+            ^
+  hw/mips/boston.c:461:9: note: previous declaration is here
+    int i;
+        ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- linux-user/strace.c | 1 -
- 1 file changed, 1 deletion(-)
+ include/sysemu/device_tree.h | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/linux-user/strace.c b/linux-user/strace.c
-index e0ab8046ec..cf26e55264 100644
---- a/linux-user/strace.c
-+++ b/linux-user/strace.c
-@@ -367,7 +367,6 @@ print_sockaddr(abi_ulong addr, abi_long addrlen, int last)
-         switch (sa_family) {
-         case AF_UNIX: {
-             struct target_sockaddr_un *un = (struct target_sockaddr_un *)sa;
--            int i;
-             qemu_log("{sun_family=AF_UNIX,sun_path=\"");
-             for (i = 0; i < addrlen -
-                             offsetof(struct target_sockaddr_un, sun_path) &&
+diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+index ca5339beae..8eab395934 100644
+--- a/include/sysemu/device_tree.h
++++ b/include/sysemu/device_tree.h
+@@ -126,10 +126,8 @@ int qemu_fdt_add_path(void *fdt, const char *path);
+ #define qemu_fdt_setprop_cells(fdt, node_path, property, ...)                 \
+     do {                                                                      \
+         uint32_t qdt_tmp[] = { __VA_ARGS__ };                                 \
+-        int i;                                                                \
+-                                                                              \
+-        for (i = 0; i < ARRAY_SIZE(qdt_tmp); i++) {                           \
+-            qdt_tmp[i] = cpu_to_be32(qdt_tmp[i]);                             \
++        for (unsigned i_ = 0; i_ < ARRAY_SIZE(qdt_tmp); i_++) {               \
++            qdt_tmp[i_] = cpu_to_be32(qdt_tmp[i_]);                           \
+         }                                                                     \
+         qemu_fdt_setprop(fdt, node_path, property, qdt_tmp,                   \
+                          sizeof(qdt_tmp));                                    \
 -- 
 2.41.0
 

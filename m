@@ -1,186 +1,129 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1180574ejb;
-        Mon, 4 Sep 2023 01:18:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGhMT0KFRS2N3qzx3dXZk38jZJ90wmBLyNH4NVgN4N32BTWycgplT9y1QBMx0S05XrniSgc
-X-Received: by 2002:a17:90a:8544:b0:26f:4685:5b69 with SMTP id a4-20020a17090a854400b0026f46855b69mr6635453pjw.7.1693815489494;
-        Mon, 04 Sep 2023 01:18:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693815489; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1221407ejb;
+        Mon, 4 Sep 2023 02:52:23 -0700 (PDT)
+X-Received: by 2002:a50:fc13:0:b0:525:440a:616a with SMTP id i19-20020a50fc13000000b00525440a616amr7111192edr.20.1693821142837;
+        Mon, 04 Sep 2023 02:52:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693821142; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ssd6qIUhwgHYOJNTVuYXUarCAwcY3OIczz1QoA/YrYsRi1zCV5YnTe1FwknDjX/+KA
-         80Ik0PLux9O17oqsuWqNvVcNGeNG5Q1lNEIYkXYl+y5lnVlbSsW40wNkknascnBCvceD
-         eCNcX1mUhhudxEQZpmV1fFhvBgCVgRkZ4Ub2nGpW7nGvT0L4JK99kDQJdUErgHSOaDuq
-         56VU5Vo++qyHmZKTDSrK55MdadDO+ASZrhCgbIzks/R+IBG3OybFV+MLsnzQ33tyVfpT
-         mciWLOFtPF3GgGd1YQpX2J9iSE2IsA1qLpM/Wo94DRhQbEIikorQvGcPj94fNqwjVlnd
-         MNJQ==
+        b=f23SfFXS5TUkhtq10SD26Nb6D2SHCMAl1jQ2fgiJbuKFt1D5TxDVx1qnPaAfYeejvx
+         RWPRwqTYqEWACNUGr3MS73fAZs2/n2oNek4GUXfQ+BQv8Zk6z6tNbRtxsQdwtZg4OTzf
+         PWrzqcjgd4cQLMHjQWtF5CzRfN5uz3QW3Lwa59OxjpjXddWvJbcJgiMOQnBLyuzke6wq
+         WaG8/YdqdidE5dXjhcSwXwgkvrUHKA5LWvQXA6Mpg/+tNXutx8RscxviBPmaO80W7kaS
+         OprbLWjAWyOhG1LSI5Pp3uLocyE4wDklP18ASnTQUpHynMd5O4YI8SuM3jbEAz5h9lYr
+         +itQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature:dkim-signature;
-        bh=3AS0IT6yUk9p3q1y8aqClBmPuqem0MEXVXeHPyOtLN0=;
-        fh=GA8ZSgs+tEnCt+TiiMPQaVdo0lqcACaL3X8JOpYj65o=;
-        b=SD1qSCzey1d8Sce/G0YEilH8rvMnQ6+3jE+By6sI6ISi7wsZXwLGar0aE1knNo1INJ
-         ZUpv7m4bELbyjuLDDctGO14yfDT+7xYg8X8bt6VBBh7BUJjI26f1tW3i0Og9bGI9Yymn
-         oWPkM5a5hBtc2BANx/KFcsGHi1yhcHnbR1P7QEgOL5GM9lHmkwuJcwYntMRGlhVYyArs
-         Crr9GCGfR1DAFI2DdObxnY+cSq8bb1hhqa2guodsq5csfApkldFUpaT0/aQ+jNnft5kF
-         91sgRj5RNUeEIQ3Xhi5l5GPZGWb3ttFeZIA9ZawGxCoc9vDfYlGMYfFy/uKAER+tqUJ4
-         d17Q==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=PbWx9BTVt6IZAk41F6keTl3viLzVQvBCWj7quW/Ekx0=;
+        fh=lXQ+bRJwr+effoDA+nC3GFoM9AYF2wIl+GhcN9iwy3U=;
+        b=NdujEv/ZF3tU2YslEOXIoiyIk7GET7fXQfmExvrtyWdwxzFJZSLDqjv7LuClt+J+dx
+         Pp6ReGbHdDFDvraiNSqZKnh9PffWq34g9qg4cc6WSfqToHbCdjPUqY1xiIqkkxhruzCn
+         jn2/VJCP/+DAHBydPN4vqk77DOv2PmV0F7qXIJ3NizMjuFmDx2JJa4lrk4nMCwblW1Tv
+         0518o49r7iDs6P90+MZUsFLjr1TXkPG4YJluFrObrSd1QrY4hJWf361hkpjLUfjAzXkl
+         zaeJYg5/dLw5PgiKTrVEQ/qd0ETWto8qDnXfqM4s0wxbcMyfSCQH0PJXTFbqCjd5EQrP
+         JKnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=EsdMLVkQ;
-       dkim=neutral (no key) header.i=@suse.de header.b=i4grlFnZ;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id f3-20020a17090a664300b00267668f8be7si7698151pjm.64.2023.09.04.01.18.09;
-        Mon, 04 Sep 2023 01:18:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KGZbtJch;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d29-20020a50cd5d000000b00523c7b685easor3208086edj.6.2023.09.04.02.52.22
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 04 Sep 2023 02:52:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=EsdMLVkQ;
-       dkim=neutral (no key) header.i=@suse.de header.b=i4grlFnZ;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S241103AbjIDISL (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Mon, 4 Sep 2023 04:18:11 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:39512 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229941AbjIDISK (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 4 Sep 2023 04:18:10 -0400
-Received: from smtp-out1.suse.de (smtp-out1.suse.de [IPv6:2001:67c:2178:6::1c])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 3C18AFC
-        for <kvm@vger.kernel.org>; Mon,  4 Sep 2023 01:18:07 -0700 (PDT)
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-        (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-         key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-        (No client certificate requested)
-        by smtp-out1.suse.de (Postfix) with ESMTPS id F30B82185A;
-        Mon,  4 Sep 2023 08:18:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-        t=1693815486; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-         mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=3AS0IT6yUk9p3q1y8aqClBmPuqem0MEXVXeHPyOtLN0=;
-        b=EsdMLVkQhMdJdW3ChKjTt7QZpyFqhgVOfXZEIyJevWjiwpNHKTqgEAr6tzp10EquHnJj/5
-        WfXydtcQzaIuBQIyqa3hkTHhbPRXWZUMouUw7Syad5l3OlU5G8/br8hMtZ3epZFPrA9Kvb
-        aIe8AetuvPaXGlJGA73o4h3o8oTVmYI=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-        s=susede2_ed25519; t=1693815486;
-        h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-         mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=3AS0IT6yUk9p3q1y8aqClBmPuqem0MEXVXeHPyOtLN0=;
-        b=i4grlFnZ0XX1OZGWGPcHPDTVT9RpPlba0+Rfms9z/Td95wrFWNVRg3oOPYA1+ktetfrt+K
-        jjrx0GMTPHx0o7Dg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-        (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-         key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-        (No client certificate requested)
-        by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id B7FA51358B;
-        Mon,  4 Sep 2023 08:18:05 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-        by imap2.suse-dmz.suse.de with ESMTPSA
-        id 0IudK72S9WSJVgAAMHmgww
-        (envelope-from <cfontana@suse.de>); Mon, 04 Sep 2023 08:18:05 +0000
-Message-ID: <cfee780b-27ab-8a49-9d42-72fd2a425a17@suse.de>
-Date:   Mon, 4 Sep 2023 10:18:05 +0200
+       dkim=pass header.i=@linaro.org header.s=google header.b=KGZbtJch;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1693821142; x=1694425942; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=PbWx9BTVt6IZAk41F6keTl3viLzVQvBCWj7quW/Ekx0=;
+        b=KGZbtJch9NMWknFPRBQ1VW+Q+CJJ0d37E7YKMiwzfBz1nk1PirQThiCOSLOn066ED0
+         0dDfpwcmIyghH8Iqy6V0Hp/eVBvrQvCHdAcDkaiysVMkxwglUbOr9dkhlrU5EqTnC826
+         YRT572nbzppOvtbq1aodWjl9ZYbRdlse+uHSgpcAWWixEUZ3q136f4yYfyccMYsxkliw
+         QXl0tJz2hT5LS51N5bSEbBUej91vn1GLImo4s4iiEAKRsFcV5zczQDZ0OkenvsX0QIiA
+         AcACx4TqY6Ue4/LQ5iv7DTIuX2/v1pR1gBk8DYlcIZN99CuBPw+gkBaqlgBwMroHPylq
+         sT3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1693821142; x=1694425942;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=PbWx9BTVt6IZAk41F6keTl3viLzVQvBCWj7quW/Ekx0=;
+        b=Lc+hp/S+VVtlEFa+zs4ilD2tBjZijRUCrTqhYJKzpFcDInesQTidNVfAVfPB+VkZso
+         +FlfyHGlY1rdOFCOJ3EZ5Pl0vgCQDdOndwsSg4YA0TcS+m0eRpkz7kZcGJrvtKa7is+2
+         P6+QF7FPtjTGN64kCVj1z+CioieXs1OFIk9SbY4JZ42+yXwyKdnn4559lUQAT2AI0C7V
+         8QZ3VVnYRJMWHTvAASniIUsury+0TtbWMwyyxaJBScZJU2DZijrRZ3rxA9paaOq16F10
+         qtqSDVqglLkQ89NVoPMDBGpmomTix0uri4txnN3IXX+v9Gro5gRIwkfR7apgOPel3WJ+
+         6KWg==
+X-Gm-Message-State: AOJu0Yxd8DuBN7SSumQGJvkp5mpIr8ZZjuMizcPHkuwHQGAzOnhbm/Sc
+	Y2A/W/d+Q1csI9zB1L/h4n1Df97n
+X-Google-Smtp-Source: AGHT+IEn/EYPM8FkYGNw/UMiwOiYdITtzlKFwWtxTtpnIkG3IAuZVwB3NelMjbkjWtPW/X9N+5iVtw==
+X-Received: by 2002:aa7:da45:0:b0:523:c19d:a521 with SMTP id w5-20020aa7da45000000b00523c19da521mr6492059eds.40.1693821142480;
+        Mon, 04 Sep 2023 02:52:22 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.115] ([176.187.209.227])
+        by smtp.gmail.com with ESMTPSA id s2-20020a056402164200b00521953ce6e0sm5592012edx.93.2023.09.04.02.52.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Sep 2023 02:52:22 -0700 (PDT)
+Message-ID: <02cc70e4-31cc-6e0d-0e74-e4efdc5848f6@linaro.org>
+Date: Mon, 4 Sep 2023 11:52:18 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [PATCH] arm64: Restore trapless ptimer access
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.0
+Subject: Re: [PATCH 4/8] hw/core/cpu: Return static value with gdb_arch_name()
 Content-Language: en-US
-To:     Colton Lewis <coltonlewis@google.com>,
-        Andrew Jones <andrew.jones@linux.dev>
-Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-        kvm@vger.kernel.org, qemu-trivial@nongnu.org,
-        Marc Zyngier <maz@kernel.org>
-References: <20230831190052.129045-1-coltonlewis@google.com>
- <20230901-16232ff17690fc32a0feb5df@orel> <ZPI6KNqGGTxxHhCh@google.com>
-From:   Claudio Fontana <cfontana@suse.de>
-In-Reply-To: <ZPI6KNqGGTxxHhCh@google.com>
-Content-Type: text/plain; charset=UTF-8
+To: Michael Tokarev <mjt@tls.msk.ru>, Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Mikhail Tyutin <m.tyutin@yadro.com>, Aleksandr Anenkov
+ <a.anenkov@yadro.com>, qemu-devel@nongnu.org,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Song Gao <gaosong@loongson.cn>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>
+References: <20230903043030.20708-1-akihiko.odaki@daynix.com>
+ <20230903043030.20708-5-akihiko.odaki@daynix.com>
+ <fe9021cf-727f-aa8b-c22a-7432ce928fb6@tls.msk.ru>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <fe9021cf-727f-aa8b-c22a-7432ce928fb6@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-5.9 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_MED,
-        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: K1TwETioKTx2
+X-TUID: Cq+RXuH0CsOC
 
-Hi,
-
-I think this discussion from ~2015 could potentially be be historically relevant for context,
-at the time we had the problem with CNTVOFF IIRC so KVM_REG_ARM_TIMER_CNT being read and rewritten causing time warps in the guest:
-
-https://patchwork.kernel.org/project/linux-arm-kernel/patch/1435157697-28579-1-git-send-email-marc.zyngier@arm.com/
-
-I could not remember or find if/where the problem was fixed in the end in QEMU,
-
-Ciao,
-
-Claudio
-
-On 9/1/23 21:23, Colton Lewis wrote:
-> On Fri, Sep 01, 2023 at 09:35:47AM +0200, Andrew Jones wrote:
->> On Thu, Aug 31, 2023 at 07:00:52PM +0000, Colton Lewis wrote:
->>> Due to recent KVM changes, QEMU is setting a ptimer offset resulting
->>> in unintended trap and emulate access and a consequent performance
->>> hit. Filter out the PTIMER_CNT register to restore trapless ptimer
->>> access.
->>>
->>> Quoting Andrew Jones:
->>>
->>> Simply reading the CNT register and writing back the same value is
->>> enough to set an offset, since the timer will have certainly moved
->>> past whatever value was read by the time it's written.  QEMU
->>> frequently saves and restores all registers in the get-reg-list array,
->>> unless they've been explicitly filtered out (with Linux commit
->>> 680232a94c12, KVM_REG_ARM_PTIMER_CNT is now in the array). So, to
->>> restore trapless ptimer accesses, we need a QEMU patch to filter out
->>> the register.
->>>
->>> See
->>> https://lore.kernel.org/kvmarm/gsntttsonus5.fsf@coltonlewis-kvm.c.googlers.com/T/#m0770023762a821db2a3f0dd0a7dc6aa54e0d0da9
->>
->> The link can be shorter with
->>
->> https://lore.kernel.org/all/20230823200408.1214332-1-coltonlewis@google.com/
+On 4/9/23 07:54, Michael Tokarev wrote:
+> 03.09.2023 07:30, Akihiko Odaki wrote:
+>> All implementations of gdb_arch_name() returns dynamic duplicates of
+>> static strings. It's also unlikely that there will be an implementation
+>> of gdb_arch_name() that returns a truly dynamic value due to the nature
+>> of the function returning a well-known identifiers. Qualify the value
+>> gdb_arch_name() with const and make all of its implementations return
+>> static strings.
 > 
-> I will keep that in mind next time.
-> 
->>> for additional context.
->>>
->>> Signed-off-by: Andrew Jones <andrew.jones@linux.dev>
->>
->> Thanks for the testing and posting, Colton. Please add your s-o-b and a
->> Tested-by tag as well.
-> 
-> Assuming it is sufficient to add here instead of reposting the whole patch:
-> 
-> Signed-off-by: Colton Lewis <coltonlewis@google.com>
-> Tested-by: Colton Lewis <coltonlewis@google.com>
-> 
->>> ---
->>>  target/arm/kvm64.c | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
->>> index 4d904a1d11..2dd46e0a99 100644
->>> --- a/target/arm/kvm64.c
->>> +++ b/target/arm/kvm64.c
->>> @@ -672,6 +672,7 @@ typedef struct CPRegStateLevel {
->>>   */
->>>  static const CPRegStateLevel non_runtime_cpregs[] = {
->>>      { KVM_REG_ARM_TIMER_CNT, KVM_PUT_FULL_STATE },
->>> +    { KVM_REG_ARM_PTIMER_CNT, KVM_PUT_FULL_STATE },
->>>  };
->>>
->>>  int kvm_arm_cpreg_level(uint64_t regidx)
->>> --
->>> 2.42.0.283.g2d96d420d3-goog
->>>
-> 
+> Why it needs to be a function, can't it be a char pointer
+> initialized at the cpu init time?
+
+For x86_gdb_arch_name() or ppc_gdb_arch_name() we could by
+moving the #ifdef'ry, but for arm_gdb_arch_name() we'd need
+to add a specific class for the iwMMXt CPU. Not sure worth
+it...

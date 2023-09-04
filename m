@@ -1,91 +1,133 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1238548ejb;
-        Mon, 4 Sep 2023 03:28:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFOVAsK2L4Gn2wXvRy4V7MEW2eVgmhFMVKFlosu9n38+cAgsL7Z+iuRMVoJj7kftPQa8ciN
-X-Received: by 2002:a67:f845:0:b0:44b:fb1d:2e3a with SMTP id b5-20020a67f845000000b0044bfb1d2e3amr8050371vsp.23.1693823286021;
-        Mon, 04 Sep 2023 03:28:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693823286; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1248271ejb;
+        Mon, 4 Sep 2023 03:50:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEfNT0vdtbjRBhU5wlPIpdTI8WBijmJU1aoHOwEzkcVRW1sIoxZUd3tkHzA3kqxCnRep3bs
+X-Received: by 2002:a05:620a:bd6:b0:76c:992e:1b2f with SMTP id s22-20020a05620a0bd600b0076c992e1b2fmr10201774qki.13.1693824606655;
+        Mon, 04 Sep 2023 03:50:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693824606; cv=none;
         d=google.com; s=arc-20160816;
-        b=vU6NJTUvpFVBm+nGloQH9sR8UynLxL+SElNbeDaDc/hPUTWtM5n4kVVHaV8idSs/s/
-         ldrZrurTkr3CRSQNDqioD4L0z33AnDmMD9KRTWB5I49WwRvYBQVAZHY5g7J1IF7OysBZ
-         ne+fFzEV76cbxIHmO5BFiE9BhUsaaKJGM2Ri688GXH3ropdwVVGxjp3WToeVIw6dSkX1
-         nzuSi0QQCirLOLek6OBZyifw7VhPjb3UV8JKgRGiGNYYDu+OKw+EbCO8SdUjOkWgDNoF
-         R2DjGlYyFEFqSOAKk+RylJ3xIGiDc/tj0dAE3woE5nSql2Rc/pQl1SzE2Iz3FRh6R0lV
-         v0zw==
+        b=Vo1zyrA56ZKDBpdkjrm7cKzdLuWqxEjX4UXiya89a/pt0ACcNJr7Bk5cXZ+OjlXLl6
+         fmKEe9kEBXhchf/zuP8BA9odZCsnaRGlpMcsRiBsnWYPeZStLo3wrPTEWwqeWQ5G7tc5
+         JFjQbSSGJd0c7fKhwn21HjZPStxtFgwEV9M1gsmAOzxaqIrX9x8zjes+GR0O6qszFkVg
+         14oF9OoV3nUeC1kmJpehs3nbzGDzKCy25mUl2y1ptsvpvdBy+DjDhHfjFv4KXEVcs5fy
+         lRwBN3G7GiA/GybqWpxOAdcujcPQKOv2+OYUR/hW47h4XSN09r3TmPDaSh3+ZMmQGNOy
+         GT9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:mime-version
-         :references:subject:cc:to:from:date;
-        bh=v5SRtfEKbxZTHp15qTMhJN9a6VjzMNwfYQ9UW5U5Hto=;
-        fh=TPuqDWNMdq96IDBssnZ5cRlKmE2feXZTfz7taqWAy8E=;
-        b=aLd6GQRgSn5HmxmX71OLFyc35uxyqJnEFWhbzOYCq2k73ZzSqD5VbRZFwhjhnVirMt
-         gTZNhXTGvpjsw0qNNo9t0uryTTA/TNmliSC0PsI1U+V3TcBmJuz0sHs8qVchM3tFcXuD
-         W9RkMnBMr84JT4oO/N7I8xYejOyFRJ55QWOUwOoQUCVWuLGjLI6ITcNaGmL6c83x9A9A
-         k7qhm0xwmqrGB0nE6cEUhR24sxuO6FNq615cCQeomXxRll4vxMoUphDUiXZQqL3ABWwV
-         8vec6JzCU2JvKgxepGXUPWmlAJZeRuulVesHkVwTBh0pCQY+tXOcy2mfqIlpSzUcCnpH
-         C/OA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=tJPEj+fjNH7kCozMYcrY9kliQQZ3lOfOA03Uorp7DpM=;
+        fh=oBz3ax1a7tnRctUv6A14jT0JkorVPIu4k/QD7chhnqc=;
+        b=fG210i64QFKxKW8+NDv4cvl5B3XsT2eiiXZFW+wnvrDOdkUB0q6B1WcuqGSfKGcIys
+         EMCE8maLTXPUIB0Jd1PinMnenPjusl4QCneQcq7yJiyNZ/U4xV7FYhEP6D+BYCSe8Ded
+         KjY4oZE7G90Iaj0zFf630s1LOMjttv4df5KN+gQdhLC3T0LFifbrtCYjr8Ngaeoq3Tpq
+         h3CpfDl4zkhN1+IhfTZw44ivaj9kzx7HkRsAXsoL0yxcxgI+CvqnCqIB0tuKsSKmuWFI
+         /gUbZ9zjbHs73g3z1Y43FcXGN43zvXur8ergzZe/aW50u/m4AJIXbS36yBgNMQtZPwK3
+         FdKA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=S0pDyBJz;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="Ctj3j/0H";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fh3-20020a0562141a0300b006493968ca8fsi6396776qvb.580.2023.09.04.03.28.04
+        by mx.google.com with ESMTPS id i4-20020a05620a404400b0076aea1f3fb0si6760624qko.561.2023.09.04.03.50.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Sep 2023 03:28:04 -0700 (PDT)
+        Mon, 04 Sep 2023 03:50:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=S0pDyBJz;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b="Ctj3j/0H";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qd6oC-00031U-0n; Mon, 04 Sep 2023 06:27:56 -0400
+	id 1qd79J-0003oT-9t; Mon, 04 Sep 2023 06:49:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1qd6o3-0002nU-J6
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 06:27:43 -0400
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wangyuquan1236@phytium.com.cn>) id 1qd6ny-0004VZ-KC
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 06:27:43 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAHgpT_sPVkBtGmAA--.32321S2;
- Mon, 04 Sep 2023 18:27:11 +0800 (CST)
-Received: from WYQ-S (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwDnbIv9sPVk1VsAAA--.781S3;
- Mon, 04 Sep 2023 18:27:10 +0800 (CST)
-Date: Mon, 4 Sep 2023 18:27:10 +0800
-From: "Yuquan Wang" <wangyuquan1236@phytium.com.cn>
-To: jonathan.cameron <Jonathan.Cameron@Huawei.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, 
- "gregory.price@memverge.com" <gregory.price@memverge.com>
-Subject: Re: CXL Namespaces of ACPI disappearing in Qemu demo
-References: <2023082215220191352877@phytium.com.cn>, 
- <ZOZho3SyqASo9MPD@memverge.com>, 
- <20230824100635.0000565d@Huawei.com>
-X-Priority: 3
-X-GUID: 861804EB-D77C-4D43-9728-932112EF770A
-X-Has-Attach: no
-X-Mailer: Foxmail 7.2.25.228[cn]
-Mime-Version: 1.0
-Message-ID: <2023090418270957278822@phytium.com.cn>
-Content-Type: multipart/alternative;
- boundary="----=_001_NextPart268137765623_=----"
-X-CM-TRANSID: AQAAfwDnbIv9sPVk1VsAAA--.781S3
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAMAWT02qQDoAABsA
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=wangyuquan
- 1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7
- ZEXasCq-sGcSsGvfJ3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2Kfnx
- nUUI43ZEXa7xR_UUUUUUUUU==
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=wangyuquan1236@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_FONT_LOW_CONTRAST=0.001,
- HTML_MESSAGE=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_KAM_HTML_FONT_INVALID=0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1qd79H-0003ni-It; Mon, 04 Sep 2023 06:49:39 -0400
+Received: from wout2-smtp.messagingengine.com ([64.147.123.25])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1qd79D-0001N5-7q; Mon, 04 Sep 2023 06:49:39 -0400
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.west.internal (Postfix) with ESMTP id 6B77532007F9;
+ Mon,  4 Sep 2023 06:49:29 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute5.internal (MEProxy); Mon, 04 Sep 2023 06:49:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-type:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm3; t=1693824568; x=
+ 1693910968; bh=tJPEj+fjNH7kCozMYcrY9kliQQZ3lOfOA03Uorp7DpM=; b=S
+ 0pDyBJzmozYPOEJzKkl8VShGYLbOqdOEqteRhzlix8B76uZijeLn++c33j3ZVkXC
+ AvabNK3oj9ng0/2Y7MFK/cvzDLm81X3DkuJIok3ws196plf2K2kB2emovx3VDADI
+ B/w1A2EUo1lldUV1nh+esrZ5scgpfLyBlrk2CXrUn+o0OYo56/kIdw0lp5TfsOgP
+ 7xp0wJm/mospxNOeImHTD8dRrqXub/MVNOUAaWO1xe3Pvt+0ga8KgPtzNBEzEMij
+ /wMn48Yu6+tfru/8PGNHOskot54inws2cZSjzb4Xx8h3DLcqI/LGqLc1oBjRaffm
+ yiFNY1LaFqJWEtPvtg1jQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; t=1693824568; x=1693910968; bh=tJPEj+fjNH7kC
+ ozMYcrY9kliQQZ3lOfOA03Uorp7DpM=; b=Ctj3j/0HHwbnjj0WdDCeEgm6Cl9/v
+ niygA4zYCgFe22yeY1ZregQ43/QmKbbsqaWIET9eQt4BxRkGFPc8XcbnPnXKXDQ/
+ EFOzRYCNasGeamQkZpKwKuoe1wc+tkD7b60Xn5Q6lducKvY8pyo8WuYIFRIsgez0
+ yva+vNqwksFgdyEXqGiYE8mnzUFWWtLYNaXPfEK+pJMH/AFKQh6vWZphJfQyO7lN
+ qpsoL+pGn3iVZ0szIb//jyBY3qsJvUgyYbjCMQHRW0Vl/krfeBBv8oPDokX/+cEX
+ OOeD38t2IU3mVumlzn5WyunPHK3EtpcDuoKZCw2hyc5wDY4SMvE+9FQQw==
+X-ME-Sender: <xms:Nrb1ZEe0ACtHUGWWj8w7TsFpuwJAMOjF0vMaCBy57Jjqfwkkmmk8vQ>
+ <xme:Nrb1ZGOorvxvBLIgrc8iHWWhu_Wb0HEZeDwpdLcMVBfetral_d3v02n9XhFacAZHx
+ 5LJQG3zb3MabvYir10>
+X-ME-Received: <xmr:Nrb1ZFj8So7q109l3fT8v402x4vRJx4FgH-SmZNrw5xoLZWWCEqTF1UbEYBj>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedviedrudegkedgfeegucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvfevuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepmfhlrghu
+ shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
+ htvghrnhepffduvdfhheejudfgieejueeileegveduvdelhfekhffgteetffdtvdekveei
+ leefnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpe
+ dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehithhssehirhhrvghlvghvrghnthdrughk
+X-ME-Proxy: <xmx:Nrb1ZJ_tpyqsqai-N4dsVhIay6lQ2LlnBZBVq7lxkRvvX2SwKKfT0w>
+ <xmx:Nrb1ZAvL1DWf6cDmHRyvz59Fn_3lLD8p8WRzFNfXkXn5mZrH7OzlsA>
+ <xmx:Nrb1ZAHyEFMqcowbiJjsA6P2RuFPQSsF2DELb_kY0LjbjGlUeuSsGQ>
+ <xmx:OLb1ZNNJIU6BliJNYVbHeSvsfSiDwrlrvivHLUAyUoaIf1O3N3HL2g>
+Feedback-ID: idc91472f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 4 Sep 2023 06:49:26 -0400 (EDT)
+Date: Mon, 4 Sep 2023 12:49:20 +0200
+From: Klaus Jensen <its@irrelevant.dk>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Corey Minyard <cminyard@mvista.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jason Wang <jasowang@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ Lior Weintraub <liorw@pliops.com>, Jeremy Kerr <jk@codeconstruct.com.au>,
+ Matt Johnston <matt@codeconstruct.com.au>,
+ Peter Delevoryas <peter@pjd.dev>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ Klaus Jensen <k.jensen@samsung.com>
+Subject: Re: [PATCH v4 2/3] hw/i2c: add mctp core
+Message-ID: <ZPW2MFWp6mIvReS5@cormorant.local>
+References: <20230823-nmi-i2c-v4-0-2b0f86e5be25@samsung.com>
+ <20230823-nmi-i2c-v4-2-2b0f86e5be25@samsung.com>
+ <20230830153123.00006cc4@Huawei.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="8/teniqNx7Xmj1mb"
+Content-Disposition: inline
+In-Reply-To: <20230830153123.00006cc4@Huawei.com>
+Received-SPF: pass client-ip=64.147.123.25; envelope-from=its@irrelevant.dk;
+ helo=wout2-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,56 +142,252 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gOQQQGK+ZZLO
+X-TUID: 5Xill4IFxT+1
 
-This is a multi-part message in MIME format.
 
-------=_001_NextPart268137765623_=----
-Content-Type: text/plain;
-	charset="UTF-8"
-Content-Transfer-Encoding: base64
-
-SGksIEpvbmF0aGFuDQoNCkR1ZSB0byBteSBwb29yIGV4cGVyaWVuY2UgYW5kIGtub3dsZWRnZSBv
-biBjeGwgZGV2ZWxvcG1lbnQgaGlzdG9yeSwgSSBhbSBzb3JyeSB0byBjb250aW51ZQ0KdG8gYXNr
-IHNvbWUgdmVyeSBzaW1wbGUgYW5kIGZ1bmRhbWVudGFsIHF1ZXN0aW9ucyAgOiAoDQoNCkluIGh3
-L2FybS92aXJ0IDoNCltWSVJUX0NYTF9IT1NUXSA9ICAgICAgICAgICB7IDB4MCwgNjQgKiBLaUIg
-KiAxNiB9LCAvKiAxNiBVSUQgKi8NCg0KSXQgc2VlbXMgbGlrZSB0aGUgc3BlY2lmaWMgc3BhY2Ug
-Zm9yIE1NSU8gb2YgY3hsIGhvc3QgYnJpZGdlcy4gIFdoeSBub3QganVzdCB1c2UgdGhlIGV4aXN0
-aW5nICJWSVJUX1BDSUVfTU1JTyIgDQpzcGFjZSBmb3IgdGhlbT8gDQoNCkkgd291bGQgYmUgZ3Jh
-dGVmdWwgaWYgeW91IGhhdmUgc29tZSBmcmVlIHRpbWUgdG8gaGVscCBjaGVjayB0aGlzIGlzc3Vl
-IDogKQ0KDQpNYW55IHRoYW5rcw0KWXVxdWFuDQo=
-
-------=_001_NextPart268137765623_=----
-Content-Type: text/html;
-	charset="UTF-8"
+--8/teniqNx7Xmj1mb
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charse=
-t=3DUTF-8"><style>body { line-height: 1.5; }body { font-size: 13px; font-f=
-amily: "Times New Roman"; color: rgb(0, 0, 0); line-height: 1.5; }</style>=
-</head><body>=0A =0A<div>Hi, Jonathan</div><div><br></div><div><span style=
-=3D"background-color: rgba(0, 0, 0, 0); color: rgb(0, 0, 0);">Due&nbsp;to&=
-nbsp;my&nbsp;poor&nbsp;experience&nbsp;and&nbsp;knowledge&nbsp;on&nbsp;cxl=
-&nbsp;development&nbsp;history,&nbsp;I&nbsp;am&nbsp;sorry&nbsp;to&nbsp;con=
-tinue</span></div><div><span style=3D"color: rgb(0, 0, 0); background-colo=
-r: rgba(0, 0, 0, 0);">to&nbsp;ask&nbsp;some&nbsp;very&nbsp;simple&nbsp;and=
-&nbsp;fundamental&nbsp;questions&nbsp;&nbsp;:&nbsp;(<br><br>In&nbsp;</span=
-><span style=3D"background-color: rgba(0, 0, 0, 0); color: rgb(0, 0, 0);">=
-hw/arm/virt :</span></div><div><span style=3D"color: rgb(0, 0, 0); backgro=
-und-color: rgba(0, 0, 0, 0);">[VIRT_CXL_HOST]&nbsp;=3D&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;0x0,&nbsp;64&nbsp;*&n=
-bsp;KiB&nbsp;*&nbsp;16&nbsp;},&nbsp;/*&nbsp;16&nbsp;UID&nbsp;*/</span></di=
-v><div><span style=3D"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0,=
- 0);"><br></span></div><div>It seems like the specific space for MMIO of c=
-xl host bridges.&nbsp; Why not just use the existing&nbsp;<span style=3D"b=
-ackground-color: transparent;">"</span><span style=3D"color: rgb(0, 0, 0);=
- background-color: rgba(0, 0, 0, 0);">VIRT_PCIE_MMIO</span><span style=3D"=
-background-color: transparent;">"&nbsp;</span></div><div><span style=3D"ba=
-ckground-color: transparent;">space for them?&nbsp;</span></div><div><span=
- style=3D"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);"><br>I&=
-nbsp;would&nbsp;be&nbsp;grateful&nbsp;if&nbsp;you&nbsp;have&nbsp;some&nbsp=
-;free&nbsp;time&nbsp;to&nbsp;help&nbsp;check&nbsp;this&nbsp;issue&nbsp;:&n=
-bsp;)<br></span></div><div><br></div><div>Many thanks</div><div>Yuquan</di=
-v></body></html>
-------=_001_NextPart268137765623_=------
+On Aug 30 15:31, Jonathan Cameron wrote:
+> On Wed, 23 Aug 2023 11:21:59 +0200
+> Klaus Jensen <its@irrelevant.dk> wrote:
+>=20
+> > From: Klaus Jensen <k.jensen@samsung.com>
+> >=20
+> > Add an abstract MCTP over I2C endpoint model. This implements MCTP
+> > control message handling as well as handling the actual I2C transport
+> > (packetization).
+> >=20
+> > Devices are intended to derive from this and implement the class
+> > methods.
+> >=20
+> > Parts of this implementation is inspired by code[1] previously posted by
+> > Jonathan Cameron.
+> >=20
+> > Squashed a fix[2] from Matt Johnston.
+> >=20
+> >   [1]: https://lore.kernel.org/qemu-devel/20220520170128.4436-1-Jonatha=
+n.Cameron@huawei.com/
+> >   [2]: https://lore.kernel.org/qemu-devel/20221121080445.GA29062@codeco=
+nstruct.com.au/
+> >=20
+> > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+>=20
+> I made the minor changes to the CXL FM-API PoC to use this and all works =
+as expected so
+>=20
+> Tested-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>=20
+>=20
+> Some minor things inline.  With those tidied up or ignored with clear rea=
+soning.
+>=20
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>=20
+>=20
+> > diff --git a/hw/i2c/mctp.c b/hw/i2c/mctp.c
+> > new file mode 100644
+> > index 000000000000..217073d62435
+> > --- /dev/null
+> > +++ b/hw/i2c/mctp.c
+>=20
+>=20
+> ...
+>=20
+>=20
+> > +static int i2c_mctp_event_cb(I2CSlave *i2c, enum i2c_event event)
+> > +{
+> > +    MCTPI2CEndpoint *mctp =3D MCTP_I2C_ENDPOINT(i2c);
+> > +    MCTPI2CEndpointClass *mc =3D MCTP_I2C_ENDPOINT_GET_CLASS(mctp);
+> > +    MCTPI2CPacket *pkt =3D (MCTPI2CPacket *)mctp->buffer;
+> > +    size_t payload_len;
+> > +    uint8_t pec, pktseq, msgtype;
+> > +
+> > +    switch (event) {
+> > +    case I2C_START_SEND:
+> > +        if (mctp->state =3D=3D I2C_MCTP_STATE_IDLE) {
+> > +            mctp->state =3D I2C_MCTP_STATE_RX_STARTED;
+> > +        } else if (mctp->state !=3D I2C_MCTP_STATE_RX) {
+> > +            return -1;
+> > +        }
+> > +
+> > +        /* the i2c core eats the slave address, so put it back in */
+> > +        pkt->i2c.dest =3D i2c->address << 1;
+> > +        mctp->len =3D 1;
+> > +
+> > +        return 0;
+> > +
+> > +    case I2C_FINISH:
+> > +        if (mctp->len < sizeof(MCTPI2CPacket) + 1) {
+> > +            trace_i2c_mctp_drop_short_packet(mctp->len);
+> > +            goto drop;
+> > +        }
+> > +
+> > +        payload_len =3D mctp->len - (1 + offsetof(MCTPI2CPacket, mctp.=
+payload));
+> > +
+> > +        if (pkt->i2c.byte_count + 3 !=3D mctp->len - 1) {
+> > +            trace_i2c_mctp_drop_invalid_length(pkt->i2c.byte_count + 3,
+> > +                                               mctp->len - 1);
+> > +            goto drop;
+> > +        }
+> > +
+> > +        pec =3D i2c_smbus_pec(0, mctp->buffer, mctp->len - 1);
+> > +        if (mctp->buffer[mctp->len - 1] !=3D pec) {
+> > +            trace_i2c_mctp_drop_invalid_pec(mctp->buffer[mctp->len - 1=
+], pec);
+> > +            goto drop;
+> > +        }
+> > +
+> > +        if (!(pkt->mctp.hdr.eid.dest =3D=3D mctp->my_eid ||
+> > +              pkt->mctp.hdr.eid.dest =3D=3D 0)) {
+> > +            trace_i2c_mctp_drop_invalid_eid(pkt->mctp.hdr.eid.dest,
+> > +                                            mctp->my_eid);
+> > +            goto drop;
+> > +        }
+> > +
+> > +        pktseq =3D FIELD_EX8(pkt->mctp.hdr.flags, MCTP_H_FLAGS, PKTSEQ=
+);
+> > +
+> > +        if (FIELD_EX8(pkt->mctp.hdr.flags, MCTP_H_FLAGS, SOM)) {
+> > +            mctp->tx.is_control =3D false;
+> > +
+> > +            if (mctp->state =3D=3D I2C_MCTP_STATE_RX) {
+> > +                mc->reset(mctp);
+> > +            }
+> > +
+> > +            mctp->state =3D I2C_MCTP_STATE_RX;
+> > +
+> > +            mctp->tx.addr =3D pkt->i2c.source >> 1;
+> > +            mctp->tx.eid =3D pkt->mctp.hdr.eid.source;
+> > +            mctp->tx.tag =3D FIELD_EX8(pkt->mctp.hdr.flags, MCTP_H_FLA=
+GS, TAG);
+> > +            mctp->tx.pktseq =3D pktseq;
+> > +
+> > +            msgtype =3D FIELD_EX8(pkt->mctp.payload[0], MCTP_MESSAGE_H=
+, TYPE);
+> > +
+> > +            if (msgtype =3D=3D MCTP_MESSAGE_TYPE_CONTROL) {
+> > +                mctp->tx.is_control =3D true;
+> > +
+> > +                i2c_mctp_handle_control(mctp);
+> > +
+> > +                return 0;
+> > +            }
+> > +        } else if (mctp->state =3D=3D I2C_MCTP_STATE_RX_STARTED) {
+> > +            trace_i2c_mctp_drop_expected_som();
+> > +            goto drop;
+> > +        } else if (pktseq !=3D (++mctp->tx.pktseq & 0x3)) {
+> > +            trace_i2c_mctp_drop_invalid_pktseq(pktseq, mctp->tx.pktseq=
+ & 0x3);
+> > +            goto drop;
+> > +        }
+> > +
+> > +        mc->put_buf(mctp, i2c_mctp_payload(mctp->buffer), payload_len);
+>=20
+> Given this returns -1 on error should probably handle errors.
+>=20
 
+Yes.
+
+The event callback should only potentially return -1 in the case of
+I2C_START_SEND, so I just do a `goto drop` here.
+
+>=20
+> > +
+> > +        if (FIELD_EX8(pkt->mctp.hdr.flags, MCTP_H_FLAGS, EOM)) {
+> > +            mc->handle(mctp);
+> > +            mctp->state =3D I2C_MCTP_STATE_WAIT_TX;
+> > +        }
+> > +
+> > +        return 0;
+> > +
+> > +    default:
+> > +        return -1;
+> > +    }
+> > +
+> > +drop:
+> > +    mc->reset(mctp);
+> > +
+> > +    mctp->state =3D I2C_MCTP_STATE_IDLE;
+> > +
+> > +    return 0;
+> > +}
+>=20
+> ...
+>=20
+>=20
+> > diff --git a/include/hw/i2c/mctp.h b/include/hw/i2c/mctp.h
+> > new file mode 100644
+> > index 000000000000..fccbf249cdbe
+> > --- /dev/null
+> > +++ b/include/hw/i2c/mctp.h
+> > @@ -0,0 +1,127 @@
+> > +#ifndef QEMU_I2C_MCTP_H
+> > +#define QEMU_I2C_MCTP_H
+> > +
+> > +#include "qom/object.h"
+> > +#include "hw/qdev-core.h"
+> > +
+> > +#define TYPE_MCTP_I2C_ENDPOINT "mctp-i2c-endpoint"
+> > +OBJECT_DECLARE_TYPE(MCTPI2CEndpoint, MCTPI2CEndpointClass, MCTP_I2C_EN=
+DPOINT)
+> > +
+> > +struct MCTPI2CEndpointClass {
+> > +    I2CSlaveClass parent_class;
+> > +
+> > +    /**
+> > +     *
+>=20
+> Drop the blank line for consistency with the other comments.
+>=20
+> > +     * put_buf() - receive incoming message fragment
+> > +     *
+> > +     * Must returns 0 for succes or -1 for error.
+>=20
+> I would expect any negative to count as error rather than just -1.
+> Also, simple imperative should be clear enough
+> 	* Return 0 for success or negative for error.
+>=20
+> > +     */
+> > +    int (*put_buf)(MCTPI2CEndpoint *mctp, uint8_t *buf, size_t len);
+> > +
+> > +    /**
+> > +     * get_buf() - provide pointer to message fragment
+> > +     *
+> > +     * Called by the mctp subsystem to request a pointer to the next m=
+essage
+> > +     * fragment. The implementation must advance its internal position=
+ such
+> > +     * that successive calls returns the next fragments.
+> Subsequent call with return next fragment.
+>=20
+> Up to the implementation to decide how it does this.
+>=20
+> > +     *
+> > +     * Must return the number of bytes available.
+> 	Return number of bytes in message fragment.
+>=20
+> Available might mean in all fragments.
+>=20
+
+Thanks for these suggestions, I worked that in.
+
+--8/teniqNx7Xmj1mb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCgAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmT1ti8ACgkQTeGvMW1P
+DekUqwgAljYNSoFtVO4IovqEhjrqkL9wIyfFJiy66EuJwmZfNb6LY2Xx80J0aix8
+ZUjBztcDeFGvOKZm9dimvSh8HrExMOu7HbFQm8BsFuP1Y8rZ9wLutMmW6luFCfni
+e6DLUv2VRZJJt8KkGgOa+qcqNbBAZ7qBuWDKCNzlbvYBFJ3ofofArXySfwiCRwfY
+moBbQAWVB4WQJ+JneD11Sn/Y9Nt84OsY8vncN2LmaApNgVlE7yoVO7+T95KMc7xr
+8GaLPEjAPd0mEevgQU5KSyE6quPiTeGHm0uOJ2v7wTtLO9ctOJXRyUCINLiSprfj
+Flokh9VcymJTAXJO+2mBCv6vZWggFQ==
+=xH9s
+-----END PGP SIGNATURE-----
+
+--8/teniqNx7Xmj1mb--

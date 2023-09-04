@@ -1,204 +1,164 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1287952ejb;
-        Mon, 4 Sep 2023 05:05:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFwzZm0a0RkISgLVM/BUjQF1oZpWae+mkjyKcQVE3/toYFaV9ka0PM85eJYqr2k6CvyMRQ+
-X-Received: by 2002:aa7:dd0b:0:b0:52a:1d9c:83ff with SMTP id i11-20020aa7dd0b000000b0052a1d9c83ffmr7180849edv.1.1693829144779;
-        Mon, 04 Sep 2023 05:05:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693829144; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1452056ejb;
+        Mon, 4 Sep 2023 09:28:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEi/avl7acG47RUKaTMEHaVjLye/DvnHqxHshDQsQdIBeLSig4kTTV60VLatUPTXHgG4HSa
+X-Received: by 2002:a05:622a:34d:b0:410:99df:688f with SMTP id r13-20020a05622a034d00b0041099df688fmr14327855qtw.12.1693844882834;
+        Mon, 04 Sep 2023 09:28:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693844882; cv=none;
         d=google.com; s=arc-20160816;
-        b=puceaL7eyoKNWweiVTfbS2V1WiH7aw3QnO3CQkhQwoMp2QFNSzgtPLqpWUyPNmTA+C
-         r/0ndgDjlTmR83tqkKZkEe5W1r5FDpfAU8h7fhmhIRvj61KRlwTWRoc4ZeuxFfatrt9b
-         6bRkGcObUcmUxP0g2K0X8dYB55vKdu/T/XcnWJaswrXJgs/d92LsPIbewmlaNBfjfcuS
-         ba96Y1u9Wb88ZR4koXG7tyguzvQaaAuI9hM8sFa6aBM1VOV2tbuup7AVRsXTjQubVZkL
-         W/3jg4DkOPoSlEVOPVf98l7X0rRZPgnOMCQ8euzm37Xf1O4sMjrcABCfHLPVrNtDEZYr
-         P/4A==
+        b=hiGbPxiNEqYSKXx18DiRWWf3NqT4bvljEyuu4D2H+wpgfYjxH/iuf1MJIimOC+uQbX
+         Oky7obf80WnWAFV4bOZ+EFYUf8hiqVclAdC9Zd9H1M4AQ3IgF4TiP1t06y6KIdM4y8wL
+         z45IVEsqDHi6HbnwwYGZ+DnygfSFvwdKWaoKcwYqkEB4chhCauNuKRwzyvMdX4ugTmB5
+         8LxATCW2BwZeguG5+8VvTaL+RP8Sfjv/QLmJ1Q4JOcgHAq6hDF2JbXhs15EJzMD8wget
+         5ozqj2Q3lOsl2YnuVXYESSbNx/i3sdeuqZDHVooTpTxwJ2ZxEPj/IDKSXAz3FqMIY4Nz
+         t6TQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature:dkim-signature;
-        bh=FGJUU8gdlJybZdYkpSEXd58MdQ8uDH1Q2xZeNXeFrGo=;
-        fh=oa1+UTzeg1fZjmfQN+tMxC8nT61AehSUJArFuMa7EKc=;
-        b=09h8tYZySK5jjCq/2Fvo2dpesndj6hyXqkU0rZ4GerG7FsYJo8j4mvMYVnYc5CLC4R
-         xSChDoyVCeZi80GuMiB/mM06HZlLss54x5VeAj3Yt7div0uC81Ey1RNG046nkJXL2frs
-         3+nk0BAj7NfS5uctgzTNfgmNm6LukgH/LDW8fRx4Ggxgrp48SBElDlQygRDAUh/1p3U0
-         r6CxMgPx1H2lkZ8by3cNVup3EztPnbY8eNc8BfgVppI1/iOoMXy/qXgrdZnLFt/vCReF
-         8xWinaRKvYA++Q6zb3CEUKQFwvQ1OCjZ+Q78zeXyMxpmCDdnBuu+RNiF63hXWqcW+KvD
-         gbYg==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=C9uDrjxVFB72qftBqrwTX3ciD/6S7vvPyadxqNGLc3o=;
+        fh=yhmnn3P2yuzlqcnGb78zm/fqNto6/uh/Ek+vjG/+jHA=;
+        b=ixgldoV+zYTGUBz3l8qelcLzxAtvpcoDd4yu+dAGhsk5mLquUFKbXU+zoG18UFCD02
+         R/nDZtHHGON5p3mFcMNV13f7jg2abY+9ZTJC4YCyFd9EpPqIWkK6Q0RYPDDKXVyOvdUN
+         YonI+d1zaTEZ0pQ+ETbsZ/No5HQrVk5xdc9l2wSnYEJuWLxDHyYuH4POBvq324gpVicH
+         +zkDGH3/OLyBIfG6incx5xvzzTNhz4eV/0zk0WWN8fbHi9DzhWsKSw8ZHbL4IvUq5r7U
+         Vh/iiZ7wVcdcytwrbOH6nKqDbffjKqtiWrk2Jml6dC1Tw27t6PUxQRUxO1XcKYFu0iGt
+         w3VQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=W1jxotF1;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=w9qH7ap3;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id n8-20020aa7c448000000b005256d6fdb23si6273342edr.58.2023.09.04.05.05.44;
-        Mon, 04 Sep 2023 05:05:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BPyRVNai;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j20-20020ac85f94000000b004135d628beasi6404840qta.788.2023.09.04.09.28.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 04 Sep 2023 09:28:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=W1jxotF1;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=w9qH7ap3;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1351265AbjIDMFq (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Mon, 4 Sep 2023 08:05:46 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:47906 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S232660AbjIDMFp (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 4 Sep 2023 08:05:45 -0400
-Received: from smtp-out2.suse.de (smtp-out2.suse.de [195.135.220.29])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 23E371B8
-        for <kvm@vger.kernel.org>; Mon,  4 Sep 2023 05:05:42 -0700 (PDT)
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-        (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-         key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-        (No client certificate requested)
-        by smtp-out2.suse.de (Postfix) with ESMTPS id 48BAA1F38C;
-        Mon,  4 Sep 2023 12:05:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-        t=1693829140; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-         mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=FGJUU8gdlJybZdYkpSEXd58MdQ8uDH1Q2xZeNXeFrGo=;
-        b=W1jxotF1ycwULr6IPPx8xQfaa2/LCFY9dGRXxPPjGCkIuJ9Gjz6vx4pv0PFE//66SnZ8dh
-        VZ8enF96RAfvbMEmpKgH7aPUyteZS8eN0yyFMEi08sLSIeV0pT2AAnwS9BMnVt8bGT90bh
-        t1773TgL/L6rr9hdjAR/PhdbgNc2990=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-        s=susede2_ed25519; t=1693829140;
-        h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-         mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=FGJUU8gdlJybZdYkpSEXd58MdQ8uDH1Q2xZeNXeFrGo=;
-        b=w9qH7ap3igwA8BgpKla8tS277AQ8hFQro2OtYZMHYM7SKYFIVJTMeBDA8Wb8hqrdimzd1p
-        0a2LhsMWRCKtQWDg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-        (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-         key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-        (No client certificate requested)
-        by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id EF88613425;
-        Mon,  4 Sep 2023 12:05:39 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-        by imap2.suse-dmz.suse.de with ESMTPSA
-        id kbHGOBPI9WTqXAAAMHmgww
-        (envelope-from <cfontana@suse.de>); Mon, 04 Sep 2023 12:05:39 +0000
-Message-ID: <b05c5619-4f88-0aae-9162-ea90188d5b9c@suse.de>
-Date:   Mon, 4 Sep 2023 14:05:39 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BPyRVNai;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qdCQf-000154-JX; Mon, 04 Sep 2023 12:27:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1qdCQe-00014e-G7
+ for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:27:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1qdCQc-0002CG-5F
+ for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:27:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1693844873;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=C9uDrjxVFB72qftBqrwTX3ciD/6S7vvPyadxqNGLc3o=;
+ b=BPyRVNai5+vL17oiO4IMmKC37GdXV0PpzQJvhg59qcrBM9RP8csIzaWqj9ccFsvYyOO2aQ
+ MlD8Dr6QimIlWKe2sGm/cWWNwl88QPKbZi97q0X2IHykLFuatMC+7FaM81mLlTQGTKoRKs
+ VxOcFjOL9y2D6/MpuTQqGvLthWg6gYU=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-205-qNZh33n8NFuqEgW03QSqgg-1; Mon, 04 Sep 2023 12:27:47 -0400
+X-MC-Unique: qNZh33n8NFuqEgW03QSqgg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 20CD5939ECB;
+ Mon,  4 Sep 2023 16:27:47 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.145])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 619182026D4B;
+ Mon,  4 Sep 2023 16:27:46 +0000 (UTC)
+Date: Mon, 4 Sep 2023 17:27:43 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 16/22] crypto/cipher-gnutls.c: Clean up local variable
+ shadowing
+Message-ID: <ZPYFfwYj6YgSf6Nb@redhat.com>
+References: <20230904161235.84651-1-philmd@linaro.org>
+ <20230904161235.84651-17-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.0
-Subject: Re: [PATCH] arm64: Restore trapless ptimer access
-Content-Language: en-US
-To:     Andrew Jones <ajones@ventanamicro.com>
-Cc:     Colton Lewis <coltonlewis@google.com>,
-        Andrew Jones <andrew.jones@linux.dev>, qemu-devel@nongnu.org,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-        kvm@vger.kernel.org, qemu-trivial@nongnu.org,
-        Marc Zyngier <maz@kernel.org>
-References: <20230831190052.129045-1-coltonlewis@google.com>
- <20230901-16232ff17690fc32a0feb5df@orel> <ZPI6KNqGGTxxHhCh@google.com>
- <cfee780b-27ab-8a49-9d42-72fd2a425a17@suse.de>
- <20230904-2587500eb2b77ed6c92143e2@orel>
-From:   Claudio Fontana <cfontana@suse.de>
-In-Reply-To: <20230904-2587500eb2b77ed6c92143e2@orel>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-3.6 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,
-        RCVD_IN_DNSWL_BLOCKED,SPF_HELO_NONE,SPF_PASS autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: a5lBcqPWEV6+
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230904161235.84651-17-philmd@linaro.org>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iBQYqGdRW7SB
 
-On 9/4/23 13:07, Andrew Jones wrote:
-> On Mon, Sep 04, 2023 at 10:18:05AM +0200, Claudio Fontana wrote:
->> Hi,
->>
->> I think this discussion from ~2015 could potentially be be historically relevant for context,
->> at the time we had the problem with CNTVOFF IIRC so KVM_REG_ARM_TIMER_CNT being read and rewritten causing time warps in the guest:
->>
->> https://patchwork.kernel.org/project/linux-arm-kernel/patch/1435157697-28579-1-git-send-email-marc.zyngier@arm.com/
->>
->> I could not remember or find if/where the problem was fixed in the end in QEMU,
+On Mon, Sep 04, 2023 at 06:12:28PM +0200, Philippe Mathieu-Daudé wrote:
+> Fix:
 > 
-> It's most likely commit 4b7a6bf402bd ("target-arm: kvm: Differentiate
-> registers based on write-back levels")
-
-Indeed, thanks!
-
-C
-
-> Thanks,
-> drew
+>   In file included from crypto/cipher.c:140:
+>   crypto/cipher-gnutls.c.inc: In function ‘qcrypto_gnutls_cipher_encrypt’:
+>   crypto/cipher-gnutls.c.inc:116:17: warning: declaration of ‘err’ shadows a previous local [-Wshadow=compatible-local]
+>     116 |             int err = gnutls_cipher_init(&handle, ctx->galg, &gkey, NULL);
+>         |                 ^~~
+>   crypto/cipher-gnutls.c.inc:94:9: note: shadowed declaration is here
+>      94 |     int err;
+>         |         ^~~
+>        ---
 > 
->>
->> Ciao,
->>
->> Claudio
->>
->> On 9/1/23 21:23, Colton Lewis wrote:
->>> On Fri, Sep 01, 2023 at 09:35:47AM +0200, Andrew Jones wrote:
->>>> On Thu, Aug 31, 2023 at 07:00:52PM +0000, Colton Lewis wrote:
->>>>> Due to recent KVM changes, QEMU is setting a ptimer offset resulting
->>>>> in unintended trap and emulate access and a consequent performance
->>>>> hit. Filter out the PTIMER_CNT register to restore trapless ptimer
->>>>> access.
->>>>>
->>>>> Quoting Andrew Jones:
->>>>>
->>>>> Simply reading the CNT register and writing back the same value is
->>>>> enough to set an offset, since the timer will have certainly moved
->>>>> past whatever value was read by the time it's written.  QEMU
->>>>> frequently saves and restores all registers in the get-reg-list array,
->>>>> unless they've been explicitly filtered out (with Linux commit
->>>>> 680232a94c12, KVM_REG_ARM_PTIMER_CNT is now in the array). So, to
->>>>> restore trapless ptimer accesses, we need a QEMU patch to filter out
->>>>> the register.
->>>>>
->>>>> See
->>>>> https://lore.kernel.org/kvmarm/gsntttsonus5.fsf@coltonlewis-kvm.c.googlers.com/T/#m0770023762a821db2a3f0dd0a7dc6aa54e0d0da9
->>>>
->>>> The link can be shorter with
->>>>
->>>> https://lore.kernel.org/all/20230823200408.1214332-1-coltonlewis@google.com/
->>>
->>> I will keep that in mind next time.
->>>
->>>>> for additional context.
->>>>>
->>>>> Signed-off-by: Andrew Jones <andrew.jones@linux.dev>
->>>>
->>>> Thanks for the testing and posting, Colton. Please add your s-o-b and a
->>>> Tested-by tag as well.
->>>
->>> Assuming it is sufficient to add here instead of reposting the whole patch:
->>>
->>> Signed-off-by: Colton Lewis <coltonlewis@google.com>
->>> Tested-by: Colton Lewis <coltonlewis@google.com>
->>>
->>>>> ---
->>>>>  target/arm/kvm64.c | 1 +
->>>>>  1 file changed, 1 insertion(+)
->>>>>
->>>>> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
->>>>> index 4d904a1d11..2dd46e0a99 100644
->>>>> --- a/target/arm/kvm64.c
->>>>> +++ b/target/arm/kvm64.c
->>>>> @@ -672,6 +672,7 @@ typedef struct CPRegStateLevel {
->>>>>   */
->>>>>  static const CPRegStateLevel non_runtime_cpregs[] = {
->>>>>      { KVM_REG_ARM_TIMER_CNT, KVM_PUT_FULL_STATE },
->>>>> +    { KVM_REG_ARM_PTIMER_CNT, KVM_PUT_FULL_STATE },
->>>>>  };
->>>>>
->>>>>  int kvm_arm_cpreg_level(uint64_t regidx)
->>>>> --
->>>>> 2.42.0.283.g2d96d420d3-goog
->>>>>
->>>
->>
+>   crypto/cipher-gnutls.c.inc: In function ‘qcrypto_gnutls_cipher_decrypt’:
+>   crypto/cipher-gnutls.c.inc:177:17: warning: declaration of ‘err’ shadows a previous local [-Wshadow=compatible-local]
+>     177 |             int err = gnutls_cipher_init(&handle, ctx->galg, &gkey, NULL);
+>         |                 ^~~
+>   crypto/cipher-gnutls.c.inc:154:9: note: shadowed declaration is here
+>     154 |     int err;
+>         |         ^~~
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  crypto/cipher-gnutls.c.inc | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+and if you want to include it in general pull request
+
+Acked-by: Daniel P. Berrangé <berrange@redhat.com>
+
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

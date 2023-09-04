@@ -1,184 +1,252 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1444086ejb;
-        Mon, 4 Sep 2023 09:14:11 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE/0ZF1yZWsBUIetUa8OqBTmA5egnQT8r7ehCdfJvg7POS7iBurLgnM9vMge2CI5dPdYt/s
-X-Received: by 2002:a54:4e81:0:b0:3a7:96e5:6a58 with SMTP id c1-20020a544e81000000b003a796e56a58mr11975961oiy.18.1693844051138;
-        Mon, 04 Sep 2023 09:14:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693844051; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1444114ejb;
+        Mon, 4 Sep 2023 09:14:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHLvYAFoxKnGWWfkQH2n+89oHwOwsbMa0FXWwQiQM7zPHSMOkhIzBwlsGd31KmGGUAZPTJy
+X-Received: by 2002:a9d:7f96:0:b0:6bd:152f:9918 with SMTP id t22-20020a9d7f96000000b006bd152f9918mr11135144otp.14.1693844055018;
+        Mon, 04 Sep 2023 09:14:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693844054; cv=none;
         d=google.com; s=arc-20160816;
-        b=fvjdZ3NYzaB3C0YM5CSqXSV2Yo5dMD4gFX08QABxvD2HQVKcpxrbaBsv77Q1WzIaZJ
-         LpmCek4Hr0DgDloOgB8jiOQRVmI53S3By0cRScddztjKa6VkhnT2NybYLZ+0e70sx4zh
-         ZNEDH1dAsAXWIgxQifHZHnrbdXI0QvsL5gvswwqXqBfFuQCdhAzMLKKPx0pQIiUHInyp
-         EsffaT3PV0bUKNS/rBMcgbE7VXnAqgj5OOSLPzJlBpBGTvmUyy8iGrpWvWn4i1FmF+Wg
-         5zokEMC97g0bZ3yqa8YKiVp6u9NrP6wZKcxfzMNa/YJ7JsaMKkHT4YUbNGQekkwbYmXz
-         jXZg==
+        b=nfzwohmhzW0v0JkPK3QR2WXzZxlPVQikh0qzcnPWkZGTYMBjFLkPsT0Sd5kh897yfQ
+         Q/qEYD91d8Qed4COqFl+Fct9DAvaRRtiRdLLn5ZeclG1qRBu3JDiqRtBOjop9NJOeGG9
+         flWFPfSlkd6G5FPq1qBByRhI/u8hybcIvDKVcFR4eNul+i2XKsl4GPnlqXko9Dy8aaBJ
+         9X7uJ+zAA/XNxH/d1jKEtOxGBs3GANoNOZBIxPUfyq9ggdbiq+0tYJLHUtC+0zGkLSUj
+         xYSXmFXFz0ZPjBbQRv8Lad3VxniwNusMYBfB7gc9OLvjk7vgoAgDwTPHwyq7iQI1gSUr
+         sORg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=F0uZGrdkSgs5HoqGdgWfurGjAeEUVFxD0ugElwq2vSc=;
-        fh=6XvMCXPGpY4BYBr5ITls9/XOWCEa37AzUDKi89HVoNE=;
-        b=cxUhK/iEnZuWoYCRmbSPT8+duK1pfh/wiPM9z1e8GGb2hXiJaB7/oig3/lYRYk76H7
-         P5KaDTuljdtB0Fh7sDI0eM2BwmIDN4ERQiG5FLXdgcWhAuBhms7ci99XvIgIZW/P4T/E
-         DCt2JzWzUEdVfP5S1TgvHTJU/K/QI5BMS9HeFwh9LPGh+LC37gzA7NhB3jeMdyTF51G4
-         MxgFCvUKzyhlTMNlHFPmGms7PDrrhdp5y+VtxvUttKR0iRhWxpgGQg2Jig1vnrFG6ygF
-         H04ldyiFQ8jpwjredubEMJeNrdTE+IVTjiL9K6t6aslAb+cnlVY+GbE3Gn/asiQiFJ/h
-         Nzag==
+        bh=LlxpFbCHiWjslLmUxZfZSQm0srNjNWhApIJsD1WDg2g=;
+        fh=JiW2z4nACjvivIcmH8UztD+5iohCy/JDZINC166FmPE=;
+        b=m6ylEjXo5QqpayfDML/1GEnQ+9lNEAwaY/zB7NXtc8aQNfwBMZ7UtDY020MUAdIxyz
+         4gBGQkEPqAdvqFJxzvnOMmV3MyTc7Oq6b0Mx1xAwnrUvTaMSvJsxUJoBNFERhc/vT2CW
+         pPSLbqjfVjwDkdpQDBhrGZ4jxtJwQXDRvNdkT1YKjF9hYuDp2os3cy9KtpgGfk2dr+Ie
+         D3J2rmgqbY7f/C18K3M3IquNGVcBvbSYMJ/Qu7P/yWiKwHUOl9oKmP9+FxQTeWuoNIUX
+         gFtQKHLE8llwtLUUF4XbnPGbbtufts8DbuocfcQCN4CfD+DK146FGMrenTP1paLFFky+
+         9/Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fGaeBDz6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=p5vKNy9E;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14-20020ac8594e000000b004081bb79850si6696670qtz.367.2023.09.04.09.14.10
+        by mx.google.com with ESMTPS id w4-20020a05622a190400b00403b02b64dbsi6809797qtc.354.2023.09.04.09.14.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Sep 2023 09:14:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Sep 2023 09:14:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fGaeBDz6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=p5vKNy9E;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qdCCo-0002sY-05; Mon, 04 Sep 2023 12:13:38 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qdCCf-0002kh-2o; Mon, 04 Sep 2023 12:13:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCCj-0002oU-7b
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:13:33 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCCY-0002bg-Ue
+ for qemu-devel@nongnu.org; Mon, 04 Sep 2023 12:13:24 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCCg-0007Zv-Eu
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:13:32 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-52c88a03f99so2026632a12.2
- for <qemu-arm@nongnu.org>; Mon, 04 Sep 2023 09:13:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCCV-0007WT-FJ
+ for qemu-devel@nongnu.org; Mon, 04 Sep 2023 12:13:22 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-52c74a2e8edso2352982a12.1
+ for <qemu-devel@nongnu.org>; Mon, 04 Sep 2023 09:13:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693844009; x=1694448809; darn=nongnu.org;
+ d=linaro.org; s=google; t=1693843997; x=1694448797; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=F0uZGrdkSgs5HoqGdgWfurGjAeEUVFxD0ugElwq2vSc=;
- b=fGaeBDz6BeK83pMOfPUigZjh5JMCFiUrnDcZu91OGQVK3L9LfOqh6DDuR9eICEhjii
- 9o1EgJqhSmhbYWJpN/93/gPIGGDsRubRsB9/Xeclw8YMaBaQL7vr78zXc7TJh2aqJT4N
- ZcRbbLNAG0pOEm6mfmnOw1YtrXaNKI484PrMtc5JO/aEhvlczf0LLzyxn9+USTW1k+jx
- mDbxcU+O3wUMpKPMvqwEB56UjMDg/vFSShhjTWqr5bmHPkVvHSpq+tSjO0+6y9HHxNlT
- 2sPqmqRbn+wNgaFwG92uoyJYbjtEuxe2foR9/d9iZ+Dhu02sVfo1sdfizVw61yy39wtG
- j6Zw==
+ bh=LlxpFbCHiWjslLmUxZfZSQm0srNjNWhApIJsD1WDg2g=;
+ b=p5vKNy9ENT9lXx0QojN/p20L4bgdRNkS023pkLbgSZDcr3aXUF0Q9sovdOJca5/9JD
+ p4xEB3DdkUjbhh3a8tGuT4AuvCe6mD+kwy9eC0KiV3+MKDcZlLdw0Srfv9br+Zvd3juu
+ krz6e6+Lxi+SNcc275ffqOdyZ6qXqLzoaYO0FHTtdZx2EPRUHnqDRp9p7c7wcHjWMkRQ
+ 2YO1H+pYBMAdMcARS248i18DHa7sDy4enQwJSLDKPqtLEPSV6AjGWBtK2HXZiWoVUg3J
+ HsKHNbE8M46dXkDdJaThZUW2Fv3IK+FfZhNpbSm0LjwpQsL08dS6LkrSigE2U8/5rO6F
+ qxDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693844009; x=1694448809;
+ d=1e100.net; s=20221208; t=1693843997; x=1694448797;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=F0uZGrdkSgs5HoqGdgWfurGjAeEUVFxD0ugElwq2vSc=;
- b=E+AG6geAQ6OxCTCPn1tHGTffP5pSrZ6kxNX7QxP/C80hYoJwDlFulEIFlvioDPtG8O
- K6nfxCt9wcgYd3ZZCLhuQA7VGo0QOWaprT3DGjauOh0ZMFQqQZF5Vy6h4vvKkb7xARZ5
- RpnqbeedR7y5T54gqobp/C7/6dOxyu5Vbt3xjXArHQ9QhYSKb+PlzGlrc98TQpabnpt7
- TFE13/BGBQKxV1M8RzSNdIZWrBs/MqP2lmhVYgZTTpRwMsHDOS4jKTIPu4j6S/tN+0nj
- 63s877S+LM13V9/Lhm7yvfXRAVitr6V/v3VGf1YL4DEObO7eal87zUk2Zd1GWRi22J/0
- l9tA==
-X-Gm-Message-State: AOJu0YzGvfFp2GHW8QslRQZS/Dm9isJK5U9c4kyYN3p+cwoKH2vMwxb6
- RoDodUOI9X8r8CfR9wJO1OSITQ==
-X-Received: by 2002:a05:6402:2b9a:b0:52e:585a:e94 with SMTP id
- fj26-20020a0564022b9a00b0052e585a0e94mr464702edb.2.1693844009181; 
- Mon, 04 Sep 2023 09:13:29 -0700 (PDT)
+ bh=LlxpFbCHiWjslLmUxZfZSQm0srNjNWhApIJsD1WDg2g=;
+ b=any8bEy9L5CweQD9bx9j6CPqbaL2NvILjynPowkcFZF3kUo26CH3V5AyjwGUDR0ytw
+ 1+utCejKbzlCLg5C00zVxrl4I41NWIODV7fYhPfnokPrNihpox5uFivAet1IF7tNgU+G
+ +UOIH2mtKda6CtveZtMc9CuhNufJmeQ1yW1syO4dbXKIjtEqxxwJUGLZL8YuUf45IDNu
+ d4Kx3wi+DRo1SCI6yQIgoJu30yF2r8ONSSCN6UyeiKw+N9iFT02QZnAX+XKh7K6SLVJt
+ EwZCZYTEAmT/8kjjCUnbz+HCNZkt6v4ZiZQ90WN18HD3pEFfDAdl32ZjNilVSoiGHbMZ
+ Qddg==
+X-Gm-Message-State: AOJu0YzhlERNW4Oo2zjqSQJM16CYs5Ri5fVBI4BqB+1n8rFo7gCgaCf+
+ MdXNBFoZFuy+zZOaWKiKYz4i6g==
+X-Received: by 2002:aa7:d615:0:b0:523:2e63:b9b with SMTP id
+ c21-20020aa7d615000000b005232e630b9bmr9196767edr.24.1693843997702; 
+ Mon, 04 Sep 2023 09:13:17 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.209.227])
  by smtp.gmail.com with ESMTPSA id
- p11-20020a056402074b00b005231e1780aasm5959553edy.91.2023.09.04.09.13.27
+ f5-20020a50ee85000000b0052595b17fd4sm5941517edr.26.2023.09.04.09.13.16
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 04 Sep 2023 09:13:28 -0700 (PDT)
+ Mon, 04 Sep 2023 09:13:17 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Markus Armbruster <armbru@redhat.com>,
 	qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH v2 09/22] hw/arm/allwinner: Clean up local variable shadowing
-Date: Mon,  4 Sep 2023 18:12:21 +0200
-Message-ID: <20230904161235.84651-10-philmd@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 07/22] hw/arm/armv7m: Clean up local variable shadowing
+Date: Mon,  4 Sep 2023 18:12:19 +0200
+Message-ID: <20230904161235.84651-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230904161235.84651-1-philmd@linaro.org>
 References: <20230904161235.84651-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m1BdbN+yjwgX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: j2c7bCZDHk3r
 
 Fix:
 
-  hw/arm/allwinner-r40.c:412:14: error: declaration shadows a local variable [-Werror,-Wshadow]
-    for (int i = 0; i < AW_R40_NUM_MMCS; i++) {
-             ^
-  hw/arm/allwinner-r40.c:299:14: note: previous declaration is here
-    unsigned i;
-             ^
+  hw/arm/armv7m.c: In function ‘armv7m_realize’:
+  hw/arm/armv7m.c:520:27: warning: declaration of ‘sbd’ shadows a previous local [-Wshadow=compatible-local]
+    520 |             SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
+        |                           ^~~
+  hw/arm/armv7m.c:278:19: note: shadowed declaration is here
+    278 |     SysBusDevice *sbd;
+        |                   ^~~
+       ---
+
+  hw/arm/armsse.c: In function ‘armsse_realize’:
+  hw/arm/armsse.c:1471:27: warning: declaration of ‘mr’ shadows a previous local [-Wshadow=compatible-local]
+   1471 |             MemoryRegion *mr;
+        |                           ^~
+  hw/arm/armsse.c:917:19: note: shadowed declaration is here
+    917 |     MemoryRegion *mr;
+        |                   ^~
+       ---
+
+  hw/arm/armsse.c:1608:22: warning: declaration of ‘dev_splitter’ shadows a previous local [-Wshadow=compatible-local]
+   1608 |         DeviceState *dev_splitter = DEVICE(splitter);
+        |                      ^~~~~~~~~~~~
+  hw/arm/armsse.c:923:18: note: shadowed declaration is here
+    923 |     DeviceState *dev_splitter;
+        |                  ^~~~~~~~~~~~
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/allwinner-r40.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ hw/arm/armsse.c | 16 ++++++----------
+ hw/arm/armv7m.c |  2 +-
+ 2 files changed, 7 insertions(+), 11 deletions(-)
 
-diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index 7d29eb224f..a0d367c60d 100644
---- a/hw/arm/allwinner-r40.c
-+++ b/hw/arm/allwinner-r40.c
-@@ -296,10 +296,9 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
- {
-     const char *r40_nic_models[] = { "gmac", "emac", NULL };
-     AwR40State *s = AW_R40(dev);
--    unsigned i;
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index 11cd08b6c1..31acbf7347 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -1468,7 +1468,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     if (info->has_cachectrl) {
+         for (i = 0; i < info->num_cpus; i++) {
+             char *name = g_strdup_printf("cachectrl%d", i);
+-            MemoryRegion *mr;
  
-     /* CPUs */
--    for (i = 0; i < AW_R40_NUM_CPUS; i++) {
-+    for (unsigned i = 0; i < AW_R40_NUM_CPUS; i++) {
+             qdev_prop_set_string(DEVICE(&s->cachectrl[i]), "name", name);
+             g_free(name);
+@@ -1484,7 +1483,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     if (info->has_cpusecctrl) {
+         for (i = 0; i < info->num_cpus; i++) {
+             char *name = g_strdup_printf("CPUSECCTRL%d", i);
+-            MemoryRegion *mr;
  
-         /*
-          * Disable secondary CPUs. Guest EL3 firmware will start
-@@ -335,7 +334,7 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-      * maintenance interrupt signal to the appropriate GIC PPI inputs,
-      * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-      */
--    for (i = 0; i < AW_R40_NUM_CPUS; i++) {
-+    for (unsigned i = 0; i < AW_R40_NUM_CPUS; i++) {
-         DeviceState *cpudev = DEVICE(&s->cpus[i]);
-         int ppibase = AW_R40_GIC_NUM_SPI + i * GIC_INTERNAL + GIC_NR_SGIS;
-         int irq;
-@@ -494,7 +493,7 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-                        qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_EMAC));
+             qdev_prop_set_string(DEVICE(&s->cpusecctrl[i]), "name", name);
+             g_free(name);
+@@ -1499,7 +1497,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     }
+     if (info->has_cpuid) {
+         for (i = 0; i < info->num_cpus; i++) {
+-            MemoryRegion *mr;
  
-     /* Unimplemented devices */
--    for (i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
-+    for (unsigned i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
-         create_unimplemented_device(r40_unimplemented[i].device_name,
-                                     r40_unimplemented[i].base,
-                                     r40_unimplemented[i].size);
+             qdev_prop_set_uint32(DEVICE(&s->cpuid[i]), "CPUID", i);
+             if (!sysbus_realize(SYS_BUS_DEVICE(&s->cpuid[i]), errp)) {
+@@ -1512,7 +1509,6 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     }
+     if (info->has_cpu_pwrctrl) {
+         for (i = 0; i < info->num_cpus; i++) {
+-            MemoryRegion *mr;
+ 
+             if (!sysbus_realize(SYS_BUS_DEVICE(&s->cpu_pwrctrl[i]), errp)) {
+                 return;
+@@ -1605,7 +1601,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     /* Wire up the splitters for the MPC IRQs */
+     for (i = 0; i < IOTS_NUM_EXP_MPC + info->sram_banks; i++) {
+         SplitIRQ *splitter = &s->mpc_irq_splitter[i];
+-        DeviceState *dev_splitter = DEVICE(splitter);
++        DeviceState *devs = DEVICE(splitter);
+ 
+         if (!object_property_set_int(OBJECT(splitter), "num-lines", 2,
+                                      errp)) {
+@@ -1617,22 +1613,22 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+ 
+         if (i < IOTS_NUM_EXP_MPC) {
+             /* Splitter input is from GPIO input line */
+-            s->mpcexp_status_in[i] = qdev_get_gpio_in(dev_splitter, 0);
+-            qdev_connect_gpio_out(dev_splitter, 0,
++            s->mpcexp_status_in[i] = qdev_get_gpio_in(devs, 0);
++            qdev_connect_gpio_out(devs, 0,
+                                   qdev_get_gpio_in_named(dev_secctl,
+                                                          "mpcexp_status", i));
+         } else {
+             /* Splitter input is from our own MPC */
+             qdev_connect_gpio_out_named(DEVICE(&s->mpc[i - IOTS_NUM_EXP_MPC]),
+                                         "irq", 0,
+-                                        qdev_get_gpio_in(dev_splitter, 0));
+-            qdev_connect_gpio_out(dev_splitter, 0,
++                                        qdev_get_gpio_in(devs, 0));
++            qdev_connect_gpio_out(devs, 0,
+                                   qdev_get_gpio_in_named(dev_secctl,
+                                                          "mpc_status",
+                                                          i - IOTS_NUM_EXP_MPC));
+         }
+ 
+-        qdev_connect_gpio_out(dev_splitter, 1,
++        qdev_connect_gpio_out(devs, 1,
+                               qdev_get_gpio_in(DEVICE(&s->mpc_irq_orgate), i));
+     }
+     /* Create GPIO inputs which will pass the line state for our
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index bf173b10b8..1f78e18872 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -517,7 +517,7 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+         if (s->enable_bitband) {
+             Object *obj = OBJECT(&s->bitband[i]);
+-            SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
++            sbd = SYS_BUS_DEVICE(&s->bitband[i]);
+ 
+             if (!object_property_set_int(obj, "base",
+                                          bitband_input_addr[i], errp)) {
 -- 
 2.41.0
 

@@ -1,119 +1,112 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1453335ejb;
-        Mon, 4 Sep 2023 09:30:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHVlW7hix0A9SSRdk/UNIZw8tve/YZkE0RN/tQgBP9LYW5xhQpYaxnBsZHBCWPf4t3KMgUO
-X-Received: by 2002:a05:6102:530:b0:44e:d415:76a3 with SMTP id m16-20020a056102053000b0044ed41576a3mr7976893vsa.11.1693845029007;
-        Mon, 04 Sep 2023 09:30:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693845028; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1454325ejb;
+        Mon, 4 Sep 2023 09:32:05 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFRlLl5s7Ts7wyVTj1Yl4e864wsKf0wUuPlIP/BsBufIRV93iuxSclY3EKMGlNLgnDtSXoF
+X-Received: by 2002:a05:6214:1710:b0:64f:92dc:3de3 with SMTP id db16-20020a056214171000b0064f92dc3de3mr10813511qvb.6.1693845125768;
+        Mon, 04 Sep 2023 09:32:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693845125; cv=none;
         d=google.com; s=arc-20160816;
-        b=XVBRAX3Z0NXFDbJpOW8uMxXmN6v64SL5RKzNTPnK3znnSoJm1cTlB//Bc63PJSToki
-         ca/OzY07FctBcP13YgTFwj+ML8B9EEKGecoPAdK2RX8HuPnuYfnXx2ghz14LlilE8jLm
-         nJNXN2Sm3VfyBGa3RCZF40ODdGtODhDAPfN6vHwX/XJUZ5bUJ0XVhms+Hqj6v12yYqx5
-         Y+aqX/aXl3hI1+3VPaYriiaZYOhC66M/vqo9DXIsJqp3qUDzcI12gL1eGIlA4R39erxC
-         RUQ3HVSkRqm/DeIxmqeYsMCP7KS4mzdpCumquUquulTQ0s5+XZkBtPkfZCXojiutNvfX
-         btKQ==
+        b=AQUTH6mfAcwRveijJd+KERpxQozsre1RWbRsoKSQoR8gvYNNXkUJ/Unl+5IHhdgNHD
+         o7p+/UqqzCtiDEF1Slfsv0cpNq2h0n48XGMM5gzzP9FkUzdYxM8cuKHpT4YLuamER5U6
+         N6zF8coql1TK0gHgIQ9ckBHK73CXWkGOGc5b4xhp0mrdpBYgns51VnK+QYmOV29+oDyJ
+         MLWm49yo12h5TM77ZSI9vYZbxmnpYqp83dWXvri4WXV/0P0/1aeK39Riww1YB8xk8DyX
+         asTtb99haMe10+sjjf6WhEdTUrfUcitSWK4PokLYP6VCFFyBJ+FLnNdejmsutXlKgZjp
+         C7jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=NrnqPN7398ty7yLv/sczqA06bZUMw0IUliFG9AigZvE=;
-        fh=ybSViRhqpP3DlVSewutOJOkWppnZicAzDlkFmRUROvU=;
-        b=zLlaQuKVPpAEt+0womuEmtVb32LVMiTKErWxq35MeMddNZS2DYD5hKJar9GR+GGxiJ
-         07sABHLGjSvZHdev772sYoe1b51kACjx9xIwCOWGJmCF/Rnr6ERbD8Ub731LGzV5AD03
-         IJtcPwWWgIz9ChdgbavzB6JbXAax8kSnQgaelzsuY7JP/6HG15oQT70wQLhbkVtMltTo
-         JDpv005beTKybpYB86LuZ5IP2Z4LqvB1zootfMBiYl/Qw9qKo8VYfNGSVCg5nYoz8VsL
-         sYiRqcOPV3IksQ4xefMEeCccCa9sAqv+EwsbTb2kNk4wsu6PGgI2N+WF4kz1BXHBwy9t
-         KImg==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=CevAXTmAKTerVFrbSIIMh/W4drWPIee55Lt84hT39Ps=;
+        fh=b5nq+owfHo/YKmvHl4HEg8x7p0CKvsVBNVwxK9IGP4U=;
+        b=CwVd6L4lDsX/xMNv+gNT/Uwjl9D8pNgG3FT843hgIWZjaAoLicP7LgL3xUbQlIjsO2
+         u9Bg1TvahH+If/iNShFfq43p4t8PJxyKBcxv3VAiGyHTR1wiW55ixuR21udryNyQYVzH
+         /nDsjW2o3fHC/ImqHd2M02PO3RTt54W+cLWnofJquUzM7mg76TlS2l4tWsxHw88FOYSX
+         6jnPdoJSC/V6bmKiCqDrRAUN8E66Uo19Uf1yJ+qqO+G+2uYlYdxMtsZfzPbjYzGuw1w9
+         kAwhJTmz3/2VJS/lFupou7BnBcWzrnWpWcLYz5hPb3444VgDafWIZLuCZnc7UbZ9/8Vx
+         ER4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FmRE3eH2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gUu0HsCh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w9-20020a0cb549000000b006408e52cad5si6734295qvd.485.2023.09.04.09.30.28
+        by mx.google.com with ESMTPS id i21-20020a0cab55000000b0063d39088a16si6838963qvb.567.2023.09.04.09.32.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Sep 2023 09:30:28 -0700 (PDT)
+        Mon, 04 Sep 2023 09:32:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FmRE3eH2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gUu0HsCh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qdCSs-0005Hs-9L; Mon, 04 Sep 2023 12:30:17 -0400
+	id 1qdCUH-0007va-IK; Mon, 04 Sep 2023 12:31:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCSV-0004VL-7I
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:29:52 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qdCSQ-0002Wo-OE
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:29:50 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-9a58dbd5daeso251960766b.2
- for <qemu-arm@nongnu.org>; Mon, 04 Sep 2023 09:29:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1693844985; x=1694449785; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=NrnqPN7398ty7yLv/sczqA06bZUMw0IUliFG9AigZvE=;
- b=FmRE3eH2KFpWiokgzvAk77PYYwQZQNy07SF5jglpmnj7DLIEWNe4+4FUo84KJK/L5G
- +vcqniDcx2X2iGZN5P5ADkHNHfPVeeJey/IZbnO14T4zEBcXW5waqe8OkMDLIXplfRNK
- GM7eUNZJduq0G+z5yeoI4uawZYaSF43iRVTPMFxD1QZAFBn43cvVjLtQ/UxvwW81SLZj
- JE35GzlH1nFDGbc7ywLK4ZD61QI3tBqZsLAHOByYCAHHxARsFJI0NO3ImRfWMubnbcRF
- j+OlUUSKVoKrNJPqfScZAjZ3q8NMMQf6na8bjPWSPll2z9oBmZJiPVuOVTAqFAXP/lAu
- qoiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693844985; x=1694449785;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=NrnqPN7398ty7yLv/sczqA06bZUMw0IUliFG9AigZvE=;
- b=dLQDxxuhHrpp/Fa/0QAERhrZiAEsCgSfVKDpRX2sG4r2YQFGWko0VCz3Ep40k+z49X
- d397iMEJfCiuhtbJRqH3+1VDmmO0JriuvD1+jcV4jWErwaZd6XfjB1qUXR97yY/Xe9Ry
- PlLJL1d05NnkkKgU4x+TWoZnqLNYHlIcCgpEXBU6oo6A6UJ4bWnM9OBfEHR2bx+/k+fs
- v6pui7en+DzdIMDwSieTF0KOQofVq42lE8pMLPYNqJJ+bQ1M+5YmniMKh/steFTZ+YQ+
- T2wfN8o4EPl93B1xca/5Sn4fAabe2o5LkNp6iPOGm1ogUlcM5Y5kHFJxaIz9+DEZmxbK
- 03ig==
-X-Gm-Message-State: AOJu0YxhlotgqKpX6X1gg20hOxP6JFDZ2zwFyw9BCL3YuhDZgzmCyrXw
- 4pzcsJfaXrT9p91aUqgRruI/YQ==
-X-Received: by 2002:a17:906:189:b0:9a2:1df2:8e08 with SMTP id
- 9-20020a170906018900b009a21df28e08mr7542096ejb.45.1693844984917; 
- Mon, 04 Sep 2023 09:29:44 -0700 (PDT)
-Received: from [192.168.69.115] ([176.187.209.227])
- by smtp.gmail.com with ESMTPSA id
- ov22-20020a170906fc1600b00992c92af6f4sm6489916ejb.144.2023.09.04.09.29.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Sep 2023 09:29:44 -0700 (PDT)
-Message-ID: <81b122d8-6653-f293-45cf-7e68762e7dd4@linaro.org>
-Date: Mon, 4 Sep 2023 18:29:42 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.0
-Subject: Re: [PATCH v2 16/22] crypto/cipher-gnutls.c: Clean up local variable
- shadowing
-Content-Language: en-US
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1qdCUF-0007uR-Pz
+ for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:31:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1qdCUC-0003AE-QY
+ for qemu-arm@nongnu.org; Mon, 04 Sep 2023 12:31:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1693845095;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CevAXTmAKTerVFrbSIIMh/W4drWPIee55Lt84hT39Ps=;
+ b=gUu0HsChOnaqceOrwW4ulfaVP50iljIP817kz2nCY3TkQIp/yZd5LBLI+Coy8NoMI88Lx3
+ cdWgtMVirk89wDCLJQUYLVakPjap1E9vIfTcjFNKthj7+ZahROp0kyB5xRRNHUqZVmbMb2
+ zvok0gQI9N2a7S5K6yhZSWV2Wcm0Vhc=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-461-OVQp4jEWMW-FNtP72SyKXw-1; Mon, 04 Sep 2023 12:31:34 -0400
+X-MC-Unique: OVQp4jEWMW-FNtP72SyKXw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 91D1D10264F5;
+ Mon,  4 Sep 2023 16:31:33 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.145])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7EDC0493110;
+ Mon,  4 Sep 2023 16:31:32 +0000 (UTC)
+Date: Mon, 4 Sep 2023 17:31:30 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-arm@nongnu.org
+ qemu-block@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>
+Subject: Re: [RFC PATCH v2 22/22] softmmu/physmem: Clean up local variable
+ shadowing
+Message-ID: <ZPYGYgs88/zgOHLc@redhat.com>
 References: <20230904161235.84651-1-philmd@linaro.org>
- <20230904161235.84651-17-philmd@linaro.org> <ZPYFfwYj6YgSf6Nb@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <ZPYFfwYj6YgSf6Nb@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <20230904161235.84651-23-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.473,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20230904161235.84651-23-philmd@linaro.org>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,44 +119,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m1PX9HmphD+B
+X-TUID: SVSx8Bf0MGMH
 
-On 4/9/23 18:27, Daniel P. Berrangé wrote:
-> On Mon, Sep 04, 2023 at 06:12:28PM +0200, Philippe Mathieu-Daudé wrote:
->> Fix:
->>
->>    In file included from crypto/cipher.c:140:
->>    crypto/cipher-gnutls.c.inc: In function ‘qcrypto_gnutls_cipher_encrypt’:
->>    crypto/cipher-gnutls.c.inc:116:17: warning: declaration of ‘err’ shadows a previous local [-Wshadow=compatible-local]
->>      116 |             int err = gnutls_cipher_init(&handle, ctx->galg, &gkey, NULL);
->>          |                 ^~~
->>    crypto/cipher-gnutls.c.inc:94:9: note: shadowed declaration is here
->>       94 |     int err;
->>          |         ^~~
->>         ---
->>
->>    crypto/cipher-gnutls.c.inc: In function ‘qcrypto_gnutls_cipher_decrypt’:
->>    crypto/cipher-gnutls.c.inc:177:17: warning: declaration of ‘err’ shadows a previous local [-Wshadow=compatible-local]
->>      177 |             int err = gnutls_cipher_init(&handle, ctx->galg, &gkey, NULL);
->>          |                 ^~~
->>    crypto/cipher-gnutls.c.inc:154:9: note: shadowed declaration is here
->>      154 |     int err;
->>          |         ^~~
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   crypto/cipher-gnutls.c.inc | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
+On Mon, Sep 04, 2023 at 06:12:34PM +0200, Philippe Mathieu-Daudé wrote:
+> Fix:
 > 
-> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+>   softmmu/physmem.c: In function ‘cpu_physical_memory_snapshot_and_clear_dirty’:
+>   softmmu/physmem.c:916:27: warning: declaration of ‘offset’ shadows a parameter [-Wshadow=compatible-local]
+>     916 |             unsigned long offset = page % DIRTY_MEMORY_BLOCK_SIZE;
+>         |                           ^~~~~~
+>   softmmu/physmem.c:892:31: note: shadowed declaration is here
+>     892 |     (MemoryRegion *mr, hwaddr offset, hwaddr length, unsigned client)
+>         |                        ~~~~~~~^~~~~~
 > 
-> and if you want to include it in general pull request
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+> RFC: Please double-check how 'offset' is used few lines later.
 
-Sure,
+I don't see an issue - those lines are in an outer scope, so won't
+be accessing the 'offset' you've changed, they'll be the parameter
+instead. If you want to sanity check though, presumably the asm
+dissassembly for this method should be the same before/after this
+change
 
-> Acked-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>  softmmu/physmem.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 
-Thank you!
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+> 
+> diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+> index 18277ddd67..db5b628a60 100644
+> --- a/softmmu/physmem.c
+> +++ b/softmmu/physmem.c
+> @@ -913,16 +913,16 @@ DirtyBitmapSnapshot *cpu_physical_memory_snapshot_and_clear_dirty
+>  
+>          while (page < end) {
+>              unsigned long idx = page / DIRTY_MEMORY_BLOCK_SIZE;
+> -            unsigned long offset = page % DIRTY_MEMORY_BLOCK_SIZE;
+> +            unsigned long ofs = page % DIRTY_MEMORY_BLOCK_SIZE;
+>              unsigned long num = MIN(end - page,
+> -                                    DIRTY_MEMORY_BLOCK_SIZE - offset);
+> +                                    DIRTY_MEMORY_BLOCK_SIZE - ofs);
+>  
+> -            assert(QEMU_IS_ALIGNED(offset, (1 << BITS_PER_LEVEL)));
+> +            assert(QEMU_IS_ALIGNED(ofs, (1 << BITS_PER_LEVEL)));
+>              assert(QEMU_IS_ALIGNED(num,    (1 << BITS_PER_LEVEL)));
+> -            offset >>= BITS_PER_LEVEL;
+> +            ofs >>= BITS_PER_LEVEL;
+>  
+>              bitmap_copy_and_clear_atomic(snap->dirty + dest,
+> -                                         blocks->blocks[idx] + offset,
+> +                                         blocks->blocks[idx] + ofs,
+>                                           num);
+>              page += num;
+>              dest += num >> BITS_PER_LEVEL;
+> -- 
+> 2.41.0
+> 
+> 
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

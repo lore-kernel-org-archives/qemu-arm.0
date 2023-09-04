@@ -1,91 +1,91 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1175632ejb;
-        Mon, 4 Sep 2023 01:07:11 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHCZO4xKNqhJxPN9RnpypW1m+KEAOhZtQiH5F8QBf9cjwEt6sroGJ3GAANlPxzK2os7uPb8
-X-Received: by 2002:a05:620a:1a90:b0:765:6923:623e with SMTP id bl16-20020a05620a1a9000b007656923623emr12871927qkb.29.1693814831375;
-        Mon, 04 Sep 2023 01:07:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693814831; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1175845ejb;
+        Mon, 4 Sep 2023 01:07:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH3F3Ct0lhmPMv2p/UDBP1ZAu3NOMAkJZup40EDsnl2LzqdTZRN15NwLa2rw1SzhbRdpDkZ
+X-Received: by 2002:a05:620a:1926:b0:767:8e6:f46f with SMTP id bj38-20020a05620a192600b0076708e6f46fmr4224105qkb.19.1693814860441;
+        Mon, 04 Sep 2023 01:07:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693814860; cv=none;
         d=google.com; s=arc-20160816;
-        b=c5MxxIK0Act7QAh14V8nswxb3+o/1lp4ob4w7r7F9HEckf1bHmQBPGczLbMHKZYYbb
-         4OXk3ddffYTz1YKIehIFzZDcVg++B+5fsemQfUy3vBAC5BNJJ++mZusxVxn/Uql1NBQV
-         i+gfWhopX87LhgJnyOMS/HkqyPVU28ZTTqRMJYNMLEezT1+rsXEn4rgjBENaRvzAWE+z
-         UMXVk8QBP6lKG+S5a7hppuk2d5TqeNsXL/w4SyAHANFvGA4fLHK4Ium0JtoMlebWMCGv
-         wBx2U41MJWyUDkxxWHD2uE5yhIJVsCeWF4tQrkc2OD1HfwHe5hCD9W9uhwUKwg9QsxVi
-         90UQ==
+        b=U5+2Iojkf6V06PrtJsYl9hQh571rdXO4oIZJg4IS+yijPOL9kqFh66NK1N6nKzxP5u
+         /dVDQO2OBd0H0IGTBZZSdvSh0ptV9BGv6SfjdyrCPJjpa44GEu/1tRg5ZNO3wnRLJGbM
+         mWnEXC353j9/Pa2lY/166z1oGyWAh/W/mrqgyqqo3B1hJzSrc6Gj5wo3d6krvbsE9qt8
+         gZmwEo5EiO7I6cY9WWPBAAhdDcEQdcolNfi3c/P9S1JRK0RdBAmkAsTW6pDLUSDmtImA
+         JDffsIojdb6NWKtqLQd0c4yb9HM01UTHNe2ZyDYuvEci+tHzTnDtkiYXe1Enilj3zVaM
+         ZHug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Xmpz4K6SW2/WoItBTO6+xpT/XaONGuH9RQ+gRhGH858=;
+        bh=Rxn5EDYXEwVoQRGNPIOql5tx6O0sQvV/pW4KSk35sJQ=;
         fh=vPp9P9nRoVzg/+h2e3p9KngL/viJb9qzJXYZDzy4B8s=;
-        b=h/XYu5Q9l1DgsjOlc+DHoOO6qGA5Si3DrcanVaO6669YEpeduKwKvl5Ed+ESZWReZu
-         duIO0JpxjQMwyAmqhrkyezd0HPilME9eApAQZsoE3nIQctUQMktpF88IceF7+H82rJqS
-         q7va3EL3jJMsdgnCU6SQKrquXn/ocrHR6vF5fJkUJeLc+wV3LA9BsbHCqgNiZ57jX8oh
-         KM/askA1J2jCDxOFak5VQQ2mmCXPuhyotMvhYD7WOqI7LQubO0INAwigpvB8tF3u0Z+g
-         dxRKECA85f9L1U6fsuwn/sUyRsshaPZQlS8x7hctLHHZ0aP3W8X+xJKhuZdQvNnQ/+Vf
-         DL9A==
+        b=lEtS4eU5O7RQKTk3qVeSseFrPgXPpNQfq2HXW6hTSTh3PnAUZmC8vHWPfGok8LO5Jz
+         JGoprFZiS5bkczaoT0bZgA9ax+z2sxQjCCoa8b+M6yA+UKxppnTxzH8pavzBFtKjiL48
+         bu7NrdQFOp4M1cXqLbW3AH44XzWH/T8DwTIMV0/oTymalCx37GC/s+151N+DRMIGIRCz
+         4FWjgSYYuejNmnXf+jMk6I2sX+F4EWJO7X5FyoqWZsqk0mgN8EcHRFYrKl6jdTyisAsk
+         Dju1mF6q2Ce7VM5gHOydTR2DqWzBLM1SozHvEwymE2ejFzNqKPOC0jafmLdM4BhX+Ljv
+         sH3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=glxTRLdd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=imRcH9ja;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x18-20020a05620a449200b007672916d24asi6511012qkp.732.2023.09.04.01.07.11
+        by mx.google.com with ESMTPS id q15-20020a05622a030f00b0040357313971si6247026qtw.662.2023.09.04.01.07.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Sep 2023 01:07:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Sep 2023 01:07:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=glxTRLdd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=imRcH9ja;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qd4bg-0001MB-Cx; Mon, 04 Sep 2023 04:06:48 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qd4be-0001Fw-PT; Mon, 04 Sep 2023 04:06:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qd4be-0001GA-Om
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 04:06:46 -0400
+ id 1qd4bW-00014E-J0
+ for qemu-devel@nongnu.org; Mon, 04 Sep 2023 04:06:39 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qd4bc-0006Q1-2H
- for qemu-arm@nongnu.org; Mon, 04 Sep 2023 04:06:46 -0400
+ id 1qd4bR-0006Mh-CV
+ for qemu-devel@nongnu.org; Mon, 04 Sep 2023 04:06:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1693814799;
+ s=mimecast20190719; t=1693814790;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Xmpz4K6SW2/WoItBTO6+xpT/XaONGuH9RQ+gRhGH858=;
- b=glxTRLddf2yuU8ZWDQGBngI0BPXDww/06orVSMzXp7gc3DpHAD5/w5L9JrUFVwCcRTgnUJ
- 6bbG4V9cjL5E1J4Qug0KR2WGTbnrc5pE2qfNrjKYlVO5zO/z1xnAkKy6M6k74BmENM7gih
- C/1uQy+EOoJzNJwPxYL83NF27JsPKSY=
+ bh=Rxn5EDYXEwVoQRGNPIOql5tx6O0sQvV/pW4KSk35sJQ=;
+ b=imRcH9jaN+GXUh5sUdRj/feV3OKY3vlo1xNfJTNq3Ope9D+190weONenIV+UE1SUnIOG2U
+ 9YiBZwLuKHewIzmRZ3UrmPf2+WKMpAeUJBjcN9iINjvLBReUVhBUNtQEQiwhcAsGkT48v0
+ 5rmQQ45jAAyqLgok3xLDSIrG3ILT1iQ=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-125-QS9-w2I5N-muVdVfqjayLg-1; Mon, 04 Sep 2023 04:05:29 -0400
-X-MC-Unique: QS9-w2I5N-muVdVfqjayLg-1
+ us-mta-118-ebzfLZf2MpGK1cW64yG4oQ-1; Mon, 04 Sep 2023 04:05:24 -0400
+X-MC-Unique: ebzfLZf2MpGK1cW64yG4oQ-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
  [10.11.54.2])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 74A981E441D3;
- Mon,  4 Sep 2023 08:05:29 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E51303C1936C;
+ Mon,  4 Sep 2023 08:05:23 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.192.53])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 185D040C6CCC;
- Mon,  4 Sep 2023 08:05:26 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 86F4B400D277;
+ Mon,  4 Sep 2023 08:05:21 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, alex.williamson@redhat.com, clg@redhat.com,
  jean-philippe@linaro.org, mst@redhat.com, pbonzini@redhat.com
 Cc: peter.maydell@linaro.org, peterx@redhat.com, david@redhat.com,
  philmd@linaro.org
-Subject: [PATCH 11/13] test: Add some tests for range and resv-mem helpers
-Date: Mon,  4 Sep 2023 10:03:54 +0200
-Message-ID: <20230904080451.424731-12-eric.auger@redhat.com>
+Subject: [PATCH 09/13] util/reserved-region: Add new ReservedRegion helpers
+Date: Mon,  4 Sep 2023 10:03:52 +0200
+Message-ID: <20230904080451.424731-10-eric.auger@redhat.com>
 In-Reply-To: <20230904080451.424731-1-eric.auger@redhat.com>
 References: <20230904080451.424731-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -101,247 +101,188 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QdvuPoVjPFnI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IZHTxdWTnsVC
 
-Add unit tests for both resv_region_list_insert() and
-range_inverse_array().
+Introduce resv_region_list_insert() helper which inserts
+a new ReservedRegion into a sorted list of reserved region.
+In case of overlap, the new region has higher priority and
+hides the existing overlapped segments. If the overlap is
+partial, new regions are created for parts which are not
+overlapped. The new region has higher priority independently
+on the type of the regions.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- tests/unit/test-resv-mem.c | 198 +++++++++++++++++++++++++++++++++++++
- tests/unit/meson.build     |   1 +
- 2 files changed, 199 insertions(+)
- create mode 100644 tests/unit/test-resv-mem.c
+ include/qemu/reserved-region.h | 32 ++++++++++++
+ util/reserved-region.c         | 94 ++++++++++++++++++++++++++++++++++
+ util/meson.build               |  1 +
+ 3 files changed, 127 insertions(+)
+ create mode 100644 include/qemu/reserved-region.h
+ create mode 100644 util/reserved-region.c
 
-diff --git a/tests/unit/test-resv-mem.c b/tests/unit/test-resv-mem.c
+diff --git a/include/qemu/reserved-region.h b/include/qemu/reserved-region.h
 new file mode 100644
-index 0000000000..35c9828375
+index 0000000000..8e6f0a97e2
 --- /dev/null
-+++ b/tests/unit/test-resv-mem.c
-@@ -0,0 +1,198 @@
++++ b/include/qemu/reserved-region.h
+@@ -0,0 +1,32 @@
 +/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * QEMU ReservedRegion helpers
 + *
-+ * reserved-region/range.c unit-tests.
++ * Copyright (c) 2023 Red Hat, Inc.
 + *
-+ * Copyright (C) 2023, Red Hat, Inc.
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
 + *
-+ * Author: Eric Auger <eric.auger@redhat.com>
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef QEMU_RESERVED_REGION_H
++#define QEMU_RESERVED_REGION_H
++
++#include "exec/memory.h"
++
++/*
++ * Insert a new region into a sorted list of reserved regions. In case
++ * there is overlap with existing regions, the new added region has
++ * higher priority and replaces the overlapped segment.
++ */
++GList *resv_region_list_insert(GList *list, ReservedRegion *reg);
++
++#endif
+diff --git a/util/reserved-region.c b/util/reserved-region.c
+new file mode 100644
+index 0000000000..bb26a6bed3
+--- /dev/null
++++ b/util/reserved-region.c
+@@ -0,0 +1,94 @@
++/*
++ * QEMU ReservedRegion helpers
++ *
++ * Copyright (c) 2023 Red Hat, Inc.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
 + */
 +
 +#include "qemu/osdep.h"
 +#include "qemu/range.h"
-+#include "exec/memory.h"
 +#include "qemu/reserved-region.h"
 +
-+#define DEBUG 0
-+
-+static void print_rev_array(const char *prefix, uint32_t nr_rev,
-+                            Range *rev, uint32_t expected_nr_rev)
++GList *resv_region_list_insert(GList *list, ReservedRegion *reg)
 +{
-+    g_assert_cmpint(nr_rev, ==, expected_nr_rev);
-+#if DEBUG
-+    printf("%s nr_rev=%d\n", prefix, nr_rev);
-+    for (int i = 0; i < nr_rev; i++) {
-+        printf("%s rev[%i] = [0x%"PRIx64",0x%"PRIx64"]\n",
-+               prefix, i, range_lob(&rev[i]), range_upb(&rev[i]));
++    ReservedRegion *resv_iter, *new_reg;
++    Range *r = &reg->range;
++    Range *range_iter;
++    GList *l;
++
++    for (l = list; l ; ) {
++        resv_iter = (ReservedRegion *)l->data;
++        range_iter = &resv_iter->range;
++
++        /* Skip all list elements strictly less than range to add */
++        if (range_compare(range_iter, r) < 0) {
++            l = l->next;
++        } else if (range_compare(range_iter, r) > 0) {
++            return g_list_insert_before(list, l, reg);
++        } else { /* there is an operlap */
++            if (range_contains_range(r, range_iter)) {
++                /* new range contains current item, simply remove this latter */
++                GList *prev = l->prev;
++                g_free(l->data);
++                list = g_list_delete_link(list, l);
++                if (prev) {
++                    l = prev;
++                    if (l) {
++                        l = l->next;
++                    }
++                } else {
++                    l = list;
++                }
++            } else if (range_contains_range(range_iter, r)) {
++                /* new region is included in the current region */
++                if (range_lob(range_iter) == range_lob(r)) {
++                    /* adjacent on the left side, derives into 2 regions */
++                    range_set_bounds(range_iter, range_upb(r) + 1,
++                                     range_upb(range_iter));
++                    return g_list_insert_before(list, l, reg);
++                } else if (range_upb(range_iter) == range_upb(r)) {
++                    /* adjacent on the right side, derives into 2 regions */
++                    range_set_bounds(range_iter, range_lob(range_iter),
++                                     range_lob(r) - 1);
++                    l = l->next;
++                } else {
++                    uint64_t lob = range_lob(range_iter);
++                    /*
++                     * the new range is in the middle of an existing one,
++                     * split this latter into 3 regs instead
++                     */
++                    range_set_bounds(range_iter, range_upb(r) + 1,
++                                     range_upb(range_iter));
++                    new_reg = g_new0(ReservedRegion, 1);
++                    new_reg->type = resv_iter->type;
++                    range_set_bounds(&new_reg->range,
++                                     lob, range_lob(r) - 1);
++                    list = g_list_insert_before(list, l, new_reg);
++                    return g_list_insert_before(list, l, reg);
++                }
++            } else if (range_lob(r) < range_lob(range_iter)) {
++                range_set_bounds(range_iter, range_upb(r) + 1,
++                                 range_upb(range_iter));
++                return g_list_insert_before(list, l, reg);
++            } else { /* intersection on the upper range */
++                range_set_bounds(range_iter, range_lob(range_iter),
++                                 range_lob(r) - 1);
++                l = l->next;
++            }
++        } /* overlap */
 +    }
-+#endif
++    return g_list_append(list, reg);
 +}
 +
-+static void check_range_reverse_array(void)
-+{
-+    Range r[10];
-+    Range *rev;
-+    uint32_t nr_rev;
-+
-+    range_set_bounds(&r[0], 0x10000, UINT64_MAX);
-+    range_inverse_array(1, r, &nr_rev, &rev);
-+    print_rev_array("test1", nr_rev, rev, 1);
-+    g_free(rev);
-+
-+    range_set_bounds(&r[0], 0x10000, 0xFFFFFFFFFFFF);
-+    range_inverse_array(1, r, &nr_rev, &rev);
-+    print_rev_array("test2", nr_rev, rev, 2);
-+    g_free(rev);
-+
-+    range_set_bounds(&r[0], 0x0, 0xFFFF);
-+    range_set_bounds(&r[1], 0x10000, 0x2FFFF);
-+    range_inverse_array(2, r, &nr_rev, &rev);
-+    print_rev_array("test3", nr_rev, rev, 1);
-+    g_free(rev);
-+
-+    range_set_bounds(&r[0], 0x50000, 0x5FFFF);
-+    range_set_bounds(&r[1], 0x60000, 0xFFFFFFFFFFFF);
-+    range_inverse_array(2, r, &nr_rev, &rev);
-+    print_rev_array("test4", nr_rev, rev, 2);
-+    g_free(rev);
-+
-+    range_set_bounds(&r[0], 0x0, UINT64_MAX);
-+    range_inverse_array(1, r, &nr_rev, &rev);
-+    print_rev_array("test5", nr_rev, rev, 0);
-+    g_free(rev);
-+}
-+
-+static ReservedRegion *alloc_resv_mem(unsigned type, uint64_t lob, uint64_t upb)
-+{
-+    ReservedRegion *r;
-+
-+    r = g_new0(ReservedRegion, 1);
-+    r->type = type;
-+    range_set_bounds(&r->range, lob, upb);
-+    return r;
-+}
-+
-+static void print_resv_region_list(const char *prefix, GList *list,
-+                                   uint32_t expected_length)
-+{
-+    int i = g_list_length(list);
-+
-+    g_assert_cmpint(i, ==, expected_length);
-+#if DEBUG
-+    i = 0;
-+    for (GList *l = list; l; l = l->next) {
-+        ReservedRegion *r = (ReservedRegion *)l->data;
-+        Range *range = &r->range;
-+
-+        printf("%s item[%d]=[0x%x, 0x%"PRIx64", 0x%"PRIx64"]\n",
-+               prefix, i++, r->type, range_lob(range), range_upb(range));
-+    }
-+#endif
-+}
-+
-+static void free_resv_region(gpointer data)
-+{
-+    ReservedRegion *reg = (ReservedRegion *)data;
-+
-+    g_free(reg);
-+}
-+
-+static void check_resv_region_list_insert(void)
-+{
-+    ReservedRegion *r[10];
-+    GList *l = NULL;
-+
-+    r[0] = alloc_resv_mem(0xA, 0, 0xFFFF);
-+    r[1] = alloc_resv_mem(0xA, 0x20000, 0x2FFFF);
-+    l = resv_region_list_insert(l, r[0]);
-+    l = resv_region_list_insert(l, r[1]);
-+    print_resv_region_list("test1", l, 2);
-+
-+    /* adjacent on left */
-+    r[2] = alloc_resv_mem(0xB, 0x0, 0xFFF);
-+    l = resv_region_list_insert(l, r[2]);
-+    /* adjacent on right */
-+    r[3] = alloc_resv_mem(0xC, 0x21000, 0x2FFFF);
-+    l = resv_region_list_insert(l, r[3]);
-+    print_resv_region_list("test2", l, 4);
-+
-+    /* exact overlap of D into C*/
-+    r[4] = alloc_resv_mem(0xD, 0x21000, 0x2FFFF);
-+    l = resv_region_list_insert(l, r[4]);
-+    print_resv_region_list("test3", l, 4);
-+
-+    /* in the middle */
-+    r[5] = alloc_resv_mem(0xE, 0x22000, 0x23FFF);
-+    l = resv_region_list_insert(l, r[5]);
-+    print_resv_region_list("test4", l, 6);
-+
-+    /* overwrites several existing ones */
-+    r[6] = alloc_resv_mem(0xF, 0x10000, 0x2FFFF);
-+    l = resv_region_list_insert(l, r[6]);
-+    print_resv_region_list("test5", l, 3);
-+
-+    /* contiguous at the end */
-+    r[7] = alloc_resv_mem(0x0, 0x30000, 0x40000);
-+    l = resv_region_list_insert(l, r[7]);
-+    print_resv_region_list("test6", l, 4);
-+
-+    g_list_free_full(l, free_resv_region);
-+    l = NULL;
-+
-+    r[0] = alloc_resv_mem(0x0, 0x10000, 0x1FFFF);
-+    l = resv_region_list_insert(l, r[0]);
-+    /* insertion before the 1st item */
-+    r[1] = alloc_resv_mem(0x1, 0x0, 0xFF);
-+    l = resv_region_list_insert(l, r[1]);
-+    print_resv_region_list("test8", l, 2);
-+
-+    /* collision on the left side */
-+    r[2] = alloc_resv_mem(0xA, 0x1200, 0x11FFF);
-+    l = resv_region_list_insert(l, r[2]);
-+    print_resv_region_list("test9", l, 3);
-+
-+    /* collision on the right side */
-+    r[3] = alloc_resv_mem(0xA, 0x1F000, 0x2FFFF);
-+    l = resv_region_list_insert(l, r[3]);
-+    print_resv_region_list("test10", l, 4);
-+
-+    /* override everything */
-+    r[4] = alloc_resv_mem(0xF, 0x0, UINT64_MAX);
-+    l = resv_region_list_insert(l, r[4]);
-+    print_resv_region_list("test11", l, 1);
-+
-+    g_list_free_full(l, free_resv_region);
-+    l = NULL;
-+
-+    r[0] = alloc_resv_mem(0xF, 0x1000000000000, UINT64_MAX);
-+    l = resv_region_list_insert(l, r[0]);
-+    print_resv_region_list("test12", l, 1);
-+
-+    r[1] = alloc_resv_mem(0xA, 0x0, 0xFFFFFFF);
-+    l = resv_region_list_insert(l, r[1]);
-+    print_resv_region_list("test12", l, 2);
-+
-+    r[2] = alloc_resv_mem(0xB, 0x100000000, 0x1FFFFFFFF);
-+    l = resv_region_list_insert(l, r[2]);
-+    print_resv_region_list("test12", l, 3);
-+
-+    r[3] = alloc_resv_mem(0x0, 0x010000000, 0x2FFFFFFFF);
-+    l = resv_region_list_insert(l, r[3]);
-+    print_resv_region_list("test12", l, 3);
-+
-+    g_list_free_full(l, free_resv_region);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    g_test_add_func("/resv-mem/range_reverse_array",
-+                    check_range_reverse_array);
-+    g_test_add_func("/resv-mem/resv_region_list_insert",
-+                    check_resv_region_list_insert);
-+
-+    g_test_run();
-+
-+    return 0;
-+}
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index 93977cc32d..765b1a8dad 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -21,6 +21,7 @@ tests = {
-   'test-opts-visitor': [testqapi],
-   'test-visitor-serialization': [testqapi],
-   'test-bitmap': [],
-+  'test-resv-mem': [],
-   # all code tested by test-x86-cpuid is inside topology.h
-   'test-x86-cpuid': [],
-   'test-cutils': [],
+diff --git a/util/meson.build b/util/meson.build
+index a375160286..7e85889606 100644
+--- a/util/meson.build
++++ b/util/meson.build
+@@ -52,6 +52,7 @@ util_ss.add(files('qdist.c'))
+ util_ss.add(files('qht.c'))
+ util_ss.add(files('qsp.c'))
+ util_ss.add(files('range.c'))
++util_ss.add(files('reserved-region.c'))
+ util_ss.add(files('stats64.c'))
+ util_ss.add(files('systemd.c'))
+ util_ss.add(files('transactions.c'))
 -- 
 2.41.0
 

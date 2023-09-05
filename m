@@ -1,87 +1,105 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp2048817ejb;
-        Tue, 5 Sep 2023 07:35:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE3YeGi2TjYRVi4GaQxqy9J7ioIctFEaTKir4HE9axulpya5bPzHlisa3yMarCTZtPbKpQ5
-X-Received: by 2002:a05:6122:da6:b0:493:49ef:59e0 with SMTP id bc38-20020a0561220da600b0049349ef59e0mr4353611vkb.13.1693924515677;
-        Tue, 05 Sep 2023 07:35:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693924515; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp2095114ejb;
+        Tue, 5 Sep 2023 08:44:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGwaQljWpVEhP7AHgtvjoY2byiheSWUcLrIgMRVHLIe3agN5al0wRguwDHLNwaMI93JanbM
+X-Received: by 2002:a05:620a:4250:b0:76c:c055:aa32 with SMTP id w16-20020a05620a425000b0076cc055aa32mr13459054qko.24.1693928641088;
+        Tue, 05 Sep 2023 08:44:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693928641; cv=none;
         d=google.com; s=arc-20160816;
-        b=oIah+VblBIBR8SBbDIPkldMjx3hqPixlCZEtXLfgbeG+B+Bo5bRx70g5H7/TQeqe0H
-         F8wQyccOnVLdyROsEiyJ/RtQ5oXIyEprDZO+qoN1QoNADR1dKTq05mInevPFtvOs06eo
-         cV8ZNKekIas9wcrHP5r5FGYE73CTwkpTiK5yXoun+zfngEOEH3lm/yHWV+8DTGuQNhEd
-         Gm2UP7pbEgjYJCGdZf6HqFkeG4daZDljTlLcDcyZX4eiDZ52BVmq5H7Gijqecr8MvhJw
-         +k7oau4oOKqF0zry8NmJ3YPjXUVnPCvc0/PeW6zIbXybrvxiE/uX0HG2YQel8iqtomK6
-         8WSA==
+        b=YFGWDb2isLoFAmRU6twN8N/fhfpe9/+GcRRs1KSaUvuuAH0AoxWBNb697eQnKQDqR4
+         cKCMA9hFh4dbGK94CtAJIQFvTzeoFB8IE3gBczYe2KPPpUO+5k9jlGiFBdHaW/sREnNg
+         zfcy0DJPNrt7p270zKA5U5vOaovRm7aUhlZDvzAkeDqfu7/+P7MH4WTpwkAieLXkzaeP
+         /FOn/Q+E4mqk+emoIXOYq/RcN0Y3+6t851J1SUdne39OdZZyZNWyw5kHVEjIPz0Yp2m2
+         Yv5DkMNrpgqc7QxCU7rbBe9Xdey+vHM2WqqlzBPJa6t07LmkCO4zNLJmrWIBfJjb2rom
+         LSGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=4lKGM6nRvJXBSk8vjrHdDQr2zjJlDYVEfUMM35gFD68=;
-        fh=jH5jfeN860fn+vI0fsYXs9CdNQSJy9IvhpauVikPNms=;
-        b=W1t/RmrULKklkNciYYIvZJ8Fcer+yvBHqW92qLcxhA/MrEkDwI2ujBD99EiB++OtmO
-         n49sKRM7GbaNpoZWItfso8O/o7PbhJmddMcad4/WqfmSR3oN4JWQgfCCHI5NLkfV8XG6
-         xU5JvpERLkikWgBSVZUYOUrifsNNiHLkJlmbNPxxujyOyXAfNJq8XGDMN5phBbcghA4J
-         UVbfBLz+UyHjexvqWwtlw0HvDrA0rTlJuVWYK+JDtV4H1LNXAcwe6vQXGlWvbFLfD43m
-         1pnl7UR5ffvSGDWsAHq8Bvr5OKH21XeRUKlgsz0wzfXA4rhEexfsjjb9LBDx7haJmt4q
-         SE3g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=6s8//+/Gdm7BdyAUWTQYfQUByLn0FTr02vmOUEy9LRU=;
+        fh=bDHNoqvQ1dwP2Q4LtCamQreEQKIETTXiWCup8JmJTH0=;
+        b=MqgQ8Jkuxi51/gF32Kn0Q6eq3EH3hmiJurEOqnCEN0Dcw479Z/sbYYbkTT0HbBy8GV
+         V68FzCOV/gxl29Q0S99Vd1Lt9lfhQi+edxbtIy+jCdJWZ6420RltxnqZpqNFli/+CO24
+         v/VRcvSaLSU3o5ZTgAfy6fV6d5CubhKVZjZywvqYBsGIhK55i571G2z1U82yMRldtZOl
+         VYtc67GMfPM2vTPxCaaY9oLCVK3qVPHDxLhPk4EvDn6dsfgVCRib86YOVYItGNeVrVqt
+         vEmTOw8Pa3xfB522l5/idzASzI0+YIAyNFZCYmBQ8KrO+6X2P7M+FBPf7xHU5goYVJCG
+         tupg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f7Fyotg0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s12-20020a0ce30c000000b0063d00dc9c52si8080540qvl.471.2023.09.05.07.35.15
+        by mx.google.com with ESMTPS id py14-20020a05620a878e00b00767da14f0cesi7861901qkn.13.2023.09.05.08.44.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Sep 2023 07:35:15 -0700 (PDT)
+        Tue, 05 Sep 2023 08:44:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f7Fyotg0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qdX8q-0006jb-15; Tue, 05 Sep 2023 10:34:56 -0400
+	id 1qdYDT-0003CK-Li; Tue, 05 Sep 2023 11:43:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qdX8p-0006jN-0d; Tue, 05 Sep 2023 10:34:55 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qdYDS-0003Ag-70
+ for qemu-arm@nongnu.org; Tue, 05 Sep 2023 11:43:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qdX8m-0001er-AA; Tue, 05 Sep 2023 10:34:54 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.200])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Rg7KC5D08z6HJ5h;
- Tue,  5 Sep 2023 22:33:19 +0800 (CST)
-Received: from localhost (10.122.247.231) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Tue, 5 Sep
- 2023 15:34:39 +0100
-Date: Tue, 5 Sep 2023 15:34:38 +0100
-To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-CC: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
- gregory.price <gregory.price@memverge.com>
-Subject: Re: CXL Namespaces of ACPI disappearing in Qemu demo
-Message-ID: <20230905153438.000075ff@huawei.com>
-In-Reply-To: <2023090518450211126476@phytium.com.cn>
-References: <2023082215220191352877@phytium.com.cn>
- <2023090518450211126476@phytium.com.cn>
-Organization: Huawei Technologies R&D (UK) Ltd.
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qdYDO-0006RT-UY
+ for qemu-arm@nongnu.org; Tue, 05 Sep 2023 11:43:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1693928622;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=6s8//+/Gdm7BdyAUWTQYfQUByLn0FTr02vmOUEy9LRU=;
+ b=f7Fyotg07xEncUGyKWTdVe24TkclugaYElVZNeb/7Ng9xXewHYYf3t96lICMSgyMQhALSp
+ uKeZrcdGceAfrr9sHJRu5RUaS25wz3M8+Irw+beNh7VXBf+a3emjkKu+eJEBLjkKgZOq1B
+ IoDzQ78O9ECEh6MgL4lYwK+O+Dc/GGk=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-44-4JZkDLrXNrudVAr9BG_Avw-1; Tue, 05 Sep 2023 11:43:36 -0400
+X-MC-Unique: 4JZkDLrXNrudVAr9BG_Avw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F09C028237D0;
+ Tue,  5 Sep 2023 15:43:34 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.85])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8492D1460FE5;
+ Tue,  5 Sep 2023 15:43:34 +0000 (UTC)
+Date: Tue, 5 Sep 2023 11:08:40 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Subject: Re: [PULL v2 00/40] Misc patches for 2023-08-31
+Message-ID: <20230905150840.GA286488@fedora>
+References: <20230831135642.75413-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.122.247.231]
-X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="WQgvziynjXNvFRKq"
+Content-Disposition: inline
+In-Reply-To: <20230831135642.75413-1-philmd@linaro.org>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,53 +112,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zvOo4dcSdZJO
-
-On Tue, 5 Sep 2023 18:45:02 +0800
-Yuquan Wang <wangyuquan1236@phytium.com.cn> wrote:
-
-> Hi, Jonathan
-> On 2023-09-04 20:43,  jonathan.cameron wrote:
-> > 
-> > At the system design level, MMIO space of Root complex register space via RCRB
-> > does not map in a similar fashion to PCIE MMIO space (which is handled via
-> > address decoding in the PCIE fabric). It is much more similar to MMIO for platform
-> > devices - as such the implementation handles in like a platform device (well 16 of
-> > them which seemed enough for any sane usecase).
-> > 
-> >   
-> 
-> Oh,thanks! According to above, therefore, the core factor is the implementation of RCRB.
-> 
-> > 
-> > So in theory we could make some space for the CXL root bridge RCRB registers
-> > but it would make various generic paths more complex.  In a real system
-> > those registers are likely to be far from the PCI MMIO space anyway so the
-> > way it's modeled is probably more realistic than pushing the RCRB into the
-> > existing allocation.
-> >   
-> 
-> Here implies that all CXL root bridge will use RCRB registers.
-> 
-> From Table 8-17 and Figure 9-14 in CXL3.0 specification, I understood that only RCH DP &
-> RCD UP will use RCRBs, and CXL host bridges VH mode will use other way to realize
-> the CHBCR. I had tried to find more explanation in CXL spec, but I haven't found. Hence 
-> this is why I am confused.
-
-Ah. That distinction is a bit messy.  Both an RCRB and CHBCR (CXL Host Bridge Component
-Registers) are similar in the sense that they are mapped in host memory space. 
-As I understand it the distinction is more about the format / contents of that memory
-than how you access them. As an aside, they are described by a static ACPI table,
-so they can't be in the MMIO space used for BARs etc.
-
-Jonathan
+X-TUID: x90anhs9aBFx
 
 
-> 
-> Many thanks
-> Yuquan
+--WQgvziynjXNvFRKq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/8.2 for any user-visible changes.
+
+--WQgvziynjXNvFRKq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmT3RHcACgkQnKSrs4Gr
+c8gkvAf7BcrO9DMOmNJBV7xki1hIpzff5MHTdau6Rlam7B7E9EiYbzHaJq5V5TXL
+NtO8U1Uh574q+JynlDyHhqYjjEao+0goCOXwUfTQeRlnbA1fD94MwLKLyfMwIR+O
+WMKs7iGx8so/rhref/23kdtInAOAb1R3GMv+ZHpOCNyEErkhwUHaX6CmhSdpnrYC
+DGMx6U34l10aI/hzYwRU9vwQM2PngmFPoHRR4MxqWZI7l/74c8DV83HN5tCrF31d
+kPyoYRbyv6k4XbAtat+H9RDWoACQfAeBiPsLc25TAoNbI6uOjspOLa0MlvEogbAr
+OAzpV4Loi7mDs+rSAATz1JJnTM708g==
+=Y4m6
+-----END PGP SIGNATURE-----
+
+--WQgvziynjXNvFRKq--
 

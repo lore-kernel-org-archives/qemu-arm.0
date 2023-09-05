@@ -1,109 +1,109 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp2254027ejb;
-        Tue, 5 Sep 2023 13:15:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGwoVvRxekz/0z/4YQNOgqHtOIbyvfUM77tEgXcTt+L8ZZz4gPiszUbY8sbD1/8icHkedaC
-X-Received: by 2002:a05:622a:c5:b0:40c:82f:b66c with SMTP id p5-20020a05622a00c500b0040c082fb66cmr21990126qtw.34.1693944928446;
-        Tue, 05 Sep 2023 13:15:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693944928; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp2254375ejb;
+        Tue, 5 Sep 2023 13:16:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHoQdqA/SJzWK77ly/QMLUPouv73KyORSfewOr/VCY5A7ZSksY6OJqO2QE8KVQ7Qc9d6H+j
+X-Received: by 2002:a0c:c992:0:b0:64f:3de6:d502 with SMTP id b18-20020a0cc992000000b0064f3de6d502mr15128407qvk.5.1693944968860;
+        Tue, 05 Sep 2023 13:16:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693944968; cv=none;
         d=google.com; s=arc-20160816;
-        b=iF960pkpgrb9nM3rSR0ewXmdXZs0YZbQlZRjgw2MuXftnymYXG7qFYh31NiNR1lc/3
-         skU0WmdKpxzQaUcAuTv8Iw9992yGniKd7a0iJYbboIgX6XWBLfQHRkNc+hh9EHu7O9Nw
-         yDiXENuckuAxWvPYiG5yuccFfo5lJNDZJn2VRGh0JTnk1w44YwO8fKbIyJm3n+TkUPci
-         bIkYBZ3ue/gxR12dcPWK+Tv6TB5UtGlLZfZSHB4+R/f5szu6/y9Wyv0BGKJurOIYLxXo
-         xooVaSNiKKEokPm8XIAkG72rQ+b841XdJ75ExbtM9xk8IJPkkE4DzaM+MMqCJ/NLX6LZ
-         G0zg==
+        b=S/9UCTbOQKLKUWuE5mGnqFavQ9+G5Nr5//hMWAK+pqNzNcUvw67iv+GHOpdUBLEpGT
+         w+wwH0Cll8k9VLNX/GY3a2wuT33javu4vl8c45kaDjFqm94chGng1ZJmo7qoqeqjbksZ
+         S7U/i+d3FlOB80qmgb+uHjAUfa8mivbJoSuZXJpTQrWMmoHBY0s8/sC3/D0k/L1Bp6so
+         6UyQ8nqO6oxOAVveNWKZj7O+Dit8lg7oTFKunLi74KQPwD1wyHahg2kvAeaf+zJHrlK9
+         +FOvYa21enS9As3/lahaJ1MUWf+FlsS5qUD16cXUNyYqGpD9vPsVB0QtwIVhOluFIpn5
+         l90A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=kjHTvwkRQLgWn6AbYXrQiHckpQTTlZrVyb3u0idfryg=;
+        bh=foOqzdGL/WyOe8+wQYwqhAt/YwvOYCJgK4mxkX6LADc=;
         fh=W7drrHLWlU6RviMr5u6Q2QLIvBBno/BcCW1G9hZvzcU=;
-        b=jaYSZUCxc3We6wDY0YNemntDYc/CbwaISJjGN2utMUO5vlJvHClW4H9oH8+ZVRExw+
-         szB/hwd/+joTIDUlF1fW4xoXQ1TsfR+IlBsWnBTuLGBfNeni0R+1Gj8Re2EPgMBbU0Mr
-         gYmiEm6Bu30U7cwYuq1ABb7FSn03fczp7st6OyB9tsbDHVMpvmBEQ/zKPHHElEksl8Ce
-         3DKczxE2UMhZ3nMtVzrHZwWqgGebsZzPpZpLsIyPzd88l+4WVLbxVBJtdMRZYvB08qfd
-         n6m+/QrnwD7ISvGgXjcx7cxlJMzq0QLuA/xsMIuoVqsx3ii59Qld5n5CzeiAGlGMXkPh
-         S83g==
+        b=sgQe9dgE72kk1nmopBWFAkpEZzG9C7FriF1IcDecRkALDkUnOi8PDJarPTYWhHCCz7
+         mDkJak5tMkjhSYnnVFoOqVKKQdn5bIG0Izk6gw4diH4P6aCP3K0o6Ziaj8HnOY+EzJqQ
+         yePIhxuveFMa8l9YveuJEYDH/fAc+LVG4CRpzj7pEF7mnT629RnLjc5kmlx83Uf7fEWm
+         MgTzqrryAg2o+JIAm6fdTypi8a7oHiujLsP1dcu4OOBljjNqH6UB1+H7/qzrGHPs7Ur2
+         ncP6PDYUNuJkB6eZxUhC6p4Aox0fKI8hkf4fB11L/YKqtwdX4AG5O60MpURFga+mUZWk
+         kplQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=a4CY0rZB;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b="K1G3T/Nh";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15-20020ac84e8f000000b0040fd3f0a144si8497590qtp.629.2023.09.05.13.15.28
+        by mx.google.com with ESMTPS id p18-20020a05622a13d200b0040556cac38csi8666423qtk.366.2023.09.05.13.16.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Sep 2023 13:15:28 -0700 (PDT)
+        Tue, 05 Sep 2023 13:16:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=a4CY0rZB;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b="K1G3T/Nh";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qdcRg-0004tF-TN; Tue, 05 Sep 2023 16:14:44 -0400
+	id 1qdcRo-0004wu-8z; Tue, 05 Sep 2023 16:14:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1qdcRf-0004t3-VQ; Tue, 05 Sep 2023 16:14:44 -0400
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+ id 1qdcRm-0004vL-8P; Tue, 05 Sep 2023 16:14:50 -0400
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1qdcRc-00037U-RL; Tue, 05 Sep 2023 16:14:43 -0400
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-501bd6f7d11so1943745e87.1; 
- Tue, 05 Sep 2023 13:14:40 -0700 (PDT)
+ id 1qdcRh-000381-GI; Tue, 05 Sep 2023 16:14:49 -0400
+Received: by mail-lf1-x12d.google.com with SMTP id
+ 2adb3069b0e04-50079d148aeso4929304e87.3; 
+ Tue, 05 Sep 2023 13:14:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1693944879; x=1694549679; darn=nongnu.org;
+ d=gmail.com; s=20221208; t=1693944883; x=1694549683; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kjHTvwkRQLgWn6AbYXrQiHckpQTTlZrVyb3u0idfryg=;
- b=a4CY0rZBFebMWHtNzFqNr2XuQ2sAEJsxk4cjCBSgv2OnZrEYeWDj6kvCbRD4xbE5/l
- zQAJ8iK62HDOx3dH95gLTunKPGiQNPSz2Wi9zSNq0v2P5197kZpQWFRskMxeskGk/QeM
- DzKJdemBdS0uSlT5cDBo0mRGpSGdi/SANC5+6Z8GsuHNokwsiTTjibs6sN2fiJYiCx+h
- 3EB/nAk3TqRJ6StaLtqP3psBpUvHMwxddb3Zsrc6tkcfi0Yudvq3tujhvjkCxYw1Nj1e
- eoForC8WnEgYr7YNRnKteNs2SlOTEdU7FWXIVe8LrUFO5DmzqKVRsHRlB2vS0hppQ0+9
- 1HcA==
+ bh=foOqzdGL/WyOe8+wQYwqhAt/YwvOYCJgK4mxkX6LADc=;
+ b=K1G3T/NhIYc6yLCS/lGzjapygPTIf3u/bwqc/51XGEJhh6zw5RxX4UNhB7mn9o7Uog
+ Yls1bmn2B2gE2euw0xJ5V/nLYlB380cwZsZxaSuvrbPL83ZTgdON9dWQuWxWYCJ5NZ5U
+ jQSsBLMClfOMU1xVCG90Z1tjkld0N4Bl6X9291l6wb67D91jM5jbqynvFgOOGnN7mY27
+ AjAlFOk993CL3V0cXDvvjrv7mxhFchVcZpUngnHrOhcNvE4KHYTH0LX0SpRUERH3x7uc
+ bsAUdaZ3EwygRnhHtCeA9wDF4DwIHdEOpa8/W6fYNjJVnLPLnjHLBOyxZSaVnZPhZkLF
+ BA+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693944879; x=1694549679;
+ d=1e100.net; s=20221208; t=1693944883; x=1694549683;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=kjHTvwkRQLgWn6AbYXrQiHckpQTTlZrVyb3u0idfryg=;
- b=GRl840mThDFLseOC197J+ayisBNk8vj9jnehkj3TtEp1WVHl8dvz6NZ9r6LcxklgaM
- uzy81Wp3Fo8EcXgXHSE/InqnnxyB8wA7m0XhCTPQ7bi8jIIpOnC7/s5rOq7vTv4F4l8d
- PuSMnm95AGwRSSSaagFCGgd5gpGwTOZxQ73nD9QKAzLaajCVRZEqPbcfJbYCj+SkvNvt
- ulPC8wZpkhQCEZ1QztF2RzBI95fmcnVVvWteo38m/axLyC2yvDAmZDPTOQsTS/io7/35
- gtf82upXVcWqrxnIZ6M+IxxuKvijNnAhMunNqxOjTVtSKzNc+nJGj3QY9BErT5l8j7wo
- sUng==
-X-Gm-Message-State: AOJu0YzW7dtoZxnnuxwx6FL5QG2JJxHRhYGljmpOeEyck84voJaZAFVL
- hfoIm5zr0X2lqL4tXEDKB8Qkymz/IjplQQ==
-X-Received: by 2002:ac2:4e8b:0:b0:500:77c4:108 with SMTP id
- o11-20020ac24e8b000000b0050077c40108mr580460lfr.9.1693944878513; 
- Tue, 05 Sep 2023 13:14:38 -0700 (PDT)
+ bh=foOqzdGL/WyOe8+wQYwqhAt/YwvOYCJgK4mxkX6LADc=;
+ b=BMA0kIlXWsKCGJNNegriipP2rGDyZuYXzn1pHh9F6GBCFony6OYwtVLc89TgbktkIN
+ yuzVGcYB7AID7AkBfTM/vkDjcxCfan+qSCovN6IecWsBvT1U2scFgq5fjhkUVDxPvDKd
+ 0j+sl0qlcbtJq4i2W/tZaxYMUvk0SbYwVVAHM1E4mWstzRbCnfy7x1ITgnWizfkVIgqJ
+ jtf6pRcy49pgP5krEYaWlSVh1o2/Ar/JHln5xRFbZ8oLCjrOvQw+jIRYoDD+uKZZ/kgX
+ VOaJpV9MeN10iLYiVAQnOK94Za/0xgGqizrh7eB+fh7T4IHL06h4LhTNraHcyW6ab019
+ cgxQ==
+X-Gm-Message-State: AOJu0YxGqABaTjqw/fq5VX/KhAQzVP3gTUrqRK5qiW5ztwPy/QRzpQnB
+ 2JEWxuPswuMvflbk5owXJ7CpUYF3yTdCRw==
+X-Received: by 2002:a19:6441:0:b0:4ff:9a75:211e with SMTP id
+ b1-20020a196441000000b004ff9a75211emr504479lfj.42.1693944883068; 
+ Tue, 05 Sep 2023 13:14:43 -0700 (PDT)
 Received: from localhost.localdomain (81-233-187-21-no600.tbcn.telia.com.
  [81.233.187.21]) by smtp.gmail.com with ESMTPSA id
- b25-20020ac25e99000000b004ff725d1a27sm2489811lfq.234.2023.09.05.13.14.38
+ b25-20020ac25e99000000b004ff725d1a27sm2489811lfq.234.2023.09.05.13.14.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Sep 2023 13:14:38 -0700 (PDT)
+ Tue, 05 Sep 2023 13:14:42 -0700 (PDT)
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
 X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [RFC Patch 1/5] hw/display: Allwinner A10 HDMI controller emulation
-Date: Tue,  5 Sep 2023 22:14:21 +0200
-Message-Id: <20230905201425.118918-2-strahinja.p.jankovic@gmail.com>
+Subject: [RFC Patch 4/5] hw/display: Allwinner A10 LCDC emulation
+Date: Tue,  5 Sep 2023 22:14:24 +0200
+Message-Id: <20230905201425.118918-5-strahinja.p.jankovic@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230905201425.118918-1-strahinja.p.jankovic@gmail.com>
 References: <20230905201425.118918-1-strahinja.p.jankovic@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x134.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,64 +125,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: plmhn94CmumI
+X-TUID: JSFYqqk9Ic/s
 
-This patch adds basic Allwinner A10 HDMI controller support.
-Emulated HDMI component will always show that a display is connected and
-provide default EDID info.
+This patch adds support for Allwinner A10 LCD controller.
+Current emulation supports only RGB32 colorspace and interacts with
+DEBE0 to obtain framebuffer address and screen size.
 
 Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 ---
- hw/arm/allwinner-a10.c                  |   7 +
- hw/display/allwinner-a10-hdmi.c         | 214 ++++++++++++++++++++++++
- hw/display/meson.build                  |   2 +
- hw/display/trace-events                 |   4 +
+ hw/arm/allwinner-a10.c                  |  10 +
+ hw/display/allwinner-a10-lcdc.c         | 275 ++++++++++++++++++++++++
+ hw/display/meson.build                  |   1 +
+ hw/display/trace-events                 |   5 +
  include/hw/arm/allwinner-a10.h          |   2 +
- include/hw/display/allwinner-a10-hdmi.h |  69 ++++++++
- 6 files changed, 298 insertions(+)
- create mode 100644 hw/display/allwinner-a10-hdmi.c
- create mode 100644 include/hw/display/allwinner-a10-hdmi.h
+ include/hw/display/allwinner-a10-lcdc.h |  77 +++++++
+ 6 files changed, 370 insertions(+)
+ create mode 100644 hw/display/allwinner-a10-lcdc.c
+ create mode 100644 include/hw/display/allwinner-a10-lcdc.h
 
 diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index b0ea3f7f66..2351d1a69b 100644
+index 624e95af46..f93bc5266d 100644
 --- a/hw/arm/allwinner-a10.c
 +++ b/hw/arm/allwinner-a10.c
 @@ -41,6 +41,7 @@
  #define AW_A10_WDT_BASE         0x01c20c90
  #define AW_A10_RTC_BASE         0x01c20d00
  #define AW_A10_I2C0_BASE        0x01c2ac00
-+#define AW_A10_HDMI_BASE        0x01c16000
++#define AW_A10_LCDC0_BASE       0x01c0c000
+ #define AW_A10_HDMI_BASE        0x01c16000
+ #define AW_A10_GPU_BASE         0x01c40000
+ #define AW_A10_DE_BE0_BASE      0x01e60000
+@@ -101,6 +102,8 @@ static void aw_a10_init(Object *obj)
  
- void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk)
- {
-@@ -95,6 +96,8 @@ static void aw_a10_init(Object *obj)
-     object_initialize_child(obj, "rtc", &s->rtc, TYPE_AW_RTC_SUN4I);
+     object_initialize_child(obj, "hdmi", &s->hdmi, TYPE_AW_A10_HDMI);
  
-     object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN4I);
++    object_initialize_child(obj, "lcd0", &s->lcd0, TYPE_AW_A10_LCDC);
 +
-+    object_initialize_child(obj, "hdmi", &s->hdmi, TYPE_AW_A10_HDMI);
- }
+     object_initialize_child(obj, "de_be0", &s->de_be0, TYPE_AW_A10_DEBE);
  
- static void aw_a10_realize(DeviceState *dev, Error **errp)
-@@ -210,6 +213,10 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     /* WDT */
-     sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
-     sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0, AW_A10_WDT_BASE, 1);
+     object_initialize_child(obj, "mali400", &s->gpu, TYPE_AW_GPU);
+@@ -230,6 +233,13 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+     sysbus_realize(SYS_BUS_DEVICE(&s->de_be0), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->de_be0), 0, AW_A10_DE_BE0_BASE);
+ 
++    /* LCD Controller */
++    object_property_set_link(OBJECT(&s->lcd0), "debe",
++                             OBJECT(&s->de_be0), &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(&s->lcd0), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->lcd0), 0, AW_A10_LCDC0_BASE);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lcd0), 0, qdev_get_gpio_in(dev, 44));
 +
-+    /* HDMI */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->hdmi), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->hdmi), 0, AW_A10_HDMI_BASE);
- }
- 
- static void aw_a10_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/display/allwinner-a10-hdmi.c b/hw/display/allwinner-a10-hdmi.c
+     /* MALI GPU */
+     sysbus_realize(SYS_BUS_DEVICE(&s->gpu), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpu), 0, AW_A10_GPU_BASE);
+diff --git a/hw/display/allwinner-a10-lcdc.c b/hw/display/allwinner-a10-lcdc.c
 new file mode 100644
-index 0000000000..0f046e3cc7
+index 0000000000..8367ac32be
 --- /dev/null
-+++ b/hw/display/allwinner-a10-hdmi.c
-@@ -0,0 +1,214 @@
++++ b/hw/display/allwinner-a10-lcdc.c
+@@ -0,0 +1,275 @@
 +/*
-+ * Allwinner A10 HDMI Module emulation
++ * Allwinner A10 LCD Control Module emulation
 + *
 + * Copyright (C) 2023 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 + *
@@ -207,62 +210,47 @@ index 0000000000..0f046e3cc7
 +#include "qemu/log.h"
 +#include "hw/qdev-properties.h"
 +#include "qemu/module.h"
-+#include "hw/display/allwinner-a10-hdmi.h"
++#include "hw/display/allwinner-a10-lcdc.h"
++#include "hw/irq.h"
++#include "ui/pixel_ops.h"
 +#include "trace.h"
++#include "sysemu/dma.h"
++#include "framebuffer.h"
 +
-+/* HDMI register offsets */
++/* LCDC register offsets */
 +enum {
-+    REG_HPD                 = 0x000C, /* HDMI Hotplug detect */
-+    REG_DDC_CTRL            = 0x0500, /* DDC Control */
-+    REG_DDC_SLAVE_ADDRESS   = 0x0504, /* DDC Slave address */
-+    REG_DDC_INT_STATUS      = 0x050C, /* DDC Interrupt status */
-+    REG_DDC_FIFO_CTRL       = 0x0510, /* DDC FIFO Control */
-+    REG_DDC_FIFO_ACCESS     = 0x0518, /* DDC FIFO access */
-+    REG_DDC_COMMAND         = 0x0520, /* DDC Command */
++    REG_TCON_GCTL       = 0x0000, /* TCON Global control register */
++    REG_TCON_GINT0      = 0x0004, /* TCON Global interrupt register 0 */
 +};
 +
-+/* HPD register fields */
-+#define FIELD_HPD_HOTPLUG_DET_HIGH      (1 << 0)
++/* TCON_GCTL register fields */
++#define REG_TCON_GCTL_EN        (1 << 31)
 +
-+/* DDC_CTRL register fields */
-+#define FIELD_DDC_CTRL_SW_RST           (1 << 0)
-+#define FIELD_DDC_CTRL_ACCESS_CMD_START (1 << 30)
-+
-+/* FIFO_CTRL register fields */
-+#define FIELD_FIFO_CTRL_ADDRESS_CLEAR   (1 << 31)
-+
-+/* DDC_SLAVE_ADDRESS register fields */
-+#define FIELD_DDC_SLAVE_ADDRESS_SEGMENT_SHIFT   (24)
-+#define FIELD_DDC_SLAVE_ADDRESS_OFFSET_SHIFT    (8)
-+
-+/* DDC_INT_STATUS register fields */
-+#define FIELD_DDC_INT_STATUS_TRANSFER_COMPLETE  (1 << 0)
-+
-+/* DDC access command */
-+enum {
-+    DDC_COMMAND_E_DDC_READ = 6,
-+};
-+
-+
++/* TCON_GINT0 register fields */
++#define REG_TCON_GINT0_VB_INT_EN    (1 << 31)
++#define REG_TCON_GINT0_VB_INT_FLAG  (1 << 14)
 +
 +#define REG_INDEX(offset)    (offset / sizeof(uint32_t))
 +
-+static uint64_t allwinner_a10_hdmi_read(void *opaque, hwaddr offset,
++static void allwinner_a10_lcdc_tick(void *opaque)
++{
++    AwA10LcdcState *s = AW_A10_LCDC(opaque);
++
++    if (s->regs[REG_INDEX(REG_TCON_GINT0)] & REG_TCON_GINT0_VB_INT_EN) {
++        s->regs[REG_INDEX(REG_TCON_GINT0)] |= REG_TCON_GINT0_VB_INT_FLAG;
++        qemu_irq_raise(s->irq);
++    }
++}
++
++static uint64_t allwinner_a10_lcdc_read(void *opaque, hwaddr offset,
 +                                       unsigned size)
 +{
-+    AwA10HdmiState *s = AW_A10_HDMI(opaque);
++    AwA10LcdcState *s = AW_A10_LCDC(opaque);
 +    const uint32_t idx = REG_INDEX(offset);
 +    uint32_t val = s->regs[idx];
 +
 +    switch (offset) {
-+    case REG_HPD:
-+        val = FIELD_HPD_HOTPLUG_DET_HIGH;
-+        break;
-+    case REG_DDC_FIFO_ACCESS:
-+        val = s->edid_blob[s->edid_reg % sizeof(s->edid_blob)];
-+        s->edid_reg++;
-+        break;
-+    case 0x544 ... AW_A10_HDMI_IOSIZE:
++    case 0x800 ... AW_A10_LCDC_IOSIZE:
 +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
 +                  __func__, (uint32_t)offset);
 +        return 0;
@@ -270,48 +258,27 @@ index 0000000000..0f046e3cc7
 +        break;
 +    }
 +
-+    trace_allwinner_a10_hdmi_read(offset, val);
++    trace_allwinner_a10_lcdc_read(offset, val);
 +
 +    return val;
 +}
 +
-+static void allwinner_a10_hdmi_write(void *opaque, hwaddr offset,
++static void allwinner_a10_lcdc_write(void *opaque, hwaddr offset,
 +                                   uint64_t val, unsigned size)
 +{
-+    AwA10HdmiState *s = AW_A10_HDMI(opaque);
++    AwA10LcdcState *s = AW_A10_LCDC(opaque);
 +    const uint32_t idx = REG_INDEX(offset);
 +
 +    switch (offset) {
-+    case REG_DDC_CTRL:
-+        if (val & FIELD_DDC_CTRL_SW_RST) {
-+            val &= ~FIELD_DDC_CTRL_SW_RST;
-+        }
-+        if (val & FIELD_DDC_CTRL_ACCESS_CMD_START) {
-+            val &= ~FIELD_DDC_CTRL_ACCESS_CMD_START;
-+            if (s->regs[REG_INDEX(REG_DDC_COMMAND)] == DDC_COMMAND_E_DDC_READ) {
-+                uint32_t regval = s->regs[REG_INDEX(REG_DDC_SLAVE_ADDRESS)];
-+                uint8_t segment = 0xFFu &
-+                    (regval >> FIELD_DDC_SLAVE_ADDRESS_SEGMENT_SHIFT);
-+                uint8_t offset = 0xFFu &
-+                    (regval >> FIELD_DDC_SLAVE_ADDRESS_OFFSET_SHIFT);
-+                if (segment == 0) {
-+                    s->edid_reg = offset;
-+                }
-+            }
++    case REG_TCON_GCTL:
++        s->is_enabled = !!REG_TCON_GCTL_EN;
++        break;
++    case REG_TCON_GINT0:
++        if (0 == (val & REG_TCON_GINT0_VB_INT_FLAG)) {
++            qemu_irq_lower(s->irq);
 +        }
 +        break;
-+    case REG_DDC_INT_STATUS:
-+        /* Clear interrupts */
-+        val = s->regs[REG_INDEX(REG_DDC_INT_STATUS)] & ~(val & 0xFFu);
-+        /* Set transfer complete */
-+        val |= FIELD_DDC_INT_STATUS_TRANSFER_COMPLETE;
-+        break;
-+    case REG_DDC_FIFO_CTRL:
-+        if (val & FIELD_FIFO_CTRL_ADDRESS_CLEAR) {
-+            val &= ~FIELD_FIFO_CTRL_ADDRESS_CLEAR;
-+        }
-+        break;
-+    case 0x544 ... AW_A10_HDMI_IOSIZE:
++    case 0x800 ... AW_A10_LCDC_IOSIZE:
 +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
 +                  __func__, (uint32_t)offset);
 +        break;
@@ -319,14 +286,14 @@ index 0000000000..0f046e3cc7
 +        break;
 +    }
 +
-+    trace_allwinner_a10_hdmi_write(offset, (uint32_t)val);
++    trace_allwinner_a10_lcdc_write(offset, (uint32_t)val);
 +
 +    s->regs[idx] = (uint32_t) val;
 +}
 +
-+static const MemoryRegionOps allwinner_a10_hdmi_ops = {
-+    .read = allwinner_a10_hdmi_read,
-+    .write = allwinner_a10_hdmi_write,
++static const MemoryRegionOps allwinner_a10_lcdc_ops = {
++    .read = allwinner_a10_lcdc_read,
++    .write = allwinner_a10_lcdc_write,
 +    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .valid = {
 +        .min_access_size = 1,
@@ -335,119 +302,219 @@ index 0000000000..0f046e3cc7
 +    .impl.min_access_size = 1,
 +};
 +
-+static void allwinner_a10_hdmi_reset_enter(Object *obj, ResetType type)
-+{
-+    AwA10HdmiState *s = AW_A10_HDMI(obj);
++#define COPY_PIXEL(to, from) do { *(uint32_t *)to = from; to += 4; } while (0)
 +
-+    s->edid_reg = 0;
++static void draw_line(void *opaque, uint8_t *d, const uint8_t *src,
++                      int width, int deststep)
++{
++    uint32_t data;
++    unsigned int r, g, b;
++    while (width > 0) {
++        data = *(uint32_t *)src;
++        b = data & 0xff;
++        g = (data >> 8) & 0xff;
++        r = (data >> 16) & 0xff;
++        COPY_PIXEL(d, rgb_to_pixel32(r, g, b));
++        width--;
++        src += 4;
++    }
 +}
 +
-+static void allwinner_a10_hdmi_init(Object *obj)
++static void allwinner_a10_lcdc_invalidate_display(void *opaque)
++{
++    AwA10LcdcState *s = AW_A10_LCDC(opaque);
++    qemu_console_resize(s->con, s->debe->width, s->debe->height);
++    s->invalidate = 1;
++}
++
++static void allwinner_a10_lcdc_update_display(void *opaque)
++{
++    AwA10LcdcState *s = AW_A10_LCDC(opaque);
++    DisplaySurface *surface;
++    int step, width, height, linesize, first = 0, last;
++
++    if (!s->is_enabled || !s->debe->ready) {
++        return;
++    }
++
++    width = s->debe->width;
++    height = s->debe->height;
++    step = width * (s->debe->bpp >> 3);
++
++    if (s->debe->invalidate) {
++        allwinner_a10_lcdc_invalidate_display(opaque);
++        s->debe->invalidate = false;
++    }
++
++    surface = qemu_console_surface(s->con);
++    linesize = surface_stride(surface);
++
++    if (s->invalidate) {
++        framebuffer_update_memory_section(&s->fbsection,
++                                    sysbus_address_space(SYS_BUS_DEVICE(s)),
++                                    s->debe->framebuffer_offset,
++                                    height, step);
++    }
++
++    framebuffer_update_display(surface, &s->fbsection,
++                               width, height,
++                               step, linesize, 0,
++                               s->invalidate,
++                               draw_line, NULL,
++                               &first, &last);
++
++    trace_allwinner_a10_draw(first, last, s->invalidate);
++
++    if (first >= 0) {
++        dpy_gfx_update(s->con, 0, first, width, last - first + 1);
++    }
++    s->invalidate = 0;
++
++}
++
++static const GraphicHwOps allwinner_a10_lcdc_gfx_ops = {
++    .invalidate  = allwinner_a10_lcdc_invalidate_display,
++    .gfx_update  = allwinner_a10_lcdc_update_display,
++};
++
++static void allwinner_a10_lcdc_reset_enter(Object *obj, ResetType type)
++{
++    AwA10LcdcState *s = AW_A10_LCDC(obj);
++    s->invalidate = 1;
++}
++
++static void allwinner_a10_lcdc_init(Object *obj)
 +{
 +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    AwA10HdmiState *s = AW_A10_HDMI(obj);
++    AwA10LcdcState *s = AW_A10_LCDC(obj);
 +
 +    /* Memory mapping */
-+    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_a10_hdmi_ops, s,
-+                          TYPE_AW_A10_HDMI, AW_A10_HDMI_IOSIZE);
++    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_a10_lcdc_ops, s,
++                          TYPE_AW_A10_LCDC, AW_A10_LCDC_IOSIZE);
 +    sysbus_init_mmio(sbd, &s->iomem);
-+
-+    qemu_edid_generate(s->edid_blob, sizeof(s->edid_blob), &s->edid_info);
++    sysbus_init_irq(sbd, &s->irq);
++    s->invalidate = 1;
++    s->is_enabled = 0;
 +}
 +
-+static const VMStateDescription allwinner_a10_hdmi_vmstate = {
-+    .name = "allwinner-a10-hdmi",
++static void allwinner_a10_lcdc_realize(DeviceState *dev, Error **errp)
++{
++    AwA10LcdcState *s = AW_A10_LCDC(dev);
++
++    s->timer = ptimer_init(allwinner_a10_lcdc_tick, s,
++                           PTIMER_POLICY_NO_IMMEDIATE_TRIGGER |
++                           PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
++                           PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
++
++    ptimer_transaction_begin(s->timer);
++    /* Set to 60Hz */
++    ptimer_set_freq(s->timer, 60);
++    ptimer_set_limit(s->timer, 0x1, 1);
++    ptimer_run(s->timer, 0);
++    ptimer_transaction_commit(s->timer);
++
++    s->invalidate = 1;
++    s->con = graphic_console_init(NULL, 0, &allwinner_a10_lcdc_gfx_ops, s);
++    qemu_console_resize(s->con, s->debe->width, s->debe->height);
++}
++
++static const VMStateDescription allwinner_a10_lcdc_vmstate = {
++    .name = "allwinner-a10_lcdc",
 +    .version_id = 1,
 +    .minimum_version_id = 1,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AwA10HdmiState, AW_A10_HDMI_REGS_NUM),
++        VMSTATE_UINT32_ARRAY(regs, AwA10LcdcState, AW_A10_LCDC_REGS_NUM),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static Property allwinner_a10_hdmi_properties[] = {
-+    DEFINE_EDID_PROPERTIES(AwA10HdmiState, edid_info),
++static Property allwinner_a10_lcdc_properties[] = {
++    DEFINE_PROP_LINK("debe", AwA10LcdcState, debe,
++                     TYPE_AW_A10_DEBE, AwA10DEBEState *),
 +    DEFINE_PROP_END_OF_LIST(),
 +};
 +
-+static void allwinner_a10_hdmi_class_init(ObjectClass *klass, void *data)
++static void allwinner_a10_lcdc_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +    ResettableClass *rc = RESETTABLE_CLASS(klass);
 +
-+    device_class_set_props(dc, allwinner_a10_hdmi_properties);
-+
-+    rc->phases.enter = allwinner_a10_hdmi_reset_enter;
-+    dc->vmsd = &allwinner_a10_hdmi_vmstate;
++    rc->phases.enter = allwinner_a10_lcdc_reset_enter;
++    dc->vmsd = &allwinner_a10_lcdc_vmstate;
++    dc->realize = allwinner_a10_lcdc_realize;
++    device_class_set_props(dc, allwinner_a10_lcdc_properties);
 +}
 +
-+static const TypeInfo allwinner_a10_hdmi_info = {
-+    .name          = TYPE_AW_A10_HDMI,
++static const TypeInfo allwinner_a10_lcdc_info = {
++    .name          = TYPE_AW_A10_LCDC,
 +    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_init = allwinner_a10_hdmi_init,
-+    .instance_size = sizeof(AwA10HdmiState),
-+    .class_init    = allwinner_a10_hdmi_class_init,
++    .instance_init = allwinner_a10_lcdc_init,
++    .instance_size = sizeof(AwA10LcdcState),
++    .class_init    = allwinner_a10_lcdc_class_init,
 +};
 +
-+static void allwinner_a10_hdmi_register(void)
++static void allwinner_a10_lcdc_register(void)
 +{
-+    type_register_static(&allwinner_a10_hdmi_info);
++    type_register_static(&allwinner_a10_lcdc_info);
 +}
 +
-+type_init(allwinner_a10_hdmi_register)
++type_init(allwinner_a10_lcdc_register)
 diff --git a/hw/display/meson.build b/hw/display/meson.build
-index 413ba4ab24..0a36c3ed85 100644
+index a3ef580b1c..e233026fdd 100644
 --- a/hw/display/meson.build
 +++ b/hw/display/meson.build
-@@ -38,6 +38,8 @@ system_ss.add(when: 'CONFIG_NEXTCUBE', if_true: files('next-fb.c'))
+@@ -40,6 +40,7 @@ system_ss.add(when: 'CONFIG_VGA', if_true: files('vga.c'))
  
- system_ss.add(when: 'CONFIG_VGA', if_true: files('vga.c'))
+ system_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10-debe.c',
+                                                            'allwinner-a10-hdmi.c',
++                                                           'allwinner-a10-lcdc.c',
+                                                            'allwinner-gpu.c'))
  
-+system_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10-hdmi.c')
-+
  if (config_all_devices.has_key('CONFIG_VGA_CIRRUS') or
-     config_all_devices.has_key('CONFIG_VGA_PCI') or
-     config_all_devices.has_key('CONFIG_VMWARE_VGA') or
 diff --git a/hw/display/trace-events b/hw/display/trace-events
-index 2336a0ca15..8d0d33ce4d 100644
+index 132b66fc81..4b962d6eda 100644
 --- a/hw/display/trace-events
 +++ b/hw/display/trace-events
-@@ -177,3 +177,7 @@ macfb_ctrl_write(uint64_t addr, uint64_t value, unsigned int size) "addr 0x%"PRI
- macfb_sense_read(uint32_t value) "video sense: 0x%"PRIx32
- macfb_sense_write(uint32_t value) "video sense: 0x%"PRIx32
- macfb_update_mode(uint32_t width, uint32_t height, uint8_t depth) "setting mode to width %"PRId32 " height %"PRId32 " size %d"
+@@ -186,6 +186,11 @@ allwinner_a10_debe_write(uint64_t offset, uint64_t data) "Write: offset 0x%" PRI
+ allwinner_a10_hdmi_read(uint64_t offset, uint64_t data) "Read: offset 0x%" PRIx64 " data 0x%" PRIx64
+ allwinner_a10_hdmi_write(uint64_t offset, uint64_t data) "Write: offset 0x%" PRIx64 " data 0x%" PRIx64
+ 
++# allwinner-a10-lcdc.c
++allwinner_a10_lcdc_read(uint64_t offset, uint64_t data) "Read: offset 0x%" PRIx64 " data 0x%" PRIx64
++allwinner_a10_lcdc_write(uint64_t offset, uint64_t data) "Write: offset 0x%" PRIx64 " data 0x%" PRIx64
++allwinner_a10_draw(uint32_t first, uint32_t last, uint32_t invalidate) "Draw: 0x%x, 0x%x, 0x%x"
 +
-+# allwinner-a10-hdmi.c
-+allwinner_a10_hdmi_read(uint64_t offset, uint64_t data) "Read: offset 0x%" PRIx64 " data 0x%" PRIx64
-+allwinner_a10_hdmi_write(uint64_t offset, uint64_t data) "Write: offset 0x%" PRIx64 " data 0x%" PRIx64
+ # allwinner-gpu.c
+ allwinner_gpu_read(uint64_t offset, uint64_t data) "Read: offset 0x%" PRIx64 " data 0x%" PRIx64
+ allwinner_gpu_write(uint64_t offset, uint64_t data) "Write: offset 0x%" PRIx64 " data 0x%" PRIx64
 diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index cd1465c613..db8cbeecfa 100644
+index 2de7e402b2..c99ca6c1c4 100644
 --- a/include/hw/arm/allwinner-a10.h
 +++ b/include/hw/arm/allwinner-a10.h
-@@ -12,6 +12,7 @@
- #include "hw/rtc/allwinner-rtc.h"
- #include "hw/misc/allwinner-a10-ccm.h"
+@@ -14,6 +14,7 @@
  #include "hw/misc/allwinner-a10-dramc.h"
-+#include "hw/display/allwinner-a10-hdmi.h"
+ #include "hw/display/allwinner-a10-debe.h"
+ #include "hw/display/allwinner-a10-hdmi.h"
++#include "hw/display/allwinner-a10-lcdc.h"
+ #include "hw/display/allwinner-gpu.h"
  #include "hw/i2c/allwinner-i2c.h"
  #include "hw/watchdog/allwinner-wdt.h"
- #include "sysemu/block-backend.h"
-@@ -43,6 +44,7 @@ struct AwA10State {
-     AWI2CState i2c0;
-     AwRtcState rtc;
-     AwWdtState wdt;
-+    AwA10HdmiState hdmi;
+@@ -49,6 +50,7 @@ struct AwA10State {
+     AwA10DEBEState de_be0;
+     AwGpuState gpu;
+     AwA10HdmiState hdmi;
++    AwA10LcdcState lcd0;
      MemoryRegion sram_a;
      EHCISysBusState ehci[AW_A10_NUM_USB];
      OHCISysBusState ohci[AW_A10_NUM_USB];
-diff --git a/include/hw/display/allwinner-a10-hdmi.h b/include/hw/display/allwinner-a10-hdmi.h
+diff --git a/include/hw/display/allwinner-a10-lcdc.h b/include/hw/display/allwinner-a10-lcdc.h
 new file mode 100644
-index 0000000000..1065dca2f7
+index 0000000000..82f6d397fb
 --- /dev/null
-+++ b/include/hw/display/allwinner-a10-hdmi.h
-@@ -0,0 +1,69 @@
++++ b/include/hw/display/allwinner-a10-lcdc.h
+@@ -0,0 +1,77 @@
 +/*
-+ * Allwinner A10 HDMI Module emulation
++ * Allwinner A10 LCD Control Module emulation
 + *
 + * Copyright (C) 2023 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 + *
@@ -465,23 +532,25 @@ index 0000000000..1065dca2f7
 + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 + */
 +
-+#ifndef HW_DISPLAY_ALLWINNER_A10_HDMI_H
-+#define HW_DISPLAY_ALLWINNER_A10_HDMI_H
++#ifndef HW_DISPLAY_ALLWINNER_A10_LCDC_H
++#define HW_DISPLAY_ALLWINNER_A10_LCDC_H
 +
-+#include "hw/display/edid.h"
 +#include "qom/object.h"
++#include "hw/ptimer.h"
 +#include "hw/sysbus.h"
++#include "ui/console.h"
++#include "hw/display/allwinner-a10-debe.h"
 +
 +/**
 + * @name Constants
 + * @{
 + */
 +
-+/** Size of register I/O address space used by HDMI device */
-+#define AW_A10_HDMI_IOSIZE        (0x1000)
++/** Size of register I/O address space used by LCDC device */
++#define AW_A10_LCDC_IOSIZE        (0x1000)
 +
 +/** Total number of known registers */
-+#define AW_A10_HDMI_REGS_NUM      (AW_A10_HDMI_IOSIZE / sizeof(uint32_t))
++#define AW_A10_LCDC_REGS_NUM      (AW_A10_LCDC_IOSIZE / sizeof(uint32_t))
 +
 +/** @} */
 +
@@ -490,31 +559,37 @@ index 0000000000..1065dca2f7
 + * @{
 + */
 +
-+#define TYPE_AW_A10_HDMI    "allwinner-a10-hdmi"
-+OBJECT_DECLARE_SIMPLE_TYPE(AwA10HdmiState, AW_A10_HDMI)
++#define TYPE_AW_A10_LCDC    "allwinner-a10-lcdc"
++OBJECT_DECLARE_SIMPLE_TYPE(AwA10LcdcState, AW_A10_LCDC)
 +
 +/** @} */
 +
 +/**
-+ * Allwinner A10 HDMI object instance state.
++ * Allwinner A10 LCDC object instance state.
 + */
-+struct AwA10HdmiState {
++struct AwA10LcdcState {
 +    /*< private >*/
 +    SysBusDevice parent_obj;
 +    /*< public >*/
++    qemu_irq irq;
++    struct ptimer_state *timer;
++    QemuConsole *con;
++
++    MemoryRegionSection fbsection;
++
++    int invalidate;
++    bool is_enabled;
++
++    AwA10DEBEState *debe;
 +
 +    /** Maps I/O registers in physical memory */
 +    MemoryRegion iomem;
 +
-+    uint8_t edid_reg;
-+    qemu_edid_info edid_info;
-+    uint8_t edid_blob[128];
-+
 +    /** Array of hardware registers */
-+    uint32_t regs[AW_A10_HDMI_REGS_NUM];
++    uint32_t regs[AW_A10_LCDC_REGS_NUM];
 +};
 +
-+#endif /* HW_DISPLAY_ALLWINNER_A10_HDMI_H */
++#endif /* HW_DISPLAY_ALLWINNER_A10_LCDC_H */
 -- 
 2.34.1
 

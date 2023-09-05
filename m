@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1864975ejb;
-        Tue, 5 Sep 2023 02:16:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH3a/DnRkiVq6za4DxO1NNmrvPZFBd9BODIUwqF6FfjGP1n3Ab5RZ6TXov1Y63ZkmM95AZI
-X-Received: by 2002:a05:6358:7e44:b0:139:cdc2:e618 with SMTP id p4-20020a0563587e4400b00139cdc2e618mr13455893rwm.8.1693905381130;
-        Tue, 05 Sep 2023 02:16:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693905381; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp1879255ejb;
+        Tue, 5 Sep 2023 02:50:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGZCzMPCA/p3Co9Z/uUIUTPNN31ozonN1PkDrx1auI91sUhW4kcIoJ8I3XlR7XroDxh1WTl
+X-Received: by 2002:a05:622a:287:b0:410:2e51:d1e3 with SMTP id z7-20020a05622a028700b004102e51d1e3mr13959805qtw.11.1693907431288;
+        Tue, 05 Sep 2023 02:50:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693907431; cv=none;
         d=google.com; s=arc-20160816;
-        b=BY+ZI1XfMK0tfhbjFpzZMFxe/nx9dRESCKMOF1MsJlyCli5nmlvp8XsoNgUZHOXgjq
-         UjLXv3ckqZhwjkn6gLZsTfr5bjL5XwQS5mTDtvg+Gf+KrgacbcLGFO1VMlPaYD1rAbhd
-         RvKbG1RzUZMDoOD7ekJPcXOTGDh9uLPfQbbz0oD0ZxH7yZZON5jxW+7B9ibL0oLT6poj
-         wIAkyrLOZmVu2okgyuSdMoTl7gGQXsOBLS11W4PVB4X9HKM7B2K/3RoP/nsO/OgU9MOa
-         5vfQ2DNoy9X/5kgOIi0LOoJqqx89t8vNtpENnOEqpO/X471z1WowmLN5tb45gStY9XuO
-         lrBA==
+        b=iBcAIGqpExQJGfMWcfArQf51KJ7LkJu2CFkf/qVNR6rl069G73qvJUy5AArbtbK5Sk
+         Rc+Q2RhIMc7rtlTxHCNRVIis+RbUgDfRuJfi9rn8eXcXaALT8UFflCpBlyvZ3b6tK0P7
+         igER+DUwRbgVKpX+477Qh7x+wmdltdzet91Sn0QcZKRUFwIqLEsBGY3RCT1sY1Smr6bP
+         AY1vc9KGVMrS4NjpK0lfwEniI77Ajh8drbQxy8i0fhloXVgObGjBuWRf7G5iPzgTBo8V
+         GFStQTXZ42du5+zsrSiTTZyrxx2jGdH4Tr3jPQYJQ/HFq5CQ+tE1M1V9rlvdSyJtUgH6
+         Wi9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=WQ0UxSlZiBSY1y9/4HeAknNre1JVBLbWoe1nygen67I=;
+        bh=IIyPiU3SGizoQEzrYTb1AqPw/vH1eVycuDo31fRpA9Y=;
         fh=fr1XQCbR+xrcibst/AGV7WJlE5gc9Cl+qh4ABPKBwVA=;
-        b=wB8z9sYx1If/oz0gCjRWclqmXHsdkkTzXZJm2ZEB1FlfMC9FeReT/qCcfA9jGEa18q
-         U+P05q5eJdBp8dQj+PNPIZM6NSp96N9pyrHOisz5vuOnmA3YMAN6bcVlMQnWVHGoq0gk
-         AOdPpU2A2ESTUj5pnuQIy1zxtZ7T6o4bjgvgKuV0jKonj07aiV7Na7zdVS/scrHCkLZf
-         dhNdVsDlAlDR65lDzQEv+CmqyqRi/iqclh/6wlHcB++/cfcGlZtSy3Ep3M3arDb/sUZW
-         idSnx7RDicezidvtR3xHO9l6ExwOV+F79mkO0h8qrxTB969A9Iz5V6PnTKzvtMPGWmQV
-         OCRQ==
+        b=bpSer8o8pdcO6u+BsrW0u/z51aC1sEUcXEYZgYPbO05lOBpbEe4s/IyfExfd0hMkFn
+         LCK+38rFx5Ym/pn8huHY2mmLiytKD4ZCNofwOnurkd+zGYzyDSdJOnRsB6/il+PSX9oS
+         AdXXL4bOMelWd1iB7CiW9G5ZycgJA2kYS6+8sXXpkO3daMzm0h5ay74HGglDWpMCWe9Z
+         TGUrROG9Tp07og1kG59pxcywbjEPrpS8qf+abSmwO2N0TDciqJikjG6pa6kEKj9ifXus
+         bCI4aEr0KT5Mvw4TS4gtVYdSA2ZOBJNGT6ObZ0y/bpE7bLsl7c/ZO93X/NLR3CIQLSaq
+         phjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=felHu9J+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S0qjYqtD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id de36-20020a05620a372400b0076db1b23b27si7221438qkb.715.2023.09.05.02.16.20
+        by mx.google.com with ESMTPS id a7-20020a05622a064700b004109a75a018si7856892qtb.509.2023.09.05.02.50.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Sep 2023 02:16:21 -0700 (PDT)
+        Tue, 05 Sep 2023 02:50:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=felHu9J+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S0qjYqtD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qdSA7-0003UB-VK; Tue, 05 Sep 2023 05:15:57 -0400
+	id 1qdShU-00075o-8u; Tue, 05 Sep 2023 05:50:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qdSA5-0003Tm-Nu
- for qemu-arm@nongnu.org; Tue, 05 Sep 2023 05:15:54 -0400
+ id 1qdShS-00075N-BJ
+ for qemu-arm@nongnu.org; Tue, 05 Sep 2023 05:50:22 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qdSA3-0004bI-2a
- for qemu-arm@nongnu.org; Tue, 05 Sep 2023 05:15:53 -0400
+ id 1qdShO-0003Fr-14
+ for qemu-arm@nongnu.org; Tue, 05 Sep 2023 05:50:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1693905348;
+ s=mimecast20190719; t=1693907416;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WQ0UxSlZiBSY1y9/4HeAknNre1JVBLbWoe1nygen67I=;
- b=felHu9J+syanEXKmU8Ffu4lHVl8/pNu0pWvw0g/ywua40i7YqEJCWRjUI/7hdVNu3bM3c6
- l9vMKik/nYMzcav/npem+2En0O7/hLFTGdZsSMnfypgUnbXBs/CnOJ1OR4Mu0s4BDVuQn3
- 50SQtHI3TNOwLxs2nyboi3BP+SaENv0=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=IIyPiU3SGizoQEzrYTb1AqPw/vH1eVycuDo31fRpA9Y=;
+ b=S0qjYqtDPB9o+KqLohxrvW07rUI/Q1Wr2Jvs76h+nQF6aGPWp/sSTnNWg6Ur6PMn75dhF6
+ 4LHc5ii+Kc1DHHU9yWTfHisVPY/rEKbDXuj+YEsA5FjzbmrCX5+n7Yqs717Qp30afNER9C
+ L37PvlRo+hS1j9xzA5ekqPK8bz3cUd0=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-683-CxPbkGaSM9KDPbDKtRhNqw-1; Tue, 05 Sep 2023 05:15:47 -0400
-X-MC-Unique: CxPbkGaSM9KDPbDKtRhNqw-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-3f41a04a297so16302315e9.3
- for <qemu-arm@nongnu.org>; Tue, 05 Sep 2023 02:15:47 -0700 (PDT)
+ us-mta-645-UY1nb2j2NJmbm3linTZCfQ-1; Tue, 05 Sep 2023 05:50:15 -0400
+X-MC-Unique: UY1nb2j2NJmbm3linTZCfQ-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-31c5adb698aso1164192f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 05 Sep 2023 02:50:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693905346; x=1694510146;
+ d=1e100.net; s=20221208; t=1693907414; x=1694512214;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=WQ0UxSlZiBSY1y9/4HeAknNre1JVBLbWoe1nygen67I=;
- b=E2gx4nG5gznrTuoaDRYInQFYZ/qJuCZ6d8CiPyMOcHSUposRjophx7n16XchaMTsk0
- 9pKWfrwc8JNemX3vbu2DYvAAnyML5tr8QVnKdCrIULq4FBBEHvdNOJuW9P8XZ/kGIUK/
- Ntbov/xxQdvc/LfPhVHV5Kl7Xpbstdemhde3mbvqzPtI1t3c8UKygZQdNksz3NRTf1w/
- XS4d3gBQ7QpGSzMWUoZOvWnJQNbMsWsqkGATJhZdHGf6/j/g/GwmGyYN0b1j3ACNEXph
- YNHxivNZkBu2rlZVq7kK/anorz4FHFG9vHc3msyPKMm6zQHglx1wPTrnBfso3aFGSm0K
- 7iVw==
-X-Gm-Message-State: AOJu0YxB6PyUEFg8fZHLA26ecCT/ozo2KXlJczA4cATggsnV678VA4sT
- AKzth9r7BvqLorJXtg1Lf+nzPsJz31m3MjprGrmdijMqCjuaWny1NnqZrklneWg1zxXn3EPNfv0
- oFBNQYWoU29eG
-X-Received: by 2002:a7b:cd0a:0:b0:3fe:795:712a with SMTP id
- f10-20020a7bcd0a000000b003fe0795712amr8876320wmj.27.1693905346521; 
- Tue, 05 Sep 2023 02:15:46 -0700 (PDT)
-X-Received: by 2002:a7b:cd0a:0:b0:3fe:795:712a with SMTP id
- f10-20020a7bcd0a000000b003fe0795712amr8876303wmj.27.1693905346145; 
- Tue, 05 Sep 2023 02:15:46 -0700 (PDT)
+ bh=IIyPiU3SGizoQEzrYTb1AqPw/vH1eVycuDo31fRpA9Y=;
+ b=EH3STikrRObEQAKvueClmweEM0CKaQwy0u8HqJpn5HqYQExv1ab3SkUhbkcYszd0gq
+ AC1vU3oHhFChNWeWCyWu9vYsUMmk9iQi3YMhuVMzHQnHi0DsY1Mv1rHJu1+6lhvrBqD+
+ jGS/cnK5bgU8+156n0HsIFXxNFLq+SA+Gvooh5QRww9RDwvDyxEXGmQT+M1y+pGUxCri
+ a2rKuCNHS3kflGcPFla2yagGtNRWdK9J00A79VAMKbhUT2W9W4WkbZZualOrnOCQ3Ykh
+ gtpaNiKCM+t2fXcowpxmOCyKk5aQSIFNmSsmL2QT1PBvUC1PfQDqd5fBhJWoocyzyNJU
+ lBeA==
+X-Gm-Message-State: AOJu0YyDbdJVJA+G+uFga1l/r+nR1aX6/jvMrpUlEW4xdkjoi0rUL8P3
+ Bar8TIZK+xaaATGjkldjqq6DxrXSgi7coc/b/RFziurU/CaFP5YYVynjdVkB9m6xFboe7aNYpKu
+ GP21NoS/yughD
+X-Received: by 2002:a5d:6690:0:b0:317:3deb:a899 with SMTP id
+ l16-20020a5d6690000000b003173deba899mr9179636wru.1.1693907414200; 
+ Tue, 05 Sep 2023 02:50:14 -0700 (PDT)
+X-Received: by 2002:a5d:6690:0:b0:317:3deb:a899 with SMTP id
+ l16-20020a5d6690000000b003173deba899mr9179622wru.1.1693907413886; 
+ Tue, 05 Sep 2023 02:50:13 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- x3-20020adff643000000b003188358e08esm16734090wrp.42.2023.09.05.02.15.44
+ d9-20020a5d4f89000000b0031c5b380291sm17027815wru.110.2023.09.05.02.50.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Sep 2023 02:15:45 -0700 (PDT)
-Message-ID: <6ce3daf9-b2c8-bd6e-a502-0870f8b17913@redhat.com>
-Date: Tue, 5 Sep 2023 11:15:43 +0200
+ Tue, 05 Sep 2023 02:50:12 -0700 (PDT)
+Message-ID: <5757bc33-fd76-345d-ca28-1aa382472b84@redhat.com>
+Date: Tue, 5 Sep 2023 11:50:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
@@ -146,9 +146,9 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q2pOKFWhijwb
+X-TUID: GDQQhaEgXxgn
 
-Hi Yanghang,
+Hi,
 
 On 9/5/23 10:22, YangHang Liu wrote:
 > I have runned the following two tests, but both tests failed:
@@ -161,31 +161,19 @@ On 9/5/23 10:22, YangHang Liu wrote:
 > ERROR:../qom/object.c:1198:object_unref: assertion failed: (obj->ref >
 > 0). Bail out! ERROR:../qom/object.c:1198:object_unref: assertion
 > failed: (obj->ref > 0)
+This latter issue is introduced by patch
+[PATCH 12/13] virtio-iommu: Resize memory region according to the max
+iova info
+and especially the call to
+
+memory_region_set_size(&mr->parent_obj, max_iova + 1);
+
+I don't really get why at the moment but I will investigate ... Eric
+
 >
 > After removing the 2 PF from the VM, both tests passed.
+>
 > Tested-by: Yanghang Liu <yanghliu@redhat.com>
-
-thank you for testing. If my understanding is correct you still
-encountered some issues with/after the series. If this is correct you
-shall not offer your Tested-by which means you tested the series and it
-works fine for you/fixes your issue.
-
-Coming back to the above mentionned issues:
-
-1) the File Exists issue is known and is linked to the replay. This will
-be handled separately, ie.I need to resume working on it as my first
-approach was flawed: See
-https://lore.kernel.org/all/20221207133646.635760-1-eric.auger@redhat.com/
-This is unrelated to this series. Note this shouldn't prevent your
-passthroughed device from working. Those should be just spurious
-warnings that need to be removed.
-
-2) the object_unref assertion most probaly is linked to that series and
-I will to investigate asap.
-
-Thank you again!
-
-Eric
 >
 > Best Regards,
 > YangHang Liu

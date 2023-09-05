@@ -1,128 +1,112 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp2178895ejb;
-        Tue, 5 Sep 2023 10:56:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH2K4AU9NALKPpG9RnluwhDTebP1O2iDknWW1qEzUgjdvqOMempqdz8p2HlYc5/zZmgSSPa
-X-Received: by 2002:a0c:df90:0:b0:653:589b:9d09 with SMTP id w16-20020a0cdf90000000b00653589b9d09mr13853704qvl.49.1693936581649;
-        Tue, 05 Sep 2023 10:56:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693936581; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp2253906ejb;
+        Tue, 5 Sep 2023 13:15:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGPVWyFBE8zhU2/fPrTwWRERSfALM6DHNZu5Al+sVHWnLVFFfQt51dqGzwBBKJ7sBQswZC1
+X-Received: by 2002:a9d:4d85:0:b0:6b8:f588:2c79 with SMTP id u5-20020a9d4d85000000b006b8f5882c79mr14616277otk.1.1693944914315;
+        Tue, 05 Sep 2023 13:15:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693944914; cv=none;
         d=google.com; s=arc-20160816;
-        b=zdJ2cXMZDAZn167K6+pwcXhJBwl/qSawMg/U/B8khu9OK6apqBHem26WAr+PG4+c2f
-         gPCpwDU1zBrKoQQP18zSCItsiJgieU2efjRpRsReF3ru9JC5/aEBXgszYRxLHe8HlI34
-         Ys3ZrBIQY0VEIz2z6QJhgMkqITZqF8I/o+4ndZchtm2Q5G7FNWa+ydAs1AOCTItqDU7o
-         ZkZ+MuO5s9cJBed0Nak5sugTjBjmlfRMqK7fvz5+571g/p3DvXALopyVMdvp3FQomwtL
-         IAFN6oSYHJ96vntzng/zVJiciAiYLxznDXE5fqwSKTgNJKQKBYHoCIDv4JfG5Zu4v8T1
-         Bhtw==
+        b=dhGQNop91v8Ie3Ik1QdIsDbxQOLRGXDbeI59PKzXPQXqdec3Wl1Qfwz9AutqySUWLF
+         gw1zDEp9hX/uiWY7aIyQfPJRoksFIbRcpoJt9gtqAVlc8g53P88ERcZnzAbnbXh1OJKG
+         8nItjAdmSt3D8OzFCGJA2+B9ccv4sXhyYtADlR716qCNJEJFeSBvvlJm/K7/CfnYfNLP
+         uaezDJ6D9I1oDZ8KeNRDFOUh3AHpF+OmVtZheHG08MJpAr+aNKnhyq4ZZHumV3yIVWqj
+         9M+8uXwHYAiRseS4oje8SQDgCQSHHTKV/LGVgo6HRrrtK5B3zH/YJigI8Al0m91HaUie
+         6Zyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=IwO1Nf1MzjDI88RLD+/BrPu4iL3TSpccicgjR8SzUmw=;
-        fh=Itbbu/PWL12vfUV9pSMfONMQCKVHOxT0l/2dhHgmw7U=;
-        b=HW/5BhnH3WSFn/8cB4ye0x14SXCV649BFljIFrFtY0P+bRsw9GmVDX6au8/w9FPKQZ
-         VWaP1WRLLVDw2pY/RzQxnQO4RcrZiJaR8S0cJ2uRair5maY1bedEY5GXs77ibYiGZSNb
-         Amov8zeWo95rcQ/HW9cO1YvoXpeTj+B+uZkSIkLIg1/QiWRiW121J62+XH6Y8FToU1E+
-         4+fWvyDi1NH585EgteQozmx7xhBN0hM6RFquCvQEpew73q/TCDpu2zAc1Fa2r9PSiUCD
-         PSR/CHWATJUm7TjFxAin2Wp0TqNUSSjOF2hqpzv8MVpqdWNjLvXXzcvSDvNr89Dlz3c5
-         17JQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8y2tTveHgptTrcnfgnWm3x/FwZdnV+E+gcbaUOc76YU=;
+        fh=W7drrHLWlU6RviMr5u6Q2QLIvBBno/BcCW1G9hZvzcU=;
+        b=ziQ2cV/9HK2jTEB8SLn+AEL6SP6kNLNd7ohAyVICAGDR6PNjrm1Aj3BZeGt1RMsnbx
+         XemxTuxg3JTCpIg8HHZOK/r9XEP+5WvVYDDhzdruI/rRmUeQJa+QQzxMenpiX7Ve3CZ3
+         1YwMP9z9gFxt65Mlwm4bHREBQphkUUPBC8/b5m4mSQwL5WiC+Pb2dQ2ygXu3kwwbeyqH
+         3qN4HSWqzMROKfcyfPXq+iSv7St13i+t+FyNEd+w1J/ZncG3vd0FTasS9GkIIm/5GAbV
+         utUqXS5LyQpFuWwx+rPFqbMNSc1wdevzKJAid5IhDcutacCpSl2c0JEEbIpFZ6hVftI1
+         8zOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fhjyIbMB;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=R0fqOLrr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h8-20020a0cf208000000b0065571e0430csi3956084qvk.262.2023.09.05.10.56.21
+        by mx.google.com with ESMTPS id tn4-20020a05620a3c0400b007683fd3dec9si8224882qkn.121.2023.09.05.13.15.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Sep 2023 10:56:21 -0700 (PDT)
+        Tue, 05 Sep 2023 13:15:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fhjyIbMB;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=R0fqOLrr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qdaHY-0008Vf-TD; Tue, 05 Sep 2023 13:56:08 -0400
+	id 1qdcRe-0004sm-77; Tue, 05 Sep 2023 16:14:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1qdaHY-0008VI-2B
- for qemu-arm@nongnu.org; Tue, 05 Sep 2023 13:56:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1qdaHV-0007qj-8p
- for qemu-arm@nongnu.org; Tue, 05 Sep 2023 13:56:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1693936563;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=IwO1Nf1MzjDI88RLD+/BrPu4iL3TSpccicgjR8SzUmw=;
- b=fhjyIbMBxICv8WuICzqtJq00xgXo4y2owiPYUobGpmMkzFBTXnbkAb4liNJz5ozD/iDBoH
- wPGWS7H22daoo8vEHbwl/WrYIwzHjhdqDRYjfxjA2BIzRLRO0E0P4B9egii3ea/iM0bi60
- flxl89nyg5tKs/Td5kWTePU0FSe920Y=
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-150-W83k3--AMzGtQ1J0PUiApQ-1; Tue, 05 Sep 2023 13:56:01 -0400
-X-MC-Unique: W83k3--AMzGtQ1J0PUiApQ-1
-Received: by mail-io1-f69.google.com with SMTP id
- ca18e2360f4ac-7916aa85aa2so211464939f.2
- for <qemu-arm@nongnu.org>; Tue, 05 Sep 2023 10:56:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1qdcRc-0004sI-M4; Tue, 05 Sep 2023 16:14:40 -0400
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1qdcRa-00037N-C5; Tue, 05 Sep 2023 16:14:40 -0400
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-5007c8308c3so4688279e87.0; 
+ Tue, 05 Sep 2023 13:14:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1693944875; x=1694549675; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=8y2tTveHgptTrcnfgnWm3x/FwZdnV+E+gcbaUOc76YU=;
+ b=R0fqOLrrMcpCTielUURch/Gq4aj+ZEAjDgzg6KaNilo2oydE87F2yNLBk4QP1M9yfj
+ XqLMnV0OdScp+NcNnr7cvqw6mz9hyLISJzg/bW0OJqW2FbTm2zjC7eP2wRFCGvpZS3WW
+ kyhc6PQojkcltUwR/5x1IBU+pik0bYkZy1cHCrWSlor9f/YWyuwLw+S+Tw9ezLw/Buau
+ y9/fByG6k38WHChd23dDf7xsUnptbUCnUZDT4+wBOshL/SPOaBx3p+rs4zefHORyLuLD
+ ia7FBg+NR5hXaFPb4NMYkjU82lmsepyFbgfx23QdAlZ9ZPK+lMY+/Vozf9ZI942/nbRV
+ t8rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693936561; x=1694541361;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=IwO1Nf1MzjDI88RLD+/BrPu4iL3TSpccicgjR8SzUmw=;
- b=avIc/WGcedsunNpYloeyz/Ns4JK8MnAHSDU2jM6DAqUcaPOEYp7zR6/8200iqKWlTw
- aTgr5nEjpcCw6uIV4JCfY5LWcu288LyNh+llWxfbWycuwU+XO5Hh0q4/HxxAQX8Y8uNj
- 7QRtBOysnMABbzFu8x9uBUPnhP5YF2yxkEweiSKlpYMwxKJzlYa768wKotOA8lyA6I7x
- Vt46XrGTIr8gia3G/R+PWmyB0QR7rkYcOAV2ituCg9IncdtBt964UNML1UhXC9wawPzI
- DyiJZWjxn4xoOaXIoB8W6YZiuFDZGEEeSMic/MZ8tZ9M9lG7wABFMKPXmZOplbJ0l1/n
- pjjA==
-X-Gm-Message-State: AOJu0Yxt0Ypqm6S3PTIyWNvLSJ65pG5nPSDD8K9R2/bqkV4Cd7XxPdXY
- KDJrv72jrtT140hYuJgdL0ou8+RaQRgMYqCV9BjNIG945XoXlpbTd1Wsw4JBVWK/Nh+qm8PyOVM
- 40jI6cMj7qi6r
-X-Received: by 2002:a92:cc4a:0:b0:343:c8b1:b7f0 with SMTP id
- t10-20020a92cc4a000000b00343c8b1b7f0mr14945783ilq.23.1693936561094; 
- Tue, 05 Sep 2023 10:56:01 -0700 (PDT)
-X-Received: by 2002:a92:cc4a:0:b0:343:c8b1:b7f0 with SMTP id
- t10-20020a92cc4a000000b00343c8b1b7f0mr14945761ilq.23.1693936560819; 
- Tue, 05 Sep 2023 10:56:00 -0700 (PDT)
-Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
- j6-20020a02cb06000000b0042b69cca627sm4142121jap.137.2023.09.05.10.56.00
+ d=1e100.net; s=20221208; t=1693944875; x=1694549675;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8y2tTveHgptTrcnfgnWm3x/FwZdnV+E+gcbaUOc76YU=;
+ b=Wptp+dfCqDyS+lF/3Z7J9ZiZwsnSJqRYAdBT5ON3XxpncAhEg/K7GqVQ1tRz7Tm0EK
+ VSvKLpGDl9nd05sym21YpGR1DyLBF4wUbKCoS14gOm2gjRN4dXbMvvnUH1NyRbkZThWD
+ j8h4NNA+yKtFXsbIRXGuByQvSLr0/f0Ul8X04VfLtcOQXpVbr3Gal4aIq/yzNVeD1mwz
+ dZT6+oh+LLD9szPdCP06Ws7s50maF2jFGyryG+N3Z1g5yIHsiUp2IOgNU+xjn2RBD+IE
+ o/+0txTPIbcNed3xeaph3JrWWWkNDEmbu2zqL34P5oyAnjXvrsS5fu+pMH1mlpTQGiS4
+ lWJA==
+X-Gm-Message-State: AOJu0YwV6RmiexckkkNmhgSurcIXpqpVnaPTjfIEvHDfViHIELjuYIcH
+ n8qbweAPTIOc0WzBkl6tmSwjF22wd/5wPA==
+X-Received: by 2002:a05:6512:2212:b0:4fa:5e76:7ad4 with SMTP id
+ h18-20020a056512221200b004fa5e767ad4mr934608lfu.10.1693944875061; 
+ Tue, 05 Sep 2023 13:14:35 -0700 (PDT)
+Received: from localhost.localdomain (81-233-187-21-no600.tbcn.telia.com.
+ [81.233.187.21]) by smtp.gmail.com with ESMTPSA id
+ b25-20020ac25e99000000b004ff725d1a27sm2489811lfq.234.2023.09.05.13.14.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Sep 2023 10:56:00 -0700 (PDT)
-Date: Tue, 5 Sep 2023 11:55:58 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- clg@redhat.com, jean-philippe@linaro.org, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
- david@redhat.com, philmd@linaro.org
-Subject: Re: [PATCH 00/13] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
-Message-ID: <20230905115558.590ea2e5.alex.williamson@redhat.com>
-In-Reply-To: <20230904080451.424731-1-eric.auger@redhat.com>
-References: <20230904080451.424731-1-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+ Tue, 05 Sep 2023 13:14:34 -0700 (PDT)
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Subject: [RFC Patch 0/5] Allwinner A10 input/output peripherals
+Date: Tue,  5 Sep 2023 22:14:20 +0200
+Message-Id: <20230905201425.118918-1-strahinja.p.jankovic@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=alex.williamson@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,77 +121,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: v52FqwefKVLo
+X-TUID: 9uziiSDn+aBO
 
-On Mon,  4 Sep 2023 10:03:43 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+This patch set adds minimal support for PS2 input and HDMI output for
+Allwinner A10 and Cubieboard.
 
-> On x86, when assigning VFIO-PCI devices protected with virtio-iommu
-> we encounter the case where the guest tries to map IOVAs beyond 48b
-> whereas the physical VTD IOMMU only supports 48b. This ends up with
-> VFIO_MAP_DMA failures at qemu level because at kernel level,
-> vfio_iommu_iova_dma_valid() check returns false on vfio_map_do_map().
-> 
-> This is due to the fact the virtio-iommu currently unconditionally
-> exposes an IOVA range of 64b through its config input range fields.
-> 
-> This series removes this assumption by retrieving the usable IOVA
-> regions through the VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE UAPI when
-> a VFIO device is attached. This info is communicated to the
-> virtio-iommu memory region, transformed into the inversed info, ie.
-> the host reserved IOVA regions. Then those latter are combined with the
-> reserved IOVA regions set though the virtio-iommu reserved-regions
-> property. That way, the guest virtio-iommu driver, unchanged, is
-> able to probe the whole set of reserved regions and prevent any IOVA
-> belonging to those ranges from beeing used, achieving the original goal.
+For the display part, minimal emulation of HDMI, MALI GPU, Display
+Engine Backend and LCD controller is added.
 
-Hi Eric,
+For the PS2 both keyboard and mouse support is added and attached to the
+two PS2 contollers present in Allwinner A10.
 
-I don't quite follow this relative to device hotplug.  Are we
-manipulating a per-device memory region which is created at device add
-time?  Is that memory region actually shared in some cases, for instance
-if we have a PCIe-to-PCI bridge aliasing devices on the conventional
-side?  Thanks,
+Functionality has been tested with custom Yocto image.
 
-Alex
+This is sent as RFC for now, since there might be some use cases which
+have not been tested.
 
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/virtio-iommu_geometry_v1
-> 
-> Eric Auger (13):
->   memory: Let ReservedRegion use Range
->   memory: Introduce memory_region_iommu_set_iova_ranges
->   vfio: Collect container iova range info
->   virtio-iommu: Rename reserved_regions into prop_resv_regions
->   virtio-iommu: Introduce per IOMMUDevice reserved regions
->   range: Introduce range_inverse_array()
->   virtio-iommu: Implement set_iova_ranges() callback
->   range: Make range_compare() public
->   util/reserved-region: Add new ReservedRegion helpers
->   virtio-iommu: Consolidate host reserved regions and property set ones
->   test: Add some tests for range and resv-mem helpers
->   virtio-iommu: Resize memory region according to the max iova info
->   vfio: Remove 64-bit IOVA address space assumption
-> 
->  include/exec/memory.h            |  30 ++++-
->  include/hw/vfio/vfio-common.h    |   2 +
->  include/hw/virtio/virtio-iommu.h |   7 +-
->  include/qemu/range.h             |   9 ++
->  include/qemu/reserved-region.h   |  32 +++++
->  hw/core/qdev-properties-system.c |   9 +-
->  hw/vfio/common.c                 |  70 ++++++++---
->  hw/virtio/virtio-iommu-pci.c     |   8 +-
->  hw/virtio/virtio-iommu.c         |  85 +++++++++++--
->  softmmu/memory.c                 |  15 +++
->  tests/unit/test-resv-mem.c       | 198 +++++++++++++++++++++++++++++++
->  util/range.c                     |  41 ++++++-
->  util/reserved-region.c           |  94 +++++++++++++++
->  hw/virtio/trace-events           |   1 +
->  tests/unit/meson.build           |   1 +
->  util/meson.build                 |   1 +
->  16 files changed, 562 insertions(+), 41 deletions(-)
->  create mode 100644 include/qemu/reserved-region.h
->  create mode 100644 tests/unit/test-resv-mem.c
->  create mode 100644 util/reserved-region.c
-> 
+
+Strahinja Jankovic (5):
+  hw/display: Allwinner A10 HDMI controller emulation
+  hw/display: Allwinner basic MALI GPU emulation
+  hw/display: Allwinner A10 Display Engine Backend emulation
+  hw/display: Allwinner A10 LCDC emulation
+  hw/input: Add Allwinner-A10 PS2 emulation
+
+ hw/arm/allwinner-a10.c                  |  51 ++++
+ hw/display/allwinner-a10-debe.c         | 229 ++++++++++++++++
+ hw/display/allwinner-a10-hdmi.c         | 214 +++++++++++++++
+ hw/display/allwinner-a10-lcdc.c         | 275 +++++++++++++++++++
+ hw/display/allwinner-gpu.c              | 212 +++++++++++++++
+ hw/display/meson.build                  |   5 +
+ hw/display/trace-events                 |  17 ++
+ hw/input/allwinner-a10-ps2.c            | 345 ++++++++++++++++++++++++
+ hw/input/meson.build                    |   2 +
+ include/hw/arm/allwinner-a10.h          |  11 +
+ include/hw/display/allwinner-a10-debe.h |  71 +++++
+ include/hw/display/allwinner-a10-hdmi.h |  69 +++++
+ include/hw/display/allwinner-a10-lcdc.h |  77 ++++++
+ include/hw/display/allwinner-gpu.h      |  64 +++++
+ include/hw/input/allwinner-a10-ps2.h    |  96 +++++++
+ 15 files changed, 1738 insertions(+)
+ create mode 100644 hw/display/allwinner-a10-debe.c
+ create mode 100644 hw/display/allwinner-a10-hdmi.c
+ create mode 100644 hw/display/allwinner-a10-lcdc.c
+ create mode 100644 hw/display/allwinner-gpu.c
+ create mode 100644 hw/input/allwinner-a10-ps2.c
+ create mode 100644 include/hw/display/allwinner-a10-debe.h
+ create mode 100644 include/hw/display/allwinner-a10-hdmi.h
+ create mode 100644 include/hw/display/allwinner-a10-lcdc.h
+ create mode 100644 include/hw/display/allwinner-gpu.h
+ create mode 100644 include/hw/input/allwinner-a10-ps2.h
+
+-- 
+2.34.1
 

@@ -1,133 +1,91 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp2557530ejb;
-        Wed, 6 Sep 2023 00:18:13 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHjPIx63VUgiVhN5sYVSh/OvXv5xF6M6wDFWSoyzE7GeNnPvTaJRXD0dVIq9f6aHisEDnOf
-X-Received: by 2002:ac8:57cb:0:b0:410:dc24:7fba with SMTP id w11-20020ac857cb000000b00410dc247fbamr21459422qta.3.1693984692793;
-        Wed, 06 Sep 2023 00:18:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1693984692; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp2674680ejb;
+        Wed, 6 Sep 2023 04:23:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IElP9SW/JxjYzNy9wNa7grwvFgb3cWD3oWOEmwnOL2CktD55ShzPEc2E5TTBnNMBuywl9Ks
+X-Received: by 2002:a05:6214:cac:b0:63f:b1c8:4cc3 with SMTP id s12-20020a0562140cac00b0063fb1c84cc3mr23358336qvs.14.1693999381938;
+        Wed, 06 Sep 2023 04:23:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1693999381; cv=none;
         d=google.com; s=arc-20160816;
-        b=MuoZm9rNlglN0JoJ/MlFg4LuCtzWbxO21IvkDRbUWevHzPmyl5XBJaFi5pfPvqIWmh
-         Ei+i2WF97oGSXMttGFJkDNQ2CQl5epZ+M42CO4bNni2970LTG2xxwv2m5fhIx9oSgDlv
-         kVTNhAU6CykipnmWzIpyFU75tBwLSLxHNXEEh2WGI6zMljuLDiQ3HVyCYOZSjnKSzhre
-         kfOpHP9/P1dp7AGe8cnRB0g8kZ3Y1Z8962tshLeMbyKoOgKcTSvc+c+XRBHUqM+NblA1
-         J0oOAHa8dDoV+5DK82Hac6QNnBIsBsCGh5kC6m/VmSfQ+eSLBbwqRHSCYywrf87Zp93N
-         /XlA==
+        b=dNVe4mXr6EhEmnWYThYjjuC/+QzNmPQoGEspknW2Vrhb8RL1guVhjnTXio47HVrNsd
+         QEF3NpxNK062bLTmhFdE9WuOP8ObZyR4eJvQcmY5lmdUNlDjbsqDojBGfzcaFpP9dQGt
+         hOYnD31Gp1kEhPhMmcQh5eqFb9NraZisrRpcpByZDFUShmwUQaOCBtxPlhxTU+nG/qyf
+         WzylGtqQgMAjfpooD9lLwwqLmQOiyvBNW43q7Kvqm8HHar/ou8pwnpKrANLn5vQlIQeT
+         EI/a0yZeRPAerIjfvG5ZrUvOdTo4YbBAxYF/q6F5JrwiWryqjzv7HbVCiiOE8TvzYdPQ
+         hYNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:organization:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=uRJrPmom2QK04NrHrucVV1tBYurvl/zY3Sr0T3ioW8Q=;
-        fh=fv2/EASNYO7KwcwKSBCrRDx0gQA4VOsl5HYkxK5MVEw=;
-        b=ObXDWj0Qo6MAZoIDe7aH8AIK2+Hye+8g+s31SOzO93sB9e12r02SpBAhpFb9sB0EiB
-         kcpVSxEFEKiJEqbKm1UbWOkEcoPrHjs6ZrfMNiXlGb4KyBSdWnbEptsUNyJtKc3PrMpE
-         4+UwGxEPfK3gsq1Xl1CKEQKP3ioOMQUbr3LFUyrR1InKXCLyRQfBK/CURS8IrGyxIrIV
-         N7zsW2N2apI875AwwQcSCX7+/XfGj/iz5T4xFOWF/XczMRSd8MfpS+kbaMVtMHZgHeuP
-         xdyIggU+APQKRtz4pLS4o341nGw0i3Ym+qc9FN5gstXdytUoyUhrFhCg5Eg00+mCrI9D
-         Y9PQ==
+         :list-unsubscribe:list-id:precedence:message-id:mime-version
+         :references:subject:cc:to:from:date;
+        bh=gTxs9t8NUyNG0rv2M2+BfB8DPpSYZWCksWTeenvSo1A=;
+        fh=/y9xf2iGBNwNRTWkQltYtFM8TJAkp5HuD9PPNIATr68=;
+        b=h3qPp9MuTKYDqPVC5R7kb0t7S2swYO1RMUuXuSUi0JBXWPj7hBbhvaYwIXAXd0KT9E
+         pjjjornAcBaJbE7TwRP1+wpgN6zQXIIhYkZSRjhT0yc7Ue6vqKX0v4qsM4wngyzTaUWI
+         h7uoPBEgwAoDp4BlACCLcpPq0cZpK20Ihtcqh8GJsaB/rYg5kUAagt5cuO2xeynK8Fxp
+         WYCzyjBFVKS20oaQJzR8oYPr8x6orI4sU1avHKWhAE2z+MNOtdu382p57/1djvxZiNbH
+         89zK1O7c0aEXkGOha8hkbuo82vm5TM6wOxn4d2AFFjZGr7RayU7mPI40y1KBcAvSk5gi
+         +LhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dgwgDAF4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d9-20020a05622a05c900b00410a979ca61si9158608qtb.758.2023.09.06.00.18.12
+        by mx.google.com with ESMTPS id ow5-20020a0562143f8500b0064aac6d7549si9476663qvb.432.2023.09.06.04.23.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Sep 2023 00:18:12 -0700 (PDT)
+        Wed, 06 Sep 2023 04:23:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dgwgDAF4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qdmnN-00079C-2I; Wed, 06 Sep 2023 03:17:49 -0400
+	id 1qdqcI-00056Z-Hs; Wed, 06 Sep 2023 07:22:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qdmnK-00078O-6w
- for qemu-arm@nongnu.org; Wed, 06 Sep 2023 03:17:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qdmnI-0000EM-6y
- for qemu-arm@nongnu.org; Wed, 06 Sep 2023 03:17:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1693984663;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uRJrPmom2QK04NrHrucVV1tBYurvl/zY3Sr0T3ioW8Q=;
- b=dgwgDAF4OwwlFzurm2LhvB9zHdkLPYRtZlQTs+4qcd9a5groWbNCh9a3y0qLI2D5xainij
- bToEiVrEziPcTVdkHWY05u5YH/0mJgqbFvk6ysX3uxID6L79bu/aV+imuZYWHIVQ9r2XEe
- T6bwp7BPBdan/ZCw+LFf3XAwR0FS2hI=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-418-Evg7HE7JPeK54U78B2aLHw-1; Wed, 06 Sep 2023 03:17:39 -0400
-X-MC-Unique: Evg7HE7JPeK54U78B2aLHw-1
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-401db2550e0so25112705e9.1
- for <qemu-arm@nongnu.org>; Wed, 06 Sep 2023 00:17:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693984658; x=1694589458;
- h=content-transfer-encoding:in-reply-to:organization:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uRJrPmom2QK04NrHrucVV1tBYurvl/zY3Sr0T3ioW8Q=;
- b=azLZyXuCtVIvxnZ2GtRBOQgGseEed8VggVj5qANFa7y/oD3BWovT3+YDhGNgHXCOpZ
- 5TbGNASp/2ek8x69dmSLT1G2lskQvXiMWfedaXTqGwu7O2VRzGf1gpm4/EuB+nrBRERq
- XFSog5nlhIuvJ84yH6k/CmsH2qnoJj2l6ON47xYbXVxUupYhXvoF5UUjx0q5Y6vihCAB
- kI1jGcgcqTnllo6S5Ue/jhYXBVaeAMZRrT5+/AIoZbBEqe1Y7FJJ0MPb9QboBuoI0P5E
- 3ozYbIt/fOOcwxtrfZmpDSGIquB6rFP+kTKAD/W9BJDTGVxYyEnpRmNVNVhEogQ+R0TK
- SXGA==
-X-Gm-Message-State: AOJu0YyOPlcFigBPR0Cz5TXexpq6xaPsVgVTu2UjrHtPQhUPy4T1AyYU
- +qEg/+pLF58SybxU3eXfZvTBwWfiLitanbzykRGATYdmlwtx20/EwgNeWHOVoB3hI4beaM1y1Xw
- mWB5BAP7dNzZY
-X-Received: by 2002:a05:600c:2488:b0:3fe:228a:e782 with SMTP id
- 8-20020a05600c248800b003fe228ae782mr1536194wms.37.1693984658747; 
- Wed, 06 Sep 2023 00:17:38 -0700 (PDT)
-X-Received: by 2002:a05:600c:2488:b0:3fe:228a:e782 with SMTP id
- 8-20020a05600c248800b003fe228ae782mr1536173wms.37.1693984658318; 
- Wed, 06 Sep 2023 00:17:38 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c70c:6c00:92a4:6f8:ff7e:6853?
- (p200300cbc70c6c0092a406f8ff7e6853.dip0.t-ipconnect.de.
- [2003:cb:c70c:6c00:92a4:6f8:ff7e:6853])
- by smtp.gmail.com with ESMTPSA id
- n17-20020a7bcbd1000000b003fee777fd84sm18997157wmi.41.2023.09.06.00.17.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 Sep 2023 00:17:37 -0700 (PDT)
-Message-ID: <ebc93bb8-41c4-d983-b7ae-4d56e66c2e91@redhat.com>
-Date: Wed, 6 Sep 2023 09:17:36 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 01/13] memory: Let ReservedRegion use Range
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.williamson@redhat.com,
- clg@redhat.com, jean-philippe@linaro.org, mst@redhat.com, pbonzini@redhat.com
-Cc: peter.maydell@linaro.org, peterx@redhat.com, philmd@linaro.org
-References: <20230904080451.424731-1-eric.auger@redhat.com>
- <20230904080451.424731-2-eric.auger@redhat.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <20230904080451.424731-2-eric.auger@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1qdqcG-000565-T9; Wed, 06 Sep 2023 07:22:36 -0400
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1qdqcB-0006bA-TF; Wed, 06 Sep 2023 07:22:36 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwBHT2PvYPhkeLK8AQ--.18181S2;
+ Wed, 06 Sep 2023 19:22:24 +0800 (CST)
+Received: from WYQ-S (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwDXQzDrYPhkUnQAAA--.1901S3;
+ Wed, 06 Sep 2023 19:22:19 +0800 (CST)
+Date: Wed, 6 Sep 2023 19:22:19 +0800
+From: "Yuquan Wang" <wangyuquan1236@phytium.com.cn>
+To: jonathan.cameron <Jonathan.Cameron@huawei.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>, 
+ "gregory.price@memverge.com" <gregory.price@memverge.com>
+Subject: Re: CXL Namespaces of ACPI disappearing in Qemu demo
+References: <2023082215220191352877@phytium.com.cn>, 
+ <2023090518450211126476@phytium.com.cn>, 
+ <20230905153438.000075ff@huawei.com>
+X-Priority: 3
+X-GUID: 75CF43B2-0E70-4E6A-B977-F8853D34BA06
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.25.228[cn]
+Mime-Version: 1.0
+Message-ID: <2023090619221880715697@phytium.com.cn>
+Content-Type: multipart/alternative;
+ boundary="----=_001_NextPart608180013868_=----"
+X-CM-TRANSID: AQAAfwDXQzDrYPhkUnQAAA--.1901S3
+X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAOAWT3facFVwABsU
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=wangyuquan
+ 1236@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7KY7
+ ZEXasCq-sGcSsGvfJ3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2Kfnx
+ nUUI43ZEXa7xR_UUUUUUUUU==
+Received-SPF: pass client-ip=162.243.164.118;
+ envelope-from=wangyuquan1236@phytium.com.cn;
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_FONT_LOW_CONTRAST=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_KAM_HTML_FONT_INVALID=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,25 +100,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0CRAS36I7YsA
+X-TUID: y97VJFQUBuR+
 
-On 04.09.23 10:03, Eric Auger wrote:
-> A reserved region is a range tagged with a type. Let's directly use
-> the Range type in the prospect to reuse some of the library helpers
-> shipped with the Range type.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->   include/exec/memory.h            | 4 ++--
->   hw/core/qdev-properties-system.c | 9 ++++++---
->   hw/virtio/virtio-iommu.c         | 6 +++---
->   3 files changed, 11 insertions(+), 8 deletions(-)
-> 
+This is a multi-part message in MIME format.
 
-Reviewed-by: David Hildenbrand <david@redhat.com>
+------=_001_NextPart608180013868_=----
+Content-Type: text/plain;
+	charset="ISO-8859-1"
+Content-Transfer-Encoding: base64
 
--- 
-Cheers,
+SGksIEpvbmF0aGFuDQpPbiAyMDIzLTA5LTA1IDIyOjM0LCAgam9uYXRoYW4uY2FtZXJvbiB3cm90
+ZToNCj4gDQo+IEFzIEkgdW5kZXJzdGFuZCBpdCB0aGUgZGlzdGluY3Rpb24gaXMgbW9yZSBhYm91
+dCB0aGUgZm9ybWF0IC8gY29udGVudHMgb2YgdGhhdCBtZW1vcnkNCj4gdGhhbiBob3cgeW91IGFj
+Y2VzcyB0aGVtLiANCg0KWWVzLCBSQ0ggRFAgUkNSQiBpbmNsdWRlcyByZWdpc3RlcnMgZnJvbSBQ
+Q0llIFR5cGUgMSBDb25maWcgSGVhZGVyIGFuZA0KUENJZSBjYXBhYmlsaXRpZXMgYW5kIGV4dGVu
+ZGVkIGNhcGFiaWxpdGllcyB3aGlsZSBDSEJDUiBpbmNsdWRlcyBjb21wb25lbnQgcmVnaXN0ZXJz
+IA0Kd2l0aCB0aGUgc2FtZSBsYXlvdXQgYW5kIGRpc2NvdmVyeSBtZWNoYW5pc20gaW4gb3RoZXIg
+Q1hMIGNvbXBvbmVudHMuDQoNCj4gQXMgYW4gYXNpZGUsIHRoZXkgYXJlIGRlc2NyaWJlZCBieSBh
+IHN0YXRpYyBBQ1BJIHRhYmxlLA0KPiBzbyB0aGV5IGNhbid0IGJlIGluIHRoZSBNTUlPIHNwYWNl
+IHVzZWQgZm9yIEJBUnMgZXRjLg0KPiANCg0KSW4gQ1hMIDMuMCBTcGVjLCB0aGUgRmlndXJlIDkt
+MTQgKENYTCBMaW5rL1Byb3RvY29sIFJlZ2lzdGVyIE1hcHBpbmcgaW4gYSBDWEwgVkgpDQpzaG93
+cyB0aGF0IENIQkNSIGlzIG1hcHBlZCBieSAiSG9zdCBQcm9wcmlldGFyeSBTdGF0aWMgQmFyIi4g
+QWNjb3JkaW5nIHRvIHlvdXIgZ3VpZGFuY2UsDQppdCBpcyBub3QgYSBzdGFuZGFyZCBQQ0llIEJB
+UiB1c2luZyBQQ0llIE1NSU8gU3BhY2UsIHNvIEkgdW5kZXJzdGFuZCBpdCBpcyBhIHNwZWNpYWwg
+QkFSIGZvciANCk1NSU8gb2YgYSBwbGF0Zm9ybSBkZXZpY2U/DQoNCg0KTWFueSB0aGFua3MNCll1
+cXVhbg0K
 
-David / dhildenb
+------=_001_NextPart608180013868_=----
+Content-Type: text/html;
+	charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charse=
+t=3DISO-8859-1"><style>body { line-height: 1.5; }body { font-size: 13px; f=
+ont-family: "Times New Roman"; color: rgb(0, 0, 0); line-height: 1.5; }</s=
+tyle></head><body>=0A =0A<div>Hi, Jonathan</div>=0AOn&nbsp;2023-09-05&nbsp=
+;22:34,&nbsp;&nbsp;<span>jonathan.cameron</span>&nbsp;wrote:<div><div>&gt;=
+&nbsp;</div><div>&gt; As I understand it the distinction is more about the=
+ format / contents of that memory</div><div>&gt; than how you access them.=
+&nbsp;</div><div><br></div><div>Yes, RCH DP RCRB includes&nbsp;<span style=
+=3D"background-color: rgba(0, 0, 0, 0); color: rgb(0, 0, 0);">registers&nb=
+sp;from&nbsp;PCIe&nbsp;Type&nbsp;1&nbsp;Config&nbsp;Header&nbsp;and</span>=
+</div><div><span style=3D"background-color: rgba(0, 0, 0, 0); color: rgb(0=
+, 0, 0);">PCIe&nbsp;capabilities&nbsp;and&nbsp;extended&nbsp;capabilities =
+while CHBCR includes c</span><span style=3D"background-color: rgba(0, 0, 0=
+, 0); color: rgb(0, 0, 0);">omponent&nbsp;</span><span style=3D"background=
+-color: rgba(0, 0, 0, 0); color: rgb(0, 0, 0);">registers&nbsp;</span></di=
+v><div><span style=3D"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0,=
+ 0);">with the same&nbsp;</span><span style=3D"color: rgb(0, 0, 0); backgr=
+ound-color: rgba(0, 0, 0, 0);">layout&nbsp;and&nbsp;discovery&nbsp;mechani=
+sm in</span><span style=3D"background-color: rgba(0, 0, 0, 0); color: rgb(=
+0, 0, 0);">&nbsp;other CXL components.</span></div><div><br></div><div><sp=
+an style=3D"background-color: transparent;">&gt;&nbsp;</span>As an aside, =
+they are described by a static ACPI table,</div><div>&gt; so they can't be=
+ in the MMIO space used for BARs etc.</div><div>&gt;&nbsp;</div><div><br><=
+/div><div><span style=3D"color: rgb(0, 0, 0); background-color: rgba(0, 0,=
+ 0, 0);">In CXL 3.0 Spec, the Figure&nbsp;9-14 (CXL&nbsp;Link/Protocol&nbs=
+p;Register&nbsp;Mapping&nbsp;in&nbsp;a&nbsp;CXL&nbsp;VH)</span></div><div>=
+<span style=3D"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);">s=
+hows that CHBCR is mapped by "Host Proprietary Static Bar". According to y=
+our&nbsp;</span><span style=3D"background-color: transparent;">guidance,</=
+span></div><div><span style=3D"background-color: transparent;">it is not a=
+ standard PCIe BAR using PCIe MMIO Space, so I understand it is a special =
+BAR for&nbsp;</span></div><div><span style=3D"color: rgb(0, 0, 0); backgro=
+und-color: rgba(0, 0, 0, 0);">MMIO of a&nbsp;platform&nbsp;device?</span><=
+/div><div><br></div><div><br></div></div><div>Many thanks</div><div>Yuquan=
+</div></body></html>
+------=_001_NextPart608180013868_=------
 

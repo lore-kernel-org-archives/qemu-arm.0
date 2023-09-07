@@ -1,251 +1,670 @@
-Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp436044ejb;
-        Thu, 7 Sep 2023 09:05:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHLhZT2LKDI80cOhAFBrzM1O3HHVJ/4OI2n+RMhlWpoRIuwa9H2P0SbWEmsEtx3mva1ToUa
-X-Received: by 2002:a05:6808:34b:b0:3a8:5904:1aa8 with SMTP id j11-20020a056808034b00b003a859041aa8mr19645269oie.52.1694102751223;
-        Thu, 07 Sep 2023 09:05:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694102751; cv=none;
+Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp436194ejb;
+        Thu, 7 Sep 2023 09:06:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGn5m2sq1c4XCGrf0+3Sjjve/9WYNfRWNmWTurNU/jIuz4pq76C8x85dHlSKbRYJtSi11Pq
+X-Received: by 2002:a05:622a:20f:b0:412:702:af07 with SMTP id b15-20020a05622a020f00b004120702af07mr3993703qtx.10.1694102761106;
+        Thu, 07 Sep 2023 09:06:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694102761; cv=none;
         d=google.com; s=arc-20160816;
-        b=LxNpbq2lbC+6JlcBVQWV4gKiIVlPL8SHSwO3G6ND/fYMCNoWY0hlIKkfJeZ8iu64ag
-         3zdsmqCrpOk/N+gvuOKBl6I2O4lodyuih4qFH0ogrrybw8M3ffja1aCxdjreg25r0WgN
-         u9wAQwWb/4v30CBX8E2DFlEFLIDr+W0jh9lRffeF8dBuZFRSevoZhhmCYo4HVlZZc022
-         u6n0Vu2QWGLFSrhoh+J3F3fbP8a3BI5oBaHHVnYuLeFI0mxCK89KxCLqp55LQHQfSh/7
-         niaaWxs02KqUsp/uWSl1wTpSadTb6/DaNh7Br8cjG7Qx94KjDg0qhgUI7YBwhoYQg6Im
-         IILA==
+        b=D5eXW4XSu53tYtxe5+BOlqNWmNrBkXwQ2yuUC4bdsf8NI6SoBYby1xhuCkKRlqpuez
+         eRLijmAizGY3j028uznY7tb42v8SlT7FJsWV5Yv9kNZ+9H7ilfongIDBhkXeNbx83qi4
+         bmnjztGbVuo+FRWDmB012BDqYjheXp3JFLSMhfePBGrx86ts9I9A6J3RWHvEnlSHNrDc
+         m3jjHmStFcMOYqev1Y9OFiVJB04VvIR6IC6Xv2wyineV1R4nEleD2/YckF76MVNX9PkD
+         LkumEGJphZC4EpVTIBj7ryiQe8/+T3Zcqd67wcbmDhmkqvlOl05bl1OBlK/q+ZjIr9g/
+         HdXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=k3XOXrpJkvVBT73JVIUIybkdEQJErzU2/M8NYkrCiqY=;
+        bh=WEi5U+9+EVifF18HjGG9+OI2e5irSfTUPjkky56c2m8=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=afL+Ozqk04WVFSGchA9Bgke2t2Z9BKoCAiGLyVZ1IKQ1KzO9vkS0i0Nfb9ejXy1/H3
-         3TD3cT0+ezlp6b9ARAyP2euuA7V7RFMx3vOZYnzPX9wY5tyc1DqOTR7cI+MKRRxv2y3L
-         yscQw2VBZZ3LHxktAum02B7zVv5rTG3L+06bNdnE3xhQL8gpzfsExOPmb7QGhNNV5tug
-         KrGoRHpHnKo46ETkBpy4RCkE3nWp8ufFQKePd/UuFjZCpKDNrcdw+lBnAXeqg5De8XWw
-         5pRVy5Lh3/o8e9I0O6zcU3o+P0kqsaihLisPtQl0DbZvZ2Hx9OiPTPu9LygDc2SSOoyA
-         hVHg==
+        b=NfHTPb2+oEdOhXNYKtOFtwxwkhmrp2vwFfk7ZF/1BRe/fMCuuXLv3DlzDDUkklbMPR
+         1qbv3cQ4teT3CHeitf7BSkugS1suGlQmdGKlD2aCuKBYgy1ccplr7GtUwzLmL+Hi+O8U
+         FLPvycrOq0wKyEjzqXqdw7aLa+peuBuK3Y5p8g03NjMbvkjMOBhXseP1NiiBQZSLb4Kd
+         RchvtPr1uuBKHEsLDQyjTtZZe41WKOT/4r623Dxi9IuDU/F9ztrYxbY+dCDCDOQY4F7m
+         iAJ2UL40porh+n3ExTbA7aXgHjToPkmnCRpyvLi+g0d89i+bRLkVCX+VErsgboJqK6t4
+         aPoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RPpaFozX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=AkpK8VME;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q14-20020a67b04e000000b0044d4e33be34si2109729vsh.727.2023.09.07.09.05.50
+        by mx.google.com with ESMTPS id m21-20020ac85b15000000b00413647ffa25si11747987qtw.348.2023.09.07.09.06.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Sep 2023 09:05:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 07 Sep 2023 09:06:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RPpaFozX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=AkpK8VME;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qeHU5-0000vq-G4; Thu, 07 Sep 2023 12:03:57 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qeHUC-00013V-BO; Thu, 07 Sep 2023 12:04:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeHU2-0000si-7V
- for qemu-arm@nongnu.org; Thu, 07 Sep 2023 12:03:54 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ id 1qeHU9-0000zH-3Z
+ for qemu-devel@nongnu.org; Thu, 07 Sep 2023 12:04:01 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeHTv-00020Q-UE
- for qemu-arm@nongnu.org; Thu, 07 Sep 2023 12:03:53 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-31ad9155414so1026104f8f.3
- for <qemu-arm@nongnu.org>; Thu, 07 Sep 2023 09:03:47 -0700 (PDT)
+ id 1qeHTz-000229-82
+ for qemu-devel@nongnu.org; Thu, 07 Sep 2023 12:04:00 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-401b3ea0656so11609055e9.0
+ for <qemu-devel@nongnu.org>; Thu, 07 Sep 2023 09:03:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694102626; x=1694707426; darn=nongnu.org;
+ d=linaro.org; s=google; t=1694102630; x=1694707430; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=k3XOXrpJkvVBT73JVIUIybkdEQJErzU2/M8NYkrCiqY=;
- b=RPpaFozXjvjF7/b0tjwnEi0htAoS+XeiyC6E0bzb3NKk6aXXmup7kPAAOb+nHwXT5p
- /PHwGhYnwjbvQZSHsp4iiLNpWfC568lziS7cNVZRkn8bL/kX7c7aR/P+UTXNtb+G8LUQ
- SzjUB9jJg3moOA+4JIla/suukatOAwZ2KFnUMZ2jFN1Hdocc17dCGpbvTSO77ula6R3K
- e/uDL+1fMldHVK7NzjzrcyrfbGmh9WVWX48spQkqjMLJOom75KaTZdL+iRRDrylvtfn5
- gDqxQxnSRm/6dCrtuGwqyKtAuM0Uy98qk1qm2ZUixidKoXy4U4GHoUlA3oW8qYzcv9JY
- rsGw==
+ :reply-to; bh=WEi5U+9+EVifF18HjGG9+OI2e5irSfTUPjkky56c2m8=;
+ b=AkpK8VMEfsVFZ5WE2fNsPE+zju2PFAfKgBOcHGW50B8ielboURHiGQUsQz7yAX9r2J
+ pzj0uuY154OjKYbNfOuB2ME5rK01aphgncZgcz2aBr9xVVjOAf26wq9bfcUdrpWAyB7w
+ 1OeLkD7q2HDvRoCVENp0Un9+5bY96bAT9aTpy41uhirM5WrSDyk9A+JcRdRtA+iZZbkV
+ Mh5Y0xVOJ/7fSw9Dd41xC6YWrjcz78minAgnjBQ3aM4M/CqiIpImpa5o8VV7d9Q5HKk2
+ JiGxiKnNFyyODOR9XNcuY8N4G7uTPNfXgYN0rcY7mJEOPi++BTpt/wO8Yv5gYpiLDWiO
+ iXcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694102626; x=1694707426;
+ d=1e100.net; s=20221208; t=1694102630; x=1694707430;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=k3XOXrpJkvVBT73JVIUIybkdEQJErzU2/M8NYkrCiqY=;
- b=CtVvd4ElgiexCeWWtVgXPm/EyTK1LjY2H85RMyN61AeNSAIYBt19DdLSMo7J2UvFBt
- UA2vzeiCXX4/uT4JMJ6SmDMyRU7H6HChvuuklU5eKnKUAhGEgqGYumLBZ4Ps7xwOCRl0
- QdgX6mNjhobA5cAdNmGw8PP/Zv60t9ScnIAZevzwgQj9VT3nNMGSuSzntRO66DipoK7M
- rQr0OgKVxJ8ooU178DiUneGzAvxL7S6T5TdEyUnmfhQVIHVrCpbfDXpygXZVHt1oxB+6
- uHL3jtStgPYXxsF00gWgxQCo7Gc6CIns66rURafXQHyiG8ofXPmI0yWuY+zqvhR29jy4
- d28g==
-X-Gm-Message-State: AOJu0YzC6yj6eZi0s8xgruYmqbKXfT2v53Rhwx5BVdXdPSfyx2Hc6L8S
- a9JiHaGxO+UeAFPmVA9+anx+kEiL9lSqGZiGpGM=
-X-Received: by 2002:a5d:5610:0:b0:31a:c6fb:4142 with SMTP id
- l16-20020a5d5610000000b0031ac6fb4142mr4915910wrv.16.1694102626526; 
- Thu, 07 Sep 2023 09:03:46 -0700 (PDT)
+ bh=WEi5U+9+EVifF18HjGG9+OI2e5irSfTUPjkky56c2m8=;
+ b=bzQv13CFIK6TbyTduAxJAZiSEMth/MtPfpBY3afcdz61fEp28ntORuHE3eowZlAvVe
+ McIOdZCo34/mFIEE0D4KbSo1dm7zxtWSj4ztri7hEuqqLoiiOFBlcEGvwLQ5/2Dr7Nso
+ EmSM36sjeKOoLAl79hAQY3e7GzFEySoAVzqacCf5nsgisPbiL1NuQImCFZ1VkgCEF184
+ QAGAAQnqm3wp2QdZr+PQkvvrdsCVG8VtPpGwhS9kHsfeLH8a2zcQ815heXXB7miAbOKO
+ p8TESZRp77LrYD9GizCdiH9YK+ujj2G3U85W3QhLJVx4nVvL2z53+mkoLeYEzpsAEUtK
+ uHUw==
+X-Gm-Message-State: AOJu0YwoFMAUJWX4flrkYWw+QhylKCmKKb70iDmEIjXKNnGmLjEvnMhZ
+ kdmRw5IakHv71eQqZzyMWVRFETHgJteMNu6uqho=
+X-Received: by 2002:a05:600c:2611:b0:401:1066:53e4 with SMTP id
+ h17-20020a05600c261100b00401106653e4mr96842wma.38.1694102629734; 
+ Thu, 07 Sep 2023 09:03:49 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- d1-20020adfa401000000b0031980294e9fsm20256241wra.116.2023.09.07.09.03.46
+ d1-20020adfa401000000b0031980294e9fsm20256241wra.116.2023.09.07.09.03.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Sep 2023 09:03:46 -0700 (PDT)
+ Thu, 07 Sep 2023 09:03:49 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 07/14] target/arm: New function allocation_tag_mem_probe()
-Date: Thu,  7 Sep 2023 17:03:33 +0100
-Message-Id: <20230907160340.260094-8-peter.maydell@linaro.org>
+Subject: [PATCH 13/14] target/arm: Implement the CPY* instructions
+Date: Thu,  7 Sep 2023 17:03:39 +0100
+Message-Id: <20230907160340.260094-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230907160340.260094-1-peter.maydell@linaro.org>
 References: <20230907160340.260094-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GQyUklZQH/NC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DkfTGaaImQub
 
-For the FEAT_MOPS operations, the existing allocation_tag_mem()
-function almost does what we want, but it will take a watchpoint
-exception even for an ra == 0 probe request, and it requires that the
-caller guarantee that the memory is accessible.  For FEAT_MOPS we
-want a function that will not take any kind of exception, and will
-return NULL for the not-accessible case.
-
-Rename allocation_tag_mem() to allocation_tag_mem_probe() and add an
-extra 'probe' argument that lets us distinguish these cases;
-allocation_tag_mem() is now a wrapper that always passes 'false'.
+The FEAT_MOPS CPY* instructions implement memory copies. These
+come in both "always forwards" (memcpy-style) and "overlap OK"
+(memmove-style) flavours.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/mte_helper.c | 47 ++++++++++++++++++++++++++++---------
- 1 file changed, 36 insertions(+), 11 deletions(-)
+ target/arm/tcg/helper-a64.h    |   4 +
+ target/arm/tcg/a64.decode      |  12 +
+ target/arm/tcg/helper-a64.c    | 413 +++++++++++++++++++++++++++++++++
+ target/arm/tcg/translate-a64.c |  57 +++++
+ 4 files changed, 486 insertions(+)
 
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index e2494f73cf3..884d88848aa 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -50,13 +50,14 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
- }
- 
- /**
-- * allocation_tag_mem:
-+ * allocation_tag_mem_probe:
-  * @env: the cpu environment
-  * @ptr_mmu_idx: the addressing regime to use for the virtual address
-  * @ptr: the virtual address for which to look up tag memory
-  * @ptr_access: the access to use for the virtual address
-  * @ptr_size: the number of bytes in the normal memory access
-  * @tag_access: the access to use for the tag memory
-+ * @probe: true to merely probe, never taking an exception
-  * @ra: the return address for exception handling
-  *
-  * Our tag memory is formatted as a sequence of little-endian nibbles.
-@@ -65,15 +66,25 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
-  * for the higher addr.
-  *
-  * Here, resolve the physical address from the virtual address, and return
-- * a pointer to the corresponding tag byte.  Exit with exception if the
-- * virtual address is not accessible for @ptr_access.
-+ * a pointer to the corresponding tag byte.
-  *
-  * If there is no tag storage corresponding to @ptr, return NULL.
-+ *
-+ * If the page is inaccessible for @ptr_access, or has a watchpoint, there are
-+ * three options:
-+ * (1) probe = true, ra = 0 : pure probe -- we return NULL if the page is not
-+ *     accessible, and do not take watchpoint traps. The calling code must
-+ *     handle those cases in the right priority compared to MTE traps.
-+ * (2) probe = false, ra = 0 : probe, no fault expected -- the caller guarantees
-+ *     that the page is going to be accessible. We will take watchpoint traps.
-+ * (3) probe = false, ra != 0 : non-probe -- we will take both memory access
-+ *     traps and watchpoint traps.
-+ * (probe = true, ra != 0 is invalid and will assert.)
-  */
--static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
--                                   uint64_t ptr, MMUAccessType ptr_access,
--                                   int ptr_size, MMUAccessType tag_access,
--                                   uintptr_t ra)
-+static uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
-+                                         uint64_t ptr, MMUAccessType ptr_access,
-+                                         int ptr_size, MMUAccessType tag_access,
-+                                         bool probe, uintptr_t ra)
- {
- #ifdef CONFIG_USER_ONLY
-     uint64_t clean_ptr = useronly_clean_ptr(ptr);
-@@ -81,6 +92,8 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-     uint8_t *tags;
-     uintptr_t index;
- 
-+    assert(!(probe && ra));
+diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64.h
+index 1daadc81cfe..8d4ce2e3b31 100644
+--- a/target/arm/tcg/helper-a64.h
++++ b/target/arm/tcg/helper-a64.h
+@@ -117,3 +117,7 @@ DEF_HELPER_FLAGS_4(unaligned_access, TCG_CALL_NO_WG,
+ DEF_HELPER_3(setp, void, env, i32, i32)
+ DEF_HELPER_3(setm, void, env, i32, i32)
+ DEF_HELPER_3(sete, void, env, i32, i32)
 +
-     if (!(flags & (ptr_access == MMU_DATA_STORE ? PAGE_WRITE_ORG : PAGE_READ))) {
-         cpu_loop_exit_sigsegv(env_cpu(env), ptr, ptr_access,
-                               !(flags & PAGE_VALID), ra);
-@@ -111,12 +124,16 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-      * exception for inaccessible pages, and resolves the virtual address
-      * into the softmmu tlb.
-      *
--     * When RA == 0, this is for mte_probe.  The page is expected to be
--     * valid.  Indicate to probe_access_flags no-fault, then assert that
--     * we received a valid page.
-+     * When RA == 0, this is either a pure probe or a no-fault-expected probe.
-+     * Indicate to probe_access_flags no-fault, then either return NULL
-+     * for the pure probe, or assert that we received a valid page for the
-+     * no-fault-expected probe.
-      */
-     flags = probe_access_full(env, ptr, 0, ptr_access, ptr_mmu_idx,
-                               ra == 0, &host, &full, ra);
-+    if (probe && (flags & TLB_INVALID_MASK)) {
-+        return NULL;
-+    }
-     assert(!(flags & TLB_INVALID_MASK));
- 
-     /* If the virtual page MemAttr != Tagged, access unchecked. */
-@@ -157,7 +174,7 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-     }
- 
-     /* Any debug exception has priority over a tag check exception. */
--    if (unlikely(flags & TLB_WATCHPOINT)) {
-+    if (!probe && unlikely(flags & TLB_WATCHPOINT)) {
-         int wp = ptr_access == MMU_DATA_LOAD ? BP_MEM_READ : BP_MEM_WRITE;
-         assert(ra != 0);
-         cpu_check_watchpoint(env_cpu(env), ptr, ptr_size, attrs, wp, ra);
-@@ -198,6 +215,14 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-     return memory_region_get_ram_ptr(mr) + xlat;
- #endif
++DEF_HELPER_5(cpyp, void, env, i32, i32, i32, i32)
++DEF_HELPER_5(cpym, void, env, i32, i32, i32, i32)
++DEF_HELPER_5(cpye, void, env, i32, i32, i32, i32)
+diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+index 46caeb59fe5..8ddf96542a9 100644
+--- a/target/arm/tcg/a64.decode
++++ b/target/arm/tcg/a64.decode
+@@ -574,3 +574,15 @@ SETE            00 011001110 ..... 10 . . 01 ..... ..... @set
+ SETGP           00 011101110 ..... 00 . . 01 ..... ..... @set
+ SETGM           00 011101110 ..... 01 . . 01 ..... ..... @set
+ SETGE           00 011101110 ..... 10 . . 01 ..... ..... @set
++
++# Memmove/Memcopy: the move bit is 1 for the CPY insns which
++# allow overlapping src/dest and copy in the correct direction,
++# and 0 for the CPYF insns which always copy forwards.
++#
++# options has the nontemporal and unpriv bits for src and dest
++&cpy rs rn rd options move
++@cpy            .. ... move:1 ..... rs:5 options:4 .. rn:5 rd:5 &cpy
++
++CPYP            00 011 . 01000 ..... .... 01 ..... ..... @cpy
++CPYM            00 011 . 01010 ..... .... 01 ..... ..... @cpy
++CPYE            00 011 . 01100 ..... .... 01 ..... ..... @cpy
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index 96780067262..581fdbfd91a 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -1048,6 +1048,15 @@ static uint64_t page_limit(uint64_t addr)
+     return TARGET_PAGE_ALIGN(addr + 1) - addr;
  }
-+static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-+                                   uint64_t ptr, MMUAccessType ptr_access,
-+                                   int ptr_size, MMUAccessType tag_access,
-+                                   uintptr_t ra)
-+{
-+    return allocation_tag_mem_probe(env, ptr_mmu_idx, ptr, ptr_access,
-+                                    ptr_size, tag_access, false, ra);
-+}
  
- uint64_t HELPER(irg)(CPUARMState *env, uint64_t rn, uint64_t rm)
- {
++/*
++ * Return the number of bytes we can copy starting from addr and working
++ * backwards without crossing a page boundary.
++ */
++static uint64_t page_limit_rev(uint64_t addr)
++{
++    return (addr & ~TARGET_PAGE_MASK) + 1;
++}
++
+ /*
+  * Perform part of a memory set on an area of guest memory starting at
+  * toaddr (a dirty address) and extending for setsize bytes.
+@@ -1371,3 +1380,407 @@ void HELPER(sete)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
+         env->xregs[rn] = -setsize;
+     }
+ }
++
++/*
++ * Perform part of a memory copy from the guest memory at fromaddr
++ * and extending for copysize bytes, to the guest memory at
++ * toaddr. Both addreses are dirty.
++ *
++ * Returns the number of bytes actually set, which might be less than
++ * copysize; the caller should loop until the whole copy has been done.
++ * The caller should ensure that the guest registers are correct
++ * for the possibility that the first byte of the copy encounters
++ * an exception or watchpoint. We guarantee not to take any faults
++ * for bytes other than the first.
++ */
++static uint64_t copy_step(CPUARMState *env, uint64_t toaddr, uint64_t fromaddr,
++                          uint64_t copysize, int wmemidx, int rmemidx,
++                          uint32_t *wdesc, uint32_t *rdesc, uintptr_t ra)
++{
++    void *rmem;
++    void *wmem;
++
++    /* Don't cross a page boundary on either source or destination */
++    copysize = MIN(copysize, page_limit(toaddr));
++    copysize = MIN(copysize, page_limit(fromaddr));
++    /*
++     * Handle MTE tag checks: either handle the tag mismatch for byte 0,
++     * or else copy up to but not including the byte with the mismatch.
++     */
++    if (*rdesc) {
++        uint64_t mtesize = mte_mops_probe(env, fromaddr, copysize, *rdesc);
++        if (mtesize == 0) {
++            mte_check_fail(env, *rdesc, fromaddr, ra);
++            *rdesc = 0;
++        } else {
++            copysize = MIN(copysize, mtesize);
++        }
++    }
++    if (*wdesc) {
++        uint64_t mtesize = mte_mops_probe(env, toaddr, copysize, *wdesc);
++        if (mtesize == 0) {
++            mte_check_fail(env, *wdesc, toaddr, ra);
++            *wdesc = 0;
++        } else {
++            copysize = MIN(copysize, mtesize);
++        }
++    }
++
++    toaddr = useronly_clean_ptr(toaddr);
++    fromaddr = useronly_clean_ptr(fromaddr);
++    /* Trapless lookup of whether we can get a host memory pointer */
++    wmem = tlb_vaddr_to_host(env, toaddr, MMU_DATA_STORE, wmemidx);
++    rmem = tlb_vaddr_to_host(env, fromaddr, MMU_DATA_LOAD, rmemidx);
++
++#ifndef CONFIG_USER_ONLY
++    /*
++     * If we don't have host memory for both source and dest then just
++     * do a single byte copy. This will handle watchpoints, invalid pages,
++     * etc correctly. For clean code pages, the next iteration will see
++     * the page dirty and will use the fast path.
++     */
++    if (unlikely(!rmem || !wmem)) {
++        uint8_t byte;
++        if (rmem) {
++            byte = *(uint8_t *)rmem;
++        } else {
++            byte = cpu_ldub_mmuidx_ra(env, fromaddr, rmemidx, ra);
++        }
++        if (wmem) {
++            *(uint8_t *)wmem = byte;
++        } else {
++            cpu_stb_mmuidx_ra(env, toaddr, byte, wmemidx, ra);
++        }
++        return 1;
++    }
++#endif
++    /* Easy case: just memmove the host memory */
++    memmove(wmem, rmem, copysize);
++    return copysize;
++}
++
++/*
++ * Do part of a backwards memory copy. Here toaddr and fromaddr point
++ * to the *last* byte to be copied.
++ */
++static uint64_t copy_step_rev(CPUARMState *env, uint64_t toaddr,
++                              uint64_t fromaddr,
++                              uint64_t copysize, int wmemidx, int rmemidx,
++                              uint32_t *wdesc, uint32_t *rdesc, uintptr_t ra)
++{
++    void *rmem;
++    void *wmem;
++
++    /* Don't cross a page boundary on either source or destination */
++    copysize = MIN(copysize, page_limit_rev(toaddr));
++    copysize = MIN(copysize, page_limit_rev(fromaddr));
++
++    /*
++     * Handle MTE tag checks: either handle the tag mismatch for byte 0,
++     * or else copy up to but not including the byte with the mismatch.
++     */
++    if (*rdesc) {
++        uint64_t mtesize = mte_mops_probe_rev(env, fromaddr, copysize, *rdesc);
++        if (mtesize == 0) {
++            mte_check_fail(env, *rdesc, fromaddr, ra);
++            *rdesc = 0;
++        } else {
++            copysize = MIN(copysize, mtesize);
++        }
++    }
++    if (*wdesc) {
++        uint64_t mtesize = mte_mops_probe_rev(env, toaddr, copysize, *wdesc);
++        if (mtesize == 0) {
++            mte_check_fail(env, *wdesc, toaddr, ra);
++            *wdesc = 0;
++        } else {
++            copysize = MIN(copysize, mtesize);
++        }
++    }
++
++    toaddr = useronly_clean_ptr(toaddr);
++    fromaddr = useronly_clean_ptr(fromaddr);
++    /* Trapless lookup of whether we can get a host memory pointer */
++    wmem = tlb_vaddr_to_host(env, toaddr, MMU_DATA_STORE, wmemidx);
++    rmem = tlb_vaddr_to_host(env, fromaddr, MMU_DATA_LOAD, rmemidx);
++
++#ifndef CONFIG_USER_ONLY
++    /*
++     * If we don't have host memory for both source and dest then just
++     * do a single byte copy. This will handle watchpoints, invalid pages,
++     * etc correctly. For clean code pages, the next iteration will see
++     * the page dirty and will use the fast path.
++     */
++    if (unlikely(!rmem || !wmem)) {
++        uint8_t byte;
++        if (rmem) {
++            byte = *(uint8_t *)rmem;
++        } else {
++            byte = cpu_ldub_mmuidx_ra(env, fromaddr, rmemidx, ra);
++        }
++        if (wmem) {
++            *(uint8_t *)wmem = byte;
++        } else {
++            cpu_stb_mmuidx_ra(env, toaddr, byte, wmemidx, ra);
++        }
++        return 1;
++    }
++#endif
++    /*
++     * Easy case: just memmove the host memory. Note that wmem and
++     * rmem here point to the *last* byte to copy.
++     */
++    memmove(wmem - (copysize - 1), rmem - (copysize - 1), copysize);
++    return copysize;
++}
++
++/*
++ * for the Memory Copy operation, our implementation chooses always
++ * to use "option A", where we update Xd and Xs to the final addresses
++ * in the CPYP insn, and then in CPYM and CPYE only need to update Xn.
++ *
++ * @env: CPU
++ * @syndrome: syndrome value for mismatch exceptions
++ * (also contains the register numbers we need to use)
++ * @wdesc: MTE descriptor for the writes (destination)
++ * @rdesc: MTE descriptor for the reads (source)
++ * @move: true if this is CPY (memmove), false for CPYF (memcpy forwards)
++ */
++void HELPER(cpyp)(CPUARMState *env, uint32_t syndrome, uint32_t wdesc,
++                  uint32_t rdesc, uint32_t move)
++{
++    int rd = mops_destreg(syndrome);
++    int rs = mops_srcreg(syndrome);
++    int rn = mops_sizereg(syndrome);
++    uint32_t rmemidx = FIELD_EX32(rdesc, MTEDESC, MIDX);
++    uint32_t wmemidx = FIELD_EX32(wdesc, MTEDESC, MIDX);
++    bool forwards = true;
++    uintptr_t ra = GETPC();
++    uint64_t toaddr = env->xregs[rd];
++    uint64_t fromaddr = env->xregs[rs];
++    uint64_t copysize = env->xregs[rn];
++    uint64_t stagecopysize, step;
++
++    check_mops_enabled(env, ra);
++
++    if (copysize > 0x007FFFFFFFFFFFFFULL) {
++        copysize = 0x007FFFFFFFFFFFFFULL;
++    }
++
++    if (move) {
++        /*
++         * Copy backwards if necessary. The direction for a non-overlapping
++         * copy is IMPDEF; we choose forwards.
++         */
++        uint64_t fs = extract64(fromaddr, 0, 56);
++        uint64_t ts = extract64(toaddr, 0, 56);
++        uint64_t fe = extract64(fromaddr + copysize, 0, 56);
++
++        if (fs < ts && fe > ts) {
++            forwards = false;
++        }
++    }
++
++    if (!mte_checks_needed(fromaddr, rdesc)) {
++        rdesc = 0;
++    }
++    if (!mte_checks_needed(toaddr, wdesc)) {
++        wdesc = 0;
++    }
++
++    if (forwards) {
++        stagecopysize = MIN(copysize, page_limit(toaddr));
++        stagecopysize = MIN(stagecopysize, page_limit(fromaddr));
++        while (stagecopysize) {
++            env->xregs[rd] = toaddr;
++            env->xregs[rs] = fromaddr;
++            env->xregs[rn] = copysize;
++            step = copy_step(env, toaddr, fromaddr, stagecopysize,
++                             wmemidx, rmemidx, &wdesc, &rdesc, ra);
++            toaddr += step;
++            fromaddr += step;
++            copysize -= step;
++            stagecopysize -= step;
++        }
++        /* Insn completed, so update registers to the Option A format */
++        env->xregs[rd] = toaddr + copysize;
++        env->xregs[rs] = fromaddr + copysize;
++        env->xregs[rn] = -copysize;
++    } else {
++        /*
++         * In a reverse copy the to and from addrs in Xs and Xd are the start
++         * of the range, but it's more convenient for us to work with pointers
++         * to the last byte being copied.
++         */
++        toaddr += copysize - 1;
++        fromaddr += copysize - 1;
++        stagecopysize = MIN(copysize, page_limit_rev(toaddr));
++        stagecopysize = MIN(stagecopysize, page_limit_rev(fromaddr));
++        while (stagecopysize) {
++            env->xregs[rn] = copysize;
++            step = copy_step_rev(env, toaddr, fromaddr, stagecopysize,
++                                 wmemidx, rmemidx, &wdesc, &rdesc, ra);
++            copysize -= step;
++            stagecopysize -= step;
++            toaddr -= step;
++            fromaddr -= step;
++        }
++        /*
++         * Insn completed, so update registers to the Option A format.
++         * For a reverse copy this is no different to the CPYP input format.
++         */
++        env->xregs[rn] = copysize;
++    }
++
++    /* Set NZCV = 0000 to indicate we are an Option A implementation */
++    env->NF = 0;
++    env->ZF = 1; /* our env->ZF encoding is inverted */
++    env->CF = 0;
++    env->VF = 0;
++    return;
++}
++
++void HELPER(cpym)(CPUARMState *env, uint32_t syndrome, uint32_t wdesc,
++                  uint32_t rdesc, uint32_t move)
++{
++    /* Main: we choose to copy until less than a page remaining */
++    CPUState *cs = env_cpu(env);
++    int rd = mops_destreg(syndrome);
++    int rs = mops_srcreg(syndrome);
++    int rn = mops_sizereg(syndrome);
++    uint32_t rmemidx = FIELD_EX32(rdesc, MTEDESC, MIDX);
++    uint32_t wmemidx = FIELD_EX32(wdesc, MTEDESC, MIDX);
++    uintptr_t ra = GETPC();
++    bool forwards;
++    uint64_t toaddr, fromaddr, copysize, step;
++
++    check_mops_enabled(env, ra);
++
++    /* We choose to NOP out "no data to copy" before consistency checks */
++    if (env->xregs[rn] == 0) {
++        return;
++    }
++
++    check_mops_wrong_option(env, syndrome, ra);
++
++    if ((int64_t)env->xregs[rn] < 0) {
++        forwards = true;
++        toaddr = env->xregs[rd] + env->xregs[rn];
++        fromaddr = env->xregs[rs] + env->xregs[rn];
++        copysize = -env->xregs[rn];
++    } else {
++        forwards = false;
++        copysize = env->xregs[rn];
++        /* This toaddr and fromaddr point to the *last* byte to copy */
++        toaddr = env->xregs[rd] + copysize - 1;
++        fromaddr = env->xregs[rs] + copysize - 1;
++    }
++
++    if (!mte_checks_needed(fromaddr, rdesc)) {
++        rdesc = 0;
++    }
++    if (!mte_checks_needed(toaddr, wdesc)) {
++        wdesc = 0;
++    }
++
++    /* Our implementation has no particular parameter requirements for CPYM */
++
++    /* Do the actual memmove */
++    if (forwards) {
++        while (copysize >= TARGET_PAGE_SIZE) {
++            step = copy_step(env, toaddr, fromaddr, copysize,
++                             wmemidx, rmemidx, &wdesc, &rdesc, ra);
++            toaddr += step;
++            fromaddr += step;
++            copysize -= step;
++            env->xregs[rn] = -copysize;
++            if (copysize >= TARGET_PAGE_SIZE &&
++                unlikely(cpu_loop_exit_requested(cs))) {
++                cpu_loop_exit_restore(cs, ra);
++            }
++        }
++    } else {
++        while (copysize >= TARGET_PAGE_SIZE) {
++            step = copy_step_rev(env, toaddr, fromaddr, copysize,
++                                 wmemidx, rmemidx, &wdesc, &rdesc, ra);
++            toaddr -= step;
++            fromaddr -= step;
++            copysize -= step;
++            env->xregs[rn] = copysize;
++            if (copysize >= TARGET_PAGE_SIZE &&
++                unlikely(cpu_loop_exit_requested(cs))) {
++                cpu_loop_exit_restore(cs, ra);
++            }
++        }
++    }
++}
++
++void HELPER(cpye)(CPUARMState *env, uint32_t syndrome, uint32_t wdesc,
++                  uint32_t rdesc, uint32_t move)
++{
++    /* Epilogue: do the last partial page */
++    int rd = mops_destreg(syndrome);
++    int rs = mops_srcreg(syndrome);
++    int rn = mops_sizereg(syndrome);
++    uint32_t rmemidx = FIELD_EX32(rdesc, MTEDESC, MIDX);
++    uint32_t wmemidx = FIELD_EX32(wdesc, MTEDESC, MIDX);
++    uintptr_t ra = GETPC();
++    bool forwards;
++    uint64_t toaddr, fromaddr, copysize, step;
++
++    check_mops_enabled(env, ra);
++
++    /* We choose to NOP out "no data to copy" before consistency checks */
++    if (env->xregs[rn] == 0) {
++        return;
++    }
++
++    check_mops_wrong_option(env, syndrome, ra);
++
++    if ((int64_t)env->xregs[rn] < 0) {
++        forwards = true;
++        toaddr = env->xregs[rd] + env->xregs[rn];
++        fromaddr = env->xregs[rs] + env->xregs[rn];
++        copysize = -env->xregs[rn];
++    } else {
++        forwards = false;
++        copysize = env->xregs[rn];
++        /* This toaddr and fromaddr point to the *last* byte to copy */
++        toaddr = env->xregs[rd] + copysize - 1;
++        fromaddr = env->xregs[rs] + copysize - 1;
++    }
++
++    if (!mte_checks_needed(fromaddr, rdesc)) {
++        rdesc = 0;
++    }
++    if (!mte_checks_needed(toaddr, wdesc)) {
++        wdesc = 0;
++    }
++
++    /* Check the size; we don't want to have do a check-for-interrupts */
++    if (copysize >= TARGET_PAGE_SIZE) {
++        raise_exception_ra(env, EXCP_UDEF, syndrome,
++                           mops_mismatch_exception_target_el(env), ra);
++    }
++
++    /* Do the actual memmove */
++    if (forwards) {
++        while (copysize > 0) {
++            step = copy_step(env, toaddr, fromaddr, copysize,
++                             wmemidx, rmemidx, &wdesc, &rdesc, ra);
++            toaddr += step;
++            fromaddr += step;
++            copysize -= step;
++            env->xregs[rn] = -copysize;
++        }
++    } else {
++        while (copysize > 0) {
++            step = copy_step_rev(env, toaddr, fromaddr, copysize,
++                                 wmemidx, rmemidx, &wdesc, &rdesc, ra);
++            toaddr -= step;
++            fromaddr -= step;
++            copysize -= step;
++            env->xregs[rn] = copysize;
++        }
++    }
++}
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 131a15bed2f..600698d4e76 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -4009,6 +4009,63 @@ TRANS_FEAT(SETGP, aa64_mops, do_SET, a, false, true, gen_helper_setp)
+ TRANS_FEAT(SETGM, aa64_mops, do_SET, a, false, true, gen_helper_setm)
+ TRANS_FEAT(SETGE, aa64_mops, do_SET, a, true, true, gen_helper_sete)
+ 
++typedef void CpyFn(TCGv_env, TCGv_i32, TCGv_i32, TCGv_i32, TCGv_i32);
++
++static bool do_CPY(DisasContext *s, arg_cpy *a, bool is_epilogue, CpyFn fn)
++{
++    int rmemidx, wmemidx;
++    uint32_t syndrome, rdesc = 0, wdesc = 0;
++    bool wunpriv = extract32(a->options, 0, 1);
++    bool runpriv = extract32(a->options, 1, 1);
++
++    /*
++     * UNPREDICTABLE cases: we choose to UNDEF, which allows
++     * us to pull this check before the CheckMOPSEnabled() test
++     * (which we do in the helper function)
++     */
++    if (a->rs == a->rn || a->rs == a->rd || a->rn == a->rd ||
++        a->rd == 31 || a->rs == 31 || a->rn == 31) {
++        return false;
++    }
++
++    rmemidx = get_a64_user_mem_index(s, runpriv);
++    wmemidx = get_a64_user_mem_index(s, wunpriv);
++
++    /*
++     * We pass option_a == true, matching our implementation;
++     * we pass wrong_option == false: helper function may set that bit.
++     */
++    syndrome = syn_mop(false, false, a->options, is_epilogue,
++                       false, true, a->rd, a->rs, a->rn);
++
++    /* If we need to do MTE tag checking, assemble the descriptors */
++    if (s->mte_active[runpriv]) {
++        rdesc = FIELD_DP32(rdesc, MTEDESC, TBI, s->tbid);
++        rdesc = FIELD_DP32(rdesc, MTEDESC, TCMA, s->tcma);
++    }
++    if (s->mte_active[wunpriv]) {
++        wdesc = FIELD_DP32(wdesc, MTEDESC, TBI, s->tbid);
++        wdesc = FIELD_DP32(wdesc, MTEDESC, TCMA, s->tcma);
++        wdesc = FIELD_DP32(wdesc, MTEDESC, WRITE, true);
++    }
++    /* The helper function needs these parts of the descriptor regardless */
++    rdesc = FIELD_DP32(rdesc, MTEDESC, MIDX, rmemidx);
++    wdesc = FIELD_DP32(wdesc, MTEDESC, MIDX, wmemidx);
++
++    /*
++     * The helper needs the register numbers, but since they're in
++     * the syndrome anyway, we let it extract them from there rather
++     * than passing in an extra three integer arguments.
++     */
++    fn(cpu_env, tcg_constant_i32(syndrome), tcg_constant_i32(wdesc),
++       tcg_constant_i32(rdesc), tcg_constant_i32(a->move));
++    return true;
++}
++
++TRANS_FEAT(CPYP, aa64_mops, do_CPY, a, false, gen_helper_cpyp)
++TRANS_FEAT(CPYM, aa64_mops, do_CPY, a, false, gen_helper_cpym)
++TRANS_FEAT(CPYE, aa64_mops, do_CPY, a, true, gen_helper_cpye)
++
+ typedef void ArithTwoOp(TCGv_i64, TCGv_i64, TCGv_i64);
+ 
+ static bool gen_rri(DisasContext *s, arg_rri_sf *a,
 -- 
 2.34.1
 

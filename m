@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp3154755ejb;
-        Wed, 6 Sep 2023 17:43:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHBlh+TSd4hF0DfCYFQ2T9QFq8oLb0BsqlOnEhG8ccpy2LcO6YUUF6uUKFTpY59ZL3floj6
-X-Received: by 2002:a05:622a:2c4:b0:412:2d0a:b35d with SMTP id a4-20020a05622a02c400b004122d0ab35dmr25665204qtx.46.1694047407873;
-        Wed, 06 Sep 2023 17:43:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694047407; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp3154943ejb;
+        Wed, 6 Sep 2023 17:43:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFyXKhGj2bzkvshFlqKTKm6Fb2BSXWuALOquKCKbkYAOnWPGjvDL+A27hsbz/9xO8h8yiY2
+X-Received: by 2002:a67:fb88:0:b0:44d:41d3:a29a with SMTP id n8-20020a67fb88000000b0044d41d3a29amr3926876vsr.34.1694047433496;
+        Wed, 06 Sep 2023 17:43:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694047433; cv=none;
         d=google.com; s=arc-20160816;
-        b=mHW9g1FxFm9QsahpmIpSDjsSfUFBlIt6GxTQw4pXB28hGM/yHTnjZKM6lZompr5R1m
-         C6chHtA4LO5lBzCo7dhLTD93X+7LRxA6x1L2sL5ttJN5t4lE0Uo3ohQR2UY2oxONCbrO
-         Ke4aBCcHIvfk8jxqFZUTHulLQSoVf/LbmwAiW7XtUOP799UHBdX4tj6Pvq3S+zUlNM2O
-         E3MKZsVFxFZPuutR3jOLl/WddZiEjMDiLJDumActr5eavuNzlG2h4c07KwEkyxOz259n
-         71fxviSzh8hwR0JD4/JrUku4+6Ad7jhxooI2CutQHMAWhpBSRUjBgBNYmfuJWGXoSZ19
-         g4BA==
+        b=vip6iHJ0Em9DTDHLwTTfneple5wHTVF58g4DFdxTSHotelZqu2joOIlJSK7t2itNYy
+         Is8MiECyq/a/A2rYoR9nEnXcSfHT0NYbaS5TzY05Nc6e/IP2G706ggh9x0wamin0dIQm
+         oHzqk3ydchCTSs/DydJbywOGoAoLCGjvJGH92NFPMD/KPohp6i+fbW/monai3J6SoolL
+         C+k19g7yr94EgsxvgqoM6klOfmcpluxEAwsp2fo2ifhMuiHWKUfOjzk/kDq6BKgky21m
+         hIGkgN7fZiGLmhzwkYAtlVaIkCOP1Nx7liNCvbhEMO9r3dDlsVtRA9wnLmubchN2FlYR
+         lQvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=5JAekN46If/FbTc18oKbSDZ88922/4DQmQrjjGPZjm4=;
+        bh=A95uT00tK4ZofT9z2bOAoLTdecw9CZjPml3Poj9gRcA=;
         fh=kk2WWDSe9SCzWyjzequbgooYc9A8PDm7nTb22zWaiac=;
-        b=Nr+3auixXGx0DiQlar/imP5Qxs1RZarLOphbPJfejgt5FjXy4mL3xfx4VbmmBEjI0w
-         U6I6S/z4tYRyPA8S5QdPwLbItLPOwjKnUOXiQObBet+OVL1K9+cLUVi3rw7K6N7j/P+D
-         gxhbWrNRFEWgw3IUzYYRRlxtDNaOXOT3XleB4AcDAdxfRRnTTOTI0TffO2fEXmNrFes4
-         UyLxdBB8MSj+xMeZpyb/Ue/R2k2N/2EhtweHsWiSr4vK4O19Csv7yR/dns6MRvWQWI4e
-         vIAjupbmAb5r9T9KDmUA5uT6+lRWcu2FmqQ9rAqn2wjOJNVM6u49E0mRojeDSlgzrYPN
-         NiHA==
+        b=S91LgYSznFNh9gCLOJBiNgqmfPVKAk80NquDcz+G1SlOT0G2ywFeo1TAvYvWH/aT2u
+         I2vsiG0Y0A7tUaHXKm/aW3Rm0I84S13gpy0o6Pnls28vbEWZoxYIvZPQ4CVIQ0ZdJQX6
+         hCSlIJ4466gWLwGB1MjAgqEoRI54Vxx4leu7Uh/YEU1tj4BC/SQDoGYMcxyrOmdUdSTH
+         omf3gk1mM77T8GbA5I4pqSm3ouOycGmq+9eFI6N2t64CCxTdfcQX86McuwmMfOJpp4hu
+         ajBVdb3ETxz2bXibDwOAUen1uuG2EPSjExSE162BCdhGUrwyQQQ4J/QOaDtz0cTI+tUz
+         wBQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g6SETA6b;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OMBafPCw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v24-20020a05622a189800b004031ae3ae02si10466304qtc.21.2023.09.06.17.43.27
+        by mx.google.com with ESMTPS id o12-20020ac87c4c000000b00403ae9e8b08si10769106qtv.369.2023.09.06.17.43.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Sep 2023 17:43:27 -0700 (PDT)
+        Wed, 06 Sep 2023 17:43:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g6SETA6b;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OMBafPCw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qe374-0005WY-Ei; Wed, 06 Sep 2023 20:43:14 -0400
+	id 1qe37R-0006U5-Lv; Wed, 06 Sep 2023 20:43:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe36y-0005L0-NW
- for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:43:08 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe37F-000683-IL
+ for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:43:27 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe36w-0002eu-G1
- for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:43:08 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe37D-0002hT-A8
+ for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:43:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1694047385;
+ s=mimecast20190719; t=1694047402;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=5JAekN46If/FbTc18oKbSDZ88922/4DQmQrjjGPZjm4=;
- b=g6SETA6bRLNS28dWnn7vOADHiSUVXm+1ip10+HKtcjxxQ7ffUw3I97sMOx4cKfr5Co+U/X
- yp2FkBffd94UUJw3K+OE57Zb50o2iN6fwjvqkR8HQhiAOsthDxkn5rsIcZw8ylU/Pfcneo
- zrBpmeqkPRSOhUkgybNgMooYSwlMHLI=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-386-reYFMtu8NHKkg5O_DkMOTg-1; Wed, 06 Sep 2023 20:43:00 -0400
-X-MC-Unique: reYFMtu8NHKkg5O_DkMOTg-1
+ bh=A95uT00tK4ZofT9z2bOAoLTdecw9CZjPml3Poj9gRcA=;
+ b=OMBafPCw6zfKUomjMmpqRJYcWT3JywwG9IJBR0Roipx5QRnhRx8AHYhvJfbVqB4dWu80Ks
+ BejbK0ovq4juwgJn47ReFpME9w/ezxIZzS5FBP4CcovnsWTU8FC1FVgtkaUd42DL2Nfnea
+ HE1fUc+cJ1p819YLgIi4eOnqoyYIC60=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-190-9Rnv7jvaPaSBzxV0Z-N6gw-1; Wed, 06 Sep 2023 20:43:16 -0400
+X-MC-Unique: 9Rnv7jvaPaSBzxV0Z-N6gw-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7811729AA2CE;
- Thu,  7 Sep 2023 00:42:58 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3656D101A529;
+ Thu,  7 Sep 2023 00:43:14 +0000 (UTC)
 Received: from gshan.redhat.com (unknown [10.64.136.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5632DC03295;
- Thu,  7 Sep 2023 00:42:43 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 067B4C03295;
+ Thu,  7 Sep 2023 00:42:58 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -97,9 +97,9 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
  kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com, pbonzini@redhat.com,
  imammedo@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v3 24/32] machine: Constify MachineClass::valid_cpu_types[i]
-Date: Thu,  7 Sep 2023 10:35:45 +1000
-Message-ID: <20230907003553.1636896-25-gshan@redhat.com>
+Subject: [PATCH v3 25/32] machine: Use error handling when CPU type is checked
+Date: Thu,  7 Sep 2023 10:35:46 +1000
+Message-ID: <20230907003553.1636896-26-gshan@redhat.com>
 In-Reply-To: <20230907003553.1636896-1-gshan@redhat.com>
 References: <20230907003553.1636896-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -129,44 +129,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LY5S8xS7Z7ob
+X-TUID: CShYUqo+0RcM
 
-Constify MachineClass::valid_cpu_types[i], as suggested by Richard
-Henderson.
+QEMU will be terminated if the specified CPU type isn't supported
+in machine_run_board_init(). The list of supported CPU type names
+is tracked by mc->valid_cpu_types.
 
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+The error handling can be used to propagate error messages, to be
+consistent how the errors are handled for other situations in the
+same function.
+
+No functional change intended.
+
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- hw/m68k/q800.c      | 2 +-
- include/hw/boards.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/core/machine.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
-index b770b71d54..45f2b58b26 100644
---- a/hw/m68k/q800.c
-+++ b/hw/m68k/q800.c
-@@ -596,7 +596,7 @@ static GlobalProperty hw_compat_q800[] = {
- };
- static const size_t hw_compat_q800_len = G_N_ELEMENTS(hw_compat_q800);
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index da699cf4e1..6d3f8e133f 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -1358,6 +1358,7 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
+     MachineClass *machine_class = MACHINE_GET_CLASS(machine);
+     ObjectClass *oc = object_class_by_name(machine->cpu_type);
+     CPUClass *cc;
++    Error *local_err = NULL;
  
--static const char *q800_machine_valid_cpu_types[] = {
-+static const char * const q800_machine_valid_cpu_types[] = {
-     M68K_CPU_TYPE_NAME("m68040"),
-     NULL
- };
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 3b541ffd24..49c328d928 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -268,7 +268,7 @@ struct MachineClass {
-     bool has_hotpluggable_cpus;
-     bool ignore_memory_transaction_failures;
-     int numa_mem_align_shift;
--    const char **valid_cpu_types;
-+    const char * const *valid_cpu_types;
-     strList *allowed_dynamic_sysbus_devices;
-     bool auto_enable_numa_with_memhp;
-     bool auto_enable_numa_with_memdev;
+     /* This checkpoint is required by replay to separate prior clock
+        reading from the other reads, because timer polling functions query
+@@ -1426,15 +1427,16 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
+ 
+         if (!machine_class->valid_cpu_types[i]) {
+             /* The user specified CPU is not valid */
+-            error_report("Invalid CPU type: %s", machine->cpu_type);
+-            error_printf("The valid types are: %s",
+-                         machine_class->valid_cpu_types[0]);
++            error_setg(&local_err, "Invalid CPU type: %s", machine->cpu_type);
++            error_append_hint(&local_err, "The valid types are: %s",
++                              machine_class->valid_cpu_types[0]);
+             for (i = 1; machine_class->valid_cpu_types[i]; i++) {
+-                error_printf(", %s", machine_class->valid_cpu_types[i]);
++                error_append_hint(&local_err, ", %s",
++                                  machine_class->valid_cpu_types[i]);
+             }
+-            error_printf("\n");
++            error_append_hint(&local_err, "\n");
+ 
+-            exit(1);
++            error_propagate(errp, local_err);
+         }
+     }
+ 
 -- 
 2.41.0
 

@@ -1,122 +1,122 @@
-Received: by 2002:a05:7022:12b:b0:6b:57c3:147a with SMTP id 43csp101156dlk;
-        Wed, 6 Sep 2023 21:52:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFc9Kn7VqVKQupwq3e7kjE+DmB3mmj18vpZHRKfCZgthFDOKkrDg2Fe6ipKMA1jQar/h33R
-X-Received: by 2002:a05:622a:198c:b0:410:ab6d:54da with SMTP id u12-20020a05622a198c00b00410ab6d54damr24227656qtc.16.1694062357227;
-        Wed, 06 Sep 2023 21:52:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694062357; cv=none;
+Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp138216ejb;
+        Thu, 7 Sep 2023 00:17:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGN5U/62etQV6Jm33BTSYmPyuewxSTqFWaZTUf1DvaHxNIrt+nA0xl3w2bs0YAOYJ0OzKeB
+X-Received: by 2002:a05:620a:4628:b0:767:b588:a0ad with SMTP id br40-20020a05620a462800b00767b588a0admr2555449qkb.20.1694071063206;
+        Thu, 07 Sep 2023 00:17:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694071063; cv=none;
         d=google.com; s=arc-20160816;
-        b=vvq5EhoDqxpg5EhdWxQqkoSXw/cMPLzoI2oNsxRhhInU63xwdegn2SHDsHzPI++a+b
-         0eI5DCrKULDcdZ9hFkIbQM4a+F/6/v67Ta2lftJTsg2tzfRFSfN+jC/EnJQLUXRMz0DM
-         GdjdjGXi43e3yNRWOYQyLPzOl2tP4s7qGl3Hws7xGgoHrVpkD9BhhalBJaSNYkcajyNa
-         CicnW7016cBbPE6wVxwDg871dR8wqVplMm2ZkJfzCvd51WW8OIucZk/QQriqwS8/X4ov
-         fC5nSN1vKQkJGjiku7Kv7jXnArwaUwdHlSv45L6mkVVKBFe4V9WmaYMg20Aoe5jrr3vq
-         XmWQ==
+        b=MiM078VKZ8FG67LrRLxaVAOOnrkjPf52wvHByujDflSFTe5GZXZiu8VZp/T2UilDkC
+         dJNA51wDN3TSYNVwCuvnb7l5JLFkXOgE5fC4pE3nwErfWvv5TdAYyzwQZcvAzA7y7t0H
+         EMm8HBxTwgPQzoh25sx2ozrjNjU5RyJofM4tvg3v8m2i73qqaGrKe+SQ8lSZAFILRMIw
+         AzAQJLW7olm+HmtNsxRf24buLjghmSa3A3qQXpMao95Hh/MhYbQWsKVHi0hAGdyfVojc
+         ZL4ZQeg+600bbVzEhQQRYwpCfeTTgXorpPONFiqwRMJtZF5Roc6t100Hh5+FJcKDYmhj
+         KfoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=fkhYe6xW7dribpJqdVVxLg+UNNL+53kjlIuItC3qp4o=;
-        fh=ozCzqmWEvo8XRa9DYBQKLbZKVm81dsprfoOFyfnZLqk=;
-        b=Cb8V+colNOAVtUDCrQz5SQOvqw3z7V+ESysdOhuH/p97PVb7/bGH3MEXI55iTu9cQD
-         ldr9KMWvlw54RrOONrM2XUjZXc1ekDHAs1NgUb9Ugu9xhNTGg5Jx/hFiydUDNapTs31U
-         ajsXbfTVbkNGiGSzNNQdxrjQL1Ry02Q5OiUQkerEa2+ueTvCnzwAHdQl0Ck03X88UevQ
-         L741z0HD2APTJCxvtHkkFRHbObX/o4JLrIEgFSs5uG5TR2/10L77KdawoJi6/CuDoDnn
-         No6K8GW+21V+zz/nujF2twNbu+dwfsuCtUSHJEVIDfPArOtZnEDDFelc5o/4GxJNvpRo
-         0AuQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=oc3lHUeurO7vGjxw+biDlYs90UYXbFJj5ipqCgg2zvo=;
+        fh=SuuTrZqFFJ11M+TQjo5pP9NW9FdN6n7hS8E0quKsmh0=;
+        b=se1Ez6BqgWXmNcsevtRdJ33VqE+HWk+F4tdngJ5aBXKZbabNWEATv/SPwI/VnJ0xnn
+         s425Gvu7shIddO8AdBzxS3yN7ABWK6fkastRCh8YQgcry2h7LSlo38yqLtXcLbQ6zBPq
+         KvsRPbDhFQlPC2cUgKdo4fVnRwmub/RZY63t9DP3CuF8Bo7M6Mmz6ERaBtZojWASH4xg
+         xLbju4Qr1xLggJMLcVXB85viuzDaVr7FnWYrCe1GlqNizj9wQCHJMQjLVOkqOIo8vayb
+         fK0zjqsPUIft8PwyhrSkmlSZvvLKyRfcFldX7WanaDf6RM3mZNWVkyynICWScFVO9XzV
+         rCyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=QqUe0Yqr;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Uoh/cOkX";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q6-20020a05622a04c600b00403b0036414si10540078qtx.807.2023.09.06.21.52.37
+        by mx.google.com with ESMTPS id u14-20020a05620a454e00b00767c53175cesi11859277qkp.509.2023.09.07.00.17.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Sep 2023 21:52:37 -0700 (PDT)
+        Thu, 07 Sep 2023 00:17:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=QqUe0Yqr;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Uoh/cOkX";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qe70J-0008QC-Mh; Thu, 07 Sep 2023 00:52:31 -0400
+	id 1qe9GT-0001hP-RM; Thu, 07 Sep 2023 03:17:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qe70E-0008Pl-Bf; Thu, 07 Sep 2023 00:52:27 -0400
-Received: from mail-ua1-x931.google.com ([2607:f8b0:4864:20::931])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qe9GT-0001h2-47
+ for qemu-arm@nongnu.org; Thu, 07 Sep 2023 03:17:21 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qe70B-0000DF-KH; Thu, 07 Sep 2023 00:52:26 -0400
-Received: by mail-ua1-x931.google.com with SMTP id
- a1e0cc1a2514c-76d846a4b85so183896241.1; 
- Wed, 06 Sep 2023 21:52:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qe9GP-0000E1-Up
+ for qemu-arm@nongnu.org; Thu, 07 Sep 2023 03:17:20 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-31c65820134so593068f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 07 Sep 2023 00:16:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1694062341; x=1694667141; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fkhYe6xW7dribpJqdVVxLg+UNNL+53kjlIuItC3qp4o=;
- b=QqUe0YqrSV+MHfhttU1Ck2bhnFk72HqnQ8QJS05Q2a3S85DedOHNx24M5q3EvywtcW
- t5var5aRew7McrHlESzQsss2DB4rqocZIDL9rz4GxPwrUKgWhLL+fJJKHCv17cuArQP1
- 3e9FVRMeDj4+Qp0UHfrvqZSR/2hbl9bG//3tdyjVvFhnwBSJfuUoD/vscOBNgBlq9fjA
- j4Qo+8dctnHxz8CR6DwIYA9nPqwXfGF+r16s0HTE/p2GHbn39Q7MjIYPkq1YveY+hIg0
- +CRSpD6ePpirv9PqS3GHegtmj1yulrhPMkrcBAT7dKAK5ZaA6lyqx/Z+21u37fjGsK3E
- j0Kg==
+ d=linaro.org; s=google; t=1694071007; x=1694675807; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=oc3lHUeurO7vGjxw+biDlYs90UYXbFJj5ipqCgg2zvo=;
+ b=Uoh/cOkXuUSqD2ju+OHRu/w3j+p+ja1GxQ4kNf3xnFsouYg6J6Wn1OtfXOkQJS1Fnp
+ LYFigNtpjyiK4GmcM3ggQl2tsTwI3Z+IrB7hlmMfUXlAN9OdN1KvHETiVRWp7xRUyMZL
+ h7tT5DK5LWktWCZFuAXCY265EI7HxsdFyZmX9Nqj5Yz+JpikwHxTnHwaioBtft4Zk0Im
+ ulDcl+YEbptTwOF4RAtDdz5QNwYZXEoQkmMFjl9aRJzh7mgAl2xLtgs4yq02kSW2MjIB
+ 4EFzxUd2rn8pJ8L27Hmiy1Fa/ogfNicuR2Q7bbd4LH+Ye4g6yqRzo5eXEC3KvivrixDF
+ MhnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1694062341; x=1694667141;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fkhYe6xW7dribpJqdVVxLg+UNNL+53kjlIuItC3qp4o=;
- b=Cp2X7Xx15y9EE2i6kVU5OMdBOrATn5TUkYVSALSgzPcmiuGlJYWtHvL28aHkl5vMmt
- E35LWRHFJUP0pvPtdIwUGjnIh8spiylFJpl+W7yslWlqrFQL+AsMBR3wpZ7+oh9VZTMX
- kSdXI/Z6OZO5wL2mz+by10PF/d0jLaLzdLTYUGk9LxMqRQp6/EQ+p1jxT8LHTvL9MIf8
- 5Qf30tBePEnJdBOz2WeQuHx/CwA2uJ2+mLlxt2hEPNFRtM42cqYQvICgmHF354oi9dBp
- GkCkA9NSDgopCEBWv4ulSjnSs7/u8BGUzkQMmrntaCPI7LH7yAS0zSwnlnX+5R0VUdzR
- mkAw==
-X-Gm-Message-State: AOJu0YyJKHBiIOoZWlhB6e/ik6M22kpCkcbE0G01huLQ6rBgE5oAbuEN
- vHjInSUi4f7SocUi3eFaWJ1mkY3E7BqUq+iue5A=
-X-Received: by 2002:a05:6102:156:b0:44e:d6c3:51d6 with SMTP id
- a22-20020a056102015600b0044ed6c351d6mr4676251vsr.14.1694062341638; Wed, 06
- Sep 2023 21:52:21 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1694071007; x=1694675807;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=oc3lHUeurO7vGjxw+biDlYs90UYXbFJj5ipqCgg2zvo=;
+ b=Sj77XK1Cbd+QbQdCTh+KdGO7WmiJsa+u1oIcZzv7CTBvYlaQUeeVQF5hD8F97ior/0
+ hF//+xvbQEVr9xfkODCxveXf9WI7caTyrYWarfLd9sjoSF1hXfW6VkFErenFMrK25yK8
+ XPUQ/0xEwCc3vsnhSv1MVMiJVY4QcIvdm8TUyRrip3m9C094vzRds/c2QYIQkfg/C142
+ 400MLl/O1xhigWV/xpNGcaWEwHB1ug1VbWwdfHK8HmVaAvvAft1fuR/25nqAApOHt9JH
+ M54gKfgHJSfsKorE+pBCUpD9nQfiUAoiYbcU4GbJfJqBbomjCmghfRuqnVxM8WAt4+bJ
+ BG9Q==
+X-Gm-Message-State: AOJu0YxPUQR3FF8buAZ44UnyeywJZdXrKnkkxSqwUeoxd2s8qANOaS9s
+ Rgn0IcIdfLeA2JY9hVHzXL1dmQ==
+X-Received: by 2002:a05:6000:881:b0:317:ed01:dc48 with SMTP id
+ cs1-20020a056000088100b00317ed01dc48mr4458248wrb.9.1694071007001; 
+ Thu, 07 Sep 2023 00:16:47 -0700 (PDT)
+Received: from [192.168.69.115] (176-131-222-226.abo.bbox.fr.
+ [176.131.222.226]) by smtp.gmail.com with ESMTPSA id
+ c7-20020a5d4147000000b0031de43fe9bfsm22683297wrq.0.2023.09.07.00.16.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 Sep 2023 00:16:46 -0700 (PDT)
+Message-ID: <efc85591-fd5e-c6e7-ab3d-220d5ca57aa5@linaro.org>
+Date: Thu, 7 Sep 2023 09:16:43 +0200
 MIME-Version: 1.0
-References: <20230824142942.3983650-1-sunilvl@ventanamicro.com>
- <20230824142942.3983650-3-sunilvl@ventanamicro.com>
-In-Reply-To: <20230824142942.3983650-3-sunilvl@ventanamicro.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 7 Sep 2023 14:51:54 +1000
-Message-ID: <CAKmqyKNqLCvtB2hdqhsigBnoDbG4c=rjP3+6t7j5F9G2j1WAeg@mail.gmail.com>
-Subject: Re: [PATCH v2 02/12] hw/arm/virt-acpi-build.c: Migrate virtio
- creation to common location
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, 
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Anup Patel <apatel@ventanamicro.com>, Andrew Jones <ajones@ventanamicro.com>, 
- Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::931;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x931.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.0
+Subject: Re: [PATCH] hw/riscv: split RAM into low and high memory
+Content-Language: en-US
+To: "Wu, Fei" <fei2.wu@intel.com>, Andrew Jones <ajones@ventanamicro.com>
+Cc: palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
+ liweiwei@iscas.ac.cn, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, qemu-riscv@nongnu.org, qemu-devel@nongnu.org,
+ Andrei Warkentin <andrei.warkentin@intel.com>, qemu-arm
+ <qemu-arm@nongnu.org>, Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>
+References: <20230731015317.1026996-1-fei2.wu@intel.com>
+ <20230803-3855259bbabb934c247c5607@orel>
+ <d654810c-4f4f-7491-7711-c6076f42dcae@intel.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <d654810c-4f4f-7491-7711-c6076f42dcae@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.473,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -133,157 +133,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1ayRCSsh5gjP
+X-TUID: X2VQTce5FiFZ
 
-On Fri, Aug 25, 2023 at 12:31=E2=80=AFAM Sunil V L <sunilvl@ventanamicro.co=
-m> wrote:
->
-> RISC-V also needs to create the virtio in DSDT in the same way as ARM. So=
-,
-> instead of duplicating the code, move this function to the device specifi=
-c
-> file which is common across architectures.
->
-> Suggested-by: Igor Mammedov <imammedo@redhat.com>
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+Widening Cc to ARM/VFIO.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+On 4/8/23 11:15, Wu, Fei wrote:
+> On 8/3/2023 11:07 PM, Andrew Jones wrote:
+>> On Mon, Jul 31, 2023 at 09:53:17AM +0800, Fei Wu wrote:
+>>> riscv virt platform's memory started at 0x80000000 and
+>>> straddled the 4GiB boundary. Curiously enough, this choice
+>>> of a memory layout will prevent from launching a VM with
+>>> a bit more than 2000MiB and PCIe pass-thru on an x86 host, due
+>>> to identity mapping requirements for the MSI doorbell on x86,
+>>> and these (APIC/IOAPIC) live right below 4GiB.
+>>>
+>>> So just split the RAM range into two portions:
+>>> - 1 GiB range from 0x80000000 to 0xc0000000.
+>>> - The remainder at 0x100000000
+>>>
+>>> ...leaving a hole between the ranges.
+>>
+>> Can you elaborate on the use case? Maybe provide details of the host
+>> system and the QEMU command line? I'm wondering why we didn't have
+>> any problems with the arm virt machine type. Has nobody tried this
+>> use case with that? Is the use case something valid for riscv, but
+>> not arm?
+>>
+> Firstly we have to enable pcie passthru on host, find the device groups,
+> e.g. the vga card, and add their pci ids to host kernel cmdline:
+> 	vfio-pci.ids=10de:0f02,10de:0e08
+> 
+> then start vm through qemu as follows:
+> $Q -machine virt -m 4G -smp 4 -nographic \
+>    -bios /usr/lib/riscv64-linux-gnu/opensbi/generic/fw_jump.elf \
+>    -kernel ./vmlinuz -initrd initrd.img -append "root=/dev/vda1 rw" \
+>    -drive
+> file=ubuntu-22.04.1-preinstalled-server-riscv64+unmatched.img,if=virtio,format=raw
+> \
+>    -device vfio-pci,host=01:00.0 -device vfio-pci,host=01:00.1 \
+>    -netdev user,id=vnet,hostfwd=:127.0.0.1:2223-:22 -device
+> virtio-net-pci,netdev=vnet
+> 
+> Without this patch, qemu exits immediately instead of boots up.
+> 
+> Just tried pcie passthru on arm, it cannot handle 4G memory either.
+> $Q -m 4G -smp 4 -cpu max -M virt -nographic \
+>    -pflash /usr/share/AAVMF/AAVMF_CODE.fd -pflash flash1.img \
+>    -drive if=none,file=ubuntu-22.04-server-cloudimg-arm64.img,id=hd0 \
+>    -device virtio-blk-device,drive=hd0 \
+>    -device vfio-pci,host=01:00.0 -device vfio-pci,host=01:00.1
+> 
+> qemu-system-aarch64: -device vfio-pci,host=01:00.0: VFIO_MAP_DMA failed:
+> Invalid argument
+> qemu-system-aarch64: -device vfio-pci,host=01:00.0: vfio 0000:01:00.0:
+> failed to setup container for group 11: memory listener initialization
+> failed: Region mach-virt.ram: vfio_dma_map(0x55de3c2a97f0, 0x40000000,
+> 0x100000000, 0x7f8fcbe00000) = -22 (Invalid argument)
+> 
+> Thanks,
+> Fei.
+> 
+>> Thanks,
+>> drew
+> 
+> 
 
-Alistair
-
-> ---
->  hw/arm/virt-acpi-build.c        | 29 ++---------------------------
->  hw/virtio/meson.build           |  1 +
->  hw/virtio/virtio-acpi.c         | 28 ++++++++++++++++++++++++++++
->  include/hw/virtio/virtio-acpi.h | 11 +++++++++++
->  4 files changed, 42 insertions(+), 27 deletions(-)
->  create mode 100644 hw/virtio/virtio-acpi.c
->  create mode 100644 include/hw/virtio/virtio-acpi.h
->
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index b8e725d953..69733f6663 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -58,6 +58,7 @@
->  #include "migration/vmstate.h"
->  #include "hw/acpi/ghes.h"
->  #include "hw/acpi/viot.h"
-> +#include "hw/virtio/virtio-acpi.h"
->
->  #define ARM_SPI_BASE 32
->
-> @@ -118,32 +119,6 @@ static void acpi_dsdt_add_flash(Aml *scope, const Me=
-mMapEntry *flash_memmap)
->      aml_append(scope, dev);
->  }
->
-> -static void acpi_dsdt_add_virtio(Aml *scope,
-> -                                 const MemMapEntry *virtio_mmio_memmap,
-> -                                 uint32_t mmio_irq, int num)
-> -{
-> -    hwaddr base =3D virtio_mmio_memmap->base;
-> -    hwaddr size =3D virtio_mmio_memmap->size;
-> -    int i;
-> -
-> -    for (i =3D 0; i < num; i++) {
-> -        uint32_t irq =3D mmio_irq + i;
-> -        Aml *dev =3D aml_device("VR%02u", i);
-> -        aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0005")));
-> -        aml_append(dev, aml_name_decl("_UID", aml_int(i)));
-> -        aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
-> -
-> -        Aml *crs =3D aml_resource_template();
-> -        aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
-> -        aml_append(crs,
-> -                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIG=
-H,
-> -                                 AML_EXCLUSIVE, &irq, 1));
-> -        aml_append(dev, aml_name_decl("_CRS", crs));
-> -        aml_append(scope, dev);
-> -        base +=3D size;
-> -    }
-> -}
-> -
->  static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
->                                uint32_t irq, VirtMachineState *vms)
->  {
-> @@ -850,7 +825,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
->          acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
->      }
->      fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
-> -    acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
-> +    virtio_acpi_dsdt_add(scope, &memmap[VIRT_MMIO],
->                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANS=
-PORTS);
->      acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, v=
-ms);
->      if (vms->acpi_dev) {
-> diff --git a/hw/virtio/meson.build b/hw/virtio/meson.build
-> index 13e7c6c272..3ae1242bcf 100644
-> --- a/hw/virtio/meson.build
-> +++ b/hw/virtio/meson.build
-> @@ -75,3 +75,4 @@ system_ss.add(when: 'CONFIG_ALL', if_true: files('virti=
-o-stub.c'))
->  system_ss.add(files('virtio-hmp-cmds.c'))
->
->  specific_ss.add_all(when: 'CONFIG_VIRTIO', if_true: specific_virtio_ss)
-> +system_ss.add(when: 'CONFIG_ACPI', if_true: files('virtio-acpi.c'))
-> diff --git a/hw/virtio/virtio-acpi.c b/hw/virtio/virtio-acpi.c
-> new file mode 100644
-> index 0000000000..977499defd
-> --- /dev/null
-> +++ b/hw/virtio/virtio-acpi.c
-> @@ -0,0 +1,28 @@
-> +#include "hw/virtio/virtio-acpi.h"
-> +#include "hw/acpi/aml-build.h"
-> +
-> +void virtio_acpi_dsdt_add(Aml *scope,
-> +                          const MemMapEntry *virtio_mmio_memmap,
-> +                          uint32_t mmio_irq, int num)
-> +{
-> +    hwaddr base =3D virtio_mmio_memmap->base;
-> +    hwaddr size =3D virtio_mmio_memmap->size;
-> +    int i;
-> +
-> +    for (i =3D 0; i < num; i++) {
-> +        uint32_t irq =3D mmio_irq + i;
-> +        Aml *dev =3D aml_device("VR%02u", i);
-> +        aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0005")));
-> +        aml_append(dev, aml_name_decl("_UID", aml_int(i)));
-> +        aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
-> +
-> +        Aml *crs =3D aml_resource_template();
-> +        aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
-> +        aml_append(crs,
-> +                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIG=
-H,
-> +                                 AML_EXCLUSIVE, &irq, 1));
-> +        aml_append(dev, aml_name_decl("_CRS", crs));
-> +        aml_append(scope, dev);
-> +        base +=3D size;
-> +    }
-> +}
-> diff --git a/include/hw/virtio/virtio-acpi.h b/include/hw/virtio/virtio-a=
-cpi.h
-> new file mode 100644
-> index 0000000000..b8687b1b42
-> --- /dev/null
-> +++ b/include/hw/virtio/virtio-acpi.h
-> @@ -0,0 +1,11 @@
-> +#ifndef VIRTIO_ACPI_H
-> +#define VIRTIO_ACPI_H
-> +
-> +#include "qemu/osdep.h"
-> +#include "exec/hwaddr.h"
-> +
-> +void virtio_acpi_dsdt_add(Aml *scope, const MemMapEntry *virtio_mmio_mem=
-map,
-> +                          uint32_t mmio_irq, int num);
-> +
-> +#endif
-> +
-> --
-> 2.39.2
->
->

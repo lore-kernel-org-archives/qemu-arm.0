@@ -1,115 +1,114 @@
-Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp436615ejb;
-        Thu, 7 Sep 2023 09:06:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEkFmUEwdgEAqHZjdHLg2T7HQWmvxdh2bURBQyu5JZlxv4lXpraIWJArvPC6SlEtz2txSbp
-X-Received: by 2002:a05:6102:213:b0:44d:5c17:d065 with SMTP id z19-20020a056102021300b0044d5c17d065mr2210376vsp.13.1694102792958;
-        Thu, 07 Sep 2023 09:06:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694102792; cv=none;
+Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp436831ejb;
+        Thu, 7 Sep 2023 09:06:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH0oSis2JemHhAXopxOaKw23wa+IfuwGyi6qxzfNwM7XZOxMDlktLLyy7uImOTkTELTKkHC
+X-Received: by 2002:a05:620a:b48:b0:76e:f804:1532 with SMTP id x8-20020a05620a0b4800b0076ef8041532mr16945682qkg.33.1694102808936;
+        Thu, 07 Sep 2023 09:06:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694102808; cv=none;
         d=google.com; s=arc-20160816;
-        b=bFXJr5BSAwxkvX6PFdvexrlc0GyGGQeu8tvPH1t8w8sMsrT7YE1bE0N5ydFvhlML1w
-         SR+HCq3EeB5/GjKyHITrnzDg3nr9gfiGDwYjPqunalevF8hsjl4OU/jvGK7GxeZ/ZBuY
-         u63Z2hCj7i+HSh9FxaaPuF+gKF9BPN1/CuBy8UF5F5uSgV64DE3Zks7pVNRpEBqdBkz6
-         zSXvEd4FG2tDFkE8MUmD1UmyyuwGXhqT/t5BRiNGXo52FtTLeYfSUdnWo/v+nL4sykk7
-         JMPKy7D6MfLBtGzKq/EBmJbWdcwbyN2F5I3pMF+3LOnAi4hMJvnefhTd5NLTDt6Up4an
-         JN4g==
+        b=d6XyPelPTXPsdDrpStjt7hjxZLaQ/NhQ5e9kiydlZ3/Y91t4t5BI5Eq33RSsVTefbf
+         RJN8zjIygTypuDhqtoCrmERUCPE2ydRRQ4+L5Vw06XCnoc4xSX8FDtMTNbgBGKVhwnLp
+         VF82KM5EMXhq7vfFna0M767GkHOnYFWtrVof5KO7HmF4+caazi2yyjQCYbmDYkO1SEYu
+         ydr1z5Al3mAubasZeQkN9Q/KiIMCzDUw75Wir5UFuC5e7g9z2Cj20zKWvwEAwmYoZxFB
+         wyx3EI/y+r9UMR2jM8WzeVSeOWO3gEetpzS7N1tmnpkTdc6zAGTyzXnaY61rHK7QKKym
+         miEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=nJw3JLPILyaoZeMHMFoxBuLHWlgQhlRFClPLCm9EsO8=;
+        bh=7BS/rY/c60JsPKvSpLBQ5UvGiBW6XDQ0AnN4C2kj1HA=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=rseOpft5RoQnsRE4m/GS+ALRkNLxTx+g389EpTowGB7ZUzOmZWC4mpGkIaJiWj9agl
-         7Qo4kQJRmOM80Jkyz3kbw6sPvOD4Su98Pk65UMrkaorR0PBpx7PG5x8LJfmaQwfWjZi/
-         56ZLjYzg0xyzWWH2WPB0kz5HvXyx9W4JnA8uNHvBnR0dUUNRw3cFzRGwuVyity2q8bma
-         jbA6ktIMrQRkaiqmz+X5CxXq90m02AaaTd3jPkytKOj4hDxVFsm68riH1VNii5jLqXDK
-         kwXj8kOSDZ8Ek5oBvfzBgVuHpOlOHb5lP+CQS7mTpvDeCx3C3NPef3Mv46NnfqAlJMXv
-         rOLQ==
+        b=YfRCF2raBx7KL1zStPDUSH8xmuYF5kvswOIRLfoCxWjoos/SK6mVrw99110tkwucdz
+         42U0NXzefakB9kOGoZpIICujpgZCX7Rf6hdkXK8EImXdTbI/baedUDmboGc7fWDJ/lr0
+         AGfIATWXcBfvlRAJMY3HElrSAG/Dk2KbyEJBx4gR7ibMHDz4tG2pbXdRaFQPas3nK5YG
+         nkruaJauEWgohsMet9ljSHlawolEMALP9fXTO5yhsa4AYNtxgdnL6SHl+681zZYT63F5
+         2uLOmdLL5pqUYIcDC4kHZIyxs5ZZJIrlZiMNlOnv856Ok6k/u9dVIhMIEJHyfX5KSk8V
+         twHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZatUdvuE;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Toemc/B7";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y4-20020a67cf04000000b0044d3f330144si2045595vsl.124.2023.09.07.09.06.32
+        by mx.google.com with ESMTPS id py18-20020a05620a879200b0076ef974159esi10875082qkn.753.2023.09.07.09.06.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Sep 2023 09:06:32 -0700 (PDT)
+        Thu, 07 Sep 2023 09:06:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZatUdvuE;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Toemc/B7";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qeHU5-0000w1-SK; Thu, 07 Sep 2023 12:03:57 -0400
+	id 1qeHU0-0000rC-Rw; Thu, 07 Sep 2023 12:03:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeHU3-0000u0-Dz
- for qemu-devel@nongnu.org; Thu, 07 Sep 2023 12:03:55 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1qeHTz-0000q2-N3
+ for qemu-devel@nongnu.org; Thu, 07 Sep 2023 12:03:51 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeHTw-00020g-Gj
- for qemu-devel@nongnu.org; Thu, 07 Sep 2023 12:03:55 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-31dca134c83so1068124f8f.3
- for <qemu-devel@nongnu.org>; Thu, 07 Sep 2023 09:03:48 -0700 (PDT)
+ id 1qeHTu-0001zs-H1
+ for qemu-devel@nongnu.org; Thu, 07 Sep 2023 12:03:51 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-31ae6bf91a9so1068450f8f.2
+ for <qemu-devel@nongnu.org>; Thu, 07 Sep 2023 09:03:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694102627; x=1694707427; darn=nongnu.org;
+ d=linaro.org; s=google; t=1694102624; x=1694707424; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=nJw3JLPILyaoZeMHMFoxBuLHWlgQhlRFClPLCm9EsO8=;
- b=ZatUdvuEtNQISXPEoXmdcaWOGpUIgI0Kp5w4yyKPUwiJUTRhd676FnbP1cAEyZ+oJJ
- WN95+lpIQZDhHGq8jlCMc0CTNEDYRCssGByhk8nqtKOxWVRqX0Jh+DCUhGynqHoZ4cwH
- Q1d0cK0dkb2B5jY7hG0m4I86BdU/xYY/nCMuY7oNtN7YOMDIpeRpmNsWyKV2Xh/KdkXB
- 8Jc62lsPG94gBx4dW75JDqOhYm9vlmfv+pdcPR9KkSL2uzcaVZXrM0D+EWOttUiamIMq
- voMbRlZE+qIXV4CXtCTKnRE9AMxuHjJpM43tbxmttB2XRUZE3rjXm1lusWy+mtTuXA2R
- KHDw==
+ :reply-to; bh=7BS/rY/c60JsPKvSpLBQ5UvGiBW6XDQ0AnN4C2kj1HA=;
+ b=Toemc/B7GPOs34eXnM9No05/Wb80jCsBy50rCBRj03fF4DlPFUUZeWt89xmnzOimHr
+ swPr9dk+aUjQNfjtlNjmX+Ooy+zrW/R+i5LI1hl+mSdJ7hZWAiHpvtNH77O3fiiPW0qY
+ 25EJBjc9va6Z71MHSfgVqFLvCm73aieXbUOAv8ZhF8bcsJ1N5ZjvdmuG6812AY+l4NO6
+ Mot5F3rJWIsnF5okFi7ZKL6gyH2YVHHDQoJSqwg9XirsRJI5DSk5TWfY75MSZf33XsfK
+ Dwbq/gmatRekx5mlVLMDTzxqlNH7GJzLRVwDtMUasK+lBgO0ZiR4QY73waiAyPLkYmvr
+ UOdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1694102627; x=1694707427;
+ d=1e100.net; s=20221208; t=1694102624; x=1694707424;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=nJw3JLPILyaoZeMHMFoxBuLHWlgQhlRFClPLCm9EsO8=;
- b=XaHDbYLSqMd//WPaUNDg9ZC/Cy2MHtLY7cdRbMi0CiVgrLapDS43gz79r43yZa3352
- 8/0IJwp2BmouhupROGs//FtQXaM3HmGnyyuwf+SoT1gmUhl24L1IaOZtoEbixwr66Otq
- TEPvyG+O9M3ztMJEEVaJoNtWDYV3xCxh7JRqDNx8MNHOGAu73L4GU7ugtcPx1a3IpJFH
- hsbhjjEZY2gpxsvwXuNqLK1zcaNPBHQklLglkhr/0OAVJF5Gq5Evdrx4XqCeMV7P2aw0
- tvXaDI6U3kRxEEngm4SCB9A+G+Tkujf3uhGl0/sYdQfFqrhTETorMit5saxqIlxmlxvk
- qNrg==
-X-Gm-Message-State: AOJu0YwBcu9EJjbEWGmEwxUv4oYJQtEwDjW090z5Oi6KPR5C9ZUCfqDh
- 0HsEnzO0YY+hcjqWgTQx5CjccQ==
-X-Received: by 2002:adf:e5c7:0:b0:319:6ae0:cae5 with SMTP id
- a7-20020adfe5c7000000b003196ae0cae5mr4312679wrn.70.1694102627127; 
- Thu, 07 Sep 2023 09:03:47 -0700 (PDT)
+ bh=7BS/rY/c60JsPKvSpLBQ5UvGiBW6XDQ0AnN4C2kj1HA=;
+ b=QHHRXQSWZxZFjFT+srra3HkBgS8tBorjUHAgKT+YDecotBtwFjOje9gTuq/qq0x6Qm
+ WPizu3AWXTFEj/xrY/NkKwKogIZyz5DLQPW8KRc7fpBoOkEFrkyWYdt7o5MPLY49Syjy
+ WcD2LNJR1EldTeTIBOJheLWvWVDQPvrMD62ymk7JpN5MjUpCUuKnZ+8yWW1Zv1W8KTzh
+ r6h+wbONRG4CDiHRKojxuM59uHT9/mKY0GK/1xG8UBfp8ugi6HFKz9hjm9gOzt+QdIlK
+ /U2r92XOgMPW6QK8ZMGivyfdPlBPtFGLzzFBWHAMg5/gx0VP5gtGnYVYoniO7Yex9XiK
+ eFFQ==
+X-Gm-Message-State: AOJu0YxgiIW4OSHAlTDVB15JDML1Km2hv+1gW7xxbmcJPANnzWsFd8ZB
+ 2eyHn0uZkL6bD1bWAZgwN8dnDpOyltF0AILZVt4=
+X-Received: by 2002:adf:f30a:0:b0:31d:cf59:8d8 with SMTP id
+ i10-20020adff30a000000b0031dcf5908d8mr4980131wro.14.1694102624605; 
+ Thu, 07 Sep 2023 09:03:44 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- d1-20020adfa401000000b0031980294e9fsm20256241wra.116.2023.09.07.09.03.46
+ d1-20020adfa401000000b0031980294e9fsm20256241wra.116.2023.09.07.09.03.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Sep 2023 09:03:46 -0700 (PDT)
+ Thu, 07 Sep 2023 09:03:44 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 08/14] target/arm: Implement MTE tag-checking functions for
- FEAT_MOPS
-Date: Thu,  7 Sep 2023 17:03:34 +0100
-Message-Id: <20230907160340.260094-9-peter.maydell@linaro.org>
+Subject: [PATCH 04/14] target/arm: Implement FEAT_MOPS enable bits
+Date: Thu,  7 Sep 2023 17:03:30 +0100
+Message-Id: <20230907160340.260094-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230907160340.260094-1-peter.maydell@linaro.org>
 References: <20230907160340.260094-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,130 +123,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nOCj5hdYCWtX
+X-TUID: KcEwGNEveO4V
 
-The FEAT_MOPS instructions need a couple of helper routines that
-check for MTE tag failures:
- * mte_mops_probe() checks whether there is going to be a tag
-   error in the next up-to-a-page worth of data
- * mte_check_fail() is an existing function to record the fact
-   of a tag failure, which we need to make global so we can
-   call it from helper-a64.c
+FEAT_MOPS defines a handful of new enable bits:
+ * HCRX_EL2.MSCEn, SCTLR_EL1.MSCEn, SCTLR_EL2.MSCen:
+   define whether the new insns should UNDEF or not
+ * HCRX_EL2.MCE2: defines whether memops exceptions from
+   EL1 should be taken to EL1 or EL2
+
+Since we don't sanitise what bits can be written for the SCTLR
+registers, we only need to handle the new bits in HCRX_EL2, and
+define SCTLR_MSCEN for the new SCTLR bit value.
+
+The precedence of "HCRX bits acts as 0 if SCR_EL3.HXEn is 0" versus
+"bit acts as 1 if EL2 disabled" is not clear from the register
+definition text, but it is clear in the CheckMOPSEnabled()
+pseudocode(), so we follow that.  We'll have to check whether other
+bits we need to implement in future follow the same logic or not.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/internals.h      | 28 +++++++++++++++++++
- target/arm/tcg/mte_helper.c | 54 +++++++++++++++++++++++++++++++++++--
- 2 files changed, 80 insertions(+), 2 deletions(-)
+ target/arm/cpu.h    |  6 ++++++
+ target/arm/helper.c | 28 +++++++++++++++++++++-------
+ 2 files changed, 27 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 5f5393b25c4..a70a7fd50f6 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1272,6 +1272,34 @@ FIELD(MTEDESC, SIZEM1, 12, SIMD_DATA_BITS - 12)  /* size - 1 */
- bool mte_probe(CPUARMState *env, uint32_t desc, uint64_t ptr);
- uint64_t mte_check(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra);
- 
-+/**
-+ * mte_mops_probe: Check where the next MTE failure is for a FEAT_MOPS operation
-+ * @env: CPU env
-+ * @ptr: start address of memory region (dirty pointer)
-+ * @size: length of region (guaranteed not to cross a page boundary)
-+ * @desc: MTEDESC descriptor word (0 means no MTE checks)
-+ * Returns: the size of the region that can be copied without hitting
-+ *          an MTE tag failure
-+ *
-+ * Note that we assume that the caller has already checked the TBI
-+ * and TCMA bits with mte_checks_needed() and an MTE check is definitely
-+ * required.
-+ */
-+uint64_t mte_mops_probe(CPUARMState *env, uint64_t ptr, uint64_t size,
-+                        uint32_t desc);
-+
-+/**
-+ * mte_check_fail: Record an MTE tag check failure
-+ * @env: CPU env
-+ * @desc: MTEDESC descriptor word
-+ * @dirty_ptr: Failing dirty address
-+ * @ra: TCG retaddr
-+ *
-+ * This may never return (if the MTE tag checks are configured to fault).
-+ */
-+void mte_check_fail(CPUARMState *env, uint32_t desc,
-+                    uint64_t dirty_ptr, uintptr_t ra);
-+
- static inline int allocation_tag_from_addr(uint64_t ptr)
- {
-     return extract64(ptr, 56, 4);
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index 884d88848aa..0065012be19 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -616,8 +616,8 @@ static void mte_async_check_fail(CPUARMState *env, uint64_t dirty_ptr,
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9b76cc68c6d..7d2e1a1cfe8 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1314,6 +1314,7 @@ void pmu_init(ARMCPU *cpu);
+ #define SCTLR_EnIB    (1U << 30) /* v8.3, AArch64 only */
+ #define SCTLR_EnIA    (1U << 31) /* v8.3, AArch64 only */
+ #define SCTLR_DSSBS_32 (1U << 31) /* v8.5, AArch32 only */
++#define SCTLR_MSCEN   (1ULL << 33) /* FEAT_MOPS */
+ #define SCTLR_BT0     (1ULL << 35) /* v8.5-BTI */
+ #define SCTLR_BT1     (1ULL << 36) /* v8.5-BTI */
+ #define SCTLR_ITFSB   (1ULL << 37) /* v8.5-MemTag */
+@@ -4224,6 +4225,11 @@ static inline bool isar_feature_aa64_doublelock(const ARMISARegisters *id)
+     return FIELD_SEX64(id->id_aa64dfr0, ID_AA64DFR0, DOUBLELOCK) >= 0;
  }
  
- /* Record a tag check failure.  */
--static void mte_check_fail(CPUARMState *env, uint32_t desc,
--                           uint64_t dirty_ptr, uintptr_t ra)
-+void mte_check_fail(CPUARMState *env, uint32_t desc,
-+                    uint64_t dirty_ptr, uintptr_t ra)
- {
-     int mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
-     ARMMMUIdx arm_mmu_idx = core_to_aa64_mmu_idx(mmu_idx);
-@@ -990,3 +990,53 @@ uint64_t HELPER(mte_check_zva)(CPUARMState *env, uint32_t desc, uint64_t ptr)
-  done:
-     return useronly_clean_ptr(ptr);
- }
-+
-+uint64_t mte_mops_probe(CPUARMState *env, uint64_t ptr, uint64_t size,
-+                        uint32_t desc)
++static inline bool isar_feature_aa64_mops(const ARMISARegisters *id)
 +{
-+    int mmu_idx, tag_count;
-+    uint64_t ptr_tag, tag_first, tag_last;
-+    void *mem;
-+    bool w = FIELD_EX32(desc, MTEDESC, WRITE);
-+    uint32_t n;
-+
-+    mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
-+    /* True probe; this will never fault */
-+    mem = allocation_tag_mem_probe(env, mmu_idx, ptr,
-+                                   w ? MMU_DATA_STORE : MMU_DATA_LOAD,
-+                                   size, MMU_DATA_LOAD, true, 0);
-+    if (!mem) {
-+        return size;
-+    }
-+
-+    /*
-+     * TODO: checkN() is not designed for checks of the size we expect
-+     * for FEAT_MOPS operations, so we should implement this differently.
-+     * Maybe we should do something like
-+     *   if (region start and size are aligned nicely) {
-+     *      do direct loads of 64 tag bits at a time;
-+     *   } else {
-+     *      call checkN()
-+     *   }
-+     */
-+    /* Round the bounds to the tag granule, and compute the number of tags. */
-+    ptr_tag = allocation_tag_from_addr(ptr);
-+    tag_first = QEMU_ALIGN_DOWN(ptr, TAG_GRANULE);
-+    tag_last = QEMU_ALIGN_DOWN(ptr + size - 1, TAG_GRANULE);
-+    tag_count = ((tag_last - tag_first) / TAG_GRANULE) + 1;
-+    n = checkN(mem, ptr & TAG_GRANULE, ptr_tag, tag_count);
-+    if (likely(n == tag_count)) {
-+        return size;
-+    }
-+
-+    /*
-+     * Failure; for the first granule, it's at @ptr. Otherwise
-+     * it's at the first byte of the nth granule. Calculate how
-+     * many bytes we can access without hitting that failure.
-+     */
-+    if (n == 0) {
-+        return 0;
-+    } else {
-+        return n * TAG_GRANULE - (ptr - tag_first);
-+    }
++    return FIELD_EX64(id->id_aa64isar2, ID_AA64ISAR2, MOPS);
 +}
++
+ /*
+  * Feature tests for "does this exist in either 32-bit or 64-bit?"
+  */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index f9f7c3c39e9..c751fbfead5 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -5980,7 +5980,10 @@ static void hcrx_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ {
+     uint64_t valid_mask = 0;
+ 
+-    /* No features adding bits to HCRX are implemented. */
++    /* FEAT_MOPS adds MSCEn and MCE2 */
++    if (cpu_isar_feature(aa64_mops, env_archcpu(env))) {
++        valid_mask |= HCRX_MSCEN | HCRX_MCE2;
++    }
+ 
+     /* Clear RES0 bits.  */
+     env->cp15.hcrx_el2 = value & valid_mask;
+@@ -6009,13 +6012,24 @@ uint64_t arm_hcrx_el2_eff(CPUARMState *env)
+ {
+     /*
+      * The bits in this register behave as 0 for all purposes other than
+-     * direct reads of the register if:
+-     *   - EL2 is not enabled in the current security state,
+-     *   - SCR_EL3.HXEn is 0.
++     * direct reads of the register if SCR_EL3.HXEn is 0.
++     * If EL2 is not enabled in the current security state, then the
++     * bit may behave as if 0, or as if 1, depending on the bit.
++     * For the moment, we treat the EL2-disabled case as taking
++     * priority over the HXEn-disabled case. This is true for the only
++     * bit for a feature which we implement where the answer is different
++     * for the two cases (MSCEn for FEAT_MOPS).
++     * This may need to be revisited for future bits.
+      */
+-    if (!arm_is_el2_enabled(env)
+-        || (arm_feature(env, ARM_FEATURE_EL3)
+-            && !(env->cp15.scr_el3 & SCR_HXEN))) {
++    if (!arm_is_el2_enabled(env)) {
++        uint64_t hcrx = 0;
++        if (cpu_isar_feature(aa64_mops, env_archcpu(env))) {
++            /* MSCEn behaves as 1 if EL2 is not enabled */
++            hcrx |= HCRX_MSCEN;
++        }
++        return hcrx;
++    }
++    if (arm_feature(env, ARM_FEATURE_EL3) && !(env->cp15.scr_el3 & SCR_HXEN)) {
+         return 0;
+     }
+     return env->cp15.hcrx_el2;
 -- 
 2.34.1
 

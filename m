@@ -1,80 +1,78 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp3151822ejb;
-        Wed, 6 Sep 2023 17:37:05 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEME2LEPDlMK+H7P//2/Fi/aKBpz8GdrYq40YRzS8UHYKTjwYsL23P6wfNsIophNeA9irhz
-X-Received: by 2002:a0c:fb47:0:b0:64f:5d19:6654 with SMTP id b7-20020a0cfb47000000b0064f5d196654mr15559501qvq.65.1694047024695;
-        Wed, 06 Sep 2023 17:37:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694047024; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp3151863ejb;
+        Wed, 6 Sep 2023 17:37:11 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE+ZLxuq4nDSa25Ko7ncOmHnFd7+jLtiA6xvC0NKOTik/xQ+T7cxUM2N9ZWTbhDtO6v8ZU/
+X-Received: by 2002:ac8:5ac6:0:b0:410:9701:63bb with SMTP id d6-20020ac85ac6000000b00410970163bbmr21905211qtd.21.1694047030793;
+        Wed, 06 Sep 2023 17:37:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694047030; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uy+n/KUHDzFpC8hkdVzr260JzC+n5+GVTeNIn8E1psieDtDOYFSrwgq4NVSbhj4AYc
-         ml0tjT4BuZLkHSbDdyTeFp5DKRWSXdguJB+aeyfgft3BVWwB7toibM72HR/Z9XPGN2rX
-         ZX5I+H5iabBbEYu+vwjcza4nYVqu0VGBhfuO3DJ534P6ZnJanP5Cqdg2sFPyFpGwR3+P
-         /OnA498QmQXWu4WV2y/8k7qSx9iNiDvzsz9iTvzSyyOheVVlbVs09UZgL+bQChSUNVpz
-         9s/oJhRFs4C1bYarKNhEYawwprlPSTxp2hhqMaGr0dV9C0Pr7xxhkxM62b//aRemJVbY
-         pn1g==
+        b=rjVVn8lYH13PG1YdaACFzvmaXkFWSiMio7FEugAOoAGs4SyiYxCGWDumYOtqavKmcQ
+         5UBDh6MKFInkpk15l1uHh1XDebvHrThBG/MewzBTxGHffxCXr9ryxS0GUB1LxwnWn+e/
+         +86Zqxk1BF5eAA890dgGqLgVvdC96G1iO4N3zaxXPfc+VmAC3UsBI/jIqERpPcA84K/Q
+         NcH+BfwAFGEk7RYkprTjYb4hTe79zJ9Cx7J/cvmF9AJ4U8FyMRIIUCZuEyt6aNPVqtAi
+         9a26weAFKiDm43RII4RPC9dsDQ6vsTe8OnR0iiasnZu0pxDYGCrpsyslP/FX5FjwjV4g
+         yHGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=aY0vCT17ghdT+PeDe1lOFWysje3txmaFbEFFL/ifBWg=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=bkLRxUCM4LiaWE+O0yoFhEV1USIHt+mGWPVf3kWLKPI=;
         fh=kk2WWDSe9SCzWyjzequbgooYc9A8PDm7nTb22zWaiac=;
-        b=gbbZ0Ha3QpezBwJKKJiolSd8o5LwWJUBCp+9c+M/otvNoLS5RbRpPhGGVNqU4+QzOb
-         7V55VF4IcVMxa+CMlRYWQUKjBKfhq2vpOmITghjPL3iteelCmY8WBvtwWjMV1w9/Km1E
-         vfgDjf0E8t9jJmIk1PhoTlTTtN0fTks0B/Jzol3hr5L+8A0FVfPXSAohq/ZlQ4cmbW9h
-         8zOHccaqzOtxbJSvQThREpAACOKNCX0mvFZJdGls6Tnv1TsPKpw8ZQUI1vjQmXhNsGyK
-         CY5VdghlRxYPPZWaHv9Hva6NPA75j0VHIZi4np8x7tdfM1xxHrv8fdNGMZBcfzj9xud7
-         l0uA==
+        b=TfwLAqiJGFNclzGcZnaudaCDtCV8xWzHhWwgOpa3fJQPaOyzY7euzal1KmImoRaY4y
+         ++/vlMeOWjZkOugKYYtmLByYROdmZrPJkt0Lq0tAt0ubdaHSsGOfS2V+wWjbF7OK0Vc1
+         L1+8Ay8oF6111sFuyRnwSlBls0IrSAeee60MT57XW5RGvR8a02aNnO/cIGVrPVqaJLqM
+         u5317zykVScDBn6KJU+YirElIHLEyyLDkiIA0y0CzYmOgu1SpPFsfBgeBSTwcyHNDwUi
+         0EgpdKLpxLyVivRcWj1rru5QjSyIson0bnczIHCODkvX/gN903wIzBGvK+agdt7bVvIW
+         xcsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JPT9FCos;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CEIUD26J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k14-20020a0cf58e000000b0064b4b380c0csi10635200qvm.150.2023.09.06.17.37.04
+        by mx.google.com with ESMTPS id q2-20020a05622a030200b004039b86b885si10908866qtw.614.2023.09.06.17.37.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Sep 2023 17:37:04 -0700 (PDT)
+        Wed, 06 Sep 2023 17:37:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JPT9FCos;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CEIUD26J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qe311-0002Ya-TZ; Wed, 06 Sep 2023 20:36:59 -0400
+	id 1qe30l-0002IE-NQ; Wed, 06 Sep 2023 20:36:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe310-0002Y6-8h
- for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:36:58 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe30k-0002Dv-Hl
+ for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:36:42 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe30w-0000dL-Ov
- for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:36:58 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe30g-0000bo-RT
+ for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:36:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1694047014;
+ s=mimecast20190719; t=1694046997;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=aY0vCT17ghdT+PeDe1lOFWysje3txmaFbEFFL/ifBWg=;
- b=JPT9FCosKaeAyG4/FQwc8f0EtYZ/y7SbML/v3N7GDNjuaCW8AT43OHI5ATcJRQN8mJ86Al
- QdsvDgyVjzvA6uKRTKDb4pjwCjvc9JudGRk+EvMaReSsai2cMQ3s1lWP8zDzx+5Vn87vmU
- U6UZrMmWqXF7myodop7UeTU0GyL0RHo=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-10-tBh-EfmCMfOYP1VbbrVUlw-1; Wed, 06 Sep 2023 20:36:50 -0400
-X-MC-Unique: tBh-EfmCMfOYP1VbbrVUlw-1
+ content-transfer-encoding:content-transfer-encoding;
+ bh=bkLRxUCM4LiaWE+O0yoFhEV1USIHt+mGWPVf3kWLKPI=;
+ b=CEIUD26Jq0qscXyEIBkPg51rk47Ki41UfSG1/ZjnNd3Dlj6cZtwsIiPsNbdNb5gUgj1x1L
+ xrm0d4YaWjQ7EU9s80jyzZRO1mkDrTw+BfBjOoIkXCOX+6o25AMV50SUYznLfZFl0Ipwk9
+ C1XQ3oTs2wWsTGq4lsGX1KouJ/ztPwQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-120-guadNpvFNFGXm9-1qNJkow-1; Wed, 06 Sep 2023 20:36:33 -0400
+X-MC-Unique: guadNpvFNFGXm9-1qNJkow-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8DE263C0EAA5;
- Thu,  7 Sep 2023 00:36:46 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CB210800C78;
+ Thu,  7 Sep 2023 00:36:30 +0000 (UTC)
 Received: from gshan.redhat.com (unknown [10.64.136.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4EF97C03295;
- Thu,  7 Sep 2023 00:36:31 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1A93BC03295;
+ Thu,  7 Sep 2023 00:36:10 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -97,11 +95,9 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
  kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com, pbonzini@redhat.com,
  imammedo@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v3 01/32] cpu: Add helper cpu_model_from_type()
-Date: Thu,  7 Sep 2023 10:35:22 +1000
-Message-ID: <20230907003553.1636896-2-gshan@redhat.com>
-In-Reply-To: <20230907003553.1636896-1-gshan@redhat.com>
-References: <20230907003553.1636896-1-gshan@redhat.com>
+Subject: [PATCH v3 00/32] Unified CPU type check
+Date: Thu,  7 Sep 2023 10:35:21 +1000
+Message-ID: <20230907003553.1636896-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -129,73 +125,144 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ajP/iPfK/4ZX
+X-TUID: 3D3TvX8QODSj
 
-Add helper cpu_model_from_type() to extract the CPU model name from
-the CPU type name in two circumstances: (1) The CPU type name is the
-combination of the CPU model name and suffix. (2) The CPU type name
-is same to the CPU model name.
+There are two places where the user specified CPU type is checked to see
+if it's supported or allowed by the board: machine_run_board_init() and
+mc->init(). We don't have to maintain two duplicate sets of logic. This
+series intends to move the check to machine_run_board_init().
 
-The helper will be used in the subsequent patches to conver the
-CPU type name to the CPU model name.
+PATCH[01]    Adds a generic helper cpu_model_from_type() to convert CPU
+             type name to CPU model name.
+PATCH[02-19] Uses cpu_model_from_type() in the individual targets
+PATCH[20-23] Implements cpu_list() for the missed targets
+PATCH[24-27] Improves the CPU type validation in machine_run_board_init()
+PATCH[28-32] Validate the CPU type in machine_run_board_init() for the
+             individual boards
 
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: Gavin Shan <gshan@redhat.com>
----
- cpu.c                 | 16 ++++++++++++++++
- include/hw/core/cpu.h | 12 ++++++++++++
- 2 files changed, 28 insertions(+)
+v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00302.html
+v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-07/msg00528.html
 
-diff --git a/cpu.c b/cpu.c
-index 1c948d1161..a19e33ff96 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -284,6 +284,22 @@ const char *parse_cpu_option(const char *cpu_option)
-     return cpu_type;
- }
- 
-+char *cpu_model_from_type(const char *typename)
-+{
-+    const char *suffix = "-" CPU_RESOLVING_TYPE;
-+
-+    if (!object_class_by_name(typename)) {
-+        return NULL;
-+    }
-+
-+    if (strlen(typename) > strlen(suffix) &&
-+        !strcmp(typename + strlen(typename) - strlen(suffix), suffix)) {
-+        return g_strndup(typename, strlen(typename) - strlen(suffix));
-+    }
-+
-+    return g_strdup(typename);
-+}
-+
- void list_cpus(void)
- {
-     /* XXX: implement xxx_cpu_list for targets that still miss it */
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 92a4234439..6e76d95490 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -657,6 +657,18 @@ CPUState *cpu_create(const char *typename);
-  */
- const char *parse_cpu_option(const char *cpu_option);
- 
-+/**
-+ * cpu_model_from_type:
-+ * @typename: The CPU type name
-+ *
-+ * Extract the CPU model name from the CPU type name. The
-+ * CPU type name is either the combination of the CPU model
-+ * name and suffix, or same to the CPU model name.
-+ *
-+ * Returns: CPU model name
-+ */
-+char *cpu_model_from_type(const char *typename);
-+
- /**
-  * cpu_has_work:
-  * @cpu: The vCPU to check.
+Testing
+=======
+
+With the following command lines, the output messages are varied before
+and after the series is applied.
+
+  ./build/qemu-system-aarch64            \
+  -accel tcg -machine virt,gic-version=3 \
+  -cpu cortex-a8 -smp maxcpus=2,cpus=1   \
+    :
+
+Before the series is applied:
+
+  qemu-system-aarch64: mach-virt: CPU type cortex-a8-arm-cpu not supported
+
+After the series is applied:
+
+  qemu-system-aarch64: Invalid CPU type: cortex-a8-arm-cpu
+  The valid models are: cortex-a7, cortex-a15, cortex-a35, cortex-a55,
+                        cortex-a72, cortex-a76, a64fx, neoverse-n1,
+                        neoverse-v1, cortex-a53, cortex-a57, max
+
+Changelog
+=========
+v3:
+  * Generic helper cpu_model_from_type()                        (Igor)
+  * Apply cpu_model_from_type() to the individual targets       (Igor)
+  * Implement cpu_list() for the missed targets                 (Gavin)
+  * Remove mc->valid_cpu_models                                 (Richard)
+  * Separate patch to constify mc->validate_cpu_types           (Gavin)
+v2:
+  * Constify mc->valid_cpu_types                                (Richard)
+  * Print the supported CPU models, instead of typenames        (Peter)
+  * Misc improvements for the hleper to do the check            (Igor)
+  * More patches to move the check                              (Marcin)
+
+Gavin Shan (32):
+  cpu: Add helper cpu_model_from_type()
+  target/alpha: Use generic helper to show CPU model names
+  target/arm: Use generic helper to show CPU model names
+  target/avr: Use generic helper to show CPU model names
+  target/cris: Use generic helper to show CPU model names
+  target/hexagon: Use generic helper to show CPU model names
+  target/i386: Use generic helper to show CPU model names
+  target/loongarch: Use generic helper to show CPU model names
+  target/m68k: Use generic helper to show CPU model names
+  target/mips: Use generic helper to show CPU model names
+  target/openrisc: Use generic helper to show CPU model names
+  target/ppc: Use generic helper to show CPU model names
+  target/riscv: Use generic helper to show CPU model names
+  target/rx: Use generic helper to show CPU model names
+  target/s390x: Use generic helper to show CPU model names
+  target/sh4: Use generic helper to show CPU model names
+  target/tricore: Use generic helper to show CPU model names
+  target/sparc: Improve sparc_cpu_class_by_name()
+  target/xtensa: Improve xtensa_cpu_class_by_name()
+  target/hppa: Implement hppa_cpu_list()
+  target/microblaze: Implement microblaze_cpu_list()
+  target/nios2: Implement nios2_cpu_list()
+  Mark cpu_list() supported on all targets
+  machine: Constify MachineClass::valid_cpu_types[i]
+  machine: Use error handling when CPU type is checked
+  machine: Introduce helper is_cpu_type_supported()
+  machine: Print CPU model name instead of CPU type name
+  hw/arm/virt: Check CPU type in machine_run_board_init()
+  hw/arm/virt: Hide host CPU model for tcg
+  hw/arm/sbsa-ref: Check CPU type in machine_run_board_init()
+  hw/arm: Check CPU type in machine_run_board_init()
+  hw/riscv/shakti_c: Check CPU type in machine_run_board_init()
+
+ bsd-user/main.c                       |  3 -
+ cpu.c                                 | 19 +++++-
+ hw/arm/bananapi_m2u.c                 | 12 ++--
+ hw/arm/cubieboard.c                   | 12 ++--
+ hw/arm/mps2-tz.c                      | 20 ++++--
+ hw/arm/mps2.c                         | 25 ++++++--
+ hw/arm/msf2-som.c                     | 12 ++--
+ hw/arm/musca.c                        | 13 ++--
+ hw/arm/npcm7xx_boards.c               | 13 ++--
+ hw/arm/orangepi.c                     | 12 ++--
+ hw/arm/sbsa-ref.c                     | 21 +------
+ hw/arm/virt.c                         | 23 ++-----
+ hw/core/machine.c                     | 90 ++++++++++++++++-----------
+ hw/m68k/q800.c                        |  2 +-
+ hw/riscv/shakti_c.c                   | 11 ++--
+ include/hw/boards.h                   |  2 +-
+ include/hw/core/cpu.h                 | 12 ++++
+ target/alpha/cpu.c                    |  6 +-
+ target/arm/arm-qmp-cmds.c             |  6 +-
+ target/arm/helper.c                   | 12 ++--
+ target/avr/cpu.c                      | 23 +++++--
+ target/cris/cpu.c                     |  7 +--
+ target/hexagon/cpu.c                  | 12 ++--
+ target/hppa/cpu.c                     | 19 ++++++
+ target/hppa/cpu.h                     |  3 +
+ target/i386/cpu.c                     |  7 +--
+ target/loongarch/cpu.c                |  5 +-
+ target/loongarch/loongarch-qmp-cmds.c |  3 +-
+ target/m68k/helper.c                  | 14 ++---
+ target/microblaze/cpu.c               | 20 ++++++
+ target/microblaze/cpu.h               |  3 +
+ target/mips/cpu-defs.c.inc            |  9 ---
+ target/mips/cpu.c                     | 25 +++++++-
+ target/mips/sysemu/mips-qmp-cmds.c    |  3 +-
+ target/nios2/cpu.c                    | 20 ++++++
+ target/nios2/cpu.h                    |  3 +
+ target/openrisc/cpu.c                 | 23 +++----
+ target/ppc/cpu_init.c                 | 11 ++--
+ target/riscv/cpu.c                    | 23 ++++---
+ target/riscv/riscv-qmp-cmds.c         |  3 +-
+ target/rx/cpu.c                       | 16 +++--
+ target/s390x/cpu_models.c             | 18 +++---
+ target/s390x/cpu_models_sysemu.c      |  9 ++-
+ target/sh4/cpu.c                      | 24 +++----
+ target/sparc/cpu.c                    |  7 ++-
+ target/tricore/cpu.c                  |  9 +--
+ target/tricore/helper.c               | 13 ++--
+ target/xtensa/cpu.c                   |  9 +--
+ 48 files changed, 397 insertions(+), 270 deletions(-)
+
 -- 
 2.41.0
 

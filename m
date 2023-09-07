@@ -1,107 +1,107 @@
-Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp435530ejb;
-        Thu, 7 Sep 2023 09:05:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFSNOtZgRirKkaQx3UmPtQfXbc/fg1m78OTdOfcrghiuUoAZONg+VUsNUPMJVLcpzSq/eQG
-X-Received: by 2002:a05:6102:34f5:b0:44e:8ef9:3370 with SMTP id bi21-20020a05610234f500b0044e8ef93370mr189502vsb.5.1694102714692;
-        Thu, 07 Sep 2023 09:05:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694102714; cv=none;
+Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp436044ejb;
+        Thu, 7 Sep 2023 09:05:51 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHLhZT2LKDI80cOhAFBrzM1O3HHVJ/4OI2n+RMhlWpoRIuwa9H2P0SbWEmsEtx3mva1ToUa
+X-Received: by 2002:a05:6808:34b:b0:3a8:5904:1aa8 with SMTP id j11-20020a056808034b00b003a859041aa8mr19645269oie.52.1694102751223;
+        Thu, 07 Sep 2023 09:05:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694102751; cv=none;
         d=google.com; s=arc-20160816;
-        b=wcH460mngmnCJG61f9Z5ZQ29z50z0/y7qrPE8Xm5YXpMmgKOhb7FWXE1dosR7Rlcz1
-         27t9Dc+e7cM8sJqffAV0uO9BK4p1fddUNPpF8wK0ej2h3NIlXE2XUgD6dApkqLzVFdsy
-         Bo+FNS+cn6I1hnwpIIDByE0p/pFtcdryVz3wEWkC58HrYTp7durxYGikjb1uVQjOdXVS
-         ngRck0RyoJTFAlFys/UyWr5xBYdj6lAfd2x5TodX3boibg4iujKRJ9tCFUDvjDipnHeq
-         Tlw4jP/oLvgg1ZaGzlVBDYS6srEdf/5DiZOCa05T60a/WBkEwsHE/jmJrRjoqGfK0oCe
-         Kg/g==
+        b=LxNpbq2lbC+6JlcBVQWV4gKiIVlPL8SHSwO3G6ND/fYMCNoWY0hlIKkfJeZ8iu64ag
+         3zdsmqCrpOk/N+gvuOKBl6I2O4lodyuih4qFH0ogrrybw8M3ffja1aCxdjreg25r0WgN
+         u9wAQwWb/4v30CBX8E2DFlEFLIDr+W0jh9lRffeF8dBuZFRSevoZhhmCYo4HVlZZc022
+         u6n0Vu2QWGLFSrhoh+J3F3fbP8a3BI5oBaHHVnYuLeFI0mxCK89KxCLqp55LQHQfSh/7
+         niaaWxs02KqUsp/uWSl1wTpSadTb6/DaNh7Br8cjG7Qx94KjDg0qhgUI7YBwhoYQg6Im
+         IILA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=gZiBORTdM6TOex5Ch3MUky9TLBNrJWLAnvWc+DvHI30=;
+        bh=k3XOXrpJkvVBT73JVIUIybkdEQJErzU2/M8NYkrCiqY=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=BuO8ls8O4azTrxwrXbprbQ/dFXJCKA0LILnJfLm6ExNvDCpfeEc6Xj6vNYSAkzCVOg
-         BrXkuM1tc3mnz0t4Ryifm01MFc3lGtqM9tYcMcfRd2Gw6eGoFyEOaH1HhqpkG87kTrRs
-         C1yAdxQzKjZz/r1c/gw2IM76jQDeK3RT6AXzh7cQLjtw/X+o3ACUimC5h0zf4CFOOivy
-         PHhKVpaCDuCQz1HV4z37L4TmVJytQAy+OB4hmLSGMlG1jFYk+TvTqBEVib7SpfydiL6T
-         uDrf8KSixVijMYI3VhKweFX7givb8sz4DAXbJKDnj4wUXu0pZrqEMXa7LIeyt8G5UVJE
-         8rFw==
+        b=afL+Ozqk04WVFSGchA9Bgke2t2Z9BKoCAiGLyVZ1IKQ1KzO9vkS0i0Nfb9ejXy1/H3
+         3TD3cT0+ezlp6b9ARAyP2euuA7V7RFMx3vOZYnzPX9wY5tyc1DqOTR7cI+MKRRxv2y3L
+         yscQw2VBZZ3LHxktAum02B7zVv5rTG3L+06bNdnE3xhQL8gpzfsExOPmb7QGhNNV5tug
+         KrGoRHpHnKo46ETkBpy4RCkE3nWp8ufFQKePd/UuFjZCpKDNrcdw+lBnAXeqg5De8XWw
+         5pRVy5Lh3/o8e9I0O6zcU3o+P0kqsaihLisPtQl0DbZvZ2Hx9OiPTPu9LygDc2SSOoyA
+         hVHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XDwqtFDe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RPpaFozX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3-20020a67ae03000000b004475c7784e2si1920574vse.372.2023.09.07.09.05.14
+        by mx.google.com with ESMTPS id q14-20020a67b04e000000b0044d4e33be34si2109729vsh.727.2023.09.07.09.05.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Sep 2023 09:05:14 -0700 (PDT)
+        Thu, 07 Sep 2023 09:05:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XDwqtFDe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RPpaFozX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qeHU9-0000zi-F9; Thu, 07 Sep 2023 12:04:01 -0400
+	id 1qeHU5-0000vq-G4; Thu, 07 Sep 2023 12:03:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeHU7-0000wr-07
- for qemu-arm@nongnu.org; Thu, 07 Sep 2023 12:03:59 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1qeHU2-0000si-7V
+ for qemu-arm@nongnu.org; Thu, 07 Sep 2023 12:03:54 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeHTy-00021F-0E
- for qemu-arm@nongnu.org; Thu, 07 Sep 2023 12:03:58 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-31ad779e6b3so1094276f8f.2
- for <qemu-arm@nongnu.org>; Thu, 07 Sep 2023 09:03:49 -0700 (PDT)
+ id 1qeHTv-00020Q-UE
+ for qemu-arm@nongnu.org; Thu, 07 Sep 2023 12:03:53 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-31ad9155414so1026104f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 07 Sep 2023 09:03:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694102628; x=1694707428; darn=nongnu.org;
+ d=linaro.org; s=google; t=1694102626; x=1694707426; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=gZiBORTdM6TOex5Ch3MUky9TLBNrJWLAnvWc+DvHI30=;
- b=XDwqtFDeW/RImtPelMadJaVAtRvVwdlvU1V4sRHzqc9iz7l1uq8XKLyu3rigbT0RH2
- KfrMqZySbOnpj7ocH0BtPQZQfKGMNrGU7I83EMZBncEn88e5IQvWI74yuF6WGoEWWx2f
- 8Y/mPm3FojE1K+RwwMveywlQCe3zzXDVq5+pphJBuQV9vFr1tNJ136vg7aYZB/ifMIbp
- gLvVORzjKTbPSUDbDDFgAqQIsrSlmUyH7+Un2LUtZz4poPmHerIuLCXT6PypKtQeRCfA
- qv0SIqS2ux2/SEgGzwE6DqQeC/rN0Mq89RTFAt4QHs+aCicEv1lslXgk64FmE8uVVRMR
- TCNQ==
+ :reply-to; bh=k3XOXrpJkvVBT73JVIUIybkdEQJErzU2/M8NYkrCiqY=;
+ b=RPpaFozXjvjF7/b0tjwnEi0htAoS+XeiyC6E0bzb3NKk6aXXmup7kPAAOb+nHwXT5p
+ /PHwGhYnwjbvQZSHsp4iiLNpWfC568lziS7cNVZRkn8bL/kX7c7aR/P+UTXNtb+G8LUQ
+ SzjUB9jJg3moOA+4JIla/suukatOAwZ2KFnUMZ2jFN1Hdocc17dCGpbvTSO77ula6R3K
+ e/uDL+1fMldHVK7NzjzrcyrfbGmh9WVWX48spQkqjMLJOom75KaTZdL+iRRDrylvtfn5
+ gDqxQxnSRm/6dCrtuGwqyKtAuM0Uy98qk1qm2ZUixidKoXy4U4GHoUlA3oW8qYzcv9JY
+ rsGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1694102628; x=1694707428;
+ d=1e100.net; s=20230601; t=1694102626; x=1694707426;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=gZiBORTdM6TOex5Ch3MUky9TLBNrJWLAnvWc+DvHI30=;
- b=jXnv3dfONgkaXHsEsnpJPZkdaIFoDvX2yPeq8Qbt7I2x8qAOEaYMyk4+3myUavcsuT
- vw3Vz/f4cwMlCYFiXuISu6wNbhER2Zd7Xs/I7XbGOx4j82X9A73h98toG0zdI18q3Yir
- EJ05dPHiD1lb8eUXr/+1XIIu6ltdKtp79DjveV1NdcU7QWx1vfMW0z7piEL5VbXwIs2u
- I281fyB5MVPV2pOzuEiPHniov/yArSyzKVnchfAiKuJIRcZWrUjAg42wOPnXtW3+pd7s
- dJqkaqgS3bHueNlWnZzPEWlTkz1N2ssxpvDwMbMKDz4MrYyO4BXRKmHLbidwY9UA+lZ1
- Rn0Q==
-X-Gm-Message-State: AOJu0Yx9BY6l9aKz6IsbilVjz8uNp4pMbqE6r3tZ1aMcwi7djdSTjFq7
- tYzgV2DhZLPlWESXM9YBRzBxSt8SqTdp4CDtNFA=
-X-Received: by 2002:adf:e4c3:0:b0:317:5b1b:1a40 with SMTP id
- v3-20020adfe4c3000000b003175b1b1a40mr5168682wrm.49.1694102628574; 
- Thu, 07 Sep 2023 09:03:48 -0700 (PDT)
+ bh=k3XOXrpJkvVBT73JVIUIybkdEQJErzU2/M8NYkrCiqY=;
+ b=CtVvd4ElgiexCeWWtVgXPm/EyTK1LjY2H85RMyN61AeNSAIYBt19DdLSMo7J2UvFBt
+ UA2vzeiCXX4/uT4JMJ6SmDMyRU7H6HChvuuklU5eKnKUAhGEgqGYumLBZ4Ps7xwOCRl0
+ QdgX6mNjhobA5cAdNmGw8PP/Zv60t9ScnIAZevzwgQj9VT3nNMGSuSzntRO66DipoK7M
+ rQr0OgKVxJ8ooU178DiUneGzAvxL7S6T5TdEyUnmfhQVIHVrCpbfDXpygXZVHt1oxB+6
+ uHL3jtStgPYXxsF00gWgxQCo7Gc6CIns66rURafXQHyiG8ofXPmI0yWuY+zqvhR29jy4
+ d28g==
+X-Gm-Message-State: AOJu0YzC6yj6eZi0s8xgruYmqbKXfT2v53Rhwx5BVdXdPSfyx2Hc6L8S
+ a9JiHaGxO+UeAFPmVA9+anx+kEiL9lSqGZiGpGM=
+X-Received: by 2002:a5d:5610:0:b0:31a:c6fb:4142 with SMTP id
+ l16-20020a5d5610000000b0031ac6fb4142mr4915910wrv.16.1694102626526; 
+ Thu, 07 Sep 2023 09:03:46 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- d1-20020adfa401000000b0031980294e9fsm20256241wra.116.2023.09.07.09.03.48
+ d1-20020adfa401000000b0031980294e9fsm20256241wra.116.2023.09.07.09.03.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Sep 2023 09:03:48 -0700 (PDT)
+ Thu, 07 Sep 2023 09:03:46 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 11/14] target/arm: Implement the SETG* instructions
-Date: Thu,  7 Sep 2023 17:03:37 +0100
-Message-Id: <20230907160340.260094-12-peter.maydell@linaro.org>
+Subject: [PATCH 07/14] target/arm: New function allocation_tag_mem_probe()
+Date: Thu,  7 Sep 2023 17:03:33 +0100
+Message-Id: <20230907160340.260094-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230907160340.260094-1-peter.maydell@linaro.org>
 References: <20230907160340.260094-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,350 +123,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Qz4t2K26n03f
+X-TUID: GQyUklZQH/NC
 
-The FEAT_MOPS SETG* instructions are very similar to the SET*
-instructions, but as well as setting memory contents they also
-set the MTE tags. They are architecturally required to operate
-on tag-granule aligned regions only.
+For the FEAT_MOPS operations, the existing allocation_tag_mem()
+function almost does what we want, but it will take a watchpoint
+exception even for an ra == 0 probe request, and it requires that the
+caller guarantee that the memory is accessible.  For FEAT_MOPS we
+want a function that will not take any kind of exception, and will
+return NULL for the not-accessible case.
+
+Rename allocation_tag_mem() to allocation_tag_mem_probe() and add an
+extra 'probe' argument that lets us distinguish these cases;
+allocation_tag_mem() is now a wrapper that always passes 'false'.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/internals.h         | 10 ++++
- target/arm/tcg/a64.decode      |  5 ++
- target/arm/tcg/helper-a64.c    | 92 +++++++++++++++++++++++++++++++---
- target/arm/tcg/mte_helper.c    | 40 +++++++++++++++
- target/arm/tcg/translate-a64.c | 20 +++++---
- 5 files changed, 155 insertions(+), 12 deletions(-)
+ target/arm/tcg/mte_helper.c | 47 ++++++++++++++++++++++++++++---------
+ 1 file changed, 36 insertions(+), 11 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index a70a7fd50f6..642f77df29b 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1300,6 +1300,16 @@ uint64_t mte_mops_probe(CPUARMState *env, uint64_t ptr, uint64_t size,
- void mte_check_fail(CPUARMState *env, uint32_t desc,
-                     uint64_t dirty_ptr, uintptr_t ra);
- 
-+/**
-+ * mte_mops_set_tags: Set MTE tags for a portion of a FEAT_MOPS operation
-+ * @env: CPU env
-+ * @dirty_ptr: Start address of memory region (dirty pointer)
-+ * @size: length of region (guaranteed not to cross page boundary)
-+ * @desc: MTEDESC descriptor word
-+ */
-+void mte_mops_set_tags(CPUARMState *env, uint64_t dirty_ptr, uint64_t size,
-+                       uint32_t desc);
-+
- static inline int allocation_tag_from_addr(uint64_t ptr)
- {
-     return extract64(ptr, 56, 4);
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 8cddc207a6f..46caeb59fe5 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -569,3 +569,8 @@ STZ2G           11011001 11 1 ......... 11 ..... ..... @ldst_tag p=0 w=1
- SETP            00 011001110 ..... 00 . . 01 ..... ..... @set
- SETM            00 011001110 ..... 01 . . 01 ..... ..... @set
- SETE            00 011001110 ..... 10 . . 01 ..... ..... @set
-+
-+# Like SET, but also setting MTE tags
-+SETGP           00 011101110 ..... 00 . . 01 ..... ..... @set
-+SETGM           00 011101110 ..... 01 . . 01 ..... ..... @set
-+SETGE           00 011101110 ..... 10 . . 01 ..... ..... @set
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index 73169eb0b56..96780067262 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -1103,6 +1103,54 @@ static uint64_t set_step(CPUARMState *env, uint64_t toaddr,
-     return setsize;
- }
- 
-+/*
-+ * Similar, but setting tags. The architecture requires us to do this
-+ * in 16-byte chunks. SETP accesses are not tag checked; they set
-+ * the tags.
-+ */
-+static uint64_t set_step_tags(CPUARMState *env, uint64_t toaddr,
-+                              uint64_t setsize, uint32_t data, int memidx,
-+                              uint32_t *mtedesc, uintptr_t ra)
-+{
-+    void *mem;
-+    uint64_t cleanaddr;
-+
-+    setsize = MIN(setsize, page_limit(toaddr));
-+
-+    cleanaddr = useronly_clean_ptr(toaddr);
-+    /*
-+     * Trapless lookup: returns NULL for invalid page, I/O,
-+     * watchpoints, clean pages, etc.
-+     */
-+    mem = tlb_vaddr_to_host(env, cleanaddr, MMU_DATA_STORE, memidx);
-+
-+#ifndef CONFIG_USER_ONLY
-+    if (unlikely(!mem)) {
-+        /*
-+         * Slow-path: just do one write. This will handle the
-+         * watchpoint, invalid page, etc handling correctly.
-+         * The architecture requires that we do 16 bytes at a time,
-+         * and we know both ptr and size are 16 byte aligned.
-+         * For clean code pages, the next iteration will see
-+         * the page dirty and will use the fast path.
-+         */
-+        uint64_t repldata = data * 0x0101010101010101ULL;
-+        cpu_stq_mmuidx_ra(env, toaddr, repldata, memidx, ra);
-+        cpu_stq_mmuidx_ra(env, toaddr + 8, repldata, memidx, ra);
-+        mte_mops_set_tags(env, toaddr, 16, *mtedesc);
-+        return 16;
-+    }
-+#endif
-+    /* Easy case: just memset the host memory */
-+    memset(mem, data, setsize);
-+    mte_mops_set_tags(env, toaddr, setsize, *mtedesc);
-+    return setsize;
-+}
-+
-+typedef uint64_t StepFn(CPUARMState *env, uint64_t toaddr,
-+                        uint64_t setsize, uint32_t data,
-+                        int memidx, uint32_t *mtedesc, uintptr_t ra);
-+
- /* Extract register numbers from a MOPS exception syndrome value */
- static int mops_destreg(uint32_t syndrome)
- {
-@@ -1119,6 +1167,11 @@ static int mops_sizereg(uint32_t syndrome)
-     return extract32(syndrome, 0, 5);
- }
- 
-+static bool mops_is_setg(uint32_t syndrome)
-+{
-+    return extract32(syndrome, 23, 1);
-+}
-+
- /*
-  * Return true if TCMA and TBI bits mean we need to do MTE checks.
-  * We only need to do this once per MOPS insn, not for every page.
-@@ -1137,6 +1190,18 @@ static bool mte_checks_needed(uint64_t ptr, uint32_t desc)
-     return !tcma_check(desc, bit55, allocation_tag_from_addr(ptr));
- }
- 
-+/* Take an exception if the SETG addr/size are not granule aligned */
-+static void check_setg_alignment(CPUARMState *env, uint64_t ptr, uint64_t size,
-+                                 uint32_t memidx, uintptr_t ra)
-+{
-+    if ((size != 0 && !QEMU_IS_ALIGNED(ptr, TAG_GRANULE)) ||
-+        !QEMU_IS_ALIGNED(size, TAG_GRANULE)) {
-+        arm_cpu_do_unaligned_access(env_cpu(env), ptr, MMU_DATA_STORE,
-+                                    memidx, ra);
-+
-+    }
-+}
-+
- /*
-  * For the Memory Set operation, our implementation chooses
-  * always to use "option A", where we update Xd to the final
-@@ -1154,20 +1219,27 @@ void HELPER(setp)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
-     int rd = mops_destreg(syndrome);
-     int rs = mops_srcreg(syndrome);
-     int rn = mops_sizereg(syndrome);
-+    bool set_tags = mops_is_setg(syndrome);
-     uint8_t data = env->xregs[rs];
-     uint32_t memidx = FIELD_EX32(mtedesc, MTEDESC, MIDX);
-     uint64_t toaddr = env->xregs[rd];
-     uint64_t setsize = env->xregs[rn];
-     uint64_t stagesetsize, step;
-     uintptr_t ra = GETPC();
-+    StepFn *stepfn = set_tags ? set_step_tags : set_step;
- 
-     check_mops_enabled(env, ra);
- 
-     if (setsize > INT64_MAX) {
-         setsize = INT64_MAX;
-+        if (set_tags) {
-+            setsize &= ~0xf;
-+        }
-     }
- 
--    if (!mte_checks_needed(toaddr, mtedesc)) {
-+    if (unlikely(set_tags)) {
-+        check_setg_alignment(env, toaddr, setsize, memidx, ra);
-+    } else if (!mte_checks_needed(toaddr, mtedesc)) {
-         mtedesc = 0;
-     }
- 
-@@ -1175,7 +1247,7 @@ void HELPER(setp)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
-     while (stagesetsize) {
-         env->xregs[rd] = toaddr;
-         env->xregs[rn] = setsize;
--        step = set_step(env, toaddr, stagesetsize, data, memidx, &mtedesc, ra);
-+        step = stepfn(env, toaddr, stagesetsize, data, memidx, &mtedesc, ra);
-         toaddr += step;
-         setsize -= step;
-         stagesetsize -= step;
-@@ -1199,12 +1271,14 @@ void HELPER(setm)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
-     int rd = mops_destreg(syndrome);
-     int rs = mops_srcreg(syndrome);
-     int rn = mops_sizereg(syndrome);
-+    bool set_tags = mops_is_setg(syndrome);
-     uint8_t data = env->xregs[rs];
-     uint64_t toaddr = env->xregs[rd] + env->xregs[rn];
-     uint64_t setsize = -env->xregs[rn];
-     uint32_t memidx = FIELD_EX32(mtedesc, MTEDESC, MIDX);
-     uint64_t step, stagesetsize;
-     uintptr_t ra = GETPC();
-+    StepFn *stepfn = set_tags ? set_step_tags : set_step;
- 
-     check_mops_enabled(env, ra);
- 
-@@ -1226,14 +1300,16 @@ void HELPER(setm)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
-      * have an IMPDEF check for alignment here.
-      */
- 
--    if (!mte_checks_needed(toaddr, mtedesc)) {
-+    if (unlikely(set_tags)) {
-+        check_setg_alignment(env, toaddr, setsize, memidx, ra);
-+    } else if (!mte_checks_needed(toaddr, mtedesc)) {
-         mtedesc = 0;
-     }
- 
-     /* Do the actual memset: we leave the last partial page to SETE */
-     stagesetsize = setsize & TARGET_PAGE_MASK;
-     while (stagesetsize > 0) {
--        step = set_step(env, toaddr, setsize, data, memidx, &mtedesc, ra);
-+        step = stepfn(env, toaddr, setsize, data, memidx, &mtedesc, ra);
-         toaddr += step;
-         setsize -= step;
-         stagesetsize -= step;
-@@ -1250,12 +1326,14 @@ void HELPER(sete)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
-     int rd = mops_destreg(syndrome);
-     int rs = mops_srcreg(syndrome);
-     int rn = mops_sizereg(syndrome);
-+    bool set_tags = mops_is_setg(syndrome);
-     uint8_t data = env->xregs[rs];
-     uint64_t toaddr = env->xregs[rd] + env->xregs[rn];
-     uint64_t setsize = -env->xregs[rn];
-     uint32_t memidx = FIELD_EX32(mtedesc, MTEDESC, MIDX);
-     uint64_t step;
-     uintptr_t ra = GETPC();
-+    StepFn *stepfn = set_tags ? set_step_tags : set_step;
- 
-     check_mops_enabled(env, ra);
- 
-@@ -1279,13 +1357,15 @@ void HELPER(sete)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
-                            mops_mismatch_exception_target_el(env), ra);
-     }
- 
--    if (!mte_checks_needed(toaddr, mtedesc)) {
-+    if (unlikely(set_tags)) {
-+        check_setg_alignment(env, toaddr, setsize, memidx, ra);
-+    } else if (!mte_checks_needed(toaddr, mtedesc)) {
-         mtedesc = 0;
-     }
- 
-     /* Do the actual memset */
-     while (setsize > 0) {
--        step = set_step(env, toaddr, setsize, data, memidx, &mtedesc, ra);
-+        step = stepfn(env, toaddr, setsize, data, memidx, &mtedesc, ra);
-         toaddr += step;
-         setsize -= step;
-         env->xregs[rn] = -setsize;
 diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index 0065012be19..d934f89bebb 100644
+index e2494f73cf3..884d88848aa 100644
 --- a/target/arm/tcg/mte_helper.c
 +++ b/target/arm/tcg/mte_helper.c
-@@ -1040,3 +1040,43 @@ uint64_t mte_mops_probe(CPUARMState *env, uint64_t ptr, uint64_t size,
-         return n * TAG_GRANULE - (ptr - tag_first);
-     }
+@@ -50,13 +50,14 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
  }
-+
-+void mte_mops_set_tags(CPUARMState *env, uint64_t ptr, uint64_t size,
-+                       uint32_t desc)
-+{
-+    int mmu_idx, tag_count;
-+    uint64_t ptr_tag;
-+    void *mem;
-+
-+    if (!desc) {
-+        /* Tags not actually enabled */
-+        return;
-+    }
-+
-+    mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
-+    /* True probe: this will never fault */
-+    mem = allocation_tag_mem_probe(env, mmu_idx, ptr, MMU_DATA_STORE, size,
-+                                   MMU_DATA_STORE, true, 0);
-+    if (!mem) {
-+        return;
-+    }
-+
-+    /*
-+     * We know that ptr and size are both TAG_GRANULE aligned; store
-+     * the tag from the pointer value into the tag memory.
-+     */
-+    ptr_tag = allocation_tag_from_addr(ptr);
-+    tag_count = size / TAG_GRANULE;
-+    if (ptr & TAG_GRANULE) {
-+        /* Not 2*TAG_GRANULE-aligned: store tag to first nibble */
-+        store_tag1_parallel(TAG_GRANULE, mem, ptr_tag);
-+        mem++;
-+        tag_count--;
-+    }
-+    memset(mem, ptr_tag | (ptr_tag << 4), tag_count / 2);
-+    if (tag_count & 1) {
-+        /* Final trailing unaligned nibble */
-+        mem += tag_count / 2;
-+        store_tag1_parallel(0, mem, ptr_tag);
-+    }
-+}
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 366ddde57f7..131a15bed2f 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -3954,11 +3954,16 @@ TRANS_FEAT(STZ2G, aa64_mte_insn_reg, do_STG, a, true, true)
  
- typedef void SetFn(TCGv_env, TCGv_i32, TCGv_i32);
- 
--static bool do_SET(DisasContext *s, arg_set *a, bool is_epilogue, SetFn fn)
-+static bool do_SET(DisasContext *s, arg_set *a, bool is_epilogue,
-+                   bool is_setg, SetFn fn)
+ /**
+- * allocation_tag_mem:
++ * allocation_tag_mem_probe:
+  * @env: the cpu environment
+  * @ptr_mmu_idx: the addressing regime to use for the virtual address
+  * @ptr: the virtual address for which to look up tag memory
+  * @ptr_access: the access to use for the virtual address
+  * @ptr_size: the number of bytes in the normal memory access
+  * @tag_access: the access to use for the tag memory
++ * @probe: true to merely probe, never taking an exception
+  * @ra: the return address for exception handling
+  *
+  * Our tag memory is formatted as a sequence of little-endian nibbles.
+@@ -65,15 +66,25 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
+  * for the higher addr.
+  *
+  * Here, resolve the physical address from the virtual address, and return
+- * a pointer to the corresponding tag byte.  Exit with exception if the
+- * virtual address is not accessible for @ptr_access.
++ * a pointer to the corresponding tag byte.
+  *
+  * If there is no tag storage corresponding to @ptr, return NULL.
++ *
++ * If the page is inaccessible for @ptr_access, or has a watchpoint, there are
++ * three options:
++ * (1) probe = true, ra = 0 : pure probe -- we return NULL if the page is not
++ *     accessible, and do not take watchpoint traps. The calling code must
++ *     handle those cases in the right priority compared to MTE traps.
++ * (2) probe = false, ra = 0 : probe, no fault expected -- the caller guarantees
++ *     that the page is going to be accessible. We will take watchpoint traps.
++ * (3) probe = false, ra != 0 : non-probe -- we will take both memory access
++ *     traps and watchpoint traps.
++ * (probe = true, ra != 0 is invalid and will assert.)
+  */
+-static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+-                                   uint64_t ptr, MMUAccessType ptr_access,
+-                                   int ptr_size, MMUAccessType tag_access,
+-                                   uintptr_t ra)
++static uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
++                                         uint64_t ptr, MMUAccessType ptr_access,
++                                         int ptr_size, MMUAccessType tag_access,
++                                         bool probe, uintptr_t ra)
  {
-     int memidx;
-     uint32_t syndrome, desc = 0;
+ #ifdef CONFIG_USER_ONLY
+     uint64_t clean_ptr = useronly_clean_ptr(ptr);
+@@ -81,6 +92,8 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+     uint8_t *tags;
+     uintptr_t index;
  
-+    if (is_setg && !dc_isar_feature(aa64_mte, s)) {
-+        return false;
-+    }
++    assert(!(probe && ra));
 +
-     /*
-      * UNPREDICTABLE cases: we choose to UNDEF, which allows
-      * us to pull this check before the CheckMOPSEnabled() test
-@@ -3975,10 +3980,10 @@ static bool do_SET(DisasContext *s, arg_set *a, bool is_epilogue, SetFn fn)
-      * We pass option_a == true, matching our implementation;
-      * we pass wrong_option == false: helper function may set that bit.
+     if (!(flags & (ptr_access == MMU_DATA_STORE ? PAGE_WRITE_ORG : PAGE_READ))) {
+         cpu_loop_exit_sigsegv(env_cpu(env), ptr, ptr_access,
+                               !(flags & PAGE_VALID), ra);
+@@ -111,12 +124,16 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+      * exception for inaccessible pages, and resolves the virtual address
+      * into the softmmu tlb.
+      *
+-     * When RA == 0, this is for mte_probe.  The page is expected to be
+-     * valid.  Indicate to probe_access_flags no-fault, then assert that
+-     * we received a valid page.
++     * When RA == 0, this is either a pure probe or a no-fault-expected probe.
++     * Indicate to probe_access_flags no-fault, then either return NULL
++     * for the pure probe, or assert that we received a valid page for the
++     * no-fault-expected probe.
       */
--    syndrome = syn_mop(true, false, (a->nontemp << 1) | a->unpriv,
-+    syndrome = syn_mop(true, is_setg, (a->nontemp << 1) | a->unpriv,
-                        is_epilogue, false, true, a->rd, a->rs, a->rn);
+     flags = probe_access_full(env, ptr, 0, ptr_access, ptr_mmu_idx,
+                               ra == 0, &host, &full, ra);
++    if (probe && (flags & TLB_INVALID_MASK)) {
++        return NULL;
++    }
+     assert(!(flags & TLB_INVALID_MASK));
  
--    if (s->mte_active[a->unpriv]) {
-+    if (is_setg ? s->ata[a->unpriv] : s->mte_active[a->unpriv]) {
-         /* We may need to do MTE tag checking, so assemble the descriptor */
-         desc = FIELD_DP32(desc, MTEDESC, TBI, s->tbid);
-         desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
-@@ -3997,9 +4002,12 @@ static bool do_SET(DisasContext *s, arg_set *a, bool is_epilogue, SetFn fn)
-     return true;
+     /* If the virtual page MemAttr != Tagged, access unchecked. */
+@@ -157,7 +174,7 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+     }
+ 
+     /* Any debug exception has priority over a tag check exception. */
+-    if (unlikely(flags & TLB_WATCHPOINT)) {
++    if (!probe && unlikely(flags & TLB_WATCHPOINT)) {
+         int wp = ptr_access == MMU_DATA_LOAD ? BP_MEM_READ : BP_MEM_WRITE;
+         assert(ra != 0);
+         cpu_check_watchpoint(env_cpu(env), ptr, ptr_size, attrs, wp, ra);
+@@ -198,6 +215,14 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+     return memory_region_get_ram_ptr(mr) + xlat;
+ #endif
  }
++static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
++                                   uint64_t ptr, MMUAccessType ptr_access,
++                                   int ptr_size, MMUAccessType tag_access,
++                                   uintptr_t ra)
++{
++    return allocation_tag_mem_probe(env, ptr_mmu_idx, ptr, ptr_access,
++                                    ptr_size, tag_access, false, ra);
++}
  
--TRANS_FEAT(SETP, aa64_mops, do_SET, a, false, gen_helper_setp)
--TRANS_FEAT(SETM, aa64_mops, do_SET, a, false, gen_helper_setm)
--TRANS_FEAT(SETE, aa64_mops, do_SET, a, true, gen_helper_sete)
-+TRANS_FEAT(SETP, aa64_mops, do_SET, a, false, false, gen_helper_setp)
-+TRANS_FEAT(SETM, aa64_mops, do_SET, a, false, false, gen_helper_setm)
-+TRANS_FEAT(SETE, aa64_mops, do_SET, a, true, false, gen_helper_sete)
-+TRANS_FEAT(SETGP, aa64_mops, do_SET, a, false, true, gen_helper_setp)
-+TRANS_FEAT(SETGM, aa64_mops, do_SET, a, false, true, gen_helper_setm)
-+TRANS_FEAT(SETGE, aa64_mops, do_SET, a, true, true, gen_helper_sete)
- 
- typedef void ArithTwoOp(TCGv_i64, TCGv_i64, TCGv_i64);
- 
+ uint64_t HELPER(irg)(CPUARMState *env, uint64_t rn, uint64_t rm)
+ {
 -- 
 2.34.1
 

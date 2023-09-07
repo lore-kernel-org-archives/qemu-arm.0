@@ -1,115 +1,124 @@
-Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp96975ejb;
-        Wed, 6 Sep 2023 22:42:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG3ApFzEC33eCE5iLBXua5s45D6VNq7hU1XSgKHUIzNLGTbvTMKdHFcHSVn/ac/YQ5qJjNW
-X-Received: by 2002:a05:620a:f14:b0:76c:9eab:41ad with SMTP id v20-20020a05620a0f1400b0076c9eab41admr18052185qkl.32.1694065354913;
-        Wed, 06 Sep 2023 22:42:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694065354; cv=none;
+Received: by 2002:a05:7022:12b:b0:6b:57c3:147a with SMTP id 43csp100338dlk;
+        Wed, 6 Sep 2023 21:49:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFZhuhLcDZQBvyX8PG51JujNtu+6zuGty4jdfRWCVVryBiYu5W9gd80G8pg2Ccg3/o+u7xf
+X-Received: by 2002:a05:622a:30d:b0:412:2aa5:d39f with SMTP id q13-20020a05622a030d00b004122aa5d39fmr23607568qtw.13.1694062199562;
+        Wed, 06 Sep 2023 21:49:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694062199; cv=none;
         d=google.com; s=arc-20160816;
-        b=mNy214R1nasa6/7c1rOYpeuedgMs3gFasSQyWZvFGYRS8NGxZ8++xO5L6V5Nto5+8u
-         RFT3RvLpXhak9GZmpa3XH8yalr4Sib/y3H1VHtmfqRqDmbiFNvpg1fe7lVlPOy3LvefT
-         +S+QUIj9NYmYOE67ZyDMsgiGNTJeA8V8n3ijz+CnHpVuCwfxsvKW4FcLYWuRxqwREL1M
-         HO77tz4xQbb6ndvi64Df+srmCNNr9x/46sNHuMzbM9l+zPxFADTVE/EJphN3wuatbsE0
-         +WZJBWspvoKe6y098hATw0bSvuvmDQN4FDTBWwG/N90EuLgfEJND0f9ndeczssTCIDdr
-         n9FA==
+        b=na7vpHbIYzis2m8e1cYHZoy230ePWomV+AXs3qdEEf3+rbRH+7U9BSB9dkWKZNFIlt
+         NB3wdIDZHmj2FEnG6jnqnSH7oyePfNGtg43RpHENuofkQQvNhqxKTblBz82SanXrZ+fl
+         weazuOWya9ceJE2ocaLGpG3wFsIefWlkWHjCrJLELsEzwgxBWiwVnl5Ht2BVnWHRMkAs
+         aSVlrrut0YMvBN3ffxmFFbGmN56CDKTsuP856jDfSzeoO12C3qmIaxCOf5M2FxNrjFQn
+         Hf1DL1kxR4/9rDb5hbVSjyVKBBDmfhAv6Kv96Ul1wZGiH91TvvBspnqfcTrnN9i8i1cf
+         k7sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=cTSTPkmjDi+a+9GQtEQYhs7YugWkw8lDdmzj/ItHLl8=;
-        fh=3XQgppu0rjdgKiw4avduAyEGgBeHpu3tsDO+HCye9ZY=;
-        b=sGfFVfHTgYhStAtAfa0NkivkxpZaBwl7Ic4jWs+/+f8nu40mFflWethkCUlAHm0m09
-         /kGKdcjAIIbv4wBYktpg6QuivcXkI5jeBwgybuzDourhh88gIqrQnrqKdcomqKx8AjxM
-         FVkNCoXWQQKI6uBuRXgdeTILqSivVX65JRLf54YJBYVct2H6861F16VCURHwDWS8vqoU
-         3O+hnlDGaqfU/Lbc2Fr771QRCPW02hLFg0YDFNwlJgNYz4ZDsI+Wf1KorcnD7k77MgMQ
-         0ieCyWDMKGp1hbcbUaMJ/bRiwOCO60iYFUQ56wTU7Ge2j+Hp82u+Hv8Gmh2LCwGI3cPa
-         wE4A==
+        bh=lN4jnsOv2w7ZACoJXG0nzAPT4kJdhkNOqI/AZfkM9VA=;
+        fh=ozCzqmWEvo8XRa9DYBQKLbZKVm81dsprfoOFyfnZLqk=;
+        b=Jmm3JRzpSP9tf+WKcbj7ylvOya4kVDjRg4jgLt1ErCr55qaifdF0zZg9uXeByPSMtA
+         AdsdtpdoO8otAKiWdRD1gpEiehgbjOogvC5tikrkVdUBH2lJh2KaaN7sskzK86y2Sq8T
+         5c+0smqJYWS3mscHOkKdGX3NaCziZIR7u1u4W4OJgwJ2GPGLQXY/UQlAU9d/pwPNF/mo
+         0GPjm4HOO4AYQhd2z9ideqE8HlPJIA6yU+leqG0n3UxtMPyEmekxe5WFhAlkQHYllDs2
+         DgeRf4ifObr4J6SNtuPLBiIh2ru1T6MIjKYcqqSjG/87SRzxXcRefuCyGR/ct6erOrkP
+         iG/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=tQIUnYef;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=p1VIZmqz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id de11-20020a05620a370b00b0075ccff588e4si11632396qkb.425.2023.09.06.22.42.34
+        by mx.google.com with ESMTPS id q3-20020a05622a030300b0041088ae3eedsi10926466qtw.686.2023.09.06.21.49.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Sep 2023 22:42:34 -0700 (PDT)
+        Wed, 06 Sep 2023 21:49:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=tQIUnYef;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=p1VIZmqz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qe7m8-0005ob-3t; Thu, 07 Sep 2023 01:41:57 -0400
+	id 1qe6xj-0006rw-9M; Thu, 07 Sep 2023 00:49:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
- id 1qe7m3-0005oI-Qu; Thu, 07 Sep 2023 01:41:52 -0400
-Received: from nylar.uni-paderborn.de ([2001:638:502:c003::18])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
- id 1qe7m0-0000CJ-PT; Thu, 07 Sep 2023 01:41:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=mail.uni-paderborn.de; s=20170601; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=cTSTPkmjDi+a+9GQtEQYhs7YugWkw8lDdmzj/ItHLl8=; b=tQIUnYefwWTT1wdN0vYblOuynF
- 97poRtLWkEVGtOQilPBdZ1ZGoSfw7yVjBwXaBUE7nSDyCxyuBW6Buqke8kVUi26q883jnsGU6ZQuz
- xud7xy+n+hHah27Z9fBBZRG219c0wBHdpgNKvY9nflUtoUExh/uRaQm2BsUloc0AR7ZI=;
-Date: Thu, 7 Sep 2023 07:41:16 +0200
-From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
- qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, imp@bsdimp.com, kevans@freebsd.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
- wangyanan55@huawei.com, peter.maydell@linaro.org, b.galvani@gmail.com, 
- strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
- wuhaotsh@google.com, 
- nieklinnenbank@gmail.com, rad@semihalf.com, quic_llindhol@quicinc.com, 
- marcin.juszkiewicz@linaro.org, laurent@vivier.eu, vijai@behindbytes.com,
- palmer@dabbelt.com, 
- alistair.francis@wdc.com, bin.meng@windriver.com, liweiwei@iscas.ac.cn, 
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
- richard.henderson@linaro.org, 
- mrolnik@gmail.com, edgar.iglesias@gmail.com, bcain@quicinc.com,
- gaosong@loongson.cn, 
- yangxiaojuan@loongson.cn, aurelien@aurel32.net, jiaxun.yang@flygoat.com, 
- aleksandar.rikalo@syrmia.com, chenhuacai@kernel.org, crwulff@gmail.com,
- marex@denx.de, 
- shorne@gmail.com, clg@kaod.org, david@gibson.dropbear.id.au, groug@kaod.org, 
- npiggin@gmail.com, ysato@users.sourceforge.jp, david@redhat.com,
- thuth@redhat.com, 
- iii@linux.ibm.com, mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com, 
- jcmvbkbc@gmail.com, pbonzini@redhat.com, imammedo@redhat.com,
- shan.gavin@gmail.com
-Subject: Re: [PATCH v3 17/32] target/tricore: Use generic helper to show CPU
- model names
-Message-ID: <uiypj3zb47c6drdpigbua3ynzp55msopvfqnynx6cf3m2aep6z@v6xklba5i3ft>
-References: <20230907003553.1636896-1-gshan@redhat.com>
- <20230907003553.1636896-18-gshan@redhat.com>
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1qe6xh-0006rC-Uy; Thu, 07 Sep 2023 00:49:50 -0400
+Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1qe6xf-0007mO-5c; Thu, 07 Sep 2023 00:49:49 -0400
+Received: by mail-vs1-xe2f.google.com with SMTP id
+ ada2fe7eead31-44e84fbaab9so209389137.1; 
+ Wed, 06 Sep 2023 21:49:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1694062185; x=1694666985; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=lN4jnsOv2w7ZACoJXG0nzAPT4kJdhkNOqI/AZfkM9VA=;
+ b=p1VIZmqzArfNyT1crm1GRLDi8GeeBUL+UrQWQFCwtHx52OIVk0Ai+PM2HoLJJF94S3
+ woLL9KPZ+Aze7iPKkM/EGPBMDOsg875CpbDYxNM8EHIubVuDYazmfHPAb8ob1V7UN+O6
+ FFMgl+CYo9mCXoxkwVQkAGh3hg2TS1H8SMSa7C9H9BvRGDOZktBRgP7XgTQB3tNgRiiW
+ 4YM+FqNsIMkkXrZ6rtX/qj81BAIPBGMwrYQGBqGM1pT+HrAJ0CQcAssaiU2y3DXkiPzx
+ fNLECritn80ZSut21laSlhWNcFqtXnwwqSYNBfbgRpkBv1U19w5Ao/EjPP3ZfkcfFyXr
+ v17w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1694062185; x=1694666985;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=lN4jnsOv2w7ZACoJXG0nzAPT4kJdhkNOqI/AZfkM9VA=;
+ b=jG6VdfpfgosIQJWAwzDODHuKXB+bLpD/W244O3JpgviS/FJ01NVirgYFXaYe4oR+dK
+ D+ckQbAjOVZCf3f8x2hJaAvgrw6s7ok/fm2cw3SlyYaf0bZoLe6nViNoSqCPki4o8iBb
+ Ef0UyZyzWi7Ua/MOfBbUswKmaX/hF/HhiwXnOVsKr3uAqDQ1uBzbrzvsnBPDz3xdt3GN
+ JrIIfTkmTnrGodT2P3/TRrIUK5Hobo6bKUDap4bKlJuF5G6dg2qfu6kuOX2ce+rvjEWt
+ ALTAdEfgeTzFtkSoprikscXTYCTEg/lCZAH5gosgDI8wFlTclkYDhSMoTSWjiCwMpAZQ
+ h2bQ==
+X-Gm-Message-State: AOJu0YyKowjllGbqJQvkAufeNmVrKPkW9z/5XuzWxUxtLjrVWoBLu9aG
+ PvTGNmwIIvNo3XtI7JAK7NpPnRLpzyBjGDvf8nU=
+X-Received: by 2002:a67:f4d6:0:b0:44e:eb7:24e0 with SMTP id
+ s22-20020a67f4d6000000b0044e0eb724e0mr5125143vsn.21.1694062185036; Wed, 06
+ Sep 2023 21:49:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230907003553.1636896-18-gshan@redhat.com>
-X-IMT-Source: Extern
-X-IMT-rspamd-score: 35
-X-IMT-Spam-Score: 0.0 ()
-X-PMX-Version: 6.4.9.2830568, Antispam-Engine: 2.7.2.2107409,
- Antispam-Data: 2023.9.7.53017, AntiVirus-Engine: 6.0.2,
- AntiVirus-Data: 2023.9.7.602000
-X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
-Received-SPF: pass client-ip=2001:638:502:c003::18;
- envelope-from=kbastian@mail.uni-paderborn.de; helo=nylar.uni-paderborn.de
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20230824142942.3983650-1-sunilvl@ventanamicro.com>
+ <20230824142942.3983650-2-sunilvl@ventanamicro.com>
+In-Reply-To: <20230824142942.3983650-2-sunilvl@ventanamicro.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 7 Sep 2023 14:49:18 +1000
+Message-ID: <CAKmqyKMROSR_9YaZe4TbDXtbV6apeL-4f7uXCF0wLwPWSKuozA@mail.gmail.com>
+Subject: Re: [PATCH v2 01/12] hw/arm/virt-acpi-build.c: Migrate fw_cfg
+ creation to common location
+To: Sunil V L <sunilvl@ventanamicro.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>, 
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Anup Patel <apatel@ventanamicro.com>, Andrew Jones <ajones@ventanamicro.com>, 
+ Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e2f;
+ envelope-from=alistair23@gmail.com; helo=mail-vs1-xe2f.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,24 +133,182 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8/rm3owALl94
+X-TUID: l0alSmjemwiD
 
-On Thu, Sep 07, 2023 at 10:35:38AM +1000, Gavin Shan wrote:
-> For target/tricore, the CPU type name is always the combination of the
-> CPU model name and suffix. The CPU model names have been correctly
-> shown in tricore_cpu_list_entry().
-> 
-> Use generic helper cpu_model_from_type() to show the CPU model names
-> in the above function. tricore_cpu_class_by_name() is also improved
-> by merging the condition of '@oc == NULL' to object_class_dynamic_cast().
-> 
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
+On Fri, Aug 25, 2023 at 12:30=E2=80=AFAM Sunil V L <sunilvl@ventanamicro.co=
+m> wrote:
+>
+> RISC-V also needs to use the same code to create fw_cfg in DSDT. So, avoi=
+d
+> code duplication by moving the code in arm and riscv to a device specific
+> file.
+>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
 > ---
->  target/tricore/cpu.c    |  9 +++++----
->  target/tricore/helper.c | 13 +++++--------
->  2 files changed, 10 insertions(+), 12 deletions(-)
-
-Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-
-Cheers,
-Bastian
+>  hw/arm/virt-acpi-build.c       | 19 ++-----------------
+>  hw/nvram/fw_cfg-acpi.c         | 17 +++++++++++++++++
+>  hw/nvram/meson.build           |  1 +
+>  hw/riscv/virt-acpi-build.c     | 19 ++-----------------
+>  include/hw/nvram/fw_cfg_acpi.h |  9 +++++++++
+>  5 files changed, 31 insertions(+), 34 deletions(-)
+>  create mode 100644 hw/nvram/fw_cfg-acpi.c
+>  create mode 100644 include/hw/nvram/fw_cfg_acpi.h
+>
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 6b674231c2..b8e725d953 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -35,7 +35,7 @@
+>  #include "target/arm/cpu.h"
+>  #include "hw/acpi/acpi-defs.h"
+>  #include "hw/acpi/acpi.h"
+> -#include "hw/nvram/fw_cfg.h"
+> +#include "hw/nvram/fw_cfg_acpi.h"
+>  #include "hw/acpi/bios-linker-loader.h"
+>  #include "hw/acpi/aml-build.h"
+>  #include "hw/acpi/utils.h"
+> @@ -94,21 +94,6 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMa=
+pEntry *uart_memmap,
+>      aml_append(scope, dev);
+>  }
+>
+> -static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_m=
+emmap)
+> -{
+> -    Aml *dev =3D aml_device("FWCF");
+> -    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+> -    /* device present, functioning, decoding, not shown in UI */
+> -    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+> -    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+> -
+> -    Aml *crs =3D aml_resource_template();
+> -    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
+> -                                       fw_cfg_memmap->size, AML_READ_WRI=
+TE));
+> -    aml_append(dev, aml_name_decl("_CRS", crs));
+> -    aml_append(scope, dev);
+> -}
+> -
+>  static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_mem=
+map)
+>  {
+>      Aml *dev, *crs;
+> @@ -864,7 +849,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, Vi=
+rtMachineState *vms)
+>      if (vmc->acpi_expose_flash) {
+>          acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+>      }
+> -    acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+> +    fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+>      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+>                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANS=
+PORTS);
+>      acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, v=
+ms);
+> diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
+> new file mode 100644
+> index 0000000000..4eeb81bc36
+> --- /dev/null
+> +++ b/hw/nvram/fw_cfg-acpi.c
+> @@ -0,0 +1,17 @@
+> +#include "hw/nvram/fw_cfg_acpi.h"
+> +#include "hw/acpi/aml-build.h"
+> +
+> +void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+> +{
+> +    Aml *dev =3D aml_device("FWCF");
+> +    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+> +    /* device present, functioning, decoding, not shown in UI */
+> +    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+> +    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+> +
+> +    Aml *crs =3D aml_resource_template();
+> +    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
+> +                                       fw_cfg_memmap->size, AML_READ_WRI=
+TE));
+> +    aml_append(dev, aml_name_decl("_CRS", crs));
+> +    aml_append(scope, dev);
+> +}
+> diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
+> index 988dff6f8e..69e6df5aac 100644
+> --- a/hw/nvram/meson.build
+> +++ b/hw/nvram/meson.build
+> @@ -21,3 +21,4 @@ system_ss.add(when: 'CONFIG_XLNX_EFUSE_ZYNQMP', if_true=
+: files(
+>  system_ss.add(when: 'CONFIG_XLNX_BBRAM', if_true: files('xlnx-bbram.c'))
+>
+>  specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_nvram.c'))
+> +specific_ss.add(when: 'CONFIG_ACPI', if_true: files('fw_cfg-acpi.c'))
+> diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+> index 7331248f59..d8772c2821 100644
+> --- a/hw/riscv/virt-acpi-build.c
+> +++ b/hw/riscv/virt-acpi-build.c
+> @@ -28,6 +28,7 @@
+>  #include "hw/acpi/acpi.h"
+>  #include "hw/acpi/aml-build.h"
+>  #include "hw/acpi/utils.h"
+> +#include "hw/nvram/fw_cfg_acpi.h"
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+>  #include "sysemu/reset.h"
+> @@ -97,22 +98,6 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtSt=
+ate *s)
+>      }
+>  }
+>
+> -static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_m=
+emmap)
+> -{
+> -    Aml *dev =3D aml_device("FWCF");
+> -    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+> -
+> -    /* device present, functioning, decoding, not shown in UI */
+> -    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+> -    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+> -
+> -    Aml *crs =3D aml_resource_template();
+> -    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
+> -                                       fw_cfg_memmap->size, AML_READ_WRI=
+TE));
+> -    aml_append(dev, aml_name_decl("_CRS", crs));
+> -    aml_append(scope, dev);
+> -}
+> -
+>  /* RHCT Node[N] starts at offset 56 */
+>  #define RHCT_NODE_ARRAY_OFFSET 56
+>
+> @@ -226,7 +211,7 @@ static void build_dsdt(GArray *table_data,
+>      scope =3D aml_scope("\\_SB");
+>      acpi_dsdt_add_cpus(scope, s);
+>
+> -    acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+> +    fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+>
+>      aml_append(dsdt, scope);
+>
+> diff --git a/include/hw/nvram/fw_cfg_acpi.h b/include/hw/nvram/fw_cfg_acp=
+i.h
+> new file mode 100644
+> index 0000000000..6e2c5f04b7
+> --- /dev/null
+> +++ b/include/hw/nvram/fw_cfg_acpi.h
+> @@ -0,0 +1,9 @@
+> +#ifndef FW_CFG_ACPI_H
+> +#define FW_CFG_ACPI_H
+> +
+> +#include "qemu/osdep.h"
+> +#include "exec/hwaddr.h"
+> +
+> +void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap);
+> +
+> +#endif
+> --
+> 2.39.2
+>
+>

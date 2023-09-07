@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp3153769ejb;
-        Wed, 6 Sep 2023 17:41:24 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFLtCLEtpHKN/m+CCY0pVWTZcTAnE+uGazC+xUc9GB/bn7p4LN87rEMR3H0KNocDcMr3rp+
-X-Received: by 2002:a0c:e005:0:b0:63c:f1d3:f662 with SMTP id j5-20020a0ce005000000b0063cf1d3f662mr17546593qvk.0.1694047283922;
-        Wed, 06 Sep 2023 17:41:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694047283; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp3153837ejb;
+        Wed, 6 Sep 2023 17:41:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEbIOrVPs/NS7JrfjsoegR0bBrieopI0QpcTu6p4uQqMD2mj7xotfXStCG8ns55S2FWdP+K
+X-Received: by 2002:a0c:8c8e:0:b0:64a:a902:2c2d with SMTP id p14-20020a0c8c8e000000b0064aa9022c2dmr16591074qvb.60.1694047290956;
+        Wed, 06 Sep 2023 17:41:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694047290; cv=none;
         d=google.com; s=arc-20160816;
-        b=j8EGdmPg21U99+jjsrMCkeaVDsimAPaD4OEDQBZoTRxi/9VWadTC2vUsgf1DTz2GNz
-         8rwTrBUdaryK2RKAxbrUm0oK6tyjFuxe5Ldv5Mp9snY7ykco79mJw3MrJSTpZAI9y+P0
-         suNgcOUffsPyg78TY0LNNz/nt+42Kbg4TOsY5MvRxM+ephrg0fRoqb0Qto2JEr07tC4x
-         0V07Zj9BYq8OjIjD9lrqHWZBtilwHAe7gtKkYYS2NB/jCNwwjxeBBTNgFywLEdCy0GiC
-         lOL0FA2K0r7OC4MsroEruiy0t832QVu0YuULFsXZW8najioo4SW5Z59j6kH8+zjmQ/DW
-         ahzQ==
+        b=wIYAjJgkcgVVgTrYhd0fDDVPO00ZH5pSMyH5pllopwzuFylNkcsayIJw9g28KkqCST
+         UyizCe+SaOEVjHD77pgv+KSXGOyo9rzhDBKmAZR9uJ2g1Ha4bFNJFE+mIqYzM7hdhegv
+         Xj2VwdOrFOItSswTd0bHZxlh/kiHyzQbpdScCHrdci/fGjK962D2W9NAfmpBcBH9vrmu
+         dmFBQqHhG3H3XYzN+B+BOW0AxrURHrlAJIly7C0Z2fqy491l//AXQfD9/qinWnh6i8zY
+         LhSp3q9BLb1aQpKn5OG59e3ivp7SB28ko1eKioGw6U7oTIh2xhYWGXaqJJfwNw3xfzWe
+         P5Og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WohNYH4gTLq9BFq5GnGY6CggI5nGuj9cBsyGpjzAchU=;
+        bh=fWJ/ft3wbc3usfLcOUrVN49+l5c6RR5ZXaRCQQU18A8=;
         fh=kk2WWDSe9SCzWyjzequbgooYc9A8PDm7nTb22zWaiac=;
-        b=FeEbvMNOwnmxAKelm9GOj0XYE001u8dUGGdnjiNDPG17I277PxMRNAKkqqCh0qpSwl
-         01l0nDLZKrYqn2iNLtkAN829ZAqsPsX3PXxzSTtvC8tsqTfg+Sq+taRwybN0G98nKZ9f
-         gdfWLp68UUdqxeQ2XTNBhNErw0nM8K1J/49VbrQ2knteSY9LSHLozowYg1mihFigYeOe
-         l5p0ruU9mfTRa/A1MzpfftGfNjnufXZI7u1kI8okLS/RaZLi9RVVxhrs21vZLeObM7Hz
-         Dr1SvXmLy1XkYvjwmImEY20O0mhelu9++9IQlGHnBEJhmWQn1P1Kx3aNPWQppnTnXoUr
-         Dv/Q==
+        b=gy+VliIo6gygYXZ8UURmGiqdsJLfci2wKu9mPXggM97g4eNBMvj0z863/TNghmzWdM
+         mgxy9FJHK77wQy+A/teWC55OVcWhKzPfa7cfsJ2DSskDkE+t6hZUOlrUHvvCvOi3R0j6
+         50kxgkGb7BxEAd6tYmCcqdQhE5dS48wRFDE8DhzoRsd+2yU8I4Dci+J8srjGdlhHsvIu
+         JQdhOlrMVVlnRg6as7eoeOs5Gob3AQ8rdgMl57IuEBwu2AJCDK9OsUQ3Dw5czgK3HjkM
+         VRZ/zoXTvDHuBh+/BOzSXVskJvPU9j7EDHUuATuvj5TqOdPSS8oT0qvVgQIt/n5bRiHP
+         y7og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="X09H/p1J";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ehtBqNgg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y16-20020a0cf150000000b006418d8713bfsi10316869qvl.610.2023.09.06.17.41.23
+        by mx.google.com with ESMTPS id i8-20020a0c9c88000000b00631fd57b69fsi8180898qvf.501.2023.09.06.17.41.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Sep 2023 17:41:23 -0700 (PDT)
+        Wed, 06 Sep 2023 17:41:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="X09H/p1J";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ehtBqNgg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qe35G-0007CB-0V; Wed, 06 Sep 2023 20:41:22 -0400
+	id 1qe34e-0005YJ-6C; Wed, 06 Sep 2023 20:40:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe35D-00074q-8M
- for qemu-devel@nongnu.org; Wed, 06 Sep 2023 20:41:19 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe34W-0005F4-9k
+ for qemu-devel@nongnu.org; Wed, 06 Sep 2023 20:40:37 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe35A-0001w9-Re
- for qemu-devel@nongnu.org; Wed, 06 Sep 2023 20:41:18 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe34T-0001hb-GE
+ for qemu-devel@nongnu.org; Wed, 06 Sep 2023 20:40:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1694047276;
+ s=mimecast20190719; t=1694047231;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WohNYH4gTLq9BFq5GnGY6CggI5nGuj9cBsyGpjzAchU=;
- b=X09H/p1JWmQFIExab43VfDUg1z1a+ezp2MvioVVzm97Joe9mOEeG+wTVY6N3QEHTUTetXt
- 13+0Ipni9x9daC15zE0IoVS8UZ2XzGGecCMMsb+LCaZQFDaZq1KuVkTdJ9wxkzgQG169fY
- nr+PR8r32l3sY8s0a+0Wwlk1AAgzOII=
+ bh=fWJ/ft3wbc3usfLcOUrVN49+l5c6RR5ZXaRCQQU18A8=;
+ b=ehtBqNggx/ADBuY3S15s3CroSbT0PkZW2pa87tFkX8EmZhCMfYbHuwibzOk9O2kmxd2iFX
+ S3vxRMaTLuNUf1AHyW9b1zrqdUzuVNKYiiPk9ZUmohTT7eayJzt/tW4t5Bu4YCKvAQDdwj
+ OYwRcf1yTpCatqipv3YeiAMheizI0pg=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-266-hUlPjLayODGTntSVImTpZA-1; Wed, 06 Sep 2023 20:41:11 -0400
-X-MC-Unique: hUlPjLayODGTntSVImTpZA-1
+ us-mta-528-9YNVnlXzNw2Q7n2kXAKtng-1; Wed, 06 Sep 2023 20:40:25 -0400
+X-MC-Unique: 9YNVnlXzNw2Q7n2kXAKtng-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6165080523C;
- Thu,  7 Sep 2023 00:41:09 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B943D856DED;
+ Thu,  7 Sep 2023 00:40:22 +0000 (UTC)
 Received: from gshan.redhat.com (unknown [10.64.136.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A2657D47819;
- Thu,  7 Sep 2023 00:40:53 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 05190C03295;
+ Thu,  7 Sep 2023 00:40:07 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -97,10 +97,9 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
  kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com, pbonzini@redhat.com,
  imammedo@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v3 17/32] target/tricore: Use generic helper to show CPU model
- names
-Date: Thu,  7 Sep 2023 10:35:38 +1000
-Message-ID: <20230907003553.1636896-18-gshan@redhat.com>
+Subject: [PATCH v3 14/32] target/rx: Use generic helper to show CPU model names
+Date: Thu,  7 Sep 2023 10:35:35 +1000
+Message-ID: <20230907003553.1636896-15-gshan@redhat.com>
 In-Reply-To: <20230907003553.1636896-1-gshan@redhat.com>
 References: <20230907003553.1636896-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -130,67 +129,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U7KyS1YmPiVr
+X-TUID: 203EHt9bnOI6
 
-For target/tricore, the CPU type name is always the combination of the
-CPU model name and suffix. The CPU model names have been correctly
-shown in tricore_cpu_list_entry().
+For target/rx, the CPU type name can be: (1) the combination of the
+CPU model name and suffix; (2) same to the CPU model name. The CPU
+type names have been shown in rx_cpu_list_entry().
 
 Use generic helper cpu_model_from_type() to show the CPU model names
-in the above function. tricore_cpu_class_by_name() is also improved
+in rx_cpu_list_entry(). Besides, rx_cpu_class_by_name() is improved
 by merging the condition of '@oc == NULL' to object_class_dynamic_cast().
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- target/tricore/cpu.c    |  9 +++++----
- target/tricore/helper.c | 13 +++++--------
- 2 files changed, 10 insertions(+), 12 deletions(-)
+ target/rx/cpu.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
-index 133a9ac70e..066249e50d 100644
---- a/target/tricore/cpu.c
-+++ b/target/tricore/cpu.c
-@@ -140,11 +140,12 @@ static ObjectClass *tricore_cpu_class_by_name(const char *cpu_model)
-     typename = g_strdup_printf(TRICORE_CPU_TYPE_NAME("%s"), cpu_model);
-     oc = object_class_by_name(typename);
-     g_free(typename);
--    if (!oc || !object_class_dynamic_cast(oc, TYPE_TRICORE_CPU) ||
--        object_class_is_abstract(oc)) {
--        return NULL;
-+    if (object_class_dynamic_cast(oc, TYPE_TRICORE_CPU) &&
-+        !object_class_is_abstract(oc)) {
-+        return oc;
-     }
--    return oc;
-+
-+    return NULL;
- }
+diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+index 157e57da0f..ff0ced1f3d 100644
+--- a/target/rx/cpu.c
++++ b/target/rx/cpu.c
+@@ -91,9 +91,11 @@ static void rx_cpu_reset_hold(Object *obj)
  
- static void tc1796_initfn(Object *obj)
-diff --git a/target/tricore/helper.c b/target/tricore/helper.c
-index 6d076ac36f..21f4e1f1a3 100644
---- a/target/tricore/helper.c
-+++ b/target/tricore/helper.c
-@@ -98,14 +98,11 @@ bool tricore_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
- 
- static void tricore_cpu_list_entry(gpointer data, gpointer user_data)
+ static void rx_cpu_list_entry(gpointer data, gpointer user_data)
  {
 -    ObjectClass *oc = data;
--    const char *typename;
--    char *name;
--
--    typename = object_class_get_name(oc);
--    name = g_strndup(typename, strlen(typename) - strlen("-" TYPE_TRICORE_CPU));
--    qemu_printf("  %s\n", name);
--    g_free(name);
 +    const char *typename = object_class_get_name(OBJECT_CLASS(data));
 +    char *model = cpu_model_from_type(typename);
-+
+ 
+-    qemu_printf("  %s\n", object_class_get_name(oc));
 +    qemu_printf("  %s\n", model);
 +    g_free(model);
  }
  
- void tricore_cpu_list(void)
+ void rx_cpu_list(void)
+@@ -111,18 +113,20 @@ static ObjectClass *rx_cpu_class_by_name(const char *cpu_model)
+     char *typename;
+ 
+     oc = object_class_by_name(cpu_model);
+-    if (oc != NULL && object_class_dynamic_cast(oc, TYPE_RX_CPU) != NULL &&
++    if (object_class_dynamic_cast(oc, TYPE_RX_CPU) &&
+         !object_class_is_abstract(oc)) {
+         return oc;
+     }
++
+     typename = g_strdup_printf(RX_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    if (oc != NULL && object_class_is_abstract(oc)) {
+-        oc = NULL;
++    if (object_class_dynamic_cast(oc, TYPE_RX_CPU) &&
++        !object_class_is_abstract(oc)) {
++        return oc;
+     }
+ 
+-    return oc;
++    return NULL;
+ }
+ 
+ static void rx_cpu_realize(DeviceState *dev, Error **errp)
 -- 
 2.41.0
 

@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp3155010ejb;
-        Wed, 6 Sep 2023 17:44:05 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHPXQWp71XQjRU6jADFL4fanMkWftxWQWUUj/aNY9pVjQTEimmLKfuEOeaYc9LL7S33G+uo
-X-Received: by 2002:a05:620a:2849:b0:76d:13f0:97f6 with SMTP id h9-20020a05620a284900b0076d13f097f6mr18681105qkp.32.1694047445361;
-        Wed, 06 Sep 2023 17:44:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694047445; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp3155201ejb;
+        Wed, 6 Sep 2023 17:44:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGrTzdGtgg40+u5iQuDR7Jagw2g23HSco8YFgitlfFtT4u1jnhVgU5M1rBZUps4IG7QT4bw
+X-Received: by 2002:a05:622a:1904:b0:406:a604:124f with SMTP id w4-20020a05622a190400b00406a604124fmr22581141qtc.8.1694047475622;
+        Wed, 06 Sep 2023 17:44:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694047475; cv=none;
         d=google.com; s=arc-20160816;
-        b=iQlKfhF0MHfJcDQ0qgPZm++zHpaUaqDzttlKOWMTJodxmUT5WiPaIZIn9jPxhGG+RE
-         efGuMbF6TlL7vUL8r8Y1I0dn2RlLIIWwOMIxNuXllKCpzs9OlTzrXb62tq3r+baCNAs7
-         /cEQjaL4eRMAyMGuRfRKYmd0bk2MjMb5BiPvVuh5aZVpZsGASnHclhm5jSzpsmOxd8I/
-         JC+86YcAIaWz+kchKk3VeKGOMh757MjO+aDUD1jz54gkV4hD2eYItVjoB9EV7p2+FR3H
-         Cp2B0sy4uTE1ZT7/WgPDH3/03tR2WdPGSl8b/UY75YPm0V/lvQwL+6XNb1UFN2gigrdB
-         m89A==
+        b=qsbpAJS78738KxmMxS9/kD2/ugGO0ySBpFQMmN5JOhP02WbAo1ytzR0vTmaBYXGP3T
+         rklNEid6IQfZaaWnb4GFfE22QYPyewWndrLBv9VuMMpOqokfNhnRODULVyhDTM9B53SK
+         qDLcgiolS+fPcvkbeIUEPcbkWv/ohs9srEQ2CczXoTSkV1ft9RBiGi8oPQnutS4Q/F3G
+         ZUTmAD0tHdQZR9eBj6s4gfilhbJMe7jf2u5HbtF8rsglTZDl/wJd+W5qlzqK4lz4H0A6
+         6fIEn23uRB3FSwwh3Qh59d7bpksQ3049C6i0Yrs+XuPqHWve5p0ULutnTpFRuptJWSZN
+         btFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=drtXQ4Fahyaf0WjX9zaKTx6xyfg7+3ChMdvXv2sT/LY=;
+        bh=WSSp2xuytvGPOHRq3f1T8dMvTKXU46m8IM/8OO6Q/MM=;
         fh=kk2WWDSe9SCzWyjzequbgooYc9A8PDm7nTb22zWaiac=;
-        b=fZzNnfvDApaucfnynyG2J6J2XwpgndU9Byvwnk3HxOF79oh+dO8iEqh7ioCyx5xV9m
-         djQIjLZKSxNPd7wXYoals9UHHjKXCgBNnROr89B1dAEvNdq8E8vtogqgmfECyZxMmk5j
-         ODwTFLR7+9ZoUwPWfnPcqNHjMl/BDgyKswR7jBUFNf5oW1KaFMwnu7i3iL3hExF2Ix9D
-         cK+ZgDcZ/DR/5kZlizQD+HrEZke+Z+wD3jyyawE0KV+0Zf/5WeRXV0KhttvFrElB+JX+
-         nLUp3c6FA7SQ3NyFHn3Rn04tGaLJPkS7wA/aJcDENFM2jApw7Y1gZUs+sBcOvY5cxbvl
-         VMEA==
+        b=AgC3gkiNxSuho1ZUmyZbwy+4nl4QsqEP85Ca83rs5FkAODAjIq7tj8RFmUdfSkpM4d
+         1EHeW1HWnIbyAYh4y7abR09iuI1FnIpoy8l4nkiqrggt79I853urU9IFdG8ClyOdaOGf
+         U+he0tzWVClHaqvh35EQv4qBZAYqRWhrlYq2SDFYC9J6wF+GQGtOQCT6tZiB/Adn1OWM
+         DvGaeIU5Yrdzk7JMfCWY6dJ2pTQumSCFWpzCSxTQTYuXosKAae7J1qVSKwzNauaodiE1
+         JyPnkf0U0HY9cRR1o7QJ0U39vVeeG9fxJ6vBWXfs+MG2grza7chqHv4jI4nolzvJhYVd
+         UEug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="JC/WtJvf";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U71VPdLi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq35-20020a05620a46a300b00767d0e575dasi1466796qkb.229.2023.09.06.17.44.05
+        by mx.google.com with ESMTPS id g5-20020ac87f45000000b00403a3002ce8si10500156qtk.339.2023.09.06.17.44.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Sep 2023 17:44:05 -0700 (PDT)
+        Wed, 06 Sep 2023 17:44:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="JC/WtJvf";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U71VPdLi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qe37k-0007K6-C1; Wed, 06 Sep 2023 20:43:57 -0400
+	id 1qe38K-0008He-GV; Wed, 06 Sep 2023 20:44:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe37j-0007Iw-I4
- for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:43:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe37z-0007uV-8k
+ for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:44:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe37h-0002mA-A6
- for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:43:55 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe37v-0002qa-Uh
+ for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:44:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1694047432;
+ s=mimecast20190719; t=1694047447;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=drtXQ4Fahyaf0WjX9zaKTx6xyfg7+3ChMdvXv2sT/LY=;
- b=JC/WtJvfmCiI4U/jAoCW0Lz9GX2au7jJEK6xhYli/b4dXLHLna0Uvh8d5IVJOlMsBlSK8s
- GKMlfUCsU1gepIlig0bgN2mzE0vUmQatgi2cwBcDPhd3vsfSXrEBlspKts9d7b2C0FYvb+
- tGm/dnpKG4bpCRBIhcM6iJ9uzZJiQt4=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-529-SXFd75UxOhykPuxjFBhaYA-1; Wed, 06 Sep 2023 20:43:46 -0400
-X-MC-Unique: SXFd75UxOhykPuxjFBhaYA-1
+ bh=WSSp2xuytvGPOHRq3f1T8dMvTKXU46m8IM/8OO6Q/MM=;
+ b=U71VPdLi+U7ioh+NrVyowmWdZUJNPKm3UlaDns1siMKjCHBbKaD/u+48ekXramboCm8HBv
+ MuHAZRwKFnarHdtcpqK8BEEnMUVJYYLfDEN9i/XCFrFh2Ot/EY/cn9kmaPZkcdXcqegb0N
+ 9WMYZi1WtgH8lK9LSwdviviHWTiDNsc=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-608-NewLQoanNUyehc7IiGuXGQ-1; Wed, 06 Sep 2023 20:44:03 -0400
+X-MC-Unique: NewLQoanNUyehc7IiGuXGQ-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A909738157A8;
- Thu,  7 Sep 2023 00:43:44 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E4534800C78;
+ Thu,  7 Sep 2023 00:44:00 +0000 (UTC)
 Received: from gshan.redhat.com (unknown [10.64.136.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E2F34C03295;
- Thu,  7 Sep 2023 00:43:29 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2D012C03295;
+ Thu,  7 Sep 2023 00:43:44 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -97,17 +97,17 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
  kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com, pbonzini@redhat.com,
  imammedo@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v3 27/32] machine: Print CPU model name instead of CPU type
- name
-Date: Thu,  7 Sep 2023 10:35:48 +1000
-Message-ID: <20230907003553.1636896-28-gshan@redhat.com>
+Subject: [PATCH v3 28/32] hw/arm/virt: Check CPU type in
+ machine_run_board_init()
+Date: Thu,  7 Sep 2023 10:35:49 +1000
+Message-ID: <20230907003553.1636896-29-gshan@redhat.com>
 In-Reply-To: <20230907003553.1636896-1-gshan@redhat.com>
 References: <20230907003553.1636896-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -130,55 +130,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J5X+/wbziysa
+X-TUID: /M/3ifJg+YMO
 
-The names of supported CPU models instead of CPU types should be
-printed when the user specified CPU type isn't supported, to be
-consistent with the output from '-cpu ?'.
-
-Correct the error messages to print CPU model names instead of CPU
-type names.
+Set mc->valid_cpu_types so that the user specified CPU type can be
+validated in machine_run_board_init(). We needn't to do the check
+by ourselves.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- hw/core/machine.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ hw/arm/virt.c | 21 +++------------------
+ 1 file changed, 3 insertions(+), 18 deletions(-)
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 93a327927f..6b701526ae 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -1357,6 +1357,7 @@ static void is_cpu_type_supported(MachineState *machine, Error **errp)
-     MachineClass *mc = MACHINE_GET_CLASS(machine);
-     ObjectClass *oc = object_class_by_name(machine->cpu_type);
-     CPUClass *cc;
-+    char *model;
-     int i;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a13c658bbf..762780e677 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -203,7 +203,7 @@ static const int a15irqmap[] = {
+     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+ };
+ 
+-static const char *valid_cpus[] = {
++static const char * const valid_cpu_types[] = {
+ #ifdef CONFIG_TCG
+     ARM_CPU_TYPE_NAME("cortex-a7"),
+     ARM_CPU_TYPE_NAME("cortex-a15"),
+@@ -219,20 +219,9 @@ static const char *valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("cortex-a57"),
+     ARM_CPU_TYPE_NAME("host"),
+     ARM_CPU_TYPE_NAME("max"),
++    NULL
+ };
+ 
+-static bool cpu_type_valid(const char *cpu)
+-{
+-    int i;
+-
+-    for (i = 0; i < ARRAY_SIZE(valid_cpus); i++) {
+-        if (strcmp(cpu, valid_cpus[i]) == 0) {
+-            return true;
+-        }
+-    }
+-    return false;
+-}
+-
+ static void create_randomness(MachineState *ms, const char *node)
+ {
+     struct {
+@@ -2030,11 +2019,6 @@ static void machvirt_init(MachineState *machine)
+     unsigned int smp_cpus = machine->smp.cpus;
+     unsigned int max_cpus = machine->smp.max_cpus;
+ 
+-    if (!cpu_type_valid(machine->cpu_type)) {
+-        error_report("mach-virt: CPU type %s not supported", machine->cpu_type);
+-        exit(1);
+-    }
+-
+     possible_cpus = mc->possible_cpu_arch_ids(machine);
  
      /*
-@@ -1373,11 +1374,18 @@ static void is_cpu_type_supported(MachineState *machine, Error **errp)
- 
-         /* The user specified CPU type isn't valid */
-         if (!mc->valid_cpu_types[i]) {
--            error_setg(errp, "Invalid CPU type: %s", machine->cpu_type);
--            error_append_hint(errp, "The valid types are: %s",
--                              mc->valid_cpu_types[0]);
-+            model = cpu_model_from_type(machine->cpu_type);
-+            error_setg(errp, "Invalid CPU type: %s", model);
-+            g_free(model);
-+
-+            model = cpu_model_from_type(mc->valid_cpu_types[0]);
-+            error_append_hint(errp, "The valid types are: %s", model);
-+            g_free(model);
-+
-             for (i = 1; mc->valid_cpu_types[i]; i++) {
--                error_append_hint(errp, ", %s", mc->valid_cpu_types[i]);
-+                model = cpu_model_from_type(mc->valid_cpu_types[i]);
-+                error_append_hint(errp, ", %s", model);
-+                g_free(model);
-             }
- 
-             error_append_hint(errp, "\n");
+@@ -2953,6 +2937,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+ #else
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("max");
+ #endif
++    mc->valid_cpu_types = valid_cpu_types;
+     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
+     mc->kvm_type = virt_kvm_type;
+     assert(!mc->get_hotplug_handler);
 -- 
 2.41.0
 

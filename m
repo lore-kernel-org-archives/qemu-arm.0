@@ -1,114 +1,114 @@
-Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp434640ejb;
-        Thu, 7 Sep 2023 09:04:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEJvngmnPSzntf2e7R8jbh39eTag6amDwUXEgy3bObjSjtmRXkIzegs+OvJVplETetf96zF
-X-Received: by 2002:a05:6214:4486:b0:63c:f0e2:2b37 with SMTP id on6-20020a056214448600b0063cf0e22b37mr18351663qvb.64.1694102645990;
-        Thu, 07 Sep 2023 09:04:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694102645; cv=none;
+Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp434697ejb;
+        Thu, 7 Sep 2023 09:04:10 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF+iawN2jkgekDZgYiExx2xqHqU6oyTYAXOjSSZtYsI4RNbTWWCD9vCKXzrlMm9G3LeE8hV
+X-Received: by 2002:a05:622a:20f:b0:407:9170:5818 with SMTP id b15-20020a05622a020f00b0040791705818mr22764196qtx.46.1694102650175;
+        Thu, 07 Sep 2023 09:04:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694102650; cv=none;
         d=google.com; s=arc-20160816;
-        b=ot295zGvhfB3bpM4WP/Ze7z9Sa4PnJVn6sZ4BwyXOlgRoZh5RsLzeoR+u/yBtUcjEo
-         YPMG4BLYH0rbYXCdXyn0R3fLGBCWBOS5zg8CiEArbp2GDysbWtkfiX6QWkeyMiTQMp8Y
-         2lbM6THQjz0Ywq4wBNm5QPRw9nCy4NIeYaWixzhNOanTBN+tuj2AMvLgGujECWbssqrH
-         YHvWGiINnU7Bxj62en8q4MKMilQDhCw40SEnjhT3Zedy2/nTTL5z1YSlCurp2uOWZrep
-         +vWQeDXlN91TybczVx0+CNJSUnOmEwEhThX7uPp1vrTKoBSoZM2wl/YU80g0He4BO9cs
-         S2Mw==
+        b=iED+rOOvMr2yj4BnzCjIAa6QXs3Z1uhXbMhJSGQwzrYokvXiOdAGU/RZIdaDEfACY5
+         2MbgHKeieLaoNeKaZIT0ayLLVWkgpIg+HEhhdbaE1HJXpvM/dsq0KYKbgTmGUWHQD9rh
+         PxHwtsbnF8UwSQkwHeAWeTfcOzINdcNU6UiLaLDZFwioZ7Rc1TgRJfvHpti966W/Dqd4
+         WN6ksiPihRtDxZqZuAOyEjYrXD+Cbbv76FUXd46olwnpmTYGVb4t3N9P2HuIyPtB2nCm
+         rAwwv3JZN+BvT3mp8iPbwp7AJr2wQp1iBZyJh3G/CVETlU77flNJ+vPGpF8uZDY47Qgl
+         SOUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=pr9z6x8cZyDAxlgtwSk5bQrpw1Jw2YIgz6/gNj+f09U=;
+        bh=wXwOIXEXDGtPrl1zrOtaqtfc6E7wogzH7eCLgLNl9rE=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=uR230d7LNki7glTSC7yorfRy1V6lj2ryz3i89A/0mmiwVqzUDg/LR+CXy3dUd8gzAE
-         Q2ld7Up4HFYWPtqQqIElqf26QfslepV4oTpSm05koOBhoPi5wlWOcW8IquESE0HNgwny
-         O3DwJvAzXWt66dZ3EPxqBaAt2nt9AqrEffeiSVD97pdY1dpav13MSGse938gacL+5V7G
-         Szxr0baTjzNCT4J3XcdsNhzmKWDXSy0N5mb6pSNiIQtNOA99MlenB/ZkCBKWM36pc48B
-         7FmUZJTMvNiRrzb2gy3NA1al7hLMtUxUNfoddECx4nYTmWR/btMf49a8aV3/4Z8a+Vqd
-         HQbw==
+        b=u0us83A4CJOwk20XjJ6Rxg/QtiRhMMw7AwagN1x0IPCTdNHGSwZpfRcv/nDrjxXtHj
+         HmItmwhda6f2xmilM2jDvyw5eYGVDaJ2uE7Gt6wYGd9Y1GVUXbR3ZhY7YEk2kj1jpmD0
+         nb9rbkU9/M22uPB5BLWQzqUIZ+Los0qnI62eZfTH2+MkisX8p6bmroybC7vxWH69jN+c
+         SttDr7Y/S9P6jRQ2U1qiOn17QSnrVEEPOOkYsabbXAoCTbREyUHZ1OeT3/IwUJ7z7VZ0
+         rIyYT3mZFk9Daeg9ofJxNl57F5efDG9WPQH7t1xixBbFZwe8gOTASQ29AhquDz/a1KIr
+         bD/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="I/tU/eNG";
+       dkim=pass header.i=@linaro.org header.s=google header.b=lJhfifKH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3-20020a0cdb83000000b0063d21173a0csi11851428qvk.589.2023.09.07.09.04.05
+        by mx.google.com with ESMTPS id v8-20020a05622a014800b004036456ade9si11494523qtw.598.2023.09.07.09.04.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Sep 2023 09:04:05 -0700 (PDT)
+        Thu, 07 Sep 2023 09:04:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="I/tU/eNG";
+       dkim=pass header.i=@linaro.org header.s=google header.b=lJhfifKH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qeHTy-0000pI-Mb; Thu, 07 Sep 2023 12:03:50 -0400
+	id 1qeHU3-0000uU-Hl; Thu, 07 Sep 2023 12:03:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeHTx-0000mR-2q
- for qemu-arm@nongnu.org; Thu, 07 Sep 2023 12:03:49 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1qeHU1-0000rn-90
+ for qemu-arm@nongnu.org; Thu, 07 Sep 2023 12:03:53 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeHTt-0001zV-6P
- for qemu-arm@nongnu.org; Thu, 07 Sep 2023 12:03:48 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-31aeedbb264so1236453f8f.0
- for <qemu-arm@nongnu.org>; Thu, 07 Sep 2023 09:03:44 -0700 (PDT)
+ id 1qeHTv-000205-Ab
+ for qemu-arm@nongnu.org; Thu, 07 Sep 2023 12:03:52 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-402cc6b8bedso12822645e9.1
+ for <qemu-arm@nongnu.org>; Thu, 07 Sep 2023 09:03:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694102623; x=1694707423; darn=nongnu.org;
+ d=linaro.org; s=google; t=1694102625; x=1694707425; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=pr9z6x8cZyDAxlgtwSk5bQrpw1Jw2YIgz6/gNj+f09U=;
- b=I/tU/eNG+yKCNorhD4hpCtvCxdUVAljBBSEBprh3QcCLudehgPb8IwoTtUrpoQmLOw
- CXzP0gtJMCXWQYKzXowzbfJ/hzQXYZHKqMnu1RGeVkxKElWWovVkS7pooRuxnr6s8imu
- JFlzsNP/cPKnl/p96Y0Pym5C+LB8dOuM1l8+az7eN1aSCxwpBVrGYNB765tpcvTswMxb
- Vp8LSOZ3rPm6oFVys+nIq+Mqe69aMOXisECwCi1aLURDS3RkIQOTdGSKcL+uCWDIr0jK
- NJFW06RrsLCS8+nxbKvPgq3oE28yLQAlE0AANmnTPRZco9V6A4n8l6RXikwW+4iiVSEi
- Kc4w==
+ :reply-to; bh=wXwOIXEXDGtPrl1zrOtaqtfc6E7wogzH7eCLgLNl9rE=;
+ b=lJhfifKHKkK91MuIX7VUcp81QlXT9qslc0iP06dyJhojoaIRltrrykU7g4tZvwaQ6r
+ V4B3iH5Iu6CxNZDXzpKVtUaGvDMtzvCxoDakUspn2QJGfRPQD+4IVZeQZLpBH9KyPt4p
+ WW6VH3KHveSqQTwvO0kpSQ1cykIwwW6MqYlxndyXuiHU/yjh4yM6K+gPgE1fHnCdLts5
+ 3eAUz/fHs3jnOm/kLzb483Zu0rRebaN2Z/0EAoU5Ab0B8jqI48rTmb0WeAW0LvV1cQyZ
+ AF+fE0d8gu3Ev9PCUMpkT3vb8U8fmrqlawQg8yuousHMzhLp9GRgvnG0G7sQ7l/OzJfk
+ MVtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1694102623; x=1694707423;
+ d=1e100.net; s=20221208; t=1694102625; x=1694707425;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=pr9z6x8cZyDAxlgtwSk5bQrpw1Jw2YIgz6/gNj+f09U=;
- b=SjRvxXlF/yClVXlERhZ1AWDkQSZu893flyY4aJdNOQ+16LB5Pf5vpPWVJNVGgzuKEC
- 6iVgYQbzDUIcjBOqitF6nT0iFngoIFJW4p3QLBHsKTWpe3NOvc44BhhKinJE93TTXD6a
- ci31tsZk3YiMBbSyzSCJCEKypDGaEVLnfZVSIowVQPik5SPZFZ4j5uHVw9AE1yDMnpZ4
- xLTfvKcmb1AYjmQItAJ3WGkpB+uDkunM34oIOr4SejbcgR0wcZOZJju0p8C0xTZ9XdeR
- Vxysrx2xVWmHvs0UIgLWHj9/9QSKRDhbX3PkragXHi1PGze5Pk7PT1UUF/gto7ww6Ebo
- dSBA==
-X-Gm-Message-State: AOJu0YyeIbbdHXXxeTwLT5BOl8Y0cjFAJTMFR4IqNgHami0AaXA3A1ZL
- lNRmjQRTmBCylwpRwds+MZIsV69wmr5UkMCVtf8=
-X-Received: by 2002:a5d:4ed2:0:b0:315:8a80:329e with SMTP id
- s18-20020a5d4ed2000000b003158a80329emr5302728wrv.40.1694102623485; 
- Thu, 07 Sep 2023 09:03:43 -0700 (PDT)
+ bh=wXwOIXEXDGtPrl1zrOtaqtfc6E7wogzH7eCLgLNl9rE=;
+ b=VzCSlFf3ycBW8UMS99zc+iAVCWI0+QHVSBnF+1aCGf1hanEZ9twqw4kGxOoHiNlU9n
+ 7W8m8swF5fmH++bzt1eK1QpdMqrks7GOBiLiwU5DdwyJAvsxodEbwfPvURWewldD3du/
+ pKAFNDQ8BTF9Z2Ufq22GAtUFoCh6YrBqccVQVAz/blGJVM87qC8eRCwBhDkIVGtMDDV2
+ wrNOowmrOuPYw5bW1z+i0RuS/fBUV/5CH9JLxIcOX44djV7+3qaMKjLSoFD+E/IPxRA8
+ Gpn/SerfDdS6qSd0UNvss2ckT5McFRIEy97eIL0DU/5qn1fDY41jUv1//ITi7gKw+a5E
+ bmHw==
+X-Gm-Message-State: AOJu0YyCvYQDYCPH/y9XQFr/9N41vB21WyCkS+gaTofjHFwguAR+vNuB
+ fDhSDozqg829oiR2n7FNlKBCUxBadgtEkw0dT3A=
+X-Received: by 2002:a5d:58da:0:b0:31d:8fed:c527 with SMTP id
+ o26-20020a5d58da000000b0031d8fedc527mr4552554wrf.42.1694102625673; 
+ Thu, 07 Sep 2023 09:03:45 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- d1-20020adfa401000000b0031980294e9fsm20256241wra.116.2023.09.07.09.03.43
+ d1-20020adfa401000000b0031980294e9fsm20256241wra.116.2023.09.07.09.03.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Sep 2023 09:03:43 -0700 (PDT)
+ Thu, 07 Sep 2023 09:03:44 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 02/14] target/arm: Don't skip MTE checks for LDRT/STRT at EL0
-Date: Thu,  7 Sep 2023 17:03:28 +0100
-Message-Id: <20230907160340.260094-3-peter.maydell@linaro.org>
+Subject: [PATCH 05/14] target/arm: Pass unpriv bool to get_a64_user_mem_index()
+Date: Thu,  7 Sep 2023 17:03:31 +0100
+Message-Id: <20230907160340.260094-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230907160340.260094-1-peter.maydell@linaro.org>
 References: <20230907160340.260094-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,53 +123,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sYkmecIBAqQl
+X-TUID: I3Hkt5DCU1ac
 
-The LDRT/STRT "unprivileged load/store" instructions behave like
-normal ones if executed at EL0. We handle this correctly for
-the load/store semantics, but get the MTE checking wrong.
+In every place that we call the get_a64_user_mem_index() function
+we do it like this:
+ memidx = a->unpriv ? get_a64_user_mem_index(s) : get_mem_index(s);
+Refactor so the caller passes in the bool that says whether they
+want the 'unpriv' or 'normal' mem_index rather than having to
+do the ?: themselves.
 
-We always look at s->mte_active[is_unpriv] to see whether we should
-be doing MTE checks, but in hflags.c when we set the TB flags that
-will be used to fill the mte_active[] array we only set the
-MTE0_ACTIVE bit if UNPRIV is true (i.e.  we are not at EL0).
-
-This means that a LDRT at EL0 will see s->mte_active[1] as 0,
-and will not do MTE checks even when MTE is enabled.
-
-To avoid the translate-time code having to do an explicit check on
-s->unpriv to see if it is OK to index into the mte_active[] array,
-duplicate MTE_ACTIVE into MTE0_ACTIVE when UNPRIV is false.
-
-(This isn't a very serious bug because generally nobody executes
-LDRT/STRT at EL0, because they have no use there.)
-
-Cc: qemu-stable@nongnu.org
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/hflags.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+I'm about to add another use of this function which would
+otherwise also end up doing this same ?: expression...
+---
+ target/arm/tcg/translate-a64.c | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
-index 616c5fa7237..ea642384f5a 100644
---- a/target/arm/tcg/hflags.c
-+++ b/target/arm/tcg/hflags.c
-@@ -306,6 +306,15 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
-                 && !(env->pstate & PSTATE_TCO)
-                 && (sctlr & (el == 0 ? SCTLR_TCF0 : SCTLR_TCF))) {
-                 DP_TBFLAG_A64(flags, MTE_ACTIVE, 1);
-+                if (!EX_TBFLAG_A64(flags, UNPRIV)) {
-+                    /*
-+                     * In non-unpriv contexts (eg EL0), unpriv load/stores
-+                     * act like normal ones; duplicate the MTE info to
-+                     * avoid translate-a64.c having to check UNPRIV to see
-+                     * whether it is OK to index into MTE_ACTIVE[].
-+                     */
-+                    DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
-+                }
-             }
-         }
-         /* And again for unprivileged accesses, if required.  */
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 0b77c92437f..ea1954d4a2a 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -105,9 +105,17 @@ void a64_translate_init(void)
+ }
+ 
+ /*
+- * Return the core mmu_idx to use for A64 "unprivileged load/store" insns
++ * Return the core mmu_idx to use for A64 load/store insns which
++ * have a "unprivileged load/store" variant. Those insns access
++ * EL0 if executed from an EL which has control over EL0 (usually
++ * EL1) but behave like normal loads and stores if executed from
++ * elsewhere (eg EL3).
++ *
++ * @unpriv : true for the unprivileged encoding; false for the
++ *           normal encoding (in which case we will return the same
++ *           thing as get_mem_index().
+  */
+-static int get_a64_user_mem_index(DisasContext *s)
++static int get_a64_user_mem_index(DisasContext *s, bool unpriv)
+ {
+     /*
+      * If AccType_UNPRIV is not used, the insn uses AccType_NORMAL,
+@@ -115,7 +123,7 @@ static int get_a64_user_mem_index(DisasContext *s)
+      */
+     ARMMMUIdx useridx = s->mmu_idx;
+ 
+-    if (s->unpriv) {
++    if (unpriv && s->unpriv) {
+         /*
+          * We have pre-computed the condition for AccType_UNPRIV.
+          * Therefore we should never get here with a mmu_idx for
+@@ -3078,7 +3086,7 @@ static void op_addr_ldst_imm_pre(DisasContext *s, arg_ldst_imm *a,
+     if (!a->p) {
+         tcg_gen_addi_i64(*dirty_addr, *dirty_addr, offset);
+     }
+-    memidx = a->unpriv ? get_a64_user_mem_index(s) : get_mem_index(s);
++    memidx = get_a64_user_mem_index(s, a->unpriv);
+     *clean_addr = gen_mte_check1_mmuidx(s, *dirty_addr, is_store,
+                                         a->w || a->rn != 31,
+                                         mop, a->unpriv, memidx);
+@@ -3099,7 +3107,7 @@ static bool trans_STR_i(DisasContext *s, arg_ldst_imm *a)
+ {
+     bool iss_sf, iss_valid = !a->w;
+     TCGv_i64 clean_addr, dirty_addr, tcg_rt;
+-    int memidx = a->unpriv ? get_a64_user_mem_index(s) : get_mem_index(s);
++    int memidx = get_a64_user_mem_index(s, a->unpriv);
+     MemOp mop = finalize_memop(s, a->sz + a->sign * MO_SIGN);
+ 
+     op_addr_ldst_imm_pre(s, a, &clean_addr, &dirty_addr, a->imm, true, mop);
+@@ -3117,7 +3125,7 @@ static bool trans_LDR_i(DisasContext *s, arg_ldst_imm *a)
+ {
+     bool iss_sf, iss_valid = !a->w;
+     TCGv_i64 clean_addr, dirty_addr, tcg_rt;
+-    int memidx = a->unpriv ? get_a64_user_mem_index(s) : get_mem_index(s);
++    int memidx = get_a64_user_mem_index(s, a->unpriv);
+     MemOp mop = finalize_memop(s, a->sz + a->sign * MO_SIGN);
+ 
+     op_addr_ldst_imm_pre(s, a, &clean_addr, &dirty_addr, a->imm, false, mop);
 -- 
 2.34.1
 

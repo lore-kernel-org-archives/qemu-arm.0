@@ -1,80 +1,80 @@
-Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp3153306ejb;
-        Wed, 6 Sep 2023 17:40:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH6TRWG73E7dKDMTHyIeOGvQuYQMijwgVt5tDy1IMZf7rBtKSBNmPyV3QeBAn00VNZQO4oD
-X-Received: by 2002:a05:6358:2910:b0:13a:a094:737d with SMTP id y16-20020a056358291000b0013aa094737dmr5582898rwb.18.1694047219239;
-        Wed, 06 Sep 2023 17:40:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694047219; cv=none;
+Received: by 2002:a17:906:cc96:b0:9a1:fa4e:495e with SMTP id oq22csp3153605ejb;
+        Wed, 6 Sep 2023 17:40:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFp7zPUrbDrnCGNakySNyILof/IJDetyW7bW7nWs3RHgwbcoqek88gIGvYEZC/GvY5WycDZ
+X-Received: by 2002:a05:620a:1a0d:b0:767:dd02:e908 with SMTP id bk13-20020a05620a1a0d00b00767dd02e908mr19864365qkb.64.1694047259534;
+        Wed, 06 Sep 2023 17:40:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694047259; cv=none;
         d=google.com; s=arc-20160816;
-        b=g8qqnAuB97cRStCf23s2Oa4sgO7BrEZCrJBZCfxiRskqd2ztrHlqohm7jg4l5AMMbE
-         oKl8fNp1+X34znkFuCrAno8yllvuKVW7npTyWLNj0HeNY+AA+4pTUgPmjNdQMpS3+PcO
-         JSNbvI3rKRWrIbpxNjHhfZ6uB9brmr1NyZvvNHYnRc2Ci6DdyzwaChQ9+ZZ7vIoyvGFv
-         s5WY5hAbfG4JDuqUvMtKIa7XRjkX9YTE6NMKFirfQCeGVwu0BQedvcl4ZycuBVde4/Wo
-         1NG7mOsDheuFYU/SeCIf6PDsFngdU8D0uM4NwJ5SG6lmMPEcNuLdCV2d03LxLAP4Ebh3
-         P6HQ==
+        b=uC5qH2xWa0jESNmC0DmIr9nd1NgWEV3fpxihB7xIrGYMDP7h+AfY+UQ4Q1chECHFh9
+         Dg0owznnvUganYxa0bNVvKVgd9XCvreb2kTxzDXrelwm56+DDb2Js3kBmfNEq1APxvnA
+         U8qwaMsGoumfvfb+OKfzn6e7KIC4lX0cSyYGalWCxklTCF9rJ2FKV3sb1zsE8SbWoDgm
+         dwP6Ab2+mxaEXIp2LqO9FPPkiAa23+uI1f1xrpbKp+BqE9wGm5dqEgk3fEr3ctY8n4DU
+         JOk7Y/DeFn8hgLU4mn6CN7v7B2XpCJzAmYyMtMxSMzO19lUJQ0ekZhBpepBgwqSxvdI6
+         n6rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=NjZw3E7apQj63HRBsTMKeM32ZIpPKyvSIbeJgERsvj4=;
+        bh=KJ3ZX76U634nIvhP7SZ8lESzSWQxOs38powANobbcpg=;
         fh=kk2WWDSe9SCzWyjzequbgooYc9A8PDm7nTb22zWaiac=;
-        b=IjhySigb7oWDnoYhkBCOQ0v8GqvbEH6UiDJCHgUE0aQ7+MpGBC4KyRR5e8On72ihZq
-         ISDH1PNZvMnli3ZvRH+LWdWW0/1quTJMRylJifQ3N94P8HyQuanPFQtFtRkMQT8jFK6Q
-         22WnMh9LtPDMk5zdIGJzhuGi3KhsbJ/NK8HshDi+un7b6ScfhjDUAJaYl86kZxT6kUbj
-         TwFWAOwjm1UjeTVHPlQtHx+RO2HV3r8tBJGNO9LeJruRHX8xVp5ATtpCg2RdnI+0nc4i
-         SmBblcMiLWermyEWvVnK7y//0OHtWglS1K4vDYWnmmSAjEGX0sjHNNK7g8FKo+HR6H+P
-         d/Zw==
+        b=VHNZC+ACREZPQVXSwTIYSiv+GZdhKiqSjm35Eua0rFWjS31OOXj3yAGeNSJ5WeTS7w
+         xiK1mQ+4KPj2FnoTZ/GNbCess9b/20kbqV2aVLOtAmlbMvvS2G4MBKIhlGvEX35+3OWV
+         tLYp1YibVcA/4pOurv3re3NbjQ0MOMLVw6glcsyG9CQrO3T9DQiMI1JZKE22O6H98kzG
+         reWW32fIZlPllein0QaVNxHIk/dbejZ4275H2cUCGaUaLFrgc2opILJH6jJ7lDPdRPwJ
+         WU73usHrjL8gmHGX5qKR4uGUW+JEppkw5buX2AY3HelQcK6MDHpE6o7DJO3YuXqxZAG5
+         o3OA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GvuDXo/u";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gJhtXG2+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a28-20020a0ca99c000000b0064f3810fbf0si10327998qvb.370.2023.09.06.17.40.19
+        by mx.google.com with ESMTPS id s5-20020a05620a29c500b00763afa9c13csi11509681qkp.554.2023.09.06.17.40.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 Sep 2023 17:40:19 -0700 (PDT)
+        Wed, 06 Sep 2023 17:40:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="GvuDXo/u";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gJhtXG2+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qe345-0004UV-1H; Wed, 06 Sep 2023 20:40:13 -0400
+	id 1qe34m-0005sa-8t; Wed, 06 Sep 2023 20:40:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe33x-0004Jn-ST
- for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:40:01 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe34k-0005pk-Id
+ for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:40:50 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe33u-0001JQ-Hd
- for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:40:01 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qe34g-0001pa-To
+ for qemu-arm@nongnu.org; Wed, 06 Sep 2023 20:40:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1694047197;
+ s=mimecast20190719; t=1694047246;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NjZw3E7apQj63HRBsTMKeM32ZIpPKyvSIbeJgERsvj4=;
- b=GvuDXo/uOaWHyHogq4thTxeqauvxwAjcdtPXwnQM3rmEVSdAABqAFSmlSDbkY6MPewsr1y
- 1oJ9szGRYPdbEIXrcQ0ALKec7yom+VzyztBcZqqBc8UN9dO+XVib6Yrl/55Il0+aoc6IPR
- nBL+K+1LOwbG3cVNhfKk0d8tkhYjaks=
+ bh=KJ3ZX76U634nIvhP7SZ8lESzSWQxOs38powANobbcpg=;
+ b=gJhtXG2+llRVwKtSXdrlwuLSpIxse5v7O4+ybv/d8TWFhrQ3i3O7Wxywed4K74v9XKvoZK
+ /eVvWnDoTFSq/8mdB1olBadG0N1xJI+AKDU0ivNfghAQD+BJ6vfYq1ABOQkRH2F44sKaSo
+ d+fVsUSdF1KFpObtOWVs7QquqLr4cjI=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-516-td0w1gdDNFudt2Twc0gCpw-1; Wed, 06 Sep 2023 20:39:54 -0400
-X-MC-Unique: td0w1gdDNFudt2Twc0gCpw-1
+ us-mta-148-KqEXUMoCObO4KuAAGjga-Q-1; Wed, 06 Sep 2023 20:40:42 -0400
+X-MC-Unique: KqEXUMoCObO4KuAAGjga-Q-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4FB57181792B;
- Thu,  7 Sep 2023 00:39:52 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E8094181792D;
+ Thu,  7 Sep 2023 00:40:37 +0000 (UTC)
 Received: from gshan.redhat.com (unknown [10.64.136.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4FDA0C03295;
- Thu,  7 Sep 2023 00:39:37 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3E099C03295;
+ Thu,  7 Sep 2023 00:40:23 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
@@ -97,10 +97,10 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
  kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com, pbonzini@redhat.com,
  imammedo@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v3 12/32] target/ppc: Use generic helper to show CPU model
+Subject: [PATCH v3 15/32] target/s390x: Use generic helper to show CPU model
  names
-Date: Thu,  7 Sep 2023 10:35:33 +1000
-Message-ID: <20230907003553.1636896-13-gshan@redhat.com>
+Date: Thu,  7 Sep 2023 10:35:36 +1000
+Message-ID: <20230907003553.1636896-16-gshan@redhat.com>
 In-Reply-To: <20230907003553.1636896-1-gshan@redhat.com>
 References: <20230907003553.1636896-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -130,61 +130,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uPZtbDWywEnt
+X-TUID: DnQ19gHKzhbX
 
-For target/ppc, the CPU type name can be: (1) The combination of
-the CPU model name and suffix; (2) the type name of the class whose
-PVR matches with the specified one; (3) alias of the CPU model, plus
-suffix; (4) MachineClass::default_cpu_type when the CPU model name
-is "max". All the possible information, the CPU model name, aliases
-of the CPU models and PVRs are all shown in ppc_cpu_list_entry().
+For target/s390x, the CPU type name is always the combination of the
+CPU modle name and suffix. The CPU model names have been correctly
+shown in s390_print_cpu_model_list_entry() and create_cpu_model_list().
 
-Use generic helper cpu_model_from_type() in ppc_cpu_list_entry(),
-and rename @name to @model since it points to the CPU model name
-instead of the CPU type name.
+Use generic helper cpu_model_from_type() to show the CPU model names
+in the above two functions. Besides, we need validate the CPU class
+in s390_cpu_class_by_name(), as other targets do.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
 ---
- target/ppc/cpu_init.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ target/s390x/cpu_models.c        | 18 +++++++++++-------
+ target/s390x/cpu_models_sysemu.c |  9 ++++-----
+ 2 files changed, 15 insertions(+), 12 deletions(-)
 
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index 02b7aad9b0..7281402331 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7019,16 +7019,15 @@ static void ppc_cpu_list_entry(gpointer data, gpointer user_data)
-     PowerPCCPUClass *pcc = POWERPC_CPU_CLASS(oc);
-     DeviceClass *family = DEVICE_CLASS(ppc_cpu_get_family_class(pcc));
-     const char *typename = object_class_get_name(oc);
--    char *name;
-+    char *model;
-     int i;
+diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
+index 91ce896491..103e9072b8 100644
+--- a/target/s390x/cpu_models.c
++++ b/target/s390x/cpu_models.c
+@@ -338,7 +338,8 @@ static void s390_print_cpu_model_list_entry(gpointer data, gpointer user_data)
+ {
+     const S390CPUClass *scc = S390_CPU_CLASS((ObjectClass *)data);
+     CPUClass *cc = CPU_CLASS(scc);
+-    char *name = g_strdup(object_class_get_name((ObjectClass *)data));
++    const char *typename = object_class_get_name((ObjectClass *)data);
++    char *model = cpu_model_from_type(typename);
+     g_autoptr(GString) details = g_string_new("");
  
-     if (unlikely(strcmp(typename, TYPE_HOST_POWERPC_CPU) == 0)) {
-         return;
+     if (scc->is_static) {
+@@ -355,14 +356,12 @@ static void s390_print_cpu_model_list_entry(gpointer data, gpointer user_data)
+         g_string_truncate(details, details->len - 2);
      }
  
--    name = g_strndup(typename,
--                     strlen(typename) - strlen(POWERPC_CPU_TYPE_SUFFIX));
--    qemu_printf("PowerPC %-16s PVR %08x\n", name, pcc->pvr);
-+    model = cpu_model_from_type(typename);
-+    qemu_printf("PowerPC %-16s PVR %08x\n", model, pcc->pvr);
-     for (i = 0; ppc_cpu_aliases[i].alias != NULL; i++) {
-         PowerPCCPUAlias *alias = &ppc_cpu_aliases[i];
-         ObjectClass *alias_oc = ppc_cpu_class_by_name(alias->model);
-@@ -7045,10 +7044,10 @@ static void ppc_cpu_list_entry(gpointer data, gpointer user_data)
-                         alias->alias, family->desc);
-         } else {
-             qemu_printf("PowerPC %-16s (alias for %s)\n",
--                        alias->alias, name);
-+                        alias->alias, model);
-         }
+-    /* strip off the -s390x-cpu */
+-    g_strrstr(name, "-" TYPE_S390_CPU)[0] = 0;
+     if (details->len) {
+-        qemu_printf("s390 %-15s %-35s (%s)\n", name, scc->desc, details->str);
++        qemu_printf("s390 %-15s %-35s (%s)\n", model, scc->desc, details->str);
+     } else {
+-        qemu_printf("s390 %-15s %-35s\n", name, scc->desc);
++        qemu_printf("s390 %-15s %-35s\n", model, scc->desc);
      }
 -    g_free(name);
 +    g_free(model);
  }
  
- void ppc_cpu_list(void)
+ static gint s390_cpu_list_compare(gconstpointer a, gconstpointer b)
+@@ -916,7 +915,12 @@ ObjectClass *s390_cpu_class_by_name(const char *name)
+ 
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-    return oc;
++    if (object_class_dynamic_cast(oc, TYPE_S390_CPU) &&
++        !object_class_is_abstract(oc)) {
++        return oc;
++    }
++
++    return NULL;
+ }
+ 
+ static const TypeInfo qemu_s390_cpu_type_info = {
+diff --git a/target/s390x/cpu_models_sysemu.c b/target/s390x/cpu_models_sysemu.c
+index 63981bf36b..c41af253d3 100644
+--- a/target/s390x/cpu_models_sysemu.c
++++ b/target/s390x/cpu_models_sysemu.c
+@@ -55,17 +55,16 @@ static void create_cpu_model_list(ObjectClass *klass, void *opaque)
+     struct CpuDefinitionInfoListData *cpu_list_data = opaque;
+     CpuDefinitionInfoList **cpu_list = &cpu_list_data->list;
+     CpuDefinitionInfo *info;
+-    char *name = g_strdup(object_class_get_name(klass));
++    const char *typename = object_class_get_name(klass);
++    char *model = cpu_model_from_type(typename);
+     S390CPUClass *scc = S390_CPU_CLASS(klass);
+ 
+-    /* strip off the -s390x-cpu */
+-    g_strrstr(name, "-" TYPE_S390_CPU)[0] = 0;
+     info = g_new0(CpuDefinitionInfo, 1);
+-    info->name = name;
++    info->name = model;
+     info->has_migration_safe = true;
+     info->migration_safe = scc->is_migration_safe;
+     info->q_static = scc->is_static;
+-    info->q_typename = g_strdup(object_class_get_name(klass));
++    info->q_typename = g_strdup(typename);
+     /* check for unavailable features */
+     if (cpu_list_data->model) {
+         Object *obj;
 -- 
 2.41.0
 

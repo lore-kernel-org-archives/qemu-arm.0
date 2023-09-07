@@ -1,123 +1,102 @@
-Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp138216ejb;
-        Thu, 7 Sep 2023 00:17:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGN5U/62etQV6Jm33BTSYmPyuewxSTqFWaZTUf1DvaHxNIrt+nA0xl3w2bs0YAOYJ0OzKeB
-X-Received: by 2002:a05:620a:4628:b0:767:b588:a0ad with SMTP id br40-20020a05620a462800b00767b588a0admr2555449qkb.20.1694071063206;
-        Thu, 07 Sep 2023 00:17:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694071063; cv=none;
+Received: by 2002:a17:906:cf8c:b0:9a1:fa4e:495e with SMTP id um12csp149192ejb;
+        Thu, 7 Sep 2023 00:42:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGOWrarTtxHceQulJPRhMkj00avAJ+AtoO0BUGGTYmg1pu1RX+X6cOFh0BUjNC/5SRj0OPu
+X-Received: by 2002:a05:6214:3284:b0:64a:2b04:c10d with SMTP id mu4-20020a056214328400b0064a2b04c10dmr17111529qvb.25.1694072550515;
+        Thu, 07 Sep 2023 00:42:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694072550; cv=none;
         d=google.com; s=arc-20160816;
-        b=MiM078VKZ8FG67LrRLxaVAOOnrkjPf52wvHByujDflSFTe5GZXZiu8VZp/T2UilDkC
-         dJNA51wDN3TSYNVwCuvnb7l5JLFkXOgE5fC4pE3nwErfWvv5TdAYyzwQZcvAzA7y7t0H
-         EMm8HBxTwgPQzoh25sx2ozrjNjU5RyJofM4tvg3v8m2i73qqaGrKe+SQ8lSZAFILRMIw
-         AzAQJLW7olm+HmtNsxRf24buLjghmSa3A3qQXpMao95Hh/MhYbQWsKVHi0hAGdyfVojc
-         ZL4ZQeg+600bbVzEhQQRYwpCfeTTgXorpPONFiqwRMJtZF5Roc6t100Hh5+FJcKDYmhj
-         KfoQ==
+        b=kwYmC0rCzEf88HkKb/O8MK5OoGG0PJsrJR8erEFx4ck+A7SHsK+IuMHMdNTdVx/sbd
+         UOf6NanJkEEjS5fXdK2SHnRkozxq8F6YIZCDXr7FRaCui/hA15nM3s6BInKrg6t+V5wN
+         CfjSG6u1baKCeuJSO69B/H9zy0SjozwF0CvN0JiMPP1c71r7ez4sOxoga00jnIgFTcLx
+         nQoTmzoYdAC8XvtqElv0rZr8GFlpFcyQZqXytw6lChrd+32cMI+zH6NbRTpA1RNKT0rs
+         0C3JKsthB5HCgSb5NxLv4B+V9qikKbNXfkScIENgE6lkKn+DdwPYv+yIzX49780/4IxI
+         Q6Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=oc3lHUeurO7vGjxw+biDlYs90UYXbFJj5ipqCgg2zvo=;
-        fh=SuuTrZqFFJ11M+TQjo5pP9NW9FdN6n7hS8E0quKsmh0=;
-        b=se1Ez6BqgWXmNcsevtRdJ33VqE+HWk+F4tdngJ5aBXKZbabNWEATv/SPwI/VnJ0xnn
-         s425Gvu7shIddO8AdBzxS3yN7ABWK6fkastRCh8YQgcry2h7LSlo38yqLtXcLbQ6zBPq
-         KvsRPbDhFQlPC2cUgKdo4fVnRwmub/RZY63t9DP3CuF8Bo7M6Mmz6ERaBtZojWASH4xg
-         xLbju4Qr1xLggJMLcVXB85viuzDaVr7FnWYrCe1GlqNizj9wQCHJMQjLVOkqOIo8vayb
-         fK0zjqsPUIft8PwyhrSkmlSZvvLKyRfcFldX7WanaDf6RM3mZNWVkyynICWScFVO9XzV
-         rCyA==
+         :user-agent:mime-version:date:message-id;
+        bh=ijIYMmEOhv1v8BRKYFDKxPfbA7q30GMcqxDWOrk/MMc=;
+        fh=N8OoLAQxl01guXiONTwY+H1ZleX4klwWOTyaPzM6Ckk=;
+        b=bswv8dPuu4vItlzpMi/nI3tTXLqTUm+XacZsDEFsaGwWzeJaALhvZ31+D584/eMXDL
+         85jaNEHOODmRdTB5iDCFYiXaVZz3dPqaSEi4tA23q48uCZ8jVEsC7FFEdYdLQRlNUMcW
+         BvB69is2wWgILJ9cSjkvr9eOz3+2hNbpykXnlcWSMTswS76ewB50XUtjs3F6wdIkDw1c
+         zgaB45vVaVirb2ImLCJKJzDLrPy4T2xLSQTOj7fP3TNHHLvXwoXS1bBNAJqUZZSXys/U
+         g5R02eYW2xjMXxvIMI8BkYbQ8ZIyWCqCIFe5JZp7Y1/gtU3nVGNfu/4GlvrE/8Jfl4Nm
+         u4HA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Uoh/cOkX";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u14-20020a05620a454e00b00767c53175cesi11859277qkp.509.2023.09.07.00.17.43
+        by mx.google.com with ESMTPS id b1-20020a0c9b01000000b006516e372228si10814241qve.78.2023.09.07.00.42.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Sep 2023 00:17:43 -0700 (PDT)
+        Thu, 07 Sep 2023 00:42:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Uoh/cOkX";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qe9GT-0001hP-RM; Thu, 07 Sep 2023 03:17:21 -0400
+	id 1qe9eG-00009x-Dp; Thu, 07 Sep 2023 03:41:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qe9GT-0001h2-47
- for qemu-arm@nongnu.org; Thu, 07 Sep 2023 03:17:21 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qe9GP-0000E1-Up
- for qemu-arm@nongnu.org; Thu, 07 Sep 2023 03:17:20 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-31c65820134so593068f8f.1
- for <qemu-arm@nongnu.org>; Thu, 07 Sep 2023 00:16:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694071007; x=1694675807; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=oc3lHUeurO7vGjxw+biDlYs90UYXbFJj5ipqCgg2zvo=;
- b=Uoh/cOkXuUSqD2ju+OHRu/w3j+p+ja1GxQ4kNf3xnFsouYg6J6Wn1OtfXOkQJS1Fnp
- LYFigNtpjyiK4GmcM3ggQl2tsTwI3Z+IrB7hlmMfUXlAN9OdN1KvHETiVRWp7xRUyMZL
- h7tT5DK5LWktWCZFuAXCY265EI7HxsdFyZmX9Nqj5Yz+JpikwHxTnHwaioBtft4Zk0Im
- ulDcl+YEbptTwOF4RAtDdz5QNwYZXEoQkmMFjl9aRJzh7mgAl2xLtgs4yq02kSW2MjIB
- 4EFzxUd2rn8pJ8L27Hmiy1Fa/ogfNicuR2Q7bbd4LH+Ye4g6yqRzo5eXEC3KvivrixDF
- MhnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1694071007; x=1694675807;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oc3lHUeurO7vGjxw+biDlYs90UYXbFJj5ipqCgg2zvo=;
- b=Sj77XK1Cbd+QbQdCTh+KdGO7WmiJsa+u1oIcZzv7CTBvYlaQUeeVQF5hD8F97ior/0
- hF//+xvbQEVr9xfkODCxveXf9WI7caTyrYWarfLd9sjoSF1hXfW6VkFErenFMrK25yK8
- XPUQ/0xEwCc3vsnhSv1MVMiJVY4QcIvdm8TUyRrip3m9C094vzRds/c2QYIQkfg/C142
- 400MLl/O1xhigWV/xpNGcaWEwHB1ug1VbWwdfHK8HmVaAvvAft1fuR/25nqAApOHt9JH
- M54gKfgHJSfsKorE+pBCUpD9nQfiUAoiYbcU4GbJfJqBbomjCmghfRuqnVxM8WAt4+bJ
- BG9Q==
-X-Gm-Message-State: AOJu0YxPUQR3FF8buAZ44UnyeywJZdXrKnkkxSqwUeoxd2s8qANOaS9s
- Rgn0IcIdfLeA2JY9hVHzXL1dmQ==
-X-Received: by 2002:a05:6000:881:b0:317:ed01:dc48 with SMTP id
- cs1-20020a056000088100b00317ed01dc48mr4458248wrb.9.1694071007001; 
- Thu, 07 Sep 2023 00:16:47 -0700 (PDT)
-Received: from [192.168.69.115] (176-131-222-226.abo.bbox.fr.
- [176.131.222.226]) by smtp.gmail.com with ESMTPSA id
- c7-20020a5d4147000000b0031de43fe9bfsm22683297wrq.0.2023.09.07.00.16.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Sep 2023 00:16:46 -0700 (PDT)
-Message-ID: <efc85591-fd5e-c6e7-ab3d-220d5ca57aa5@linaro.org>
-Date: Thu, 7 Sep 2023 09:16:43 +0200
+ (Exim 4.90_1) (envelope-from <SRS0=XW8m=EX=kaod.org=clg@ozlabs.org>)
+ id 1qe9eD-00009N-R8; Thu, 07 Sep 2023 03:41:53 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=XW8m=EX=kaod.org=clg@ozlabs.org>)
+ id 1qe9e8-0003Nl-Bf; Thu, 07 Sep 2023 03:41:51 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4RhB586wSpz4x2n;
+ Thu,  7 Sep 2023 17:41:32 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4RhB4h6684z4x5m;
+ Thu,  7 Sep 2023 17:41:08 +1000 (AEST)
+Message-ID: <da39cd13-68cc-4aab-3aba-301180e81560@kaod.org>
+Date: Thu, 7 Sep 2023 09:41:04 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.0
-Subject: Re: [PATCH] hw/riscv: split RAM into low and high memory
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v3 12/32] target/ppc: Use generic helper to show CPU model
+ names
 Content-Language: en-US
-To: "Wu, Fei" <fei2.wu@intel.com>, Andrew Jones <ajones@ventanamicro.com>
-Cc: palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com,
- liweiwei@iscas.ac.cn, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, qemu-riscv@nongnu.org, qemu-devel@nongnu.org,
- Andrei Warkentin <andrei.warkentin@intel.com>, qemu-arm
- <qemu-arm@nongnu.org>, Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@redhat.com>,
- Eric Auger <eric.auger@redhat.com>
-References: <20230731015317.1026996-1-fei2.wu@intel.com>
- <20230803-3855259bbabb934c247c5607@orel>
- <d654810c-4f4f-7491-7711-c6076f42dcae@intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <d654810c-4f4f-7491-7711-c6076f42dcae@intel.com>
+To: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org, imp@bsdimp.com, kevans@freebsd.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
+ wangyanan55@huawei.com, peter.maydell@linaro.org, b.galvani@gmail.com,
+ strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
+ wuhaotsh@google.com, nieklinnenbank@gmail.com, rad@semihalf.com,
+ quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org, laurent@vivier.eu,
+ vijai@behindbytes.com, palmer@dabbelt.com, alistair.francis@wdc.com,
+ bin.meng@windriver.com, liweiwei@iscas.ac.cn, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, richard.henderson@linaro.org,
+ mrolnik@gmail.com, edgar.iglesias@gmail.com, bcain@quicinc.com,
+ gaosong@loongson.cn, yangxiaojuan@loongson.cn, aurelien@aurel32.net,
+ jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
+ chenhuacai@kernel.org, crwulff@gmail.com, marex@denx.de, shorne@gmail.com,
+ david@gibson.dropbear.id.au, groug@kaod.org, npiggin@gmail.com,
+ ysato@users.sourceforge.jp, david@redhat.com, thuth@redhat.com,
+ iii@linux.ibm.com, mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
+ kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com, pbonzini@redhat.com,
+ imammedo@redhat.com, shan.gavin@gmail.com
+References: <20230907003553.1636896-1-gshan@redhat.com>
+ <20230907003553.1636896-13-gshan@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230907003553.1636896-13-gshan@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=XW8m=EX=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -30
+X-Spam_score: -3.1
 X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.473,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.473, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -133,68 +112,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X2VQTce5FiFZ
+X-TUID: klTUKfNUNc0c
 
-Widening Cc to ARM/VFIO.
+On 9/7/23 02:35, Gavin Shan wrote:
+> For target/ppc, the CPU type name can be: (1) The combination of
+> the CPU model name and suffix; (2) the type name of the class whose
+> PVR matches with the specified one; (3) alias of the CPU model, plus
+> suffix; (4) MachineClass::default_cpu_type when the CPU model name
+> is "max". All the possible information, the CPU model name, aliases
+> of the CPU models and PVRs are all shown in ppc_cpu_list_entry().
+> 
+> Use generic helper cpu_model_from_type() in ppc_cpu_list_entry(),
+> and rename @name to @model since it points to the CPU model name
+> instead of the CPU type name.
+> 
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
 
-On 4/8/23 11:15, Wu, Fei wrote:
-> On 8/3/2023 11:07 PM, Andrew Jones wrote:
->> On Mon, Jul 31, 2023 at 09:53:17AM +0800, Fei Wu wrote:
->>> riscv virt platform's memory started at 0x80000000 and
->>> straddled the 4GiB boundary. Curiously enough, this choice
->>> of a memory layout will prevent from launching a VM with
->>> a bit more than 2000MiB and PCIe pass-thru on an x86 host, due
->>> to identity mapping requirements for the MSI doorbell on x86,
->>> and these (APIC/IOAPIC) live right below 4GiB.
->>>
->>> So just split the RAM range into two portions:
->>> - 1 GiB range from 0x80000000 to 0xc0000000.
->>> - The remainder at 0x100000000
->>>
->>> ...leaving a hole between the ranges.
->>
->> Can you elaborate on the use case? Maybe provide details of the host
->> system and the QEMU command line? I'm wondering why we didn't have
->> any problems with the arm virt machine type. Has nobody tried this
->> use case with that? Is the use case something valid for riscv, but
->> not arm?
->>
-> Firstly we have to enable pcie passthru on host, find the device groups,
-> e.g. the vga card, and add their pci ids to host kernel cmdline:
-> 	vfio-pci.ids=10de:0f02,10de:0e08
+Looks good.
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+
+With a quick hack adding a valid_cpu_types list to the pseries machine,
+QEMU reported:
+
+   qemu-system-ppc64 -M pseries -cpu 460exb
+   qemu-system-ppc64: Invalid CPU type: 460exb
+   The valid types are: 970_v2.2, 970mp_v1.0, 970mp_v1.1, power5+_v2.1, power7_v2.3, power7+_v2.1, power8_v2.0, power8e_v2.1, power8nvl_v1.0, power9_v1.0, power9_v2.0, power9_v2.2, power10_v1.0, power10_v2.0
+
+This would be a great improvement for the PPC boards since the CPU
+definitions are numerous :
+
+   $ install/bin/qemu-system-ppc64 -cpu ?  | wc -l
+   418
+
+and usually, the board only reports that the CPU specified on the
+command line is not supported.
+
+Thanks,
+
+C.
+
+
+> ---
+>   target/ppc/cpu_init.c | 11 +++++------
+>   1 file changed, 5 insertions(+), 6 deletions(-)
 > 
-> then start vm through qemu as follows:
-> $Q -machine virt -m 4G -smp 4 -nographic \
->    -bios /usr/lib/riscv64-linux-gnu/opensbi/generic/fw_jump.elf \
->    -kernel ./vmlinuz -initrd initrd.img -append "root=/dev/vda1 rw" \
->    -drive
-> file=ubuntu-22.04.1-preinstalled-server-riscv64+unmatched.img,if=virtio,format=raw
-> \
->    -device vfio-pci,host=01:00.0 -device vfio-pci,host=01:00.1 \
->    -netdev user,id=vnet,hostfwd=:127.0.0.1:2223-:22 -device
-> virtio-net-pci,netdev=vnet
-> 
-> Without this patch, qemu exits immediately instead of boots up.
-> 
-> Just tried pcie passthru on arm, it cannot handle 4G memory either.
-> $Q -m 4G -smp 4 -cpu max -M virt -nographic \
->    -pflash /usr/share/AAVMF/AAVMF_CODE.fd -pflash flash1.img \
->    -drive if=none,file=ubuntu-22.04-server-cloudimg-arm64.img,id=hd0 \
->    -device virtio-blk-device,drive=hd0 \
->    -device vfio-pci,host=01:00.0 -device vfio-pci,host=01:00.1
-> 
-> qemu-system-aarch64: -device vfio-pci,host=01:00.0: VFIO_MAP_DMA failed:
-> Invalid argument
-> qemu-system-aarch64: -device vfio-pci,host=01:00.0: vfio 0000:01:00.0:
-> failed to setup container for group 11: memory listener initialization
-> failed: Region mach-virt.ram: vfio_dma_map(0x55de3c2a97f0, 0x40000000,
-> 0x100000000, 0x7f8fcbe00000) = -22 (Invalid argument)
-> 
-> Thanks,
-> Fei.
-> 
->> Thanks,
->> drew
-> 
-> 
+> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+> index 02b7aad9b0..7281402331 100644
+> --- a/target/ppc/cpu_init.c
+> +++ b/target/ppc/cpu_init.c
+> @@ -7019,16 +7019,15 @@ static void ppc_cpu_list_entry(gpointer data, gpointer user_data)
+>       PowerPCCPUClass *pcc = POWERPC_CPU_CLASS(oc);
+>       DeviceClass *family = DEVICE_CLASS(ppc_cpu_get_family_class(pcc));
+>       const char *typename = object_class_get_name(oc);
+> -    char *name;
+> +    char *model;
+>       int i;
+>   
+>       if (unlikely(strcmp(typename, TYPE_HOST_POWERPC_CPU) == 0)) {
+>           return;
+>       }
+>   
+> -    name = g_strndup(typename,
+> -                     strlen(typename) - strlen(POWERPC_CPU_TYPE_SUFFIX));
+> -    qemu_printf("PowerPC %-16s PVR %08x\n", name, pcc->pvr);
+> +    model = cpu_model_from_type(typename);
+> +    qemu_printf("PowerPC %-16s PVR %08x\n", model, pcc->pvr);
+>       for (i = 0; ppc_cpu_aliases[i].alias != NULL; i++) {
+>           PowerPCCPUAlias *alias = &ppc_cpu_aliases[i];
+>           ObjectClass *alias_oc = ppc_cpu_class_by_name(alias->model);
+> @@ -7045,10 +7044,10 @@ static void ppc_cpu_list_entry(gpointer data, gpointer user_data)
+>                           alias->alias, family->desc);
+>           } else {
+>               qemu_printf("PowerPC %-16s (alias for %s)\n",
+> -                        alias->alias, name);
+> +                        alias->alias, model);
+>           }
+>       }
+> -    g_free(name);
+> +    g_free(model);
+>   }
+>   
+>   void ppc_cpu_list(void)
 

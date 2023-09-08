@@ -1,165 +1,129 @@
-Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp437912ejb;
-        Fri, 8 Sep 2023 06:50:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEm4U+4nnZ8pi4MURTpfDihv/iNjWX3mEQ5jxsPiEtllk02J/vroXzg9E3ud6YctlXeXcx3
-X-Received: by 2002:a05:620a:2592:b0:76c:af30:3281 with SMTP id x18-20020a05620a259200b0076caf303281mr2786806qko.10.1694181033612;
-        Fri, 08 Sep 2023 06:50:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694181033; cv=none;
+Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp438231ejb;
+        Fri, 8 Sep 2023 06:51:10 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGGYyfz2lUnVPYEZX8KdxUI8KpLBy1xaIl3WkSBV8heQkksaeb54htkMjmpuiTUNhHA3OhU
+X-Received: by 2002:a17:907:75e6:b0:9a2:16e2:35a with SMTP id jz6-20020a17090775e600b009a216e2035amr1738722ejc.62.1694181070534;
+        Fri, 08 Sep 2023 06:51:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694181070; cv=none;
         d=google.com; s=arc-20160816;
-        b=WQD45monvdanZ9LHmOodOGGuj+NqdGlSvApA8EKyA08iHNovHcEg8XFGPaOOb8w1XP
-         eywS1r3mrcawEGKwdErqiCCkdYPlRysWKiIf8/LuNXkRzuHr8aFlKTyB/7LoASwdgZRh
-         7Zzy311O658hhFqNuN1cFEVFlSkb0eTOlMwmK5t5FSBbN25ePHdwKlM0uX3YphJupdZU
-         IrBUOHS8zh6jjCtncO11RCbEeTpire+s8o3VRd0ss87VF6ct1ZU0FjlDqRogMtuFynIL
-         /xUfjgJ9jcfEOtyADBUcuEtnV+xm4DN8DrM8D23YWvocRr1+atpM1we5+uG6iqlIIWId
-         2Rng==
+        b=E3Kmcwj1LzOkkdXAo4Gzkzl007oy1NeLP45P9C8riswOWNLgU7jQOkMNVH7Dnoj8Eu
+         iCFj+7UxmkNMivlLpVGHvtOpMxiKvz/isl/AhNlHA1tyHf9zF7Ce9YJm1Uug8niV6Z10
+         CkgU48alU97Ix4seAk7jLCCScPmEcVkJb5jf22t6gyWY+mpC/W647zFDw9Jx6uXu4EDC
+         vUMvRV2+iQ3nQF0JosQ2/RlkXfeDTrAMujnQNjyNXFV5JF2r4mumkKmkUqGZ0qCSTvtt
+         IeO3PgcGkSVKDKG9x073ywHElPB5+17HH0/uDVKATiW1qwg/llK67jb22OCulDHvIE2X
+         A23g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=YwgVPYivAxOrVX0F/yhRuJSkuNqRznPV2GeIZSOelKU=;
-        fh=mQRietVuQWYYDWSB3j2PCXbmQvkrEzlVN/NE47iC9ME=;
-        b=xv/NcT2oGV5QHww7i6/kAafPF/qCHFB9x504Y8zfK+y1ysJ6lrqnVJAdU8f13FqoLY
-         TcZwspuOr4WCMhJ0c4RGA0pR4+t8gRiZeTgwNX7PYlz7mJLXTgRgHPILkEBl2YYgO7iR
-         FlaTjG09RW6YZPId/cXzEd//XyxXF9ejdY5EDtYWaKYmtgXhC2NjFGqm0BAcJIsj/wEj
-         RIdSsynAsVZ2cWAQKHPMuDYvu8A6bbApLamiLrefspM4Xf8XqA3rSkCxDbIL7E54Oiyj
-         fKlnsnGaDYzsoBl+5JCRpTDNOPpdzDY0/k8AD4/ExSpfaJIfgPpgfsPY6K5DnZF102pL
-         u45w==
+        h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=J8pjd1/df+s3RtkGAmFa4NAq964Oj2OD0bhtrmrAYJc=;
+        fh=t8cMpgP1pzZXfSVwC9b5s3hQJgnp0bYBllVSf5j+S/w=;
+        b=Fiyc/neyuZuDLtw9HJy89/9BOUgvoW1pYNHmlbfJAar1fIjbxmPk3P2TGIiHHOosQX
+         cF7AOscp8OuOhTmI+1M49fJIY7UJ9vIjkGKY5uNHf4CsJyeMaH4JQZI1B5/IH/GlST6y
+         2A250fmwOol679yqRhRqo68CyO0/nLsSHX86olGiHdZd0xxcCrozJP1EQCOsboDn46kv
+         X/KxtB7NigwwHjM97Wr+7bXNBMljcq6T0+ncWO+KR80yQ4Slt8C5lEqJ4Eb/RVdFp/yf
+         oqsRp0vpMQbmXADOqQO6tTL7x7tMbwz/SqbFJz5wl2RoV4en/jiF1OeVEIvpI0ekDPNZ
+         VrUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="xbPQ/Od0";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bme02gge;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j22-20020a05620a0a5600b0076daa9708cesi1086903qka.133.2023.09.08.06.50.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Sep 2023 06:50:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id ha10-20020a170906a88a00b009a0955acaaasi1347269ejb.370.2023.09.08.06.51.10;
+        Fri, 08 Sep 2023 06:51:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="xbPQ/Od0";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bme02gge;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qebs7-0005XD-SB; Fri, 08 Sep 2023 09:50:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qebs7-0005W8-4v
- for qemu-arm@nongnu.org; Fri, 08 Sep 2023 09:50:07 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qebs2-0000Ld-Qb
- for qemu-arm@nongnu.org; Fri, 08 Sep 2023 09:50:05 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-31dcf18f9e2so2030059f8f.0
- for <qemu-arm@nongnu.org>; Fri, 08 Sep 2023 06:50:02 -0700 (PDT)
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S241597AbjIHNvM (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Fri, 8 Sep 2023 09:51:12 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:38998 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S230266AbjIHNvL (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 8 Sep 2023 09:51:11 -0400
+Received: from mail-ed1-x531.google.com (mail-ed1-x531.google.com [IPv6:2a00:1450:4864:20::531])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id CDE4A1BC6
+        for <kvm@vger.kernel.org>; Fri,  8 Sep 2023 06:51:06 -0700 (PDT)
+Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-52bcb8b199aso2832561a12.3
+        for <kvm@vger.kernel.org>; Fri, 08 Sep 2023 06:51:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694181001; x=1694785801; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=YwgVPYivAxOrVX0F/yhRuJSkuNqRznPV2GeIZSOelKU=;
- b=xbPQ/Od0sQ8wfDuCIPwNGpRBOE12ab3/dtculugKwP2PO4wM+l6wJeptvvYlDGYwdR
- Fu6NiSsHcUdDZJ4Un49P8cauuo38DIX5ykAlPxgBnBfppeZSoBxO18pA7w/Sw9bhHyGD
- DG76YdrG/KOdCxP9QWg7s6Djpvd5ODhwX+Wx2+mddmXMfEPOP6Mry7NzxeJqYKDn2XZJ
- Q8qty+ZLOZ/fVJPKaxOL8gtChpEgXXtUlyov2viKWi+etRYz84zfiuRkv3EMXObMXjcp
- habDIRZmngHrQcXZ0aYziqfHQNnxxBCL57D3OAc2C2+x2zSnmz+UiQGH4o5GF8LNhFWr
- GdVw==
+        d=linaro.org; s=google; t=1694181065; x=1694785865; darn=vger.kernel.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=J8pjd1/df+s3RtkGAmFa4NAq964Oj2OD0bhtrmrAYJc=;
+        b=bme02ggeJSf2w/VOO9Kd/nvpSXOrlANBhmhJPqqjGcxRQTAK4D0K4bFii/32diQR5s
+         ZJlWPoZxGqC/ZtN84ZJsWxJ3JsHOOmPsP6P2u4t9H7uqB0z0vSNBlFqGlLVBpzY21lgy
+         OCNTy3l/OtC6FLHhBIj+UMggO0RPuMfwz8cdraux0SSx8/ArWQd2SD7bJSem+uEQGfsz
+         GURPIgIZgsR9FmoBu5nU2hwiaNehMdg6JZ6TKxU5Qn4u9TYOMEH09HgO3PWtSVij1n2w
+         0sndReYIqXSBQzmRx8oYWqNv+qQBVEMmlwWnVSDub1jcH6hTflLSKCxlWV/AdHaSMSHn
+         AL5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694181001; x=1694785801;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=YwgVPYivAxOrVX0F/yhRuJSkuNqRznPV2GeIZSOelKU=;
- b=eBr3ATUBQDt3VPwaoUCZ3W5X9kjBZT8GtbpVQQjsJrFjnhB2onvMlhD2oTMYQFMs+R
- b8i8SvRJ+FRRIV7bOcql8jLQh3s395iOCEL5ER7HwPiRV/CJw7B5RnmM5nRM43nKWv97
- cu9ZSCTD+1ovjOKZ9K7BCRMsaMUqHmGW0lyhNfEsxqVEKy0S/g/bwLkj2ne6+CkPHA/2
- r6IZgIcgVoo2bK3oFOCDzQlrY42mDjQK6Jy7/haFzECjkR9TVC09eCe8tKRw7SthJtZl
- F1zSFYXlRU9mYirf/sHOMaJyio+1SmoTS5QeGHexLEqeBs1A3nYInCucF4P+kizRCP+n
- C+Ag==
-X-Gm-Message-State: AOJu0Yzn9ei8Jd3EgNubsaNGGN4ezfOJBEu5Za2PwBrAuDrX4879TIh1
- ngPEHm+GZoWzQC+Xjl8RnthJjd9vt/7wiXpQEzGdvA==
-X-Received: by 2002:a5d:6510:0:b0:317:ec04:ee0c with SMTP id
- x16-20020a5d6510000000b00317ec04ee0cmr1971981wru.47.1694181000990; Fri, 08
- Sep 2023 06:50:00 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1694181065; x=1694785865;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=J8pjd1/df+s3RtkGAmFa4NAq964Oj2OD0bhtrmrAYJc=;
+        b=ogVqsou4fYBqYv+MCK3wAweaENhRN/PwucQsv+h/ZYD25RvALc/Mabx4zWqCSgQ3VR
+         PQJ5FwrxSfRbCuerAljLIAgEUidOyq5uZ5AAmzIPhkBE9xVe6r6l1j6Fp1joqdW6pfnZ
+         dd+eIIrt8TRTODGDHHAJXQM/rmEdjDo+2y6JlsCokBSRyywq7R+GJmj5mJOcdaXB46hm
+         QZi7KGsA0HgJzDses/0jp333g6hsMzqpma8jbQIm4BFsNUqKV8NaxkK3/Omz2scyBSze
+         BXRfbRZaSDPZsWAmWYpbqZt6Q18tTFX8dIYMKv7/f22wnCcIUg7FJ6I87yzY4eq/yJnf
+         70mA==
+X-Gm-Message-State: AOJu0Yw+Gr1iiGZy+crHWjnzDmvyjoiIDcu5CGweCg/oi+bq1PETsuoQ
+        TFA1IuQZOoZRLq6mODZxrvQJhvj5bY9ZjhfRmDHZbA==
+X-Received: by 2002:aa7:d90b:0:b0:51b:d567:cfed with SMTP id
+ a11-20020aa7d90b000000b0051bd567cfedmr1955373edr.5.1694181065267; Fri, 08 Sep
+ 2023 06:51:05 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230831171849.3297497-1-tong.ho@amd.com>
- <20230831171849.3297497-2-tong.ho@amd.com>
- <622751d4-8a89-b34e-171f-9e9f7ac99972@linaro.org>
- <BL0PR12MB48829589D59FA02B93549E65E6E4A@BL0PR12MB4882.namprd12.prod.outlook.com>
-In-Reply-To: <BL0PR12MB48829589D59FA02B93549E65E6E4A@BL0PR12MB4882.namprd12.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 8 Sep 2023 14:49:50 +0100
-Message-ID: <CAFEAcA_KJFnxg-msgwiaFBzPYkj4RPQeYwLzd4RCy3_br11AGQ@mail.gmail.com>
-Subject: Re: [PATCH 1/3] hw/misc: Introduce AMD/Xilix Versal TRNG device
-To: "Ho, Tong" <tong.ho@amd.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>, 
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
- "alistair@alistair23.me" <alistair@alistair23.me>, 
- "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>
+References: <20230905091246.1931-1-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20230905091246.1931-1-shameerali.kolothum.thodi@huawei.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Fri, 8 Sep 2023 14:50:54 +0100
+Message-ID: <CAFEAcA-av-LmRw1f=cU4Mb9r-TS5gfmGBeKdcrsxHMtdJ7-bHQ@mail.gmail.com>
+Subject: Re: [PATCH v4] arm/kvm: Enable support for KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE
+To:     Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, gshan@redhat.com,
+        ricarkol@google.com, jonathan.cameron@huawei.com,
+        kvm@vger.kernel.org, linuxarm@huawei.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xGaeCM2JwWX6
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_BLOCKED,
+        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: sE3yED9WaFLX
 
-On Fri, 1 Sept 2023 at 05:16, Ho, Tong <tong.ho@amd.com> wrote:
+On Tue, 5 Sept 2023 at 10:13, Shameer Kolothum
+<shameerali.kolothum.thodi@huawei.com> wrote:
 >
-> Hi Richard,
+> Now that we have Eager Page Split support added for ARM in the kernel,
+> enable it in Qemu. This adds,
+>  -eager-split-size to -accel sub-options to set the eager page split chunk size.
+>  -enable KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE.
 >
-> Thanks for your input.
+> The chunk size specifies how many pages to break at a time, using a
+> single allocation. Bigger the chunk size, more pages need to be
+> allocated ahead of time.
 >
-> I have questions regarding using qemu/guest-random.h for QEMU device models.
->
-> Using qemu/guest-random.h, how can this TRNG model ensure its independence from
-> other uses of the same qemu_guest_getrandom() and qemu_guest_random_seed_*()?
->
-> By "other uses", I mean components and/or devices using qemu/guest-random.h but unrelated to this Xilinx Versal TRNG device.
->
-> By "independent", I mean the Xilinx Versal TRNG device is:
->
-> 1. Not impacted by other uses that may or may not need to set the '-seed' option, and
->
-> 2. Not impacting other uses just because a Xilinx Versal machine user decides to use deterministic mode *only" for this TRNG device.
->
-> Also, I am at a loss in how unrelated QEMU devices can remain independent when:
->
-> 3. qemu/guest-random.h uses '__thread' variable for GRand context, but
->
-> 4. QEMU devices run mostly as co-routines and not as separate threads.
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+> Changes:
+> v3: https://lore.kernel.org/qemu-devel/20230830114818.641-1-shameerali.kolothum.thodi@huawei.com/
+>    -Added R-by by Gavin and replaced kvm_arm_eager_split_size_valid()
+>     with a direct check.
+> v2: https://lore.kernel.org/qemu-devel/20230815092709.1290-1-shameerali.kolothum.thodi@huawei.com/
+>    -Addressed commenst from Gavin.
+> RFC v1: https://lore.kernel.org/qemu-devel/20230725150002.621-1-shameerali.kolothum.thodi@huawei.com/
+>   -Updated qemu-options.hx with description
+>   -Addressed review comments from Peter and Gavin(Thanks).
 
-You shouldn't need to care about any of this. Just assume you can
-get decent quality random numbers from qemu_guest_getrandom() or
-qemu_guest_getrandom_nofail(). The -seed option is for the
-entire simulation, not specific to individual RNG devices.
 
-> I suppose the Versal TRNG implementation could use g_rand_*() directly,
-> having a GRand object in the device state and seeding through g_rand_set_seed_array().
 
-Don't do something non-standard. Write this RNG device the same way
-we do all other RNG devices in QEMU.
+Applied to target-arm.next, thanks.
 
-thanks
 -- PMM

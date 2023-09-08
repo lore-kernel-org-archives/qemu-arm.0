@@ -1,100 +1,107 @@
-Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp434071ejb;
-        Fri, 8 Sep 2023 06:44:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHCMFsbmcs+nUFUPrgPyY+smjHXncNg37Z3CKY/9d9jgzHJ089ojHbfuKULFWcVfxH1rbwt
-X-Received: by 2002:a05:620a:4415:b0:75b:23a1:8336 with SMTP id v21-20020a05620a441500b0075b23a18336mr3239340qkp.49.1694180662131;
-        Fri, 08 Sep 2023 06:44:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694180662; cv=none;
+Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp437912ejb;
+        Fri, 8 Sep 2023 06:50:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEm4U+4nnZ8pi4MURTpfDihv/iNjWX3mEQ5jxsPiEtllk02J/vroXzg9E3ud6YctlXeXcx3
+X-Received: by 2002:a05:620a:2592:b0:76c:af30:3281 with SMTP id x18-20020a05620a259200b0076caf303281mr2786806qko.10.1694181033612;
+        Fri, 08 Sep 2023 06:50:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694181033; cv=none;
         d=google.com; s=arc-20160816;
-        b=GQSVsqJyTQ3sZP/JZVVA8/Z/wo3couY6Y4F3xKR1pp6Au+i/OP9/eZHv3I3327tI4k
-         58iLKjHHBIWsc52JKXqg+74lPoc0XwKzML9WXHmRv47yiw//yj/zTVWvyb0wFrDOUwYz
-         7awyE+Yad0GMGouzH8DAIMxN5VNgvc0R79uKjN8Qw0neUgEttjUR7dSkI0H+g8E1Gd3F
-         SBb9kSwbVczI133E1FMsid2uM1SWZPSszd7EfWndqMFwSxREuGCewcFrW1Zs49v4VttM
-         iOUQiGJpfOUtnRMyGAvxMv2jqAjp53t/b7ZP7NQvkERym5VeYeW1UVCZkTS0x5j5/r9e
-         TsHQ==
+        b=WQD45monvdanZ9LHmOodOGGuj+NqdGlSvApA8EKyA08iHNovHcEg8XFGPaOOb8w1XP
+         eywS1r3mrcawEGKwdErqiCCkdYPlRysWKiIf8/LuNXkRzuHr8aFlKTyB/7LoASwdgZRh
+         7Zzy311O658hhFqNuN1cFEVFlSkb0eTOlMwmK5t5FSBbN25ePHdwKlM0uX3YphJupdZU
+         IrBUOHS8zh6jjCtncO11RCbEeTpire+s8o3VRd0ss87VF6ct1ZU0FjlDqRogMtuFynIL
+         /xUfjgJ9jcfEOtyADBUcuEtnV+xm4DN8DrM8D23YWvocRr1+atpM1we5+uG6iqlIIWId
+         2Rng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=JnWAPaytL47BZJ5aTLD4mxXO1BCTndRYvryRSYsMG5I=;
-        fh=/ftcwOPYeEIhzseC7WF42kR+xVR/IJiWpLC1+A7SOWQ=;
-        b=hbK1rPrD7HaS/sEZ8AOpnxnCUkDDiupy2hskUuQX8FbsTIx8HfdlgzBJ9/gvLY6zZ0
-         eg0t5VZ9V/XxLIK37wES681btFEHZuXF34htMlFj+mk8ydTHtiWwWyYCLfBQUTa05SWr
-         ImxaiDJDhJFQ9MPTPBY2HdeieR4Qh8ydvYulBp2gDHs2zO0UsdLcOTB9dclrs4aSjgJs
-         lxFcMzcOVuNgEu/xEuXsKFK7t8dYFVyU24/kn5LoTNCD5FO0SqDCQP7WpAVIbN+E4bA8
-         6K2KKYL1XdTBORUMZ5bOOy0ekfXF9FGYUzAjZcFl3V0dfDKSlmkwjHWT90lR6CnMpEhl
-         egVw==
+        bh=YwgVPYivAxOrVX0F/yhRuJSkuNqRznPV2GeIZSOelKU=;
+        fh=mQRietVuQWYYDWSB3j2PCXbmQvkrEzlVN/NE47iC9ME=;
+        b=xv/NcT2oGV5QHww7i6/kAafPF/qCHFB9x504Y8zfK+y1ysJ6lrqnVJAdU8f13FqoLY
+         TcZwspuOr4WCMhJ0c4RGA0pR4+t8gRiZeTgwNX7PYlz7mJLXTgRgHPILkEBl2YYgO7iR
+         FlaTjG09RW6YZPId/cXzEd//XyxXF9ejdY5EDtYWaKYmtgXhC2NjFGqm0BAcJIsj/wEj
+         RIdSsynAsVZ2cWAQKHPMuDYvu8A6bbApLamiLrefspM4Xf8XqA3rSkCxDbIL7E54Oiyj
+         fKlnsnGaDYzsoBl+5JCRpTDNOPpdzDY0/k8AD4/ExSpfaJIfgPpgfsPY6K5DnZF102pL
+         u45w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zfL3wdy7;
+       dkim=pass header.i=@linaro.org header.s=google header.b="xbPQ/Od0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bs44-20020a05620a472c00b0076daa480ef0si1049073qkb.709.2023.09.08.06.44.21
+        by mx.google.com with ESMTPS id j22-20020a05620a0a5600b0076daa9708cesi1086903qka.133.2023.09.08.06.50.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Sep 2023 06:44:22 -0700 (PDT)
+        Fri, 08 Sep 2023 06:50:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zfL3wdy7;
+       dkim=pass header.i=@linaro.org header.s=google header.b="xbPQ/Od0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qebmN-0001oz-EP; Fri, 08 Sep 2023 09:44:11 -0400
+	id 1qebs7-0005XD-SB; Fri, 08 Sep 2023 09:50:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qebmL-0001eY-RL
- for qemu-arm@nongnu.org; Fri, 08 Sep 2023 09:44:09 -0400
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+ id 1qebs7-0005W8-4v
+ for qemu-arm@nongnu.org; Fri, 08 Sep 2023 09:50:07 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qebmJ-0007WN-Ka
- for qemu-arm@nongnu.org; Fri, 08 Sep 2023 09:44:09 -0400
-Received: by mail-lf1-x135.google.com with SMTP id
- 2adb3069b0e04-501bd164fbfso3351920e87.0
- for <qemu-arm@nongnu.org>; Fri, 08 Sep 2023 06:44:07 -0700 (PDT)
+ id 1qebs2-0000Ld-Qb
+ for qemu-arm@nongnu.org; Fri, 08 Sep 2023 09:50:05 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-31dcf18f9e2so2030059f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 08 Sep 2023 06:50:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694180646; x=1694785446; darn=nongnu.org;
+ d=linaro.org; s=google; t=1694181001; x=1694785801; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=JnWAPaytL47BZJ5aTLD4mxXO1BCTndRYvryRSYsMG5I=;
- b=zfL3wdy7U0rplZwZr2nD41wfTTmGvsGo6fbYMnI7OdhPTjJfh3ckWBOgo08kfYHb5g
- hshxDrq5OVGCsCCjAL65FC7d0TyCSahsIfKySZEBwwmcvCK34r6wABnYQDNsMxUygDiz
- 8r5/lEOo5bM1cxXtPTQ1+FY/xNVXDFNmLtXik2awYnOtzEXM2KF0SUS7hQ0L3ghl90wm
- oNIkzDZRbPgMs/ZWckk6cmil82ldkJYzIZRmTOKgBRmtW+PXGdnWMUPFz/8rqlZvuCzF
- XA06rguFGLWx2kiQstU8nrzuDv10cmWf0Houttiupu4U4JT4pGCHT6JyGpNE1dla5WL5
- lVUg==
+ bh=YwgVPYivAxOrVX0F/yhRuJSkuNqRznPV2GeIZSOelKU=;
+ b=xbPQ/Od0sQ8wfDuCIPwNGpRBOE12ab3/dtculugKwP2PO4wM+l6wJeptvvYlDGYwdR
+ Fu6NiSsHcUdDZJ4Un49P8cauuo38DIX5ykAlPxgBnBfppeZSoBxO18pA7w/Sw9bhHyGD
+ DG76YdrG/KOdCxP9QWg7s6Djpvd5ODhwX+Wx2+mddmXMfEPOP6Mry7NzxeJqYKDn2XZJ
+ Q8qty+ZLOZ/fVJPKaxOL8gtChpEgXXtUlyov2viKWi+etRYz84zfiuRkv3EMXObMXjcp
+ habDIRZmngHrQcXZ0aYziqfHQNnxxBCL57D3OAc2C2+x2zSnmz+UiQGH4o5GF8LNhFWr
+ GdVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694180646; x=1694785446;
+ d=1e100.net; s=20230601; t=1694181001; x=1694785801;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=JnWAPaytL47BZJ5aTLD4mxXO1BCTndRYvryRSYsMG5I=;
- b=V685gCMspLIWuMCoABuj2e38tEDSNfZ26FDQrghiOSUP0RTm6iu84kmIym/j5J3D9Y
- TkcLcRE4iAdaDlL7o01kWr/pjiZpfsoccWh/NYsfpeFF8zBtGa74UAX5fmQs+GsQ8fBb
- UIHMW61kGuEXsRy3VnlLWSgm0B4motlPWESCNmhOIss2VIjloyqjZgh5DtUjM9Hxlctz
- em0EaBGxd+eUMR+piFIYAFD0M9qOLt2yEdR2X5UzENrj1UxyR9Mm3GvBIEOzjQaCOICs
- HrkWJU61JcZ8x3S0V+MxXkUJWTEbTekjULwABq+AvZR2yWm2ztcoC0TEZlBlaJKbfPf4
- hz9g==
-X-Gm-Message-State: AOJu0YzjDTJ5rHxoeQ2H9eW3c59yl5/ZYOfwnOp3SFnFjO9oijRRW2aF
- THYP/uN6qfqWLxfr4Adx5Wz68kSwuLy3KcyNd2/D61AoPwV9ie4I
-X-Received: by 2002:ac2:488f:0:b0:502:9253:c56f with SMTP id
- x15-20020ac2488f000000b005029253c56fmr1625867lfc.44.1694180645761; Fri, 08
- Sep 2023 06:44:05 -0700 (PDT)
+ bh=YwgVPYivAxOrVX0F/yhRuJSkuNqRznPV2GeIZSOelKU=;
+ b=eBr3ATUBQDt3VPwaoUCZ3W5X9kjBZT8GtbpVQQjsJrFjnhB2onvMlhD2oTMYQFMs+R
+ b8i8SvRJ+FRRIV7bOcql8jLQh3s395iOCEL5ER7HwPiRV/CJw7B5RnmM5nRM43nKWv97
+ cu9ZSCTD+1ovjOKZ9K7BCRMsaMUqHmGW0lyhNfEsxqVEKy0S/g/bwLkj2ne6+CkPHA/2
+ r6IZgIcgVoo2bK3oFOCDzQlrY42mDjQK6Jy7/haFzECjkR9TVC09eCe8tKRw7SthJtZl
+ F1zSFYXlRU9mYirf/sHOMaJyio+1SmoTS5QeGHexLEqeBs1A3nYInCucF4P+kizRCP+n
+ C+Ag==
+X-Gm-Message-State: AOJu0Yzn9ei8Jd3EgNubsaNGGN4ezfOJBEu5Za2PwBrAuDrX4879TIh1
+ ngPEHm+GZoWzQC+Xjl8RnthJjd9vt/7wiXpQEzGdvA==
+X-Received: by 2002:a5d:6510:0:b0:317:ec04:ee0c with SMTP id
+ x16-20020a5d6510000000b00317ec04ee0cmr1971981wru.47.1694181000990; Fri, 08
+ Sep 2023 06:50:00 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230831232441.66020-1-richard.henderson@linaro.org>
-In-Reply-To: <20230831232441.66020-1-richard.henderson@linaro.org>
+References: <20230831171849.3297497-1-tong.ho@amd.com>
+ <20230831171849.3297497-2-tong.ho@amd.com>
+ <622751d4-8a89-b34e-171f-9e9f7ac99972@linaro.org>
+ <BL0PR12MB48829589D59FA02B93549E65E6E4A@BL0PR12MB4882.namprd12.prod.outlook.com>
+In-Reply-To: <BL0PR12MB48829589D59FA02B93549E65E6E4A@BL0PR12MB4882.namprd12.prod.outlook.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 8 Sep 2023 14:43:54 +0100
-Message-ID: <CAFEAcA-ZH6ufnN7wMrFN_vkWRZoAFkhOzuUchhKBwcXYNdkiUw@mail.gmail.com>
-Subject: Re: [PATCH v3 0/5] target/arm: Implement cortex-a710
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Fri, 8 Sep 2023 14:49:50 +0100
+Message-ID: <CAFEAcA_KJFnxg-msgwiaFBzPYkj4RPQeYwLzd4RCy3_br11AGQ@mail.gmail.com>
+Subject: Re: [PATCH 1/3] hw/misc: Introduce AMD/Xilix Versal TRNG device
+To: "Ho, Tong" <tong.ho@amd.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>, 
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+ "alistair@alistair23.me" <alistair@alistair23.me>, 
+ "edgar.iglesias@gmail.com" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::135;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x135.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,30 +123,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MlacQP9d8jNh
+X-TUID: xGaeCM2JwWX6
 
-On Fri, 1 Sept 2023 at 00:25, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Fri, 1 Sept 2023 at 05:16, Ho, Tong <tong.ho@amd.com> wrote:
 >
-> Changes for v3:
->   * 9 patches upstreamed
->   * Implement RMR_ELx generically, as a stub.
->   * Implement TIDCP and the closely related v8.8 FEAT_TIDCP1.
+> Hi Richard,
 >
+> Thanks for your input.
 >
-> r~
+> I have questions regarding using qemu/guest-random.h for QEMU device models.
 >
+> Using qemu/guest-random.h, how can this TRNG model ensure its independence from
+> other uses of the same qemu_guest_getrandom() and qemu_guest_random_seed_*()?
 >
-> Richard Henderson (5):
->   target/arm: Implement RMR_ELx
->   target/arm: Implement cortex-a710
->   target/arm: Implement HCR_EL2.TIDCP
->   target/arm: Implement FEAT_TIDCP1
->   target/arm: Enable SCTLR_EL1.TIDCP for user-only
+> By "other uses", I mean components and/or devices using qemu/guest-random.h but unrelated to this Xilinx Versal TRNG device.
 >
+> By "independent", I mean the Xilinx Versal TRNG device is:
+>
+> 1. Not impacted by other uses that may or may not need to set the '-seed' option, and
+>
+> 2. Not impacting other uses just because a Xilinx Versal machine user decides to use deterministic mode *only" for this TRNG device.
+>
+> Also, I am at a loss in how unrelated QEMU devices can remain independent when:
+>
+> 3. qemu/guest-random.h uses '__thread' variable for GRand context, but
+>
+> 4. QEMU devices run mostly as co-routines and not as separate threads.
 
+You shouldn't need to care about any of this. Just assume you can
+get decent quality random numbers from qemu_guest_getrandom() or
+qemu_guest_getrandom_nofail(). The -seed option is for the
+entire simulation, not specific to individual RNG devices.
 
+> I suppose the Versal TRNG implementation could use g_rand_*() directly,
+> having a GRand object in the device state and seeding through g_rand_set_seed_array().
 
-Applied to target-arm.next, thanks.
+Don't do something non-standard. Write this RNG device the same way
+we do all other RNG devices in QEMU.
 
+thanks
 -- PMM

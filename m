@@ -1,129 +1,128 @@
-Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp722364ejb;
-        Fri, 8 Sep 2023 15:30:14 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IESU/FNI7CyzavBHuB3Zf1bT+Sk2xxDmP0SGF0v5XLci99R5z8aQ1AZR2sQceZxdT06izSQ
-X-Received: by 2002:a0c:e0d0:0:b0:64f:6c68:4463 with SMTP id x16-20020a0ce0d0000000b0064f6c684463mr3500185qvk.11.1694212214327;
-        Fri, 08 Sep 2023 15:30:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694212214; cv=none;
+Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp722580ejb;
+        Fri, 8 Sep 2023 15:30:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE77URYB0sShm84Mm9Hmv+g3oo8Xnm6PzeJpzq+3jf3E6OK8Mip4/5v/M5vAENIwhK3ww32
+X-Received: by 2002:ac8:5a87:0:b0:40f:da50:4dbf with SMTP id c7-20020ac85a87000000b0040fda504dbfmr4466929qtc.1.1694212236735;
+        Fri, 08 Sep 2023 15:30:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694212236; cv=none;
         d=google.com; s=arc-20160816;
-        b=lPPz5tEtDuMwwUYr9b8QLPQZPAPwxklEtmBsamttQrPXIRDeWFHG+ozcr9tMEelD4V
-         OjPXwTspUJsYGxLPWstxNMxlOBtBiNexcx3+NgwQoo7trZcqvDvK36HziTwGVxctsJaQ
-         kmL9OxowAe/GlySwzVu8TshrTkm2IxEtbyHe3tXJ2VB21ZoDa7AMDYXMbhnBwMduW9mE
-         3G9nDUCRGgUsrHX2gYvJKTh9sbbydLxc/lk8uzbo1bS2XpEvTXSzHTHyv3aQ6rcx0Aq3
-         FwZrJYC2JnvfsPFJyOk/WMFAHpNYcqvqmIUfo+JU07MioVVmHfSRuJP5VFIzoUZ91iyN
-         uovw==
+        b=LYZKWV6t8SdNbs4FeuFTS7MO8OABUvNrzOb8j4qe733mRTPImXF65J6iFiFaZOn5Pq
+         gGOYbXtIkai3azZ2xYZ+0vw1swQc8o8l6Uvkr+6P2EcZN1ux4WlCIkFd08gR3Rkq+mU8
+         JUQqZnDPZ4pMIL2qHnLgCJTnqS/cRsvyLvjtlI9Mxyl/s6YeIbumDKi+XimF2Rqw4YOv
+         EPGLNrn8fEki6QwwJ6PBBUe7L9GY/OU+tVUsOHkXZbTWaRyH4EtgmvS9BoGsIWFOVCDP
+         8UGVZoK5Ut0d9O9hWbJlNPI3bySquVHee276wyakcbWA4mrOIwjE7AAp1/SKgsNZ/peS
+         wV/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=kSKQCPO7vZyGTofQD7lTXoQyaIqWnQcwmBVQHUDX3bA=;
+        bh=MKQWHZDFG3Xy8XMD848+Gnue4/3+zhqLFPmPBnMkzVE=;
         fh=/Ww3feT/iFt+UtShtcSrm/ZkK0mSMJwi4QyqgqL+GT0=;
-        b=LI3sfE7ZA56Rsp9yT1PJGJS4LP17VtVo0yioLshcCIGyaIQgj6Liy/jFDSsA2VpTwu
-         B2UI3H3ZnVOASmpbmzeON+5feLVRp60WRBv75PAb+cP/5DZuOSRNHpuCyIWqHhrJXzea
-         i51TTkqSozKkGu+azujpqW4DhGimZdyDw9pdHdPQPJ3fe5xc1YhyxI1ngZ3lHXE/6cAG
-         1r5m2/uh4uYVMOEQMjh9qBUNth0xO/VUQ/wqVZlA8ci1nqsYBQ3u5Oguq7gNgIBneuCj
-         8NYqSCggqIp1wahuBB3wuIuP68Kq8OyGZsuK9ZtwrTkY29z1sB6jEgwY0CRoaXg+mHlV
-         U8hQ==
+        b=xaCaPcvBiax/H8y6r0Gn7z4+0JK3ijo2b0p2VoB1jrwPM36tfANyd/jLY0q3fI+xQV
+         3EtMf9+wer1oTg/F/eDyI+ZhelhCL/85LxB1hWACFSWgHxgBuN0ldHL0wQgwOAlQEx7R
+         UhkmmvoTQ91FSW5wjgjrw36abpB7eiRPPVFIDxhl3RPjoUdNxK7/O9aR9uBpILZiTL89
+         +vONOuRO6RL7i1c7O/1FaU2nWSIhlU8B9AgiSwNAWydLxeeepngWTc562JOZZeGniuSr
+         eDzCn/tMhoqclbjkgL5Z0JQ2r9LnJUObi7bZ5BboZrl+TUhIDe16s1Z54E7a6mgw8YcQ
+         ruQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=izS4YQ77;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=auhSb1QV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h30-20020a0cab1e000000b0063d27c74571si1672481qvb.149.2023.09.08.15.30.14
+        by mx.google.com with ESMTPS id d13-20020ac85d8d000000b00414b35ac575si1844073qtx.795.2023.09.08.15.30.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Sep 2023 15:30:14 -0700 (PDT)
+        Fri, 08 Sep 2023 15:30:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=izS4YQ77;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=auhSb1QV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qejyj-0001bo-9l; Fri, 08 Sep 2023 18:29:30 -0400
+	id 1qejyl-0001e2-An; Fri, 08 Sep 2023 18:29:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qejyh-0001b3-R3; Fri, 08 Sep 2023 18:29:27 -0400
+ id 1qejyk-0001cH-5M; Fri, 08 Sep 2023 18:29:30 -0400
 Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qejye-0003Fc-Hu; Fri, 08 Sep 2023 18:29:27 -0400
-Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
+ id 1qejye-0003FP-JL; Fri, 08 Sep 2023 18:29:29 -0400
+Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 388M7LBW022618; Fri, 8 Sep 2023 22:29:16 GMT
+ 388MCedW014986; Fri, 8 Sep 2023 22:29:14 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=from : to : cc : subject
  : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=pp1;
- bh=kSKQCPO7vZyGTofQD7lTXoQyaIqWnQcwmBVQHUDX3bA=;
- b=izS4YQ775WorIPVmPO7jUoEUVyQ+zP/GQBXecD2FEWXJRxaId88myT6SZDuqojaca/HG
- qg18tjHsXnXIkYMbXFiivPdMOsoFcfTneq6uNSIEHOhwMOVUpK/5X748Pgpqekj9Zd+F
- aPU3xL5EWJMDNN3wy59FSWYgckGnQcI5gYpGAu6PBjGRbPR0uV23LXopvKdVHDgCudnz
- 2a0xzvEfmfbFEFhvPZZCwMuoDnpxy+tP3neoR6gIdHlJEqQbB1yZ6+fHxfju94o2olsQ
- b5+N1lKcZeOt1VYcpV73IEa0pEI9Wf9NLECpnbpIeETUfWNSxDSaH/P17z7kuWvtBIQw EA== 
+ content-transfer-encoding; s=pp1;
+ bh=MKQWHZDFG3Xy8XMD848+Gnue4/3+zhqLFPmPBnMkzVE=;
+ b=auhSb1QVvSU2wphberH5kZxp9/xmOYRzynlwD8V8e0WJCTdgm2mCCdu7qLjDIk38Y27t
+ IBsHlH/XCKq81bpUExrniUTGSG+5MVo3AQx9sAxJ4tQ2CnyKO+PRHWwa9hAc4nL+C7I4
+ m/aCnWcppz/2UKCGVvZgPila2kPw0NFZQZuK5GlDxz9Q4HeAax7/Nu1dHPOMu/g96aTs
+ CvCnDBScZQXApl4j1l8AXIARSjJqSMjHp6cqZ6pao0qOh0pFSptRLNI9JKISxbyN7Exm
+ CgPPLDED7dD7dNuh3aCwEV90goq+AjGm8s25fQ9W9PH8wbCgezTVhredrNs1oHNDyRuk wQ== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3t0bv5913p-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3t0c6ygb2y-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 08 Sep 2023 22:29:15 +0000
-Received: from m0353722.ppops.net (m0353722.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 388MJ0ts018862;
- Fri, 8 Sep 2023 22:29:14 GMT
+ Fri, 08 Sep 2023 22:29:14 +0000
+Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 388MIIop000590;
+ Fri, 8 Sep 2023 22:29:13 GMT
 Received: from ppma23.wdc07v.mail.ibm.com
  (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3t0bv5913a-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3t0c6ygb2r-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 08 Sep 2023 22:29:14 +0000
+ Fri, 08 Sep 2023 22:29:13 +0000
 Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
  by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 388KcDkf006603; Fri, 8 Sep 2023 22:29:14 GMT
-Received: from smtprelay07.wdc07v.mail.ibm.com ([172.16.1.74])
- by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3svgvm70vq-1
+ 388KcDke006603; Fri, 8 Sep 2023 22:29:13 GMT
+Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
+ by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3svgvm70vk-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 08 Sep 2023 22:29:14 +0000
+ Fri, 08 Sep 2023 22:29:13 +0000
 Received: from smtpav03.dal12v.mail.ibm.com (smtpav03.dal12v.mail.ibm.com
  [10.241.53.102])
- by smtprelay07.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 388MTDKp66060708
+ by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 388MTCux59376038
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 8 Sep 2023 22:29:13 GMT
+ Fri, 8 Sep 2023 22:29:12 GMT
 Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 5EB3F58056;
- Fri,  8 Sep 2023 22:29:13 +0000 (GMT)
-Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E399458063;
+ by IMSVA (Postfix) with ESMTP id 6002758056;
  Fri,  8 Sep 2023 22:29:12 +0000 (GMT)
+Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E9E505806C;
+ Fri,  8 Sep 2023 22:29:11 +0000 (GMT)
 Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
  by smtpav03.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Fri,  8 Sep 2023 22:29:12 +0000 (GMT)
+ Fri,  8 Sep 2023 22:29:11 +0000 (GMT)
 From: Ninad Palsule <ninad@linux.ibm.com>
 To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
  andrew@aj.id.au, joel@jms.id.au, pbonzini@redhat.com,
  marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
  philmd@linaro.org, lvivier@redhat.com
 Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
-Subject: [PATCH v4 10/10] hw/fsi: Update MAINTAINER list
-Date: Fri,  8 Sep 2023 17:28:59 -0500
-Message-Id: <20230908222859.3381003-11-ninad@linux.ibm.com>
+Subject: [PATCH v4 08/10] hw/fsi: Added qtest
+Date: Fri,  8 Sep 2023 17:28:57 -0500
+Message-Id: <20230908222859.3381003-9-ninad@linux.ibm.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230908222859.3381003-1-ninad@linux.ibm.com>
 References: <20230908222859.3381003-1-ninad@linux.ibm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: hAqyFAwr9Y4ETvJjckEOYhSzSLd4zHiv
-X-Proofpoint-ORIG-GUID: 5F4TRhER8XET8mssmHH0TEungnjRA7-f
+X-Proofpoint-GUID: UiT1JDuUzRSZpEz5D1zgC-reB06g0VMm
+X-Proofpoint-ORIG-GUID: X9hxYkj_GENnFfd6KBDYpKeozswer9Ur
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
  definitions=2023-09-08_18,2023-09-05_01,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=907
- priorityscore=1501 mlxscore=0 adultscore=0 spamscore=0 malwarescore=0
- bulkscore=0 impostorscore=0 lowpriorityscore=0 clxscore=1015 phishscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ clxscore=1015 mlxscore=0
+ malwarescore=0 phishscore=0 suspectscore=0 bulkscore=0 mlxlogscore=774
+ impostorscore=0 adultscore=0 spamscore=0 lowpriorityscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2308100000 definitions=main-2309080201
 Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
  helo=mx0b-001b2d01.pphosted.com
@@ -148,51 +147,258 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NJSxs0L8hD4u
+X-TUID: JpYlymPcGSM0
 
-Added maintainer for IBM FSI model
+Added basic qtests for FSI model.
 
 Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
 ---
+v3:
+ - Added new qtest as per Cedric's comment.
 V4:
-  - Added separate commit for MAINTAINER change.
+ - Remove MAINTAINER and documentation changes from this commit
 ---
- MAINTAINERS | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ tests/qtest/fsi-test.c  | 210 ++++++++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build |   2 +
+ 2 files changed, 212 insertions(+)
+ create mode 100644 tests/qtest/fsi-test.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6111b6b4d9..285f3a3bc9 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3395,6 +3395,28 @@ F: tests/qtest/adm1272-test.c
- F: tests/qtest/max34451-test.c
- F: tests/qtest/isl_pmbus_vr-test.c
- 
-+FSI
-+M: Ninad Palsule <ninad@linux.ibm.com>
-+S: Maintained
-+F: hw/fsi/aspeed-apb2opb.c
-+F: hw/fsi/cfam.c
-+F: hw/fsi/fsi.c
-+F: hw/fsi/fsi-slave.c
-+F: hw/fsi/opb.c
-+F: hw/fsi/engine-scratchpad.c
-+F: hw/fsi/fsi-master.c
-+F: hw/fsi/lbus.c
-+F: include/hw/fsi/aspeed-apb2opb.h
-+F: include/hw/fsi/cfam.h
-+F: include/hw/fsi/fsi.h
-+F: include/hw/fsi/fsi-slave.h
-+F: include/hw/fsi/opb.h
-+F: include/hw/fsi/engine-scratchpad.h
-+F: include/hw/fsi/fsi-master.h
-+F: include/hw/fsi/lbus.h
-+F: docs/specs/fsi.rst
-+F: tests/qtest/fsi-test.c
+diff --git a/tests/qtest/fsi-test.c b/tests/qtest/fsi-test.c
+new file mode 100644
+index 0000000000..30bb7475c7
+--- /dev/null
++++ b/tests/qtest/fsi-test.c
+@@ -0,0 +1,210 @@
++/*
++ * QTest testcases for IBM's Flexible Service Interface (FSI)
++ *
++ * Copyright (c) 2023 IBM Corporation
++ *
++ * Authors:
++ *   Ninad Palsule <ninad@linux.ibm.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
 +
- Firmware schema specifications
- M: Philippe Mathieu-Daudé <philmd@linaro.org>
- R: Daniel P. Berrange <berrange@redhat.com>
++#include "qemu/osdep.h"
++#include <glib/gstdio.h>
++
++#include "qemu/module.h"
++#include "libqtest-single.h"
++
++/* Registers from ast2600 specifications */
++#define ASPEED_FSI_ENGINER_TRIGGER   0x04
++#define ASPEED_FSI_OPB0_BUS_SELECT   0x10
++#define ASPEED_FSI_OPB1_BUS_SELECT   0x28
++#define ASPEED_FSI_OPB0_RW_DIRECTION 0x14
++#define ASPEED_FSI_OPB1_RW_DIRECTION 0x2c
++#define ASPEED_FSI_OPB0_XFER_SIZE    0x18
++#define ASPEED_FSI_OPB1_XFER_SIZE    0x30
++#define ASPEED_FSI_OPB0_BUS_ADDR     0x1c
++#define ASPEED_FSI_OPB1_BUS_ADDR     0x34
++#define ASPEED_FSI_INTRRUPT_CLEAR    0x40
++#define ASPEED_FSI_INTRRUPT_STATUS   0x48
++#define ASPEED_FSI_OPB0_BUS_STATUS   0x80
++#define ASPEED_FSI_OPB1_BUS_STATUS   0x8c
++#define ASPEED_FSI_OPB0_READ_DATA    0x84
++#define ASPEED_FSI_OPB1_READ_DATA    0x90
++
++/*
++ * FSI Base addresses from the ast2600 specifications.
++ */
++#define AST2600_OPB_FSI0_BASE_ADDR 0x1e79b000
++#define AST2600_OPB_FSI1_BASE_ADDR 0x1e79b100
++
++static uint32_t aspeed_fsi_base_addr;
++
++static uint32_t aspeed_fsi_readl(QTestState *s, uint32_t reg)
++{
++    return qtest_readl(s, aspeed_fsi_base_addr + reg);
++}
++
++static void aspeed_fsi_writel(QTestState *s, uint32_t reg, uint32_t val)
++{
++    qtest_writel(s, aspeed_fsi_base_addr + reg, val);
++}
++
++/* Setup base address and select register */
++static void test_fsi_setup(QTestState *s, uint32_t base_addr)
++{
++    uint32_t curval;
++
++    /* Set the base select register */
++    if (base_addr == AST2600_OPB_FSI0_BASE_ADDR) {
++        aspeed_fsi_base_addr = base_addr;
++
++        /* Unselect FSI1 */
++        aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_SELECT, 0x0);
++        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_SELECT);
++        g_assert_cmpuint(curval, ==, 0x0);
++
++        /* Select FSI0 */
++        aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_SELECT, 0x1);
++        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_SELECT);
++        g_assert_cmpuint(curval, ==, 0x1);
++    } else if (base_addr == AST2600_OPB_FSI1_BASE_ADDR) {
++        aspeed_fsi_base_addr = base_addr;
++
++        /* Unselect FSI0 */
++        aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_SELECT, 0x0);
++        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_SELECT);
++        g_assert_cmpuint(curval, ==, 0x0);
++
++        /* Select FSI1 */
++        aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_SELECT, 0x1);
++        curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_SELECT);
++        g_assert_cmpuint(curval, ==, 0x1);
++    } else {
++        g_assert_not_reached();
++    }
++}
++
++static void test_fsi_reg_change(QTestState *s, uint32_t reg, uint32_t newval)
++{
++    uint32_t base;
++    uint32_t curval;
++
++    base = aspeed_fsi_readl(s, reg);
++    aspeed_fsi_writel(s, reg, newval);
++    curval = aspeed_fsi_readl(s, reg);
++    g_assert_cmpuint(curval, ==, newval);
++    aspeed_fsi_writel(s, reg, base);
++    curval = aspeed_fsi_readl(s, reg);
++    g_assert_cmpuint(curval, ==, base);
++}
++
++static void test_fsi0_master_regs(const void *data)
++{
++    QTestState *s = (QTestState *)data;
++
++    test_fsi_setup(s, AST2600_OPB_FSI0_BASE_ADDR);
++
++    test_fsi_reg_change(s, ASPEED_FSI_OPB0_RW_DIRECTION, 0xF3F4F514);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB0_XFER_SIZE, 0xF3F4F518);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB0_BUS_ADDR, 0xF3F4F51c);
++    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_CLEAR, 0xF3F4F540);
++    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_STATUS, 0xF3F4F548);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB0_BUS_STATUS, 0xF3F4F580);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB0_READ_DATA, 0xF3F4F584);
++}
++
++static void test_fsi1_master_regs(const void *data)
++{
++    QTestState *s = (QTestState *)data;
++
++    test_fsi_setup(s, AST2600_OPB_FSI1_BASE_ADDR);
++
++    test_fsi_reg_change(s, ASPEED_FSI_OPB1_RW_DIRECTION, 0xF3F4F514);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB1_XFER_SIZE, 0xF3F4F518);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB1_BUS_ADDR, 0xF3F4F51c);
++    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_CLEAR, 0xF3F4F540);
++    test_fsi_reg_change(s, ASPEED_FSI_INTRRUPT_STATUS, 0xF3F4F548);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB1_BUS_STATUS, 0xF3F4F580);
++    test_fsi_reg_change(s, ASPEED_FSI_OPB1_READ_DATA, 0xF3F4F584);
++}
++
++static void test_fsi0_getcfam_addr0(const void *data)
++{
++    QTestState *s = (QTestState *)data;
++    uint32_t curval;
++
++    test_fsi_setup(s, AST2600_OPB_FSI0_BASE_ADDR);
++
++    /* Master access direction read */
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_RW_DIRECTION, 0x1);
++    /* word */
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_XFER_SIZE, 0x3);
++    /* Address */
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_ADDR, 0xa0000000);
++    aspeed_fsi_writel(s, ASPEED_FSI_INTRRUPT_CLEAR, 0x1);
++    aspeed_fsi_writel(s, ASPEED_FSI_ENGINER_TRIGGER, 0x1);
++
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_INTRRUPT_STATUS);
++    g_assert_cmpuint(curval, ==, 0x10000);
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_STATUS);
++    g_assert_cmpuint(curval, ==, 0x0);
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_READ_DATA);
++    g_assert_cmpuint(curval, ==, 0x152d02c0);
++}
++
++static void test_fsi1_getcfam_addr0(const void *data)
++{
++    QTestState *s = (QTestState *)data;
++    uint32_t curval;
++
++    test_fsi_setup(s, AST2600_OPB_FSI1_BASE_ADDR);
++
++    /* Master access direction read */
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_RW_DIRECTION, 0x1);
++
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_XFER_SIZE, 0x3);
++    aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_ADDR, 0xa0000000);
++    aspeed_fsi_writel(s, ASPEED_FSI_INTRRUPT_CLEAR, 0x1);
++    aspeed_fsi_writel(s, ASPEED_FSI_ENGINER_TRIGGER, 0x1);
++
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_INTRRUPT_STATUS);
++    g_assert_cmpuint(curval, ==, 0x20000);
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_STATUS);
++    g_assert_cmpuint(curval, ==, 0x0);
++    curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_READ_DATA);
++    g_assert_cmpuint(curval, ==, 0x152d02c0);
++}
++
++int main(int argc, char **argv)
++{
++    int ret = -1;
++    QTestState *s;
++
++    g_test_init(&argc, &argv, NULL);
++
++    s = qtest_init("-machine ast2600-evb ");
++    if (s == NULL) {
++        return -ENOMEM;
++    }
++
++    /* Tests for OPB/FSI0 */
++    qtest_add_data_func("/fsi-test/test_fsi0_master_regs", s,
++                        test_fsi0_master_regs);
++
++    qtest_add_data_func("/fsi-test/test_fsi0_getcfam_addr0", s,
++                        test_fsi0_getcfam_addr0);
++
++    /* Tests for OPB/FSI1 */
++    qtest_add_data_func("/fsi-test/test_fsi1_master_regs", s,
++                        test_fsi1_master_regs);
++
++    qtest_add_data_func("/fsi-test/test_fsi1_getcfam_addr0", s,
++                        test_fsi1_getcfam_addr0);
++
++    ret = g_test_run();
++    qtest_quit(s);
++
++    return ret;
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index b071d400b3..5976081b44 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -207,6 +207,7 @@ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] : []) + \
+   (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['fsi-test'] : []) + \
+   ['arm-cpu-features',
+    'boot-serial-test']
+ 
+@@ -318,6 +319,7 @@ qtests = {
+   'tpm-tis-device-test': [io, tpmemu_files, 'tpm-tis-util.c'],
+   'vmgenid-test': files('boot-sector.c', 'acpi-utils.c'),
+   'netdev-socket': files('netdev-socket.c', '../unit/socket-helpers.c'),
++  'fsi-test': files('fsi-test.c'),
+ }
+ 
+ if vnc.found()
 -- 
 2.39.2
 

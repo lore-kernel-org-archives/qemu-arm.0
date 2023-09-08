@@ -1,148 +1,96 @@
-Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp56498ejb;
-        Thu, 7 Sep 2023 16:45:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFqHDxfytaAkNtNjrH73FVig5ej0ypMJ++RxkwqP5Phf4S+HWmO6QSPUmh9cyVWYf+Jd9Gu
-X-Received: by 2002:a05:620a:28c1:b0:76e:e68d:149b with SMTP id l1-20020a05620a28c100b0076ee68d149bmr1128813qkp.50.1694130308900;
-        Thu, 07 Sep 2023 16:45:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694130308; cv=none;
+Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp122813ejb;
+        Thu, 7 Sep 2023 19:23:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEb+06qdC3T8QTOsqm2esk46XTCCVdEp4YL5Xi6v64tGftzLHDWa51A3YHetC/M6lhmnjHL
+X-Received: by 2002:a67:f814:0:b0:44f:c528:6250 with SMTP id l20-20020a67f814000000b0044fc5286250mr1462337vso.1.1694139837541;
+        Thu, 07 Sep 2023 19:23:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694139837; cv=none;
         d=google.com; s=arc-20160816;
-        b=nQ5sHm8zOTBbumxbpuSMhV9MeSaDRbnsdYjHTtUUzoKQjkxAFf4T10FZtwEGp3gXsI
-         /S4j76rvId94dcJCRR3h2Zu6U81MsdzbxJyWGMbqphK7v7ptOl8bOQSnwrNfe5Sm/470
-         fp2jTp6zdtFpClqytX8Yxmqr9AlJ52cv859ogSJt3qH7Ql+AYVBXg8/WXM1D6eOTKsR8
-         IV8qH6b3nyJtQP420UqgyL67HNEmYMEuIVd6zunY3I8JQmtYB7J/q8YrPyszXaErLUGb
-         b/aIreDyaTLQkM/mUC6KtBrTBjc6q/W/kzuE6437Fa5St4zY8LyH1+Jv3VUa9DgnZfbF
-         YoCw==
+        b=xbSyMrRo+veCB3zy4jY/h/oqc/NNXXqvVpIdQQW6tiBjozeJYJCFMDT6iL1i6KhMy+
+         sCKMm8b07HPG2QYfAZpMjFaGc8h4wgji3j7lyljjIjurhN46Jcv10up80AnEk64p6KeQ
+         fGkXPK0pMUglz4tfJxqe0DqM5Nahm1al2tarvYQmCc4B5QjHDku35JbUgfy89GcY0olH
+         bmjKj4sUaguJ9hCA28SwBrNSC15YvYW+qRiml/mlVUxvqmnffi/7gBuH/dtuzYfjSwGe
+         WsPKbpiVshicDS26AAyyTpkC/U6ZwPzJV1j14R7zX18m8zZFVVO0Zr9UE7ibxx+zqtdr
+         kdMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=auFvH47RQsTJlEWgbS6R9mPJHb1EUu2ooesuyxdHYpE=;
-        fh=CSO+xP+eyEMPhmWo3nfwejT6bjI5Rc2ee72Q7STLHvs=;
-        b=nBO/CQ9xEnc9SjxeJ6qdASzXILW/kJY/xVNyOGeoQX/Q8ySdgkLjXqgihRuFuwV8p/
-         4N96DNke2yL0faDsh/IBaSi1BRNT86KnpfQEKeqqv4BWgqHxeCpqzQPg60IujeiYvhFo
-         bm282cU6bwt8wY+XzQjl1fIcyjQZhkdqQX7f2NA8DSIJD1VqwvBraqp6c4KVaOJ/sNnZ
-         ZuOn070OMWOXgvkDf91fnOXekLecQkipc51ARYGYFdljAS+mDf3DkxzIdf0JBIPvY+uZ
-         y63H8n50EsJ3Mxh+VX8Mdy9RZh+PGYT4TIcKHEFfNxqr1uISKMbzBGuXqoOWcAABRsoi
-         r8XQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=QxlikTwW6pQoFCZSpsJC77hNhTCZa5umaxY7dERkGWs=;
+        fh=NK1D3J/7T/7kWXryoqieLXbQq3JSEgnrT8wHPdO8jGQ=;
+        b=rcjZP4sl6LCH9qDQ3XLwODBo3WW5G4AQ3CfW8B9reKuS8K5brzvOznYiVwFvXttCzM
+         Y7BKDB6qEC6EDw7cgsJHdSVdJV4g2YaGVXGQpgX2Fxfr/ySTPfB7zi8gNx77p6DjN5jj
+         fcJFXecdyvPsunNvWFyeWgyYZcRePZyX9B5I//s51DOyvTDGvRFwQfMJcVPRkO0eboRf
+         SOapv7sJ/o6CrkDy9C0guoSDNG8E9+kpynGkg02eSkQKZ4kTVqHNDWzPfIxAaRgjZ4n3
+         r4PlScVr9d2cFf5GwFRphyeWT5KACaVVBBgwbsJKumkan10mawVAtS2LznMK6+YGeOca
+         LnFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ACLINhdC;
+       dkim=pass header.i=@jia.je header.s=default header.b="RXa/sUyM";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jia.je
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h5-20020a05620a244500b0076ee8f86e8csi374102qkn.90.2023.09.07.16.45.08
+        by mx.google.com with ESMTPS id v4-20020a0ce1c4000000b0065190a63e66si546171qvl.467.2023.09.07.19.23.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Sep 2023 16:45:08 -0700 (PDT)
+        Thu, 07 Sep 2023 19:23:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ACLINhdC;
+       dkim=pass header.i=@jia.je header.s=default header.b="RXa/sUyM";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jia.je
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qeOfr-000686-HP; Thu, 07 Sep 2023 19:44:35 -0400
+	id 1qeR9m-0002W7-2p; Thu, 07 Sep 2023 22:23:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qeOfq-00066l-6G
- for qemu-arm@nongnu.org; Thu, 07 Sep 2023 19:44:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <c@jia.je>)
+ id 1qeR9k-0002Vp-1y; Thu, 07 Sep 2023 22:23:36 -0400
+Received: from hognose1.porkbun.com ([35.82.102.206])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qeOfl-0002rh-EH
- for qemu-arm@nongnu.org; Thu, 07 Sep 2023 19:44:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1694130268;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=auFvH47RQsTJlEWgbS6R9mPJHb1EUu2ooesuyxdHYpE=;
- b=ACLINhdCOWW7HUQwHhpo4AR6p8UXzo7d8ZgSwnXJdchHo8heJTsn1vQAQ3oDsV2xEEzXtb
- 9aQlBmUym7mSLYRIqrLrwt0Cq+qZTtfU6sp9XVC94bXCpcQuW1FDpDU5egeh7CIh7C9mDm
- 5LPSSdzntcBJslN1cPtEAI+GGx5+2Jo=
-Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
- [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-644-zcDfQOwNN2G27kKlDyMylQ-1; Thu, 07 Sep 2023 19:44:27 -0400
-X-MC-Unique: zcDfQOwNN2G27kKlDyMylQ-1
-Received: by mail-pl1-f199.google.com with SMTP id
- d9443c01a7336-1c091a563ecso21593745ad.0
- for <qemu-arm@nongnu.org>; Thu, 07 Sep 2023 16:44:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694130266; x=1694735066;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=auFvH47RQsTJlEWgbS6R9mPJHb1EUu2ooesuyxdHYpE=;
- b=XtpVnoNiPklKyU5d178pxQUJGI82+tMlC9EW2JOH8u4tc+qmdFu4AiykTaZVyLfgl7
- xC/fvPswCkyYIIgJcr0korO0w9HLkgQWIWeWYgCYcvOvq700R0FnjNWvB7GIXZOXc90s
- RTndnOuE2hMlcdbmq91HE75fSwK9/B4CJAcRlUYpoWLb9f2VaXcANTAOGsVWTXI01PkU
- 29my7YNHeWt+ZDrF3Z2znvgj2wAUOanAUrS1l1cb3J5xYx+kFN2MobS6C9xWLkUD2Eyo
- KcVJigAVWJjAw232T+7NQlZqqacL89FoUxOzznrTFIHR4k4yeEwq2ecE/g7UJsPu9Pkk
- NTpg==
-X-Gm-Message-State: AOJu0YwyYt3gTwYOHlxeD9mSatsAcj6St3AUvXf/QwYFkmcxUgJxqyZx
- AV4GjssKTX9s/1HgtxKoQp8JQ34p4ZV8MYlwY+gCZ2vbvTLpURBPkh3rUaIbEyjrOnTz1nOHCuV
- 1LFuALcKiFiVp
-X-Received: by 2002:a17:902:c1c4:b0:1c1:e53a:c2f with SMTP id
- c4-20020a170902c1c400b001c1e53a0c2fmr962847plc.27.1694130266056; 
- Thu, 07 Sep 2023 16:44:26 -0700 (PDT)
-X-Received: by 2002:a17:902:c1c4:b0:1c1:e53a:c2f with SMTP id
- c4-20020a170902c1c400b001c1e53a0c2fmr962829plc.27.1694130265736; 
- Thu, 07 Sep 2023 16:44:25 -0700 (PDT)
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
- ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
- by smtp.gmail.com with ESMTPSA id
- x2-20020a1709028ec200b001b89a6164desm289730plo.118.2023.09.07.16.44.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Sep 2023 16:44:22 -0700 (PDT)
-Message-ID: <ab07d81c-da98-a270-c3f6-0625912c6d0b@redhat.com>
-Date: Fri, 8 Sep 2023 09:44:03 +1000
+ (Exim 4.90_1) (envelope-from <c@jia.je>)
+ id 1qeR9h-0006t6-Gz; Thu, 07 Sep 2023 22:23:35 -0400
+Received: from ls3a6000.. (unknown [223.72.41.62])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (Client did not present a certificate)
+ (Authenticated sender: c@jia.je)
+ by hognose1.porkbun.com (Postfix) with ESMTPSA id CB4A944104;
+ Fri,  8 Sep 2023 02:23:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jia.je; s=default;
+ t=1694139811; bh=QxlikTwW6pQoFCZSpsJC77hNhTCZa5umaxY7dERkGWs=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=RXa/sUyMzRSV1LwaOvvieiScrjMOULPFB6UkqQM4E6yUXgMVD2F0fgi60vpzNVX4P
+ 8xNS2VAUiXX7qvLKDwR+2KzL4JdAesKIK+nsOn85d7hVE5MTLFHFX/i4mKi3XLrbnb
+ aKnnACZjPYqNRd8YLB63piYxh+nPm5dRhSDI5dzg=
+From: Jiajie Chen <c@jia.je>
+To: qemu-devel@nongnu.org
+Cc: richard.henderson@linaro.org, gaosong@loongson.cn, git@xen0n.name,
+ Jiajie Chen <c@jia.je>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, Huacai Chen <chenhuacai@kernel.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
+ qemu-arm@nongnu.org (open list:AArch64 TCG target),
+ qemu-riscv@nongnu.org (open list:RISC-V TCG target)
+Subject: [PATCH v4 03/16] tcg: pass vece to tcg_target_const_match()
+Date: Fri,  8 Sep 2023 10:21:10 +0800
+Message-ID: <20230908022302.180442-4-c@jia.je>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20230908022302.180442-1-c@jia.je>
+References: <20230908022302.180442-1-c@jia.je>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v3 15/32] target/s390x: Use generic helper to show CPU
- model names
-To: David Hildenbrand <david@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org, imp@bsdimp.com, kevans@freebsd.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
- wangyanan55@huawei.com, peter.maydell@linaro.org, b.galvani@gmail.com,
- strahinja.p.jankovic@gmail.com, sundeep.lkml@gmail.com, kfting@nuvoton.com,
- wuhaotsh@google.com, nieklinnenbank@gmail.com, rad@semihalf.com,
- quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org, laurent@vivier.eu,
- vijai@behindbytes.com, palmer@dabbelt.com, alistair.francis@wdc.com,
- bin.meng@windriver.com, liweiwei@iscas.ac.cn, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, richard.henderson@linaro.org,
- mrolnik@gmail.com, edgar.iglesias@gmail.com, bcain@quicinc.com,
- gaosong@loongson.cn, yangxiaojuan@loongson.cn, aurelien@aurel32.net,
- jiaxun.yang@flygoat.com, aleksandar.rikalo@syrmia.com,
- chenhuacai@kernel.org, crwulff@gmail.com, marex@denx.de, shorne@gmail.com,
- clg@kaod.org, david@gibson.dropbear.id.au, groug@kaod.org,
- npiggin@gmail.com, ysato@users.sourceforge.jp, thuth@redhat.com,
- iii@linux.ibm.com, mark.cave-ayland@ilande.co.uk, atar4qemu@gmail.com,
- kbastian@mail.uni-paderborn.de, jcmvbkbc@gmail.com, pbonzini@redhat.com,
- imammedo@redhat.com, shan.gavin@gmail.com
-References: <20230907003553.1636896-1-gshan@redhat.com>
- <20230907003553.1636896-16-gshan@redhat.com>
- <698b58e2-0c41-856d-cd79-71c8d0b3ff79@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <698b58e2-0c41-856d-cd79-71c8d0b3ff79@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=35.82.102.206; envelope-from=c@jia.je;
+ helo=hognose1.porkbun.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,74 +105,179 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C5CKQ+1itYhT
+X-TUID: BAZZ5Qhv/FIh
 
+Pass vece to tcg_target_const_match() to allow correct interpretation of
+const args of vector ops.
 
-On 9/7/23 18:20, David Hildenbrand wrote:
-> On 07.09.23 02:35, Gavin Shan wrote:
->> For target/s390x, the CPU type name is always the combination of the
->> CPU modle name and suffix. The CPU model names have been correctly
->> shown in s390_print_cpu_model_list_entry() and create_cpu_model_list().
->>
->> Use generic helper cpu_model_from_type() to show the CPU model names
->> in the above two functions. Besides, we need validate the CPU class
->> in s390_cpu_class_by_name(), as other targets do.
->>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   target/s390x/cpu_models.c        | 18 +++++++++++-------
->>   target/s390x/cpu_models_sysemu.c |  9 ++++-----
->>   2 files changed, 15 insertions(+), 12 deletions(-)
->>
->> diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
->> index 91ce896491..103e9072b8 100644
->> --- a/target/s390x/cpu_models.c
->> +++ b/target/s390x/cpu_models.c
->> @@ -338,7 +338,8 @@ static void s390_print_cpu_model_list_entry(gpointer data, gpointer user_data)
->>   {
->>       const S390CPUClass *scc = S390_CPU_CLASS((ObjectClass *)data);
->>       CPUClass *cc = CPU_CLASS(scc);
->> -    char *name = g_strdup(object_class_get_name((ObjectClass *)data));
->> +    const char *typename = object_class_get_name((ObjectClass *)data);
->> +    char *model = cpu_model_from_type(typename);
->>       g_autoptr(GString) details = g_string_new("");
->>       if (scc->is_static) {
->> @@ -355,14 +356,12 @@ static void s390_print_cpu_model_list_entry(gpointer data, gpointer user_data)
->>           g_string_truncate(details, details->len - 2);
->>       }
->> -    /* strip off the -s390x-cpu */
->> -    g_strrstr(name, "-" TYPE_S390_CPU)[0] = 0;
->>       if (details->len) {
->> -        qemu_printf("s390 %-15s %-35s (%s)\n", name, scc->desc, details->str);
->> +        qemu_printf("s390 %-15s %-35s (%s)\n", model, scc->desc, details->str);
->>       } else {
->> -        qemu_printf("s390 %-15s %-35s\n", name, scc->desc);
->> +        qemu_printf("s390 %-15s %-35s\n", model, scc->desc);
->>       }
->> -    g_free(name);
->> +    g_free(model);
->>   }
->>   static gint s390_cpu_list_compare(gconstpointer a, gconstpointer b)
->> @@ -916,7 +915,12 @@ ObjectClass *s390_cpu_class_by_name(const char *name)
->>       oc = object_class_by_name(typename);
->>       g_free(typename);
->> -    return oc;
->> +    if (object_class_dynamic_cast(oc, TYPE_S390_CPU) &&
->> +        !object_class_is_abstract(oc)) {
->> +        return oc;
->> +    }
->> +
->> +    return NULL;
-> 
-> Why is that change required?
-> 
+Signed-off-by: Jiajie Chen <c@jia.je>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ tcg/aarch64/tcg-target.c.inc     | 2 +-
+ tcg/arm/tcg-target.c.inc         | 2 +-
+ tcg/i386/tcg-target.c.inc        | 2 +-
+ tcg/loongarch64/tcg-target.c.inc | 2 +-
+ tcg/mips/tcg-target.c.inc        | 2 +-
+ tcg/ppc/tcg-target.c.inc         | 2 +-
+ tcg/riscv/tcg-target.c.inc       | 2 +-
+ tcg/s390x/tcg-target.c.inc       | 2 +-
+ tcg/sparc64/tcg-target.c.inc     | 2 +-
+ tcg/tcg.c                        | 4 ++--
+ tcg/tci/tcg-target.c.inc         | 2 +-
+ 11 files changed, 12 insertions(+), 12 deletions(-)
 
-Good question. It's possible that other class's name conflicts with
-CPU class's name. For example, class "abc-base-s390x-cpu" has been
-registered for a misc class other than a CPU class. We don't want
-s390_cpu_class_by_name() return the class for "abc-base-s390x-cpu".
-Almost all other target does similar check.
-
-Thanks,
-Gavin
+diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
+index 0931a69448..a1e2b6be16 100644
+--- a/tcg/aarch64/tcg-target.c.inc
++++ b/tcg/aarch64/tcg-target.c.inc
+@@ -272,7 +272,7 @@ static bool is_shimm1632(uint32_t v32, int *cmode, int *imm8)
+     }
+ }
+ 
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+ {
+     if (ct & TCG_CT_CONST) {
+         return 1;
+diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
+index acb5f23b54..76f1345002 100644
+--- a/tcg/arm/tcg-target.c.inc
++++ b/tcg/arm/tcg-target.c.inc
+@@ -509,7 +509,7 @@ static bool is_shimm1632(uint32_t v32, int *cmode, int *imm8)
+  * mov operand2:     values represented with x << (2 * y), x < 0x100
+  * add, sub, eor...: ditto
+  */
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+ {
+     if (ct & TCG_CT_CONST) {
+         return 1;
+diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
+index 0c3d1e4cef..aed91e515e 100644
+--- a/tcg/i386/tcg-target.c.inc
++++ b/tcg/i386/tcg-target.c.inc
+@@ -198,7 +198,7 @@ static bool patch_reloc(tcg_insn_unit *code_ptr, int type,
+ }
+ 
+ /* test if a constant matches the constraint */
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+ {
+     if (ct & TCG_CT_CONST) {
+         return 1;
+diff --git a/tcg/loongarch64/tcg-target.c.inc b/tcg/loongarch64/tcg-target.c.inc
+index 150278e112..07a0326e5d 100644
+--- a/tcg/loongarch64/tcg-target.c.inc
++++ b/tcg/loongarch64/tcg-target.c.inc
+@@ -186,7 +186,7 @@ static inline tcg_target_long sextreg(tcg_target_long val, int pos, int len)
+ }
+ 
+ /* test if a constant matches the constraint */
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+ {
+     if (ct & TCG_CT_CONST) {
+         return true;
+diff --git a/tcg/mips/tcg-target.c.inc b/tcg/mips/tcg-target.c.inc
+index 9faa8bdf0b..c6662889f0 100644
+--- a/tcg/mips/tcg-target.c.inc
++++ b/tcg/mips/tcg-target.c.inc
+@@ -190,7 +190,7 @@ static bool is_p2m1(tcg_target_long val)
+ }
+ 
+ /* test if a constant matches the constraint */
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+ {
+     if (ct & TCG_CT_CONST) {
+         return 1;
+diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
+index 090f11e71c..ccf245191d 100644
+--- a/tcg/ppc/tcg-target.c.inc
++++ b/tcg/ppc/tcg-target.c.inc
+@@ -261,7 +261,7 @@ static bool reloc_pc14(tcg_insn_unit *src_rw, const tcg_insn_unit *target)
+ }
+ 
+ /* test if a constant matches the constraint */
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+ {
+     if (ct & TCG_CT_CONST) {
+         return 1;
+diff --git a/tcg/riscv/tcg-target.c.inc b/tcg/riscv/tcg-target.c.inc
+index 9be81c1b7b..3bd7959e7e 100644
+--- a/tcg/riscv/tcg-target.c.inc
++++ b/tcg/riscv/tcg-target.c.inc
+@@ -145,7 +145,7 @@ static TCGReg tcg_target_call_oarg_reg(TCGCallReturnKind kind, int slot)
+ #define sextreg  sextract64
+ 
+ /* test if a constant matches the constraint */
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+ {
+     if (ct & TCG_CT_CONST) {
+         return 1;
+diff --git a/tcg/s390x/tcg-target.c.inc b/tcg/s390x/tcg-target.c.inc
+index ecd8aaf2a1..f4d3abcb71 100644
+--- a/tcg/s390x/tcg-target.c.inc
++++ b/tcg/s390x/tcg-target.c.inc
+@@ -540,7 +540,7 @@ static bool risbg_mask(uint64_t c)
+ }
+ 
+ /* Test if a constant matches the constraint. */
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+ {
+     if (ct & TCG_CT_CONST) {
+         return 1;
+diff --git a/tcg/sparc64/tcg-target.c.inc b/tcg/sparc64/tcg-target.c.inc
+index 81a08bb6c5..6b9be4c520 100644
+--- a/tcg/sparc64/tcg-target.c.inc
++++ b/tcg/sparc64/tcg-target.c.inc
+@@ -322,7 +322,7 @@ static bool patch_reloc(tcg_insn_unit *src_rw, int type,
+ }
+ 
+ /* test if a constant matches the constraint */
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+ {
+     if (ct & TCG_CT_CONST) {
+         return 1;
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 620dbe08da..e81e8936d6 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -171,7 +171,7 @@ static bool tcg_out_sti(TCGContext *s, TCGType type, TCGArg val,
+ static void tcg_out_call(TCGContext *s, const tcg_insn_unit *target,
+                          const TCGHelperInfo *info);
+ static TCGReg tcg_target_call_oarg_reg(TCGCallReturnKind kind, int slot);
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct);
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece);
+ #ifdef TCG_TARGET_NEED_LDST_LABELS
+ static int tcg_out_ldst_finalize(TCGContext *s);
+ #endif
+@@ -4689,7 +4689,7 @@ static void tcg_reg_alloc_op(TCGContext *s, const TCGOp *op)
+         ts = arg_temp(arg);
+ 
+         if (ts->val_type == TEMP_VAL_CONST
+-            && tcg_target_const_match(ts->val, ts->type, arg_ct->ct)) {
++            && tcg_target_const_match(ts->val, ts->type, arg_ct->ct, TCGOP_VECE(op))) {
+             /* constant is OK for instruction */
+             const_args[i] = 1;
+             new_args[i] = ts->val;
+diff --git a/tcg/tci/tcg-target.c.inc b/tcg/tci/tcg-target.c.inc
+index 253f27f174..1dbb4b087e 100644
+--- a/tcg/tci/tcg-target.c.inc
++++ b/tcg/tci/tcg-target.c.inc
+@@ -913,7 +913,7 @@ static inline bool tcg_out_sti(TCGContext *s, TCGType type, TCGArg val,
+ }
+ 
+ /* Test if a constant matches the constraint. */
+-static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
++static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+ {
+     return ct & TCG_CT_CONST;
+ }
+-- 
+2.42.0
 

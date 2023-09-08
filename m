@@ -1,102 +1,102 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp1377464ejx;
-        Mon, 11 Sep 2023 07:18:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHABALdqwfjAaAxmWYT9D9jC6sGboznKFD4ZckBoBgeLu55FCT+kvIWE64mYbXLhKiEEfgv
-X-Received: by 2002:a67:fa52:0:b0:44d:4a41:893e with SMTP id j18-20020a67fa52000000b0044d4a41893emr9000621vsq.6.1694441913988;
-        Mon, 11 Sep 2023 07:18:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694441913; cv=none;
+Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp513162ejb;
+        Fri, 8 Sep 2023 08:42:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHvE3eDivSyL36GD75lErkEbRSTxwX+W28+w6Gqw6cY+FyBAaRf14q+IXU+XWnYJBf5Y4as
+X-Received: by 2002:a0c:cd11:0:b0:64f:72cc:4bca with SMTP id b17-20020a0ccd11000000b0064f72cc4bcamr2836067qvm.47.1694187720954;
+        Fri, 08 Sep 2023 08:42:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694187720; cv=none;
         d=google.com; s=arc-20160816;
-        b=TDeLFZNHSM+HcDvRydzD61aONE+K5enLRZMtqFhx0Waou9uHwkfns0dDmRDTwWBx4W
-         uyRiwocjpqM337DD0Zy6w+oLpT86cMuT4+gludcdGB+3tb/ub9qmSlcJrKuZ1GbB9WJH
-         jxkT30P73uG6MTbSewVW617z0bC27flS/Va11XrFD60vB1Xb5qLB1nl2mya7qIq15RWT
-         LdnjparCF7t5zO9k7jMB2dCXlqiTm/agPRvfaI5QbOt9nKEeQei8m9KVQIBMHiooTud0
-         1GMq6I+gSp9yWAbuaKkJ8FBEkzYYxIoeHlds2m32byWyDCaRF6FrkLBOewElPrNTE1/Y
-         ZckA==
+        b=r5YXwGzt8d4kh4cndNgWwczkrcHoMXdGSm36pjGGiPCHNrFZu6qvt73X68wHZ9Xq/z
+         ya6Q2RarGhZwwigr87p0NsQQnxhuwLqmV9dqSGrXa3KYNZtrceRkvmGbIAdUr+mh54NV
+         MelbeKtE1YRRvkp1lM36kCjbTGB/PyU531u8loZ/Nrqm36e4gODzP9XPVzBn6fbYWXbk
+         nFelIA/xhCuDL1dcSJz1bKLdHdavvWvUba8wOddcut5C1s8QLsPHICQTBdLK4a2kbny4
+         IJazYzjIpHq8tMaEh84VpY7cduceIlpB1HmO3d9AuDYRji4OBjE9Nc1StQ240DlPEr1u
+         uIkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=CO5KUZ0HbXPAFPvyvpsqqPg5wltk7sxJyxmy2Eh0KyM=;
-        fh=PKodlsZ4sLOulf3vcyB9a9UvxkkwctzJ7UL5PZ8dNXQ=;
-        b=JNrM2VSY62UYh8gBvbESnJBYc1MbGF4cH5tFUxH0Ar6zug/Oul7IO3vksSMsj5WDb3
-         ouwsSB4kuEdhaKz2+igQ+4h07fooTplHAk7gK+e6MZJcfzGjHw14KFfrzn6zghpp829b
-         Tfov5CfVksIkh1UI7Rc87TR24ErWF9wleTL3+AhwB16SQktEdXTlt80Mhb6DmAZuHTno
-         FhGYeUnNFsZ8DV84WjdENy+s/dYXdjSZnVGYAMYqEW+UO4IWbo0uqYEvZ2N8nz8OuGl0
-         31wYIzj0dXAeP3HnP32HnmmXmxCrw5iTYuGv7d9RIf7nPT8Q6po/wP1FfR40kxyPQtoT
-         Gz7Q==
+        bh=pBgTHklQNbdjDjd8eoz0tW/JQGecWV1WEnHbYq378R8=;
+        fh=V4W40pxfZJYyQAzWJwhKQM/6uNal9YCQTJGLqnVS1W0=;
+        b=d1NLcEjryeRavpKOi4mbN8TPH7gexHm0eA1Eiw9l8dmdnIHRbLUVBYGY7J7gEU3iFy
+         ijvF1H8WLqmRfszOOfVhHIHZXitnx4pMJ/ZRe/pUhBGqhxvkHUGZGYVcYUp+q9U8gvVL
+         x9+DFufoe9thPWIkomBjnhBFUL4OagKZnxtlbmEaiGgtFamRyQzQwtYYxNebYu22t7Ak
+         Rf8Txp2FuGP+2Du0V0ldCpXLyvPtDKhz22lL+J4S0IrmdvfBzErf5gD2rVSnA2TkMbIT
+         MH4zQN/uRAD/cRPbthpQhRH9GrYNf2Q6VlSZ+YURQS57yerjeyLLZ2ulQ7Zi+MoX8FzD
+         8eSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X7aop9vW;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LqNg8T6C;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dv12-20020a05620a1b8c00b0076787a8a594si4693187qkb.205.2023.09.11.07.18.33
+        by mx.google.com with ESMTPS id d29-20020a0cb2dd000000b0064c8da8c869si1241048qvf.591.2023.09.08.08.42.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Sep 2023 07:18:33 -0700 (PDT)
+        Fri, 08 Sep 2023 08:42:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X7aop9vW;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LqNg8T6C;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qfhjz-0000Bn-KV; Mon, 11 Sep 2023 10:18:15 -0400
+	id 1qedcG-0003to-WC; Fri, 08 Sep 2023 11:41:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qfhjy-0000BI-Cx
- for qemu-arm@nongnu.org; Mon, 11 Sep 2023 10:18:14 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1qedcF-0003lN-Pi
+ for qemu-arm@nongnu.org; Fri, 08 Sep 2023 11:41:51 -0400
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qfhju-0001IP-Tx
- for qemu-arm@nongnu.org; Mon, 11 Sep 2023 10:18:13 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-403061cdf2bso18799745e9.2
- for <qemu-arm@nongnu.org>; Mon, 11 Sep 2023 07:18:10 -0700 (PDT)
+ id 1qedc9-0003w3-5e
+ for qemu-arm@nongnu.org; Fri, 08 Sep 2023 11:41:47 -0400
+Received: by mail-lf1-x136.google.com with SMTP id
+ 2adb3069b0e04-501bd7711e8so3812482e87.1
+ for <qemu-arm@nongnu.org>; Fri, 08 Sep 2023 08:41:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694441889; x=1695046689; darn=nongnu.org;
+ d=linaro.org; s=google; t=1694187697; x=1694792497; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=CO5KUZ0HbXPAFPvyvpsqqPg5wltk7sxJyxmy2Eh0KyM=;
- b=X7aop9vWayS9AxLirlLJTzgtEHVOa3gK+nnd9XiQsRDdb6IFJ11gpAoC/3hxQk4ANh
- ULQo2Kub3PNj1p0lt2gWYr0obh9mb5XZzCCyB5iDIVsC021H/UQjh4maArbXix7dxL90
- smOmAjGAVBX4yc8pYhduQo3ZcIbkAIWY/PDxSfoCkk5lesx0dat+TYKLKgX5ey4IBw+n
- JR51r7gPy7PXwmB8w9LhcyPM4Xsw87gpNDnru+K3BLRMxQIbeXOr9MoO03fCs+LFlk/N
- pYCLLMO8fDHiXAF/Sh3SgXY9sC1y3gw55kennYJcPIyHukdpj3oOcCwjY7nMQAOPFbHK
- aRYA==
+ bh=pBgTHklQNbdjDjd8eoz0tW/JQGecWV1WEnHbYq378R8=;
+ b=LqNg8T6CQ/FxuuXT1l4Kz0BOyidcsM97YG5VFFBu/qEJnYt2XctKxd8uy7QwTSR4FO
+ wAfwV5syahcvVG2qNECLSIOdCziODuQNgkfnHMTk/4cV0xfZe9HaqS4o+jmlezZUhoY3
+ aXkvuJ8fmnHOqW0IYdht5E86iJFj+fT6AOlmkywk85iOwIe3ibOO1WrTP7kxCn9V7oWq
+ MKl/ESIlK2aJfFsGE7ZfT+zrPRs9PGDan07xTJcGnxmNaRRtYVo/GqKw6QKER4lu/rSn
+ A/R6+2S5v9Y3flOi+yvfM/olqxub49yJbafy/izBJIwpQekvPmJzA7DzFBLBOmRcigWz
+ H16A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694441889; x=1695046689;
+ d=1e100.net; s=20230601; t=1694187697; x=1694792497;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=CO5KUZ0HbXPAFPvyvpsqqPg5wltk7sxJyxmy2Eh0KyM=;
- b=Jh8vNjng2cmjMzf6x/hWAr8bD8/p0kBI6ME6nK0dFHbq0pDIEtz4y6E+qbTsX9a9ey
- LrfiHJHIX10v5s2wTrUo8q5NXvEeAi16P1BG/Iggsr2bwy5QmnrBEh6ukVcgWIIXJOHZ
- TH64FKL17k572Tgw67TwSmf2He+X5uCdSfQIHI4fuhSuUKJ/qTSqa1eIygRUvJTsg3PC
- EAI3ASaJwNDYdg39+TLkm65ykt5oZu3v13J0n53D/V54gy+y5yJy2BMT4plHhZ/RGgDW
- QaHVx220hgi5NsqJrRoues2ij6vdBfVVpelg/fvnCZZVhdezNZOgRa8wuYKtIbgvEHr+
- kCYA==
-X-Gm-Message-State: AOJu0Yxl0BJeE4leCRWBOztsb0AXSCOKDqcl+WUZckju/bk8d/bBSy+U
- n3Jg+zIE69MmIR28vpkK3t992ivx6TYgEcgg8PzpdQ==
-X-Received: by 2002:a5d:6812:0:b0:317:f18b:a950 with SMTP id
- w18-20020a5d6812000000b00317f18ba950mr8175491wru.26.1694441888949; Mon, 11
- Sep 2023 07:18:08 -0700 (PDT)
+ bh=pBgTHklQNbdjDjd8eoz0tW/JQGecWV1WEnHbYq378R8=;
+ b=uR/SsYQdjedLRIpnxL+MYUUYNPmLQMfgoVri5yyvTJIV48eLmxxadM8620wyw0BBsD
+ c0KWT8Q9kgspOusnCjGrJhNeB9L5GYgTFo/XHVsmksVdMUzwzhRoDqOprTtuF4woNjV6
+ PLxNdajZ+AvzPTkDXPwUNt8xa//ndlLZgebN0ACfscd3UT9uNW2ncctz7SNO1Ri01cIv
+ zEyZodKDIH9GyIeJJ2s4YMvN+ht9gvOldNeDxLUxSc9Kt1Sw4MdtL/gvYRes46JJ+BZQ
+ myA9OpMiGORQ1XIUR2rWzJzF0Z2gqNQuCI2XRJ8GSC/nPFVotZtbvd/Ksy76OtjrOAqi
+ UxTA==
+X-Gm-Message-State: AOJu0YyeSgGgwdkthpJY7Yhu35i5XSPuuqEuR2p3L9e+J9IwNnXVK2TS
+ b75wWKw8f6Mn1Lt9Pvv11+vNKmEHCWlm8SMVSj6ZeA==
+X-Received: by 2002:ac2:5de9:0:b0:4fb:7c40:9f97 with SMTP id
+ z9-20020ac25de9000000b004fb7c409f97mr2106235lfq.27.1694187697112; Fri, 08 Sep
+ 2023 08:41:37 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230907160340.260094-1-peter.maydell@linaro.org>
- <20230907160340.260094-12-peter.maydell@linaro.org>
- <fbc33e98-2f8e-d503-c219-20c2b6eb02d2@linaro.org>
-In-Reply-To: <fbc33e98-2f8e-d503-c219-20c2b6eb02d2@linaro.org>
+References: <20230829232335.965414-1-richard.henderson@linaro.org>
+ <CAFEAcA9K6+c24rEORCF1vNav38kS5UBBVtSeC9T=DjV1_i0PDg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9K6+c24rEORCF1vNav38kS5UBBVtSeC9T=DjV1_i0PDg@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Sep 2023 15:17:57 +0100
-Message-ID: <CAFEAcA8V_8wFpLJd7mNygEeU2iCdmMEZz4cXANXfwzD=FBGqkw@mail.gmail.com>
-Subject: Re: [PATCH 11/14] target/arm: Implement the SETG* instructions
+Date: Fri, 8 Sep 2023 16:41:26 +0100
+Message-ID: <CAFEAcA_PTJ69+LexN_Ca=GwjRfQyT_N-+qg34QEyQLgpCEUSwQ@mail.gmail.com>
+Subject: Re: [PATCH v5 00/12] Implement Most ARMv8.3 Pointer Authentication
+ Features
 To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-devel@nongnu.org, aaron@os.amperecomputing.com, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,136 +118,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SpUCqCvQkcJY
+X-TUID: OpCb4jLOvmcV
 
-On Sat, 9 Sept 2023 at 17:38, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Fri, 8 Sept 2023 at 12:55, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> On 9/7/23 09:03, Peter Maydell wrote:
-> > The FEAT_MOPS SETG* instructions are very similar to the SET*
-> > instructions, but as well as setting memory contents they also
-> > set the MTE tags. They are architecturally required to operate
-> > on tag-granule aligned regions only.
+> On Wed, 30 Aug 2023 at 00:24, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
 > >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   target/arm/internals.h         | 10 ++++
-> >   target/arm/tcg/a64.decode      |  5 ++
-> >   target/arm/tcg/helper-a64.c    | 92 +++++++++++++++++++++++++++++++---
-> >   target/arm/tcg/mte_helper.c    | 40 +++++++++++++++
-> >   target/arm/tcg/translate-a64.c | 20 +++++---
-> >   5 files changed, 155 insertions(+), 12 deletions(-)
+> > Changes for v5:
+> >   * Updates for review.
+> >   * Include linux-user ESR changes.
 > >
-> > diff --git a/target/arm/internals.h b/target/arm/internals.h
-> > index a70a7fd50f6..642f77df29b 100644
-> > --- a/target/arm/internals.h
-> > +++ b/target/arm/internals.h
-> > @@ -1300,6 +1300,16 @@ uint64_t mte_mops_probe(CPUARMState *env, uint64_t ptr, uint64_t size,
-> >   void mte_check_fail(CPUARMState *env, uint32_t desc,
-> >                       uint64_t dirty_ptr, uintptr_t ra);
+> > Patch 10 is the only one without review.
 > >
-> > +/**
-> > + * mte_mops_set_tags: Set MTE tags for a portion of a FEAT_MOPS operation
-> > + * @env: CPU env
-> > + * @dirty_ptr: Start address of memory region (dirty pointer)
-> > + * @size: length of region (guaranteed not to cross page boundary)
-> > + * @desc: MTEDESC descriptor word
-> > + */
-> > +void mte_mops_set_tags(CPUARMState *env, uint64_t dirty_ptr, uint64_t size,
-> > +                       uint32_t desc);
-> > +
-> >   static inline int allocation_tag_from_addr(uint64_t ptr)
-> >   {
-> >       return extract64(ptr, 56, 4);
-> > diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-> > index 8cddc207a6f..46caeb59fe5 100644
-> > --- a/target/arm/tcg/a64.decode
-> > +++ b/target/arm/tcg/a64.decode
-> > @@ -569,3 +569,8 @@ STZ2G           11011001 11 1 ......... 11 ..... ..... @ldst_tag p=0 w=1
-> >   SETP            00 011001110 ..... 00 . . 01 ..... ..... @set
-> >   SETM            00 011001110 ..... 01 . . 01 ..... ..... @set
-> >   SETE            00 011001110 ..... 10 . . 01 ..... ..... @set
-> > +
-> > +# Like SET, but also setting MTE tags
-> > +SETGP           00 011101110 ..... 00 . . 01 ..... ..... @set
-> > +SETGM           00 011101110 ..... 01 . . 01 ..... ..... @set
-> > +SETGE           00 011101110 ..... 10 . . 01 ..... ..... @set
-> > diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-> > index 73169eb0b56..96780067262 100644
-> > --- a/target/arm/tcg/helper-a64.c
-> > +++ b/target/arm/tcg/helper-a64.c
-> > @@ -1103,6 +1103,54 @@ static uint64_t set_step(CPUARMState *env, uint64_t toaddr,
-> >       return setsize;
-> >   }
 > >
-> > +/*
-> > + * Similar, but setting tags. The architecture requires us to do this
-> > + * in 16-byte chunks. SETP accesses are not tag checked; they set
-> > + * the tags.
-> > + */
-> > +static uint64_t set_step_tags(CPUARMState *env, uint64_t toaddr,
-> > +                              uint64_t setsize, uint32_t data, int memidx,
-> > +                              uint32_t *mtedesc, uintptr_t ra)
-> > +{
-> > +    void *mem;
-> > +    uint64_t cleanaddr;
-> > +
-> > +    setsize = MIN(setsize, page_limit(toaddr));
-> > +
-> > +    cleanaddr = useronly_clean_ptr(toaddr);
-> > +    /*
-> > +     * Trapless lookup: returns NULL for invalid page, I/O,
-> > +     * watchpoints, clean pages, etc.
-> > +     */
-> > +    mem = tlb_vaddr_to_host(env, cleanaddr, MMU_DATA_STORE, memidx);
-> > +
-> > +#ifndef CONFIG_USER_ONLY
-> > +    if (unlikely(!mem)) {
-> > +        /*
-> > +         * Slow-path: just do one write. This will handle the
-> > +         * watchpoint, invalid page, etc handling correctly.
-> > +         * The architecture requires that we do 16 bytes at a time,
-> > +         * and we know both ptr and size are 16 byte aligned.
-> > +         * For clean code pages, the next iteration will see
-> > +         * the page dirty and will use the fast path.
-> > +         */
-> > +        uint64_t repldata = data * 0x0101010101010101ULL;
-> > +        cpu_stq_mmuidx_ra(env, toaddr, repldata, memidx, ra);
-> > +        cpu_stq_mmuidx_ra(env, toaddr + 8, repldata, memidx, ra);
-> > +        mte_mops_set_tags(env, toaddr, 16, *mtedesc);
-> > +        return 16;
+> > r~
 >
-> You can use cpu_st16_mmu for one store.
->
-> > @@ -1154,20 +1219,27 @@ void HELPER(setp)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
-> >       int rd = mops_destreg(syndrome);
-> >       int rs = mops_srcreg(syndrome);
-> >       int rn = mops_sizereg(syndrome);
-> > +    bool set_tags = mops_is_setg(syndrome);
-> >       uint8_t data = env->xregs[rs];
-> >       uint32_t memidx = FIELD_EX32(mtedesc, MTEDESC, MIDX);
-> >       uint64_t toaddr = env->xregs[rd];
-> >       uint64_t setsize = env->xregs[rn];
-> >       uint64_t stagesetsize, step;
-> >       uintptr_t ra = GETPC();
-> > +    StepFn *stepfn = set_tags ? set_step_tags : set_step;
-> >
-> >       check_mops_enabled(env, ra);
-> >
-> >       if (setsize > INT64_MAX) {
-> >           setsize = INT64_MAX;
-> > +        if (set_tags) {
-> > +            setsize &= ~0xf;
-> > +        }
-> >       }
->
-> I think it would be a little better if set_tags was visible to the compiler, via inlining,
-> so that all of the conditions can be folded away.
+> Applied to target-arm.next. Thanks to both you and Aaron
+> for this work.
 
-Do you mean having a separate triplet of helper functions
-for setg, which then call an inline function shared with
-the normal setp/setm/sete to do the actual work, rather than
-passing "is this setg" via the syndrome ?
+It turns out that there's something wrong in the linux-user
+ESR changes and they trip the clang sanitizer:
+https://gitlab.com/pm215/qemu/-/jobs/5047578129
+
+TEST linux-test on aarch64
+../linux-user/aarch64/signal.c:583:21: runtime error: member access
+within null pointer of type 'target_siginfo_t' (aka 'struct
+target_siginfo')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
+../linux-user/aarch64/signal.c:583:21 in
+make[1]: *** [Makefile:178: run-linux-test] Error 1
+
+where that line number is in need_save_esr() on the
+first line "int sig = info->si_signo;".
+
+On non-sanitizer CI runs you just get a straight SEGV:
+https://gitlab.com/pm215/qemu/-/jobs/5047578115
+
+TEST linux-test on alpha
+timeout: the monitored command dumped core
+Segmentation fault
+make[1]: *** [Makefile:178: run-linux-test] Error 139
+make: *** [/builds/pm215/qemu/tests/Makefile.include:56:
+run-tcg-tests-aarch64-linux-user] Error 2
+make: *** Waiting for unfinished jobs....
+
+I'm going to drop the 3 linux-user patches from
+target-arm.next.
 
 thanks
 -- PMM

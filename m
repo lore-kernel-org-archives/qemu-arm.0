@@ -1,100 +1,103 @@
-Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp373716ejb;
-        Fri, 8 Sep 2023 05:11:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGQwfjWC/Wy4C+FaphCAMzccwz1NSOt7S9nyAIX++hec00eIO7MhqPzcgG/QDgJa29T5Wd3
-X-Received: by 2002:a05:620a:2ade:b0:76c:8d5f:5954 with SMTP id bn30-20020a05620a2ade00b0076c8d5f5954mr2154330qkb.70.1694175061107;
-        Fri, 08 Sep 2023 05:11:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694175061; cv=none;
+Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp377893ejb;
+        Fri, 8 Sep 2023 05:17:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHpmsyCmmNUcIXqRxIXlgV/GQuhkHJAeLdKWLSg2x1Af9An2cKhrnWCEfx6EkcGMTynhOBm
+X-Received: by 2002:a05:6358:e4a2:b0:134:f0c7:90ae with SMTP id by34-20020a056358e4a200b00134f0c790aemr2437621rwb.5.1694175456237;
+        Fri, 08 Sep 2023 05:17:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694175456; cv=none;
         d=google.com; s=arc-20160816;
-        b=lKhgznOlL4ch4cblu5qHO1wtairHQzyIjaDFOp9Swoy5CT8yQ7d7RF7h1BEoRVYzcb
-         aA0ErGad0bQnL9tyPNobfGg/1ELETwgwzO6aEN+iMekLqIcd7oCsYW3ePF+/oZcGwybS
-         UVSU5Ktm3ye6rofzq9z5undMylTI1iWjwjJ/LympU9dsYevjQiXF7/L11u7PXLRt8eqc
-         B1/WojREH4KeGwQgRvf9G3mnqDNWbPH9I6vfEM/dVkirgmq7he8ybyTryknP1RSlOQMs
-         /qd6U568poQrUrQuSRvYXt+I8AYp6kuRaZRXnxLaNieF5FzqSLktyf3UX2vg6BwSw+pI
-         EAYw==
+        b=PG+Don7ehoIc2d0EUElfHHXgP/vM+umAisJcVLahzw29l7RPchsAypaLygxQIfPEhH
+         qUDxa8538zUmHHPQEdJVOyR8MNii/jvgYjUls9KH/aT1mkxvOOuplpsjgK0OIqRjlRe5
+         pZ8uCr3na4HtxCP41SzgrhkmJHsjjZYlVGYiJeuYfgDzziATkkETcV+6B4E4c+3rpGBc
+         P5YhEKCyk9CjBxwJJDft1zOWj2apOx6gpFPiufAlduMPwxZgbzt0kOUdj9cAGzj2jrdp
+         Hd/fxsVRdLViMA9Xq1Pj4txeSq9K+86omnVhpXlZN1lJgI1QyIqkBRxKmCH3YNFmn4Qu
+         lAzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=39oDq1SHkVWT6dfZk/dMADTgX3KEW+aeBSn7Fn7ylqs=;
-        fh=/ftcwOPYeEIhzseC7WF42kR+xVR/IJiWpLC1+A7SOWQ=;
-        b=WWpDgvCNTYDfE4Z7dp3zuhOLJbfw0101ZgfXoEFyBodiW/q9PM4WmUPZzsIN0ZwWvW
-         WbD1yRN43MDwi1VL4EHzg72DN2RBkGJeu2FgR/LMJrYNyffg+xUDvD1gLr6x07wQ1+sl
-         XlO5eOCqexLbVFkviRv6shSUGQcxiWYrNiyV6qJ4PiD29gCzDme4lGFi0b7jD4QR91JN
-         rzLcOnF2w+dnMR9fWcHWlcvVb+u5TZ58I+G1b2IMO62jgXFfOyfgqXmrMelQQAk6r9Ng
-         ao5jWmn2R67IMHEtqw6cHWbDfB1AlPf6OWioHGzBLl2wn/8GLT+GhHp+TtkPA+lvAKgF
-         COCw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=eJFV3k9sG9fZcxBlzsNxMg5ieLD1/LoHcz9Lyc+RwLM=;
+        fh=ZunbYo7vBCjqSWc9622LTLPHQcfFJMelhG0lIzAt0Bo=;
+        b=OVOe2tBgKI0V5rfgDjJzCF2O9ivtTr3YIKqbG8Fi56R/NOzwyZzi1wsU3unXpCXnrF
+         T+82HfvZY9p74rwDSHgoyS/W9WwZn4fnOp5vkzXs3KuFvBwrvUQ9v+NPYrjWqb6B9FB7
+         tkPT0FfydObvG6aSJrcr1mIYwInAP2IP3ThKcySMBQttzf5aFul0zoX3Mpk0gQySaM5A
+         /jrULs3kVRbXuJFb0j76STDNvhu+wjr1J/mjQLbd7A5QGkbZS20JJkhAi4Eul1e1jsz1
+         JvPXOpkTDWyp8q5jL+aREYr4wS3MgVZa/tjHeH3BdZvq2WqQSdYNLBdvu0CaNeDyUBqL
+         4UHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AfgaTSwT;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Ct/9U32u";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bj21-20020a05620a191500b0076841128d10si1018579qkb.533.2023.09.08.05.11.00
+        by mx.google.com with ESMTPS id a12-20020a0ce34c000000b0063d6cf5bab0si1052291qvm.197.2023.09.08.05.17.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Sep 2023 05:11:01 -0700 (PDT)
+        Fri, 08 Sep 2023 05:17:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AfgaTSwT;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Ct/9U32u";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qeaK2-0001rx-5U; Fri, 08 Sep 2023 08:10:50 -0400
+	id 1qeaPn-0006Oz-89; Fri, 08 Sep 2023 08:16:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeaJj-0001Rs-VI
- for qemu-arm@nongnu.org; Fri, 08 Sep 2023 08:10:37 -0400
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+ id 1qeaPj-0006Ku-Og
+ for qemu-arm@nongnu.org; Fri, 08 Sep 2023 08:16:45 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeaJf-00034B-H9
- for qemu-arm@nongnu.org; Fri, 08 Sep 2023 08:10:31 -0400
-Received: by mail-lf1-x136.google.com with SMTP id
- 2adb3069b0e04-5008d16cc36so3369855e87.2
- for <qemu-arm@nongnu.org>; Fri, 08 Sep 2023 05:10:24 -0700 (PDT)
+ id 1qeaPg-00057Z-8G
+ for qemu-arm@nongnu.org; Fri, 08 Sep 2023 08:16:42 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-523100882f2so2651232a12.2
+ for <qemu-arm@nongnu.org>; Fri, 08 Sep 2023 05:16:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694175023; x=1694779823; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=39oDq1SHkVWT6dfZk/dMADTgX3KEW+aeBSn7Fn7ylqs=;
- b=AfgaTSwTDb+7oegrJ4uRlR/dRWWz6jutaG38ozIyGvcx0WrmxpxomAhRqq7IiJQ2Z6
- ScXJg0oiyc1vQHE1sjeiAqmC9IpgzC5u0/CMHDwsmrAKtiFMYQy5r8dVBItQ15/tZMiU
- OqIbIyH9FcOcxocDlLYwvLXWSMXOJ5+AbGVDey6BqpADD6PyjJ3Obdg50TmYhgsEoG42
- eWOTmS26sSSRShgurIr6W7WiBLRhYSRJvvkEdpGF8mscWVEdsoKHtDwX/eXbyzaax020
- sXCTXGefHjgVY/RTdA3ukMyE/3aSLX5xrUIYmM+C2TFP32nWLL3T8yTKJenSlV7yXhfI
- J82Q==
+ d=linaro.org; s=google; t=1694175398; x=1694780198; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=eJFV3k9sG9fZcxBlzsNxMg5ieLD1/LoHcz9Lyc+RwLM=;
+ b=Ct/9U32uhGH/W8NMykCd6Poso++vZtdESKooEJPLnpVn58RSO0s/0E6hI03KoJeuK+
+ pD8B8SyOSoOWghJ8j/wruCfkQ8HC+iS/R5ip/JHCFI0tX7FDKXj0bHOiSI+BbF4xkJkZ
+ ZC9afpLBdmwoP8I5kb9idVNBTZhLmokxReuQ2skZhrSK/0gLvYnrRPRP/ejjMJVNOcNL
+ py5mae3yWh6mf6rH2sTbbm3N0cvV5b0Z/f+nawLx0IZ3tj9pxafHg3OiCRvfFJTIEbKk
+ z2sGGOTwCNG7frqWNwGCXAylF+T2D+52xcC/QZ324A+h1PQUkKb+sXGMDawFxWoojjiT
+ J3Fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694175023; x=1694779823;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=39oDq1SHkVWT6dfZk/dMADTgX3KEW+aeBSn7Fn7ylqs=;
- b=hu16UEZ/mq53+WJxwR9Dr5zj3suJWuvN9OzpbCE+NdbXPf9lfZyLuPbqud/IOLyaiQ
- D+PzOgqmfPNOtrZ4C5evt0hfXdANQFBy3arvIMOotzzZeyx4olcvs9KMprJf3XEUqDmy
- drzLCSAWcnlKb65xIg7dJUlPrXdSjSTWV27cpv9teh0Gmj7we6O2ZiULXazv/seZ0uE4
- 6A9x2+FpLU6LL63vADq38E+WTSwdET941TKXFl3BkLroyIRPSrfRKKWX+8KuTgpJhv9d
- mEb+SMx1ylLdVOeEEHC6yxSxCrCVFR11N5vFD3Ed7D/6nJk/6OJ/dKnzsan0XZeN8EQX
- oQQg==
-X-Gm-Message-State: AOJu0Yx9kD7ohV5ny4bjJKBRkjTsi5pkOlcXs1IG4VBJMiGacJXPg19A
- fIqbd8/euFtsVxRdL9eB62PTgGTyaHCSNpI4VNgqbA==
-X-Received: by 2002:a19:e057:0:b0:4f8:6d53:a68f with SMTP id
- g23-20020a19e057000000b004f86d53a68fmr1589444lfj.64.1694175023429; Fri, 08
- Sep 2023 05:10:23 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1694175398; x=1694780198;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=eJFV3k9sG9fZcxBlzsNxMg5ieLD1/LoHcz9Lyc+RwLM=;
+ b=PxKF2aTyJmmOeCd8IHs9r38dSE3aT25IhmQGObikS6l8digXP65JYqY37eOn20iGvI
+ i8qusqRt1wmetidgSb915xsPciytOVE93VqcseHLEsWdz1W3PTMrNXGfN1LYVXwXVzN1
+ JI8oHX+VJoHvSkOjPBABVmtmC62NG5+hs8TKE7V0oYm/6KJ3o0SVR4Sr6pmKvw0wsPS7
+ A5YirdDnBKhLO/rzKC3jjFurxr/PykfYzFeucyrRZyUP0hMoFou4NPPI9IwXeHuhGPAZ
+ vyjrJvoBZ594JRypGkXK44t4EUmZ0fEw8m/o9PexS8f88SQtn429nWEVhPyRCbCc3vYZ
+ GAGw==
+X-Gm-Message-State: AOJu0Ywu30bHaOb+1Lqn0c62aKsPr1noEc/88Z6/Q+BatRB/Bc0APNkk
+ gzrO2r4vwt/TNivU/QT8VCC/iIKyUiBQqj/YqTXk9Q==
+X-Received: by 2002:aa7:c696:0:b0:522:cef7:83c3 with SMTP id
+ n22-20020aa7c696000000b00522cef783c3mr1879740edq.8.1694175398379; Fri, 08 Sep
+ 2023 05:16:38 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230901203103.136408-1-richard.henderson@linaro.org>
-In-Reply-To: <20230901203103.136408-1-richard.henderson@linaro.org>
+References: <20230905145651.8199-1-philmd@linaro.org>
+In-Reply-To: <20230905145651.8199-1-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 8 Sep 2023 13:10:12 +0100
-Message-ID: <CAFEAcA8bjNKqd00cUs6mc+WDfizABRE75YGCFri7wTfQrPdCXQ@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: Do not use gen_mte_checkN in trans_STGP
-To: Richard Henderson <richard.henderson@linaro.org>
+Date: Fri, 8 Sep 2023 13:16:27 +0100
+Message-ID: <CAFEAcA_6c90YC-Dg7SBhgx=0UMLEe1zjcHHQDgufC5CPQHwhhw@mail.gmail.com>
+Subject: Re: [PATCH] hw/intc/arm_gicv3: Simplify gicv3_class_name() logic
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::136;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x136.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,19 +119,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AjRXpytxYR05
+X-TUID: Rd9Is0PrKAEv
 
-On Fri, 1 Sept 2023 at 21:31, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Tue, 5 Sept 2023 at 15:56, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
 >
-> STGP writes to tag memory, it does not check it.
-> This happened to work because we wrote tag memory first
-> so that the check always succeeded.
+> Simplify gicv3_class_name() logic. No functional change intended.
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  hw/intc/arm_gicv3_common.c | 9 ++++-----
+>  1 file changed, 4 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+> index 2ebf880ead..8863f06b67 100644
+> --- a/hw/intc/arm_gicv3_common.c
+> +++ b/hw/intc/arm_gicv3_common.c
+> @@ -612,13 +612,12 @@ type_init(register_types)
+>
+>  const char *gicv3_class_name(void)
+>  {
+> -    if (kvm_irqchip_in_kernel()) {
+> -        return "kvm-arm-gicv3";
+> -    } else {
+> -        if (kvm_enabled()) {
+> +    if (kvm_enabled()) {
+> +        if (!kvm_irqchip_in_kernel()) {
+>              error_report("Userspace GICv3 is not supported with KVM");
+>              exit(1);
+>          }
+> -        return "arm-gicv3";
+> +        return "kvm-arm-gicv3";
+>      }
+> +    return "arm-gicv3";
+>  }
 
+This doesn't seem to me to be obviously clearer or
+simpler than the current code, which is the same basic
+logic as the GICv2 gic_class_name(), but with the extra
+condition of "report the error for the case we don't
+support yet". In particular the major condition for
+"should we be using kvm-arm-gicv3" is not "are we
+using KVM?" but "are we using the KVM in-kernel irqchip?".
 
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM

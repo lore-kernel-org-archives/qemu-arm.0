@@ -1,283 +1,113 @@
-Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp122813ejb;
-        Thu, 7 Sep 2023 19:23:57 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEb+06qdC3T8QTOsqm2esk46XTCCVdEp4YL5Xi6v64tGftzLHDWa51A3YHetC/M6lhmnjHL
-X-Received: by 2002:a67:f814:0:b0:44f:c528:6250 with SMTP id l20-20020a67f814000000b0044fc5286250mr1462337vso.1.1694139837541;
-        Thu, 07 Sep 2023 19:23:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694139837; cv=none;
+Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp250433ejb;
+        Fri, 8 Sep 2023 00:52:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGcCFZtv4I/4GApt8T9heJvoITSMj91PrHkSXBiYF6DNNTsqpFSQVO65WUhHDKaD3+tXuwB
+X-Received: by 2002:a05:622a:1353:b0:40f:dd92:5c91 with SMTP id w19-20020a05622a135300b0040fdd925c91mr1944962qtk.37.1694159567178;
+        Fri, 08 Sep 2023 00:52:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694159567; cv=none;
         d=google.com; s=arc-20160816;
-        b=xbSyMrRo+veCB3zy4jY/h/oqc/NNXXqvVpIdQQW6tiBjozeJYJCFMDT6iL1i6KhMy+
-         sCKMm8b07HPG2QYfAZpMjFaGc8h4wgji3j7lyljjIjurhN46Jcv10up80AnEk64p6KeQ
-         fGkXPK0pMUglz4tfJxqe0DqM5Nahm1al2tarvYQmCc4B5QjHDku35JbUgfy89GcY0olH
-         bmjKj4sUaguJ9hCA28SwBrNSC15YvYW+qRiml/mlVUxvqmnffi/7gBuH/dtuzYfjSwGe
-         WsPKbpiVshicDS26AAyyTpkC/U6ZwPzJV1j14R7zX18m8zZFVVO0Zr9UE7ibxx+zqtdr
-         kdMg==
+        b=Wg7UOh9mPeZw7P9tMTgf2L+soLBwaEVwr8Q/dPmCxdJChKn3n/vo1KiL6kL4GN20XA
+         wMTSgp2lYkIopAG/u4ao2gHV+O33Ghhb4mg0MFBGdDXzLVZfgcbmmkFIa3lFGz3Cb/my
+         qU9pMP5imOYsA0iiM9DrlQJLC/GLgjdnjcLtaxjJIQaQi3dTs6MA1xFkOARzVjlAOBPh
+         UwUBlE60Ge3ORpYz6e+ZAAlNYuSJBNn2EBVhm+UZEshOBNV9ZWes3Gd8YH8ari/6yb4i
+         idGcWjnWN33SzZUis7xAifuVRG2aS2O8Urlg26LV3R1WDhOlYbFrEzgCqi4ZYzfPMBP6
+         ZN/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=QxlikTwW6pQoFCZSpsJC77hNhTCZa5umaxY7dERkGWs=;
-        fh=NK1D3J/7T/7kWXryoqieLXbQq3JSEgnrT8wHPdO8jGQ=;
-        b=rcjZP4sl6LCH9qDQ3XLwODBo3WW5G4AQ3CfW8B9reKuS8K5brzvOznYiVwFvXttCzM
-         Y7BKDB6qEC6EDw7cgsJHdSVdJV4g2YaGVXGQpgX2Fxfr/ySTPfB7zi8gNx77p6DjN5jj
-         fcJFXecdyvPsunNvWFyeWgyYZcRePZyX9B5I//s51DOyvTDGvRFwQfMJcVPRkO0eboRf
-         SOapv7sJ/o6CrkDy9C0guoSDNG8E9+kpynGkg02eSkQKZ4kTVqHNDWzPfIxAaRgjZ4n3
-         r4PlScVr9d2cFf5GwFRphyeWT5KACaVVBBgwbsJKumkan10mawVAtS2LznMK6+YGeOca
-         LnFg==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=YPLrXO7jwYjaGwbcrpMRZqWZU29FxM4AikhZ3UoLgp8=;
+        fh=0WGA1m+X7Me1YZnoYNqzFEK5O8jNDV1mmstpeeSnp+0=;
+        b=gS4ggF3n9IiMglvpT92E5PyD8dLviFD2vu71h8uzF0yYCpxsiaGQvcAhe8Rq1U3qTZ
+         g+eZWL2gdgR7/UHL3QPTiq7e9b+OTmymGjwJ2chXkxlFnU5nCSzRpzldYey4DMUVLVz3
+         7bDF3IxicGhdmP3foxIaTbLE9hqBxh2hluWfZmZNsWLl1q0dUkaNhfP6Vn0goafrcgQw
+         M3E5YAS+YulhIEZuMnaubTVMslmYTwpNTJxDyOA6bhZHrQxEtwEkPHi3r2jSttOWPL96
+         RdLe2iTi6CnGmFRFR9kPfEe6exLsl3FUgv/5MP+LoVzyPOvQv7TA8QVinshUfFo2I0b1
+         NoLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jia.je header.s=default header.b="RXa/sUyM";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jia.je
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v4-20020a0ce1c4000000b0065190a63e66si546171qvl.467.2023.09.07.19.23.57
+        by mx.google.com with ESMTPS id x12-20020ac85f0c000000b0040f17f1054bsi893527qta.750.2023.09.08.00.52.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Sep 2023 19:23:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Sep 2023 00:52:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jia.je header.s=default header.b="RXa/sUyM";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jia.je
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qeR9m-0002W7-2p; Thu, 07 Sep 2023 22:23:38 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qeWI9-0001EL-Tn; Fri, 08 Sep 2023 03:52:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <c@jia.je>)
- id 1qeR9k-0002Vp-1y; Thu, 07 Sep 2023 22:23:36 -0400
-Received: from hognose1.porkbun.com ([35.82.102.206])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qeWI8-0001B2-61; Fri, 08 Sep 2023 03:52:36 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <c@jia.je>)
- id 1qeR9h-0006t6-Gz; Thu, 07 Sep 2023 22:23:35 -0400
-Received: from ls3a6000.. (unknown [223.72.41.62])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (Client did not present a certificate)
- (Authenticated sender: c@jia.je)
- by hognose1.porkbun.com (Postfix) with ESMTPSA id CB4A944104;
- Fri,  8 Sep 2023 02:23:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jia.je; s=default;
- t=1694139811; bh=QxlikTwW6pQoFCZSpsJC77hNhTCZa5umaxY7dERkGWs=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=RXa/sUyMzRSV1LwaOvvieiScrjMOULPFB6UkqQM4E6yUXgMVD2F0fgi60vpzNVX4P
- 8xNS2VAUiXX7qvLKDwR+2KzL4JdAesKIK+nsOn85d7hVE5MTLFHFX/i4mKi3XLrbnb
- aKnnACZjPYqNRd8YLB63piYxh+nPm5dRhSDI5dzg=
-From: Jiajie Chen <c@jia.je>
-To: qemu-devel@nongnu.org
-Cc: richard.henderson@linaro.org, gaosong@loongson.cn, git@xen0n.name,
- Jiajie Chen <c@jia.je>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Huacai Chen <chenhuacai@kernel.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org (open list:AArch64 TCG target),
- qemu-riscv@nongnu.org (open list:RISC-V TCG target)
-Subject: [PATCH v4 03/16] tcg: pass vece to tcg_target_const_match()
-Date: Fri,  8 Sep 2023 10:21:10 +0800
-Message-ID: <20230908022302.180442-4-c@jia.je>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20230908022302.180442-1-c@jia.je>
-References: <20230908022302.180442-1-c@jia.je>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qeWI5-0006E5-Ob; Fri, 08 Sep 2023 03:52:35 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 3063B1FFFB;
+ Fri,  8 Sep 2023 10:53:18 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 31EC626847;
+ Fri,  8 Sep 2023 10:52:29 +0300 (MSK)
+Message-ID: <70e53523-eb9c-669a-1ee6-cdfd08507f8c@tls.msk.ru>
+Date: Fri, 8 Sep 2023 10:52:28 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PULL 00/26] aspeed queue
+Content-Language: en-US
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, qemu-stable <qemu-stable@nongnu.org>
+References: <20230901094214.296918-1-clg@kaod.org>
+ <be868ef0-cbc3-a380-3307-512857e2a4a2@kaod.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <be868ef0-cbc3-a380-3307-512857e2a4a2@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=35.82.102.206; envelope-from=c@jia.je;
- helo=hognose1.porkbun.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -83
+X-Spam_score: -8.4
+X-Spam_bar: --------
+X-Spam_report: (-8.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.473,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BAZZ5Qhv/FIh
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cFG52vHFuiwt
 
-Pass vece to tcg_target_const_match() to allow correct interpretation of
-const args of vector ops.
+08.09.2023 10:09, Cédric Le Goater wrote:
+..
+>> Hang Yu (3):
+>>        hw/i2c/aspeed: Fix Tx count and Rx size error in buffer pool mode
+>>        hw/i2c/aspeed: Fix TXBUF transmission start position error
+> 
+> Michael,
+> 
+> I think the two above are candidates for stable.
 
-Signed-off-by: Jiajie Chen <c@jia.je>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- tcg/aarch64/tcg-target.c.inc     | 2 +-
- tcg/arm/tcg-target.c.inc         | 2 +-
- tcg/i386/tcg-target.c.inc        | 2 +-
- tcg/loongarch64/tcg-target.c.inc | 2 +-
- tcg/mips/tcg-target.c.inc        | 2 +-
- tcg/ppc/tcg-target.c.inc         | 2 +-
- tcg/riscv/tcg-target.c.inc       | 2 +-
- tcg/s390x/tcg-target.c.inc       | 2 +-
- tcg/sparc64/tcg-target.c.inc     | 2 +-
- tcg/tcg.c                        | 4 ++--
- tcg/tci/tcg-target.c.inc         | 2 +-
- 11 files changed, 12 insertions(+), 12 deletions(-)
+Got it.  I've noticed these two in master yesterday, but thought
+i2c/aspeed priority is a bit lower than other stuff, - maybe
+wrongly.
 
-diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
-index 0931a69448..a1e2b6be16 100644
---- a/tcg/aarch64/tcg-target.c.inc
-+++ b/tcg/aarch64/tcg-target.c.inc
-@@ -272,7 +272,7 @@ static bool is_shimm1632(uint32_t v32, int *cmode, int *imm8)
-     }
- }
- 
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
- {
-     if (ct & TCG_CT_CONST) {
-         return 1;
-diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-index acb5f23b54..76f1345002 100644
---- a/tcg/arm/tcg-target.c.inc
-+++ b/tcg/arm/tcg-target.c.inc
-@@ -509,7 +509,7 @@ static bool is_shimm1632(uint32_t v32, int *cmode, int *imm8)
-  * mov operand2:     values represented with x << (2 * y), x < 0x100
-  * add, sub, eor...: ditto
-  */
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
- {
-     if (ct & TCG_CT_CONST) {
-         return 1;
-diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
-index 0c3d1e4cef..aed91e515e 100644
---- a/tcg/i386/tcg-target.c.inc
-+++ b/tcg/i386/tcg-target.c.inc
-@@ -198,7 +198,7 @@ static bool patch_reloc(tcg_insn_unit *code_ptr, int type,
- }
- 
- /* test if a constant matches the constraint */
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
- {
-     if (ct & TCG_CT_CONST) {
-         return 1;
-diff --git a/tcg/loongarch64/tcg-target.c.inc b/tcg/loongarch64/tcg-target.c.inc
-index 150278e112..07a0326e5d 100644
---- a/tcg/loongarch64/tcg-target.c.inc
-+++ b/tcg/loongarch64/tcg-target.c.inc
-@@ -186,7 +186,7 @@ static inline tcg_target_long sextreg(tcg_target_long val, int pos, int len)
- }
- 
- /* test if a constant matches the constraint */
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
- {
-     if (ct & TCG_CT_CONST) {
-         return true;
-diff --git a/tcg/mips/tcg-target.c.inc b/tcg/mips/tcg-target.c.inc
-index 9faa8bdf0b..c6662889f0 100644
---- a/tcg/mips/tcg-target.c.inc
-+++ b/tcg/mips/tcg-target.c.inc
-@@ -190,7 +190,7 @@ static bool is_p2m1(tcg_target_long val)
- }
- 
- /* test if a constant matches the constraint */
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
- {
-     if (ct & TCG_CT_CONST) {
-         return 1;
-diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
-index 090f11e71c..ccf245191d 100644
---- a/tcg/ppc/tcg-target.c.inc
-+++ b/tcg/ppc/tcg-target.c.inc
-@@ -261,7 +261,7 @@ static bool reloc_pc14(tcg_insn_unit *src_rw, const tcg_insn_unit *target)
- }
- 
- /* test if a constant matches the constraint */
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
- {
-     if (ct & TCG_CT_CONST) {
-         return 1;
-diff --git a/tcg/riscv/tcg-target.c.inc b/tcg/riscv/tcg-target.c.inc
-index 9be81c1b7b..3bd7959e7e 100644
---- a/tcg/riscv/tcg-target.c.inc
-+++ b/tcg/riscv/tcg-target.c.inc
-@@ -145,7 +145,7 @@ static TCGReg tcg_target_call_oarg_reg(TCGCallReturnKind kind, int slot)
- #define sextreg  sextract64
- 
- /* test if a constant matches the constraint */
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
- {
-     if (ct & TCG_CT_CONST) {
-         return 1;
-diff --git a/tcg/s390x/tcg-target.c.inc b/tcg/s390x/tcg-target.c.inc
-index ecd8aaf2a1..f4d3abcb71 100644
---- a/tcg/s390x/tcg-target.c.inc
-+++ b/tcg/s390x/tcg-target.c.inc
-@@ -540,7 +540,7 @@ static bool risbg_mask(uint64_t c)
- }
- 
- /* Test if a constant matches the constraint. */
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
- {
-     if (ct & TCG_CT_CONST) {
-         return 1;
-diff --git a/tcg/sparc64/tcg-target.c.inc b/tcg/sparc64/tcg-target.c.inc
-index 81a08bb6c5..6b9be4c520 100644
---- a/tcg/sparc64/tcg-target.c.inc
-+++ b/tcg/sparc64/tcg-target.c.inc
-@@ -322,7 +322,7 @@ static bool patch_reloc(tcg_insn_unit *src_rw, int type,
- }
- 
- /* test if a constant matches the constraint */
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
- {
-     if (ct & TCG_CT_CONST) {
-         return 1;
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 620dbe08da..e81e8936d6 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -171,7 +171,7 @@ static bool tcg_out_sti(TCGContext *s, TCGType type, TCGArg val,
- static void tcg_out_call(TCGContext *s, const tcg_insn_unit *target,
-                          const TCGHelperInfo *info);
- static TCGReg tcg_target_call_oarg_reg(TCGCallReturnKind kind, int slot);
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct);
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece);
- #ifdef TCG_TARGET_NEED_LDST_LABELS
- static int tcg_out_ldst_finalize(TCGContext *s);
- #endif
-@@ -4689,7 +4689,7 @@ static void tcg_reg_alloc_op(TCGContext *s, const TCGOp *op)
-         ts = arg_temp(arg);
- 
-         if (ts->val_type == TEMP_VAL_CONST
--            && tcg_target_const_match(ts->val, ts->type, arg_ct->ct)) {
-+            && tcg_target_const_match(ts->val, ts->type, arg_ct->ct, TCGOP_VECE(op))) {
-             /* constant is OK for instruction */
-             const_args[i] = 1;
-             new_args[i] = ts->val;
-diff --git a/tcg/tci/tcg-target.c.inc b/tcg/tci/tcg-target.c.inc
-index 253f27f174..1dbb4b087e 100644
---- a/tcg/tci/tcg-target.c.inc
-+++ b/tcg/tci/tcg-target.c.inc
-@@ -913,7 +913,7 @@ static inline bool tcg_out_sti(TCGContext *s, TCGType type, TCGArg val,
- }
- 
- /* Test if a constant matches the constraint. */
--static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
-+static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
- {
-     return ct & TCG_CT_CONST;
- }
--- 
-2.42.0
+Picked these two up now.
 
+Thank you for making me know!
+
+/mjt

@@ -1,153 +1,177 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp1021174ejx;
-        Sun, 10 Sep 2023 16:29:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHTVso0ru4dL9b01Q7v0WITE8HdGevSlvIvC1qBJg07k4WBIF5Lr7zYABdxgIccNd5V3PQx
-X-Received: by 2002:a05:620a:46a9:b0:767:2aca:7641 with SMTP id bq41-20020a05620a46a900b007672aca7641mr10534193qkb.52.1694388555864;
-        Sun, 10 Sep 2023 16:29:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694388555; cv=none;
+Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp593886ejb;
+        Fri, 8 Sep 2023 10:56:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH8SiTJ6y/YyObRrcHciJ0Ot9SkC6zYAQswETwR59/ndYc9TzMd0YIp1MZI5jlapK2Oru+c
+X-Received: by 2002:a0c:e10a:0:b0:64f:4c55:bf09 with SMTP id w10-20020a0ce10a000000b0064f4c55bf09mr3165506qvk.53.1694195803749;
+        Fri, 08 Sep 2023 10:56:43 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1694195803; cv=pass;
         d=google.com; s=arc-20160816;
-        b=EvXDRlVG83atGOosYVybGsYmq4XDP0BB4wQwg0tTT8YrgcMHejCAUx7b6vX+MG7uwu
-         ID6vugASSc97TmoqRYmGAJZJwur3AGAUZrDyYIZKkiUTKc3iLhYCN3tAqnkbtSGbcyZQ
-         QTb4QGmKKHOd+YOAclYLyZyr35nwQX6XAojETtmg8nix3gb0IPkpmPgMeI2HOyYBay/+
-         BRCINJS7HNSf4ZqYShuaGFq06Apig+O1WKsKYKij6q41BnTbTuqF6BSmY26hBxKmwPus
-         LI/vrgjWXi6FXvmmX/CXXs29iJO1IAG4OxZBX4CZ3HLuzr461xfwEbEx/hzbuyBn6vb9
-         xCYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=GoM2GlpsUJvv+Q8lFf9jehLsBSrtm0TaJC6HpzLiztMoNoYTfUvQx1kXToIV36QbtG
+         IWI8Z33Dm7php3dM4QRqh6qgWhSvUZ78gaDqbncD2Wk4n8MjpgtsVPWOBIZlOLwIfnk4
+         a0HP8EORcx3gTk+76BP08AIlRwUSbwlyO+Kzc9Ix3eOmI+brUENwmNJTtQqkLAuwh18H
+         argW2h46dPDlxbv14fxTjzbNCD+gvdM04VjRA7/Gr9augxz/roXen2As0aQ6Zr30zMmq
+         tIYaRst5w3VSINxJD5/mePWvouF9V+poynyZ3nAE+wNR9YJ7IW4DP/YXzL2xZGQvdCO3
+         OYjQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=e2fftQ3Z1YMVS4ZoGPv3NkmJcAPHmlnGVpxoCEdFFp4=;
-        fh=umzWOJsUp6qBpMZfaR/35tHg7PJylqVzX5Du8QxP/Gc=;
-        b=D06ZETqi2RVqs4DBg/vkePmC/ffRyAoWzeGr/HB1iY25+wmhgOCXBTReFSWY8iTmDs
-         JunDXWm6j+6OQxo+U/XVT7hAnvEvJti5fvW9fUPGuVPtourELzNgsyMNcHBeKoqDqz7Y
-         rARQSlNut0vXEDNID9aVTaAjTtH9W1OJtax8CkizpEFN1SHo8oC6aFqctPaJj/Ppqw11
-         ky9lhoH43ZtVtmsG05wEEulHSoc/dkXsW6JAFmAbksV+UGro7qEnrzKnigoNwfuf8EdS
-         0DEH0N0aF1pieFibxzBlZQsh1UdobfrlTBHTyiun/07dgF8QXefCnuUNoD6gneRFk3FQ
-         WiVQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eUHC5A4g;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=dJWk/HC5OE73Arb24EDwLgU/3hb2jeRiNRK1HdPbFhY=;
+        fh=WMM/eE2x+coaGYCZt0Ggt/jYLj/oQTXU0ExoNPVriNQ=;
+        b=I8fTiVFSk4aUVJmyDA5wQ0+R9cmGe+zFMraiI33kBUDZXNYO0GpbD+v90XsTq6jWWL
+         nAizkrODHCHGqp43nJccsigu/U7hn4W2/Luks7lm7Y/RA3g7X7ef0Za807WZrREQJnEk
+         RIVt0tvNkbwefMJKcnbQULnMumGhMWbsLJQ+hSMeptzABQXTiMkpSfkWyrGewBZsaVdt
+         QssDVE9mXmIOZhvZ4qf/KJ1FattdTOaCpEmz01iW4m6WT9YcAskOdr/nxq6xAw0N3Tad
+         RnmUvvW+0slBIfVg/g09YU43nvoNgw+K8kZ0rNqCUpw/AM6mZLs2mB5PdopmqXvLq+Uq
+         TL9g==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=q2htP3nR;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7-20020a05620a454700b00770647f78e7si4176069qkp.677.2023.09.10.16.29.15
+        by mx.google.com with ESMTPS id s14-20020a0c8d4e000000b006516123866bsi1409909qvb.168.2023.09.08.10.56.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Sep 2023 16:29:15 -0700 (PDT)
+        Fri, 08 Sep 2023 10:56:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eUHC5A4g;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=q2htP3nR;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qfTr4-000486-Vy; Sun, 10 Sep 2023 19:28:39 -0400
+	id 1qefiR-00071t-Qb; Fri, 08 Sep 2023 13:56:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qfTr3-00047c-Ix
- for qemu-arm@nongnu.org; Sun, 10 Sep 2023 19:28:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qefiP-000717-RV; Fri, 08 Sep 2023 13:56:22 -0400
+Received: from mail-co1nam11on20614.outbound.protection.outlook.com
+ ([2a01:111:f400:7eab::614]
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qfTr0-0005Zv-5r
- for qemu-arm@nongnu.org; Sun, 10 Sep 2023 19:28:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1694388512;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=e2fftQ3Z1YMVS4ZoGPv3NkmJcAPHmlnGVpxoCEdFFp4=;
- b=eUHC5A4gbJgas1cOblGn29V4axl3FCGgHazyf32K5/ta92ODzplBRzPRMvYzpK/drMeLzj
- Pk7MBXRwjyql8ueZZqgp/2FL5TVDJJ3SvwIOsMwOVO1G/DRHHiJpSvLyc5KCsfkEI3G4p3
- SObjO/WpBn7xvXlWdNpJZUKo7hAfZNY=
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
- [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-328-0rQjQ892Nui-8g3sfDPHBQ-1; Sun, 10 Sep 2023 19:28:30 -0400
-X-MC-Unique: 0rQjQ892Nui-8g3sfDPHBQ-1
-Received: by mail-pl1-f200.google.com with SMTP id
- d9443c01a7336-1c3a2f46244so17625155ad.1
- for <qemu-arm@nongnu.org>; Sun, 10 Sep 2023 16:28:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694388509; x=1694993309;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=e2fftQ3Z1YMVS4ZoGPv3NkmJcAPHmlnGVpxoCEdFFp4=;
- b=CCWYHnxLsjSovrYt7NsLusjRC1KMgNakxtH2XINBOc9zWnkOID7j+aGMt+V24duWlY
- rFpL79WV4x/2DrmyDa/Fc9GoBmIrurjhf+cWA/Ksx7vBraT2mQeO5+WxSZCV37UKKZ5M
- Bp50WN0cOH2BZRrPDGgCiZIhHS/MzGo+It2BCtE8GB/gkZuh/Sp3Ol2gzk1lLqeFUmJA
- 742l3U+yuoezAHF64aKCEbDrBy9bjUDnLlEEjFXtKc9OvD9one55xwnEhvHgyNRx5CDg
- gAObDHd/r10EfeFvTBhCe9URNf7+jDe6/2f3/2Cn6Kbrq1TNufa1kK5cCYcI5N9N6jgg
- OT0Q==
-X-Gm-Message-State: AOJu0YybAFbFGyZA2sE99nI98uWvO+W1tXLjsDTxpQv594kGdNtZpfa+
- yahY1z4ioBQhkLvbU4G2aUYB5ycLDypLahu0VYIrYRTbEuk3jhFReVIu4huYPbum4lHSMYb0IDV
- fmbifhKdfJHqF
-X-Received: by 2002:a17:902:efd4:b0:1b8:36a8:faf9 with SMTP id
- ja20-20020a170902efd400b001b836a8faf9mr8680877plb.38.1694388509471; 
- Sun, 10 Sep 2023 16:28:29 -0700 (PDT)
-X-Received: by 2002:a17:902:efd4:b0:1b8:36a8:faf9 with SMTP id
- ja20-20020a170902efd400b001b836a8faf9mr8680826plb.38.1694388509029; 
- Sun, 10 Sep 2023 16:28:29 -0700 (PDT)
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
- ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
- by smtp.gmail.com with ESMTPSA id
- 13-20020a170902c14d00b001bdd51748f8sm5013285plj.271.2023.09.10.16.28.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 10 Sep 2023 16:28:28 -0700 (PDT)
-Message-ID: <87cb0174-c652-aa44-be7c-49e78e0a5003@redhat.com>
-Date: Mon, 11 Sep 2023 09:28:13 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH 3/4] hw/cpu: Introduce CPUClass::cpu_resolving_type field
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>
-Cc: Chris Wulff <crwulff@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-s390x@nongnu.org,
- Weiwei Li <liweiwei@iscas.ac.cn>, qemu-arm@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Greg Kurz <groug@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-ppc@nongnu.org, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
- Michael Rolnik <mrolnik@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>, Bin Meng <bin.meng@windriver.com>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Song Gao <gaosong@loongson.cn>,
- Stafford Horne <shorne@gmail.com>, Yanan Wang <wangyanan55@huawei.com>,
- Alistair Francis <alistair.francis@wdc.com>, Brian Cain <bcain@quicinc.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Thomas Huth <thuth@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-References: <20230908112235.75914-1-philmd@linaro.org>
- <20230908112235.75914-4-philmd@linaro.org>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230908112235.75914-4-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qefiM-00070U-Ea; Fri, 08 Sep 2023 13:56:21 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=I60eVhqzA1NSWN/yzvugankgTWRoG5XOQ/KBxzfybzwfTCk2qE5NTXsKuwvco/uKrgFSoiwvpVNdNnXe+56e1hpfq5C6YyocVVye6TOFLdNluc93jLYeWkauutSOLs3VRqbwp+0gaAJmaYUJd76xlIRGawUxwAa+q/NW3nFJ8yuwmtcPdQkXqVx3j0apVJmzemoN4WBQ1ddSBKG3vkWiWy4UdsL4BKkfjGqtfZ0hbkiUINWmoOTRQccdw4GaR18oZm9ysH6WDIkKBUttNxls3dQO1YM1++42fpDbme5PS3c6mHVsj8yR+J9xjR3ncXS/71ReX07V3OTwWOTUA0fpFg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dJWk/HC5OE73Arb24EDwLgU/3hb2jeRiNRK1HdPbFhY=;
+ b=XKL3PESKzyr+CkDI74tHo3DvkFD7AnPuAzzjJCe8YZ3AN2k4mQwwqFItKtzNoRReVTsXlwrxpwTo48N0TER5XecuJuNxsenGZTAye7Z/h4DoPhnR2gFYUfCLedLglyM2AWGWDGTpJAFLfnCXf8X3rGrFiC8AsB2auJfaeipvFr4oYQYrURC02u75csEF2KLl+qp46QXbzQFnH7UcypMUhtWuAQep1wNaPC/n+AVl+EZJh0MXN3lZov38rMB3Y3hFvcUG3T34Q9JG54NfpxYaiBkRmTSmfsMfJcpeHsBhf0umC+zjuMIKG9qh81ipEe0ZPZRFgH/PKkfxLpXckCDUXw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dJWk/HC5OE73Arb24EDwLgU/3hb2jeRiNRK1HdPbFhY=;
+ b=q2htP3nRVjBfF9xoPKKCtgETOHf7pa0z1xZp/OWpepwoR8dHS0MhKoacH6dfQBxX2xgxxiKAa33sIZ80T67AjNQvH0qEddPzg5ARinsVeNnzPwknoyTV7Oqzi0ZHZcT0SpKCw2a4BRMQcyh0XiWuVKl8ndugKTAAawERaXG7tsw=
+Received: from BL0PR12MB4882.namprd12.prod.outlook.com (2603:10b6:208:1c3::10)
+ by CH3PR12MB8073.namprd12.prod.outlook.com (2603:10b6:610:126::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6768.31; Fri, 8 Sep
+ 2023 17:56:11 +0000
+Received: from BL0PR12MB4882.namprd12.prod.outlook.com
+ ([fe80::8e6d:40ac:2547:e850]) by BL0PR12MB4882.namprd12.prod.outlook.com
+ ([fe80::8e6d:40ac:2547:e850%4]) with mapi id 15.20.6768.029; Fri, 8 Sep 2023
+ 17:56:11 +0000
+From: "Ho, Tong" <tong.ho@amd.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Richard Henderson <richard.henderson@linaro.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "alistair@alistair23.me" <alistair@alistair23.me>, "edgar.iglesias@gmail.com"
+ <edgar.iglesias@gmail.com>
+Subject: RE: [PATCH 1/3] hw/misc: Introduce AMD/Xilix Versal TRNG device
+Thread-Topic: [PATCH 1/3] hw/misc: Introduce AMD/Xilix Versal TRNG device
+Thread-Index: AQHZ3C85IdR/2hbobUC8AAIMe7DmJrAFEeUAgABB0kCAC6qWAIAAQNBQ
+Date: Fri, 8 Sep 2023 17:56:11 +0000
+Message-ID: <BL0PR12MB4882D72296EE27610D9B04D5E6EDA@BL0PR12MB4882.namprd12.prod.outlook.com>
+References: <20230831171849.3297497-1-tong.ho@amd.com>
+ <20230831171849.3297497-2-tong.ho@amd.com>
+ <622751d4-8a89-b34e-171f-9e9f7ac99972@linaro.org>
+ <BL0PR12MB48829589D59FA02B93549E65E6E4A@BL0PR12MB4882.namprd12.prod.outlook.com>
+ <CAFEAcA_KJFnxg-msgwiaFBzPYkj4RPQeYwLzd4RCy3_br11AGQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_KJFnxg-msgwiaFBzPYkj4RPQeYwLzd4RCy3_br11AGQ@mail.gmail.com>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BL0PR12MB4882:EE_|CH3PR12MB8073:EE_
+x-ms-office365-filtering-correlation-id: 98a3728a-fe4c-4c53-311f-08dbb094e343
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: NLkBUDHF+tElEJ0SOOB9NEUdu6wgbLwN8ZwYS5+59Lr4e+qgebSFNS4oCaJ0ysV/1nUZOSIWWPqU8vqAcXRTfYflwGaArSy1NsgEjYcO+SAkR67HuYBq1c0ip+RBoavuikZSM1PUswApNvtiIwV2bmFSvanHSOIH20SsjjY9tp4B/avFjM7TV5vjwxGO2ZnrqW6Ca3r9U5mS2nVGRyxYtsHbcPwH93jWAnFHXdhkhnuy6UqJMoLHUlnmv7Kl0isAPkbCxY5FlEL7hNjHGQ1qQzITALqpd41p5fDzniUX8RhXVO09InuCxHJUvd8RV8o2ukn72mshvZcC3aR5bqCAcXny3iQkqYYZCTNvZaK6U4gBEmRdDTrdmB25iVP/aCkIqr/ndZNLo7AZMAT4FOErFpw6O6E19F77BCtVQt3npAAWZ+XCwA/QvdpebYqEUQDc2ivuRQ9kFEKogOY6jBowcTQuWG+PAuKZ7QobiA6+sLy2myaiu46Mxuq64z1q16Eb1QLs8wGYKN29m3ykRyRpd0Rxlskv+sns0DKDcZravjQCIqycP/FFBeOFfBw7LXoaWuRb8ZoobrPUp60P77vpwDHzHK38IgZmvhenaieh3d1YXz8ZNrn6GkmjgTe84azC
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR12MB4882.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366004)(39860400002)(376002)(396003)(346002)(136003)(451199024)(186009)(1800799009)(53546011)(71200400001)(6506007)(7696005)(9686003)(83380400001)(478600001)(26005)(6916009)(2906002)(66446008)(76116006)(64756008)(66556008)(316002)(66476007)(66946007)(54906003)(41300700001)(52536014)(8676002)(5660300002)(8936002)(4326008)(86362001)(33656002)(38100700002)(55016003)(38070700005)(122000001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WDJ1dmNLbDV3OG44dmp3TWNsLzA5cHlqSktDVjludG8vRmNrWUNROUtnM01k?=
+ =?utf-8?B?aFhHVWRybWNtY1A3QzRIL3kyUEw3TDQwUDRXZmxOcE1vVXRiZFhXclZzRTI4?=
+ =?utf-8?B?Ymo1TDV3ZGE4djNiem1kYWoySWZZdHRFdjFuNk9ldEJMeWQ2cGplUmFtY0pq?=
+ =?utf-8?B?cGF0ODl1ZStqck5kcTRhenJScGNJU2VKa3RMMG01V1k2Zmtnc3JiMUIzc00r?=
+ =?utf-8?B?Y1BpUG10ZnNOb09udml4U1ZIWkdGaVM2ZjdiMTd0M3luaEZlY0FVRkpPdTJK?=
+ =?utf-8?B?bWlDV2NUSnNsWXFwQ3JiT0RRZTlISXlHeG5VVG5Na2Qwa0JwUmVmTUhuOWJu?=
+ =?utf-8?B?VlNxUkltRWFTb0g1dTFjRjIyWlZON3hHSGxGbUZ0dUtMOGNXOGtyczk2VmND?=
+ =?utf-8?B?NVpGYWx0RXI3cGFwOVRrdzZ3K2dnUUNhREtKbUtKcGlyZzBDSmQvRmlUY0NF?=
+ =?utf-8?B?NC9FQVlNT2hBK3BPZ3JtOGE5ZGRKcGZjQjFqams4THEvaTBuQnUwOXZVNkVN?=
+ =?utf-8?B?aEtYY2d1VDhCOWtlSGFhWnordHlaem5zY2FlbmJENTFIV05reThocGtxZ0Vo?=
+ =?utf-8?B?dWZBOEQ4ZW1IWnFSc1JKRDlscXl5ekNzZ244MEVhM2t0dVljSU1hdndxZjNQ?=
+ =?utf-8?B?Z0FRcGw4QnlDU2tjZ29NM1J5Q0RsZlptcDZKSm5tY1ZVRUtIbHNLTkVaZnZi?=
+ =?utf-8?B?V3AwaUxmaExJMWU4VmdyREVIUHdQYjRzTUlrWnFEK0tUUkdkTzhkUWF1ajNC?=
+ =?utf-8?B?b2hmN2czVklWZmIyRnJPUU9ZUDdNbWpxb280TGJJTWNOUW13YWxnVUY0eGxs?=
+ =?utf-8?B?L1d5QWQydEJsaGJlWCtyMHR2TW1yV1BDUGswWE0wWEE4ajVuMHRnbEFpZ1J0?=
+ =?utf-8?B?MjZpaHMxaDZyMWdCZnRKQlpPUkFFY3V0eVl6aEVFWGdiWGx5aUtRTVE3dnpQ?=
+ =?utf-8?B?R3JSMCtaSXhPUXdTYXRHM0pqVFF2UWQyR3Q4ckFtaHZhTjFuNzUrTGo4Yitt?=
+ =?utf-8?B?dWtXTi84MEQzNkVWQ2VzQUlEQ1J1Q25FOW9BYmoyRURRNG5KSklzM3k0cUZ5?=
+ =?utf-8?B?WFZNcHI5MlJQZFNpMFhwaHkzLzMybXB3K0NJc0lJTVR3Y0g1MGJrUDlLVmp5?=
+ =?utf-8?B?ZWdKWUJabjY2Tlc2QSsybTE3S3IwTzVnU2FhRDZFVEdBaUZWSWRBK0tKR2My?=
+ =?utf-8?B?QmxhYkJFSW5CNXhNZVN0VDVPTFVaSjdFM2dLSDg5YUpsZmt0Z3FVdndSR0F1?=
+ =?utf-8?B?bGJwU0NudmM0eS9CMmRsUm5PV3BkK3hoRnQ3UngwYnMxdmN4dCtLWTkvYUpP?=
+ =?utf-8?B?TUE0L3haR3hva1J0NzNBWHNoczNSc1d4WjBvcnNaSkxRb0d3MkQ2cmd5NlZt?=
+ =?utf-8?B?SVFpSzNReEIyaE9pS0luazE3K2FKaHN3TGxyQUZmZndkSG8xWi8yNDJ2dmdN?=
+ =?utf-8?B?WU50VVFiWndrZjJwWW45RmF5WHdubUtaa0V2Z3dpOU83djYwWUIxTFVRTFFB?=
+ =?utf-8?B?WEU5OHFwMGZmSFpqeUpaS1R3YXZxYVRjZDZNaU84L0RwaVprWi9XeUgrNkhH?=
+ =?utf-8?B?YzhsN2cwdW4rQjQ1OEdISk9uWHZRODVrQmY2empwS0k5WU14YTk2ZUFHWEUy?=
+ =?utf-8?B?VlBXTUxwNmt3c0h5UTgydmNRZ0lvSGdqV1pmZ2U4RG9GZWlsS2hIYmJqYUpv?=
+ =?utf-8?B?ei9XT1dSMk1lTFN6QVhBVFlNc0JyRUJRVWwxeisrQkdoZVFSanpLejduMHA5?=
+ =?utf-8?B?a2wvcWdVRjRqSDYzaFYxNFliWklneS94Umd1blJ6Q2hvWXNSNW1PVnFLN1Zk?=
+ =?utf-8?B?NHBMa0hkeHpnNUhHTlFYOVdVTG5QcEoxN2MrdzJ2aEpLL0VqUnRBU1czalNm?=
+ =?utf-8?B?S01jU2dRS2hRa3Axa2h1TmJ2WmtaWDVXZU5TV0hQd0xsV1M4S0dFTGVxUmky?=
+ =?utf-8?B?V205RHJweHVhTlJnZEUraHdmVHBvUjA3QWVVa2dXQXpzWVgralBqcXVBZE16?=
+ =?utf-8?B?VEVQdjFvTzBCTjNYMDdOZ3BtTW00R2FTeERKMDh4T2pDbXpRNFUwM1JmVjB6?=
+ =?utf-8?B?aVl5ZnNTcU9jbkdZa25MdEpuUEJmUUZ3LzcvT3IyOFhrc0p5OHdzMHdUVXMy?=
+ =?utf-8?Q?/L6A=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB4882.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 98a3728a-fe4c-4c53-311f-08dbb094e343
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Sep 2023 17:56:11.7450 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ltkKqOpFo7V4WbBe/vlyd+R4/yWQ8gwaVkdhGCbT4wRbcqC/s/ifZi2z0F2qqx5I
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB8073
+Received-SPF: softfail client-ip=2a01:111:f400:7eab::614;
+ envelope-from=tong.ho@amd.com;
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,339 +186,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1P/q707yj7AA
+X-TUID: sYsaP7vTGIOr
 
-Hi Philippe,
-
-On 9/8/23 21:22, Philippe Mathieu-Daudé wrote:
-> Add a field to return the QOM type name of a CPU class.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   include/hw/core/cpu.h   | 2 ++
->   hw/core/cpu-common.c    | 2 +-
->   target/alpha/cpu.c      | 1 +
->   target/arm/cpu.c        | 1 +
->   target/avr/cpu.c        | 1 +
->   target/cris/cpu.c       | 1 +
->   target/hexagon/cpu.c    | 1 +
->   target/hppa/cpu.c       | 1 +
->   target/i386/cpu.c       | 1 +
->   target/loongarch/cpu.c  | 1 +
->   target/m68k/cpu.c       | 1 +
->   target/microblaze/cpu.c | 1 +
->   target/mips/cpu.c       | 1 +
->   target/nios2/cpu.c      | 1 +
->   target/openrisc/cpu.c   | 1 +
->   target/ppc/cpu_init.c   | 1 +
->   target/riscv/cpu.c      | 1 +
->   target/rx/cpu.c         | 1 +
->   target/s390x/cpu.c      | 1 +
->   target/sh4/cpu.c        | 1 +
->   target/sparc/cpu.c      | 1 +
->   target/tricore/cpu.c    | 1 +
->   target/xtensa/cpu.c     | 1 +
->   23 files changed, 24 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index 129d179937..e469efd409 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -100,6 +100,7 @@ struct SysemuCPUOps;
->   
->   /**
->    * CPUClass:
-> + * @cpu_resolving_type: CPU QOM type name
->    * @class_by_name: Callback to map -cpu command line model name to an
->    *                 instantiatable CPU type.
->    * @parse_features: Callback to parse command line arguments.
-> @@ -148,6 +149,7 @@ struct CPUClass {
->       DeviceClass parent_class;
->       /*< public >*/
->   
-> +    const char *cpu_resolving_type;
->       ObjectClass *(*class_by_name)(const char *cpu_model);
->       void (*parse_features)(const char *typename, char *str, Error **errp);
->   
-
-The question is why not use CPU_RESOLVING_TYPE directly? It seems CPU_RESOLVING_TYPE
-is exactly what you want here. Besides, I guess the changes can be squeezed into two
-patches (commits) as below:
-
-PATCH[1] target/alpha: Tidy up alpha_cpu_class_by_name()
-PATCH[2] Move the checks (oc == NULL || object_class_is_abstract() || !object_class_dynamic_cast())
-          from individual targets to hw/core/cpu-common.c::cpu_class_by_name()
-
-I rebase my series of '[PATCH v3 00/32] Unified CPU type check' on top of yours. Please
-let me know if I need to include your patch into my v4 series for review. In that case,
-I can include your patches with above changes applied.
-
-Thanks,
-Gavin
-
-> diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-> index c6a0c9390c..2d24261a6a 100644
-> --- a/hw/core/cpu-common.c
-> +++ b/hw/core/cpu-common.c
-> @@ -155,7 +155,7 @@ ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model)
->       assert(cpu_model);
->       oc = object_class_by_name(typename);
->       cc = CPU_CLASS(oc);
-> -    assert(cc->class_by_name);
-> +    assert(cc->cpu_resolving_type && cc->class_by_name);
->       oc = cc->class_by_name(cpu_model);
->       if (oc == NULL || object_class_is_abstract(oc)) {
->           return NULL;
-> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
-> index 351ee2e9f2..0ddea8004c 100644
-> --- a/target/alpha/cpu.c
-> +++ b/target/alpha/cpu.c
-> @@ -254,6 +254,7 @@ static void alpha_cpu_class_init(ObjectClass *oc, void *data)
->       device_class_set_parent_realize(dc, alpha_cpu_realizefn,
->                                       &acc->parent_realize);
->   
-> +    cc->cpu_resolving_type = TYPE_ALPHA_CPU;
->       cc->class_by_name = alpha_cpu_class_by_name;
->       cc->has_work = alpha_cpu_has_work;
->       cc->dump_state = alpha_cpu_dump_state;
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 42e29816cc..9e51bde170 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2377,6 +2377,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
->       resettable_class_set_parent_phases(rc, NULL, arm_cpu_reset_hold, NULL,
->                                          &acc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_ARM_CPU;
->       cc->class_by_name = arm_cpu_class_by_name;
->       cc->has_work = arm_cpu_has_work;
->       cc->dump_state = arm_cpu_dump_state;
-> diff --git a/target/avr/cpu.c b/target/avr/cpu.c
-> index 4b255eade1..f6004169ac 100644
-> --- a/target/avr/cpu.c
-> +++ b/target/avr/cpu.c
-> @@ -233,6 +233,7 @@ static void avr_cpu_class_init(ObjectClass *oc, void *data)
->       resettable_class_set_parent_phases(rc, NULL, avr_cpu_reset_hold, NULL,
->                                          &mcc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_AVR_CPU;
->       cc->class_by_name = avr_cpu_class_by_name;
->   
->       cc->has_work = avr_cpu_has_work;
-> diff --git a/target/cris/cpu.c b/target/cris/cpu.c
-> index 115f6e2ea2..adde4f599d 100644
-> --- a/target/cris/cpu.c
-> +++ b/target/cris/cpu.c
-> @@ -314,6 +314,7 @@ static void cris_cpu_class_init(ObjectClass *oc, void *data)
->       resettable_class_set_parent_phases(rc, NULL, cris_cpu_reset_hold, NULL,
->                                          &ccc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_CRIS_CPU;
->       cc->class_by_name = cris_cpu_class_by_name;
->       cc->has_work = cris_cpu_has_work;
->       cc->dump_state = cris_cpu_dump_state;
-> diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
-> index 5e301327d3..2d4fed838d 100644
-> --- a/target/hexagon/cpu.c
-> +++ b/target/hexagon/cpu.c
-> @@ -381,6 +381,7 @@ static void hexagon_cpu_class_init(ObjectClass *c, void *data)
->       resettable_class_set_parent_phases(rc, NULL, hexagon_cpu_reset_hold, NULL,
->                                          &mcc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_HEXAGON_CPU;
->       cc->class_by_name = hexagon_cpu_class_by_name;
->       cc->has_work = hexagon_cpu_has_work;
->       cc->dump_state = hexagon_dump_state;
-> diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
-> index 11022f9c99..47950a15ae 100644
-> --- a/target/hppa/cpu.c
-> +++ b/target/hppa/cpu.c
-> @@ -192,6 +192,7 @@ static void hppa_cpu_class_init(ObjectClass *oc, void *data)
->       device_class_set_parent_realize(dc, hppa_cpu_realizefn,
->                                       &acc->parent_realize);
->   
-> +    cc->cpu_resolving_type = TYPE_HPPA_CPU;
->       cc->class_by_name = hppa_cpu_class_by_name;
->       cc->has_work = hppa_cpu_has_work;
->       cc->dump_state = hppa_cpu_dump_state;
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index 00f913b638..9979464420 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -7951,6 +7951,7 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
->                                          &xcc->parent_phases);
->       cc->reset_dump_flags = CPU_DUMP_FPU | CPU_DUMP_CCOP;
->   
-> +    cc->cpu_resolving_type = TYPE_X86_CPU;
->       cc->class_by_name = x86_cpu_class_by_name;
->       cc->parse_features = x86_cpu_parse_featurestr;
->       cc->has_work = x86_cpu_has_work;
-> diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
-> index fe2e5ecc46..189dfd32d1 100644
-> --- a/target/loongarch/cpu.c
-> +++ b/target/loongarch/cpu.c
-> @@ -743,6 +743,7 @@ static void loongarch_cpu_class_init(ObjectClass *c, void *data)
->       resettable_class_set_parent_phases(rc, NULL, loongarch_cpu_reset_hold, NULL,
->                                          &lacc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_LOONGARCH_CPU;
->       cc->class_by_name = loongarch_cpu_class_by_name;
->       cc->has_work = loongarch_cpu_has_work;
->       cc->dump_state = loongarch_cpu_dump_state;
-> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-> index 004f3d6265..bd7bb103d7 100644
-> --- a/target/m68k/cpu.c
-> +++ b/target/m68k/cpu.c
-> @@ -558,6 +558,7 @@ static void m68k_cpu_class_init(ObjectClass *c, void *data)
->       resettable_class_set_parent_phases(rc, NULL, m68k_cpu_reset_hold, NULL,
->                                          &mcc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_M68K_CPU;
->       cc->class_by_name = m68k_cpu_class_by_name;
->       cc->has_work = m68k_cpu_has_work;
->       cc->dump_state = m68k_cpu_dump_state;
-> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-> index 03c2c4db1f..bb5f2c1f00 100644
-> --- a/target/microblaze/cpu.c
-> +++ b/target/microblaze/cpu.c
-> @@ -414,6 +414,7 @@ static void mb_cpu_class_init(ObjectClass *oc, void *data)
->       resettable_class_set_parent_phases(rc, NULL, mb_cpu_reset_hold, NULL,
->                                          &mcc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_MICROBLAZE_CPU;
->       cc->class_by_name = mb_cpu_class_by_name;
->       cc->has_work = mb_cpu_has_work;
->   
-> diff --git a/target/mips/cpu.c b/target/mips/cpu.c
-> index 63da1948fd..649147df2e 100644
-> --- a/target/mips/cpu.c
-> +++ b/target/mips/cpu.c
-> @@ -578,6 +578,7 @@ static void mips_cpu_class_init(ObjectClass *c, void *data)
->       resettable_class_set_parent_phases(rc, NULL, mips_cpu_reset_hold, NULL,
->                                          &mcc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_MIPS_CPU;
->       cc->class_by_name = mips_cpu_class_by_name;
->       cc->has_work = mips_cpu_has_work;
->       cc->dump_state = mips_cpu_dump_state;
-> diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
-> index bc5cbf81c2..fc7c6a83ee 100644
-> --- a/target/nios2/cpu.c
-> +++ b/target/nios2/cpu.c
-> @@ -381,6 +381,7 @@ static void nios2_cpu_class_init(ObjectClass *oc, void *data)
->       resettable_class_set_parent_phases(rc, NULL, nios2_cpu_reset_hold, NULL,
->                                          &ncc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_NIOS2_CPU;
->       cc->class_by_name = nios2_cpu_class_by_name;
->       cc->has_work = nios2_cpu_has_work;
->       cc->dump_state = nios2_cpu_dump_state;
-> diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
-> index 3bbbcc4e63..5e1e0576e0 100644
-> --- a/target/openrisc/cpu.c
-> +++ b/target/openrisc/cpu.c
-> @@ -243,6 +243,7 @@ static void openrisc_cpu_class_init(ObjectClass *oc, void *data)
->       resettable_class_set_parent_phases(rc, NULL, openrisc_cpu_reset_hold, NULL,
->                                          &occ->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_OPENRISC_CPU;
->       cc->class_by_name = openrisc_cpu_class_by_name;
->       cc->has_work = openrisc_cpu_has_work;
->       cc->dump_state = openrisc_cpu_dump_state;
-> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-> index 02b7aad9b0..bc106d01a2 100644
-> --- a/target/ppc/cpu_init.c
-> +++ b/target/ppc/cpu_init.c
-> @@ -7357,6 +7357,7 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
->       resettable_class_set_parent_phases(rc, NULL, ppc_cpu_reset_hold, NULL,
->                                          &pcc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_POWERPC_CPU;
->       cc->class_by_name = ppc_cpu_class_by_name;
->       cc->has_work = ppc_cpu_has_work;
->       cc->dump_state = ppc_cpu_dump_state;
-> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> index 17b00eb7c0..e8f04ef82b 100644
-> --- a/target/riscv/cpu.c
-> +++ b/target/riscv/cpu.c
-> @@ -2130,6 +2130,7 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
->       resettable_class_set_parent_phases(rc, NULL, riscv_cpu_reset_hold, NULL,
->                                          &mcc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_RISCV_CPU;
->       cc->class_by_name = riscv_cpu_class_by_name;
->       cc->has_work = riscv_cpu_has_work;
->       cc->dump_state = riscv_cpu_dump_state;
-> diff --git a/target/rx/cpu.c b/target/rx/cpu.c
-> index c98034540d..2a6df418a8 100644
-> --- a/target/rx/cpu.c
-> +++ b/target/rx/cpu.c
-> @@ -222,6 +222,7 @@ static void rx_cpu_class_init(ObjectClass *klass, void *data)
->       resettable_class_set_parent_phases(rc, NULL, rx_cpu_reset_hold, NULL,
->                                          &rcc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_RX_CPU;
->       cc->class_by_name = rx_cpu_class_by_name;
->       cc->has_work = rx_cpu_has_work;
->       cc->dump_state = rx_cpu_dump_state;
-> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-> index df167493c3..bcba466bb4 100644
-> --- a/target/s390x/cpu.c
-> +++ b/target/s390x/cpu.c
-> @@ -336,6 +336,7 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
->       device_class_set_parent_reset(dc, s390_cpu_reset_full, &scc->parent_reset);
->   
->       scc->reset = s390_cpu_reset;
-> +    cc->cpu_resolving_type = TYPE_S390_CPU;
->       cc->class_by_name = s390_cpu_class_by_name,
->       cc->has_work = s390_cpu_has_work;
->       cc->dump_state = s390_cpu_dump_state;
-> diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
-> index bc112776fc..17c87f15f2 100644
-> --- a/target/sh4/cpu.c
-> +++ b/target/sh4/cpu.c
-> @@ -283,6 +283,7 @@ static void superh_cpu_class_init(ObjectClass *oc, void *data)
->       resettable_class_set_parent_phases(rc, NULL, superh_cpu_reset_hold, NULL,
->                                          &scc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_SUPERH_CPU;
->       cc->class_by_name = superh_cpu_class_by_name;
->       cc->has_work = superh_cpu_has_work;
->       cc->dump_state = superh_cpu_dump_state;
-> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-> index 130ab8f578..e41a9f4ee2 100644
-> --- a/target/sparc/cpu.c
-> +++ b/target/sparc/cpu.c
-> @@ -902,6 +902,7 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
->       resettable_class_set_parent_phases(rc, NULL, sparc_cpu_reset_hold, NULL,
->                                          &scc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_SPARC_CPU;
->       cc->class_by_name = sparc_cpu_class_by_name;
->       cc->parse_features = sparc_cpu_parse_features;
->       cc->has_work = sparc_cpu_has_work;
-> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
-> index a2381b0dc1..ffe5158786 100644
-> --- a/target/tricore/cpu.c
-> +++ b/target/tricore/cpu.c
-> @@ -202,6 +202,7 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
->   
->       resettable_class_set_parent_phases(rc, NULL, tricore_cpu_reset_hold, NULL,
->                                          &mcc->parent_phases);
-> +    cc->cpu_resolving_type = TYPE_TRICORE_CPU;
->       cc->class_by_name = tricore_cpu_class_by_name;
->       cc->has_work = tricore_cpu_has_work;
->   
-> diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
-> index a31825a2b5..13bed05d0c 100644
-> --- a/target/xtensa/cpu.c
-> +++ b/target/xtensa/cpu.c
-> @@ -252,6 +252,7 @@ static void xtensa_cpu_class_init(ObjectClass *oc, void *data)
->       resettable_class_set_parent_phases(rc, NULL, xtensa_cpu_reset_hold, NULL,
->                                          &xcc->parent_phases);
->   
-> +    cc->cpu_resolving_type = TYPE_XTENSA_CPU;
->       cc->class_by_name = xtensa_cpu_class_by_name;
->       cc->has_work = xtensa_cpu_has_work;
->       cc->dump_state = xtensa_cpu_dump_state;
-
+SGkgUGV0ZXIsDQoNClRoZSBWZXJzYWwgVFJORyBkZXZpY2UgaXMgcmVxdWlyZWQgdG8gc3VwcG9y
+dCBib3RoIFRSTkcgbW9kZSBhbmQgUFJORyBtb2RlLCBhbmQgdGFyZ2V0L2d1ZXN0DQpzb2Z0d2Fy
+ZSBzZWxlY3RzIGFuZCBjaGFuZ2VzIHRoZSBtb2RlIGF0IHdpbGwgZHVyaW5nIHJ1bnRpbWUuDQoN
+CkkgZG8gYWdyZWUgdGhhdCwgaW4gdGhlIFRSTkcgbW9kZSwgdGhlIG1vZGVsIHVzaW5nIHFlbXVf
+Z3Vlc3RfZ2V0cmFuZG9tKCkgd2lsbCB3b3JrIHdpdGhvdXQgYW55IGlzc3Vlcy4NCg0KV2hlbiBz
+b2Z0d2FyZSBzZWxlY3RzIHRoZSBQUk5HIG1vZGUsIHRoZSBWZXJzYWwgVFJORyBkZXZpY2UgaXMg
+ZXhwZWN0ZWQgdG8gb3V0cHV0IGEgcmVwcm9kdWNpYmxlDQphbmQgZGV0ZXJtaW5pc3RpYyBzZXF1
+ZW5jZSBvZiB2YWx1ZXMgZm9yIGEgZ2l2ZW4gc2VlZC4gIFRoaXMgaXMgcGFydCBvZiB0aGUgaGFy
+ZHdhcmUgc3BlYy4NCg0KSSBmYWlsIHRvIHNlZSBob3cgcWVtdV9ndWVzdF9nZXRyYW5kb20oKSBj
+YW4gYmUgdXNlZCB0byBtb2RlbCBzdWNoIHJlcXVpcmVtZW50IGNvcnJlY3RseS4NCg0KUmVnYXJk
+cywNClRvbmcgSG8NCg0KLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCkZyb206IFBldGVyIE1h
+eWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4gDQpTZW50OiBGcmlkYXksIFNlcHRlbWJl
+ciA4LCAyMDIzIDY6NTAgQU0NClRvOiBIbywgVG9uZyA8dG9uZy5ob0BhbWQuY29tPg0KQ2M6IFJp
+Y2hhcmQgSGVuZGVyc29uIDxyaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnPjsgcWVtdS1hcm1A
+bm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnOyBhbGlzdGFpckBhbGlzdGFpcjIzLm1l
+OyBlZGdhci5pZ2xlc2lhc0BnbWFpbC5jb20NClN1YmplY3Q6IFJlOiBbUEFUQ0ggMS8zXSBody9t
+aXNjOiBJbnRyb2R1Y2UgQU1EL1hpbGl4IFZlcnNhbCBUUk5HIGRldmljZQ0KDQpPbiBGcmksIDEg
+U2VwdCAyMDIzIGF0IDA1OjE2LCBIbywgVG9uZyA8dG9uZy5ob0BhbWQuY29tPiB3cm90ZToNCj4N
+Cj4gSGkgUmljaGFyZCwNCj4NCj4gVGhhbmtzIGZvciB5b3VyIGlucHV0Lg0KPg0KPiBJIGhhdmUg
+cXVlc3Rpb25zIHJlZ2FyZGluZyB1c2luZyBxZW11L2d1ZXN0LXJhbmRvbS5oIGZvciBRRU1VIGRl
+dmljZSBtb2RlbHMuDQo+DQo+IFVzaW5nIHFlbXUvZ3Vlc3QtcmFuZG9tLmgsIGhvdyBjYW4gdGhp
+cyBUUk5HIG1vZGVsIGVuc3VyZSBpdHMgDQo+IGluZGVwZW5kZW5jZSBmcm9tIG90aGVyIHVzZXMg
+b2YgdGhlIHNhbWUgcWVtdV9ndWVzdF9nZXRyYW5kb20oKSBhbmQgcWVtdV9ndWVzdF9yYW5kb21f
+c2VlZF8qKCk/DQo+DQo+IEJ5ICJvdGhlciB1c2VzIiwgSSBtZWFuIGNvbXBvbmVudHMgYW5kL29y
+IGRldmljZXMgdXNpbmcgcWVtdS9ndWVzdC1yYW5kb20uaCBidXQgdW5yZWxhdGVkIHRvIHRoaXMg
+WGlsaW54IFZlcnNhbCBUUk5HIGRldmljZS4NCj4NCj4gQnkgImluZGVwZW5kZW50IiwgSSBtZWFu
+IHRoZSBYaWxpbnggVmVyc2FsIFRSTkcgZGV2aWNlIGlzOg0KPg0KPiAxLiBOb3QgaW1wYWN0ZWQg
+Ynkgb3RoZXIgdXNlcyB0aGF0IG1heSBvciBtYXkgbm90IG5lZWQgdG8gc2V0IHRoZSANCj4gJy1z
+ZWVkJyBvcHRpb24sIGFuZA0KPg0KPiAyLiBOb3QgaW1wYWN0aW5nIG90aGVyIHVzZXMganVzdCBi
+ZWNhdXNlIGEgWGlsaW54IFZlcnNhbCBtYWNoaW5lIHVzZXIgZGVjaWRlcyB0byB1c2UgZGV0ZXJt
+aW5pc3RpYyBtb2RlICpvbmx5IiBmb3IgdGhpcyBUUk5HIGRldmljZS4NCj4NCj4gQWxzbywgSSBh
+bSBhdCBhIGxvc3MgaW4gaG93IHVucmVsYXRlZCBRRU1VIGRldmljZXMgY2FuIHJlbWFpbiBpbmRl
+cGVuZGVudCB3aGVuOg0KPg0KPiAzLiBxZW11L2d1ZXN0LXJhbmRvbS5oIHVzZXMgJ19fdGhyZWFk
+JyB2YXJpYWJsZSBmb3IgR1JhbmQgY29udGV4dCwgYnV0DQo+DQo+IDQuIFFFTVUgZGV2aWNlcyBy
+dW4gbW9zdGx5IGFzIGNvLXJvdXRpbmVzIGFuZCBub3QgYXMgc2VwYXJhdGUgdGhyZWFkcy4NCg0K
+WW91IHNob3VsZG4ndCBuZWVkIHRvIGNhcmUgYWJvdXQgYW55IG9mIHRoaXMuIEp1c3QgYXNzdW1l
+IHlvdSBjYW4gZ2V0IGRlY2VudCBxdWFsaXR5IHJhbmRvbSBudW1iZXJzIGZyb20gcWVtdV9ndWVz
+dF9nZXRyYW5kb20oKSBvciBxZW11X2d1ZXN0X2dldHJhbmRvbV9ub2ZhaWwoKS4gVGhlIC1zZWVk
+IG9wdGlvbiBpcyBmb3IgdGhlIGVudGlyZSBzaW11bGF0aW9uLCBub3Qgc3BlY2lmaWMgdG8gaW5k
+aXZpZHVhbCBSTkcgZGV2aWNlcy4NCg0KPiBJIHN1cHBvc2UgdGhlIFZlcnNhbCBUUk5HIGltcGxl
+bWVudGF0aW9uIGNvdWxkIHVzZSBnX3JhbmRfKigpIA0KPiBkaXJlY3RseSwgaGF2aW5nIGEgR1Jh
+bmQgb2JqZWN0IGluIHRoZSBkZXZpY2Ugc3RhdGUgYW5kIHNlZWRpbmcgdGhyb3VnaCBnX3JhbmRf
+c2V0X3NlZWRfYXJyYXkoKS4NCg0KRG9uJ3QgZG8gc29tZXRoaW5nIG5vbi1zdGFuZGFyZC4gV3Jp
+dGUgdGhpcyBSTkcgZGV2aWNlIHRoZSBzYW1lIHdheSB3ZSBkbyBhbGwgb3RoZXIgUk5HIGRldmlj
+ZXMgaW4gUUVNVS4NCg0KdGhhbmtzDQotLSBQTU0NCg==

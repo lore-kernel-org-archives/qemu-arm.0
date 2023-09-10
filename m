@@ -1,147 +1,500 @@
-Received: by 2002:a17:906:bfc6:b0:9a1:fa4e:495e with SMTP id us6csp456204ejb;
-        Fri, 8 Sep 2023 07:14:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFh5d5Jm26k9B5W3UY/0JlgTCPgefyW/kN86V7Nyz7pMgG4xXf48spoaTnRSUFGxdd9J5xV
-X-Received: by 2002:a05:620a:2185:b0:76d:5126:65d8 with SMTP id g5-20020a05620a218500b0076d512665d8mr2214060qka.6.1694182477315;
-        Fri, 08 Sep 2023 07:14:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694182477; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp1021174ejx;
+        Sun, 10 Sep 2023 16:29:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHTVso0ru4dL9b01Q7v0WITE8HdGevSlvIvC1qBJg07k4WBIF5Lr7zYABdxgIccNd5V3PQx
+X-Received: by 2002:a05:620a:46a9:b0:767:2aca:7641 with SMTP id bq41-20020a05620a46a900b007672aca7641mr10534193qkb.52.1694388555864;
+        Sun, 10 Sep 2023 16:29:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694388555; cv=none;
         d=google.com; s=arc-20160816;
-        b=fmPNszhwLH6ekxsrLELGKf3XiO085D/aYtmiIXaZIIitHWxdIuGjuJLHomWmmCIUpG
-         CyqTF0TjqQMjHNUi15YhbVEtIOcW2C0RM89+2kvjYNztfyhGT2HXs1C/7cXl04EKYOzx
-         BrLTR6EX0nRFXLw0H0TJ9hvuCOB5ZX9NKaYPq2OEvPADI6j3QpH6K7w0Tw0JP1ejc88i
-         6V5MIHaKcxLX67gGBYLfrzKAx+5ilv2Op3LWEX9lh2XmxM9xlQhwc1BJujBlNvhphwlV
-         tHVA32jSnbSN07Z2Z0AkqZp47P5cEq82eQ+6OwJ/gr1EB2MZDBQ/bUPiHpaFv9inLp0S
-         wd4w==
+        b=EvXDRlVG83atGOosYVybGsYmq4XDP0BB4wQwg0tTT8YrgcMHejCAUx7b6vX+MG7uwu
+         ID6vugASSc97TmoqRYmGAJZJwur3AGAUZrDyYIZKkiUTKc3iLhYCN3tAqnkbtSGbcyZQ
+         QTb4QGmKKHOd+YOAclYLyZyr35nwQX6XAojETtmg8nix3gb0IPkpmPgMeI2HOyYBay/+
+         BRCINJS7HNSf4ZqYShuaGFq06Apig+O1WKsKYKij6q41BnTbTuqF6BSmY26hBxKmwPus
+         LI/vrgjWXi6FXvmmX/CXXs29iJO1IAG4OxZBX4CZ3HLuzr461xfwEbEx/hzbuyBn6vb9
+         xCYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=ZFANwgWtdrBhtj8rBIAo7oBEiXIo//Tfg9jdk/1BPog=;
-        fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=ktw29i6F3ascPxvlVLRMPR73ZkPfEkewsoMs+d5/i3HpFxLS1ISCzO1aU5yUY64Gzw
-         1H56n6a/voZyU9bi2IRbRwQK/myMeAmvFTfm8dwVwfRQytS/9QChTwyRLLM7oMYR0wQ5
-         nZoLMi0dqf97i5oI+Vx6ubK3tHD3mis+PxxNHBwYJ/PMnRPKbhlAIdNE0Au3UFGsyGoh
-         SyMYyeAKJCSuJ3y6oaVRryMzCMftApJyl+qX6RQyw/YJ23y7j1LFAIWM7zihLa5x0/Bo
-         uJJ5N+2vn/0y0WnB2p4fQMWfDJxsnmv9Jviu7JqpxYcZqFSGocMddSOXSWov25OMrfVY
-         CAXg==
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=e2fftQ3Z1YMVS4ZoGPv3NkmJcAPHmlnGVpxoCEdFFp4=;
+        fh=umzWOJsUp6qBpMZfaR/35tHg7PJylqVzX5Du8QxP/Gc=;
+        b=D06ZETqi2RVqs4DBg/vkePmC/ffRyAoWzeGr/HB1iY25+wmhgOCXBTReFSWY8iTmDs
+         JunDXWm6j+6OQxo+U/XVT7hAnvEvJti5fvW9fUPGuVPtourELzNgsyMNcHBeKoqDqz7Y
+         rARQSlNut0vXEDNID9aVTaAjTtH9W1OJtax8CkizpEFN1SHo8oC6aFqctPaJj/Ppqw11
+         ky9lhoH43ZtVtmsG05wEEulHSoc/dkXsW6JAFmAbksV+UGro7qEnrzKnigoNwfuf8EdS
+         0DEH0N0aF1pieFibxzBlZQsh1UdobfrlTBHTyiun/07dgF8QXefCnuUNoD6gneRFk3FQ
+         WiVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E0FuEJlz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eUHC5A4g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ea3-20020a05620a488300b0076cc01e7c9dsi1080823qkb.171.2023.09.08.07.14.37
+        by mx.google.com with ESMTPS id u7-20020a05620a454700b00770647f78e7si4176069qkp.677.2023.09.10.16.29.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Sep 2023 07:14:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 10 Sep 2023 16:29:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E0FuEJlz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eUHC5A4g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qecFZ-0004XP-53; Fri, 08 Sep 2023 10:14:21 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qfTr4-000486-Vy; Sun, 10 Sep 2023 19:28:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qecFV-0004WU-Vi
- for qemu-devel@nongnu.org; Fri, 08 Sep 2023 10:14:18 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qecFS-00080o-Nr
- for qemu-devel@nongnu.org; Fri, 08 Sep 2023 10:14:17 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-52683b68c2fso2896898a12.0
- for <qemu-devel@nongnu.org>; Fri, 08 Sep 2023 07:14:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694182453; x=1694787253; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ZFANwgWtdrBhtj8rBIAo7oBEiXIo//Tfg9jdk/1BPog=;
- b=E0FuEJlz2eFjO92fSz5Qotsj7+LqZ2mynLv1DBdgjalV3AefAx8tX5qBBVm8FhZ9KN
- 3TslLHTdY5Zkpw4v2CXem9aZDidcgImW2o/G7kGBbKXzNpjWolGETNwDeUpn8LOE6jXW
- kyO8oGXLm3hsywxGyW5WVgQL2DFBiY0C4ZwIeqzckPVwPOZe6uYQXxZnEzJN3+D+lY0N
- Z7sfN8iwUMEQ0W5YJPL+8/F4HvPBo5C+giHIExX9Hr/VOfmEEogSiYMNvnQE1RyQkfcP
- 26lRIgblgvvvFkzo+iaReaW/U85uMcdm75CX9EYpkeMY4fKBzD1iaBMTAxHbTDUhgG5n
- G95g==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qfTr3-00047c-Ix
+ for qemu-arm@nongnu.org; Sun, 10 Sep 2023 19:28:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qfTr0-0005Zv-5r
+ for qemu-arm@nongnu.org; Sun, 10 Sep 2023 19:28:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1694388512;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=e2fftQ3Z1YMVS4ZoGPv3NkmJcAPHmlnGVpxoCEdFFp4=;
+ b=eUHC5A4gbJgas1cOblGn29V4axl3FCGgHazyf32K5/ta92ODzplBRzPRMvYzpK/drMeLzj
+ Pk7MBXRwjyql8ueZZqgp/2FL5TVDJJ3SvwIOsMwOVO1G/DRHHiJpSvLyc5KCsfkEI3G4p3
+ SObjO/WpBn7xvXlWdNpJZUKo7hAfZNY=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-328-0rQjQ892Nui-8g3sfDPHBQ-1; Sun, 10 Sep 2023 19:28:30 -0400
+X-MC-Unique: 0rQjQ892Nui-8g3sfDPHBQ-1
+Received: by mail-pl1-f200.google.com with SMTP id
+ d9443c01a7336-1c3a2f46244so17625155ad.1
+ for <qemu-arm@nongnu.org>; Sun, 10 Sep 2023 16:28:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694182453; x=1694787253;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ d=1e100.net; s=20230601; t=1694388509; x=1694993309;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ZFANwgWtdrBhtj8rBIAo7oBEiXIo//Tfg9jdk/1BPog=;
- b=nPO807fCt1oekjou78TOQJ1toHQE9BnLh0e3FWQvErOxGVMZQx/poQp3nwkPXEESs1
- yEGIrafSHJSxC2A9kmDQZRys5qb93/sL1O2RYvAN9lrWP+AETWXpGvnKFbwxvvhJZ6/g
- t/veIrVbm7CXAor6uTEGmyqPEWiaIIp6qSU5c+BO9CUvDEnLolmuEPADdBxiSrQjFVKW
- AgNtAH69xbKHLXqJdbK3Kx9Mw4XvN2vGE+Uy+RCJgqK+ERRNxjqT/pgLjgepsEJe3GZM
- QscEuf7pHx1RrOnucoHCgeaOiIZymq1TLFd60dVaJKl+Rv2dUlK/0+6wOS56CCICxj1s
- hz5Q==
-X-Gm-Message-State: AOJu0YwvKUsZ7+b8S5EUEUSEAUj8dDxaBUdZZZ0J/33U/Lt3VOoKx1gc
- /S0tqHcdv9QyxnmNfpNMdops7739NRaLG4ELEhs=
-X-Received: by 2002:aa7:c3d4:0:b0:523:cfa4:5c3d with SMTP id
- l20-20020aa7c3d4000000b00523cfa45c3dmr2299539edr.13.1694182453111; 
- Fri, 08 Sep 2023 07:14:13 -0700 (PDT)
-Received: from [192.168.69.115]
- (lfb24-h01-176-173-167-175.dsl.sta.abo.bbox.fr. [176.173.167.175])
+ bh=e2fftQ3Z1YMVS4ZoGPv3NkmJcAPHmlnGVpxoCEdFFp4=;
+ b=CCWYHnxLsjSovrYt7NsLusjRC1KMgNakxtH2XINBOc9zWnkOID7j+aGMt+V24duWlY
+ rFpL79WV4x/2DrmyDa/Fc9GoBmIrurjhf+cWA/Ksx7vBraT2mQeO5+WxSZCV37UKKZ5M
+ Bp50WN0cOH2BZRrPDGgCiZIhHS/MzGo+It2BCtE8GB/gkZuh/Sp3Ol2gzk1lLqeFUmJA
+ 742l3U+yuoezAHF64aKCEbDrBy9bjUDnLlEEjFXtKc9OvD9one55xwnEhvHgyNRx5CDg
+ gAObDHd/r10EfeFvTBhCe9URNf7+jDe6/2f3/2Cn6Kbrq1TNufa1kK5cCYcI5N9N6jgg
+ OT0Q==
+X-Gm-Message-State: AOJu0YybAFbFGyZA2sE99nI98uWvO+W1tXLjsDTxpQv594kGdNtZpfa+
+ yahY1z4ioBQhkLvbU4G2aUYB5ycLDypLahu0VYIrYRTbEuk3jhFReVIu4huYPbum4lHSMYb0IDV
+ fmbifhKdfJHqF
+X-Received: by 2002:a17:902:efd4:b0:1b8:36a8:faf9 with SMTP id
+ ja20-20020a170902efd400b001b836a8faf9mr8680877plb.38.1694388509471; 
+ Sun, 10 Sep 2023 16:28:29 -0700 (PDT)
+X-Received: by 2002:a17:902:efd4:b0:1b8:36a8:faf9 with SMTP id
+ ja20-20020a170902efd400b001b836a8faf9mr8680826plb.38.1694388509029; 
+ Sun, 10 Sep 2023 16:28:29 -0700 (PDT)
+Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
+ ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
  by smtp.gmail.com with ESMTPSA id
- m21-20020a50ef15000000b005232ea6a330sm1073164eds.2.2023.09.08.07.14.12
+ 13-20020a170902c14d00b001bdd51748f8sm5013285plj.271.2023.09.10.16.28.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Sep 2023 07:14:12 -0700 (PDT)
-Message-ID: <7d4883c0-7d9b-fe5e-4415-5521338a025a@linaro.org>
-Date: Fri, 8 Sep 2023 16:14:11 +0200
+ Sun, 10 Sep 2023 16:28:28 -0700 (PDT)
+Message-ID: <87cb0174-c652-aa44-be7c-49e78e0a5003@redhat.com>
+Date: Mon, 11 Sep 2023 09:28:13 +1000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.0
-Subject: Re: [PATCH 03/14] target/arm: Add ID_AA64ISAR2_EL1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH 3/4] hw/cpu: Introduce CPUClass::cpu_resolving_type field
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>
+Cc: Chris Wulff <crwulff@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-s390x@nongnu.org,
+ Weiwei Li <liweiwei@iscas.ac.cn>, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Greg Kurz <groug@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ qemu-ppc@nongnu.org, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Michael Rolnik <mrolnik@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+ Aurelien Jarno <aurelien@aurel32.net>, Bin Meng <bin.meng@windriver.com>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Song Gao <gaosong@loongson.cn>,
+ Stafford Horne <shorne@gmail.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Brian Cain <bcain@quicinc.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Thomas Huth <thuth@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+References: <20230908112235.75914-1-philmd@linaro.org>
+ <20230908112235.75914-4-philmd@linaro.org>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20230908112235.75914-4-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20230907160340.260094-1-peter.maydell@linaro.org>
- <20230907160340.260094-4-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230907160340.260094-4-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.473,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ztOzyrWwAI3J
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1P/q707yj7AA
 
-On 7/9/23 18:03, Peter Maydell wrote:
-> From: Aaron Lindsay <aaron@os.amperecomputing.com>
+Hi Philippe,
+
+On 9/8/23 21:22, Philippe Mathieu-Daudé wrote:
+> Add a field to return the QOM type name of a CPU class.
 > 
-> Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
-> [PMM: drop the HVF part of the patch and just comment that
->   we need to do something when the register appears in that API]
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   target/arm/cpu.h     | 1 +
->   target/arm/helper.c  | 4 ++--
->   target/arm/hvf/hvf.c | 1 +
->   target/arm/kvm64.c   | 2 ++
->   4 files changed, 6 insertions(+), 2 deletions(-)
+>   include/hw/core/cpu.h   | 2 ++
+>   hw/core/cpu-common.c    | 2 +-
+>   target/alpha/cpu.c      | 1 +
+>   target/arm/cpu.c        | 1 +
+>   target/avr/cpu.c        | 1 +
+>   target/cris/cpu.c       | 1 +
+>   target/hexagon/cpu.c    | 1 +
+>   target/hppa/cpu.c       | 1 +
+>   target/i386/cpu.c       | 1 +
+>   target/loongarch/cpu.c  | 1 +
+>   target/m68k/cpu.c       | 1 +
+>   target/microblaze/cpu.c | 1 +
+>   target/mips/cpu.c       | 1 +
+>   target/nios2/cpu.c      | 1 +
+>   target/openrisc/cpu.c   | 1 +
+>   target/ppc/cpu_init.c   | 1 +
+>   target/riscv/cpu.c      | 1 +
+>   target/rx/cpu.c         | 1 +
+>   target/s390x/cpu.c      | 1 +
+>   target/sh4/cpu.c        | 1 +
+>   target/sparc/cpu.c      | 1 +
+>   target/tricore/cpu.c    | 1 +
+>   target/xtensa/cpu.c     | 1 +
+>   23 files changed, 24 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index 129d179937..e469efd409 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -100,6 +100,7 @@ struct SysemuCPUOps;
+>   
+>   /**
+>    * CPUClass:
+> + * @cpu_resolving_type: CPU QOM type name
+>    * @class_by_name: Callback to map -cpu command line model name to an
+>    *                 instantiatable CPU type.
+>    * @parse_features: Callback to parse command line arguments.
+> @@ -148,6 +149,7 @@ struct CPUClass {
+>       DeviceClass parent_class;
+>       /*< public >*/
+>   
+> +    const char *cpu_resolving_type;
+>       ObjectClass *(*class_by_name)(const char *cpu_model);
+>       void (*parse_features)(const char *typename, char *str, Error **errp);
+>   
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+The question is why not use CPU_RESOLVING_TYPE directly? It seems CPU_RESOLVING_TYPE
+is exactly what you want here. Besides, I guess the changes can be squeezed into two
+patches (commits) as below:
+
+PATCH[1] target/alpha: Tidy up alpha_cpu_class_by_name()
+PATCH[2] Move the checks (oc == NULL || object_class_is_abstract() || !object_class_dynamic_cast())
+          from individual targets to hw/core/cpu-common.c::cpu_class_by_name()
+
+I rebase my series of '[PATCH v3 00/32] Unified CPU type check' on top of yours. Please
+let me know if I need to include your patch into my v4 series for review. In that case,
+I can include your patches with above changes applied.
+
+Thanks,
+Gavin
+
+> diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+> index c6a0c9390c..2d24261a6a 100644
+> --- a/hw/core/cpu-common.c
+> +++ b/hw/core/cpu-common.c
+> @@ -155,7 +155,7 @@ ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model)
+>       assert(cpu_model);
+>       oc = object_class_by_name(typename);
+>       cc = CPU_CLASS(oc);
+> -    assert(cc->class_by_name);
+> +    assert(cc->cpu_resolving_type && cc->class_by_name);
+>       oc = cc->class_by_name(cpu_model);
+>       if (oc == NULL || object_class_is_abstract(oc)) {
+>           return NULL;
+> diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
+> index 351ee2e9f2..0ddea8004c 100644
+> --- a/target/alpha/cpu.c
+> +++ b/target/alpha/cpu.c
+> @@ -254,6 +254,7 @@ static void alpha_cpu_class_init(ObjectClass *oc, void *data)
+>       device_class_set_parent_realize(dc, alpha_cpu_realizefn,
+>                                       &acc->parent_realize);
+>   
+> +    cc->cpu_resolving_type = TYPE_ALPHA_CPU;
+>       cc->class_by_name = alpha_cpu_class_by_name;
+>       cc->has_work = alpha_cpu_has_work;
+>       cc->dump_state = alpha_cpu_dump_state;
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 42e29816cc..9e51bde170 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2377,6 +2377,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, arm_cpu_reset_hold, NULL,
+>                                          &acc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_ARM_CPU;
+>       cc->class_by_name = arm_cpu_class_by_name;
+>       cc->has_work = arm_cpu_has_work;
+>       cc->dump_state = arm_cpu_dump_state;
+> diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+> index 4b255eade1..f6004169ac 100644
+> --- a/target/avr/cpu.c
+> +++ b/target/avr/cpu.c
+> @@ -233,6 +233,7 @@ static void avr_cpu_class_init(ObjectClass *oc, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, avr_cpu_reset_hold, NULL,
+>                                          &mcc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_AVR_CPU;
+>       cc->class_by_name = avr_cpu_class_by_name;
+>   
+>       cc->has_work = avr_cpu_has_work;
+> diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+> index 115f6e2ea2..adde4f599d 100644
+> --- a/target/cris/cpu.c
+> +++ b/target/cris/cpu.c
+> @@ -314,6 +314,7 @@ static void cris_cpu_class_init(ObjectClass *oc, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, cris_cpu_reset_hold, NULL,
+>                                          &ccc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_CRIS_CPU;
+>       cc->class_by_name = cris_cpu_class_by_name;
+>       cc->has_work = cris_cpu_has_work;
+>       cc->dump_state = cris_cpu_dump_state;
+> diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
+> index 5e301327d3..2d4fed838d 100644
+> --- a/target/hexagon/cpu.c
+> +++ b/target/hexagon/cpu.c
+> @@ -381,6 +381,7 @@ static void hexagon_cpu_class_init(ObjectClass *c, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, hexagon_cpu_reset_hold, NULL,
+>                                          &mcc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_HEXAGON_CPU;
+>       cc->class_by_name = hexagon_cpu_class_by_name;
+>       cc->has_work = hexagon_cpu_has_work;
+>       cc->dump_state = hexagon_dump_state;
+> diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
+> index 11022f9c99..47950a15ae 100644
+> --- a/target/hppa/cpu.c
+> +++ b/target/hppa/cpu.c
+> @@ -192,6 +192,7 @@ static void hppa_cpu_class_init(ObjectClass *oc, void *data)
+>       device_class_set_parent_realize(dc, hppa_cpu_realizefn,
+>                                       &acc->parent_realize);
+>   
+> +    cc->cpu_resolving_type = TYPE_HPPA_CPU;
+>       cc->class_by_name = hppa_cpu_class_by_name;
+>       cc->has_work = hppa_cpu_has_work;
+>       cc->dump_state = hppa_cpu_dump_state;
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 00f913b638..9979464420 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -7951,6 +7951,7 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
+>                                          &xcc->parent_phases);
+>       cc->reset_dump_flags = CPU_DUMP_FPU | CPU_DUMP_CCOP;
+>   
+> +    cc->cpu_resolving_type = TYPE_X86_CPU;
+>       cc->class_by_name = x86_cpu_class_by_name;
+>       cc->parse_features = x86_cpu_parse_featurestr;
+>       cc->has_work = x86_cpu_has_work;
+> diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+> index fe2e5ecc46..189dfd32d1 100644
+> --- a/target/loongarch/cpu.c
+> +++ b/target/loongarch/cpu.c
+> @@ -743,6 +743,7 @@ static void loongarch_cpu_class_init(ObjectClass *c, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, loongarch_cpu_reset_hold, NULL,
+>                                          &lacc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_LOONGARCH_CPU;
+>       cc->class_by_name = loongarch_cpu_class_by_name;
+>       cc->has_work = loongarch_cpu_has_work;
+>       cc->dump_state = loongarch_cpu_dump_state;
+> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+> index 004f3d6265..bd7bb103d7 100644
+> --- a/target/m68k/cpu.c
+> +++ b/target/m68k/cpu.c
+> @@ -558,6 +558,7 @@ static void m68k_cpu_class_init(ObjectClass *c, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, m68k_cpu_reset_hold, NULL,
+>                                          &mcc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_M68K_CPU;
+>       cc->class_by_name = m68k_cpu_class_by_name;
+>       cc->has_work = m68k_cpu_has_work;
+>       cc->dump_state = m68k_cpu_dump_state;
+> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+> index 03c2c4db1f..bb5f2c1f00 100644
+> --- a/target/microblaze/cpu.c
+> +++ b/target/microblaze/cpu.c
+> @@ -414,6 +414,7 @@ static void mb_cpu_class_init(ObjectClass *oc, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, mb_cpu_reset_hold, NULL,
+>                                          &mcc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_MICROBLAZE_CPU;
+>       cc->class_by_name = mb_cpu_class_by_name;
+>       cc->has_work = mb_cpu_has_work;
+>   
+> diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+> index 63da1948fd..649147df2e 100644
+> --- a/target/mips/cpu.c
+> +++ b/target/mips/cpu.c
+> @@ -578,6 +578,7 @@ static void mips_cpu_class_init(ObjectClass *c, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, mips_cpu_reset_hold, NULL,
+>                                          &mcc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_MIPS_CPU;
+>       cc->class_by_name = mips_cpu_class_by_name;
+>       cc->has_work = mips_cpu_has_work;
+>       cc->dump_state = mips_cpu_dump_state;
+> diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+> index bc5cbf81c2..fc7c6a83ee 100644
+> --- a/target/nios2/cpu.c
+> +++ b/target/nios2/cpu.c
+> @@ -381,6 +381,7 @@ static void nios2_cpu_class_init(ObjectClass *oc, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, nios2_cpu_reset_hold, NULL,
+>                                          &ncc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_NIOS2_CPU;
+>       cc->class_by_name = nios2_cpu_class_by_name;
+>       cc->has_work = nios2_cpu_has_work;
+>       cc->dump_state = nios2_cpu_dump_state;
+> diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+> index 3bbbcc4e63..5e1e0576e0 100644
+> --- a/target/openrisc/cpu.c
+> +++ b/target/openrisc/cpu.c
+> @@ -243,6 +243,7 @@ static void openrisc_cpu_class_init(ObjectClass *oc, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, openrisc_cpu_reset_hold, NULL,
+>                                          &occ->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_OPENRISC_CPU;
+>       cc->class_by_name = openrisc_cpu_class_by_name;
+>       cc->has_work = openrisc_cpu_has_work;
+>       cc->dump_state = openrisc_cpu_dump_state;
+> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+> index 02b7aad9b0..bc106d01a2 100644
+> --- a/target/ppc/cpu_init.c
+> +++ b/target/ppc/cpu_init.c
+> @@ -7357,6 +7357,7 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, ppc_cpu_reset_hold, NULL,
+>                                          &pcc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_POWERPC_CPU;
+>       cc->class_by_name = ppc_cpu_class_by_name;
+>       cc->has_work = ppc_cpu_has_work;
+>       cc->dump_state = ppc_cpu_dump_state;
+> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+> index 17b00eb7c0..e8f04ef82b 100644
+> --- a/target/riscv/cpu.c
+> +++ b/target/riscv/cpu.c
+> @@ -2130,6 +2130,7 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, riscv_cpu_reset_hold, NULL,
+>                                          &mcc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_RISCV_CPU;
+>       cc->class_by_name = riscv_cpu_class_by_name;
+>       cc->has_work = riscv_cpu_has_work;
+>       cc->dump_state = riscv_cpu_dump_state;
+> diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+> index c98034540d..2a6df418a8 100644
+> --- a/target/rx/cpu.c
+> +++ b/target/rx/cpu.c
+> @@ -222,6 +222,7 @@ static void rx_cpu_class_init(ObjectClass *klass, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, rx_cpu_reset_hold, NULL,
+>                                          &rcc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_RX_CPU;
+>       cc->class_by_name = rx_cpu_class_by_name;
+>       cc->has_work = rx_cpu_has_work;
+>       cc->dump_state = rx_cpu_dump_state;
+> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+> index df167493c3..bcba466bb4 100644
+> --- a/target/s390x/cpu.c
+> +++ b/target/s390x/cpu.c
+> @@ -336,6 +336,7 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
+>       device_class_set_parent_reset(dc, s390_cpu_reset_full, &scc->parent_reset);
+>   
+>       scc->reset = s390_cpu_reset;
+> +    cc->cpu_resolving_type = TYPE_S390_CPU;
+>       cc->class_by_name = s390_cpu_class_by_name,
+>       cc->has_work = s390_cpu_has_work;
+>       cc->dump_state = s390_cpu_dump_state;
+> diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+> index bc112776fc..17c87f15f2 100644
+> --- a/target/sh4/cpu.c
+> +++ b/target/sh4/cpu.c
+> @@ -283,6 +283,7 @@ static void superh_cpu_class_init(ObjectClass *oc, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, superh_cpu_reset_hold, NULL,
+>                                          &scc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_SUPERH_CPU;
+>       cc->class_by_name = superh_cpu_class_by_name;
+>       cc->has_work = superh_cpu_has_work;
+>       cc->dump_state = superh_cpu_dump_state;
+> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+> index 130ab8f578..e41a9f4ee2 100644
+> --- a/target/sparc/cpu.c
+> +++ b/target/sparc/cpu.c
+> @@ -902,6 +902,7 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, sparc_cpu_reset_hold, NULL,
+>                                          &scc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_SPARC_CPU;
+>       cc->class_by_name = sparc_cpu_class_by_name;
+>       cc->parse_features = sparc_cpu_parse_features;
+>       cc->has_work = sparc_cpu_has_work;
+> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+> index a2381b0dc1..ffe5158786 100644
+> --- a/target/tricore/cpu.c
+> +++ b/target/tricore/cpu.c
+> @@ -202,6 +202,7 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
+>   
+>       resettable_class_set_parent_phases(rc, NULL, tricore_cpu_reset_hold, NULL,
+>                                          &mcc->parent_phases);
+> +    cc->cpu_resolving_type = TYPE_TRICORE_CPU;
+>       cc->class_by_name = tricore_cpu_class_by_name;
+>       cc->has_work = tricore_cpu_has_work;
+>   
+> diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+> index a31825a2b5..13bed05d0c 100644
+> --- a/target/xtensa/cpu.c
+> +++ b/target/xtensa/cpu.c
+> @@ -252,6 +252,7 @@ static void xtensa_cpu_class_init(ObjectClass *oc, void *data)
+>       resettable_class_set_parent_phases(rc, NULL, xtensa_cpu_reset_hold, NULL,
+>                                          &xcc->parent_phases);
+>   
+> +    cc->cpu_resolving_type = TYPE_XTENSA_CPU;
+>       cc->class_by_name = xtensa_cpu_class_by_name;
+>       cc->has_work = xtensa_cpu_has_work;
+>       cc->dump_state = xtensa_cpu_dump_state;
 

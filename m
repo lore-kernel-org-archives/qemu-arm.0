@@ -1,109 +1,115 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp1995923ejx;
-        Tue, 12 Sep 2023 05:27:54 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGYg2EzErU0bMspEjzDoB7BvgIZFUZmtV06/CJesK6T4+RsLmWwtFGodiWaspRSJkvKJRPV
-X-Received: by 2002:a0c:e1c9:0:b0:655:dd4b:d077 with SMTP id v9-20020a0ce1c9000000b00655dd4bd077mr5506880qvl.51.1694521674081;
-        Tue, 12 Sep 2023 05:27:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694521674; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2062610ejx;
+        Tue, 12 Sep 2023 07:04:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH+fN0gHbXF3MhHmFFVm7kI9VuJsxNKGlEF5r0qB9uF+xMB6zmy60fSLa7qCm75en+xEsdC
+X-Received: by 2002:a0c:e10a:0:b0:64f:6f65:18b7 with SMTP id w10-20020a0ce10a000000b0064f6f6518b7mr13187286qvk.47.1694527497778;
+        Tue, 12 Sep 2023 07:04:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694527497; cv=none;
         d=google.com; s=arc-20160816;
-        b=rigsPaMVocyfMh/0txfpteUbGsVx/fstydla1SXrgJpP7WfBqw4YPee4I532M4ZjHE
-         tANKF6agqoHKnhAVy3xuTcCaIyLAwxIf5AAVWVmJ6ggIFVg0ma2ArZ1vVvhDdLO07HXd
-         dsZoFPGly+/Rkuf5+WRIj0UZC5wevhyYjbjtIhWVdMSx1/O9otDp0abuCXMRrN6DggKK
-         VSBPqV6KGPizTbQVC3yZHqNzYIKfY9Leetpfx2IsJj7x/LN2dL8a2fjH+8LxQmFVi8jJ
-         1aEGKBXx/WYi0JX9dFyxm0/KC1tUa+gA0Ykytrtrmz7fgssSfnDThEng6+3EoCcWIqVN
-         7Nrg==
+        b=n+zvSVgN2ADeILSpeosVVSdxMJbH5Tl08FYEHJ/fdpwjqp3AhFWCqHP/CkHaE8c2Hs
+         77csnall0GZ17rUzBUD5RlSIGFOti4TgQ12/FFc3ATaSrINOqqSSOQRAlM3SzGct/1DC
+         eGeN0zmqjcqhOlBLvM1Pr7428Vyc6WNeol9N5lydaCOxw//KQ6Yu6cIYvAFOtKbnzRYW
+         rVrpu9DA7UZv2TzVcbl5slXiVmMMAMbvBnXS+rA4r5Y2NTmqNMtBYY5gyHpcohXW3cSg
+         mBKnonfudfRP8gxEkR3UlEh234cZYjPfbC9GYRks0FA+DwRYcG574GlvxtBodkn+2NG7
+         t3Cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=a+QJ6aLCYJHfzYSh+WK/aIRaGCoM4QdlNhV2yGIGdAg=;
-        fh=PKodlsZ4sLOulf3vcyB9a9UvxkkwctzJ7UL5PZ8dNXQ=;
-        b=D8b3wHD01HDP2C+o7D+pGBgR5VU5BVxh5KcYD19iIuJ+W5iTN3FZQOMNeAMnWqPaBQ
-         GlglPz120UOQbvcGShE5Px9vJvr4SvVgwLP+NoJtEJ/xotzBlg8uGa6NsKbzZ5p3Wuvi
-         9ci6lxkpoj2/UTO89dIBSb+PhkUbAM57X6CO4s96Ij4AW4l9bWiDLK0TIbbnWuYYYW1b
-         Pi/dWIAatHdKx5vJ3Kbkx95XVQgJxac68wD7ybEj3Ye2Rtmj/pi0JozFSDruFLy1WRvm
-         VkFMz6vwCobsYJQLGjwK7kz8yA1jegUpAX0KL/g9KD+2ZExtpg1UTv4t9/04EdQ4dA1o
-         9HyA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=AZ7z+PF4zRsdie2W5wNUk9pY8AcE3Vlvunka/Km+EXQ=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=Z0OfxCKJoSVgasNHb2RAJkGb0dHd0b9x6WU7HtEDG917uYgo2dWq4cChZq0FhxxyyT
+         +jWLKplDJMn3kIDHB/4eJaTELw1A0xWMojWKaoudgKQ9zT6JNqMYMl3Aacc9A4bICDWc
+         fRuVpw0DAJ9LppUGjbRvAEsiGlYCIJOr5LGcvT4xgjBLdfsLnT57Hmdy2l0YBRZh+XyW
+         vk1ZOXL0BAkkUKLn4Axra3UfhXO+rvTUJCpLkjeL9uZGkB0Dm6jmDGwc5tgTzvB2CEDt
+         Pi5ScqKabLHQIbA/KZ0HiI/EGdJtS7C3CGhN5o/sR2qz50K78PoHZB76IG41DBuy2JbQ
+         W4Vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lI+pE8NU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=k50PTPYc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r5-20020a0c8d05000000b0064f57c060basi4485157qvb.582.2023.09.12.05.27.53
+        by mx.google.com with ESMTPS id c21-20020a05620a201500b0076cb8552663si6135742qka.8.2023.09.12.07.04.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Sep 2023 05:27:54 -0700 (PDT)
+        Tue, 12 Sep 2023 07:04:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lI+pE8NU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=k50PTPYc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qg2UG-00036f-Jd; Tue, 12 Sep 2023 08:27:24 -0400
+	id 1qg40Y-00086t-MY; Tue, 12 Sep 2023 10:04:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qg2UE-000360-Vt
- for qemu-arm@nongnu.org; Tue, 12 Sep 2023 08:27:23 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1qg40W-00086P-Mm
+ for qemu-arm@nongnu.org; Tue, 12 Sep 2023 10:04:49 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qg2UA-0002AZ-ME
- for qemu-arm@nongnu.org; Tue, 12 Sep 2023 08:27:22 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-31c93d2a24fso5056340f8f.2
- for <qemu-arm@nongnu.org>; Tue, 12 Sep 2023 05:27:18 -0700 (PDT)
+ id 1qg40N-0003pZ-NT
+ for qemu-arm@nongnu.org; Tue, 12 Sep 2023 10:04:43 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-403012f27e1so36703715e9.1
+ for <qemu-arm@nongnu.org>; Tue, 12 Sep 2023 07:04:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694521637; x=1695126437; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=a+QJ6aLCYJHfzYSh+WK/aIRaGCoM4QdlNhV2yGIGdAg=;
- b=lI+pE8NUnoxtLrGFjMEYBs03Ix1zq3lgSiOMtxWE3QvWbunzPRiEda0CgnlYq0qAbO
- 39qh113X8Y3gTx/JePuGLAqutEQVX+dYqfiw7rW7qwR1haXnjml/XXlk/kCcyRWnhiM3
- 5XZTMzz9IC/yd0dmEfKaQFufovlq9pf1nAdGF26LyUAY0gCGv3b2fhTb6cXXQqsl6yxj
- u0nQQEvZ/3J96c3C9zAMkiimrMjtvmybGFeINi3lucPYHO56u0aZktZBhsC3L3YYYyKz
- WM7Uc2tyMSyytIJibyopr9EfEmKgH1MnNpvl6p3edJfrAe3Nwb5y5m1sjk02DrF+ZeLY
- Pstg==
+ d=linaro.org; s=google; t=1694527476; x=1695132276; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=AZ7z+PF4zRsdie2W5wNUk9pY8AcE3Vlvunka/Km+EXQ=;
+ b=k50PTPYcziYiy1SUZB5An8TkPyoepEGaY393+MoDPpqFBdqJYoUQSA4/N+NPmF9oe/
+ c8w1hNbVPBmhF1iTKSl4AfwT+a+2RpiTcVHMi6YRTQuXs3WpPnyi+aAsHIqlxXqW3kPq
+ b6e75/GSrgRnMYb4dTmM0/n+N2AxWwEJ0OyLXq3eBc1ChlPDkg+F5ziRvDmLYpsbJCz2
+ guQ4ZXs94jmFRWtAGXZAH4PILfJSqlAf7FR6ESO/duPWRhxjLb0LWVEmjZdsefRYfT3e
+ 5g0vP+/Qd7UzFR+USe+TF2fWvOEcjy4bvf54J3IcIFWQVPD2dkZc864bKpw00LC1tSBH
+ PA6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694521637; x=1695126437;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=a+QJ6aLCYJHfzYSh+WK/aIRaGCoM4QdlNhV2yGIGdAg=;
- b=CVgT6qePzePTGA2FmhUypvyDe3NfgenB67NKaaxTHuQvJtSC7Xv0o5l7vllgRpjb4+
- XzNODys1Uh35c6BY0QhwPRnmpvhvvWCskUYlXYKQNkr3ALTducJHtnr9Up7HI/O7Nrbp
- 0plp/qwWcTS+VCl71cfIL/dlF+m6Ukba3TSFfzA4vu+v2CbjZwZQUSR+OMyppl3DTy51
- zXlpuJgYJ/uMO5UcZsVg6U1+iKlLRZV4j2BKhBVzxpUY4YeGDTETfPhZsHgsd2dQ4vZD
- PnkQHOxqjnk1y+cVaMp2XqRMzFnL+tdxF8mU56CP5wkBeFXzhFJL4CCLHXEmslwrR8tY
- aP9g==
-X-Gm-Message-State: AOJu0Yypg4KmjGohqcD/lCgfQtLsyQG9Ld3nMNf/LQOGilwGSP8v4GrO
- Qk8powRFdfSrUgkIuu06JDsrNn7zVbH4Yt5knX8QFQ==
-X-Received: by 2002:a5d:4ac3:0:b0:31a:e6c2:7705 with SMTP id
- y3-20020a5d4ac3000000b0031ae6c27705mr10915143wrs.50.1694521636880; Tue, 12
- Sep 2023 05:27:16 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230907160340.260094-1-peter.maydell@linaro.org>
- <20230907160340.260094-14-peter.maydell@linaro.org>
- <28b64da1-6c0f-012e-1af9-ac27a8581f6f@linaro.org>
-In-Reply-To: <28b64da1-6c0f-012e-1af9-ac27a8581f6f@linaro.org>
+ d=1e100.net; s=20230601; t=1694527476; x=1695132276;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=AZ7z+PF4zRsdie2W5wNUk9pY8AcE3Vlvunka/Km+EXQ=;
+ b=GS2vnAUjSlJ8GINNJJIsnbaGjXP/texKL6h+8HW8YSkhQYpiULNSm54nSI9ieTmczY
+ 6fr1OiQ7/tQs/5Din9A/y/hgn+A8dk92sNc8qdEOT/IeOuNOWopv4e9Cs8Y5gBc7122Z
+ lPNoTzX5+lw40IfdEydHbaftm703ZJSUKvA2tPQxxSkdCtywzlF9PTVWhZA7R5pzotrm
+ Jp2e76SMfnXhx2eRSeIXF2ojPIcrdNogBQVzuHaOBb7L3w9sLxWWKvmmmvTkd+jeu5kC
+ 45eDyrY2ZpMSY5U7lBd6Ac3xQ2Rz+Lw2Tgpy9AVxNq/73eSQIhnDPRrPNdCok3uNo5eY
+ NgJA==
+X-Gm-Message-State: AOJu0Yzq+1SZLBRkdXj1jzG//qB9Y1OMcLjcpFEHAmf8Pq+1eHw+Qxxz
+ njUApOevq/C7CxeEpe2ddyuIkSeYV6yPN3eJQrU=
+X-Received: by 2002:a5d:5103:0:b0:315:8f4f:81b8 with SMTP id
+ s3-20020a5d5103000000b003158f4f81b8mr10928695wrt.50.1694527476476; 
+ Tue, 12 Sep 2023 07:04:36 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ r3-20020a5d4983000000b00317ab75748bsm12892672wrq.49.2023.09.12.07.04.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 Sep 2023 07:04:36 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Sep 2023 13:27:05 +0100
-Message-ID: <CAFEAcA89pF2mw7ePuVOsee1n8+L8PMuBSKEYg-gCNLd2gLFKoA@mail.gmail.com>
-Subject: Re: [PATCH 13/14] target/arm: Implement the CPY* instructions
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH v2 01/12] target/arm: Don't skip MTE checks for LDRT/STRT at
+ EL0
+Date: Tue, 12 Sep 2023 15:04:23 +0100
+Message-Id: <20230912140434.1333369-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230912140434.1333369-1-peter.maydell@linaro.org>
+References: <20230912140434.1333369-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,79 +124,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d4F3DUhz+yXc
+X-TUID: yP27Ego4+H1b
 
-On Sat, 9 Sept 2023 at 18:06, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 9/7/23 09:03, Peter Maydell wrote:
-> > +void HELPER(cpyp)(CPUARMState *env, uint32_t syndrome, uint32_t wdesc,
-> > +                  uint32_t rdesc, uint32_t move)
-> > +{
-> > +    int rd = mops_destreg(syndrome);
-> > +    int rs = mops_srcreg(syndrome);
-> > +    int rn = mops_sizereg(syndrome);
-> > +    uint32_t rmemidx = FIELD_EX32(rdesc, MTEDESC, MIDX);
-> > +    uint32_t wmemidx = FIELD_EX32(wdesc, MTEDESC, MIDX);
-> > +    bool forwards = true;
-> > +    uintptr_t ra = GETPC();
-> > +    uint64_t toaddr = env->xregs[rd];
-> > +    uint64_t fromaddr = env->xregs[rs];
-> > +    uint64_t copysize = env->xregs[rn];
-> > +    uint64_t stagecopysize, step;
-> > +
-> > +    check_mops_enabled(env, ra);
-> > +
-> > +    if (copysize > 0x007FFFFFFFFFFFFFULL) {
-> > +        copysize = 0x007FFFFFFFFFFFFFULL;
-> > +    }
->
-> CPYFP does not have the same saturation as CPYP.
->
-> Again, you would do better if 'move' was a parameter for an inline, so that the tests can
-> be folded away.
->
-> > +void HELPER(cpym)(CPUARMState *env, uint32_t syndrome, uint32_t wdesc,
-> > +                  uint32_t rdesc, uint32_t move)
-> > +{
-> > +    /* Main: we choose to copy until less than a page remaining */
-> > +    CPUState *cs = env_cpu(env);
-> > +    int rd = mops_destreg(syndrome);
-> > +    int rs = mops_srcreg(syndrome);
-> > +    int rn = mops_sizereg(syndrome);
-> > +    uint32_t rmemidx = FIELD_EX32(rdesc, MTEDESC, MIDX);
-> > +    uint32_t wmemidx = FIELD_EX32(wdesc, MTEDESC, MIDX);
-> > +    uintptr_t ra = GETPC();
-> > +    bool forwards;
-> > +    uint64_t toaddr, fromaddr, copysize, step;
-> > +
-> > +    check_mops_enabled(env, ra);
-> > +
-> > +    /* We choose to NOP out "no data to copy" before consistency checks */
-> > +    if (env->xregs[rn] == 0) {
-> > +        return;
-> > +    }
-> > +
-> > +    check_mops_wrong_option(env, syndrome, ra);
-> > +
-> > +    if ((int64_t)env->xregs[rn] < 0) {
-> > +        forwards = true;
-> > +        toaddr = env->xregs[rd] + env->xregs[rn];
-> > +        fromaddr = env->xregs[rs] + env->xregs[rn];
-> > +        copysize = -env->xregs[rn];
-> > +    } else {
-> > +        forwards = false;
-> > +        copysize = env->xregs[rn];
-> > +        /* This toaddr and fromaddr point to the *last* byte to copy */
-> > +        toaddr = env->xregs[rd] + copysize - 1;
-> > +        fromaddr = env->xregs[rs] + copysize - 1;
-> > +    }
->
-> You're passing 'move' but not using it.  I would have expected that here.
+The LDRT/STRT "unprivileged load/store" instructions behave like
+normal ones if executed at EL0. We handle this correctly for
+the load/store semantics, but get the MTE checking wrong.
 
-Whoops. You can't tell the difference for correct guest code,
-because CPYFP will always set up Xn so that it is negative,
-but yes, CPYFM and CPYFE should be forwards always.
+We always look at s->mte_active[is_unpriv] to see whether we should
+be doing MTE checks, but in hflags.c when we set the TB flags that
+will be used to fill the mte_active[] array we only set the
+MTE0_ACTIVE bit if UNPRIV is true (i.e.  we are not at EL0).
 
-thanks
--- PMM
+This means that a LDRT at EL0 will see s->mte_active[1] as 0,
+and will not do MTE checks even when MTE is enabled.
+
+To avoid the translate-time code having to do an explicit check on
+s->unpriv to see if it is OK to index into the mte_active[] array,
+duplicate MTE_ACTIVE into MTE0_ACTIVE when UNPRIV is false.
+
+(This isn't a very serious bug because generally nobody executes
+LDRT/STRT at EL0, because they have no use there.)
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/hflags.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+index 616c5fa7237..ea642384f5a 100644
+--- a/target/arm/tcg/hflags.c
++++ b/target/arm/tcg/hflags.c
+@@ -306,6 +306,15 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+                 && !(env->pstate & PSTATE_TCO)
+                 && (sctlr & (el == 0 ? SCTLR_TCF0 : SCTLR_TCF))) {
+                 DP_TBFLAG_A64(flags, MTE_ACTIVE, 1);
++                if (!EX_TBFLAG_A64(flags, UNPRIV)) {
++                    /*
++                     * In non-unpriv contexts (eg EL0), unpriv load/stores
++                     * act like normal ones; duplicate the MTE info to
++                     * avoid translate-a64.c having to check UNPRIV to see
++                     * whether it is OK to index into MTE_ACTIVE[].
++                     */
++                    DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
++                }
+             }
+         }
+         /* And again for unprivileged accesses, if required.  */
+-- 
+2.34.1
+

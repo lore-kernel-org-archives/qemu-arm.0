@@ -1,184 +1,151 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp1359762ejx;
-        Mon, 11 Sep 2023 06:54:13 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHX5A5bjb369mrb0cdjDhhbOiFcLRbzGoFoOyK1SIWka/1WSaT5ZPnnqcHNl3+cJaniu8g4
-X-Received: by 2002:a05:622a:5ca:b0:403:ae1b:c0e8 with SMTP id d10-20020a05622a05ca00b00403ae1bc0e8mr11455670qtb.41.1694440452745;
-        Mon, 11 Sep 2023 06:54:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694440452; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp1835056ejx;
+        Mon, 11 Sep 2023 23:58:42 -0700 (PDT)
+X-Received: by 2002:a17:90a:ce15:b0:26f:b228:faea with SMTP id f21-20020a17090ace1500b0026fb228faeamr8763826pju.18.1694501921785;
+        Mon, 11 Sep 2023 23:58:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694501921; cv=none;
         d=google.com; s=arc-20160816;
-        b=D2ClIoPfC4ZXxau2TcxHC7p4HOyxTUZ3d+01bDr76nKWXafMfxF4FdAsmeKOYy5mRi
-         /SGcgw78W7pO0cYSM7Tj5ufbJNyf7VAbhUclAXnrXJ723RXfmiey3lEcZ4ZkmxYGpLaz
-         EmhRNXLBUgm3jpa8955dzmwvtvZVmN+pOTPtMt7SPucHIPv7jo8IctCeyzurMzjBfywA
-         WLV/bV8OlpSDbnbS/0KOQgsEk4Y4mofDN33yWnjI7kzoBqJkj8yop7vjduzZRIHcI2KF
-         BWkU3xCP0+JMeaLTPyCwMJ4XIr+2fBNqimzTIqJ9LWoJyBM9PidfkbOP6v1Z56hW9igO
-         BqLQ==
+        b=S+i9xnnRDhTJPqlMd+FLIJrdwtgUSHBWueLh1B4/pVZxwEOya5qra8np8OMeFKYdye
+         DL8LE251FPlMkJD5hu9ARxyLGngElEY7oJyaMExHrisoM/QXTW0I08/qqPp28GXU9XB/
+         a3s5AalveYR/qNbri3VC+9y4S+Y2M4Osx1asynPx+bTtWW427R6PNRqqEwYKZEvJcnTZ
+         dFmgQDti7o8YMbTsFihqtsj4ov+ysFoKu0bKGFsvxF+awtaWsoAhKqa+oxkvGXlul8ud
+         R+n3swTHgVI8UcFB7nhX7wKuth4qYUJuuvSGsAKO6FjqWBWBfgmXkE5cyqari/J/GPJV
+         j/Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=k0jBq4oF6jCx/majD4+9H6Sti+74uufIErJN9e/RdIs=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=uXSRhF6oq30DFmBc/6k3rqAwaMFraQOU85FAhTravGxYypU2sjDDOVK+AS5yThhnLu
-         txEuh00CLa5uddmLLK9VPxQoCgo+P7v1Q7rfBuh8dksTQcTwO2m7y+rJ8KWH5cUUKmE8
-         J1U2DNExu8kMrTRVHi28nNjc3Pscq872Tt00t2Yx8XRVfq20600ueHbGnn0uvR3Gf3dS
-         Av55Zhm4jvAflKvBW2NLrzV9Vt5EqpOLx9z5URLX+ig2dvc23N8dsO+62n13W51cqwnT
-         fV+4W7giMoDEt5RA90d313R78b7xyNxMfKFBFG49lMWxx433GAVvnxe026rCQJKFAHTV
-         A6Ig==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=qUVjTcjkNZmdhwavklqNnzqJkSIaiyxihMzM0GkWlyU=;
+        fh=mOjAWjm9SVJGsoYL3k28ZexAFXQK9L+zOTfiRIvd12U=;
+        b=ckm6h1x5qiL1qNo0fpFfnAu6NcvJwfBM8kSyDHXLRqr7XXNNvZY5MPMyd/K8eIkJ6h
+         KL0TQUgXXwUzobpOe9dEmU1TH1Qna2SQOB644DSE8r+see1IcgStI/+SZeJTVgl0AKeO
+         7/kbwubJ0vNqnxdu9thJybxkM+jeGk/eTLpDaIKE63M2qZgqc5JIbde+PW+p6AGNx+WP
+         BP+N537+wIsi5dWTE4cU6jJafXw6iw297MtVzfd9zmdP3E7VAr05Ub5Q+/48cYDojPLf
+         /yjmW23Zm7KB6nf573KGXMDJ9E0waJruUN8GewyPrpkJ0avkaKsNfRtJFNFj4XMk1Jc3
+         OnUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KJuK+Gz6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w16-20020ac87e90000000b004035b30ed1bsi4720368qtj.589.2023.09.11.06.54.12
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=jrEcLat9;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a22-20020a17090a8c1600b0026333edfab3sor4193675pjo.3.2023.09.11.23.58.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Sep 2023 06:54:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 11 Sep 2023 23:58:41 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KJuK+Gz6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qfhMP-0005gv-Pe; Mon, 11 Sep 2023 09:53:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qfhMO-0005gH-GE
- for qemu-arm@nongnu.org; Mon, 11 Sep 2023 09:53:52 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qfhMI-00039I-2I
- for qemu-arm@nongnu.org; Mon, 11 Sep 2023 09:53:52 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-31c8321c48fso3595081f8f.1
- for <qemu-arm@nongnu.org>; Mon, 11 Sep 2023 06:53:45 -0700 (PDT)
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=jrEcLat9;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694440423; x=1695045223; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=k0jBq4oF6jCx/majD4+9H6Sti+74uufIErJN9e/RdIs=;
- b=KJuK+Gz6gfyisUU9hM+bwrXKV+iDaECheoZP1z7gqd5q0jq7eaeXseroWxQU92HSKs
- qePG3N2FkJSMfL6fzLCWsFU+yyan9BzLUtAhmorDKg8BUPBu9rII2ua+dss6nwdaDyZs
- XMZ5hZvLJ1vv6gqMxy7hlqU+f6v/O+kyYxYdRmflzNSITl3U1OrinVMIcFqOdmXyz7TC
- cvCMVygeZ34BOgZtPJHBSAzlwK3HI9L0ZEg7K//RW0DYszvgBGV4HWNeFXmu40bMUSKP
- q80Bdf3sL3jkqvwqOuCQNZ+Tm60+Vd+kPWUKvwDqlEh6NAEgM11jKfM/YeooLMBvKjf0
- FDaQ==
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1694501921; x=1695106721; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qUVjTcjkNZmdhwavklqNnzqJkSIaiyxihMzM0GkWlyU=;
+        b=jrEcLat93M93q6B9A6W0Prv4YpMJrixyMH7pS6jUW6mR9cMQCkkW7XVzTp5b9uS1qQ
+         yzj0p8dIm9EN7hFF7Kiw8X2ptdOO3i0+5b477ewszwfAr1+gkU4p4TJ431OarbJptEhM
+         HvdyEXj044lz0aD0RYe1Unh1UZuVBaI3zWu2LCaTuMiW3cYqiNqnbJYPk4NPYSmGPteb
+         1nIAW0W3mU4CZXVr9DgQ5Fx4Eazgw5R5CmBCW6M9C1Viysy1wB/MvXTb1JWbudsld+5E
+         xBLt+afxKPS9DX3DxKTEc7sJgMrQmD8ilijyo03XKDAxkaVdQprRov1owvJGS7KctDrm
+         +Osw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694440423; x=1695045223;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=k0jBq4oF6jCx/majD4+9H6Sti+74uufIErJN9e/RdIs=;
- b=sMx247OadBmqng43v2LhxocHw2PXvzI/lG1ECdlotywn51wVa1yrGqJ9njjdT5wowt
- y4GyMXbt8kAH0/OpXX1BMb9A7GqlfnQUkGaNDqK+3ovdp3Y8RyaySs7HmAmFmZ9e21Mt
- oo5H+tE2D8vZOfov8W/UcGXsDCS8hrAYRcKcto9rHIfsrA5IMLaheYHRk1ndVl1yPjiV
- aL1umJ57P1uW+QYVNJ6bHtyyFZ/zgSvzooW7EwXl7ZwWZppQ0skDNYtEJUetOEkD78sH
- kn2RufpJP1IbTLV40Hg1QLDS8mEdVoYDieb2r+rURj8lphdGjq6khwkrtCt5jzVz1iaG
- hRPQ==
-X-Gm-Message-State: AOJu0Yw4CthpbI15knZhiRUTM0Y9L9a70NEVFIcNFPJypo5P+K+FSuxO
- EjmfUsPPEr8tU92qoowjAyTm6hFDXnYRFAjE4nU=
-X-Received: by 2002:a5d:540e:0:b0:319:55f9:d50d with SMTP id
- g14-20020a5d540e000000b0031955f9d50dmr6664320wrv.33.1694440422993; 
- Mon, 11 Sep 2023 06:53:42 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- r3-20020a5d4983000000b00317ab75748bsm10079758wrq.49.2023.09.11.06.53.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Sep 2023 06:53:42 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 0/7] target/arm: hwcaps updates, FEAT_HBC
-Date: Mon, 11 Sep 2023 14:53:33 +0100
-Message-Id: <20230911135340.1139553-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20230601; t=1694501921; x=1695106721;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=qUVjTcjkNZmdhwavklqNnzqJkSIaiyxihMzM0GkWlyU=;
+        b=KQBGP+CHnrccaTfQb8HE492SiHAUUXvlDU1swdwlOhDh7npzVc0ADiOc3RI2IX81NA
+         Lb3Bb850yofsKmmfAYtuYOlTvweM7dW1W4cVsZk5YgSPpTBH21G648dmORCIsxX3DMO+
+         DoMaNz3Lz8nMbZtjdXQjr5ZtpTCphLBMX3TRuy92HXKwOmQh7rsm+xcuUlj0G8YumoIw
+         mGE2A1f38yxG/hnJh9T9KIsyC0Xv46ozOCRKQgrcWYBALFo5MQ3RkkBTGehXhdO0OKWI
+         neN+Te3vq6yArX+5swFnBwAiI4hztwUBv3/2iJFa4pGiYvrAbLlLFRiRAihpHHJ/uyiV
+         XIbg==
+X-Gm-Message-State: AOJu0Yw8TaizOwqK03FwcriSolScuezQxOAiZZqtGzSfvNomXoV2vwW9
+	opK/1fuP6jFceubgajG8vIj1dLz9349NkogLceA=
+X-Google-Smtp-Source: AGHT+IEugFWzGyIJbgfzMAWZi8kFoV7blGP2kP/el/CE65Q22wACUuhF50orAYjH+Es7z+1uVi5USQ==
+X-Received: by 2002:a17:90a:72c3:b0:273:b0bd:343b with SMTP id l3-20020a17090a72c300b00273b0bd343bmr9158534pjk.41.1694501921213;
+        Mon, 11 Sep 2023 23:58:41 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
+        by smtp.gmail.com with ESMTPSA id i8-20020a17090a2ac800b002696aeb72e5sm9315058pjg.2.2023.09.11.23.58.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Sep 2023 23:58:40 -0700 (PDT)
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+To: 
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Mikhail Tyutin <m.tyutin@yadro.com>,
+	Aleksandr Anenkov <a.anenkov@yadro.com>,
+	qemu-devel@nongnu.org,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH v2 08/11] target/arm: Remove references to gdb_has_xml
+Date: Tue, 12 Sep 2023 15:58:03 +0900
+Message-ID: <20230912065811.27796-9-akihiko.odaki@daynix.com>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20230912065811.27796-1-akihiko.odaki@daynix.com>
+References: <20230912065811.27796-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Qcowbj6mEC3r
+X-TUID: mbqj8Ml5z+MI
 
-This patchset started off as "implement FEAT_HBC" but I ended
-up finding I needed to do a bit of cleanup regarding the elf
-hwcaps bits, so most of the patchset is that cleanup and the
-FEAT_HBC is the simple patch at the end.
+GDB has XML support since 6.7 which was released in 2007.
+It's time to remove support for old GDB versions without XML support.
 
-Patch 1 is the ID_AA64ISAR2_EL1 that's been on the list multiple
-times already. It's in a target-arm pullreq that's already on
-the list, so I've only included it here so the series compiles
-as a standalone patchset.
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Acked-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target/arm/gdbstub.c | 32 ++------------------------------
+ 1 file changed, 2 insertions(+), 30 deletions(-)
 
-Patch 2 is a bugfix for some errors in feature string names
-in the emulated /proc/cpuinfo.
-
-Patches 3-6 update our definitions of hwcap bit values from the
-current Linux kernel source tree, our ID register field definitions
-from the current public system register XML, and make sure we're
-in sync with the kernel about what hwcap bits we report and what
-ID register fields we expose to user-only guest processes.
-(The only actual bug fixed here is some missing arm32 hwcap bits,
-but the rest of the changes are useful to, for instance, let us
-add FEAT_HBC support.)
-
-Patch 7 is the actual FEAT_HBC support. This feature is a variant
-on the B.cond conditional branch that provides some hint
-information to the branch predictor; since we don't do branch
-prediction this is easy for us to implement.
-
-Patch 7 will have an obvious trivial textual conflict with
-the FEAT_MOPS work; I suspect this will get in first, since it's
-much simpler. I also forgot about the hwcap for FEAT_MOPS, but
-once these patches are applied that is a one-liner fix to add
-the GET_FEATURE_ID(aa64_mops, ARM_HWCAP2_A64_MOPS).
-
-thanks
--- PMM
-
-Aaron Lindsay (1):
-  target/arm: Add ID_AA64ISAR2_EL1
-
-Peter Maydell (6):
-  linux-user/elfload.c: Correct SME feature names reported in cpuinfo
-  linux-user/elfload.c: Add missing arm and arm64 hwcap values
-  linux-user/elfload.c: Report previously missing arm32 hwcaps
-  target/arm: Update AArch64 ID register field definitions
-  target/arm: Update user-mode ID reg mask values
-  target/arm: Implement FEAT_HBC
-
- docs/system/arm/emulation.rst  |  1 +
- target/arm/cpu.h               | 28 ++++++++++++++
- target/arm/tcg/a64.decode      |  3 +-
- linux-user/elfload.c           | 71 ++++++++++++++++++++++++++++++----
- target/arm/helper.c            | 15 +++++--
- target/arm/hvf/hvf.c           |  1 +
- target/arm/kvm64.c             |  2 +
- target/arm/tcg/cpu64.c         |  4 ++
- target/arm/tcg/translate-a64.c |  4 ++
- 9 files changed, 118 insertions(+), 11 deletions(-)
-
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 8fc8351df7..b7ace24bfc 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -46,21 +46,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+         /* Core integer register.  */
+         return gdb_get_reg32(mem_buf, env->regs[n]);
+     }
+-    if (n < 24) {
+-        /* FPA registers.  */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return gdb_get_zeroes(mem_buf, 12);
+-    }
+-    switch (n) {
+-    case 24:
+-        /* FPA status register.  */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return gdb_get_reg32(mem_buf, 0);
+-    case 25:
++    if (n == 25) {
+         /* CPSR, or XPSR for M-profile */
+         if (arm_feature(env, ARM_FEATURE_M)) {
+             return gdb_get_reg32(mem_buf, xpsr_read(env));
+@@ -100,21 +86,7 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+         env->regs[n] = tmp;
+         return 4;
+     }
+-    if (n < 24) { /* 16-23 */
+-        /* FPA registers (ignored).  */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return 12;
+-    }
+-    switch (n) {
+-    case 24:
+-        /* FPA status register (ignored).  */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return 4;
+-    case 25:
++    if (n == 25) {
+         /* CPSR, or XPSR for M-profile */
+         if (arm_feature(env, ARM_FEATURE_M)) {
+             /*
 -- 
-2.34.1
-
+2.42.0

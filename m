@@ -1,107 +1,101 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2066026ejx;
-        Tue, 12 Sep 2023 07:08:36 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFGafG4EA2RXsn8FMb2hfJ8whyF7LyTvPXRkKCpNc4+sq96rWI17Z7QxGy30lVyl9vMbByF
-X-Received: by 2002:ac8:7d54:0:b0:3f8:4905:9533 with SMTP id h20-20020ac87d54000000b003f849059533mr17582116qtb.50.1694527716690;
-        Tue, 12 Sep 2023 07:08:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694527716; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2161570ejx;
+        Tue, 12 Sep 2023 09:24:10 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGt1DAFnnfUexVbhSdNAXc6TSXssD7AgIx3fxezLYeYcOJnuliYQ5nPXVsw2XP6HhhCRRO3
+X-Received: by 2002:a0c:ab86:0:b0:64f:82d2:26fe with SMTP id j6-20020a0cab86000000b0064f82d226femr12283757qvb.39.1694535850733;
+        Tue, 12 Sep 2023 09:24:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694535850; cv=none;
         d=google.com; s=arc-20160816;
-        b=pW1WVtfqxK+TPDiLpajddHlV91hwvDpliJ+kfhZoBmjux3kiX+4Y7pwEox9u8fdfR9
-         zthKJagTNxAWq24iEvvRbZZDMO8j8nqKZE4HV/508piocD/F1yZMb+cgIjtCKvzSwIj7
-         tb74de7tZvtrl6WP3silz00n/ZC79Jl0Oxhu9iBar1livJ4P9js0/GvumvDDhZQQkrNQ
-         i8gHVondPOMD5yF24NIBxroM8I9kqtjfcwTGszaNAlS5cgRxORes3zyw4JXMtrN8ZuDU
-         L1sHtxJH/vIBj6CVYWozPJUp/vKBLg/FNYSm4wZTtI1Efo8NVT/Y/Tj7eK1Xrl0lklh/
-         TGjg==
+        b=EPMmFAEL/gfDFdplF2QTnZiMYMAeuRDLF9xMcn7DOUuDyEG8sbUGVpg6QRWQUfehRz
+         22Vcn2mgc8tXGwggtTn2VlqTTmRk6OycAoVorwLCiOLgIIzlVxMzv0B60QjApMF23x1v
+         6ITleR2SxadX1zIe2iJOO5IfPt4yfRzPgSwgaaLXzUr2w3B44c49XQa2Gapy2+BUy63i
+         Mgqs0cteaEnG/ZuwI1S3MBm4JwX6vWxgxnlGdRsuY2vpKD/SFKLhGyxSlKv6buv+y1Ai
+         E0ZUjtn8Wo6s611EuCIBntbNznQHhNs7cix35vsaXdOXDtSFYH4ec1IcOLe0/S2fQMbP
+         Lnfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=wlUwz3Z//tFBD6vOX5Y7annsFJ4rrWopqGexNOG+/ec=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=CNiXF5yaVVd4/urMQ7m/l8hzNGbKws0CPRtkTm1oyIU4VKQOFwFzMu8U58FGPF2HL1
-         Ide1KPTRZb/+r9v515Tgjibm16FkHD1eGisORpqmIa7JxHZrGHpDsLyiz896Mx/cumbu
-         pGXolBaA3UQApIC5kOZyuwFdYoEuJ6G5P6TPjqfcgBF5t7Z98zK31mv5tU/+2MzJa1Wo
-         BZIDinvV9U2uSWPsS1GR0mg+5MRyXn2MTM+7L8nY2W+ABZ/G+MdA6jBqoKKeDel6KgCQ
-         Yv9SWdxVH7ex4kskRSV35mvXJaUDC7zvSN4nuGdRuvzMINDoXb9RH7IQVtNxD+Jo6aix
-         8mAg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=zMayzYKzU97jiOAAncdxm8PQcmBi6tmYeUc4gSGN6b0=;
+        fh=/ftcwOPYeEIhzseC7WF42kR+xVR/IJiWpLC1+A7SOWQ=;
+        b=FmZXUYyly1n98Y6OjHSKse1/1+Ze5smR7aU3KeqdErsojNChXSZtYg0bZsoh9fMYtZ
+         ZFDsmCjrgXgsn92V4nfmMyeYI9bHiukjSOlPkZyh7lDnCVEduSzcBgQ7Ull5FwSL7Eez
+         3Yh6TAgFV30vGETRjoRBe7n7X2kDkHkTry/wDNHoLlpA3sLqQyQrpU3lLYcMWURa7cXH
+         OUtjvM1kEVYzgQq2Krn+MrPIr8uecuoAPRKzYveIh44sfmJgIHZ74V1pcAB39KwNspxY
+         EW+G9UZ8p6r401iQoKmUB1aNWVtH9hVilNZUsPBd6j/iSPCozCrwFVijsTXnoL+ZFhE9
+         PY8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hJQIfjx7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LFTY9qW7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e14-20020ac8598e000000b004055346c0bcsi6194095qte.705.2023.09.12.07.08.36
+        by mx.google.com with ESMTPS id i2-20020a0cf482000000b0063f8ba6c77bsi2743792qvm.238.2023.09.12.09.24.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Sep 2023 07:08:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Sep 2023 09:24:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hJQIfjx7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LFTY9qW7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qg411-0008PT-FQ; Tue, 12 Sep 2023 10:05:19 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qg6BF-0003et-5o; Tue, 12 Sep 2023 12:24:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qg40x-0008Jp-MD
- for qemu-devel@nongnu.org; Tue, 12 Sep 2023 10:05:15 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1qg6BC-0003eb-Fr
+ for qemu-arm@nongnu.org; Tue, 12 Sep 2023 12:23:58 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qg40p-0003ql-Ff
- for qemu-devel@nongnu.org; Tue, 12 Sep 2023 10:05:12 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-31c3726cc45so5887432f8f.0
- for <qemu-devel@nongnu.org>; Tue, 12 Sep 2023 07:04:44 -0700 (PDT)
+ id 1qg6BA-0004EH-3E
+ for qemu-arm@nongnu.org; Tue, 12 Sep 2023 12:23:58 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-9a648f9d8e3so744903466b.1
+ for <qemu-arm@nongnu.org>; Tue, 12 Sep 2023 09:23:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694527483; x=1695132283; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=wlUwz3Z//tFBD6vOX5Y7annsFJ4rrWopqGexNOG+/ec=;
- b=hJQIfjx7keQZgF1EAS5Le/yIPuah6CEDjQiFZ1ymg58Pajvo+d49RkhLt4GvRuFh4q
- wgQuDRYiW+qdur6nWvDBpjOvfKL5624+/+5lcG+wK7Ts5hSQTFigJkJN1bGk+X35K91S
- KVAbDd6zUp7Jpk9tw3Ll1uKb9gqZK016LeQFiIotSsukcjpOVZiMSmQU0aiNRIhnWZVU
- 7m+IhRgnHsujuNMTVcgaJ3YN6d0f0kGzbCL4A5S4wkVdR55vOTF6cBWgcwXkM7Drnaqf
- gP6Y/fuPqJw8qfWtMSfDQ5AC1MpxfeSDk7ZUZXUW7CzW9nv3Xr9Z1rFm+e79uhU2Nnhj
- vQgA==
+ d=linaro.org; s=google; t=1694535834; x=1695140634; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=zMayzYKzU97jiOAAncdxm8PQcmBi6tmYeUc4gSGN6b0=;
+ b=LFTY9qW7GNbY9n2Hm+arL7VYVsDGYhlfDtrNvAt1uF2e42sa3cVmUGsuv0u+HL1wyc
+ 6YzppcNn5zHW6n89l5IjZbtX0Y+ommNPFZLQN9RGYP42q/WriDa5unFhCAzyk+RovIXA
+ bHCh8mdH51dlIe/UdQKsU5B1sYZTxow2uWESInOa0kPj81FwNMnR7jI57fRF1we/wweR
+ vSwzQU03pscTMkKMRFTf58cfMqVs6swKq9utcURS5Gpsrjpo1UGz8HAcK3rj1DCgWV3r
+ BmyXLq/d/fTvPPW1WJX1TQKHl0oFEib7vQwrmQn5nSLUmb8VMXC972VMehd8WUMSFuGj
+ t+iA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694527483; x=1695132283;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=wlUwz3Z//tFBD6vOX5Y7annsFJ4rrWopqGexNOG+/ec=;
- b=g3Z/v628OxgPxmHhwScWBxhRYouViTrXKd9KEflUUdpFpcBdQiiwpum8TZIoIFteWH
- ojAEw/ksf3f6th7Tz7VBeyxK0gMHx8Xn2tnMJT9LR8u6248aITuEqylfsac9u3cRRjJr
- crRPUxVDBjkmGOXHmymAkdpR6tfXi6dOXji4GsOPhiNMZFiTHK92+D1tt4e/tD+RUL07
- SSIaLM+t2yMX2gLRwr9zzGnsNg7KuXt+0qdp/y3yi6evehRJUKKTFq8RTaGkj1YdvHA4
- SjKq0Cy6jCbzFYBuJDHJ9os7bOy9SKFoRConY/EwqBYG1IJhnIESrAei8w35MOEBRjPB
- SnOg==
-X-Gm-Message-State: AOJu0Yw2tPtYaqfOzXce6reRZz1tfwPioC5p9hH8g/KI1PTAo5kAiazQ
- K84x08ohArB5G1i8v6VdgmH1kQ==
-X-Received: by 2002:a05:6000:a17:b0:31f:9398:3656 with SMTP id
- co23-20020a0560000a1700b0031f93983656mr7985602wrb.34.1694527481509; 
- Tue, 12 Sep 2023 07:04:41 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- r3-20020a5d4983000000b00317ab75748bsm12892672wrq.49.2023.09.12.07.04.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Sep 2023 07:04:41 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 07/12] target/arm: Implement the SET* instructions
-Date: Tue, 12 Sep 2023 15:04:29 +0100
-Message-Id: <20230912140434.1333369-8-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230912140434.1333369-1-peter.maydell@linaro.org>
-References: <20230912140434.1333369-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1694535834; x=1695140634;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zMayzYKzU97jiOAAncdxm8PQcmBi6tmYeUc4gSGN6b0=;
+ b=nYDV/YjBXDvPttAD8wxsOLy7y2gR0AwhVE9f/YlzprucGSRJ628VyzgsLxMjgOrtCx
+ BciPjcGpINS029XXMjAsruPD/uGUdp731Sx0KVlvaiU3TefJD24i5t0JW9XE8NRcsuC1
+ p71IQJxSRtVo5k+xoQ04ckkvtQfduYd5oNIk3+BEkl0DWM7mHsjC4SqrfCsCp96TYGQ4
+ +PYvQvxKR6/tWDL5t/+y+mnElD0XJNv3icIS9yTjrLxr30pqXVckiQaC47F0/lZwQx40
+ M2RnxEexdLYmeNWyFG3JrF/+xjJaoV+06GZd5QV5cpOQ62p2cpvZfXKvIG8A8qfhuDTN
+ JzsA==
+X-Gm-Message-State: AOJu0YwwaQSL7imXObKj4fZROULXVegrPpurae6h2ZTB0dRrXHl74p9Z
+ R+mula4toFzabLw8LgW+e2NQwnWcjjwDUhmqiFvdwQ==
+X-Received: by 2002:aa7:c6d0:0:b0:525:5a65:6dfa with SMTP id
+ b16-20020aa7c6d0000000b005255a656dfamr101661eds.14.1694535834238; Tue, 12 Sep
+ 2023 09:23:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+References: <20230816142516.469743-1-richard.henderson@linaro.org>
+ <20230816142516.469743-4-richard.henderson@linaro.org>
+In-Reply-To: <20230816142516.469743-4-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 Sep 2023 17:23:42 +0100
+Message-ID: <CAFEAcA9_St7e4G=BC2k_f8oWKphiD+3P6fEOKzW=vBGSijiKTA@mail.gmail.com>
+Subject: Re: [PATCH 3/4] tcg/aarch64: Emit BTI insns at jump landing pads
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,492 +104,81 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oRkEpGQfKV73
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4JeOR4B1X3ff
 
-Implement the SET* instructions which collectively implement a
-"memset" operation.  These come in a set of three, eg SETP
-(prologue), SETM (main), SETE (epilogue), and each of those has
-different flavours to indicate whether memory accesses should be
-unpriv or non-temporal.
+On Wed, 16 Aug 2023 at 15:27, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> The prologue is entered via "call"; the epilogue, each tb,
+> and each goto_tb continuation point are all reached via "jump".
+>
+> As tcg_out_goto_long is only used by tcg_out_exit_tb, merge
+> the two functions.  Change the indirect register used to
+> TCG_REG_TMP1, aka X16, so that the BTI condition created
+> is "jump" instead of "jump or call".
 
-This commit does not include the "memset with tag setting"
-SETG* instructions.
+TCG_REG_TMP1 is X17, not X16...
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
-v2: separate do_setp/setm/sete, so we can have separate
-    helpers for SETG that pass in a stepfn and bool is_setg,
-    rather than one helper that looks in syndrome to decide
-    whether it's set or setg
----
- target/arm/tcg/helper-a64.h    |   4 +
- target/arm/tcg/a64.decode      |  16 ++
- target/arm/tcg/helper-a64.c    | 344 +++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-a64.c |  49 +++++
- 4 files changed, 413 insertions(+)
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64.h
-index 57cfd68569e..7ce5d2105ad 100644
---- a/target/arm/tcg/helper-a64.h
-+++ b/target/arm/tcg/helper-a64.h
-@@ -117,3 +117,7 @@ DEF_HELPER_FLAGS_3(stzgm_tags, TCG_CALL_NO_WG, void, env, i64, i64)
- 
- DEF_HELPER_FLAGS_4(unaligned_access, TCG_CALL_NO_WG,
-                    noreturn, env, i64, i32, i32)
-+
-+DEF_HELPER_3(setp, void, env, i32, i32)
-+DEF_HELPER_3(setm, void, env, i32, i32)
-+DEF_HELPER_3(sete, void, env, i32, i32)
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 71113173020..c2a97328eeb 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -554,3 +554,19 @@ LDGM            11011001 11 1 ......... 00 ..... ..... @ldst_tag_mult p=0 w=0
- STZ2G           11011001 11 1 ......... 01 ..... ..... @ldst_tag p=1 w=1
- STZ2G           11011001 11 1 ......... 10 ..... ..... @ldst_tag p=0 w=0
- STZ2G           11011001 11 1 ......... 11 ..... ..... @ldst_tag p=0 w=1
-+
-+# Memory operations (memset, memcpy, memmove)
-+# Each of these comes in a set of three, eg SETP (prologue), SETM (main),
-+# SETE (epilogue), and each of those has different flavours to
-+# indicate whether memory accesses should be unpriv or non-temporal.
-+# We don't distinguish temporal and non-temporal accesses, but we
-+# do need to report it in syndrome register values.
-+
-+# Memset
-+&set rs rn rd unpriv nontemp
-+# op2 bit 1 is nontemporal bit
-+@set         .. ......... rs:5 .. nontemp:1 unpriv:1 .. rn:5 rd:5 &set
-+
-+SETP            00 011001110 ..... 00 . . 01 ..... ..... @set
-+SETM            00 011001110 ..... 01 . . 01 ..... ..... @set
-+SETE            00 011001110 ..... 10 . . 01 ..... ..... @set
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index 0cf56f6dc44..24ae5ecf32e 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -968,3 +968,347 @@ void HELPER(unaligned_access)(CPUARMState *env, uint64_t addr,
-     arm_cpu_do_unaligned_access(env_cpu(env), addr, access_type,
-                                 mmu_idx, GETPC());
- }
-+
-+/* Memory operations (memset, memmove, memcpy) */
-+
-+/*
-+ * Return true if the CPY* and SET* insns can execute; compare
-+ * pseudocode CheckMOPSEnabled(), though we refactor it a little.
-+ */
-+static bool mops_enabled(CPUARMState *env)
-+{
-+    int el = arm_current_el(env);
-+
-+    if (el < 2 &&
-+        (arm_hcr_el2_eff(env) & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE) &&
-+        !(arm_hcrx_el2_eff(env) & HCRX_MSCEN)) {
-+        return false;
-+    }
-+
-+    if (el == 0) {
-+        if (!el_is_in_host(env, 0)) {
-+            return env->cp15.sctlr_el[1] & SCTLR_MSCEN;
-+        } else {
-+            return env->cp15.sctlr_el[2] & SCTLR_MSCEN;
-+        }
-+    }
-+    return true;
-+}
-+
-+static void check_mops_enabled(CPUARMState *env, uintptr_t ra)
-+{
-+    if (!mops_enabled(env)) {
-+        raise_exception_ra(env, EXCP_UDEF, syn_uncategorized(),
-+                           exception_target_el(env), ra);
-+    }
-+}
-+
-+/*
-+ * Return the target exception level for an exception due
-+ * to mismatched arguments in a FEAT_MOPS copy or set.
-+ * Compare pseudocode MismatchedCpySetTargetEL()
-+ */
-+static int mops_mismatch_exception_target_el(CPUARMState *env)
-+{
-+    int el = arm_current_el(env);
-+
-+    if (el > 1) {
-+        return el;
-+    }
-+    if (el == 0 && (arm_hcr_el2_eff(env) & HCR_TGE)) {
-+        return 2;
-+    }
-+    if (el == 1 && (arm_hcrx_el2_eff(env) & HCRX_MCE2)) {
-+        return 2;
-+    }
-+    return 1;
-+}
-+
-+/*
-+ * Check whether an M or E instruction was executed with a CF value
-+ * indicating the wrong option for this implementation.
-+ * Assumes we are always Option A.
-+ */
-+static void check_mops_wrong_option(CPUARMState *env, uint32_t syndrome,
-+                                    uintptr_t ra)
-+{
-+    if (env->CF != 0) {
-+        syndrome |= 1 << 17; /* Set the wrong-option bit */
-+        raise_exception_ra(env, EXCP_UDEF, syndrome,
-+                           mops_mismatch_exception_target_el(env), ra);
-+    }
-+}
-+
-+/*
-+ * Return the maximum number of bytes we can transfer starting at addr
-+ * without crossing a page boundary.
-+ */
-+static uint64_t page_limit(uint64_t addr)
-+{
-+    return TARGET_PAGE_ALIGN(addr + 1) - addr;
-+}
-+
-+/*
-+ * Perform part of a memory set on an area of guest memory starting at
-+ * toaddr (a dirty address) and extending for setsize bytes.
-+ *
-+ * Returns the number of bytes actually set, which might be less than
-+ * setsize; the caller should loop until the whole set has been done.
-+ * The caller should ensure that the guest registers are correct
-+ * for the possibility that the first byte of the set encounters
-+ * an exception or watchpoint. We guarantee not to take any faults
-+ * for bytes other than the first.
-+ */
-+static uint64_t set_step(CPUARMState *env, uint64_t toaddr,
-+                         uint64_t setsize, uint32_t data, int memidx,
-+                         uint32_t *mtedesc, uintptr_t ra)
-+{
-+    void *mem;
-+
-+    setsize = MIN(setsize, page_limit(toaddr));
-+    if (*mtedesc) {
-+        uint64_t mtesize = mte_mops_probe(env, toaddr, setsize, *mtedesc);
-+        if (mtesize == 0) {
-+            /* Trap, or not. All CPU state is up to date */
-+            mte_check_fail(env, *mtedesc, toaddr, ra);
-+            /* Continue, with no further MTE checks required */
-+            *mtedesc = 0;
-+        } else {
-+            /* Advance to the end, or to the tag mismatch */
-+            setsize = MIN(setsize, mtesize);
-+        }
-+    }
-+
-+    toaddr = useronly_clean_ptr(toaddr);
-+    /*
-+     * Trapless lookup: returns NULL for invalid page, I/O,
-+     * watchpoints, clean pages, etc.
-+     */
-+    mem = tlb_vaddr_to_host(env, toaddr, MMU_DATA_STORE, memidx);
-+
-+#ifndef CONFIG_USER_ONLY
-+    if (unlikely(!mem)) {
-+        /*
-+         * Slow-path: just do one byte write. This will handle the
-+         * watchpoint, invalid page, etc handling correctly.
-+         * For clean code pages, the next iteration will see
-+         * the page dirty and will use the fast path.
-+         */
-+        cpu_stb_mmuidx_ra(env, toaddr, data, memidx, ra);
-+        return 1;
-+    }
-+#endif
-+    /* Easy case: just memset the host memory */
-+    memset(mem, data, setsize);
-+    return setsize;
-+}
-+
-+typedef uint64_t StepFn(CPUARMState *env, uint64_t toaddr,
-+                        uint64_t setsize, uint32_t data,
-+                        int memidx, uint32_t *mtedesc, uintptr_t ra);
-+
-+/* Extract register numbers from a MOPS exception syndrome value */
-+static int mops_destreg(uint32_t syndrome)
-+{
-+    return extract32(syndrome, 10, 5);
-+}
-+
-+static int mops_srcreg(uint32_t syndrome)
-+{
-+    return extract32(syndrome, 5, 5);
-+}
-+
-+static int mops_sizereg(uint32_t syndrome)
-+{
-+    return extract32(syndrome, 0, 5);
-+}
-+
-+/*
-+ * Return true if TCMA and TBI bits mean we need to do MTE checks.
-+ * We only need to do this once per MOPS insn, not for every page.
-+ */
-+static bool mte_checks_needed(uint64_t ptr, uint32_t desc)
-+{
-+    int bit55 = extract64(ptr, 55, 1);
-+
-+    /*
-+     * Note that tbi_check() returns true for "access checked" but
-+     * tcma_check() returns true for "access unchecked".
-+     */
-+    if (!tbi_check(desc, bit55)) {
-+        return false;
-+    }
-+    return !tcma_check(desc, bit55, allocation_tag_from_addr(ptr));
-+}
-+
-+/*
-+ * For the Memory Set operation, our implementation chooses
-+ * always to use "option A", where we update Xd to the final
-+ * address in the SETP insn, and set Xn to be -(bytes remaining).
-+ * On SETM and SETE insns we only need update Xn.
-+ *
-+ * @env: CPU
-+ * @syndrome: syndrome value for mismatch exceptions
-+ * (also contains the register numbers we need to use)
-+ * @mtedesc: MTE descriptor word
-+ * @stepfn: function which does a single part of the set operation
-+ * @is_setg: true if this is the tag-setting SETG variant
-+ */
-+static void do_setp(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc,
-+                    StepFn *stepfn, bool is_setg, uintptr_t ra)
-+{
-+    /* Prologue: we choose to do up to the next page boundary */
-+    int rd = mops_destreg(syndrome);
-+    int rs = mops_srcreg(syndrome);
-+    int rn = mops_sizereg(syndrome);
-+    uint8_t data = env->xregs[rs];
-+    uint32_t memidx = FIELD_EX32(mtedesc, MTEDESC, MIDX);
-+    uint64_t toaddr = env->xregs[rd];
-+    uint64_t setsize = env->xregs[rn];
-+    uint64_t stagesetsize, step;
-+
-+    check_mops_enabled(env, ra);
-+
-+    if (setsize > INT64_MAX) {
-+        setsize = INT64_MAX;
-+    }
-+
-+    if (!mte_checks_needed(toaddr, mtedesc)) {
-+        mtedesc = 0;
-+    }
-+
-+    stagesetsize = MIN(setsize, page_limit(toaddr));
-+    while (stagesetsize) {
-+        env->xregs[rd] = toaddr;
-+        env->xregs[rn] = setsize;
-+        step = stepfn(env, toaddr, stagesetsize, data, memidx, &mtedesc, ra);
-+        toaddr += step;
-+        setsize -= step;
-+        stagesetsize -= step;
-+    }
-+    /* Insn completed, so update registers to the Option A format */
-+    env->xregs[rd] = toaddr + setsize;
-+    env->xregs[rn] = -setsize;
-+
-+    /* Set NZCV = 0000 to indicate we are an Option A implementation */
-+    env->NF = 0;
-+    env->ZF = 1; /* our env->ZF encoding is inverted */
-+    env->CF = 0;
-+    env->VF = 0;
-+    return;
-+}
-+
-+void HELPER(setp)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
-+{
-+    do_setp(env, syndrome, mtedesc, set_step, false, GETPC());
-+}
-+
-+static void do_setm(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc,
-+                    StepFn *stepfn, bool is_setg, uintptr_t ra)
-+{
-+    /* Main: we choose to do all the full-page chunks */
-+    CPUState *cs = env_cpu(env);
-+    int rd = mops_destreg(syndrome);
-+    int rs = mops_srcreg(syndrome);
-+    int rn = mops_sizereg(syndrome);
-+    uint8_t data = env->xregs[rs];
-+    uint64_t toaddr = env->xregs[rd] + env->xregs[rn];
-+    uint64_t setsize = -env->xregs[rn];
-+    uint32_t memidx = FIELD_EX32(mtedesc, MTEDESC, MIDX);
-+    uint64_t step, stagesetsize;
-+
-+    check_mops_enabled(env, ra);
-+
-+    /*
-+     * We're allowed to NOP out "no data to copy" before the consistency
-+     * checks; we choose to do so.
-+     */
-+    if (env->xregs[rn] == 0) {
-+        return;
-+    }
-+
-+    check_mops_wrong_option(env, syndrome, ra);
-+
-+    /*
-+     * Our implementation will work fine even if we have an unaligned
-+     * destination address, and because we update Xn every time around
-+     * the loop below and the return value from stepfn() may be less
-+     * than requested, we might find toaddr is unaligned. So we don't
-+     * have an IMPDEF check for alignment here.
-+     */
-+
-+    if (!mte_checks_needed(toaddr, mtedesc)) {
-+        mtedesc = 0;
-+    }
-+
-+    /* Do the actual memset: we leave the last partial page to SETE */
-+    stagesetsize = setsize & TARGET_PAGE_MASK;
-+    while (stagesetsize > 0) {
-+        step = stepfn(env, toaddr, setsize, data, memidx, &mtedesc, ra);
-+        toaddr += step;
-+        setsize -= step;
-+        stagesetsize -= step;
-+        env->xregs[rn] = -setsize;
-+        if (stagesetsize > 0 && unlikely(cpu_loop_exit_requested(cs))) {
-+            cpu_loop_exit_restore(cs, ra);
-+        }
-+    }
-+}
-+
-+void HELPER(setm)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
-+{
-+    do_setm(env, syndrome, mtedesc, set_step, false, GETPC());
-+}
-+
-+static void do_sete(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc,
-+                    StepFn *stepfn, bool is_setg, uintptr_t ra)
-+{
-+    /* Epilogue: do the last partial page */
-+    int rd = mops_destreg(syndrome);
-+    int rs = mops_srcreg(syndrome);
-+    int rn = mops_sizereg(syndrome);
-+    uint8_t data = env->xregs[rs];
-+    uint64_t toaddr = env->xregs[rd] + env->xregs[rn];
-+    uint64_t setsize = -env->xregs[rn];
-+    uint32_t memidx = FIELD_EX32(mtedesc, MTEDESC, MIDX);
-+    uint64_t step;
-+
-+    check_mops_enabled(env, ra);
-+
-+    /*
-+     * We're allowed to NOP out "no data to copy" before the consistency
-+     * checks; we choose to do so.
-+     */
-+    if (setsize == 0) {
-+        return;
-+    }
-+
-+    check_mops_wrong_option(env, syndrome, ra);
-+
-+    /*
-+     * Our implementation has no address alignment requirements, but
-+     * we do want to enforce the "less than a page" size requirement,
-+     * so we don't need to have the "check for interrupts" here.
-+     */
-+    if (setsize >= TARGET_PAGE_SIZE) {
-+        raise_exception_ra(env, EXCP_UDEF, syndrome,
-+                           mops_mismatch_exception_target_el(env), ra);
-+    }
-+
-+    if (!mte_checks_needed(toaddr, mtedesc)) {
-+        mtedesc = 0;
-+    }
-+
-+    /* Do the actual memset */
-+    while (setsize > 0) {
-+        step = stepfn(env, toaddr, setsize, data, memidx, &mtedesc, ra);
-+        toaddr += step;
-+        setsize -= step;
-+        env->xregs[rn] = -setsize;
-+    }
-+}
-+
-+void HELPER(sete)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
-+{
-+    do_sete(env, syndrome, mtedesc, set_step, false, GETPC());
-+}
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 24afd929144..bb7b15cb6cb 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -3962,6 +3962,55 @@ TRANS_FEAT(STZG, aa64_mte_insn_reg, do_STG, a, true, false)
- TRANS_FEAT(ST2G, aa64_mte_insn_reg, do_STG, a, false, true)
- TRANS_FEAT(STZ2G, aa64_mte_insn_reg, do_STG, a, true, true)
- 
-+typedef void SetFn(TCGv_env, TCGv_i32, TCGv_i32);
-+
-+static bool do_SET(DisasContext *s, arg_set *a, bool is_epilogue, SetFn fn)
-+{
-+    int memidx;
-+    uint32_t syndrome, desc = 0;
-+
-+    /*
-+     * UNPREDICTABLE cases: we choose to UNDEF, which allows
-+     * us to pull this check before the CheckMOPSEnabled() test
-+     * (which we do in the helper function)
-+     */
-+    if (a->rs == a->rn || a->rs == a->rd || a->rn == a->rd ||
-+        a->rd == 31 || a->rn == 31) {
-+        return false;
-+    }
-+
-+    memidx = get_a64_user_mem_index(s, a->unpriv);
-+
-+    /*
-+     * We pass option_a == true, matching our implementation;
-+     * we pass wrong_option == false: helper function may set that bit.
-+     */
-+    syndrome = syn_mop(true, false, (a->nontemp << 1) | a->unpriv,
-+                       is_epilogue, false, true, a->rd, a->rs, a->rn);
-+
-+    if (s->mte_active[a->unpriv]) {
-+        /* We may need to do MTE tag checking, so assemble the descriptor */
-+        desc = FIELD_DP32(desc, MTEDESC, TBI, s->tbid);
-+        desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
-+        desc = FIELD_DP32(desc, MTEDESC, WRITE, true);
-+        /* SIZEM1 and ALIGN we leave 0 (byte write) */
-+    }
-+    /* The helper function always needs the memidx even with MTE disabled */
-+    desc = FIELD_DP32(desc, MTEDESC, MIDX, memidx);
-+
-+    /*
-+     * The helper needs the register numbers, but since they're in
-+     * the syndrome anyway, we let it extract them from there rather
-+     * than passing in an extra three integer arguments.
-+     */
-+    fn(cpu_env, tcg_constant_i32(syndrome), tcg_constant_i32(desc));
-+    return true;
-+}
-+
-+TRANS_FEAT(SETP, aa64_mops, do_SET, a, false, gen_helper_setp)
-+TRANS_FEAT(SETM, aa64_mops, do_SET, a, false, gen_helper_setm)
-+TRANS_FEAT(SETE, aa64_mops, do_SET, a, true, gen_helper_sete)
-+
- typedef void ArithTwoOp(TCGv_i64, TCGv_i64, TCGv_i64);
- 
- static bool gen_rri(DisasContext *s, arg_rri_sf *a,
--- 
-2.34.1
+>  static void tcg_out_exit_tb(TCGContext *s, uintptr_t a0)
+>  {
+> +    const tcg_insn_unit *target;
+> +    ptrdiff_t offset;
+> +
+>      /* Reuse the zeroing that exists for goto_ptr.  */
+>      if (a0 == 0) {
+> -        tcg_out_goto_long(s, tcg_code_gen_epilogue);
+> +        target = tcg_code_gen_epilogue;
+>      } else {
+>          tcg_out_movi(s, TCG_TYPE_I64, TCG_REG_X0, a0);
+> -        tcg_out_goto_long(s, tb_ret_addr);
+> +        target = tb_ret_addr;
+> +    }
+> +
+> +    offset = tcg_pcrel_diff(s, target) >> 2;
+> +    if (offset == sextract64(offset, 0, 26)) {
+> +        tcg_out_insn(s, 3206, B, offset);
+> +    } else {
+> +        tcg_out_movi(s, TCG_TYPE_I64, TCG_REG_TMP1, (intptr_t)target);
+> +        tcg_out_insn(s, 3207, BR, TCG_REG_TMP1);
 
+Since it's now important that the tempreg we have here is
+one of X16/X17 in order to get the right BTI behaviour,
+I think a build-time assert of this would be helpful.
+That will catch the possibility that we forget about this
+and decide to rearrange which registers we use as
+tempregs later.
+
+>      }
+>  }
+>
+> @@ -1970,6 +1984,7 @@ static void tcg_out_goto_tb(TCGContext *s, int which)
+>      tcg_out32(s, I3206_B);
+>      tcg_out_insn(s, 3207, BR, TCG_REG_TMP0);
+>      set_jmp_reset_offset(s, which);
+> +    tcg_out_bti(s, BTI_J);
+>  }
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+"Did we miss anywhere that should have had a BTI insn"
+is a bit tricky to review, but I assume you've done enough
+testing on a BTI-enabled host to catch that.
+
+thanks
+-- PMM

@@ -1,208 +1,303 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2065496ejx;
-        Tue, 12 Sep 2023 07:08:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHmr8rzYzJmHnaeHTh0sMj1/sRtMkPrL2Ptwl2Gy//cNhBb0PJpOAkrrXSA+QEjIIKruUaD
-X-Received: by 2002:a05:620a:3729:b0:767:eb51:ac27 with SMTP id de41-20020a05620a372900b00767eb51ac27mr14525478qkb.5.1694527683383;
-        Tue, 12 Sep 2023 07:08:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694527683; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2065553ejx;
+        Tue, 12 Sep 2023 07:08:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFP3Zyv01HzQxgCe5WlM6rB2QWlB9oYSCH88K93Ymw/SjuxjrVzeONNFGd00QvsRc2g91Qh
+X-Received: by 2002:a05:620a:2adf:b0:76d:9bf2:f1e9 with SMTP id bn31-20020a05620a2adf00b0076d9bf2f1e9mr13271973qkb.13.1694527686593;
+        Tue, 12 Sep 2023 07:08:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694527686; cv=none;
         d=google.com; s=arc-20160816;
-        b=ret1Gzqi/YofqQHbfcW6F++fZsEfbdN09ij1+1PV1fxdnaCNuHpR+b4nSPUDtk+nU/
-         9nZqmBhmW/2RV4z2Q/HYywisUAaSjj3kuyRKZW+lAu+/Q6ePIS3jQtpCphE2KhOU4+gJ
-         U7n4OHNjNeFlE8VJzh3pNVRRbMML+JsbDqFuLmwK2Lz6pGCVonLnOnOUvvKfK1nXgJvc
-         noJyog8NMXJfTlsXLU30eK8zlufsyJuOCuDf4dgWfIe6PtqqvumJOBHUUKRe1Ky4ji0H
-         m4lXgKeXxOi/ZyvQSm0tTi8eMOqL2vRjZtnehboCYrCFkU28WDomYCrQi8fv0bHNu1Ox
-         NQgA==
+        b=oiAYI/n/yGX9uEa+cTXKIddj7A1NCVl5wX7R+RUqer8mQsYn4BKm7ImsPAxJhI+9MW
+         xYXWG4FT85ilcAqwS7wE1dB8bGagxtqXNlVduPkrDrsUwNalZX/CwE0h/t7pCmSmG1PN
+         QDumiItn1W9E4boeh6b12+NJbR5EgOeuXEdqlr8T1aryTKe2SA7bwSqubWnp2fCsKNX/
+         G8p0ZeHBZWD4cd5xE/LGfdm9UYIhxA1JJL1qI7Y13UFBq6n1aPKW+aJLvmwwC1QntZaN
+         1bRKbqAqo9ra87W0+Jyr43pfh/FgX80a07Qzqpk8zhRO1N2eLv2ta0qUY5V/ZmvrC746
+         1opw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=N0l3cNMDjTcat81VeeDZ5nH8TL6OPDrztoRIGeuKelg=;
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=LKEgjrZx4gf0ML/IevGyBJ31OzflOFa4C2rhH8LLKYk=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=qb7eTXoAzYOQLemelszmt3Qju9Yitb9jQ2UJp7dEHksMyLendT1kDPkmUWMFo8Wvzb
-         Jg91HMQhwhO4mnfjkxkcgjGKNWQ+Y6UZ0Q7NapuctOVI8sboMjeTRQ4ukI3FPE4QCSb7
-         outQBaP/JzGKyoTYrIt7gvwnD5Y1x+sSKq2NVMz1UwiJuUhkNu5DhzM8svO2TkKtn52j
-         BTaAVi4Yud1B2wqkJs69aIaDUwIm3x04eEW5L8B9Iq1m9tkNAJpzV//y3GGuWZp5bBcW
-         eyCuO5VeX2JXzvPFUGGPdIuAzce9UPkz+j1Li972JUZSQtv07u5kTc0dTnwhg+sblsXa
-         ccxQ==
+        b=ylFHvkks+zEZk0XSYvRVhl8Y9xeDrSn2GgTYB8Y8UgkwRucE3WiNofT8NXWi9LSrgi
+         8T6la387WNQ096sVNxvAlD1/GPG4HYMQmTSnzKpg1jBrQyLNsAdEbVH5yFtZwq+OkAA/
+         GEOfi6i0sRbF08r/tWlW6EBwyyTuL+Vtr2JqvfnCkfprUEP48mwlZYg3KuVY0IL4PR2x
+         3ETx+ZtCHH9Id/ShKmYtQO8YeWH0xiKb5BG3YWMyDRqi9dSYLDNAdcaiglymqXsyq8zS
+         nMV9m/FqNnOyuuVFMDagSSgM7pk2w5xCFGt+L8Yy0c7laBJC8fAk/5F8sxrGwn0Ho7fa
+         op5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hUER+QCW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OwdvjT+a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dz8-20020a05620a2b8800b0076da9a5c93dsi6271313qkb.335.2023.09.12.07.08.03
+        by mx.google.com with ESMTPS id h9-20020a05620a284900b0076cc0364ee7si6239666qkp.626.2023.09.12.07.08.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Sep 2023 07:08:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Sep 2023 07:08:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hUER+QCW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OwdvjT+a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qg40n-0008AH-6K; Tue, 12 Sep 2023 10:05:07 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qg412-0008Rs-P0; Tue, 12 Sep 2023 10:05:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qg40W-00086Q-Mr
- for qemu-devel@nongnu.org; Tue, 12 Sep 2023 10:04:49 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ id 1qg40q-0008GS-Rz
+ for qemu-arm@nongnu.org; Tue, 12 Sep 2023 10:05:10 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qg40L-0003pU-QI
- for qemu-devel@nongnu.org; Tue, 12 Sep 2023 10:04:41 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-401b393ddd2so64844995e9.0
- for <qemu-devel@nongnu.org>; Tue, 12 Sep 2023 07:04:37 -0700 (PDT)
+ id 1qg40k-0003qv-MR
+ for qemu-arm@nongnu.org; Tue, 12 Sep 2023 10:05:08 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-31fa666000dso2247601f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 12 Sep 2023 07:04:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694527476; x=1695132276; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=N0l3cNMDjTcat81VeeDZ5nH8TL6OPDrztoRIGeuKelg=;
- b=hUER+QCWwPz36UdPonNMQ0YSHdj9LCmKhmRWXRKwaqEC2R9wP9v7LuGGCi/DcQqaxZ
- 8EsAqNrIGEQ5+NSgYG85FNg6JiAv5UCDoL8GrUp/wsdxpz/irRN+KgORzTo8Eyg2w1ko
- CbB8CRpGtXB+RkobIRuA8+iXA2hfi+POVbijZSpRQ9U2GKNv4vAGWn+o6z6LZ8ZQWQod
- cDXQP4b5SzVqgLWdH3jYIXh0HjrW4TZR4TF3GaBj6cVWJdbAOqFImL9NlZZZKFTFVWRu
- iQuI1ahbHE6vTQINPthf7BRQ7QM1PJnp5XJOdE64PeGOlTpH5movCqRCwUOGFZm1utTm
- jWrQ==
+ d=linaro.org; s=google; t=1694527484; x=1695132284; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=LKEgjrZx4gf0ML/IevGyBJ31OzflOFa4C2rhH8LLKYk=;
+ b=OwdvjT+aSGmZheKGLc5vGlzWvDfafm0unehF/pITTbJiYWZ3zaVJKiw7PoUM3NQf8I
+ g/jrG/EQiseZGE45PmVhId0ai5keF/QFsF001h2fb95KflpLvxh4a+TDjhT91TvZjgs0
+ 5rrqHf0raxsalGVuLo6ab76386yYGpAXV+XWqWgmz6dlXqcOvs/3pPgerzWfGW8MwL+5
+ UxoPvtgehdSY66OsjBGmTvd0TPvwC6h8qLPCnLNjYZ93yI5DbzJ+u2liLYsPVgf2lpNI
+ A2rAFplKV9dmCqu0bsW2/oR85uPEuWjQGaLu0ONwl4Q8tmrzaJwsajBh/yOMF3B+0qy3
+ ysSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694527476; x=1695132276;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=N0l3cNMDjTcat81VeeDZ5nH8TL6OPDrztoRIGeuKelg=;
- b=KPvjOZS5o+eY+QVpPExDFRe6cOBxCU/CLlSaSyzhQKo4WwuO2wncsacxwCBIhX+Mxw
- zbRZVpnqbRLlWGJJ5vCSzaHe18ZFOAJdmGRcYf2FioKRhsmqjICTkuGOSonOGJm85PDf
- TcVWXQFIZjcD+KNSKx8qrYBjkuKg3FQVJJ1mKN232A3TK08sGrs0eAHEpPUezRTfGFgE
- ylDmU9zs7PdxScZW4wPHgFeXct0mQiF256Ks7af6aj1zOLhbirrUcmX1Dw4BB9ySo6/B
- gRm/OWroqamoS1cElzaQvl0nxDayPpOKDzQ30FqYwwmVKcnwP8HuYZ15ssUQdDJPy1hG
- bJaQ==
-X-Gm-Message-State: AOJu0YyMRVw4JucutjZYP+IdFkO6fywhdMY9PQe7re67SA3xhcobR8fM
- dgoAN2eNSByXCCvOuHeJyFa4LYpkEqknYqtocgQ=
-X-Received: by 2002:a7b:c01a:0:b0:401:d3dd:c3c with SMTP id
- c26-20020a7bc01a000000b00401d3dd0c3cmr10810113wmb.39.1694527475794; 
- Tue, 12 Sep 2023 07:04:35 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1694527484; x=1695132284;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=LKEgjrZx4gf0ML/IevGyBJ31OzflOFa4C2rhH8LLKYk=;
+ b=IiBNz+1JfzoJWXh7gMA2fYAshHeA/Q8tGYsuZH16jBoV7i2UlfAFxkfvidDTmXlwpB
+ GoF4/YQmQ7YfT9JGM6Vqqd/8ouGHZ5PhFN1RGaBF6bxQoIzvZgh4NerEYZs/x/y+dMlh
+ 33bUgFsD8VOGvrmh4eGGlpzsS659hq4w9rHmMYxHzKsuV3eBDtEPDF6foF3a3xLBjTch
+ FatvXT7I2GOMvNOzsLnx28yRTimM6dblKhNu5bW4X/PeHyNlmDK6m07nHHnWMnxPEfi/
+ 9uwxiyRa9bZxK/CccXU//6NdtkGohufu8YELxIYc2m1v01coMxkb+CJA/Wg4mBwlNCWy
+ Nc6w==
+X-Gm-Message-State: AOJu0Yx4zIl+jq8rPBZec0EK7ilOM1bFyqOXQ2PShMKvGoazjqTV+jhz
+ edN9/O6iWwyUNBKf4gduhO0zyzP784Waexfm8i4=
+X-Received: by 2002:adf:ec4c:0:b0:317:7068:4997 with SMTP id
+ w12-20020adfec4c000000b0031770684997mr10109739wrn.60.1694527483474; 
+ Tue, 12 Sep 2023 07:04:43 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- r3-20020a5d4983000000b00317ab75748bsm12892672wrq.49.2023.09.12.07.04.35
+ r3-20020a5d4983000000b00317ab75748bsm12892672wrq.49.2023.09.12.07.04.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Sep 2023 07:04:35 -0700 (PDT)
+ Tue, 12 Sep 2023 07:04:43 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 00/12] target/arm: Implement FEAT_MOPS
-Date: Tue, 12 Sep 2023 15:04:22 +0100
-Message-Id: <20230912140434.1333369-1-peter.maydell@linaro.org>
+Subject: [PATCH v2 08/12] target/arm: Define new TB flag for ATA0
+Date: Tue, 12 Sep 2023 15:04:30 +0100
+Message-Id: <20230912140434.1333369-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230912140434.1333369-1-peter.maydell@linaro.org>
+References: <20230912140434.1333369-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e5rNlSHQ6qDt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aXRoK4pb/O5e
 
-This patchset implements the Arm FEAT_MOPS architectural feature,
-which is a set of instructions to implement memory copy and set
-operations. The new instructions come in sets of three:
- * SETP, SETM, SETE -- memory set
- * SETGP, SETGM, SETME -- memory set with MTE tag setting
- * CPYP, CPYM, CPYE -- memory copy
-In each case the copy or set is divided between the "prologue",
-"main" and "epilogue" instructions in an implementation-defined
-way; in guest code they are expected to always appear in order.
+Currently the only tag-setting instructions always do so in the
+context of the current EL, and so we only need one ATA bit in the TB
+flags.  The FEAT_MOPS SETG instructions include ones which set tags
+for a non-privileged access, so we now also need the equivalent "are
+tags enabled?" information for EL0.
 
-Based-on: 20230911135340.1139553-1-peter.maydell@linaro.org
-("target/arm: hwcaps updates, FEAT_HBC")
-so we can set the MOPS hwcap in the last patch.
+Add the new TB flag, and convert the existing 'bool ata' field in
+DisasContext to a 'bool ata[2]' that can be indexed by the is_unpriv
+bit in an instruction, similarly to mte[2].
 
-Changes v1->v2:
- * one patch already upstream
- * patches 7, 9, 11 updated to have separate helper functions
-   for SET vs SETG and CPY vs CPYF
- * use cpu_st16_mmu() for SETG memory set
- * fix CPYFP saturation limit
- * CPYFM and CPYFE now correctly always copy forwards
- * patch 12 now sets the MOPS hwcap bit
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.h               |  1 +
+ target/arm/tcg/translate.h     |  4 ++--
+ target/arm/tcg/hflags.c        | 12 ++++++++++++
+ target/arm/tcg/translate-a64.c | 23 ++++++++++++-----------
+ 4 files changed, 27 insertions(+), 13 deletions(-)
 
-Patches still needing review: 11, 12
-
-There are two things in this patchset that are not currently ideal:
-
- (1) the MTE tag checking is correct, but not optimal for
- performance, because it reuses the existing checkN() function,
- which was designed to work on small memory areas and so
- prefers to read tag memory a byte at a time rather than in
- larger chunks that then need masking. I have opted to leave
- this as a TODO comment in the code for future improvement
- rather than try to address it in the initial submission.
-
- (2) we use the same approach the s390 memcopy instruction
- does, of checking for interrupts periodically so that a
- memcopy of 2GB doesn't stall the whole system. This doesn't
- work for icount mode, because there interrupts are all timed
- to number of instructions executed and the memcopy is still
- only a single insn regardless of how long it takes. I've
- not tried to tackle this because I'm not totally sure of
- what the right thing is, and also because it's a preexisting
- problem with the s390 equivalent insn anyway...
-
-I think it's OK for this to go as-is, and we can think about
-those problems later, but am open to other opinions on that.
-
-thanks
--- PMM
-
-Peter Maydell (12):
-  target/arm: Don't skip MTE checks for LDRT/STRT at EL0
-  target/arm: Implement FEAT_MOPS enable bits
-  target/arm: Pass unpriv bool to get_a64_user_mem_index()
-  target/arm: Define syndrome function for MOPS exceptions
-  target/arm: New function allocation_tag_mem_probe()
-  target/arm: Implement MTE tag-checking functions for FEAT_MOPS
-  target/arm: Implement the SET* instructions
-  target/arm: Define new TB flag for ATA0
-  target/arm: Implement the SETG* instructions
-  target/arm: Implement MTE tag-checking functions for FEAT_MOPS copies
-  target/arm: Implement the CPY* instructions
-  target/arm: Enable FEAT_MOPS for CPU 'max'
-
- docs/system/arm/emulation.rst  |   1 +
- target/arm/cpu.h               |   7 +
- target/arm/internals.h         |  55 +++
- target/arm/syndrome.h          |  12 +
- target/arm/tcg/helper-a64.h    |  14 +
- target/arm/tcg/translate.h     |   4 +-
- target/arm/tcg/a64.decode      |  35 ++
- linux-user/elfload.c           |   1 +
- target/arm/helper.c            |  28 +-
- target/arm/tcg/cpu64.c         |   1 +
- target/arm/tcg/helper-a64.c    | 878 +++++++++++++++++++++++++++++++++
- target/arm/tcg/hflags.c        |  21 +
- target/arm/tcg/mte_helper.c    | 241 ++++++++-
- target/arm/tcg/translate-a64.c | 160 +++++-
- 14 files changed, 1419 insertions(+), 39 deletions(-)
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 266c1a9ea1b..bd55c5dabfd 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3171,6 +3171,7 @@ FIELD(TBFLAG_A64, SVL, 24, 4)
+ FIELD(TBFLAG_A64, SME_TRAP_NONSTREAMING, 28, 1)
+ FIELD(TBFLAG_A64, FGT_ERET, 29, 1)
+ FIELD(TBFLAG_A64, NAA, 30, 1)
++FIELD(TBFLAG_A64, ATA0, 31, 1)
+ 
+ /*
+  * Helpers for using the above.
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index f748ba6f394..63922f8bad1 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -114,8 +114,8 @@ typedef struct DisasContext {
+     bool unpriv;
+     /* True if v8.3-PAuth is active.  */
+     bool pauth_active;
+-    /* True if v8.5-MTE access to tags is enabled.  */
+-    bool ata;
++    /* True if v8.5-MTE access to tags is enabled; index with is_unpriv.  */
++    bool ata[2];
+     /* True if v8.5-MTE tag checks affect the PE; index with is_unpriv.  */
+     bool mte_active[2];
+     /* True with v8.5-BTI and SCTLR_ELx.BT* set.  */
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+index ea642384f5a..cea1adb7b62 100644
+--- a/target/arm/tcg/hflags.c
++++ b/target/arm/tcg/hflags.c
+@@ -325,6 +325,18 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+             && allocation_tag_access_enabled(env, 0, sctlr)) {
+             DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
+         }
++        /*
++         * For unpriv tag-setting accesses we alse need ATA0. Again, in
++         * contexts where unpriv and normal insns are the same we
++         * duplicate the ATA bit to save effort for translate-a64.c.
++         */
++        if (EX_TBFLAG_A64(flags, UNPRIV)) {
++            if (allocation_tag_access_enabled(env, 0, sctlr)) {
++                DP_TBFLAG_A64(flags, ATA0, 1);
++            }
++        } else {
++            DP_TBFLAG_A64(flags, ATA0, EX_TBFLAG_A64(flags, ATA));
++        }
+         /* Cache TCMA as well as TBI. */
+         DP_TBFLAG_A64(flags, TCMA, aa64_va_parameter_tcma(tcr, mmu_idx));
+     }
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index bb7b15cb6cb..da4aabbaf4e 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2272,7 +2272,7 @@ static void handle_sys(DisasContext *s, bool isread,
+             clean_addr = clean_data_tbi(s, tcg_rt);
+             gen_probe_access(s, clean_addr, MMU_DATA_STORE, MO_8);
+ 
+-            if (s->ata) {
++            if (s->ata[0]) {
+                 /* Extract the tag from the register to match STZGM.  */
+                 tag = tcg_temp_new_i64();
+                 tcg_gen_shri_i64(tag, tcg_rt, 56);
+@@ -2289,7 +2289,7 @@ static void handle_sys(DisasContext *s, bool isread,
+             clean_addr = clean_data_tbi(s, tcg_rt);
+             gen_helper_dc_zva(cpu_env, clean_addr);
+ 
+-            if (s->ata) {
++            if (s->ata[0]) {
+                 /* Extract the tag from the register to match STZGM.  */
+                 tag = tcg_temp_new_i64();
+                 tcg_gen_shri_i64(tag, tcg_rt, 56);
+@@ -3070,7 +3070,7 @@ static bool trans_STGP(DisasContext *s, arg_ldstpair *a)
+     tcg_gen_qemu_st_i128(tmp, clean_addr, get_mem_index(s), mop);
+ 
+     /* Perform the tag store, if tag access enabled. */
+-    if (s->ata) {
++    if (s->ata[0]) {
+         if (tb_cflags(s->base.tb) & CF_PARALLEL) {
+             gen_helper_stg_parallel(cpu_env, dirty_addr, dirty_addr);
+         } else {
+@@ -3768,7 +3768,7 @@ static bool trans_STZGM(DisasContext *s, arg_ldst_tag *a)
+     tcg_gen_addi_i64(addr, addr, a->imm);
+     tcg_rt = cpu_reg(s, a->rt);
+ 
+-    if (s->ata) {
++    if (s->ata[0]) {
+         gen_helper_stzgm_tags(cpu_env, addr, tcg_rt);
+     }
+     /*
+@@ -3800,7 +3800,7 @@ static bool trans_STGM(DisasContext *s, arg_ldst_tag *a)
+     tcg_gen_addi_i64(addr, addr, a->imm);
+     tcg_rt = cpu_reg(s, a->rt);
+ 
+-    if (s->ata) {
++    if (s->ata[0]) {
+         gen_helper_stgm(cpu_env, addr, tcg_rt);
+     } else {
+         MMUAccessType acc = MMU_DATA_STORE;
+@@ -3832,7 +3832,7 @@ static bool trans_LDGM(DisasContext *s, arg_ldst_tag *a)
+     tcg_gen_addi_i64(addr, addr, a->imm);
+     tcg_rt = cpu_reg(s, a->rt);
+ 
+-    if (s->ata) {
++    if (s->ata[0]) {
+         gen_helper_ldgm(tcg_rt, cpu_env, addr);
+     } else {
+         MMUAccessType acc = MMU_DATA_LOAD;
+@@ -3867,7 +3867,7 @@ static bool trans_LDG(DisasContext *s, arg_ldst_tag *a)
+ 
+     tcg_gen_andi_i64(addr, addr, -TAG_GRANULE);
+     tcg_rt = cpu_reg(s, a->rt);
+-    if (s->ata) {
++    if (s->ata[0]) {
+         gen_helper_ldg(tcg_rt, cpu_env, addr, tcg_rt);
+     } else {
+         /*
+@@ -3904,7 +3904,7 @@ static bool do_STG(DisasContext *s, arg_ldst_tag *a, bool is_zero, bool is_pair)
+         tcg_gen_addi_i64(addr, addr, a->imm);
+     }
+     tcg_rt = cpu_reg_sp(s, a->rt);
+-    if (!s->ata) {
++    if (!s->ata[0]) {
+         /*
+          * For STG and ST2G, we need to check alignment and probe memory.
+          * TODO: For STZG and STZ2G, we could rely on the stores below,
+@@ -4073,7 +4073,7 @@ static bool gen_add_sub_imm_with_tags(DisasContext *s, arg_rri_tag *a,
+     tcg_rn = cpu_reg_sp(s, a->rn);
+     tcg_rd = cpu_reg_sp(s, a->rd);
+ 
+-    if (s->ata) {
++    if (s->ata[0]) {
+         gen_helper_addsubg(tcg_rd, cpu_env, tcg_rn,
+                            tcg_constant_i32(imm),
+                            tcg_constant_i32(a->uimm4));
+@@ -5460,7 +5460,7 @@ static void disas_data_proc_2src(DisasContext *s, uint32_t insn)
+         if (sf == 0 || !dc_isar_feature(aa64_mte_insn_reg, s)) {
+             goto do_unallocated;
+         }
+-        if (s->ata) {
++        if (s->ata[0]) {
+             gen_helper_irg(cpu_reg_sp(s, rd), cpu_env,
+                            cpu_reg_sp(s, rn), cpu_reg(s, rm));
+         } else {
+@@ -13951,7 +13951,8 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
+     dc->bt = EX_TBFLAG_A64(tb_flags, BT);
+     dc->btype = EX_TBFLAG_A64(tb_flags, BTYPE);
+     dc->unpriv = EX_TBFLAG_A64(tb_flags, UNPRIV);
+-    dc->ata = EX_TBFLAG_A64(tb_flags, ATA);
++    dc->ata[0] = EX_TBFLAG_A64(tb_flags, ATA);
++    dc->ata[1] = EX_TBFLAG_A64(tb_flags, ATA0);
+     dc->mte_active[0] = EX_TBFLAG_A64(tb_flags, MTE_ACTIVE);
+     dc->mte_active[1] = EX_TBFLAG_A64(tb_flags, MTE0_ACTIVE);
+     dc->pstate_sm = EX_TBFLAG_A64(tb_flags, PSTATE_SM);
 -- 
 2.34.1
 

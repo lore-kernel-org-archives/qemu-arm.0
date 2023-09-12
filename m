@@ -1,136 +1,130 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2287378ejx;
-        Tue, 12 Sep 2023 13:03:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGu77dyJtGqkp3Hyt99T9ldFugh5CzrSTZnvXxgHWJnOjNhHWjn+csdE+AtnEpF7EoG8mqo
-X-Received: by 2002:a2e:9e14:0:b0:2bd:16e6:e34a with SMTP id e20-20020a2e9e14000000b002bd16e6e34amr596283ljk.19.1694548998413;
-        Tue, 12 Sep 2023 13:03:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694548998; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2372719ejx;
+        Tue, 12 Sep 2023 15:41:28 -0700 (PDT)
+X-Received: by 2002:a17:902:ec91:b0:1c0:afda:540b with SMTP id x17-20020a170902ec9100b001c0afda540bmr1621304plg.8.1694558487881;
+        Tue, 12 Sep 2023 15:41:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694558487; cv=none;
         d=google.com; s=arc-20160816;
-        b=ckblmMv8uHtA+YKnUNBWXU+Kq1EfYr729iSUPxqz5a5PfpyosEvTh5opsJAEaLOgs/
-         GSzGJOZHql8yWPr0jBo3J8rgXSQdIeCCUPd2UyOrQqx9WXM5nQIzHfwusrPJkXC1IE7q
-         I3l/p1ry3MSSXGDUyuf1jDFxF4lF5fjMoJ4gKQlDYsFe9GojSvLg0nq/qa5p4n97V5dk
-         FYGeZm0Dvkoik70XvGDlyhdjeDmicYQN399nisAIo5grch6vRjAlN1+8jn3G9O0b0FuQ
-         9bv90WuEE8TPkUf9yDynKJnS9+VA3dFCTWMvr3G4b7+GXDG+UoESWr8B0L7qGJ2bFCGB
-         COGA==
+        b=cvJBaTnQMPTmRO+luGrS50Qnpf2tifanLfXD6TNM0VTa5FX4qPUYXSdTqIn75A9X2S
+         dta/GhvNMc4MObm9p02IUh9f7HBDQWpMwQzZsc1kUzghUq/wi4Bh7PKjNuFDhZEOt++x
+         iindeGS916fn7Hm3cJ+bE16nd5LS1nEsThM3GYhkGCjpquTznnTIlNfTQO5ifOf88z8x
+         2eaO0gxTPXhz/sSYRQHKzi4y1613BxehShLKhyT9odntT7FRcQOAoOY1rrc85/zfjjoG
+         +w9qb1DT5MtCwWvY207SLnmDQgqgsVbtFW7Ar/saCVsmM6BeTkfAJ5z7pNAfQif5ynG9
+         P2HQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=qr39NIMHGuHWXhJuFHiwVLAXS8gppAz9QKxHYpXDcD8=;
-        fh=bPRR+rfR36xxkUDmw4gDtK83z+HVFfFjMj6OQkDWuC8=;
-        b=FU3PLZM0adr2CcWpgMNxh70DTeHj55w0q3RJQ/u1TDzbaVO05DHJT/CVRm2f/amJo+
-         gIHJRJptWz1GXpyqeEhWYQMtTQXWRO1GyzAIhUG2IUCpTm6eB2+Mc656wmjA5watC/YN
-         E1FuKFxoY8vHNOdF4fsqjYUnrkgcQgFXc7g13wfsqMqxFewKghZNfWRdvpk7QMfDaWAc
-         J1MTQ5WOwq4fDUAm7xAV4iz2mZ8bWid48Ka2+tXssYsUHurDPPylZskQ0dXzHnwzJ0Ue
-         ywrBIbTRmqYFBYEx0dTFgDgmRW+0Fpm6GZa2OYd2nyhmF3NYoOHzQdVm7LPWah3Gurx0
-         jAaA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=H0ux6zXnF8QbZYj0sOR52aBDTFuqL60bkneT20E5OaM=;
+        fh=t7HWvzoxPcFAE84Fs1r+jS6BhLdo9YU6fOrIt8mFYOk=;
+        b=sQ7Om29VMfK3ZeYpPjEuz/cmG3AERNc6NEqbr5pzSa0b+BwdP1rrSDDTX9afQdmzha
+         aI3CbOdZ4dN2z9r6r9jWPPlkb9MQ9kSK3uZLl5AKBhy+dL6iVdYmsjrKKzJdnUxz1Tyn
+         /h2BHxv6x9NYJDH61FIJh+3YVAu7h1IluRRoi9+kg7M6g/QxXL41jspLjQngLWZOlVsc
+         bwFM983V9vyr2UOHMZ58yPDC4XrYohHzhh2ZcDash1qM2vkIqmeRr0qw0MSnJUsMAx9b
+         z8rtqaN+IuamYEo1AnvsQ/LO6EEeW1P59RL/Dq9ob9JMKotNG/2GBcKu0cKBstoVbt/j
+         mIbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=StkuzUVp;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id gh5-20020a170906e08500b0099bd7b2663dsi9028602ejb.142.2023.09.12.13.03.17
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=x+0mmUUr;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i17-20020a170902e49100b001b8c6ca0c33sor6426546ple.17.2023.09.12.15.41.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Sep 2023 13:03:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Tue, 12 Sep 2023 15:41:27 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=StkuzUVp;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1694548997;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=qr39NIMHGuHWXhJuFHiwVLAXS8gppAz9QKxHYpXDcD8=;
-	b=StkuzUVpx+XB1HY/JvuG4Od48x8ztR0jIHYkkiCra3SVz80UvSGLAJh9tJ3BpREqQMloa5
-	Q99bWWqcvk8AzK5b9jCknj1s7rCGVXXC1v3DZW+a5z6ihCW6poTbgTXV3f/V19umY+xuP+
-	IzY2ytCbg+hbjExgHlZ8eCb1WH+xejg=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-376-O8gyfn1oN_SgCC15IxCwoA-1; Tue, 12 Sep 2023 16:03:13 -0400
-X-MC-Unique: O8gyfn1oN_SgCC15IxCwoA-1
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-3fe182913c5so46796185e9.0
-        for <alex.bennee@linaro.org>; Tue, 12 Sep 2023 13:03:13 -0700 (PDT)
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=x+0mmUUr;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1694558487; x=1695163287; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=H0ux6zXnF8QbZYj0sOR52aBDTFuqL60bkneT20E5OaM=;
+        b=x+0mmUUrTUnDVQ11iAV1yzyhXc2AXl/z1vBOCAGHOQeeXhD8y/gSP+1ZreDs3/YEGK
+         sRxC/b7yVYJ62MrwLu+WhaSkY8/F5+HMVGBSxwfLfXavuGUi9IHJ1ESfRs9NLyaKsH7/
+         qdXidfZXRzBIvF6M4eEXbjx0I4DQun4C50pMPtz9Si3XQMJXcCUoq8ldhv/blF3hW7H5
+         AHThqA9Q7LJ2K/6WUEgQ4lvJbM3YYG9GtAF0PMK7JHDNlh52u40ySG3A3S+5fVRGU4fV
+         vBF0tbxyzvb9l083x7B2wXmWPi1FvNr3vMLtYhOaLZ/teKTW+Q0MyqgYCEaQ4mSQzpLq
+         E44g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694548992; x=1695153792;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qr39NIMHGuHWXhJuFHiwVLAXS8gppAz9QKxHYpXDcD8=;
-        b=LAlu2VLiu/bv0uEvE3cGrFGJpxwWMeSBPjml7dtB0FNQl1ZCX6cwVHw7k+qN8/9QY0
-         kx0Pi6htEqgkgCrwfq8rIE9wK/euWIaWQbbLrD7gv+TaGPIxjYaangRss4bZfQSjd5t9
-         6WVhX9ItM/1U3aB/F/lu/+GZfyH5kx3HLCq3kd2Ba8w1MyywdvyRiLoGAk9wlUGBCkcj
-         576Xs7F/hrCLN+6V9eCk97b/TdTsv/TxvS4VKMkEKnoAUYBUJGZZzkQG63XaH+n1vHXj
-         Gjv3qxAOXsdkJppL4j50LFTcZqS9yBlX5vE/sY7zSxSIuLKmaXXOc1CTOhYCJ/FUVZec
-         9kAw==
-X-Gm-Message-State: AOJu0Yzca3SijeT5HXsF9I0bu4OiOKPnoAJFFgXgbsTSNfkg8Ny8WlOV
-	8thVwVcVQDDmP9UY4Jir2cKKn8sTnbGXm2rmZx9gyvNVhejeuOS/GYtVtIhAV5X+cYVUXNfDiyX
-	kWCSsYLVWIf+ebC5A
-X-Received: by 2002:a7b:c3d0:0:b0:401:73b2:f043 with SMTP id t16-20020a7bc3d0000000b0040173b2f043mr448999wmj.1.1694548992632;
-        Tue, 12 Sep 2023 13:03:12 -0700 (PDT)
-X-Received: by 2002:a7b:c3d0:0:b0:401:73b2:f043 with SMTP id t16-20020a7bc3d0000000b0040173b2f043mr448987wmj.1.1694548992319;
-        Tue, 12 Sep 2023 13:03:12 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.2] (ip-109-43-179-28.web.vodafone.de. [109.43.179.28])
-        by smtp.gmail.com with ESMTPSA id h13-20020a05600c260d00b003fef19bb55csm13814609wma.34.2023.09.12.13.03.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 12 Sep 2023 13:03:11 -0700 (PDT)
-Message-ID: <5cbb92ab-f8b5-4d03-5698-06d0a0b7cfda@redhat.com>
-Date: Tue, 12 Sep 2023 22:03:10 +0200
+        d=1e100.net; s=20230601; t=1694558487; x=1695163287;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=H0ux6zXnF8QbZYj0sOR52aBDTFuqL60bkneT20E5OaM=;
+        b=oW5vlYfz+XP5sQNBijJcQAvBbjzCeicQY//lnpk8ZoNUcIQeh5rkGnuCLibk9jouOz
+         Bu+ji9aZsFe+OxhK51Hxe/USArJ+T2U2hdm1MW97bzEiS22+NJGWuJ+ScOuhyd6r0S3K
+         t/q5noVl8trjGZEKaxHiCegbXZY/eQooJk9qd4Ano6jFKju/ngZ7svyFaDQiiFkaV4s0
+         UvuP/4XbiT9MJ5313WtBihD6WvKX/fwICb3WD6m46SKY+TJBViH1SYfS4ATWWKf/qHGo
+         F7Id9+j7eOeBu9T/JId3ZidZ1hiHaws0ZG0kcY4OAJXTUnkruJvgffDHlRI4OH/ItK6r
+         f8Ig==
+X-Gm-Message-State: AOJu0Yy8vgRaxBlz38XQwHlKc5DZYnUCk99G+tn4/7Cz8R7uz0UJ8/ia
+	edLM3y4tHLb1ii/cddtTvW6/+1iSP5Re4NMriCQ=
+X-Google-Smtp-Source: AGHT+IF1JHr2yhceeRbbHBmXUjE1ZbMqi5N8MdlStT9aWvV7Aot386QLD+UHRoYKWUfWWubhMd/t5w==
+X-Received: by 2002:a17:903:22c9:b0:1c0:9d6f:9d28 with SMTP id y9-20020a17090322c900b001c09d6f9d28mr1356064plg.11.1694558487322;
+        Tue, 12 Sep 2023 15:41:27 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
+        by smtp.gmail.com with ESMTPSA id l13-20020a170902d34d00b001bbbc655ca1sm8996977plk.219.2023.09.12.15.41.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 12 Sep 2023 15:41:27 -0700 (PDT)
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+To: 
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Mikhail Tyutin <m.tyutin@yadro.com>,
+	Aleksandr Anenkov <a.anenkov@yadro.com>,
+	qemu-devel@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH v3 06/12] target/arm: Move the reference to arm-core.xml
+Date: Wed, 13 Sep 2023 07:40:55 +0900
+Message-ID: <20230912224107.29669-7-akihiko.odaki@daynix.com>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20230912224107.29669-1-akihiko.odaki@daynix.com>
+References: <20230912224107.29669-1-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 0/4] ci: fix hang of FreeBSD CI jobs
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Joel Stanley <joel@jms.id.au>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>
-References: <20230912184130.3056054-1-berrange@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230912184130.3056054-1-berrange@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: riu2xnHcXvdu
+X-TUID: o8MaX4w64vCF
 
-On 12/09/2023 20.41, Daniel P. Berrangé wrote:
-> This addresses
-> 
->    https://gitlab.com/qemu-project/qemu/-/issues/1882
-> 
-> Which turned out to be a genuine flaw which we missed during merge
-> as the patch hitting master co-incided with the FreeBSD CI job
-> having an temporary outage due to changed release image version.
-> 
-> Daniel P. Berrangé (4):
->    microbit: add missing qtest_quit() call
->    qtest: kill orphaned qtest QEMU processes on FreeBSD
->    gitlab: make Cirrus CI timeout explicit
->    gitlab: make Cirrus CI jobs gating
-> 
->   .gitlab-ci.d/cirrus.yml       | 4 +++-
->   .gitlab-ci.d/cirrus/build.yml | 2 ++
->   tests/qtest/libqtest.c        | 7 +++++++
->   tests/qtest/microbit-test.c   | 2 ++
->   4 files changed, 14 insertions(+), 1 deletion(-)
-> 
+Some subclasses overwrite gdb_core_xml_file member but others don't.
+Always initialize the member in the subclasses for consistency.
 
-Series
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+This especially helps for AArch64; in a following change, the file
+specified by gdb_core_xml_file is always looked up even if it's going to
+be overwritten later. Looking up arm-core.xml results in an error as
+it will not be embedded in the AArch64 build.
 
-Alex, will you pick these up or shall I take them for my next PR?
-Or Stefan, do you want to apply these directly as a CI fix?
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-  Thomas
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 0bb0585441..6ff6ff2d55 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2389,7 +2389,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     cc->sysemu_ops = &arm_sysemu_ops;
+ #endif
+     cc->gdb_num_core_regs = 26;
+-    cc->gdb_core_xml_file = "arm-core.xml";
+     cc->gdb_arch_name = arm_gdb_arch_name;
+     cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
+     cc->gdb_stop_before_watchpoint = true;
+@@ -2411,8 +2410,10 @@ static void arm_cpu_instance_init(Object *obj)
+ static void cpu_register_class_init(ObjectClass *oc, void *data)
+ {
+     ARMCPUClass *acc = ARM_CPU_CLASS(oc);
++    CPUClass *cc = CPU_CLASS(acc);
+ 
+     acc->info = data;
++    cc->gdb_core_xml_file = "arm-core.xml";
+ }
+ 
+ void arm_cpu_register(const ARMCPUInfo *info)
+-- 
+2.42.0

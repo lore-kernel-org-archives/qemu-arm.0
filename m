@@ -1,107 +1,107 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2064577ejx;
-        Tue, 12 Sep 2023 07:07:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE1hKoR+W6qku9at1W9MkgKkUaWHtSjH5i/PQ4aoIUgxv6HNfidEciASmaaFrdGPNgd+2Mn
-X-Received: by 2002:a05:620a:191e:b0:76f:d34:4513 with SMTP id bj30-20020a05620a191e00b0076f0d344513mr14425341qkb.60.1694527626245;
-        Tue, 12 Sep 2023 07:07:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694527626; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2064847ejx;
+        Tue, 12 Sep 2023 07:07:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHUCSlDclbLDXN535Zu3ftI/Hwu6ntGDOauTMSKk/lhec1uGj+BVeNKFNTQn4kXthIJO+Zt
+X-Received: by 2002:a05:6808:356:b0:3a7:49f1:1d7d with SMTP id j22-20020a056808035600b003a749f11d7dmr13356207oie.41.1694527644028;
+        Tue, 12 Sep 2023 07:07:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694527643; cv=none;
         d=google.com; s=arc-20160816;
-        b=zquYGVheCmA9eHy78vz/IX3TXK7DVUD5Wfa0k+319jV0cP0qjRGFPFIFkOw3tBH7wo
-         DNb7S4eZC1u6VKRGymjXI9SoDbNfIhhFOFWCyA+nS4WJ55Dz5UdKShCKLi9dapofB/C/
-         mYFtqXlAp2//Zg7EL9PnMAbRDucm83RWW2tlTSWXaJNVGR+b/3k79XbMEDF8wx9naYQH
-         Qg0ItOw2VHxTAYCmf5OKagdz0QIZFdi0dkjrm8MJr6oAA+p9h8Epjed9Zoo5Y06mxIyE
-         8skZXXELUBY9o0ll28i5QO0vlhHAEeXEL4TTALIZW5CnZ8FK84CmFt5zY4ww9llhOveb
-         OTzg==
+        b=IDzBICgkEeb3foCXJHo/br/XR9vkNE6Lb8ixY/jXwtXIxYUh6whjv8UC5U2uh1cc8n
+         kmIx7dOFR+qvzQOydHYHtVUXvPxOHY4xsgG9AgWKvqg6DC4hwBhg30Z1TEP4YCUufPwY
+         JRzNgGJCqSvGfI4Q8vqOJJw3Q/6ibmONfT84nN9GwSJ9dlqZCyxco+td1xsYi2tWu8SH
+         HkO+UGiWyntlGTlDyJ16baZ4ehkezQ0OJy87Y7u+c/nQqXz/v3NyGFW5gsyM+QiStXc8
+         6urTtdOEWVGycGdfd3W7HXqRxuBqcxvn20U2IqTmyS1IdlUNZ+NDc8V6hSHC66f5LG6T
+         +ihw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=D1EL7OiWD9A0VKuolOshZyjZ0Z6pN9Kqa/FPwzECxhk=;
+        bh=NBpl5OQT8V8up5SSNxC1qRnSWwtVuHHFrqIRM+FlQ/o=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=AURa+UYsHzjlmqG5eQCX2SbiwBIKu4ooa7JjVIJZkQq/hMWaerC6bxq6NgLebz/ona
-         26Hq4mBFxMJ7du6jqr7TnAttzv6k1RFI1VrVNn//CUdeGbtpJ5YUc/nW35MNVC1FLSyg
-         eksdmiIUxeLDmlUUSBW8den49F4CuywlpxdSJ6GakXHAmOST0KvZ5eXInarNWSEm1EEP
-         F2qMuMGklUAG1B2I+zAmBsQqxPP2tMvY7t260FNsbXMFpTY1+i8kOmoHGJ60xqWW7mfY
-         +xmhn4cPivXXqItJDfIPyi78MKuIKPuyZNMXSZ1tR01CPHy2bgzNc5OnWNlaoG8DLmgs
-         9O0w==
+        b=TC4RWBoDtUEpCQqbmPm17rVRPdxqKsDSkR1dNnjY/z5U2WMuOYPhs/xTT2ptiEi27v
+         Rya5U4vkO1L1Fa3BxLZsu7qoAUZkQo5fm2BJTNb1XKCelKhivAqxj2VrepLh+ifYQvX5
+         v1kV6clRgC69czMdrwyZ5EVsBlMZWJI2ndyLNQtFg7Tnvp/4KW72Uw4S5jvbEqZBhnRN
+         CDw8krnXDT3/vGRxjrqZkMriQBXRmvs9bWVUoArIiXR7haM4y7PgTehOsKlZqkAK4vvn
+         gQrv5yVuLLqpzOctuEPsw4wQQMUG9CK4wPSkwx4o2T3/Akg2x9ErH3kI2Lx6MSyinS13
+         ic9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eSYmUH1q;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wRRpQhVE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qz13-20020a05620a8c0d00b00767e994ff18si5940492qkn.143.2023.09.12.07.07.06
+        by mx.google.com with ESMTPS id t9-20020ab05509000000b007a294aa64d1si750457uaa.140.2023.09.12.07.07.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Sep 2023 07:07:06 -0700 (PDT)
+        Tue, 12 Sep 2023 07:07:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eSYmUH1q;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wRRpQhVE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qg417-00008n-Nh; Tue, 12 Sep 2023 10:05:25 -0400
+	id 1qg413-0008Rx-0S; Tue, 12 Sep 2023 10:05:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qg40l-0008Cs-UX
- for qemu-devel@nongnu.org; Tue, 12 Sep 2023 10:05:06 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1qg40r-0008GV-2c
+ for qemu-devel@nongnu.org; Tue, 12 Sep 2023 10:05:10 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qg40d-0003qD-8k
- for qemu-devel@nongnu.org; Tue, 12 Sep 2023 10:05:02 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-313e742a787so3586496f8f.1
- for <qemu-devel@nongnu.org>; Tue, 12 Sep 2023 07:04:41 -0700 (PDT)
+ id 1qg40l-0003sA-G9
+ for qemu-devel@nongnu.org; Tue, 12 Sep 2023 10:05:08 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-403004a96eeso36435985e9.3
+ for <qemu-devel@nongnu.org>; Tue, 12 Sep 2023 07:04:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694527480; x=1695132280; darn=nongnu.org;
+ d=linaro.org; s=google; t=1694527489; x=1695132289; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=D1EL7OiWD9A0VKuolOshZyjZ0Z6pN9Kqa/FPwzECxhk=;
- b=eSYmUH1qm07IE+JQVdD1GLSqHmcBVWc9ikwtZXrKqF1WfAZcgNYp7vXb6QwlCZV/uI
- 3/zWahF/QirsdCuXt+F9BUfvyRlxHdHxI5kbB2YACkmYM6F4lCesBI+nZOfYcumJ5nUj
- b35WNUXIlBlhJ+mvuy+uqCIb6i4TGCD2ZtICn/GE6l4ruVHYXL8aUJ/qPUGa/x2ZHURp
- XglHwwa2/nnXt1Mu02FmPsD0orqpFqSULUxlETCIYtqF93tv7J9DgaXHkieUfXpsGec7
- SS2pKIyjuhtnjRpotwKirhsLhPRqX0IWmJ4JtyuCrlTVWbPOe3EYPTrrMx9ddJwLJHBB
- Eb+A==
+ :reply-to; bh=NBpl5OQT8V8up5SSNxC1qRnSWwtVuHHFrqIRM+FlQ/o=;
+ b=wRRpQhVEsOwHrfcF90v6yf93EISi82i6/OnDn1k6ffrV97wOiOU62WrFRXtubclH4h
+ bU0KySoxmYl3J6oJMoP0wXSlKfIyHbmZqqhUeZ4vO7DGU9Un6F2WK+oLB31bIs9LjhlO
+ EjVyBw5wkxrJGwNKr+gWkrT6a8k+ruHDfVZgl1Mb8q/v5Du7fNIH+5SQ6ch6MbblDpwv
+ JnkvQUgnEdcG+lTnPJ4pi7ntx99VjuSI0I6WlvJ77bhbrgkEY/cfdpxaZ9z0wJLoXUVQ
+ twcyEhJV43H51jWtSAI2iXjP+6E8lKWvJEDwxFKx45XiMJrqRvqrD8NbQUe2UydE4+wk
+ qhWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694527480; x=1695132280;
+ d=1e100.net; s=20230601; t=1694527489; x=1695132289;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=D1EL7OiWD9A0VKuolOshZyjZ0Z6pN9Kqa/FPwzECxhk=;
- b=UKaUIWnuA4qvHg1BgURcxtMdl5mLyfPF8Y4bjVB/fcs9lcR9MXNjP5Ad6uWVWS1VnS
- UvLRUWyzBZh2XblYsYZmFgA9bbUFYng+Bw1nqbA1fzEytJ6PwyywsldNM4kCV6AMuXMt
- 3DpTo/jnOvBJEZDV1GJINuecLcFJki/ToCKeD02jSTVQf8dryMwfCLjs2wrNC+O7Wb0c
- V+UMMGC8PQVZEC1HEJCeBEZQSm0PR9Bx7oZpcV36QfWA+meUeMe359xiKQsUZIvvY4/w
- IwPAFHvIdt4d58yp43BUIWkbUC5/SRm4YEXBS9SsisOvj4SK8zH+8rdxzozXaAi90uN0
- QHOA==
-X-Gm-Message-State: AOJu0YxRS2zOKSJPXDlJtFYOWxKEoPR6K9gCXcsWJhDr2KJdq+qyaeIL
- lWs8tnNprijtnS1gB6CDV/hPQw==
-X-Received: by 2002:a5d:440f:0:b0:314:c6b:b9a2 with SMTP id
- z15-20020a5d440f000000b003140c6bb9a2mr2019596wrq.13.1694527480383; 
- Tue, 12 Sep 2023 07:04:40 -0700 (PDT)
+ bh=NBpl5OQT8V8up5SSNxC1qRnSWwtVuHHFrqIRM+FlQ/o=;
+ b=LKxYAqautbwO5lhv9OmHFno+nArHfki1bWnpC49aGarYVGZVjCiIs0N7aMexLR7JdJ
+ 31urdsJqWwh6xTr0eIVRJe6zRPacVPn1vXTWAq3vodWP9wUMrmskqGL1iIYyOxT0IRAY
+ JosWm3ebT3q4dn69IwmO82n/AEAM1oTY4+skkVH29j+FGN7qAG8AmkmhnlXYwvMaP26X
+ vnNVaYqS4Xj+nl6nRTyCDrmqDSyXACcl6aPA+HNAjQk4baX952GUQzvN1TEbkIc9ieRv
+ MV5V26Joc6sAfkbJei/LHneDlvcrdWi0yf5idlcf7bQJ8ysN+1+4y1vinSiY6c3WB6QI
+ uCiQ==
+X-Gm-Message-State: AOJu0Yx2DccJES+1kcV0pqe3hprzA6qky5LVqSe//Y65f+BzXTaZpb/H
+ 1ODqQuXXaVqLAGlWFATgWRrvwQ==
+X-Received: by 2002:a05:600c:5120:b0:402:f517:9c07 with SMTP id
+ o32-20020a05600c512000b00402f5179c07mr10297024wms.0.1694527489134; 
+ Tue, 12 Sep 2023 07:04:49 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- r3-20020a5d4983000000b00317ab75748bsm12892672wrq.49.2023.09.12.07.04.39
+ r3-20020a5d4983000000b00317ab75748bsm12892672wrq.49.2023.09.12.07.04.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Sep 2023 07:04:40 -0700 (PDT)
+ Tue, 12 Sep 2023 07:04:48 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 05/12] target/arm: New function allocation_tag_mem_probe()
-Date: Tue, 12 Sep 2023 15:04:27 +0100
-Message-Id: <20230912140434.1333369-6-peter.maydell@linaro.org>
+Subject: [PATCH v2 12/12] target/arm: Enable FEAT_MOPS for CPU 'max'
+Date: Tue, 12 Sep 2023 15:04:34 +0100
+Message-Id: <20230912140434.1333369-13-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230912140434.1333369-1-peter.maydell@linaro.org>
 References: <20230912140434.1333369-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,131 +123,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nnVHKZmGNJSL
+X-TUID: eGMe+PEp+h5m
 
-For the FEAT_MOPS operations, the existing allocation_tag_mem()
-function almost does what we want, but it will take a watchpoint
-exception even for an ra == 0 probe request, and it requires that the
-caller guarantee that the memory is accessible.  For FEAT_MOPS we
-want a function that will not take any kind of exception, and will
-return NULL for the not-accessible case.
-
-Rename allocation_tag_mem() to allocation_tag_mem_probe() and add an
-extra 'probe' argument that lets us distinguish these cases;
-allocation_tag_mem() is now a wrapper that always passes 'false'.
+Enable FEAT_MOPS on the AArch64 'max' CPU, and add it to
+the list of features we implement.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/mte_helper.c | 48 ++++++++++++++++++++++++++++---------
- 1 file changed, 37 insertions(+), 11 deletions(-)
+v2: Now sets the hwcap bit
+---
+ docs/system/arm/emulation.rst | 1 +
+ linux-user/elfload.c          | 1 +
+ target/arm/tcg/cpu64.c        | 1 +
+ 3 files changed, 3 insertions(+)
 
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index e2494f73cf3..303bcc7fd84 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -50,13 +50,14 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index 1fb6a2e8c3e..965cbf84c51 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -58,6 +58,7 @@ the following architecture extensions:
+ - FEAT_LSE (Large System Extensions)
+ - FEAT_LSE2 (Large System Extensions v2)
+ - FEAT_LVA (Large Virtual Address space)
++- FEAT_MOPS (Standardization of memory operations)
+ - FEAT_MTE (Memory Tagging Extension)
+ - FEAT_MTE2 (Memory Tagging Extension)
+ - FEAT_MTE3 (MTE Asymmetric Fault Handling)
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 203a2b790d5..db75cd4b33f 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -816,6 +816,7 @@ uint32_t get_elf_hwcap2(void)
+     GET_FEATURE_ID(aa64_sme_i16i64, ARM_HWCAP2_A64_SME_I16I64);
+     GET_FEATURE_ID(aa64_sme_fa64, ARM_HWCAP2_A64_SME_FA64);
+     GET_FEATURE_ID(aa64_hbc, ARM_HWCAP2_A64_HBC);
++    GET_FEATURE_ID(aa64_mops, ARM_HWCAP2_A64_MOPS);
+ 
+     return hwcaps;
  }
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index 57abaea00cd..68928e51272 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1028,6 +1028,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+     cpu->isar.id_aa64isar1 = t;
  
- /**
-- * allocation_tag_mem:
-+ * allocation_tag_mem_probe:
-  * @env: the cpu environment
-  * @ptr_mmu_idx: the addressing regime to use for the virtual address
-  * @ptr: the virtual address for which to look up tag memory
-  * @ptr_access: the access to use for the virtual address
-  * @ptr_size: the number of bytes in the normal memory access
-  * @tag_access: the access to use for the tag memory
-+ * @probe: true to merely probe, never taking an exception
-  * @ra: the return address for exception handling
-  *
-  * Our tag memory is formatted as a sequence of little-endian nibbles.
-@@ -65,15 +66,25 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
-  * for the higher addr.
-  *
-  * Here, resolve the physical address from the virtual address, and return
-- * a pointer to the corresponding tag byte.  Exit with exception if the
-- * virtual address is not accessible for @ptr_access.
-+ * a pointer to the corresponding tag byte.
-  *
-  * If there is no tag storage corresponding to @ptr, return NULL.
-+ *
-+ * If the page is inaccessible for @ptr_access, or has a watchpoint, there are
-+ * three options:
-+ * (1) probe = true, ra = 0 : pure probe -- we return NULL if the page is not
-+ *     accessible, and do not take watchpoint traps. The calling code must
-+ *     handle those cases in the right priority compared to MTE traps.
-+ * (2) probe = false, ra = 0 : probe, no fault expected -- the caller guarantees
-+ *     that the page is going to be accessible. We will take watchpoint traps.
-+ * (3) probe = false, ra != 0 : non-probe -- we will take both memory access
-+ *     traps and watchpoint traps.
-+ * (probe = true, ra != 0 is invalid and will assert.)
-  */
--static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
--                                   uint64_t ptr, MMUAccessType ptr_access,
--                                   int ptr_size, MMUAccessType tag_access,
--                                   uintptr_t ra)
-+static uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
-+                                         uint64_t ptr, MMUAccessType ptr_access,
-+                                         int ptr_size, MMUAccessType tag_access,
-+                                         bool probe, uintptr_t ra)
- {
- #ifdef CONFIG_USER_ONLY
-     uint64_t clean_ptr = useronly_clean_ptr(ptr);
-@@ -81,6 +92,8 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-     uint8_t *tags;
-     uintptr_t index;
+     t = cpu->isar.id_aa64isar2;
++    t = FIELD_DP64(t, ID_AA64ISAR2, MOPS, 1);     /* FEAT_MOPS */
+     t = FIELD_DP64(t, ID_AA64ISAR2, BC, 1);      /* FEAT_HBC */
+     cpu->isar.id_aa64isar2 = t;
  
-+    assert(!(probe && ra));
-+
-     if (!(flags & (ptr_access == MMU_DATA_STORE ? PAGE_WRITE_ORG : PAGE_READ))) {
-         cpu_loop_exit_sigsegv(env_cpu(env), ptr, ptr_access,
-                               !(flags & PAGE_VALID), ra);
-@@ -111,12 +124,16 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-      * exception for inaccessible pages, and resolves the virtual address
-      * into the softmmu tlb.
-      *
--     * When RA == 0, this is for mte_probe.  The page is expected to be
--     * valid.  Indicate to probe_access_flags no-fault, then assert that
--     * we received a valid page.
-+     * When RA == 0, this is either a pure probe or a no-fault-expected probe.
-+     * Indicate to probe_access_flags no-fault, then either return NULL
-+     * for the pure probe, or assert that we received a valid page for the
-+     * no-fault-expected probe.
-      */
-     flags = probe_access_full(env, ptr, 0, ptr_access, ptr_mmu_idx,
-                               ra == 0, &host, &full, ra);
-+    if (probe && (flags & TLB_INVALID_MASK)) {
-+        return NULL;
-+    }
-     assert(!(flags & TLB_INVALID_MASK));
- 
-     /* If the virtual page MemAttr != Tagged, access unchecked. */
-@@ -157,7 +174,7 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-     }
- 
-     /* Any debug exception has priority over a tag check exception. */
--    if (unlikely(flags & TLB_WATCHPOINT)) {
-+    if (!probe && unlikely(flags & TLB_WATCHPOINT)) {
-         int wp = ptr_access == MMU_DATA_LOAD ? BP_MEM_READ : BP_MEM_WRITE;
-         assert(ra != 0);
-         cpu_check_watchpoint(env_cpu(env), ptr, ptr_size, attrs, wp, ra);
-@@ -199,6 +216,15 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
- #endif
- }
- 
-+static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-+                                   uint64_t ptr, MMUAccessType ptr_access,
-+                                   int ptr_size, MMUAccessType tag_access,
-+                                   uintptr_t ra)
-+{
-+    return allocation_tag_mem_probe(env, ptr_mmu_idx, ptr, ptr_access,
-+                                    ptr_size, tag_access, false, ra);
-+}
-+
- uint64_t HELPER(irg)(CPUARMState *env, uint64_t rn, uint64_t rm)
- {
-     uint16_t exclude = extract32(rm | env->cp15.gcr_el1, 0, 16);
 -- 
 2.34.1
 

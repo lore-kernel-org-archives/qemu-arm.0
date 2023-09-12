@@ -1,112 +1,110 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2245120ejx;
-        Tue, 12 Sep 2023 11:41:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHBN7ZlSdirmslG9CXn9zhvci1SaA4oiDsD9jbAxa7o/urSmUFAZMvIjWepYaLPIfnFmCQ3
-X-Received: by 2002:a05:622a:296:b0:403:ca55:6ac5 with SMTP id z22-20020a05622a029600b00403ca556ac5mr108813qtw.18.1694544105048;
-        Tue, 12 Sep 2023 11:41:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694544105; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2254078ejx;
+        Tue, 12 Sep 2023 12:00:17 -0700 (PDT)
+X-Received: by 2002:a9d:7d8d:0:b0:6b9:b904:99d3 with SMTP id j13-20020a9d7d8d000000b006b9b90499d3mr604639otn.28.1694545217194;
+        Tue, 12 Sep 2023 12:00:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694545217; cv=none;
         d=google.com; s=arc-20160816;
-        b=PSq9iSJDwn8HH+tRl3284B/kET8izyyYiTYWICz12zqq3NMqnR0rG857VXAfPPSN5z
-         ka05CFQsi/ZxWlc6Gq+LUzNHmdo6QgUs2LCAEDq03a+Ta19AfAgOo4YneIZR9quK0PJv
-         LZxUzSmN0RaW0UEvaCbhW7s5BwGRhKo7j8WgDfNpL6oa5FRJhgJ0+C/WR9j5Q73hkHgG
-         spk1UVjbH6/lhcfZeMHtinljYpZmaO1ew7gMIL8s0Y814A+DOvW5nk5OaWsE79FTfELu
-         ACvwPaPLUarMT3rohBB0yYPDg3JXhO5MaGpAnpexqy3gI6GGje++L5EPfjfTpIaehxrj
-         f4Eg==
+        b=ZZGCqIASwYci9beJLV+kgakXBzK7Lq1Ba9xigP0cZjSG66PmYV4fnVd09KHtTHC+HC
+         yvnNqaGytkOCgPS6UHAbn8zFr6R6zAZV1BdiTAULuyeb6q7tVAVyrGJ76ZU5Xj9IZhrR
+         KLYpuAzyY6735tYo2ekH+cXwG1TcXe3vR262sdYiQIBIIaNVNDlqNh/5UrvYQpkPIU8w
+         pNW3YFLLkHJcHai4tIEmqaEJDOl16qMZxMzUourNX6Vff7ZLnsMtDeQHqKBZ4oHnsF1M
+         oINII0I1ewoFATkxQ4yzVRDJ1uxZ2FKntvJxQdrJF+wY2n3aWrWHxGHEtr+4r5DAxE6B
+         R2Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vrKTV5q71INoyKwvAjiPZ+w9+kylVYW0lrRSYUV0Cfw=;
-        fh=7i2B42VHusWKsnJOPWSYnjvVgBurff/6q9zEPTejEek=;
-        b=Y3l6mL8vDYtoeZlbLd6VB1cag2lt3NSi3Q627jCi6xg+mMw7+GNrblThUyU7lsCMed
-         HQjPp0+PkLL1uv9R5WPZcbUBd68xy6evy3cmbEZTqdzIoCUl9iCmYPXiDBPlQPNESUab
-         XtLNOyABq0RleONDGrRR9+aI1HC+OgzoDnIIQMMPqlFYLkOj5z4sKXfbhZjVkUpyf/ru
-         V+0dv7mEcjDeQsSm3qjclexTYxeN1DJC4KWknD1RTuzsY1qxHJsB0XZaAFrVtHZloNeS
-         G5FtZOfeJC4/rZOwziuevNLqImWWchHuAxaBR4IGOtk3jT3GeIX0kxg2gAp5umLIyqu5
-         FlTw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=piu0eHKYmcAc4W9uppF+EeQSMzIi9xiD6eKhcA2ryU0=;
+        fh=OEc6tgPo3nQRpMKybyhrkni++VeP/vop3bbPQRFLTxU=;
+        b=0HNP8xy9TFQKZwy0P7RS4LhGjyqp+RSbMGES0yYvsvtsuCsG6gG7a+dyg/4oWp2A9R
+         HV+7ON4Fhlo0ZqPeaR2Nd7V07aSTxgCF3bV3B5CvFE5uus0roPB6rwsNwJPlDY+Tu3s+
+         /atX54qCPiy5OK0LBxvrn7za5PaZQzH6fzDNJ0vSBZPuMMiT209p5BcIe6JuyyZNgfmW
+         lDgxOy8F+h8FmCzAco9xIb4detQMVpfAdrvAUC6QDYz18U2jfISiP/OKADrnyrDeCZvq
+         9Md1/Atqpl7ecync9zMaH7V/YNmxV1Kns8UyMo+4Jj5R8tXbxZ2/vTKROXpVcm6hH7Hp
+         KO+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fanx6iSB;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id s15-20020a05622a018f00b00410a39d766dsi6879056qtw.161.2023.09.12.11.41.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Sep 2023 11:41:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b="IYxSTu7/";
+       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <stefanha@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id v18-20020a05683024b200b006b5dcbfcf17sor3811013ots.10.2023.09.12.12.00.16
+        (Google Transport Security);
+        Tue, 12 Sep 2023 12:00:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of stefanha@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fanx6iSB;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1694544104;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vrKTV5q71INoyKwvAjiPZ+w9+kylVYW0lrRSYUV0Cfw=;
-	b=Fanx6iSBbvd+IvDrOThH+OVZFUbY+6P3guyXa/tlFnIgrTLByLB6uyfFkTqxfilFsWzK2j
-	v+etkNTlkEPJiJg9xuS35YBy6+UPS8xfNY7HH09WPKj9BGWsTWB17CqHV69H3adVHPgu9i
-	YrriOdgQYps91+nTF/D8VRh3zpQJomQ=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-147-nHacdlGFPt6vjqe_z6T_xg-1; Tue, 12 Sep 2023 14:41:41 -0400
-X-MC-Unique: nHacdlGFPt6vjqe_z6T_xg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AB74D8564EF;
-	Tue, 12 Sep 2023 18:41:40 +0000 (UTC)
-Received: from localhost.localdomain.com (unknown [10.42.28.38])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1E05A7B62;
-	Tue, 12 Sep 2023 18:41:39 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	Stefan Hajnoczi <stefanha@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Joel Stanley <joel@jms.id.au>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 4/4] gitlab: make Cirrus CI jobs gating
-Date: Tue, 12 Sep 2023 19:41:30 +0100
-Message-ID: <20230912184130.3056054-5-berrange@redhat.com>
-In-Reply-To: <20230912184130.3056054-1-berrange@redhat.com>
-References: <20230912184130.3056054-1-berrange@redhat.com>
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b="IYxSTu7/";
+       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1694545216; x=1695150016; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=piu0eHKYmcAc4W9uppF+EeQSMzIi9xiD6eKhcA2ryU0=;
+        b=IYxSTu7/MEg3+6sZK1oZIQG7bUl+P5rjtYkYQ4iHvYapVoR+KdLElKz7lcZ9xmvaS8
+         +5Z3RXISKpzt29StE9h01lgX9L7jv5MmzIY3Q5eWD4yQc1VK2V9wHXVz1hOn+UGVhYMo
+         fKgkUOYeJ6sifuUJdhNCaYBQ6neMGcPczg+y0K5PmMmVrRT7UG+/A3JfRUaq5pbEGQSL
+         5DJ4FZ4Iwi//NUCvFPcWjqzP78gf32mv2C3NqtdFfqNnhaRkw8AGoMdcvLwQYcbXtNVj
+         vjjnx0Cb4Gh9esIK7GGOz+rqQy9vpBryVs240PCEVleUaXea+0w5zW1Eq1rEyaHltkod
+         HlVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694545216; x=1695150016;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=piu0eHKYmcAc4W9uppF+EeQSMzIi9xiD6eKhcA2ryU0=;
+        b=PzqI9y/xgSuudaznECntwh1NLJLSb+/Dopu+X5w/BQPfe7JimUX2iOtnsmQdq1IA/V
+         lzkaT4FvKlMxdRN0XYnsXdJ/unYq1ZXbMYcoHHwtntBpQzr1noKBVohgm5Rkih2RZ9hc
+         it/7L8gX6DuRlX+NdJs+8dHFOMzSjkt1jGnde74Acr6Pv9jgJWb3b+CRvW9GG07j3tYN
+         4Nw9WkKYsjHa1raa9Y7XnfAXmgS+6v6MZt46+dza/m34fbsW+G/gAVn81txKpuKfPz2a
+         u7HUaBNPL9IAmn8H91wbdOsth9/LUBJlLnfQKtCuUb7N+TmONWix1gQoPh5pTd8PqrvE
+         Si1A==
+X-Gm-Message-State: AOJu0YzMwDbzvPxfIKxL1aDWa0/GHXi2LtOdJpipdXuxjrrsXsntbmXc
+	zUrYh1bmxpWAJrM3mrbwR7IOGEbvTvuLj7VKwek=
+X-Google-Smtp-Source: AGHT+IHV93FpCnhqVsit2bwizRL6P5PzDuK2CadshF9ddMo+or4565E1M0joWr2fG669upfbvHKfrjYxDystHhJ8X/s=
+X-Received: by 2002:a4a:7452:0:b0:570:c8fa:4ad7 with SMTP id
+ t18-20020a4a7452000000b00570c8fa4ad7mr508407ooe.1.1694545216659; Tue, 12 Sep
+ 2023 12:00:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-X-TUID: GlmDEYBeWdhW
+References: <20230912184130.3056054-1-berrange@redhat.com>
+In-Reply-To: <20230912184130.3056054-1-berrange@redhat.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Tue, 12 Sep 2023 15:00:04 -0400
+Message-ID: <CAJSP0QW_Oa2w-WdSeSkHnd6kFN6OxAkPr03_UO_rDWDhpT7Wxg@mail.gmail.com>
+Subject: Re: [PATCH 0/4] ci: fix hang of FreeBSD CI jobs
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>, 
+	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org, 
+	Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: pwK5FQkYmbzW
 
-The Cirrus CI jobs have been non-gating for a while to let us build
-confidence in their reliability. Aside from periodic dependancy
-problems when FreeBSD Ports switches to be based on a new FreeBSD
-image version, the jobs have been reliable. It is thus worth making
-them gating to prevent build failures being missed during merges.
+On Tue, 12 Sept 2023 at 14:41, Daniel P. Berrang=C3=A9 <berrange@redhat.com=
+> wrote:
+>
+> This addresses
+>
+>   https://gitlab.com/qemu-project/qemu/-/issues/1882
+>
+> Which turned out to be a genuine flaw which we missed during merge
+> as the patch hitting master co-incided with the FreeBSD CI job
+> having an temporary outage due to changed release image version.
+>
+> Daniel P. Berrang=C3=A9 (4):
+>   microbit: add missing qtest_quit() call
+>   qtest: kill orphaned qtest QEMU processes on FreeBSD
+>   gitlab: make Cirrus CI timeout explicit
+>   gitlab: make Cirrus CI jobs gating
+>
+>  .gitlab-ci.d/cirrus.yml       | 4 +++-
+>  .gitlab-ci.d/cirrus/build.yml | 2 ++
+>  tests/qtest/libqtest.c        | 7 +++++++
+>  tests/qtest/microbit-test.c   | 2 ++
+>  4 files changed, 14 insertions(+), 1 deletion(-)
 
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
----
- .gitlab-ci.d/cirrus.yml | 1 -
- 1 file changed, 1 deletion(-)
+Thank you!
 
-diff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml
-index 816d89cc2a..e7f1f83c2c 100644
---- a/.gitlab-ci.d/cirrus.yml
-+++ b/.gitlab-ci.d/cirrus.yml
-@@ -19,7 +19,6 @@
-   # as there's often a 5-10 minute delay before Cirrus CI
-   # actually starts the task
-   timeout: 80m
--  allow_failure: true
-   script:
-     - source .gitlab-ci.d/cirrus/$NAME.vars
-     - sed -e "s|[@]CI_REPOSITORY_URL@|$CI_REPOSITORY_URL|g"
--- 
-2.41.0
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>

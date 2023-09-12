@@ -1,110 +1,123 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2254078ejx;
-        Tue, 12 Sep 2023 12:00:17 -0700 (PDT)
-X-Received: by 2002:a9d:7d8d:0:b0:6b9:b904:99d3 with SMTP id j13-20020a9d7d8d000000b006b9b90499d3mr604639otn.28.1694545217194;
-        Tue, 12 Sep 2023 12:00:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694545217; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2260988ejx;
+        Tue, 12 Sep 2023 12:10:22 -0700 (PDT)
+X-Received: by 2002:a05:6a20:549d:b0:134:73f6:5832 with SMTP id i29-20020a056a20549d00b0013473f65832mr706212pzk.16.1694545822006;
+        Tue, 12 Sep 2023 12:10:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694545821; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZZGCqIASwYci9beJLV+kgakXBzK7Lq1Ba9xigP0cZjSG66PmYV4fnVd09KHtTHC+HC
-         yvnNqaGytkOCgPS6UHAbn8zFr6R6zAZV1BdiTAULuyeb6q7tVAVyrGJ76ZU5Xj9IZhrR
-         KLYpuAzyY6735tYo2ekH+cXwG1TcXe3vR262sdYiQIBIIaNVNDlqNh/5UrvYQpkPIU8w
-         pNW3YFLLkHJcHai4tIEmqaEJDOl16qMZxMzUourNX6Vff7ZLnsMtDeQHqKBZ4oHnsF1M
-         oINII0I1ewoFATkxQ4yzVRDJ1uxZ2FKntvJxQdrJF+wY2n3aWrWHxGHEtr+4r5DAxE6B
-         R2Gw==
+        b=YlQuj68zwznYPoEi2e1guI9TDAl8w2s+sbFeOq2pCUzaCn7ozPoBvbPCN0S3Af8GNJ
+         jM31cjvInZktQ3r1rs4v5YaD1Wx6s7H8vud/YrwjpvORLuvpG83EfsJTanCcZ/c0E14h
+         1ChmTMphyhk+1uF5+LAUux+gxBw1VnlfZmCfMXRwmsn3APRHawZ/cFSvoz4IDexKyU/J
+         F051G8LFHqpzqYAsCoDg6eY9UTYVUUHnNvQtfB5JB0if1R0Zp+GXtbJldlb27c0aJefJ
+         /bnjctzlEYm4Lpt8q3sOQwaKOMNSDDOpmCg9u63Ubie+mXfvr7GBjLW4BwhmbxDLdT80
+         K4cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=piu0eHKYmcAc4W9uppF+EeQSMzIi9xiD6eKhcA2ryU0=;
-        fh=OEc6tgPo3nQRpMKybyhrkni++VeP/vop3bbPQRFLTxU=;
-        b=0HNP8xy9TFQKZwy0P7RS4LhGjyqp+RSbMGES0yYvsvtsuCsG6gG7a+dyg/4oWp2A9R
-         HV+7ON4Fhlo0ZqPeaR2Nd7V07aSTxgCF3bV3B5CvFE5uus0roPB6rwsNwJPlDY+Tu3s+
-         /atX54qCPiy5OK0LBxvrn7za5PaZQzH6fzDNJ0vSBZPuMMiT209p5BcIe6JuyyZNgfmW
-         lDgxOy8F+h8FmCzAco9xIb4detQMVpfAdrvAUC6QDYz18U2jfISiP/OKADrnyrDeCZvq
-         9Md1/Atqpl7ecync9zMaH7V/YNmxV1Kns8UyMo+4Jj5R8tXbxZ2/vTKROXpVcm6hH7Hp
-         KO+A==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=J0F7emHqf7jwZ0AzaPOVzUlYIxLK3bJ8bGEf+7nTrOE=;
+        fh=s49aLptoFhBCepm6f5Ys4Xo42S1mqXif0aSC9wvaz2E=;
+        b=o9zNe1ALzpYcN91DFVxQR1xqDQ+Vr/f2pGXHZ6Q4UEqnz2I/oxEnUQHb8H+M4uthdf
+         RLBOkSSxoH2HfLpyRVtESmh44opXDvCUNM+Fbz+9b/UdiPHWlf6BUO6ybEddsyZJkLts
+         hdqSARPpwGhziOp54TxSvUCvdLC/ZELV8igFnViCEJfBSzOE+9nNuIGf/0ZcT/CwVuuq
+         FZk6NwKvdB3I6FIIUrhtY4gf3wADWDjB056q0tM2OvemEEbglA8FQP7Oeq/ArMI42q2h
+         a0wZ1/hltZptqNlP+4QbCoBvEGk/WTa56ygkUx4H/9KFCgjamlrloKOc2qj1SlmrdDGP
+         kDYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b="IYxSTu7/";
-       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <stefanha@gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=yg32a2ok;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v18-20020a05683024b200b006b5dcbfcf17sor3811013ots.10.2023.09.12.12.00.16
+        by mx.google.com with SMTPS id k19-20020a056a00135300b0068fdeadf45csor1913243pfu.5.2023.09.12.12.10.21
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 12 Sep 2023 12:00:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of stefanha@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Tue, 12 Sep 2023 12:10:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b="IYxSTu7/";
-       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=yg32a2ok;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1694545216; x=1695150016; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=piu0eHKYmcAc4W9uppF+EeQSMzIi9xiD6eKhcA2ryU0=;
-        b=IYxSTu7/MEg3+6sZK1oZIQG7bUl+P5rjtYkYQ4iHvYapVoR+KdLElKz7lcZ9xmvaS8
-         +5Z3RXISKpzt29StE9h01lgX9L7jv5MmzIY3Q5eWD4yQc1VK2V9wHXVz1hOn+UGVhYMo
-         fKgkUOYeJ6sifuUJdhNCaYBQ6neMGcPczg+y0K5PmMmVrRT7UG+/A3JfRUaq5pbEGQSL
-         5DJ4FZ4Iwi//NUCvFPcWjqzP78gf32mv2C3NqtdFfqNnhaRkw8AGoMdcvLwQYcbXtNVj
-         vjjnx0Cb4Gh9esIK7GGOz+rqQy9vpBryVs240PCEVleUaXea+0w5zW1Eq1rEyaHltkod
-         HlVA==
+        d=linaro.org; s=google; t=1694545821; x=1695150621; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=J0F7emHqf7jwZ0AzaPOVzUlYIxLK3bJ8bGEf+7nTrOE=;
+        b=yg32a2okURSDLwS7j7to6SbizpfsmOUWQ/k6Y21SLxVEwnkTS9ghjNz8ntDGGh87mR
+         YOdJ4mL/bvgUCjMAQ+VPBUxEZY5oFHYcePBcxk6ES6x6ef6WdlbHtPcGrLhuvuBwFaDg
+         4kjPIFMPLiMpQF5v+3yWd/QrsUCDzIiX017e5y+H57FtNkSUrcd17o7sZ1MAurCm+HUm
+         J7ash5cvcvnD7ODvHPv1GQfHCdxe2mQ1r/LnWVFSyy+qLbXfQjsb/zNqfkrodriLoIlb
+         HVoRDeygXQGDAIzPHGtldzxWDODIpnolESD20oGWYlbwBMGwdFwwMbwALKkzbOi4fNja
+         wy+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694545216; x=1695150016;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=piu0eHKYmcAc4W9uppF+EeQSMzIi9xiD6eKhcA2ryU0=;
-        b=PzqI9y/xgSuudaznECntwh1NLJLSb+/Dopu+X5w/BQPfe7JimUX2iOtnsmQdq1IA/V
-         lzkaT4FvKlMxdRN0XYnsXdJ/unYq1ZXbMYcoHHwtntBpQzr1noKBVohgm5Rkih2RZ9hc
-         it/7L8gX6DuRlX+NdJs+8dHFOMzSjkt1jGnde74Acr6Pv9jgJWb3b+CRvW9GG07j3tYN
-         4Nw9WkKYsjHa1raa9Y7XnfAXmgS+6v6MZt46+dza/m34fbsW+G/gAVn81txKpuKfPz2a
-         u7HUaBNPL9IAmn8H91wbdOsth9/LUBJlLnfQKtCuUb7N+TmONWix1gQoPh5pTd8PqrvE
-         Si1A==
-X-Gm-Message-State: AOJu0YzMwDbzvPxfIKxL1aDWa0/GHXi2LtOdJpipdXuxjrrsXsntbmXc
-	zUrYh1bmxpWAJrM3mrbwR7IOGEbvTvuLj7VKwek=
-X-Google-Smtp-Source: AGHT+IHV93FpCnhqVsit2bwizRL6P5PzDuK2CadshF9ddMo+or4565E1M0joWr2fG669upfbvHKfrjYxDystHhJ8X/s=
-X-Received: by 2002:a4a:7452:0:b0:570:c8fa:4ad7 with SMTP id
- t18-20020a4a7452000000b00570c8fa4ad7mr508407ooe.1.1694545216659; Tue, 12 Sep
- 2023 12:00:16 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1694545821; x=1695150621;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=J0F7emHqf7jwZ0AzaPOVzUlYIxLK3bJ8bGEf+7nTrOE=;
+        b=B5wG5gNgDmuWblDLCaLg0aDJO4E+HUzOQXT9cD6ACs4yLGANbpaEs6Ql1y3gdTjVtE
+         P0MdBeF4j3+4iqzpppuDROSJNcEsGBy2siBW1OztQuMQXUjWjunqbkXkyQlx8gq0l+Rs
+         KjWlLZI0P1WglgTj1fP0mSI5bW3AW6pElcnNMbyYe3AXzBjOPnffrAZ1CESk0qKfrDck
+         lIXe6T9ggMzIvpqwFxj03ioIbinmlMKSsvhEpNrHdki4phoV/PYaz7ASHU0DcOJnmJGG
+         YyoKQY5BGmWVOQMSPVqDCSLCR9LUVmpJHtFXE7Tz4bhF5LCYbnAtebF8As8YZzoZGbxc
+         G/vQ==
+X-Gm-Message-State: AOJu0Yz1S0FMNXqRkNmvsFHN101sthraiefqi9RfE5xoAI97/FKeiegR
+	aeQhrJMC7cIK/H/XhVVcKsdcvnY4
+X-Google-Smtp-Source: AGHT+IHuAWe+Grn9yxLGFss6l//zQ/MKZXjCs43cx+dg1u2DAsDHtd0TJ2Ag0SUVu79QLT0uafs3JA==
+X-Received: by 2002:a05:6a20:1607:b0:133:38cb:2b93 with SMTP id l7-20020a056a20160700b0013338cb2b93mr703439pzj.9.1694545821447;
+        Tue, 12 Sep 2023 12:10:21 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] ([71.212.131.115])
+        by smtp.gmail.com with ESMTPSA id g19-20020a62e313000000b0068fe7c4148fsm1710364pfh.57.2023.09.12.12.10.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 12 Sep 2023 12:10:21 -0700 (PDT)
+Message-ID: <61724857-2edd-e19b-aa37-23658cd4119b@linaro.org>
+Date: Tue, 12 Sep 2023 12:10:19 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH 1/4] microbit: add missing qtest_quit() call
+Content-Language: en-US
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Stefan Hajnoczi <stefanha@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Joel Stanley <joel@jms.id.au>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Thomas Huth <thuth@redhat.com>
 References: <20230912184130.3056054-1-berrange@redhat.com>
-In-Reply-To: <20230912184130.3056054-1-berrange@redhat.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-Date: Tue, 12 Sep 2023 15:00:04 -0400
-Message-ID: <CAJSP0QW_Oa2w-WdSeSkHnd6kFN6OxAkPr03_UO_rDWDhpT7Wxg@mail.gmail.com>
-Subject: Re: [PATCH 0/4] ci: fix hang of FreeBSD CI jobs
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>, 
-	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org, 
-	Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>, Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: pwK5FQkYmbzW
+ <20230912184130.3056054-2-berrange@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230912184130.3056054-2-berrange@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: UpqiYgtZ4esp
 
-On Tue, 12 Sept 2023 at 14:41, Daniel P. Berrang=C3=A9 <berrange@redhat.com=
-> wrote:
->
-> This addresses
->
->   https://gitlab.com/qemu-project/qemu/-/issues/1882
->
-> Which turned out to be a genuine flaw which we missed during merge
-> as the patch hitting master co-incided with the FreeBSD CI job
-> having an temporary outage due to changed release image version.
->
-> Daniel P. Berrang=C3=A9 (4):
->   microbit: add missing qtest_quit() call
->   qtest: kill orphaned qtest QEMU processes on FreeBSD
->   gitlab: make Cirrus CI timeout explicit
->   gitlab: make Cirrus CI jobs gating
->
->  .gitlab-ci.d/cirrus.yml       | 4 +++-
->  .gitlab-ci.d/cirrus/build.yml | 2 ++
->  tests/qtest/libqtest.c        | 7 +++++++
->  tests/qtest/microbit-test.c   | 2 ++
->  4 files changed, 14 insertions(+), 1 deletion(-)
+On 9/12/23 11:41, Daniel P. Berrangé wrote:
+> Without this call, the QEMU process is being left running which on
+> FreeBSD 13.2 at least, makes meson think the test is still running,
+> and thus execution of "make check" continues forever.
+> 
+> This fixes the regression introduced in:
+> 
+>    commit a9c9bbee855877293683012942d3485d50f286af
+>    Author: Chris Laplante<chris@laplante.io>
+>    Date:   Tue Aug 22 17:31:02 2023 +0100
+> 
+>      qtest: microbit-test: add tests for nRF51 DETECT
+> 
+> Fixes:https://gitlab.com/qemu-project/qemu/-/issues/1882
+> Signed-off-by: Daniel P. Berrangé<berrange@redhat.com>
+> ---
+>   tests/qtest/microbit-test.c | 2 ++
+>   1 file changed, 2 insertions(+)
 
-Thank you!
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+But I think that it's unfortunate that we have to remember this for each test.
+
+
+r~

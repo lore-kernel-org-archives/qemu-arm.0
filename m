@@ -1,135 +1,264 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2245096ejx;
-        Tue, 12 Sep 2023 11:41:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEnl4UtiE9XBEzpDXlhyB5Hb4obpqejlqn2nXFQTlN8eZiiUN1I8TZSXlDlV79dbsnTT55h
-X-Received: by 2002:a05:620a:4627:b0:768:a183:a8e2 with SMTP id br39-20020a05620a462700b00768a183a8e2mr314380qkb.50.1694544103006;
-        Tue, 12 Sep 2023 11:41:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694544102; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2335485ejx;
+        Tue, 12 Sep 2023 14:29:27 -0700 (PDT)
+X-Received: by 2002:a05:6a21:7988:b0:153:8754:8a7e with SMTP id bh8-20020a056a21798800b0015387548a7emr558108pzc.3.1694554167086;
+        Tue, 12 Sep 2023 14:29:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694554167; cv=none;
         d=google.com; s=arc-20160816;
-        b=0WgjVeMNBut6ZlIEhEs/VTwrNByIDvYYdqh3LjDgupPTOB+0j1B0b9/Tn6loeDJeDk
-         lD+vVoCtEAK7+ORgLbE2m0WppvnvsNjTB+zJfHRzAudQYrPP9k8F6jJ25LpIqcZoem/+
-         fMRaa8wMGhM0roDk+SjJAMq7VQKjAsNLaefrLgw35HEguIw+fSkM8+Qr3yR/vmPrx/km
-         icpzSUX7FxrOGDk1VKm7+r07iO5dUohd1P4agI0/Cl7QCtsHEBo7yApEUAQk9BUZi9gx
-         ZZaor76RAxW1USBVzp40X/PVolIWGMPvOQ9+NyUNsU9fHz9x5CI8xyyiKvwTL+IHGnso
-         wcug==
+        b=VT1Dt8VaRJZG4X1bHXgHWFGCECKpTl7+YFyOyXgsoMgScQfB7x8h4/U0bZp/LggKli
+         nf4EhL5oEjk/EQJWX7jpJVI3woUDzYvownw9PNfIpPlZVljb27x1hfeZnfBDrYxgiZXf
+         9L/HbvoaVrwFZHqvbs/mhv0RaVayLC0WK4OIlVuloE8X9iWI/9/r/VLbslelD6+9IOD2
+         LAli/5WyIaLqRYIjXTFQV4GUi9HbOiYzlUl8Gm1I+0ZXnVNIVyFobOhE8gvZasRlMyRB
+         GiB7/8HBKRyzDTfq5N28sEx9pBRNly0ICm+iZkEcmu5vN/eXYaxaeCrWttRtyfGJPPCL
+         tmPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=iSs2QBVfpISQpVZYsjcitJoFfqKja+Hxwecaxyub818=;
-        fh=7i2B42VHusWKsnJOPWSYnjvVgBurff/6q9zEPTejEek=;
-        b=L9uUmhiYfrE7TY5Lij3oHAVPBPVHhsBjjb47NWyuWDKty5RujF1l4zVllaFOBwQwer
-         z72t7IVwbZeZIdLZHh0qh8/3pGzlfHixi/zdhVb3Z0J7nMeNZBiHUuzKUnP467tj9v4m
-         OyjZZDKHeaoIdUoaAO6Gusc0OLVItS8w+6hs4SVBXMkbatx7SZskiHuM2ptHuJXC9X4G
-         Hs07G42H5jxTmdMgOurj2CBjzADwYEHk1024FuM11MJaDcSDRDuXrXd5iwSVPaDLPhp3
-         KU6TxSS53P0XkmppHbFikK6k3WJHSEGJ3WiP67jOAmNtgIFbpXiyvCkkQJZAOLruwu51
-         W3VA==
+        bh=0c/U127kRZlzHBmfgSsC57fttRjeM+Iuaw+v/+H9H8A=;
+        fh=8ofdNWWEjf4kZAJKfS4vu1J+LvZ/Z/0IiNtZxBjYGBc=;
+        b=YZ9lbs0rcbAHGZ3Lm1DvXbQcDb6J5jn1FAkauA3Nd/kOGb8XnFPRPhum1TnahqZHMw
+         HdO44ghuLwtvbgpvL2Ky8GoUwCWywcDaodria1sjw2honHJQmL3hIi2Ck53624XwSb4q
+         TiyrhHJ0gq12g2mAINuaWPp5g1QSEJmzbVn9Xnj+9DkA+lreAAnwm/1ZLnABQoW/8p59
+         gOELmj62KvOe/Ep0QKMfaI3yX6VZ5FY5VMowIsqJcdZoUaVm7bkmXAm+/l9fBZ1nW/M4
+         Vob10xJ5dsLOtERyi3nIzl1GydGJOudRtbncgitXdbbfs5qE91Hxjrt3YcBh1QFXwJF0
+         Te/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HWhC9nVl;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id f6-20020a05620a408600b007684220a090si7049141qko.318.2023.09.12.11.41.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Sep 2023 11:41:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=pcyWwPCb;
+       spf=pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=fufuyqqqqqq@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <fufuyqqqqqq@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k70-20020a628449000000b00682f1588131sor8677615pfd.8.2023.09.12.14.29.26
+        (Google Transport Security);
+        Tue, 12 Sep 2023 14:29:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HWhC9nVl;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1694544102;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=iSs2QBVfpISQpVZYsjcitJoFfqKja+Hxwecaxyub818=;
-	b=HWhC9nVltV86XNGnwxIIOTGtms7Xj/p9EGjBmyWfm7VnT+3PgXF08kO828QBOb5YM/HBqo
-	6cigPGbPsXFEDkww4Bpyu+SfUyPtTSGJq6o5IfVXxkEnySGWpWIbhD7FCltAsDydfRnFOO
-	cxWR7MVkgynAtrrEnqjdNGVuVJ1IGA0=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-297-kTih-M9sNDKBb90aD0gAFg-1; Tue, 12 Sep 2023 14:41:39 -0400
-X-MC-Unique: kTih-M9sNDKBb90aD0gAFg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E40018945E5;
-	Tue, 12 Sep 2023 18:41:38 +0000 (UTC)
-Received: from localhost.localdomain.com (unknown [10.42.28.38])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 57C237B62;
-	Tue, 12 Sep 2023 18:41:37 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>,
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=pcyWwPCb;
+       spf=pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=fufuyqqqqqq@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20221208; t=1694554166; x=1695158966; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0c/U127kRZlzHBmfgSsC57fttRjeM+Iuaw+v/+H9H8A=;
+        b=pcyWwPCbdQ3BwjRxfuVPvRoMg8VsQA8+vDpopDkHir2t7hLdp3h0Yp0Lab+6n2mMTb
+         Cy3Tg/Yte2W6EODPi5dIn8ICDJXUXlPfoKjBSSV6e1gzFSy/62OrskhAZywU4d92FST2
+         fZaLRb1eCCK1/sqiGm1593ZYsZXnMX9noWCjFwnXn+PAF5TqispWhqzxOwjSB2deTRYS
+         rPyZ70iwTg3f/nfv+LqIeHmvhW/HSEWIOpLvR3pYhPdpsLukzfXpj/b301csalEfjq2C
+         xL02m8lyeNzOh+C1DSe8xgpnPiiQN0k0A+iQ/FRE+Omwi0Hjju6+3EUOYOe7Sqnx784A
+         Zgnw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694554166; x=1695158966;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0c/U127kRZlzHBmfgSsC57fttRjeM+Iuaw+v/+H9H8A=;
+        b=JeiJDb/83an88cb9wGAunz1dQjuyiUXbaRqHiPbVCHHk35tQtO7SRcN5SIn1Jtkr/o
+         vDGBn08FSEHpj8yYQDjrjpL6sH2HLpfo1b25MARNsEm12FxJb2gt7rdOT0ClEtkSnYy3
+         h2JVkAgvYsb6J8rqIEZvCBdayAS/5Tc8CqKwiGkl1imhty/hZK+y8qqibxuanewtc2NM
+         bszpHxEiGKRlq9erQp99IwQeeEZifhrPCnwWGA1HzoVhoIjIVeb4F+l0s2dbevT8ZLy0
+         iC57ECGsjXsanBwotGsx3WOVvVkBTiNAXHPrm/1bzkh6aMPSg1TPIH9Wr0U7C/G38XKw
+         GosA==
+X-Gm-Message-State: AOJu0YxH9yuMA9Hg3pKX5012ut3fQBXhdQGpngl72qv59E4O0ZyaGLQ2
+	zSFVJw2E6I9ONUROTSfiOZY3zEKmbwes+GAV
+X-Google-Smtp-Source: AGHT+IFDaZyoDJURSCapMwfTHRGZRvB1maqalNeG4nnq9hxM6QRvAvG/KIwVeBJ7sthGfs+XteHogg==
+X-Received: by 2002:a05:6a21:3d85:b0:131:a21:9f96 with SMTP id bj5-20020a056a213d8500b001310a219f96mr587036pzc.6.1694554166229;
+        Tue, 12 Sep 2023 14:29:26 -0700 (PDT)
+Return-Path: <fufuyqqqqqq@gmail.com>
+Received: from q1iq-virtual-machine.. ([114.249.236.97])
+        by smtp.gmail.com with ESMTPSA id u20-20020aa78394000000b0068be4ce33easm7930436pfm.96.2023.09.12.14.29.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 12 Sep 2023 14:29:25 -0700 (PDT)
+From: Yeqi Fu <fufuyqqqqqq@gmail.com>
+To: alex.bennee@linaro.org
+Cc: richard.henderson@linaro.org,
+	qemu-devel@nongnu.org,
+	Yeqi Fu <fufuyqqqqqq@gmail.com>,
+	Laurent Vivier <laurent@vivier.eu>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	Stefan Hajnoczi <stefanha@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Joel Stanley <joel@jms.id.au>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 3/4] gitlab: make Cirrus CI timeout explicit
-Date: Tue, 12 Sep 2023 19:41:29 +0100
-Message-ID: <20230912184130.3056054-4-berrange@redhat.com>
-In-Reply-To: <20230912184130.3056054-1-berrange@redhat.com>
-References: <20230912184130.3056054-1-berrange@redhat.com>
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC v6 7/9] target/arm: Add support for native library calls
+Date: Wed, 13 Sep 2023 05:28:40 +0800
+Message-Id: <20230912212842.658374-8-fufuyqqqqqq@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230912212842.658374-1-fufuyqqqqqq@gmail.com>
+References: <20230912212842.658374-1-fufuyqqqqqq@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-X-TUID: heh7/P0dVP+3
+X-TUID: s9MSj02uazGg
 
-On the GitLab side we're invoking the Cirrus CI job using the
-cirrus-run tool which speaks to the Cirrus REST API. Cirrus
-sometimes tasks 5-10 minutes to actually schedule the task,
-and thus the execution time of 'cirrus-run' inside GitLab will
-be slightly longer than the execution time of the Cirrus CI
-task.
+This commit introduces support for native library calls on the
+arm target. When encountering special instructions reserved
+for native calls, this commit extracts the function name and
+generates the corresponding native call.
 
-Setting the timeout in the GitLab CI job should thus be done
-in relation to the timeout set for the Cirrus CI job. While
-Cirrus CI defaults to 60 minutes, it is better to set this
-explicitly, and make the relationship between the jobs
-explicit
-
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Yeqi Fu <fufuyqqqqqq@gmail.com>
 ---
- .gitlab-ci.d/cirrus.yml       | 3 +++
- .gitlab-ci.d/cirrus/build.yml | 2 ++
- 2 files changed, 5 insertions(+)
+ configs/targets/aarch64-linux-user.mak |  1 +
+ configs/targets/arm-linux-user.mak     |  1 +
+ target/arm/tcg/translate-a64.c         | 32 ++++++++++++++++++++++++++
+ target/arm/tcg/translate.c             | 29 +++++++++++++++++++++++
+ target/arm/tcg/translate.h             |  5 ++++
+ 5 files changed, 68 insertions(+)
 
-diff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml
-index 41d64d6680..816d89cc2a 100644
---- a/.gitlab-ci.d/cirrus.yml
-+++ b/.gitlab-ci.d/cirrus.yml
-@@ -15,6 +15,9 @@
-   stage: build
-   image: registry.gitlab.com/libvirt/libvirt-ci/cirrus-run:master
-   needs: []
-+  # 20 mins larger than "timeout_in" in cirrus/build.yml
-+  # as there's often a 5-10 minute delay before Cirrus CI
-+  # actually starts the task
-   timeout: 80m
-   allow_failure: true
-   script:
-diff --git a/.gitlab-ci.d/cirrus/build.yml b/.gitlab-ci.d/cirrus/build.yml
-index a9444902ec..29d55c4aa3 100644
---- a/.gitlab-ci.d/cirrus/build.yml
-+++ b/.gitlab-ci.d/cirrus/build.yml
-@@ -16,6 +16,8 @@ env:
-   TEST_TARGETS: "@TEST_TARGETS@"
+diff --git a/configs/targets/aarch64-linux-user.mak b/configs/targets/aarch64-linux-user.mak
+index ba8bc5fe3f..5a8fd98cd9 100644
+--- a/configs/targets/aarch64-linux-user.mak
++++ b/configs/targets/aarch64-linux-user.mak
+@@ -4,3 +4,4 @@ TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/aarch
+ TARGET_HAS_BFLT=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
++CONFIG_NATIVE_CALL=y
+diff --git a/configs/targets/arm-linux-user.mak b/configs/targets/arm-linux-user.mak
+index 7f5d65794c..f934fb82da 100644
+--- a/configs/targets/arm-linux-user.mak
++++ b/configs/targets/arm-linux-user.mak
+@@ -5,3 +5,4 @@ TARGET_XML_FILES= gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml
+ TARGET_HAS_BFLT=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
++CONFIG_NATIVE_CALL=y
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 3baab6aa60..00b69e9c24 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -25,6 +25,7 @@
+ #include "arm_ldst.h"
+ #include "semihosting/semihost.h"
+ #include "cpregs.h"
++#include "native/native.h"
  
- build_task:
-+  # A little shorter than GitLab timeout in ../cirrus.yml
-+  timeout_in: 60m
-   install_script:
-     - @UPDATE_COMMAND@
-     - @INSTALL_COMMAND@ @PKGS@
+ static TCGv_i64 cpu_X[32];
+ static TCGv_i64 cpu_pc;
+@@ -2400,6 +2401,10 @@ static bool trans_HLT(DisasContext *s, arg_i *a)
+      * it is required for halting debug disabled: it will UNDEF.
+      * Secondly, "HLT 0xf000" is the A64 semihosting syscall instruction.
+      */
++    if (native_bypass_enabled() && (a->imm == 0xffff)) {
++        s->native_call_status = true;
++        return true;
++    }
+     if (semihosting_enabled(s->current_el == 0) && a->imm == 0xf000) {
+         gen_exception_internal_insn(s, EXCP_SEMIHOST);
+     } else {
+@@ -13392,6 +13397,26 @@ void gen_gvec_rax1(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+     tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, &op);
+ }
+ 
++static void gen_native_call(CPUState *cpu, DisasContext *s, CPUARMState *env)
++{
++#ifdef CONFIG_USER_ONLY
++    TCGv_i64 arg1 = tcg_temp_new_i64();
++    TCGv_i64 arg2 = tcg_temp_new_i64();
++    TCGv_i64 arg3 = tcg_temp_new_i64();
++    TCGv_i64 ret = tcg_temp_new_i64();
++    uint32_t func_tmp = translator_ldl_swap(env, &s->base, s->base.pc_next,
++                                            bswap_code(s->sctlr_b));
++    char *func_name = g2h(cpu, s->base.pc_next + func_tmp);
++    tcg_gen_mov_i64(arg1, cpu_reg(s, 0));
++    tcg_gen_mov_i64(arg2, cpu_reg(s, 1));
++    tcg_gen_mov_i64(arg3, cpu_reg(s, 2));
++    if (!gen_native_call_i64(func_name, ret, arg1, arg2, arg3)) {
++        unallocated_encoding(s);
++    }
++    tcg_gen_mov_i64(cpu_reg(s, 0), ret);
++#endif
++}
++
+ /* Crypto three-reg SHA512
+  *  31                   21 20  16 15  14  13 12  11  10  9    5 4    0
+  * +-----------------------+------+---+---+-----+--------+------+------+
+@@ -13950,6 +13975,13 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     uint64_t pc = s->base.pc_next;
+     uint32_t insn;
+ 
++    if (native_bypass_enabled() && s->native_call_status) {
++        gen_native_call(cpu, s, env);
++        s->base.pc_next = pc + 4;
++        s->native_call_status = false;
++        return;
++    }
++
+     /* Singlestep exceptions have the highest priority. */
+     if (s->ss_active && !s->pstate_ss) {
+         /* Singlestep state is Active-pending.
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 13c88ba1b9..7a5a0f9444 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -28,6 +28,7 @@
+ #include "semihosting/semihost.h"
+ #include "cpregs.h"
+ #include "exec/helper-proto.h"
++#include "native/native.h"
+ 
+ #define HELPER_H "helper.h"
+ #include "exec/helper-info.c.inc"
+@@ -1125,6 +1126,23 @@ void gen_lookup_tb(DisasContext *s)
+     s->base.is_jmp = DISAS_EXIT;
+ }
+ 
++static void gen_native_call(CPUState *cpu, DisasContext *dc, CPUARMState *env)
++{
++#ifdef CONFIG_USER_ONLY
++    TCGv_i32 arg1 = load_reg(dc, 0);
++    TCGv_i32 arg2 = load_reg(dc, 1);
++    TCGv_i32 arg3 = load_reg(dc, 2);
++    TCGv_i32 ret = tcg_temp_new_i32();
++    uint32_t func_tmp =
++        arm_ldl_code(env, &dc->base, dc->base.pc_next, dc->sctlr_b);
++    char *func_name = g2h(cpu, dc->base.pc_next + func_tmp);
++    if (!gen_native_call_i32(func_name, ret, arg1, arg2, arg3)) {
++        unallocated_encoding(dc);
++    }
++    store_reg(dc, 0, ret);
++#endif
++}
++
+ static inline void gen_hlt(DisasContext *s, int imm)
+ {
+     /* HLT. This has two purposes.
+@@ -1139,6 +1157,10 @@ static inline void gen_hlt(DisasContext *s, int imm)
+      * semihosting, to provide some semblance of security
+      * (and for consistency with our 32-bit semihosting).
+      */
++    if (native_bypass_enabled() && (imm == 0xffff)) {
++        s->native_call_status = true;
++        return;
++    }
+     if (semihosting_enabled(s->current_el == 0) &&
+         (imm == (s->thumb ? 0x3c : 0xf000))) {
+         gen_exception_internal_insn(s, EXCP_SEMIHOST);
+@@ -9329,6 +9351,13 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     uint32_t pc = dc->base.pc_next;
+     unsigned int insn;
+ 
++    if (native_bypass_enabled() && dc->native_call_status) {
++        gen_native_call(cpu, dc, env);
++        dc->base.pc_next = pc + 4;
++        dc->native_call_status = false;
++        return;
++    }
++
+     /* Singlestep exceptions have the highest priority. */
+     if (arm_check_ss_active(dc)) {
+         dc->base.pc_next = pc + 4;
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index d1cacff0b2..3854a801e6 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -157,6 +157,11 @@ typedef struct DisasContext {
+     int c15_cpar;
+     /* TCG op of the current insn_start.  */
+     TCGOp *insn_start;
++    /*
++     * Indicate whether the next instruction is a native function call (true)
++     * or not (false).
++     */
++    bool native_call_status;
+ } DisasContext;
+ 
+ typedef struct DisasCompare {
 -- 
-2.41.0
+2.34.1

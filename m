@@ -1,152 +1,118 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2372781ejx;
-        Tue, 12 Sep 2023 15:41:38 -0700 (PDT)
-X-Received: by 2002:a05:6a21:a585:b0:154:fb34:5f01 with SMTP id gd5-20020a056a21a58500b00154fb345f01mr1141648pzc.6.1694558498306;
-        Tue, 12 Sep 2023 15:41:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694558498; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2554348ejx;
+        Tue, 12 Sep 2023 22:54:52 -0700 (PDT)
+X-Received: by 2002:a05:6512:33d0:b0:502:a4f4:ced9 with SMTP id d16-20020a05651233d000b00502a4f4ced9mr1205262lfg.62.1694584491978;
+        Tue, 12 Sep 2023 22:54:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694584491; cv=none;
         d=google.com; s=arc-20160816;
-        b=QSQhC/gqErdbUqX/aOmWyR8HA6SjbpAwqyHSgGEbwznXrB1aBguQKd0tUwXGSZk2tP
-         osJvhCr0lJ3IbP+Z0rAXZIwj7fOLzLmVMxziZARG8UovoPWpJ5MEoQ4vHLuVfJwfn1FA
-         gZ1ZfSYfBYNXyYzPn1L7JM3hDI/sbYOEiHYbax8DTsh+xmc5MBjCOFkx0z5vqI6qa74H
-         6lbesc54karBH1yfEyhBn+3llTO5h7fs7bl4ItBD+RttqGGjglpNdI8IdvML2rYMTIRX
-         mKjEVm/4uugUcj9Ii7Wk0TMi3zsLOJ1pMX+2qylQXU6t92KNuygcyjLlenosW8djsuPJ
-         01hg==
+        b=qhvG4+/2W4mRGEthqDOkezqSLJuf46bIlpP96tj9Ks8IeTxjjGwHJ5WWFCR79px0Xr
+         RxtPPmFtiVHHjmgkRbYYwICiJRgImcMn6vsAtSZY+Gd+5D34/YAMQkt1Fx+kW8TbGV2d
+         I67HQIQEYE4RmNGIOUKb2+lihbmopZOgAeRdlRJtyz15gBJEQtF+dZ2QFZ3/UUTPSZXo
+         n6bH/8Sk3h+FVWI1Se7sA+sE5re85qqxLuakwOoMVbQvKVu20dD89AZlcTzGTmeM8auB
+         cW6XQh1NDau4577YAp+VbH6DHHWpdrVEM/lPiw83w3WdBOUAJIf51NGjnCJpU6gNyHeB
+         NbJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=qUVjTcjkNZmdhwavklqNnzqJkSIaiyxihMzM0GkWlyU=;
-        fh=WS7ynnbUkvYXwAP9icKU1dVJlxsq4RIthkhMOdKIoMw=;
-        b=DxpBFyiq0NUFX019UeI1pCiRfmcNmxO73r75GbYbQo5G2fk9TMaklLWOCED5WJ9V3Z
-         mcF3kJbnLE6eqiFp+X81QuwhXPjyuKe38n9a8Ls219Wf67Mv9qtTHdL/LNLHoTlinutI
-         JP7iAtsluabT6pwL+ejyIs9SOgeh29ngdwMCY/cncHH/Z+kQZhAV7BpoHAFdOF8bLgN0
-         M6EpHV0ek8Wj/rAbMU70Pd1PKqB5IeRvasqQcq/r7JWHCGNi4sABJGBa/zafzFce3fXK
-         Lntc+cKFj1ViPJMSosizrjfGKYb1IGRcBQ8FzQz0RVB1zVgIHnsZbgNY9VYBNByqboG0
-         AnBw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=ZKPvNQyBs+vs3I8fZOSjCeF/0yGMYMuEac8xoLH2N7g=;
+        fh=bf2tleYB2Gl29ucaGXzmp+HmT2qtp6x4owpW6Yjb234=;
+        b=hK5kA7b88BHrY2il860OakKt+dhSY3h3dXZvmxogjkx3fpbNsEvYU9ps2Yu0k8NLX8
+         Pd1u7nCybZ/R5WX/ZnLfl8Fr7YJIQujDj1l2uhSfxLG81T7W6pLyKZYtMvlupRFxz1fH
+         8kcKQx3Iwuw2sp7b1jpWRuapn70ysYclAeG8L/Yh1gxu3YmHVjo5SrDpb2n5TZcd4uZX
+         +2XNs0LYbWgwOMFUVvdOfsUf2Cisoq4AvMIxuCiaA24WIVw5aKk4ipucXUfBWg9qifW2
+         IObMA5CgAxMKOK4/tujM0BgoUMYCaDtEVpx9FyhsOiala1Kl+kAkO8tHhLApq9ByXYG3
+         IDWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Yagt2fRX;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=f0ltrCW5;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ik15-20020a170902ab0f00b001b9e4b6d33bsor6116509plb.7.2023.09.12.15.41.38
+        by mx.google.com with SMTPS id q9-20020a0565123a8900b00502db39c06bsor226694lfu.8.2023.09.12.22.54.51
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 12 Sep 2023 15:41:38 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        Tue, 12 Sep 2023 22:54:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Yagt2fRX;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=f0ltrCW5;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1694558497; x=1695163297; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qUVjTcjkNZmdhwavklqNnzqJkSIaiyxihMzM0GkWlyU=;
-        b=Yagt2fRXRuvPFQdCJy64A/Q1bGP1VAOz2GQZUkNTuBL9UlRp5U0/Ih3Hnha3b7PMhv
-         JVoAOCGVlzXtFbB7RgMwudvZLExF5U3ylHMNrUZlpGreqmDNxc1tMgGNbZGtUtBIyDFt
-         k8i64uTgiJDJ2ws0eWYJNfnQjOcmqRoybRmKxlEoi+u+10+rcg4CFNaZp+bSYLds/RY4
-         DyVu7ZOjp4TgcetX3FFmyGRD0RbEbx71udd/6ga+WwWAhQrye+XnxwUuhNtxt+SSv3ZV
-         XtIIe2RoCcMYnLvrxNkRF5/t/P4uyvT8fcxrB4PhcnSf47MdtxvG/qRciz0dYh5ugMEe
-         JVxA==
+        d=linaro.org; s=google; t=1694584491; x=1695189291; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ZKPvNQyBs+vs3I8fZOSjCeF/0yGMYMuEac8xoLH2N7g=;
+        b=f0ltrCW5MaiVXzNMNvqpmj2fwGJyJeLFxaOok38PtoL+8ISktNi1vWMW0Unm/2Yeci
+         06qWsvwm5nwfTwueujGjvIrMiAuPTObBB8cuTazfoJfysWcRUPxJ+YUZaBj2F9prO+Bn
+         p17D67esOE/2E+upkO3Vg+o3WqsPJDtaM7B2Id4dZ62/VbHJrJWhInym036cvj/SyNdw
+         h0PoSESyr2LcedtURrZK6onHIyUN6Hx3XcUpBtqnoEyCUsLpQ13xXazAUTLg94lVEUZc
+         BqUWqbP+vr6D/KQZtnsSexvJsCfWbodhDOhHzZ15tfqcBJM3fgp+GNTR4Xng8qfGl1CH
+         UPDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694558497; x=1695163297;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qUVjTcjkNZmdhwavklqNnzqJkSIaiyxihMzM0GkWlyU=;
-        b=D69ZsiOiWSw3Gsc4faLSLxz0n/WZTrOIKpz2XvVMoJ/nXeV8Qatn6AatnBWxuKC3/t
-         KKJaSDVI+6aa5z9xOm6sYKoalvHEufHn0/YjHEdeJwsYX6S1g+dk9GUPi5cPleQe6CXX
-         RGAI8LcQ6sI1hiAb1eFbRWWgPP4Ki5dCyTGEkFDUt031JLoQHGjwRCSBhzamW4WcuT+c
-         mQp+1pNner2tE2jPX9LDDRr7XZAkzO7CRrYjQMs2TGqeXq4lA88MxvIYLhaKrpUWmYnq
-         kPKD0aok2iOz2ZxnthZQxNlqG3+BIlwgaKJi2ZDlsPhxvRWXvfAyIEsJfBpyB//X5m0G
-         FHtA==
-X-Gm-Message-State: AOJu0YxYXhFzbTSrqQw5MIj6T6YDBLgg4y9+jLwV22IIoop0rHkmjz+Q
-	uGzjM/IjCcxrygpngV7t3MJgrbRunXElYxgoXX4=
-X-Google-Smtp-Source: AGHT+IG2nbzABz+c+CMqzZPhKJhBEfkgWTxlp3sD/pBZI1VhAGcfZZmGkwuua0HR3rZDxiah+fFh9Q==
-X-Received: by 2002:a17:902:7892:b0:1c0:e6e1:4a11 with SMTP id q18-20020a170902789200b001c0e6e14a11mr980553pll.54.1694558497679;
-        Tue, 12 Sep 2023 15:41:37 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id l13-20020a170902d34d00b001bbbc655ca1sm8996977plk.219.2023.09.12.15.41.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Sep 2023 15:41:37 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Mikhail Tyutin <m.tyutin@yadro.com>,
-	Aleksandr Anenkov <a.anenkov@yadro.com>,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH v3 09/12] target/arm: Remove references to gdb_has_xml
-Date: Wed, 13 Sep 2023 07:40:58 +0900
-Message-ID: <20230912224107.29669-10-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20230912224107.29669-1-akihiko.odaki@daynix.com>
-References: <20230912224107.29669-1-akihiko.odaki@daynix.com>
+        d=1e100.net; s=20230601; t=1694584491; x=1695189291;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZKPvNQyBs+vs3I8fZOSjCeF/0yGMYMuEac8xoLH2N7g=;
+        b=ItQQYXJpymQbp5twKO6XUwvSWiWtHoU98qjlHUVH0U0viveSVZ+emiPQjsQFCn7ryw
+         QfSbUmNux98Kdzc525mIHCfvcknxqVbMW14DgotF6PjjxWmZalHOKRterom2TWFc4JgZ
+         YQ3fJATA51mbMQ3y8cBnK3mVBuVhO1FCqJBZc1UIZnh9UqNDZpjhQ8d+iJscTZ02vt78
+         JscQF71pqrnoAN9zH+xk5pFqhKQNL+X0BtuAiNzPEMHgwJIQbEFJeDRVpa6N1Hk6Gkbr
+         Wjensbv+uI3E0FA/7lD4nz8O+nfdcqmBbNCDwvLpnbvilOFqkNM+sNMtQ6/I74C5gy52
+         e8Mw==
+X-Gm-Message-State: AOJu0Yz5L0A4WvLAr1Hi7vQ7hCuEsXx2SjzZLyU4slkWZR8W3cbuWkrr
+	GiI64izXei004qUQVZpCYOb7JEeS
+X-Google-Smtp-Source: AGHT+IHy7kim5wKyBRfCsYI1k7Ig8jS1Z86GAxcoEIeK2jhCysIA9WfbpxDSV4n9UfdpgCJ+3nqACg==
+X-Received: by 2002:a19:2d1b:0:b0:502:a0e9:8820 with SMTP id k27-20020a192d1b000000b00502a0e98820mr1001800lfj.47.1694584491300;
+        Tue, 12 Sep 2023 22:54:51 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.115] (176-131-211-241.abo.bbox.fr. [176.131.211.241])
+        by smtp.gmail.com with ESMTPSA id g1-20020a170906394100b0099bc038eb2bsm7717523eje.58.2023.09.12.22.54.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 12 Sep 2023 22:54:50 -0700 (PDT)
+Message-ID: <ff8b8e0b-d0b0-6194-4d02-9cbe134d5eac@linaro.org>
+Date: Wed, 13 Sep 2023 07:54:48 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.0
+Subject: Re: [PATCH 3/4] gitlab: make Cirrus CI timeout explicit
+Content-Language: en-US
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Stefan Hajnoczi <stefanha@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Joel Stanley <joel@jms.id.au>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Thomas Huth <thuth@redhat.com>
+References: <20230912184130.3056054-1-berrange@redhat.com>
+ <20230912184130.3056054-4-berrange@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230912184130.3056054-4-berrange@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: FkXaUo4Ursfd
+X-TUID: rRwTTDf/OGHX
 
-GDB has XML support since 6.7 which was released in 2007.
-It's time to remove support for old GDB versions without XML support.
+On 12/9/23 20:41, Daniel P. Berrangé wrote:
+> On the GitLab side we're invoking the Cirrus CI job using the
+> cirrus-run tool which speaks to the Cirrus REST API. Cirrus
+> sometimes tasks 5-10 minutes to actually schedule the task,
+> and thus the execution time of 'cirrus-run' inside GitLab will
+> be slightly longer than the execution time of the Cirrus CI
+> task.
+> 
+> Setting the timeout in the GitLab CI job should thus be done
+> in relation to the timeout set for the Cirrus CI job. While
+> Cirrus CI defaults to 60 minutes, it is better to set this
+> explicitly, and make the relationship between the jobs
+> explicit
+> 
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>   .gitlab-ci.d/cirrus.yml       | 3 +++
+>   .gitlab-ci.d/cirrus/build.yml | 2 ++
+>   2 files changed, 5 insertions(+)
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Acked-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/gdbstub.c | 32 ++------------------------------
- 1 file changed, 2 insertions(+), 30 deletions(-)
-
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 8fc8351df7..b7ace24bfc 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -46,21 +46,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-         /* Core integer register.  */
-         return gdb_get_reg32(mem_buf, env->regs[n]);
-     }
--    if (n < 24) {
--        /* FPA registers.  */
--        if (gdb_has_xml()) {
--            return 0;
--        }
--        return gdb_get_zeroes(mem_buf, 12);
--    }
--    switch (n) {
--    case 24:
--        /* FPA status register.  */
--        if (gdb_has_xml()) {
--            return 0;
--        }
--        return gdb_get_reg32(mem_buf, 0);
--    case 25:
-+    if (n == 25) {
-         /* CPSR, or XPSR for M-profile */
-         if (arm_feature(env, ARM_FEATURE_M)) {
-             return gdb_get_reg32(mem_buf, xpsr_read(env));
-@@ -100,21 +86,7 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-         env->regs[n] = tmp;
-         return 4;
-     }
--    if (n < 24) { /* 16-23 */
--        /* FPA registers (ignored).  */
--        if (gdb_has_xml()) {
--            return 0;
--        }
--        return 12;
--    }
--    switch (n) {
--    case 24:
--        /* FPA status register (ignored).  */
--        if (gdb_has_xml()) {
--            return 0;
--        }
--        return 4;
--    case 25:
-+    if (n == 25) {
-         /* CPSR, or XPSR for M-profile */
-         if (arm_feature(env, ARM_FEATURE_M)) {
-             /*
--- 
-2.42.0
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

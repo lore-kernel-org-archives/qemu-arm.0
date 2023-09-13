@@ -1,135 +1,131 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2607925ejx;
-        Wed, 13 Sep 2023 01:06:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGqRbJTvJtlsaHfwBhaKd6bmEtIb2Y1+iNKBvihyl4SSr67J/RQvM5iDkgz5rTq+1DKy5uH
-X-Received: by 2002:a05:620a:4103:b0:76c:bdbd:c51d with SMTP id j3-20020a05620a410300b0076cbdbdc51dmr2105428qko.66.1694592389230;
-        Wed, 13 Sep 2023 01:06:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694592389; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2631087ejx;
+        Wed, 13 Sep 2023 02:01:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGCqHVUI8kytkGv1xk/5ZEIXdcFBie/qlKTRVwcPArPNzdjuPJW8SEUwBTc0Nh9ctAHyU9L
+X-Received: by 2002:a05:6214:4607:b0:64f:82d2:26fe with SMTP id oq7-20020a056214460700b0064f82d226femr2166985qvb.39.1694595662081;
+        Wed, 13 Sep 2023 02:01:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694595662; cv=none;
         d=google.com; s=arc-20160816;
-        b=GqCB3jHlkRZOMmwusU4QBZcf7MV2y2o/PKQsohKmRyFJRSaOvgfgnrX3RkdKfXw3cV
-         q2xuzvxvmz5DHfBLXMAWldlzcjtAGlvyAXGrvYY3GyNmMTQ1xRxoMMIWuoVilvV1VptZ
-         uwWen3IXPtOL5HWqEdScNV39w48vBkDWqMUbD0IXLfmiRV9qna5GJjN1SX24QQzdaL4i
-         SL1f8eDRhHtuxK9EecgtsqqaPpJ+0nbS8wjy9kCXkam3ryhWkUQ1eMuyeHxSbuHku6Fn
-         ycR6FP8jxgEQ7qf8sFHna+JUZexwrs2eRXuLm56GHZBmv4JZY7+dZaSDs8VMa4sHDWLL
-         r4cA==
+        b=p4Iy6FsrfJTVjdlMDATUA59rTkvgrD+DeYxb7W3F2WS8y0qSENSQqDwZZEBqOo8F3U
+         o74QEz4w7k4tRCgdNKTh5BAIZGRPm1zzBbfl2rCx5YTZVfMuZmQtPYJHErLJ7ez+izev
+         cBTT7li+LulhqoLa5eqemNyi7ROht0nKxUPN53eKAVUG8o8BlHzPXO5Fk6oMri9nuNYV
+         bE7M+l75JrjbeeZifjQFVe9knYiUkTLWZtHOU+vM9QYn3UG3YKvbYhFDs0WKcNtURMjp
+         Ti+BXvuSYfAAzVUosB+lenWCgH7mrKFUi26TRQSHdtHsYfe98Ti+lHMIeR3gyBmYoE5t
+         nTvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-transfer-encoding
          :content-disposition:mime-version:references:reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=2vypmGGO542FvhC+rqHXoTq9LwoWe2+pNCM7zeyfaQw=;
-        fh=vR87uYwr80CnifKeXZwkfhQUOL/xfGQv6DM35jDbtX8=;
-        b=T0MnFoSwDB6L2y2NIMihbp6sqgLKggZDPs+vxAVOh/lMERjGIYdljKp8vilLam1TJa
-         pue/JGL3crA5bfuRBBmW7FZe0uD3sGNc1kYG74b4uZI8CWDinf3ko0fDtK62S65G66Ma
-         eyhIiBbdCEmYxQ35Q4Ap+mWguDUMzZRR7dxJ1AdO6nIZEti0VexYfK4dNVl/gh/GvM1L
-         zBAEY2S5myE1DLS5rYKQv1j4/yDWMmZ5i1qyMCu5mlZgiqkolkJkAShpdWIG3sOx8m0T
-         BYgHvrl2ab3FIE/f2z3R+Mc5jzD0FnMTAyJga8nkeQIXw/qOGWL4/xDS56FjqyIBGySd
-         /w5w==
+        bh=syBSAHxmtbJOl+EUTI5blRbznmIrn6eKkKeoN3Js9nM=;
+        fh=2sKPfZdENdCygzr/sGK6jMnQ+IiJM2EW+AGCyG72jxE=;
+        b=m/knhau12Y2cP98o52zQfOSKmPrKBynIQCLHuc7i1N0Uw1urFfJaNqdSipLiZyHiMX
+         WDWYvYVKBSoiNnzYdqgFN0ANJMXwtpE6mnJ5p3Y8t/VY+tjZWF6abSB7XB1ZBh/jqnw0
+         USXXGgkCwkYmvlLXPRQN3Z2oHD1eaE3x4F03jHvM2oU7Cw41N6XWU2lqSwJiZEbr8NAQ
+         YnlzNhe/tdeJf5s5R6MVSQzw9jlN7n0z+MRyH27PogwgrvUScwfDz0es4Il0Q38G06vB
+         xWGQxKefK0YUKytIQtZT8ZX75lbLaesJHSYIrgqH83+ds9d5HQlTBctp728DPKvF1CFD
+         P1ZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XIs7tP9T;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Lu5mgEq+;
        spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <berrange@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id w20-20020ac87e94000000b004121fd7e15fsi7207906qtj.631.2023.09.13.01.06.28
+        by mx.google.com with ESMTPS id t9-20020a0c8d89000000b0064f92d244f5si6982772qvb.396.2023.09.13.02.01.01
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Sep 2023 01:06:29 -0700 (PDT)
+        Wed, 13 Sep 2023 02:01:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XIs7tP9T;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Lu5mgEq+;
        spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1694592388;
+	s=mimecast20190719; t=1694595661;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=2vypmGGO542FvhC+rqHXoTq9LwoWe2+pNCM7zeyfaQw=;
-	b=XIs7tP9TPVj91eCEY2ar3w5DxIlMfJhoUBApY29+Bh0P/LJR40j7vY/sI5qTr9ZZApErB8
-	nGgibwzxshqFK0tpQe/9YXaKsyNSdnN7vgMTvCVHNRHokdzrmoMiSgSd0z29HtQ7kVmvFv
-	+VQXonUo2guGo7n1+QEeaHB9oMv18bM=
+	bh=syBSAHxmtbJOl+EUTI5blRbznmIrn6eKkKeoN3Js9nM=;
+	b=Lu5mgEq+OSr80LHZL1NaYKnR8hhES00/+fIeDIkJAk0lut5kTPK5hhDVkgaXrkgt5UYGpX
+	d256dHDL3YGhTyMDaJ0HoJcXcIzgxBaTUlMPkPchFIsGllOFSmr8ua8tcah4t4rsyYuJ3n
+	AXCpB/nf9GDBpB7GYZYQRXnVK7HTQMg=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-595-qA9ymuBYOx6QTK2s39N2wg-1; Wed, 13 Sep 2023 04:06:25 -0400
-X-MC-Unique: qA9ymuBYOx6QTK2s39N2wg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+ us-mta-271-PAfXDCWNNQyWqT_SExY1sQ-1; Wed, 13 Sep 2023 05:00:57 -0400
+X-MC-Unique: PAfXDCWNNQyWqT_SExY1sQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 929B91818E43;
-	Wed, 13 Sep 2023 08:06:24 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 03E67101FAA1;
+	Wed, 13 Sep 2023 09:00:57 +0000 (UTC)
 Received: from redhat.com (unknown [10.42.28.38])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 87A0D2156721;
-	Wed, 13 Sep 2023 08:06:22 +0000 (UTC)
-Date: Wed, 13 Sep 2023 09:06:17 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1FA54409AFC1;
+	Wed, 13 Sep 2023 09:00:53 +0000 (UTC)
+Date: Wed, 13 Sep 2023 10:00:51 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Laurent Vivier <lvivier@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>, Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 1/4] microbit: add missing qtest_quit() call
-Message-ID: <ZQFteR+kBmMzK7v2@redhat.com>
+	Beraldo Leal <bleal@redhat.com>
+Subject: Re: [PATCH 0/4] ci: fix hang of FreeBSD CI jobs
+Message-ID: <ZQF6Q3a9aMK5xSL6@redhat.com>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20230912184130.3056054-1-berrange@redhat.com>
- <20230912184130.3056054-2-berrange@redhat.com>
- <61724857-2edd-e19b-aa37-23658cd4119b@linaro.org>
+ <5cbb92ab-f8b5-4d03-5698-06d0a0b7cfda@redhat.com>
+ <87ledatq3s.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <61724857-2edd-e19b-aa37-23658cd4119b@linaro.org>
+In-Reply-To: <87ledatq3s.fsf@linaro.org>
 User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-X-TUID: oSdn0iNZ8+lZ
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+X-TUID: HVw+FVQz7R+j
 
-On Tue, Sep 12, 2023 at 12:10:19PM -0700, Richard Henderson wrote:
-> On 9/12/23 11:41, Daniel P. Berrangé wrote:
-> > Without this call, the QEMU process is being left running which on
-> > FreeBSD 13.2 at least, makes meson think the test is still running,
-> > and thus execution of "make check" continues forever.
-> > 
-> > This fixes the regression introduced in:
-> > 
-> >    commit a9c9bbee855877293683012942d3485d50f286af
-> >    Author: Chris Laplante<chris@laplante.io>
-> >    Date:   Tue Aug 22 17:31:02 2023 +0100
-> > 
-> >      qtest: microbit-test: add tests for nRF51 DETECT
-> > 
-> > Fixes:https://gitlab.com/qemu-project/qemu/-/issues/1882
-> > Signed-off-by: Daniel P. Berrangé<berrange@redhat.com>
-> > ---
-> >   tests/qtest/microbit-test.c | 2 ++
-> >   1 file changed, 2 insertions(+)
+On Wed, Sep 13, 2023 at 09:48:34AM +0100, Alex Bennée wrote:
 > 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Thomas Huth <thuth@redhat.com> writes:
 > 
-> But I think that it's unfortunate that we have to remember this for each test.
+> > On 12/09/2023 20.41, Daniel P. Berrangé wrote:
+> >> This addresses
+> >>    https://gitlab.com/qemu-project/qemu/-/issues/1882
+> >> Which turned out to be a genuine flaw which we missed during merge
+> >> as the patch hitting master co-incided with the FreeBSD CI job
+> >> having an temporary outage due to changed release image version.
+> >> Daniel P. Berrangé (4):
+> >>    microbit: add missing qtest_quit() call
+> >>    qtest: kill orphaned qtest QEMU processes on FreeBSD
+> >>    gitlab: make Cirrus CI timeout explicit
+> >>    gitlab: make Cirrus CI jobs gating
+> >>   .gitlab-ci.d/cirrus.yml       | 4 +++-
+> >>   .gitlab-ci.d/cirrus/build.yml | 2 ++
+> >>   tests/qtest/libqtest.c        | 7 +++++++
+> >>   tests/qtest/microbit-test.c   | 2 ++
+> >>   4 files changed, 14 insertions(+), 1 deletion(-)
+> >> 
+> >
+> > Series
+> > Reviewed-by: Thomas Huth <thuth@redhat.com>
+> >
+> > Alex, will you pick these up or shall I take them for my next PR?
+> 
+> Queued to testing/next, thanks.
+> 
+> Do you have a patch to disable the borked avacado tests? Or maybe I
+> should just include Philippe's fix?
 
-We should use G_DEFINE_AUTOPTR_CLEANUP_FUNC for QTestState, and
-then we can change tests to declare
+Not at this time. My hope was that this patch might address at least
+some of the broken tests:
 
-   g_autoptr(QTestState) qts = qtest_init(....)
+https://lists.gnu.org/archive/html/qemu-devel/2023-09/msg02797.html
 
-which will make it a bit more robust against forgotten cleanup.
-
-
-
-We register an ABRT handler to kill off QEMU manually during
-g_asserts().
-
-The "death signal" code will give another layer of robustness
-for exits too on Linux and now FreeBSD.
-
-If we really wanted to we could add a 3rd layer of defence by
-adding an atexit() handler, but I'm not sure this last one is
-worth it for something we're not hitting frequently AFAIR.
+but I ran out of time to test that yesterday.
 
 With regards,
 Daniel

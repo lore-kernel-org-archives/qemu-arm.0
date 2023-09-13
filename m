@@ -1,144 +1,138 @@
-Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2631724ejx;
-        Wed, 13 Sep 2023 02:02:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEVm5mCUh4lDJebHYp2Or8qejzDBynXSNIX5ObPrS0TWS1qbglYz6eTUTMofvnK4RR857Dw
-X-Received: by 2002:a05:622a:92:b0:412:2c24:f497 with SMTP id o18-20020a05622a009200b004122c24f497mr2205789qtw.26.1694595728050;
-        Wed, 13 Sep 2023 02:02:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694595728; cv=none;
+Received: by 2002:a17:906:9502:b0:9a1:fa4e:495e with SMTP id u2csp2652822ejx;
+        Wed, 13 Sep 2023 02:53:35 -0700 (PDT)
+X-Received: by 2002:a05:600c:1e1d:b0:401:cdc1:ac82 with SMTP id ay29-20020a05600c1e1d00b00401cdc1ac82mr1575195wmb.9.1694598815790;
+        Wed, 13 Sep 2023 02:53:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694598815; cv=none;
         d=google.com; s=arc-20160816;
-        b=vrZLmuuOeGvu5f8L65s6s1oS/kQH+ap1EqzkmPR5q3Sx4y3G7TxKIsEOUt+9pn69qJ
-         xN/Zy/Fy9pmwqTWdSstqpI1e0/WnWYrDwOBdBRTqVsfmv7NVn8bRGzdMheGFFtF/XsGK
-         B6AAim7LMhlNX1VyVmOI1jDL38ueWQIpZyBrlct/x6VBcaKkVCu0lGebXdRqF6jHyg+W
-         B0U7siZonRffMPU6b1ZbBA2+dj4WxLT7tS1JwtEED9mkbvDMgNDR9t4CP6LFp3E2SmLG
-         R0ehYoSDgNCkG58/Jt2EweHRW3M2RlPt+k7d8pJBDwjh37WYg0ol2OI0+h3fpp+fHv+D
-         //og==
+        b=ZKqmJkYsvozau3/NYJqmVUxXwq+EMK2nQePkN8nbqdFFE8T7MYdSmguI5O2INWifm7
+         8wUQTr9dxwC9wOf6lvPJ0QBF1wfWFpSKLK5V2WFcoJkR16pUg1iyex6Z31J5/wBI21pD
+         QQW7R84pXLkjQ+7HbjCKVjFAjr+EDxXhRIpVFXsYcfvHTTRDxREsbkobZvpBwiDnSPXA
+         3QzxnDcVYAGFdbDWyA82K87ztmz00TPwEaMLzsQmpwzjfyUGUJK4SRGI5xT43gmCHmBo
+         IlFFOl2zo/HG8hna/H+QO0UK76SoPK8XOXi2t0rkacMfccNH9LgCMLVMZe0Vv5wRe3hn
+         QppQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=slLPdvZwGLgcsnZnsC8K9w2N/TZJ4yvIEAk6TSfFTMw=;
-        fh=5riOZd+4V+b33XiWxvZeOw7zL009b4cL/S8CAEiHnS8=;
-        b=oXGcr3PkUC5z14BI+/DK29aKe3eNL6gNp1k4tfUM3yeeqTKZUtGVokzhxzaVJjkTQ1
-         OehvkFtLOl91t+rXMgYsw5Kj2zaI9fzvgxQd+kgTe62qQ8+W/FCucsQz8useWD+QZ0/L
-         ws4MlQ1Qt/e6YGyJH7NaNaHB7QpE/SY2LDgeC5swplcbBN7yAmEn2gYo4XTVfNkDn2Vf
-         UAT402aX/Lxttth6OdGb8tBR0IYxr+VkEV+8m+XfiHAeKGZtzSCAaNJITBZ9A298fKnr
-         KVbzkdy6n/esQgh8+kGdC0R5XiF20JgCBO8cCaT9vUbDfJjyFeGPJAM53/oG9YrE/25l
-         S93Q==
+        bh=qaJgnI2fNP+ifpLovg9oTPWy/V4ht/mQlruyfCQW8jQ=;
+        fh=/vn1dzHM2t1x/14wCGHa+9s7hcSK9Rx5kdngFItU+sw=;
+        b=Xn6VUhTyDVrqIG0q2gGJ3lT68SLl4rwNH+S9XxJnN+KooPsvwHEMxwgHM70UlBX4Jz
+         FrkgPFoJ50v7wUoqgZA6gXkYBpLvf0z47qFozeqM4mzZL8mOQimKxoiKVM8fRqnJiuUf
+         a4fb0ETGUIi6vpWB0/nYW/kLHreQ7HKi6un+x3W6GMTEwatVu1Opje4NftCRbF6hXo+s
+         wKSmzK4YlLuU85ucRyiQTPBtg4GavB1WKnYG8BuR9N0IuCwWgtBzTgzNVRf5KbW8cPGX
+         5+u+rRoooiV8suQ5mF0XF48+rTDHdsyJTnyefBeSKMWrdgcNSpXjwJJUxYCgHr/bsMsw
+         d9iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A4iRFEQv;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id v5-20020a05622a014500b00403ea9d6917si7160954qtw.648.2023.09.13.02.02.07
+       dkim=pass header.i=@linaro.org header.s=google header.b=nJbbCN4U;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l21-20020a1c7915000000b003fc055c4420sor5091721wme.5.2023.09.13.02.53.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Sep 2023 02:02:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Wed, 13 Sep 2023 02:53:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=A4iRFEQv;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1694595727;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=slLPdvZwGLgcsnZnsC8K9w2N/TZJ4yvIEAk6TSfFTMw=;
-	b=A4iRFEQvudnOmYgUGvEMvlSGP/qk2ldf6/Cn2i+pGfQp+N68n5Nx3lONY2d1CR8l2rsxFF
-	wRlOMU6rsft7+qfLa4eNN8puKQj4kcs3RzUMAdAzrKXilhTs+HkLfoOsHLKkGFDZ1L5iuT
-	3LUu5Ir5rNew6+rMJd92//BTOn6GaVM=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-213-bvksbTpJNbSgSoExCuWvkQ-1; Wed, 13 Sep 2023 05:02:06 -0400
-X-MC-Unique: bvksbTpJNbSgSoExCuWvkQ-1
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-4020645b2a2so47121085e9.2
-        for <alex.bennee@linaro.org>; Wed, 13 Sep 2023 02:02:06 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=nJbbCN4U;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1694598815; x=1695203615; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=qaJgnI2fNP+ifpLovg9oTPWy/V4ht/mQlruyfCQW8jQ=;
+        b=nJbbCN4UIeKZAg7ynyAH5jKEc70mOijB3QGwHLNOjP+cmCwERc26lrtGmeIaacIfz3
+         8ImWM/Ey5VCxYfODcmzJa4hhBgj18itnJEllLKOzTtqvdw5IcNdib/yiA1FSAC8VLXHX
+         1hQmEN3zFYf3izv4Jyz7zAI5tL7KuBa0IFqo+4HMBFOxPyja3ZxtdZYsuHL0zf8B285f
+         1gZRBOlfsa8QwITmjvHwTnSQktp+RfwTDHVDaZoxHjxDemLo2m2cea4WrcG+lstNzauM
+         aRJiWSac4pcWVKI1uYO4ueyE0CTGr5G77JQOGT8gsyRFz+Kq+SGiZuXrqQMcGa0XpTdg
+         JQyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694595725; x=1695200525;
+        d=1e100.net; s=20230601; t=1694598815; x=1695203615;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=slLPdvZwGLgcsnZnsC8K9w2N/TZJ4yvIEAk6TSfFTMw=;
-        b=HX/re8r2O2G7Ko3L2PbF3tZ5YdtQJ/VWZTIxlJKj6XNHB7vK5EmjNAXMpVoQc5mKD/
-         1rXySIAJBdzeUIyGN+gxlPBF3GS7FFhU3IIjnStPkiJvoeXhXF+t/ctByvNiOPJ6WS6w
-         MAHKWXXYNJ4mc2s/kmWtYqELflbHvqF/fv6HcsOgZyvIrnc3KkgfJQ+Q0id7OaVoO6BM
-         DBFFRI8kyVES2OjCN8MQyFWKz4bCMlJ22LiZGRHzBeV2ZdnievYh5ltvO7BRsI63HYYZ
-         dh4GG2G5XEVn+5kWkEdbc+zYLHhbANvDxsF1LM4OMQAd/0Oqf6vtkHCgRNgLQOuqYrwG
-         b5xw==
-X-Gm-Message-State: AOJu0YzIlQbJ/yGtIPOpUrU0MgRTaPKFvGuveQjazF4kGy585qrEmvtV
-	b5kReUzmCrdJu3+jVbFfzOl/g3/wljJ/atgn3qOym8jClSGtWtfEiL8rX7tQw32f8VbBmEugfyA
-	QQy3oJ3kWGVxUucI0Kr4S3E5JT8AHm92MppLoPIu9pESItuwLAN09Z3VLfavwfD0cBckYntbjWS
-	A=
-X-Received: by 2002:a1c:f701:0:b0:400:46db:1b68 with SMTP id v1-20020a1cf701000000b0040046db1b68mr1498578wmh.35.1694595724689;
-        Wed, 13 Sep 2023 02:02:04 -0700 (PDT)
-X-Received: by 2002:a1c:f701:0:b0:400:46db:1b68 with SMTP id v1-20020a1cf701000000b0040046db1b68mr1498544wmh.35.1694595724354;
-        Wed, 13 Sep 2023 02:02:04 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [10.33.192.218] (nat-pool-str-t.redhat.com. [149.14.88.106])
-        by smtp.gmail.com with ESMTPSA id k23-20020a05600c0b5700b00402fa98abe3sm1390242wmr.46.2023.09.13.02.02.03
+        bh=qaJgnI2fNP+ifpLovg9oTPWy/V4ht/mQlruyfCQW8jQ=;
+        b=l5ymXM9TrxLEinBXxqcGMNSI5LERfRJeQ0qjyVORmmzhekjKxbIFzx9LpmFDa08LmH
+         4R17jEvvAVtLtwm6rrgCQ627Za5cMyjBZgH5EL8yuKUrziFIbJ4cFiM79c2aMfBeyqzS
+         5P7jbR321WUplvbacivADpdlrGNTpnhbm6cynnxR/XF3ECWACL2uRYCEDbwC9qP9EJjU
+         DZYGkaR6hcq5P+fFBPnn/3Fk0QLEGp9lufJj2oAjkZqIsr90Ps4DT/FTZylumYKhgrqs
+         EAzTtxeTHfslkkCjJ1tYmTFez0sGSWviZUlrSdLAdntZ+5qZxr+GzU1FIuHpukCcltJF
+         Long==
+X-Gm-Message-State: AOJu0YxsfP5zBuWjhUJ7TeANQ94L0zwQtJPLAmTEoCYA6MdSp7g0+M1w
+	DWPbh6J1yqXJRHWNdMbJORbbVAD9
+X-Google-Smtp-Source: AGHT+IE0VrgeqFKP/GROgRbuk+yrrpX48cV0/vEWXSFFnUk4hFGLqO0uMoWiQf5EUo7r1K9xMQLy0A==
+X-Received: by 2002:a1c:7703:0:b0:401:cf0d:25ca with SMTP id t3-20020a1c7703000000b00401cf0d25camr1628026wmi.40.1694598815340;
+        Wed, 13 Sep 2023 02:53:35 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.115] (176-131-211-241.abo.bbox.fr. [176.131.211.241])
+        by smtp.gmail.com with ESMTPSA id v9-20020a1cf709000000b003feeb082a9fsm1551011wmh.3.2023.09.13.02.53.33
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Sep 2023 02:02:03 -0700 (PDT)
-Message-ID: <2a8bc661-5fb0-f514-3ae5-4c6c9acb935f@redhat.com>
-Date: Wed, 13 Sep 2023 11:02:03 +0200
+        Wed, 13 Sep 2023 02:53:34 -0700 (PDT)
+Message-ID: <038e675f-7075-8dee-1d2d-584b410081d1@linaro.org>
+Date: Wed, 13 Sep 2023 11:53:32 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.0
 Subject: Re: [PATCH 0/4] ci: fix hang of FreeBSD CI jobs
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
 Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Stefan Hajnoczi <stefanha@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Joel Stanley <joel@jms.id.au>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Beraldo Leal <bleal@redhat.com>
 References: <20230912184130.3056054-1-berrange@redhat.com>
  <5cbb92ab-f8b5-4d03-5698-06d0a0b7cfda@redhat.com> <87ledatq3s.fsf@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <87ledatq3s.fsf@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+ <2a8bc661-5fb0-f514-3ae5-4c6c9acb935f@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <2a8bc661-5fb0-f514-3ae5-4c6c9acb935f@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: W/pR4mgAoDkX
+X-TUID: T0RRfx4/mgc/
 
-On 13/09/2023 10.48, Alex Bennée wrote:
-> 
-> Thomas Huth <thuth@redhat.com> writes:
-> 
->> On 12/09/2023 20.41, Daniel P. Berrangé wrote:
->>> This addresses
->>>     https://gitlab.com/qemu-project/qemu/-/issues/1882
->>> Which turned out to be a genuine flaw which we missed during merge
->>> as the patch hitting master co-incided with the FreeBSD CI job
->>> having an temporary outage due to changed release image version.
->>> Daniel P. Berrangé (4):
->>>     microbit: add missing qtest_quit() call
->>>     qtest: kill orphaned qtest QEMU processes on FreeBSD
->>>     gitlab: make Cirrus CI timeout explicit
->>>     gitlab: make Cirrus CI jobs gating
->>>    .gitlab-ci.d/cirrus.yml       | 4 +++-
->>>    .gitlab-ci.d/cirrus/build.yml | 2 ++
->>>    tests/qtest/libqtest.c        | 7 +++++++
->>>    tests/qtest/microbit-test.c   | 2 ++
->>>    4 files changed, 14 insertions(+), 1 deletion(-)
+On 13/9/23 11:02, Thomas Huth wrote:
+> On 13/09/2023 10.48, Alex Bennée wrote:
+>>
+>> Thomas Huth <thuth@redhat.com> writes:
+>>
+>>> On 12/09/2023 20.41, Daniel P. Berrangé wrote:
+>>>> This addresses
+>>>>     https://gitlab.com/qemu-project/qemu/-/issues/1882
+>>>> Which turned out to be a genuine flaw which we missed during merge
+>>>> as the patch hitting master co-incided with the FreeBSD CI job
+>>>> having an temporary outage due to changed release image version.
+>>>> Daniel P. Berrangé (4):
+>>>>     microbit: add missing qtest_quit() call
+>>>>     qtest: kill orphaned qtest QEMU processes on FreeBSD
+>>>>     gitlab: make Cirrus CI timeout explicit
+>>>>     gitlab: make Cirrus CI jobs gating
+>>>>    .gitlab-ci.d/cirrus.yml       | 4 +++-
+>>>>    .gitlab-ci.d/cirrus/build.yml | 2 ++
+>>>>    tests/qtest/libqtest.c        | 7 +++++++
+>>>>    tests/qtest/microbit-test.c   | 2 ++
+>>>>    4 files changed, 14 insertions(+), 1 deletion(-)
+>>>>
 >>>
+>>> Series
+>>> Reviewed-by: Thomas Huth <thuth@redhat.com>
+>>>
+>>> Alex, will you pick these up or shall I take them for my next PR?
 >>
->> Series
->> Reviewed-by: Thomas Huth <thuth@redhat.com>
+>> Queued to testing/next, thanks.
 >>
->> Alex, will you pick these up or shall I take them for my next PR?
-> 
-> Queued to testing/next, thanks.
-> 
-> Do you have a patch to disable the borked avacado tests? Or maybe I
-> should just include Philippe's fix?
+>> Do you have a patch to disable the borked avacado tests? Or maybe I
+>> should just include Philippe's fix?
 
-I thought that Philippe mentioned that he wanted to provide a patch that 
-disables the broken tests?
+As we discussed with Richard yesterday, the fix is not correct.
 
-  Thomas
+> I thought that Philippe mentioned that he wanted to provide a patch that 
+> disables the broken tests?
+
+Yes, I'm still discussing a bit more on the other thread:
+https://lore.kernel.org/all/4e335f86-d075-4cc0-af5a-9dca9b3bf261@linaro.org/

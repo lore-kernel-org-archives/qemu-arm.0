@@ -1,283 +1,215 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 18-20020a05600c235200b003fe61c33df5sm5228397wmq.3.2023.09.14.08.54.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 Sep 2023 08:54:26 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6FE691FFBB;
-	Thu, 14 Sep 2023 16:54:23 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Joel Stanley <joel@jms.id.au>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	John Snow <jsnow@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH 9/9] tests/avocado: Disable MIPS Malta tests due to GitLab issue #1884
-Date: Thu, 14 Sep 2023 16:54:22 +0100
-Message-Id: <20230914155422.426639-10-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230914155422.426639-1-alex.bennee@linaro.org>
-References: <20230914155422.426639-1-alex.bennee@linaro.org>
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp787091ejb;
+        Thu, 14 Sep 2023 13:56:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IENHOpNaGNhNtns2PQSiENN42nZYphvekOC2HV1QXnx/aa9YYVv0S6ydRsI+x9NK9oZRBce
+X-Received: by 2002:a05:620a:448d:b0:773:a809:f059 with SMTP id x13-20020a05620a448d00b00773a809f059mr2060611qkp.17.1694725017810;
+        Thu, 14 Sep 2023 13:56:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694725017; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Bos3j96EmBm1/UlgSgz1WXQBUg9uqetdAnpM4s32RQGBa73672FEmDkkWnfBHTgNN5
+         I9JCJ2TiUMan+pWR60MAGwZpX6iUwPk2HST2SJK4dC9gZvwqZ+FPjvSpktsP1yX4O1LU
+         ONOIU2Z2FecHFNaDrViyuVc7cbqwf/VEWhApuTSaEY9cLEmghqG0r+ZbCP0NogfNwUo3
+         TgyISAqiF3RXlNz2eC6AtlQqBRhtjbbDe0nFsSo2QM2Ov/6785rRVjV6t21cvCXKKlJD
+         /H80Ki1MBzqRw/9YZq36dMBXG4AvNamofwooO4eSSbjLmKLA8VWZho2cByrtQNB/Km3O
+         lDJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=yH///efoKwzBbqbqbKoqlNogfct5RTcSS36xjQi8MoA=;
+        fh=OThllIjB54onA3Lj2aU2wmgqpetQHNxcHHHtd4nxRQ0=;
+        b=E41XoR8QVdCJRxY48nbG8YY6svGKKQ4FZHZQ7DsfeFtu+tJ1GY+KGdVn+z2YhQtsOS
+         sQDK7i73kltj7gFsImDWnTbL18yhdQbOe1SUGPhb50PRJ9IJKYlAQEvqHbre8BEsHlSo
+         MVkjWMKKBLy9fe8tS8YrNIGkrD3mTud61hBKecmKLNLfgF77ER7EWTIRiwPjV7XO6nWS
+         T4HZu1n6a2DSeSUt1rd4FDMzlQcuT8gsM4nBppptAyDmiYnh83FIuticPI0VL2M9zbaC
+         ut1OaIG6zU2ccIfFAD0NGOohEYAxGh929OKpQOt2vyvs02nvSZK8HKpdly2IWN8QeEO0
+         PP+Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20221208 header.b=jKXh6q0F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y11-20020a05620a25cb00b0076ef5f5b58bsi1487770qko.55.2023.09.14.13.56.57
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 Sep 2023 13:56:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20221208 header.b=jKXh6q0F;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qgtOJ-0007WY-Vb; Thu, 14 Sep 2023 16:56:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1qgtOI-0007Vu-Ls; Thu, 14 Sep 2023 16:56:46 -0400
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1qgtOG-0001nZ-Vg; Thu, 14 Sep 2023 16:56:46 -0400
+Received: by mail-oi1-x22f.google.com with SMTP id
+ 5614622812f47-3acac5d0b91so633957b6e.0; 
+ Thu, 14 Sep 2023 13:56:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1694725002; x=1695329802; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:sender:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=yH///efoKwzBbqbqbKoqlNogfct5RTcSS36xjQi8MoA=;
+ b=jKXh6q0F3L2sTcZfisU28b4NZaDxRoD+CMmWTUnPH7IWT1QfScfjJodLvarIxdOgXe
+ JsBZSYivljKY6mqNUt2FD4djzwYSVmH2GACI46N0VrLk6J0ZlP9xtJQYF8aWcNA9Wyn/
+ 1m89FXWoZRiRcXy3t5ctLDkV+9w9Wp1yIg5sOtwdMX3Rm4whJOo7o0JqJm54AtrLCI4o
+ HmINZmCvE59+rbynsxe9LLNset89wYXGCabDR2cbBuJOmY1QJ+s36F9r6NYijNd6o9hG
+ mlP0IkyxXuJdfnm0jDiJvXJnKBzuRs3NRajyNvO/FQq03BqLXmIA0dvEmDcQ6/w+q9vx
+ 5ckg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1694725002; x=1695329802;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:sender:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=yH///efoKwzBbqbqbKoqlNogfct5RTcSS36xjQi8MoA=;
+ b=WiIt3H0+D8bEO6EticrA1kwr5XZr0VhRnO5stH8vorR4BcpW/qHnW/uh8QoOZc/2pr
+ yg359jI+2Vazw7wQe/rNWJP+vAEz5t/3rqSXz1ALTPLePs22deBaH+hXclUSm3LK8Ktz
+ XaKl8ydlVvQULPlZ83+bvxOOcJy/TmGMbyY7VlpSyE66x9TMVF+WHS/bsyA5ICly80lq
+ nKLUxRVRfEH/b7Cne/NSBxhUQZCTftfZAT7rtj+ll8BXH3kjM8RclZL0CIpuzEDOhbXA
+ b/WuYE7jq10aPUw1xR+Z1sllareiZVe1IiwPMX2ULAfPr59VNrfRPx0jTiBRXtxoCeDK
+ XyPQ==
+X-Gm-Message-State: AOJu0Yzn+NiBTn6PavpIXT8mwbzQ+O8VdRDViwcS2mSNkKfMiXBJXsAV
+ aGtFB02KSZxqnvGkfxiHxQ==
+X-Received: by 2002:a05:6808:d5:b0:3a8:ccf0:1a6d with SMTP id
+ t21-20020a05680800d500b003a8ccf01a6dmr6768163oic.52.1694725002497; 
+ Thu, 14 Sep 2023 13:56:42 -0700 (PDT)
+Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
+ by smtp.gmail.com with ESMTPSA id
+ fa12-20020a0568082a4c00b003a4243d034dsm977047oib.17.2023.09.14.13.56.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Sep 2023 13:56:41 -0700 (PDT)
+Received: from mail.minyard.net (unknown
+ [IPv6:2001:470:b8f6:1b:82e2:1f7b:b4e5:7826])
+ by serve.minyard.net (Postfix) with ESMTPSA id E4678180108;
+ Thu, 14 Sep 2023 20:56:40 +0000 (UTC)
+Date: Thu, 14 Sep 2023 15:56:39 -0500
+From: Corey Minyard <minyard@acm.org>
+To: Klaus Jensen <its@irrelevant.dk>
+Cc: Corey Minyard <cminyard@mvista.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jason Wang <jasowang@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ Lior Weintraub <liorw@pliops.com>, Jeremy Kerr <jk@codeconstruct.com.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Matt Johnston <matt@codeconstruct.com.au>,
+ Peter Delevoryas <peter@pjd.dev>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ Klaus Jensen <k.jensen@samsung.com>
+Subject: Re: [PATCH v6 1/3] hw/i2c: add smbus pec utility function
+Message-ID: <ZQNzh6vL1HtTARMj@mail.minyard.net>
+References: <20230914-nmi-i2c-v6-0-11bbb4f74d18@samsung.com>
+ <20230914-nmi-i2c-v6-1-11bbb4f74d18@samsung.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: u5Kulrfh7DGt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230914-nmi-i2c-v6-1-11bbb4f74d18@samsung.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22f;
+ envelope-from=tcminyard@gmail.com; helo=mail-oi1-x22f.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: minyard@acm.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EbU4jPCRRMkF
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Thu, Sep 14, 2023 at 11:53:41AM +0200, Klaus Jensen wrote:
+> From: Klaus Jensen <k.jensen@samsung.com>
+> 
+> Add i2c_smbus_pec() to calculate the SMBus Packet Error Code for a
+> message.
 
-Commit 0d58c66068 ("softmmu: Use async_run_on_cpu in tcg_commit")
-introduced a regression which is only triggered by the MIPS Malta
-machine. Since those tests are gatting and disturb the CI workflow,
-disable them until https://gitlab.com/qemu-project/qemu/-/issues/1866
-is fixed.
+Seems fine.
 
-  $ make check-avocado \
-      AVOCADO_TAGS='arch:mipsel arch:mips64el' \
-      AVOCADO_ALLOW_UNTRUSTED_CODE=1 \
-      AVOCADO_TIMEOUT_EXPECTED=1
-    AVOCADO tests/avocado
-   (04/24) tests/avocado/boot_linux_console.py:BootLinuxConsole.test_mips_malta32el_nanomips_4k: INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout reached\nOriginal status: ERROR\n... (90.39 s)
-   (05/24) tests/avocado/boot_linux_console.py:BootLinuxConsole.test_mips_malta32el_nanomips_16k_up: INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout reached\nOriginal status: ERROR\n... (90.29 s)
-   (06/24) tests/avocado/boot_linux_console.py:BootLinuxConsole.test_mips_malta32el_nanomips_64k_dbg: INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout reached\nOriginal status: ERROR\n... (92.53 s)
-   (11/24) tests/avocado/machine_mips_malta.py:MaltaMachineFramebuffer.test_mips_malta_i6400_framebuffer_logo_1core: INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout reached\nOriginal status: ERROR\n... (25.78 s)
-  RESULTS    : PASS 8 | ERROR 0 | FAIL 0 | SKIP 7 | WARN 2 | INTERRUPT 5 | CANCEL 2
-  JOB TIME   : 525.60 s                                      ^^^^^^^^^^^
+Acked-by: Corey Minyard <cminyard@mvista.com>
 
-Reported-by: Thomas Huth <thuth@redhat.com>
-Suggested-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230913135339.9128-1-philmd@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/avocado/boot_linux_console.py | 7 +++++++
- tests/avocado/machine_mips_malta.py | 6 ++++++
- tests/avocado/replay_kernel.py      | 7 +++++++
- tests/avocado/tuxrun_baselines.py   | 4 ++++
- 4 files changed, 24 insertions(+)
-
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 6eab515718..01ee149812 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -116,6 +116,7 @@ def test_x86_64_pc(self):
-         console_pattern = 'Kernel command line: %s' % kernel_command_line
-         self.wait_for_console_pattern(console_pattern)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta(self):
-         """
-         :avocado: tags=arch:mips
-@@ -138,6 +139,7 @@ def test_mips_malta(self):
-         console_pattern = 'Kernel command line: %s' % kernel_command_line
-         self.wait_for_console_pattern(console_pattern)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips64el_malta(self):
-         """
-         This test requires the ar tool to extract "data.tar.gz" from
-@@ -191,6 +193,7 @@ def test_mips64el_fuloong2e(self):
-         console_pattern = 'Kernel command line: %s' % kernel_command_line
-         self.wait_for_console_pattern(console_pattern)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta_cpio(self):
-         """
-         :avocado: tags=arch:mips
-@@ -232,6 +235,7 @@ def test_mips_malta_cpio(self):
-         # Wait for VM to shut down gracefully
-         self.vm.wait()
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted code')
-     def test_mips64el_malta_5KEc_cpio(self):
-         """
-@@ -292,6 +296,7 @@ def do_test_mips_malta32el_nanomips(self, kernel_url, kernel_hash):
-         console_pattern = 'Kernel command line: %s' % kernel_command_line
-         self.wait_for_console_pattern(console_pattern)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta32el_nanomips_4k(self):
-         """
-         :avocado: tags=arch:mipsel
-@@ -305,6 +310,7 @@ def test_mips_malta32el_nanomips_4k(self):
-         kernel_hash = '477456aafd2a0f1ddc9482727f20fe9575565dd6'
-         self.do_test_mips_malta32el_nanomips(kernel_url, kernel_hash)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta32el_nanomips_16k_up(self):
-         """
-         :avocado: tags=arch:mipsel
-@@ -318,6 +324,7 @@ def test_mips_malta32el_nanomips_16k_up(self):
-         kernel_hash = 'e882868f944c71c816e832e2303b7874d044a7bc'
-         self.do_test_mips_malta32el_nanomips(kernel_url, kernel_hash)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta32el_nanomips_64k_dbg(self):
-         """
-         :avocado: tags=arch:mipsel
-diff --git a/tests/avocado/machine_mips_malta.py b/tests/avocado/machine_mips_malta.py
-index 92233451c5..3620266589 100644
---- a/tests/avocado/machine_mips_malta.py
-+++ b/tests/avocado/machine_mips_malta.py
-@@ -11,6 +11,7 @@
- import gzip
- import logging
- 
-+from avocado import skip
- from avocado import skipIf
- from avocado import skipUnless
- from avocado.utils import archive
-@@ -93,6 +94,7 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
-             cv2.imwrite(debug_png, screendump_bgr)
-         self.assertGreaterEqual(tuxlogo_count, cpu_cores_count)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta_i6400_framebuffer_logo_1core(self):
-         """
-         :avocado: tags=arch:mips64el
-@@ -101,6 +103,7 @@ def test_mips_malta_i6400_framebuffer_logo_1core(self):
-         """
-         self.do_test_i6400_framebuffer_logo(1)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     @skipIf(os.getenv('GITLAB_CI'), 'Running on GitLab')
-     def test_mips_malta_i6400_framebuffer_logo_7cores(self):
-         """
-@@ -111,6 +114,7 @@ def test_mips_malta_i6400_framebuffer_logo_7cores(self):
-         """
-         self.do_test_i6400_framebuffer_logo(7)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     @skipIf(os.getenv('GITLAB_CI'), 'Running on GitLab')
-     def test_mips_malta_i6400_framebuffer_logo_8cores(self):
-         """
-@@ -142,6 +146,7 @@ def do_test_yamon(self):
-         wait_for_console_pattern(self, prompt)
-         self.vm.shutdown()
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mipsel_malta_yamon(self):
-         """
-         :avocado: tags=arch:mipsel
-@@ -150,6 +155,7 @@ def test_mipsel_malta_yamon(self):
-         """
-         self.do_test_yamon()
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips64el_malta_yamon(self):
-         """
-         :avocado: tags=arch:mips64el
-diff --git a/tests/avocado/replay_kernel.py b/tests/avocado/replay_kernel.py
-index a18610542e..f7ccfd2462 100644
---- a/tests/avocado/replay_kernel.py
-+++ b/tests/avocado/replay_kernel.py
-@@ -98,6 +98,7 @@ def test_x86_64_pc(self):
- 
-         self.run_rr(kernel_path, kernel_command_line, console_pattern, shift=5)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta(self):
-         """
-         :avocado: tags=arch:mips
-@@ -116,6 +117,7 @@ def test_mips_malta(self):
- 
-         self.run_rr(kernel_path, kernel_command_line, console_pattern, shift=5)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips64el_malta(self):
-         """
-         This test requires the ar tool to extract "data.tar.gz" from
-@@ -431,6 +433,7 @@ class ReplayKernelSlow(ReplayKernelBase):
-     # making it very slow.
-     timeout = 180
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta_cpio(self):
-         """
-         :avocado: tags=arch:mips
-@@ -460,6 +463,7 @@ def test_mips_malta_cpio(self):
-         self.run_rr(kernel_path, kernel_command_line, console_pattern, shift=5,
-                     args=('-initrd', initrd_path))
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     @skipUnless(os.getenv('AVOCADO_ALLOW_UNTRUSTED_CODE'), 'untrusted code')
-     def test_mips64el_malta_5KEc_cpio(self):
-         """
-@@ -502,6 +506,7 @@ def do_test_mips_malta32el_nanomips(self, kernel_path_xz):
-         console_pattern = 'Kernel command line: %s' % kernel_command_line
-         self.run_rr(kernel_path, kernel_command_line, console_pattern, shift=5)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta32el_nanomips_4k(self):
-         """
-         :avocado: tags=arch:mipsel
-@@ -516,6 +521,7 @@ def test_mips_malta32el_nanomips_4k(self):
-         kernel_path_xz = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-         self.do_test_mips_malta32el_nanomips(kernel_path_xz)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta32el_nanomips_16k_up(self):
-         """
-         :avocado: tags=arch:mipsel
-@@ -530,6 +536,7 @@ def test_mips_malta32el_nanomips_16k_up(self):
-         kernel_path_xz = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-         self.do_test_mips_malta32el_nanomips(kernel_path_xz)
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips_malta32el_nanomips_64k_dbg(self):
-         """
-         :avocado: tags=arch:mipsel
-diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
-index e12250eabb..610b7e2bfa 100644
---- a/tests/avocado/tuxrun_baselines.py
-+++ b/tests/avocado/tuxrun_baselines.py
-@@ -352,6 +352,7 @@ def test_i386(self):
- 
-         self.common_tuxrun(csums=sums, drive="virtio-blk-pci")
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips32(self):
-         """
-         :avocado: tags=arch:mips
-@@ -370,6 +371,7 @@ def test_mips32(self):
- 
-         self.common_tuxrun(csums=sums, drive="driver=ide-hd,bus=ide.0,unit=0")
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips32el(self):
-         """
-         :avocado: tags=arch:mipsel
-@@ -387,6 +389,7 @@ def test_mips32el(self):
- 
-         self.common_tuxrun(csums=sums, drive="driver=ide-hd,bus=ide.0,unit=0")
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips64(self):
-         """
-         :avocado: tags=arch:mips64
-@@ -404,6 +407,7 @@ def test_mips64(self):
- 
-         self.common_tuxrun(csums=sums, drive="driver=ide-hd,bus=ide.0,unit=0")
- 
-+    @skip('https://gitlab.com/qemu-project/qemu/-/issues/1884')
-     def test_mips64el(self):
-         """
-         :avocado: tags=arch:mips64el
--- 
-2.39.2
+> 
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+> ---
+>  hw/i2c/smbus_master.c         | 26 ++++++++++++++++++++++++++
+>  include/hw/i2c/smbus_master.h |  2 ++
+>  2 files changed, 28 insertions(+)
+> 
+> diff --git a/hw/i2c/smbus_master.c b/hw/i2c/smbus_master.c
+> index 6a53c34e70b7..01a8e4700222 100644
+> --- a/hw/i2c/smbus_master.c
+> +++ b/hw/i2c/smbus_master.c
+> @@ -15,6 +15,32 @@
+>  #include "hw/i2c/i2c.h"
+>  #include "hw/i2c/smbus_master.h"
+>  
+> +static uint8_t crc8(uint16_t data)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < 8; i++) {
+> +        if (data & 0x8000) {
+> +            data ^= 0x1070U << 3;
+> +        }
+> +
+> +        data <<= 1;
+> +    }
+> +
+> +    return (uint8_t)(data >> 8);
+> +}
+> +
+> +uint8_t i2c_smbus_pec(uint8_t crc, uint8_t *buf, size_t len)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < len; i++) {
+> +        crc = crc8((crc ^ buf[i]) << 8);
+> +    }
+> +
+> +    return crc;
+> +}
+> +
+>  /* Master device commands.  */
+>  int smbus_quick_command(I2CBus *bus, uint8_t addr, int read)
+>  {
+> diff --git a/include/hw/i2c/smbus_master.h b/include/hw/i2c/smbus_master.h
+> index bb13bc423c22..d90f81767d86 100644
+> --- a/include/hw/i2c/smbus_master.h
+> +++ b/include/hw/i2c/smbus_master.h
+> @@ -27,6 +27,8 @@
+>  
+>  #include "hw/i2c/i2c.h"
+>  
+> +uint8_t i2c_smbus_pec(uint8_t crc, uint8_t *buf, size_t len);
+> +
+>  /* Master device commands.  */
+>  int smbus_quick_command(I2CBus *bus, uint8_t addr, int read);
+>  int smbus_receive_byte(I2CBus *bus, uint8_t addr);
+> 
+> -- 
+> 2.42.0
+> 
+> 

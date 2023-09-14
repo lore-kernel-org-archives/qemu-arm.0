@@ -1,119 +1,145 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp478006ejb;
-        Thu, 14 Sep 2023 05:26:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE03OQ3bzIoB5ldzG6a6g7JFjc0aa03VYq8e8hWZ7wZ9L6sw5tHgXYLhtaSDkru8E9vwxbk
-X-Received: by 2002:a0c:cb8a:0:b0:64b:997f:5a73 with SMTP id p10-20020a0ccb8a000000b0064b997f5a73mr5129941qvk.0.1694694404825;
-        Thu, 14 Sep 2023 05:26:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694694404; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp398591ejb;
+        Thu, 14 Sep 2023 02:54:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFrdmedf2WqSE3349XFv8QUzwOjPd+A2T1UzlvyK5K7YERUL7huo8Jx64DjLWUy3c7tTdQs
+X-Received: by 2002:a81:4e8b:0:b0:577:3d46:f90e with SMTP id c133-20020a814e8b000000b005773d46f90emr4862174ywb.32.1694685285329;
+        Thu, 14 Sep 2023 02:54:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694685285; cv=none;
         d=google.com; s=arc-20160816;
-        b=ppwpDox7zjOs7lh0m7BqjMCXavi15SQKwdWgn8jcQXT1sLZMAgynuI43B7i9rFmze1
-         8/qlO6bLAurvIe1D/Shmk/91eqGLx0B5+vS8Sd7xd7tuYpXeDq6SGNHySoY7Nni30fyx
-         PFZLFV0qhPL/WPu7JOLqGG3P8cAHLpIMzwgpgfLSQgkX2bOScQIj+OZtgaF+9AK2ZaE6
-         FOIybv/Xdt/KaNuiTQFjqCacAj0bkuxJo83/SE9AXfUbnyLIRuCpUfGpKzjeO2aD5tu7
-         rJO/kROUtx1woc/RZxwbplW6VQ7yMYf11JY+BB6nmunSp5DxcEXnYh8/vgl+38HwHrpy
-         kxcg==
+        b=EDQmOyVcVTpq6FUrWVyd0hC3oY8+yF4sJmbsEBl6/+07LqPMa/+WUckVNPFggkBtN8
+         C9D2+MKPFy9eKPgmJYxEG//2N/JjEZlyMvcg5FWnAcEcxWsJcTnk33DUVyTwV+M7s1Ft
+         PH98HOkR9fRAj5kntWIvslNlcogXGjZ5OrNlW2VPjX5D6IZ9uBqDn5eD+6C703yG3o6C
+         vkPCrurefxSjD/wKPu6Mp5ZVs1KjxgUGP7ZUlaT8g+ly8Wn95frR7zNNwsBEKuvRSIB6
+         TeuMfj2GKmkd8wdcUEYgmKo7nRnM9jFC8brxL8dj0rsxuN+7up8g6cv8PGv7Idkdl2XT
+         YTVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=AJFEHBLkPZAZgUlNe2cLzWBIOLdTGvDgJjEkdDMQrRs=;
-        fh=2w5/DxcMtQ8eO0DkxfZY7SlIKNr/zKAkC5EjTb1R1+c=;
-        b=xlEd3u+VQqdt/vipnq93JMl8f2xt19h5CGyIc8GBp3KxqVE5ITyxbdo5ZVth7u/cHU
-         nMCHFXfSMfMYNS0/aXHuOl1tudqiH/fAJWvWHBI/iGENVi3Ue13/qjE436iaAm1aCJ4B
-         JcWh1DNbJO9almiX2QOnZp++uQczvbVJpK51WFHIFmihhjUVZ9ckMP3+2N01iMP7a7TF
-         DKtGPjrHCTxm7byecTRbUKcDvYMsgFONsVepcY7VatGkSzggy0V/dwb4k8Crsr+BY64F
-         gpDXOv6c7T3s7zTGEy26DDEoYhzLgwkkkmJOR5aNBpgGgNegbMrCLEaZbVqvv73UTSip
-         DVyw==
+         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
+         :message-id:content-transfer-encoding:mime-version:subject:date:from
+         :feedback-id:dkim-signature:dkim-signature;
+        bh=qpnACPKjx8FlLuHg7ar9nlBCyd2qZX8CR7bnETh4KzI=;
+        fh=Rg1dcMKdzgajSL0ngObb/GWyo2jS44P+qtI/e+mbVu8=;
+        b=lYRs3LTq9qCyAlqQ35E0eGcSAUHX1gJCBia6quQDXyiv7ZqgtOeoKpll9rMHb9IWMx
+         ZtRgPdcUEThhnwJlbhoJSDrj+BeMVZ/sLuKt2UpKPgHfQYHaQMtBDnqijwEFTExPoJ0a
+         uO4y5Cd1FEwcQf4mDKND/OZhRN38BffELesdcJk0nOf++UdQNkdHcjFnputTPFdgB1ex
+         nENuxjiWB6Krm2ZwU6rsZlyki/Zpru0e6KNV3/ye6PpGAguAvCe8e+c/JUkmN4HDK6dc
+         XZ2CtT5xnvac8lpIbsWpd3FwUqBeN46VzbS0iNc8Hi1AeMwWP8KkHE9QK4MG3fC/AWhX
+         WvWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GwlNzojF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@irrelevant.dk header.s=fm1 header.b=wu766Yx8;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=XF62ybUb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e22-20020a05622a111600b004030d8b3d81si856819qty.483.2023.09.14.05.26.44
+        by mx.google.com with ESMTPS id k9-20020a0c9709000000b00647322bfed0si593169qvd.385.2023.09.14.02.54.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Sep 2023 05:26:44 -0700 (PDT)
+        Thu, 14 Sep 2023 02:54:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GwlNzojF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@irrelevant.dk header.s=fm1 header.b=wu766Yx8;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=XF62ybUb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qglQK-0007kZ-9b; Thu, 14 Sep 2023 08:26:21 -0400
+	id 1qgj3B-0001Af-Bp; Thu, 14 Sep 2023 05:54:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qglQH-0007jw-Pl
- for qemu-arm@nongnu.org; Thu, 14 Sep 2023 08:26:17 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qglQF-0006RW-Sl
- for qemu-arm@nongnu.org; Thu, 14 Sep 2023 08:26:17 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-9a9cd066db5so129521166b.0
- for <qemu-arm@nongnu.org>; Thu, 14 Sep 2023 05:26:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694694374; x=1695299174; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=AJFEHBLkPZAZgUlNe2cLzWBIOLdTGvDgJjEkdDMQrRs=;
- b=GwlNzojFe7nFAufjhxqks77rMeF3dEdmmorarrPvuaPwN8wb6OJAYlmIaEnUUiyG4X
- 6Dr39p3yZ1ZR1/dzmWcXu9vA0N1QRNVNmHwSMKUBZHC4WjBJAzly3FbRewoCFR6ZkMf/
- h0p8Z+4u9vghVUse13PkxYTffCM9ewjrLxVvMfCUGlRKOk5vxxJnYneGTYSOVezVwvSr
- YjaXzTEZZDhX4FIuDZOvoRptyjVb2Osi6JovigGTvblViGoF7BQ3eRD/1FUDe6owmfWy
- FO3aUbjZWl3tz/vrD/WbXUclPEvpkUMkRU5e4yfSF4lEcJdAP0/Vndjx0xSk1/0pAD1w
- F5Eg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694694374; x=1695299174;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=AJFEHBLkPZAZgUlNe2cLzWBIOLdTGvDgJjEkdDMQrRs=;
- b=UVuQYdfZ3T24xhYVC+kYg94w7NMK8D1urCO0eahTm6/yyqilnlgwmMK7QCnH0WYBY7
- nzKRG4tXs15O3ldJEmFEUUprFAwzQL5YEnTPiMxEwHhC0ugqjs7Shxl064YMUnHPzt27
- guYPop/cVe97iY/dBGLWDCQd7QzO3nagEwH/tgM7yVuXV9NjA0ExgG6yuaUQ39vY+q+a
- Haops7DRCaFgEvlfRV8Ajl0+Q+LD7qZjeiM3c/tddThTKKHV5xc5gWQ0vUI6NlYw3YA3
- 6Ks/Tlb1JjMziZMWMHhhwSNcPAqY/uzctpPIR64tUOYpy0IJsSwOx5szoCsS813KvaiO
- M9WA==
-X-Gm-Message-State: AOJu0Yy8KfDLuZetC6tt9bhRdXe79QyUHWQBNIp/ekcHlUasK4gA5/a7
- 6kOaSgY1RX4arjq9zqJ/ugVNyA==
-X-Received: by 2002:a17:907:7816:b0:9a6:572f:597f with SMTP id
- la22-20020a170907781600b009a6572f597fmr4715210ejc.38.1694694373907; 
- Thu, 14 Sep 2023 05:26:13 -0700 (PDT)
-Received: from [192.168.69.115] (176-131-223-129.abo.bbox.fr.
- [176.131.223.129]) by smtp.gmail.com with ESMTPSA id
- j19-20020a170906411300b009930308425csm932765ejk.31.2023.09.14.05.26.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 14 Sep 2023 05:26:13 -0700 (PDT)
-Message-ID: <1c07cd98-5381-28fd-58bb-d42d3de85a22@linaro.org>
-Date: Thu, 14 Sep 2023 14:26:11 +0200
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1qgj39-00019g-QZ; Thu, 14 Sep 2023 05:54:15 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1qgj37-0003KY-Ai; Thu, 14 Sep 2023 05:54:14 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 4641C5C075B;
+ Thu, 14 Sep 2023 05:54:12 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Thu, 14 Sep 2023 05:54:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to;
+ s=fm1; t=1694685252; x=1694771652; bh=qpnACPKjx8FlLuHg7ar9nlBCy
+ d2qZX8CR7bnETh4KzI=; b=wu766Yx8srsimGUItL7aw2QmXQ7E5QpQ12Mgz3sUI
+ lvlzzRuAggMUH3TDMbaS8bUiTq6J+1floDeh4yD4Ue+y11N5B8mHmmT/mrHyxUru
+ /6ohsVFajq4+1HrBeG5XbZ8G+z1AxVl+kX7YwSmARmRfbtYc0LQxnMlqisVPHi4h
+ bjBq7xdryT/PpHj96vFPbk/CutMYDvnTwI32AJkPZw2mjf0B7VTkG/BeRp98gnwb
+ Wm1zuziTkJKjvisiRU61OCmVTBI8t+M0p3L9WzN0TsOU96ygNTcSxuWCUMMXzt7T
+ xQ2UsC+FwSWsfAUEt1eEWxXh6tfQ62f5pwxm4LD4AskFA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+ 1694685252; x=1694771652; bh=qpnACPKjx8FlLuHg7ar9nlBCyd2qZX8CR7b
+ nETh4KzI=; b=XF62ybUbBiw7weMS6i+jbsdgk3vNMAzI9ZoSFqmWuzSa3mFVZaY
+ BFO2oFE2O0Ky8Pt/v0cafjU48hUhyzTAy3BIlqjBKR4t84g1Ha9xSoR2pK3K4tDp
+ fN6BRt88wiPLsE2v1SX/alocjDqhTRDEazm8PshPjinF519r869b4ME6Dt4581xQ
+ gPRkYc86LNcaOz9rVAAXCkODCz6QOP2QRigoWSrousqU30S/SaKK9cuF+mqGlQto
+ qNrW7y6vIyH9OOu5kQo9dDFOmR9yc+i2HRQaHCbusHBv3aoMYSt6biVM3opSWmge
+ gEbFwsqKgTSqJqxY0P49EmBRNuGuYl5u8YA==
+X-ME-Sender: <xms:RNgCZbkCJdnUh-T34lqCq010Zi4qh3PyS1V1ENUkCiDYY-sD5U3KNg>
+ <xme:RNgCZe16tu1nqaMfAQoO-yNfCnikftb49yjvuAj3EPesViaHZJlm1iwe6peKcZ6jF
+ LgJ6dXoFnfeYA6VAxg>
+X-ME-Received: <xmr:RNgCZRqd__iaMGMg-xO7VcCHOg8rUxStrx1U3qtPDSXH1LPx7aIZ90_4Lslvzc85XEKRvTU4izpF5jQdQID2WVukhYGGvjGrfcQnGgZFoeCWRCLnxoPVdfZuZBH8bUKPXaKRTLFafXYYm9Dp>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedviedrudejtddgvdduucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhephfffufggtgfgkfhfjgfvvefosehtjeertdertdejnecuhfhrohhmpefmlhgr
+ uhhsucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrg
+ htthgvrhhnpeekiedvtdeuhefffedutdelfeekhfeitddtudevgefgffeiteevfffhhefg
+ gefhffenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hithhssehirhhrvghlvghvrghnthdrughk
+X-ME-Proxy: <xmx:RNgCZTms1lBRLo4dypFZIsiy4qpvvFPz6deih3Vov-lmK0Wq-_tR9w>
+ <xmx:RNgCZZ1O8rj0ZlFq6me2lYv1Khrj3ZXLOCeHomhP-Ii6oHy8YXrhgg>
+ <xmx:RNgCZSsjb5Ho0Vjs_y0DE-dkTqW1XX6RVtAHECOM_mmSefOxNga2aw>
+ <xmx:RNgCZTN9LjbA_Hx30wNZmg-tNJEJ8c06WuZ2IYGCgj3s-ZZccdMewQ>
+Feedback-ID: idc91472f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 14 Sep 2023 05:54:10 -0400 (EDT)
+From: Klaus Jensen <its@irrelevant.dk>
+Date: Thu, 14 Sep 2023 11:53:41 +0200
+Subject: [PATCH v6 1/3] hw/i2c: add smbus pec utility function
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.0
-Subject: Re: [RFC PATCH 3/3] hw/arm/sbsa-ref: use bsa.h for PPI definitions
-Content-Language: en-US
-To: Leif Lindholm <quic_llindhol@quicinc.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-References: <20230914120124.55410-1-quic_llindhol@quicinc.com>
- <20230914120124.55410-4-quic_llindhol@quicinc.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230914120124.55410-4-quic_llindhol@quicinc.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.473,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20230914-nmi-i2c-v6-1-11bbb4f74d18@samsung.com>
+References: <20230914-nmi-i2c-v6-0-11bbb4f74d18@samsung.com>
+In-Reply-To: <20230914-nmi-i2c-v6-0-11bbb4f74d18@samsung.com>
+To: Corey Minyard <cminyard@mvista.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, 
+ Keith Busch <kbusch@kernel.org>
+Cc: Lior Weintraub <liorw@pliops.com>, Jeremy Kerr <jk@codeconstruct.com.au>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Matt Johnston <matt@codeconstruct.com.au>, Peter Delevoryas <peter@pjd.dev>, 
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
+ Klaus Jensen <its@irrelevant.dk>, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org, qemu-block@nongnu.org, 
+ Klaus Jensen <k.jensen@samsung.com>
+X-Mailer: b4 0.12.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1599; i=k.jensen@samsung.com; 
+ h=from:subject:message-id;
+ bh=IESKvosDnCV2lesmuDXJATWi4RhD+1Qnj529Hd0bnqM=; 
+ b=owJ4nAFtAZL+kA0DAAoBTeGvMW1PDekByyZiAGUC2D7xDqo6QNBe//UAp5GyFuY5se1jEWQeW
+ mBlKoA/ewyZlYkBMwQAAQoAHRYhBFIoM6p14tzmokdmwE3hrzFtTw3pBQJlAtg+AAoJEE3hrzFt
+ Tw3pzvwH/3Apaz03lYk7I14B1DBRCrcrVII5OQUpQRP0woTVn+evdx5uLggphJqP+P7VnGyOv1X
+ Ecx+qqyeQmQjzs3BtVZXc0fLjWBJM1Sjp5q6J+Pwj60RhInUywvG1PgdqKhYykhHHPStYp/NoCe
+ 1BwwGtZUMXepGtEXzBmtELZ4Cblb4xAHQrWq9oa7/uTFcX2smqQGgo1qWrX5Dryn1tPNfskUe63
+ ecG7A83j6qer0ybcd+VnzN58iSN6NLxAZDYFpfYbfdgFXt4AbCr66V+KxXlYrsLWWB+hiBBPcGw
+ 6PRmMmvV08vp4T1yiMC2tq8qj6d/C9cRt8hGfdhK01MBZnmFq83MlKk6
+X-Developer-Key: i=k.jensen@samsung.com; a=openpgp;
+ fpr=DDCA4D9C9EF931CC3468427263D56FC5E55DA838
+Received-SPF: pass client-ip=66.111.4.25; envelope-from=its@irrelevant.dk;
+ helo=out1-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,17 +154,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HAPbotV6pJjo
+X-TUID: fCidOLUq5odL
 
-On 14/9/23 14:01, Leif Lindholm wrote:
-> Use the private peripheral interrupt definitions from bsa.h instead of
-> defining them locally. Refactor to use PPI() to convert from INTID macro
-> where necessary.
-> 
-> Signed-off-by: Leif Lindholm <quic_llindhol@quicinc.com>
-> ---
->   hw/arm/sbsa-ref.c | 24 +++++++++++-------------
->   1 file changed, 11 insertions(+), 13 deletions(-)
+From: Klaus Jensen <k.jensen@samsung.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Add i2c_smbus_pec() to calculate the SMBus Packet Error Code for a
+message.
+
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+---
+ hw/i2c/smbus_master.c         | 26 ++++++++++++++++++++++++++
+ include/hw/i2c/smbus_master.h |  2 ++
+ 2 files changed, 28 insertions(+)
+
+diff --git a/hw/i2c/smbus_master.c b/hw/i2c/smbus_master.c
+index 6a53c34e70b7..01a8e4700222 100644
+--- a/hw/i2c/smbus_master.c
++++ b/hw/i2c/smbus_master.c
+@@ -15,6 +15,32 @@
+ #include "hw/i2c/i2c.h"
+ #include "hw/i2c/smbus_master.h"
+ 
++static uint8_t crc8(uint16_t data)
++{
++    int i;
++
++    for (i = 0; i < 8; i++) {
++        if (data & 0x8000) {
++            data ^= 0x1070U << 3;
++        }
++
++        data <<= 1;
++    }
++
++    return (uint8_t)(data >> 8);
++}
++
++uint8_t i2c_smbus_pec(uint8_t crc, uint8_t *buf, size_t len)
++{
++    int i;
++
++    for (i = 0; i < len; i++) {
++        crc = crc8((crc ^ buf[i]) << 8);
++    }
++
++    return crc;
++}
++
+ /* Master device commands.  */
+ int smbus_quick_command(I2CBus *bus, uint8_t addr, int read)
+ {
+diff --git a/include/hw/i2c/smbus_master.h b/include/hw/i2c/smbus_master.h
+index bb13bc423c22..d90f81767d86 100644
+--- a/include/hw/i2c/smbus_master.h
++++ b/include/hw/i2c/smbus_master.h
+@@ -27,6 +27,8 @@
+ 
+ #include "hw/i2c/i2c.h"
+ 
++uint8_t i2c_smbus_pec(uint8_t crc, uint8_t *buf, size_t len);
++
+ /* Master device commands.  */
+ int smbus_quick_command(I2CBus *bus, uint8_t addr, int read);
+ int smbus_receive_byte(I2CBus *bus, uint8_t addr);
+
+-- 
+2.42.0
 

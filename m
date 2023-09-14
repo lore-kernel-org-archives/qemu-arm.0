@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id u17-20020a05600c00d100b003fe0a0e03fcsm5180621wmm.12.2023.09.14.08.54.23
+        by smtp.gmail.com with ESMTPSA id s23-20020a7bc397000000b00403bbe69629sm2299139wmj.31.2023.09.14.08.54.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 Sep 2023 08:54:25 -0700 (PDT)
+        Thu, 14 Sep 2023 08:54:26 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 355A61FFC2;
+	by zen.linaroharston (Postfix) with ESMTP id 4F3A11FFC3;
 	Thu, 14 Sep 2023 16:54:23 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -28,46 +28,104 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Markus Armbruster <armbru@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: [PATCH 7/9] gitlab: make Cirrus CI jobs gating
-Date: Thu, 14 Sep 2023 16:54:20 +0100
-Message-Id: <20230914155422.426639-8-alex.bennee@linaro.org>
+	Nicholas Piggin <npiggin@gmail.com>
+Subject: [PATCH 8/9] tests/avocado: Fix console data loss
+Date: Thu, 14 Sep 2023 16:54:21 +0100
+Message-Id: <20230914155422.426639-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230914155422.426639-1-alex.bennee@linaro.org>
 References: <20230914155422.426639-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /1l443Pthgiu
+X-TUID: ft/gPhhIffMF
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+From: Nicholas Piggin <npiggin@gmail.com>
 
-The Cirrus CI jobs have been non-gating for a while to let us build
-confidence in their reliability. Aside from periodic dependancy
-problems when FreeBSD Ports switches to be based on a new FreeBSD
-image version, the jobs have been reliable. It is thus worth making
-them gating to prevent build failures being missed during merges.
+Occasionally some avocado tests will fail waiting for console line
+despite the machine running correctly. Console data goes missing, as can
+be seen in the console log. This is due to _console_interaction calling
+makefile() on the console socket each time it is invoked, which must be
+losing old buffer contents when going out of scope.
 
-Signed-off-by: "Daniel P. Berrangé" <berrange@redhat.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230912184130.3056054-5-berrange@redhat.com>
+It is not enough to makefile() with buffered=0. That helps significantly
+but data loss is still possible. My guess is that readline() has a line
+buffer even when the file is in unbuffered mode, that can eat data.
+
+Fix this by providing a console file that persists for the life of the
+console.
+
+Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
+Reviewed-by: "Daniel P. Berrangé" <berrange@redhat.com>
+Message-Id: <20230912131340.405619-1-npiggin@gmail.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/cirrus.yml | 1 -
- 1 file changed, 1 deletion(-)
+ python/qemu/machine/machine.py         | 19 +++++++++++++++++++
+ tests/avocado/avocado_qemu/__init__.py |  2 +-
+ 2 files changed, 20 insertions(+), 1 deletion(-)
 
-diff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml
-index 816d89cc2a..e7f1f83c2c 100644
---- a/.gitlab-ci.d/cirrus.yml
-+++ b/.gitlab-ci.d/cirrus.yml
-@@ -19,7 +19,6 @@
-   # as there's often a 5-10 minute delay before Cirrus CI
-   # actually starts the task
-   timeout: 80m
--  allow_failure: true
-   script:
-     - source .gitlab-ci.d/cirrus/$NAME.vars
-     - sed -e "s|[@]CI_REPOSITORY_URL@|$CI_REPOSITORY_URL|g"
+diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
+index c16a0b6fed..35d5a672db 100644
+--- a/python/qemu/machine/machine.py
++++ b/python/qemu/machine/machine.py
+@@ -191,6 +191,7 @@ def __init__(self,
+             self.sock_dir, f"{self._name}.con"
+         )
+         self._console_socket: Optional[socket.socket] = None
++        self._console_file: Optional[socket.SocketIO] = None
+         self._remove_files: List[str] = []
+         self._user_killed = False
+         self._quit_issued = False
+@@ -509,6 +510,11 @@ def _early_cleanup(self) -> None:
+         # If we keep the console socket open, we may deadlock waiting
+         # for QEMU to exit, while QEMU is waiting for the socket to
+         # become writable.
++        if self._console_file is not None:
++            LOG.debug("Closing console file")
++            self._console_file.close()
++            self._console_file = None
++
+         if self._console_socket is not None:
+             LOG.debug("Closing console socket")
+             self._console_socket.close()
+@@ -874,12 +880,25 @@ def console_socket(self) -> socket.socket:
+         Returns a socket connected to the console
+         """
+         if self._console_socket is None:
++            LOG.debug("Opening console socket")
+             self._console_socket = console_socket.ConsoleSocket(
+                 self._console_address,
+                 file=self._console_log_path,
+                 drain=self._drain_console)
+         return self._console_socket
+ 
++    @property
++    def console_file(self) -> socket.SocketIO:
++        """
++        Returns a file associated with the console socket
++        """
++        if self._console_file is None:
++            LOG.debug("Opening console file")
++            self._console_file = self.console_socket.makefile(mode='rb',
++                                                              buffering=0,
++                                                              encoding='utf-8')
++        return self._console_file
++
+     @property
+     def temp_dir(self) -> str:
+         """
+diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
+index 33090903f1..0172a359b7 100644
+--- a/tests/avocado/avocado_qemu/__init__.py
++++ b/tests/avocado/avocado_qemu/__init__.py
+@@ -137,7 +137,7 @@ def _console_interaction(test, success_message, failure_message,
+     assert not keep_sending or send_string
+     if vm is None:
+         vm = test.vm
+-    console = vm.console_socket.makefile(mode='rb', encoding='utf-8')
++    console = vm.console_file
+     console_logger = logging.getLogger('console')
+     while True:
+         if send_string:
 -- 
 2.39.2

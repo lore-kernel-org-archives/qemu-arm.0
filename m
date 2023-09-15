@@ -1,180 +1,146 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1169217ejb;
-        Fri, 15 Sep 2023 04:56:07 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEPOEjbFavErClwkih8hRuKpAJ49MxCAGPdcYeZcCvsPdZFRC/eNsiQZnwK5Ri9GGWRmlHt
-X-Received: by 2002:a25:e043:0:b0:d7a:ee98:4f8 with SMTP id x64-20020a25e043000000b00d7aee9804f8mr1368828ybg.30.1694778967199;
-        Fri, 15 Sep 2023 04:56:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694778967; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1171600ejb;
+        Fri, 15 Sep 2023 05:00:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGzaBvMOAomKjAC24ve/PviSDXcpElmtWo0QBSYhl5JlwDGn52IwH/kheN6LVegD+ScQyY6
+X-Received: by 2002:a0c:fa08:0:b0:641:8df1:79e3 with SMTP id q8-20020a0cfa08000000b006418df179e3mr1657434qvn.29.1694779229555;
+        Fri, 15 Sep 2023 05:00:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694779229; cv=none;
         d=google.com; s=arc-20160816;
-        b=hxT/3xTbyjoTvvc9ZYFJBEBfNVsYn44QE49oxcMs+1R7xsoqTVCrQocdjQ2shitu/A
-         3jHnTG7nNrmR7mU8yXADVmzR7awXRMdFn9lk3B8tv0PmcNtJ+nLWTYUrhY3j3ZGg+lwa
-         GDZVCAgCtJevszLuLPk8wKWmRDhoPmDqhq+kiJQVqzqjLJnfepoAyc6RGw9lpFOIYINi
-         BktBcgzksloDMDgoKuQR6SRSCUP4/7H1LjUyKYQdhD+2DxT+/MQZOF2PK0b++kpONLTz
-         XAGZ/ig8Lm2ynlgmaS9s+R+ANqHRhfQJLcCgXq/9XmsGTeHynrjF94BFSh9TkVL4MdoO
-         30jQ==
+        b=nWl84X0q2BQTJvOhIce+DF9Ai5Lm7yngmmhvdp6B9teYhXlvwCOnqM5Uq1eO7LgsSy
+         KEwzUP3+4DBs3tWGnbKhTdXcpVDd5gfa8RaIYC1dyHRn9hbRsUK81mTJg1fcfKIaPcqH
+         KuFfjZoL/0uhKWIFX+X/nED4RxyvifhKLOWVO77dGSMqh7SwGF0xU+RM4PS1IZ7A6q2M
+         QwBcmA3wIOFdNksioZ3/w15DePSIGX+Zp3GLKi0YQmKVw5BpqTaqfvdPdTsBn8yzxr3W
+         t+EWHS3MZ1XdRwxQhh4goZcPU8994VaO06lQskmpM1bdg/OCPD2J/FniTvkJIC/r7xUl
+         D2wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=RbS5OYdExWW+p9Jrsv76yT+mGj6brKlKGqq1fOZcQnI=;
-        fh=y6h9FO02gZLWMvewekIZjGRdPpmsBRA1OJYAmgqeKaU=;
-        b=IlEfwsr4eFwzQB7R03i9A/W9EdeAfca5akQ2TfOCFuEHeTOR8OKxtpFUanXIGELDxa
-         Dmn82n2rpxYr7nfBGSOkflK1q/AG8vELHryH+nUoLMdvUSJp0YX32vvHaP/lDm1QDPiG
-         xXgkMMv4LL/5MXPFpeRXOtdr9772WZQvtL0u0BiPW+GMbvAvqJLeIM0Ox0dldUAMKLam
-         +Q103ctEk+oaGxWVbu6hB6zUMFzQvb0FznW31LalnYxMUUMZ7dfoQhIkB49saFtbo7jR
-         7fvY/tTvrSdyXb1jNqDaVr8uP/nZeEaJLRZMHyB+LRzMluTXrajvOe9hOo3wwKaqWTrD
-         iKQw==
+        bh=t89cCaSgAmZtTUrikE8w9841NqS6ojPrpDsBQYgPXgQ=;
+        fh=BwzHYUuenO0Ne3/SAKcDZ+NJ+hnspXUwS6dR8/vdcqs=;
+        b=uv2dHYiZ27ddvTFGLO+FOwkIMn30Lv76gpoMqWCjsDnLS9NgSs2I8bHFBRymV+GwlL
+         RX4jaiLJqM5fCVZnWeldyP5fssx/VyBjNxQLqNiLrL6X29FKBDFaI7KKaLB9Oq8ZfJl9
+         acx9YYkixmQVt1pzP7E08ll36BQV5NoarKCmACPo8kEeMdp/1bZM/u/yc8QwBjU/5+IC
+         /OonvAtAdbPo8+Gi20j/8HWV147VYACTgOMbGH15KydIiac6FFgD8SueByz/Jpj5/DfJ
+         95kYOW77LtVv+N2AKj39uYtP1zmHFjh8pwOl+d0Lzs7LsxhgnEctyCpyrC6rR4HruuUR
+         MNQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=hZx5HHe1;
-       spf=pass (google.com: domain of quic_llindhol@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_llindhol@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <quic_llindhol@quicinc.com>
-Received: from mx0b-0031df01.pphosted.com (mx0b-0031df01.pphosted.com. [205.220.180.131])
-        by mx.google.com with ESMTPS id j185-20020a2555c2000000b00d81412c5b42si2255933ybb.586.2023.09.15.04.56.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Sep 2023 04:56:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of quic_llindhol@quicinc.com designates 205.220.180.131 as permitted sender) client-ip=205.220.180.131;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eY2nlV+Y;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id a10-20020a0cb34a000000b00655dadf3eaasi2111874qvf.141.2023.09.15.05.00.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Sep 2023 05:00:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=hZx5HHe1;
-       spf=pass (google.com: domain of quic_llindhol@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_llindhol@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 38FBSWHm032736;
-	Fri, 15 Sep 2023 11:56:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
- cc : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=qcppdkim1; bh=RbS5OYdExWW+p9Jrsv76yT+mGj6brKlKGqq1fOZcQnI=;
- b=hZx5HHe1FffsDHdHkupfb4Wcuyizam2Rs9yFx/mrgb3rjr71rGR5Whx7pKlE3JC0aNSV
- bYp5PAtawJr14HAIHJQDWJLjzCjt/wM3L5WkPRt1iztm+SJA66450jGJEnldwVBkQzH4
- O2N7WjV7WrDreir3R1T0ULzLeFWAcFwlHf7ov85wvSr8B1H/mxdneFD96G4Dvhi+dBqz
- ASMhmWK2r83tXP8KcS0AKH0elrMpPuM3as7HH1FFgvVzgMLoxEhaC+SQQ9N0j5umpzVZ
- 9EHjXzstgptY5kQFzwwEvjFXeOAWhs/oDUUUZcUi4l9VkX7V+RAH8cqsw3R82vv4NawF +Q== 
-Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t4g86rv0c-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 15 Sep 2023 11:56:06 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com [10.45.79.139])
-	by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38FBu4AX010835
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 15 Sep 2023 11:56:04 GMT
-Received: from qc-i7.hemma.eciton.net (10.80.80.8) by
- nasanex01c.na.qualcomm.com (10.45.79.139) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.36; Fri, 15 Sep 2023 04:56:01 -0700
-Date: Fri, 15 Sep 2023 12:55:58 +0100
-From: Leif Lindholm <quic_llindhol@quicinc.com>
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        Beraldo Leal
-	<bleal@redhat.com>,
-        Wainer dos Santos Moschetta <wainersm@redhat.com>,
-        Peter
- Maydell <peter.maydell@linaro.org>,
-        Radoslaw Biernacki <rad@semihalf.com>,
-        Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-        Cleber Rosa
-	<crosa@redhat.com>,
-        Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH 1/1] tests/avocado: update firmware to enable
- sbsa-ref/neoverse-v1
-Message-ID: <ZQRGTpNTFBeedYXQ@qc-i7.hemma.eciton.net>
-References: <20230915113519.269290-1-marcin.juszkiewicz@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eY2nlV+Y;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1694779229;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=t89cCaSgAmZtTUrikE8w9841NqS6ojPrpDsBQYgPXgQ=;
+	b=eY2nlV+Y2jJoJF+31//QPBCJlArA0Eeob+d8H0UDVK5p8ue9p0QLTkmJOkmWQY4ec66sY/
+	qQ8k0zVWCHeqjGUKRO3BJOYAqcJwRHTBm1wwdj5CEoZeHdYAEb9bW2JqYrjPtpvX/WsbrI
+	USXWhGKsnsOe7hisKP9PjjktP9uWbqk=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-614-igbImswUO7uYakpbC2VfRw-1; Fri, 15 Sep 2023 08:00:26 -0400
+X-MC-Unique: igbImswUO7uYakpbC2VfRw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 76A5D803470;
+	Fri, 15 Sep 2023 12:00:25 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.37])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1ED04176DE;
+	Fri, 15 Sep 2023 12:00:22 +0000 (UTC)
+Date: Fri, 15 Sep 2023 13:00:20 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+	Cleber Rosa <crosa@redhat.com>, Joel Stanley <joel@jms.id.au>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-arm@nongnu.org,
+	Thomas Huth <thuth@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>, John Snow <jsnow@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>
+Subject: Re: [PATCH 1/9] tests: update Debian images to Bookworm
+Message-ID: <ZQRHVIkgme0EOm/I@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20230914155422.426639-1-alex.bennee@linaro.org>
+ <20230914155422.426639-2-alex.bennee@linaro.org>
+ <30ac04ad-eb02-90ad-57ff-089538413602@linaro.org>
+ <ZQQi6n+3mp+bQIgu@redhat.com>
+ <242dc7bd-f0c4-d58c-fc6a-f3ddc0168bf2@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20230915113519.269290-1-marcin.juszkiewicz@linaro.org>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: xS5KA8EqG1MXZYuDN1oeTwOIFFCaAjhZ
-X-Proofpoint-ORIG-GUID: xS5KA8EqG1MXZYuDN1oeTwOIFFCaAjhZ
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-09-15_08,2023-09-14_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 clxscore=1011
- bulkscore=0 impostorscore=0 adultscore=0 suspectscore=0 malwarescore=0
- spamscore=0 mlxscore=0 priorityscore=1501 mlxlogscore=410
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2308100000 definitions=main-2309150106
-X-TUID: O9Zv2dOH5Tp4
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <242dc7bd-f0c4-d58c-fc6a-f3ddc0168bf2@linaro.org>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+X-TUID: 4TDQGa1zS4iw
 
-On Fri, Sep 15, 2023 at 13:35:19 +0200, Marcin Juszkiewicz wrote:
-> Update prebuilt firmware images to have TF-A with Neoverse V1 support enabled.
-> This allowed us to enable test for this cpu in sbsa-ref machine.
+On Fri, Sep 15, 2023 at 12:53:30PM +0200, Philippe Mathieu-Daudé wrote:
+> On 15/9/23 11:24, Daniel P. Berrangé wrote:
+> > On Fri, Sep 15, 2023 at 11:14:29AM +0200, Philippe Mathieu-Daudé wrote:
+> > > On 14/9/23 17:54, Alex Bennée wrote:
+> > > > Bookworm has been out a while now. Time to update our containers to
+> > > > the current stable. This requires the latest lcitool repo so update
+> > > > the sub-module too.
+> > > > 
+> > > > For some reason the MIPs containers won't build so skip those for now.
+> > > 
+> > > Debian removed mipsel:
+> > > https://lists.debian.org/debian-devel-announce/2023/09/msg00000.html
+> > > https://lists.debian.org/debian-release/2019/08/msg00582.html ...
+> > 
+> > Wwith our general aim to support latest release, plus the previous
+> > release (capped to a maximum of 2 years), we can still consider
+> > mipsel supportable in QEMU CI by sticking with oldstable (Bullseye)
+> > for the mipsel containers.
+> > 
+> > Once Debian 13 comes out, however, we'll be discarding Bullseye
+> > from CI and so we'll be unable to do CI for mipsel. At the very
+> > least this means we'll consider mipsel to be downgraded in terms
+> > of supportability when that happens. We might then consider
+> > explicitly dropping it as a buld target entirely, as the writing
+> > is on the wall for 32-bit OS platforms in general...
 > 
-> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+> I'm fine with dropping system emulation on 32-bit hosts, but a bit
+> reluctant to drop user emulation there. Anyhow I agree with our
+> distrib releases support rules, so the mipsel buildsys part is
+> effectively condemned.
 
-Acked-by: Leif Lindholm <quic_llindhol@quicinc.com>
+I wouldn't say condemned, because we are free to continue including
+mipsel code in QEMU if we desire - we just will be unable to
+guarantee that it works correctly - we'd be relying on developers
+and users to report bugs and test it on whatever distro thye happen
+to still have working.  Cutting it back to just user emulation is
+a reasonable thing - testing user mode guest is not locked into
+our support matrix, so we can easily test user mode binaries via
+ancient distros if desired.
 
-
-> ---
->  tests/avocado/machine_aarch64_sbsaref.py | 25 ++++++++++++++----------
->  1 file changed, 15 insertions(+), 10 deletions(-)
-> 
-> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-> index a794245e7e..b39f5566d7 100644
-> --- a/tests/avocado/machine_aarch64_sbsaref.py
-> +++ b/tests/avocado/machine_aarch64_sbsaref.py
-> @@ -28,33 +28,32 @@ def fetch_firmware(self):
->          """
->          Flash volumes generated using:
->  
-> -        - Fedora GNU Toolchain version 13.1.1 20230511 (Red Hat 13.1.1-2)
-> +        - Fedora GNU Toolchain version 13.2.1 20230728 (Red Hat 13.2.1-1)
->  
->          - Trusted Firmware-A
-> -          https://github.com/ARM-software/arm-trusted-firmware/tree/c0d8ee38
-> +          https://github.com/ARM-software/arm-trusted-firmware/tree/cc933e1d
->  
->          - Tianocore EDK II
-> -          https://github.com/tianocore/edk2/tree/0f9283429dd4
-> -          https://github.com/tianocore/edk2-non-osi/tree/f0bb00937ad6
-> -          https://github.com/tianocore/edk2-platforms/tree/7880b92e2a04
-> +          https://github.com/tianocore/edk2/tree/29cce3356aec
-> +          https://github.com/tianocore/edk2-platforms/tree/fc22c0e69709
->          """
->  
->          # Secure BootRom (TF-A code)
->          fs0_xz_url = (
-> -            "https://fileserver.linaro.org/s/HrYMCjP7MEccjRP/"
-> +            "https://fileserver.linaro.org/s/g4C3WzJzNBES2p2/"
->              "download/SBSA_FLASH0.fd.xz"
->          )
-> -        fs0_xz_hash = "447eff64a90b84ce47703c6ec41fbfc25befaaea"
-> +        fs0_xz_hash = "374738599f7ba38c22924b2075ec5355c2b24a47"
->          tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
->          archive.extract(tar_xz_path, self.workdir)
->          fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
->  
->          # Non-secure rom (UEFI and EFI variables)
->          fs1_xz_url = (
-> -            "https://fileserver.linaro.org/s/t8foNnMPz74DZZy/"
-> +            "https://fileserver.linaro.org/s/scJRninsAFTwEct/"
->              "download/SBSA_FLASH1.fd.xz"
->          )
-> -        fs1_xz_hash = "13a9a262953787c7fc5a9155dfaa26e703631e02"
-> +        fs1_xz_hash = "5d3f156ebd6c6374da2121e15c7c8f4ed0351dcc"
->          tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash)
->          archive.extract(tar_xz_path, self.workdir)
->          fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
-> @@ -144,10 +143,16 @@ def test_sbsaref_alpine_linux_cortex_a57(self):
->  
->      def test_sbsaref_alpine_linux_neoverse_n1(self):
->          """
-> -        :avocado: tags=cpu:max
-> +        :avocado: tags=cpu:neoverse-n1
->          """
->          self.boot_alpine_linux("neoverse-n1")
->  
-> +    def test_sbsaref_alpine_linux_neoverse_v1(self):
-> +        """
-> +        :avocado: tags=cpu:neoverse-v1
-> +        """
-> +        self.boot_alpine_linux("neoverse-v1,pauth-impdef=on")
-> +
->      def test_sbsaref_alpine_linux_max(self):
->          """
->          :avocado: tags=cpu:max
-> -- 
-> 2.41.0
-> 
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

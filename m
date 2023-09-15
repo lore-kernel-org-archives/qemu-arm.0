@@ -1,152 +1,140 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1152849ejb;
-        Fri, 15 Sep 2023 04:24:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHdAGVI+lcOI1GXFo0YBhhc3t0yYanP33TU6lZBmXaNHAniEUnPeq5pgEVn/sW43ZHwzceV
-X-Received: by 2002:a05:620a:4011:b0:773:a83f:4170 with SMTP id h17-20020a05620a401100b00773a83f4170mr1533207qko.63.1694777056240;
-        Fri, 15 Sep 2023 04:24:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694777056; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1158997ejb;
+        Fri, 15 Sep 2023 04:35:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEgorx1KPUoFWDNZISrJZ27cj4jV6wwcs5TugoRPs9bmtnPZ72BiYCekUiFxk7YfAAV6jO5
+X-Received: by 2002:a1c:4b19:0:b0:402:f500:fcee with SMTP id y25-20020a1c4b19000000b00402f500fceemr1393920wma.0.1694777738751;
+        Fri, 15 Sep 2023 04:35:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694777738; cv=none;
         d=google.com; s=arc-20160816;
-        b=ywQmyqinSI1Dd2zILJD1DKDBpY0AzRlm3FR9LAcOr0WSisxD3AqF/Q/dzk4ewZjYx+
-         pdgyggIjszXIncbLHHlteWxIS/KrT9J5nG5oQ4wcIRjPw4GZjO4p1MPx0TqRfh/bzFDa
-         cplzXnbb9MRmKFDirXUTkD87g3OLFPf1EeLkqNX9y9SdPk2u18ovkdMZYdjvTaoPIWE8
-         bWKEdoUMr2OnCcwLSx15PI/to3hyNPK0HMUV4MKHEwpIvUDyUmzYHw+q2P+WZq6sid68
-         Q9fuv2pyQVvlEygMEiXolsycBIli3XM5ugwFVrszHLBWXcQxFrKT1YD/pieUMDcDspG3
-         ua0Q==
+        b=iKyuZ2ZPIYxF0CeYiC8LgNvQlHrB34nJqaTOyP2s1XQE6fQLiV3BxV3VsoyMob+KfT
+         P058G8lhzJtQ4mj/t8zNBKOxMhviWtDkirObHhj2ZAN2o0DpCkHnrd6zrvcP5cx6qXwq
+         AW7gsipNx3yCEBI2CdpGhIH+XmDPXxgB5FQwA71d0BA8mREFErlnVAlWUkayEITA+FzR
+         aAwrys3HZJw/uWv4owSemSgHYGQA+7nmDI98RMoWyw7/TTzyGu4DF+Nnp+d+A5OJQFfV
+         v4ldCOL/raP6Md46Rew3Qbwu5mEGEwyG2g3dOubPvoFm80wTbQ4YEJKtvPbt3JXSBGS8
+         2e3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=TBc/uVBazeKY4iJBuo/xzGp3L+IEGUgDpqNfs+vuw50=;
-        fh=hgHabdvU0WGCcTaHDtB0H3ZJu92+INIVQuWz8DQnCzY=;
-        b=qvstEZ3hJty7ZaJEyyPhztXehDoj1DkVTnEXYKYRox+De+RdjI2mmmjH6G4GiCNC4Q
-         ad9AluF+Bw2b3qHoUAeKDGDW5XrI1lUnZSkuhKevKR1x9/p5gpqbq8qcTJi8Gzyk6V6l
-         Jlds055Jvz+fv7zvxPr2sZmQKTsJovjmXbq94a3xKCCZ2ghNMny19L0BpUZbqRphCezB
-         V3d5NfQLivRQ6AGkDq7eQwqDnDEnzOuZVWvzbAujzwX0Vst4MgjhNr1Oup5z2BcCTrY2
-         lMS820hb4ZWs2BuHYI/aqexVYJrv//swIBPkbB7c8QhDTl5arT2UvtnYNwT+fAhMBD8f
-         FSuw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=HkWooFHaYypP4gCMoSxapGiP+oxah8gOeOdFXTBesVQ=;
+        fh=nBQC8RKhcNgHvLowYwRt+HD5dMieoPG2LYmodBm1YrM=;
+        b=NFK5mxlj6yTTsOzdi3VAPFluCYz6hK55JWcB4wvPW8OH2Mm7cNwMTYiIGAE1IALkSJ
+         Wn5FO0AyjtvjdIKd7VjEOc4hd/l31h2I6oj/yU/hTbwRlILp5Z0MZEA68CJzCtNGQoJv
+         gUYT2zQbQAKuOuD2/X0UmW2VeAmrnfKFu3ctGBSFqS8+MPBYH9KabFpG+ni9PUrs14TZ
+         AuFf+kAL1qnVSIvVcl/o8v4uDMsbwfGcfe+C/l/Y3bhALrXiadyaPp3wI6TeXSr4lvPc
+         pXz1eNHM9OsOifOweZ47WDx5PmAwy+z9ROaqCadoozkCsab/XcdUaNIEJzyH14sHqKB8
+         EMPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UlQcp91V;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id k17-20020a05620a415100b0076f19bbe6e0si2340179qko.536.2023.09.15.04.24.16
-        for <alex.bennee@linaro.org>
+       spf=softfail (google.com: domain of transitioning marcin.juszkiewicz@linaro.org does not designate 213.251.184.221 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <marcin.juszkiewicz@linaro.org>
+Received: from muminek.juszkiewicz.com.pl (muminek.juszkiewicz.com.pl. [213.251.184.221])
+        by mx.google.com with ESMTPS id v13-20020a5d4a4d000000b0031fa315b312si1541227wrs.718.2023.09.15.04.35.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Sep 2023 04:24:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Fri, 15 Sep 2023 04:35:38 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning marcin.juszkiewicz@linaro.org does not designate 213.251.184.221 as permitted sender) client-ip=213.251.184.221;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UlQcp91V;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1694777055;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=TBc/uVBazeKY4iJBuo/xzGp3L+IEGUgDpqNfs+vuw50=;
-	b=UlQcp91VrrzEcBcD+hgYH1WAITh72d5TXgQiEOz2JprkgQn1wCCk3jsU2FItWiSFLjzQTE
-	X+BFGJIXMYsJIoCG8zITxgWYDzPH7YcCx9tzTj4x8XWdp+K2P3P/enEHYdWZ09bm4enJqQ
-	DIjWP1moAYLXC7Da4p1vKDXNJvyj8yY=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-65-UuL2tu31P3madrSIP1vjiA-1; Fri, 15 Sep 2023 07:24:14 -0400
-X-MC-Unique: UuL2tu31P3madrSIP1vjiA-1
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-40309efe8b1so15032415e9.2
-        for <alex.bennee@linaro.org>; Fri, 15 Sep 2023 04:24:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694777053; x=1695381853;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TBc/uVBazeKY4iJBuo/xzGp3L+IEGUgDpqNfs+vuw50=;
-        b=fy6fKzF/7KuS7uyE3vDGzOhDtoCPOzA6CEiZSJtusekcT+F+tHiZeixECskEmtOkQV
-         /Tb/vmZBeWvsIANc8yjouFMjV50FobCA7L2pFAsHLEnNDFKJhoONv9Y4SB75K8wXqPQn
-         yClj5hokNVKm3m8/IAAf30yPS9BHgajH205Ivp1UYpkY+AhBnjuqFFkF9USIazgZSUOA
-         sxj7pWaqkMXee5xDGdIrWezGFrgUoLMMJTZKGKU10UUjVKVrF7+vJ3aPMpC5k9mfd9KG
-         eiy4EtsafoqNYJtERHWTaw2WSP97atU4khsqT+G+5smwWKk/vN4eNiO8MOicZ8UIxNDD
-         hC5A==
-X-Gm-Message-State: AOJu0YxnXNH4/DF0Gz8bcQhONrO2OJ1o3IKlaAxlCttulvDL6sgnwmIG
-	tnMhQRqIjiR9wmhIyzNdWJVjr537Bg7UKf24tk2WAMmEcwPyTPGIPbI7aGL5HP8zD5g5AbP4MmI
-	RwecHn68mkfuLCqAp
-X-Received: by 2002:a5d:6309:0:b0:314:3a4b:6cc6 with SMTP id i9-20020a5d6309000000b003143a4b6cc6mr1121845wru.53.1694777053382;
-        Fri, 15 Sep 2023 04:24:13 -0700 (PDT)
-X-Received: by 2002:a5d:6309:0:b0:314:3a4b:6cc6 with SMTP id i9-20020a5d6309000000b003143a4b6cc6mr1121816wru.53.1694777053005;
-        Fri, 15 Sep 2023 04:24:13 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.2] (ip-109-43-179-28.web.vodafone.de. [109.43.179.28])
-        by smtp.gmail.com with ESMTPSA id s10-20020a5d510a000000b0031971ab70c9sm4208989wrt.73.2023.09.15.04.24.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 15 Sep 2023 04:24:12 -0700 (PDT)
-Message-ID: <665c03fe-37e7-4e2c-666d-156cf70e0f70@redhat.com>
-Date: Fri, 15 Sep 2023 13:24:10 +0200
+       spf=softfail (google.com: domain of transitioning marcin.juszkiewicz@linaro.org does not designate 213.251.184.221 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost (localhost [127.0.0.1])
+	by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 5B67E260AD2;
+	Fri, 15 Sep 2023 13:35:37 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id OMqY2rgLSjH3; Fri, 15 Sep 2023 13:35:35 +0200 (CEST)
+Received: from applejack.lan (83.21.94.247.ipv4.supernova.orange.pl [83.21.94.247])
+	by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 8A27626000D;
+	Fri, 15 Sep 2023 13:35:34 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Beraldo Leal <bleal@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Cleber Rosa <crosa@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH 1/1] tests/avocado: update firmware to enable sbsa-ref/neoverse-v1
+Date: Fri, 15 Sep 2023 13:35:19 +0200
+Message-ID: <20230915113519.269290-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 1/9] tests: update Debian images to Bookworm
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Cleber Rosa <crosa@redhat.com>, Joel Stanley <joel@jms.id.au>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-arm@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, John Snow <jsnow@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Peter Maydell <peter.maydell@linaro.org>, Laurent Vivier
- <lvivier@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
-References: <20230914155422.426639-1-alex.bennee@linaro.org>
- <20230914155422.426639-2-alex.bennee@linaro.org>
- <30ac04ad-eb02-90ad-57ff-089538413602@linaro.org>
- <ZQQi6n+3mp+bQIgu@redhat.com>
- <242dc7bd-f0c4-d58c-fc6a-f3ddc0168bf2@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <242dc7bd-f0c4-d58c-fc6a-f3ddc0168bf2@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: fpBBruH6Yvnf
+X-TUID: EfQ0chDhfdsu
 
-On 15/09/2023 12.53, Philippe Mathieu-Daudé wrote:
-> On 15/9/23 11:24, Daniel P. Berrangé wrote:
->> On Fri, Sep 15, 2023 at 11:14:29AM +0200, Philippe Mathieu-Daudé wrote:
->>> On 14/9/23 17:54, Alex Bennée wrote:
->>>> Bookworm has been out a while now. Time to update our containers to
->>>> the current stable. This requires the latest lcitool repo so update
->>>> the sub-module too.
->>>>
->>>> For some reason the MIPs containers won't build so skip those for now.
->>>
->>> Debian removed mipsel:
->>> https://lists.debian.org/debian-devel-announce/2023/09/msg00000.html
->>> https://lists.debian.org/debian-release/2019/08/msg00582.html ...
->>
->> Wwith our general aim to support latest release, plus the previous
->> release (capped to a maximum of 2 years), we can still consider
->> mipsel supportable in QEMU CI by sticking with oldstable (Bullseye)
->> for the mipsel containers.
->>
->> Once Debian 13 comes out, however, we'll be discarding Bullseye
->> from CI and so we'll be unable to do CI for mipsel. At the very
->> least this means we'll consider mipsel to be downgraded in terms
->> of supportability when that happens. We might then consider
->> explicitly dropping it as a buld target entirely, as the writing
->> is on the wall for 32-bit OS platforms in general...
-> 
-> I'm fine with dropping system emulation on 32-bit hosts, but a bit
-> reluctant to drop user emulation there. Anyhow I agree with our
-> distrib releases support rules, so the mipsel buildsys part is
-> effectively condemned.
+Update prebuilt firmware images to have TF-A with Neoverse V1 support enabled.
+This allowed us to enable test for this cpu in sbsa-ref machine.
 
-Could you maybe send a patch for docs/about/deprecated.rst to make this 
-clear for the users, too?
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ tests/avocado/machine_aarch64_sbsaref.py | 25 ++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
 
-  Thanks,
-   Thomas
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index a794245e7e..b39f5566d7 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -28,33 +28,32 @@ def fetch_firmware(self):
+         """
+         Flash volumes generated using:
+ 
+-        - Fedora GNU Toolchain version 13.1.1 20230511 (Red Hat 13.1.1-2)
++        - Fedora GNU Toolchain version 13.2.1 20230728 (Red Hat 13.2.1-1)
+ 
+         - Trusted Firmware-A
+-          https://github.com/ARM-software/arm-trusted-firmware/tree/c0d8ee38
++          https://github.com/ARM-software/arm-trusted-firmware/tree/cc933e1d
+ 
+         - Tianocore EDK II
+-          https://github.com/tianocore/edk2/tree/0f9283429dd4
+-          https://github.com/tianocore/edk2-non-osi/tree/f0bb00937ad6
+-          https://github.com/tianocore/edk2-platforms/tree/7880b92e2a04
++          https://github.com/tianocore/edk2/tree/29cce3356aec
++          https://github.com/tianocore/edk2-platforms/tree/fc22c0e69709
+         """
+ 
+         # Secure BootRom (TF-A code)
+         fs0_xz_url = (
+-            "https://fileserver.linaro.org/s/HrYMCjP7MEccjRP/"
++            "https://fileserver.linaro.org/s/g4C3WzJzNBES2p2/"
+             "download/SBSA_FLASH0.fd.xz"
+         )
+-        fs0_xz_hash = "447eff64a90b84ce47703c6ec41fbfc25befaaea"
++        fs0_xz_hash = "374738599f7ba38c22924b2075ec5355c2b24a47"
+         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
+         archive.extract(tar_xz_path, self.workdir)
+         fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
+ 
+         # Non-secure rom (UEFI and EFI variables)
+         fs1_xz_url = (
+-            "https://fileserver.linaro.org/s/t8foNnMPz74DZZy/"
++            "https://fileserver.linaro.org/s/scJRninsAFTwEct/"
+             "download/SBSA_FLASH1.fd.xz"
+         )
+-        fs1_xz_hash = "13a9a262953787c7fc5a9155dfaa26e703631e02"
++        fs1_xz_hash = "5d3f156ebd6c6374da2121e15c7c8f4ed0351dcc"
+         tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash)
+         archive.extract(tar_xz_path, self.workdir)
+         fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
+@@ -144,10 +143,16 @@ def test_sbsaref_alpine_linux_cortex_a57(self):
+ 
+     def test_sbsaref_alpine_linux_neoverse_n1(self):
+         """
+-        :avocado: tags=cpu:max
++        :avocado: tags=cpu:neoverse-n1
+         """
+         self.boot_alpine_linux("neoverse-n1")
+ 
++    def test_sbsaref_alpine_linux_neoverse_v1(self):
++        """
++        :avocado: tags=cpu:neoverse-v1
++        """
++        self.boot_alpine_linux("neoverse-v1,pauth-impdef=on")
++
+     def test_sbsaref_alpine_linux_max(self):
+         """
+         :avocado: tags=cpu:max
+-- 
+2.41.0

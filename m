@@ -1,146 +1,116 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1171600ejb;
-        Fri, 15 Sep 2023 05:00:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGzaBvMOAomKjAC24ve/PviSDXcpElmtWo0QBSYhl5JlwDGn52IwH/kheN6LVegD+ScQyY6
-X-Received: by 2002:a0c:fa08:0:b0:641:8df1:79e3 with SMTP id q8-20020a0cfa08000000b006418df179e3mr1657434qvn.29.1694779229555;
-        Fri, 15 Sep 2023 05:00:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694779229; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1204546ejb;
+        Fri, 15 Sep 2023 05:50:35 -0700 (PDT)
+X-Received: by 2002:a05:6a20:1007:b0:154:9196:16c0 with SMTP id gs7-20020a056a20100700b00154919616c0mr1367280pzc.61.1694782234981;
+        Fri, 15 Sep 2023 05:50:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694782234; cv=none;
         d=google.com; s=arc-20160816;
-        b=nWl84X0q2BQTJvOhIce+DF9Ai5Lm7yngmmhvdp6B9teYhXlvwCOnqM5Uq1eO7LgsSy
-         KEwzUP3+4DBs3tWGnbKhTdXcpVDd5gfa8RaIYC1dyHRn9hbRsUK81mTJg1fcfKIaPcqH
-         KuFfjZoL/0uhKWIFX+X/nED4RxyvifhKLOWVO77dGSMqh7SwGF0xU+RM4PS1IZ7A6q2M
-         QwBcmA3wIOFdNksioZ3/w15DePSIGX+Zp3GLKi0YQmKVw5BpqTaqfvdPdTsBn8yzxr3W
-         t+EWHS3MZ1XdRwxQhh4goZcPU8994VaO06lQskmpM1bdg/OCPD2J/FniTvkJIC/r7xUl
-         D2wg==
+        b=w7pWlxo3cg/fOyjmCCSE+XpRvFJVuwIGp5Gwn3r+17MS9MTZ65Dc4OLQYSB8GeJKiu
+         UlUd6VHh9vux47q6PRpzV6ioB74bXDAmYExUrEUpPsz9rp2xHx/cgMbQwTg0HrDqG71v
+         UG3DCFWtTiJiH0a6psmt+OqxFNVqdqrKBAqNvZjj+RweJkn+/FVghwjlPafj8dxWUMPj
+         zTGdGKHs3GJMtMP1VQl+Vre+D5rNXjFEv4TLmdagIvVuFdQ8XRWzv6RRAHbJVXtmsyxr
+         dx0h1lxB6xSwdPI5mO0wcASKsW3TmqK5HEyKN98KAZJMGrc6609Q4igwt2gex2WJN8/h
+         lGhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=t89cCaSgAmZtTUrikE8w9841NqS6ojPrpDsBQYgPXgQ=;
-        fh=BwzHYUuenO0Ne3/SAKcDZ+NJ+hnspXUwS6dR8/vdcqs=;
-        b=uv2dHYiZ27ddvTFGLO+FOwkIMn30Lv76gpoMqWCjsDnLS9NgSs2I8bHFBRymV+GwlL
-         RX4jaiLJqM5fCVZnWeldyP5fssx/VyBjNxQLqNiLrL6X29FKBDFaI7KKaLB9Oq8ZfJl9
-         acx9YYkixmQVt1pzP7E08ll36BQV5NoarKCmACPo8kEeMdp/1bZM/u/yc8QwBjU/5+IC
-         /OonvAtAdbPo8+Gi20j/8HWV147VYACTgOMbGH15KydIiac6FFgD8SueByz/Jpj5/DfJ
-         95kYOW77LtVv+N2AKj39uYtP1zmHFjh8pwOl+d0Lzs7LsxhgnEctyCpyrC6rR4HruuUR
-         MNQQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=xuvzmAXdYolPe+5g4w18hDVqLwDr3K6FEZPBwiW3JfA=;
+        fh=ByEKTo1dmum2LbScobfYCcvvfZhHJNEjeG1QbUbQTGc=;
+        b=Ye8GIq08hdcaWouKUqm2Yn7lIbwwbfCjkm3CSC+Yvs/pH/NOyyPDv7udtLqHIpb06a
+         ew1rS6h8nSyxhizIPqC369F0aw2zFgzDqXnidbU6qEpMNRhw7QFDwzm932/VE+4+tMYW
+         zE0BQejN/xo1p5QUOHNHjTQfyfUd9sPZj0Gp9jd13EtDIySjTgzcxrZHktpgeQEz85kE
+         0BwPP+qZ7lTzXSEhwTAz3OuXcGhEek0LZAOLDOUgxv8yO4gwJOPQFFS4aDSDMHwaHEMh
+         Eq6GProJgGVF6LZ3t0hDayiXA9IPZzUdSAl0Ip2uF+Sa5XxsSydxaQsNjSpDQCVydFGN
+         vFAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eY2nlV+Y;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id a10-20020a0cb34a000000b00655dadf3eaasi2111874qvf.141.2023.09.15.05.00.29
+       dkim=pass header.i=@linaro.org header.s=google header.b=P8TakRhd;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i11-20020a170902e48b00b001bee72f142fsor1935341ple.9.2023.09.15.05.50.34
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Sep 2023 05:00:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Fri, 15 Sep 2023 05:50:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eY2nlV+Y;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1694779229;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=t89cCaSgAmZtTUrikE8w9841NqS6ojPrpDsBQYgPXgQ=;
-	b=eY2nlV+Y2jJoJF+31//QPBCJlArA0Eeob+d8H0UDVK5p8ue9p0QLTkmJOkmWQY4ec66sY/
-	qQ8k0zVWCHeqjGUKRO3BJOYAqcJwRHTBm1wwdj5CEoZeHdYAEb9bW2JqYrjPtpvX/WsbrI
-	USXWhGKsnsOe7hisKP9PjjktP9uWbqk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-614-igbImswUO7uYakpbC2VfRw-1; Fri, 15 Sep 2023 08:00:26 -0400
-X-MC-Unique: igbImswUO7uYakpbC2VfRw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 76A5D803470;
-	Fri, 15 Sep 2023 12:00:25 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.37])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1ED04176DE;
-	Fri, 15 Sep 2023 12:00:22 +0000 (UTC)
-Date: Fri, 15 Sep 2023 13:00:20 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Cleber Rosa <crosa@redhat.com>, Joel Stanley <joel@jms.id.au>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, John Snow <jsnow@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH 1/9] tests: update Debian images to Bookworm
-Message-ID: <ZQRHVIkgme0EOm/I@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20230914155422.426639-1-alex.bennee@linaro.org>
- <20230914155422.426639-2-alex.bennee@linaro.org>
- <30ac04ad-eb02-90ad-57ff-089538413602@linaro.org>
- <ZQQi6n+3mp+bQIgu@redhat.com>
- <242dc7bd-f0c4-d58c-fc6a-f3ddc0168bf2@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=P8TakRhd;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1694782234; x=1695387034; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xuvzmAXdYolPe+5g4w18hDVqLwDr3K6FEZPBwiW3JfA=;
+        b=P8TakRhdB8ajrcg8NzWl4vHyJ2yruIYR9FT4EVXsQa8EKzqVjy35tr95xU3l049eBv
+         IesxESRTmlHmXlqTDzPenx9Ke/PgEVEE9fWOd6cgLV1Gg6Y4l3j30If4AqcxzxBQwzKN
+         rPHrTnnXU/UNM4ebY7v+cy4HHBrtJmHMjBALHPMQjFJgG6bASZV7v0wxNmweIyjrswid
+         vcXm9RTX8MtFE7oa1feBpAnzL+eXKdppNLYm63eo2o0IfdQ3maYY+aw2TUvWfq5DP6aK
+         39pBTmOU0KQbLc0KLqTMXXCkRrKqGd4is3Gmp26WKyklCIZ5QmS3yj5X0UMAsriFuu2I
+         FIEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1694782234; x=1695387034;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xuvzmAXdYolPe+5g4w18hDVqLwDr3K6FEZPBwiW3JfA=;
+        b=n4TpmIPNyO28NGnyfAewI4VljiVsWBToVKWlpySWnc3XLMb2Jm0haVCKULOIHYh1rp
+         BPh+q3L9r1Qwtc3bxfRgELk57KQMBVOS8+Ll0dxyxHDs5Oap1r9lcWIHVQbESS97+5bZ
+         D5AtmyAfIPqPX5NwOkUKmvmVX86GxX//lIAfzPntUE8wfjAW6lmZUUlTpk0htz8b6LKd
+         K8FWhBtnDK7hZWeO9fzug0t9E6Za8K77L6O6ghNxMc0vxd2hyea7UjIU0jHC2wGxNK3Z
+         XxswrAkukFPKuzUptjWyQwqfHPQD9QRyXBKqt6zvyddSiPDesg5NeX614w4pQ5rRlpoQ
+         jevw==
+X-Gm-Message-State: AOJu0Yyf0iN2Ft8L0/bCUtDdwALLVq4dGgcFp6//VinQ5Pyu1iIh+DAx
+	Ai/z7E0niTRz+XRwwaZG/wOIkqYN
+X-Google-Smtp-Source: AGHT+IELpO9EN50AJYjxQLJEdqYNyZ4H+8/0qYDWCPFjvY/20R8+fMfSdGUOmHaIsVS1cWJIUn7Skw==
+X-Received: by 2002:a17:902:ce82:b0:1c3:6163:210a with SMTP id f2-20020a170902ce8200b001c36163210amr1463735plg.60.1694782234388;
+        Fri, 15 Sep 2023 05:50:34 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] ([71.212.131.115])
+        by smtp.gmail.com with ESMTPSA id jg13-20020a17090326cd00b001c0aa301703sm3415230plb.63.2023.09.15.05.50.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 15 Sep 2023 05:50:33 -0700 (PDT)
+Message-ID: <1e7ac58f-907b-826f-5a06-5caf8fb3b963@linaro.org>
+Date: Fri, 15 Sep 2023 05:50:31 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <242dc7bd-f0c4-d58c-fc6a-f3ddc0168bf2@linaro.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-X-TUID: 4TDQGa1zS4iw
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH 1/1] tests/avocado: update firmware to enable
+ sbsa-ref/neoverse-v1
+Content-Language: en-US
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Beraldo Leal <bleal@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+References: <20230915113519.269290-1-marcin.juszkiewicz@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230915113519.269290-1-marcin.juszkiewicz@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: xWHwI0527zow
 
-On Fri, Sep 15, 2023 at 12:53:30PM +0200, Philippe Mathieu-Daudé wrote:
-> On 15/9/23 11:24, Daniel P. Berrangé wrote:
-> > On Fri, Sep 15, 2023 at 11:14:29AM +0200, Philippe Mathieu-Daudé wrote:
-> > > On 14/9/23 17:54, Alex Bennée wrote:
-> > > > Bookworm has been out a while now. Time to update our containers to
-> > > > the current stable. This requires the latest lcitool repo so update
-> > > > the sub-module too.
-> > > > 
-> > > > For some reason the MIPs containers won't build so skip those for now.
-> > > 
-> > > Debian removed mipsel:
-> > > https://lists.debian.org/debian-devel-announce/2023/09/msg00000.html
-> > > https://lists.debian.org/debian-release/2019/08/msg00582.html ...
-> > 
-> > Wwith our general aim to support latest release, plus the previous
-> > release (capped to a maximum of 2 years), we can still consider
-> > mipsel supportable in QEMU CI by sticking with oldstable (Bullseye)
-> > for the mipsel containers.
-> > 
-> > Once Debian 13 comes out, however, we'll be discarding Bullseye
-> > from CI and so we'll be unable to do CI for mipsel. At the very
-> > least this means we'll consider mipsel to be downgraded in terms
-> > of supportability when that happens. We might then consider
-> > explicitly dropping it as a buld target entirely, as the writing
-> > is on the wall for 32-bit OS platforms in general...
-> 
-> I'm fine with dropping system emulation on 32-bit hosts, but a bit
-> reluctant to drop user emulation there. Anyhow I agree with our
-> distrib releases support rules, so the mipsel buildsys part is
-> effectively condemned.
+On 9/15/23 04:35, Marcin Juszkiewicz wrote:
+>       def test_sbsaref_alpine_linux_neoverse_n1(self):
+>           """
+> -        :avocado: tags=cpu:max
+> +        :avocado: tags=cpu:neoverse-n1
+>           """
+>           self.boot_alpine_linux("neoverse-n1")
+>   
+> +    def test_sbsaref_alpine_linux_neoverse_v1(self):
+> +        """
+> +        :avocado: tags=cpu:neoverse-v1
+> +        """
+> +        self.boot_alpine_linux("neoverse-v1,pauth-impdef=on")
+> +
 
-I wouldn't say condemned, because we are free to continue including
-mipsel code in QEMU if we desire - we just will be unable to
-guarantee that it works correctly - we'd be relying on developers
-and users to report bugs and test it on whatever distro thye happen
-to still have working.  Cutting it back to just user emulation is
-a reasonable thing - testing user mode guest is not locked into
-our support matrix, so we can easily test user mode binaries via
-ancient distros if desired.
+Second function shadows the first?
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+
+r~

@@ -1,184 +1,267 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp835498ejb;
-        Thu, 14 Sep 2023 15:42:47 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEDcl62dpL7bQv6O4B5mQT0U9mY1dDDKZhTQLjikEg7oQbghFFoBFzvRgIGUuD+XfVcaWEp
-X-Received: by 2002:a05:620a:4445:b0:768:11ff:7899 with SMTP id w5-20020a05620a444500b0076811ff7899mr8724502qkp.64.1694731366900;
-        Thu, 14 Sep 2023 15:42:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694731366; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp932503ejb;
+        Thu, 14 Sep 2023 19:46:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IENMoKaT14rzdHkrNBcihCh+Xqslg4NwFu/8EVRNHabhdhzKR5gh5uM5AQ9jQGVwxq77cQ1
+X-Received: by 2002:a17:906:58c9:b0:9ad:87df:4126 with SMTP id e9-20020a17090658c900b009ad87df4126mr4847121ejs.1.1694745995866;
+        Thu, 14 Sep 2023 19:46:35 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1694745995; cv=pass;
         d=google.com; s=arc-20160816;
-        b=qfgI/LlUbBBx2bJMn0jUOBdbMr65OmZtXqx/uNXGyCduZ4Gga7Ts6ULjShjocdE0SA
-         98BdzjSH/ZkKuuiVOnCOUmClic2pe2k62CKDPhaQMoLLiTJ/JhTZVClgKPpu8wIk2kyI
-         EsTnSphjIZtSLq7757nZU/96WxNmmZ14fvkrhpwkZmKDeqlihG0qzLUnUbHw0KUg5HUk
-         um6VDC7mF983tnQIccBqU2EiY5U0jTYHwnsQPUp075JjzRSihC69NRKV7dg4V7WTZZ+3
-         gLJSrONnpl/WlsE6oNDhaIHYhX+50XGFqduUbRTsK5uJiKYx5i5313qxfcv9PUdZ8jAy
-         Evyg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=tPEV0gxfXEHlyTwlqBRYKbFw/IPuHmX7s7A6Q+EuA6VrAvBFcAgxKEE8s38kljKfEQ
+         hlTASf+kUn9224Y9PBGmptKVFpvFwvb+cWqh+eSY0YqNhj8i9FDhfYWdXHitU0Lozl9K
+         tFtIXyddvQUHJFeSR3djeRRvpZxXiE0KJ6Ac8Apl6m+3jf7HqfX0CoJu7hDVy5gS6114
+         vrvVa2faf2kFqw3qZOoVW8fNvZYOCgYHX1ei2uA5C17aMKF1rIdCzqa4PFMbJOghWqkf
+         JgAd7wFh6UdRHysu/PeA1vOwgbzYl68mELQ/UQ3+8crtPkiHF/dbT2To1X19x2xrFRIQ
+         jJJQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=OlJhU4LHA+fzq8m2hyizz9EI1FeCvDgyPUR6IsKexwU=;
-        fh=B5Lugouudq7zpnpheERcCb2tRWWmYNJugNqQhE9RDLA=;
-        b=L7Ow+csddShdng4vAbNaFrg3O+FwDI5U6q0oLyp0pRyvIHQpPPF2qj6PEiSspNm8zk
-         XD1Z9xvc2MrqY9zJ/r+JPu4lgNYZWoWG6Mnwq3peKT0DNLFDZq+V8XczV184STa4kybf
-         FxYwlscWexzRYSF0nCg/VS889ibxH+SRsaIOSlp+EMhNxae1TQ8gR+mZ/rLkmSdv+5uq
-         9gxeiaJqMvSm0J2TFbkD3jn+ZmDreZiRs7Tn+kVU122sfAT9OWuNI7+o0m/128m5ofwY
-         F10jJ1tBnQgXj3m79IhEBnCXL7/aaH6cNAQyrkOQO6Vs5hwqlUwmiqDeXuhmjCVYYrUw
-         ypjQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=LIoHyBY6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=PVXjSxuojgA09dgSl7142csCmbKd+a8IJ9YZCxwmDqo=;
+        fh=WHT4nGyxQi5unc6n9MtJoOTNP1G4Srb+77sx9AaAlhc=;
+        b=e+l6aBs5rzsKzWSAVj/Po1aRWLg4V28nhAhr3M2NTEjeWjwKNOgC4ZLAdiA5rX0/8D
+         WIWywH+yaKQQ1Czo40HFVp2gSAWQUi01UtoyWCMrZaVGMCGQWldWon9FowNldIvAN5Sq
+         byV2NNMNy+Eviz/QOAHJlc8Ck1ZQUJ0WwCv9P45z5cBI+W4CqGZMWdwD7JKYQdgbtB1M
+         RR2t/UBMxPdG7Y4khXdHpEWEHFAFt47CcKoNpvGkGC5LD4idIVWwGPA/OfnwAubp0RYC
+         lDXJQsfVl4yzI6KK6K2yjPMI37lA5rwctHXCaxUorTlEAuOtc48Z8R3SH95SqtZhUsEa
+         16sg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=OAKVJian;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b17-20020a05620a04f100b00770728e885bsi1537373qkh.316.2023.09.14.15.42.46
+        by mx.google.com with ESMTPS id bf4-20020a0564021a4400b0052a08b8f4fbsi2487848edb.269.2023.09.14.19.46.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Sep 2023 15:42:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Sep 2023 19:46:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=LIoHyBY6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=OAKVJian;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qgv2V-0000c3-Oj; Thu, 14 Sep 2023 18:42:23 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qgyqX-0007LF-7g; Thu, 14 Sep 2023 22:46:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3SIwDZQcKCJ0HLJILAFDLLDIB.9LJNBJR-7OJKLKDKR.LOD@flex--komlodi.bounces.google.com>)
- id 1qgv2R-0000b9-Oj
- for qemu-arm@nongnu.org; Thu, 14 Sep 2023 18:42:19 -0400
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3SIwDZQcKCJ0HLJILAFDLLDIB.9LJNBJR-7OJKLKDKR.LOD@flex--komlodi.bounces.google.com>)
- id 1qgv2Q-0006Iw-55
- for qemu-arm@nongnu.org; Thu, 14 Sep 2023 18:42:19 -0400
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-59bf252a83aso13312347b3.3
- for <qemu-arm@nongnu.org>; Thu, 14 Sep 2023 15:42:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1694731336; x=1695336136; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=OlJhU4LHA+fzq8m2hyizz9EI1FeCvDgyPUR6IsKexwU=;
- b=LIoHyBY6ET+LEcr9Jk0kJmheCyaJJpo1a4f0T2roszmhOx6KVGoJ3dLe9rR8RA8d5g
- 1S/BzGtGodlzgs3AJy0G/HfPTNBXJtw/gldTdqBaku3EdbyHK/wKkb0y1YXIcAyvCGk4
- YkM1PVcTS6AiTxGNYNQ5NZd7JA6SQUn1EXXiWlcrdn5yoPgCfTjr+SS6GorFWPqFdw5B
- CMwDAsqto2Ovswk0l1Y79D6WJhlQxNetSDfYyx7/KmzusRJwWSo0bP+bBO43q5UdF+vd
- BhoH8AOBLOvAkZpFTlQ605IEO0BByUft8ThAk3UVfFMeMNY/Lvrngzfgfsaq9EFQzaWX
- 6BRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694731336; x=1695336136;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=OlJhU4LHA+fzq8m2hyizz9EI1FeCvDgyPUR6IsKexwU=;
- b=AStqLxnKLx1Zo1xsoApev9Op0l/tT+KEiacAeqyIXURKamjxV3r/amFXshwRBPX/UR
- CTeW34ilNWa6xSzMzwA6Zz7qVEBcu5fvgiiiE8bLSIrbPHr4ZisL+y5GIxM/jyrsiwlY
- OWvDW28sXFroKqVah2q3BeVWPH6tHUQkwyqMB8kLlm8gR+LKVP1YPvi50P5Hf0EP/E2f
- bEGhzUE6QSduKkEUxqv1zSRSVqXwA49pCGmdBRql2h8JUoruqolmJXgJeowcrOo8Ac/r
- MYSvULyXL1TAfek8R9OK8Z1kCQ3Jy96W2keWxO8IbAho8XzN2LZifErcM/liwJvMtN/n
- kyPA==
-X-Gm-Message-State: AOJu0YwmrL/NCDIyoD9jtxOD53M9qccUDc6dj3Iw/z2hbJsB6r5awPdA
- xlZH9BOTBfpTqyGA5FzDM58i44fMx4Jd
-X-Received: from komlodi.c.googlers.com
- ([fda3:e722:ac3:cc00:7f:e700:c0a8:35ee])
- (user=komlodi job=sendgmr) by 2002:a81:4413:0:b0:59b:db15:498c with SMTP id
- r19-20020a814413000000b0059bdb15498cmr1069ywa.10.1694731336779; Thu, 14 Sep
- 2023 15:42:16 -0700 (PDT)
-Date: Thu, 14 Sep 2023 22:42:10 +0000
-In-Reply-To: <20230914224211.2184828-1-komlodi@google.com>
-Mime-Version: 1.0
-References: <20230914224211.2184828-1-komlodi@google.com>
-X-Mailer: git-send-email 2.42.0.459.ge4e396fd5e-goog
-Message-ID: <20230914224211.2184828-2-komlodi@google.com>
-Subject: [PATCH 1/1] hw/timer/sse-timer: Add CNTFRQ reset property
-From: Joe Komlodi <komlodi@google.com>
-To: qemu-devel@nongnu.org
-Cc: komlodi@google.com, qemu-arm@nongnu.org, peter.maydell@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=3SIwDZQcKCJ0HLJILAFDLLDIB.9LJNBJR-7OJKLKDKR.LOD@flex--komlodi.bounces.google.com;
- helo=mail-yw1-x1149.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1qgyqT-0007Kk-Vx; Thu, 14 Sep 2023 22:46:14 -0400
+Received: from mail-mw2nam10on20610.outbound.protection.outlook.com
+ ([2a01:111:f400:7e89::610]
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1qgyqR-0001Us-7K; Thu, 14 Sep 2023 22:46:13 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Z51ydGkEYVRrlSe2Y//XRHIq2oMaAxu0r6Eq9m5qmz/yj15u2Kio0+zaiRSDZxMGn7NhBa6Pw0eitGmYw7I6ITm89szgSY1yyV1K0J6VMmQjsgqLSkZySAeR5fb+zdN0K2B3VSaBJWKaWdtCMO0x1KfIod5vP4wgfLlsqoN8YmCyQLrLaoJLUEd2ra1mNsPbH8cBbpGUFq/QvW3V+HwayxNZPU44x+LC2NcU5VJ+ka/8F0TdYGNTj1wZ9FkT1jURRO+jZw95EvCtZ1eeeu3DNChFx5DSwlYCdri2tw+obBGAwvWcEENS4MRJQ9EPb3l/t29XhicNaSCOKJOdbELtrg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=PVXjSxuojgA09dgSl7142csCmbKd+a8IJ9YZCxwmDqo=;
+ b=kaoRnWqAtQphkS9/X9Iuuds8brLZXuC4D+XXDiL/6S56sE9RJNpns0p4JtQzkUsRFusEsRx5WN5a6VX9qCCAQkUYzTbVY+ZaULlbEPHVMm/vDm/NCVP6VDsocIMPNmdtvZ0LQ1UhjMERo0J++wLrpr/UlbA+LcIyFrYOhDcLuHuVHR0uiAUEJ1GNx5EIARLyoeZ03YlD6oHTUr8Tajbh/vpm5jVxtCXbAvhuIUkmq/fFQR4RgaMsbRFumpsXq7ec+lGIlY9NX9ztT2V/0cxiiD9HUrMxbJM1SlYOr2KPYrjOHSQ85dA6wS9nRqo1XFa3BLyGYwhKjdG++wfJx2468w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.233) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PVXjSxuojgA09dgSl7142csCmbKd+a8IJ9YZCxwmDqo=;
+ b=OAKVJianuSQJex+XvMsrcPJSVPU19ixQhknoZYUJLPk9gKgO4hooKoW+T6LX4WC+eSpKQYxzGCFSBStUyhnsquKaTknpHuZDR+w7wNVY0kclpGET1tJ+aq3djLxq3T7XyOm85fu45A4FbJAsaT+E7WzGIB7qASDFgUS40xmAHwD94fiMxqGl7v19qSTT5+5E9wVoTSLN8gGpo4j22LFSroGKcygyMTEj4htUE9Cynp4mr6R4VsVeDKkwSMOBgpx9fOEHwyrhWr6gZHaunem0UtKABVbNWJZzNVBYjeJ03mhlmwMt8O+RkZIGRMxwmH9WV0FbIGsxZPhCHXLiuaYVRA==
+Received: from MW3PR05CA0003.namprd05.prod.outlook.com (2603:10b6:303:2b::8)
+ by SA3PR12MB7830.namprd12.prod.outlook.com (2603:10b6:806:315::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.19; Fri, 15 Sep
+ 2023 02:46:05 +0000
+Received: from CO1PEPF000044FD.namprd21.prod.outlook.com
+ (2603:10b6:303:2b:cafe::a7) by MW3PR05CA0003.outlook.office365.com
+ (2603:10b6:303:2b::8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.21 via Frontend
+ Transport; Fri, 15 Sep 2023 02:46:05 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.233) by
+ CO1PEPF000044FD.mail.protection.outlook.com (10.167.241.203) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6792.20 via Frontend Transport; Fri, 15 Sep 2023 02:46:05 +0000
+Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
+ (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Thu, 14 Sep
+ 2023 19:46:01 -0700
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.41; Thu, 14 Sep 2023 19:46:00 -0700
+Received: from ankita-dt2.nvidia.com (10.127.8.14) by mail.nvidia.com
+ (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41 via Frontend
+ Transport; Thu, 14 Sep 2023 19:46:00 -0700
+From: <ankita@nvidia.com>
+To: <ankita@nvidia.com>, <jgg@nvidia.com>, <alex.williamson@redhat.com>,
+ <clg@redhat.com>, <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+ <ani@anisinha.ca>
+CC: <aniketa@nvidia.com>, <cjia@nvidia.com>, <kwankhede@nvidia.com>,
+ <targupta@nvidia.com>, <vsethi@nvidia.com>, <acurrid@nvidia.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: [PATCH v1 3/4] hw/arm/virt-acpi-build: patch guest SRAT for NUMA nodes
+Date: Thu, 14 Sep 2023 19:45:58 -0700
+Message-ID: <20230915024559.6565-4-ankita@nvidia.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20230915024559.6565-1-ankita@nvidia.com>
+References: <20230915024559.6565-1-ankita@nvidia.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PEPF000044FD:EE_|SA3PR12MB7830:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9236e475-72c7-43d6-79cd-08dbb595e823
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: arLCz1XQUTBh2+Ria8sspmyDZDOFBxrNT7Amn9m+dl+0y0bV9+fBENuLE+lgI5Zuy40w8vA+tPjNPeeYVwuYGxM0Ffc7QyVUqFqtepoDVjr0L+JWbktr9PJp0h6V0SitWfrxjEoPXvKSctdu0JAex5w82VxgBcI+5wWgadNqAY4JjU/sWX/Ufj/IbTYbpx0QR6TF8YSOQDShjoNZf4Y9BOKyCaWlpUtJDN+aBMQ9tp/+QiYmY4tZDXQ+enNaPoZdV075I6BiM4+pnk6V5LXFfuk+oLuM0oW/egmsrFEy6bJYLjImwuqecuVvZ44Xc/UryyBxWRi78CmYyoHOqjb+ziTIXti5DhquxuOzmbf3Morcjz2VACG9n7KnxbZ3QsEsbdmR8shu0PShqwaa5Z2I7yc0Iucrh1emahIUpV/atL4cJt+EPZpjxP/QT+luMeL9cY/g2ZAS242mrkGYdkbP5aaDNElAiYNn+TziSiQt4GTCTM86+mv0jHx7LslARSek6Dmyl8gHMVKB92tXsAhTROrMvoWuCPjdP1iB+VHc5GtPhdhLObP0qTKB7u5THt31TQpgrVMmkpDEVlljUuzP4qWn3RPeR53AQkdSiQP8m74oKXU4henTWheWndbhrQ/yt5/D+zGDEiXZFYgccU5Cmmd4XyU1iZJjTIWwDbffPG9N7okFeXDjDLVHEK9aFqY/qxr8ZFB5RIsUCkE6YKar5VDdH7huIu9ecabSpaZ8Noc=
+X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
+ SFS:(13230031)(4636009)(346002)(376002)(39860400002)(396003)(136003)(451199024)(186009)(1800799009)(82310400011)(36840700001)(40470700004)(46966006)(2906002)(5660300002)(7636003)(36756003)(8936002)(82740400003)(86362001)(40460700003)(4326008)(356005)(8676002)(316002)(54906003)(47076005)(41300700001)(36860700001)(40480700001)(2616005)(1076003)(110136005)(26005)(70586007)(7696005)(70206006)(426003)(2876002)(478600001)(336012);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Sep 2023 02:46:05.1357 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9236e475-72c7-43d6-79cd-08dbb595e823
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000044FD.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB7830
+Received-SPF: softfail client-ip=2a01:111:f400:7e89::610;
+ envelope-from=ankita@nvidia.com;
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uDZhpgle/U9r
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cloS2zsyZ8Lw
 
-This can have a non-zero reset value, and cause the kernel to complain
-about a CNTFRQ mismatch if TF-A (or firmware in general) does not
-initialize it (because it expects the value to be non-zero out of
-reset).
+From: Ankit Agrawal <ankita@nvidia.com>
 
-To fix this, we'll just add an object property that people can use to
-initialize the CNTFRQ reset value.
+During bootup, Linux kernel parse the ACPI SRAT to determine the PXM ids.
+This allows for the creation of NUMA nodes for each unique id.
 
-Signed-off-by: Joe Komlodi <komlodi@google.com>
+Insert a series of the unique PXM ids in the VM SRAT ACPI table. The
+range of nodes can be determined from the "dev_mem_pxm_start" and
+"dev_mem_pxm_count" object properties associated with the device. These
+nodes as made MEM_AFFINITY_HOTPLUGGABLE. This allows the kernel to create
+memory-less NUMA nodes on bootup to which a subrange (or entire range) of
+device memory can be added/removed.
+
+Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
 ---
- hw/timer/sse-timer.c         | 4 +++-
- include/hw/timer/sse-timer.h | 2 ++
- 2 files changed, 5 insertions(+), 1 deletion(-)
+ hw/arm/virt-acpi-build.c | 54 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 54 insertions(+)
 
-diff --git a/hw/timer/sse-timer.c b/hw/timer/sse-timer.c
-index e92e83747d..a727f05bac 100644
---- a/hw/timer/sse-timer.c
-+++ b/hw/timer/sse-timer.c
-@@ -376,7 +376,7 @@ static void sse_timer_reset(DeviceState *dev)
-     trace_sse_timer_reset();
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 6b674231c2..6d1e3b6b8a 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -46,6 +46,7 @@
+ #include "hw/acpi/hmat.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
++#include "hw/vfio/pci.h"
+ #include "hw/pci/pci_bus.h"
+ #include "hw/pci-host/gpex.h"
+ #include "hw/arm/virt.h"
+@@ -515,6 +516,57 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     acpi_table_end(linker, &table);
+ }
  
-     timer_del(&s->timer);
--    s->cntfrq = 0;
-+    s->cntfrq = s->cntfrq_reset;
-     s->cntp_ctl = 0;
-     s->cntp_cval = 0;
-     s->cntp_aival = 0;
-@@ -430,6 +430,7 @@ static const VMStateDescription sse_timer_vmstate = {
-     .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
-         VMSTATE_TIMER(timer, SSETimer),
-+        VMSTATE_UINT32(cntfrq_reset, SSETimer),
-         VMSTATE_UINT32(cntfrq, SSETimer),
-         VMSTATE_UINT32(cntp_ctl, SSETimer),
-         VMSTATE_UINT64(cntp_cval, SSETimer),
-@@ -442,6 +443,7 @@ static const VMStateDescription sse_timer_vmstate = {
- 
- static Property sse_timer_properties[] = {
-     DEFINE_PROP_LINK("counter", SSETimer, counter, TYPE_SSE_COUNTER, SSECounter *),
-+    DEFINE_PROP_UINT32("cntfrq-reset", SSETimer, cntfrq_reset, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/include/hw/timer/sse-timer.h b/include/hw/timer/sse-timer.h
-index 265ad32400..ad84c24940 100644
---- a/include/hw/timer/sse-timer.h
-+++ b/include/hw/timer/sse-timer.h
-@@ -43,6 +43,8 @@ struct SSETimer {
-     QEMUTimer timer;
-     Notifier counter_notifier;
- 
-+    uint32_t cntfrq_reset;
++static int devmem_device_list(Object *obj, void *opaque)
++{
++    GSList **list = opaque;
 +
-     uint32_t cntfrq;
-     uint32_t cntp_ctl;
-     uint64_t cntp_cval;
++    if (object_dynamic_cast(obj, TYPE_VFIO_PCI)) {
++        *list = g_slist_append(*list, DEVICE(obj));
++    }
++
++    object_child_foreach(obj, devmem_device_list, opaque);
++    return 0;
++}
++
++static GSList *devmem_get_device_list(void)
++{
++    GSList *list = NULL;
++
++    object_child_foreach(qdev_get_machine(), devmem_device_list, &list);
++    return list;
++}
++
++static void build_srat_devmem(GArray *table_data)
++{
++    GSList *device_list, *list = devmem_get_device_list();
++
++    for (device_list = list; device_list; device_list = device_list->next) {
++        DeviceState *dev = device_list->data;
++        Object *obj = OBJECT(dev);
++        VFIOPCIDevice *pcidev
++            = ((VFIOPCIDevice *)object_dynamic_cast(OBJECT(obj),
++               TYPE_VFIO_PCI));
++
++        if (pcidev->pdev.has_coherent_memory) {
++            uint64_t start_node = object_property_get_uint(obj,
++                                  "dev_mem_pxm_start", &error_abort);
++            uint64_t node_count = object_property_get_uint(obj,
++                                  "dev_mem_pxm_count", &error_abort);
++            uint64_t node_index;
++
++            /*
++             * Add the node_count PXM domains starting from start_node as
++             * hot pluggable. The VM kernel parse the PXM domains and
++             * creates NUMA nodes.
++             */
++            for (node_index = 0; node_index < node_count; node_index++)
++                build_srat_memory(table_data, 0, 0, start_node + node_index,
++                    MEM_AFFINITY_ENABLED | MEM_AFFINITY_HOTPLUGGABLE);
++        }
++    }
++    g_slist_free(list);
++}
++
+ /*
+  * ACPI spec, Revision 5.1
+  * 5.2.16 System Resource Affinity Table (SRAT)
+@@ -569,6 +621,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                           MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
+     }
+ 
++    build_srat_devmem(table_data);
++
+     acpi_table_end(linker, &table);
+ }
+ 
 -- 
-2.42.0.459.ge4e396fd5e-goog
+2.17.1
 

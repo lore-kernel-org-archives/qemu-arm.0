@@ -1,414 +1,261 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp932744ejb;
-        Thu, 14 Sep 2023 19:47:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHHfPMyWbLH2rmXfHAfSMIypRow1AIh3p9VBbA0uqbDqU1e/1byl4AnLg8Jk9nmu1BliJnA
-X-Received: by 2002:a5d:5511:0:b0:317:9537:d73f with SMTP id b17-20020a5d5511000000b003179537d73fmr333513wrv.30.1694746039027;
-        Thu, 14 Sep 2023 19:47:19 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1694746039; cv=pass;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1165513ejb;
+        Fri, 15 Sep 2023 04:48:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH/1J8qT0U2vTxgbUVbx2NAQqtrjwOhfWNtgdBYR2TieYw5xEOkaOeLrPtv6tACcR172b4f
+X-Received: by 2002:ac8:5890:0:b0:410:165:9e5b with SMTP id t16-20020ac85890000000b0041001659e5bmr1640364qta.65.1694778500985;
+        Fri, 15 Sep 2023 04:48:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694778500; cv=none;
         d=google.com; s=arc-20160816;
-        b=EIDQJCtW30ueVRDeR1S7wZBBZZa3ZIjAXcWWpdiFN7mBxyf9sm+wb3XnaP8Mq6qjIL
-         45ahXmXno9QjjMlgRKNeuangvEW6varFUG4pneMTjx7RjOmwPnEz6sqdGhzSz6lempvc
-         w4qUX8KGxQtvyEWiX/vcjM78LEwgbqNtUVuNHy6y1kj2A1meaUiBWDPSLTvxdD3wkO6N
-         Vg/GVDoPXb0CdG8be54n1Cl5Ac5YiMe4s2LkWE3ai2KPFLIS7Py6XObNr2O66U9AXn9B
-         PBIb7k3xRdPrRnleokRPYgFVrG1y+lF8125DduQJiMfprsSL+VQ0LwRW7rR6XcXPcC7I
-         q65Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=ARI+yzq9LnjEIxyqzudm3DCkTHdBwnt/mulD7JrJb6v74nVfnZnLYxSoOgB0p8S1+X
+         FtaA+OihHztGbHB4SF7buG2dtIBE8Bk01S2KzpDAjPXRssj22cQpaC7sq3VAsi1mndqf
+         8j3a+9U21gY+9TgBX+cFpOeZfIN74Ry1LvLezoM0YYuhod1clKtRPBxCuUGXogJa8kSE
+         YLRwpLLjfbPoKyvMl/athaCX/P0gBD/nxj9UGq2c+RBWbc/RjobPyp0MuKLA82ECoVaE
+         6Nq+Ga3GiacQL0Pybx6glnQDmz6x92pYffuRiHOhpctXTvRmjNPhiKjTVS5Dl8AgHuaq
+         hR1w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=2Wb+fDgWUHVWN492avgFz7D0P7TzZZRyrDY7sVUaidA=;
-        fh=WHT4nGyxQi5unc6n9MtJoOTNP1G4Srb+77sx9AaAlhc=;
-        b=M9Wr8yCXwDxxPDFy9QDWXJlf9+zaUAsKvTxpChcY8KwLo+ata8XuZdUtq2WFqk8kGh
-         uFG+7L3c1cy2R8X8oKfWx3o2bgZGlXZ8yG0POEJSs6UxuYms/ppT5P8ZTwvKkuAi0qFQ
-         rquMwJLF67nuKZYIKjwSTvA1yalQlYRQTkHY7MQZVoSnRHdwvOrcGCE5Jg8fIYQKJl7A
-         B5/6mkp+57hp6EW0Ty0AtMM+gK8HIEnqVKshBtTne6m2vJOm6JiHC8r4BojAnxu7phs0
-         KnO0OvlmzH1/geWXCYE1y/G5nnNvWrQVt6uor46Tv92os6AzgN/qWyrHNbWjfnX6KVOz
-         vM7w==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=a85JsVjc;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=baQaguqmJ8fxBKT0ReK4WJRQlSZeoJ1kiWH/H24eV6g=;
+        fh=12HrSD5zfQ3tBxz0GmaJ1sbmbc07r9vbI8eWDaDNtjs=;
+        b=Kxaz9/0fhjR3vqnvV0MIGB7lxwYnAx/VYuLBaUSQJTukI5BVhgWfdR4uZUmGoartMb
+         tBxc5SIfL2zXXcNcchbcYOloKil5pIJcJPkK8UHlKOHOxClQYhUvt9eJjdlKOVxwHQ+J
+         NTPmWhFrG5jFNuc9nkeE2ZoY2jehv+o1r4G2uALTcKFdc/rsyBb5n5j+VMx41NGk3vso
+         WpFBKL5/PPNjnPMcCpNs/vf5NPDZkALQg/qYB9jft8M4y8nXigO1wRrQZ1LVCr98OA/X
+         NxwiN49Ugpu+mXv+N8Zmoe//S1lJKTxOIoJ4tofH+if6Q9Ii4mDTAtYRKoPM4aLzShxi
+         p5eQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i0GeloJA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d3-20020aa7d683000000b0052a3a335f20si2419778edr.212.2023.09.14.19.47.18
+        by mx.google.com with ESMTPS id z8-20020a05622a028800b004055a6f662asi2170543qtw.267.2023.09.15.04.48.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Sep 2023 19:47:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 15 Sep 2023 04:48:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=a85JsVjc;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i0GeloJA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qgyqZ-0007Lz-IN; Thu, 14 Sep 2023 22:46:19 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qh7J0-00062l-Qe; Fri, 15 Sep 2023 07:48:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1qgyqU-0007Kr-AD; Thu, 14 Sep 2023 22:46:14 -0400
-Received: from mail-sn1nam02on2060a.outbound.protection.outlook.com
- ([2a01:111:f400:7ea9::60a]
- helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1qh7Iz-000619-SL
+ for qemu-arm@nongnu.org; Fri, 15 Sep 2023 07:48:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1qgyqR-0001Um-Be; Thu, 14 Sep 2023 22:46:14 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EEXFshB/v/QJwcxCvK0OsfnzzbUTtytF4763U28UMYo8zFAMz5sP1qK8anpIeDI1tScZdJ/JCaXXnoQxwm9ERCtbBHxJx+FCpPR/M3I8geO3XYaLsZtw7LVO0pHQ5KXIiYCVsAbKBB6FNhzlUBKCsGcpATIDunztwBWzoa/bGjSuLNfE6lSMZ4xmTE869ktLg2E8IRotdbu/ySLqRCbJrrNFgoXEDkFH02MZ5vB9IC0SUz3Qp01jLvM/y9c5KOW6bSHORqmk9bMDVv3fNwMWXj7KGDURnZsBfjFUgA7QF0DQl5y2SlL8pcTGyrf8cHVEnHA/FrKUj6kAv2s203pnug==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2Wb+fDgWUHVWN492avgFz7D0P7TzZZRyrDY7sVUaidA=;
- b=nZVMzWEdXQCJu7oWNPxAJ3CwedVr2hUrQIkBCC2O7DTJSxf6XhksWvLD8247gpdQDf7xx5Me2qFhVoe24988jTxcHD/jYY1DKoNts9HW194CckRMmNw51syoOahyn8A8g79VyfNiBDlhYuZgtUimdSHUzZDdqiNabrhUKc0rLg70buA2boo0Z7BE3nXS3XpuC1Fk34CK2d6sHIIczy0sO3su76h7VPGWsDH7dhOiq1htisKbg4zeeL9TgxW5oaCQmE6XS84KAhX2X5T4xrOk5gUvzYn3rRNE4mYqvbS89HE/E7hz0aCOUkWbBVUZMDM27//+KHLbQWyt0Xf1XEwkjg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.233) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2Wb+fDgWUHVWN492avgFz7D0P7TzZZRyrDY7sVUaidA=;
- b=a85JsVjcq6fP8wDH6LJqCBzO0IbK9V0mbw2DnfjY8dyuVvMZ2m2MnMEE6JyTL/ze7cAcfwGvX9sEsuqh9NDQutDr6/3lf3fLh0Ca2rhBV2Xc8AEVO7ht48mvKne6OT2lLoWXq8RVhVt/2tUxSDmtWdOtuhWKbe7h8wqXnZENqhcTCj3+HKlq2iosxJ4bIl12+CnPkPwWgF9KcT/o1loQGACzmEusAso1NUEY1PSxCi3NngFYUauo9vBjB8wsoolOntOmStTeNuWPCWrpp6ePhWJ/EgUcx2Gc+SyRn7Kq3LO77fAHqMDOBb3YKi8PW3IRa2cyhUZxT73Qvb7+Mzz9Zg==
-Received: from MW4P223CA0005.NAMP223.PROD.OUTLOOK.COM (2603:10b6:303:80::10)
- by IA0PR12MB7698.namprd12.prod.outlook.com (2603:10b6:208:432::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6768.34; Fri, 15 Sep
- 2023 02:46:04 +0000
-Received: from CO1PEPF000044FC.namprd21.prod.outlook.com
- (2603:10b6:303:80:cafe::b8) by MW4P223CA0005.outlook.office365.com
- (2603:10b6:303:80::10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.21 via Frontend
- Transport; Fri, 15 Sep 2023 02:46:03 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.233) by
- CO1PEPF000044FC.mail.protection.outlook.com (10.167.241.202) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6792.20 via Frontend Transport; Fri, 15 Sep 2023 02:46:03 +0000
-Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
- (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Thu, 14 Sep
- 2023 19:46:00 -0700
-Received: from drhqmail201.nvidia.com (10.126.190.180) by
- drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.41; Thu, 14 Sep 2023 19:46:00 -0700
-Received: from ankita-dt2.nvidia.com (10.127.8.14) by mail.nvidia.com
- (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41 via Frontend
- Transport; Thu, 14 Sep 2023 19:46:00 -0700
-From: <ankita@nvidia.com>
-To: <ankita@nvidia.com>, <jgg@nvidia.com>, <alex.williamson@redhat.com>,
- <clg@redhat.com>, <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
- <ani@anisinha.ca>
-CC: <aniketa@nvidia.com>, <cjia@nvidia.com>, <kwankhede@nvidia.com>,
- <targupta@nvidia.com>, <vsethi@nvidia.com>, <acurrid@nvidia.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [PATCH v1 1/4] vfio: new command line params for device memory NUMA
- nodes
-Date: Thu, 14 Sep 2023 19:45:56 -0700
-Message-ID: <20230915024559.6565-2-ankita@nvidia.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20230915024559.6565-1-ankita@nvidia.com>
-References: <20230915024559.6565-1-ankita@nvidia.com>
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1qh7Is-0004Pc-S7
+ for qemu-arm@nongnu.org; Fri, 15 Sep 2023 07:48:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1694778484;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=baQaguqmJ8fxBKT0ReK4WJRQlSZeoJ1kiWH/H24eV6g=;
+ b=i0GeloJAgSykjMhzUinROB+R/qoT9Nj3u+JMyee2N56igrrKRWz4JFJSvGboAg9KILp4GE
+ OnNdSpqGMrN0uw0vO4ND02SFKfyK8U0tE4uZgi9PKL2Dr0ywkDkCQIpiu01y6BAnvrHkTy
+ qGbXosIf4rJBeXlzHgpjhGTOf4Nxr4Q=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-208-hupnxgfCNRiPoQwQYq6sNQ-1; Fri, 15 Sep 2023 07:48:03 -0400
+X-MC-Unique: hupnxgfCNRiPoQwQYq6sNQ-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-40469bcd1eeso12796625e9.2
+ for <qemu-arm@nongnu.org>; Fri, 15 Sep 2023 04:48:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1694778482; x=1695383282;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=baQaguqmJ8fxBKT0ReK4WJRQlSZeoJ1kiWH/H24eV6g=;
+ b=CRo1hM9hMxCflp2T3GdzEJjPg4HylvrrbZD3JVjKu5Ji8NZjHTr2EGTurpgX4pElbw
+ NjrrAT+d1fYBQriAukuZtWNjgpReobGE9u7W6eQlEZ9g7BqzbYsC5FaMiyjohgNCpJ7X
+ povOnDt0oDMcsd+/nnOH/6ZfjQrAxBEBCIVQ0aOdlkSQaf5uMO+RD1CBSLYK1kBL0bcy
+ 1EhzvlPFdLl5yDx4WuApwpPhl9hkhtQ95n7knOiv4nEujVkpV/kUKkv6SJ9wM7sSq1aR
+ 3gG9ZNr1n5Xo1w2WminuhQKvYJtXhsUDu5D3rItzqbbBC8CQlqiFpVRB4Bs4VILbnaBd
+ Kn0A==
+X-Gm-Message-State: AOJu0YzXRwZ/iwgmUj2IqRUnqhsNXVAF9vo3PzGEKn309Z0z/p3UPm9U
+ sq0OdGmZqwp5zCq6WJ1Tbv7bGWZVQLEroa950SPRnr8hCZ73rffT7ZDzG/pCoqWaNlIGc9tNCku
+ t3mqrnCN5KVaK
+X-Received: by 2002:a1c:790b:0:b0:401:b493:f7c1 with SMTP id
+ l11-20020a1c790b000000b00401b493f7c1mr1292454wme.35.1694778482468; 
+ Fri, 15 Sep 2023 04:48:02 -0700 (PDT)
+X-Received: by 2002:a1c:790b:0:b0:401:b493:f7c1 with SMTP id
+ l11-20020a1c790b000000b00401b493f7c1mr1292420wme.35.1694778482126; 
+ Fri, 15 Sep 2023 04:48:02 -0700 (PDT)
+Received: from ?IPV6:2001:b07:6468:f312:9af8:e5f5:7516:fa89?
+ ([2001:b07:6468:f312:9af8:e5f5:7516:fa89])
+ by smtp.googlemail.com with ESMTPSA id
+ q5-20020a5d6585000000b0031f5f0d0be0sm4274663wru.31.2023.09.15.04.48.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 15 Sep 2023 04:48:01 -0700 (PDT)
+Message-ID: <48e669f3-4fae-e3cd-b436-7f2c989b879a@redhat.com>
+Date: Fri, 15 Sep 2023 13:47:59 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PEPF000044FC:EE_|IA0PR12MB7698:EE_
-X-MS-Office365-Filtering-Correlation-Id: f4d2a141-cac7-4e47-bef2-08dbb595e74b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 09zunvNbk9AF92eWojs46+9ZWNDpRCXuIOyuJixuvCqsLXNpgVN+mwlbp65TCcN8WzZlpMaK4HJTvp1T53I5iyT5BPlzWmouZaSnj63XpZJCBqi5dkqtNVLSlE9PDEKbATuJujb9rl5aRRFZktOupPNjpP4exaiAwbygN/71BG4uEKIJANIuhnpBQE97mpCkqYgHHX3oOfAi0cgCZjBWRf3AFbzuXt6nuZ43sx0HSA+h0dr8RIujdmty43KFyPeRwLS0r1pRyeinGpKJi5c/slVq11ZhvcEBIkxWX8SVOJPuFY0oCM2RJ5vo+BW+D1zwccCbet0LId1Nwf56oBv2TQdag/lO1l+BNZ1Ry6PNa2wb5Azu2dTdTfTB1uF79SptKukG+1CYJRM21mhfuSLwxsv7DOEQ9WuvasK2k4WRyUKCD6U2EfYqua+Yo53E9I/0aiiQWSe3sXo/yMRV1jeStFknjpSE1jeiM6DheBHXZ1iK6x2C5rdCZwmgaT+MnZylQGWLgElPbExioj0701htnlQGje8dGEZHIknu/hABGqxU3aBj+jHEbcxiHQVvxABjq/oWqbXLNhH8F4wbyTuQgBT9rOSdwXMlJ5eRhEiRhWUK8KKPBEJPaaWvNy+WaqPc/bL5XIB9fqbFsFfFPfx52MtHs6DhwgXx21fatIg6wViKAZ7cFZ2JwZFK+3OOuNzVQHsF3YcYBCmRUavhvtF9qPW19y3wTWpdOUMh7wwwrUDOk1Gk9SXpzC8K/j1OkZc6
-X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
- SFS:(13230031)(4636009)(136003)(376002)(396003)(346002)(39860400002)(82310400011)(186009)(451199024)(1800799009)(40470700004)(46966006)(36840700001)(36860700001)(40460700003)(47076005)(41300700001)(36756003)(110136005)(7636003)(316002)(2876002)(82740400003)(8676002)(8936002)(40480700001)(2906002)(70206006)(70586007)(4326008)(356005)(54906003)(426003)(336012)(6666004)(5660300002)(83380400001)(7696005)(1076003)(86362001)(26005)(2616005)(478600001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Sep 2023 02:46:03.7375 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: f4d2a141-cac7-4e47-bef2-08dbb595e74b
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000044FC.namprd21.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB7698
-Received-SPF: softfail client-ip=2a01:111:f400:7ea9::60a;
- envelope-from=ankita@nvidia.com;
- helo=NAM02-SN1-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 00/18] RFC: Remove deprecated audio features
+To: Martin Kletzander <mkletzan@redhat.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, libvir-list@redhat.com,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
+ <hpoussin@reactos.org>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ Alexander Bulekov <alxndr@bu.edu>, Bandan Das <bsd@redhat.com>,
+ qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>, Thomas Huth <huth@tuxfamily.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org
+References: <cover.1650874791.git.mkletzan@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+In-Reply-To: <cover.1650874791.git.mkletzan@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FQBdM9+k1Syg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: H69jsi+w0I4w
 
-From: Ankit Agrawal <ankita@nvidia.com>
+On 4/25/22 10:21, Martin Kletzander wrote:
+> I wanted to deal with https://bugzilla.redhat.com/2043498 and I got a
+> suggesstion that removing deprecated features could actually make it
+> easier to propagate the error.  In the end (last patch) it turns out the
+> error is still just reported with error_fatal, so it probably is not
+> really needed, but I really wanted to dig into QEMU more and learn some
+> of the internals for quite some time now.  So I used the opportunity.
+> The one-liner ended up being an 18 patch series which was, for someone
+> who has just one commit in QEMU codebase, a pretty challenging task.
+> Although I tried my best to do things properly, I am not sure whether I
+> handled everything correctly, hence the RFC.
 
-The CPU cache coherent device memory can be added as a set of
-NUMA nodes distinct from the system memory nodes. The Qemu currently
-do not provide a mechanism to support node creation for a vfio-pci
-device.
+Rebased and queued what's left...  It took a while. :)
 
-Introduce new command line parameters to allow host admin provide
-the desired starting NUMA node id (pxm-ns) and the number of such
-nodes (pxm-nc) associated with the device. In this implementation,
-a numerically consecutive nodes from pxm-ns to pxm-ns + pxm-nc
-is created. Also validate the requested range of nodes to check
-for conflict with other nodes and to ensure that the id do not cross
-QEMU limit.
+Paolo
 
-Since the QEMU's SRAT and DST builder code needs the proximity
-domain (PXM) id range, expose PXM start and count as device object
-properties.
-
-The device driver module communicates support for such feature through
-sysfs. Check the presence of the feature to activate the code.
-
-E.g. the following argument adds 8 PXM nodes starting from id 0x10.
--device vfio-pci-nohotplug,host=<pci-bdf>,pxm-ns=0x10,pxm-nc=8
-
-Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
----
- hw/vfio/pci.c               | 144 ++++++++++++++++++++++++++++++++++++
- hw/vfio/pci.h               |   2 +
- include/hw/pci/pci_device.h |   3 +
- 3 files changed, 149 insertions(+)
-
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index a205c6b113..cc0c516161 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -42,6 +42,8 @@
- #include "qapi/error.h"
- #include "migration/blocker.h"
- #include "migration/qemu-file.h"
-+#include "qapi/visitor.h"
-+#include "include/hw/boards.h"
- 
- #define TYPE_VFIO_PCI_NOHOTPLUG "vfio-pci-nohotplug"
- 
-@@ -2955,6 +2957,22 @@ static void vfio_register_req_notifier(VFIOPCIDevice *vdev)
-     }
- }
- 
-+static void vfio_pci_get_dev_mem_pxm_start(Object *obj, Visitor *v,
-+                                           const char *name,
-+                                           void *opaque, Error **errp)
-+{
-+    uint64_t pxm_start = (uintptr_t) opaque;
-+    visit_type_uint64(v, name, &pxm_start, errp);
-+}
-+
-+static void vfio_pci_get_dev_mem_pxm_count(Object *obj, Visitor *v,
-+                                           const char *name,
-+                                           void *opaque, Error **errp)
-+{
-+    uint64_t pxm_count = (uintptr_t) opaque;
-+    visit_type_uint64(v, name, &pxm_count, errp);
-+}
-+
- static void vfio_unregister_req_notifier(VFIOPCIDevice *vdev)
- {
-     Error *err = NULL;
-@@ -2974,6 +2992,125 @@ static void vfio_unregister_req_notifier(VFIOPCIDevice *vdev)
-     vdev->req_enabled = false;
- }
- 
-+static int validate_dev_numa(uint32_t dev_node_start, uint32_t num_nodes)
-+{
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+    unsigned int i;
-+
-+    if (num_nodes >= MAX_NODES) {
-+        return -EINVAL;
-+    }
-+
-+    for (i = 0; i < num_nodes; i++) {
-+        if (ms->numa_state->nodes[dev_node_start + i].present) {
-+            return -EBUSY;
-+        }
-+    }
-+
-+    return 0;
-+}
-+
-+static int mark_dev_node_present(uint32_t dev_node_start, uint32_t num_nodes)
-+{
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+    unsigned int i;
-+
-+    for (i = 0; i < num_nodes; i++) {
-+        ms->numa_state->nodes[dev_node_start + i].present = true;
-+    }
-+
-+    return 0;
-+}
-+
-+
-+static bool vfio_pci_read_cohmem_support_sysfs(VFIODevice *vdev)
-+{
-+    gchar *contents = NULL;
-+    gsize length;
-+    char *path;
-+    bool ret = false;
-+    uint32_t supported;
-+
-+    path = g_strdup_printf("%s/coherent_mem", vdev->sysfsdev);
-+    if (g_file_get_contents(path, &contents, &length, NULL) && length > 0) {
-+        if ((sscanf(contents, "%u", &supported) == 1) && supported) {
-+            ret = true;
-+        }
-+    }
-+
-+    if (length) {
-+        g_free(contents);
-+    }
-+    g_free(path);
-+
-+    return ret;
-+}
-+
-+static int vfio_pci_dev_mem_probe(VFIOPCIDevice *vPciDev,
-+                                         Error **errp)
-+{
-+    Object *obj = NULL;
-+    VFIODevice *vdev = &vPciDev->vbasedev;
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+    int ret = 0;
-+    uint32_t dev_node_start = vPciDev->dev_node_start;
-+    uint32_t dev_node_count = vPciDev->dev_nodes;
-+
-+    if (!vdev->sysfsdev || !vfio_pci_read_cohmem_support_sysfs(vdev)) {
-+        ret = -ENODEV;
-+        goto done;
-+    }
-+
-+    if (vdev->type == VFIO_DEVICE_TYPE_PCI) {
-+        obj = vfio_pci_get_object(vdev);
-+    }
-+
-+    /* Since this device creates new NUMA node, hotplug is not supported. */
-+    if (!obj || DEVICE_CLASS(object_get_class(obj))->hotpluggable) {
-+        ret = -EINVAL;
-+        goto done;
-+    }
-+
-+    /*
-+     * This device has memory that is coherently accessible from the CPU.
-+     * The memory can be represented seperate memory-only NUMA nodes.
-+     */
-+    vPciDev->pdev.has_coherent_memory = true;
-+
-+    /*
-+     * The device can create several NUMA nodes with consecutive IDs
-+     * from dev_node_start to dev_node_start + dev_node_count.
-+     * Verify
-+     * - whether any node ID is occupied in the desired range.
-+     * - Node ID is not crossing MAX_NODE.
-+     */
-+    ret = validate_dev_numa(dev_node_start, dev_node_count);
-+    if (ret) {
-+        goto done;
-+    }
-+
-+    /* Reserve the node by marking as present */
-+    mark_dev_node_present(dev_node_start, dev_node_count);
-+
-+    /*
-+     * To have multiple unique nodes in the VM, a series of PXM nodes are
-+     * required to be added to VM's SRAT. Send the information about the
-+     * starting node ID and the node count to the ACPI builder code.
-+     */
-+    object_property_add(OBJECT(vPciDev), "dev_mem_pxm_start", "uint64",
-+                        vfio_pci_get_dev_mem_pxm_start, NULL, NULL,
-+                        (void *) (uintptr_t) dev_node_start);
-+
-+    object_property_add(OBJECT(vPciDev), "dev_mem_pxm_count", "uint64",
-+                        vfio_pci_get_dev_mem_pxm_count, NULL, NULL,
-+                        (void *) (uintptr_t) dev_node_count);
-+
-+    ms->numa_state->num_nodes += dev_node_count;
-+
-+done:
-+    return ret;
-+}
-+
- static void vfio_realize(PCIDevice *pdev, Error **errp)
- {
-     VFIOPCIDevice *vdev = VFIO_PCI(pdev);
-@@ -3291,6 +3428,11 @@ static void vfio_realize(PCIDevice *pdev, Error **errp)
-         }
-     }
- 
-+    ret = vfio_pci_dev_mem_probe(vdev, errp);
-+    if (ret && ret != -ENODEV) {
-+        error_report("Failed to setup device memory with error %d", ret);
-+    }
-+
-     vfio_register_err_notifier(vdev);
-     vfio_register_req_notifier(vdev);
-     vfio_setup_resetfn_quirk(vdev);
-@@ -3454,6 +3596,8 @@ static Property vfio_pci_dev_properties[] = {
-     DEFINE_PROP_UINT32("x-pci-sub-device-id", VFIOPCIDevice,
-                        sub_device_id, PCI_ANY_ID),
-     DEFINE_PROP_UINT32("x-igd-gms", VFIOPCIDevice, igd_gms, 0),
-+    DEFINE_PROP_UINT32("pxm-ns", VFIOPCIDevice, dev_node_start, 0),
-+    DEFINE_PROP_UINT32("pxm-nc", VFIOPCIDevice, dev_nodes, 0),
-     DEFINE_PROP_UNSIGNED_NODEFAULT("x-nv-gpudirect-clique", VFIOPCIDevice,
-                                    nv_gpudirect_clique,
-                                    qdev_prop_nv_gpudirect_clique, uint8_t),
-diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
-index a2771b9ff3..eef5ddfd06 100644
---- a/hw/vfio/pci.h
-+++ b/hw/vfio/pci.h
-@@ -158,6 +158,8 @@ struct VFIOPCIDevice {
-     uint32_t display_yres;
-     int32_t bootindex;
-     uint32_t igd_gms;
-+    uint32_t dev_node_start;
-+    uint32_t dev_nodes;
-     OffAutoPCIBAR msix_relo;
-     uint8_t pm_cap;
-     uint8_t nv_gpudirect_clique;
-diff --git a/include/hw/pci/pci_device.h b/include/hw/pci/pci_device.h
-index d3dd0f64b2..aacd2279ae 100644
---- a/include/hw/pci/pci_device.h
-+++ b/include/hw/pci/pci_device.h
-@@ -157,6 +157,9 @@ struct PCIDevice {
-     MSIVectorReleaseNotifier msix_vector_release_notifier;
-     MSIVectorPollNotifier msix_vector_poll_notifier;
- 
-+    /* GPU coherent memory */
-+    bool has_coherent_memory;
-+
-     /* ID of standby device in net_failover pair */
-     char *failover_pair_id;
-     uint32_t acpi_index;
--- 
-2.17.1
+> Martin Kletzander (18):
+>    hw/audio: Remove -soundhw support
+>    hw/input/tsc210x: Extract common init code into new function
+>    hw/audio: Simplify hda audio init
+>    hw/audio/lm4549: Add errp error reporting to init function
+>    tests/qtest: Specify audiodev= and -audiodev
+>    ui/vnc: Require audiodev=
+>    Introduce machine's default-audiodev property
+>    audio: Add easy dummy audio initialiser
+>    hw/display/xlnx_dp.c: Add audiodev property
+>    hw/input/tsc210x.c: Support machine-default audiodev with fallback
+>    hw/arm: Support machine-default audiodev with fallback
+>    hw/ppc: Support machine-default audiodev with fallback
+>    audio: Make AUD_register_card fallible and require audiodev=
+>    audio: Require AudioState in AUD_add_capture
+>    audio: Be more strict during audio backend initialisation
+>    audio: Remove legacy audio environment variables and options
+>    audio: Remove unused can_be_default
+>    audio/spiceaudio: Fail initialisation when not using spice
+> 
+>   audio/alsaaudio.c                             |   1 -
+>   audio/audio.c                                 | 204 +++----
+>   audio/audio.h                                 |   5 +-
+>   audio/audio_int.h                             |   1 -
+>   audio/audio_legacy.c                          | 555 ------------------
+>   audio/coreaudio.m                             |   1 -
+>   audio/dbusaudio.c                             |   1 -
+>   audio/dsoundaudio.c                           |   1 -
+>   audio/jackaudio.c                             |   1 -
+>   audio/meson.build                             |   1 -
+>   audio/noaudio.c                               |   1 -
+>   audio/ossaudio.c                              |   1 -
+>   audio/paaudio.c                               |   1 -
+>   audio/sdlaudio.c                              |   1 -
+>   audio/spiceaudio.c                            |   3 +-
+>   audio/wavaudio.c                              |   1 -
+>   docs/about/deprecated.rst                     |  24 -
+>   docs/about/removed-features.rst               |  27 +
+>   docs/qdev-device-use.txt                      |  21 +-
+>   docs/replay.txt                               |   2 +-
+>   hw/arm/integratorcp.c                         |   8 +-
+>   hw/arm/musicpal.c                             |   8 +-
+>   hw/arm/omap2.c                                |  11 +-
+>   hw/arm/realview.c                             |   3 +
+>   hw/arm/spitz.c                                |  10 +-
+>   hw/arm/versatilepb.c                          |   3 +
+>   hw/arm/vexpress.c                             |   3 +
+>   hw/arm/xlnx-zcu102.c                          |   4 +
+>   hw/arm/z2.c                                   |  12 +-
+>   hw/audio/ac97.c                               |   9 +-
+>   hw/audio/adlib.c                              |   9 +-
+>   hw/audio/cs4231a.c                            |   8 +-
+>   hw/audio/es1370.c                             |   8 +-
+>   hw/audio/gus.c                                |   6 +-
+>   hw/audio/hda-codec.c                          |  37 +-
+>   hw/audio/intel-hda.c                          |  25 +-
+>   hw/audio/intel-hda.h                          |   2 +-
+>   hw/audio/lm4549.c                             |   7 +-
+>   hw/audio/lm4549.h                             |   3 +-
+>   hw/audio/meson.build                          |   1 -
+>   hw/audio/pcspk.c                              |  15 +-
+>   hw/audio/pl041.c                              |   2 +-
+>   hw/audio/sb16.c                               |   9 +-
+>   hw/audio/soundhw.c                            | 177 ------
+>   hw/audio/wm8750.c                             |   5 +-
+>   hw/core/machine.c                             |  23 +
+>   hw/display/xlnx_dp.c                          |  12 +-
+>   hw/input/tsc210x.c                            |  79 ++-
+>   hw/ppc/prep.c                                 |   4 +
+>   hw/usb/dev-audio.c                            |   5 +-
+>   include/hw/audio/soundhw.h                    |  15 -
+>   include/hw/boards.h                           |   1 +
+>   qemu-options.hx                               |  37 --
+>   .../codeconverter/test_regexps.py             |   1 -
+>   softmmu/qdev-monitor.c                        |   2 -
+>   softmmu/vl.c                                  |  10 -
+>   tests/qtest/ac97-test.c                       |   3 +-
+>   tests/qtest/es1370-test.c                     |   3 +-
+>   tests/qtest/fuzz/generic_fuzz_configs.h       |   6 +-
+>   tests/qtest/intel-hda-test.c                  |  15 +-
+>   ui/vnc.c                                      |  15 +-
+>   61 files changed, 329 insertions(+), 1140 deletions(-)
+>   delete mode 100644 audio/audio_legacy.c
+>   delete mode 100644 hw/audio/soundhw.c
+>   delete mode 100644 include/hw/audio/soundhw.h
+> 
 

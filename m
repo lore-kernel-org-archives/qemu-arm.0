@@ -1,128 +1,156 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1092789ejb;
-        Fri, 15 Sep 2023 02:25:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGFlzoXcr7+zCT1amzaLcLhix4wGRQipEb7sPwxnz5SY7zzZXUDgkJDdVknE4FSdff6d2wK
-X-Received: by 2002:a17:906:5354:b0:9a5:7887:ef09 with SMTP id j20-20020a170906535400b009a57887ef09mr910184ejo.32.1694769909198;
-        Fri, 15 Sep 2023 02:25:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694769909; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1106038ejb;
+        Fri, 15 Sep 2023 02:56:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFOi/nEVWSHqNEQI0+WGJAx7T/4CxNxxwdsev4CUf/okNVS85IR2gwjYHuJMxVyYr7klv+W
+X-Received: by 2002:a0c:f390:0:b0:64a:959f:22fb with SMTP id i16-20020a0cf390000000b0064a959f22fbmr1138932qvk.58.1694771760641;
+        Fri, 15 Sep 2023 02:56:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694771760; cv=none;
         d=google.com; s=arc-20160816;
-        b=pEpr+gSQCaZaE/hOEK+Aa6JHgCtqcSWCF0ElaWefoQsdMvqWdhyY+PYFdqU5WwyfUi
-         U6ymMO9OQdhWS96yTghvyNf/vZtAOFqJ+nwXvUeEqZvHl1FtZ2Ea7DHBRaCtNoouMVJ7
-         SOBww+qX9ATWeB1kk9riVaiuz/rYIKfmaYpAbnqafbES0m+JG0/rndb58mP5bF2CWjHI
-         N1WVw2k7Qxh+nwUDFs1cczYNS+f3lyA7fOTfXQGavrcqpNKyp++eMI9ZiobNqY1ydA09
-         qm95u8o+3iKOA5Ox4USjjQiA7sigwJrg57jMMu+aBEY0C4mnYVxeD7ZD83mqnNFEAiGA
-         7Kng==
+        b=dZn9bd0q46kqOXld3XyHJDjzk12YnzMJqiPqJesJ5b6EyHj/bdGhtGMVkMkJQk29ct
+         1JjS60XmzlRn2HufvEYEfqnBYTiWom9EyumOjE5knFIRTtpdiZOv4PQ8OfQiYxxyJFAV
+         BHqEWl91TdaULdyyXWGCF+q/p1g6EtAQ1oS0QW/5xZdl2N1tjf5A+3pXEvbSGWX7ESo6
+         n5XPLIBTmUbn9/3wE411MRwts6GRZpmcghqG6P/5d6KPZ9l7faVd3QUOHq8WlfImYIAg
+         4RaAJEkQsAutgqzs7JEEM6XQnVAwqVzJ4YOH7Gsxfcg0v5aopVyM5pvlGCcJ6wuITfSs
+         0fkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=4H9wIAfq41msNjg2DE7GCoUtDs+LbPwE+lEcVLE14ao=;
-        fh=BwzHYUuenO0Ne3/SAKcDZ+NJ+hnspXUwS6dR8/vdcqs=;
-        b=IeEAi2CpY3OcoSznNzHsd84iOv3vlxPkXgsCf5IWCAvcUjDPkzLd+6R3UZ6O1n88QR
-         LCRy6X14oXZIbzDjxe4i+eJsDOH7IZK+jWpifF10+IuxGhhDIXBN0m64lMmPnNc5qi9g
-         +aXQ+EJYIIzqSzR5ULkAbXCs/ryJ21THqFPRCz73Bj6KO5V8LS+qcxbhWky1X9bmziPh
-         MOStR6u/YVNAgMLwwTtCafSL/IdkJ6qcBKJsEe5Jjzup5BH2MyKahTdtld/dRc0cpiz1
-         wXJ1vM3NinRipEmQZBXMB5jUbA9nppQw1DzAmoSnAWwsVTXOMVhdJbKc9WetXxohWFNq
-         SZ3w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=+e+xQ6W4IDIkD9Yc6XKgugLMqvXXlpeRmlY/za2vlOE=;
+        fh=ThEABJUDOFeCcB3eRv0raUmJMlpN57h6BTRpkfyS2t0=;
+        b=ETwvWi9FV/sM7o/FcUaW4dvcFRC8SvgWvqLx3PDafxUmf8+7uuv3Cmg481FJPzTCd2
+         6YqLBJ9d+Mixdkw2cpTCBKPP+PfzktIqu7ZVduo2qkVDDBaepZpZvbc0WkcX9FzDPR8E
+         NbFBADUx8tqfmv1WV7eyYAC7SqrZmcwLY3o9Ja5sT2Kiyb0cYSBjcyJD9LcuY7e48wAA
+         fpzYit5Aoy5HY1vDexdy5UKZeTVckicf4ERzI+GF/2O1hlKCAYWujkuv0x8GtgK2uK+F
+         Zq44AMObtSGTrltC2D5hXi5WgrjuthU24gHBptpsnyNb7i4N09k90+BuanOP/bRAvgge
+         P4Ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L+2TKXPf;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id o8-20020a1709062e8800b009930c0374basi3158573eji.632.2023.09.15.02.25.08
+       dkim=pass header.i=@linaro.org header.s=google header.b=C8X5QmTk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y9-20020a0c9a89000000b00653589babcdsi2044852qvd.415.2023.09.15.02.55.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Sep 2023 02:25:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 15 Sep 2023 02:56:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=L+2TKXPf;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1694769908;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4H9wIAfq41msNjg2DE7GCoUtDs+LbPwE+lEcVLE14ao=;
-	b=L+2TKXPf8ntR0T34cBkLQD0SdwlYz7T7DplWNpCoCKE0qFnsl7cQvPA2t0r8AalvpKqkEE
-	dkzKdR3fP1DUe7IPqlqHKrjXhOH1O/d0qMhZtB1RJ3pmlfn/gIqaVcW+mHtF6ll1r676UI
-	s38Ox4+DNy3KEySOeKnhKiNeiE4V+JQ=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-470-yM-49QsPNtiqcUX8YTXd-g-1; Fri, 15 Sep 2023 05:25:04 -0400
-X-MC-Unique: yM-49QsPNtiqcUX8YTXd-g-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1493B185A79C;
-	Fri, 15 Sep 2023 09:25:04 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.37])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4584940C2070;
-	Fri, 15 Sep 2023 09:25:00 +0000 (UTC)
-Date: Fri, 15 Sep 2023 10:24:58 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Cleber Rosa <crosa@redhat.com>, Joel Stanley <joel@jms.id.au>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, John Snow <jsnow@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH 1/9] tests: update Debian images to Bookworm
-Message-ID: <ZQQi6n+3mp+bQIgu@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20230914155422.426639-1-alex.bennee@linaro.org>
- <20230914155422.426639-2-alex.bennee@linaro.org>
- <30ac04ad-eb02-90ad-57ff-089538413602@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=C8X5QmTk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qh5YE-00062x-Qv; Fri, 15 Sep 2023 05:55:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qh5YC-00061l-KV
+ for qemu-arm@nongnu.org; Fri, 15 Sep 2023 05:55:48 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qh5YA-00052p-5S
+ for qemu-arm@nongnu.org; Fri, 15 Sep 2023 05:55:47 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-52c88a03f99so2201689a12.2
+ for <qemu-arm@nongnu.org>; Fri, 15 Sep 2023 02:55:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1694771744; x=1695376544; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=+e+xQ6W4IDIkD9Yc6XKgugLMqvXXlpeRmlY/za2vlOE=;
+ b=C8X5QmTkChefYKS8VaW6/UoLLQJ4ujIFtoztAmZHKmbewkW1Rf+2ZUSu6O7+GE33Uh
+ bmqIxTD7wKMqNpACLcPjaqA1gxrfwZezQ8D6HlvyJ8LHie0unvPfVOWpVc0uJZla37hk
+ Wav1PyUlKAM7KPiFFyo44ACCrrXIiUAzQ2tF8PQ6IDu8uo1zKxcF+Lk8dBmrq2Btkhxm
+ rYA5zvajJyCmKKIDoD+45Y5Naw8erUhNYNF4wQhQfXcLJHC1vsTq3RNZLZk/orBedYYm
+ MJhXaXe6e38yw0rGuEWLsMY90A+sqGXSun7+NexBSGCmDn8w2ZlJRtscyz/Vu26k8e7H
+ FfLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1694771744; x=1695376544;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+e+xQ6W4IDIkD9Yc6XKgugLMqvXXlpeRmlY/za2vlOE=;
+ b=w1J4wL7JrSrkv8GpjMCAHfOveFLNQLHiopxuUwdprdjqLKQ17e4ppOtPMDwfN3a7z7
+ YPeirhN5Nu25SlO0GrLcErTFSNYE6PRyWLIUHHyKll/J6CdLHZAMIi1PDXvrA4Ycw8VG
+ q1JU6b526OFWPggD9oBikzcBGEc340u1hkWlaa8taMyw6QNdEKAvg9wepx22pdV1R85V
+ Dz2AKL3jCEXWulYbKk3GLKNhfdMWQyb1Yt0skUZ0rgTH775c2RDSyIR5pebDNbySxM01
+ IjgQla61EXMrC87qeqrwxT4vDXsGQZiRIHZts5WzY+aWYvxhgElETvMs0Oxw3o/qPSZ3
+ Rahg==
+X-Gm-Message-State: AOJu0YyLSc9OzQesuciHZ7Ak1BYl8XGDQX8RTvxMtSAMzOFUlWnkNffF
+ TXfDqnb7yLynQL5xNxEp4LF07Lxu8d4PFcU89pGxv1+fWhfuC8Nt
+X-Received: by 2002:aa7:db86:0:b0:52f:b5c8:fa6a with SMTP id
+ u6-20020aa7db86000000b0052fb5c8fa6amr985358edt.20.1694771744153; Fri, 15 Sep
+ 2023 02:55:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <30ac04ad-eb02-90ad-57ff-089538413602@linaro.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-X-TUID: gzkOgokaLq3b
+References: <20230914224211.2184828-1-komlodi@google.com>
+ <20230914224211.2184828-2-komlodi@google.com>
+In-Reply-To: <20230914224211.2184828-2-komlodi@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 15 Sep 2023 10:55:24 +0100
+Message-ID: <CAFEAcA-k=KZFd8Xm30LswYZW7ZgDwVe17H5xB4EaxTFwhm1vpw@mail.gmail.com>
+Subject: Re: [PATCH 1/1] hw/timer/sse-timer: Add CNTFRQ reset property
+To: Joe Komlodi <komlodi@google.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lcWJkpvFjXsC
 
-On Fri, Sep 15, 2023 at 11:14:29AM +0200, Philippe Mathieu-Daudé wrote:
-> On 14/9/23 17:54, Alex Bennée wrote:
-> > Bookworm has been out a while now. Time to update our containers to
-> > the current stable. This requires the latest lcitool repo so update
-> > the sub-module too.
-> > 
-> > For some reason the MIPs containers won't build so skip those for now.
-> 
-> Debian removed mipsel:
-> https://lists.debian.org/debian-devel-announce/2023/09/msg00000.html
-> https://lists.debian.org/debian-release/2019/08/msg00582.html ...
+On Thu, 14 Sept 2023 at 23:42, Joe Komlodi <komlodi@google.com> wrote:
+>
+> This can have a non-zero reset value, and cause the kernel to complain
+> about a CNTFRQ mismatch if TF-A (or firmware in general) does not
+> initialize it (because it expects the value to be non-zero out of
+> reset).
+>
+> To fix this, we'll just add an object property that people can use to
+> initialize the CNTFRQ reset value.
 
-Wwith our general aim to support latest release, plus the previous
-release (capped to a maximum of 2 years), we can still consider
-mipsel supportable in QEMU CI by sticking with oldstable (Bullseye)
-for the mipsel containers.
+I'm a bit confused -- you talk about TF-A, but as far as I'm
+aware the only use of this timer device is in the ARMSSE,
+which is used only on M-profile boards.
 
-Once Debian 13 comes out, however, we'll be discarding Bullseye
-from CI and so we'll be unable to do CI for mipsel. At the very
-least this means we'll consider mipsel to be downgraded in terms
-of supportability when that happens. We might then consider
-explicitly dropping it as a buld target entirely, as the writing
-is on the wall for 32-bit OS platforms in general...
+Also, since this device is a sysbus device, there's not much
+point adding the property without also adding code in the
+ARMSSE etc that sets the property appropriately. On its
+own this patch will do nothing.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Plus, it is firmware's job to set the value of this register:
+in real hardware it is always zero on reset. For the A-profile
+in-core CNTFRQ we set a non-zero reset value because in a
+lot of use cases QEMU is effectively emulating firmware
+and then directly booting Linux. I'm not so sure those cases
+apply for M-profile boards?
+
+If we do want to follow a similar approach to the A-profile
+CPU timer, rather than having a separate property that must
+be set, it would be neater for the timer to ask the counter
+for the frequency -- the SSE timer is run from the SSE counter,
+and the counter has a Clock input and can call clock_get_hz()
+to get its frequency.
+
+thanks
+-- PMM

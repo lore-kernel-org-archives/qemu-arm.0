@@ -1,280 +1,526 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1747407ejb;
-        Sat, 16 Sep 2023 01:02:57 -0700 (PDT)
-X-Received: by 2002:a05:6e02:12ed:b0:34a:c4ae:1937 with SMTP id l13-20020a056e0212ed00b0034ac4ae1937mr5238603iln.13.1694851377161;
-        Sat, 16 Sep 2023 01:02:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1694851377; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp1776047ejb;
+        Sat, 16 Sep 2023 02:27:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF7kzpfvlOfn0wPMCRUYG6sPy6OKUR7wpDHekCieq2qcvhsGn3lKK5IDIEgZooSPKqoXgcA
+X-Received: by 2002:a05:620a:29cf:b0:773:b2b1:6f62 with SMTP id s15-20020a05620a29cf00b00773b2b16f62mr4796516qkp.34.1694856420041;
+        Sat, 16 Sep 2023 02:27:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1694856420; cv=none;
         d=google.com; s=arc-20160816;
-        b=QuA99UGaQ5E87EuvZkoKg2eGcmZdidCbn5briqtk1qquGrfq+U258ae/kEj7TluFQH
-         9kFt2cK2REVJfwsBytstTAYgMWJlgnWEn5Ukk2wk9pqKk/ELDRjUrlTmnVDmostOoI0Q
-         cy+Y7lbhEQK4wHcJoS+DBmOrN2QixWWU/EWN/3yScGy/lspHPeBRFdIjwDJimsuS26fY
-         hrJLtKpE8N5GApuroLYkEP3L3i5zRKqvdede9rliiUnUHDqqvDkH0+gQtpnnK+XFL2cQ
-         thLKJKnkpTXOBJH/o5Uytn9oP1pqzdm2ax7/0Tt2x+XUOkj6p95QNFjFqwNglZR51TKq
-         d9VA==
+        b=VTLvFM8xmjoaB3cOnzrpuIzauN0X25IRxTxm15cjQNA34q1NjnmlnSMK706QQxJCAK
+         OUbp3ae8xGlj3gad6hsiZ4g4RhYye+P4EVjJe35Gn/04VUJQhgNoGIGh+icrxhEcJJcr
+         xLHQ94Qn80XLI8lUKM3+fsI3WoRGLtWNMDAZdfedgMEY66Bib4RkSO9PNmOF6QRrOWyo
+         79ueaBkiRiyrqNtoEpz0t1vDhI60i65CM9oAZfkbgPIWN2Nx39TqqRDVpyplOhtjXUDv
+         lz00LnBazpa8RiXR0XtEOUm1xDk0qOCDxNAolubEqTSmiYBZldUe3oJKnOtSX1hYegN6
+         ibAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zuwkTGFn4CUWLfbEaHznI+TK7KvMW/M6pf3tb7SDPP8=;
-        fh=0bV2fMUXMBMLAhatyiilNIcRTcD7RDxyXlu59VvHpkg=;
-        b=tn95/njf+cqetQaTyLY75anKQL/+h2N1f7/8yy/VFhmWv9SYqNb6hmOzul7ZCSnpt4
-         4YR+iP1F1BU/d3pTB+YtFCNHLFmDPf2T2tH7sYAroaL9QmjGPMC607gAfXrm/RsPAPd6
-         ZILKQJzY8UUsc0ijWDKK0FOdKezUQ4we7eM/LiBLy63Jjrb3rFAujVKQiN01kiuhMfVf
-         sEx5xQi1LHXvjpPg+wrslZe6pVY74B8bwkLPuqLnQkNwVhDwiAzguMAZxokWOQarThll
-         AouMEoaCEr8SfvlStCkpi9CuN6vxGUE+qokYNvo2ur6+VnASVIU2hdzkSIdtbeblIOvd
-         f68Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=KRQfI5qQvvUoDhheHKWnDUAK2fiyxZ85hutxnpZHL9s=;
+        fh=Opj6zNUL9iVY7aS88912KGmtMv5tw1K0QuP7ETXYtDw=;
+        b=jfb4r6p6knbQTfFHxNmuDtFAdDkpM7ImZuhFUlwjv2T9CUAkJO10yt5ViLKcv/+/UE
+         2zdoW3Yo9C34++JqmkBLGjZ5tHidj1V9dRMow0PeXDjFJKlOCN2NJpndFr9sUD32gHic
+         rhZ0+7kwzHslEJ5EH2bxc8AXvP+0iXV2S1wvP4UcZxYIRrfIch3J43HAx7s5RHtMaQxs
+         iHL0s7+QDNeuz2kzD3FGqaymM3/3Uu5vxIdE1x0xouHDMCaJ7TrfQlHTjC99M1EvATuG
+         6dg13+hD/9EIci7gJr4ufgEhzGDv2h2J36ymvHqsjDFF+HiJQmCINFcZ3lVQ9iDX/acG
+         Y0oA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=CatCsDYz;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c63-20020a633542000000b0053fb4b9f30asor2086532pga.2.2023.09.16.01.02.56
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cbmWT65Z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id sn20-20020a05620a949400b0077074ac99besi3318275qkn.763.2023.09.16.02.26.59
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 16 Sep 2023 01:02:57 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 16 Sep 2023 02:27:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=CatCsDYz;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cbmWT65Z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qhRZC-0007bt-Vg; Sat, 16 Sep 2023 05:26:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1qhRZB-0007bb-2L; Sat, 16 Sep 2023 05:26:17 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1qhRZ8-0006Br-Cn; Sat, 16 Sep 2023 05:26:16 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-52a4737a08fso3373712a12.3; 
+ Sat, 16 Sep 2023 02:26:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1694851376; x=1695456176; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zuwkTGFn4CUWLfbEaHznI+TK7KvMW/M6pf3tb7SDPP8=;
-        b=CatCsDYzergMVIZtiB3f2gvg2VOAqVGFK8zlpSr7ApTNueK4VVw3mWtDStEJ/algPe
-         0i4QYsH9NaScJlos02V8ZUCR/fJOS5z18zoZsQ1/KDhSr2jQbqlRuYwtyFbKB/pKAqJm
-         1Na20TTm4h2GznGtRFanj/Y0enpYfA/sDZAIm7Pc2R8LduXWLzLHA+ZPDgQqIpb8/m5q
-         Rz9B8wEUQVhQO16CJA00ucqW3DIYZYkdhAOi2eIUmbVuJJw2EDZt1LWDldG2alwseSsb
-         hqYOSb77WmDVV8jAWEupgR3cAT+VPmhMOyD9XnQwXwTwDuIHBJqu03SALsxWo4nT2FBi
-         UFbQ==
+ d=gmail.com; s=20230601; t=1694856372; x=1695461172; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=KRQfI5qQvvUoDhheHKWnDUAK2fiyxZ85hutxnpZHL9s=;
+ b=cbmWT65ZxTRkdwGqYavW8CFlYLAA98rvhXGo4ghcauj0r/J4JO/ZUQV6s5Vb+pjcgX
+ NBbSdoW45oWAOS0tGVbp8+vi6XXoC38L6ntaso8jMy8ED1m3d8WmHWoPtv3yDl1DJ/7M
+ 5n29QKC8wredhUs0obgOsQEvc/+KQSCgOeX7umBr6v1jR9sMFWoJ9y/lk/rKXnMAcC1x
+ E/kQ5HAMJwe5L8hypcHOuAI3P+yg/bTFKsrWOPQw8YuncbyLyxwUhRlxiIaRTwrdnbHR
+ Fb1UXP3QtF2Gdrm0Y/+SqkowKfkKvXVCDqkVrC1kvYYyL9kpTjmBzqm9uO/uAtUXSpjL
+ IkpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1694851376; x=1695456176;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zuwkTGFn4CUWLfbEaHznI+TK7KvMW/M6pf3tb7SDPP8=;
-        b=Ac9fk1SDD3rO6OSZAwfRsjB6ex9yhhFr1Uq5wdrL82QZmhx/5zipcjpjXCURnVGMnK
-         jO2QujnGh1ivQqxcyiwzPRnPhtmSSfO6Pgl539frfWhdOFBqc1eNylZY//3Ofr+F9Zyn
-         zVKBm2rfvoIApTmSi/4eREhBUDn8QR8jyWPVRaNpVBjp00x/Q1BaKYq6sbXQbAEyvJwX
-         qs0BYKeLtrRhzEtj1GlYKRTUhQALXEoRTPZ4GvWeKjDpIk1UGjzUuUGlD5SWJ/LUJa0n
-         U9F+djgGQpR5K3kMVnyWZ9P3y2+PkZUK2ct9ishnYIbCPNkJLkaswEPTuYxM+NvzR3SO
-         p6Pg==
-X-Gm-Message-State: AOJu0YxPV6fsZ60Z3o5Z7PVWR1t4fW7fu/6bm3Jy5NmkOSwnNDeEZN40
-	CGSJATKKo1A6K9gV2k+jNFr+oicNVi/xNgL0weA=
-X-Google-Smtp-Source: AGHT+IHO8tPgPeM/ygovARNeCsJOeF3Tb4p5m5dRqeGLhzt0PiK/HciRV18oNkzPLy79Tmw1gXNrlQ==
-X-Received: by 2002:a05:6a20:549f:b0:135:4df7:f165 with SMTP id i31-20020a056a20549f00b001354df7f165mr4362794pzk.21.1694851376528;
-        Sat, 16 Sep 2023 01:02:56 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with ESMTPSA id z21-20020aa791d5000000b0068a46cd4120sm4029484pfa.199.2023.09.16.01.02.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 16 Sep 2023 01:02:56 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Mikhail Tyutin <m.tyutin@yadro.com>,
-	Aleksandr Anenkov <a.anenkov@yadro.com>,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
-	qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
-Subject: [PATCH v8 12/19] hw/core/cpu: Remove gdb_get_dynamic_xml member
-Date: Sat, 16 Sep 2023 17:01:29 +0900
-Message-ID: <20230916080149.129989-13-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20230916080149.129989-1-akihiko.odaki@daynix.com>
-References: <20230916080149.129989-1-akihiko.odaki@daynix.com>
+ d=1e100.net; s=20230601; t=1694856372; x=1695461172;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=KRQfI5qQvvUoDhheHKWnDUAK2fiyxZ85hutxnpZHL9s=;
+ b=bvY3xkyrf2I/C+LrvcQQhjAT3MztjtUIDGuKRxgv3FJ1Au3cbXf//CqVh8gFl0ECDR
+ Vzijmhi1gV3K3SR+GoujZMAiTWQINHHgfNFLLu1ncvx3eVVKkkjINR8iN8M8xoloJghZ
+ KRnCa30yix4ma0Mc8PwS5VXlrIjchM0qy26a3n4edNuXh7/H2+K8O1kOsGm/NL/3tl8/
+ k3aP5li8hRc3H5D1TEtmaGkZJIsG4guFHn2JD1JwSL7euFINRj4F2JoFS2AGQLfXj1O4
+ 0Uw2ZUQ5UE7bvGor2bjMzRmysFhM10sz6d4hGglkFMWPDS4C8yIOo1ulZEf3C8nJh0HZ
+ iDZQ==
+X-Gm-Message-State: AOJu0YxcCFucyVZxDH1o5j0+p+4xTf8TmPuqJhmvIiSK6UjKkrzdLnPo
+ prvvO7asidECLHmGmAwdHXrdgj0rJZ9FGm//Zzw=
+X-Received: by 2002:a05:6402:b32:b0:522:2782:537 with SMTP id
+ bo18-20020a0564020b3200b0052227820537mr3131420edb.15.1694856371793; Sat, 16
+ Sep 2023 02:26:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: LI0+1pdL2nRV
+References: <20230905201425.118918-1-strahinja.p.jankovic@gmail.com>
+ <20230905201425.118918-6-strahinja.p.jankovic@gmail.com>
+ <CAFEAcA-601OV-RDDy4V+b7+2Ciyer8LSRiz+tfLHMWBTgwXvPg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-601OV-RDDy4V+b7+2Ciyer8LSRiz+tfLHMWBTgwXvPg@mail.gmail.com>
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Date: Sat, 16 Sep 2023 11:26:00 +0200
+Message-ID: <CABtshVTOAwtSZKyNQtmM+=5NG8d5RLQ8=ef9MB=4qkF62aw2BA@mail.gmail.com>
+Subject: Re: [RFC Patch 5/5] hw/input: Add Allwinner-A10 PS2 emulation
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Beniamino Galvani <b.galvani@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000fc72760605767fae"
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1P3+VMmSj0cd
 
-This function is no longer used.
+--000000000000fc72760605767fae
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- include/hw/core/cpu.h |  4 ----
- target/arm/cpu.h      |  6 ------
- target/ppc/cpu.h      |  1 -
- target/arm/cpu.c      |  1 -
- target/arm/gdbstub.c  | 18 ------------------
- target/ppc/cpu_init.c |  3 ---
- target/ppc/gdbstub.c  | 10 ----------
- target/riscv/cpu.c    | 14 --------------
- 8 files changed, 57 deletions(-)
+Hi Peter,
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 5426822ee0..06f7cdcfad 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -133,9 +133,6 @@ struct SysemuCPUOps;
-  *           before the insn which triggers a watchpoint rather than after it.
-  * @gdb_arch_name: Optional callback that returns the architecture name known
-  * to GDB. The caller must free the returned string with g_free.
-- * @gdb_get_dynamic_xml: Callback to return dynamically generated XML for the
-- *   gdb stub. Returns a pointer to the XML contents for the specified XML file
-- *   or NULL if the CPU doesn't have a dynamically generated content for it.
-  * @disas_set_info: Setup architecture specific components of disassembly info
-  * @adjust_watchpoint_address: Perform a target-specific adjustment to an
-  * address before attempting to match it against watchpoints.
-@@ -166,7 +163,6 @@ struct CPUClass {
- 
-     const char *gdb_core_xml_file;
-     const gchar * (*gdb_arch_name)(CPUState *cpu);
--    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
- 
-     void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 24c6adff36..3fe93b8864 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1136,12 +1136,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
- int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- 
--/* Returns the dynamically generated XML for the gdb stub.
-- * Returns a pointer to the XML contents for the specified XML file or NULL
-- * if the XML name doesn't match the predefined one.
-- */
--const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
--
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, DumpState *s);
- int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 5f251bdffe..3dc6e545e3 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1382,7 +1382,6 @@ int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
- #ifndef CONFIG_USER_ONLY
- hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu);
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
- #endif
- int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                                int cpuid, DumpState *s);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index dc38ebec18..a2c5bd9841 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2389,7 +2389,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
-     cc->gdb_arch_name = arm_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->disas_set_info = arm_disas_set_info;
- 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index aa2c6c1bde..f9774b5547 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -463,24 +463,6 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs)
- #endif
- #endif /* CONFIG_TCG */
- 
--const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--
--    if (strcmp(xmlname, "system-registers.xml") == 0) {
--        return cpu->dyn_sysreg_feature.desc.xml;
--    } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
--        return cpu->dyn_svereg_feature.desc.xml;
--    } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
--        return cpu->dyn_m_systemreg_feature.desc.xml;
--#ifndef CONFIG_USER_ONLY
--    } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
--        return cpu->dyn_m_secextreg_feature.desc.xml;
--#endif
--    }
--    return NULL;
--}
--
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
- {
-     CPUState *cs = CPU(cpu);
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index e69405efed..e16c4acd4e 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7370,9 +7370,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
- #endif
- 
-     cc->gdb_num_core_regs = 71;
--#ifndef CONFIG_USER_ONLY
--    cc->gdb_get_dynamic_xml = ppc_gdb_get_dynamic_xml;
--#endif
- #ifdef USE_APPLE_GDB
-     cc->gdb_read_register = ppc_cpu_gdb_read_register_apple;
-     cc->gdb_write_register = ppc_cpu_gdb_write_register_apple;
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 2392625441..a20d5922dd 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -339,16 +339,6 @@ void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu)
- 
-     gdb_feature_builder_end(&builder);
- }
--
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
--{
--    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
--
--    if (strcmp(xml_name, "power-spr.xml") == 0) {
--        return pcc->gdb_spr.xml;
--    }
--    return NULL;
--}
- #endif
- 
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index f8234da054..3182607113 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -1955,19 +1955,6 @@ static const gchar *riscv_gdb_arch_name(CPUState *cs)
-     }
- }
- 
--static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    RISCVCPU *cpu = RISCV_CPU(cs);
--
--    if (strcmp(xmlname, "riscv-csr.xml") == 0) {
--        return cpu->dyn_csr_feature.xml;
--    } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
--        return cpu->dyn_vreg_feature.xml;
--    }
--
--    return NULL;
--}
--
- #ifndef CONFIG_USER_ONLY
- static int64_t riscv_get_arch_id(CPUState *cs)
- {
-@@ -2145,7 +2132,6 @@ static void riscv_cpu_class_init(ObjectClass *c, void *data)
-     cc->get_arch_id = riscv_get_arch_id;
- #endif
-     cc->gdb_arch_name = riscv_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = riscv_gdb_get_dynamic_xml;
-     cc->tcg_ops = &riscv_tcg_ops;
- 
-     object_class_property_add(c, "mvendorid", "uint32", cpu_get_mvendorid,
--- 
-2.42.0
+Thank you for your comments.
+
+I used the PL050 component as a starting point, but I did not clean things
+up well after I saw it working. I will clean it up before sending the new
+patch version.
+
+On Fri, Sep 15, 2023 at 4:23=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org>
+wrote:
+
+> On Tue, 5 Sept 2023 at 21:14, Strahinja Jankovic
+> <strahinjapjankovic@gmail.com> wrote:
+> >
+> > Add emulation for PS2-0 and PS2-1 for keyboard/mouse.
+> >
+> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+>
+>
+>
+> > +static int allwinner_a10_ps2_fctl_is_irq(AwA10PS2State *s)
+> > +{
+> > +    return (s->regs[REG_INDEX(REG_FCTL)] & FIELD_REG_FCTL_TXRDY_IEN) |=
+|
+> > +        (s->pending &&
+> > +         (s->regs[REG_INDEX(REG_FCTL)] & FIELD_REG_FCTL_RXRDY_IEN));
+>
+> It looks a little odd that you need a separate s->pending bool here.
+> Sometimes hardware does odd things, but the most usual situation
+> is that the pending status of an interrupt is directly reflected
+> in a register bit somewhere, and "is the interrupt high" logic
+> is then just "is the pending bit set and is the enable bit set".
+> Often the bit positions are deliberately the same in the two
+> registers and then "is an interrupt set" is something like
+>   if (s->regs[REG_INDEX(REG_FCTL)] & s->regs[REG_INDEX(REG_FSTS)] &
+>       (TXRDY_IEN | RXRDY_IEN))
+>
+>
+Yes, that makes sense. I will try to improve this.
+
+
+>
+> > +}
+> > +
+> > +static void allwinner_a10_ps2_update_irq(AwA10PS2State *s)
+> > +{
+> > +    int level =3D (s->regs[REG_INDEX(REG_GCTL)] & FIELD_REG_GCTL_INT_E=
+N)
+> &&
+> > +        allwinner_a10_ps2_fctl_is_irq(s);
+> > +
+> > +    qemu_set_irq(s->irq, level);
+> > +}
+> > +
+> > +static void allwinner_a10_ps2_set_irq(void *opaque, int n, int level)
+> > +{
+> > +    AwA10PS2State *s =3D (AwA10PS2State *)opaque;
+> > +
+> > +    s->pending =3D level;
+> > +    allwinner_a10_ps2_update_irq(s);
+> > +}
+> > +
+> > +static uint64_t allwinner_a10_ps2_read(void *opaque, hwaddr offset,
+> > +                                       unsigned size)
+> > +{
+> > +    AwA10PS2State *s =3D AW_A10_PS2(opaque);
+> > +    const uint32_t idx =3D REG_INDEX(offset);
+> > +
+> > +    switch (offset) {
+> > +    case REG_FSTS:
+> > +        {
+> > +            uint32_t stat =3D FIELD_REG_FSTS_TX_RDY;
+> > +            if (s->pending) {
+> > +                stat |=3D FIELD_REG_FSTS_RX_LEVEL1 |
+> FIELD_REG_FSTS_RX_RDY;
+> > +            }
+> > +            return stat;
+>
+> The logic here also suggests that the code would be simpler if you
+> keep the TX_RDY and RX_RDY state directly in this register value,
+> rather than hardcoding TX_RDY to always-set and keeping RX_RDY
+> in a separate pending field.
+>
+>
+That makes sense, I'll fix it.
+
+
+> > +        }
+> > +        break;
+> > +    case REG_DATA:
+> > +        if (s->pending) {
+> > +            s->last =3D ps2_read_data(s->ps2dev);
+> > +        }
+> > +        return s->last;
+>
+> You could keep the last returned data in s->regs[REG_IDX(REG_DATA)]
+> and avoid having to have an extra s->last field in the state struct.
+>
+>
+Ok.
+
+
+> > +    case REG_GCTL:
+> > +        {
+> > +            if (allwinner_a10_ps2_fctl_is_irq(s)) {
+> > +                s->regs[idx] |=3D FIELD_REG_GCTL_INT_FLAG;
+> > +            } else {
+> > +                s->regs[idx] &=3D FIELD_REG_GCTL_INT_FLAG;
+> > +            }
+> > +        }
+> > +        break;
+> > +    case REG_LCTL:
+> > +    case REG_LSTS:
+> > +    case REG_FCTL:
+> > +    case REG_CLKDR:
+> > +        break;
+> > +    case 0x1C ... AW_A10_PS2_IOSIZE:
+> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset
+> 0x%04x\n",
+> > +                      __func__, (uint32_t)offset);
+> > +        return 0;
+> > +    default:
+> > +        qemu_log_mask(LOG_UNIMP, "%s: unimplemented read offset
+> 0x%04x\n",
+> > +                      __func__, (uint32_t)offset);
+> > +        return 0;
+> > +    }
+> > +
+> > +    return s->regs[idx];
+> > +}
+> > +
+> > +static void allwinner_a10_ps2_write(void *opaque, hwaddr offset,
+> > +                                   uint64_t val, unsigned size)
+> > +{
+> > +    AwA10PS2State *s =3D AW_A10_PS2(opaque);
+> > +    const uint32_t idx =3D REG_INDEX(offset);
+> > +
+> > +    s->regs[idx] =3D (uint32_t) val;
+> > +
+> > +    switch (offset) {
+> > +    case REG_GCTL:
+> > +        allwinner_a10_ps2_update_irq(s);
+> > +        s->regs[idx] &=3D ~FIELD_REG_GCTL_SOFT_RST;
+> > +        break;
+> > +    case REG_DATA:
+> > +        /* ??? This should toggle the TX interrupt line.  */
+> > +        /* ??? This means kbd/mouse can block each other.  */
+>
+> I don't understand this comment. It looks like it was cut-and-pasted
+> from another device where it was originally written in 2005 (and
+> I don't understand it there either). We should either understand
+> what we mean here, or else not have the comment at all...
+>
+>
+Yes, unfortunately I missed this one before sending it out...
+
+
+> > +        if (s->is_mouse) {
+> > +            ps2_write_mouse(PS2_MOUSE_DEVICE(s->ps2dev), val);
+> > +        } else {
+> > +            ps2_write_keyboard(PS2_KBD_DEVICE(s->ps2dev), val);
+> > +        }
+> > +        break;
+> > +    case REG_LCTL:
+> > +    case REG_LSTS:
+> > +    case REG_FCTL:
+> > +    case REG_FSTS:
+> > +    case REG_CLKDR:
+> > +        break;
+> > +    case 0x1C ... AW_A10_PS2_IOSIZE:
+> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset
+> 0x%04x\n",
+> > +                      __func__, (uint32_t)offset);
+> > +        break;
+> > +    default:
+> > +        qemu_log_mask(LOG_UNIMP, "%s: unimplemented write offset
+> 0x%04x\n",
+> > +                      __func__, (uint32_t)offset);
+> > +        break;
+> > +    }
+> > +}
+>
+> thanks
+> -- PMM
+>
+
+Thanks!
+
+Best regards,
+Strahinja
+
+--000000000000fc72760605767fae
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Peter,</div><div><br></div><div>Thank you for your=
+ comments.</div><div><br></div><div>I used the PL050 component as a startin=
+g point, but I did not clean things up well after I saw it working. I will =
+clean it up before sending the new patch version.</div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Sep 15, 2023 at 4:=
+23=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org"=
+>peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
+4,204);padding-left:1ex">On Tue, 5 Sept 2023 at 21:14, Strahinja Jankovic<b=
+r>
+&lt;<a href=3D"mailto:strahinjapjankovic@gmail.com" target=3D"_blank">strah=
+injapjankovic@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Add emulation for PS2-0 and PS2-1 for keyboard/mouse.<br>
+&gt;<br>
+&gt; Signed-off-by: Strahinja Jankovic &lt;<a href=3D"mailto:strahinja.p.ja=
+nkovic@gmail.com" target=3D"_blank">strahinja.p.jankovic@gmail.com</a>&gt;<=
+br>
+<br>
+<br>
+<br>
+&gt; +static int allwinner_a10_ps2_fctl_is_irq(AwA10PS2State *s)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 return (s-&gt;regs[REG_INDEX(REG_FCTL)] &amp; FIELD_REG=
+_FCTL_TXRDY_IEN) ||<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (s-&gt;pending &amp;&amp;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(s-&gt;regs[REG_INDEX(REG_FCTL)] &a=
+mp; FIELD_REG_FCTL_RXRDY_IEN));<br>
+<br>
+It looks a little odd that you need a separate s-&gt;pending bool here.<br>
+Sometimes hardware does odd things, but the most usual situation<br>
+is that the pending status of an interrupt is directly reflected<br>
+in a register bit somewhere, and &quot;is the interrupt high&quot; logic<br=
+>
+is then just &quot;is the pending bit set and is the enable bit set&quot;.<=
+br>
+Often the bit positions are deliberately the same in the two<br>
+registers and then &quot;is an interrupt set&quot; is something like<br>
+=C2=A0 if (s-&gt;regs[REG_INDEX(REG_FCTL)] &amp; s-&gt;regs[REG_INDEX(REG_F=
+STS)] &amp;<br>
+=C2=A0 =C2=A0 =C2=A0 (TXRDY_IEN | RXRDY_IEN))<br><br></blockquote><div><br>=
+</div><div>Yes, that makes sense. I will try to improve this.</div><div>=C2=
+=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static void allwinner_a10_ps2_update_irq(AwA10PS2State *s)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 int level =3D (s-&gt;regs[REG_INDEX(REG_GCTL)] &amp; FI=
+ELD_REG_GCTL_INT_EN) &amp;&amp;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_a10_ps2_fctl_is_irq(s);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 qemu_set_irq(s-&gt;irq, level);<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static void allwinner_a10_ps2_set_irq(void *opaque, int n, int level)=
+<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 AwA10PS2State *s =3D (AwA10PS2State *)opaque;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 s-&gt;pending =3D level;<br>
+&gt; +=C2=A0 =C2=A0 allwinner_a10_ps2_update_irq(s);<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static uint64_t allwinner_a10_ps2_read(void *opaque, hwaddr offset,<b=
+r>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsig=
+ned size)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 AwA10PS2State *s =3D AW_A10_PS2(opaque);<br>
+&gt; +=C2=A0 =C2=A0 const uint32_t idx =3D REG_INDEX(offset);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 switch (offset) {<br>
+&gt; +=C2=A0 =C2=A0 case REG_FSTS:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t stat =3D FIELD_REG=
+_FSTS_TX_RDY;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;pending) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 stat |=3D FIE=
+LD_REG_FSTS_RX_LEVEL1 | FIELD_REG_FSTS_RX_RDY;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return stat;<br>
+<br>
+The logic here also suggests that the code would be simpler if you<br>
+keep the TX_RDY and RX_RDY state directly in this register value,<br>
+rather than hardcoding TX_RDY to always-set and keeping RX_RDY<br>
+in a separate pending field.<br>
+<br></blockquote><div><br></div><div>That makes sense, I&#39;ll fix it.</di=
+v><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 case REG_DATA:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;pending) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;last =3D ps2_read_dat=
+a(s-&gt;ps2dev);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return s-&gt;last;<br>
+<br>
+You could keep the last returned data in s-&gt;regs[REG_IDX(REG_DATA)]<br>
+and avoid having to have an extra s-&gt;last field in the state struct.<br>
+<br></blockquote><div><br></div><div>Ok.</div><div>=C2=A0</div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex">
+&gt; +=C2=A0 =C2=A0 case REG_GCTL:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (allwinner_a10_ps2_fctl_=
+is_irq(s)) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[id=
+x] |=3D FIELD_REG_GCTL_INT_FLAG;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[id=
+x] &amp;=3D FIELD_REG_GCTL_INT_FLAG;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 case REG_LCTL:<br>
+&gt; +=C2=A0 =C2=A0 case REG_LSTS:<br>
+&gt; +=C2=A0 =C2=A0 case REG_FCTL:<br>
+&gt; +=C2=A0 =C2=A0 case REG_CLKDR:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 case 0x1C ... AW_A10_PS2_IOSIZE:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: =
+out-of-bounds offset 0x%04x\n&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 __func__, (uint32_t)offset);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
+&gt; +=C2=A0 =C2=A0 default:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: unimpl=
+emented read offset 0x%04x\n&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 __func__, (uint32_t)offset);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 return s-&gt;regs[idx];<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static void allwinner_a10_ps2_write(void *opaque, hwaddr offset,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0uint64_t val, unsig=
+ned size)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 AwA10PS2State *s =3D AW_A10_PS2(opaque);<br>
+&gt; +=C2=A0 =C2=A0 const uint32_t idx =3D REG_INDEX(offset);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 s-&gt;regs[idx] =3D (uint32_t) val;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 switch (offset) {<br>
+&gt; +=C2=A0 =C2=A0 case REG_GCTL:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_a10_ps2_update_irq(s);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[idx] &amp;=3D ~FIELD_REG_GCTL_=
+SOFT_RST;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 case REG_DATA:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* ??? This should toggle the TX interrup=
+t line.=C2=A0 */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* ??? This means kbd/mouse can block eac=
+h other.=C2=A0 */<br>
+<br>
+I don&#39;t understand this comment. It looks like it was cut-and-pasted<br=
+>
+from another device where it was originally written in 2005 (and<br>
+I don&#39;t understand it there either). We should either understand<br>
+what we mean here, or else not have the comment at all...<br>
+<br></blockquote><div><br></div><div>Yes, unfortunately I missed this one b=
+efore sending it out...</div><div>=C2=A0</div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex">
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;is_mouse) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ps2_write_mouse(PS2_MOUSE_D=
+EVICE(s-&gt;ps2dev), val);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ps2_write_keyboard(PS2_KBD_=
+DEVICE(s-&gt;ps2dev), val);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 case REG_LCTL:<br>
+&gt; +=C2=A0 =C2=A0 case REG_LSTS:<br>
+&gt; +=C2=A0 =C2=A0 case REG_FCTL:<br>
+&gt; +=C2=A0 =C2=A0 case REG_FSTS:<br>
+&gt; +=C2=A0 =C2=A0 case REG_CLKDR:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 case 0x1C ... AW_A10_PS2_IOSIZE:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: =
+out-of-bounds offset 0x%04x\n&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 __func__, (uint32_t)offset);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 default:<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: unimpl=
+emented write offset 0x%04x\n&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 __func__, (uint32_t)offset);<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +}<br>
+<br>
+thanks<br>
+-- PMM<br></blockquote><div><br></div><div>Thanks!</div><div><br></div><div=
+>Best regards,</div><div>Strahinja</div><div>=C2=A0</div></div></div>
+
+--000000000000fc72760605767fae--

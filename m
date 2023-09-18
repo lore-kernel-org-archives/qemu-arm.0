@@ -1,235 +1,226 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011714ejb;
-        Mon, 18 Sep 2023 09:04:40 -0700 (PDT)
-X-Received: by 2002:a2e:a369:0:b0:2c0:b2:256c with SMTP id i9-20020a2ea369000000b002c000b2256cmr3372437ljn.45.1695053080562;
-        Mon, 18 Sep 2023 09:04:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695053080; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3032077ejb;
+        Mon, 18 Sep 2023 09:34:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF4e+ipN+qtyi014QrnKPhLswecrCdYHYle+oI4ZLhdRC9j7BVztMsKVwP8CYDmdX+YxL37
+X-Received: by 2002:a05:620a:25ce:b0:773:a83f:413c with SMTP id y14-20020a05620a25ce00b00773a83f413cmr10460815qko.30.1695054855585;
+        Mon, 18 Sep 2023 09:34:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695054855; cv=none;
         d=google.com; s=arc-20160816;
-        b=K8/bJT/bgmXdyJv6evCT1kvYBzDqJmls2vxqpLzaxRTmQEPdPFi38zmwuB6hT07r9J
-         UAhXA9cThQS9DVepllIrXf4iKvs49dYajN2466LQ/E3Q22C88+bMOzUi+mTiqV17SqbD
-         MRRvWdgvjoQKeTEr4jTBf9n7EoiKHy2emR8tK8n46Ni0OULvoGd8E+kCh4C5iIyx8tKa
-         ojBIFXpLV5NkrcXOPo+3yEnHc9qo1BHqxUxgpflaVMBSzPyfTwbb0SeztbxW0BKZrFyH
-         9hTCX0hrYRLYK3ibctnAATNLmD9TpNazCKNuZ1bszfm2uDz6zDb9D8FL5rdhPBHq0ztw
-         6c0g==
+        b=ViV+ywC/OWZA92ZaARicqENEg4CqnBn4Cq+vwuZN4+NUEuPDemnL0Wi/2KCf4zIwAh
+         A6UmFk+i9WS0L1qSUTlBGtqKO5ZSJkxyGM3WHilN0PconDBV/m0Np5TBRJDJ9lil+MiY
+         rxeBZoIV0uJKKK3OUYGBkMuD3sA1Q5QakgNoE66kWoMcvxDhIzPXrOzIIqKNIgbuiFmk
+         Sit27yRs2QwwjMLFzz5ejdtI1PuSFXnEm7xbJpuwNbEVc6vhTHs4U+rJBqz6uicHjKt0
+         1+FMuwMz7TifiYhs5sexpJvNf8lG8sCveEjyZV08xiswO3PU9RFYU+dewgUsojeGSUk2
+         vaWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ikcGGGCIJyFk0iGLkDvtO0LMxTWmhw6kUdLFh+619DA=;
-        fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=gZSCGBKouTCXnqWVGJtIE42Bgef0ndGNE/8kmGqv4V3HgLg6C5aHhraGryeB5aM7Fw
-         nlM9KBdjELLjQUWGO/Dj9YXRglK51VmGilQxG2xm0jnZkKTesT/s7t+iCEAsSfJdq1ZY
-         YNvjwR4vy+sLHntfFUVhyoNilFKkFgpNc2IPOa9NXQ6Hsb3erKsrwN1JA920AI8W6TBi
-         7kBsTRdI61ohsgXGEtYz/Kx99zeF3B7/keL85YaTizQo24KwbqFf5bXEG5FM8ipmunHN
-         felNPJh0MIHYLcBvcPddvwU3yAqtG3K7E2R0taDO7CE6ZNMqTKcx5+vWtLpqhBpvYSE8
-         Q9Qw==
+        h=content-transfer-encoding:content-language:in-reply-to:organization
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=Yqit+L1v57rv4S72epM2gx/7IZWiOioPzhQAQ8pbRdo=;
+        fh=lt3flTNDj3zyWt5/rmXR4CRASf6xjOSLbw4bUjk+zac=;
+        b=LSUDj6hN0TmDzoC6Ytt9yTh9CfqU9hLXula3KTL3kKy8xT7AZj9PdptuidYmdRMETp
+         YwLIevM5J1jmcig+z/rXLjdj2C4nshyCkCDZz1DqF0puvirAUlWQ/vN9bD9akwEyoDxa
+         oeU9YwnY9MqaLnsmH8a6eYzvVrGqBhawdzftq84dHHltUUNBUUBnEk6mIKM1RzzOmIA7
+         S13LoI6dv//jDxRK7QUtpDsg3MDAJAoTnU4E1OLfkL9uKvINiO5NocLKduJWhSUpzQKA
+         rN9Cs1u3CvWKU1UhwCVxdi3qdvfFHhmp2+7UPPM8HZ2y2tYGWkhklEcCtXUAokKAmNnn
+         UeeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nRrL+d5h;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t11-20020a2e8e6b000000b002bcb47d0bbbsor804053ljk.0.2023.09.18.09.04.40
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=abgcl5YE;
+       spf=pass (google.com: domain of david@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=david@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <david@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id qt3-20020a05620a8a0300b0076cddf925a6si6154084qkn.405.2023.09.18.09.34.15
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 18 Sep 2023 09:04:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Sep 2023 09:34:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of david@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nRrL+d5h;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695053080; x=1695657880; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ikcGGGCIJyFk0iGLkDvtO0LMxTWmhw6kUdLFh+619DA=;
-        b=nRrL+d5hs9jr5raz3GQ08mkyLdAOwzusWKUjiDGkT6SKQLM9ibWetOwQpyCcml3/BJ
-         5A2RqZ/PDWGvi2gKN3T1Kf94ZpniS5TnmCa1v1dds93WJUA+bMsXcmuDp67r4D19hEj8
-         vYlQNVf2JkoAShvu2WGB7oZx9FrVlDDINyd0d5TTK0MYHlgk5iw3lF2iieEDWJz8lyFm
-         ATtIigYrJSIuTLx3seX6bbSYcMGF8ewh4m/dC4hqWguCMc9XN1OtKjMruBPPX9X+WChD
-         Un5hmbyo0YvYE8CuMuPB8bY6a7rIgvx4CXowftymJmzW0xrZdnnAtVZZhJlq6pn3XUIR
-         OR4w==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=abgcl5YE;
+       spf=pass (google.com: domain of david@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=david@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1695054855;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Yqit+L1v57rv4S72epM2gx/7IZWiOioPzhQAQ8pbRdo=;
+	b=abgcl5YEDK7eAL3YPUawrWSSVVIdqEZcJl0kPBqMu6yC37DoFZqx331gSfEqtVJ1atL6Bg
+	peCYBUSNCSojhTHpQWpFbW2f1m4Ofa4RPXzX333T73aun0Fmnz4XT+xFzSpq3OW9g9EcnL
+	bjW3XHQ6AIpO+EkOxPD8TFrjSv8vkEU=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-513-GMAHAMb8O76VYiqOgVC9sw-1; Mon, 18 Sep 2023 12:34:13 -0400
+X-MC-Unique: GMAHAMb8O76VYiqOgVC9sw-1
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-4043bc7c6c3so34824785e9.0
+        for <alex.bennee@linaro.org>; Mon, 18 Sep 2023 09:34:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695053080; x=1695657880;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ikcGGGCIJyFk0iGLkDvtO0LMxTWmhw6kUdLFh+619DA=;
-        b=IajTZvmW9e43OMA6yWmH5tovaixl76gTUFDmQILwVAzaVMwJ+32BK1cpXf9pIoxki4
-         D42H9eaetQg7ML7BKqJ3J7flmavgRiEtHEjznCXZD01ls+LgjrwDqjHGVdhlYnZzGUG8
-         JLF+bNujDqvRQuB/0AiQdPXPoKd89fG946Bpgj/EAUFPUg+3536ntJQQSrh5Jx2/ltG0
-         KmPn3e9ok/V2L6WAb4JoPoqHraDmDDKPZrx6zgXXHETLfLbMne2IlP84IYgK523UqfNU
-         l807xxmsjx9hwC9TxMEYDDptv9o8il564qp20lTi4vlNOMQxBTFzFVPJ26RbigiYqQEL
-         RM2Q==
-X-Gm-Message-State: AOJu0Yx2DGrYDYJTJZshtqH/fvjAwZZ1JY4lf7ft7kI+MOqcMuO+az79
-	pVMXQI1NN+OBVRda9kLVCbvcpDLW
-X-Google-Smtp-Source: AGHT+IHPFOPTiS8G0DN7xrPnBYP1slspvTMlXj8JaMLUiuGi38+IN9Um/ZAXVcnl3VSwqkREENA1iw==
-X-Received: by 2002:a2e:9d42:0:b0:2b9:e53f:e1fd with SMTP id y2-20020a2e9d42000000b002b9e53fe1fdmr7980710ljj.34.1695053080249;
-        Mon, 18 Sep 2023 09:04:40 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id v24-20020a1709060b5800b0098951bb4dc3sm6599465ejg.184.2023.09.18.09.04.38
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:04:39 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	David Hildenbrand <david@redhat.com>,
-	Peter Xu <peterx@redhat.com>,
-	Anton Johansson <anjo@rev.ng>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	kvm@vger.kernel.org,
-	Marek Vasut <marex@denx.de>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Brian Cain <bcain@quicinc.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	qemu-ppc@nongnu.org,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Alessandro Di Federico <ale@rev.ng>,
-	Song Gao <gaosong@loongson.cn>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Fabiano Rosas <farosas@suse.de>,
-	qemu-s390x@nongnu.org,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Luc Michel <luc@lmichel.fr>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Bin Meng <bin.meng@windriver.com>,
-	Stafford Horne <shorne@gmail.com>,
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	qemu-arm@nongnu.org,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Bernhard Beschow <shentey@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-riscv@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Greg Kurz <groug@kaod.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Markus Armbruster <armbru@redhat.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 19/22] target/s390x: Have s390_realize_cpu_model() return a boolean
-Date: Mon, 18 Sep 2023 18:02:52 +0200
-Message-ID: <20230918160257.30127-20-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
-References: <20230918160257.30127-1-philmd@linaro.org>
+        d=1e100.net; s=20230601; t=1695054851; x=1695659651;
+        h=content-transfer-encoding:in-reply-to:organization:from:references
+         :cc:to:content-language:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Yqit+L1v57rv4S72epM2gx/7IZWiOioPzhQAQ8pbRdo=;
+        b=CCRJ4cur1FMmvNEgtPoR3WPUWLqzs3SYbK8x9ojjGAyqttJ1IM92mmBT3g9/uMDZ/O
+         jG1B7PTcRDIED8k/yWpXXH4ucAvCWl7kWY7p2AQMSB8DH16tWuwqnX4HneV3dPf0kXpR
+         UfGeXIIdkFrI5fgP+xvIbuerzBJnN2SjHMH18Z8WzxV31lrJF+ZrSmYdAtbhlXyEGTg4
+         tf/4tJCiZfi3XYn0LgC4kSXDTjgASW1wMmDuCfy/58ZcqOp+DtQFAsmcn+uZMzGVjwom
+         2SVt2hfiM4nAgcIAY3gVcN9WDqqb+b0vQ89ABN5nkSSGRM0EnJ42dh/itgDCvxfmEHzM
+         c8iw==
+X-Gm-Message-State: AOJu0YwYfJY6YzBsboL2wsJQhBW8qU8XPglxujMefe8vso/cHjwAyNUF
+	fR78IObz/NXAnynqzqbkDYbqRWFgY70liV8W78UNq5eI6+RN3HM1E2IUFRLoOOEXqs511a9+9HA
+	Uhz3y39UvY6ZxPVle
+X-Received: by 2002:a5d:5a15:0:b0:31f:f432:b541 with SMTP id bq21-20020a5d5a15000000b0031ff432b541mr11161269wrb.69.1695054851570;
+        Mon, 18 Sep 2023 09:34:11 -0700 (PDT)
+X-Received: by 2002:a5d:5a15:0:b0:31f:f432:b541 with SMTP id bq21-20020a5d5a15000000b0031ff432b541mr11161214wrb.69.1695054851162;
+        Mon, 18 Sep 2023 09:34:11 -0700 (PDT)
+Return-Path: <david@redhat.com>
+Received: from ?IPV6:2003:cb:c702:9d00:cf36:8603:a1f5:d07? (p200300cbc7029d00cf368603a1f50d07.dip0.t-ipconnect.de. [2003:cb:c702:9d00:cf36:8603:a1f5:d07])
+        by smtp.gmail.com with ESMTPSA id o12-20020adfeacc000000b003176c6e87b1sm4242342wrn.81.2023.09.18.09.34.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Sep 2023 09:34:10 -0700 (PDT)
+Message-ID: <7bc15c25-2147-409b-0cf7-e3f1b56d5283@redhat.com>
+Date: Mon, 18 Sep 2023 18:34:07 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 18/22] target/s390x: Call s390_cpu_realize_sysemu from
+ s390_realize_cpu_model
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Peter Xu <peterx@redhat.com>,
+ Anton Johansson <anjo@rev.ng>, Peter Maydell <peter.maydell@linaro.org>,
+ kvm@vger.kernel.org, Marek Vasut <marex@denx.de>,
+ David Gibson <david@gibson.dropbear.id.au>, Brian Cain <bcain@quicinc.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Claudio Fontana <cfontana@suse.de>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Marcelo Tosatti
+ <mtosatti@redhat.com>, qemu-ppc@nongnu.org,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Alessandro Di Federico <ale@rev.ng>, Song Gao <gaosong@loongson.cn>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Chris Wulff <crwulff@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Fabiano Rosas <farosas@suse.de>,
+ qemu-s390x@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
+ Luc Michel <luc@lmichel.fr>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Bin Meng <bin.meng@windriver.com>, Stafford Horne <shorne@gmail.com>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ "Daniel P . Berrange" <berrange@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Bernhard Beschow <shentey@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-riscv@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>, Greg Kurz <groug@kaod.org>,
+ Michael Rolnik <mrolnik@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Markus Armbruster <armbru@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>
+References: <20230918160257.30127-1-philmd@linaro.org>
+ <20230918160257.30127-19-philmd@linaro.org>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+In-Reply-To: <20230918160257.30127-19-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: z+LL2Jj9/Y0B
+X-TUID: g0XoiLwkuexq
 
-Following the example documented since commit e3fe3988d7 ("error:
-Document Error API usage rules"), have s390_realize_cpu_model()
-return a boolean indicating whether an error is set or not.
+On 18.09.23 18:02, Philippe Mathieu-Daudé wrote:
+> s390_cpu_realize_sysemu() runs some checks for the TCG accelerator,
+> previous to creating the vCPU. s390_realize_cpu_model() also does
+> run some checks for KVM.
+> Move the sysemu call to s390_realize_cpu_model(). Having a single
+> call before cpu_exec_realizefn() will allow us to factor a
+> verify_accel_features() handler out in a pair of commits.
+> 
+> Directly pass a S390CPU* to s390_cpu_realize_sysemu() to simplify.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   target/s390x/s390x-internal.h | 2 +-
+>   target/s390x/cpu-sysemu.c     | 3 +--
+>   target/s390x/cpu.c            | 6 ------
+>   target/s390x/cpu_models.c     | 4 ++++
+>   4 files changed, 6 insertions(+), 9 deletions(-)
+> 
+> diff --git a/target/s390x/s390x-internal.h b/target/s390x/s390x-internal.h
+> index 825252d728..781ac08458 100644
+> --- a/target/s390x/s390x-internal.h
+> +++ b/target/s390x/s390x-internal.h
+> @@ -241,7 +241,7 @@ uint32_t calc_cc(CPUS390XState *env, uint32_t cc_op, uint64_t src, uint64_t dst,
+>   unsigned int s390_cpu_halt(S390CPU *cpu);
+>   void s390_cpu_unhalt(S390CPU *cpu);
+>   void s390_cpu_init_sysemu(Object *obj);
+> -bool s390_cpu_realize_sysemu(DeviceState *dev, Error **errp);
+> +bool s390_cpu_realize_sysemu(S390CPU *cpu, Error **errp);
+>   void s390_cpu_finalize(Object *obj);
+>   void s390_cpu_class_init_sysemu(CPUClass *cc);
+>   void s390_cpu_machine_reset_cb(void *opaque);
+> diff --git a/target/s390x/cpu-sysemu.c b/target/s390x/cpu-sysemu.c
+> index 8112561e5e..5178736c46 100644
+> --- a/target/s390x/cpu-sysemu.c
+> +++ b/target/s390x/cpu-sysemu.c
+> @@ -122,9 +122,8 @@ void s390_cpu_init_sysemu(Object *obj)
+>       s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu);
+>   }
+>   
+> -bool s390_cpu_realize_sysemu(DeviceState *dev, Error **errp)
+> +bool s390_cpu_realize_sysemu(S390CPU *cpu, Error **errp)
+>   {
+> -    S390CPU *cpu = S390_CPU(dev);
+>       MachineState *ms = MACHINE(qdev_get_machine());
+>       unsigned int max_cpus = ms->smp.max_cpus;
+>   
+> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+> index 416ac6c4e0..7257d4bc19 100644
+> --- a/target/s390x/cpu.c
+> +++ b/target/s390x/cpu.c
+> @@ -237,12 +237,6 @@ static void s390_cpu_realizefn(DeviceState *dev, Error **errp)
+>           goto out;
+>       }
+>   
+> -#if !defined(CONFIG_USER_ONLY)
+> -    if (!s390_cpu_realize_sysemu(dev, &err)) {
+> -        goto out;
+> -    }
+> -#endif
+> -
+>       cpu_exec_realizefn(cs, &err);
+>       if (err != NULL) {
+>           goto out;
+> diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
+> index 98f14c09c2..f030be0d55 100644
+> --- a/target/s390x/cpu_models.c
+> +++ b/target/s390x/cpu_models.c
+> @@ -612,6 +612,10 @@ void s390_realize_cpu_model(CPUState *cs, Error **errp)
+>           cpu->env.cpuid = deposit64(cpu->env.cpuid, CPU_PHYS_ADDR_SHIFT,
+>                                      CPU_PHYS_ADDR_BITS, cpu->env.core_id);
+>       }
+> +
+> +    if (!s390_cpu_realize_sysemu(cpu, &err)) {
+> +        return;
+> +    }
+>   #endif
+>   }
+>   
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/s390x/s390x-internal.h |  2 +-
- target/s390x/cpu.c            |  3 +--
- target/s390x/cpu_models.c     | 12 +++++++-----
- 3 files changed, 9 insertions(+), 8 deletions(-)
+That has nothing to do with CPU models and is, therefore, completely 
+misplaced ... :/
 
-diff --git a/target/s390x/s390x-internal.h b/target/s390x/s390x-internal.h
-index 781ac08458..67f21f53a9 100644
---- a/target/s390x/s390x-internal.h
-+++ b/target/s390x/s390x-internal.h
-@@ -260,7 +260,7 @@ static inline void s390_cpu_unhalt(S390CPU *cpu)
- 
- /* cpu_models.c */
- void s390_cpu_model_class_register_props(ObjectClass *oc);
--void s390_realize_cpu_model(CPUState *cs, Error **errp);
-+bool s390_realize_cpu_model(CPUState *cs, Error **errp);
- S390CPUModel *get_max_cpu_model(Error **errp);
- void apply_cpu_model(const S390CPUModel *model, Error **errp);
- ObjectClass *s390_cpu_class_by_name(const char *name);
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 7257d4bc19..1a44a6d2b2 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -232,8 +232,7 @@ static void s390_cpu_realizefn(DeviceState *dev, Error **errp)
-     Error *err = NULL;
- 
-     /* the model has to be realized before qemu_init_vcpu() due to kvm */
--    s390_realize_cpu_model(cs, &err);
--    if (err) {
-+    if (!s390_realize_cpu_model(cs, &err)) {
-         goto out;
-     }
- 
-diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
-index f030be0d55..0605073dc3 100644
---- a/target/s390x/cpu_models.c
-+++ b/target/s390x/cpu_models.c
-@@ -567,7 +567,7 @@ S390CPUModel *get_max_cpu_model(Error **errp)
-     return &max_model;
- }
- 
--void s390_realize_cpu_model(CPUState *cs, Error **errp)
-+bool s390_realize_cpu_model(CPUState *cs, Error **errp)
- {
-     Error *err = NULL;
-     S390CPUClass *xcc = S390_CPU_GET_CLASS(cs);
-@@ -576,19 +576,19 @@ void s390_realize_cpu_model(CPUState *cs, Error **errp)
- 
-     if (xcc->kvm_required && !kvm_enabled()) {
-         error_setg(errp, "CPU definition requires KVM");
--        return;
-+        return false;
-     }
- 
-     if (!cpu->model) {
-         /* no host model support -> perform compatibility stuff */
-         apply_cpu_model(NULL, errp);
--        return;
-+        return false;
-     }
- 
-     max_model = get_max_cpu_model(errp);
-     if (!max_model) {
-         error_prepend(errp, "CPU models are not available: ");
--        return;
-+        return false;
-     }
- 
-     /* copy over properties that can vary */
-@@ -601,7 +601,7 @@ void s390_realize_cpu_model(CPUState *cs, Error **errp)
-     check_compatibility(max_model, cpu->model, &err);
-     if (err) {
-         error_propagate(errp, err);
--        return;
-+        return false;
-     }
- 
-     apply_cpu_model(cpu->model, errp);
-@@ -617,6 +617,8 @@ void s390_realize_cpu_model(CPUState *cs, Error **errp)
-         return;
-     }
- #endif
-+
-+    return true;
- }
- 
- static void get_feature(Object *obj, Visitor *v, const char *name,
+Or what am I missing?
+
 -- 
-2.41.0
+Cheers,
+
+David / dhildenb

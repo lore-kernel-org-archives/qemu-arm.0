@@ -1,102 +1,104 @@
-Received: by 2002:a17:907:10c8:b0:98d:b2f5:1316 with SMTP id rv8csp1816499ejb;
-        Fri, 4 Aug 2023 08:09:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEQErN2b8FiiFMrLIoXlsujipnQScF5pNxzdCpw9IOa2xDrIZHfbIaHSafs0beJIqyxnicQ
-X-Received: by 2002:ac8:7d4d:0:b0:403:dba5:4266 with SMTP id h13-20020ac87d4d000000b00403dba54266mr2780217qtb.32.1691161791466;
-        Fri, 04 Aug 2023 08:09:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1691161791; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp2878146ejb;
+        Mon, 18 Sep 2023 05:42:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFv2VEoezOi4uil0LGdPSBsJ3gkH8ZqW0kpWGGR67h5mz+utUcXSIzcVgGONtxkxJNJ9ORz
+X-Received: by 2002:a0c:e183:0:b0:64f:4c7c:2e13 with SMTP id p3-20020a0ce183000000b0064f4c7c2e13mr7320756qvl.9.1695040945362;
+        Mon, 18 Sep 2023 05:42:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695040945; cv=none;
         d=google.com; s=arc-20160816;
-        b=y1fc/Hd/SCeVBisMD0wcBh6wzNs6Wa500dRl7/nmd14nZOJn8TD5LsS6C4xJcShwt3
-         oziIIQu2uLq+rIoFEc7BoWzGwLZYSlKWE2hbhtcOv3dlQtd607i4L/pS61jJxEKLlV68
-         8fIwmw0lhqTsaRNJaTXAqkLqcOels36QKjzqH88cNhNknEP1Vj51DBbOZh73LjEGENtG
-         gxCxzoLtPLyEwg/aJkvrGDOOyJnyKMHQNyGHawXRqs5U7pZgyb8Wm3Fj3QQ7Kjbf8JTi
-         8S6+o+trflOZji15/0iCaIGdjPo3sEuy2jY+AjbiMQy4M+vx+31/NcM+h6Bf4uE9Zl8f
-         CmOQ==
+        b=paOo8bMDvlWdc1jw+4r+JYCZLBJTq3RBrFpY7cJRBuu+X3D8aiGICLxGw6u+jFM5Q7
+         pDNA8WLp097AbBJbM5lFig7CqSzUHQq5919g/AG6wOzvW0ncKg1bdrllnkT/wyNeEJRu
+         oab+FVvE9MdLSg9LEn5q0VltGwPiBnH/w7J+bqXzIt0jAxf3/uBJm4YMBCKjYu6kAGE2
+         5IyVL4SCKb4qOkae9ldUnQhJ8Xtfh/tKTv0Aj/VNTwQL7zogpYATZpIBVjsLnqP2HvJ7
+         6Imp1tdPGofPYzlHyJlnatqaUbkGjml23u7Rk5vNj8bKZm1lB+fxbSY5kOGZs3tpBpvU
+         JJOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=u+cEEtL2itPWygNoL5V84W8YKVevCh1MXGAy3BM4/ds=;
-        fh=Pe/MIC7yvB073Sd6/4lunpd6aUW6AVi1jfN++S25pLo=;
-        b=E+p3y337/LnWAb237oAtbUG0Wy3nVQwu7bCBNQHgEEhIT3rH1uYQjSBCcXnWdE3Jpo
-         GWh3U8BytITB1yQ/QIAxsdphTIN8pviapO2B49r5o11rUOL+4nfFJnPLjbzS1BIm6FPb
-         //H1iPUu9kZw85NqR/8XmBKRuH507owzJxzKK6jUdv0zF9/MjfmetFU7pjL+iWa9tkNA
-         8XiidqZwaLpUky70M1j0dIzboy3UXognPZtvKPu8mYKhNcWfIFo+7eOqId+Lc2XxlnQP
-         4qLy+zEgsfia6uuud7JUwhNQ4nrsfdrVp/etPtEFy4XzSnNKtf8B9DgfTRtrtcg8/8f7
-         IHKQ==
+        bh=I3DBEATUhrUmNTQdwzEHc4hoswf6rcuMK8fN1Oh2dtI=;
+        fh=rW+E0ka8cjM0BRqNpCv7iXBHNEytiQxpoT0WH9UDH/4=;
+        b=dKJQ+nEKZFoSSb+ErhxLZmAVrXfPKA7MEg7gUm4lmGh4UPJUw4bb2ysPCIims/rIyl
+         qf7gZWjxbHUaBUEVpnp3/wPHbz4ijwwTCYzbz1dxFiQ40o4E85Y33397Vpa8nZWhhAGy
+         zpzXiTfk10k3ZrqqZT3XwVrMHxbheiFPkZpqBpPSkpXH8+jDr/tCqH3nulvmzcmM1lbZ
+         UIh0WMcOBbIYK35kpmOrV1SPRTb52WnyUkWn8U8yqJkti6E3HLWGld8qlILVRlYpp+PP
+         x7/IFhCcQ24LeIinFyvvmtU7XobU4Z1iVCxQLjyifRZuw+iYYjWBiWjF7DHwrxxaGcR2
+         eGvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kw88Yzg9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XSqQMmpV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j15-20020a05622a038f00b004055930c709si1372499qtx.708.2023.08.04.08.09.51
+        by mx.google.com with ESMTPS id d6-20020a0ce446000000b006564bd093efsi2758471qvm.345.2023.09.18.05.42.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Aug 2023 08:09:51 -0700 (PDT)
+        Mon, 18 Sep 2023 05:42:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kw88Yzg9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XSqQMmpV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qRwR1-0002VP-W9; Fri, 04 Aug 2023 11:09:48 -0400
+	id 1qiDZR-0004he-N5; Mon, 18 Sep 2023 08:41:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qRwQz-0002UY-0n
- for qemu-arm@nongnu.org; Fri, 04 Aug 2023 11:09:45 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1qiDZQ-0004ge-DA
+ for qemu-arm@nongnu.org; Mon, 18 Sep 2023 08:41:44 -0400
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qRwQx-00068z-FQ
- for qemu-arm@nongnu.org; Fri, 04 Aug 2023 11:09:44 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-522294c0d5bso2827152a12.2
- for <qemu-arm@nongnu.org>; Fri, 04 Aug 2023 08:09:42 -0700 (PDT)
+ id 1qiDZN-0000o9-7d
+ for qemu-arm@nongnu.org; Mon, 18 Sep 2023 08:41:44 -0400
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-502934c88b7so7329076e87.2
+ for <qemu-arm@nongnu.org>; Mon, 18 Sep 2023 05:41:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1691161781; x=1691766581;
+ d=linaro.org; s=google; t=1695040899; x=1695645699; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=u+cEEtL2itPWygNoL5V84W8YKVevCh1MXGAy3BM4/ds=;
- b=Kw88Yzg9uLt9i0e24KgwIyfctm7E0UJmT3BMH+IKadfDbJIu/pBgLAD/ZkEeiEu3X7
- SLFtoDVabAfqO+PUAObRxpem/tIOL0l+0eLmyNY4RVN2RFjeACXz9C4vBRls7a29nk7x
- bvv/H+tnxZ0PpfOFBCWoiL+mk0eOYUkeYSECoUIsauWFOROJGxGB4Nsfu32XfSw8bQL8
- DPHgnV19Ig2FzXkUeqftdDeqpj1Fr82F8yvk9J3Vgq6rVbNFicb0/7hLQd+iV/3tG2rK
- k8dUWkfkrCizxoY3QjOmpnWH9JvCcZggiJYZ1CwsR3X+euFfXCRq2DP+jwuZVxd4oPtA
- g/pw==
+ bh=I3DBEATUhrUmNTQdwzEHc4hoswf6rcuMK8fN1Oh2dtI=;
+ b=XSqQMmpVrtUiNtuscMGULrphNq/4gV+xe0V09TIx1hm4nvfcH7Pp2JBogsTPUrXwX5
+ wGKY1Bl8MPBf12TBVTqCwWbQYTjKEbWRhTsd5KPpOlSbeWqzuhsYxpgAiCbITC88zt+X
+ XVyRFeJajNHFWZ70/7W5uGW9v7X0s7ReSLZ/vVQCltdOUuxBHntGk/ZAbrVzCeDF+bwg
+ 2IEkVMd28e4/7VbJhIt4wsuPvzqQsZFEsFATIhcq6kyUlCmqN+xyInkYdtCw6D3+vubV
+ +CflZCsefbiFevNWj6MaFg0Lr29xWSj4CZkI+lHgEGPL04qXXhX0ku8beMK7w8OL0qzp
+ JT3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691161781; x=1691766581;
+ d=1e100.net; s=20230601; t=1695040899; x=1695645699;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=u+cEEtL2itPWygNoL5V84W8YKVevCh1MXGAy3BM4/ds=;
- b=hh3hQ0DcSeLZpmLFBlxl/Q/7L6+6FL8UofnRjSFhkU7AjBQaxWO221jh8oy1hhoffD
- P5Tdh7H/wF8vYXgRsxRWsNOEAtJ5pzWCDr05p1E6ubVrayCc6koS/VApb5Gj3x1xExV9
- FXv04Ba3PCKnD7tMCWpEl9tyZQFz3zaPXbL0p2Ew8ZsSpucWUhs/5lDBCgzWCm5Ne3sk
- tu9SegB72eAqVpXcMdeBHmpYT0owit/MnigthjYkUqBVrQZeAl6XxPz2YeiuSXrs5vnN
- JfQARpcjQnzBAXKUCm6cuaH2pfQGe5Kt543Xa5KpaTPQ5HYQNtb1EYkAGqxBXzRyOO+q
- TaMQ==
-X-Gm-Message-State: AOJu0YzkbhCg5S8+ArpiVTugn8IodFVet1wdb2w2VATb4CIl8OnQL9jH
- 5BMNSJFdtrdtcrSF5JfVzYQQ+GUsGF/iIINPFvW9gw==
-X-Received: by 2002:a50:ff1a:0:b0:523:1fa2:4f40 with SMTP id
- a26-20020a50ff1a000000b005231fa24f40mr1130761edu.19.1691161781035; Fri, 04
- Aug 2023 08:09:41 -0700 (PDT)
+ bh=I3DBEATUhrUmNTQdwzEHc4hoswf6rcuMK8fN1Oh2dtI=;
+ b=Z1HImt9QR2erzmJYyUHbZkjef6zFrylVmG4cQCSXEZcl4KsuJygSfnYT905kkm/VeG
+ XNcjImnvB03VxmXoPIv/OWEUyCNvdmxgPJVzsNatUI8tD2PLvoWHiLPwK3X4cNBhQH8Y
+ 8z79HNwqiF2P4+WxX/TcQl8D5yfmq9KlR4yl3gDGzfRVSgL/KXwER82RQxhVJ9GKaeoz
+ kCLW346+owpDQsvmTVdCzg5dqqVK6RKXNg1FpsC6UYaPplwerEKvCn7aNgNKUqldfD5H
+ pnzxrYV9KzZ0ZIA0UUv6Iae9Qb3CO+DHrARZ9cIaMml+HZfhiw6mkzqLhjs7TlTl2cX9
+ j2Lw==
+X-Gm-Message-State: AOJu0YyuegjrzvsGx5k9AWVtgRDdWi8th4EEvWT9OL5lPfd5bQup153a
+ pOMT2uqGlb/RVifTFp1QPbfTbMfN4rHSLvgnK3r4jA==
+X-Received: by 2002:a05:6512:2039:b0:502:df85:c049 with SMTP id
+ s25-20020a056512203900b00502df85c049mr6247403lfs.2.1695040899192; Mon, 18 Sep
+ 2023 05:41:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230726132512.149618-1-sergey.kambalin@auriga.com>
- <CAFEAcA_xyq3KjKVkrbtGktbS5OySZU2Q-gh_qqzv_iqnnDbQqQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA_xyq3KjKVkrbtGktbS5OySZU2Q-gh_qqzv_iqnnDbQqQ@mail.gmail.com>
+References: <2023061615433049315231@phytium.com.cn>
+ <ZIylkIt38MXaTytx@memverge.com>
+ <20230619105809.000007b9@Huawei.com>
+In-Reply-To: <20230619105809.000007b9@Huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Aug 2023 16:09:30 +0100
-Message-ID: <CAFEAcA9XfkPtqdfGANXy9xAdxgTbeUTRAZVMGhuhLhwqH-x7Qg@mail.gmail.com>
-Subject: Re: [PATCH 00/44] Raspberry Pi 4B machine
-To: Sergey Kambalin <serg.oker@gmail.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Sergey Kambalin <sergey.kambalin@auriga.com>
+Date: Mon, 18 Sep 2023 13:41:20 +0100
+Message-ID: <CAFEAcA8beGka0AzEkX4SE1B+UwFpck2_0gWM9bV5WgFbWQYB1A@mail.gmail.com>
+Subject: Re: A confusion about CXL in arm virt machine
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Gregory Price <gregory.price@memverge.com>,
+ Yuquan Wang <wangyuquan1236@phytium.com.cn>, 
+ qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,47 +120,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4zRxzrDHPVT8
+X-TUID: hfmFogMnSdAV
 
-On Fri, 4 Aug 2023 at 13:13, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Mon, 19 Jun 2023 at 10:58, Jonathan Cameron via <qemu-arm@nongnu.org> wrote:
 >
-> On Wed, 26 Jul 2023 at 14:56, Sergey Kambalin <serg.oker@gmail.com> wrote:
+> On Fri, 16 Jun 2023 14:10:24 -0400
+> Gregory Price <gregory.price@memverge.com> wrote:
 > >
-> > Introducing Raspberry Pi 4B model.
-> > It contains new BCM2838 SoC, PCIE subsystem,
-> > RNG200, Thermal sensor and Genet network controller.
+> > Last I tested cxl-2023-05-25 branch of Johnathan's fork is working on x86:
 > >
-> > It can work with recent linux kernels 6.x.x.
-> > Two avocado tests was added to check that.
+> > https://gitlab.com/jic23/qemu/-/tree/cxl-2023-05-25
 > >
-> > Unit tests has been made as read/write operations
-> > via mailbox properties.
-> >
-> > Genet integration test is under development.
-> >
-> > Every single commit
-> > 1) builds without errors
-> > 2) passes regression tests
-> > 3) passes style check*
-> > *the only exception is bcm2838-mbox-property-test.c file
-> > containing heavy macros usage which cause a lot of
-> > false-positives of checkpatch.pl.
-> >
-> > I did my best to keep the commits less than 200 changes,
-> > but had to make some of them a bit more in order to
-> > keep their integrity.
+> > I have not worked with the ARM machine, but Johnathan may be able to
+> > comment on the state of ARM support for this code.
 >
-> Thanks for doing this -- I really like the way the split
-> has turned out, and the overall structure of the patchseries
-> is good. I'm going through the patches individually
-> (which will probably take me into next week to finish)
-> but I'm not seeing anything major, just some smaller
-> issues.
+> ARM support is not yet upstream.  There are some precursor problems we still
+> have to solve because arm-virt should also support device tree bindings.
+> See talk I gave at Linaro connect that includes some of them:
+> https://resources.linaro.org/en/resource/hM986DSHfoTrZ98UjpvLg1
+>
+> For now, I'm carrying the arm-virt + ACPI support on the tree above.
+> There are a lot of things we still need to provide support for in QEMU CXL
+> world so for now figuring out the path forward for upstreaming ARM support
+> isn't at the top of my list.  I'll get back to it at somepoint - probably
+> next month.
 
-I got through the second half of the patchset faster
-than I expected, so I'm now done with my first pass
-review of it. Please let me know if you have any
-questions about my comments/suggestions on the
-individual patches.
+Is the Arm CXL support still out-of-tree? I ask because at the
+moment docs/system/devices/cxl.rst has some aarch64 virt command
+lines which don't work, and we've had a bug report about it:
+https://gitlab.com/qemu-project/qemu/-/issues/1892
 
+Could you submit a patch to correct the documentation, please
+(either fixing the command line, or just deleting any claims
+to aarch64 support if it's not upstream) ?
+
+thanks
 -- PMM

@@ -1,136 +1,151 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp2803466ejb;
-        Mon, 18 Sep 2023 03:17:56 -0700 (PDT)
-X-Received: by 2002:a1c:791a:0:b0:402:f501:447c with SMTP id l26-20020a1c791a000000b00402f501447cmr7624556wme.0.1695032276142;
-        Mon, 18 Sep 2023 03:17:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695032276; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp2815680ejb;
+        Mon, 18 Sep 2023 03:45:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFai4f36zzmTYF2+hIjgsoEUcE2l5rnVb/EfOGK6eE7WImmjH933nodl6RVHQlfRYblHjLB
+X-Received: by 2002:a5b:648:0:b0:d47:8db3:8bcf with SMTP id o8-20020a5b0648000000b00d478db38bcfmr7612535ybq.49.1695033934846;
+        Mon, 18 Sep 2023 03:45:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695033934; cv=none;
         d=google.com; s=arc-20160816;
-        b=votnBwMmHOaGiSrRPvjetvrQ5rkBWH2KexkHL9O9AmFchn8RLcewSvLWTriYbDRU1t
-         9ApCSp4hONm8ii4bAqklJKIyQYaWvarBum5Lc7bAtvap+bRA+pZhuFMhjkIg1fuWO35U
-         H7zqL0L+1JN4qfucHVqnPb+6b/fVaZakTEPq3WP8SrIDn25qojyjfxzDX0I4b+rCYJZ/
-         W0y5BP8mX5jmJxc1MZFAjzfxdno49GZvAPpgwgwwzOqJ2rLQDQPY6dEHLubWSdP3OQ2I
-         GyeztLo3B7fpZ4XBhbwEFr+uTJ53V9x85ENxEs4uwSuqsnJaIjUB3ZS3pbjaITb+tkE7
-         jD9Q==
+        b=BsUTUTmbi/G3rxtHrUjxnE6XDGXGZshohGyedgEzC1StYXJwCwGMwNGQV8fbG/4Vyv
+         6R01asB7ZixeS8/VzuA/e/+k6jif9SmkbeDKKkK5YHygpbOtLfNAWq6swVDj/F5RpL0D
+         Ir3j4XT0q3w+gXVK9qQxXJA91/f2GrKchNc+QZnl2RcD0lUBKtk/8VSWL5g3mUNquYEf
+         YZGbgX2dnzA6iNSaCIUGVY0WZMLayXv6TjZvOkvVs3EZU090Vtg46KZtZBArhDOBJPXA
+         FDUVC31IR0iL+0GPuuCZ3bZqUIQTBtt5wj6xH2VFhDxXeNTfa26XtdeIfCP0EdDHCvpG
+         9Tmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8I52HFJ7JIIVf6/kc1x9A3KkqjzDotpu4ox1BgoUxm4=;
-        fh=9n/Cm2KnMX6Qk7SoVbKt4LcEa/gSBuZo6NwnCSpbrp4=;
-        b=TdUTUAEdMS7qa8DZVbFFg0/Auhu/J8ZyVzUK4+2SA3IxS3oMUL1ycym9kpGGYF+kHP
-         gilyot3BFfix7umYX8KpS5KFEB/gwhhAN36pz+BelhZ9lzr9/VZyqiJwdicw3dJ/9ldg
-         0wAtmo0ipP1ulFbIMnM9wBRN3unGdK1LhW7zI4rE38fuNCL8NHl0uOPYK3oYhKB65A37
-         asoY7HX5DcL58E2KWOGdK/Atu7E1CS4f4QqfYBS6kFndJRah0FZJKzSciGHllQB/Pf/o
-         xR9R+IXJYJSXkJ3kXeupOaQNeT9TxjYYc3BG+n68lSP67yRbQNVKbDNSsLUy3DTK0KPj
-         DnPA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=ewH2NLsTRFu015y52HgrX6Ba49oJNfW64QTSZ0Y+pxI=;
+        fh=1+iHolRYECe2ybtGU55u4K8H4b0+ghpL8z/BMNYY7WM=;
+        b=IdTQsOfpvUmB1BEFiRHn1fEza55yF4D6ftHfyNwwKwgSXoyej9oLAeNkYtQzAab47u
+         O3vYTQSAGjejWv8SK8Cx+NyYOEsD36GI3O5i9vfVmHdJYFkbqF15whyyXmklG18j0fj+
+         ryAa4X/6Cfy0hOoDbgwKGXJD+w/LJov4cCYoqoTyVN6OX4QmoUQvTmCmjky4QXa2Tpwz
+         687lS53agn1Zse6gVOC0xhacy0xtO4YpLSdlPPtEGFtxS/X7Px5dKYz0m+UPpeBRNTkb
+         KsBfV9Z9sp2Fi90+RIXAokpScK5IrrHMRScp8KMCO6h5MgPIPRyu4zZ2KJs08Ha8VRh5
+         sDgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JyAiMdhY;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="XkQ/i8ed";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id gw8-20020a05600c850800b004050cd59172sor432077wmb.10.2023.09.18.03.17.56
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 17-20020ac85751000000b00412184dcff5si5927703qtx.498.2023.09.18.03.45.34
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 18 Sep 2023 03:17:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 18 Sep 2023 03:45:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JyAiMdhY;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="XkQ/i8ed";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qiBkh-00079o-Ha; Mon, 18 Sep 2023 06:45:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qiBkd-00077o-Q6
+ for qemu-arm@nongnu.org; Mon, 18 Sep 2023 06:45:12 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qiBkQ-0006Gh-TW
+ for qemu-arm@nongnu.org; Mon, 18 Sep 2023 06:45:10 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-522bd411679so5546060a12.0
+ for <qemu-arm@nongnu.org>; Mon, 18 Sep 2023 03:44:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695032276; x=1695637076; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8I52HFJ7JIIVf6/kc1x9A3KkqjzDotpu4ox1BgoUxm4=;
-        b=JyAiMdhYEP1zQAFajKt87hvHmDVNJIH4krmYBqf9rnPoOd4woyWAfRS4tDZ/TLfTJJ
-         HMIBiRXipa5egqNB4tpDekn9CMFJN3L86kUJoicSMrdb7sYhNshD5A+rDhdSFP8xEP39
-         eDXJUHW1R6eFW9Jb2wGygUrIoJFFhxaC98XGxrXVJdclls5qiTQbV3NsOUHmlhgZgUeY
-         QVXWBg7vrVSxSZDEnl/Pj9oL0RwCTt2ECopinWm4R2TfdRP3r5ia1PiQ14V+iDbKouoH
-         x8AHi9A5GNUyEfHxhOYs95vs13d9+Dhe317/rhEat8bPJbSLnPsprZS5OKY91lyCCCPt
-         pz3w==
+ d=linaro.org; s=google; t=1695033896; x=1695638696; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=ewH2NLsTRFu015y52HgrX6Ba49oJNfW64QTSZ0Y+pxI=;
+ b=XkQ/i8edc9rFWLNRvziIFog5/0GWn8D+BUNfQK4QPxsN5uAeLH9hgZv70r0wBJHrHk
+ oOta4I7xs2AkmT60JieW/+Jv33DGIcm85PUuKOujuD1vsJooZHVRyQoDKGfyj4K6nEX8
+ lEmP+60nBxzSEWHb626u1pDfESRPsTVznM6onodO31fWVcPWr3B39EDliqrVdvJXwQl3
+ iPnRlndwMOPY/OmA4TJt4GpsXYjyTnApbqWnJmkPhBip5aCAFkjOLd6k302eiBBxvR4B
+ +YouAg3ECvjFaal/u3vCtPgDrGr5f08e3rfx/VfQC7Vf+ORwBchJUfYJ5pFj77KJVIaS
+ 4LKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695032276; x=1695637076;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=8I52HFJ7JIIVf6/kc1x9A3KkqjzDotpu4ox1BgoUxm4=;
-        b=fZOv/BymLbAtqCaIJTIXcw9espv9P115tV/vkoKUl9kVIJYMoXcIh6EX7LlleCOLTX
-         zGSZ82QOumpDevmMijejn/CRbqQE5PMUrsGwK3/vedKNxg52iQLH3G8dwJiReguhnzlP
-         g+ZciSpjdqYFLYgBn+bTkNhmR/ZaNg4WaTpM7VqdHpRL2jZtqNC+hA6SB4B67xTXybN0
-         QWNIi0ZzJb3ztgqahXRDAz288yXDd4F0Ds785HWRBkDv/4P1xUK0N++/cVKoUxkXm8bw
-         o9tzBQVHLsQERwe6CpKZbXr3+PEx1hRxtUZvB9KCg8dgJel73QNJXQRIk5ienGYF2FG5
-         eK4w==
-X-Gm-Message-State: AOJu0YzfqVhrWVE2ixza7oK4ePa8G39hxB8053xHTlzSLioZP3kDcYMG
-	sLt6a+/bgvEE3koReuDfGbCVCtnO
-X-Google-Smtp-Source: AGHT+IH7/y3yF55C3oZAeNYtJqB5yvAg/wEoCbqXe27X2kIcnR9KuYdj/L9rALct7aG27VOWyC58xg==
-X-Received: by 2002:a05:600c:2901:b0:401:906b:7e9d with SMTP id i1-20020a05600c290100b00401906b7e9dmr7999543wmd.18.1695032275800;
-        Mon, 18 Sep 2023 03:17:55 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (5.red-88-29-175.dynamicip.rima-tde.net. [88.29.175.5])
-        by smtp.gmail.com with ESMTPSA id c4-20020a05600c0ac400b004030c778396sm14945294wmr.4.2023.09.18.03.17.53
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 03:17:55 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Alistair Francis <alistair@alistair23.me>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Anton Johansson <anjo@rev.ng>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Bernhard Beschow <shentey@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alessandro Di Federico <ale@rev.ng>,
-	qemu-arm@nongnu.org,
-	Luc Michel <luc@lmichel.fr>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 2/2] qdev: Ensure devices are fully realized when calling DeviceReset handler
-Date: Mon, 18 Sep 2023 12:17:36 +0200
-Message-ID: <20230918101736.23905-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230918101736.23905-1-philmd@linaro.org>
-References: <20230918101736.23905-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1695033896; x=1695638696;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ewH2NLsTRFu015y52HgrX6Ba49oJNfW64QTSZ0Y+pxI=;
+ b=S9Zjb5BU0BGvUg1Bbtvvd8ifB+WiSg7Z5GTYVKAWY0hGyrtPZUTEDQBHciaPnu8xge
+ hrql46tFd/Hh8Ma0L5uXxXE36BZGxZy3dN6g3SOMfCGREXZ7z1bFmzR8BsHauK7NFBO0
+ ZxftXvMjC9cM+b0+9j79oVG5WcRo6+pqQ9GeYMdrbVSQSpeaEoTLV6xkp1P9QsysbFfe
+ IerwVkpqPPaB5A/IvIOFcvf2qwPYLrjOuytzPmGd5MKIlZQEVz7o/kGUOASypFcGA87q
+ 0CW6rKIzF2a7XDHd95WbjSudNLoLdooJ9DGcGqXnZgwJ/HUoU3jweCyJy1gwXNMbk+c/
+ HXbQ==
+X-Gm-Message-State: AOJu0YwU7+UZwhI9lBFsot6DGi9wM45dielgCZxIKBQVH7UlVfpsThBc
+ 2is1iugUpboAwUzX9qzaKzJm6GgL9Zr5nfoytvCuzA==
+X-Received: by 2002:a05:6402:128f:b0:523:100b:462b with SMTP id
+ w15-20020a056402128f00b00523100b462bmr7613449edv.5.1695033896362; Mon, 18 Sep
+ 2023 03:44:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: XQ+vi49eSNl1
+References: <20230915115535.129834-1-quic_llindhol@quicinc.com>
+ <20230915115535.129834-2-quic_llindhol@quicinc.com>
+In-Reply-To: <20230915115535.129834-2-quic_llindhol@quicinc.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 18 Sep 2023 11:44:37 +0100
+Message-ID: <CAFEAcA-Y6km+SY+qkHV91rJ8fpG4JpJwT5KobwYxVM8PA74eKg@mail.gmail.com>
+Subject: Re: [PATCH v1 1/3] {include/}hw/arm: refactor virt PPI logic
+To: Leif Lindholm <quic_llindhol@quicinc.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7G2VPAB1JALs
 
-We shouldn't call a DeviceReset() handler on unrealized device.
-In order to enforce that, add an assertion.
+On Fri, 15 Sept 2023 at 12:56, Leif Lindholm <quic_llindhol@quicinc.com> wrote:
+>
+> GIC Private Peripheral Interrupts (PPI) are defined as GIC INTID 16-31.
+> As in, PPI0 is INTID16 .. PPI15 is INTID31.
+> Arm's Base System Architecture specification (BSA) lists the mandated and
+> recommended private interrupt IDs by INTID, not by PPI index. But current
+> definitions in virt define them by PPI index, complicating cross
+> referencing.
+>
+> Meanwhile, the PPI(x) macro counterintuitively adds 16 to the input value,
+> converting a PPI index to an INTID.
+>
+> Resolve this by redefining the BSA-allocated PPIs by their INTIDs,
+> inverting the logic of the PPI(x) macro and flipping where it is used.
 
-CPU devices are a bit particular because we manually reset them
-in various places, so corner case them out for now.
+This patch changes the values of ARCH_TIMER_S_EL1_IRQ etc, but doesn't
+change the code that writes those values into device tree properties, eg
+in fdt_add_timer_nodes(). The device tree bindings want the actual PPI
+numbers, not the INTIDs.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/core/qdev.c | 3 +++
- 1 file changed, 3 insertions(+)
+Plus keeping the PPI macro name but changing its function is
+a bit fragile if we end up needing to backport a patch from after
+this change to a QEMU release branch that predates it. If we want
+to have the base values be INTIDs then probably the macro should
+be INTID_TO_PPI() or similar.
 
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 43d863b0c5..c51b4c98de 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -252,6 +252,8 @@ void qdev_set_legacy_instance_id(DeviceState *dev, int alias_id,
- 
- void device_cold_reset(DeviceState *dev)
- {
-+    /* TODO: Also cover CPUs once we removed manual calls to cpu_reset() */
-+    assert(object_dynamic_cast(OBJECT(dev), TYPE_CPU) || dev->realized);
-     resettable_reset(OBJECT(dev), RESET_TYPE_COLD);
- }
- 
-@@ -280,6 +282,7 @@ static void device_reset_child_foreach(Object *obj, ResettableChildCallback cb,
- bool qdev_realize(DeviceState *dev, BusState *bus, Error **errp)
- {
-     assert(!dev->realized && !dev->parent_bus);
-+    assert(!device_is_in_reset(dev));
- 
-     if (bus) {
-         if (!qdev_set_parent_bus(dev, bus, errp)) {
--- 
-2.41.0
+thanks
+-- PMM

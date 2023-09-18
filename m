@@ -1,75 +1,75 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3010375ejb;
-        Mon, 18 Sep 2023 09:03:10 -0700 (PDT)
-X-Received: by 2002:a2e:2a84:0:b0:2c0:a2:77d7 with SMTP id q126-20020a2e2a84000000b002c000a277d7mr3582150ljq.24.1695052990167;
-        Mon, 18 Sep 2023 09:03:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695052990; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3010445ejb;
+        Mon, 18 Sep 2023 09:03:15 -0700 (PDT)
+X-Received: by 2002:a05:6512:3da0:b0:503:1be5:24eb with SMTP id k32-20020a0565123da000b005031be524ebmr2688885lfv.50.1695052995403;
+        Mon, 18 Sep 2023 09:03:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695052995; cv=none;
         d=google.com; s=arc-20160816;
-        b=BcTSXRth+NzehymeT1SQHRzIa7ihkpVUNn+St6MGrT59XqwevadhpFVB3frYayXbXr
-         pg4M6yR3Br2Nf2oRjuE5RDYcxdbGPQLqjEqi0kAyA7XIatJftQDKZVWjPv3Aa8qyW8jV
-         unQM3AaSUAAc0Ij9xvBawahtGVc4S5qUx6OvPo4rmZVEcpRALL8bgboMNvi3UF2WxTy0
-         6/7CgNdrQTDSRrlNovVY5vDhCuvU/paZ3iZvPxpHnR8k7wEMp4Q8CnNoqvZ3laPln6c4
-         /BiUl5qfhwgWxeURSPcqS58Xsr/fcoRTwYXt5N7H4654c/MnV7f6Si5fL1FJVE5IAphm
-         Shmw==
+        b=Xf+SXqepCRTtZdYUl7mF9auu8Y3mLTPhiIpQGXkLDG8SJH4nvELqBl/YB/SifoEzkm
+         5IfqIIbuc0tiXzi2vN+tZ1QL87IPTjMovYSMUmPMnq0HJKDSqRavb1EptvApLp1Q9RsQ
+         SFan/W1Ak91F2lCWFHSzMpE9oCJ+2JrLc2Ix5AasMRRPVTpJsQn7BuIuaOxwcU8TjVBQ
+         bAKm7cDDgXSweQZ6z6I8lSZCA+dTlWfoyHbyJkJJ/GPILUXNoGx1nGhduErpW0yljs1L
+         u4AYowoGJ5pWvpmBTflRJLXXZ+75c6I0am4hhesi6ylJGnVb6KBADp9/uE0b2pS6st3z
+         0Y7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lJh8A0itxnh0qEmv9jrQE8icd48ukduXjwQKR8H2Trw=;
+        bh=MazgQXWzZA8uxNgPyG3XxGvrbp91MALAwpKlSsIULzk=;
         fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=WfBfYqJ7p/HQ62NnqyBVl42iID6ze9381WkAlsfGVdfBLX124/X87VCb8FX1rM3eCI
-         0aBhyBojCKz5AmHQW+cAjUlOEEQMJ6fPwx7fWCrwix7PaeQXa6y+E4ip4IilJmXz+3WS
-         QFHKs6x221iTFUQlaR5Rez0LuV2gIEt0KwG7Ymc80v5IYsmYhquoWPyuoncn6cZb71lB
-         N+INM60sboQnwJISuXeU40fb2ystGHSAVB5fynVuK83sADr7sjCyHqzcbSCZQXqSSPOj
-         9GzQpD7c0OvpMYJkZpi1dUVR/xWNprRIMNROrQxa1TMxCgF1Gq/ud8eUqmIP+zf1/+e5
-         wWsw==
+        b=bTcCKWJfJKyB4QaWBq7x/8ECv+FIjSoJF1OpNTh/kD5JM7gPz71AMBRSssYc2FcIMH
+         LcIIirq7/rB3DjRAIbIM+wxY/+UrcEd8pUfGvFfLH2lAQQFZsqd11NYDW2jZQtHJxxX9
+         ZChk7Rj3O0nY/eeX/A/+UvLZchJf1Gxh4+lrqcEThsyN2flaNnlZ1b72aPO/g1bCAxNB
+         AyMa7uuC51pkBGp8pVi2yVyA8+yfjyt27IWLUs6QbvX7mQ3GfJpaT8NGbp9hGlaJFDfG
+         hSxJm2yj/fDnuJYDp7EHq+ENPxVlXpRjgWv24jxSvYLJZegOU+tt/w0surkqwqOQW/jk
+         JWkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bm8wU0Vt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Qkjpcwp3;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id my47-20020a1709065a6f00b009a1914e48bdsor2799976ejc.14.2023.09.18.09.03.10
+        by mx.google.com with SMTPS id b14-20020a19644e000000b00500b8ccb1b0sor2957752lfj.2.2023.09.18.09.03.15
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 09:03:10 -0700 (PDT)
+        Mon, 18 Sep 2023 09:03:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bm8wU0Vt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Qkjpcwp3;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695052990; x=1695657790; darn=linaro.org;
+        d=linaro.org; s=google; t=1695052995; x=1695657795; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lJh8A0itxnh0qEmv9jrQE8icd48ukduXjwQKR8H2Trw=;
-        b=Bm8wU0VtoPazP5ALjYRvkMlwUJx61bLmg05k+sg+tctzQ+Rd5Ijtz4auQBDp0LU5af
-         cTUw11gOrPZXrsOxa2f/xAF4+uBJ8Gi/gbde3oEdS62db7JCB6Ct18L3xo4LNTknvjem
-         2pEwJLiBpEeK/tyKSSSEOlg4VDevaz0y4tt0vBDcgptCqV6/k72s3BM8mYpiTqdl/V28
-         dFlnVYstuG5ZCIIl2y3PCpAwhR1Nc6thFD9FadbKxyuz09TqzKDf5VCjYwZ+iKlvN2KK
-         AYBHD2hflv2cjDUBbwjHdOJYGzTDeT600DUTWGGK2KH4IPOXDJhtZTjSDlDFednueFM5
-         nkwA==
+        bh=MazgQXWzZA8uxNgPyG3XxGvrbp91MALAwpKlSsIULzk=;
+        b=Qkjpcwp3yOSRc46VM7SZJ+D+vxUJpe3ksoFgo94zTqNGtgd9d84vrBI6CgQxW+oAGJ
+         FQgruxFmexofbcDvwDWYTBByS3yTz04KN/h0zn2QSqwftUjGYYz1hvIxQFfy9kVoAvUU
+         s8Uko/HRGJBRMdztzm6w9Dn0l1M4G1+g0FHwU0un4tSK0W8y+hkDRgNmOtaBj759AQNq
+         tU2tUbmDipLA4LIhyc85L/cQ6HkHZzTZ9rmLJweHhfO8KiwEYYFC9EdRnWlHXlaWjynL
+         aWLWKbvkrvezD51x9DZ1ejNDLgty0yvy5lfz1vM5FfRU7IyHYpbMelQ7VX9cB83pt7CG
+         l4sA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695052990; x=1695657790;
+        d=1e100.net; s=20230601; t=1695052995; x=1695657795;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=lJh8A0itxnh0qEmv9jrQE8icd48ukduXjwQKR8H2Trw=;
-        b=XT+ltYHGYqdeE/BcxmXLlEgETBQA54sW1zqWwQbw1NOtSOQ6UVcf8IgtSzzY9FIqhN
-         lrqxfJDvSD6ZG1KCyesEVsVA6aiD1ZrNNZPt71fr6bOhVZrArE0gNW9VGgFr/sCwElil
-         XBG1IkZK7Xd3cfBfdQqV99oPD4DB22Xn/tHhtm3BPaWteHUR0hQEXEBtvzqQl5EueUAB
-         /F/hWcvvWWUFbiMo1VQ+W4vrLQ42HLDcrwBEXQkFTXTkroXb8nqIr5sdkfvoJXUvlrto
-         Y8RZs0St2Tnfzg40pYS/xFuAj9jDXibeO7g7I4c/JL4tXioO7oDadERNzBbrz6tHABYu
-         Ph2w==
-X-Gm-Message-State: AOJu0Yxdg/BTPaEWrDH5vP5KlAIfS0JsvbHkhoCAsKJfEyNLkYcxHg3K
-	a+y6Ly7PYTHJvNr9wA02ecrkpVHg
-X-Google-Smtp-Source: AGHT+IENcyvi+doZG3AFC4PIQIYrRhEsNXfli8+UC+v7xx7kqnWdf8S7ahUZm+Cso8ML7TazVXsAxw==
-X-Received: by 2002:a17:907:7754:b0:9ae:1b64:94c0 with SMTP id kx20-20020a170907775400b009ae1b6494c0mr1603066ejc.55.1695052989741;
-        Mon, 18 Sep 2023 09:03:09 -0700 (PDT)
+        bh=MazgQXWzZA8uxNgPyG3XxGvrbp91MALAwpKlSsIULzk=;
+        b=G4LG/SEdR5B7VsGWFF1+8l/HloEUAXbDwrpS+PaUhwTg/TleEKh9VFpTJpaYwBT3R9
+         pqwHZD63vhVowH7tbNZskDc1NxCj3jcLzXmybjjX5iw8v286WpeLVoFvz2lr4pyLRgD0
+         YRvneavyMQ9VVYRiLVzaLMsv6pGoeCTJjXqxnMfjDZt2Ads111sKm1X0dBLYOgwQZnm1
+         APTTTFH1yyolpGp+7esgIX6dBHuHPteL+kz61n8HDRdXnfAmqkaZhQFR6cv9BaV8dZhW
+         BOnw2mzrIemNkNNY+z16IEo4jQOkK9x34x3YrxcBXjqctvwXvym4qR38IvvY+8VkYAso
+         t11g==
+X-Gm-Message-State: AOJu0YzvK1qe9rNlc73h3/yxzcZkzbR3d5uvcFbsgg5GDx47cRGZ4M82
+	dwTXruHTW/isfI1J7ZkPibIfGTAs
+X-Google-Smtp-Source: AGHT+IG8278V/bx3bmgpaUhHZZUcMrkwCw5Xh6lMORAxCV90jlud9/Vt30zNUM+Rqe+3rVD6prsUKA==
+X-Received: by 2002:a2e:8ed0:0:b0:2c0:d06:9e65 with SMTP id e16-20020a2e8ed0000000b002c00d069e65mr2857839ljl.8.1695052995061;
+        Mon, 18 Sep 2023 09:03:15 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id y16-20020a170906559000b0099b7276235esm6699286ejp.93.2023.09.18.09.03.08
+        by smtp.gmail.com with ESMTPSA id r11-20020a170906350b00b009934b1eb577sm6608438eja.77.2023.09.18.09.03.13
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:03:09 -0700 (PDT)
+        Mon, 18 Sep 2023 09:03:14 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -128,72 +128,33 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Markus Armbruster <armbru@redhat.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 02/22] hw/intc/apic: Pass CPU using QOM link property
-Date: Mon, 18 Sep 2023 18:02:35 +0200
-Message-ID: <20230918160257.30127-3-philmd@linaro.org>
+Subject: [PATCH 03/22] target/i386/kvm: Correct comment in kvm_cpu_realize()
+Date: Mon, 18 Sep 2023 18:02:36 +0200
+Message-ID: <20230918160257.30127-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: eAn+UgM0tLiq
-
-QOM objects shouldn't access each other internals fields
-except using the QOM API.
-
-Declare the 'cpu' and 'base-addr' properties, set them
-using object_property_set_link() and qdev_prop_set_uint32()
-respectively.
+X-TUID: 0j/C727oUJPh
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/intc/apic_common.c    |  2 ++
- target/i386/cpu-sysemu.c | 11 ++++++-----
- 2 files changed, 8 insertions(+), 5 deletions(-)
+ target/i386/kvm/kvm-cpu.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
-index 68ad30e2f5..e28f7402ab 100644
---- a/hw/intc/apic_common.c
-+++ b/hw/intc/apic_common.c
-@@ -394,6 +394,8 @@ static Property apic_properties_common[] = {
-                     true),
-     DEFINE_PROP_BOOL("legacy-instance-id", APICCommonState, legacy_instance_id,
-                      false),
-+    DEFINE_PROP_LINK("cpu", APICCommonState, cpu, TYPE_X86_CPU, X86CPU *),
-+    DEFINE_PROP_UINT32("base-addr", APICCommonState, apicbase, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
-index 6a164d3769..6edfb7e2af 100644
---- a/target/i386/cpu-sysemu.c
-+++ b/target/i386/cpu-sysemu.c
-@@ -269,7 +269,6 @@ APICCommonClass *apic_get_class(Error **errp)
- 
- void x86_cpu_apic_create(X86CPU *cpu, Error **errp)
- {
--    APICCommonState *apic;
-     APICCommonClass *apic_class = apic_get_class(errp);
- 
-     assert(apic_class);
-@@ -279,11 +278,13 @@ void x86_cpu_apic_create(X86CPU *cpu, Error **errp)
-                               OBJECT(cpu->apic_state));
-     object_unref(OBJECT(cpu->apic_state));
- 
-+    if (!object_property_set_link(OBJECT(cpu->apic_state), "cpu",
-+                                  OBJECT(cpu), errp)) {
-+        return;
-+    }
-     qdev_prop_set_uint32(cpu->apic_state, "id", cpu->apic_id);
--    /* TODO: convert to link<> */
--    apic = APIC_COMMON(cpu->apic_state);
--    apic->cpu = cpu;
--    apic->apicbase = APIC_DEFAULT_ADDRESS | MSR_IA32_APICBASE_ENABLE;
-+    qdev_prop_set_uint32(cpu->apic_state, "base-addr",
-+                         APIC_DEFAULT_ADDRESS | MSR_IA32_APICBASE_ENABLE);
- }
- 
- void x86_cpu_apic_realize(X86CPU *cpu, Error **errp)
+diff --git a/target/i386/kvm/kvm-cpu.c b/target/i386/kvm/kvm-cpu.c
+index 7237378a7d..1fe62ce176 100644
+--- a/target/i386/kvm/kvm-cpu.c
++++ b/target/i386/kvm/kvm-cpu.c
+@@ -37,6 +37,7 @@ static bool kvm_cpu_realizefn(CPUState *cs, Error **errp)
+      *  -> cpu_exec_realizefn():
+      *            -> accel_cpu_realizefn()
+      *               kvm_cpu_realizefn() -> host_cpu_realizefn()
++     *  -> cpu_common_realizefn()
+      *  -> check/update ucode_rev, phys_bits, mwait
+      */
+     if (cpu->max_features) {
 -- 
 2.41.0

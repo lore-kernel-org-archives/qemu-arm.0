@@ -1,75 +1,75 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3010843ejb;
-        Mon, 18 Sep 2023 09:03:42 -0700 (PDT)
-X-Received: by 2002:a17:907:7897:b0:9a2:143e:a070 with SMTP id ku23-20020a170907789700b009a2143ea070mr140627ejc.20.1695053022007;
-        Mon, 18 Sep 2023 09:03:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695053021; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3010904ejb;
+        Mon, 18 Sep 2023 09:03:46 -0700 (PDT)
+X-Received: by 2002:a17:906:300b:b0:9a5:ed5b:241e with SMTP id 11-20020a170906300b00b009a5ed5b241emr7095160ejz.25.1695053026546;
+        Mon, 18 Sep 2023 09:03:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695053026; cv=none;
         d=google.com; s=arc-20160816;
-        b=J/3yE/xV1aRHaD2VuYCay9tr7ThNMDHBry6Hqb9sH8sNNhkzkKLPy1EB5CcKGbtR+q
-         IdQNn/xSCWlhAVJgOkRjqnNSuUzylDXgDzpnz11mGTHjyzWXtIS7eK3LieFTuIyIpgno
-         7XjSNwIO2LTN2R+S+rhbYEd1lOee0ffmOWYz6AncOmtyUY78brkH0dhxI1XEe81ZXllO
-         wpDDtylXNOU56ZBqM4FucmKNaYzGTziQizJdemxd3Oa3KgSv7HTs1XevErpkBPBnnpo2
-         eyOspkajp90eFptx+YS+Oqm9DloA2Q5vmQvGOamuFvif0pqUutHMt+y8VN0VayNSqEET
-         HL/w==
+        b=SyS0Jp4qJ2zasE7V0q3Y2Dv59YdEq5lk8BNazmeQHe6tFzc57Uq4CjT6TdHYu7s/vz
+         K6PzxvRDPIWmHZthfCPuBeLrRAZmzFKQQ2w3T7JR1nvJZVLKTZxhcb5Ffdt9ZFLRwCb7
+         yeECnBv4S84OsHsT/qO4Vr1+7ie4NzbE80MLRWIfQ1O+669T3oZcwZsff3d/vqqM/ZYQ
+         r7UjuitrMFErtUFycEUxYspD1Y/RdactvEE0XdQrM61vkpT3jb/+dx7XquPSlnzNLTdS
+         KTe2csdQSzZRxhMcHiVGROh1K1RJwTTgm/6e11udXfqNM8Z5FYcoCIzgTmVlO3Ox4b8D
+         rm/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fSCS2zUfZAE6ogrinmDPrOXdED/BfB+BaLaX0u0zcLg=;
+        bh=hSVRQGIJEmce1VSEx8yaDe0o7AipRr5BDfgLzGOyz48=;
         fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=F0l18MTDgjxg9ZhvxsL1S1unpM+4EAA1qRW+LeHrBnZWPsbohsLJYvgDqMXmBs70tl
-         gFO3Nqguhc/Txy5hDED4grhitWjhOUEnYT9SQqd2lXqsohtXhs8STrNSKdqFPlNqQKLU
-         4yOMTRLDrDec1b4617+Yf1JJmgDICOky1Z0EH5X7fyU43XkZQE7KOtgRIIPqGPga+jPR
-         bcDGiTeF1TOk5AzEVc+qQjtrDPxoo27vru7uIOwHIxPOUAF+u69+Rk+t5UXF8HI296wn
-         fS1DAz5ge5bFit53owt4KtGYnB8rnzKckKQfpVYcsj1McJ3pLsHBj2dD2k8g4QV5rTss
-         E9Lg==
+        b=XjNuM/CZldLAQn6xw4Kv/PV3SC9UdOBQALCk0Vv5h+ZNwMVL2iVvCv1QkSrlUvsFv9
+         tXUmi+3/nGlYgVH/aoJtzmxhlx5wU4y1Ol3i8pfxUlrjnU33WuIHad5WEUhIpdkQK7zf
+         nIjzY2xIOOOdkyHoXKyOYI1slok61DonJlS8abJROn/ip42IEFVuUmQsD+xTygvkcJuG
+         t6A07kO1HRwbCXq/6lOxtPPYf40ydDGmL2650uqy7sLc3JZevD5MGCi0h58vT1ZFfDc4
+         hpzEZYi45ZdzhAXJZ8XXYkXGa2j3FaFXMvxFhQawuasG/68Nx1Edel5R4/dOHD2x2Ga6
+         WgLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PCnV+dfj;
+       dkim=pass header.i=@linaro.org header.s=google header.b="zvzYTjw/";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id du11-20020a17090772cb00b009adc46b00e7sor4507706ejc.4.2023.09.18.09.03.41
+        by mx.google.com with SMTPS id hx17-20020a170906847100b009adae266299sor2888351ejc.20.2023.09.18.09.03.46
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 09:03:41 -0700 (PDT)
+        Mon, 18 Sep 2023 09:03:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PCnV+dfj;
+       dkim=pass header.i=@linaro.org header.s=google header.b="zvzYTjw/";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695053021; x=1695657821; darn=linaro.org;
+        d=linaro.org; s=google; t=1695053026; x=1695657826; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fSCS2zUfZAE6ogrinmDPrOXdED/BfB+BaLaX0u0zcLg=;
-        b=PCnV+dfjaRoAkpVJ4qe455tZiawaX5Civ606/6sjWd37ULPR/twJF2cpshaTOmAqEH
-         aXbzQKLOZyczfQemI2Pk49jbNv+wvxRAHAYSnDuYjYSNQihELRmQIIUBkTAO7l9Beww3
-         iDgBMRsDxBHnfRuYln1cqqeZQl0YiNXfoxVHHys9iK0w53pd8TeyY3Xj11W2wg4Dfe9t
-         IPg5QUGHZdYQVzhsvlm3cOSFOxb8TbfPD9y/ZZidE0lh8PvzQSn3dWITk8aBcKcxv9N+
-         TRx4TlO9JIRfLjCf5EDsL0VRc65e6X7s178p+V8kKzqubC0yNLCRo3eDY6YY8XLm3x0l
-         csEQ==
+        bh=hSVRQGIJEmce1VSEx8yaDe0o7AipRr5BDfgLzGOyz48=;
+        b=zvzYTjw/Jp93l4aMJdrmyuJ2W3ZgjesnWBp5tGUZsem35fC3jfSBAPoGtDHX9PTVVM
+         Iwc0cWh8Tqcofb3iuMKUJSwS8dFJZ71O5fcVlnpwU0ahzTSwxp7fTYw3IYu1kO7hKdmn
+         kz27j36c2Eh81XSpe5MgER2Dn+w41UFlKZuz01tWdnOHmBqu16SaqnEgXNVPSz2nENo3
+         IENw6TWSY1H5RnhWIeoXTTQC6/Ix/ifS00kS/YnxOUELxdPqhQxyX6CtE5rSgNgG1jiv
+         NAsmWl3Fi44ntk3eOfqPvOPhzK9u2jdRxxFhhwh3JtwNncMLx1mBOA7JExdgXq4DiLIe
+         JX1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695053021; x=1695657821;
+        d=1e100.net; s=20230601; t=1695053026; x=1695657826;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fSCS2zUfZAE6ogrinmDPrOXdED/BfB+BaLaX0u0zcLg=;
-        b=AfTpvrMNsChiRUPJAcy63lNzyxk2gQocxgsNOer0nOVKLVpqt3kQkB/sHEqznkRBCH
-         kldtb1NbgAI/kBOHknHz+mDtvrAP4EdcqpdEgQNbWi7zNTMHqimxfBd7C112Ipc+kDdG
-         YpOp9xdFYDCkFySLnfkQf3V69Y8+MlzLcFgKiC4Damml57i7X0ddGvaHnsJ1cu09dfv8
-         gkFzsYYglsujOYnzgNzA72tgIzg5zT6uIVAApIq5uqODMygVc4oCzC6XMCI4b7zTRmaV
-         VOzG+BGTLP3kLh4xupZvXNvPHvIdbAPC7zB5c8R6LT2Zv2jTliNM//4GLGx5PELGnPfF
-         /7bA==
-X-Gm-Message-State: AOJu0YyR1Y9HMroZha/OONY+gLu/xwBtRnzRhkYHxg7xs1gaGfv67YYu
-	/ZvFiu3A1SKXai5Eb9B4xNIvasKo
-X-Google-Smtp-Source: AGHT+IFbTianQZOGFuSjVlX566F74BXdJs5acopl7EmpAQkaG51ohmS+uPCdYH5B96NaIiVcrKe7YA==
-X-Received: by 2002:a17:907:62a6:b0:9ad:cbc0:9f47 with SMTP id nd38-20020a17090762a600b009adcbc09f47mr116109ejc.12.1695053021006;
-        Mon, 18 Sep 2023 09:03:41 -0700 (PDT)
+        bh=hSVRQGIJEmce1VSEx8yaDe0o7AipRr5BDfgLzGOyz48=;
+        b=goXxnPA0S4FJSA5qEA5HbfGTtw/Wx33Mi3axpH/Nb9g6vF1ADuTgTD2d7UuefhrQHM
+         CE0q2yzFF0JifOn0xMJJu4TprTL9uS6ofGzg6bhwIVp2e4w7y+sLLOXbmIAYupKej3Gu
+         +UbZKKgZxTrK6YQf5y/lUQIgT2n5/N7sLXMP3jar01J2je1GQWs+IZ0MQtMHkCBxaE+n
+         d9irqRuJI/tHykL0xkizIcC8fQGnkIuMkuZvMOY+uF0wbU7TgJvXPafMF4i+fvSoKxwk
+         sJuFe3AMcwKpwsqeIMOR9jyZppuGyZuYsZo04BijQjmgwH6704uyr4azXqn9cZz8uepK
+         A6fQ==
+X-Gm-Message-State: AOJu0YykcHVNmdAC8l8LGjnErBd2c/RsKLQAkiZxPo080ZH6eDGvGFus
+	3h5S06FRDvsHPgf2R/5Vnv00iWm4
+X-Google-Smtp-Source: AGHT+IG4piDQtxZVYFiU0HjN8n/Q699dig17N/FQPVs1xyeDcBS2KjVyyREmZ08RNzkeawSSuXGK6A==
+X-Received: by 2002:a17:906:74d5:b0:9a1:8ee9:cc0b with SMTP id z21-20020a17090674d500b009a18ee9cc0bmr8829825ejl.21.1695053026100;
+        Mon, 18 Sep 2023 09:03:46 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id ck9-20020a0564021c0900b005231e3d89efsm2684962edb.31.2023.09.18.09.03.39
+        by smtp.gmail.com with ESMTPSA id g5-20020a170906394500b0099bc038eb2bsm6614676eje.58.2023.09.18.09.03.44
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:03:40 -0700 (PDT)
+        Mon, 18 Sep 2023 09:03:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -128,46 +128,59 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Markus Armbruster <armbru@redhat.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 08/22] exec/cpu: RFC Destroy vCPU address spaces in cpu_common_unrealize()
-Date: Mon, 18 Sep 2023 18:02:41 +0200
-Message-ID: <20230918160257.30127-9-philmd@linaro.org>
+Subject: [PATCH 09/22] target/arm: Create timers *after* accelerator vCPU is realized
+Date: Mon, 18 Sep 2023 18:02:42 +0200
+Message-ID: <20230918160257.30127-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: zkbLxkGHr2Mp
+X-TUID: N6paAS1A8Vve
 
-We create at least one vCPU address space by default in
-qemu_init_vcpu(), itself called in cpu_common_realizefn().
-Since we don't have qemu_deinit_vcpu() helper (we probably
-don't need any), simply destroy all the address spaces in
-cpu_common_unrealizefn(), *after* the thread is destroyed.
-
-Note: all targets were leaking the vCPU address spaces upon
-vCPU unrealize (like hot-unplugged actions).
+Architecture specific hardware doesn't have a particular dependency
+on the accelerator vCPU (created with cpu_exec_realizefn), and can
+be initialized *after* the vCPU is realized. Doing so allows further
+generic API simplification (in few commits).
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/core/cpu-common.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ target/arm/cpu.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index e5841c59df..35c0cc4dad 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -224,6 +224,11 @@ static void cpu_common_unrealizefn(DeviceState *dev)
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index fc3772025c..46d3f70d63 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1748,7 +1748,15 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+             return;
+         }
+     }
++#endif
  
-     /* Destroy vCPU thread */
-     cpu_remove_sync(cpu);
-+
-+    /* Destroy CPU address space */
-+    for (unsigned idx = 0; idx < cpu->num_ases; idx++) {
-+        cpu_address_space_destroy(cpu, idx);
++    cpu_exec_realizefn(cs, &local_err);
++    if (local_err != NULL) {
++        error_propagate(errp, local_err);
++        return;
 +    }
- }
++
++#ifndef CONFIG_USER_ONLY
+     {
+         uint64_t scale;
  
- static void cpu_common_initfn(Object *obj)
+@@ -1776,12 +1784,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
+ #endif
+ 
+-    cpu_exec_realizefn(cs, &local_err);
+-    if (local_err != NULL) {
+-        error_propagate(errp, local_err);
+-        return;
+-    }
+-
+     arm_cpu_finalize_features(cpu, &local_err);
+     if (local_err != NULL) {
+         error_propagate(errp, local_err);
 -- 
 2.41.0

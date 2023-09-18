@@ -1,75 +1,75 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3010987ejb;
-        Mon, 18 Sep 2023 09:03:52 -0700 (PDT)
-X-Received: by 2002:a05:6512:3b13:b0:500:cb2b:8678 with SMTP id f19-20020a0565123b1300b00500cb2b8678mr10155513lfv.40.1695053031853;
-        Mon, 18 Sep 2023 09:03:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695053031; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011071ejb;
+        Mon, 18 Sep 2023 09:03:58 -0700 (PDT)
+X-Received: by 2002:a17:906:2011:b0:9ae:1de:f4f3 with SMTP id 17-20020a170906201100b009ae01def4f3mr3438353ejo.13.1695053037856;
+        Mon, 18 Sep 2023 09:03:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695053037; cv=none;
         d=google.com; s=arc-20160816;
-        b=F5GwKXzlScuHZlerdRhKLKXqmGko3RYX/WsP62dv8sndPzZ7fNjjKujSA1P9bl7x1F
-         AF0AFMGeXXLuAjJfA3Dvr/UWrEEuLB9q0otu4W9DsfAfmbJeRhgG3/fUlfbU2uBkGI+6
-         lNVeQzgFfhYAHawgFyAGxhXPUaW0VZlMQWqVrnsA09grGu2sXmBt4WyZkndwT9hW8kM6
-         67gc8zL5LtvFiEsQRpDadIwTb65LFPZJK9QtxSkJiEkOx2hn2GuSh2HMm+/qp+/6ljVD
-         w8/ah+1NX7Z0UciGsqyw5/URog5RkTULjdOh2aYdTFYm7+6A1Cd4dzTlAfprddiXEP8u
-         SonA==
+        b=PvWRhvZOMepesbUWABtBeorg2SGPIAxBUJZT/OM8ob4LoqQWMQmIWdgDC59zX0IQQ7
+         2ZiEfAnVr0LPTEp5svolVCu/TcU6znQzMRxW8Z7doO7OQ7G/fAWJW24B/bQB2UZWrKfx
+         KG68mDN/+dgCzPrDeKP7b7JM0jKlnRGsCObuY/s64DL8E7W6pj2nt9JC5KWlArB63MVp
+         neHiZnTPrGOFZ9M+Y5XvsEgP4KAMrl0lrRsF7LpbtIPISMG7tBO1p5N6F6avF2iH8JuB
+         NmZPGrdE2izE94iDttrFHXzyuo9PdhtOYK+O4WA8kCiH8KV6WnkqNWqR7Qp4g74qnp0j
+         Vubg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dCQpcHiGYl2b5PMw9sHU7Xzs4il9aZ3go8echWC+OUY=;
+        bh=I+18fO8c7Dk0qCgNhOL8JkONKbHnDNHi1cgc68a1fr4=;
         fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=up9FzB+X5Iwrfyf+O4uG/OR7FUAl/jNNUAAo9V9mVwyuWm/ysAFKkYIZdoHN1Gd9lq
-         aIua/fM4ydnap1ag5lQcYmzVTuSl3N60H2fqhtllISX9p40yUXWe7nmVMptzO/AzzjQ1
-         iPMfAhiVRYdsZG9a59oge/DTMug78b0FFTl1HTHHUIj6+7wSNT7J3HShiaXf7u09mToX
-         CkO64nCtencs7aALbJzJq7ndRCk3t7I/PglhflbPBMjWpYwCnJ7D/PQBeYGwKl+zN5gS
-         F5X1b7sfmz1u2x8NGIFnsUhAtKvrqK7bYlZG/qvnrqTN0unxJUq5PgVTRLS2XxQ1HIoH
-         Ddqg==
+        b=nyJ3nJucoL+tLxzkjpZp8JDAbrWILn8UZ25pC1TpX7aS4DAaoDGgFvBjSwVlVVKCD2
+         Xr0CfKgJY8KqhDLA1sc14CfnqBnSYCROa4WXFY0j4EabJuRxLnM+YnipIX5hIspJ+p1s
+         jsyEXD470DEkEGjxJSQx3BcrRkattPRStUWrsREbH17tb7XrbWDRRYdoKb8a73VGv7R/
+         /noQFApJM5aIiVHirQap5X4BO2KFfvY4YBCzFqPgR0C7bMv76jqpNYeifsSIja92NW1h
+         ACkYuW/D818frgNaUBkOXPHcUts9pft7dalIRn+wEfK4n80Exgp+UYJxRET94ARWnjAJ
+         L+pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kXzirs16;
+       dkim=pass header.i=@linaro.org header.s=google header.b="VqKJGOK/";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e14-20020a19674e000000b00502d85c92e1sor218203lfj.12.2023.09.18.09.03.51
+        by mx.google.com with SMTPS id jy16-20020a170907763000b009adae266a73sor2828912ejc.19.2023.09.18.09.03.57
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 09:03:51 -0700 (PDT)
+        Mon, 18 Sep 2023 09:03:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kXzirs16;
+       dkim=pass header.i=@linaro.org header.s=google header.b="VqKJGOK/";
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695053031; x=1695657831; darn=linaro.org;
+        d=linaro.org; s=google; t=1695053037; x=1695657837; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=dCQpcHiGYl2b5PMw9sHU7Xzs4il9aZ3go8echWC+OUY=;
-        b=kXzirs16Z+wjQAil9iV/mHzEwOOelWto8XFuDS70E/KGDR1PUDbrnvQVGrlX3YcFZa
-         AdXNNzq2PVlRFaTnikHXbu98z7PWmbg1TQ78kejUmNdc1QKOSTxbwwhq/wVb6NNENPva
-         AwQ4rjfj3iE9rQGFfpkay0TBRHNPGBE1FakCNtrzOI1q29gKSKs52KZLwbQv5TAKkjGa
-         OV5UBrPzixyXmuSR4gwYmLYSRj9HyZQ9iDk0sl5JyIYeVkWQvVS1AoDdF5GGFiva4/Bd
-         FrWL0F1iwgRCx1uvxHa+Qdt9yU5atNzvsVcrExhlgJjP0o8jGlGg1Gdrq0l4h7/kNWpH
-         wTYQ==
+        bh=I+18fO8c7Dk0qCgNhOL8JkONKbHnDNHi1cgc68a1fr4=;
+        b=VqKJGOK/CcyCmgwB9EjegEJtgv7rffAlXZ0tvAY1Kvegl7HqmJ0+/Bk4/VnvJU9rEr
+         j+FAN0vwiwyC4tBRvF4XXMTkQd/kE+N4Que3s2dtNzMFZ2hBryzbW+r5DX1ANsA/8A6L
+         oNuUkK9Ol6J9XvIyQ9C31AMH7kFTBwUD41dyphmSh16wRTAfGYPicJ64mZteS7N20TOp
+         pTpYVe3S84+NpzF9B+e/ZYhbh+lhmVv1sy2HTo0/d513B3nCZ8hiG8vmuLuOEIoXLXWo
+         vRxi37pzWwmRfQfE9NScg3HhXEE+0X1QEAbvqWyjtSEAznoPlDjVLyvC4Mk+vMUf/poy
+         VRCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695053031; x=1695657831;
+        d=1e100.net; s=20230601; t=1695053037; x=1695657837;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=dCQpcHiGYl2b5PMw9sHU7Xzs4il9aZ3go8echWC+OUY=;
-        b=pZOM1hXu7ZhJHXqJcrFaF+n0x9bWfmFW+Y769b4jOj4RIdCq9q1ko3HPgYaG7Q2Bxl
-         iL7Io3/CLTrChvIyygRwKnkT5aeqs8BHGyAuxK3Kav6g68VNa1mXQVXZTkggnZBD2COh
-         6p2qKy+V2anHX+0xwgAC2VG0DVWCM7D4G2O5YyHBpZwTPysS2zmmCddm2I0EAiSTl+/S
-         3fmcU9Xic0C4QLoO7P02kGO6+bu31aYfMXcqgPTPBkjk+D7z7vpN6oH/HfJ+NXVVoPZd
-         CMMw4TXloSlkO1HU6iYQzYj7NNJ9L7gFr+NpNbUBGLpZJu4k7nbP5YrgcVcWebyUcfQh
-         660Q==
-X-Gm-Message-State: AOJu0Yx5wPSn3wF0GFHEsZmUbBWE67Nq/q8jGsvpN8nJ/THj1m3Bi12N
-	oEV10NLingt7+EBksst0gsnC0Bjd
-X-Google-Smtp-Source: AGHT+IGy+sW3/rMWVgA+iQsVUNjPLRtt/VMoay0ZFOuWvfTpfSlLeQiHWwG9NxI8+yiSPP5hV5k4jw==
-X-Received: by 2002:a05:6512:3a9:b0:4fe:5860:7abf with SMTP id v9-20020a05651203a900b004fe58607abfmr6929316lfp.13.1695053031505;
-        Mon, 18 Sep 2023 09:03:51 -0700 (PDT)
+        bh=I+18fO8c7Dk0qCgNhOL8JkONKbHnDNHi1cgc68a1fr4=;
+        b=mgng6xMiHmoYhAH1zVikW5Ubmhkdorzuwex188V74HNAKsLa8UttvaFLiCG4uIYvLO
+         1YYuKdz/CLejrGqvSCN5v4XyrWZvmdauEoOwZi+yQH2pEbL/Uokj/kRxron2+3ob/JhP
+         0olr1oJ6J69BwaB6sRcGStAEw9IRF+feE4hZUbD1UrAHKbb6sqvA1gNXsjHYmQVYc/BU
+         INJWk8ZEtQz+PWgtafTsi6KRg8EL/CQqVaC343jNZ8RJo0J31ceSp+oEbBNLlWlnarfw
+         n91xSqdkudOjvnyQ8sTkw2PLtmSE5kwoQwgBu6Yl3UNBh4Ekl4dEp55Dccvpj4LDNjpL
+         NbaQ==
+X-Gm-Message-State: AOJu0YyXUnmsKzpHJ0nQmR1YZLTtf63k8Oy9wiZZy+5OO83BJIWT+DwK
+	oATVnD6S8L3uq+CoVEyWoa38yC/A
+X-Google-Smtp-Source: AGHT+IGkFn7qy0jz8oacmoGjjfPL41FojFiYCtkDQb0dCjnyLoNnL5YigEsFHJXz/34UHFIkqAHEBQ==
+X-Received: by 2002:a17:906:74db:b0:9ad:e3f0:f335 with SMTP id z27-20020a17090674db00b009ade3f0f335mr6095624ejl.70.1695053037410;
+        Mon, 18 Sep 2023 09:03:57 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id n3-20020a50cc43000000b0053132e5ea61sm913803edi.30.2023.09.18.09.03.49
+        by smtp.gmail.com with ESMTPSA id qt11-20020a170906eceb00b009a19fa8d2e9sm6481188ejb.206.2023.09.18.09.03.55
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:03:51 -0700 (PDT)
+        Mon, 18 Sep 2023 09:03:56 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -128,16 +128,16 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Markus Armbruster <armbru@redhat.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 10/22] target/hppa: Create timer *after* accelerator vCPU is realized
-Date: Mon, 18 Sep 2023 18:02:43 +0200
-Message-ID: <20230918160257.30127-11-philmd@linaro.org>
+Subject: [PATCH 11/22] target/nios2: Create IRQs *after* accelerator vCPU is realized
+Date: Mon, 18 Sep 2023 18:02:44 +0200
+Message-ID: <20230918160257.30127-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: LqNBOlzJOU9k
+X-TUID: DqwWnGHgJUY4
 
 Architecture specific hardware doesn't have a particular dependency
 on the accelerator vCPU (created with cpu_exec_realizefn), and can
@@ -146,30 +146,42 @@ generic API simplification (in few commits).
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/hppa/cpu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/nios2/cpu.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
-index 49082bd2ba..b0d106b6c7 100644
---- a/target/hppa/cpu.c
-+++ b/target/hppa/cpu.c
-@@ -131,8 +131,6 @@ static void hppa_cpu_realizefn(DeviceState *dev, Error **errp)
-         return;
-     }
+diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+index 7a92fc5f2c..f500ca7ba2 100644
+--- a/target/nios2/cpu.c
++++ b/target/nios2/cpu.c
+@@ -201,14 +201,6 @@ static void nios2_cpu_realizefn(DeviceState *dev, Error **errp)
+     Nios2CPUClass *ncc = NIOS2_CPU_GET_CLASS(dev);
+     Error *local_err = NULL;
  
--    acc->parent_realize(dev, errp);
+-#ifndef CONFIG_USER_ONLY
+-    if (cpu->eic_present) {
+-        qdev_init_gpio_in_named(DEVICE(cpu), eic_set_irq, "EIC", 1);
+-    } else {
+-        qdev_init_gpio_in_named(DEVICE(cpu), iic_set_irq, "IRQ", 32);
+-    }
+-#endif
 -
- #ifndef CONFIG_USER_ONLY
-     {
-         HPPACPU *cpu = HPPA_CPU(cs);
-@@ -140,6 +138,8 @@ static void hppa_cpu_realizefn(DeviceState *dev, Error **errp)
-                                         hppa_cpu_alarm_timer, cpu);
-     }
- #endif
-+
-+    acc->parent_realize(dev, errp);
- }
+     cpu_exec_realizefn(cs, &local_err);
+     if (local_err != NULL) {
+         error_propagate(errp, local_err);
+@@ -220,6 +212,14 @@ static void nios2_cpu_realizefn(DeviceState *dev, Error **errp)
+     /* We have reserved storage for cpuid; might as well use it. */
+     cpu->env.ctrl[CR_CPUID] = cs->cpu_index;
  
- static void hppa_cpu_initfn(Object *obj)
++#ifndef CONFIG_USER_ONLY
++    if (cpu->eic_present) {
++        qdev_init_gpio_in_named(DEVICE(cpu), eic_set_irq, "EIC", 1);
++    } else {
++        qdev_init_gpio_in_named(DEVICE(cpu), iic_set_irq, "IRQ", 32);
++    }
++#endif
++
+     ncc->parent_realize(dev, errp);
+     cpu_reset(cs);
+ }
 -- 
 2.41.0

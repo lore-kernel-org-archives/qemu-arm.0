@@ -1,75 +1,75 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011785ejb;
-        Mon, 18 Sep 2023 09:04:45 -0700 (PDT)
-X-Received: by 2002:a17:906:cc4d:b0:9a1:bcf9:4f99 with SMTP id mm13-20020a170906cc4d00b009a1bcf94f99mr7963281ejb.36.1695053085686;
-        Mon, 18 Sep 2023 09:04:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695053085; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011882ejb;
+        Mon, 18 Sep 2023 09:04:51 -0700 (PDT)
+X-Received: by 2002:a05:6512:b93:b0:503:a76:4eeb with SMTP id b19-20020a0565120b9300b005030a764eebmr5367119lfv.16.1695053091407;
+        Mon, 18 Sep 2023 09:04:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695053091; cv=none;
         d=google.com; s=arc-20160816;
-        b=BnJaEbJWKsGpWKSOMVMc+7TEacjxRbaSdOIbGh1Xh8lob1SJ1MwgKNGv+ik5/YFnhT
-         5x/CCc5ABmjEhEnA1t6lMR6w1MS7YRIvnN0tvEYMD2rVf5BGux7bYe8AR1TKVTHIVQPH
-         +9Ir0eLlAaVQFxq1Tmbc/KNITLJAt+qHZVID1F7eQwQXafH3t624m7em+Gaz4CCgttqq
-         c1+N68h4PZ5HeoEFPtOR11Aw0+TamPEIsryqRFUDqJwR3HcWZc8XTq06GgrUNDJ1z6K7
-         ptgk0N+iTo7TnCK/QDDz0rTk8CDEG96o/iWXg/zWejh2+qLQLoaMGyWu1zlxO/zkmgXg
-         A3/g==
+        b=rwffA1z54m8ZWOkt+jNlfRzaXgFR+9SKDA2dAd5lZ8xffZIHaKaSTlE4TjOekAzcbL
+         p5QISDgtbRIE47JE3+PIz+KtlZWrf8bVx3Rcz6PFAA2OghA+cLAkqRXuBMMQ76OADbmp
+         AjqJDT6fzLHJdk7HNdASwQVnyD12rQ+xp/DBTlsdT2Ze7v8TomH+AayAS+terKU0Zd+n
+         ipwF6RHH8kI6Zlzx+zestJypWYYukm0+F7B+OxywFrxQ0zmX0MAMPKj5zvshMI5dbhv6
+         4nGHfW62No4C1MA7r/dFJ35gmDJLO/6lG9BihHTWv9RlANfOApeXtkjyuXZygU+N9dsG
+         yYzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=y7slh/pNTWelLfh1FzXsOutH1+zxCT/FLHdOf8nTB6I=;
+        bh=GMzTvk0FEO6I+ReA5ceoXcLeA6ER1WjzLpFKcs1vmU4=;
         fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=c1fnTVespxnPs3edg8bbz7d9JJhAxd2kiKiEKfXJw+F6rnVLPwcYff5p0ZS2Iks+SZ
-         Z6nUK7ldyMgbeMwlxWujvLL5WkBlh4uA3eQXm/Adi+kTqv+eIR6/t/vY4oPY+bqtiGhn
-         vqU9nP0FGl0V8dxPKrxA81D//uG8Chu8LXmF+/Bs5A6cGKKK1H95ARHmci4kM0v0cKxV
-         3G5RneU+eicdIXssOtG/UtR4yT06hKBbwvSCwfHPkiVpJpOP3VM7a75HTRx44vzzOf5b
-         9YkIsliqbSlKwvrDOk5a72ryWOl+jGywV6jRbZr/Kf5i7ToZ0TEJNlNwEHhAdOMqcbP7
-         QrNA==
+        b=0lMDR9hq0oqXBZV9wpNcGu8mu74oXKRL/1QFyO8Bgay4exIdqFwOFfs9tJxS6cLH/m
+         H9kvHttf09ajtYAhDJL6LjQg5Z9cDd0UxZ0l8rzfFQXWf9T/c07XzzwX97MC5NZS+P2N
+         XYpgKYz+DFulTGPeNEGzox/j8Ht3/6LTHRqW3MJvVHT+wL6+AOeJv0JFJWCRjrAnEdLe
+         ohl7JbpE6mDidsThm30TAM+eI0nLaUwarqa2lXeGlk9WTdo9ql6lIzhKm1K1beWoH7Iq
+         X05/GISILM0vRudEfswjszoy3ZUn7dKmq+QtRVncgPYqs75sQxGS4J4l3ebBtYtzWphn
+         Wv4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LG+hP83X;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vk0yfjUA;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id my16-20020a1709065a5000b009ad7f8b0605sor2717628ejc.2.2023.09.18.09.04.45
+        by mx.google.com with SMTPS id o4-20020a056512052400b00502c8bc9ac4sor2995994lfc.24.2023.09.18.09.04.51
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 09:04:45 -0700 (PDT)
+        Mon, 18 Sep 2023 09:04:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LG+hP83X;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vk0yfjUA;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695053085; x=1695657885; darn=linaro.org;
+        d=linaro.org; s=google; t=1695053091; x=1695657891; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=y7slh/pNTWelLfh1FzXsOutH1+zxCT/FLHdOf8nTB6I=;
-        b=LG+hP83XTm81HswSUgFRozHfwUW1Wq5SX4WvfggdxdMg5pJ5NJ7yMqL2Isn/dpXSgX
-         vo76POjPAc/7hNNtU8xb25EscsHtWgby3ESvQ/x28DUI5jTvVHr5eSLG+w+SImYGBAY+
-         UwgOpo8hLCEtMD7iar0Ah4MdgNWwTI7w1eQgN3qx7BUDqO5Qgk2j0ZEqimhdFeg+RRVk
-         YBresNNUVJani2XHAVPJYTc1fhZsJgubfsHBkOJ8Ap7kBY6nlnueXZVlWJr38kJ2Sx8J
-         Pug63haDUsgOhhXAcar9UOYsw63MyuWxc7OeHt9ZaJguzEqkjponGWGPCqU+yhpNqK7B
-         KTvQ==
+        bh=GMzTvk0FEO6I+ReA5ceoXcLeA6ER1WjzLpFKcs1vmU4=;
+        b=vk0yfjUA9ePwMTKVC5ZrJoMgeubKo0NJzMcEMUAOkCoJnuoGOjI0pU6zKJZODh/TLO
+         yqu6Q8e1lkCfeD2fHfPOQyJlXQvE9V6ZOrsxuu+ue4Iuu1fZt8k2JLioc26/XhTxycZv
+         yhwbbJith86Jkr+knrA5a3St7brGYg1RGgKrkW8nQxtlq2gVYbRuM3UvW776DQxE4OV1
+         mZLS0W2dmPVQl6Pm9ZzDFOSQUpiEZsdzYJi/6qg+nv3fH0Xrv3hWkdTggQ9ljMCrliOO
+         /dlP/cLBfz7pLHzYXgX+iMUXrr1Ebp837Jo2JEx+AVXJsmDfX4s7FdbFPQWzK7CnACTK
+         qqjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695053085; x=1695657885;
+        d=1e100.net; s=20230601; t=1695053091; x=1695657891;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=y7slh/pNTWelLfh1FzXsOutH1+zxCT/FLHdOf8nTB6I=;
-        b=b/xXh8TKdng6L6S/GJ7Jn95vclYUx2AIbeTcaqJ+i5ABEdY+43xIJq5FE3qlsKQVUY
-         hP2bzjHyk6iFY9VSUm6zHtbVDXLsCG/+F4e0SdHrOmCcz5Vl48ToW0rdStkPbxtLAXSG
-         AdOgrFVke8bvnqM2McpAuHXYBnOJ7+WhAxK8kEMdeUAgD7UXXe1zgHK2YECvEkd40LDI
-         nRUSjEBZA9+hmuAts/5SFEBXbgBs1snhoRuKOK/jfqHC7FKC5XEGU7VqWzYQSv0/WdMs
-         +BFyGkfUOOcPBuUlvBunQpv9Bpl1w5oo3bYM28VavqSDC+ybP6VIhfBCdviHnoipSlkX
-         6zCA==
-X-Gm-Message-State: AOJu0Yya/vfF1qIXGIfTQwJjA4kKblTyKT3ns3y5/OFYBf90FJs2OCZ4
-	r6ataT/LQn0Td8HTOBFcrI2nYJLf
-X-Google-Smtp-Source: AGHT+IF1uzqoMGcGEAlyaETsh01GEqG5TP+8vhZBqOT31xYKgtT4aKTdO73/67eFYWfUVkYSZ8Rjqw==
-X-Received: by 2002:a17:907:75f1:b0:9a5:cc73:a2a5 with SMTP id jz17-20020a17090775f100b009a5cc73a2a5mr6784701ejc.1.1695053085243;
-        Mon, 18 Sep 2023 09:04:45 -0700 (PDT)
+        bh=GMzTvk0FEO6I+ReA5ceoXcLeA6ER1WjzLpFKcs1vmU4=;
+        b=VOCxxGgUHWBr1vmHciW4/HS+XQteFkYJE49HKFlfZOpga4Gv1dDwGhDOeegYRC00h4
+         MeTENLFznSx0YhC8IzT1rvFFuW1j09jQBO5uZKzB8Hr2pe3CBCTAXMJRj5G1nxaBSJXd
+         uortiyDDMRQ3b3nC/BsO63C4gPqLhYcUBIB0M+Z/k5Svv/ralP9e2mePE7KZ5Bjj4exQ
+         7NYm4/az33UyW3z8I/BzsuvBghcxVi/tDJed5eI67SylpiBIsG1rfLuRmoOxVyhupB3l
+         YO1533EItsIhn1JQOv8a26G+FUkjc2eltXidZ6z+3S1ml/j0WiXaPoVATdKZPR9Oxhyw
+         2MJA==
+X-Gm-Message-State: AOJu0YwAVcoTbqUxVCdx1N6vLKkH6nPrDO1rm1yLfItp4wv7uV8Kuglo
+	ejtogdVeyi2CwLOweJ6u3/udzWcb
+X-Google-Smtp-Source: AGHT+IF2lowlwslUXKPMUOsRhTSe1sID6DU3fFY6oz4zaM9BZXy8URyT0npkn+KMnJlFujwR995gHQ==
+X-Received: by 2002:a05:6512:3f8:b0:503:95d:f2bd with SMTP id n24-20020a05651203f800b00503095df2bdmr4180507lfq.34.1695053091074;
+        Mon, 18 Sep 2023 09:04:51 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id lt10-20020a170906fa8a00b009737b8d47b6sm6568567ejb.203.2023.09.18.09.04.43
+        by smtp.gmail.com with ESMTPSA id i8-20020a0564020f0800b005309eb7544fsm4528407eda.45.2023.09.18.09.04.48
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:04:44 -0700 (PDT)
+        Mon, 18 Sep 2023 09:04:50 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -128,50 +128,70 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Markus Armbruster <armbru@redhat.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 20/22] target/s390x: Use s390_realize_cpu_model() as verify_accel_features()
-Date: Mon, 18 Sep 2023 18:02:53 +0200
-Message-ID: <20230918160257.30127-21-philmd@linaro.org>
+Subject: [PATCH 21/22] exec/cpu: Have cpu_exec_realize() return a boolean
+Date: Mon, 18 Sep 2023 18:02:54 +0200
+Message-ID: <20230918160257.30127-22-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: G4cNMHWoSfDf
+X-TUID: 8mzpcC+9HbtN
 
-s390_realize_cpu_model() checks if CPU model and definitions
-are compatible with the KVM / TCG accelerators, before realizing
-the vCPU. Use it directly as CPUClass::verify_accel_features()
-handler (called from cpu_exec_realizefn()).
+Following the example documented since commit e3fe3988d7 ("error:
+Document Error API usage rules"), have cpu_exec_realizefn()
+return a boolean indicating whether an error is set or not.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/s390x/cpu.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ include/hw/core/cpu.h | 2 +-
+ cpu.c                 | 6 ++++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 1a44a6d2b2..983dbfe563 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -231,11 +231,6 @@ static void s390_cpu_realizefn(DeviceState *dev, Error **errp)
-     S390CPUClass *scc = S390_CPU_GET_CLASS(dev);
-     Error *err = NULL;
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 1e940f6bb5..3dc6968428 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -1014,7 +1014,7 @@ G_NORETURN void cpu_abort(CPUState *cpu, const char *fmt, ...)
+ /* $(top_srcdir)/cpu.c */
+ void cpu_class_init_props(DeviceClass *dc);
+ void cpu_exec_initfn(CPUState *cpu);
+-void cpu_exec_realizefn(CPUState *cpu, Error **errp);
++bool cpu_exec_realizefn(CPUState *cpu, Error **errp);
+ void cpu_exec_unrealizefn(CPUState *cpu);
  
--    /* the model has to be realized before qemu_init_vcpu() due to kvm */
--    if (!s390_realize_cpu_model(cs, &err)) {
--        goto out;
--    }
--
-     cpu_exec_realizefn(cs, &err);
-     if (err != NULL) {
-         goto out;
-@@ -329,6 +324,7 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
+ /**
+diff --git a/cpu.c b/cpu.c
+index 84b03c09ac..96ae440b81 100644
+--- a/cpu.c
++++ b/cpu.c
+@@ -131,7 +131,7 @@ const VMStateDescription vmstate_cpu_common = {
+ };
+ #endif
  
-     scc->reset = s390_cpu_reset;
-     cc->class_by_name = s390_cpu_class_by_name,
-+    cc->verify_accel_features = s390_realize_cpu_model;
-     cc->has_work = s390_cpu_has_work;
-     cc->dump_state = s390_cpu_dump_state;
-     cc->query_cpu_fast = s390_query_cpu_fast;
+-void cpu_exec_realizefn(CPUState *cpu, Error **errp)
++bool cpu_exec_realizefn(CPUState *cpu, Error **errp)
+ {
+     /* cache the cpu class for the hotpath */
+     cpu->cc = CPU_GET_CLASS(cpu);
+@@ -142,7 +142,7 @@ void cpu_exec_realizefn(CPUState *cpu, Error **errp)
+     }
+ 
+     if (!accel_cpu_realizefn(cpu, errp)) {
+-        return;
++        return false;
+     }
+ 
+     /* NB: errp parameter is unused currently */
+@@ -169,6 +169,8 @@ void cpu_exec_realizefn(CPUState *cpu, Error **errp)
+         vmstate_register(NULL, cpu->cpu_index, cpu->cc->sysemu_ops->legacy_vmsd, cpu);
+     }
+ #endif /* CONFIG_USER_ONLY */
++
++    return true;
+ }
+ 
+ void cpu_exec_unrealizefn(CPUState *cpu)
 -- 
 2.41.0

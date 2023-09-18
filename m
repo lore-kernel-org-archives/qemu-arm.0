@@ -1,75 +1,75 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011387ejb;
-        Mon, 18 Sep 2023 09:04:19 -0700 (PDT)
-X-Received: by 2002:a17:906:cc14:b0:9ad:fc28:f8e2 with SMTP id ml20-20020a170906cc1400b009adfc28f8e2mr4096423ejb.45.1695053059120;
-        Mon, 18 Sep 2023 09:04:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695053059; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011456ejb;
+        Mon, 18 Sep 2023 09:04:24 -0700 (PDT)
+X-Received: by 2002:a17:906:5354:b0:9a5:7887:ef09 with SMTP id j20-20020a170906535400b009a57887ef09mr9252829ejo.32.1695053064428;
+        Mon, 18 Sep 2023 09:04:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695053064; cv=none;
         d=google.com; s=arc-20160816;
-        b=vkFhUAvcvvFsE/JJeQafxkOQFEOUCivhYUj8QTD4MVP/KLdiQovbNGGVZwSDLbXgKG
-         ySP9h5jvusPEzey6W0KDQJJQYly2vtJInIsyveH7+3zi5zZla6AUVAyISYM0g28ZUjMl
-         VOyCX9DJT3UL5tfB2J3JePkt6QHLdALcP32TWguYFEIsWHhniSkwmq7/tm1dQx2cWnGI
-         RuR9RVyRgzEYVyzCjRArPwEYTqlHGoUlqMuqhFn4IhmRdo2AgYMup45yBp5ptvQp22a2
-         JpCfcdQDtDAcWvDosQTj/Q+tZWxcuA3P0Ovq3xrxAqL3TBdPQS6tiBiOUaJ2sXRWdeaq
-         X6ww==
+        b=qO7ursckrepMSbVac92zH5GmMf4h6JwoH1lKP9fBZcO+cbjhhaONmgq/dC33y3yBO4
+         GfNukDSaI60PqDeqrqplgCcpbGt3+jvo2EhFiLWZ42N0opSBdQ5n4f9fYjuqQRNqsiyY
+         bLel7Jc892BxSEWJGM6PJht0MPAxkTU/Jlg/SxQ3VNals3KDuupOXIsvdLlpM/pZKEb4
+         dSOLB0xJm9y7dvEO+joyfWb+Gf4kI2MNjmHX8w8jfQKv9JMl7QKVKO7v3gfB+WXoUjM2
+         d7FPgEKIsrwzjIJiHNtu/f2toRhyYJ6fLom+5NxH7l3YKEyvEL79OwNEq/KNOrsuM2+p
+         1gEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=NjaIM1Qc6nHbnxZLIT5jjyB717NwyoCy1EteOD4KAlE=;
+        bh=s5SThQE8VrEigaiBVVD1aPn+S9Eqq7fLgyN+q+7eopw=;
         fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=xNsKUatc0GrBFdo0TJZzLWIyqLvfmtunPtwL6R/UujApWolsMSAPmUBYVaWNW8F+q6
-         tbLS9KGoY78DwpRlFoDfw0MZjxIleXkdn6YovOJHctPtKs6d4AxplhZL9amrXO3fOSg4
-         JJDp0JngQt2Ps89OimQtM0Ese/UqqPXaLsqTaJYW0B7RUNypf+42ikcnsdOEGPZBZOjL
-         UusAcXucXOp2mVS4cTiwB7oV+er3W909yo8iM8ob6LxCN403MscBXttWc/8mx6kOunSm
-         pXMsPy9cyHWEHNJRlI0hHBwaxEZSMvY97TOSD+/iQ60AHHgedgs4G8ar9ejEkyjrAAUt
-         cb7A==
+        b=cZoLVCbSHPAmqhhLkMzX6CvXFmIYc89UaSQlAvliW7xXAYdc460jmjbu3MyC87hOwp
+         GYJD0C2t7jKWNlP4fYZzUARoiyJjtm/74AgaQjw1dG74/6kZ/h+TjnAOVghgxphvUT/+
+         +EAiYiO88bfgh2QK1V8R8RynM4FJl+oQAR+HfTb3/G1j2j/zGVyqeeBk60Oh4WIOGAyt
+         CjiCsrJLzaffyTPISHhOCHVTEIbmNwAF9WGPiS1EL5uG5Wci7sfMBZnhQJNQ8OEAViop
+         z7A8+0wynzQRfDqGKIg5NDsDv/Zne4c93t0fzNsFVrq+8ut6StEz9st6F/oFSci14jPw
+         mnLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aW0H2grj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=c6VrWiLk;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id og4-20020a1709071dc400b009a1d1a041b1sor2835133ejc.11.2023.09.18.09.04.18
+        by mx.google.com with SMTPS id my13-20020a1709065a4d00b009a1ac488f0esor2781471ejc.2.2023.09.18.09.04.24
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 09:04:19 -0700 (PDT)
+        Mon, 18 Sep 2023 09:04:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aW0H2grj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=c6VrWiLk;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695053058; x=1695657858; darn=linaro.org;
+        d=linaro.org; s=google; t=1695053064; x=1695657864; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NjaIM1Qc6nHbnxZLIT5jjyB717NwyoCy1EteOD4KAlE=;
-        b=aW0H2grjLnxA+NmEHCEh++Cg5QzTKUiU24McqbJlkwRBLapGyMrqmv8lG7DLdgsQYj
-         dVOQyW8g46twGqzJiq5gk7zUetAR7i4tt0PvFL43v0FwLeVZ95rx4MaiAlKcMmN1oxqa
-         6Na/xcaYNWeMW9Mz+L6dMzTJP2fQN3XyQjoqhjbTRja7ngGq6l3IiA3b2mWtdmibOknX
-         7W60PgdJXUa1ylptMhGARwNbDEeRP66v00NetE9VQp0hgtdZDLH+SL00glLxYTKkYlqL
-         /TLQCNetruwdkAw/xX3HMIGcxPEweow7i8k06kNhDNS9PAPAILP1vLs48ZRnxM2Ajv7J
-         rUSQ==
+        bh=s5SThQE8VrEigaiBVVD1aPn+S9Eqq7fLgyN+q+7eopw=;
+        b=c6VrWiLk4RDhXkfz33Y8qJFSIjQM60jePl3F5YixlbxeE4Zv1mqhQ8zMFt3xJKm8sA
+         fk14uLFuCm4m3AQxGJXysI0MTAN7Emr0Ifx0Qr1cKXF+/fnl9MnNZo6EJQVh0YlsI0Gv
+         VNQllk0LGhP///eTLkHXJIZtuIdBbzyQAbVf/4ySmzTDWTq4e2y7onxuosB0eTt2JwYm
+         YdLVWqpD6faIX6ENEjLSlqS/qp+ENffNqY337AJePkN6H3gd4KWm+6gVciGoS+/vj+9F
+         wwUZyx8BwZc0CNeTAg+63SDijOYxbLJFDv0OF+T03qjzy0Y79JBGtMcBbg27nRWyQ4bs
+         dxeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695053058; x=1695657858;
+        d=1e100.net; s=20230601; t=1695053064; x=1695657864;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=NjaIM1Qc6nHbnxZLIT5jjyB717NwyoCy1EteOD4KAlE=;
-        b=tSQFTuEiNg/4UHTqCVe2JHJaQcDkF9udTqGupf5HfijILil/rxUCTz7y/iQUpWRKnq
-         zB18eE6WhrcnjYfsZrklytHx2g2DdehGEVB/6z0hwIkoYahkACGcWAPTuDccuwOgUd9S
-         XRrRnDdyXGsb2LKrLEST9Y5APChbYelQNQdvxoF4+8dP0f0QC2K4z8huAsXowlGGrp03
-         NlEMG74v7AJp0KB4dCi2DpBG6JTs8Hkqkd6FvsN7Zs5joWlN8eXKkewmFIVerbbjgD+m
-         bx7zf4XSextkE0zEGP12JI6xlQN6QfCP9BreR0yGbpsZwZIus0bH2xEpUl4QIDsZpQtO
-         V5Ww==
-X-Gm-Message-State: AOJu0YynORY/Eo38gkwYV2AK3+u2l8+aHtOAUxfCO+EJcbPgjTXBJcoS
-	N42ibhVroCrHUZb1cvowCOSpVdIy
-X-Google-Smtp-Source: AGHT+IH1BGqTiq3uZIcjIgDgFSn4hEE/bGsbSKhsdURXDBkyUNQTShuSyFgzOD2PM8QK12Z2NIlVUQ==
-X-Received: by 2002:a17:907:75f1:b0:9a1:da9a:f1c2 with SMTP id jz17-20020a17090775f100b009a1da9af1c2mr7861010ejc.11.1695053058645;
-        Mon, 18 Sep 2023 09:04:18 -0700 (PDT)
+        bh=s5SThQE8VrEigaiBVVD1aPn+S9Eqq7fLgyN+q+7eopw=;
+        b=K6BTAya0SOudMyPgKNahcWbPJvIWQX1my6eS99NnDAUXY0QNxhfK5VoWTqCuH05plY
+         tLfXfM2w+YP5bJHhZk2LeI2kNAd0DdRX+nM2xfWQyjy5YZ76Ulenyj2GPoeqLIVM/EM+
+         DOG7p4l39QNa/PFSBQNAJE4UlVwnsTxh0j03K9axFQKT2MICXe6wq1NB+EpeJJuZQ52d
+         g3DqVSWGxe5tw8MtYv+bVZ8CNzL1n77qt4DHsBOZlqd/8siYLjbnpuuegVYjIFDSy5LY
+         HjIal402RAp8sZCYQdcvt4YN4/htnkW3o4Fklspio1P7fk5DqF6YZ9CF4rRXOeaLoWdQ
+         VMyw==
+X-Gm-Message-State: AOJu0YyICJQlmI9eh7WDiCjoRztAGvahJ82QJygBwClqf/e+MiBRG1dI
+	Ve9ZCOzVBuuKlaGzBmkKvLKNM0aE
+X-Google-Smtp-Source: AGHT+IFdhAv8NMQe3eDFfz6fXbmFXmpOAUlZ51p/ozjG+nSdvaZT7LZnHlxk4GI+z0N+RInhKW7YXQ==
+X-Received: by 2002:a17:906:768f:b0:9ad:fb23:21cf with SMTP id o15-20020a170906768f00b009adfb2321cfmr4715553ejm.15.1695053064161;
+        Mon, 18 Sep 2023 09:04:24 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id f13-20020a170906390d00b00982a92a849asm6628019eje.91.2023.09.18.09.04.17
+        by smtp.gmail.com with ESMTPSA id c26-20020a170906341a00b00993470682e5sm6646928ejb.32.2023.09.18.09.04.22
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:04:18 -0700 (PDT)
+        Mon, 18 Sep 2023 09:04:23 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -128,66 +128,130 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Markus Armbruster <armbru@redhat.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 15/22] exec/cpu: Introduce CPUClass::verify_accel_features()
-Date: Mon, 18 Sep 2023 18:02:48 +0200
-Message-ID: <20230918160257.30127-16-philmd@linaro.org>
+Subject: [PATCH 16/22] target/arm: Extract verify_accel_features() from cpu_realize()
+Date: Mon, 18 Sep 2023 18:02:49 +0200
+Message-ID: <20230918160257.30127-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: iRnaThZFHrMc
+X-TUID: pDDl1+wy8qY9
 
-Some CPUs need to check the requested features are compatible
-with the requested accelerator. This has to be done *before*
-the accelerator realizes a vCPU.
-Introduce the verify_accel_features() handler and call it
-just before accel_cpu_realizefn().
+When looking at the arm_cpu_realizefn() method, most of the
+code run before the cpu_exec_realizefn() call checks whether
+the requested CPU features are compatible with the requested
+accelerator. Extract this code to a dedicated handler matching
+our recently added CPUClass::verify_accel_features() handler.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/core/cpu.h | 4 ++++
- cpu.c                 | 5 +++++
- 2 files changed, 9 insertions(+)
+ target/arm/cpu.c | 41 ++++++++++++++++++++++++-----------------
+ 1 file changed, 24 insertions(+), 17 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index c90cf3a162..1e940f6bb5 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -103,6 +103,9 @@ struct SysemuCPUOps;
-  * @class_by_name: Callback to map -cpu command line model name to an
-  * instantiatable CPU type.
-  * @parse_features: Callback to parse command line arguments.
-+ * @verify_accel_features: Callback to verify if all requested CPU are
-+ *        compatible with the requested accelerator. Called before the
-+ *        accelerator realize a vCPU.
-  * @reset_dump_flags: #CPUDumpFlags to use for reset logging.
-  * @has_work: Callback for checking if there is work to do.
-  * @memory_rw_debug: Callback for GDB memory access.
-@@ -183,6 +186,7 @@ struct CPUClass {
-      * class data that depends on the accelerator, see accel/accel-common.c.
-      */
-     void (*init_accel_cpu)(struct AccelCPUClass *accel_cpu, CPUClass *cc);
-+    bool (*verify_accel_features)(CPUState *cs, Error **errp);
- 
-     /*
-      * Keep non-pointer data at the end to minimize holes.
-diff --git a/cpu.c b/cpu.c
-index 0769b0b153..84b03c09ac 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -136,6 +136,11 @@ void cpu_exec_realizefn(CPUState *cpu, Error **errp)
-     /* cache the cpu class for the hotpath */
-     cpu->cc = CPU_GET_CLASS(cpu);
- 
-+    if (cpu->cc->verify_accel_features
-+        && !cpu->cc->verify_accel_features(cpu, errp)) {
-+        return false;
-+    }
-+
-     if (!accel_cpu_realizefn(cpu, errp)) {
-         return;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 46d3f70d63..a551383fd3 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1675,19 +1675,10 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
      }
+ }
+ 
+-static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
++static bool arm_cpu_verify_accel_features(CPUState *cs, Error **errp)
+ {
+-    CPUState *cs = CPU(dev);
+-    ARMCPU *cpu = ARM_CPU(dev);
+-    ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
++    ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+-    int pagebits;
+-    Error *local_err = NULL;
+-
+-    /* Use pc-relative instructions in system-mode */
+-#ifndef CONFIG_USER_ONLY
+-    cs->tcg_cflags |= CF_PCREL;
+-#endif
+ 
+     /* If we needed to query the host kernel for the CPU features
+      * then it's possible that might have failed in the initfn, but
+@@ -1699,10 +1690,13 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         } else {
+             error_setg(errp, "Failed to retrieve host CPU features");
+         }
+-        return;
++        return false;
+     }
+ 
+ #ifndef CONFIG_USER_ONLY
++    /* Use pc-relative instructions in system-mode */
++    cs->tcg_cflags |= CF_PCREL;
++
+     /* The NVIC and M-profile CPU are two halves of a single piece of
+      * hardware; trying to use one without the other is a command line
+      * error and will result in segfaults if not caught here.
+@@ -1710,12 +1704,12 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         if (!env->nvic) {
+             error_setg(errp, "This board cannot be used with Cortex-M CPUs");
+-            return;
++            return false;
+         }
+     } else {
+         if (env->nvic) {
+             error_setg(errp, "This board can only be used with Cortex-M CPUs");
+-            return;
++            return false;
+         }
+     }
+ 
+@@ -1733,23 +1727,35 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+             error_setg(errp,
+                        "Cannot enable %s when using an M-profile guest CPU",
+                        current_accel_name());
+-            return;
++            return false;
+         }
+         if (cpu->has_el3) {
+             error_setg(errp,
+                        "Cannot enable %s when guest CPU has EL3 enabled",
+                        current_accel_name());
+-            return;
++            return false;
+         }
+         if (cpu->tag_memory) {
+             error_setg(errp,
+                        "Cannot enable %s when guest CPUs has MTE enabled",
+                        current_accel_name());
+-            return;
++            return false;
+         }
+     }
+ #endif
+ 
++    return true;
++}
++
++static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
++{
++    CPUState *cs = CPU(dev);
++    ARMCPU *cpu = ARM_CPU(dev);
++    ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
++    CPUARMState *env = &cpu->env;
++    int pagebits;
++    Error *local_err = NULL;
++
+     cpu_exec_realizefn(cs, &local_err);
+     if (local_err != NULL) {
+         error_propagate(errp, local_err);
+@@ -2383,6 +2389,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+                                        &acc->parent_phases);
+ 
+     cc->class_by_name = arm_cpu_class_by_name;
++    cc->verify_accel_features = arm_cpu_verify_accel_features;
+     cc->has_work = arm_cpu_has_work;
+     cc->dump_state = arm_cpu_dump_state;
+     cc->set_pc = arm_cpu_set_pc;
 -- 
 2.41.0

@@ -1,75 +1,75 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3010445ejb;
-        Mon, 18 Sep 2023 09:03:15 -0700 (PDT)
-X-Received: by 2002:a05:6512:3da0:b0:503:1be5:24eb with SMTP id k32-20020a0565123da000b005031be524ebmr2688885lfv.50.1695052995403;
-        Mon, 18 Sep 2023 09:03:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695052995; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3010552ejb;
+        Mon, 18 Sep 2023 09:03:21 -0700 (PDT)
+X-Received: by 2002:a2e:9215:0:b0:2c0:20e3:9905 with SMTP id k21-20020a2e9215000000b002c020e39905mr557567ljg.21.1695053001155;
+        Mon, 18 Sep 2023 09:03:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695053001; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xf+SXqepCRTtZdYUl7mF9auu8Y3mLTPhiIpQGXkLDG8SJH4nvELqBl/YB/SifoEzkm
-         5IfqIIbuc0tiXzi2vN+tZ1QL87IPTjMovYSMUmPMnq0HJKDSqRavb1EptvApLp1Q9RsQ
-         SFan/W1Ak91F2lCWFHSzMpE9oCJ+2JrLc2Ix5AasMRRPVTpJsQn7BuIuaOxwcU8TjVBQ
-         bAKm7cDDgXSweQZ6z6I8lSZCA+dTlWfoyHbyJkJJ/GPILUXNoGx1nGhduErpW0yljs1L
-         u4AYowoGJ5pWvpmBTflRJLXXZ+75c6I0am4hhesi6ylJGnVb6KBADp9/uE0b2pS6st3z
-         0Y7g==
+        b=eooYwIRCD8dyEDIeouawDkA2N6lKqWC9Lr1lEEICxLVxQy5USiIB3DBLnEPx9eokGp
+         Jt/L4/eqnGELcjajtt9h6I7a20GP+b4fz7EtHN9uJZhwq9Su3BjvCvSzsfb6sMT8N6z3
+         0o3mivGS8VczejF9hcDReLZsLLCbEtIF8f/NYymu984sgnWQbvex+JPYNvocQ6Q1Y9I5
+         0+hfnpuUoPx9+pmYSeRnYi5RR/z+W1o05E5JpTVNN11BAMP8Y4LqIJZk6BXyBcu6V8sG
+         wzC+hUijqYcw3n2SEz9LflJ9pEBHOv1gtdZY+zO6pW9vvT949DtofZKz2ruu1ks8YnRf
+         6J3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=MazgQXWzZA8uxNgPyG3XxGvrbp91MALAwpKlSsIULzk=;
+        bh=IHtTfQAIBirG1HCAZXzmunPPBo4zEHxiDOOzxMZ7AZo=;
         fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=bTcCKWJfJKyB4QaWBq7x/8ECv+FIjSoJF1OpNTh/kD5JM7gPz71AMBRSssYc2FcIMH
-         LcIIirq7/rB3DjRAIbIM+wxY/+UrcEd8pUfGvFfLH2lAQQFZsqd11NYDW2jZQtHJxxX9
-         ZChk7Rj3O0nY/eeX/A/+UvLZchJf1Gxh4+lrqcEThsyN2flaNnlZ1b72aPO/g1bCAxNB
-         AyMa7uuC51pkBGp8pVi2yVyA8+yfjyt27IWLUs6QbvX7mQ3GfJpaT8NGbp9hGlaJFDfG
-         hSxJm2yj/fDnuJYDp7EHq+ENPxVlXpRjgWv24jxSvYLJZegOU+tt/w0surkqwqOQW/jk
-         JWkQ==
+        b=bgHl9X/rtWPfW8wjzaKSIjDKrLbcMiEbl2YO1aD6Gm/MqSM9unrebyS6wEdw6BIlpT
+         6vWuE9ltfixlxQRxFuXVDASt6X+yp3HMLerPS2aXyMytQp461AVVv1yDA9eyZzDDYg6t
+         /7Lwp6C0EATHKYvoNuSKbyEj32LNbRzhvcvVpm75ejTt55kc05AGhGYgN4nujhnpDpht
+         lpnR1IvOao3NhYCq3/T1sboTK44ttuqM6i7k38VbXouubAYuN+XyFYQO++WLZzJ2NqQa
+         fb1z8/Y0Jyv11bbLBFPPbmKmwPeowPZ+0ITzXm+9ZdSAUfw8nCpCaVnvL4vYrGEbWDXT
+         O6zA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qkjpcwp3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GdSeKJWN;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b14-20020a19644e000000b00500b8ccb1b0sor2957752lfj.2.2023.09.18.09.03.15
+        by mx.google.com with SMTPS id s18-20020a2e2c12000000b002c01f752630sor277001ljs.4.2023.09.18.09.03.20
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 09:03:15 -0700 (PDT)
+        Mon, 18 Sep 2023 09:03:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qkjpcwp3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GdSeKJWN;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695052995; x=1695657795; darn=linaro.org;
+        d=linaro.org; s=google; t=1695053000; x=1695657800; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MazgQXWzZA8uxNgPyG3XxGvrbp91MALAwpKlSsIULzk=;
-        b=Qkjpcwp3yOSRc46VM7SZJ+D+vxUJpe3ksoFgo94zTqNGtgd9d84vrBI6CgQxW+oAGJ
-         FQgruxFmexofbcDvwDWYTBByS3yTz04KN/h0zn2QSqwftUjGYYz1hvIxQFfy9kVoAvUU
-         s8Uko/HRGJBRMdztzm6w9Dn0l1M4G1+g0FHwU0un4tSK0W8y+hkDRgNmOtaBj759AQNq
-         tU2tUbmDipLA4LIhyc85L/cQ6HkHZzTZ9rmLJweHhfO8KiwEYYFC9EdRnWlHXlaWjynL
-         aWLWKbvkrvezD51x9DZ1ejNDLgty0yvy5lfz1vM5FfRU7IyHYpbMelQ7VX9cB83pt7CG
-         l4sA==
+        bh=IHtTfQAIBirG1HCAZXzmunPPBo4zEHxiDOOzxMZ7AZo=;
+        b=GdSeKJWN8ISGmIuZS7eTHsGfRBIvaRyrz4ZCe1ekuDQzZXYp0wb1tvX08xdbIFks+W
+         nXZLFDjEXOiY/HVzKw3ajRstFkRYJUQDs1bAHC9MuyVvG3308cuS912/FHH5+DFOVrD2
+         fp326CSQG5eqPRmqApyTUxJIsj8liW8ezfxwx+mms1orEVuzXFXfPb4LvHow0lkijvkq
+         3cr16m8B9AdsHki94hRLra4vgFEeIFzJnWE+rY2ZBfvwXDKN4GsrbRheNquP8n1WGwtf
+         DoeEmTM/7afp2/v38nCXfiLEaxB25cXNryMOURy81V7my/LQArZBiW1PhzZdpdWRleJa
+         3Pog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695052995; x=1695657795;
+        d=1e100.net; s=20230601; t=1695053000; x=1695657800;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MazgQXWzZA8uxNgPyG3XxGvrbp91MALAwpKlSsIULzk=;
-        b=G4LG/SEdR5B7VsGWFF1+8l/HloEUAXbDwrpS+PaUhwTg/TleEKh9VFpTJpaYwBT3R9
-         pqwHZD63vhVowH7tbNZskDc1NxCj3jcLzXmybjjX5iw8v286WpeLVoFvz2lr4pyLRgD0
-         YRvneavyMQ9VVYRiLVzaLMsv6pGoeCTJjXqxnMfjDZt2Ads111sKm1X0dBLYOgwQZnm1
-         APTTTFH1yyolpGp+7esgIX6dBHuHPteL+kz61n8HDRdXnfAmqkaZhQFR6cv9BaV8dZhW
-         BOnw2mzrIemNkNNY+z16IEo4jQOkK9x34x3YrxcBXjqctvwXvym4qR38IvvY+8VkYAso
-         t11g==
-X-Gm-Message-State: AOJu0YzvK1qe9rNlc73h3/yxzcZkzbR3d5uvcFbsgg5GDx47cRGZ4M82
-	dwTXruHTW/isfI1J7ZkPibIfGTAs
-X-Google-Smtp-Source: AGHT+IG8278V/bx3bmgpaUhHZZUcMrkwCw5Xh6lMORAxCV90jlud9/Vt30zNUM+Rqe+3rVD6prsUKA==
-X-Received: by 2002:a2e:8ed0:0:b0:2c0:d06:9e65 with SMTP id e16-20020a2e8ed0000000b002c00d069e65mr2857839ljl.8.1695052995061;
-        Mon, 18 Sep 2023 09:03:15 -0700 (PDT)
+        bh=IHtTfQAIBirG1HCAZXzmunPPBo4zEHxiDOOzxMZ7AZo=;
+        b=U/XKnRvKXnWTXwq8OYX+vA0PVwaBCH4F7g3Oy3fOoAU7UF/NxQyGHpIXGSqH+Gl0z6
+         ZQIjquhL2F4FiHNtlesPXM7qengCCdQHqoFjzikT0SNi9IdGgcePCkFJ4z5Hj/0hbeVF
+         ybd0Fc5g7yiTF4KGHD2xMKYyHxQLCUSDvnUFjbQ4m27U3HFscf8Q9WiNoIGuTf4wXX7q
+         ZeNCvN/zA18CRwKJDGMDJ5ye8dJD/xhhA4QNEDr374BPi/GdJ7coi8ZyqYp5oCsnwHmf
+         37Q62SWFAZXLi6MUC71es1OmGT4W7r0/qKIVuvI+bo81tgk/DKh7pvWOYBRO8g/XtX9O
+         WoAA==
+X-Gm-Message-State: AOJu0Yw1xtlHJb3MMbfjrtrGLxOI5kuCtYHkI+YF/CWbV8KlDxzuSsXL
+	VNjPdTD0APRwGjN5hxKD4+Cp1y/P
+X-Google-Smtp-Source: AGHT+IEWZ8OvbK8IRiy/Jhtc4eSQt1wBjNiYifGIN1NUEuxb4lugjSxo6X0cKrO69EMr+Le0e2o0NA==
+X-Received: by 2002:a2e:a178:0:b0:2ba:6519:c50f with SMTP id u24-20020a2ea178000000b002ba6519c50fmr8070679ljl.52.1695053000497;
+        Mon, 18 Sep 2023 09:03:20 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id r11-20020a170906350b00b009934b1eb577sm6608438eja.77.2023.09.18.09.03.13
+        by smtp.gmail.com with ESMTPSA id e7-20020a1709067e0700b0099bd0b5a2bcsm6658963ejr.101.2023.09.18.09.03.18
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:03:14 -0700 (PDT)
+        Mon, 18 Sep 2023 09:03:19 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -128,33 +128,286 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Markus Armbruster <armbru@redhat.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 03/22] target/i386/kvm: Correct comment in kvm_cpu_realize()
-Date: Mon, 18 Sep 2023 18:02:36 +0200
-Message-ID: <20230918160257.30127-4-philmd@linaro.org>
+Subject: [RFC PATCH 04/22] exec/cpu: Never call cpu_reset() before cpu_realize()
+Date: Mon, 18 Sep 2023 18:02:37 +0200
+Message-ID: <20230918160257.30127-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 0j/C727oUJPh
+X-TUID: Ecj9ZbMiuWUC
+
+QDev instance is expected to be in an unknown state until full
+object realization. Thus we shouldn't call DeviceReset() on an
+unrealized instance. Move the cpu_reset() call from *before*
+the parent realize() handler (effectively cpu_common_realizefn)
+to *after* it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/i386/kvm/kvm-cpu.c | 1 +
- 1 file changed, 1 insertion(+)
+RFC:
+I haven't audited all the call sites, but plan to do it,
+amending the result to this patch description. This used
+to be a problem on some targets, but as of today's master
+this series pass make check-{qtest,avocado}.
+---
+ target/arm/cpu.c       | 2 +-
+ target/avr/cpu.c       | 2 +-
+ target/cris/cpu.c      | 2 +-
+ target/hexagon/cpu.c   | 3 +--
+ target/i386/cpu.c      | 2 +-
+ target/loongarch/cpu.c | 2 +-
+ target/m68k/cpu.c      | 2 +-
+ target/mips/cpu.c      | 2 +-
+ target/nios2/cpu.c     | 2 +-
+ target/openrisc/cpu.c  | 2 +-
+ target/riscv/cpu.c     | 2 +-
+ target/rx/cpu.c        | 2 +-
+ target/s390x/cpu.c     | 2 +-
+ target/sh4/cpu.c       | 2 +-
+ target/tricore/cpu.c   | 2 +-
+ 15 files changed, 15 insertions(+), 16 deletions(-)
 
-diff --git a/target/i386/kvm/kvm-cpu.c b/target/i386/kvm/kvm-cpu.c
-index 7237378a7d..1fe62ce176 100644
---- a/target/i386/kvm/kvm-cpu.c
-+++ b/target/i386/kvm/kvm-cpu.c
-@@ -37,6 +37,7 @@ static bool kvm_cpu_realizefn(CPUState *cs, Error **errp)
-      *  -> cpu_exec_realizefn():
-      *            -> accel_cpu_realizefn()
-      *               kvm_cpu_realizefn() -> host_cpu_realizefn()
-+     *  -> cpu_common_realizefn()
-      *  -> check/update ucode_rev, phys_bits, mwait
-      */
-     if (cpu->max_features) {
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index b9e09a702d..6aca036b85 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2278,9 +2278,9 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
+ 
+     qemu_init_vcpu(cs);
+-    cpu_reset(cs);
+ 
+     acc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+diff --git a/target/avr/cpu.c b/target/avr/cpu.c
+index 8f741f258c..84d353f30e 100644
+--- a/target/avr/cpu.c
++++ b/target/avr/cpu.c
+@@ -120,9 +120,9 @@ static void avr_cpu_realizefn(DeviceState *dev, Error **errp)
+         return;
+     }
+     qemu_init_vcpu(cs);
+-    cpu_reset(cs);
+ 
+     mcc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ static void avr_cpu_set_int(void *opaque, int irq, int level)
+diff --git a/target/cris/cpu.c b/target/cris/cpu.c
+index a6a93c2359..079872a5cc 100644
+--- a/target/cris/cpu.c
++++ b/target/cris/cpu.c
+@@ -152,10 +152,10 @@ static void cris_cpu_realizefn(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    cpu_reset(cs);
+     qemu_init_vcpu(cs);
+ 
+     ccc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ #ifndef CONFIG_USER_ONLY
+diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
+index f155936289..7edc32701f 100644
+--- a/target/hexagon/cpu.c
++++ b/target/hexagon/cpu.c
+@@ -346,9 +346,8 @@ static void hexagon_cpu_realize(DeviceState *dev, Error **errp)
+                              "hexagon-hvx.xml", 0);
+ 
+     qemu_init_vcpu(cs);
+-    cpu_reset(cs);
+-
+     mcc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ static void hexagon_cpu_init(Object *obj)
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index a23d4795e0..7faaa6915f 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -7455,9 +7455,9 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+         }
+     }
+ #endif /* !CONFIG_USER_ONLY */
+-    cpu_reset(cs);
+ 
+     xcc->parent_realize(dev, &local_err);
++    cpu_reset(cs);
+ 
+ out:
+     if (local_err != NULL) {
+diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+index 65f9320e34..8029e70e76 100644
+--- a/target/loongarch/cpu.c
++++ b/target/loongarch/cpu.c
+@@ -565,10 +565,10 @@ static void loongarch_cpu_realizefn(DeviceState *dev, Error **errp)
+ 
+     loongarch_cpu_register_gdb_regs_for_features(cs);
+ 
+-    cpu_reset(cs);
+     qemu_init_vcpu(cs);
+ 
+     lacc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ #ifndef CONFIG_USER_ONLY
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+index 70d58471dc..2bc0a62f0e 100644
+--- a/target/m68k/cpu.c
++++ b/target/m68k/cpu.c
+@@ -321,10 +321,10 @@ static void m68k_cpu_realizefn(DeviceState *dev, Error **errp)
+ 
+     m68k_cpu_init_gdb(cpu);
+ 
+-    cpu_reset(cs);
+     qemu_init_vcpu(cs);
+ 
+     mcc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ static void m68k_cpu_initfn(Object *obj)
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 63da1948fd..8d6f633f72 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -492,10 +492,10 @@ static void mips_cpu_realizefn(DeviceState *dev, Error **errp)
+     fpu_init(env, env->cpu_model);
+     mvp_init(env);
+ 
+-    cpu_reset(cs);
+     qemu_init_vcpu(cs);
+ 
+     mcc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ static void mips_cpu_initfn(Object *obj)
+diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
+index bc5cbf81c2..876a6dcad2 100644
+--- a/target/nios2/cpu.c
++++ b/target/nios2/cpu.c
+@@ -217,12 +217,12 @@ static void nios2_cpu_realizefn(DeviceState *dev, Error **errp)
+ 
+     realize_cr_status(cs);
+     qemu_init_vcpu(cs);
+-    cpu_reset(cs);
+ 
+     /* We have reserved storage for cpuid; might as well use it. */
+     cpu->env.ctrl[CR_CPUID] = cs->cpu_index;
+ 
+     ncc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ #ifndef CONFIG_USER_ONLY
+diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+index 61d748cfdc..cd25f1e9d5 100644
+--- a/target/openrisc/cpu.c
++++ b/target/openrisc/cpu.c
+@@ -142,9 +142,9 @@ static void openrisc_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
+ 
+     qemu_init_vcpu(cs);
+-    cpu_reset(cs);
+ 
+     occ->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ static void openrisc_cpu_initfn(Object *obj)
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index f227c7664e..7566757346 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -1532,9 +1532,9 @@ static void riscv_cpu_realize(DeviceState *dev, Error **errp)
+ #endif
+ 
+     qemu_init_vcpu(cs);
+-    cpu_reset(cs);
+ 
+     mcc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ #ifndef CONFIG_USER_ONLY
+diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+index 157e57da0f..c9c8443cbd 100644
+--- a/target/rx/cpu.c
++++ b/target/rx/cpu.c
+@@ -138,9 +138,9 @@ static void rx_cpu_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     qemu_init_vcpu(cs);
+-    cpu_reset(cs);
+ 
+     rcc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ static void rx_cpu_set_irq(void *opaque, int no, int request)
+diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+index df167493c3..0f0b11fd73 100644
+--- a/target/s390x/cpu.c
++++ b/target/s390x/cpu.c
+@@ -254,6 +254,7 @@ static void s390_cpu_realizefn(DeviceState *dev, Error **errp)
+     s390_cpu_gdb_init(cs);
+     qemu_init_vcpu(cs);
+ 
++    scc->parent_realize(dev, &err);
+     /*
+      * KVM requires the initial CPU reset ioctl to be executed on the target
+      * CPU thread. CPU hotplug under single-threaded TCG will not work with
+@@ -266,7 +267,6 @@ static void s390_cpu_realizefn(DeviceState *dev, Error **errp)
+         cpu_reset(cs);
+     }
+ 
+-    scc->parent_realize(dev, &err);
+ out:
+     error_propagate(errp, err);
+ }
+diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
+index 61769ffdfa..656d71f74a 100644
+--- a/target/sh4/cpu.c
++++ b/target/sh4/cpu.c
+@@ -228,10 +228,10 @@ static void superh_cpu_realizefn(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    cpu_reset(cs);
+     qemu_init_vcpu(cs);
+ 
+     scc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ static void superh_cpu_initfn(Object *obj)
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index 133a9ac70e..a3610aecca 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -118,10 +118,10 @@ static void tricore_cpu_realizefn(DeviceState *dev, Error **errp)
+     if (tricore_has_feature(env, TRICORE_FEATURE_131)) {
+         set_feature(env, TRICORE_FEATURE_13);
+     }
+-    cpu_reset(cs);
+     qemu_init_vcpu(cs);
+ 
+     tcc->parent_realize(dev, errp);
++    cpu_reset(cs);
+ }
+ 
+ 
 -- 
 2.41.0

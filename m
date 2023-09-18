@@ -1,75 +1,75 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011162ejb;
-        Mon, 18 Sep 2023 09:04:03 -0700 (PDT)
-X-Received: by 2002:a17:906:76c2:b0:9a6:1560:42da with SMTP id q2-20020a17090676c200b009a6156042damr8249573ejn.15.1695053043309;
-        Mon, 18 Sep 2023 09:04:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695053043; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011241ejb;
+        Mon, 18 Sep 2023 09:04:08 -0700 (PDT)
+X-Received: by 2002:a17:907:78d9:b0:9aa:1c70:1654 with SMTP id kv25-20020a17090778d900b009aa1c701654mr8707426ejc.54.1695053048623;
+        Mon, 18 Sep 2023 09:04:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695053048; cv=none;
         d=google.com; s=arc-20160816;
-        b=ifRW6N4XM1jpBZR46j83RS0+bNdX5x8Hzeq0w/D33V5nJNE7/fP/GbgS40VPBViiyr
-         fVjtlpVwnx3wWTDMSOdgOA51mx1kjrcfbn/Hk6GTpAOeDWeg/xv6e+hxt8yUjtq88+a9
-         sCJMtnT5mfIQW03QG2SBfZeW+huUu69P8CuFw7Fbuvd6uQEaAtIf7WjBc43ssWkeKg3A
-         N13F++ZJfVZz6tJ3tUiVfnIhEXg8dw6QDRjZdZGm4ty3CAteb9Fg+XMCDTT307exy2Xl
-         RL/IEtEbkq0r5mjFrcikjnwWAbCl+z+sH0E67gfJlxb17paFzozap9SLiuFpvBP33928
-         d5Ow==
+        b=Nq1OHm6qHDygTmdWbMNfy38td0eRAyh6u20rDH82V0DHHkq5YIRgiFGlFBxKCDIbrV
+         qA69yfJYrRjN64SiYL+8jYDP+Hl3y8VyInE4WMh1ZXZ3uufldrmiKP+4czifHVu0R0HT
+         ihb5w4cvKD2gBJ5NAGzSQxB+1vZe9Bzq8YLdwo8cK2YUbUPApv5o9NNJJBXZzgN28FVL
+         WA2CVq3z9Lbrr/S+SFjhuJhaapWwIoYnhpmPhIWVXephl2ANs3cmT2CbspZ4naEpw+6x
+         siRB7hYNefsoPBVlQVg9roZZFzUFoWAsx6RfHU7RThZeZGzTur8/7wAv+oE9s1obm6sq
+         mtmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DBZjR8eqTRO2FcjHJbn6UW72+cRDsZ12eh5J24aMJRM=;
+        bh=YpBrxdgyPGajszRQj4tnQ2gfsy466T4SLwv71ztnz3k=;
         fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=c5Xg5SAV78LawySnwHSlfYUz2IRNB/397WIvpmMlyMYnJtEGI/Rk/ikNroOjiUpUbW
-         h9ngIlu6p5TBucErfo3e94PuRD1zleVBgJB+9VQbmoJb1s0g4niJ0rmwzmBJ5+ICrVxd
-         X2/Oovv0H+8fLnqf+hq5ENHmqaUsIuo/AaJDwQ49SuNm8E2LbW4Q8kjnmIQ15ucQFT/c
-         JTVlpMA8qkQCWK+6rwe85JII3F3rRMY7c9CnAKzn1kOaZenFilg0R8278iDcUAO+uUtW
-         l2SlLN6+XxtjRMgrSQcL9hs/LMa3cnCgzUodO+4f6VoLFeKUW8N+Eo+1U22DuGJqb8cu
-         vvIg==
+        b=QWjsXvGsTOZ4uu6odvghgYWzgXUxtyVJR9+2LmcJPLSW3NEr5/CCp04PI0s+134swY
+         /VSBxoaSjvvsUta5XFuB+UvxFpi8vrWYyAq5eiupP6G35pdjMlrYYlxskr2buWNN+LQM
+         M+fIxOCe0ZTMhbLW5oXfF+mDoASTAF+CvGBp2yHRh/j5LONCtbS0ViG2crFylo7+HH2j
+         H8qj8+sAwm52Ver+mOiKB6mn5kNdEaiEkL/ctZgi8iQMgkSFXGOCrc4CciICDnhTdmbK
+         2Zuhx3AqOky84Vu68zbTycd1XB1yanOPNc53EN70bMWak1ERdaZoeI5K700vvNMPlkmC
+         Xxmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="HgarUdI/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mfc+BDkF;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id jy16-20020a170907763000b009adae266a73sor2828971ejc.19.2023.09.18.09.04.03
+        by mx.google.com with SMTPS id hz9-20020a1709072ce900b009a9e8eff070sor2879045ejc.0.2023.09.18.09.04.08
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 09:04:03 -0700 (PDT)
+        Mon, 18 Sep 2023 09:04:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="HgarUdI/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mfc+BDkF;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695053043; x=1695657843; darn=linaro.org;
+        d=linaro.org; s=google; t=1695053048; x=1695657848; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=DBZjR8eqTRO2FcjHJbn6UW72+cRDsZ12eh5J24aMJRM=;
-        b=HgarUdI/Po38UFUjndsOeBJAGSttXP56gR5hfa9dvdd2tL9ITebGMo6bNTreQmMbKX
-         dWmCTpP5ilWV/8Df8Aqd+ei2wjf8dwfyLugRm1V4vW2oM5wwNJTJuRmAKakG+rE6Q7Ub
-         KtvkEvD4SdhzqmIjIIP42HOh53zsjZ2kcV9iTkt4Q+TqS1nHLHHszpwQx7dhOyM88Cc6
-         anYKuMrVaR0aGeQKNPWbMfVHgBNezlLal4SrjKH91Nx5/XmQCb2C96XciASo5ybgPj9u
-         jbLOtvN8nT/137Dv+sK4CHHNBeMNWUXoIwhTtRvGXUm+PW3aWUixKVbJc8Etlzhpvzsp
-         Pnxg==
+        bh=YpBrxdgyPGajszRQj4tnQ2gfsy466T4SLwv71ztnz3k=;
+        b=mfc+BDkFd3zZrSJzuWeegxPSRQ34wMGjCetKYVoi7bVPDMwXSXVs5Dwi4+5RDZWXbo
+         GC8glN6hvZugF2NQ7zNbCju+MbIyXVwkrJ8U6v38blEcEd9HvJgjDhovnkjpvR4xnons
+         Djbw0OyBPEyrlX+1/zV+OTtxRacflD277+XKn7M1Tnvp411mYTX3uDrjYPqXju74uQM3
+         j51A8/9nX5WHQN+tL3NpEaRfv12JxtSSAmrmzghWTvKY8N+flJxnQW7/bF6LkPz61rdV
+         MKrptKY/gXddlN2VhFPtC8Kb3i9XU26W+4PQWnEA7iI/zsMYeuvs43Er55gFP+wUzv3l
+         1a9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695053043; x=1695657843;
+        d=1e100.net; s=20230601; t=1695053048; x=1695657848;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=DBZjR8eqTRO2FcjHJbn6UW72+cRDsZ12eh5J24aMJRM=;
-        b=lbsZOJ5m4JP2Ha2LWWwdhaEzxuZAfD9FOxiAkxPKVRmIH1L4X78IhMgprLSEpfZYYp
-         r+Xji/Yb4FvTxe+3Hkt6S4damwIFLybkDDzRNN6Vgotn3QJQ6QhGfuB4TpfRDBvZlbpO
-         IwQTmQDUVActKvk1t9aiw+JOu/2+sDYSBBK9Z42UO7ltyIjd4qmzbwNzt0Rqwc6c+Uld
-         j/jQmifl8t3/vq9fY7xSa8Pi8KbW00HM6qVHpmUpPcTxlx+i2DK5ZDjWSO7HGB6oWWUh
-         iLiawCBFTS7xUjM4wRS/WCvUXPMDEIGt8KCfv61XOWSuXz2cwuFHfGpyYJ5qwso17QfV
-         ELbA==
-X-Gm-Message-State: AOJu0YyOYw9QwtLc54RF8CcHgQi7VjT8dnBH2I4HoeRPEb/RV0MvH9Rx
-	8S260BbwvE7DwQjk/wKZCKG1+z6y
-X-Google-Smtp-Source: AGHT+IFSQh3aSy8WNfVsJ8gBPwr/UHTrTRJ5GVnUXxcFo9z61kuLhRihhFERCd0BfPS6IwLRcpPE5w==
-X-Received: by 2002:a17:906:209b:b0:9a9:fa50:1fa8 with SMTP id 27-20020a170906209b00b009a9fa501fa8mr8796931ejq.40.1695053042868;
-        Mon, 18 Sep 2023 09:04:02 -0700 (PDT)
+        bh=YpBrxdgyPGajszRQj4tnQ2gfsy466T4SLwv71ztnz3k=;
+        b=EH4DYkAPNchEGeGp321WpE/ESQoDfd4hfs7+p3wnltD92zHEJBx3e9Eo892yjcYc5m
+         p4IFFe7IYapK4UmbquceGlMlfas6gdSsJsIZSuzdgzH7dvoddQpU6h62we7v+diA3xcF
+         fMdpgaI3+htM9WhqlM3AO3VhgjdT1brpV8wGbX1xCBEnEUk3Hme34/1FjFfabPCdlgtS
+         sZx9YfGYSC6+OEiALerD77TgtP1IzNvytbStQNi2fmMMqTLBYX3E32Aw6pOnNS9dQ2ML
+         uzLJLS1AxIJU3MLchrG82rstmgD9aYPa7SicFaARi06pW+Y3alDc9tfyuk6RQqCzZmby
+         R9WA==
+X-Gm-Message-State: AOJu0YyegjoAc5q+srzXsMAcupTwWgZTt6GBYU+oSG6MszUfiM9YUuTl
+	275V1+8wPI0uPvx7h2oV8IyIjMvL
+X-Google-Smtp-Source: AGHT+IG6EnV1NPtLa02ojf1AOOFHw9u/ZZVKTH8rmKjYxc3URy3huazjFDCLq8lcPx0zxuOm3uW8nA==
+X-Received: by 2002:a17:907:2cd8:b0:9a5:c9a4:ba1a with SMTP id hg24-20020a1709072cd800b009a5c9a4ba1amr8408544ejc.59.1695053048266;
+        Mon, 18 Sep 2023 09:04:08 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id z15-20020a170906240f00b0099bd1ce18fesm6723198eja.10.2023.09.18.09.04.01
+        by smtp.gmail.com with ESMTPSA id n4-20020a170906088400b009928b4e3b9fsm6613541eje.114.2023.09.18.09.04.06
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:04:02 -0700 (PDT)
+        Mon, 18 Sep 2023 09:04:07 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -128,16 +128,16 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Markus Armbruster <armbru@redhat.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 12/22] target/mips: Create clock *after* accelerator vCPU is realized
-Date: Mon, 18 Sep 2023 18:02:45 +0200
-Message-ID: <20230918160257.30127-13-philmd@linaro.org>
+Subject: [PATCH 13/22] target/xtensa: Create IRQs *after* accelerator vCPU is realized
+Date: Mon, 18 Sep 2023 18:02:46 +0200
+Message-ID: <20230918160257.30127-14-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: sB7UG7Phnhks
+X-TUID: Ys82sGRdSiHY
 
 Architecture specific hardware doesn't have a particular dependency
 on the accelerator vCPU (created with cpu_exec_realizefn), and can
@@ -146,54 +146,34 @@ generic API simplification (in few commits).
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/mips/cpu.c | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+ target/xtensa/cpu.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/target/mips/cpu.c b/target/mips/cpu.c
-index 0aea69aaf9..7c81e6c356 100644
---- a/target/mips/cpu.c
-+++ b/target/mips/cpu.c
-@@ -464,20 +464,6 @@ static void mips_cpu_realizefn(DeviceState *dev, Error **errp)
-     MIPSCPUClass *mcc = MIPS_CPU_GET_CLASS(dev);
+diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
+index 300d19d45c..bbfd2d42a8 100644
+--- a/target/xtensa/cpu.c
++++ b/target/xtensa/cpu.c
+@@ -162,10 +162,6 @@ static void xtensa_cpu_realizefn(DeviceState *dev, Error **errp)
+     XtensaCPUClass *xcc = XTENSA_CPU_GET_CLASS(dev);
      Error *local_err = NULL;
  
--    if (!clock_get(cpu->clock)) {
 -#ifndef CONFIG_USER_ONLY
--        if (!qtest_enabled()) {
--            g_autofree char *cpu_freq_str = freq_to_str(CPU_FREQ_HZ_DEFAULT);
--
--            warn_report("CPU input clock is not connected to any output clock, "
--                        "using default frequency of %s.", cpu_freq_str);
--        }
+-    xtensa_irq_init(&XTENSA_CPU(dev)->env);
 -#endif
--        /* Initialize the frequency in case the clock remains unconnected. */
--        clock_set_hz(cpu->clock, CPU_FREQ_HZ_DEFAULT);
--    }
--    mips_cp0_period_set(cpu);
 -
      cpu_exec_realizefn(cs, &local_err);
      if (local_err != NULL) {
          error_propagate(errp, local_err);
-@@ -492,6 +478,20 @@ static void mips_cpu_realizefn(DeviceState *dev, Error **errp)
-     fpu_init(env, env->cpu_model);
-     mvp_init(env);
+@@ -174,6 +170,10 @@ static void xtensa_cpu_realizefn(DeviceState *dev, Error **errp)
  
-+    if (!clock_get(cpu->clock)) {
+     cs->gdb_num_regs = xcc->config->gdb_regmap.num_regs;
+ 
 +#ifndef CONFIG_USER_ONLY
-+        if (!qtest_enabled()) {
-+            g_autofree char *cpu_freq_str = freq_to_str(CPU_FREQ_HZ_DEFAULT);
-+
-+            warn_report("CPU input clock is not connected to any output clock, "
-+                        "using default frequency of %s.", cpu_freq_str);
-+        }
++    xtensa_irq_init(&XTENSA_CPU(dev)->env);
 +#endif
-+        /* Initialize the frequency in case the clock remains unconnected. */
-+        clock_set_hz(cpu->clock, CPU_FREQ_HZ_DEFAULT);
-+    }
-+    mips_cp0_period_set(cpu);
 +
-     mcc->parent_realize(dev, errp);
-     cpu_reset(cs);
+     xcc->parent_realize(dev, errp);
  }
+ 
 -- 
 2.41.0

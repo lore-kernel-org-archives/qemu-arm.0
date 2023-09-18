@@ -1,75 +1,75 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3010698ejb;
-        Mon, 18 Sep 2023 09:03:31 -0700 (PDT)
-X-Received: by 2002:a2e:900e:0:b0:2bc:f60c:445f with SMTP id h14-20020a2e900e000000b002bcf60c445fmr7797999ljg.36.1695053011279;
-        Mon, 18 Sep 2023 09:03:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695053011; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3010787ejb;
+        Mon, 18 Sep 2023 09:03:36 -0700 (PDT)
+X-Received: by 2002:a5d:5088:0:b0:317:e542:80a8 with SMTP id a8-20020a5d5088000000b00317e54280a8mr7924909wrt.15.1695053016526;
+        Mon, 18 Sep 2023 09:03:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695053016; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ue2eds59fbTPQHxVboyQtbYSEHMZdpsaWwT01s6ADNMqCh9B+bY/S/GmCe9NdoDsMu
-         wxY0yxN8hC/AOZwrSImMu4ao8TUSUWWf5JmZxwiSJYBBqOYV4QQZrFnZs5N27tKRPC4U
-         mhdifgC3P+mUvaqUwEalbRFK5ZbzRJ7pOmfOpwKwGKOCzCi44K0waWB0AlYwum8vNbhz
-         mEEbLxaVtaUx/xZ6RqDXvPAhBwkdhPrABZL1JkX3iOjSVxjMCd7z3mgAEPoQi1GA+eBo
-         Uv4OVFn+rUajLFpcHelAZrhXZpQxDcONP3/x6+4DTHxzZYvVfc0WPoEzNBdmLijRdSYT
-         fzEA==
+        b=JnpKYFerBZ/i1zR5aBTOXmNJ1VsjpbbgGg4hxquW5UdBflUw/y2m4pfv/8pTS/8ucE
+         OyvvMGa0/PRh0Wz5sYnBzoxg/cauN3AbkzhzydjbgQ2Y+wcceOA+Z2rJd3urp6Xc4jG+
+         3m8UOrrA7E1wIXYTFrOKXgHXEmONmpm6OTHU4wk/c/TwW5eGdsaAu+f7vQ4DG0khl1vZ
+         b3wyL9Z6ao1kVKSyrlvVNGQnZihV9UveAAkVw0sIw0Mgtild6b1eruWYRnlCVrozQfh8
+         G6dsrvDIKNxuQMQh72uoVKJQAxRYAYEAhjg4Utjl28Ocn5/IRqecw1a4LgH20Z0bRf+v
+         1iNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=PkWYWSxfkqk4N63ErKsmSMdZBfBTpiMgD55n/Z94pZY=;
-        fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=LD3fERi8Ex90laizw+oW6rNKUu+bRMYAOuR7CdotWVhJvK+cI8/fF/wSa51mhM4nrt
-         uhPHzTln4SU/by3YwJLLGAAanhSAZ1bKHAKQ5iT8YMGnWovR3zq8SxUdCrXvkp+Mtspt
-         jhJJWDpvVUOaiNsWRwp/qmty5HdEqoS+kPraCvEU+TSPRpoU9HDU9K9lnOvXkIs/LlJ5
-         vddT9800yooAwPUjUf0oH9aFBfmDSOYPEeb6atwO9Ca8jEPWImpFrmQObTQD+v0vFEwo
-         qdgOOnm+tzrFm4g/NjVmB2xB2rVh6OE89mbNWgMa7FXUwdEXyI3McTpNzWHsEPe9km/g
-         xt2Q==
+        bh=kTBjPJZgBk13UdBUXwIisPTyIoW0XcuNCZty165NaD0=;
+        fh=9HVYub9IUdGxYx1Tdl+8JO5e/0dtoki6g0y7v7HxI1I=;
+        b=LxJimXbxpJbTbh3a7A5caA44P2f17+iSp+4jaKi0bDFoKVfyVqmckteYp9774/lFOq
+         STzQze5UbIatNtVTSkw/uyIMQSuznc0xq0L2ZbStgsYrJjAYsjADoydD1C7kLQwpD4d2
+         nNtwUgQ7AO5aZt3yhm5yNtl5v5IN76vCULH21TFnmPq09S3MQaIrdj7Fj586me3aNlB2
+         NdQTaoJMK4WDlNH9gO/xD45Jj+MDRCk/GwrxBN6bdonp6/SuFIZ4yQAxWIDOMMJi/YcU
+         muHmFZ47e+krZIZYmeQEEll+VjeTDQmBSWiVnYtAd0cN8EzMtPy4h6RHqcsG1sN10jL5
+         35hA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OpG1gM1d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eXWOf1DG;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b1-20020a2eb901000000b002be5ce72ae1sor702472ljb.10.2023.09.18.09.03.31
+        by mx.google.com with SMTPS id hx13-20020a170906846d00b009adfc28f8e8sor929322ejc.8.2023.09.18.09.03.36
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 09:03:31 -0700 (PDT)
+        Mon, 18 Sep 2023 09:03:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OpG1gM1d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eXWOf1DG;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695053011; x=1695657811; darn=linaro.org;
+        d=linaro.org; s=google; t=1695053016; x=1695657816; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=PkWYWSxfkqk4N63ErKsmSMdZBfBTpiMgD55n/Z94pZY=;
-        b=OpG1gM1dNvUC536V/mvZfri1aiY5aJYuTzDQqWpo5C7iDc3wBGrUKANzkEFtK7op1f
-         Fr8G+7KcRB/ayP24ubIATXpwn+JFXhXT7MQO7WP4Bhnbw9o1BopVkj5mSfltQNqQjVqk
-         pf+1GXLO4b5Oq8RjKGH8v0k1qUzTYpe+DP14fhHb48cYN/usar0U98r8dBqyamn6wU5q
-         8PDs3NZcx0uMUpyK2ErhY36ZxwvDA0UxBe7zBhHJcz0EZtmSyC+eBosNUuBaN1DH+MXT
-         Qsa4TMflmnVj3m2YjZcqLabLObe2QoSPTHaSOqrCAfZpx3wroAJjDF7N1wcSttSX31Ji
-         0cpg==
+        bh=kTBjPJZgBk13UdBUXwIisPTyIoW0XcuNCZty165NaD0=;
+        b=eXWOf1DGHIUQ6SVfCkYGrBhHvj/+ScGV/McLwv3PEHSlkJvu67N0ltjkcmv8YbI4Og
+         gulsfes3ZlEihRsOr/5ClPaQCHlmgRPIIGRuqB7gkVAUacosEuTTl1PqPwicKhvhe/o4
+         qrmtq0YJetKrU3e//axoaIkgXPyYsMQfcqhqV+HxIl2d9Bl31Ag1GS5fsFAXjM4oYiTC
+         Pc3AJ+uxDZ68W6Tpe3pk2mVq3fxpWx5q8UGjaHjkKdFxjbyYtMZERtftaBBjDwgBGEpr
+         ycaeNpHfgP+xIsAez+gfnOpsY//UnG7SDLyHQOey4H7rklaWBBEQVO48Ryld0dgycIQ9
+         95Qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695053011; x=1695657811;
+        d=1e100.net; s=20230601; t=1695053016; x=1695657816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=PkWYWSxfkqk4N63ErKsmSMdZBfBTpiMgD55n/Z94pZY=;
-        b=SiIzHTb1IfYAIuKHfvsR08+ZMnOPc+im/dIGdeZkD/XDDh1zk+Rj3X3iTEFU0OM0Fs
-         pftm6m8MCwyxDs/diRbC8Q8xSGb8jYHkOcqu7uxrd6xPvz04l7D4o3pyeZLRENiqHi6z
-         WY3AP4Wty5GXJx0RpSODCkrSatnYInFD78/KWNiTXFQRSFVVt+qtaYqP2d1hPSIevCOK
-         hIMvRXqR4ncj71YLwpA87tnlYG6NlN2xQ/bLHm1W3oorPWnslJDsp/CXZpPpsy/XIu6b
-         +K3ZefDtM2GT0L8c9TxNGadmTX6kJZ+MVC2eUZboBcM6SL6tybxlcFFnQ1+LMXq6wevK
-         m9ug==
-X-Gm-Message-State: AOJu0Yz0P4lzL6z+s7/F53V1zIkvuGySVh9lydzaK3s8o07iiTl4OjBV
-	jaYRTEcRKo2BQ/QSQsYhpcC77hMX
-X-Google-Smtp-Source: AGHT+IG9O7CyLiK/FqL5kcaE3CE/w3qepssp8f0K4INaJRuY2qrHmvactqhGEUSaLUJRFKiBVFJyXQ==
-X-Received: by 2002:a2e:330c:0:b0:2b6:d13a:8e34 with SMTP id d12-20020a2e330c000000b002b6d13a8e34mr7309381ljc.46.1695053010845;
-        Mon, 18 Sep 2023 09:03:30 -0700 (PDT)
+        bh=kTBjPJZgBk13UdBUXwIisPTyIoW0XcuNCZty165NaD0=;
+        b=qOgluon6aOfgaXaYbffl/zM9V+RSeS9SJYaVO/FKJSU+lMexIjw/9CWtqRV7PK0pQT
+         sjMMNjt0VIzIon3ClHoLSYNUSqF9hG9RSxKJBoyvOVXgcZSWYbFlcYFQARrJquwtu1+c
+         NoH9p5bkd5uvKi9k471X0MhKzdgRSmZ2Eh3544QLfiimHptGYJP8572wcAKPI1wak9YK
+         GvjXU1l6aIa+BOsPQsXvjvDvZBU4NQcmZ1nEaFNVqyutRTkqcTqCYMuH8uSBeWhxeUzG
+         QUTycoZTR5PJN2t4ptGO+VV6/gmIiYvr8lDqKmK+eJLgxm0WvHAeBDW2HRr7Kw2BmoMh
+         ydSQ==
+X-Gm-Message-State: AOJu0YzqPT5v7tqLthEN2g/W3diyBgfcfnZKsqFd5bvQ2QqH0qzDmNiS
+	tjJQBn1oNICyjoxMF0vg7orAR0Uu
+X-Google-Smtp-Source: AGHT+IFq/QL5z5bo/y5y/kDRcLT1d9XsePcCQP72fHn+R4rgmGpcF6OIn0/xzDT8r3fspp9H+r5Uyw==
+X-Received: by 2002:a05:6402:1bc8:b0:530:be79:49e7 with SMTP id ch8-20020a0564021bc800b00530be7949e7mr6068787edb.37.1695053016011;
+        Mon, 18 Sep 2023 09:03:36 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id o15-20020a1709061d4f00b0099cf840527csm6708419ejh.153.2023.09.18.09.03.29
+        by smtp.gmail.com with ESMTPSA id eh16-20020a0564020f9000b005256aaa6e7asm1688491edb.78.2023.09.18.09.03.34
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:03:30 -0700 (PDT)
+        Mon, 18 Sep 2023 09:03:35 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -127,75 +127,125 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Michael Rolnik <mrolnik@gmail.com>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Markus Armbruster <armbru@redhat.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 06/22] exec/cpu: Call cpu_remove_sync() once in cpu_common_unrealize()
-Date: Mon, 18 Sep 2023 18:02:39 +0200
-Message-ID: <20230918160257.30127-7-philmd@linaro.org>
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	xianglai li <lixianglai@loongson.cn>,
+	"Salil Mehta" <salil.mehta@opnsrc.net>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Bibo Mao <maobibo@loongson.cn>
+Subject: [PATCH 07/22] exec/cpu: Introduce the CPU address space destruction function
+Date: Mon, 18 Sep 2023 18:02:40 +0200
+Message-ID: <20230918160257.30127-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bhiSu/4OFtWW
+X-TUID: sK+QRiXY2+6G
 
-While create_vcpu_thread() creates a vCPU thread, its counterpart
-is cpu_remove_sync(), which join and destroy the thread.
+From: xianglai li <lixianglai@loongson.cn>
 
-create_vcpu_thread() is called in qemu_init_vcpu(), itself called
-in cpu_common_realizefn(). Since we don't have qemu_deinit_vcpu()
-helper (we probably don't need any), simply destroy the thread in
-cpu_common_unrealizefn().
+Introduce new function to destroy CPU address space resources
+for cpu hot-(un)plug.
 
-Note: only the PPC and X86 targets were calling cpu_remove_sync(),
-meaning all other targets were leaking the thread when the vCPU
-was unrealized (mostly when vCPU are hot-unplugged).
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Co-authored-by: "Salil Mehta" <salil.mehta@opnsrc.net>
+Cc: "Salil Mehta" <salil.mehta@opnsrc.net>
+Cc: Xiaojuan Yang <yangxiaojuan@loongson.cn>
+Cc: Song Gao <gaosong@loongson.cn>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: Ani Sinha <anisinha@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Eduardo Habkost <eduardo@habkost.net>
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org>
+Cc: Yanan Wang <wangyanan55@huawei.com>
+Cc: "Daniel P. Berrangé" <berrange@redhat.com>
+Cc: Peter Xu <peterx@redhat.com>
+Cc: David Hildenbrand <david@redhat.com>
+Cc: Bibo Mao <maobibo@loongson.cn>
+Signed-off-by: xianglai li <lixianglai@loongson.cn>
+Message-ID: <3a4fc2a3df4b767c3c296a7da3bc15ca9c251316.1694433326.git.lixianglai@loongson.cn>
 ---
- hw/core/cpu-common.c  | 3 +++
- target/i386/cpu.c     | 1 -
- target/ppc/cpu_init.c | 2 --
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ include/exec/cpu-common.h |  8 ++++++++
+ include/hw/core/cpu.h     |  1 +
+ softmmu/physmem.c         | 24 ++++++++++++++++++++++++
+ 3 files changed, 33 insertions(+)
 
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index a3b8de7054..e5841c59df 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -221,6 +221,9 @@ static void cpu_common_unrealizefn(DeviceState *dev)
+diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+index 41788c0bdd..eb56a228a2 100644
+--- a/include/exec/cpu-common.h
++++ b/include/exec/cpu-common.h
+@@ -120,6 +120,14 @@ size_t qemu_ram_pagesize_largest(void);
+  */
+ void cpu_address_space_init(CPUState *cpu, int asidx,
+                             const char *prefix, MemoryRegion *mr);
++/**
++ * cpu_address_space_destroy:
++ * @cpu: CPU for which address space needs to be destroyed
++ * @asidx: integer index of this address space
++ *
++ * Note that with KVM only one address space is supported.
++ */
++void cpu_address_space_destroy(CPUState *cpu, int asidx);
  
-     /* NOTE: latest generic point before the cpu is fully unrealized */
-     cpu_exec_unrealizefn(cpu);
+ void cpu_physical_memory_rw(hwaddr addr, void *buf,
+                             hwaddr len, bool is_write);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 92a4234439..c90cf3a162 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -366,6 +366,7 @@ struct CPUState {
+     QSIMPLEQ_HEAD(, qemu_work_item) work_list;
+ 
+     CPUAddressSpace *cpu_ases;
++    int cpu_ases_ref_count;
+     int num_ases;
+     AddressSpace *as;
+     MemoryRegion *memory;
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index 18277ddd67..c75e3e8042 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -761,6 +761,7 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
+ 
+     if (!cpu->cpu_ases) {
+         cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
++        cpu->cpu_ases_ref_count = cpu->num_ases;
+     }
+ 
+     newas = &cpu->cpu_ases[asidx];
+@@ -774,6 +775,29 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
+     }
+ }
+ 
++void cpu_address_space_destroy(CPUState *cpu, int asidx)
++{
++    CPUAddressSpace *cpuas;
 +
-+    /* Destroy vCPU thread */
-+    cpu_remove_sync(cpu);
- }
- 
- static void cpu_common_initfn(Object *obj)
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index cb41d30aab..d79797d963 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -7470,7 +7470,6 @@ static void x86_cpu_unrealizefn(DeviceState *dev)
-     X86CPUClass *xcc = X86_CPU_GET_CLASS(dev);
- 
- #ifndef CONFIG_USER_ONLY
--    cpu_remove_sync(CPU(dev));
-     qemu_unregister_reset(x86_cpu_machine_reset_cb, dev);
- #endif
- 
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index e2c06c1f32..24d4e8fa7e 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -6853,8 +6853,6 @@ static void ppc_cpu_unrealize(DeviceState *dev)
- 
-     pcc->parent_unrealize(dev);
- 
--    cpu_remove_sync(CPU(cpu));
--
-     destroy_ppc_opcodes(cpu);
- }
- 
++    assert(asidx < cpu->num_ases);
++    assert(asidx == 0 || !kvm_enabled());
++    assert(cpu->cpu_ases);
++
++    cpuas = &cpu->cpu_ases[asidx];
++    if (tcg_enabled()) {
++        memory_listener_unregister(&cpuas->tcg_as_listener);
++    }
++
++    address_space_destroy(cpuas->as);
++
++    cpu->cpu_ases_ref_count--;
++    if (cpu->cpu_ases_ref_count == 0) {
++        g_free(cpu->cpu_ases);
++        cpu->cpu_ases = NULL;
++    }
++
++}
++
+ AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
+ {
+     /* Return the AddressSpace corresponding to the specified index */
 -- 
 2.41.0

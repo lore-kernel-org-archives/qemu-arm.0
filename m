@@ -1,75 +1,75 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011241ejb;
-        Mon, 18 Sep 2023 09:04:08 -0700 (PDT)
-X-Received: by 2002:a17:907:78d9:b0:9aa:1c70:1654 with SMTP id kv25-20020a17090778d900b009aa1c701654mr8707426ejc.54.1695053048623;
-        Mon, 18 Sep 2023 09:04:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695053048; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011301ejb;
+        Mon, 18 Sep 2023 09:04:14 -0700 (PDT)
+X-Received: by 2002:a17:907:360a:b0:98e:4f1:f987 with SMTP id bk10-20020a170907360a00b0098e04f1f987mr153516ejc.3.1695053053963;
+        Mon, 18 Sep 2023 09:04:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695053053; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nq1OHm6qHDygTmdWbMNfy38td0eRAyh6u20rDH82V0DHHkq5YIRgiFGlFBxKCDIbrV
-         qA69yfJYrRjN64SiYL+8jYDP+Hl3y8VyInE4WMh1ZXZ3uufldrmiKP+4czifHVu0R0HT
-         ihb5w4cvKD2gBJ5NAGzSQxB+1vZe9Bzq8YLdwo8cK2YUbUPApv5o9NNJJBXZzgN28FVL
-         WA2CVq3z9Lbrr/S+SFjhuJhaapWwIoYnhpmPhIWVXephl2ANs3cmT2CbspZ4naEpw+6x
-         siRB7hYNefsoPBVlQVg9roZZFzUFoWAsx6RfHU7RThZeZGzTur8/7wAv+oE9s1obm6sq
-         mtmA==
+        b=lYmcZmuLa25sJTUxJvC2KgLMppITQ34/YFWDcx3DvmiTzHW884n99yznQ/lVhGRlw8
+         tF4zbgaMBnVhVebzbfqj1+XTVGesAY+zXeR8Epf/W1WDaLzCtbO411IXN+3EwGo235HY
+         GZysiLKJi4SwIx+3Unk7k9O90FyP6yUYo1XW78r0ScC4t1A0w04SszNuroVzBJbokHLt
+         p4MCNDWJ2rU5vT2b7/sZgMDc090LU5U93mMh7GLB1xBrYOYeTsbtI3mfJE3zwgweLnkk
+         zY6CTNmK/MKZyRL4vQWdFcWe/2qnSn2aMx8a+DL1tVGSDgT0xfF0WT8E6uWtPX4Gkga3
+         EZLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YpBrxdgyPGajszRQj4tnQ2gfsy466T4SLwv71ztnz3k=;
+        bh=wbLvVhCdjkLoKVSI3XlIe8h3b/C8JwK6Lt4fUZyBeQw=;
         fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=QWjsXvGsTOZ4uu6odvghgYWzgXUxtyVJR9+2LmcJPLSW3NEr5/CCp04PI0s+134swY
-         /VSBxoaSjvvsUta5XFuB+UvxFpi8vrWYyAq5eiupP6G35pdjMlrYYlxskr2buWNN+LQM
-         M+fIxOCe0ZTMhbLW5oXfF+mDoASTAF+CvGBp2yHRh/j5LONCtbS0ViG2crFylo7+HH2j
-         H8qj8+sAwm52Ver+mOiKB6mn5kNdEaiEkL/ctZgi8iQMgkSFXGOCrc4CciICDnhTdmbK
-         2Zuhx3AqOky84Vu68zbTycd1XB1yanOPNc53EN70bMWak1ERdaZoeI5K700vvNMPlkmC
-         Xxmw==
+        b=SPWzAwDNfmWw1bRonwAl5tgqSqx9tEW44uJUC6XrVPf83bSv6H2ONjBvVS1/96wZW5
+         RHShif7j6IKX7x9D9JjNHJFJZiOSurA//4Q1tRWHkhfPkafbLsb34OP8WSob1qWLZ88b
+         kwAwkWQjdF5RQC8C2nqZOmAYTKw18+Sq0p9mWbHMzQGdSMrpSCqVRSoH+zi5s30Yt+f8
+         IsysVkhzFeu+PCXuA4wUDZkF+ZT+nRaJm27B8zE9oEIEDZKwMe+2YpSU+Oy33OGbl89V
+         uQtzbGkU6/KQuCEAKeR+vbKearRAbBSQMvCHYrr4QZ9TNFausJPts4bn0DLehoCFTK2M
+         aYmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mfc+BDkF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Yv+j0QJy;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id hz9-20020a1709072ce900b009a9e8eff070sor2879045ejc.0.2023.09.18.09.04.08
+        by mx.google.com with SMTPS id my31-20020a1709065a5f00b009adae270134sor4638809ejc.9.2023.09.18.09.04.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 09:04:08 -0700 (PDT)
+        Mon, 18 Sep 2023 09:04:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mfc+BDkF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Yv+j0QJy;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695053048; x=1695657848; darn=linaro.org;
+        d=linaro.org; s=google; t=1695053053; x=1695657853; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=YpBrxdgyPGajszRQj4tnQ2gfsy466T4SLwv71ztnz3k=;
-        b=mfc+BDkFd3zZrSJzuWeegxPSRQ34wMGjCetKYVoi7bVPDMwXSXVs5Dwi4+5RDZWXbo
-         GC8glN6hvZugF2NQ7zNbCju+MbIyXVwkrJ8U6v38blEcEd9HvJgjDhovnkjpvR4xnons
-         Djbw0OyBPEyrlX+1/zV+OTtxRacflD277+XKn7M1Tnvp411mYTX3uDrjYPqXju74uQM3
-         j51A8/9nX5WHQN+tL3NpEaRfv12JxtSSAmrmzghWTvKY8N+flJxnQW7/bF6LkPz61rdV
-         MKrptKY/gXddlN2VhFPtC8Kb3i9XU26W+4PQWnEA7iI/zsMYeuvs43Er55gFP+wUzv3l
-         1a9Q==
+        bh=wbLvVhCdjkLoKVSI3XlIe8h3b/C8JwK6Lt4fUZyBeQw=;
+        b=Yv+j0QJyfG7EWZ/BgOVy8momrsTZfJFuyp7ITqKmrvgzy4byq3vLY1RC10fAqwuV/+
+         oPeokcSwRUORlyU2vAaykf91MLwJOO+UDEaNpRBA1yXZwdcCP3gCDMdKAQiA4ZTCyLf2
+         jPKEDq+6WMmhgEMz0/FpOBqVwtgR/jYVhUWxS+sL7eY+Th+DgFKhwd6cPFz+tqYVuZ1T
+         VVEDME/F7Fa1DywlY5iLIajrvv8e+LjA2IFAWP16PxLjR/pzCTapAdovW69IkonyqK7D
+         sEps9qSzwMd5GJHhlG4bOCbHJHbizlRSOJ3fub7K8MlYTW+qDpY8LGu0PZ7pyuxOTJbQ
+         WIqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695053048; x=1695657848;
+        d=1e100.net; s=20230601; t=1695053053; x=1695657853;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=YpBrxdgyPGajszRQj4tnQ2gfsy466T4SLwv71ztnz3k=;
-        b=EH4DYkAPNchEGeGp321WpE/ESQoDfd4hfs7+p3wnltD92zHEJBx3e9Eo892yjcYc5m
-         p4IFFe7IYapK4UmbquceGlMlfas6gdSsJsIZSuzdgzH7dvoddQpU6h62we7v+diA3xcF
-         fMdpgaI3+htM9WhqlM3AO3VhgjdT1brpV8wGbX1xCBEnEUk3Hme34/1FjFfabPCdlgtS
-         sZx9YfGYSC6+OEiALerD77TgtP1IzNvytbStQNi2fmMMqTLBYX3E32Aw6pOnNS9dQ2ML
-         uzLJLS1AxIJU3MLchrG82rstmgD9aYPa7SicFaARi06pW+Y3alDc9tfyuk6RQqCzZmby
-         R9WA==
-X-Gm-Message-State: AOJu0YyegjoAc5q+srzXsMAcupTwWgZTt6GBYU+oSG6MszUfiM9YUuTl
-	275V1+8wPI0uPvx7h2oV8IyIjMvL
-X-Google-Smtp-Source: AGHT+IG6EnV1NPtLa02ojf1AOOFHw9u/ZZVKTH8rmKjYxc3URy3huazjFDCLq8lcPx0zxuOm3uW8nA==
-X-Received: by 2002:a17:907:2cd8:b0:9a5:c9a4:ba1a with SMTP id hg24-20020a1709072cd800b009a5c9a4ba1amr8408544ejc.59.1695053048266;
-        Mon, 18 Sep 2023 09:04:08 -0700 (PDT)
+        bh=wbLvVhCdjkLoKVSI3XlIe8h3b/C8JwK6Lt4fUZyBeQw=;
+        b=Te5PKfOs6fV95hd+rZYFYxlBvE+ScMIwVHXoTeXbPgxiYxUwMLl07QXH8NgHqcm2OX
+         7VedNzjH0PT9PuRjumu1QnAwnwG60pU7+ubCUfyV7oWHcYPCROegot24Tw8fG6QwC0Rm
+         D8w2DsTQ+vchogQ97O0GWJqa2xVc4B8hxdPKJvOZC5ium+QUnalKsySQqwmSdJM3O0si
+         84VA7UFl8QKkP2G9GHTgpt3PRb7XCjxmpV9xmBEss7T+lDzerWofQZElDK9rEQ4vvT7S
+         Ti+9oodVMrSkHHcN33mygsnrYVKlJFEG1A5B3clCQDNAuaVnXtN+liMK95HpA6ZKKzrb
+         +hGw==
+X-Gm-Message-State: AOJu0Yx9VYWF7F0oDPmk0eK23KLRFmRaMuUtKSSF3mkxDXpzrWy+oYB1
+	UOOMZkMOXX1HjtTChIwRyH/I1J+6
+X-Google-Smtp-Source: AGHT+IGUIRL/Cj2QgpL/SWnZOOte/5aXBCe8PvtqKJ8rdHwjYW7XrtiQqR5SrkqTU7jQZeCu2Klurw==
+X-Received: by 2002:a17:906:311a:b0:9a9:f0e6:904e with SMTP id 26-20020a170906311a00b009a9f0e6904emr154241ejx.16.1695053053645;
+        Mon, 18 Sep 2023 09:04:13 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id n4-20020a170906088400b009928b4e3b9fsm6613541eje.114.2023.09.18.09.04.06
+        by smtp.gmail.com with ESMTPSA id n26-20020a170906119a00b00997cce73cc7sm6586020eja.29.2023.09.18.09.04.11
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:04:07 -0700 (PDT)
+        Mon, 18 Sep 2023 09:04:13 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -128,51 +128,55 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Markus Armbruster <armbru@redhat.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 13/22] target/xtensa: Create IRQs *after* accelerator vCPU is realized
-Date: Mon, 18 Sep 2023 18:02:46 +0200
-Message-ID: <20230918160257.30127-14-philmd@linaro.org>
+Subject: [PATCH 14/22] target/sparc: Init CPU environment *after* accelerator vCPU is realized
+Date: Mon, 18 Sep 2023 18:02:47 +0200
+Message-ID: <20230918160257.30127-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Ys82sGRdSiHY
+X-TUID: Zb0Y6BwhoIjv
 
-Architecture specific hardware doesn't have a particular dependency
-on the accelerator vCPU (created with cpu_exec_realizefn), and can
-be initialized *after* the vCPU is realized. Doing so allows further
-generic API simplification (in few commits).
+These fields from the environment don't affect how accelerators
+create their vCPU thread. We can safely reorder them *after* the
+cpu_exec_realizefn() call. Doing so allows further generic API
+simplification (in the next commit).
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/xtensa/cpu.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ target/sparc/cpu.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
-index 300d19d45c..bbfd2d42a8 100644
---- a/target/xtensa/cpu.c
-+++ b/target/xtensa/cpu.c
-@@ -162,10 +162,6 @@ static void xtensa_cpu_realizefn(DeviceState *dev, Error **errp)
-     XtensaCPUClass *xcc = XTENSA_CPU_GET_CLASS(dev);
-     Error *local_err = NULL;
+diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+index 2fdc95eda9..88157fcd33 100644
+--- a/target/sparc/cpu.c
++++ b/target/sparc/cpu.c
+@@ -756,6 +756,12 @@ static void sparc_cpu_realizefn(DeviceState *dev, Error **errp)
+     SPARCCPU *cpu = SPARC_CPU(dev);
+     CPUSPARCState *env = &cpu->env;
  
--#ifndef CONFIG_USER_ONLY
--    xtensa_irq_init(&XTENSA_CPU(dev)->env);
--#endif
--
-     cpu_exec_realizefn(cs, &local_err);
-     if (local_err != NULL) {
-         error_propagate(errp, local_err);
-@@ -174,6 +170,10 @@ static void xtensa_cpu_realizefn(DeviceState *dev, Error **errp)
- 
-     cs->gdb_num_regs = xcc->config->gdb_regmap.num_regs;
- 
-+#ifndef CONFIG_USER_ONLY
-+    xtensa_irq_init(&XTENSA_CPU(dev)->env);
-+#endif
++    cpu_exec_realizefn(cs, &local_err);
++    if (local_err != NULL) {
++        error_propagate(errp, local_err);
++        return;
++    }
 +
-     xcc->parent_realize(dev, errp);
+ #if defined(CONFIG_USER_ONLY)
+     if ((env->def.features & CPU_FEATURE_FLOAT)) {
+         env->def.features |= CPU_FEATURE_FLOAT128;
+@@ -776,12 +782,6 @@ static void sparc_cpu_realizefn(DeviceState *dev, Error **errp)
+     env->version |= env->def.nwindows - 1;
+ #endif
+ 
+-    cpu_exec_realizefn(cs, &local_err);
+-    if (local_err != NULL) {
+-        error_propagate(errp, local_err);
+-        return;
+-    }
+-
+     scc->parent_realize(dev, errp);
  }
  
 -- 

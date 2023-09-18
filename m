@@ -1,75 +1,75 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3010904ejb;
-        Mon, 18 Sep 2023 09:03:46 -0700 (PDT)
-X-Received: by 2002:a17:906:300b:b0:9a5:ed5b:241e with SMTP id 11-20020a170906300b00b009a5ed5b241emr7095160ejz.25.1695053026546;
-        Mon, 18 Sep 2023 09:03:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695053026; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3011548ejb;
+        Mon, 18 Sep 2023 09:04:30 -0700 (PDT)
+X-Received: by 2002:a05:6512:1090:b0:4fb:8948:2b28 with SMTP id j16-20020a056512109000b004fb89482b28mr10666828lfg.63.1695053069842;
+        Mon, 18 Sep 2023 09:04:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695053069; cv=none;
         d=google.com; s=arc-20160816;
-        b=SyS0Jp4qJ2zasE7V0q3Y2Dv59YdEq5lk8BNazmeQHe6tFzc57Uq4CjT6TdHYu7s/vz
-         K6PzxvRDPIWmHZthfCPuBeLrRAZmzFKQQ2w3T7JR1nvJZVLKTZxhcb5Ffdt9ZFLRwCb7
-         yeECnBv4S84OsHsT/qO4Vr1+7ie4NzbE80MLRWIfQ1O+669T3oZcwZsff3d/vqqM/ZYQ
-         r7UjuitrMFErtUFycEUxYspD1Y/RdactvEE0XdQrM61vkpT3jb/+dx7XquPSlnzNLTdS
-         KTe2csdQSzZRxhMcHiVGROh1K1RJwTTgm/6e11udXfqNM8Z5FYcoCIzgTmVlO3Ox4b8D
-         rm/g==
+        b=XVYvpb01NnNbN7QpC8n2zVa5xZIKeJMM9Idz7E2IRBAfcDQuYyqjQaLambwEwb8FrO
+         dJp0lNU9Nu+vIOoDLFyn14s2ixmVqRK+WDgmhAQ0jixU4J7gq96GUy6TioVS0flgUQI/
+         IZfQEpOKXsewu90Lb7+36J5YhrXzuYjG8sSg6tOqOLZNHROcNV53fQORz6FnE7ClbVD0
+         uwmgAj8ltK3Fn7FavRt6c8Rd4WmHu/F7oN+dolF1wmkZGTDNxrp6N+iNSXqW+54unjTo
+         Op+7AOh2UmdEUVRIRsUTDuwRiYzrfQsUpr9ijVJ/RgratCP2ZliDzxbE4d5GROxPZIn3
+         Ht9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=hSVRQGIJEmce1VSEx8yaDe0o7AipRr5BDfgLzGOyz48=;
+        bh=ZP1Jq5UriapAIWJmFwmSYSQUUVqpdEGdHuUn9UNvH2c=;
         fh=AIYNAcrfQPdTp+tiOBYg2bCy2NfWRbXD73JV9SLWbpM=;
-        b=XjNuM/CZldLAQn6xw4Kv/PV3SC9UdOBQALCk0Vv5h+ZNwMVL2iVvCv1QkSrlUvsFv9
-         tXUmi+3/nGlYgVH/aoJtzmxhlx5wU4y1Ol3i8pfxUlrjnU33WuIHad5WEUhIpdkQK7zf
-         nIjzY2xIOOOdkyHoXKyOYI1slok61DonJlS8abJROn/ip42IEFVuUmQsD+xTygvkcJuG
-         t6A07kO1HRwbCXq/6lOxtPPYf40ydDGmL2650uqy7sLc3JZevD5MGCi0h58vT1ZFfDc4
-         hpzEZYi45ZdzhAXJZ8XXYkXGa2j3FaFXMvxFhQawuasG/68Nx1Edel5R4/dOHD2x2Ga6
-         WgLg==
+        b=z+MM0jHS2grvOtnpxKsHCpy8uPXdbsEBmBr6nCUq6qzXvbB1XGDKddMm9O1uIHPGnh
+         lvowdijwvf6mQ4EA+EjsmMF8NFwH2bNVSnDGyBKwdd3Fod+mXCunXoq4wZDyDjQxicw6
+         C16qaGlpqK1a8o74WmwvNpLa/87sNZYuJBuh5HBsBFTuYghLMYyrZ1Xe/iRUAWqdMCvo
+         YF0DwdPibmFg6fhWhqwbULGQlQUf8cCPSR7Ld0G2ZvD9M0KhyIVEOA3DnMhJTAL/Unak
+         5PyO9VLFvwiuFURTJuawBn3L4YJjJVeUe7M4SN1zmgzTw8dpQFVrTo4kwf35QdB6mZ5W
+         SiXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zvzYTjw/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=SrARGhXz;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id hx17-20020a170906847100b009adae266299sor2888351ejc.20.2023.09.18.09.03.46
+        by mx.google.com with SMTPS id g12-20020ac24d8c000000b004eb015eab08sor3008589lfe.9.2023.09.18.09.04.29
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 09:03:46 -0700 (PDT)
+        Mon, 18 Sep 2023 09:04:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zvzYTjw/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=SrARGhXz;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695053026; x=1695657826; darn=linaro.org;
+        d=linaro.org; s=google; t=1695053069; x=1695657869; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=hSVRQGIJEmce1VSEx8yaDe0o7AipRr5BDfgLzGOyz48=;
-        b=zvzYTjw/Jp93l4aMJdrmyuJ2W3ZgjesnWBp5tGUZsem35fC3jfSBAPoGtDHX9PTVVM
-         Iwc0cWh8Tqcofb3iuMKUJSwS8dFJZ71O5fcVlnpwU0ahzTSwxp7fTYw3IYu1kO7hKdmn
-         kz27j36c2Eh81XSpe5MgER2Dn+w41UFlKZuz01tWdnOHmBqu16SaqnEgXNVPSz2nENo3
-         IENw6TWSY1H5RnhWIeoXTTQC6/Ix/ifS00kS/YnxOUELxdPqhQxyX6CtE5rSgNgG1jiv
-         NAsmWl3Fi44ntk3eOfqPvOPhzK9u2jdRxxFhhwh3JtwNncMLx1mBOA7JExdgXq4DiLIe
-         JX1g==
+        bh=ZP1Jq5UriapAIWJmFwmSYSQUUVqpdEGdHuUn9UNvH2c=;
+        b=SrARGhXzTci8WenaQLuzixTEKbOaz/HSqhVM2MCy/JFL3keeRa6vXMt75a21HOWdZ5
+         yReVCuqtiUAOlQZXV8c5OpACTBsXmFXWBm+0Swk0EdoxrTCESBmgxFn9oWw7e4MjJUxK
+         lVeCD/KcNZ8xz6+gOXM6cJRpbMg14rGaRgV8ZfVoLlP/UnZ4Jp5oFaEND9ldqGZUIGmO
+         4wH0481fJGjL0iGHg889kIRNqN35rhalrC16xMcHzN+eXaSx5OkPb4la3Xeb5F3fV4zO
+         xRSj5jvL42YhJZv6G+P6RXZRN9XmvKyb2av9TlvcpEzgvk4O7a7QaVS5KwP4gXgbDRgT
+         lw7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695053026; x=1695657826;
+        d=1e100.net; s=20230601; t=1695053069; x=1695657869;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=hSVRQGIJEmce1VSEx8yaDe0o7AipRr5BDfgLzGOyz48=;
-        b=goXxnPA0S4FJSA5qEA5HbfGTtw/Wx33Mi3axpH/Nb9g6vF1ADuTgTD2d7UuefhrQHM
-         CE0q2yzFF0JifOn0xMJJu4TprTL9uS6ofGzg6bhwIVp2e4w7y+sLLOXbmIAYupKej3Gu
-         +UbZKKgZxTrK6YQf5y/lUQIgT2n5/N7sLXMP3jar01J2je1GQWs+IZ0MQtMHkCBxaE+n
-         d9irqRuJI/tHykL0xkizIcC8fQGnkIuMkuZvMOY+uF0wbU7TgJvXPafMF4i+fvSoKxwk
-         sJuFe3AMcwKpwsqeIMOR9jyZppuGyZuYsZo04BijQjmgwH6704uyr4azXqn9cZz8uepK
-         A6fQ==
-X-Gm-Message-State: AOJu0YykcHVNmdAC8l8LGjnErBd2c/RsKLQAkiZxPo080ZH6eDGvGFus
-	3h5S06FRDvsHPgf2R/5Vnv00iWm4
-X-Google-Smtp-Source: AGHT+IG4piDQtxZVYFiU0HjN8n/Q699dig17N/FQPVs1xyeDcBS2KjVyyREmZ08RNzkeawSSuXGK6A==
-X-Received: by 2002:a17:906:74d5:b0:9a1:8ee9:cc0b with SMTP id z21-20020a17090674d500b009a18ee9cc0bmr8829825ejl.21.1695053026100;
-        Mon, 18 Sep 2023 09:03:46 -0700 (PDT)
+        bh=ZP1Jq5UriapAIWJmFwmSYSQUUVqpdEGdHuUn9UNvH2c=;
+        b=NK4fExZDkYhmGyQMXlHOk2OYE9maHPZkOlZdOCW3jeqVbBQfr+EahT/BNCwiPX6Lyd
+         u7rd20Ml+Gl+7ycUfKq50DjDj8cozCkYd4CNkY8G3Ww6UWbx1kifrd1icdPqgAR1Szyn
+         SpwHja9TZp6PjLP6huC4/fvPYs9dt0SrtM/F10xjve3zvuSHXy1M3LlAuL1E87Uivb0G
+         w8ZvgwIuoymoyz2BQN42qLf01gxx/T1awlC4v21U4ekWzIDx82QiaKs074H8J5xukQBC
+         znp7FwXLzHf+17I9VxplgXBxRN1nXmqjBAHSceeHReEgcN9GEp2JJC+UcOtXMshwvw9J
+         jeOg==
+X-Gm-Message-State: AOJu0YzfYnJmpMfGQwE2APk66fzN/Gu9z4pFX49EV13gvOnhtj3k587/
+	owHypig8wf+cfpNbQMDEXoiAa/F0
+X-Google-Smtp-Source: AGHT+IHqyjalPcNFI3j/eC2mJhJCqyXLJDQU80ViEPpsSEn13nBGjwNzQvCpQXl9ahmUuhJ660k6zA==
+X-Received: by 2002:a05:6512:31cd:b0:503:1722:bf3a with SMTP id j13-20020a05651231cd00b005031722bf3amr3370635lfe.1.1695053069418;
+        Mon, 18 Sep 2023 09:04:29 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (static-212-193-78-212.thenetworkfactory.nl. [212.78.193.212])
-        by smtp.gmail.com with ESMTPSA id g5-20020a170906394500b0099bc038eb2bsm6614676eje.58.2023.09.18.09.03.44
+        by smtp.gmail.com with ESMTPSA id ec31-20020a0564020d5f00b00530a9488623sm4149603edb.46.2023.09.18.09.04.27
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 18 Sep 2023 09:03:45 -0700 (PDT)
+        Mon, 18 Sep 2023 09:04:28 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -128,59 +128,152 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Markus Armbruster <armbru@redhat.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH 09/22] target/arm: Create timers *after* accelerator vCPU is realized
-Date: Mon, 18 Sep 2023 18:02:42 +0200
-Message-ID: <20230918160257.30127-10-philmd@linaro.org>
+Subject: [PATCH 17/22] target/i386: Extract verify_accel_features() from cpu_realize()
+Date: Mon, 18 Sep 2023 18:02:50 +0200
+Message-ID: <20230918160257.30127-18-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230918160257.30127-1-philmd@linaro.org>
 References: <20230918160257.30127-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: N6paAS1A8Vve
+X-TUID: RK5855bItYps
 
-Architecture specific hardware doesn't have a particular dependency
-on the accelerator vCPU (created with cpu_exec_realizefn), and can
-be initialized *after* the vCPU is realized. Doing so allows further
-generic API simplification (in few commits).
+When looking at the x86_cpu_realizefn() method, most of the
+code run before the cpu_exec_realizefn() call checks whether
+the requested CPU features are compatible with the requested
+accelerator. Extract this code to a dedicated handler matching
+our recently added CPUClass::verify_accel_features() handler.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/cpu.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+ target/i386/cpu.c | 62 +++++++++++++++++++++++++++--------------------
+ 1 file changed, 36 insertions(+), 26 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index fc3772025c..46d3f70d63 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1748,7 +1748,15 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-             return;
-         }
-     }
-+#endif
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index d79797d963..2884733397 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -7208,26 +7208,19 @@ static void x86_cpu_hyperv_realize(X86CPU *cpu)
+     cpu->hyperv_limits[2] = 0;
+ }
  
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+#ifndef CONFIG_USER_ONLY
-     {
-         uint64_t scale;
+-static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
++/*
++ * note: the call to the framework needs to happen after feature expansion,
++ * but before the checks/modifications to ucode_rev, mwait, phys_bits.
++ * These may be set by the accel-specific code,
++ * and the results are subsequently checked / assumed in x86_cpu_realizefn().
++ */
++static bool x86_cpu_verify_accel_features(CPUState *cs, Error **errp)
+ {
+-    CPUState *cs = CPU(dev);
+-    X86CPU *cpu = X86_CPU(dev);
+-    X86CPUClass *xcc = X86_CPU_GET_CLASS(dev);
++    X86CPU *cpu = X86_CPU(cs);
+     CPUX86State *env = &cpu->env;
+     Error *local_err = NULL;
+-    static bool ht_warned;
+     unsigned requested_lbr_fmt;
  
-@@ -1776,12 +1784,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
- #endif
- 
--    cpu_exec_realizefn(cs, &local_err);
--    if (local_err != NULL) {
--        error_propagate(errp, local_err);
+-    /* Use pc-relative instructions in system-mode */
+-#ifndef CONFIG_USER_ONLY
+-    cs->tcg_cflags |= CF_PCREL;
+-#endif
+-
+-    if (cpu->apic_id == UNASSIGNED_APIC_ID) {
+-        error_setg(errp, "apic-id property was not initialized properly");
 -        return;
 -    }
 -
-     arm_cpu_finalize_features(cpu, &local_err);
+     /*
+      * Process Hyper-V enlightenments.
+      * Note: this currently has to happen before the expansion of CPU features.
+@@ -7236,7 +7229,7 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+ 
+     x86_cpu_expand_features(cpu, &local_err);
+     if (local_err) {
+-        goto out;
++        return false;
+     }
+ 
+     /*
+@@ -7246,7 +7239,7 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+     if (cpu->lbr_fmt != ~PERF_CAP_LBR_FMT) {
+         if ((cpu->lbr_fmt & PERF_CAP_LBR_FMT) != cpu->lbr_fmt) {
+             error_setg(errp, "invalid lbr-fmt");
+-            return;
++            return false;
+         }
+         env->features[FEAT_PERF_CAPABILITIES] &= ~PERF_CAP_LBR_FMT;
+         env->features[FEAT_PERF_CAPABILITIES] |= cpu->lbr_fmt;
+@@ -7265,13 +7258,13 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+ 
+         if (!cpu->enable_pmu) {
+             error_setg(errp, "vPMU: LBR is unsupported without pmu=on");
+-            return;
++            return false;
+         }
+         if (requested_lbr_fmt != host_lbr_fmt) {
+             error_setg(errp, "vPMU: the lbr-fmt value (0x%x) does not match "
+                         "the host value (0x%x).",
+                         requested_lbr_fmt, host_lbr_fmt);
+-            return;
++            return false;
+         }
+     }
+ 
+@@ -7282,7 +7275,7 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+                    accel_uses_host_cpuid() ?
+                        "Host doesn't support requested features" :
+                        "TCG doesn't support requested features");
+-        goto out;
++        return false;
+     }
+ 
+     /* On AMD CPUs, some CPUID[8000_0001].EDX bits must match the bits on
+@@ -7296,12 +7289,28 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+ 
+     x86_cpu_set_sgxlepubkeyhash(env);
+ 
+-    /*
+-     * note: the call to the framework needs to happen after feature expansion,
+-     * but before the checks/modifications to ucode_rev, mwait, phys_bits.
+-     * These may be set by the accel-specific code,
+-     * and the results are subsequently checked / assumed in this function.
+-     */
++    return true;
++}
++
++static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
++{
++    CPUState *cs = CPU(dev);
++    X86CPU *cpu = X86_CPU(dev);
++    X86CPUClass *xcc = X86_CPU_GET_CLASS(dev);
++    CPUX86State *env = &cpu->env;
++    Error *local_err = NULL;
++    static bool ht_warned;
++
++    /* Use pc-relative instructions in system-mode */
++#ifndef CONFIG_USER_ONLY
++    cs->tcg_cflags |= CF_PCREL;
++#endif
++
++    if (cpu->apic_id == UNASSIGNED_APIC_ID) {
++        error_setg(errp, "apic-id property was not initialized properly");
++        return;
++    }
++
+     cpu_exec_realizefn(cs, &local_err);
      if (local_err != NULL) {
          error_propagate(errp, local_err);
+@@ -7950,6 +7959,7 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
+ 
+     cc->class_by_name = x86_cpu_class_by_name;
+     cc->parse_features = x86_cpu_parse_featurestr;
++    cc->verify_accel_features = x86_cpu_verify_accel_features;
+     cc->has_work = x86_cpu_has_work;
+     cc->dump_state = x86_cpu_dump_state;
+     cc->set_pc = x86_cpu_set_pc;
 -- 
 2.41.0

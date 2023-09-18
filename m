@@ -1,233 +1,131 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp2821474ejb;
-        Mon, 18 Sep 2023 04:00:36 -0700 (PDT)
-X-Received: by 2002:aa7:c14b:0:b0:525:44c5:48e2 with SMTP id r11-20020aa7c14b000000b0052544c548e2mr8011907edp.22.1695034836381;
-        Mon, 18 Sep 2023 04:00:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695034836; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp2803368ejb;
+        Mon, 18 Sep 2023 03:17:41 -0700 (PDT)
+X-Received: by 2002:a05:6512:3113:b0:500:86b4:5282 with SMTP id n19-20020a056512311300b0050086b45282mr6835790lfb.34.1695032260998;
+        Mon, 18 Sep 2023 03:17:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695032260; cv=none;
         d=google.com; s=arc-20160816;
-        b=05C61iDBaRsxyz4fCPiw7yhJAqOUu2HFDqdj60fnJaOzd1G6HLhqB7TZxR37H8ouSL
-         e2H1mWaz1/kQkL8PlUGCmu2iWVkMeCSXCt/Okhq2f8+NncUb1IM+YJ0i9dHJ4ysaCpwp
-         tEZjDW62gvMDn9TfJZxJa0kFy2iD08JfT6zGRKe/yuUGfwaLd+bld5azgzCOFrnjLcWe
-         xEUFLxs7f9PZQm7m1cxGOE2Mwk+2L42uxaoNv0UfbnZlicdUhmnV44k8bb8gDoP+QKAg
-         cLNO53o3nL2JnwioQKHylabOCc3KNpvhftvi/8KyPdeXdX9sXCj0itjj8paQvJJx25Qr
-         uaUQ==
+        b=PMk9MfuaM9aT3gr8U0Vky4mlLviGu8kjQyGHulWmpyiPYhFSEWyKRPmB3iH5mDcgih
+         1VQrf1/njI+JoNvgU/db0BLwCc3JR+1whaPcce8iTWTsa5GQRew5C8kGVKsnQPzpd7Br
+         CfIBaCcXx4/68u0cPUBXmJWCMVmbqdvZeSHgDZMtDKLva21ZEtpeJkqKdVaGBljTovuF
+         UDTQndyykcj6W+P/ipH/mpAXaNRd9M7Hl4cvgOGk4HpkzBYgqPIrUumBWdvkrYlVSAuK
+         8NR3SYeQoyJgPW2UALWbBkUlB22oV+Vj9sKv0qgaHCaxdPx/vyUFGG/OoTKiQTVVD30/
+         KgBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=K0T0yJm6zI1w+R1+ybu5R7i+AEkND4xDj9k8IkFVSN4=;
-        fh=CD42jll0OB9d2OmkFinUv/iglXZ06DE12e0iIduPSQ4=;
-        b=xySWLNxnJgvBs27fNcixZUYa/EgSWeu5xcsOTXxMPItpUNlvQ2I8RnoxXfb8UNtp3O
-         H+/nXrd3e2QhnnMhDIcM1Y+VuBwav3sLn9ctn8JoYS0F6VGRBYz+NX4AJCqQG0ATrL1k
-         llb4df0Y3o2xwSZvNGxrGnVMhve0wuuZgo7STAOyVbDo/xF20HIzhArsFkvRwyotu1ms
-         MJq9f1wEFMbvT34whMSx+aLPydOk4QVJCbNjel5jfMPO7S9cxdJXxkeXZgQZyW11P/Y7
-         5dYoNQpFT0kcB7ovD/F7klkDMRqIuE0oy+m0HAjbTgkklD2gOfunOr6qYd2oR8sskj3k
-         AFfQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=OeLfLl3LjSe+flyYRXHJoPyc020uZocilUJMKnQncFo=;
+        fh=9n/Cm2KnMX6Qk7SoVbKt4LcEa/gSBuZo6NwnCSpbrp4=;
+        b=YpX6fAX59igRU86V/b8hjs5PvYGF5qcx9TUJsjsgculUFynqMStSmwxk5DQcx5rNzP
+         5FT3oaxjL/B4SyLHONBkmQFjBrYd57j339HELshP+hReICfmFaBJ8VE0IvvMZ84YXYPt
+         o3GYNVW/tRWZCp7oFzlS6bLGGLWfCxxEhcyX5tZyK5aS1deI/8ns7j2iCn03h5VKmoPT
+         +WsjOwOCmREqcXQ4TVQmYSV6OftXRyObJheH6WgaNokrojtBi6RwdN50SBoKpKkqE8yh
+         w41bqRAGNO2zp54Ais62SyH1NeVrcrAmjJ9P87ND03HTQAd32u91sgcKyj++B1cmM0VY
+         L6nw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c4NzIaT0;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r1+ARmZW;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s12-20020a50ab0c000000b0052555829d78sor956376edc.0.2023.09.18.04.00.36
+        by mx.google.com with SMTPS id x7-20020a1c7c07000000b003fee7034286sor3331229wmc.4.2023.09.18.03.17.40
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Sep 2023 04:00:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 18 Sep 2023 03:17:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c4NzIaT0;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r1+ARmZW;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1695034836; x=1695639636; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=K0T0yJm6zI1w+R1+ybu5R7i+AEkND4xDj9k8IkFVSN4=;
-        b=c4NzIaT0iYMTJpCZk3fGQa+nHDtaXKkw3M+ELt2pwz9/TAZna0JOuZDNbp+11zP4Rq
-         YbDymgFBfzt5oIO6dcmxavcOnRfzyuVa70o66O4vjaW0sZ8/TVYfaQmstGArI/azZD9X
-         cvHBCZSlJJOIvylv47u3cyrfLqwIPSLG0tHVB/T+BxN1R237Nw3OtPoTl4yF8ne5LfU9
-         md53cOzYLUVwUsjL8Y+BhAdnEi02f4W00XzYq1zqxkf6E3eA0aIrNi5HvyVs/5ksr2iD
-         lAv+qh+H7vDyQja4QmT3qor4H+Oy/tFwhVYyxSNyGoa/omhJao5GjrnHcf5SSl2q3SIf
-         boxQ==
+        d=linaro.org; s=google; t=1695032260; x=1695637060; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=OeLfLl3LjSe+flyYRXHJoPyc020uZocilUJMKnQncFo=;
+        b=r1+ARmZWBk9CtvD/ozWm6VaZAY4P5KaLGXZCpM1sPNcfp4Gj2sJrI3iwPEX069cAH6
+         wjNOhY72VqDAFOR15Dp75Uj5bYcNvR6Y/KW6iPM7mc19ZxHCDBp3E2BAttF9e6PCPTLq
+         1nuX4JKbEB/zJlvRrDQe0dMWApRuJ8btBK/6wAqMCdjlJd1IcCIT4R92+HdjzbkOAOzw
+         xi3ZgqagkkO1RlND5P8fBDzWLpi2U6Ft5Io8T35HcDO/qQBhZi8GLS0XImI62/lrQPh/
+         kYd5uNSvsUIcWVVJIhQc5ytKzToyEWz7TKmmVqfsWcaeCfhWcUxaQWXwZoHcEdpj/RpA
+         JUXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695034836; x=1695639636;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=K0T0yJm6zI1w+R1+ybu5R7i+AEkND4xDj9k8IkFVSN4=;
-        b=ZyboTRF8/Xlo9prVPp/vE1yy9sg/T4/4ABemFDrEx3Yw8zHnmBPpU/4pnRtlHHXSug
-         4eXxS8iQWBcjfbLPOuBNZ+JbOmdg62JkkzFxK5CBBU//SeknOxh4LgjW191v9n1Kbuox
-         tFRsxtEVYI2VhGbTh4ZGkUDOOBIso2oVI3NBbsLEockL1l0MKYmr035dHjx1Raltj3pu
-         mZQtooIAM428CiwHfKixgl3sFryVakxhr0WgeWJBUu8hDoa8BbA9ETlE2PVO/viLXIun
-         wNYldkOeKavtkYe8mbXj35NTyjmD6L1PaUZExjH7EqtSDwz75SUBeuI1ndDu/UzY8ejD
-         FTyQ==
-X-Gm-Message-State: AOJu0Ywk7hrsJBJpnVtLEtHx3d1JyJ5dgckeXTC/8adFVemyl+LjrVs3
-	KgBC5Ix3ALgLrSMWj3e1QCXXQNLYknBJmr9ISO+RRVdy
-X-Google-Smtp-Source: AGHT+IH9/9Q0nTbkQACKsPIzqG0pVIabhS8zIFVUjGrALFvU2SEjO82kx8gNlDTjGJOKgv9oK85tb3rDyONzVrVrAD0=
-X-Received: by 2002:a05:6402:644:b0:523:aef9:3b7b with SMTP id
- u4-20020a056402064400b00523aef93b7bmr7770583edx.4.1695034835976; Mon, 18 Sep
- 2023 04:00:35 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1695032260; x=1695637060;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OeLfLl3LjSe+flyYRXHJoPyc020uZocilUJMKnQncFo=;
+        b=lMJ+p4lqB+3BgHvaK4jNkm2YXMubd4zRti9vEPlnIu2C9CkAm5mR0JprxxSDOJT5mt
+         xpW0/yKMiNXEYW7DjM8Xz42mBAVQsX2bnNmKOZQ+2O9FuqaweDLs9L3pQu/hhNCg9I4Q
+         QxOD973op14HOdhOWzUQyfG8creqhnclEsa7xEK4Wcm7gusJD6gi53gHiDQLjOYevZ5H
+         hgTySPN4cud7RPFa4S7po1RMSePrsEwUDdpc1LTwQB8yHTaocAYaltxa1fLbHTCHcq6h
+         +k78VLTyWSgA2jLVMEwzsS6g58AfUPpyn8OClEHecOppxUZ+Iu3vD7qp03pElZ/EZ7bX
+         /6+w==
+X-Gm-Message-State: AOJu0Yy9G8yxmGKZx3EJCCqU6FBRKU6JQFWdEw4ILCID+g6NVcVmx8BP
+	IH5Gph3C5VuFvYe963lRTKU/ugNE
+X-Google-Smtp-Source: AGHT+IGSfBDs6j3tcZ4qajKD3qps7Ks4L8/CdtFxIGHeMqsgIaLpNZuM6XwokMcGIrinRdTBIBL70Q==
+X-Received: by 2002:a7b:c84e:0:b0:401:7d3b:ccaf with SMTP id c14-20020a7bc84e000000b004017d3bccafmr6649664wml.4.1695032260467;
+        Mon, 18 Sep 2023 03:17:40 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from localhost.localdomain (5.red-88-29-175.dynamicip.rima-tde.net. [88.29.175.5])
+        by smtp.gmail.com with ESMTPSA id y19-20020a05600c20d300b003feeb082a9fsm11960178wmm.3.2023.09.18.03.17.37
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 18 Sep 2023 03:17:40 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+	"Daniel P . Berrange" <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Alistair Francis <alistair@alistair23.me>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Anton Johansson <anjo@rev.ng>,
+	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Bernhard Beschow <shentey@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alessandro Di Federico <ale@rev.ng>,
+	qemu-arm@nongnu.org,
+	Luc Michel <luc@lmichel.fr>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/2] qdev: Ensure devices are fully realized when calling DeviceReset handler
+Date: Mon, 18 Sep 2023 12:17:34 +0200
+Message-ID: <20230918101736.23905-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-References: <20230918101736.23905-1-philmd@linaro.org> <20230918101736.23905-2-philmd@linaro.org>
-In-Reply-To: <20230918101736.23905-2-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Sep 2023 12:00:17 +0100
-Message-ID: <CAFEAcA89z1vCwDzzB_GjbUBtcOCz4vU7r_zC4nMmunp5BGVWxA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] hw/sd/omap_mmc: Do not reset SDCard until being fully realized
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
-	"Daniel P . Berrange" <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
-	Alistair Francis <alistair@alistair23.me>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Anton Johansson <anjo@rev.ng>, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, 
-	Markus Armbruster <armbru@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Bernhard Beschow <shentey@gmail.com>, 
-	Alessandro Di Federico <ale@rev.ng>, qemu-arm@nongnu.org, Luc Michel <luc@lmichel.fr>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: jDLY9vycLa0e
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: B+qR0fTBd4Pt
 
-On Mon, 18 Sept 2023 at 11:17, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.o=
-rg> wrote:
->
-> We shouldn't call QDev DeviceReset() before DeviceRealize().
->
-> Since the OMAP MMC model is not QDev'ified, it has to manually
-> call the SDCard reset() handler. This breaks QDev assumptions
-> that DeviceReset() is never called before a device is fully
-> realized. In order to avoid that, pass a 'realized' argument
-> to omap_mmc_reset(). All cases are explicit manual resets,
-> except in omap_mmc_write() where we expect the sdcard to be
-> realized.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  include/hw/arm/omap.h |  2 +-
->  hw/arm/omap1.c        |  2 +-
->  hw/arm/omap2.c        |  2 +-
->  hw/sd/omap_mmc.c      | 21 ++++++++++++---------
->  4 files changed, 15 insertions(+), 12 deletions(-)
->
-> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-> index 067e9419f7..d331467946 100644
-> --- a/include/hw/arm/omap.h
-> +++ b/include/hw/arm/omap.h
-> @@ -808,7 +808,7 @@ struct omap_mmc_s *omap_mmc_init(hwaddr base,
->  struct omap_mmc_s *omap2_mmc_init(struct omap_target_agent_s *ta,
->                  BlockBackend *blk, qemu_irq irq, qemu_irq dma[],
->                  omap_clk fclk, omap_clk iclk);
-> -void omap_mmc_reset(struct omap_mmc_s *s);
-> +void omap_mmc_reset(struct omap_mmc_s *s, bool realized);
->  void omap_mmc_handlers(struct omap_mmc_s *s, qemu_irq ro, qemu_irq cover=
-);
->  void omap_mmc_enable(struct omap_mmc_s *s, int enable);
->
-> diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-> index d5438156ee..3afeba6f86 100644
-> --- a/hw/arm/omap1.c
-> +++ b/hw/arm/omap1.c
-> @@ -3728,7 +3728,7 @@ static void omap1_mpu_reset(void *opaque)
->      omap_uart_reset(mpu->uart[0]);
->      omap_uart_reset(mpu->uart[1]);
->      omap_uart_reset(mpu->uart[2]);
-> -    omap_mmc_reset(mpu->mmc);
-> +    omap_mmc_reset(mpu->mmc, false);
->      omap_mpuio_reset(mpu->mpuio);
->      omap_uwire_reset(mpu->microwire);
->      omap_pwl_reset(mpu->pwl);
-> diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
-> index d5a2ae7af6..ef9b0dd60a 100644
-> --- a/hw/arm/omap2.c
-> +++ b/hw/arm/omap2.c
-> @@ -2253,7 +2253,7 @@ static void omap2_mpu_reset(void *opaque)
->      omap_uart_reset(mpu->uart[0]);
->      omap_uart_reset(mpu->uart[1]);
->      omap_uart_reset(mpu->uart[2]);
-> -    omap_mmc_reset(mpu->mmc);
-> +    omap_mmc_reset(mpu->mmc, false);
->      omap_mcspi_reset(mpu->mcspi[0]);
->      omap_mcspi_reset(mpu->mcspi[1]);
->      cpu_reset(CPU(mpu->cpu));
+In the process of clarifying QOM/QDev design, we want to enforce
+the QDev state machine, in particular RESET can only happens *after*
+REALIZE.
 
-These are reset functions registered via qemu_register_reset().
-They should be OK to assume the SD card is realized.
-This matters, because this is the only place that the SD
-card will get reset -- as the comment in omap_mmc_reset() notes,
-the SD card object isn't going to be plugged into any bus, so
-it won't get auto-reset when the simulation starts, and these
-reset function are the place that does the manual reset.
+Besides CPUs (which are still particular), the only case I noticed
+is in a non-QDev type (OMAP MMC) accessing a QDev one (SD/MMC card).
 
-> diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-> index edd3cf2a1e..3c906993eb 100644
-> --- a/hw/sd/omap_mmc.c
-> +++ b/hw/sd/omap_mmc.c
-> @@ -287,7 +287,7 @@ static void omap_mmc_pseudo_reset(struct omap_mmc_s *=
-host)
->      host->fifo_len =3D 0;
->  }
->
-> -void omap_mmc_reset(struct omap_mmc_s *host)
-> +void omap_mmc_reset(struct omap_mmc_s *host, bool realized)
->  {
->      host->last_cmd =3D 0;
->      memset(host->rsp, 0, sizeof(host->rsp));
-> @@ -314,11 +314,14 @@ void omap_mmc_reset(struct omap_mmc_s *host)
->
->      omap_mmc_pseudo_reset(host);
->
-> -    /* Since we're still using the legacy SD API the card is not plugged
-> -     * into any bus, and we must reset it manually. When omap_mmc is
-> -     * QOMified this must move into the QOM reset function.
-> -     */
-> -    device_cold_reset(DEVICE(host->card));
-> +    if (realized) {
-> +        /*
-> +         * Since we're still using the legacy SD API the card is not plu=
-gged
-> +         * into any bus, and we must reset it manually. When omap_mmc is
-> +         * QOMified this must move into the QOM reset function.
-> +         */
-> +        device_cold_reset(DEVICE(host->card));
-> +    }
->  }
->
->  static uint64_t omap_mmc_read(void *opaque, hwaddr offset, unsigned size=
-)
-> @@ -556,7 +559,7 @@ static void omap_mmc_write(void *opaque, hwaddr offse=
-t,
->          break;
->      case 0x64: /* MMC_SYSC */
->          if (value & (1 << 2))                                  /* SRTS *=
-/
-> -            omap_mmc_reset(s);
-> +            omap_mmc_reset(s, true);
->          break;
->      case 0x68: /* MMC_SYSS */
->          OMAP_RO_REG(offset);
-> @@ -613,7 +616,7 @@ struct omap_mmc_s *omap_mmc_init(hwaddr base,
->          exit(1);
->      }
->
-> -    omap_mmc_reset(s);
-> +    omap_mmc_reset(s, false);
->
->      return s;
->  }
-> @@ -643,7 +646,7 @@ struct omap_mmc_s *omap2_mmc_init(struct omap_target_=
-agent_s *ta,
->      s->cdet =3D qemu_allocate_irq(omap_mmc_cover_cb, s, 0);
->      sd_set_cb(s->card, NULL, s->cdet);
->
-> -    omap_mmc_reset(s);
-> +    omap_mmc_reset(s, false);
+The first patch first handle the OMAP MMC case doing minor surgery
+(passing a 'realized' state to omap_mmc_reset(), the function doing
+reset out of normal QDev RESET tree propagation).
 
-These calls from omap_mmc_init() are probably safe to remove, but I
-don't understand why they result in our resetting a non-realized
-SD card object. In both cases, the call happens after we call
-sd_init(). sd_init() both creates and realizes the SD card, so
-it should be realized at the point when it gets reset.
+The second patch add an assertion in QDev core code, in order to
+avoid further devices being added out of (QDev) order.
 
-In a truly ideal world we would QOMify the omap-mmc device: it
-is the only remaining user of the legacy sd_init function...
+Please review,
 
-thanks
--- PMM
+Phil.
+
+Philippe Mathieu-Daudé (2):
+  hw/sd/omap_mmc: Do not reset SDCard until being fully realized
+  qdev: Ensure devices are fully realized when calling DeviceReset
+    handler
+
+ include/hw/arm/omap.h |  2 +-
+ hw/arm/omap1.c        |  2 +-
+ hw/arm/omap2.c        |  2 +-
+ hw/core/qdev.c        |  3 +++
+ hw/sd/omap_mmc.c      | 21 ++++++++++++---------
+ 5 files changed, 18 insertions(+), 12 deletions(-)
+
+-- 
+2.41.0

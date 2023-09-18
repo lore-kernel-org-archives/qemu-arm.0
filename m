@@ -1,96 +1,96 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp2816320ejb;
-        Mon, 18 Sep 2023 03:46:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFKMwH5d345atl901p0g71ZQ/BqCj2ievoLCUTXqGWlKByoS14fV0Ug83ottpvpFSsgIgaJ
-X-Received: by 2002:a05:6214:3f83:b0:64f:9108:e368 with SMTP id ow3-20020a0562143f8300b0064f9108e368mr9360731qvb.30.1695034018516;
-        Mon, 18 Sep 2023 03:46:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695034018; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp2816571ejb;
+        Mon, 18 Sep 2023 03:47:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEGBSrWSo9ShGJaghnAkQreBXyeJdNtyVnnjFTQ/OzhWMdVxBx0n5Wq55adNeSHyDke9Lu2
+X-Received: by 2002:a05:620a:468c:b0:773:c0d7:4ed5 with SMTP id bq12-20020a05620a468c00b00773c0d74ed5mr7442673qkb.15.1695034060140;
+        Mon, 18 Sep 2023 03:47:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695034060; cv=none;
         d=google.com; s=arc-20160816;
-        b=l+93jfB3LIv2EUHqAxG1RDav+cQEc/POWu9++kMdqtVliAvFr8qOVa5l+zeyIjAwxV
-         wsqTuKlFXUq7xeGkv5kTHq858XulrzF/OKSfxiIZgvrscAN16D+H/NlXlcSqw2sCdZRc
-         lU0hOc5cUTHrBkbo+myu8vCFmpLwR736jJxH1cSfmOcoz6lmd21f31bZAaOlyDJwyu7B
-         ESjtDRk5h1T7RxIhs/QXioSrb/WQm/WghaXUmhtheDqIuvh4QqMVgisIMgdKleLSJmcf
-         jiKjORlURfo0io8zMi7lHSzOgchSW2hBPKJ2BrtGtqcVEP+X1lAWMXAAlqic5fyhprB9
-         FxHA==
+        b=ADddRpBj1gXTs+9vqdiydtedjlYQ32tw1sCRYuj3HNeXLVeCWT+Gv4L8BEYkzeLC5+
+         5ieIEmKuRy8IIC024gLgdejY0tV4xuE2ajyp9lWChXvD+gXJeVhCvfCCiH4LSubpOo7L
+         VabwhgedApC7FFULnx0o+0x2/1ynnH9hY9lUyG1KFcEQQk3Q9tJpkUbBbnWznezzUAMm
+         3pkexbzuX0fZAPak6xYTeaWAVwXylf7LYp+g+d4MplAdX2AnARLPcKBl2N9rHtElFXqP
+         zNfcgF1hJ6XPSSzoUw3yQpmJv1wflolV3DJfn3vxcT6Qh3sV70B1r9kF+pClsazctao6
+         LRQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=lJ/64b4swMyjvK8kPqgOOGCl81yHEYjOn1hgLk+o2TQ=;
+        bh=hPtlAyriZNtI+mvNE/TyPP28F3dTSqdj4hAm8cN5QVM=;
         fh=1+iHolRYECe2ybtGU55u4K8H4b0+ghpL8z/BMNYY7WM=;
-        b=VaLBvZKhDJ5xxDqm/LpcMFbQea7pzv/5ej7Sx/BBOCeAUDXA8q88vqU4+mGKgBA1iU
-         2CdKF01rIwmXWcwzdaHNGZffFYyZ40EbXsxl03V82+jGhS4/zPNRU7vsXbUJIQxzZohb
-         SvjRJqiD8p7NuH4Xixtt4Q4nxRWHeRs8YDJtEnkFXe/4ix6CU1y1aWG+a8azJwKT6eLI
-         zeXsb9j9iFruS1WFieiy66azTzUKjVxd99vrBhC5GhaoLNXKabDXP366nguSNxYdP5OV
-         3jv7gXhPNxpjZWo2g6Jyeol1xR10QZNSlFDQJ/EK5WCc4/nJ/UITD3SBF7FgloG2YjPa
-         6Oxg==
+        b=xgQWlUQUBZT1kFG34nNVmYyW4Q63oIZcLxQdHLfCBQYb+DUBvDKwdrkcdYOZCuj49w
+         MCKR0bs8s38hy5HZ2SPEuC5kLzGPpnanK3BozIQVPnUZqLLj9rIf8MgSFXgn+U5BMLr2
+         qaK2LgZ+53YWTa+//HfVl6jWovgXHKPylac0yx/EIf6HxKIkHwpodkOvAIN3wbQXry5M
+         82ZV01V6cIyZqcScTlwwi0oBQrugzaXihsC9t8FRrCUiCssSK8LnZ8dSL7C54pSfQEhq
+         4eXAfad/tSFnq73kB+EgFjcX2d1Xoza1lX+Ty02tKVBj8ZghdIBvmDdT34ap9vh5E4V7
+         KOBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kk7mBAKk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=vLBmk0TJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p11-20020a0ce18b000000b0063cf627e97csi5417026qvl.44.2023.09.18.03.46.58
+        by mx.google.com with ESMTPS id bq11-20020a05620a468b00b0077091864d1esi4064039qkb.687.2023.09.18.03.47.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Sep 2023 03:46:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Sep 2023 03:47:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kk7mBAKk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=vLBmk0TJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qiBm2-0008H8-NQ; Mon, 18 Sep 2023 06:46:38 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qiBmt-0000U5-QL; Mon, 18 Sep 2023 06:47:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qiBlk-0008FJ-Rn
- for qemu-arm@nongnu.org; Mon, 18 Sep 2023 06:46:31 -0400
+ id 1qiBmg-0000HN-8T
+ for qemu-devel@nongnu.org; Mon, 18 Sep 2023 06:47:18 -0400
 Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qiBlj-0006rs-2H
- for qemu-arm@nongnu.org; Mon, 18 Sep 2023 06:46:20 -0400
+ id 1qiBme-0006z7-LC
+ for qemu-devel@nongnu.org; Mon, 18 Sep 2023 06:47:18 -0400
 Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-52fe27898e9so5032656a12.0
- for <qemu-arm@nongnu.org>; Mon, 18 Sep 2023 03:46:17 -0700 (PDT)
+ 4fb4d7f45d1cf-52683b68c2fso5291706a12.0
+ for <qemu-devel@nongnu.org>; Mon, 18 Sep 2023 03:47:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1695033976; x=1695638776; darn=nongnu.org;
+ d=linaro.org; s=google; t=1695034035; x=1695638835; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=lJ/64b4swMyjvK8kPqgOOGCl81yHEYjOn1hgLk+o2TQ=;
- b=kk7mBAKkpp7xWPtTHM1F23s4IWsGBe/qkLIOUtEQI2nildqIR8WuwdAPbjwWoPFs+c
- UDtYdvkqZJlueV7A59zWYaNGk3QrAWNLS4KswUdWSjDFNihlyjT/Uq/ig175NIgIAaM5
- M5NL3uZ9ipZhBSxSZEXPGrSJwG5bCNpqy48x8i1Tu4wiB96DowZZ+xsWCDwF8J5bMWQN
- gxOfh/ElKvm9yNtPFghfw1JDyE589+pGEG9pGGfhk6fbjIsqlZeXIuRF42I8LSvQ1ppE
- wNSOsClsFEDkupJ4aWKK6FuGQMNMcAq5R5TWDzBcY/6ZCaFxakmPQUU/8apOABPvIxQr
- RuSA==
+ bh=hPtlAyriZNtI+mvNE/TyPP28F3dTSqdj4hAm8cN5QVM=;
+ b=vLBmk0TJhgEZV+/zpwhkDeALLIcBHhV2yC5SrsZe3zW7ROROMGyAzpUbrkrSO5rZWp
+ /tyLL1h7J0ROf2WUNp0OtzySOIS4URa307qm4HtCWqJh6eLtl//s+O8kCIuqX1XSs36u
+ 5AM0hUoRVzM7dWOCHDqNJmsLIZ9bFhRVVPkLhdGyswpa8Xkuq4oU4i01CO+BzsvEYq6y
+ IZd/hbyDbzvLsYkvR/b3ORYDCM9KM778IDHyMTs5yt39JcZ3/NP954YSpYv+DEsPSLj5
+ yyMbKIJ+lmerfGAlKNNnxe5pU2YNX6vMAaELuqSmJoZJfTJEG/ETe9FVhn0Fp3O7VM0I
+ 5q3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695033976; x=1695638776;
+ d=1e100.net; s=20230601; t=1695034035; x=1695638835;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=lJ/64b4swMyjvK8kPqgOOGCl81yHEYjOn1hgLk+o2TQ=;
- b=MrB/SdEQLyM0X0bRoxiHz4A04DUw0aGISFEcG3dZiI6Xz5o67Kj21bR6vsEhTBTf0E
- uOsH5k4//GuEKaMk7WlmwN/lhff0iXrj/gI183SP8nh/pyzjOnJrMcjfwH67zOYQ8fke
- HaXxN9/F73zGQgF2OuXpNJUBmRRIryn3okYHGErJgHxnYDoOnBtP4ktwXnhqlff7+o3P
- xOCMWsYv8vry0V0/6Ijtjj6+eLK8yuIaRNL3G9O/tqYvlA+tC0Z4Gh1bG+0ODQfViR8C
- SaVVIs4vPURQ5BdNCxydon21wMyzDXS8Z+fsbASZ5Nn8CMSWs9e1Gdh/2Z56vYuEOh+a
- AegQ==
-X-Gm-Message-State: AOJu0Yx66idK4z602L6pHT/j0uHzZ1ynSo5fSPGa2CE50AMslSAT8gpL
- xZOE2X2QKbYJ3VvBR+HIy59oEDdqE24HC1sLPd1N9FrP6k97h5wL
-X-Received: by 2002:a05:6402:b73:b0:530:bdb0:6cb3 with SMTP id
- cb19-20020a0564020b7300b00530bdb06cb3mr5170705edb.28.1695033976568; Mon, 18
- Sep 2023 03:46:16 -0700 (PDT)
+ bh=hPtlAyriZNtI+mvNE/TyPP28F3dTSqdj4hAm8cN5QVM=;
+ b=lUZouz7b3ih5FF+yXeuvuLfuKb6Yl0OHBhxxQFCABQgvnpWMmAftcQz4ONP8I1HsgB
+ /RBdVvlo1buD7/LxhtS3qUjmp1+ro8W/QyqXdFG8VOPQvIs1tEVcAoi0QwcZyrKie0Ua
+ CCHpRJL2hAXE417/WQ8oEmbs2AfT/R+WggS/WbwoBVGVrIJtOE/z2Jo1/QFzgT3/Kz89
+ jT41LYqfUaLFjcl/OE+tlHM8Dk7ZpRcrkArKYmHR2AtazRS6NyreK5yWQL619swOvdkW
+ jyPm8Gk7yKq6td36fQpBvzbTDGQ/5npWkeMzbxgc8YV6UJe1DbSzabbu0vSmArhdz5Nl
+ 7EPw==
+X-Gm-Message-State: AOJu0YzO/6ZkxpO/yFdjADof7P57sAQkju4PRkfwzXXQbGXlwfVqajkl
+ sHRl71DHCWwY+07ToFSD667B2ULQYq+dZUxcumb3BA==
+X-Received: by 2002:a05:6402:1bc8:b0:530:be79:49e7 with SMTP id
+ ch8-20020a0564021bc800b00530be7949e7mr5365181edb.37.1695034035222; Mon, 18
+ Sep 2023 03:47:15 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230915115535.129834-1-quic_llindhol@quicinc.com>
- <20230915115535.129834-4-quic_llindhol@quicinc.com>
-In-Reply-To: <20230915115535.129834-4-quic_llindhol@quicinc.com>
+ <20230915115535.129834-3-quic_llindhol@quicinc.com>
+In-Reply-To: <20230915115535.129834-3-quic_llindhol@quicinc.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Sep 2023 11:45:57 +0100
-Message-ID: <CAFEAcA9avj+vMb1gAzzcJKFJbqC10T_QAyOvRW=i3LWO35LVkQ@mail.gmail.com>
-Subject: Re: [PATCH v1 3/3] hw/arm/sbsa-ref: use bsa.h for PPI definitions
+Date: Mon, 18 Sep 2023 11:46:56 +0100
+Message-ID: <CAFEAcA-Khp_FGbgVefg-YtOoXGNHXa=--XJmuftJ6QyvQSE99A@mail.gmail.com>
+Subject: Re: [PATCH v1 2/3] include/hw/arm: move BSA definitions to bsa.h
 To: Leif Lindholm <quic_llindhol@quicinc.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  Radoslaw Biernacki <rad@semihalf.com>,
@@ -107,93 +107,83 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Jjoyx4uED3wG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /XAIKy6M8ZXR
 
 On Fri, 15 Sept 2023 at 12:55, Leif Lindholm <quic_llindhol@quicinc.com> wrote:
 >
-> Use the private peripheral interrupt definitions from bsa.h instead of
-> defining them locally. Refactor to use PPI() to convert from INTID macro
-> where necessary.
+> virt.h defines a number of IRQs that are ultimately described by Arm's
+> Base System Architecture specification. Move these to a dedicated header
+> so that they can be reused by other platforms that do the same.
+> Include that header from virt.h to minimise churn.
 >
 > Signed-off-by: Leif Lindholm <quic_llindhol@quicinc.com>
 > ---
->  hw/arm/sbsa-ref.c | 23 +++++++++++------------
->  1 file changed, 11 insertions(+), 12 deletions(-)
+>  include/hw/arm/bsa.h  | 35 +++++++++++++++++++++++++++++++++++
+>  include/hw/arm/virt.h | 12 +-----------
+>  2 files changed, 36 insertions(+), 11 deletions(-)
+>  create mode 100644 include/hw/arm/bsa.h
 >
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index bc89eb4806..3a4ea4dfdd 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -2,6 +2,7 @@
->   * ARM SBSA Reference Platform emulation
->   *
->   * Copyright (c) 2018 Linaro Limited
+> diff --git a/include/hw/arm/bsa.h b/include/hw/arm/bsa.h
+> new file mode 100644
+> index 0000000000..b7db1cacf1
+> --- /dev/null
+> +++ b/include/hw/arm/bsa.h
+> @@ -0,0 +1,35 @@
+> +/*
+> + * Common definitions for Arm Base System Architecture (BSA) platforms.
+> + *
+> + * Copyright (c) 2015 Linaro Limited
 > + * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
->   * Written by Hongbo Zhang <hongbo.zhang@linaro.org>
->   *
->   * This program is free software; you can redistribute it and/or modify it
-> @@ -30,6 +31,7 @@
->  #include "exec/hwaddr.h"
->  #include "kvm_arm.h"
->  #include "hw/arm/boot.h"
-> +#include "hw/arm/bsa.h"
->  #include "hw/arm/fdt.h"
->  #include "hw/arm/smmuv3.h"
->  #include "hw/block/flash.h"
-> @@ -55,13 +57,6 @@
->  #define NUM_SMMU_IRQS   4
->  #define NUM_SATA_PORTS  6
->
-> -#define VIRTUAL_PMU_IRQ        7
-> -#define ARCH_GIC_MAINT_IRQ     9
-> -#define ARCH_TIMER_VIRT_IRQ    11
-> -#define ARCH_TIMER_S_EL1_IRQ   13
-> -#define ARCH_TIMER_NS_EL1_IRQ  14
-> -#define ARCH_TIMER_NS_EL2_IRQ  10
-> -
->  enum {
->      SBSA_FLASH,
->      SBSA_MEM,
-> @@ -494,15 +489,19 @@ static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
->          for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
->              qdev_connect_gpio_out(cpudev, irq,
->                                    qdev_get_gpio_in(sms->gic,
-> -                                                   ppibase + timer_irq[irq]));
-> +                                                   ppibase
-> +                                                   + PPI(timer_irq[irq])));
->          }
->
->          qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt", 0,
-> -                                    qdev_get_gpio_in(sms->gic, ppibase
-> -                                                     + ARCH_GIC_MAINT_IRQ));
-> +                                    qdev_get_gpio_in(sms->gic,
-> +                                                     ppibase
-> +                                                     + PPI(ARCH_GIC_MAINT_IRQ)));
+> + *
+> + * This program is free software; you can redistribute it and/or modify it
+> + * under the terms and conditions of the GNU General Public License,
+> + * version 2 or later, as published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope it will be useful, but WITHOUT
+> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+> + * more details.
+> + *
+> + * You should have received a copy of the GNU General Public License along with
+> + * this program.  If not, see <http://www.gnu.org/licenses/>.
+> + *
+> + */
 > +
->          qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
-> -                                    qdev_get_gpio_in(sms->gic, ppibase
-> -                                                     + VIRTUAL_PMU_IRQ));
-> +                                    qdev_get_gpio_in(sms->gic,
-> +                                                     ppibase
-> +                                                     + PPI(VIRTUAL_PMU_IRQ)));
->
->          sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
->          sysbus_connect_irq(gicbusdev, i + smp_cpus,
+> +#ifndef QEMU_ARM_BSA_H
+> +#define QEMU_ARM_BSA_H
+> +
+> +#define ARCH_GIC_MAINT_IRQ  25
 
-You could also change the definition of ppibase not to add GIC_NR_SGIS
-(perhaps renaming it) and then you wouldn't need to use the PPI() macro here...
+Given the confusion over indexing that seems to be endemic in the
+GIC world, a comment
+ /* These are architectural INTID values */
 
+might help.
+
+> +
+> +#define ARCH_TIMER_VIRT_IRQ   27
+> +#define ARCH_TIMER_S_EL1_IRQ  29
+> +#define ARCH_TIMER_NS_EL1_IRQ 30
+> +#define ARCH_TIMER_NS_EL2_IRQ 26
+> +
+> +#define VIRTUAL_PMU_IRQ 23
+> +
+> +#define PPI(irq) ((irq) - 16)
+> +
+> +#endif /* QEMU_ARM_BSA_H */
+
+thanks
 -- PMM

@@ -1,119 +1,91 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3759397ejb;
-        Tue, 19 Sep 2023 10:22:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFnRcT4T9YutQ5BrScwzAfZ/OEsH1uYfTYhWrXSK2YGAYpI81zhCnN5kuATFXQxpqSF5tJI
-X-Received: by 2002:a05:620a:430a:b0:767:2471:c880 with SMTP id u10-20020a05620a430a00b007672471c880mr385619qko.28.1695144176706;
-        Tue, 19 Sep 2023 10:22:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695144176; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3770573ejb;
+        Tue, 19 Sep 2023 10:42:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHpoo15GclkneyDzLA41GexBExwQPVr4EXZ+UYewK+hjSpLZgtJG9ye7Ps7I/FySji4l+KR
+X-Received: by 2002:a05:620a:2487:b0:773:c792:bdda with SMTP id i7-20020a05620a248700b00773c792bddamr502150qkn.53.1695145344613;
+        Tue, 19 Sep 2023 10:42:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695145344; cv=none;
         d=google.com; s=arc-20160816;
-        b=T4/hu1EiTyOCvLFzq7gw3nfVgoM85hgDwgdLVsLjf3/4qrjlw2kS7vWEapoGX+YwCG
-         61BI3v0OY+hJHgBmMcY6HiLQaOX59EJtmoQJ6n6cYxvZERX4zltEoiP76QVCauMbQNvU
-         yaddZawHXg0iwkoExKgxkre4KuKImz3Dw+FhqP0xyBpSRha65hfvydgtr+OtxAztVJ7Q
-         APHAdR3MUuFiyAGJtJUvaRt+JP1IkLfPZ9XBsudcvNpBuRmVEAew1Ncu3Eu/aP12Bw9p
-         B74Ho0yZ/4j/rJ4kvLuUJChs6UqHlIj2ZmeLrGu6Rox5nGvATE3pkF4rhe0FwNxbuQgm
-         aJiA==
+        b=x8U6eF6X6UY+fzzAE38UAn51UsN5TK48IyQWWpsV99aI6T05+VW7bc+02vucr48vPa
+         7bX6RKFO365hAC4HSQBYCsepMwLHnvJlb1q7zoRdxXzq+f3lF0Fgx4tg7DjGrgI8vJ9l
+         H4hEqZ3pW8vyYWwWAbtgpWD+Z6XNtwsFUW5J89jZMFeAZ/h1XFyBAz1QUk/UdRpG2vbX
+         P1bk7f2Ca/k+eo/3My1ifkcye/kPrbj5fkrxOmtyUrf6fZPQxO7YWT2GMeXzlbECpqLX
+         L+5hB3xIs8wLp39pSXsA+7HPP2QAuyY/B52eeQELijdPoPkBhn0n/jD4VRNoc8lG1pqj
+         uefw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=oMGyB3R4K6ih3BVDoZ9abP8pvxM14IpOrRfJzzUzO6U=;
-        fh=Itbbu/PWL12vfUV9pSMfONMQCKVHOxT0l/2dhHgmw7U=;
-        b=vo2E0zXsa5YjT94gojBpgU6VWY58M5isYpHIpRaxF6Brux9lSIEX/3X4RPXffXLBYi
-         AIgRuIcJUFE0jmjrvbOmJyOWCczTp+qlcMW5JFwFALoDSAhRQ03w744UdAqnWZ1NjztK
-         Q+u9CIFXZZdCiZksxzR18cJBoQy8cO2bhzr21SXfusVUm++j1ZIHuzyi3zkMy7OVPgj6
-         xkrYeGQHSukLuDJNr4//TpL0xYSza/xcgBqvxOaBcJfAs7JoDmC/fH04BUEGq8+PW3tM
-         6mE9Y8IoyFS44AjoW9afM6h7GgWRUqJpaEafJ4R+hb0I+WZ6HAlOazmWFLyxZm7aJF96
-         UOMg==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :mime-version:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=fkS6W4h0fJ1BMQy864xb5tjzek0Wj46PU2lpXxBaqms=;
+        fh=0f1/DiygLVnEOB5bfXLEbhxIV5HyGB1r4gtkCKZMzTA=;
+        b=0t6HT1Y5dZe7bRoJlwzkWW5NYQRch2JfFX+gGeTmp/zg4U74Uem7/ENzrcjUnNAd3x
+         Fm0rC3j1k1hqZxNUYDl4BpOrxLOV4fYfzwHnI3bCtUgfg/cUe2piCurim4GOXn6sC/2J
+         GvDs0Th+rMu2CnlCfJGPhMz70IjGT31lXUkqAZK8ayzaIR0L5hjsZoSd6Re5I9P97Cqv
+         /SYyKp1Onn6rGbJsIGE8YtDwpsx4SjBAOr30tb6skdYPw7YE4ZEuZKhPjc8Q6op6nFCf
+         nW6P3e+LW2Hmf9q9Z9cLSsjEN/bJaWNcGegyyL2jLck9lAsw0hdovODcdKpHvIQ2M+RE
+         2X6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i6YqXUGQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MnGXm8Ko;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qw7-20020a05620a8b0700b00767d49d0fffsi7554860qkn.128.2023.09.19.10.22.56
+        by mx.google.com with ESMTPS id tn10-20020a05620a3c0a00b0076daa9708cesi7705316qkn.133.2023.09.19.10.42.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Sep 2023 10:22:56 -0700 (PDT)
+        Tue, 19 Sep 2023 10:42:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i6YqXUGQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MnGXm8Ko;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qieQq-0001jC-Hf; Tue, 19 Sep 2023 13:22:40 -0400
+	id 1qiejl-00087K-Su; Tue, 19 Sep 2023 13:42:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1qieQo-0001iA-F4
- for qemu-devel@nongnu.org; Tue, 19 Sep 2023 13:22:38 -0400
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qiejj-00085b-Nc
+ for qemu-devel@nongnu.org; Tue, 19 Sep 2023 13:42:11 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1qieQm-0000Ug-Tm
- for qemu-devel@nongnu.org; Tue, 19 Sep 2023 13:22:38 -0400
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qiejf-0005cR-9e
+ for qemu-devel@nongnu.org; Tue, 19 Sep 2023 13:42:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695144155;
+ s=mimecast20190719; t=1695145325;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oMGyB3R4K6ih3BVDoZ9abP8pvxM14IpOrRfJzzUzO6U=;
- b=i6YqXUGQuTZ+EHhGKSVkXF0LOq+ncLRYUMKzaIZ5VboZQf9SzghCae7v8XW0C9jT5hPLZU
- 7l2Z/J9D8Woy+MtXHHtAodFcshTFFha32WBefwU57l4J9OXcTy0adXalvCtBb9ozI9bZYa
- naZCU+r08itTAIAq3ck5Q+YyMqynTDg=
-Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
- [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-187-QHEfC0AfM8yhRMb9rXuEHQ-1; Tue, 19 Sep 2023 13:22:34 -0400
-X-MC-Unique: QHEfC0AfM8yhRMb9rXuEHQ-1
-Received: by mail-il1-f198.google.com with SMTP id
- e9e14a558f8ab-34fc277401cso34915155ab.2
- for <qemu-devel@nongnu.org>; Tue, 19 Sep 2023 10:22:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695144153; x=1695748953;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=oMGyB3R4K6ih3BVDoZ9abP8pvxM14IpOrRfJzzUzO6U=;
- b=nfmXxY+9bCQBm2Hc4zx21d6zy434/KkLV1IwzrvjeMXAB5zmT4niRfCtmhh4e1dKNX
- 4UQcJr14WqIsHji9WKCVLlv4M0e3nEmwkDjrEJAOaaaOvrpweKpqikFjSrEC3wino0C1
- APHx505ChSuJkndhqzc5VO4ZYk2xEKsKWYNRmkMkT0uAKezTrBiNFdv6/M8yvJp6lm77
- a6a/4/QrT+Ztilzuds9MZdyuikqyiHFGlse8l6Xry6Jyrn8UxvxCig0q0w37guSXZ76h
- 7xaOYqCd6yCnTin+Y62IDhzKywzoAhe9R4ryzLZFu9ouHAe1w9DPPf2TnAV0qFWbYym8
- J72g==
-X-Gm-Message-State: AOJu0YwRBqODIu8nwDFsq6DXO0TO+bDPxPiTqbvPm/3IpIr8xa/5Osfs
- QcWQmQJQOygOL7oheGVPa9ZwvjL0ry0+ogoHwnX1c4FqJi4M6bjPukXBWhQDDbYi1X2Mmb33uVU
- /WiYA/v5KxcQl4Zg=
-X-Received: by 2002:a05:6e02:20c2:b0:34f:cff6:5e2f with SMTP id
- 2-20020a056e0220c200b0034fcff65e2fmr529492ilq.30.1695144153256; 
- Tue, 19 Sep 2023 10:22:33 -0700 (PDT)
-X-Received: by 2002:a05:6e02:20c2:b0:34f:cff6:5e2f with SMTP id
- 2-20020a056e0220c200b0034fcff65e2fmr529481ilq.30.1695144153020; 
- Tue, 19 Sep 2023 10:22:33 -0700 (PDT)
-Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
- ga7-20020a0566381f0700b0043193e32c78sm3483137jab.152.2023.09.19.10.22.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Sep 2023 10:22:32 -0700 (PDT)
-Date: Tue, 19 Sep 2023 11:22:30 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- clg@redhat.com, jean-philippe@linaro.org, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
- david@redhat.com, philmd@linaro.org
-Subject: Re: [PATCH v2 12/12] vfio: Remove 64-bit IOVA address space assumption
-Message-ID: <20230919112230.5dfe14fa.alex.williamson@redhat.com>
-In-Reply-To: <20230913080423.523953-13-eric.auger@redhat.com>
-References: <20230913080423.523953-1-eric.auger@redhat.com>
- <20230913080423.523953-13-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type;
+ bh=fkS6W4h0fJ1BMQy864xb5tjzek0Wj46PU2lpXxBaqms=;
+ b=MnGXm8Ko2EWVeiK/IYIal7ifVnaYiOxCGzrQK+CmTKylcPtq/NCe1uvliMeSH5sFvfVYqS
+ Enm1eS+fzYBlPWizVT6chnzw8E1ALPGF1a9k5XradeJrGoutToQMsvx0x46i7wVX7p6gbx
+ SAKh/5DLKZ25QT/+F5XpJtHthqKdYgE=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-487-zwLmQ-YAMFOLO-ZSZtkH6Q-1; Tue, 19 Sep 2023 13:42:03 -0400
+X-MC-Unique: zwLmQ-YAMFOLO-ZSZtkH6Q-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8B03F85A5BA;
+ Tue, 19 Sep 2023 17:42:02 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.87])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1FFBD10EE859;
+ Tue, 19 Sep 2023 17:42:01 +0000 (UTC)
+Date: Tue, 19 Sep 2023 13:42:00 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: npcm7xx_timer-test.c is unreliable
+Message-ID: <20230919174200.GA1542425@fedora>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=alex.williamson@redhat.com;
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="L0/RzYScWsUvj8df"
+Content-Disposition: inline
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -136,95 +108,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XtY8IYnIRw9n
+X-TUID: u8gHz/0c5Unh
 
-On Wed, 13 Sep 2023 10:01:47 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
 
-> Now we retrieve the usable IOVA ranges from the host,
-> we now the physical IOMMU aperture and we can remove
-> the assumption of 64b IOVA space when calling
-> vfio_host_win_add().
-> 
-> This works fine in general but in case of an IOMMU memory
-> region this becomes more tricky. For instance the virtio-iommu
-> MR has a 64b aperture by default. If the physical IOMMU has a
-> smaller aperture (typically the case for VTD), this means we
-> would need to resize the IOMMU MR when this latter is linked
-> to a container. However this happens on vfio_listener_region_add()
-> when calling the IOMMU MR set_iova_ranges() callback and this
-> would mean we would have a recursive call the
-> vfio_listener_region_add(). This looks like a wrong usage of
-> the memory API causing duplicate IOMMU MR notifier registration
-> for instance.
-> 
-> Until we find a better solution, make sure the vfio_find_hostwin()
-> is not called anymore for IOMMU region.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> I have not found any working solution to the IOMMU MR resizing.
-> So I can remove this patch or remove the check for IOMMU MR. Maybe
-> this is an issue which can be handled separately?
-> ---
->  hw/vfio/common.c | 25 ++++++++++++-------------
->  1 file changed, 12 insertions(+), 13 deletions(-)
-> 
-> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-> index 26da38de05..40cac1ca91 100644
-> --- a/hw/vfio/common.c
-> +++ b/hw/vfio/common.c
-> @@ -1112,13 +1112,6 @@ static void vfio_listener_region_add(MemoryListener *listener,
->  #endif
->      }
->  
-> -    hostwin = vfio_find_hostwin(container, iova, end);
-> -    if (!hostwin) {
-> -        error_setg(&err, "Container %p can't map guest IOVA region"
-> -                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
-> -        goto fail;
-> -    }
-> -
->      memory_region_ref(section->mr);
->  
->      if (memory_region_is_iommu(section->mr)) {
-> @@ -1177,6 +1170,14 @@ static void vfio_listener_region_add(MemoryListener *listener,
->          return;
->      }
->  
-> +    hostwin = vfio_find_hostwin(container, iova, end);
-> +    if (!hostwin) {
-> +        error_setg(&err, "Container %p can't map guest IOVA region"
-> +                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
-> +        goto fail;
-> +    }
-> +
-> +
->      /* Here we assume that memory_region_is_ram(section->mr)==true */
->  
->      /*
-> @@ -2594,12 +2595,10 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
->          vfio_get_iommu_info_migration(container, info);
->          g_free(info);
->  
-> -        /*
-> -         * FIXME: We should parse VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE
-> -         * information to get the actual window extent rather than assume
-> -         * a 64-bit IOVA address space.
-> -         */
-> -        vfio_host_win_add(container, 0, (hwaddr)-1, container->pgsizes);
-> +        g_assert(container->nr_iovas);
+--L0/RzYScWsUvj8df
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-This assert is a problem for older kernels.
+Hi,
+Sometimes npcm7xx_timer-test fails intermittently: https://gitlab.com/qemu-=
+project/qemu/-/jobs/5121787250
 
-> +        vfio_host_win_add(container, 0,
-> +                          container->iova_ranges[container->nr_iovas - 1].end,
-> +                          container->pgsizes);
+38/96 qemu:qtest+qtest-arm / qtest-arm/npcm7xx_timer-test           ERROR  =
+         0.95s   exit status 1
+>>> QTEST_QEMU_BINARY=3D./qemu-system-arm QTEST_QEMU_STORAGE_DAEMON_BINARY=
+=3D./storage-daemon/qemu-storage-daemon G_TEST_DBUS_DAEMON=3D/builds/qemu-p=
+roject/qemu/tests/dbus-vmstate-daemon.sh QTEST_QEMU_IMG=3D./qemu-img MALLOC=
+_PERTURB_=3D103 /builds/qemu-project/qemu/build/tests/qtest/npcm7xx_timer-t=
+est --tap -k
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95 =E2=9C=80  =E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95
+stderr:
+**
+ERROR:../tests/qtest/npcm7xx_timer-test.c:475:test_periodic_interrupt: asse=
+rtion failed (tim_read(td, TISR) =3D=3D tim_timer_bit(td)): (0x00000000 =3D=
+=3D 0x00000004)
+**
+ERROR:../tests/qtest/npcm7xx_timer-test.c:476:test_periodic_interrupt: 'qte=
+st_get_irq(global_qtest, tim_timer_irq(td))' should be TRUE
+(test program exited with status code 1)
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
+=E2=80=95=E2=80=95=E2=80=95
 
-This doesn't address the assumption about the min_iova and adds an
-assumption that the kernel provided list is sorted.  Thanks,
+When I reran the CI job, it passed.
 
-Alex
+Please investigate why this test is unreliable and fix it. Thanks!
+
+There is a GitLab Issue to track this here:
+https://gitlab.com/qemu-project/qemu/-/issues/1897
+
+Stefan
+
+--L0/RzYScWsUvj8df
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmUJ3WgACgkQnKSrs4Gr
+c8j6nAf+PXJRPeicg7B3OQX3416vrNXQjzW9QGy6PZk/uZefScgpyXDdnwq9bydV
+axECq6N/FzpZCa+Ulv+mXQtvYeAGE2zIQWCz6a2FZ1+ih+NUT4h1ltueqswQgDsn
+e97Ap8sCHaUEsHqEk9HebPldyzl+nCtQ+H9zC0vcqdzt6CCvP5MmsacAWpctAgW3
+cJnl4S75sZQ4pIImPlMUwOMTZMOdOfKbdJg0dooDdwQvKzI5/f4eIObW5/oXF+Kz
+WixqXuaFJjOeCNsm4Z9eR8yTINQ3JCfVq5w5kjbMGNSJV3S930da6x997wa3ZQAy
+gEI+s0mWU4JXzpQ0rQQ7gM6mZ+HLsw==
+=lr6J
+-----END PGP SIGNATURE-----
+
+--L0/RzYScWsUvj8df--
 

@@ -1,105 +1,125 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3607330ejb;
-        Tue, 19 Sep 2023 06:34:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEXW6s95GC+8TZplem7ui34pw0hiDsjDQt3z/LcG0bzYr6i4fNQmZO4m5aFkjHJyZKJNwA2
-X-Received: by 2002:a05:620a:981:b0:76d:ada0:4c0 with SMTP id x1-20020a05620a098100b0076dada004c0mr11196793qkx.76.1695130455105;
-        Tue, 19 Sep 2023 06:34:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695130455; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3671107ejb;
+        Tue, 19 Sep 2023 08:08:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEx3r0+zQAgObSw3A8wkRxebC3VaHD+RYQacnMlq3qKMrV5HA6qOsPddnm6aeuokmUBGQ9U
+X-Received: by 2002:a05:622a:295:b0:417:bb09:eba8 with SMTP id z21-20020a05622a029500b00417bb09eba8mr5281450qtw.55.1695136109588;
+        Tue, 19 Sep 2023 08:08:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695136109; cv=none;
         d=google.com; s=arc-20160816;
-        b=uIYdQN5EY8A9RlMrN/pIz+7R+twhcbp71a5RjTEp+kXm6IwyqTyXXnJIj3evFcORlz
-         kC+UGaMmZ8ibn0W0nfzGD0GwLQjFwi7MLu/vXKoDTAwFdWekPhYyoXn3BLyBG0dmnG2f
-         LVa8Z9TMpGYw/ETvzfVF+cUshjl/qWFRZaWQPYym/Ykrwgqtl0tc5HDIKEye70KOsyEA
-         3Sl/jR5NGcAuDId+aeS4ZVvAnTsgf2BhQAigHSejMpgFSgwYYWKLAGzOl5ayjUTLWz9w
-         T/RDIjEGj/mGNP5Dvk0fjUq5TbhjaHsprphx00StXgBaaZx0cly+ZKbnkTD48Cbrm7pn
-         g4ag==
+        b=SlmoQWgCSPGaywNh3M0bkAw/6JDV5I9beh0jUPvPBEIJmVBYPm86FxS4eo79AFc2Aw
+         W+RQ3jqEuaDRHzK8qpJrJW3pb3ZZHLlAeVxU/todGd0RMAxzZPwOPDyCN/rb2muJt7+P
+         S2FKWxRF8gItOMoYOxGiX0EDTJnxdqDeB/0QVGA9AUXrslwHaU/cRhoqw1we4KVVcQkm
+         tNp+TstYp/95YaDc+7GDALX9eVPMbkvszGxx449bAzcuNC1X3Jtimcq43KJyeOdmS+4/
+         8I6f7yDEohNklj1wDuAJRbARK9KBjqUjAjJd5jjaGISWqnMEP8FZ3ePo8zxfiEMUMPPo
+         Qa3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=YtPavnwvm/eZgSIUI6oTQ7xOmNlSeznCkRV1VnvV9ws=;
-        fh=Kp+CYTj3ROr+bDzvDYYGSs+9fKWZ3p1ZZJqvRNPADww=;
-        b=vO4lRuDxnNOTmYYLLDkskuzQ7aPfwkh9ZxhQOsGH9OUa+YuCbQQMQldtmOnc6+tAtQ
-         y4FkxNwbvBMMxJAZg8BH8RmIUY2N0QOMpDAMIgcXXMpbHtvv6Vr1RebX2m/fHg/dSdBv
-         DuXzFAh4sB5MKtG7654DuRBBbo5KPOZr4eXpJd+wjW2vswyUaza0vx0EbtWqz4Yugxvu
-         8h0Js6WG79s8GkjYe0y3CGpXLQGewT7w06UMGCFZiI+cBUxykjqVH6vbAVH+jdaPYra2
-         EHS6GykRGOyGKUC/q9cJ6E6XxRB6xqcNW2k/bEQS5DbsC93jgcn4SmonxBJS37qpJ1kZ
-         Y4sA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=r97l5vwZS5XFaxpRvXTKnunfsGMbtSmMIzYbzbl6vSI=;
+        fh=wV9i4kBK8skO9nNK5D4EdkF0O1NEWATtB+qOpaJuFmg=;
+        b=OKI+eqTJazoxtQXOuR9+ZdCv/1zgT0asdWoQUmbGs760MUyw0yegHfHFXi465Kky2g
+         QyvruUPm4oARCRmY2MieYNu5dd2fw6Uz21sU5vpXyuhfODiNibg9WMZMroK30ODy97XQ
+         SEYIdDlY8FiPrz77JDyhgno3TZyuZyavnZgyWsJVcVFvp/MyrR2zsfcrOmyJt9b+X41N
+         QKcoXlSTqPA6kvwaM2vrvnPGepSdEWqB9r81MPGog1ncLk2jpzwzVFOLqw1sglTFC5Va
+         EdX30YOWR0j/UXK+vTfBfo61t452RQKLCe3QJkb1IYB8bCLLYo7AJYk0JMF+RjGfDU1u
+         4uhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="s7/VtaAX";
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=j3BP849d;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x29-20020a05620a0b5d00b00773be513ec2si4496941qkg.738.2023.09.19.06.34.14
+        by mx.google.com with ESMTPS id t26-20020a05622a181a00b004081bb79850si7886764qtc.367.2023.09.19.08.08.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Sep 2023 06:34:15 -0700 (PDT)
+        Tue, 19 Sep 2023 08:08:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="s7/VtaAX";
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=j3BP849d;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qiaqo-0005ve-7U; Tue, 19 Sep 2023 09:33:14 -0400
+	id 1qicKn-0000ss-WB; Tue, 19 Sep 2023 11:08:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
- id 1qiaqj-0005up-TQ; Tue, 19 Sep 2023 09:33:09 -0400
-Received: from ams.source.kernel.org ([145.40.68.75])
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1qicKm-0000s2-6P; Tue, 19 Sep 2023 11:08:16 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
- id 1qiaqg-0006DY-Qv; Tue, 19 Sep 2023 09:33:09 -0400
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 207CEB8162B;
- Tue, 19 Sep 2023 13:33:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE61AC433AB;
- Tue, 19 Sep 2023 13:33:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1695130382;
- bh=oN/qwTe+Yp98jRceRi8UISVMhOhXPsn+Yhw00ENbABc=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=s7/VtaAXskAym9OAkHb7ggAIEDyiCUBcKZVYayRDfisR9zFEcN3qt2uGkvBE/PQn4
- zeN+/FVPoEBzcRHlgU082JjSVTmh2CVRzcoBt/UjI51YTNusQvn27UpJZFhpuoTyZM
- 43Wz7XyvdEBPvuleJ69xHM8ILDQkw5PX7atEr7hvW6JNjvso9FFPyJAII2Zxd6MkhE
- ih9qgF1jXaIu1oZ7Sc45koogHDKAInEuE/VX7buVXIjWlBEwMXbu8QQTlLt94YX5dx
- H38Nc6z2K3IspNAbM7qhcPVMT0WoQQkLZWXeaOrOdZMvxg4rRxk2XeHT7vB+GvKyf6
- 79vWJPaHqI2og==
-Received: by mail-lj1-f170.google.com with SMTP id
- 38308e7fff4ca-2bfb17435e4so92152181fa.0; 
- Tue, 19 Sep 2023 06:33:02 -0700 (PDT)
-X-Gm-Message-State: AOJu0Yxyg3A4p82sYsmVxzvOhJEZ154xGh/tmy8PCRHlQvl18e7VmIgA
- 3SL/cmf5KqIW/+vNQAKtZnxt4iu0DtQc7RoC4vM=
-X-Received: by 2002:a2e:a279:0:b0:2bf:fa62:5ceb with SMTP id
- k25-20020a2ea279000000b002bffa625cebmr6567103ljm.11.1695130380897; Tue, 19
- Sep 2023 06:33:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1qicKj-0000RX-L7; Tue, 19 Sep 2023 11:08:15 -0400
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 38JAlOMK009476; Tue, 19 Sep 2023 15:07:55 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=r97l5vwZS5XFaxpRvXTKnunfsGMbtSmMIzYbzbl6vSI=;
+ b=j3BP849dZqsJdiU9H2NpT2lSOGYIUz13gzHc+41VmHLq2lvFZSVud1BHAhLLdsE8OB3/
+ /uKmgC9G2fS3l0Tt148nMzOpd7iXa8fUpSCb0kX7LXkdO+yee5qXTLA0HLNFwfyFMk/R
+ 0J95AMXg3tnzBieEk9bC+Z4B7NcuNUdHv2zA2uCpAM/5urJSp9xJSzgfxc+SKNWedJq2
+ U0bviaR0I6xtNzukLSEFZQJQ2k1i8qPdeThV1M4XZOTc1eA1BdfNYy2EsjS/28sX7Kg/
+ MiZtvWJ6Dvb1Hdm3A2j0gZNRhrnsrLuNOvSxSxd5wuQMqrhgp2LaNrBrRF9eHNKcWozz xQ== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com
+ [199.106.103.254])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t6pmq2vrj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 19 Sep 2023 15:07:55 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
+ [10.45.79.139])
+ by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38JF7sM3006424
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 19 Sep 2023 15:07:54 GMT
+Received: from [10.111.128.147] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Tue, 19 Sep
+ 2023 08:07:52 -0700
+Message-ID: <e4223f6d-fe0c-411a-a345-a79c019d1bee@quicinc.com>
+Date: Tue, 19 Sep 2023 16:07:49 +0100
 MIME-Version: 1.0
-References: <20230919101240.2569334-1-peter.maydell@linaro.org>
-In-Reply-To: <20230919101240.2569334-1-peter.maydell@linaro.org>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Tue, 19 Sep 2023 15:32:49 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXHX1MV4S7vcHev12T8M-j0sNGp+-diV+ph+eT=ZZwDNHQ@mail.gmail.com>
-Message-ID: <CAMj1kXHX1MV4S7vcHev12T8M-j0sNGp+-diV+ph+eT=ZZwDNHQ@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC 0/3] virt: wire up NS EL2 virtual timer IRQ
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Leif Lindholm <quic_llindhol@quicinc.com>, 
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=145.40.68.75; envelope-from=ardb@kernel.org;
- helo=ams.source.kernel.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+Content-Language: en-GB
+To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+CC: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Ard Biesheuvel
+ <ardb@kernel.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>
+References: <20230919101240.2569334-1-peter.maydell@linaro.org>
+From: Leif Lindholm <quic_llindhol@quicinc.com>
+In-Reply-To: <20230919101240.2569334-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-GUID: MLNbrbXCcFuaKNZXI49Xl980BczZg0T_
+X-Proofpoint-ORIG-GUID: MLNbrbXCcFuaKNZXI49Xl980BczZg0T_
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-19_06,2023-09-19_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 spamscore=0
+ priorityscore=1501 impostorscore=0 mlxlogscore=643 mlxscore=0 phishscore=0
+ clxscore=1011 lowpriorityscore=0 adultscore=0 bulkscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
+ definitions=main-2309190130
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=quic_llindhol@quicinc.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,33 +135,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ape3SY5Dj+L8
+X-TUID: y3Ad68jLhrn6
 
-Hi Peter,
-
-On Tue, 19 Sept 2023 at 12:12, Peter Maydell <peter.maydell@linaro.org> wrote:
->
+On 2023-09-19 11:12, Peter Maydell wrote:
 > This patchset is an RFC that wires up the NS EL2 virtual timer IRQ on
 > the virt board, similarly to what
 > https://patchew.org/QEMU/20230913140610.214893-1-marcin.juszkiewicz@linaro.org/
 > does for the sbsa-ref board.
->
+> 
 > Patches 1 and 3 are the usual dance to keep the ACPI unit tests happy
 > with the change to the ACPI table contents; patch 2 is the meat.
->
+> 
 > This is an RFC for two reasons:
->
+> 
 > (1) I'm not very familiar with ACPI, and patch 2 needs to update the
 > ACPI GTDT table to report the interrupt number.  In particular, this
 > means we need the rev 3 of this table (present in ACPI spec 6.3 and
 > later), not the rev 2 we currently report.  I'm not sure if it's
 > permitted to rev just this table, or if we would need to upgrade all
 > our ACPI tables to the newer spec first.
->
 
-Using a newer revision of a table is fine as long as the FADT
-major/minor fields match the spec version that introduced it. No need
-to update all the other tables.
+Ard already provided the answer for this.
 
 > (2) The change causes EDK2 (UEFI) to assert on startup:
 > ASSERT [ArmTimerDxe] /home/kraxel/projects/qemu/roms/edk2/ArmVirtPkg/Library/ArmVirtTimerFdtClientLib/ArmVirtTimerFdtClientLib.c(72): PropSize == 36 || PropSize == 48
@@ -157,11 +171,41 @@ to update all the other tables.
 > this patchset does.  We could perhaps make the virt board change be
 > dependent on machine type version, as a way to let users fall back to
 > the old behaviour.
->
 
-ASSERT()s only fire in DEBUG builds so the impact should be limited.
+And kind of this one too. Although I might expand somewhat:
+As I understand it, this only breaks an existing setup where someone is
+- Running a DEBUG build of edk2
+- With virtualization=on
+I don't see that (currently) happening outside development/ci, and the 
+RELEASE builds should save anyone not actually working on edk2 but only 
+running it to test other things.
 
+Ard has given me an r-b on the fix, so that can be merged today.
+It will then land in edk2-stable202311 around the end of November, but 
+will be on the main branch as soon as it passes ci.
+
+I have one comment on my own, which is this clearly has a merge conflict 
+with my PPI rework patches.
+
+Regards,
+
+Leif
 
 > I'm putting this patchset out on the list to get opinions and
 > review on those two points.
->
+> 
+> thanks
+> -- PMM
+> 
+> Peter Maydell (3):
+>    tests/qtest/bios-tables-test: Allow changes to virt GTDT
+>    hw/arm/virt: Wire up non-secure EL2 virtual timer IRQ
+>    tests/qtest/bios-tables-test: Update virt/GTDT golden reference
+> 
+>   include/hw/arm/virt.h     |   2 ++
+>   hw/arm/virt-acpi-build.c  |  16 ++++++++++++----
+>   hw/arm/virt.c             |  29 ++++++++++++++++++++++++++++-
+>   tests/data/acpi/virt/GTDT | Bin 96 -> 104 bytes
+>   4 files changed, 42 insertions(+), 5 deletions(-)
+> 
+

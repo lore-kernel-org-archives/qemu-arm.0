@@ -1,120 +1,118 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3726934ejb;
-        Tue, 19 Sep 2023 09:30:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEhNUleovjpAH45PNo0oso2OaTCP5Cdu7xKWW892EDj0COERPfa1md5wTy4JPH20jF3u/UL
-X-Received: by 2002:a05:6808:613:b0:3a8:5997:21e3 with SMTP id y19-20020a056808061300b003a8599721e3mr13141161oih.33.1695141043534;
-        Tue, 19 Sep 2023 09:30:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695141043; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3759397ejb;
+        Tue, 19 Sep 2023 10:22:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFnRcT4T9YutQ5BrScwzAfZ/OEsH1uYfTYhWrXSK2YGAYpI81zhCnN5kuATFXQxpqSF5tJI
+X-Received: by 2002:a05:620a:430a:b0:767:2471:c880 with SMTP id u10-20020a05620a430a00b007672471c880mr385619qko.28.1695144176706;
+        Tue, 19 Sep 2023 10:22:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695144176; cv=none;
         d=google.com; s=arc-20160816;
-        b=QUpg8glodW3NDczE9PEMTJ6+mz6FdPOSZGmu5+h4KMuncxNveCaNzaGa0OYKxY7kGX
-         4zsLh4HEN1t7P1YXt/uFUyhIjpFK/PtF4oeo9VaxmcaeJ45uxCw9WbaOeqzzJjoGnTKV
-         rZE+P8GcCFPVj1U6Jn7UUzIOJkA2v56ff+rwbWAVvr6uWMQI2eTGglRAXkqfOt8v24Qz
-         FRp+zkVY9ZeJJI1ABxz6sgEi96M7dXuyuUgMhFy8JZUT5LcZsDh/e3bGI3Is0bNQfKLE
-         WfRkqvy/Elkknv1awOZtFlNrYnGB+TCeWEwuRrOSTQ8OT7L47UC6XyfTUoweFIBSG1/4
-         I/2g==
+        b=T4/hu1EiTyOCvLFzq7gw3nfVgoM85hgDwgdLVsLjf3/4qrjlw2kS7vWEapoGX+YwCG
+         61BI3v0OY+hJHgBmMcY6HiLQaOX59EJtmoQJ6n6cYxvZERX4zltEoiP76QVCauMbQNvU
+         yaddZawHXg0iwkoExKgxkre4KuKImz3Dw+FhqP0xyBpSRha65hfvydgtr+OtxAztVJ7Q
+         APHAdR3MUuFiyAGJtJUvaRt+JP1IkLfPZ9XBsudcvNpBuRmVEAew1Ncu3Eu/aP12Bw9p
+         B74Ho0yZ/4j/rJ4kvLuUJChs6UqHlIj2ZmeLrGu6Rox5nGvATE3pkF4rhe0FwNxbuQgm
+         aJiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:cc:to:from
          :date:dkim-signature;
-        bh=KSpyt9yaHxXmhZl+ScKvKwZjGb7cAU2iZGF6XKcSbrY=;
+        bh=oMGyB3R4K6ih3BVDoZ9abP8pvxM14IpOrRfJzzUzO6U=;
         fh=Itbbu/PWL12vfUV9pSMfONMQCKVHOxT0l/2dhHgmw7U=;
-        b=ZbpddQM/KI5dt4g71nrsrxdvs2vXQNV2HU9YgBvinWM533NQ6sOevQLTqvtJd/5Cmg
-         Mz2JpEWul8VvJPInNlM5MElKLg6j2w/c3H1723uGOp5CEgbNK46O9VQQ9ua2xYjDITu+
-         pGtCCXJSFLXqhSJqjzC7mBM6UWQIQaUNUJnsd/YBhRd0ccNnRzTOp/UCa3ki/hA1vBQU
-         G4rYsb20Ubi8ru+9HItTuwc0jIzBD7cD3yuSBOcNxmakyqdmL9UsO3DVrw7WHWeeWtMH
-         ZSzYeGUe+bQKM3rlw98eM69JXorA2+gVVmZEOZsQ/Cv4MklHNbf75ygQMq8ypUAFnlEI
-         WRXQ==
+        b=vo2E0zXsa5YjT94gojBpgU6VWY58M5isYpHIpRaxF6Brux9lSIEX/3X4RPXffXLBYi
+         AIgRuIcJUFE0jmjrvbOmJyOWCczTp+qlcMW5JFwFALoDSAhRQ03w744UdAqnWZ1NjztK
+         Q+u9CIFXZZdCiZksxzR18cJBoQy8cO2bhzr21SXfusVUm++j1ZIHuzyi3zkMy7OVPgj6
+         xkrYeGQHSukLuDJNr4//TpL0xYSza/xcgBqvxOaBcJfAs7JoDmC/fH04BUEGq8+PW3tM
+         6mE9Y8IoyFS44AjoW9afM6h7GgWRUqJpaEafJ4R+hb0I+WZ6HAlOazmWFLyxZm7aJF96
+         UOMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VapaYdQU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i6YqXUGQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j9-20020ac85c49000000b00403ae750884si7876920qtj.186.2023.09.19.09.30.43
+        by mx.google.com with ESMTPS id qw7-20020a05620a8b0700b00767d49d0fffsi7554860qkn.128.2023.09.19.10.22.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Sep 2023 09:30:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 Sep 2023 10:22:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VapaYdQU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i6YqXUGQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qidbT-0003Xz-7E; Tue, 19 Sep 2023 12:29:35 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qieQq-0001jC-Hf; Tue, 19 Sep 2023 13:22:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1qidbR-0003XO-Fd
- for qemu-arm@nongnu.org; Tue, 19 Sep 2023 12:29:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qieQo-0001iA-F4
+ for qemu-devel@nongnu.org; Tue, 19 Sep 2023 13:22:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1qidbP-00024z-DB
- for qemu-arm@nongnu.org; Tue, 19 Sep 2023 12:29:32 -0400
+ id 1qieQm-0000Ug-Tm
+ for qemu-devel@nongnu.org; Tue, 19 Sep 2023 13:22:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695140970;
+ s=mimecast20190719; t=1695144155;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KSpyt9yaHxXmhZl+ScKvKwZjGb7cAU2iZGF6XKcSbrY=;
- b=VapaYdQUIw7ihfEtheermw6yeaPk76NSF/OlUKMzBWRlnPIs36muCpHa7w5f9XTkjgjhIE
- Hyj0vNGIT69T0M/FvqSIJxRynx3yA4+nokYn/cObNkJJ/0/NubWwPQCmeLsfPRb27AYCOW
- i/ZAUnvVCfyeg4VSqHRpWp+QCLRGcTc=
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=oMGyB3R4K6ih3BVDoZ9abP8pvxM14IpOrRfJzzUzO6U=;
+ b=i6YqXUGQuTZ+EHhGKSVkXF0LOq+ncLRYUMKzaIZ5VboZQf9SzghCae7v8XW0C9jT5hPLZU
+ 7l2Z/J9D8Woy+MtXHHtAodFcshTFFha32WBefwU57l4J9OXcTy0adXalvCtBb9ozI9bZYa
+ naZCU+r08itTAIAq3ck5Q+YyMqynTDg=
+Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
+ [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-68-6WQShHnpMzKo1mFTgBS3ZA-1; Tue, 19 Sep 2023 12:29:29 -0400
-X-MC-Unique: 6WQShHnpMzKo1mFTgBS3ZA-1
-Received: by mail-io1-f69.google.com with SMTP id
- ca18e2360f4ac-7983537d6c1so493476439f.3
- for <qemu-arm@nongnu.org>; Tue, 19 Sep 2023 09:29:29 -0700 (PDT)
+ us-mta-187-QHEfC0AfM8yhRMb9rXuEHQ-1; Tue, 19 Sep 2023 13:22:34 -0400
+X-MC-Unique: QHEfC0AfM8yhRMb9rXuEHQ-1
+Received: by mail-il1-f198.google.com with SMTP id
+ e9e14a558f8ab-34fc277401cso34915155ab.2
+ for <qemu-devel@nongnu.org>; Tue, 19 Sep 2023 10:22:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695140968; x=1695745768;
+ d=1e100.net; s=20230601; t=1695144153; x=1695748953;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KSpyt9yaHxXmhZl+ScKvKwZjGb7cAU2iZGF6XKcSbrY=;
- b=BAhKDg4mC3/OpwzlpSVHaet6G52yDYhjQwSPM6iIcf5snW4I3NikP2Xkndrn0+iDZY
- iSdH8fMKjRZgoLvQyVjqB99NiqwE06ZLhlrNGKau2f/4SyTH9D+rfzBlpg6QrudCVZQ0
- a5PgO/l7PpbkMf1VzUnUU5QccVu/5tABdhbc+gWxga6gGzFNcJNfOFdQCylJH0GcSh5E
- AoQpYKIzsT/smM7GHEIld03JdtEhG37spWY+eXUJe+08pX1aBBaLoSTbmcP40OpgMQFO
- RCvpS4cgW1s3qgQNuGgEtODE7WZY8b+Sn3LLoD3J/0xiw7lnRZq8+B1HU3cWSwwKg/ht
- ONvw==
-X-Gm-Message-State: AOJu0Yxt3Ky0mH+KOPs518MM/ZRmy4p9kCVoaI0AAfzgoB9UxixQiPZP
- uWT9ui+Zucv+snwtOKJDFxlgwBWY94msZ58cWZ1KKr2SBo/65Ocur7eiPcDRTZ9YbCCyar90hvN
- vhjWxhadmtcLt
-X-Received: by 2002:a5d:87c6:0:b0:790:c3d0:8f87 with SMTP id
- q6-20020a5d87c6000000b00790c3d08f87mr356257ios.19.1695140968384; 
- Tue, 19 Sep 2023 09:29:28 -0700 (PDT)
-X-Received: by 2002:a5d:87c6:0:b0:790:c3d0:8f87 with SMTP id
- q6-20020a5d87c6000000b00790c3d08f87mr356226ios.19.1695140968053; 
- Tue, 19 Sep 2023 09:29:28 -0700 (PDT)
+ bh=oMGyB3R4K6ih3BVDoZ9abP8pvxM14IpOrRfJzzUzO6U=;
+ b=nfmXxY+9bCQBm2Hc4zx21d6zy434/KkLV1IwzrvjeMXAB5zmT4niRfCtmhh4e1dKNX
+ 4UQcJr14WqIsHji9WKCVLlv4M0e3nEmwkDjrEJAOaaaOvrpweKpqikFjSrEC3wino0C1
+ APHx505ChSuJkndhqzc5VO4ZYk2xEKsKWYNRmkMkT0uAKezTrBiNFdv6/M8yvJp6lm77
+ a6a/4/QrT+Ztilzuds9MZdyuikqyiHFGlse8l6Xry6Jyrn8UxvxCig0q0w37guSXZ76h
+ 7xaOYqCd6yCnTin+Y62IDhzKywzoAhe9R4ryzLZFu9ouHAe1w9DPPf2TnAV0qFWbYym8
+ J72g==
+X-Gm-Message-State: AOJu0YwRBqODIu8nwDFsq6DXO0TO+bDPxPiTqbvPm/3IpIr8xa/5Osfs
+ QcWQmQJQOygOL7oheGVPa9ZwvjL0ry0+ogoHwnX1c4FqJi4M6bjPukXBWhQDDbYi1X2Mmb33uVU
+ /WiYA/v5KxcQl4Zg=
+X-Received: by 2002:a05:6e02:20c2:b0:34f:cff6:5e2f with SMTP id
+ 2-20020a056e0220c200b0034fcff65e2fmr529492ilq.30.1695144153256; 
+ Tue, 19 Sep 2023 10:22:33 -0700 (PDT)
+X-Received: by 2002:a05:6e02:20c2:b0:34f:cff6:5e2f with SMTP id
+ 2-20020a056e0220c200b0034fcff65e2fmr529481ilq.30.1695144153020; 
+ Tue, 19 Sep 2023 10:22:33 -0700 (PDT)
 Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
- l4-20020a6b7f04000000b007835a305f61sm3301527ioq.36.2023.09.19.09.29.27
+ ga7-20020a0566381f0700b0043193e32c78sm3483137jab.152.2023.09.19.10.22.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Sep 2023 09:29:27 -0700 (PDT)
-Date: Tue, 19 Sep 2023 10:29:26 -0600
+ Tue, 19 Sep 2023 10:22:32 -0700 (PDT)
+Date: Tue, 19 Sep 2023 11:22:30 -0600
 From: Alex Williamson <alex.williamson@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  clg@redhat.com, jean-philippe@linaro.org, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
  david@redhat.com, philmd@linaro.org
-Subject: Re: [PATCH v2 06/12] range: Introduce range_inverse_array()
-Message-ID: <20230919102926.54f92f47.alex.williamson@redhat.com>
-In-Reply-To: <20230913080423.523953-7-eric.auger@redhat.com>
+Subject: Re: [PATCH v2 12/12] vfio: Remove 64-bit IOVA address space assumption
+Message-ID: <20230919112230.5dfe14fa.alex.williamson@redhat.com>
+In-Reply-To: <20230913080423.523953-13-eric.auger@redhat.com>
 References: <20230913080423.523953-1-eric.auger@redhat.com>
- <20230913080423.523953-7-eric.auger@redhat.com>
+ <20230913080423.523953-13-eric.auger@redhat.com>
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=alex.williamson@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -122,121 +120,111 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KCUls0vzrZjz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XtY8IYnIRw9n
 
-On Wed, 13 Sep 2023 10:01:41 +0200
+On Wed, 13 Sep 2023 10:01:47 +0200
 Eric Auger <eric.auger@redhat.com> wrote:
 
-> This helper reverses an array of regions, turning original
-> regions into holes and original holes into actual regions,
-> covering the whole UINT64_MAX span.
+> Now we retrieve the usable IOVA ranges from the host,
+> we now the physical IOMMU aperture and we can remove
+> the assumption of 64b IOVA space when calling
+> vfio_host_win_add().
+> 
+> This works fine in general but in case of an IOMMU memory
+> region this becomes more tricky. For instance the virtio-iommu
+> MR has a 64b aperture by default. If the physical IOMMU has a
+> smaller aperture (typically the case for VTD), this means we
+> would need to resize the IOMMU MR when this latter is linked
+> to a container. However this happens on vfio_listener_region_add()
+> when calling the IOMMU MR set_iova_ranges() callback and this
+> would mean we would have a recursive call the
+> vfio_listener_region_add(). This looks like a wrong usage of
+> the memory API causing duplicate IOMMU MR notifier registration
+> for instance.
+> 
+> Until we find a better solution, make sure the vfio_find_hostwin()
+> is not called anymore for IOMMU region.
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > 
 > ---
 > 
-> v1 -> v2:
-> - Move range_inverse_array description comment in the header
-> - Take low/high params
+> I have not found any working solution to the IOMMU MR resizing.
+> So I can remove this patch or remove the check for IOMMU MR. Maybe
+> this is an issue which can be handled separately?
 > ---
->  include/qemu/range.h |  8 ++++++++
->  util/range.c         | 45 ++++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 53 insertions(+)
+>  hw/vfio/common.c | 25 ++++++++++++-------------
+>  1 file changed, 12 insertions(+), 13 deletions(-)
 > 
-> diff --git a/include/qemu/range.h b/include/qemu/range.h
-> index 7e2b1cc447..2b59e3bf0c 100644
-> --- a/include/qemu/range.h
-> +++ b/include/qemu/range.h
-> @@ -219,4 +219,12 @@ static inline int ranges_overlap(uint64_t first1, uint64_t len1,
->  
->  GList *range_list_insert(GList *list, Range *data);
->  
-> +/*
-> + * Inverse an array of sorted ranges over the [low, high] span, ie.
-> + * original ranges becomes holes in the newly allocated inv_ranges
-> + */
-> +void range_inverse_array(uint32_t nr_ranges, Range *ranges,
-> +                         uint32_t *nr_inv_ranges, Range **inv_ranges,
-> +                         uint64_t low, uint64_t high);
-> +
+> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> index 26da38de05..40cac1ca91 100644
+> --- a/hw/vfio/common.c
+> +++ b/hw/vfio/common.c
+> @@ -1112,13 +1112,6 @@ static void vfio_listener_region_add(MemoryListener *listener,
 >  #endif
-> diff --git a/util/range.c b/util/range.c
-> index 098d9d2dc0..4baeb588cc 100644
-> --- a/util/range.c
-> +++ b/util/range.c
-> @@ -70,3 +70,48 @@ GList *range_list_insert(GList *list, Range *data)
+>      }
 >  
->      return list;
->  }
+> -    hostwin = vfio_find_hostwin(container, iova, end);
+> -    if (!hostwin) {
+> -        error_setg(&err, "Container %p can't map guest IOVA region"
+> -                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
+> -        goto fail;
+> -    }
+> -
+>      memory_region_ref(section->mr);
+>  
+>      if (memory_region_is_iommu(section->mr)) {
+> @@ -1177,6 +1170,14 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>          return;
+>      }
+>  
+> +    hostwin = vfio_find_hostwin(container, iova, end);
+> +    if (!hostwin) {
+> +        error_setg(&err, "Container %p can't map guest IOVA region"
+> +                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
+> +        goto fail;
+> +    }
 > +
-> +void range_inverse_array(uint32_t nr_ranges, Range *ranges,
-> +                         uint32_t *nr_inv_ranges, Range **inv_ranges,
-> +                         uint64_t low, uint64_t high)
+> +
+>      /* Here we assume that memory_region_is_ram(section->mr)==true */
+>  
+>      /*
+> @@ -2594,12 +2595,10 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+>          vfio_get_iommu_info_migration(container, info);
+>          g_free(info);
+>  
+> -        /*
+> -         * FIXME: We should parse VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE
+> -         * information to get the actual window extent rather than assume
+> -         * a 64-bit IOVA address space.
+> -         */
+> -        vfio_host_win_add(container, 0, (hwaddr)-1, container->pgsizes);
+> +        g_assert(container->nr_iovas);
 
-Rare be it for me to suggest GLib, but we already appear to have
-range_list_insert() making use of GList for an ordered list of Ranges.
-Doesn't this function become a lot easier if we take a sorted GList,
-walk it to create the inverse, and return a new GList of the inverted
-Ranges?  Seems the initial sorted GList would be created by making use
-of the existing range_list_insert() function.  Thanks,
+This assert is a problem for older kernels.
+
+> +        vfio_host_win_add(container, 0,
+> +                          container->iova_ranges[container->nr_iovas - 1].end,
+> +                          container->pgsizes);
+
+This doesn't address the assumption about the min_iova and adds an
+assumption that the kernel provided list is sorted.  Thanks,
 
 Alex
-
-> +{
-> +    Range *resv;
-> +    int i = 0, j = 0;
-> +
-> +    resv = g_malloc0_n(nr_ranges + 1, sizeof(Range));
-> +
-> +    for (; j < nr_ranges  && (range_upb(&ranges[j]) < low); j++) {
-> +        continue; /* skip all ranges below mon */
-> +    }
-> +
-> +    if (j == nr_ranges) {
-> +        range_set_bounds(&resv[i++], low, high);
-> +        goto realloc;
-> +    }
-> +
-> +    /* first range lob is greater than min, insert a first range */
-> +    if (range_lob(&ranges[j]) > low) {
-> +        range_set_bounds(&resv[i++], low,
-> +                         MIN(range_lob(&ranges[j]) - 1, high));
-> +    }
-> +
-> +    /* insert a range inbetween each original range until we reach max */
-> +    for (; j < nr_ranges - 1; j++) {
-> +        if (range_lob(&ranges[j]) >= high) {
-> +            goto realloc;
-> +        }
-> +        if (range_compare(&ranges[j], &ranges[j + 1])) {
-> +            range_set_bounds(&resv[i++], range_upb(&ranges[j]) + 1,
-> +                             MIN(range_lob(&ranges[j + 1]) - 1, high));
-> +        }
-> +    }
-> +    /* last range upb is less than max, insert a last range */
-> +    if (range_upb(&ranges[j]) <  high) {
-> +        range_set_bounds(&resv[i++],
-> +                          range_upb(&ranges[j]) + 1, high);
-> +    }
-> +realloc:
-> +    *nr_inv_ranges = i;
-> +    resv = g_realloc(resv, i * sizeof(Range));
-> +    *inv_ranges = resv;
-> +}
 

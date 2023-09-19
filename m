@@ -1,92 +1,92 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3457241ejb;
-        Tue, 19 Sep 2023 02:03:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF7qCbyhkFfgDoYVo3wWddmmQeY8iZul30aTCVwC1mMesIgOP9HCl6U5cRwCnkBc4Kk7yCu
-X-Received: by 2002:a05:622a:6f09:b0:412:2d0a:b35d with SMTP id iv9-20020a05622a6f0900b004122d0ab35dmr9776584qtb.46.1695114208248;
-        Tue, 19 Sep 2023 02:03:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695114208; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3457262ejb;
+        Tue, 19 Sep 2023 02:03:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFQvu37sUcX02YefgHNHPbHLFBY/8PS8hSPp/6psWBRUlMD4sAZGp25EIfjrnc5muy/3E7L
+X-Received: by 2002:a05:6870:818c:b0:1bb:6cca:3468 with SMTP id k12-20020a056870818c00b001bb6cca3468mr14878834oae.47.1695114210898;
+        Tue, 19 Sep 2023 02:03:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695114210; cv=none;
         d=google.com; s=arc-20160816;
-        b=SBXxDplKY3/mUAz+qz7bINIlmhJgtlEu2+iqdR7xb8jJP0V89I3N7zF6W9onCfN4KA
-         19qeto4CtOd/HpYKet+4+Pj+eAO5peQpk5eRYBFCJOeXQDfOac7sVv7WTNuc5fibLGyH
-         zAxV3K5md5NXrCLMLuLu6cGDJg/ArDCkiy1EM/lzrqqEGrYBv1y/pD/IbAtkdo5S8cBV
-         tkhzeAvM8aTsb4+8vxPgmqfSugWRYMv2ZBlMiD1DCsqoA5bD2nnPwGXW7L3aRVejNRIL
-         6vaJvxgVy1Y91RRMBxzRfNq2qVerivo0OXOXwO2j/2JOdHcVwctauKCAR1Uk2mTVJdxM
-         3UVA==
+        b=wA2uRr/Cyz5p2AqkhdbINcYDqioOFICwIvV8uxwpc3tSBKMh7JSHBlt9BAXFXakihC
+         m8F3gQl4ScytbYBQF6mpzyl2F/xplNoylXWOMWsr8r4euUcAdUG4HadiYg/e6VlIObUJ
+         zhSmToC8scrQBgbwzfXRPf1klp7p+6eit1YPLD9glA7aq/0VJA0jzy/bwBZJ/hZ2k0Ab
+         WALvOUOFC5BUt8SEVp3CLhAbwDm711pIvYYbFgZ4N4LFJ9bFUzo8ryhyqJRHG1UOiN3C
+         LJUCK3/SA1gF3M8IZ+xoE+/gpOGBi34kcMXX1NC5k8dlmGIMgdJiF328benodUIX3/BQ
+         Tb/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=X358Qci7eBUp0d3GGAIEVUXJ8V/d9JnpxNWbFzx7jh8=;
+        bh=bDAUtNXgeGisXtWIgptjHg1sD35SyUoj+DZVs21mBX8=;
         fh=OMGGfVUerWjoKT+ZrKe9FOUZoPWdoRXgXkvZIfSNxVE=;
-        b=o+w73weXliHM6yGYgYAWtqgoIuEUKkIK8gxInIjv+stgTSjUzGZszdmFeGGE7N4QrM
-         IiD8eM4HKcOPG6KmdlQk0SYwenTGUQzxdPmLa0JB3y6D05himRoKsg+ruagaW0AnpgVd
-         Gy8FOr+Eu5EzqabMWInAf5T7N8x+GcrjukjiXkPQ0qbYiJ52nVaPmP4vKOn0JYZ/8Dwu
-         34ZJx/moB+RyB0PbvDiFr2Jg+/QCOFatdx8U76LnDTrBw5nx6DEmCpTUFoQxpJApDESX
-         157J1ItLMLNQxke+Jhn97OZXuYblOn5ECbIhYtWgphAI85L8jyXoyhWvnbiE0Ugvy7Ht
-         r5NQ==
+        b=0sNZY6w/d3hxpXbyWO+DSUsYXppXvLBfFl4/0VcOCmbLUAQvZIJhO5YCPbTMHMdxaL
+         AS+bagqP9z86C9Wsplfbcg8fJfQb9v39vaXr8xE3s5H/Hh/luEza7ZpFTpgWPpRoqKMB
+         S2iIJMbSw6ywxsiLvtL6GSM36Lcf7NudFfapDuK1SCKa4Ucjyk/Ie5/IGAIOFddJJUyu
+         vTSDbmNRXD5VPxuKWPdGbLKQtrvn7KHS0BbuUXlvjLfHepbe97E/JnEBg7c+FNcMpTCr
+         OyTbBLcuHroE1V616hhaAcAJnKkwPtQuLQtKr1VDglUGj/iqVjvt/fgDmY+tra9uX88g
+         AmaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=poJZ8uZE;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=oevRh99H;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e14-20020a05622a110e00b0040f9a9c1039si1747776qty.564.2023.09.19.02.03.28
+        by mx.google.com with ESMTPS id d30-20020a0caa1e000000b0064bb6ec8684si7089413qvb.245.2023.09.19.02.03.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Sep 2023 02:03:28 -0700 (PDT)
+        Tue, 19 Sep 2023 02:03:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=poJZ8uZE;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=oevRh99H;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qiWdL-0002sD-RU; Tue, 19 Sep 2023 05:03:03 -0400
+	id 1qiWdF-0002rU-Bc; Tue, 19 Sep 2023 05:02:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1qiWdC-0002r1-Tk; Tue, 19 Sep 2023 05:02:56 -0400
+ id 1qiWd8-0002q3-Dh; Tue, 19 Sep 2023 05:02:50 -0400
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1qiWd8-0003fC-Ju; Tue, 19 Sep 2023 05:02:54 -0400
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+ id 1qiWd6-0003e4-0o; Tue, 19 Sep 2023 05:02:49 -0400
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 38J4mVYl030811; Tue, 19 Sep 2023 09:02:45 GMT
+ 38J8BDXA024369; Tue, 19 Sep 2023 09:02:41 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=qcppdkim1;
- bh=X358Qci7eBUp0d3GGAIEVUXJ8V/d9JnpxNWbFzx7jh8=;
- b=poJZ8uZE0uwIhFzMjkwQ5ex4HE058nJNhPZUZXhDgNi0J5Igcj9RFon4k73P00rS0Qii
- VmjFzUcQTsyRHgfhIIQmbSBCs84dxzsuFIZpIINcm1nzEQXkLSY71aRBO0e9wNSquehg
- ioZDavHRQMIBKpxRVDbovN1kHD2YbCp1yElBt3sVc/9jRsp0BnmR1ytTA9uxK4MXPcD+
- zjqxA3YsOeCN9LGc8TjK/eY1TzBh2o36xuqLs2czZVrq2DV0Ui7AsQ9FlQWKvI9icBqQ
- WWUXIyQftlM+FmkD84lTASmJgbIwRmf4MC/WFLP36ZvivVyJ53Xo5wo+Q3tZBBAgqnwr jA== 
+ bh=bDAUtNXgeGisXtWIgptjHg1sD35SyUoj+DZVs21mBX8=;
+ b=oevRh99H8JRJz85VuTgamXLG4M39UaktmjcvSf6WWntjCfZMAq2R2J95R9qR7nxuA42P
+ wGSN4FoTgSMR/PsAM9NgVnlX+cKWWP3naB+Zhe8sK2W6ENv015BW9eyIlv1b4z1cRuRi
+ 3nfIMcpHzpnRtAqGN8GkDCQvS3G/Ljg8/QAwYHfVLGqS7RGA7OdAf3eM+cvcMp25usZr
+ vGD7o2oMl1FZiNZSDcmuHq2KYqBJWbXOJ7HY7RHJC1ROJ6vZeXe+pPi8GVo7WGUSU6iN
+ VRi/nsuQ0HYummMPK5GhNAVG3ghPplSYDfeHxeWk324dyCZOa9ZHj5hTPMxT7veqHipx Pw== 
 Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com
  [199.106.103.254])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t6qf6j3dc-1
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t77wn831d-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 19 Sep 2023 09:02:45 +0000
+ Tue, 19 Sep 2023 09:02:41 +0000
 Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
  [10.45.79.139])
- by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38J92iA5031275
+ by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38J92ebJ031245
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 19 Sep 2023 09:02:44 GMT
+ Tue, 19 Sep 2023 09:02:40 GMT
 Received: from qc-i7.qualcomm.com (10.80.80.8) by nasanex01c.na.qualcomm.com
  (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Tue, 19 Sep
- 2023 02:02:42 -0700
+ 2023 02:02:38 -0700
 From: Leif Lindholm <quic_llindhol@quicinc.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>, Peter
  Maydell <peter.maydell@linaro.org>, Marcin Juszkiewicz
  <marcin.juszkiewicz@linaro.org>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>
-Subject: [PATCH v2 3/3] hw/arm/sbsa-ref: use bsa.h for PPI definitions
-Date: Tue, 19 Sep 2023 10:02:29 +0100
-Message-ID: <20230919090229.188092-4-quic_llindhol@quicinc.com>
+Subject: [PATCH v2 1/3] {include/}hw/arm: refactor virt PPI logic
+Date: Tue, 19 Sep 2023 10:02:27 +0100
+Message-ID: <20230919090229.188092-2-quic_llindhol@quicinc.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230919090229.188092-1-quic_llindhol@quicinc.com>
 References: <20230919090229.188092-1-quic_llindhol@quicinc.com>
@@ -99,15 +99,15 @@ X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
  signatures=585085
-X-Proofpoint-GUID: O6Kdu7CfXDnsRZKrlVQvt-YkvM7ylS_D
-X-Proofpoint-ORIG-GUID: O6Kdu7CfXDnsRZKrlVQvt-YkvM7ylS_D
+X-Proofpoint-ORIG-GUID: BOPyK7kCli4RCs45AM_FJ8QKc2rPupu1
+X-Proofpoint-GUID: BOPyK7kCli4RCs45AM_FJ8QKc2rPupu1
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.601,FMLib:17.11.176.26
  definitions=2023-09-19_03,2023-09-18_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 bulkscore=0
- priorityscore=1501 clxscore=1015 suspectscore=0 spamscore=0 phishscore=0
- lowpriorityscore=0 malwarescore=0 mlxlogscore=435 mlxscore=0 adultscore=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=2
+ impostorscore=0 phishscore=0
+ clxscore=1015 suspectscore=0 mlxscore=2 lowpriorityscore=0 adultscore=0
+ mlxlogscore=170 priorityscore=1501 spamscore=2 bulkscore=0 malwarescore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
  definitions=main-2309190075
 Received-SPF: pass client-ip=205.220.168.131;
@@ -133,81 +133,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MYBk3qyq7Tug
+X-TUID: SM0aEW0dal1L
 
-Use the private peripheral interrupt definitions from bsa.h instead of
-defining them locally. Refactor to use the INTIDs defined there instead
-of the PPI# used previously.
+GIC Private Peripheral Interrupts (PPI) are defined as GIC INTID 16-31.
+As in, PPI0 is INTID16 .. PPI15 is INTID31.
+Arm's Base System Architecture specification (BSA) lists the mandated and
+recommended private interrupt IDs by INTID, not by PPI index. But current
+definitions in virt define them by PPI index, complicating cross
+referencing.
+
+Meanwhile, the PPI(x) macro counterintuitively adds 16 to the input value,
+converting a PPI index to an INTID.
+
+Resolve this by redefining the BSA-allocated PPIs by their INTIDs,
+and replacing the PPI(x) macro with an INTID_TO_PPI(x) one where required.
 
 Signed-off-by: Leif Lindholm <quic_llindhol@quicinc.com>
 ---
- hw/arm/sbsa-ref.c | 20 +++++++++-----------
- 1 file changed, 9 insertions(+), 11 deletions(-)
+ hw/arm/virt-acpi-build.c | 12 ++++++------
+ hw/arm/virt.c            | 24 ++++++++++++++----------
+ include/hw/arm/virt.h    | 14 +++++++-------
+ 3 files changed, 27 insertions(+), 23 deletions(-)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index bc89eb4806..1ef23ae442 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -2,6 +2,7 @@
-  * ARM SBSA Reference Platform emulation
-  *
-  * Copyright (c) 2018 Linaro Limited
-+ * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
-  * Written by Hongbo Zhang <hongbo.zhang@linaro.org>
-  *
-  * This program is free software; you can redistribute it and/or modify it
-@@ -30,6 +31,7 @@
- #include "exec/hwaddr.h"
- #include "kvm_arm.h"
- #include "hw/arm/boot.h"
-+#include "hw/arm/bsa.h"
- #include "hw/arm/fdt.h"
- #include "hw/arm/smmuv3.h"
- #include "hw/block/flash.h"
-@@ -55,13 +57,6 @@
- #define NUM_SMMU_IRQS   4
- #define NUM_SATA_PORTS  6
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 6b674231c2..9ce136cd88 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -601,21 +601,21 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+      * The interrupt values are the same with the device tree when adding 16
+      */
+     /* Secure EL1 timer GSIV */
+-    build_append_int_noprefix(table_data, ARCH_TIMER_S_EL1_IRQ + 16, 4);
++    build_append_int_noprefix(table_data, ARCH_TIMER_S_EL1_IRQ, 4);
+     /* Secure EL1 timer Flags */
+     build_append_int_noprefix(table_data, irqflags, 4);
+     /* Non-Secure EL1 timer GSIV */
+-    build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL1_IRQ + 16, 4);
++    build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL1_IRQ, 4);
+     /* Non-Secure EL1 timer Flags */
+     build_append_int_noprefix(table_data, irqflags |
+                               1UL << 2, /* Always-on Capability */
+                               4);
+     /* Virtual timer GSIV */
+-    build_append_int_noprefix(table_data, ARCH_TIMER_VIRT_IRQ + 16, 4);
++    build_append_int_noprefix(table_data, ARCH_TIMER_VIRT_IRQ, 4);
+     /* Virtual Timer Flags */
+     build_append_int_noprefix(table_data, irqflags, 4);
+     /* Non-Secure EL2 timer GSIV */
+-    build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_IRQ + 16, 4);
++    build_append_int_noprefix(table_data, ARCH_TIMER_NS_EL2_IRQ, 4);
+     /* Non-Secure EL2 timer Flags */
+     build_append_int_noprefix(table_data, irqflags, 4);
+     /* CntReadBase Physical address */
+@@ -729,9 +729,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
+         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
+         uint64_t physical_base_address = 0, gich = 0, gicv = 0;
+-        uint32_t vgic_interrupt = vms->virt ? PPI(ARCH_GIC_MAINT_IRQ) : 0;
++        uint32_t vgic_interrupt = vms->virt ? ARCH_GIC_MAINT_IRQ : 0;
+         uint32_t pmu_interrupt = arm_feature(&armcpu->env, ARM_FEATURE_PMU) ?
+-                                             PPI(VIRTUAL_PMU_IRQ) : 0;
++                                             VIRTUAL_PMU_IRQ : 0;
  
--#define VIRTUAL_PMU_IRQ        7
--#define ARCH_GIC_MAINT_IRQ     9
--#define ARCH_TIMER_VIRT_IRQ    11
--#define ARCH_TIMER_S_EL1_IRQ   13
--#define ARCH_TIMER_NS_EL1_IRQ  14
--#define ARCH_TIMER_NS_EL2_IRQ  10
--
- enum {
-     SBSA_FLASH,
-     SBSA_MEM,
-@@ -478,7 +473,7 @@ static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
+         if (vms->gic_version == VIRT_GIC_VERSION_2) {
+             physical_base_address = memmap[VIRT_GIC_CPU].base;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 8ad78b23c2..869358faab 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -366,10 +366,14 @@ static void fdt_add_timer_nodes(const VirtMachineState *vms)
+     }
+     qemu_fdt_setprop(ms->fdt, "/timer", "always-on", NULL, 0);
+     qemu_fdt_setprop_cells(ms->fdt, "/timer", "interrupts",
+-                       GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_S_EL1_IRQ, irqflags,
+-                       GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_NS_EL1_IRQ, irqflags,
+-                       GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_VIRT_IRQ, irqflags,
+-                       GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_NS_EL2_IRQ, irqflags);
++                           GIC_FDT_IRQ_TYPE_PPI,
++                           INTID_TO_PPI(ARCH_TIMER_S_EL1_IRQ), irqflags,
++                           GIC_FDT_IRQ_TYPE_PPI,
++                           INTID_TO_PPI(ARCH_TIMER_NS_EL1_IRQ), irqflags,
++                           GIC_FDT_IRQ_TYPE_PPI,
++                           INTID_TO_PPI(ARCH_TIMER_VIRT_IRQ), irqflags,
++                           GIC_FDT_IRQ_TYPE_PPI,
++                           INTID_TO_PPI(ARCH_TIMER_NS_EL2_IRQ), irqflags);
+ }
+ 
+ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+@@ -800,7 +804,7 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
       */
      for (i = 0; i < smp_cpus; i++) {
          DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
 -        int ppibase = NUM_IRQS + i * GIC_INTERNAL + GIC_NR_SGIS;
 +        int intidbase = NUM_IRQS + i * GIC_INTERNAL;
          int irq;
-         /*
-          * Mapping from the output timer irq lines from the CPU to the
-@@ -494,14 +489,17 @@ static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
+         /* Mapping from the output timer irq lines from the CPU to the
+          * GIC PPI inputs we use for the virt board.
+@@ -815,22 +819,22 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
          for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
              qdev_connect_gpio_out(cpudev, irq,
-                                   qdev_get_gpio_in(sms->gic,
+                                   qdev_get_gpio_in(vms->gic,
 -                                                   ppibase + timer_irq[irq]));
 +                                                   intidbase + timer_irq[irq]));
          }
  
-         qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt", 0,
--                                    qdev_get_gpio_in(sms->gic, ppibase
-+                                    qdev_get_gpio_in(sms->gic,
-+                                                     intidbase
-                                                      + ARCH_GIC_MAINT_IRQ));
-+
+         if (vms->gic_version != VIRT_GIC_VERSION_2) {
+             qemu_irq irq = qdev_get_gpio_in(vms->gic,
+-                                            ppibase + ARCH_GIC_MAINT_IRQ);
++                                            intidbase + ARCH_GIC_MAINT_IRQ);
+             qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt",
+                                         0, irq);
+         } else if (vms->virt) {
+             qemu_irq irq = qdev_get_gpio_in(vms->gic,
+-                                            ppibase + ARCH_GIC_MAINT_IRQ);
++                                            intidbase + ARCH_GIC_MAINT_IRQ);
+             sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus, irq);
+         }
+ 
          qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
--                                    qdev_get_gpio_in(sms->gic, ppibase
-+                                    qdev_get_gpio_in(sms->gic,
-+                                                     intidbase
+-                                    qdev_get_gpio_in(vms->gic, ppibase
++                                    qdev_get_gpio_in(vms->gic, intidbase
                                                       + VIRTUAL_PMU_IRQ));
  
          sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
+@@ -1990,7 +1994,7 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
+             if (pmu) {
+                 assert(arm_feature(&ARM_CPU(cpu)->env, ARM_FEATURE_PMU));
+                 if (kvm_irqchip_in_kernel()) {
+-                    kvm_arm_pmu_set_irq(cpu, PPI(VIRTUAL_PMU_IRQ));
++                    kvm_arm_pmu_set_irq(cpu, VIRTUAL_PMU_IRQ);
+                 }
+                 kvm_arm_pmu_init(cpu);
+             }
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index e1ddbea96b..5704d95736 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -43,16 +43,16 @@
+ #define NUM_VIRTIO_TRANSPORTS 32
+ #define NUM_SMMU_IRQS          4
+ 
+-#define ARCH_GIC_MAINT_IRQ  9
++#define ARCH_GIC_MAINT_IRQ  25
+ 
+-#define ARCH_TIMER_VIRT_IRQ   11
+-#define ARCH_TIMER_S_EL1_IRQ  13
+-#define ARCH_TIMER_NS_EL1_IRQ 14
+-#define ARCH_TIMER_NS_EL2_IRQ 10
++#define ARCH_TIMER_VIRT_IRQ   27
++#define ARCH_TIMER_S_EL1_IRQ  29
++#define ARCH_TIMER_NS_EL1_IRQ 30
++#define ARCH_TIMER_NS_EL2_IRQ 26
+ 
+-#define VIRTUAL_PMU_IRQ 7
++#define VIRTUAL_PMU_IRQ 23
+ 
+-#define PPI(irq) ((irq) + 16)
++#define INTID_TO_PPI(irq) ((irq) - 16)
+ 
+ /* See Linux kernel arch/arm64/include/asm/pvclock-abi.h */
+ #define PVTIME_SIZE_PER_CPU 64
 -- 
 2.30.2
 

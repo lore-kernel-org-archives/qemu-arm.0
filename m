@@ -1,313 +1,236 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3844923ejb;
-        Tue, 19 Sep 2023 13:05:20 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGFT+jrWrWCnPLlfRfGTQzKO4Pdhz5KA8vmingxlBLEagNLLO9cHiJikU+WBBtQAzOx07hs
-X-Received: by 2002:a05:620a:2ac8:b0:767:3e13:6017 with SMTP id bn8-20020a05620a2ac800b007673e136017mr686096qkb.30.1695153920443;
-        Tue, 19 Sep 2023 13:05:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695153920; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3845109ejb;
+        Tue, 19 Sep 2023 13:05:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFQxWK9knd4d38ThEn/L1fpQJYhMkxXhWXxX0ELeOHtS+rkM08XTgqg/zXZE10fgiBNwLW7
+X-Received: by 2002:a05:620a:400f:b0:773:cf82:d76f with SMTP id h15-20020a05620a400f00b00773cf82d76fmr945717qko.53.1695153936495;
+        Tue, 19 Sep 2023 13:05:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695153936; cv=none;
         d=google.com; s=arc-20160816;
-        b=lsLzs4/NtphRt3+KgDhFqgdpTX5xpBDyy9MIF9QttVulJQ/MQVJofFKJB48SlZrfY/
-         ahDChyCXyXoZ/5xu6QfOqpEKz+914kkaksy8hhD8mH7qrLJJaA3bpAh/MMhq1xvlawRC
-         4y6Hv/In2yjf9FgAMY5MMrx8Q46VFQbZFBoC4x9ouiYG+xouKYR8sxu5IOmCqalD/hNZ
-         2Fr0a6gowrRzGY4qINW/Z9JdXp3caFAzyuf+Eq5Cz0U30nJ2KEGZy6u3W6SqzIS2BVId
-         aBIrvSfAPFXkVmcib/Gx/Lj3qddiVLnjHP4R3SGceiawR/d4h5nzn8gNalAgno744ZBP
-         goeQ==
+        b=NP35xfvCYRpUixl8eUkLn6/K5RWOz4TEc7EzPRrxgikoqppo+9xnFaZj+qLPyC2/sc
+         sNfA7SYLpScMpC6sbqmhLBpI/v+9RXjWuOZTazA95r06mbE/mrYCXjKJ7+c1/WPW+Qmi
+         6HRok7fY3H4LyU7NZstKR8gymf8mJKCj3BBbwHpw7QLelmQhz456oj37+t3eEkh4J0Na
+         PMBOtdWlSGiczch17b+0nJGHg76yUyepvyfGKztSG1HTt2b0+0BF+EVm+soXl3jG1La6
+         F1gYpp6TRNtuD1AoeqXpkgQVro9NsElxQSOu4Sin6yh8/fGKDQMDU2YfjLkaYIVMZVcW
+         MCfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=TR6lgcRTcQaFiEy+trwn4gcpOsjR1yJslZ49WXNdWvA=;
-        fh=rqW8fspY+jkdnllEY/nhhmwU/Ez30a3FOJ93N6rRdoo=;
-        b=KILWgjVGavPPG07JP/a564X0IhKyn9I1RLELU+o6cr43ptLYsv44pLegUmzErNKHKC
-         Ann5Pj+/z9Ba7RFOSYnJkcdFUQ6vd/R1bydV4779uNGnJp4YaFxfQAqxKqMccmpvf1IM
-         cRVF3kKrOz38XDKtxyeMB08MQniDAaQ4ek6fuUeOy10CeukQx1aj4M5MUo8lG1F0dgnr
-         34fet88L0QauG9LpOMGPR8Dl+r8CFpVVuPpnXSrbG7Pk11SxKOvIwwhOrDXqq1gHJJ2i
-         ATmtD3HTsfLQVmKHdZ8EIS37qUnqcIuuA1U7uow5/kvwvcgvmriG6b9MI9hq98mg+4Nq
-         Pgyg==
+        bh=0joMDJfdVcSOlSumVdw9F57UYMZZhd+yugc3hviET2M=;
+        fh=31Pgf1blV3SQPmQ8WOxvGy7Z8ujSo7iGO5C67upv8D4=;
+        b=o8e6xxy+ZEBaYmZxUbe6I+6FH0dKr7gJVS3q9jVgj3wU9Q+xHLztQVSRlrskT11XPC
+         ql0NumzVYYKLX0nIpQH8dH8mylhaUhgqmquAWFR5HP7DAquiA9H8r2leeX4jxYPD57f4
+         sI0TZR1pYDrwLQFJlibP4UCpbGjUpTa072ofRS9OZMvfRgX/s3ZCE31FQAaUopLSHcs+
+         AEhhfyngmJfnngLNU1z4DyoVUD9NvxqsSPMALyobV8NxnXeR4Difn65GNpaSUP4YvuE2
+         6r9St7QLjhenrdGRlCyxJ3AXdsSafZvJjV37Q2ooc9IzgFNQkyYScG080H4j5TZg/mDQ
+         Nm7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=MusoEjRz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=o9r7SfPU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5-20020a05620a218500b0076da7802c1csi7787063qka.59.2023.09.19.13.05.20
+        by mx.google.com with ESMTPS id y14-20020a05620a44ce00b0075785c1637bsi8481674qkp.565.2023.09.19.13.05.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Sep 2023 13:05:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 Sep 2023 13:05:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=MusoEjRz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=o9r7SfPU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qigxu-0006BV-RA; Tue, 19 Sep 2023 16:04:58 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qigxM-0005f5-OB; Tue, 19 Sep 2023 16:04:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3KuEJZQwKCkMsfgnmjxyjkfslttlqj.htrvjrz-ij0jqstslsz.twl@flex--nabihestefan.bounces.google.com>)
- id 1qiezi-0005F8-QX
- for qemu-devel@nongnu.org; Tue, 19 Sep 2023 13:58:42 -0400
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ <3IOEJZQwKCDkiVWdcZnoZaVibjjbgZ.XjhlZhp-Vmhijibip.jmb@flex--nabihestefan.bounces.google.com>)
+ id 1qiezS-0005CP-Sa
+ for qemu-arm@nongnu.org; Tue, 19 Sep 2023 13:58:28 -0400
+Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3KuEJZQwKCkMsfgnmjxyjkfslttlqj.htrvjrz-ij0jqstslsz.twl@flex--nabihestefan.bounces.google.com>)
- id 1qiezA-00013s-Ig
- for qemu-devel@nongnu.org; Tue, 19 Sep 2023 13:58:42 -0400
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-cf4cb742715so6539720276.2
- for <qemu-devel@nongnu.org>; Tue, 19 Sep 2023 10:58:02 -0700 (PDT)
+ <3IOEJZQwKCDkiVWdcZnoZaVibjjbgZ.XjhlZhp-Vmhijibip.jmb@flex--nabihestefan.bounces.google.com>)
+ id 1qieyz-00012D-8a
+ for qemu-arm@nongnu.org; Tue, 19 Sep 2023 13:58:25 -0400
+Received: by mail-yw1-x1149.google.com with SMTP id
+ 00721157ae682-59bee08c13aso65966937b3.0
+ for <qemu-arm@nongnu.org>; Tue, 19 Sep 2023 10:57:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1695146282; x=1695751082; darn=nongnu.org;
+ d=google.com; s=20230601; t=1695146272; x=1695751072; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=TR6lgcRTcQaFiEy+trwn4gcpOsjR1yJslZ49WXNdWvA=;
- b=MusoEjRz8Pl+rBI/YpoIZhbn2C0ohMUKbKHv5anUS60f2MguY6dsdVboRAlpMiWtd5
- febTaMvj0/ZEq0b8tiySnSZ0Mp29TpIR2Vw6qAmjSsDktrDRc/gHEBZwB8/8jmoi3Wf8
- seDtHUrXRsfyoVU90OdFlkPlxZRI/Ay4xXLF0W35BqmceDWoqXZfuIaK/XYA9TZZr22t
- ArC16wE4phInbPy/lyvkj0OeGkcqEgVNxB7sITyFexJ9W4Vlgt6bE4XZL8ewsaaatKgP
- E3e7QkiXHvDbOzaAwbHcgUnM8pZJOB38zxshbrrN9esHljEBhiVf1SuZ/0hSfGkasItp
- DnPg==
+ bh=0joMDJfdVcSOlSumVdw9F57UYMZZhd+yugc3hviET2M=;
+ b=o9r7SfPUdY44p383XIA0NKNYv31/RijXjGPtR2isIeRwM5t2IXqWo/clXv0uk5bkdG
+ prxKZOL2QkpJRoycIaOOUe4zqXVrfG4NSDEWwrrVGYBSOgFla7cC0YhvUW9+C1KyfPB0
+ ADUwMgVYI9M1irNXYN/SliyTrDLpUcn/X65oUHcCgERyRTwMLWgQk/QjIh5/VTPYJfSd
+ KQDCf5YQG7OBFfDRegOM6ijD2eRJAhRmoYujQ6s2Y+vuM8x8eJ287NEx69cF16qOlsbk
+ EPbUyV1mdDRcwPWwYXhJ73M/Kv5l9SbzFTjtErHO5EHbAwsToazkVpBEQUl/QOIzQGmA
+ 2TEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695146282; x=1695751082;
+ d=1e100.net; s=20230601; t=1695146272; x=1695751072;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=TR6lgcRTcQaFiEy+trwn4gcpOsjR1yJslZ49WXNdWvA=;
- b=w7zQhxVz59juFQJQJ8xWq7t2oXn+tMLgC4r7pcJd7RBZNCjoo7n2E7RXz1xzEyZXRa
- h2zyKgVVLaw6QZOluXlLu/GXvkQ6ECwLBtBYAyhqn1+KJuHQjuka2mqOcv38eohM/dga
- l2NowmhMK78/iSyDo7uR7nfsRcMM7lJxfSIu9Sj1yz4lhAR1CcJ95/IeLREHgyRp71ha
- AxLxhpXG+X9r05cuU3Sc1X9E+MKvDumxD8vyh+Qq5zp6K7DKjChswohMJ+SmUTHs4keN
- 5e6uL/nMISD93+TgNyIn0e0cVowdiEnny+Gz+BRnHZhvM4XBZXr+G0npy70GvO50YD7e
- 4NIA==
-X-Gm-Message-State: AOJu0Yxw1pQ9/qirWActXgPTZ0HacnaHoLCQbUmPUh2Okq31jHZoznLM
- aZirhfprGe8X2WySKEcT0xPOmnEy1xXcAD2Pl/E=
+ bh=0joMDJfdVcSOlSumVdw9F57UYMZZhd+yugc3hviET2M=;
+ b=ahYpA8Tg7g0OzVSn55e6U4uss6DL6OhzrteRZ9xCGz4VIMxcGNfldkeB0+tCXK/hnL
+ 9hbdfkAboGclvJFS7HJ11pZvp4oC8OjAueRClS8GxGiaKMchxkk3uHIqjgBVDB7E6gpD
+ J56aulSyo8NFr6R90qCnUOhLUpF+/XQPD4YpbRVe8vL2WQo9LZkwA07GUBLaEKOwoe3X
+ 3H0tW1t7Wm6XbWu+JzF9fSFXe5vebIg0b+hD1Y8FYqSqwpaVcWGPUf1UgM+BYfFot4Q1
+ be7n9Sh8kE6DzGYzAbZVEHv3jV1MQHCJ/g1ruyruM5FVrVw3PIks0wiX5OjOxV7m6FRN
+ bmtA==
+X-Gm-Message-State: AOJu0YyTZmAgj4odicfNJFqE6671SyYuLpelK/fP9LkNClpBf9p5ebyh
+ bRABTioj3jh+LV4l0hfXwohfiUczIB8jAJGkvDk=
 X-Received: from nabihestefan.c.googlers.com
  ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a05:6902:a8a:b0:d80:183c:92b9 with
- SMTP id cd10-20020a0569020a8a00b00d80183c92b9mr6378ybb.4.1695146282102; Tue,
- 19 Sep 2023 10:58:02 -0700 (PDT)
-Date: Tue, 19 Sep 2023 17:57:23 +0000
+ (user=nabihestefan job=sendgmr) by 2002:a81:ae59:0:b0:59b:ebe0:9fcd with SMTP
+ id g25-20020a81ae59000000b0059bebe09fcdmr4109ywk.7.1695146272365; Tue, 19 Sep
+ 2023 10:57:52 -0700 (PDT)
+Date: Tue, 19 Sep 2023 17:57:18 +0000
 In-Reply-To: <20230919175725.3413108-1-nabihestefan@google.com>
 Mime-Version: 1.0
 References: <20230919175725.3413108-1-nabihestefan@google.com>
 X-Mailer: git-send-email 2.42.0.459.ge4e396fd5e-goog
-Message-ID: <20230919175725.3413108-13-nabihestefan@google.com>
-Subject: [PATCH 12/14] hw/net: GMAC Tx Implementation
+Message-ID: <20230919175725.3413108-8-nabihestefan@google.com>
+Subject: [PATCH 07/14] hw/arm: Add GMAC devices to NPCM7XX SoC
 From: Nabih Estefan <nabihestefan@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
- wuhaotsh@google.com, jasonwang@redhat.com, Avi.Fishman@nuvoton.com, 
- Nabih Estefan Diaz <nabihestefan@google.com>
+ wuhaotsh@google.com, jasonwang@redhat.com, Avi.Fishman@nuvoton.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3KuEJZQwKCkMsfgnmjxyjkfslttlqj.htrvjrz-ij0jqstslsz.twl@flex--nabihestefan.bounces.google.com;
- helo=mail-yb1-xb49.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
+ envelope-from=3IOEJZQwKCDkiVWdcZnoZaVibjjbgZ.XjhlZhp-Vmhijibip.jmb@flex--nabihestefan.bounces.google.com;
+ helo=mail-yw1-x1149.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 19 Sep 2023 16:04:51 -0400
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Tue, 19 Sep 2023 16:04:14 -0400
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: POHUwjXvIYf4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Q1f7gJ5Ls6E5
 
-From: Nabih Estefan Diaz <nabihestefan@google.com>
+From: Hao Wu <wuhaotsh@google.com>
 
-- Implementation of Transmit function for packets
-- Implementation for reading and writing from and to descriptors in
-  memory for Tx
-
-NOTE: This function implements the steps detailed in the datasheet for
-transmitting messages from the GMAC.
-
-Signed-off-by: Nabih Estefan Diaz <nabihestefan@google.com>
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
- hw/net/npcm_gmac.c | 150 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 150 insertions(+)
+ hw/arm/npcm7xx.c         | 38 ++++++++++++++++++++++++++++++++++++--
+ include/hw/arm/npcm7xx.h |  3 +++
+ 2 files changed, 39 insertions(+), 2 deletions(-)
 
-diff --git a/hw/net/npcm_gmac.c b/hw/net/npcm_gmac.c
-index 67f123e3c4..c457b11e4d 100644
---- a/hw/net/npcm_gmac.c
-+++ b/hw/net/npcm_gmac.c
-@@ -266,6 +266,7 @@ static int gmac_write_tx_desc(dma_addr_t addr, struct NPCMGMACTxDesc *desc)
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index c69e936669..15c58ef4a9 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -92,6 +92,7 @@ enum NPCM7xxInterrupt {
+     NPCM7XX_GMAC1_IRQ           = 14,
+     NPCM7XX_EMC1RX_IRQ          = 15,
+     NPCM7XX_EMC1TX_IRQ,
++    NPCM7XX_GMAC2_IRQ,
+     NPCM7XX_MMC_IRQ             = 26,
+     NPCM7XX_PSPI2_IRQ           = 28,
+     NPCM7XX_PSPI1_IRQ           = 31,
+@@ -235,6 +236,12 @@ static const hwaddr npcm7xx_pspi_addr[] = {
+     0xf0201000,
+ };
+ 
++/* Register base address for each GMAC Module */
++static const hwaddr npcm7xx_gmac_addr[] = {
++    0xf0802000,
++    0xf0804000,
++};
++
+ static const struct {
+     hwaddr regs_addr;
+     uint32_t unconnected_pins;
+@@ -463,6 +470,12 @@ static void npcm7xx_init(Object *obj)
+         object_initialize_child(obj, "pspi[*]", &s->pspi[i], TYPE_NPCM_PSPI);
      }
-     return 0;
- }
-+
- static int gmac_rx_transfer_frame_to_buffer(uint32_t rx_buf_len,
-                                             uint32_t *left_frame,
-                                             uint32_t rx_buf_addr,
-@@ -484,6 +485,155 @@ static ssize_t gmac_receive(NetClientState *nc, const uint8_t *buf, size_t len)
-     gmac->regs[R_NPCM_DMA_HOST_RX_DESC] = desc_addr;
-     return len;
- }
-+
-+static int gmac_tx_get_csum(uint32_t tdes1)
-+{
-+    uint32_t mask = TX_DESC_TDES1_CHKSM_INS_CTRL_MASK(tdes1);
-+    int csum = 0;
-+
-+    if (likely(mask > 0)) {
-+        csum |= CSUM_IP;
-+    }
-+    if (likely(mask > 1)) {
-+        csum |= CSUM_TCP | CSUM_UDP;
+ 
++    for (i = 0; i < ARRAY_SIZE(s->gmac); i++) {
++        object_initialize_child(obj, "gmac[*]", &s->gmac[i], TYPE_NPCM_GMAC);
 +    }
 +
-+    return csum;
-+}
-+
-+static void gmac_try_send_next_packet(NPCMGMACState *gmac)
-+{
++    object_initialize_child(obj, "pci-mbox", &s->pci_mbox,
++                            TYPE_NPCM7XX_PCI_MBOX);
+     object_initialize_child(obj, "mmc", &s->mmc, TYPE_NPCM7XX_SDHCI);
+ }
+ 
+@@ -694,6 +707,29 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+         sysbus_connect_irq(sbd, 1, npcm7xx_irq(s, rx_irq));
+     }
+ 
 +    /*
-+     * Comments about steps refer to steps for
-+     * transmitting in page 384 of datasheet
++     * GMAC Modules. Cannot fail.
 +     */
-+    uint16_t tx_buffer_size = 2048;
-+    g_autofree uint8_t *tx_send_buffer = g_malloc(tx_buffer_size);
-+    uint32_t desc_addr;
-+    struct NPCMGMACTxDesc tx_desc;
-+    uint32_t tx_buf_addr, tx_buf_len;
-+    uint16_t length = 0;
-+    uint8_t *buf = tx_send_buffer;
-+    uint32_t prev_buf_size = 0;
-+    int csum = 0;
++    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_gmac_addr) != ARRAY_SIZE(s->gmac));
++    QEMU_BUILD_BUG_ON(ARRAY_SIZE(s->gmac) != 2);
++    for (i = 0; i < ARRAY_SIZE(s->gmac); i++) {
++        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->gmac[i]);
 +
-+    /* steps 1&2 */
-+    if (!gmac->regs[R_NPCM_DMA_HOST_TX_DESC]) {
-+        gmac->regs[R_NPCM_DMA_HOST_TX_DESC] =
-+            NPCM_DMA_HOST_TX_DESC_MASK(gmac->regs[R_NPCM_DMA_TX_BASE_ADDR]);
++        /*
++         * The device exists regardless of whether it's connected to a QEMU
++         * netdev backend. So always instantiate it even if there is no
++         * backend.
++         */
++        sysbus_realize(sbd, &error_abort);
++        sysbus_mmio_map(sbd, 0, npcm7xx_gmac_addr[i]);
++        int irq = i == 0 ? NPCM7XX_GMAC1_IRQ : NPCM7XX_GMAC2_IRQ;
++        /*
++         * N.B. The values for the second argument sysbus_connect_irq are
++         * chosen to match the registration order in npcm7xx_emc_realize.
++         */
++        sysbus_connect_irq(sbd, 0, npcm7xx_irq(s, irq));
 +    }
-+    desc_addr = gmac->regs[R_NPCM_DMA_HOST_TX_DESC];
 +
-+    while (true) {
-+        gmac_dma_set_state(gmac, NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT,
-+            NPCM_DMA_STATUS_TX_RUNNING_FETCHING_STATE);
-+        trace_npcm_gmac_packet_transmit(DEVICE(gmac)->canonical_path, length);
-+        if (gmac_read_tx_desc(desc_addr, &tx_desc)) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "TX Descriptor @ 0x%x can't be read\n",
-+                          desc_addr);
-+            return;
-+        }
-+        /* step 3 */
-+
-+        trace_npcm_gmac_packet_desc_read(DEVICE(gmac)->canonical_path, desc_addr);
-+        trace_npcm_gmac_debug_desc_data(DEVICE(gmac)->canonical_path, &tx_desc,
-+            tx_desc.tdes0, tx_desc.tdes1, tx_desc.tdes2, tx_desc.tdes3);
-+
-+        /* 1 = DMA Owned, 0 = Software Owned */
-+        if (!(tx_desc.tdes0 & TX_DESC_TDES0_OWN)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "TX Descriptor @ 0x%x is owned by software\n",
-+                          desc_addr);
-+            gmac->regs[R_NPCM_DMA_STATUS] |= NPCM_DMA_STATUS_TU;
-+            gmac_dma_set_state(gmac, NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT,
-+                NPCM_DMA_STATUS_TX_SUSPENDED_STATE);
-+            gmac_update_irq(gmac);
-+            return;
-+        }
-+
-+        gmac_dma_set_state(gmac, NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT,
-+            NPCM_DMA_STATUS_TX_RUNNING_READ_STATE);
-+        /* Give the descriptor back regardless of what happens. */
-+        tx_desc.tdes0 &= ~TX_DESC_TDES0_OWN;
-+
-+        if (tx_desc.tdes1 & TX_DESC_TDES1_FIRST_SEG_MASK) {
-+            csum = gmac_tx_get_csum(tx_desc.tdes1);
-+        }
-+
-+        /* step 4 */
-+        tx_buf_addr = tx_desc.tdes2;
-+        gmac->regs[R_NPCM_DMA_CUR_TX_BUF_ADDR] = tx_buf_addr;
-+        tx_buf_len = TX_DESC_TDES1_BFFR1_SZ_MASK(tx_desc.tdes1);
-+        buf = &tx_send_buffer[prev_buf_size];
-+
-+        if ((prev_buf_size + tx_buf_len) > sizeof(buf)) {
-+            tx_buffer_size = prev_buf_size + tx_buf_len;
-+            tx_send_buffer = g_realloc(tx_send_buffer, tx_buffer_size);
-+            buf = &tx_send_buffer[prev_buf_size];
-+        }
-+
-+        /* step 5 */
-+        if (dma_memory_read(&address_space_memory, tx_buf_addr, buf,
-+                            tx_buf_len, MEMTXATTRS_UNSPECIFIED)) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: Failed to read packet @ 0x%x\n",
-+                        __func__, tx_buf_addr);
-+            return;
-+        }
-+        length += tx_buf_len;
-+        prev_buf_size += tx_buf_len;
-+
-+        /* If not chained we'll have a second buffer. */
-+        if (!(tx_desc.tdes1 & TX_DESC_TDES1_SEC_ADDR_CHND_MASK)) {
-+            tx_buf_addr = tx_desc.tdes3;
-+            gmac->regs[R_NPCM_DMA_CUR_TX_BUF_ADDR] = tx_buf_addr;
-+            tx_buf_len = TX_DESC_TDES1_BFFR2_SZ_MASK(tx_desc.tdes1);
-+            buf = &tx_send_buffer[prev_buf_size];
-+
-+            if ((prev_buf_size + tx_buf_len) > sizeof(buf)) {
-+                tx_buffer_size = prev_buf_size + tx_buf_len;
-+                tx_send_buffer = g_realloc(tx_send_buffer, tx_buffer_size);
-+                buf = &tx_send_buffer[prev_buf_size];
-+            }
-+
-+            if (dma_memory_read(&address_space_memory, tx_buf_addr, buf,
-+                                tx_buf_len, MEMTXATTRS_UNSPECIFIED)) {
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                              "%s: Failed to read packet @ 0x%x\n",
-+                              __func__, tx_buf_addr);
-+                return;
-+            }
-+            length += tx_buf_len;
-+            prev_buf_size += tx_buf_len;
-+        }
-+        if (tx_desc.tdes1 & TX_DESC_TDES1_LAST_SEG_MASK) {
-+            net_checksum_calculate(tx_send_buffer, length, csum);
-+            qemu_send_packet(qemu_get_queue(gmac->nic), tx_send_buffer, length);
-+            trace_npcm_gmac_packet_sent(DEVICE(gmac)->canonical_path, length);
-+            buf = tx_send_buffer;
-+            length = 0;
-+        }
-+
-+        /* step 6 */
-+        gmac_dma_set_state(gmac, NPCM_DMA_STATUS_TX_PROCESS_STATE_SHIFT,
-+            NPCM_DMA_STATUS_TX_RUNNING_CLOSING_STATE);
-+        gmac_write_tx_desc(desc_addr, &tx_desc);
-+        if (tx_desc.tdes1 & TX_DESC_TDES1_TX_END_RING_MASK) {
-+            desc_addr = gmac->regs[R_NPCM_DMA_TX_BASE_ADDR];
-+        } else if (tx_desc.tdes1 & TX_DESC_TDES1_SEC_ADDR_CHND_MASK) {
-+            desc_addr = tx_desc.tdes3;
-+        } else {
-+            desc_addr += sizeof(tx_desc);
-+        }
-+        gmac->regs[R_NPCM_DMA_HOST_TX_DESC] = desc_addr;
-+
-+        /* step 7 */
-+        if (tx_desc.tdes1 & TX_DESC_TDES1_INTERR_COMP_MASK) {
-+            gmac->regs[R_NPCM_DMA_STATUS] |= NPCM_DMA_STATUS_TI;
-+            gmac_update_irq(gmac);
-+        }
-+    }
-+}
-+
- static void gmac_cleanup(NetClientState *nc)
- {
-     /* Nothing to do yet. */
+     /*
+      * Flash Interface Unit (FIU). Can fail if incorrect number of chip selects
+      * specified, but this is a programming error.
+@@ -764,8 +800,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("npcm7xx.siox[2]",      0xf0102000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.ahbpci",       0xf0400000,   1 * MiB);
+     create_unimplemented_device("npcm7xx.mcphy",        0xf05f0000,  64 * KiB);
+-    create_unimplemented_device("npcm7xx.gmac1",        0xf0802000,   8 * KiB);
+-    create_unimplemented_device("npcm7xx.gmac2",        0xf0804000,   8 * KiB);
+     create_unimplemented_device("npcm7xx.vcd",          0xf0810000,  64 * KiB);
+     create_unimplemented_device("npcm7xx.ece",          0xf0820000,   8 * KiB);
+     create_unimplemented_device("npcm7xx.vdma",         0xf0822000,   8 * KiB);
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index 273090ac60..9e5cf639a2 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -30,6 +30,7 @@
+ #include "hw/misc/npcm7xx_pwm.h"
+ #include "hw/misc/npcm7xx_rng.h"
+ #include "hw/net/npcm7xx_emc.h"
++#include "hw/net/npcm_gmac.h"
+ #include "hw/nvram/npcm7xx_otp.h"
+ #include "hw/timer/npcm7xx_timer.h"
+ #include "hw/ssi/npcm7xx_fiu.h"
+@@ -105,6 +106,8 @@ struct NPCM7xxState {
+     OHCISysBusState     ohci;
+     NPCM7xxFIUState     fiu[2];
+     NPCM7xxEMCState     emc[2];
++    NPCMGMACState       gmac[2];
++    NPCM7xxPCIMBoxState pci_mbox;
+     NPCM7xxSDHCIState   mmc;
+     NPCMPSPIState       pspi[2];
+ };
 -- 
 2.42.0.459.ge4e396fd5e-goog
 

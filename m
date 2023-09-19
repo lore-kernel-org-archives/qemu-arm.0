@@ -1,126 +1,129 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3671107ejb;
-        Tue, 19 Sep 2023 08:08:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEx3r0+zQAgObSw3A8wkRxebC3VaHD+RYQacnMlq3qKMrV5HA6qOsPddnm6aeuokmUBGQ9U
-X-Received: by 2002:a05:622a:295:b0:417:bb09:eba8 with SMTP id z21-20020a05622a029500b00417bb09eba8mr5281450qtw.55.1695136109588;
-        Tue, 19 Sep 2023 08:08:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695136109; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp3695412ejb;
+        Tue, 19 Sep 2023 08:45:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFpPM7ZTJozJPp3EusrCqvhKADB/hp1AVYT56CDkc63BpH7GjikcrJqT5lWTTr97dtNhxwL
+X-Received: by 2002:a05:6830:616:b0:6b8:6a83:2b17 with SMTP id w22-20020a056830061600b006b86a832b17mr13361674oti.33.1695138322657;
+        Tue, 19 Sep 2023 08:45:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695138322; cv=none;
         d=google.com; s=arc-20160816;
-        b=SlmoQWgCSPGaywNh3M0bkAw/6JDV5I9beh0jUPvPBEIJmVBYPm86FxS4eo79AFc2Aw
-         W+RQ3jqEuaDRHzK8qpJrJW3pb3ZZHLlAeVxU/todGd0RMAxzZPwOPDyCN/rb2muJt7+P
-         S2FKWxRF8gItOMoYOxGiX0EDTJnxdqDeB/0QVGA9AUXrslwHaU/cRhoqw1we4KVVcQkm
-         tNp+TstYp/95YaDc+7GDALX9eVPMbkvszGxx449bAzcuNC1X3Jtimcq43KJyeOdmS+4/
-         8I6f7yDEohNklj1wDuAJRbARK9KBjqUjAjJd5jjaGISWqnMEP8FZ3ePo8zxfiEMUMPPo
-         Qa3Q==
+        b=gmzFLWIM95X8bnMqMCS22cBxERI17KztriDF72rvSgmQP54xUojSSYerRx+UzrIbCQ
+         3YtR3bu/gO84nLcoKWipXGnE5wnVtqiQmLFLkAsPipNpcLQDna/wtXAY36bwzB94Z0FH
+         /eqUuUPRul7DPOSXvgCOJAF7f77fOXz43PWydwRUdSd/22CO5OSqeFAaib3ieudxNWMY
+         XeToawF4XKd3bHxOxQH/4f3oCmScLlsAbCnKbqmJXynVQV53buWH0AncYXXNMaAe/w1P
+         RsJt6YTaMZ3AWNGssZJUwy7H1k/DfNhDCripWySwIzI9mkUalSvsgVHm1XuKrOGyWKtS
+         9VSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=r97l5vwZS5XFaxpRvXTKnunfsGMbtSmMIzYbzbl6vSI=;
-        fh=wV9i4kBK8skO9nNK5D4EdkF0O1NEWATtB+qOpaJuFmg=;
-        b=OKI+eqTJazoxtQXOuR9+ZdCv/1zgT0asdWoQUmbGs760MUyw0yegHfHFXi465Kky2g
-         QyvruUPm4oARCRmY2MieYNu5dd2fw6Uz21sU5vpXyuhfODiNibg9WMZMroK30ODy97XQ
-         SEYIdDlY8FiPrz77JDyhgno3TZyuZyavnZgyWsJVcVFvp/MyrR2zsfcrOmyJt9b+X41N
-         QKcoXlSTqPA6kvwaM2vrvnPGepSdEWqB9r81MPGog1ncLk2jpzwzVFOLqw1sglTFC5Va
-         EdX30YOWR0j/UXK+vTfBfo61t452RQKLCe3QJkb1IYB8bCLLYo7AJYk0JMF+RjGfDU1u
-         4uhg==
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=vQRNG8JPeyPIO1u1PW71+Eev+WC4xLfclkPWphshiBk=;
+        fh=Itbbu/PWL12vfUV9pSMfONMQCKVHOxT0l/2dhHgmw7U=;
+        b=fjaHCsawXb8njv1Witn2aEg0GBWGDnT0AocDJhSnHneDV9VVR5ueoPMqR+0Y5Xp4Lp
+         xr9YPbOs3Z/X9FqYZjUIac3Lj333IbOxWR1BYDVVcT9L+4exTFDeto9oLO7vjTQh3hoT
+         uF8zg1tA4D3zNfl9Xh+a2k/q/aVAxUvkM/kiNHIUoel9ikGdt+WgeBZddknLf1/ovfaS
+         2EcTqujZOqt8rVkbt3mo/H5cmWdCVeNmprcDUtvnwm3gbtFFWCx1AyYztE/IOdLwpt2r
+         N2KoZJWjHSJRqC9r+wbUUBMzvCamTi1eoQ6Irv6lc6imFEXlA5vzItdmCIkNtDy3SgeD
+         F4hQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=j3BP849d;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IAt7ZwYY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t26-20020a05622a181a00b004081bb79850si7886764qtc.367.2023.09.19.08.08.29
+        by mx.google.com with ESMTPS id a11-20020a05622a02cb00b004102b91f9edsi4617778qtx.418.2023.09.19.08.45.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Sep 2023 08:08:29 -0700 (PDT)
+        Tue, 19 Sep 2023 08:45:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=j3BP849d;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IAt7ZwYY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qicKn-0000ss-WB; Tue, 19 Sep 2023 11:08:18 -0400
+	id 1qicty-0004K8-HR; Tue, 19 Sep 2023 11:44:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1qicKm-0000s2-6P; Tue, 19 Sep 2023 11:08:16 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1qictx-0004J0-1E
+ for qemu-arm@nongnu.org; Tue, 19 Sep 2023 11:44:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1qicKj-0000RX-L7; Tue, 19 Sep 2023 11:08:15 -0400
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 38JAlOMK009476; Tue, 19 Sep 2023 15:07:55 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=r97l5vwZS5XFaxpRvXTKnunfsGMbtSmMIzYbzbl6vSI=;
- b=j3BP849dZqsJdiU9H2NpT2lSOGYIUz13gzHc+41VmHLq2lvFZSVud1BHAhLLdsE8OB3/
- /uKmgC9G2fS3l0Tt148nMzOpd7iXa8fUpSCb0kX7LXkdO+yee5qXTLA0HLNFwfyFMk/R
- 0J95AMXg3tnzBieEk9bC+Z4B7NcuNUdHv2zA2uCpAM/5urJSp9xJSzgfxc+SKNWedJq2
- U0bviaR0I6xtNzukLSEFZQJQ2k1i8qPdeThV1M4XZOTc1eA1BdfNYy2EsjS/28sX7Kg/
- MiZtvWJ6Dvb1Hdm3A2j0gZNRhrnsrLuNOvSxSxd5wuQMqrhgp2LaNrBrRF9eHNKcWozz xQ== 
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com
- [199.106.103.254])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3t6pmq2vrj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 19 Sep 2023 15:07:55 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
- [10.45.79.139])
- by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 38JF7sM3006424
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 19 Sep 2023 15:07:54 GMT
-Received: from [10.111.128.147] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Tue, 19 Sep
- 2023 08:07:52 -0700
-Message-ID: <e4223f6d-fe0c-411a-a345-a79c019d1bee@quicinc.com>
-Date: Tue, 19 Sep 2023 16:07:49 +0100
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1qictv-0003tG-0T
+ for qemu-arm@nongnu.org; Tue, 19 Sep 2023 11:44:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1695138273;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vQRNG8JPeyPIO1u1PW71+Eev+WC4xLfclkPWphshiBk=;
+ b=IAt7ZwYYwMpfGRs6LAWLwRkLUnJ7X0zPhTsrXp7BJJuG5OZG1q0wSYBIEcUgYVK00PJaaX
+ fnQiV0Z5t3GBaF+S8ham7+a/PQYMHjARv6TeZOEgG1LgF/RCRGEyKEdrAcInOt197ilCWU
+ 4L0sCTlkAxV8zsN874CouHGNzzEGXpU=
+Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
+ [209.85.166.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-284-L6aRfzqwOp-urZw5ERRYZg-1; Tue, 19 Sep 2023 11:44:32 -0400
+X-MC-Unique: L6aRfzqwOp-urZw5ERRYZg-1
+Received: by mail-il1-f197.google.com with SMTP id
+ e9e14a558f8ab-34fd0f51ddaso22201995ab.3
+ for <qemu-arm@nongnu.org>; Tue, 19 Sep 2023 08:44:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1695138271; x=1695743071;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=vQRNG8JPeyPIO1u1PW71+Eev+WC4xLfclkPWphshiBk=;
+ b=UhZ5bX3cIPWEJ8nQyNJzFSyTsqdpNBjjwA8rzcRCM8a33uHGW8uo1+93jtZZKgAalz
+ HRYToEXP+4Uzf7xE0RRs0IOWp5cuz0Q9n+5J55lzumJ78XLGfv15ltTDKDvwaKvE6XuT
+ RCyCgwye24+LpNjhABF1JHqdJ5seTKRpCwgPcQpW3o4q6NjwcLCwiY8zJeyjPZw/QNKs
+ bmn1cDRm+2LPunGj4704ArZk+9W2SIo4iOi0TexYlPXO3KcRiG49JDQxsat0gQJANYsj
+ ViXY3GBL11KAvtCvptuoOtZet218qHWbMWOso1D5lxQit3OkHrCUkieDOa3mPnvE2V61
+ Z4Hw==
+X-Gm-Message-State: AOJu0Yw+FivDfS0SPGdo/WtiBaKlZgoXMTn8zoYORXIA9ooIDWQ//EC3
+ yWI2XNidR1PL7cfkjKw7RT2fKMlRZ5t+6w3wOEdL63XoEuNQGqaVaZKOgYe+tnuZxSONLk7mxyQ
+ jbqlVPBEUCEnn
+X-Received: by 2002:a05:6e02:14c1:b0:34f:70ec:d4cf with SMTP id
+ o1-20020a056e0214c100b0034f70ecd4cfmr210891ilk.8.1695138271424; 
+ Tue, 19 Sep 2023 08:44:31 -0700 (PDT)
+X-Received: by 2002:a05:6e02:14c1:b0:34f:70ec:d4cf with SMTP id
+ o1-20020a056e0214c100b0034f70ecd4cfmr210872ilk.8.1695138271183; 
+ Tue, 19 Sep 2023 08:44:31 -0700 (PDT)
+Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
+ fu3-20020a056638668300b0043a0aa909bfsm49415jab.159.2023.09.19.08.44.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 Sep 2023 08:44:30 -0700 (PDT)
+Date: Tue, 19 Sep 2023 09:44:28 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ clg@redhat.com, jean-philippe@linaro.org, mst@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
+ david@redhat.com, philmd@linaro.org
+Subject: Re: [PATCH v2 03/12] vfio: Collect container iova range info
+Message-ID: <20230919094428.2cedaa30.alex.williamson@redhat.com>
+In-Reply-To: <20230913080423.523953-4-eric.auger@redhat.com>
+References: <20230913080423.523953-1-eric.auger@redhat.com>
+ <20230913080423.523953-4-eric.auger@redhat.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 0/3] virt: wire up NS EL2 virtual timer IRQ
-Content-Language: en-GB
-To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>
-CC: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Ard Biesheuvel
- <ardb@kernel.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S.
- Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Ani Sinha
- <anisinha@redhat.com>
-References: <20230919101240.2569334-1-peter.maydell@linaro.org>
-From: Leif Lindholm <quic_llindhol@quicinc.com>
-In-Reply-To: <20230919101240.2569334-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-GUID: MLNbrbXCcFuaKNZXI49Xl980BczZg0T_
-X-Proofpoint-ORIG-GUID: MLNbrbXCcFuaKNZXI49Xl980BczZg0T_
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-09-19_06,2023-09-19_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 spamscore=0
- priorityscore=1501 impostorscore=0 mlxlogscore=643 mlxscore=0 phishscore=0
- clxscore=1011 lowpriorityscore=0 adultscore=0 bulkscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
- definitions=main-2309190130
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=quic_llindhol@quicinc.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=alex.williamson@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,77 +138,144 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: y3Ad68jLhrn6
+X-TUID: K9dW8DTdwPSG
 
-On 2023-09-19 11:12, Peter Maydell wrote:
-> This patchset is an RFC that wires up the NS EL2 virtual timer IRQ on
-> the virt board, similarly to what
-> https://patchew.org/QEMU/20230913140610.214893-1-marcin.juszkiewicz@linaro.org/
-> does for the sbsa-ref board.
+On Wed, 13 Sep 2023 10:01:38 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
+
+> Collect iova range information if VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE
+> capability is supported.
 > 
-> Patches 1 and 3 are the usual dance to keep the ACPI unit tests happy
-> with the change to the ACPI table contents; patch 2 is the meat.
+> This allows to propagate the information though the IOMMU MR
+> set_iova_ranges() callback so that virtual IOMMUs
+> get aware of those aperture constraints.
 > 
-> This is an RFC for two reasons:
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  include/hw/vfio/vfio-common.h |  2 ++
+>  hw/vfio/common.c              | 45 +++++++++++++++++++++++++++++++++--
+>  2 files changed, 45 insertions(+), 2 deletions(-)
 > 
-> (1) I'm not very familiar with ACPI, and patch 2 needs to update the
-> ACPI GTDT table to report the interrupt number.  In particular, this
-> means we need the rev 3 of this table (present in ACPI spec 6.3 and
-> later), not the rev 2 we currently report.  I'm not sure if it's
-> permitted to rev just this table, or if we would need to upgrade all
-> our ACPI tables to the newer spec first.
+> diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
+> index da43d27352..74b9b27270 100644
+> --- a/include/hw/vfio/vfio-common.h
+> +++ b/include/hw/vfio/vfio-common.h
+> @@ -98,6 +98,8 @@ typedef struct VFIOContainer {
+>      QLIST_HEAD(, VFIOGroup) group_list;
+>      QLIST_HEAD(, VFIORamDiscardListener) vrdl_list;
+>      QLIST_ENTRY(VFIOContainer) next;
+> +    unsigned nr_iovas;
+> +    struct  vfio_iova_range *iova_ranges;
+>  } VFIOContainer;
+>  
+>  typedef struct VFIOGuestIOMMU {
+> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> index 9aac21abb7..26da38de05 100644
+> --- a/hw/vfio/common.c
+> +++ b/hw/vfio/common.c
+> @@ -1157,6 +1157,14 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>              goto fail;
+>          }
+>  
+> +        ret = memory_region_iommu_set_iova_ranges(giommu->iommu_mr,
+> +                container->nr_iovas, (struct Range *)container->iova_ranges,
+> +                &err);
 
-Ard already provided the answer for this.
+The semantics of calling this with nr_iovas == 0 and the vIOMMU driver
+ignoring that it's being told there are no usable iova ranges is rather
+strange.  Should nr_iovas be initialized to -1 for that or should this
+call be conditional on non-zero nr_iovas?
 
-> (2) The change causes EDK2 (UEFI) to assert on startup:
-> ASSERT [ArmTimerDxe] /home/kraxel/projects/qemu/roms/edk2/ArmVirtPkg/Library/ArmVirtTimerFdtClientLib/ArmVirtTimerFdtClientLib.c(72): PropSize == 36 || PropSize == 48
-> This is because the EDK2 code that consumes the QEMU generated device
-> tree blob is incorrectly insisting that the architectural-timer
-> interrupts property has only 3 or 4 entries, so it falls over if
-> given a dtb with the 5th entry for the EL2 virtual timer irq.  In
-> particular this breaks the avocado test:
-> machine_aarch64_virt.py:Aarch64VirtMachine.test_alpine_virt_tcg_gic_max
-> I'm not entirely sure what to do about this -- we can get EDK2 fixed
-> and update our own test case, but there's a lot of binaries out there
-> in the wild that won't run if we just update the virt board the way
-> this patchset does.  We could perhaps make the virt board change be
-> dependent on machine type version, as a way to let users fall back to
-> the old behaviour.
+Also, vfio_get_info_iova_range() is only called in the type1 container
+path and the IOVA range info capability has only existed since kernel
+v5.4.  So we need to do something sane even if we don't have the kernel
+telling us about the IOVA ranges.  I think this precludes the assert in
+the final patch of the series or else new QEMU on an old kernel is
+broken.
 
-And kind of this one too. Although I might expand somewhat:
-As I understand it, this only breaks an existing setup where someone is
-- Running a DEBUG build of edk2
-- With virtualization=on
-I don't see that (currently) happening outside development/ci, and the 
-RELEASE builds should save anyone not actually working on edk2 but only 
-running it to test other things.
+> +        if (ret) {
+> +            g_free(giommu);
+> +            goto fail;
+> +        }
+> +
+>          ret = memory_region_register_iommu_notifier(section->mr, &giommu->n,
+>                                                      &err);
+>          if (ret) {
+> @@ -1981,6 +1989,29 @@ bool vfio_get_info_dma_avail(struct vfio_iommu_type1_info *info,
+>      return true;
+>  }
+>  
+> +static void vfio_get_info_iova_range(struct vfio_iommu_type1_info *info,
+> +                                     unsigned int *nr_iovas,
+> +                                     struct  vfio_iova_range **iova_ranges)
 
-Ard has given me an r-b on the fix, so that can be merged today.
-It will then land in edk2-stable202311 around the end of November, but 
-will be on the main branch as soon as it passes ci.
+Just pass the VFIOContainer pointer?  Thanks,
 
-I have one comment on my own, which is this clearly has a merge conflict 
-with my PPI rework patches.
+Alex
 
-Regards,
-
-Leif
-
-> I'm putting this patchset out on the list to get opinions and
-> review on those two points.
-> 
-> thanks
-> -- PMM
-> 
-> Peter Maydell (3):
->    tests/qtest/bios-tables-test: Allow changes to virt GTDT
->    hw/arm/virt: Wire up non-secure EL2 virtual timer IRQ
->    tests/qtest/bios-tables-test: Update virt/GTDT golden reference
-> 
->   include/hw/arm/virt.h     |   2 ++
->   hw/arm/virt-acpi-build.c  |  16 ++++++++++++----
->   hw/arm/virt.c             |  29 ++++++++++++++++++++++++++++-
->   tests/data/acpi/virt/GTDT | Bin 96 -> 104 bytes
->   4 files changed, 42 insertions(+), 5 deletions(-)
-> 
+> +{
+> +    struct vfio_info_cap_header *hdr;
+> +    struct vfio_iommu_type1_info_cap_iova_range *cap;
+> +
+> +    hdr = vfio_get_iommu_type1_info_cap(info,
+> +                                        VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE);
+> +    if (hdr == NULL) {
+> +        return;
+> +    }
+> +
+> +    cap = (void *)hdr;
+> +    *nr_iovas = cap->nr_iovas;
+> +
+> +    if (*nr_iovas == 0) {
+> +        return;
+> +    }
+> +    *iova_ranges = g_memdup2(cap->iova_ranges,
+> +                             *nr_iovas * sizeof(struct  vfio_iova_range));
+> +}
+> +
+>  static int vfio_setup_region_sparse_mmaps(VFIORegion *region,
+>                                            struct vfio_region_info *info)
+>  {
+> @@ -2433,6 +2464,12 @@ static void vfio_get_iommu_info_migration(VFIOContainer *container,
+>      }
+>  }
+>  
+> +static void vfio_free_container(VFIOContainer *container)
+> +{
+> +    g_free(container->iova_ranges);
+> +    g_free(container);
+> +}
+> +
+>  static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+>                                    Error **errp)
+>  {
+> @@ -2550,6 +2587,10 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+>          if (!vfio_get_info_dma_avail(info, &container->dma_max_mappings)) {
+>              container->dma_max_mappings = 65535;
+>          }
+> +
+> +        vfio_get_info_iova_range(info, &container->nr_iovas,
+> +                                 &container->iova_ranges);
+> +
+>          vfio_get_iommu_info_migration(container, info);
+>          g_free(info);
+>  
+> @@ -2663,7 +2704,7 @@ enable_discards_exit:
+>      vfio_ram_block_discard_disable(container, false);
+>  
+>  free_container_exit:
+> -    g_free(container);
+> +    vfio_free_container(container);
+>  
+>  close_fd_exit:
+>      close(fd);
+> @@ -2717,7 +2758,7 @@ static void vfio_disconnect_container(VFIOGroup *group)
+>  
+>          trace_vfio_disconnect_container(container->fd);
+>          close(container->fd);
+> -        g_free(container);
+> +        vfio_free_container(container);
+>  
+>          vfio_put_address_space(space);
+>      }
 

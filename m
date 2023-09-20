@@ -1,92 +1,128 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp4245703ejb;
-        Wed, 20 Sep 2023 04:48:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGVeAArvngx8l5O/CKz23zQWq6wIJF5x+bMtmrwVUUpeNA5e4aXteKSZKZY4XYr1JJ3bS88
-X-Received: by 2002:a05:620a:2698:b0:76c:e6b6:58d3 with SMTP id c24-20020a05620a269800b0076ce6b658d3mr2388247qkp.22.1695210536715;
-        Wed, 20 Sep 2023 04:48:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695210536; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp4285053ejb;
+        Wed, 20 Sep 2023 05:55:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IECOMGcnVvI8E1uAJRPVISuwtJb8ftXFn6AW69NhwiNLmQPU13jqPmYP3N5Tb/n9nAJXPfd
+X-Received: by 2002:a81:5e89:0:b0:577:3d46:f90e with SMTP id s131-20020a815e89000000b005773d46f90emr3026415ywb.32.1695214505876;
+        Wed, 20 Sep 2023 05:55:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695214505; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ne9i1R7e6cN4NBr6ieTUkS+KsxuNiD6p0JQNuPuuX/WvvOw8/vx5FXffz67oBOqHPy
-         qfF9Y4lfLFvreuxQ2FvpRQbxPuD41ci9U6fYzyx1qvdrrAAAg+Rh9hOH37aMgJlxEsSH
-         Hx0KPQXMWfCspaOCbXFbRW7+stAEJw9mwHBQrEdvyapGjugz8+NWhItvMrAcBo4vQyl1
-         Psfgm34s88t1tpwqSIwgWpW/9s/UYh+/m/U8q0CDdZbU6tK9mRgz0rK+B34yN6nB8NGQ
-         ey4wHpBPDdLzK9t8gVPC/gODX25GxODH5CTpuBNJeZWji/2GSuEDMRSREhwrb5mtyMFD
-         g42Q==
+        b=vMeG36uc0Gq5kUgpzzqzN6xCn+q0l3Hq5g2sA5OWvmJPHvAvieA/uW7Q1HgPhcgUnh
+         +Er41rUVH5ao1am09anB9lk4MGVMSj8QwCPs0QgTTzu4JL+F1ivMabYwUMQv2xx+N/gY
+         9ggKddYGFF8b/7PkecZr7XU/sM1EN/cjeUG+sYnvj0iwiwiHjuFMFCpzKRHSQscynJXN
+         1Zd+4fht50FlWBftmt4xQ1ERfEhdtZqbWERKwM93OUfrosCVouEwv+C8xG5v4xPj2XwO
+         xXKfkEPR+OUALvgr7PAB+uoRjIkdqa1kT3TIxars2l5nsjqxzgG9wP95IrxF4PYII1Z6
+         ouFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=hFhkT1az2WvqAfo23nFj/KExTyktbbmWHTliR7mDzI8=;
-        fh=5qf9frC2/st8HEyI2ZzJQIJIi0h8vBj4yfollNgcOnI=;
-        b=xX89W/T8SFjto7TNjFX65oLasPIWdtzkx265HBiKCK+qZUfg5WzUtxmHgfGyjZ/ibL
-         ulxnqNDNMUAws7qGJNXcqfJKjBTU4iH8eLuMjc86I8k94tHF58hKntP6oNe6ebq5p+A7
-         rPfttH1VBTNJjU5ojUYI19obEeFItJIyPRVFkE3LKld/CRi263mzp/iZGWru82LwG6f5
-         SIPjV/uF4bQfCFsDYIJ7qnG7uLaukfVIUx2ODm0VizpgRReid5q2CMW2u/xEdiz0YT18
-         uAjYwkR8s+laNhORZjQV/JhRE5+QaFcz8bLjGVtFTVgFkNskhjVgP8Nosrmo1Fy+HxKe
-         geiA==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=YLHzCQ8Xo73qNN6wxL1sFWjkQUlZ/9hp+7fQkgZXQAM=;
+        fh=apbEG9eGVEBBajSfmdlTl++8L/xebzJ49V+c/6IwQps=;
+        b=Jls8UGQuxauUOj3gN/aUlbEeqQ0XkRplMdwLsww7lVVTbsh6BlyyRfiejjzN6IYKrX
+         mqbajkGMXWB08WiNLuQkKkVOB6fkgkJG9kV2vtmHQCT275UZoq29KCWwpXoJmNEow+0T
+         wth/BrnNSiXtjcV6Rzh6Pitzj9G7Hct1Lqdbu07NKGxKgqnzu57+DNzlRNfWtaw+ikKt
+         RCbDMbUhyRsZS5j/e/ri3ggNBKYFQ0WUX27+tSsvAuZ3PtWO5d6gmO/sCg9pjXldQiUM
+         3QWzWJuAKXPArjZjqi+dpqfnU82gxqGsCIOAGV7w7RX3vuRtOfaswbCTX0ZDJ41u76wX
+         UXGg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=HNGRvmLG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t4-20020a05620a450400b0076cae48eb5dsi9379183qkp.234.2023.09.20.04.48.56
+        by mx.google.com with ESMTPS id t10-20020a05620a0b0a00b00767da14f0cesi8789551qkg.13.2023.09.20.05.55.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Sep 2023 04:48:56 -0700 (PDT)
+        Wed, 20 Sep 2023 05:55:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=HNGRvmLG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qivgz-0001ry-AT; Wed, 20 Sep 2023 07:48:29 -0400
+	id 1qiwiy-00040d-IZ; Wed, 20 Sep 2023 08:54:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qivgx-0001rW-GK; Wed, 20 Sep 2023 07:48:27 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qivgv-0007GL-9o; Wed, 20 Sep 2023 07:48:27 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.206])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RrGvZ0qnnz6HJc5;
- Wed, 20 Sep 2023 19:46:18 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 20 Sep
- 2023 12:48:04 +0100
-Date: Wed, 20 Sep 2023 12:48:03 +0100
-To: Klaus Jensen <its@irrelevant.dk>
-CC: Corey Minyard <cminyard@mvista.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Keith Busch <kbusch@kernel.org>, Lior Weintraub <liorw@pliops.com>, Jeremy
- Kerr <jk@codeconstruct.com.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Matt Johnston <matt@codeconstruct.com.au>, Peter Delevoryas <peter@pjd.dev>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-block@nongnu.org>,
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1qiwix-00040H-KB; Wed, 20 Sep 2023 08:54:35 -0400
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1qiwiv-0005YN-6Y; Wed, 20 Sep 2023 08:54:35 -0400
+Received: by mail-ot1-x32f.google.com with SMTP id
+ 46e09a7af769-6c0b8f42409so4089248a34.0; 
+ Wed, 20 Sep 2023 05:54:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1695214471; x=1695819271; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:sender:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YLHzCQ8Xo73qNN6wxL1sFWjkQUlZ/9hp+7fQkgZXQAM=;
+ b=HNGRvmLGPLv87cYngz3x7Zf2R5kPr/5n55bn0PNDkYBOnWD3sMWAUv5JpEHzC5js3f
+ 0INP6zScRO+Jh2eEwtunOLMyXH3V2plWXWiarxo7FNu/bkJ46v0hcbEKAHLVRQeNl8d+
+ mxtW8++u0KJJD/U85FFZe1f7uzzyEvloODRC0d7W80W7VfmxsP4ptqTj7cWt2D1OLwfT
+ c4b2x2RvmWvezeVzyzJTU3oc1odtp8OzL4ShAQ3pITEq2X1QqMpASwrkKdM6WQsoNm7q
+ HUysz3KAm3eAvlA8n92jYZDKj+Jw38OMk2WR5bcrOZygEL/O5Iz5zwEbznu9Y9UjjBPn
+ HqGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1695214471; x=1695819271;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:sender:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=YLHzCQ8Xo73qNN6wxL1sFWjkQUlZ/9hp+7fQkgZXQAM=;
+ b=Nbn20SExX7HGiinQiUtoRRFJ8RL/2VNRcNON6hJeJfPhrMg72cb/bA/CJ3zmF/vQP1
+ c9jr00z4QbrQumdqU1SWNQygCysZn17sxANaMFNMyJ1Yk2/L6v8lJHMgw2C/1YgxZYPx
+ WmE6hvi3hQQtWEg2f+QPShuaixiT2oZHmI69XbYXzubVFVEkhHqjufnn+PX/Xa3BjGFB
+ evEw0zTVAEYydL2YfKKwk6cCbe1k0EkfAIP/35NqlXOVuF5ijqGWjho6r98J+M+CncEX
+ pG6pW68wYN8yBYZw/yVZ++87Aev7SiWFFKwAwUCiKsEMWWlNQKtkYEZsXdGC/tF7YNv+
+ 17/g==
+X-Gm-Message-State: AOJu0YyCMT8lreTG7e9E+aNWr1lNE7OkGxKsu8QCJpNIJ15lfhVv6poQ
+ JBu3TKIY1FzpV8PcRQHk2Q==
+X-Received: by 2002:a05:6830:c89:b0:6c4:7696:e89 with SMTP id
+ bn9-20020a0568300c8900b006c476960e89mr572327otb.6.1695214470747; 
+ Wed, 20 Sep 2023 05:54:30 -0700 (PDT)
+Received: from serve.minyard.net ([47.189.89.62])
+ by smtp.gmail.com with ESMTPSA id
+ s189-20020a4a51c6000000b0056e67f2f92asm6627814ooa.22.2023.09.20.05.54.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 20 Sep 2023 05:54:30 -0700 (PDT)
+Received: from mail.minyard.net (unknown [IPv6:2001:470:b8f6:1d::35])
+ by serve.minyard.net (Postfix) with ESMTPSA id EC2C81800E8;
+ Wed, 20 Sep 2023 12:54:28 +0000 (UTC)
+Date: Wed, 20 Sep 2023 07:54:27 -0500
+From: Corey Minyard <minyard@acm.org>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Klaus Jensen <its@irrelevant.dk>, Corey Minyard <cminyard@mvista.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jason Wang <jasowang@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ Lior Weintraub <liorw@pliops.com>, Jeremy Kerr <jk@codeconstruct.com.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Matt Johnston <matt@codeconstruct.com.au>,
+ Peter Delevoryas <peter@pjd.dev>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org,
  Klaus Jensen <k.jensen@samsung.com>
 Subject: Re: [PATCH v6 0/3] hw/{i2c,nvme}: mctp endpoint, nvme management
  interface model
-Message-ID: <20230920124803.00005ae9@Huawei.com>
-In-Reply-To: <20230914-nmi-i2c-v6-0-11bbb4f74d18@samsung.com>
+Message-ID: <ZQrrgxHrfzmGyhZU@mail.minyard.net>
 References: <20230914-nmi-i2c-v6-0-11bbb4f74d18@samsung.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ <20230920124803.00005ae9@Huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230920124803.00005ae9@Huawei.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32f;
+ envelope-from=tcminyard@gmail.com; helo=mail-ot1-x32f.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,103 +135,113 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Reply-To: minyard@acm.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E26vWl3DFJtk
+X-TUID: c2joxXWqi6Dx
 
-On Thu, 14 Sep 2023 11:53:40 +0200
-Klaus Jensen <its@irrelevant.dk> wrote:
+On Wed, Sep 20, 2023 at 12:48:03PM +0100, Jonathan Cameron via wrote:
+> On Thu, 14 Sep 2023 11:53:40 +0200
+> Klaus Jensen <its@irrelevant.dk> wrote:
+> 
+> > This adds a generic MCTP endpoint model that other devices may derive
+> > from.
+> > 
+> > Also included is a very basic implementation of an NVMe-MI device,
+> > supporting only a small subset of the required commands.
+> > 
+> > Since this all relies on i2c target mode, this can currently only be
+> > used with an SoC that includes the Aspeed I2C controller.
+> > 
+> > The easiest way to get up and running with this, is to grab my buildroot
+> > overlay[1] (aspeed_ast2600evb_nmi_defconfig). It includes modified a
+> > modified dts as well as a couple of required packages.
+> > 
+> > QEMU can then be launched along these lines:
+> > 
+> >   qemu-system-arm \
+> >     -nographic \
+> >     -M ast2600-evb \
+> >     -kernel output/images/zImage \
+> >     -initrd output/images/rootfs.cpio \
+> >     -dtb output/images/aspeed-ast2600-evb-nmi.dtb \
+> >     -nic user,hostfwd=tcp::2222-:22 \
+> >     -device nmi-i2c,address=0x3a \
+> >     -serial mon:stdio
+> > 
+> > From within the booted system,
+> > 
+> >   mctp addr add 8 dev mctpi2c15
+> >   mctp link set mctpi2c15 up
+> >   mctp route add 9 via mctpi2c15
+> >   mctp neigh add 9 dev mctpi2c15 lladdr 0x3a
+> >   mi-mctp 1 9 info
+> > 
+> > Comments are very welcome!
+> > 
+> >   [1]: https://github.com/birkelund/hwtests/tree/main/br2-external
+> > 
+> > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+> 
+> Hi Klaus,
+> 
+> Silly question, but who is likely to pick this up? + likely to be soon?
+> 
+> I'm going to post the CXL stuff that makes use of the core support shortly
+> and whilst I can point at this patch set on list, I'd keen to see it upstream
+> to reduce the dependencies (it's got 2 sets ahead of it of CXL stuff
+> anyway but that will all hopefully go through Michael Tsirkin's tree
+> for PCI stuff in one go).
 
-> This adds a generic MCTP endpoint model that other devices may derive
-> from.
-> 
-> Also included is a very basic implementation of an NVMe-MI device,
-> supporting only a small subset of the required commands.
-> 
-> Since this all relies on i2c target mode, this can currently only be
-> used with an SoC that includes the Aspeed I2C controller.
-> 
-> The easiest way to get up and running with this, is to grab my buildroot
-> overlay[1] (aspeed_ast2600evb_nmi_defconfig). It includes modified a
-> modified dts as well as a couple of required packages.
-> 
-> QEMU can then be launched along these lines:
-> 
->   qemu-system-arm \
->     -nographic \
->     -M ast2600-evb \
->     -kernel output/images/zImage \
->     -initrd output/images/rootfs.cpio \
->     -dtb output/images/aspeed-ast2600-evb-nmi.dtb \
->     -nic user,hostfwd=tcp::2222-:22 \
->     -device nmi-i2c,address=0x3a \
->     -serial mon:stdio
-> 
-> From within the booted system,
-> 
->   mctp addr add 8 dev mctpi2c15
->   mctp link set mctpi2c15 up
->   mctp route add 9 via mctpi2c15
->   mctp neigh add 9 dev mctpi2c15 lladdr 0x3a
->   mi-mctp 1 9 info
-> 
-> Comments are very welcome!
-> 
->   [1]: https://github.com/birkelund/hwtests/tree/main/br2-external
-> 
-> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+I can pick it up, but he can just request a merge, too.
 
-Hi Klaus,
+I did have a question I asked earlier about tests.  It would be unusual
+at this point to add something like this without having some tests,
+especially injecting invalid data.
 
-Silly question, but who is likely to pick this up? + likely to be soon?
+-corey
 
-I'm going to post the CXL stuff that makes use of the core support shortly
-and whilst I can point at this patch set on list, I'd keen to see it upstream
-to reduce the dependencies (it's got 2 sets ahead of it of CXL stuff
-anyway but that will all hopefully go through Michael Tsirkin's tree
-for PCI stuff in one go).
-
-Jonathan
-
-> ---
-> Changes in v6:
-> - Use nmi_scratch_append() directly where it makes sense. Fixes bug
->   observed by Andrew.
-> - Link to v5: https://lore.kernel.org/r/20230905-nmi-i2c-v5-0-0001d372a728@samsung.com
 > 
-> Changes in v5:
-> - Added a nmi_scratch_append() that asserts available space in the
->   scratch buffer. This is a similar defensive strategy as used in
->   hw/i2c/mctp.c
-> - Various small fixups in response to review (Jonathan)
-> - Link to v4: https://lore.kernel.org/r/20230823-nmi-i2c-v4-0-2b0f86e5be25@samsung.com
+> Jonathan
 > 
-> ---
-> Klaus Jensen (3):
->       hw/i2c: add smbus pec utility function
->       hw/i2c: add mctp core
->       hw/nvme: add nvme management interface model
+> > ---
+> > Changes in v6:
+> > - Use nmi_scratch_append() directly where it makes sense. Fixes bug
+> >   observed by Andrew.
+> > - Link to v5: https://lore.kernel.org/r/20230905-nmi-i2c-v5-0-0001d372a728@samsung.com
+> > 
+> > Changes in v5:
+> > - Added a nmi_scratch_append() that asserts available space in the
+> >   scratch buffer. This is a similar defensive strategy as used in
+> >   hw/i2c/mctp.c
+> > - Various small fixups in response to review (Jonathan)
+> > - Link to v4: https://lore.kernel.org/r/20230823-nmi-i2c-v4-0-2b0f86e5be25@samsung.com
+> > 
+> > ---
+> > Klaus Jensen (3):
+> >       hw/i2c: add smbus pec utility function
+> >       hw/i2c: add mctp core
+> >       hw/nvme: add nvme management interface model
+> > 
+> >  MAINTAINERS                   |   7 +
+> >  hw/arm/Kconfig                |   1 +
+> >  hw/i2c/Kconfig                |   4 +
+> >  hw/i2c/mctp.c                 | 432 ++++++++++++++++++++++++++++++++++++++++++
+> >  hw/i2c/meson.build            |   1 +
+> >  hw/i2c/smbus_master.c         |  26 +++
+> >  hw/i2c/trace-events           |  13 ++
+> >  hw/nvme/Kconfig               |   4 +
+> >  hw/nvme/meson.build           |   1 +
+> >  hw/nvme/nmi-i2c.c             | 407 +++++++++++++++++++++++++++++++++++++++
+> >  hw/nvme/trace-events          |   6 +
+> >  include/hw/i2c/mctp.h         | 125 ++++++++++++
+> >  include/hw/i2c/smbus_master.h |   2 +
+> >  include/net/mctp.h            |  35 ++++
+> >  14 files changed, 1064 insertions(+)
+> > ---
+> > base-commit: 005ad32358f12fe9313a4a01918a55e60d4f39e5
+> > change-id: 20230822-nmi-i2c-d804ed5be7e6
+> > 
+> > Best regards,
 > 
->  MAINTAINERS                   |   7 +
->  hw/arm/Kconfig                |   1 +
->  hw/i2c/Kconfig                |   4 +
->  hw/i2c/mctp.c                 | 432 ++++++++++++++++++++++++++++++++++++++++++
->  hw/i2c/meson.build            |   1 +
->  hw/i2c/smbus_master.c         |  26 +++
->  hw/i2c/trace-events           |  13 ++
->  hw/nvme/Kconfig               |   4 +
->  hw/nvme/meson.build           |   1 +
->  hw/nvme/nmi-i2c.c             | 407 +++++++++++++++++++++++++++++++++++++++
->  hw/nvme/trace-events          |   6 +
->  include/hw/i2c/mctp.h         | 125 ++++++++++++
->  include/hw/i2c/smbus_master.h |   2 +
->  include/net/mctp.h            |  35 ++++
->  14 files changed, 1064 insertions(+)
-> ---
-> base-commit: 005ad32358f12fe9313a4a01918a55e60d4f39e5
-> change-id: 20230822-nmi-i2c-d804ed5be7e6
 > 
-> Best regards,
-

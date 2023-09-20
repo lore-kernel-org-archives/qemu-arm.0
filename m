@@ -1,106 +1,106 @@
-Received: by 2002:a17:906:5293:b0:9ae:5796:d6c1 with SMTP id c19csp180152ejm;
-        Wed, 20 Sep 2023 15:18:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGCDzppqs/wB50iywivsCxXSBhBx23WszjNnPASZvhwvQcdhNiFyV7Rb45zmwzo1MEC5sv7
-X-Received: by 2002:a67:fc43:0:b0:44e:e7d7:6847 with SMTP id p3-20020a67fc43000000b0044ee7d76847mr4159264vsq.7.1695248324681;
-        Wed, 20 Sep 2023 15:18:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695248324; cv=none;
+Received: by 2002:a17:906:5293:b0:9ae:5796:d6c1 with SMTP id c19csp180185ejm;
+        Wed, 20 Sep 2023 15:18:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEZjUGihI5anicR59XqT6J6dF2O5sP2WTe/+TQU3BhhdHGle0Rfms12ZEu1qTQpBaUC/+HY
+X-Received: by 2002:a05:620a:2495:b0:773:ad1b:2e10 with SMTP id i21-20020a05620a249500b00773ad1b2e10mr4726369qkn.48.1695248329427;
+        Wed, 20 Sep 2023 15:18:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695248329; cv=none;
         d=google.com; s=arc-20160816;
-        b=vQnFUfofJXJ5H53ySs1Ix9kKfdGZ2qBRBTIKi4eH6h61aIBJVEm5CMyxqqdywchX/S
-         dwrte4ZZzqMY09CIUhb7rge1iGkJbgcmebFRr/6sPC7z7htm6Y1I4yL/Og/bZ51OVHNX
-         DgsfYlcwnLOFJ7MvMXHf2WKKrr/V5W52/dxyggrSkJDh10IG5thmwFIyHBYvT+92vcYa
-         3vvD3FCNTLqaWcAnLXaZpzbyn34MStOqCtJ1owWZcUeGTOahCCZUkRjuWoYENYsdKXKq
-         bpXUTJ5mzGs9yzL/cVGUqCzeVGQucbiyLwWX2RMYJ5bxqLddwjqou+MRnKKOtEism2l4
-         yOpw==
+        b=gj6uBYfS79ArA9Q1KqxsZMBJRRuEMRBM8ekT214TSY2ZglXRVfMd+zvZt/K9gz/OsF
+         Mn3oy9SqC79fUhIsmFw8JkvpcCcckBFrHjrOlpddB1VY/h11F1h6R3XbIGGFBWmLkrFO
+         77+syfZX2pvtVhFAg6/QXkh7uA1HWbmRG01b4zSSJ1opdLQAT46FozDa39sCCinYWVl0
+         tPZie5vW7lNLZ6ukn//SoquVxBhQ2CRnGuTVgq3LPS+ocpC57bOOHn4C7LycSb5YMp5f
+         3kwpIyLH8kdUamcu//SZ6OMOkzbOBxJFfhMXyiwLjMKChph6vvjvlDgXkHH0IVwlMi0s
+         agZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=P7FGPmiLO53dMZcTk+GsjD6AKSJLR5sY4i4wnHSczKY=;
+        bh=v+jL/EHZmjvEfkrTfTVsZdX3fbKb/vDDuBbS7XAe73w=;
         fh=VpdIyJR9n9QpzQWHJW541W97F/M8Z10MnahQ3EEY1JY=;
-        b=IWuX+l5sO7vA6Nd7kXyJxkflChNXd7RDABOibww1NcxlzZJ1q1hF3sIzm87iMXsTaf
-         VMDyyIlu/pVZkiDbAI9Psvnl1xJ33olev2YJdbOoJ8zoWtQZ3O2YKwt2C8C9yNvW5pBd
-         vHviWtT63XjpM+pEIEaimWWzycnk23UT4pMZignynd4p360ehVIefmLoy2GdDKeO3xcU
-         MEJ/nKueqpJTiogS7O5rl7EilSE3EVKx32xJbAq7JE+nb/sW2Uc6fmlX/EkaCGj4m9dP
-         nq6k4PsftOdMPkSZmPIeELvLv5H80vNkMpl7NDCgZTpOn3oQQ8MH0YkgaxHDT0E7ZG3C
-         IjOw==
+        b=srQDTMhnuV9pIXqVK3tnme6NtqHM3WWevKf7Qg1t0XpHhaINfiSrzOoysxVX7AFBtI
+         PjL6per9sFCpDTfOmrWdqfNWk0JXlL4hEJgtwlYPZbZtiT68NVsL6HDGx8H2tt4TlE/U
+         MERX2n5jCZtW0MhytQeznLMC8mRZIJIcAlFOTVYdoUZC0ZUW6Fvgl3LAiLyFCkGxjCnf
+         e2VYeiJMg6KBvcf1PaQWLSwW1dkKwP4GOR2L1kVd9v5G/6+8PxHil2JqL4RHlxWExF0P
+         rJBlY/kDT79Kuer3qqNySSNvXWyobIy61/oPq4IDdCWESDtmWJXkRjYCPD3KkhLPtdU0
+         9u8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=U830DTa9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=RtV5JPIL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k8-20020a0cf588000000b006561c065e28si99921qvm.22.2023.09.20.15.18.44
+        by mx.google.com with ESMTPS id bm8-20020a05620a198800b00773d6c99af2si126429qkb.449.2023.09.20.15.18.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Sep 2023 15:18:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 20 Sep 2023 15:18:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=U830DTa9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=RtV5JPIL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qj5Wl-0002Om-94; Wed, 20 Sep 2023 18:18:35 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qj5Wk-0002N2-0w; Wed, 20 Sep 2023 18:18:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3sm8LZQwKCO0cPQXWThiTUPcVddVaT.RdbfTbj-PgbcdcVcj.dgV@flex--nabihestefan.bounces.google.com>)
- id 1qj5Wi-0002MX-UU
- for qemu-arm@nongnu.org; Wed, 20 Sep 2023 18:18:33 -0400
-Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
+ <3sW8LZQwKCuwbOPWVSghSTObUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--nabihestefan.bounces.google.com>)
+ id 1qj5We-0002Ki-Bf
+ for qemu-devel@nongnu.org; Wed, 20 Sep 2023 18:18:28 -0400
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3sm8LZQwKCO0cPQXWThiTUPcVddVaT.RdbfTbj-PgbcdcVcj.dgV@flex--nabihestefan.bounces.google.com>)
- id 1qj5We-00089S-LS
- for qemu-arm@nongnu.org; Wed, 20 Sep 2023 18:18:30 -0400
-Received: by mail-yw1-x114a.google.com with SMTP id
- 00721157ae682-59c27703cc6so4285177b3.2
- for <qemu-arm@nongnu.org>; Wed, 20 Sep 2023 15:18:27 -0700 (PDT)
+ <3sW8LZQwKCuwbOPWVSghSTObUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--nabihestefan.bounces.google.com>)
+ id 1qj5Wc-00088P-Ee
+ for qemu-devel@nongnu.org; Wed, 20 Sep 2023 18:18:28 -0400
+Received: by mail-yb1-xb4a.google.com with SMTP id
+ 3f1490d57ef6-d859ac9ea15so527986276.2
+ for <qemu-devel@nongnu.org>; Wed, 20 Sep 2023 15:18:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1695248307; x=1695853107; darn=nongnu.org;
+ d=google.com; s=20230601; t=1695248305; x=1695853105; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=P7FGPmiLO53dMZcTk+GsjD6AKSJLR5sY4i4wnHSczKY=;
- b=U830DTa9+qm9FCh84kXAGN7FNKbtnKQpB4CaZsVdhlzV+EAImo8ocTcjwSJXUmvK92
- g2qV1NSUNqpKMF0MMYsVEgn7jwGSlw5EkeTAhdjhYTX/uyTgT5t+0xogjapenC32+Trg
- VBMPfXpc2ovIbYMxfzSHXO6KO7u/ETlSp2pKpc0sB58/DUZnmXfDEqzjDWRmAAM4lI/8
- Urh+cnJl4Bx/DsR+2N2lOhLjLThASd+WnLaXUiw9GgZSknansy/7nQnuMmZT8cpw7MRM
- kwO4OwW4LbfgMYnGuLeM+fUwUr+gNemZ5sk9rSUvMj4ghKAha39lC5tRQdwYxseppD9z
- LyTQ==
+ bh=v+jL/EHZmjvEfkrTfTVsZdX3fbKb/vDDuBbS7XAe73w=;
+ b=RtV5JPILUPVMCc7+rnmBzv6OehKvDia5qeOHZvz8lAzoj7uH9DUOOUejC8J6cBeJ/e
+ mnBM0BxUdVzmMkiY70V6RnYu130MNkSbZ+tXaQSJVoNrrHu1z9Nzx8cqod5MhSK94CWA
+ aqEjeTCXW/orgMm2nZHEEaQkJb/ByDCTNMFxzPE0UZ+y2h4FP6fi+nXLoWE/0lbIcu1L
+ XHrVJhdfwzvLsGTILlsARzluIJxoln2+viYE1isYxNU3hiAq2aJvzwU/XdO/JKOkgboD
+ 13syaLdQPWzguh7trkWJ43LlEkT/8TbprmT8gY5VrucAjHOxf5n6coUzcDcBo6O0hUnp
+ jO7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695248307; x=1695853107;
+ d=1e100.net; s=20230601; t=1695248305; x=1695853105;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=P7FGPmiLO53dMZcTk+GsjD6AKSJLR5sY4i4wnHSczKY=;
- b=YEoAb781PClHBFWRRQiqWsZ9I9WleWImf8pI0p03XfQKql+FStHL9CtFBwnjPd72P+
- aQ0Y4dsm1ZpA4GCIDZZcssZMFmJWvOa6aAgxN6Gp56TGYUP6Ipy1F+JyvFQstbHmWSAf
- WmoBuxM/XopbHORZuqr+TOZWQJRHn8YfWzp9fJ9baXnHQ6X6eSYOBlIFf35iGHr+ERFi
- kkr6gubn6pUUfA7t7tZ37byYgRkKSFkjiQ/LOmTtD/H07QKvwKjOZJOrsM4euZUEy6yS
- wTDQJk/iJbQciQk7Q5JR30gYyAHNbDDhYRxBYBYhD7TtQKCtrsJ5ciBjcacpPMANMw5z
- NmHg==
-X-Gm-Message-State: AOJu0YzjOwKgcNiMll6oUxGsYDnWU9tktoOoEbYx9mO88z1GjP4C7Mpj
- RFhVLIBHKaNtFWb3hzm+EEvHTcSfSN5/aN0oZ08=
+ bh=v+jL/EHZmjvEfkrTfTVsZdX3fbKb/vDDuBbS7XAe73w=;
+ b=BztlJnQ0fn6/IApeGRWWJQIHZc+VbI+O4nAYGiLPHV7VAxfBOtFlX1fvCApU7V2muO
+ COB93O+VTfRNkESGEDuGNHy8B3IeF/hXqRsOHCEofrmbeXIUMC6Qe0UIG5o3geCHQ8YA
+ EFBeyE1cRHJQhsPLfPcYKXxuUIqpbbinSOWnDDIU3Q88p+jXyTC5ANCcJtisJme77oDI
+ CaOVVMrqKcP6alnwhG6ubISit4c+qLBPy7QniOshioka5IOx8lnB7jHubcQveV486EgI
+ YXdxCbYX9heOV3kNQnqPDaTAynaMBInQnqck3PcIXlpy7Wf4Gl7oc0UjNHHwxzVz57rX
+ Wh4A==
+X-Gm-Message-State: AOJu0YyDuDjdjebxF4ceTe8W+6QDzvQYKVKgv9BTy8wM956l4pA+TUs6
+ UnUYkosAcXeA5ZKruiUaytjI8s1aEY951vx6vTc=
 X-Received: from nabihestefan.c.googlers.com
  ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a05:690c:2906:b0:59e:ee51:52a1 with
- SMTP id eg6-20020a05690c290600b0059eee5152a1mr50925ywb.10.1695248306983; Wed,
- 20 Sep 2023 15:18:26 -0700 (PDT)
-Date: Wed, 20 Sep 2023 22:18:11 +0000
+ (user=nabihestefan job=sendgmr) by 2002:a05:6902:100c:b0:d40:932e:f7b1 with
+ SMTP id w12-20020a056902100c00b00d40932ef7b1mr70165ybt.7.1695248305350; Wed,
+ 20 Sep 2023 15:18:25 -0700 (PDT)
+Date: Wed, 20 Sep 2023 22:18:10 +0000
 In-Reply-To: <20230920221819.1106029-1-nabihestefan@google.com>
 Mime-Version: 1.0
 References: <20230920221819.1106029-1-nabihestefan@google.com>
 X-Mailer: git-send-email 2.42.0.459.ge4e396fd5e-goog
-Message-ID: <20230920221819.1106029-4-nabihestefan@google.com>
-Subject: [PATCH v2 03/11] hw/misc: Add qtest for NPCM7xx PCI Mailbox
+Message-ID: <20230920221819.1106029-3-nabihestefan@google.com>
+Subject: [PATCH v2 02/11] hw/arm: Add PCI mailbox module to Nuvoton SoC
 From: Nabih Estefan <nabihestefan@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
  wuhaotsh@google.com, jasonwang@redhat.com, avi.fishman@nuvoton.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
- envelope-from=3sm8LZQwKCO0cPQXWThiTUPcVddVaT.RdbfTbj-PgbcdcVcj.dgV@flex--nabihestefan.bounces.google.com;
- helo=mail-yw1-x114a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=3sW8LZQwKCuwbOPWVSghSTObUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--nabihestefan.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -109,290 +109,81 @@ X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Br6ifCIn/RvT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wHBYz2qS/5ll
 
 From: Hao Wu <wuhaotsh@google.com>
 
-This patches adds a qtest for NPCM7XX PCI Mailbox module.
-It sends read and write requests to the module, and verifies that
-the module contains the correct data after the requests.
+This patch wires the PCI mailbox module to Nuvoton SoC.
 
+Google-Rebase-Count: 5
+Google-Bug-Id: 262938292
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Change-Id: Ifd858a7ed760557faa15a7a1cef66b2056f06e2e
 ---
- tests/qtest/meson.build             |   1 +
- tests/qtest/npcm7xx_pci_mbox-test.c | 238 ++++++++++++++++++++++++++++
- 2 files changed, 239 insertions(+)
- create mode 100644 tests/qtest/npcm7xx_pci_mbox-test.c
+ docs/system/arm/nuvoton.rst | 2 ++
+ hw/arm/npcm7xx.c            | 3 ++-
+ include/hw/arm/npcm7xx.h    | 1 +
+ 3 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 1fba07f4ed..849394515d 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -183,6 +183,7 @@ qtests_sparc64 = \
- qtests_npcm7xx = \
-   ['npcm7xx_adc-test',
-    'npcm7xx_gpio-test',
-+   'npcm7xx_pci_mbox-test',
-    'npcm7xx_pwm-test',
-    'npcm7xx_rng-test',
-    'npcm7xx_sdhci-test',
-diff --git a/tests/qtest/npcm7xx_pci_mbox-test.c b/tests/qtest/npcm7xx_pci_mbox-test.c
-new file mode 100644
-index 0000000000..24eec18e3c
---- /dev/null
-+++ b/tests/qtest/npcm7xx_pci_mbox-test.c
-@@ -0,0 +1,238 @@
-+/*
-+ * QTests for Nuvoton NPCM7xx PCI Mailbox Modules.
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/bitops.h"
-+#include "qapi/qmp/qdict.h"
-+#include "qapi/qmp/qnum.h"
-+#include "libqtest-single.h"
-+
-+#define PCI_MBOX_BA         0xf0848000
-+#define PCI_MBOX_IRQ        8
-+
-+/* register offset */
-+#define PCI_MBOX_STAT       0x00
-+#define PCI_MBOX_CTL        0x04
-+#define PCI_MBOX_CMD        0x08
-+
-+#define CODE_OK             0x00
-+#define CODE_INVALID_OP     0xa0
-+#define CODE_INVALID_SIZE   0xa1
-+#define CODE_ERROR          0xff
-+
-+#define OP_READ             0x01
-+#define OP_WRITE            0x02
-+#define OP_INVALID          0x41
-+
-+
-+static int sock;
-+static int fd;
-+
-+/*
-+ * Create a local TCP socket with any port, then save off the port we got.
-+ */
-+static in_port_t open_socket(void)
-+{
-+    struct sockaddr_in myaddr;
-+    socklen_t addrlen;
-+
-+    myaddr.sin_family = AF_INET;
-+    myaddr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
-+    myaddr.sin_port = 0;
-+    sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-+    g_assert(sock != -1);
-+    g_assert(bind(sock, (struct sockaddr *) &myaddr, sizeof(myaddr)) != -1);
-+    addrlen = sizeof(myaddr);
-+    g_assert(getsockname(sock, (struct sockaddr *) &myaddr , &addrlen) != -1);
-+    g_assert(listen(sock, 1) != -1);
-+    return ntohs(myaddr.sin_port);
-+}
-+
-+static void setup_fd(void)
-+{
-+    fd_set readfds;
-+
-+    FD_ZERO(&readfds);
-+    FD_SET(sock, &readfds);
-+    g_assert(select(sock + 1, &readfds, NULL, NULL, NULL) == 1);
-+
-+    fd = accept(sock, NULL, 0);
-+    g_assert(fd >= 0);
-+}
-+
-+static uint8_t read_response(uint8_t *buf, size_t len)
-+{
-+    uint8_t code;
-+    ssize_t ret = read(fd, &code, 1);
-+
-+    if (ret == -1) {
-+        return CODE_ERROR;
-+    }
-+    if (code != CODE_OK) {
-+        return code;
-+    }
-+    g_test_message("response code: %x", code);
-+    if (len > 0) {
-+        ret = read(fd, buf, len);
-+        if (ret < len) {
-+            return CODE_ERROR;
-+        }
-+    }
-+    return CODE_OK;
-+}
-+
-+static void receive_data(uint64_t offset, uint8_t *buf, size_t len)
-+{
-+    uint8_t op = OP_READ;
-+    uint8_t code;
-+    ssize_t rv;
-+
-+    while (len > 0) {
-+        uint8_t size;
-+
-+        if (len >= 8) {
-+            size = 8;
-+        } else if (len >= 4) {
-+            size = 4;
-+        } else if (len >= 2) {
-+            size = 2;
-+        } else {
-+            size = 1;
-+        }
-+
-+        g_test_message("receiving %u bytes", size);
-+        /* Write op */
-+        rv = write(fd, &op, 1);
-+        g_assert_cmpint(rv, ==, 1);
-+        /* Write offset */
-+        rv = write(fd, (uint8_t *)&offset, sizeof(uint64_t));
-+        g_assert_cmpint(rv, ==, sizeof(uint64_t));
-+        /* Write size */
-+        g_assert_cmpint(write(fd, &size, 1), ==, 1);
-+
-+        /* Read data and Expect response */
-+        code = read_response(buf, size);
-+        g_assert_cmphex(code, ==, CODE_OK);
-+
-+        buf += size;
-+        offset += size;
-+        len -= size;
-+    }
-+}
-+
-+static void send_data(uint64_t offset, const uint8_t *buf, size_t len)
-+{
-+    uint8_t op = OP_WRITE;
-+    uint8_t code;
-+    ssize_t rv;
-+
-+    while (len > 0) {
-+        uint8_t size;
-+
-+        if (len >= 8) {
-+            size = 8;
-+        } else if (len >= 4) {
-+            size = 4;
-+        } else if (len >= 2) {
-+            size = 2;
-+        } else {
-+            size = 1;
-+        }
-+
-+        g_test_message("sending %u bytes", size);
-+        /* Write op */
-+        rv = write(fd, &op, 1);
-+        g_assert_cmpint(rv, ==, 1);
-+        /* Write offset */
-+        rv = write(fd, (uint8_t *)&offset, sizeof(uint64_t));
-+        g_assert_cmpint(rv, ==, sizeof(uint64_t));
-+        /* Write size */
-+        g_assert_cmpint(write(fd, &size, 1), ==, 1);
-+        /* Write data */
-+        g_assert_cmpint(write(fd, buf, size), ==, size);
-+
-+        /* Expect response */
-+        code = read_response(NULL, 0);
-+        g_assert_cmphex(code, ==, CODE_OK);
-+
-+        buf += size;
-+        offset += size;
-+        len -= size;
-+    }
-+}
-+
-+static void test_invalid_op(void)
-+{
-+    uint8_t op = OP_INVALID;
-+    uint8_t code;
-+    uint8_t buf[1];
-+
-+    g_assert_cmpint(write(fd, &op, 1), ==, 1);
-+    code = read_response(buf, 1);
-+    g_assert_cmphex(code, ==, CODE_INVALID_OP);
-+}
-+
-+/* Send data via chardev and read them in guest. */
-+static void test_guest_read(void)
-+{
-+    const char *data = "Hello World!";
-+    uint64_t offset = 0xa0;
-+    char buf[100];
-+    size_t len = strlen(data);
-+
-+    send_data(offset, (uint8_t *)data, len);
-+    memread(PCI_MBOX_BA + offset, buf, len);
-+    g_assert_cmpint(strncmp(data, buf, len), ==, 0);
-+}
-+
-+/* Write data in guest and read out via chardev. */
-+static void test_guest_write(void)
-+{
-+    const char *data = "Hello World!";
-+    uint64_t offset = 0xa0;
-+    char buf[100];
-+    size_t len = strlen(data);
-+
-+    memwrite(PCI_MBOX_BA + offset, data, len);
-+    receive_data(offset, (uint8_t *)buf, len);
-+    g_assert_cmpint(strncmp(data, buf, len), ==, 0);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+    int port;
-+
-+    g_test_init(&argc, &argv, NULL);
-+    port = open_socket();
-+    g_test_message("port=%d", port);
-+    global_qtest = qtest_initf("-machine npcm750-evb "
-+        "-chardev socket,id=npcm7xx-pcimbox-chr,host=localhost,"
-+        "port=%d,reconnect=10 "
-+        "-global driver=npcm7xx-pci-mbox,property=chardev,"
-+        "value=npcm7xx-pcimbox-chr",
-+        port);
-+    setup_fd();
-+    qtest_irq_intercept_in(global_qtest, "/machine/soc/a9mpcore/gic");
-+
-+    qtest_add_func("/npcm7xx_pci_mbox/invalid_op", test_invalid_op);
-+    qtest_add_func("/npcm7xx_pci_mbox/read", test_guest_read);
-+    qtest_add_func("/npcm7xx_pci_mbox/write", test_guest_write);
-+    ret = g_test_run();
-+    qtest_quit(global_qtest);
-+
-+    return ret;
-+}
+diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
+index 0424cae4b0..e611099545 100644
+--- a/docs/system/arm/nuvoton.rst
++++ b/docs/system/arm/nuvoton.rst
+@@ -50,6 +50,8 @@ Supported devices
+  * Ethernet controller (EMC)
+  * Tachometer
+  * Peripheral SPI controller (PSPI)
++ * BIOS POST code FIFO
++ * PCI Mailbox
+ 
+ Missing devices
+ ---------------
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index c69e936669..c9e87162cb 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -86,7 +86,6 @@ enum NPCM7xxInterrupt {
+     NPCM7XX_UART1_IRQ,
+     NPCM7XX_UART2_IRQ,
+     NPCM7XX_UART3_IRQ,
+-    NPCM7XX_PECI_IRQ            = 6,
+     NPCM7XX_PCI_MBOX_IRQ        = 8,
+     NPCM7XX_KCS_HIB_IRQ         = 9,
+     NPCM7XX_GMAC1_IRQ           = 14,
+@@ -463,6 +462,8 @@ static void npcm7xx_init(Object *obj)
+         object_initialize_child(obj, "pspi[*]", &s->pspi[i], TYPE_NPCM_PSPI);
+     }
+ 
++    object_initialize_child(obj, "pci-mbox", &s->pci_mbox,
++                            TYPE_NPCM7XX_PCI_MBOX);
+     object_initialize_child(obj, "mmc", &s->mmc, TYPE_NPCM7XX_SDHCI);
+ }
+ 
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index 273090ac60..cec3792a2e 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -105,6 +105,7 @@ struct NPCM7xxState {
+     OHCISysBusState     ohci;
+     NPCM7xxFIUState     fiu[2];
+     NPCM7xxEMCState     emc[2];
++    NPCM7xxPCIMBoxState pci_mbox;
+     NPCM7xxSDHCIState   mmc;
+     NPCMPSPIState       pspi[2];
+ };
 -- 
 2.42.0.459.ge4e396fd5e-goog
 

@@ -1,135 +1,136 @@
-Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp4120732ejb;
-        Wed, 20 Sep 2023 00:28:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGOJsAxHThhq4vqVr+/bSAIbbw8GKXIkrHcLjWkxejxWX5wmITqmi360ZJH68fT09rZqaFl
-X-Received: by 2002:a0c:b552:0:b0:651:6edd:c6c2 with SMTP id w18-20020a0cb552000000b006516eddc6c2mr1456498qvd.3.1695194935977;
-        Wed, 20 Sep 2023 00:28:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695194935; cv=none;
+Received: by 2002:a17:907:20b4:b0:9a1:fa4e:495e with SMTP id pw20csp4125145ejb;
+        Wed, 20 Sep 2023 00:38:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHb82Em1O9epLwb2YT/3G5EkfgZTgaCiCLF6fjTLiIasRlXFqjB1MFzElBOOkuOeoXs8VwU
+X-Received: by 2002:ac8:5e4b:0:b0:417:8db2:f5f8 with SMTP id i11-20020ac85e4b000000b004178db2f5f8mr1741196qtx.17.1695195527675;
+        Wed, 20 Sep 2023 00:38:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695195527; cv=none;
         d=google.com; s=arc-20160816;
-        b=XKMDXLtRM8zf5ywVNTadbc6+Er1IAJdVOD05JbumK0KMoN16M0Chhr9dGxOaZ48Fyv
-         n3s2Ynp+PcipWJtHDAl+mNP9cFvMEr1sjcTgeRswBDAimBBrVy2EdU4WxMjskoO840kW
-         jMDdhv11455+QeXtMEEnyEwloptru3+kt/5IojQ9cfmfD4x4Hc8PR+bhfqV8JXuQeksh
-         6qxo2flUJGElC+8wfUKXCV5qQhGUQswq/qMFiRngDGvDbhaj5KlsGQ5fCH74cMfY1wk0
-         iU/OyB/CNBtwIlEpzOtRnzsBHFO9pnkyNssQts16H0UeWI9HglQfupfv/LQ0YyupRl92
-         KYYg==
+        b=BTRJjBlP0rmsgGCKjXe+qhdxmSRXJexj7FBTJYS+X88CgbomBBc1nkULXjkKCi3unz
+         zMf4XY6IfP9kMcTa80cL8DJ9ni+J74854C4O/l3Y91ZkqYOOLvGBN1A6YkvJ8WNhxJjw
+         QDVv8OPO4Cu4eZcswWcU8M23oRvVUdW1BRanASR+58FsUMSoF1Ey2EL2BMVxbo4JVVj3
+         5776cPOWWn0GlIGbaly4ievaMUCqdctEOVXukGKDFGFvHuuDHAVXulVHQl7pxTdENvTT
+         1kROD5jtvFqQAbH/tOQTCNZKUoYEewdjJEE14lOD/dbnSymvHeawr4f+Osf6GADXALKR
+         Ml+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=JD50fnqSCdxa4RI+t75NkjYqRbcfb8PPD6gAydx4Ynw=;
-        fh=TQ+KLaSdCJR+FnGUoED6wjJWS9ddGc6jnYmTrrAIVVA=;
-        b=SECPhGhSSDwAOT/J9B2VL/Tb98QtEbpAjSufrSEoPBl4lJU9ZaD/Jo2WxaUoQJEjqH
-         FHYZGlU/FrofYilqvTNhLCy2fcxYf/hqKcwCAqMyT82D9xBlff+Pu1xJ/dBt3YPrSL/l
-         2l9TvYLd2qHBuaVf8r/olknkUJGZJH1J9HBMjimZjBTyTF+WJ/Ztm9grD0zNIW6SBu3A
-         bjNVK+Zgv7q/bgU58JBt+i6Zu8KPOnPpzNcfocU9g7dYUmq2Rn5YtscL1aNJW4uf6aNl
-         BLbx4U6r0lQc8x2bAC5N/wU83DRuOi6fxqfh7PZNfPx/8QCudvmjmkmiE+W9xubw02Du
-         uhIw==
+        bh=KA22eBtIyZL/4u4ZGs0k2SudbeaF/uZPd3gJ95Pih/o=;
+        fh=YeKYoTBFrmLh8/KPkR9sRTrErCu3JS4QCrxSKNkS0ps=;
+        b=rCgIXe4pMWvHrQoVZG9LW/8lfR0TKImZ6YivQh3sWOlDvf4c6owo2AuZ4Q7mD7fHKt
+         HWoh30uPZIi/LCz8vJvKA1kN21+uL7qbolyl4hhTFL4y65mu7fWSU2LR1pUF72zYlCYB
+         Da+YOsL2efPw67pOZVGSqJaVLOdEjiGo3VNyzswSHDsEbTLIjyy23snZ42Y9ov7aiLLM
+         pXckHZ9YRjL/3io0IxVK0lXYyFfENok5Ia1XQjmcYMl82Y5o8vx5naQJknGHlhxJ9oin
+         m8dT4jBVP5lHI1U8pBVK51nGySkkM2vf/Y0ekTvCRyJWRwgFXkO5hTic6ezj8OGkApJA
+         nZ0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fu7fVnw/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NuJ0jCxh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7-20020a0ce4c7000000b006563ea7931csi6338531qvm.545.2023.09.20.00.28.55
+        by mx.google.com with ESMTPS id d8-20020a05622a100800b0040fdab1c16csi8834407qte.616.2023.09.20.00.38.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Sep 2023 00:28:55 -0700 (PDT)
+        Wed, 20 Sep 2023 00:38:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="fu7fVnw/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NuJ0jCxh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qirdW-0003fS-8F; Wed, 20 Sep 2023 03:28:38 -0400
+	id 1qirn7-0001Ox-5i; Wed, 20 Sep 2023 03:38:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qirdU-0003eu-30
- for qemu-arm@nongnu.org; Wed, 20 Sep 2023 03:28:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1qirn0-0001O7-ST
+ for qemu-arm@nongnu.org; Wed, 20 Sep 2023 03:38:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qirdS-0003Lk-Gc
- for qemu-arm@nongnu.org; Wed, 20 Sep 2023 03:28:35 -0400
+ id 1qirmx-0005bo-Be
+ for qemu-arm@nongnu.org; Wed, 20 Sep 2023 03:38:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695194913;
+ s=mimecast20190719; t=1695195501;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JD50fnqSCdxa4RI+t75NkjYqRbcfb8PPD6gAydx4Ynw=;
- b=fu7fVnw/HA79IOB2KqeKcfg+dJIRDlCGzvN9zpsj7vTQi5UUUMw5A8KP1QG5q2pCkKUNRC
- Mh7WKNag1J6ndYSuA41bRKxa8JBqN+V+eW/nSM1c0NKF528linVzrOmq7UQvgemSGYEuiR
- IzLMVcrjjxEHhAMvMBQuRvkInvsw0eo=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=KA22eBtIyZL/4u4ZGs0k2SudbeaF/uZPd3gJ95Pih/o=;
+ b=NuJ0jCxhZrkwbpte57T2f32Gq0cubrnv/m2RjB+dFSYGoLPDbrLpI1PwIUdo7lljjV/cff
+ UOcc3fyyDyZLjiy5Py2yL1iTI+eHEAqsRmmJzB1Aeycy7me5iIFxo6xTn0D5uZPUOK2mPJ
+ CoV0UnjMxdZPY+vb7JshlDzA+duniCM=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-571-imJ2ejTUPRSwTjkNXGu0kw-1; Wed, 20 Sep 2023 03:28:32 -0400
-X-MC-Unique: imJ2ejTUPRSwTjkNXGu0kw-1
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-7708f711f99so806897985a.2
- for <qemu-arm@nongnu.org>; Wed, 20 Sep 2023 00:28:32 -0700 (PDT)
+ us-mta-270-b-g0QetLOrmklxobuX8BJg-1; Wed, 20 Sep 2023 03:38:20 -0400
+X-MC-Unique: b-g0QetLOrmklxobuX8BJg-1
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-656407cbd43so45159276d6.2
+ for <qemu-arm@nongnu.org>; Wed, 20 Sep 2023 00:38:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695194911; x=1695799711;
+ d=1e100.net; s=20230601; t=1695195500; x=1695800300;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=JD50fnqSCdxa4RI+t75NkjYqRbcfb8PPD6gAydx4Ynw=;
- b=hQfej3Mw8qsTjMBZhrB0QKz6aDiCRtYKqHMA+l8v88q2GcT5gUAh+bwh2Qxnb8aQBU
- hP+woddGxgdf7KZftP8Fe2qRiJLWbnihDewLK0YcHh1cvo8rD70tOUeCw5XvSqjDgoqt
- c0ktwCi1wbkbXk+GEQjbrCv+h3rrQsLifTpNus5/y1hJOfbPA1yDn9jKjR3QcbfwCAzK
- 4uuvQkk0YQs9g68vxf6ll4uE8BQWq3cbfsTB6q1C+gSS7xlR0tDxb6KYKPLVXgbu+OKW
- qQPIOxC1u57c5z4SC2uYO+53zCk+Sdq2/ZfgS4cvABw6tH42c3ZWNXiX5q+nSukJoTLH
- iePw==
-X-Gm-Message-State: AOJu0Yw2Y4rv9a6BnOnk0LPqgXcRx9kG+dg4uaNlkLd00eQxyXJdKx8T
- q4eMM5ay0mxx5rbaTTMj6J20hyEg6L3O8Vc+on98Wq+XFaIXtqePGTXij+DwVJ+tPRgAqR9mTth
- 9rAlYtQ0b44tO
-X-Received: by 2002:a05:620a:46a4:b0:770:f29f:d1d9 with SMTP id
- bq36-20020a05620a46a400b00770f29fd1d9mr2305531qkb.2.1695194911683; 
- Wed, 20 Sep 2023 00:28:31 -0700 (PDT)
-X-Received: by 2002:a05:620a:46a4:b0:770:f29f:d1d9 with SMTP id
- bq36-20020a05620a46a400b00770f29fd1d9mr2305511qkb.2.1695194911417; 
- Wed, 20 Sep 2023 00:28:31 -0700 (PDT)
+ bh=KA22eBtIyZL/4u4ZGs0k2SudbeaF/uZPd3gJ95Pih/o=;
+ b=tHAbcBJ0ughTinIJkXnqJLUETi6RBc/+pAHDACtIjmQSrzSkXiOlcmaj9FWnLpRYSg
+ P5hFWzrfZglzLQ54d28Di4v8d2H64GAZWUrO6KtOl+YywvnVsnXPH2FrSbv3OkqnASl5
+ GAUSHqpbj6gaC/yPGBKSPVwzwwv3kRlzmn+KYHO3+p6KMmXvrfwPf7Ex6eVZiutujX3+
+ 50sh4vOMC5ELmi+cN1h82UxHQ6W7XUS0MRRawg/vqg+nmQp1jy2y5+thSFOjwVS+1Dww
+ paIOpi5BTbReeHqZGuF7brGAF+BUVjkwbahv8OaP1gDVvx5BIUunvkde02BjT7uzlzfR
+ 4Frw==
+X-Gm-Message-State: AOJu0YxiSqBDml3aCeKRmSn8aWzd51XiqnP5cOS6I74e2qX6KHoTMgPP
+ wgJAnB8Qm2BzmL9ayjRXqu8IUdwZEgYVfgjg4gd1GALKbLt0B+i/PgXNygqcBqCTqTC0g2rJFlF
+ IPbWrRLy5GZ4p
+X-Received: by 2002:a05:6214:2d16:b0:655:d81a:2cd2 with SMTP id
+ mz22-20020a0562142d1600b00655d81a2cd2mr1497692qvb.64.1695195500228; 
+ Wed, 20 Sep 2023 00:38:20 -0700 (PDT)
+X-Received: by 2002:a05:6214:2d16:b0:655:d81a:2cd2 with SMTP id
+ mz22-20020a0562142d1600b00655d81a2cd2mr1497669qvb.64.1695195499977; 
+ Wed, 20 Sep 2023 00:38:19 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- g6-20020ae9e106000000b007726002d69esm4594017qkm.10.2023.09.20.00.28.28
+ d13-20020a0cf0cd000000b0065831121d0esm1833668qvl.90.2023.09.20.00.38.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 Sep 2023 00:28:30 -0700 (PDT)
-Message-ID: <bc5bf537-8456-c0d2-c4f0-5cf5f64a9674@redhat.com>
-Date: Wed, 20 Sep 2023 09:28:27 +0200
+ Wed, 20 Sep 2023 00:38:18 -0700 (PDT)
+Message-ID: <48be39d4-8fd6-15a1-fd70-a5dc55cfce6a@redhat.com>
+Date: Wed, 20 Sep 2023 09:38:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH v2 12/12] vfio: Remove 64-bit IOVA address space assumption
-To: Alex Williamson <alex.williamson@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- clg@redhat.com, jean-philippe@linaro.org, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
- david@redhat.com, philmd@linaro.org
+Subject: Re: [PATCH v2 03/12] vfio: Collect container iova range info
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@redhat.com>,
+ eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ alex.williamson@redhat.com, jean-philippe@linaro.org, mst@redhat.com,
+ pbonzini@redhat.com
+Cc: peter.maydell@linaro.org, peterx@redhat.com, david@redhat.com,
+ philmd@linaro.org
 References: <20230913080423.523953-1-eric.auger@redhat.com>
- <20230913080423.523953-13-eric.auger@redhat.com>
- <20230919112230.5dfe14fa.alex.williamson@redhat.com>
+ <20230913080423.523953-4-eric.auger@redhat.com>
+ <dd3f27e9-2a4f-5f6b-84d3-13de767024bc@redhat.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20230919112230.5dfe14fa.alex.williamson@redhat.com>
+In-Reply-To: <dd3f27e9-2a4f-5f6b-84d3-13de767024bc@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -147,103 +148,165 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UX5HR9kAd9cB
+X-TUID: NnFxW8H+jSLO
 
-Hi Alex,
+Hi Cédric,
 
-On 9/19/23 19:22, Alex Williamson wrote:
-> On Wed, 13 Sep 2023 10:01:47 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
->
->> Now we retrieve the usable IOVA ranges from the host,
->> we now the physical IOMMU aperture and we can remove
->> the assumption of 64b IOVA space when calling
->> vfio_host_win_add().
+On 9/13/23 14:55, Cédric Le Goater wrote:
+> On 9/13/23 10:01, Eric Auger wrote:
+>> Collect iova range information if VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE
+>> capability is supported.
 >>
->> This works fine in general but in case of an IOMMU memory
->> region this becomes more tricky. For instance the virtio-iommu
->> MR has a 64b aperture by default. If the physical IOMMU has a
->> smaller aperture (typically the case for VTD), this means we
->> would need to resize the IOMMU MR when this latter is linked
->> to a container. However this happens on vfio_listener_region_add()
->> when calling the IOMMU MR set_iova_ranges() callback and this
->> would mean we would have a recursive call the
->> vfio_listener_region_add(). This looks like a wrong usage of
->> the memory API causing duplicate IOMMU MR notifier registration
->> for instance.
->>
->> Until we find a better solution, make sure the vfio_find_hostwin()
->> is not called anymore for IOMMU region.
+>> This allows to propagate the information though the IOMMU MR
+>> set_iova_ranges() callback so that virtual IOMMUs
+>> get aware of those aperture constraints.
 >>
 >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
 >> ---
+>>   include/hw/vfio/vfio-common.h |  2 ++
+>>   hw/vfio/common.c              | 45 +++++++++++++++++++++++++++++++++--
+>>   2 files changed, 45 insertions(+), 2 deletions(-)
 >>
->> I have not found any working solution to the IOMMU MR resizing.
->> So I can remove this patch or remove the check for IOMMU MR. Maybe
->> this is an issue which can be handled separately?
->> ---
->>  hw/vfio/common.c | 25 ++++++++++++-------------
->>  1 file changed, 12 insertions(+), 13 deletions(-)
->>
+>> diff --git a/include/hw/vfio/vfio-common.h
+>> b/include/hw/vfio/vfio-common.h
+>> index da43d27352..74b9b27270 100644
+>> --- a/include/hw/vfio/vfio-common.h
+>> +++ b/include/hw/vfio/vfio-common.h
+>> @@ -98,6 +98,8 @@ typedef struct VFIOContainer {
+>>       QLIST_HEAD(, VFIOGroup) group_list;
+>>       QLIST_HEAD(, VFIORamDiscardListener) vrdl_list;
+>>       QLIST_ENTRY(VFIOContainer) next;
+>> +    unsigned nr_iovas;
+>> +    struct  vfio_iova_range *iova_ranges;
+>>   } VFIOContainer;
+>>     typedef struct VFIOGuestIOMMU {
 >> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->> index 26da38de05..40cac1ca91 100644
+>> index 9aac21abb7..26da38de05 100644
 >> --- a/hw/vfio/common.c
 >> +++ b/hw/vfio/common.c
->> @@ -1112,13 +1112,6 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>  #endif
->>      }
->>  
->> -    hostwin = vfio_find_hostwin(container, iova, end);
->> -    if (!hostwin) {
->> -        error_setg(&err, "Container %p can't map guest IOVA region"
->> -                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
->> -        goto fail;
->> -    }
->> -
->>      memory_region_ref(section->mr);
->>  
->>      if (memory_region_is_iommu(section->mr)) {
->> @@ -1177,6 +1170,14 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>          return;
->>      }
->>  
->> +    hostwin = vfio_find_hostwin(container, iova, end);
->> +    if (!hostwin) {
->> +        error_setg(&err, "Container %p can't map guest IOVA region"
->> +                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
->> +        goto fail;
->> +    }
+>> @@ -1157,6 +1157,14 @@ static void
+>> vfio_listener_region_add(MemoryListener *listener,
+>>               goto fail;
+>>           }
+>>   +        ret = memory_region_iommu_set_iova_ranges(giommu->iommu_mr,
+>> +                container->nr_iovas, (struct Range
+>> *)container->iova_ranges,
+>> +                &err);
+>> +        if (ret) {
+>> +            g_free(giommu);
+>> +            goto fail;
+>> +        }
 >> +
->> +
->>      /* Here we assume that memory_region_is_ram(section->mr)==true */
->>  
->>      /*
->> @@ -2594,12 +2595,10 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
->>          vfio_get_iommu_info_migration(container, info);
->>          g_free(info);
->>  
->> -        /*
->> -         * FIXME: We should parse VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE
->> -         * information to get the actual window extent rather than assume
->> -         * a 64-bit IOVA address space.
->> -         */
->> -        vfio_host_win_add(container, 0, (hwaddr)-1, container->pgsizes);
->> +        g_assert(container->nr_iovas);
-> This assert is a problem for older kernels.
-yes I will fix this.
+>>           ret = memory_region_register_iommu_notifier(section->mr,
+>> &giommu->n,
+>>                                                       &err);
+>>           if (ret) {
+>> @@ -1981,6 +1989,29 @@ bool vfio_get_info_dma_avail(struct
+>> vfio_iommu_type1_info *info,
+>>       return true;
+>>   }
+>>   +static void vfio_get_info_iova_range(struct vfio_iommu_type1_info
+>> *info,
+>> +                                     unsigned int *nr_iovas,
+>> +                                     struct  vfio_iova_range
+>> **iova_ranges)
 >
->> +        vfio_host_win_add(container, 0,
->> +                          container->iova_ranges[container->nr_iovas - 1].end,
->> +                          container->pgsizes);
-> This doesn't address the assumption about the min_iova and adds an
-> assumption that the kernel provided list is sorted.  Thanks,
-yup.
+> I guess there is no point in returning an error since we can not
+> assign default values.
+Actually this will return a boolean depending on the whether the
+capability is supported,
+as reported by Alex. I should have get inspired of
+vfio_get_info_dma_avail()!
+>
+>> +{
+>> +    struct vfio_info_cap_header *hdr;
+>> +    struct vfio_iommu_type1_info_cap_iova_range *cap;
+>> +
+>> +    hdr = vfio_get_iommu_type1_info_cap(info,
+>> +                                       
+>> VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE);
+>> +    if (hdr == NULL) {
+>
+> May be :
+>
+>     if (!hdr) {
+yep. I guess I copy/pasted the vfio_get_info_dma_avail() code here ;-)
+>
+>
+>> +        return;
+>> +    }
+>> +
+>> +    cap = (void *)hdr;
+>> +    *nr_iovas = cap->nr_iovas;
+>> +
+>
+> I would add a trace event with the #iovas.
+I do agree tracing the resv regions is usefyl however I would be tempted
+to have this trace point elsewhere, maybe at the place where
+vfio_host_win_add is called to trace aperture min/max and in the
+set_iova cb. Because here I would need to enumerate the regions to trace
+them and usually trace points do not add any code.
 
-Thanks!
+Thanks
 
 Eric
 >
-> Alex
+> Thanks,
+>
+> C.
+>
+>
+>> +    if (*nr_iovas == 0) {
+>> +        return;
+>> +    }
+>> +    *iova_ranges = g_memdup2(cap->iova_ranges,
+>> +                             *nr_iovas * sizeof(struct 
+>> vfio_iova_range));
+>> +}
+>> +
+>>   static int vfio_setup_region_sparse_mmaps(VFIORegion *region,
+>>                                             struct vfio_region_info
+>> *info)
+>>   {
+>> @@ -2433,6 +2464,12 @@ static void
+>> vfio_get_iommu_info_migration(VFIOContainer *container,
+>>       }
+>>   }
+>>   +static void vfio_free_container(VFIOContainer *container)
+>> +{
+>> +    g_free(container->iova_ranges);
+>> +    g_free(container);
+>> +}
+>> +
+>>   static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+>>                                     Error **errp)
+>>   {
+>> @@ -2550,6 +2587,10 @@ static int vfio_connect_container(VFIOGroup
+>> *group, AddressSpace *as,
+>>           if (!vfio_get_info_dma_avail(info,
+>> &container->dma_max_mappings)) {
+>>               container->dma_max_mappings = 65535;
+>>           }
+>> +
+>> +        vfio_get_info_iova_range(info, &container->nr_iovas,
+>> +                                 &container->iova_ranges);
+>> +
+>>           vfio_get_iommu_info_migration(container, info);
+>>           g_free(info);
+>>   @@ -2663,7 +2704,7 @@ enable_discards_exit:
+>>       vfio_ram_block_discard_disable(container, false);
+>>     free_container_exit:
+>> -    g_free(container);
+>> +    vfio_free_container(container);
+>>     close_fd_exit:
+>>       close(fd);
+>> @@ -2717,7 +2758,7 @@ static void vfio_disconnect_container(VFIOGroup
+>> *group)
+>>             trace_vfio_disconnect_container(container->fd);
+>>           close(container->fd);
+>> -        g_free(container);
+>> +        vfio_free_container(container);
+>>             vfio_put_address_space(space);
+>>       }
 >
 

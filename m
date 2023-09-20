@@ -1,129 +1,113 @@
-Received: by 2002:a17:906:5293:b0:9ae:5796:d6c1 with SMTP id c19csp116885ejm;
-        Wed, 20 Sep 2023 13:02:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH0y7C1DDX4razdx2kg8qWb5U37N1farq3cdDjtPycZYwYE/v949B7rWyZpuDBasFcUazl0
-X-Received: by 2002:a0c:c252:0:b0:655:f15c:ff47 with SMTP id w18-20020a0cc252000000b00655f15cff47mr3237647qvh.34.1695240159465;
-        Wed, 20 Sep 2023 13:02:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695240159; cv=none;
+Received: by 2002:a17:906:5293:b0:9ae:5796:d6c1 with SMTP id c19csp180152ejm;
+        Wed, 20 Sep 2023 15:18:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGCDzppqs/wB50iywivsCxXSBhBx23WszjNnPASZvhwvQcdhNiFyV7Rb45zmwzo1MEC5sv7
+X-Received: by 2002:a67:fc43:0:b0:44e:e7d7:6847 with SMTP id p3-20020a67fc43000000b0044ee7d76847mr4159264vsq.7.1695248324681;
+        Wed, 20 Sep 2023 15:18:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695248324; cv=none;
         d=google.com; s=arc-20160816;
-        b=SZBPrlvzJ16NNTPsmvcczpKL77OsvcSYbot8erAztW1WbDmyNhdoRzzUcNKhI+U2LL
-         4whxSZ2wSbBygAUgioQgzNj68IQGfaQ/MRO7l0Zulymg1ta6Kdnr6KPCfkXdbhcB6qLu
-         rLJyuTWVaGnsGDMV9f0mRna08fl86yCJzLQZNmF2839mnD8mf+xyKCjBEDHJDfP0daol
-         mYT+0mW/tA79i+fkyVArjaD18ipWzTIZU8UT+HFE58YaJ4VJrDEyjOll2uvKIzkCytM8
-         aGb0n6rA/9XZdr7tkPimTu7sPBPATUVnJTUWyZdSGKSppX0slA6l/6SIRl43JEWkWfmG
-         /H2Q==
+        b=vQnFUfofJXJ5H53ySs1Ix9kKfdGZ2qBRBTIKi4eH6h61aIBJVEm5CMyxqqdywchX/S
+         dwrte4ZZzqMY09CIUhb7rge1iGkJbgcmebFRr/6sPC7z7htm6Y1I4yL/Og/bZ51OVHNX
+         DgsfYlcwnLOFJ7MvMXHf2WKKrr/V5W52/dxyggrSkJDh10IG5thmwFIyHBYvT+92vcYa
+         3vvD3FCNTLqaWcAnLXaZpzbyn34MStOqCtJ1owWZcUeGTOahCCZUkRjuWoYENYsdKXKq
+         bpXUTJ5mzGs9yzL/cVGUqCzeVGQucbiyLwWX2RMYJ5bxqLddwjqou+MRnKKOtEism2l4
+         yOpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=HdkPKDMQnIDj/BimLpBdN6Wa9HtIgeClHrRjuXDYx6s=;
-        fh=Itbbu/PWL12vfUV9pSMfONMQCKVHOxT0l/2dhHgmw7U=;
-        b=SQ8T/sgdq+uCbt/YjLNL7ndbQd/ipeTcP62gHE3yoBlQ+MgowShF7VllZicsryyP2Q
-         ZXOToz65g8m0Y/ucIBFGqjxdtaA83TXNdYKmibGF/BQikExsj+SvSJqFBUHdIhKqqrqa
-         c1oFQ7vyKZKIj9kx9SenfdEFqFtfAj3xckVdih7c+MubwQe8nKkrJR14Q1lxr1Td3IkO
-         WwS3FeAK2AYHmSi7uWrdCW41R+9EaIx6y6gNNTGZPv70oenF0qmVR3GugCPehqHZEKuQ
-         mH51mP9g+hHXhiWLZxLbmTI96lYa0LUT0pH6wJU+CCEK7McVHmvNhIluvDB3h3OaFO3s
-         prgQ==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=P7FGPmiLO53dMZcTk+GsjD6AKSJLR5sY4i4wnHSczKY=;
+        fh=VpdIyJR9n9QpzQWHJW541W97F/M8Z10MnahQ3EEY1JY=;
+        b=IWuX+l5sO7vA6Nd7kXyJxkflChNXd7RDABOibww1NcxlzZJ1q1hF3sIzm87iMXsTaf
+         VMDyyIlu/pVZkiDbAI9Psvnl1xJ33olev2YJdbOoJ8zoWtQZ3O2YKwt2C8C9yNvW5pBd
+         vHviWtT63XjpM+pEIEaimWWzycnk23UT4pMZignynd4p360ehVIefmLoy2GdDKeO3xcU
+         MEJ/nKueqpJTiogS7O5rl7EilSE3EVKx32xJbAq7JE+nb/sW2Uc6fmlX/EkaCGj4m9dP
+         nq6k4PsftOdMPkSZmPIeELvLv5H80vNkMpl7NDCgZTpOn3oQQ8MH0YkgaxHDT0E7ZG3C
+         IjOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IWcADbWH;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=U830DTa9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id sk1-20020a05620a3a4100b0076d91fbfaebsi9270245qkn.212.2023.09.20.13.02.39
+        by mx.google.com with ESMTPS id k8-20020a0cf588000000b006561c065e28si99921qvm.22.2023.09.20.15.18.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Sep 2023 13:02:39 -0700 (PDT)
+        Wed, 20 Sep 2023 15:18:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IWcADbWH;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=U830DTa9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qj3Ou-0002fY-0T; Wed, 20 Sep 2023 16:02:22 -0400
+	id 1qj5Wl-0002Om-94; Wed, 20 Sep 2023 18:18:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1qj3Os-0002ey-27
- for qemu-arm@nongnu.org; Wed, 20 Sep 2023 16:02:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1qj3Oq-0002PI-2k
- for qemu-arm@nongnu.org; Wed, 20 Sep 2023 16:02:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695240132;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HdkPKDMQnIDj/BimLpBdN6Wa9HtIgeClHrRjuXDYx6s=;
- b=IWcADbWH+idlZCO1gBTJ0SRK5x3F8aSZ/+yhaJ34L9Xbtsc2mxKjaWvSBF8VcYzSNPo9IJ
- HLWhjwq/FvZjxXxkzkaRxQnbyp69cHgTsggeVtjwy3SWhrWW+OgN1/LNdU57XFo/A7cQ20
- itFf9A1/VeOKvNxf4qK/62u0lX0JaSw=
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-527-NsGpbRtvPquWZSZBZvhubg-1; Wed, 20 Sep 2023 16:02:11 -0400
-X-MC-Unique: NsGpbRtvPquWZSZBZvhubg-1
-Received: by mail-io1-f69.google.com with SMTP id
- ca18e2360f4ac-7907f181babso16444139f.2
- for <qemu-arm@nongnu.org>; Wed, 20 Sep 2023 13:02:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from
+ <3sm8LZQwKCO0cPQXWThiTUPcVddVaT.RdbfTbj-PgbcdcVcj.dgV@flex--nabihestefan.bounces.google.com>)
+ id 1qj5Wi-0002MX-UU
+ for qemu-arm@nongnu.org; Wed, 20 Sep 2023 18:18:33 -0400
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3sm8LZQwKCO0cPQXWThiTUPcVddVaT.RdbfTbj-PgbcdcVcj.dgV@flex--nabihestefan.bounces.google.com>)
+ id 1qj5We-00089S-LS
+ for qemu-arm@nongnu.org; Wed, 20 Sep 2023 18:18:30 -0400
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-59c27703cc6so4285177b3.2
+ for <qemu-arm@nongnu.org>; Wed, 20 Sep 2023 15:18:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1695248307; x=1695853107; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=P7FGPmiLO53dMZcTk+GsjD6AKSJLR5sY4i4wnHSczKY=;
+ b=U830DTa9+qm9FCh84kXAGN7FNKbtnKQpB4CaZsVdhlzV+EAImo8ocTcjwSJXUmvK92
+ g2qV1NSUNqpKMF0MMYsVEgn7jwGSlw5EkeTAhdjhYTX/uyTgT5t+0xogjapenC32+Trg
+ VBMPfXpc2ovIbYMxfzSHXO6KO7u/ETlSp2pKpc0sB58/DUZnmXfDEqzjDWRmAAM4lI/8
+ Urh+cnJl4Bx/DsR+2N2lOhLjLThASd+WnLaXUiw9GgZSknansy/7nQnuMmZT8cpw7MRM
+ kwO4OwW4LbfgMYnGuLeM+fUwUr+gNemZ5sk9rSUvMj4ghKAha39lC5tRQdwYxseppD9z
+ LyTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695240129; x=1695844929;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=HdkPKDMQnIDj/BimLpBdN6Wa9HtIgeClHrRjuXDYx6s=;
- b=wFs3D5G1c3Z/Tl6qrnuFd5qHs+feKmgli5up8kNPHW7dz6xvxousnVyS85AGFwPPyj
- xqeLiRzES74F63SXEaNt0+sEiS1B20RENOq93nB9XyxJa5vWc2Vcf9qSQYY2z96eNZ4N
- P9B+nil4LKbC3YpGJPpV/2vs2KHRB7KMqP9trpYoYVsjLJ/cg1cKTfmeIxWgQOqhM9mk
- kgVKHLR5FMUoUWOo8VOxNnO9dL24IGLGIm4ukd/7gVqP57FnJNU0lTomRczOWKtB92MB
- Q2rFDCAy84ZsFDJ2ZC6uh8CcTa23OfMcA7DYlYLudQn+sphF2e355eI848+Uxqk9R5iQ
- 2SAg==
-X-Gm-Message-State: AOJu0YzWISorifOHdfFrTuTjkNTEM2gnYueFyo3D0rYcqbc8lxXp+pcL
- jexig7ps1B67FTlqFv7D7teuNtVhftCODKjLs89UhjRXKqtlwb7lon7gdSJYs5Ar2VrEYuWNrST
- r320HZH60fU/j
-X-Received: by 2002:a5e:d510:0:b0:794:d7e8:d239 with SMTP id
- e16-20020a5ed510000000b00794d7e8d239mr4184640iom.17.1695240129298; 
- Wed, 20 Sep 2023 13:02:09 -0700 (PDT)
-X-Received: by 2002:a5e:d510:0:b0:794:d7e8:d239 with SMTP id
- e16-20020a5ed510000000b00794d7e8d239mr4184617iom.17.1695240129037; 
- Wed, 20 Sep 2023 13:02:09 -0700 (PDT)
-Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
- c22-20020a02c9d6000000b0042b255d46c1sm4342563jap.11.2023.09.20.13.02.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Sep 2023 13:02:08 -0700 (PDT)
-Date: Wed, 20 Sep 2023 14:02:06 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- clg@redhat.com, jean-philippe@linaro.org, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
- david@redhat.com, philmd@linaro.org
-Subject: Re: [PATCH v2 12/12] vfio: Remove 64-bit IOVA address space assumption
-Message-ID: <20230920140206.6de4964c.alex.williamson@redhat.com>
-In-Reply-To: <20230913080423.523953-13-eric.auger@redhat.com>
-References: <20230913080423.523953-1-eric.auger@redhat.com>
- <20230913080423.523953-13-eric.auger@redhat.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=alex.williamson@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ d=1e100.net; s=20230601; t=1695248307; x=1695853107;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=P7FGPmiLO53dMZcTk+GsjD6AKSJLR5sY4i4wnHSczKY=;
+ b=YEoAb781PClHBFWRRQiqWsZ9I9WleWImf8pI0p03XfQKql+FStHL9CtFBwnjPd72P+
+ aQ0Y4dsm1ZpA4GCIDZZcssZMFmJWvOa6aAgxN6Gp56TGYUP6Ipy1F+JyvFQstbHmWSAf
+ WmoBuxM/XopbHORZuqr+TOZWQJRHn8YfWzp9fJ9baXnHQ6X6eSYOBlIFf35iGHr+ERFi
+ kkr6gubn6pUUfA7t7tZ37byYgRkKSFkjiQ/LOmTtD/H07QKvwKjOZJOrsM4euZUEy6yS
+ wTDQJk/iJbQciQk7Q5JR30gYyAHNbDDhYRxBYBYhD7TtQKCtrsJ5ciBjcacpPMANMw5z
+ NmHg==
+X-Gm-Message-State: AOJu0YzjOwKgcNiMll6oUxGsYDnWU9tktoOoEbYx9mO88z1GjP4C7Mpj
+ RFhVLIBHKaNtFWb3hzm+EEvHTcSfSN5/aN0oZ08=
+X-Received: from nabihestefan.c.googlers.com
+ ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
+ (user=nabihestefan job=sendgmr) by 2002:a05:690c:2906:b0:59e:ee51:52a1 with
+ SMTP id eg6-20020a05690c290600b0059eee5152a1mr50925ywb.10.1695248306983; Wed,
+ 20 Sep 2023 15:18:26 -0700 (PDT)
+Date: Wed, 20 Sep 2023 22:18:11 +0000
+In-Reply-To: <20230920221819.1106029-1-nabihestefan@google.com>
+Mime-Version: 1.0
+References: <20230920221819.1106029-1-nabihestefan@google.com>
+X-Mailer: git-send-email 2.42.0.459.ge4e396fd5e-goog
+Message-ID: <20230920221819.1106029-4-nabihestefan@google.com>
+Subject: [PATCH v2 03/11] hw/misc: Add qtest for NPCM7xx PCI Mailbox
+From: Nabih Estefan <nabihestefan@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
+ wuhaotsh@google.com, jasonwang@redhat.com, avi.fishman@nuvoton.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=3sm8LZQwKCO0cPQXWThiTUPcVddVaT.RdbfTbj-PgbcdcVcj.dgV@flex--nabihestefan.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,105 +122,277 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ivwplHAi8Djx
+X-TUID: Br6ifCIn/RvT
 
-On Wed, 13 Sep 2023 10:01:47 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+From: Hao Wu <wuhaotsh@google.com>
 
-> Now we retrieve the usable IOVA ranges from the host,
-> we now the physical IOMMU aperture and we can remove
-> the assumption of 64b IOVA space when calling
-> vfio_host_win_add().
-> 
-> This works fine in general but in case of an IOMMU memory
-> region this becomes more tricky. For instance the virtio-iommu
-> MR has a 64b aperture by default. If the physical IOMMU has a
-> smaller aperture (typically the case for VTD), this means we
-> would need to resize the IOMMU MR when this latter is linked
-> to a container. However this happens on vfio_listener_region_add()
-> when calling the IOMMU MR set_iova_ranges() callback and this
-> would mean we would have a recursive call the
-> vfio_listener_region_add(). This looks like a wrong usage of
-> the memory API causing duplicate IOMMU MR notifier registration
-> for instance.
-> 
-> Until we find a better solution, make sure the vfio_find_hostwin()
-> is not called anymore for IOMMU region.
+This patches adds a qtest for NPCM7XX PCI Mailbox module.
+It sends read and write requests to the module, and verifies that
+the module contains the correct data after the requests.
 
-Thanks for your encouragement to double check this, it does seem like
-there are some gaps in the host window support.  First I guess I don't
-understand why the last chunk here assumes a contiguous range.
-Shouldn't we call vfio_host_win_add() for each IOVA range?
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
+---
+ tests/qtest/meson.build             |   1 +
+ tests/qtest/npcm7xx_pci_mbox-test.c | 238 ++++++++++++++++++++++++++++
+ 2 files changed, 239 insertions(+)
+ create mode 100644 tests/qtest/npcm7xx_pci_mbox-test.c
 
-But then we have a problem that we don't necessarily get positive
-feedback from memory_region_iommu_set_iova_ranges().  Did the vIOMMU
-accept the ranges or not?  Only one vIOMMU implements the callback.
-Should we only call memory_region_iommu_set_iova_ranges() if the range
-doesn't align to a host window and should the wrapper return -ENOTSUP
-if there is no vIOMMU support to poke holes in the range?  Thanks,
-
-Alex
-
- 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> I have not found any working solution to the IOMMU MR resizing.
-> So I can remove this patch or remove the check for IOMMU MR. Maybe
-> this is an issue which can be handled separately?
-> ---
->  hw/vfio/common.c | 25 ++++++++++++-------------
->  1 file changed, 12 insertions(+), 13 deletions(-)
-> 
-> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-> index 26da38de05..40cac1ca91 100644
-> --- a/hw/vfio/common.c
-> +++ b/hw/vfio/common.c
-> @@ -1112,13 +1112,6 @@ static void vfio_listener_region_add(MemoryListener *listener,
->  #endif
->      }
->  
-> -    hostwin = vfio_find_hostwin(container, iova, end);
-> -    if (!hostwin) {
-> -        error_setg(&err, "Container %p can't map guest IOVA region"
-> -                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
-> -        goto fail;
-> -    }
-> -
->      memory_region_ref(section->mr);
->  
->      if (memory_region_is_iommu(section->mr)) {
-> @@ -1177,6 +1170,14 @@ static void vfio_listener_region_add(MemoryListener *listener,
->          return;
->      }
->  
-> +    hostwin = vfio_find_hostwin(container, iova, end);
-> +    if (!hostwin) {
-> +        error_setg(&err, "Container %p can't map guest IOVA region"
-> +                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
-> +        goto fail;
-> +    }
-> +
-> +
->      /* Here we assume that memory_region_is_ram(section->mr)==true */
->  
->      /*
-> @@ -2594,12 +2595,10 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
->          vfio_get_iommu_info_migration(container, info);
->          g_free(info);
->  
-> -        /*
-> -         * FIXME: We should parse VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE
-> -         * information to get the actual window extent rather than assume
-> -         * a 64-bit IOVA address space.
-> -         */
-> -        vfio_host_win_add(container, 0, (hwaddr)-1, container->pgsizes);
-> +        g_assert(container->nr_iovas);
-> +        vfio_host_win_add(container, 0,
-> +                          container->iova_ranges[container->nr_iovas - 1].end,
-> +                          container->pgsizes);
->  
->          break;
->      }
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 1fba07f4ed..849394515d 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -183,6 +183,7 @@ qtests_sparc64 = \
+ qtests_npcm7xx = \
+   ['npcm7xx_adc-test',
+    'npcm7xx_gpio-test',
++   'npcm7xx_pci_mbox-test',
+    'npcm7xx_pwm-test',
+    'npcm7xx_rng-test',
+    'npcm7xx_sdhci-test',
+diff --git a/tests/qtest/npcm7xx_pci_mbox-test.c b/tests/qtest/npcm7xx_pci_mbox-test.c
+new file mode 100644
+index 0000000000..24eec18e3c
+--- /dev/null
++++ b/tests/qtest/npcm7xx_pci_mbox-test.c
+@@ -0,0 +1,238 @@
++/*
++ * QTests for Nuvoton NPCM7xx PCI Mailbox Modules.
++ *
++ * Copyright 2021 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/bitops.h"
++#include "qapi/qmp/qdict.h"
++#include "qapi/qmp/qnum.h"
++#include "libqtest-single.h"
++
++#define PCI_MBOX_BA         0xf0848000
++#define PCI_MBOX_IRQ        8
++
++/* register offset */
++#define PCI_MBOX_STAT       0x00
++#define PCI_MBOX_CTL        0x04
++#define PCI_MBOX_CMD        0x08
++
++#define CODE_OK             0x00
++#define CODE_INVALID_OP     0xa0
++#define CODE_INVALID_SIZE   0xa1
++#define CODE_ERROR          0xff
++
++#define OP_READ             0x01
++#define OP_WRITE            0x02
++#define OP_INVALID          0x41
++
++
++static int sock;
++static int fd;
++
++/*
++ * Create a local TCP socket with any port, then save off the port we got.
++ */
++static in_port_t open_socket(void)
++{
++    struct sockaddr_in myaddr;
++    socklen_t addrlen;
++
++    myaddr.sin_family = AF_INET;
++    myaddr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
++    myaddr.sin_port = 0;
++    sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
++    g_assert(sock != -1);
++    g_assert(bind(sock, (struct sockaddr *) &myaddr, sizeof(myaddr)) != -1);
++    addrlen = sizeof(myaddr);
++    g_assert(getsockname(sock, (struct sockaddr *) &myaddr , &addrlen) != -1);
++    g_assert(listen(sock, 1) != -1);
++    return ntohs(myaddr.sin_port);
++}
++
++static void setup_fd(void)
++{
++    fd_set readfds;
++
++    FD_ZERO(&readfds);
++    FD_SET(sock, &readfds);
++    g_assert(select(sock + 1, &readfds, NULL, NULL, NULL) == 1);
++
++    fd = accept(sock, NULL, 0);
++    g_assert(fd >= 0);
++}
++
++static uint8_t read_response(uint8_t *buf, size_t len)
++{
++    uint8_t code;
++    ssize_t ret = read(fd, &code, 1);
++
++    if (ret == -1) {
++        return CODE_ERROR;
++    }
++    if (code != CODE_OK) {
++        return code;
++    }
++    g_test_message("response code: %x", code);
++    if (len > 0) {
++        ret = read(fd, buf, len);
++        if (ret < len) {
++            return CODE_ERROR;
++        }
++    }
++    return CODE_OK;
++}
++
++static void receive_data(uint64_t offset, uint8_t *buf, size_t len)
++{
++    uint8_t op = OP_READ;
++    uint8_t code;
++    ssize_t rv;
++
++    while (len > 0) {
++        uint8_t size;
++
++        if (len >= 8) {
++            size = 8;
++        } else if (len >= 4) {
++            size = 4;
++        } else if (len >= 2) {
++            size = 2;
++        } else {
++            size = 1;
++        }
++
++        g_test_message("receiving %u bytes", size);
++        /* Write op */
++        rv = write(fd, &op, 1);
++        g_assert_cmpint(rv, ==, 1);
++        /* Write offset */
++        rv = write(fd, (uint8_t *)&offset, sizeof(uint64_t));
++        g_assert_cmpint(rv, ==, sizeof(uint64_t));
++        /* Write size */
++        g_assert_cmpint(write(fd, &size, 1), ==, 1);
++
++        /* Read data and Expect response */
++        code = read_response(buf, size);
++        g_assert_cmphex(code, ==, CODE_OK);
++
++        buf += size;
++        offset += size;
++        len -= size;
++    }
++}
++
++static void send_data(uint64_t offset, const uint8_t *buf, size_t len)
++{
++    uint8_t op = OP_WRITE;
++    uint8_t code;
++    ssize_t rv;
++
++    while (len > 0) {
++        uint8_t size;
++
++        if (len >= 8) {
++            size = 8;
++        } else if (len >= 4) {
++            size = 4;
++        } else if (len >= 2) {
++            size = 2;
++        } else {
++            size = 1;
++        }
++
++        g_test_message("sending %u bytes", size);
++        /* Write op */
++        rv = write(fd, &op, 1);
++        g_assert_cmpint(rv, ==, 1);
++        /* Write offset */
++        rv = write(fd, (uint8_t *)&offset, sizeof(uint64_t));
++        g_assert_cmpint(rv, ==, sizeof(uint64_t));
++        /* Write size */
++        g_assert_cmpint(write(fd, &size, 1), ==, 1);
++        /* Write data */
++        g_assert_cmpint(write(fd, buf, size), ==, size);
++
++        /* Expect response */
++        code = read_response(NULL, 0);
++        g_assert_cmphex(code, ==, CODE_OK);
++
++        buf += size;
++        offset += size;
++        len -= size;
++    }
++}
++
++static void test_invalid_op(void)
++{
++    uint8_t op = OP_INVALID;
++    uint8_t code;
++    uint8_t buf[1];
++
++    g_assert_cmpint(write(fd, &op, 1), ==, 1);
++    code = read_response(buf, 1);
++    g_assert_cmphex(code, ==, CODE_INVALID_OP);
++}
++
++/* Send data via chardev and read them in guest. */
++static void test_guest_read(void)
++{
++    const char *data = "Hello World!";
++    uint64_t offset = 0xa0;
++    char buf[100];
++    size_t len = strlen(data);
++
++    send_data(offset, (uint8_t *)data, len);
++    memread(PCI_MBOX_BA + offset, buf, len);
++    g_assert_cmpint(strncmp(data, buf, len), ==, 0);
++}
++
++/* Write data in guest and read out via chardev. */
++static void test_guest_write(void)
++{
++    const char *data = "Hello World!";
++    uint64_t offset = 0xa0;
++    char buf[100];
++    size_t len = strlen(data);
++
++    memwrite(PCI_MBOX_BA + offset, data, len);
++    receive_data(offset, (uint8_t *)buf, len);
++    g_assert_cmpint(strncmp(data, buf, len), ==, 0);
++}
++
++int main(int argc, char **argv)
++{
++    int ret;
++    int port;
++
++    g_test_init(&argc, &argv, NULL);
++    port = open_socket();
++    g_test_message("port=%d", port);
++    global_qtest = qtest_initf("-machine npcm750-evb "
++        "-chardev socket,id=npcm7xx-pcimbox-chr,host=localhost,"
++        "port=%d,reconnect=10 "
++        "-global driver=npcm7xx-pci-mbox,property=chardev,"
++        "value=npcm7xx-pcimbox-chr",
++        port);
++    setup_fd();
++    qtest_irq_intercept_in(global_qtest, "/machine/soc/a9mpcore/gic");
++
++    qtest_add_func("/npcm7xx_pci_mbox/invalid_op", test_invalid_op);
++    qtest_add_func("/npcm7xx_pci_mbox/read", test_guest_read);
++    qtest_add_func("/npcm7xx_pci_mbox/write", test_guest_write);
++    ret = g_test_run();
++    qtest_quit(global_qtest);
++
++    return ret;
++}
+-- 
+2.42.0.459.ge4e396fd5e-goog
 

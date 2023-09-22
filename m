@@ -1,156 +1,177 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp60084ejc;
-        Sun, 24 Sep 2023 17:25:00 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFlX1vuLKqpLLGzG4ynMjCgCFcSYi5n6VrLbc9PC5zIJ3258mJxPOcIr0KL2iEH8qaFo8iy
-X-Received: by 2002:a05:620a:44c7:b0:76f:1954:165d with SMTP id y7-20020a05620a44c700b0076f1954165dmr7423668qkp.56.1695601500300;
-        Sun, 24 Sep 2023 17:25:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695601500; cv=none;
+Received: by 2002:a17:906:5293:b0:9ae:5796:d6c1 with SMTP id c19csp1074927ejm;
+        Thu, 21 Sep 2023 22:45:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH0qe/U0YMZl2voyQr9SReWS0wBzhYKoTQYwjY63BpBoMYdBE2UK17gPY/y/6JTh+IZaC/8
+X-Received: by 2002:a0c:f5d0:0:b0:658:a254:d215 with SMTP id q16-20020a0cf5d0000000b00658a254d215mr3941052qvm.55.1695361529995;
+        Thu, 21 Sep 2023 22:45:29 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1695361529; cv=pass;
         d=google.com; s=arc-20160816;
-        b=jLu6Gfwh9Wsf9YRbkXdOFr2Y42PrUnp6vJMyJ8MNjP7QIEgy/RogizXfWleSnF/aov
-         MuT+gcThCx7uM3n2hZzJtf30T2Fz50YGokUy2edyHo/0Mg8GwdvBMSiFDpMo1rViWnDN
-         H0c3S55heU3U7jlVVGThmzHu17XxFER6MNdnV5UGrdVFvFzBtWv8aN1fwYDt9rDXvwgH
-         /WnxGT4Plj5CLrqdYVbCEToLxf3Ruxs6zlLcGXzL0ACTBHkM9qNxphFhuJ7IcZwLULza
-         5YIYb99nCwvwEY1CznSJ30CZdT80lD42iy2o8JWz3x0Tq9zIDmoJAGIVPcske+T4Bkst
-         Be6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=uztWvavMg86QdW1XWD7q7IO6My1uUYCdWc7xM8MfoKZEpjj74RVCkYsVCilozKCQrF
+         wqM671QW92EOuC8DXyM6Q5vhsSLLwjzrxHHAkm6BKcWMsa3Wp/vHHjoK+gKIGRnS5tJ3
+         1tZ39ZxWd0MVvvJv8itQgXmm5dUX425UbeQnKph2zPLJn1TfqjiEIEj9PoT//bQBufT+
+         9qW3ToEjOFEBd70s8m9Ju4mUCipWjWkgjIHWEssGJrhWLQAwJShOMxIBd643KA+jmNyV
+         4Wj86oDKU64EW6rHDBkkiaawjRQx9qr3+pRaxE2genZo5zoinx8HKy7qv9ZHG+GMyP8n
+         +esw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:references:cc:to:from:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=aPk3ge9QXMJ1XbAnO/Cqt8Jm9Bz3ZpC9BoVYrzsRNtg=;
-        fh=umzWOJsUp6qBpMZfaR/35tHg7PJylqVzX5Du8QxP/Gc=;
-        b=Jpha6Aoz7cteO4eESQ4aXtwqgXFhzLdtM160MlJMYEZUfBwoj6EqY1giR5puhj1I5T
-         5qOyIo9YltyEDzpHqjz4FSH++AxyWgPM/jKiRy04BQm8+DcUn/wzoAhAOLH8J3XXLW6u
-         A1KxfEw70r+a56HncXi9CTR97nEMDL8l+trKB1uDBqbsQK+fqXqmh/BhYX8Ltj3nCTNt
-         5sx/2/mpJqnVwzoqhk+ts+DvfzrpXqaBtdhO5ehR24yAFiQAulKvb+B7/e7F8xyOl4E2
-         PSV5uFgRcvZfBfVZB6/FSKKhcBj+NPh3EXn3ZG9ndcHHtFTowPS4xKoZB5ExNrGwVQah
-         hpZg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MKbVMTFV;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=AaLG/PgY9V9SN0h5O2V5eg17RgGaC/seQCPyHNpH3LQ=;
+        fh=neV69fLOGdJYd8Njn44tmZ4YAWb+A4q8X0f8JWUGW5w=;
+        b=cxHi83U0l3RpPQZd1xd1WsjcxXHXkR4rr5qiPaf2W+imKaln2SSl/7ZKVXzBzQ+v9Y
+         1uNFubxwwvVBenWp5+V4wWvWTtbFgDyS18IZIn8QWtkMUkhaOPQfqxii3kLlZEWlA155
+         IB/Kjwh1QrWpRU+MxFWBlXJ14G/31h0Et1/ZQ82SotdKdsEeg7i5tZMeBpDisV27O/wj
+         V2LI/dL6t+O6y2sxMxJ5eL3cNX9RIFptTvWvYKZ8kL2cA4rZZu2A83B9TD0HAeIwxxbk
+         zi8sWTurmMUphIMM69lhKS79vUCxj/kYHcx8MDOTLs/t1MJnae9joaUk25hQrop3M9zx
+         qk6A==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=Y+0d26+7;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m19-20020a05620a24d300b00765ae950bb1si5613149qkn.499.2023.09.24.17.25.00
+        by mx.google.com with ESMTPS id ay35-20020a05620a17a300b0077060e1a9d9si1921235qkb.691.2023.09.21.22.45.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 24 Sep 2023 17:25:00 -0700 (PDT)
+        Thu, 21 Sep 2023 22:45:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MKbVMTFV;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=Y+0d26+7;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qkZOp-0003LU-MN; Sun, 24 Sep 2023 20:24:31 -0400
+	id 1qjYyN-00085x-EM; Fri, 22 Sep 2023 01:45:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qkZOn-0003Jq-JC
- for qemu-arm@nongnu.org; Sun, 24 Sep 2023 20:24:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1qjYyF-00084i-Bv; Fri, 22 Sep 2023 01:44:55 -0400
+Received: from mail-bn8nam12on2062c.outbound.protection.outlook.com
+ ([2a01:111:f400:fe5b::62c]
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qkZOl-00075F-1x
- for qemu-arm@nongnu.org; Sun, 24 Sep 2023 20:24:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695601465;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=aPk3ge9QXMJ1XbAnO/Cqt8Jm9Bz3ZpC9BoVYrzsRNtg=;
- b=MKbVMTFVIbnTIIQ48JgEiI60oBzfO5m8HcqiLgo8QXjqflKm149iFSOF1mT0HvX57tjkBI
- yJwiTXr5j0efv6fGe2qm4EKkcVh8KxhIW6d7oXvyLjEyTTo1GWPnZRjJEs6vhErRCgDY7/
- 4renfwX4LPVgj4qYgecW57RNrEQi4vU=
-Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com
- [209.85.210.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-379-82APHk2eMeWpUD2U3J_MsA-1; Sun, 24 Sep 2023 20:24:23 -0400
-X-MC-Unique: 82APHk2eMeWpUD2U3J_MsA-1
-Received: by mail-pf1-f197.google.com with SMTP id
- d2e1a72fcca58-692bf04c548so2459978b3a.0
- for <qemu-arm@nongnu.org>; Sun, 24 Sep 2023 17:24:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695601463; x=1696206263;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=aPk3ge9QXMJ1XbAnO/Cqt8Jm9Bz3ZpC9BoVYrzsRNtg=;
- b=Hldwya0u/UMKhlUSTHtNwO6ExIylBvH0edTPrfI4O81nYAZ9+GaUwXuXRXVc4zYN1h
- Qh9RiR89+26KnsOegj7YFoNs7rH2pcgatann2DBA6J8x/5qxdI+yPu/0zrRlPIwMiFRR
- YPurTB8QaP3G3fvy/krnTREC/NwdUhO1AJkvEoDn+9ydVCDYnj7UzQPVz81uJ5RnMbeW
- TQ0/W/8YUE5BGCwSnQcL11A/cl9q4DQrroEDSHjKvSmikPYwilmwyuTmRJvt9pBfA/5A
- Hui/WNP18Kl2awpcBtAgpY0E94JPnKPDHAABgEUzPeNhG9d77bLeyXuQMwzAWW76KCnP
- CvLQ==
-X-Gm-Message-State: AOJu0YzLBSHIfSezLw2Jz1HQCc5HcvzqPJquO8tgQTLiCkcng3y7d6hW
- IFYWH0gladN9sUkzrKe/z7ST7+XxuyZWJyfo/D3wsvyz2zjn02oSKgwEPfYOvHgzGCYzTdXM2fJ
- YvrOzTXfaVGT2
-X-Received: by 2002:a05:6a00:1748:b0:68e:399e:70db with SMTP id
- j8-20020a056a00174800b0068e399e70dbmr4446387pfc.6.1695601462803; 
- Sun, 24 Sep 2023 17:24:22 -0700 (PDT)
-X-Received: by 2002:a05:6a00:1748:b0:68e:399e:70db with SMTP id
- j8-20020a056a00174800b0068e399e70dbmr4446338pfc.6.1695601462370; 
- Sun, 24 Sep 2023 17:24:22 -0700 (PDT)
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
- ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
- by smtp.gmail.com with ESMTPSA id
- e15-20020a62ee0f000000b00686fe7b7b48sm6728499pfi.121.2023.09.24.17.24.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 24 Sep 2023 17:24:21 -0700 (PDT)
-Message-ID: <a42dd7a0-e73f-8410-d096-8298da03f70d@redhat.com>
-Date: Mon, 25 Sep 2023 10:24:04 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH 3/4] hw/cpu: Introduce CPUClass::cpu_resolving_type field
-From: Gavin Shan <gshan@redhat.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>
-Cc: Chris Wulff <crwulff@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-s390x@nongnu.org,
- Weiwei Li <liweiwei@iscas.ac.cn>, qemu-arm@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Greg Kurz <groug@kaod.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-ppc@nongnu.org, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>,
- Michael Rolnik <mrolnik@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>, Bin Meng <bin.meng@windriver.com>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Song Gao <gaosong@loongson.cn>,
- Stafford Horne <shorne@gmail.com>, Yanan Wang <wangyanan55@huawei.com>,
- Alistair Francis <alistair.francis@wdc.com>, Brian Cain <bcain@quicinc.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Thomas Huth <thuth@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-References: <20230908112235.75914-1-philmd@linaro.org>
- <20230908112235.75914-4-philmd@linaro.org>
- <87cb0174-c652-aa44-be7c-49e78e0a5003@redhat.com>
- <af78b6c9-14e5-3256-9670-c106f4942140@linaro.org>
- <35653f53-a977-02ea-28f6-6fe85b1efd5a@redhat.com>
-In-Reply-To: <35653f53-a977-02ea-28f6-6fe85b1efd5a@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1qjYyB-0007Ia-A1; Fri, 22 Sep 2023 01:44:55 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=KjGDm02+iRYDDpnq80rtyceCuyK3yFjXpSVMKtN/yfThUIq/dw02MBoIjD2XPAaAaM4rZssSEz+qKW3LXHWY6wa/PY36W9d7QWs1qjG4lhJIn1wnrjabFgZuOOy3ZNG/9jXSjC00Q6XhcfgDwJJHqDdSlHR27RjnlPkgEev2HCsiPhVLOlIq5ikUMTfMj8VQnUHqJ8OCGpYWhpso7A/iVyQHEIm/opmiqFnCffxZNxZFv0bqjvUpwLnUTzo1RObL9QNZJfHtBLKg27GOOUXBVGrMmo4GjB2Uz4XV+24ASUK/xp9puc9asRJWdHCr7feW2XWOWr6H6yhPWfCL9HhIkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=AaLG/PgY9V9SN0h5O2V5eg17RgGaC/seQCPyHNpH3LQ=;
+ b=mqBbZNVS66Xj2cmt+1lJ2wR+Iq1wMC09GEKmYnuj1B1FrKT75kRkz7l4svaXjUdqGIsM1kND3Ew7e5qa0/I3xaiunKmJD6fi36txb9T1zo2A1+Fb5tlkSo4mwkK3AmQ676bLQwvP31sY0Xtzgsk7kGVN9oP4hANddDt9rP71Hgg+EKpbswLxCtRlQCqEwcv/vSPm/g5EfG9Xmi3SJTJ39StpTVp3ulKIagHJmBDzjW1GG26Fdk2pO84Ch2xUxN5+dXHAHAFz74hxOmSKUEOU2T7pYQlpntUL8WqZCzUkkS2vw/EUPgxnXescZDo1q1wfIXh6QiB2n3wfRf/vf/Fumg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=AaLG/PgY9V9SN0h5O2V5eg17RgGaC/seQCPyHNpH3LQ=;
+ b=Y+0d26+7lrK98sbxW2mn+zLTqvfHgtTS9uAiUlg2bPiKS8loIfluc4vb7yVtHCS/arFkX6NC8sJ5O8cSqoKpiGU5WXZkSXzBA2pVni0tAjsj3EcIoDkozG/0NzyTnQNe90+JaERSG7MFRiPRVjYNVaFNQDmIWNkeltbjBCtPJ4pXsbImJnt02IcCOJAJpiIVam9bwqn0hpJzd3c/6rGq1aBsmocP78ZVqHvn9k6Rmj+uuPi7atAZB8wW2n6t/4QmLVsyIifO+Buol696gC2DXANNnCA6U1q8fjIo4yaDA0FSz+YqIT196UnfTjEAOLNu674PFpjiTZAkTbTODrWc3A==
+Received: from BY5PR12MB3763.namprd12.prod.outlook.com (2603:10b6:a03:1a8::24)
+ by DM4PR12MB7597.namprd12.prod.outlook.com (2603:10b6:8:10b::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6813.21; Fri, 22 Sep
+ 2023 05:44:44 +0000
+Received: from BY5PR12MB3763.namprd12.prod.outlook.com
+ ([fe80::9e7a:4853:fa35:a060]) by BY5PR12MB3763.namprd12.prod.outlook.com
+ ([fe80::9e7a:4853:fa35:a060%2]) with mapi id 15.20.6813.017; Fri, 22 Sep 2023
+ 05:44:44 +0000
+From: Ankit Agrawal <ankita@nvidia.com>
+To: Igor Mammedov <imammedo@redhat.com>, Jonathan Cameron via
+ <qemu-devel@nongnu.org>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>
+CC: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
+ <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
+ (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, Andy
+ Currid <ACurrid@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "mst@redhat.com" <mst@redhat.com>
+Subject: RE: [PATCH v1 1/4] vfio: new command line params for device memory
+ NUMA nodes
+Thread-Topic: [PATCH v1 1/4] vfio: new command line params for device memory
+ NUMA nodes
+Thread-Index: AQHZ537GOvmKk8o8AEmeuxweOgaO6LAb8d6AgAAGk4CACmHCkA==
+Date: Fri, 22 Sep 2023 05:44:43 +0000
+Message-ID: <BY5PR12MB376336ED0A6E20B2AA6FEF33B0FFA@BY5PR12MB3763.namprd12.prod.outlook.com>
+References: <20230915024559.6565-1-ankita@nvidia.com>
+ <20230915024559.6565-2-ankita@nvidia.com>
+ <20230915152509.00003788@Huawei.com>
+ <20230915164841.15d20ecc@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20230915164841.15d20ecc@imammedo.users.ipa.redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BY5PR12MB3763:EE_|DM4PR12MB7597:EE_
+x-ms-office365-filtering-correlation-id: 619dec22-4545-4e60-5294-08dbbb2f05dc
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: SpzSHA3vZ9HJvHEHRkuh3zEk0oYHTZq0wsZahKQrgkZ9VFn8gS3Dtv+7kUyErbmeCaKQezXzT6Zmftl38EJ9SODAmSQWIM67sSOiLiLafLQTCS8VZfjFbMna+TimYTvgwJVBNSR6mOc7Av2c8sVrFfnAp9PW+5oTyOWgJM8R/FudvqnUkkZbYe7RaiGkGoZABtvIFVmyqgNYlcCkrnGkveFtqa//HOozxxN4xNZrY617WqmvzeBiba4mpdPXP8DKyd9LOYjXEjhr8d3DQUpULxCSay+lMEMYZjohJ5Pnk/LLtbpQLhEWbP89eL869RlkJALiSU/bL3UpAHTZ9vwl7Xye+DwibfGEMw5Da3ctN2/kbYfrQIqMJLt5WRG81I4PFZ1O+3q63Fl4mWwaopAR1KcvRExYfCCmeQV2gY6YZT/Wg14TdhZhx0O6TrtMEO4GS63ZMGnaj0C5QsLZfZMd+/UO80Fc+RtOGUE1z5yJCWZawsKu2/kowjWO4VWNScbfleWCMBDO8+bVUdC+zvpb9csXdNnHhNPyJsWpPJ5TosLDGnntU8ejbjDHIX8m1lwfwNkvh6qAuM83hVf86ad8Wg8r8OS5m7R5IXK2CvhFU/M=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR12MB3763.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376002)(396003)(366004)(346002)(136003)(39860400002)(1800799009)(186009)(451199024)(83380400001)(9686003)(26005)(7416002)(54906003)(64756008)(41300700001)(316002)(66476007)(8676002)(110136005)(66446008)(5660300002)(4326008)(8936002)(52536014)(66946007)(71200400001)(7696005)(6506007)(478600001)(2906002)(66556008)(76116006)(55016003)(33656002)(86362001)(38070700005)(38100700002)(122000001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?OhPhMHHLHx8wFqFDqKzANrOCSqstnW90oYnnS2exz9S2KUCjV8tcnYiizj/e?=
+ =?us-ascii?Q?3zyV6i78M8Mq2ydCZARXvgEvi5AY4zQxa5LG9WvOJPFzLxoQoscaE0IofxgU?=
+ =?us-ascii?Q?r1P4aYX8KB/MNELvLT5O/vFRV9G2+qRQq7uiX/cqVdEn6D+RwNETU/Ed9auz?=
+ =?us-ascii?Q?NpY/5tjy+zCylyueXCSGJHZpVImJDcT+56uHxnhNV2wVEq4IxCOShkGcgGYh?=
+ =?us-ascii?Q?JKX5iMdiJvEJbcbaBsvROIDFPXlOumhClh/qJjzOqHXYXR+fcey0MIge/I8P?=
+ =?us-ascii?Q?ISd25oW5N7JWFC880uIB6UwgaU4xKPhfzSLoGGjJ7bAaWIJAn/PpuXFWi/ej?=
+ =?us-ascii?Q?VJ4PVS/+EMsa38pvY/stxbSoWklZrtS7q9OAUmQHXFx3W8R0isgQjQb/Oayq?=
+ =?us-ascii?Q?iEePuUTMo0Zt/MEZ5eOu8I0NgcFl4e5wXue/DFCmq80T57RxxIy1Iw4JxFax?=
+ =?us-ascii?Q?5bFwKsNcPB1zA1ld0VZJVCGjcQMyyty/hqg1y1PDUu55IGAX+TLuZpNOv50Z?=
+ =?us-ascii?Q?3FvsNqg4Qj3GnVhZd6dhl1HFqsPAqqj1M9dzdjdmIuAMOSD7zQ6fi/qS4p0M?=
+ =?us-ascii?Q?8SV3DPJz9xnonTiiXLuNWVYl8agroXyeQVtGQzowpKW0DLESQ4vJYX2YX4ka?=
+ =?us-ascii?Q?iYOlW3Up8N2oW38uxQ1+j/698fZ49b2+5TphA909IBKvT3RLSLkI9Eqpu0jV?=
+ =?us-ascii?Q?TccyJ/CJgN90AGJb2HMwTy86dOGCvaHd4Ik+sCTF2EP5vf8dmt6m5X2ywu0y?=
+ =?us-ascii?Q?sjMKvS2qol6XM1aUcUzLM4NoLLdsJxbzgGotPnrVX1ujlmm0Exh3/RUUgwx0?=
+ =?us-ascii?Q?17p7a8xDQbrFVWIVUP95Up22b/SweKR6uE1HjoHd9wBwpSRzsJkRVsRvg7in?=
+ =?us-ascii?Q?fTRcJTPWyrX2wA+teKEnML1PzR2mzzYvoTSgHlZMYgUGehpLhHyUxMBbxTJ2?=
+ =?us-ascii?Q?pSt2GecZxcQnIZRlCwmwEphgUiGNjjRYv50k5AIRLO+jlIbYBJym9f6zuRPk?=
+ =?us-ascii?Q?Je9y3zCnf4vC/LrLSjgd+9Ysiq97sWW6303JNrBe7X2GVTsg67g/GnWyWLWR?=
+ =?us-ascii?Q?T65XYk4rc6qFdQYEbbu63wibYD81UgfcFU3gGPP70J41yq36x52bplT03xcW?=
+ =?us-ascii?Q?U4IAlXxH0lwpeWNPJUZgMYJt4sH6GZRfhpN6JyQo/1tetpw1P3P10K+CcYEi?=
+ =?us-ascii?Q?q2ReaS81qw+FLUMGWdJD9YRRQJoXzPt7vwcRjeVadPmC6p2KsalvXA7r28Oc?=
+ =?us-ascii?Q?aBOifIV6PRl5kZx54iISXrZbPC8a4vbQkeTlg7HyFiHrf/PedEZeAIhhprh5?=
+ =?us-ascii?Q?W2B+6sA5SAEjWfCTg4yeMiEGF0i9b6wfpQVNQEoPZ58/L9Cjt2Dw7dQRTbLG?=
+ =?us-ascii?Q?xKWU/P/kNRpomCzFn2iq2VyPzpVoyTwdNOR+Bv07rQDkmQH/nEUoXjenieLq?=
+ =?us-ascii?Q?W6IM/iHLhXzN65YreE5bknCYyyOsSXEWp4Ye/o0WpCF1Ar+lBAUZbgQo0/Ab?=
+ =?us-ascii?Q?jl/LLjJ2+X8RdUM5c0O5wzE0EQdFwY7o+7inllXhV/h1y3xiX8oq0bB6A3lL?=
+ =?us-ascii?Q?XyNpTjt7kec0bcDP0Jkx7tf9k81l215O5hirq/3X?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR12MB3763.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 619dec22-4545-4e60-5294-08dbbb2f05dc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Sep 2023 05:44:43.9098 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: MGsybIY/7ut5lMw++UY+cjVhZ7bw6qreAn4I1p3WTm4rxMkCpWnaUbfhRv9caHzCR8LYJCAWfT1irlZmKStNng==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB7597
+Received-SPF: softfail client-ip=2a01:111:f400:fe5b::62c;
+ envelope-from=ankita@nvidia.com;
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -165,113 +186,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gQRBXLmcglsF
+X-TUID: syHiLGChwg8O
 
-Hi Philippe,
+> Also, good to say why multiple nodes per device are needed.
+This is to support the GPU's MIG (Mult-Instance GPUs) feature,
+(https://www.nvidia.com/en-in/technologies/multi-instance-gpu/) which
+allows partitioning of the GPU device resources (including device memory) i=
+nto
+several isolated instances. We are creating multiple NUMA nodes to give
+each partition their own node. Now the partitions are not fixed and they=20
+can be created/deleted and updated in (memory) sizes at runtime. This is
+the reason these nodes are tagged as MEM_AFFINITY_HOTPLUGGABLE. Such
+setting allows flexibility in the VM to associate a desired partition/range=
+=20
+of device memory to a node (that is adjustable). Note that we are replicati=
+ng
+the behavior on baremetal here.
 
-On 9/12/23 08:40, Gavin Shan wrote:
-> On 9/11/23 19:43, Philippe Mathieu-Daudé wrote:
->> On 11/9/23 01:28, Gavin Shan wrote:
->>> On 9/8/23 21:22, Philippe Mathieu-Daudé wrote:
->>>> Add a field to return the QOM type name of a CPU class.
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>> ---
->>>>   include/hw/core/cpu.h   | 2 ++
->>>>   hw/core/cpu-common.c    | 2 +-
->>>>   target/alpha/cpu.c      | 1 +
->>>>   target/arm/cpu.c        | 1 +
->>>>   target/avr/cpu.c        | 1 +
->>>>   target/cris/cpu.c       | 1 +
->>>>   target/hexagon/cpu.c    | 1 +
->>>>   target/hppa/cpu.c       | 1 +
->>>>   target/i386/cpu.c       | 1 +
->>>>   target/loongarch/cpu.c  | 1 +
->>>>   target/m68k/cpu.c       | 1 +
->>>>   target/microblaze/cpu.c | 1 +
->>>>   target/mips/cpu.c       | 1 +
->>>>   target/nios2/cpu.c      | 1 +
->>>>   target/openrisc/cpu.c   | 1 +
->>>>   target/ppc/cpu_init.c   | 1 +
->>>>   target/riscv/cpu.c      | 1 +
->>>>   target/rx/cpu.c         | 1 +
->>>>   target/s390x/cpu.c      | 1 +
->>>>   target/sh4/cpu.c        | 1 +
->>>>   target/sparc/cpu.c      | 1 +
->>>>   target/tricore/cpu.c    | 1 +
->>>>   target/xtensa/cpu.c     | 1 +
->>>>   23 files changed, 24 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
->>>> index 129d179937..e469efd409 100644
->>>> --- a/include/hw/core/cpu.h
->>>> +++ b/include/hw/core/cpu.h
->>>> @@ -100,6 +100,7 @@ struct SysemuCPUOps;
->>>>   /**
->>>>    * CPUClass:
->>>> + * @cpu_resolving_type: CPU QOM type name
->>>>    * @class_by_name: Callback to map -cpu command line model name to an
->>>>    *                 instantiatable CPU type.
->>>>    * @parse_features: Callback to parse command line arguments.
->>>> @@ -148,6 +149,7 @@ struct CPUClass {
->>>>       DeviceClass parent_class;
->>>>       /*< public >*/
->>>> +    const char *cpu_resolving_type;
->>>>       ObjectClass *(*class_by_name)(const char *cpu_model);
->>>>       void (*parse_features)(const char *typename, char *str, Error **errp);
->>>
->>> The question is why not use CPU_RESOLVING_TYPE directly? It seems CPU_RESOLVING_TYPE
->>> is exactly what you want here.
->>
->> Unfortunately CPU_RESOLVING_TYPE is target-specific, we want
->> hw/core/cpu-common.c to be target-agnostic (build once for all
->> targets). This is particularly important in the context of
->> heterogeneous QEMU, where a single binary will be able to create
->> CPUs from different targets.
->>
-> 
-> CPU_RESOLVING_TYPE and CPUClass::cpu_resolving_type is duplicate to
-> each other. There are two options I can figure out to avoid the
-> duplication.
-> 
-> (a) move cpu_class_by_name() from hw/core/cpu-common.c to cpu.c, so that
->      CPU_RESOLVING_TYPE can be seen. cpu.c::list_cpus() is the example.
-> 
-> (b) remove hw/core/cpu-common.c::cpu_calss_by_name() and squeeze its
->      logic to cpu.c::parse_cpu_option() since there are not too much
->      users for it. target/arm and target/s390 needs some tweaks so that
->      hw/core/cpu-common.c::cpu_calss_by_name() can be removed.
-> 
->      [gshan@gshan q]$ git grep \ cpu_class_by_name\(
->      cpu.c:    oc = cpu_class_by_name(CPU_RESOLVING_TYPE, model_pieces[0]);
->      target/arm/arm-qmp-cmds.c:    oc = cpu_class_by_name(TYPE_ARM_CPU, model->name);
->      target/s390x/cpu_models_sysemu.c:    oc = cpu_class_by_name(TYPE_S390_CPU, info->name);
-> 
-> When option (b) is taken, this series to have the checks against @oc
-> in hw/core/cpu-common.c::cpu_calss_by_name() becomes non-sense. Instead,
-> we need the same (and complete) checks in CPUClass::class_by_name() for
-> individual targets. Further more, an inline helper can be provided to do
-> the check in CPUClass::class_by_name() for individual targets.
-> 
->     include/hw/core/cpu.h
-> 
->     static inline bool cpu_class_is_valid(ObjectClass *oc, const char *parent)
->     {
->         if (!object_class_dynamic_cast(oc, parent) ||
->             object_class_is_abstract(oc)) {
->             return false;
->         }
-> 
->         return true;
->     }
-> 
+I will also put this detail on the cover letter in the next version.
 
-Since my series to make CPU type check unified depends on this series, could
-you please share your thoughts? If you don't have bandwidth for this, I can
-improve the code based on your thoughts, and include your patches to my series
-so that they can be reviewed at once. Please just let me know.
+> QEMU have already means to assign NUMA node affinity
+> to PCI hierarchies in generic way by using a PBX per node
+> (also done 'backwards') by setting node option on it.
+> So every device behind it should belong to that node as well
+> and guest OS shall pickup device affinity from PCI tree it belongs to.
 
-Thanks,
-Gavin
-
-
+Yes, but the problem is that only one node may be associated this way
+and we have several.

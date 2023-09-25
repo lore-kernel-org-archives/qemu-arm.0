@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id h12-20020a5d688c000000b0031779a6b451sm11975569wru.83.2023.09.25.07.48.55
+        by smtp.gmail.com with ESMTPSA id w12-20020a5d608c000000b003179d5aee67sm12080936wrt.94.2023.09.25.07.48.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Sep 2023 07:48:55 -0700 (PDT)
+        Mon, 25 Sep 2023 07:48:57 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6E5AF1FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id C02DE1FFC1;
 	Mon, 25 Sep 2023 15:48:55 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -48,116 +48,71 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Leif Lindholm <quic_llindhol@quicinc.com>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH 03/31] gitlab: shuffle some targets and reduce avocado noise
-Date: Mon, 25 Sep 2023 15:48:26 +0100
-Message-Id: <20230925144854.1872513-4-alex.bennee@linaro.org>
+Subject: [PATCH 06/31] configure: allow user to override docker engine
+Date: Mon, 25 Sep 2023 15:48:29 +0100
+Message-Id: <20230925144854.1872513-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230925144854.1872513-1-alex.bennee@linaro.org>
 References: <20230925144854.1872513-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Syv7p5+tJUi3
+X-TUID: z/RtWldupCNz
 
-We move a couple of targets out of the avocado runs because there are
-no tests to run. Tricore already has some coverage.  The cris target
-only really has check-tcg tests but its getting harder to find
-anything that packages the compiler.
-
-To reduce the noise of CANCEL messages we also set AVOCADO_TAGS
-appropriately so we filter down the number of tests we attempt.
+If you have both engines installed but one is broken you are stuck
+with the automagic. Allow the user to override the engine for this
+case.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
 ---
-v2
-  - minor commit reword, no longer attempt to keep cris going
----
- .gitlab-ci.d/buildtest.yml | 15 +++++++++++----
- 1 file changed, 11 insertions(+), 4 deletions(-)
+ configure | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index aee9101507..25af1bc41e 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -30,6 +30,7 @@ avocado-system-alpine:
-   variables:
-     IMAGE: alpine
-     MAKE_CHECK_ARGS: check-avocado
-+    AVOCADO_TAGS: arch:avr arch:loongarch64 arch:mips64 arch:mipsel
+diff --git a/configure b/configure
+index 707132a3ae..ebad155d9e 100755
+--- a/configure
++++ b/configure
+@@ -180,6 +180,7 @@ fi
+ # some defaults, based on the host environment
  
- build-system-ubuntu:
-   extends:
-@@ -40,8 +41,7 @@ build-system-ubuntu:
-   variables:
-     IMAGE: ubuntu2204
-     CONFIGURE_ARGS: --enable-docs
--    TARGETS: alpha-softmmu cris-softmmu hppa-softmmu
--      microblazeel-softmmu mips64el-softmmu
-+    TARGETS: alpha-softmmu microblazeel-softmmu mips64el-softmmu
-     MAKE_CHECK_ARGS: check-build
+ # default parameters
++container_engine="auto"
+ cpu=""
+ cross_compile="no"
+ cross_prefix=""
+@@ -787,6 +788,8 @@ for opt do
+   ;;
+   --disable-containers) use_containers="no"
+   ;;
++  --container-engine=*) container_engine="$optarg"
++  ;;
+   --gdb=*) gdb_bin="$optarg"
+   ;;
+   # everything else has the same name in configure and meson
+@@ -921,6 +924,7 @@ Advanced options (experts only):
+   --enable-plugins
+                            enable plugins via shared library loading
+   --disable-containers     don't use containers for cross-building
++  --container-engine=TYPE  which container engine to use [$container_engine]
+   --gdb=GDB-path           gdb to use for gdbstub tests [$gdb_bin]
+ EOF
+   meson_options_help
+@@ -1195,14 +1199,14 @@ fi
+ container="no"
+ runc=""
+ if test $use_containers = "yes" && (has "docker" || has "podman"); then
+-    case $($python "$source_path"/tests/docker/docker.py probe) in
++    case $($python "$source_path"/tests/docker/docker.py --engine "$container_engine" probe) in
+         *docker) container=docker ;;
+         podman) container=podman ;;
+         no) container=no ;;
+     esac
+     if test "$container" != "no"; then
+         docker_py="$python $source_path/tests/docker/docker.py --engine $container"
+-        runc=$($python "$source_path"/tests/docker/docker.py probe)
++        runc=$container
+     fi
+ fi
  
- check-system-ubuntu:
-@@ -61,6 +61,7 @@ avocado-system-ubuntu:
-   variables:
-     IMAGE: ubuntu2204
-     MAKE_CHECK_ARGS: check-avocado
-+    AVOCADO_TAGS: arch:alpha arch:microblaze arch:mips64el
- 
- build-system-debian:
-   extends:
-@@ -72,7 +73,7 @@ build-system-debian:
-     IMAGE: debian-amd64
-     CONFIGURE_ARGS: --with-coroutine=sigaltstack
-     TARGETS: arm-softmmu i386-softmmu riscv64-softmmu sh4eb-softmmu
--      sparc-softmmu xtensaeb-softmmu
-+      sparc-softmmu xtensa-softmmu
-     MAKE_CHECK_ARGS: check-build
- 
- check-system-debian:
-@@ -92,6 +93,7 @@ avocado-system-debian:
-   variables:
-     IMAGE: debian-amd64
-     MAKE_CHECK_ARGS: check-avocado
-+    AVOCADO_TAGS: arch:arm arch:i386 arch:riscv64 arch:sh4 arch:sparc arch:xtensa
- 
- crash-test-debian:
-   extends: .native_test_job_template
-@@ -114,7 +116,7 @@ build-system-fedora:
-   variables:
-     IMAGE: fedora
-     CONFIGURE_ARGS: --disable-gcrypt --enable-nettle --enable-docs
--    TARGETS: tricore-softmmu microblaze-softmmu mips-softmmu
-+    TARGETS: microblaze-softmmu mips-softmmu
-       xtensa-softmmu m68k-softmmu riscv32-softmmu ppc-softmmu sparc64-softmmu
-     MAKE_CHECK_ARGS: check-build
- 
-@@ -135,6 +137,8 @@ avocado-system-fedora:
-   variables:
-     IMAGE: fedora
-     MAKE_CHECK_ARGS: check-avocado
-+    AVOCADO_TAGS: arch:microblaze arch:mips arch:xtensa arch:m68k
-+      arch:riscv32 arch:ppc arch:sparc64
- 
- crash-test-fedora:
-   extends: .native_test_job_template
-@@ -180,6 +184,8 @@ avocado-system-centos:
-   variables:
-     IMAGE: centos8
-     MAKE_CHECK_ARGS: check-avocado
-+    AVOCADO_TAGS: arch:ppc64 arch:or1k arch:390x arch:x86_64 arch:rx
-+      arch:sh4 arch:nios2
- 
- build-system-opensuse:
-   extends:
-@@ -209,6 +215,7 @@ avocado-system-opensuse:
-   variables:
-     IMAGE: opensuse-leap
-     MAKE_CHECK_ARGS: check-avocado
-+    AVOCADO_TAGS: arch:s390x arch:x86_64 arch:aarch64
- 
- 
- # This jobs explicitly disable TCG (--disable-tcg), KVM is detected by
 -- 
 2.39.2

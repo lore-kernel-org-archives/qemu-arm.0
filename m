@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id b15-20020adfde0f000000b0031c6cc74882sm12131874wrm.107.2023.09.25.07.58.42
+        by smtp.gmail.com with ESMTPSA id t18-20020a1c7712000000b00405959469afsm1657004wmi.3.2023.09.25.07.58.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 25 Sep 2023 07:58:45 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 2D54A1FFCF;
-	Mon, 25 Sep 2023 15:48:58 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 2129D1FFC9;
+	Mon, 25 Sep 2023 15:48:57 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -47,40 +47,81 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH 26/31] contrib/plugins: fix coverity warning in hotblocks
-Date: Mon, 25 Sep 2023 15:48:49 +0100
-Message-Id: <20230925144854.1872513-27-alex.bennee@linaro.org>
+	Beraldo Leal <bleal@redhat.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 17/31] target/arm: Remove references to gdb_has_xml
+Date: Mon, 25 Sep 2023 15:48:40 +0100
+Message-Id: <20230925144854.1872513-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230925144854.1872513-1-alex.bennee@linaro.org>
 References: <20230925144854.1872513-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: DECR5KGG2FBA
+X-TUID: MRjQ5Y88yvfl
 
-Coverity complains that we have an unbalance use of mutex leading to
-potential deadlocks.
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-Fixes: CID 1519048
+GDB has XML support since 6.7 which was released in 2007.
+It's time to remove support for old GDB versions without XML support.
+
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Acked-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20230912224107.29669-10-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- contrib/plugins/hotblocks.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/gdbstub.c | 32 ++------------------------------
+ 1 file changed, 2 insertions(+), 30 deletions(-)
 
-diff --git a/contrib/plugins/hotblocks.c b/contrib/plugins/hotblocks.c
-index 6b74d25fea..4de1b13494 100644
---- a/contrib/plugins/hotblocks.c
-+++ b/contrib/plugins/hotblocks.c
-@@ -69,8 +69,8 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
-         }
- 
-         g_list_free(it);
--        g_mutex_unlock(&lock);
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 8fc8351df7..b7ace24bfc 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -46,21 +46,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+         /* Core integer register.  */
+         return gdb_get_reg32(mem_buf, env->regs[n]);
      }
-+    g_mutex_unlock(&lock);
- 
-     qemu_plugin_outs(report->str);
- }
+-    if (n < 24) {
+-        /* FPA registers.  */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return gdb_get_zeroes(mem_buf, 12);
+-    }
+-    switch (n) {
+-    case 24:
+-        /* FPA status register.  */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return gdb_get_reg32(mem_buf, 0);
+-    case 25:
++    if (n == 25) {
+         /* CPSR, or XPSR for M-profile */
+         if (arm_feature(env, ARM_FEATURE_M)) {
+             return gdb_get_reg32(mem_buf, xpsr_read(env));
+@@ -100,21 +86,7 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+         env->regs[n] = tmp;
+         return 4;
+     }
+-    if (n < 24) { /* 16-23 */
+-        /* FPA registers (ignored).  */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return 12;
+-    }
+-    switch (n) {
+-    case 24:
+-        /* FPA status register (ignored).  */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return 4;
+-    case 25:
++    if (n == 25) {
+         /* CPSR, or XPSR for M-profile */
+         if (arm_feature(env, ARM_FEATURE_M)) {
+             /*
 -- 
 2.39.2

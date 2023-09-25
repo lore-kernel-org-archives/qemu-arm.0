@@ -1,159 +1,218 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp297194ejc;
-        Mon, 25 Sep 2023 04:05:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEDiHSYbWcFABbEdZCpqKng+Sb8CJ9YYUAaT7aSbzGArSZmZM1AOaNlOiQytnTqLSsmSJsg
-X-Received: by 2002:a0c:f105:0:b0:658:41ee:faf2 with SMTP id i5-20020a0cf105000000b0065841eefaf2mr5549223qvl.23.1695639950514;
-        Mon, 25 Sep 2023 04:05:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695639950; cv=none;
-        d=google.com; s=arc-20160816;
-        b=oI5Kw7l2EDi0iw+jCuTvt6USjwqcVXDw096RvdD/61dBB8eVKdD/OALOD42mlV6LAX
-         YzDnNNFDAg4vfkhShf6k3FezKSgAl/NUy65DKx77DcqUB9L33Cq8nCpvTYqwrcfGcIYw
-         5zFNrKEXW0zU8Fs1VVNSSnlMJUSOKvCvZCyPO0E5UqzjkhcbdjAiOkCA4YZiT+O0ipYn
-         JJsYg15AZtAIFI3p8EQSPEBNHhBcyUvjJoOgVdr59Ck+kuSVpS3scp4rD0yL5t2n1Vxx
-         Mj+p+iJeFJrW5weB7HiAGmUQ6nQ2pgPQeiS2wIYMVu+Mvf6ywegfzZg1PK18M1fZjtuF
-         8ttA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dkim-signature;
-        bh=tSiXhg7O6fxSFsDaE+jTLIFbtfmyKZG1tiIh/KHykFc=;
-        fh=AH7BRwb9ILkE1lrhGqqy4gY6T9cx/fm1lA54JJ23CXE=;
-        b=Y4hbQ89ENZmVR36n5ewB97BVZclUrSsLTPrDy2kUCgshcSpln6SXJoDmdJHVvb0YuZ
-         z3qciQNqcavwoaHyhrNxWcNiTEmilQippFOwStONOgU0Is8nm0grU6MAvbRfLO4Pfcvq
-         m1XBXTuinETozghHZ9HHjaTZOf6yL3/ov5Q37dMp9g6OvDvl6W0F9H8n3aWIBlVp4LRe
-         /E8aUa1rnMI50HsAPmJVO2rrpGBZrqNJBtDQDi2UEIp3Ppc++poQ9cxIcCRZa25uYAx8
-         mdFcL6WjzzMljYoG+k0zpLjtLfpGoswvuOQXRfPZ5RBeVV/JYbPqqOmXruiKY2pRTV73
-         TSQA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="OyUL8/7N";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p17-20020a0ce191000000b0065b06024b4asi1670193qvl.317.2023.09.25.04.05.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Sep 2023 04:05:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="OyUL8/7N";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qkjPL-0006bg-Q9; Mon, 25 Sep 2023 07:05:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qkjPJ-0006aY-Qw
- for qemu-arm@nongnu.org; Mon, 25 Sep 2023 07:05:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qkjPH-0003Tg-RQ
- for qemu-arm@nongnu.org; Mon, 25 Sep 2023 07:05:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695639939;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tSiXhg7O6fxSFsDaE+jTLIFbtfmyKZG1tiIh/KHykFc=;
- b=OyUL8/7NFWDcRi09aUzqIzHsrMGZRVdqWsXaexujWUvlQoUOfFgRgGDeX94rf16oHFITbg
- 2W+VGys9nrOI6pPiU10fkZbWFBsaamGeg3whA3zkhA0REO3VlbrXZPM8SfbuU+D2wWLrG7
- Sk7yQxMyFxx1k/vMvhA0+RFd3IoKZfQ=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-576-KRqn2h0aO22BKQkZTTMpRg-1; Mon, 25 Sep 2023 07:05:37 -0400
-X-MC-Unique: KRqn2h0aO22BKQkZTTMpRg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C598A29A9D4F;
- Mon, 25 Sep 2023 11:05:36 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A28A140C2064;
- Mon, 25 Sep 2023 11:05:36 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id A02EB21E6900; Mon, 25 Sep 2023 13:05:35 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [PATCH v2 00/15] hw: Use QOM alias properties and few QOM/QDev
- cleanups
-References: <20230203145536.17585-1-philmd@linaro.org>
- <06ed6fa4-1891-998c-f962-bf5a635c23fd@linaro.org>
-Date: Mon, 25 Sep 2023 13:05:35 +0200
-In-Reply-To: <06ed6fa4-1891-998c-f962-bf5a635c23fd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 19 Sep 2023 14:35:34
- +0200")
-Message-ID: <877coe8qdc.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id w12-20020a5d608c000000b0031c6e1ea4c7sm12057674wrt.90.2023.09.25.07.48.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Sep 2023 07:48:55 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id E44CB1FFBB;
+	Mon, 25 Sep 2023 15:48:54 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair.francis@wdc.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	John Snow <jsnow@redhat.com>,
+	libvir-list@redhat.com,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-s390x@nongnu.org,
+	Song Gao <gaosong@loongson.cn>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Weiwei Li <liweiwei@iscas.ac.cn>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Cleber Rosa <crosa@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Bin Meng <bin.meng@windriver.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+	qemu-ppc@nongnu.org,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-riscv@nongnu.org,
+	qemu-arm@nongnu.org,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Beraldo Leal <bleal@redhat.com>
+Subject: [PATCH 00/31] September maintainer omnibus (tests, gdbstub, plugins)
+Date: Mon, 25 Sep 2023 15:48:23 +0100
+Message-Id: <20230925144854.1872513-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J7nfz3liBZes
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: iATn4WQRA/WK
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+Hi,
 
-> On 3/2/23 15:55, Philippe Mathieu-Daud=C3=A9 wrote:
->> Since v1:
->> - Addressed Markus & Zoltan review comments
->> - Introduce/use qdev_unrealize_and_unref()
->> These patches are extracted from a QOM/QDev refactor series,
->> so they are preliminary cleanups noticed while working on it:
->> - Use correct type when calling qdev_prop_set_xxx()
->> - Unify some qdev properties in MIPS models
->> - Replace intermediate properties by link properties
->> - Remove DEFINE_PROP_DMAADDR() macro which is used one time
->> - Use qdev_realize_and_unref() instead of open-coding it
->> Philippe Mathieu-Daud=C3=A9 (15):
->>    hw/pci/pcie_sriov: Replace fprintf(error_pretty) ->
->>      warn_reportf_err()
->>    hw/qdev: Introduce qdev_unrealize_and_unref()
->>    linux-user/syscall: Do not open-code qdev_unrealize_and_unref()
->>    hw/pci/pcie_sriov: Do not open-code qdev_unrealize_and_unref()
->>    hw/i386/sgx: Do not open-code qdev_realize_and_unref()
->>    hw/ppc/sam460ex: Correctly set MAL properties
->>    hw/arm/nrf51: Alias 'flash-size' QOM property in SoC object
->>    hw/arm/fsl-imx: Alias 'phy-num' QOM property in SoC object
->>    hw/usb/hcd-ohci: Include missing 'sysbus.h' header
->>    hw/display/sm501: Embed OHCI QOM child in chipset
->>    hw/display/sm501: Alias 'dma-offset' QOM property in chipset object
->>    hw/display/sm501: Unify common QOM properties
->>    hw/qdev: Remove DEFINE_PROP_DMAADDR() and 'hw/qdev-dma.h'
->>    hw/mips: Declare all length properties as unsigned
->>    hw/mips/itu: Pass SAAR using QOM link property
->
-> Ping for review?
+This wraps up my current testing, gdbstub and plugin trees in an
+attempt to do my part to reduce the qemu-devel fire hose.
 
-Needs a rebase.  I reviewed some all the same.  If you want more from me
-before you respin, let me know.
+For testing we have a number of cleanups to configure to better handle
+selecting the container engine (removing the ability to dynamically
+switch). I had to do this as one of my build boxes has recently
+acquired a broken podman install. There are also some updates to
+avocado sbsa-ref as well as tweaks to the gitlab setup to minimise the
+amount of wheel spinning we do. The deprecation of CRIS is a little
+provocative but if we do want to keep it we need to stop relying on a
+rapidly dated fedora image to do it. Finally we include the swtpm
+package to widen the testing we do through avocado.
 
+The gdbstub updates are from Akihiko and include a bunch of clean-ups
+that will hopefully pave the way for another series which allows the
+plugins to access register values using the gdb backend to source the
+data.
+
+Finally the plugins has a few fixes which includes a tweak to make SH4
+atomic modelling more plugin friendly. This allows for Matt's fix to
+deal with non-regular instruction encoding spanning pages. I also fix
+a number of coverity warnings.
+
+The final time control patches are still RFC and not ready for merging
+but I include them for completeness.
+
+The following still need review:
+
+  contrib/plugins: add iops plugin example for cost modelling
+  plugins: add time control API
+  sysemu: generalise qtest_warp_clock as qemu_clock_advance_virtual_time
+  qtest: use cpu interface in qtest_clock_warp (1 acks, 1 sobs, 0 tbs)
+  contrib/plugins: fix coverity warning in hotblocks
+  contrib/plugins: fix coverity warning in lockstep
+  contrib/plugins: fix coverity warning in cache
+  configure: ensure dependency for cross-compile setup
+  configure: remove gcc version suffixes
+  configure: allow user to override docker engine
+  tests/docker: make docker engine choice entirely configure driven
+  docs: mark CRIS support as deprecated
+  tests/lcitool: add swtpm to the package list
+
+Akihiko Odaki (12):
+  gdbstub: Fix target_xml initialization
+  gdbstub: Fix target.xml response
+  plugins: Check if vCPU is realized
+  contrib/plugins: Use GRWLock in execlog
+  gdbstub: Introduce GDBFeature structure
+  target/arm: Move the reference to arm-core.xml
+  hw/core/cpu: Return static value with gdb_arch_name()
+  gdbstub: Use g_markup_printf_escaped()
+  target/arm: Remove references to gdb_has_xml
+  target/ppc: Remove references to gdb_has_xml
+  gdbstub: Remove gdb_has_xml variable
+  gdbstub: Replace gdb_regs with an array
+
+Alex Bennée (15):
+  tests/lcitool: add swtpm to the package list
+  gitlab: shuffle some targets and reduce avocado noise
+  docs: mark CRIS support as deprecated
+  tests/docker: make docker engine choice entirely configure driven
+  configure: allow user to override docker engine
+  configure: remove gcc version suffixes
+  configure: ensure dependency for cross-compile setup
+  contrib/plugins: fix coverity warning in cache
+  contrib/plugins: fix coverity warning in lockstep
+  contrib/plugins: fix coverity warning in hotblocks
+  sysemu: add set_virtual_time to accel ops
+  qtest: use cpu interface in qtest_clock_warp
+  sysemu: generalise qtest_warp_clock as qemu_clock_advance_virtual_time
+  plugins: add time control API
+  contrib/plugins: add iops plugin example for cost modelling
+
+Marcin Juszkiewicz (1):
+  tests/avocado: update firmware to enable sbsa-ref/neoverse-v1
+
+Matt Borgerson (1):
+  plugins: Set final instruction count in plugin_gen_tb_end
+
+Richard Henderson (2):
+  accel/tcg: Add plugin_enabled to DisasContextBase
+  target/sh4: Disable decode_gusa when plugins enabled
+
+ MAINTAINERS                                   |   2 +-
+ docs/about/deprecated.rst                     |  11 +
+ configure                                     |  15 +-
+ meson.build                                   |   2 +-
+ gdbstub/internals.h                           |   2 -
+ include/exec/gdbstub.h                        |  17 +-
+ include/exec/plugin-gen.h                     |   4 +-
+ include/exec/translator.h                     |   2 +
+ include/hw/core/cpu.h                         |   4 +-
+ include/qemu/qemu-plugin.h                    |  19 ++
+ include/qemu/timer.h                          |  15 +
+ include/sysemu/accel-ops.h                    |  18 +-
+ include/sysemu/cpu-timers.h                   |  27 +-
+ include/sysemu/qtest.h                        |   1 +
+ target/ppc/internal.h                         |   2 +-
+ accel/qtest/qtest.c                           |   1 +
+ accel/tcg/plugin-gen.c                        |   6 +-
+ accel/tcg/translator.c                        |   3 +-
+ contrib/plugins/cache.c                       |  18 +-
+ contrib/plugins/execlog.c                     |  16 +-
+ contrib/plugins/hotblocks.c                   |   2 +-
+ contrib/plugins/iops.c                        | 261 ++++++++++++++++++
+ contrib/plugins/lockstep.c                    |  13 +-
+ gdbstub/gdbstub.c                             |  95 +++----
+ gdbstub/softmmu.c                             |   2 +-
+ plugins/api.c                                 |  28 ++
+ plugins/core.c                                |   2 +-
+ softmmu/cpus.c                                |  11 +
+ softmmu/qtest.c                               |  26 +-
+ ...t-virtual-clock.c => cpus-virtual-clock.c} |   5 +
+ stubs/gdbstub.c                               |   6 +-
+ target/arm/cpu.c                              |   9 +-
+ target/arm/cpu64.c                            |   4 +-
+ target/arm/gdbstub.c                          |  32 +--
+ target/i386/cpu.c                             |   6 +-
+ target/loongarch/cpu.c                        |   8 +-
+ target/ppc/gdbstub.c                          |  24 +-
+ target/riscv/cpu.c                            |   6 +-
+ target/s390x/cpu.c                            |   4 +-
+ target/sh4/translate.c                        |  41 ++-
+ target/tricore/cpu.c                          |   4 +-
+ util/qemu-timer.c                             |  26 ++
+ .gitlab-ci.d/buildtest.yml                    |  15 +-
+ .gitlab-ci.d/cirrus/macos-12.vars             |   2 +-
+ contrib/plugins/Makefile                      |   1 +
+ plugins/qemu-plugins.symbols                  |   2 +
+ scripts/feature_to_c.py                       |  48 ++++
+ scripts/feature_to_c.sh                       |  69 -----
+ stubs/meson.build                             |   2 +-
+ tests/avocado/machine_aarch64_sbsaref.py      |  25 +-
+ tests/docker/Makefile.include                 |   7 +-
+ tests/docker/dockerfiles/alpine.docker        |   1 +
+ tests/docker/dockerfiles/centos8.docker       |   1 +
+ .../dockerfiles/debian-amd64-cross.docker     |   1 +
+ tests/docker/dockerfiles/debian-amd64.docker  |   1 +
+ .../dockerfiles/debian-arm64-cross.docker     |   1 +
+ .../dockerfiles/debian-armhf-cross.docker     |   1 +
+ .../dockerfiles/debian-ppc64el-cross.docker   |   1 +
+ .../dockerfiles/debian-s390x-cross.docker     |   1 +
+ .../dockerfiles/fedora-win32-cross.docker     |   1 +
+ .../dockerfiles/fedora-win64-cross.docker     |   1 +
+ tests/docker/dockerfiles/fedora.docker        |   1 +
+ tests/docker/dockerfiles/opensuse-leap.docker |   1 +
+ tests/docker/dockerfiles/ubuntu2204.docker    |   1 +
+ tests/lcitool/libvirt-ci                      |   2 +-
+ tests/lcitool/projects/qemu.yml               |   1 +
+ 66 files changed, 689 insertions(+), 298 deletions(-)
+ create mode 100644 contrib/plugins/iops.c
+ rename stubs/{cpus-get-virtual-clock.c => cpus-virtual-clock.c} (68%)
+ create mode 100755 scripts/feature_to_c.py
+ delete mode 100644 scripts/feature_to_c.sh
+
+-- 
+2.39.2

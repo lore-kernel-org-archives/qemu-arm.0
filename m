@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id w12-20020a5d608c000000b003179d5aee67sm12080936wrt.94.2023.09.25.07.48.56
+        by smtp.gmail.com with ESMTPSA id bw10-20020a0560001f8a00b0032326908972sm3557423wrb.17.2023.09.25.07.48.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 25 Sep 2023 07:48:57 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C02DE1FFC1;
+	by zen.linaroharston (Postfix) with ESMTP id F3B991FFC2;
 	Mon, 25 Sep 2023 15:48:55 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -48,71 +48,38 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Leif Lindholm <quic_llindhol@quicinc.com>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH 06/31] configure: allow user to override docker engine
-Date: Mon, 25 Sep 2023 15:48:29 +0100
-Message-Id: <20230925144854.1872513-7-alex.bennee@linaro.org>
+Subject: [PATCH 08/31] configure: ensure dependency for cross-compile setup
+Date: Mon, 25 Sep 2023 15:48:31 +0100
+Message-Id: <20230925144854.1872513-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230925144854.1872513-1-alex.bennee@linaro.org>
 References: <20230925144854.1872513-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: z/RtWldupCNz
+X-TUID: BAEVTGvkH0zw
 
-If you have both engines installed but one is broken you are stuck
-with the automagic. Allow the user to override the engine for this
-case.
+If we update configure we should make sure we regenerate all the
+compiler details. We should also ensure those details are upto date
+before building the TCG tests.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- configure | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ configure | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/configure b/configure
-index 707132a3ae..ebad155d9e 100755
+index e83872571d..a95e0f5767 100755
 --- a/configure
 +++ b/configure
-@@ -180,6 +180,7 @@ fi
- # some defaults, based on the host environment
+@@ -1788,6 +1788,8 @@ for target in $target_list; do
+           echo "HOST_GDB_SUPPORTS_ARCH=y" >> "$config_target_mak"
+       fi
  
- # default parameters
-+container_engine="auto"
- cpu=""
- cross_compile="no"
- cross_prefix=""
-@@ -787,6 +788,8 @@ for opt do
-   ;;
-   --disable-containers) use_containers="no"
-   ;;
-+  --container-engine=*) container_engine="$optarg"
-+  ;;
-   --gdb=*) gdb_bin="$optarg"
-   ;;
-   # everything else has the same name in configure and meson
-@@ -921,6 +924,7 @@ Advanced options (experts only):
-   --enable-plugins
-                            enable plugins via shared library loading
-   --disable-containers     don't use containers for cross-building
-+  --container-engine=TYPE  which container engine to use [$container_engine]
-   --gdb=GDB-path           gdb to use for gdbstub tests [$gdb_bin]
- EOF
-   meson_options_help
-@@ -1195,14 +1199,14 @@ fi
- container="no"
- runc=""
- if test $use_containers = "yes" && (has "docker" || has "podman"); then
--    case $($python "$source_path"/tests/docker/docker.py probe) in
-+    case $($python "$source_path"/tests/docker/docker.py --engine "$container_engine" probe) in
-         *docker) container=docker ;;
-         podman) container=podman ;;
-         no) container=no ;;
-     esac
-     if test "$container" != "no"; then
-         docker_py="$python $source_path/tests/docker/docker.py --engine $container"
--        runc=$($python "$source_path"/tests/docker/docker.py probe)
-+        runc=$container
-     fi
- fi
- 
++      echo "$config_target_mak: configure" >> Makefile.prereqs
++      echo "build-tcg-tests-$target: $config_target_mak" >> Makefile.prereqs
+       echo "run-tcg-tests-$target: $qemu\$(EXESUF)" >> Makefile.prereqs
+       tcg_tests_targets="$tcg_tests_targets $target"
+   fi
 -- 
 2.39.2

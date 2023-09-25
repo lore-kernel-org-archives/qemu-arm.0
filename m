@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id b12-20020a5d634c000000b0031773a8e5c4sm12054037wrw.37.2023.09.25.07.58.41
+        by smtp.gmail.com with ESMTPSA id o13-20020adfeacd000000b00317f3fd21b7sm12170189wrn.80.2023.09.25.07.58.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 25 Sep 2023 07:58:42 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B57851FFD5;
-	Mon, 25 Sep 2023 15:48:58 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id B38181FFCD;
+	Mon, 25 Sep 2023 15:48:57 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -48,125 +48,91 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Leif Lindholm <quic_llindhol@quicinc.com>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [RFC PATCH 30/31] plugins: add time control API
-Date: Mon, 25 Sep 2023 15:48:53 +0100
-Message-Id: <20230925144854.1872513-31-alex.bennee@linaro.org>
+Subject: [PATCH 22/31] target/sh4: Disable decode_gusa when plugins enabled
+Date: Mon, 25 Sep 2023 15:48:45 +0100
+Message-Id: <20230925144854.1872513-23-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230925144854.1872513-1-alex.bennee@linaro.org>
 References: <20230925144854.1872513-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8n1SFCltcXpf
+X-TUID: tf1WnZGm3es5
 
-Expose the ability to control time through the plugin API. Only one
-plugin can control time so it has to request control when loaded.
-There are probably more corner cases to catch here.
+From: Richard Henderson <richard.henderson@linaro.org>
 
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230824181233.1568795-3-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230519170454.2353945-8-alex.bennee@linaro.org>
-
 ---
-v2
-  - ifdef for SOFTMMU only
-  - fix checkpatch warnings
----
- include/qemu/qemu-plugin.h   | 19 +++++++++++++++++++
- plugins/api.c                | 28 ++++++++++++++++++++++++++++
- plugins/qemu-plugins.symbols |  2 ++
- 3 files changed, 49 insertions(+)
+ target/sh4/translate.c | 41 +++++++++++++++++++++++++++++------------
+ 1 file changed, 29 insertions(+), 12 deletions(-)
 
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index 50a9957279..898385d92d 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -536,7 +536,26 @@ void qemu_plugin_register_vcpu_mem_inline(struct qemu_plugin_insn *insn,
-                                           enum qemu_plugin_op op, void *ptr,
-                                           uint64_t imm);
- 
-+/**
-+ * qemu_plugin_request_time_control() - request the ability to control time
-+ *
-+ * This grants the plugin the ability to control system time. Only one
-+ * plugin can control time so if multiple plugins request the ability
-+ * all but the first will fail.
-+ *
-+ * Returns an opaque handle or NULL if fails
-+ */
-+const void *qemu_plugin_request_time_control(void);
- 
-+/**
-+ * qemu_plugin_update_ns() - update system emulation time
-+ * @handle: opaque handle returned by qemu_plugin_request_time_control()
-+ * @new_time_ns: time in nanoseconds
-+ *
-+ * This allows an appropriately authorised plugin (i.e. holding the
-+ * time control handle) to move system time forward to @new_time_ns.
-+ */
-+void qemu_plugin_update_ns(const void *handle, int64_t new_time_ns);
- 
- typedef void
- (*qemu_plugin_vcpu_syscall_cb_t)(qemu_plugin_id_t id, unsigned int vcpu_index,
-diff --git a/plugins/api.c b/plugins/api.c
-index 5521b0ad36..a1d413dc2d 100644
---- a/plugins/api.c
-+++ b/plugins/api.c
-@@ -37,6 +37,7 @@
- #include "qemu/osdep.h"
- #include "qemu/plugin.h"
- #include "qemu/log.h"
-+#include "qemu/timer.h"
- #include "tcg/tcg.h"
- #include "exec/exec-all.h"
- #include "exec/ram_addr.h"
-@@ -427,3 +428,30 @@ uint64_t qemu_plugin_entry_code(void)
- #endif
-     return entry;
+diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+index c1e590feb3..b4dee34c9a 100644
+--- a/target/sh4/translate.c
++++ b/target/sh4/translate.c
+@@ -1816,6 +1816,18 @@ static void decode_opc(DisasContext * ctx)
  }
-+
+ 
+ #ifdef CONFIG_USER_ONLY
 +/*
-+ * Time control
++ * Restart with the EXCLUSIVE bit set, within a TB run via
++ * cpu_exec_step_atomic holding the exclusive lock.
 + */
-+#ifdef CONFIG_SOFTMMU
-+static bool has_control;
-+#endif
-+
-+const void *qemu_plugin_request_time_control(void)
++static void gen_restart_exclusive(DisasContext *ctx)
 +{
-+#ifdef CONFIG_SOFTMMU
-+    if (!has_control) {
-+        has_control = true;
-+        return &has_control;
-+    }
-+#endif
-+    return NULL;
++    ctx->envflags |= TB_FLAG_GUSA_EXCLUSIVE;
++    gen_save_cpu_state(ctx, false);
++    gen_helper_exclusive(cpu_env);
++    ctx->base.is_jmp = DISAS_NORETURN;
 +}
 +
-+void qemu_plugin_update_ns(const void *handle, int64_t new_time)
-+{
-+#ifdef CONFIG_SOFTMMU
-+    if (handle == &has_control) {
-+        qemu_clock_advance_virtual_time(new_time);
-+    }
-+#endif
-+}
-diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
-index 71f6c90549..91b882fecc 100644
---- a/plugins/qemu-plugins.symbols
-+++ b/plugins/qemu-plugins.symbols
-@@ -35,11 +35,13 @@
-   qemu_plugin_register_vcpu_tb_exec_cb;
-   qemu_plugin_register_vcpu_tb_exec_inline;
-   qemu_plugin_register_vcpu_tb_trans_cb;
-+  qemu_plugin_request_time_control;
-   qemu_plugin_reset;
-   qemu_plugin_start_code;
-   qemu_plugin_tb_get_insn;
-   qemu_plugin_tb_n_insns;
-   qemu_plugin_tb_vaddr;
-   qemu_plugin_uninstall;
-+  qemu_plugin_update_ns;
-   qemu_plugin_vcpu_for_each;
- };
+ /* For uniprocessors, SH4 uses optimistic restartable atomic sequences.
+    Upon an interrupt, a real kernel would simply notice magic values in
+    the registers and reset the PC to the start of the sequence.
+@@ -2149,12 +2161,7 @@ static void decode_gusa(DisasContext *ctx, CPUSH4State *env)
+     qemu_log_mask(LOG_UNIMP, "Unrecognized gUSA sequence %08x-%08x\n",
+                   pc, pc_end);
+ 
+-    /* Restart with the EXCLUSIVE bit set, within a TB run via
+-       cpu_exec_step_atomic holding the exclusive lock.  */
+-    ctx->envflags |= TB_FLAG_GUSA_EXCLUSIVE;
+-    gen_save_cpu_state(ctx, false);
+-    gen_helper_exclusive(cpu_env);
+-    ctx->base.is_jmp = DISAS_NORETURN;
++    gen_restart_exclusive(ctx);
+ 
+     /* We're not executing an instruction, but we must report one for the
+        purposes of accounting within the TB.  We might as well report the
+@@ -2242,12 +2249,22 @@ static void sh4_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
+ #ifdef CONFIG_USER_ONLY
+     if (unlikely(ctx->envflags & TB_FLAG_GUSA_MASK)
+         && !(ctx->envflags & TB_FLAG_GUSA_EXCLUSIVE)) {
+-        /* We're in an gUSA region, and we have not already fallen
+-           back on using an exclusive region.  Attempt to parse the
+-           region into a single supported atomic operation.  Failure
+-           is handled within the parser by raising an exception to
+-           retry using an exclusive region.  */
+-        decode_gusa(ctx, env);
++        /*
++         * We're in an gUSA region, and we have not already fallen
++         * back on using an exclusive region.  Attempt to parse the
++         * region into a single supported atomic operation.  Failure
++         * is handled within the parser by raising an exception to
++         * retry using an exclusive region.
++         *
++         * Parsing the region in one block conflicts with plugins,
++         * so always use exclusive mode if plugins enabled.
++         */
++        if (ctx->base.plugin_enabled) {
++            gen_restart_exclusive(ctx);
++            ctx->base.pc_next += 2;
++        } else {
++            decode_gusa(ctx, env);
++        }
+         return;
+     }
+ #endif
 -- 
 2.39.2

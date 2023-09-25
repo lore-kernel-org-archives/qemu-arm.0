@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t7-20020a5d49c7000000b003176aa612b1sm12043674wrs.38.2023.09.25.07.58.41
+        by smtp.gmail.com with ESMTPSA id b15-20020adfde0f000000b0031c6cc74882sm12131874wrm.107.2023.09.25.07.58.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Sep 2023 07:58:42 -0700 (PDT)
+        Mon, 25 Sep 2023 07:58:45 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 73C1E1FFD2;
+	by zen.linaroharston (Postfix) with ESMTP id 2D54A1FFCF;
 	Mon, 25 Sep 2023 15:48:58 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -48,82 +48,39 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Leif Lindholm <quic_llindhol@quicinc.com>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [RFC PATCH 28/31] qtest: use cpu interface in qtest_clock_warp
-Date: Mon, 25 Sep 2023 15:48:51 +0100
-Message-Id: <20230925144854.1872513-29-alex.bennee@linaro.org>
+Subject: [PATCH 26/31] contrib/plugins: fix coverity warning in hotblocks
+Date: Mon, 25 Sep 2023 15:48:49 +0100
+Message-Id: <20230925144854.1872513-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230925144854.1872513-1-alex.bennee@linaro.org>
 References: <20230925144854.1872513-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 5Flfo2b64Oq1
+X-TUID: DECR5KGG2FBA
 
-This generalises the qtest_clock_warp code to use the AccelOps
-handlers for updating its own sense of time. This will make the next
-patch which moves the warp code closer to pure code motion.
+Coverity complains that we have an unbalance use of mutex leading to
+potential deadlocks.
 
+Fixes: CID 1519048
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Acked-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230519170454.2353945-6-alex.bennee@linaro.org>
 ---
- include/sysemu/qtest.h | 1 +
- accel/qtest/qtest.c    | 1 +
- softmmu/qtest.c        | 6 +++---
- 3 files changed, 5 insertions(+), 3 deletions(-)
+ contrib/plugins/hotblocks.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/sysemu/qtest.h b/include/sysemu/qtest.h
-index 85f05b0e46..e1f69783d6 100644
---- a/include/sysemu/qtest.h
-+++ b/include/sysemu/qtest.h
-@@ -35,5 +35,6 @@ void qtest_server_set_send_handler(void (*send)(void *, const char *),
- void qtest_server_inproc_recv(void *opaque, const char *buf);
+diff --git a/contrib/plugins/hotblocks.c b/contrib/plugins/hotblocks.c
+index 6b74d25fea..4de1b13494 100644
+--- a/contrib/plugins/hotblocks.c
++++ b/contrib/plugins/hotblocks.c
+@@ -69,8 +69,8 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
+         }
  
- int64_t qtest_get_virtual_clock(void);
-+void qtest_set_virtual_clock(int64_t count);
+         g_list_free(it);
+-        g_mutex_unlock(&lock);
+     }
++    g_mutex_unlock(&lock);
  
- #endif
-diff --git a/accel/qtest/qtest.c b/accel/qtest/qtest.c
-index f6056ac836..53182e6c2a 100644
---- a/accel/qtest/qtest.c
-+++ b/accel/qtest/qtest.c
-@@ -52,6 +52,7 @@ static void qtest_accel_ops_class_init(ObjectClass *oc, void *data)
- 
-     ops->create_vcpu_thread = dummy_start_vcpu_thread;
-     ops->get_virtual_clock = qtest_get_virtual_clock;
-+    ops->set_virtual_clock = qtest_set_virtual_clock;
- };
- 
- static const TypeInfo qtest_accel_ops_type = {
-diff --git a/softmmu/qtest.c b/softmmu/qtest.c
-index 35b643a274..bac1962efb 100644
---- a/softmmu/qtest.c
-+++ b/softmmu/qtest.c
-@@ -331,14 +331,14 @@ int64_t qtest_get_virtual_clock(void)
-     return qatomic_read_i64(&qtest_clock_counter);
+     qemu_plugin_outs(report->str);
  }
- 
--static void qtest_set_virtual_clock(int64_t count)
-+void qtest_set_virtual_clock(int64_t count)
- {
-     qatomic_set_i64(&qtest_clock_counter, count);
- }
- 
- static void qtest_clock_warp(int64_t dest)
- {
--    int64_t clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    int64_t clock = cpus_get_virtual_clock();
-     AioContext *aio_context;
-     assert(qtest_enabled());
-     aio_context = qemu_get_aio_context();
-@@ -347,7 +347,7 @@ static void qtest_clock_warp(int64_t dest)
-                                                       QEMU_TIMER_ATTR_ALL);
-         int64_t warp = qemu_soonest_timeout(dest - clock, deadline);
- 
--        qtest_set_virtual_clock(qtest_get_virtual_clock() + warp);
-+        cpus_set_virtual_clock(cpus_get_virtual_clock() + warp);
- 
-         qemu_clock_run_timers(QEMU_CLOCK_VIRTUAL);
-         timerlist_run_timers(aio_context->tlg.tl[QEMU_CLOCK_VIRTUAL]);
 -- 
 2.39.2

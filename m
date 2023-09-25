@@ -1,481 +1,142 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp411363ejc;
-        Mon, 25 Sep 2023 07:08:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGTYj9pi4j/bemqvFUaVDWzDclW226mva3SN/56Y17kTuJuA1aNqIm8W4z87Qi7r/5wzPFV
-X-Received: by 2002:a05:620a:2410:b0:765:a77c:7219 with SMTP id d16-20020a05620a241000b00765a77c7219mr8701089qkn.0.1695650906768;
-        Mon, 25 Sep 2023 07:08:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695650906; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rwGblfK6eTmQLv/KEw2vEGVkuFtQMxF/GWbo7cBs+bh4lIjl14mdXGVrwSG2ZSWXJH
-         w764qs+ujj7Io8XbeedWHCB93loqoerEQKEXGccx1i+408Hlu4f/f1bYeEDi9T3fNDKg
-         BAv4B/OXKJ5Dk52j/NYnTbNSmS0ZuX2Ui0WVIm44w7WTgU/kh/BuCNKkUjPMjM1DSMyA
-         7lWV0qwoweWB0d+dB0iHqbQAFl1ZwfED9NWQtADeVyw7fL+phGkmrzWf8vzoqjuGPINi
-         gxWFO0YpI31e6BW0LeAnCTOXdODkoIi0flhQekNFwcsb4kwyxwahtbc/HiSQI7VIaQKg
-         xjVw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=9tyQmkyt2E90igedF7PbtE7QVXnX3Ip0hE76vpbapVw=;
-        fh=AdnQ+nIcVQWiyBC2T7Gmw+67rzwJD3zBmbneCmY1uCs=;
-        b=ktUfSyJSf9M1PwAZ48hfA7FVMuKTlJUxTLK5BAo87CUVkWYaBwZuoJRbZDhTq+TQGo
-         0jWozSJPiz/zrpVRdOwe1xXjsTil+Qm1CrGA8bqmmu+R6k8mJDi2DIM0FRkRw2bqvLH3
-         eEoHRgCu/aVBlE9u+U7PpRbO7XmoQjGti4NDjqw1Kqw+DmBRf6SugwViL9PE7Q9HKsvv
-         TwIMH/eMTyJwGYswhorYPMWPh8/FOaDE7HisLXeY83vF3o5k4LVjXB8N0XkzYK0zRuxf
-         /gD3Qyk0YxRUOCkGc8DuYZD1i2+OwdTjuDSeVakq0u4aX+IwSpAouRn1mrYRgX8WMcDz
-         3yWQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq20-20020a05620a469400b00773e7fd9fabsi4495193qkb.376.2023.09.25.07.08.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Sep 2023 07:08:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qkmG7-0002hF-MY; Mon, 25 Sep 2023 10:08:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qkmG5-0002gj-VQ; Mon, 25 Sep 2023 10:08:21 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qkmG2-0000s9-Ll; Mon, 25 Sep 2023 10:08:21 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.200])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RvPmP4rN9z6DB5c;
- Mon, 25 Sep 2023 22:05:57 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Mon, 25 Sep
- 2023 15:08:14 +0100
-Date: Mon, 25 Sep 2023 15:08:13 +0100
-To: Igor Mammedov <imammedo@redhat.com>
-CC: Jonathan Cameron via <qemu-devel@nongnu.org>, <ankita@nvidia.com>,
- <jgg@nvidia.com>, <alex.williamson@redhat.com>, <clg@redhat.com>,
- <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>, <ani@anisinha.ca>,
- <aniketa@nvidia.com>, <cjia@nvidia.com>, <kwankhede@nvidia.com>,
- <targupta@nvidia.com>, <vsethi@nvidia.com>, <acurrid@nvidia.com>,
- <qemu-arm@nongnu.org>, <mst@redhat.com>
-Subject: Re: [PATCH v1 1/4] vfio: new command line params for device memory
- NUMA nodes
-Message-ID: <20230925150813.000017cf@Huawei.com>
-In-Reply-To: <20230915164841.15d20ecc@imammedo.users.ipa.redhat.com>
-References: <20230915024559.6565-1-ankita@nvidia.com>
- <20230915024559.6565-2-ankita@nvidia.com>
- <20230915152509.00003788@Huawei.com>
- <20230915164841.15d20ecc@imammedo.users.ipa.redhat.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id b12-20020a5d634c000000b0031773a8e5c4sm12032016wrw.37.2023.09.25.07.48.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Sep 2023 07:48:55 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 0B0B31FFBC;
+	Mon, 25 Sep 2023 15:48:55 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair.francis@wdc.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	John Snow <jsnow@redhat.com>,
+	libvir-list@redhat.com,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-s390x@nongnu.org,
+	Song Gao <gaosong@loongson.cn>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Weiwei Li <liweiwei@iscas.ac.cn>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Cleber Rosa <crosa@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Bin Meng <bin.meng@windriver.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+	qemu-ppc@nongnu.org,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-riscv@nongnu.org,
+	qemu-arm@nongnu.org,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Beraldo Leal <bleal@redhat.com>
+Subject: [PATCH 01/31] tests/avocado: update firmware to enable sbsa-ref/neoverse-v1
+Date: Mon, 25 Sep 2023 15:48:24 +0100
+Message-Id: <20230925144854.1872513-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230925144854.1872513-1-alex.bennee@linaro.org>
+References: <20230925144854.1872513-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qXJaHYn5IIGi
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: UIo3rYUCTh33
 
-On Fri, 15 Sep 2023 16:48:41 +0200
-Igor Mammedov <imammedo@redhat.com> wrote:
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 
-> On Fri, 15 Sep 2023 15:25:09 +0100
-> Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
-> 
-> > On Thu, 14 Sep 2023 19:45:56 -0700
-> > <ankita@nvidia.com> wrote:
-> >   
-> > > From: Ankit Agrawal <ankita@nvidia.com>
-> > > 
-> > > The CPU cache coherent device memory can be added as a set of
-> > > NUMA nodes distinct from the system memory nodes. The Qemu currently
-> > > do not provide a mechanism to support node creation for a vfio-pci
-> > > device.
-> > > 
-> > > Introduce new command line parameters to allow host admin provide
-> > > the desired starting NUMA node id (pxm-ns) and the number of such
-> > > nodes (pxm-nc) associated with the device. In this implementation,
-> > > a numerically consecutive nodes from pxm-ns to pxm-ns + pxm-nc
-> > > is created. Also validate the requested range of nodes to check    
-> > 
-> > 
-> > Hi Ankit,
-> > 
-> > That's not a particularly intuitive bit of interface!
-> > 
-> > pxm-start
-> > pxm-number
-> > perhaps?  However, in QEMU commmand lines the node terminology is used so
-> > numa-node-start
-> > numa-node-number
-> > 
-> > Though in general this feels backwards compared to how the rest of
-> > the numa definition is currently done.  
-> 
-> QEMU have already means to assign NUMA node affinity
-> to PCI hierarchies in generic way by using a PBX per node
-> (also done 'backwards') by setting node option on it.
-> So every device behind it should belong to that node as well
-> and guest OS shall pickup device affinity from PCI tree it belongs to.
-> (I'd suspect that CXL is supposed to work the same way).
+Update prebuilt firmware images to have TF-A with Neoverse V1 support enabled.
+This allowed us to enable test for this cpu in sbsa-ref machine.
 
-Whilst QEMU doesn't yet support it (I think), there is nothing stopping
-people using ACPI to assign _PXM to PCI devices. The early CXL specs specifically
-call out that you should do this (before things were more discoverable) Note that the
-node has to be defined in SRAT though. For most PCI devices that means
-using a Generic Initiator entry.
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Acked-by: Leif Lindholm <quic_llindhol@quicinc.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230915113519.269290-1-marcin.juszkiewicz@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/avocado/machine_aarch64_sbsaref.py | 25 ++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
 
-CXL 2+ has some extra toys to play with, so of which apply to PCI as well:
-* Generic Port Affinity Structures in ACPI.  The idea is you can
-  define latency and bandwidth to the head of a discoverable PCI/CXL topology.
-* Discoverable properties for all the CXL components via a mailbox interface:
-  - Latency and bandwidth across switches
-  - Latency and bandwidth to separate regions of memory.
-  Note that whilst it came from CXL that stuff is in a UEFI maintained spec
-  so 'could' be implemented on non CXL Devices.  See the CDAT specification.
-
-Idea is that the OS can discover actual properties and then create appropriate
-NUMA description if it wants to.
-
-The Linux kernel currently relies on what I consider a hack: We also
-have host memory windows (CXL Fixed Memory Windows) that have QoS associated
-with them along with interleave etc. So a rough assumption is that if you map
-CXL memory into a particular CFMWS then it is good enough to group it with
-other memory mapped in that CFMWS and use a single NUMA node to describe it.
-Hence the kernel creates a NUMA node per CFMWS entry and the properties can
-be established by exploring the route to one of the devices being accesses
-(and interleave etc).
-
-This is an approximation I think we'll need to fix long term, but it seems
-good enough for first generation or two of CXL devices where people tend
-not to mix devices of different performances, or put some but not all of
-them behind a switch.
-
-So the problem for the devices being discussed here is to either fix
-it properly (figure out how to do dynamic creation of NUMA nodes in Linux)
-or find a good proxy to ensure enough spare nodes can be created early in boot.
-That's early enough that it pretty much has to come from a static ACPI table.
-
-Jonathan
-
-> 
-> PS:
-> But then, I don't know much about PCI
-> (ccing Michael)
-> 
-> > 
-> > Could the current interface be extended.
-> > 
-> > -numa node,vfio-device=X
-> > 
-> > at the cost of a bit of house keeping and lookup.
-> > 
-> > We need something similar for generic initiators, so maybe
-> > vfio-mem=X? (might not even need to be vfio specific - even
-> > if we only support it for now on VFIO devices).
-> > leaving
-> > initiator=X available for later...
-> > 
-> > Also, good to say why multiple nodes per device are needed.
-> > 
-> > Jonathan
-> >   
-> > > for conflict with other nodes and to ensure that the id do not cross
-> > > QEMU limit.
-> > > 
-> > > Since the QEMU's SRAT and DST builder code needs the proximity
-> > > domain (PXM) id range, expose PXM start and count as device object
-> > > properties.
-> > > 
-> > > The device driver module communicates support for such feature through
-> > > sysfs. Check the presence of the feature to activate the code.
-> > > 
-> > > E.g. the following argument adds 8 PXM nodes starting from id 0x10.
-> > > -device vfio-pci-nohotplug,host=<pci-bdf>,pxm-ns=0x10,pxm-nc=8
-> > > 
-> > > Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
-> > > ---
-> > >  hw/vfio/pci.c               | 144 ++++++++++++++++++++++++++++++++++++
-> > >  hw/vfio/pci.h               |   2 +
-> > >  include/hw/pci/pci_device.h |   3 +
-> > >  3 files changed, 149 insertions(+)
-> > > 
-> > > diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> > > index a205c6b113..cc0c516161 100644
-> > > --- a/hw/vfio/pci.c
-> > > +++ b/hw/vfio/pci.c
-> > > @@ -42,6 +42,8 @@
-> > >  #include "qapi/error.h"
-> > >  #include "migration/blocker.h"
-> > >  #include "migration/qemu-file.h"
-> > > +#include "qapi/visitor.h"
-> > > +#include "include/hw/boards.h"
-> > >  
-> > >  #define TYPE_VFIO_PCI_NOHOTPLUG "vfio-pci-nohotplug"
-> > >  
-> > > @@ -2955,6 +2957,22 @@ static void vfio_register_req_notifier(VFIOPCIDevice *vdev)
-> > >      }
-> > >  }
-> > >  
-> > > +static void vfio_pci_get_dev_mem_pxm_start(Object *obj, Visitor *v,
-> > > +                                           const char *name,
-> > > +                                           void *opaque, Error **errp)
-> > > +{
-> > > +    uint64_t pxm_start = (uintptr_t) opaque;
-> > > +    visit_type_uint64(v, name, &pxm_start, errp);
-> > > +}
-> > > +
-> > > +static void vfio_pci_get_dev_mem_pxm_count(Object *obj, Visitor *v,
-> > > +                                           const char *name,
-> > > +                                           void *opaque, Error **errp)
-> > > +{
-> > > +    uint64_t pxm_count = (uintptr_t) opaque;
-> > > +    visit_type_uint64(v, name, &pxm_count, errp);
-> > > +}
-> > > +
-> > >  static void vfio_unregister_req_notifier(VFIOPCIDevice *vdev)
-> > >  {
-> > >      Error *err = NULL;
-> > > @@ -2974,6 +2992,125 @@ static void vfio_unregister_req_notifier(VFIOPCIDevice *vdev)
-> > >      vdev->req_enabled = false;
-> > >  }
-> > >  
-> > > +static int validate_dev_numa(uint32_t dev_node_start, uint32_t num_nodes)
-> > > +{
-> > > +    MachineState *ms = MACHINE(qdev_get_machine());
-> > > +    unsigned int i;
-> > > +
-> > > +    if (num_nodes >= MAX_NODES) {
-> > > +        return -EINVAL;
-> > > +    }
-> > > +
-> > > +    for (i = 0; i < num_nodes; i++) {
-> > > +        if (ms->numa_state->nodes[dev_node_start + i].present) {
-> > > +            return -EBUSY;
-> > > +        }
-> > > +    }
-> > > +
-> > > +    return 0;
-> > > +}
-> > > +
-> > > +static int mark_dev_node_present(uint32_t dev_node_start, uint32_t num_nodes)
-> > > +{
-> > > +    MachineState *ms = MACHINE(qdev_get_machine());
-> > > +    unsigned int i;
-> > > +
-> > > +    for (i = 0; i < num_nodes; i++) {
-> > > +        ms->numa_state->nodes[dev_node_start + i].present = true;
-> > > +    }
-> > > +
-> > > +    return 0;
-> > > +}
-> > > +
-> > > +
-> > > +static bool vfio_pci_read_cohmem_support_sysfs(VFIODevice *vdev)
-> > > +{
-> > > +    gchar *contents = NULL;
-> > > +    gsize length;
-> > > +    char *path;
-> > > +    bool ret = false;
-> > > +    uint32_t supported;
-> > > +
-> > > +    path = g_strdup_printf("%s/coherent_mem", vdev->sysfsdev);    
-> > 
-> > If someone has asked for it, why should we care if they specify it on a
-> > device where it doesn't do anything useful?  This to me feels like something
-> > to check at a higher level of the stack.
-> >   
-> > > +    if (g_file_get_contents(path, &contents, &length, NULL) && length > 0) {
-> > > +        if ((sscanf(contents, "%u", &supported) == 1) && supported) {
-> > > +            ret = true;
-> > > +        }
-> > > +    }
-> > > +
-> > > +    if (length) {
-> > > +        g_free(contents);    
-> > 
-> > g_autofree will clean this up for you I think
-> >   
-> > > +    }
-> > > +    g_free(path);    
-> > 
-> > and this.
-> >   
-> > > +
-> > > +    return ret;
-> > > +}
-> > > +
-> > > +static int vfio_pci_dev_mem_probe(VFIOPCIDevice *vPciDev,
-> > > +                                         Error **errp)
-> > > +{
-> > > +    Object *obj = NULL;
-> > > +    VFIODevice *vdev = &vPciDev->vbasedev;
-> > > +    MachineState *ms = MACHINE(qdev_get_machine());
-> > > +    int ret = 0;
-> > > +    uint32_t dev_node_start = vPciDev->dev_node_start;
-> > > +    uint32_t dev_node_count = vPciDev->dev_nodes;
-> > > +
-> > > +    if (!vdev->sysfsdev || !vfio_pci_read_cohmem_support_sysfs(vdev)) {
-> > > +        ret = -ENODEV;    
-> > return -ENODEV; 
-> > 
-> > and similar in all the other cases as no cleanup to do.
-> >   
-> > > +        goto done;
-> > > +    }
-> > > +
-> > > +    if (vdev->type == VFIO_DEVICE_TYPE_PCI) {    
-> > 
-> > nicer to handle one condition at a time.
-> > 
-> >     if (vdev->type != VFIO_DEVICE_TYPE_PCI) {
-> >         return -EINVAL;
-> >     }
-> > 
-> >     obj = vfio_pci_get_object(vdev);
-> > this can't fail
-> > 
-> > Also get rid of assigning it to NULL above.
-> > 
-> >    if (DEVICE_CLASS(object...)) {
-> >       return -EINVAL;
-> >    }
-> > 
-> >   
-> > > +        obj = vfio_pci_get_object(vdev);
-> > > +    }
-> > > +
-> > > +    /* Since this device creates new NUMA node, hotplug is not supported. */
-> > > +    if (!obj || DEVICE_CLASS(object_get_class(obj))->hotpluggable) {
-> > > +        ret = -EINVAL;
-> > > +        goto done;
-> > > +    }
-> > > +
-> > > +    /*
-> > > +     * This device has memory that is coherently accessible from the CPU.
-> > > +     * The memory can be represented seperate memory-only NUMA nodes.
-> > > +     */
-> > > +    vPciDev->pdev.has_coherent_memory = true;
-> > > +
-> > > +    /*
-> > > +     * The device can create several NUMA nodes with consecutive IDs
-> > > +     * from dev_node_start to dev_node_start + dev_node_count.
-> > > +     * Verify
-> > > +     * - whether any node ID is occupied in the desired range.
-> > > +     * - Node ID is not crossing MAX_NODE.
-> > > +     */
-> > > +    ret = validate_dev_numa(dev_node_start, dev_node_count);
-> > > +    if (ret) {
-> > > +        goto done;    
-> >         return ret;
-> >   
-> > > +    }
-> > > +
-> > > +    /* Reserve the node by marking as present */
-> > > +    mark_dev_node_present(dev_node_start, dev_node_count);
-> > > +
-> > > +    /*
-> > > +     * To have multiple unique nodes in the VM, a series of PXM nodes are
-> > > +     * required to be added to VM's SRAT. Send the information about the
-> > > +     * starting node ID and the node count to the ACPI builder code.
-> > > +     */
-> > > +    object_property_add(OBJECT(vPciDev), "dev_mem_pxm_start", "uint64",
-> > > +                        vfio_pci_get_dev_mem_pxm_start, NULL, NULL,
-> > > +                        (void *) (uintptr_t) dev_node_start);
-> > > +
-> > > +    object_property_add(OBJECT(vPciDev), "dev_mem_pxm_count", "uint64",
-> > > +                        vfio_pci_get_dev_mem_pxm_count, NULL, NULL,
-> > > +                        (void *) (uintptr_t) dev_node_count);
-> > > +
-> > > +    ms->numa_state->num_nodes += dev_node_count;
-> > > +
-> > > +done:
-> > > +    return ret;
-> > > +}
-> > > +
-> > >  static void vfio_realize(PCIDevice *pdev, Error **errp)
-> > >  {
-> > >      VFIOPCIDevice *vdev = VFIO_PCI(pdev);
-> > > @@ -3291,6 +3428,11 @@ static void vfio_realize(PCIDevice *pdev, Error **errp)
-> > >          }
-> > >      }
-> > >  
-> > > +    ret = vfio_pci_dev_mem_probe(vdev, errp);
-> > > +    if (ret && ret != -ENODEV) {
-> > > +        error_report("Failed to setup device memory with error %d", ret);
-> > > +    }
-> > > +
-> > >      vfio_register_err_notifier(vdev);
-> > >      vfio_register_req_notifier(vdev);
-> > >      vfio_setup_resetfn_quirk(vdev);
-> > > @@ -3454,6 +3596,8 @@ static Property vfio_pci_dev_properties[] = {
-> > >      DEFINE_PROP_UINT32("x-pci-sub-device-id", VFIOPCIDevice,
-> > >                         sub_device_id, PCI_ANY_ID),
-> > >      DEFINE_PROP_UINT32("x-igd-gms", VFIOPCIDevice, igd_gms, 0),
-> > > +    DEFINE_PROP_UINT32("pxm-ns", VFIOPCIDevice, dev_node_start, 0),
-> > > +    DEFINE_PROP_UINT32("pxm-nc", VFIOPCIDevice, dev_nodes, 0),
-> > >      DEFINE_PROP_UNSIGNED_NODEFAULT("x-nv-gpudirect-clique", VFIOPCIDevice,
-> > >                                     nv_gpudirect_clique,
-> > >                                     qdev_prop_nv_gpudirect_clique, uint8_t),
-> > > diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
-> > > index a2771b9ff3..eef5ddfd06 100644
-> > > --- a/hw/vfio/pci.h
-> > > +++ b/hw/vfio/pci.h
-> > > @@ -158,6 +158,8 @@ struct VFIOPCIDevice {
-> > >      uint32_t display_yres;
-> > >      int32_t bootindex;
-> > >      uint32_t igd_gms;
-> > > +    uint32_t dev_node_start;
-> > > +    uint32_t dev_nodes;
-> > >      OffAutoPCIBAR msix_relo;
-> > >      uint8_t pm_cap;
-> > >      uint8_t nv_gpudirect_clique;
-> > > diff --git a/include/hw/pci/pci_device.h b/include/hw/pci/pci_device.h
-> > > index d3dd0f64b2..aacd2279ae 100644
-> > > --- a/include/hw/pci/pci_device.h
-> > > +++ b/include/hw/pci/pci_device.h
-> > > @@ -157,6 +157,9 @@ struct PCIDevice {
-> > >      MSIVectorReleaseNotifier msix_vector_release_notifier;
-> > >      MSIVectorPollNotifier msix_vector_poll_notifier;
-> > >  
-> > > +    /* GPU coherent memory */
-> > > +    bool has_coherent_memory;
-> > > +
-> > >      /* ID of standby device in net_failover pair */
-> > >      char *failover_pair_id;
-> > >      uint32_t acpi_index;    
-> > 
-> >   
-> 
-
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index a794245e7e..b39f5566d7 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -28,33 +28,32 @@ def fetch_firmware(self):
+         """
+         Flash volumes generated using:
+ 
+-        - Fedora GNU Toolchain version 13.1.1 20230511 (Red Hat 13.1.1-2)
++        - Fedora GNU Toolchain version 13.2.1 20230728 (Red Hat 13.2.1-1)
+ 
+         - Trusted Firmware-A
+-          https://github.com/ARM-software/arm-trusted-firmware/tree/c0d8ee38
++          https://github.com/ARM-software/arm-trusted-firmware/tree/cc933e1d
+ 
+         - Tianocore EDK II
+-          https://github.com/tianocore/edk2/tree/0f9283429dd4
+-          https://github.com/tianocore/edk2-non-osi/tree/f0bb00937ad6
+-          https://github.com/tianocore/edk2-platforms/tree/7880b92e2a04
++          https://github.com/tianocore/edk2/tree/29cce3356aec
++          https://github.com/tianocore/edk2-platforms/tree/fc22c0e69709
+         """
+ 
+         # Secure BootRom (TF-A code)
+         fs0_xz_url = (
+-            "https://fileserver.linaro.org/s/HrYMCjP7MEccjRP/"
++            "https://fileserver.linaro.org/s/g4C3WzJzNBES2p2/"
+             "download/SBSA_FLASH0.fd.xz"
+         )
+-        fs0_xz_hash = "447eff64a90b84ce47703c6ec41fbfc25befaaea"
++        fs0_xz_hash = "374738599f7ba38c22924b2075ec5355c2b24a47"
+         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
+         archive.extract(tar_xz_path, self.workdir)
+         fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
+ 
+         # Non-secure rom (UEFI and EFI variables)
+         fs1_xz_url = (
+-            "https://fileserver.linaro.org/s/t8foNnMPz74DZZy/"
++            "https://fileserver.linaro.org/s/scJRninsAFTwEct/"
+             "download/SBSA_FLASH1.fd.xz"
+         )
+-        fs1_xz_hash = "13a9a262953787c7fc5a9155dfaa26e703631e02"
++        fs1_xz_hash = "5d3f156ebd6c6374da2121e15c7c8f4ed0351dcc"
+         tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash)
+         archive.extract(tar_xz_path, self.workdir)
+         fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
+@@ -144,10 +143,16 @@ def test_sbsaref_alpine_linux_cortex_a57(self):
+ 
+     def test_sbsaref_alpine_linux_neoverse_n1(self):
+         """
+-        :avocado: tags=cpu:max
++        :avocado: tags=cpu:neoverse-n1
+         """
+         self.boot_alpine_linux("neoverse-n1")
+ 
++    def test_sbsaref_alpine_linux_neoverse_v1(self):
++        """
++        :avocado: tags=cpu:neoverse-v1
++        """
++        self.boot_alpine_linux("neoverse-v1,pauth-impdef=on")
++
+     def test_sbsaref_alpine_linux_max(self):
+         """
+         :avocado: tags=cpu:max
+-- 
+2.39.2

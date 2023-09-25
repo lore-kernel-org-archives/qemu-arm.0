@@ -1,86 +1,100 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp512259ejc;
-        Mon, 25 Sep 2023 09:29:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEV7c2RTYGHRkEg9RXaQm+17/ZRMwWvzHXpKWozKeHtsQE7NwKIlDmchbf3o9p04fFJ6M4Y
-X-Received: by 2002:a0c:d98b:0:b0:658:1eec:408a with SMTP id y11-20020a0cd98b000000b006581eec408amr6728350qvj.40.1695659367979;
-        Mon, 25 Sep 2023 09:29:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695659367; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp530903ejc;
+        Mon, 25 Sep 2023 10:00:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEgXK18YDpZ+UIsQn1SUIBBhNccQ1shXT3sZB8Obe2DGukxVFx0dyvlHbCJNLMdhyWWI9OK
+X-Received: by 2002:a05:620a:4108:b0:773:b623:72f7 with SMTP id j8-20020a05620a410800b00773b62372f7mr9476122qko.50.1695661254022;
+        Mon, 25 Sep 2023 10:00:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695661254; cv=none;
         d=google.com; s=arc-20160816;
-        b=CWupdusGnC3+iW62r7B654qXXlFTcp/oT9MTUho6rRrdWEa0vjQ0GvVchfWSYyv5rT
-         f9Kusg1/z0/uqFc4fp8Hq/DnFLydhy4e+dsnRIcv3afVivQj2KYCOrk5hy5SDfXFAsuy
-         3Tqwd264/2oX9vPsoO2kKRz29THtib+HX9qRYkRn/rtRe+gjhfAaEVHak3WqEeFAs3ki
-         3kH+0oES3QnTe3+xfXSDmw48vS2lTEiueOOK7fxM9jnsKU0YQHluaiB5oe+wB+wEfx9s
-         bepiRY09eUA/ZH5EQlCUhU2i4MPbJKIGw/lSLQbZ2u5lamyN9G2d57En2W9wB5AeZmeT
-         YFtA==
+        b=WT5cU1neVQ6ygG6ZyFgS1kczvC17fXQOwAZekeEATzrLIc+IZurhTySdtnVNFYIOe7
+         DDOFgs3kP3Cr3aqpXvwkOFlHIZRPUDnolOlOLPvu1m7sjwa2sPbA0Emp4TgiFbqatg88
+         ZySynGOl6SCmEGLh+JYByv4yh+jTjyOaTxS1PWM03vlbKOlzCP75JGrhKnSlDL6tJ7Aq
+         ztHzd6NUgi/TvZGNBpo7tnfrkvicHVU1nNFpE8uNj2LYTxfr6lUP/CEgBzzNni9TW8DL
+         NbQTJ5sHLrhUM0vQFiuxBnR3+Is0pSrJ4++p4YPyKQquv9r3FmpzPtXyTc9nxeqe5HRY
+         z3qA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=PmFEjZkTCdgZOEGMgmklc7SrMzaWlSOLVc193zpFlD8=;
-        fh=ojn6UO66R7/n4EAe4edBUNJTjOLd4lCcUiOSn8dLjlc=;
-        b=mW/uADzG3HjbaryRg7bfHA5F6Ub7EGQGEcCS8/WZbs2X003AFOZHMxPxwWbm7AYmIG
-         2LRSQWmT/nn/AvKr9HB/uvAk3TRNMQ9FUEk0yFRtCRWnd9prjAj8D5+zHbW8CZUX6Mb6
-         ethon55y6LCSJfqp8G8+SCaAegsmSM2zIvZceYVHxtFtmm0hBvG+xLWGdZyAEy6S/cB8
-         3cJkldZNgSKN+K1ksJimBuHj/LKB901y6Z2/wBq3CC9KxW6ef0mUBIv7axAck+IomTfM
-         XDxdcLiujjkQSCzHXjezkyzHRPJYCm6vtwKk8EdDAIqnqteY+uvNRP2/RKHtLHQNxl2P
-         tl+Q==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=aePLuTspjsKBrDQH+6M+VWiIRH5SYoJAgVF7zHE6rdg=;
+        fh=wnMnlE0yQTQMtKiCI/oBQCiIMtzki4ScomN0sbCKm94=;
+        b=ggHaTDDv/Wj1+jDtBuDVOjZ83wFSSgwMqOaeFQ21ru4FH/xeysIrdly67nYP9TlYMX
+         6eonp+8aHfeLhIHtfsqmb+1OIrsc+t+Cy1ZRnUgavvQtoRLFnXKp2Qcv3HpKUOd0ZqIO
+         FlVydrPOQkKna7rPnEXwy65rV+XiEmceVknSzBdB1DGaF26GffDlZK5Bw+GVmV1776lS
+         VnDlLaIXS4xm4TCtrGwlcv7E+hfjzKBj9lYEyx1CSz8HX04C10hemlrlCKLNZMXvRpfb
+         cVjEvihQSmTAKA0KvCGdgprlwgRGVurrSByA5e9ONtsQgnWQLSljYYhXSintA3FqqkJ0
+         H3Ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d26-20020a0cb2da000000b0065af1fabaf8si3792703qvf.286.2023.09.25.09.29.27
+        by mx.google.com with ESMTPS id v2-20020a05620a0f0200b00773c56f9551si6436768qkl.647.2023.09.25.10.00.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Sep 2023 09:29:27 -0700 (PDT)
+        Mon, 25 Sep 2023 10:00:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qkoSN-0002Ua-Oz; Mon, 25 Sep 2023 12:29:11 -0400
+	id 1qkoww-0005Ra-Se; Mon, 25 Sep 2023 13:00:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=n5Cv=FJ=kaod.org=clg@ozlabs.org>)
- id 1qkoSM-0002UJ-9O; Mon, 25 Sep 2023 12:29:10 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qkowv-0005RJ-6F; Mon, 25 Sep 2023 13:00:45 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=n5Cv=FJ=kaod.org=clg@ozlabs.org>)
- id 1qkoSK-0003Ft-2f; Mon, 25 Sep 2023 12:29:10 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4RvSxS2KFYz4xPM;
- Tue, 26 Sep 2023 02:29:00 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4RvSxQ09JJz4xQ1;
- Tue, 26 Sep 2023 02:28:57 +1000 (AEST)
-Message-ID: <6e17b750-8e07-874d-05ae-fae05b2cd804@kaod.org>
-Date: Mon, 25 Sep 2023 18:28:52 +0200
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qkowt-00005p-Cz; Mon, 25 Sep 2023 13:00:44 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.201])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RvTXG6H3lz6K9G1;
+ Tue, 26 Sep 2023 00:55:42 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Mon, 25 Sep
+ 2023 18:00:39 +0100
+Date: Mon, 25 Sep 2023 18:00:38 +0100
+To: Jason Gunthorpe <jgg@nvidia.com>
+CC: Ankit Agrawal <ankita@nvidia.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
+ <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
+ (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, "Andy
+ Currid" <ACurrid@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v1 3/4] hw/arm/virt-acpi-build: patch guest SRAT for
+ NUMA nodes
+Message-ID: <20230925180038.00003879@Huawei.com>
+In-Reply-To: <20230925160043.GH13733@nvidia.com>
+References: <20230915024559.6565-1-ankita@nvidia.com>
+ <20230915024559.6565-4-ankita@nvidia.com>
+ <20230915153740.00006185@Huawei.com>
+ <BY5PR12MB3763BC1EB9402223B020ABF8B0FFA@BY5PR12MB3763.namprd12.prod.outlook.com>
+ <20230925145440.00005072@Huawei.com>
+ <20230925140328.GF13733@nvidia.com>
+ <20230925155351.00000638@Huawei.com>
+ <20230925160043.GH13733@nvidia.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 0/4] aspeed: Clean up local variable shadowing
-Content-Language: en-US
-To: Markus Armbruster <armbru@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>
-References: <20230922155924.1172019-1-clg@kaod.org>
- <f7cdbd47-1833-af1a-ae09-363c86c2e74e@linaro.org>
- <838837dc-0d95-1d6c-3cfc-e321c9c01a7d@kaod.org> <87msxdmkeq.fsf@pond.sub.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <87msxdmkeq.fsf@pond.sub.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=n5Cv=FJ=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.473, SPF_HELO_PASS=-0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -94,58 +108,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DMC6XWrvfdFG
+X-TUID: KCSlhj4A7/Kr
 
-On 9/23/23 09:13, Markus Armbruster wrote:
-> Cédric Le Goater <clg@kaod.org> writes:
+On Mon, 25 Sep 2023 13:00:43 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
+
+> On Mon, Sep 25, 2023 at 03:53:51PM +0100, Jonathan Cameron wrote:
+> > On Mon, 25 Sep 2023 11:03:28 -0300
+> > Jason Gunthorpe <jgg@nvidia.com> wrote:
+> >   
+> > > On Mon, Sep 25, 2023 at 02:54:40PM +0100, Jonathan Cameron wrote:
+> > >   
+> > > > Possible the ASWG folk would say this is fine and I'm reading too much into
+> > > > the spec, but I'd definitely suggest asking them via the appropriate path,
+> > > > or throwing in a code first proposal for a comment on this special case and
+> > > > see what response you get - my guess is it will be 'fix Linux' :(    
+> > > 
+> > > The goal here is for qemu to emulate what the bare metal environment
+> > > is doing.
+> > > 
+> > > There may be a legitimate question if what the bare metal FW has done
+> > > is legitimate (though let's face it, there are lots of creative ACPI
+> > > things around), but I don't quite see how this is a qemu question?
+> > > 
+> > > Unless you are taking the position that qemu should not emulate this
+> > > HW?  
+> > 
+> > Ok. I'd failed to register that the bare metal code was doing this though
+> > with hindsight I guess that is obvious. Though without more info or
+> > a bare metal example being given its also possible the BIOS was doing
+> > enumeration etc (like CXL does for all < 2.0 devices) and hence was
+> > building SRAT with the necessary memory ranges in place - even if the
+> > driver then does the hot add dance later.  
 > 
->> On 9/22/23 20:20, Philippe Mathieu-Daudé wrote:
->>> On 22/9/23 17:59, Cédric Le Goater wrote:
->>>> Hello,
->>>>
->>>> Here are cleanups for local variable shadowing warnings in aspeed models.
->>>>
->>>> Joel, Andrew,
->>>>
->>>> Could you please double check patch 4 ?
->>> Could Markus' MAKE_IDENTFIER() help there?
->>
->> ah ! you typed too fast and I also read too fast, as :
->>
->>    MARKUS_IDENTIFIER()
->>
->> and I liked it :)
+> Ankit, maybe you can share some relavent ACPI dumps from the physical
+> hardware and explain how this compares?
 > 
-> LOL
+> > That's dubious and likely to break at some point unless the spec
+> > comprehends this use case, but meh, so are lots of other things and
+> > the hardware vendor gets to pick up the pieces and deal with grumpy
+> > customers.  
 > 
->>                    but what is MAKE_IDENTIFIER  ? really, please explain.
+> Yes.
+
+With my grumpy hat on, good to actually go try and get this
+clarification in the spec anyway.  We moan about people doing evil
+things or spec gaps, but don't always circle back to fix them.
+Obviously I'm not claiming to be good on this front either...
+
 > 
-> Philippe is referring to
+> > I don't currently see this as a safe solution for the proposed other
+> > use cases however that are virtualization only.  
 > 
->      [PATCH v3 7/7] qobject atomics osdep: Make a few macros more hygienic
->      Message-ID: <20230921121312.1301864-8-armbru@redhat.com>
+> So, how should that translate into a command line experiance? Sounds
+> like the broad concept is general but this actual specific HW is not?
+
+I'm not following.  I think, to enable this platform, this will need
+to be vfio tied (or some new similar device). The other usecases
+were things like virtio-mem where I'd just suggest leaving restricted
+to only referring to existing nodes until a well defined solution is
+in place to provide the memory only nodes + hotplug mix.
+
+Without a specification clarification, we'd have to fix this in Linux
+and enable dynamic NUMA node creation (or just enable a pool of extra
+ones to grab from which is sort of a hacky way to do the same).
+
+With an ACPI spec clarification agreed then I'm fine with
+using this for all the cases that have come up in this thread.
+Or a good argument that this is valid in under existing ACPI spec.
+
+Jonathan
+
+
 > 
-> which tweaks MAX() to permit nesting without shadowing.  Your PATCH 4
-> may not be needed if you base on it.
-
-We don't need the nested MAX(). PATCH 4 is a cleanup which happens
-to remove the shadowing. Let's keep it the way it is.
-
-> MAKE_IDENTIFIER() is a helper macro introduced in that patch.
-> 
-> You can fetch the patch from https://repo.or.cz/qemu/armbru.git branch
-> shadow-next, along with collected other shadowing patches.
-
-OK.
-
-Would you prefer maintainers to include the shadowing changes in a
-potential PR they would send or would you rather take care of it in
-a PR of your own ?
-
-Thanks,
-
-C.
-
+> Thanks,
+> Jason
 

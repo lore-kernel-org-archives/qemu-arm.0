@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id x6-20020a5d60c6000000b0031f300a4c26sm12038543wrt.93.2023.09.25.07.58.40
+        by smtp.gmail.com with ESMTPSA id x17-20020a5d6511000000b0031fd849e797sm12075216wru.105.2023.09.25.07.58.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Sep 2023 07:58:40 -0700 (PDT)
+        Mon, 25 Sep 2023 07:58:41 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 926931FFD3;
-	Mon, 25 Sep 2023 15:48:58 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 3C22E1FFCA;
+	Mon, 25 Sep 2023 15:48:57 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -47,149 +47,80 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [RFC PATCH 29/31] sysemu: generalise qtest_warp_clock as qemu_clock_advance_virtual_time
-Date: Mon, 25 Sep 2023 15:48:52 +0100
-Message-Id: <20230925144854.1872513-30-alex.bennee@linaro.org>
+	Beraldo Leal <bleal@redhat.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 18/31] target/ppc: Remove references to gdb_has_xml
+Date: Mon, 25 Sep 2023 15:48:41 +0100
+Message-Id: <20230925144854.1872513-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230925144854.1872513-1-alex.bennee@linaro.org>
 References: <20230925144854.1872513-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: +FgqylEwLSPc
+X-TUID: IVYUxLNTjD4p
 
-Move the key functionality of moving time forward into the clock
-sub-system itself. This will allow us to plumb in time control into
-plugins.
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
+GDB has XML support since 6.7 which was released in 2007.
+It's time to remove support for old GDB versions without XML support.
+
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20230912224107.29669-11-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230519170454.2353945-7-alex.bennee@linaro.org>
-
 ---
-v2
-  - rename arg to target_ns
----
- include/qemu/timer.h | 15 +++++++++++++++
- softmmu/qtest.c      | 24 ++----------------------
- util/qemu-timer.c    | 26 ++++++++++++++++++++++++++
- 3 files changed, 43 insertions(+), 22 deletions(-)
+ target/ppc/gdbstub.c | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
-diff --git a/include/qemu/timer.h b/include/qemu/timer.h
-index 9a91cb1248..aa30f693b0 100644
---- a/include/qemu/timer.h
-+++ b/include/qemu/timer.h
-@@ -245,6 +245,21 @@ bool qemu_clock_run_timers(QEMUClockType type);
-  */
- bool qemu_clock_run_all_timers(void);
- 
-+/**
-+ * qemu_clock_advance_virtual_time(): advance the virtual time tick
-+ * @target_ns: target time in nanoseconds
-+ *
-+ * This function is used where the control of the flow of time has
-+ * been delegated to outside the clock subsystem (be it qtest, icount
-+ * or some other external source). You can ask the clock system to
-+ * return @early at the first expired timer.
-+ *
-+ * Time can only move forward, attempts to reverse time would lead to
-+ * an error.
-+ *
-+ * Returns: new virtual time.
-+ */
-+int64_t qemu_clock_advance_virtual_time(int64_t target_ns);
- 
- /*
-  * QEMUTimerList
-diff --git a/softmmu/qtest.c b/softmmu/qtest.c
-index bac1962efb..72a2ee7a31 100644
---- a/softmmu/qtest.c
-+++ b/softmmu/qtest.c
-@@ -336,26 +336,6 @@ void qtest_set_virtual_clock(int64_t count)
-     qatomic_set_i64(&qtest_clock_counter, count);
- }
- 
--static void qtest_clock_warp(int64_t dest)
--{
--    int64_t clock = cpus_get_virtual_clock();
--    AioContext *aio_context;
--    assert(qtest_enabled());
--    aio_context = qemu_get_aio_context();
--    while (clock < dest) {
--        int64_t deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
--                                                      QEMU_TIMER_ATTR_ALL);
--        int64_t warp = qemu_soonest_timeout(dest - clock, deadline);
--
--        cpus_set_virtual_clock(cpus_get_virtual_clock() + warp);
--
--        qemu_clock_run_timers(QEMU_CLOCK_VIRTUAL);
--        timerlist_run_timers(aio_context->tlg.tl[QEMU_CLOCK_VIRTUAL]);
--        clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--    }
--    qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
--}
--
- static bool (*process_command_cb)(CharBackend *chr, gchar **words);
- 
- void qtest_set_command_cb(bool (*pc_cb)(CharBackend *chr, gchar **words))
-@@ -754,7 +734,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-             ns = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
-                                             QEMU_TIMER_ATTR_ALL);
-         }
--        qtest_clock_warp(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
-+        qemu_clock_advance_virtual_time(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
-         qtest_send_prefix(chr);
-         qtest_sendf(chr, "OK %"PRIi64"\n",
-                     (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-@@ -780,7 +760,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         g_assert(words[1]);
-         ret = qemu_strtoi64(words[1], NULL, 0, &ns);
-         g_assert(ret == 0);
--        qtest_clock_warp(ns);
-+        qemu_clock_advance_virtual_time(ns);
-         qtest_send_prefix(chr);
-         qtest_sendf(chr, "OK %"PRIi64"\n",
-                     (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-index 6a0de33dd2..213114be68 100644
---- a/util/qemu-timer.c
-+++ b/util/qemu-timer.c
-@@ -645,6 +645,11 @@ int64_t qemu_clock_get_ns(QEMUClockType type)
+diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
+index 778ef73bd7..ec5731e5d6 100644
+--- a/target/ppc/gdbstub.c
++++ b/target/ppc/gdbstub.c
+@@ -54,12 +54,6 @@ static int ppc_gdb_register_len(int n)
+     case 0 ... 31:
+         /* gprs */
+         return sizeof(target_ulong);
+-    case 32 ... 63:
+-        /* fprs */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return 8;
+     case 66:
+         /* cr */
+     case 69:
+@@ -74,12 +68,6 @@ static int ppc_gdb_register_len(int n)
+     case 68:
+         /* ctr */
+         return sizeof(target_ulong);
+-    case 70:
+-        /* fpscr */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return sizeof(target_ulong);
+     default:
+         return 0;
      }
- }
- 
-+static void qemu_virtual_clock_set_ns(int64_t time)
-+{
-+    return cpus_set_virtual_clock(time);
-+}
-+
- void init_clocks(QEMUTimerListNotifyCB *notify_cb)
- {
-     QEMUClockType type;
-@@ -675,3 +680,24 @@ bool qemu_clock_run_all_timers(void)
- 
-     return progress;
- }
-+
-+int64_t qemu_clock_advance_virtual_time(int64_t dest)
-+{
-+    int64_t clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    AioContext *aio_context;
-+    aio_context = qemu_get_aio_context();
-+    while (clock < dest) {
-+        int64_t deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
-+                                                      QEMU_TIMER_ATTR_ALL);
-+        int64_t warp = qemu_soonest_timeout(dest - clock, deadline);
-+
-+        qemu_virtual_clock_set_ns(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + warp);
-+
-+        qemu_clock_run_timers(QEMU_CLOCK_VIRTUAL);
-+        timerlist_run_timers(aio_context->tlg.tl[QEMU_CLOCK_VIRTUAL]);
-+        clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    }
-+    qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
-+
-+    return clock;
-+}
+@@ -132,9 +120,6 @@ int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
+     if (n < 32) {
+         /* gprs */
+         gdb_get_regl(buf, env->gpr[n]);
+-    } else if (n < 64) {
+-        /* fprs */
+-        gdb_get_reg64(buf, *cpu_fpr_ptr(env, n - 32));
+     } else {
+         switch (n) {
+         case 64:
+@@ -158,9 +143,6 @@ int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
+         case 69:
+             gdb_get_reg32(buf, cpu_read_xer(env));
+             break;
+-        case 70:
+-            gdb_get_reg32(buf, env->fpscr);
+-            break;
+         }
+     }
+     mem_buf = buf->data + buf->len - r;
 -- 
 2.39.2

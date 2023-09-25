@@ -1,91 +1,110 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp249025ejc;
-        Mon, 25 Sep 2023 02:21:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEbAsiFgkrB8iw2D8I/cFKB3gjWIWYxA9StPt/NGsk3Dr3Ygwxx5XEY/1AQkHOps+OvZtz6
-X-Received: by 2002:ad4:470e:0:b0:63d:2567:f255 with SMTP id qb14-20020ad4470e000000b0063d2567f255mr6197055qvb.24.1695633661639;
-        Mon, 25 Sep 2023 02:21:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695633661; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp281162ejc;
+        Mon, 25 Sep 2023 03:32:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGu2a58nE/uzO/x9R3cnqVSaGZQlWbUpOje0e2vTXOPj9twNQ63laM/m77bJqtDHhmnQjqp
+X-Received: by 2002:a05:622a:608:b0:412:22cf:83fa with SMTP id z8-20020a05622a060800b0041222cf83famr7497670qta.28.1695637928033;
+        Mon, 25 Sep 2023 03:32:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695637928; cv=none;
         d=google.com; s=arc-20160816;
-        b=NAKFxDv3WGcImQYhGRAybJ0PI1l/jXtt5VHklqAjULM+Dh7RjlRJX2Bd6A1lGyLDtz
-         StV+kwd6bfFoSnBbwo2hWU36ZRsIbMPxCNitRl5n71JIsq0lnAFlm+hY8PWWKvvWtooy
-         WEX2siKFieGFLi1XKPy30JfPl2FAakOYRzClW7NzIdgzkDbuBdO6uUg+OKREFVgg4B8P
-         Uwnl/RVp0M1wpP4hAOj9eW7mK+UyHbUiaQMw7/xHretkWTeTzg8k3+3MVwQohcgwO9uU
-         l+JP52EvNYECz/oSV4fKZNO4kpDhgj7q/kxhuCx6DPobZ7N5MlldeN9lZstlJ4LcOwmq
-         P3NA==
+        b=FwT7OlAs+B4fMWyUcspkRoOCN1kYQEj6dH1YdD5OCi1qSVLSatiazC5reXm1sGB/xs
+         omtH0C4xnES7i9qzV/4JeBu1VOYQpgWyXVYtFaOrSfdw74wOL9KjPs8lZK2kOpdostuW
+         +MWZyocXvL0o2nH0ukjs0ZLd/sTjafLqiGDqpiWyO0MTxSvTubhkuL6dqQ2QRdxKTP8G
+         XoyswFG1zEHBRF28/5tUC0KQI++ulObSxPRsZiJmSU9aP62apQP4H0UB4agiz0UNAsmu
+         zN+ykaT/PygnDywB+eQGQE9Q5dbItUOoH8MnIzc3Wl3F2wxpHiMdqQK72+0qrQv9/vR6
+         ZwNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=rOQx37QOir+bGRSSz1847Je7TkdsCD8kfixdmo5HKwI=;
-        fh=WI87t2OkKvYspRwWlvIRR/WJbyJPQotDI2Ms2GxuXaQ=;
-        b=ksl9dpxSAqUxKR2JpCjpHPzXEq/42MEJfdEDbCScyCOJGiX5A8Akw/6XJ7W0J6e2MV
-         sCmv9GhQjdWLNq40YPn3sUdbjRc5cmETQeUemB6+I/rVg8IURgWsjZanR+RIbDH21I20
-         r6buRra+mCIrnwOszngcxocedNjOuNP3ASTnQ5GJESU9FnuIz3o93hzvU18T7eMIaauk
-         vcbVrPC+bOHK0P7WBP6aZocTIMHF+UQUgAxN9mhXSBNk3BZOGXfkm+5X9G8AMGDGpsXC
-         6jWvK+P33jR1Lr/sjbmrLluPRVAu4opofzlw5WcbE9X9TjuDmbAn9ygY6i1ABKYdY/XB
-         Oa6w==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=c1cwFSdRlu0Wnlm1jrM9IfNJHssewWckutA3WOkrFVA=;
+        fh=X3C9n4MgKwKAcdIz7pYsgXIgSm3f18hXzdSvlgMhT7c=;
+        b=s+ctj4FcnZ064lLhj/YVbMfdBHv126XwddD0mkWF771HyLRHfv5F/M72gjSmP1x/Vv
+         UhdpMbOFPshLaspjcxP0U80WdmaF+3uCWov+lVt25Ec3yAus/48SFSeUsLCKF4Lf/cQQ
+         jY8QLGcFOE3o4H2aJQI0vmE0LyvpYdzNh8C7fyXlftvVdj0sEix5uM3wwbS531349SNS
+         AtjYMqrG3AqHmInd9qfp34MW+D4WGhmRfPD1OjQ6NhTtybJp9OxSVSohV0zXrKWvzGxX
+         NTojFrHdfvQrJyShuPXiuTpGigPZX5QJBJAscMhB0e/eDRgFG7qclZE4GzjFDZx8Ac1n
+         A//g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z1kam7TP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p8-20020a0ccb88000000b006582469f16csi2019340qvk.505.2023.09.25.02.21.01
+        by mx.google.com with ESMTPS id w16-20020ac857d0000000b00417bfe9e70dsi5773892qta.592.2023.09.25.03.32.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Sep 2023 02:21:01 -0700 (PDT)
+        Mon, 25 Sep 2023 03:32:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z1kam7TP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qkhln-0006Jl-Cx; Mon, 25 Sep 2023 05:20:48 -0400
+	id 1qkisl-0007nJ-4A; Mon, 25 Sep 2023 06:32:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=n5Cv=FJ=kaod.org=clg@ozlabs.org>)
- id 1qkhlj-0006Im-0D; Mon, 25 Sep 2023 05:20:45 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qkisa-0007ZV-AL
+ for qemu-arm@nongnu.org; Mon, 25 Sep 2023 06:31:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=n5Cv=FJ=kaod.org=clg@ozlabs.org>)
- id 1qkhld-0005t3-MU; Mon, 25 Sep 2023 05:20:42 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4RvHR35p2Yz4xPR;
- Mon, 25 Sep 2023 19:20:31 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qkisY-0002YP-NU
+ for qemu-arm@nongnu.org; Mon, 25 Sep 2023 06:31:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1695637909;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=c1cwFSdRlu0Wnlm1jrM9IfNJHssewWckutA3WOkrFVA=;
+ b=Z1kam7TPcHU/jHwIticIGIBk4E/iHCMEEOqGvW+Kd161tyc1YYlsaX5AhAzfXYWfkmghu2
+ WIJAorz8jyWt/RdnvtJWLXg4pp8TCV6Or4HpXiTCqeIgmszA4TXw+u1L7l9SJwiICUU8tU
+ AJlX+MzSVmbGbAViEKAcoKzw58k6GlA=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-595-nkcvOYVKNwqG9o6IF5p6kg-1; Mon, 25 Sep 2023 06:31:45 -0400
+X-MC-Unique: nkcvOYVKNwqG9o6IF5p6kg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4RvHR20Hsrz4xPQ;
- Mon, 25 Sep 2023 19:20:29 +1000 (AEST)
-Message-ID: <c23dd1d8-a037-ed8e-30bf-6824ca3649c4@kaod.org>
-Date: Mon, 25 Sep 2023 11:20:25 +0200
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 06EB785A5BE;
+ Mon, 25 Sep 2023 10:31:45 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D7D9F2026D4B;
+ Mon, 25 Sep 2023 10:31:44 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id DB02D21E6900; Mon, 25 Sep 2023 12:31:43 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
+ Eduardo Habkost <eduardo@habkost.net>,  "Michael S. Tsirkin"
+ <mst@redhat.com>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: Re: [PATCH v2 04/15] hw/pci/pcie_sriov: Do not open-code
+ qdev_unrealize_and_unref()
+References: <20230203145536.17585-1-philmd@linaro.org>
+ <20230203145536.17585-5-philmd@linaro.org>
+Date: Mon, 25 Sep 2023 12:31:43 +0200
+In-Reply-To: <20230203145536.17585-5-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 3 Feb 2023 15:55:25
+ +0100")
+Message-ID: <87lecua6i8.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [Qemu-devel] [PATCH 08/19] aspeed/timer: Fix behaviour running
- Linux
-Content-Language: en-US
-To: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9_via?= <qemu-arm@nongnu.org>,
- Cameron Esfahani via <qemu-devel@nongnu.org>, Joel Stanley <joel@jms.id.au>
-References: <20190525151241.5017-1-clg@kaod.org>
- <20190525151241.5017-9-clg@kaod.org>
- <a4a62040-0127-4f39-4fc3-a1795e4daad8@kaod.org>
- <d383d716-2c9a-4d37-a35d-6f62bff9bf1e@app.fastmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <d383d716-2c9a-4d37-a35d-6f62bff9bf1e@app.fastmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=n5Cv=FJ=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.473,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,128 +119,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yhiQSXoU5Bme
+X-TUID: fMxmk3v4XnDi
 
-On 9/25/23 09:54, Andrew Jeffery wrote:
-> 
-> 
-> On Fri, 22 Sep 2023, at 22:51, Cédric Le Goater wrote:
->> Joel, Andrew,
->>
->> On 5/25/19 17:12, Cédric Le Goater wrote:
->>> From: Joel Stanley <joel@jms.id.au>
->>>
->>> The Linux kernel driver was updated in commit 4451d3f59f2a
->>> ("clocksource/drivers/fttmr010: Fix set_next_event handler) to fix an
->>> issue observed on hardware:
->>>
->>>    > RELOAD register is loaded into COUNT register when the aspeed timer
->>>    > is enabled, which means the next event may be delayed because timer
->>>    > interrupt won't be generated until <0xFFFFFFFF - current_count +
->>>    > cycles>.
->>>
->>> When running under Qemu, the system appeared "laggy". The guest is now
->>> scheduling timer events too regularly, starving the host of CPU time.
->>>
->>> This patch modifies the timer model to attempt to schedule the timer
->>> expiry as the guest requests, but if we have missed the deadline we
->>> re interrupt and try again, which allows the guest to catch up.
->>>
->>> Provides expected behaviour with old and new guest code.
->>>
->>> Fixes: c04bd47db6b9 ("hw/timer: Add ASPEED timer device model")
->>> Signed-off-by: Joel Stanley <joel@jms.id.au>
->>> [clg: - merged a fix from Andrew Jeffery <andrew@aj.id.au>
->>>           "Fire interrupt on failure to meet deadline"
->>>           https://lists.ozlabs.org/pipermail/openbmc/2019-January/014641.html
->>>         - adapted commit log
->>>         - checkpatch fixes ]
->>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>> ---
->>>    hw/timer/aspeed_timer.c | 59 ++++++++++++++++++++++-------------------
->>>    1 file changed, 31 insertions(+), 28 deletions(-)
->>>
->>> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
->>> index 5c786e512815..9ffd8e09f670 100644
->>> --- a/hw/timer/aspeed_timer.c
->>> +++ b/hw/timer/aspeed_timer.c
->>> @@ -109,37 +109,40 @@ static inline uint64_t calculate_time(struct AspeedTimer *t, uint32_t ticks)
->>>    
->>>    static uint64_t calculate_next(struct AspeedTimer *t)
->>>    {
->>> -    uint64_t next = 0;
->>> -    uint32_t rate = calculate_rate(t);
->>> +    uint64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->>> +    uint64_t next;
->>>    
->>> -    while (!next) {
->>> -        /* We don't know the relationship between the values in the match
->>> -         * registers, so sort using MAX/MIN/zero. We sort in that order as the
->>> -         * timer counts down to zero. */
->>> -        uint64_t seq[] = {
->>> -            calculate_time(t, MAX(t->match[0], t->match[1])),
->>> -            calculate_time(t, MIN(t->match[0], t->match[1])),
->>> -            calculate_time(t, 0),
->>> -        };
->>> -        uint64_t reload_ns;
->>> -        uint64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->>> -
->>> -        if (now < seq[0]) {
->>> -            next = seq[0];
->>> -        } else if (now < seq[1]) {
->>> -            next = seq[1];
->>> -        } else if (now < seq[2]) {
->>> -            next = seq[2];
->>> -        } else if (t->reload) {
->>> -            reload_ns = muldiv64(t->reload, NANOSECONDS_PER_SECOND, rate);
->>> -            t->start = now - ((now - t->start) % reload_ns);
->>> -        } else {
->>> -            /* no reload value, return 0 */
->>> -            break;
->>> -        }
->>> +    /*
->>> +     * We don't know the relationship between the values in the match
->>> +     * registers, so sort using MAX/MIN/zero. We sort in that order as
->>> +     * the timer counts down to zero.
->>> +     */
->>> +
->>> +    next = calculate_time(t, MAX(t->match[0], t->match[1]));
->>> +    if (now < next) {
->>> +        return next;
->>> +    }
->>> +
->>> +    next = calculate_time(t, MIN(t->match[0], t->match[1]));
->>> +    if (now < next) {
->>> +        return next;
->>> +    }
->>> +
->>> +    next = calculate_time(t, 0);
->>> +    if (now < next) {
->>> +        return next;
->>> +    }
->>> +
->>> +    /* We've missed all deadlines, fire interrupt and try again */
->>> +    timer_del(&t->timer);
->>> +
->>> +    if (timer_overflow_interrupt(t)) {
->>> +        t->level = !t->level;
->>> +        qemu_set_irq(t->irq, t->level);
->>>        }
->>>    
->>> -    return next;
->>> +    t->start = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->>> +    return calculate_time(t, MAX(MAX(t->match[0], t->match[1]), 0));
->>
->> This MAX(MAX(x, y), 0) looks strange to me. Would you remember where it comes
->> from ? Thanks,
-> 
-> The inner MAX() deals with the lack of ordering constraints between the match values. I think the outer MAX() is redundant. We should probably remove it. The match member is type uint32_t so it can't be negative. You did steal that from an RFC patch :D
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-I did ! Fixed there :
+> (See commits dc3edf8d8a "Convert to qdev_unrealize() manually"
+>  and 981c3dcd94 "Convert to qdev_unrealize() with Coccinelle").
+>
+> Reported-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  hw/pci/pcie_sriov.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/pci/pcie_sriov.c b/hw/pci/pcie_sriov.c
+> index 93b0624599..0b6101302b 100644
+> --- a/hw/pci/pcie_sriov.c
+> +++ b/hw/pci/pcie_sriov.c
+> @@ -204,11 +204,10 @@ static void unregister_vfs(PCIDevice *dev)
+>      for (i =3D 0; i < num_vfs; i++) {
+>          Error *errp =3D NULL;
+>          PCIDevice *vf =3D dev->exp.sriov_pf.vf[i];
+> -        object_property_set_bool(OBJECT(vf), "realized", false, &errp);
+> -        if (errp) {
+> +
+> +        if (!qdev_unrealize_and_unref(DEVICE(vf), &errp)) {
+>              warn_reportf_err(errp, "Failed to unplug: ");
+>          }
+> -        object_unparent(OBJECT(vf));
+>      }
+>      g_free(dev->exp.sriov_pf.vf);
+>      dev->exp.sriov_pf.vf =3D NULL;
 
-   https://patchwork.ozlabs.org/project/qemu-devel/patch/20230922155924.1172019-5-clg@kaod.org/
-
-Cheers,
-
-C.
+This replaces object_unref() by object_unparent().  Why is that okay?
 

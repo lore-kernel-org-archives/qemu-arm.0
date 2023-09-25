@@ -1,110 +1,96 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp306781ejc;
-        Mon, 25 Sep 2023 04:22:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEhAabLRkPEKT8ydJfJDPoo/cXgp/uFc4kAwopLAggZxUdDjMxFkjsa32AODs0KMFGV5Z/n
-X-Received: by 2002:a05:620a:318d:b0:76d:95bc:7aaa with SMTP id bi13-20020a05620a318d00b0076d95bc7aaamr7305870qkb.29.1695640969343;
-        Mon, 25 Sep 2023 04:22:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695640969; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp400427ejc;
+        Mon, 25 Sep 2023 06:55:13 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH0tNahsmkWhDU+pUKy9rxESK+Ot9lc0TC5O7zsKl5zrmlsfF65NLSlr+3DW6fC87nUbNxM
+X-Received: by 2002:a25:9d0c:0:b0:d7b:9d44:76dc with SMTP id i12-20020a259d0c000000b00d7b9d4476dcmr5979421ybp.38.1695650112697;
+        Mon, 25 Sep 2023 06:55:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695650112; cv=none;
         d=google.com; s=arc-20160816;
-        b=X/KQAIcWEqPTk0vrS6ETnFw7zHkeBZWbzAPBEEOOGu9fQOl8Rpaeqr8Z0yH0B754MI
-         GKm+qWHp80Ogg3yHmvTpmcv0zl7QiUkm8iupl8ZCpgiAlp2SK6b1j5LiUn9VrxH7MXbq
-         +fHS1pe+NVm6wtgPk9TVbhLXrhQYVBmJq6i0VJZNR4XPQZmwynzl0nLcr8SJpjsuJIyX
-         zcpLfkdemTemg81p5plBgY0gInj46jz7h4yqjDHJlcEE1K5UzYIXELySEPGojWnejj1Z
-         DAQ3cfXuGdpgFuOXBlDxUWCZguR7ke+Zr3qr4BrjCI5zrvQXUk8hkjbTzuClfF5ymSZM
-         HJ9A==
+        b=tu+eeN7lf86SE8Up5RxLGdd/vWlwU+sTKHd3m6vl8c7pRKkt5JP7ESaCahU9JXHrT6
+         spgwzHePsqfb0EdD2ckfEnq29IJADuUmpLyOId4OErNoLwLmbMvExQHfwLhE1Jr4f/BF
+         HtqWMaZH0UUiUsJIBTL6ofbBStYiAYLm0nZk9pj/k60Jmo0uYx2e0TVXzms0rBLzvApk
+         RfoOO791X/03CnLZ87UcMfpLouCPIB+XlNfyxYWuJxqsMifIgr4zD7cUckrNn8jzoiEY
+         c+pB5Arwjea98YlGrGr8+t6t2SJnVtQoCEpL4oJGil2HArAhUECD0tPoIpnwGPIkFazA
+         lTOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=KjTSXQ7FvnDgO3VZ62RhJ890kSaoi49kAiFaYhyCFgA=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=X5uNwEdpl7QAkgCdWnqa7q8jjrUzvtDJ2FeMyPnq3g5ekDhsMsFyda2pw0lcVJ6RfZ
-         Ys5hr3gVpipZ5wHBx8Deh5LZiXIsHdP/y3cNQghY6cNqNMNwutTzjegYBOP1XlVgldR7
-         slXmrklPkY8SzUyjuc4SF9OY7gMXzr4xo+/ZGio6rvewTla27MGPUnbn63c6Hdpvu/az
-         hNCTv7eAr9EwN9LR+es9baJnogMtbyNSt/prgx5quRCHnAwhKVmYJJ6Au2gH1LaGJ2Um
-         fvCc/xXcjUzPF9RcgfOD5tTRKLuO5ojtoGVoOt4/U0Nm14BWLqGAmBT1iYOFA1PL/LvH
-         5qMA==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=hl/SRpKlUpN+HbxT4SJHQo5shLvrbzxwht/ZxclvcOI=;
+        fh=JPmNNWFdLCeIR/gHn7wexEFwWDIgPmmG87UPgxIk2jk=;
+        b=0zE5+2QLd3JeBU8497iAhVRmW6dqX2ENOlNuXf1KO2TUvM1Ky8Pjk3DO0sgn0UU+h0
+         U/eElsTnkBwKeB3fEfw+GuTYvwHfxIMkzxs9n8KiVTwY9WQLlS175fCtPgaY5o7FjFie
+         gen/wNw2vRqubgKGJ3055jY4QUtZa9GyxQXez2QkibVubxmjIk4fpN5eeFoL8ij13Mwm
+         SqYP0/ufmiCXCQjJ/evdvxKsuV1JVEXrGRnblYpu9P1beEK2YeYgOsncRuhbtflGgnPx
+         B5IKtXbZhoC5nvbjOBMhC+pwakKghDGuEuswCGE+lbv+d8trJ9HGG0eDjrEl9BxNTXIG
+         ix+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tk76PgAK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v16-20020a05620a123000b007726448cd7asi5726141qkj.191.2023.09.25.04.22.49
+        by mx.google.com with ESMTPS id u14-20020a05622a14ce00b00410a28bece4si5977509qtx.350.2023.09.25.06.55.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Sep 2023 04:22:49 -0700 (PDT)
+        Mon, 25 Sep 2023 06:55:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tk76PgAK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qkjfV-0007WH-6e; Mon, 25 Sep 2023 07:22:25 -0400
+	id 1qkm3B-0005IR-9I; Mon, 25 Sep 2023 09:55:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qkjfU-0007Vh-5B
- for qemu-arm@nongnu.org; Mon, 25 Sep 2023 07:22:24 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qkjfS-00019M-FX
- for qemu-arm@nongnu.org; Mon, 25 Sep 2023 07:22:23 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-40566f89f6eso31180875e9.3
- for <qemu-arm@nongnu.org>; Mon, 25 Sep 2023 04:22:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1695640941; x=1696245741; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=KjTSXQ7FvnDgO3VZ62RhJ890kSaoi49kAiFaYhyCFgA=;
- b=Tk76PgAKJ7uirUmUgQa50KFdpjcnAw4PbCZ+UhK7EGexsRNPpMGYNseRUWwjOQg09W
- wyF2P0x4vGRnYrjafrlX2wNhJes65ArHfBsDwFTo38gikFcrWs0+EmkxuYcWguYReSFo
- rh47drYc+fJJ4VBjtoTSEVklTNVwL5OcU9054m25zOTmW8xwFNqhSMvSEQwIYfWg3qwU
- lxpXvUfzaKmpLoVIGDqxV7AiWHXu7FSvQQwUOBIo34It3SBcerOqaRJ569lBbFWa1puy
- tgCEYSJ+97RNYxRvGlUsO1R7BN6+cE5OUXPjbQ0d4ZFqVkpu2kUgAKLWKUqRRnWsbcTo
- ThMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695640941; x=1696245741;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KjTSXQ7FvnDgO3VZ62RhJ890kSaoi49kAiFaYhyCFgA=;
- b=IlIXI4svnmFLvo/kWSovvmv2lCKfVJFJ9oTAEzEX/6YXK4JDwdACPTrF9iEQHuBwgz
- LaT+VJSjd4X9Tmsu9hUZdBGQXsVjq5UiMnVrbXwZ9BTYKZHzWdwl7RUOHTeLJaVqdUrv
- snIp6id1k88azjH5LL+hSxKGCTCgoovVci9WIdXCebnILhUkTErYDZNBAvcU6QMXqUbP
- CpIAR8u5FkrzbQN+w7dg9ZbQ9S2TRPrD0MWrO87vo+qbT30Blk+nsM/G8E2ugcy3Rzgp
- SKOodJNPgBkq/asRXmUbvOV6YtcsaZ1GERk6tiYk0PcMIN7170a2QPsNEJPwNhzuxNzi
- XvBg==
-X-Gm-Message-State: AOJu0YxMp06GTnE+0AWUn42EVqW28Wi8WWROer1dZ30fS2ikIS9BwVHa
- jMTMzAlo7rAxeheqBwtcElRjWsaEFjJMPnqLgww=
-X-Received: by 2002:a7b:c38e:0:b0:3fe:238e:b23b with SMTP id
- s14-20020a7bc38e000000b003fe238eb23bmr5906587wmj.36.1695640940691; 
- Mon, 25 Sep 2023 04:22:20 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- k22-20020a05600c0b5600b003fe601a7d46sm14881425wmr.45.2023.09.25.04.22.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Sep 2023 04:22:20 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm/common-semi-target.h: Remove unnecessary boot.h
- include
-Date: Mon, 25 Sep 2023 12:22:19 +0100
-Message-Id: <20230925112219.3919261-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qkm3A-0005Hr-GH; Mon, 25 Sep 2023 09:55:00 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qkm37-0006OC-Tt; Mon, 25 Sep 2023 09:55:00 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.200])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RvPPj5XGvz6K9h1;
+ Mon, 25 Sep 2023 21:49:45 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Mon, 25 Sep
+ 2023 14:54:42 +0100
+Date: Mon, 25 Sep 2023 14:54:40 +0100
+To: Ankit Agrawal <ankita@nvidia.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
+ <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
+ (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, "Andy
+ Currid" <ACurrid@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v1 3/4] hw/arm/virt-acpi-build: patch guest SRAT for
+ NUMA nodes
+Message-ID: <20230925145440.00005072@Huawei.com>
+In-Reply-To: <BY5PR12MB3763BC1EB9402223B020ABF8B0FFA@BY5PR12MB3763.namprd12.prod.outlook.com>
+References: <20230915024559.6565-1-ankita@nvidia.com>
+ <20230915024559.6565-4-ankita@nvidia.com>
+ <20230915153740.00006185@Huawei.com>
+ <BY5PR12MB3763BC1EB9402223B020ABF8B0FFA@BY5PR12MB3763.namprd12.prod.outlook.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,44 +104,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: epT1QE9zsm/q
+X-TUID: VMyJs7VCIXvO
 
-The hw/arm/boot.h include in common-semi-target.h is not actually
-needed, and it's a bit odd because it pulls a hw/arm header into a
-target/arm file.
+On Fri, 22 Sep 2023 05:49:46 +0000
+Ankit Agrawal <ankita@nvidia.com> wrote:
 
-This include was originally needed because the semihosting code used
-the arm_boot_info struct to get the base address of the RAM in system
-emulation, to use in a (bad) heuristic for the return values for the
-SYS_HEAPINFO semihosting call.  We've since overhauled how we
-calculate the HEAPINFO values in system emulation, and the code no
-longer uses the arm_boot_info struct.
+> Hi Jonathan
 
-Remove the now-redundant include line, and instead directly include
-the cpu-qom.h header that we were previously getting via boot.h.
+Hi Ankit,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/common-semi-target.h | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> > > +        if (pcidev->pdev.has_coherent_memory) {
+> > > +            uint64_t start_node = object_property_get_uint(obj,
+> > > +                                  "dev_mem_pxm_start", &error_abort);
+> > > +            uint64_t node_count = object_property_get_uint(obj,
+> > > +                                  "dev_mem_pxm_count", &error_abort);
+> > > +            uint64_t node_index;
+> > > +
+> > > +            /*
+> > > +             * Add the node_count PXM domains starting from start_node as
+> > > +             * hot pluggable. The VM kernel parse the PXM domains and
+> > > +             * creates NUMA nodes.
+> > > +             */
+> > > +            for (node_index = 0; node_index < node_count; node_index++)
+> > > +                build_srat_memory(table_data, 0, 0, start_node + node_index,
+> > > +                    MEM_AFFINITY_ENABLED |
+> > > + MEM_AFFINITY_HOTPLUGGABLE);  
+> > 
+> > 0 size SRAT entries for memory? That's not valid.  
+> 
+> Can you explain in what sense are these invalid? The Linux kernel accepts
+> such setting and I had tested it.
 
-diff --git a/target/arm/common-semi-target.h b/target/arm/common-semi-target.h
-index 629d75ca5a7..fa00c7fabb6 100644
---- a/target/arm/common-semi-target.h
-+++ b/target/arm/common-semi-target.h
-@@ -10,9 +10,7 @@
- #ifndef TARGET_ARM_COMMON_SEMI_TARGET_H
- #define TARGET_ARM_COMMON_SEMI_TARGET_H
- 
--#ifndef CONFIG_USER_ONLY
--#include "hw/arm/boot.h"
--#endif
-+#include "target/arm/cpu-qom.h"
- 
- static inline target_ulong common_semi_arg(CPUState *cs, int argno)
- {
--- 
-2.34.1
+ACPI specification doesn't define any means of 'updating' the memory range,
+so whilst I guess they are not specifically disallowed without a spec definition
+of what it means this is walking into a mine field. In particular the 
+description of the hot pluggable bit worries me:
+"The system hardware supports hot-add and hot-remove of this memory region."
+So I think your definition is calling out that you can hot plug memory into
+a region of zero size. To me that's nonsensical so a paranoid OS writer
+might just spit out firmware error message and refuse to boot.
+
+There is no guarantee other operating systems won't blow up if they see one
+of these. To be able to do this safely I think you probably need an ACPI
+spec update to say what such a zero length, zero base region means.
+
+Possible the ASWG folk would say this is fine and I'm reading too much into
+the spec, but I'd definitely suggest asking them via the appropriate path,
+or throwing in a code first proposal for a comment on this special case and
+see what response you get - my guess is it will be 'fix Linux' :(
+
+> 
+> > Seems like you've run into the same issue CXL has with dynamic addition of
+> > nodes to the kernel and all you want to do here is make sure it thinks there are
+> > enough nodes so initializes various structures large enough.
+> >  
+> Yes, exactly.
+> 
 

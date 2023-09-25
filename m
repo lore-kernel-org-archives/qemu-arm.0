@@ -1,162 +1,171 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp502693ejc;
-        Mon, 25 Sep 2023 09:14:52 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEu/bm5fN348+fHT/AOuS7WP0sn6UZ8arYbDK/Qqfm+3EoZEPASxLvrtYDL8R/WZsk+e6JH
-X-Received: by 2002:a17:906:3402:b0:9ad:8a29:f26a with SMTP id c2-20020a170906340200b009ad8a29f26amr6729186ejb.63.1695658492699;
-        Mon, 25 Sep 2023 09:14:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695658492; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp511708ejc;
+        Mon, 25 Sep 2023 09:28:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGNo9OmeeP5tJd76M1czObzQe9ZZq3yScK/GV1iRY105zcwU1nVOLSAZ/z42de6uBjp3AVA
+X-Received: by 2002:a25:d4c7:0:b0:d80:eff:5fba with SMTP id m190-20020a25d4c7000000b00d800eff5fbamr6720751ybf.15.1695659311113;
+        Mon, 25 Sep 2023 09:28:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695659311; cv=none;
         d=google.com; s=arc-20160816;
-        b=KaOoqDrTZCRYH+rQ12P0ED+Brpk0qI5r7zCY4wgoBhCQGYMerwxAD7FPtNzs/JmVmx
-         5TTDtX2WV23mGZ17HxnAd8Pa0yTr4AibNvf1p3nA1Za7nZB9TJkrGrpD/lquFSXISpIn
-         40yhjna+XDmdOxv/jbv0uttSdafT/+GgjP755ifr5ATVNFEHs3YBT2ewqOFVw4VX2QtG
-         KJaUOYSK/nh8UIP5r27uhsMxUVmD1SKTFGOde54ydyUxxKxDjfKO27+YTidzzqW9tylR
-         Cnotm0KTd2foutw37SLYHBo4pBo84KLYF3EiFrYXK2r3Y9WWMNSuqOznKjgETf86NZdO
-         VywA==
+        b=a/OxCMO8rtr0q77GJu5jCCiOtAhoYRODvbPG41o3kQQL+V3dLHr6NcKiuG0+VVwXNt
+         ZHihIXzhWN9JruhDjL+Rp+BN5mQGkOyMKOyHt/jZ8+2jBdF0mmT1EU59XfbcPm/N36Uu
+         vEy3U6mSF1MPAy+vznGkql4Gb9MzwVPAHk8YHT7Hjo+S7N/XQ19lcUKPZzH9wox86dNc
+         EplTb2f0QQPhcvlP0KVAeOYTy0T2B0qNuWumhN2OJK6lyDeTkJgoWKC0QSGIQqji3s4k
+         Uhqam8ize+jE4tBQDXtUiyiWe0EPFDYTKHj8kZ9Tudmkq77HV+INbNVU+e4J96BX7t6e
+         Q6dQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=d7TYpatd+73WcDke8sP8ZGJUjuyshMuCmv8QF2XliGQ=;
-        fh=K4NqYNBzOTwwaAVLxUfLHV9qOVKTnvFqUM9paB3EKFA=;
-        b=smc1AhF+tVNS70zSYhbJpBGfiusoS+EPg6BCzeZ3Of5aB1s99Df22unjT5VZpL3tlJ
-         kR9Wqg61f1ukKxEADILKa/naMP0A0HU8uTQkPbaKGe4Pk+h6rdKHccOmfXe4cA1/dnEH
-         ZYuLleXu5YAgwmZ02i6jqsX0MBmflHy0vMgI7HAWv+lj6iAwNp2rSOQ7T0APa4GbFL4H
-         9HOlKHbTgX+Kj6Me5L9kxQatEujGcuOhrSwbMy3ecENYO9GdwjDidNKiTY9SYOZD2deH
-         dITNpKdxGMtcPjdbzH0nz3FR4fJ8Kh/5zXwe9NO5j444K6DFoMxdC1TjDlKpkAkPYEjB
-         3JsQ==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Q3XmcHzrOYSbEyZh6kgDiDOPnKUtdQ6p5R5WI4Sq3ss=;
+        fh=qRaaJWpKB8b8LeAvB+0Yn3BLVou2mEMkuWB2O57lVPU=;
+        b=UwFoKOMrjJlggQEByYVOLrGd18TGjNPEOkq0YKZj+xtrIt1TP1XdqFD3a3puCJ+MQ7
+         UDgtRW4W6+9y/fS54K3+AEz9lQZxWFvhlIQqCRK8doJqxtvuSLckqFhkz0w7dwapM/gz
+         tXr2F6d5EZgMgfhLIxWb9hTT35ByjrUDUG3udFho2GLiQ6DemRqb3tKR2GrdMqXeOd5l
+         q+2mdeHFKtawl2wY+XtmpDgvMCIZSvVaKQbEg5zNlJKCTjfpmhaA7Ma6BJCKZ5vOOLQn
+         Kb5VlLC7eCG5w8AyvbU00Awg/lajbU4rYi5X2GpHgJg58JCuaj3QWm01OOPrP16ZK/2m
+         E2HQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AwliDv7V;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jHQHMvc+;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pbonzini@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id o21-20020a170906601500b009b29427b3desi713581ejj.739.2023.09.25.09.14.51
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id k3-20020ad44203000000b0065653bcf2c6si5967633qvp.179.2023.09.25.09.28.30
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Sep 2023 09:14:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 25 Sep 2023 09:28:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AwliDv7V;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jHQHMvc+;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1695658491;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	s=mimecast20190719; t=1695659310;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=d7TYpatd+73WcDke8sP8ZGJUjuyshMuCmv8QF2XliGQ=;
-	b=AwliDv7VVtcjn/FSSz8O0N+320STpqi21YyANEHRoZkjFuoKpPY9Iw7x6IElImTisggOqQ
-	yJjGKFEUsUdXtcbeLW1wvtQfP1kPz52PHKYnN5+SLs3n1UOIliK+4ZTnrv9DgiWtRhbAli
-	VL1HiHuLcdbhW3AVuGMU8aXSzVW6Xbs=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-146-p93vY9o7MZi4Zzzup8154g-1; Mon, 25 Sep 2023 12:14:49 -0400
-X-MC-Unique: p93vY9o7MZi4Zzzup8154g-1
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-40590e6bd67so22451015e9.2
-        for <alex.bennee@linaro.org>; Mon, 25 Sep 2023 09:14:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695658487; x=1696263287;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=d7TYpatd+73WcDke8sP8ZGJUjuyshMuCmv8QF2XliGQ=;
-        b=DX4cBelza+xsR2MBndv6kEsrAq3Y3AZwqx5MnhLfkg+fuaHjtfOCwNgOE9KRLjWtG0
-         WqF1Wt07MQpzMJypz/qlcA7yT0Ybpg5Ad6bwyvq+kJxRwDn4M+f/fWdbTp0me50/uVjm
-         +hmi/KammoHxGdm2nfjFttoKVU+eY+pALEiHQoFS7EuHTWXNaXs0KpzuDkFw3eRQW5jO
-         bXgJC8jhOHMs5ycu8sOWeButN4Z7CGUfWZGXGosxIPi6rANYAo25RjFGsnD8bE+kiHp7
-         /Vb/XzHP6aYXfnoaGWF2mvNL44idRy0O1eNHOGHjm1Ya1D/CuOjvKaNSsxxOSg2nHXwQ
-         emIQ==
-X-Gm-Message-State: AOJu0Yzf7MQSENgCdUSMcw9sDveBZ5YtpZyyDiuWpxCyQc8uaC/HaVOK
-	vR5Hq/zcO/Xd2Ix/ysMfA4FBUB00u+5OIQS93xEa2ljg9QdHHXEUDjQUBIoZNFx/1iAZaUE/gUl
-	uFJTOHD990zeZxQOwIknpH57pDNsfEX2q7wpRJgixalOG+bH5NDok2caCGDPlMNJlzyKAmte3Mr
-	fL
-X-Received: by 2002:a5d:4c85:0:b0:321:4d1d:26f with SMTP id z5-20020a5d4c85000000b003214d1d026fmr7075189wrs.29.1695658487358;
-        Mon, 25 Sep 2023 09:14:47 -0700 (PDT)
-X-Received: by 2002:a5d:4c85:0:b0:321:4d1d:26f with SMTP id z5-20020a5d4c85000000b003214d1d026fmr7075125wrs.29.1695658486825;
-        Mon, 25 Sep 2023 09:14:46 -0700 (PDT)
-Return-Path: <pbonzini@redhat.com>
-Received: from ?IPV6:2001:b07:6468:f312:9af8:e5f5:7516:fa89? ([2001:b07:6468:f312:9af8:e5f5:7516:fa89])
-        by smtp.googlemail.com with ESMTPSA id j2-20020a5d4642000000b00317e77106dbsm12251727wrs.48.2023.09.25.09.14.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 25 Sep 2023 09:14:46 -0700 (PDT)
-Message-ID: <908ae9aa-11fc-8584-bd60-e269a1026e37@redhat.com>
-Date: Mon, 25 Sep 2023 18:14:44 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 08/31] configure: ensure dependency for cross-compile
- setup
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- John Snow <jsnow@redhat.com>, libvir-list@redhat.com,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-s390x@nongnu.org, Song Gao <gaosong@loongson.cn>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Nicholas Piggin <npiggin@gmail.com>, Radoslaw Biernacki <rad@semihalf.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Cleber Rosa <crosa@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Bin Meng <bin.meng@windriver.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, qemu-ppc@nongnu.org,
- David Hildenbrand <david@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Leif Lindholm <quic_llindhol@quicinc.com>, Beraldo Leal <bleal@redhat.com>
+	bh=Q3XmcHzrOYSbEyZh6kgDiDOPnKUtdQ6p5R5WI4Sq3ss=;
+	b=jHQHMvc+hE9FWznPZx9gQ0YckgYvkk/qezdSQzSKvM6ukUSADJa1IFkk/P3xWIpD6YM/qt
+	RfJQqC3dU3NpTTdlcNEQgrkz5nVVhvN5Ad4QT9moKS6NUXIqSeZpzYMIVmZWpdVljCrKph
+	Zy7jHjB/wkQ7BqB/UD/mTChMkTUmkuY=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-587-6mdfCm23M3qQ5dpy8iYUZA-1; Mon, 25 Sep 2023 12:28:26 -0400
+X-MC-Unique: 6mdfCm23M3qQ5dpy8iYUZA-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com [10.11.54.9])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3C9B829AB400;
+	Mon, 25 Sep 2023 16:28:25 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.25])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AB5CE711291;
+	Mon, 25 Sep 2023 16:28:19 +0000 (UTC)
+Date: Mon, 25 Sep 2023 17:28:17 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	John Snow <jsnow@redhat.com>, libvir-list@redhat.com,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	qemu-s390x@nongnu.org, Song Gao <gaosong@loongson.cn>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Weiwei Li <liweiwei@iscas.ac.cn>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Bin Meng <bin.meng@windriver.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>, qemu-ppc@nongnu.org,
+	David Hildenbrand <david@redhat.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+	qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Beraldo Leal <bleal@redhat.com>, Rabin Vincent <rabinv@axis.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>
+Subject: Re: [PATCH 04/31] docs: mark CRIS support as deprecated
+Message-ID: <ZRG1IbuBvUfkqqa8@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20230925144854.1872513-1-alex.bennee@linaro.org>
- <20230925144854.1872513-9-alex.bennee@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <20230925144854.1872513-9-alex.bennee@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <20230925144854.1872513-5-alex.bennee@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: iC8FgxsUaleE
+In-Reply-To: <20230925144854.1872513-5-alex.bennee@linaro.org>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+X-TUID: 538ko44yV0lf
 
-On 9/25/23 16:48, Alex Bennée wrote:
-> If we update configure we should make sure we regenerate all the
-> compiler details. We should also ensure those details are upto date
-> before building the TCG tests.
+On Mon, Sep 25, 2023 at 03:48:27PM +0100, Alex Bennée wrote:
+> This might be premature but while streamling the avocado tests I
+> realised the only tests we have are "check-tcg" ones. The aging
+> fedora-criss-cross image works well enough for developers but can't be
+> used in CI as we need supported build platforms to build QEMU.
+> 
+> Does this mean the writing is on the wall for this architecture?
+
+It was deleted in Linux, and GCC dropped the cris-*linux target,
+but GCC keeps other cris targets.
+
+IOW, at very least, it has become a niche use case target.
+
+We don't need Linux/GCC support as a pre-requisite for having a
+target in QEMU, but it sure makes it increasingly challenging
+to test.
+
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Rabin Vincent <rabinv@axis.com>
+> Cc: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 > ---
->   configure | 2 ++
->   1 file changed, 2 insertions(+)
+>  docs/about/deprecated.rst | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
 > 
-> diff --git a/configure b/configure
-> index e83872571d..a95e0f5767 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1788,6 +1788,8 @@ for target in $target_list; do
->             echo "HOST_GDB_SUPPORTS_ARCH=y" >> "$config_target_mak"
->         fi
->   
-> +      echo "$config_target_mak: configure" >> Makefile.prereqs
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index dc4da95329..7cfe313aa6 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -399,6 +399,17 @@ Specifying the iSCSI password in plain text on the command line using the
+>  used instead, to refer to a ``--object secret...`` instance that provides
+>  a password via a file, or encrypted.
+>  
+> +TCG CPUs
+> +--------
+> +
+> +CRIS CPU architecture (since 8.1)
+> +'''''''''''''''''''''''''''''''''
+> +
+> +The CRIS architecture was pulled from Linux in 4.17 and the compiler
+> +is no longer packaged in any distro making it harder to run the
+> +``check-tcg`` tests. Unless we can improve the testing situation there
+> +is a chance the code will bitrot without anyone noticing.
+> +
+>  Backwards compatibility
+>  -----------------------
+>  
+> -- 
+> 2.39.2
+> 
 
-This in practice is not adding anything; if "configure" changes then 
-Makefile's dependency on config-host.mak will trigger a configure rerun 
-anyway.
-
-If you want to add it, you should also add it for other config-*.mak 
-files.  However, I'd remove this line and just change
-
--# 1. ensure config-host.mak is up-to-date
-+# 1. ensure config-host.mak is up-to-date.  All other config-*.mak
-+# files for subdirectories will be updated as well.
-
-in the Makefile.
-
-Paolo
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

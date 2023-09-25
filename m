@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id o13-20020adfeacd000000b00317f3fd21b7sm12170189wrn.80.2023.09.25.07.58.41
+        by smtp.gmail.com with ESMTPSA id t7-20020a5d49c7000000b003176aa612b1sm12043674wrs.38.2023.09.25.07.58.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 25 Sep 2023 07:58:42 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B38181FFCD;
-	Mon, 25 Sep 2023 15:48:57 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 73C1E1FFD2;
+	Mon, 25 Sep 2023 15:48:58 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -48,91 +48,82 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Leif Lindholm <quic_llindhol@quicinc.com>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH 22/31] target/sh4: Disable decode_gusa when plugins enabled
-Date: Mon, 25 Sep 2023 15:48:45 +0100
-Message-Id: <20230925144854.1872513-23-alex.bennee@linaro.org>
+Subject: [RFC PATCH 28/31] qtest: use cpu interface in qtest_clock_warp
+Date: Mon, 25 Sep 2023 15:48:51 +0100
+Message-Id: <20230925144854.1872513-29-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230925144854.1872513-1-alex.bennee@linaro.org>
 References: <20230925144854.1872513-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: tf1WnZGm3es5
+X-TUID: 5Flfo2b64Oq1
 
-From: Richard Henderson <richard.henderson@linaro.org>
+This generalises the qtest_clock_warp code to use the AccelOps
+handlers for updating its own sense of time. This will make the next
+patch which moves the warp code closer to pure code motion.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230824181233.1568795-3-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Acked-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20230519170454.2353945-6-alex.bennee@linaro.org>
 ---
- target/sh4/translate.c | 41 +++++++++++++++++++++++++++++------------
- 1 file changed, 29 insertions(+), 12 deletions(-)
+ include/sysemu/qtest.h | 1 +
+ accel/qtest/qtest.c    | 1 +
+ softmmu/qtest.c        | 6 +++---
+ 3 files changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index c1e590feb3..b4dee34c9a 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -1816,6 +1816,18 @@ static void decode_opc(DisasContext * ctx)
+diff --git a/include/sysemu/qtest.h b/include/sysemu/qtest.h
+index 85f05b0e46..e1f69783d6 100644
+--- a/include/sysemu/qtest.h
++++ b/include/sysemu/qtest.h
+@@ -35,5 +35,6 @@ void qtest_server_set_send_handler(void (*send)(void *, const char *),
+ void qtest_server_inproc_recv(void *opaque, const char *buf);
+ 
+ int64_t qtest_get_virtual_clock(void);
++void qtest_set_virtual_clock(int64_t count);
+ 
+ #endif
+diff --git a/accel/qtest/qtest.c b/accel/qtest/qtest.c
+index f6056ac836..53182e6c2a 100644
+--- a/accel/qtest/qtest.c
++++ b/accel/qtest/qtest.c
+@@ -52,6 +52,7 @@ static void qtest_accel_ops_class_init(ObjectClass *oc, void *data)
+ 
+     ops->create_vcpu_thread = dummy_start_vcpu_thread;
+     ops->get_virtual_clock = qtest_get_virtual_clock;
++    ops->set_virtual_clock = qtest_set_virtual_clock;
+ };
+ 
+ static const TypeInfo qtest_accel_ops_type = {
+diff --git a/softmmu/qtest.c b/softmmu/qtest.c
+index 35b643a274..bac1962efb 100644
+--- a/softmmu/qtest.c
++++ b/softmmu/qtest.c
+@@ -331,14 +331,14 @@ int64_t qtest_get_virtual_clock(void)
+     return qatomic_read_i64(&qtest_clock_counter);
  }
  
- #ifdef CONFIG_USER_ONLY
-+/*
-+ * Restart with the EXCLUSIVE bit set, within a TB run via
-+ * cpu_exec_step_atomic holding the exclusive lock.
-+ */
-+static void gen_restart_exclusive(DisasContext *ctx)
-+{
-+    ctx->envflags |= TB_FLAG_GUSA_EXCLUSIVE;
-+    gen_save_cpu_state(ctx, false);
-+    gen_helper_exclusive(cpu_env);
-+    ctx->base.is_jmp = DISAS_NORETURN;
-+}
-+
- /* For uniprocessors, SH4 uses optimistic restartable atomic sequences.
-    Upon an interrupt, a real kernel would simply notice magic values in
-    the registers and reset the PC to the start of the sequence.
-@@ -2149,12 +2161,7 @@ static void decode_gusa(DisasContext *ctx, CPUSH4State *env)
-     qemu_log_mask(LOG_UNIMP, "Unrecognized gUSA sequence %08x-%08x\n",
-                   pc, pc_end);
+-static void qtest_set_virtual_clock(int64_t count)
++void qtest_set_virtual_clock(int64_t count)
+ {
+     qatomic_set_i64(&qtest_clock_counter, count);
+ }
  
--    /* Restart with the EXCLUSIVE bit set, within a TB run via
--       cpu_exec_step_atomic holding the exclusive lock.  */
--    ctx->envflags |= TB_FLAG_GUSA_EXCLUSIVE;
--    gen_save_cpu_state(ctx, false);
--    gen_helper_exclusive(cpu_env);
--    ctx->base.is_jmp = DISAS_NORETURN;
-+    gen_restart_exclusive(ctx);
+ static void qtest_clock_warp(int64_t dest)
+ {
+-    int64_t clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    int64_t clock = cpus_get_virtual_clock();
+     AioContext *aio_context;
+     assert(qtest_enabled());
+     aio_context = qemu_get_aio_context();
+@@ -347,7 +347,7 @@ static void qtest_clock_warp(int64_t dest)
+                                                       QEMU_TIMER_ATTR_ALL);
+         int64_t warp = qemu_soonest_timeout(dest - clock, deadline);
  
-     /* We're not executing an instruction, but we must report one for the
-        purposes of accounting within the TB.  We might as well report the
-@@ -2242,12 +2249,22 @@ static void sh4_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
- #ifdef CONFIG_USER_ONLY
-     if (unlikely(ctx->envflags & TB_FLAG_GUSA_MASK)
-         && !(ctx->envflags & TB_FLAG_GUSA_EXCLUSIVE)) {
--        /* We're in an gUSA region, and we have not already fallen
--           back on using an exclusive region.  Attempt to parse the
--           region into a single supported atomic operation.  Failure
--           is handled within the parser by raising an exception to
--           retry using an exclusive region.  */
--        decode_gusa(ctx, env);
-+        /*
-+         * We're in an gUSA region, and we have not already fallen
-+         * back on using an exclusive region.  Attempt to parse the
-+         * region into a single supported atomic operation.  Failure
-+         * is handled within the parser by raising an exception to
-+         * retry using an exclusive region.
-+         *
-+         * Parsing the region in one block conflicts with plugins,
-+         * so always use exclusive mode if plugins enabled.
-+         */
-+        if (ctx->base.plugin_enabled) {
-+            gen_restart_exclusive(ctx);
-+            ctx->base.pc_next += 2;
-+        } else {
-+            decode_gusa(ctx, env);
-+        }
-         return;
-     }
- #endif
+-        qtest_set_virtual_clock(qtest_get_virtual_clock() + warp);
++        cpus_set_virtual_clock(cpus_get_virtual_clock() + warp);
+ 
+         qemu_clock_run_timers(QEMU_CLOCK_VIRTUAL);
+         timerlist_run_timers(aio_context->tlg.tl[QEMU_CLOCK_VIRTUAL]);
 -- 
 2.39.2

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id x17-20020a5d6511000000b0031fd849e797sm12075216wru.105.2023.09.25.07.58.40
+        by smtp.gmail.com with ESMTPSA id t18-20020a1c7712000000b00405959469afsm1656915wmi.3.2023.09.25.07.58.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 25 Sep 2023 07:58:41 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3C22E1FFCA;
-	Mon, 25 Sep 2023 15:48:57 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 139401FFCE;
+	Mon, 25 Sep 2023 15:48:58 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair.francis@wdc.com>,
@@ -47,80 +47,72 @@ Cc: Alistair Francis <alistair.francis@wdc.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Yoshinori Sato <ysato@users.sourceforge.jp>,
 	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 18/31] target/ppc: Remove references to gdb_has_xml
-Date: Mon, 25 Sep 2023 15:48:41 +0100
-Message-Id: <20230925144854.1872513-19-alex.bennee@linaro.org>
+	Beraldo Leal <bleal@redhat.com>
+Subject: [PATCH 25/31] contrib/plugins: fix coverity warning in lockstep
+Date: Mon, 25 Sep 2023 15:48:48 +0100
+Message-Id: <20230925144854.1872513-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230925144854.1872513-1-alex.bennee@linaro.org>
 References: <20230925144854.1872513-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: IVYUxLNTjD4p
+X-TUID: IypNGqmOnifu
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Coverity complains that e don't check for a truncation when copying in
+the path. Bail if we can't copy the whole path into sockaddr.
 
-GDB has XML support since 6.7 which was released in 2007.
-It's time to remove support for old GDB versions without XML support.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20230912224107.29669-11-akihiko.odaki@daynix.com>
+Fixes: CID 1519045
+Fixes: CID 1519046
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/ppc/gdbstub.c | 18 ------------------
- 1 file changed, 18 deletions(-)
+ contrib/plugins/lockstep.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 778ef73bd7..ec5731e5d6 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -54,12 +54,6 @@ static int ppc_gdb_register_len(int n)
-     case 0 ... 31:
-         /* gprs */
-         return sizeof(target_ulong);
--    case 32 ... 63:
--        /* fprs */
--        if (gdb_has_xml()) {
--            return 0;
--        }
--        return 8;
-     case 66:
-         /* cr */
-     case 69:
-@@ -74,12 +68,6 @@ static int ppc_gdb_register_len(int n)
-     case 68:
-         /* ctr */
-         return sizeof(target_ulong);
--    case 70:
--        /* fpscr */
--        if (gdb_has_xml()) {
--            return 0;
--        }
--        return sizeof(target_ulong);
-     default:
-         return 0;
+diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
+index 682b11feb2..f0cb8792c6 100644
+--- a/contrib/plugins/lockstep.c
++++ b/contrib/plugins/lockstep.c
+@@ -245,6 +245,7 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+ static bool setup_socket(const char *path)
+ {
+     struct sockaddr_un sockaddr;
++    const gsize pathlen = sizeof(sockaddr.sun_path) - 1;
+     int fd;
+ 
+     fd = socket(AF_UNIX, SOCK_STREAM, 0);
+@@ -254,7 +255,11 @@ static bool setup_socket(const char *path)
      }
-@@ -132,9 +120,6 @@ int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
-     if (n < 32) {
-         /* gprs */
-         gdb_get_regl(buf, env->gpr[n]);
--    } else if (n < 64) {
--        /* fprs */
--        gdb_get_reg64(buf, *cpu_fpr_ptr(env, n - 32));
-     } else {
-         switch (n) {
-         case 64:
-@@ -158,9 +143,6 @@ int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
-         case 69:
-             gdb_get_reg32(buf, cpu_read_xer(env));
-             break;
--        case 70:
--            gdb_get_reg32(buf, env->fpscr);
--            break;
-         }
+ 
+     sockaddr.sun_family = AF_UNIX;
+-    g_strlcpy(sockaddr.sun_path, path, sizeof(sockaddr.sun_path) - 1);
++    if (g_strlcpy(sockaddr.sun_path, path, pathlen) >= pathlen) {
++        perror("bad path");
++        return false;
++    }
++
+     if (bind(fd, (struct sockaddr *)&sockaddr, sizeof(sockaddr)) < 0) {
+         perror("bind socket");
+         close(fd);
+@@ -287,6 +292,7 @@ static bool connect_socket(const char *path)
+ {
+     int fd;
+     struct sockaddr_un sockaddr;
++    const gsize pathlen = sizeof(sockaddr.sun_path) - 1;
+ 
+     fd = socket(AF_UNIX, SOCK_STREAM, 0);
+     if (fd < 0) {
+@@ -295,7 +301,10 @@ static bool connect_socket(const char *path)
      }
-     mem_buf = buf->data + buf->len - r;
+ 
+     sockaddr.sun_family = AF_UNIX;
+-    g_strlcpy(sockaddr.sun_path, path, sizeof(sockaddr.sun_path) - 1);
++    if (g_strlcpy(sockaddr.sun_path, path, pathlen) >= pathlen) {
++        perror("bad path");
++        return false;
++    }
+ 
+     if (connect(fd, (struct sockaddr *)&sockaddr, sizeof(sockaddr)) < 0) {
+         perror("failed to connect");
 -- 
 2.39.2

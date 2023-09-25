@@ -1,159 +1,173 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp512689ejc;
-        Mon, 25 Sep 2023 09:30:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGanPXjy7iNJnqeOD0eQOkFpRwmbbmZ6s7y7DAo6pIcIfgf/LV/tIFVeFw3TjGJxhss/O5H
-X-Received: by 2002:a05:620a:280c:b0:76c:e0c5:2f6c with SMTP id f12-20020a05620a280c00b0076ce0c52f6cmr6119356qkp.38.1695659408759;
-        Mon, 25 Sep 2023 09:30:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695659408; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp520272ejc;
+        Mon, 25 Sep 2023 09:41:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFDuU7aeBwe1rZqTFbG71wsprraSKOlq3VnBwVhl+kdgvA8IjAbFc9Buv5fIcDdPg+FLUCR
+X-Received: by 2002:a05:6214:5b0f:b0:65b:12b1:d54f with SMTP id ma15-20020a0562145b0f00b0065b12b1d54fmr253617qvb.22.1695660118270;
+        Mon, 25 Sep 2023 09:41:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695660118; cv=none;
         d=google.com; s=arc-20160816;
-        b=LyjHUXIjJ89UeTjv5u/R8P1ah/eTiV39tN70m2+asIxUaWMktT+z5N6gzvg7UK5t+H
-         ECiWyDpI5TGU9r+bQoZlRAVtKv0MN3SqdFjRxuzyAqj0wHAiCaq/5QGrujuM2JWSfcVV
-         9p7M1jvF/EsmzCNr4JIroiXfBSvGlyP/69jQWIvcRR8pJGYSHK1tdWDKCuGLa58YlZtY
-         UaONNb/hm/wnWiYAyX3VtHNRqD8Y4EQz3jDkWIrk4qeb4Hgm99vTufOBa7QT4ZvSQ1qN
-         /BSuYJKeB15H0UDMez9bX+zgM9nAykM7Ro+vwZhg/2Ne7T7ON/JaYEMsR5oOcul//sQq
-         VbWA==
+        b=CJTGRyzKIIXELaFnsXaWyl4AKDHFTp997eERm/8okTaXUu7jcRCtactzVrciIklKbI
+         gcx+/UAB1AOvae5xx99e4Ue5nqvhy9cdly4navQbvbWiwn9Ft1mZm5YxgUlkKfrBg016
+         5ZX4kTaijFdiBlJ3bEfOpkqxRSQ+d/MT27OX2jnjbbfqHLf0u7l+oFwzh5rrUTZmNQI7
+         gJSl1EVv4dz8osnx6UQfUy/CmKJWLvT1i7wyvAoPpHqTwD7XwhOBU9TO4Jv5xJBSbtlv
+         pwAY1QQP6fzADNgta3jYFeOCi8EfWbjh1GNCuIsUD4pqebq+cwtOVkpqTPpqHWA9rq4O
+         VCJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=ZDkrPOy4Mu3WpHlWim56rb19dnBihC6z5EAVjpSCRR8=;
-        fh=qRaaJWpKB8b8LeAvB+0Yn3BLVou2mEMkuWB2O57lVPU=;
-        b=mu58bMZ/fXXtAcz0Iyctq2t9httP2bB7Ln8j3oPtC61aP74caCw9EZZlM+pdy018F9
-         hO8kC+he6q7y60RX30Ysy32XH8fO2ysiIzalbS9D3fGzO/gNeIHCa95Fh7QGQPZeEaQA
-         o7jaBu5joB4K5Ns3vFoYo7QxAqTStyk4HKkMYK05bh3PQw/xqdD5vnhLqdtHbf8n7jHL
-         voCYNv6kdJLLHF1vckiBc/mSAQRfOgjLn9sBNdGopyRm9t2pG8+bJ2T/LjZSHwQ3ctP7
-         7FZlkzS6xS1iRxMdGWFY77+Lw9HmH2KbLL3f9p/9DQplWYluJJ5cqkczYMP8FVkyaS+y
-         yGCg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=PIWgrMFpAdp5+hUdjD5HjV9ba6wuYdR0ydWBNHxwUUU=;
+        fh=81Mg/Iu15lWeaKkFt8owghFWZCSwPXZSAXhFQYfoxAI=;
+        b=V3Kj3Iw34GyVrSMFhih/blQ2DCmcaE1lj+rC4aZdXV1fcknk5ueWlp7B5EVhsW7Ggf
+         TXm12livCvSfvmxWZmxvFOiut1OHMAU5qWT6ET/cgjnbpOXpYV0QhVlFuJfJ0uR20Cyp
+         neZtUhpo7Kw6cqWOZJRxbWW5kxgdQUTgAZNtwo4ClE69gkJAc/FQTlOmRiF00wqjI3dO
+         Vq5oBlyZg4DtIYkh7izApar2OehM1LFjpoe5kA6RBWfx6ee8HQFek3B4rNYKp0x+gAD4
+         1aJfMGeh/ZdpTAgoUcDvd2Xls5107nvLw2D41/JMr+LQiB84On1pqoMU9UTHEHqLNnqD
+         nTvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PDTMbaKi;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CQLF0JGb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id s8-20020a05620a254800b007706544a3a7si6387659qko.673.2023.09.25.09.30.08
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k5-20020a0cf285000000b0065b142f8c1esi1168731qvl.311.2023.09.25.09.41.58
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Sep 2023 09:30:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 25 Sep 2023 09:41:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PDTMbaKi;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CQLF0JGb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qkoeG-00075Y-Oy; Mon, 25 Sep 2023 12:41:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1qkoe9-00074p-H5
+ for qemu-devel@nongnu.org; Mon, 25 Sep 2023 12:41:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1qkoe7-0005P6-U9
+ for qemu-devel@nongnu.org; Mon, 25 Sep 2023 12:41:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1695659408;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ZDkrPOy4Mu3WpHlWim56rb19dnBihC6z5EAVjpSCRR8=;
-	b=PDTMbaKigOUYCqOl+W2wZHTKaqmK1l75K8M3rk1qk9IHBCJDyei90G7V4ewau13Fm11B/w
-	A3F2+HB0A91hC1VwwC5Kdq32HGv6LZk84P2PxsScrteH1TDIWRqCNas01HpO8TduYpZ26w
-	gNps2SxVZ621QPNjcqHgmzcWdlmk6Qo=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-110-zwygcdyoNCmo62csKb8R4Q-1; Mon, 25 Sep 2023 12:30:04 -0400
-X-MC-Unique: zwygcdyoNCmo62csKb8R4Q-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 059D9811E86;
-	Mon, 25 Sep 2023 16:30:03 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.25])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 51CBB40C2064;
-	Mon, 25 Sep 2023 16:29:58 +0000 (UTC)
-Date: Mon, 25 Sep 2023 17:29:55 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
-	John Snow <jsnow@redhat.com>, libvir-list@redhat.com,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	qemu-s390x@nongnu.org, Song Gao <gaosong@loongson.cn>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Bin Meng <bin.meng@windriver.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>, qemu-ppc@nongnu.org,
-	David Hildenbrand <david@redhat.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
-	qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Beraldo Leal <bleal@redhat.com>, Rabin Vincent <rabinv@axis.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@xilinx.com>
-Subject: Re: [PATCH 04/31] docs: mark CRIS support as deprecated
-Message-ID: <ZRG1g/2hWi8+AzNn@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20230925144854.1872513-1-alex.bennee@linaro.org>
- <20230925144854.1872513-5-alex.bennee@linaro.org>
+ s=mimecast20190719; t=1695660078;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=PIWgrMFpAdp5+hUdjD5HjV9ba6wuYdR0ydWBNHxwUUU=;
+ b=CQLF0JGbQ+EDA5aGSqAZZfTlKQHmrsrggZVy0VrK8SXmLYbuoZWM7UIdOlhqw51FV4qsNc
+ OM4jggCzRmBhKIME7RMdCBvOnV5wK+Esn2SjEIyNzNZPF28MHNxbrMGJpif5CnzHqeXi+6
+ VgRmF4ukTT+hJzthiJAFzVgq9Kp3t8c=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-295-SbvE86sANb-LEKLBtRvUmg-1; Mon, 25 Sep 2023 12:41:15 -0400
+X-MC-Unique: SbvE86sANb-LEKLBtRvUmg-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-31ff9e40977so5486032f8f.3
+ for <qemu-devel@nongnu.org>; Mon, 25 Sep 2023 09:41:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1695660074; x=1696264874;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=PIWgrMFpAdp5+hUdjD5HjV9ba6wuYdR0ydWBNHxwUUU=;
+ b=Ly1w2QfU4lxD33mgJHSDDZ3CwLhaX4XuT21QuTLMaPSXrrrmr5mUCPIHlSn7ijgVnb
+ XqgBoTVI+QxJxMEVaonhfd7Tp8r2QEiE8lvdeEnPTN7xF09hINw/MfTHh72XfAsrkBYs
+ 2s3zDBkB2mI5YdtYHCOl1pjspD/5x9s/jckg1p4j9p1XFVcXJUS8oejJHEAiFr8COxJr
+ a1Ch5CFhp0gOKBnprK+2LKQEAcfuj7lbEr6GV3ubWAoWsimittT/qBaFGvT2pffoiuOz
+ +Yu+NNo2nIdZTXXNeCh1j9W0f6o7NElidS81HtSLlVzNue3OnHUkaPf1VXLKzGo8QQ4h
+ dlEA==
+X-Gm-Message-State: AOJu0YxYe0gozU+M8Llyf8YxhRY9QExtwz6GZOQsGMKzZnDOTf1pfM0q
+ DtS+S3C6vzkGQWIu56mVWseM7sTX9DF9mh3X/t3KqJ7dzqFGh/TMTk1lGDJNDzqumNINqQF9YzE
+ BrKQd8bRY75RlGJ4=
+X-Received: by 2002:a05:6000:1c18:b0:323:20a7:94d with SMTP id
+ ba24-20020a0560001c1800b0032320a7094dmr4259424wrb.50.1695660074368; 
+ Mon, 25 Sep 2023 09:41:14 -0700 (PDT)
+X-Received: by 2002:a05:6000:1c18:b0:323:20a7:94d with SMTP id
+ ba24-20020a0560001c1800b0032320a7094dmr4259400wrb.50.1695660073987; 
+ Mon, 25 Sep 2023 09:41:13 -0700 (PDT)
+Received: from ?IPV6:2001:b07:6468:f312:9af8:e5f5:7516:fa89?
+ ([2001:b07:6468:f312:9af8:e5f5:7516:fa89])
+ by smtp.googlemail.com with ESMTPSA id
+ n22-20020a1c7216000000b003fee849df23sm12636110wmc.22.2023.09.25.09.41.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 25 Sep 2023 09:41:13 -0700 (PDT)
+Message-ID: <0e258375-e3a0-8b5d-189e-cb2cea913ecb@redhat.com>
+Date: Mon, 25 Sep 2023 18:41:12 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v2 13/15] hw/qdev: Remove DEFINE_PROP_DMAADDR() and
+ 'hw/qdev-dma.h'
+Content-Language: en-US
+To: Markus Armbruster <armbru@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Eduardo Habkost <eduardo@habkost.net>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20230203145536.17585-1-philmd@linaro.org>
+ <20230203145536.17585-14-philmd@linaro.org> <87zg1a8r5v.fsf@pond.sub.org>
+ <87bkdq8qh1.fsf@pond.sub.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+In-Reply-To: <87bkdq8qh1.fsf@pond.sub.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230925144854.1872513-5-alex.bennee@linaro.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-X-TUID: 5Sj81uia8vxT
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UY7EBhZ24poK
 
-On Mon, Sep 25, 2023 at 03:48:27PM +0100, Alex Bennée wrote:
-> This might be premature but while streamling the avocado tests I
-> realised the only tests we have are "check-tcg" ones. The aging
-> fedora-criss-cross image works well enough for developers but can't be
-> used in CI as we need supported build platforms to build QEMU.
+On 9/25/23 13:03, Markus Armbruster wrote:
+> +David
 > 
-> Does this mean the writing is on the wall for this architecture?
+> Markus Armbruster <armbru@redhat.com> writes:
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Rabin Vincent <rabinv@axis.com>
-> Cc: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
->  docs/about/deprecated.rst | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
-> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-> index dc4da95329..7cfe313aa6 100644
-> --- a/docs/about/deprecated.rst
-> +++ b/docs/about/deprecated.rst
-> @@ -399,6 +399,17 @@ Specifying the iSCSI password in plain text on the command line using the
->  used instead, to refer to a ``--object secret...`` instance that provides
->  a password via a file, or encrypted.
->  
-> +TCG CPUs
-> +--------
-> +
-> +CRIS CPU architecture (since 8.1)
-> +'''''''''''''''''''''''''''''''''
-> +
-> +The CRIS architecture was pulled from Linux in 4.17 and the compiler
-> +is no longer packaged in any distro making it harder to run the
-> +``check-tcg`` tests. Unless we can improve the testing situation there
-> +is a chance the code will bitrot without anyone noticing.
+>> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+>>
+>>> DEFINE_PROP_DMAADDR() is only used once. Since it doesn't
+>>> add much value, simply remove it, along with the header
+>>> defining it.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>
+>> DEFINE_PROP_DMAADDR() lets you wrap a property around a dma_addr_t
+>> member without assuming anything about dma_addr_t.
+>>
+>> Whether that's worth avoiding I can't say.  Depends on how much the
+>> abstraction leaks in other ways.  Thoughts?
 
-Deprecated is generally a warning that we intend to delete the
-feature.   If we're just going to relegate it to untested
-status (what I'd call "tier 3" quality), then we should document
-that elsewhere.  I don't mind which way we go.
+I think it's okay to simplify things.  If anybody ever has a reason to 
+make dma_addr_t variable sized (probably a bad idea because many of its 
+users are compiled once only) they have one extra place to fix.  Tough 
+luck. :)
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Paolo
+

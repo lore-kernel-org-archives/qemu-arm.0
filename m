@@ -1,200 +1,194 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp984812ejc;
-        Tue, 26 Sep 2023 03:15:00 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IER9CLrKPjceBdeH5qN5NJCTzVPGCRsYCAxU4jpth/Cr4L5MKdL6MwMvd+bFrwz4FoQIyTi
-X-Received: by 2002:a7b:cd0a:0:b0:404:fc51:4e9f with SMTP id f10-20020a7bcd0a000000b00404fc514e9fmr7790528wmj.38.1695723300653;
-        Tue, 26 Sep 2023 03:15:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695723300; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1006475ejc;
+        Tue, 26 Sep 2023 04:02:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEN101qHI3/9RRKwdq3s+2FQqDUezASjG62mtZDgCkkMsl134/nRYXGoQlb7ia21zI3bRpY
+X-Received: by 2002:a05:6214:4518:b0:64c:92f8:6b11 with SMTP id oo24-20020a056214451800b0064c92f86b11mr9073648qvb.37.1695726148658;
+        Tue, 26 Sep 2023 04:02:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695726148; cv=none;
         d=google.com; s=arc-20160816;
-        b=oBAjfbinruHOVWM6m2FK/Er2icYg2zUGPk5ZULZDYwFkMCFGXCoRm40Ts8Cq/oGSHD
-         XgjNdtSEZgh06VTGxt1DtgH75A9B8q3Yqb6x/Sr1Rj9gza2oQ8lqVZ9yxGQfPN9ffazM
-         QeVN1sHvIn3rQZgG00Gj7wnwmcjpB45hEQr6O/dHKRqarAUiVsYgeiXRiafptn1/2SXJ
-         pqH7/WJgd613SAMAuSk5+vIV54q2sFFpOLEntlchwOksXdBoooHLV+1LJ3PEnGVOwaqo
-         v41Pz8t13fo4E+A8mkpLNST9FRCbEaaEUcFq6nK4XJp85A4MoLNmv9QBOLOftQmAxqzV
-         QIZg==
+        b=V278hNZpdUGqqsrwhTY5PjtT5sSGcC+1YyubT+jecf7lTUDPtZ6JowmFmDFgKUpHPa
+         lL6TmuB3mwG2IhKLsiPa30PtS+duiHMMPvbG6wmXAt8YbCv0WL5xwTYYYPl5GzRjTkj1
+         Zv6GkHT+s3BH+dLQV/mOgLHwqph9qf1zFvwUIiazkhYiziWomKrM3Rft2AE66aNuNawh
+         3FZrUouWdezysVnaLdVUryI9k9qKMPm3d/EfUVPnHvK/BcWIyMwY5/6HD/T781Vxa3bF
+         iuXbYGXCIMwEU9GE+XcPUpkNn02N8zy+FcihG+Zj4X8Q92tC8NxvC14e9x1xTKeR9b+y
+         RjxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=8IzbIrZxn2EpIMoUg/FycVycFjcZ2/z6dkort35jYMI=;
-        fh=S0+uYiUekNlY+vd8jPZbTHxsQBwDC5l2YHnO2B7ftdQ=;
-        b=TWRET9M/eHkf+7zbXeCPiwlk/mop+HSVJeKXKSL8QUCAYDjyhhpJ9fmfOobsQBzppa
-         9Sriku9Y2WMCA1kC4/qiCgeYY9qCL4NkAuu52rOrMXc5If5nJSpcu7o9NhvJA2d6Wnth
-         TtoZuDs6AB802RvhKuiAFLIMmaFw4EJLz3Zv8BIxyHXLOLZ/jccRCSw3PhwJplznNgi1
-         HskuolAk8bW3QxmDJlkiyKmyfrCC4NKwaRXNOrIb1ojAHsApBRtHoIGoR1cLgq+3w5I1
-         7Xf+50JFG1r1LrPMjIrXUe92yb3kKjtfUCuLstOcB/wS5FTwADPa5Cfz5HErs/lBEqkS
-         cBpw==
+        h=content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=rNBMEgzVfYe+5R3ihfL427VL9Lc9meOuBxoZ1HI6mok=;
+        fh=YsMqRVOlIuT3ozQku07v7YKaKiFtV2sb0IWATzUL7iA=;
+        b=bt45tSzZLkJJnn/AwhzgA0NGsbJQfI+gn8+26oZq+uQNbl0fdXoSGoEosZGrlrPTRu
+         x9CM6F4W0vKDq8svtYH1DfgMtINYZJmtzLXcBjAg0V/8Mj+luqbIAJjDkVAJceHv61Le
+         280lkeuiw6l/jsCO01vxd806p1QdCN/PTe5JvVMfxyApdcRiGAP3NPH92/xX8+IrvrDC
+         gjmEXTJP97XKrYKLH0EmGbOGjA4bXqfy/4YI3Hx3KLS6t47nl4CbyslKz2y/c3SgoxjO
+         jmQ/V90IpXSOxk+U7lrhkd7qsH/v3pjMqkvdaQx/2IcV27OgK27ZN7afhFdSyhgu9gDK
+         BUMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id e16-20020a056000121000b0031fa870d4a5si5774144wrx.217.2023.09.26.03.15.00
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2023 03:15:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HymifnGa;
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <mst@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id b12-20020a05620a270c00b00767ccf42f41si6923779qkp.29.2023.09.26.04.02.28
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Sep 2023 04:02:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RvwZ14tbBz6K6wQ;
-	Tue, 26 Sep 2023 18:13:45 +0800 (CST)
-Received: from A190218597.china.huawei.com (10.126.174.16) by
- lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Tue, 26 Sep 2023 11:14:41 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
-	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
-	<ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
-	<mst@redhat.com>, <gshan@redhat.com>, <rafael@kernel.org>,
-	<borntraeger@linux.ibm.com>, <alex.bennee@linaro.org>,
-	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
-	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
-	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
-	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>
-Subject: [PATCH RFC V2 31/37] physmem,gdbstub: Common helping funcs/changes to *unrealize* vCPU
-Date: Tue, 26 Sep 2023 11:04:30 +0100
-Message-ID: <20230926100436.28284-32-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.8.3
-In-Reply-To: <20230926100436.28284-1-salil.mehta@huawei.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HymifnGa;
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1695726148;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=rNBMEgzVfYe+5R3ihfL427VL9Lc9meOuBxoZ1HI6mok=;
+	b=HymifnGawKrIvwMmmsNFNorz81WBtvrZKYmox/gLSo7L6AYf1M+nYi9BpcHVADLinUQhJX
+	Fg53E5Ew5NxZ1f7ep1Nq0g9QbmFOwvqxr7kzodMA8VnvsJKwb9qjai/f+Z0WR1ZA8Q0vy8
+	MJU6p3DxkC6q0opQyBQU5ASfkXfEqGM=
+Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
+ [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-465-0PU4DiklMz2UUGpOXBvIuQ-1; Tue, 26 Sep 2023 07:02:26 -0400
+X-MC-Unique: 0PU4DiklMz2UUGpOXBvIuQ-1
+Received: by mail-lj1-f197.google.com with SMTP id 38308e7fff4ca-2c032e30083so118983861fa.2
+        for <alex.bennee@linaro.org>; Tue, 26 Sep 2023 04:02:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695726145; x=1696330945;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rNBMEgzVfYe+5R3ihfL427VL9Lc9meOuBxoZ1HI6mok=;
+        b=CFGv6FvU1UuxusXOCaaHJfN4RIECbje4ZcbXro/Nq2Q/+9L0mEzNRztEyfPbkUgHBb
+         /iqkwcxHfQwzp/jObZn+s9n/gM6wBO5ZSVqzmm5qYVLswk6ujTHSkq5IE0hlVadNb4lf
+         GAtMJyCV6gJkkscy3X0aU/eS7cWdCE5vqMZTtr+EBuWSky/kylilW0dJJEdL5nCqMhY1
+         uTw3VjMRtiLc+R5mj0GuohjYTvfKApBKQxE5Q//YIfxL4CtKxwEQi4xhzab0YrW6JHSL
+         CdWnM3OxrVohxErLHkbZQirBDicokNMJYAqm+l7Kmr61n26ykpKvvRO/9CaXUHz7yki3
+         K4pw==
+X-Gm-Message-State: AOJu0YwFVVOV+pyVjWJ5blyPb40YU4F1iUGR20rzBbOkE0VGyK+y22hH
+	8b9NV4SK36G4oSn+2cCJ5GEMnekNgds1d9aROSaMqnQ9NqVl6Tthpnh8+LsZNr+0KSCCseV7hev
+	HqmfGBTNwiEX9s01Z
+X-Received: by 2002:a2e:9a92:0:b0:2c0:28ca:940b with SMTP id p18-20020a2e9a92000000b002c028ca940bmr8648890lji.6.1695726145415;
+        Tue, 26 Sep 2023 04:02:25 -0700 (PDT)
+X-Received: by 2002:a2e:9a92:0:b0:2c0:28ca:940b with SMTP id p18-20020a2e9a92000000b002c028ca940bmr8648865lji.6.1695726145038;
+        Tue, 26 Sep 2023 04:02:25 -0700 (PDT)
+Return-Path: <mst@redhat.com>
+Received: from redhat.com ([2.52.31.177])
+        by smtp.gmail.com with ESMTPSA id j17-20020a170906051100b0098e2969ed44sm7608267eja.45.2023.09.26.04.02.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Sep 2023 04:02:24 -0700 (PDT)
+Date: Tue, 26 Sep 2023 07:02:18 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
+	jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+	lpieralisi@kernel.org, peter.maydell@linaro.org,
+	richard.henderson@linaro.org, imammedo@redhat.com,
+	andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
+	eric.auger@redhat.com, will@kernel.org, ardb@kernel.org,
+	oliver.upton@linux.dev, pbonzini@redhat.com, gshan@redhat.com,
+	rafael@kernel.org, borntraeger@linux.ibm.com,
+	alex.bennee@linaro.org, linux@armlinux.org.uk,
+	darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+	vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+	miguel.luis@oracle.com, salil.mehta@opnsrc.net,
+	zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+	wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
+	lixianglai@loongson.cn
+Subject: Re: [PATCH RFC V2 24/37] hw/acpi: Update ACPI GED framework to
+ support vCPU Hotplug
+Message-ID: <20230926070112-mutt-send-email-mst@kernel.org>
 References: <20230926100436.28284-1-salil.mehta@huawei.com>
+ <20230926100436.28284-25-salil.mehta@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.126.174.16]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- lhrpeml500001.china.huawei.com (7.191.163.213)
-X-CFilter-Loop: Reflected
-X-TUID: 1z96V0XKzgpe
+In-Reply-To: <20230926100436.28284-25-salil.mehta@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-TUID: w8h8HhtkkzZL
 
-Supporting vCPU Hotplug for ARM arch also means introducing new functionality of
-unrealizing the ARMCPU. This requires some new common functions.
+On Tue, Sep 26, 2023 at 11:04:23AM +0100, Salil Mehta wrote:
+> ACPI GED shall be used to convey to the guest kernel about any CPU hot-(un)plug
+> events. Therefore, existing ACPI GED framework inside QEMU needs to be enhanced
+> to support CPU hotplug state and events.
+> 
+> Co-developed-by: Salil Mehta <salil.mehta@huawei.com>
 
-Defining them as part of architecture independent change so that this code could
-be reused by other interested parties.
+Co-developed with yourself?
 
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
----
- gdbstub/gdbstub.c         | 13 +++++++++++++
- include/exec/cpu-common.h |  8 ++++++++
- include/exec/gdbstub.h    |  1 +
- include/hw/core/cpu.h     |  1 +
- softmmu/physmem.c         | 25 +++++++++++++++++++++++++
- 5 files changed, 48 insertions(+)
+didn't you co-develop this with xianglai li?
 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 5f28d5cf57..ddbcb4f115 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -491,6 +491,19 @@ void gdb_register_coprocessor(CPUState *cpu,
-     }
- }
- 
-+void gdb_unregister_coprocessor_all(CPUState *cpu)
-+{
-+    GDBRegisterState *s, *p;
-+
-+    p = cpu->gdb_regs;
-+    while (p) {
-+        s = p;
-+        p = p->next;
-+        g_free(s);
-+    }
-+    cpu->gdb_regs = NULL;
-+}
-+
- static void gdb_process_breakpoint_remove_all(GDBProcess *p)
- {
-     CPUState *cpu = gdb_get_first_cpu_in_process(p);
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index 87dc9a752c..27cd4d32b1 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -120,6 +120,14 @@ size_t qemu_ram_pagesize_largest(void);
-  */
- void cpu_address_space_init(CPUState *cpu, int asidx,
-                             const char *prefix, MemoryRegion *mr);
-+/**
-+ * cpu_address_space_destroy:
-+ * @cpu: CPU for which address space needs to be destroyed
-+ * @asidx: integer index of this address space
-+ *
-+ * Note that with KVM only one address space is supported.
-+ */
-+void cpu_address_space_destroy(CPUState *cpu, int asidx);
- 
- void cpu_physical_memory_rw(hwaddr addr, void *buf,
-                             hwaddr len, bool is_write);
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 7d743fe1e9..a22f0875e2 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -17,6 +17,7 @@ typedef int (*gdb_set_reg_cb)(CPUArchState *env, uint8_t *buf, int reg);
- void gdb_register_coprocessor(CPUState *cpu,
-                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-                               int num_regs, const char *xml, int g_pos);
-+void gdb_unregister_coprocessor_all(CPUState *cpu);
- 
- /**
-  * gdbserver_start: start the gdb server
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index dab572c9bd..ffd815a0d8 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -366,6 +366,7 @@ struct CPUState {
-     QSIMPLEQ_HEAD(, qemu_work_item) work_list;
- 
-     CPUAddressSpace *cpu_ases;
-+    int cpu_ases_ref_count;
-     int num_ases;
-     AddressSpace *as;
-     MemoryRegion *memory;
-diff --git a/softmmu/physmem.c b/softmmu/physmem.c
-index 3df73542e1..a93ae783af 100644
---- a/softmmu/physmem.c
-+++ b/softmmu/physmem.c
-@@ -762,6 +762,7 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
- 
-     if (!cpu->cpu_ases) {
-         cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
-+        cpu->cpu_ases_ref_count = cpu->num_ases;
-     }
- 
-     newas = &cpu->cpu_ases[asidx];
-@@ -775,6 +776,30 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
-     }
- }
- 
-+void cpu_address_space_destroy(CPUState *cpu, int asidx)
-+{
-+    CPUAddressSpace *cpuas;
-+
-+    assert(asidx < cpu->num_ases);
-+    assert(asidx == 0 || !kvm_enabled());
-+    assert(cpu->cpu_ases);
-+
-+    cpuas = &cpu->cpu_ases[asidx];
-+    if (tcg_enabled()) {
-+        memory_listener_unregister(&cpuas->tcg_as_listener);
-+    }
-+
-+    address_space_destroy(cpuas->as);
-+    g_free_rcu(cpuas->as, rcu);
-+
-+    if (cpu->cpu_ases_ref_count == 1) {
-+        g_free(cpu->cpu_ases);
-+        cpu->cpu_ases = NULL;
-+    }
-+
-+    cpu->cpu_ases_ref_count--;
-+}
-+
- AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
- {
-     /* Return the AddressSpace corresponding to the specified index */
--- 
-2.34.1
+Just include his S.O.B then, and drop the non-standard Co-developed-by.
+
+
+
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+
+
+
+> ---
+>  hw/acpi/generic_event_device.c | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+> 
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index ad252e6a91..0266733a54 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -12,6 +12,7 @@
+>  #include "qemu/osdep.h"
+>  #include "qapi/error.h"
+>  #include "hw/acpi/acpi.h"
+> +#include "hw/acpi/cpu.h"
+>  #include "hw/acpi/generic_event_device.h"
+>  #include "hw/irq.h"
+>  #include "hw/mem/pc-dimm.h"
+> @@ -239,6 +240,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
+>          } else {
+>              acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
+>          }
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+>      } else {
+>          error_setg(errp, "virt: device plug request for unsupported device"
+>                     " type: %s", object_get_typename(OBJECT(dev)));
+> @@ -253,6 +256,8 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
+>      if ((object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) &&
+>                         !(object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)))) {
+>          acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+>      } else {
+>          error_setg(errp, "acpi: device unplug request for unsupported device"
+>                     " type: %s", object_get_typename(OBJECT(dev)));
+> @@ -266,6 +271,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
+>  
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>          acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
+>      } else {
+>          error_setg(errp, "acpi: device unplug for unsupported device"
+>                     " type: %s", object_get_typename(OBJECT(dev)));
+> @@ -277,6 +284,7 @@ static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
+>      AcpiGedState *s = ACPI_GED(adev);
+>  
+>      acpi_memory_ospm_status(&s->memhp_state, list);
+> +    acpi_cpu_ospm_status(&s->cpuhp_state, list);
+>  }
+>  
+>  static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+> @@ -291,6 +299,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+>          sel = ACPI_GED_PWR_DOWN_EVT;
+>      } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
+>          sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
+> +    } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
+> +        sel = ACPI_GED_CPU_HOTPLUG_EVT;
+>      } else {
+>          /* Unknown event. Return without generating interrupt. */
+>          warn_report("GED: Unsupported event %d. No irq injected", ev);
+> -- 
+> 2.34.1

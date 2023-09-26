@@ -1,46 +1,46 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp982790ejc;
-        Tue, 26 Sep 2023 03:11:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGkOJXOrCHiRQRGUXGVrLtMCk2gMslb2JJkfuwXpKA2i6kPBKwgXhZJwibHzRjA/Hv5PuHi
-X-Received: by 2002:a5d:6a42:0:b0:314:15a8:7879 with SMTP id t2-20020a5d6a42000000b0031415a87879mr8300512wrw.34.1695723063592;
-        Tue, 26 Sep 2023 03:11:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695723063; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp982971ejc;
+        Tue, 26 Sep 2023 03:11:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF6Ilk0+iTPh8hkw5J4aSrfld9sHRg/NFjLYEpRJ7CjRY+Aes0VwZq1oa/WKW/vnG6xLKF1
+X-Received: by 2002:adf:e74e:0:b0:321:6bae:f764 with SMTP id c14-20020adfe74e000000b003216baef764mr7467900wrn.23.1695723082317;
+        Tue, 26 Sep 2023 03:11:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695723082; cv=none;
         d=google.com; s=arc-20160816;
-        b=eWJbHZR5KTVMywsvlz9ydFMaxtXnaz2hBEqMhJ1ugCTeZVZAZu/TSNjxOIRaH0OIi1
-         WZFwHjRIFkzolh5QVOGAQz1COXMIfIOXqz1TdEHJDQl19llQfnWEJV2qF3kTDhYW76lE
-         nxKiTbPyEFEoE+pbNze7KGgcRZB2BdauUbQp43jo4VY7ZCAX7XZHd9RsTVsRj0Tbmsgu
-         FuNCpHTAjT5Ol+cCIuywfiJoj6FlSD9RgFbD6Lsg9NX/GoHTXwucdTEvasWsP6GkL6Sy
-         I7czmVeyVqIDx7QLYJDx3mWjwlG1Lyyb4tl2VNh3QFMOoZi3+4Boy0SsceUXQkFshBqO
-         uCaA==
+        b=uG5PRC7rRkapVVFFnyAmeukFxdl45cbcyYTfmaxlbbsCN6Jck5gJOBEXmKFmPZpy3M
+         kr1RK7wKtBWJTcSW7Ce92aqMAH9i8heOh+oAru40dDJ9jMZRfbUthpWF72gqRiYdzO1d
+         8dH+x9ADcGorMlDVreUyVgFuHQix+Hf4QyVUXZmijXrWOTi5OVDr8frRVGzZxA7anxxb
+         VTuPtNwnm9bBeDyUthiRVtIZQJGzkrNLWV1719c8pX5N3Tef3ldqm7bKg2bpcPkGA39f
+         SSehfj1jHcUXnGBgqwRS7dLPJUipp/nHTj0ExIcyOIKC22jK73W4p3Lfhbc25kCQa1TA
+         pnjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=6ssm8msVI3HRb5k8ZEe+7xWhpWkSgBFbRLcWAJxEyps=;
+        bh=RZ+JlWp8OjAUfQOSWWDQRh+a72nkqhmaOy3xAfQzwsA=;
         fh=S0+uYiUekNlY+vd8jPZbTHxsQBwDC5l2YHnO2B7ftdQ=;
-        b=QOI8xs2a6LeUtJZn3Kzy0iwpBIKewkAlCfOZGj5b9U8L8STFne28WqJD/pJaZtMU1u
-         OIa7B+PuMTore99Xi+iya3gc+xpshxCSORjke2y7EeyQ1/EWHm7rZlBUGcIhY/NMAZed
-         RxlbIISp1zcQxLLYkg4rlM2wXIjvzOvk3UrJt82XIQlpRMTdJx88AZnwk3+/0eHvf2ZG
-         sYjg+nIOsjihI5TemRwUCslNlVlLvg//p6XMm1eFoIWI3VXzukmm2LaW6XnPgHTGNcXZ
-         iWNbZN000vxmEL0FYra2Hg2ITyvf8xWb6pBKwqEbPDczwpvnOaPoecjefSDHGt3begjN
-         oOUQ==
+        b=06wXIjwCpPE3RRlR7Ue29FkRNrmRNDJgZ4/GfghSvjNypfF660/g9Gq8uXn3Qbr0lp
+         mp1QJY8eRlgcidjjSod2zjlhkR7F/gHbeEYITt0Bk6H3bZVIy8+cs6BQZjpbURSvEwH5
+         GIzzL8NSzzgFhn4mqGy65SbIHmWQzAFlA2PjdWjKtrGwnzb0FeuqzkVZGa/7V8wK4A0I
+         6K1oMqfq7UMMLabJ7X9nKyaAfMmvdT2IhuUofzl8i84rfbZk8Rrdzhak5tu/OUzwccDm
+         tiVmobXiK/aWsTQndnYhOOda1bG6kuwEzY50Lr37wYtTl9owvevCfd5QHgHIF0/tTV6J
+         0OOg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id j9-20020adfea49000000b0032331540da5si1075210wrn.593.2023.09.26.03.11.03
+        by mx.google.com with ESMTPS id g20-20020a05600c4c9400b0040541362eddsi4811866wmp.200.2023.09.26.03.11.21
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2023 03:11:03 -0700 (PDT)
+        Tue, 26 Sep 2023 03:11:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.207])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RvwSB4340z6D8bS;
-	Tue, 26 Sep 2023 18:08:42 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.200])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RvwTp3Tyvz6K7NW;
+	Tue, 26 Sep 2023 18:10:06 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.126.174.16) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Tue, 26 Sep 2023 11:10:43 +0100
+ 15.1.2507.31; Tue, 26 Sep 2023 11:11:02 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -57,9 +57,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>
-Subject: [PATCH RFC V2 18/37] arm/virt: Make ARM vCPU *present* status ACPI *persistent*
-Date: Tue, 26 Sep 2023 11:04:17 +0100
-Message-ID: <20230926100436.28284-19-salil.mehta@huawei.com>
+Subject: [PATCH RFC V2 19/37] hw/acpi: ACPI/AML Changes to reflect the correct _STA.{PRES,ENA} Bits to Guest
+Date: Tue, 26 Sep 2023 11:04:18 +0100
+Message-ID: <20230926100436.28284-20-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20230926100436.28284-1-salil.mehta@huawei.com>
 References: <20230926100436.28284-1-salil.mehta@huawei.com>
@@ -69,96 +69,185 @@ X-Originating-IP: [10.126.174.16]
 X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
 X-CFilter-Loop: Reflected
-X-TUID: xqyX2HVPOkD/
+X-TUID: 49jzAy6PktFY
 
-ARM arch does not allow CPUs presence to be changed [1] after kernel has booted.
-Hence, firmware/ACPI/Qemu must ensure persistent view of the vCPUs to the Guest
-kernel even when they are not present in the QoM i.e. are unplugged or are
-yet-to-be-plugged
-
-References:
-[1] Check comment 5 in the bugzilla entry
-   Link: https://bugzilla.tianocore.org/show_bug.cgi?id=4481#c5
+ACPI AML changes to properly reflect the _STA.PRES and _STA.ENA Bits to the
+guest during initialzation, when CPUs are hotplugged and after CPUs are
+hot-unplugged.
 
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- cpus-common.c         |  6 ++++++
- hw/arm/virt.c         |  7 +++++++
- include/hw/core/cpu.h | 20 ++++++++++++++++++++
- 3 files changed, 33 insertions(+)
+ hw/acpi/cpu.c                  | 49 +++++++++++++++++++++++++++++++---
+ hw/acpi/generic_event_device.c | 11 ++++++++
+ include/hw/acpi/cpu.h          |  2 ++
+ 3 files changed, 58 insertions(+), 4 deletions(-)
 
-diff --git a/cpus-common.c b/cpus-common.c
-index 24c04199a1..d64aa63b19 100644
---- a/cpus-common.c
-+++ b/cpus-common.c
-@@ -128,6 +128,12 @@ bool qemu_enabled_cpu(CPUState *cpu)
-     return cpu && !cpu->disabled;
- }
- 
-+bool qemu_persistent_cpu(CPUState *cpu)
-+{
-+    /* cpu state can be faked to the guest via acpi */
-+    return cpu->acpi_persistent;
-+}
+diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+index 232720992d..e1299696d3 100644
+--- a/hw/acpi/cpu.c
++++ b/hw/acpi/cpu.c
+@@ -63,10 +63,11 @@ static uint64_t cpu_hotplug_rd(void *opaque, hwaddr addr, unsigned size)
+     cdev = &cpu_st->devs[cpu_st->selector];
+     switch (addr) {
+     case ACPI_CPU_FLAGS_OFFSET_RW: /* pack and return is_* fields */
+-        val |= cdev->cpu ? 1 : 0;
++        val |= cdev->is_enabled ? 1 : 0;
+         val |= cdev->is_inserting ? 2 : 0;
+         val |= cdev->is_removing  ? 4 : 0;
+         val |= cdev->fw_remove  ? 16 : 0;
++        val |= cdev->is_present ? 32 : 0;
+         trace_cpuhp_acpi_read_flags(cpu_st->selector, val);
+         break;
+     case ACPI_CPU_CMD_DATA_OFFSET_RW:
+@@ -228,7 +229,21 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+         struct CPUState *cpu = CPU(id_list->cpus[i].cpu);
+         if (qemu_present_cpu(cpu)) {
+             state->devs[i].cpu = cpu;
++            state->devs[i].is_present = true;
++        } else {
++            if (qemu_persistent_cpu(cpu)) {
++                state->devs[i].is_present = true;
++            } else {
++                state->devs[i].is_present = false;
++            }
+         }
 +
- uint64_t qemu_get_cpu_archid(int cpu_index)
- {
-     MachineState *ms = MACHINE(qdev_get_machine());
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index cbb6199ec6..f1bee569d5 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3006,6 +3006,13 @@ static void virt_cpu_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
++        if (qemu_enabled_cpu(cpu)) {
++            state->devs[i].is_enabled = true;
++        } else {
++            state->devs[i].is_enabled = false;
++        }
++
+         state->devs[i].arch_id = id_list->cpus[i].arch_id;
+     }
+     memory_region_init_io(&state->ctrl_reg, owner, &cpu_hotplug_ops, state,
+@@ -261,6 +276,8 @@ void acpi_cpu_plug_cb(HotplugHandler *hotplug_dev,
+     }
+ 
+     cdev->cpu = CPU(dev);
++    cdev->is_present = true;
++    cdev->is_enabled = true;
+     if (dev->hotplugged) {
+         cdev->is_inserting = true;
+         acpi_send_event(DEVICE(hotplug_dev), ACPI_CPU_HOTPLUG_STATUS);
+@@ -292,6 +309,11 @@ void acpi_cpu_unplug_cb(CPUHotplugState *cpu_st,
          return;
      }
-     virt_cpu_set_properties(OBJECT(cs), cpu_slot, errp);
+ 
++    cdev->is_enabled = false;
++    if (!qemu_persistent_cpu(CPU(dev))) {
++        cdev->is_present = false;
++    }
 +
-+    /*
-+     * To give persistent presence view of vCPUs to the guest, ACPI might need
-+     * to fake the presence of the vCPUs to the guest but keep them disabled.
-+     * This shall be used during the init of ACPI Hotplug state and hot-unplug
-+     */
-+     cs->acpi_persistent = true;
+     cdev->cpu = NULL;
  }
  
- static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index b2201a98ee..dab572c9bd 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -425,6 +425,13 @@ struct CPUState {
-      * By default every CPUState is enabled as of now across all archs.
-      */
-     bool disabled;
-+    /*
-+     * On certain architectures, to give persistent view of the 'presence' of
-+     * vCPUs to the guest, ACPI might need to fake the 'presence' of the vCPUs
-+     * but keep them ACPI disabled to the guest. This is done by returning
-+     * _STA.PRES=True and _STA.Ena=False for the unplugged vCPUs in QEMU QoM.
-+     */
-+    bool acpi_persistent;
-     /* TODO Move common fields from CPUArchState here. */
-     int cpu_index;
-     int cluster_index;
-@@ -814,6 +821,19 @@ bool qemu_present_cpu(CPUState *cpu);
-  */
- bool qemu_enabled_cpu(CPUState *cpu);
+@@ -302,6 +324,8 @@ static const VMStateDescription vmstate_cpuhp_sts = {
+     .fields      = (VMStateField[]) {
+         VMSTATE_BOOL(is_inserting, AcpiCpuStatus),
+         VMSTATE_BOOL(is_removing, AcpiCpuStatus),
++        VMSTATE_BOOL(is_present, AcpiCpuStatus),
++        VMSTATE_BOOL(is_enabled, AcpiCpuStatus),
+         VMSTATE_UINT32(ost_event, AcpiCpuStatus),
+         VMSTATE_UINT32(ost_status, AcpiCpuStatus),
+         VMSTATE_END_OF_LIST()
+@@ -339,6 +363,7 @@ const VMStateDescription vmstate_cpu_hotplug = {
+ #define CPU_REMOVE_EVENT  "CRMV"
+ #define CPU_EJECT_EVENT   "CEJ0"
+ #define CPU_FW_EJECT_EVENT "CEJF"
++#define CPU_PRESENT       "CPRS"
  
-+/**
-+ * qemu_persistent_cpu:
-+ * @cpu: The vCPU to check
-+ *
-+ * Checks if the vCPU state should always be reflected as *present* via ACPI
-+ * to the Guest. By default, this is False on all architectures and has to be
-+ * explicity set during initialization.
-+ *
-+ * Returns: True if it is ACPI 'persistent' CPU
-+ *
-+ */
-+bool qemu_persistent_cpu(CPUState *cpu);
+ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+                     hwaddr base_addr,
+@@ -399,7 +424,9 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+         aml_append(field, aml_named_field(CPU_EJECT_EVENT, 1));
+         /* tell firmware to do device eject, write only */
+         aml_append(field, aml_named_field(CPU_FW_EJECT_EVENT, 1));
+-        aml_append(field, aml_reserved_field(3));
++        /* 1 if present, read only */
++        aml_append(field, aml_named_field(CPU_PRESENT, 1));
++        aml_append(field, aml_reserved_field(2));
+         aml_append(field, aml_named_field(CPU_COMMAND, 8));
+         aml_append(cpu_ctrl_dev, field);
+ 
+@@ -429,6 +456,7 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+         Aml *ctrl_lock = aml_name("%s.%s", cphp_res_path, CPU_LOCK);
+         Aml *cpu_selector = aml_name("%s.%s", cphp_res_path, CPU_SELECTOR);
+         Aml *is_enabled = aml_name("%s.%s", cphp_res_path, CPU_ENABLED);
++        Aml *is_present = aml_name("%s.%s", cphp_res_path, CPU_PRESENT);
+         Aml *cpu_cmd = aml_name("%s.%s", cphp_res_path, CPU_COMMAND);
+         Aml *cpu_data = aml_name("%s.%s", cphp_res_path, CPU_DATA);
+         Aml *ins_evt = aml_name("%s.%s", cphp_res_path, CPU_INSERT_EVENT);
+@@ -457,13 +485,26 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+         {
+             Aml *idx = aml_arg(0);
+             Aml *sta = aml_local(0);
++            Aml *ifctx2;
++            Aml *else_ctx;
+ 
+             aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+             aml_append(method, aml_store(idx, cpu_selector));
+             aml_append(method, aml_store(zero, sta));
+-            ifctx = aml_if(aml_equal(is_enabled, one));
++            ifctx = aml_if(aml_equal(is_present, one));
+             {
+-                aml_append(ifctx, aml_store(aml_int(0xF), sta));
++                ifctx2 = aml_if(aml_equal(is_enabled, one));
++                {
++                    /* cpu is present and enabled */
++                    aml_append(ifctx2, aml_store(aml_int(0xF), sta));
++                }
++                aml_append(ifctx, ifctx2);
++                else_ctx = aml_else();
++                {
++                    /* cpu is present but disabled */
++                    aml_append(else_ctx, aml_store(aml_int(0xD), sta));
++                }
++                aml_append(ifctx, else_ctx);
+             }
+             aml_append(method, ifctx);
+             aml_append(method, aml_release(ctrl_lock));
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index d2fa1d0e4a..b84602b238 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -319,6 +319,16 @@ static const VMStateDescription vmstate_memhp_state = {
+     }
+ };
+ 
++static const VMStateDescription vmstate_cpuhp_state = {
++    .name = "acpi-ged/cpuhp",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields      = (VMStateField[]) {
++        VMSTATE_CPU_HOTPLUG(cpuhp_state, AcpiGedState),
++        VMSTATE_END_OF_LIST()
++    }
++};
 +
- /**
-  * qemu_get_cpu_archid:
-  * @cpu_index: possible vCPU for which arch-id needs to be retreived
+ static const VMStateDescription vmstate_ged_state = {
+     .name = "acpi-ged-state",
+     .version_id = 1,
+@@ -367,6 +377,7 @@ static const VMStateDescription vmstate_acpi_ged = {
+     },
+     .subsections = (const VMStateDescription * []) {
+         &vmstate_memhp_state,
++        &vmstate_cpuhp_state,
+         &vmstate_ghes_state,
+         NULL
+     }
+diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
+index b87ebfdf4b..786a30d6d4 100644
+--- a/include/hw/acpi/cpu.h
++++ b/include/hw/acpi/cpu.h
+@@ -22,6 +22,8 @@ typedef struct AcpiCpuStatus {
+     uint64_t arch_id;
+     bool is_inserting;
+     bool is_removing;
++    bool is_present;
++    bool is_enabled;
+     bool fw_remove;
+     uint32_t ost_event;
+     uint32_t ost_status;
 -- 
 2.34.1

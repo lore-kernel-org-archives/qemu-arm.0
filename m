@@ -1,656 +1,294 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp621938ejc;
-        Mon, 25 Sep 2023 12:44:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFqPzOcmMURQ2qZS8CPZj/TthxAugsQ08+aff0qhCFMXx4z4FWg8hXt1jKTf1wpC1KgA060
-X-Received: by 2002:a05:600c:2198:b0:404:7659:ba39 with SMTP id e24-20020a05600c219800b004047659ba39mr6236876wme.16.1695671086124;
-        Mon, 25 Sep 2023 12:44:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695671086; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp779696ejc;
+        Mon, 25 Sep 2023 18:37:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHyHD+7yuqiEzBPSddY/slKQZnB+Q9qKOPc535wz4vQn609fbmCKikghsoBln5YprlnS/HL
+X-Received: by 2002:a05:6214:3108:b0:658:3e27:9906 with SMTP id ks8-20020a056214310800b006583e279906mr8220653qvb.8.1695692274309;
+        Mon, 25 Sep 2023 18:37:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695692274; cv=none;
         d=google.com; s=arc-20160816;
-        b=BbEXlwvteBnESJbQNYqRd4ZIdZ4+dmiiObGbbxYKcFVPIg5u7CWUQBUR0KJ+y8d6s0
-         f6uI3kamENQKPW/QP/OmE3ML7x40F6+O4tkGEvTCOUlAnYqtgpSY5YtcxbA/Cd/TEZ/J
-         4cDgpdxhPHusrdArc69/14CZodZuIGIy16W8bQwQu83Q03TrEb8ehDdqOemYGXTOIKf2
-         AC1RBlFc0GebHqrKAWA6uQI3jvMdFhqz0pofN5dsBRjHlvk+ldID8uyUAZFBqkvuzQ07
-         8IH0rBenWZdk7zvxehAPYbKyWVDkNotjQhrKKgXySbfEjA8yHrFf6G1TMhP1Qc+KZvD0
-         N9lg==
+        b=WiMHglKt3I7n5fsQyAefgNE2Yf4uOKgYzmsQ3XCbe7r1qOhnLVYKxbGk8n7zgFFEy1
+         e16sMJP5zQbnIdoqqeA3+YcdUV4dB4XEsfTwgG1++AHdwXYb0Qcfu+QA9dqg5UI/oZuM
+         8t2T/qeJo+lxEbVm58Gp+ey8wHkwSVIJsK25jJPQ9LAO1sXRDeSV6JCgQtb8e2iV6N2S
+         UzAY03stRw7D+fW/NFZKrhnGMnTj6AHmdIs68Amve7QIuzNW5yDBQiy35HImcgpjLwgq
+         ISjk02//6VDeitr88Jkus0QN9+nSsMg5HulNypUHiLjCE6Y3dYAuFtNXwB/oZdOgEVYf
+         GLTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=isn1uu3EJZ//2Z3TN44XwRghKtWEhVIH5FwYjqt03Z4=;
-        fh=QZ1NGXMAoMOy8unn+ZFQ0nGDlKwOcbjZv3K7sgIBDMg=;
-        b=E13U7YySofHYlHM5x0zpqQbjB6WRyQPrSVu2RHTkQfQ46LGIhMTXXgG6lUVVnXGCS5
-         9e+eOHvoLVYBu4uWGgsz3UymjZ30Qv4KosRBqA08q9vNDLaOuNveNkP7vryqWN4F8kqX
-         KLG1nqiO9bmRTafsZlLqaMMX/9SAHShkypQx03MNLU0u59Uw94sKDAUwtCP+BKWTJV31
-         Il4+//2kaK/MD0zsL8sk5DgOPUxdTBdvhcpgKH9o43UwyIYD6LFKKGkfb/znUJDJOEAN
-         IHCnJBh1NKORXRSNZjhf2DEASevPp4R+Y5PAbxoVk88fava1D0dMISSt/VLzTryVdzOB
-         UUbw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :subject:cc:to:from:date:references:in-reply-to:message-id
+         :mime-version:user-agent:feedback-id:dkim-signature:dkim-signature;
+        bh=eUvlcQOeL9mF99Lo5KFrW+4n7j6hw7J0tfzp62MyVOQ=;
+        fh=+gA9jmq04uwJLrSHowsFShYeFf1Ksy5P36d8S85GSkk=;
+        b=F2yct+e9HjJCNE/A4/E26qloGq31iOz1JQXkL6yjel1CRW6eRtM1vakmoiXNU0N1Oc
+         J7Mu8NEPYDQYlMJuf+JxY+i0uT6SWeOyJv8sRONiKQmkhBpp5NkHPajEB+2z74yzbMO5
+         2ERCX3I04J0MJNhJyasHJtNEoEzjufj8GE/t2sBsB90Gso7tVA/8u9RBwSiKnUadyhwD
+         c48S2c2DTGRJV6TlhLqyqhQrnHlOAG5zGnYfKitulhmvXnQj0b2ZVSttOXR4m4d40r17
+         +LUa7WMdcQwU7kUiIJq64K5cYY+yfnfpwiRajC8XNIhM9/yUsc/q3hnuIOE9A/weljv7
+         op4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id f17-20020a05600c155100b004050e7d5000si7335493wmg.138.2023.09.25.12.44.45
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Sep 2023 12:44:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=lEGV0Z91;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b="fZ/CEbi7";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s12-20020ad4524c000000b0064f45b8c035si6526013qvq.374.2023.09.25.18.37.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 25 Sep 2023 18:37:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.200])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RvYDf4d0yz6D9Q7;
-	Tue, 26 Sep 2023 03:42:26 +0800 (CST)
-Received: from A190218597.china.huawei.com (10.48.153.112) by
- lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Mon, 25 Sep 2023 20:44:24 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <james.morse@arm.com>,
-	<jean-philippe@linaro.org>, <jonathan.cameron@huawei.com>,
-	<lorenzo.pieralisi@linaro.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
-	<catalin.marinas@arm.com>, <ardb@kernel.org>, <justin.he@arm.com>,
-	<oliver.upton@linux.dev>, <pbonzini@redhat.com>, <mst@redhat.com>,
-	<gshan@redhat.com>, <rafael@kernel.org>, <borntraeger@linux.ibm.com>,
-	<alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
-	<darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
-	<vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
-	<miguel.luis@oracle.com>, <sudeep.holla@arm.com>, <salil.mehta@opnsrc.net>,
-	<zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
-	<wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
-	<lixianglai@loongson.cn>
-Subject: [PATCH RFC V2 00/37] Support of Virtual CPU Hotplug for ARMv8 Arch
-Date: Mon, 25 Sep 2023 20:43:33 +0100
-Message-ID: <20230925194333.18244-1-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.8.3
+       dkim=fail header.i=@aj.id.au header.s=fm1 header.b=lEGV0Z91;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b="fZ/CEbi7";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qkx0w-0003DO-Io; Mon, 25 Sep 2023 21:37:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1qkx0v-0003Cv-6V; Mon, 25 Sep 2023 21:37:25 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1qkx0s-0002Hj-OQ; Mon, 25 Sep 2023 21:37:24 -0400
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+ by mailout.nyi.internal (Postfix) with ESMTP id 393FC5C02F1;
+ Mon, 25 Sep 2023 21:37:21 -0400 (EDT)
+Received: from imap50 ([10.202.2.100])
+ by compute6.internal (MEProxy); Mon, 25 Sep 2023 21:37:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
+ :cc:content-transfer-encoding:content-type:content-type:date
+ :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to; s=fm1; t=
+ 1695692241; x=1695778641; bh=eUvlcQOeL9mF99Lo5KFrW+4n7j6hw7J0tfz
+ p62MyVOQ=; b=lEGV0Z91zUMUYM7zywmM7LLyCJU0nJUm5F81/r4bFVbOXvcdLpf
+ oKwjWgesMrP1+2CfefMKI48pcArX514/NdmwEZGRMHCbhFVHvH7xuWDKafJKHts5
+ cK+F6RTN+lF6rbh0Gmf/Z7rxxiRvvYE1+X/kmYbtVR3md520jDfu8G3VgSHaQhTz
+ eiqks8OoH23TvQPo0Qp+w6NIAcV3qirq7jgEIPwj3dX4sYhCZWnI/gbeCLGV3CK7
+ TJ+V8Nu/Y4hfGjf1uqhn1ViYlR5ddwORXHGKPvQTZktsq+PGx8FRCF1tG2zdw1Ry
+ f1aFYow/sw9lzld6gqiXcJ3veujpn0LvtQw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+ 1695692241; x=1695778641; bh=eUvlcQOeL9mF99Lo5KFrW+4n7j6hw7J0tfz
+ p62MyVOQ=; b=fZ/CEbi7WTAKUBzQt8b/reoAngcsyb242jZovE87MTx6Unim1Bo
+ z2O3y+C8JcwTK3JBhOBdYBTTGqbVGDtRqUt6Us9Qj2d8qziU3Cio3zuia+KwpwRM
+ RLl3lCU+xDpnTqgZqkZyFeYSVQ0U5iPNYVn1eRoBS99ZhD4QBavaquV6s48K1/M3
+ alTb/taH09yCEowt/ZMCN2S7EVIXl5pc40MWPM4FDDGNbYRRraOqsyib4nY6Wmkb
+ Ymn/D7nIBroLnw3GiTy4T/OxNibQFo07dV0cZgPdl/brrHBOpdQ5n5o75TiIQ1HE
+ aF4LsCtxjq/DWAQW+I2LrnWutcWx6FF6Klg==
+X-ME-Sender: <xms:0TUSZWWOP1DqlC-IkymcTEuNVCd00B3KSE-TkyPDsgbQC-eqRFlQLw>
+ <xme:0TUSZSl7EGg1vSY4Dz1VL7XLmBBYzGAguwzOhVcFk11PzhwcCgSINwN2r5X2PRM_W
+ eNFvqHOj1tn2sC-bA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedviedrudelhedggeekucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvfevufgtgfesthhqredtreerjeenucfhrhhomhepfdet
+ nhgurhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecugg
+ ftrfgrthhtvghrnhepvdfhtdeiiedthfdtvddvteehteeludelleektdeiieektefhuddv
+ vdelheetkeeunecuffhomhgrihhnpehoiihlrggsshdrohhrghenucevlhhushhtvghruf
+ hiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdr
+ rghu
+X-ME-Proxy: <xmx:0TUSZaae1yyhBZ8_QXkzLc6-f-PPiHNoSF0oe_mziPwH-doOb5-wOA>
+ <xmx:0TUSZdUcQ0r9Id4Sf_QXZwLxTZ_I5On3sEOgLki6YndByw3jVbtCzw>
+ <xmx:0TUSZQlpGnHu6VmdcNuv9CXX5-XxX1aYMqPbWw3vs5PDOrpmrChKCA>
+ <xmx:0TUSZVwuvH31LRD0Pfm3MRDMIhw9pHPnr9-AM3Hy98FPDaWAY_8edg>
+Feedback-ID: idfb84289:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id DE9741700089; Mon, 25 Sep 2023 21:37:20 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-957-ga1ccdb4cff-fm-20230919.001-ga1ccdb4c
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.48.153.112]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- lhrpeml500001.china.huawei.com (7.191.163.213)
-X-CFilter-Loop: Reflected
-X-TUID: e6OnxbGTKsAn
-
-PROLOGUE
-========
-
-To assist in review and set the right expectations from this RFC, please first
-read below sections *APPENDED AT THE END* of this cover letter,
-
-1. Important *DISCLAIMER* [Section (X)]
-2. Work presented at KVMForum Conference (slides available) [Section (V)F]
-3. Organization of patches [Section (XI)]
-4. References [Section (XII)]
-5. Detailed TODO list of the leftover work or work-in-progress [Section (IX)]
-
-NOTE: There has been an interest shown by other organizations in adapting
-this series for their architecture. I am planning to split this RFC into
-architecture *agnostic* and *specific* patch-sets in subsequent releases. ARM
-specific patch-set will continue as RFC V3 and architecture agnostic patch-set
-will be floated without RFC tag and can be consumed in this Qemu cycle if
-MAINTAINERs ack it.
-
-[Please check section (XI)B for details of architecture agnostic patches]
-
-
-SECTIONS [I - XIII] are as follows :
-
-(I) Key Changes (RFC V1 -> RFC V2)
-    ==================================
-
-    RFC V1: https://lore.kernel.org/qemu-devel/20200613213629.21984-1-salil.mehta@huawei.com/
-
-1. ACPI MADT Table GIC CPU Interface can now be presented [6] as ACPI
-   *online-capable* or *enabled* to the Guest OS at the boot time. This means
-   associated CPUs can have ACPI _STA as *enabled* or *disabled* even after boot
-   See, UEFI ACPI 6.5 Spec, Section 05, Table 5.37 GICC CPU Interface Flags[20]
-2. SMCC/HVC Hypercall exit handling in userspace/Qemu for PSCI CPU_{ON,OFF}
-   request. This is required to {dis}allow online'ing a vCPU.
-3. Always presenting unplugged vCPUs in CPUs ACPI AML code as ACPI _STA.PRESENT 
-   to the Guest OS. Toggling ACPI _STA.Enabled to give an effect of the
-   hot{un}plug.
-4. Live Migration works (some issues are still there)
-5. TCG/HVF/qtest does not support Hotplug and falls back to default.
-6. Code for TCG support do exists in this release (it is a work-in-progress)
-7. ACPI _OSC method can now be used by OSPM to negotiate Qemu VM platform
-   hotplug capability (_OSC Query support still pending)
-8. Misc. Bug fixes
-
-(II) Summary
-     =======
-
-This patch-set introduces the virtual CPU hotplug support for ARMv8 architecture
-in QEMU. Idea is to be able to hotplug and hot-unplug the vCPUs while guest VM
-is running and no reboot is required. This does *not* makes any assumption of
-the physical CPU hotplug availability within the host system but rather tries to
-solve the problem at virtualizer/QEMU layer. Introduces ACPI CPU hotplug hooks
-and event handling to interface with the guest kernel, code to initialize, plug
-and unplug CPUs. No changes are required within the host kernel/KVM except the
-support of hypercall exit handling in the user-space/Qemu which has recently
-been added to the kernel. Its corresponding Guest kernel changes have been
-posted on the mailing-list [3] [4] by James Morse.
-
-(III) Motivation
-      ==========
-
-This allows scaling the guest VM compute capacity on-demand which would be
-useful for the following example scenarios,
-
-1. Vertical Pod Autoscaling [9][10] in the cloud: Part of the orchestration
-   framework which could adjust resource requests (CPU and Mem requests) for
-   the containers in a pod, based on usage.
-2. Pay-as-you-grow Business Model: Infrastructure provider could allocate and
-   restrict the total number of compute resources available to the guest VM
-   according to the SLA (Service Level Agreement). VM owner could request for
-   more compute to be hot-plugged for some cost.
-
-For example, Kata Container VM starts with a minimum amount of resources (i.e.
-hotplug everything approach). why?
-
-1. Allowing faster *boot time* and
-2. Reduction in *memory footprint*
-
-Kata Container VM can boot with just 1 vCPU and then later more vCPUs can be
-hot-plugged as per requirement.
-
-(IV) Terminology
-     ===========
-
-(*) Posssible CPUs: Total vCPUs which could ever exist in VM. This includes
-                    any cold booted CPUs plus any CPUs which could be later
-                    hot-plugged.
-                    - Qemu parameter(-smp maxcpus=N)
-(*) Present CPUs:   Possible CPUs which are ACPI 'present'. These might or might
-                    not be ACPI 'enabled'. 
-                    - Present vCPUs = Possible vCPUs (Always on ARM Arch)
-(*) Enabled CPUs:   Possible CPUs which are ACPI ‘present’ and 'enabled' and can
-                    now be ‘onlined’ (PSCI) for use by Guest Kernel. All cold
-                    booted vCPUs are ACPI 'enabled' at boot. Later, using
-                    device_add more vCPUs can be hotplugged and be made ACPI
-                    'enabled.
-                    - Qemu parameter(-smp cpus=N). Can be used to specify some
-		      cold booted vCPUs during VM init. Some can be added using
-		      '-device' option.
-
-(V) Constraints Due To ARMv8 CPU Architecture [+] Other Impediments
-    ===============================================================
-
-A. Physical Limitation to Support CPU Hotplug: (Architectural Constraint)
-   1. ARMv8 CPU architecture does not support the concept of the physical CPU
-      hotplug. 
-      a. There are many per-CPU components like PMU, SVE, MTE, Arch timers etc.
-         whose behaviour need to be clearly defined when CPU is hot(un)plugged.
-         There is no specification for this.
-
-   2. Other ARM components like GIC etc. have not been designed to realize
-      physical CPU hotplug capability as of now. For example,
-      a. Every physical CPU has a unique GICC (GIC CPU Interface) by construct.
-         Architecture does not specifies what CPU hot(un)plug would mean in
-         context to any of these.
-      b. CPUs/GICC are physically connected to unique GICR (GIC Redistributor).
-         GIC Redistributors are always part of always-on power domain. Hence,
-         cannot be powered-off as per specification.
-
-B. Impediments in Firmware/ACPI (Architectural Constraint)
-
-   1. Firmware has to expose GICC, GICR and other per-CPU features like PMU,
-      SVE, MTE, Arch Timers etc. to the OS. Due to architectural constraint
-      stated in above section A1(a),  all interrupt controller structures of
-      MADT describing GIC CPU Interfaces and the GIC Redistibutors MUST be
-      presented by firmware to the OSPM during the boot time. 
-   2. Architectures that support CPU hotplug can evaluate ACPI _MAT method to
-      get this kind of information from the firmware even after boot and the
-      OSPM has capability to process these. ARM kernel uses information in MADT
-      interrupt controller structures to identify number of Present CPUs during
-      boot and hence does not allow to change these after boot. Number of
-      present CPUs cannot be changed. It is an architectural constraint!
-
-C. Impediments in KVM to Support Virtual CPU Hotplug (Architectural Constraint)
-
-   1. KVM VGIC:
-       a. Sizing of various VGIC resources like memory regions etc. related to
-          the redistributor happens only once and is fixed at the VM init time
-          and cannot be changed later after initialization has happened.
-          KVM statically configures these resources based on the number of vCPUs
-          and the number/size of redistributor ranges.
-       b. Association between vCPU and its VGIC redistributor is fixed at the
-          VM init time within the KVM i.e. when redistributor iodevs gets
-          registered. VGIC does not allows to setup/change this association
-          after VM initialization has happened. Physically, every CPU/GICC is
-          uniquely connected with its redistributor and there is no
-          architectural way to set this up.
-   2. KVM vCPUs:
-       a. Lack of specification means destruction of KVM vCPUs does not exist as
-          there is no reference to tell what to do with other per-vCPU
-          components like redistributors, arch timer etc.
-       b. Infact, KVM does not implements destruction of vCPUs for any
-          architecture. This is independent of the fact whether architecture
-          actually supports CPU Hotplug feature. For example, even for x86 KVM
-          does not implements destruction of vCPUs.
-
-D. Impediments in Qemu to Support Virtual CPU Hotplug (KVM Constraints->Arch)
-
-   1. Qemu CPU Objects MUST be created to initialize all the Host KVM vCPUs to
-      overcome the KVM constraint. KVM vCPUs are created, initialized when Qemu
-      CPU Objects are realized. But keepinsg the QOM CPU objects realized for
-      'yet-to-be-plugged' vCPUs can create problems when these new vCPUs shall
-      be plugged using device_add and a new QOM CPU object shall be created.
-   2. GICV3State and GICV3CPUState objects MUST be sized over *possible vCPUs*
-      during VM init time while QOM GICV3 Object is realized. This is because
-      KVM VGIC can only be initialized once during init time. But every
-      GICV3CPUState has an associated QOM CPU Object. Later might corresponds to
-      vCPU which are 'yet-to-be-plugged'(unplugged at init).
-   3. How should new QOM CPU objects be connected back to the GICV3CPUState
-      objects and disconnected from it in case CPU is being hot(un)plugged?
-   4. How should 'unplugged' or 'yet-to-be-plugged' vCPUs be represented in the
-      QOM for which KVM vCPU already exists? For example, whether to keep,
-       a. No QOM CPU objects Or
-       b. Unrealized CPU Objects
-   5. How should vCPU state be exposed via ACPI to the Guest? Especially for
-      the unplugged/yet-to-be-plugged vCPUs whose CPU objects might not exists
-      within the QOM but the Guest always expects all possible vCPUs to be
-      identified as ACPI *present* during boot.
-   6. How should Qemu expose GIC CPU interfaces for the unplugged or
-      yet-to-beplugged vCPUs using ACPI MADT Table to the Guest?
-
-E. Summary of Approach ([+] Workarounds to problems in sections A, B, C & D)
-
-   1. At VM Init, pre-create all the possible vCPUs in the Host KVM i.e. even
-      for the vCPUs which are yet-to-be-plugged in Qemu but keep them in the
-      powered-off state.
-   2. After the KVM vCPUs have been initialized in the Host, the KVM vCPU
-      objects corresponding to the unplugged/yet-to-be-plugged vCPUs are parked
-      at the existing per-VM "kvm_parked_vcpus" list in Qemu. (similar to x86)
-   3. GICV3State and GICV3CPUState objects are sized over possible vCPUs during
-      VM init time i.e. when Qemu GIC is realized. This in turn sizes KVM VGIC
-      resources like memory regions etc. related to the redistributors with the
-      number of possible KVM vCPUs. This never changes after VM has initialized.
-   4. Qemu CPU objects corresponding to unplugged/yet-to-be-plugged vCPUs are
-      released post Host KVM CPU and GIC/VGIC initialization.
-   5. Build ACPI MADT Table with below updates 
-      a. Number of GIC CPU interface entries (=possible vCPUs)
-      b. Present Boot vCPU as MADT.GICC.Enabled=1 (Not hot[un]pluggable) 
-      c. Present hot(un)pluggable vCPUs as MADT.GICC.online-capable=1  
-         - MADT.GICC.Enabled=0 (Mutually exclusive) [6][7]
-	 - vCPU can be ACPI enabled+onlined after Guest boots (Firmware Policy) 
-	 - Some issues with above (details in later sections)
-   6. Expose below ACPI Status to Guest kernel
-      a. Always _STA.Present=1 (all possible vCPUs)
-      b. _STA.Enabled=1 (plugged vCPUs)
-      c. _STA.Enabled=0 (unplugged vCPUs)
-   7. vCPU hotplug *realizes* new QOM CPU object. Following happens,
-      a. Realizes, initializes QOM CPU Object & spawns Qemu vCPU thread
-      b. Unparks the existing KVM vCPU ("kvm_parked_vcpus" list)
-         - Attaches to QOM CPU object.
-      c. Reinitializes KVM vCPU in the Host
-         - Resets the core and sys regs, sets defaults etc.
-      d. Runs KVM vCPU (created with "start-powered-off")
-	 - vCPU thread sleeps (waits for vCPU reset via PSCI) 
-      e. Updates Qemu GIC
-         - Wires back IRQs related to this vCPU.
-         - GICV3CPUState association with QOM CPU Object.
-      f. Updates [6] ACPI _STA.Enabled=1
-      g. Notifies Guest about new vCPU (via ACPI GED interface)
-	 - Guest checks _STA.Enabled=1
-	 - Guest adds processor (registers CPU with LDM) [3]
-      h. Plugs the QOM CPU object in the slot.
-         - slot-number = cpu-index{socket,cluster,core,thread}
-      i. Guest online's vCPU (CPU_ON PSCI call over HVC/SMC)
-         - KVM exits HVC/SMC Hypercall [5] to Qemu (Policy Check).
-         - Qemu powers-on KVM vCPU in the Host
-   8. vCPU hot-unplug *unrealizes* QOM CPU Object. Following happens,
-      a. Notifies Guest (via ACPI GED interface) vCPU hot-unplug event
-         - Guest offline's vCPU (CPU_OFF PSCI call over HVC/SMC) 
-      b. KVM exits HVC/SMC Hypercall [5] to Qemu (Policy Check).
-         - Qemu powers-off the KVM vCPU in the Host
-      c Guest signals *Eject* vCPU to Qemu
-      d. Qemu updates [6] ACPI _STA.Enabled=0
-      e. Updates GIC
-         - Un-wires IRQs related to this vCPU
-         - GICV3CPUState association with new QOM CPU Object is updated.
-      f. Unplugs the vCPU
-	 - Removes from slot
-         - Parks KVM vCPU ("kvm_parked_vcpus" list)
-         - Unrealizes QOM CPU Object & joins back Qemu vCPU thread
-	 - Destroys QOM CPU object 
-      g. Guest checks ACPI _STA.Enabled=0
-         - Removes processor (unregisters CPU with LDM) [3]
-
-F. Work Presented at KVM Forum Conferences:
-   Details of above work has been presented at KVMForum2020 and KVMForum2023
-   conferences. Slides are available at below links,
-   a. KVMForum 2023
-      - Challenges Revisited in Supporting Virt CPU Hotplug on architectures that don't Support CPU Hotplug (like ARM64)
-        https://kvm-forum.qemu.org/2023/talk/9SMPDQ/
-   b. KVMForum 2020
-      - Challenges in Supporting Virtual CPU Hotplug on SoC Based Systems (like ARM64) - Salil Mehta, Huawei
-        https://sched.co/eE4m
-
-(VI) Commands Used
-     =============
-
-    A. Qemu launch commands to init the machine
-
-    $ qemu-system-aarch64 --enable-kvm -machine virt,gic-version=3 \
-    -cpu host -smp cpus=4,maxcpus=6 \
-    -m 300M \
-    -kernel Image \
-    -initrd rootfs.cpio.gz \
-    -append "console=ttyAMA0 root=/dev/ram rdinit=/init maxcpus=2 acpi=force" \
-    -nographic \
-    -bios  QEMU_EFI.fd \
-
-    B. Hot-(un)plug related commands
-
-    # Hotplug a host vCPU(accel=kvm)
-    $ device_add host-arm-cpu,id=core4,core-id=4
-
-    # Hotplug a vCPU(accel=tcg)
-    $ device_add cortex-a57-arm-cpu,id=core4,core-id=4
-
-    # Delete the vCPU
-    $ device_del core4
-
-    Sample output on guest after boot:
-
-    $ cat /sys/devices/system/cpu/possible
-    0-5
-    $ cat /sys/devices/system/cpu/present
-    0-5
-    $ cat /sys/devices/system/cpu/enabled
-    0-3
-    $ cat /sys/devices/system/cpu/online
-    0-1
-    $ cat /sys/devices/system/cpu/offline
-    2-5
-
-    Sample output on guest after hotplug of vCPU=4:
-
-    $ cat /sys/devices/system/cpu/possible
-    0-5
-    $ cat /sys/devices/system/cpu/present
-    0-5
-    $ cat /sys/devices/system/cpu/enabled
-    0-4
-    $ cat /sys/devices/system/cpu/online
-    0-1,4
-    $ cat /sys/devices/system/cpu/offline
-    2-3,5
-
-    Note: vCPU=4 was explicitly 'onlined' after hot-plug
-    $ echo 1 > /sys/devices/system/cpu/cpu4/online
-
-(VII) Repository
-      ==========
-
- (*) QEMU changes for vCPU hotplug could be cloned from below site,
-     https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v2
- (*) Guest Kernel changes (by James Morse, ARM) are available here:
-     https://git.kernel.org/pub/scm/linux/kernel/git/morse/linux.git virtual_cpu_hotplug/rfc/v2
-
-
-(VIII) KNOWN ISSUES
-       ============
-
-1. Migration has been lightly tested. Below are some of the known issues:
-   - Ocassional CPU stall (not always repeatable)
-   - Negative test case like asymmetric source/destination VM config causes dump.
-   - Migration with TCG is not working properly.
-2. TCG with Single threaded mode is broken.
-3. HVF and qtest support is broken. 
-4. ACPI MADT Table flags [7] MADT.GICC.Enabled and MADT.GICC.online-capable are
-   mutually exclusive i.e. as per the change [6] a vCPU cannot be both
-   GICC.Enabled and GICC.online-capable. This means,
-      [ Link: https://bugzilla.tianocore.org/show_bug.cgi?id=3706 ]
-   a. If we have to support hot-unplug of the cold-booted vCPUs then these MUST
-      be specified as GICC.online-capable in the MADT Table during boot by the
-      firmware/Qemu. But this requirement conflicts with the requirement to
-      support new Qemu changes with legacy OS which dont understand
-      MADT.GICC.online-capable Bit. Legacy OS during boot time will ignore this
-      bit and hence these vCPUs will not appear on such OS. This is unexpected
-      behaviour.
-   b. In case we decide to specify vCPUs as MADT.GICC.Enabled and try to unplug
-      these cold-booted vCPUs from OS (which in actual should be blocked by
-      returning error at Qemu) then features like 'kexec' will break.
-   c. As I understand, removal of the cold-booted vCPUs is a required feature
-      and x86 world allows it.
-   d. Hence, either we need a specification change to make the MADT.GICC.Enabled
-      and MADT.GICC.online-capable Bits NOT mutually exclusive or NOT support
-      removal of cold-booted vCPUs. In the later case, a check can be introduced
-      to bar the users from unplugging vCPUs, which were cold-booted, using QMP
-      commands. (Needs discussion!)
-      Please check below patch part of this patch-set:
-          [hw/arm/virt: Expose cold-booted CPUs as MADT GICC Enabled]
-5. Code related to the notification to GICV3 about hot(un)plug of a vCPU event
-   inlcudes virt.h in the arm_gicv3_common.c which is not correct. Needs a
-   better way to notify GIC about CPU event independent of VirtMachineState
-
-
-(IX) THINGS TO DO
-     ============
-
-1. Fix the Migration Issues
-2. Fix issues related to TCG/Emulation support.
-3. Comprehensive Testing. Current testing is very basic.
-   a. Negative Test cases
-4. Qemu Documentation(.rst) need to be updated.
-5. Fix qtest, HVF Support
-6. Fix the design issue related to ACPI MADT.GICC flags discussed in known
-   issues. This might require UEFI ACPI specification change!
-7. Add ACPI _OSC 'Query' support. Only part of _OSC support exists now.
-
- Above is *not* a complete list. Will update later!
-
-Best regards
-Salil.
-
-(X) DISCLAIMER
-    ==========
-
-This work is an attempt to present a proof-of-concept of the ARM64 vCPU hotplug
-implementation to the community. This is *not* a production level code and might
-have bugs. Only a basic testing has been done on HiSilicon Kunpeng920 SoC for
-servers. Once the design and core idea behind the implementation has been
-verified more efforts can be put to harden the code.
-
-This work is *mostly* in the lines of the discussions which have happened in the
-previous years[see refs below] across different channels like mailing-list,
-Linaro Open Discussions platform, various conferences like KVMFourm etc. This
-RFC is being used as a way to verify the idea mentioned in this cover-letter and
-to get community views. Once this has been agreed upon a formal patch shall be
-presented to the communit Once this has been agreed, a formal patch shall be
-posted on the mailing-list.
-
-The concept being presented has been found to work!
-
-(XI) ORGANIZATION OF PATCHES
-     =======================
- 
- A. All patches [Architecture 'agnostic' + 'specific']:
-
-   [Patch 1-9, 23, 36] logic required during machine init
-    (*) Some validation checks
-    (*) Introduces core-id property and some util functions required later.
-    (*) Refactors Parking logic of vCPUs    
-    (*) Logic to pre-create vCPUs
-    (*) GIC initialization pre-sized with possible vCPUs.
-    (*) Some refactoring to have common hot and cold plug logic together.
-    (*) Release of disable QOM CPU objects in post_cpu_init()
-    (*) Support of ACPI _OSC method to negotiate platform hotplug capabilities
-   [Patch 10-22] logic related to ACPI at machine init time
-    (*) Changes required to Enable ACPI for cpu hotplug
-    (*) Initialization ACPI GED framework to cater CPU Hotplug Events
-    (*) Build ACPI AML related to CPU control dev 
-    (*) ACPI MADT/MAT changes
-   [Patch 24-35] Logic required during vCPU hot-(un)plug
-    (*) Basic framework changes to suppport vCPU hot-(un)plug
-    (*) ACPI GED changes for hot-(un)plug hooks.
-    (*) wire-unwire the IRQs
-    (*) GIC notification logic
-    (*) ARMCPU unrealize logic
-    (*) Handling of SMCC Hypercall Exits by KVM to Qemu  
-   
- B. Architecture *agnostic* patches part of patch-set:
-
-   [Patch 5,9,11,13,16,20,24,31,33] Common logic to support hotplug 
-    (*) Refactors Parking logic of vCPUs
-    (*) Introduces ACPI GED Support for vCPU Hotplug Events
-    (*) Introduces ACPI AML change for CPU Control Device     
-
-(XII) REFERENCES
-      ==========
-
-[1] https://lore.kernel.org/qemu-devel/20200613213629.21984-1-salil.mehta@huawei.com/
-[2] https://lore.kernel.org/linux-arm-kernel/20200625133757.22332-1-salil.mehta@huawei.com/
-[3] https://lore.kernel.org/lkml/20230203135043.409192-1-james.morse@arm.com/
-[4] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
-[5] https://lore.kernel.org/all/20230404154050.2270077-1-oliver.upton@linux.dev/
-[6] https://bugzilla.tianocore.org/show_bug.cgi?id=3706
-[7] https://uefi.org/specs/ACPI/6.5/05_ACPI_Software_Programming_Model.html#gic-cpu-interface-gicc-structure
-[8] https://bugzilla.tianocore.org/show_bug.cgi?id=4481#c5
-[9] https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler
-[10] https://docs.aws.amazon.com/eks/latest/userguide/vertical-pod-autoscaler.html
-[11] https://lkml.org/lkml/2019/7/10/235
-[12] https://lists.cs.columbia.edu/pipermail/kvmarm/2018-July/032316.html
-[13] https://lists.gnu.org/archive/html/qemu-devel/2020-01/msg06517.html
-[14] https://op-lists.linaro.org/archives/list/linaro-open-discussions@op-lists.linaro.org/thread/7CGL6JTACPUZEYQC34CZ2ZBWJGSR74WE/
-[15] http://lists.nongnu.org/archive/html/qemu-devel/2018-07/msg01168.html
-[16] https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00131.html
-[17] https://op-lists.linaro.org/archives/list/linaro-open-discussions@op-lists.linaro.org/message/X74JS6P2N4AUWHHATJJVVFDI2EMDZJ74/
-[18] https://lore.kernel.org/lkml/20210608154805.216869-1-jean-philippe@linaro.org/
-[19] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/ 
-[20] https://uefi.org/specs/ACPI/6.5/05_ACPI_Software_Programming_Model.html#gicc-cpu-interface-flags
-
-(XIII) ACKNOWLEDGEMENTS
-       ================
-
-I would like to take this opportunity to thank below people for various
-discussions with me over different channels during the development:
-
-Marc Zyngier (Google)               Catalin Marinas (ARM),         
-James Morse(ARM),                   Will Deacon (Google), 
-Jean-Phillipe Brucker (Linaro),     Sudeep Holla (ARM),
-Lorenzo Pieralisi (Linaro),         Gavin Shan (Redhat), 
-Jonathan Cameron (Huawei),          Darren Hart (Ampere),
-Igor Mamedov (Redhat),              Ilkka Koskinen (Ampere),
-Andrew Jones (Redhat),              Karl Heubaum (Oracle),
-Keqian Zhu (Huawei),                Miguel Luis (Oracle),
-Xiongfeng Wang (Huawei),            Vishnu Pajjuri (Ampere),
-Shameerali Kolothum (Huawei)        Russell King (Oracle)
-Xuwei/Joy (Huawei),                 Peter Maydel (Linaro)
-Zengtao/Prime (Huawei),             And all those whom I have missed! 
-
-Many thanks to below people for their current or past contributions:
-
-1. James Morse (ARM)
-   (Current Kernel part of vCPU Hotplug Support on AARCH64)
-2. Jean-Philippe Brucker (Linaro)
-   (Protoyped one of the earlier PSCI based POC [17][18] based on RFC V1)
-3. Keqian Zhu (Huawei)
-   (Co-developed Qemu prototype)
-4. Xiongfeng Wang (Huawei)
-   (Co-developed earlier kernel prototype)
-5. Vishnu Pajjuri (Ampere)
-   (Verification on Ampere ARM64 Platforms + fixes)
-6. Miguel Luis (Oracle)
-   (Verification on Oracle ARM64 Platforms + fixes)
-
-
-Author Salil Mehta (1):
-  target/arm/kvm,tcg: Register/Handle SMCCC hypercall exits to VMM/Qemu
-
-Jean-Philippe Brucker (2):
-  hw/acpi: Make _MAT method optional
-  target/arm/kvm: Write CPU state back to KVM on reset
-
-Miguel Luis (1):
-  tcg/mttcg: enable threads to unregister in tcg_ctxs[]
-
-Salil Mehta (33):
-  arm/virt,target/arm: Add new ARMCPU {socket,cluster,core,thread}-id property
-  cpus-common: Add common CPU utility for possible vCPUs
-  hw/arm/virt: Move setting of common CPU properties in a function
-  arm/virt,target/arm: Machine init time change common to vCPU {cold|hot}-plug
-  accel/kvm: Extract common KVM vCPU {creation,parking} code
-  arm/virt,kvm: Pre-create disabled possible vCPUs @machine init
-  arm/virt,gicv3: Changes to pre-size GIC with possible vcpus @machine init
-  arm/virt: Init PMU at host for all possible vcpus
-  hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
-  arm/acpi: Enable ACPI support for vcpu hotplug
-  hw/acpi: Add ACPI CPU hotplug init stub
-  hw/acpi: Use qemu_present_cpu() API in ACPI CPU hotplug init
-  hw/acpi: Init GED framework with cpu hotplug events
-  arm/virt: Add cpu hotplug events to GED during creation
-  arm/virt: Create GED dev before *disabled* CPU Objs are destroyed
-  hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
-  arm/virt/acpi: Build CPUs AML with CPU Hotplug support
-  arm/virt: Make ARM vCPU *present* status ACPI *persistent*
-  hw/acpi: ACPI/AML Changes to reflect the correct _STA.{PRES,ENA} Bits to Guest
-  hw/acpi: Update GED _EVT method AML with cpu scan
-  hw/arm: MADT Tbl change to size the guest with possible vCPUs
-  arm/virt: Release objects for *disabled* possible vCPUs after init
-  hw/acpi: Update ACPI GED framework to support vCPU Hotplug
-  arm/virt: Add/update basic hot-(un)plug framework
-  arm/virt: Changes to (un)wire GICC<->vCPU IRQs during hot-(un)plug
-  hw/arm,gicv3: Changes to update GIC with vCPU hot-plug notification
-  hw/intc/arm-gicv3*: Changes required to (re)init the vCPU register info
-  arm/virt: Update the guest(via GED) about CPU hot-(un)plug events
-  hw/arm: Changes required for reset and to support next boot
-  physmem,gdbstub: Common helping funcs/changes to *unrealize* vCPU
-  target/arm: Add support of *unrealize* ARMCPU during vCPU Hot-unplug
-  hw/arm: Support hotplug capability check using _OSC method
-  hw/arm/virt: Expose cold-booted CPUs as MADT GICC Enabled
-
- accel/kvm/kvm-all.c                    |  61 +-
- accel/tcg/tcg-accel-ops-mttcg.c        |   1 +
- cpus-common.c                          |  37 ++
- gdbstub/gdbstub.c                      |  13 +
- hw/acpi/acpi-cpu-hotplug-stub.c        |   6 +
- hw/acpi/cpu.c                          |  91 ++-
- hw/acpi/generic_event_device.c         |  33 +
- hw/arm/Kconfig                         |   1 +
- hw/arm/boot.c                          |   2 +-
- hw/arm/virt-acpi-build.c               | 110 +++-
- hw/arm/virt.c                          | 863 ++++++++++++++++++++-----
- hw/core/gpio.c                         |   2 +-
- hw/i386/acpi-build.c                   |   2 +-
- hw/intc/arm_gicv3.c                    |   1 +
- hw/intc/arm_gicv3_common.c             |  66 +-
- hw/intc/arm_gicv3_cpuif.c              | 265 ++++----
- hw/intc/arm_gicv3_cpuif_common.c       |   5 +
- hw/intc/arm_gicv3_kvm.c                |  39 +-
- hw/intc/gicv3_internal.h               |   2 +
- include/exec/cpu-common.h              |   8 +
- include/exec/gdbstub.h                 |   1 +
- include/hw/acpi/cpu.h                  |   7 +-
- include/hw/acpi/cpu_hotplug.h          |   4 +
- include/hw/acpi/generic_event_device.h |   5 +
- include/hw/arm/boot.h                  |   2 +
- include/hw/arm/virt.h                  |  10 +-
- include/hw/core/cpu.h                  |  77 +++
- include/hw/intc/arm_gicv3_common.h     |  23 +
- include/hw/qdev-core.h                 |   2 +
- include/sysemu/kvm.h                   |   2 +
- include/tcg/tcg.h                      |   1 +
- softmmu/physmem.c                      |  25 +
- target/arm/arm-powerctl.c              |  51 +-
- target/arm/cpu-qom.h                   |   3 +
- target/arm/cpu.c                       | 112 ++++
- target/arm/cpu.h                       |  17 +
- target/arm/cpu64.c                     |  15 +
- target/arm/gdbstub.c                   |   6 +
- target/arm/helper.c                    |  27 +-
- target/arm/internals.h                 |  12 +-
- target/arm/kvm.c                       |  93 ++-
- target/arm/kvm64.c                     |  59 +-
- target/arm/kvm_arm.h                   |  24 +
- target/arm/meson.build                 |   1 +
- target/arm/{tcg => }/psci.c            |   8 +
- target/arm/tcg/meson.build             |   4 -
- tcg/tcg.c                              |  23 +
- 47 files changed, 1873 insertions(+), 349 deletions(-)
- rename target/arm/{tcg => }/psci.c (97%)
-
--- 
-2.34.1
+Message-Id: <6cae3846-3dea-49c4-a8ba-23c88647b0b0@app.fastmail.com>
+In-Reply-To: <c23dd1d8-a037-ed8e-30bf-6824ca3649c4@kaod.org>
+References: <20190525151241.5017-1-clg@kaod.org>
+ <20190525151241.5017-9-clg@kaod.org>
+ <a4a62040-0127-4f39-4fc3-a1795e4daad8@kaod.org>
+ <d383d716-2c9a-4d37-a35d-6f62bff9bf1e@app.fastmail.com>
+ <c23dd1d8-a037-ed8e-30bf-6824ca3649c4@kaod.org>
+Date: Tue, 26 Sep 2023 11:07:00 +0930
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ "Peter Maydell" <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9_via?= <qemu-arm@nongnu.org>,
+ "Cameron Esfahani via" <qemu-devel@nongnu.org>,
+ "Joel Stanley" <joel@jms.id.au>
+Subject: Re: [Qemu-devel] [PATCH 08/19] aspeed/timer: Fix behaviour running
+ Linux
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=66.111.4.25; envelope-from=andrew@aj.id.au;
+ helo=out1-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6mJv0n0gh80j
+
+
+
+On Mon, 25 Sep 2023, at 18:50, C=C3=A9dric Le Goater wrote:
+> On 9/25/23 09:54, Andrew Jeffery wrote:
+>>=20
+>>=20
+>> On Fri, 22 Sep 2023, at 22:51, C=C3=A9dric Le Goater wrote:
+>>> Joel, Andrew,
+>>>
+>>> On 5/25/19 17:12, C=C3=A9dric Le Goater wrote:
+>>>> From: Joel Stanley <joel@jms.id.au>
+>>>>
+>>>> The Linux kernel driver was updated in commit 4451d3f59f2a
+>>>> ("clocksource/drivers/fttmr010: Fix set_next_event handler) to fix =
+an
+>>>> issue observed on hardware:
+>>>>
+>>>>    > RELOAD register is loaded into COUNT register when the aspeed =
+timer
+>>>>    > is enabled, which means the next event may be delayed because =
+timer
+>>>>    > interrupt won't be generated until <0xFFFFFFFF - current_count=
+ +
+>>>>    > cycles>.
+>>>>
+>>>> When running under Qemu, the system appeared "laggy". The guest is =
+now
+>>>> scheduling timer events too regularly, starving the host of CPU tim=
+e.
+>>>>
+>>>> This patch modifies the timer model to attempt to schedule the timer
+>>>> expiry as the guest requests, but if we have missed the deadline we
+>>>> re interrupt and try again, which allows the guest to catch up.
+>>>>
+>>>> Provides expected behaviour with old and new guest code.
+>>>>
+>>>> Fixes: c04bd47db6b9 ("hw/timer: Add ASPEED timer device model")
+>>>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>>>> [clg: - merged a fix from Andrew Jeffery <andrew@aj.id.au>
+>>>>           "Fire interrupt on failure to meet deadline"
+>>>>           https://lists.ozlabs.org/pipermail/openbmc/2019-January/0=
+14641.html
+>>>>         - adapted commit log
+>>>>         - checkpatch fixes ]
+>>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>>>> ---
+>>>>    hw/timer/aspeed_timer.c | 59 ++++++++++++++++++++++-------------=
+------
+>>>>    1 file changed, 31 insertions(+), 28 deletions(-)
+>>>>
+>>>> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+>>>> index 5c786e512815..9ffd8e09f670 100644
+>>>> --- a/hw/timer/aspeed_timer.c
+>>>> +++ b/hw/timer/aspeed_timer.c
+>>>> @@ -109,37 +109,40 @@ static inline uint64_t calculate_time(struct =
+AspeedTimer *t, uint32_t ticks)
+>>>>   =20
+>>>>    static uint64_t calculate_next(struct AspeedTimer *t)
+>>>>    {
+>>>> -    uint64_t next =3D 0;
+>>>> -    uint32_t rate =3D calculate_rate(t);
+>>>> +    uint64_t now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>>>> +    uint64_t next;
+>>>>   =20
+>>>> -    while (!next) {
+>>>> -        /* We don't know the relationship between the values in th=
+e match
+>>>> -         * registers, so sort using MAX/MIN/zero. We sort in that =
+order as the
+>>>> -         * timer counts down to zero. */
+>>>> -        uint64_t seq[] =3D {
+>>>> -            calculate_time(t, MAX(t->match[0], t->match[1])),
+>>>> -            calculate_time(t, MIN(t->match[0], t->match[1])),
+>>>> -            calculate_time(t, 0),
+>>>> -        };
+>>>> -        uint64_t reload_ns;
+>>>> -        uint64_t now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>>>> -
+>>>> -        if (now < seq[0]) {
+>>>> -            next =3D seq[0];
+>>>> -        } else if (now < seq[1]) {
+>>>> -            next =3D seq[1];
+>>>> -        } else if (now < seq[2]) {
+>>>> -            next =3D seq[2];
+>>>> -        } else if (t->reload) {
+>>>> -            reload_ns =3D muldiv64(t->reload, NANOSECONDS_PER_SECO=
+ND, rate);
+>>>> -            t->start =3D now - ((now - t->start) % reload_ns);
+>>>> -        } else {
+>>>> -            /* no reload value, return 0 */
+>>>> -            break;
+>>>> -        }
+>>>> +    /*
+>>>> +     * We don't know the relationship between the values in the ma=
+tch
+>>>> +     * registers, so sort using MAX/MIN/zero. We sort in that orde=
+r as
+>>>> +     * the timer counts down to zero.
+>>>> +     */
+>>>> +
+>>>> +    next =3D calculate_time(t, MAX(t->match[0], t->match[1]));
+>>>> +    if (now < next) {
+>>>> +        return next;
+>>>> +    }
+>>>> +
+>>>> +    next =3D calculate_time(t, MIN(t->match[0], t->match[1]));
+>>>> +    if (now < next) {
+>>>> +        return next;
+>>>> +    }
+>>>> +
+>>>> +    next =3D calculate_time(t, 0);
+>>>> +    if (now < next) {
+>>>> +        return next;
+>>>> +    }
+>>>> +
+>>>> +    /* We've missed all deadlines, fire interrupt and try again */
+>>>> +    timer_del(&t->timer);
+>>>> +
+>>>> +    if (timer_overflow_interrupt(t)) {
+>>>> +        t->level =3D !t->level;
+>>>> +        qemu_set_irq(t->irq, t->level);
+>>>>        }
+>>>>   =20
+>>>> -    return next;
+>>>> +    t->start =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>>>> +    return calculate_time(t, MAX(MAX(t->match[0], t->match[1]), 0)=
+);
+>>>
+>>> This MAX(MAX(x, y), 0) looks strange to me. Would you remember where=
+ it comes
+>>> from ? Thanks,
+>>=20
+>> The inner MAX() deals with the lack of ordering constraints between t=
+he match values. I think the outer MAX() is redundant. We should probabl=
+y remove it. The match member is type uint32_t so it can't be negative. =
+You did steal that from an RFC patch :D
+>
+> I did ! Fixed there :
+>
+>   =20
+> https://patchwork.ozlabs.org/project/qemu-devel/patch/20230922155924.1=
+172019-5-clg@kaod.org/
+>
+
+Thanks. That one might be further down in my review queue =F0=9F=98=85
+
+Andrew

@@ -1,228 +1,219 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp928702ejc;
-        Tue, 26 Sep 2023 01:07:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFRLQpwj0vXdyaCdxnh5J4ak4SXVzAbEOSFk7jzKxzzJtwtBCiBFeTWW6rYqzXxLc7lf8by
-X-Received: by 2002:a05:622a:18a7:b0:418:c8e9:45e5 with SMTP id v39-20020a05622a18a700b00418c8e945e5mr2830753qtc.24.1695715628640;
-        Tue, 26 Sep 2023 01:07:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695715628; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp979787ejc;
+        Tue, 26 Sep 2023 03:05:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFypENVaEXox2MeUGLrkZksHBiutsRr92SEa+0BBM47xtajMfMUtc98VxDOGMH4pFqmrZeb
+X-Received: by 2002:adf:d08f:0:b0:317:dada:2417 with SMTP id y15-20020adfd08f000000b00317dada2417mr7935956wrh.31.1695722748260;
+        Tue, 26 Sep 2023 03:05:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695722748; cv=none;
         d=google.com; s=arc-20160816;
-        b=QbX/0kjB0IwMUvqyiK/078alpeLdTwge6C6RcbrA16FAiU1ZShRjrQfWeN5bbasEJW
-         s6mU1tCnuQ3Gp7gAgyA1TnrFga15UHM4x3xh9jTQ2/OJgc1lDhCd7SS/+QywCVEmsSex
-         NCjoE33qlhvk+vSlXqWRqPvpUj5vUfoGHH8+8x1DrI3u6dKTvWiZRtKKZh+YDfvWtvq0
-         5mlBrdEOu9+978HBH2tZTld3Qy2Mws2GM0hgWidWJLnOPUF6uzdmUfu4fzHNEmlV5M76
-         iSnLUiIerZncTEsn+vJ+Aiplt91pwTtnJtNzYPiWUdgnw0x2UI9Gajk87Ati6tCb3pB6
-         dloA==
+        b=to8wRLT87EwV63z6ypLzKGyi7CoOaQF5Z8FQ/myDIUOzHY3dd6P2Jfk1rovc8tg48e
+         0lSa45hTRAuTN+rGvMSKc0xnMl90EDML+ZS+FydYtwb9UaBd8fSftBSQKSG4ssUjZCbv
+         /27q6kancS6UBubVTVss9PEcWft7JH1nDWZbhhwtKp1BvlO/qjYuWZevtSgas4wt00R2
+         YmA4tej3GU7KFzOQ3ljgjcT2EANg4gCVHz6Ua8x5b5REDhlUOEqGwWsmXTLRi4eEL9TK
+         6StkLEkoKQtHDvmWNL5IcwRiYx+IukP6sXK3yFQCMNypc93R5jizI/68JIeqbC85+IpF
+         VaTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=A2xHSU2o24iICT9Grnk7x10hg7dKkfIEckDiSwKpDHk=;
-        fh=AM8LiL42gsC6mUwMk5KkKr4DrJV9sMCAuaobcDzxxlw=;
-        b=ygwz+G2rsKfD+LZ9aUdEAgJRmDLRwqaRCicHOYWvWIgugIKwPzvt96g6r872tA1yqa
-         G1Bktv+aQfMYFL+XUDeQzeVV9Y02MfOkezRprbcWvjYux/h0F0MP9wyjZTaSo8t2jwin
-         rDbF5ojD2Xyskx7HuB6jIRUpvi3UiDZIodu3ig5LNhyOxN/53zESRQndUpBch3JJTFZG
-         biJwl8oK/ybIVAu6w7/aKpi8FCKoqMu3E02lGKqIs8X8Wl3fekVL8j9cFB0nh2GeZrI2
-         MKNvftZ8ccotqyOfk7x/TQTqu8FZHl5jn5MDyn3r4WOIEop6hUyVA6CJJvOGudzIDvEd
-         iiaQ==
+        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=6WKhIgSWoerB+rWo+bU1YYlKl5nvgPSi10cZ7hHPlmc=;
+        fh=S0+uYiUekNlY+vd8jPZbTHxsQBwDC5l2YHnO2B7ftdQ=;
+        b=uBzhYPMKeLxYKrZSt91zGVhmw7iqx8yYDUmrQrpRHpshT2hiA1qCCyVlLf4TxWAc0B
+         rHEe5dFy/NAOHM3Jcwx1fnPl2a6CDPrGiIU7jOl7PE4enVT0D17Mr8+zPuFdKJM4Qs4j
+         k+abE5joE1i5bCqGrnCaTLYbgDc4ZYaSPDAG9YRpI5UuuIF9cZ1w2dykSBZ7HGF5YrWN
+         w4amivO2FNgQhQAv/vFBd75Fg1UMbPUnFL5K4/c5lnGqxEPYQdoyM0fawwvWtKyGHwY/
+         Ds1+6CdPyUp3Nl+3/6+VHIkhWTkOZAV3f5I9NwqfV+arUJAywyHD02ECF/0fGpebHM6w
+         SCyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EVv31g0C;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g9-20020ac85d49000000b00417b6229cd7si6761786qtx.315.2023.09.26.01.07.08
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Sep 2023 01:07:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id j11-20020a5d448b000000b00321684bce79si5795034wrq.846.2023.09.26.03.05.48
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 26 Sep 2023 03:05:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EVv31g0C;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ql35q-0002HB-V3; Tue, 26 Sep 2023 04:06:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yanghliu@redhat.com>)
- id 1ql35n-0002EM-Ok
- for qemu-devel@nongnu.org; Tue, 26 Sep 2023 04:06:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yanghliu@redhat.com>)
- id 1ql35W-0008LO-Sd
- for qemu-devel@nongnu.org; Tue, 26 Sep 2023 04:06:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695715589;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=A2xHSU2o24iICT9Grnk7x10hg7dKkfIEckDiSwKpDHk=;
- b=EVv31g0Cy22yrGdWvIEYC4KGDvdMM/Gr/V/KcogZEt2ISoXCKLrT6hSuINVo1wAzokj12m
- Wdw2VVgttzBfimSBuH4TmrBBGXMKf82fmzNmaBjCpwO+XYEFv9iUh2ETXBNuvsMejRJvZX
- 1fNcF8ogwjlIbHbCfptjd1DSX/Bt0ls=
-Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
- [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-689-QRoF_iAbPN6wNeWrTrE1vg-1; Tue, 26 Sep 2023 04:06:28 -0400
-X-MC-Unique: QRoF_iAbPN6wNeWrTrE1vg-1
-Received: by mail-lf1-f70.google.com with SMTP id
- 2adb3069b0e04-50433ca6d81so10410031e87.3
- for <qemu-devel@nongnu.org>; Tue, 26 Sep 2023 01:06:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695715586; x=1696320386;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=A2xHSU2o24iICT9Grnk7x10hg7dKkfIEckDiSwKpDHk=;
- b=wxibewiSksLEbZb60lT56SzJPZ+oJMQdRbi2Byr0s1nOCv3shB7ph7e9u6mS28UjDN
- noBoyiyDPCsEmujZ6ZF3KFUwsT4OrF22hM1t+2I+YZnhzXWWzfBh+3Avkf2EEzHcY6DK
- Ka99Gik0JgbJDgWIW/NiBfxVeZcKOWVjPFBtyPLGLrl0nr1RX8r9SXDBeWkdHxqkx6Ga
- eZX74XGz73oacKortUYlxtQaJyjctEqtfajTyxc1hvcjo1zTMsDaQkYl8Kxc2cCejrX3
- KTzqSv82dtNj8uaKlvlODUA+M5xQLYUC3ki/aiVxiVytOm3tn0BBnF9clrA/PHjGDob3
- EVww==
-X-Gm-Message-State: AOJu0YwLXmruU0yyFRAchskFEn7wQxT8LAQMuwOiDgt1qE79VXt9qsOz
- Q2kQtteW5d4CPK5AHjjWMf7lEUwic4UlqFrHL/OaDCrbUQnlZna9rkTxktMM5uLeKv1nlnIOFnL
- bYKUL36lGAvHpnd7VViTjIqnjK9bXcTA=
-X-Received: by 2002:a19:2d07:0:b0:502:d6b2:922e with SMTP id
- k7-20020a192d07000000b00502d6b2922emr6310306lfj.46.1695715586484; 
- Tue, 26 Sep 2023 01:06:26 -0700 (PDT)
-X-Received: by 2002:a19:2d07:0:b0:502:d6b2:922e with SMTP id
- k7-20020a192d07000000b00502d6b2922emr6310273lfj.46.1695715586060; Tue, 26 Sep
- 2023 01:06:26 -0700 (PDT)
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RvwMP2RSBz6K8pq;
+	Tue, 26 Sep 2023 18:04:33 +0800 (CST)
+Received: from A190218597.china.huawei.com (10.126.174.16) by
+ lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Tue, 26 Sep 2023 11:05:29 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
+	<ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
+	<mst@redhat.com>, <gshan@redhat.com>, <rafael@kernel.org>,
+	<borntraeger@linux.ibm.com>, <alex.bennee@linaro.org>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>
+Subject: [PATCH RFC V2 01/37] arm/virt,target/arm: Add new ARMCPU {socket,cluster,core,thread}-id property
+Date: Tue, 26 Sep 2023 11:04:00 +0100
+Message-ID: <20230926100436.28284-2-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.8.3
+In-Reply-To: <20230926100436.28284-1-salil.mehta@huawei.com>
+References: <20230926100436.28284-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-References: <20230913080423.523953-1-eric.auger@redhat.com>
-In-Reply-To: <20230913080423.523953-1-eric.auger@redhat.com>
-From: YangHang Liu <yanghliu@redhat.com>
-Date: Tue, 26 Sep 2023 16:06:14 +0800
-Message-ID: <CAGYh1E8QN22gpS5GAWRAOZHNgacrwiKty-LgwpByi-QRVqpoag@mail.gmail.com>
-Subject: Re: [PATCH v2 00/12] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- alex.williamson@redhat.com, clg@redhat.com, jean-philippe@linaro.org, 
- mst@redhat.com, pbonzini@redhat.com, peter.maydell@linaro.org, 
- peterx@redhat.com, david@redhat.com, philmd@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=yanghliu@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /kA8QfhPmHG4
+Content-Type: text/plain
+X-Originating-IP: [10.126.174.16]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ lhrpeml500001.china.huawei.com (7.191.163.213)
+X-CFilter-Loop: Reflected
+X-TUID: pPReL65HenT3
 
-The original issue I found : After starting a VM which has two ice PFs
-and a virtio-iommu device, qemu-kvm and VM guest dmesg throw lots of
-duplicate VFIO_MAP_DMA errors
+This shall be used to store user specified topology{socket,cluster,core,thread}
+and shall be converted to a unique 'vcpu-id' which is used as slot-index during
+hot(un)plug of vCPU.
 
-After testing with Eric's build, the  original issue is gone and the
-Tier1 regression test against ice PF and virtio iommu device gets PASS
-as well.
+Co-developed-by: Salil Mehta <salil.mehta@huawei.com>
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+---
+ hw/arm/virt.c    | 63 ++++++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.c |  4 +++
+ target/arm/cpu.h |  4 +++
+ 3 files changed, 71 insertions(+)
 
-Tested-by: Yanghang Liu <yanghliu@redhat.com>
-
-
-
-On Wed, Sep 13, 2023 at 4:06=E2=80=AFPM Eric Auger <eric.auger@redhat.com> =
-wrote:
->
-> On x86, when assigning VFIO-PCI devices protected with virtio-iommu
-> we encounter the case where the guest tries to map IOVAs beyond 48b
-> whereas the physical VTD IOMMU only supports 48b. This ends up with
-> VFIO_MAP_DMA failures at qemu level because at kernel level,
-> vfio_iommu_iova_dma_valid() check returns false on vfio_map_do_map().
->
-> This is due to the fact the virtio-iommu currently unconditionally
-> exposes an IOVA range of 64b through its config input range fields.
->
-> This series removes this assumption by retrieving the usable IOVA
-> regions through the VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE UAPI when
-> a VFIO device is attached. This info is communicated to the
-> virtio-iommu memory region, transformed into the inversed info, ie.
-> the host reserved IOVA regions. Then those latter are combined with the
-> reserved IOVA regions set though the virtio-iommu reserved-regions
-> property. That way, the guest virtio-iommu driver, unchanged, is
-> able to probe the whole set of reserved regions and prevent any IOVA
-> belonging to those ranges from beeing used, achieving the original goal.
->
-> Best Regards
->
-> Eric
->
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/virtio-iommu_geometry_v2
->
-> History:
-> v1 -> v2:
-> - Remove "[PATCH 12/13] virtio-iommu: Resize memory region according
->   to the max iova info" which causes way too much trouble: trigger
->   a coredump in vhost, causes duplication of IOMMU notifiers causing
->   EEXIST vfio_dma_map errors, ... This looks like a bad usage of the
->   memory API so I prefer removing this from this series. So I was
->   also obliged to remove the vfio_find_hostwin() check in the case
->   of an IOMMU MR.
-> - Let range_inverse_array() take low/high args instead of hardcoding
->   0, UINT64_MAX which both complexifies the algo and the tests.
-> - Move range function description in header.
-> - Check that if set_iova_ranges is called several times, new resv
->   regions are included in previous ones
->
-> Eric Auger (12):
->   memory: Let ReservedRegion use Range
->   memory: Introduce memory_region_iommu_set_iova_ranges
->   vfio: Collect container iova range info
->   virtio-iommu: Rename reserved_regions into prop_resv_regions
->   virtio-iommu: Introduce per IOMMUDevice reserved regions
->   range: Introduce range_inverse_array()
->   virtio-iommu: Implement set_iova_ranges() callback
->   range: Make range_compare() public
->   util/reserved-region: Add new ReservedRegion helpers
->   virtio-iommu: Consolidate host reserved regions and property set ones
->   test: Add some tests for range and resv-mem helpers
->   vfio: Remove 64-bit IOVA address space assumption
->
->  include/exec/memory.h            |  30 +++-
->  include/hw/vfio/vfio-common.h    |   2 +
->  include/hw/virtio/virtio-iommu.h |   7 +-
->  include/qemu/range.h             |  14 ++
->  include/qemu/reserved-region.h   |  32 ++++
->  hw/core/qdev-properties-system.c |   9 +-
->  hw/vfio/common.c                 |  70 +++++++--
->  hw/virtio/virtio-iommu-pci.c     |   8 +-
->  hw/virtio/virtio-iommu.c         | 110 ++++++++++++--
->  softmmu/memory.c                 |  15 ++
->  tests/unit/test-resv-mem.c       | 251 +++++++++++++++++++++++++++++++
->  util/range.c                     |  51 ++++++-
->  util/reserved-region.c           |  94 ++++++++++++
->  hw/virtio/trace-events           |   1 +
->  tests/unit/meson.build           |   1 +
->  util/meson.build                 |   1 +
->  16 files changed, 655 insertions(+), 41 deletions(-)
->  create mode 100644 include/qemu/reserved-region.h
->  create mode 100644 tests/unit/test-resv-mem.c
->  create mode 100644 util/reserved-region.c
->
-> --
-> 2.41.0
->
->
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7d9dbc2663..57fe97c242 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -221,6 +221,11 @@ static const char *valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("max"),
+ };
+ 
++static int virt_get_socket_id(const MachineState *ms, int cpu_index);
++static int virt_get_cluster_id(const MachineState *ms, int cpu_index);
++static int virt_get_core_id(const MachineState *ms, int cpu_index);
++static int virt_get_thread_id(const MachineState *ms, int cpu_index);
++
+ static bool cpu_type_valid(const char *cpu)
+ {
+     int i;
+@@ -2168,6 +2173,14 @@ static void machvirt_init(MachineState *machine)
+                           &error_fatal);
+ 
+         aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
++        object_property_set_int(cpuobj, "socket-id",
++                                virt_get_socket_id(machine, n), NULL);
++        object_property_set_int(cpuobj, "cluster-id",
++                                virt_get_cluster_id(machine, n), NULL);
++        object_property_set_int(cpuobj, "core-id",
++                                virt_get_core_id(machine, n), NULL);
++        object_property_set_int(cpuobj, "thread-id",
++                                virt_get_thread_id(machine, n), NULL);
+ 
+         if (!vms->secure) {
+             object_property_set_bool(cpuobj, "has_el3", false, NULL);
+@@ -2652,10 +2665,59 @@ static int64_t virt_get_default_cpu_node_id(const MachineState *ms, int idx)
+     return socket_id % ms->numa_state->num_nodes;
+ }
+ 
++static int virt_get_socket_id(const MachineState *ms, int cpu_index)
++{
++    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
++
++    return ms->possible_cpus->cpus[cpu_index].props.socket_id;
++}
++
++static int virt_get_cluster_id(const MachineState *ms, int cpu_index)
++{
++    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
++
++    return ms->possible_cpus->cpus[cpu_index].props.cluster_id;
++}
++
++static int virt_get_core_id(const MachineState *ms, int cpu_index)
++{
++    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
++
++    return ms->possible_cpus->cpus[cpu_index].props.core_id;
++}
++
++static int virt_get_thread_id(const MachineState *ms, int cpu_index)
++{
++    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
++
++    return ms->possible_cpus->cpus[cpu_index].props.thread_id;
++}
++
++static int
++virt_get_cpu_id_from_cpu_topo(const MachineState *ms, DeviceState *dev)
++{
++    int cpu_id, sock_vcpu_num, clus_vcpu_num, core_vcpu_num;
++    ARMCPU *cpu = ARM_CPU(dev);
++
++    /* calculate total logical cpus across socket/cluster/core */
++    sock_vcpu_num = cpu->socket_id * (ms->smp.threads * ms->smp.cores *
++                    ms->smp.clusters);
++    clus_vcpu_num = cpu->cluster_id * (ms->smp.threads * ms->smp.cores);
++    core_vcpu_num = cpu->core_id * ms->smp.threads;
++
++    /* get vcpu-id(logical cpu index) for this vcpu from this topology */
++    cpu_id = (sock_vcpu_num + clus_vcpu_num + core_vcpu_num) + cpu->thread_id;
++
++    assert(cpu_id >= 0 && cpu_id < ms->possible_cpus->len);
++
++    return cpu_id;
++}
++
+ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+ {
+     int n;
+     unsigned int max_cpus = ms->smp.max_cpus;
++    unsigned int smp_threads = ms->smp.threads;
+     VirtMachineState *vms = VIRT_MACHINE(ms);
+     MachineClass *mc = MACHINE_GET_CLASS(vms);
+ 
+@@ -2669,6 +2731,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+     ms->possible_cpus->len = max_cpus;
+     for (n = 0; n < ms->possible_cpus->len; n++) {
+         ms->possible_cpus->cpus[n].type = ms->cpu_type;
++        ms->possible_cpus->cpus[n].vcpus_count = smp_threads;
+         ms->possible_cpus->cpus[n].arch_id =
+             virt_cpu_mp_affinity(vms, n);
+ 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 93c28d50e5..1376350416 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2277,6 +2277,10 @@ static Property arm_cpu_properties[] = {
+     DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+                         mp_affinity, ARM64_AFFINITY_INVALID),
+     DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
++    DEFINE_PROP_INT32("socket-id", ARMCPU, socket_id, 0),
++    DEFINE_PROP_INT32("cluster-id", ARMCPU, cluster_id, 0),
++    DEFINE_PROP_INT32("core-id", ARMCPU, core_id, 0),
++    DEFINE_PROP_INT32("thread-id", ARMCPU, thread_id, 0),
+     DEFINE_PROP_INT32("core-count", ARMCPU, core_count, -1),
+     DEFINE_PROP_END_OF_LIST()
+ };
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 88e5accda6..d51d39f621 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1094,6 +1094,10 @@ struct ArchCPU {
+     QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
+ 
+     int32_t node_id; /* NUMA node this CPU belongs to */
++    int32_t socket_id;
++    int32_t cluster_id;
++    int32_t core_id;
++    int32_t thread_id;
+ 
+     /* Used to synchronize KVM and QEMU in-kernel device levels */
+     uint8_t device_irq_level;
+-- 
+2.34.1

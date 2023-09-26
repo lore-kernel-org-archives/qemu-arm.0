@@ -1,134 +1,111 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1189489ejc;
-        Tue, 26 Sep 2023 08:39:32 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGeAddWNohNasF4OGzZ8R2khVt3O06HZWtvKXSQS1PBZK2VxL7QdkW/zll3BXccd7Tm2VTq
-X-Received: by 2002:ac8:5fce:0:b0:417:8f5b:f896 with SMTP id k14-20020ac85fce000000b004178f5bf896mr11491252qta.55.1695742772600;
-        Tue, 26 Sep 2023 08:39:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695742772; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1199609ejc;
+        Tue, 26 Sep 2023 08:56:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFWnSYg/hFvm1dyB4Fvn+KtLpEN3GVZd5gmhx6HBDtNq7VXcg1LbX3tmXd9tIYIPfbCzKV/
+X-Received: by 2002:a05:620a:4411:b0:773:cbe0:ed30 with SMTP id v17-20020a05620a441100b00773cbe0ed30mr10452694qkp.3.1695743794661;
+        Tue, 26 Sep 2023 08:56:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695743794; cv=none;
         d=google.com; s=arc-20160816;
-        b=Va7ZT7RPAlnD/Sq+fr+kvO5bV3kYiuocyEXfuLlN+TTA18tARxPdN5ZUx4OGzZUrAO
-         Qd33djm2tcU7EPJCVISUpx4WWnOQenzxlvioBWwJA0R7/fS/S9/cuyk7AV4wsDjE5tIp
-         Z1Cg+DUto7ODBMmZ29pFZm/VLOZOp3XTkVvOE9Ksuu3EY9ItQiCgonpJxQ/b3oKcPXlj
-         2d67pd37SKuDojQqhhhryWhUImhLKIm8Du3KKW2foI+pEpGBCwDb68zkJE3e7fktIQhc
-         doP1rKltNROakHYFDsdzczzubtuAr1l+4gPlk8lGMULwI3vMUm8jgxPM0HFtL5wYEc+K
-         lIkw==
+        b=YNAG1+7O/7YJ36zP3jQipVn1sH2F+z6DPoOCPTvZ5D/QYmx2jNzNwFJ+Jos7KtUuBb
+         n6g2lpKMbYteel7nTQZEuofMzNVeZ27bFv/9FhSiPlRaGOmBT8r5BWTQq4+IAyRh+osn
+         yqd259VyKRD1sJUGuolajDDDibevsd/H8e2wkyYmkm9bDN5lYeXYwdbLVKXGA8ogvH9k
+         0a2ullRxoVblDfdF1uoTwwJlwGwjHjwRM+ZLkSVmC3TFHJJ54U7aH/UohE3Lh/mxxvqe
+         Men3lUNQSKFeO/ern6J/6eul90oN/PAi/GYAuQajNQvsGuf5cNxcgBUA0fm1JScnka04
+         keng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=ajuvXVOphlmV/SSckwSiXuo4QwYthV5liTFlBAbmoiY=;
-        fh=0EG6RQyxC2EtFbpWOKakEtxYjFPaJnFsRkAqgEoOp2M=;
-        b=HrdFeHqM8byf647wlml1lGwLAXv5r4YT8QEZTmd9H2KlLbaAD0vfu289UGj4G4jerL
-         v0qXgFrtm7a0G7SGoIHB3XCROYxT4QyacX2wFAZOWjIkJTb8U2AxGr+XPIpMBTHpPez7
-         Pank7ody3zPhzy1EymznSi2pWGeEbVXLeZ1mSzZsMbVTy56Oer63Tf1HdapHuEwJNKQA
-         aCeJGU/9AC6erFO4+Hrd0XHBlj1HomeyMit+GilSjOjKIzLHlPKy19UELIKj1wpoI8xk
-         aAxJKDGv4rlhu+LjIsyI+BTHE0Pl/uYk57aI/xqws72RNsuQrWeslqfDUR9xhdq/Yqya
-         7quQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=xCA2YOKYdmn/tsV09hQIawqHtpLl2aShgaJyEwU9YRw=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=cz6qhboEWcJwe6ygeFo0zG7TXIKeo+u6eDcyXajUneJhFN570A2kqaIocc03u/HM2U
+         gB0/1cABEkkgRGLjRlnBJPM/cR0c/CJrRBwgY/Rs7yE9kGoCWBf1u43Ko4DPmn0xBBmA
+         2ECMERafP27mBK7yUNl7oeFi80Cei8iNbNyCl2SbCyz8dXMFOVFA50HOdv96PaiWKNmQ
+         FjCLN+qEKLk5IuPhMO77Y2zakDz/pCr3GQ9LCdTHwzD7tmsMooCKBRgd3132leviMvSJ
+         It/iPGtCvMcgrX3dEHDEUjqTX5Q/DGZzrdoRbhY82RAl0f2uxe0UdTBhdMSAcgRa83zq
+         RzTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MQimsNcM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a89SYQE7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g19-20020ac85813000000b0041819819519si2633298qtg.694.2023.09.26.08.39.32
+        by mx.google.com with ESMTPS id ra3-20020a05620a8c8300b0076db6a9ddd3si4300455qkn.454.2023.09.26.08.56.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Sep 2023 08:39:32 -0700 (PDT)
+        Tue, 26 Sep 2023 08:56:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MQimsNcM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a89SYQE7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qlA9i-0003Vy-Ob; Tue, 26 Sep 2023 11:39:22 -0400
+	id 1qlAQI-0006HW-82; Tue, 26 Sep 2023 11:56:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qlA9h-0003VX-Ke
- for qemu-arm@nongnu.org; Tue, 26 Sep 2023 11:39:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qlA9g-0002wn-5q
- for qemu-arm@nongnu.org; Tue, 26 Sep 2023 11:39:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695742759;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ajuvXVOphlmV/SSckwSiXuo4QwYthV5liTFlBAbmoiY=;
- b=MQimsNcMvY6SK6DtCSFXWgl5AkOI3Oz/lRs9i1TUks8uES1b4m4P1kTbkfY0yiVfvm0mRl
- 6+NJodSYnLELbPzcTDnjZiJVR9x9Opnt5z4oSflwstgnUSRafsBwCgTnhf+/SiqQYFYBVd
- N01gWFc4xd6D4V9kBaJAYA0SzbGqFs8=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-141-qGdGUhXwPB2SZ5fkJSpDoQ-1; Tue, 26 Sep 2023 11:39:16 -0400
-X-MC-Unique: qGdGUhXwPB2SZ5fkJSpDoQ-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-405535740d2so62694455e9.3
- for <qemu-arm@nongnu.org>; Tue, 26 Sep 2023 08:39:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qlAQF-0006Gw-OP
+ for qemu-arm@nongnu.org; Tue, 26 Sep 2023 11:56:27 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qlAQC-0007CH-P0
+ for qemu-arm@nongnu.org; Tue, 26 Sep 2023 11:56:27 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-405e48d8cfdso29246955e9.2
+ for <qemu-arm@nongnu.org>; Tue, 26 Sep 2023 08:56:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1695743782; x=1696348582; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=xCA2YOKYdmn/tsV09hQIawqHtpLl2aShgaJyEwU9YRw=;
+ b=a89SYQE7KPEiOoGi4QdBF3Vxjrj/VrwEby8i0GdEm1uhnBcdx8a391gvhYzHPj6+uD
+ WUog7Mounx8BuzvMP1XdsMK9A0PUOBiLncSagiq4Zoj7rlLZl80fmUpfpEYaH3EsSEyl
+ BVuaJxkvUxBVwzUSA3XLIfyfOaoYQ3+bAK4L2W66sq4FZEfr3GTzcLhEh7npZDmknKL3
+ 1za3G9xPq6DdT/anHVOjcgySCBacduG+0Jw2Ens1pa6vnvxZsVJ0CYJ4A5uILDQILtow
+ yx/zV1LM5DjdHEH1bur72aP/ERoDsAJNLpHWLXr3JZo+UBaTxr/63pxWiX5sTBJieEn2
+ Z6+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695742755; x=1696347555;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ajuvXVOphlmV/SSckwSiXuo4QwYthV5liTFlBAbmoiY=;
- b=SJDuZ7FSziCDQ8trlWuFDF73TlsfJE5A6HYHPrDsE87stukfXhVxDD1H8u9iRzsUJq
- mraqwGQvH6fuKt/KHgplvfLRgxfZgs7H5UNKDfEvb1MiAy3FAVF6RGqXlH8C/vaHV4We
- htzeXdn6yp+KfRcUXTbwYx64T6BLNjCM7xE0WaXgDV+xI9cjnDDrhTVIwycRUZcH8gOC
- kC09KEBvwUBcpL6MU6H0fX8LERXSv5wzaVg/kGkmL9ZmW97JL7sWvaVmmmWxnoARE7w6
- yIbxugbvTUBFeDYk2/aGnChVewiNnC+m3SMwZc9sJBz+farCgiP5leecAEH5bjgkmgvR
- g69A==
-X-Gm-Message-State: AOJu0YxijkVZMt0x9Mz4cIMD55PM36NJCAPN9Z/XnDRuWSk9X05l/IpC
- vgUwU22qJRzbdC4gItskmi6pm/ertjsNdBlSBTdNSin7obaOpZjyjM/2YMaOgXaZA63g/kwmUi4
- /lEnSC+Xuf4RB
-X-Received: by 2002:a05:600c:280b:b0:3fb:e2af:49f6 with SMTP id
- m11-20020a05600c280b00b003fbe2af49f6mr8584158wmb.39.1695742755117; 
- Tue, 26 Sep 2023 08:39:15 -0700 (PDT)
-X-Received: by 2002:a05:600c:280b:b0:3fb:e2af:49f6 with SMTP id
- m11-20020a05600c280b00b003fbe2af49f6mr8584145wmb.39.1695742754811; 
- Tue, 26 Sep 2023 08:39:14 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ d=1e100.net; s=20230601; t=1695743782; x=1696348582;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xCA2YOKYdmn/tsV09hQIawqHtpLl2aShgaJyEwU9YRw=;
+ b=BdGk/YlJdoSqnMGgVo5mOaFks1ItPaK344d99SYtC5alQ4GagmYBR5pgEWl3sCdVfi
+ OIJ73IIQppF97f9MvrmGSHZuGVrmzF9/SI0Tdkt1ceUu7BU6Nd8daFp26NwaotKPa9Gs
+ j5mSpZSuX3R9eaGr1CsP2iZnldShKOIbdMrHS/EE201Zmd8CxBSVgMtwwysiw99NgUzB
+ RBM0M+87NipYWGmB2hTlBqiQJ8j8L1Ey8Bs+7wgBeo1UbbFWlw4nBO4f5Kaz8ptMalMO
+ Z8zHbiftBoDGcBZ0y9QmgSXOlWMgDL81pUT7NgXuzYM1IgEKmJ3jF0b8CIPepYFfiS9f
+ 65/w==
+X-Gm-Message-State: AOJu0YyO6R17gQTMUSJ1avZvhIL7GsWUyvMqJg5Jnc+TBU5EYN52ORfh
+ eFGxRVgiE/So/8ki0mOYbG6wxtChguUkSSYTWiI=
+X-Received: by 2002:a7b:cd0a:0:b0:402:ea83:45cf with SMTP id
+ f10-20020a7bcd0a000000b00402ea8345cfmr9906710wmj.2.1695743781720; 
+ Tue, 26 Sep 2023 08:56:21 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- k22-20020a05600c0b5600b003fe601a7d46sm18368605wmr.45.2023.09.26.08.39.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Sep 2023 08:39:13 -0700 (PDT)
-Message-ID: <f254b6e5-f02a-5781-570a-2c9688667b36@redhat.com>
-Date: Tue, 26 Sep 2023 17:39:12 +0200
+ u8-20020a7bc048000000b003fe2b081661sm18295621wmc.30.2023.09.26.08.56.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Sep 2023 08:56:21 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm/arm-powerctl: Correctly init CPUs when powered on
+ to lower EL
+Date: Tue, 26 Sep 2023 16:56:19 +0100
+Message-Id: <20230926155619.4028618-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 3/3] hw/arm/smmuv3: Advertise SMMUv3.1-XNX feature
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Mostafa Saleh <smostafa@google.com>
-References: <20230914145705.1648377-1-peter.maydell@linaro.org>
- <20230914145705.1648377-4-peter.maydell@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20230914145705.1648377-4-peter.maydell@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,63 +118,399 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qS2cfgQXrGai
+X-TUID: MV84ZCfZwNT0
 
-Hi Peter,
+The code for powering on a CPU in arm-powerctl.c has two separate
+use cases:
+ * emulation of a real hardware power controller
+ * emulation of firmware interfaces (primarily PSCI) with
+   CPU on/off APIs
 
-On 9/14/23 16:57, Peter Maydell wrote:
-> The SMMUv3.1-XNX feature is mandatory for an SMMUv3.1 if S2P is
-> supported, so we should theoretically have implemented it as part of
-> the recent S2P work.  Fortunately, for us the implementation is a
-> no-op.
->
-> This feature is about interpretation of the stage 2 page table
-> descriptor XN bits, which control execute permissions.
->
-> For QEMU, the permission bits passed to an IOMMU (via MemTxAttrs and
-> IOMMUAccessFlags) only indicate read and write; we do not distinguish
-> data reads from instruction reads outside the CPU proper.  In the
-> SMMU architecture's terms, our interconnect between the client device
-> and the SMMU doesn't have the ability to convey the INST attribute,
-> and we therefore use the default value of "data" for this attribute.
->
-> We also do not support the bits in the Stream Table Entry that can
-> override the on-the-bus transaction attribute permissions (we do not
-> set SMMU_IDR1.ATTR_PERMS_OVR=1).
-you may precise it is called INSTCFG
->
-> These two things together mean that for our implementation, it never
-> has to deal with transactions with the INST attribute, and so it can
-> correctly ignore the XN bits entirely.  So we already implement
-> FEAT_XNX's "XN field is now 2 bits, not 1" behaviour to the extent
-> that we need to.
->
-> Advertise the presence of the feature in SMMU_IDR3.XNX.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/smmuv3.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 94d388fc950..d9e639f7c41 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -279,6 +279,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
->      s->idr[1] = FIELD_DP32(s->idr[1], IDR1, CMDQS,   SMMU_CMDQS);
->  
->      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, HAD, 1);
-> +    s->idr[3] = FIELD_DP32(s->idr[3], IDR3, XNX, 1);
->      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
->      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, BBML, 2);
->  
-With Mostafa's suggestion
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+For the first case, we only need to reset the CPU and set its
+starting PC and X0.  For the second case, because we're emulating the
+firmware we need to ensure that it's in the state that the firmware
+provides.  In particular, when we reset to a lower EL than the
+highest one we are emulating, we need to put the CPU into a state
+that permits correct running at that lower EL.  We already do a
+little of this in arm-powerctl.c (for instance we set SCR_HCE to
+enable the HVC insn) but we don't do enough of it.  This means that
+in the case where we are emulating EL3 but also providing emulated
+PSCI the guest will crash when a secondary core tries to use a
+feature that needs an SCR_EL3 bit to be set, such as MTE or PAuth.
 
-Thanks
+The hw/arm/boot.c code also has to support this "start guest code in
+an EL that's lower than the highest emulated EL" case in order to do
+direct guest kernel booting; it has all the necessary initialization
+code to set the SCR_EL3 bits.  Pull the relevant boot.c code out into
+a separate function so we can share it between there and
+arm-powerctl.c.
 
-Eric
+This refactoring has a few code changes that look like they
+might be behaviour changes but aren't:
+ * if info->secure_boot is false and info->secure_board_setup is
+   true, then the old code would start the first CPU in Hyp
+   mode but without changing SCR.NS and NSACR.{CP11,CP10}.
+   This was wrong behaviour because there's no such thing
+   as Secure Hyp mode. The new code will leave the CPU in SVC.
+   (There is no board which sets secure_boot to false and
+   secure_board_setup to true, so this isn't a behaviour
+   change for any of our boards.)
+ * we don't explicitly clear SCR.NS when arm-powerctl.c
+   does a CPU-on to EL3. This was a no-op because CPU reset
+   will reset to NS == 0.
+
+And some real behaviour changes:
+ * we no longer set HCR_EL2.RW when booting into EL2: the guest
+   can and should do that themselves before dropping into their
+   EL1 code. (arm-powerctl and boot did this differently; I
+   opted to use the logic from arm-powerctl, which only sets
+   HCR_EL2.RW when it's directly starting the guest in EL1,
+   because it's more correct, and I don't expect guests to be
+   accidentally depending on our having set the RW bit for them.)
+ * if we are booting a CPU into AArch32 Secure SVC then we won't
+   set SCR.HCE any more. This affects only the vexpress-a15 and
+   raspi2b machine types. Guests booting in this case will either:
+    - be able to set SCR.HCE themselves as part of moving from
+      Secure SVC into NS Hyp mode
+    - will move from Secure SVC to NS SVC, and won't care about
+      behaviour of the HVC insn
+    - will stay in Secure SVC, and won't care about HVC
+ * on an arm-powerctl CPU-on we will now set the SCR bits for
+   pauth/mte/sve/sme/hcx/fgt features
+
+The first two of these are very minor and I don't expect guest
+code to trip over them, so I didn't judge it worth convoluting
+the code in an attempt to keep exactly the same boot.c behaviour.
+The third change fixes issue 1899.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1899
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.h          | 22 +++++++++
+ hw/arm/boot.c             | 95 ++++++++++-----------------------------
+ target/arm/arm-powerctl.c | 53 +---------------------
+ target/arm/cpu.c          | 95 +++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 141 insertions(+), 124 deletions(-)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index bd55c5dabfd..43d50ec712d 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1150,6 +1150,28 @@ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
+                              int cpuid, DumpState *s);
+ 
++/**
++ * arm_emulate_firmware_reset: Emulate firmware CPU reset handling
++ * @cpu: CPU (which must have been freshly reset)
++ * @target_el: exception level to put the CPU into
++ * @secure: whether to put the CPU in secure state
++ *
++ * When QEMU is directly running a guest kernel at a lower level than
++ * EL3 it implicitly emulates some aspects of the guest firmware.
++ * This includes that on reset we need to configure the parts of the
++ * CPU corresponding to EL3 so that the real guest code can run at its
++ * lower exception level. This function does that post-reset CPU setup,
++ * for when we do direct boot of a guest kernel, and for when we
++ * emulate PSCI and similar firmware interfaces starting a CPU at a
++ * lower exception level.
++ *
++ * @target_el must be an EL implemented by the CPU between 1 and 3.
++ * We do not support dropping into a Secure EL other than 3.
++ *
++ * It is the responsibility of the caller to call arm_rebuild_hflags().
++ */
++void arm_emulate_firmware_reset(CPUState *cpustate, int target_el);
++
+ #ifdef TARGET_AARCH64
+ int aarch64_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+ int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 24fa1690600..84ea6a807a4 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -722,84 +722,35 @@ static void do_cpu_reset(void *opaque)
+ 
+             cpu_set_pc(cs, entry);
+         } else {
+-            /* If we are booting Linux then we need to check whether we are
+-             * booting into secure or non-secure state and adjust the state
+-             * accordingly.  Out of reset, ARM is defined to be in secure state
+-             * (SCR.NS = 0), we change that here if non-secure boot has been
+-             * requested.
++            /*
++             * If we are booting Linux then we might need to do so at:
++             *  - AArch64 NS EL2 or NS EL1
++             *  - AArch32 Secure SVC (EL3)
++             *  - AArch32 NS Hyp (EL2)
++             *  - AArch32 NS SVC (EL1)
++             * Configure the CPU in the way boot firmware would do to
++             * drop us down to the appropriate level.
+              */
+-            if (arm_feature(env, ARM_FEATURE_EL3)) {
+-                /* AArch64 is defined to come out of reset into EL3 if enabled.
+-                 * If we are booting Linux then we need to adjust our EL as
+-                 * Linux expects us to be in EL2 or EL1.  AArch32 resets into
+-                 * SVC, which Linux expects, so no privilege/exception level to
+-                 * adjust.
+-                 */
+-                if (env->aarch64) {
+-                    env->cp15.scr_el3 |= SCR_RW;
+-                    if (arm_feature(env, ARM_FEATURE_EL2)) {
+-                        env->cp15.hcr_el2 |= HCR_RW;
+-                        env->pstate = PSTATE_MODE_EL2h;
+-                    } else {
+-                        env->pstate = PSTATE_MODE_EL1h;
+-                    }
+-                    if (cpu_isar_feature(aa64_pauth, cpu)) {
+-                        env->cp15.scr_el3 |= SCR_API | SCR_APK;
+-                    }
+-                    if (cpu_isar_feature(aa64_mte, cpu)) {
+-                        env->cp15.scr_el3 |= SCR_ATA;
+-                    }
+-                    if (cpu_isar_feature(aa64_sve, cpu)) {
+-                        env->cp15.cptr_el[3] |= R_CPTR_EL3_EZ_MASK;
+-                        env->vfp.zcr_el[3] = 0xf;
+-                    }
+-                    if (cpu_isar_feature(aa64_sme, cpu)) {
+-                        env->cp15.cptr_el[3] |= R_CPTR_EL3_ESM_MASK;
+-                        env->cp15.scr_el3 |= SCR_ENTP2;
+-                        env->vfp.smcr_el[3] = 0xf;
+-                    }
+-                    if (cpu_isar_feature(aa64_hcx, cpu)) {
+-                        env->cp15.scr_el3 |= SCR_HXEN;
+-                    }
+-                    if (cpu_isar_feature(aa64_fgt, cpu)) {
+-                        env->cp15.scr_el3 |= SCR_FGTEN;
+-                    }
++            int target_el = arm_feature(env, ARM_FEATURE_EL2) ? 2 : 1;
+ 
+-                    /* AArch64 kernels never boot in secure mode */
+-                    assert(!info->secure_boot);
+-                    /* This hook is only supported for AArch32 currently:
+-                     * bootloader_aarch64[] will not call the hook, and
+-                     * the code above has already dropped us into EL2 or EL1.
+-                     */
+-                    assert(!info->secure_board_setup);
+-                }
+-
+-                if (arm_feature(env, ARM_FEATURE_EL2)) {
+-                    /* If we have EL2 then Linux expects the HVC insn to work */
+-                    env->cp15.scr_el3 |= SCR_HCE;
+-                }
+-
+-                /* Set to non-secure if not a secure boot */
+-                if (!info->secure_boot &&
+-                    (cs != first_cpu || !info->secure_board_setup)) {
+-                    /* Linux expects non-secure state */
+-                    env->cp15.scr_el3 |= SCR_NS;
+-                    /* Set NSACR.{CP11,CP10} so NS can access the FPU */
+-                    env->cp15.nsacr |= 3 << 10;
+-                }
+-            }
+-
+-            if (!env->aarch64 && !info->secure_boot &&
+-                arm_feature(env, ARM_FEATURE_EL2)) {
++            if (env->aarch64) {
+                 /*
+-                 * This is an AArch32 boot not to Secure state, and
+-                 * we have Hyp mode available, so boot the kernel into
+-                 * Hyp mode. This is not how the CPU comes out of reset,
+-                 * so we need to manually put it there.
++                 * AArch64 kernels never boot in secure mode, and we don't
++                 * support the secure_board_setup hook for AArch64.
+                  */
+-                cpsr_write(env, ARM_CPU_MODE_HYP, CPSR_M, CPSRWriteRaw);
++                assert(!info->secure_boot);
++                assert(!info->secure_board_setup);
++            } else {
++                if (arm_feature(env, ARM_FEATURE_EL3) &&
++                    (info->secure_boot ||
++                     (info->secure_board_setup && cs == first_cpu))) {
++                    /* Start this CPU in Secure SVC */
++                    target_el = 3;
++                }
+             }
+ 
++            arm_emulate_firmware_reset(cs, target_el);
++
+             if (cs == first_cpu) {
+                 AddressSpace *as = arm_boot_address_space(cpu, info);
+ 
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index 326a03153df..c078849403c 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -65,60 +65,9 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+ 
+     /* Initialize the cpu we are turning on */
+     cpu_reset(target_cpu_state);
++    arm_emulate_firmware_reset(target_cpu_state, info->target_el);
+     target_cpu_state->halted = 0;
+ 
+-    if (info->target_aa64) {
+-        if ((info->target_el < 3) && arm_feature(&target_cpu->env,
+-                                                 ARM_FEATURE_EL3)) {
+-            /*
+-             * As target mode is AArch64, we need to set lower
+-             * exception level (the requested level 2) to AArch64
+-             */
+-            target_cpu->env.cp15.scr_el3 |= SCR_RW;
+-        }
+-
+-        if ((info->target_el < 2) && arm_feature(&target_cpu->env,
+-                                                 ARM_FEATURE_EL2)) {
+-            /*
+-             * As target mode is AArch64, we need to set lower
+-             * exception level (the requested level 1) to AArch64
+-             */
+-            target_cpu->env.cp15.hcr_el2 |= HCR_RW;
+-        }
+-
+-        target_cpu->env.pstate = aarch64_pstate_mode(info->target_el, true);
+-    } else {
+-        /* We are requested to boot in AArch32 mode */
+-        static const uint32_t mode_for_el[] = { 0,
+-                                                ARM_CPU_MODE_SVC,
+-                                                ARM_CPU_MODE_HYP,
+-                                                ARM_CPU_MODE_SVC };
+-
+-        cpsr_write(&target_cpu->env, mode_for_el[info->target_el], CPSR_M,
+-                   CPSRWriteRaw);
+-    }
+-
+-    if (info->target_el == 3) {
+-        /* Processor is in secure mode */
+-        target_cpu->env.cp15.scr_el3 &= ~SCR_NS;
+-    } else {
+-        /* Processor is not in secure mode */
+-        target_cpu->env.cp15.scr_el3 |= SCR_NS;
+-
+-        /* Set NSACR.{CP11,CP10} so NS can access the FPU */
+-        target_cpu->env.cp15.nsacr |= 3 << 10;
+-
+-        /*
+-         * If QEMU is providing the equivalent of EL3 firmware, then we need
+-         * to make sure a CPU targeting EL2 comes out of reset with a
+-         * functional HVC insn.
+-         */
+-        if (arm_feature(&target_cpu->env, ARM_FEATURE_EL3)
+-            && info->target_el == 2) {
+-            target_cpu->env.cp15.scr_el3 |= SCR_HCE;
+-        }
+-    }
+-
+     /* We check if the started CPU is now at the correct level */
+     assert(info->target_el == arm_current_el(&target_cpu->env));
+ 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index b9e09a702d6..bc33ed07a44 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -553,6 +553,101 @@ static void arm_cpu_reset_hold(Object *obj)
+     }
+ }
+ 
++void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
++{
++    ARMCPU *cpu = ARM_CPU(cpustate);
++    CPUARMState *env = &cpu->env;
++    bool have_el3 = arm_feature(env, ARM_FEATURE_EL3);
++    bool have_el2 = arm_feature(env, ARM_FEATURE_EL2);
++
++    /*
++     * Check we have the EL we're aiming for. If that is the
++     * highest implemented EL, then cpu_reset has already done
++     * all the work.
++     */
++    switch (target_el) {
++    case 3:
++        assert(have_el3);
++        return;
++    case 2:
++        assert(have_el2);
++        if (!have_el3) {
++            return;
++        }
++        break;
++    case 1:
++        if (!have_el3 && !have_el2) {
++            return;
++        }
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    if (have_el3) {
++        /*
++         * Set the EL3 state so code can run at EL2. This should match
++         * the requirements set by Linux in its booting spec.
++         */
++        if (env->aarch64) {
++            env->cp15.scr_el3 |= SCR_RW;
++            if (cpu_isar_feature(aa64_pauth, cpu)) {
++                env->cp15.scr_el3 |= SCR_API | SCR_APK;
++            }
++            if (cpu_isar_feature(aa64_mte, cpu)) {
++                env->cp15.scr_el3 |= SCR_ATA;
++            }
++            if (cpu_isar_feature(aa64_sve, cpu)) {
++                env->cp15.cptr_el[3] |= R_CPTR_EL3_EZ_MASK;
++                env->vfp.zcr_el[3] = 0xf;
++            }
++            if (cpu_isar_feature(aa64_sme, cpu)) {
++                env->cp15.cptr_el[3] |= R_CPTR_EL3_ESM_MASK;
++                env->cp15.scr_el3 |= SCR_ENTP2;
++                env->vfp.smcr_el[3] = 0xf;
++            }
++            if (cpu_isar_feature(aa64_hcx, cpu)) {
++                env->cp15.scr_el3 |= SCR_HXEN;
++            }
++            if (cpu_isar_feature(aa64_fgt, cpu)) {
++                env->cp15.scr_el3 |= SCR_FGTEN;
++            }
++        }
++
++        if (target_el == 2) {
++            /* If the guest is at EL2 then Linux expects the HVC insn to work */
++            env->cp15.scr_el3 |= SCR_HCE;
++        }
++
++        /* Put CPU into non-secure state */
++        env->cp15.scr_el3 |= SCR_NS;
++        /* Set NSACR.{CP11,CP10} so NS can access the FPU */
++        env->cp15.nsacr |= 3 << 10;
++    }
++
++    if (have_el2 && target_el < 2) {
++        /* Set EL2 state so code can run at EL1. */
++        if (env->aarch64) {
++            env->cp15.hcr_el2 |= HCR_RW;
++        }
++    }
++
++    /* Set the CPU to the desired state */
++    if (env->aarch64) {
++        env->pstate = aarch64_pstate_mode(target_el, true);
++    } else {
++        static const uint32_t mode_for_el[] = {
++            0,
++            ARM_CPU_MODE_SVC,
++            ARM_CPU_MODE_HYP,
++            ARM_CPU_MODE_SVC,
++        };
++
++        cpsr_write(env, mode_for_el[target_el], CPSR_M, CPSRWriteRaw);
++    }
++}
++
++
+ #if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
+ 
+ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+-- 
+2.34.1
 

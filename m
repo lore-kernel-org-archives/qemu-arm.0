@@ -1,46 +1,46 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp995503ejc;
-        Tue, 26 Sep 2023 03:38:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG6Q0dgiDz1i7g1lbYvDS55VrGNya68NijhTDYpWy7NmStrqBJqOy+Tm/kd5eKl85QbRBW2
-X-Received: by 2002:adf:dec7:0:b0:319:8bd0:d18c with SMTP id i7-20020adfdec7000000b003198bd0d18cmr7441874wrn.52.1695724712813;
-        Tue, 26 Sep 2023 03:38:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695724712; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp995653ejc;
+        Tue, 26 Sep 2023 03:38:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHaoDDWRulrkKogrJQQTVrvBK5SVLl+jJ0xBu4JZNRx2r73L7Gu8pzj7gAdmbVeB+SA/TMe
+X-Received: by 2002:a05:6808:1795:b0:3ae:24bb:3825 with SMTP id bg21-20020a056808179500b003ae24bb3825mr10248929oib.8.1695724732563;
+        Tue, 26 Sep 2023 03:38:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695724732; cv=none;
         d=google.com; s=arc-20160816;
-        b=E5dkQIy7I3VVz+c4U+1cDJekJVWjlAw/BM25W2q+rZkg8Fm/Kqwo1PjaSpuQxY4/fv
-         vbkEdKJ9+9oy/2sUwSLGeN5EKRCH5CHonavQbPEcB/w7ObyLUheoX8/bdHKfY5FWAUVw
-         xugTWYR6zsZkwl8Tz+YcvD7b83NVx90mGdWRkyqslOcp3OqYp73rkQ5kqjOfJEh9/RYb
-         CmlvGJQEN7YkQ7wt0pRlJ4vwC1rKqDLXBdpEAzHZTEn5oAyB5B8Pj+Oeb4zafJiMH7/Z
-         0tSRV0bIue1/amKBgK7qgZRpWSwdbFTyJTdZeSysykwshO+955wHY6Rs2m1rG+53Gr6w
-         rklg==
+        b=SdEdm0RMFoeri4ij2RZLKbyU4bJDaKAhgVS8IpG6qXePNeCj5jZ7wTn6g7pKKD3GMe
+         lqVh4QbDhb1XrLtMcab7RKjtcXAuVnRd0GFG4o0fLzLk0SHq/rdUP2wYgc2w81RvTnPH
+         3sLhUH6afoUKrav0eaYASoQdufv7xxB/jukfnlRLWXK62MCwEHombS1/lu+HWKl2sITT
+         OPypzYqKpjrtbw49Jj6TRtVs2ttbFUcujUBYduteLyDkkp/Gy3beJHn+LK1F5WJkhGNo
+         exEtgNnzDj6cZ83l0V89jxsoo0FvvliPS0Oywj4ldWdTqi5M8iFsu789IRc4D0iYxy9D
+         IkGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=1qtELAS8ziLE2nssiISEzZoJFW8SYgla5bs0gLTEpJI=;
+        bh=r2XyOZ2aXAk13zrZQGLkqWeoyiI2X8PNNpoWHdkFcyQ=;
         fh=S0+uYiUekNlY+vd8jPZbTHxsQBwDC5l2YHnO2B7ftdQ=;
-        b=U/TldXC6yIhvN2awN7Rv1qu3U9wEcLJcRodxDwEwF6UoqF6TSQQ2whD6ut7YCCQaKl
-         Vts58DzUpdZlqMmKkAsNH5VWuQx7DFj3mc0AniUcyGaUcMvrMyGquVsSeRG9yAacEid2
-         FsS2ZWlxPMeDkc7fs6kSmYt46iVnqWJGtO5ELTl8goJ4AchUChW35FBzvp8lkp9+Vcbl
-         r4wyIvLOvOfrA+23FLDyhL9XGZ/wHdLNkPX1IfgA5OmwkLRDL7llmWJEj6UZrohtviVe
-         eMUqXR6bnJr95aJ1TGJGgCQKoz/3dGuxNSgsajViuQcJXZ92PlRCErVdmAu32wR/vjAh
-         ipwA==
+        b=dicP+Cv4FTbxQljP7LAU2NGfRaj1Z1gJge+BBC4baZsdLun5xIFNnD1utOWBZhB1fh
+         5cYQ8szfVdwAcmC9H8Q0gk0s8w9m1cosmRRt1ZwnP1AK2FIsbKr1jZnJUUb78HtS04Do
+         ZoPk1n76ohiWcV0p0ycMgLUI++y/P+cVwmp97hHJuVoT3fQjKPXxS9uT0zwnM3hvUids
+         esHzggeB65Hy+2qemaoU3iu5O1J8p96o3SQ+ojxmTiGHFHVAHLrfeWg/c0Ghi9M9uOpQ
+         9A8eseJQbwZMpqg0hkUpm6xN4mX06BcfRvBMwIQjeHV6PhEKfycVT+gyp1xbv6QkOE3c
+         WEBw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id g10-20020a5d698a000000b003231739897bsi3910556wru.505.2023.09.26.03.38.32
+        by mx.google.com with ESMTPS id k184-20020a6384c1000000b00563d791d978si12270844pgd.750.2023.09.26.03.38.51
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Sep 2023 03:38:32 -0700 (PDT)
+        Tue, 26 Sep 2023 03:38:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.200])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Rvx0s03xrz6J80t;
-	Tue, 26 Sep 2023 18:33:32 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Rvx5V3z5Pz6K8jp;
+	Tue, 26 Sep 2023 18:37:34 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.126.174.16) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Tue, 26 Sep 2023 11:38:12 +0100
+ 15.1.2507.31; Tue, 26 Sep 2023 11:38:30 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -57,9 +57,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>
-Subject: [PATCH RFC V2 35/37] hw/arm: Support hotplug capability check using _OSC method
-Date: Tue, 26 Sep 2023 11:36:52 +0100
-Message-ID: <20230926103654.34424-4-salil.mehta@huawei.com>
+Subject: [PATCH RFC V2 36/37] tcg/mttcg: enable threads to unregister in tcg_ctxs[]
+Date: Tue, 26 Sep 2023 11:36:53 +0100
+Message-ID: <20230926103654.34424-5-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20230926103654.34424-1-salil.mehta@huawei.com>
 References: <20230926100436.28284-1-salil.mehta@huawei.com>
@@ -70,127 +70,95 @@ X-Originating-IP: [10.126.174.16]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
 X-CFilter-Loop: Reflected
-X-TUID: wV1Bbgdu+O7T
+X-TUID: ShjopiRN0iR5
 
-Physical CPU hotplug results in (un)setting of ACPI _STA.Present bit. AARCH64
-platforms do not support physical CPU hotplug. Virtual CPU hotplug support being
-implemented toggles ACPI _STA.Enabled Bit to achieve hotplug functionality. This
-is not same as physical CPU hotplug support.
+From: Miguel Luis <miguel.luis@oracle.com>
 
-In future, if ARM architecture supports physical CPU hotplug then the current
-design of virtual CPU hotplug can be used unchanged. Hence, there is a need for
-firmware/VMM/Qemu to support evaluation of platform wide capabilitiy related to
-the *type* of CPU hotplug support present on the platform. OSPM might need this
-during boot time to correctly initialize the CPUs and other related components
-in the kernel.
+[This patch is just for reference. It has problems as it does not takes care of
+the TranslationBlocks and their assigned regions during CPU unrealize]
 
-NOTE: This implementation will be improved to add the support of *query* in the
-subsequent versions. This is very minimal support to assist kernel.
+When using TCG acceleration in a multi-threaded context each vCPU has its own
+thread registered in tcg_ctxs[] upon creation and tcg_cur_ctxs stores the current
+number of threads that got created. Although, the lack of a mechanism to
+unregister these threads is a problem when exercising vCPU hotplug/unplug
+due to the fact that tcg_cur_ctxs gets incremented everytime a vCPU gets
+hotplugged but never gets decremented everytime a vCPU gets unplugged, therefore
+breaking the assert stating tcg_cur_ctxs < tcg_max_ctxs after a certain amount
+of vCPU hotplugs.
 
-ASL for the implemented _OSC method:
-
-Method (_OSC, 4, NotSerialized)  // _OSC: Operating System Capabilities
-{
-    CreateDWordField (Arg3, Zero, CDW1)
-    If ((Arg0 == ToUUID ("0811b06e-4a27-44f9-8d60-3cbbc22e7b48") /* Platform-wide Capabilities */))
-    {
-        CreateDWordField (Arg3, 0x04, CDW2)
-        Local0 = CDW2 /* \_SB_._OSC.CDW2 */
-        If ((Arg1 != One))
-        {
-            CDW1 |= 0x08
-        }
-
-        Local0 &= 0x00800000
-        If ((CDW2 != Local0))
-        {
-            CDW1 |= 0x10
-        }
-
-        CDW2 = Local0
-    }
-    Else
-    {
-        CDW1 |= 0x04
-    }
-
-    Return (Arg3)
-}
-
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+Suggested-by: Salil Mehta <salil.mehta@huawei.com>
+[SM: Check Things To Do Section, https://lore.kernel.org/all/20200613213629.21984-1-salil.mehta@huawei.com/]
+Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
 ---
- hw/arm/virt-acpi-build.c | 52 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+ accel/tcg/tcg-accel-ops-mttcg.c |  1 +
+ include/tcg/tcg.h               |  1 +
+ tcg/tcg.c                       | 23 +++++++++++++++++++++++
+ 3 files changed, 25 insertions(+)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index cbccd2ca2d..377450dd16 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -861,6 +861,55 @@ static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
-     build_fadt(table_data, linker, &fadt, vms->oem_id, vms->oem_table_id);
+diff --git a/accel/tcg/tcg-accel-ops-mttcg.c b/accel/tcg/tcg-accel-ops-mttcg.c
+index b276262007..5cf9747ef2 100644
+--- a/accel/tcg/tcg-accel-ops-mttcg.c
++++ b/accel/tcg/tcg-accel-ops-mttcg.c
+@@ -127,6 +127,7 @@ static void *mttcg_cpu_thread_fn(void *arg)
+     qemu_mutex_unlock_iothread();
+     rcu_remove_force_rcu_notifier(&force_rcu.notifier);
+     rcu_unregister_thread();
++    tcg_unregister_thread();
+     return NULL;
  }
  
-+static void build_virt_osc_method(Aml *scope, VirtMachineState *vms)
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index 0875971719..6c1cd2a618 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -785,6 +785,7 @@ static inline void *tcg_malloc(int size)
+ 
+ void tcg_init(size_t tb_size, int splitwx, unsigned max_cpus);
+ void tcg_register_thread(void);
++void tcg_unregister_thread(void);
+ void tcg_prologue_init(TCGContext *s);
+ void tcg_func_start(TCGContext *s);
+ 
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index ddfe9a96cb..6760f40823 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -742,6 +742,14 @@ static void alloc_tcg_plugin_context(TCGContext *s)
+ #endif
+ }
+ 
++static void free_tcg_plugin_context(TCGContext *s)
 +{
-+    Aml *if_uuid, *else_uuid, *if_rev, *if_caps_masked, *method;
-+    Aml *a_cdw1 = aml_name("CDW1");
-+    Aml *a_cdw2 = aml_local(0);
-+
-+    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
-+    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
-+
-+    /* match UUID */
-+    if_uuid = aml_if(aml_equal(
-+        aml_arg(0), aml_touuid("0811B06E-4A27-44F9-8D60-3CBBC22E7B48")));
-+
-+    aml_append(if_uuid, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
-+    aml_append(if_uuid, aml_store(aml_name("CDW2"), a_cdw2));
-+
-+    /* check unknown revision in arg(1) */
-+    if_rev = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
-+    /* set revision error bits,  DWORD1 Bit[3] */
-+    aml_append(if_rev, aml_or(a_cdw1, aml_int(0x08), a_cdw1));
-+    aml_append(if_uuid, if_rev);
-+
-+    /*
-+     * check support for vCPU hotplug type(=enabled) platform-wide capability
-+     * in DWORD2 as sepcified in the below ACPI Specification ECR,
-+     *  # https://bugzilla.tianocore.org/show_bug.cgi?id=4481
-+     */
-+    if (vms->acpi_dev) {
-+        aml_append(if_uuid, aml_and(a_cdw2, aml_int(0x800000), a_cdw2));
-+        /* check if OSPM specified hotplug capability bits were masked */
-+        if_caps_masked = aml_if(aml_lnot(aml_equal(aml_name("CDW2"), a_cdw2)));
-+        aml_append(if_caps_masked, aml_or(a_cdw1, aml_int(0x10), a_cdw1));
-+        aml_append(if_uuid, if_caps_masked);
-+    }
-+    aml_append(if_uuid, aml_store(a_cdw2, aml_name("CDW2")));
-+
-+    aml_append(method, if_uuid);
-+    else_uuid = aml_else();
-+
-+    /* set unrecognized UUID error bits, DWORD1 Bit[2] */
-+    aml_append(else_uuid, aml_or(a_cdw1, aml_int(4), a_cdw1));
-+    aml_append(method, else_uuid);
-+
-+    aml_append(method, aml_return(aml_arg(3)));
-+    aml_append(scope, method);
-+
-+    return;
++#ifdef CONFIG_PLUGIN
++    g_ptr_array_unref(s->plugin_tb->insns);
++    g_free(s->plugin_tb);
++#endif
 +}
 +
- /* DSDT */
- static void
- build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-@@ -894,6 +943,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     } else {
-         acpi_dsdt_add_cpus(scope, vms);
-     }
+ /*
+  * All TCG threads except the parent (i.e. the one that called tcg_context_init
+  * and registered the target's TCG globals) must register with this function
+@@ -791,6 +799,21 @@ void tcg_register_thread(void)
+ 
+     tcg_ctx = s;
+ }
 +
-+    build_virt_osc_method(scope, vms);
++void tcg_unregister_thread(void)
++{
++    TCGContext *s = tcg_ctx;
++    unsigned int n;
 +
-     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
-                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
-     if (vmc->acpi_expose_flash) {
++    /* Unclaim an entry in tcg_ctxs */
++    n = qatomic_fetch_dec(&tcg_cur_ctxs);
++    g_assert(n > 1);
++    qatomic_store_release(&tcg_ctxs[n - 1], 0);
++
++    free_tcg_plugin_context(s);
++
++    g_free(s);
++}
+ #endif /* !CONFIG_USER_ONLY */
+ 
+ /* pool based memory allocation */
 -- 
 2.34.1

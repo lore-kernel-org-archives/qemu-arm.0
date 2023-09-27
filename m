@@ -1,91 +1,91 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1452091ejc;
-        Tue, 26 Sep 2023 16:57:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEAJDlVhjIfxhtfPGuUJbudAJan1FbPs3RxQH8syrJEV30FNUBi86Y4iY0VH67gHd1Gy+ki
-X-Received: by 2002:a0d:ead3:0:b0:595:8499:c5f5 with SMTP id t202-20020a0dead3000000b005958499c5f5mr328638ywe.26.1695772654799;
-        Tue, 26 Sep 2023 16:57:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695772654; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1566273ejc;
+        Tue, 26 Sep 2023 20:54:19 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG1+7eqqxwqi6GSVfCJn154xrbv5LWsP7t+nuOF7ho4bRVLfqkN9XS2LLrTASUJ65gS68vj
+X-Received: by 2002:a0c:a9d4:0:b0:65b:d75:129d with SMTP id c20-20020a0ca9d4000000b0065b0d75129dmr834030qvb.34.1695786858820;
+        Tue, 26 Sep 2023 20:54:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695786858; cv=none;
         d=google.com; s=arc-20160816;
-        b=HXtOqAf9aqEEhzopZvZhKKR2U3VSIfjJEwP53T8B+dP/Fka/HJ5gxjISxv17D83y71
-         Ue0S1izjQmhQ+hor7RV9UvfKykaVwH8TgjbZ//hlJMXd0M/KFD2abo2Vkdhs3t2WDpTO
-         iI8rlKpmwzNWmgHi1pQaYazi1sdACY64vKN6dOVc3bwOYp//cJAnaSvNrUwculPZFLBa
-         mQlMb0ZZN20jgoUg3NRX3KtQSB62E5FRMX8r8AuVij3gKbiyDhknsmgxCsGM3XhnU05F
-         uJDDuL9PdPirA71L91OKJuvZnEhhzy2ZYfNWKgiDQuAOW3MMzGzJeVOlJiNxpAVAP0qC
-         KdHw==
+        b=AeTuj8faseuyupQHzi9E3rWCTdq3jYizr0pNTONt+7AcqlPMQogvvL2oOSGVYU2Xy/
+         7hB4to1Yqd+/6NSH4sHfDrLhCU6zj3sMFIWdweNFu0WDYeW7HfquTx6v0Mq3NC5BNzOu
+         nJ3jBBKDIjAcST49fd0Sdrh6brWAbe64WN4Te6Vq0WDt0oUosP9oMVc6gz1hxxQFapyr
+         F5OxCllYliyzeY41sna3P4AROFtRZNTIkwmF2hg9gI2WUZ11kGQG6POZvrRJ8Pugm2MX
+         OlmoDNOdR+qaS57GPVjqE45puCJJaFQECCXjT0MeCeUMHrzdLstSc7kYgidc9C8aSPtL
+         H0kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=YojiN4iQj8J/kXQ6FhBhpSyy/ep2bnLMTpRtktnAGj8=;
+        bh=wq3sWa4cq7NOR9CzU3Z3ngaKlHFGpMjzimxp4rlP+BA=;
         fh=fO+ncAaxY0Wf5Oiu0zeLu9be5DWOx71LYjyGHoG8Yc0=;
-        b=0ogJ5VWOp80UpojJdAF3GM/ALAOubk423XqLwN3OR0RUr+VZSfrTjQYjA49RjKXfcy
-         ojDHmsb2ntjzfH9W2Z7gX1tS0BdTontvDpurfnhlv+O5mNi4BIDI1D+AECwuCsN8khdr
-         89qnLelf3gcX8LtASUJweTiXecRMz13E3Njqm+ryBwENjYDw2WlWkC2bMdy3nzbwrjzs
-         ryfNnq/ZLQ1hCVXswSRJnBXo43pP8LoJuPfxjAZm0nTCaH0mAqH68txDGcJTYBBjWzm8
-         95+WXEWORxZIM7smNKhEUgrFoluZAw3MeMrtPf/IK3Auo33GnPV6bbW2DuFRWQ/ygRFD
-         Yd2g==
+        b=vb5BQln9uIZdEh4cYX7pg8MaOgTO3t3cjL8sDMV4EsAo5+jtRXxgVCq5TgdfszWzXH
+         vrKgfc0Jc92j+vWAANbwp/oI7bHzNIRj17VJBTKPTuHLRjzy3p8DNUTWKGeDCXsvqDu4
+         0SHtlGHeZMc4qwgKuY9aIF7CjVLgq+rjUdiB387m+Nhym80BUUB/sR1xdU110VWKAEMe
+         wmGvIaJ5sdby8J6qcOg2jUoJR2XLJzBOEcm8zHyTRphAuSOdeRtv3Q34im6A2CrbNAld
+         /vleYXGXNdkUMjAMB5YHpRutQeBBe0NZcqqbwcLeyEGXSPTgxndHNUaZlloxcSOu1Ql0
+         XVEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aVzQxVha;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UzgLi3Cu;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id w134-20020a0dd48c000000b0059f5d9d0d7bsi3201061ywd.414.2023.09.26.16.57.34
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id k3-20020a0cabc3000000b00658793cda42si7566523qvb.225.2023.09.26.20.54.18
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Sep 2023 16:57:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Tue, 26 Sep 2023 20:54:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aVzQxVha;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UzgLi3Cu;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1695772654;
+	s=mimecast20190719; t=1695786858;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=YojiN4iQj8J/kXQ6FhBhpSyy/ep2bnLMTpRtktnAGj8=;
-	b=aVzQxVhacgd5MndYv8oza6oktCjEi+i7Z82mGtQiYe6JYFtHRUDx+lAOIwdgEYCVtWb/Je
-	EDAIoCTUXXPKNFxJIPANO8r/fNfEozv0xJ46d7hmkTgfNiGIJH19dLoDb4lLmmEQyM+5yC
-	eUqb7jW+rOPbYGU66Y35UZ5MShb4eEk=
-Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
- [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=wq3sWa4cq7NOR9CzU3Z3ngaKlHFGpMjzimxp4rlP+BA=;
+	b=UzgLi3Cu+Lcz+7xAHppZ44t2D7H1JISkp4BNTNTBPXdZblMU/w3jK0HT/3iFIshknKsDlj
+	wbsQ1EmaoY4vqzFKmnfljcZVYaC4jgpi889IPqXfPFHBuMvmKRYYVbo54uAfRseDRefglm
+	osnxVL0SwsntWefSx2BWYq6CNlF3hqc=
+Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com
+ [209.85.215.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-625-VJ3f5d_hMCmSFVmiWiUtDA-1; Tue, 26 Sep 2023 19:57:33 -0400
-X-MC-Unique: VJ3f5d_hMCmSFVmiWiUtDA-1
-Received: by mail-pg1-f197.google.com with SMTP id 41be03b00d2f7-5849bcbf26bso3513508a12.1
-        for <alex.bennee@linaro.org>; Tue, 26 Sep 2023 16:57:32 -0700 (PDT)
+ us-mta-154-YB9UYnqENwyN19HPDv5IPA-1; Tue, 26 Sep 2023 23:54:17 -0400
+X-MC-Unique: YB9UYnqENwyN19HPDv5IPA-1
+Received: by mail-pg1-f199.google.com with SMTP id 41be03b00d2f7-565ece76be4so13070246a12.2
+        for <alex.bennee@linaro.org>; Tue, 26 Sep 2023 20:54:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695772652; x=1696377452;
+        d=1e100.net; s=20230601; t=1695786856; x=1696391656;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YojiN4iQj8J/kXQ6FhBhpSyy/ep2bnLMTpRtktnAGj8=;
-        b=s+W78wgkLjjdq4Am+zrtUJqyxLmi+wJXsJT579MNMboBa/w7srHcWAQ7wbVLR2AZMW
-         dzsATx39szABZlpEtp5RHUTsop7yjlPIrOTfceme9+2zLFqawQYctUqjMF4DvZBMCPvA
-         L15FYOF+tojCAjS87rsPZRWsEq1et4wPGIpwfX/cLwUdQg0gP/HM1smkl/C7qt2zz6Nc
-         2fBmUalCxK7YJj3yURQ9+6Q3AZKyvw13/KvddcyCVhoudKf3BjfHNjtUlb4XmxIj389S
-         x0kn521wZKh6I0Nl+SXir7n+fYuESvUx5u3M0XtPSWDkTBjwrhvX9I3IKgx1q7T1nnm2
-         GERg==
-X-Gm-Message-State: AOJu0YyNRnF9AYJhJXqmTH+pTK5fwTzzijHOsxtFPiW1GkodwY1NblLe
-	cRaVMOBRjogL8WszxWwXCycmvulHrf24V0VwPNSQuq+vuvJBTAqe2Gb5S9j1Ws0l5cCsqqlLSLG
-	0eiKh38gGb8Twyfa/
-X-Received: by 2002:a05:6a20:2443:b0:15d:b407:b0a0 with SMTP id t3-20020a056a20244300b0015db407b0a0mr617085pzc.26.1695772651847;
-        Tue, 26 Sep 2023 16:57:31 -0700 (PDT)
-X-Received: by 2002:a05:6a20:2443:b0:15d:b407:b0a0 with SMTP id t3-20020a056a20244300b0015db407b0a0mr617046pzc.26.1695772651374;
-        Tue, 26 Sep 2023 16:57:31 -0700 (PDT)
+        bh=wq3sWa4cq7NOR9CzU3Z3ngaKlHFGpMjzimxp4rlP+BA=;
+        b=L5egYkvL9KLzD9/Ma0zjNQWRz1epMQRS11TybLieme69DDnil/zsxaud38MNlduBtk
+         lRYClayQcta2xUeQMiWl7Ly0v8NTFA1esnkuoId9lVDgPH0+cIfTBgY6z4ipshTgdAkJ
+         dpTG988gUIl6as8WS21E4LCBOxF1YNYurzIRmP+Zg9gQdl9zLX0Rb6lwWGFw87qb9uxx
+         9sLAgvzcH+T+unJOFlEXbPzgsJ5+OneM09Kd6l0ie7rniJ+yUhMpdtGSWPWQvkfs058m
+         989nWgHQbjp9nfSbbFy4vV7L4rrme0uvoHCptz0NJqGO/WB2KtBwEQD03DqhxAk6WNrB
+         sKuQ==
+X-Gm-Message-State: AOJu0Yy1N5ceCmSigW7iYD49i4O5ctWJIm24ocjVdDE7fsC9l/vz51YH
+	KtZbzVqrvwrehc0VmPUTmmgOa55ym9dDug17todZmj2mSN9w9/60PVDYCbFz4SIhFXL/ececc8d
+	SJICh9cwirI0NSoFv
+X-Received: by 2002:a05:6a20:258e:b0:153:56b1:8417 with SMTP id k14-20020a056a20258e00b0015356b18417mr1073877pzd.21.1695786855942;
+        Tue, 26 Sep 2023 20:54:15 -0700 (PDT)
+X-Received: by 2002:a05:6a20:258e:b0:153:56b1:8417 with SMTP id k14-20020a056a20258e00b0015356b18417mr1073854pzd.21.1695786855573;
+        Tue, 26 Sep 2023 20:54:15 -0700 (PDT)
 Return-Path: <gshan@redhat.com>
 Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
-        by smtp.gmail.com with ESMTPSA id fm1-20020a056a002f8100b00679a4b56e41sm10580839pfb.43.2023.09.26.16.57.20
+        by smtp.gmail.com with ESMTPSA id s10-20020a170902ea0a00b001b895336435sm350672plg.21.2023.09.26.20.54.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 26 Sep 2023 16:57:30 -0700 (PDT)
-Message-ID: <6cd28639-2cfa-f233-c6d9-d5d2ec5b1c58@redhat.com>
-Date: Wed, 27 Sep 2023 09:57:18 +1000
+        Tue, 26 Sep 2023 20:54:14 -0700 (PDT)
+Message-ID: <44e4f955-ab51-92ca-8d65-e3a38d8d6657@redhat.com>
+Date: Wed, 27 Sep 2023 13:54:00 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH RFC V2 01/37] arm/virt,target/arm: Add new ARMCPU
- {socket,cluster,core,thread}-id property
+Subject: Re: [PATCH RFC V2 02/37] cpus-common: Add common CPU utility for
+ possible vCPUs
 To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
@@ -101,229 +101,227 @@ Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
  maobibo@loongson.cn, lixianglai@loongson.cn
 References: <20230926100436.28284-1-salil.mehta@huawei.com>
- <20230926100436.28284-2-salil.mehta@huawei.com>
+ <20230926100436.28284-3-salil.mehta@huawei.com>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230926100436.28284-2-salil.mehta@huawei.com>
+In-Reply-To: <20230926100436.28284-3-salil.mehta@huawei.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: f+LYPWkyePvf
+X-TUID: qfelMkK8AP+H
 
 Hi Salil,
 
 On 9/26/23 20:04, Salil Mehta wrote:
-> This shall be used to store user specified topology{socket,cluster,core,thread}
-> and shall be converted to a unique 'vcpu-id' which is used as slot-index during
-> hot(un)plug of vCPU.
+> Adds various utility functions which might be required to fetch or check the
+> state of the possible vCPUs. This also introduces concept of *disabled* vCPUs,
+> which are part of the *possible* vCPUs but are not part of the *present* vCPU.
+> This state shall be used during machine init time to check the presence of
+> vcpus.
+   ^^^^^
+
+   vCPUs
+
 > 
-
-Note that we don't have 'vcpu-id' property. It's actually the index to the array
-ms->possible_cpus->cpus[] and cpu->cpu_index. Please improve the commit log if
-it makes sense.
-
 > Co-developed-by: Salil Mehta <salil.mehta@huawei.com>
 > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 > Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 > ---
->   hw/arm/virt.c    | 63 ++++++++++++++++++++++++++++++++++++++++++++++++
->   target/arm/cpu.c |  4 +++
->   target/arm/cpu.h |  4 +++
->   3 files changed, 71 insertions(+)
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 7d9dbc2663..57fe97c242 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -221,6 +221,11 @@ static const char *valid_cpus[] = {
->       ARM_CPU_TYPE_NAME("max"),
->   };
+>   cpus-common.c         | 31 +++++++++++++++++++++++++
+>   include/hw/core/cpu.h | 53 +++++++++++++++++++++++++++++++++++++++++++
+>   2 files changed, 84 insertions(+)
+> 
+> diff --git a/cpus-common.c b/cpus-common.c
+> index 45c745ecf6..24c04199a1 100644
+> --- a/cpus-common.c
+> +++ b/cpus-common.c
+> @@ -24,6 +24,7 @@
+>   #include "sysemu/cpus.h"
+>   #include "qemu/lockable.h"
+>   #include "trace/trace-root.h"
+> +#include "hw/boards.h"
 >   
-> +static int virt_get_socket_id(const MachineState *ms, int cpu_index);
-> +static int virt_get_cluster_id(const MachineState *ms, int cpu_index);
-> +static int virt_get_core_id(const MachineState *ms, int cpu_index);
-> +static int virt_get_thread_id(const MachineState *ms, int cpu_index);
-> +
->   static bool cpu_type_valid(const char *cpu)
->   {
->       int i;
-> @@ -2168,6 +2173,14 @@ static void machvirt_init(MachineState *machine)
->                             &error_fatal);
->   
->           aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
-> +        object_property_set_int(cpuobj, "socket-id",
-> +                                virt_get_socket_id(machine, n), NULL);
-> +        object_property_set_int(cpuobj, "cluster-id",
-> +                                virt_get_cluster_id(machine, n), NULL);
-> +        object_property_set_int(cpuobj, "core-id",
-> +                                virt_get_core_id(machine, n), NULL);
-> +        object_property_set_int(cpuobj, "thread-id",
-> +                                virt_get_thread_id(machine, n), NULL);
->   
->           if (!vms->secure) {
->               object_property_set_bool(cpuobj, "has_el3", false, NULL);
-> @@ -2652,10 +2665,59 @@ static int64_t virt_get_default_cpu_node_id(const MachineState *ms, int idx)
->       return socket_id % ms->numa_state->num_nodes;
+>   QemuMutex qemu_cpu_list_lock;
+>   static QemuCond exclusive_cond;
+> @@ -107,6 +108,36 @@ void cpu_list_remove(CPUState *cpu)
+>       cpu_list_generation_id++;
 >   }
 >   
-
-It seems it's not unnecessary to keep virt_get_{socket, cluster, core, thread}_id()
-because they're called for once. I would suggest to figure out the socket, cluster,
-core and thread ID through @possible_cpus in machvirt_init(), like below.
-
-Besides, we can't always expose property "cluster-id" since cluster in the CPU
-topology isn't always supported, seeing MachineClass::smp_props. Some users may
-want to hide cluster for unknown reasons. 'cluster-id' shouldn't be exposed in
-this case. Otherwise, users may be confused by 'cluster-id' property while it
-has been disabled. For example, a VM is started with the following command lines
-and 'cluster-id' shouldn't be supported in vCPU hot-add.
-
-     -cpu host -smp=maxcpus=2,cpus=1,sockets=2,cores=1,threads=1
-     (qemu) device_add host,id=cpu1,socket-id=1,cluster-id=0,core-id=0,thread-id=0
-
-     object_property_set_int(cpuobj, "socket-id",
-                             possible_cpus->cpus[i].props.socket_id, NULL);
-     if (mc->smp_props.cluster_supported && mc->smp_props.has_clusters) {
-         object_property_set_int(cpuobj, "cluster-id",
-                                 possible_cpus->cpus[i].props.cluster_id, NULL);
-     }
-     object_property_set_int(cpuobj, "core-id",
-                             possible_cpus->cpus[i].props.core_id, NULL);
-     object_property_set_int(cpuobj, "thread-id",
-                             possible_cpus->cpus[i].props.thread_id, NULL);
-
-> +static int virt_get_socket_id(const MachineState *ms, int cpu_index)
+> +CPUState *qemu_get_possible_cpu(int index)
 > +{
-> +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+> +    const CPUArchIdList *possible_cpus = ms->possible_cpus;
 > +
-> +    return ms->possible_cpus->cpus[cpu_index].props.socket_id;
+> +    assert((index >= 0) && (index < possible_cpus->len));
+> +
+> +    return CPU(possible_cpus->cpus[index].cpu);
 > +}
 > +
-> +static int virt_get_cluster_id(const MachineState *ms, int cpu_index)
+> +bool qemu_present_cpu(CPUState *cpu)
 > +{
-> +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> +
-> +    return ms->possible_cpus->cpus[cpu_index].props.cluster_id;
+> +    return cpu;
 > +}
 > +
-> +static int virt_get_core_id(const MachineState *ms, int cpu_index)
+> +bool qemu_enabled_cpu(CPUState *cpu)
 > +{
-> +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> +
-> +    return ms->possible_cpus->cpus[cpu_index].props.core_id;
-> +}
-> +
-> +static int virt_get_thread_id(const MachineState *ms, int cpu_index)
-> +{
-> +    assert(cpu_index >= 0 && cpu_index < ms->possible_cpus->len);
-> +
-> +    return ms->possible_cpus->cpus[cpu_index].props.thread_id;
-> +}
-> +
-> +static int
-> +virt_get_cpu_id_from_cpu_topo(const MachineState *ms, DeviceState *dev)
-> +{
-> +    int cpu_id, sock_vcpu_num, clus_vcpu_num, core_vcpu_num;
-> +    ARMCPU *cpu = ARM_CPU(dev);
-> +
-> +    /* calculate total logical cpus across socket/cluster/core */
-> +    sock_vcpu_num = cpu->socket_id * (ms->smp.threads * ms->smp.cores *
-> +                    ms->smp.clusters);
-> +    clus_vcpu_num = cpu->cluster_id * (ms->smp.threads * ms->smp.cores);
-> +    core_vcpu_num = cpu->core_id * ms->smp.threads;
-> +
-> +    /* get vcpu-id(logical cpu index) for this vcpu from this topology */
-> +    cpu_id = (sock_vcpu_num + clus_vcpu_num + core_vcpu_num) + cpu->thread_id;
-> +
-> +    assert(cpu_id >= 0 && cpu_id < ms->possible_cpus->len);
-> +
-> +    return cpu_id;
+> +    return cpu && !cpu->disabled;
 > +}
 > +
 
-This function is called for once in PATCH[04/37]. I think it needs to be moved
-around to PATCH[04/37].
+I do think it's a good idea to have wrappers to check for CPU's states since
+these CPU states play important role in this series to support vCPU hotplug.
+However, it would be nice to move them around into header file (include/hw/boards.h)
+because all the checks are originated from ms->possible_cpus->cpus[]. It sounds
+functions to a machine (board) instead of global scope. Besides, it would be
+nice to have same input (index) for all functions. How about something like
+below in include/hw/boards.h?
 
-[PATCH RFC V2 04/37] arm/virt,target/arm: Machine init time change common to vCPU {cold|hot}-plug
-
-The function name can be shortened because I don't see the suffix "_from_cpu_topo"
-is too much helpful. I think virt_get_cpu_index() would be good enough since it's
-called for once to return the index in array MachineState::possible_cpus::cpus[]
-and the return value is stored to CPUState::cpu_index.
-
-static int virt_get_cpu_index(const MachineState *ms, ARMCPU *cpu)
+static inline  bool machine_has_possible_cpu(int index)
 {
-     int index, cpus_in_socket, cpus_in_cluster, cpus_in_core;
+     MachineState *ms = MACHINE(qdev_get_machine());
 
-     /*
-      * It's fine to take cluster into account even it's not supported. In this
-      * case, ms->smp.clusters is always one.
-      */
+     if (!ms || !ms->possible_cpus || index < 0 || index >= ms->possible_cus->len) {
+         return false;
+     }
+
+     return true;
 }
 
->   static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+static inline bool machine_has_present_cpu(int index)
+{
+     MachineState *ms = MACHINE(qdev_get_machine());
+
+     if (!machine_is_possible_cpu(index) ||
+         !ms->possible_cpus->cpus[index].cpu) {
+         return false;
+     }
+
+     return true;
+}
+
+static inline bool machine_has_enabled_cpu(int index)
+{
+     MachineState *ms = MACHINE(qdev_get_machine());
+     CPUState *cs;
+
+     if (!machine_is_present_cpu(index)) {
+         return false;
+     }
+
+     cs = CPU(ms->possible_cpus->cpus[index].cpu);
+     return !cs->disabled
+}
+
+> +uint64_t qemu_get_cpu_archid(int cpu_index)
+> +{
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+> +    const CPUArchIdList *possible_cpus = ms->possible_cpus;
+> +
+> +    assert((cpu_index >= 0) && (cpu_index < possible_cpus->len));
+> +
+> +    return possible_cpus->cpus[cpu_index].arch_id;
+> +}
+> +
+
+I think it's unnecessary to keep it since it's called for once by
+hw/arm/virt-acpi-build.c::build_madt. The architectural ID can be
+directly fetched from possible_cpus->cpus[i].arch_id. It's fine
+to drop this function and fold the logic to the following patch.
+
+[PATCH RFC V2 21/37] hw/arm: MADT Tbl change to size the guest with possible vCPUs
+
+
+>   CPUState *qemu_get_cpu(int index)
 >   {
->       int n;
->       unsigned int max_cpus = ms->smp.max_cpus;
-> +    unsigned int smp_threads = ms->smp.threads;
->       VirtMachineState *vms = VIRT_MACHINE(ms);
->       MachineClass *mc = MACHINE_GET_CLASS(vms);
+>       CPUState *cpu;
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index fdcbe87352..e5af79950c 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -413,6 +413,17 @@ struct CPUState {
+>       SavedIOTLB saved_iotlb;
+>   #endif
 >   
-> @@ -2669,6 +2731,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
->       ms->possible_cpus->len = max_cpus;
->       for (n = 0; n < ms->possible_cpus->len; n++) {
->           ms->possible_cpus->cpus[n].type = ms->cpu_type;
-> +        ms->possible_cpus->cpus[n].vcpus_count = smp_threads;
->           ms->possible_cpus->cpus[n].arch_id =
->               virt_cpu_mp_affinity(vms, n);
+> +    /*
+> +     * Some architectures do not allow *presence* of vCPUs to be changed
+> +     * after guest has booted using information specified by VMM/firmware
+> +     * via ACPI MADT at the boot time. Thus to enable vCPU hotplug on these
+> +     * architectures possible vCPU can have CPUState object in 'disabled'
+> +     * state or can also not have CPUState object at all. This is possible
+> +     * when vCPU Hotplug is supported and vCPUs are 'yet-to-be-plugged' in
+> +     * the QOM or have been hot-unplugged.
+> +     * By default every CPUState is enabled as of now across all archs.
+> +     */
+> +    bool disabled;
+>       /* TODO Move common fields from CPUArchState here. */
+>       int cpu_index;
+>       int cluster_index;
+
+I guess the comments can be simplified a bit. How about something like below?
+
+     /*
+      * In order to support vCPU hotplug on architectures like aarch64,
+      * the vCPU states fall into possible, present or enabled. This field
+      * is added to distinguish present and enabled vCPUs. By default, all
+      * vCPUs are present and enabled.
+      */
+
+> @@ -770,6 +781,48 @@ static inline bool cpu_in_exclusive_context(const CPUState *cpu)
+>    */
+>   CPUState *qemu_get_cpu(int index);
 >   
+> +/**
+> + * qemu_get_possible_cpu:
+> + * @index: The CPUState@cpu_index value of the CPU to obtain.
+> + *         Input index MUST be in range [0, Max Possible CPUs)
+> + *
+> + * If CPUState object exists,then it gets a CPU matching
+> + * @index in the possible CPU array.
+> + *
+> + * Returns: The possible CPU or %NULL if CPU does not exist.
+> + */
+> +CPUState *qemu_get_possible_cpu(int index);
+> +
+> +/**
+> + * qemu_present_cpu:
+> + * @cpu: The vCPU to check
+> + *
+> + * Checks if the vCPU is amongst the present possible vcpus.
+> + *
+> + * Returns: True if it is present possible vCPU else false
+> + */
+> +bool qemu_present_cpu(CPUState *cpu);
+> +
+> +/**
+> + * qemu_enabled_cpu:
+> + * @cpu: The vCPU to check
+> + *
+> + * Checks if the vCPU is enabled.
+> + *
+> + * Returns: True if it is 'enabled' else false
+> + */
+> +bool qemu_enabled_cpu(CPUState *cpu);
+> +
+> +/**
+> + * qemu_get_cpu_archid:
+> + * @cpu_index: possible vCPU for which arch-id needs to be retreived
+> + *
+> + * Fetches the vCPU arch-id from the present possible vCPUs.
+> + *
+> + * Returns: arch-id of the possible vCPU
+> + */
+> +uint64_t qemu_get_cpu_archid(int cpu_index);
+> +
 
-This initialization seems to accomodate HMP command "info hotpluggable-cpus".
-It would be nice if it can be mentioned in the commit log.
+All these descriptive stuff isn't needed after the functions are moved to
+include/hw/boards.h, and qemu_get_cpu_archid() is dropped.
 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 93c28d50e5..1376350416 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2277,6 +2277,10 @@ static Property arm_cpu_properties[] = {
->       DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
->                           mp_affinity, ARM64_AFFINITY_INVALID),
->       DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
-> +    DEFINE_PROP_INT32("socket-id", ARMCPU, socket_id, 0),
-> +    DEFINE_PROP_INT32("cluster-id", ARMCPU, cluster_id, 0),
-> +    DEFINE_PROP_INT32("core-id", ARMCPU, core_id, 0),
-> +    DEFINE_PROP_INT32("thread-id", ARMCPU, thread_id, 0),
->       DEFINE_PROP_INT32("core-count", ARMCPU, core_count, -1),
->       DEFINE_PROP_END_OF_LIST()
->   };
-
-All those 4 properties are used for vCPU hot-add, meaning they're not needed
-when vCPU hotplug isn't supported on the specific board. Even for hw/virt board,
-cluster isn't always supported and 'cluster-id' shouldn't always be exposed,
-as explained above. How about to register the properties dynamically only when
-they're needed by vCPU hotplug?
-
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 88e5accda6..d51d39f621 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1094,6 +1094,10 @@ struct ArchCPU {
->       QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
->   
->       int32_t node_id; /* NUMA node this CPU belongs to */
-> +    int32_t socket_id;
-> +    int32_t cluster_id;
-> +    int32_t core_id;
-> +    int32_t thread_id;
-
-It would be fine to keep those fields even the corresponding properties are
-dynamically registered, but a little bit memory overhead incurred :)
-
->   
->       /* Used to synchronize KVM and QEMU in-kernel device levels */
->       uint8_t device_irq_level;
+>   /**
+>    * cpu_exists:
+>    * @id: Guest-exposed CPU ID to lookup.
 
 Thanks,
 Gavin

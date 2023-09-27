@@ -1,372 +1,169 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1728009ejc;
-        Wed, 27 Sep 2023 03:05:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG2R+ntlNfBS1C2sb6r/r5fBKSUBTDPmDUGtQeDPhoS2HoU7C/JpgWy3iNAa5VtcF1IBuxo
-X-Received: by 2002:ac8:7e91:0:b0:412:1908:404c with SMTP id w17-20020ac87e91000000b004121908404cmr1731835qtj.10.1695809108122;
-        Wed, 27 Sep 2023 03:05:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695809108; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1758423ejc;
+        Wed, 27 Sep 2023 04:02:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEY9Oh/7HXW26mXW892dHcX/Rx5x3sbUirjG2r/hFnyXYQN/Ss88X6y0OrSn2qpPk9fswok
+X-Received: by 2002:a0c:9cca:0:b0:656:3fa4:6016 with SMTP id j10-20020a0c9cca000000b006563fa46016mr1533841qvf.62.1695812555588;
+        Wed, 27 Sep 2023 04:02:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695812555; cv=none;
         d=google.com; s=arc-20160816;
-        b=mbtv9zXGkqAG3eV5zcVo1rd7SqvnQ2hid8OJMip3O66XHevrKCmtR5MKVV4t6KzbBp
-         4aWt8FSoD6KDr14osLC6AKgr/qUc1OBlQHKFwGX6oN/aq19ZiSVUyl+TDBPyRNMvKwoq
-         UqMuaSCkY8c9ZgEpPOBNw/5HRPzoW+ocbNkptT1jcqnbaODcdTTTrpDFocluCFbu9CS8
-         Utzp0hfuOl0whUTCUvmghY2U3wYTkvWzuBSEuaFyan1lJFbDwMfVwDDhYTJ8cpRVCe3J
-         FiHZ+7z/wDpUmZnK397J642QH62DJvcWmCgox7/K5rpgqaoCnHLuNlwFlcP0xJfVF+S8
-         aPQQ==
+        b=YZ+szk+SnCkL/dvAUm9QVfnwOFmCwqQkb5u+Z00aozINsA5MPgXr1HCAsCUNhEGk2s
+         8DIJ3b9MTKbqGFBwp+F2ju+3VlJl9KuW1zrE4wObVSmQJG55um5k5Rdtc7jVcioG7dF6
+         BKC5+YNlbufM2hVWnJseQ0GmHOzuwvOAcU0eq60NcyFH31PouL90uo+yBRBY1TU1+8Ac
+         Sqqs3plNXEM+KCFaNtmCvU76uE8FmFZ8dt8VI/uxXsu2ScVJp8ygRcd+vPNaWUFmJT90
+         uAv+L47VvAQueTTXFZTZxUJoXsJtmka3R5btpfBzryFEa2m9CRwt1I+3qVgGFM6DdH+q
+         YVFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=U/10JuknDXD7iTOs+uZOQSEWaEqPB2xAt4Hc+Sh7Tng=;
-        fh=fO+ncAaxY0Wf5Oiu0zeLu9be5DWOx71LYjyGHoG8Yc0=;
-        b=soMwxXp9tg0g4T4rJs1ewVlkvuTPM8mKwL6rhdAuzdJSUvSKAn5ThOcuwWkh8+qx7e
-         6JQPKliANLExsPUuPz+7lJrXOnKkJpEtgK7CL94qVozk/psrmIa8khTgh7HQer94di+A
-         gIx+dO+e+jRncAypoJqTVxuB8iOF++rYGASn7O58KXT/yVRQ2hvNPzFk+1JLandA40F4
-         Z2vcYqE/K8nK10Lz66YQSD6T+8/+qi2x2Er1++LYxYOP393yHwG9QeYTe4glVumnd2XV
-         O4oINCYEjLErpD/2Dduat9mI1ZSGjtf/MFd96Z0Javs4aQYoo66uqdidSwdZMqh30L7e
-         248Q==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=5pDQ0+S/GZ4G/A3kjjU+xUy8u5g9VwppemJdnpo+xnw=;
+        fh=JPmNNWFdLCeIR/gHn7wexEFwWDIgPmmG87UPgxIk2jk=;
+        b=rPNZUR6wfaV8QCG88z9zaTO+4pL2OYWNitsGz8xuphaGydRpsj2GX5WzPCcEMMNP/P
+         YOe82fKgOs67Xw5zPH/I+SbnTf8MuSIrAw9JYtB8ArL0bErjWXwaX+0htQQHEBLYAwLH
+         34dhPW25MCVesSYpH2geBN592eGIuO/HIli/07diptDA+IVprwH/PFK6hqQOlyz4MAcC
+         A4uIYDhZkY4kgdPjm+O8kHkQcf88abWrNhIR6VZkiJj7EQIiYDQy+kAKvAb22F+2BcCV
+         e0wUG+zE6Yt49d8dTEm7hbNwaF2AmeHRt/Nqc8mShSfpwF1nEtX4px0YUeXQijqKMiXy
+         YN4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="O9RF/bQ0";
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id a18-20020a05622a065200b00417ae86d616si8461369qtb.567.2023.09.27.03.05.07
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s9-20020a0cb309000000b0065166c4cf34si5595725qve.312.2023.09.27.04.02.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Sep 2023 03:05:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 27 Sep 2023 04:02:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="O9RF/bQ0";
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1695809107;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=U/10JuknDXD7iTOs+uZOQSEWaEqPB2xAt4Hc+Sh7Tng=;
-	b=O9RF/bQ0rblC7DCp5plBANkaVIY6vNZzf6SXUyHhoXBDAXdNayqM6Q+s8agfi7/pvv2XVQ
-	NJx5qY5lCWfoiuB0EONCkz74QR0rRmjGExrsBD3zVEvCyoSnAIMJWrDDj2nqvSwqBgksmN
-	+K2sGgNi+p+qlY7rH8E0ZWOyQ3JNnFI=
-Received: from mail-oo1-f69.google.com (mail-oo1-f69.google.com
- [209.85.161.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-557-UwAabg6KMvKJ9qD91aesbA-1; Wed, 27 Sep 2023 06:05:04 -0400
-X-MC-Unique: UwAabg6KMvKJ9qD91aesbA-1
-Received: by mail-oo1-f69.google.com with SMTP id 006d021491bc7-57be11d32b3so9334408eaf.1
-        for <alex.bennee@linaro.org>; Wed, 27 Sep 2023 03:05:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695809103; x=1696413903;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=U/10JuknDXD7iTOs+uZOQSEWaEqPB2xAt4Hc+Sh7Tng=;
-        b=B4YkWXJ9N2Kk1B5xgEz5E3LPSyg8/0fkX9mGXVffqQu4dVWPyaVld8ltWUIAzqt0Mf
-         baR8DxJIXZ49SKZGIMYeqt0eigsVRAaAc/E1RdRM+hSa/EdIFdgrzIpq1+eAjIWS6xRS
-         OY3yB+X6tvtiavIrMVNyIZPIFlp0/Q9Lq/Gt065W8FJv+CqzPUc8VsOM4EZ8xkTHQB0r
-         PzYSNXaVvW7l24wdVOzttnOYF2dGo2AKjgzMZ3ba35tuRjNocWTRc8J/mFGh6FgXYmeh
-         +ef0O/J1bMQDQ90/CzbB0e1OfP+KGbDHxoFRT+W1Cmk6MH7H5CbRXYbyI8lYayNNNyZz
-         CRJg==
-X-Gm-Message-State: AOJu0Yz6jAef1obt09FBRjRYg5W4DNYuGTl+Qhv/MXGUPE1uBVHntJmK
-	Tmc7k3zVMh9chIabr58qwgre43DwG2guR6ZCTzypD/HjrixrH40o3rqVcGcb9EEjW273AiKjPG9
-	TUPty7uW8nnTiS88C
-X-Received: by 2002:a05:6358:726:b0:134:ed9b:15a7 with SMTP id e38-20020a056358072600b00134ed9b15a7mr1835512rwj.30.1695809103118;
-        Wed, 27 Sep 2023 03:05:03 -0700 (PDT)
-X-Received: by 2002:a05:6358:726:b0:134:ed9b:15a7 with SMTP id e38-20020a056358072600b00134ed9b15a7mr1835492rwj.30.1695809102729;
-        Wed, 27 Sep 2023 03:05:02 -0700 (PDT)
-Return-Path: <gshan@redhat.com>
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
-        by smtp.gmail.com with ESMTPSA id i13-20020aa7908d000000b0068fe39e6a46sm11350063pfa.112.2023.09.27.03.04.51
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 27 Sep 2023 03:05:02 -0700 (PDT)
-Message-ID: <b9dd8569-e95d-2085-9965-08686ce6666d@redhat.com>
-Date: Wed, 27 Sep 2023 20:04:48 +1000
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qlSJ4-0008Vr-7a; Wed, 27 Sep 2023 07:02:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qlSIy-0008V6-Gt; Wed, 27 Sep 2023 07:02:08 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qlSIv-0001k1-1P; Wed, 27 Sep 2023 07:02:07 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.206])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RwYYY068Sz6K7yw;
+ Wed, 27 Sep 2023 19:00:32 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 27 Sep
+ 2023 12:01:48 +0100
+Date: Wed, 27 Sep 2023 12:01:48 +0100
+To: Ankit Agrawal <ankita@nvidia.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
+ <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
+ (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, "Andy
+ Currid" <ACurrid@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v1 3/4] hw/arm/virt-acpi-build: patch guest SRAT for
+ NUMA nodes
+Message-ID: <20230927120148.000037a0@Huawei.com>
+In-Reply-To: <BY5PR12MB37637E2A77DC8A9AB064ABCEB0C3A@BY5PR12MB3763.namprd12.prod.outlook.com>
+References: <20230915024559.6565-1-ankita@nvidia.com>
+ <20230915024559.6565-4-ankita@nvidia.com>
+ <20230915153740.00006185@Huawei.com>
+ <BY5PR12MB3763BC1EB9402223B020ABF8B0FFA@BY5PR12MB3763.namprd12.prod.outlook.com>
+ <20230925145440.00005072@Huawei.com>
+ <20230925140328.GF13733@nvidia.com>
+ <20230925155351.00000638@Huawei.com>
+ <20230925160043.GH13733@nvidia.com>
+ <20230925180038.00003879@Huawei.com>
+ <BY5PR12MB37637E2A77DC8A9AB064ABCEB0C3A@BY5PR12MB3763.namprd12.prod.outlook.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH RFC V2 06/37] arm/virt,kvm: Pre-create disabled possible
- vCPUs @machine init
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
- ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
- mst@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com,
- alex.bennee@linaro.org, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, lixianglai@loongson.cn
-References: <20230926100436.28284-1-salil.mehta@huawei.com>
- <20230926100436.28284-7-salil.mehta@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230926100436.28284-7-salil.mehta@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-TUID: 2RVsYDClwS/Y
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SErYAAzpIBvd
 
-Hi Salil,
+On Tue, 26 Sep 2023 14:54:36 +0000
+Ankit Agrawal <ankita@nvidia.com> wrote:
 
-On 9/26/23 20:04, Salil Mehta wrote:
-> In ARMv8 architecture, GIC needs all the vCPUs to be created and present when
-> it is initialized. This is because:
-> 1. GICC and MPIDR association must be fixed at the VM initialization time.
->     This is represented by register GIC_TYPER(mp_afffinity, proc_num)
-> 2. GICC(cpu interfaces), GICR(redistributors) etc all must be initialized
->     at the boot time as well.
-> 3. Memory regions associated with GICR etc. cannot be changed(add/del/mod)
->     after VM has inited.
+> > With an ACPI spec clarification agreed then I'm fine with
+> > using this for all the cases that have come up in this thread.
+> > Or a good argument that this is valid in under existing ACPI spec.  
 > 
-> This patch adds the support to pre-create all such possible vCPUs within the
-> host using the KVM interface as part of the virt machine initialization. These
-> vCPUs could later be attached to QOM/ACPI while they are actually hot plugged
-> and made present.
+> Hi Jonathan
 > 
-> Co-developed-by: Salil Mehta <salil.mehta@huawei.com>
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> Reported-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> [VP: Identified CPU stall issue & suggested probable fix]
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> ---
->   hw/arm/virt.c         | 53 +++++++++++++++++++++++++++++++++++++++++--
->   include/hw/core/cpu.h |  1 +
->   target/arm/cpu64.c    |  1 +
->   target/arm/kvm.c      | 32 ++++++++++++++++++++++++++
->   target/arm/kvm64.c    |  9 +++++++-
->   target/arm/kvm_arm.h  | 11 +++++++++
->   6 files changed, 104 insertions(+), 3 deletions(-)
+> I looked at the Section 5.2.16 in ACPI spec doc, but could not see
+> any mention of whether size == 0 is invalid or be avoided. 
+> https://uefi.org/sites/default/files/resources/ACPI_6_3_final_Jan30.pdf
 > 
+> If that is not convincing, do you have suggestions as to how I may
+> confirm this?
+>
 
-The subject looks a bit misleading. (possible && disabled) == (disabled). So it
-can be simplified to something like below:
+It's not so much whether 0 size is valid that concerns me (as you
+say it isn't ruled out, though given the explanatory text is
+is non sensical) but rather whether you are allowed to use
+such an entry to add memory that is not within the range later.
 
-arm/virt,kvm: Pre-create KVM objects for hotpluggable vCPUs
+To my reading the statement under "Memory Affinity Structure" suggests
+not.
 
-I think the commit log can be improved to something like below:
+"The Memory Affinity structure provides the following topology information
+statically to the operating system:
 
-All possible vCPUs are classified to cold-booting and hotpluggable vCPUs.
-In ARMv8 architecture, GIC needs all the possible vCPUs to be existing
-and present when it is initialized for several factors. After the initializaion,
-the CPU instances for those hotpluggable vCPUs aren't needed, but the
-KVM objects like vCPU's file descriptor should be kept as they have been
-shared to host.
+* The association between a _memory range_ and the proximity to which it belongs.
+* Information about whether the memory range can be hot-plugged.
+"
 
-1. GICC and MPIDR association must be fixed at the VM initialization time.
-    This is represented by register GIC_TYPER(mp_afffinity, proc_num)
-2. GICC(cpu interfaces), GICR(redistributors) etc all must be initialized
-    at the boot time as well.
-3. Memory regions associated with GICR etc. cannot be changed(add/del/mod)
-    after VM has inited.
+That doesn't leave space for using it to define a proximity node without
+providing the range.  With my 'occasional' contributor to ACPI spec hat on,
+(obviously there are people way more versed in this than me!)
+I'd suggest that ASWG will ask the obvious question of why does the ACPI
+table needs to describe a software entity that is entirely discoverable by
+other means?  After all your driver is clearly going to pick up these
+nodes and assign them later - so it can just create them.  ACPI spec
+doesn't care if Linux can do this or not :(
 
-This creates and realizes CPU instances for those cold-booting vCPUs. They
-becomes enabled eventually. For these hotpluggable vCPUs, the vCPU instances
-are created, but not realized. They become present eventually.
+There are some hacks in place in the kernel (or at least under review)
+to deal with a CXL case where there are BIOSes that assign part of the
+CXL Fixed Memory Window (a bit of host PA space) to an SRAT entry, but
+not the whole of it.  However, I think those are a workaround for a bug
+(maybe not everyone agrees with that though).
 
+Perhaps I'm being overly hopeful for clarity and it is fine to
+do what you have here.
 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 3668ad27ec..6ba131b799 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2293,8 +2293,10 @@ static void machvirt_init(MachineState *machine)
->       assert(possible_cpus->len == max_cpus);
->       for (n = 0; n < possible_cpus->len; n++) {
->           Object *cpuobj;
-> +        CPUState *cs;
->   
->           cpuobj = object_new(possible_cpus->cpus[n].type);
-> +        cs = CPU(cpuobj);
->   
->           aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
->           object_property_set_int(cpuobj, "socket-id",
-> @@ -2306,8 +2308,55 @@ static void machvirt_init(MachineState *machine)
->           object_property_set_int(cpuobj, "thread-id",
->                                   virt_get_thread_id(machine, n), NULL);
->   
-> -        qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
-> -        object_unref(cpuobj);
-> +        if (n < smp_cpus) {
-> +            qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
-> +            object_unref(cpuobj);
-> +        } else {
-> +            CPUArchId *cpu_slot;
-> +
-> +            /* handling for vcpus which are yet to be hot-plugged */
-> +            cs->cpu_index = n;
-> +            cpu_slot = virt_find_cpu_slot(machine, cs->cpu_index);
-> +
-> +            /*
-> +             * ARM host vCPU features need to be fixed at the boot time. But as
-> +             * per current approach this CPU object will be destroyed during
-> +             * cpu_post_init(). During hotplug of vCPUs these properties are
-> +             * initialized again.
-> +             */
-> +            virt_cpu_set_properties(cpuobj, cpu_slot, &error_fatal);
-> +
-> +            /*
-> +             * For KVM, we shall be pre-creating the now disabled/un-plugged
-> +             * possbile host vcpus and park them till the time they are
-> +             * actually hot plugged. This is required to pre-size the host
-> +             * GICC and GICR with the all possible vcpus for this VM.
-> +             */
-> +            if (kvm_enabled()) {
-> +                kvm_arm_create_host_vcpu(ARM_CPU(cs));
-> +            }
-
-                /*
-                 * For KVM, the associated objects like vCPU's file descriptor
-                 * is reserved so that they can reused when the vCPU is hot added.
-                 * :
-                 */
-
-> +            /*
-> +             * Add disabled vCPU to CPU slot during the init phase of the virt
-> +             * machine
-> +             * 1. We need this ARMCPU object during the GIC init. This object
-> +             *    will facilitate in pre-realizing the GIC. Any info like
-> +             *    mp-affinity(required to derive gicr_type) etc. could still be
-> +             *    fetched while preserving QOM abstraction akin to realized
-> +             *    vCPUs.
-> +             * 2. Now, after initialization of the virt machine is complete we
-> +             *    could use two approaches to deal with this ARMCPU object:
-> +             *    (i) re-use this ARMCPU object during hotplug of this vCPU.
-> +             *                             OR
-> +             *    (ii) defer release this ARMCPU object after gic has been
-> +             *         initialized or during pre-plug phase when a vCPU is
-> +             *         hotplugged.
-> +             *
-> +             *    We will use the (ii) approach and release the ARMCPU objects
-> +             *    after GIC and machine has been fully initialized during
-> +             *    machine_init_done() phase.
-> +             */
-> +             cpu_slot->cpu = OBJECT(cs);
-> +        }
-
-            /*
-             * Make the hotpluggable vCPU present because ....
-             */
->       }
->       fdt_add_timer_nodes(vms);
->       fdt_add_cpu_nodes(vms);
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index e5af79950c..b2201a98ee 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -401,6 +401,7 @@ struct CPUState {
->       uint32_t kvm_fetch_index;
->       uint64_t dirty_pages;
->       int kvm_vcpu_stats_fd;
-> +    VMChangeStateEntry *vmcse;
->   
->       /* Use by accel-block: CPU is executing an ioctl() */
->       QemuLockCnt in_ioctl_lock;
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index a660e3f483..3a38e7ccaf 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -748,6 +748,7 @@ static void aarch64_cpu_initfn(Object *obj)
->        * enabled explicitly
->        */
->       cs->disabled = true;
-> +    cs->thread_id = 0;
->   }
->   
->   static void aarch64_cpu_finalizefn(Object *obj)
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index b4c7654f49..0e1d0692b1 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -637,6 +637,38 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
->       write_list_to_cpustate(cpu);
->   }
->   
-> +void kvm_arm_create_host_vcpu(ARMCPU *cpu)
-> +{
-> +    CPUState *cs = CPU(cpu);
-> +    unsigned long vcpu_id = cs->cpu_index;
-> +    int ret;
-> +
-> +    ret = kvm_create_vcpu(cs);
-> +    if (ret < 0) {
-> +        error_report("Failed to create host vcpu %ld", vcpu_id);
-> +        abort();
-> +    }
-> +
-> +    /*
-> +     * Initialize the vCPU in the host. This will reset the sys regs
-> +     * for this vCPU and related registers like MPIDR_EL1 etc. also
-> +     * gets programmed during this call to host. These are referred
-> +     * later while setting device attributes of the GICR during GICv3
-> +     * reset
-> +     */
-> +    ret = kvm_arch_init_vcpu(cs);
-> +    if (ret < 0) {
-> +        error_report("Failed to initialize host vcpu %ld", vcpu_id);
-> +        abort();
-> +    }
-> +
-> +    /*
-> +     * park the created vCPU. shall be used during kvm_get_vcpu() when
-> +     * threads are created during realization of ARM vCPUs.
-> +     */
-> +    kvm_park_vcpu(cs);
-> +}
-> +
->   /*
->    * Update KVM's MP_STATE based on what QEMU thinks it is
->    */
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 94bbd9661f..364cc21f81 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -566,7 +566,14 @@ int kvm_arch_init_vcpu(CPUState *cs)
->           return -EINVAL;
->       }
->   
-> -    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cs);
-> +    /*
-> +     * Install VM change handler only when vCPU thread has been spawned
-> +     * i.e. vCPU is being realized
-> +     */
-> +    if (cs->thread_id) {
-> +        cs->vmcse = qemu_add_vm_change_state_handler(kvm_arm_vm_state_change,
-> +                                                     cs);
-> +    }
->   
->       /* Determine init features for this CPU */
->       memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index 051a0da41c..31408499b3 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -163,6 +163,17 @@ void kvm_arm_cpu_post_load(ARMCPU *cpu);
->    */
->   void kvm_arm_reset_vcpu(ARMCPU *cpu);
->   
-> +/**
-> + * kvm_arm_create_host_vcpu:
-> + * @cpu: ARMCPU
-> + *
-> + * Called at to pre create all possible kvm vCPUs within the the host at the
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-              to create instances for the hotpluggable vCPUs
-
-> + * virt machine init time. This will also init this pre-created vCPU and
-> + * hence result in vCPU reset at host. These pre created and inited vCPUs
-> + * shall be parked for use when ARM vCPUs are actually realized.
-> + */
-> +void kvm_arm_create_host_vcpu(ARMCPU *cpu);
-> +
->   /**
->    * kvm_arm_init_serror_injection:
->    * @cs: CPUState
-
-Thanks,
-Gavin
+Jonathan

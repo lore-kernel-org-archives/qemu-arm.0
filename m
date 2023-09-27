@@ -1,38 +1,38 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1758423ejc;
-        Wed, 27 Sep 2023 04:02:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEY9Oh/7HXW26mXW892dHcX/Rx5x3sbUirjG2r/hFnyXYQN/Ss88X6y0OrSn2qpPk9fswok
-X-Received: by 2002:a0c:9cca:0:b0:656:3fa4:6016 with SMTP id j10-20020a0c9cca000000b006563fa46016mr1533841qvf.62.1695812555588;
-        Wed, 27 Sep 2023 04:02:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695812555; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1775940ejc;
+        Wed, 27 Sep 2023 04:33:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEubA8eNyhRkxPhZkzzbm7utJ60vmzvqJutpSmbyXCpR53Gc76D3wWQYT30EhTR3vC2E/eg
+X-Received: by 2002:a05:620a:4546:b0:76f:a86:65bd with SMTP id u6-20020a05620a454600b0076f0a8665bdmr2104369qkp.53.1695814427891;
+        Wed, 27 Sep 2023 04:33:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695814427; cv=none;
         d=google.com; s=arc-20160816;
-        b=YZ+szk+SnCkL/dvAUm9QVfnwOFmCwqQkb5u+Z00aozINsA5MPgXr1HCAsCUNhEGk2s
-         8DIJ3b9MTKbqGFBwp+F2ju+3VlJl9KuW1zrE4wObVSmQJG55um5k5Rdtc7jVcioG7dF6
-         BKC5+YNlbufM2hVWnJseQ0GmHOzuwvOAcU0eq60NcyFH31PouL90uo+yBRBY1TU1+8Ac
-         Sqqs3plNXEM+KCFaNtmCvU76uE8FmFZ8dt8VI/uxXsu2ScVJp8ygRcd+vPNaWUFmJT90
-         uAv+L47VvAQueTTXFZTZxUJoXsJtmka3R5btpfBzryFEa2m9CRwt1I+3qVgGFM6DdH+q
-         YVFw==
+        b=sBHvZNg9UWitG6blGu4afjL2kiyCY7pKd194B4JMm0oRo4TDfO0ZOABGkqAk82qJGJ
+         4NrVrLHLJbcgTK88Sp/ZOGaAYPy2ElTWTwA3sagP1fCxvINvS4jIEyznPAVD4EctLZIK
+         ov+vGCPuj1odKCJA4PO5PgNg0JVe9M8wMC9BJEEQ2wRHyNkkdds6vzSOgIwtnHnVdfDG
+         dAD08VSxjHZQvn1hsB9y9EHaN6WYCNIJXztQrWr47G9NMdaqLg24k6wvhVeISaYw6Dp5
+         WDE3HWoipRYQEjyjWbmInyyEHzQIJqzuDCLz49sdNjGddkSd8h9wxecsB1ULNSUFp/Fi
+         XSSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:subject:cc:to:date;
-        bh=5pDQ0+S/GZ4G/A3kjjU+xUy8u5g9VwppemJdnpo+xnw=;
-        fh=JPmNNWFdLCeIR/gHn7wexEFwWDIgPmmG87UPgxIk2jk=;
-        b=rPNZUR6wfaV8QCG88z9zaTO+4pL2OYWNitsGz8xuphaGydRpsj2GX5WzPCcEMMNP/P
-         YOe82fKgOs67Xw5zPH/I+SbnTf8MuSIrAw9JYtB8ArL0bErjWXwaX+0htQQHEBLYAwLH
-         34dhPW25MCVesSYpH2geBN592eGIuO/HIli/07diptDA+IVprwH/PFK6hqQOlyz4MAcC
-         A4uIYDhZkY4kgdPjm+O8kHkQcf88abWrNhIR6VZkiJj7EQIiYDQy+kAKvAb22F+2BcCV
-         e0wUG+zE6Yt49d8dTEm7hbNwaF2AmeHRt/Nqc8mShSfpwF1nEtX4px0YUeXQijqKMiXy
-         YN4Q==
+        bh=TDghhqp6Wb1Di1f/TO9jOjEJ9j5fYZJXo4fyd6oBbJs=;
+        fh=wng5gR7otOG9hpLpznMNWZhS+osrJCf8Xwrz3QJXFx8=;
+        b=AkWISCOWi6z0QhUS2Oy5t3WgqkWGR7U1iaOLRpEghyz6yzB5hkgMnfjuMdd19tSphw
+         kGJi+mxiYYcLjHruB6sOmMlQaeVYxAJM+dmHSyAsglJluS7/QxMWVhvv+elSkwPZmtQD
+         PVgx3xVHbQugdaOs1qB0pri2qSP0qMDmB8uYvGNs4LigIW5H/hPYkrLChnwsgHs3FrIc
+         K+w/jxRqkTYn+NTnx7WfCxyhqtUrNa6tZRbBF4ZIJ++qvQHFFhzx/5T9PbKa/dKOHCjW
+         2rfIxozvEs6px20SEGArZ2O60TmhNxxz/HfQsVaBc33+u1FVPQYSkk5kWch3wKeDdSC4
+         RPYg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s9-20020a0cb309000000b0065166c4cf34si5595725qve.312.2023.09.27.04.02.35
+        by mx.google.com with ESMTPS id i18-20020a05620a249200b007683e40b4a1si8090342qkn.517.2023.09.27.04.33.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Sep 2023 04:02:35 -0700 (PDT)
+        Wed, 27 Sep 2023 04:33:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -40,54 +40,55 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qlSJ4-0008Vr-7a; Wed, 27 Sep 2023 07:02:15 -0400
+	id 1qlSnK-0002dr-Uc; Wed, 27 Sep 2023 07:33:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qlSIy-0008V6-Gt; Wed, 27 Sep 2023 07:02:08 -0400
+ id 1qlSnI-0002dJ-8y; Wed, 27 Sep 2023 07:33:28 -0400
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1qlSIv-0001k1-1P; Wed, 27 Sep 2023 07:02:07 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.206])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RwYYY068Sz6K7yw;
- Wed, 27 Sep 2023 19:00:32 +0800 (CST)
+ id 1qlSnF-00059M-KU; Wed, 27 Sep 2023 07:33:28 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.207])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RwZDd5yFWz6DBT0;
+ Wed, 27 Sep 2023 19:30:57 +0800 (CST)
 Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
  (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Wed, 27 Sep
- 2023 12:01:48 +0100
-Date: Wed, 27 Sep 2023 12:01:48 +0100
+ 2023 12:33:19 +0100
+Date: Wed, 27 Sep 2023 12:33:18 +0100
 To: Ankit Agrawal <ankita@nvidia.com>
-CC: Jason Gunthorpe <jgg@nvidia.com>, "alex.williamson@redhat.com"
- <alex.williamson@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
- <ani@anisinha.ca>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
- <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
- (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, "Andy
- Currid" <ACurrid@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v1 3/4] hw/arm/virt-acpi-build: patch guest SRAT for
- NUMA nodes
-Message-ID: <20230927120148.000037a0@Huawei.com>
-In-Reply-To: <BY5PR12MB37637E2A77DC8A9AB064ABCEB0C3A@BY5PR12MB3763.namprd12.prod.outlook.com>
+CC: Alex Williamson <alex.williamson@redhat.com>, David Hildenbrand
+ <david@redhat.com>, =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ Jason Gunthorpe <jgg@nvidia.com>, "shannon.zhaosl@gmail.com"
+ <shannon.zhaosl@gmail.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "ani@anisinha.ca" <ani@anisinha.ca>, "Aniket
+ Agashe" <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
+ <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
+ Sethi <vsethi@nvidia.com>, Andy Currid <ACurrid@nvidia.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, Gavin Shan <gshan@redhat.com>,
+ <ira.weiny@intel.com>, <navneet.singh@intel.com>
+Subject: Re: [PATCH v1 0/4] vfio: report NUMA nodes for device memory
+Message-ID: <20230927123318.00005aad@Huawei.com>
+In-Reply-To: <BY5PR12MB37630E29E6E83BCD63FB3F2BB0C2A@BY5PR12MB3763.namprd12.prod.outlook.com>
 References: <20230915024559.6565-1-ankita@nvidia.com>
- <20230915024559.6565-4-ankita@nvidia.com>
- <20230915153740.00006185@Huawei.com>
- <BY5PR12MB3763BC1EB9402223B020ABF8B0FFA@BY5PR12MB3763.namprd12.prod.outlook.com>
- <20230925145440.00005072@Huawei.com>
- <20230925140328.GF13733@nvidia.com>
- <20230925155351.00000638@Huawei.com>
- <20230925160043.GH13733@nvidia.com>
- <20230925180038.00003879@Huawei.com>
- <BY5PR12MB37637E2A77DC8A9AB064ABCEB0C3A@BY5PR12MB3763.namprd12.prod.outlook.com>
+ <d09b3df6-74f8-c93b-b26e-59de5b2dd114@redhat.com>
+ <20230915084754.4b49d5c0.alex.williamson@redhat.com>
+ <f129b30b-bd0c-4e30-6be9-384b2b79a26b@redhat.com>
+ <BY5PR12MB3763FA9922B9059DC14CA80DB0FFA@BY5PR12MB3763.namprd12.prod.outlook.com>
+ <b67c18d1-a648-81bc-1144-33fb839f2aa3@redhat.com>
+ <BY5PR12MB37636F9E84CF92020769D859B0C3A@BY5PR12MB3763.namprd12.prod.outlook.com>
+ <769b577a-65b0-dbfe-3e99-db57cea08529@redhat.com>
+ <20230926131427.1e441670.alex.williamson@redhat.com>
+ <BY5PR12MB37630E29E6E83BCD63FB3F2BB0C2A@BY5PR12MB3763.namprd12.prod.outlook.com>
 Organization: Huawei Technologies Research and Development (UK) Ltd.
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
  lhrpeml500005.china.huawei.com (7.191.163.240)
 X-CFilter-Loop: Reflected
 Received-SPF: pass client-ip=185.176.79.56;
@@ -114,56 +115,163 @@ Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
 From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SErYAAzpIBvd
+X-TUID: PFZpbCgAv+zh
 
-On Tue, 26 Sep 2023 14:54:36 +0000
+On Wed, 27 Sep 2023 07:14:28 +0000
 Ankit Agrawal <ankita@nvidia.com> wrote:
 
-> > With an ACPI spec clarification agreed then I'm fine with
-> > using this for all the cases that have come up in this thread.
-> > Or a good argument that this is valid in under existing ACPI spec.  
-> 
-> Hi Jonathan
-> 
-> I looked at the Section 5.2.16 in ACPI spec doc, but could not see
-> any mention of whether size == 0 is invalid or be avoided. 
-> https://uefi.org/sites/default/files/resources/ACPI_6_3_final_Jan30.pdf
-> 
-> If that is not convincing, do you have suggestions as to how I may
-> confirm this?
->
+> > >
+> > > Based on the suggestions here, can we consider something like the
+> > > following?
+> > > 1. Introduce a new -numa subparam 'devnode', which tells Qemu to mark
+> > > the node with MEM_AFFINITY_HOTPLUGGABLE in the SRAT's memory affinity
+> > > structure to make it hotpluggable. =20
+> >
+> > Is that "devnode=3Don" parameter required? Can't we simply expose any n=
+ode
+> > that does *not* have any boot memory assigned as MEM_AFFINITY_HOTPLUGGA=
+BLE?
 
-It's not so much whether 0 size is valid that concerns me (as you
-say it isn't ruled out, though given the explanatory text is
-is non sensical) but rather whether you are allowed to use
-such an entry to add memory that is not within the range later.
+That needs some checking for what extra stuff we'll instantiate on CPU only
+(or once we implement them) Generic Initiator / Generic Port nodes -
+I'm definitely not keen on doing so for generic ports (which QEMU doesn't y=
+et
+do though there have been some RFCs I think).
 
-To my reading the statement under "Memory Affinity Structure" suggests
-not.
+> > Right now, with "ordinary", fixed-location memory devices
+> > (DIMM/NVDIMM/virtio-mem/virtio-pmem), we create an srat entry that
+> > covers the device memory region for these devices with
+> > MEM_AFFINITY_HOTPLUGGABLE. We use the highest NUMA node in the machine,
+> > which does not quite work IIRC. All applicable nodes that don't have
+> > boot memory would need MEM_AFFINITY_HOTPLUGGABLE for Linux to create th=
+em. =20
+>=20
+> Yeah, you're right that it isn't required. Exposing the node without any =
+memory as
+> MEM_AFFINITY_HOTPLUGGABLE seems like a better approach than using
+> "devnode=3Don".
+>=20
+> > In your example, which memory ranges would we use for these nodes in SR=
+AT? =20
+>=20
+> We are setting the Base Address and the Size as 0 in the SRAT memory affi=
+nity
+> structures. This is done through the following:
+> build_srat_memory(table_data, 0, 0, i,
+>                   MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
+>=20
+> This results in the following logs in the VM from the Linux ACPI SRAT par=
+sing code:
+> [    0.000000] ACPI: SRAT: Node 2 PXM 2 [mem 0x00000000-0xfffffffffffffff=
+f] hotplug
+> [    0.000000] ACPI: SRAT: Node 3 PXM 3 [mem 0x00000000-0xfffffffffffffff=
+f] hotplug
+> [    0.000000] ACPI: SRAT: Node 4 PXM 4 [mem 0x00000000-0xfffffffffffffff=
+f] hotplug
+> [    0.000000] ACPI: SRAT: Node 5 PXM 5 [mem 0x00000000-0xfffffffffffffff=
+f] hotplug
+> [    0.000000] ACPI: SRAT: Node 6 PXM 6 [mem 0x00000000-0xfffffffffffffff=
+f] hotplug
+> [    0.000000] ACPI: SRAT: Node 7 PXM 7 [mem 0x00000000-0xfffffffffffffff=
+f] hotplug
+> [    0.000000] ACPI: SRAT: Node 8 PXM 8 [mem 0x00000000-0xfffffffffffffff=
+f] hotplug
+> [    0.000000] ACPI: SRAT: Node 9 PXM 9 [mem 0x00000000-0xfffffffffffffff=
+f] hotplug
+>=20
+> I would re-iterate that we are just emulating the baremetal behavior here.
+>=20
+>=20
+> > I don't see how these numa-node args on a vfio-pci device have any
+> > general utility.=A0 They're only used to create a firmware table, so why
+> > don't we be explicit about it and define the firmware table as an
+> > object?=A0 For example:
+> >
+> >=A0=A0=A0 =A0=A0=A0 -numa node,nodeid=3D2 \
+> >=A0 =A0=A0=A0=A0=A0 -numa node,nodeid=3D3 \
+> > =A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D4 \
+> >=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D5 \
+> >=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D6 \
+> >=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D7 \
+> >=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D8 \
+> >=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D9 \
+> >=A0=A0=A0=A0=A0=A0=A0 -device vfio-pci-nohotplug,host=3D0009:01:00.0,bus=
+=3Dpcie.0,addr=3D04.0,rombar=3D0,id=3Dnvgrace0 \
+> >=A0=A0=A0=A0=A0=A0=A0 -object nvidia-gpu-mem-acpi,devid=3Dnvgrace0,nodes=
+et=3D2-9 \ =20
+>=20
+> Yeah, that is fine with me. If we agree with this approach, I can go
+> implement it.
+>=20
+>=20
+> > There are some suggestions in this thread that CXL could have similar
+> > requirements,
 
-"The Memory Affinity structure provides the following topology information
-statically to the operating system:
+For CXL side of things, if talking memory devices (type 3), I'm not
+sure what the usecase will be of this feature.
+Either we treat them as normal memory in which case it will all be static
+at boot of the VM (for SRAT anyway - we might plug things in and
+out of ranges), or it will be whole device hotplug and look like pc-dimm
+hotplug (which should be into a statically defined range in SRAT).
+ Longer term if we look at virtualizing dynamic capacity
+devices (not sure we need to other that possibly to leverage
+sparse DAX etc on top of them) then we might want to provide
+emulated CXL Fixed memory windows in the guest (which get their own=20
+NUMA nodes anyway) + plug the memory into that. We'd probably hide
+away interleaving etc in the host as all the guest should care about
+is performance information and I doubt we'd want to emulate the complexity
+of address routing complexities.
 
-* The association between a _memory range_ and the proximity to which it belongs.
-* Information about whether the memory range can be hot-plugged.
-"
+Similar to host PA ranges used in CXL fixed memory windows, I'm not sure
+we wouldn't just allow for the guest to have 'all' possible setups that
+might get plugged later by just burning a lot of HPA space and hence
+just be able to use static SRAT nodes covering each region.
+This would be less painful than for real PAs because as we are
+emulating the CXL devices, probably as one emulated type 3 device per
+potential set of real devices in an interleave set we can avoid
+all the ordering constraints of CXL address decoders that end up eating
+up Host PA space.
 
-That doesn't leave space for using it to define a proximity node without
-providing the range.  With my 'occasional' contributor to ACPI spec hat on,
-(obviously there are people way more versed in this than me!)
-I'd suggest that ASWG will ask the obvious question of why does the ACPI
-table needs to describe a software entity that is entirely discoverable by
-other means?  After all your driver is clearly going to pick up these
-nodes and assign them later - so it can just create them.  ACPI spec
-doesn't care if Linux can do this or not :(
+Virtualizing DCD is going to be a fun topic (that's next year's
+plumbers CXL uconf session sorted ;), but I can see it might be done comple=
+tely
+differently and look nothing like a CXL device, in which case maybe
+what you have here will make sense.
 
-There are some hacks in place in the kernel (or at least under review)
-to deal with a CXL case where there are BIOSes that assign part of the
-CXL Fixed Memory Window (a bit of host PA space) to an SRAT entry, but
-not the whole of it.  However, I think those are a workaround for a bug
-(maybe not everyone agrees with that though).
+Come to think of it, you 'could' potentially do that for your use case
+if the regions are reasonably bound in maximum size at the cost of
+large GPA usage?
 
-Perhaps I'm being overly hopeful for clarity and it is fine to
-do what you have here.
+CXL accelerators / GPUs etc are a different question but who has one
+of those anyway? :)
 
-Jonathan
+
+> > but I haven't found any evidence that these
+> > dev-mem-pxm-{start,count} attributes in the _DSD are standardized in
+> > any way.=A0 If they are, maybe this would be a dev-mem-pxm-acpi object
+> > rather than an NVIDIA specific one. =20
+>=20
+> Maybe Jason, Jonathan can chime in on this?
+
+I'm not aware of anything general around this.  A PCI device
+can have a _PXM and I think you could define subdevices each with a
+_PXM of their own?  Those subdevices would need drivers to interpret
+the structure anyway so not real benefit over a _DSD that I can
+immediately think of...
+
+If we think this will be common long term, anyone want to take
+multiple _PXM per device support as a proposal to ACPI?
+
+So agreed, it's not general, so if it's acceptable to have 0 length
+NUMA nodes (and I think we have to emulate them given that's what real
+hardware is doing even if some of us think the real hardware shouldn't
+have done that!) then just spinning them up explicitly as nodes
++ device specific stuff for the NVIDIA device seems fine to me.
+
+>=20
+>=20
+> > It seems like we could almost meet the requirement for this table via
+> > -acpitable, but I think we'd like to avoid the VM orchestration tool
+> > from creating, compiling, and passing ACPI data blobs into the VM. =20
+>=20
+

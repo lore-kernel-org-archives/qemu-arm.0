@@ -1,191 +1,174 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1788955ejc;
-        Wed, 27 Sep 2023 05:00:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF3bjxzTjcDlK2uqNRr6IXsvhK5L1chpznO4UkPDkkNBEASP0jgkhL7ibYGQ7xIZ8YquZQi
-X-Received: by 2002:a5d:5281:0:b0:321:685f:e0a7 with SMTP id c1-20020a5d5281000000b00321685fe0a7mr1449407wrv.3.1695816059265;
-        Wed, 27 Sep 2023 05:00:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695816059; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1942197ejc;
+        Wed, 27 Sep 2023 08:50:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHDiiMDscIfmH4lZBCINJhySjdwmeURsRjORvWvH/oH9BD33mJ5E4xS8+kAUk2TT+4HS6jG
+X-Received: by 2002:a05:620a:2448:b0:774:3235:4e6d with SMTP id h8-20020a05620a244800b0077432354e6dmr2507246qkn.21.1695829815166;
+        Wed, 27 Sep 2023 08:50:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695829815; cv=none;
         d=google.com; s=arc-20160816;
-        b=JftDF9jnbLfJopSHczxNj/KlIxggopgMp2a+ItT7c4jvxxYtz3IwEwe0QaG6qtgDi9
-         9jMi6jJjfWWGWC+Vjn2sPzx05+xRP3iHPiNkwxFm0AxRHuhykM9f0W3Vk5eBJ8SJCnWU
-         iWstd4pxgMMqPGJb5abL84JbPcYOgJCDApX4/oxkkRdNuDByVSn8R93xhFlLrYpfFcKr
-         5BDfI3OS079b1D4V8FU285toBTrSyzGcE5eTN+fkOwCx/8p/dOJTx0FbhviX25GI8mUY
-         e7Gt0zLxw839yfB6g2tJ9XT51z+GHVmSDHdQvh2bvWaMI6fBIfIK/kQ3AeYPM/7f9+B9
-         U91g==
+        b=ihceJsuJsN0irXxT+EZ91yQIhw+rJ7YUmxupciikb19SfjDPIOH9ty7G9c8MXRoUPe
+         /0Ji2MfGXedQetF7hkQzEtSQ2qvYUYsvyH6Buczk0aC8FS6eBC8FGlsTY0xXllBjjwEP
+         JIRRZBhrWrF05rBya1ZY+jEgJkQT7ybIWrEhIgskOh0/iECeOLoY21e3iGRJlj+YIWO5
+         v698lfSF96UBD/NhDDehqp3xxgW4dwlULN4ZuoOpoixNBNQrLBJUO6chY8ABczYVOYNz
+         jI0r/4ZJgGCcCurzgeSmemfXwPjEslBqpO+H/ymvYi4qE2i3h1Wn1yu6dh9NGGTeK8cR
+         dLwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=DYj28DNQcusd/JOp7quVXdRz/bYodBeoWpZeT+D+0Ds=;
-        fh=a9pXnRicFU9JFo/ksBX40ryG6nFk9S4SZtN74pEc6GU=;
-        b=OH5cndCPe0t8pya+6LR77N1phx+LszJK4U9kzCDvWBGURrxedeVh4QGonrhhiodZvj
-         PGN5z4YrmywAvZFNVbmEF9BtRJVSjQZG+dpmqzjxfaQsDcLz6nzsgHU4lfWQi2an6+pl
-         D+5413p2ijFKnnEv2ZtzEgOPnuKzCnzY3XTH0xxM7cC/87C1vn7RRNQLogOUP3B92nxX
-         jmArJQPp9JHe1XypQjZdR0ceSFTniahcc8h1k5EaMA7+rHAfTw9tz5FrO/A6daTcKhq7
-         dHAWW0O8BsfGHvTN7mQcIENktn65LQV7FU4snUnfsc5UiYoRSk19JZZXtvVUmOwxCgNB
-         ejWg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=wA5Kmh+XAx86XM5lcRFTwfs4Gyb5oOZnqGKVQdHHICo=;
+        fh=FOBN3oXk2DeKY4G1AXSUb2xqFKukdIQI2wkQjODk4EI=;
+        b=Oip514Uzo0SPJqvnZGLnWMzrrtO8XvqJjpG2Jd7ave7nXlsc5X7yzo4qnVdSYflNIe
+         I8BmgHW1ql/Tk0iSbGH0/PvHQ9QfwGtFim5kl8DJjlA76jrhgv2Kx2rBD9/icwMg23fm
+         NanlzTb35gi4GkyUVZ4z7cr1664Q3BJnilfInNWlMmQnCy/HcJ02goMDY8XXjg8max6o
+         QoA3tk4KaarvaBWvKajysIjwM8pd7BzmX0lnZAvWRarX1mFoLD2m1OsLaFp7aENEt3NE
+         90jnpSGo9NEoe35EJRDHXWwEICcqrcSJyuK5wkGk8BG6XbOsDfcd6+7+/t0LPqcNz9kY
+         Njwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=softfail (google.com: domain of transitioning marcin.juszkiewicz@linaro.org does not designate 213.251.184.221 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <marcin.juszkiewicz@linaro.org>
-Received: from muminek.juszkiewicz.com.pl (muminek.juszkiewicz.com.pl. [213.251.184.221])
-        by mx.google.com with ESMTPS id k4-20020adfe8c4000000b0032339dd93a8si1738735wrn.1062.2023.09.27.05.00.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Sep 2023 05:00:59 -0700 (PDT)
-Received-SPF: softfail (google.com: domain of transitioning marcin.juszkiewicz@linaro.org does not designate 213.251.184.221 as permitted sender) client-ip=213.251.184.221;
+       dkim=pass header.i=@linaro.org header.s=google header.b=E1cJSQUj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bm41-20020a05620a19a900b0076ceb5934f6si6344909qkb.64.2023.09.27.08.50.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 27 Sep 2023 08:50:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=softfail (google.com: domain of transitioning marcin.juszkiewicz@linaro.org does not designate 213.251.184.221 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 1695326073E;
-	Wed, 27 Sep 2023 14:00:58 +0200 (CEST)
-X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
-Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
- by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id 2KDpVB5o_f1B; Wed, 27 Sep 2023 14:00:56 +0200 (CEST)
-Received: from applejack.lan (83.11.3.58.ipv4.supernova.orange.pl [83.11.3.58])
-	by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 6570226073B;
-	Wed, 27 Sep 2023 14:00:55 +0200 (CEST)
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Beraldo Leal <bleal@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v2 1/1] tests/avocado: update firmware to enable OpenBSD test on sbsa-ref
-Date: Wed, 27 Sep 2023 14:00:50 +0200
-Message-ID: <20230927120050.210187-2-marcin.juszkiewicz@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230927120050.210187-1-marcin.juszkiewicz@linaro.org>
-References: <20230927120050.210187-1-marcin.juszkiewicz@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=E1cJSQUj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qlWnb-00045r-4k; Wed, 27 Sep 2023 11:50:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qlWnZ-00045I-Ib
+ for qemu-arm@nongnu.org; Wed, 27 Sep 2023 11:50:01 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qlWnX-0001fp-UU
+ for qemu-arm@nongnu.org; Wed, 27 Sep 2023 11:50:01 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-533c5d10dc7so10312786a12.3
+ for <qemu-arm@nongnu.org>; Wed, 27 Sep 2023 08:49:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1695829798; x=1696434598; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=wA5Kmh+XAx86XM5lcRFTwfs4Gyb5oOZnqGKVQdHHICo=;
+ b=E1cJSQUjUi6a03PMTIKYAjmiOKMSLZ7szZcx4H5+nwuQvyMLhFCg5WLl90RbPmsJVH
+ 2znOxDL/ukwfOFTvSo3EROV5pwHb8JKGe3kqJiHIXYPupXDNDy4AMyNk6PR73tF8oSVu
+ zzLrYol8CQRKyot/U6inwfbXDDWaM4s0StxrkOB4ArPJmJr7h8gr+18Qi6RZ1MYmAyO8
+ mfs5VJnTXlV0lpk0DDf8+qTADlQO4Y7Pu7k2eyKy9XasH6WJnJvOpMjVD6vojy8zdrZO
+ qNv2BVJsbgu2h3irUdUcCrFxj7r0SJ2V77b12oCLqn1E6BjfW3oCA8VFDP+FlvdSzyz6
+ 8DAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1695829798; x=1696434598;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=wA5Kmh+XAx86XM5lcRFTwfs4Gyb5oOZnqGKVQdHHICo=;
+ b=bfhNuESm0YEi/QEMMIKx+ClDpRhC3aXm5ntlaxokp/YVEH9VqcKZUugtOWeAvrNQHo
+ K4VpAuF8EF8+NoyxzCrTlBN0vLefVUf60Uitgw6YUxwqzCcYiuEeG7qS8ec35Z4lISb8
+ IUtzS+ZQ8r3vDmMVWkUq+vJgu2EnWL+uldCxfrs9Xe1nWEEuSFgLOXV/zVSEx8G1ksMG
+ pV5sGw9oLUw5Nveq+d4+C9AOkhD0izq8IDMUvsDLhEVcWFt0BFAU1tOfUJ18uff7P2O5
+ Gyq1S/jmFa0qh82UKDFKBeJq0ad2o4hSi3rQOJHViQ/EhrjTcN+u3wa1Wn3hKLdujvGG
+ vqDQ==
+X-Gm-Message-State: AOJu0YxONX0bzzAI0Bc6T+dVG1A9qu9zoSaDwzG4QFmlaR4F0ASQ3rRd
+ SynKX3Dm/h2h4x6YSwK+dp3URPsuRSsgIKPvMPvivw==
+X-Received: by 2002:a05:6402:368:b0:534:7b49:9036 with SMTP id
+ s8-20020a056402036800b005347b499036mr516214edw.12.1695829798132; Wed, 27 Sep
+ 2023 08:49:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: fuFIUmmBFuZG
+References: <20230922132111.9149-1-michal.orzel@amd.com>
+In-Reply-To: <20230922132111.9149-1-michal.orzel@amd.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 27 Sep 2023 16:49:39 +0100
+Message-ID: <CAFEAcA-Vbzt2q17-s_A4cw+sn2bx8uQS2QGFXt5b2nj9d0UJig@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Fix CNTPCT_EL0 trapping from EL0 when
+ HCR_EL2.E2H is 0
+To: Michal Orzel <michal.orzel@amd.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefano.stabellini@amd.com, 
+ Oleksandr_Tyshchenko@epam.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Z7g0agzFnHiB
 
-Update prebuilt firmware images:
-- Neoverse V1/N2 cpu support
-- non-secure EL2 virtual timer
-- XHCI controller in DSDT
+On Fri, 22 Sept 2023 at 14:21, Michal Orzel <michal.orzel@amd.com> wrote:
+>
+> On an attempt to access CNTPCT_EL0 from EL0 using a guest running on top
+> of Xen, a trap from EL2 was observed which is something not reproducible
+> on HW (also, Xen does not trap accesses to physical counter).
+>
+> This is because gt_counter_access() checks for an incorrect bit (1
+> instead of 0) of CNTHCTL_EL2 if HCR_EL2.E2H is 0 and access is made to
+> physical counter. Refer ARM ARM DDI 0487J.a, D19.12.2:
+> When HCR_EL2.E2H is 0:
+>  - EL1PCTEN, bit [0]: refers to physical counter
+>  - EL1PCEN, bit [1]: refers to physical timer registers
+>
+> Fix it by checking for the right bit (i.e. 0) and update the comment
+> referring to incorrect bit name.
+>
+> Fixes: 5bc8437136fb ("target/arm: Update timer access for VHE")
+> Signed-off-by: Michal Orzel <michal.orzel@amd.com>
+> ---
+> This is now in conformance to ARM ARM CNTPCT_EL0 pseudocode:
+> if PSTATE.EL == EL0 then
+> ...
+>     elif EL2Enabled() && HCR_EL2.E2H == '0' && CNTHCTL_EL2.EL1PCTEN == '0' then
+>         AArch64.SystemAccessTrap(EL2, 0x18);
+> ---
+>  target/arm/helper.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 3b22596eabf3..3a2d77b3f81e 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -2483,9 +2483,9 @@ static CPAccessResult gt_counter_access(CPUARMState *env, int timeridx,
+>                  return CP_ACCESS_TRAP_EL2;
+>              }
+>          } else {
+> -            /* If HCR_EL2.<E2H> == 0: check CNTHCTL_EL2.EL1PCEN. */
+> +            /* If HCR_EL2.<E2H> == 0: check CNTHCTL_EL2.EL1PCTEN. */
+>              if (has_el2 && timeridx == GTIMER_PHYS &&
+> -                !extract32(env->cp15.cnthctl_el2, 1, 1)) {
+> +                !extract32(env->cp15.cnthctl_el2, 0, 1)) {
+>                  return CP_ACCESS_TRAP_EL2;
+>              }
+>          }
 
-With those changes we can now run OpenBSD as part of sbsa-ref tests.
+I agree that the current logic is not correct, but this change
+makes this code identical to the "case 1" handling, so we
+can delete the whole "if (hcr & HCR_E2H) { ... } else { ...  }"
+block and instead fall through, as we already do in gt_timer_access().
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
----
- tests/avocado/machine_aarch64_sbsaref.py | 68 ++++++++++++++++++++----
- 1 file changed, 58 insertions(+), 10 deletions(-)
-
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index a794245e7e..2d683d4f6a 100644
---- a/tests/avocado/machine_aarch64_sbsaref.py
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -28,33 +28,33 @@ def fetch_firmware(self):
-         """
-         Flash volumes generated using:
- 
--        - Fedora GNU Toolchain version 13.1.1 20230511 (Red Hat 13.1.1-2)
-+        - Fedora GNU Toolchain version 13.2.1 20230728 (Red Hat 13.2.1-1)
- 
-         - Trusted Firmware-A
--          https://github.com/ARM-software/arm-trusted-firmware/tree/c0d8ee38
-+          https://github.com/ARM-software/arm-trusted-firmware/tree/7c3ff62d
- 
-         - Tianocore EDK II
-           https://github.com/tianocore/edk2/tree/0f9283429dd4
--          https://github.com/tianocore/edk2-non-osi/tree/f0bb00937ad6
--          https://github.com/tianocore/edk2-platforms/tree/7880b92e2a04
-+          https://github.com/tianocore/edk2/tree/ad1c0394b177
-+          https://github.com/tianocore/edk2-platforms/tree/d03a60523a60
-         """
- 
-         # Secure BootRom (TF-A code)
-         fs0_xz_url = (
--            "https://fileserver.linaro.org/s/HrYMCjP7MEccjRP/"
-+            "https://fileserver.linaro.org/s/rE43RJyTfxPtBkc/"
-             "download/SBSA_FLASH0.fd.xz"
-         )
--        fs0_xz_hash = "447eff64a90b84ce47703c6ec41fbfc25befaaea"
-+        fs0_xz_hash = "cdb8e4ffdaaa79292b7b465693f9e5fae6b7062d"
-         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
-         archive.extract(tar_xz_path, self.workdir)
-         fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
- 
-         # Non-secure rom (UEFI and EFI variables)
-         fs1_xz_url = (
--            "https://fileserver.linaro.org/s/t8foNnMPz74DZZy/"
-+            "https://fileserver.linaro.org/s/AGWPDXbcqJTKS4R/"
-             "download/SBSA_FLASH1.fd.xz"
-         )
--        fs1_xz_hash = "13a9a262953787c7fc5a9155dfaa26e703631e02"
-+        fs1_xz_hash = "411155ae6984334714dff08d5d628178e790c875"
-         tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash)
-         archive.extract(tar_xz_path, self.workdir)
-         fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
-@@ -144,7 +144,7 @@ def test_sbsaref_alpine_linux_cortex_a57(self):
- 
-     def test_sbsaref_alpine_linux_neoverse_n1(self):
-         """
--        :avocado: tags=cpu:max
-+        :avocado: tags=cpu:neoverse-n1
-         """
-         self.boot_alpine_linux("neoverse-n1")
- 
-@@ -152,4 +152,52 @@ def test_sbsaref_alpine_linux_max(self):
-         """
-         :avocado: tags=cpu:max
-         """
--        self.boot_alpine_linux("max,pauth-impdef=on")
-+        self.boot_alpine_linux("max")
-+
-+
-+    # This tests the whole boot chain from EFI to Userspace
-+    # We only boot a whole OS for the current top level CPU and GIC
-+    # Other test profiles should use more minimal boots
-+    def boot_openbsd73(self, cpu):
-+        self.fetch_firmware()
-+
-+        img_url = (
-+            "https://cdn.openbsd.org/pub/OpenBSD/7.3/arm64/miniroot73.img"
-+        )
-+
-+        img_hash = "7fc2c75401d6f01fbfa25f4953f72ad7d7c18650056d30755c44b9c129b707e5"
-+        img_path = self.fetch_asset(img_url, algorithm="sha256", asset_hash=img_hash)
-+
-+        self.vm.set_console()
-+        self.vm.add_args(
-+            "-cpu",
-+            cpu,
-+            "-drive",
-+            f"file={img_path},format=raw",
-+            "-device",
-+            "virtio-rng-pci,rng=rng0",
-+            "-object",
-+            "rng-random,id=rng0,filename=/dev/urandom",
-+        )
-+
-+        self.vm.launch()
-+        wait_for_console_pattern(self, "Welcome to the OpenBSD/arm64 7.3 installation program.")
-+
-+    def test_sbsaref_openbsd73_cortex_a57(self):
-+        """
-+        :avocado: tags=cpu:cortex-a57
-+        """
-+        self.boot_openbsd73("cortex-a57")
-+
-+    def test_sbsaref_openbsd73_neoverse_n1(self):
-+        """
-+        :avocado: tags=cpu:neoverse-n1
-+        """
-+        self.boot_openbsd73("neoverse-n1")
-+
-+    def test_sbsaref_openbsd73_max(self):
-+        """
-+        :avocado: tags=cpu:max
-+        """
-+        self.boot_openbsd73("max")
-+
--- 
-2.41.0
+thanks
+-- PMM

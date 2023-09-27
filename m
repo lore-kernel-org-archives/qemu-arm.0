@@ -1,127 +1,498 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1611021ejc;
-        Tue, 26 Sep 2023 22:44:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF7UXkgmxMjx7GHwDxLtmNYzm7sP1bAfFwZL0ES+C/i+U7GKp3MI3tYPxPDnSJs0ar6NTOT
-X-Received: by 2002:a0c:aadd:0:b0:658:243e:3084 with SMTP id g29-20020a0caadd000000b00658243e3084mr876720qvb.55.1695793494877;
-        Tue, 26 Sep 2023 22:44:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695793494; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1630980ejc;
+        Tue, 26 Sep 2023 23:29:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE1IF5jDVkV2bbp14p5Ag5/BIQV45GosddWDT3zDg0ZKFH9nEITnAI0DDcj/BFRHF+Kz/EK
+X-Received: by 2002:a05:620a:c4a:b0:773:cd00:e1ac with SMTP id u10-20020a05620a0c4a00b00773cd00e1acmr4890499qki.36.1695796144557;
+        Tue, 26 Sep 2023 23:29:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695796144; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lj8/XML24OAvx/dLjxVUhe02pVxWphD/sUZkisrX/L8JamPqpqoCGtioHfeZO4ht5m
-         EtSuGZ5MgqLtNM+Xd7J9ppLQsOOgZybIAlXWFDUBBQ7Sn7lm8nHXMi7CZTbA3tdLn/Ir
-         uQEjR35z8pK3o1SLXIAjGlFh5ieI3pMGQt1lVg+IxOgiFhH17jU6FdhWG8bOtwFYYILD
-         hW+aBS15AWp2T3q/UyREKJ9gWwlWKb3X0tPYjNq+y6IW/Cb8+Ybr7JoBJ3qmgQssVrcx
-         9FitZcSisZV5rMTVFFCW9Yf6q9kyO8r91NtAwlvz+YP7gvnns1W68eB5/P6YbFSGn0Y6
-         Q1BA==
+        b=hRLiYMb/oja7iMwQxhc75i5BBBSypGMH76DJ6fYDfGlOvr6FtB7FFkF7j6X4PlDgDl
+         tODHlbe1OwXCqUS3u4mWBFn8UJ9kNMlKukh7FCHedXTMyNHiAJmYD/8U3PhLE1YhL6yq
+         gpp3BlvY7EA5HcTtD43Hp/vyYiYQlnVTib7xrHYkj6OOUQDKv6qq/gegPHeGoEjWN5TQ
+         BB6wvvjVHfCaRo+X42flfXjsXU8MFzUFz3O5s33Gj+aMXkifCazBt/T8KWxau+3u7aTq
+         PTLPQg4o1Brn7ltcMQ5VCQBSgxSG8mGDJuqaK/7o8014+ZHLyRs8tBMdBvSur0pEjOvN
+         c2NA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=Fu1NiApmiDLx2WR20X+meE43cMIU59izGfoUx77En5I=;
-        fh=H7EBcgh/fXRUG9PaHnf09A9+wWhnNNe7Y3xVxuiG3uE=;
-        b=chw/S/AyIwEnPFyoXbsi4TJRgs1UvNlQhh0DzqsQXESQqMxByIIWzJbQi46x5MMs7h
-         Nj3T33t+KGmsKpCIJ2Rp6FvRcENt1YhG2padTkiZg6OP0xXc4g6EavGRZ6QVFuTEa+VH
-         OG29xTK0w/oUp5A5TW1QIfnxEZZCDh479oKiy841jamO6XOC+XoH6OQcazbARRpUokBk
-         hVjFQPISp1R9xQQr301UxGf/XqF6Z2pt1r7+ty2Rh76JNAEu0CCZ8yaHbT4nvjkHTPB7
-         B3ysma6HlyEHv7/fGpDxtjoBbNW1/BxUjMiCK60T5PaAN+nQqvvVW5sy/x/m0gIrnFHb
-         jKYA==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=AGMroqcas17+dzFrnVMzgCnmOm44Cm6AUINHfIIrNr8=;
+        fh=fO+ncAaxY0Wf5Oiu0zeLu9be5DWOx71LYjyGHoG8Yc0=;
+        b=BcINnysd27kIfaAEbAOmmQMTNe3en6qCU0OwxkL/CPkJa32qIVhjnmJdiPzv3K3yhn
+         iarThTyFTbFIG8pGDfsa2pFW/9D6qjbz1vHu2epp1hZSB0JwiOwlPUHtX8DI7BciKarb
+         jNv+WZbYiUgejOSICITpExTKTDRrqVWtl+yXbG/EG25zhCvuz3iOw4GuSLxQmb0cJIwp
+         5Hbi/u9bO3f5Ir57Petg009Y3cSWz0SDN2likwEBQL3jpRttGsA34ZbnrNfaexHOoaDp
+         vWXsPEDA/8DLe7Ds+QtUKDts92o1kR1q/0wftBcjHjauH21BFXVMSgdjViF8DkLAKaOJ
+         Jx9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e16-20020ad44190000000b006589f216161si7608972qvp.442.2023.09.26.22.44.54
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ya3A05Zc;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <gshan@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id dt17-20020a05620a479100b007741b0f3fd8si6241356qkb.283.2023.09.26.23.29.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Sep 2023 22:44:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Sep 2023 23:29:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qlNLk-00042b-09; Wed, 27 Sep 2023 01:44:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=wvUH=FL=kaod.org=clg@ozlabs.org>)
- id 1qlNLi-00042D-D5; Wed, 27 Sep 2023 01:44:38 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=wvUH=FL=kaod.org=clg@ozlabs.org>)
- id 1qlNLg-0001sc-6H; Wed, 27 Sep 2023 01:44:38 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4RwQXl4R77z4xPc;
- Wed, 27 Sep 2023 15:44:23 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4RwQXj4kfLz4xGR;
- Wed, 27 Sep 2023 15:44:21 +1000 (AEST)
-Message-ID: <bf0703cb-3626-a3e9-efda-842cd0393f37@kaod.org>
-Date: Wed, 27 Sep 2023 07:44:16 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ya3A05Zc;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1695796144;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=AGMroqcas17+dzFrnVMzgCnmOm44Cm6AUINHfIIrNr8=;
+	b=Ya3A05Zc1/kV0WOqyiP7cNw96KuNcG1+LDnVLj1jcfH/AwwJDqvLnho4f+c3nY08rHTFut
+	hnRMz/MqYwkwIq61jiZq9B6602Yb+UXHLO3rFMriQMXXa1k8FOn00OFcwNGsm8gg4Ci6bK
+	Dm4p6lzCSlmUxCePbe599AxhEozTFO8=
+Received: from mail-pg1-f200.google.com (mail-pg1-f200.google.com
+ [209.85.215.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-94-2ue1XK9oOwCeL0ra6rPIMQ-1; Wed, 27 Sep 2023 02:29:01 -0400
+X-MC-Unique: 2ue1XK9oOwCeL0ra6rPIMQ-1
+Received: by mail-pg1-f200.google.com with SMTP id 41be03b00d2f7-5849bcbf26bso4274005a12.1
+        for <alex.bennee@linaro.org>; Tue, 26 Sep 2023 23:29:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695796140; x=1696400940;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AGMroqcas17+dzFrnVMzgCnmOm44Cm6AUINHfIIrNr8=;
+        b=dzqOEunZ8bNFBElF9dx6iZAp+0rDdm2eJQxECMigbo/A1VW7psH7QFRG0GDgcqzUhm
+         rGW4ra17xcvkwZMG9ZEOb3dqx00obdu1t5UR9UlJ6DrCtFacMRQIUN7gydlSCx1qjl/p
+         C0IYmIP/WVZxBM3PqWEc9EyEFwUBsAoQIfOXKhnQb0D5o/gGb66rIrMaAj4Fql8Uwq5e
+         pTy3Xc5opJauvtor1nUnr7E+LZQ3isfhyyGQpWjEjVFLg+c6TUxs8uYFHVC6BDpJAVxy
+         sgdHwlgDD254WhgNQ1ktlb6W+EUkILroPgCCcljztCdy+7tH7gQIT5NvBe0EBUhZYB2Z
+         fGiw==
+X-Gm-Message-State: AOJu0YwK4rmLLFue6mP0OHdpnDwiSKIAhWk5icPQLSN6gd5oSFQ0Y5pw
+	/E6XbZXr6WdgiPE21jahMMLfzc2YoasWsUgxRDH0ZLH4+wyyndtDKWr4wEe/BZKLax3tuU7PT6Z
+	Z6XkiQAQP7NrQxNwe
+X-Received: by 2002:a05:6a20:72a4:b0:15a:6733:24e2 with SMTP id o36-20020a056a2072a400b0015a673324e2mr7774984pzk.25.1695796139455;
+        Tue, 26 Sep 2023 23:28:59 -0700 (PDT)
+X-Received: by 2002:a05:6a20:72a4:b0:15a:6733:24e2 with SMTP id o36-20020a056a2072a400b0015a673324e2mr7774946pzk.25.1695796139004;
+        Tue, 26 Sep 2023 23:28:59 -0700 (PDT)
+Return-Path: <gshan@redhat.com>
+Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
+        by smtp.gmail.com with ESMTPSA id p4-20020a637f44000000b005637030d00csm10554537pgn.30.2023.09.26.23.28.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 26 Sep 2023 23:28:58 -0700 (PDT)
+Message-ID: <1c5fa24c-6bf3-750f-4f22-087e4a9311af@redhat.com>
+Date: Wed, 27 Sep 2023 16:28:44 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [Qemu-devel] [PATCH 08/19] aspeed/timer: Fix behaviour running
- Linux
+ Thunderbird/102.12.0
+Subject: Re: [PATCH RFC V2 04/37] arm/virt,target/arm: Machine init time
+ change common to vCPU {cold|hot}-plug
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
+ ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ mst@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com,
+ alex.bennee@linaro.org, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
+ wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
+ maobibo@loongson.cn, lixianglai@loongson.cn
+References: <20230926100436.28284-1-salil.mehta@huawei.com>
+ <20230926100436.28284-5-salil.mehta@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20230926100436.28284-5-salil.mehta@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20190525151241.5017-1-clg@kaod.org>
- <20190525151241.5017-9-clg@kaod.org>
- <a4a62040-0127-4f39-4fc3-a1795e4daad8@kaod.org>
- <CACPK8XcCn4hK5Lu-6o7LUyUFVH-dkbjJ-1_fHr4_90_4cZf_+Q@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CACPK8XcCn4hK5Lu-6o7LUyUFVH-dkbjJ-1_fHr4_90_4cZf_+Q@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=wvUH=FL=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.473, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UPYHsX795FRz
+Content-Transfer-Encoding: 7bit
+X-TUID: +++Q5caqRsE2
 
-On 9/27/23 04:12, Joel Stanley wrote:
-> On Fri, 22 Sept 2023 at 13:21, Cédric Le Goater <clg@kaod.org> wrote:
-> 
->>> +    t->start = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->>> +    return calculate_time(t, MAX(MAX(t->match[0], t->match[1]), 0));
->>
->> This MAX(MAX(x, y), 0) looks strange to me. Would you remember where it comes
->> from ? Thanks,
-> 
-> That looks very strange. I think you've sorted it, so I wanted to
-> bring up the MAX macros themselves. It's unfortunate that they create
-> a non-unique local variable. Are we allowed to borrow the kernels
-> macros? They have some infrastructure for creating a unique local
-> variable name, as well as handling the const and non-const variants
-> with the one macro.
-> 
-> https://elixir.bootlin.com/linux/v6.5/source/include/linux/minmax.h
+Hi Salil,
 
-I believe that's what Markus does in its own way :
+On 9/26/23 20:04, Salil Mehta wrote:
+> Refactor and introduce the common logic required during the initialization of
+> both cold and hot plugged vCPUs. Also initialize the *disabled* state of the
+> vCPUs which shall be used further during init phases of various other components
+> like GIC, PMU, ACPI etc as part of the virt machine initialization.
+> 
+> KVM vCPUs corresponding to unplugged/yet-to-be-plugged QOM CPUs are kept in
+> powered-off state in the KVM Host and do not run the guest code. Plugged vCPUs
+> are also kept in powered-off state but vCPU threads exist and is kept sleeping.
+> 
+> TBD:
+> For the cold booted vCPUs, this change also exists in the arm_load_kernel()
+> in boot.c but for the hotplugged CPUs this change should still remain part of
+> the pre-plug phase. We are duplicating the powering-off of the cold booted CPUs.
+> Shall we remove the duplicate change from boot.c?
+> 
+> Co-developed-by: Salil Mehta <salil.mehta@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Reported-by: Gavin Shan <gavin.shan@redhat.com>
+> [GS: pointed the assertion due to wrong range check]
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>   hw/arm/virt.c      | 149 ++++++++++++++++++++++++++++++++++++++++-----
+>   target/arm/cpu.c   |   7 +++
+>   target/arm/cpu64.c |  14 +++++
+>   3 files changed, 156 insertions(+), 14 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 0eb6bf5a18..3668ad27ec 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -221,6 +221,7 @@ static const char *valid_cpus[] = {
+>       ARM_CPU_TYPE_NAME("max"),
+>   };
+>   
+> +static CPUArchId *virt_find_cpu_slot(MachineState *ms, int vcpuid);
+>   static int virt_get_socket_id(const MachineState *ms, int cpu_index);
+>   static int virt_get_cluster_id(const MachineState *ms, int cpu_index);
+>   static int virt_get_core_id(const MachineState *ms, int cpu_index);
+> @@ -2154,6 +2155,14 @@ static void machvirt_init(MachineState *machine)
+>           exit(1);
+>       }
+>   
+> +    finalize_gic_version(vms);
+> +    if (tcg_enabled() || hvf_enabled() || qtest_enabled() ||
+> +        (vms->gic_version < VIRT_GIC_VERSION_3)) {
+> +        machine->smp.max_cpus = smp_cpus;
+> +        mc->has_hotpluggable_cpus = false;
+> +        warn_report("cpu hotplug feature has been disabled");
+> +    }
+> +
 
-   https://lore.kernel.org/qemu-devel/20230921121312.1301864-8-armbru@redhat.com/
+Comments needed here to explain why @mc->has_hotpluggable_cpus is set to false.
+I guess it's something related to TODO list, mentioned in the cover letter.
+
+>       possible_cpus = mc->possible_cpu_arch_ids(machine);
+>   
+>       /*
+> @@ -2180,11 +2189,6 @@ static void machvirt_init(MachineState *machine)
+>           virt_set_memmap(vms, pa_bits);
+>       }
+>   
+> -    /* We can probe only here because during property set
+> -     * KVM is not available yet
+> -     */
+> -    finalize_gic_version(vms);
+> -
+>       sysmem = vms->sysmem = get_system_memory();
+>   
+>       if (vms->secure) {
+> @@ -2289,17 +2293,9 @@ static void machvirt_init(MachineState *machine)
+>       assert(possible_cpus->len == max_cpus);
+>       for (n = 0; n < possible_cpus->len; n++) {
+>           Object *cpuobj;
+> -        CPUState *cs;
+> -
+> -        if (n >= smp_cpus) {
+> -            break;
+> -        }
+>   
+>           cpuobj = object_new(possible_cpus->cpus[n].type);
+>   
+> -        cs = CPU(cpuobj);
+> -        cs->cpu_index = n;
+> -
+>           aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
+>           object_property_set_int(cpuobj, "socket-id",
+>                                   virt_get_socket_id(machine, n), NULL);
+> @@ -2804,6 +2800,50 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>       return ms->possible_cpus;
+>   }
+>   
+> +static CPUArchId *virt_find_cpu_slot(MachineState *ms, int vcpuid)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(ms);
+> +    CPUArchId *found_cpu;
+> +    uint64_t mp_affinity;
+> +
+> +    assert(vcpuid >= 0 && vcpuid < ms->possible_cpus->len);
+> +
+> +    /*
+> +     * RFC: Question:
+> +     * TBD: Should mp-affinity be treated as MPIDR?
+> +     */
+> +    mp_affinity = virt_cpu_mp_affinity(vms, vcpuid);
+> +    found_cpu = &ms->possible_cpus->cpus[vcpuid];
+> +
+> +    assert(found_cpu->arch_id == mp_affinity);
+> +
+> +    /*
+> +     * RFC: Question:
+> +     * Slot-id is the index where vCPU with certain arch-id(=mpidr/ap-affinity)
+> +     * is plugged. For Host KVM, MPIDR for vCPU is derived using vcpu-id.
+> +     * As I understand, MPIDR and vcpu-id are property of vCPU but slot-id is
+> +     * more related to machine? Current code assumes slot-id and vcpu-id are
+> +     * same i.e. meaning of slot is bit vague.
+> +     *
+> +     * Q1: Is there any requirement to clearly represent slot and dissociate it
+> +     *     from vcpu-id?
+> +     * Q2: Should we make MPIDR within host KVM user configurable?
+> +     *
+> +     *          +----+----+----+----+----+----+----+----+
+> +     * MPIDR    |||  Res  |   Aff2  |   Aff1  |  Aff0   |
+> +     *          +----+----+----+----+----+----+----+----+
+> +     *                     \         \         \   |    |
+> +     *                      \   8bit  \   8bit  \  |4bit|
+> +     *                       \<------->\<------->\ |<-->|
+> +     *                        \         \         \|    |
+> +     *          +----+----+----+----+----+----+----+----+
+> +     * VCPU-ID  |  Byte4  |  Byte2  |  Byte1  |  Byte0  |
+> +     *          +----+----+----+----+----+----+----+----+
+> +     */
+> +
+> +    return found_cpu;
+> +}
+> +
+
+MPIDR[31] is set to 0b1, looking at linux/arch/arm64/kvm/sys_regs.c::reset_mpidr().
+
+I think this function can be renamed to virt_get_cpu_slot(ms, index), better to
+reflect its intention. I had same concerns why cs->cpu_index can't be reused
+as MPIDR, but it's out of scope for this series. It maybe something to be improved
+afterwards.
+
+- cs->cpu_index is passed to ioctl(KVM_CREATE_VCPU). On the host, it's translated
+   to MPIDR as you outlined in above comments.
+
+- cs->cpu_index is translated to ms->possible_cpus->cpus[i].arch_id, which will
+   be exposed to guest kernel through MDAT GIC structures
+
+- In guest kernel, CPU0's hardware ID is read from MPIDR in linux/arch/arm64/kernel/setup.c::smp_setup_processor_id().
+   Other CPU's hardware ID is fetched from MDAT GIC structure.
+
+So I think we probably just need a function to translate cs->cpu_index to
+MPIDR, to mimic what's done in linux/arch/arm64/sys_reg.c::reset_mpidr(). In
+this way, the hardware IDs originating from MPIDR and MADT GIC structure
+will be exactly same.
+
+
+>   static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+>                                    Error **errp)
+>   {
+> @@ -2847,6 +2887,81 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
+>                            dev, &error_abort);
+>   }
+>   
+> +static void virt_cpu_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+> +                              Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +    MachineState *ms = MACHINE(hotplug_dev);
+> +    ARMCPU *cpu = ARM_CPU(dev);
+> +    CPUState *cs = CPU(dev);
+> +    CPUArchId *cpu_slot;
+> +    int32_t min_cpuid = 0;
+> +    int32_t max_cpuid;
+> +
+> +    /* sanity check the cpu */
+> +    if (!object_dynamic_cast(OBJECT(cpu), ms->cpu_type)) {
+> +        error_setg(errp, "Invalid CPU type, expected cpu type: '%s'",
+> +                   ms->cpu_type);
+> +        return;
+> +    }
+> +
+> +    if ((cpu->thread_id < 0) || (cpu->thread_id >= ms->smp.threads)) {
+> +        error_setg(errp, "Invalid thread-id %u specified, correct range 0:%u",
+> +                   cpu->thread_id, ms->smp.threads - 1);
+> +        return;
+> +    }
+> +
+> +    max_cpuid = ms->possible_cpus->len - 1;
+> +    if (!dev->hotplugged) {
+> +        min_cpuid = vms->acpi_dev ? ms->smp.cpus : 0;
+> +        max_cpuid = vms->acpi_dev ? max_cpuid : ms->smp.cpus - 1;
+> +    }
+> +
+
+I don't understand how the range is figured out. cpu->core_id should
+be in range [0, ms->smp.cores). With your code, the following scenario
+becomes invalid incorrectly?
+
+-cpu host -smp maxcpus=4,cpus=1,sockets=4,clusters=1,cores=1,threads=1
+(qemu) device_add host,id=cpu1,socket-id=1,cluster-id=0,core-id=2,thread-id=0
+
+> +    if ((cpu->core_id < min_cpuid) || (cpu->core_id > max_cpuid)) {
+> +        error_setg(errp, "Invalid core-id %d specified, correct range %d:%d",
+> +                   cpu->core_id, min_cpuid, max_cpuid);
+> +        return;
+> +    }
+> +
+> +    if ((cpu->cluster_id < 0) || (cpu->cluster_id >= ms->smp.clusters)) {
+> +        error_setg(errp, "Invalid cluster-id %u specified, correct range 0:%u",
+> +                   cpu->cluster_id, ms->smp.clusters - 1);
+> +        return;
+> +    }
+> +
+> +    if ((cpu->socket_id < 0) || (cpu->socket_id >= ms->smp.sockets)) {
+> +        error_setg(errp, "Invalid socket-id %u specified, correct range 0:%u",
+> +                   cpu->socket_id, ms->smp.sockets - 1);
+> +        return;
+> +    }
+> +
+> +    cs->cpu_index = virt_get_cpu_id_from_cpu_topo(ms, dev);
+> +
+> +    cpu_slot = virt_find_cpu_slot(ms, cs->cpu_index);
+> +    if (qemu_present_cpu(CPU(cpu_slot->cpu))) {
+> +        error_setg(errp, "cpu(id%d=%d:%d:%d:%d) with arch-id %" PRIu64 " exist",
+> +                   cs->cpu_index, cpu->socket_id, cpu->cluster_id, cpu->core_id,
+> +                   cpu->thread_id, cpu_slot->arch_id);
+> +        return;
+> +    }
+> +    virt_cpu_set_properties(OBJECT(cs), cpu_slot, errp);
+> +}
+> +
+> +static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+> +                          Error **errp)
+> +{
+> +    MachineState *ms = MACHINE(hotplug_dev);
+> +    CPUState *cs = CPU(dev);
+> +    CPUArchId *cpu_slot;
+> +
+> +    /* insert the cold/hot-plugged vcpu in the slot */
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+May be:
+
+        /* CPU becomes present */
+
+> +    cpu_slot = virt_find_cpu_slot(ms, cs->cpu_index);
+> +    cpu_slot->cpu = OBJECT(dev);
+> +
+> +    cs->disabled = false;
+> +    return;
+        ^^^^^^
+
+        not needed.
+
+May be worthy some comments like below, correlating to what's done in
+aarch64_cpu_initfn():
+
+        /* CPU becomes enabled after it's hot added */
+
+> +}
+> +
+>   static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>                                               DeviceState *dev, Error **errp)
+>   {
+> @@ -2888,6 +3003,8 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>           object_property_set_str(OBJECT(dev), "reserved-regions[0]",
+>                                   resv_prop_str, errp);
+>           g_free(resv_prop_str);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        virt_cpu_pre_plug(hotplug_dev, dev, errp);
+>       }
+>   }
+>   
+> @@ -2909,6 +3026,8 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>           virt_memory_plug(hotplug_dev, dev, errp);
+>       } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
+>           virtio_md_pci_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        virt_cpu_plug(hotplug_dev, dev, errp);
+>       }
+>   
+>       if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+> @@ -2993,7 +3112,8 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+>       if (device_is_dynamic_sysbus(mc, dev) ||
+>           object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
+>           object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI) ||
+> -        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+> +        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI) ||
+> +        object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+>           return HOTPLUG_HANDLER(machine);
+>       }
+>       return NULL;
+> @@ -3070,6 +3190,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>   #endif
+>       mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
+>       mc->kvm_type = virt_kvm_type;
+> +    mc->has_hotpluggable_cpus = true;
+>       assert(!mc->get_hotplug_handler);
+>       mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
+>       hc->pre_plug = virt_machine_device_pre_plug_cb;
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 1376350416..3a2e7e64ee 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2332,6 +2332,12 @@ static const struct TCGCPUOps arm_tcg_ops = {
+>   };
+>   #endif /* CONFIG_TCG */
+>   
+> +static int64_t arm_cpu_get_arch_id(CPUState *cs)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    return cpu->mp_affinity;
+> +}
+> +
+>   static void arm_cpu_class_init(ObjectClass *oc, void *data)
+>   {
+>       ARMCPUClass *acc = ARM_CPU_CLASS(oc);
+> @@ -2350,6 +2356,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->class_by_name = arm_cpu_class_by_name;
+>       cc->has_work = arm_cpu_has_work;
+>       cc->dump_state = arm_cpu_dump_state;
+> +    cc->get_arch_id = arm_cpu_get_arch_id;
+>       cc->set_pc = arm_cpu_set_pc;
+>       cc->get_pc = arm_cpu_get_pc;
+>       cc->gdb_read_register = arm_cpu_gdb_read_register;
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 96158093cc..a660e3f483 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -739,6 +739,17 @@ static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
+>       }
+>   }
+>   
+> +static void aarch64_cpu_initfn(Object *obj)
+> +{
+> +    CPUState *cs = CPU(obj);
+> +
+> +    /*
+> +     * we start every ARM64 vcpu as disabled possible vCPU. It needs to be
+> +     * enabled explicitly
+> +     */
+> +    cs->disabled = true;
+> +}
+> +
+
+The comments can be simplified to:
+
+     /* The CPU state isn't enabled until it's hot added completely */
+
+>   static void aarch64_cpu_finalizefn(Object *obj)
+>   {
+>   }
+> @@ -751,7 +762,9 @@ static gchar *aarch64_gdb_arch_name(CPUState *cs)
+>   static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
+>   {
+>       CPUClass *cc = CPU_CLASS(oc);
+> +    DeviceClass *dc = DEVICE_CLASS(oc);
+>   
+> +    dc->user_creatable = true;
+>       cc->gdb_read_register = aarch64_cpu_gdb_read_register;
+>       cc->gdb_write_register = aarch64_cpu_gdb_write_register;
+>       cc->gdb_num_core_regs = 34;
+> @@ -800,6 +813,7 @@ static const TypeInfo aarch64_cpu_type_info = {
+>       .name = TYPE_AARCH64_CPU,
+>       .parent = TYPE_ARM_CPU,
+>       .instance_size = sizeof(ARMCPU),
+> +    .instance_init = aarch64_cpu_initfn,
+>       .instance_finalize = aarch64_cpu_finalizefn,
+>       .abstract = true,
+>       .class_size = sizeof(AArch64CPUClass),
+
+I'm not sure if 'dc->user_creatable' can be set true here because
+the ARMCPU objects aren't ready for hot added/removed at this point.
+The hacks for GICv3 aren't included so far. I think a separate patch
+may be needed in the last to enable the functionality?
 
 Thanks,
-
-C.
+Gavin

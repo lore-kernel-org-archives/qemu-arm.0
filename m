@@ -1,127 +1,110 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1653073ejc;
-        Wed, 27 Sep 2023 00:20:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEurSQmWQqOfRzOUndfDDfgxifZHJt+3jM1uad7EhnGXkREXk+PW1hmeAntzASObVMxLtVL
-X-Received: by 2002:a05:620a:29cb:b0:76c:b53b:8702 with SMTP id s11-20020a05620a29cb00b0076cb53b8702mr1679134qkp.26.1695799212183;
-        Wed, 27 Sep 2023 00:20:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695799212; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1735357ejc;
+        Wed, 27 Sep 2023 03:19:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGCN7Xf602AY4aKHGUSk3QLMhotQoxckHYQHdRxW5W1FZ6aIrZP4pIycwon+eU3mzW+KWOb
+X-Received: by 2002:a05:622a:1a14:b0:418:bdf:f4d with SMTP id f20-20020a05622a1a1400b004180bdf0f4dmr1521688qtb.14.1695809972756;
+        Wed, 27 Sep 2023 03:19:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695809972; cv=none;
         d=google.com; s=arc-20160816;
-        b=X5VcOubU4oMAQvXU7mp85vWD2u7Iq0TdlzURpLJ4wY7psj+xn8zZxnHrHIAxNAJzfL
-         fsOEk0GgMQ5mJtYu6ItDRqMrWQKxymq4y0aOO6lzZNxklPwqcwlk88WQeFC3mQL2pRWe
-         dcqdYnH9S/9IwAYuXKBySJDw8HWg17USpVT2G4aWA2z02aC94ny6CUcDZhd/typppqdQ
-         gniCXEbSHeYRh3OJPYsBS97aa91SeDBLO9TyXIvXjZ82xDpGkjBIqLAb9IhVyLimbo5f
-         N0M6ACCXfOtrRtm6Yxmv/vpaz3NK8vGqqKjVinavkLqrqVVSQrHOkXJWfGPIpUwWvDIE
-         jQSg==
+        b=ZmN1TxUDtJfl7uUMW7GVzP7YyqoJXSs3HM27NYBit/zZKxwmAirP5NopUyG4WD2vux
+         Mx+yLUs8pFNry7lr1BBM4Yfx4zAgBMt/IBLakezzCIM6dCaY07g1dqsCUkvhaG/6s8dp
+         YubCWn51Z4tfoFcYsNyio5G6jnlxVdGXhPC76ib+TT87aJs6kMweTfxkXgr+lXZEjhHG
+         QWf15N05uNp+7km4wTXTQMUDr5yPkcL4n2tKkPpgVAAlEN4mnT5iUfYurWytn73XWztz
+         yGzcAA585OtDtl1b0nR0agmh6wRVlTodg/0HEegplzaRZjXgbR8zAhR+P6UQWWpeuxHz
+         UwbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=38nXhEHoPqW7YImaQj8Zb5esM5iek+Y1L7C3ErZ9hLI=;
-        fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=aPJyofgJp0VPpZV3Y1tUeVpBQZvymSedvrQ0XZ7JOQA/Bt2lU+Fbdpz/QTLdeio/1I
-         fdCFxuP8vKsEL46RloCHZ+9mPHaxncVJvMW4khWIl/eNQrILQkf68RAzYgJ3JfaG90+/
-         Lu8m8E0tAGguUMzqfu9R5OozXNxAy93HePAOfGne05++XjDRe5tXHBwIwFafmFT1ih6b
-         bnV0KYhWQ0XWHEWYtoZ2E8tPeSaSBG+72q3+9xupUotTCefWDfhz06+isF45Pn/jJIk+
-         UJh5TIMPk+Gihr2EEFV0z+XuyImx/QsmzzSqB3lJb9hZTNFPcRINXh22uov4Jbpo+t3Y
-         FxJA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=ZZKsHEITqMChQMSdz1HXB6c9tibacP85Unu+w9XAuhQ=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=VVF4+P6pNacJn6y6dj/jRruvqI0MCCNLq4zcu9IVROKtsHlDpuAffQ5fB5we4gYfwV
+         hF+J5byYx7oqKBqh9q1Ff5Ql6dcPutYRifxmt6oDkpgLboRBs0Hz5IpFZFaoAxgIPQXm
+         IQoa2dMZGDmXrSaoV2NBOHsH2SIRDo6Y4HXmZOI5xWPy0iACbaScOp4WKU4qFzviuGB1
+         md+Wthecm9W4/Mitm6IhG3Du5EuxIr/n2uUH0fwb4GubZzb5EAJ9ad/KzfjCLdRUPnTQ
+         R1YNgfVVhYdbL0a4CgT2MY+wusn2b+h0MEk8djsgF0mN79h3dh46jKbRFicN1mkP+CNK
+         tWPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B82jvivl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=apKaU6pt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq39-20020a05620a46a700b007757861297esi4489qkb.69.2023.09.27.00.20.12
+        by mx.google.com with ESMTPS id jz14-20020a05622a81ce00b00417fd10f754si6465657qtb.412.2023.09.27.03.19.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Sep 2023 00:20:12 -0700 (PDT)
+        Wed, 27 Sep 2023 03:19:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B82jvivl;
+       dkim=pass header.i=@linaro.org header.s=google header.b=apKaU6pt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qlOq6-0002LP-6w; Wed, 27 Sep 2023 03:20:06 -0400
+	id 1qlRdG-0002uY-FY; Wed, 27 Sep 2023 06:19:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qlOq3-0002KS-SO
- for qemu-arm@nongnu.org; Wed, 27 Sep 2023 03:20:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qlOq0-0006fj-SK
- for qemu-arm@nongnu.org; Wed, 27 Sep 2023 03:20:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695799199;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=38nXhEHoPqW7YImaQj8Zb5esM5iek+Y1L7C3ErZ9hLI=;
- b=B82jvivlO/81UvukdtP5NXnoIm4THerlU+zyw+FSIukZnttyzjAYk2LKQhg350tfqPDw+O
- nhYQi/jP8RO5I3sOT6NvnTI4DDPhcW5n/ZmvnjkS8uyQ49R6FEGipzzLNKDVN0aiGKMYUU
- AH65kqv0nhP5kSo+1AdvVVfG98lhGvo=
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
- [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-139-H19c5IIFPV-IkL_ifOCkwA-1; Wed, 27 Sep 2023 03:19:58 -0400
-X-MC-Unique: H19c5IIFPV-IkL_ifOCkwA-1
-Received: by mail-pl1-f200.google.com with SMTP id
- d9443c01a7336-1c5ff189f3fso89791805ad.0
- for <qemu-arm@nongnu.org>; Wed, 27 Sep 2023 00:19:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qlRdE-0002tn-6l
+ for qemu-arm@nongnu.org; Wed, 27 Sep 2023 06:19:00 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qlRdC-0008UX-B2
+ for qemu-arm@nongnu.org; Wed, 27 Sep 2023 06:18:59 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-32172f8a5dbso9075290f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 27 Sep 2023 03:18:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1695809936; x=1696414736; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZZKsHEITqMChQMSdz1HXB6c9tibacP85Unu+w9XAuhQ=;
+ b=apKaU6pt4ADqRatK/XQ0rX5dA/+jHavlhU3ceKnUoEdopUVrE9KqG1+RcXpIyRD0rA
+ gEE4kOSoUra0OYOMGBAh1eIcNXQ0pFGy4XlZN5ZOkSxAsMp2Pf1Vz0YFG0fj1I9hoVUK
+ E7BhacLqqKP76o7rnPT/p4yA6518GUa+ydcGYibDDEtAU+P3ex2e+wUF7CpolhUDD46q
+ G3ZSHoVIDoe0o4qxhksClmA2ugADDm0MvVp71IfCvwNTFnSFDqyR36A9tFid4xBvRZYt
+ mgDbbL8hLaIJ275yHK9BmdsvJHdixXTNW9qu+KiuEwgqPFQjpIDbFnywhnYn2QXiXKNc
+ F4rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695799197; x=1696403997;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=38nXhEHoPqW7YImaQj8Zb5esM5iek+Y1L7C3ErZ9hLI=;
- b=et3ZvOpNAy0HO+FVDNI+yOdUuVrp8Hxj/FZhX+4iT0ORcpb6MBGuK3LLb0gh5TOKy0
- Pw5c2WPHwQvIVPYsSoqyhJmrPbQZX/SGR31iHnZ29jI5bqoXuechboRpt8ijg6XT4a7t
- 2DFHRqcckXCgHNtYu3vjsY27APEUohVOPK6CMoUJbm7QFWAi5X6BgjjZ1lTFoApkotM9
- VRS1RR4H6kj84C4fwFyU4qLciYQCaVdLvfXNNdP66OlNtP8ch5FW5khdvs8PqxoluV5h
- mPJ08PCTXcYefAvwglEQVzVMtv3NCpUT2Q+uHbecFJIOszv0Yrxj5YQJWiQF/UOSm+2w
- OtMg==
-X-Gm-Message-State: AOJu0YxuxkY/xC0hi4xLKkbMt+9KxdYuzcQd9xUUePDYoH0G0ADhBhVh
- jwtk9VisAV+VTGRN7MJHZIUcFaEW9S2qe66u7pr0QM19cy9A4tQIDcgzSjTg/27aYeuaGvGpqD1
- NDj6DejsjAZKR
-X-Received: by 2002:a17:903:11c9:b0:1c7:2697:ec09 with SMTP id
- q9-20020a17090311c900b001c72697ec09mr799338plh.59.1695799197242; 
- Wed, 27 Sep 2023 00:19:57 -0700 (PDT)
-X-Received: by 2002:a17:903:11c9:b0:1c7:2697:ec09 with SMTP id
- q9-20020a17090311c900b001c72697ec09mr799327plh.59.1695799196830; 
- Wed, 27 Sep 2023 00:19:56 -0700 (PDT)
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
- ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
+ d=1e100.net; s=20230601; t=1695809936; x=1696414736;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZZKsHEITqMChQMSdz1HXB6c9tibacP85Unu+w9XAuhQ=;
+ b=Fv075oT6Y0CTBnMwB9HzlCaVWHN5raNppq+BdLUzY6BH0Ygw2KALwtLXA2riqNCN+d
+ 3auWOKHQiVm7CdnG4ZE6G2LaToMHFRTDAVUNatPDrdY5SJx+aAEY6JLT++c4L3hE2w2Z
+ QhpJo4Ef9o533yDdcZeZ5MhMx7KAuZ6CY2RMv/jot12Qu6xVYZxZ5JLkGzxLPVdGf+J/
+ TyhPmhAqyxAh3Dq5C8sICHr5UMA4EGjwb8ud07lpkBWR+aAN1fzoW6uRJeve/D5Eewp5
+ TTalkquLWpNwIH8Bb2cT3mfQ/6rhBhspBHudlQAgL9vcqH7gBak9utIFVIXn4yRN0FFc
+ NU6A==
+X-Gm-Message-State: AOJu0YwxElQ5w4u2cvJ+/I7hoTeCU3j2KHW6pATOIQed12lkJ1I/uQBk
+ JO8Z4pxV+2AEnFxM7olR7Gw2DPDUyOq9af1mIlk=
+X-Received: by 2002:a05:6000:12c5:b0:314:1f1e:3a85 with SMTP id
+ l5-20020a05600012c500b003141f1e3a85mr1159604wrx.61.1695809935573; 
+ Wed, 27 Sep 2023 03:18:55 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- y18-20020a1709029b9200b001b8a897cd26sm12240489plp.195.2023.09.27.00.19.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Sep 2023 00:19:56 -0700 (PDT)
-Message-ID: <b52f83ec-e8ee-88ad-15d6-78dc7f8a6f35@redhat.com>
-Date: Wed, 27 Sep 2023 17:19:52 +1000
+ n3-20020a05600c3b8300b004053a6b8c41sm15789974wms.12.2023.09.27.03.18.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Sep 2023 03:18:55 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Permit T32 LDM with single register
+Date: Wed, 27 Sep 2023 11:18:53 +0100
+Message-Id: <20230927101853.39288-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH] target/arm/kvm64.c: Remove unused include
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20230925110429.3917202-1-peter.maydell@linaro.org>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230925110429.3917202-1-peter.maydell@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,36 +119,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1787S5RZ7OrF
+X-TUID: hd3/qcBDbsZK
 
+For the Thumb T32 encoding of LDM, if only a single register is
+specified in the register list this instruction is UNPREDICTABLE,
+with the following choices:
+ * instruction UNDEFs
+ * instruction is a NOP
+ * instruction loads a single register
+ * instruction loads an unspecified set of registers
 
+Currently we choose to UNDEF (a behaviour chosen in commit
+4b222545dbf30 in 2019; previously we treated it as "load the
+specified single register").
 
-On 9/25/23 21:04, Peter Maydell wrote:
-> The include of hw/arm/virt.h in kvm64.c is unnecessary and also a
-> layering violation since the generic KVM code shouldn't need to know
-> anything about board-specifics.  The include line is an accidental
-> leftover from commit 15613357ba53a4763, where we cleaned up the code
-> to not depend on virt board internals but forgot to also remove the
-> now-redundant include line.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   target/arm/kvm64.c | 1 -
->   1 file changed, 1 deletion(-)
-> 
+Unfortunately there is real world code out there (which shipped in at
+least Android 11, 12 and 13) which incorrectly uses this
+UNPREDICTABLE insn on the assumption that it does a single register
+load, which is (presumably) what it happens to do on real hardware,
+and is also what it does on the equivalent A32 encoding.
 
-Reviewed-by: Gavin Shan <gshan@redhat.com>
+Revert to the pre-4b222545dbf30 behaviour of not UNDEFing
+for this T32 encoding.
 
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 5e95c496bb9..3ea9f1d6743 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -30,7 +30,6 @@
->   #include "internals.h"
->   #include "hw/acpi/acpi.h"
->   #include "hw/acpi/ghes.h"
-> -#include "hw/arm/virt.h"
->   
->   static bool have_guest_debug;
->   
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1799
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/tcg/translate.c | 37 +++++++++++++++++++++++--------------
+ 1 file changed, 23 insertions(+), 14 deletions(-)
+
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index d83a0e772cd..32a0fa1d1fb 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -7882,7 +7882,7 @@ static void op_addr_block_post(DisasContext *s, arg_ldst_block *a,
+     }
+ }
+ 
+-static bool op_stm(DisasContext *s, arg_ldst_block *a, int min_n)
++static bool op_stm(DisasContext *s, arg_ldst_block *a)
+ {
+     int i, j, n, list, mem_idx;
+     bool user = a->u;
+@@ -7899,7 +7899,14 @@ static bool op_stm(DisasContext *s, arg_ldst_block *a, int min_n)
+ 
+     list = a->list;
+     n = ctpop16(list);
+-    if (n < min_n || a->rn == 15) {
++    /*
++     * This is UNPREDICTABLE for n < 1 in all encodings, and we choose
++     * to UNDEF. In the T32 STM encoding n == 1 is also UNPREDICTABLE,
++     * but hardware treats it like the A32 version and implements the
++     * single-register-store, and some in-the-wild (buggy) software
++     * assumes that, so we don't UNDEF on that case.
++     */
++    if (n < 1 || a->rn == 15) {
+         unallocated_encoding(s);
+         return true;
+     }
+@@ -7935,8 +7942,7 @@ static bool op_stm(DisasContext *s, arg_ldst_block *a, int min_n)
+ 
+ static bool trans_STM(DisasContext *s, arg_ldst_block *a)
+ {
+-    /* BitCount(list) < 1 is UNPREDICTABLE */
+-    return op_stm(s, a, 1);
++    return op_stm(s, a);
+ }
+ 
+ static bool trans_STM_t32(DisasContext *s, arg_ldst_block *a)
+@@ -7946,11 +7952,10 @@ static bool trans_STM_t32(DisasContext *s, arg_ldst_block *a)
+         unallocated_encoding(s);
+         return true;
+     }
+-    /* BitCount(list) < 2 is UNPREDICTABLE */
+-    return op_stm(s, a, 2);
++    return op_stm(s, a);
+ }
+ 
+-static bool do_ldm(DisasContext *s, arg_ldst_block *a, int min_n)
++static bool do_ldm(DisasContext *s, arg_ldst_block *a)
+ {
+     int i, j, n, list, mem_idx;
+     bool loaded_base;
+@@ -7979,7 +7984,14 @@ static bool do_ldm(DisasContext *s, arg_ldst_block *a, int min_n)
+ 
+     list = a->list;
+     n = ctpop16(list);
+-    if (n < min_n || a->rn == 15) {
++    /*
++     * This is UNPREDICTABLE for n < 1 in all encodings, and we choose
++     * to UNDEF. In the T32 LDM encoding n == 1 is also UNPREDICTABLE,
++     * but hardware treats it like the A32 version and implements the
++     * single-register-load, and some in-the-wild (buggy) software
++     * assumes that, so we don't UNDEF on that case.
++     */
++    if (n < 1 || a->rn == 15) {
+         unallocated_encoding(s);
+         return true;
+     }
+@@ -8045,8 +8057,7 @@ static bool trans_LDM_a32(DisasContext *s, arg_ldst_block *a)
+         unallocated_encoding(s);
+         return true;
+     }
+-    /* BitCount(list) < 1 is UNPREDICTABLE */
+-    return do_ldm(s, a, 1);
++    return do_ldm(s, a);
+ }
+ 
+ static bool trans_LDM_t32(DisasContext *s, arg_ldst_block *a)
+@@ -8056,16 +8067,14 @@ static bool trans_LDM_t32(DisasContext *s, arg_ldst_block *a)
+         unallocated_encoding(s);
+         return true;
+     }
+-    /* BitCount(list) < 2 is UNPREDICTABLE */
+-    return do_ldm(s, a, 2);
++    return do_ldm(s, a);
+ }
+ 
+ static bool trans_LDM_t16(DisasContext *s, arg_ldst_block *a)
+ {
+     /* Writeback is conditional on the base register not being loaded.  */
+     a->w = !(a->list & (1 << a->rn));
+-    /* BitCount(list) < 1 is UNPREDICTABLE */
+-    return do_ldm(s, a, 1);
++    return do_ldm(s, a);
+ }
+ 
+ static bool trans_CLRM(DisasContext *s, arg_CLRM *a)
+-- 
+2.34.1
 

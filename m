@@ -1,289 +1,372 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1650787ejc;
-        Wed, 27 Sep 2023 00:14:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IERaWGZcFbob0OJq8bdc04UONaIM3MdHgTWens8kxJHiR6wk4rmJr7KSUEA1Wer2zBt7023
-X-Received: by 2002:a0c:b552:0:b0:647:23b8:dac2 with SMTP id w18-20020a0cb552000000b0064723b8dac2mr1027356qvd.58.1695798899105;
-        Wed, 27 Sep 2023 00:14:59 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1695798899; cv=pass;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1728009ejc;
+        Wed, 27 Sep 2023 03:05:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG2R+ntlNfBS1C2sb6r/r5fBKSUBTDPmDUGtQeDPhoS2HoU7C/JpgWy3iNAa5VtcF1IBuxo
+X-Received: by 2002:ac8:7e91:0:b0:412:1908:404c with SMTP id w17-20020ac87e91000000b004121908404cmr1731835qtj.10.1695809108122;
+        Wed, 27 Sep 2023 03:05:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695809108; cv=none;
         d=google.com; s=arc-20160816;
-        b=VXCrUZ7HljxYkRPnjwEVygxiC4FppLc+oXjKF2E7GHVx7CWLE2GuckcB1uqwxM7Qxn
-         7rVWXqqQ8z4O8RpCEabsv2Q2IV1Sd+RplQqgW9JaTETyrL1sZUl34Wl4b9TV1lqY2KqS
-         +4k78BQf18BHo4kcG66vIPdD0cT9exdogVF7acvzwDJiLV8Ltg9gXRsXnYyuXURwcjxj
-         eISXpY47J5iBKiV28SLSfhKS9UXs5DGw5Lgeep3+hnYMfFohNkicNZLnH9q/csmF+Jx2
-         KVNoM4205HWjBVKcx4UR81vLiAYi7bRufVw2FMeQFX30m3qZg3uughC9R2a9/2LcKG4M
-         yt9A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:msip_labels:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=To6p7Ojm7rerKEWwO0yO8ra/+XtD6bl/ln3ECl2GhKU=;
-        fh=42L+Pbokum45XGRALs6KMTyw5oJOueYDs93aSFmioyo=;
-        b=oFLcYmVsKeQWs+eMVHLczIONqJKKt7WGPvSz6X6Ke/Mz8LzU0At1S3tkJfe1mT5yie
-         du2D2GhTVdcFB3YSVAp14LG//KxycwRfQlJdHL7D8ywdsrajyXIXVTPznL7vwZw36TD0
-         QdQGLnaqfT17wj51A0thBgdEUaSowKzmFvJbBwiYwRZM+oBQgFCh+GFhsslPBhta/rHg
-         Mu5hKFfoS/qIp/Hlgg3HljS24yMLu39RCZn9IhvXY1SFU30Tt1sqCpyNMzMCjhNWHhiL
-         yfvpoFQi5OxKDbm8aBl49oJ2xeciCe5JvnDO0n+I9l/3HrQR6Oz5y5SDDIuH/D96Ud1U
-         LIRQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=W8ZeVo+j;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h18-20020a0cf412000000b0065b26265ae6si1444421qvl.211.2023.09.27.00.14.58
+        b=mbtv9zXGkqAG3eV5zcVo1rd7SqvnQ2hid8OJMip3O66XHevrKCmtR5MKVV4t6KzbBp
+         4aWt8FSoD6KDr14osLC6AKgr/qUc1OBlQHKFwGX6oN/aq19ZiSVUyl+TDBPyRNMvKwoq
+         UqMuaSCkY8c9ZgEpPOBNw/5HRPzoW+ocbNkptT1jcqnbaODcdTTTrpDFocluCFbu9CS8
+         Utzp0hfuOl0whUTCUvmghY2U3wYTkvWzuBSEuaFyan1lJFbDwMfVwDDhYTJ8cpRVCe3J
+         FiHZ+7z/wDpUmZnK397J642QH62DJvcWmCgox7/K5rpgqaoCnHLuNlwFlcP0xJfVF+S8
+         aPQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=U/10JuknDXD7iTOs+uZOQSEWaEqPB2xAt4Hc+Sh7Tng=;
+        fh=fO+ncAaxY0Wf5Oiu0zeLu9be5DWOx71LYjyGHoG8Yc0=;
+        b=soMwxXp9tg0g4T4rJs1ewVlkvuTPM8mKwL6rhdAuzdJSUvSKAn5ThOcuwWkh8+qx7e
+         6JQPKliANLExsPUuPz+7lJrXOnKkJpEtgK7CL94qVozk/psrmIa8khTgh7HQer94di+A
+         gIx+dO+e+jRncAypoJqTVxuB8iOF++rYGASn7O58KXT/yVRQ2hvNPzFk+1JLandA40F4
+         Z2vcYqE/K8nK10Lz66YQSD6T+8/+qi2x2Er1++LYxYOP393yHwG9QeYTe4glVumnd2XV
+         O4oINCYEjLErpD/2Dduat9mI1ZSGjtf/MFd96Z0Javs4aQYoo66uqdidSwdZMqh30L7e
+         248Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="O9RF/bQ0";
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <gshan@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id a18-20020a05622a065200b00417ae86d616si8461369qtb.567.2023.09.27.03.05.07
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Sep 2023 00:14:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 Sep 2023 03:05:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=W8ZeVo+j;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qlOkq-0000df-U7; Wed, 27 Sep 2023 03:14:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1qlOkn-0000dF-Bj; Wed, 27 Sep 2023 03:14:37 -0400
-Received: from mail-mw2nam04on2062e.outbound.protection.outlook.com
- ([2a01:111:f400:7e8c::62e]
- helo=NAM04-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1qlOkl-00034Z-8u; Wed, 27 Sep 2023 03:14:36 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IQxlF0IbCC4ngXXBOM9bZ5a86hBcD6iaLFPtM0TfCNK0zh/S0e40GO49OWHBbsiZHy5bQM0EmW72DxJGueRtbQFSCrpbqhJF1SBGKuGEj6hwdzAJ2TST+xepxEDr516UDO/NPRmaZWkPwA6rYttgKruU/njHlHV7LCAfK7ShGzJ4fBQs+MuTvTGOIC0WrWHgKITRGIyXcu+sP2+aRDs5wpC49D0DZbRUdjxhGPvfpUNj4FcVEdQQl1RxxVVQp5oQajJp9oWplBUj6vK4UMDN+OvfDbRJ302qgD00O2UgSrEaEp8x2kWPzdGSuREQ+MrnuSeuEdorZXJHDtMdxXPA/A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=To6p7Ojm7rerKEWwO0yO8ra/+XtD6bl/ln3ECl2GhKU=;
- b=ilhXboVRky7GDOIP7kUcIEfqqeUUQmIByBX5mcC3pAPhTfoj9rxgR4F9T4imwb7AIWyDEhAON/v8LIpqd8AF5oVDun7NmUjBmVekwmKt9DGLvrr3Dcu+1DZEQW/ZN/OS1qgfETzhCubvyqPbzByRCBUjdv01trbGl3phLrLr7LlCMdKe92hJ1GSxeYMwVjacEnLz7jxULBLBYUh4P/75V89DnVQ/mLgkJ2Xi29FN72PdRgLL/SOQqUGBUlz9SaPQaAqJIwIKW+wm46wCJSMWNqzUi8HpKg6Fe4FcuvuJ1o7+QaN4uAAwGDbd4RWnellE/5vHbpJkwDjEPV9RLv13Yg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=To6p7Ojm7rerKEWwO0yO8ra/+XtD6bl/ln3ECl2GhKU=;
- b=W8ZeVo+jJ3RMENN6FqfaJacbcQG0lCR4c7gIRlyfqPph1YIjDjPJ6gAYpDJdqQvm0IeSm1eLGIny540y7s6chGu0iEdqLLbRR9nqaYzXBc4ndHpioB1UUMjZgGfHLrNSQ05q/DSCuEEoWBiBnQB4sJEK4no+U/xBA2tNgg63X2WWbnfYnFSBq5FvhruHsJbTM0SGil1N/Vy2F/hO7EyYnJo7WytIiglzujw+V3utUwz0//r8OIYXXVSHsU8/YfXkMK7NkcZDDDz1zxTA5UhyQ105N7QaVpNRxr4g1SupBK3yF9gsyzXOTcOQ4AYfffUj2KqK7W8RhNo7onzbBQAppg==
-Received: from BY5PR12MB3763.namprd12.prod.outlook.com (2603:10b6:a03:1a8::24)
- by SN7PR12MB8130.namprd12.prod.outlook.com (2603:10b6:806:32e::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.28; Wed, 27 Sep
- 2023 07:14:28 +0000
-Received: from BY5PR12MB3763.namprd12.prod.outlook.com
- ([fe80::9e7a:4853:fa35:a060]) by BY5PR12MB3763.namprd12.prod.outlook.com
- ([fe80::9e7a:4853:fa35:a060%2]) with mapi id 15.20.6838.016; Wed, 27 Sep 2023
- 07:14:28 +0000
-From: Ankit Agrawal <ankita@nvidia.com>
-To: Alex Williamson <alex.williamson@redhat.com>, David Hildenbrand
- <david@redhat.com>
-CC: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@redhat.com>, Jason Gunthorpe
- <jgg@nvidia.com>, "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
- <ani@anisinha.ca>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
- <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
- (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, Andy
- Currid <ACurrid@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Gavin Shan
- <gshan@redhat.com>
-Subject: Re: [PATCH v1 0/4] vfio: report NUMA nodes for device memory
-Thread-Topic: [PATCH v1 0/4] vfio: report NUMA nodes for device memory
-Thread-Index: AQHZ537JxLWb7mRoJ0CHc31F6ORMKbAb8EmAgAAH8ACAAD9dgIAKT71wgAADi4CABrQ0B4AAJkeAgAAm/4CAAMdQGQ==
-Date: Wed, 27 Sep 2023 07:14:28 +0000
-Message-ID: <BY5PR12MB37630E29E6E83BCD63FB3F2BB0C2A@BY5PR12MB3763.namprd12.prod.outlook.com>
-References: <20230915024559.6565-1-ankita@nvidia.com>
- <d09b3df6-74f8-c93b-b26e-59de5b2dd114@redhat.com>
- <20230915084754.4b49d5c0.alex.williamson@redhat.com>
- <f129b30b-bd0c-4e30-6be9-384b2b79a26b@redhat.com>
- <BY5PR12MB3763FA9922B9059DC14CA80DB0FFA@BY5PR12MB3763.namprd12.prod.outlook.com>
- <b67c18d1-a648-81bc-1144-33fb839f2aa3@redhat.com>
- <BY5PR12MB37636F9E84CF92020769D859B0C3A@BY5PR12MB3763.namprd12.prod.outlook.com>
- <769b577a-65b0-dbfe-3e99-db57cea08529@redhat.com>
- <20230926131427.1e441670.alex.williamson@redhat.com>
-In-Reply-To: <20230926131427.1e441670.alex.williamson@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BY5PR12MB3763:EE_|SN7PR12MB8130:EE_
-x-ms-office365-filtering-correlation-id: 31fd1b61-8a33-44a4-50ea-08dbbf296325
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: f4JphrPFIbxDb7qoPSoY0wyCIYuwo0JZS4fmwHRL282un/dfKGgLGSZleaVmbkmyLPQ+BZODrKQVThRpmHSf58tAGV6803PJvFo2hKSzQE34ILeB7CcEuRASM+AixsDnYjW3RugDoMpTqa37n+l4ibdHRcYbKU869pbuhd8WlVOVeTNwHWRZknUrABfyDde4+pdxhBrNV0pvuXvAtWX0yhmtcmhN3OV3MBWLtQeU3D9Vl4ssdoCsqsxTJH57eZ50Ga9bVGRgBWd701zfGpte8tafTmPPnu6bnnOVUOIT3VSof59zgLUZPW86fPK+bEArzRX095Wb90Gmm1WocwydVKy8YNysV/bJfWiGSkDkabNWj5ciOHcd+zDLCCS87K3gnUM0xeGk7WwqZA5wWwGUSSqYUlP24fShguqOBSL9LG+gllQIv1l37xUsOFSiB1XI6BqpV5+/isOTDWf2aWyaqBwlu7PHaH7okgLzN9z50NRtGEb5xSUKOrcdKw0nyvahdrt3i2jKhRN6qCWcN0pWY5WwPOgWctgRtJ03LjlIL4vxtAMOgF/YCc5KZ9vgNqGOEKf+96rEyHJ4yK1P71zFGWgvxlNNdjxnwcj3F86YoZYJkiTG/YbmlxwQuTta1P2K
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR12MB3763.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376002)(39860400002)(346002)(396003)(136003)(366004)(230922051799003)(451199024)(1800799009)(186009)(33656002)(55016003)(86362001)(316002)(64756008)(54906003)(66446008)(66946007)(110136005)(66476007)(91956017)(76116006)(66556008)(478600001)(41300700001)(52536014)(5660300002)(8676002)(8936002)(4326008)(7696005)(122000001)(6506007)(2906002)(9686003)(38070700005)(38100700002)(71200400001)(26005);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?IP9e65cy7c7XhaOQlIJanRDaVdz27HLanYyS14CXOBcVLwDeHAwDYS1Eaj?=
- =?iso-8859-1?Q?WpKkTyznFn06YoDuvEEvxy99Xlv91cAxIagxUJqIuZk66B96IWYOQgLnm8?=
- =?iso-8859-1?Q?+qm2mviwSMOGl9vjE14muGdfnireywbeHlXFZrHuH39xDYuev31R3cdgip?=
- =?iso-8859-1?Q?pHqqovGWqnNoJgVk4bLtp86AX+BpE+Yezk73seuhTNvdLrpDa5bP5CNe0O?=
- =?iso-8859-1?Q?qLoz+BPKpEm2Nn8gLlJqQscXZsPOgd7FEvu14LOlA1nG7TV9QXT8k+3/ac?=
- =?iso-8859-1?Q?q8UXLDrhPfjDyCdO398xOg4JwSiCgOIiWckRK2mrre5cbgwFYw1PLU9QrI?=
- =?iso-8859-1?Q?Xh61/C1b75yO4qhaKsAAtCwN3kIvtlUwJEuJEUHjmoHJTnb9uC91LToEL5?=
- =?iso-8859-1?Q?cNRa0NKHssCmNsyYX+ZT8w8G6EB0Y47rYJnl3VpvfDoLmUHawh22vAXEDD?=
- =?iso-8859-1?Q?vRBsdW1NtDC5Og8Ozp47sjfVVh3zhLkduzoHQxCXvoPAPV+TUFeZ5kiD5w?=
- =?iso-8859-1?Q?+09+Am1OW8IwrRQ2RIZlx5BIC985UayGWRmPBaem1SyCPTEjq7U+BKuRN3?=
- =?iso-8859-1?Q?LMuR+rVTAOdbUJuz2XiBl7vF+nrgAfVGDHmb0o0S5ORx0sg+xaoBoylE3j?=
- =?iso-8859-1?Q?d53HB5LeA/P3fl7Nf1B4fwC+VZH+0fAqhbfUmujZZPLyLLH4Qsz2Q0WTXN?=
- =?iso-8859-1?Q?HapIxUaC61Kl7v0gbWTuGbv6sPoeLslbwcwEgDKtVEHQmlcI2iZ2PFR04V?=
- =?iso-8859-1?Q?lDLLpZW9UohAcFw4srj95MzNx9tvrid3sAV1OSri4qiPNS5Y2dCVg7epQ2?=
- =?iso-8859-1?Q?WgMo0+LjdUyn+182jwp1aMrAFC3UDn/8VJlUIHRtuLQy0o8QB+mK7ST7TP?=
- =?iso-8859-1?Q?5uvx70kqkB+JNegPJsxHUuvC9mt8cISXzT0fman05aEy5SC39zq1BWcEji?=
- =?iso-8859-1?Q?tfSKyZQGEBxKmhZCRMgr/Ya82uGexuZAnNzsJ1+d8r9pNHwdp0aQd258S8?=
- =?iso-8859-1?Q?34G1FMR5WbALnsPC0rllbi/M65ApB9M+g0P2/dtD6YnElOicKdLvvvIHHx?=
- =?iso-8859-1?Q?dcgjKrf//s6tRctktCPxEhEpb2w7KppadxGa/YERtfwaguO1pn61hIoRGJ?=
- =?iso-8859-1?Q?FWDZtD4HI8mEM+7UvJa53K2DJksfvu+NhBsGZhArb3WPjBHnD+Tk2DLoDP?=
- =?iso-8859-1?Q?OGMoE70nRd7Wkt3veFXDB8EKQ0bv8dxsO17n2tJmGi726ZVSInXJBYBHZf?=
- =?iso-8859-1?Q?+PjeWYXk63utncmLAlAlABVpAWsLQPZQIQRRl5Bb92yfZ+svPX6HJvRugG?=
- =?iso-8859-1?Q?N3mq9VfCR6YaUUI+CF0AMGf0sxFrsHEOOM/yowbS3y2iUDX33Y77Mg8huK?=
- =?iso-8859-1?Q?faP/fidOVZzSVnKpxw5W65Rgm/7KEii7Zv9Q/zVnkteH03jYlgpHqYjh+X?=
- =?iso-8859-1?Q?uju2dXqj+eEQR+BqvZ9mD2JU1+8bopwMppHT5gTi2OuxVi9Yh0nJe3tVrM?=
- =?iso-8859-1?Q?CrVO5vNqTBjvm952zjpW7k1McbT6p5D07Jo0IzIMzOCrRc3VUPwnJT6u0/?=
- =?iso-8859-1?Q?d6vhtw4AlORgQrOpGegJ2qIHImfAwoBLxpnq7D+jnuJC9nnOok1ReNsraN?=
- =?iso-8859-1?Q?RMa24v8Nw00uU=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="O9RF/bQ0";
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1695809107;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=U/10JuknDXD7iTOs+uZOQSEWaEqPB2xAt4Hc+Sh7Tng=;
+	b=O9RF/bQ0rblC7DCp5plBANkaVIY6vNZzf6SXUyHhoXBDAXdNayqM6Q+s8agfi7/pvv2XVQ
+	NJx5qY5lCWfoiuB0EONCkz74QR0rRmjGExrsBD3zVEvCyoSnAIMJWrDDj2nqvSwqBgksmN
+	+K2sGgNi+p+qlY7rH8E0ZWOyQ3JNnFI=
+Received: from mail-oo1-f69.google.com (mail-oo1-f69.google.com
+ [209.85.161.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-557-UwAabg6KMvKJ9qD91aesbA-1; Wed, 27 Sep 2023 06:05:04 -0400
+X-MC-Unique: UwAabg6KMvKJ9qD91aesbA-1
+Received: by mail-oo1-f69.google.com with SMTP id 006d021491bc7-57be11d32b3so9334408eaf.1
+        for <alex.bennee@linaro.org>; Wed, 27 Sep 2023 03:05:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695809103; x=1696413903;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=U/10JuknDXD7iTOs+uZOQSEWaEqPB2xAt4Hc+Sh7Tng=;
+        b=B4YkWXJ9N2Kk1B5xgEz5E3LPSyg8/0fkX9mGXVffqQu4dVWPyaVld8ltWUIAzqt0Mf
+         baR8DxJIXZ49SKZGIMYeqt0eigsVRAaAc/E1RdRM+hSa/EdIFdgrzIpq1+eAjIWS6xRS
+         OY3yB+X6tvtiavIrMVNyIZPIFlp0/Q9Lq/Gt065W8FJv+CqzPUc8VsOM4EZ8xkTHQB0r
+         PzYSNXaVvW7l24wdVOzttnOYF2dGo2AKjgzMZ3ba35tuRjNocWTRc8J/mFGh6FgXYmeh
+         +ef0O/J1bMQDQ90/CzbB0e1OfP+KGbDHxoFRT+W1Cmk6MH7H5CbRXYbyI8lYayNNNyZz
+         CRJg==
+X-Gm-Message-State: AOJu0Yz6jAef1obt09FBRjRYg5W4DNYuGTl+Qhv/MXGUPE1uBVHntJmK
+	Tmc7k3zVMh9chIabr58qwgre43DwG2guR6ZCTzypD/HjrixrH40o3rqVcGcb9EEjW273AiKjPG9
+	TUPty7uW8nnTiS88C
+X-Received: by 2002:a05:6358:726:b0:134:ed9b:15a7 with SMTP id e38-20020a056358072600b00134ed9b15a7mr1835512rwj.30.1695809103118;
+        Wed, 27 Sep 2023 03:05:03 -0700 (PDT)
+X-Received: by 2002:a05:6358:726:b0:134:ed9b:15a7 with SMTP id e38-20020a056358072600b00134ed9b15a7mr1835492rwj.30.1695809102729;
+        Wed, 27 Sep 2023 03:05:02 -0700 (PDT)
+Return-Path: <gshan@redhat.com>
+Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
+        by smtp.gmail.com with ESMTPSA id i13-20020aa7908d000000b0068fe39e6a46sm11350063pfa.112.2023.09.27.03.04.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 27 Sep 2023 03:05:02 -0700 (PDT)
+Message-ID: <b9dd8569-e95d-2085-9965-08686ce6666d@redhat.com>
+Date: Wed, 27 Sep 2023 20:04:48 +1000
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR12MB3763.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 31fd1b61-8a33-44a4-50ea-08dbbf296325
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2023 07:14:28.0515 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: /hOmMtlhdqaJCquMESyG3cO7vGsm+51BvVTteREuCd5S3lusjF///s/UelKs4d+iNQ4s5tzBVQp5BxyDZp6NoQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB8130
-Received-SPF: softfail client-ip=2a01:111:f400:7e8c::62e;
- envelope-from=ankita@nvidia.com;
- helo=NAM04-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zjXennNW38GT
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH RFC V2 06/37] arm/virt,kvm: Pre-create disabled possible
+ vCPUs @machine init
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
+ ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ mst@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com,
+ alex.bennee@linaro.org, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
+ wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
+ maobibo@loongson.cn, lixianglai@loongson.cn
+References: <20230926100436.28284-1-salil.mehta@huawei.com>
+ <20230926100436.28284-7-salil.mehta@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20230926100436.28284-7-salil.mehta@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: 2RVsYDClwS/Y
 
-> >=0A=
-> > Based on the suggestions here, can we consider something like the=0A=
-> > following?=0A=
-> > 1. Introduce a new -numa subparam 'devnode', which tells Qemu to mark=
-=0A=
-> > the node with MEM_AFFINITY_HOTPLUGGABLE in the SRAT's memory affinity=
-=0A=
-> > structure to make it hotpluggable.=0A=
->=0A=
-> Is that "devnode=3Don" parameter required? Can't we simply expose any nod=
-e=0A=
-> that does *not* have any boot memory assigned as MEM_AFFINITY_HOTPLUGGABL=
-E?=0A=
->=0A=
-> Right now, with "ordinary", fixed-location memory devices=0A=
-> (DIMM/NVDIMM/virtio-mem/virtio-pmem), we create an srat entry that=0A=
-> covers the device memory region for these devices with=0A=
-> MEM_AFFINITY_HOTPLUGGABLE. We use the highest NUMA node in the machine,=
-=0A=
-> which does not quite work IIRC. All applicable nodes that don't have=0A=
-> boot memory would need MEM_AFFINITY_HOTPLUGGABLE for Linux to create them=
-.=0A=
-=0A=
-Yeah, you're right that it isn't required. Exposing the node without any me=
-mory as=0A=
-MEM_AFFINITY_HOTPLUGGABLE seems like a better approach than using=0A=
-"devnode=3Don".=0A=
-=0A=
-> In your example, which memory ranges would we use for these nodes in SRAT=
-?=0A=
-=0A=
-We are setting the Base Address and the Size as 0 in the SRAT memory affini=
-ty=0A=
-structures. This is done through the following:=0A=
-build_srat_memory(table_data, 0, 0, i,=0A=
-                  MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);=0A=
-=0A=
-This results in the following logs in the VM from the Linux ACPI SRAT parsi=
-ng code:=0A=
-[    0.000000] ACPI: SRAT: Node 2 PXM 2 [mem 0x00000000-0xffffffffffffffff]=
- hotplug=0A=
-[    0.000000] ACPI: SRAT: Node 3 PXM 3 [mem 0x00000000-0xffffffffffffffff]=
- hotplug=0A=
-[    0.000000] ACPI: SRAT: Node 4 PXM 4 [mem 0x00000000-0xffffffffffffffff]=
- hotplug=0A=
-[    0.000000] ACPI: SRAT: Node 5 PXM 5 [mem 0x00000000-0xffffffffffffffff]=
- hotplug=0A=
-[    0.000000] ACPI: SRAT: Node 6 PXM 6 [mem 0x00000000-0xffffffffffffffff]=
- hotplug=0A=
-[    0.000000] ACPI: SRAT: Node 7 PXM 7 [mem 0x00000000-0xffffffffffffffff]=
- hotplug=0A=
-[    0.000000] ACPI: SRAT: Node 8 PXM 8 [mem 0x00000000-0xffffffffffffffff]=
- hotplug=0A=
-[    0.000000] ACPI: SRAT: Node 9 PXM 9 [mem 0x00000000-0xffffffffffffffff]=
- hotplug=0A=
-=0A=
-I would re-iterate that we are just emulating the baremetal behavior here.=
-=0A=
-=0A=
-=0A=
-> I don't see how these numa-node args on a vfio-pci device have any=0A=
-> general utility.=A0 They're only used to create a firmware table, so why=
-=0A=
-> don't we be explicit about it and define the firmware table as an=0A=
-> object?=A0 For example:=0A=
->=0A=
->=A0=A0=A0 =A0=A0=A0 -numa node,nodeid=3D2 \=0A=
->=A0 =A0=A0=A0=A0=A0 -numa node,nodeid=3D3 \=0A=
-> =A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D4 \=0A=
->=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D5 \=0A=
->=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D6 \=0A=
->=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D7 \=0A=
->=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D8 \=0A=
->=A0=A0=A0=A0=A0=A0=A0 -numa node,nodeid=3D9 \=0A=
->=A0=A0=A0=A0=A0=A0=A0 -device vfio-pci-nohotplug,host=3D0009:01:00.0,bus=
-=3Dpcie.0,addr=3D04.0,rombar=3D0,id=3Dnvgrace0 \=0A=
->=A0=A0=A0=A0=A0=A0=A0 -object nvidia-gpu-mem-acpi,devid=3Dnvgrace0,nodeset=
-=3D2-9 \=0A=
-=0A=
-Yeah, that is fine with me. If we agree with this approach, I can go=0A=
-implement it.=0A=
-=0A=
-=0A=
-> There are some suggestions in this thread that CXL could have similar=0A=
-> requirements, but I haven't found any evidence that these=0A=
-> dev-mem-pxm-{start,count} attributes in the _DSD are standardized in=0A=
-> any way.=A0 If they are, maybe this would be a dev-mem-pxm-acpi object=0A=
-> rather than an NVIDIA specific one.=0A=
-=0A=
-Maybe Jason, Jonathan can chime in on this?=0A=
-=0A=
-=0A=
-> It seems like we could almost meet the requirement for this table via=0A=
-> -acpitable, but I think we'd like to avoid the VM orchestration tool=0A=
-> from creating, compiling, and passing ACPI data blobs into the VM.=0A=
+Hi Salil,
+
+On 9/26/23 20:04, Salil Mehta wrote:
+> In ARMv8 architecture, GIC needs all the vCPUs to be created and present when
+> it is initialized. This is because:
+> 1. GICC and MPIDR association must be fixed at the VM initialization time.
+>     This is represented by register GIC_TYPER(mp_afffinity, proc_num)
+> 2. GICC(cpu interfaces), GICR(redistributors) etc all must be initialized
+>     at the boot time as well.
+> 3. Memory regions associated with GICR etc. cannot be changed(add/del/mod)
+>     after VM has inited.
+> 
+> This patch adds the support to pre-create all such possible vCPUs within the
+> host using the KVM interface as part of the virt machine initialization. These
+> vCPUs could later be attached to QOM/ACPI while they are actually hot plugged
+> and made present.
+> 
+> Co-developed-by: Salil Mehta <salil.mehta@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Reported-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> [VP: Identified CPU stall issue & suggested probable fix]
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>   hw/arm/virt.c         | 53 +++++++++++++++++++++++++++++++++++++++++--
+>   include/hw/core/cpu.h |  1 +
+>   target/arm/cpu64.c    |  1 +
+>   target/arm/kvm.c      | 32 ++++++++++++++++++++++++++
+>   target/arm/kvm64.c    |  9 +++++++-
+>   target/arm/kvm_arm.h  | 11 +++++++++
+>   6 files changed, 104 insertions(+), 3 deletions(-)
+> 
+
+The subject looks a bit misleading. (possible && disabled) == (disabled). So it
+can be simplified to something like below:
+
+arm/virt,kvm: Pre-create KVM objects for hotpluggable vCPUs
+
+I think the commit log can be improved to something like below:
+
+All possible vCPUs are classified to cold-booting and hotpluggable vCPUs.
+In ARMv8 architecture, GIC needs all the possible vCPUs to be existing
+and present when it is initialized for several factors. After the initializaion,
+the CPU instances for those hotpluggable vCPUs aren't needed, but the
+KVM objects like vCPU's file descriptor should be kept as they have been
+shared to host.
+
+1. GICC and MPIDR association must be fixed at the VM initialization time.
+    This is represented by register GIC_TYPER(mp_afffinity, proc_num)
+2. GICC(cpu interfaces), GICR(redistributors) etc all must be initialized
+    at the boot time as well.
+3. Memory regions associated with GICR etc. cannot be changed(add/del/mod)
+    after VM has inited.
+
+This creates and realizes CPU instances for those cold-booting vCPUs. They
+becomes enabled eventually. For these hotpluggable vCPUs, the vCPU instances
+are created, but not realized. They become present eventually.
+
+
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 3668ad27ec..6ba131b799 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2293,8 +2293,10 @@ static void machvirt_init(MachineState *machine)
+>       assert(possible_cpus->len == max_cpus);
+>       for (n = 0; n < possible_cpus->len; n++) {
+>           Object *cpuobj;
+> +        CPUState *cs;
+>   
+>           cpuobj = object_new(possible_cpus->cpus[n].type);
+> +        cs = CPU(cpuobj);
+>   
+>           aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
+>           object_property_set_int(cpuobj, "socket-id",
+> @@ -2306,8 +2308,55 @@ static void machvirt_init(MachineState *machine)
+>           object_property_set_int(cpuobj, "thread-id",
+>                                   virt_get_thread_id(machine, n), NULL);
+>   
+> -        qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+> -        object_unref(cpuobj);
+> +        if (n < smp_cpus) {
+> +            qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+> +            object_unref(cpuobj);
+> +        } else {
+> +            CPUArchId *cpu_slot;
+> +
+> +            /* handling for vcpus which are yet to be hot-plugged */
+> +            cs->cpu_index = n;
+> +            cpu_slot = virt_find_cpu_slot(machine, cs->cpu_index);
+> +
+> +            /*
+> +             * ARM host vCPU features need to be fixed at the boot time. But as
+> +             * per current approach this CPU object will be destroyed during
+> +             * cpu_post_init(). During hotplug of vCPUs these properties are
+> +             * initialized again.
+> +             */
+> +            virt_cpu_set_properties(cpuobj, cpu_slot, &error_fatal);
+> +
+> +            /*
+> +             * For KVM, we shall be pre-creating the now disabled/un-plugged
+> +             * possbile host vcpus and park them till the time they are
+> +             * actually hot plugged. This is required to pre-size the host
+> +             * GICC and GICR with the all possible vcpus for this VM.
+> +             */
+> +            if (kvm_enabled()) {
+> +                kvm_arm_create_host_vcpu(ARM_CPU(cs));
+> +            }
+
+                /*
+                 * For KVM, the associated objects like vCPU's file descriptor
+                 * is reserved so that they can reused when the vCPU is hot added.
+                 * :
+                 */
+
+> +            /*
+> +             * Add disabled vCPU to CPU slot during the init phase of the virt
+> +             * machine
+> +             * 1. We need this ARMCPU object during the GIC init. This object
+> +             *    will facilitate in pre-realizing the GIC. Any info like
+> +             *    mp-affinity(required to derive gicr_type) etc. could still be
+> +             *    fetched while preserving QOM abstraction akin to realized
+> +             *    vCPUs.
+> +             * 2. Now, after initialization of the virt machine is complete we
+> +             *    could use two approaches to deal with this ARMCPU object:
+> +             *    (i) re-use this ARMCPU object during hotplug of this vCPU.
+> +             *                             OR
+> +             *    (ii) defer release this ARMCPU object after gic has been
+> +             *         initialized or during pre-plug phase when a vCPU is
+> +             *         hotplugged.
+> +             *
+> +             *    We will use the (ii) approach and release the ARMCPU objects
+> +             *    after GIC and machine has been fully initialized during
+> +             *    machine_init_done() phase.
+> +             */
+> +             cpu_slot->cpu = OBJECT(cs);
+> +        }
+
+            /*
+             * Make the hotpluggable vCPU present because ....
+             */
+>       }
+>       fdt_add_timer_nodes(vms);
+>       fdt_add_cpu_nodes(vms);
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index e5af79950c..b2201a98ee 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -401,6 +401,7 @@ struct CPUState {
+>       uint32_t kvm_fetch_index;
+>       uint64_t dirty_pages;
+>       int kvm_vcpu_stats_fd;
+> +    VMChangeStateEntry *vmcse;
+>   
+>       /* Use by accel-block: CPU is executing an ioctl() */
+>       QemuLockCnt in_ioctl_lock;
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index a660e3f483..3a38e7ccaf 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -748,6 +748,7 @@ static void aarch64_cpu_initfn(Object *obj)
+>        * enabled explicitly
+>        */
+>       cs->disabled = true;
+> +    cs->thread_id = 0;
+>   }
+>   
+>   static void aarch64_cpu_finalizefn(Object *obj)
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index b4c7654f49..0e1d0692b1 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -637,6 +637,38 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
+>       write_list_to_cpustate(cpu);
+>   }
+>   
+> +void kvm_arm_create_host_vcpu(ARMCPU *cpu)
+> +{
+> +    CPUState *cs = CPU(cpu);
+> +    unsigned long vcpu_id = cs->cpu_index;
+> +    int ret;
+> +
+> +    ret = kvm_create_vcpu(cs);
+> +    if (ret < 0) {
+> +        error_report("Failed to create host vcpu %ld", vcpu_id);
+> +        abort();
+> +    }
+> +
+> +    /*
+> +     * Initialize the vCPU in the host. This will reset the sys regs
+> +     * for this vCPU and related registers like MPIDR_EL1 etc. also
+> +     * gets programmed during this call to host. These are referred
+> +     * later while setting device attributes of the GICR during GICv3
+> +     * reset
+> +     */
+> +    ret = kvm_arch_init_vcpu(cs);
+> +    if (ret < 0) {
+> +        error_report("Failed to initialize host vcpu %ld", vcpu_id);
+> +        abort();
+> +    }
+> +
+> +    /*
+> +     * park the created vCPU. shall be used during kvm_get_vcpu() when
+> +     * threads are created during realization of ARM vCPUs.
+> +     */
+> +    kvm_park_vcpu(cs);
+> +}
+> +
+>   /*
+>    * Update KVM's MP_STATE based on what QEMU thinks it is
+>    */
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 94bbd9661f..364cc21f81 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -566,7 +566,14 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>           return -EINVAL;
+>       }
+>   
+> -    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cs);
+> +    /*
+> +     * Install VM change handler only when vCPU thread has been spawned
+> +     * i.e. vCPU is being realized
+> +     */
+> +    if (cs->thread_id) {
+> +        cs->vmcse = qemu_add_vm_change_state_handler(kvm_arm_vm_state_change,
+> +                                                     cs);
+> +    }
+>   
+>       /* Determine init features for this CPU */
+>       memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index 051a0da41c..31408499b3 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -163,6 +163,17 @@ void kvm_arm_cpu_post_load(ARMCPU *cpu);
+>    */
+>   void kvm_arm_reset_vcpu(ARMCPU *cpu);
+>   
+> +/**
+> + * kvm_arm_create_host_vcpu:
+> + * @cpu: ARMCPU
+> + *
+> + * Called at to pre create all possible kvm vCPUs within the the host at the
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              to create instances for the hotpluggable vCPUs
+
+> + * virt machine init time. This will also init this pre-created vCPU and
+> + * hence result in vCPU reset at host. These pre created and inited vCPUs
+> + * shall be parked for use when ARM vCPUs are actually realized.
+> + */
+> +void kvm_arm_create_host_vcpu(ARMCPU *cpu);
+> +
+>   /**
+>    * kvm_arm_init_serror_injection:
+>    * @cs: CPUState
+
+Thanks,
+Gavin

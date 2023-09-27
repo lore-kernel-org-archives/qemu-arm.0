@@ -1,425 +1,127 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1599804ejc;
-        Tue, 26 Sep 2023 22:16:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IECQo5d04uLGSh4ayWOTavPeu7RGTgZAMkJLa2nW7ozcQIrubE91ICbrKfEelxzFsQzxQhL
-X-Received: by 2002:a17:906:9a:b0:9a2:28dc:4168 with SMTP id 26-20020a170906009a00b009a228dc4168mr677269ejc.61.1695791810512;
-        Tue, 26 Sep 2023 22:16:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695791810; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp1611021ejc;
+        Tue, 26 Sep 2023 22:44:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF7UXkgmxMjx7GHwDxLtmNYzm7sP1bAfFwZL0ES+C/i+U7GKp3MI3tYPxPDnSJs0ar6NTOT
+X-Received: by 2002:a0c:aadd:0:b0:658:243e:3084 with SMTP id g29-20020a0caadd000000b00658243e3084mr876720qvb.55.1695793494877;
+        Tue, 26 Sep 2023 22:44:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695793494; cv=none;
         d=google.com; s=arc-20160816;
-        b=wg6uaMx/igN00bsPO5MS6P0ffJiXm30SkezIy/CDIn+zVeUslzw76bzWyR7nI5mNzW
-         UBcBKkIIwu6uC2ueSIxJ2Cy9A29Zb6tcAjQjN475zRebq8b28iX6GsecozFbgJnARXmm
-         8WLpu73yckv1JVCq/8EtWEc+hp/f4Lh27CgPkFfhyZxFG4fDGfftukjD2DDongxhbHXw
-         wdi+iZQZz/uIDS2E9vRB3iRdrf7CIbY4ULck+i09QsY4tPZl8FGCQKuaQUqUP9urdgvS
-         a3MEImKru1Tdh1q13KFMyotPkfNRBDcpd8kTLmXfH00rTJgdJyPQO6LKu0bOgYjmcgLt
-         qCvQ==
+        b=Lj8/XML24OAvx/dLjxVUhe02pVxWphD/sUZkisrX/L8JamPqpqoCGtioHfeZO4ht5m
+         EtSuGZ5MgqLtNM+Xd7J9ppLQsOOgZybIAlXWFDUBBQ7Sn7lm8nHXMi7CZTbA3tdLn/Ir
+         uQEjR35z8pK3o1SLXIAjGlFh5ieI3pMGQt1lVg+IxOgiFhH17jU6FdhWG8bOtwFYYILD
+         hW+aBS15AWp2T3q/UyREKJ9gWwlWKb3X0tPYjNq+y6IW/Cb8+Ybr7JoBJ3qmgQssVrcx
+         9FitZcSisZV5rMTVFFCW9Yf6q9kyO8r91NtAwlvz+YP7gvnns1W68eB5/P6YbFSGn0Y6
+         Q1BA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=T9gst6RwcXqh0Bu3NaQqSeNqWv5R+lCaxt8OMV4Jpc0=;
-        fh=fO+ncAaxY0Wf5Oiu0zeLu9be5DWOx71LYjyGHoG8Yc0=;
-        b=yFU2B0PfK/UhzZlJpQRw+/JDWJZkN2Xfe0AhxmBo70uqNQW9rz2wiBsEr0Wl+ZN3uN
-         AWdip4zGCGwKB2I2R56gmBVPEAh3f8uFwPOslbnhtCegMafVT6q8lgULM139xgCFDyuU
-         SHq4cSRtSIAfjJ3RBsdqo8QtXS3LB7k373qjkJoeDn97ksi3NKySKz5zKEZIGP9nxjse
-         rf9qeptTzdMrmdzH0oPhO3HpkLFEX7te8D1fv5EaRALDqou9JiHEThFFfHQ9SnLOC6wy
-         TPXT2O/2jHhmBpkyYPb5MFBKddX8xJpPFhm4SPbL06TMqOhr+z6oxND3sF+82BLa3NNl
-         CjQg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=Fu1NiApmiDLx2WR20X+meE43cMIU59izGfoUx77En5I=;
+        fh=H7EBcgh/fXRUG9PaHnf09A9+wWhnNNe7Y3xVxuiG3uE=;
+        b=chw/S/AyIwEnPFyoXbsi4TJRgs1UvNlQhh0DzqsQXESQqMxByIIWzJbQi46x5MMs7h
+         Nj3T33t+KGmsKpCIJ2Rp6FvRcENt1YhG2padTkiZg6OP0xXc4g6EavGRZ6QVFuTEa+VH
+         OG29xTK0w/oUp5A5TW1QIfnxEZZCDh479oKiy841jamO6XOC+XoH6OQcazbARRpUokBk
+         hVjFQPISp1R9xQQr301UxGf/XqF6Z2pt1r7+ty2Rh76JNAEu0CCZ8yaHbT4nvjkHTPB7
+         B3ysma6HlyEHv7/fGpDxtjoBbNW1/BxUjMiCK60T5PaAN+nQqvvVW5sy/x/m0gIrnFHb
+         jKYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DAWLCFT4;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id gj21-20020a170906e11500b009a1975a366csi12216030ejb.978.2023.09.26.22.16.50
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e16-20020ad44190000000b006589f216161si7608972qvp.442.2023.09.26.22.44.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Sep 2023 22:16:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 26 Sep 2023 22:44:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DAWLCFT4;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1695791809;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=T9gst6RwcXqh0Bu3NaQqSeNqWv5R+lCaxt8OMV4Jpc0=;
-	b=DAWLCFT4IBy8U1WPiQiC/jT0pWdSTPRpzODMRNCL9FSedba0Fphkkw/FoaAo2TJRHNqdqA
-	/Qzub9oz65jovAgmnYak07QyKwMIWdZ5zRkyHU2G4jL+8c4Tm5vQ3ysqEva2TMXEusZ1kh
-	4/Km217uWOsFTg5dC8Ab6zMO0m8pr6U=
-Received: from mail-pf1-f199.google.com (mail-pf1-f199.google.com
- [209.85.210.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-444--iKo9MPUPXG2RgUEPzJPFQ-1; Wed, 27 Sep 2023 01:16:47 -0400
-X-MC-Unique: -iKo9MPUPXG2RgUEPzJPFQ-1
-Received: by mail-pf1-f199.google.com with SMTP id d2e1a72fcca58-690c5242f89so11728031b3a.2
-        for <alex.bennee@linaro.org>; Tue, 26 Sep 2023 22:16:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695791806; x=1696396606;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=T9gst6RwcXqh0Bu3NaQqSeNqWv5R+lCaxt8OMV4Jpc0=;
-        b=Nhmk++l/79XTUiulIoc3vUF2SJFFoIt2gOvwbDfPMq3TsQX0f9lpZ4UkWHefi4703I
-         41BethmxTbUtbhifi0xUediqODSftNEi6TXmu/3ImGfyg1t8Z0tpWYkLAAQIeEsWVgAA
-         RL5uHGyFcQ31DpfHDVroE/M+NtLQe9u0jF0J0xb0e5Z7cl+bSuY0j+93z9mW2XCwm+NI
-         EHGHzltTH4rZvikuBftgQXMU8oKgbTaBxAuZHIWzIGXxVolAsmSmc76qcpalBNnRheqK
-         LRSJ07zIFnjicmlaeV+vYE04vjM7jqJzWGQ+KTNQokvJLWxerFIgOFoBHf7m+d5psG3X
-         jvHg==
-X-Gm-Message-State: AOJu0Yw7PUOtEM4zNYZhKoatJDgOJr1lrbMXS2M0UZVW6jDFFr6ZC5+0
-	n6v85KFAPj70IndIH8aM0K8skT+9PfqhPnYYEMNerrzxpp7JxHneq+upjWbcoCCgVFEk0TVSNOO
-	BJ/h0dNC3gRJ7EAk2
-X-Received: by 2002:a05:6a00:1a13:b0:690:41a1:9b67 with SMTP id g19-20020a056a001a1300b0069041a19b67mr1144222pfv.9.1695791806015;
-        Tue, 26 Sep 2023 22:16:46 -0700 (PDT)
-X-Received: by 2002:a05:6a00:1a13:b0:690:41a1:9b67 with SMTP id g19-20020a056a001a1300b0069041a19b67mr1144200pfv.9.1695791805652;
-        Tue, 26 Sep 2023 22:16:45 -0700 (PDT)
-Return-Path: <gshan@redhat.com>
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
-        by smtp.gmail.com with ESMTPSA id x23-20020aa793b7000000b00690204b5a8csm11221897pff.12.2023.09.26.22.16.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 26 Sep 2023 22:16:44 -0700 (PDT)
-Message-ID: <c987543c-c05d-31cf-5cfa-e703d4b90d8f@redhat.com>
-Date: Wed, 27 Sep 2023 15:16:30 +1000
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qlNLk-00042b-09; Wed, 27 Sep 2023 01:44:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=wvUH=FL=kaod.org=clg@ozlabs.org>)
+ id 1qlNLi-00042D-D5; Wed, 27 Sep 2023 01:44:38 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=wvUH=FL=kaod.org=clg@ozlabs.org>)
+ id 1qlNLg-0001sc-6H; Wed, 27 Sep 2023 01:44:38 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4RwQXl4R77z4xPc;
+ Wed, 27 Sep 2023 15:44:23 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4RwQXj4kfLz4xGR;
+ Wed, 27 Sep 2023 15:44:21 +1000 (AEST)
+Message-ID: <bf0703cb-3626-a3e9-efda-842cd0393f37@kaod.org>
+Date: Wed, 27 Sep 2023 07:44:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH RFC V2 03/37] hw/arm/virt: Move setting of common CPU
- properties in a function
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
- ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
- mst@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com,
- alex.bennee@linaro.org, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, lixianglai@loongson.cn
-References: <20230926100436.28284-1-salil.mehta@huawei.com>
- <20230926100436.28284-4-salil.mehta@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230926100436.28284-4-salil.mehta@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ Thunderbird/102.15.1
+Subject: Re: [Qemu-devel] [PATCH 08/19] aspeed/timer: Fix behaviour running
+ Linux
 Content-Language: en-US
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20190525151241.5017-1-clg@kaod.org>
+ <20190525151241.5017-9-clg@kaod.org>
+ <a4a62040-0127-4f39-4fc3-a1795e4daad8@kaod.org>
+ <CACPK8XcCn4hK5Lu-6o7LUyUFVH-dkbjJ-1_fHr4_90_4cZf_+Q@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CACPK8XcCn4hK5Lu-6o7LUyUFVH-dkbjJ-1_fHr4_90_4cZf_+Q@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: 9f1MwHkf8UKI
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=wvUH=FL=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.473, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UPYHsX795FRz
 
-Hi Salil,
-
-On 9/26/23 20:04, Salil Mehta wrote:
-> Factor out CPU properties code common for {hot,cold}-plugged CPUs. This allows
-> code reuse.
+On 9/27/23 04:12, Joel Stanley wrote:
+> On Fri, 22 Sept 2023 at 13:21, Cédric Le Goater <clg@kaod.org> wrote:
 > 
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> ---
->   hw/arm/virt.c         | 220 ++++++++++++++++++++++++++----------------
->   include/hw/arm/virt.h |   4 +
->   2 files changed, 140 insertions(+), 84 deletions(-)
+>>> +    t->start = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>>> +    return calculate_time(t, MAX(MAX(t->match[0], t->match[1]), 0));
+>>
+>> This MAX(MAX(x, y), 0) looks strange to me. Would you remember where it comes
+>> from ? Thanks,
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 57fe97c242..0eb6bf5a18 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2018,16 +2018,130 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
->       }
->   }
->   
-> +static void virt_cpu_set_properties(Object *cpuobj, const CPUArchId *cpu_slot,
-> +                                    Error **errp)
-> +{
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    VirtMachineState *vms = VIRT_MACHINE(ms);
-> +    Error *local_err = NULL;
-> +    VirtMachineClass *vmc;
-> +
-> +    vmc = VIRT_MACHINE_GET_CLASS(ms);
-> +
-> +    /* now, set the cpu object property values */
-> +    numa_cpu_pre_plug(cpu_slot, DEVICE(cpuobj), &local_err);
-> +    if (local_err) {
-> +        goto out;
-> +    }
-> +
-> +    object_property_set_int(cpuobj, "mp-affinity", cpu_slot->arch_id, NULL);
-> +
-> +    if (!vms->secure) {
-> +        object_property_set_bool(cpuobj, "has_el3", false, NULL);
-> +    }
-> +
-> +    if (!vms->virt && object_property_find(cpuobj, "has_el2")) {
-> +        object_property_set_bool(cpuobj, "has_el2", false, NULL);
-> +    }
-> +
-> +    if (vmc->kvm_no_adjvtime &&
-> +        object_property_find(cpuobj, "kvm-no-adjvtime")) {
-> +        object_property_set_bool(cpuobj, "kvm-no-adjvtime", true, NULL);
-> +    }
-> +
-> +    if (vmc->no_kvm_steal_time &&
-> +        object_property_find(cpuobj, "kvm-steal-time")) {
-> +        object_property_set_bool(cpuobj, "kvm-steal-time", false, NULL);
-> +    }
-> +
-> +    if (vmc->no_pmu && object_property_find(cpuobj, "pmu")) {
-> +        object_property_set_bool(cpuobj, "pmu", false, NULL);
-> +    }
-> +
-> +    if (vmc->no_tcg_lpa2 && object_property_find(cpuobj, "lpa2")) {
-> +        object_property_set_bool(cpuobj, "lpa2", false, NULL);
-> +    }
-> +
-> +    if (object_property_find(cpuobj, "reset-cbar")) {
-> +        object_property_set_int(cpuobj, "reset-cbar",
-> +                                vms->memmap[VIRT_CPUPERIPHS].base,
-> +                                &local_err);
-> +        if (local_err) {
-> +            goto out;
-> +        }
-> +    }
-> +
-> +    /* link already initialized {secure,tag}-memory regions to this cpu */
-> +    object_property_set_link(cpuobj, "memory", OBJECT(vms->sysmem), &local_err);
-> +    if (local_err) {
-> +        goto out;
-> +    }
-> +
-> +    if (vms->secure) {
-> +        object_property_set_link(cpuobj, "secure-memory",
-> +                                 OBJECT(vms->secure_sysmem), &local_err);
-> +        if (local_err) {
-> +            goto out;
-> +        }
-> +    }
-> +
-> +    if (vms->mte) {
-> +        if (!object_property_find(cpuobj, "tag-memory")) {
-> +            error_setg(&local_err, "MTE requested, but not supported "
-> +                       "by the guest CPU");
-> +            if (local_err) {
-> +                goto out;
-> +            }
-> +        }
-> +
-> +        object_property_set_link(cpuobj, "tag-memory", OBJECT(vms->tag_sysmem),
-> +                                 &local_err);
-> +        if (local_err) {
-> +            goto out;
-> +        }
-> +
-> +        if (vms->secure) {
-> +            object_property_set_link(cpuobj, "secure-tag-memory",
-> +                                     OBJECT(vms->secure_tag_sysmem),
-> +                                     &local_err);
-> +            if (local_err) {
-> +                goto out;
-> +            }
-> +        }
-> +    }
-> +
-> +    /*
-> +     * RFC: Question: this must only be called for the hotplugged cpus. For the
-> +     * cold booted secondary cpus this is being taken care in arm_load_kernel()
-> +     * in boot.c. Perhaps we should remove that code now?
-> +     */
-> +    if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
-> +        object_property_set_int(cpuobj, "psci-conduit", vms->psci_conduit,
-> +                                NULL);
-> +
-> +        /* Secondary CPUs start in PSCI powered-down state */
-> +        if (CPU(cpuobj)->cpu_index > 0) {
-> +            object_property_set_bool(cpuobj, "start-powered-off", true, NULL);
-> +        }
-> +    }
-> +
-> +out:
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +    }
-> +    return;
-        ^^^^^^
+> That looks very strange. I think you've sorted it, so I wanted to
+> bring up the MAX macros themselves. It's unfortunate that they create
+> a non-unique local variable. Are we allowed to borrow the kernels
+> macros? They have some infrastructure for creating a unique local
+> variable name, as well as handling the const and non-const variants
+> with the one macro.
+> 
+> https://elixir.bootlin.com/linux/v6.5/source/include/linux/minmax.h
 
-It's not needed obviously :)
+I believe that's what Markus does in its own way :
 
-> +}
-> +
->   static void machvirt_init(MachineState *machine)
->   {
->       VirtMachineState *vms = VIRT_MACHINE(machine);
->       VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(machine);
->       MachineClass *mc = MACHINE_GET_CLASS(machine);
->       const CPUArchIdList *possible_cpus;
-> -    MemoryRegion *sysmem = get_system_memory();
-> +    MemoryRegion *secure_tag_sysmem = NULL;
->       MemoryRegion *secure_sysmem = NULL;
->       MemoryRegion *tag_sysmem = NULL;
-> -    MemoryRegion *secure_tag_sysmem = NULL;
-> +    MemoryRegion *sysmem;
->       int n, virt_max_cpus;
->       bool firmware_loaded;
->       bool aarch64 = true;
-> @@ -2071,6 +2185,8 @@ static void machvirt_init(MachineState *machine)
->        */
->       finalize_gic_version(vms);
->   
-> +    sysmem = vms->sysmem = get_system_memory();
-> +
->       if (vms->secure) {
->           /*
->            * The Secure view of the world is the same as the NonSecure,
-> @@ -2078,7 +2194,7 @@ static void machvirt_init(MachineState *machine)
->            * containing the system memory at low priority; any secure-only
->            * devices go in at higher priority and take precedence.
->            */
-> -        secure_sysmem = g_new(MemoryRegion, 1);
-> +        secure_sysmem = vms->secure_sysmem = g_new(MemoryRegion, 1);
->           memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
->                              UINT64_MAX);
->           memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
-> @@ -2151,6 +2267,23 @@ static void machvirt_init(MachineState *machine)
->           exit(1);
->       }
->   
-> +    if (vms->mte) {
-> +        /* Create the memory region only once, but link to all cpus later */
-> +        tag_sysmem = vms->tag_sysmem = g_new(MemoryRegion, 1);
-> +        memory_region_init(tag_sysmem, OBJECT(machine),
-> +                           "tag-memory", UINT64_MAX / 32);
-> +
-> +        if (vms->secure) {
-> +            secure_tag_sysmem = vms->secure_tag_sysmem = g_new(MemoryRegion, 1);
-> +            memory_region_init(secure_tag_sysmem, OBJECT(machine),
-> +                               "secure-tag-memory", UINT64_MAX / 32);
-> +
-> +            /* As with ram, secure-tag takes precedence over tag.  */
-> +            memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
-> +                                                tag_sysmem, -1);
-> +        }
-> +    }
-> +
->       create_fdt(vms);
->   
->       assert(possible_cpus->len == max_cpus);
-> @@ -2163,15 +2296,10 @@ static void machvirt_init(MachineState *machine)
->           }
->   
->           cpuobj = object_new(possible_cpus->cpus[n].type);
-> -        object_property_set_int(cpuobj, "mp-affinity",
-> -                                possible_cpus->cpus[n].arch_id, NULL);
->   
->           cs = CPU(cpuobj);
->           cs->cpu_index = n;
->   
-> -        numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
-> -                          &error_fatal);
-> -
->           aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
->           object_property_set_int(cpuobj, "socket-id",
->                                   virt_get_socket_id(machine, n), NULL);
-> @@ -2182,82 +2310,6 @@ static void machvirt_init(MachineState *machine)
->           object_property_set_int(cpuobj, "thread-id",
->                                   virt_get_thread_id(machine, n), NULL);
->   
-> -        if (!vms->secure) {
-> -            object_property_set_bool(cpuobj, "has_el3", false, NULL);
-> -        }
-> -
-> -        if (!vms->virt && object_property_find(cpuobj, "has_el2")) {
-> -            object_property_set_bool(cpuobj, "has_el2", false, NULL);
-> -        }
-> -
-> -        if (vmc->kvm_no_adjvtime &&
-> -            object_property_find(cpuobj, "kvm-no-adjvtime")) {
-> -            object_property_set_bool(cpuobj, "kvm-no-adjvtime", true, NULL);
-> -        }
-> -
-> -        if (vmc->no_kvm_steal_time &&
-> -            object_property_find(cpuobj, "kvm-steal-time")) {
-> -            object_property_set_bool(cpuobj, "kvm-steal-time", false, NULL);
-> -        }
-> -
-> -        if (vmc->no_pmu && object_property_find(cpuobj, "pmu")) {
-> -            object_property_set_bool(cpuobj, "pmu", false, NULL);
-> -        }
-> -
-> -        if (vmc->no_tcg_lpa2 && object_property_find(cpuobj, "lpa2")) {
-> -            object_property_set_bool(cpuobj, "lpa2", false, NULL);
-> -        }
-> -
-> -        if (object_property_find(cpuobj, "reset-cbar")) {
-> -            object_property_set_int(cpuobj, "reset-cbar",
-> -                                    vms->memmap[VIRT_CPUPERIPHS].base,
-> -                                    &error_abort);
-> -        }
-> -
-> -        object_property_set_link(cpuobj, "memory", OBJECT(sysmem),
-> -                                 &error_abort);
-> -        if (vms->secure) {
-> -            object_property_set_link(cpuobj, "secure-memory",
-> -                                     OBJECT(secure_sysmem), &error_abort);
-> -        }
-> -
-> -        if (vms->mte) {
-> -            /* Create the memory region only once, but link to all cpus. */
-> -            if (!tag_sysmem) {
-> -                /*
-> -                 * The property exists only if MemTag is supported.
-> -                 * If it is, we must allocate the ram to back that up.
-> -                 */
-> -                if (!object_property_find(cpuobj, "tag-memory")) {
-> -                    error_report("MTE requested, but not supported "
-> -                                 "by the guest CPU");
-> -                    exit(1);
-> -                }
-> -
-> -                tag_sysmem = g_new(MemoryRegion, 1);
-> -                memory_region_init(tag_sysmem, OBJECT(machine),
-> -                                   "tag-memory", UINT64_MAX / 32);
-> -
-> -                if (vms->secure) {
-> -                    secure_tag_sysmem = g_new(MemoryRegion, 1);
-> -                    memory_region_init(secure_tag_sysmem, OBJECT(machine),
-> -                                       "secure-tag-memory", UINT64_MAX / 32);
-> -
-> -                    /* As with ram, secure-tag takes precedence over tag.  */
-> -                    memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
-> -                                                        tag_sysmem, -1);
-> -                }
-> -            }
-> -
-> -            object_property_set_link(cpuobj, "tag-memory", OBJECT(tag_sysmem),
-> -                                     &error_abort);
-> -            if (vms->secure) {
-> -                object_property_set_link(cpuobj, "secure-tag-memory",
-> -                                         OBJECT(secure_tag_sysmem),
-> -                                         &error_abort);
-> -            }
-> -        }
-> -
->           qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
->           object_unref(cpuobj);
->       }
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index e1ddbea96b..13163adb07 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -148,6 +148,10 @@ struct VirtMachineState {
->       DeviceState *platform_bus_dev;
->       FWCfgState *fw_cfg;
->       PFlashCFI01 *flash[2];
-> +    MemoryRegion *sysmem;
-> +    MemoryRegion *secure_sysmem;
-> +    MemoryRegion *tag_sysmem;
-> +    MemoryRegion *secure_tag_sysmem;
->       bool secure;
->       bool highmem;
->       bool highmem_compact;
+   https://lore.kernel.org/qemu-devel/20230921121312.1301864-8-armbru@redhat.com/
 
 Thanks,
-Gavin
+
+C.

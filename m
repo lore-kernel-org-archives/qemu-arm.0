@@ -1,111 +1,112 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2776387ejc;
-        Thu, 28 Sep 2023 12:22:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHD6HrJoJhgb53wOnetb8yVmpvo2nmnsDRf6F/+cVt8PtCxbD/A4abs4Na71kdYPR+VwBSb
-X-Received: by 2002:ac8:7f88:0:b0:419:6954:3ba2 with SMTP id z8-20020ac87f88000000b0041969543ba2mr2170867qtj.43.1695928968896;
-        Thu, 28 Sep 2023 12:22:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695928968; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2788703ejc;
+        Thu, 28 Sep 2023 12:48:13 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEdVko81d5pWrthvCPC4bmmFCEH1XM9bqWkffENcOJFdMCfkhyxULvboLXK/+4hCGZ+fYX3
+X-Received: by 2002:a05:622a:6a44:b0:419:714d:d0c7 with SMTP id ig4-20020a05622a6a4400b00419714dd0c7mr1584679qtb.1.1695930493559;
+        Thu, 28 Sep 2023 12:48:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695930493; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z7EPgAEKEHoQhIQJKO+S5JiZ5bOAJ9LiXqxGzJmt5Ww6meHMMSJ1CUyQP9KTMSBrvX
-         clMuArRPYdMTWqaLO5ayuMPayBJmanf8EPZGfIqbJqJu+bwnuXXU+dM6mRb90jWQ7uVH
-         fod8lr4YJu4+jLxpE7ShCTkJygWIKK19XXOfFexCkj7EoVkO0Pkf0nA8DH+EuN8/JZ/o
-         jYXqJobUPxhJB7UJY1xHKwdiNJGXr7nzbmJi0rQ4I1oqBEuijULw2bl6oksFqRc3kNBL
-         tVK1oZlMuRQr/QTNLOXvAAJxZvWdNTjjVA8CpFrTsW+BKHWPpNj+LyndKqpfLycFr4Hx
-         ks3A==
+        b=COnsoXi73faf/1cHFkyJDT4d01Mqx2ENYVr2zE+qgTATati/VMISKuJargiV+T9ITV
+         ndwgZQp66S+GOsU3d8x7Zcubc8G3KXyn9MzrU5+Y9XhMalhLUHr+eXgOX6WF9ddqbjJb
+         EpNLH5cpBaFqzXUGI2qiIRLlwbvFCVVVzf3mi1R7QvPGOoYA3BIHD8EvOLwmGbixRXqc
+         G0oobEdlhBDxerra8iP9s65k/kQsbBFPSfxFk6rHju/7jMk4Aifr7fxaLikdO8UX6jDF
+         YXEEvUdqFYYyZfc1pq6CQvWkqdHNitl5VZFhS1FQytWUwq4urf42lrr7WH1YF304luUV
+         zEAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=sKSlZdVOGX+ZMVR36wyq/I2cB7S0oxMqPMwajXWY1zs=;
+        bh=I3w6cuFLTNl6joPKz+cVZkzDDXpL5yF4RLSKyX3k2fY=;
         fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=MD+oKGmfZ/CDX9K73O1lxqitb5HYW3tfsbH6dK4cVB3JxJkkBEtumjGnPK4N7mXhvm
-         TKpxSgvXpmQs5iRlE6vBIfb1n1SCOHWk66m8bU2tOx6x/BlnRfNsESaHzASi+k88GXoL
-         Tp0SLVifMzvLyBLgVP+Jf5VEsnUx/0N5T2EJHtZwckfxJSMXlVfdZ6kgvh3IIOesPt55
-         G+Ab+sRGIs1Qu8bn811Cpp1phqpKhiqYG4KO0NjOV4pzjwFeGCM4WF7oQkBN7iCOsMcq
-         Fl0fj5iCT8RKl83BZZfUG3Pdm2+bY8FMnNlRZP0sb6xIMGleJHEohx0I0fiG312LTKLU
-         sphg==
+        b=Vu+hRi00mawXN8A0N2q6fyRyG/sQyxk0ooe5srIl0foOWYkhTCMjK3wQclvw+ndrDd
+         F3FURsO25VaDENzW3lclObMY30zN0YBrjRJZUjkZUOv1LUZpYd/Df8vbYkHJ0RUjRh5E
+         GWmJhnblymYL6WyNiauVdrxYd2c6+4fsRGH5ROGCyQhvjbZjHcNuj4HVRP2kAuGpL2VF
+         8j7nnBLIrkTQ70zTeTfgC3ouYKIQE29ZUTAaTcjax2Ax1CyNO1Zp8E2qpzfiOv2IScIe
+         XwOcn4KMMsNs06FXgi1a2Sr7osdvHBF6f5pFE0T4d29yhS2BGyV8tnt8G70EqQbpQlDQ
+         DbaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=faVchqrs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=syX7btWs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14-20020ac8590e000000b00419783cf7ebsi230291qty.532.2023.09.28.12.22.48
+        by mx.google.com with ESMTPS id v19-20020a05622a189300b00407dd1bbbf5si9176928qtc.368.2023.09.28.12.48.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Sep 2023 12:22:48 -0700 (PDT)
+        Thu, 28 Sep 2023 12:48:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=faVchqrs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=syX7btWs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qlwab-0002ec-W3; Thu, 28 Sep 2023 15:22:22 -0400
+	id 1qlwzX-0004R4-7c; Thu, 28 Sep 2023 15:48:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qlwaX-0002dO-OH
- for qemu-arm@nongnu.org; Thu, 28 Sep 2023 15:22:17 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+ id 1qlwzU-0004PJ-NB
+ for qemu-arm@nongnu.org; Thu, 28 Sep 2023 15:48:04 -0400
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qlwaQ-00024w-H2
- for qemu-arm@nongnu.org; Thu, 28 Sep 2023 15:22:12 -0400
-Received: by mail-pg1-x530.google.com with SMTP id
- 41be03b00d2f7-5859b2eaa55so115299a12.1
- for <qemu-arm@nongnu.org>; Thu, 28 Sep 2023 12:22:04 -0700 (PDT)
+ id 1qlwzS-00013X-8g
+ for qemu-arm@nongnu.org; Thu, 28 Sep 2023 15:48:04 -0400
+Received: by mail-pf1-x431.google.com with SMTP id
+ d2e1a72fcca58-692779f583fso9854747b3a.0
+ for <qemu-arm@nongnu.org>; Thu, 28 Sep 2023 12:48:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1695928923; x=1696533723; darn=nongnu.org;
+ d=linaro.org; s=google; t=1695930480; x=1696535280; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=sKSlZdVOGX+ZMVR36wyq/I2cB7S0oxMqPMwajXWY1zs=;
- b=faVchqrsAkF2zSXHfaumcer40r4lRjvOMEPX5hZMwhflOD/60MzM7OH7a6FCh4dYQi
- tX+oJjsuDhsXvTH6P+5BRptv95JOEzQ19PMyfaS9IYgxEBvUWWZ/ai+hkDSCoIKLVMlx
- sifTrlqCnB0KzrfEyYoSiGKR1i1Yx+uYNV5feGpeC4b2cxFt0xTNHH8yNDhIvcnnhUjY
- NFcFZRrY4IaHy0N92bOsL2Vw6L0pH40HQ2T74XqWuiVsI/P/fqJtzT+xiLwqIOdZCht9
- i/NdN3UCiJtmvRD0RGFHEoQOinK51Ijrr+dHHtpGASwqg3X47O/OJI5JR0+NIdxGrkCr
- AdFg==
+ bh=I3w6cuFLTNl6joPKz+cVZkzDDXpL5yF4RLSKyX3k2fY=;
+ b=syX7btWsYei/y4egUygEwTPEe+EDYQVc/AyXcaLlG9fGAkHbN9gaqArzsDiXdVXW2w
+ NaBMrl/6LqRb/276iPTrg/NDPu3adT9N3U51/XQH2/X+i2cPxvs8wjAJLGe45NEyDeWr
+ kn7ureVCkk08A68ogJAke2o4y8vShKmE2683AS4o6wsI1PizIQnMsTnEmvyWs7bEq8rn
+ DScSTr2cklnS8hWfoYnx2ZHCFlgIR7oz1I22MZYM7v3B9R9BZPPc1auMRY5StJQWPL/W
+ FlkLEdOM62KdIjdOCT42Jw98SPKKxw2X/kCnGgMNiHMIshZA698g5U2o28h0QUHwVkbA
+ rnTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695928923; x=1696533723;
+ d=1e100.net; s=20230601; t=1695930480; x=1696535280;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sKSlZdVOGX+ZMVR36wyq/I2cB7S0oxMqPMwajXWY1zs=;
- b=LUVCb7ucgpkrrP5+SUeS11BJg5YE3GNx60rhZyzKW9dhRFe6W33zltUjbqxx2GLpfD
- rh3HJV9zzqGgw3iZtHjnlYS817TwBdZldo4Bi+K6yN5lNwsV8tsH9Xk4scB6cF0uNqdW
- OSGdWPRfZEiBEyyQzEYn3U3i9lhuQ36L1VM2wvMuZRQMuDFLCywGkr/9a0mgv77P1S1H
- NfMqP8EWBntqvYaTp0ThTXS6j+UNi/o1bO2MPr54wp4iSEwdUjwssJBPhPtKPxOt+AfU
- holoG1l6dmEDzgh33ZhJqgZOuhDpdRNVQd91LzIXSDTKiHzhXgR5XWO5UP0KCdzh3HNp
- eXBg==
-X-Gm-Message-State: AOJu0Yx/D7hMiDSL049l4wtOAPprj4KoL7p0/anLzxF0UuPWGhVQa5ZM
- OJirdKzzySRGWpOJ6Sh9Z3vaAQ==
-X-Received: by 2002:a05:6a20:6a09:b0:14c:910d:972d with SMTP id
- p9-20020a056a206a0900b0014c910d972dmr2404908pzk.12.1695928923430; 
- Thu, 28 Sep 2023 12:22:03 -0700 (PDT)
+ bh=I3w6cuFLTNl6joPKz+cVZkzDDXpL5yF4RLSKyX3k2fY=;
+ b=Lk86uIn6L0fzcUZk3mIW7TZkr0PYuavjfo0y2gW2GBC6QEb6zuqs93O8R0Plzi4dT8
+ vafifzIZmcsQN60i/uI/TrPeEDHAefMd3Cme06ngxDaKf2zL18ZcfV/kUCA/mpMFiQNL
+ sHPOegmSmVrfDks5GiX8qzQPFGGBJyy3h7XZRBWpfnbioMtlrvMYqQvCRNr9BAstBR9N
+ HW30VilMrFs7bp0uGFavjvjHdK45hIqSIDtIKPgOL+kfk3Psn3i3nW5GsvJx6tk5el9V
+ fXDPptGkybTD0yUhDXq7FC7EtgQ2VLc7TtEdLlz9HxMou5X1bLXQR7UpZ1Teg5s3jMkn
+ vlQg==
+X-Gm-Message-State: AOJu0YwIFZosD0KaeB1EWMVEs0Tydt/5Atpx6FmQ626hHHnxKc7maN0V
+ cqyiyVxs9Y4K/0Eo9BQZklYh8ZEfh5LcSDDm1Uo=
+X-Received: by 2002:a05:6a00:1748:b0:68e:3eb6:d45 with SMTP id
+ j8-20020a056a00174800b0068e3eb60d45mr2180815pfc.30.1695930480490; 
+ Thu, 28 Sep 2023 12:48:00 -0700 (PDT)
 Received: from [192.168.0.4] ([71.212.131.115])
  by smtp.gmail.com with ESMTPSA id
- k9-20020aa792c9000000b0069353ac3d38sm1196408pfa.69.2023.09.28.12.22.02
+ o28-20020a637e5c000000b0057cb5a780ebsm11518178pgn.76.2023.09.28.12.47.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Sep 2023 12:22:02 -0700 (PDT)
-Message-ID: <a14e853a-fb10-dd49-44da-2d50ea590088@linaro.org>
-Date: Thu, 28 Sep 2023 12:22:01 -0700
+ Thu, 28 Sep 2023 12:48:00 -0700 (PDT)
+Message-ID: <8557943c-05e6-aa34-f479-e4a1ab12f69d@linaro.org>
+Date: Thu, 28 Sep 2023 12:47:58 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.1
-Subject: Re: [PATCH] target/arm: Implement FEAT_HPMN0
+Subject: Re: [PATCH] target/arm/common-semi-target.h: Remove unnecessary
+ boot.h include
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-References: <20230921185445.3339214-1-peter.maydell@linaro.org>
+References: <20230925112219.3919261-1-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230921185445.3339214-1-peter.maydell@linaro.org>
+In-Reply-To: <20230925112219.3919261-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
@@ -127,28 +128,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GaxoXpzyRW1h
+X-TUID: Dl0EUXkOT+2u
 
-On 9/21/23 14:54, Peter Maydell wrote:
-> FEAT_HPMN0 is a small feature which defines that it is valid for
-> MDCR_EL2.HPMN to be set to 0, meaning "no PMU event counters provided
-> to an EL1 guest" (previously this setting was reserved). QEMU's
-> implementation almost gets HPMN == 0 right, but we need to fix
-> one check in pmevcntr_is_64_bit(). That is enough for us to
-> advertise the feature in the 'max' CPU.
+On 9/25/23 07:22, Peter Maydell wrote:
+> The hw/arm/boot.h include in common-semi-target.h is not actually
+> needed, and it's a bit odd because it pulls a hw/arm header into a
+> target/arm file.
 > 
-> (We don't need to make the behaviour conditional on feature
-> presence, because the FEAT_HPMN0 behaviour is within the range
-> of permitted UNPREDICTABLE behaviour for a non-FEAT_HPMN0
-> implementation.)
+> This include was originally needed because the semihosting code used
+> the arm_boot_info struct to get the base address of the RAM in system
+> emulation, to use in a (bad) heuristic for the return values for the
+> SYS_HEAPINFO semihosting call.  We've since overhauled how we
+> calculate the HEAPINFO values in system emulation, and the code no
+> longer uses the arm_boot_info struct.
+> 
+> Remove the now-redundant include line, and instead directly include
+> the cpu-qom.h header that we were previously getting via boot.h.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   docs/system/arm/emulation.rst | 1 +
->   target/arm/helper.c           | 2 +-
->   target/arm/tcg/cpu32.c        | 4 ++++
->   target/arm/tcg/cpu64.c        | 1 +
->   4 files changed, 7 insertions(+), 1 deletion(-)
+>   target/arm/common-semi-target.h | 4 +---
+>   1 file changed, 1 insertion(+), 3 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

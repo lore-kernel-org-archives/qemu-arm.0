@@ -1,127 +1,109 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2303722ejc;
-        Wed, 27 Sep 2023 21:45:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEo5QnbHhuyzNIVr2NPxmkT0DxlLGLXhRrg2ZYLEdybXt6kFSMMtLDc/UCIIY7cqIplBAbV
-X-Received: by 2002:a0c:aa08:0:b0:647:42ac:d7f2 with SMTP id d8-20020a0caa08000000b0064742acd7f2mr114158qvb.63.1695876321809;
-        Wed, 27 Sep 2023 21:45:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695876321; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2305675ejc;
+        Wed, 27 Sep 2023 21:50:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG+ihVw3JjV/QOBo6TLOXuxslO36R7VZFGcO2Nuqq6kJZCcGa/Q0an6IBxObH0sew8eB4I5
+X-Received: by 2002:a05:620a:4081:b0:774:34df:efe8 with SMTP id f1-20020a05620a408100b0077434dfefe8mr237152qko.14.1695876657530;
+        Wed, 27 Sep 2023 21:50:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695876657; cv=none;
         d=google.com; s=arc-20160816;
-        b=yoGg4tLkW9pHhtQggV5+XjNDgrQeNukSNA4Q7HtOHiLGhxALjUR/PAhhJzjOXibvQi
-         zC/c6P9EzPl7vM8X+5cV3OQgog0CofyMiq9gWqFKafSi6OJn9eHrnSjVD2dBFCwLPSoV
-         KIUaom+a8QipdSmMDVtdzFdpqzmW133WvGq+3vW2DwXWcMlw2WKE14MkW+9ZGGqLdVYx
-         z3PbTnOCdNlgDa1UOigxl7u4xgYVr+FL5BOFSk9uIXM8gl3uMpz17U4tKsOBK4J9CqIB
-         GVyAXLceFGjjWwDDHnzNvSL1Ch/7ZzijxAgrePch86Lx025JvKTRk0fJfhn7lOy3EBoZ
-         uW5g==
+        b=X2ojHOC0K5pl4S7VJuRhDBwCrYQwuVjKetAWbiTmD9bGy3zq5+ajd1Bca9ApqJUdYd
+         RVVl5l13fT72Nmy3/2Gb+hmV8m7Gvv2O57yn5Xig1684lh6OFX3jg9whX2Zn647yDGIw
+         MjgtuYsjXIwqDgYH7Oq5mLSHsfhnYBaFZlYJOJMc4NqzoqCaXfaWJ7BJEZEvKk3qfYIi
+         RoOyBrWErhni87sxGJvo0seDWpkK5Z4oKCBzq4qS/5CMh4hGF1mEvv9RmuEdwVzPqyhJ
+         lUwTBGp78u/jbbdnBEkcjGJKHRgOAgRbxTxP0K8Ipzc6JXZ7cuPHk61j72HbmEbnLUu1
+         CylQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=thDvK5Hgj2T2cNkzShCy/Wh0ECz471UVKJZt73urqsQ=;
-        fh=GUPjxW4fQaT3DFhTiIvwAKlXuS5cVVc6mPehwpozP2E=;
-        b=Oc9PZOSWLGXe76SkzBpq5Q4tg/0OkeetPG0uPsBGg8zjiy9TJ7oyVkS9xn7kh5H5HC
-         zejBmoNQMcvl8fwh3tz9yOqsyirOwB9fHFX6oovKTJoDQgPM5fgnKcaPK8LeQhufYrM8
-         4F0081+edah03kM4JXV8bLXO8Hyz40RcX7eu3/TSEnmy9lLfUPOJ1XGWifG0nawDAl0X
-         mNhay+ylcxGo9rUaL/gXcP2jfp2o3TrEw0+GrlFdFccsbcW0nXoiQKKAl6pV6V679ouN
-         wNKsWzJ4fzLv882ImP+zDTmKZOoiGGSlQv5HBpeSsRmjMcOxMFtSWgIPq2UDjtmbSqk8
-         aL2g==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Dj/G0l/PjOAgLYIgp96JjSaLbQejk9X6fez+h8qPl+Y=;
+        fh=SlnpYl/apPGobcNY8vCsr8ux0b+PCiuAYFwDQav0GZQ=;
+        b=oC9bVwCFZ9W76u2+e5RBp7l5KztRviMQcIvNE89uYC6ombu3YutAj2Ip3fnEncLDKf
+         a1nMtFFYbC3+lH2d+t4jBWfZjJqwTxg3slCxp+j1+1BorJN+FBjbIr5pvWn3dnvck4wl
+         4+VcCENcpN8fM4Mvs445itjZ737/Y+zZgyiovAn6qTwhCq5wTlABBj5jXPJu7PWFjjqK
+         vhFSK/02IU1fmCXyfycxwNllrQaBQqb9Kl8eO/yelizAV1bdjKQzIX3GCppifgKTlL2B
+         1aO7m0GTGyznUxAoh8YofhXgp01xrB2PxocbP2sjgDXp3pydxz2SF4lhmL3aBXrvTn9S
+         zLGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mvv57YNB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d9bwNR6m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f4-20020a05620a280400b00773bb585660si8699184qkp.348.2023.09.27.21.45.21
+        by mx.google.com with ESMTPS id bs6-20020a05620a470600b0076da7964f3fsi5800967qkb.286.2023.09.27.21.50.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Sep 2023 21:45:21 -0700 (PDT)
+        Wed, 27 Sep 2023 21:50:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mvv57YNB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d9bwNR6m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qlita-0000MZ-I0; Thu, 28 Sep 2023 00:45:02 -0400
+	id 1qliyr-0002gi-TF; Thu, 28 Sep 2023 00:50:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qlitY-0000Ly-2r
- for qemu-arm@nongnu.org; Thu, 28 Sep 2023 00:45:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qliyq-0002bE-BZ
+ for qemu-arm@nongnu.org; Thu, 28 Sep 2023 00:50:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qlitV-0005xW-9B
- for qemu-arm@nongnu.org; Thu, 28 Sep 2023 00:44:58 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qliyI-0006hd-KY
+ for qemu-arm@nongnu.org; Thu, 28 Sep 2023 00:50:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695876296;
+ s=mimecast20190719; t=1695876592;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=thDvK5Hgj2T2cNkzShCy/Wh0ECz471UVKJZt73urqsQ=;
- b=Mvv57YNBTei1Edy8KSOla9zE3BfBq3ha5HTpBaq58xkrKx2SFMmJgaratipySh8gxd1dnN
- e0DuxOGjdJybym1W6qd8ONlJ2k5NGgTajbQBnYmzW7nRo2HoTeiP2DyHbPeQ9ycqc93qJx
- IyUEHJDYVY6Vds3M5DJ6cMrbcqP3MeQ=
-Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
- [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-380-58m3nuqOMz2CrcXMvqP8tw-1; Thu, 28 Sep 2023 00:44:55 -0400
-X-MC-Unique: 58m3nuqOMz2CrcXMvqP8tw-1
-Received: by mail-lf1-f69.google.com with SMTP id
- 2adb3069b0e04-50420b22ff4so19365303e87.1
- for <qemu-arm@nongnu.org>; Wed, 27 Sep 2023 21:44:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695876293; x=1696481093;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=thDvK5Hgj2T2cNkzShCy/Wh0ECz471UVKJZt73urqsQ=;
- b=XIuwwXOtSZAWszOBYTK/L1wR4jDiZmNmApFQcpyrmjgStycgxZ/pLW9Dw5yn71ui2d
- wBYE2Zq7TKRLmWtRWtLB+ChynN8AVOBFqwfrJsd5+uDL9/NiT7eSNjoMCWywyD2cigmE
- Gp1PcBJY/uQxlgf1yeJWS2vRjyudjQI/+jV90jL+8HDiSE/KsFMOcU2t1ezpXqtfZz8a
- Bs+2YRZl0dtzWWmd90rvC+iUgFtyqm71KNF9TwEU8bNc6zdkgk68IMAUwcQ5oJE/lset
- YgqDPOebAospcL47u+rHdJ8nNmkvpL4IfvPAxK/ouQ3j+eR1jx59Wn6yY4HMhJqWmala
- 0PMw==
-X-Gm-Message-State: AOJu0Yx6iZgPMQl/i4BJQ2oCum0z7nVINYFi0zAMinQl5Rt+AE/LcLrm
- MT2W0V52j4zyYfmNINQkik9c7s71ZbPZxOlJ0yepsuivNKiZseDSnt/26jKlCOD9v7ILCt+usSx
- Meq3GdC0DswAz
-X-Received: by 2002:a05:6512:2521:b0:4f8:6abe:5249 with SMTP id
- be33-20020a056512252100b004f86abe5249mr117476lfb.3.1695876293591; 
- Wed, 27 Sep 2023 21:44:53 -0700 (PDT)
-X-Received: by 2002:a05:6512:2521:b0:4f8:6abe:5249 with SMTP id
- be33-20020a056512252100b004f86abe5249mr117463lfb.3.1695876293240; 
- Wed, 27 Sep 2023 21:44:53 -0700 (PDT)
-Received: from [192.168.0.5] (ip-109-43-177-123.web.vodafone.de.
- [109.43.177.123]) by smtp.gmail.com with ESMTPSA id
- e9-20020a50ec89000000b0052c9f1d3cfasm9041946edr.84.2023.09.27.21.44.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Sep 2023 21:44:52 -0700 (PDT)
-Message-ID: <e5ddb46e-e677-3fc8-4f32-0f59e85eb304@redhat.com>
-Date: Thu, 28 Sep 2023 06:44:51 +0200
+ bh=Dj/G0l/PjOAgLYIgp96JjSaLbQejk9X6fez+h8qPl+Y=;
+ b=d9bwNR6mvXkupnLRQA50HO6zOifv9PO00r96Edd23VdUGhkKejMOLtBmC6ww/6ZZUKdiun
+ eFhcUrLXw5RvSJRZtSVl5rmDlmaltCC0NDDhgvGvQFLexsK2qrkFT/NLKDEM2wVzjWvwAt
+ U9a1zIA6mdSLTkRqTUnYqF+e0ci/+3k=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-125-AIp7RXELMdeCdWTmZvjCBA-1; Thu, 28 Sep 2023 00:49:49 -0400
+X-MC-Unique: AIp7RXELMdeCdWTmZvjCBA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D75DE280D207;
+ Thu, 28 Sep 2023 04:49:48 +0000 (UTC)
+Received: from scv.redhat.com (unknown [10.22.16.75])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3BB2D1054FC1;
+ Thu, 28 Sep 2023 04:49:48 +0000 (UTC)
+From: John Snow <jsnow@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Beraldo Leal <bleal@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, John Snow <jsnow@redhat.com>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Daniel Berrange <berrange@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3 6/6] python/machine: remove unused sock_dir argument
+Date: Thu, 28 Sep 2023 00:49:43 -0400
+Message-ID: <20230928044943.849073-7-jsnow@redhat.com>
+In-Reply-To: <20230928044943.849073-1-jsnow@redhat.com>
+References: <20230928044943.849073-1-jsnow@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH] tests/qtest: Fix npcm7xx_timer-test.c flaky test
-To: Chris Rauer <crauer@google.com>, kfting@nuvoton.com, wuhaotsh@google.com, 
- lvivier@redhat.com, pbonzini@redhat.com, stefanha@redhat.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20230928034505.255480-1-crauer@google.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230928034505.255480-1-crauer@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,32 +118,196 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: urBugQ/6KbSq
+X-TUID: 9RCiOg0B2cPt
 
-On 28/09/2023 05.45, Chris Rauer wrote:
+By using a socketpair for all of the sockets managed by the VM class and
+its extensions, we don't need the sock_dir argument anymore, so remove
+it.
 
-Could you please add a proper patch description how this is fixing the issue?
+We only added this argument so that we could specify a second, shorter
+temporary directory for cases where the temp/log dirs were "too long" as
+a socket name on macOS. We don't need it for this class now. In one
+case, avocado testing takes over responsibility for creating an
+appropriate sockdir.
 
-  Thanks,
-   Thomas
+Signed-off-by: John Snow <jsnow@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ python/qemu/machine/machine.py             | 18 ------------------
+ python/qemu/machine/qtest.py               |  5 +----
+ tests/avocado/acpi-bits.py                 |  5 +----
+ tests/avocado/avocado_qemu/__init__.py     |  2 +-
+ tests/avocado/machine_aspeed.py            |  5 ++++-
+ tests/qemu-iotests/iotests.py              |  2 +-
+ tests/qemu-iotests/tests/copy-before-write |  3 +--
+ 7 files changed, 9 insertions(+), 31 deletions(-)
 
-
-> Fixes: https://gitlab.com/qemu-project/qemu/-/issues/1897
-> Signed-off-by: Chris Rauer <crauer@google.com>
-> ---
->   tests/qtest/npcm7xx_timer-test.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer-test.c
-> index 43711049ca..58f58c2f71 100644
-> --- a/tests/qtest/npcm7xx_timer-test.c
-> +++ b/tests/qtest/npcm7xx_timer-test.c
-> @@ -465,6 +465,7 @@ static void test_periodic_interrupt(gconstpointer test_data)
->       int i;
->   
->       tim_reset(td);
-> +    clock_step_next();
->   
->       tim_write_ticr(td, count);
->       tim_write_tcsr(td, CEN | IE | MODE_PERIODIC | PRESCALE(ps));
+diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
+index 4156b8cf7d4..d539e91268a 100644
+--- a/python/qemu/machine/machine.py
++++ b/python/qemu/machine/machine.py
+@@ -127,7 +127,6 @@ def __init__(self,
+                  name: Optional[str] = None,
+                  base_temp_dir: str = "/var/tmp",
+                  monitor_address: Optional[SocketAddrT] = None,
+-                 sock_dir: Optional[str] = None,
+                  drain_console: bool = False,
+                  console_log: Optional[str] = None,
+                  log_dir: Optional[str] = None,
+@@ -141,7 +140,6 @@ def __init__(self,
+         @param name: prefix for socket and log file names (default: qemu-PID)
+         @param base_temp_dir: default location where temp files are created
+         @param monitor_address: address for QMP monitor
+-        @param sock_dir: where to create socket (defaults to base_temp_dir)
+         @param drain_console: (optional) True to drain console socket to buffer
+         @param console_log: (optional) path to console log file
+         @param log_dir: where to create and keep log files
+@@ -163,7 +161,6 @@ def __init__(self,
+             Tuple[socket.socket, socket.socket]] = None
+         self._temp_dir: Optional[str] = None
+         self._base_temp_dir = base_temp_dir
+-        self._sock_dir = sock_dir
+         self._log_dir = log_dir
+ 
+         self._monitor_address = monitor_address
+@@ -189,9 +186,6 @@ def __init__(self,
+         self._console_index = 0
+         self._console_set = False
+         self._console_device_type: Optional[str] = None
+-        self._console_address = os.path.join(
+-            self.sock_dir, f"{self._name}.con"
+-        )
+         self._console_socket: Optional[socket.socket] = None
+         self._console_file: Optional[socket.SocketIO] = None
+         self._remove_files: List[str] = []
+@@ -335,9 +329,6 @@ def args(self) -> List[str]:
+         return self._args
+ 
+     def _pre_launch(self) -> None:
+-        if self._console_set:
+-            self._remove_files.append(self._console_address)
+-
+         if self._qmp_set:
+             if self._monitor_address is None:
+                 self._sock_pair = socket.socketpair()
+@@ -937,15 +928,6 @@ def temp_dir(self) -> str:
+                                               dir=self._base_temp_dir)
+         return self._temp_dir
+ 
+-    @property
+-    def sock_dir(self) -> str:
+-        """
+-        Returns the directory used for sockfiles by this machine.
+-        """
+-        if self._sock_dir:
+-            return self._sock_dir
+-        return self.temp_dir
+-
+     @property
+     def log_dir(self) -> str:
+         """
+diff --git a/python/qemu/machine/qtest.py b/python/qemu/machine/qtest.py
+index 8180d3ab017..4f5ede85b23 100644
+--- a/python/qemu/machine/qtest.py
++++ b/python/qemu/machine/qtest.py
+@@ -135,17 +135,14 @@ def __init__(self,
+                  wrapper: Sequence[str] = (),
+                  name: Optional[str] = None,
+                  base_temp_dir: str = "/var/tmp",
+-                 sock_dir: Optional[str] = None,
+                  qmp_timer: Optional[float] = None):
+         # pylint: disable=too-many-arguments
+ 
+         if name is None:
+             name = "qemu-%d" % os.getpid()
+-        if sock_dir is None:
+-            sock_dir = base_temp_dir
+         super().__init__(binary, args, wrapper=wrapper, name=name,
+                          base_temp_dir=base_temp_dir,
+-                         sock_dir=sock_dir, qmp_timer=qmp_timer)
++                         qmp_timer=qmp_timer)
+         self._qtest: Optional[QEMUQtestProtocol] = None
+         self._qtest_sock_pair: Optional[
+             Tuple[socket.socket, socket.socket]] = None
+diff --git a/tests/avocado/acpi-bits.py b/tests/avocado/acpi-bits.py
+index bb3f8186899..eca13dc5181 100644
+--- a/tests/avocado/acpi-bits.py
++++ b/tests/avocado/acpi-bits.py
+@@ -92,17 +92,14 @@ def __init__(self,
+                  base_temp_dir: str = "/var/tmp",
+                  debugcon_log: str = "debugcon-log.txt",
+                  debugcon_addr: str = "0x403",
+-                 sock_dir: Optional[str] = None,
+                  qmp_timer: Optional[float] = None):
+         # pylint: disable=too-many-arguments
+ 
+         if name is None:
+             name = "qemu-bits-%d" % os.getpid()
+-        if sock_dir is None:
+-            sock_dir = base_temp_dir
+         super().__init__(binary, args, wrapper=wrapper, name=name,
+                          base_temp_dir=base_temp_dir,
+-                         sock_dir=sock_dir, qmp_timer=qmp_timer)
++                         qmp_timer=qmp_timer)
+         self.debugcon_log = debugcon_log
+         self.debugcon_addr = debugcon_addr
+         self.base_temp_dir = base_temp_dir
+diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
+index 0172a359b71..0589534f28a 100644
+--- a/tests/avocado/avocado_qemu/__init__.py
++++ b/tests/avocado/avocado_qemu/__init__.py
+@@ -322,7 +322,7 @@ def require_multiprocess(self):
+     def _new_vm(self, name, *args):
+         self._sd = tempfile.TemporaryDirectory(prefix="qemu_")
+         vm = QEMUMachine(self.qemu_bin, base_temp_dir=self.workdir,
+-                         sock_dir=self._sd.name, log_dir=self.logdir)
++                         log_dir=self.logdir)
+         self.log.debug('QEMUMachine "%s" created', name)
+         self.log.debug('QEMUMachine "%s" temp_dir: %s', name, vm.temp_dir)
+         self.log.debug('QEMUMachine "%s" log_dir: %s', name, vm.log_dir)
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 90f1b7cb77a..f691ee3fb82 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -247,7 +247,10 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
+ 
+-        socket = os.path.join(self.vm.sock_dir, 'swtpm-socket')
++        # force creation of VM object, which also defines self._sd
++        vm = self.vm
++
++        socket = os.path.join(self._sd.name, 'swtpm-socket')
+ 
+         subprocess.run(['swtpm', 'socket', '-d', '--tpm2',
+                         '--tpmstate', f'dir={self.vm.temp_dir}',
+diff --git a/tests/qemu-iotests/iotests.py b/tests/qemu-iotests/iotests.py
+index ef66fbd62b0..145c6827138 100644
+--- a/tests/qemu-iotests/iotests.py
++++ b/tests/qemu-iotests/iotests.py
+@@ -823,7 +823,7 @@ def __init__(self, path_suffix=''):
+         super().__init__(qemu_prog, qemu_opts, wrapper=wrapper,
+                          name=name,
+                          base_temp_dir=test_dir,
+-                         sock_dir=sock_dir, qmp_timer=timer)
++                         qmp_timer=timer)
+         self._num_drives = 0
+ 
+     def _post_shutdown(self) -> None:
+diff --git a/tests/qemu-iotests/tests/copy-before-write b/tests/qemu-iotests/tests/copy-before-write
+index 2ffe092b318..d3987db9421 100755
+--- a/tests/qemu-iotests/tests/copy-before-write
++++ b/tests/qemu-iotests/tests/copy-before-write
+@@ -44,8 +44,7 @@ class TestCbwError(iotests.QMPTestCase):
+ 
+         opts = ['-nodefaults', '-display', 'none', '-machine', 'none']
+         self.vm = QEMUMachine(iotests.qemu_prog, opts,
+-                              base_temp_dir=iotests.test_dir,
+-                              sock_dir=iotests.sock_dir)
++                              base_temp_dir=iotests.test_dir)
+         self.vm.launch()
+ 
+     def do_cbw_error(self, on_cbw_error):
+-- 
+2.41.0
 

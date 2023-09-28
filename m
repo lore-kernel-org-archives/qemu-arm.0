@@ -1,90 +1,91 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2209651ejc;
-        Wed, 27 Sep 2023 17:28:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGQkzL/zH58DVACH5K7JQqy6w7vrC4C6u915pr2qRhpWtOQCTEsvT7WfuCm3eiamtiR0CTO
-X-Received: by 2002:a05:622a:4f0e:b0:419:6391:6bee with SMTP id ei14-20020a05622a4f0e00b0041963916beemr1770756qtb.67.1695860918830;
-        Wed, 27 Sep 2023 17:28:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695860918; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2214700ejc;
+        Wed, 27 Sep 2023 17:40:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEpRG9JRHcr06pI5URCrT1z2U/KsS2gmoVJX7h6nhFDoOCMaQA+7CWFCzt6RFmGTHqecgD7
+X-Received: by 2002:a0d:d40a:0:b0:586:9c7a:d9ec with SMTP id w10-20020a0dd40a000000b005869c7ad9ecmr4152295ywd.9.1695861656865;
+        Wed, 27 Sep 2023 17:40:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695861656; cv=none;
         d=google.com; s=arc-20160816;
-        b=V0MW1utLU5YaOTnjxAWQXcXd7a92PT5wdRqxKSM3VyLAQLD7uLmv0K8luL/WWe8cmu
-         iTUf0dbt2o6UNwpUuZdPG5fFQpNvXEqT4uXIG8/ZMSQ18fGpCvcOpoNjXVCTbT5lowak
-         Uui425xHkhUOkyZpWKzsBL/5pPOFvoQgZayBdeizk1hEYCxhNJJTXra7ErXdKyiCUono
-         jqzrlGETHE94fD09CFnJV2+lsFmJBL7t2ZdyMWkkZpWCFfbF79pY5bp2qsMoMDP4NCD8
-         8cfEOowhK+nhdyM9LSHFIef39sebFlG2+58xMLTVDXVDEPrGuFK37+1AdGYJ46FsawzC
-         KaJA==
+        b=LLZtGeOyzIjvQuCtkMue9S346KzphOEMnIT8+u+su1ouzYqO1NRNugF7xPWM9Hndsk
+         jhYOlKlPR8VI6PAdPuQsOb6MmGw4jY0yCYFlR3+AfwQ0f3Lwjrpr6W14f3FG4pdKRDXf
+         PEdYJa+2ZiXshL3SmvmD3bBt3TYSaUR1eG1IHBqzMsAJLUtx5jVCsfsZPUNITZHq/v0a
+         1AyNUiMFJK6syGImkSo2Rwy8Va3xhjpgjMwWbxquOramHRLzvd2MhwKtu50xLxOXywAc
+         mdd7KMZkaC40Rah316IcITq7DRFIb6uMqLwMqmeaUXKZ8CC0MZEERW9S9oVbgK4hUkyd
+         CvPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=naGB67P35Hh6ey4h7HMOBQWk3NFVJt+hndCv0Q54Ov0=;
+        bh=Fx7kCxpZ9MjvNdOhB1WJA/J0BdYu+k99RFDCkPjREH0=;
         fh=fO+ncAaxY0Wf5Oiu0zeLu9be5DWOx71LYjyGHoG8Yc0=;
-        b=AjdVJ1DRda2C7RGX/GLMU2aGR6C0kBw6ZsmWOnFyx0tP7L7uPxycmCi5ByDwLzHcgb
-         c+PRxlbH+ImE/ujDcoBBWvvVrEbcaM9OVU8D6XenFn6hOVMMTN/rgvKZs1A1+qtXZVTR
-         gAHgvA0XSHNTbNkhD6iISlGzcTWQNarz4dE726cWMvgq0M4mSUqkQwuTY9OmNdgyLdo2
-         56JUMOKtFHjPglCglh/b6ASXSLj2aXecjfWb+zFwwwFA011R77gOpLLWU8hGmzcEM0c/
-         8xAz39/xum+lYcDrF/9cjb/EnIvhO1SokayItCsbWc8/eGAA2LLONvczPwEt5YhW/VhJ
-         vprA==
+        b=PW+yjC3e9hxc7J1l14Oq05hiU/HL9FGKTeRCCLaWCYOb95pnD2q5Z0WmNd6FeoWUJD
+         t07grwZuI0sQDewpZrYGgww02JfuVKKxxJ7HUzjuoJ6Dcc0V1SQilS2q9WiWeFFtprGr
+         qxj6EhGQonhdjIbWKTyVEUxq+CR8dmn1BKwmj1TmXTw5PAPBFH150jRjouEpdZ52GDDT
+         sWPWWUcN1VLtfLJ2/nXpqmPzmGUutjRqzdEjgo3N6iy3h5kLFWrwbh9KuJ5hIkZq2Y0i
+         aVRmk5qkgexcAIWKFiDRv20iH1ocSZbtaw5H0fbgHmW7VRAr0fvlUTu0AOhvO/1AGXQl
+         I9WA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZY29oz66;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GSMTVnun;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d8-20020a05622a15c800b004108aee38e8si8884796qty.122.2023.09.27.17.28.38
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id b65-20020a0dd944000000b005772504da6asi6252807ywe.152.2023.09.27.17.40.56
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Sep 2023 17:28:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Wed, 27 Sep 2023 17:40:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZY29oz66;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GSMTVnun;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1695860918;
+	s=mimecast20190719; t=1695861656;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=naGB67P35Hh6ey4h7HMOBQWk3NFVJt+hndCv0Q54Ov0=;
-	b=ZY29oz66MDak94WtmU8YBxMB11rNOMYEnEjm+Tqpi5VnZkMw1RKzyTfBt9YT3sbkTIvhMN
-	F2ln6zbEaQueTXwksiQPSxI41uHg2igk+Nx8w9DDu9Hw700ECF8TN40kMKdCJcStA0O0No
-	XmpcSsxhPbxzftC2g2FN/8SMsyvJHYM=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=Fx7kCxpZ9MjvNdOhB1WJA/J0BdYu+k99RFDCkPjREH0=;
+	b=GSMTVnun+XEBH5b4KJJPphCjqYtJztvWHjvCXaBQj54YQtRxauYXZZrbzTqImhiEEJ9zkb
+	1BHPW8AD9M3j/hyCuofZipAt2sA/b0Bd42MkO9QTtxCOO2aijkrYOhd9VI8GK2iQuJph/m
+	NRSAqsgivYdJD6HFe7W1X7KeXOdTnTE=
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-548-rZx5EvIYNM-DM-etzJY55Q-1; Wed, 27 Sep 2023 20:28:36 -0400
-X-MC-Unique: rZx5EvIYNM-DM-etzJY55Q-1
-Received: by mail-pl1-f198.google.com with SMTP id d9443c01a7336-1c60dcc3d9eso123869515ad.0
-        for <alex.bennee@linaro.org>; Wed, 27 Sep 2023 17:28:36 -0700 (PDT)
+ us-mta-639-nQeuBbpCMFO0ET-ciCQLnw-1; Wed, 27 Sep 2023 20:40:54 -0400
+X-MC-Unique: nQeuBbpCMFO0ET-ciCQLnw-1
+Received: by mail-pg1-f197.google.com with SMTP id 41be03b00d2f7-565ece76be4so15448072a12.2
+        for <alex.bennee@linaro.org>; Wed, 27 Sep 2023 17:40:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695860915; x=1696465715;
+        d=1e100.net; s=20230601; t=1695861654; x=1696466454;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=naGB67P35Hh6ey4h7HMOBQWk3NFVJt+hndCv0Q54Ov0=;
-        b=eLG70xf5KLeqVjMSpsncAFOcrKMUJcOeo6sCpAz2saGIx+AHIKL+vcbZgFkFGNQJZN
-         /t7H56YfLFzzJYx2LjMX4YxiucjqrLvNV1zyDi8GjE5ZCjapTXP7oieuyy257/u676np
-         SYt5Xbq9TjDR6dvXneMJWJVhs7wWeUKng/7isgUveQq6AnI397QDYh+b0Z43pugQolU8
-         aH1o7t1VE2u+lQdCgT6vvx0yoAMFqmDQHCJcIJ3QJPyL3lem1nfkIdXMy8p3/YRdnVZm
-         F8q1gVstePGn48jU09o6TGX73WUIVrSXWOc7PBesRfuol+X5e3GP9GENUXGMcPs9K7wz
-         9BrQ==
-X-Gm-Message-State: AOJu0Yx9Hf4ixik0PTr5ZLRpmdl6euVQkVRzfWsfC4JggvtVjj3WpbDR
-	grqk5zjc7j6kZqgkGwJ7xJqpECYHo+0gb8mWXjFbTjhh03iUSEx1k7GD3jVfnpRmPD2+cMVBRhU
-	zYhXm/SRnCRHaAPiE
-X-Received: by 2002:a17:902:7682:b0:1c3:f745:1cd5 with SMTP id m2-20020a170902768200b001c3f7451cd5mr3436197pll.34.1695860915034;
-        Wed, 27 Sep 2023 17:28:35 -0700 (PDT)
-X-Received: by 2002:a17:902:7682:b0:1c3:f745:1cd5 with SMTP id m2-20020a170902768200b001c3f7451cd5mr3436153pll.34.1695860914750;
-        Wed, 27 Sep 2023 17:28:34 -0700 (PDT)
+        bh=Fx7kCxpZ9MjvNdOhB1WJA/J0BdYu+k99RFDCkPjREH0=;
+        b=bsygCcfVzMtfpZa8qI/YlE52Z2VV7o73KF9bsvSsk+O+dep0lO7rHrVWd3fSV5J3lU
+         8jUqXOj3ggh7KjbaqfTxz9Tqs5SYRzQn6fA3s7eg+Tlvs85b1+6rbWLm8aPZCste+4lA
+         AFoQmjnIJHvw1kjf4kgEIGf8gW45LqVB2H2C57MdjxNWU5rhUemWwifTfhwy+RaR9sYd
+         V0Cy4yj7zbjMgdk6QYY3opKdVwVJ3lWLJ7F4tIdcLNZdxOWTcOKze/22Qq0TKk5BCWHi
+         lbF1sKpHdy1rp7OK/ewz67pxNyYmVcRId7bIs+iSH3lZPOc5+k4+l+H4GxUt/PNUJmYy
+         ASdQ==
+X-Gm-Message-State: AOJu0YxisgJNTjuFHmKnpD0FjXVh1n37PtqFZBiU0kFCrl3OiBp5t6Ma
+	LGYg5wv1a24YN5krguJTAcHxh/NAPioMJs1GH50iuQApDsFc0Zt6x33d77L/QCAJpXKifPNFqWW
+	+/bJ8/NMJa8spTT3b
+X-Received: by 2002:a05:6300:808a:b0:10f:be0:4dce with SMTP id ap10-20020a056300808a00b0010f0be04dcemr3466648pzc.8.1695861653869;
+        Wed, 27 Sep 2023 17:40:53 -0700 (PDT)
+X-Received: by 2002:a05:6300:808a:b0:10f:be0:4dce with SMTP id ap10-20020a056300808a00b0010f0be04dcemr3466609pzc.8.1695861653618;
+        Wed, 27 Sep 2023 17:40:53 -0700 (PDT)
 Return-Path: <gshan@redhat.com>
 Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
-        by smtp.gmail.com with ESMTPSA id a2-20020a170902ee8200b001b66a71a4a0sm13692639pld.32.2023.09.27.17.28.23
+        by smtp.gmail.com with ESMTPSA id gk6-20020a17090b118600b00263cca08d95sm4484265pjb.55.2023.09.27.17.40.42
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 27 Sep 2023 17:28:34 -0700 (PDT)
-Message-ID: <dd1028a6-e229-07e3-95e8-ba636dc0651e@redhat.com>
-Date: Thu, 28 Sep 2023 10:28:21 +1000
+        Wed, 27 Sep 2023 17:40:53 -0700 (PDT)
+Message-ID: <4fb2eef9-6742-1eeb-721a-b3db04b1be97@redhat.com>
+Date: Thu, 28 Sep 2023 10:40:40 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH RFC V2 11/37] hw/acpi: Add ACPI CPU hotplug init stub
+Subject: Re: [PATCH RFC V2 12/37] hw/acpi: Use qemu_present_cpu() API in ACPI
+ CPU hotplug init
 To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
@@ -100,43 +101,53 @@ Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
  maobibo@loongson.cn, lixianglai@loongson.cn
 References: <20230926100436.28284-1-salil.mehta@huawei.com>
- <20230926100436.28284-12-salil.mehta@huawei.com>
+ <20230926100436.28284-13-salil.mehta@huawei.com>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230926100436.28284-12-salil.mehta@huawei.com>
+In-Reply-To: <20230926100436.28284-13-salil.mehta@huawei.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: DUeZhitdxn3y
+X-TUID: sjHo628zZNk7
+
+Hi Salil,
 
 On 9/26/23 20:04, Salil Mehta wrote:
-> ACPI CPU hotplug related initialization should only happend if ACPI_CPU_HOTPLUG
-> support has been enabled for particular architecture. Add cpu_hotplug_hw_init()
-> stub to avoid compilation break.
+> ACPI CPU Hotplug code assumes a virtual CPU is unplugged if the CPUState object
+> is absent in the list of ths possible CPUs(CPUArchIdList *possible_cpus)
+> maintained on per-machine basis. Use the earlier introduced qemu_present_cpu()
+> API to check this state.
+> 
+> This change should have no bearing on the functionality of any architecture and
+> is mere a representational change.
 > 
 > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 > ---
->   hw/acpi/acpi-cpu-hotplug-stub.c | 6 ++++++
->   1 file changed, 6 insertions(+)
+>   hw/acpi/cpu.c | 5 ++++-
+>   1 file changed, 4 insertions(+), 1 deletion(-)
 > 
+> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+> index 45defdc0e2..d5ba37b209 100644
+> --- a/hw/acpi/cpu.c
+> +++ b/hw/acpi/cpu.c
+> @@ -225,7 +225,10 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+>       state->dev_count = id_list->len;
+>       state->devs = g_new0(typeof(*state->devs), state->dev_count);
+>       for (i = 0; i < id_list->len; i++) {
+> -        state->devs[i].cpu =  CPU(id_list->cpus[i].cpu);
+> +        struct CPUState *cpu = CPU(id_list->cpus[i].cpu);
+> +        if (qemu_present_cpu(cpu)) {
+> +            state->devs[i].cpu = cpu;
+> +        }
+>           state->devs[i].arch_id = id_list->cpus[i].arch_id;
+>       }
+>       memory_region_init_io(&state->ctrl_reg, owner, &cpu_hotplug_ops, state,
 
-Reviewed-by: Gavin Shan <gshan@redhat.com>
+I don't think qemu_present_cpu() is needed because all possible vCPUs are present
+for x86 and arm64 at this point? Besides, we have the assumption all hotpluggable
+vCPUs are present, looking at James' kernel series where ACPI_HOTPLUG_PRESENT_CPU
+exists in linux/drivers/acpi/Kconfig :)
 
-> diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-stub.c
-> index 3fc4b14c26..c6c61bb9cd 100644
-> --- a/hw/acpi/acpi-cpu-hotplug-stub.c
-> +++ b/hw/acpi/acpi-cpu-hotplug-stub.c
-> @@ -19,6 +19,12 @@ void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
->       return;
->   }
->   
-> +void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
-> +                         CPUHotplugState *state, hwaddr base_addr)
-> +{
-> +    return;
-> +}
-> +
->   void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list)
->   {
->       return;
+Thanks,
+Gavin

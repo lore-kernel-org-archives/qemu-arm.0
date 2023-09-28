@@ -1,215 +1,222 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2220343ejc;
-        Wed, 27 Sep 2023 17:57:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH9w07CTzIhHFHro/aYWx5tRr8MQVcN+an/MoUqsvWRZ/ZPQ6uvZrbQEbN/tXKEhudOD4N4
-X-Received: by 2002:a05:6402:549:b0:530:bbeb:571 with SMTP id i9-20020a056402054900b00530bbeb0571mr3246881edx.36.1695862629185;
-        Wed, 27 Sep 2023 17:57:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695862629; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2431639ejc;
+        Thu, 28 Sep 2023 02:45:19 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE+zYWa7wTq3bE2LUi68EEhSMi5MazA+rbi9QNviDj6o4FeLo53DQ16hP16zq5TFtMU+6ee
+X-Received: by 2002:a05:622a:178a:b0:418:125b:2cfb with SMTP id s10-20020a05622a178a00b00418125b2cfbmr669559qtk.3.1695894318938;
+        Thu, 28 Sep 2023 02:45:18 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1695894318; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ABLqTxIyhNioxAwq9K+F9GdyO70yiDY/3VNnGpXgXGR/2CbWv5nXicDvuRfU3En+LO
-         9FvSqMK8Y7ckUom2+tdz//1LB/9UKiyv/fspwUAOQgpzat7aJq6enRx9HcCa0eujt526
-         XHTmAJuXLvTOJ+v3Y3Sl2XdlX/7dpLFMJrICIGIcd0A7ZPVZBqyG8RODpJC4c1llTYlC
-         eGrLY25km2cCSc6ibKQeOepaSaVBdoO0lld3FEq7Oz3HQIxAB4qgHQQLRqHmJyyfgKUW
-         jVW5Apw6UAMo5mByJ53htogfefXWsTz14+Lkz6PL3ZvugbVyHJFsu8c9zGB5lTWpi3TI
-         5hDQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Gbrsl00JxY9Mm0XVtA3ZtJCnbtkROL6hKRpyD9Lw29c=;
-        fh=fO+ncAaxY0Wf5Oiu0zeLu9be5DWOx71LYjyGHoG8Yc0=;
-        b=0LNnGbm6rwxrrYb6QzJRjW/e9kRLQUnrq9oqVjtNQzzcj4++H9lP6to1wGFMTAFVFS
-         ACMqEHUL7X8zct98U6X1zbpGN6b7DZDqKeqCYREufxVOZ1179gfKZeTihauAhDpFW/qg
-         j823vBsvpJQG6+vVaqij/VC0bYAZWmS3TzPj6sYjDCL2vN++elwzOC4BG/kyAvTjvmZz
-         9Lw1T+4fE+u3sweiUbdoW11WnMYcfIcNh9GBYHZNiHp5oMmJ9V0zbpVSHnmfYEV/EQU9
-         I06GgiaE/Nq0Qcn74jL+0KKKMMSNn6vZ/E/8hJIVW8eVRTE7taqUmPymDT2EZha1mS7o
-         OOkg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TflqxsJ5;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id i24-20020a056402055800b005330f24bfcdsi13620108edx.575.2023.09.27.17.57.08
+        b=aVpYugvk24YEEW8UXVjXgG474SPnQETK+58sV41AQidchNovFSwr3cpVjTb9Ry9Llt
+         LMzOec9gSzAou/EQxh4DMPv5c0iLaqhCksaEpAL5KRXZwb2iYzSxN+9SdkUQKkeNo2Ac
+         ou1phJW5Dh/ZWOqPDHpHdf638a6rIDIzWJy9+M5BLONKcku3eGE94AgS0gdaFRrHbXjU
+         u8ja0DxQso4gkl+4CVAZiW4HP14wovsGsDZcfUmk+ZIQsFJ4q58BDMLVYcMMncPF3MFP
+         Le9YRr72c0O7p+HkfW40zs+t+9vo+VdFkr0h9ml6BNMHPpDwzGQJlo5Ow1TBddRs3B+A
+         ysjg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=VBhG4PYOSyVLReBeJF4sGzWwRHdIiBYIRSrtyGns0yE=;
+        fh=7QetUxvC7CIlijijJvzArnvvR+wnKQ36IxlP05Txi4w=;
+        b=zwKz7+kqYl4K2rUmi78g42v50AHdsSvZTRxqTAaOVBBWDXtLnawpn1yyvRabkl295L
+         jt3kbeyp6k4r9/dCV9sT+dO4NR0MRec8a6GcYVhyBJcuLU/bzxnNTXpcJ8u6S3BZM1h6
+         zvxUHlXBZbktPBA/772fej9dKtXpmZt6BkSX73tzGeI+LIRsSkA3vpyFyxHpdRkKzk3z
+         lmJ4PkQqOvxVyfXZRiwrGfB6KKUmbBDUy3JdcFbjbTJFfFp6eh8jjg3XKLiEKX0k6NQa
+         JQCWnQVN2sKeElK4C7kbxIOfyanYXv0TOio/O7E4xC4CH9Mdf/E486VQfOi7EckIEwaA
+         k1lA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=G4IAjUTj;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h9-20020ac85849000000b0040ff099d956si9145686qth.670.2023.09.28.02.45.18
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Sep 2023 17:57:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 Sep 2023 02:45:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TflqxsJ5;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1695862628;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Gbrsl00JxY9Mm0XVtA3ZtJCnbtkROL6hKRpyD9Lw29c=;
-	b=TflqxsJ5vv/Hqc2v8/gZhImLnRHbnQdSj4L0KYap4GMI8SxSCKRb9YnL1zfmqpIr8L7w5T
-	ep9Qq839j5L0cqyUNf3I6qQ/VZ7IAgfP4m04ULWUk9HdKoLi79HoyGTRJKKMbjC7wNyd5T
-	E6ivBm4mVmdLf02gRti2tqVdUMb6xG8=
-Received: from mail-oo1-f69.google.com (mail-oo1-f69.google.com
- [209.85.161.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-578-0HRP1x5kPsSJ5u_N7Pd_dw-1; Wed, 27 Sep 2023 20:57:06 -0400
-X-MC-Unique: 0HRP1x5kPsSJ5u_N7Pd_dw-1
-Received: by mail-oo1-f69.google.com with SMTP id 006d021491bc7-57b6753e601so21906981eaf.3
-        for <alex.bennee@linaro.org>; Wed, 27 Sep 2023 17:57:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695862626; x=1696467426;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Gbrsl00JxY9Mm0XVtA3ZtJCnbtkROL6hKRpyD9Lw29c=;
-        b=JThvk7DkrlviJUkcmACE+7mMo4Y8x75/28TCyPOLuyN3gj9Nws3iiaYQxj+Qi3MPjR
-         j6dij+eHXQUx2A3Sc83QokYbe238dETIxY0vUFmf5kcs/VTNqm9PQgTKD6ywyuFBhkPj
-         SFt9Ktq0I4VKloa00kj/Bo+gFM0bqX08aaDMPmm84cVqDv17X2Z4IREHGRqPMzCLgT0I
-         ZN/lWNkhp2wkoMW6FsMrzVN/AU5x3eYef66buCuhooXzkAMFC8oIvYCXW1/m48/89Z0q
-         sfzTipQ8OsAajhpwVrMRjvojMQvhcGqsZJQslfzU3N5pVRjZiPf8OtwLR6c0cnxhwwTK
-         PIaA==
-X-Gm-Message-State: AOJu0YwPB9O3RqvJZ1vAjLXabZ1/r80Xq6fHM5HLSaf4ddRAehjQvii+
-	a3P4Xy/k2x2HCMPqVHmuvuggYO54YpQ00xZeHLnLHlmiUPllah00yhVm/oKg0R34jquVYqVYKIn
-	uStiuMvGSuje31uvT
-X-Received: by 2002:a05:6358:2484:b0:143:3179:1a67 with SMTP id m4-20020a056358248400b0014331791a67mr3786552rwc.29.1695862625878;
-        Wed, 27 Sep 2023 17:57:05 -0700 (PDT)
-X-Received: by 2002:a05:6358:2484:b0:143:3179:1a67 with SMTP id m4-20020a056358248400b0014331791a67mr3786537rwc.29.1695862625493;
-        Wed, 27 Sep 2023 17:57:05 -0700 (PDT)
-Return-Path: <gshan@redhat.com>
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
-        by smtp.gmail.com with ESMTPSA id b25-20020aa78719000000b00690cd981652sm12328863pfo.61.2023.09.27.17.56.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 27 Sep 2023 17:57:04 -0700 (PDT)
-Message-ID: <f3db9fe9-2fbb-003e-3da4-26c401d09c1f@redhat.com>
-Date: Thu, 28 Sep 2023 10:56:52 +1000
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=G4IAjUTj;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qlnZR-0005tB-CY; Thu, 28 Sep 2023 05:44:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Michal.Orzel@amd.com>)
+ id 1qlnZQ-0005s7-G1; Thu, 28 Sep 2023 05:44:32 -0400
+Received: from mail-co1nam11on20614.outbound.protection.outlook.com
+ ([2a01:111:f400:7eab::614]
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Michal.Orzel@amd.com>)
+ id 1qlnZN-0003Uy-Km; Thu, 28 Sep 2023 05:44:32 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=MVJMoYIGs2qRNK/+rEOp8jHRD4fxsNilChh+vgwBWBA/Q4ZILnBoTrzuHAEt9XtDtomvugh+x3lnsRPWFjKuaIyR0DZ+Kmb/N6WdPEz3/1xI69iBRw0qA39+oPHxUuBTakWe2ARPNaD/X8wmNbfkB3/uLMncy7GGdJc1bp0M6PvIs9y6OwcIiqCt453UM93yUQCvmvcmEc1oQU7gUMk74rBrQX1E69xL4afBHOX/BCNU/Z4Dvw/el/vOBQzo4EbdIGAAH4wVk497hxiqyeWOsGRAY2W6K1pWJe3T2pP9FIzz481oDkAJuo7ljsXcBmVWiOG8y89Ii/X397zX/ibloA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=VBhG4PYOSyVLReBeJF4sGzWwRHdIiBYIRSrtyGns0yE=;
+ b=AhZn8AgqqvtrQKlLgq+2FNiWUaSjwmiwpOOHOTjyZjshZO0wul07OUKDiyfKnHkhHmG2fflT80uiew7bZ2tNV15Eczo2w7/HKkM4CqIz/D2e6ynprzXyI/vGvwLFZxnoQ63pE4/JJF1gtWnkAd9vx4zmvmKpQYm7lRJmN2qyzf7MAwdh3qYoT2Db8ACxKPR7PPD8UcFynqdSmnIXf/J5+2bP3bjJ1oC1ltlOilw7vvkbSO/rzK/X6J1nWOD8kiMtAY+Q3w0jP/t4ODVOWeOgkQ2taOYHWNDfDrNoL+QNKVG9F4z9NILnekEpTsu66/+pEwJPQH1UOe6j6XySJ7VlYg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VBhG4PYOSyVLReBeJF4sGzWwRHdIiBYIRSrtyGns0yE=;
+ b=G4IAjUTjgAKe+bBS17DZiYRRxRMiFs+AjD39NgIDZpF7JqdwWxgH4R9LfvoG+1zii6nMBR3KhrhxV8ktg16Km0s+rnjtx+AT/QcqXKmbYAwOCMRZ/n3mFfcXIfcy77n0lAS2RBxiPhAEyiAwUGjUKvS3e3BJp9zShCYfiDdQAII=
+Received: from DS7PR03CA0330.namprd03.prod.outlook.com (2603:10b6:8:2b::22) by
+ SJ0PR12MB6854.namprd12.prod.outlook.com (2603:10b6:a03:47c::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6838.22; Thu, 28 Sep
+ 2023 09:44:24 +0000
+Received: from DS2PEPF00003446.namprd04.prod.outlook.com
+ (2603:10b6:8:2b:cafe::c6) by DS7PR03CA0330.outlook.office365.com
+ (2603:10b6:8:2b::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6838.25 via Frontend
+ Transport; Thu, 28 Sep 2023 09:44:24 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ DS2PEPF00003446.mail.protection.outlook.com (10.167.17.73) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6838.14 via Frontend Transport; Thu, 28 Sep 2023 09:44:24 +0000
+Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 28 Sep
+ 2023 04:44:23 -0500
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB08.amd.com
+ (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 28 Sep
+ 2023 02:44:23 -0700
+Received: from XIR-MICHALO-L1.xilinx.com (10.180.168.240) by
+ SATLEXMB03.amd.com (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.27
+ via Frontend Transport; Thu, 28 Sep 2023 04:44:22 -0500
+From: Michal Orzel <michal.orzel@amd.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: Michal Orzel <michal.orzel@amd.com>, <peter.maydell@linaro.org>,
+ <stefano.stabellini@amd.com>, <Oleksandr_Tyshchenko@epam.com>
+Subject: [PATCH v2] target/arm: Fix CNTPCT_EL0 trapping from EL0 when
+ HCR_EL2.E2H is 0
+Date: Thu, 28 Sep 2023 11:44:04 +0200
+Message-ID: <20230928094404.20802-1-michal.orzel@amd.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH RFC V2 13/37] hw/acpi: Init GED framework with cpu hotplug
- events
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
- ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
- mst@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com,
- alex.bennee@linaro.org, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, lixianglai@loongson.cn
-References: <20230926100436.28284-1-salil.mehta@huawei.com>
- <20230926100436.28284-14-salil.mehta@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230926100436.28284-14-salil.mehta@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: ep4NHeP/E7mB
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS2PEPF00003446:EE_|SJ0PR12MB6854:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2df91dcb-5dc7-44e3-8c69-08dbc0077fb8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: RCYny6Bc/sdAfJUgxtBSS0kL0FIB37QsCn/rRsqFgIFW3SprERQ0+hwfr/9tkGWwPJJfE0KKmMdiFbTpGikVG02C/SdooftilxuR5yf8NeHAxH2oAtr42podFIh23dwECKmYz20iKxry35yGzii+rIO7/mj8qT6sIi08kGWzB1nTdOCcAeuwgSLGRNsiEgxVDnnIL8zI7Qhle+gMoKUYKGwx4zBPj81CfL4JOAiUh7zLl1x9UwmP9S/lLIa/KxprmBIDM5Lmeo25tOBrExHB0b0YwRx3Ks1hAyMfT8jiWkdNGKTr2W2s3qfsiznqJG9Too+vyzejlKNAt1lybHkqAQrJdfDR2gBx9OdD9/na13dMGjvyZBWkF58EdU099jTGS/mP2hxXUV7DCbEvU3MacEJB9/38RFOvyT6LgJMsOKJYVG7T3IITqpxbg9sB7JcW0zotic5rrWy+ot16x3TCADgmBz/MsWjfHNFsCls6sgKyoE8SVQP+NIoIhV+3YNaK9ygAbACuAibUK/m1Ye4oDOXT0dEAH+uXweoiCDETVsXSH9g1J2JzMKWTwS1/5nzoVZI9eDVdug9hU/a2E+ANSigUG34lrphn6oZct9L8KiHXPpz5BKg/g01Fvs7g5LL824P/YF+j+FSsUC7xpHNa+gREKksj0z0TTXm3Bii/NzNtSceHdT7o8YqSV3PSfnJ9ig3YMggCTsKTxYDkawuty4ym8SYGl3mYJEBc4XFl5u6dHIi/VjUUOvPBxUnEGZuqdzyZ4Uq7xZMRv0SUM68GAw==
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(376002)(396003)(136003)(346002)(39860400002)(230922051799003)(82310400011)(64100799003)(186009)(1800799009)(451199024)(40470700004)(46966006)(36840700001)(40460700003)(2906002)(6666004)(1076003)(2616005)(110136005)(70206006)(54906003)(70586007)(478600001)(26005)(426003)(86362001)(83380400001)(47076005)(36860700001)(336012)(82740400003)(81166007)(356005)(4326008)(40480700001)(36756003)(5660300002)(44832011)(316002)(8676002)(41300700001)(8936002)(36900700001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Sep 2023 09:44:24.2380 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2df91dcb-5dc7-44e3-8c69-08dbc0077fb8
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: DS2PEPF00003446.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB6854
+Received-SPF: softfail client-ip=2a01:111:f400:7eab::614;
+ envelope-from=Michal.Orzel@amd.com;
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TV+oX1LHK5Uc
 
-Hi Salil,
+On an attempt to access CNTPCT_EL0 from EL0 using a guest running on top
+of Xen, a trap from EL2 was observed which is something not reproducible
+on HW (also, Xen does not trap accesses to physical counter).
 
-On 9/26/23 20:04, Salil Mehta wrote:
-> ACPI GED(as described in the ACPI 6.2 spec) can be used to generate ACPI events
-> when OSPM/guest receives an interrupt listed in the _CRS object of GED. OSPM
-> then maps or demultiplexes the event by evaluating _EVT method.
-> 
-> This change adds the support of cpu hotplug event initialization in the
-> existing GED framework.
-> 
-> Co-developed-by: Salil Mehta <salil.mehta@huawei.com>
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> ---
->   hw/acpi/generic_event_device.c         | 8 ++++++++
->   include/hw/acpi/generic_event_device.h | 5 +++++
->   2 files changed, 13 insertions(+)
-> 
+This is because gt_counter_access() checks for an incorrect bit (1
+instead of 0) of CNTHCTL_EL2 if HCR_EL2.E2H is 0 and access is made to
+physical counter. Refer ARM ARM DDI 0487J.a, D19.12.2:
+When HCR_EL2.E2H is 0:
+ - EL1PCTEN, bit [0]: refers to physical counter
+ - EL1PCEN, bit [1]: refers to physical timer registers
 
-It looks a bit strange you're co-developing the patch with yourself.
-It seems all patches follow this particular pattern. I could be changed
-to:
+Drop entire block "if (hcr & HCR_E2H) {...} else {...}" from EL0 case
+and fall through to EL1 case, given that after fixing checking for the
+correct bit, the handling is the same.
 
-Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+Fixes: 5bc8437136fb ("target/arm: Update timer access for VHE")
+Signed-off-by: Michal Orzel <michal.orzel@amd.com>
+---
+This is now in conformance to ARM ARM CNTPCT_EL0 pseudocode:
+if PSTATE.EL == EL0 then
+...
+    elif EL2Enabled() && HCR_EL2.E2H == '0' && CNTHCTL_EL2.EL1PCTEN == '0' then
+        AArch64.SystemAccessTrap(EL2, 0x18);
 
-The code changes look good to me with the following nits addressed:
+Changes in v2:
+ - drop block and fall through to avoid duplication
+---
+ target/arm/helper.c | 17 +----------------
+ 1 file changed, 1 insertion(+), 16 deletions(-)
 
-Reviewed-by: Gavin Shan <gshan@redhat.com>
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 83620787b453..59576aa1575a 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2475,22 +2475,7 @@ static CPAccessResult gt_counter_access(CPUARMState *env, int timeridx,
+         if (!extract32(env->cp15.c14_cntkctl, timeridx, 1)) {
+             return CP_ACCESS_TRAP;
+         }
+-
+-        /* If HCR_EL2.<E2H,TGE> == '10': check CNTHCTL_EL2.EL1PCTEN. */
+-        if (hcr & HCR_E2H) {
+-            if (timeridx == GTIMER_PHYS &&
+-                !extract32(env->cp15.cnthctl_el2, 10, 1)) {
+-                return CP_ACCESS_TRAP_EL2;
+-            }
+-        } else {
+-            /* If HCR_EL2.<E2H> == 0: check CNTHCTL_EL2.EL1PCEN. */
+-            if (has_el2 && timeridx == GTIMER_PHYS &&
+-                !extract32(env->cp15.cnthctl_el2, 1, 1)) {
+-                return CP_ACCESS_TRAP_EL2;
+-            }
+-        }
+-        break;
+-
++        /* fall through */
+     case 1:
+         /* Check CNTHCTL_EL2.EL1PCTEN, which changes location based on E2H. */
+         if (has_el2 && timeridx == GTIMER_PHYS &&
+-- 
+2.25.1
 
-> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-> index a3d31631fe..d2fa1d0e4a 100644
-> --- a/hw/acpi/generic_event_device.c
-> +++ b/hw/acpi/generic_event_device.c
-> @@ -25,6 +25,7 @@ static const uint32_t ged_supported_events[] = {
->       ACPI_GED_MEM_HOTPLUG_EVT,
->       ACPI_GED_PWR_DOWN_EVT,
->       ACPI_GED_NVDIMM_HOTPLUG_EVT,
-> +    ACPI_GED_CPU_HOTPLUG_EVT,
->   };
->   
-
-Can we move ACPI_GED_CPU_HOTPLUG_EVT ahead of ACPI_GED_MEM_HOTPLUG_EVT?
-
->   /*
-> @@ -400,6 +401,13 @@ static void acpi_ged_initfn(Object *obj)
->       memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
->                             TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
->       sysbus_init_mmio(sbd, &ged_st->regs);
-> +
-> +    s->cpuhp.device = OBJECT(s);
-> +    memory_region_init(&s->container_cpuhp, OBJECT(dev), "cpuhp container",
-> +                       ACPI_CPU_HOTPLUG_REG_LEN);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container_cpuhp);
-> +    cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
-> +                        &s->cpuhp_state, 0);
->   }
->   
->   static void acpi_ged_class_init(ObjectClass *class, void *data)
-> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-> index d831bbd889..d0a5a43abf 100644
-> --- a/include/hw/acpi/generic_event_device.h
-> +++ b/include/hw/acpi/generic_event_device.h
-> @@ -60,6 +60,7 @@
->   #define HW_ACPI_GENERIC_EVENT_DEVICE_H
->   
->   #include "hw/sysbus.h"
-> +#include "hw/acpi/cpu_hotplug.h"
->   #include "hw/acpi/memory_hotplug.h"
->   #include "hw/acpi/ghes.h"
->   #include "qom/object.h"
-> @@ -97,6 +98,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
->   #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
->   #define ACPI_GED_PWR_DOWN_EVT      0x2
->   #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
-> +#define ACPI_GED_CPU_HOTPLUG_EVT    0x8
->   
-
-#define ACPI_GED_CPU_HOTPLUG_EVT  0x1
-#define ACPI_GED_MEM_HOTPLUG_EVT  0x2
-   :
-
-If the adjustment is friendly to live migration.
-
->   typedef struct GEDState {
->       MemoryRegion evt;
-> @@ -108,6 +110,9 @@ struct AcpiGedState {
->       SysBusDevice parent_obj;
->       MemHotplugState memhp_state;
->       MemoryRegion container_memhp;
-> +    CPUHotplugState cpuhp_state;
-> +    MemoryRegion container_cpuhp;
-> +    AcpiCpuHotplug cpuhp;
->       GEDState ged_state;
->       uint32_t ged_event_bitmap;
->       qemu_irq irq;
-
-Thanks,
-Gavin

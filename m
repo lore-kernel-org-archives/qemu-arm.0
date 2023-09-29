@@ -1,245 +1,182 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2996637ejc;
-        Thu, 28 Sep 2023 21:23:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFG6VwfV6dQdYfe3XIiuQ7XVUHK6H4jqows31AJRpoBr/RVdnoZhbqT6UjwA6v4lC8Kfofj
-X-Received: by 2002:a05:622a:1ce:b0:418:221a:b51d with SMTP id t14-20020a05622a01ce00b00418221ab51dmr3672860qtw.58.1695961418773;
-        Thu, 28 Sep 2023 21:23:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695961418; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp3007626ejc;
+        Thu, 28 Sep 2023 21:59:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE/gc/vwVHYvW8ARMLqhEM1y2SVtPpF2HMiJcqb5O8mn9SpZBZi+gQhnzcgIRZlRHH5jiYa
+X-Received: by 2002:a05:620a:2444:b0:76c:e2db:42b0 with SMTP id h4-20020a05620a244400b0076ce2db42b0mr3127570qkn.64.1695963565973;
+        Thu, 28 Sep 2023 21:59:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695963565; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vm1FkKhj2IwhV/n4bW05idimcInq8KGiqaErFG1vI9ManQr6DX2cTdD9JpOcJpuMhj
-         8P6ZNszOeMjHjP8g7gVvJZg6d2p0kwE0eqTJ9II2WJ9DxfINSkKoiQIWfqv2tP5L9DTA
-         LX92maTI8ctW4est7lIdN6mRpkcdddG3N7URlBr+/BS7/2NlM/o2FpfEvVZ+k3N9nxf0
-         06XzgoccpXJnIQ8o+HQB+uU6gOheRUDvayEQb1G6rBoKUE63jEQcxdJmhUm5lZqX32+o
-         yrgMC1hRLcCqRI2ct954Iuu4Ke4fDcZClBBvzpOdlEzME8Eg+m8kghAZs2n0tEf7W6f9
-         PuFA==
+        b=Dhj6rc2ptdMGZP3vIzJQtpUNf/yIBcrfYm6Heddc9pXSCF0Z0P07SFdRpz+04ahr4B
+         +gJkz/W0Q40Q2HB79TUssLFDHLkEtt9PqrLD3qn3tIaQPvqHj2fmfKW6qHPmLBZ3zqJq
+         7bJacWGukR6cCkWtepwEVQ1n5Br+5rDe0SQfljzkQl/qo8+xDzGiEoUx4CgBMrPmlF0d
+         riFq7446L5MyW0Bm+/8HSpXhZPE74/8P1rhs7e/zZjwpFKHRyhoaOPvPPkpHPeqH6ewW
+         RhimeIYNMxoxjxDfRVWR2zzWjcsnsdr4ndyybxxeF65FM/iNQzoCZ+8hjJ7xk8xHNZUN
+         8NIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=dzhL7jilBDvHg4CP/rvpSpnkZqN+PsVSUYT8fj0BnkU=;
-        fh=fO+ncAaxY0Wf5Oiu0zeLu9be5DWOx71LYjyGHoG8Yc0=;
-        b=qGEk7j+PmM/kbSOgQJ66GvmoAzKiop4LwsuXfZfWByPkos4e+6SB97wDzQPj0DxGAa
-         Oc2oHZ1frmWr2+idbz4Hf8NboEF0XWMa1D4206Gu1qbtHrqe59oWYc1TRnull2gZWu3c
-         tJKFoJAb5RKZvU/o7c/gkK2EmLG8jRjklN27XfkZ3dq2crjximXBEliuZDBA3e0K0eqR
-         ZK6Rkr8VPCqElW3BKHe3/dnwqYHQiAUiEDsuFAJq10OvHZawgD9G309gjLx+YTyi8cni
-         wVNgqoUpOUXFK/eaiEy7t6vPzmLml9ywtawyS5xYF9TVkFbre68NtQr2h7j/OyLKxYfL
-         G6mg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=dItL0TvXfbuTtKqxkuHNARbrBHBLRVsgwGWFCicycY8=;
+        fh=eK++/yuY1DfmC0FwWNnNY7mNAiLzTqe5xqtiB+k6JTQ=;
+        b=y6CGCp8GA1muJhWBfNNr27R+pZbk3CyM2Vanp541FYCc5fTCvoS2n4vsGOsPdZFcQ/
+         OgD/XfYxBF6rsiEfVkO2EtMJn80k1aobukpvoizvXzOJr2Fp0djtXjbQlG0aqYQG3DiJ
+         BMMUA68je4NocWlCzEnD9J3CI+/WYzSOv7uj1Gvjiwvl+l8tAXn+mgV/k2hw209+AaND
+         NCdAqBRG2mW1Prxgk1RtF+yDJHeRoh1qippQYn4NGk8gq71tht2Ka4ioTD0bgXeHDjfX
+         FmXDahYwccwVfThSM/4dZ6mAGWa+yfC+gfiqQkChHOSL/fkcbUYy1oE9s9LONSRWhdYO
+         YLtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GVXqpfvC;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ih4zLNNn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id g7-20020ac85d47000000b0040cf939cdd8si4937270qtx.271.2023.09.28.21.23.38
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r7-20020a05620a298700b0077592c3366esi34086qkp.329.2023.09.28.21.59.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Sep 2023 21:23:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 Sep 2023 21:59:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GVXqpfvC;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ih4zLNNn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qm5af-0006E3-32; Fri, 29 Sep 2023 00:59:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qm5ad-0006De-Dx
+ for qemu-arm@nongnu.org; Fri, 29 Sep 2023 00:58:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qm5ab-0002ME-Qa
+ for qemu-arm@nongnu.org; Fri, 29 Sep 2023 00:58:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1695961418;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=dzhL7jilBDvHg4CP/rvpSpnkZqN+PsVSUYT8fj0BnkU=;
-	b=GVXqpfvCq+g/qCZAkbL78paxe/L8xt1hqS06zz9ZHxRnohc6G/q9x8GM9Ttcbz9RBJNR+A
-	etomDxLS5yKxBCxVdlW7Hd3FE2tmVhfSjOd3j4wC6+DJByKrl/TaQoqfCMeMDHd/NhDW8j
-	gHPwqfubrnMs5imRQvkfIDcGNG00Ink=
-Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
- [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-196-q4vi4GisNhe0xs0iiF5bOA-1; Fri, 29 Sep 2023 00:23:36 -0400
-X-MC-Unique: q4vi4GisNhe0xs0iiF5bOA-1
-Received: by mail-pg1-f197.google.com with SMTP id 41be03b00d2f7-573fdb618eeso17829182a12.0
-        for <alex.bennee@linaro.org>; Thu, 28 Sep 2023 21:23:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695961415; x=1696566215;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dzhL7jilBDvHg4CP/rvpSpnkZqN+PsVSUYT8fj0BnkU=;
-        b=jEx3D+NLp1LytGYfHGCq1iutWgEiwX/YuxrVJhBLd4FeD5ygefG/g0X7xL908sEgYK
-         1XRqAJzTSFAzBFoXijg7dqKnMu1UQnGohJKJZVvLUUEGlKOi2MbLtazAjm3uqC0Mzv45
-         D3bVxf4K2MxAn9bGkCW6Vri9WE0KqFUtIofrMYCVqkfL1/Bp6bEIMpgGYaQLNoFWKgDm
-         bw3cXLe4hDHTLgc7oJMqWhxEBv2AkSLZZWWZQHhU/nmCI0vzUifXQZlyR37SxpMlFcSN
-         3eAcmLsCpGv0y+8X6I9l08pKUNgCu4jJBMOvmW6DvAZ5HgzXA3ihxMK8p/y76wuX9v8S
-         uT9w==
-X-Gm-Message-State: AOJu0YxP0HJ+RA46TOeU81QB1BgaI7hurGhqmb47qkpa9P9HSO275fbu
-	j8/ahvZzq/0O22b3o1hvj/1LDmpmVdwFA67wVJWTCu8s7AycyNm4N3sHY9jhwnWamMDNy1k1kYp
-	cH4V5yTZxMIgsqOjt
-X-Received: by 2002:a05:6a20:1604:b0:14c:d494:77c5 with SMTP id l4-20020a056a20160400b0014cd49477c5mr3490152pzj.13.1695961415659;
-        Thu, 28 Sep 2023 21:23:35 -0700 (PDT)
-X-Received: by 2002:a05:6a20:1604:b0:14c:d494:77c5 with SMTP id l4-20020a056a20160400b0014cd49477c5mr3490145pzj.13.1695961415398;
-        Thu, 28 Sep 2023 21:23:35 -0700 (PDT)
-Return-Path: <gshan@redhat.com>
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
-        by smtp.gmail.com with ESMTPSA id p7-20020a170902e74700b001bf6ea340b3sm15851672plf.116.2023.09.28.21.23.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 28 Sep 2023 21:23:34 -0700 (PDT)
-Message-ID: <ddbc526e-bba3-6b93-753f-6ba3de183755@redhat.com>
-Date: Fri, 29 Sep 2023 14:23:21 +1000
+ s=mimecast20190719; t=1695963537;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dItL0TvXfbuTtKqxkuHNARbrBHBLRVsgwGWFCicycY8=;
+ b=Ih4zLNNnqCnALvpPimAt9reZW7q2QoGh/tlAnMg7kKY/1MJJYD64Y8pebOg7KaKQ6EaQnC
+ O8ShkQ4ujIJBZDawuFHOxrC7uKngzsXQoI7hfVIxZH4B/h5NP7zwsfKM/9AFEBO22dQuZW
+ IVzMZ+dVtKhGY2ocVddQtDpbP02Tu1M=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-670--jMXBCxKNAu6iXwX-Pedjg-1; Fri, 29 Sep 2023 00:58:52 -0400
+X-MC-Unique: -jMXBCxKNAu6iXwX-Pedjg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6431F3C01BB8;
+ Fri, 29 Sep 2023 04:58:52 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 368AA2026D4B;
+ Fri, 29 Sep 2023 04:58:51 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id AF7F521E6904; Fri, 29 Sep 2023 06:58:50 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-block@nongnu.org,  qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,  David Gibson
+ <david@gibson.dropbear.id.au>
+Subject: Re: [PATCH v2 20/22] sysemu/device_tree: Clean up local variable
+ shadowing
+References: <20230904161235.84651-1-philmd@linaro.org>
+ <20230904161235.84651-21-philmd@linaro.org>
+Date: Fri, 29 Sep 2023 06:58:50 +0200
+In-Reply-To: <20230904161235.84651-21-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 4 Sep 2023 18:12:32
+ +0200")
+Message-ID: <87o7hllgmt.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH RFC V2 35/37] hw/arm: Support hotplug capability check
- using _OSC method
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
- ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
- mst@redhat.com, rafael@kernel.org, borntraeger@linux.ibm.com,
- alex.bennee@linaro.org, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, lixianglai@loongson.cn
-References: <20230926100436.28284-1-salil.mehta@huawei.com>
- <20230926103654.34424-1-salil.mehta@huawei.com>
- <20230926103654.34424-4-salil.mehta@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230926103654.34424-4-salil.mehta@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: +tJ1zjVp8aFv
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TqcwN/6diUrK
 
-Hi Salil,
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-On 9/26/23 20:36, Salil Mehta wrote:
-> Physical CPU hotplug results in (un)setting of ACPI _STA.Present bit. AARCH64
-> platforms do not support physical CPU hotplug. Virtual CPU hotplug support being
-> implemented toggles ACPI _STA.Enabled Bit to achieve hotplug functionality. This
-> is not same as physical CPU hotplug support.
-> 
-> In future, if ARM architecture supports physical CPU hotplug then the current
-> design of virtual CPU hotplug can be used unchanged. Hence, there is a need for
-> firmware/VMM/Qemu to support evaluation of platform wide capabilitiy related to
-> the *type* of CPU hotplug support present on the platform. OSPM might need this
-> during boot time to correctly initialize the CPUs and other related components
-> in the kernel.
-> 
-> NOTE: This implementation will be improved to add the support of *query* in the
-> subsequent versions. This is very minimal support to assist kernel.
-> 
-> ASL for the implemented _OSC method:
-> 
-> Method (_OSC, 4, NotSerialized)  // _OSC: Operating System Capabilities
-> {
->      CreateDWordField (Arg3, Zero, CDW1)
->      If ((Arg0 == ToUUID ("0811b06e-4a27-44f9-8d60-3cbbc22e7b48") /* Platform-wide Capabilities */))
->      {
->          CreateDWordField (Arg3, 0x04, CDW2)
->          Local0 = CDW2 /* \_SB_._OSC.CDW2 */
->          If ((Arg1 != One))
->          {
->              CDW1 |= 0x08
->          }
-> 
->          Local0 &= 0x00800000
->          If ((CDW2 != Local0))
->          {
->              CDW1 |= 0x10
->          }
-> 
->          CDW2 = Local0
->      }
->      Else
->      {
->          CDW1 |= 0x04
->      }
-> 
->      Return (Arg3)
-> }
-> 
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Fix:
+>
+>   hw/mips/boston.c:472:5: error: declaration shadows a local variable [-W=
+error,-Wshadow]
+>     qemu_fdt_setprop_cells(fdt, name, "reg", reg_base, reg_size);
+>     ^
+>   include/sysemu/device_tree.h:129:13: note: expanded from macro 'qemu_fd=
+t_setprop_cells'
+>         int i;
+>             ^
+>   hw/mips/boston.c:461:9: note: previous declaration is here
+>     int i;
+>         ^
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
->   hw/arm/virt-acpi-build.c | 52 ++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 52 insertions(+)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index cbccd2ca2d..377450dd16 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -861,6 +861,55 @@ static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
->       build_fadt(table_data, linker, &fadt, vms->oem_id, vms->oem_table_id);
->   }
->   
-> +static void build_virt_osc_method(Aml *scope, VirtMachineState *vms)
-> +{
-> +    Aml *if_uuid, *else_uuid, *if_rev, *if_caps_masked, *method;
-> +    Aml *a_cdw1 = aml_name("CDW1");
-> +    Aml *a_cdw2 = aml_local(0);
-> +
-> +    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
-> +    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
-> +
-> +    /* match UUID */
-> +    if_uuid = aml_if(aml_equal(
-> +        aml_arg(0), aml_touuid("0811B06E-4A27-44F9-8D60-3CBBC22E7B48")));
-> +
-> +    aml_append(if_uuid, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
-> +    aml_append(if_uuid, aml_store(aml_name("CDW2"), a_cdw2));
-> +
-> +    /* check unknown revision in arg(1) */
-> +    if_rev = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
-> +    /* set revision error bits,  DWORD1 Bit[3] */
-> +    aml_append(if_rev, aml_or(a_cdw1, aml_int(0x08), a_cdw1));
-> +    aml_append(if_uuid, if_rev);
-> +
-> +    /*
-> +     * check support for vCPU hotplug type(=enabled) platform-wide capability
-> +     * in DWORD2 as sepcified in the below ACPI Specification ECR,
-> +     *  # https://bugzilla.tianocore.org/show_bug.cgi?id=4481
-> +     */
-> +    if (vms->acpi_dev) {
-> +        aml_append(if_uuid, aml_and(a_cdw2, aml_int(0x800000), a_cdw2));
-> +        /* check if OSPM specified hotplug capability bits were masked */
-> +        if_caps_masked = aml_if(aml_lnot(aml_equal(aml_name("CDW2"), a_cdw2)));
-> +        aml_append(if_caps_masked, aml_or(a_cdw1, aml_int(0x10), a_cdw1));
-> +        aml_append(if_uuid, if_caps_masked);
-> +    }
-> +    aml_append(if_uuid, aml_store(a_cdw2, aml_name("CDW2")));
-> +
-> +    aml_append(method, if_uuid);
-> +    else_uuid = aml_else();
-> +
-> +    /* set unrecognized UUID error bits, DWORD1 Bit[2] */
-> +    aml_append(else_uuid, aml_or(a_cdw1, aml_int(4), a_cdw1));
-> +    aml_append(method, else_uuid);
-> +
-> +    aml_append(method, aml_return(aml_arg(3)));
-> +    aml_append(scope, method);
-> +
-> +    return;
-> +}
-> +
+>  include/sysemu/device_tree.h | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+>
+> diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+> index ca5339beae..8eab395934 100644
+> --- a/include/sysemu/device_tree.h
+> +++ b/include/sysemu/device_tree.h
+> @@ -126,10 +126,8 @@ int qemu_fdt_add_path(void *fdt, const char *path);
+>  #define qemu_fdt_setprop_cells(fdt, node_path, property, ...)           =
+      \
+>      do {                                                                =
+      \
+>          uint32_t qdt_tmp[] =3D { __VA_ARGS__ };                         =
+        \
+> -        int i;                                                          =
+      \
+> -                                                                        =
+      \
+> -        for (i =3D 0; i < ARRAY_SIZE(qdt_tmp); i++) {                   =
+        \
+> -            qdt_tmp[i] =3D cpu_to_be32(qdt_tmp[i]);                     =
+        \
+> +        for (unsigned i_ =3D 0; i_ < ARRAY_SIZE(qdt_tmp); i_++) {       =
+        \
+> +            qdt_tmp[i_] =3D cpu_to_be32(qdt_tmp[i_]);                   =
+        \
+>          }                                                               =
+      \
+>          qemu_fdt_setprop(fdt, node_path, property, qdt_tmp,             =
+      \
+>                           sizeof(qdt_tmp));                              =
+      \
 
-The check on vms->acpi_dev seems not enough. We may still need to check
-mc->has_hotpluggable_cpus and vms->gic_version etc. Besides, the "return"
-at end of the function isn't needed.
+You don't just rename the variable, but also adjust its type.  When
+we're dealing with at a huge changeset like the tree-wide -Wshadow=3Dlocal
+cleanup, I prefer to keep changes minimal to ease review as much as
+possible.  But it's sunk cost now, so
 
->   /* DSDT */
->   static void
->   build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> @@ -894,6 +943,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->       } else {
->           acpi_dsdt_add_cpus(scope, vms);
->       }
-> +
-> +    build_virt_osc_method(scope, vms);
-> +
->       acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
->                          (irqmap[VIRT_UART] + ARM_SPI_BASE));
->       if (vmc->acpi_expose_flash) {
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
-Thanks,
-Gavin

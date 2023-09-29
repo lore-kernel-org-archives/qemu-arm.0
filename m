@@ -1,112 +1,112 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp3366634ejc;
-        Fri, 29 Sep 2023 09:16:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH6xg/+Xga9vvMQ3IfYyIqTkOkLYTMk9FS4FSHY4/HWQKufYxbr6D0GSAY268ythE1h+1El
-X-Received: by 2002:a9d:6a03:0:b0:6bf:2476:a97e with SMTP id g3-20020a9d6a03000000b006bf2476a97emr5054131otn.5.1696004193795;
-        Fri, 29 Sep 2023 09:16:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696004193; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp3367191ejc;
+        Fri, 29 Sep 2023 09:17:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFnUlYeUbvlBfwxCg5ALk1WLM5W991L35nyB7O/wn2845PQsyo5TJ+b4DTkT+Kk0HRazZPb
+X-Received: by 2002:a05:620a:2591:b0:770:e72b:82c with SMTP id x17-20020a05620a259100b00770e72b082cmr4652050qko.29.1696004241310;
+        Fri, 29 Sep 2023 09:17:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696004241; cv=none;
         d=google.com; s=arc-20160816;
-        b=YX9yLElZcnJ4aH17pPGHp1zfXPzV8aT8sEkpcs6rWyX+EwGFmOULJjZ6kYspewalfR
-         Lc3+sZsTrRangNpdnu06teElSp0yrjnrt4ruZdaLBt9teSkd7QdcAtSN14XXbqeVYXgo
-         mETWA4/d2VV66jfpp4A6As6u1Z6UvVlztFCbj7Ji9JVMfioVVKvyOFQQ4yHJWJbdAAM8
-         M/4QLy7MWG2NltshGqwfxBToBKyN2AxW0SPHlfZSm+rJz1/vxUNblaPzfUMy19Qhy2aY
-         CqL2AvTa028E2Jk0JF+OBya1LUY1GB6dYT9o2khf+3DsparAG2fWk6Bm9MNp7r5Y72gu
-         VB8A==
+        b=Sc5DQ7OCX9/UjyoUJ+MMAaLWd5kbgtHPUJCyWJ1WWvF2DpfoTLnJjgZcFK7Wr3WMOF
+         uBhE1uLaUxTGdRnra3Z/Xa5duTzjamaqL2ywRXVUJXKjhyfPVfhihWsTB5AlTTzyEovZ
+         ZLbTOW706IsyxxSlAD0DLCXqwor/hxALaEqEV6g8TOxt6+ZPm9AMrQ2IpPnQa8t1neBl
+         /ky0eIo4LAx6WMn9CSWOU2wZDTgSBsL45kFjOVkXAo/TeEj9SUcI2AomkcZpRVr2VkKJ
+         +CDGZV7Ym/ODZIXNgtQcsTyNHKKHLgSrjwD0nknSyZ4G2a6iiqRVPZHfg4hge6C7yA5U
+         rDDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=XmjgxynS7T2huqwYRCz4Z4N+aHQaM/GLyfynKvGw/lc=;
+        bh=xh1o3yh9k8s8Du3ioGU6aZkjuIl2+uYmVsN67dgAZrQ=;
         fh=bFpS87vmp7mzhl4ICK4mDM62TwFUbgTYVuM7QVH8Hes=;
-        b=PV3uokKdWyj7XsENX2Iw27vOdQlL0A1yCQAtGR6JSurJnUij4OLcWwSaax4E9BmdPd
-         7KS7Da57fM+5kRKGZAK6h+NuQmmLZfGsCp39GQEfNo+ncQRpnMLanJzneGQKzwwaBt5r
-         w2jg1ZGB7sTqQdkNrNK9aTeqx2V8aTO7WHSrfhXaWYDFgbmGYNlciZVYgVrbFVGbE1Uy
-         gH4rKcRfm7Aapopv/4YANuIJNngAjVCjLhv3CSHVGyzJX8oBWNPoMbUmdIGCcSBI30wl
-         ZpDCmcaR2Lcm8GyGaC8rFQ002d8zgYiX/wXnkv4Au68U8pCPlf408CuvZ8kwviL8amw1
-         EWlQ==
+        b=FEYPdNWi7HuvbSoYzSGs/wRFpUJlNs/RRbXs+M44UD4LwvGVR+4y1ZixU1kf1Oyp/D
+         /nJN6upmt0BMbSW25Go17yLBNAHz4f8uGSlCbUjgWgjooZXEjrz33zK2rCLcoNTqXrFh
+         qdId9cyMhyhAW4gNWqJMPqZt5cb1V2n5v/D/PTI2Oq1VZ3SH04ilnobdhu2Txy0bd3Pi
+         PxX4LMqWWruzWkIj4PwzIUQeURsnZ8KWY5j39lOzKyUQZ+p904or5PjX8Tca7wz4MudH
+         mBkpmbmmOL3TF1590U7jR+0QkXKIgqx6LUyncAnLXMywCSmLxDokbwrVnCHKp8le8w2H
+         Fkrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uWWaYnTb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sz3a+wWQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x9-20020a0ce0c9000000b0064df3c750b2si2520495qvk.335.2023.09.29.09.16.33
+        by mx.google.com with ESMTPS id p5-20020a05620a056500b0077411b34546si9205085qkp.243.2023.09.29.09.17.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Sep 2023 09:16:33 -0700 (PDT)
+        Fri, 29 Sep 2023 09:17:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uWWaYnTb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sz3a+wWQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qmG9k-0002IM-Ie; Fri, 29 Sep 2023 12:15:56 -0400
+	id 1qmGAm-00032W-Kp; Fri, 29 Sep 2023 12:17:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qmG9f-0002Bl-HT
- for qemu-arm@nongnu.org; Fri, 29 Sep 2023 12:15:55 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1qmGAe-0002ww-0i
+ for qemu-arm@nongnu.org; Fri, 29 Sep 2023 12:16:52 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qmG9b-00068L-Ru
- for qemu-arm@nongnu.org; Fri, 29 Sep 2023 12:15:50 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-40652e570d9so19402785e9.1
- for <qemu-arm@nongnu.org>; Fri, 29 Sep 2023 09:15:44 -0700 (PDT)
+ id 1qmGAZ-0006Km-2c
+ for qemu-arm@nongnu.org; Fri, 29 Sep 2023 12:16:50 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-3231d67aff2so10674656f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Sep 2023 09:16:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696004143; x=1696608943; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696004205; x=1696609005; darn=nongnu.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=XmjgxynS7T2huqwYRCz4Z4N+aHQaM/GLyfynKvGw/lc=;
- b=uWWaYnTbLA3yZNej1pqHX66LR0BH5Ty42UPqHXrogjS5qc4XxS6BXm/whlsizx6RMf
- IVzWbyBtligB/tDuG/KEQIatV28dPr8RnS0FEmLCnqptfMsXwSQleL8Xjic6jXNwc74h
- 9FSh6Qbaa4Cxpz5yzFxcPpdV2SFzSn8NcJHmytfPAOOy/sZj4IUtfEyDZRsGg+Vq/UNu
- YRbuDhqXCDvixvyz2yiL5PHWBPC4eq+j364z2CvEJJwfc6iu1gIXITq7e4WcYEGhdJgw
- M7ZbQKdR/G7zrp3jLYpbTY1a8022PgM/ewaejvcSipkBTUFZ+hmIohnlunpcrH29kJMD
- QE0g==
+ bh=xh1o3yh9k8s8Du3ioGU6aZkjuIl2+uYmVsN67dgAZrQ=;
+ b=sz3a+wWQC0wJdUYiI3JrdQ8uQAIsTJTdvWZiXO2w+0VLZZUTgGfD+KfsO5i67Bto49
+ SwSzcoaWyIMQG5B6t/WWSPf/BN92YsBtQApD1UDXnMXNMzgFEiTVAUF7YwKuDoFK9hOL
+ CT5DGyZc6JGGWxdAVlOn4IRKjO8y36RpmyvDOlVnV+Gtd/UbZzTjg75dRn2nNeXZ+sGB
+ 2XYXsaO2bPt5OOjiphk+97/wRHvAPz5RMmr+cqvcJW+KqMAyNKzc8kzKo3HbZuKrtMHc
+ TMNPoM+YFakSyYQYK84mGY7UzGSh3ZNX8+B5QUx9OUeG+Jw1ERU7kKGV2jNmkIbrvkIV
+ rfEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696004143; x=1696608943;
+ d=1e100.net; s=20230601; t=1696004205; x=1696609005;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XmjgxynS7T2huqwYRCz4Z4N+aHQaM/GLyfynKvGw/lc=;
- b=kgYIr2dYf3vP7iIqYkItw0d0ZDUXSiZaFi/a9WQ2k9dnYytObIuDjhCqATXJMOSZOt
- QOUeAqDq1fcMG2APoWsMBJFwAosRkmROXFniSaocuJKA6dyq4dyQ5IYJzu1oRQybvGWU
- eIhNugyyIbegPw8/1EERLvR0E+pFTbgBPjW3NN3g6hO1VEsEiDvotCvZ7jEq4rtdpRL8
- Qk/QycatGTuT35qd5W4LmuPUL8TWBkB9AmEPHrTXbKr/IbVpEZlQGxMe+aucc8r5JfhK
- QxHkiKWvAXzOilsoj5VqFKlERXOjdO9QlaM4j0alcG/khZKIEE8nvOL5p/3vj6dSqYkL
- Frsg==
-X-Gm-Message-State: AOJu0YyY6RoBeC4KLgmVJd3f7eAYMRBu3i0DI9IWItHAcy6u1JwuZJNp
- /u2ghojTvhYfufBqcz4H9VWxfg==
-X-Received: by 2002:a05:600c:3b0e:b0:406:53ab:a9af with SMTP id
- m14-20020a05600c3b0e00b0040653aba9afmr4128189wms.10.1696004143361; 
- Fri, 29 Sep 2023 09:15:43 -0700 (PDT)
+ bh=xh1o3yh9k8s8Du3ioGU6aZkjuIl2+uYmVsN67dgAZrQ=;
+ b=u2P8+C5HYWBaoZNgwXazEgL2q5wn2o7/MXEFf52VzrCgpgrudRcISlwJzz4mGIt+qL
+ vXTlS5nfwkwnqM3IPB7cdt/mPZo6A8QMI2NPadMrwoGmELsFqQpY+SjLNqu7R556BYcr
+ UR9/q/ruvhVPnug13hU2jykBZ7N2mEilK4zSch8RG5TcXMAQ1k0Im4hbcjE90VNygEvq
+ GKOSQ2h2s6y2wYtyfwuNwl67i1pgC1nnaGwNTnB4nKKQ3ES18Zvrkz57Q4oXlPSRqsMw
+ xKaStsyyObSGzBlszV8BgN/ZLubRYDfRjNglSVOEBS7Ub0Yh6iGfXHhNe1Jo0+IhKCZa
+ o8VA==
+X-Gm-Message-State: AOJu0YykC+8jt60z67UZNUD7dmVBUvowgIWiF5kYlpu43F2EcgV91gTJ
+ NvRB1bwnKbxfn6lP1H1uqywXzQ==
+X-Received: by 2002:a5d:460a:0:b0:317:57f0:fae with SMTP id
+ t10-20020a5d460a000000b0031757f00faemr4026677wrq.63.1696004205163; 
+ Fri, 29 Sep 2023 09:16:45 -0700 (PDT)
 Received: from myrica ([2a02:c7c:7290:b00:fd32:2b31:6755:400c])
  by smtp.gmail.com with ESMTPSA id
- o14-20020a05600c4fce00b004065d67c3c9sm1666582wmq.8.2023.09.29.09.15.42
+ m14-20020a5d64ae000000b0031aca6cc69csm11631083wrp.2.2023.09.29.09.16.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Sep 2023 09:15:42 -0700 (PDT)
-Date: Fri, 29 Sep 2023 17:15:47 +0100
+ Fri, 29 Sep 2023 09:16:44 -0700 (PDT)
+Date: Fri, 29 Sep 2023 17:16:49 +0100
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  alex.williamson@redhat.com, clg@redhat.com, mst@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
  david@redhat.com, philmd@linaro.org
-Subject: Re: [PATCH v2 07/12] virtio-iommu: Implement set_iova_ranges()
- callback
-Message-ID: <20230929161547.GB2957297@myrica>
+Subject: Re: [PATCH v2 09/12] util/reserved-region: Add new ReservedRegion
+ helpers
+Message-ID: <20230929161649.GC2957297@myrica>
 References: <20230913080423.523953-1-eric.auger@redhat.com>
- <20230913080423.523953-8-eric.auger@redhat.com>
+ <20230913080423.523953-10-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230913080423.523953-8-eric.auger@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x331.google.com
+In-Reply-To: <20230913080423.523953-10-eric.auger@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,126 +128,188 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wLtubzMauAEQ
+X-TUID: AHopPgLV461Y
 
-On Wed, Sep 13, 2023 at 10:01:42AM +0200, Eric Auger wrote:
-> The implementation populates the array of per IOMMUDevice
-> host reserved regions.
-> 
-> It is forbidden to have conflicting sets of host IOVA ranges
-> to be applied onto the same IOMMU MR (implied by different
-> host devices).
+On Wed, Sep 13, 2023 at 10:01:44AM +0200, Eric Auger wrote:
+> Introduce resv_region_list_insert() helper which inserts
+> a new ReservedRegion into a sorted list of reserved region.
+> In case of overlap, the new region has higher priority and
+> hides the existing overlapped segments. If the overlap is
+> partial, new regions are created for parts which are not
+> overlapped. The new region has higher priority independently
+> on the type of the regions.
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
 > ---
+>  include/qemu/reserved-region.h | 32 ++++++++++++
+>  util/reserved-region.c         | 94 ++++++++++++++++++++++++++++++++++
+>  util/meson.build               |  1 +
+>  3 files changed, 127 insertions(+)
+>  create mode 100644 include/qemu/reserved-region.h
+>  create mode 100644 util/reserved-region.c
 > 
-> v1 -> v2:
-> - Forbid conflicting sets of host resv regions
-> ---
->  include/hw/virtio/virtio-iommu.h |  2 ++
->  hw/virtio/virtio-iommu.c         | 48 ++++++++++++++++++++++++++++++++
->  2 files changed, 50 insertions(+)
-> 
-> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
-> index 70b8ace34d..31b69c8261 100644
-> --- a/include/hw/virtio/virtio-iommu.h
-> +++ b/include/hw/virtio/virtio-iommu.h
-> @@ -40,6 +40,8 @@ typedef struct IOMMUDevice {
->      MemoryRegion root;          /* The root container of the device */
->      MemoryRegion bypass_mr;     /* The alias of shared memory MR */
->      GList *resv_regions;
-> +    Range *host_resv_regions;
-> +    uint32_t nr_host_resv_regions;
->  } IOMMUDevice;
->  
->  typedef struct IOMMUPciBus {
-> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-> index ea359b586a..ed2df5116f 100644
-> --- a/hw/virtio/virtio-iommu.c
-> +++ b/hw/virtio/virtio-iommu.c
-> @@ -20,6 +20,7 @@
->  #include "qemu/osdep.h"
->  #include "qemu/log.h"
->  #include "qemu/iov.h"
+> diff --git a/include/qemu/reserved-region.h b/include/qemu/reserved-region.h
+> new file mode 100644
+> index 0000000000..8e6f0a97e2
+> --- /dev/null
+> +++ b/include/qemu/reserved-region.h
+> @@ -0,0 +1,32 @@
+> +/*
+> + * QEMU ReservedRegion helpers
+> + *
+> + * Copyright (c) 2023 Red Hat, Inc.
+> + *
+> + * This program is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2 of the License, or (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef QEMU_RESERVED_REGION_H
+> +#define QEMU_RESERVED_REGION_H
+> +
+> +#include "exec/memory.h"
+> +
+> +/*
+> + * Insert a new region into a sorted list of reserved regions. In case
+> + * there is overlap with existing regions, the new added region has
+> + * higher priority and replaces the overlapped segment.
+> + */
+> +GList *resv_region_list_insert(GList *list, ReservedRegion *reg);
+> +
+> +#endif
+> diff --git a/util/reserved-region.c b/util/reserved-region.c
+> new file mode 100644
+> index 0000000000..bb26a6bed3
+> --- /dev/null
+> +++ b/util/reserved-region.c
+> @@ -0,0 +1,94 @@
+> +/*
+> + * QEMU ReservedRegion helpers
+> + *
+> + * Copyright (c) 2023 Red Hat, Inc.
+> + *
+> + * This program is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2 of the License, or (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
 > +#include "qemu/range.h"
->  #include "exec/target_page.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/virtio/virtio.h"
-> @@ -1158,6 +1159,52 @@ static int virtio_iommu_set_page_size_mask(IOMMUMemoryRegion *mr,
->      return 0;
->  }
->  
-> +static int virtio_iommu_set_iova_ranges(IOMMUMemoryRegion *mr,
-> +                                        uint32_t nr_ranges,
-> +                                        struct Range *iova_ranges,
-> +                                        Error **errp)
+> +#include "qemu/reserved-region.h"
+> +
+> +GList *resv_region_list_insert(GList *list, ReservedRegion *reg)
 > +{
-> +    IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
-> +    uint32_t nr_host_resv_regions;
-> +    Range *host_resv_regions;
-> +    int ret = -EINVAL;
+> +    ReservedRegion *resv_iter, *new_reg;
+> +    Range *r = &reg->range;
+> +    Range *range_iter;
+> +    GList *l;
 > +
-> +    if (!nr_ranges) {
-> +        return 0;
-> +    }
+> +    for (l = list; l ; ) {
+> +        resv_iter = (ReservedRegion *)l->data;
+> +        range_iter = &resv_iter->range;
 > +
-> +    if (sdev->host_resv_regions) {
-> +        range_inverse_array(nr_ranges, iova_ranges,
-> +                            &nr_host_resv_regions, &host_resv_regions,
-> +                            0, UINT64_MAX);
-> +        if (nr_host_resv_regions != sdev->nr_host_resv_regions) {
-> +            goto error;
-> +        }
-> +        for (int i = 0; i < nr_host_resv_regions; i++) {
-> +            Range *new = &host_resv_regions[i];
-> +            Range *existing = &sdev->host_resv_regions[i];
-> +
-> +            if (!range_contains_range(existing, new)) {
-> +                goto error;
+> +        /* Skip all list elements strictly less than range to add */
+> +        if (range_compare(range_iter, r) < 0) {
+> +            l = l->next;
+> +        } else if (range_compare(range_iter, r) > 0) {
+> +            return g_list_insert_before(list, l, reg);
+> +        } else { /* there is an operlap */
+
+I guess this could just be 'else if', and the whole block below
+unindented. But I don't know if the function would look less or more scary :)
+
+> +            if (range_contains_range(r, range_iter)) {
+> +                /* new range contains current item, simply remove this latter */
+> +                GList *prev = l->prev;
+> +                g_free(l->data);
+> +                list = g_list_delete_link(list, l);
+> +                if (prev) {
+
+These four lines could just be 'l = prev->next'.
+
+> +                    l = prev;
+> +                    if (l) {
+> +                        l = l->next;
+> +                    }
+> +                } else {
+> +                    l = list;
+> +                }
+> +            } else if (range_contains_range(range_iter, r)) {
+> +                /* new region is included in the current region */
+> +                if (range_lob(range_iter) == range_lob(r)) {
+> +                    /* adjacent on the left side, derives into 2 regions */
+> +                    range_set_bounds(range_iter, range_upb(r) + 1,
+> +                                     range_upb(range_iter));
+> +                    return g_list_insert_before(list, l, reg);
+> +                } else if (range_upb(range_iter) == range_upb(r)) {
+> +                    /* adjacent on the right side, derives into 2 regions */
+> +                    range_set_bounds(range_iter, range_lob(range_iter),
+> +                                     range_lob(r) - 1);
+> +                    l = l->next;
+> +                } else {
+> +                    uint64_t lob = range_lob(range_iter);
+> +                    /*
+> +                     * the new range is in the middle of an existing one,
+> +                     * split this latter into 3 regs instead
+> +                     */
+> +                    range_set_bounds(range_iter, range_upb(r) + 1,
+> +                                     range_upb(range_iter));
+> +                    new_reg = g_new0(ReservedRegion, 1);
+> +                    new_reg->type = resv_iter->type;
+> +                    range_set_bounds(&new_reg->range,
+> +                                     lob, range_lob(r) - 1);
+> +                    list = g_list_insert_before(list, l, new_reg);
+> +                    return g_list_insert_before(list, l, reg);
+> +                }
+> +            } else if (range_lob(r) < range_lob(range_iter)) {
+> +                range_set_bounds(range_iter, range_upb(r) + 1,
+> +                                 range_upb(range_iter));
+> +                return g_list_insert_before(list, l, reg);
+> +            } else { /* intersection on the upper range */
+> +                range_set_bounds(range_iter, range_lob(range_iter),
+> +                                 range_lob(r) - 1);
+> +                l = l->next;
 > +            }
-> +        }
-> +        ret = 0;
-> +        goto out;
+> +        } /* overlap */
 > +    }
-> +
-> +    range_inverse_array(nr_ranges, iova_ranges,
-> +                        &sdev->nr_host_resv_regions, &sdev->host_resv_regions,
-> +                        0, UINT64_MAX);
+> +    return g_list_append(list, reg);
 
-Can set_iova_ranges() only be called for the first time before the guest
-has had a chance to issue a probe request?  Maybe we could add a
-sanity-check that the guest hasn't issued a probe request yet, since we
-can't notify about updated reserved regions.
+Looks correct overall
 
-I'm probably misremembering because I thought Linux set up IOMMU contexts
-(including probe requests) before enabling DMA master in PCI which cause
-QEMU VFIO to issue these calls. I'll double check.
+Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-Thanks,
-Jean
-
-> +
-> +    return 0;
-> +error:
-> +    error_setg(errp, "IOMMU mr=%s Conflicting host reserved regions set!",
-> +               mr->parent_obj.name);
-> +out:
-> +    g_free(host_resv_regions);
-> +    return ret;
 > +}
 > +
->  static void virtio_iommu_system_reset(void *opaque)
->  {
->      VirtIOIOMMU *s = opaque;
-> @@ -1453,6 +1500,7 @@ static void virtio_iommu_memory_region_class_init(ObjectClass *klass,
->      imrc->replay = virtio_iommu_replay;
->      imrc->notify_flag_changed = virtio_iommu_notify_flag_changed;
->      imrc->iommu_set_page_size_mask = virtio_iommu_set_page_size_mask;
-> +    imrc->iommu_set_iova_ranges = virtio_iommu_set_iova_ranges;
->  }
->  
->  static const TypeInfo virtio_iommu_info = {
+> diff --git a/util/meson.build b/util/meson.build
+> index c4827fd70a..eb677b40c2 100644
+> --- a/util/meson.build
+> +++ b/util/meson.build
+> @@ -51,6 +51,7 @@ util_ss.add(files('qdist.c'))
+>  util_ss.add(files('qht.c'))
+>  util_ss.add(files('qsp.c'))
+>  util_ss.add(files('range.c'))
+> +util_ss.add(files('reserved-region.c'))
+>  util_ss.add(files('stats64.c'))
+>  util_ss.add(files('systemd.c'))
+>  util_ss.add(files('transactions.c'))
 > -- 
 > 2.41.0
 > 

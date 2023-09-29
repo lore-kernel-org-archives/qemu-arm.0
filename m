@@ -1,91 +1,91 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2911357ejc;
-        Thu, 28 Sep 2023 17:21:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHfX1LumJzgVliD3p5tzsq0QazIA7QaWarA3bKPnYMIyR+k1syTpUOmix2uhgpFMX23zCbA
-X-Received: by 2002:a05:620a:24c5:b0:774:19a4:117a with SMTP id m5-20020a05620a24c500b0077419a4117amr2990465qkn.19.1695946875115;
-        Thu, 28 Sep 2023 17:21:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695946875; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp2914868ejc;
+        Thu, 28 Sep 2023 17:31:05 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEGZnaxg7SowDl2S9P+yqqeosfO29umz8/gn7L7wzyZm/5eAtbJ7XBrYgTN2PNI/XQXPhUA
+X-Received: by 2002:ac8:5789:0:b0:417:9cae:b43 with SMTP id v9-20020ac85789000000b004179cae0b43mr3155614qta.35.1695947465176;
+        Thu, 28 Sep 2023 17:31:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695947465; cv=none;
         d=google.com; s=arc-20160816;
-        b=m8l0F1mIay+BUXt4iBxdDQaEejAsRtld7bCL7pRdY/1jXjd7q8u31elO4+Zpj66e5p
-         t72aomX54r/NyYiJx05EMB7taXBj4BnvWjML0hJDSceSm8oT3BJko2uSM6yz+W42OY6P
-         hqsAloxifspX7xqH6NVtrVimModlIiPdbqaYBcdNn1btApsN77wFkSJZFHNbwPCTzB2Q
-         NJjNqJRWeN09LGZlcBZZ/J9FZ5C8h4GQaDwl3h4J47GufQrpIIxir9rc9/hEgI1ixRih
-         Y4aDHuWuCpmsAUwD+HkWL1bxPmw6tvKs20iMckKQy9SO8HaJ/kRIGb3TPaPtomshkW3m
-         9yfw==
+        b=U+5af4jLrlZkoq7ec+w3FsiWFbj2US/eVQhoGAeaooNISY+TVSK54+OcRK9g/z+gVe
+         z2lf9kykvznTQRTy0qFONw61n2JxHMib7D08fw4dSXwTnVPZLsrjgPkEd0+W5lX/7yE2
+         euQS/AxHEZZINkE6MUEHWKh5E3X8WpuvLXPLlwCg4jSGzEhmWlyD+trW+aF+4920QNrD
+         oQNSolQxUkGJ7r2t3TIRt7hDyRvnzbRUwDsxXw2WJ0p6NRPF2+s7PaT0HFpu5iU3ud/0
+         FiACGUd/jqw+rEatFUrbSzeG8D0EoYThLQJwlwZPcWqJ6hqE4KZepUUXVWrMoUHDhj/W
+         nrrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=ZJB2BdDh4bjeaVK/Hf9SI83loGC9TjsnJn0/tRn5dKg=;
+        bh=1jON6KnKuRGTS+epyAPrMxGaBZT5dsCo52ZyZXffhw8=;
         fh=fO+ncAaxY0Wf5Oiu0zeLu9be5DWOx71LYjyGHoG8Yc0=;
-        b=CxOFZOOVuCqQLW1EdH7CWf3VerwIbcl9idaUrsnbyGoIThjTfQmym4et4qyinD+/ZK
-         CWkgakNDFH0x54a4CQP8UxMwm2Gyj/5pKIxrc+b/X/xKEYg2AOOANL5rVuncV9tqW3FV
-         2J26s4bk55y0Z1lKqG0pIFKCnYfZ4AVhy9GxW6tYzxBNfmfaRbpTh2zwxvLZz/JvFo3E
-         puu6GiwMlQ1YV8gCjQXtvAaDxj5bYkVe8xu3ftV8IWlLg35Wzr2tQlqc/ZKV92Uy22ld
-         Cpz1AmGmWeg7vMDgoXuQt/IMm107s3Mv4ViqQUBsX/6u4d+7v3J2HUenlUWozcURyjWP
-         Av3Q==
+        b=EMtsdISWr7abWV1LyJGBxxuVcjJi6/s2p2CNNPC8FLENW0KhoZNQXCfh/hvs1d8Ii7
+         RLA66q62Jc568h2N7j9RWZJokCNK3pQs9rHoUxzK5kwkp7R/OeXHUfn7rMINs72HIPfZ
+         k9IK2ZO21cd84bJnxPAEHprX5J4bRFJOD4GBCIXAshH/QZz2ngHzfWE938vDMWUoQ2M0
+         N0U1uyPpbXYLvY+jq+4l8Ngqm4DGRtzehTw1lmRn/zZhS2TFO0wDs6n/W33AyzGj+kIE
+         NQvNgi7JxaT1jx5032xKFBU6Cb6KS7/xxIp8ULVdGt03Dt61u13rP7j3MCUBsu8jlzlO
+         Mhlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="O/oBzgcp";
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GWGyiEcF;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id bk27-20020a05620a1a1b00b00767e30f501asi9634893qkb.402.2023.09.28.17.21.14
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id h10-20020a05620a284a00b0076d1fb570cbsi9572771qkp.742.2023.09.28.17.31.04
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Sep 2023 17:21:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Thu, 28 Sep 2023 17:31:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="O/oBzgcp";
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GWGyiEcF;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1695946874;
+	s=mimecast20190719; t=1695947464;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ZJB2BdDh4bjeaVK/Hf9SI83loGC9TjsnJn0/tRn5dKg=;
-	b=O/oBzgcp10CC5ZwHhKUjznf/aScWG4qFnUaMPEwN+T6UDD4y4MiZ4AP5/FEuPT+Jc7ARC2
-	NJKYON45TYHePTnIoD3IR+ugLv35YSWBCD3fyAhZodJPfmKW24HzWFtg+fw18e3dXekzgg
-	X/NSSXo/J783LPXCvlCRW2w3n9Vwx50=
-Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
- [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=1jON6KnKuRGTS+epyAPrMxGaBZT5dsCo52ZyZXffhw8=;
+	b=GWGyiEcFa28WBzG/SRmxhgJuzchlEVnop+gv6b1QmDmgCmfVpcw1PpvuWOIVldBjhrMY3m
+	ffRx5xrpn6qJTTOK4dKA7fz7Am96QaGXg2uvQgmRcj4hAc02v4rRQ6ALjSXvg5yczBE6BU
+	trj/TP3gD0aw7KNQdW3hSSzE6QBgV+I=
+Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
+ [209.85.210.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-351-42ML8Ii5P2Km_je45677ww-1; Thu, 28 Sep 2023 20:21:12 -0400
-X-MC-Unique: 42ML8Ii5P2Km_je45677ww-1
-Received: by mail-pj1-f70.google.com with SMTP id 98e67ed59e1d1-277616d8a01so106852a91.0
-        for <alex.bennee@linaro.org>; Thu, 28 Sep 2023 17:21:12 -0700 (PDT)
+ us-mta-252-AZ99rBABP5KTcUfBjNL4Qg-1; Thu, 28 Sep 2023 20:31:01 -0400
+X-MC-Unique: AZ99rBABP5KTcUfBjNL4Qg-1
+Received: by mail-pf1-f198.google.com with SMTP id d2e1a72fcca58-692b5134675so14196227b3a.2
+        for <alex.bennee@linaro.org>; Thu, 28 Sep 2023 17:31:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1695946871; x=1696551671;
+        d=1e100.net; s=20230601; t=1695947460; x=1696552260;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZJB2BdDh4bjeaVK/Hf9SI83loGC9TjsnJn0/tRn5dKg=;
-        b=G2gnho22JnhFFoJG41bkuvGNxkVtDGFYeBHRNgDy1SZ1qKpXWEvQqzNoL+9eDYYQpR
-         MYGOr2I3vqoWfvPjoXh80Q+yA0dvdsHM5fD8T3e6dBTwrbHdyZRbSlNwKiHE+a0VVxTz
-         mngMycxVf/lZa6Y0HxXTejcKtP/XSVZQPFauI4qQ75H1ps4bv2m9SPZTl+cj3r/Az1zy
-         D4qp69ibFhRFgZKOLW+jWahvhrTZNJZ2o7kkBdlv4kX1q79f8M97WJFUsp20ENeSC4i9
-         B99MZxDtkqGuOBGjGQngRCUFOej+Xc2NFc3U5kWtHT7POhhe2y2ufSdRaICt1ONYBJe/
-         fpNw==
-X-Gm-Message-State: AOJu0Yzx+e3QffkEaNXYDQYkQf9jEBg3rpBWnrtIrsWt0O6dPi3Hs6Sm
-	Hcuxi0xHCfMlyyoh0GjMwSbNhxq85Wi7Squo3PBCwr7wlIfeBZB11Ykxl4gPl/yKRLSMCsoV8Cl
-	jhbywa38bmfGffK/3
-X-Received: by 2002:a17:90a:e48:b0:274:a241:a7a8 with SMTP id p8-20020a17090a0e4800b00274a241a7a8mr4379703pja.0.1695946871179;
-        Thu, 28 Sep 2023 17:21:11 -0700 (PDT)
-X-Received: by 2002:a17:90a:e48:b0:274:a241:a7a8 with SMTP id p8-20020a17090a0e4800b00274a241a7a8mr4379645pja.0.1695946870581;
-        Thu, 28 Sep 2023 17:21:10 -0700 (PDT)
+        bh=1jON6KnKuRGTS+epyAPrMxGaBZT5dsCo52ZyZXffhw8=;
+        b=HR2z923Xrnv49xQcl6Kn3MsJP2oD66oDl7DXVYXoMuFANCqb43UPn5+2qWA0NLW2zt
+         cOIpjDSzytu8yjM7JMlOh0WJDmqYAIALyZkjZX17fNeN2SdHOwaVMxiPKHSNWG+GXjaG
+         RU/zCkf2AJ2j6BnjNVOOS5SccmLkHQrTgo8bymK0heCv5JBLoOxC6PjNvJNS4AZcXqAK
+         TwUhpNq8o17iNillkYGHeKeFjaS6rws7yLebRZfO67vmuRRtjgjogAeVWm81eFLUNc/w
+         3tZcu0m0cWUBoYfRA6VIdV0ClK5Anr0749/5DZuGjiXtheLOh+DsHEzFst+OJ8nwWzmj
+         UJmA==
+X-Gm-Message-State: AOJu0Yw287o1T+YegRvWZ14lz9COH9qSDfWd6WdPvf0E79PbbQLApef2
+	AKEo0u2G72D4fxp78tj4oEwtOUsQl5CRQiGnalAKOwTPE+EXmYo3v4Kwq8uiS1MyzaX2Ufs9CIr
+	x54rWUt53zrvC4D5k
+X-Received: by 2002:a05:6a21:3d8d:b0:140:a25:1c1d with SMTP id bj13-20020a056a213d8d00b001400a251c1dmr2898179pzc.51.1695947459911;
+        Thu, 28 Sep 2023 17:30:59 -0700 (PDT)
+X-Received: by 2002:a05:6a21:3d8d:b0:140:a25:1c1d with SMTP id bj13-20020a056a213d8d00b001400a251c1dmr2898156pzc.51.1695947459583;
+        Thu, 28 Sep 2023 17:30:59 -0700 (PDT)
 Return-Path: <gshan@redhat.com>
 Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
-        by smtp.gmail.com with ESMTPSA id mg11-20020a17090b370b00b002609cadc56esm142947pjb.11.2023.09.28.17.20.59
+        by smtp.gmail.com with ESMTPSA id 9-20020a17090a018900b002772faee740sm180884pjc.5.2023.09.28.17.30.48
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 28 Sep 2023 17:21:09 -0700 (PDT)
-Message-ID: <f18990cd-c211-4c23-aecb-0aec076bc19b@redhat.com>
-Date: Fri, 29 Sep 2023 10:20:56 +1000
+        Thu, 28 Sep 2023 17:30:59 -0700 (PDT)
+Message-ID: <4d8980ac-f402-60d4-fe52-787815af8a7d@redhat.com>
+Date: Fri, 29 Sep 2023 10:30:45 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH RFC V2 25/37] arm/virt: Add/update basic hot-(un)plug
- framework
+Subject: Re: [PATCH RFC V2 29/37] arm/virt: Update the guest(via GED) about
+ CPU hot-(un)plug events
 To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
@@ -101,31 +101,27 @@ Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
  wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
  maobibo@loongson.cn, lixianglai@loongson.cn
 References: <20230926100436.28284-1-salil.mehta@huawei.com>
- <20230926100436.28284-26-salil.mehta@huawei.com>
+ <20230926100436.28284-30-salil.mehta@huawei.com>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230926100436.28284-26-salil.mehta@huawei.com>
+In-Reply-To: <20230926100436.28284-30-salil.mehta@huawei.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: M4fftxAsguHa
+X-TUID: mcFZvwaDrMI8
 
 Hi Salil,
 
 On 9/26/23 20:04, Salil Mehta wrote:
-> Add CPU hot-unplug hooks and update hotplug hooks with additional sanity checks
-> for use in hotplug paths.
+> During any vCPU hot-(un)plug, running guest VM needs to be intimated about the
+> new vCPU being added or request the deletion of the vCPU which is already part
+> of the guest VM. This is done using the ACPI GED event which eventually gets
+> demultiplexed to a CPU hotplug event and further to specific hot-(un)plug event
+> of a particular vCPU.
 > 
-> Note, Functional contents of the hooks(now left with TODO comment) shall be
-> gradually filled in the subsequent patches in an incremental approach to patch
-> and logic building which would be roughly as follows:
-> 1. (Un-)wiring of interrupts between vCPU<->GIC
-> 2. Sending events to Guest for hot-(un)plug so that guest can take appropriate
->     actions.
-> 3. Notifying GIC about hot-(un)plug action so that vCPU could be (un-)stitched
->     to the GIC CPU interface.
-> 4. Updating the Guest with Next boot info for this vCPU in the firmware.
+> This change adds the ACPI calls to the existing hot-(un)plug hooks to trigger
+> ACPI GED events from QEMU to guest VM.
 > 
 > Co-developed-by: Salil Mehta <salil.mehta@huawei.com>
 > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
@@ -133,195 +129,119 @@ On 9/26/23 20:04, Salil Mehta wrote:
 > Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 > ---
->   hw/arm/virt.c | 104 ++++++++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 104 insertions(+)
+>   hw/arm/virt.c | 33 ++++++++++++++++++++++++++++++---
+>   1 file changed, 30 insertions(+), 3 deletions(-)
 > 
 > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 3b068534a8..dce02136cb 100644
+> index b447e86fb6..6f5ee4a1c6 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
-> @@ -81,6 +81,7 @@
->   #include "hw/virtio/virtio-iommu.h"
->   #include "hw/char/pl011.h"
->   #include "qemu/guest-random.h"
-> +#include "qapi/qmp/qdict.h"
+> @@ -3157,6 +3157,7 @@ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+>       VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+>       MachineState *ms = MACHINE(hotplug_dev);
+>       CPUState *cs = CPU(dev);
+> +    Error *local_err = NULL;
+>       CPUArchId *cpu_slot;
 >   
->   #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->       static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-> @@ -2985,12 +2986,23 @@ static void virt_cpu_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+>       /* insert the cold/hot-plugged vcpu in the slot */
+> @@ -3169,12 +3170,20 @@ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+>        * plugged, guest is also notified.
+>        */
+>       if (vms->acpi_dev) {
+> -        /* TODO: update acpi hotplug state. Send cpu hotplug event to guest */
+> +        HotplugHandlerClass *hhc;
+> +        /* update acpi hotplug state and send cpu hotplug event to guest */
+> +        hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
+> +        hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
+> +        if (local_err) {
+> +            goto fail;
+> +        }
+>           /* TODO: register cpu for reset & update F/W info for the next boot */
+>       }
+>   
+>       cs->disabled = false;
+>       return;
+> +fail:
+> +    error_propagate(errp, local_err);
+>   }
+>   
+
+'fail' tag isn't needed since it's used for once. we can bail early:
+
+     if (local_err) {
+        error_propagate(errp, local_err);
+        return;
+     }
+
+>   static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
+> @@ -3182,8 +3191,10 @@ static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
+>   {
+>       MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
+>       VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +    HotplugHandlerClass *hhc;
+>       ARMCPU *cpu = ARM_CPU(dev);
+>       CPUState *cs = CPU(dev);
+> +    Error *local_err = NULL;
+>   
+>       if (!vms->acpi_dev || !dev->realized) {
+>           error_setg(errp, "GED does not exists or device is not realized!");
+> @@ -3202,9 +3213,16 @@ static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
+>           return;
+>       }
+>   
+> -    /* TODO: request cpu hotplug from guest */
+> +    /* request cpu hotplug from guest */
+> +    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
+> +    hhc->unplug_request(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
+> +    if (local_err) {
+> +        goto fail;
+> +    }
+>   
+>       return;
+> +fail:
+> +    error_propagate(errp, local_err);
+>   }
+>   
+
+Same as above, 'fail' tag isn't needed. Besides, 'return' isn't needed.
+
+>   static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
+> @@ -3212,7 +3230,9 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
 >   {
 >       VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
 >       MachineState *ms = MACHINE(hotplug_dev);
-> +    MachineClass *mc = MACHINE_GET_CLASS(ms);
->       ARMCPU *cpu = ARM_CPU(dev);
+> +    HotplugHandlerClass *hhc;
 >       CPUState *cs = CPU(dev);
+> +    Error *local_err = NULL;
 >       CPUArchId *cpu_slot;
->       int32_t min_cpuid = 0;
->       int32_t max_cpuid;
 >   
-> +    if (dev->hotplugged && !vms->acpi_dev) {
-> +        error_setg(errp, "GED acpi device does not exists");
-> +        return;
-> +    }
-> +
-> +    if (dev->hotplugged && !mc->has_hotpluggable_cpus) {
-> +        error_setg(errp, "CPU hotplug not supported on this machine");
-> +        return;
-> +    }
-> +
-
-I guess these can be combined to:
-
-        if (dev->hotplugged && (!mc->has_hotpluggable_cpus || !vms->acpi_dev)) {
-            error_setg(errp, "CPU hotplug not supported or GED ACPI device not exist");
-        }
-
-Besides, need we check (vms->gic_version == VIRT_GIC_VERSION_3)?
-
->       /* sanity check the cpu */
->       if (!object_dynamic_cast(OBJECT(cpu), ms->cpu_type)) {
->           error_setg(errp, "Invalid CPU type, expected cpu type: '%s'",
-> @@ -3039,6 +3051,22 @@ static void virt_cpu_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->       }
->       virt_cpu_set_properties(OBJECT(cs), cpu_slot, errp);
+>       if (!vms->acpi_dev || !dev->realized) {
+> @@ -3222,7 +3242,12 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
 >   
-> +    /*
-> +     * Fix the GIC for this new vCPU being plugged. The QOM CPU object for the
-> +     * new vCPU need to be updated in the corresponding QOM GICv3CPUState object
-> +     * We also need to re-wire the IRQs for this new CPU object. This update
-> +     * is limited to the QOM only and does not affects the KVM. Later has
-> +     * already been pre-sized with possible CPU at VM init time. This is a
-> +     * workaround to the constraints posed by ARM architecture w.r.t supporting
-> +     * CPU Hotplug. Specification does not exist for the later.
-> +     * This patch-up is required both for {cold,hot}-plugged vCPUs. Cold-inited
-> +     * vCPUs have their GIC state initialized during machvit_init().
-> +     */
-> +    if (vms->acpi_dev) {
-> +        /* TODO: update GIC about this hotplug change here */
-> +        /* TODO: wire the GIC<->CPU irqs */
-> +    }
-> +
-
-When looking at these 'TODO', it seems you need order the patches to make those
-preparatory patches ahead of this one. In this way, the 'TODO' can be avoided.
-
->       /*
->        * To give persistent presence view of vCPUs to the guest, ACPI might need
->        * to fake the presence of the vCPUs to the guest but keep them disabled.
-> @@ -3050,6 +3078,7 @@ static void virt_cpu_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->   static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->                             Error **errp)
->   {
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
->       MachineState *ms = MACHINE(hotplug_dev);
->       CPUState *cs = CPU(dev);
->       CPUArchId *cpu_slot;
-> @@ -3058,10 +3087,81 @@ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
 >       cpu_slot = virt_find_cpu_slot(ms, cs->cpu_index);
->       cpu_slot->cpu = OBJECT(dev);
 >   
-> +    /*
-> +     * Update the ACPI Hotplug state both for vCPUs being {hot,cold}-plugged.
-> +     * vCPUs can be cold-plugged using '-device' option. For vCPUs being hot
-> +     * plugged, guest is also notified.
-> +     */
-> +    if (vms->acpi_dev) {
-> +        /* TODO: update acpi hotplug state. Send cpu hotplug event to guest */
-> +        /* TODO: register cpu for reset & update F/W info for the next boot */
+> -    /* TODO: update the acpi cpu hotplug state for cpu hot-unplug */
+> +    /* update the acpi cpu hotplug state for cpu hot-unplug */
+> +    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
+> +    hhc->unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
+> +    if (local_err) {
+> +        goto fail;
 > +    }
-> +
-
-We needn't validate vms->acpi_dev again since it has been done in pre_plug().
-
->       cs->disabled = false;
+>   
+>       unwire_gic_cpu_irqs(vms, cs);
+>       virt_update_gic(vms, cs);
+> @@ -3236,6 +3261,8 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
+>       cs->disabled = true;
+>   
 >       return;
+> +fail:
+> +    error_propagate(errp, local_err);
 >   }
 >   
-> +static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
-> +                                    DeviceState *dev, Error **errp)
-> +{
-> +    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +    ARMCPU *cpu = ARM_CPU(dev);
-> +    CPUState *cs = CPU(dev);
-> +
-> +    if (!vms->acpi_dev || !dev->realized) {
-> +        error_setg(errp, "GED does not exists or device is not realized!");
-> +        return;
-> +    }
-> +
-> +    if (!mc->has_hotpluggable_cpus) {
-> +        error_setg(errp, "CPU hot(un)plug not supported on this machine");
-> +        return;
-> +    }
-> +
-> +    if (cs->cpu_index == first_cpu->cpu_index) {
-> +        error_setg(errp, "Boot CPU(id%d=%d:%d:%d:%d) hot-unplug not supported",
-> +                   first_cpu->cpu_index, cpu->socket_id, cpu->cluster_id,
-> +                   cpu->core_id, cpu->thread_id);
-> +        return;
-> +    }
-> +
-> +    /* TODO: request cpu hotplug from guest */
-> +
-> +    return;
-> +}
-> +
-> +static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
-> +                            Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +    MachineState *ms = MACHINE(hotplug_dev);
-> +    CPUState *cs = CPU(dev);
-> +    CPUArchId *cpu_slot;
-> +
-> +    if (!vms->acpi_dev || !dev->realized) {
-> +        error_setg(errp, "GED does not exists or device is not realized!");
-> +        return;
-> +    }
-> +
-> +    cpu_slot = virt_find_cpu_slot(ms, cs->cpu_index);
-> +
-> +    /* TODO: update the acpi cpu hotplug state for cpu hot-unplug */
-> +
-> +    /* TODO: unwire the gic-cpu irqs here */
-> +    /* TODO: update the GIC about this hot unplug change */
-> +
-> +    /* TODO: unregister cpu for reset & update F/W info for the next boot */
-> +
 
 Same as above.
 
-> +    qobject_unref(dev->opts);
-> +    dev->opts = NULL;
-> +
-> +    cpu_slot->cpu = NULL;
-> +    cs->disabled = true;
-> +
-> +    return;
-> +}
-> +
 >   static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->                                               DeviceState *dev, Error **errp)
->   {
-> @@ -3185,6 +3285,8 @@ static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
->       } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
->           virtio_md_pci_unplug_request(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev),
->                                        errp);
-> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-> +        virt_cpu_unplug_request(hotplug_dev, dev, errp);
->       } else {
->           error_setg(errp, "device unplug request for unsupported device"
->                      " type: %s", object_get_typename(OBJECT(dev)));
-> @@ -3198,6 +3300,8 @@ static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
->           virt_dimm_unplug(hotplug_dev, dev, errp);
->       } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
->           virtio_md_pci_unplug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
-> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-> +        virt_cpu_unplug(hotplug_dev, dev, errp);
->       } else {
->           error_setg(errp, "virt: device unplug for unsupported device"
->                      " type: %s", object_get_typename(OBJECT(dev)));
 
 Thanks,
 Gavin

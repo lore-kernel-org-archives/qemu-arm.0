@@ -1,127 +1,107 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp3041475ejc;
-        Thu, 28 Sep 2023 23:29:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHv+f3oAacwVaj2NG75jy7PKg8JUJiXcFm+qOp4MdmUQ8YJ6EncPctE6quMKxe/vaC6ZVUp
-X-Received: by 2002:a0c:aa5b:0:b0:656:5402:8d09 with SMTP id e27-20020a0caa5b000000b0065654028d09mr3158299qvb.4.1695968943753;
-        Thu, 28 Sep 2023 23:29:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1695968943; cv=none;
+Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp3046881ejc;
+        Thu, 28 Sep 2023 23:43:10 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IED0KVH37A17Z7Pk7Hmwn5BkmAOC4QDTrpIoCoudP8AnoY2vX6SdK1+2mw/KMq3WqpTlVHK
+X-Received: by 2002:a05:622a:3cd:b0:413:5f30:9995 with SMTP id k13-20020a05622a03cd00b004135f309995mr3817816qtx.36.1695969790263;
+        Thu, 28 Sep 2023 23:43:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1695969790; cv=none;
         d=google.com; s=arc-20160816;
-        b=HEvHf1TEoRC9yxx3jsId1GL2X866n7mfKkpsieqzcrEGCIj5nJUOZyTKcynqpwQw1w
-         HLXXB9C7awnFKFx23jZlhrpFQNyCHjusbUKXisCO/G7uhaq0L/fMGoBLhndTqTCoks9d
-         FXNn0G9lIGl6dXg5or64u+IiSuAPpXsFqr0NaXoftyW5N6yqZuRm5u5pKNhMljxaKERl
-         +2XmMV4Lr/CaLLcM099Ho+3PS1TITFn7e6gVWoO+8/l9YrF1gV+AdrKzOVtPYVkcsWCT
-         Hf7rCeUGyDIHiDwMmP0Yvj4/CMzlfeOY6jZYkCi5SnJPwwf/UlGhlfxcCCNva6+u2/Up
-         d0Ag==
+        b=jgyt1m8jAo76K95/KQXadWJvRB7WXvavEbgaqEeR3AqwROYC4EE7t3bp9yZ4PrpwKx
+         X+iMVucYMEFZ2MfRkNyx2jokgyllX56sZPZ9r//gHqB0AlSPLYP4NCKbj3UZKYngrFaX
+         uSiOib57mkq8tsWVWezasvOd5uykTsEiJHvGJMia1cjACAkMXBewL4a3D/qSNJ5wQSlz
+         mokxchXGP5BIk0y9utGQOPSc/aSaSzGIVVd906+f419okXnlpZw9r/ty6LOfj9ZEqQyc
+         JyClZyT4qeiRQpdg7z2VuVRTP1NQs7ICFRDUnxGMlJ84cgKCld/9Oq5D2hrwjDCZUpew
+         PXVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=wTJXax7k6eaEa5iXZfDdTO02C9VEmGNAsuCxv14PyRA=;
-        fh=GUPjxW4fQaT3DFhTiIvwAKlXuS5cVVc6mPehwpozP2E=;
-        b=RL8j1w47nCblgYQw0yIwt6YBIPaMdzeDdiRQmGjSXrXxEl0Mlf6pVtXDBJ+nYVD9G7
-         79qLRItww+PrMADu7epJtLURz/gUQVRNXJXGBoG0CZzjRD4L/Co3gz4EUGj15Ns1aEHE
-         mJeXeJrbC2NUS8V018uGCD2X31Zm66sX0istUXY2tJ3xFUgWMK+ArGOVBqedanMr5Qug
-         d1bs+cvWR8nnPIUAKvuoDE3//UJxPAo+zsTotZ6XMHRn/PQkzlq7MBHupXAvQrc6WY+s
-         HEg340s3ddam8sWTZtSt0uWmqM4RdRdmHsl9tCmTM3a8aJX9kYdv63jYfLYaCgc0tx/R
-         3CeA==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=v5IVOGrxtCgexnQZUCH3CtFz8zetzt0dE8VGCt2JscM=;
+        fh=XOcsgqAO8FrYO3hPJm4HugBFn4zBt9xdLbPKOU5gUU4=;
+        b=rSN5MdjSd0BbthrddAokCh5AT5IB5NacGXLPNhE0CUCb0D7e0uSNvrRnNkJfnWqmXu
+         PQ7oi6MTlieeL/zQMwpZ0JmynSHtCh8yTDkw7ZwZc7L3fS55/AN+iLGY1XrmA6cAOaXL
+         xc23cIKBYsRMgHhZqZfs4W1AWXGQ1ynIcD1WqBDEk+6KvZo31/nxnB2j2KhvL3iqz1fK
+         3+anFbI5y//SwRfkT8fmJqkPFzQmM+KQJzJ3NQKyTtWOpXnKVbFMe++vdlyrfj4hy2Rl
+         OL4wqt6QndhMFLerA7b2dhc+VtnU4Rd8Da1I0Eo5fLzaCD2qw2RQcG2Er8zkAhUf5Nvu
+         O/Kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BelkRTCc;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a4yXYzPa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h12-20020a0cf20c000000b0065b05579206si5482414qvk.371.2023.09.28.23.29.03
+        by mx.google.com with ESMTPS id d10-20020a05622a05ca00b004195f6ad06dsi2016960qtb.56.2023.09.28.23.43.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Sep 2023 23:29:03 -0700 (PDT)
+        Thu, 28 Sep 2023 23:43:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BelkRTCc;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a4yXYzPa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qm6zc-0008Lp-Hk; Fri, 29 Sep 2023 02:28:52 -0400
+	id 1qm7Cr-0000tV-5L; Fri, 29 Sep 2023 02:42:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qm6zb-0008LV-4c
- for qemu-arm@nongnu.org; Fri, 29 Sep 2023 02:28:51 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qm7Cm-0000Qt-8l
+ for qemu-arm@nongnu.org; Fri, 29 Sep 2023 02:42:28 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qm6zZ-00053q-8S
- for qemu-arm@nongnu.org; Fri, 29 Sep 2023 02:28:50 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qm7Cj-0007oc-Ts
+ for qemu-arm@nongnu.org; Fri, 29 Sep 2023 02:42:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695968927;
+ s=mimecast20190719; t=1695969745;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wTJXax7k6eaEa5iXZfDdTO02C9VEmGNAsuCxv14PyRA=;
- b=BelkRTCcBx1BB7fxM+sfpBi7b7JL3hTJdOwu+cvGClHw/zdJsceRP0XlUYHT9NJJaqQqWT
- CtcRlFjgCijDl+UV+X3SOuJiLCsa81ctsoWvY1BWWLGP5oYZ0v2dt8wUAbsQ7/WzJvYDgo
- gX80IEUHbrLdax4kKhhsdTfQGdcpo4I=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-176-n10Cmu9oNsSmPmbzcZKM_g-1; Fri, 29 Sep 2023 02:28:46 -0400
-X-MC-Unique: n10Cmu9oNsSmPmbzcZKM_g-1
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-65af3fd7a55so169511226d6.2
- for <qemu-arm@nongnu.org>; Thu, 28 Sep 2023 23:28:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695968926; x=1696573726;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wTJXax7k6eaEa5iXZfDdTO02C9VEmGNAsuCxv14PyRA=;
- b=wAjz5Q1moC79nGm8RhhkrcBV3C2H4k99Xdsuxu9CBZhDtoJDniSjQyt79sgi4S8Y5B
- m4mr+fP6CUpXMPDjoooUb+qPlalJHuyd31VqX6rZrdOV8Qzu3ycXoQh1KWZX3P8GnGwE
- 7ZTCy0s69f40oN/NPW8z0dowiuicEBkyFnF/IV6foTIeuXx2FBKE8y01BFGzTwN3DfEE
- 7dx3QCPAuyZQYNlURQ6hH99u6+SsQpFXKIo9UFVyF4aS8Qbmfpzel0ScQev+52egvIWV
- H6nhzQ66Aw4O8v/81urPTJdb4zs5ns3AiwYa3BAbgSkfSfU3hCso6ejAnTo6/Wy1DhPC
- zVxQ==
-X-Gm-Message-State: AOJu0YyabfuLpG7gS3+yCMzaTUd1guW1uEZcdf3cahCPMHHhio+59Vbj
- YZPXQImHmfTJroZy/uSrlGtGtpWT5156dSmtUkmsU1mWLRflxeGhCMlmiPZUPDw2GwzBH3W+A5Y
- 2rcB/JWA+JAXc
-X-Received: by 2002:a0c:8bc9:0:b0:658:8978:44db with SMTP id
- a9-20020a0c8bc9000000b00658897844dbmr3212420qvc.1.1695968925946; 
- Thu, 28 Sep 2023 23:28:45 -0700 (PDT)
-X-Received: by 2002:a0c:8bc9:0:b0:658:8978:44db with SMTP id
- a9-20020a0c8bc9000000b00658897844dbmr3212407qvc.1.1695968925560; 
- Thu, 28 Sep 2023 23:28:45 -0700 (PDT)
-Received: from [192.168.0.5] (ip-109-43-177-123.web.vodafone.de.
- [109.43.177.123]) by smtp.gmail.com with ESMTPSA id
- c1-20020a0ca9c1000000b006582f94af3asm7253200qvb.44.2023.09.28.23.28.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Sep 2023 23:28:44 -0700 (PDT)
-Message-ID: <5311a1e5-2334-928c-b14c-6dc685d4d2ae@redhat.com>
-Date: Fri, 29 Sep 2023 08:28:42 +0200
+ bh=v5IVOGrxtCgexnQZUCH3CtFz8zetzt0dE8VGCt2JscM=;
+ b=a4yXYzPaFQkGo+d8KH9sQzdGnEpvz0tTXuyn3sxNoNyHGJWqFqeD1+43+mTtK6ETMe7BqX
+ ufKnZxB9TF6ddlAmMoFucsV7B8UzQHK9jCyUZGM7V+ZyAdaJLjWPJXahYCq7NOKkGDwFKy
+ U08eAGrDo+Q/RdbDqVAYDGQetAkJRcI=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-662-jWkKF_9nNjqU2erIuctTjw-1; Fri, 29 Sep 2023 02:42:20 -0400
+X-MC-Unique: jWkKF_9nNjqU2erIuctTjw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9076929AA3B2;
+ Fri, 29 Sep 2023 06:42:20 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6CEA9176EA;
+ Fri, 29 Sep 2023 06:42:20 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7E07921E6904; Fri, 29 Sep 2023 08:42:19 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-block@nongnu.org,  qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 00/22] (few more) Steps towards enabling -Wshadow
+References: <20230904161235.84651-1-philmd@linaro.org>
+ <87fs2xlfyj.fsf@pond.sub.org>
+Date: Fri, 29 Sep 2023 08:42:19 +0200
+In-Reply-To: <87fs2xlfyj.fsf@pond.sub.org> (Markus Armbruster's message of
+ "Fri, 29 Sep 2023 07:13:24 +0200")
+Message-ID: <87il7tiipg.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v2] tests/qtest: Fix npcm7xx_timer-test.c flaky test
-To: Chris Rauer <crauer@google.com>, kfting@nuvoton.com, wuhaotsh@google.com, 
- lvivier@redhat.com, pbonzini@redhat.com, stefanha@redhat.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20230929000831.691559-1-crauer@google.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230929000831.691559-1-crauer@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,33 +116,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wQPmoNxVtHVs
+X-TUID: Jgu9iKaZ0pJn
 
-On 29/09/2023 02.08, Chris Rauer wrote:
-> npcm7xx_timer-test occasionally fails due to the state of the timers
-> from the previous test iteration.  Advancing the clock step after the
-> reset resolves this issue.
-> 
-> Fixes: https://gitlab.com/qemu-project/qemu/-/issues/1897
-> Signed-off-by: Chris Rauer <crauer@google.com>
-> ---
->   tests/qtest/npcm7xx_timer-test.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer-test.c
-> index 43711049ca..58f58c2f71 100644
-> --- a/tests/qtest/npcm7xx_timer-test.c
-> +++ b/tests/qtest/npcm7xx_timer-test.c
-> @@ -465,6 +465,7 @@ static void test_periodic_interrupt(gconstpointer test_data)
->       int i;
->   
->       tim_reset(td);
-> +    clock_step_next();
->   
->       tim_write_ticr(td, count);
->       tim_write_tcsr(td, CEN | IE | MODE_PERIODIC | PRESCALE(ps));
+Markus Armbruster <armbru@redhat.com> writes:
 
-Thanks! I'll queue it for my next pull request.
+> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+>
+>> Since v1:
+>> - Addressed review comments
+>> - Added R-b tags
+>> - More patches
+>>
+>> For rational see Markus cover on
+>> https://lore.kernel.org/qemu-devel/20230831132546.3525721-1-armbru@redha=
+t.com/
+>>
+>> This series contains few more, my take.
+>>
+>> Based-on: <20230831132546.3525721-1-armbru@redhat.com>
 
-Acked-by: Thomas Huth <thuth@redhat.com>
+Correction...
+
+> Queued except for:
+
+  PATCH 10: Clashes with a patch from C=C3=A9dric, picking C=C3=A9dric's
+
+> PATCH 11: I asked for John Snow's opinion on a matter of taste.
+> PATCH 18: Review comment from Peter Maydell is pending.
+>
+> Thanks!
 

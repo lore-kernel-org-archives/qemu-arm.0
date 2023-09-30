@@ -1,45 +1,46 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1519ejb;
-        Fri, 29 Sep 2023 17:20:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGC2/Zu6wSYDRgx1F7SvIXK14ofGKcMARFy/ER5AH47S+4sHpzOFwxNGtSFlwji5BIZMdBz
-X-Received: by 2002:a05:600c:2991:b0:405:3f19:fc49 with SMTP id r17-20020a05600c299100b004053f19fc49mr5646650wmd.34.1696033208817;
-        Fri, 29 Sep 2023 17:20:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696033208; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1724ejb;
+        Fri, 29 Sep 2023 17:20:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHp81bccs+3bOhNuun/EkguwZXkeD2pOJVbLFYg97BnnDOfbHeL5bwSEj50cpHp89h/w/2D
+X-Received: by 2002:a05:6000:1cd:b0:31f:a256:4bbb with SMTP id t13-20020a05600001cd00b0031fa2564bbbmr4358613wrx.71.1696033248132;
+        Fri, 29 Sep 2023 17:20:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696033248; cv=none;
         d=google.com; s=arc-20160816;
-        b=dS9l3JDhPQccvWxEiFFmG1EPSvxJDZc14j/Fn5lMQZgx+VkGfEdisqwTVUppGV0vt3
-         zo/7qEAvIYgNDfejv+F9KHNcZSpol37epnYUjNa6iqo+i9oteNw6a2oZEQ5QZZ+AAH6z
-         Nrx4QK7E7mIBIxp0ALHd02AluOP7apUrGrhkGdJ+KmaTWjq85lO3RNQGoP+td3uIFYpq
-         QTTU39nJbvlNx5Inok/12XNSd3xJL7RWCMcFoQtAok/sa68GeWBT4K4FlPP9C7+evFdL
-         AmUTuuDpg6Cu5MEPtgp+qyEMOHEogqYMF2PGArn4U2QzMd4IxVnCs0EAwETh0PpkUYed
-         foeQ==
+        b=w59nZVzHTLD7ktNw1ZoxHflgZ39fWn/CAxBxzwrk10cYeNdGnLoAh1Rut5OeRv0edZ
+         ABPcICIu6kEuzhdX7hqOZClMs5xRpR4lmMThKsJNv+91O5xr9RbAoXkiA73bYGBeXIHr
+         1pmWT9XQVJw6Uxx4FVGk2bbqHjNYi+uZ4miS6koXmwjpCuLIqX4ppfznX/ZFebbviAJH
+         SdJjwEtd+mFB2dpYSBKgH2ZcSEVgBJSkaQ39dLjHmakwmOivkcgeJZCGwHb0ZWNrKKYK
+         dypbJxDF+Z64ZOjgTb4GN1371HCvPBUXrC/1ati7l349VtKuqIeitJV8jNOKqqxt8TDz
+         qAKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:subject:cc:to:from;
-        bh=EpEjwAG3meO8nOBCX5r6cjHpQnQDKbdqqwSfGR6xQqY=;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=/OtDrdClvizErIUBCEUPeJJ2w/sWgqIPIdeMoIlkS5I=;
         fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
-        b=j9vl1YVnFzYwJ+Yyh5ee2BTsdbc/MIRXEt5wcC+j6f1/y3v2HyZ8OiOES2fzgbqvtE
-         UhW5/HXEIxIuAea4/IgzagB/Qa7ZPP9KqtjRKL3vPiW0rDFb0nQpJXh7TMkNNRv2WJTD
-         d96DoNR7pCaWUPGbLaRcd/hXVIHrXxBkXgQqwlyradOfphQfWEo3io2StpvQZ+6zgoG6
-         hKUyFN/7vRNH6oQ4EpQk7B719vHdYXL3NqfeYFaJWrNlijn9/9wO4woUw+bH8AGdsvpC
-         3EleiD1LY8zIGGcFPwKFBadRtshUYyClrVSE5hYaCUjxN7w3dmDkrOAQJI7OeoWdvJGW
-         5NcQ==
+        b=mMMwTQXyYlQO94qCNtS8CF7l/CdlJp6F+hcsV5pGUXRwndjVu3QnrAsyAeCzHNDM0w
+         D1CV81KvOdrsiOKDsP2gfcfa/cD9WGnZuueFSC3NFVfS6TGS2zZulWPD3LM9xuXXBK4w
+         3UCRcw1dTfIXkNW9NK2zkFYk46W7A1a9z2PY6SKzq8UVDgy0OMTHewofLKtAfPH8HUWE
+         vIo+YLC67BDudM2cVI+h+3UvPuyptcgaGtuNrvaCSlyc5DtjTfdX1fNDoxDqbkKbXHWh
+         Z5cHiII+KTNuhZgW45whpclIoJXbCGR6ACr0+d4v7OyCRqIVvJyQUR/Kr70ooJK6yDmM
+         jHFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id c12-20020a05600c0acc00b004063c6c812asi1331932wmr.91.2023.09.29.17.20.08
+        by mx.google.com with ESMTPS id j17-20020a5d4491000000b00313f41ab170si10658914wrq.602.2023.09.29.17.20.47
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Sep 2023 17:20:08 -0700 (PDT)
+        Fri, 29 Sep 2023 17:20:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ry79Y6Wjyz6K5mP;
-	Sat, 30 Sep 2023 08:18:41 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.200])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ry7BK6KMLz6K5rX;
+	Sat, 30 Sep 2023 08:19:21 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.195.35.96) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Sat, 30 Sep 2023 01:19:46 +0100
+ 15.1.2507.31; Sat, 30 Sep 2023 01:20:27 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -56,63 +57,62 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<linuxarm@huawei.com>
-Subject: [PATCH V2 00/10] Add architecture agnostic code to support vCPU Hotplug
-Date: Sat, 30 Sep 2023 01:19:23 +0100
-Message-ID: <20230930001933.2660-1-salil.mehta@huawei.com>
+Subject: [PATCH V2 02/10] hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
+Date: Sat, 30 Sep 2023 01:19:25 +0100
+Message-ID: <20230930001933.2660-3-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
+In-Reply-To: <20230930001933.2660-1-salil.mehta@huawei.com>
+References: <20230930001933.2660-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.195.35.96]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
 X-CFilter-Loop: Reflected
-X-TUID: Q1htHNdw7Fu8
+X-TUID: wAqbIwstRFBW
 
-Virtual CPU hotplug support is being added across various architectures [1][3].
-This series adds various code bits common across all architectures:
+CPU ctrl-dev MMIO region length could be used in ACPI GED and various other
+architecture specific places. Move ACPI_CPU_HOTPLUG_REG_LEN macro to more
+appropriate common header file.
 
-1. vCPU creation and Parking code refactor [Patch 1]
-2. Update ACPI GED framework to support vCPU Hotplug [Patch 4,6,7]
-3. ACPI CPUs AML code change [Patch 5]
-3. Helper functions to support unrealization of CPU objects [Patch 8,9]
-4. Misc [Patch 2,3,10]
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ hw/acpi/cpu.c                 | 2 +-
+ include/hw/acpi/cpu_hotplug.h | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-
-References:
-[1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com/
-[2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
-[3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/
-
-Jean-Philippe Brucker (1):
-  target/arm/kvm: Write CPU state back to KVM on reset
-
-Salil Mehta (9):
-  accel/kvm: Extract common KVM vCPU {creation,parking} code
-  hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
-  hw/acpi: Add ACPI CPU hotplug init stub
-  hw/acpi: Init GED framework with cpu hotplug events
-  hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
-  hw/acpi: Update GED _EVT method AML with cpu scan
-  hw/acpi: Update ACPI GED framework to support vCPU Hotplug
-  physmem: Add helper function to destroy CPU AddressSpace
-  gdbstub: Add helper function to unregister GDB register space
-
- accel/kvm/kvm-all.c                    | 63 +++++++++++++++++++-------
- gdbstub/gdbstub.c                      | 14 ++++++
- hw/acpi/acpi-cpu-hotplug-stub.c        |  6 +++
- hw/acpi/cpu.c                          | 25 ++++++----
- hw/acpi/generic_event_device.c         | 22 +++++++++
- hw/i386/acpi-build.c                   |  2 +-
- include/exec/cpu-common.h              |  8 ++++
- include/exec/gdbstub.h                 |  5 ++
- include/hw/acpi/cpu.h                  |  5 +-
- include/hw/acpi/cpu_hotplug.h          |  4 ++
- include/hw/acpi/generic_event_device.h |  5 ++
- include/hw/core/cpu.h                  |  1 +
- include/sysemu/kvm.h                   | 14 ++++++
- softmmu/physmem.c                      | 25 ++++++++++
- target/arm/kvm.c                       |  8 +++-
- 15 files changed, 179 insertions(+), 28 deletions(-)
-
+diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+index 19c154d78f..45defdc0e2 100644
+--- a/hw/acpi/cpu.c
++++ b/hw/acpi/cpu.c
+@@ -1,12 +1,12 @@
+ #include "qemu/osdep.h"
+ #include "migration/vmstate.h"
+ #include "hw/acpi/cpu.h"
++#include "hw/acpi/cpu_hotplug.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-events-acpi.h"
+ #include "trace.h"
+ #include "sysemu/numa.h"
+ 
+-#define ACPI_CPU_HOTPLUG_REG_LEN 12
+ #define ACPI_CPU_SELECTOR_OFFSET_WR 0
+ #define ACPI_CPU_FLAGS_OFFSET_RW 4
+ #define ACPI_CPU_CMD_OFFSET_WR 5
+diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.h
+index 3b932abbbb..48b291e45e 100644
+--- a/include/hw/acpi/cpu_hotplug.h
++++ b/include/hw/acpi/cpu_hotplug.h
+@@ -19,6 +19,8 @@
+ #include "hw/hotplug.h"
+ #include "hw/acpi/cpu.h"
+ 
++#define ACPI_CPU_HOTPLUG_REG_LEN 12
++
+ typedef struct AcpiCpuHotplug {
+     Object *device;
+     MemoryRegion io;
 -- 
 2.34.1

@@ -1,123 +1,240 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp3354385ejc;
-        Fri, 29 Sep 2023 09:01:42 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFNFRFUpWbmC7KWvIv3oWsIztGJImHmizg0tPzjzRYQHEBSLRgMZ9qNwPNE4ljA8OrqvHPV
-X-Received: by 2002:a5d:6e53:0:b0:324:8353:940e with SMTP id j19-20020a5d6e53000000b003248353940emr4058915wrz.34.1696003302603;
-        Fri, 29 Sep 2023 09:01:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696003302; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1637ejb;
+        Fri, 29 Sep 2023 17:20:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH1UfN2ca1FFYCstaYJP/aDF+tKrvqUHL5DkneJvI+qUI+gI5SJHWbxBD+9oiROnBknLN9Q
+X-Received: by 2002:a5d:4a05:0:b0:323:1f49:de96 with SMTP id m5-20020a5d4a05000000b003231f49de96mr5105552wrq.49.1696033228454;
+        Fri, 29 Sep 2023 17:20:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696033228; cv=none;
         d=google.com; s=arc-20160816;
-        b=NNF3Lx69xuOT+QRrQSWJt156cckD+HgOqiIkpnYTIObs1RcIXn6RzjTf0Sd+mwiLbQ
-         mtMru0AAPR0a+ujcFWL8YoF/dOWW9QH889lCW0kRk1MpD4G/wT39284TwGDjrVJQXtcO
-         dWBz8gqmXor6+MZn0EMlWTKj2T9x847sVm6AeciGs4Tprzh+ionGyDxjJ95PyMoLC7cD
-         14lF/gppebY5Pjg3XSmgLCuqMHUKp33o0c2qGzQxdzP9JrVSFUgN8KIoOlUm8rvh+2pl
-         H+9FBGWs0Bmf0PJOwMS7hyi8SzgH2+kw3uH4arHmj7Yw28jyiKXVqEgE2DfeJ1dHSGOD
-         BnBg==
+        b=FhXlhv/H4VEjJZWdSrZ+Q4dGfJYQl3mze3UyZkTsXy3GLEsTiqIVzxRdKMBu6HkpfS
+         SvGfjsD9RS3RVVCLT8appFRDB+PFMOGPFpOiqZvcEfqTNrLj7IsZy0hda6JcNMcz8uYK
+         slilJwiuUGX0bJgdL0Fsc016e0O9EFyPIVOi36smjzYz4OKPU7+q7kHcS7jGkxIIn3Vk
+         5OaALiXh7irPZdUzpz2Ee0ww9Wf3DGt+U9+XNvLiDgZ8uTqzJlO2HKQR8siMZPA2xgf7
+         npo9MsOh4z2zzaW7inuUpeFPRctJ9jEq1D+tOFh50PNmuiNYDPcGsXmYrkg824dP7ByP
+         WjLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=J/NROZ0q8aFhxawrPXFvFLbw93xdGf02ENb5CCeMo+Q=;
-        fh=JAq87W6Xz6xK/ErqMBJV5GYr0T4cJ3zSiVlGsuDdrsk=;
-        b=kMEd42tirqpBa5RwiGv8PT9wktda1VFCpSy3IOdJrRtzf9R+TBwMp4DFTOPxUTVmWj
-         J/bin4E/FUkOXN/sORCJ2zBZ+Ue0Urdm0oQdG7aAkYFKKrtlY2PwnUcEBWSBVb0vL2PC
-         M0flTinBmdLeP0UnrGBLUrDUWW5RlcqQkqwAsEfAeiLDRrsaB68KAIQU5hsdKLj0IItt
-         n1bt1YjYUu1N7o5Dz4dT8Axb3+JiGWS3OMeT+cYPPu25nFC6EqeZtAsYljIWMLBu0QVI
-         nRKRPkR2Cxl/z7PIXXdIETHxlY09s6G8sywIiUdErRsNR2LCodwtJsal1SfSopD5bLsK
-         /QVA==
+        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=ekv9/mhCNUy0S1lSDsI9RwgNt6VGQAyDqH08N9ADk1s=;
+        fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
+        b=nsyrw/Rs7tO/PJN8NdzlWpVrKA4quccGUuhD9zlsrFS3/VROYmEsx4w+y8rumvI9cM
+         NPNQjJYg6TO5bumx5WFv705hvnNS0gij3l6K8D5jLU5Cd/A559GM/xCuhDRQ5G2ansNq
+         mDmJsUtwrMAYwn4ahXnKXR/OBDuYnb9Ga3kgKZ3dY4Add2wMSkFd/cEj2q7xyDssbPxQ
+         Pb5N3L3h3dGpqZKGKVS9MNTlsiQ4btkFsPoadsdB01e+p0EzozPBb8D4ESNTTsn3A7pK
+         sOQ9u+HNiCEIVe6uGLVjgLcNbXyvGTHZ3JkE13MJXvdrk4emupUi5JdcMVSNmhpe4dBR
+         yOVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id k10-20020a5d524a000000b0031759ea1c67si9966292wrc.1040.2023.09.29.09.01.42
+        by mx.google.com with ESMTPS id z14-20020adfec8e000000b003251303356asi1630699wrn.185.2023.09.29.17.20.28
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Sep 2023 09:01:42 -0700 (PDT)
+        Fri, 29 Sep 2023 17:20:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml100001.china.huawei.com (unknown [172.18.147.207])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Rxw6T0JsJz6K5wC;
-	Sat, 30 Sep 2023 00:00:17 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml100001.china.huawei.com (7.191.160.183) with Microsoft SMTP Server
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ry78j1MLGz6HJTn;
+	Sat, 30 Sep 2023 08:17:57 +0800 (CST)
+Received: from A190218597.china.huawei.com (10.195.35.96) by
+ lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Fri, 29 Sep 2023 17:01:40 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Fri, 29 Sep 2023 17:01:40 +0100
+ 15.1.2507.31; Sat, 30 Sep 2023 01:20:07 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
-To: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "maz@kernel.org" <maz@kernel.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron
-	<jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH 9/9] target/arm/kvm: Write CPU state back to KVM on reset
-Thread-Topic: [PATCH 9/9] target/arm/kvm: Write CPU state back to KVM on reset
-Thread-Index: AQHZ8tMXq6k82cIrbE+rfYyikSHqfLAxzxoAgAAnjNA=
-Date: Fri, 29 Sep 2023 16:01:40 +0000
-Message-ID: <12f6eddcb6a44fdda23a297bfdf83da2@huawei.com>
-References: <20230929124304.13672-1-salil.mehta@huawei.com>
-	<20230929124304.13672-10-salil.mehta@huawei.com> <87pm21nivj.fsf@linaro.org>
-In-Reply-To: <87pm21nivj.fsf@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.48.156.153]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
+	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<linuxarm@huawei.com>
+Subject: [PATCH V2 01/10] accel/kvm: Extract common KVM vCPU {creation,parking} code
+Date: Sat, 30 Sep 2023 01:19:24 +0100
+Message-ID: <20230930001933.2660-2-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.8.3
+In-Reply-To: <20230930001933.2660-1-salil.mehta@huawei.com>
+References: <20230930001933.2660-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.195.35.96]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ lhrpeml500001.china.huawei.com (7.191.163.213)
 X-CFilter-Loop: Reflected
-X-TUID: /r+hHEIKpG5n
+X-TUID: lVOfaty44acc
 
-PiBGcm9tOiBBbGV4IEJlbm7DqWUgPGFsZXguYmVubmVlQGxpbmFyby5vcmc+DQo+IFNlbnQ6IEZy
-aWRheSwgU2VwdGVtYmVyIDI5LCAyMDIzIDM6NDAgUE0NCj4gVG86IFNhbGlsIE1laHRhIDxzYWxp
-bC5tZWh0YUBodWF3ZWkuY29tPg0KPiBDYzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LWFy
-bUBub25nbnUub3JnOyBtYXpAa2VybmVsLm9yZzsgamVhbi0NCj4gcGhpbGlwcGVAbGluYXJvLm9y
-ZzsgSm9uYXRoYW4gQ2FtZXJvbiA8am9uYXRoYW4uY2FtZXJvbkBodWF3ZWkuY29tPjsNCj4gbHBp
-ZXJhbGlzaUBrZXJuZWwub3JnOyBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7DQo+IHJpY2hhcmQu
-aGVuZGVyc29uQGxpbmFyby5vcmc7IGltYW1tZWRvQHJlZGhhdC5jb207IGFuZHJldy5qb25lc0Bs
-aW51eC5kZXY7DQo+IGRhdmlkQHJlZGhhdC5jb207IHBoaWxtZEBsaW5hcm8ub3JnOyBlcmljLmF1
-Z2VyQHJlZGhhdC5jb207DQo+IG9saXZlci51cHRvbkBsaW51eC5kZXY7IHBib256aW5pQHJlZGhh
-dC5jb207IG1zdEByZWRoYXQuY29tOw0KPiB3aWxsQGtlcm5lbC5vcmc7IGdzaGFuQHJlZGhhdC5j
-b207IHJhZmFlbEBrZXJuZWwub3JnOw0KPiBsaW51eEBhcm1saW51eC5vcmcudWs7IGRhcnJlbkBv
-cy5hbXBlcmVjb21wdXRpbmcuY29tOw0KPiBpbGtrYUBvcy5hbXBlcmVjb21wdXRpbmcuY29tOyB2
-aXNobnVAb3MuYW1wZXJlY29tcHV0aW5nLmNvbTsNCj4ga2FybC5oZXViYXVtQG9yYWNsZS5jb207
-IG1pZ3VlbC5sdWlzQG9yYWNsZS5jb207IHNhbGlsLm1laHRhQG9wbnNyYy5uZXQ7DQo+IHpodWtl
-cWlhbiA8emh1a2VxaWFuMUBodWF3ZWkuY29tPjsgd2FuZ3hpb25nZmVuZyAoQykNCj4gPHdhbmd4
-aW9uZ2ZlbmcyQGh1YXdlaS5jb20+OyB3YW5neWFuYW4gKFkpIDx3YW5neWFuYW41NUBodWF3ZWku
-Y29tPjsNCj4gamlha2VybmVsMkBnbWFpbC5jb207IG1hb2JpYm9AbG9vbmdzb24uY247IGxpeGlh
-bmdsYWlAbG9vbmdzb24uY247IExpbnV4YXJtDQo+IDxsaW51eGFybUBodWF3ZWkuY29tPg0KPiBT
-dWJqZWN0OiBSZTogW1BBVENIIDkvOV0gdGFyZ2V0L2FybS9rdm06IFdyaXRlIENQVSBzdGF0ZSBi
-YWNrIHRvIEtWTSBvbg0KPiByZXNldA0KPiANCj4gDQo+IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0
-YUBodWF3ZWkuY29tPiB3cml0ZXM6DQo+IA0KPiA+IEZyb206IEplYW4tUGhpbGlwcGUgQnJ1Y2tl
-ciA8amVhbi1waGlsaXBwZUBsaW5hcm8ub3JnPg0KPiA+DQo+ID4gV2hlbiBhIEtWTSB2Q1BVIGlz
-IHJlc2V0IGZvbGxvd2luZyBhIFBTQ0kgQ1BVX09OIGNhbGwsIGl0cyBwb3dlciBzdGF0ZQ0KPiA+
-IGlzIG5vdCBzeW5jaHJvbml6ZWQgd2l0aCBLVk0gYXQgdGhlIG1vbWVudC4gQmVjYXVzZSB0aGUg
-dkNQVSBpcyBub3QNCj4gPiBtYXJrZWQgZGlydHksIHdlIG1pc3MgdGhlIGNhbGwgdG8ga3ZtX2Fy
-Y2hfcHV0X3JlZ2lzdGVycygpIHRoYXQgd3JpdGVzDQo+ID4gdG8gS1ZNJ3MgTVBfU1RBVEUuIEZv
-cmNlIG1wX3N0YXRlIHN5bmNocm9uaXphdGlvbi4NCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IEpl
-YW4tUGhpbGlwcGUgQnJ1Y2tlciA8amVhbi1waGlsaXBwZUBsaW5hcm8ub3JnPg0KPiA+IFNpZ25l
-ZC1vZmYtYnk6IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPg0KPiANCj4gU2Vl
-bXMgcmVhc29uYWJsZToNCj4gDQo+IFJldmlld2VkLWJ5OiBBbGV4IEJlbm7DqWUgPGFsZXguYmVu
-bmVlQGxpbmFyby5vcmc+DQoNClRoYW5rcw0KU2FsaWwuDQo=
+KVM vCPU creation is done once during the initialization of the VM when Qemu
+threads are spawned. This is common to all the architectures.
+
+Hot-unplug of vCPU results in destruction of the vCPU objects in QOM but
+the KVM vCPU objects in the Host KVM are not destroyed and their representative
+KVM vCPU objects/context in Qemu are parked.
+
+Refactor common logic so that some APIs could be reused by vCPU Hotplug code.
+
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+---
+ accel/kvm/kvm-all.c  | 63 +++++++++++++++++++++++++++++++++-----------
+ include/sysemu/kvm.h | 14 ++++++++++
+ 2 files changed, 61 insertions(+), 16 deletions(-)
+
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index ff1578bb32..b8c36ba50a 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -80,7 +80,7 @@
+ #endif
+ 
+ struct KVMParkedVcpu {
+-    unsigned long vcpu_id;
++    int vcpu_id;
+     int kvm_fd;
+     QLIST_ENTRY(KVMParkedVcpu) node;
+ };
+@@ -137,6 +137,7 @@ static QemuMutex kml_slots_lock;
+ #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
+ 
+ static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
++static int kvm_get_vcpu(KVMState *s, int vcpu_id);
+ 
+ static inline void kvm_resample_fd_remove(int gsi)
+ {
+@@ -320,11 +321,49 @@ err:
+     return ret;
+ }
+ 
++void kvm_park_vcpu(CPUState *cpu)
++{
++    int vcpu_id = cpu->cpu_index;
++    struct KVMParkedVcpu *vcpu;
++
++    vcpu = g_malloc0(sizeof(*vcpu));
++    vcpu->vcpu_id = vcpu_id;
++    vcpu->kvm_fd = cpu->kvm_fd;
++    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
++}
++
++int kvm_create_vcpu(CPUState *cpu)
++{
++    int vcpu_id = cpu->cpu_index;
++    KVMState *s = kvm_state;
++    int kvm_fd;
++
++    DPRINTF("kvm_create_vcpu\n");
++
++    /* check if the KVM vCPU already exist but is parked */
++    kvm_fd = kvm_get_vcpu(s, vcpu_id);
++    if (kvm_fd < 0) {
++        /* vCPU not parked: create a new KVM vCPU */
++        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
++        if (kvm_fd < 0) {
++            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %d", vcpu_id);
++            return kvm_fd;
++        }
++    }
++
++    cpu->vcpu_dirty = true;
++    cpu->kvm_fd = kvm_fd;
++    cpu->kvm_state = s;
++    cpu->dirty_pages = 0;
++    cpu->throttle_us_per_full = 0;
++
++    return 0;
++}
++
+ static int do_kvm_destroy_vcpu(CPUState *cpu)
+ {
+     KVMState *s = kvm_state;
+     long mmap_size;
+-    struct KVMParkedVcpu *vcpu = NULL;
+     int ret = 0;
+ 
+     DPRINTF("kvm_destroy_vcpu\n");
+@@ -353,10 +392,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+         }
+     }
+ 
+-    vcpu = g_malloc0(sizeof(*vcpu));
+-    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
+-    vcpu->kvm_fd = cpu->kvm_fd;
+-    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
++    kvm_park_vcpu(cpu);
+ err:
+     return ret;
+ }
+@@ -369,7 +405,7 @@ void kvm_destroy_vcpu(CPUState *cpu)
+     }
+ }
+ 
+-static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
++static int kvm_get_vcpu(KVMState *s, int vcpu_id)
+ {
+     struct KVMParkedVcpu *cpu;
+ 
+@@ -384,7 +420,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
+         }
+     }
+ 
+-    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
++    return -1;
+ }
+ 
+ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+@@ -395,19 +431,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+ 
+     trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+ 
+-    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
++    ret = kvm_create_vcpu(cpu);
+     if (ret < 0) {
+-        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
++        error_setg_errno(errp, -ret,
++                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
+                          kvm_arch_vcpu_id(cpu));
+         goto err;
+     }
+ 
+-    cpu->kvm_fd = ret;
+-    cpu->kvm_state = s;
+-    cpu->vcpu_dirty = true;
+-    cpu->dirty_pages = 0;
+-    cpu->throttle_us_per_full = 0;
+-
+     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
+     if (mmap_size < 0) {
+         ret = mmap_size;
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index ee9025f8e9..785f3ed083 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -464,6 +464,20 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
+ 
+ int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
+                                        hwaddr *phys_addr);
++/**
++ * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
++ * @cpu:  QOM CPUState object for which KVM vCPU has to be created/fetched.
++ *
++ * @returns: 0 when success, errno (<0) when failed.
++ */
++int kvm_create_vcpu(CPUState *cpu);
++/**
++ * kvm_park_vcpu - Gets a parked KVM vCPU if it exists
++ * @cpu:  QOM CPUState object for which parked KVM vCPU has to be fetched.
++ *
++ * @returns: kvm_fd (>0) when success, -1 when failed.
++ */
++void kvm_park_vcpu(CPUState *cpu);
+ 
+ #endif /* NEED_CPU_H */
+ 
+-- 
+2.34.1

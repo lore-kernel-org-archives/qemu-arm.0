@@ -1,315 +1,118 @@
-Received: by 2002:a17:907:d504:b0:9b2:89ee:1eb8 with SMTP id wb4csp3367191ejc;
-        Fri, 29 Sep 2023 09:17:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFnUlYeUbvlBfwxCg5ALk1WLM5W991L35nyB7O/wn2845PQsyo5TJ+b4DTkT+Kk0HRazZPb
-X-Received: by 2002:a05:620a:2591:b0:770:e72b:82c with SMTP id x17-20020a05620a259100b00770e72b082cmr4652050qko.29.1696004241310;
-        Fri, 29 Sep 2023 09:17:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696004241; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1519ejb;
+        Fri, 29 Sep 2023 17:20:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGC2/Zu6wSYDRgx1F7SvIXK14ofGKcMARFy/ER5AH47S+4sHpzOFwxNGtSFlwji5BIZMdBz
+X-Received: by 2002:a05:600c:2991:b0:405:3f19:fc49 with SMTP id r17-20020a05600c299100b004053f19fc49mr5646650wmd.34.1696033208817;
+        Fri, 29 Sep 2023 17:20:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696033208; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sc5DQ7OCX9/UjyoUJ+MMAaLWd5kbgtHPUJCyWJ1WWvF2DpfoTLnJjgZcFK7Wr3WMOF
-         uBhE1uLaUxTGdRnra3Z/Xa5duTzjamaqL2ywRXVUJXKjhyfPVfhihWsTB5AlTTzyEovZ
-         ZLbTOW706IsyxxSlAD0DLCXqwor/hxALaEqEV6g8TOxt6+ZPm9AMrQ2IpPnQa8t1neBl
-         /ky0eIo4LAx6WMn9CSWOU2wZDTgSBsL45kFjOVkXAo/TeEj9SUcI2AomkcZpRVr2VkKJ
-         +CDGZV7Ym/ODZIXNgtQcsTyNHKKHLgSrjwD0nknSyZ4G2a6iiqRVPZHfg4hge6C7yA5U
-         rDDw==
+        b=dS9l3JDhPQccvWxEiFFmG1EPSvxJDZc14j/Fn5lMQZgx+VkGfEdisqwTVUppGV0vt3
+         zo/7qEAvIYgNDfejv+F9KHNcZSpol37epnYUjNa6iqo+i9oteNw6a2oZEQ5QZZ+AAH6z
+         Nrx4QK7E7mIBIxp0ALHd02AluOP7apUrGrhkGdJ+KmaTWjq85lO3RNQGoP+td3uIFYpq
+         QTTU39nJbvlNx5Inok/12XNSd3xJL7RWCMcFoQtAok/sa68GeWBT4K4FlPP9C7+evFdL
+         AmUTuuDpg6Cu5MEPtgp+qyEMOHEogqYMF2PGArn4U2QzMd4IxVnCs0EAwETh0PpkUYed
+         foeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=xh1o3yh9k8s8Du3ioGU6aZkjuIl2+uYmVsN67dgAZrQ=;
-        fh=bFpS87vmp7mzhl4ICK4mDM62TwFUbgTYVuM7QVH8Hes=;
-        b=FEYPdNWi7HuvbSoYzSGs/wRFpUJlNs/RRbXs+M44UD4LwvGVR+4y1ZixU1kf1Oyp/D
-         /nJN6upmt0BMbSW25Go17yLBNAHz4f8uGSlCbUjgWgjooZXEjrz33zK2rCLcoNTqXrFh
-         qdId9cyMhyhAW4gNWqJMPqZt5cb1V2n5v/D/PTI2Oq1VZ3SH04ilnobdhu2Txy0bd3Pi
-         PxX4LMqWWruzWkIj4PwzIUQeURsnZ8KWY5j39lOzKyUQZ+p904or5PjX8Tca7wz4MudH
-         mBkpmbmmOL3TF1590U7jR+0QkXKIgqx6LUyncAnLXMywCSmLxDokbwrVnCHKp8le8w2H
-         Fkrg==
+        h=mime-version:message-id:date:subject:cc:to:from;
+        bh=EpEjwAG3meO8nOBCX5r6cjHpQnQDKbdqqwSfGR6xQqY=;
+        fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
+        b=j9vl1YVnFzYwJ+Yyh5ee2BTsdbc/MIRXEt5wcC+j6f1/y3v2HyZ8OiOES2fzgbqvtE
+         UhW5/HXEIxIuAea4/IgzagB/Qa7ZPP9KqtjRKL3vPiW0rDFb0nQpJXh7TMkNNRv2WJTD
+         d96DoNR7pCaWUPGbLaRcd/hXVIHrXxBkXgQqwlyradOfphQfWEo3io2StpvQZ+6zgoG6
+         hKUyFN/7vRNH6oQ4EpQk7B719vHdYXL3NqfeYFaJWrNlijn9/9wO4woUw+bH8AGdsvpC
+         3EleiD1LY8zIGGcFPwKFBadRtshUYyClrVSE5hYaCUjxN7w3dmDkrOAQJI7OeoWdvJGW
+         5NcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sz3a+wWQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p5-20020a05620a056500b0077411b34546si9205085qkp.243.2023.09.29.09.17.21
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Sep 2023 09:17:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id c12-20020a05600c0acc00b004063c6c812asi1331932wmr.91.2023.09.29.17.20.08
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 29 Sep 2023 17:20:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sz3a+wWQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qmGAm-00032W-Kp; Fri, 29 Sep 2023 12:17:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qmGAe-0002ww-0i
- for qemu-arm@nongnu.org; Fri, 29 Sep 2023 12:16:52 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qmGAZ-0006Km-2c
- for qemu-arm@nongnu.org; Fri, 29 Sep 2023 12:16:50 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3231d67aff2so10674656f8f.0
- for <qemu-arm@nongnu.org>; Fri, 29 Sep 2023 09:16:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696004205; x=1696609005; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=xh1o3yh9k8s8Du3ioGU6aZkjuIl2+uYmVsN67dgAZrQ=;
- b=sz3a+wWQC0wJdUYiI3JrdQ8uQAIsTJTdvWZiXO2w+0VLZZUTgGfD+KfsO5i67Bto49
- SwSzcoaWyIMQG5B6t/WWSPf/BN92YsBtQApD1UDXnMXNMzgFEiTVAUF7YwKuDoFK9hOL
- CT5DGyZc6JGGWxdAVlOn4IRKjO8y36RpmyvDOlVnV+Gtd/UbZzTjg75dRn2nNeXZ+sGB
- 2XYXsaO2bPt5OOjiphk+97/wRHvAPz5RMmr+cqvcJW+KqMAyNKzc8kzKo3HbZuKrtMHc
- TMNPoM+YFakSyYQYK84mGY7UzGSh3ZNX8+B5QUx9OUeG+Jw1ERU7kKGV2jNmkIbrvkIV
- rfEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696004205; x=1696609005;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=xh1o3yh9k8s8Du3ioGU6aZkjuIl2+uYmVsN67dgAZrQ=;
- b=u2P8+C5HYWBaoZNgwXazEgL2q5wn2o7/MXEFf52VzrCgpgrudRcISlwJzz4mGIt+qL
- vXTlS5nfwkwnqM3IPB7cdt/mPZo6A8QMI2NPadMrwoGmELsFqQpY+SjLNqu7R556BYcr
- UR9/q/ruvhVPnug13hU2jykBZ7N2mEilK4zSch8RG5TcXMAQ1k0Im4hbcjE90VNygEvq
- GKOSQ2h2s6y2wYtyfwuNwl67i1pgC1nnaGwNTnB4nKKQ3ES18Zvrkz57Q4oXlPSRqsMw
- xKaStsyyObSGzBlszV8BgN/ZLubRYDfRjNglSVOEBS7Ub0Yh6iGfXHhNe1Jo0+IhKCZa
- o8VA==
-X-Gm-Message-State: AOJu0YykC+8jt60z67UZNUD7dmVBUvowgIWiF5kYlpu43F2EcgV91gTJ
- NvRB1bwnKbxfn6lP1H1uqywXzQ==
-X-Received: by 2002:a5d:460a:0:b0:317:57f0:fae with SMTP id
- t10-20020a5d460a000000b0031757f00faemr4026677wrq.63.1696004205163; 
- Fri, 29 Sep 2023 09:16:45 -0700 (PDT)
-Received: from myrica ([2a02:c7c:7290:b00:fd32:2b31:6755:400c])
- by smtp.gmail.com with ESMTPSA id
- m14-20020a5d64ae000000b0031aca6cc69csm11631083wrp.2.2023.09.29.09.16.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Sep 2023 09:16:44 -0700 (PDT)
-Date: Fri, 29 Sep 2023 17:16:49 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- alex.williamson@redhat.com, clg@redhat.com, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
- david@redhat.com, philmd@linaro.org
-Subject: Re: [PATCH v2 09/12] util/reserved-region: Add new ReservedRegion
- helpers
-Message-ID: <20230929161649.GC2957297@myrica>
-References: <20230913080423.523953-1-eric.auger@redhat.com>
- <20230913080423.523953-10-eric.auger@redhat.com>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.201])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ry79Y6Wjyz6K5mP;
+	Sat, 30 Sep 2023 08:18:41 +0800 (CST)
+Received: from A190218597.china.huawei.com (10.195.35.96) by
+ lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Sat, 30 Sep 2023 01:19:46 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
+	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<linuxarm@huawei.com>
+Subject: [PATCH V2 00/10] Add architecture agnostic code to support vCPU Hotplug
+Date: Sat, 30 Sep 2023 01:19:23 +0100
+Message-ID: <20230930001933.2660-1-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.8.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230913080423.523953-10-eric.auger@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AHopPgLV461Y
+Content-Type: text/plain
+X-Originating-IP: [10.195.35.96]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ lhrpeml500001.china.huawei.com (7.191.163.213)
+X-CFilter-Loop: Reflected
+X-TUID: Q1htHNdw7Fu8
 
-On Wed, Sep 13, 2023 at 10:01:44AM +0200, Eric Auger wrote:
-> Introduce resv_region_list_insert() helper which inserts
-> a new ReservedRegion into a sorted list of reserved region.
-> In case of overlap, the new region has higher priority and
-> hides the existing overlapped segments. If the overlap is
-> partial, new regions are created for parts which are not
-> overlapped. The new region has higher priority independently
-> on the type of the regions.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  include/qemu/reserved-region.h | 32 ++++++++++++
->  util/reserved-region.c         | 94 ++++++++++++++++++++++++++++++++++
->  util/meson.build               |  1 +
->  3 files changed, 127 insertions(+)
->  create mode 100644 include/qemu/reserved-region.h
->  create mode 100644 util/reserved-region.c
-> 
-> diff --git a/include/qemu/reserved-region.h b/include/qemu/reserved-region.h
-> new file mode 100644
-> index 0000000000..8e6f0a97e2
-> --- /dev/null
-> +++ b/include/qemu/reserved-region.h
-> @@ -0,0 +1,32 @@
-> +/*
-> + * QEMU ReservedRegion helpers
-> + *
-> + * Copyright (c) 2023 Red Hat, Inc.
-> + *
-> + * This program is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU General Public
-> + * License as published by the Free Software Foundation; either
-> + * version 2 of the License, or (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> + * General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#ifndef QEMU_RESERVED_REGION_H
-> +#define QEMU_RESERVED_REGION_H
-> +
-> +#include "exec/memory.h"
-> +
-> +/*
-> + * Insert a new region into a sorted list of reserved regions. In case
-> + * there is overlap with existing regions, the new added region has
-> + * higher priority and replaces the overlapped segment.
-> + */
-> +GList *resv_region_list_insert(GList *list, ReservedRegion *reg);
-> +
-> +#endif
-> diff --git a/util/reserved-region.c b/util/reserved-region.c
-> new file mode 100644
-> index 0000000000..bb26a6bed3
-> --- /dev/null
-> +++ b/util/reserved-region.c
-> @@ -0,0 +1,94 @@
-> +/*
-> + * QEMU ReservedRegion helpers
-> + *
-> + * Copyright (c) 2023 Red Hat, Inc.
-> + *
-> + * This program is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU General Public
-> + * License as published by the Free Software Foundation; either
-> + * version 2 of the License, or (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> + * General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/range.h"
-> +#include "qemu/reserved-region.h"
-> +
-> +GList *resv_region_list_insert(GList *list, ReservedRegion *reg)
-> +{
-> +    ReservedRegion *resv_iter, *new_reg;
-> +    Range *r = &reg->range;
-> +    Range *range_iter;
-> +    GList *l;
-> +
-> +    for (l = list; l ; ) {
-> +        resv_iter = (ReservedRegion *)l->data;
-> +        range_iter = &resv_iter->range;
-> +
-> +        /* Skip all list elements strictly less than range to add */
-> +        if (range_compare(range_iter, r) < 0) {
-> +            l = l->next;
-> +        } else if (range_compare(range_iter, r) > 0) {
-> +            return g_list_insert_before(list, l, reg);
-> +        } else { /* there is an operlap */
+Virtual CPU hotplug support is being added across various architectures [1][3].
+This series adds various code bits common across all architectures:
 
-I guess this could just be 'else if', and the whole block below
-unindented. But I don't know if the function would look less or more scary :)
+1. vCPU creation and Parking code refactor [Patch 1]
+2. Update ACPI GED framework to support vCPU Hotplug [Patch 4,6,7]
+3. ACPI CPUs AML code change [Patch 5]
+3. Helper functions to support unrealization of CPU objects [Patch 8,9]
+4. Misc [Patch 2,3,10]
 
-> +            if (range_contains_range(r, range_iter)) {
-> +                /* new range contains current item, simply remove this latter */
-> +                GList *prev = l->prev;
-> +                g_free(l->data);
-> +                list = g_list_delete_link(list, l);
-> +                if (prev) {
 
-These four lines could just be 'l = prev->next'.
+References:
+[1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com/
+[2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
+[3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/
 
-> +                    l = prev;
-> +                    if (l) {
-> +                        l = l->next;
-> +                    }
-> +                } else {
-> +                    l = list;
-> +                }
-> +            } else if (range_contains_range(range_iter, r)) {
-> +                /* new region is included in the current region */
-> +                if (range_lob(range_iter) == range_lob(r)) {
-> +                    /* adjacent on the left side, derives into 2 regions */
-> +                    range_set_bounds(range_iter, range_upb(r) + 1,
-> +                                     range_upb(range_iter));
-> +                    return g_list_insert_before(list, l, reg);
-> +                } else if (range_upb(range_iter) == range_upb(r)) {
-> +                    /* adjacent on the right side, derives into 2 regions */
-> +                    range_set_bounds(range_iter, range_lob(range_iter),
-> +                                     range_lob(r) - 1);
-> +                    l = l->next;
-> +                } else {
-> +                    uint64_t lob = range_lob(range_iter);
-> +                    /*
-> +                     * the new range is in the middle of an existing one,
-> +                     * split this latter into 3 regs instead
-> +                     */
-> +                    range_set_bounds(range_iter, range_upb(r) + 1,
-> +                                     range_upb(range_iter));
-> +                    new_reg = g_new0(ReservedRegion, 1);
-> +                    new_reg->type = resv_iter->type;
-> +                    range_set_bounds(&new_reg->range,
-> +                                     lob, range_lob(r) - 1);
-> +                    list = g_list_insert_before(list, l, new_reg);
-> +                    return g_list_insert_before(list, l, reg);
-> +                }
-> +            } else if (range_lob(r) < range_lob(range_iter)) {
-> +                range_set_bounds(range_iter, range_upb(r) + 1,
-> +                                 range_upb(range_iter));
-> +                return g_list_insert_before(list, l, reg);
-> +            } else { /* intersection on the upper range */
-> +                range_set_bounds(range_iter, range_lob(range_iter),
-> +                                 range_lob(r) - 1);
-> +                l = l->next;
-> +            }
-> +        } /* overlap */
-> +    }
-> +    return g_list_append(list, reg);
+Jean-Philippe Brucker (1):
+  target/arm/kvm: Write CPU state back to KVM on reset
 
-Looks correct overall
+Salil Mehta (9):
+  accel/kvm: Extract common KVM vCPU {creation,parking} code
+  hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
+  hw/acpi: Add ACPI CPU hotplug init stub
+  hw/acpi: Init GED framework with cpu hotplug events
+  hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
+  hw/acpi: Update GED _EVT method AML with cpu scan
+  hw/acpi: Update ACPI GED framework to support vCPU Hotplug
+  physmem: Add helper function to destroy CPU AddressSpace
+  gdbstub: Add helper function to unregister GDB register space
 
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+ accel/kvm/kvm-all.c                    | 63 +++++++++++++++++++-------
+ gdbstub/gdbstub.c                      | 14 ++++++
+ hw/acpi/acpi-cpu-hotplug-stub.c        |  6 +++
+ hw/acpi/cpu.c                          | 25 ++++++----
+ hw/acpi/generic_event_device.c         | 22 +++++++++
+ hw/i386/acpi-build.c                   |  2 +-
+ include/exec/cpu-common.h              |  8 ++++
+ include/exec/gdbstub.h                 |  5 ++
+ include/hw/acpi/cpu.h                  |  5 +-
+ include/hw/acpi/cpu_hotplug.h          |  4 ++
+ include/hw/acpi/generic_event_device.h |  5 ++
+ include/hw/core/cpu.h                  |  1 +
+ include/sysemu/kvm.h                   | 14 ++++++
+ softmmu/physmem.c                      | 25 ++++++++++
+ target/arm/kvm.c                       |  8 +++-
+ 15 files changed, 179 insertions(+), 28 deletions(-)
 
-> +}
-> +
-> diff --git a/util/meson.build b/util/meson.build
-> index c4827fd70a..eb677b40c2 100644
-> --- a/util/meson.build
-> +++ b/util/meson.build
-> @@ -51,6 +51,7 @@ util_ss.add(files('qdist.c'))
->  util_ss.add(files('qht.c'))
->  util_ss.add(files('qsp.c'))
->  util_ss.add(files('range.c'))
-> +util_ss.add(files('reserved-region.c'))
->  util_ss.add(files('stats64.c'))
->  util_ss.add(files('systemd.c'))
->  util_ss.add(files('transactions.c'))
-> -- 
-> 2.41.0
-> 
+-- 
+2.34.1

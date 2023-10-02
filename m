@@ -1,107 +1,113 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1230659ejb;
-        Mon, 2 Oct 2023 03:52:54 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IELW6Zqsj6AzrRi8/1TCDp3sXRxScpFYwqEIHMCK/doDHvdf6vU+9y7wviFCpD3v7XRot/L
-X-Received: by 2002:a0c:dc86:0:b0:65d:6a5:1a3f with SMTP id n6-20020a0cdc86000000b0065d06a51a3fmr10126331qvk.43.1696243974017;
-        Mon, 02 Oct 2023 03:52:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696243974; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1217941ejb;
+        Mon, 2 Oct 2023 03:22:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEv2FBuprtOAvYz8NExrJzcclgahRPybdU1eEnN7QlZIrrkn34NQATbnv/057wYTizCqEq0
+X-Received: by 2002:ac8:7c52:0:b0:405:396e:f059 with SMTP id o18-20020ac87c52000000b00405396ef059mr14368000qtv.33.1696242157989;
+        Mon, 02 Oct 2023 03:22:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696242157; cv=none;
         d=google.com; s=arc-20160816;
-        b=RBUdk9C4YRm4oK3vNBo8KKNvrCtimy3wtB3E3MsTq/H5buJcbPe5qfaHvEgBXBbDyP
-         WfHqu6oIQtwbQi3642PcI+TR5y0uBa89s7w797nIVQgWK2oSNCPkKk3UHo7iMFfhnIjF
-         jjZlkItFX0YQi7fv7uIGR62c5qOafulu3yMDoy8gzPwt+5qbYOhwTyteOYSlOgoDTmmS
-         6b0Er3EEcdy8OB2RUZvQJDoMgeF5sgq5vciHdDdZZMC7rX/KZvLpNOd7YnOOjNXunDJZ
-         9V23WY8ufL45o+C5YHp435RtaIfPQzz5VKZNFzCLkHuNP6jrNyKoGKpw1uiDmHTURIBb
-         dJiw==
+        b=q9jqocwDh02vLrlJNLsAp/p93pNlPtBJcHggJJouK6XknseLRdnH/TyhcWC61uyj6H
+         vD8oQRjnSHMAr7TVgBOsXZReS4HnxGHeEUajtChM6FiNWpRbXNHUcKkIBV7aosPWCx0m
+         SWkogKgsRrafky8v3i4OqPi2FM1eu8yDr6T0kTkdJL6vh1gYRVAOXRXTgDkiTCJt/SSs
+         2AfpqOG8dFdOeOcoIFmwGCHHVtJKHm4JGe9qLTmoZfhfPqCIW67s0SW0rlfRFHlh1Vk7
+         /I5jSfAjEoCwJI6Sis7rTjNEXOoNHCJXzR2ale5+qJ7KHob92WYSr7rK9WTo2amFhVUU
+         Ck8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=/2eYx7vWVQPzZTFli3GHyOMMIyJ9hN3FK3UP2OelmkA=;
-        fh=uPvUmp+vAX4cO0UAhGMxp4hlkvRT2sZWNfwXfuLBcdY=;
-        b=GFZew6vzLjSBZGgYbfZVLnu0bTQQSyge82JMWHL/olC4Sd3Ig6J9vtDOMD5KPGQ9GF
-         paa0LJBKVnADKfQFwTJ/5aBonTweXTqi+qep3aLmZVw5ZAn6bNp4Ao7aeiYO1nEytB2H
-         1EDqnmaaXFWfhnSVMOjFcfu9a5TGiB2a+V/2DZZvCEo/LAhV3WAmKEhg9/nbcEy58Cp4
-         WNQt2+NOUh/DcduzF13F3nGbtsnTrmUohMBUMcf595yo6zv7eo8qZO6+etOUhGYN7ezp
-         K5mwCeAFWCy/Fzr4mDJk055NE13dSSvV2GpMTAkifSksxBgIaEDS0ZaU9RQPwMunmu2R
-         krfA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=GdCmToBk92WOh4SDDJLk0orFWiB7ASevHTmTNoQRonU=;
+        fh=0YMfcPDF2LUGhvTzsKcb4Nu3ZpHdPY3pg4YW+hHGD24=;
+        b=j0soF8DXzJPCFQvz1PcaT/+bkajm4qCUg3VvoOG0UivS0pyB73EbQVkICfZ3bvue7P
+         nywdU6cJqGWo1T8GNNArXVbesZ9cb1PRHDGf53fI78Jn9D7sUvANz62OZ0VfQQri7GNa
+         YhT8XnrCHueLYoR4tDqA8KYkCdyu3rJ2FfL03Fu/H887HrvaBhBSbzhHBF7YmkydKsSz
+         ROdH6BH3mwfm6Q9zUivTDpvVEPbp5nQmSp+sfZtiUE/ntN86CRy+rvXZyK8imP47uCdH
+         LOPilmIhFXxLv7CQ6u/E7hNFeE4/VUznMBYovV9eONS4a1Xj1jdRanNfiCTHTaNGwee5
+         fIUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=j7itz7L+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FkxMW2Ly;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a22-20020a0ca996000000b0065652a344fdsi9021269qvb.397.2023.10.02.03.52.53
+        by mx.google.com with ESMTPS id q14-20020a05622a04ce00b00417f34c1f6bsi7358893qtx.576.2023.10.02.03.22.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Oct 2023 03:52:54 -0700 (PDT)
+        Mon, 02 Oct 2023 03:22:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=j7itz7L+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FkxMW2Ly;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qnGXe-0001Fs-38; Mon, 02 Oct 2023 06:52:46 -0400
+	id 1qnG4O-000874-7g; Mon, 02 Oct 2023 06:22:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <itaru.kitayama@gmail.com>)
- id 1qnGXb-0001FR-TM
- for qemu-arm@nongnu.org; Mon, 02 Oct 2023 06:52:43 -0400
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qnG4M-00085k-IC
+ for qemu-arm@nongnu.org; Mon, 02 Oct 2023 06:22:31 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <itaru.kitayama@gmail.com>)
- id 1qnGXa-0006hn-1N
- for qemu-arm@nongnu.org; Mon, 02 Oct 2023 06:52:43 -0400
-Received: by mail-oi1-x22c.google.com with SMTP id
- 5614622812f47-3af603da0f0so3484775b6e.3
- for <qemu-arm@nongnu.org>; Mon, 02 Oct 2023 03:52:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qnG4K-0000zH-7v
+ for qemu-arm@nongnu.org; Mon, 02 Oct 2023 06:22:29 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4066241289bso23076185e9.0
+ for <qemu-arm@nongnu.org>; Mon, 02 Oct 2023 03:22:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1696243960; x=1696848760; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=/2eYx7vWVQPzZTFli3GHyOMMIyJ9hN3FK3UP2OelmkA=;
- b=j7itz7L+oloZu6UHBBuGxbppzsA4dZPaIsqJ0dH4Lx/FpPCH00StuFM3w/cSucl0QY
- D3faRWnwhS87IMBC1bjYS625mXFeKEQSD9drq7mjArdM6VYisUO/dRZUkBUTVhDPjIsz
- VloLHOqXAMItY6bJP8ZAnlVnVOIrTaNS6cK1lhcRKkWmyurpdhAqfP7DiXjkB8+qoQ2f
- wuVpHTc4pZAsFXNoddYYoE5CoeAZx0XNlLf6XcQ1/xoc40AUKQoEwRfJMeBQ1BPA1rh4
- 4Tm0YrhbC7bHw1G5AF7ar1ChuMz3qhBMcoZ9HHPwvfZ24iv+tOK2Crsq1jtw/ANgXQCv
- c2xw==
+ d=linaro.org; s=google; t=1696242145; x=1696846945; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=GdCmToBk92WOh4SDDJLk0orFWiB7ASevHTmTNoQRonU=;
+ b=FkxMW2LyAdU3q7fDd516bIFZlNZI0ZG6vQVINbhjq4M0Kf7teR8LPub8bd+uUZPiWy
+ TqYDiTs5vuUkQXKoa5prYu1eR376BcdFlMxvQRgozNZPgTXBLUVFRETS9DTx5prADQVk
+ eqEYbDV/mE5RcvKjGQ4VEJq9QeEdgJpTmDUj+L0aML3Wd2uAB49x0kEoukfE36sP4IQQ
+ OGvpOlVzm9IswWqfJXl7XzkisnBZFSqPs1/4JwPEWNN44/isLehg0HfYRABdBmLAjPdD
+ 8xVhZPFeM34vocKkEIQySF7gfvkrN0C23GG9fZgVnQiduj8YLC5kBtlWhKA65S+LQq0E
+ Inzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696243960; x=1696848760;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/2eYx7vWVQPzZTFli3GHyOMMIyJ9hN3FK3UP2OelmkA=;
- b=gITFgCQj2DC3YYiCzMJCcnJtyv0KuLFIGkQG0B8/1JjQ4nuapk00geqJtIWWgsnf+E
- hpECpoRGkvzKR3tmlPIRyYpYDNiUU57KcvbUwLu5hDnZ8HgY8UWH/5eb43wuNu6GK1sV
- +xGRVFqrR6zTtmDkNuQgsBnB6ZfeRJAUF9mLUAalR0QI9dbQyXGb0rlL4KnGM2fOkrt+
- xCDEdvTTfltlKbyz/1FYn1GdC/rjymYBs2Iu8LBV6hLlrBHrsWjX59Xy60PW3nMjPk8D
- v2KS9tnUId3PV+oGhJE+REg/L+1Vg0mFTwcvZw+ZbOqZ5sf0FhZ1q8xlY3XF4D+eLuor
- dKNQ==
-X-Gm-Message-State: AOJu0YzJxpl0LSLi9Hg4Kbyrn3TmzRPF5/tsSeNh80RGuw1CPz3VdIoN
- rXskuBpWvDXNHG+jf6M/mkos1h1dmqR2Cx7yF7M=
-X-Received: by 2002:a05:6808:19a7:b0:3ad:ae62:8253 with SMTP id
- bj39-20020a05680819a700b003adae628253mr14024568oib.15.1696243959717; Mon, 02
- Oct 2023 03:52:39 -0700 (PDT)
-MIME-Version: 1.0
-References: <CANW9uyvsD8UWJ9yrrvgb4i7nEoDAXNaepk-zsJWuyw=tp_W9oA@mail.gmail.com>
- <20231002102231.GA3075015@myrica>
-In-Reply-To: <20231002102231.GA3075015@myrica>
-From: Itaru Kitayama <itaru.kitayama@gmail.com>
-Date: Mon, 2 Oct 2023 19:52:28 +0900
-Message-ID: <CANW9uyu85z9+-v8ait9EWcjWRu1+C8Xx3cM__8oBKof7fJwRwA@mail.gmail.com>
-Subject: Re: Quick start guide on RME emulation
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+ d=1e100.net; s=20230601; t=1696242145; x=1696846945;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=GdCmToBk92WOh4SDDJLk0orFWiB7ASevHTmTNoQRonU=;
+ b=KMjsGcIHaQcXj6VFNNL9xa+sYoyGEUi8rbnzHIlmxA3IvSHtWke6AS1TswXmcz3EGD
+ 3aaDzvozOqLM65YdTu8aZuu6WIeO+oyff1+X0ZOuOGbJcuAjT+MMdET/Ie1dp11aG84d
+ NO8ibG0BJPoEWcF4TdtLDIi+QQBtMGOLZ8geTBJiwORTmusxzThoXAppGZNtQ87+c4YO
+ CFxv6BhanV/lghG5ztRKOvksO7A6ja/2WRjvJeHSWSFwncydzYXLTMg/kPRglOVHWSEC
+ vymd5+zM1Ao6Ryfhb5dPE3ZKdTANBsptf4jJuPtBCqJfZ8evyVKQln/slCg6eNUSdRLC
+ 6Kkg==
+X-Gm-Message-State: AOJu0YxHEOsptRx6QyJeYkRvysYHAxhnRRwnEJ8zhvLUNYptR/TKHyBR
+ P6xSodBAI6sfUWFU9LTYAPP52g==
+X-Received: by 2002:a7b:ca53:0:b0:405:3b1f:968b with SMTP id
+ m19-20020a7bca53000000b004053b1f968bmr10097063wml.21.1696242145617; 
+ Mon, 02 Oct 2023 03:22:25 -0700 (PDT)
+Received: from myrica ([2a02:c7c:7290:b00:fd32:2b31:6755:400c])
+ by smtp.gmail.com with ESMTPSA id
+ x13-20020a1c7c0d000000b0040472ad9a3dsm6879394wmc.14.2023.10.02.03.22.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 02 Oct 2023 03:22:25 -0700 (PDT)
+Date: Mon, 2 Oct 2023 11:22:31 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Itaru Kitayama <itaru.kitayama@gmail.com>
 Cc: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000abe1fd0606b99286"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22c;
- envelope-from=itaru.kitayama@gmail.com; helo=mail-oi1-x22c.google.com
+Subject: Re: Quick start guide on RME emulation
+Message-ID: <20231002102231.GA3075015@myrica>
+References: <CANW9uyvsD8UWJ9yrrvgb4i7nEoDAXNaepk-zsJWuyw=tp_W9oA@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CANW9uyvsD8UWJ9yrrvgb4i7nEoDAXNaepk-zsJWuyw=tp_W9oA@mail.gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,66 +123,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8Ij+vkD48uzn
+X-TUID: +9J2F7G55Qfo
 
---000000000000abe1fd0606b99286
-Content-Type: text/plain; charset="UTF-8"
+Hi Itaru,
 
-Jean,
-It is indeed the latter. Itd be good if we could test how far we can go in
-terms of launching a Realm guest via the CCA aware KVM.
+On Mon, Oct 02, 2023 at 04:51:46PM +0900, Itaru Kitayama wrote:
+> Hi,
+> Is there a doc that I can refer to when emulating the Realm in QEMU?
 
-On Mon, Oct 2, 2023 at 19:22 Jean-Philippe Brucker <jean-philippe@linaro.org>
-wrote:
+What kind of doc are you looking for, details about the QEMU
+implementation or instructions for putting together a software stack that
+boots a Realm guest?
 
-> Hi Itaru,
->
-> On Mon, Oct 02, 2023 at 04:51:46PM +0900, Itaru Kitayama wrote:
-> > Hi,
-> > Is there a doc that I can refer to when emulating the Realm in QEMU?
->
-> What kind of doc are you looking for, details about the QEMU
-> implementation or instructions for putting together a software stack that
-> boots a Realm guest?
->
-> I could try to write something up about the latter based on my workflow,
-> although most parts (TF-A, RMM, Linux host and guest, edk2, VMM) are still
-> incomplete and out of tree.
->
-> Thanks,
-> Jean
->
+I could try to write something up about the latter based on my workflow,
+although most parts (TF-A, RMM, Linux host and guest, edk2, VMM) are still
+incomplete and out of tree.
 
---000000000000abe1fd0606b99286
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">Jean,</div><div dir=3D"auto">It is indeed the latter. Itd=
- be good if we could test how far we can go in terms of launching a Realm g=
-uest via the CCA aware KVM.</div><div><br><div class=3D"gmail_quote"><div d=
-ir=3D"ltr" class=3D"gmail_attr">On Mon, Oct 2, 2023 at 19:22 Jean-Philippe =
-Brucker &lt;<a href=3D"mailto:jean-philippe@linaro.org">jean-philippe@linar=
-o.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
-rgin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Hi Itaru,<br>
-<br>
-On Mon, Oct 02, 2023 at 04:51:46PM +0900, Itaru Kitayama wrote:<br>
-&gt; Hi,<br>
-&gt; Is there a doc that I can refer to when emulating the Realm in QEMU?<b=
-r>
-<br>
-What kind of doc are you looking for, details about the QEMU<br>
-implementation or instructions for putting together a software stack that<b=
-r>
-boots a Realm guest?<br>
-<br>
-I could try to write something up about the latter based on my workflow,<br=
->
-although most parts (TF-A, RMM, Linux host and guest, edk2, VMM) are still<=
-br>
-incomplete and out of tree.<br>
-<br>
-Thanks,<br>
-Jean<br>
-</blockquote></div></div>
-
---000000000000abe1fd0606b99286--
+Thanks,
+Jean

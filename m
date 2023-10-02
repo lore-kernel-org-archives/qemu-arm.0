@@ -1,90 +1,91 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1627114ejb;
-        Mon, 2 Oct 2023 16:25:25 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG6dl9EaP153HewxhtupZ2yxSwIIDfMzi3ElTtE92YMBExnuAq1h46YQSCKT08BRGLFMYmu
-X-Received: by 2002:a25:d381:0:b0:d81:89d4:ffd9 with SMTP id e123-20020a25d381000000b00d8189d4ffd9mr676475ybf.31.1696289124894;
-        Mon, 02 Oct 2023 16:25:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696289124; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1628543ejb;
+        Mon, 2 Oct 2023 16:29:13 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHuVceyUAsqM0I4Pkjp9Y5AoYm4Ufqr2LwGMzipjxuTyN8Q3nXSr6yBgRatXk78c17kXODo
+X-Received: by 2002:a2e:93d7:0:b0:2b9:4413:864e with SMTP id p23-20020a2e93d7000000b002b94413864emr9725662ljh.53.1696289353625;
+        Mon, 02 Oct 2023 16:29:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696289353; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZgDQ5B3i1qiugsGq5uTHP5NZGtpXmmZmQLnzI1ZyVCTIabmOKvuj9vK7uLA9J4nWBF
-         VLZVTehiXpELe4bzsg7eDqituxRJ6YeXqAzjYHr+MbHWQ/M/l12xOmjAPJLBh6tSWATH
-         ykARmibSj57Gz8M3WzoNIsFvrmhPVViibvmjyGwR/yLSbTcy0SYAZ12iwynrzsLxiUoD
-         0QMNE8CPVH/BjzbS3IFkFdABh8g817LahBA7yUCgu6HYAT7xzJATwPPjWSkFOPYG+GpU
-         6RILTdQ1UtRhbIiX5NiASZlTuHfxF2RFTL1xeXXJTaxmLYSsCafkmudda1OyqgC8/NJf
-         BHkw==
+        b=VOxJbQxOWOcxuT0jcO0yWt7k9vHPItFt05OU1JZMFP+TKHuaJEYYiDXSn6Dpq+bt3Y
+         enuV+5YcMJzP8Ify0Lvdx4KNT6O12T1tysMUik3Q//KWSQPVFGi7U4MQUgtD3V4OtMZG
+         cUtWHEeCP8ANp9LyavyeY95AhF58JMZli7pY7/KCq4QwZzeky8mtyqJa1jxwQC9PZL1A
+         cKriEgmcpxAMlc9bXQH/V1wM1Qn1P0VJDx5Dct2EgjfhBLW06w1hOVFs6wR+tC4et0fx
+         0l2YzjzuT4+E3gOErXaYlD5Edck5Hdh0W96qd0UrQK2MC4013UWL70MViq9V85kBuIUh
+         z/vA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=09sAV7Zg1QggcLvG8Ic2iWuh1IUbW2ZGEDw+h086a0Q=;
+        bh=kdb0u2mZD7engjCM6+bzo8+dGWnLDDh0vZKGl79Muy8=;
         fh=UoUFvcIH1Llqwj9lcubayb9wLqiblQuJi8py3jS56vc=;
-        b=I+jawxXpXOcjAPfxGSgeWSi3JohA59+CSYuaMguCTCLgd+iN7etmgayT82AbTp/P6A
-         T4lTbZ6DEshnBcW7ekfO0Lif534DvOTHgMig1iWa0E2oI7qbzHc0E8lksJS/sXb/+d35
-         eQNLwzbLtvneJiyYEOKdWz1LC6vO+LwZKWOq9aAZnBisa+ZG9Mj9l7IrfCEbE2FVw+Ye
-         2p3nWCOYkoXBDrRxXCXlaMCV3PuORqNM5aD1+zmdel/199GiszUKfTwR7fdCiMS8pqQv
-         P8FzaAq4Zn+icafTo0i+Zk+O740EYPgPdW3p3jU9CZ4sAfPeLgcDjEKsO5cLX7TySYqi
-         hpRA==
+        b=FsFBzD+RLQSD2QcFvKzjnRmXPIrUFao3k6z7YTAu1PeDKy6qwbHlUONSyz2S0nqWw4
+         0rtWVrE6eKfxpP5z8GtiUNXII/FD9lfRo6MOTcTPyQu+qx0N48l29iV6173F29AGTtyH
+         TZQpRZzwPBC4ToaNQHJE0ATa9NKiIUoiANc48DZ6NOkz+1/FlOvD2YoHVwQOPhRYFfV7
+         os111TU9D79lVjRdDQMUciAOfV9tyu2hwfsp8dvPqQeDWC20snOCQlgf1QYtBiN+6Oh2
+         Ci0SA4aTUaezqTG8yV1SwL8qkXOzHe41HoIxZjBpTFTvjUSyeUFa+HCnqMD9hxkO8cQQ
+         PAOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QDakutgz;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dn1Li5WQ;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id a126-20020a25ca84000000b00d8662708f39si27903ybg.505.2023.10.02.16.25.24
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id y11-20020a2e978b000000b002bff38f9725si14028989lji.60.2023.10.02.16.29.13
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Oct 2023 16:25:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 02 Oct 2023 16:29:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QDakutgz;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dn1Li5WQ;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1696289124;
+	s=mimecast20190719; t=1696289352;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=09sAV7Zg1QggcLvG8Ic2iWuh1IUbW2ZGEDw+h086a0Q=;
-	b=QDakutgzKoDtupxVTZnuPGEvc6+7QoHpgsq7sHVcBDd3XKFgSgnIhFjOXSs9DfEAQsktRU
-	AtB14q1Z5Yw/q+ijU15+rTY3oUWu2b1aoccH9RTVhScIIo9DAutKfwCJaX4IK676Oh1jlV
-	UThk4S2B7C86kQmz0gAge5msOapqoA0=
-Received: from mail-pf1-f199.google.com (mail-pf1-f199.google.com
- [209.85.210.199]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=kdb0u2mZD7engjCM6+bzo8+dGWnLDDh0vZKGl79Muy8=;
+	b=Dn1Li5WQFTMVT7HsAgYYSyByJHWHOUcRwEZVfgABL+rwA8CXbo1TYmVs3fKmqGW1qBzb14
+	oBMFSEq620BfIX7fNDP0tU30deWPMFdV6q8MeuhBIvZL4G79JGlqjiXtj/wxgGALXRAD9E
+	yQk3/2STLPhJjJgGoU/z2MUPnOjsFNo=
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-653-6AY82-SMN32LE8h-vz_Y1g-1; Mon, 02 Oct 2023 19:25:23 -0400
-X-MC-Unique: 6AY82-SMN32LE8h-vz_Y1g-1
-Received: by mail-pf1-f199.google.com with SMTP id d2e1a72fcca58-692a9b68f1aso205341b3a.1
-        for <alex.bennee@linaro.org>; Mon, 02 Oct 2023 16:25:22 -0700 (PDT)
+ us-mta-626-_BSo40kbOPW3azpOrmp24A-1; Mon, 02 Oct 2023 19:29:08 -0400
+X-MC-Unique: _BSo40kbOPW3azpOrmp24A-1
+Received: by mail-pl1-f199.google.com with SMTP id d9443c01a7336-1c61aafab45so3261675ad.3
+        for <alex.bennee@linaro.org>; Mon, 02 Oct 2023 16:29:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696289122; x=1696893922;
+        d=1e100.net; s=20230601; t=1696289347; x=1696894147;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=09sAV7Zg1QggcLvG8Ic2iWuh1IUbW2ZGEDw+h086a0Q=;
-        b=qOjoEjl5emO80uDp2/Q+jTzc504rUo2JdG+oe4j6rTs/eBEET4Ey7o3UJjumuY+IAK
-         sZMeFdI8aDc3OIQZM7A78ypx0mguFdg7C/GI187y2bbXrtkd9Vt4WD0AKMSM3ugKBbYm
-         hVWz4oeN1zSPNqOhRJn7ivB+zW1PsvFVLJbhgz9xXrvW2hjuezvSUMcJlqu0k8uTNo0g
-         QCbC9DVuEnwNDMB5k8BhlzogZ/dKvAlOeWefYhLVmatvt6j6N1Zf06lpHVeISMIL++J1
-         uL4+RMGaXxRHY6uexgzeXzQUXubLzBCpCZmi041NEb19DEqA7qphymd6fak2xhCVuPWU
-         16Cw==
-X-Gm-Message-State: AOJu0YzflbVvZRngZ9EQZ62d3VTIcq0GvWiTpdunN7K+xOpeCw2ltBJF
-	TPTG0eUi/Ujc4seV1NJGHDZs5MqjkwBs4SnbXaK1LmYFMUXYO4TRG4T1Ps+tJ0/6U2KulxkCAnq
-	r/0WNzqj+yrOdwx1h
-X-Received: by 2002:a05:6a00:3a23:b0:68f:c2f7:cef0 with SMTP id fj35-20020a056a003a2300b0068fc2f7cef0mr1634172pfb.4.1696289122057;
-        Mon, 02 Oct 2023 16:25:22 -0700 (PDT)
-X-Received: by 2002:a05:6a00:3a23:b0:68f:c2f7:cef0 with SMTP id fj35-20020a056a003a2300b0068fc2f7cef0mr1634160pfb.4.1696289121751;
-        Mon, 02 Oct 2023 16:25:21 -0700 (PDT)
+        bh=kdb0u2mZD7engjCM6+bzo8+dGWnLDDh0vZKGl79Muy8=;
+        b=fW7A6yN7qdWVBsPiWZw+ZNnvP4WEy8kMRE9lOVtEZPpWZ4MuNZh0EPhSH8NRLjPxAe
+         pg+RSVFpJ0RC//RVQAD2EBzDJ3qtyZK3zc8zUzxVTCfvaj0bQNhxZWhbUPCkDGcDrJV8
+         J4ZdwM8EqTWSZ23Sgpaj5NMrDVFovooabf/bljKZP3Em5DPBojtnJGygdkwIZ8GvPdWk
+         20s93FkVc927D1JsioJ5DCKD9HRmWHUk63lBRfMl/iDvQuHoMPVcipzMDQ9gp/KOe4rv
+         kQ2qFU8HYGYBGC58N/R/2/nd7GRdEHtRDosmM3B4xSLO7QCtcu6FFzMUbkn2mx3uRW/4
+         PZ/w==
+X-Gm-Message-State: AOJu0YzWQvj9ZKRH6ySA0qnyU4qNCie9HoQGJCJgkXN8bZX/m3bT+juY
+	0LIKz52f/aEQAjy0vUMcRnjMJcO9uGOsn0WjedAF5c0YPrxJpLKQMHvZDokgxGBl7QjAA4HfcAi
+	AgBQfNaNQmN2YxFXl
+X-Received: by 2002:a17:902:b58c:b0:1c3:3347:996e with SMTP id a12-20020a170902b58c00b001c33347996emr9815305pls.23.1696289347581;
+        Mon, 02 Oct 2023 16:29:07 -0700 (PDT)
+X-Received: by 2002:a17:902:b58c:b0:1c3:3347:996e with SMTP id a12-20020a170902b58c00b001c33347996emr9815290pls.23.1696289347311;
+        Mon, 02 Oct 2023 16:29:07 -0700 (PDT)
 Return-Path: <gshan@redhat.com>
 Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
-        by smtp.gmail.com with ESMTPSA id f20-20020aa782d4000000b0069343e474bcsm33981pfn.104.2023.10.02.16.25.10
+        by smtp.gmail.com with ESMTPSA id b19-20020a170902ed1300b001c0ce518e98sm1118pld.224.2023.10.02.16.28.56
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Oct 2023 16:25:21 -0700 (PDT)
-Message-ID: <1269fcdc-0b14-2449-2623-9de2948f81fa@redhat.com>
-Date: Tue, 3 Oct 2023 09:25:09 +1000
+        Mon, 02 Oct 2023 16:29:07 -0700 (PDT)
+Message-ID: <2e4705a5-3c24-ae6a-e030-b3d5f4f2e37a@redhat.com>
+Date: Tue, 3 Oct 2023 09:28:54 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.1
-Subject: Re: [PATCH V2 03/10] hw/acpi: Add ACPI CPU hotplug init stub
+Subject: Re: [PATCH V2 04/10] hw/acpi: Init GED framework with cpu hotplug
+ events
 To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
@@ -100,51 +101,31 @@ Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
  jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
  linuxarm@huawei.com
 References: <20230930001933.2660-1-salil.mehta@huawei.com>
- <20230930001933.2660-4-salil.mehta@huawei.com>
+ <20230930001933.2660-5-salil.mehta@huawei.com>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230930001933.2660-4-salil.mehta@huawei.com>
+In-Reply-To: <20230930001933.2660-5-salil.mehta@huawei.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: RgQL9WxHI/t+
-
+X-TUID: SJd3RI4bcKPg
 
 On 9/30/23 10:19, Salil Mehta wrote:
-> ACPI CPU hotplug related initialization should only happen if ACPI_CPU_HOTPLUG
-> support has been enabled for particular architecture. Add cpu_hotplug_hw_init()
-> stub to avoid compilation break.
+> ACPI GED(as described in the ACPI 6.2 spec) can be used to generate ACPI events
+> when OSPM/guest receives an interrupt listed in the _CRS object of GED. OSPM
+> then maps or demultiplexes the event by evaluating _EVT method.
 > 
+> This change adds the support of cpu hotplug event initialization in the
+> existing GED framework.
+> 
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 > ---
->   hw/acpi/acpi-cpu-hotplug-stub.c | 6 ++++++
->   1 file changed, 6 insertions(+)
+>   hw/acpi/generic_event_device.c         | 8 ++++++++
+>   include/hw/acpi/generic_event_device.h | 5 +++++
+>   2 files changed, 13 insertions(+)
 > 
 
 Reviewed-by: Gavin Shan <gshan@redhat.com>
-
-> diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-stub.c
-> index 3fc4b14c26..c6c61bb9cd 100644
-> --- a/hw/acpi/acpi-cpu-hotplug-stub.c
-> +++ b/hw/acpi/acpi-cpu-hotplug-stub.c
-> @@ -19,6 +19,12 @@ void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
->       return;
->   }
->   
-> +void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
-> +                         CPUHotplugState *state, hwaddr base_addr)
-> +{
-> +    return;
-        ^^^^^^
-> +}
-> +
-
-I guess the return is the outcome by following the pattern of other functions ;-)
-
->   void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list)
->   {
->       return;
-
-Thanks,
-Gavin

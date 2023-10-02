@@ -1,47 +1,47 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1407984ejb;
-        Mon, 2 Oct 2023 08:54:52 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFEbMa1nue0lpnZzTGB11peBGg1SoAu+xRgBNZJYXMUzkAZx/bGPbZU0TDRruIr/Gl/m8oG
-X-Received: by 2002:adf:f38c:0:b0:320:b1b:86a9 with SMTP id m12-20020adff38c000000b003200b1b86a9mr10973210wro.24.1696262092237;
-        Mon, 02 Oct 2023 08:54:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696262092; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1411621ejb;
+        Mon, 2 Oct 2023 09:00:53 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHKaTwE2rwNr7MJfcYU7834qYe38APhV53182EF/G3tKupG5l96NkT/eCYbxrXXQIzkX5CB
+X-Received: by 2002:a5d:5684:0:b0:31f:f664:d87 with SMTP id f4-20020a5d5684000000b0031ff6640d87mr9952157wrv.20.1696262453242;
+        Mon, 02 Oct 2023 09:00:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696262453; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bosmvda40LToGd0xg9gPjGHn1fG6YnjXJp0biCTm4fSrKQ40i1BsC03UlyHZbAln4P
-         gNgaFprU5bv3ZorSuZ1FDHS1twpJC4aILBuZYPL8xf3q0sLDaRR2nwIhlhJnrD+WJxlx
-         +JDVPx+UbeKH+F+uhf8gv/2nxwEgNKaPuPr8pDToKqqvjYyNK1KCsTtBcKo2VkcmQt9O
-         9+vmhweofykNkjCB/KPdJmFEZP4QJUBBcxPyZwO0HCeVSrwVoHjzUtzn4m3Z/2DoT+9y
-         8Id0GV2DbH6Znwf4PwNCqX0bOExULbI+0IvhEw/rT7jlqRMEiFV/5evqrsL2pd1AvFkg
-         iuaA==
+        b=a+eqB1Cb4eT8hRzfgzEhQno0zlAzEX86c9ahv+bQJiUO3xV9XjkLG1m4AJk5NpiqRa
+         Yew6OTXF1BIqbfwNEO2V4Vg6k07Y3mHbubT1xfNjrsLpYHwcs0mLvySUpZoen59DNX8D
+         Fmshu+95ZjG3HN0XCGMeiHdzKY1llfBkKkeE6DMy2GNM8PtoRduCsAsZSC7qjWH4LOsL
+         UIa+4jaJbzPgS022+7tVHsnxPjggqnt9bgn+bmuDzpm48i2uOMLzScRYoPMM7J7JFfXZ
+         bPYmSwJezB2IJI8iWoMum6bIIISfaeAdzK3Z1/Q6Rx41wdH3DKzMIIBxkabQnkk38vWh
+         oJHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=asIz2Sygbqw2G76krpeojtz134gcFxdR4Ka0dp2fXsk=;
+        bh=Z4x7cF/EF0GuH0Uj+OsEbqQUUHYfxFlMgkz6RpeEG9k=;
         fh=/EBauY3IXh4VobPm5b6w815uXOAKkGQo/xHlRV7Dr5E=;
-        b=PvOBzvkxzxvSAU2ggc8YnIh1ldD1Vbm3cT2TQ0oyaS7gyVtVJQz1W2C16FQSQ6cUeS
-         k7/4pqdS1nznt6A9mrZvE02cJZfdyVciakaZoismogRU61Q9LKEnIPyZmCceh7+s2fdL
-         LsEDxjS6yvA+wUIjpTZBl+lIL0aXX0YdgsFOqjcZ56u7QXIPU48rc7TCdEQVv8iMJoLq
-         artvh9QjPobVdjVOxotkkKHbtRCjqHnYsoV1/X82wuTK76V3KeaXqexIKmLJR3rHRbUX
-         kSyZujBCudV7MPkQHk5pHRzXNJIeaNlv/c4OcIWxjUSe+gwc9k3pFJrgPmWI9Bmvqvt/
-         InAQ==
+        b=R2GdjPAgPLG5bp54Ki2855UCmVFta1L2xaRjA+UFTKC8u94mKPGusbiu55SyZfVvbn
+         Y5eVOmWApm03y7/IWUfsTzN9DUa+XVytr98mXBCdmQeqTAvlkPaQspPNIrKG+GH/QxL3
+         ytyNRRCYx3cVpDEH5wuHKettiJKHds4LNNOp+SRWBvdZb+tQyfKHjkbJaN03HR2tpJ7d
+         J06ZHOe3oC68xzET8R8oiAciH+05XGMfasb4d3aJ1DySwR1R41XB19Q3mPdLyf1n3a+a
+         GWKGATwurjwMEBiiXU4amhuKdjzVjR07kKw562X6d5QZNZkZXO4UH7E0aD0+AGgXpDng
+         DTNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <jonathan.cameron@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id w14-20020adfde8e000000b0032480c4f2b0si5241848wrl.1030.2023.10.02.08.54.51
+        by mx.google.com with ESMTPS id w14-20020a5d404e000000b0032480c4f2d6si4302088wrp.368.2023.10.02.09.00.52
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Oct 2023 08:54:52 -0700 (PDT)
+        Mon, 02 Oct 2023 09:00:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.207])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Rzlrg1HPdz67FbS;
-	Mon,  2 Oct 2023 23:54:43 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Rzlxy5Bc4z6K66L;
+	Mon,  2 Oct 2023 23:59:18 +0800 (CST)
 Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
  (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Mon, 2 Oct
- 2023 16:54:50 +0100
-Date: Mon, 2 Oct 2023 16:54:49 +0100
+ 2023 17:00:51 +0100
+Date: Mon, 2 Oct 2023 17:00:50 +0100
 From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
 To: Salil Mehta <salil.mehta@huawei.com>
 CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
@@ -58,70 +58,57 @@ CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<linuxarm@huawei.com>
-Subject: Re: [PATCH V2 02/10] hw/acpi: Move CPU ctrl-dev MMIO region len
- macro to common header file
-Message-ID: <20231002165449.00004e17@Huawei.com>
-In-Reply-To: <20230930001933.2660-3-salil.mehta@huawei.com>
+Subject: Re: [PATCH V2 03/10] hw/acpi: Add ACPI CPU hotplug init stub
+Message-ID: <20231002170050.00004fd8@Huawei.com>
+In-Reply-To: <20230930001933.2660-4-salil.mehta@huawei.com>
 References: <20230930001933.2660-1-salil.mehta@huawei.com>
-	<20230930001933.2660-3-salil.mehta@huawei.com>
+	<20230930001933.2660-4-salil.mehta@huawei.com>
 Organization: Huawei Technologies Research and Development (UK) Ltd.
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.202.227.76]
 X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
  lhrpeml500005.china.huawei.com (7.191.163.240)
 X-CFilter-Loop: Reflected
-X-TUID: n/o/y7p6gsVf
+X-TUID: CrocYwNgrspD
 
-On Sat, 30 Sep 2023 01:19:25 +0100
+On Sat, 30 Sep 2023 01:19:26 +0100
 Salil Mehta <salil.mehta@huawei.com> wrote:
 
-> CPU ctrl-dev MMIO region length could be used in ACPI GED and various oth=
-er
-> architecture specific places. Move ACPI_CPU_HOTPLUG_REG_LEN macro to more
-> appropriate common header file.
->=20
+> ACPI CPU hotplug related initialization should only happen if ACPI_CPU_HOTPLUG
+> support has been enabled for particular architecture. Add cpu_hotplug_hw_init()
+> stub to avoid compilation break.
+> 
 > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Reviewed-by: Alex Benn=E9e <alex.bennee@linaro.org>
-LGTM=20
+Seems reasonable.  For the other similar cases a stub isn't needed
+because GED is built when CONFIG_ACPI_HW_REDUCED=y and
+that select ACPI_MEMORY_HOTPLUG and ACPI_NVDIMM
+
+You could do the same for the CPU hotplug case and instantiate
+a potentially useless memory region etc.  This seems more sensible to me
 
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
 > ---
->  hw/acpi/cpu.c                 | 2 +-
->  include/hw/acpi/cpu_hotplug.h | 2 ++
->  2 files changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-> index 19c154d78f..45defdc0e2 100644
-> --- a/hw/acpi/cpu.c
-> +++ b/hw/acpi/cpu.c
-> @@ -1,12 +1,12 @@
->  #include "qemu/osdep.h"
->  #include "migration/vmstate.h"
->  #include "hw/acpi/cpu.h"
-> +#include "hw/acpi/cpu_hotplug.h"
->  #include "qapi/error.h"
->  #include "qapi/qapi-events-acpi.h"
->  #include "trace.h"
->  #include "sysemu/numa.h"
-> =20
-> -#define ACPI_CPU_HOTPLUG_REG_LEN 12
->  #define ACPI_CPU_SELECTOR_OFFSET_WR 0
->  #define ACPI_CPU_FLAGS_OFFSET_RW 4
->  #define ACPI_CPU_CMD_OFFSET_WR 5
-> diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.h
-> index 3b932abbbb..48b291e45e 100644
-> --- a/include/hw/acpi/cpu_hotplug.h
-> +++ b/include/hw/acpi/cpu_hotplug.h
-> @@ -19,6 +19,8 @@
->  #include "hw/hotplug.h"
->  #include "hw/acpi/cpu.h"
-> =20
-> +#define ACPI_CPU_HOTPLUG_REG_LEN 12
+>  hw/acpi/acpi-cpu-hotplug-stub.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-stub.c
+> index 3fc4b14c26..c6c61bb9cd 100644
+> --- a/hw/acpi/acpi-cpu-hotplug-stub.c
+> +++ b/hw/acpi/acpi-cpu-hotplug-stub.c
+> @@ -19,6 +19,12 @@ void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
+>      return;
+>  }
+>  
+> +void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+> +                         CPUHotplugState *state, hwaddr base_addr)
+> +{
+> +    return;
+> +}
 > +
->  typedef struct AcpiCpuHotplug {
->      Object *device;
->      MemoryRegion io;
+>  void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list)
+>  {
+>      return;

@@ -1,137 +1,127 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1220257ejb;
-        Mon, 2 Oct 2023 03:27:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGrg42oMlLA7aV9QG2MQzM0LKarGezCLTL+5HDp7440cAWS+DvLZWoB83LtEf6BrWG8PHox
-X-Received: by 2002:adf:e54e:0:b0:31a:e744:1297 with SMTP id z14-20020adfe54e000000b0031ae7441297mr9695486wrm.50.1696242466208;
-        Mon, 02 Oct 2023 03:27:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696242466; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1625141ejb;
+        Mon, 2 Oct 2023 16:19:51 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHFicw2cBHzSeiaCKOvY+r6Mo2+jlt/1436VQD7S/u7gx1NqTtJH096+ixnEPxchRT/hq33
+X-Received: by 2002:a25:d501:0:b0:d66:b73a:8356 with SMTP id r1-20020a25d501000000b00d66b73a8356mr714102ybe.14.1696288791511;
+        Mon, 02 Oct 2023 16:19:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696288791; cv=none;
         d=google.com; s=arc-20160816;
-        b=esdrUk6eikSo0WSAXxQ1eeWD7MxuGwDbhJ1O2jQyOVgcNu6yyzAnH96iHmy2HXuS2a
-         QZRj7Le/+7mTvLusnhDeodotoyq1QTDjL4aoCYbkLb7DFIGDoDIgLJN3zltcGqJMyf6u
-         lDAN5RsPHqQeC0SEBBH0UxG1eVR1gGE+awCC1SYNm1G3RXoURFCjAGKzZX0c2amj9LdA
-         eVzSXw0ybdhME1NPOWr2ZhqY6WSvbrg0KP5xKzz3+Ow9a1Dsa9FJY0u9zY8LGQLJPaNf
-         zETQ2mLBN57xib/jrM3OHuiuqeAFNp+jKxV9Wn7oO/UzSs7fOfJKGDOCgCakviqlw5D+
-         H1sQ==
+        b=amqKmnWjMt96XjPc989dLz+oUrFSvY6joeNwQ/RLzxCIHm7c4Kyf8Vr0A3ijFA4h5l
+         Jl8GVexv2Nvsfsi8Z6hdLTxzRvGYfDA6TlVvla/nI8+AQr9aozFwMWvS+WUfUb/EuLuh
+         1QcczWZpCk/DMHOBChNtgkcC5+Q8iBI1bJgLBTR37TksMHGWyO2uF9hjMw1OjWb0UJjq
+         u3z2oEiEcb2ivJlU6w/QmbtE7X1YUwm1JmXz36E9cI3PoXx4AhyuaD0OxYxpe9pLCfUr
+         eVAmMkUbSJubsgsGnhR+shIes46mfxnY/ZFNeTWWI7mDQIEHj/ZLiDGHpLmmchEYN3t7
+         mJlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=nv8OXBUuFmIcT/BlO+/0UmenOIJj87/RVrKwSJoX4h0=;
-        fh=hdkuu+IAzV9F5cEyPWpdhkV3n0hGx3syql0LHe616n0=;
-        b=PBgXgb0CIYnVDHDNsC8EeXb0ozFphO+RiJ1JZFOpGMHFStHEs/Hq3+jzt+qG/Ww7pB
-         cYygbCXTlWmSZhsDUDbH5LDkG9YOkjlKBTysqH3/WMv5O6/or25HPCLY4niFDqe6g4zw
-         2nbtKgT5Vn76DcbW+vc68hDA99613sBnCcO5UgcnhUMEIpg2Oc/HhgXVj/zu8MME7xjR
-         kX2W6M7ZKgsBAAxpXtXNJCFDJtKd1tAXAw/n8HXegFxycDgtooKIpD0pIH0/i4K60yun
-         Ex1tObjIaAKVXh0tv0tDo2IKo9VKnJJRXvOeta9DqUkEqsFRD4khrryZ7FPAHZSU4G5w
-         isWw==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=1Vs0EGAymtTvEBv2kg8ycVMlwZ6qOaMg/mXgYFFPxHE=;
+        fh=UoUFvcIH1Llqwj9lcubayb9wLqiblQuJi8py3jS56vc=;
+        b=PQDIpPSS0NfiGDB+h/HqP5dTLGOR5tXmT6jfPVqkIBC7EZIcXmBxvQ+qIU0ZTr6eta
+         Lsuxm91ljP+bsuGL1pJnEiSFeq3zZlgkrX2qmO3I8cWvw1WrJukCPkIYonuckI7WawLk
+         wzSh6mYl8qIUotHTojqcyVuLbYs9bOggijeldC6PkG9HVqnptI7rWXv0hfne2EidrY/D
+         52phWJqx6j9S19Gfukv58KPOXPsTKm+U66yxNLFjpmpDeVmi0gBzZfgDAJuYBNA5mSOJ
+         YblohqTKF2KFmCfDW4DeYGpxX4zjtDzcpKTH5LQ0RECQAo6kA7jEnGynjIZEe4nay5xq
+         aRkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id f7-20020adff587000000b003247a9a04b6si6158451wro.570.2023.10.02.03.27.46
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Oct 2023 03:27:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FZjE3L7h;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <gshan@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id f199-20020a25cfd0000000b00d7e312a0260si33303ybg.146.2023.10.02.16.19.51
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Oct 2023 16:19:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml100003.china.huawei.com (unknown [172.18.147.200])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RzcbF2NH4z67kqq;
-	Mon,  2 Oct 2023 18:27:37 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml100003.china.huawei.com (7.191.160.210) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Mon, 2 Oct 2023 11:27:44 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Mon, 2 Oct 2023 11:27:44 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "linux@armlinux.org.uk"
-	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
-	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
-	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
-	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
-	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian
-	<zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
-	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com"
-	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>
-Subject: RE: [PATCH RFC V2 04/37] arm/virt,target/arm: Machine init time
- change common to vCPU {cold|hot}-plug
-Thread-Topic: [PATCH RFC V2 04/37] arm/virt,target/arm: Machine init time
- change common to vCPU {cold|hot}-plug
-Thread-Index: AQHZ8GEl17RFLqukJ0mxgmcKIPSj3bAuJqCAgAguIcA=
-Date: Mon, 2 Oct 2023 10:27:44 +0000
-Message-ID: <aaed4b2e463840e9b41e07c27efedbcd@huawei.com>
-References: <20230926100436.28284-1-salil.mehta@huawei.com>
- <20230926100436.28284-5-salil.mehta@huawei.com>
- <41003807-062f-1121-956e-72e0444e048f@redhat.com>
-In-Reply-To: <41003807-062f-1121-956e-72e0444e048f@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.195.33.168]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FZjE3L7h;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1696288791;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1Vs0EGAymtTvEBv2kg8ycVMlwZ6qOaMg/mXgYFFPxHE=;
+	b=FZjE3L7hieXKTKiGTee/UPemgZXGU1455pqp2r5QCn4QCA66AWHsNnilw7EAoKhOdAMEub
+	M1EqDyBn7zgGtDPDYQEX2JzgvXT6ZJNL8cpobogzhdnAoQUnuEAMphG4WlMMoIoOB/okcz
+	LYovdo625ui7+bYcvar+V5Iqm1qM634=
+Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
+ [209.85.210.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-197-GHOPQIycOZyLtw0v_gkHaQ-1; Mon, 02 Oct 2023 19:19:49 -0400
+X-MC-Unique: GHOPQIycOZyLtw0v_gkHaQ-1
+Received: by mail-pf1-f198.google.com with SMTP id d2e1a72fcca58-692bbab7a4fso2667752b3a.1
+        for <alex.bennee@linaro.org>; Mon, 02 Oct 2023 16:19:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696288788; x=1696893588;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1Vs0EGAymtTvEBv2kg8ycVMlwZ6qOaMg/mXgYFFPxHE=;
+        b=f6VWcrc/ZN3Kjxp2hEfCiKMEkEU8Txkhd/jcMNzNjIFI4umvk2ZiOCqzdiSV4/xerH
+         5wEPPs81xNC2fdAAAhSyqm+Yx/oqgOSVC3J6fMUHyPUFVUljlZFTpCGH+YXG6Jlcgatx
+         85HVEKSh7CryNsN+SP/ZwNRsstooOPuGGwrki4Wt3PZNrn0cCVkU+NcdmJcUrL/v2oGJ
+         4MZ1fFwLHg+359ZokQGaXZofj1enCL4Af0HV+8LD/tQxnAVcVDPA3qkhnZd3A7nfpsL5
+         egxsHbMigL3AwOWJcsWME9Y0n2l3E0DndmFnS/nFfnjExJsmJe7gVIVm/L+xUs5h0b9D
+         FTCA==
+X-Gm-Message-State: AOJu0YyKkWzNCvmppehjX4h4O5Cf6WfFFnL22AcFVAgQNog9n+ZNFAX2
+	TPkepX6b1kclVfJVgZODyI3nDtibv8fNeibAtXa8Y+V/mbWLH1GXqLrdkw4CWTuzchQVZOY14l1
+	W5zp4jqkvA0HShxiZ
+X-Received: by 2002:a05:6a00:188d:b0:68b:a137:373d with SMTP id x13-20020a056a00188d00b0068ba137373dmr1917709pfh.17.1696288788303;
+        Mon, 02 Oct 2023 16:19:48 -0700 (PDT)
+X-Received: by 2002:a05:6a00:188d:b0:68b:a137:373d with SMTP id x13-20020a056a00188d00b0068ba137373dmr1917664pfh.17.1696288787917;
+        Mon, 02 Oct 2023 16:19:47 -0700 (PDT)
+Return-Path: <gshan@redhat.com>
+Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
+        by smtp.gmail.com with ESMTPSA id x27-20020a056a00271b00b006884844dfcdsm37163pfv.55.2023.10.02.16.19.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 02 Oct 2023 16:19:47 -0700 (PDT)
+Message-ID: <64ecbf50-2287-6bd4-d2bd-e37a793ed6a9@redhat.com>
+Date: Tue, 3 Oct 2023 09:19:34 +1000
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: prqJv8eZDccr
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH V2 02/10] hw/acpi: Move CPU ctrl-dev MMIO region len macro
+ to common header file
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com,
+ oliver.upton@linux.dev, pbonzini@redhat.com, mst@redhat.com,
+ will@kernel.org, rafael@kernel.org, alex.bennee@linaro.org,
+ linux@armlinux.org.uk, darren@os.amperecomputing.com,
+ ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
+ karl.heubaum@oracle.com, miguel.luis@oracle.com, salil.mehta@opnsrc.net,
+ zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, wangyanan55@huawei.com,
+ jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
+ linuxarm@huawei.com
+References: <20230930001933.2660-1-salil.mehta@huawei.com>
+ <20230930001933.2660-3-salil.mehta@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20230930001933.2660-3-salil.mehta@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: S0/w+OBsq6Ov
 
-SGkgR2F2aW4sDQoNCj4gRnJvbTogR2F2aW4gU2hhbiA8Z3NoYW5AcmVkaGF0LmNvbT4NCj4gU2Vu
-dDogV2VkbmVzZGF5LCBTZXB0ZW1iZXIgMjcsIDIwMjMgNzozMCBBTQ0KPiBUbzogU2FsaWwgTWVo
-dGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+OyBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUt
-DQo+IGFybUBub25nbnUub3JnDQo+IENjOiBtYXpAa2VybmVsLm9yZzsgamVhbi1waGlsaXBwZUBs
-aW5hcm8ub3JnOyBKb25hdGhhbiBDYW1lcm9uDQo+IDxqb25hdGhhbi5jYW1lcm9uQGh1YXdlaS5j
-b20+OyBscGllcmFsaXNpQGtlcm5lbC5vcmc7DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsg
-cmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZzsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgYW5k
-cmV3LmpvbmVzQGxpbnV4LmRldjsgZGF2aWRAcmVkaGF0LmNvbTsNCj4gcGhpbG1kQGxpbmFyby5v
-cmc7IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgd2lsbEBrZXJuZWwub3JnOyBhcmRiQGtlcm5lbC5v
-cmc7DQo+IG9saXZlci51cHRvbkBsaW51eC5kZXY7IHBib256aW5pQHJlZGhhdC5jb207IG1zdEBy
-ZWRoYXQuY29tOw0KPiByYWZhZWxAa2VybmVsLm9yZzsgYm9ybnRyYWVnZXJAbGludXguaWJtLmNv
-bTsgYWxleC5iZW5uZWVAbGluYXJvLm9yZzsNCj4gbGludXhAYXJtbGludXgub3JnLnVrOyBkYXJy
-ZW5Ab3MuYW1wZXJlY29tcHV0aW5nLmNvbTsNCj4gaWxra2FAb3MuYW1wZXJlY29tcHV0aW5nLmNv
-bTsgdmlzaG51QG9zLmFtcGVyZWNvbXB1dGluZy5jb207DQo+IGthcmwuaGV1YmF1bUBvcmFjbGUu
-Y29tOyBtaWd1ZWwubHVpc0BvcmFjbGUuY29tOyBzYWxpbC5tZWh0YUBvcG5zcmMubmV0Ow0KPiB6
-aHVrZXFpYW4gPHpodWtlcWlhbjFAaHVhd2VpLmNvbT47IHdhbmd4aW9uZ2ZlbmcgKEMpDQo+IDx3
-YW5neGlvbmdmZW5nMkBodWF3ZWkuY29tPjsgd2FuZ3lhbmFuIChZKSA8d2FuZ3lhbmFuNTVAaHVh
-d2VpLmNvbT47DQo+IGppYWtlcm5lbDJAZ21haWwuY29tOyBtYW9iaWJvQGxvb25nc29uLmNuOyBs
-aXhpYW5nbGFpQGxvb25nc29uLmNuDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggUkZDIFYyIDA0LzM3
-XSBhcm0vdmlydCx0YXJnZXQvYXJtOiBNYWNoaW5lIGluaXQgdGltZQ0KPiBjaGFuZ2UgY29tbW9u
-IHRvIHZDUFUge2NvbGR8aG90fS1wbHVnDQo+IA0KPiBPbiA5LzI2LzIzIDIwOjA0LCBTYWxpbCBN
-ZWh0YSB3cm90ZToNCj4gPiBSZWZhY3RvciBhbmQgaW50cm9kdWNlIHRoZSBjb21tb24gbG9naWMg
-cmVxdWlyZWQgZHVyaW5nIHRoZQ0KPiBpbml0aWFsaXphdGlvbiBvZg0KPiA+IGJvdGggY29sZCBh
-bmQgaG90IHBsdWdnZWQgdkNQVXMuIEFsc28gaW5pdGlhbGl6ZSB0aGUgKmRpc2FibGVkKiBzdGF0
-ZSBvZiB0aGUNCj4gPiB2Q1BVcyB3aGljaCBzaGFsbCBiZSB1c2VkIGZ1cnRoZXIgZHVyaW5nIGlu
-aXQgcGhhc2VzIG9mIHZhcmlvdXMgb3RoZXIgY29tcG9uZW50cw0KPiA+IGxpa2UgR0lDLCBQTVUs
-IEFDUEkgZXRjIGFzIHBhcnQgb2YgdGhlIHZpcnQgbWFjaGluZSBpbml0aWFsaXphdGlvbi4NCg0K
-Wy4uLl0NCg0KPiA+DQo+ID4gQ28tZGV2ZWxvcGVkLWJ5OiBTYWxpbCBNZWh0YSA8c2FsaWwubWVo
-dGFAaHVhd2VpLmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBTYWxpbCBNZWh0YSA8c2FsaWwubWVo
-dGFAaHVhd2VpLmNvbT4NCj4gPiBDby1kZXZlbG9wZWQtYnk6IEtlcWlhbiBaaHUgPHpodWtlcWlh
-bjFAaHVhd2VpLmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBLZXFpYW4gWmh1IDx6aHVrZXFpYW4x
-QGh1YXdlaS5jb20+DQo+ID4gUmVwb3J0ZWQtYnk6IEdhdmluIFNoYW4gPGdhdmluLnNoYW5AcmVk
-aGF0LmNvbT4NCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5eXl5eXl5eXl5eXl5eXl5e
-Xl5eXg0KPiANCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxnc2hhbkByZWRoYXQuY29t
-Pg0KDQoNCkFoLiBHcm9zcy4gU29ycnkgYWJvdXQgdGhpcy4gV2lsbCBmaXguDQoNClRoYW5rcw0K
-U2FsaWwuDQoNCj4gDQo+ID4gW0dTOiBwb2ludGVkIHRoZSBhc3NlcnRpb24gZHVlIHRvIHdyb25n
-IHJhbmdlIGNoZWNrXQ0KPiA+IFNpZ25lZC1vZmYtYnk6IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0
-YUBodWF3ZWkuY29tPg0KPiA+IC0tLQ0KPiA+ICAgaHcvYXJtL3ZpcnQuYyAgICAgIHwgMTQ5ICsr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLQ0KPiA+ICAgdGFyZ2V0
-L2FybS9jcHUuYyAgIHwgICA3ICsrKw0KPiA+ICAgdGFyZ2V0L2FybS9jcHU2NC5jIHwgIDE0ICsr
-KysrDQo+ID4gICAzIGZpbGVzIGNoYW5nZWQsIDE1NiBpbnNlcnRpb25zKCspLCAxNCBkZWxldGlv
-bnMoLSkNCj4gPg0KDQo=
+On 9/30/23 10:19, Salil Mehta wrote:
+> CPU ctrl-dev MMIO region length could be used in ACPI GED and various other
+> architecture specific places. Move ACPI_CPU_HOTPLUG_REG_LEN macro to more
+> appropriate common header file.
+> 
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   hw/acpi/cpu.c                 | 2 +-
+>   include/hw/acpi/cpu_hotplug.h | 2 ++
+>   2 files changed, 3 insertions(+), 1 deletion(-)
+> 
+
+Reviewed-by: Gavin Shan <gshan@redhat.com>

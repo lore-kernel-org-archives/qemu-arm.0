@@ -1,234 +1,317 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1235636ejb;
-        Mon, 2 Oct 2023 04:03:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFEruHXHVt8QP3TP8AkrkM8oQthIGtkZOtW7/aqybOTEwreMwQaTQewrIs1zEDYZPSjJCk2
-X-Received: by 2002:a5d:4cd2:0:b0:323:2f54:b6cb with SMTP id c18-20020a5d4cd2000000b003232f54b6cbmr10025136wrt.8.1696244607265;
-        Mon, 02 Oct 2023 04:03:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696244607; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1624480ejb;
+        Mon, 2 Oct 2023 16:18:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF6fXkCfBTc5mvo12moetFvHtNbCSkaW4M9+tc0P6sS9zWDlCkxrjqggmPyeWIQXiEXa7Tq
+X-Received: by 2002:a0c:aa99:0:b0:651:9fa8:9fd9 with SMTP id f25-20020a0caa99000000b006519fa89fd9mr11289112qvb.51.1696288683038;
+        Mon, 02 Oct 2023 16:18:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696288683; cv=none;
         d=google.com; s=arc-20160816;
-        b=fFf4bCYNXBIxp+DfTGptqRg9lVlMFLYsiGTYhlaDxm0gCK04y0i0UDesa4rdynAPnF
-         PJcaZbAf9OrXbQLJS6vwI3XUsAqDKxximmYNzl2zcSx3cv3wgWMFRA9M9RrQR1Ygi+Rj
-         HHR+GZC06sq+O9QjTLril3cLkmkk0Cmox3BJzVW3ogqanU40AKdLv1MxUPX+5SCvSZGu
-         lKxWQT56ucwOAZgt9l6uGIZnsYzdF9SKmtFXRtMNtN60/e3vzQO0salJ9OCs6NsyXpFA
-         OQ5F8OhC8KnFKLql+6AzytdOVLCYDFtEotqSlcsnNYMtB5WP1Sv6xXupFwEy/N3mFA8h
-         J1Kw==
+        b=pSSzuCQjl0y89w8L+SL/jTeglqQlgWksJqWJx12IzEiTAj3ODrA6Axg8n6RTFqKd36
+         BJ95bIA48KVbKNlkrtWDuzcLGHRg+G+SxJI7J7u7hCEwYbEWlKtBXgObjCNakdHe1G22
+         O4YBP40xGEvdC3+o2WqTLd+7dMJ+vAU52IXLq4A62EqUPF2T4xGf8IQygRKV0o64vOLg
+         S8ooyEdPzo5L6V8x72r7U9GloEKrF451bqfi/MAoHilpTqrhFw9M373OiW1xzYD6bK+h
+         sJW6C64abMvuxxvqM0rPnRSJuu/Kqv34ePJbjI4o7EpEvtTUqy2qkKqLUUtorQB76OTt
+         Um7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=IFj9UtlmAkIBFnvXim+/aSVs+gU5vMy9pBYv7u9+Br0=;
-        fh=LdkVSS1nYRCH+ZpPYt41Ed6ffNy9dPNG3WYbOvCHGHM=;
-        b=MJML1Dhn21TtdgfvwBaSUjX9Lec2v7l4NfbbAvj7b8BgFrQoaAXk2eg0/kTrm9d5sL
-         xTmhyoTu8DLjOBMqaSKM7mbSZ+ijP8HaOsU0wT4Pe//w4lCOhJKw/j5UqBB2nHxxzBt2
-         3gsKT7e5TsJApoxl458g/gj5NQdjy5MI1BUUDvTaM5LiBZ4TFzV5STQIqjsdfoOVWi7L
-         xgqGxd/KKp9UKrdfqgV4NlCEzTJ6OdN9jP4r6euJEf76cbH8K6w99IFLDbdtIGIMqJKy
-         dA2dL26NyWnUZstlaZIDzLCr9jbL/UeXpqqu6V+mwDdmKnjGKkV672EUMbcBJ6zy8oIl
-         IFFw==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=5NZ2x4L8jtCIGTeilWA3veW3agmb+Wl4Ve9U54jEwrg=;
+        fh=UoUFvcIH1Llqwj9lcubayb9wLqiblQuJi8py3jS56vc=;
+        b=pj1bC+I0kCFDdhIYL1AMUZ0YVICeTMEWu1/6jeyp0VcX0pMQzfG51xkbYhEwPqjpJv
+         cadN/pu4aLmvan0Fcj1JfaLJyqoO4WRMZcdMapoJU6IegDxh8o3eFIDoohbhLoPd33hI
+         EYOotwk5r6A0/Zw1MPeIwTt79cKXXt67qadUm8ewifdu1kEeVQ7h5udSAspPLPnPcgwc
+         bfndC35gidGle29ATyN1L68pfYrO6Bk0Icp2SpUcBpya0Wx0nFJh56Ki56GtRYzogNOZ
+         ei7dPNOFeCfsmLJXs3GcTB3T8uwGXnFrB7x+YwbEd+7iTsvXU2OCnScKU5ydhA1XeJxU
+         z7Sg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id h9-20020a056000000900b003216f87c7d0si3579671wrx.640.2023.10.02.04.03.26
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Oct 2023 04:03:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MqABtpE+;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <gshan@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id p20-20020a0ce194000000b0065b1365cf66si7311222qvl.383.2023.10.02.16.18.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Oct 2023 16:18:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500003.china.huawei.com (unknown [172.18.147.200])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4RzdLm67rxz6K5vm;
-	Mon,  2 Oct 2023 19:01:52 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500003.china.huawei.com (7.191.162.67) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Mon, 2 Oct 2023 12:03:24 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Mon, 2 Oct 2023 12:03:24 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
-	Max Filippov <jcmvbkbc@gmail.com>, David Hildenbrand <david@redhat.com>,
-	Peter Xu <peterx@redhat.com>, Anton Johansson <anjo@rev.ng>, Peter Maydell
-	<peter.maydell@linaro.org>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
-	Marek Vasut <marex@denx.de>, David Gibson <david@gibson.dropbear.id.au>,
-	Brian Cain <bcain@quicinc.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>, Claudio Fontana
-	<cfontana@suse.de>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Marcelo Tosatti
-	<mtosatti@redhat.com>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, "Liu
- Zhiwei" <zhiwei_liu@linux.alibaba.com>, Aurelien Jarno
-	<aurelien@aurel32.net>, Ilya Leoshkevich <iii@linux.ibm.com>, Daniel Henrique
- Barboza <danielhb413@gmail.com>, Bastian Koppelmann
-	<kbastian@mail.uni-paderborn.de>, =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?=
-	<clg@kaod.org>, Alistair Francis <alistair.francis@wdc.com>, Alessandro Di
- Federico <ale@rev.ng>, Song Gao <gaosong@loongson.cn>, Marcel Apfelbaum
-	<marcel.apfelbaum@gmail.com>, "Chris Wulff" <crwulff@gmail.com>, "Michael S.
- Tsirkin" <mst@redhat.com>, "Alistair Francis" <alistair@alistair23.me>,
-	Fabiano Rosas <farosas@suse.de>, "qemu-s390x@nongnu.org"
-	<qemu-s390x@nongnu.org>, "wangyanan (Y)" <wangyanan55@huawei.com>, Luc Michel
-	<luc@lmichel.fr>, Weiwei Li <liweiwei@iscas.ac.cn>, Bin Meng
-	<bin.meng@windriver.com>, Stafford Horne <shorne@gmail.com>, Xiaojuan Yang
-	<yangxiaojuan@loongson.cn>, "Daniel P . Berrange" <berrange@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>, Richard Henderson
-	<richard.henderson@linaro.org>, Aleksandar Rikalo
-	<aleksandar.rikalo@syrmia.com>, Bernhard Beschow <shentey@gmail.com>, Mark
- Cave-Ayland <mark.cave-ayland@ilande.co.uk>, "qemu-riscv@nongnu.org"
-	<qemu-riscv@nongnu.org>, =?utf-8?B?QWxleCBCZW5uw6ll?=
-	<alex.bennee@linaro.org>, Nicholas Piggin <npiggin@gmail.com>, Greg Kurz
-	<groug@kaod.org>, Michael Rolnik <mrolnik@gmail.com>, Eduardo Habkost
-	<eduardo@habkost.net>, Markus Armbruster <armbru@redhat.com>, Palmer Dabbelt
-	<palmer@dabbelt.com>, xianglai li <lixianglai@loongson.cn>, Salil Mehta
-	<salil.mehta@opnsrc.net>, Igor Mammedov <imammedo@redhat.com>, Ani Sinha
-	<anisinha@redhat.com>, Bibo Mao <maobibo@loongson.cn>
-Subject: RE: [PATCH 07/22] exec/cpu: Introduce the CPU address space
- destruction function
-Thread-Topic: [PATCH 07/22] exec/cpu: Introduce the CPU address space
- destruction function
-Thread-Index: AQHZ6kpHZRJs2Ph4/02c9MXTagqXa7A2aEcw
-Date: Mon, 2 Oct 2023 11:03:24 +0000
-Message-ID: <e4002b7625444645a2f65e4060a58b58@huawei.com>
-References: <20230918160257.30127-1-philmd@linaro.org>
- <20230918160257.30127-8-philmd@linaro.org>
-In-Reply-To: <20230918160257.30127-8-philmd@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.195.33.168]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MqABtpE+;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1696288682;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5NZ2x4L8jtCIGTeilWA3veW3agmb+Wl4Ve9U54jEwrg=;
+	b=MqABtpE+1vDSB+/t48L7dzPlqxW2k1oGDKn9lLUZmJ2ReB0K4Nqa//3y+Sgm489QFfUzrT
+	wKDulEFDiIIpD1jTGKi8GxR2X/ZLCpOJg1fkInXYO0FW8kBFbSreuqIKonsDWsHfm5+B6R
+	UZTN04TJxC8OiQvKZQCHBsuTf4l9M2U=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-608-y4MSoxqHOq6UEQe6l12RTw-1; Mon, 02 Oct 2023 19:17:56 -0400
+X-MC-Unique: y4MSoxqHOq6UEQe6l12RTw-1
+Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-1c73637061eso2686955ad.3
+        for <alex.bennee@linaro.org>; Mon, 02 Oct 2023 16:17:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696288675; x=1696893475;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=5NZ2x4L8jtCIGTeilWA3veW3agmb+Wl4Ve9U54jEwrg=;
+        b=vh/37lxv8zDOna/7hxtWXLMoJMwN5rXD3W/uFtP5TsucZFwUWmjJz+NpMFzclOYre9
+         NzybRQ6zO+HITJvmQFMBTWj9C1wJ60qtimm52ozfa7hTbRFPWlgUe+uFtp2ew2w9YsrF
+         l9SQcsU6YfgqECRmGK6nSvkY5mvS8RON3eBuAquTwU+h2hN/ybLlf0wuEyI+akEW5vVR
+         bG4rxgmdXK58iXEWl5/5LK12l6ceKdUuEQR59fwxytFF9/nZJYJ1AZn7yumjE2Uk8Uzj
+         4kt+A9w8l4uQGj2YjRhYCg9tK+o3oGD/cjR0lXFFZjVTwgahoZelLHyi07WZetqcOwpR
+         elCQ==
+X-Gm-Message-State: AOJu0Yzf83jVxxELW8ibA59cl2pw0UuJmGcMhsqhq1UFv4K6pUefg+HK
+	PsQPKbdBT6CiiqXzR/wmdxqerZ+R7vJRZcyCtgnm9W7RCzAlyz5KvH9gyW1hCAk0q0fet4+2eni
+	agciVbx67jytcO/x2
+X-Received: by 2002:a17:902:eec6:b0:1c6:d34:5279 with SMTP id h6-20020a170902eec600b001c60d345279mr11470448plb.13.1696288675159;
+        Mon, 02 Oct 2023 16:17:55 -0700 (PDT)
+X-Received: by 2002:a17:902:eec6:b0:1c6:d34:5279 with SMTP id h6-20020a170902eec600b001c60d345279mr11470421plb.13.1696288674782;
+        Mon, 02 Oct 2023 16:17:54 -0700 (PDT)
+Return-Path: <gshan@redhat.com>
+Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
+        by smtp.gmail.com with ESMTPSA id l5-20020a170902eb0500b001c619fbd5fbsm15971197plb.298.2023.10.02.16.17.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 02 Oct 2023 16:17:54 -0700 (PDT)
+Message-ID: <a8861b68-5e04-5127-5c0f-77816401741b@redhat.com>
+Date: Tue, 3 Oct 2023 09:17:41 +1000
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: U3mpyy5m+U1O
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH V2 01/10] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com,
+ oliver.upton@linux.dev, pbonzini@redhat.com, mst@redhat.com,
+ will@kernel.org, rafael@kernel.org, alex.bennee@linaro.org,
+ linux@armlinux.org.uk, darren@os.amperecomputing.com,
+ ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
+ karl.heubaum@oracle.com, miguel.luis@oracle.com, salil.mehta@opnsrc.net,
+ zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, wangyanan55@huawei.com,
+ jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
+ linuxarm@huawei.com
+References: <20230930001933.2660-1-salil.mehta@huawei.com>
+ <20230930001933.2660-2-salil.mehta@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20230930001933.2660-2-salil.mehta@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: ISfe+8b8BI7Z
 
-SGkgUGhpbGxpcGUsDQpUaGlzIHBhdGNoIGhhcyBiZWVuIHRha2VuIGFzIGl0IGlzIGZyb20gQVJN
-J3MgUkZDIGFuZCB0aGUgY29tbW9uIHBhdGNoLXNldCBtZW50aW9uZWQgYmVsb3cuDQpTbyBTT0Jz
-IGFyZSBhbGwgd3JvbmcgZXZlcnl3aGVyZS4NCg0KDQpPcmlnaW5hbCBSRkMgcG9zdGVkIGluIHRo
-ZSB5ZWFyIDIwMjAuDQpbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDIw
-MDYxMzIxMzYyOS4yMTk4NC0yMy1zYWxpbC5tZWh0YUBodWF3ZWkuY29tLw0KDQpSZWNlbnRseSBw
-b3N0ZWQgUkZDIFYyDQpbMl0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDIz
-MDkyNjEwMDQzNi4yODI4NC0xLXNhbGlsLm1laHRhQGh1YXdlaS5jb20vVC8jbTVmNWFlNDBiMDkx
-ZDY5ZDAxMDEyODgwZDc1MDBkOTY4NzRhOWQzOWMNCg0KUmVjZW50IGNvbW1vbiBwYXRjaC1zZXQg
-Zm9yIFZpcnR1YWwgQ1BVIEhvdHBsdWcNClszXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9xZW11
-LWRldmVsLzIwMjMwOTMwMDAxOTMzLjI2NjAtOS1zYWxpbC5tZWh0YUBodWF3ZWkuY29tLw0KDQpb
-NF0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDIzMDkzMDAwMTkzMy4yNjYw
-LTEwLXNhbGlsLm1laHRhQGh1YXdlaS5jb20vDQoNCkJlc2lkZSBteSBvcmlnaW5hbCBwYXRjaC1z
-ZXQgaGFkIGJ1ZyB3aGljaCB5b3UgaGF2ZSBpbmhlcml0ZWQgaW4gdGhpcyBwYXRjaC1zZXQuDQog
-DQpUaGFua3MNClNhbGlsDQoNCg0KPiBGcm9tOiBxZW11LWFybS1ib3VuY2VzK3NhbGlsLm1laHRh
-PWh1YXdlaS5jb21Abm9uZ251Lm9yZyA8cWVtdS1hcm0tDQo+IGJvdW5jZXMrc2FsaWwubWVodGE9
-aHVhd2VpLmNvbUBub25nbnUub3JnPiBPbiBCZWhhbGYgT2YgUGhpbGlwcGUgTWF0aGlldS0NCj4g
-RGF1ZMOpDQo+IFNlbnQ6IE1vbmRheSwgU2VwdGVtYmVyIDE4LCAyMDIzIDU6MDMgUE0NCj4gVG86
-IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZw0KPiBDYzogTGF1cmVudCBWaXZpZXIgPGxhdXJlbnRAdml2
-aWVyLmV1PjsgUGFvbG8gQm9uemluaQ0KPiA8cGJvbnppbmlAcmVkaGF0LmNvbT47IE1heCBGaWxp
-cHBvdiA8amNtdmJrYmNAZ21haWwuY29tPjsgRGF2aWQgSGlsZGVuYnJhbmQNCj4gPGRhdmlkQHJl
-ZGhhdC5jb20+OyBQZXRlciBYdSA8cGV0ZXJ4QHJlZGhhdC5jb20+OyBBbnRvbiBKb2hhbnNzb24N
-Cj4gPGFuam9AcmV2Lm5nPjsgUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3Jn
-PjsNCj4ga3ZtQHZnZXIua2VybmVsLm9yZzsgTWFyZWsgVmFzdXQgPG1hcmV4QGRlbnguZGU+OyBE
-YXZpZCBHaWJzb24NCj4gPGRhdmlkQGdpYnNvbi5kcm9wYmVhci5pZC5hdT47IEJyaWFuIENhaW4g
-PGJjYWluQHF1aWNpbmMuY29tPjsgWW9zaGlub3JpDQo+IFNhdG8gPHlzYXRvQHVzZXJzLnNvdXJj
-ZWZvcmdlLmpwPjsgRWRnYXIgRSAuIElnbGVzaWFzDQo+IDxlZGdhci5pZ2xlc2lhc0BnbWFpbC5j
-b20+OyBDbGF1ZGlvIEZvbnRhbmEgPGNmb250YW5hQHN1c2UuZGU+OyBEYW5pZWwNCj4gSGVucmlx
-dWUgQmFyYm96YSA8ZGJhcmJvemFAdmVudGFuYW1pY3JvLmNvbT47IEFydHlvbSBUYXJhc2Vua28N
-Cj4gPGF0YXI0cWVtdUBnbWFpbC5jb20+OyBNYXJjZWxvIFRvc2F0dGkgPG10b3NhdHRpQHJlZGhh
-dC5jb20+OyBxZW11LQ0KPiBwcGNAbm9uZ251Lm9yZzsgTGl1IFpoaXdlaSA8emhpd2VpX2xpdUBs
-aW51eC5hbGliYWJhLmNvbT47IEF1cmVsaWVuIEphcm5vDQo+IDxhdXJlbGllbkBhdXJlbDMyLm5l
-dD47IElseWEgTGVvc2hrZXZpY2ggPGlpaUBsaW51eC5pYm0uY29tPjsgRGFuaWVsDQo+IEhlbnJp
-cXVlIEJhcmJvemEgPGRhbmllbGhiNDEzQGdtYWlsLmNvbT47IEJhc3RpYW4gS29wcGVsbWFubg0K
-PiA8a2Jhc3RpYW5AbWFpbC51bmktcGFkZXJib3JuLmRlPjsgQ8OpZHJpYyBMZSBHb2F0ZXIgPGNs
-Z0BrYW9kLm9yZz47IEFsaXN0YWlyDQo+IEZyYW5jaXMgPGFsaXN0YWlyLmZyYW5jaXNAd2RjLmNv
-bT47IEFsZXNzYW5kcm8gRGkgRmVkZXJpY28gPGFsZUByZXYubmc+Ow0KPiBTb25nIEdhbyA8Z2Fv
-c29uZ0Bsb29uZ3Nvbi5jbj47IE1hcmNlbCBBcGZlbGJhdW0NCj4gPG1hcmNlbC5hcGZlbGJhdW1A
-Z21haWwuY29tPjsgQ2hyaXMgV3VsZmYgPGNyd3VsZmZAZ21haWwuY29tPjsgTWljaGFlbCBTLg0K
-PiBUc2lya2luIDxtc3RAcmVkaGF0LmNvbT47IEFsaXN0YWlyIEZyYW5jaXMgPGFsaXN0YWlyQGFs
-aXN0YWlyMjMubWU+Ow0KPiBGYWJpYW5vIFJvc2FzIDxmYXJvc2FzQHN1c2UuZGU+OyBxZW11LXMz
-OTB4QG5vbmdudS5vcmc7IHdhbmd5YW5hbiAoWSkNCj4gPHdhbmd5YW5hbjU1QGh1YXdlaS5jb20+
-OyBMdWMgTWljaGVsIDxsdWNAbG1pY2hlbC5mcj47IFdlaXdlaSBMaQ0KPiA8bGl3ZWl3ZWlAaXNj
-YXMuYWMuY24+OyBCaW4gTWVuZyA8YmluLm1lbmdAd2luZHJpdmVyLmNvbT47IFN0YWZmb3JkIEhv
-cm5lDQo+IDxzaG9ybmVAZ21haWwuY29tPjsgWGlhb2p1YW4gWWFuZyA8eWFuZ3hpYW9qdWFuQGxv
-b25nc29uLmNuPjsgRGFuaWVsIFAgLg0KPiBCZXJyYW5nZSA8YmVycmFuZ2VAcmVkaGF0LmNvbT47
-IFRob21hcyBIdXRoIDx0aHV0aEByZWRoYXQuY29tPjsgUGhpbGlwcGUNCj4gTWF0aGlldS1EYXVk
-w6kgPHBoaWxtZEBsaW5hcm8ub3JnPjsgcWVtdS1hcm1Abm9uZ251Lm9yZzsgSmlheHVuIFlhbmcN
-Cj4gPGppYXh1bi55YW5nQGZseWdvYXQuY29tPjsgUmljaGFyZCBIZW5kZXJzb24NCj4gPHJpY2hh
-cmQuaGVuZGVyc29uQGxpbmFyby5vcmc+OyBBbGVrc2FuZGFyIFJpa2Fsbw0KPiA8YWxla3NhbmRh
-ci5yaWthbG9Ac3lybWlhLmNvbT47IEJlcm5oYXJkIEJlc2Nob3cgPHNoZW50ZXlAZ21haWwuY29t
-PjsgTWFyaw0KPiBDYXZlLUF5bGFuZCA8bWFyay5jYXZlLWF5bGFuZEBpbGFuZGUuY28udWs+OyBx
-ZW11LXJpc2N2QG5vbmdudS5vcmc7IEFsZXgNCj4gQmVubsOpZSA8YWxleC5iZW5uZWVAbGluYXJv
-Lm9yZz47IE5pY2hvbGFzIFBpZ2dpbiA8bnBpZ2dpbkBnbWFpbC5jb20+OyBHcmVnDQo+IEt1cnog
-PGdyb3VnQGthb2Qub3JnPjsgTWljaGFlbCBSb2xuaWsgPG1yb2xuaWtAZ21haWwuY29tPjsgRWR1
-YXJkbyBIYWJrb3N0DQo+IDxlZHVhcmRvQGhhYmtvc3QubmV0PjsgTWFya3VzIEFybWJydXN0ZXIg
-PGFybWJydUByZWRoYXQuY29tPjsgUGFsbWVyDQo+IERhYmJlbHQgPHBhbG1lckBkYWJiZWx0LmNv
-bT47IHhpYW5nbGFpIGxpIDxsaXhpYW5nbGFpQGxvb25nc29uLmNuPjsgU2FsaWwNCj4gTWVodGEg
-PHNhbGlsLm1laHRhQG9wbnNyYy5uZXQ+OyBJZ29yIE1hbW1lZG92IDxpbWFtbWVkb0ByZWRoYXQu
-Y29tPjsgQW5pDQo+IFNpbmhhIDxhbmlzaW5oYUByZWRoYXQuY29tPjsgQmlibyBNYW8gPG1hb2Jp
-Ym9AbG9vbmdzb24uY24+DQo+IFN1YmplY3Q6IFtQQVRDSCAwNy8yMl0gZXhlYy9jcHU6IEludHJv
-ZHVjZSB0aGUgQ1BVIGFkZHJlc3Mgc3BhY2UNCj4gZGVzdHJ1Y3Rpb24gZnVuY3Rpb24NCj4gDQo+
-IEZyb206IHhpYW5nbGFpIGxpIDxsaXhpYW5nbGFpQGxvb25nc29uLmNuPg0KPiANCj4gSW50cm9k
-dWNlIG5ldyBmdW5jdGlvbiB0byBkZXN0cm95IENQVSBhZGRyZXNzIHNwYWNlIHJlc291cmNlcw0K
-PiBmb3IgY3B1IGhvdC0odW4pcGx1Zy4NCj4gDQo+IENvLWF1dGhvcmVkLWJ5OiAiU2FsaWwgTWVo
-dGEiIDxzYWxpbC5tZWh0YUBvcG5zcmMubmV0Pg0KPiBDYzogIlNhbGlsIE1laHRhIiA8c2FsaWwu
-bWVodGFAb3Buc3JjLm5ldD4NCj4gQ2M6IFhpYW9qdWFuIFlhbmcgPHlhbmd4aWFvanVhbkBsb29u
-Z3Nvbi5jbj4NCj4gQ2M6IFNvbmcgR2FvIDxnYW9zb25nQGxvb25nc29uLmNuPg0KPiBDYzogIk1p
-Y2hhZWwgUy4gVHNpcmtpbiIgPG1zdEByZWRoYXQuY29tPg0KPiBDYzogSWdvciBNYW1tZWRvdiA8
-aW1hbW1lZG9AcmVkaGF0LmNvbT4NCj4gQ2M6IEFuaSBTaW5oYSA8YW5pc2luaGFAcmVkaGF0LmNv
-bT4NCj4gQ2M6IFBhb2xvIEJvbnppbmkgPHBib256aW5pQHJlZGhhdC5jb20+DQo+IENjOiBSaWNo
-YXJkIEhlbmRlcnNvbiA8cmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZz4NCj4gQ2M6IEVkdWFy
-ZG8gSGFia29zdCA8ZWR1YXJkb0BoYWJrb3N0Lm5ldD4NCj4gQ2M6IE1hcmNlbCBBcGZlbGJhdW0g
-PG1hcmNlbC5hcGZlbGJhdW1AZ21haWwuY29tPg0KPiBDYzogIlBoaWxpcHBlIE1hdGhpZXUtRGF1
-ZMOpIiA8cGhpbG1kQGxpbmFyby5vcmc+DQo+IENjOiBZYW5hbiBXYW5nIDx3YW5neWFuYW41NUBo
-dWF3ZWkuY29tPg0KPiBDYzogIkRhbmllbCBQLiBCZXJyYW5nw6kiIDxiZXJyYW5nZUByZWRoYXQu
-Y29tPg0KPiBDYzogUGV0ZXIgWHUgPHBldGVyeEByZWRoYXQuY29tPg0KPiBDYzogRGF2aWQgSGls
-ZGVuYnJhbmQgPGRhdmlkQHJlZGhhdC5jb20+DQo+IENjOiBCaWJvIE1hbyA8bWFvYmlib0Bsb29u
-Z3Nvbi5jbj4NCj4gU2lnbmVkLW9mZi1ieTogeGlhbmdsYWkgbGkgPGxpeGlhbmdsYWlAbG9vbmdz
-b24uY24+DQo+IE1lc3NhZ2UtSUQ6DQo+IDwzYTRmYzJhM2RmNGI3NjdjM2MyOTZhN2RhM2JjMTVj
-YTljMjUxMzE2LjE2OTQ0MzMzMjYuZ2l0LmxpeGlhbmdsYWlAbG9vbmdzbw0KPiBuLmNuPg0KPiAt
-LS0NCj4gIGluY2x1ZGUvZXhlYy9jcHUtY29tbW9uLmggfCAgOCArKysrKysrKw0KPiAgaW5jbHVk
-ZS9ody9jb3JlL2NwdS5oICAgICB8ICAxICsNCj4gIHNvZnRtbXUvcGh5c21lbS5jICAgICAgICAg
-fCAyNCArKysrKysrKysrKysrKysrKysrKysrKysNCj4gIDMgZmlsZXMgY2hhbmdlZCwgMzMgaW5z
-ZXJ0aW9ucygrKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZXhlYy9jcHUtY29tbW9uLmgg
-Yi9pbmNsdWRlL2V4ZWMvY3B1LWNvbW1vbi5oDQo+IGluZGV4IDQxNzg4YzBiZGQuLmViNTZhMjI4
-YTIgMTAwNjQ0DQo+IC0tLSBhL2luY2x1ZGUvZXhlYy9jcHUtY29tbW9uLmgNCj4gKysrIGIvaW5j
-bHVkZS9leGVjL2NwdS1jb21tb24uaA0KPiBAQCAtMTIwLDYgKzEyMCwxNCBAQCBzaXplX3QgcWVt
-dV9yYW1fcGFnZXNpemVfbGFyZ2VzdCh2b2lkKTsNCj4gICAqLw0KPiAgdm9pZCBjcHVfYWRkcmVz
-c19zcGFjZV9pbml0KENQVVN0YXRlICpjcHUsIGludCBhc2lkeCwNCj4gICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBjb25zdCBjaGFyICpwcmVmaXgsIE1lbW9yeVJlZ2lvbiAqbXIpOw0KPiAr
-LyoqDQo+ICsgKiBjcHVfYWRkcmVzc19zcGFjZV9kZXN0cm95Og0KPiArICogQGNwdTogQ1BVIGZv
-ciB3aGljaCBhZGRyZXNzIHNwYWNlIG5lZWRzIHRvIGJlIGRlc3Ryb3llZA0KPiArICogQGFzaWR4
-OiBpbnRlZ2VyIGluZGV4IG9mIHRoaXMgYWRkcmVzcyBzcGFjZQ0KPiArICoNCj4gKyAqIE5vdGUg
-dGhhdCB3aXRoIEtWTSBvbmx5IG9uZSBhZGRyZXNzIHNwYWNlIGlzIHN1cHBvcnRlZC4NCj4gKyAq
-Lw0KPiArdm9pZCBjcHVfYWRkcmVzc19zcGFjZV9kZXN0cm95KENQVVN0YXRlICpjcHUsIGludCBh
-c2lkeCk7DQo+IA0KPiAgdm9pZCBjcHVfcGh5c2ljYWxfbWVtb3J5X3J3KGh3YWRkciBhZGRyLCB2
-b2lkICpidWYsDQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaHdhZGRyIGxlbiwgYm9v
-bCBpc193cml0ZSk7DQo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2h3L2NvcmUvY3B1LmggYi9pbmNs
-dWRlL2h3L2NvcmUvY3B1LmgNCj4gaW5kZXggOTJhNDIzNDQzOS4uYzkwY2YzYTE2MiAxMDA2NDQN
-Cj4gLS0tIGEvaW5jbHVkZS9ody9jb3JlL2NwdS5oDQo+ICsrKyBiL2luY2x1ZGUvaHcvY29yZS9j
-cHUuaA0KPiBAQCAtMzY2LDYgKzM2Niw3IEBAIHN0cnVjdCBDUFVTdGF0ZSB7DQo+ICAgICAgUVNJ
-TVBMRVFfSEVBRCgsIHFlbXVfd29ya19pdGVtKSB3b3JrX2xpc3Q7DQo+IA0KPiAgICAgIENQVUFk
-ZHJlc3NTcGFjZSAqY3B1X2FzZXM7DQo+ICsgICAgaW50IGNwdV9hc2VzX3JlZl9jb3VudDsNCj4g
-ICAgICBpbnQgbnVtX2FzZXM7DQo+ICAgICAgQWRkcmVzc1NwYWNlICphczsNCj4gICAgICBNZW1v
-cnlSZWdpb24gKm1lbW9yeTsNCj4gZGlmZiAtLWdpdCBhL3NvZnRtbXUvcGh5c21lbS5jIGIvc29m
-dG1tdS9waHlzbWVtLmMNCj4gaW5kZXggMTgyNzdkZGQ2Ny4uYzc1ZTNlODA0MiAxMDA2NDQNCj4g
-LS0tIGEvc29mdG1tdS9waHlzbWVtLmMNCj4gKysrIGIvc29mdG1tdS9waHlzbWVtLmMNCj4gQEAg
-LTc2MSw2ICs3NjEsNyBAQCB2b2lkIGNwdV9hZGRyZXNzX3NwYWNlX2luaXQoQ1BVU3RhdGUgKmNw
-dSwgaW50IGFzaWR4LA0KPiANCj4gICAgICBpZiAoIWNwdS0+Y3B1X2FzZXMpIHsNCj4gICAgICAg
-ICAgY3B1LT5jcHVfYXNlcyA9IGdfbmV3MChDUFVBZGRyZXNzU3BhY2UsIGNwdS0+bnVtX2FzZXMp
-Ow0KPiArICAgICAgICBjcHUtPmNwdV9hc2VzX3JlZl9jb3VudCA9IGNwdS0+bnVtX2FzZXM7DQo+
-ICAgICAgfQ0KPiANCj4gICAgICBuZXdhcyA9ICZjcHUtPmNwdV9hc2VzW2FzaWR4XTsNCj4gQEAg
-LTc3NCw2ICs3NzUsMjkgQEAgdm9pZCBjcHVfYWRkcmVzc19zcGFjZV9pbml0KENQVVN0YXRlICpj
-cHUsIGludCBhc2lkeCwNCj4gICAgICB9DQo+ICB9DQo+IA0KPiArdm9pZCBjcHVfYWRkcmVzc19z
-cGFjZV9kZXN0cm95KENQVVN0YXRlICpjcHUsIGludCBhc2lkeCkNCj4gK3sNCj4gKyAgICBDUFVB
-ZGRyZXNzU3BhY2UgKmNwdWFzOw0KPiArDQo+ICsgICAgYXNzZXJ0KGFzaWR4IDwgY3B1LT5udW1f
-YXNlcyk7DQo+ICsgICAgYXNzZXJ0KGFzaWR4ID09IDAgfHwgIWt2bV9lbmFibGVkKCkpOw0KPiAr
-ICAgIGFzc2VydChjcHUtPmNwdV9hc2VzKTsNCj4gKw0KPiArICAgIGNwdWFzID0gJmNwdS0+Y3B1
-X2FzZXNbYXNpZHhdOw0KPiArICAgIGlmICh0Y2dfZW5hYmxlZCgpKSB7DQo+ICsgICAgICAgIG1l
-bW9yeV9saXN0ZW5lcl91bnJlZ2lzdGVyKCZjcHVhcy0+dGNnX2FzX2xpc3RlbmVyKTsNCj4gKyAg
-ICB9DQo+ICsNCj4gKyAgICBhZGRyZXNzX3NwYWNlX2Rlc3Ryb3koY3B1YXMtPmFzKTsNCj4gKw0K
-PiArICAgIGNwdS0+Y3B1X2FzZXNfcmVmX2NvdW50LS07DQo+ICsgICAgaWYgKGNwdS0+Y3B1X2Fz
-ZXNfcmVmX2NvdW50ID09IDApIHsNCj4gKyAgICAgICAgZ19mcmVlKGNwdS0+Y3B1X2FzZXMpOw0K
-PiArICAgICAgICBjcHUtPmNwdV9hc2VzID0gTlVMTDsNCj4gKyAgICB9DQo+ICsNCj4gK30NCj4g
-Kw0KPiAgQWRkcmVzc1NwYWNlICpjcHVfZ2V0X2FkZHJlc3Nfc3BhY2UoQ1BVU3RhdGUgKmNwdSwg
-aW50IGFzaWR4KQ0KPiAgew0KPiAgICAgIC8qIFJldHVybiB0aGUgQWRkcmVzc1NwYWNlIGNvcnJl
-c3BvbmRpbmcgdG8gdGhlIHNwZWNpZmllZCBpbmRleCAqLw0KPiAtLQ0KPiAyLjQxLjANCj4gDQo+
-IA0KDQo=
+On 9/30/23 10:19, Salil Mehta wrote:
+> KVM vCPU creation is done once during the initialization of the VM when Qemu
+> threads are spawned. This is common to all the architectures.
+   ^^^^^^^^^^^^^^^^^^^
+   thread is spawned.
+
+> 
+> Hot-unplug of vCPU results in destruction of the vCPU objects in QOM but
+> the KVM vCPU objects in the Host KVM are not destroyed and their representative
+> KVM vCPU objects/context in Qemu are parked.
+> 
+> Refactor common logic so that some APIs could be reused by vCPU Hotplug code.
+> 
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>   accel/kvm/kvm-all.c  | 63 +++++++++++++++++++++++++++++++++-----------
+>   include/sysemu/kvm.h | 14 ++++++++++
+>   2 files changed, 61 insertions(+), 16 deletions(-)
+> 
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index ff1578bb32..b8c36ba50a 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -80,7 +80,7 @@
+>   #endif
+>   
+>   struct KVMParkedVcpu {
+> -    unsigned long vcpu_id;
+> +    int vcpu_id;
+
+@vcpu_id represents the vCPU index (CPUState::cpu_index) instead of the
+architectural CPU ID any more. However, I don't understand how it works
+for x86, and more comments regarding it can be seen below.
+
+>       int kvm_fd;
+>       QLIST_ENTRY(KVMParkedVcpu) node;
+>   };
+> @@ -137,6 +137,7 @@ static QemuMutex kml_slots_lock;
+>   #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
+>   
+>   static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
+> +static int kvm_get_vcpu(KVMState *s, int vcpu_id);
+>   
+>   static inline void kvm_resample_fd_remove(int gsi)
+>   {
+> @@ -320,11 +321,49 @@ err:
+>       return ret;
+>   }
+>   
+> +void kvm_park_vcpu(CPUState *cpu)
+> +{
+> +    int vcpu_id = cpu->cpu_index;
+> +    struct KVMParkedVcpu *vcpu;
+> +
+> +    vcpu = g_malloc0(sizeof(*vcpu));
+> +    vcpu->vcpu_id = vcpu_id;
+> +    vcpu->kvm_fd = cpu->kvm_fd;
+> +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+> +}
+> +
+
+@vcpu_id can be dropped as suggested previously.
+
+        vcpu->vcpu_id = cpu->cpu_index;
+
+> +int kvm_create_vcpu(CPUState *cpu)
+> +{
+> +    int vcpu_id = cpu->cpu_index;
+> +    KVMState *s = kvm_state;
+> +    int kvm_fd;
+> +
+> +    DPRINTF("kvm_create_vcpu\n");
+> +
+> +    /* check if the KVM vCPU already exist but is parked */
+> +    kvm_fd = kvm_get_vcpu(s, vcpu_id);
+> +    if (kvm_fd < 0) {
+> +        /* vCPU not parked: create a new KVM vCPU */
+> +        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
+> +        if (kvm_fd < 0) {
+> +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %d", vcpu_id);
+> +            return kvm_fd;
+> +        }
+> +    }
+> +
+> +    cpu->vcpu_dirty = true;
+> +    cpu->kvm_fd = kvm_fd;
+> +    cpu->kvm_state = s;
+> +    cpu->dirty_pages = 0;
+> +    cpu->throttle_us_per_full = 0;
+> +
+> +    return 0;
+> +}
+> +
+
+The comments here can be dropped since the code is self-explaining.
+
+@vcpu_id represents vCPU index, instead of the architecrual vCPU ID any more.
+@vcpu_id is passed to host through ioctl(KVM_CREATE_VCPU), which is expected
+as an architecrual vCPU ID instead of a vCPU index by host. It's indicated
+by 'struct kvm_vcpu' as below.
+
+struct kvm_vcpu {
+	:
+	int vcpu_id;  /* id given by userspace at creation */
+         int vcpu_idx; /* index into kvm->vcpu_array */
+};
+
+Function kvm_arch_vcpu_id() converts the vCPU instance or vCPU index to
+the architecrual vCPU ID. All architectures except x86 simply returns
+vCPU index (CPUState::cpu_index) as the architecrural vCPU ID. x86 returns
+the APIC ID. Treating them equally seems to break x86.
+
+>   static int do_kvm_destroy_vcpu(CPUState *cpu)
+>   {
+>       KVMState *s = kvm_state;
+>       long mmap_size;
+> -    struct KVMParkedVcpu *vcpu = NULL;
+>       int ret = 0;
+>   
+>       DPRINTF("kvm_destroy_vcpu\n");
+> @@ -353,10 +392,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+>           }
+>       }
+>   
+> -    vcpu = g_malloc0(sizeof(*vcpu));
+> -    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
+> -    vcpu->kvm_fd = cpu->kvm_fd;
+> -    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+> +    kvm_park_vcpu(cpu);
+>   err:
+>       return ret;
+>   }
+> @@ -369,7 +405,7 @@ void kvm_destroy_vcpu(CPUState *cpu)
+>       }
+>   }
+>   
+> -static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
+> +static int kvm_get_vcpu(KVMState *s, int vcpu_id)
+>   {
+>       struct KVMParkedVcpu *cpu;
+>   
+> @@ -384,7 +420,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
+>           }
+>       }
+>   
+> -    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
+> +    return -1;
+>   }
+>   
+
+Why we have -1 here. -ENOENT seems more descriptive?
+
+>   int kvm_init_vcpu(CPUState *cpu, Error **errp)
+> @@ -395,19 +431,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+>   
+>       trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+>   
+> -    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
+> +    ret = kvm_create_vcpu(cpu);
+>       if (ret < 0) {
+> -        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
+> +        error_setg_errno(errp, -ret,
+> +                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
+>                            kvm_arch_vcpu_id(cpu));
+>           goto err;
+>       }
+>   
+> -    cpu->kvm_fd = ret;
+> -    cpu->kvm_state = s;
+> -    cpu->vcpu_dirty = true;
+> -    cpu->dirty_pages = 0;
+> -    cpu->throttle_us_per_full = 0;
+> -
+>       mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
+>       if (mmap_size < 0) {
+>           ret = mmap_size;
+> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> index ee9025f8e9..785f3ed083 100644
+> --- a/include/sysemu/kvm.h
+> +++ b/include/sysemu/kvm.h
+> @@ -464,6 +464,20 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
+>   
+>   int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
+>                                          hwaddr *phys_addr);
+> +/**
+> + * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
+> + * @cpu:  QOM CPUState object for which KVM vCPU has to be created/fetched.
+> + *
+> + * @returns: 0 when success, errno (<0) when failed.
+> + */
+> +int kvm_create_vcpu(CPUState *cpu);
+> +/**
+> + * kvm_park_vcpu - Gets a parked KVM vCPU if it exists
+> + * @cpu:  QOM CPUState object for which parked KVM vCPU has to be fetched.
+> + *
+> + * @returns: kvm_fd (>0) when success, -1 when failed.
+> + */
+> +void kvm_park_vcpu(CPUState *cpu);
+>   
+>   #endif /* NEED_CPU_H */
+>   
+
+Thanks,
+Gavin

@@ -1,91 +1,91 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1624480ejb;
-        Mon, 2 Oct 2023 16:18:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF6fXkCfBTc5mvo12moetFvHtNbCSkaW4M9+tc0P6sS9zWDlCkxrjqggmPyeWIQXiEXa7Tq
-X-Received: by 2002:a0c:aa99:0:b0:651:9fa8:9fd9 with SMTP id f25-20020a0caa99000000b006519fa89fd9mr11289112qvb.51.1696288683038;
-        Mon, 02 Oct 2023 16:18:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696288683; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1676268ejb;
+        Mon, 2 Oct 2023 18:36:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFhG5HF8bsj7N67aX0pkTQanYpaAQlWTIfFQdFzrqkMd9+6F4ZvJBRk8ye5JXk0/XtrXCoA
+X-Received: by 2002:a05:6512:400c:b0:4fb:a088:cfca with SMTP id br12-20020a056512400c00b004fba088cfcamr1202656lfb.6.1696297012217;
+        Mon, 02 Oct 2023 18:36:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696297012; cv=none;
         d=google.com; s=arc-20160816;
-        b=pSSzuCQjl0y89w8L+SL/jTeglqQlgWksJqWJx12IzEiTAj3ODrA6Axg8n6RTFqKd36
-         BJ95bIA48KVbKNlkrtWDuzcLGHRg+G+SxJI7J7u7hCEwYbEWlKtBXgObjCNakdHe1G22
-         O4YBP40xGEvdC3+o2WqTLd+7dMJ+vAU52IXLq4A62EqUPF2T4xGf8IQygRKV0o64vOLg
-         S8ooyEdPzo5L6V8x72r7U9GloEKrF451bqfi/MAoHilpTqrhFw9M373OiW1xzYD6bK+h
-         sJW6C64abMvuxxvqM0rPnRSJuu/Kqv34ePJbjI4o7EpEvtTUqy2qkKqLUUtorQB76OTt
-         Um7Q==
+        b=RqgVZCr3oapyXBAWHtcuI3kMnBUXw8uvdJny8I20QFAoTN+L/8zDsgFf2wNWD/it/1
+         D5gIKsRglXATuH67T5MxXAhd8yh4/0ZpNdeO7A+TgvCuFMevHXR8Lfrxk6SXMrnpryKx
+         Zc7zUnnTauZA9ObvgmtDE6hXRoSCrgXSPSnMeRuRhwWAQFmvv5C/2kxCZHYsaMUngN9e
+         HxYd22l62JeZ/b5+6rW05/AA3kdm3xCawcMn7oCscwIJYJcAZA3yrjzUlWZqsMvmjA1f
+         KMepzWRJZG9uql8vGhpVjchQPcsYG0PRxtrbbW85+Qm17AcVIDaKjHH8OuT5Zp9EYVHo
+         uokg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=5NZ2x4L8jtCIGTeilWA3veW3agmb+Wl4Ve9U54jEwrg=;
+        bh=xTv0J1qp9acbOQ+Hqz/QicTRToQwM0piQLmWmZTl0ko=;
         fh=UoUFvcIH1Llqwj9lcubayb9wLqiblQuJi8py3jS56vc=;
-        b=pj1bC+I0kCFDdhIYL1AMUZ0YVICeTMEWu1/6jeyp0VcX0pMQzfG51xkbYhEwPqjpJv
-         cadN/pu4aLmvan0Fcj1JfaLJyqoO4WRMZcdMapoJU6IegDxh8o3eFIDoohbhLoPd33hI
-         EYOotwk5r6A0/Zw1MPeIwTt79cKXXt67qadUm8ewifdu1kEeVQ7h5udSAspPLPnPcgwc
-         bfndC35gidGle29ATyN1L68pfYrO6Bk0Icp2SpUcBpya0Wx0nFJh56Ki56GtRYzogNOZ
-         ei7dPNOFeCfsmLJXs3GcTB3T8uwGXnFrB7x+YwbEd+7iTsvXU2OCnScKU5ydhA1XeJxU
-         z7Sg==
+        b=xR1yGwCHsw9q+C4FY8/yvyZdeKuQ6jYxR/lN18pMQoBpgZoUL4dwH6qbikjjcxb4B7
+         OD7BQakAPHJe2QjCEsyv3AhZaIbFML5j6P/yiR8G3ZnxNgNh+BeCwDVfYm5/xnaPulCJ
+         4QInBjGGzc3hHOyEBEqbl6wGJ/MnQ8sWjsxmuQNHJNWBoEXN9zmi9IebD4VJYQfnlVyr
+         sDlpa4TNoYhin0m2IzWr9JKqGlXyitl7WjOXUOlv8TcdbnyvxDedl7eznm2pUoOE7Cib
+         wfHQta28glf5aP9NH3bPvwacZlQjB6Vbk3lrXMmFijMk4YW3zVrLVyYq3qghfUE/vF7s
+         MBZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MqABtpE+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c79zhytJ;
        spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <gshan@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id p20-20020a0ce194000000b0065b1365cf66si7311222qvl.383.2023.10.02.16.18.02
+        by mx.google.com with ESMTPS id s8-20020ac25fa8000000b004f628d74d4csi51731lfe.107.2023.10.02.18.36.51
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Oct 2023 16:18:03 -0700 (PDT)
+        Mon, 02 Oct 2023 18:36:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MqABtpE+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c79zhytJ;
        spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1696288682;
+	s=mimecast20190719; t=1696297010;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=5NZ2x4L8jtCIGTeilWA3veW3agmb+Wl4Ve9U54jEwrg=;
-	b=MqABtpE+1vDSB+/t48L7dzPlqxW2k1oGDKn9lLUZmJ2ReB0K4Nqa//3y+Sgm489QFfUzrT
-	wKDulEFDiIIpD1jTGKi8GxR2X/ZLCpOJg1fkInXYO0FW8kBFbSreuqIKonsDWsHfm5+B6R
-	UZTN04TJxC8OiQvKZQCHBsuTf4l9M2U=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=xTv0J1qp9acbOQ+Hqz/QicTRToQwM0piQLmWmZTl0ko=;
+	b=c79zhytJvSRN1WNRM/y4hyJHKHAjv1ReCZzeZz0TC1vVcGOiGd+ZV/Lad97YboC1LW7+6u
+	rEhG19zs4JlrzhomHnEuM/EkSROH3IJmchM7zzxi/WDFdudtVdCA96XueByKky66o687NI
+	SSCAU3+1pQGNJRuW0aarW1kxlBGp/1Y=
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-608-y4MSoxqHOq6UEQe6l12RTw-1; Mon, 02 Oct 2023 19:17:56 -0400
-X-MC-Unique: y4MSoxqHOq6UEQe6l12RTw-1
-Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-1c73637061eso2686955ad.3
-        for <alex.bennee@linaro.org>; Mon, 02 Oct 2023 16:17:56 -0700 (PDT)
+ us-mta-500-essi8dHJMA2gVevsc0Lrww-1; Mon, 02 Oct 2023 21:36:49 -0400
+X-MC-Unique: essi8dHJMA2gVevsc0Lrww-1
+Received: by mail-pg1-f197.google.com with SMTP id 41be03b00d2f7-573fdb618eeso339200a12.0
+        for <alex.bennee@linaro.org>; Mon, 02 Oct 2023 18:36:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696288675; x=1696893475;
+        d=1e100.net; s=20230601; t=1696297008; x=1696901808;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5NZ2x4L8jtCIGTeilWA3veW3agmb+Wl4Ve9U54jEwrg=;
-        b=vh/37lxv8zDOna/7hxtWXLMoJMwN5rXD3W/uFtP5TsucZFwUWmjJz+NpMFzclOYre9
-         NzybRQ6zO+HITJvmQFMBTWj9C1wJ60qtimm52ozfa7hTbRFPWlgUe+uFtp2ew2w9YsrF
-         l9SQcsU6YfgqECRmGK6nSvkY5mvS8RON3eBuAquTwU+h2hN/ybLlf0wuEyI+akEW5vVR
-         bG4rxgmdXK58iXEWl5/5LK12l6ceKdUuEQR59fwxytFF9/nZJYJ1AZn7yumjE2Uk8Uzj
-         4kt+A9w8l4uQGj2YjRhYCg9tK+o3oGD/cjR0lXFFZjVTwgahoZelLHyi07WZetqcOwpR
-         elCQ==
-X-Gm-Message-State: AOJu0Yzf83jVxxELW8ibA59cl2pw0UuJmGcMhsqhq1UFv4K6pUefg+HK
-	PsQPKbdBT6CiiqXzR/wmdxqerZ+R7vJRZcyCtgnm9W7RCzAlyz5KvH9gyW1hCAk0q0fet4+2eni
-	agciVbx67jytcO/x2
-X-Received: by 2002:a17:902:eec6:b0:1c6:d34:5279 with SMTP id h6-20020a170902eec600b001c60d345279mr11470448plb.13.1696288675159;
-        Mon, 02 Oct 2023 16:17:55 -0700 (PDT)
-X-Received: by 2002:a17:902:eec6:b0:1c6:d34:5279 with SMTP id h6-20020a170902eec600b001c60d345279mr11470421plb.13.1696288674782;
-        Mon, 02 Oct 2023 16:17:54 -0700 (PDT)
+        bh=xTv0J1qp9acbOQ+Hqz/QicTRToQwM0piQLmWmZTl0ko=;
+        b=mzLta56Kd+26LckARDvhaA5FulBixK/DJ3tpokh6LzDTSxcHxb8az4i/DFe5yKuiNo
+         BqsfWmr7J8XsxcN2dTlWSPc6KrD+1vgmhoAtPUG+IJUo78/RdWE7NRL5QGz7HWXtJOOe
+         gH6uB4ivLOds80aVI5QCqefFEW3xcBQ9kN0kU1H8Lmn9a+89XtPQnYH8neTzcmcAma3P
+         HHiSP+MWvP1ysRFJ7LINJAL7EzTvnx0m41saRg+cEPGTap2vXJdvS1hphJZECiIM3vnX
+         lbfYoLhQY1qZX6+/b07zPzaHbQkRy3iRoaxiJWa4SOi7zRD5kqGqzhu7lJPRelH5n64q
+         n1FQ==
+X-Gm-Message-State: AOJu0Ywg6mXZBKMTDhL38iizFjVKQyeTzCwo/huQFEqlfeyiiLsI1z2G
+	XuE/gpO4kGxGaNtCwRqwzUroVcXo1KwKmqeiGFpG4zrsamRs/6IOSfPu8bwpvDFswyM5rQwJ54M
+	ov7/TEsmHoQOfLfXh
+X-Received: by 2002:a05:6a20:3d21:b0:15e:7323:5c0f with SMTP id y33-20020a056a203d2100b0015e73235c0fmr16503292pzi.16.1696297007944;
+        Mon, 02 Oct 2023 18:36:47 -0700 (PDT)
+X-Received: by 2002:a05:6a20:3d21:b0:15e:7323:5c0f with SMTP id y33-20020a056a203d2100b0015e73235c0fmr16503273pzi.16.1696297007608;
+        Mon, 02 Oct 2023 18:36:47 -0700 (PDT)
 Return-Path: <gshan@redhat.com>
 Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
-        by smtp.gmail.com with ESMTPSA id l5-20020a170902eb0500b001c619fbd5fbsm15971197plb.298.2023.10.02.16.17.43
+        by smtp.gmail.com with ESMTPSA id jk12-20020a170903330c00b001c6189ce950sm111426plb.188.2023.10.02.18.36.36
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Oct 2023 16:17:54 -0700 (PDT)
-Message-ID: <a8861b68-5e04-5127-5c0f-77816401741b@redhat.com>
-Date: Tue, 3 Oct 2023 09:17:41 +1000
+        Mon, 02 Oct 2023 18:36:47 -0700 (PDT)
+Message-ID: <bc5e5558-8899-30d1-e64a-c1012437766e@redhat.com>
+Date: Tue, 3 Oct 2023 11:36:34 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.1
-Subject: Re: [PATCH V2 01/10] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
+Subject: Re: [PATCH V2 08/10] physmem: Add helper function to destroy CPU
+ AddressSpace
 To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
@@ -101,217 +101,143 @@ Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
  jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
  linuxarm@huawei.com
 References: <20230930001933.2660-1-salil.mehta@huawei.com>
- <20230930001933.2660-2-salil.mehta@huawei.com>
+ <20230930001933.2660-9-salil.mehta@huawei.com>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20230930001933.2660-2-salil.mehta@huawei.com>
+In-Reply-To: <20230930001933.2660-9-salil.mehta@huawei.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: ISfe+8b8BI7Z
+X-TUID: kz1B38EXdClr
 
 On 9/30/23 10:19, Salil Mehta wrote:
-> KVM vCPU creation is done once during the initialization of the VM when Qemu
-> threads are spawned. This is common to all the architectures.
-   ^^^^^^^^^^^^^^^^^^^
-   thread is spawned.
-
-> 
-> Hot-unplug of vCPU results in destruction of the vCPU objects in QOM but
-> the KVM vCPU objects in the Host KVM are not destroyed and their representative
-> KVM vCPU objects/context in Qemu are parked.
-> 
-> Refactor common logic so that some APIs could be reused by vCPU Hotplug code.
+> Virtual CPU Hot-unplug leads to unrealization of a CPU object. This also
+> involves destruction of the CPU AddressSpace. Add common function to help
+> destroy the CPU AddressSpace.
 > 
 > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 > ---
->   accel/kvm/kvm-all.c  | 63 +++++++++++++++++++++++++++++++++-----------
->   include/sysemu/kvm.h | 14 ++++++++++
->   2 files changed, 61 insertions(+), 16 deletions(-)
+>   include/exec/cpu-common.h |  8 ++++++++
+>   include/hw/core/cpu.h     |  1 +
+>   softmmu/physmem.c         | 25 +++++++++++++++++++++++++
+>   3 files changed, 34 insertions(+)
 > 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index ff1578bb32..b8c36ba50a 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -80,7 +80,7 @@
->   #endif
+> diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+> index 41788c0bdd..eb56a228a2 100644
+> --- a/include/exec/cpu-common.h
+> +++ b/include/exec/cpu-common.h
+> @@ -120,6 +120,14 @@ size_t qemu_ram_pagesize_largest(void);
+>    */
+>   void cpu_address_space_init(CPUState *cpu, int asidx,
+>                               const char *prefix, MemoryRegion *mr);
+> +/**
+> + * cpu_address_space_destroy:
+> + * @cpu: CPU for which address space needs to be destroyed
+> + * @asidx: integer index of this address space
+> + *
+> + * Note that with KVM only one address space is supported.
+> + */
+> +void cpu_address_space_destroy(CPUState *cpu, int asidx);
 >   
->   struct KVMParkedVcpu {
-> -    unsigned long vcpu_id;
-> +    int vcpu_id;
+>   void cpu_physical_memory_rw(hwaddr addr, void *buf,
+>                               hwaddr len, bool is_write);
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index 648b5b3586..65d2ae4581 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -355,6 +355,7 @@ struct CPUState {
+>       QSIMPLEQ_HEAD(, qemu_work_item) work_list;
+>   
+>       CPUAddressSpace *cpu_ases;
+> +    int cpu_ases_count;
+>       int num_ases;
+>       AddressSpace *as;
+>       MemoryRegion *memory;
 
-@vcpu_id represents the vCPU index (CPUState::cpu_index) instead of the
-architectural CPU ID any more. However, I don't understand how it works
-for x86, and more comments regarding it can be seen below.
+@num_ases and @cpu_ases_count are duplicate to each other to some extent. The
+real problem is @cpu_ases is allocated at once and we need to make the allocation
+sparse. In that way, each CPU address space is independent and can be destroyed
+independently. The sparse allocation for the CPU address space can be done in
+cpu_address_space_init() like below:
 
->       int kvm_fd;
->       QLIST_ENTRY(KVMParkedVcpu) node;
->   };
-> @@ -137,6 +137,7 @@ static QemuMutex kml_slots_lock;
->   #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
+#define CPU_ADDRESS_SPACE_MAX 8
+
+struct CPUState {
+     CPUAddressSpace *cpu_ases[CPU_ADDRESS_SPACE_MAX];
+}
+
+void cpu_address_space_init(CPUState *cpu, int asidx, const char *prefix, MemoryRegion *mr)
+{
+     assert(asidx < CPU_ADDRESS_SPACE_MAX);
+
+     /* The address space has been initialized ? */
+     if (cpu->cpu_ases[asidx]) {
+         return;
+     }
+
+     cpu->cpu_ases[asidx] = g_new0(CPUAddressSpace, 1);
+
+}
+
+void cpu_address_destroy(CPUState *cpu, int asidx)
+{
+     assert(asidx < CPU_ADDRESS_SPACE_MAX);
+
+     /* The address space isn't initialized? */
+     if (!cpu->cpu_ases[asidx]) {
+         return;
+     }
+
+     :
+     g_free(cpu->cpu_ases[asidx]);
+     cpu->cpu_ases[asidx] = NULL;
+     
+}
+
+> diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+> index 4f6ca653b3..4dfa0ca66f 100644
+> --- a/softmmu/physmem.c
+> +++ b/softmmu/physmem.c
+> @@ -761,6 +761,7 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
 >   
->   static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
-> +static int kvm_get_vcpu(KVMState *s, int vcpu_id);
+>       if (!cpu->cpu_ases) {
+>           cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
+> +        cpu->cpu_ases_count = cpu->num_ases;
+>       }
 >   
->   static inline void kvm_resample_fd_remove(int gsi)
->   {
-> @@ -320,11 +321,49 @@ err:
->       return ret;
+>       newas = &cpu->cpu_ases[asidx];
+> @@ -774,6 +775,30 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
+>       }
 >   }
 >   
-> +void kvm_park_vcpu(CPUState *cpu)
+> +void cpu_address_space_destroy(CPUState *cpu, int asidx)
 > +{
-> +    int vcpu_id = cpu->cpu_index;
-> +    struct KVMParkedVcpu *vcpu;
+> +    CPUAddressSpace *cpuas;
 > +
-> +    vcpu = g_malloc0(sizeof(*vcpu));
-> +    vcpu->vcpu_id = vcpu_id;
-> +    vcpu->kvm_fd = cpu->kvm_fd;
-> +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> +}
+> +    assert(asidx < cpu->num_ases);
+> +    assert(asidx == 0 || !kvm_enabled());
+> +    assert(cpu->cpu_ases);
 > +
-
-@vcpu_id can be dropped as suggested previously.
-
-        vcpu->vcpu_id = cpu->cpu_index;
-
-> +int kvm_create_vcpu(CPUState *cpu)
-> +{
-> +    int vcpu_id = cpu->cpu_index;
-> +    KVMState *s = kvm_state;
-> +    int kvm_fd;
-> +
-> +    DPRINTF("kvm_create_vcpu\n");
-> +
-> +    /* check if the KVM vCPU already exist but is parked */
-> +    kvm_fd = kvm_get_vcpu(s, vcpu_id);
-> +    if (kvm_fd < 0) {
-> +        /* vCPU not parked: create a new KVM vCPU */
-> +        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
-> +        if (kvm_fd < 0) {
-> +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %d", vcpu_id);
-> +            return kvm_fd;
-> +        }
+> +    cpuas = &cpu->cpu_ases[asidx];
+> +    if (tcg_enabled()) {
+> +        memory_listener_unregister(&cpuas->tcg_as_listener);
 > +    }
 > +
-> +    cpu->vcpu_dirty = true;
-> +    cpu->kvm_fd = kvm_fd;
-> +    cpu->kvm_state = s;
-> +    cpu->dirty_pages = 0;
-> +    cpu->throttle_us_per_full = 0;
+> +    address_space_destroy(cpuas->as);
+> +    g_free_rcu(cpuas->as, rcu);
 > +
-> +    return 0;
+> +    if (cpu->cpu_ases_count == 1) {
+> +        g_free(cpu->cpu_ases);
+> +        cpu->cpu_ases = NULL;
+> +    }
+> +
+> +    cpu->cpu_ases_count--;
 > +}
 > +
-
-The comments here can be dropped since the code is self-explaining.
-
-@vcpu_id represents vCPU index, instead of the architecrual vCPU ID any more.
-@vcpu_id is passed to host through ioctl(KVM_CREATE_VCPU), which is expected
-as an architecrual vCPU ID instead of a vCPU index by host. It's indicated
-by 'struct kvm_vcpu' as below.
-
-struct kvm_vcpu {
-	:
-	int vcpu_id;  /* id given by userspace at creation */
-         int vcpu_idx; /* index into kvm->vcpu_array */
-};
-
-Function kvm_arch_vcpu_id() converts the vCPU instance or vCPU index to
-the architecrual vCPU ID. All architectures except x86 simply returns
-vCPU index (CPUState::cpu_index) as the architecrural vCPU ID. x86 returns
-the APIC ID. Treating them equally seems to break x86.
-
->   static int do_kvm_destroy_vcpu(CPUState *cpu)
+>   AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
 >   {
->       KVMState *s = kvm_state;
->       long mmap_size;
-> -    struct KVMParkedVcpu *vcpu = NULL;
->       int ret = 0;
->   
->       DPRINTF("kvm_destroy_vcpu\n");
-> @@ -353,10 +392,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
->           }
->       }
->   
-> -    vcpu = g_malloc0(sizeof(*vcpu));
-> -    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> -    vcpu->kvm_fd = cpu->kvm_fd;
-> -    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> +    kvm_park_vcpu(cpu);
->   err:
->       return ret;
->   }
-> @@ -369,7 +405,7 @@ void kvm_destroy_vcpu(CPUState *cpu)
->       }
->   }
->   
-> -static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
-> +static int kvm_get_vcpu(KVMState *s, int vcpu_id)
->   {
->       struct KVMParkedVcpu *cpu;
->   
-> @@ -384,7 +420,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
->           }
->       }
->   
-> -    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
-> +    return -1;
->   }
->   
-
-Why we have -1 here. -ENOENT seems more descriptive?
-
->   int kvm_init_vcpu(CPUState *cpu, Error **errp)
-> @@ -395,19 +431,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
->   
->       trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
->   
-> -    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
-> +    ret = kvm_create_vcpu(cpu);
->       if (ret < 0) {
-> -        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
-> +        error_setg_errno(errp, -ret,
-> +                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
->                            kvm_arch_vcpu_id(cpu));
->           goto err;
->       }
->   
-> -    cpu->kvm_fd = ret;
-> -    cpu->kvm_state = s;
-> -    cpu->vcpu_dirty = true;
-> -    cpu->dirty_pages = 0;
-> -    cpu->throttle_us_per_full = 0;
-> -
->       mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
->       if (mmap_size < 0) {
->           ret = mmap_size;
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index ee9025f8e9..785f3ed083 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -464,6 +464,20 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
->   
->   int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
->                                          hwaddr *phys_addr);
-> +/**
-> + * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
-> + * @cpu:  QOM CPUState object for which KVM vCPU has to be created/fetched.
-> + *
-> + * @returns: 0 when success, errno (<0) when failed.
-> + */
-> +int kvm_create_vcpu(CPUState *cpu);
-> +/**
-> + * kvm_park_vcpu - Gets a parked KVM vCPU if it exists
-> + * @cpu:  QOM CPUState object for which parked KVM vCPU has to be fetched.
-> + *
-> + * @returns: kvm_fd (>0) when success, -1 when failed.
-> + */
-> +void kvm_park_vcpu(CPUState *cpu);
->   
->   #endif /* NEED_CPU_H */
->   
+>       /* Return the AddressSpace corresponding to the specified index */
 
 Thanks,
 Gavin

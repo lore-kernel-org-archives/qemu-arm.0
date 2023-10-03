@@ -1,87 +1,132 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2123684ejb;
-        Tue, 3 Oct 2023 10:12:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEq2RLsWIU0UN21A5r9PT7JknQeuzqyVt6D3jUvLZr8UA5TRfazH+xqJkHHSh7lCxchV9p9
-X-Received: by 2002:a05:6214:4589:b0:658:6d82:54c6 with SMTP id op9-20020a056214458900b006586d8254c6mr16940749qvb.12.1696353130141;
-        Tue, 03 Oct 2023 10:12:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696353130; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2230849ejb;
+        Tue, 3 Oct 2023 13:42:37 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGNY0KFrxpJH/7F4OROIugSRxs5ih6oBLoC2kJpGkVF+BTSXLWiEqLWnQJqfWsatPt+9yDW
+X-Received: by 2002:a05:620a:28c2:b0:76c:b7f0:2bc9 with SMTP id l2-20020a05620a28c200b0076cb7f02bc9mr520936qkp.16.1696365757396;
+        Tue, 03 Oct 2023 13:42:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696365757; cv=none;
         d=google.com; s=arc-20160816;
-        b=xBIykAfSqjbGwWCVTtWVDVuXLlq5RhknlgcdgCNmiH80vriT1WPzkv2VXATS9xeTfd
-         66Lu8i+USs6swRiunF4M2+9vOH5Mg9DxWpfJTm6BYlkudgr20iC16YE0cFmaXqUfqlwe
-         dGWPkcH5015O4MhPzpF2iDsgmUq5+zhOeQimO4zoY39ytL5Vp4DoF865JS8NobnlthBl
-         SSm0WkpuyuUCNvSlSsjQbitipHam4aaubIPpml75gmSBpRU2vPUg6zP4+C/gbfm51LPG
-         T3QI6TWTaOUemHoz00ABdKv+9tBylnLgnR2+iPPMjBg30NyH1RcZuveXcNvOdnbGVi6z
-         N3/w==
+        b=s+ecgakS9xKbF6TZQK572lszXbUzs9g8Mw47HJap8XNe7eceMoq4b9u2NuCcLmuT2Q
+         Qs1HgiAQArLZgc+Vu3qz+vcLaOW/PQgl2ZSr4jTf/M4riJT+/XD+B/HjYx/japxQPywO
+         JKoT4upmb579U/iHW6xxF+4ih7Lvmt2foLAYAkJTIMvhoHr7/S83nDg3hpLORrQ5rMqj
+         lpZnni3yk4LMj9Qkk033tXtJ6sLPqk0xiAxufrK+U1KZDYaMn1pw8TOl4UHmvNP61i4A
+         3s+y8sryW5SL0FZw6SgZ/Nk95Tr+dKq8GFCnifgJ7M1isHNyEViCHiUiwQ0evpy/nPF+
+         72Yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=d1KqZBhkH19Q7BAii7vbPA4pXnqS2F48cwuYcpbZ0A4=;
-        fh=D7j+9KJK5gaKY5dGwynriN2GHHnhcQ9wV5cMstBQ9zw=;
-        b=YMYzPR3t0Vc5pL3E8/9k5WgRCmsrKBTFi6eIpS/pjWf9vWTID5cnS9UqcfedeLNAbv
-         aij+AyZE5/kfe1EPPwfQXrPg1M0K6xzTuaeeRhDkDGx6JihVzwrheDrxSYhhOBtwHsy0
-         Y36Jqz1SU/ohW10VLg15WUUUrIKO/2ggY6IkJUYGOW6riHtxWuZADKXUZGEH8tbYJ8u7
-         mKFitvY/1SfV0DLnwKNdUNWpJtAsaZGOrBnqeaqctZBNbqtCfwqlevOR34AfvZpyDYqu
-         XaaouTywzZSiQ8+wwAeKp4UOkAAArwNr2WsnDMkLbI/8tV2I4d1WXTTXO9LIX9wSMAPe
-         ctXw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature:dkim-signature;
+        bh=Z5oV+jPgSLwklVniMdiKPTlFkWAxtqbhJGZPCb66U44=;
+        fh=uJH6riIx69a2e8DOePenHUCPC1qjL0Q+tmlLuCBTKqI=;
+        b=rHA3d/gClSw/C2BgAIoZ8VZOspwn7InXK5qS4VUWZtGxsVXsMMbFw0yVhrX+X68Rp4
+         WoQjcSB/jOefC1iK6i0Pf8apw1d7f3vgmGRwpdK54ObM5VzWThxHIUbh7p4a6K76p0g0
+         R1ytfYVeW6eOIzjBdTq4YgbkV8cmK8XwOUnHpUOFAbgEuRFYjJVzlfFzV405xwB0uTJ6
+         7MD1RiT43xXDQBVuzd/C/j8TGE5N0+hzAf3TcB5UibpMW6if8fgrm2OKLZaYsRHm3kCG
+         MU89GcEVf9Us1y8/LMAltoUS/o8M0NvhE0/+tGGAE6S7nnKpotbazN89xB99YNnhNY82
+         cOWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass (test mode) header.i=@flawful.org header.s=mail header.b=Urqiunm+;
+       dkim=pass (test mode) header.i=@flawful.org header.s=mail header.b="er/23/9m";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=flawful.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l5-20020a05622a174500b00417f87ff854si717279qtk.46.2023.10.03.10.12.09
+        by mx.google.com with ESMTPS id br39-20020a05620a462700b0077568858eb4si853995qkb.559.2023.10.03.13.42.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Oct 2023 10:12:10 -0700 (PDT)
+        Tue, 03 Oct 2023 13:42:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass (test mode) header.i=@flawful.org header.s=mail header.b=Urqiunm+;
+       dkim=pass (test mode) header.i=@flawful.org header.s=mail header.b="er/23/9m";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=flawful.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qniw4-0007mU-Dm; Tue, 03 Oct 2023 13:11:53 -0400
+	id 1qnmDh-000622-3h; Tue, 03 Oct 2023 16:42:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qnivy-0007iK-Ry; Tue, 03 Oct 2023 13:11:46 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qnivv-0003C6-O9; Tue, 03 Oct 2023 13:11:46 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id D3F2227289;
- Tue,  3 Oct 2023 20:12:24 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 997062C948;
- Tue,  3 Oct 2023 20:11:39 +0300 (MSK)
-Message-ID: <a6cc110d-132e-b3f3-0b64-368bcb5c31a9@tls.msk.ru>
-Date: Tue, 3 Oct 2023 20:11:39 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: FreeBSD 13.2 installer does not see AHCI devices on
- aarch64/sbsa-ref and x86-64/q35
-Content-Language: en-US
-To: Niklas Cassel <nks@flawful.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, John Snow <jsnow@redhat.com>,
+ (Exim 4.90_1) (envelope-from <nks.gnu@gmail.com>)
+ id 1qnmDf-00061j-HE; Tue, 03 Oct 2023 16:42:15 -0400
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nks.gnu@gmail.com>)
+ id 1qnmDc-00040G-Tn; Tue, 03 Oct 2023 16:42:15 -0400
+Received: by mail-lj1-x236.google.com with SMTP id
+ 38308e7fff4ca-2bfed7c4e6dso15579781fa.1; 
+ Tue, 03 Oct 2023 13:42:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696365729; x=1696970529;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:dkim-signature:dkim-signature
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Z5oV+jPgSLwklVniMdiKPTlFkWAxtqbhJGZPCb66U44=;
+ b=MYutURvmH0vCMtefyZIKh2a2c/kJlaAmL20kZ9led2BQup3waFdoaTrjvKfJxw+19J
+ 29UXzZAh15eNR8L8drJF0LwW+lC1ii4WSHCBwBrhFxiyJQozXkMhvYBTZJYM6m1fCvVc
+ woxPDZBw5cT8QK5ZVoHRl1elOG7LUsqNsRwr80t3UW/SH2p6RR+wHaTeOvh272WtCdzQ
+ 1JYG3iiuGc9agMqetOJPhkNg51DW6jTuzpDEK3alvE6QtofORnDUyFf2diSN0s6tho5J
+ 3bEwsToC/oNEcZgI4+JHd6FeesnLG0j9ttePODosuctjXvaToPexjLR971BkYLU4jcZX
+ ThXw==
+X-Gm-Message-State: AOJu0YzgbD/GuQdn4IXxezmIQXYzzUPOH0gkCOFx0L/0yTP/vp1gHBto
+ 352YtU67Edxxs6lURXhOqS0kOxWmXdPtcvbx
+X-Received: by 2002:a2e:6a10:0:b0:2bc:efa4:2c32 with SMTP id
+ f16-20020a2e6a10000000b002bcefa42c32mr270496ljc.37.1696365728915; 
+ Tue, 03 Oct 2023 13:42:08 -0700 (PDT)
+Received: from flawful.org (c-f5f0e255.011-101-6d6c6d3.bbcust.telenor.se.
+ [85.226.240.245]) by smtp.gmail.com with ESMTPSA id
+ u26-20020a2e855a000000b002ba586d27a2sm374711ljj.26.2023.10.03.13.42.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Oct 2023 13:42:08 -0700 (PDT)
+Received: by flawful.org (Postfix, from userid 112)
+ id B565AB9F1; Tue,  3 Oct 2023 22:42:07 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=flawful.org; s=mail;
+ t=1696365727; bh=qSpALkf6fr+sgcNjdaxxx4Qbb7YY/1JzBIboUmbeGWw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Urqiunm+/vUSlCyPUEhrH2jNbuw9BgT1GEHH6mPj74Wu+z7hD6bymdMrzXU9fNSj2
+ JAQEwWwUwcGSA4SJGXaV/23d9GfxNVod5Tq939p0Qsf5cM4yJAOcnmY2ixZwEjukAW
+ JZr9IhytZowSb9tGqAK4Q/g+e745gtQoFNfNfXvY=
+Received: from x1-carbon (OpenWrt.lan [192.168.1.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
+ SHA256) (No client certificate requested)
+ by flawful.org (Postfix) with ESMTPSA id 1E49FB8DD;
+ Tue,  3 Oct 2023 22:41:46 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=flawful.org; s=mail;
+ t=1696365709; bh=qSpALkf6fr+sgcNjdaxxx4Qbb7YY/1JzBIboUmbeGWw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=er/23/9m5AzWCroNENpAmVAbPu7TJ1jkJMs1IZ4xCtJU1v+g6qVAVbA/jdPh905hW
+ Ql6dhSz/voDmtLqDK2kRD6OApJTWV84qf3ckHKzRlo0hCds/zRzY2LcQ8DFYI53AEG
+ JPFr6RjAQHF5JQkAYbZISDaK4CWyL7ZdEC+Q6Vqk=
+Date: Tue, 3 Oct 2023 22:41:44 +0200
+From: Niklas Cassel <nks@flawful.org>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, John Snow <jsnow@redhat.com>,
  qemu-block@nongnu.org, Damien Le Moal <dlemoal@kernel.org>,
  Leif Lindholm <quic_llindhol@quicinc.com>,
  Ard Biesheuvel <ardb+tianocore@kernel.org>
+Subject: Re: FreeBSD 13.2 installer does not see AHCI devices on
+ aarch64/sbsa-ref and x86-64/q35
+Message-ID: <ZRx8iLkWE5fwLOpE@x1-carbon>
 References: <b7e00b36-2ac8-44fa-9847-b2025ebe05f6@linaro.org>
  <F1D854EB-9C6F-4A54-BAA9-D75C40DBE86F@flawful.org>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <F1D854EB-9C6F-4A54-BAA9-D75C40DBE86F@flawful.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -79
-X-Spam_score: -8.0
-X-Spam_bar: --------
-X-Spam_report: (-8.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.09,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <a6cc110d-132e-b3f3-0b64-368bcb5c31a9@tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a6cc110d-132e-b3f3-0b64-368bcb5c31a9@tls.msk.ru>
+Received-SPF: pass client-ip=2a00:1450:4864:20::236;
+ envelope-from=nks.gnu@gmail.com; helo=mail-lj1-x236.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,29 +141,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: B79CtdHA1A4O
+X-TUID: 4sXBvgxr29Zx
 
-26.09.2023 15:05, Niklas Cassel:
-> Hello Marcin,
+On Tue, Oct 03, 2023 at 08:11:39PM +0300, Michael Tokarev wrote:
+> 26.09.2023 15:05, Niklas Cassel:
+> > Hello Marcin,
+> > 
+> > I will have a look at this.
 > 
-> I will have a look at this.
+> Hi Marcin, Hi Niklas!
+> 
+> Niklas, I remember asking you if the whole thing is okay for the -stable,
+> and you was a bit unsure about it :)  Regardless, I picked the changes
+> up for -stable. I don't think it was anyone's fault though, - after all,
+> I guess, without the change being in -stable, we'd know about this issue
+> in some distant future instead of now :)
+> 
+> I'm planning to release 8.1.2 soon, with freeze being at Oct-14.  It'd
+> be really great if we can include a fix for this both in master and in
+> 8.1.2 (8.1.2 should have a long-awaited fix for a quite serious long-
+> standing issue in 8.1).
+> 
+> Were you able to take a look at what's going on here?  I wish I were
+> able to help here but I know right to nothing about ahci emulation..
 
-Hi Marcin, Hi Niklas!
+I was away on a conference all last week, so I didn't have much time to
+look at this yet. I will debug the problem this week.
 
-Niklas, I remember asking you if the whole thing is okay for the -stable,
-and you was a bit unsure about it :)  Regardless, I picked the changes
-up for -stable. I don't think it was anyone's fault though, - after all,
-I guess, without the change being in -stable, we'd know about this issue
-in some distant future instead of now :)
+From at quick look at Marcin logs:
+ahcich0: Poll timeout on slot 1 port 0
+ahcich0: is 00000000 cs 00000002 ss 00000000 rs 00000002 tfd 170 serr 00000000 cmd 0000c017
 
-I'm planning to release 8.1.2 soon, with freeze being at Oct-14.  It'd
-be really great if we can include a fix for this both in master and in
-8.1.2 (8.1.2 should have a long-awaited fix for a quite serious long-
-standing issue in 8.1).
+This log seems to come from:
+http://fxr.watson.org/fxr/source/dev/ahci/ahci.c?v=FREEBSD-13-STABLE#L1795
 
-Were you able to take a look at what's going on here?  I wish I were
-able to help here but I know right to nothing about ahci emulation..
+Looking at the print "cs 00000002" means PxCI: 0x2.
+So PxCI is never cleared.
 
-Thanks,
+I will need to run FreeBSD so I can see which command it is that never gets
+PxCI cleared.
 
-/mjt
+NCQ commands will always clear PxCI in process_ncq_command().
+Non-NCQ commands will always clear PxCI in ahci_clear_cmd_issue().
+
+From a quick glance, the only time we do not clear PxCI is if we receive
+a FIS that we do not handle (trace_handle_cmd_unhandled_fis()).
+Will try to see exactly which FIS FreeBSD is sending tomorrow.
+
+(Perhaps we should simply clear PxCI for these FISes that we do not handle...
+Or at least make sure that we set ERR_STAT in PxTFD.)
+
+
+Kind regards,
+Niklas
+

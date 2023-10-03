@@ -1,195 +1,158 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1753857ejb;
-        Mon, 2 Oct 2023 22:39:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEOAV+6BBrFQyJAxm29suNirkA52mqjlg+KFvyF0nMk9WRLOcrPZJxkrJgqY+ggdMC+LIuo
-X-Received: by 2002:a05:620a:3846:b0:774:10ba:e9b8 with SMTP id po6-20020a05620a384600b0077410bae9b8mr12183311qkn.72.1696311586539;
-        Mon, 02 Oct 2023 22:39:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696311586; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1770787ejb;
+        Mon, 2 Oct 2023 23:23:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEWNR/U7zzM7tKcpazWEbtOAn7WB4dyLKidcg1Fegh1pUtZY1XSTnWDO792FnfSdZ/+JV8Z
+X-Received: by 2002:a05:620a:4551:b0:76c:a673:5271 with SMTP id u17-20020a05620a455100b0076ca6735271mr19395454qkp.24.1696314222353;
+        Mon, 02 Oct 2023 23:23:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696314222; cv=none;
         d=google.com; s=arc-20160816;
-        b=F9APEJ2/jwU0Bz28b6ba9J1Hbai44bB1bRrg6oM7y7gOfn5NSeAnvyrKmiFJonXBYd
-         Ps0NUFXj2MgOfm+lZFFa62+ZDJf5y1qerAgakC42TqhVoQ0ueLSRpwvBwuDPn3IZD7Ie
-         +Tw0HpZwTgCfdT05jTUurNxagGNT6Aa4GJ83bMtZou3VzsqYfU6437a4Fr6x6r+FDNal
-         tLD8gWDBu3zUCvlc5cSEzYimgrdaU1z58vu28ZXyn0ryi1tlzA9Of67dYHXRsLtd2YJP
-         gL29P3yNM77TWjy/1bEeMlZn4bje9tUnEnQWoGjSg/giHRNtTLhBvc77d2hm9SDjL9px
-         0CeQ==
+        b=sNP8z4Ps72dj0IwSYxsFqUZP5NvAroxqO2y0pchOjJO6+KuNY//L55CeZVJ72QTW//
+         i61PyZZNMLCC3aLmnxA1yuznpMndJ5zSyvyaxLz58UI9/Yqn0jSQOgoN9jPz76F/u/Y9
+         REdKVu2T2BBhcIBB+3aTWWyfFiJmiMMS3//MNYDmJ5p23kWbCZkW8/tlKqidXMPnKn4k
+         p8UKbyjCTYENg+koA8sFYkd3X8USTCzajxv+VrOyG7+uN05ryJi3wQ/rS1jzz2+7TZzU
+         p5JS0oIcGYUBfqyIDR0zzX8t124HMtf3JyKsbnGpPa9tQWMvCpXGF+FTRKLIRau1zVjJ
+         I7Tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=tQwXNFD1mmfjoJgOAPuBsqjLKn6rTm/R5yvDWHsaB84=;
-        fh=fuJwIdfu8VPP6GfXn3BVoTVIzyX31MQ6OANRO+kwzA0=;
-        b=RwPEN1k7W+zBEWPO83oClmbUfhDb2e5525UVxUCUc5VVrqOp67zNcnv7qzmGbz6lQA
-         urljoP6t1co2tP9mu3TsHjP0hZsE1eHlCtu88Oj75ftJvO92lF7mncycBKjNXCUqdtym
-         78HrLmYqdkD4yLRUbBSwp30XaUzB4DQcE7UzfWxJ+uSZNpPU9Iu6saxrWWGXa9CQxwgM
-         Q7+tStOtE8gY44gFtC/gIOH5PVGEAX6OjzuCd9AsDG2Pb2yhrS1jdOHigqBeycgCRPhc
-         baZyJa6mrhssDVSLuu9qFrk6xKj0h8XadghZ+uCJZ8L3TKXTzFNcNP405aFG4MuN+nSO
-         8KNg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=yNPCrajTh57Jjbi/jtn+1FxXShjLbKmdOEGxNykJkZQ=;
+        fh=3DSafzGqh4PjVCLNt7uHMRJlad1iPnH4/WPCiw/w/9I=;
+        b=f8vrb3m1hVSnSt0hiS3enCKNOXLi4URCiNalWe5lrPKsNHVBUdzdqMbVwaXCkQ9JNh
+         W/l0CIE4ogE8gjY0okU/IPkSNoCNSA0S04NUm2tku9tDDCDNq+tiSDY8juJSoKG+TTsM
+         GbmFWrGlKYflSBJtlOcAsHzjD3Gpj5UNxWVz0vqB0Lq0vF2F/Zzf680IbMRV3WXj71+V
+         Q4iEFDEv18KtMBJ4/mib7J8/5IK4xr3MvCJWzNH9Or6ggJXdpSIF3ssNsMxyJNrgLmsE
+         OSLgI21w1O8Nuv5yzzT5JLc0repPpDhORfhzGmFZ8cDJ01FTdhCr+OHLfD0d/jvaThWT
+         ArPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JPhmKkgs;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id az11-20020a05620a170b00b0077074ac99besi202841qkb.763.2023.10.02.22.39.46
+       dkim=pass header.i=@linaro.org header.s=google header.b=UsqjcRbD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id rr5-20020a05620a678500b0076da008f6ccsi236547qkn.288.2023.10.02.23.23.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Oct 2023 22:39:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 02 Oct 2023 23:23:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JPhmKkgs;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1696311586;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=tQwXNFD1mmfjoJgOAPuBsqjLKn6rTm/R5yvDWHsaB84=;
-	b=JPhmKkgs3NJEkYLbWYB2Ib0Rf1brE0fXHMH/cYg0V4Qf6NfRul+v+g1dBoDT6SLBBAw61g
-	pQ2ymOCyVvof+ZhKA9Pvv4Y7JSgI5NFKIeg3GB7EI4CcsHaIt+Punou+4iIlZZt8jeTYWv
-	JnDr8i3zAHTqv7rnlAOOl3LoeGXx65U=
-Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com
- [209.85.215.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-564-3xwLWsdKPLqy2kt_QSlZIw-1; Tue, 03 Oct 2023 01:39:44 -0400
-X-MC-Unique: 3xwLWsdKPLqy2kt_QSlZIw-1
-Received: by mail-pg1-f199.google.com with SMTP id 41be03b00d2f7-574155a12d9so295511a12.2
-        for <alex.bennee@linaro.org>; Mon, 02 Oct 2023 22:39:44 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=UsqjcRbD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qnYoU-0005gU-A2; Tue, 03 Oct 2023 02:23:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnYoS-0005fe-1t
+ for qemu-arm@nongnu.org; Tue, 03 Oct 2023 02:23:20 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnYoQ-0000t1-H5
+ for qemu-arm@nongnu.org; Tue, 03 Oct 2023 02:23:19 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4064876e8b8so5633025e9.0
+ for <qemu-arm@nongnu.org>; Mon, 02 Oct 2023 23:23:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1696314196; x=1696918996; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=yNPCrajTh57Jjbi/jtn+1FxXShjLbKmdOEGxNykJkZQ=;
+ b=UsqjcRbDvdclwTBrsbYs0fDhu2UJ7EG97WiVwr4eru7ic3UF6qRQlYpFuBtjNrKEgD
+ Wt9fFhONLwY4h69bt/CniQO1dtM7rWIjELuhxa7tA1OTgpbcgiCXo1VwmdmFegGXV9ur
+ csmxyz9CELXShmFJ7kGDzT5uugmLg/Bj8LK168vnmAMpCL6bIpI8oic16QD7Cmikbw0O
+ WSNbyeAVuV3v4JGPg3xwwc3QJIYFPYwy9nZjjU8m3IncBF0QY3iyAPR6HZCvGyIY99yq
+ cxT86xdUajl5gpcQuHH/lM7jxFKYOchzMMXbKO2SUeUeha4uOw5bCcNMXY9LA4NEGu1O
+ SNng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696311584; x=1696916384;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tQwXNFD1mmfjoJgOAPuBsqjLKn6rTm/R5yvDWHsaB84=;
-        b=u1DXfm0Zsa7/fcccYxngSyuMkxp+qEhoW4y0GNI/BV6+EuM3JmuqWcJaRHlBBU5wUm
-         UOWKJvqWy8oubegvXzPq8y9xCClawWGlziji++LgyOFcTDY3bd4vNkmiM8/MO5t0Vghj
-         RbTuYyFgk62gWDh45IeB4pfXOn8r9IKCE3H8BZwYBfEv8PwgQc9wmdVJGeX+kDt3K0Bp
-         ckmicjMe/vM6WZDkZ1/wDXwx7u9UvjgMuFsGb/mD5YC3Hx49aUcOgDq1kBL1/7Id5ggD
-         ytTxS2Gs2M17kScCXooWfOvpokbKwmK7/HUmJGz1JF1bR5Fc0X5T5W56oPHzoDOnSD/B
-         i8Qg==
-X-Gm-Message-State: AOJu0Yw0b3UrEFbLn5qYFY7EgMKexmw3O4hBtiHcJYV2RRfSF/m9mwyZ
-	SLYkg2P42iHH0ul4CeVD+qU3Lz9lwN2xP+q8jZ5cbZhj2j3V8pMdmo6Mauwd6le2oTOkUzD/qL3
-	Yt0sWrnnmII0ekyPU
-X-Received: by 2002:a05:6a20:158e:b0:159:b4ba:a5bf with SMTP id h14-20020a056a20158e00b00159b4baa5bfmr13579887pzj.13.1696311583908;
-        Mon, 02 Oct 2023 22:39:43 -0700 (PDT)
-X-Received: by 2002:a05:6a20:158e:b0:159:b4ba:a5bf with SMTP id h14-20020a056a20158e00b00159b4baa5bfmr13579866pzj.13.1696311583614;
-        Mon, 02 Oct 2023 22:39:43 -0700 (PDT)
-Return-Path: <gshan@redhat.com>
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5? ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
-        by smtp.gmail.com with ESMTPSA id z18-20020a170903019200b001c72f4334afsm471544plg.20.2023.10.02.22.39.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Oct 2023 22:39:43 -0700 (PDT)
-Message-ID: <dafa4d84-4e23-6bb9-fa33-17861c28ee4a@redhat.com>
-Date: Tue, 3 Oct 2023 15:39:30 +1000
+ d=1e100.net; s=20230601; t=1696314196; x=1696918996;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=yNPCrajTh57Jjbi/jtn+1FxXShjLbKmdOEGxNykJkZQ=;
+ b=wxFqAJ6tW/2rrR6R4OweRxQQocnKFCR1YDiE7ZACBnx2zt3KMOZXhbPDvQKSprVm2I
+ R4U+4mEo1kS/1yI0fH3QSqPiGkqTf8dIDrpad1Y/mM2D5NAORETJ/NJu2J1rs8r1WhMV
+ TjnL9nz6mo2JmfdidIGaB2m3+uLJ+ryHzzhP3KEMUjcu6rywddUZHcwVNBTxN1+u97xz
+ DtEiLQBLMdx/wwfTivEDej8y0Xk91PFbGgwYBe6h+5Unq7OJLRAGW86/jfTct0eOAbav
+ pWscdl5sPL8tAR9+Cb7C/BFDaoGUfu6g2S2UWXQb9xL+bGSR01hz6sS8AXFawH/7D66d
+ +XqQ==
+X-Gm-Message-State: AOJu0YwFAz7m9RfGVNJY8DwbPxaVLvaOZdqV05IPKSwgslDiFd4mYB+z
+ NSHzUfhFJxC1g0tY+fUHMO5Jtw==
+X-Received: by 2002:a5d:6986:0:b0:320:b24:4361 with SMTP id
+ g6-20020a5d6986000000b003200b244361mr11629310wru.34.1696314195987; 
+ Mon, 02 Oct 2023 23:23:15 -0700 (PDT)
+Received: from [192.168.69.115] (176-131-222-246.abo.bbox.fr.
+ [176.131.222.246]) by smtp.gmail.com with ESMTPSA id
+ da4-20020a056000196400b003279518f51dsm750608wrb.2.2023.10.02.23.23.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Oct 2023 23:23:15 -0700 (PDT)
+Message-ID: <06cd7690-adb6-e9ff-abf7-21c8c05efc2c@linaro.org>
+Date: Tue, 3 Oct 2023 08:23:12 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH RFC V2 05/37] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-To: Salil Mehta <salil.mehta@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Cc: "maz@kernel.org" <maz@kernel.org>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "imammedo@redhat.com" <imammedo@redhat.com>,
- "andrew.jones@linux.dev" <andrew.jones@linux.dev>,
- "david@redhat.com" <david@redhat.com>, "philmd@linaro.org"
- <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "will@kernel.org" <will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "mst@redhat.com"
- <mst@redhat.com>, "rafael@kernel.org" <rafael@kernel.org>,
- "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
- "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
- "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
- "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
- "karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
- "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
- "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
- zhukeqian <zhukeqian1@huawei.com>,
- "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
- "wangyanan (Y)" <wangyanan55@huawei.com>,
- "jiakernel2@gmail.com" <jiakernel2@gmail.com>,
- "maobibo@loongson.cn" <maobibo@loongson.cn>,
- "lixianglai@loongson.cn" <lixianglai@loongson.cn>
-References: <20230926100436.28284-1-salil.mehta@huawei.com>
- <20230926100436.28284-6-salil.mehta@huawei.com>
- <d58c51d2-53e4-3873-7c87-c6ccc3025ed9@redhat.com>
- <2a1d9be1afb54290b6b0e4a54711e030@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <2a1d9be1afb54290b6b0e4a54711e030@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH] xlnx-bbram: hw/nvram: Remove deprecated device reset
+To: Tong Ho <tong.ho@amd.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, alistair@alistair23.me, edgar.iglesias@gmail.com,
+ peter.maydell@linaro.org
+References: <20231003052345.199725-1-tong.ho@amd.com>
 Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20231003052345.199725-1-tong.ho@amd.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: d1KXuNtVRXaH
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.321,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NAFHM5glisnz
 
+Hi Tong,
 
-Hi Salil,
+On 3/10/23 07:23, Tong Ho wrote:
+> This change implements the ResettableClass interface for the device.
+> 
+> Signed-off-by: Tong Ho <tong.ho@amd.com>
+> ---
+>   hw/nvram/xlnx-bbram.c | 8 +++++---
+>   1 file changed, 5 insertions(+), 3 deletions(-)
 
-On 10/3/23 02:20, Salil Mehta wrote:
->> From: Gavin Shan <gshan@redhat.com>
->> Sent: Wednesday, September 27, 2023 7:52 AM
->> To: Salil Mehta <salil.mehta@huawei.com>; qemu-devel@nongnu.org; qemu-
->> arm@nongnu.org
->> Cc: maz@kernel.org; jean-philippe@linaro.org; Jonathan Cameron
->> <jonathan.cameron@huawei.com>; lpieralisi@kernel.org;
->> peter.maydell@linaro.org; richard.henderson@linaro.org;
->> imammedo@redhat.com; andrew.jones@linux.dev; david@redhat.com;
->> philmd@linaro.org; eric.auger@redhat.com; will@kernel.org; ardb@kernel.org;
->> oliver.upton@linux.dev; pbonzini@redhat.com; mst@redhat.com;
->> rafael@kernel.org; borntraeger@linux.ibm.com; alex.bennee@linaro.org;
->> linux@armlinux.org.uk; darren@os.amperecomputing.com;
->> ilkka@os.amperecomputing.com; vishnu@os.amperecomputing.com;
->> karl.heubaum@oracle.com; miguel.luis@oracle.com; salil.mehta@opnsrc.net;
->> zhukeqian <zhukeqian1@huawei.com>; wangxiongfeng (C)
->> <wangxiongfeng2@huawei.com>; wangyanan (Y) <wangyanan55@huawei.com>;
->> jiakernel2@gmail.com; maobibo@loongson.cn; lixianglai@loongson.cn
->> Subject: Re: [PATCH RFC V2 05/37] accel/kvm: Extract common KVM vCPU
->> {creation,parking} code
->>
->> Hi Salil,
->>
->> On 9/26/23 20:04, Salil Mehta wrote:
->>> KVM vCPU creation is done once during the initialization of the VM when Qemu
->>> threads are spawned. This is common to all the architectures. If the architecture
->>> supports vCPU hot-{un}plug then this KVM vCPU creation could be deferred to
->>> later point as well. Some architectures might in any case create KVM vCPUs for
->>> the yet-to-be plugged vCPUs (i.e. QoM Object & thread does not exists) during VM
->>> init time and park them.
->>>
->>> Hot-unplug of vCPU results in destruction of the vCPU objects in QOM but
->>> the KVM vCPU objects in the Host KVM are not destroyed and their representative
->>> KVM vCPU objects in Qemu are parked.
->>>
->>> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
->>> ---
->>>    accel/kvm/kvm-all.c  | 61 ++++++++++++++++++++++++++++++++++----------
->>>    include/sysemu/kvm.h |  2 ++
->>>    2 files changed, 49 insertions(+), 14 deletions(-)
->>>
->>
->> The most important point seems missed in the commit log: The KVM vCPU objects,
->> including those hotpluggable objects, need to be in place before in-host GICv3
->> is initialized. So we need expose kvm_create_vcpu() to make those KVM vCPU
->> objects in place, even for those non-present vCPUs.
-> 
-> 
-> This is a patch common to all architectures. The point you are making is specific
-> to the ARM architecture. This patch is now part of the common patch-set. Here,
-> 
-> https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huawei.com/
-> 
-> 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Yes, reviewed it again. Lets have more discussions over there.
+Since you did this one, do you mind updating the other Xilinx devices?
 
-Thanks,
-Gavin
+$ git grep -F -- '->reset = ' hw/*/*xlnx*
+hw/display/xlnx_dp.c:1399:    dc->reset = xlnx_dp_reset;
+hw/dma/xlnx-zdma.c:827:    dc->reset = zdma_reset;
+hw/dma/xlnx-zynq-devcfg.c:387:    dc->reset = xlnx_zynq_devcfg_reset;
+hw/dma/xlnx_csu_dma.c:714:    dc->reset = xlnx_csu_dma_reset;
+hw/dma/xlnx_dpdma.c:601:    dc->reset = xlnx_dpdma_reset;
+hw/intc/xlnx-pmu-iomod-intc.c:539:    dc->reset = xlnx_pmu_io_intc_reset;
+hw/intc/xlnx-zynqmp-ipi.c:362:    dc->reset = xlnx_zynqmp_ipi_reset;
+hw/misc/xlnx-versal-cfu.c:498:    dc->reset = cfu_apb_reset;
+hw/nvram/xlnx-bbram.c:526:    dc->reset = bbram_ctrl_reset;
+hw/nvram/xlnx-versal-efuse-ctrl.c:753:    dc->reset = efuse_ctrl_reset;
+hw/nvram/xlnx-zynqmp-efuse.c:841:    dc->reset = zynqmp_efuse_reset;
+hw/rtc/xlnx-zynqmp-rtc.c:258:    dc->reset = rtc_reset;
+hw/ssi/xlnx-versal-ospi.c:1833:    dc->reset = xlnx_versal_ospi_reset;

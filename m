@@ -1,139 +1,279 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1913266ejb;
-        Tue, 3 Oct 2023 04:56:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH5+Pcr4WZpeSXX9VQf7pnY3XWHoeLGIjLlm5M8oMcqAN65wrgwRtP5JV8sTZyD9suPpWsD
-X-Received: by 2002:a5d:6084:0:b0:319:79b4:a8ba with SMTP id w4-20020a5d6084000000b0031979b4a8bamr12585117wrt.41.1696334174847;
-        Tue, 03 Oct 2023 04:56:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696334174; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2068336ejb;
+        Tue, 3 Oct 2023 08:48:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHP+HKHZgYm5tX66C74Bv2vo0hL/C/ca4+LNFhhl4BJSK1L/Yvv9C7tiV0fKklOZNuFvFGm
+X-Received: by 2002:ac8:7dd6:0:b0:410:acd5:a000 with SMTP id c22-20020ac87dd6000000b00410acd5a000mr19435287qte.21.1696348110146;
+        Tue, 03 Oct 2023 08:48:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696348110; cv=none;
         d=google.com; s=arc-20160816;
-        b=xv+RqDirsdT+dWVe1BQ2QdPGjFWMCnIuJNuO5Z+hAjVFuVjhjPfqlAWuiAdVtZURkc
-         SXxv0cwziuUCx2VF7gi+sWboy7oBQ0VFiRU1G3XojDTqF/8nNrcorG/Ods7C+5HyL6/M
-         /JfJjteRkixegAYmqd+XT6OssPfBxqvLRcgvzjjwmkc5l5rgHffGVr5Cxci14W/PROOd
-         d8+ytIAh67ZyCMxqbZBGHh3e1EOkttezcJDumA3X90HIFsJanGgdNqwIUlLmfzIfMecZ
-         m8GFWCsoPaIdTTA7hU6Bf6HFW6zbVWrsj2o4UCJG3mV6tSabyHzpGtBRtAuPvn+3cD+4
-         QKaw==
+        b=U6r36X7FQg4NjhOL2FiwvyoDOfxsMb0GyGq5wexnOQ8Y4MfNU8yTMqya4h2QEQKQ8P
+         /cDzBRx49gbmF4MeJ4OG+9hqZtcGWZpHqY7WQWF7KP4Xk0wpiKfyUzu7OR2qP9iZlDoC
+         SqK8E+CltHJLhYohVzSfR66NvY47uFFpdN0alOweMoh0P/77VC1q0MVahk37NmDEuhss
+         Y/MkYn8oW4VPyV62OoZm5aXPJVGZtcMeB8z3kgzrhgvDJMucR4V/ChTcu8MYGouj4TyS
+         t/LdRHWc3lb1F2y/ngjpKQ20+cbBZrB7hXhYh5mB8VSCqE2rbORi0H3rlg33inEYzm87
+         fjzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=jyHgWgkV9w8w3hGJ6ldH3MMfj4p7FH89oebHufi6hJA=;
-        fh=DCV4KZOcuvUG/wve9C1kSJ4RRlBk9KClkYRBzQw+8ow=;
-        b=MRnaDsMXyv0AUKAX9MrmwuSRPmesuiRA6ONC/DhGBLR3urbeu49D/UF0ghoOaef8mh
-         60dGxy85/lNthaMSYvm0bUguC6Sg+TWIGIifHye570EdSjwMolTJk181PdbxXc9kJCpV
-         flOCP+uKAIlcKrdpvnMJ/s+FDbREqn3D2Zo3IMAtZat/JmuGxTUyOwWvwqDCdCc74gby
-         etrtZsdZMufhE4O6wEqFMo8Tfscsxo9of8POaAAdIfItU0cxp4zuYLLyp9bHWLUq+Xzn
-         7xlfa7Sm80795SjWsHE8zwpzL249LL7g05NUxfj9qmwiQtTXQ16UEZ8I57MD3LA85op1
-         l7/Q==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=3HZdZ5c0/bKwO5Deq2ISGBy70fR2UpBl0C2Xwv8f9Bs=;
+        fh=gVmgt05lYC9Kq3vZqToIEPbr8DFcTYootz8XWxc6lQg=;
+        b=t3exncdf5GByXvf4DmKVqwMcHq7Bl/OEBKkbiAtADaaA+5XBEgQPudw+Zjll96pWQh
+         x5MvGz1oCOundvoEmhcjNUt55+QivRVrwC90UM8aqNbGLHmWnhXb/a5UpXo8RhKVE4XV
+         gKlv/zlZ+sohMOwQ3EWArfLyJoPApKs2UyldJuIriQ7MtEGgRDhiOPqjNhIWxPgCPrjN
+         A/sKvSZP5h8W5hoZM4D4LerG0D1GtMw9gIU8yIq3MrVo9r+N5ENO4B0StrrnoFQvseWY
+         FE7fcIjs1r0kVlGQlJMtGKfIiKu6lKgeruvuB/HZ9lUSAe8ImKvqn2+eppkYTvXhMzDW
+         xnCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id n10-20020a5d660a000000b00323357b04f6si666384wru.513.2023.10.03.04.56.14
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Oct 2023 04:56:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Y2Tr/zPq";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g17-20020ac87f51000000b004197105b96csi638872qtk.191.2023.10.03.08.48.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 03 Oct 2023 08:48:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500004.china.huawei.com (unknown [172.18.147.207])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S0GVr41XMz67cTF;
-	Tue,  3 Oct 2023 19:56:04 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500004.china.huawei.com (7.191.163.9) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Tue, 3 Oct 2023 12:56:13 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Tue, 3 Oct 2023 12:56:13 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org"
-	<alex.bennee@linaro.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V2 09/10] gdbstub: Add helper function to unregister GDB
- register space
-Thread-Topic: [PATCH V2 09/10] gdbstub: Add helper function to unregister GDB
- register space
-Thread-Index: AQHZ8zRGPsMQQekjMEW7/A+UTTdUE7A3WOyAgAChr/A=
-Date: Tue, 3 Oct 2023 11:56:12 +0000
-Message-ID: <9fd7a974f5524eb28f0c0c546704d97d@huawei.com>
-References: <20230930001933.2660-1-salil.mehta@huawei.com>
-	<20230930001933.2660-10-salil.mehta@huawei.com>
- <1b018c9e-fde4-e486-b853-1d516db2d2b2@redhat.com>
-In-Reply-To: <1b018c9e-fde4-e486-b853-1d516db2d2b2@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.126.168.138]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Y2Tr/zPq";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qnhdF-0008E2-5L; Tue, 03 Oct 2023 11:48:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1qnhdC-0008DP-RH
+ for qemu-arm@nongnu.org; Tue, 03 Oct 2023 11:48:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1qnhdA-0004kU-Pe
+ for qemu-arm@nongnu.org; Tue, 03 Oct 2023 11:48:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1696348095;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3HZdZ5c0/bKwO5Deq2ISGBy70fR2UpBl0C2Xwv8f9Bs=;
+ b=Y2Tr/zPqacqYZ7lubG+y3QB8ya9LIEMUY3HZnUGkMxNAwR4OtTcZg0T5HbtjYPsPuDeLos
+ IL1CqeTT+C+jI8lBPpcwUyXFfKC9oIO0g6MY9uMJm256mPwfPg1MydW4AecaeeT6GRIny9
+ VAUn/VOyLlP0a4lxKxj6ENjG/S4V3EY=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-612-Tkam-DukMrCSKDJg63FPDA-1; Tue, 03 Oct 2023 11:48:14 -0400
+X-MC-Unique: Tkam-DukMrCSKDJg63FPDA-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-7740bc7ad6fso166928785a.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Oct 2023 08:48:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696348094; x=1696952894;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=3HZdZ5c0/bKwO5Deq2ISGBy70fR2UpBl0C2Xwv8f9Bs=;
+ b=CMmkZdvR8iMtcIQI8NowpVDzmtBhYrtLVe437TMIwm8onKbAIUGduZG/kZ+QhYfgSV
+ 9zWPXF68dD259/kagI8ZVbYb5MXLKfjIy9C/Qab3cOzIsRSgbh26CYwzeTMrLmwenOdj
+ a2A2O9/VWiY6kK+PowA6Tsja4nOJX5RwNm5z/Zy5Ayl6p1K8Ggde9xkZu93Diagfk1UE
+ andwrRAqmYbxNsmof/zhR9PdxTlV5JvLQ4XvLShvjI44AVXj0UeBffPfyrs202gSdKhc
+ OrZCP/WHTR1xnWXJi8ZTW7gdE+HC7/aPjYD3JQD+hf/WII4xEl33nHNJRQQbwkR0j0hh
+ N1Qg==
+X-Gm-Message-State: AOJu0YysV6pGC3q10I6PRFpzl5hgL2AqxWECWCYSWlDXzP/Bg7cN1hsD
+ alZMyaZiPt+f/b4NSyNcQd7Cvk6ISe9u/oBnT7VoACnPWES3+wrzP/IBx462ufGrAUdcu+Zzvnp
+ ikTeLEkRgryP5
+X-Received: by 2002:a05:620a:24c7:b0:775:a3fc:a9d1 with SMTP id
+ m7-20020a05620a24c700b00775a3fca9d1mr9453754qkn.23.1696348093976; 
+ Tue, 03 Oct 2023 08:48:13 -0700 (PDT)
+X-Received: by 2002:a05:620a:24c7:b0:775:a3fc:a9d1 with SMTP id
+ m7-20020a05620a24c700b00775a3fca9d1mr9453723qkn.23.1696348093688; 
+ Tue, 03 Oct 2023 08:48:13 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ v16-20020a05620a123000b0076ef004f659sm555734qkj.1.2023.10.03.08.48.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 03 Oct 2023 08:48:13 -0700 (PDT)
+Message-ID: <4bf0585d-884a-5f2f-5e98-c79b16fd100c@redhat.com>
+Date: Tue, 3 Oct 2023 17:48:08 +0200
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: fvpulVQ88Vwy
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH v2 05/12] virtio-iommu: Introduce per IOMMUDevice reserved
+ regions
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ alex.williamson@redhat.com, clg@redhat.com, mst@redhat.com,
+ pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
+ david@redhat.com, philmd@linaro.org
+References: <20230913080423.523953-1-eric.auger@redhat.com>
+ <20230913080423.523953-6-eric.auger@redhat.com>
+ <20230929155251.GA2957297@myrica>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20230929155251.GA2957297@myrica>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.09, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1poiW/T3DKUE
 
-PiBGcm9tOiBHYXZpbiBTaGFuIDxnc2hhbkByZWRoYXQuY29tPg0KPiBTZW50OiBUdWVzZGF5LCBP
-Y3RvYmVyIDMsIDIwMjMgNDoxNyBBTQ0KPiBUbzogU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1
-YXdlaS5jb20+OyBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtDQo+IGFybUBub25nbnUub3Jn
-DQo+IENjOiBtYXpAa2VybmVsLm9yZzsgamVhbi1waGlsaXBwZUBsaW5hcm8ub3JnOyBKb25hdGhh
-biBDYW1lcm9uDQo+IDxqb25hdGhhbi5jYW1lcm9uQGh1YXdlaS5jb20+OyBscGllcmFsaXNpQGtl
-cm5lbC5vcmc7DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgcmljaGFyZC5oZW5kZXJzb25A
-bGluYXJvLm9yZzsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgYW5kcmV3LmpvbmVzQGxpbnV4LmRl
-djsgZGF2aWRAcmVkaGF0LmNvbTsNCj4gcGhpbG1kQGxpbmFyby5vcmc7IGVyaWMuYXVnZXJAcmVk
-aGF0LmNvbTsgb2xpdmVyLnVwdG9uQGxpbnV4LmRldjsNCj4gcGJvbnppbmlAcmVkaGF0LmNvbTsg
-bXN0QHJlZGhhdC5jb207IHdpbGxAa2VybmVsLm9yZzsgcmFmYWVsQGtlcm5lbC5vcmc7DQo+IGFs
-ZXguYmVubmVlQGxpbmFyby5vcmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51azsNCj4gZGFycmVuQG9z
-LmFtcGVyZWNvbXB1dGluZy5jb207IGlsa2thQG9zLmFtcGVyZWNvbXB1dGluZy5jb207DQo+IHZp
-c2hudUBvcy5hbXBlcmVjb21wdXRpbmcuY29tOyBrYXJsLmhldWJhdW1Ab3JhY2xlLmNvbTsNCj4g
-bWlndWVsLmx1aXNAb3JhY2xlLmNvbTsgc2FsaWwubWVodGFAb3Buc3JjLm5ldDsgemh1a2VxaWFu
-DQo+IDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5nIChDKSA8d2FuZ3hpb25n
-ZmVuZzJAaHVhd2VpLmNvbT47DQo+IHdhbmd5YW5hbiAoWSkgPHdhbmd5YW5hbjU1QGh1YXdlaS5j
-b20+OyBqaWFrZXJuZWwyQGdtYWlsLmNvbTsNCj4gbWFvYmlib0Bsb29uZ3Nvbi5jbjsgbGl4aWFu
-Z2xhaUBsb29uZ3Nvbi5jbjsgTGludXhhcm0gPGxpbnV4YXJtQGh1YXdlaS5jb20+DQo+IFN1Ympl
-Y3Q6IFJlOiBbUEFUQ0ggVjIgMDkvMTBdIGdkYnN0dWI6IEFkZCBoZWxwZXIgZnVuY3Rpb24gdG8g
-dW5yZWdpc3Rlcg0KPiBHREIgcmVnaXN0ZXIgc3BhY2UNCj4gDQo+IA0KPiBPbiA5LzMwLzIzIDEw
-OjE5LCBTYWxpbCBNZWh0YSB3cm90ZToNCj4gPiBBZGQgY29tbW9uIGZ1bmN0aW9uIHRvIGhlbHAg
-dW5yZWdpc3RlciB0aGUgR0RCIFJlZ2lzdGVyIFNwYWNlLiBUaGlzIHNoYWxsDQo+IGJlDQo+ID4g
-ZG9uZSBpbiBjb250ZXh0IHRvIHRoZSBDUFUgdW5yZWFsaXphdGlvbi4NCj4gPg0KPiA+IFNpZ25l
-ZC1vZmYtYnk6IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPg0KPiA+IC0tLQ0K
-PiA+ICAgZ2Ric3R1Yi9nZGJzdHViLmMgICAgICB8IDE0ICsrKysrKysrKysrKysrDQo+ID4gICBp
-bmNsdWRlL2V4ZWMvZ2Ric3R1Yi5oIHwgIDUgKysrKysNCj4gPiAgIDIgZmlsZXMgY2hhbmdlZCwg
-MTkgaW5zZXJ0aW9ucygrKQ0KPiA+DQo+IA0KPiBXaXRoIHRoZSBmb2xsb3dpbmcgbml0cyBhZGRy
-ZXNzZWQ6DQo+IA0KPiBSZXZpZXdlZC1ieTogR2F2aW4gU2hhbiA8Z3NoYW5AcmVkaGF0LmNvbT4N
-Cj4gDQo+ID4gZGlmZiAtLWdpdCBhL2dkYnN0dWIvZ2Ric3R1Yi5jIGIvZ2Ric3R1Yi9nZGJzdHVi
-LmMNCj4gPiBpbmRleCAzNDlkMzQ4YzdiLi44OWFjMGVkZmVhIDEwMDY0NA0KPiA+IC0tLSBhL2dk
-YnN0dWIvZ2Ric3R1Yi5jDQo+ID4gKysrIGIvZ2Ric3R1Yi9nZGJzdHViLmMNCj4gPiBAQCAtNDkx
-LDYgKzQ5MSwyMCBAQCB2b2lkIGdkYl9yZWdpc3Rlcl9jb3Byb2Nlc3NvcihDUFVTdGF0ZSAqY3B1
-LA0KPiA+ICAgICAgIH0NCj4gPiAgIH0NCj4gPg0KPiA+ICt2b2lkIGdkYl91bnJlZ2lzdGVyX2Nv
-cHJvY2Vzc29yX2FsbChDUFVTdGF0ZSAqY3B1KQ0KPiA+ICt7DQo+ID4gKyAgICBHREJSZWdpc3Rl
-clN0YXRlICpzLCAqcDsNCj4gPiArDQo+ID4gKyAgICBwID0gY3B1LT5nZGJfcmVnczsNCj4gPiAr
-ICAgIHdoaWxlIChwKSB7DQo+ID4gKyAgICAgICAgcyA9IHA7DQo+ID4gKyAgICAgICAgcCA9IHAt
-Pm5leHQ7DQo+ID4gKyAgICAgICAgLyogcy0+eG1sIGlzIHN0YXRpYyBjb25zdCBjaGFyIHNvIGlz
-bid0IGZyZWVkICovDQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXl5e
-DQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3RyaW5nIHNvIHRoYXQg
-aXQgbmVlZG4ndCBiZSBmcmVlZA0KPiA+ICsgICAgICAgIGdfZnJlZShzKTsNCj4gPiArICAgIH0N
-Cj4gPiArICAgIGNwdS0+Z2RiX3JlZ3MgPSBOVUxMOw0KPiA+ICt9DQo+ID4gKw0KPiANCj4gRm9y
-IGNvbnNpc3RlbmN5LCBDUFVTdGF0ZTo6Z2RiX251bV9yZWdzIGFuZCBDUFVTdGF0ZTo6Z2RiX251
-bV9nX3JlZ3MNCj4gbmVlZCB0byBiZSB1cGRhdGVkIGFjY29yZGluZ2x5LCBldmVuIHRoZSBDUFUg
-aW5zdGFuY2Ugd2lsbCBiZSBkZXN0cm95ZWQNCj4gc2hvcnRseS4NCg0KR29vZCBwb2ludC4NCg0K
-VGhhbmtzDQpTYWxpbC4NCg0KDQoNCg==
+Hi Jean,
+
+On 9/29/23 17:52, Jean-Philippe Brucker wrote:
+> Hi Eric,
+>
+> On Wed, Sep 13, 2023 at 10:01:40AM +0200, Eric Auger wrote:
+>> For the time being the per device reserved regions are
+>> just a duplicate of IOMMU wide reserved regions. Subsequent
+>> patches will combine those with host reserved regions, if any.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>  include/hw/virtio/virtio-iommu.h |  1 +
+>>  hw/virtio/virtio-iommu.c         | 42 ++++++++++++++++++++++++++------
+>>  2 files changed, 35 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+>> index eea4564782..70b8ace34d 100644
+>> --- a/include/hw/virtio/virtio-iommu.h
+>> +++ b/include/hw/virtio/virtio-iommu.h
+>> @@ -39,6 +39,7 @@ typedef struct IOMMUDevice {
+>>      AddressSpace  as;
+>>      MemoryRegion root;          /* The root container of the device */
+>>      MemoryRegion bypass_mr;     /* The alias of shared memory MR */
+>> +    GList *resv_regions;
+>>  } IOMMUDevice;
+>>  
+>>  typedef struct IOMMUPciBus {
+>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>> index 979cdb5648..ea359b586a 100644
+>> --- a/hw/virtio/virtio-iommu.c
+>> +++ b/hw/virtio/virtio-iommu.c
+>> @@ -624,22 +624,48 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>>      return ret;
+>>  }
+>>  
+>> +static int consolidate_resv_regions(IOMMUDevice *sdev)
+>> +{
+>> +    VirtIOIOMMU *s = sdev->viommu;
+>> +    int i;
+>> +
+>> +    for (i = 0; i < s->nr_prop_resv_regions; i++) {
+>> +        ReservedRegion *reg = g_new0(ReservedRegion, 1);
+>> +
+>> +        *reg = s->prop_resv_regions[i];
+>> +        sdev->resv_regions = g_list_append(sdev->resv_regions, reg);
+>> +    }
+>> +    return 0;
+>> +}
+>> +
+>>  static ssize_t virtio_iommu_fill_resv_mem_prop(VirtIOIOMMU *s, uint32_t ep,
+>>                                                 uint8_t *buf, size_t free)
+>>  {
+>>      struct virtio_iommu_probe_resv_mem prop = {};
+>>      size_t size = sizeof(prop), length = size - sizeof(prop.head), total;
+>> -    int i;
+>> +    IOMMUDevice *sdev;
+>> +    GList *l;
+>> +    int ret;
+>>  
+>> -    total = size * s->nr_prop_resv_regions;
+>> +    sdev = container_of(virtio_iommu_mr(s, ep), IOMMUDevice, iommu_mr);
+>> +    if (!sdev) {
+>> +        return -EINVAL;
+>> +    }
+>>  
+>> +    ret = consolidate_resv_regions(sdev);
+>> +    if (ret) {
+>> +        return ret;
+>> +    }
+>> +
+>> +    total = size * g_list_length(sdev->resv_regions);
+>>      if (total > free) {
+>>          return -ENOSPC;
+>>      }
+>>  
+>> -    for (i = 0; i < s->nr_prop_resv_regions; i++) {
+>> -        unsigned subtype = s->prop_resv_regions[i].type;
+>> -        Range *range = &s->prop_resv_regions[i].range;
+>> +    for (l = sdev->resv_regions; l; l = l->next) {
+>> +        ReservedRegion *reg = l->data;
+>> +        unsigned subtype = reg->type;
+>> +        Range *range = &reg->range;
+>>  
+>>          assert(subtype == VIRTIO_IOMMU_RESV_MEM_T_RESERVED ||
+>>                 subtype == VIRTIO_IOMMU_RESV_MEM_T_MSI);
+>> @@ -857,7 +883,7 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>>      bool bypass_allowed;
+>>      int granule;
+>>      bool found;
+>> -    int i;
+>> +    GList *l;
+>>  
+>>      interval.low = addr;
+>>      interval.high = addr + 1;
+>> @@ -895,8 +921,8 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>>          goto unlock;
+>>      }
+>>  
+>> -    for (i = 0; i < s->nr_prop_resv_regions; i++) {
+>> -        ReservedRegion *reg = &s->prop_resv_regions[i];
+>> +    for (l = sdev->resv_regions; l; l = l->next) {
+>> +        ReservedRegion *reg = l->data;
+> This means translate() now only takes reserved regions into account after
+> the guest issues a probe request, which only happens if the guest actually
+> supports the probe feature. It may be better to build the list earlier
+> (like when creating the IOMMUDevice), and complete it in
+> set_iova_ranges(). I guess both could call consolidate() which would
+> rebuild the whole list, for example
+
+you're totally right, I completely missed that point. Will try to follow
+your suggestion.
+
+Thanks!
+
+Eric
+>
+> Thanks,
+> Jean
+>
+>>  
+>>          if (range_contains(&reg->range, addr)) {
+>>              switch (reg->type) {
+>> -- 
+>> 2.41.0
+>>
+

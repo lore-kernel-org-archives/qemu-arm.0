@@ -1,109 +1,108 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2879444ejb;
-        Wed, 4 Oct 2023 12:22:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHP/XAJrW7D9c9yJeea1U8ips60d6d6PZg5pNUVYI5I0cTjtGQvqhVaeZFSjbS6nkSpl0Ds
-X-Received: by 2002:a05:6808:8:b0:3a8:7c67:7f5 with SMTP id u8-20020a056808000800b003a87c6707f5mr3330013oic.1.1696447325908;
-        Wed, 04 Oct 2023 12:22:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696447325; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2879665ejb;
+        Wed, 4 Oct 2023 12:22:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHhjRxYumgC73en3v+0AygqpLNIHI1aSbXOT3EuSjvs60Pd7/65jlorGN5MYtLMe7QlKnvM
+X-Received: by 2002:ac8:5b09:0:b0:418:16d6:5a8d with SMTP id m9-20020ac85b09000000b0041816d65a8dmr4189824qtw.19.1696447346558;
+        Wed, 04 Oct 2023 12:22:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696447346; cv=none;
         d=google.com; s=arc-20160816;
-        b=XN6CYe3dByNyZsPGC9hKO/14wOxuXCian+mWalNrXUYvLE0K+8nz2sDlm9tOcccNOU
-         SBLgwHd/hlrto6l0F/PfqzXp7WWkmO5fQnwTMSZ+9vkJ4JFSWjf3vJ+uxj4xO2qjWO9Q
-         uVJQHStYvrwkHtzxCicwBLQ2sXGwcCxGSqmo4MubBUj+r7JjUnuFvAK3k4ru0CbxSUYG
-         +obUILaFyewwfgeCLkg3nQT3VBVCMpCtdrdLyhZsy/h7iZzHQ26/3JcBg+cLghHWLscO
-         sLmTQ98xVTuXY9vp1MmN/l50ODaGK0SsLJcCTTNZkYWvHg+/CMofNiERLIf2X2mzhZ0V
-         C0cA==
+        b=mniV8IYs6mbuAkBtP1ey6loZcpy2JU5PWPfhHGnbR9ircEhxd7MO5wwwEcsrvlZuUb
+         65APnA5QOvz6Imva1tHdg6ihsms2ce2bf/yLTTI8sX9EZM485s/AthJHSZGVeZ7nCuMy
+         QQ0o0UVOUbFV3vbTwMdtsMputs5qxwUN5xIkxSpmZ6ux3ZJUnrhpN56eKWjTJZ9dUqbm
+         Z6ENDN0aTisoZEGxDUuXc+DPuQsQkkCgU2CsNziqdca6KkEiC+L0scYTNflb9xFbu3jx
+         qG1zTDMpZIYli1MgqYeE+AyHLpcBW9Sax1iW0Ee6rTGLXzzehDYFHLTuqbxX+D3gveoF
+         yYxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=CT8CjkyW/qAVTukpqo9XqNgrhGiKGcDkIGDpw65wGGc=;
+        bh=7/FXvH4AVeLIX4JBWjI7WQhiI1KBXoKB/o0+b6JzizA=;
         fh=Iqw+C3zUdjRbqvq8+6x0+40nrEuEq3eUeL/fW1XE9rM=;
-        b=fB1PbBLRzg3Q/e0BmNLphuwA4ANeLfCBftMgeSNmpgvAjlTPGHSoYaFuImCQrKFQJJ
-         jAvbBklPTTEUbeLm8ztkvYLItO3yptZKXvpwg6xxQAIx+3LaRSfpgdnk12ZdFfuZnEzw
-         5hFmU1m/7cM5not48J/sbl2rzPgC3naCYhk/85hk1ZfRn6N7Amjgz4pacYbssDjbQ+Qr
-         UzkRAF7tQ7ZBIwmOOgQmTKLsSbVMdBvKtErKLNcAF4rQxHXQokvuYkZh/rPSAuBD45pG
-         KSnxhal5kwvwJ5HHG9lbub7bYnlX14FIQxyL3ibEINyYQ5l9YbHeX0j5cfPs9KTK3EZm
-         j37g==
+        b=0VnvLOF/mXQzGMvfNNXNAlTS08mi7g6NORXCbgHJ0aXOLqhGHtdmctECBJpfX+PIlN
+         aJCsZH4X3+xQXP5OsW6gNa85C4o/j+9RC4pIpwzQOrlEE49MZTqqgZfE2tfYarL/LCGR
+         RdK4AIonkHhVn4PV/HQ+BFeTmmkpYKgHNky7bfjCjZeymv3JZ+eGfuBUz7a/mDi2EOez
+         l9gxqQJ/5qjHZdad0B1OLBDHSy9g47hi7gAqDufVMtJI9Urrp0a1rQhJ4gG/idmeRXf+
+         EbGSVQmMiH2R2jBJIZkaxWaNPsYMQ0EpVQ+lq2iADbEFRD4xsRRuZqHHJWBGHpblvDaE
+         k0fg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=k9a1Y1FN;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jvHFkOjN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k14-20020a05622a03ce00b0041808244656si1754609qtx.313.2023.10.04.12.22.05
+        by mx.google.com with ESMTPS id o10-20020a05622a044a00b00410a29261efsi1809476qtx.287.2023.10.04.12.22.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 12:22:05 -0700 (PDT)
+        Wed, 04 Oct 2023 12:22:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=k9a1Y1FN;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jvHFkOjN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qo7Qy-0001Su-5w; Wed, 04 Oct 2023 15:21:24 -0400
+	id 1qo7Ro-0003Yx-7V; Wed, 04 Oct 2023 15:22:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1qo7Qx-0001N2-Dv; Wed, 04 Oct 2023 15:21:23 -0400
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+ id 1qo7Rl-0003SU-CU; Wed, 04 Oct 2023 15:22:13 -0400
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1qo7Qv-0002M8-Ji; Wed, 04 Oct 2023 15:21:23 -0400
-Received: by mail-lf1-x12d.google.com with SMTP id
- 2adb3069b0e04-50444e756deso250690e87.0; 
- Wed, 04 Oct 2023 12:21:20 -0700 (PDT)
+ id 1qo7Rg-0002TI-9K; Wed, 04 Oct 2023 15:22:12 -0400
+Received: by mail-lf1-x134.google.com with SMTP id
+ 2adb3069b0e04-504a7f9204eso234096e87.3; 
+ Wed, 04 Oct 2023 12:22:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1696447279; x=1697052079; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1696447324; x=1697052124; darn=nongnu.org;
  h=user-agent:in-reply-to:content-disposition:mime-version:references
  :message-id:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CT8CjkyW/qAVTukpqo9XqNgrhGiKGcDkIGDpw65wGGc=;
- b=k9a1Y1FNzkTzCzd9CEYF5q0ufRrrvjv/e+E0YC4LnHFlWhJ251CirXRPD2Eukmrrq4
- TkvMOYY9qNdUMj1bbFt8RLJ7vIFAf7wSPRjiF32yMa8MYDFJRboSjbnls6DMFgngyww9
- /tUZmyR8zRdFIamiyXPwamrJRtkscoRrr7+uhLF9N2dU+hKNgBbnO64y6czm1KuY9tqh
- R5ri0azuMF0DGgSnUbf3N3lN1FRZYCSzTHbRahv1bW9Eg699jrYNbybGSy9RDeS2lHpC
- CCjrAcgIhcZaJz81U6t/oWJreBx40sE7+/OcrtOIFz+vwPuCCmswh5eCREAdMagTR0Ng
- QDig==
+ bh=7/FXvH4AVeLIX4JBWjI7WQhiI1KBXoKB/o0+b6JzizA=;
+ b=jvHFkOjNnTnwV9vJ3BDhc8fugyevOcuLIwfHyj/8zR67YefLLPdj/9414XuHWFJiv/
+ LIcyAAjNBOOMfKKK1RZOBOOlhSv5RlXX9i+YB3JIAfuFJunwgQWe5ycdghs9N5NAbTg5
+ eb6AEsGH/16T4QUacAWQPnr2lZWyFwee8MG4IU9goJyaTCElb5gvUl/zsnr19CLUMjtw
+ af0jnQxcq8YHqAMjWZX948TBEMY1UupbvDlzTt4OcoABJNHwjlwnwkhcYeWYB7LtqY/I
+ JXnnBRF2DebOSiBf8talSN+jlOWz15lXukAH5SFagBfdWxgoyipm3f4vb4cEfjBn+o7m
+ nRLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696447279; x=1697052079;
+ d=1e100.net; s=20230601; t=1696447324; x=1697052124;
  h=user-agent:in-reply-to:content-disposition:mime-version:references
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=CT8CjkyW/qAVTukpqo9XqNgrhGiKGcDkIGDpw65wGGc=;
- b=w4U9RtE2Q7hSpJVcJSezygX4bb5yKkX2CP/d6CnSjP/cuCO0J7lARZlcP3tRa/JI+2
- VMQ07/AIjszJgC7gHIlTXSt/0FVX6BFvyaTme0YKSa4EQhSKkkGOfuuHVHnhe8voguvj
- z4VhWI9t8HMQkr56oeXHWAcrq8eK3P/5J620GSBdHIx+I2HKrwFDqg72g2r4lDfpk/is
- KirlV4u4RPspTjK/IuH9XDoYUAeFdNNXqnc3f1Lm6FWHkpjR82gwjGWl46LlJ4BgUGMY
- hDNIIlVu+nizpNhvviXHQFd5vFbptnm28MpKDDlKAeOtFlguQ54Yp7LEUa+VNyf9a/0X
- fRaA==
-X-Gm-Message-State: AOJu0Yzk/A7etP8XXTAtdCCeebqqsKaa1NgoBpdLjq2vRBRYZO5Og8/4
- HeFROWuGuIDEz+hSngAl3xZiW6mdMcw=
-X-Received: by 2002:a05:6512:1104:b0:505:6ede:20ab with SMTP id
- l4-20020a056512110400b005056ede20abmr3363545lfg.53.1696447279486; 
- Wed, 04 Oct 2023 12:21:19 -0700 (PDT)
+ bh=7/FXvH4AVeLIX4JBWjI7WQhiI1KBXoKB/o0+b6JzizA=;
+ b=fvoGko9DyPr6m+yABfEDCXmfWPQSO54C2TNezchiyySz7cdLU4F1lnIw87YrxosHwF
+ aJp1b/rk8UgHlFHhPrhPHtQv0oBGtdadA5mhFVtRKHqOIYaOUAeSzfv35Ec4DkSgPbtB
+ pMQZ0r6BAjZXUE7D9Ujxhc0yoqr0RNdtKYSavqMwsSZTbEDBDEV/EOIeWB5TejauJLIw
+ 0WclXBYSFLzI4GoSNb+Evmyb9G0qeuEtq7Ns4J4qK3Gi3IoeEUtp4+BxlzIi3GkUMWZB
+ ICB81iY1b0ECUwkaJ53XNU9cB3j2ZsuWyBy2fAjekmA4UWik8RjLLctvmqihwKABY43M
+ +5vg==
+X-Gm-Message-State: AOJu0Yyt79nAI03L1jWaFxecL+Jq+u7b+s6ClwHIKK6BC8uDW0pzJH/v
+ ituMkw1T+S8xEpFplk/F2ks=
+X-Received: by 2002:a05:6512:3095:b0:503:2a53:7480 with SMTP id
+ z21-20020a056512309500b005032a537480mr3187139lfd.49.1696447324370; 
+ Wed, 04 Oct 2023 12:22:04 -0700 (PDT)
 Received: from fralle-msi (217-76-87-243.cust.bredband2.com. [217.76.87.243])
  by smtp.gmail.com with ESMTPSA id
- n14-20020ac2490e000000b004fe3bd81278sm714788lfi.70.2023.10.04.12.21.19
+ c22-20020ac25316000000b00502d7365e8fsm715351lfh.137.2023.10.04.12.22.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Oct 2023 12:21:19 -0700 (PDT)
-Date: Wed, 4 Oct 2023 21:21:17 +0200
+ Wed, 04 Oct 2023 12:22:04 -0700 (PDT)
+Date: Wed, 4 Oct 2023 21:22:02 +0200
 From: Francisco Iglesias <frasse.iglesias@gmail.com>
 To: Tong Ho <tong.ho@amd.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, alistair@alistair23.me,
  edgar.iglesias@gmail.com, peter.maydell@linaro.org
-Subject: Re: [PATCH] xlnx-versal-efuse: hw/nvram: Remove deprecated device
- reset
-Message-ID: <20231004192117.GE18959@fralle-msi>
-References: <20231004055339.323833-1-tong.ho@amd.com>
+Subject: Re: [PATCH] xlnx-bbram: hw/nvram: Use dot in device type name
+Message-ID: <20231004192202.GF18959@fralle-msi>
+References: <20231003052139.199665-1-tong.ho@amd.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231004055339.323833-1-tong.ho@amd.com>
+In-Reply-To: <20231003052139.199665-1-tong.ho@amd.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x12d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::134;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x134.google.com
 X-Spam_score_int: -1020
 X-Spam_score: -102.1
 X-Spam_bar: ---------------------------------------------------
@@ -126,54 +125,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IxFwFABP1Ht+
+X-TUID: nE2G5GIGG0Lx
 
-On [2023 Oct 03] Tue 22:53:39, Tong Ho wrote:
-> This change implements the ResettableClass interface for the device.
+On [2023 Oct 02] Mon 22:21:39, Tong Ho wrote:
+> This replaces the comma (,) to dot (.) in the device type name
+> so the name can be used with the 'driver=' command line option.
 > 
 > Signed-off-by: Tong Ho <tong.ho@amd.com>
 
 Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
 > ---
->  hw/nvram/xlnx-versal-efuse-ctrl.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
+>  include/hw/nvram/xlnx-bbram.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/nvram/xlnx-versal-efuse-ctrl.c b/hw/nvram/xlnx-versal-efuse-ctrl.c
-> index b35ba65ab5..beb5661c35 100644
-> --- a/hw/nvram/xlnx-versal-efuse-ctrl.c
-> +++ b/hw/nvram/xlnx-versal-efuse-ctrl.c
-> @@ -2,6 +2,7 @@
->   * QEMU model of the Versal eFuse controller
->   *
->   * Copyright (c) 2020 Xilinx Inc.
-> + * Copyright (c) 2023 Advanced Micro Devices, Inc.
->   *
->   * Permission is hereby granted, free of charge, to any person obtaining a copy
->   * of this software and associated documentation files (the "Software"), to deal
-> @@ -657,9 +658,9 @@ static void efuse_ctrl_register_reset(RegisterInfo *reg)
->      register_reset(reg);
->  }
+> diff --git a/include/hw/nvram/xlnx-bbram.h b/include/hw/nvram/xlnx-bbram.h
+> index 87d59ef3c0..6fc13f8cc1 100644
+> --- a/include/hw/nvram/xlnx-bbram.h
+> +++ b/include/hw/nvram/xlnx-bbram.h
+> @@ -34,7 +34,7 @@
 >  
-> -static void efuse_ctrl_reset(DeviceState *dev)
-> +static void efuse_ctrl_reset_hold(Object *obj)
->  {
-> -    XlnxVersalEFuseCtrl *s = XLNX_VERSAL_EFUSE_CTRL(dev);
-> +    XlnxVersalEFuseCtrl *s = XLNX_VERSAL_EFUSE_CTRL(obj);
->      unsigned int i;
+>  #define RMAX_XLNX_BBRAM ((0x4c / 4) + 1)
 >  
->      for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-> @@ -749,8 +750,9 @@ static Property efuse_ctrl_props[] = {
->  static void efuse_ctrl_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
-> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
+> -#define TYPE_XLNX_BBRAM "xlnx,bbram-ctrl"
+> +#define TYPE_XLNX_BBRAM "xlnx.bbram-ctrl"
+>  OBJECT_DECLARE_SIMPLE_TYPE(XlnxBBRam, XLNX_BBRAM);
 >  
-> -    dc->reset = efuse_ctrl_reset;
-> +    rc->phases.hold = efuse_ctrl_reset_hold;
->      dc->realize = efuse_ctrl_realize;
->      dc->vmsd = &vmstate_efuse_ctrl;
->      device_class_set_props(dc, efuse_ctrl_props);
+>  struct XlnxBBRam {
 > -- 
 > 2.25.1
 > 

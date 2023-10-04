@@ -1,144 +1,185 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2649430ejb;
-        Wed, 4 Oct 2023 06:21:00 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFCAnUD7NOoYUde2gU5+rh9K6EdMz0zUhC88Eq1D0qgvGsKJSsksUYsArSUEJrMmGuFyx2a
-X-Received: by 2002:a1f:d6c4:0:b0:49a:f735:33c5 with SMTP id n187-20020a1fd6c4000000b0049af73533c5mr1916973vkg.15.1696425659777;
-        Wed, 04 Oct 2023 06:20:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696425659; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2662445ejb;
+        Wed, 4 Oct 2023 06:42:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGqpw919G0Wl0Kw0iCVcxZ8sc8wQ5sHMI8pn9FIBZR1fgZzkXFW0Anlmlq8dxtBm9pWvuXh
+X-Received: by 2002:a0c:f24f:0:b0:65b:12b1:d54f with SMTP id z15-20020a0cf24f000000b0065b12b1d54fmr2776532qvl.22.1696426942873;
+        Wed, 04 Oct 2023 06:42:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696426942; cv=none;
         d=google.com; s=arc-20160816;
-        b=i0+2sLAK9DShFIgZhGvPnDYSpizjdZ2NTg9Jh1kc1gb1MgsiHeOopl56VMAD3Ah8tw
-         ExtjCVwwiGL3n4Di9lxbm9t+2ql9koktJ2LoTgD0DKlUDB3aSi0hEG5MC6hMxa5+fbxW
-         0ZC1l5d5Po/ygXfNJdiaBHlCoUp//kQH5xPhNzSQRDGzrKe27FWig81QH/76j+ip/qMp
-         wwGKxf9xmPLfVGDL1+G+ltWK6e561Lz9A/CokKbAgBXjLYGPa/9Hq/EdchOoUtHzu6ZS
-         UUdLII2vutDupMRXVNuqiGVvMBCciAFVESzjtu7vcqWTZGk4lJt3JZmU0yA56N9xi6wV
-         pj1g==
+        b=I2xAQ8+XEc1YAh/X5Bt9ok/40K8KZj9njzgiaOennh4AsNkcAwC+gO344jE1gv7QjF
+         4wz6xejqadKgxeNR7reK/fQ9+cYMCOlMYaTMiR8P0gqVEtLPetUplYqSoo5kVnAxPozv
+         DGBsI6cztFWE+ndNltkV+qMwfqwNMd1gKJyFL74BQg3BBeps3LYXkxIAVhyT9GvXOBzz
+         ea0NW8mLI6crqw4MeAtzNvMuKEU5mdXeIUR3SjvsdCNx2LQyVQBoVjBSOLKt0v/KtwRN
+         QQ4lnLPCT/j+iBJjCZ7ix2+RsjEdv1BkuadUwqdnuHOAuQ3gT6W+N7twlFD1wAJGPvx1
+         Wqzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
-        fh=dGIpd4UFpGJRv2Dmy1xFLSxF6FDki9+ejz1quR3xOrQ=;
-        b=NA/pQKsbcHZuO+jC5DLRBN0csgrRUoxCo0L9cqti8nApjLB7sw8uDlKmjWFAUFRkud
-         +sHFAln/BIEh4wYp0cHk5BvvTBeyQoHtgN9ai/nXGeHUTBt0Qu9SX92KjqBIie7B8UUe
-         NOuOnhUC1RdjU3uNPGq0P/1Oox8nrs7HUutHIkefxRqkKsD4KZEeKnBaQeYGjSO/u/HG
-         tFUDteB3fqfPQuv1Xz4E5KYPD3FsfFf0R/+1e8xeS1DcO4sqd5wCMx7w+pv0YYgk14my
-         erQchnoYudiy7hVc4akYTZ+omeAbdcZ99aLaFSWFBo+4iLCTdG/HGknUkaGoTBV5ELcQ
-         H3JA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature
+         :dkim-signature;
+        bh=oRHGFsWWsaMiT4za2Ha7olylZlczXbGP/cTLlISMQZw=;
+        fh=m4WEECK7ITjHmOx/2xz74im+4FZ/7vOEfEPLJEeFBLQ=;
+        b=tTQ0slHw8LLBIPFznGGyWDn074I+9wkj5Ulv7uwS3ptRiY3n7h3SJbL6PHVETlYYeM
+         MVjrN9B4qnbH0SKhTyRtDOaJiVeTpcHzcxbyAyd2rUR7Ecud2BiOumN8tIZ/ktOhp6XT
+         ArGIB19JnncSzg+buME+61AcAw1K0qnAL65T0wCHadNawjVdeLOOwBFhf6RzW9fQBKTk
+         unuGcLbb+31nTzR4iqnxIc866rcyPgzIw0qt6lRB3Iv/IPmc9O8gFTfxErJvBfYsGFLy
+         w//9BC6lh6iLIWKkuPtd+CmNubqCUWzJW4eAJ4vyGazpDbb9OLWxgncdoUOU4wrIXXMW
+         HgdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NKLK9av3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=BVRh0+8P;
+       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 16-20020ac85910000000b003fe296f07casi1451422qty.302.2023.10.04.06.20.59
+        by mx.google.com with ESMTPS id t7-20020a0cde07000000b00655e4826736si1466429qvk.69.2023.10.04.06.42.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 06:20:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Oct 2023 06:42:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NKLK9av3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=BVRh0+8P;
+       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qo1nw-0003qm-Ct; Wed, 04 Oct 2023 09:20:44 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qo289-0007Cq-RH; Wed, 04 Oct 2023 09:41:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1qo1nv-0003o6-0Y
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 09:20:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1qo1nk-000683-MR
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 09:20:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696425631;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1qo287-0007B7-Sh; Wed, 04 Oct 2023 09:41:35 -0400
+Received: from smtp-out1.suse.de ([2001:67c:2178:6::1c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <cfontana@suse.de>)
+ id 1qo286-00079S-8B; Wed, 04 Oct 2023 09:41:35 -0400
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id B3A4E2184D;
+ Wed,  4 Oct 2023 13:41:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1696426889; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=NKLK9av3W8YKouGhGtXlImoE12rxxM4tWgOET4iMUCwJiERIIpoTkh41kjJ/e5BYVLzSI6
- 82Es96wRVgaK7d8fOIzkbG/SEdu0JqJAMUaEivNZP9CdkfIgyFm1m6UVD+mMxx2IwJn4gK
- i1Ly0EIJQPDP52dcdJHgjR2Nwf9eNfY=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-372-eWDhv8ZJPSWnnnKrAUrFcA-1; Wed, 04 Oct 2023 09:20:20 -0400
-X-MC-Unique: eWDhv8ZJPSWnnnKrAUrFcA-1
-Received: by mail-ej1-f70.google.com with SMTP id
- a640c23a62f3a-9b2c1159b0aso185251166b.3
- for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 06:20:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696425619; x=1697030419;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=Mk/lDm2H5GtP/2jJo1aYcs4Ee+jXd6lQOEzi+36HcmYV7mKpGqiSdvPAqzb2Yvk4KG
- lcQ/e5729oKtlvYm9YENqT2SPnvLXKCdwgPYpW6v5pl51y2895e+f6aAVXAPuSLxIpKF
- 4kFm3rRVUAnZKsknqBDKKPnaodyeZGw8XCm2yBTDEOJR9idHw5BIG6c/tWYaZ/E6k1ob
- kHb6j5I07O/fvWd8sFQLqcmQjSRGLAdPFBqgMRZCZ2QfdJgqGLimmlaKRPKCy1S2qtdJ
- 9YIDY6BUcSg4Ozph6p/FUzpWO+EyHBDL1z410CW7OzJ3S6bs4wyRMUX7ceF3+2K/prgN
- b6dw==
-X-Gm-Message-State: AOJu0YywRNQNY3ahoUyJc66cy/LdNHbvOk8ERw81YrUaQ/REZaM/1+70
- IfTpSoGHOygD2k+pnmQZcWBdbLYQJ/wClBDXRcDZzYdm/YF7UbfHsREcYOHvG9lxNbw6m6rmc1J
- Sl+oP96fpVCYg
-X-Received: by 2002:a17:907:6c14:b0:9ae:588e:142 with SMTP id
- rl20-20020a1709076c1400b009ae588e0142mr1874252ejc.67.1696425619665; 
- Wed, 04 Oct 2023 06:20:19 -0700 (PDT)
-X-Received: by 2002:a17:907:6c14:b0:9ae:588e:142 with SMTP id
- rl20-20020a1709076c1400b009ae588e0142mr1874229ejc.67.1696425619330; 
- Wed, 04 Oct 2023 06:20:19 -0700 (PDT)
-Received: from [192.168.10.118] ([2001:b07:6468:f312:2f4b:62da:3159:e077])
- by smtp.gmail.com with ESMTPSA id
- um14-20020a170906cf8e00b0099297782aa9sm2778308ejb.49.2023.10.04.06.20.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Oct 2023 06:20:18 -0700 (PDT)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
- Thomas Huth <thuth@redhat.com>, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH 00/13] misc: Rename 'softmmu' -> 'system'
-Date: Wed,  4 Oct 2023 15:20:17 +0200
-Message-ID: <20231004132017.160874-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231004090629.37473-1-philmd@linaro.org>
-References: 
+ bh=oRHGFsWWsaMiT4za2Ha7olylZlczXbGP/cTLlISMQZw=;
+ b=BVRh0+8PS/DzVfI6XvSrS4NzPDkbAeYqH5BwoKH6dPpV/exxG38RV48fBqJ0I83nBoHyJb
+ I5/x7tYpW+1eZRIlcpwo4tYt2hlpQgL1qCVtzLJrNxMvcox51VAYfEPoxd6EMuVG0FC2us
+ RwQl/oPFlSzE80663kq2rlQg4aLMf3A=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1696426889;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oRHGFsWWsaMiT4za2Ha7olylZlczXbGP/cTLlISMQZw=;
+ b=E+t5OJRN/YVcrUUHu0TAdojbDPrvz/3Y+A4PgmpLTlBjOtzGo1R1I+gjN5cnXMDLcd+/Df
+ G+BdarjhPQ4yU8DQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 63D29139F9;
+ Wed,  4 Oct 2023 13:41:29 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+ by imap2.suse-dmz.suse.de with ESMTPSA id RD6BFolrHWWwXgAAMHmgww
+ (envelope-from <cfontana@suse.de>); Wed, 04 Oct 2023 13:41:29 +0000
+Message-ID: <00b2ec16-162e-9204-3a04-f45e0edeeb15@suse.de>
+Date: Wed, 4 Oct 2023 15:41:28 +0200
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [PATCH 00/13] misc: Rename 'softmmu' -> 'system'
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20231004090629.37473-1-philmd@linaro.org>
+ <ZR1bjpEi5HdFp2xj@redhat.com>
+ <85be2979-c0ca-3eb4-dae9-bbabf256c201@redhat.com>
+From: Claudio Fontana <cfontana@suse.de>
+In-Reply-To: <85be2979-c0ca-3eb4-dae9-bbabf256c201@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2001:67c:2178:6::1c;
+ envelope-from=cfontana@suse.de; helo=smtp-out1.suse.de
+X-Spam_score_int: -58
+X-Spam_score: -5.9
+X-Spam_bar: -----
+X-Spam_report: (-5.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.528,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fZwgrEhJR2LR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KuFR8lhwwkRB
 
-Queued, thanks.
+On 10/4/23 14:37, Thomas Huth wrote:
+> On 04/10/2023 14.33, Daniel P. Berrangé wrote:
+>> On Wed, Oct 04, 2023 at 11:06:15AM +0200, Philippe Mathieu-Daudé wrote:
+>>> This series finishes the cleanup which remove the confusion
+>>> of using 'softmmu' when we really mean 'system emulation',
+>>> as opposition to 'user emulation'.
+>>
+>> Am I mis-understanding what you mean by 'finishes' here, as
+>> I see many references to softmmu remaining
+>>
+>>    $ git grep softmmu | wc -l
+>>    270
+>>
+>> In particular under configs/
+>>
+>> I was also hoping it meant that we'd be changing configure
+>> to allow
+>>
+>>      configure --target-list=x86_64-system
+>>
+>> though the lazy side of me would like
+>>
+>>      configure --target-list=x86_64-vm
+>>
+>> for less typing
+> 
+> Maybe we should also bikeshed about the naming first... "system" is a quite 
+> overloaded word in this context already, and "vm" sounds rather like 
+> hardware-accelerated stuff ... what about using something like "sysemu"? Or 
+> "fullsys" for "full system emulation" (in contrast to "user space"-only 
+> emulation)?
+> 
+>   Thomas
+> 
+> 
 
-Paolo
+Just my 2c, to me "system" is the only word that makes sense here, even from a purely user perspective.
+
+We already have exposed "system" to the user as a way to mean this, as in:
+
+./configure --enable-system
+./configure --disable-system
+
+and if everything is renamed from softmmu to system where it makes sense in the code,
+it's the best option for development as well in my view.
+
+Thanks,
+
+Claudio
+
 

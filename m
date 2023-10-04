@@ -1,121 +1,122 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2817194ejb;
-        Wed, 4 Oct 2023 10:32:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHyxTSco2RS7gXsMFEM39U63IbjLOcomitPB964S1/8H4y39AkAaJoROGFcoJe1pOndfnRX
-X-Received: by 2002:ac8:7d95:0:b0:418:a80:4529 with SMTP id c21-20020ac87d95000000b004180a804529mr389396qtd.16.1696440774829;
-        Wed, 04 Oct 2023 10:32:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696440774; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2817521ejb;
+        Wed, 4 Oct 2023 10:33:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHY3HUpnL9f3ELmrTk6Jbxq9nT/CoiO9NSGWOEqpTExOFXTvaGl0q4YRLS5ENVS1bim5vSp
+X-Received: by 2002:a05:622a:285:b0:403:b23f:9e16 with SMTP id z5-20020a05622a028500b00403b23f9e16mr375012qtw.2.1696440805567;
+        Wed, 04 Oct 2023 10:33:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696440805; cv=none;
         d=google.com; s=arc-20160816;
-        b=rMDKFKCKaCo//20VG8piS31g1QUsQPW7EEve8j5Gky4ocMhaPZARO09eMSZ6YpCDFF
-         4+4du0XOxGNZATvLVzLJWyH2fwTwLJ7Sn1mcMhwYgtmmq5Lz2mg3NDpXCEJGEx9mz4UG
-         0Gf0CCFKhPaS4D4m0iKlJyBXDlhk/JTq2jqDdSGnLB9WZ7Uqe/qsnD03jxeVlagF5wxc
-         Yw/hcX1Ru2M2ZpAeE+UrAovo3pZr3/PK/JhJYlNNEnMYWp4uGOoVN6/DVWFfLbyr7oF5
-         6F0oSOXj0do2QAPD41UO9IVdWzhD6/4dzay6sHSLeRpbgI/Uj9RXggUsk1rsSmu3TAs6
-         xaZA==
+        b=PIbl+2HJxM01zm4J1OBAEj0h17wiAAXNzXPllkKTyKfkozgddVR25uh71PyOe6gVfY
+         fQiA3MvOdyowWZnXy8/NdU21oBPb0PaWXa2a/h1VedpFcWFFVN8i6OGYjSCMa1m8w0S0
+         Vvw3vS3wOKOTlSnjVIUtKf1CZrf9Kq4NrynimNB5341vouy3K+7ljc7vLnh/MBk5cTNF
+         ldA+dmWRA0NkbKvgJbhyYKdmgbycsaaX6333BBUR3jgC6R7W7eoEj9efwPMzYj1aKX52
+         SIHmcmgBKRRGCW7F1Dhf7NcC01CTi7wTtB8C/PbAoHjLIimvljpw5dvLrMu8mIJ8lw86
+         9WQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=i0f/S9sk5n4iTXtNvEpxFckitQTJsYOjTpjl0/I1BCA=;
-        fh=LJ2Kf/jEc2fkEK0FWLmdYcGWhKtwH3HvKcK8+B2E6ls=;
-        b=k67BMIsg1Md5Xv25fNCRjexBd49y3Qd/nliBAWCnHha28SQRQB0WyhEcjrQ7lOWkEW
-         h5rpj9k4JARW8GLFCnfM14UY3kgOXjpMFvF1u0JdX8G1Kojpaudy+EIdal/3NlBv1c9T
-         LactWYqCXQHQotco8JYFZk1v2nzpqOYqxPrhU5j5Fs4I5AxCFRQMkP8/wM001mM2VlYR
-         EdKhE0n/jsCqqldmdjmQ6n/3Wz6wXwPu+LnKmJhAdtZqO9Qa1LMcOZXlocmnFcTv5ZRr
-         1d+ieL0Zwo/hRrQ+BGyXB4v/Yjr4GJ/u0Ayy4rIxRaBn3vuCssP4nbXKjfYcTIgAuqoy
-         ctgw==
+        bh=MGJIXDRJu9nRlkvT0HuUW6wiDMZ2EXW42Fkcow2Wmmc=;
+        fh=UPlpOzpKkZ1dSPpfBHy+BnAbBs36b3IndytgbAru6fk=;
+        b=fMNTOgx00nwy8cAw9kbQyerMW3Gdj5TuNm4S2Ych261urYZSVgPbX+wZiJtcVwykCs
+         bplQavssrNkNrYVxTQgudYhrRkAC0fDnXEuMZ4tbow+mAqFSyCNjUcXT0sDElEGCzu8T
+         qsXb53mWK+MgVGnrOfu5dQf7uDekkcrjA56sFNg8Nz1/82QqrxDbJn/4o2D3dBTZw1uf
+         R/8EoiFK6jwMsFjSlWXK2X2Jl4WfwrHoQty5yt+ikXJDptb2CTW+XbzVH58brDcSFKVj
+         Qe9uJuMgGAZizfIT5+x1Rk3rZBFyOeF10E1bkRrKq3dzOHAj9B56xbNgEtu8UBqO2j6c
+         PEdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PmqwI1mT;
+       dkim=pass header.i=@linaro.org header.s=google header.b="dAtVN/H7";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h13-20020ac8584d000000b00417bc62d18esi1681323qth.231.2023.10.04.10.32.54
+        by mx.google.com with ESMTPS id f21-20020ac859d5000000b00403c3fb27d8si1670789qtf.678.2023.10.04.10.33.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 10:32:54 -0700 (PDT)
+        Wed, 04 Oct 2023 10:33:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PmqwI1mT;
+       dkim=pass header.i=@linaro.org header.s=google header.b="dAtVN/H7";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qo5js-0003Q7-E3; Wed, 04 Oct 2023 13:32:48 -0400
+	id 1qo5k2-0003aV-Ae; Wed, 04 Oct 2023 13:32:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5jr-0003Pj-PC
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 13:32:47 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5k0-0003ZV-FD
+ for qemu-arm@nongnu.org; Wed, 04 Oct 2023 13:32:56 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5jh-0000zu-Eo
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 13:32:47 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-3231df68584so111263f8f.1
- for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 10:32:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5jw-00012M-2Q
+ for qemu-arm@nongnu.org; Wed, 04 Oct 2023 13:32:56 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4056ce55e7eso375725e9.2
+ for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 10:32:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696440756; x=1697045556; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696440769; x=1697045569; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=i0f/S9sk5n4iTXtNvEpxFckitQTJsYOjTpjl0/I1BCA=;
- b=PmqwI1mTj7JMI2SxH81d4YYnLWp5gevd4JSRKqgkEmuJAr3oBEUXQnduWReC14Wvhp
- iWML/SAKHzI4H+YxidQM0MMBjo9ti/nuk2csQSNwvSofFKr16VRTQHC9LdlmobptxNiA
- coFD6jynmjbhOqN5vRm/D/LbHpJ1COYPZUBNncYaP5X62uBJ4DIALCKhfjo3Ys2fl0f0
- iMz2tjGhI+5RvA3bc1aPv4BcUVXQcM5ryu+uobH8EYqrDTgUxhepXskfhffUVHJVKaPW
- +dWzaCqlZx5mua+un7N0UceFS6fcKFS6PwXkGj3reyeX/cKLjymsHH/QEh9s91ZOT0ZK
- u0Ow==
+ bh=MGJIXDRJu9nRlkvT0HuUW6wiDMZ2EXW42Fkcow2Wmmc=;
+ b=dAtVN/H72dd5veYTUlbJ78N8jmDPHy/V65XrqcC9foxksc1IWZHI+MuW3vZonXwRJ9
+ U6zkUMdHm9ZH6/sLzvhVjs4rSLhnMf4LXNE1WPL+Hq/iaqySJ4J12o2Rsi1bwTXrVF9E
+ R+oOk+vrhhVUvboaymYaOFYpuF4AaukL5lE+G9Mj7BUrBQYxZ8In7cflTmhuzfbZBWGp
+ 3FlimrnvVmMcAV7OI9AnJ6/oc24lGHTOxphfM3lPl1D3CK8A2i0MqW1lPXS0ySIZ3vU+
+ 6+6sFqYSrHxZkS5KRSFNvSTp6SXobHqXIO+xzg8RAgj/+y6zPS0LkakIepVQjY20/CdD
+ /86Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696440756; x=1697045556;
+ d=1e100.net; s=20230601; t=1696440769; x=1697045569;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=i0f/S9sk5n4iTXtNvEpxFckitQTJsYOjTpjl0/I1BCA=;
- b=QMkrHopM4YfueB3LqBf8zbuH/NxWB7mzUrk39WJtMGM7WzNac+mfPlzEjUkwEdencN
- WRuKi9/MUb/WXi7GQGLzTJdApWd3X1auw67MaRrln4GHuDWKPaO5sr+OyKoW8UB88Chn
- Ui6KKNWF/iEzb4jDNJfd5HrysJGkhx6r+heYfui6KUXFyienFFbX0MCEAvKxGPZ744Nu
- E4ZXvcFRvNzy3Uaw0OcbWNFoImtkQS6nuQ35sdHFCcVYsLUiA7zmG5xBpV2sKp4Wx2L5
- gQUCFEn5uZkeiVo0w3vG1mn/6DgK2uaF6D94StC+0kP86ka5S0dYOx5ZeuMvO0+HoXRd
- VXJw==
-X-Gm-Message-State: AOJu0YxccNt9SdXsqj7UpASZrgZnrkItLC/b6XAtGbbA0yuUPI0khHOY
- C3R7bWVDKl8VmBMszC9kf3DtbA==
-X-Received: by 2002:adf:efd1:0:b0:31f:fc96:9af1 with SMTP id
- i17-20020adfefd1000000b0031ffc969af1mr2729111wrp.59.1696440756089; 
- Wed, 04 Oct 2023 10:32:36 -0700 (PDT)
+ bh=MGJIXDRJu9nRlkvT0HuUW6wiDMZ2EXW42Fkcow2Wmmc=;
+ b=tkYKWhqsmHGsWFtA8jvyaAZy34DksK4dTk/VSAqabXzdIJrScLSsmrSvmPe4wH5N88
+ A/sSeuIgoqXRLtZ4W9jIOHqxwk2VYnmEJ7kYm2SSkif8sM4vunZM+AfyqMgXpjeEhTiI
+ Z0yXJbcbfU9NSqB0zte4zSs/slleJAP/vZHmG+IZ1wruDzOfWlLgxHx4U+h52Xyq2lpR
+ FiemxrHxvjAJ75zv0wXGz8osSeGdqdAA4lnX0kRl1A03aT8lF8g2T/2QtrdcqML10tL2
+ Kp98M2FDlL7WJxn83hNpxfQ7ElBd0vYmDGbMKAw3phi0nOg4plmc8omMUbc0MbWDvY5M
+ H4eg==
+X-Gm-Message-State: AOJu0YzcTiMrjTdcSpgHEbnzMX1km3KNsJPrRqJZJ3RhfixJomoiEY0F
+ b1n0vySUQSViemQcTQHO7ZeLzQ==
+X-Received: by 2002:a1c:4c13:0:b0:406:7d74:a29b with SMTP id
+ z19-20020a1c4c13000000b004067d74a29bmr2907167wmf.13.1696440769157; 
+ Wed, 04 Oct 2023 10:32:49 -0700 (PDT)
 Received: from m1x-phil.lan (5ep85-h01-176-173-163-52.dslam.bbox.fr.
  [176.173.163.52]) by smtp.gmail.com with ESMTPSA id
- j6-20020adfff86000000b0031423a8f4f7sm4508086wrr.56.2023.10.04.10.32.34
+ w21-20020a05600c015500b0040652e8ca13sm2011782wmm.43.2023.10.04.10.32.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 10:32:35 -0700 (PDT)
+ Wed, 04 Oct 2023 10:32:48 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Michael Roth <michael.roth@amd.com>,
- Konstantin Kostiuk <kkostiuk@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 05/21] qapi: Inline QERR_INVALID_PARAMETER definition
- (constant parameter)
-Date: Wed,  4 Oct 2023 19:31:40 +0200
-Message-ID: <20231004173158.42591-6-philmd@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH 07/21] qapi: Inline QERR_INVALID_PARAMETER_TYPE definition
+ (constant param)
+Date: Wed,  4 Oct 2023 19:31:42 +0200
+Message-ID: <20231004173158.42591-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231004173158.42591-1-philmd@linaro.org>
 References: <20231004173158.42591-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,7 +131,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e56mMm0kEOi2
+X-TUID: DfC68QR6s4GU
 
 Address the comment added in commit 4629ed1e98
 ("qerror: Finally unused, clean up"), from 2015:
@@ -146,102 +147,61 @@ coccinelle semantic patch:
     @match@
     expression errp;
     constant param;
+    constant value;
     @@
-         error_setg(errp, QERR_INVALID_PARAMETER, param);
+         error_setg(errp, QERR_INVALID_PARAMETER_TYPE, param, value);
 
     @script:python strformat depends on match@
     param << match.param;
+    value << match.value;
     fixedfmt; // new var
     @@
-    fixedfmt = f'"Invalid parameter \'{param[1:-1]}\'"' # Format skipping '"'.
+    fixedfmt = f'"Invalid parameter type for \'{param[1:-1]}\', expected: {value[1:-1]}"'
     coccinelle.fixedfmt = cocci.make_ident(fixedfmt)
 
     @replace@
     expression match.errp;
     constant match.param;
+    constant match.value;
     identifier strformat.fixedfmt;
     @@
-    -    error_setg(errp, QERR_INVALID_PARAMETER, param);
+    -    error_setg(errp, QERR_INVALID_PARAMETER_TYPE, param, value);
     +    error_setg(errp, fixedfmt);
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- dump/dump.c        | 6 +++---
- qga/commands.c     | 2 +-
- ui/ui-qmp-cmds.c   | 2 +-
- util/qemu-option.c | 2 +-
- 4 files changed, 6 insertions(+), 6 deletions(-)
+ target/arm/arm-qmp-cmds.c        | 3 ++-
+ target/s390x/cpu_models_sysemu.c | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/dump/dump.c b/dump/dump.c
-index d4ef713cd0..e173f1f14c 100644
---- a/dump/dump.c
-+++ b/dump/dump.c
-@@ -1810,7 +1810,7 @@ static void dump_init(DumpState *s, int fd, bool has_format,
- 
-     s->fd = fd;
-     if (has_filter && !length) {
--        error_setg(errp, QERR_INVALID_PARAMETER, "length");
-+        error_setg(errp, "Invalid parameter 'length'");
-         goto cleanup;
-     }
-     s->filter_area_begin = begin;
-@@ -1841,7 +1841,7 @@ static void dump_init(DumpState *s, int fd, bool has_format,
- 
-     /* Is the filter filtering everything? */
-     if (validate_start_block(s) == -1) {
--        error_setg(errp, QERR_INVALID_PARAMETER, "begin");
-+        error_setg(errp, "Invalid parameter 'begin'");
-         goto cleanup;
-     }
- 
-@@ -2145,7 +2145,7 @@ void qmp_dump_guest_memory(bool paging, const char *file,
-     }
- 
-     if (fd == -1) {
--        error_setg(errp, QERR_INVALID_PARAMETER, "protocol");
-+        error_setg(errp, "Invalid parameter 'protocol'");
-         return;
-     }
- 
-diff --git a/qga/commands.c b/qga/commands.c
-index 09c683e263..871210ab0b 100644
---- a/qga/commands.c
-+++ b/qga/commands.c
-@@ -154,7 +154,7 @@ GuestExecStatus *qmp_guest_exec_status(int64_t pid, Error **errp)
- 
-     gei = guest_exec_info_find(pid);
-     if (gei == NULL) {
--        error_setg(errp, QERR_INVALID_PARAMETER, "pid");
-+        error_setg(errp, "Invalid parameter 'pid'");
-         return NULL;
-     }
- 
-diff --git a/ui/ui-qmp-cmds.c b/ui/ui-qmp-cmds.c
-index debc07d678..41ca0100e7 100644
---- a/ui/ui-qmp-cmds.c
-+++ b/ui/ui-qmp-cmds.c
-@@ -44,7 +44,7 @@ void qmp_set_password(SetPasswordOptions *opts, Error **errp)
-         assert(opts->protocol == DISPLAY_PROTOCOL_VNC);
-         if (opts->connected != SET_PASSWORD_ACTION_KEEP) {
-             /* vnc supports "connected=keep" only */
--            error_setg(errp, QERR_INVALID_PARAMETER, "connected");
-+            error_setg(errp, "Invalid parameter 'connected'");
-             return;
-         }
-         /*
-diff --git a/util/qemu-option.c b/util/qemu-option.c
-index eedd08929b..fb391a7904 100644
---- a/util/qemu-option.c
-+++ b/util/qemu-option.c
-@@ -612,7 +612,7 @@ QemuOpts *qemu_opts_create(QemuOptsList *list, const char *id,
- 
-     if (list->merge_lists) {
-         if (id) {
--            error_setg(errp, QERR_INVALID_PARAMETER, "id");
-+            error_setg(errp, "Invalid parameter 'id'");
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index b53d5efe13..3c99fd8222 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -154,7 +154,8 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+     if (model->props) {
+         qdict_in = qobject_to(QDict, model->props);
+         if (!qdict_in) {
+-            error_setg(errp, QERR_INVALID_PARAMETER_TYPE, "props", "dict");
++            error_setg(errp,
++                       "Invalid parameter type for 'props', expected: dict");
              return NULL;
          }
-         opts = qemu_opts_find(list, NULL);
+     }
+diff --git a/target/s390x/cpu_models_sysemu.c b/target/s390x/cpu_models_sysemu.c
+index 63981bf36b..4507714493 100644
+--- a/target/s390x/cpu_models_sysemu.c
++++ b/target/s390x/cpu_models_sysemu.c
+@@ -111,7 +111,8 @@ static void cpu_model_from_info(S390CPUModel *model, const CpuModelInfo *info,
+     if (info->props) {
+         qdict = qobject_to(QDict, info->props);
+         if (!qdict) {
+-            error_setg(errp, QERR_INVALID_PARAMETER_TYPE, "props", "dict");
++            error_setg(errp,
++                       "Invalid parameter type for 'props', expected: dict");
+             return;
+         }
+     }
 -- 
 2.41.0
 

@@ -1,132 +1,254 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2891793ejb;
-        Wed, 4 Oct 2023 12:46:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH+fOE0HPNPp+qP4bt1JAY/GINWpJBOXmpgidWdmDczl+GsLO90RBSi9iUWtpruCH27Crti
-X-Received: by 2002:a05:6870:a10b:b0:1dc:bb65:f2be with SMTP id m11-20020a056870a10b00b001dcbb65f2bemr3848671oae.10.1696448797185;
-        Wed, 04 Oct 2023 12:46:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696448797; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2955241ejb;
+        Wed, 4 Oct 2023 15:05:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFNnwSRJKdyp6n4md8bymgRjY9BzEtB38rPpjCo4E78D9MGBbn5nTxT/ugodXPkQMkd/CFw
+X-Received: by 2002:a0c:e44a:0:b0:647:18f8:36eb with SMTP id d10-20020a0ce44a000000b0064718f836ebmr1251163qvm.27.1696457099646;
+        Wed, 04 Oct 2023 15:04:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696457099; cv=none;
         d=google.com; s=arc-20160816;
-        b=PSQydVnJsY6cr2fvnEa3bHwr3CeIFdj8jxQ1A7bwDtij6aam+Bot3ZbcE4apNZMdwS
-         XKWEzmQjyaPL6vq3pNy/6OhLMjOl0k+ouSjorVQn9BEWqgg/XuD2nV4bcynAPpAUU0Iw
-         3cPRTGeifQQnUOS2fw0zleQzToz9Qi5GRRLEaGh+hPkL7lNT2b7gFPl7Hfo73860F4Lg
-         VMNxnGkMiae7x6M0YWsa3FBtWHT5jy2hfvvusuR9KJUbxdPC2E6NB2Dv1pXGuBWmWG3Z
-         tiIMez6X2CZSNMe80hlG0fTBjZemqKM5fkFQFRWKZ9Lf5Qpp95SoEuLQrd5RId5889mf
-         qNGQ==
+        b=xXNHWyoELFBYXQBJbZvgtK83hVWGXV4hjTKipS6/7bUycMyxRHeDBmQOvPvjggBtWA
+         YZAGW60FIoJyv1oHFKh4t4RgjEMy6zRlb5KKkA3j13+dkGK0oO9KlfjD3ADPlzxjb+/q
+         06Ny1A6MPyVxRoLRHNeD+QQD+rXwkGYZHiPjNvevuwvibmwhoIvXeG06jkDHN5d0hNLV
+         vjkWTo6ivXzm9Szi/6qoFQ7WeOMxuL6G16kuM0zAYTtJiJHPKqHQi+v2DinVdtolnSoB
+         DadLF7idcI4V4UGGUt1U7SZQ9CvdUCdzCT08RQ8rS5yL1n30PEU4Ks9ZNseKFe9oeNkC
+         8NAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=E9MWhcZdOckvKdPPyQRZQPaqlNKCSIWZTSIJBtiOjhQ=;
-        fh=T+SSTeAxrZ+7RtL9oY8pymA8+lHV6k3OjFi4ur0eRDs=;
-        b=b298xxTqiYDnTu6WUTyjhGUOm/jNxNvtH4EbEnpDOVd4g6yq1CB8TFJkR2kYTf2LTf
-         o9akeYzQjjrs6kzIQxg9Mk8o8wUaoSpDrwmByk+AA9oFT7Gge8fHxwjFUcHj+ogB7HKB
-         6AHxr8a4HFdu1QTSghK6DE/ktr44WvWiUWXJpyYnlpJX1VkfoB1TUdRrPavgN4HptQGn
-         bHBf9Kh5JpkJ3pHHRB76WxTK/wK+TPpJ7wgO+d9hfrNstff74a9HcPXiFtndeOGdclkD
-         jdioH+jGBqSFtu9H5ZrEt0GqA+3HDoTWqKY1Dp++qxd6h9tlOK90uOUT7Y0Q209w8a0b
-         5oDw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=SN7B2C72peGSDFGYI0S6afh6Wo2s+XULg/YGD5hexk8=;
+        fh=ooXJ8qOMs6/uJFsQ1ifPXz7F0fH+f45xLMcTs6q/fOs=;
+        b=QIy0PrazHj77BVKg5Jq9qpkcXx9Q19EPli6RJhCXAzieUhe/xGyYh6YyBcRrajzRgt
+         tNTmHU/54t/lioBsam5Y8NxdfQKLJqwBDWZewm+wTm0iSKCwvBoeZPlsfaTSVxlUI0pQ
+         HODPKPJcHbjnz9WDCB6GXVecLvJhr8S4fxZ4JbwNdK4b5lGr6dklr9nf/QPYEGpgUpBQ
+         OTnJVrX5ZuXijAeipjC9MrqZ62brSoX4H/KX2zGVfEmLIUOxYujm2iDb5NNflOYD1iBO
+         o1ia4SBkqif0maoRaMghYGrJ7xLnGsEnnMnwmMKoPj8gnqH/FDYDvl64Y6cuet51mDk8
+         2+bA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dLgNUiZH;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <jsnow@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id eb8-20020a05620a480800b0077593f7148csi1762046qkb.273.2023.10.04.12.46.36
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=IOEMklrs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j19-20020a05620a289300b007741e910951si44717qkp.695.2023.10.04.15.04.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Oct 2023 12:46:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 04 Oct 2023 15:04:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dLgNUiZH;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1696448796;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=E9MWhcZdOckvKdPPyQRZQPaqlNKCSIWZTSIJBtiOjhQ=;
-	b=dLgNUiZHEccP++sh8h+BtdODhKxfUsgFm1DWHhr9SgtNIY/FxQCSxnCWHV2aJHBKwaf6l6
-	I2k3uU3G8c2U/gvyYl9kBdvWEYiC34Ap862P5mwMnepmsv5Bnz3iNiUrVHCBoltNrpOR1Q
-	llNE3upZhFeOGA6QAbA3rB10CQpA10I=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-443-zk3WSzupN8mkdp0C85VPSg-1; Wed, 04 Oct 2023 15:46:17 -0400
-X-MC-Unique: zk3WSzupN8mkdp0C85VPSg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 954AA8007A4;
-	Wed,  4 Oct 2023 19:46:16 +0000 (UTC)
-Received: from scv.redhat.com (unknown [10.22.16.75])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 91D111006B48;
-	Wed,  4 Oct 2023 19:46:15 +0000 (UTC)
-From: John Snow <jsnow@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	John Snow <jsnow@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org,
-	Joel Stanley <joel@jms.id.au>,
-	qemu-block@nongnu.org,
-	Beraldo Leal <bleal@redhat.com>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	Hanna Reitz <hreitz@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>,
-	Thomas Huth <thuth@redhat.com>,
-	Eric Blake <eblake@redhat.com>,
-	Ani Sinha <anisinha@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [PULL 1/9] Python/iotests: Add type hint for nbd module
-Date: Wed,  4 Oct 2023 15:46:05 -0400
-Message-ID: <20231004194613.2900323-2-jsnow@redhat.com>
-In-Reply-To: <20231004194613.2900323-1-jsnow@redhat.com>
-References: <20231004194613.2900323-1-jsnow@redhat.com>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=IOEMklrs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qo9z3-0002of-2L; Wed, 04 Oct 2023 18:04:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1qo9z1-0002my-0l; Wed, 04 Oct 2023 18:04:43 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1qo9yy-0005BC-N8; Wed, 04 Oct 2023 18:04:42 -0400
+Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 394Lrv2H011126; Wed, 4 Oct 2023 22:04:36 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=SN7B2C72peGSDFGYI0S6afh6Wo2s+XULg/YGD5hexk8=;
+ b=IOEMklrsIxMjxH6fFcTawG4maxY4MIf7GW6dqOx64lN7DkXesTV5yx27DiHmHJlDyNBg
+ xSgvHzcag20+Ms37eQHu4xJkqVwut9uvGH36l9WfDUePlbz6a4ihUUNQI4yKIqqOQLmN
+ luo6Sygzpp9LdicyU2rEjrFTqeA0c9Ct0kznaWpDFPUw5JbvymOsDNTTHKqG4NF2iD6t
+ Qz50bGgk9qJc1Tc0yQnLS/3S2epDt3cPWeAT1jmxZ3G/+xoL7Pco0mmZpfllr3EXNfa/
+ NS+eUcx9VFyhm/B21aMbClmytLyOdd8f/SQE/01RjqgaGExiG0cfpwNcytnZHyodESc+ zg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3thgccr7yt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 04 Oct 2023 22:04:36 +0000
+Received: from m0353723.ppops.net (m0353723.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 394Lsamq012600;
+ Wed, 4 Oct 2023 22:04:35 GMT
+Received: from ppma23.wdc07v.mail.ibm.com
+ (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3thgccr7xu-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 04 Oct 2023 22:04:35 +0000
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 394L9NNR007467; Wed, 4 Oct 2023 22:04:34 GMT
+Received: from smtprelay04.dal12v.mail.ibm.com ([172.16.1.6])
+ by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3teygkvthr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 04 Oct 2023 22:04:34 +0000
+Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
+ [10.241.53.104])
+ by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 394M4Ylf22807114
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 4 Oct 2023 22:04:34 GMT
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id F02DB58069;
+ Wed,  4 Oct 2023 22:04:33 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6D98D58052;
+ Wed,  4 Oct 2023 22:04:33 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTPS;
+ Wed,  4 Oct 2023 22:04:33 +0000 (GMT)
+Message-ID: <661cf24b-1c9f-97a0-8259-c0b995089df6@linux.ibm.com>
+Date: Wed, 4 Oct 2023 18:04:32 -0400
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 12/21] qapi: Inline and remove
+ QERR_INVALID_PARAMETER_VALUE definition
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org, Michael Roth <michael.roth@amd.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>
+References: <20231004173158.42591-1-philmd@linaro.org>
+ <20231004173158.42591-13-philmd@linaro.org>
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <20231004173158.42591-13-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-X-TUID: IXJSThRgQgDm
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: JEDTWAFhwFCPHaIQTRb7BqkQmP2A6fm3
+X-Proofpoint-GUID: gAVzrTUIbvuMt7_8FzqT5V2s3dGB3p2Y
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-04_12,2023-10-02_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 phishscore=0
+ clxscore=1011 impostorscore=0 mlxscore=0 malwarescore=0 bulkscore=0
+ lowpriorityscore=0 mlxlogscore=999 adultscore=0 priorityscore=1501
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310040159
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.528,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hxf6BWEkovQ2
 
-The test bails gracefully if this module isn't installed, but linters
-need a little help understanding that. It's enough to just declare the
-type in this case.
 
-(Fixes pylint complaining about use of an uninitialized variable because
-it isn't wise enough to understand the notrun call is noreturn.)
+On 10/4/23 13:31, Philippe Mathieu-Daudé wrote:
+> Address the comment added in commit 4629ed1e98
+> ("qerror: Finally unused, clean up"), from 2015:
+>
+>    /*
+>     * These macros will go away, please don't use
+>     * in new code, and do not add new ones!
+>     */
+>
+> Manually modify the error_report() call in softmmu/tpm.c,
+> then use sed to mechanically transform the rest. Finally
+> remove the definition in include/qapi/qmp/qerror.h.
+>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Signed-off-by: John Snow <jsnow@redhat.com>
----
- tests/qemu-iotests/tests/nbd-multiconn | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 
-diff --git a/tests/qemu-iotests/tests/nbd-multiconn b/tests/qemu-iotests/tests/nbd-multiconn
-index 478a1eaba27..7e686a786ea 100755
---- a/tests/qemu-iotests/tests/nbd-multiconn
-+++ b/tests/qemu-iotests/tests/nbd-multiconn
-@@ -20,6 +20,8 @@
- 
- import os
- from contextlib import contextmanager
-+from types import ModuleType
-+
- import iotests
- from iotests import qemu_img_create, qemu_io
- 
-@@ -28,7 +30,7 @@ disk = os.path.join(iotests.test_dir, 'disk')
- size = '4M'
- nbd_sock = os.path.join(iotests.sock_dir, 'nbd_sock')
- nbd_uri = 'nbd+unix:///{}?socket=' + nbd_sock
--
-+nbd: ModuleType
- 
- @contextmanager
- def open_nbd(export_name):
--- 
-2.41.0
+
+> ---
+>   include/qapi/qmp/qerror.h | 3 ---
+>   qapi/opts-visitor.c       | 4 ++--
+>   qapi/qapi-visit-core.c    | 4 ++--
+>   softmmu/tpm.c             | 3 +--
+>   4 files changed, 5 insertions(+), 9 deletions(-)
+>
+> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
+> index b723830eff..ac727d1c2d 100644
+> --- a/include/qapi/qmp/qerror.h
+> +++ b/include/qapi/qmp/qerror.h
+> @@ -17,9 +17,6 @@
+>    * add new ones!
+>    */
+>
+> -#define QERR_INVALID_PARAMETER_VALUE \
+> -    "Parameter '%s' expects %s"
+> -
+>   #define QERR_IO_ERROR \
+>       "An IO error has occurred"
+>
+> diff --git a/qapi/opts-visitor.c b/qapi/opts-visitor.c
+> index 0393704a73..844db583f4 100644
+> --- a/qapi/opts-visitor.c
+> +++ b/qapi/opts-visitor.c
+> @@ -441,7 +441,7 @@ opts_type_int64(Visitor *v, const char *name, int64_t *obj, Error **errp)
+>               }
+>           }
+>       }
+> -    error_setg(errp, QERR_INVALID_PARAMETER_VALUE, opt->name,
+> +    error_setg(errp, "Parameter '%s' expects %s", opt->name,
+>                  (ov->list_mode == LM_NONE) ? "an int64 value" :
+>                                               "an int64 value or range");
+>       return false;
+> @@ -494,7 +494,7 @@ opts_type_uint64(Visitor *v, const char *name, uint64_t *obj, Error **errp)
+>               }
+>           }
+>       }
+> -    error_setg(errp, QERR_INVALID_PARAMETER_VALUE, opt->name,
+> +    error_setg(errp, "Parameter '%s' expects %s", opt->name,
+>                  (ov->list_mode == LM_NONE) ? "a uint64 value" :
+>                                               "a uint64 value or range");
+>       return false;
+> diff --git a/qapi/qapi-visit-core.c b/qapi/qapi-visit-core.c
+> index 6c13510a2b..01793d6e74 100644
+> --- a/qapi/qapi-visit-core.c
+> +++ b/qapi/qapi-visit-core.c
+> @@ -194,7 +194,7 @@ static bool visit_type_uintN(Visitor *v, uint64_t *obj, const char *name,
+>       }
+>       if (value > max) {
+>           assert(v->type == VISITOR_INPUT);
+> -        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+> +        error_setg(errp, "Parameter '%s' expects %s",
+>                      name ? name : "null", type);
+>           return false;
+>       }
+> @@ -262,7 +262,7 @@ static bool visit_type_intN(Visitor *v, int64_t *obj, const char *name,
+>       }
+>       if (value < min || value > max) {
+>           assert(v->type == VISITOR_INPUT);
+> -        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+> +        error_setg(errp, "Parameter '%s' expects %s",
+>                      name ? name : "null", type);
+>           return false;
+>       }
+> diff --git a/softmmu/tpm.c b/softmmu/tpm.c
+> index 578563f05a..8437c4efc3 100644
+> --- a/softmmu/tpm.c
+> +++ b/softmmu/tpm.c
+> @@ -120,8 +120,7 @@ static int tpm_init_tpmdev(void *dummy, QemuOpts *opts, Error **errp)
+>       i = qapi_enum_parse(&TpmType_lookup, value, -1, NULL);
+>       be = i >= 0 ? tpm_be_find_by_type(i) : NULL;
+>       if (be == NULL) {
+> -        error_report(QERR_INVALID_PARAMETER_VALUE,
+> -                     "type", "a TPM backend type");
+> +        error_report("Parameter 'type' expects a TPM backend type");
+>           tpm_display_backend_drivers();
+>           return 1;
+>       }

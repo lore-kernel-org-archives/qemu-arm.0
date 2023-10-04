@@ -1,225 +1,201 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp1933326ejb;
-        Tue, 3 Oct 2023 05:27:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEDtq10UWROnO6Y/cPM5t06u1szAIxJPbG5nFpcUsnEORh+PDvasC71KnR4R4yY5MSdrTI9
-X-Received: by 2002:a5d:570d:0:b0:321:5e2f:37e1 with SMTP id a13-20020a5d570d000000b003215e2f37e1mr13502944wrv.19.1696336058759;
-        Tue, 03 Oct 2023 05:27:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696336058; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2436379ejb;
+        Tue, 3 Oct 2023 22:57:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEWUXTZXJ9kJaZXvFC+YpWOCjTgVLJ9vS06d1gSf73MvrfuCPMdzt1DHo9/1SFbxZPbxal/
+X-Received: by 2002:a05:622a:1803:b0:40f:ffd3:61fc with SMTP id t3-20020a05622a180300b0040fffd361fcmr1870802qtc.9.1696399059267;
+        Tue, 03 Oct 2023 22:57:39 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1696399059; cv=pass;
         d=google.com; s=arc-20160816;
-        b=GgwtJbAnqlEi5TK6sz/jArZ+Zx9TJaGRs0qqZrT0RcBHuIg6ppFB2lXo02AeHvR1fJ
-         ZTemoHMWyUQHvrH+ZeHdihXscCrpnQiipG5gmgfoMYnT6OXX3q4vtA6IYg1GOzNE8G4k
-         lVp9YoOQFKpy27PYuDXaCLtJsNdml+gYnY92Qbs57IVmQlZdwZdD1ovyKZWk0eREZpxd
-         807a1NKFdVKs4F31rgbKHNeHodRlVwPYvV8nZo0RSJwXtbSybsoJDQKVIZeyQG5vohRB
-         Z4AMDcz1LMQT7gxSpVMRvVE30GM8ykG1wSnOK4ttSscBVgaLiQ//7d21bbYXp0aTCL2t
-         f56w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=j531WFSE3H0CP2PcU3N/99ZZhGcugJtU87FrxFjLrU8=;
-        fh=7ClhMSyX8VLsf+4fXGm2a1j5PzlUyMO+epTSYFeQdDs=;
-        b=iwv/mSM6gI9ITuLFWRW2ztWrUS4lKfqxaJfGmzyLCyg0wjuKA/pEfVN8u1dWCM1Hus
-         u96uhJp1qxEB2TZS71F+ea87qktQ5iymgpyyoCIHmx9/k8jnbGOBU3dibBd4F8O1ghCs
-         O2MrqiGp/iCL4qYZiXhphH2bDdtYzCuli88zbvXOf/D5QjhB3QL60k7Hx/IiNsw3P3we
-         oUTXS2h+i4TQg89Lz9tr6Auzs2ouUNl5MrgycC9cjTJT5C6p6M30RhMModJPNl9DoAKO
-         iuLy6YAG8Xs3FGdShU9pXT8s+Zgq6OhFk6bFuiTfysr3y91ni4XeAItHi4zIh9R6Fd63
-         LTUw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id l17-20020adfe9d1000000b00323228004c7si751687wrn.283.2023.10.03.05.27.38
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 03 Oct 2023 05:27:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+        b=SQ8sa1DJ1PSsehFCs+gnvR0VxZBWwZhsRxlVKY3DNb05ldUixN/zmrBdlgOdun8bvI
+         PRvV9LsHtCiwsr7pgi17R6IC01dr7a+AXht3lbRmXjGRmZZKMSqc4jbFB5crV4E9pY6V
+         aJYWkZ9oDmGHJaNdw39t8/7RaLEazlB+U7nihT+YxN5Cra7dEZQc+wpRVaEKANtuZQZD
+         yNWkyfy53h+a3AvsW7zG2CdaBIzunsnEqEzNPeQVKz6Mfy107u8JobnIURaI3djl/luQ
+         jizFB7HKRBAKTCHkpH7PqbVqEMa7AzKMltsVgm+oCg/FHgaI8K39/nPntOIZNjD+NDsj
+         Apag==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=MyPxB2huVdf52EoKE+ayIuPibEDhY375ngG9IRdv7Zs=;
+        fh=pznRVeWJ4hItCECwjrqjAIWwbloInRzLO7Vuww0WCHg=;
+        b=evy8e6GT9MCdkZVmrKm6juU3WSn13/Ivl0rK/j/p6CjlL75FDVDPoArvxWe5KSdkf3
+         yKfqc2b3u7bTdDgMi5H7lLFjtnXLDliqE0O/kfMtAN2retCsz9K0wgmNpdv06/eCXHO2
+         cs5nkWIgoRT6/0FhrtsziXlf7I16IE7Ngb/eM0lGhYJadgbVhdZXNadIQ1Qs2V3mrG6F
+         uk5UyjZXF0aPBZDAyU64/6fVsl1a//LmIb714hrbO7zOkN1XmXCwL8fSS+WWUx7m5+aY
+         2HxgxCIVz5GhCpEVSRBmSTnshWoe8vd258xb+8130CxjoDv0icg2gAxXMGtsJHzmKQko
+         be3g==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=kcqIckGu;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g1-20020ac85d41000000b0041819ed7676si1225871qtx.162.2023.10.03.22.57.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 03 Oct 2023 22:57:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500006.china.huawei.com (unknown [172.18.147.200])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S0H886vgMz6HJhS;
-	Tue,  3 Oct 2023 20:24:56 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500006.china.huawei.com (7.191.161.198) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Tue, 3 Oct 2023 13:27:36 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Tue, 3 Oct 2023 13:27:36 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Jonathan Cameron <jonathan.cameron@huawei.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "maz@kernel.org" <maz@kernel.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V2 01/10] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-Thread-Topic: [PATCH V2 01/10] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-Thread-Index: AQHZ8zPpn9wpwkR00kGhOJ6dnPJS7rA2mfgAgAFHXwCAAAdMgIAAFxrA
-Date: Tue, 3 Oct 2023 12:27:36 +0000
-Message-ID: <630c00201fd34c8fa307bed9c25bc334@huawei.com>
-References: <20230930001933.2660-1-salil.mehta@huawei.com>
-	<20230930001933.2660-2-salil.mehta@huawei.com>
-	<20231002165322.00003a2e@Huawei.com>
-	<761a05a972ae4aa088b8e984bd89889f@huawei.com>
- <20231003125111.00002013@Huawei.com>
-In-Reply-To: <20231003125111.00002013@Huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.126.168.138]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=kcqIckGu;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qnut2-0006Uu-Or; Wed, 04 Oct 2023 01:57:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qnut1-0006Uc-2X; Wed, 04 Oct 2023 01:57:31 -0400
+Received: from mail-dm6nam12on2062b.outbound.protection.outlook.com
+ ([2a01:111:f400:fe59::62b]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qnusw-0001br-NS; Wed, 04 Oct 2023 01:57:30 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=KW7imu8Cj8IMx+4WAkki5LvprJvfCwTUmTTZ5n827gGd7UFSXEIaNVDCNywrnOrTInFmEEUn9RLzSRGHxy4+qfPCoNyFat0eR02W8hShbWScFdTxZGcdM/j3ziG8do2UBfdX1HTNMAM7qkSPsI3X9ek1/JjdnzO/2wsXaku4p3Qemt8j196VtE3JGLLEfs+8AXSqzKfE4leiyWpJnS6hOSc7oDNIGW/+MjonQV29SU1a9qnV84vdnaBlt24SYz2H4cFC5smhZq/92eq5E6U08X9l/V2bmtGGD6JxBz3+TOc2E8NVFfz9uHR0sMkxu18jG7unsa/D0q9tXvvSiFGl8A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MyPxB2huVdf52EoKE+ayIuPibEDhY375ngG9IRdv7Zs=;
+ b=jc1Sfk2kJkoZqtbry4MSO+b8wxCAZOAiDgckr8I150LuC8cp8UxsTqwx12S9MoEPdD4YIYIBp8mhXlwqb2jyeta8MxQ3Q6+n/1Yndq41FCoB6SFaQGhVrcMw7vMT/zrGvOFQAzgwnQjSaTsI4WzaOq8La02ypUh9Io+mlHhOhfYfJWa8QSEH5SDbmbteLJG62ueYzVovbc4UV8dqZuG+z78lG/8TREbR9VRknvCjr+Y+T+L3Wsy61k0ORJB3j05m6AZlvMkhkMLy/Vqo7vHdqzvI9iv23XdFeW135vCPpu1swB5mC8hCnMIf52Mx/rAGiLghbwYOZV9d7lTQOTQfGQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MyPxB2huVdf52EoKE+ayIuPibEDhY375ngG9IRdv7Zs=;
+ b=kcqIckGuFc3l0tb9umjhO/N/FVNBz0t2XCXy7zdu4mOG+nKN0A1vFX49Q4R454WghwKy88LrIuIkHkzYcWrL/TM4OS1oOqNNV1zHb8gI8eHUQFaDe0GyGoSx2a89aPcvxfB12vxNUug0Ht0KZSmZ/9HU2wpbVHaC1NxFMcuqWDI=
+Received: from CY5PR04CA0007.namprd04.prod.outlook.com (2603:10b6:930:1e::27)
+ by CH3PR12MB7738.namprd12.prod.outlook.com (2603:10b6:610:14e::9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6838.33; Wed, 4 Oct
+ 2023 05:57:20 +0000
+Received: from CY4PEPF0000E9D4.namprd03.prod.outlook.com
+ (2603:10b6:930:1e:cafe::73) by CY5PR04CA0007.outlook.office365.com
+ (2603:10b6:930:1e::27) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6863.26 via Frontend
+ Transport; Wed, 4 Oct 2023 05:57:19 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ CY4PEPF0000E9D4.mail.protection.outlook.com (10.167.241.147) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6838.15 via Frontend Transport; Wed, 4 Oct 2023 05:57:19 +0000
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Wed, 4 Oct
+ 2023 00:57:19 -0500
+Received: from xsjtongh40.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.27 via Frontend
+ Transport; Wed, 4 Oct 2023 00:57:18 -0500
+From: Tong Ho <tong.ho@amd.com>
+To: <qemu-arm@nongnu.org>
+CC: <qemu-devel@nongnu.org>, <alistair@alistair23.me>,
+ <edgar.iglesias@gmail.com>, <peter.maydell@linaro.org>, <tong.ho@amd.com>
+Subject: [PATCH] xlnx-zynqmp-efuse: hw/nvram: Remove deprecated device reset
+Date: Tue, 3 Oct 2023 22:57:13 -0700
+Message-ID: <20231004055713.324009-1-tong.ho@amd.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: P4F2+v73Gvcz
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000E9D4:EE_|CH3PR12MB7738:EE_
+X-MS-Office365-Filtering-Correlation-Id: 916c1b93-935a-4d63-5dae-08dbc49ec568
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: MOEhY6UFVIy9P9WOpwwd5IECxoCELgD0JgdLnngHrNd9Ez9w8xnXNXqanp7rQhgcjLQxnbba0EE1Rnj07FnUfnvpqttDXwLOqiNL7tqddeh6zyo7HSI7XPQXoQKV5/o4wxCx04rdEFOXXkF+ctZ4SAr3EtMXWM2IuNB7sMrsCk6CbiW1J734fO1Sgt5+AwEnGI1klXxQngXOXTp3ZeQ56vUbTakF+XIn8nUV1kpvR8rxTLQU7K/GXheDdoTGG9alhMjNuF4mWhxFi96eXnKBvW1lLUPJwbCacT+uekndVdsvmMfHIS5hZfLfoxuR1ahfF1fFLfjNJUDsn6eRhgDMTNTRgYShXZbJr38Q0sFK71BXKEblX6WBftpDWFe8lLJV4X4UijI2o/RDx1hMaqE7gBXUnRzhggT+kbNNtkNNwiOEk6Rtsh8K0XcArDzLfVko6lVdt+is12v2RNkSAgubRVCrWdp10HJMXntdyPODZDz575us2+RgLChePmHtV9eut6VchDX8GsotHiG7PyrQ9AipANC+t5QtOppefu6jJikdjq1YjDp2xYO4uF9rs0LSjB59PCqu7ei3MaqQ3DoRVXz5JIXaPKlttxTReSii5cRLruuO3FLmQcLlEYtzffSFxQ2ZsAlloErQdbXvnJjZrYJeAW/nCtsmy1NZsvI7CwUZlY1b/dbFIIfOqSisH5SrIZvdNEeuggs0sOolM+XG3vF8veI8o0swQP9iADALEyRfL3uSFmPPSNwEeJSdHGB74ngbbjiHXdREoyXJOqXEbQ==
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(376002)(39860400002)(396003)(136003)(346002)(230922051799003)(451199024)(1800799009)(64100799003)(82310400011)(186009)(40470700004)(36840700001)(46966006)(40460700003)(40480700001)(316002)(70586007)(70206006)(41300700001)(54906003)(6916009)(478600001)(2906002)(36756003)(86362001)(5660300002)(8936002)(8676002)(4326008)(44832011)(83380400001)(36860700001)(47076005)(81166007)(82740400003)(356005)(6666004)(426003)(336012)(1076003)(2616005)(26005)(36900700001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Oct 2023 05:57:19.7791 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 916c1b93-935a-4d63-5dae-08dbc49ec568
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000E9D4.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB7738
+Received-SPF: softfail client-ip=2a01:111:f400:fe59::62b;
+ envelope-from=tong.ho@amd.com;
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mT5JDg++8GLW
 
-> From: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Sent: Tuesday, October 3, 2023 12:51 PM
-> To: Salil Mehta <salil.mehta@huawei.com>
-> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; maz@kernel.org; jean-
-> philippe@linaro.org; lpieralisi@kernel.org; peter.maydell@linaro.org;
-> richard.henderson@linaro.org; imammedo@redhat.com; andrew.jones@linux.dev=
-;
-> david@redhat.com; philmd@linaro.org; eric.auger@redhat.com;
-> oliver.upton@linux.dev; pbonzini@redhat.com; mst@redhat.com;
-> will@kernel.org; gshan@redhat.com; rafael@kernel.org;
-> alex.bennee@linaro.org; linux@armlinux.org.uk;
-> darren@os.amperecomputing.com; ilkka@os.amperecomputing.com;
-> vishnu@os.amperecomputing.com; karl.heubaum@oracle.com;
-> miguel.luis@oracle.com; salil.mehta@opnsrc.net; zhukeqian
-> <zhukeqian1@huawei.com>; wangxiongfeng (C) <wangxiongfeng2@huawei.com>;
-> wangyanan (Y) <wangyanan55@huawei.com>; jiakernel2@gmail.com;
-> maobibo@loongson.cn; lixianglai@loongson.cn; Linuxarm <linuxarm@huawei.co=
-m>
-> Subject: Re: [PATCH V2 01/10] accel/kvm: Extract common KVM vCPU
-> {creation,parking} code
->=20
-> On Tue, 3 Oct 2023 12:05:11 +0100
-> Salil Mehta <salil.mehta@huawei.com> wrote:
->=20
-> > Hi Jonathan,
-> >
-> > > From: Jonathan Cameron <jonathan.cameron@huawei.com>
-> > > Sent: Monday, October 2, 2023 4:53 PM
-> > > To: Salil Mehta <salil.mehta@huawei.com>
-> > > Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; maz@kernel.org; jean-
-> > > philippe@linaro.org; lpieralisi@kernel.org; peter.maydell@linaro.org;
-> > > richard.henderson@linaro.org; imammedo@redhat.com; andrew.jones@linux=
-.dev;
-> > > david@redhat.com; philmd@linaro.org; eric.auger@redhat.com;
-> > > oliver.upton@linux.dev; pbonzini@redhat.com; mst@redhat.com;
-> > > will@kernel.org; gshan@redhat.com; rafael@kernel.org;
-> > > alex.bennee@linaro.org; linux@armlinux.org.uk;
-> > > darren@os.amperecomputing.com; ilkka@os.amperecomputing.com;
-> > > vishnu@os.amperecomputing.com; karl.heubaum@oracle.com;
-> > > miguel.luis@oracle.com; salil.mehta@opnsrc.net; zhukeqian
-> > > <zhukeqian1@huawei.com>; wangxiongfeng (C) <wangxiongfeng2@huawei.com=
->;
-> > > wangyanan (Y) <wangyanan55@huawei.com>; jiakernel2@gmail.com;
-> > > maobibo@loongson.cn; lixianglai@loongson.cn; Linuxarm <linuxarm@huawe=
-i.com>
-> > > Subject: Re: [PATCH V2 01/10] accel/kvm: Extract common KVM vCPU
-> > > {creation,parking} code
-> > >
-> > > On Sat, 30 Sep 2023 01:19:24 +0100
-> > > Salil Mehta <salil.mehta@huawei.com> wrote:
-> > >
-> > > > KVM vCPU creation is done once during the initialization of the VM =
-when Qemu
-> > > > threads are spawned. This is common to all the architectures.
-> > > >
-> > > > Hot-unplug of vCPU results in destruction of the vCPU objects in QO=
-M but
-> > > > the KVM vCPU objects in the Host KVM are not destroyed and their re=
-presentative
-> > > > KVM vCPU objects/context in Qemu are parked.
-> > > >
-> > > > Refactor common logic so that some APIs could be reused by vCPU Hot=
-plug code.
-> > > >
-> > > > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> > >
-> > > Hi Salil,
-> > >
-> > > A few trivial things inline, plus a question about why
-> > > cpu->cpu_index can now be used but kvm_arch_vcpu_id(cpu);
-> > > was previously needed.
-> >
-> > Good point. I used the API because it was returning
-> > 'unsigned long' and it was being used across the archs.
-> > I thought maybe the size of the index could vary across
-> > archs. For example, for PowerPC above API returns vcpu_id
-> > which presumably could have different data type than
-> > an 'integer'.
-> >
-> > But after Alex's comment, I was made to believe that this
-> > assumption might not be correct and CPU index is an
-> > 'integer' across archs and perhaps semantics of above
-> > API is not correct.
-> >
-> > But perhaps original code was functionally correct?
->=20
-> I wasn't concerned with the type, but rather that the
-> value comes from other places than cpu->cpu_index
-> on some architectures.
+This change implements the ResettableClass interface for the device.
 
-Sure, I meant there is a reason why type was chosen as 'unsigned long'
-and not an 'integer'. Perhaps the value can exceed the 'integer' size
-limits because of the way CPU index is being created on certain archs?
+Signed-off-by: Tong Ho <tong.ho@amd.com>
+---
+ hw/nvram/xlnx-zynqmp-efuse.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-If we try to put value from a larger container 'unsigned long' to a
-smaller container 'integer' things can go wrong.
+diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
+index 228ba0bbfa..3db5f98ec1 100644
+--- a/hw/nvram/xlnx-zynqmp-efuse.c
++++ b/hw/nvram/xlnx-zynqmp-efuse.c
+@@ -2,6 +2,7 @@
+  * QEMU model of the ZynqMP eFuse
+  *
+  * Copyright (c) 2015 Xilinx Inc.
++ * Copyright (c) 2023 Advanced Micro Devices, Inc.
+  *
+  * Written by Edgar E. Iglesias <edgari@xilinx.com>
+  *
+@@ -769,9 +770,9 @@ static void zynqmp_efuse_register_reset(RegisterInfo *reg)
+     register_reset(reg);
+ }
+ 
+-static void zynqmp_efuse_reset(DeviceState *dev)
++static void zynqmp_efuse_reset_hold(Object *obj)
+ {
+-    XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(dev);
++    XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(obj);
+     unsigned int i;
+ 
+     for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
+@@ -837,8 +838,9 @@ static Property zynqmp_efuse_props[] = {
+ static void zynqmp_efuse_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
+ 
+-    dc->reset = zynqmp_efuse_reset;
++    rc->phases.hold = zynqmp_efuse_reset_hold;
+     dc->realize = zynqmp_efuse_realize;
+     dc->vmsd = &vmstate_efuse;
+     device_class_set_props(dc, zynqmp_efuse_props);
+-- 
+2.25.1
 
-
-[...]
-
-> > >
-> > > > +    vcpu->kvm_fd =3D cpu->kvm_fd;
-> > > > +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> > > > +}
-> > > > +
-> > > > +int kvm_create_vcpu(CPUState *cpu)
-> > > > +{
-> > > > +    int vcpu_id =3D cpu->cpu_index;
-> > >
-> > > See below. I'm not sure why it's safe not to use kvm_arch_vcpu_id()
-> > > Seems a few architectures have less than trivial implementations of
-> > > that function currently.
-> >
-> > I doubt this as well. Other architectures like PowerPC are returning
-> > different type?
-> >
-> It wasn't the type that bothered, me but rather that the source of
-> the data isn't always cpu->cpu_index so I have no idea if the values
-> are consistent.
-
-Got it.
-
-I meant 'unsigned long' return type in the kvm_arch_vcpu_id(). On some
-Architectures, the required container size for their vcpu-id could
-exceed an 'integer'. Sorry, for not making it clear.
-
-Thanks
-Salil.

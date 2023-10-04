@@ -1,169 +1,360 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2559938ejb;
-        Wed, 4 Oct 2023 03:48:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE2VOn4OxaOfy2MI2lFr8Ng3SwgG7Hqj2RWT3DI0annkUA7UnZZcMUeMXpeaigr5HVD/78M
-X-Received: by 2002:a1c:7414:0:b0:405:82c0:d9f3 with SMTP id p20-20020a1c7414000000b0040582c0d9f3mr1838856wmc.30.1696416499021;
-        Wed, 04 Oct 2023 03:48:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696416499; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2563578ejb;
+        Wed, 4 Oct 2023 03:56:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHKxh309L0p2/frh/52kOs8UZmVHU+C3obAiDSMVdL3CD0Sqi/ewmmXtq2GoxaHBNjNPKb6
+X-Received: by 2002:a05:620a:280d:b0:775:75ba:c098 with SMTP id f13-20020a05620a280d00b0077575bac098mr2290178qkp.11.1696416975808;
+        Wed, 04 Oct 2023 03:56:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696416975; cv=none;
         d=google.com; s=arc-20160816;
-        b=LGZ5277KoHPtDER+zPM5kmRmDvNxIsvWv8V/4c361KayP9j7wloyRC4gTp7B849b1N
-         4oab6KDkArAROmnD4W5WB4d+rdsw+0v4MXcFTHHBEOmU2SDKz74AoqunVI2W+HnnJgtT
-         c1KL0dfAVyQCZp4K0t2L0GRxUS4EHIGf8Qe1tIsWeGgOgdcBwyqAv8zhCYUhF5+5XS9K
-         rG9P0s4e4ZnbPxHttY1MVfK4enlVrE67wzCIor37rVedvHyEllaZOPQFf/mEvYcJ440b
-         sn6h0ZajxeBaRCltbw/32VKeWGtraidLdiE991q4jLcrRgXQaAe8x44nJrM7d4BVzIO/
-         t/qA==
+        b=m18fqwswkNNWSsRRWbimp5eSdGlUt9Be3Pdjxtr6BK0z1oZoJ59cv7CMZpOD/U8eBT
+         zkhNRC3Z92zBVYKNyFg31inZWASvHmPvuTaKFdbm3mxVULJdO8HGAmFJzjsDqK+yccVO
+         uZxhErhUQDemtdRw4uae/vj8Z/GbLTukf+l90aRf5Jg9puchnWC5/BhRb9GGYEO9rwkt
+         drPFOn1a0hYH6O3o8zks2fpaNkzUg0f4xW8z+66WOSDx3guFPRR60WpnZySWG7zT6qe4
+         qsVZstqZ9f+u6tzNSBb+GYRRuEryOVzDU5bB0gKUX43Lan7cmPYftSXdrnKtl5B79yzt
+         tYJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=I3FJWAeS++9jlsF1iM2op4lSd6QcsjniaU7+kRf7FFU=;
-        fh=DCV4KZOcuvUG/wve9C1kSJ4RRlBk9KClkYRBzQw+8ow=;
-        b=V5YIpVCXcx6mXxv0bueB8y8lrr4tcEr7IxdSmBj7b4fcbEwAv+CDeo7tGN2NxrDspl
-         cWzO1VXNnyFvxcuCrlSG0WjBFjXWHfk9x70Cv0cCTHd+NRvQbicM4OfXjI6afWHJw1dX
-         gWEwxJn3mzS3rl1kAuZGnPbW2dxTlaRZ1wywUzidXTbO7umwRVFGB3Q2DfRlIQgqNPlM
-         QV1/RZhNCl5spkmThqSfOYoerLp23iTQ2KGtJ/MZCJnm2VhIr0bWStANtO7fFlodg4sD
-         GY2tfl/hOY+/h3lYbr5w7/qk4LA2PEiASWVU3NB5gDdx6Cm1S5BXlhUtMMyinx7e3B5+
-         +NPA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=9FD4BljU1sQ9YVkLSvJNSIqJH6jZqUEJOwphh36QCTU=;
+        fh=y/CSi/JAupQN0XZveWYQlR/B/AL6K+UNC7/cHXs44zc=;
+        b=kX4vUUgdY5PL0O4V6AXcp4Urq1R9h3ahvio1QBCutTQzJXdfS8b7YOlnLL9qwHjJ7C
+         YdSYfn9iyEulFpb8CpV2igDkCeCCtcjCiotPfm9tNVddxvwOISK/5CH2VvyxuEe2IdIS
+         zwPKLkVepNHs5O9Zf6gKUyQveEbKB83h/2ZNS6gVVITuACGgYVneGjd3NNEwAHBefwxn
+         tflPkap+ZGQppRRTPwGXyjP/CcI4/VVISU/gU8SS4cPuUHUTUwI+7Zk0hxtikoNtxS4b
+         607wuVNzIF24ScYARAKsuuwbhgSKXfC+ffEXXK8bQQE4bwcc1hM8porMpx1lqIYMssDJ
+         eGUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id fm7-20020a05600c0c0700b004030e699cddsi705585wmb.25.2023.10.04.03.48.18
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Oct 2023 03:48:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bGsUADqk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e15-20020a0cb44f000000b0065b1f75bf6esi1354558qvf.23.2023.10.04.03.56.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 04 Oct 2023 03:56:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500006.china.huawei.com (unknown [172.18.147.226])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S0rwG6HVCz6K67l;
-	Wed,  4 Oct 2023 18:46:38 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500006.china.huawei.com (7.191.161.198) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Wed, 4 Oct 2023 11:48:17 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Wed, 4 Oct 2023 11:48:17 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org"
-	<alex.bennee@linaro.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V2 08/10] physmem: Add helper function to destroy CPU
- AddressSpace
-Thread-Topic: [PATCH V2 08/10] physmem: Add helper function to destroy CPU
- AddressSpace
-Thread-Index: AQHZ8zQ7yGl3U6l090SRw8cLGCyLZ7A3POkAgAI4RuA=
-Date: Wed, 4 Oct 2023 10:48:17 +0000
-Message-ID: <81113790e5ae41b792cef94024c27d38@huawei.com>
-References: <20230930001933.2660-1-salil.mehta@huawei.com>
- <20230930001933.2660-9-salil.mehta@huawei.com>
- <bc5e5558-8899-30d1-e64a-c1012437766e@redhat.com>
-In-Reply-To: <bc5e5558-8899-30d1-e64a-c1012437766e@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.126.174.92]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b=bGsUADqk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qnzXt-0005aH-UZ; Wed, 04 Oct 2023 06:56:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qnzXs-0005a9-Qi
+ for qemu-arm@nongnu.org; Wed, 04 Oct 2023 06:56:00 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qnzXn-0006hQ-01
+ for qemu-arm@nongnu.org; Wed, 04 Oct 2023 06:56:00 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-323ef9a8b59so1944118f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 03:55:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1696416951; x=1697021751; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=9FD4BljU1sQ9YVkLSvJNSIqJH6jZqUEJOwphh36QCTU=;
+ b=bGsUADqkANUXL3CRgBQrL+KP7fNUCpiHaY7/TV+poSvU+bepztzolV2pn0OS6YWoLT
+ sCOy1wmpdiw+X9owRuKWrxkXuUMDiP+sELotu3h01SMYtzWwqJoYdEEV0wCSd7RQE8vn
+ AEbs/RaZ9H76VldD+6fPu/49HVbP+HZaDhOJWXma5HJb9LmQWOVaIXzlE7OKDdSY39tO
+ m99My6K6jXoWXfNjtxk8KkHdq1ug9w0BM0VKNLiG75X+eQmDJbnSAiOntEJzNsys6s44
+ FmrhZN7uCzFKU7ka51hKBAQliHSg7Mf5f0gEnH1CWlXhPxBeCch4t9YD+nu40yZHZPK9
+ e8Mw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696416951; x=1697021751;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9FD4BljU1sQ9YVkLSvJNSIqJH6jZqUEJOwphh36QCTU=;
+ b=C4fIbYfQj5ddxbNVrWdgkZHDhFC3NODzt3wstG1THWVvX6qckAk9L/NHtsk9qawfl6
+ 92lk431z5VIRZ92o8NIANcSiJehVxB156ZNxFbXWVrOSpKtX6teRR1I56m8AZWWu6dBU
+ qHkUIh2Jkdv5OiIvHEwvXaNvUlusoUp2gJHgY3ob9qXG4DW3VXfy9GlNhiAXKrg/Wol1
+ +Gu2HEU4yzsmkLIfb8KV7slYi8VOHi35NMitkk7U147/eNwsCY9sl6nVp45UEdNfZpHy
+ pp59ldy/liUcyDVjBQCt0illcu4XemZKPsK7gKIO2QyYwHfK2nwXWn3Jce1ulNh53lhU
+ z4yA==
+X-Gm-Message-State: AOJu0Yxrh+gAqOm7o22WqkfeeLbRcomhzSeXZRw80Ul2KUzt9aArqt0f
+ KblXR5oIqsjzNho370bkpd/GPm83YhMOEdx3UQg=
+X-Received: by 2002:a5d:5591:0:b0:323:1d06:38e5 with SMTP id
+ i17-20020a5d5591000000b003231d0638e5mr1866424wrv.55.1696416951333; 
+ Wed, 04 Oct 2023 03:55:51 -0700 (PDT)
+Received: from myrica ([2a02:c7c:7290:b00:fd32:2b31:6755:400c])
+ by smtp.gmail.com with ESMTPSA id
+ a3-20020a5d5083000000b003143cb109d5sm3709230wrt.14.2023.10.04.03.55.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Oct 2023 03:55:51 -0700 (PDT)
+Date: Wed, 4 Oct 2023 11:55:58 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Itaru Kitayama <itaru.kitayama@gmail.com>
+Cc: qemu-arm@nongnu.org, mathieu.poirier@linaro.org
+Subject: Re: Quick start guide on RME emulation
+Message-ID: <20231004105558.GA1454132@myrica>
+References: <CANW9uyvsD8UWJ9yrrvgb4i7nEoDAXNaepk-zsJWuyw=tp_W9oA@mail.gmail.com>
+ <20231002102231.GA3075015@myrica>
+ <CANW9uyu85z9+-v8ait9EWcjWRu1+C8Xx3cM__8oBKof7fJwRwA@mail.gmail.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: 9n4CqTAw3xn1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CANW9uyu85z9+-v8ait9EWcjWRu1+C8Xx3cM__8oBKof7fJwRwA@mail.gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7cz7os78l1VL
 
-SGkgR2F2aW4sDQpSZXZpc2l0ZWQgeW91ciBjb21tZW50cyBhZ2Fpbi4NCg0KPiBGcm9tOiBHYXZp
-biBTaGFuIDxnc2hhbkByZWRoYXQuY29tPg0KPiBTZW50OiBUdWVzZGF5LCBPY3RvYmVyIDMsIDIw
-MjMgMjozNyBBTQ0KPiBUbzogU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+OyBx
-ZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtDQo+IGFybUBub25nbnUub3JnDQo+IENjOiBtYXpA
-a2VybmVsLm9yZzsgamVhbi1waGlsaXBwZUBsaW5hcm8ub3JnOyBKb25hdGhhbiBDYW1lcm9uDQo+
-IDxqb25hdGhhbi5jYW1lcm9uQGh1YXdlaS5jb20+OyBscGllcmFsaXNpQGtlcm5lbC5vcmc7DQo+
-IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZzsN
-Cj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgYW5kcmV3LmpvbmVzQGxpbnV4LmRldjsgZGF2aWRAcmVk
-aGF0LmNvbTsNCj4gcGhpbG1kQGxpbmFyby5vcmc7IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgb2xp
-dmVyLnVwdG9uQGxpbnV4LmRldjsNCj4gcGJvbnppbmlAcmVkaGF0LmNvbTsgbXN0QHJlZGhhdC5j
-b207IHdpbGxAa2VybmVsLm9yZzsgcmFmYWVsQGtlcm5lbC5vcmc7DQo+IGFsZXguYmVubmVlQGxp
-bmFyby5vcmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51azsNCj4gZGFycmVuQG9zLmFtcGVyZWNvbXB1
-dGluZy5jb207IGlsa2thQG9zLmFtcGVyZWNvbXB1dGluZy5jb207DQo+IHZpc2hudUBvcy5hbXBl
-cmVjb21wdXRpbmcuY29tOyBrYXJsLmhldWJhdW1Ab3JhY2xlLmNvbTsNCj4gbWlndWVsLmx1aXNA
-b3JhY2xlLmNvbTsgc2FsaWwubWVodGFAb3Buc3JjLm5ldDsgemh1a2VxaWFuDQo+IDx6aHVrZXFp
-YW4xQGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5nIChDKSA8d2FuZ3hpb25nZmVuZzJAaHVhd2Vp
-LmNvbT47DQo+IHdhbmd5YW5hbiAoWSkgPHdhbmd5YW5hbjU1QGh1YXdlaS5jb20+OyBqaWFrZXJu
-ZWwyQGdtYWlsLmNvbTsNCj4gbWFvYmlib0Bsb29uZ3Nvbi5jbjsgbGl4aWFuZ2xhaUBsb29uZ3Nv
-bi5jbjsgTGludXhhcm0gPGxpbnV4YXJtQGh1YXdlaS5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUEFU
-Q0ggVjIgMDgvMTBdIHBoeXNtZW06IEFkZCBoZWxwZXIgZnVuY3Rpb24gdG8gZGVzdHJveSBDUFUN
-Cj4gQWRkcmVzc1NwYWNlDQo+IA0KPiBPbiA5LzMwLzIzIDEwOjE5LCBTYWxpbCBNZWh0YSB3cm90
-ZToNCj4gPiBWaXJ0dWFsIENQVSBIb3QtdW5wbHVnIGxlYWRzIHRvIHVucmVhbGl6YXRpb24gb2Yg
-YSBDUFUgb2JqZWN0LiBUaGlzIGFsc28NCj4gPiBpbnZvbHZlcyBkZXN0cnVjdGlvbiBvZiB0aGUg
-Q1BVIEFkZHJlc3NTcGFjZS4gQWRkIGNvbW1vbiBmdW5jdGlvbiB0byBoZWxwDQo+ID4gZGVzdHJv
-eSB0aGUgQ1BVIEFkZHJlc3NTcGFjZS4NCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFNhbGlsIE1l
-aHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPg0KPiA+IC0tLQ0KPiA+ICAgaW5jbHVkZS9leGVj
-L2NwdS1jb21tb24uaCB8ICA4ICsrKysrKysrDQo+ID4gICBpbmNsdWRlL2h3L2NvcmUvY3B1Lmgg
-ICAgIHwgIDEgKw0KPiA+ICAgc29mdG1tdS9waHlzbWVtLmMgICAgICAgICB8IDI1ICsrKysrKysr
-KysrKysrKysrKysrKysrKysNCj4gPiAgIDMgZmlsZXMgY2hhbmdlZCwgMzQgaW5zZXJ0aW9ucygr
-KQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZXhlYy9jcHUtY29tbW9uLmggYi9pbmNs
-dWRlL2V4ZWMvY3B1LWNvbW1vbi5oDQo+ID4gaW5kZXggNDE3ODhjMGJkZC4uZWI1NmEyMjhhMiAx
-MDA2NDQNCj4gPiAtLS0gYS9pbmNsdWRlL2V4ZWMvY3B1LWNvbW1vbi5oDQo+ID4gKysrIGIvaW5j
-bHVkZS9leGVjL2NwdS1jb21tb24uaA0KPiA+IEBAIC0xMjAsNiArMTIwLDE0IEBAIHNpemVfdCBx
-ZW11X3JhbV9wYWdlc2l6ZV9sYXJnZXN0KHZvaWQpOw0KPiA+ICAgICovDQo+ID4gICB2b2lkIGNw
-dV9hZGRyZXNzX3NwYWNlX2luaXQoQ1BVU3RhdGUgKmNwdSwgaW50IGFzaWR4LA0KPiA+ICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN0IGNoYXIgKnByZWZpeCwgTWVtb3J5UmVnaW9u
-ICptcik7DQo+ID4gKy8qKg0KPiA+ICsgKiBjcHVfYWRkcmVzc19zcGFjZV9kZXN0cm95Og0KPiA+
-ICsgKiBAY3B1OiBDUFUgZm9yIHdoaWNoIGFkZHJlc3Mgc3BhY2UgbmVlZHMgdG8gYmUgZGVzdHJv
-eWVkDQo+ID4gKyAqIEBhc2lkeDogaW50ZWdlciBpbmRleCBvZiB0aGlzIGFkZHJlc3Mgc3BhY2UN
-Cj4gPiArICoNCj4gPiArICogTm90ZSB0aGF0IHdpdGggS1ZNIG9ubHkgb25lIGFkZHJlc3Mgc3Bh
-Y2UgaXMgc3VwcG9ydGVkLg0KPiA+ICsgKi8NCj4gPiArdm9pZCBjcHVfYWRkcmVzc19zcGFjZV9k
-ZXN0cm95KENQVVN0YXRlICpjcHUsIGludCBhc2lkeCk7DQo+ID4NCj4gPiAgIHZvaWQgY3B1X3Bo
-eXNpY2FsX21lbW9yeV9ydyhod2FkZHIgYWRkciwgdm9pZCAqYnVmLA0KPiA+ICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIGh3YWRkciBsZW4sIGJvb2wgaXNfd3JpdGUpOw0KPiA+IGRpZmYg
-LS1naXQgYS9pbmNsdWRlL2h3L2NvcmUvY3B1LmggYi9pbmNsdWRlL2h3L2NvcmUvY3B1LmgNCj4g
-PiBpbmRleCA2NDhiNWIzNTg2Li42NWQyYWU0NTgxIDEwMDY0NA0KPiA+IC0tLSBhL2luY2x1ZGUv
-aHcvY29yZS9jcHUuaA0KPiA+ICsrKyBiL2luY2x1ZGUvaHcvY29yZS9jcHUuaA0KPiA+IEBAIC0z
-NTUsNiArMzU1LDcgQEAgc3RydWN0IENQVVN0YXRlIHsNCj4gPiAgICAgICBRU0lNUExFUV9IRUFE
-KCwgcWVtdV93b3JrX2l0ZW0pIHdvcmtfbGlzdDsNCj4gPg0KPiA+ICAgICAgIENQVUFkZHJlc3NT
-cGFjZSAqY3B1X2FzZXM7DQo+ID4gKyAgICBpbnQgY3B1X2FzZXNfY291bnQ7DQo+ID4gICAgICAg
-aW50IG51bV9hc2VzOw0KPiA+ICAgICAgIEFkZHJlc3NTcGFjZSAqYXM7DQo+ID4gICAgICAgTWVt
-b3J5UmVnaW9uICptZW1vcnk7DQo+IA0KPiBAbnVtX2FzZXMgYW5kIEBjcHVfYXNlc19jb3VudCBh
-cmUgZHVwbGljYXRlIHRvIGVhY2ggb3RoZXIgdG8gc29tZSBleHRlbnQuDQo+IFRoZQ0KPiByZWFs
-IHByb2JsZW0gaXMgQGNwdV9hc2VzIGlzIGFsbG9jYXRlZCBhdCBvbmNlIGFuZCB3ZSBuZWVkIHRv
-IG1ha2UgdGhlDQo+IGFsbG9jYXRpb24NCj4gc3BhcnNlLiBJbiB0aGF0IHdheSwgZWFjaCBDUFUg
-YWRkcmVzcyBzcGFjZSBpcyBpbmRlcGVuZGVudCBhbmQgY2FuIGJlDQo+IGRlc3Ryb3llZA0KPiBp
-bmRlcGVuZGVudGx5Lg0KDQoocmV2aXNpdGluZyB0aGlzIGNvbW1lbnQgaS5lLiAnc3BhcnNlJykN
-Cg0KSWYgeW91IG1lYW50LCB0aGUgb3JkZXIgb2YgaW5pdGlhbGl6YXRpb24gYW5kIGRlc3RydWN0
-aW9uIG1pZ2h0IG5vdCBiZSBzYW1lDQp0aGVuIHllcywgQWRkcmVzc1NwYWNlIGNhbiBiZSAqY29u
-ZGl0aW9uYWxseSogYWxsb2NhdGVkIGR1cmluZyBDUFUgcmVhbGl6YXRpb24NCnBoYXNlIGFuZCBz
-aG91bGQgYmUgKmNvbmRpdGlvbmFsbHkqIGRlc3Ryb3llZCBhcyB3ZWxsIGR1cmluZyBDUFUNCnVu
-LXJlYWxpemF0aW9uIHBoYXNlLiBMYXRlciBtZWFucywgaXQgaXMgbm90IHNhZmUgdG8gYXNzdW1l
-IHRoYXQgaW5kZXhlcyB0bw0KdGhlIGFycmF5IG9mIEFkZHJlc3NTcGFjZSBtaWdodCBiZSBjb25z
-ZWN1dGl2ZS4gSGVuY2UsIHRoZWlyIGRlc3RydWN0aW9uDQphdCBvbmNlIGNhbiBjcmVhdGUgcHJv
-YmxlbXMuIA0KDQoNCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyMzA5MjYx
-MDA0MzYuMjgyODQtMS1zYWxpbC5tZWh0YUBodWF3ZWkuY29tL1QvI200NGI4MWZiYmJhMzNhMzQ2
-ZGQyMjkyMjU2MDEyZjg2ZWY3YzhlNzYxDQoNCg0KDQogVGhlIHNwYXJzZSBhbGxvY2F0aW9uIGZv
-ciB0aGUgQ1BVIGFkZHJlc3Mgc3BhY2UgY2FuIGJlIGRvbmUNCj4gaW4NCj4gY3B1X2FkZHJlc3Nf
-c3BhY2VfaW5pdCgpIGxpa2UgYmVsb3c6DQo+IA0KPiAjZGVmaW5lIENQVV9BRERSRVNTX1NQQUNF
-X01BWCA4DQo+IA0KPiBzdHJ1Y3QgQ1BVU3RhdGUgew0KPiAgICAgIENQVUFkZHJlc3NTcGFjZSAq
-Y3B1X2FzZXNbQ1BVX0FERFJFU1NfU1BBQ0VfTUFYXTsNCj4gfQ0KDQpZZXMsIHRoaXMgd2lsbCBh
-bHNvIHdvcmsgYnV0IHdlIHdpbGwgZW5kIHVwIHJlZmFjdG9yaW5nDQpleGlzdGluZyBpbml0aWFs
-aXphdGlvbiBpbnRlcmZhY2UuIERvIHdlIHJlcXVpcmUgYWxsIG9mIHRoaXMNCndoZW4gY291bnRl
-ciBiYXNlZCBhcHByb2FjaCBhbHNvIHdvcmtzIHdpdGhvdXQgY2hhbmdpbmcNCmFueXRoaW5nPw0K
-DQoNClRoYW5rcw0KU2FsaWwuDQo=
+On Mon, Oct 02, 2023 at 07:52:28PM +0900, Itaru Kitayama wrote:
+> Jean,
+> It is indeed the latter. Itd be good if we could test how far we can go in
+> terms of launching a Realm guest via the CCA aware KVM.
+
+Here is a draft doc that explains how to build and run the whole stack.
+I'm not sure where such a document should go. Maybe the QEMU wiki would be
+best, since these instructions will change frequently.
+
+Note:
+
+* The following instructions are for QEMU virt machine (just because it's
+  the one I'm familiar with). The sbsa-ref machine will be supported.
+
+* I haven't tried to run a secure payload yet, there might be some
+  outstanding bugs. Secure payload such as optee would be packaged with
+  TF-A as BL32.
+
+* I need to rebase the guest edk2 support, so didn't include instructions
+  for that.
+
+Software components:
+
+           |              |              |
+           |    REALM     |  NON-SECURE  |
+           |              |              |
+    -------+--------------+--------------+
+           |              |              |
+      EL0  | Guest Rootfs |  Host Rootfs |
+           |              |  VMM         |
+           |              |              |
+    -------+--------------+--------------+
+           |              |              |
+      EL1  |        EDK2  |              |
+           | Linux Guest  |              |
+           |              |  EDK2        |
+    -------+--------------+  Linux Host  |
+           |              |    (KVM)     |
+      EL2  |      TF-RMM  |              |
+           |              |              |
+    -------+--------------+--------------+
+           |                             |
+      EL3  |            TF-A             |
+           |                             |
+    -------+-----------------------------+
+           |                             |
+      HW   |            QEMU             |
+           |                             |
+    -------+-----------------------------+
+
+
+TF-RMM
+------
+
+The Realm Management Monitor (RMM) connects KVM and the Realm guest.
+
+RMM gets loaded into NS DRAM (because there isn't enough space in Secure
+RAM). TF-A carves out 24MB of memory for the RMM, and tells other software
+about it using a device-tree reserved memory node.
+
+Status: QEMU support is currently under review. Additional patches are
+  needed until QEMU supports a couple additional features that are
+  mandatory for RME (PMUv3p7 and ECV).
+
+Repo: currently at https://jpbrucker.net/git/rmm/ branch qemu-rme
+      official is https://git.trustedfirmware.org/TF-RMM/tf-rmm.git/
+
+Build:	git submodule update --init --recursive
+	export CROSS_COMPILE=aarch64-linux-gnu-
+	cmake -DCMAKE_BUILD_TYPE=Debug -DRMM_CONFIG=qemu_virt_defcfg -DRMM_TOOLCHAIN=llvm -B build-qemu
+	cmake --build build-qemu
+
+
+Host EDK2
+---------
+
+Works out of the box, although it doesn't properly account for reserved
+RMM memory yet.
+
+Repo: https://github.com/tianocore/edk2.git
+
+Build:	git submodule update --init --recursive
+	source edksetup.sh
+	make -j -C BaseTools
+	export GCC5_AARCH64_PREFIX=aarch64-linux-gnu-
+	build -b RELEASE -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemuKernel.dsc
+
+
+TF-A
+----
+
+TF-A loads the RMM as well as the Non-secure firmware, and bridges RMM and
+KVM. It also owns the Granule Protection Table (GPT).
+
+Status: QEMU support is currently under review.
+
+Repo: currently at https://jpbrucker.net/git/tf-a/ branch qemu-rme
+      official is https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/
+
+Build:	# Embed the RMM image and edk2 into the Final Image Package (FIP)
+	make -j CROSS_COMPILE=aarch64-linux-gnu- PLAT=qemu
+		ENABLE_RME=1 DEBUG=1 LOG_LEVEL=40
+		RMM=rmm/build-qemu/Debug/rmm.img
+		BL33=edk2/Build/ArmVirtQemuKernel-AARCH64/RELEASE_GCC5/FV/QEMU_EFI.fd
+		all fip
+
+	# Pack whole image into flash.bin
+	dd if=tfa/build/qemu/debug/bl1.bin of=flash.bin
+	dd if=tfa/build/qemu/debug/fip.bin of=flash.bin seek=64 bs=4096
+
+
+Host & Guest Linux
+------------------
+
+Both host and guest need extra patches
+
+Status: https://lore.kernel.org/linux-arm-kernel/20231002124311.204614-1-suzuki.poulose@arm.com/
+
+Repo: https://gitlab.arm.com/linux-arm/linux-cca cca-full/rmm-v1.0-eac2
+
+Build: arm64 defconfig
+
+
+VMM
+---
+
+Kvmtool and QEMU can be used to launch Realm guests. For kvmtool, see the
+cover letter for the Linux support above.
+
+Status: In development
+
+Repo: for now https://jpbrucker.net/git/qemu/ branch cca/rmm-v1.0-eac2
+
+Build:	git submodule update --init --recursive
+	# to download the missing subprojects because buildroot won't do it:
+	./configure --target-list=aarch64-softmmu
+	# Note: when buildroot is configured to use this tree (see below),
+	# it will rsync the whole tree including binary files. Therefore,
+	# use a separate build directory to make the system emulation
+	# QEMU, to avoid conflicts between native binary files and
+	# buildroot's cross-build.
+
+
+Rootfs
+------
+
+Buildroot provides a convenient way to build lightweight root filesystems.
+It can also embed the VMM into the rootfs if you specify the path to
+kvmtool or QEMU source in a local.mk file in the build directory.
+
+Repo: https://gitlab.com/buildroot.org/buildroot.git
+
+local.mk
+	KVMTOOL_OVERRIDE_SRCDIR = path/to/kvmtool/
+	QEMU_OVERRIDE_SRCDIR = path/to/qemu/
+
+Build:	make qemu_aarch64_virt_defconfig
+	# then change some options
+	  # BR2_LINUX_KERNEL is not set
+	  BR2_PACKAGE_KVMTOOL=y
+	  BR2_PACKAGE_QEMU=y
+	  BR2_PACKAGE_QEMU_SYSTEM=y
+	  # BR2_PACKAGE_QEMU_BLOBS is not set
+	  BR2_PACKAGE_QEMU_SLIRP=y
+	  BR2_PACKAGE_QEMU_CHOOSE_TARGETS=y
+	  BR2_PACKAGE_QEMU_TARGET_AARCH64=y
+	  BR2_TARGET_ROOTFS_EXT2_SIZE=256M
+
+	  # Generate an initrd for the guest
+	  BR2_TARGET_ROOTFS_CPIO=y
+
+	make
+
+
+QEMU system emulation
+---------------------
+
+Repo: https://gitlab.com/qemu-project/qemu.git
+
+Run with:
+
+	qemu-system-aarch64 -M virt,virtualization=on,secure=on,gic-version=3
+		-M acpi=off -cpu max,x-rme=on,sme=off -m 3G -smp 8
+		-nographic
+		-bios tf-a/flash.bin
+		-kernel linux/arch/arm64/boot/Image
+		-drive format=raw,if=none,file=buildroot/output/images/rootfs.ext4,id=hd0
+		-device virtio-blk-pci,drive=hd0
+		-append root=/dev/vda
+
+To use separate consoles for FW (port 54320), secure payload (54321), host
+(54322) and guest (54323):
+
+		-nodefaults
+		-serial tcp:localhost:54320
+		-serial tcp:localhost:54321
+		-chardev socket,mux=on,id=hvc0,port=54322,host=localhost
+		-device virtio-serial-device
+		-device virtconsole,chardev=hvc0
+		-chardev socket,mux=on,id=hvc1,port=54323,host=localhost
+		-device virtio-serial-device
+		-device virtconsole,chardev=hvc1
+		-append "root=/dev/vda console=hvc0"
+		-device virtio-net-pci,netdev=net0 -net user,id=net0
+
+  And connect with 'socat -,rawer TCP-LISTEN:5432x' 
+
+To share the files needed for booting the guest:
+
+		-device virtio-9p-device,fsdev=shr0,mount_tag=shr0	
+		-fsdev local,security_model=none,path=.,id=shr0
+
+  And 'mount -t 9p shr0 /mnt' in the host.
+
+
+Then in the host, launch a Realm guest:
+
+	qemu-system-aarch64 -M virt,acpi=off,gic-version=3 -nographic 
+		-cpu host -enable-kvm -smp 2 -m 512M -overcommit mem-lock=on
+		-kernel /mnt/linux/arch/arm64/boot/Image
+		-initrd /mnt/buildroot/output/images/rootfs.cpio
+		-append "console=hvc0 root=/dev/vda"
+		-M confidential-guest-support=rme0
+		-object rme-guest,id=rme0,measurement-algo=sha512,num-pmu-counters=6,sve-vector-length=256
+		-nodefaults -chardev stdio,mux=on,id=hvc0,signal=off
+		-device virtio-serial-pci -device virtconsole,chardev=hvc0
+		-device virtio-net-pci,netdev=net0,romfile= -netdev user,id=net0
+		</dev/hvc1 >/dev/hvc1 &
+	...
+	[    0.000000] RME: RSI version 13.0 advertised
+

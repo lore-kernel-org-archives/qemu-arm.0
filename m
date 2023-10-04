@@ -1,111 +1,114 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2515879ejb;
-        Wed, 4 Oct 2023 02:11:05 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFvLgrBRheaKPsJ4ZfeCmJOkhnuKYMGIIZ2lSfEg7TAckeoiZKfj0LLLRukbSJ6HGNK6JN8
-X-Received: by 2002:a05:622a:170b:b0:410:9111:4a0b with SMTP id h11-20020a05622a170b00b0041091114a0bmr2374765qtk.13.1696410665413;
-        Wed, 04 Oct 2023 02:11:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696410665; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2515936ejb;
+        Wed, 4 Oct 2023 02:11:10 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHlyRTBp7hgfFlRBV4XLVPwJ3DWz2YStcBnYJStRewrLe4YZA2nmTb2p7XtZ8pQsqcSqTyH
+X-Received: by 2002:ad4:510d:0:b0:655:d6af:1c37 with SMTP id g13-20020ad4510d000000b00655d6af1c37mr1472975qvp.65.1696410670558;
+        Wed, 04 Oct 2023 02:11:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696410670; cv=none;
         d=google.com; s=arc-20160816;
-        b=md0PFDh0UvTpo29AHEnaVj4VtFX8vOmKQ8m23WjHCbTNofNg2hL6q62p2IsEyqEv8m
-         gMYiv05V1MQIp1rJavh7vxWCYMOkuOWhvt9/HjlXzj2+6ycQOV5VQxRx4peuOAa6nc3M
-         WLs76E/08RJQOGdK7oRS1o41dDSeUSqwpuYdoTzY/xsQHzTLkR39OStrkvwXLooKR83P
-         SmWlKU53lUpIA9DTBi7ETJGpaRcOatXI3k3o/KhsuCfluxmKsucWY3k1MbrKkwHYOnzf
-         /pihnrePZZbwklpOtCg1NX1uL4ZiC18aR3RQR2B/Gts8k0NLpIGftSpneSDSAoaU3WE5
-         Z2Xw==
+        b=vPsC1QyO11baKGb4bX/hPjLUujB4AJNQVm+L+dZxFxWsug1HThZFBlWyq+8u5Mr3WB
+         gz9H2D5WJ9y/n2HQ6aixHrrfEur/NstO9KC1Dx8AGSJyojWnRSN1WF+7hkXDgvwKX7QH
+         G8t0ddKS+9zefNn8AbL1+NKUFTTSPVzNPuheWtBdT8ZcrjMjQo1dGRXrhmj3M7nkhIzM
+         DSn5C9kAtrYcyTINXgGP4aQIUWT9KsZ/TBupXUC5F34EVzss11JJkatKtu2rJoi9COqf
+         wYAJWBDo+L0hLWC5HznR+lZRFaHuQp5SNOhkHgJs5WcxUbBbRKtuWuvn1rU8nhgYUjGm
+         jPgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=nbNDV7C/l3f6+3FtPFIUAzaNEP0L5fC09/CQh4JGMdY=;
-        fh=6CgllM1fbvnSF0RL7ce3v2OCeAvpLM5D4zatCNKduko=;
-        b=Nxo+xMNdckjYYfZPdvEEvn+ms/YSth+IW64CIK/1Q3Q9TXCklCUsft11Mk8vCuDCpI
-         FxzWE2WvsDSSWiaUHfCnekBOBYmyj+ba1SJYi5hZ30b6Y88W7iekRKlIrmzoF9cp/PYZ
-         yKwYSJCoRGDJP/YT03tziM0wdAFkNM4z2ewqvzm3zKe0ByQAOSWX9V3rfFDw6KtMdFsQ
-         9mBRqUXOADD82M0bjEaUhNkGkHTX/xifcUnFqFVci0tzHKJJp0kPwUcItoJfml6GvBKS
-         4FIJMqfTlN+HsHb8Dshsov3D5LObdnr0N88K9agYQ8q89z5/Yz2O0wKwNnfhSYwi6Q18
-         K2mQ==
+        bh=exSuT9/NnjvYPrvMnYoWAEzddFkaInk4+sF0o57vHQY=;
+        fh=yFlPw499waeCrxJycMHInryXAgEEokVhn4b89dDtF8U=;
+        b=xHMlXPYonh8/kXOpD/9Kf3bJjo68foxqgo/uhW30RJXQzHGi4yCabS2V8Zonp8cLQ8
+         Ag3itFZYg9OR7C+Vu1obP63XoDwFkNc2IkTj4eCO18NcCKk6sWL3oZgNRyUL/VKMb+yf
+         xRJwOIc4REb1DxCvkxa03FWJn8ei79tiw5IESyzEweUNoH3/LpJ8uAbZ8igYzjeUkREJ
+         SpLHDYZOqUB7aj26gfsmNUBujcMFY06iPqkcxBd/EnlE1LJc1u2K7xhDs6A4X9BAFs/U
+         sV3NtNIhDyUnhNsuAJEBp15KXGWnnKHYg94Wtq4/zgAY84+r/Ue81X4UdGTrQProZzHI
+         79ew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KmUYzWzV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QFtTkXr3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9-20020ac85bc9000000b00418051c660esi1314244qtb.625.2023.10.04.02.11.05
+        by mx.google.com with ESMTPS id w10-20020a05620a424a00b007757fdc429dsi1309359qko.340.2023.10.04.02.11.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 02:11:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Oct 2023 02:11:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KmUYzWzV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QFtTkXr3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qnxsk-0005fD-SZ; Wed, 04 Oct 2023 05:09:29 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qnxqf-0001Qy-IK; Wed, 04 Oct 2023 05:07:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnxr5-00033p-05
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 05:07:51 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnxqP-0000IB-Vo
+ for qemu-devel@nongnu.org; Wed, 04 Oct 2023 05:07:02 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnxqv-0007a7-Cc
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 05:07:42 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-406650da82bso17577805e9.3
- for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 02:07:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnxqG-0007Na-3t
+ for qemu-devel@nongnu.org; Wed, 04 Oct 2023 05:07:00 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-9b2cee55056so349660766b.3
+ for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 02:06:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696410451; x=1697015251; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696410409; x=1697015209; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nbNDV7C/l3f6+3FtPFIUAzaNEP0L5fC09/CQh4JGMdY=;
- b=KmUYzWzVlWoT2IkCwKYxQ/TfyzrH9M8eX2m/Bxjq9DUVIoLLTc32nGhK1DND/War2V
- p0g2kNMMFAIpOoMLHY05EbGw7Itm+s1WnJ7z5CpAM9dr3HvzvmJRFrTklvN85nkaMs8B
- ZmNhA2s3Yf+iZowiHJb8JMnSLojYPjYq87XQspA9gc4OQx4MweuxdvYCT3cqKDTCC3Oj
- mAef9wIKo+xAg0rabbIQwUF2hcC5ZmHkBowButkE5gsfpV/PxRkRO2W6duQh+uAmwNn9
- pY1m6mBt74xX3Ru2OTaySgfmQiTkguksfVA7ry/cIbn3fW3IR/a5AL2seIjZW6PJzgL0
- rodw==
+ bh=exSuT9/NnjvYPrvMnYoWAEzddFkaInk4+sF0o57vHQY=;
+ b=QFtTkXr39MXhGql1oowRP/XgYpTTlL9cv9BKNOehi6x+T8wtXBPN4p7cUPqSyh1LRp
+ LtBFtI29VRRYAfprAmQTxGP7iIbMC1QPJW3jqD1oXtPn5Eowl0RnMBR4CxJfd6ItaS56
+ Z0r6IEJfhPoIU2PBWjMLgrf+ehiqAweUgjzaHlR8/u/DYCHRDVt0gmg/QeZxFfXqnMJz
+ NI4TdtfJ62yDJnSdoPdxyRxYiSc6z50AQHjS8Y6odHngU76m2yryiGSTX7et93SKC6XO
+ vdJj2BxEsAPKocLcY5vVBMh2RsyBlQ4B3lRQTq3HSVsHRcoWIGyVT4OlWZesgcog75dt
+ l5OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696410451; x=1697015251;
+ d=1e100.net; s=20230601; t=1696410409; x=1697015209;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=nbNDV7C/l3f6+3FtPFIUAzaNEP0L5fC09/CQh4JGMdY=;
- b=SwZ5mS3que1nLu0Jbden1jm3Vf7hXyoxmDfOtlTUlOQsiukdwkrHtbsZ94BMKaKSro
- 2PtopojVe1qoIfmJuS5LmALmEwyukKieQS4Vhh17BzhQpgOOsiGbwkRVGHs+3uoCXFO/
- d1o0NUZmQfn+YqdNf2PUTn1nyjyFYH43eyK4RqcIn3woecyPS6sLGyf/cJ2mLwDQXqA9
- 8xzglkXwnFJmdqetXew/5xfoYd10KClgXKkqcsbedO/ks311Ivasp4IFDFyshrPloHbZ
- thVZKNywZM5GfXqojhNHjWKVx5aqkZoy4BLWOwY4z9pPSDj6+j/7uzNgEyU/LuEEv111
- f2GQ==
-X-Gm-Message-State: AOJu0Yxx88h0jVAcJN+7BvauMATM5t8OcgiXe52V7VeWpPrCmEUtuDvx
- TLMZvmKrjHAQ1G/lReiLNhvsmA==
-X-Received: by 2002:adf:e48b:0:b0:319:7bec:4f31 with SMTP id
- i11-20020adfe48b000000b003197bec4f31mr1627029wrm.10.1696410451647; 
- Wed, 04 Oct 2023 02:07:31 -0700 (PDT)
+ bh=exSuT9/NnjvYPrvMnYoWAEzddFkaInk4+sF0o57vHQY=;
+ b=fP9BjesFrMC8k5t1oAunwJxpWjKsTQnlGe6bB/Lc1VCLw4rWXKb3sbgrLLykSJf/c0
+ QR5uC2rQhkPj4oNZiim7s9De5PGoBdnosJ1PeHOGvmO/IZ7aOBvOjpssi83SHcDy2haD
+ jM2MDBAwVYdn8ulFQhh//pdZrZJmdWXh76hpqyYu/ZG1UL7wScduqjWVqBuhrAK2m6MJ
+ l8MaXsWTmGU1JcA2L+jjATc3FGzksB48KCvTRMRAKMP8O/awMmAKpigRu5y18McYyvn1
+ eqB9DXwWi2Pxmok5g85Rz0poi74TgzEt2BcEUaNML0tn3/gYn2AWmL3epbfxxzeelfj7
+ nuWQ==
+X-Gm-Message-State: AOJu0YzgCish+qSya7HeqivhrUtMF0iTjFDUqhqwDNSCPO4QROv1+4ky
+ vEV/HaXr6v3oE6WeTYABKWj3PjEJRoCSotAHZyo=
+X-Received: by 2002:a17:906:518e:b0:9ad:8a29:f26a with SMTP id
+ y14-20020a170906518e00b009ad8a29f26amr1556091ejk.63.1696410409209; 
+ Wed, 04 Oct 2023 02:06:49 -0700 (PDT)
 Received: from m1x-phil.lan (5ep85-h01-176-173-163-52.dslam.bbox.fr.
  [176.173.163.52]) by smtp.gmail.com with ESMTPSA id
- k16-20020a5d4290000000b00325b29a6441sm3494427wrq.82.2023.10.04.02.07.30
+ k1-20020a05600c0b4100b00405442edc69sm977268wmr.14.2023.10.04.02.06.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 02:07:31 -0700 (PDT)
+ Wed, 04 Oct 2023 02:06:48 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-ppc@nongnu.org,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 10/13] hw/virtio/meson: Rename softmmu_virtio_ss ->
- system_virtio_ss
-Date: Wed,  4 Oct 2023 11:06:25 +0200
-Message-ID: <20231004090629.37473-11-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>
+Subject: [PATCH 03/13] cpu: Correct invalid mentions of 'softmmu' by
+ 'system-mode'
+Date: Wed,  4 Oct 2023 11:06:18 +0200
+Message-ID: <20231004090629.37473-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231004090629.37473-1-philmd@linaro.org>
 References: <20231004090629.37473-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,79 +117,55 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kVCEXENFivGG
-
-See commit de6cd7599b ("meson: Replace softmmu_ss -> system_ss")
-for rationale.
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0GDbPIo2jU0N
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/virtio/meson.build | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+ cpu.c                | 2 +-
+ hw/core/cpu-common.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/virtio/meson.build b/hw/virtio/meson.build
-index 13e7c6c272..aad506fe52 100644
---- a/hw/virtio/meson.build
-+++ b/hw/virtio/meson.build
-@@ -1,18 +1,18 @@
--softmmu_virtio_ss = ss.source_set()
--softmmu_virtio_ss.add(files('virtio-bus.c'))
--softmmu_virtio_ss.add(when: 'CONFIG_VIRTIO_PCI', if_true: files('virtio-pci.c'))
--softmmu_virtio_ss.add(when: 'CONFIG_VIRTIO_MMIO', if_true: files('virtio-mmio.c'))
--softmmu_virtio_ss.add(when: 'CONFIG_VIRTIO_CRYPTO', if_true: files('virtio-crypto.c'))
--softmmu_virtio_ss.add(when: 'CONFIG_VHOST_VSOCK_COMMON', if_true: files('vhost-vsock-common.c'))
--softmmu_virtio_ss.add(when: 'CONFIG_VIRTIO_IOMMU', if_true: files('virtio-iommu.c'))
--softmmu_virtio_ss.add(when: 'CONFIG_VHOST_VDPA_DEV', if_true: files('vdpa-dev.c'))
-+system_virtio_ss = ss.source_set()
-+system_virtio_ss.add(files('virtio-bus.c'))
-+system_virtio_ss.add(when: 'CONFIG_VIRTIO_PCI', if_true: files('virtio-pci.c'))
-+system_virtio_ss.add(when: 'CONFIG_VIRTIO_MMIO', if_true: files('virtio-mmio.c'))
-+system_virtio_ss.add(when: 'CONFIG_VIRTIO_CRYPTO', if_true: files('virtio-crypto.c'))
-+system_virtio_ss.add(when: 'CONFIG_VHOST_VSOCK_COMMON', if_true: files('vhost-vsock-common.c'))
-+system_virtio_ss.add(when: 'CONFIG_VIRTIO_IOMMU', if_true: files('virtio-iommu.c'))
-+system_virtio_ss.add(when: 'CONFIG_VHOST_VDPA_DEV', if_true: files('vdpa-dev.c'))
- 
- specific_virtio_ss = ss.source_set()
- specific_virtio_ss.add(files('virtio.c'))
- specific_virtio_ss.add(files('virtio-config-io.c', 'virtio-qmp.c'))
- 
- if have_vhost
--  softmmu_virtio_ss.add(files('vhost.c'))
-+  system_virtio_ss.add(files('vhost.c'))
-   specific_virtio_ss.add(files('vhost-backend.c', 'vhost-iova-tree.c'))
-   if have_vhost_user
-     specific_virtio_ss.add(files('vhost-user.c'))
-@@ -21,7 +21,7 @@ if have_vhost
-     specific_virtio_ss.add(files('vhost-vdpa.c', 'vhost-shadow-virtqueue.c'))
-   endif
- else
--  softmmu_virtio_ss.add(files('vhost-stub.c'))
-+  system_virtio_ss.add(files('vhost-stub.c'))
- endif
- 
- specific_virtio_ss.add(when: 'CONFIG_VIRTIO_BALLOON', if_true: files('virtio-balloon.c'))
-@@ -67,7 +67,7 @@ virtio_pci_ss.add(when: 'CONFIG_VIRTIO_MD', if_true: files('virtio-md-pci.c'))
- 
- specific_virtio_ss.add_all(when: 'CONFIG_VIRTIO_PCI', if_true: virtio_pci_ss)
- 
--system_ss.add_all(when: 'CONFIG_VIRTIO', if_true: softmmu_virtio_ss)
-+system_ss.add_all(when: 'CONFIG_VIRTIO', if_true: system_virtio_ss)
- system_ss.add(when: 'CONFIG_VIRTIO', if_false: files('vhost-stub.c'))
- system_ss.add(when: 'CONFIG_VIRTIO', if_false: files('virtio-stub.c'))
- system_ss.add(when: 'CONFIG_ALL', if_true: files('vhost-stub.c'))
+diff --git a/cpu.c b/cpu.c
+index 0769b0b153..8cb6790142 100644
+--- a/cpu.c
++++ b/cpu.c
+@@ -209,7 +209,7 @@ static Property cpu_common_props[] = {
+                      prctl_unalign_sigbus, false),
+ #else
+     /*
+-     * Create a memory property for softmmu CPU object, so users can
++     * Create a memory property for system CPU object, so users can
+      * wire up its memory.  The default if no link is set up is to use
+      * the system address space.
+      */
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index ced66c2b34..f04d59c8d5 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -228,8 +228,8 @@ static void cpu_common_initfn(Object *obj)
+     cpu->cpu_index = UNASSIGNED_CPU_INDEX;
+     cpu->cluster_index = UNASSIGNED_CLUSTER_INDEX;
+     cpu->gdb_num_regs = cpu->gdb_num_g_regs = cc->gdb_num_core_regs;
+-    /* *-user doesn't have configurable SMP topology */
+-    /* the default value is changed by qemu_init_vcpu() for softmmu */
++    /* user-mode doesn't have configurable SMP topology */
++    /* the default value is changed by qemu_init_vcpu() for system-mode */
+     cpu->nr_cores = 1;
+     cpu->nr_threads = 1;
+     cpu->cflags_next_tb = -1;
 -- 
 2.41.0
 

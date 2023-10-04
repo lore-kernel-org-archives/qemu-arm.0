@@ -1,158 +1,144 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2879665ejb;
-        Wed, 4 Oct 2023 12:22:26 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHhjRxYumgC73en3v+0AygqpLNIHI1aSbXOT3EuSjvs60Pd7/65jlorGN5MYtLMe7QlKnvM
-X-Received: by 2002:ac8:5b09:0:b0:418:16d6:5a8d with SMTP id m9-20020ac85b09000000b0041816d65a8dmr4189824qtw.19.1696447346558;
-        Wed, 04 Oct 2023 12:22:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696447346; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2891636ejb;
+        Wed, 4 Oct 2023 12:46:20 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHRTo2eQt2FZk7P551YEUw8lr/W5bid3cqUkpjpuumQs/ZSiATNtS64dTc9IXFrmBp9Rgqb
+X-Received: by 2002:ac8:5e4f:0:b0:40f:f9c8:1b98 with SMTP id i15-20020ac85e4f000000b0040ff9c81b98mr3645992qtx.10.1696448780292;
+        Wed, 04 Oct 2023 12:46:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696448780; cv=none;
         d=google.com; s=arc-20160816;
-        b=mniV8IYs6mbuAkBtP1ey6loZcpy2JU5PWPfhHGnbR9ircEhxd7MO5wwwEcsrvlZuUb
-         65APnA5QOvz6Imva1tHdg6ihsms2ce2bf/yLTTI8sX9EZM485s/AthJHSZGVeZ7nCuMy
-         QQ0o0UVOUbFV3vbTwMdtsMputs5qxwUN5xIkxSpmZ6ux3ZJUnrhpN56eKWjTJZ9dUqbm
-         Z6ENDN0aTisoZEGxDUuXc+DPuQsQkkCgU2CsNziqdca6KkEiC+L0scYTNflb9xFbu3jx
-         qG1zTDMpZIYli1MgqYeE+AyHLpcBW9Sax1iW0Ee6rTGLXzzehDYFHLTuqbxX+D3gveoF
-         yYxQ==
+        b=zExk6CWl7i3Rbds3lX0FlXKtHfclB7poPwIKon7d1BvsYFMvNbrUkDZ26PYDuE68gK
+         Da1CIYzWYGwUUI7VMgZ7sfHEi6oGvfdaGLnX1Yh0CnlXP4vPgoGIsN/mYU2NXVTP5nvJ
+         YfNfcSlPO5HKRj8lTzFs/N7j7/RaYMUE81w1/0j5/EpM2HdzsKbLMfgnjqgvlOxywc5+
+         QjI/vpKJh36VZ462j2HPyjvSArFRIbdOMh+Rc2vYUipn5H524TBNxYcRRXYDVLiziiQE
+         6/MTdhr5oiJIBLnpA/bNBTLJnZT6GzOCFhXQQJDYMSUg4v/+32KtAbE73196MNKdNenV
+         CDpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=7/FXvH4AVeLIX4JBWjI7WQhiI1KBXoKB/o0+b6JzizA=;
-        fh=Iqw+C3zUdjRbqvq8+6x0+40nrEuEq3eUeL/fW1XE9rM=;
-        b=0VnvLOF/mXQzGMvfNNXNAlTS08mi7g6NORXCbgHJ0aXOLqhGHtdmctECBJpfX+PIlN
-         aJCsZH4X3+xQXP5OsW6gNa85C4o/j+9RC4pIpwzQOrlEE49MZTqqgZfE2tfYarL/LCGR
-         RdK4AIonkHhVn4PV/HQ+BFeTmmkpYKgHNky7bfjCjZeymv3JZ+eGfuBUz7a/mDi2EOez
-         l9gxqQJ/5qjHZdad0B1OLBDHSy9g47hi7gAqDufVMtJI9Urrp0a1rQhJ4gG/idmeRXf+
-         EbGSVQmMiH2R2jBJIZkaxWaNPsYMQ0EpVQ+lq2iADbEFRD4xsRRuZqHHJWBGHpblvDaE
-         k0fg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=TX7kKZmBtJZ5PBGYSWB5p9gNJO/hUqyWgAymBZ2GhF0=;
+        fh=T+SSTeAxrZ+7RtL9oY8pymA8+lHV6k3OjFi4ur0eRDs=;
+        b=BY2wfPH5KjkoPZG05fK0kK7HkEe1dn0eyyfVXP+YeRGy1UhURTVMk87O7qSXqHm0BF
+         F0gVkP/XJOPHW2Dqin2oo3Npymb58VEkanWG+KJtv6oIGckGPiKUpsoe4X6J0hxsRuSz
+         jB8+EuG+BbAjthy8Kbk7aKFa/EpjBAAvfzGQEyqh5NxjmWmKoz85VKFoY1ENjX7/L7Bg
+         HJSv0bbuusuOO5H2wOYqQ/T/Q8GdpyzSb/IfVvnXlyPUmFx5lZax2qCIzkwsEsV2fyKp
+         PTjBR+uVgM/KqX4Ne7RYPWo8Fb1r4niQc30qU/rEj1sthfF1TR9LZDn63lAA42Lpo4LP
+         tYKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jvHFkOjN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o10-20020a05622a044a00b00410a29261efsi1809476qtx.287.2023.10.04.12.22.26
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TTekZrTq;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <jsnow@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id m7-20020ac85b07000000b0041821adfb01si1773956qtw.632.2023.10.04.12.46.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 12:22:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Oct 2023 12:46:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=jvHFkOjN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qo7Ro-0003Yx-7V; Wed, 04 Oct 2023 15:22:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1qo7Rl-0003SU-CU; Wed, 04 Oct 2023 15:22:13 -0400
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1qo7Rg-0002TI-9K; Wed, 04 Oct 2023 15:22:12 -0400
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-504a7f9204eso234096e87.3; 
- Wed, 04 Oct 2023 12:22:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1696447324; x=1697052124; darn=nongnu.org;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7/FXvH4AVeLIX4JBWjI7WQhiI1KBXoKB/o0+b6JzizA=;
- b=jvHFkOjNnTnwV9vJ3BDhc8fugyevOcuLIwfHyj/8zR67YefLLPdj/9414XuHWFJiv/
- LIcyAAjNBOOMfKKK1RZOBOOlhSv5RlXX9i+YB3JIAfuFJunwgQWe5ycdghs9N5NAbTg5
- eb6AEsGH/16T4QUacAWQPnr2lZWyFwee8MG4IU9goJyaTCElb5gvUl/zsnr19CLUMjtw
- af0jnQxcq8YHqAMjWZX948TBEMY1UupbvDlzTt4OcoABJNHwjlwnwkhcYeWYB7LtqY/I
- JXnnBRF2DebOSiBf8talSN+jlOWz15lXukAH5SFagBfdWxgoyipm3f4vb4cEfjBn+o7m
- nRLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696447324; x=1697052124;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7/FXvH4AVeLIX4JBWjI7WQhiI1KBXoKB/o0+b6JzizA=;
- b=fvoGko9DyPr6m+yABfEDCXmfWPQSO54C2TNezchiyySz7cdLU4F1lnIw87YrxosHwF
- aJp1b/rk8UgHlFHhPrhPHtQv0oBGtdadA5mhFVtRKHqOIYaOUAeSzfv35Ec4DkSgPbtB
- pMQZ0r6BAjZXUE7D9Ujxhc0yoqr0RNdtKYSavqMwsSZTbEDBDEV/EOIeWB5TejauJLIw
- 0WclXBYSFLzI4GoSNb+Evmyb9G0qeuEtq7Ns4J4qK3Gi3IoeEUtp4+BxlzIi3GkUMWZB
- ICB81iY1b0ECUwkaJ53XNU9cB3j2ZsuWyBy2fAjekmA4UWik8RjLLctvmqihwKABY43M
- +5vg==
-X-Gm-Message-State: AOJu0Yyt79nAI03L1jWaFxecL+Jq+u7b+s6ClwHIKK6BC8uDW0pzJH/v
- ituMkw1T+S8xEpFplk/F2ks=
-X-Received: by 2002:a05:6512:3095:b0:503:2a53:7480 with SMTP id
- z21-20020a056512309500b005032a537480mr3187139lfd.49.1696447324370; 
- Wed, 04 Oct 2023 12:22:04 -0700 (PDT)
-Received: from fralle-msi (217-76-87-243.cust.bredband2.com. [217.76.87.243])
- by smtp.gmail.com with ESMTPSA id
- c22-20020ac25316000000b00502d7365e8fsm715351lfh.137.2023.10.04.12.22.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Oct 2023 12:22:04 -0700 (PDT)
-Date: Wed, 4 Oct 2023 21:22:02 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Tong Ho <tong.ho@amd.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, alistair@alistair23.me,
- edgar.iglesias@gmail.com, peter.maydell@linaro.org
-Subject: Re: [PATCH] xlnx-bbram: hw/nvram: Use dot in device type name
-Message-ID: <20231004192202.GF18959@fralle-msi>
-References: <20231003052139.199665-1-tong.ho@amd.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TTekZrTq;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1696448779;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=TX7kKZmBtJZ5PBGYSWB5p9gNJO/hUqyWgAymBZ2GhF0=;
+	b=TTekZrTq/ztHm0PlN0K5WnDLy0XWzCVvBieqjkAzmNA48GwftYarwuHl1xMrTICXI/CyKk
+	6E3VsKL4s7nTXb77rP8MINjFuIty50H+O8G5AkZOiz+yKWVcDGYeKd9P0NAobTe4vjfuyh
+	f3yD+HwbGjrW7Cu+gqLHKGo3fNPnx/s=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-462-phOAvBEzOEylcy3t1q5R3A-1; Wed, 04 Oct 2023 15:46:16 -0400
+X-MC-Unique: phOAvBEzOEylcy3t1q5R3A-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 85F271C05AA7;
+	Wed,  4 Oct 2023 19:46:15 +0000 (UTC)
+Received: from scv.redhat.com (unknown [10.22.16.75])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9CA4B1054FC2;
+	Wed,  4 Oct 2023 19:46:13 +0000 (UTC)
+From: John Snow <jsnow@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	John Snow <jsnow@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Cleber Rosa <crosa@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org,
+	Joel Stanley <joel@jms.id.au>,
+	qemu-block@nongnu.org,
+	Beraldo Leal <bleal@redhat.com>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	Hanna Reitz <hreitz@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>,
+	Thomas Huth <thuth@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Markus Armbruster <armbru@redhat.com>
+Subject: [PULL 0/9] Python patches
+Date: Wed,  4 Oct 2023 15:46:04 -0400
+Message-ID: <20231004194613.2900323-1-jsnow@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231003052139.199665-1-tong.ho@amd.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x134.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nE2G5GIGG0Lx
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+X-TUID: 9APJYeadrbXq
 
-On [2023 Oct 02] Mon 22:21:39, Tong Ho wrote:
-> This replaces the comma (,) to dot (.) in the device type name
-> so the name can be used with the 'driver=' command line option.
-> 
-> Signed-off-by: Tong Ho <tong.ho@amd.com>
-
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-
-> ---
->  include/hw/nvram/xlnx-bbram.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/nvram/xlnx-bbram.h b/include/hw/nvram/xlnx-bbram.h
-> index 87d59ef3c0..6fc13f8cc1 100644
-> --- a/include/hw/nvram/xlnx-bbram.h
-> +++ b/include/hw/nvram/xlnx-bbram.h
-> @@ -34,7 +34,7 @@
->  
->  #define RMAX_XLNX_BBRAM ((0x4c / 4) + 1)
->  
-> -#define TYPE_XLNX_BBRAM "xlnx,bbram-ctrl"
-> +#define TYPE_XLNX_BBRAM "xlnx.bbram-ctrl"
->  OBJECT_DECLARE_SIMPLE_TYPE(XlnxBBRam, XLNX_BBRAM);
->  
->  struct XlnxBBRam {
-> -- 
-> 2.25.1
-> 
-> 
+The following changes since commit da1034094d375afe9e3d8ec8980550ea0f06f7e0=
+:=0D
+=0D
+  Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging =
+(2023-10-03 07:43:44 -0400)=0D
+=0D
+are available in the Git repository at:=0D
+=0D
+  https://gitlab.com/jsnow/qemu.git tags/python-pull-request=0D
+=0D
+for you to fetch changes up to 4d7a663cbe8343e884b88e44bd88d37dd0a470e5:=0D
+=0D
+  Python: test Python 3.12 (2023-10-04 15:19:00 -0400)=0D
+=0D
+----------------------------------------------------------------=0D
+Python pullreq=0D
+=0D
+Buffering improvements for qemu machine, minor changes to support the=0D
+newly released Python 3.12=0D
+=0D
+----------------------------------------------------------------=0D
+=0D
+John Snow (9):=0D
+  Python/iotests: Add type hint for nbd module=0D
+  python/machine: move socket setup out of _base_args property=0D
+  python/machine: close sock_pair in cleanup path=0D
+  python/console_socket: accept existing FD in initializer=0D
+  python/machine: use socketpair() for console connections=0D
+  python/machine: use socketpair() for qtest connection=0D
+  python/machine: remove unused sock_dir argument=0D
+  python/qmp: remove Server.wait_closed() call for Python 3.12=0D
+  Python: test Python 3.12=0D
+=0D
+ python/qemu/machine/console_socket.py      | 29 ++++++++---=0D
+ python/qemu/machine/machine.py             | 58 +++++++++++++---------=0D
+ python/qemu/machine/qtest.py               | 54 +++++++++++++++-----=0D
+ python/qemu/qmp/protocol.py                |  1 -=0D
+ python/setup.cfg                           |  3 +-=0D
+ tests/avocado/acpi-bits.py                 |  5 +-=0D
+ tests/avocado/avocado_qemu/__init__.py     |  2 +-=0D
+ tests/avocado/machine_aspeed.py            |  5 +-=0D
+ tests/docker/dockerfiles/python.docker     |  6 ++-=0D
+ tests/qemu-iotests/iotests.py              |  2 +-=0D
+ tests/qemu-iotests/tests/copy-before-write |  3 +-=0D
+ tests/qemu-iotests/tests/nbd-multiconn     |  4 +-=0D
+ 12 files changed, 114 insertions(+), 58 deletions(-)=0D
+=0D
+-- =0D
+2.41.0=0D
+=0D

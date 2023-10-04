@@ -1,970 +1,216 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2819219ejb;
-        Wed, 4 Oct 2023 10:36:24 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH6YXdigrqWYaIjZhwUInzKfLORNysxKPbNygp1vd2I+m60QPbsBpdJZ0l3SSjhFOb+j0Cl
-X-Received: by 2002:a05:622a:144d:b0:40d:6219:d813 with SMTP id v13-20020a05622a144d00b0040d6219d813mr3364918qtx.68.1696440983794;
-        Wed, 04 Oct 2023 10:36:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696440983; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2819241ejb;
+        Wed, 4 Oct 2023 10:36:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGK+3VRO7GaOSzWq5lhpR3hcLBlhdXrax4Sg1EQLui61Xxy5941uXJL7EhHVolCwsvYKj8e
+X-Received: by 2002:a05:622a:190a:b0:419:5795:8e12 with SMTP id w10-20020a05622a190a00b0041957958e12mr2751467qtc.40.1696440986987;
+        Wed, 04 Oct 2023 10:36:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696440986; cv=none;
         d=google.com; s=arc-20160816;
-        b=QIyXSjRLqbtZqWgk0weCe5BkLlo6JSc5xlNKGdyV5h1+GPn2WpKngOnQ+e5SWIAWut
-         YwMWuNNHB4L1iNo2DnoUCKGfVgiMfDRXeplOnzNb/edVQYrt0rl1PQSOgt93+ahjsWHG
-         SlQCS1BDjNMy75/y85gHZJ8508q88mw7n7uvLyUJdJ3nM2zd4ZXd4Avj2KG1xTBVkYxg
-         ETBbjUo4TYn4mX9MAixGghP97DQED+3b43Nb1PQ92nNx6HBv/3IiUNs5fvXxKwICeqzj
-         V5Zws33v1MWaBjZFPWNOJg8rcLQGixKmjMVxYhotlCFCzjDzq6I89rnpF79AZBKUda+z
-         ukpQ==
+        b=Pca3pPIry+WSEexnD1cjkwcz4FJJ6yMjDPwMMTIctQ9Hnx5d2MFoh63w38IgF4wPRU
+         Ak68mvQ/jrhVWqPhOhmyZtxRlGybfT86joXXlw5deHJ22prKXuBEUp5QcwgnHj2GiiX5
+         lUfL5uM2UmTF+8yWvGZ9tsLvcnROXP3oo56FpxYOJLRHtgzeNBRDMvNIXkXRt/u3qmc9
+         ky976vKlIBxF76RuK8kPH3bYrr5eg9w+ftttRqcynMCEWhNAMUxRjA48yqjHKAzYot07
+         oyaLe9aYM2+LlFYg9P5/Py2z0RVtG9MTPOHHgN4Z1AkXVkC1hnYXLpdjF2bigNkzAY6M
+         GPnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=rXQCp069O7lED68gZDU7dxJmBJ+oYWkpx632klsL3dA=;
-        fh=L3Ql5YNQ5WEC7puNbxnCALFZ8At4zr2MeUL62jikXxI=;
-        b=FUxHh79NWfHNaYOFq9iRjBGIB38Bf9hd4tt8rS7JY2y7hzJRY2qRL1fH1Q+UHq01aC
-         yZxCqEDXaqFAzxxnrJss1F+8kZwul56jbGqZCXnrA+Nvtvp7hzrZrs+wQJNduUe7/k6T
-         /bhrN17WPJO9Dpf6XH1jQcy8E4HtFPxPozRBUKckgj68ff8eEEG/P5CPv4pDPCDYJ0sP
-         qUPY/7/H1+H6Yjx+E95MKrjlbCLXVdCCT7QThTUuNmCL9zQFDt/Tt3HViKcndKfam8XT
-         9SHVdo0PXHgEJBva9NMIMqu6SOykb1iXRaCpcCAqXt4vcemsXUKM1veOnrRQ8WgLuSr7
-         dN0g==
+        bh=/2mqPUiLY+xgyp8WhkPgnmE5sxcUntO1BZj3t2/zBvU=;
+        fh=24EjYLnDv85MXc9ZJhNARDACgVafFH54U71Vba+bIb4=;
+        b=AGi//NRSTqH71jPuSulA2JpA/pUq4toihPnKLYBXOs2/C3szTfpNjHO7v65JmDL1A1
+         tbCdJVGv1BVn5RuSzWq/rK4JBHuY8HJwtGXrTV092C8HhirVf6iYKo6HMMyftNzTHLv3
+         5F9iSjs2oQohv5Aozi3dKbzPa5qJghcexWZGKlla1NL+8zvxAeX5tQgyhHdLYlYWC31p
+         29kV1EyHWtBc6whR4xEycbjYgL+b/EfeDnelfyXuADH6JDU9re7R+WtuJ4T7Uh72wIH3
+         nVlbPBb5V1nuIDmJ5vamwvBylngQ4KJud0dfXC1WG6c5np/y2n23sWlWbbHySPUAM/5M
+         ZsHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=i5SXpg81;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=IOdeVNJN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7-20020ac85cc7000000b004136d6ed0ddsi1664470qta.545.2023.10.04.10.36.23
+        by mx.google.com with ESMTPS id r22-20020ac85c96000000b00418225de9c2si1721635qta.680.2023.10.04.10.36.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 10:36:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Oct 2023 10:36:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=i5SXpg81;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=IOdeVNJN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qo5mk-0007Y7-RF; Wed, 04 Oct 2023 13:35:48 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qo5kw-00051y-8T; Wed, 04 Oct 2023 13:33:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5lZ-0005xd-A4
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 13:34:35 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5kk-0004SQ-MX
+ for qemu-devel@nongnu.org; Wed, 04 Oct 2023 13:33:44 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5lV-0001PV-Q9
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 13:34:33 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-52fe27898e9so64329a12.0
- for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 10:34:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5kh-0001E0-U6
+ for qemu-devel@nongnu.org; Wed, 04 Oct 2023 13:33:41 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-3231df68584so112198f8f.1
+ for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 10:33:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696440868; x=1697045668; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696440818; x=1697045618; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=rXQCp069O7lED68gZDU7dxJmBJ+oYWkpx632klsL3dA=;
- b=i5SXpg81F0UjGpHEmVydVIo8vRDisliVYOcQZ7ovnDl/oo75bVRfL3imyh7sjvvoN2
- U8m9sENWA0s6H42S/fEz6rcuv3i9YnbWGAeEhoUJ6QMcfAvzr3SWGEAFmh3jXe1uRLIE
- D2Ie/9+WlAqfx6DQ1xinROMTTXN22REp9wrpYvJ3y6lFjTYevZQtWSspjTBrWhjIvWqG
- 7EQ3cTA5KRO99gNGGVUbElgw2L0GPL+5yULFOHFZWZsYNRbzVsTActr8eOc1RM2Xxa0h
- J0JSrojAi//PbLARM8HyqH6gtYYOhsNKHdd3ooPJQpX18HycueLm7FKtQaW9ZLyFPe7d
- LZZw==
+ bh=/2mqPUiLY+xgyp8WhkPgnmE5sxcUntO1BZj3t2/zBvU=;
+ b=IOdeVNJNrLy/4yV01S75rnsSqYmcoPYXbNH+LCzNO1nFy0JNc4tBzwFPbrZYLNIewm
+ 6HzlzCEPOfk01Fg94K1HcFpfbMjmNeyG37ZpcWaEm1KsC7oxTpOozxdwnF/YArml2l42
+ tntzBvt6eEe0MjoCf0vWnZWOG1q3Q+Vx3IqmccbcNse1uZyTuTDZ7VIFY3hhzdyWSccZ
+ 4dbat1ZDDfMl/BSRLX96jKPRdWO0e6b2e0gD01Pk0M5pCWBKBOl/txi5raEFcIXnq0Rc
+ OSarMfJKYnVNrZ2mn4aGBymOUWpaJp70Ic9SHwUEr1+LnIp9+O3DUWv64RzqO0suJ9pt
+ awSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696440868; x=1697045668;
+ d=1e100.net; s=20230601; t=1696440818; x=1697045618;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=rXQCp069O7lED68gZDU7dxJmBJ+oYWkpx632klsL3dA=;
- b=tS7v/g+yAId7gHl2YvudLdkIcE6UYoXvX1hKsufp7tXbaOlwec2erKJUwUZkOWCw8a
- 7UFR6hArQxin46Df3Ik5eTtkj8+tNyNGytL7G42yQHaS4GlRW5qwn0/0lWMBGOMUKVpT
- KYiAf6M5/LBTgsB2iZ+BmTSqlUp6vrW1FM0twHePRovLkO/YTspPPeb1q9vGAdvxxM71
- 5i/+wh1ctzPwKk+554Jzev2ka0TrjiPmHOdvBdyjdxtfo+sMCKlO0trY1GLtLG+tS8rY
- +qaOZPxQ7gHCSNkQNoIxHKK0O+wo4C7tOzJnPnw0dg0d06YeFM3dTCrn5u//z+MsQKxw
- a6sw==
-X-Gm-Message-State: AOJu0YxJLe6mcqlJ6jiMogz5ewgogpHEZExBTQ4Me6TsIYUzT04htGrJ
- qYGQxP0D1YJHh0pHBpDsWG7Y1w==
-X-Received: by 2002:a50:fb12:0:b0:536:e03f:62b6 with SMTP id
- d18-20020a50fb12000000b00536e03f62b6mr2739021edq.30.1696440867971; 
- Wed, 04 Oct 2023 10:34:27 -0700 (PDT)
+ bh=/2mqPUiLY+xgyp8WhkPgnmE5sxcUntO1BZj3t2/zBvU=;
+ b=nYfxWaYqkSMnKohCaeuVOfnLeuGFkSX7sl8VBawJXRaSZbKAXmSFJgqXUkpoLYvdpa
+ 8mZ78TFipM8PEdAIjla7RodKusxFY9VnqdZw0G99uUTqn/cRkx4AH3zF4OGGydOZqt64
+ KYEgpjz8//Umm3h7D4BFXKwj25q65cqxWlcSx/hg7K2L1etkBaQZAv68r4c6dLVaXRqB
+ Gak3vdBb4+m+Xada+i2AkZIMfR3rWGHfr8Wtaurf07tFPcD3jzzWIX5/I4EzuU1pNR/8
+ EIvuP263PzvGjR6fsTe8k6fBua69ZGHaaVZqwKVJyizFENMXB1Q/sT3m3Pwd8iQPFNlE
+ S7xg==
+X-Gm-Message-State: AOJu0YzzFAvxU2dZLNzrI8LNdSdG9Pad3krdiixIj6BHemHJr+sRR71i
+ mNRB+UwdI9gv2UH7Yg6LUbU1iM932yH4DHDzOcY=
+X-Received: by 2002:a5d:440f:0:b0:320:a4e:6b83 with SMTP id
+ z15-20020a5d440f000000b003200a4e6b83mr2742242wrq.31.1696440818441; 
+ Wed, 04 Oct 2023 10:33:38 -0700 (PDT)
 Received: from m1x-phil.lan (5ep85-h01-176-173-163-52.dslam.bbox.fr.
  [176.173.163.52]) by smtp.gmail.com with ESMTPSA id
- j24-20020a50ed18000000b005232ea6a330sm180106eds.2.2023.10.04.10.34.22
+ d14-20020adfe84e000000b0031c5b380291sm4459057wrn.110.2023.10.04.10.33.36
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 10:34:27 -0700 (PDT)
+ Wed, 04 Oct 2023 10:33:38 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- Zhenwei Pi <pizhenwei@bytedance.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- Alberto Garcia <berto@igalia.com>, Fam Zheng <fam@euphon.net>,
- John Snow <jsnow@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Peter Xu <peterx@redhat.com>, Leonardo Bras <leobras@redhat.com>,
- "Dr. David Alan Gilbert" <dave@treblig.org>,
- Jason Wang <jasowang@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Konstantin Kostiuk <kkostiuk@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- integration@gluster.org
-Subject: [PATCH 21/21] qapi: Remove 'qapi/qmp/qerror.h' header
-Date: Wed,  4 Oct 2023 19:31:56 +0200
-Message-ID: <20231004173158.42591-22-philmd@linaro.org>
+ Juan Quintela <quintela@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Leonardo Bras <leobras@redhat.com>
+Subject: [PATCH 14/21] qapi: Inline and remove QERR_MIGRATION_ACTIVE definition
+Date: Wed,  4 Oct 2023 19:31:49 +0200
+Message-ID: <20231004173158.42591-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231004173158.42591-1-philmd@linaro.org>
 References: <20231004173158.42591-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x530.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lti7hX6q3u2d
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8iMmud3xmtJU
 
-This file is now empty. Avoid new definitions by killing it,
-paying off a 8 years old debt (with interests).
+Address the comment added in commit 4629ed1e98
+("qerror: Finally unused, clean up"), from 2015:
 
-Mechanical change using:
+  /*
+   * These macros will go away, please don't use
+   * in new code, and do not add new ones!
+   */
 
-  $ git grep -l qapi/qmp/qerror.h | while read f; do \
-      gawk -i inplace '/#include "qapi\/qmp\/qerror.h"/ && !p {p++;next}1' $f; \
-    done
+Mechanical transformation using sed, manually
+removing the definition in include/qapi/qmp/qerror.h.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/qapi/qmp/qerror.h        | 20 --------------------
- backends/cryptodev-vhost-user.c  |  1 -
- backends/dbus-vmstate.c          |  1 -
- backends/rng-egd.c               |  1 -
- backends/rng-random.c            |  1 -
- block/gluster.c                  |  1 -
- block/monitor/block-hmp-cmds.c   |  1 -
- block/quorum.c                   |  1 -
- block/snapshot.c                 |  1 -
- block/vmdk.c                     |  1 -
- blockdev.c                       |  1 -
- blockjob.c                       |  1 -
- chardev/char-fe.c                |  1 -
- chardev/char.c                   |  1 -
- dump/dump.c                      |  1 -
- dump/win_dump.c                  |  1 -
- hw/core/qdev-properties-system.c |  1 -
- hw/core/qdev-properties.c        |  1 -
- hw/core/qdev.c                   |  1 -
- hw/intc/openpic.c                |  1 -
- hw/ppc/spapr_pci.c               |  1 -
- hw/usb/redirect.c                |  1 -
- migration/migration.c            |  1 -
- migration/options.c              |  1 -
- migration/page_cache.c           |  1 -
- migration/ram.c                  |  1 -
- migration/savevm.c               |  1 -
- monitor/fds.c                    |  1 -
- monitor/hmp-cmds.c               |  1 -
- monitor/qmp-cmds.c               |  1 -
- net/filter-buffer.c              |  1 -
- net/filter.c                     |  1 -
- net/net.c                        |  1 -
- qapi/opts-visitor.c              |  1 -
- qapi/qapi-forward-visitor.c      |  1 -
- qapi/qapi-util.c                 |  1 -
- qapi/qapi-visit-core.c           |  1 -
- qapi/qobject-input-visitor.c     |  1 -
- qapi/string-input-visitor.c      |  1 -
- qga/commands-bsd.c               |  1 -
- qga/commands-posix.c             |  1 -
- qga/commands-win32.c             |  1 -
- qga/commands.c                   |  1 -
- qom/object.c                     |  1 -
- qom/object_interfaces.c          |  1 -
- qom/qom-qmp-cmds.c               |  1 -
- softmmu/balloon.c                |  1 -
- softmmu/cpus.c                   |  1 -
- softmmu/qdev-monitor.c           |  1 -
- softmmu/rtc.c                    |  1 -
- softmmu/tpm.c                    |  1 -
- softmmu/vl.c                     |  1 -
- target/arm/arm-qmp-cmds.c        |  1 -
- target/i386/cpu.c                |  1 -
- target/s390x/cpu_models_sysemu.c |  1 -
- ui/input-barrier.c               |  1 -
- ui/ui-qmp-cmds.c                 |  1 -
- util/block-helpers.c             |  1 -
- util/qemu-option.c               |  1 -
- scripts/qapi/visit.py            |  1 -
- 60 files changed, 79 deletions(-)
- delete mode 100644 include/qapi/qmp/qerror.h
+ include/qapi/qmp/qerror.h | 3 ---
+ migration/migration.c     | 2 +-
+ migration/options.c       | 4 ++--
+ migration/savevm.c        | 2 +-
+ 4 files changed, 4 insertions(+), 7 deletions(-)
 
 diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-deleted file mode 100644
-index 7606f4525d..0000000000
+index d95c4b84b9..cc4dae1076 100644
 --- a/include/qapi/qmp/qerror.h
-+++ /dev/null
-@@ -1,20 +0,0 @@
--/*
-- * QError Module
-- *
-- * Copyright (C) 2009 Red Hat Inc.
-- *
-- * Authors:
-- *  Luiz Capitulino <lcapitulino@redhat.com>
-- *
-- * This work is licensed under the terms of the GNU LGPL, version 2.1 or later.
-- * See the COPYING.LIB file in the top-level directory.
-- */
--#ifndef QERROR_H
--#define QERROR_H
++++ b/include/qapi/qmp/qerror.h
+@@ -17,9 +17,6 @@
+  * add new ones!
+  */
+ 
+-#define QERR_MIGRATION_ACTIVE \
+-    "There's a migration process in progress"
 -
--/*
-- * These macros will go away, please don't use in new code, and do not
-- * add new ones!
-- */
--
--#endif /* QERROR_H */
-diff --git a/backends/cryptodev-vhost-user.c b/backends/cryptodev-vhost-user.c
-index d93ccd5528..5a41aa7be8 100644
---- a/backends/cryptodev-vhost-user.c
-+++ b/backends/cryptodev-vhost-user.c
-@@ -23,7 +23,6 @@
+ #define QERR_MISSING_PARAMETER \
+     "Parameter '%s' is missing"
  
- #include "qemu/osdep.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/error-report.h"
- #include "hw/virtio/vhost-user.h"
- #include "standard-headers/linux/virtio_crypto.h"
-diff --git a/backends/dbus-vmstate.c b/backends/dbus-vmstate.c
-index e781ded17c..0006f8c400 100644
---- a/backends/dbus-vmstate.c
-+++ b/backends/dbus-vmstate.c
-@@ -16,7 +16,6 @@
- #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qom/object_interfaces.h"
--#include "qapi/qmp/qerror.h"
- #include "migration/vmstate.h"
- #include "trace.h"
- #include "qom/object.h"
-diff --git a/backends/rng-egd.c b/backends/rng-egd.c
-index 8f101afadc..35f19257bd 100644
---- a/backends/rng-egd.c
-+++ b/backends/rng-egd.c
-@@ -14,7 +14,6 @@
- #include "sysemu/rng.h"
- #include "chardev/char-fe.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/module.h"
- #include "qom/object.h"
- 
-diff --git a/backends/rng-random.c b/backends/rng-random.c
-index 9cb7d26cb5..a49e4a4970 100644
---- a/backends/rng-random.c
-+++ b/backends/rng-random.c
-@@ -14,7 +14,6 @@
- #include "sysemu/rng-random.h"
- #include "sysemu/rng.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/main-loop.h"
- #include "qemu/module.h"
- 
-diff --git a/block/gluster.c b/block/gluster.c
-index 8d97d698c3..91df6f1d07 100644
---- a/block/gluster.c
-+++ b/block/gluster.c
-@@ -16,7 +16,6 @@
- #include "block/qdict.h"
- #include "qapi/error.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/uri.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
-diff --git a/block/monitor/block-hmp-cmds.c b/block/monitor/block-hmp-cmds.c
-index 90e593ed38..9c3d3bedc6 100644
---- a/block/monitor/block-hmp-cmds.c
-+++ b/block/monitor/block-hmp-cmds.c
-@@ -43,7 +43,6 @@
- #include "qapi/qapi-commands-block-export.h"
- #include "qapi/qmp/qdict.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/config-file.h"
- #include "qemu/option.h"
- #include "qemu/sockets.h"
-diff --git a/block/quorum.c b/block/quorum.c
-index 8e9f279568..34ebbf4ce0 100644
---- a/block/quorum.c
-+++ b/block/quorum.c
-@@ -24,7 +24,6 @@
- #include "qapi/error.h"
- #include "qapi/qapi-events-block.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qlist.h"
- #include "qapi/qmp/qstring.h"
- #include "crypto/hash.h"
-diff --git a/block/snapshot.c b/block/snapshot.c
-index eb43e957e1..131b4bd6d0 100644
---- a/block/snapshot.c
-+++ b/block/snapshot.c
-@@ -28,7 +28,6 @@
- #include "block/qdict.h"
- #include "qapi/error.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qstring.h"
- #include "qemu/option.h"
- #include "sysemu/block-backend.h"
-diff --git a/block/vmdk.c b/block/vmdk.c
-index 6779a181f0..ed9742f9da 100644
---- a/block/vmdk.c
-+++ b/block/vmdk.c
-@@ -28,7 +28,6 @@
- #include "block/block_int.h"
- #include "sysemu/block-backend.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
- #include "qemu/option.h"
-diff --git a/blockdev.c b/blockdev.c
-index 228cebf9a2..5a76bb1498 100644
---- a/blockdev.c
-+++ b/blockdev.c
-@@ -50,7 +50,6 @@
- #include "qapi/qmp/qnum.h"
- #include "qapi/qmp/qstring.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qlist.h"
- #include "qapi/qobject-output-visitor.h"
- #include "sysemu/sysemu.h"
-diff --git a/blockjob.c b/blockjob.c
-index f95f73244e..d359ea72e5 100644
---- a/blockjob.c
-+++ b/blockjob.c
-@@ -32,7 +32,6 @@
- #include "sysemu/block-backend.h"
- #include "qapi/error.h"
- #include "qapi/qapi-events-block-core.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/main-loop.h"
- #include "qemu/timer.h"
- 
-diff --git a/chardev/char-fe.c b/chardev/char-fe.c
-index 7d33b3ccd1..ff4cee00fc 100644
---- a/chardev/char-fe.c
-+++ b/chardev/char-fe.c
-@@ -24,7 +24,6 @@
- #include "qemu/osdep.h"
- #include "qemu/error-report.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "sysemu/replay.h"
- 
- #include "chardev/char-fe.h"
-diff --git a/chardev/char.c b/chardev/char.c
-index 447b4d9d06..cc61f3a6e7 100644
---- a/chardev/char.c
-+++ b/chardev/char.c
-@@ -32,7 +32,6 @@
- #include "chardev/char.h"
- #include "qapi/error.h"
- #include "qapi/qapi-commands-char.h"
--#include "qapi/qmp/qerror.h"
- #include "sysemu/replay.h"
- #include "qemu/help_option.h"
- #include "qemu/module.h"
-diff --git a/dump/dump.c b/dump/dump.c
-index 642b952985..daa0c69305 100644
---- a/dump/dump.c
-+++ b/dump/dump.c
-@@ -23,7 +23,6 @@
- #include "qapi/error.h"
- #include "qapi/qapi-commands-dump.h"
- #include "qapi/qapi-events-dump.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/error-report.h"
- #include "qemu/main-loop.h"
- #include "hw/misc/vmcoreinfo.h"
-diff --git a/dump/win_dump.c b/dump/win_dump.c
-index 0115a609e0..1772db8530 100644
---- a/dump/win_dump.c
-+++ b/dump/win_dump.c
-@@ -12,7 +12,6 @@
- #include "sysemu/dump.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
--#include "qapi/qmp/qerror.h"
- #include "exec/cpu-defs.h"
- #include "hw/core/cpu.h"
- #include "qemu/win_dump_defs.h"
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index 7752c5fda5..ec68281b61 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -18,7 +18,6 @@
- #include "qapi/qapi-types-block.h"
- #include "qapi/qapi-types-machine.h"
- #include "qapi/qapi-types-migration.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/ctype.h"
- #include "qemu/cutils.h"
- #include "qemu/units.h"
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index 44fc1686e0..5005954b50 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -2,7 +2,6 @@
- #include "hw/qdev-properties.h"
- #include "qapi/error.h"
- #include "qapi/qapi-types-misc.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/ctype.h"
- #include "qemu/error-report.h"
- #include "qapi/visitor.h"
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 9b62e0573d..165ce95a11 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -29,7 +29,6 @@
- #include "qapi/error.h"
- #include "qapi/qapi-events-qdev.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/visitor.h"
- #include "qemu/error-report.h"
- #include "qemu/option.h"
-diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
-index 4f6ee930e2..991b2efa25 100644
---- a/hw/intc/openpic.c
-+++ b/hw/intc/openpic.c
-@@ -41,7 +41,6 @@
- #include "hw/pci/msi.h"
- #include "qapi/error.h"
- #include "qemu/bitops.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/module.h"
- #include "qemu/timer.h"
- #include "qemu/error-report.h"
-diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-index 7f063f5852..a24755c8ff 100644
---- a/hw/ppc/spapr_pci.c
-+++ b/hw/ppc/spapr_pci.c
-@@ -39,7 +39,6 @@
- #include "trace.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
--#include "qapi/qmp/qerror.h"
- #include "hw/ppc/fdt.h"
- #include "hw/pci/pci_bridge.h"
- #include "hw/pci/pci_bus.h"
-diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-index 83bfc9dc19..1147e8d018 100644
---- a/hw/usb/redirect.c
-+++ b/hw/usb/redirect.c
-@@ -32,7 +32,6 @@
- #include "qemu/timer.h"
- #include "sysemu/runstate.h"
- #include "sysemu/sysemu.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/error-report.h"
- #include "qemu/iov.h"
- #include "qemu/module.h"
 diff --git a/migration/migration.c b/migration/migration.c
-index 5703cc34ae..a6b3e83867 100644
+index b7f6818a15..5703cc34ae 100644
 --- a/migration/migration.c
 +++ b/migration/migration.c
-@@ -42,7 +42,6 @@
- #include "qapi/qapi-visit-sockets.h"
- #include "qapi/qapi-commands-migration.h"
- #include "qapi/qapi-events-migration.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qnull.h"
- #include "qemu/rcu.h"
- #include "block.h"
+@@ -1616,7 +1616,7 @@ static bool migrate_prepare(MigrationState *s, bool blk, bool blk_inc,
+     }
+ 
+     if (migration_is_running(s->state)) {
+-        error_setg(errp, QERR_MIGRATION_ACTIVE);
++        error_setg(errp, "There's a migration process in progress");
+         return false;
+     }
+ 
 diff --git a/migration/options.c b/migration/options.c
-index e363b4885f..47577f3bc5 100644
+index 3a2180b779..e363b4885f 100644
 --- a/migration/options.c
 +++ b/migration/options.c
-@@ -17,7 +17,6 @@
- #include "qapi/error.h"
- #include "qapi/qapi-commands-migration.h"
- #include "qapi/qapi-visit-migration.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qnull.h"
- #include "sysemu/runstate.h"
- #include "migration/colo.h"
-diff --git a/migration/page_cache.c b/migration/page_cache.c
-index d430ce742b..af6683c45e 100644
---- a/migration/page_cache.c
-+++ b/migration/page_cache.c
-@@ -14,7 +14,6 @@
+@@ -618,7 +618,7 @@ bool migrate_cap_set(int cap, bool value, Error **errp)
+     bool new_caps[MIGRATION_CAPABILITY__MAX];
  
- #include "qemu/osdep.h"
+     if (migration_is_running(s->state)) {
+-        error_setg(errp, QERR_MIGRATION_ACTIVE);
++        error_setg(errp, "There's a migration process in progress");
+         return false;
+     }
  
--#include "qapi/qmp/qerror.h"
- #include "qapi/error.h"
- #include "qemu/host-utils.h"
- #include "page_cache.h"
-diff --git a/migration/ram.c b/migration/ram.c
-index 0a4a0d7a0e..a5f05c5832 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -47,7 +47,6 @@
- #include "qapi/qapi-types-migration.h"
- #include "qapi/qapi-events-migration.h"
- #include "qapi/qapi-commands-migration.h"
--#include "qapi/qmp/qerror.h"
- #include "trace.h"
- #include "exec/ram_addr.h"
- #include "exec/target_page.h"
+@@ -662,7 +662,7 @@ void qmp_migrate_set_capabilities(MigrationCapabilityStatusList *params,
+     bool new_caps[MIGRATION_CAPABILITY__MAX];
+ 
+     if (migration_is_running(s->state) || migration_in_colo_state()) {
+-        error_setg(errp, QERR_MIGRATION_ACTIVE);
++        error_setg(errp, "There's a migration process in progress");
+         return;
+     }
+ 
 diff --git a/migration/savevm.c b/migration/savevm.c
-index c0e0585bc1..3c49f2dbff 100644
+index 41c7f39ef5..c0e0585bc1 100644
 --- a/migration/savevm.c
 +++ b/migration/savevm.c
-@@ -45,7 +45,6 @@
- #include "qapi/qapi-commands-migration.h"
- #include "qapi/clone-visitor.h"
- #include "qapi/qapi-builtin-visit.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/error-report.h"
- #include "sysemu/cpus.h"
- #include "exec/memory.h"
-diff --git a/monitor/fds.c b/monitor/fds.c
-index 17e9c126e3..4882db3232 100644
---- a/monitor/fds.c
-+++ b/monitor/fds.c
-@@ -26,7 +26,6 @@
- #include "monitor-internal.h"
- #include "qapi/error.h"
- #include "qapi/qapi-commands-misc.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/ctype.h"
- #include "qemu/cutils.h"
- #include "sysemu/runstate.h"
-diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-index 9d6533643d..912471f419 100644
---- a/monitor/hmp-cmds.c
-+++ b/monitor/hmp-cmds.c
-@@ -24,7 +24,6 @@
- #include "qapi/qapi-commands-control.h"
- #include "qapi/qapi-commands-misc.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/cutils.h"
- #include "hw/intc/intc.h"
- #include "qemu/log.h"
-diff --git a/monitor/qmp-cmds.c b/monitor/qmp-cmds.c
-index 2d2e71b867..c2d81b2f77 100644
---- a/monitor/qmp-cmds.c
-+++ b/monitor/qmp-cmds.c
-@@ -27,7 +27,6 @@
- #include "qapi/qapi-init-commands.h"
- #include "qapi/qapi-commands-control.h"
- #include "qapi/qapi-commands-misc.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/type-helpers.h"
- #include "hw/mem/memory-device.h"
- #include "hw/intc/intc.h"
-diff --git a/net/filter-buffer.c b/net/filter-buffer.c
-index 071029a6c7..46738415b7 100644
---- a/net/filter-buffer.c
-+++ b/net/filter-buffer.c
-@@ -13,7 +13,6 @@
- #include "qemu/timer.h"
- #include "qemu/iov.h"
- #include "qapi/qapi-builtin-visit.h"
--#include "qapi/qmp/qerror.h"
- #include "qom/object.h"
+@@ -1634,7 +1634,7 @@ static int qemu_savevm_state(QEMUFile *f, Error **errp)
+     MigrationStatus status;
  
- #define TYPE_FILTER_BUFFER "filter-buffer"
-diff --git a/net/filter.c b/net/filter.c
-index 1621513bab..8ff1eae923 100644
---- a/net/filter.c
-+++ b/net/filter.c
-@@ -8,7 +8,6 @@
+     if (migration_is_running(ms->state)) {
+-        error_setg(errp, QERR_MIGRATION_ACTIVE);
++        error_setg(errp, "There's a migration process in progress");
+         return -EINVAL;
+     }
  
- #include "qemu/osdep.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/error-report.h"
- 
- #include "net/filter.h"
-diff --git a/net/net.c b/net/net.c
-index 5cdbd9c218..fdfe4f8eb1 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -37,7 +37,6 @@
- #include "qapi/qapi-commands-net.h"
- #include "qapi/qapi-visit-net.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/error-report.h"
- #include "qemu/sockets.h"
- #include "qemu/cutils.h"
-diff --git a/qapi/opts-visitor.c b/qapi/opts-visitor.c
-index bf0d8acbd6..7b595bb00b 100644
---- a/qapi/opts-visitor.c
-+++ b/qapi/opts-visitor.c
-@@ -13,7 +13,6 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qemu/cutils.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/opts-visitor.h"
- #include "qemu/queue.h"
- #include "qemu/option_int.h"
-diff --git a/qapi/qapi-forward-visitor.c b/qapi/qapi-forward-visitor.c
-index 3fb2c954aa..613e6d0f19 100644
---- a/qapi/qapi-forward-visitor.c
-+++ b/qapi/qapi-forward-visitor.c
-@@ -17,7 +17,6 @@
- #include "qapi/qmp/qjson.h"
- #include "qapi/qmp/qbool.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qlist.h"
- #include "qapi/qmp/qnull.h"
- #include "qapi/qmp/qnum.h"
-diff --git a/qapi/qapi-util.c b/qapi/qapi-util.c
-index 82c3425566..f144ac1f70 100644
---- a/qapi/qapi-util.c
-+++ b/qapi/qapi-util.c
-@@ -14,7 +14,6 @@
- #include "qapi/compat-policy.h"
- #include "qapi/error.h"
- #include "qemu/ctype.h"
--#include "qapi/qmp/qerror.h"
- 
- CompatPolicy compat_policy;
- 
-diff --git a/qapi/qapi-visit-core.c b/qapi/qapi-visit-core.c
-index 01793d6e74..a3214fa1a1 100644
---- a/qapi/qapi-visit-core.c
-+++ b/qapi/qapi-visit-core.c
-@@ -15,7 +15,6 @@
- #include "qemu/osdep.h"
- #include "qapi/compat-policy.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/visitor.h"
- #include "qapi/visitor-impl.h"
- #include "trace.h"
-diff --git a/qapi/qobject-input-visitor.c b/qapi/qobject-input-visitor.c
-index 17e9f3b638..82b33b6b64 100644
---- a/qapi/qobject-input-visitor.c
-+++ b/qapi/qobject-input-visitor.c
-@@ -22,7 +22,6 @@
- #include "qapi/qmp/qjson.h"
- #include "qapi/qmp/qbool.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qlist.h"
- #include "qapi/qmp/qnull.h"
- #include "qapi/qmp/qnum.h"
-diff --git a/qapi/string-input-visitor.c b/qapi/string-input-visitor.c
-index 6ea6a0c676..bb1c43a6d7 100644
---- a/qapi/string-input-visitor.c
-+++ b/qapi/string-input-visitor.c
-@@ -14,7 +14,6 @@
- #include "qapi/error.h"
- #include "qapi/string-input-visitor.h"
- #include "qapi/visitor-impl.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qnull.h"
- #include "qemu/option.h"
- #include "qemu/cutils.h"
-diff --git a/qga/commands-bsd.c b/qga/commands-bsd.c
-index 11536f148f..5508bc02ab 100644
---- a/qga/commands-bsd.c
-+++ b/qga/commands-bsd.c
-@@ -12,7 +12,6 @@
- 
- #include "qemu/osdep.h"
- #include "qga-qapi-commands.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/error.h"
- #include "qemu/queue.h"
- #include "commands-common.h"
-diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index f510add366..6ea8a03e61 100644
---- a/qga/commands-posix.c
-+++ b/qga/commands-posix.c
-@@ -18,7 +18,6 @@
- #include <dirent.h>
- #include "qga-qapi-commands.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/host-utils.h"
- #include "qemu/sockets.h"
- #include "qemu/base64.h"
-diff --git a/qga/commands-win32.c b/qga/commands-win32.c
-index 5c9f8e0923..db973c2e7e 100644
---- a/qga/commands-win32.c
-+++ b/qga/commands-win32.c
-@@ -32,7 +32,6 @@
- #include "vss-win32.h"
- #include "qga-qapi-commands.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/queue.h"
- #include "qemu/host-utils.h"
- #include "qemu/base64.h"
-diff --git a/qga/commands.c b/qga/commands.c
-index 936634c50a..738d3d9da6 100644
---- a/qga/commands.c
-+++ b/qga/commands.c
-@@ -15,7 +15,6 @@
- #include "guest-agent-core.h"
- #include "qga-qapi-commands.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/base64.h"
- #include "qemu/cutils.h"
- #include "commands-common.h"
-diff --git a/qom/object.c b/qom/object.c
-index eea61a5068..66b02c0f22 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -23,7 +23,6 @@
- #include "qapi/qobject-input-visitor.h"
- #include "qapi/forward-visitor.h"
- #include "qapi/qapi-builtin-visit.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qjson.h"
- #include "trace.h"
- 
-diff --git a/qom/object_interfaces.c b/qom/object_interfaces.c
-index be04b2c5ab..391ea8561b 100644
---- a/qom/object_interfaces.c
-+++ b/qom/object_interfaces.c
-@@ -5,7 +5,6 @@
- #include "qapi/qapi-visit-qom.h"
- #include "qapi/qmp/qobject.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qjson.h"
- #include "qapi/qobject-input-visitor.h"
- #include "qapi/qobject-output-visitor.h"
-diff --git a/qom/qom-qmp-cmds.c b/qom/qom-qmp-cmds.c
-index 3d014f1bea..67ab1774eb 100644
---- a/qom/qom-qmp-cmds.c
-+++ b/qom/qom-qmp-cmds.c
-@@ -21,7 +21,6 @@
- #include "qapi/qapi-commands-qom.h"
- #include "qapi/qapi-visit-qom.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qobject-input-visitor.h"
- #include "qapi/qobject-output-visitor.h"
- #include "qemu/cutils.h"
-diff --git a/softmmu/balloon.c b/softmmu/balloon.c
-index d941c6b9c1..f2545a6e58 100644
---- a/softmmu/balloon.c
-+++ b/softmmu/balloon.c
-@@ -30,7 +30,6 @@
- #include "sysemu/balloon.h"
- #include "qapi/error.h"
- #include "qapi/qapi-commands-machine.h"
--#include "qapi/qmp/qerror.h"
- #include "trace.h"
- 
- static QEMUBalloonEvent *balloon_event_fn;
-diff --git a/softmmu/cpus.c b/softmmu/cpus.c
-index f7c743b0ce..bee6afbd6d 100644
---- a/softmmu/cpus.c
-+++ b/softmmu/cpus.c
-@@ -29,7 +29,6 @@
- #include "qapi/qapi-commands-machine.h"
- #include "qapi/qapi-commands-misc.h"
- #include "qapi/qapi-events-run-state.h"
--#include "qapi/qmp/qerror.h"
- #include "exec/gdbstub.h"
- #include "sysemu/hw_accel.h"
- #include "exec/cpu-common.h"
-diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
-index b7b2bf18d4..9d608d5d65 100644
---- a/softmmu/qdev-monitor.c
-+++ b/softmmu/qdev-monitor.c
-@@ -27,7 +27,6 @@
- #include "qapi/qapi-commands-qdev.h"
- #include "qapi/qmp/dispatch.h"
- #include "qapi/qmp/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qstring.h"
- #include "qapi/qobject-input-visitor.h"
- #include "qemu/config-file.h"
-diff --git a/softmmu/rtc.c b/softmmu/rtc.c
-index 4904581abe..dc44576686 100644
---- a/softmmu/rtc.c
-+++ b/softmmu/rtc.c
-@@ -25,7 +25,6 @@
- #include "qemu/osdep.h"
- #include "qemu/cutils.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/error-report.h"
- #include "qemu/option.h"
- #include "qemu/timer.h"
-diff --git a/softmmu/tpm.c b/softmmu/tpm.c
-index 3a7d4b5c67..aee351e896 100644
---- a/softmmu/tpm.c
-+++ b/softmmu/tpm.c
-@@ -16,7 +16,6 @@
- 
- #include "qapi/error.h"
- #include "qapi/qapi-commands-tpm.h"
--#include "qapi/qmp/qerror.h"
- #include "sysemu/tpm_backend.h"
- #include "sysemu/tpm.h"
- #include "qemu/config-file.h"
-diff --git a/softmmu/vl.c b/softmmu/vl.c
-index 840ac84069..8bfe51fce4 100644
---- a/softmmu/vl.c
-+++ b/softmmu/vl.c
-@@ -129,7 +129,6 @@
- #include "qapi/qapi-visit-qom.h"
- #include "qapi/qapi-commands-ui.h"
- #include "block/qdict.h"
--#include "qapi/qmp/qerror.h"
- #include "sysemu/iothread.h"
- #include "qemu/guest-random.h"
- #include "qemu/keyval.h"
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index 3c99fd8222..dabe89e4bc 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -28,7 +28,6 @@
- #include "qapi/qobject-input-visitor.h"
- #include "qapi/qapi-commands-machine-target.h"
- #include "qapi/qapi-commands-misc-target.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qdict.h"
- #include "qom/qom-qobject.h"
- 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 273f865228..53124f5319 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -31,7 +31,6 @@
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "qapi/qapi-visit-machine.h"
--#include "qapi/qmp/qerror.h"
- #include "standard-headers/asm-x86/kvm_para.h"
- #include "hw/qdev-properties.h"
- #include "hw/i386/topology.h"
-diff --git a/target/s390x/cpu_models_sysemu.c b/target/s390x/cpu_models_sysemu.c
-index 4507714493..4b3fd70ea1 100644
---- a/target/s390x/cpu_models_sysemu.c
-+++ b/target/s390x/cpu_models_sysemu.c
-@@ -17,7 +17,6 @@
- #include "sysemu/kvm.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
--#include "qapi/qmp/qerror.h"
- #include "qapi/qobject-input-visitor.h"
- #include "qapi/qmp/qdict.h"
- #include "qapi/qapi-commands-machine-target.h"
-diff --git a/ui/input-barrier.c b/ui/input-barrier.c
-index ecbba4adc2..8df118b440 100644
---- a/ui/input-barrier.c
-+++ b/ui/input-barrier.c
-@@ -21,7 +21,6 @@
- #include "qom/object.h"
- #include "ui/vnc_keysym.h" /* use name2keysym from VNC as we use X11 values */
- #include "qemu/cutils.h"
--#include "qapi/qmp/qerror.h"
- #include "input-barrier.h"
- 
- #define TYPE_INPUT_BARRIER "input-barrier"
-diff --git a/ui/ui-qmp-cmds.c b/ui/ui-qmp-cmds.c
-index 0e350fc333..a7ce9c1892 100644
---- a/ui/ui-qmp-cmds.c
-+++ b/ui/ui-qmp-cmds.c
-@@ -18,7 +18,6 @@
- #include "io/channel-file.h"
- #include "monitor/qmp-helpers.h"
- #include "qapi/qapi-commands-ui.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/coroutine.h"
- #include "qemu/cutils.h"
- #include "trace.h"
-diff --git a/util/block-helpers.c b/util/block-helpers.c
-index de94909bc4..85b53e30d2 100644
---- a/util/block-helpers.c
-+++ b/util/block-helpers.c
-@@ -10,7 +10,6 @@
- 
- #include "qemu/osdep.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "block-helpers.h"
- 
- /**
-diff --git a/util/qemu-option.c b/util/qemu-option.c
-index 9440224e5b..6b86792ae7 100644
---- a/util/qemu-option.c
-+++ b/util/qemu-option.c
-@@ -31,7 +31,6 @@
- #include "qapi/qmp/qdict.h"
- #include "qapi/qmp/qnum.h"
- #include "qapi/qmp/qstring.h"
--#include "qapi/qmp/qerror.h"
- #include "qemu/option_int.h"
- #include "qemu/cutils.h"
- #include "qemu/id.h"
-diff --git a/scripts/qapi/visit.py b/scripts/qapi/visit.py
-index 4b4a442383..a21b7b1468 100644
---- a/scripts/qapi/visit.py
-+++ b/scripts/qapi/visit.py
-@@ -356,7 +356,6 @@ def _begin_user_module(self, name: str) -> None:
-         self._genc.preamble_add(mcgen('''
- #include "qemu/osdep.h"
- #include "qapi/error.h"
--#include "qapi/qmp/qerror.h"
- #include "%(visit)s.h"
- ''',
-                                       visit=visit))
 -- 
 2.41.0
 

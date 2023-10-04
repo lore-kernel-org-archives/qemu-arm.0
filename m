@@ -1,307 +1,150 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2514030ejb;
-        Wed, 4 Oct 2023 02:07:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFOThan03NwSOJ+pGjUN5rX/fspK2Am5btxDCykbgMFlvXKfdt1wkyzUN2iVTafwH1fi9Nv
-X-Received: by 2002:a05:620a:2907:b0:773:c6a1:a4e0 with SMTP id m7-20020a05620a290700b00773c6a1a4e0mr1988669qkp.2.1696410438887;
-        Wed, 04 Oct 2023 02:07:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696410438; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2514727ejb;
+        Wed, 4 Oct 2023 02:08:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHFPL9woNo9xjMcyt7QN37vHU3BZ39pgrdL75ffzHYaMMMQav0f9MYQt26leq+CVq4lwSt7
+X-Received: by 2002:a17:90b:1d81:b0:274:84e4:4ef8 with SMTP id pf1-20020a17090b1d8100b0027484e44ef8mr1732646pjb.32.1696410523352;
+        Wed, 04 Oct 2023 02:08:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696410523; cv=none;
         d=google.com; s=arc-20160816;
-        b=gp7UVAPcfDOi8vjSGbgT9lpUMz3c+OijAVcQZQgHQrvQBst7ynLDomWkC+kbhPLC9N
-         HkcG6wN+hb3IPFKjMSxoEu5mNx9n/9zaSrfNxf5XgYVrJ4zeOCLXEeD1MwO4a18Es6Wm
-         yNB82NhMn3ezJHRHBJ0T4C2hS2QG7Q2xYqvTCWJR5hLmBKUpU+lcyNhh61DNFoZcx9Yt
-         Z3zUEGfxOdrZ1tz0t9bPZ9uLcw2LhW7AvWB7filKAhCymeOr+mLE5fjyyIcNE4b6uhvA
-         KhInl7vpqOpjGOqx5fX2Vcwv1QbCFXgqM48Hd8gGeapOWNbHb+tGouQps2XVg1zHinXE
-         VM1A==
+        b=aLp1qT/rWa3Diu3ij92N4uFPOUDHSvgF2i+65esQuXupvnWoZX2voIVND9CaAtJOrF
+         TiEEM/k5AAD3bxmyVi0uhQWBDWtYLkfZvqFWd/V4IGf6Qn8VXKl2HV2EkLnQi0GW5/1+
+         8I0pQghRim/1XwWiGOcSqjYw0kdSRGpMOomDIMxlz1KOT6k2HLq9IRkR49OLa563l7xz
+         HwRPHUqiRyUTvGjgXNV21hgWhUG/B/CvhlKPvC8zp0TOMhdYM78HTFAMaycotnO92XXR
+         9np88+eEjAxjNcYnIKYsmyj7uk8ZpGkJQIZUitjrxNWrc8PfbGPK/Bs6WCyuTpEM1XZc
+         pm1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=qNBSS5i6sU4lyaj8Yfkc45yB1bV/cBSP3bR/QJlwa/s=;
-        fh=6CgllM1fbvnSF0RL7ce3v2OCeAvpLM5D4zatCNKduko=;
-        b=yZ2VnmKtRbjDAl1V/NARmTj9GVSwmpJUPzWiLlPjon+IWMEZEqKe29PHfnU2dQxK9u
-         cqiUIGZVE72V04C8OIJ2tpIiLAQJzyWjFF6WhnuESbHjYi5cyDajLTHcYsaqCyC3Hs2h
-         s5QAKVM40BrLnTCk0sr4aFVRGFaFR6sRMmQVLDFdqTuPTTzX7j2ud3Vn1dz7VZ0yIMa8
-         EUULLN8ZYDCW1M5OUt0nwbfxDnWM2squaRaVDyeFexqwUpVcfWEMUr9yr2y5yzZyfSx0
-         LXx90dx9stFG4DhYPFK+uQpbEp8DtGFa1u8N1Wjvqe1fRrWpL5TvDk42foPJufhokRYA
-         n04g==
+        h=list-id:precedence:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=vfazF5twtKQ3eFwn5to3we5c0wVkZ7UGB4/AdEoPOtw=;
+        fh=2SS31IegaSPnFc1K9oZY2TcNWfkzHkadjv7+bY9Zdcs=;
+        b=IG5RFcjVxCU9UhGSMuRnsDvJpxpdPWlvGsn3gDRGwrhTPYFfs2QdEBMDuoXuOnG/2N
+         YF0BF+yGEyS7gz+F2dsKm6+V7SZfk5eXW3mvl/6p8SruhbqDiZpTKSLJGyt1AAHGwVRI
+         1hoHaUD8TsQSMfUDnzUArpI35viktAbv3IFa8br6HM8b1wWY1Vn3e3lwyV61GvPKX/4P
+         P9azPKoDdAGHOsQHByligm88OMKraJ0SeTfDF8IJsi4LIAZdniCOOs11u2yuWPKVR1Wk
+         boyPiYsizuDoVXu1n5Gonnom2H2OFeGRf08/6+JHEdmCyRPJkb4GFYe9maqU1dlCPOwb
+         nXEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aufznRQh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=k1KoiLYP;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.35 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v13-20020a05620a090d00b0076cc34b44c1si1297024qkv.292.2023.10.04.02.07.18
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 02:07:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from groat.vger.email (groat.vger.email. [23.128.96.35])
+        by mx.google.com with ESMTPS id t14-20020a17090a448e00b00277651787f1si1087787pjg.145.2023.10.04.02.08.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Oct 2023 02:08:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.35 as permitted sender) client-ip=23.128.96.35;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aufznRQh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=k1KoiLYP;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.35 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qnxqL-000068-Oe; Wed, 04 Oct 2023 05:06:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnxq6-0007jj-NE
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 05:06:43 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnxpy-0007H7-5A
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 05:06:42 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-3247d69ed2cso1866555f8f.0
- for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 02:06:33 -0700 (PDT)
+Received: from out1.vger.email (depot.vger.email [IPv6:2620:137:e000::3:0])
+	by groat.vger.email (Postfix) with ESMTP id 17DE880BF4D3;
+	Wed,  4 Oct 2023 02:08:39 -0700 (PDT)
+X-Virus-Status: Clean
+X-Virus-Scanned: clamav-milter 0.103.10 at groat.vger.email
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S241908AbjJDJHm (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Wed, 4 Oct 2023 05:07:42 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:41700 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S232881AbjJDJHb (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 4 Oct 2023 05:07:31 -0400
+Received: from mail-wr1-x42c.google.com (mail-wr1-x42c.google.com [IPv6:2a00:1450:4864:20::42c])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id AE207BF
+        for <kvm@vger.kernel.org>; Wed,  4 Oct 2023 02:07:27 -0700 (PDT)
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3231dff4343so395980f8f.0
+        for <kvm@vger.kernel.org>; Wed, 04 Oct 2023 02:07:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696410392; x=1697015192; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=qNBSS5i6sU4lyaj8Yfkc45yB1bV/cBSP3bR/QJlwa/s=;
- b=aufznRQhp6pTADROYYqbNIfDqbK4vGlwKZA57FgDKhmxzh2zL+PBjlKkDTjKNYuMic
- yp76kMoRaYZJ0hC9zlU/Lf1nmDvvXe28GNC9LR0EpX5YD7Ban5FjPFPi6NGrgqht4Aym
- 6552gg0F268MQpZrhXXd2JwdfYO7HtkCQb8zDAlY1DDbUQAGWGVmldbM4QRhyTEQX0F9
- HhQWAbB9ix5t1vBZ1+DlwkCrVwCKM7DSlYuaV3+FFlvCcX7mbvPc8qBqrYwx5tY+WY9R
- /QXmVwhgmfVfc3X4/5FA8lGny2XGI/pJeT59DfsbVCXIorg3saTgVPVQoQeuKCpB3zrc
- Mu5w==
+        d=linaro.org; s=google; t=1696410446; x=1697015246; darn=vger.kernel.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vfazF5twtKQ3eFwn5to3we5c0wVkZ7UGB4/AdEoPOtw=;
+        b=k1KoiLYPHm/cXwHDFd5JMP7vHjcaZpJW1FhYRO0vD1zqIqhUq5iWHZmd4cxGopAFcV
+         I2DJgKHfc2KytqpYBNxC2twt+jMZ0CsOkgVOYsXd7MhmHGF6lFYQ/DD9WBTKPbbqBl9y
+         +cInuWGev8gZsq7KnCkysfwdPD7nbtziTtJUfjnYbepq+p/e5Yfg7U3KJqK0wMFTZK3q
+         EBEHCFv41jK4auCZG1IsIRmapARdtYyITtZtmJ2Gy+lXv8+IkC/Lur3hT7etmJ4pgSb9
+         wiU0OM91ZaPG8WWpMXcs0OuSsp+KlbetAER+fwMFTJAWzlP9X63xjkCTWb5MO7T8C5Zt
+         V7zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696410392; x=1697015192;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=qNBSS5i6sU4lyaj8Yfkc45yB1bV/cBSP3bR/QJlwa/s=;
- b=wzqWGCx0qXSSLM6cHNeWoNQe4CRuhXtUVCRhB4RtJjrOrevW5ZLyTlbJlW5V57qlgI
- kRP875xW89QF15lz59/Lb2JxsU8Ojtx8IQfdds/BsyckQI3t5KX9q5j8RfkFJENnZdLM
- KrruwRtbGD6sNLAfoCAeLy6//pFo2H06Ch7VfWjj7sHMaGh6KskR8R1k0PVXad3KMYf/
- cNKoGWZfEtlFgW+JDqNRx/dihinPItKlZkWMGldeGe21+LT5nFAcYrtmVGAVtHrFiiuT
- 0TjlbplshJ6Jx7q2roVMbG4AR0idk+iVotoDfgnwIeiEztO8B8gvbpM7mmR3OfTcmjNv
- IJZw==
-X-Gm-Message-State: AOJu0Yyk2sft25tRt86/GOh1MsBfhnjkpkT/Kj/N+wj5CReamhXDrEaj
- eypVbo0lFNGL6f03AlUltjyKuA==
-X-Received: by 2002:a5d:460a:0:b0:321:521f:836f with SMTP id
- t10-20020a5d460a000000b00321521f836fmr1870415wrq.26.1696410392331; 
- Wed, 04 Oct 2023 02:06:32 -0700 (PDT)
-Received: from m1x-phil.lan (5ep85-h01-176-173-163-52.dslam.bbox.fr.
- [176.173.163.52]) by smtp.gmail.com with ESMTPSA id
- v10-20020adff68a000000b003197869bcd7sm3501098wrp.13.2023.10.04.02.06.31
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 02:06:31 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 00/13] misc: Rename 'softmmu' -> 'system'
-Date: Wed,  4 Oct 2023 11:06:15 +0200
-Message-ID: <20231004090629.37473-1-philmd@linaro.org>
+        d=1e100.net; s=20230601; t=1696410446; x=1697015246;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=vfazF5twtKQ3eFwn5to3we5c0wVkZ7UGB4/AdEoPOtw=;
+        b=YWQFywPYY/rHAHZzJ0jbc/kbUYNhGzLhN2vIrEm/xMOuk0hvQyaOOq/uDKGb4eA55C
+         s0310QSAwtjK0jGlpgBCl2ZzN5Hvkcbnq9EaIDN0V4zcjEkkU2gLGVwC/2aHy4ZqmGZP
+         GPMdtKiMj/xjsucLxcIG5k+DGyugmgejU/IolGSRDwzZFoV7S28nT8BiO7F+7ZLib61Q
+         gwEBBwRONNXDNpgUFFLmCJ1LeqLkGXZISM58yJBa9/lwD2Yqo5/RGgr/if/BYJdxcMo+
+         2d8Text20uqmz7IRFKryuKOcjhzsK6j5oWURTUjCYN0El2HaSVbyB6njs42DRkDpQirM
+         Wh8w==
+X-Gm-Message-State: AOJu0Ywyz3jdtH4ofxWIxwv5M1M1CA2DVskE7hvCkw/c8D89xFpXJzG0
+        4fE0Ga3bnZub1ASfcnU+muwnpQ==
+X-Received: by 2002:adf:fe0e:0:b0:319:7ec8:53ba with SMTP id n14-20020adffe0e000000b003197ec853bamr1273272wrr.14.1696410446239;
+        Wed, 04 Oct 2023 02:07:26 -0700 (PDT)
+Received: from m1x-phil.lan (5ep85-h01-176-173-163-52.dslam.bbox.fr. [176.173.163.52])
+        by smtp.gmail.com with ESMTPSA id f14-20020adff44e000000b0032318649b21sm3511716wrp.31.2023.10.04.02.07.24
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Wed, 04 Oct 2023 02:07:25 -0700 (PDT)
+From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To:     qemu-devel@nongnu.org
+Cc:     qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>,
+        qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        Marcelo Tosatti <mtosatti@redhat.com>, kvm@vger.kernel.org
+Subject: [PATCH 09/13] target/i386: Rename i386_softmmu_kvm_ss -> i386_kvm_ss
+Date:   Wed,  4 Oct 2023 11:06:24 +0200
+Message-ID: <20231004090629.37473-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231004090629.37473-1-philmd@linaro.org>
+References: <20231004090629.37473-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rc6F4nTqGS4J
+X-Spam-Status: No, score=-0.8 required=5.0 tests=DKIM_SIGNED,DKIM_VALID,
+	DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+	autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on groat.vger.email
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.6.4 (groat.vger.email [0.0.0.0]); Wed, 04 Oct 2023 02:08:39 -0700 (PDT)
+X-TUID: e74GaZDL4D2G
 
-This series finishes the cleanup which remove the confusion
-of using 'softmmu' when we really mean 'system emulation',
-as opposition to 'user emulation'.
+Software MMU is TCG specific. Here 'softmmu' is misused
+for system emulation. Anyhow, since KVM is system emulation
+specific, just rename as 'i386_kvm_ss'.
 
-Now that Richard posted its "tcg: Allow softmmu for user-only"
-series, this is particularly relevant:
-https://lore.kernel.org/qemu-devel/20231003174356.1602279-1-richard.henderson@linaro.org/
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/i386/kvm/meson.build | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-Philippe Mathieu-Daudé (13):
-  softmmu/trace-events: Fix a typo
-  travis-ci: Correct invalid mentions of 'softmmu' by 'system'
-  cpu: Correct invalid mentions of 'softmmu' by 'system-mode'
-  fuzz: Correct invalid mentions of 'softmmu' by 'system'
-  tcg: Correct invalid mentions of 'softmmu' by 'system-mode'
-  accel: Rename accel_softmmu* -> accel_system*
-  gdbstub: Rename 'softmmu' -> 'system'
-  semihosting: Rename softmmu_FOO_user() -> uaccess_FOO_user()
-  target/i386: Rename i386_softmmu_kvm_ss -> i386_kvm_ss
-  hw/virtio/meson: Rename softmmu_virtio_ss -> system_virtio_ss
-  meson: Rename softmmu_mods -> system_mods
-  meson: Rename target_softmmu_arch -> target_system_arch
-  system: Rename softmmu/ directory as system/
-
- MAINTAINERS                                   | 44 +++++++++----------
- docs/devel/build-system.rst                   |  4 +-
- docs/devel/qtest.rst                          |  2 +-
- docs/devel/testing.rst                        |  2 +-
- tests/tcg/s390x/pgm-specification.mak         |  2 +-
- meson.build                                   | 22 +++++-----
- accel/{accel-softmmu.h => accel-system.h}     |  6 +--
- gdbstub/internals.h                           |  4 +-
- include/qemu/atomic128.h                      |  4 +-
- .../{softmmu-uaccess.h => uaccess.h}          | 24 +++++-----
- include/sysemu/runstate-action.h              |  2 +-
- include/tcg/tcg-op-common.h                   |  2 +-
- softmmu/trace.h                               |  1 -
- {softmmu => system}/timers-state.h            |  0
- system/trace.h                                |  1 +
- tests/qtest/fuzz/fuzz.h                       |  4 +-
- accel/accel-common.c                          |  2 +-
- accel/{accel-softmmu.c => accel-system.c}     |  6 +--
- accel/tcg/user-exec.c                         |  2 +-
- cpu.c                                         |  2 +-
- gdbstub/{softmmu.c => system.c}               |  2 +-
- hw/core/cpu-common.c                          |  4 +-
- semihosting/arm-compat-semi.c                 |  4 +-
- semihosting/config.c                          |  2 +-
- semihosting/guestfd.c                         |  2 +-
- semihosting/syscalls.c                        |  2 +-
- semihosting/uaccess.c                         | 14 +++---
- stubs/semihost.c                              |  4 +-
- {softmmu => system}/arch_init.c               |  0
- {softmmu => system}/async-teardown.c          |  0
- {softmmu => system}/balloon.c                 |  0
- {softmmu => system}/bootdevice.c              |  0
- {softmmu => system}/cpu-throttle.c            |  0
- {softmmu => system}/cpu-timers.c              |  0
- {softmmu => system}/cpus.c                    |  0
- {softmmu => system}/datadir.c                 |  0
- {softmmu => system}/device_tree.c             |  0
- {softmmu => system}/dirtylimit.c              |  0
- {softmmu => system}/dma-helpers.c             |  0
- {softmmu => system}/globals.c                 |  0
- {softmmu => system}/icount.c                  |  0
- {softmmu => system}/ioport.c                  |  0
- {softmmu => system}/main.c                    |  0
- {softmmu => system}/memory.c                  |  2 +-
- {softmmu => system}/memory_mapping.c          |  0
- {softmmu => system}/physmem.c                 |  6 ++-
- {softmmu => system}/qdev-monitor.c            |  0
- {softmmu => system}/qemu-seccomp.c            |  0
- {softmmu => system}/qtest.c                   |  0
- {softmmu => system}/rtc.c                     |  0
- {softmmu => system}/runstate-action.c         |  0
- {softmmu => system}/runstate-hmp-cmds.c       |  0
- {softmmu => system}/runstate.c                |  0
- {softmmu => system}/tpm-hmp-cmds.c            |  0
- {softmmu => system}/tpm.c                     |  0
- {softmmu => system}/vl.c                      |  0
- {softmmu => system}/watchpoint.c              |  0
- target/m68k/m68k-semi.c                       |  2 +-
- target/mips/tcg/sysemu/mips-semi.c            |  2 +-
- target/nios2/nios2-semi.c                     |  2 +-
- target/riscv/vector_helper.c                  |  2 +-
- tcg/region.c                                  |  4 +-
- tcg/tcg.c                                     | 11 ++---
- tests/qtest/fuzz/fuzz.c                       |  2 +-
- tests/tcg/multiarch/system/memory.c           |  4 +-
- tcg/aarch64/tcg-target.c.inc                  |  4 +-
- tcg/arm/tcg-target.c.inc                      |  2 +-
- tcg/i386/tcg-target.c.inc                     |  2 +-
- tcg/loongarch64/tcg-target.c.inc              |  4 +-
- tcg/mips/tcg-target.c.inc                     |  4 +-
- tcg/ppc/tcg-target.c.inc                      |  4 +-
- tcg/riscv/tcg-target.c.inc                    |  4 +-
- tcg/s390x/tcg-target.c.inc                    |  4 +-
- tcg/sparc64/tcg-target.c.inc                  |  4 +-
- .travis.yml                                   |  4 +-
- accel/meson.build                             |  2 +-
- accel/stubs/meson.build                       | 10 ++---
- gdbstub/meson.build                           | 10 ++---
- gdbstub/trace-events                          |  2 +-
- hw/virtio/meson.build                         | 22 +++++-----
- scripts/checkpatch.pl                         |  2 +-
- scripts/coverity-scan/COMPONENTS.md           |  2 +-
- scripts/get_maintainer.pl                     |  2 +-
- {softmmu => system}/meson.build               |  0
- {softmmu => system}/trace-events              |  2 +-
- target/alpha/meson.build                      |  2 +-
- target/arm/meson.build                        |  2 +-
- target/avr/meson.build                        |  2 +-
- target/cris/meson.build                       |  2 +-
- target/hppa/meson.build                       |  2 +-
- target/i386/kvm/meson.build                   | 10 ++---
- target/i386/meson.build                       |  2 +-
- target/loongarch/meson.build                  |  2 +-
- target/m68k/meson.build                       |  2 +-
- target/microblaze/meson.build                 |  2 +-
- target/mips/meson.build                       |  2 +-
- target/nios2/meson.build                      |  2 +-
- target/openrisc/meson.build                   |  2 +-
- target/ppc/meson.build                        |  2 +-
- target/riscv/meson.build                      |  2 +-
- target/rx/meson.build                         |  2 +-
- target/s390x/meson.build                      |  2 +-
- target/sh4/meson.build                        |  2 +-
- target/sparc/meson.build                      |  2 +-
- target/tricore/meson.build                    |  2 +-
- target/xtensa/meson.build                     |  2 +-
- tcg/meson.build                               |  6 +--
- tests/tcg/Makefile.target                     |  2 +-
- tests/tcg/multiarch/gdbstub/interrupt.py      |  2 +-
- tests/tcg/multiarch/gdbstub/memory.py         |  2 +-
- tests/tcg/s390x/pgm-specification-softmmu.S   |  2 +-
- tests/tcg/s390x/softmmu.ld                    |  2 +-
- tests/tcg/xtensa/Makefile.softmmu-target      |  2 +-
- tests/tcg/xtensaeb/Makefile.softmmu-target    |  2 +-
- tests/unit/meson.build                        |  2 +-
- 115 files changed, 188 insertions(+), 181 deletions(-)
- rename accel/{accel-softmmu.h => accel-system.h} (77%)
- rename include/semihosting/{softmmu-uaccess.h => uaccess.h} (75%)
- delete mode 100644 softmmu/trace.h
- rename {softmmu => system}/timers-state.h (100%)
- create mode 100644 system/trace.h
- rename accel/{accel-softmmu.c => accel-system.c} (96%)
- rename gdbstub/{softmmu.c => system.c} (99%)
- rename {softmmu => system}/arch_init.c (100%)
- rename {softmmu => system}/async-teardown.c (100%)
- rename {softmmu => system}/balloon.c (100%)
- rename {softmmu => system}/bootdevice.c (100%)
- rename {softmmu => system}/cpu-throttle.c (100%)
- rename {softmmu => system}/cpu-timers.c (100%)
- rename {softmmu => system}/cpus.c (100%)
- rename {softmmu => system}/datadir.c (100%)
- rename {softmmu => system}/device_tree.c (100%)
- rename {softmmu => system}/dirtylimit.c (100%)
- rename {softmmu => system}/dma-helpers.c (100%)
- rename {softmmu => system}/globals.c (100%)
- rename {softmmu => system}/icount.c (100%)
- rename {softmmu => system}/ioport.c (100%)
- rename {softmmu => system}/main.c (100%)
- rename {softmmu => system}/memory.c (99%)
- rename {softmmu => system}/memory_mapping.c (100%)
- rename {softmmu => system}/physmem.c (99%)
- rename {softmmu => system}/qdev-monitor.c (100%)
- rename {softmmu => system}/qemu-seccomp.c (100%)
- rename {softmmu => system}/qtest.c (100%)
- rename {softmmu => system}/rtc.c (100%)
- rename {softmmu => system}/runstate-action.c (100%)
- rename {softmmu => system}/runstate-hmp-cmds.c (100%)
- rename {softmmu => system}/runstate.c (100%)
- rename {softmmu => system}/tpm-hmp-cmds.c (100%)
- rename {softmmu => system}/tpm.c (100%)
- rename {softmmu => system}/vl.c (100%)
- rename {softmmu => system}/watchpoint.c (100%)
- rename {softmmu => system}/meson.build (100%)
- rename {softmmu => system}/trace-events (99%)
-
+diff --git a/target/i386/kvm/meson.build b/target/i386/kvm/meson.build
+index 5d9174bbb5..84d9143e60 100644
+--- a/target/i386/kvm/meson.build
++++ b/target/i386/kvm/meson.build
+@@ -1,14 +1,14 @@
+-i386_softmmu_kvm_ss = ss.source_set()
++i386_kvm_ss = ss.source_set()
+ 
+-i386_softmmu_kvm_ss.add(files(
++i386_kvm_ss.add(files(
+   'kvm.c',
+   'kvm-cpu.c',
+ ))
+ 
+-i386_softmmu_kvm_ss.add(when: 'CONFIG_XEN_EMU', if_true: files('xen-emu.c'))
++i386_kvm_ss.add(when: 'CONFIG_XEN_EMU', if_true: files('xen-emu.c'))
+ 
+-i386_softmmu_kvm_ss.add(when: 'CONFIG_SEV', if_false: files('sev-stub.c'))
++i386_kvm_ss.add(when: 'CONFIG_SEV', if_false: files('sev-stub.c'))
+ 
+ i386_system_ss.add(when: 'CONFIG_HYPERV', if_true: files('hyperv.c'), if_false: files('hyperv-stub.c'))
+ 
+-i386_system_ss.add_all(when: 'CONFIG_KVM', if_true: i386_softmmu_kvm_ss)
++i386_system_ss.add_all(when: 'CONFIG_KVM', if_true: i386_kvm_ss)
 -- 
 2.41.0
-

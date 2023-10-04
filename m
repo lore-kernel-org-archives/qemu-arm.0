@@ -1,114 +1,134 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2515936ejb;
-        Wed, 4 Oct 2023 02:11:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHlyRTBp7hgfFlRBV4XLVPwJ3DWz2YStcBnYJStRewrLe4YZA2nmTb2p7XtZ8pQsqcSqTyH
-X-Received: by 2002:ad4:510d:0:b0:655:d6af:1c37 with SMTP id g13-20020ad4510d000000b00655d6af1c37mr1472975qvp.65.1696410670558;
-        Wed, 04 Oct 2023 02:11:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696410670; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2516338ejb;
+        Wed, 4 Oct 2023 02:11:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHmFTgOWquCGtMbI6tEGaMuK65MhTOxQeGAPK4piZTRtMieVSLvYdhEnnxmNNUtKc0caCCh
+X-Received: by 2002:ad4:41cf:0:b0:658:1ca4:97f7 with SMTP id a15-20020ad441cf000000b006581ca497f7mr1627928qvq.34.1696410717218;
+        Wed, 04 Oct 2023 02:11:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696410717; cv=none;
         d=google.com; s=arc-20160816;
-        b=vPsC1QyO11baKGb4bX/hPjLUujB4AJNQVm+L+dZxFxWsug1HThZFBlWyq+8u5Mr3WB
-         gz9H2D5WJ9y/n2HQ6aixHrrfEur/NstO9KC1Dx8AGSJyojWnRSN1WF+7hkXDgvwKX7QH
-         G8t0ddKS+9zefNn8AbL1+NKUFTTSPVzNPuheWtBdT8ZcrjMjQo1dGRXrhmj3M7nkhIzM
-         DSn5C9kAtrYcyTINXgGP4aQIUWT9KsZ/TBupXUC5F34EVzss11JJkatKtu2rJoi9COqf
-         wYAJWBDo+L0hLWC5HznR+lZRFaHuQp5SNOhkHgJs5WcxUbBbRKtuWuvn1rU8nhgYUjGm
-         jPgg==
+        b=PgO+w/3++jfn626SLDIgrSyXOnOLmnj0gs4Tl8TGRjInzKyYRaLZc7kAACAhFiLTVW
+         DjNBE1NFS+qoo+2oRljEo75cBflkQqicL2OG9O0y7f5wABqhoj+r6sxQrR878iV1v09J
+         +EFsZVJCUgWYGOqm7J9qiVHVPsG+ZwQjmEF+SFA8wwoDuReApvxWLq0bjwjX5WbMx/C5
+         W8y6GnUmgBImul+UnntK8WYWMMWvM7wI5FVVMOPmGi0uxdx29S3eaMHzd1eyVmkWQm77
+         S0Z3sdYePHqNESuaJkTPi/nfOB/ZJYsI0TVn/MQ6sYSXEyFOAt5uVI4Q+vsqG7oSkYBj
+         Q3gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=exSuT9/NnjvYPrvMnYoWAEzddFkaInk4+sF0o57vHQY=;
-        fh=yFlPw499waeCrxJycMHInryXAgEEokVhn4b89dDtF8U=;
-        b=xHMlXPYonh8/kXOpD/9Kf3bJjo68foxqgo/uhW30RJXQzHGi4yCabS2V8Zonp8cLQ8
-         Ag3itFZYg9OR7C+Vu1obP63XoDwFkNc2IkTj4eCO18NcCKk6sWL3oZgNRyUL/VKMb+yf
-         xRJwOIc4REb1DxCvkxa03FWJn8ei79tiw5IESyzEweUNoH3/LpJ8uAbZ8igYzjeUkREJ
-         SpLHDYZOqUB7aj26gfsmNUBujcMFY06iPqkcxBd/EnlE1LJc1u2K7xhDs6A4X9BAFs/U
-         sV3NtNIhDyUnhNsuAJEBp15KXGWnnKHYg94Wtq4/zgAY84+r/Ue81X4UdGTrQProZzHI
-         79ew==
+        bh=qiNXcx//OKxcNi+4uj00e9PISfa3ZvRXmQUUf+9xB68=;
+        fh=grBgcWVbZ7IvpgrIDMl5Ej6tCcXu3UT8kjgK1d3TUlA=;
+        b=Z5B/aOkUeKBAl1J72y2+1kH+Y7PlW/D6k43Tn2OUsJPWAUD0VBTnaU/rG8bp/I068S
+         DYkCHvwKiCswkpl4zSqzXMM84vf0S9kbQWNrvRNlh2gv24q45tOokLojK73Sy6CTGa3R
+         HE/W6eTL1KyE5L97xLcdeweSWpwDaroUKb2b5/Dsnz3uRHtoL9We8mzXxvoR8NuDr5wy
+         Qz4i/vgRQRCvBZEjn8owRfSZPX2kSouiNUcwJ6KEWITQS+iR7mprQfyNSKWau590b42C
+         dJ+Ym8N5XDJjurntRrXtaorrQeDGgUM6OtZcB5qp3FLA2v+QoXjY73cnbsSbdG8uxlGu
+         4HIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QFtTkXr3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=U8AJrgdI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w10-20020a05620a424a00b007757fdc429dsi1309359qko.340.2023.10.04.02.11.10
+        by mx.google.com with ESMTPS id d19-20020a0cf0d3000000b00658a46f7995si1275435qvl.253.2023.10.04.02.11.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 02:11:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Oct 2023 02:11:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QFtTkXr3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=U8AJrgdI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qnxqf-0001Qy-IK; Wed, 04 Oct 2023 05:07:17 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qnxsc-000561-Jm; Wed, 04 Oct 2023 05:09:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnxqP-0000IB-Vo
- for qemu-devel@nongnu.org; Wed, 04 Oct 2023 05:07:02 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnxrL-00036o-R2
+ for qemu-arm@nongnu.org; Wed, 04 Oct 2023 05:08:04 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnxqG-0007Na-3t
- for qemu-devel@nongnu.org; Wed, 04 Oct 2023 05:07:00 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-9b2cee55056so349660766b.3
- for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 02:06:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnxr9-0007eZ-MP
+ for qemu-arm@nongnu.org; Wed, 04 Oct 2023 05:07:57 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-40566f89f6eso19114795e9.3
+ for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 02:07:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696410409; x=1697015209; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696410466; x=1697015266; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=exSuT9/NnjvYPrvMnYoWAEzddFkaInk4+sF0o57vHQY=;
- b=QFtTkXr39MXhGql1oowRP/XgYpTTlL9cv9BKNOehi6x+T8wtXBPN4p7cUPqSyh1LRp
- LtBFtI29VRRYAfprAmQTxGP7iIbMC1QPJW3jqD1oXtPn5Eowl0RnMBR4CxJfd6ItaS56
- Z0r6IEJfhPoIU2PBWjMLgrf+ehiqAweUgjzaHlR8/u/DYCHRDVt0gmg/QeZxFfXqnMJz
- NI4TdtfJ62yDJnSdoPdxyRxYiSc6z50AQHjS8Y6odHngU76m2yryiGSTX7et93SKC6XO
- vdJj2BxEsAPKocLcY5vVBMh2RsyBlQ4B3lRQTq3HSVsHRcoWIGyVT4OlWZesgcog75dt
- l5OA==
+ bh=qiNXcx//OKxcNi+4uj00e9PISfa3ZvRXmQUUf+9xB68=;
+ b=U8AJrgdIjMJch3fl6nnqWu7QPohryxayI4n4FWPXJpyHKgoVdSkjOJx8tMv9CtI1EW
+ mLv67bPXYjT5/0cZKDSqEGuvfP1cDJZHpzgzpZGPE5FGhNccAMTAA1Igp3oByCPsZ7c9
+ ZXt4fYqqLyqqO4EEFa6Z5lKXm4fkcWSP0GaILteiFeUsMNwltp0vn4+hthx+uBLuVGNa
+ zq9vc8+jVk2kldbN1Z6e2Ag5Oqs1fmBvx4dN3cBUjG4B2pzB0rp7ogblj4t7GnvNRfEy
+ 6F8GTjzW5YLxaystFULkT1Im1/+yNZ+M6rqVr0B9uBY1p2Hn771bI0IchyCQ0esHK9TB
+ XAUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696410409; x=1697015209;
+ d=1e100.net; s=20230601; t=1696410466; x=1697015266;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=exSuT9/NnjvYPrvMnYoWAEzddFkaInk4+sF0o57vHQY=;
- b=fP9BjesFrMC8k5t1oAunwJxpWjKsTQnlGe6bB/Lc1VCLw4rWXKb3sbgrLLykSJf/c0
- QR5uC2rQhkPj4oNZiim7s9De5PGoBdnosJ1PeHOGvmO/IZ7aOBvOjpssi83SHcDy2haD
- jM2MDBAwVYdn8ulFQhh//pdZrZJmdWXh76hpqyYu/ZG1UL7wScduqjWVqBuhrAK2m6MJ
- l8MaXsWTmGU1JcA2L+jjATc3FGzksB48KCvTRMRAKMP8O/awMmAKpigRu5y18McYyvn1
- eqB9DXwWi2Pxmok5g85Rz0poi74TgzEt2BcEUaNML0tn3/gYn2AWmL3epbfxxzeelfj7
- nuWQ==
-X-Gm-Message-State: AOJu0YzgCish+qSya7HeqivhrUtMF0iTjFDUqhqwDNSCPO4QROv1+4ky
- vEV/HaXr6v3oE6WeTYABKWj3PjEJRoCSotAHZyo=
-X-Received: by 2002:a17:906:518e:b0:9ad:8a29:f26a with SMTP id
- y14-20020a170906518e00b009ad8a29f26amr1556091ejk.63.1696410409209; 
- Wed, 04 Oct 2023 02:06:49 -0700 (PDT)
+ bh=qiNXcx//OKxcNi+4uj00e9PISfa3ZvRXmQUUf+9xB68=;
+ b=Axv2QSWABsu9zAC1RrgW1PE4naZKDfdhJTLs/SXskhq7M9a3W/OdPBfm+ooYkeKogK
+ hJNy6eRE5pwv3Ryz4ad3IWJ01X3qzMkBSbuC9CtPxFKM74fcXKr/nvsTzk6eUyAHTEBw
+ ND9nlL2gb/W8wh+tAJ7MQtDViA87/xlM6zEcTwSiQTtGk1Q97m8B/rlCxoRp+BTUUshK
+ joKnudIeo44UOizQ85fLJOBShZMB66AIycoUbPSKDGSIeopsak07ykGjB/YOttzbcpmC
+ RT4TULJ6cSBOZb9JZbYO0a0e/0MDvNaWEvEh1nYrUjh05vRVu90IKADIfzRT7aSiD2EJ
+ qvrA==
+X-Gm-Message-State: AOJu0Yyb7Sd3rU+NinCHwDGtnhfmynLvp1mCPzEQFcoDPxxaKKJW725K
+ P4yhAqH459RM3qIloViIb/sQBA==
+X-Received: by 2002:a05:600c:2191:b0:405:36a0:108f with SMTP id
+ e17-20020a05600c219100b0040536a0108fmr1718805wme.41.1696410466051; 
+ Wed, 04 Oct 2023 02:07:46 -0700 (PDT)
 Received: from m1x-phil.lan (5ep85-h01-176-173-163-52.dslam.bbox.fr.
  [176.173.163.52]) by smtp.gmail.com with ESMTPSA id
- k1-20020a05600c0b4100b00405442edc69sm977268wmr.14.2023.10.04.02.06.47
+ k16-20020a5d4290000000b00325b29a6441sm3494803wrq.82.2023.10.04.02.07.42
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 02:06:48 -0700 (PDT)
+ Wed, 04 Oct 2023 02:07:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-ppc@nongnu.org,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH 03/13] cpu: Correct invalid mentions of 'softmmu' by
- 'system-mode'
-Date: Wed,  4 Oct 2023 11:06:18 +0200
-Message-ID: <20231004090629.37473-4-philmd@linaro.org>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Laurent Vivier <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>,
+ Stafford Horne <shorne@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Max Filippov <jcmvbkbc@gmail.com>
+Subject: [PATCH 12/13] meson: Rename target_softmmu_arch -> target_system_arch
+Date: Wed,  4 Oct 2023 11:06:27 +0200
+Message-ID: <20231004090629.37473-13-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231004090629.37473-1-philmd@linaro.org>
 References: <20231004090629.37473-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,55 +137,303 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0GDbPIo2jU0N
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +GHtLQuP/5mZ
+
+Finish the convertion started with commit de6cd7599b
+("meson: Replace softmmu_ss -> system_ss"). If the
+$target_type is 'system', then use the target_system_arch[]
+source set :)
+
+Mechanical change doing:
+
+  $ sed -i -e s/target_softmmu_arch/target_system_arch/g \
+      $(git grep -l target_softmmu_arch)
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- cpu.c                | 2 +-
- hw/core/cpu-common.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ docs/devel/build-system.rst   | 4 ++--
+ meson.build                   | 4 ++--
+ target/alpha/meson.build      | 2 +-
+ target/arm/meson.build        | 2 +-
+ target/avr/meson.build        | 2 +-
+ target/cris/meson.build       | 2 +-
+ target/hppa/meson.build       | 2 +-
+ target/i386/meson.build       | 2 +-
+ target/loongarch/meson.build  | 2 +-
+ target/m68k/meson.build       | 2 +-
+ target/microblaze/meson.build | 2 +-
+ target/mips/meson.build       | 2 +-
+ target/nios2/meson.build      | 2 +-
+ target/openrisc/meson.build   | 2 +-
+ target/ppc/meson.build        | 2 +-
+ target/riscv/meson.build      | 2 +-
+ target/rx/meson.build         | 2 +-
+ target/s390x/meson.build      | 2 +-
+ target/sh4/meson.build        | 2 +-
+ target/sparc/meson.build      | 2 +-
+ target/tricore/meson.build    | 2 +-
+ target/xtensa/meson.build     | 2 +-
+ 22 files changed, 24 insertions(+), 24 deletions(-)
 
-diff --git a/cpu.c b/cpu.c
-index 0769b0b153..8cb6790142 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -209,7 +209,7 @@ static Property cpu_common_props[] = {
-                      prctl_unalign_sigbus, false),
- #else
-     /*
--     * Create a memory property for softmmu CPU object, so users can
-+     * Create a memory property for system CPU object, so users can
-      * wire up its memory.  The default if no link is set up is to use
-      * the system address space.
-      */
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index ced66c2b34..f04d59c8d5 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -228,8 +228,8 @@ static void cpu_common_initfn(Object *obj)
-     cpu->cpu_index = UNASSIGNED_CPU_INDEX;
-     cpu->cluster_index = UNASSIGNED_CLUSTER_INDEX;
-     cpu->gdb_num_regs = cpu->gdb_num_g_regs = cc->gdb_num_core_regs;
--    /* *-user doesn't have configurable SMP topology */
--    /* the default value is changed by qemu_init_vcpu() for softmmu */
-+    /* user-mode doesn't have configurable SMP topology */
-+    /* the default value is changed by qemu_init_vcpu() for system-mode */
-     cpu->nr_cores = 1;
-     cpu->nr_threads = 1;
-     cpu->cflags_next_tb = -1;
+diff --git a/docs/devel/build-system.rst b/docs/devel/build-system.rst
+index 0f990bb3e9..21f78da7d1 100644
+--- a/docs/devel/build-system.rst
++++ b/docs/devel/build-system.rst
+@@ -225,14 +225,14 @@ Target-dependent emulator sourcesets:
+   The sourceset is only used for system emulators.
+ 
+   Each subdirectory in ``target/`` instead should add one sourceset to each
+-  of the ``target_arch`` and ``target_softmmu_arch``, which are used respectively
++  of the ``target_arch`` and ``target_system_arch``, which are used respectively
+   for all emulators and for system emulators only.  For example::
+ 
+     arm_ss = ss.source_set()
+     arm_system_ss = ss.source_set()
+     ...
+     target_arch += {'arm': arm_ss}
+-    target_softmmu_arch += {'arm': arm_system_ss}
++    target_system_arch += {'arm': arm_system_ss}
+ 
+ Module sourcesets:
+   There are two dictionaries for modules: ``modules`` is used for
+diff --git a/meson.build b/meson.build
+index 8890dc5748..497a85eb9f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3214,7 +3214,7 @@ modules = {}
+ target_modules = {}
+ hw_arch = {}
+ target_arch = {}
+-target_softmmu_arch = {}
++target_system_arch = {}
+ target_user_arch = {}
+ 
+ ###############
+@@ -3734,7 +3734,7 @@ foreach target : target_dirs
+   endif
+   if target.endswith('-softmmu')
+     target_type='system'
+-    t = target_softmmu_arch[target_base_arch].apply(config_target, strict: false)
++    t = target_system_arch[target_base_arch].apply(config_target, strict: false)
+     arch_srcs += t.sources()
+     arch_deps += t.dependencies()
+ 
+diff --git a/target/alpha/meson.build b/target/alpha/meson.build
+index 3f5253c002..d3502dd823 100644
+--- a/target/alpha/meson.build
++++ b/target/alpha/meson.build
+@@ -15,4 +15,4 @@ alpha_system_ss = ss.source_set()
+ alpha_system_ss.add(files('machine.c'))
+ 
+ target_arch += {'alpha': alpha_ss}
+-target_softmmu_arch += {'alpha': alpha_system_ss}
++target_system_arch += {'alpha': alpha_system_ss}
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index e645e456da..5d04a8e94f 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -35,4 +35,4 @@ else
+ endif
+ 
+ target_arch += {'arm': arm_ss}
+-target_softmmu_arch += {'arm': arm_system_ss}
++target_system_arch += {'arm': arm_system_ss}
+diff --git a/target/avr/meson.build b/target/avr/meson.build
+index a24cf6d26d..3e172bde1c 100644
+--- a/target/avr/meson.build
++++ b/target/avr/meson.build
+@@ -17,4 +17,4 @@ avr_ss.add(files(
+ avr_system_ss.add(files('machine.c'))
+ 
+ target_arch += {'avr': avr_ss}
+-target_softmmu_arch += {'avr': avr_system_ss}
++target_system_arch += {'avr': avr_system_ss}
+diff --git a/target/cris/meson.build b/target/cris/meson.build
+index 07dc3a5682..bbfcdf7f7a 100644
+--- a/target/cris/meson.build
++++ b/target/cris/meson.build
+@@ -14,4 +14,4 @@ cris_system_ss.add(files(
+ ))
+ 
+ target_arch += {'cris': cris_ss}
+-target_softmmu_arch += {'cris': cris_system_ss}
++target_system_arch += {'cris': cris_system_ss}
+diff --git a/target/hppa/meson.build b/target/hppa/meson.build
+index 59b68e82e2..f47e54f5fa 100644
+--- a/target/hppa/meson.build
++++ b/target/hppa/meson.build
+@@ -20,4 +20,4 @@ hppa_system_ss.add(files(
+ ))
+ 
+ target_arch += {'hppa': hppa_ss}
+-target_softmmu_arch += {'hppa': hppa_system_ss}
++target_system_arch += {'hppa': hppa_system_ss}
+diff --git a/target/i386/meson.build b/target/i386/meson.build
+index 6f1036d469..7c74bfa859 100644
+--- a/target/i386/meson.build
++++ b/target/i386/meson.build
+@@ -31,5 +31,5 @@ subdir('hvf')
+ subdir('tcg')
+ 
+ target_arch += {'i386': i386_ss}
+-target_softmmu_arch += {'i386': i386_system_ss}
++target_system_arch += {'i386': i386_system_ss}
+ target_user_arch += {'i386': i386_user_ss}
+diff --git a/target/loongarch/meson.build b/target/loongarch/meson.build
+index 7fbf045a5d..18e8191e2b 100644
+--- a/target/loongarch/meson.build
++++ b/target/loongarch/meson.build
+@@ -30,4 +30,4 @@ common_ss.add(when: 'CONFIG_LOONGARCH_DIS', if_true: [files('disas.c'), gen])
+ loongarch_ss.add_all(when: 'CONFIG_TCG', if_true: [loongarch_tcg_ss])
+ 
+ target_arch += {'loongarch': loongarch_ss}
+-target_softmmu_arch += {'loongarch': loongarch_system_ss}
++target_system_arch += {'loongarch': loongarch_system_ss}
+diff --git a/target/m68k/meson.build b/target/m68k/meson.build
+index 355db26c6f..8d3f9ce288 100644
+--- a/target/m68k/meson.build
++++ b/target/m68k/meson.build
+@@ -16,4 +16,4 @@ m68k_system_ss.add(files(
+ ))
+ 
+ target_arch += {'m68k': m68k_ss}
+-target_softmmu_arch += {'m68k': m68k_system_ss}
++target_system_arch += {'m68k': m68k_system_ss}
+diff --git a/target/microblaze/meson.build b/target/microblaze/meson.build
+index 50fd9ff378..3ed4fbb67a 100644
+--- a/target/microblaze/meson.build
++++ b/target/microblaze/meson.build
+@@ -17,4 +17,4 @@ microblaze_system_ss.add(files(
+ ))
+ 
+ target_arch += {'microblaze': microblaze_ss}
+-target_softmmu_arch += {'microblaze': microblaze_system_ss}
++target_system_arch += {'microblaze': microblaze_system_ss}
+diff --git a/target/mips/meson.build b/target/mips/meson.build
+index f35e8f0eca..e57ef24ecf 100644
+--- a/target/mips/meson.build
++++ b/target/mips/meson.build
+@@ -19,5 +19,5 @@ endif
+ mips_ss.add(when: 'CONFIG_KVM', if_true: files('kvm.c'))
+ 
+ target_arch += {'mips': mips_ss}
+-target_softmmu_arch += {'mips': mips_system_ss}
++target_system_arch += {'mips': mips_system_ss}
+ target_user_arch += {'mips': mips_user_ss}
+diff --git a/target/nios2/meson.build b/target/nios2/meson.build
+index 8f0f9dc628..12d8abf0bd 100644
+--- a/target/nios2/meson.build
++++ b/target/nios2/meson.build
+@@ -14,4 +14,4 @@ nios2_system_ss.add(files(
+ ))
+ 
+ target_arch += {'nios2': nios2_ss}
+-target_softmmu_arch += {'nios2': nios2_system_ss}
++target_system_arch += {'nios2': nios2_system_ss}
+diff --git a/target/openrisc/meson.build b/target/openrisc/meson.build
+index c1cd943f78..31608b6dc7 100644
+--- a/target/openrisc/meson.build
++++ b/target/openrisc/meson.build
+@@ -22,4 +22,4 @@ openrisc_system_ss.add(files(
+ ))
+ 
+ target_arch += {'openrisc': openrisc_ss}
+-target_softmmu_arch += {'openrisc': openrisc_system_ss}
++target_system_arch += {'openrisc': openrisc_system_ss}
+diff --git a/target/ppc/meson.build b/target/ppc/meson.build
+index 4c2635039e..97ceb6e7c0 100644
+--- a/target/ppc/meson.build
++++ b/target/ppc/meson.build
+@@ -55,4 +55,4 @@ ppc_system_ss.add(when: 'TARGET_PPC64', if_true: files(
+ ))
+ 
+ target_arch += {'ppc': ppc_ss}
+-target_softmmu_arch += {'ppc': ppc_system_ss}
++target_system_arch += {'ppc': ppc_system_ss}
+diff --git a/target/riscv/meson.build b/target/riscv/meson.build
+index 660078bda1..ff60b21d04 100644
+--- a/target/riscv/meson.build
++++ b/target/riscv/meson.build
+@@ -39,4 +39,4 @@ riscv_system_ss.add(files(
+ ))
+ 
+ target_arch += {'riscv': riscv_ss}
+-target_softmmu_arch += {'riscv': riscv_system_ss}
++target_system_arch += {'riscv': riscv_system_ss}
+diff --git a/target/rx/meson.build b/target/rx/meson.build
+index 8de0ad49b9..d196737ce3 100644
+--- a/target/rx/meson.build
++++ b/target/rx/meson.build
+@@ -13,4 +13,4 @@ rx_ss.add(files(
+   'disas.c'))
+ 
+ target_arch += {'rx': rx_ss}
+-target_softmmu_arch += {'rx': ss.source_set()}
++target_system_arch += {'rx': ss.source_set()}
+diff --git a/target/s390x/meson.build b/target/s390x/meson.build
+index 42ed38942a..02ca43d9f0 100644
+--- a/target/s390x/meson.build
++++ b/target/s390x/meson.build
+@@ -40,5 +40,5 @@ subdir('tcg')
+ subdir('kvm')
+ 
+ target_arch += {'s390x': s390x_ss}
+-target_softmmu_arch += {'s390x': s390x_system_ss}
++target_system_arch += {'s390x': s390x_system_ss}
+ target_user_arch += {'s390x': s390x_user_ss}
+diff --git a/target/sh4/meson.build b/target/sh4/meson.build
+index a78e9ec7e4..fe09f96684 100644
+--- a/target/sh4/meson.build
++++ b/target/sh4/meson.build
+@@ -11,4 +11,4 @@ sh4_system_ss = ss.source_set()
+ sh4_system_ss.add(files('monitor.c'))
+ 
+ target_arch += {'sh4': sh4_ss}
+-target_softmmu_arch += {'sh4': sh4_system_ss}
++target_system_arch += {'sh4': sh4_system_ss}
+diff --git a/target/sparc/meson.build b/target/sparc/meson.build
+index d32e67b287..48025cce76 100644
+--- a/target/sparc/meson.build
++++ b/target/sparc/meson.build
+@@ -20,4 +20,4 @@ sparc_system_ss.add(files(
+ ))
+ 
+ target_arch += {'sparc': sparc_ss}
+-target_softmmu_arch += {'sparc': sparc_system_ss}
++target_system_arch += {'sparc': sparc_system_ss}
+diff --git a/target/tricore/meson.build b/target/tricore/meson.build
+index 34825b6048..45f49f0128 100644
+--- a/target/tricore/meson.build
++++ b/target/tricore/meson.build
+@@ -12,4 +12,4 @@ tricore_ss.add(zlib)
+ tricore_system_ss = ss.source_set()
+ 
+ target_arch += {'tricore': tricore_ss}
+-target_softmmu_arch += {'tricore': tricore_system_ss}
++target_system_arch += {'tricore': tricore_system_ss}
+diff --git a/target/xtensa/meson.build b/target/xtensa/meson.build
+index 95692bd75f..f8d60101e3 100644
+--- a/target/xtensa/meson.build
++++ b/target/xtensa/meson.build
+@@ -24,4 +24,4 @@ xtensa_system_ss.add(files(
+ ))
+ 
+ target_arch += {'xtensa': xtensa_ss}
+-target_softmmu_arch += {'xtensa': xtensa_system_ss}
++target_system_arch += {'xtensa': xtensa_system_ss}
 -- 
 2.41.0
 

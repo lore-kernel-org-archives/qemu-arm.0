@@ -1,112 +1,128 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2822442ejb;
-        Wed, 4 Oct 2023 10:40:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHW/UuD9MuFKII5l0EH/7wmqzMa+9BdwTLKxGWaMWNaBj01lDlSIOdvCppazrlDYablWQfz
-X-Received: by 2002:a05:622a:1905:b0:418:1a5c:dcc2 with SMTP id w5-20020a05622a190500b004181a5cdcc2mr3803137qtc.19.1696441244297;
-        Wed, 04 Oct 2023 10:40:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696441244; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2822542ejb;
+        Wed, 4 Oct 2023 10:40:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHeP6RmpjJfYHJPh72eMoomMjpte4RVJ3Upk6fO/2RRQt+5xxLePIf3nYGfiCS4amixE8Oj
+X-Received: by 2002:ac8:7d4d:0:b0:418:fe4:51e5 with SMTP id h13-20020ac87d4d000000b004180fe451e5mr3505877qtb.24.1696441256570;
+        Wed, 04 Oct 2023 10:40:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696441256; cv=none;
         d=google.com; s=arc-20160816;
-        b=sGxriIBqVz64p0HgGxmg57EXoiH0itRTR5BY10WM1NZKx/jdEHYpIK9qT8iETI62pt
-         LBC++wA2C5REBBtziU8jCxeGsYEJm9/meYAxoaCEg45D+ywMSn0Jop5mFrOrbv9PCKYD
-         umv17PQ+c6xsyHzkLyVwdzEhAuT92uA2k3ffXtMiRpaKIVSs87Gi4fcjLcyc4EEKXTeo
-         hAj2r6Zrd2wPkI4regMX0sVjZOCSGG5frvYNRrH7laROAj1x0Ugk4BJVFbFhsyC5UaPB
-         qJeAYdvW4KttdN+iHR8zNFxLrC+tFJHes2kJ/o4+Zuntx+HayCEye4UrMkkz1xjNlGs0
-         UHfA==
+        b=Qu3oDTj1yR2DJfntDDHHdAB4lujWw02gcBo/Kb/DLq2bUzOt0JDy1eonUTsVjWHM4z
+         4MtD19lba5GfMS81J58EzG0lvql54mguQpc1VA7x0gt9DOO0yO0LJTm/BQcerUxJx+d0
+         HCrs5ysnk6s9K7Wy1q0o82Ej+b+oxgiHw6IoHZA5tcG+nY4TeEgTwbYhnC92jzedrJdK
+         1Q7i5dV2330QjyEHOsc03DxakQ6G6JIGdE4QTwKqFICgeYer296MXGFiANOKQ3ixgZYC
+         dgO7e0gFRpLmKQhnP9OKgVSEa6vE183d7FCgjKiENjvN/ypUnb9XQOC6qXrEGBoQH36T
+         ewWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=YgccYr5Dzt6X/tQjLL34w8Nky+uqW63WT4BtHcxYfTM=;
-        fh=ZhaZUCcm7WGibyLSkR/jQCF1bk3qqUflQHkkd6YeNho=;
-        b=BnUwbu5fQMEVnVNtdK4HOFYCd8POREIuEJpzW64HzGWK4vvfIA1nmHTyIt3MeA4uHB
-         TAgd3iL9dfP/yZri304cNesGaPXXDEoXH6UtQB1MAX0ujWEWSyXIlDts6kFdlP8Sok2y
-         i/bTYBrXHf0ZaOH3LU3sU1r0FkgL6syUnbdTSV5mpVV6MZXWOesK4LPAfb7WnmrmwgCO
-         zoy6LB2Zz3GYwv3gWqNrM9ykozYFCnONx85xVGtxZNyZu5DEP5+JPMXgHIGlzwZkDigq
-         KVA/tI0tGLTEWvtGCxA7ExGpTvFYDUeS30AkLe133o1zXa4zQew2a22IHCXUPF0OLiw4
-         0Ceg==
+        bh=oTU3cmOgWwF4B3e85DxyA+pTw6zzh/7R2AsxZx8iffs=;
+        fh=db1IxNbKfuJ8f7y4LfTOiDEX+HGZ4Z6IdTm396O3pB8=;
+        b=NVIrpNfgmibyfsmOarJ3FdJp8KrJhpA2RiTvvgWOpiDpFBad2LduX/gqmUa6mGn1RV
+         xg3ox9xtxq6/UDae3SRJhLfkfUmIpAAe0SGxemarEUg9w3lutpNBg2KeERibK4+emMti
+         W/TNy/NrIhR/2ru9cb5rtG+GncElFZ3Q4fdmqwfyK5XPa3TZaMYkqEWGPYYyMHFKSQQh
+         aTa1E21q7hW2h5GERTdcJUkIqMaNw2b1ZBEoHWb92BwsCiEMrrsEHxbHccX0q/QR30GP
+         VMpeYSYg2ICGSGT4+lc6lNvjF7g11Jbz3m+hhTRGMEjtbzxKsw6Y+5EBRcNnj82UKlbD
+         DXnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B28vahGQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ivLgSoVj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c11-20020a05622a024b00b00418142e801csi1684910qtx.485.2023.10.04.10.40.44
+        by mx.google.com with ESMTPS id b8-20020a05622a020800b0041951be6b60si1694803qtx.39.2023.10.04.10.40.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 10:40:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Oct 2023 10:40:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B28vahGQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ivLgSoVj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qo5mf-0007H8-OC; Wed, 04 Oct 2023 13:35:42 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qo5kL-0003oF-FA; Wed, 04 Oct 2023 13:33:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5lR-0005rb-DT
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 13:34:28 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5kJ-0003lg-Uc
+ for qemu-devel@nongnu.org; Wed, 04 Oct 2023 13:33:15 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5lN-0001NA-9t
- for qemu-arm@nongnu.org; Wed, 04 Oct 2023 13:34:24 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-32336a30d18so98848f8f.2
- for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 10:34:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5kH-00018Z-2n
+ for qemu-devel@nongnu.org; Wed, 04 Oct 2023 13:33:15 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-40566f89f6eso367705e9.3
+ for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 10:33:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696440857; x=1697045657; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696440791; x=1697045591; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YgccYr5Dzt6X/tQjLL34w8Nky+uqW63WT4BtHcxYfTM=;
- b=B28vahGQlyU8GcBmWGfC1IdSYJ/qmaUEVa6qF3Fg5KhacuwOUY3PQBWCXJcy9v9Syc
- xeJiP5ooRifmcQ6Iz8GSVJyREXJeqSa6Fztb/n8ixZjyknFa6Bu9ySmNM9CUTFWt7Mhv
- 9g7sOKmszhT1sRPlGZpcn8XXFdBtHKPayyxnUusVWv5IYqKS8qsuv3faBL836AI++ydt
- qA1pICwpBL9GGxOShF+0QK6QZJmpQF+oxvhUInqjqO23HcQXige3bmcn0S/FGm7I5bpb
- bTUAv+QCZ8IPtdiLRAVL6iiRIF+l5sUWhdcfE7iP9VndhA0pu8EQZh3o4WQrlcWOxQih
- vEGw==
+ bh=oTU3cmOgWwF4B3e85DxyA+pTw6zzh/7R2AsxZx8iffs=;
+ b=ivLgSoVjyzH9UO3HaN0vGn5W2OkUEK7FCmCVBDcbr5Rlu8sf7rz15tLPkeuef63CNy
+ pi3OLiD2DDBI+FrVmuwgcdoRIfwFPNFnLMvYKuPDk1byIOyQPgnlTWzEpja0zpfGQQI8
+ ONle4je+QScxAKcWoLJquv5L0BNQPzoPhI1ENmFAFzlfW6IQlFSQkCIuk0wrCLnCmvPX
+ 9J8a6rIn7oyobNLzM+IJQZEAWdrkzhKN6poHbiDW35h09e8qJkInvhUksXjqZ6zrnxB9
+ WvjkzkNumataLgxWMS3m4XaP3WvBd/QZYKPshlOZspD/txolDvhGfR6C6Y0R03LA8l81
+ 8X4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696440857; x=1697045657;
+ d=1e100.net; s=20230601; t=1696440791; x=1697045591;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=YgccYr5Dzt6X/tQjLL34w8Nky+uqW63WT4BtHcxYfTM=;
- b=wcNXSjg+330ssFFxVwI9BU881mBtZravWs2j8iG24dQxDIYNvNTbPb0WNeMoIorYuf
- 2JmHPsYOyhvL52QZlZFstS4CDNJADD7Tvf9dz4bV5U8ymvLerZYzyz6s1wWPXrMrzECq
- cheaojFgBamSVsY/YeN1O6SD6Z83MF95IZuNnjCq9BvHNcu14tmeoBrQ6cy6EQF5iKAR
- /vagRC1+jO79/0axD7wFmZssIlYKLd3gQRHAK3Ag5O7PhNzzgP6Ak8oEHpaZ1rTFpK97
- OdrIygC0daGaHcP+aIZhJdxLc7NjquTpoBqcvwMKfzuZmQ8/Ea4n7xmwqNEIQ233BOHw
- IBsw==
-X-Gm-Message-State: AOJu0YxPaYsvqLZy2mkoFqoybAm0INsr859xEjk+c6xZb3fxv/Y5CRno
- 5ne33EIpISynfLhQ8JMPgXwnaA==
-X-Received: by 2002:a5d:4564:0:b0:314:152d:f8db with SMTP id
- a4-20020a5d4564000000b00314152df8dbmr2759811wrc.58.1696440857397; 
- Wed, 04 Oct 2023 10:34:17 -0700 (PDT)
+ bh=oTU3cmOgWwF4B3e85DxyA+pTw6zzh/7R2AsxZx8iffs=;
+ b=e/GSHt9SaQnpdzaHAeYRfxhxMi00IVKx+M4wqGRn87QEYG6A/51bVkcBa47jqLLto6
+ TVonU+FGi90BjNOdGvCddONZ0M/JNxk/G6My4TdHnkyIuA1zY9sj8gqdh5qHCKeAv6YQ
+ mP2i+AcaDC/8o/TkaujQ1TxRWlseGI8HSugs/hQiG9YCcpVsi4hBoLrCFtL3zFz0FJnw
+ I+kDJcj4l7cvT6AbhM8JSAJ9Um1DxP1c/wawbTO4j0eeRtevd5JQt0Dh7YSrSABZf33W
+ QFTjzdSYTHNS2MW/t0BrE64x8Vm1Iz+iJWQK/4syi3Gi+GeY9j2ellOU7CMHdRZJvdWQ
+ V1Rw==
+X-Gm-Message-State: AOJu0YxO9ObsbxhNySSPqwx+yH0q0fyErKW+FQ4PQRFGUDt9XpJ5nsJP
+ eGD5ERGzkhQGq+VFaLxftQq3RKr8EdQRN0IiDI0=
+X-Received: by 2002:a05:600c:244:b0:401:c944:a4d6 with SMTP id
+ 4-20020a05600c024400b00401c944a4d6mr2997837wmj.28.1696440791374; 
+ Wed, 04 Oct 2023 10:33:11 -0700 (PDT)
 Received: from m1x-phil.lan (5ep85-h01-176-173-163-52.dslam.bbox.fr.
  [176.173.163.52]) by smtp.gmail.com with ESMTPSA id
- bf7-20020a0560001cc700b003140f47224csm4457730wrb.15.2023.10.04.10.34.15
+ k16-20020a05600c0b5000b00403bbe69629sm2027908wmr.31.2023.10.04.10.33.07
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 10:34:17 -0700 (PDT)
+ Wed, 04 Oct 2023 10:33:10 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ Zhenwei Pi <pizhenwei@bytedance.com>, Laurent Vivier <lvivier@redhat.com>,
+ Amit Shah <amit@kernel.org>, Alberto Garcia <berto@igalia.com>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ John Snow <jsnow@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Leonardo Bras <leobras@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Konstantin Kostiuk <kkostiuk@redhat.com>,
  Michael Roth <michael.roth@amd.com>,
- Konstantin Kostiuk <kkostiuk@redhat.com>
-Subject: [RFC PATCH 20/21] qapi: Inline and remove QERR_UNSUPPORTED definition
-Date: Wed,  4 Oct 2023 19:31:55 +0200
-Message-ID: <20231004173158.42591-21-philmd@linaro.org>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH 10/21] qapi: Inline QERR_INVALID_PARAMETER_VALUE definition
+ (constant value)
+Date: Wed,  4 Oct 2023 19:31:45 +0200
+Message-ID: <20231004173158.42591-11-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231004173158.42591-1-philmd@linaro.org>
 References: <20231004173158.42591-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,20 +131,20 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0+nU/emSVFF0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SEylhP7M3sUJ
 
 Address the comment added in commit 4629ed1e98
 ("qerror: Finally unused, clean up"), from 2015:
@@ -138,370 +154,700 @@ Address the comment added in commit 4629ed1e98
    * in new code, and do not add new ones!
    */
 
-Mechanical transformation using:
+Mechanical transformation using the following
+coccinelle semantic patch:
 
-  $ sed -i -e 's/QERR_UNSUPPORTED/"this feature or command is not currently supported"/' \
-    $(git grep -wl QERR_UNSUPPORTED)
+    @match@
+    expression errp;
+    constant param;
+    constant value;
+    @@
+         error_setg(errp, QERR_INVALID_PARAMETER_VALUE, param, value);
 
-then manually removing the definition in include/qapi/qmp/qerror.h.
+    @script:python strformat depends on match@
+    param << match.param;
+    value << match.value;
+    fixedfmt; // new var
+    @@
+    fixedfmt = "\"Parameter '%s' expects %s\"" % (param[1:-1], value[1:-1])
+    coccinelle.fixedfmt = cocci.make_ident(fixedfmt)
+
+    @replace@
+    expression match.errp;
+    constant match.param;
+    constant match.value;
+    identifier strformat.fixedfmt;
+    @@
+    -    error_setg(errp, QERR_INVALID_PARAMETER_VALUE, param, value);
+    +    error_setg(errp, fixedfmt);
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
-RFC: Not sure what is the best way to change the comment
-     in qga/qapi-schema.json...
----
- qga/qapi-schema.json      |  5 +++--
- include/qapi/qmp/qerror.h |  3 ---
- qga/commands-bsd.c        |  8 +++----
- qga/commands-posix.c      | 46 +++++++++++++++++++--------------------
- qga/commands-win32.c      | 22 +++++++++----------
- 5 files changed, 41 insertions(+), 43 deletions(-)
+ backends/cryptodev-vhost-user.c |  4 +-
+ backends/rng-egd.c              |  4 +-
+ backends/rng-random.c           |  3 +-
+ block/quorum.c                  |  3 +-
+ blockdev.c                      |  9 ++--
+ blockjob.c                      |  3 +-
+ chardev/char.c                  |  3 +-
+ hw/usb/redirect.c               |  4 +-
+ migration/migration.c           |  4 +-
+ migration/options.c             | 94 +++++++++++++--------------------
+ migration/page_cache.c          |  8 +--
+ migration/ram.c                 |  4 +-
+ monitor/fds.c                   |  8 +--
+ monitor/qmp-cmds.c              |  3 +-
+ net/filter-buffer.c             |  3 +-
+ net/filter.c                    |  7 ++-
+ net/net.c                       |  9 ++--
+ qga/commands-win32.c            |  4 +-
+ qom/object_interfaces.c         |  2 +-
+ qom/qom-qmp-cmds.c              |  7 ++-
+ softmmu/balloon.c               |  2 +-
+ softmmu/cpus.c                  |  3 +-
+ softmmu/qdev-monitor.c          | 11 ++--
+ ui/ui-qmp-cmds.c                |  2 +-
+ util/qemu-option.c              |  3 +-
+ 25 files changed, 88 insertions(+), 119 deletions(-)
 
-diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
-index b720dd4379..51683f4dc2 100644
---- a/qga/qapi-schema.json
-+++ b/qga/qapi-schema.json
-@@ -6,8 +6,9 @@
- #
- # "unsupported" is a higher-level error than the errors that
- # individual commands might document.  The caller should always be
--# prepared to receive QERR_UNSUPPORTED, even if the given command
--# doesn't specify it, or doesn't document any failure mode at all.
-+# prepared to receive the "this feature or command is not currently supported"
-+# message, even if the given command doesn't specify it, or doesn't document
-+# any failure mode at all.
- ##
+diff --git a/backends/cryptodev-vhost-user.c b/backends/cryptodev-vhost-user.c
+index c3283ba84a..d93ccd5528 100644
+--- a/backends/cryptodev-vhost-user.c
++++ b/backends/cryptodev-vhost-user.c
+@@ -136,8 +136,8 @@ cryptodev_vhost_claim_chardev(CryptoDevBackendVhostUser *s,
+     Chardev *chr;
  
- ##
-diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-index 840831cc6a..7606f4525d 100644
---- a/include/qapi/qmp/qerror.h
-+++ b/include/qapi/qmp/qerror.h
-@@ -17,7 +17,4 @@
-  * add new ones!
-  */
- 
--#define QERR_UNSUPPORTED \
--    "this feature or command is not currently supported"
--
- #endif /* QERROR_H */
-diff --git a/qga/commands-bsd.c b/qga/commands-bsd.c
-index 17bddda1cf..11536f148f 100644
---- a/qga/commands-bsd.c
-+++ b/qga/commands-bsd.c
-@@ -152,25 +152,25 @@ int qmp_guest_fsfreeze_do_thaw(Error **errp)
- 
- GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- #endif /* CONFIG_FSFREEZE */
-diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index 6169bbf7a0..f510add366 100644
---- a/qga/commands-posix.c
-+++ b/qga/commands-posix.c
-@@ -165,7 +165,7 @@ void qmp_guest_set_time(bool has_time, int64_t time_ns, Error **errp)
+     if (s->chr_name == NULL) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "chardev", "a valid character device");
++        error_setg(errp,
++                   "Parameter 'chardev' expects a valid character device");
+         return NULL;
      }
  
-     if (!hwclock_available) {
--        error_setg(errp, QERR_UNSUPPORTED);
-+        error_setg(errp, "this feature or command is not currently supported");
+diff --git a/backends/rng-egd.c b/backends/rng-egd.c
+index 684c3cf3d6..8f101afadc 100644
+--- a/backends/rng-egd.c
++++ b/backends/rng-egd.c
+@@ -90,8 +90,8 @@ static void rng_egd_opened(RngBackend *b, Error **errp)
+     Chardev *chr;
+ 
+     if (s->chr_name == NULL) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "chardev", "a valid character device");
++        error_setg(errp,
++                   "Parameter 'chardev' expects a valid character device");
          return;
      }
  
-@@ -1540,7 +1540,7 @@ GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+diff --git a/backends/rng-random.c b/backends/rng-random.c
+index 80eb5be138..9cb7d26cb5 100644
+--- a/backends/rng-random.c
++++ b/backends/rng-random.c
+@@ -72,8 +72,7 @@ static void rng_random_opened(RngBackend *b, Error **errp)
+     RngRandom *s = RNG_RANDOM(b);
  
- GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+     if (s->filename == NULL) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "filename", "a valid filename");
++        error_setg(errp, "Parameter 'filename' expects a valid filename");
+     } else {
+         s->fd = qemu_open_old(s->filename, O_RDONLY | O_NONBLOCK);
+         if (s->fd == -1) {
+diff --git a/block/quorum.c b/block/quorum.c
+index 05220cab7f..8e9f279568 100644
+--- a/block/quorum.c
++++ b/block/quorum.c
+@@ -882,8 +882,7 @@ static int quorum_valid_threshold(int threshold, int num_children, Error **errp)
  {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
  
-@@ -2235,7 +2235,7 @@ void qmp_guest_set_user_password(const char *username,
-                                  bool crypted,
-                                  Error **errp)
+     if (threshold < 1) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "vote-threshold", "a value >= 1");
++        error_setg(errp, "Parameter 'vote-threshold' expects a value >= 1");
+         return -ERANGE;
+     }
+ 
+diff --git a/blockdev.c b/blockdev.c
+index da39da457e..ed90365329 100644
+--- a/blockdev.c
++++ b/blockdev.c
+@@ -2340,7 +2340,7 @@ void coroutine_fn qmp_block_resize(const char *device, const char *node_name,
+     }
+ 
+     if (size < 0) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "size", "a >0 size");
++        error_setg(errp, "Parameter 'size' expects a >0 size");
+         return;
+     }
+ 
+@@ -2905,13 +2905,12 @@ static void blockdev_mirror_common(const char *job_id, BlockDriverState *bs,
+     }
+ 
+     if (granularity != 0 && (granularity < 512 || granularity > 1048576 * 64)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "granularity",
+-                   "a value in range [512B, 64MB]");
++        error_setg(errp,
++                   "Parameter 'granularity' expects a value in range [512B, 64MB]");
+         return;
+     }
+     if (granularity & (granularity - 1)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "granularity",
+-                   "a power of 2");
++        error_setg(errp, "Parameter 'granularity' expects a power of 2");
+         return;
+     }
+ 
+diff --git a/blockjob.c b/blockjob.c
+index 58c5d64539..f95f73244e 100644
+--- a/blockjob.c
++++ b/blockjob.c
+@@ -297,8 +297,7 @@ bool block_job_set_speed_locked(BlockJob *job, int64_t speed, Error **errp)
+         return false;
+     }
+     if (speed < 0) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "speed",
+-                   "a non-negative value");
++        error_setg(errp, "Parameter 'speed' expects a non-negative value");
+         return false;
+     }
+ 
+diff --git a/chardev/char.c b/chardev/char.c
+index 996a024c7a..447b4d9d06 100644
+--- a/chardev/char.c
++++ b/chardev/char.c
+@@ -517,8 +517,7 @@ static const ChardevClass *char_get_class(const char *driver, Error **errp)
+     }
+ 
+     if (object_class_is_abstract(oc)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+-                   "an abstract device type");
++        error_setg(errp, "Parameter 'driver' expects an abstract device type");
+         return NULL;
+     }
+ 
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index c9893df867..ac6fa34ad1 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -1435,8 +1435,8 @@ static void usbredir_realize(USBDevice *udev, Error **errp)
+                                            &dev->filter_rules,
+                                            &dev->filter_rules_count);
+         if (i) {
+-            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "filter",
+-                       "a usb device filter string");
++            error_setg(errp,
++                       "Parameter 'filter' expects a usb device filter string");
+             return;
+         }
+     }
+diff --git a/migration/migration.c b/migration/migration.c
+index 6d3cf5d5cd..b7f6818a15 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -1703,8 +1703,8 @@ void qmp_migrate(const char *uri, bool has_blk, bool blk,
+     } else if (strstart(uri, "fd:", &p)) {
+         fd_start_outgoing_migration(s, p, &local_err);
+     } else {
+-        error_setg(&local_err, QERR_INVALID_PARAMETER_VALUE, "uri",
+-                   "a valid migration protocol");
++        error_setg(&local_err,
++                   "Parameter 'uri' expects a valid migration protocol");
+         migrate_set_state(&s->state, MIGRATION_STATUS_SETUP,
+                           MIGRATION_STATUS_FAILED);
+         block_cleanup_parameters();
+diff --git a/migration/options.c b/migration/options.c
+index 1d1e1321b0..3a2180b779 100644
+--- a/migration/options.c
++++ b/migration/options.c
+@@ -1002,137 +1002,121 @@ bool migrate_params_check(MigrationParameters *params, Error **errp)
  {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- }
- #endif /* __linux__ || __FreeBSD__ */
+     if (params->has_compress_level &&
+         (params->compress_level > 9)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "compress_level",
+-                   "a value between 0 and 9");
++        error_setg(errp,
++                   "Parameter 'compress_level' expects a value between 0 and 9");
+         return false;
+     }
  
-@@ -2751,47 +2751,47 @@ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+     if (params->has_compress_threads && (params->compress_threads < 1)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "compress_threads",
+-                   "a value between 1 and 255");
++        error_setg(errp,
++                   "Parameter 'compress_threads' expects a value between 1 and 255");
+         return false;
+     }
  
- void qmp_guest_suspend_disk(Error **errp)
+     if (params->has_decompress_threads && (params->decompress_threads < 1)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "decompress_threads",
+-                   "a value between 1 and 255");
++        error_setg(errp,
++                   "Parameter 'decompress_threads' expects a value between 1 and 255");
+         return false;
+     }
+ 
+     if (params->has_throttle_trigger_threshold &&
+         (params->throttle_trigger_threshold < 1 ||
+          params->throttle_trigger_threshold > 100)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "throttle_trigger_threshold",
+-                   "an integer in the range of 1 to 100");
++        error_setg(errp,
++                   "Parameter 'throttle_trigger_threshold' expects an integer in the range of 1 to 100");
+         return false;
+     }
+ 
+     if (params->has_cpu_throttle_initial &&
+         (params->cpu_throttle_initial < 1 ||
+          params->cpu_throttle_initial > 99)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "cpu_throttle_initial",
+-                   "an integer in the range of 1 to 99");
++        error_setg(errp,
++                   "Parameter 'cpu_throttle_initial' expects an integer in the range of 1 to 99");
+         return false;
+     }
+ 
+     if (params->has_cpu_throttle_increment &&
+         (params->cpu_throttle_increment < 1 ||
+          params->cpu_throttle_increment > 99)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "cpu_throttle_increment",
+-                   "an integer in the range of 1 to 99");
++        error_setg(errp,
++                   "Parameter 'cpu_throttle_increment' expects an integer in the range of 1 to 99");
+         return false;
+     }
+ 
+     if (params->has_max_bandwidth && (params->max_bandwidth > SIZE_MAX)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "max_bandwidth",
+-                   "an integer in the range of 0 to "stringify(SIZE_MAX)
+-                   " bytes/second");
++        error_setg(errp,"Parameter 'max_bandwidth' expects an integer in the range of 0 to " stringify ( SIZE_MAX ) 
++                    " bytes/second");
+         return false;
+     }
+ 
+     if (params->has_downtime_limit &&
+         (params->downtime_limit > MAX_MIGRATE_DOWNTIME)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "downtime_limit",
+-                   "an integer in the range of 0 to "
+-                    stringify(MAX_MIGRATE_DOWNTIME)" ms");
++        error_setg(errp,
++                   "Parameter 'downtime_limit' expects an integer in the range of 0 to " stringify ( MAX_MIGRATE_DOWNTIME ) " ms");
+         return false;
+     }
+ 
+     /* x_checkpoint_delay is now always positive */
+ 
+     if (params->has_multifd_channels && (params->multifd_channels < 1)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "multifd_channels",
+-                   "a value between 1 and 255");
++        error_setg(errp,
++                   "Parameter 'multifd_channels' expects a value between 1 and 255");
+         return false;
+     }
+ 
+     if (params->has_multifd_zlib_level &&
+         (params->multifd_zlib_level > 9)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "multifd_zlib_level",
+-                   "a value between 0 and 9");
++        error_setg(errp,
++                   "Parameter 'multifd_zlib_level' expects a value between 0 and 9");
+         return false;
+     }
+ 
+     if (params->has_multifd_zstd_level &&
+         (params->multifd_zstd_level > 20)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "multifd_zstd_level",
+-                   "a value between 0 and 20");
++        error_setg(errp,
++                   "Parameter 'multifd_zstd_level' expects a value between 0 and 20");
+         return false;
+     }
+ 
+     if (params->has_xbzrle_cache_size &&
+         (params->xbzrle_cache_size < qemu_target_page_size() ||
+          !is_power_of_2(params->xbzrle_cache_size))) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "xbzrle_cache_size",
+-                   "a power of two no less than the target page size");
++        error_setg(errp,
++                   "Parameter 'xbzrle_cache_size' expects a power of two no less than the target page size");
+         return false;
+     }
+ 
+     if (params->has_max_cpu_throttle &&
+         (params->max_cpu_throttle < params->cpu_throttle_initial ||
+          params->max_cpu_throttle > 99)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "max_cpu_throttle",
+-                   "an integer in the range of cpu_throttle_initial to 99");
++        error_setg(errp,
++                   "Parameter 'max_cpu_throttle' expects an integer in the range of cpu_throttle_initial to 99");
+         return false;
+     }
+ 
+     if (params->has_announce_initial &&
+         params->announce_initial > 100000) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "announce_initial",
+-                   "a value between 0 and 100000");
++        error_setg(errp,
++                   "Parameter 'announce_initial' expects a value between 0 and 100000");
+         return false;
+     }
+     if (params->has_announce_max &&
+         params->announce_max > 100000) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "announce_max",
+-                   "a value between 0 and 100000");
++        error_setg(errp,
++                   "Parameter 'announce_max' expects a value between 0 and 100000");
+        return false;
+     }
+     if (params->has_announce_rounds &&
+         params->announce_rounds > 1000) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "announce_rounds",
+-                   "a value between 0 and 1000");
++        error_setg(errp,
++                   "Parameter 'announce_rounds' expects a value between 0 and 1000");
+        return false;
+     }
+     if (params->has_announce_step &&
+         (params->announce_step < 1 ||
+         params->announce_step > 10000)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "announce_step",
+-                   "a value between 0 and 10000");
++        error_setg(errp,
++                   "Parameter 'announce_step' expects a value between 0 and 10000");
+        return false;
+     }
+ 
+@@ -1155,17 +1139,15 @@ bool migrate_params_check(MigrationParameters *params, Error **errp)
+     if (params->has_x_vcpu_dirty_limit_period &&
+         (params->x_vcpu_dirty_limit_period < 1 ||
+          params->x_vcpu_dirty_limit_period > 1000)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "x-vcpu-dirty-limit-period",
+-                   "a value between 1 and 1000");
++        error_setg(errp,
++                   "Parameter 'x-vcpu-dirty-limit-period' expects a value between 1 and 1000");
+         return false;
+     }
+ 
+     if (params->has_vcpu_dirty_limit &&
+         (params->vcpu_dirty_limit < 1)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                   "vcpu_dirty_limit",
+-                   "is invalid, it must greater then 1 MB/s");
++        error_setg(errp,
++                   "Parameter 'vcpu_dirty_limit' expects is invalid, it must greater then 1 MB/s");
+         return false;
+     }
+ 
+diff --git a/migration/page_cache.c b/migration/page_cache.c
+index 6d4f7a9bbc..d430ce742b 100644
+--- a/migration/page_cache.c
++++ b/migration/page_cache.c
+@@ -45,15 +45,15 @@ PageCache *cache_init(uint64_t new_size, size_t page_size, Error **errp)
+     PageCache *cache;
+ 
+     if (new_size < page_size) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "cache size",
+-                   "is smaller than one target page size");
++        error_setg(errp,
++                   "Parameter 'cache size' expects is smaller than one target page size");
+         return NULL;
+     }
+ 
+     /* round down to the nearest power of 2 */
+     if (!is_power_of_2(num_pages)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "cache size",
+-                   "is not a power of two number of pages");
++        error_setg(errp,
++                   "Parameter 'cache size' expects is not a power of two number of pages");
+         return NULL;
+     }
+ 
+diff --git a/migration/ram.c b/migration/ram.c
+index e4bfd39f08..0a4a0d7a0e 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -165,8 +165,8 @@ int xbzrle_cache_resize(uint64_t new_size, Error **errp)
+ 
+     /* Check for truncation */
+     if (new_size != (size_t)new_size) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "cache size",
+-                   "exceeding address space");
++        error_setg(errp,
++                   "Parameter 'cache size' expects exceeding address space");
+         return -1;
+     }
+ 
+diff --git a/monitor/fds.c b/monitor/fds.c
+index d86c2c674c..17e9c126e3 100644
+--- a/monitor/fds.c
++++ b/monitor/fds.c
+@@ -67,8 +67,8 @@ static bool monitor_add_fd(Monitor *mon, int fd, const char *fdname, Error **err
+ 
+     if (qemu_isdigit(fdname[0])) {
+         close(fd);
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "fdname",
+-                   "a name not starting with a digit");
++        error_setg(errp,
++                   "Parameter 'fdname' expects a name not starting with a digit");
+         return false;
+     }
+ 
+@@ -353,8 +353,8 @@ AddfdInfo *monitor_fdset_add_fd(int fd, bool has_fdset_id, int64_t fdset_id,
+ 
+         if (has_fdset_id) {
+             if (fdset_id < 0) {
+-                error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "fdset-id",
+-                           "a non-negative value");
++                error_setg(errp,
++                           "Parameter 'fdset-id' expects a non-negative value");
+                 return NULL;
+             }
+             /* Use specified fdset ID */
+diff --git a/monitor/qmp-cmds.c b/monitor/qmp-cmds.c
+index b0f948d337..2d2e71b867 100644
+--- a/monitor/qmp-cmds.c
++++ b/monitor/qmp-cmds.c
+@@ -173,8 +173,7 @@ char *qmp_human_monitor_command(const char *command_line, bool has_cpu_index,
+     if (has_cpu_index) {
+         int ret = monitor_set_cpu(&hmp.common, cpu_index);
+         if (ret < 0) {
+-            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "cpu-index",
+-                       "a CPU number");
++            error_setg(errp, "Parameter 'cpu-index' expects a CPU number");
+             goto out;
+         }
+     }
+diff --git a/net/filter-buffer.c b/net/filter-buffer.c
+index 283dc9cbe6..071029a6c7 100644
+--- a/net/filter-buffer.c
++++ b/net/filter-buffer.c
+@@ -121,8 +121,7 @@ static void filter_buffer_setup(NetFilterState *nf, Error **errp)
+      * or COLO use this filter to release packets on demand.
+      */
+     if (!s->interval) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "interval",
+-                   "a non-zero interval");
++        error_setg(errp, "Parameter 'interval' expects a non-zero interval");
+         return;
+     }
+ 
+diff --git a/net/filter.c b/net/filter.c
+index 3335908771..1621513bab 100644
+--- a/net/filter.c
++++ b/net/filter.c
+@@ -232,8 +232,7 @@ static void netfilter_complete(UserCreatable *uc, Error **errp)
+                                           NET_CLIENT_DRIVER_NIC,
+                                           MAX_QUEUE_NUM);
+     if (queues < 1) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "netdev",
+-                   "a network backend id");
++        error_setg(errp, "Parameter 'netdev' expects a network backend id");
+         return;
+     } else if (queues > 1) {
+         error_setg(errp, "multiqueue is not supported");
+@@ -251,8 +250,8 @@ static void netfilter_complete(UserCreatable *uc, Error **errp)
+         char *position_id;
+ 
+         if (!g_str_has_prefix(nf->position, "id=")) {
+-            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "position",
+-                       "'head', 'tail' or 'id=<id>'");
++            error_setg(errp,
++                       "Parameter 'position' expects 'head', 'tail' or 'id=<id>'");
+             return;
+         }
+ 
+diff --git a/net/net.c b/net/net.c
+index 1c0bfdaa6c..5cdbd9c218 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -1236,8 +1236,8 @@ static int net_client_init(QemuOpts *opts, bool is_netdev, Error **errp)
+ 
+         substrings = g_strsplit(ip6_net, "/", 2);
+         if (!substrings || !substrings[0]) {
+-            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "ipv6-net",
+-                       "a valid IPv6 prefix");
++            error_setg(errp,
++                       "Parameter 'ipv6-net' expects a valid IPv6 prefix");
+             goto out;
+         }
+ 
+@@ -1247,8 +1247,7 @@ static int net_client_init(QemuOpts *opts, bool is_netdev, Error **errp)
+         if (substrings[1] &&
+             qemu_strtoul(substrings[1], NULL, 10, &prefix_len))
+         {
+-            error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+-                       "ipv6-prefixlen", "a number");
++            error_setg(errp, "Parameter 'ipv6-prefixlen' expects a number");
+             goto out;
+         }
+ 
+@@ -1283,7 +1282,7 @@ void netdev_add(QemuOpts *opts, Error **errp)
+ void qmp_netdev_add(Netdev *netdev, Error **errp)
  {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- }
+     if (!id_wellformed(netdev->id)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "id", "an identifier");
++        error_setg(errp, "Parameter 'id' expects an identifier");
+         return;
+     }
  
- void qmp_guest_suspend_ram(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- }
- 
- void qmp_guest_suspend_hybrid(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- }
- 
- GuestLogicalProcessorList *qmp_guest_get_vcpus(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- int64_t qmp_guest_set_vcpus(GuestLogicalProcessorList *vcpus, Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return -1;
- }
- 
- GuestMemoryBlockList *qmp_guest_get_memory_blocks(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestMemoryBlockResponseList *
- qmp_guest_set_memory_blocks(GuestMemoryBlockList *mem_blks, Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
-@@ -3056,7 +3056,7 @@ error:
- 
- GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
-@@ -3066,20 +3066,20 @@ GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
- 
- GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- 
-     return 0;
- }
- 
- int64_t qmp_guest_fsfreeze_freeze(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- 
-     return 0;
- }
-@@ -3088,33 +3088,33 @@ int64_t qmp_guest_fsfreeze_freeze_list(bool has_mountpoints,
-                                        strList *mountpoints,
-                                        Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- 
-     return 0;
- }
- 
- int64_t qmp_guest_fsfreeze_thaw(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- 
-     return 0;
- }
- 
- GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
-@@ -3124,7 +3124,7 @@ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
- GuestFilesystemTrimResponse *
- qmp_guest_fstrim(bool has_minimum, int64_t minimum, Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- #endif
-@@ -3243,7 +3243,7 @@ GuestUserList *qmp_guest_get_users(Error **errp)
- 
- GuestUserList *qmp_guest_get_users(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
-@@ -3386,7 +3386,7 @@ GuestOSInfo *qmp_guest_get_osinfo(Error **errp)
- 
- GuestDeviceInfoList *qmp_guest_get_devices(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- 
-     return NULL;
- }
 diff --git a/qga/commands-win32.c b/qga/commands-win32.c
-index aa8c9770d4..5c9f8e0923 100644
+index 6beae659b7..946dbafbb6 100644
 --- a/qga/commands-win32.c
 +++ b/qga/commands-win32.c
-@@ -1213,7 +1213,7 @@ GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
- GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **errp)
- {
-     if (!vss_initialized()) {
--        error_setg(errp, QERR_UNSUPPORTED);
-+        error_setg(errp, "this feature or command is not currently supported");
-         return 0;
-     }
- 
-@@ -1241,7 +1241,7 @@ int64_t qmp_guest_fsfreeze_freeze_list(bool has_mountpoints,
-     Error *local_err = NULL;
- 
-     if (!vss_initialized()) {
--        error_setg(errp, QERR_UNSUPPORTED);
-+        error_setg(errp, "this feature or command is not currently supported");
-         return 0;
-     }
- 
-@@ -1276,7 +1276,7 @@ int64_t qmp_guest_fsfreeze_thaw(Error **errp)
-     int i;
- 
-     if (!vss_initialized()) {
--        error_setg(errp, QERR_UNSUPPORTED);
-+        error_setg(errp, "this feature or command is not currently supported");
-         return 0;
-     }
- 
-@@ -1509,7 +1509,7 @@ out:
- 
- void qmp_guest_suspend_hybrid(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- }
- 
- static IP_ADAPTER_ADDRESSES *guest_get_adapters_addresses(Error **errp)
-@@ -1877,7 +1877,7 @@ GuestLogicalProcessorList *qmp_guest_get_vcpus(Error **errp)
- 
- int64_t qmp_guest_set_vcpus(GuestLogicalProcessorList *vcpus, Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return -1;
- }
- 
-@@ -1938,7 +1938,7 @@ void qmp_guest_set_user_password(const char *username,
-     GError *gerr = NULL;
- 
-     if (crypted) {
--        error_setg(errp, QERR_UNSUPPORTED);
-+        error_setg(errp, "this feature or command is not currently supported");
+@@ -328,8 +328,8 @@ void qmp_guest_shutdown(const char *mode, Error **errp)
+     } else if (strcmp(mode, "reboot") == 0) {
+         shutdown_flag |= EWX_REBOOT;
+     } else {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "mode",
+-                   "'halt', 'powerdown', or 'reboot'");
++        error_setg(errp,
++                   "Parameter 'mode' expects 'halt', 'powerdown', or 'reboot'");
          return;
      }
  
-@@ -1983,20 +1983,20 @@ done:
+diff --git a/qom/object_interfaces.c b/qom/object_interfaces.c
+index 7d31589b04..be04b2c5ab 100644
+--- a/qom/object_interfaces.c
++++ b/qom/object_interfaces.c
+@@ -84,7 +84,7 @@ Object *user_creatable_add_type(const char *type, const char *id,
+     Error *local_err = NULL;
  
- GuestMemoryBlockList *qmp_guest_get_memory_blocks(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
+     if (id != NULL && !id_wellformed(id)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "id", "an identifier");
++        error_setg(errp, "Parameter 'id' expects an identifier");
+         error_append_hint(errp, "Identifiers consist of letters, digits, "
+                           "'-', '.', '_', starting with a letter.\n");
+         return NULL;
+diff --git a/qom/qom-qmp-cmds.c b/qom/qom-qmp-cmds.c
+index 7c087299de..3d014f1bea 100644
+--- a/qom/qom-qmp-cmds.c
++++ b/qom/qom-qmp-cmds.c
+@@ -136,8 +136,8 @@ ObjectPropertyInfoList *qmp_device_list_properties(const char *typename,
+ 
+     if (!object_class_dynamic_cast(klass, TYPE_DEVICE)
+         || object_class_is_abstract(klass)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "typename",
+-                   "a non-abstract device type");
++        error_setg(errp,
++                   "Parameter 'typename' expects a non-abstract device type");
+         return NULL;
+     }
+ 
+@@ -194,8 +194,7 @@ ObjectPropertyInfoList *qmp_qom_list_properties(const char *typename,
+     }
+ 
+     if (!object_class_dynamic_cast(klass, TYPE_OBJECT)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "typename",
+-                   "a QOM type");
++        error_setg(errp, "Parameter 'typename' expects a QOM type");
+         return NULL;
+     }
+ 
+diff --git a/softmmu/balloon.c b/softmmu/balloon.c
+index e0e8969a4b..d941c6b9c1 100644
+--- a/softmmu/balloon.c
++++ b/softmmu/balloon.c
+@@ -97,7 +97,7 @@ void qmp_balloon(int64_t target, Error **errp)
+     }
+ 
+     if (target <= 0) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "target", "a size");
++        error_setg(errp, "Parameter 'target' expects a size");
+         return;
+     }
+ 
+diff --git a/softmmu/cpus.c b/softmmu/cpus.c
+index 0848e0dbdb..7fc70f9166 100644
+--- a/softmmu/cpus.c
++++ b/softmmu/cpus.c
+@@ -753,8 +753,7 @@ void qmp_memsave(int64_t addr, int64_t size, const char *filename,
+ 
+     cpu = qemu_get_cpu(cpu_index);
+     if (cpu == NULL) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "cpu-index",
+-                   "a CPU number");
++        error_setg(errp, "Parameter 'cpu-index' expects a CPU number");
+         return;
+     }
+ 
+diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
+index a964bd80df..b17aec4357 100644
+--- a/softmmu/qdev-monitor.c
++++ b/softmmu/qdev-monitor.c
+@@ -246,16 +246,15 @@ static DeviceClass *qdev_get_device_class(const char **driver, Error **errp)
+     }
+ 
+     if (object_class_is_abstract(oc)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+-                   "a non-abstract device type");
++        error_setg(errp,
++                   "Parameter 'driver' expects a non-abstract device type");
+         return NULL;
+     }
+ 
+     dc = DEVICE_CLASS(oc);
+     if (!dc->user_creatable ||
+         (phase_check(PHASE_MACHINE_READY) && !dc->hotpluggable)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+-                   "a pluggable device type");
++        error_setg(errp, "Parameter 'driver' expects a pluggable device type");
+         return NULL;
+     }
+ 
+@@ -263,8 +262,8 @@ static DeviceClass *qdev_get_device_class(const char **driver, Error **errp)
+         /* sysbus devices need to be allowed by the machine */
+         MachineClass *mc = MACHINE_CLASS(object_get_class(qdev_get_machine()));
+         if (!device_type_is_dynamic_sysbus(mc, *driver)) {
+-            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+-                       "a dynamic sysbus device type for the machine");
++            error_setg(errp,
++                       "Parameter 'driver' expects a dynamic sysbus device type for the machine");
+             return NULL;
+         }
+     }
+diff --git a/ui/ui-qmp-cmds.c b/ui/ui-qmp-cmds.c
+index 41ca0100e7..a95fd35948 100644
+--- a/ui/ui-qmp-cmds.c
++++ b/ui/ui-qmp-cmds.c
+@@ -209,7 +209,7 @@ void qmp_client_migrate_info(const char *protocol, const char *hostname,
+         return;
+     }
+ 
+-    error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "protocol", "'spice'");
++    error_setg(errp, "Parameter 'protocol' expects 'spice'");
  }
  
- GuestMemoryBlockResponseList *
- qmp_guest_set_memory_blocks(GuestMemoryBlockList *mem_blks, Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
-@@ -2522,12 +2522,12 @@ char *qga_get_host_name(Error **errp)
- 
- GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
+ #ifdef CONFIG_PNG
+diff --git a/util/qemu-option.c b/util/qemu-option.c
+index 201f7a87f3..62dd80a5ae 100644
+--- a/util/qemu-option.c
++++ b/util/qemu-option.c
+@@ -622,8 +622,7 @@ QemuOpts *qemu_opts_create(QemuOptsList *list, const char *id,
+     } else if (id) {
+         assert(fail_if_exists);
+         if (!id_wellformed(id)) {
+-            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "id",
+-                       "an identifier");
++            error_setg(errp, "Parameter 'id' expects an identifier");
+             error_append_hint(errp, "Identifiers consist of letters, digits, "
+                               "'-', '.', '_', starting with a letter.\n");
+             return NULL;
 -- 
 2.41.0
 

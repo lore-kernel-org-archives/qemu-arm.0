@@ -1,117 +1,117 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2818970ejb;
-        Wed, 4 Oct 2023 10:35:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEU9GWyl1h/l+TNUoMve5FLeZZf4LGWqYQVwjvsWW57wxTyDaWT8ZPgf0qCJeDWc14fKImU
-X-Received: by 2002:a05:620a:847:b0:76f:582:b080 with SMTP id u7-20020a05620a084700b0076f0582b080mr2933019qku.71.1696440956511;
-        Wed, 04 Oct 2023 10:35:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696440956; cv=none;
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2819132ejb;
+        Wed, 4 Oct 2023 10:36:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE0hiqkX4tg7la3uVNzNNH1rRs8MxzA0nobNNC8BqOtlwFKLThxJSOY7xEjcuwZ0PxmPvhx
+X-Received: by 2002:a05:620a:4ae3:b0:76c:e0c5:2f6c with SMTP id sq35-20020a05620a4ae300b0076ce0c52f6cmr2751305qkn.38.1696440975130;
+        Wed, 04 Oct 2023 10:36:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696440975; cv=none;
         d=google.com; s=arc-20160816;
-        b=lqNtQYFprtRt8PQGpomE+UiA4fnfe5wh2bDgUyH0bad7TdBlEbdEo4/lcrvXQSl2Xf
-         VKrmmvHcsUOoM9t649qL8rv8UJ2em06u4sIISwOHZab/vFfooVa8Rvo1J4Td+MDM9C9G
-         /akU23VJ3hH/ldkXW0DjjnNXehD0e+tUSeeyV3o+XBomHcaHo8LYxWEZafOvmU7YYc22
-         F1eUlK1Qj2+REQ6Z+D86c5V4D4E2JnuXaFuzCxU/lbREBuha1M/uSbv4OvmScMBX/jrN
-         1JAo39dGLwHVvrErjjMMe280V9CTN8sURHlJ5sKRhia9ZBfrGKloHtBEPqXa2suDZZus
-         UDOw==
+        b=iewpoglBo6oT52QRroUNwNkHtiTwLfoDw7gPVJ9VA01NETN2Gs6fEfx2M79tARCeSq
+         PEZUB9gKAClHe2/gCw/U2GBsubCoxR475qLjEa+8DazXJH/b9hc3wsu5YRSB+vz7nrpm
+         j4XK9KGsbM1lW9xI9kgyEbqxi9w8iJIf5z+e6H9CgRdHtaKYMxzMWuHZzMyv5LB4uMbt
+         Np6tuR1vhenTpO5G3c48u0fZyegtt1m/cgNPsJa1e434qilogcijLzGRjMBM4YBwwkeB
+         Sdln/lan7xxGT1I2QxNiqraE7qIoHEp96MMNsYPW4JXUbBpcsCjM5i6WuPNALbWdrDZD
+         CanQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=LgqEreWct7MZtVTd4L58i3yyOMJt49ibdnNqLW0cY8Q=;
-        fh=+uWKzzJCvi5I0BM5z5mDOUwDn5At75BvoyAVsRP2thw=;
-        b=trp0mjizYRTDBfVuEZT6AGvyDsHqrtWXgmOkX2bOdndYCy5YHsUxFR4l5CLzzeq5hc
-         skrOjKIAjJY0cwB0RazZBE2SKI7tdgrL91cejJbLm6fV5K9nV5ZrxRDLLEzU+gay+5CL
-         k05guMJuZhXsA3nj2H47oHno33P0hbox1pYHMsAOHJADh7LZOwOyQPXtXM4X7u6Kv5kP
-         IXA33IqI9D3ts/JClVlQR+tgyFLTEocHZHh/LitdVlN4xECHByVLP4dHLGHhD8NM/AWT
-         t46s9kyNeNkogPMQiUEECdHrvRSV7vrE2QOuj1RTVtr1kLZNjXxNgIp33PFUjZKnq+VQ
-         PVxg==
+        bh=kOY6u6B9/Vt1ZpzeRPPPARZ8tvwMbrjh+qtuhF8OwAQ=;
+        fh=9el7zTdEdJxsoyYMF+nW4FC9lfAbjw9A2prRGABmDOM=;
+        b=1FcwVVYrmUIJat61xZUIcBSnO0lL/m5Wk0fjQ3HNdJcQqCtqiTtlbWO6MQ6DgRypBP
+         fuvRMF+ZqEE0U4THGszzFWogtdvpCov9Tjpxqzyrnv8nvdPYV+iZltBZfq8xXJlmkC6+
+         zXXGMqQXGCLnuwRpgPwBE8hjaBbuI/GsMh8byqknqe3MjeiK6MLc8Pg81d8NpUw5U318
+         R+JNaT2AfI6SB88+AFgIkKiQ4A8Xp3C7xb4Of22XSkD7pffXa8KpfnjRTAQ+CE8rZxGp
+         4G/JyHnCY9AXEPHFKhSeV5CIH+Tv8Mb6ulMpJrwZB3Rxgt7DDt1xKy2iJ6dMB+jVVAqu
+         u0Nw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Txvwlx9j;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ec8Kag8K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d22-20020ac85ad6000000b00417b6e630f2si1671369qtd.274.2023.10.04.10.35.56
+        by mx.google.com with ESMTPS id n9-20020a05620a294900b00775d031a209si517430qkp.580.2023.10.04.10.36.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 10:35:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Oct 2023 10:36:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Txvwlx9j;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ec8Kag8K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qo5kt-0004pj-7n; Wed, 04 Oct 2023 13:33:51 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qo5kw-00052h-8u; Wed, 04 Oct 2023 13:33:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5ke-0004NJ-VW
- for qemu-devel@nongnu.org; Wed, 04 Oct 2023 13:33:40 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5ks-0004jy-1q
+ for qemu-arm@nongnu.org; Wed, 04 Oct 2023 13:33:50 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5kb-0001Cy-QR
- for qemu-devel@nongnu.org; Wed, 04 Oct 2023 13:33:36 -0400
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-32483535e51so128581f8f.0
- for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 10:33:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qo5kp-0001FE-PK
+ for qemu-arm@nongnu.org; Wed, 04 Oct 2023 13:33:49 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-32487efc319so122254f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 10:33:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696440812; x=1697045612; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696440825; x=1697045625; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LgqEreWct7MZtVTd4L58i3yyOMJt49ibdnNqLW0cY8Q=;
- b=Txvwlx9jeGOgKHmiXK+GB0yEn+uSjmx0BuJHdvT33FsNUWXSY5ky+YGobL8JoSw4oD
- vIc9MGrXiTyBjBv85kOC68nb3+0jZcDXFSKlQ305SpDjnc9w8gEYc+I+wiX9yh3+0edf
- 626Jq36WmumxIzcyfpLj05xEP43s0XEQ3oP5ZddBkE88dpwwS1V17t6Wa7P0gwluWb6P
- h4yQifK6hv/NghHNTSisK2Ggrsp6VWI7DNlDLZ51FMM/OmLDORsiK6LFrkJ6rwi4FuWn
- Yzhd980djhz4kxUghV9S4pLzlVMtn6O0EGrfAnfJRkW+u2JbQROp3ycLDi3yWEeFeK6P
- euig==
+ bh=kOY6u6B9/Vt1ZpzeRPPPARZ8tvwMbrjh+qtuhF8OwAQ=;
+ b=Ec8Kag8KmIdAH0iLM8Os826bpXmebXegnIwNZ1B6VIOzgadUXxA/mDMhYFe7kuDeqR
+ +aurfJKSiGZEGh0+9a25tgN3La4u2/6G6z95CHRukXvG0rodG64cF1M+vimypHuZAYPo
+ xqelOifjPSLerv1WHBBWGjXW5KLgRcK2bsP08JeEkbXP0kIpgjKeZ6vF1I9F0c3GURWj
+ ZkKTBdHPP1pryjZGkpkdo0V++KBBlex50rCzRgRPYvcYGv7iBFXZo/XINLUZiWj/eKRB
+ nEpn/jTPhIrRuFUSKmN3U8Lu/8lSZinGwUSGxaFO0/QEr7B3BdtnxF5TFOL6MxhJPC1R
+ ndng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696440812; x=1697045612;
+ d=1e100.net; s=20230601; t=1696440825; x=1697045625;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LgqEreWct7MZtVTd4L58i3yyOMJt49ibdnNqLW0cY8Q=;
- b=A/9b7HujtV4UmddhhvK3qrRh6X8FKvQQe7iWKbffajUV/tR/WGNWBwHo05K41JvVdo
- n4+uZ/8XJEhWOsGbZINmKVOBKwT9cPbj4gG9Xo7vCzTBjZoycQkxEISqXMIrn5cKD4ac
- qCTtpUqvHcLnXwAyirCrCagcKkm5A1kQ9BbQ1DrGv48j8ISgzCI4nlz6bdn+hULINT1Z
- guZWASqCBW6GVV2BP3j3hqBebfT3OCJ/n75BBql2xA02u8DCD+jktNLACWbCqwgsvk6E
- O8jRbIZQ5WzSfdGiwMKLfquTCgeg0Z3DEPL31+rB97+8S3F1HB8XOtrwZf6M8BKwXHeC
- qQYA==
-X-Gm-Message-State: AOJu0YwPuBAiUjqWTyoiQfJpQApZimhrP5QFEdPXbTV+bzXOdbd+Q/4R
- tQ2s7eHp6gYzLojTH3fzVKxHKdC/vtTF6gYaZRs=
-X-Received: by 2002:a5d:4d43:0:b0:31c:6420:fff with SMTP id
- a3-20020a5d4d43000000b0031c64200fffmr2622991wru.62.1696440811915; 
- Wed, 04 Oct 2023 10:33:31 -0700 (PDT)
+ bh=kOY6u6B9/Vt1ZpzeRPPPARZ8tvwMbrjh+qtuhF8OwAQ=;
+ b=pA3bWCuPqhbZTfjaWc1FIDAcl2BA9UsmoMjPzZWxohgyxvRKl0XzPoD4oFDtn7WgcD
+ p8IyYw9Sfw5dQLsmg7YzX9XFgbW+FXGS2+XFwgF4XlVarbUrI52xuN5j8CNDP/AtjcaG
+ wpDIYDjXVvrWcAmRFB7aduvNz5tmana5EiNhiHfjfZBZXPD0X31IF9uz246gXvjkbSZh
+ 3wnWv3+m0hxdGwN24XeHeeSdY1Coa3uWF1VGPEHZEU1ePLgJzq7KpMdQMDk8PZGz9Zm4
+ VrZ8UOwom9yFo3d0RZlZAHbBa+o/VyvY8mfPd0jR+qprdpHw39h1Y6gMzg3Jxvr8zZzi
+ AXUw==
+X-Gm-Message-State: AOJu0YxrBHvy37Tt5k+BYkCtQy7znTI9DkpYP4l8kV4HUhWbzr/3/Cqv
+ LXEFmkqbVQ9E6lT4QW76zMRoYA==
+X-Received: by 2002:a5d:56d0:0:b0:31c:5c77:48ec with SMTP id
+ m16-20020a5d56d0000000b0031c5c7748ecmr2553733wrw.62.1696440825381; 
+ Wed, 04 Oct 2023 10:33:45 -0700 (PDT)
 Received: from m1x-phil.lan (5ep85-h01-176-173-163-52.dslam.bbox.fr.
  [176.173.163.52]) by smtp.gmail.com with ESMTPSA id
- p9-20020adfcc89000000b00326028b4dd5sm4471194wrj.113.2023.10.04.10.33.29
+ m7-20020adff387000000b0032710f5584fsm4469894wro.25.2023.10.04.10.33.43
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 10:33:31 -0700 (PDT)
+ Wed, 04 Oct 2023 10:33:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Fam Zheng <fam@euphon.net>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Peter Xu <peterx@redhat.com>,
- Leonardo Bras <leobras@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 13/21] qapi: Inline and remove QERR_IO_ERROR definition
-Date: Wed,  4 Oct 2023 19:31:48 +0200
-Message-ID: <20231004173158.42591-14-philmd@linaro.org>
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, integration@gluster.org
+Subject: [PATCH 15/21] qapi: Inline QERR_MISSING_PARAMETER definition
+ (constant parameter)
+Date: Wed,  4 Oct 2023 19:31:50 +0200
+Message-ID: <20231004173158.42591-16-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231004173158.42591-1-philmd@linaro.org>
 References: <20231004173158.42591-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,20 +120,20 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1CmglCidNQUr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 11dFK7i4GieR
 
 Address the comment added in commit 4629ed1e98
 ("qerror: Finally unused, clean up"), from 2015:
@@ -143,153 +143,294 @@ Address the comment added in commit 4629ed1e98
    * in new code, and do not add new ones!
    */
 
-Mechanical transformation using:
+Mechanical transformation using the following
+coccinelle semantic patches:
 
-  $ sed -i -e 's/QERR_IO_ERROR/"An IO error has occurred"/' \
-    $(git grep -wl QERR_IO_ERROR)
+    @match@
+    expression errp;
+    constant param;
+    @@
+         error_setg(errp, QERR_MISSING_PARAMETER, param);
 
-then manually removing the definition in include/qapi/qmp/qerror.h.
+    @script:python strformat depends on match@
+    param << match.param;
+    fixedfmt; // new var
+    @@
+    if param[0] == '"': # Format skipping '"',
+        fixedfmt = f'"Parameter \'{param[1:-1]}\' is missing"'
+    else: # or use definition.
+        fixedfmt = f'"Parameter " {param} " is missing"'
+    coccinelle.fixedfmt = cocci.make_ident(fixedfmt)
+
+    @replace@
+    expression match.errp;
+    constant match.param;
+    identifier strformat.fixedfmt;
+    @@
+    -    error_setg(errp, QERR_MISSING_PARAMETER, param);
+    +    error_setg(errp, fixedfmt);
+
+and:
+
+    @match@
+    constant param;
+    @@
+         error_report(QERR_MISSING_PARAMETER, param);
+
+    @script:python strformat depends on match@
+    param << match.param;
+    fixedfmt; // new var
+    @@
+    fixedfmt = f'"Parameter \'{param[1:-1]}\' is missing"'
+    coccinelle.fixedfmt = cocci.make_ident(fixedfmt)
+
+    @replace@
+    constant match.param;
+    identifier strformat.fixedfmt;
+    @@
+    -    error_report(QERR_MISSING_PARAMETER, param);
+    +    error_report(fixedfmt);
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/qapi/qmp/qerror.h | 3 ---
- block/vmdk.c              | 8 ++++----
- blockdev.c                | 2 +-
- dump/win_dump.c           | 4 ++--
- migration/savevm.c        | 4 ++--
- softmmu/cpus.c            | 4 ++--
- 6 files changed, 11 insertions(+), 14 deletions(-)
+ backends/dbus-vmstate.c        |  2 +-
+ block/gluster.c                | 21 +++++++++++----------
+ block/monitor/block-hmp-cmds.c |  6 +++---
+ dump/dump.c                    |  4 ++--
+ hw/usb/redirect.c              |  2 +-
+ softmmu/qdev-monitor.c         |  2 +-
+ softmmu/tpm.c                  |  4 ++--
+ softmmu/vl.c                   |  4 ++--
+ ui/input-barrier.c             |  2 +-
+ ui/ui-qmp-cmds.c               |  2 +-
+ 10 files changed, 25 insertions(+), 24 deletions(-)
 
-diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-index ac727d1c2d..d95c4b84b9 100644
---- a/include/qapi/qmp/qerror.h
-+++ b/include/qapi/qmp/qerror.h
-@@ -17,9 +17,6 @@
-  * add new ones!
-  */
- 
--#define QERR_IO_ERROR \
--    "An IO error has occurred"
--
- #define QERR_MIGRATION_ACTIVE \
-     "There's a migration process in progress"
- 
-diff --git a/block/vmdk.c b/block/vmdk.c
-index e90649c8bf..6779a181f0 100644
---- a/block/vmdk.c
-+++ b/block/vmdk.c
-@@ -2246,12 +2246,12 @@ vmdk_init_extent(BlockBackend *blk, int64_t filesize, bool flat, bool compress,
-     /* write all the data */
-     ret = blk_co_pwrite(blk, 0, sizeof(magic), &magic, 0);
-     if (ret < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-         goto exit;
-     }
-     ret = blk_co_pwrite(blk, sizeof(magic), sizeof(header), &header, 0);
-     if (ret < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-         goto exit;
+diff --git a/backends/dbus-vmstate.c b/backends/dbus-vmstate.c
+index 57369ec0f2..e781ded17c 100644
+--- a/backends/dbus-vmstate.c
++++ b/backends/dbus-vmstate.c
+@@ -413,7 +413,7 @@ dbus_vmstate_complete(UserCreatable *uc, Error **errp)
      }
  
-@@ -2271,7 +2271,7 @@ vmdk_init_extent(BlockBackend *blk, int64_t filesize, bool flat, bool compress,
-     ret = blk_co_pwrite(blk, le64_to_cpu(header.rgd_offset) * BDRV_SECTOR_SIZE,
-                         gd_buf_size, gd_buf, 0);
-     if (ret < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-         goto exit;
+     if (!self->dbus_addr) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "addr");
++        error_setg(errp, "Parameter 'addr' is missing");
+         return;
      }
  
-@@ -2283,7 +2283,7 @@ vmdk_init_extent(BlockBackend *blk, int64_t filesize, bool flat, bool compress,
-     ret = blk_co_pwrite(blk, le64_to_cpu(header.gd_offset) * BDRV_SECTOR_SIZE,
-                         gd_buf_size, gd_buf, 0);
-     if (ret < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
+diff --git a/block/gluster.c b/block/gluster.c
+index ad5fadbe79..8d97d698c3 100644
+--- a/block/gluster.c
++++ b/block/gluster.c
+@@ -530,20 +530,20 @@ static int qemu_gluster_parse_json(BlockdevOptionsGluster *gconf,
+ 
+     num_servers = qdict_array_entries(options, GLUSTER_OPT_SERVER_PATTERN);
+     if (num_servers < 1) {
+-        error_setg(&local_err, QERR_MISSING_PARAMETER, "server");
++        error_setg(&local_err, "Parameter 'server' is missing");
+         goto out;
      }
  
-     ret = 0;
-diff --git a/blockdev.c b/blockdev.c
-index ed90365329..228cebf9a2 100644
---- a/blockdev.c
-+++ b/blockdev.c
-@@ -1433,7 +1433,7 @@ static void external_snapshot_action(TransactionAction *action,
+     ptr = qemu_opt_get(opts, GLUSTER_OPT_VOLUME);
+     if (!ptr) {
+-        error_setg(&local_err, QERR_MISSING_PARAMETER, GLUSTER_OPT_VOLUME);
++        error_setg(&local_err, "Parameter " GLUSTER_OPT_VOLUME " is missing");
+         goto out;
+     }
+     gconf->volume = g_strdup(ptr);
  
-     if (!bdrv_is_read_only(state->old_bs)) {
-         if (bdrv_flush(state->old_bs)) {
--            error_setg(errp, QERR_IO_ERROR);
-+            error_setg(errp, "An IO error has occurred");
+     ptr = qemu_opt_get(opts, GLUSTER_OPT_PATH);
+     if (!ptr) {
+-        error_setg(&local_err, QERR_MISSING_PARAMETER, GLUSTER_OPT_PATH);
++        error_setg(&local_err, "Parameter " GLUSTER_OPT_PATH " is missing");
+         goto out;
+     }
+     gconf->path = g_strdup(ptr);
+@@ -562,7 +562,8 @@ static int qemu_gluster_parse_json(BlockdevOptionsGluster *gconf,
+ 
+         ptr = qemu_opt_get(opts, GLUSTER_OPT_TYPE);
+         if (!ptr) {
+-            error_setg(&local_err, QERR_MISSING_PARAMETER, GLUSTER_OPT_TYPE);
++            error_setg(&local_err,
++                       "Parameter " GLUSTER_OPT_TYPE " is missing");
+             error_append_hint(&local_err, GERR_INDEX_HINT, i);
              goto out;
-         }
+ 
+@@ -592,16 +593,16 @@ static int qemu_gluster_parse_json(BlockdevOptionsGluster *gconf,
+ 
+             ptr = qemu_opt_get(opts, GLUSTER_OPT_HOST);
+             if (!ptr) {
+-                error_setg(&local_err, QERR_MISSING_PARAMETER,
+-                           GLUSTER_OPT_HOST);
++                error_setg(&local_err,
++                           "Parameter " GLUSTER_OPT_HOST " is missing");
+                 error_append_hint(&local_err, GERR_INDEX_HINT, i);
+                 goto out;
+             }
+             gsconf->u.inet.host = g_strdup(ptr);
+             ptr = qemu_opt_get(opts, GLUSTER_OPT_PORT);
+             if (!ptr) {
+-                error_setg(&local_err, QERR_MISSING_PARAMETER,
+-                           GLUSTER_OPT_PORT);
++                error_setg(&local_err,
++                           "Parameter " GLUSTER_OPT_PORT " is missing");
+                 error_append_hint(&local_err, GERR_INDEX_HINT, i);
+                 goto out;
+             }
+@@ -648,8 +649,8 @@ static int qemu_gluster_parse_json(BlockdevOptionsGluster *gconf,
+                 goto out;
+             }
+             if (!ptr) {
+-                error_setg(&local_err, QERR_MISSING_PARAMETER,
+-                           GLUSTER_OPT_PATH);
++                error_setg(&local_err,
++                           "Parameter " GLUSTER_OPT_PATH " is missing");
+                 error_append_hint(&local_err, GERR_INDEX_HINT, i);
+                 goto out;
+             }
+diff --git a/block/monitor/block-hmp-cmds.c b/block/monitor/block-hmp-cmds.c
+index ca2599de44..90e593ed38 100644
+--- a/block/monitor/block-hmp-cmds.c
++++ b/block/monitor/block-hmp-cmds.c
+@@ -252,7 +252,7 @@ void hmp_drive_mirror(Monitor *mon, const QDict *qdict)
+     };
+ 
+     if (!filename) {
+-        error_setg(&err, QERR_MISSING_PARAMETER, "target");
++        error_setg(&err, "Parameter 'target' is missing");
+         goto end;
      }
-diff --git a/dump/win_dump.c b/dump/win_dump.c
-index b7bfaff379..0115a609e0 100644
---- a/dump/win_dump.c
-+++ b/dump/win_dump.c
-@@ -67,7 +67,7 @@ static size_t write_run(uint64_t base_page, uint64_t page_count,
-         l = qemu_write_full(fd, buf, len);
-         cpu_physical_memory_unmap(buf, addr, false, len);
-         if (l != len) {
--            error_setg(errp, QERR_IO_ERROR);
-+            error_setg(errp, "An IO error has occurred");
-             return 0;
+     qmp_drive_mirror(&mirror, &err);
+@@ -281,7 +281,7 @@ void hmp_drive_backup(Monitor *mon, const QDict *qdict)
+     };
+ 
+     if (!filename) {
+-        error_setg(&err, QERR_MISSING_PARAMETER, "target");
++        error_setg(&err, "Parameter 'target' is missing");
+         goto end;
+     }
+ 
+@@ -356,7 +356,7 @@ void hmp_snapshot_blkdev(Monitor *mon, const QDict *qdict)
+          * In the future, if 'snapshot-file' is not specified, the snapshot
+          * will be taken internally. Today it's actually required.
+          */
+-        error_setg(&err, QERR_MISSING_PARAMETER, "snapshot-file");
++        error_setg(&err, "Parameter 'snapshot-file' is missing");
+         goto end;
+     }
+ 
+diff --git a/dump/dump.c b/dump/dump.c
+index e173f1f14c..642b952985 100644
+--- a/dump/dump.c
++++ b/dump/dump.c
+@@ -2096,11 +2096,11 @@ void qmp_dump_guest_memory(bool paging, const char *file,
+         return;
+     }
+     if (has_begin && !has_length) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "length");
++        error_setg(errp, "Parameter 'length' is missing");
+         return;
+     }
+     if (!has_begin && has_length) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "begin");
++        error_setg(errp, "Parameter 'begin' is missing");
+         return;
+     }
+     if (has_detach) {
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index ac6fa34ad1..83bfc9dc19 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -1426,7 +1426,7 @@ static void usbredir_realize(USBDevice *udev, Error **errp)
+     int i;
+ 
+     if (!qemu_chr_fe_backend_connected(&dev->cs)) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "chardev");
++        error_setg(errp, "Parameter 'chardev' is missing");
+         return;
+     }
+ 
+diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
+index b17aec4357..b7b2bf18d4 100644
+--- a/softmmu/qdev-monitor.c
++++ b/softmmu/qdev-monitor.c
+@@ -622,7 +622,7 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
+ 
+     driver = qdict_get_try_str(opts, "driver");
+     if (!driver) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "driver");
++        error_setg(errp, "Parameter 'driver' is missing");
+         return NULL;
+     }
+ 
+diff --git a/softmmu/tpm.c b/softmmu/tpm.c
+index 8437c4efc3..3a7d4b5c67 100644
+--- a/softmmu/tpm.c
++++ b/softmmu/tpm.c
+@@ -106,13 +106,13 @@ static int tpm_init_tpmdev(void *dummy, QemuOpts *opts, Error **errp)
+ 
+     id = qemu_opts_id(opts);
+     if (id == NULL) {
+-        error_report(QERR_MISSING_PARAMETER, "id");
++        error_report("Parameter 'id' is missing");
+         return 1;
+     }
+ 
+     value = qemu_opt_get(opts, "type");
+     if (!value) {
+-        error_report(QERR_MISSING_PARAMETER, "type");
++        error_report("Parameter 'type' is missing");
+         tpm_display_backend_drivers();
+         return 1;
+     }
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 98e071e63b..840ac84069 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -1801,7 +1801,7 @@ static void object_option_parse(const char *optarg)
+ 
+         type = qemu_opt_get(opts, "qom-type");
+         if (!type) {
+-            error_setg(&error_fatal, QERR_MISSING_PARAMETER, "qom-type");
++            error_setg(&error_fatal, "Parameter 'qom-type' is missing");
+         }
+         if (user_creatable_print_help(type, opts)) {
+             exit(0);
+@@ -2266,7 +2266,7 @@ static int do_configure_accelerator(void *opaque, QemuOpts *opts, Error **errp)
+     bool qtest_with_kvm;
+ 
+     if (!acc) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "accel");
++        error_setg(errp, "Parameter 'accel' is missing");
+         goto bad;
+     }
+ 
+diff --git a/ui/input-barrier.c b/ui/input-barrier.c
+index 2d57ca7079..ecbba4adc2 100644
+--- a/ui/input-barrier.c
++++ b/ui/input-barrier.c
+@@ -493,7 +493,7 @@ static void input_barrier_complete(UserCreatable *uc, Error **errp)
+     Error *local_err = NULL;
+ 
+     if (!ib->name) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "name");
++        error_setg(errp, "Parameter 'name' is missing");
+         return;
+     }
+ 
+diff --git a/ui/ui-qmp-cmds.c b/ui/ui-qmp-cmds.c
+index a95fd35948..0e350fc333 100644
+--- a/ui/ui-qmp-cmds.c
++++ b/ui/ui-qmp-cmds.c
+@@ -195,7 +195,7 @@ void qmp_client_migrate_info(const char *protocol, const char *hostname,
          }
  
-@@ -459,7 +459,7 @@ void create_win_dump(DumpState *s, Error **errp)
+         if (!has_port && !has_tls_port) {
+-            error_setg(errp, QERR_MISSING_PARAMETER, "port/tls-port");
++            error_setg(errp, "Parameter 'port/tls-port' is missing");
+             return;
+         }
  
-     s->written_size = qemu_write_full(s->fd, h, hdr_size);
-     if (s->written_size != hdr_size) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-         goto out_restore;
-     }
- 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index bb3e99194c..41c7f39ef5 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -3099,7 +3099,7 @@ void qmp_xen_save_devices_state(const char *filename, bool has_live, bool live,
-     object_unref(OBJECT(ioc));
-     ret = qemu_save_device_state(f);
-     if (ret < 0 || qemu_fclose(f) < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-     } else {
-         /* libxl calls the QMP command "stop" before calling
-          * "xen-save-devices-state" and in case of migration failure, libxl
-@@ -3148,7 +3148,7 @@ void qmp_xen_load_devices_state(const char *filename, Error **errp)
-     ret = qemu_loadvm_state(f);
-     qemu_fclose(f);
-     if (ret < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-     }
-     migration_incoming_state_destroy();
- }
-diff --git a/softmmu/cpus.c b/softmmu/cpus.c
-index 7fc70f9166..f7c743b0ce 100644
---- a/softmmu/cpus.c
-+++ b/softmmu/cpus.c
-@@ -773,7 +773,7 @@ void qmp_memsave(int64_t addr, int64_t size, const char *filename,
-             goto exit;
-         }
-         if (fwrite(buf, 1, l, f) != l) {
--            error_setg(errp, QERR_IO_ERROR);
-+            error_setg(errp, "An IO error has occurred");
-             goto exit;
-         }
-         addr += l;
-@@ -803,7 +803,7 @@ void qmp_pmemsave(int64_t addr, int64_t size, const char *filename,
-             l = size;
-         cpu_physical_memory_read(addr, buf, l);
-         if (fwrite(buf, 1, l, f) != l) {
--            error_setg(errp, QERR_IO_ERROR);
-+            error_setg(errp, "An IO error has occurred");
-             goto exit;
-         }
-         addr += l;
 -- 
 2.41.0
 

@@ -1,144 +1,180 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id i5-20020adffdc5000000b0031fb91f23e9sm4281936wrs.43.2023.10.04.08.23.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Oct 2023 08:23:54 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 193871FFBB;
-	Wed,  4 Oct 2023 16:23:54 +0100 (BST)
-References: <20231004090629.37473-1-philmd@linaro.org>
- <20231004090629.37473-8-philmd@linaro.org>
-User-agent: mu4e 1.11.21; emacs 29.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, Thomas Huth
- <thuth@redhat.com>, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 07/13] gdbstub: Rename 'softmmu' -> 'system'
-Date: Wed, 04 Oct 2023 16:23:48 +0100
-In-reply-to: <20231004090629.37473-8-philmd@linaro.org>
-Message-ID: <874jj6h0mt.fsf@linaro.org>
+Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2879441ejb;
+        Wed, 4 Oct 2023 12:22:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGgmfe0hdJVI+VyQnGDnVVqcPUg2qvu+VOVby0VQrbl0Vn619eCwfIiCj/AxCIihW2L+o5A
+X-Received: by 2002:aca:1c0a:0:b0:3ae:aa6:dc0c with SMTP id c10-20020aca1c0a000000b003ae0aa6dc0cmr3139401oic.9.1696447325797;
+        Wed, 04 Oct 2023 12:22:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696447325; cv=none;
+        d=google.com; s=arc-20160816;
+        b=MySN3R3Sm90pTXNBcJ8t09a//vc5PLa5+C7gk+BHCL1zZdjr+UvlQeS+Nv1NPvAeoP
+         RrIP1agyNu1s3tdl8xHEomrD597XkVaCCS+hE0jvaR2SONeNNsAUSAclN9fL3aCmh096
+         8bkBOHNq0n8xzNI8+WZqkmRPPjtRCkDzgTehlpjMKwnWLjS36D4saaPmofZFy18gyXrU
+         kytz8d1SoV11vLAP7bMkUpKlQw+2YC04q0mBN+f2VGh+P2kLr+PXsTZW2c6fWzl74e/9
+         zJ6I3yYvEpRlD90tGEGzhjVGxKk4MXqGBicaA5nAGKfb/POaD/KfexAgWpIeToIbno38
+         R01g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=0tYTiak3/0bWBm11AAZ6N5wEs3JE+pIf/Mh2FyXA03s=;
+        fh=Iqw+C3zUdjRbqvq8+6x0+40nrEuEq3eUeL/fW1XE9rM=;
+        b=hpgO6VcNNnBnx6yzrVnNWJ2gORdI03mgeleSrDYAbJ042JwrU6nvIpIMbK6BFwN39X
+         xwp4bQSuPL6+v2sOoaIJNEOzflWZaFts9cp3rknFU5XIhHQTALlleMbg1/uIon6e8IZC
+         AXKGFZpmSr5MaoPtVKtsLtWQRMjpgcYt3Kv6OWXaw3jUbw4mAphICVpiNQCQ4/Up9HRH
+         n/QFZvCMpwX+YnQsmDVd4yppLJpOnltui/ubqzKnEwDoGuBAeFuw4nPkvieHqjuoIfFr
+         PrcLveSbob55q6qtImFXSvllQ99Jxls6reyii5P4yW7yk30HQiXgNJv7jWTBacladW+e
+         Ro/A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OBiFe7iP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n11-20020a05622a11cb00b004108c0630a0si1741803qtk.551.2023.10.04.12.22.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 04 Oct 2023 12:22:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OBiFe7iP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qo7Qf-0000f4-8z; Wed, 04 Oct 2023 15:21:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1qo7Qd-0000Uh-DA; Wed, 04 Oct 2023 15:21:03 -0400
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1qo7Qa-0002Gg-PV; Wed, 04 Oct 2023 15:21:02 -0400
+Received: by mail-lf1-x134.google.com with SMTP id
+ 2adb3069b0e04-5033918c09eso216348e87.2; 
+ Wed, 04 Oct 2023 12:20:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1696447257; x=1697052057; darn=nongnu.org;
+ h=user-agent:in-reply-to:content-disposition:mime-version:references
+ :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=0tYTiak3/0bWBm11AAZ6N5wEs3JE+pIf/Mh2FyXA03s=;
+ b=OBiFe7iP+kS5CpJn5bqfrOfxGou3ZbSGyvACMz7Lmguz8B1Xozpf8BYG7L0JJyezG2
+ /wuutQhd/pkp2dVB1L1SJOyJv5IGbndo57DJXxgIbHYpehK8IgpNESmxD5XNhiQxBDB3
+ sIvtwCS3ZLI0XGJydLZBplTqXCICiqkc64EtmTzJvcLYrU2/CT9rG+5VG1Z4rLy2zE21
+ DPy399YB0lVbJlt1Qc57SiEoI3UVlACuYHC/4ITf0scoqovGkPf4kw5a9Nkc/Fs5hyku
+ N+1XnAFDXJLEGGIDkuB3PHWGHuPI4YdNb9flbOkx88D34bHq3UGbRWPqaoSZpU07Mg/O
+ XF4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696447257; x=1697052057;
+ h=user-agent:in-reply-to:content-disposition:mime-version:references
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=0tYTiak3/0bWBm11AAZ6N5wEs3JE+pIf/Mh2FyXA03s=;
+ b=MX8azrWC0DgOpzRMu+/UKTnByxyzY+P4v6r8VW15AJN3Lcy8SNiPaCNuzR4CpRzqbd
+ UaIeFHjy+XdT3Nr0/CRfGC+JwUqvZZV6trG0YOzEH+pa6QW7MpgjPe3kQMGR/37Hw+LM
+ hMm6EG46mCVHg9NgUubYCWNqK4kj9wneVzmTY5A+ABDpLIjwewKDyrAqMg5HTZm40pgn
+ he6+J6XM9DCDVvSQhTum3EH1dDdu5qlzL+9BbYZVyV+XkC5PSqujzdvtFjeNz6OBqwNp
+ CWxt8BuwABBDBlv+FvPxYosEXsvqOcWDymguTn8r2NX6XHw1zvW0AT8FWJ3a8l1n48pi
+ oWaw==
+X-Gm-Message-State: AOJu0Yz93u9dlctp9XPr5Xt/wSHDv3Yx/5Ecbvi81YGV4yAa5XgPuwvx
+ N9PMUm3SKPu9zdI25kRPhV8=
+X-Received: by 2002:a05:6512:39d1:b0:500:ac71:8464 with SMTP id
+ k17-20020a05651239d100b00500ac718464mr3433128lfu.66.1696447257377; 
+ Wed, 04 Oct 2023 12:20:57 -0700 (PDT)
+Received: from fralle-msi (217-76-87-243.cust.bredband2.com. [217.76.87.243])
+ by smtp.gmail.com with ESMTPSA id
+ f19-20020a2e3813000000b002c182a942f1sm768031lja.139.2023.10.04.12.20.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Oct 2023 12:20:57 -0700 (PDT)
+Date: Wed, 4 Oct 2023 21:20:55 +0200
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
+To: Tong Ho <tong.ho@amd.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, alistair@alistair23.me,
+ edgar.iglesias@gmail.com, peter.maydell@linaro.org
+Subject: Re: [PATCH] xlnx-zynqmp-efuse: hw/nvram: Remove deprecated device
+ reset
+Message-ID: <20231004192055.GD18959@fralle-msi>
+References: <20231004055713.324009-1-tong.ho@amd.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: GsmRWuzg1v2/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231004055713.324009-1-tong.ho@amd.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::134;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x134.google.com
+X-Spam_score_int: -1020
+X-Spam_score: -102.1
+X-Spam_bar: ---------------------------------------------------
+X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_WELCOMELIST=-0.01,
+ USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XoEMu5PXKn06
 
+On [2023 Oct 03] Tue 22:57:13, Tong Ho wrote:
+> This change implements the ResettableClass interface for the device.
+> 
+> Signed-off-by: Tong Ho <tong.ho@amd.com>
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
-
-> We have gdbstub/user.c for user emulation code,
-> use gdbstub/system.c for system emulation part.
->
-> Rename s/softmmu/system/ in meson and few comments.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-
-Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
 > ---
->  gdbstub/internals.h             |  4 ++--
->  gdbstub/{softmmu.c =3D> system.c} |  2 +-
->  gdbstub/meson.build             | 10 +++++-----
->  gdbstub/trace-events            |  2 +-
->  4 files changed, 9 insertions(+), 9 deletions(-)
->  rename gdbstub/{softmmu.c =3D> system.c} (99%)
->
-> diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-> index fee243081f..f7fd1bede5 100644
-> --- a/gdbstub/internals.h
-> +++ b/gdbstub/internals.h
-> @@ -103,7 +103,7 @@ static inline int tohex(int v)
->  }
->=20=20
->  /*
-> - * Connection helpers for both softmmu and user backends
-> + * Connection helpers for both system and user backends
->   */
->=20=20
->  void gdb_put_strbuf(void);
-> @@ -229,7 +229,7 @@ void gdb_breakpoint_remove_all(CPUState *cs);
->   * @is_write: is it a write operation
+>  hw/nvram/xlnx-zynqmp-efuse.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
+> index 228ba0bbfa..3db5f98ec1 100644
+> --- a/hw/nvram/xlnx-zynqmp-efuse.c
+> +++ b/hw/nvram/xlnx-zynqmp-efuse.c
+> @@ -2,6 +2,7 @@
+>   * QEMU model of the ZynqMP eFuse
 >   *
->   * This function is specialised depending on the mode we are running
-> - * in. For softmmu guests we can switch the interpretation of the
-> + * in. For system guests we can switch the interpretation of the
->   * address to a physical address.
->   */
->  int gdb_target_memory_rw_debug(CPUState *cs, hwaddr addr,
-> diff --git a/gdbstub/softmmu.c b/gdbstub/system.c
-> similarity index 99%
-> rename from gdbstub/softmmu.c
-> rename to gdbstub/system.c
-> index 9f0b8b5497..189975b1d6 100644
-> --- a/gdbstub/softmmu.c
-> +++ b/gdbstub/system.c
-> @@ -104,7 +104,7 @@ static void gdb_chr_event(void *opaque, QEMUChrEvent =
-event)
+>   * Copyright (c) 2015 Xilinx Inc.
+> + * Copyright (c) 2023 Advanced Micro Devices, Inc.
+>   *
+>   * Written by Edgar E. Iglesias <edgari@xilinx.com>
+>   *
+> @@ -769,9 +770,9 @@ static void zynqmp_efuse_register_reset(RegisterInfo *reg)
+>      register_reset(reg);
 >  }
->=20=20
->  /*
-> - * In softmmu mode we stop the VM and wait to send the syscall packet
-> + * In system-mode we stop the VM and wait to send the syscall packet
->   * until notification that the CPU has stopped. This must be done
->   * because if the packet is sent now the reply from the syscall
->   * request could be received while the CPU is still in the running
-> diff --git a/gdbstub/meson.build b/gdbstub/meson.build
-> index a5a1f4e433..e5bccba34e 100644
-> --- a/gdbstub/meson.build
-> +++ b/gdbstub/meson.build
-> @@ -1,6 +1,6 @@
->  #
->  # The main gdbstub still relies on per-build definitions of various
-> -# types. The bits pushed to softmmu/user.c try to use guest agnostic
-> +# types. The bits pushed to system/user.c try to use guest agnostic
->  # types such as hwaddr.
->  #
->=20=20
-> @@ -12,7 +12,7 @@ gdb_system_ss =3D ss.source_set()
->=20=20
->  # We build two versions of gdbstub, one for each mode
->  gdb_user_ss.add(files('gdbstub.c', 'user.c'))
-> -gdb_system_ss.add(files('gdbstub.c', 'softmmu.c'))
-> +gdb_system_ss.add(files('gdbstub.c', 'system.c'))
->=20=20
->  gdb_user_ss =3D gdb_user_ss.apply(config_targetos, strict: false)
->  gdb_system_ss =3D gdb_system_ss.apply(config_targetos, strict: false)
-> @@ -23,15 +23,15 @@ libgdb_user =3D static_library('gdb_user',
->                               c_args: '-DCONFIG_USER_ONLY',
->                               build_by_default: false)
->=20=20
-> -libgdb_softmmu =3D static_library('gdb_softmmu',
-> +libgdb_system =3D static_library('gdb_system',
->                                  gdb_system_ss.sources() + genh,
->                                  name_suffix: 'fa',
->                                  build_by_default: false)
->=20=20
->  gdb_user =3D declare_dependency(link_whole: libgdb_user)
->  user_ss.add(gdb_user)
-> -gdb_softmmu =3D declare_dependency(link_whole: libgdb_softmmu)
-> -system_ss.add(gdb_softmmu)
-> +gdb_system =3D declare_dependency(link_whole: libgdb_system)
-> +system_ss.add(gdb_system)
->=20=20
->  common_ss.add(files('syscalls.c'))
->=20=20
-> diff --git a/gdbstub/trace-events b/gdbstub/trace-events
-> index 7bc79a73c4..4fd126a38c 100644
-> --- a/gdbstub/trace-events
-> +++ b/gdbstub/trace-events
-> @@ -28,5 +28,5 @@ gdbstub_err_checksum_invalid(uint8_t ch) "got invalid c=
-ommand checksum digit: 0x
->  gdbstub_err_checksum_incorrect(uint8_t expected, uint8_t got) "got comma=
-nd packet with incorrect checksum, expected=3D0x%02x, received=3D0x%02x"
->  gdbstub_err_unexpected_runpkt(uint8_t ch) "unexpected packet (0x%02x) wh=
-ile target running"
->=20=20
-> -# softmmu.c
-> +# system.c
->  gdbstub_hit_watchpoint(const char *type, int cpu_gdb_index, uint64_t vad=
-dr) "Watchpoint hit, type=3D\"%s\" cpu=3D%d, vaddr=3D0x%" PRIx64 ""
-
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+>  
+> -static void zynqmp_efuse_reset(DeviceState *dev)
+> +static void zynqmp_efuse_reset_hold(Object *obj)
+>  {
+> -    XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(dev);
+> +    XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(obj);
+>      unsigned int i;
+>  
+>      for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
+> @@ -837,8 +838,9 @@ static Property zynqmp_efuse_props[] = {
+>  static void zynqmp_efuse_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
+>  
+> -    dc->reset = zynqmp_efuse_reset;
+> +    rc->phases.hold = zynqmp_efuse_reset_hold;
+>      dc->realize = zynqmp_efuse_realize;
+>      dc->vmsd = &vmstate_efuse;
+>      device_class_set_props(dc, zynqmp_efuse_props);
+> -- 
+> 2.25.1
+> 
+> 

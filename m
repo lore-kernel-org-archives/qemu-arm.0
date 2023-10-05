@@ -1,116 +1,113 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp70775ejc;
-        Wed, 4 Oct 2023 21:54:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHTqsfem+Wp84IUI1Vm14UVK0UQYibKj6EtuvTpG7wZ8me0pweP7PIP2ntQUraf09CaQwhK
-X-Received: by 2002:ac8:5a0a:0:b0:418:76c7:52ab with SMTP id n10-20020ac85a0a000000b0041876c752abmr4033728qta.52.1696481699299;
-        Wed, 04 Oct 2023 21:54:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696481699; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp70835ejc;
+        Wed, 4 Oct 2023 21:55:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGYfKYGzpKdEOnGstMIoMCVynjMiFtLzrq1zq1dvroT2Dh2P5p46dtO8l8WmbbeMtoxeSkS
+X-Received: by 2002:a0c:8b91:0:b0:65d:f81:9b47 with SMTP id r17-20020a0c8b91000000b0065d0f819b47mr3584459qva.45.1696481714001;
+        Wed, 04 Oct 2023 21:55:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696481713; cv=none;
         d=google.com; s=arc-20160816;
-        b=C/9uIZEIr0sTc+69jTc/zCkBuWNJ3p416AiDQBKRr4VIWfCsW+KyfxPVtUxo+HkQfq
-         HOYP/L1o8Mw26elteE9TVipNORwnkRwNJe7CcqFBEFngjLxAKjbkNvsSQBp8src82jAi
-         YyYM4Jm1SkyhKkhOzo6j5k8V/AV36UTKI7aR1Mi2QpH6MYiW4/ZBtC9vl4CvxMH/T3aR
-         tnubxyUWzeRgXDJOpuPvCdNW0ehxTwfY3EZDRmGMEhmuNOkplPolDah6/d95ZFce3aqM
-         Yxw2Hd1z60OIArI062RLjZVtFpMSfM84twuwLdKCzJlhFDCak4/4ihHcSAwPXee9C8L1
-         CpuA==
+        b=WMubsS7Akb1TZVUxsKctqf3y9b+Fc9zc+678oou3BrXKZg1R7pELjZqyNu89yAj/iv
+         s8esbXAqFJ2gHZHLVvnpJIc/Wa1aYpmPg8ayJM1oDVLQw6+VlmbSQk9WQqBN4lpk0boy
+         tpR9HOYIqICXOrpNYKNL3gcelCeywX4Do65yeCh/C3Q5ADi3iJHdocaXu2MLv/xA8nss
+         IX9bFKiAyFf3eaKZKvwlXlH0Y7KacRSR4GHR21fzMKZqvqDGabwo/un+QkfQ9x3VtIo8
+         TbfvXeh773g0fyL97oe5s2e9HQhlDOYWaWz5WIHlUrYzlZldDF68jScsNyMqdagLaf3Z
+         drkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Qa4hZwslsMUZLJlwqNVA+27NbdRXcJ1/n/O43TVo9q8=;
-        fh=288tj/YA8CeqdsE1IAqipHYy1NJ0ligrxjm8FB2ZG8k=;
-        b=lPfndfKbCeGJroLzo1giv8TwN5V47/wydUvwN+Bik4nI+NlAo5RGmOYTs5dSPc7hFT
-         xRqTcoGu35/PXHNK8I0lO/up7ZTCR5mWSSSbEyp4xYn6EbXiRJDv729MjKIUWLbr0XR2
-         YhvK5UUGbyeQVJ+Ev2FIZoTifkTXIL4aYR0XD+F/+k7QWgooHkN7ptXEXCB7ZiSgXHjE
-         /YHqbFU6+vF8nzLAEs9bTMTmugAPgLuFrOJdLkiiM3iT884IssYi9+VtJItldhdHIzdx
-         //fbFkBXKHJDZAhjiY1243dSXVNYC/Qld3WkxC43FUgqJHxV6+5t++Btf+rz8GSqJToL
-         cgFA==
+        bh=YgccYr5Dzt6X/tQjLL34w8Nky+uqW63WT4BtHcxYfTM=;
+        fh=ua6qulcWihvAMbyeHDk2JG5T8PW//dxPndMHeqNlEsg=;
+        b=X5uwsq4urik9BdGsfgquWiH/TG0/MsmKKo+d2pFHF45DoqSHGdtBWqgKJwdZc0du9J
+         KupssGHz5G3qifvglwAnB2VJKZA2UpEO1mY1HUiNtoyhefmMPo0oNuFM3GqPQbzxogIZ
+         1twyKJrltSdc46G2fuOsXkFGRbG2PNSqHsNydlj00bLliGaSAWYeuJPHzhbxeJET7QjD
+         fKN3n7cw5OuvbBX+OghEico/avycZbTEDvKmy9Hjaw1Z2J1hekzS56PTrfHUz6S4JicK
+         qpcobeQ61rn/eKiDFpKdnXrm7elzBhtlGr2Xm0X1yCIsFBaOQmjzLiV5np4aiXArNtsk
+         32pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dOvKOxMl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tsxn5RgD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14-20020ac84e8e000000b00417fa4d4ffcsi436646qtp.104.2023.10.04.21.54.59
+        by mx.google.com with ESMTPS id o9-20020a0ccb09000000b0065b229ed0e8si384582qvk.182.2023.10.04.21.55.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 21:54:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Oct 2023 21:55:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dOvKOxMl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tsxn5RgD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qoGLY-0007DB-4W; Thu, 05 Oct 2023 00:52:24 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qoGMS-00018A-77; Thu, 05 Oct 2023 00:53:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGLV-00075k-Ar
- for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:52:21 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGMG-0008HT-CY
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:53:08 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGLT-0006kA-4q
- for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:52:21 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-406402933edso4741355e9.2
- for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 21:52:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGMB-0007j3-H4
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:53:08 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-3231d67aff2so597333f8f.0
+ for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 21:53:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696481537; x=1697086337; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696481582; x=1697086382; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Qa4hZwslsMUZLJlwqNVA+27NbdRXcJ1/n/O43TVo9q8=;
- b=dOvKOxMlnpTgaZRj52rzNJP06WYBwpsIZsOELlwMiX6LrdVvjcMlgs3E6NlOJZ87/a
- k96SRBVq1ZFPOZP1YjOJD0Vxj6X0rEBWOi+8tVyd4noHeO6NR4ZQX/4CuL2EvWpYXM34
- MFGvK7HBD1tiSrcvr/hhoz2rzjACBcR78I/ZSBfCJ/yuypVuGB2LMxcizdc+qsed0iRv
- lQj8tYs26Irlk2xohZkXSc874XSiy+CBwUYS/9E7CUxluM0isfs8vVgiJuhOnLsaAVw5
- ZNhYMHKB+LHrKtbvHFFdx624+3TIzT7kHx7eKwX+Wr94boYmFfFibNq/p0m/QnCR84Gb
- +AZQ==
+ bh=YgccYr5Dzt6X/tQjLL34w8Nky+uqW63WT4BtHcxYfTM=;
+ b=tsxn5RgDjtR6zceeCoAmcBhCDjUrazsPWwYSnxUJDH2TWA8tkl/JjhkWHYOJ0cErJa
+ mRpr4TY9K/a2SBzNSxh66IuoeLksFZ0cdM1zGEIvTo93CPM1kqf1yeduNUtWctmf8v8o
+ b0LSJKGNSRuEyYT/PJE4cSj92gt1a9Dzv3lM05j+Z4rUPdHXjwqhe+d3YQJbQBP0DjfN
+ s7LBELDhD5X/i+Wsdt93Hf/4Fbdx6tC07+oZjDU3Wx83RXgMpDJ/mwmAtKSKCIlLtM7k
+ cXzxA6Dg+fp6XnRreBLJgJ7m4iWyT6DESZy+9epmTwNiGTZlka7MwJCKsMzT4i4TRfNM
+ xdsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696481537; x=1697086337;
+ d=1e100.net; s=20230601; t=1696481582; x=1697086382;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Qa4hZwslsMUZLJlwqNVA+27NbdRXcJ1/n/O43TVo9q8=;
- b=kXlR1BhxJVH5oDHcey9m5F3iho00eMFR5U54y7lPJEJmDEgtGbXnMBuGtBOsJIa+17
- YeDpCQ3sCNwBORmjUa2DGrQCgZzGrpPeNe33OohCvfGEsv/Mw8Mt/SFupPtQRbLgtL6L
- XmT4dfrAFPik4v+CcOy+asGFvlKXTAyl+aePaOXOyiTezC5pat9z6qYbxn0OmelIkO0Z
- LlEaamodrqVY52Hl1S9qctFyAIcwgqD+TT/Xv1b5K5JjyJpio2eSI83FMCUr1+NO0StV
- otkQb0wb1OjOr+GitryyxhoH+uBrRx15YKGpHxlnXPtLZUIZhCf+3MUwiwx6xfiNgRAl
- M97g==
-X-Gm-Message-State: AOJu0Yz55Lvt7dxhHwtqn6j4KJ+7TACqvsbZjNXhDmEqclYfVUAYcb8Y
- wUbn1BHe6EVTVaRpp2DNFTXanQ==
-X-Received: by 2002:a1c:6a03:0:b0:406:535a:cfb4 with SMTP id
- f3-20020a1c6a03000000b00406535acfb4mr4040816wmc.1.1696481537733; 
- Wed, 04 Oct 2023 21:52:17 -0700 (PDT)
+ bh=YgccYr5Dzt6X/tQjLL34w8Nky+uqW63WT4BtHcxYfTM=;
+ b=qRSporsZD8AcaEu1uH0I5SBgaN+IGlHNJceQW9u9zRRyIydfQPqLY91PE93a9J56h9
+ sYIL10AmTQ9VgLUxRevTmoqdLyKsEMsaugtXHdYH+96DQcKDKOzku7acdedGt3fCtEJ7
+ +xKgErpWVlQIC6uESFpdmexPtWnA+EAb/9nq0ydAgEXLJb/W9uBN3VuX5Yk/EVAY6TuX
+ m9Qm93OaTBJgqULIbL2h5kmnQwpjPTNv7dG7/FmMJut7z2JWWO/JzJbt9Bw87jF2gA0j
+ r3+aWj1IiBYEbWMgw316/mXUEaglMnpn2eWyj34k1v7CevS9J51NO5PZPSaT1vfr9Co8
+ ArFQ==
+X-Gm-Message-State: AOJu0Yw36AMNyt/kCkA1EfocnLsVtiv+dc2Ow/d4gExUR+cLjz8I8ruW
+ JXtS6r+zTpBm/kmCwO157iuCWG0rShY9lniuxOo=
+X-Received: by 2002:a5d:4144:0:b0:31a:d4e4:4f63 with SMTP id
+ c4-20020a5d4144000000b0031ad4e44f63mr3618344wrq.18.1696481581749; 
+ Wed, 04 Oct 2023 21:53:01 -0700 (PDT)
 Received: from m1x-phil.lan (tbo33-h01-176-171-211-120.dsl.sta.abo.bbox.fr.
  [176.171.211.120]) by smtp.gmail.com with ESMTPSA id
- z7-20020a7bc7c7000000b003fee567235bsm2891894wmk.1.2023.10.04.21.52.15
+ g4-20020adff404000000b0031c52e81490sm750030wro.72.2023.10.04.21.53.00
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 21:52:17 -0700 (PDT)
+ Wed, 04 Oct 2023 21:53:01 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Juan Quintela <quintela@redhat.com>, Fam Zheng <fam@euphon.net>,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Peter Xu <peterx@redhat.com>, Leonardo Bras <leobras@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 14/22] qapi: Inline and remove QERR_IO_ERROR definition
-Date: Thu,  5 Oct 2023 06:50:31 +0200
-Message-ID: <20231005045041.52649-15-philmd@linaro.org>
+ Michael Roth <michael.roth@amd.com>,
+ Konstantin Kostiuk <kkostiuk@redhat.com>
+Subject: [RFC PATCH v2 21/22] qapi: Inline and remove QERR_UNSUPPORTED
+ definition
+Date: Thu,  5 Oct 2023 06:50:38 +0200
+Message-ID: <20231005045041.52649-22-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231005045041.52649-1-philmd@linaro.org>
 References: <20231005045041.52649-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,20 +116,20 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uFdRuL25re4t
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ESeHw9EqRxOK
 
 Address the comment added in commit 4629ed1e98
 ("qerror: Finally unused, clean up"), from 2015:
@@ -144,152 +141,368 @@ Address the comment added in commit 4629ed1e98
 
 Mechanical transformation using:
 
-  $ sed -i -e 's/QERR_IO_ERROR/"An IO error has occurred"/' \
-    $(git grep -wl QERR_IO_ERROR)
+  $ sed -i -e 's/QERR_UNSUPPORTED/"this feature or command is not currently supported"/' \
+    $(git grep -wl QERR_UNSUPPORTED)
 
 then manually removing the definition in include/qapi/qmp/qerror.h.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
 ---
- include/qapi/qmp/qerror.h | 3 ---
- block/vmdk.c              | 8 ++++----
- blockdev.c                | 2 +-
- dump/win_dump.c           | 4 ++--
- migration/savevm.c        | 4 ++--
- softmmu/cpus.c            | 4 ++--
- 6 files changed, 11 insertions(+), 14 deletions(-)
+RFC: Not sure what is the best way to change the comment
+     in qga/qapi-schema.json...
+---
+ qga/qapi-schema.json      |  5 +++--
+ include/qapi/qmp/qerror.h |  3 ---
+ qga/commands-bsd.c        |  8 +++----
+ qga/commands-posix.c      | 46 +++++++++++++++++++--------------------
+ qga/commands-win32.c      | 22 +++++++++----------
+ 5 files changed, 41 insertions(+), 43 deletions(-)
 
+diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
+index b720dd4379..51683f4dc2 100644
+--- a/qga/qapi-schema.json
++++ b/qga/qapi-schema.json
+@@ -6,8 +6,9 @@
+ #
+ # "unsupported" is a higher-level error than the errors that
+ # individual commands might document.  The caller should always be
+-# prepared to receive QERR_UNSUPPORTED, even if the given command
+-# doesn't specify it, or doesn't document any failure mode at all.
++# prepared to receive the "this feature or command is not currently supported"
++# message, even if the given command doesn't specify it, or doesn't document
++# any failure mode at all.
+ ##
+ 
+ ##
 diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-index ac727d1c2d..d95c4b84b9 100644
+index 840831cc6a..7606f4525d 100644
 --- a/include/qapi/qmp/qerror.h
 +++ b/include/qapi/qmp/qerror.h
-@@ -17,9 +17,6 @@
+@@ -17,7 +17,4 @@
   * add new ones!
   */
  
--#define QERR_IO_ERROR \
--    "An IO error has occurred"
+-#define QERR_UNSUPPORTED \
+-    "this feature or command is not currently supported"
 -
- #define QERR_MIGRATION_ACTIVE \
-     "There's a migration process in progress"
+ #endif /* QERROR_H */
+diff --git a/qga/commands-bsd.c b/qga/commands-bsd.c
+index 17bddda1cf..11536f148f 100644
+--- a/qga/commands-bsd.c
++++ b/qga/commands-bsd.c
+@@ -152,25 +152,25 @@ int qmp_guest_fsfreeze_do_thaw(Error **errp)
  
-diff --git a/block/vmdk.c b/block/vmdk.c
-index e90649c8bf..6779a181f0 100644
---- a/block/vmdk.c
-+++ b/block/vmdk.c
-@@ -2246,12 +2246,12 @@ vmdk_init_extent(BlockBackend *blk, int64_t filesize, bool flat, bool compress,
-     /* write all the data */
-     ret = blk_co_pwrite(blk, 0, sizeof(magic), &magic, 0);
-     if (ret < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-         goto exit;
-     }
-     ret = blk_co_pwrite(blk, sizeof(magic), sizeof(header), &header, 0);
-     if (ret < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-         goto exit;
-     }
- 
-@@ -2271,7 +2271,7 @@ vmdk_init_extent(BlockBackend *blk, int64_t filesize, bool flat, bool compress,
-     ret = blk_co_pwrite(blk, le64_to_cpu(header.rgd_offset) * BDRV_SECTOR_SIZE,
-                         gd_buf_size, gd_buf, 0);
-     if (ret < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-         goto exit;
-     }
- 
-@@ -2283,7 +2283,7 @@ vmdk_init_extent(BlockBackend *blk, int64_t filesize, bool flat, bool compress,
-     ret = blk_co_pwrite(blk, le64_to_cpu(header.gd_offset) * BDRV_SECTOR_SIZE,
-                         gd_buf_size, gd_buf, 0);
-     if (ret < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-     }
- 
-     ret = 0;
-diff --git a/blockdev.c b/blockdev.c
-index ed90365329..228cebf9a2 100644
---- a/blockdev.c
-+++ b/blockdev.c
-@@ -1433,7 +1433,7 @@ static void external_snapshot_action(TransactionAction *action,
- 
-     if (!bdrv_is_read_only(state->old_bs)) {
-         if (bdrv_flush(state->old_bs)) {
--            error_setg(errp, QERR_IO_ERROR);
-+            error_setg(errp, "An IO error has occurred");
-             goto out;
-         }
-     }
-diff --git a/dump/win_dump.c b/dump/win_dump.c
-index b7bfaff379..0115a609e0 100644
---- a/dump/win_dump.c
-+++ b/dump/win_dump.c
-@@ -67,7 +67,7 @@ static size_t write_run(uint64_t base_page, uint64_t page_count,
-         l = qemu_write_full(fd, buf, len);
-         cpu_physical_memory_unmap(buf, addr, false, len);
-         if (l != len) {
--            error_setg(errp, QERR_IO_ERROR);
-+            error_setg(errp, "An IO error has occurred");
-             return 0;
-         }
- 
-@@ -459,7 +459,7 @@ void create_win_dump(DumpState *s, Error **errp)
- 
-     s->written_size = qemu_write_full(s->fd, h, hdr_size);
-     if (s->written_size != hdr_size) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-         goto out_restore;
-     }
- 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index bb3e99194c..41c7f39ef5 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -3099,7 +3099,7 @@ void qmp_xen_save_devices_state(const char *filename, bool has_live, bool live,
-     object_unref(OBJECT(ioc));
-     ret = qemu_save_device_state(f);
-     if (ret < 0 || qemu_fclose(f) < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-     } else {
-         /* libxl calls the QMP command "stop" before calling
-          * "xen-save-devices-state" and in case of migration failure, libxl
-@@ -3148,7 +3148,7 @@ void qmp_xen_load_devices_state(const char *filename, Error **errp)
-     ret = qemu_loadvm_state(f);
-     qemu_fclose(f);
-     if (ret < 0) {
--        error_setg(errp, QERR_IO_ERROR);
-+        error_setg(errp, "An IO error has occurred");
-     }
-     migration_incoming_state_destroy();
+ GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
  }
-diff --git a/softmmu/cpus.c b/softmmu/cpus.c
-index 7fc70f9166..f7c743b0ce 100644
---- a/softmmu/cpus.c
-+++ b/softmmu/cpus.c
-@@ -773,7 +773,7 @@ void qmp_memsave(int64_t addr, int64_t size, const char *filename,
-             goto exit;
-         }
-         if (fwrite(buf, 1, l, f) != l) {
--            error_setg(errp, QERR_IO_ERROR);
-+            error_setg(errp, "An IO error has occurred");
-             goto exit;
-         }
-         addr += l;
-@@ -803,7 +803,7 @@ void qmp_pmemsave(int64_t addr, int64_t size, const char *filename,
-             l = size;
-         cpu_physical_memory_read(addr, buf, l);
-         if (fwrite(buf, 1, l, f) != l) {
--            error_setg(errp, QERR_IO_ERROR);
-+            error_setg(errp, "An IO error has occurred");
-             goto exit;
-         }
-         addr += l;
+ 
+ GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ #endif /* CONFIG_FSFREEZE */
+diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+index 6169bbf7a0..f510add366 100644
+--- a/qga/commands-posix.c
++++ b/qga/commands-posix.c
+@@ -165,7 +165,7 @@ void qmp_guest_set_time(bool has_time, int64_t time_ns, Error **errp)
+     }
+ 
+     if (!hwclock_available) {
+-        error_setg(errp, QERR_UNSUPPORTED);
++        error_setg(errp, "this feature or command is not currently supported");
+         return;
+     }
+ 
+@@ -1540,7 +1540,7 @@ GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+ 
+ GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+@@ -2235,7 +2235,7 @@ void qmp_guest_set_user_password(const char *username,
+                                  bool crypted,
+                                  Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+ }
+ #endif /* __linux__ || __FreeBSD__ */
+ 
+@@ -2751,47 +2751,47 @@ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+ 
+ void qmp_guest_suspend_disk(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+ }
+ 
+ void qmp_guest_suspend_ram(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+ }
+ 
+ void qmp_guest_suspend_hybrid(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+ }
+ 
+ GuestLogicalProcessorList *qmp_guest_get_vcpus(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ int64_t qmp_guest_set_vcpus(GuestLogicalProcessorList *vcpus, Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return -1;
+ }
+ 
+ GuestMemoryBlockList *qmp_guest_get_memory_blocks(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ GuestMemoryBlockResponseList *
+ qmp_guest_set_memory_blocks(GuestMemoryBlockList *mem_blks, Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+@@ -3056,7 +3056,7 @@ error:
+ 
+ GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+@@ -3066,20 +3066,20 @@ GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
+ 
+ GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+ 
+     return 0;
+ }
+ 
+ int64_t qmp_guest_fsfreeze_freeze(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+ 
+     return 0;
+ }
+@@ -3088,33 +3088,33 @@ int64_t qmp_guest_fsfreeze_freeze_list(bool has_mountpoints,
+                                        strList *mountpoints,
+                                        Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+ 
+     return 0;
+ }
+ 
+ int64_t qmp_guest_fsfreeze_thaw(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+ 
+     return 0;
+ }
+ 
+ GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+@@ -3124,7 +3124,7 @@ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+ GuestFilesystemTrimResponse *
+ qmp_guest_fstrim(bool has_minimum, int64_t minimum, Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ #endif
+@@ -3243,7 +3243,7 @@ GuestUserList *qmp_guest_get_users(Error **errp)
+ 
+ GuestUserList *qmp_guest_get_users(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+@@ -3386,7 +3386,7 @@ GuestOSInfo *qmp_guest_get_osinfo(Error **errp)
+ 
+ GuestDeviceInfoList *qmp_guest_get_devices(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+ 
+     return NULL;
+ }
+diff --git a/qga/commands-win32.c b/qga/commands-win32.c
+index aa8c9770d4..5c9f8e0923 100644
+--- a/qga/commands-win32.c
++++ b/qga/commands-win32.c
+@@ -1213,7 +1213,7 @@ GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
+ GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **errp)
+ {
+     if (!vss_initialized()) {
+-        error_setg(errp, QERR_UNSUPPORTED);
++        error_setg(errp, "this feature or command is not currently supported");
+         return 0;
+     }
+ 
+@@ -1241,7 +1241,7 @@ int64_t qmp_guest_fsfreeze_freeze_list(bool has_mountpoints,
+     Error *local_err = NULL;
+ 
+     if (!vss_initialized()) {
+-        error_setg(errp, QERR_UNSUPPORTED);
++        error_setg(errp, "this feature or command is not currently supported");
+         return 0;
+     }
+ 
+@@ -1276,7 +1276,7 @@ int64_t qmp_guest_fsfreeze_thaw(Error **errp)
+     int i;
+ 
+     if (!vss_initialized()) {
+-        error_setg(errp, QERR_UNSUPPORTED);
++        error_setg(errp, "this feature or command is not currently supported");
+         return 0;
+     }
+ 
+@@ -1509,7 +1509,7 @@ out:
+ 
+ void qmp_guest_suspend_hybrid(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+ }
+ 
+ static IP_ADAPTER_ADDRESSES *guest_get_adapters_addresses(Error **errp)
+@@ -1877,7 +1877,7 @@ GuestLogicalProcessorList *qmp_guest_get_vcpus(Error **errp)
+ 
+ int64_t qmp_guest_set_vcpus(GuestLogicalProcessorList *vcpus, Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return -1;
+ }
+ 
+@@ -1938,7 +1938,7 @@ void qmp_guest_set_user_password(const char *username,
+     GError *gerr = NULL;
+ 
+     if (crypted) {
+-        error_setg(errp, QERR_UNSUPPORTED);
++        error_setg(errp, "this feature or command is not currently supported");
+         return;
+     }
+ 
+@@ -1983,20 +1983,20 @@ done:
+ 
+ GuestMemoryBlockList *qmp_guest_get_memory_blocks(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ GuestMemoryBlockResponseList *
+ qmp_guest_set_memory_blocks(GuestMemoryBlockList *mem_blks, Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+@@ -2522,12 +2522,12 @@ char *qga_get_host_name(Error **errp)
+ 
+ GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
+ 
+ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+ {
+-    error_setg(errp, QERR_UNSUPPORTED);
++    error_setg(errp, "this feature or command is not currently supported");
+     return NULL;
+ }
 -- 
 2.41.0
 

@@ -1,204 +1,164 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp91736ejc;
-        Wed, 4 Oct 2023 22:56:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFIXFBggd0n5yp8699TBolDEAc0FhqICNmSGzltmkyMP85kGD04hkjIPJS71oOMSXtmv1F3
-X-Received: by 2002:a05:620a:46ab:b0:773:ac84:3f57 with SMTP id bq43-20020a05620a46ab00b00773ac843f57mr2158899qkb.5.1696485377703;
-        Wed, 04 Oct 2023 22:56:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696485377; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp111110ejc;
+        Wed, 4 Oct 2023 23:34:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFgum8brXrB8gLL9bOQw7P98eAeGXKRMpnYR45PFdmQFfqUlWBrJms/NiHd9G6R1WmfYZ6R
+X-Received: by 2002:a05:6214:580a:b0:63f:80a0:4eea with SMTP id mk10-20020a056214580a00b0063f80a04eeamr4298088qvb.24.1696487658332;
+        Wed, 04 Oct 2023 23:34:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696487658; cv=none;
         d=google.com; s=arc-20160816;
-        b=hYCMDljeYPJscLuXzrjmXSrxMYxnsIyyzQ+a9u/ACHvlwO5QUEbsNtBfx+Uqw5hely
-         Iv3A6OJiOk/64lyaxSM8lQUG9D1YUJTPI8Pl/DucAokM1+skRcCCE4mh75N6vBvl5nO+
-         qBX6B8oNdCsVdvSVl7kZA4mLRr2i/6dCbyoKeOcciTHv7Tx/uboEQa5AYcpjd8pqEC6h
-         SeAgMWm9UtdC5W5UpYCZYsSnEWau06Eegi3YYlSdNA1lLSfYpdXIFdysB9Jfn/2dimHq
-         GphWtwxhTTIrMizJOEN0enII17+GnyFOoHWaSZhD2Zm5w9Hcnd8HmaO8gG4WGPVLTBtG
-         lvkg==
+        b=yg0BzIE0evr2Lb5LFOP+AK5k32q5v6GEs5DYb2bMWVAKtEa4q8E6mtthBqZmP7fpjZ
+         f1USf2qJQue5/b7rz6qCvSK8pUTPjjl1GTSq3VsATuLe0zaFrZyqcEL1sA2cwQyQi3N7
+         uyJUHIibdXWR89r/EpP7sID/7gHth4s1NGn8CwUGB+J6/rvMwYwnsu8/RrxZHEfTg8cq
+         7H3xi4ZEi4VJRxu22ptx4CYGfciSQhPeEkKkU7qS3KFwL1PoYCevfMlQ7Ps1IJh2RwcM
+         wt3x0CKftZ0QqWxIfPSgS7+iromb3RStvOYU+SXcaUawnJy9sh3vwsXAu4VbhztOCoor
+         L59w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=MQDQ/IdPqgy9QOhKGakX8ldLMrhswD2LcoLE9zTXiDw=;
-        fh=r+3leG1A75C6Wk6ksmTdxCNFc1EYum2vbQBV1ayLLGI=;
-        b=CqSm9zHpCR4oIRuBa1OVINvYZIe4FbMwtu4awYSoh9LbIFWJqZ2N1J+cF2/cVtmld+
-         hpPxv7Vwz848qzGqGNYIzd0MDhPPumdFXdJqrh8+UJQmHuZLF4/Rnu/ik7jKpO93GO0a
-         GpCpK5K1MHAQb2MhlZ4gYUE8NNeHFWo2PFYa9DE0LFZXjQhX2qpsTkl6Xw+tEdCdo5jM
-         pEUMJ453gDPH5rGSYa/9qGLoJueEp2I7bks4O8uXSRjUt4J/AWH1KX4DNbviZxwpsUVE
-         iKssvCRkNgdco18tbc6UaA3xFwvnkoKy6N8t388XgfeQ5ChnSd4GQO6vejJB2P8d9QvL
-         8olA==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:user-agent
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=a9yIT+0QNu4Q0GF76YwfnSynQi+VPvWGQglwm0oPTIg=;
+        fh=eQ+J19eCzfsk4qT9rc/XPeQdsT/z1I2s5BMeIQbvShI=;
+        b=fReXuxrT0Nzw0LKzNLmkGIh8WspG+CzMltDh3TnlzsIKOFp7josmY70CLNQIAJQ/W9
+         GJGGG36teiILD/cpeVbeltxaKffyBxcoy7O4wS8wGFEVEpypDcDs4dkEPR+/dZTt7Nmb
+         SFx3fEs49Kpw41ogm4rONsGLKha+DmA4DvW47NnUSF5Jwg+JQjPk3n2rKN31GRQwt1ZY
+         ngj/PQOTtpGI4nVQZS7wFw+3UwcUSH8f5gVSz89MbfGoJJlB6uK1rnCNU+kAPZAasoSy
+         CnBjVYeqFDUXzsPCj2GgL/zBpyRvVSNCGKO8rtnpe2sdQxJteAPy3FKUWuH5MH+mEKiF
+         i+Og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ea23WULm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id tn24-20020a05620a3c1800b00775a1063051si449002qkn.501.2023.10.04.22.56.17
+        by mx.google.com with ESMTPS id e1-20020a0ce3c1000000b00655e2faa08csi451241qvl.236.2023.10.04.23.34.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 22:56:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Oct 2023 23:34:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ea23WULm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qoHL4-0007uv-7t; Thu, 05 Oct 2023 01:55:58 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qoHvY-0004Ia-7S; Thu, 05 Oct 2023 02:33:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=AqEq=FT=kaod.org=clg@ozlabs.org>)
- id 1qoHL0-0007tm-UB; Thu, 05 Oct 2023 01:55:55 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qoHvW-0004IC-VC
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 02:33:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=AqEq=FT=kaod.org=clg@ozlabs.org>)
- id 1qoHKy-0002WD-JJ; Thu, 05 Oct 2023 01:55:54 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4S1LQ40kZBz4xQW;
- Thu,  5 Oct 2023 16:55:40 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4S1LPz5S0Tz4xLy;
- Thu,  5 Oct 2023 16:55:35 +1100 (AEDT)
-Message-ID: <a0e552ad-e3fd-6ff7-fd92-6be890ddce47@kaod.org>
-Date: Thu, 5 Oct 2023 07:55:31 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v2 01/22] qapi: Inline and remove QERR_BUS_NO_HOTPLUG
- definition
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- qemu-s390x@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>
+ (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
+ id 1qoHvU-0005wM-Mp
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 02:33:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1696487616;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=a9yIT+0QNu4Q0GF76YwfnSynQi+VPvWGQglwm0oPTIg=;
+ b=Ea23WULmmTNNsFsM4oP0H8qs5ax6bbrY64eA64AX0JbNpoO16fyo/nkM+zcjjnvzUjDFMM
+ W5bucVFgGZ/sJdf69KT0ekuak4/rb4TRI6LPUUSl/EMqhzqjeRxhfsfEejelGCj7UYiZSb
+ X+bVtThLNX1xOX3R5cUoPa6lMR5C3CA=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-307-jdn5BdZ0PFCv5uaejY0lVw-1; Thu, 05 Oct 2023 02:33:34 -0400
+X-MC-Unique: jdn5BdZ0PFCv5uaejY0lVw-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-405535740d2so4046165e9.3
+ for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 23:33:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696487613; x=1697092413;
+ h=content-transfer-encoding:mime-version:message-id:date:reply-to
+ :user-agent:references:in-reply-to:subject:cc:to:from
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=a9yIT+0QNu4Q0GF76YwfnSynQi+VPvWGQglwm0oPTIg=;
+ b=ge5gOEu2QREqI9iZHpbDSps7KF3xUFfkv5Xnmo2vHsPACEHUOcgEEAXsskFMYWfjjt
+ rS1mPftZFhnaaJJmjtEws9Hj82xBtCo5PWtODlurRUIB0EBGfTts7mU3gtlUuQ3BjKdH
+ BPGu7Gvio/QoLQ5z3SnKJINRMWTHhxb0FvPGPvdQ9vcfZuVmy+nbrpmerXDakKxzlG2Z
+ fKa5r6PQv3zFyL2ujK1oOKlpc4HTUS3H4QAMWaEPR+f+kTLuwvi/5c3y6u6gHmBXNtZ9
+ dbpMw0AjqSI81Cy6YwIBGex8eeQNBsTW18Pr2ehNXwHB0TOihjbOxJm9pRCdUQSehT4P
+ ZlcA==
+X-Gm-Message-State: AOJu0YzujwLAoNWPo1+UqPCHL3ydZGN0n+pCehcSBxsm62+9SDFIqwM7
+ am4XXvjuEihJT3W+4CYD4YAyRAotZwIU/LLJaOcGAkP6Nod8yfOcXXKA2i4oawFh4kPWao3/cNB
+ 6yRbdoTWnlfWdj7c=
+X-Received: by 2002:a05:600c:2113:b0:402:e6a2:c8c7 with SMTP id
+ u19-20020a05600c211300b00402e6a2c8c7mr4253988wml.7.1696487613391; 
+ Wed, 04 Oct 2023 23:33:33 -0700 (PDT)
+X-Received: by 2002:a05:600c:2113:b0:402:e6a2:c8c7 with SMTP id
+ u19-20020a05600c211300b00402e6a2c8c7mr4253977wml.7.1696487613075; 
+ Wed, 04 Oct 2023 23:33:33 -0700 (PDT)
+Received: from redhat.com (static-151-150-85-188.ipcom.comunitel.net.
+ [188.85.150.151]) by smtp.gmail.com with ESMTPSA id
+ 19-20020a05600c025300b00401d8181f8bsm3010469wmj.25.2023.10.04.23.33.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Oct 2023 23:33:32 -0700 (PDT)
+From: Juan Quintela <quintela@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,  qemu-block@nongnu.org,
+ qemu-s390x@nongnu.org,  Peter Xu <peterx@redhat.com>,  Leonardo Bras
+ <leobras@redhat.com>
+Subject: Re: [PATCH v2 10/22] qapi: Correct error message for
+ 'vcpu_dirty_limit' parameter
+In-Reply-To: <20231005045041.52649-11-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 5 Oct 2023 06:50:27
+ +0200")
 References: <20231005045041.52649-1-philmd@linaro.org>
- <20231005045041.52649-2-philmd@linaro.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20231005045041.52649-2-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=AqEq=FT=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.528, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <20231005045041.52649-11-philmd@linaro.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.3 (gnu/linux)
+Date: Thu, 05 Oct 2023 08:33:31 +0200
+Message-ID: <87edi9r32c.fsf@secure.mitica>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2JmjDbLTin/r
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: quintela@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3/pd1ODgmQui
 
-On 10/5/23 06:50, Philippe Mathieu-Daudé wrote:
-> Address the comment added in commit 4629ed1e98
-> ("qerror: Finally unused, clean up"), from 2015:
-> 
->    /*
->     * These macros will go away, please don't use
->     * in new code, and do not add new ones!
->     */
-> 
-> Mechanical transformation using sed, manually
-> removing the definition in include/qapi/qmp/qerror.h.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
+> QERR_INVALID_PARAMETER_VALUE is defined as:
+>
+>   #define QERR_INVALID_PARAMETER_VALUE \
+>       "Parameter '%s' expects %s"
+>
+> The current error is formatted as:
+>
+>   "Parameter 'vcpu_dirty_limit' expects is invalid, it must greater then =
+1 MB/s"
+>
+> Replace by:
+>
+>   "Parameter 'vcpu_dirty_limit' is invalid, it must greater then 1 MB/s"
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
-
-> ---
->   include/qapi/qmp/qerror.h | 3 ---
->   hw/ppc/spapr_pci.c        | 4 ++--
->   softmmu/qdev-monitor.c    | 8 +++++---
->   3 files changed, 7 insertions(+), 8 deletions(-)
-> 
-> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-> index 8dd9fcb071..1a9c2d3502 100644
-> --- a/include/qapi/qmp/qerror.h
-> +++ b/include/qapi/qmp/qerror.h
-> @@ -17,9 +17,6 @@
->    * add new ones!
->    */
->   
-> -#define QERR_BUS_NO_HOTPLUG \
-> -    "Bus '%s' does not support hotplugging"
-> -
->   #define QERR_DEVICE_HAS_NO_MEDIUM \
->       "Device '%s' has no medium"
->   
-> diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-> index 370c5a90f2..7f063f5852 100644
-> --- a/hw/ppc/spapr_pci.c
-> +++ b/hw/ppc/spapr_pci.c
-> @@ -1550,7 +1550,7 @@ static void spapr_pci_pre_plug(HotplugHandler *plug_handler,
->            * we need to let them know it's not enabled
->            */
->           if (plugged_dev->hotplugged) {
-> -            error_setg(errp, QERR_BUS_NO_HOTPLUG,
-> +            error_setg(errp, "Bus '%s' does not support hotplugging",
->                          object_get_typename(OBJECT(phb)));
->               return;
->           }
-> @@ -1671,7 +1671,7 @@ static void spapr_pci_unplug_request(HotplugHandler *plug_handler,
->       SpaprDrc *drc = drc_from_dev(phb, pdev);
->   
->       if (!phb->dr_enabled) {
-> -        error_setg(errp, QERR_BUS_NO_HOTPLUG,
-> +        error_setg(errp, "Bus '%s' does not support hotplugging",
->                      object_get_typename(OBJECT(phb)));
->           return;
->       }
-> diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
-> index 74f4e41338..3a9740dcbd 100644
-> --- a/softmmu/qdev-monitor.c
-> +++ b/softmmu/qdev-monitor.c
-> @@ -656,7 +656,8 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
->   
->       if (qdev_should_hide_device(opts, from_json, errp)) {
->           if (bus && !qbus_is_hotpluggable(bus)) {
-> -            error_setg(errp, QERR_BUS_NO_HOTPLUG, bus->name);
-> +            error_setg(errp, "Bus '%s' does not support hotplugging",
-> +                       bus->name);
->           }
->           return NULL;
->       } else if (*errp) {
-> @@ -664,7 +665,7 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
->       }
->   
->       if (phase_check(PHASE_MACHINE_READY) && bus && !qbus_is_hotpluggable(bus)) {
-> -        error_setg(errp, QERR_BUS_NO_HOTPLUG, bus->name);
-> +        error_setg(errp, "Bus '%s' does not support hotplugging", bus->name);
->           return NULL;
->       }
->   
-> @@ -904,7 +905,8 @@ void qdev_unplug(DeviceState *dev, Error **errp)
->       }
->   
->       if (dev->parent_bus && !qbus_is_hotpluggable(dev->parent_bus)) {
-> -        error_setg(errp, QERR_BUS_NO_HOTPLUG, dev->parent_bus->name);
-> +        error_setg(errp, "Bus '%s' does not support hotplugging",
-> +                   dev->parent_bus->name);
->           return;
->       }
->   
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 

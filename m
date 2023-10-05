@@ -1,113 +1,118 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp70835ejc;
-        Wed, 4 Oct 2023 21:55:14 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGYfKYGzpKdEOnGstMIoMCVynjMiFtLzrq1zq1dvroT2Dh2P5p46dtO8l8WmbbeMtoxeSkS
-X-Received: by 2002:a0c:8b91:0:b0:65d:f81:9b47 with SMTP id r17-20020a0c8b91000000b0065d0f819b47mr3584459qva.45.1696481714001;
-        Wed, 04 Oct 2023 21:55:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696481713; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp71340ejc;
+        Wed, 4 Oct 2023 21:56:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF1U0bwFuvZebBzduc/G7AmEHLUHAGwbTZ4QCGLwuhGuEehA+o9Oj+oxCTeHf2aXin0ro5Y
+X-Received: by 2002:ac8:5708:0:b0:418:cec:5e64 with SMTP id 8-20020ac85708000000b004180cec5e64mr320311qtw.19.1696481814270;
+        Wed, 04 Oct 2023 21:56:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696481814; cv=none;
         d=google.com; s=arc-20160816;
-        b=WMubsS7Akb1TZVUxsKctqf3y9b+Fc9zc+678oou3BrXKZg1R7pELjZqyNu89yAj/iv
-         s8esbXAqFJ2gHZHLVvnpJIc/Wa1aYpmPg8ayJM1oDVLQw6+VlmbSQk9WQqBN4lpk0boy
-         tpR9HOYIqICXOrpNYKNL3gcelCeywX4Do65yeCh/C3Q5ADi3iJHdocaXu2MLv/xA8nss
-         IX9bFKiAyFf3eaKZKvwlXlH0Y7KacRSR4GHR21fzMKZqvqDGabwo/un+QkfQ9x3VtIo8
-         TbfvXeh773g0fyL97oe5s2e9HQhlDOYWaWz5WIHlUrYzlZldDF68jScsNyMqdagLaf3Z
-         drkA==
+        b=RDMVujsjtYcyIjTFrjb4AeGk0O+hyvb0BGZquu3tc2RIShOBFHEcA5HpKQ/hz/FvYG
+         LlY4SIeR7vK4OoHmIBXh61srcmLVv1Z64dPivO5XfLFpXqRmPUKRAQCrz0k0oya9nHHx
+         8FPTw+2hnb0MHUt9ZMHiUhVMHHBGq4lM/b7GuOEeelreWRGMAl007Yp/n4pmoOQkhW8n
+         WuAc7dYeTokkwuMuJNj+pFaJ1HHU9CnrX0gIrbThy+mPu5H5KKv6n8Be3y94AtZ1beKS
+         2acIVH3pqFDNnGRIH94lhMb5tVfuSARvpVOfs/Maog5B7e7lo1rataMAsR0/Z0HNvyvw
+         TEiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=YgccYr5Dzt6X/tQjLL34w8Nky+uqW63WT4BtHcxYfTM=;
-        fh=ua6qulcWihvAMbyeHDk2JG5T8PW//dxPndMHeqNlEsg=;
-        b=X5uwsq4urik9BdGsfgquWiH/TG0/MsmKKo+d2pFHF45DoqSHGdtBWqgKJwdZc0du9J
-         KupssGHz5G3qifvglwAnB2VJKZA2UpEO1mY1HUiNtoyhefmMPo0oNuFM3GqPQbzxogIZ
-         1twyKJrltSdc46G2fuOsXkFGRbG2PNSqHsNydlj00bLliGaSAWYeuJPHzhbxeJET7QjD
-         fKN3n7cw5OuvbBX+OghEico/avycZbTEDvKmy9Hjaw1Z2J1hekzS56PTrfHUz6S4JicK
-         qpcobeQ61rn/eKiDFpKdnXrm7elzBhtlGr2Xm0X1yCIsFBaOQmjzLiV5np4aiXArNtsk
-         32pg==
+        bh=YZajAk/2I9ikw2/rt53JYOwTH2I6pFeiAjPgvz+uD7Y=;
+        fh=buAIIXlR70lPcD8BO+Bim/gtRDoADGdBLYvvWFS22AE=;
+        b=Lqi9QIgMmAy+QJF/eMDraaurwZjMU2aQOB7qS/xW+5HETy0YAW/4+8XRoCC4TiwuUE
+         mEPIVYDGTM4JxB3x/SW/DfnZBXlyODWHCKhf/25q/3Uc3At9eJbJAtrzuRYpHOQua209
+         k1NbP4UPwCAdc0+E2U+EbEQlD0E0s8UMUvZvyFuIpV1IeYBl3krIpSbuWOVIfsImBSa7
+         XKzU2QBRjiHHaCItAtv7WyGr0XBgWFS3ORv9OdAmM/awklBQe87oaHxcbdUTnNc3W3BS
+         FWfYog/mz0Fb9A51NqyhSrde8lANt6OTdp+QUasY2RfFKH64oNHyPaI05q0P/A9j4TOG
+         Y+bQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tsxn5RgD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=lXZBEOIz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o9-20020a0ccb09000000b0065b229ed0e8si384582qvk.182.2023.10.04.21.55.13
+        by mx.google.com with ESMTPS id u17-20020ac858d1000000b004197ddb7c46si422800qta.764.2023.10.04.21.56.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 21:55:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Oct 2023 21:56:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tsxn5RgD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=lXZBEOIz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qoGMS-00018A-77; Thu, 05 Oct 2023 00:53:20 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qoGMN-0000ig-Ku; Thu, 05 Oct 2023 00:53:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGMG-0008HT-CY
- for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:53:08 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGLk-0007mL-PC
+ for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:52:38 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGMB-0007j3-H4
- for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:53:08 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3231d67aff2so597333f8f.0
- for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 21:53:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGLh-0007Dz-OD
+ for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:52:36 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4064876e8b8so5430615e9.0
+ for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 21:52:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696481582; x=1697086382; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696481551; x=1697086351; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YgccYr5Dzt6X/tQjLL34w8Nky+uqW63WT4BtHcxYfTM=;
- b=tsxn5RgDjtR6zceeCoAmcBhCDjUrazsPWwYSnxUJDH2TWA8tkl/JjhkWHYOJ0cErJa
- mRpr4TY9K/a2SBzNSxh66IuoeLksFZ0cdM1zGEIvTo93CPM1kqf1yeduNUtWctmf8v8o
- b0LSJKGNSRuEyYT/PJE4cSj92gt1a9Dzv3lM05j+Z4rUPdHXjwqhe+d3YQJbQBP0DjfN
- s7LBELDhD5X/i+Wsdt93Hf/4Fbdx6tC07+oZjDU3Wx83RXgMpDJ/mwmAtKSKCIlLtM7k
- cXzxA6Dg+fp6XnRreBLJgJ7m4iWyT6DESZy+9epmTwNiGTZlka7MwJCKsMzT4i4TRfNM
- xdsQ==
+ bh=YZajAk/2I9ikw2/rt53JYOwTH2I6pFeiAjPgvz+uD7Y=;
+ b=lXZBEOIzlC6ur7js7yHjgPMSbO91uFv2tSjI7NMxq2+oeBx6J9egwY59DgNrCz/ofb
+ oG+kUDMwDGnMjlfrLNTS7DxoacX6ouhDmyGOkw/O6K63Ugj8PDE9Xmgp9miDU+dSfJVF
+ 8BIZffeAWZ9UAg9cvXN2tf6/NrGnnxVLqtkGens6e8fzmN6/grO5WeUV5tS/zviyiiuL
+ fyaU4uDkKTVE5mPVU5JUwqFoWsf8Im9NGXG26saAtkTT4VYCWzXLxhlNUb+XT+GmMcxG
+ uaNNZQ1MX0UiLKv7Fb4Meh46YtSrOGXKh5kyAIpozSgq0qAgFKuQ28/JM7x3n+0vAKqO
+ TA6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696481582; x=1697086382;
+ d=1e100.net; s=20230601; t=1696481551; x=1697086351;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=YgccYr5Dzt6X/tQjLL34w8Nky+uqW63WT4BtHcxYfTM=;
- b=qRSporsZD8AcaEu1uH0I5SBgaN+IGlHNJceQW9u9zRRyIydfQPqLY91PE93a9J56h9
- sYIL10AmTQ9VgLUxRevTmoqdLyKsEMsaugtXHdYH+96DQcKDKOzku7acdedGt3fCtEJ7
- +xKgErpWVlQIC6uESFpdmexPtWnA+EAb/9nq0ydAgEXLJb/W9uBN3VuX5Yk/EVAY6TuX
- m9Qm93OaTBJgqULIbL2h5kmnQwpjPTNv7dG7/FmMJut7z2JWWO/JzJbt9Bw87jF2gA0j
- r3+aWj1IiBYEbWMgw316/mXUEaglMnpn2eWyj34k1v7CevS9J51NO5PZPSaT1vfr9Co8
- ArFQ==
-X-Gm-Message-State: AOJu0Yw36AMNyt/kCkA1EfocnLsVtiv+dc2Ow/d4gExUR+cLjz8I8ruW
- JXtS6r+zTpBm/kmCwO157iuCWG0rShY9lniuxOo=
-X-Received: by 2002:a5d:4144:0:b0:31a:d4e4:4f63 with SMTP id
- c4-20020a5d4144000000b0031ad4e44f63mr3618344wrq.18.1696481581749; 
- Wed, 04 Oct 2023 21:53:01 -0700 (PDT)
+ bh=YZajAk/2I9ikw2/rt53JYOwTH2I6pFeiAjPgvz+uD7Y=;
+ b=mOIhvwPueAup3HE+TqJiqr/RE3JgELRfA0C7dWzMawAFoGmNhkLYD4OgH0VHXHUkmo
+ PDYliQLieveeOyRPMUVvUbE+/oVQ6/I5tSBM/gwh/QC07R4ZvgfgPRjm4DMzaVSw7Ilr
+ V8nQKJaydwf05qq/nK0kgiDBQaGJbiNa1Pw4d9/ZktN4X4XFdw4TEcWZ2zCzNGKfikid
+ zq7o11oAH0Y/Ta7gjvwL40ldA5zzW+N64K0/msACH2r6nOZDyUeMB4SClzU75IcYyAmT
+ kfXOLyLMjh7ve7VzMJGUQ7BASsAWD+h2X2SC4UIwL5C9ZdrVWmQN0IG2SylnR7VhUYq+
+ PSlw==
+X-Gm-Message-State: AOJu0Yygf2bq+ub78ubDzVNwxp+uBwLgdWfbgqhaCf7UCYFTjlsvG/An
+ CX+cVmdEcT4tAVFRr0lEzZac4g==
+X-Received: by 2002:adf:e406:0:b0:31a:e6c2:7705 with SMTP id
+ g6-20020adfe406000000b0031ae6c27705mr3486721wrm.50.1696481551363; 
+ Wed, 04 Oct 2023 21:52:31 -0700 (PDT)
 Received: from m1x-phil.lan (tbo33-h01-176-171-211-120.dsl.sta.abo.bbox.fr.
  [176.171.211.120]) by smtp.gmail.com with ESMTPSA id
- g4-20020adff404000000b0031c52e81490sm750030wro.72.2023.10.04.21.53.00
+ x4-20020a5d54c4000000b00327bf4f2f16sm748742wrv.30.2023.10.04.21.52.28
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 21:53:01 -0700 (PDT)
+ Wed, 04 Oct 2023 21:52:31 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Michael Roth <michael.roth@amd.com>,
- Konstantin Kostiuk <kkostiuk@redhat.com>
-Subject: [RFC PATCH v2 21/22] qapi: Inline and remove QERR_UNSUPPORTED
- definition
-Date: Thu,  5 Oct 2023 06:50:38 +0200
-Message-ID: <20231005045041.52649-22-philmd@linaro.org>
+ Stefan Berger <stefanb@linux.ibm.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, integration@gluster.org
+Subject: [PATCH v2 16/22] qapi: Inline QERR_MISSING_PARAMETER definition
+ (constant parameter)
+Date: Thu,  5 Oct 2023 06:50:33 +0200
+Message-ID: <20231005045041.52649-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231005045041.52649-1-philmd@linaro.org>
 References: <20231005045041.52649-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,20 +121,20 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ESeHw9EqRxOK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YyHzyGbqz5Yj
 
 Address the comment added in commit 4629ed1e98
 ("qerror: Finally unused, clean up"), from 2015:
@@ -139,370 +144,295 @@ Address the comment added in commit 4629ed1e98
    * in new code, and do not add new ones!
    */
 
-Mechanical transformation using:
+Mechanical transformation using the following
+coccinelle semantic patches:
 
-  $ sed -i -e 's/QERR_UNSUPPORTED/"this feature or command is not currently supported"/' \
-    $(git grep -wl QERR_UNSUPPORTED)
+    @match@
+    expression errp;
+    constant param;
+    @@
+         error_setg(errp, QERR_MISSING_PARAMETER, param);
 
-then manually removing the definition in include/qapi/qmp/qerror.h.
+    @script:python strformat depends on match@
+    param << match.param;
+    fixedfmt; // new var
+    @@
+    if param[0] == '"': # Format skipping '"',
+        fixedfmt = f'"Parameter \'{param[1:-1]}\' is missing"'
+    else: # or use definition.
+        fixedfmt = f'"Parameter " {param} " is missing"'
+    coccinelle.fixedfmt = cocci.make_ident(fixedfmt)
+
+    @replace@
+    expression match.errp;
+    constant match.param;
+    identifier strformat.fixedfmt;
+    @@
+    -    error_setg(errp, QERR_MISSING_PARAMETER, param);
+    +    error_setg(errp, fixedfmt);
+
+and:
+
+    @match@
+    constant param;
+    @@
+         error_report(QERR_MISSING_PARAMETER, param);
+
+    @script:python strformat depends on match@
+    param << match.param;
+    fixedfmt; // new var
+    @@
+    fixedfmt = f'"Parameter \'{param[1:-1]}\' is missing"'
+    coccinelle.fixedfmt = cocci.make_ident(fixedfmt)
+
+    @replace@
+    constant match.param;
+    identifier strformat.fixedfmt;
+    @@
+    -    error_report(QERR_MISSING_PARAMETER, param);
+    +    error_report(fixedfmt);
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 ---
-RFC: Not sure what is the best way to change the comment
-     in qga/qapi-schema.json...
----
- qga/qapi-schema.json      |  5 +++--
- include/qapi/qmp/qerror.h |  3 ---
- qga/commands-bsd.c        |  8 +++----
- qga/commands-posix.c      | 46 +++++++++++++++++++--------------------
- qga/commands-win32.c      | 22 +++++++++----------
- 5 files changed, 41 insertions(+), 43 deletions(-)
+ backends/dbus-vmstate.c        |  2 +-
+ block/gluster.c                | 21 +++++++++++----------
+ block/monitor/block-hmp-cmds.c |  6 +++---
+ dump/dump.c                    |  4 ++--
+ hw/usb/redirect.c              |  2 +-
+ softmmu/qdev-monitor.c         |  2 +-
+ softmmu/tpm.c                  |  4 ++--
+ softmmu/vl.c                   |  4 ++--
+ ui/input-barrier.c             |  2 +-
+ ui/ui-qmp-cmds.c               |  2 +-
+ 10 files changed, 25 insertions(+), 24 deletions(-)
 
-diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
-index b720dd4379..51683f4dc2 100644
---- a/qga/qapi-schema.json
-+++ b/qga/qapi-schema.json
-@@ -6,8 +6,9 @@
- #
- # "unsupported" is a higher-level error than the errors that
- # individual commands might document.  The caller should always be
--# prepared to receive QERR_UNSUPPORTED, even if the given command
--# doesn't specify it, or doesn't document any failure mode at all.
-+# prepared to receive the "this feature or command is not currently supported"
-+# message, even if the given command doesn't specify it, or doesn't document
-+# any failure mode at all.
- ##
- 
- ##
-diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-index 840831cc6a..7606f4525d 100644
---- a/include/qapi/qmp/qerror.h
-+++ b/include/qapi/qmp/qerror.h
-@@ -17,7 +17,4 @@
-  * add new ones!
-  */
- 
--#define QERR_UNSUPPORTED \
--    "this feature or command is not currently supported"
--
- #endif /* QERROR_H */
-diff --git a/qga/commands-bsd.c b/qga/commands-bsd.c
-index 17bddda1cf..11536f148f 100644
---- a/qga/commands-bsd.c
-+++ b/qga/commands-bsd.c
-@@ -152,25 +152,25 @@ int qmp_guest_fsfreeze_do_thaw(Error **errp)
- 
- GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- #endif /* CONFIG_FSFREEZE */
-diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index 6169bbf7a0..f510add366 100644
---- a/qga/commands-posix.c
-+++ b/qga/commands-posix.c
-@@ -165,7 +165,7 @@ void qmp_guest_set_time(bool has_time, int64_t time_ns, Error **errp)
+diff --git a/backends/dbus-vmstate.c b/backends/dbus-vmstate.c
+index 57369ec0f2..e781ded17c 100644
+--- a/backends/dbus-vmstate.c
++++ b/backends/dbus-vmstate.c
+@@ -413,7 +413,7 @@ dbus_vmstate_complete(UserCreatable *uc, Error **errp)
      }
  
-     if (!hwclock_available) {
--        error_setg(errp, QERR_UNSUPPORTED);
-+        error_setg(errp, "this feature or command is not currently supported");
+     if (!self->dbus_addr) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "addr");
++        error_setg(errp, "Parameter 'addr' is missing");
          return;
      }
  
-@@ -1540,7 +1540,7 @@ GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+diff --git a/block/gluster.c b/block/gluster.c
+index ad5fadbe79..8d97d698c3 100644
+--- a/block/gluster.c
++++ b/block/gluster.c
+@@ -530,20 +530,20 @@ static int qemu_gluster_parse_json(BlockdevOptionsGluster *gconf,
  
- GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
-@@ -2235,7 +2235,7 @@ void qmp_guest_set_user_password(const char *username,
-                                  bool crypted,
-                                  Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- }
- #endif /* __linux__ || __FreeBSD__ */
- 
-@@ -2751,47 +2751,47 @@ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
- 
- void qmp_guest_suspend_disk(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- }
- 
- void qmp_guest_suspend_ram(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- }
- 
- void qmp_guest_suspend_hybrid(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- }
- 
- GuestLogicalProcessorList *qmp_guest_get_vcpus(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- int64_t qmp_guest_set_vcpus(GuestLogicalProcessorList *vcpus, Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return -1;
- }
- 
- GuestMemoryBlockList *qmp_guest_get_memory_blocks(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestMemoryBlockResponseList *
- qmp_guest_set_memory_blocks(GuestMemoryBlockList *mem_blks, Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
-@@ -3056,7 +3056,7 @@ error:
- 
- GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
-@@ -3066,20 +3066,20 @@ GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
- 
- GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- 
-     return 0;
- }
- 
- int64_t qmp_guest_fsfreeze_freeze(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- 
-     return 0;
- }
-@@ -3088,33 +3088,33 @@ int64_t qmp_guest_fsfreeze_freeze_list(bool has_mountpoints,
-                                        strList *mountpoints,
-                                        Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- 
-     return 0;
- }
- 
- int64_t qmp_guest_fsfreeze_thaw(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- 
-     return 0;
- }
- 
- GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
- GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
-@@ -3124,7 +3124,7 @@ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
- GuestFilesystemTrimResponse *
- qmp_guest_fstrim(bool has_minimum, int64_t minimum, Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- #endif
-@@ -3243,7 +3243,7 @@ GuestUserList *qmp_guest_get_users(Error **errp)
- 
- GuestUserList *qmp_guest_get_users(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
- 
-@@ -3386,7 +3386,7 @@ GuestOSInfo *qmp_guest_get_osinfo(Error **errp)
- 
- GuestDeviceInfoList *qmp_guest_get_devices(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- 
-     return NULL;
- }
-diff --git a/qga/commands-win32.c b/qga/commands-win32.c
-index aa8c9770d4..5c9f8e0923 100644
---- a/qga/commands-win32.c
-+++ b/qga/commands-win32.c
-@@ -1213,7 +1213,7 @@ GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
- GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **errp)
- {
-     if (!vss_initialized()) {
--        error_setg(errp, QERR_UNSUPPORTED);
-+        error_setg(errp, "this feature or command is not currently supported");
-         return 0;
+     num_servers = qdict_array_entries(options, GLUSTER_OPT_SERVER_PATTERN);
+     if (num_servers < 1) {
+-        error_setg(&local_err, QERR_MISSING_PARAMETER, "server");
++        error_setg(&local_err, "Parameter 'server' is missing");
+         goto out;
      }
  
-@@ -1241,7 +1241,7 @@ int64_t qmp_guest_fsfreeze_freeze_list(bool has_mountpoints,
-     Error *local_err = NULL;
+     ptr = qemu_opt_get(opts, GLUSTER_OPT_VOLUME);
+     if (!ptr) {
+-        error_setg(&local_err, QERR_MISSING_PARAMETER, GLUSTER_OPT_VOLUME);
++        error_setg(&local_err, "Parameter " GLUSTER_OPT_VOLUME " is missing");
+         goto out;
+     }
+     gconf->volume = g_strdup(ptr);
  
-     if (!vss_initialized()) {
--        error_setg(errp, QERR_UNSUPPORTED);
-+        error_setg(errp, "this feature or command is not currently supported");
-         return 0;
+     ptr = qemu_opt_get(opts, GLUSTER_OPT_PATH);
+     if (!ptr) {
+-        error_setg(&local_err, QERR_MISSING_PARAMETER, GLUSTER_OPT_PATH);
++        error_setg(&local_err, "Parameter " GLUSTER_OPT_PATH " is missing");
+         goto out;
+     }
+     gconf->path = g_strdup(ptr);
+@@ -562,7 +562,8 @@ static int qemu_gluster_parse_json(BlockdevOptionsGluster *gconf,
+ 
+         ptr = qemu_opt_get(opts, GLUSTER_OPT_TYPE);
+         if (!ptr) {
+-            error_setg(&local_err, QERR_MISSING_PARAMETER, GLUSTER_OPT_TYPE);
++            error_setg(&local_err,
++                       "Parameter " GLUSTER_OPT_TYPE " is missing");
+             error_append_hint(&local_err, GERR_INDEX_HINT, i);
+             goto out;
+ 
+@@ -592,16 +593,16 @@ static int qemu_gluster_parse_json(BlockdevOptionsGluster *gconf,
+ 
+             ptr = qemu_opt_get(opts, GLUSTER_OPT_HOST);
+             if (!ptr) {
+-                error_setg(&local_err, QERR_MISSING_PARAMETER,
+-                           GLUSTER_OPT_HOST);
++                error_setg(&local_err,
++                           "Parameter " GLUSTER_OPT_HOST " is missing");
+                 error_append_hint(&local_err, GERR_INDEX_HINT, i);
+                 goto out;
+             }
+             gsconf->u.inet.host = g_strdup(ptr);
+             ptr = qemu_opt_get(opts, GLUSTER_OPT_PORT);
+             if (!ptr) {
+-                error_setg(&local_err, QERR_MISSING_PARAMETER,
+-                           GLUSTER_OPT_PORT);
++                error_setg(&local_err,
++                           "Parameter " GLUSTER_OPT_PORT " is missing");
+                 error_append_hint(&local_err, GERR_INDEX_HINT, i);
+                 goto out;
+             }
+@@ -648,8 +649,8 @@ static int qemu_gluster_parse_json(BlockdevOptionsGluster *gconf,
+                 goto out;
+             }
+             if (!ptr) {
+-                error_setg(&local_err, QERR_MISSING_PARAMETER,
+-                           GLUSTER_OPT_PATH);
++                error_setg(&local_err,
++                           "Parameter " GLUSTER_OPT_PATH " is missing");
+                 error_append_hint(&local_err, GERR_INDEX_HINT, i);
+                 goto out;
+             }
+diff --git a/block/monitor/block-hmp-cmds.c b/block/monitor/block-hmp-cmds.c
+index ca2599de44..90e593ed38 100644
+--- a/block/monitor/block-hmp-cmds.c
++++ b/block/monitor/block-hmp-cmds.c
+@@ -252,7 +252,7 @@ void hmp_drive_mirror(Monitor *mon, const QDict *qdict)
+     };
+ 
+     if (!filename) {
+-        error_setg(&err, QERR_MISSING_PARAMETER, "target");
++        error_setg(&err, "Parameter 'target' is missing");
+         goto end;
+     }
+     qmp_drive_mirror(&mirror, &err);
+@@ -281,7 +281,7 @@ void hmp_drive_backup(Monitor *mon, const QDict *qdict)
+     };
+ 
+     if (!filename) {
+-        error_setg(&err, QERR_MISSING_PARAMETER, "target");
++        error_setg(&err, "Parameter 'target' is missing");
+         goto end;
      }
  
-@@ -1276,7 +1276,7 @@ int64_t qmp_guest_fsfreeze_thaw(Error **errp)
+@@ -356,7 +356,7 @@ void hmp_snapshot_blkdev(Monitor *mon, const QDict *qdict)
+          * In the future, if 'snapshot-file' is not specified, the snapshot
+          * will be taken internally. Today it's actually required.
+          */
+-        error_setg(&err, QERR_MISSING_PARAMETER, "snapshot-file");
++        error_setg(&err, "Parameter 'snapshot-file' is missing");
+         goto end;
+     }
+ 
+diff --git a/dump/dump.c b/dump/dump.c
+index e173f1f14c..642b952985 100644
+--- a/dump/dump.c
++++ b/dump/dump.c
+@@ -2096,11 +2096,11 @@ void qmp_dump_guest_memory(bool paging, const char *file,
+         return;
+     }
+     if (has_begin && !has_length) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "length");
++        error_setg(errp, "Parameter 'length' is missing");
+         return;
+     }
+     if (!has_begin && has_length) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "begin");
++        error_setg(errp, "Parameter 'begin' is missing");
+         return;
+     }
+     if (has_detach) {
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index ac6fa34ad1..83bfc9dc19 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -1426,7 +1426,7 @@ static void usbredir_realize(USBDevice *udev, Error **errp)
      int i;
  
-     if (!vss_initialized()) {
--        error_setg(errp, QERR_UNSUPPORTED);
-+        error_setg(errp, "this feature or command is not currently supported");
-         return 0;
-     }
- 
-@@ -1509,7 +1509,7 @@ out:
- 
- void qmp_guest_suspend_hybrid(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
- }
- 
- static IP_ADAPTER_ADDRESSES *guest_get_adapters_addresses(Error **errp)
-@@ -1877,7 +1877,7 @@ GuestLogicalProcessorList *qmp_guest_get_vcpus(Error **errp)
- 
- int64_t qmp_guest_set_vcpus(GuestLogicalProcessorList *vcpus, Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return -1;
- }
- 
-@@ -1938,7 +1938,7 @@ void qmp_guest_set_user_password(const char *username,
-     GError *gerr = NULL;
- 
-     if (crypted) {
--        error_setg(errp, QERR_UNSUPPORTED);
-+        error_setg(errp, "this feature or command is not currently supported");
+     if (!qemu_chr_fe_backend_connected(&dev->cs)) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "chardev");
++        error_setg(errp, "Parameter 'chardev' is missing");
          return;
      }
  
-@@ -1983,20 +1983,20 @@ done:
+diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
+index b17aec4357..b7b2bf18d4 100644
+--- a/softmmu/qdev-monitor.c
++++ b/softmmu/qdev-monitor.c
+@@ -622,7 +622,7 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
  
- GuestMemoryBlockList *qmp_guest_get_memory_blocks(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
+     driver = qdict_get_try_str(opts, "driver");
+     if (!driver) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "driver");
++        error_setg(errp, "Parameter 'driver' is missing");
+         return NULL;
+     }
  
- GuestMemoryBlockResponseList *
- qmp_guest_set_memory_blocks(GuestMemoryBlockList *mem_blks, Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
+diff --git a/softmmu/tpm.c b/softmmu/tpm.c
+index 8437c4efc3..3a7d4b5c67 100644
+--- a/softmmu/tpm.c
++++ b/softmmu/tpm.c
+@@ -106,13 +106,13 @@ static int tpm_init_tpmdev(void *dummy, QemuOpts *opts, Error **errp)
  
- GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
+     id = qemu_opts_id(opts);
+     if (id == NULL) {
+-        error_report(QERR_MISSING_PARAMETER, "id");
++        error_report("Parameter 'id' is missing");
+         return 1;
+     }
  
-@@ -2522,12 +2522,12 @@ char *qga_get_host_name(Error **errp)
+     value = qemu_opt_get(opts, "type");
+     if (!value) {
+-        error_report(QERR_MISSING_PARAMETER, "type");
++        error_report("Parameter 'type' is missing");
+         tpm_display_backend_drivers();
+         return 1;
+     }
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 98e071e63b..840ac84069 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -1801,7 +1801,7 @@ static void object_option_parse(const char *optarg)
  
- GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
+         type = qemu_opt_get(opts, "qom-type");
+         if (!type) {
+-            error_setg(&error_fatal, QERR_MISSING_PARAMETER, "qom-type");
++            error_setg(&error_fatal, "Parameter 'qom-type' is missing");
+         }
+         if (user_creatable_print_help(type, opts)) {
+             exit(0);
+@@ -2266,7 +2266,7 @@ static int do_configure_accelerator(void *opaque, QemuOpts *opts, Error **errp)
+     bool qtest_with_kvm;
  
- GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
- {
--    error_setg(errp, QERR_UNSUPPORTED);
-+    error_setg(errp, "this feature or command is not currently supported");
-     return NULL;
- }
+     if (!acc) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "accel");
++        error_setg(errp, "Parameter 'accel' is missing");
+         goto bad;
+     }
+ 
+diff --git a/ui/input-barrier.c b/ui/input-barrier.c
+index 2d57ca7079..ecbba4adc2 100644
+--- a/ui/input-barrier.c
++++ b/ui/input-barrier.c
+@@ -493,7 +493,7 @@ static void input_barrier_complete(UserCreatable *uc, Error **errp)
+     Error *local_err = NULL;
+ 
+     if (!ib->name) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, "name");
++        error_setg(errp, "Parameter 'name' is missing");
+         return;
+     }
+ 
+diff --git a/ui/ui-qmp-cmds.c b/ui/ui-qmp-cmds.c
+index a95fd35948..0e350fc333 100644
+--- a/ui/ui-qmp-cmds.c
++++ b/ui/ui-qmp-cmds.c
+@@ -195,7 +195,7 @@ void qmp_client_migrate_info(const char *protocol, const char *hostname,
+         }
+ 
+         if (!has_port && !has_tls_port) {
+-            error_setg(errp, QERR_MISSING_PARAMETER, "port/tls-port");
++            error_setg(errp, "Parameter 'port/tls-port' is missing");
+             return;
+         }
+ 
 -- 
 2.41.0
 

@@ -1,180 +1,136 @@
-Received: by 2002:a17:906:ce59:b0:9b2:89ee:1eb8 with SMTP id se25csp2879441ejb;
-        Wed, 4 Oct 2023 12:22:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGgmfe0hdJVI+VyQnGDnVVqcPUg2qvu+VOVby0VQrbl0Vn619eCwfIiCj/AxCIihW2L+o5A
-X-Received: by 2002:aca:1c0a:0:b0:3ae:aa6:dc0c with SMTP id c10-20020aca1c0a000000b003ae0aa6dc0cmr3139401oic.9.1696447325797;
-        Wed, 04 Oct 2023 12:22:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696447325; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp68760ejc;
+        Wed, 4 Oct 2023 21:48:24 -0700 (PDT)
+X-Received: by 2002:a5d:6145:0:b0:31f:ec91:39a7 with SMTP id y5-20020a5d6145000000b0031fec9139a7mr3901012wrt.14.1696481303941;
+        Wed, 04 Oct 2023 21:48:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696481303; cv=none;
         d=google.com; s=arc-20160816;
-        b=MySN3R3Sm90pTXNBcJ8t09a//vc5PLa5+C7gk+BHCL1zZdjr+UvlQeS+Nv1NPvAeoP
-         RrIP1agyNu1s3tdl8xHEomrD597XkVaCCS+hE0jvaR2SONeNNsAUSAclN9fL3aCmh096
-         8bkBOHNq0n8xzNI8+WZqkmRPPjtRCkDzgTehlpjMKwnWLjS36D4saaPmofZFy18gyXrU
-         kytz8d1SoV11vLAP7bMkUpKlQw+2YC04q0mBN+f2VGh+P2kLr+PXsTZW2c6fWzl74e/9
-         zJ6I3yYvEpRlD90tGEGzhjVGxKk4MXqGBicaA5nAGKfb/POaD/KfexAgWpIeToIbno38
-         R01g==
+        b=kJTgP4cgqYT+vV9h3QzhJcD5MbbLGzLN3ROJvGi+R6Fi+gwoO25RtFDskmk0bvcuLY
+         gMM0ZbwxrhZkrxtNM8NYXkFg53UW9HeY8E5/JdZ/mOR8Jdsh8XqxiGzAYD7H/1lfM6CP
+         4lkFV/G59/Lx5fr7CWh8YwrydXZIvnOl1ACR5J02QcoCCpTiv8ld8i8vFZ2P/Gco+QwY
+         Gyqawt/S3vpwzTwull9m+COeLjLdZSvqlqxUcfZHQGMx44JPH2HVI+A4SB3kZcqAZqPb
+         +S+ZoXdDz5fLrJREQWmHzMGJOX9WT555NFWpyOKcvUkaj6emU/MjVoiK7EXLjEsXof5I
+         3AzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=0tYTiak3/0bWBm11AAZ6N5wEs3JE+pIf/Mh2FyXA03s=;
-        fh=Iqw+C3zUdjRbqvq8+6x0+40nrEuEq3eUeL/fW1XE9rM=;
-        b=hpgO6VcNNnBnx6yzrVnNWJ2gORdI03mgeleSrDYAbJ042JwrU6nvIpIMbK6BFwN39X
-         xwp4bQSuPL6+v2sOoaIJNEOzflWZaFts9cp3rknFU5XIhHQTALlleMbg1/uIon6e8IZC
-         AXKGFZpmSr5MaoPtVKtsLtWQRMjpgcYt3Kv6OWXaw3jUbw4mAphICVpiNQCQ4/Up9HRH
-         n/QFZvCMpwX+YnQsmDVd4yppLJpOnltui/ubqzKnEwDoGuBAeFuw4nPkvieHqjuoIfFr
-         PrcLveSbob55q6qtImFXSvllQ99Jxls6reyii5P4yW7yk30HQiXgNJv7jWTBacladW+e
-         Ro/A==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=kEu8DFMU5Cl5XdcFgyJYlxB88JAhCyhjDYbGgtRefHk=;
+        fh=Uz+MkVtV9ZiqGp8sMq8vD8eluQMCYbBfo5FY8eNJZWk=;
+        b=qbQAlfjiw6aWYxLJm6GmSALLj0e7SHxP6/laKiV3jTMlcu02i4Jk9hJltR2tyELvkL
+         dFGw6yWoUMa3Kd3LhNdhgE1ZANNoXg4vhhalmWlHkDl8zN3PZRTVG+iQEcCu9ff2gHch
+         NYoFDEyvK4nNvuEEWeA8novh90l0NNMicpGCdDsesI+QaAjFxCDSR/vGZJRN1jHbeycn
+         Wsh4qdd9f36JS+g+ztHdtKc8qcZy/sdr5o9DyL8T/3etcoGmUTRRPWKLIlZBwdMS/6i0
+         NJQXij+mVHHMB8zcOq/cylBciPeCWkOzFEQjWMQWyCQxboPYFC4Fb85jpygaZaLSdh0U
+         2+1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OBiFe7iP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n11-20020a05622a11cb00b004108c0630a0si1741803qtk.551.2023.10.04.12.22.05
+       dkim=pass header.i=@linaro.org header.s=google header.b=svla5ZZZ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g13-20020adfa48d000000b0032175587853sor261255wrb.4.2023.10.04.21.48.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 12:22:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 04 Oct 2023 21:48:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OBiFe7iP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qo7Qf-0000f4-8z; Wed, 04 Oct 2023 15:21:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1qo7Qd-0000Uh-DA; Wed, 04 Oct 2023 15:21:03 -0400
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1qo7Qa-0002Gg-PV; Wed, 04 Oct 2023 15:21:02 -0400
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-5033918c09eso216348e87.2; 
- Wed, 04 Oct 2023 12:20:59 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=svla5ZZZ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1696447257; x=1697052057; darn=nongnu.org;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=0tYTiak3/0bWBm11AAZ6N5wEs3JE+pIf/Mh2FyXA03s=;
- b=OBiFe7iP+kS5CpJn5bqfrOfxGou3ZbSGyvACMz7Lmguz8B1Xozpf8BYG7L0JJyezG2
- /wuutQhd/pkp2dVB1L1SJOyJv5IGbndo57DJXxgIbHYpehK8IgpNESmxD5XNhiQxBDB3
- sIvtwCS3ZLI0XGJydLZBplTqXCICiqkc64EtmTzJvcLYrU2/CT9rG+5VG1Z4rLy2zE21
- DPy399YB0lVbJlt1Qc57SiEoI3UVlACuYHC/4ITf0scoqovGkPf4kw5a9Nkc/Fs5hyku
- N+1XnAFDXJLEGGIDkuB3PHWGHuPI4YdNb9flbOkx88D34bHq3UGbRWPqaoSZpU07Mg/O
- XF4g==
+        d=linaro.org; s=google; t=1696481303; x=1697086103; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kEu8DFMU5Cl5XdcFgyJYlxB88JAhCyhjDYbGgtRefHk=;
+        b=svla5ZZZGlVbVyiarJHKoAZd1CpsGWgvcUU0BObDYRnime2nSC4Px3QaZjHTIqRzai
+         dIGNhGTLDQbCZPwsXxAjSw/+YkO+04r8ip4dkmrQkw9rCclldYCPTxE8kWqkyIn1VtUr
+         0N73YUuoyrkgtFX3MyiZCNdHxBUT8U4x7oyoQ+F5F6J24WIu8VVnf6WgnolLtF15n8Oe
+         FTdAwttcI1jIuehDgYZDjehWVLOxzD4+DtVe0ds2m2cdjxk7oRmevnziZ/ojYv0Obd3n
+         jy5rpkxpreuDUnlPvmYskV3+2etgEWI9o+Q45ollyheGnc6n2bxvxQWo4sG0ogahlvnH
+         faEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696447257; x=1697052057;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=0tYTiak3/0bWBm11AAZ6N5wEs3JE+pIf/Mh2FyXA03s=;
- b=MX8azrWC0DgOpzRMu+/UKTnByxyzY+P4v6r8VW15AJN3Lcy8SNiPaCNuzR4CpRzqbd
- UaIeFHjy+XdT3Nr0/CRfGC+JwUqvZZV6trG0YOzEH+pa6QW7MpgjPe3kQMGR/37Hw+LM
- hMm6EG46mCVHg9NgUubYCWNqK4kj9wneVzmTY5A+ABDpLIjwewKDyrAqMg5HTZm40pgn
- he6+J6XM9DCDVvSQhTum3EH1dDdu5qlzL+9BbYZVyV+XkC5PSqujzdvtFjeNz6OBqwNp
- CWxt8BuwABBDBlv+FvPxYosEXsvqOcWDymguTn8r2NX6XHw1zvW0AT8FWJ3a8l1n48pi
- oWaw==
-X-Gm-Message-State: AOJu0Yz93u9dlctp9XPr5Xt/wSHDv3Yx/5Ecbvi81YGV4yAa5XgPuwvx
- N9PMUm3SKPu9zdI25kRPhV8=
-X-Received: by 2002:a05:6512:39d1:b0:500:ac71:8464 with SMTP id
- k17-20020a05651239d100b00500ac718464mr3433128lfu.66.1696447257377; 
- Wed, 04 Oct 2023 12:20:57 -0700 (PDT)
-Received: from fralle-msi (217-76-87-243.cust.bredband2.com. [217.76.87.243])
- by smtp.gmail.com with ESMTPSA id
- f19-20020a2e3813000000b002c182a942f1sm768031lja.139.2023.10.04.12.20.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Oct 2023 12:20:57 -0700 (PDT)
-Date: Wed, 4 Oct 2023 21:20:55 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Tong Ho <tong.ho@amd.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, alistair@alistair23.me,
- edgar.iglesias@gmail.com, peter.maydell@linaro.org
-Subject: Re: [PATCH] xlnx-zynqmp-efuse: hw/nvram: Remove deprecated device
- reset
-Message-ID: <20231004192055.GD18959@fralle-msi>
-References: <20231004055713.324009-1-tong.ho@amd.com>
+        d=1e100.net; s=20230601; t=1696481303; x=1697086103;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kEu8DFMU5Cl5XdcFgyJYlxB88JAhCyhjDYbGgtRefHk=;
+        b=Okrd9voB5VuQq15CThsGXiwe/L5VUdKqoxzBtaXYsI4dtIj1K5Am3jUETWl/SBLmK0
+         8cAnN9Jnet+INPFwfUBfPczsDm5EAn0TvXBocivyDyd1h0F9Nwn7N1q2UIgQLQu+d403
+         884nR2HiSjnweR5WJSo/n5XJo46ka6jQeat2FuRFFhdJBqXgJzLub/tfvenhm/8Vu4G2
+         aq6gy2G880VSABtW/Sg4A7r0idlg4bGLF3m4GBQ4flBW3aJJprXeCWbk8z+K6DYoyaXR
+         MHiYj5prFdmJnI480NHPh3FpfRDOmAXLHIetzvqaYXFqSzz04efUcNbGJrPcAcBTN7Bc
+         MPtQ==
+X-Gm-Message-State: AOJu0Yw6nTBlmqMnOah3UaSw11Dk455Okoh2xGrOLtdast8gTlWDfxU4
+	HdWdlR5utVWD6d7g2ouy0S5mgHfJ
+X-Google-Smtp-Source: AGHT+IGmv1gvqAHaOnGc/W1TuGt4u1tEy/+m+BLRFzIXIgaZUQE6CrP2Wq/VyS+m0NkQpEoB0CGmNw==
+X-Received: by 2002:a5d:628a:0:b0:320:bb1:5a73 with SMTP id k10-20020a5d628a000000b003200bb15a73mr4064517wru.22.1696481303426;
+        Wed, 04 Oct 2023 21:48:23 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.115] (tbo33-h01-176-171-211-120.dsl.sta.abo.bbox.fr. [176.171.211.120])
+        by smtp.gmail.com with ESMTPSA id o6-20020a5d58c6000000b0031aef72a021sm741618wrf.86.2023.10.04.21.48.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 04 Oct 2023 21:48:23 -0700 (PDT)
+Message-ID: <3984cd72-931b-fa9b-e7ac-3d60487ac442@linaro.org>
+Date: Thu, 5 Oct 2023 06:48:19 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231004055713.324009-1-tong.ho@amd.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x134.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XoEMu5PXKn06
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PULL 0/9] Python patches
+Content-Language: en-US
+To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-block@nongnu.org,
+ Beraldo Leal <bleal@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ Hanna Reitz <hreitz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>,
+ Thomas Huth <thuth@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20231004194613.2900323-1-jsnow@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20231004194613.2900323-1-jsnow@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: MoXNNfOIcV94
 
-On [2023 Oct 03] Tue 22:57:13, Tong Ho wrote:
-> This change implements the ResettableClass interface for the device.
-> 
-> Signed-off-by: Tong Ho <tong.ho@amd.com>
+Hi John,
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+On 4/10/23 21:46, John Snow wrote:
+> The following changes since commit da1034094d375afe9e3d8ec8980550ea0f06f7e0:
+> 
+>    Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging (2023-10-03 07:43:44 -0400)
+> 
+> are available in the Git repository at:
+> 
+>    https://gitlab.com/jsnow/qemu.git tags/python-pull-request
+> 
+> for you to fetch changes up to 4d7a663cbe8343e884b88e44bd88d37dd0a470e5:
+> 
+>    Python: test Python 3.12 (2023-10-04 15:19:00 -0400)
+> 
+> ----------------------------------------------------------------
+> Python pullreq
+> 
+> Buffering improvements for qemu machine, minor changes to support the
+> newly released Python 3.12
+> 
+> ----------------------------------------------------------------
+> 
+> John Snow (9):
+>    Python/iotests: Add type hint for nbd module
+>    python/machine: move socket setup out of _base_args property
+>    python/machine: close sock_pair in cleanup path
+>    python/console_socket: accept existing FD in initializer
+>    python/machine: use socketpair() for console connections
+>    python/machine: use socketpair() for qtest connection
+>    python/machine: remove unused sock_dir argument
+>    python/qmp: remove Server.wait_closed() call for Python 3.12
+>    Python: test Python 3.12
 
-> ---
->  hw/nvram/xlnx-zynqmp-efuse.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
-> index 228ba0bbfa..3db5f98ec1 100644
-> --- a/hw/nvram/xlnx-zynqmp-efuse.c
-> +++ b/hw/nvram/xlnx-zynqmp-efuse.c
-> @@ -2,6 +2,7 @@
->   * QEMU model of the ZynqMP eFuse
->   *
->   * Copyright (c) 2015 Xilinx Inc.
-> + * Copyright (c) 2023 Advanced Micro Devices, Inc.
->   *
->   * Written by Edgar E. Iglesias <edgari@xilinx.com>
->   *
-> @@ -769,9 +770,9 @@ static void zynqmp_efuse_register_reset(RegisterInfo *reg)
->      register_reset(reg);
->  }
->  
-> -static void zynqmp_efuse_reset(DeviceState *dev)
-> +static void zynqmp_efuse_reset_hold(Object *obj)
->  {
-> -    XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(dev);
-> +    XlnxZynqMPEFuse *s = XLNX_ZYNQMP_EFUSE(obj);
->      unsigned int i;
->  
->      for (i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-> @@ -837,8 +838,9 @@ static Property zynqmp_efuse_props[] = {
->  static void zynqmp_efuse_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
-> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
->  
-> -    dc->reset = zynqmp_efuse_reset;
-> +    rc->phases.hold = zynqmp_efuse_reset_hold;
->      dc->realize = zynqmp_efuse_realize;
->      dc->vmsd = &vmstate_efuse;
->      device_class_set_props(dc, zynqmp_efuse_props);
-> -- 
-> 2.25.1
-> 
-> 
+Is that a pull request or a patch series to be reviewed?

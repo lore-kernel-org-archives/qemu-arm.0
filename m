@@ -1,120 +1,93 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp72222ejc;
-        Wed, 4 Oct 2023 21:59:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFQxfcWS1bBeJA1fkllCuYzA6Cx85TF0xTtAVIn7LgmmhT0KyouvVeDjdQFXNFNpVOd/m0d
-X-Received: by 2002:a05:6214:e83:b0:651:800d:ffc9 with SMTP id hf3-20020a0562140e8300b00651800dffc9mr381101qvb.22.1696481995205;
-        Wed, 04 Oct 2023 21:59:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696481995; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp91736ejc;
+        Wed, 4 Oct 2023 22:56:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFIXFBggd0n5yp8699TBolDEAc0FhqICNmSGzltmkyMP85kGD04hkjIPJS71oOMSXtmv1F3
+X-Received: by 2002:a05:620a:46ab:b0:773:ac84:3f57 with SMTP id bq43-20020a05620a46ab00b00773ac843f57mr2158899qkb.5.1696485377703;
+        Wed, 04 Oct 2023 22:56:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696485377; cv=none;
         d=google.com; s=arc-20160816;
-        b=L07OUY0kKzCH8MzyaLaSEvNUXvGbgAUo2IEhPAuiJHCfO3nqE4ZGk3OvA1ummPvUom
-         Lq/kEcy+qIq9f7V+VwX55tmVRyu4nNEheS2NgZ9mdB7MuczSQSXoHlfa0adb2a/fROmI
-         /r/XFFH7/EPBG8aEEnhkvNEJrmJmQ7NPgOoGIPvoU/O7r6Df3c9YZ4JumJ/5G7kbAE19
-         7BnUzuLWoWT6w8wbHav8BJKKdGzoNRb69vC+Vifem9t5pMUAEV9o9CTxkNaLfDkaosTR
-         8rbjskj1HQ8kImDZIu+jlWU+65q7zQOp1ycqDUtjZ/M7OOqv5Urns4ufVKjOKRMIcz2F
-         DXYw==
+        b=hYCMDljeYPJscLuXzrjmXSrxMYxnsIyyzQ+a9u/ACHvlwO5QUEbsNtBfx+Uqw5hely
+         Iv3A6OJiOk/64lyaxSM8lQUG9D1YUJTPI8Pl/DucAokM1+skRcCCE4mh75N6vBvl5nO+
+         qBX6B8oNdCsVdvSVl7kZA4mLRr2i/6dCbyoKeOcciTHv7Tx/uboEQa5AYcpjd8pqEC6h
+         SeAgMWm9UtdC5W5UpYCZYsSnEWau06Eegi3YYlSdNA1lLSfYpdXIFdysB9Jfn/2dimHq
+         GphWtwxhTTIrMizJOEN0enII17+GnyFOoHWaSZhD2Zm5w9Hcnd8HmaO8gG4WGPVLTBtG
+         lvkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ljhUm+yE397bxq9Bx01IEVCivdgyT/wBeqgB6zr/g7E=;
-        fh=8kPojgz0Lj/kINi+7TLymFEExDOI5/Rymkq8qHUApi4=;
-        b=BrosVasqU4PiAeJ5a6/OJ1pldc4Ml0fotcfwTjlLw3pgLkSz4/Vydb9TyY10yY7wsb
-         SYsM419s/WCBdrmAVZlyYXGGWIxZRYOnPY+kGEBLfuLZo2nb71BY+tnRppQgh3nxeznk
-         8DMxT9SgB+EmjRrnN7ep0LpB9iMjoCcqx6bBTWZ8T20UynzCnei2QyX4AjJkzcjISPv2
-         c+gWFT/mq0Xf8Y76e0bwNZc+O8ghHVk89g0wnd7MThzl0Kbdz2svZJ1rzlK6H78qqEqM
-         Yf5/E2BdQ1cTBBFUNpx5tn4R3khe1JgI0UaPD/e/MLFA6uAY0KYlsKVZn3YStFLzDUfu
-         aAjg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=MQDQ/IdPqgy9QOhKGakX8ldLMrhswD2LcoLE9zTXiDw=;
+        fh=r+3leG1A75C6Wk6ksmTdxCNFc1EYum2vbQBV1ayLLGI=;
+        b=CqSm9zHpCR4oIRuBa1OVINvYZIe4FbMwtu4awYSoh9LbIFWJqZ2N1J+cF2/cVtmld+
+         hpPxv7Vwz848qzGqGNYIzd0MDhPPumdFXdJqrh8+UJQmHuZLF4/Rnu/ik7jKpO93GO0a
+         GpCpK5K1MHAQb2MhlZ4gYUE8NNeHFWo2PFYa9DE0LFZXjQhX2qpsTkl6Xw+tEdCdo5jM
+         pEUMJ453gDPH5rGSYa/9qGLoJueEp2I7bks4O8uXSRjUt4J/AWH1KX4DNbviZxwpsUVE
+         iKssvCRkNgdco18tbc6UaA3xFwvnkoKy6N8t388XgfeQ5ChnSd4GQO6vejJB2P8d9QvL
+         8olA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rcg8gl8I;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m6-20020a0cf186000000b0063d456fcd44si381841qvl.515.2023.10.04.21.59.55
+        by mx.google.com with ESMTPS id tn24-20020a05620a3c1800b00775a1063051si449002qkn.501.2023.10.04.22.56.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 21:59:55 -0700 (PDT)
+        Wed, 04 Oct 2023 22:56:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rcg8gl8I;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qoGMI-00005v-Nh; Thu, 05 Oct 2023 00:53:10 -0400
+	id 1qoHL4-0007uv-7t; Thu, 05 Oct 2023 01:55:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGLd-0007c2-GK
- for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:52:30 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGLa-0006xy-RQ
- for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:52:29 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-40666aa674fso4964015e9.0
- for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 21:52:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696481544; x=1697086344; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ljhUm+yE397bxq9Bx01IEVCivdgyT/wBeqgB6zr/g7E=;
- b=rcg8gl8InsyBBBLqIOzePgEKP9Klwr5MMruySHdERPvfGOAVPgeIUIIik7jf3pm/ye
- hwk4jxqS31jEEUAsu33jjCQlMnhdMeBp1+IWOJOtY6HqvoCUyJAeIO+tB1sI1bQwEDQ1
- hYsr3iTprbWwIaq20F9TWJBY/tNeUT5UZlDAKp7yNSZsKFvWDyDxz0kIPNLqqSOR/PDh
- PLqmJKpqqhl49nCWwVu2dEDEp42NnybN+XyBX03hyy7Yyz05+iTPNKuyTuxcQ9I8mp8S
- HBxZhBfoz78lhxKSm3+GyYCoZw+cV7Gc9Xn9ROIqUN4kpyIVT5nqAjpQUEWbLDFwRZRQ
- ZEWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696481544; x=1697086344;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ljhUm+yE397bxq9Bx01IEVCivdgyT/wBeqgB6zr/g7E=;
- b=sZG2qzZVlVc/8w3/7WNiPPebTMQOwEVY7zPU+a00k9Hr1NRv2Rq1U9SEfPrr1mg5fz
- uifKBLimppNiHGWLo6GkafSCYQeqxnxsW+UK1RwVW84oblZ0VBIvwi+hd2lFLndWBxH1
- r6drhJA5Bp/kXFEip82FCqQGlfUSbrf/p3pom659HJQ6OnpDG0esnn8lSTiURUw4kpCR
- wTyxjXJYMED1+NQtJnGeB3Y5u4wQeg5OKKnJ0HoTLJbR+/3YdyZ/qKJ1Spiy0+cU/bs7
- Kgu5CE2dmgC20KYv+lBGtqXXmITVgGQUCJV28T0evIYFMf58Z2N7SppVIg3VjLfVW4W8
- hKrg==
-X-Gm-Message-State: AOJu0YzzU5I+7O2/dfPHo7MKjfoJZG51zQC/xZEZCKejppwzt3dNfgPD
- mH6tHPAeAU6siRlamymRYiiuAy8pZv7yBnEpBuo=
-X-Received: by 2002:a05:600c:255:b0:405:2d23:16d9 with SMTP id
- 21-20020a05600c025500b004052d2316d9mr3994983wmj.21.1696481544211; 
- Wed, 04 Oct 2023 21:52:24 -0700 (PDT)
-Received: from m1x-phil.lan (tbo33-h01-176-171-211-120.dsl.sta.abo.bbox.fr.
- [176.171.211.120]) by smtp.gmail.com with ESMTPSA id
- u22-20020a05600c00d600b00405ee9dc69esm2868359wmm.18.2023.10.04.21.52.22
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 21:52:23 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- qemu-s390x@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Juan Quintela <quintela@redhat.com>, Peter Xu <peterx@redhat.com>,
- Leonardo Bras <leobras@redhat.com>
-Subject: [PATCH v2 15/22] qapi: Inline and remove QERR_MIGRATION_ACTIVE
- definition
-Date: Thu,  5 Oct 2023 06:50:32 +0200
-Message-ID: <20231005045041.52649-16-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231005045041.52649-1-philmd@linaro.org>
-References: <20231005045041.52649-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <SRS0=AqEq=FT=kaod.org=clg@ozlabs.org>)
+ id 1qoHL0-0007tm-UB; Thu, 05 Oct 2023 01:55:55 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=AqEq=FT=kaod.org=clg@ozlabs.org>)
+ id 1qoHKy-0002WD-JJ; Thu, 05 Oct 2023 01:55:54 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4S1LQ40kZBz4xQW;
+ Thu,  5 Oct 2023 16:55:40 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4S1LPz5S0Tz4xLy;
+ Thu,  5 Oct 2023 16:55:35 +1100 (AEDT)
+Message-ID: <a0e552ad-e3fd-6ff7-fd92-6be890ddce47@kaod.org>
+Date: Thu, 5 Oct 2023 07:55:31 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v2 01/22] qapi: Inline and remove QERR_BUS_NO_HOTPLUG
+ definition
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
+ qemu-s390x@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>
+References: <20231005045041.52649-1-philmd@linaro.org>
+ <20231005045041.52649-2-philmd@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20231005045041.52649-2-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=AqEq=FT=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.528, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,90 +102,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 408du7JWkQpQ
+X-TUID: 2JmjDbLTin/r
 
-Address the comment added in commit 4629ed1e98
-("qerror: Finally unused, clean up"), from 2015:
+On 10/5/23 06:50, Philippe Mathieu-Daudé wrote:
+> Address the comment added in commit 4629ed1e98
+> ("qerror: Finally unused, clean up"), from 2015:
+> 
+>    /*
+>     * These macros will go away, please don't use
+>     * in new code, and do not add new ones!
+>     */
+> 
+> Mechanical transformation using sed, manually
+> removing the definition in include/qapi/qmp/qerror.h.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-  /*
-   * These macros will go away, please don't use
-   * in new code, and do not add new ones!
-   */
 
-Mechanical transformation using sed, manually
-removing the definition in include/qapi/qmp/qerror.h.
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
----
- include/qapi/qmp/qerror.h | 3 ---
- migration/migration.c     | 2 +-
- migration/options.c       | 4 ++--
- migration/savevm.c        | 2 +-
- 4 files changed, 4 insertions(+), 7 deletions(-)
+Thanks,
 
-diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-index d95c4b84b9..cc4dae1076 100644
---- a/include/qapi/qmp/qerror.h
-+++ b/include/qapi/qmp/qerror.h
-@@ -17,9 +17,6 @@
-  * add new ones!
-  */
- 
--#define QERR_MIGRATION_ACTIVE \
--    "There's a migration process in progress"
--
- #define QERR_MISSING_PARAMETER \
-     "Parameter '%s' is missing"
- 
-diff --git a/migration/migration.c b/migration/migration.c
-index b7f6818a15..5703cc34ae 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -1616,7 +1616,7 @@ static bool migrate_prepare(MigrationState *s, bool blk, bool blk_inc,
-     }
- 
-     if (migration_is_running(s->state)) {
--        error_setg(errp, QERR_MIGRATION_ACTIVE);
-+        error_setg(errp, "There's a migration process in progress");
-         return false;
-     }
- 
-diff --git a/migration/options.c b/migration/options.c
-index 4f6c8e810c..7360a22252 100644
---- a/migration/options.c
-+++ b/migration/options.c
-@@ -618,7 +618,7 @@ bool migrate_cap_set(int cap, bool value, Error **errp)
-     bool new_caps[MIGRATION_CAPABILITY__MAX];
- 
-     if (migration_is_running(s->state)) {
--        error_setg(errp, QERR_MIGRATION_ACTIVE);
-+        error_setg(errp, "There's a migration process in progress");
-         return false;
-     }
- 
-@@ -662,7 +662,7 @@ void qmp_migrate_set_capabilities(MigrationCapabilityStatusList *params,
-     bool new_caps[MIGRATION_CAPABILITY__MAX];
- 
-     if (migration_is_running(s->state) || migration_in_colo_state()) {
--        error_setg(errp, QERR_MIGRATION_ACTIVE);
-+        error_setg(errp, "There's a migration process in progress");
-         return;
-     }
- 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 41c7f39ef5..c0e0585bc1 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -1634,7 +1634,7 @@ static int qemu_savevm_state(QEMUFile *f, Error **errp)
-     MigrationStatus status;
- 
-     if (migration_is_running(ms->state)) {
--        error_setg(errp, QERR_MIGRATION_ACTIVE);
-+        error_setg(errp, "There's a migration process in progress");
-         return -EINVAL;
-     }
- 
--- 
-2.41.0
+C.
+
+
+> ---
+>   include/qapi/qmp/qerror.h | 3 ---
+>   hw/ppc/spapr_pci.c        | 4 ++--
+>   softmmu/qdev-monitor.c    | 8 +++++---
+>   3 files changed, 7 insertions(+), 8 deletions(-)
+> 
+> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
+> index 8dd9fcb071..1a9c2d3502 100644
+> --- a/include/qapi/qmp/qerror.h
+> +++ b/include/qapi/qmp/qerror.h
+> @@ -17,9 +17,6 @@
+>    * add new ones!
+>    */
+>   
+> -#define QERR_BUS_NO_HOTPLUG \
+> -    "Bus '%s' does not support hotplugging"
+> -
+>   #define QERR_DEVICE_HAS_NO_MEDIUM \
+>       "Device '%s' has no medium"
+>   
+> diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+> index 370c5a90f2..7f063f5852 100644
+> --- a/hw/ppc/spapr_pci.c
+> +++ b/hw/ppc/spapr_pci.c
+> @@ -1550,7 +1550,7 @@ static void spapr_pci_pre_plug(HotplugHandler *plug_handler,
+>            * we need to let them know it's not enabled
+>            */
+>           if (plugged_dev->hotplugged) {
+> -            error_setg(errp, QERR_BUS_NO_HOTPLUG,
+> +            error_setg(errp, "Bus '%s' does not support hotplugging",
+>                          object_get_typename(OBJECT(phb)));
+>               return;
+>           }
+> @@ -1671,7 +1671,7 @@ static void spapr_pci_unplug_request(HotplugHandler *plug_handler,
+>       SpaprDrc *drc = drc_from_dev(phb, pdev);
+>   
+>       if (!phb->dr_enabled) {
+> -        error_setg(errp, QERR_BUS_NO_HOTPLUG,
+> +        error_setg(errp, "Bus '%s' does not support hotplugging",
+>                      object_get_typename(OBJECT(phb)));
+>           return;
+>       }
+> diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
+> index 74f4e41338..3a9740dcbd 100644
+> --- a/softmmu/qdev-monitor.c
+> +++ b/softmmu/qdev-monitor.c
+> @@ -656,7 +656,8 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
+>   
+>       if (qdev_should_hide_device(opts, from_json, errp)) {
+>           if (bus && !qbus_is_hotpluggable(bus)) {
+> -            error_setg(errp, QERR_BUS_NO_HOTPLUG, bus->name);
+> +            error_setg(errp, "Bus '%s' does not support hotplugging",
+> +                       bus->name);
+>           }
+>           return NULL;
+>       } else if (*errp) {
+> @@ -664,7 +665,7 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
+>       }
+>   
+>       if (phase_check(PHASE_MACHINE_READY) && bus && !qbus_is_hotpluggable(bus)) {
+> -        error_setg(errp, QERR_BUS_NO_HOTPLUG, bus->name);
+> +        error_setg(errp, "Bus '%s' does not support hotplugging", bus->name);
+>           return NULL;
+>       }
+>   
+> @@ -904,7 +905,8 @@ void qdev_unplug(DeviceState *dev, Error **errp)
+>       }
+>   
+>       if (dev->parent_bus && !qbus_is_hotpluggable(dev->parent_bus)) {
+> -        error_setg(errp, QERR_BUS_NO_HOTPLUG, dev->parent_bus->name);
+> +        error_setg(errp, "Bus '%s' does not support hotplugging",
+> +                   dev->parent_bus->name);
+>           return;
+>       }
+>   
 

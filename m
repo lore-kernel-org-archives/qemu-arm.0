@@ -1,114 +1,114 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp69813ejc;
-        Wed, 4 Oct 2023 21:52:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGkeVq39dI80sHBp83Uy31zyO5Q4Hp7/l5oS+6nhh+fClpD6vjCw3vkFCYveZRUerX03d7G
-X-Received: by 2002:ad4:5949:0:b0:64f:51fe:859c with SMTP id eo9-20020ad45949000000b0064f51fe859cmr5124367qvb.43.1696481521312;
-        Wed, 04 Oct 2023 21:52:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696481521; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp69835ejc;
+        Wed, 4 Oct 2023 21:52:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFmxwDhR475CfWVa+j1Ri4BNmNq0qhI4P4sQ5Z4OPywWtrfGM5V4yJ/KDdJxeie41QFMPTH
+X-Received: by 2002:a05:620a:404a:b0:773:b543:5989 with SMTP id i10-20020a05620a404a00b00773b5435989mr5176552qko.2.1696481527537;
+        Wed, 04 Oct 2023 21:52:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696481527; cv=none;
         d=google.com; s=arc-20160816;
-        b=y+7btWG5VjfUpBD+pPHro427AY9wX9q/Y7TixqJXuReDXJKPBWGPqUYYDiBba9DeWO
-         dOXK/5474nHakiDA7JSRUzffjS6PoBqoX2fFzZ8oAk0nBU4coAdO9J9gnaR+rVCjxs3f
-         oQZOaHBa7yOLMXmBSGi24c4jiUQrGDC+Uj7h6SRA28PTyHqecDv8F+hipOn0v5wRwQR1
-         Ct0u6P3aVzThqBKgp1S6Ip+Y1gndlh+92+vOFBmfrCrmOut+kaS+MQBUd2r8LHjke03w
-         QcqSTkf3u+/jf2yUBfLk026a+V6FJwIKjeEUWxM/+NN65uWkRZcDVoPfZLS+X0/eOcG8
-         pfDw==
+        b=BF0w59Gcu6WB5P40vcT0nzZXHl7i9fJ9rv0+SfiVS608NXt0M8Ftoh2Ew2ofvs9BH5
+         1Z1Tyx28FGiABafURhM1CP93+7X6a1cKuMrF7fSpdkxnBCvHCz46k1Cqp3ZTxHqABCHS
+         175dMxtrREoT0VdClvtqbZzCWCgdSnDbiqP5RKSvqtz7UpOg3e4YVK1kkCKeOJiZkUOz
+         w2nPrjScMmgnbSnDkQj7gFK7X+0FY5Tr5gqlpFdd8Rk7ODH/RL3W6KsS1aTkyG4jNocq
+         LicGk1Wlnmsz8veFA5dk90nh0rcZysb1A6+e9sgVw8Ng+Pb6cA3zjJ5bBAGBDDhFsU8M
+         nqrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=i0f/S9sk5n4iTXtNvEpxFckitQTJsYOjTpjl0/I1BCA=;
-        fh=Z7Pv+eyhTL5wOgIfxY9/3/BHWOZWo37vnRD3FWoic8E=;
-        b=qITNOQqiqBukHlwA+1oWa/PPAx5/xLbGMk0yb8q8jO5Z7q3B9uEENFby/LW8oMBdGn
-         DGCCpHuCqahOiEEpjtryzgp3Yo/01hKlX6S2RKX+uTh35XnXaqzOj+JqTtbaM7jj08mM
-         XufcEyqqNV/X7o3phRifLgHgyzs+XLyllkHh2FBxwPs7qH+hA8FQuzhEkRzb0yLsFF3M
-         YUELeAIiv4BvS6fgPdiX6QNPCh80k86r1c5L+4kdjZL9n0/InFtmBspe3IkqIhU9vcWw
-         0KbGGvENHF59NJeEmi/qDfaBTPZvK26oylVp/3crougz8gRakkQIbQgNoueRyL8XC2eo
-         PBSQ==
+        bh=UnezdLBVjvZnCdXX1V4kutiq/Z6kzmSrGXxXnwF1wNc=;
+        fh=mOvKa1oMAvPR5RjPR5ofPIt1a9Xhg06cYPysM5IEYtQ=;
+        b=IiG/KY+E3ADmx3E+Zgdw16CBkP4NgPpzZpt3Kyio/5UPt5qINxQL2MbhJK/eZZelIw
+         VMW4lPNuAMGklErgHa/xpvQgfb+isiEd1Rs3H3sU9b9rzb6dIUF2f4sSjYsLBu1NA0+g
+         WGRm3lXkOVigWcI+p2Dk4Xg2x8dUAip/FcpcqWSZrXP0fODRqPoklM0Qp4Plyf8jUU++
+         zX9TymCPO2w85FphFHxZeS/s0OKfEvG3lvQVLekfEkJV/INNrcSn3Qxx71QGDtUZr1aM
+         rq1M5L/s1rl6ZhB10IYLBL+HBmEaLpO6T43/568UADKR1iqbyTbWsR7SbULYiUq+JLx6
+         wDZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="reKEUX/E";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xkT+6lGn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id sk6-20020a05620a3a4600b0075cb23ee1fesi392830qkn.602.2023.10.04.21.52.01
+        by mx.google.com with ESMTPS id m10-20020a05620a214a00b00775b341e4c3si410883qkm.103.2023.10.04.21.52.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 21:52:01 -0700 (PDT)
+        Wed, 04 Oct 2023 21:52:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="reKEUX/E";
+       dkim=pass header.i=@linaro.org header.s=google header.b=xkT+6lGn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qoGKZ-0005YZ-RQ; Thu, 05 Oct 2023 00:51:23 -0400
+	id 1qoGL0-0006Cu-6H; Thu, 05 Oct 2023 00:51:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGKX-0005Wu-M3
- for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:51:21 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGKv-00067q-QS
+ for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:51:47 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGKU-0005X2-KE
- for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:51:21 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-405524e6769so3034835e9.1
- for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 21:51:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGKp-0005c2-WA
+ for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:51:44 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-3248aa5cf4eso590994f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 21:51:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696481477; x=1697086277; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696481496; x=1697086296; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=i0f/S9sk5n4iTXtNvEpxFckitQTJsYOjTpjl0/I1BCA=;
- b=reKEUX/E5S9dXFUpMCzT1K/QIvP9KkZ5kyXP6w9VMwXm/jsRSZYWyRBnglh4q8LF9P
- Kh30Y197bawa6rHG7npdnA0zJz6Jfc2tRy4mwKjESgIim0vGG6J/yJLAd2vEHI4VReIl
- pT4No/0bqeXV+ltRjd4hEki/o+8Nlre+Z9+JGpdWkcddiVhzEqBi35+eut55BK/83mvR
- h9syXsb2htdzDSIhTAY855lt5CZ3G/IaxVoDAc+GjDvyd6fn4l14/ra8OHnJeVlZVc9z
- 5GBUVFlHgLrMtkgTuORCUQ37DnEbQA2eOmCP/c2vJUgGsoOJkNkqd/rerEB8SaMneFz0
- 2jDA==
+ bh=UnezdLBVjvZnCdXX1V4kutiq/Z6kzmSrGXxXnwF1wNc=;
+ b=xkT+6lGnrWf8t0VNKfPpz+M+5K1VLK0wpzL8JqGVok+mUg9utPE3LeS6VqH/0vwnWp
+ QeQo4fxqS0sakUvOZV1GI9d8BGMpRYSmvMJ96rGf5pYooU8DW8x8q16iEC4igOm1pco5
+ ckFC9Uuo3U3huD6D+jf+z6WVCU1Qnb9UgWwhF7XELc+rT+WWCKYkchXtaOn0lZPT80GY
+ p9mo8XlsO/6nrPYup8Mck49Bs182oZVHta6y1pQHZOIddUHSRxhjadAzJc95FhuT2JZi
+ nJ0GfiX3ESr9vGGBNn1eJxYCf7PIdCWQzwHmF6BCfAsqD86IKuPxWaewd/p5El+illT7
+ p0bA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696481477; x=1697086277;
+ d=1e100.net; s=20230601; t=1696481496; x=1697086296;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=i0f/S9sk5n4iTXtNvEpxFckitQTJsYOjTpjl0/I1BCA=;
- b=YPPg2vmnFQaQql7evIAMKVJEPL+3oQup0g9D4s1Grz3n7q+q4NcmI0MP0iTIcTaiLy
- Q7t7aQmuFosqeyw5glH5jJGc6q9Ij7/HKTEuUb8HFkNEEW9/uTCRLxSqhXJjJ7vedRSO
- r2aiAdvG96nWt0Cj1H9A2zqjsnInE+0YeyaqBlyrr8NCt1+jdjAuLmhDuA405u71CPo4
- vTP4OKuyhRkwT9CSyk3rQ+h43QTIHb0cImKE/tJxlq7x/VFGcpeRTsCwqSBryz227ZqV
- 7q8qYv+XZrFWH9OELwdJPGfGJAUO7Ai0GZ6Az81lNMq5mLbZ0AJzKzJfmZnku73mnedf
- v6Sg==
-X-Gm-Message-State: AOJu0YyUFSnFcHx7l/RzZj17W4i2Bin7zaCgDytI/FDMS/qY6/7TOLBH
- Z9lUP7Iu/dRoGdI9TzRxYTTnIw==
-X-Received: by 2002:a1c:7505:0:b0:405:3f06:d2ef with SMTP id
- o5-20020a1c7505000000b004053f06d2efmr174242wmc.4.1696481477187; 
- Wed, 04 Oct 2023 21:51:17 -0700 (PDT)
+ bh=UnezdLBVjvZnCdXX1V4kutiq/Z6kzmSrGXxXnwF1wNc=;
+ b=G/NYL9iF0z4lE6W2KUU/x5PjWT8VVWozhiWD2n+plWI62tjYVA3dX3am8ZR3LVAFHL
+ 93A6s+0mj3WI+qY58sMsP8U/1Fi5UWmJ29jvueanT1yAOXSQ+h6+igrmYjlXv+38FofY
+ QA3bTbCiD2wl5oHXu/bXTvNI9qv/DNqxhMQkUKQj4+fDmjnJeikRyG56tIS+ZQ3jKtM7
+ qUGUoiTgkU9jvUSup7T1A4O1OP0tLgbo7WUioTE7rs0kly0jN+PlKb727iIYYynLl5YR
+ xUNR6o7RdcCBtdumAVonctdksdwjyEzK70FGgMkekIiIyCGrLARWTAEjc995CU/lUlZr
+ xZhA==
+X-Gm-Message-State: AOJu0YygDrbgjLRKkuRvR87j4Xw490GSZQF0QennnwQ9/2Dr0u5S6rZ4
+ yEod5o1+YTqUW1O38RwGjzAY6A==
+X-Received: by 2002:a5d:6a07:0:b0:321:7844:de44 with SMTP id
+ m7-20020a5d6a07000000b003217844de44mr3618406wru.45.1696481496706; 
+ Wed, 04 Oct 2023 21:51:36 -0700 (PDT)
 Received: from m1x-phil.lan (tbo33-h01-176-171-211-120.dsl.sta.abo.bbox.fr.
  [176.171.211.120]) by smtp.gmail.com with ESMTPSA id
- y4-20020a05600c364400b0040472ad9a3dsm623215wmq.14.2023.10.04.21.51.15
+ e15-20020a5d594f000000b0030ada01ca78sm750316wri.10.2023.10.04.21.51.34
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 21:51:16 -0700 (PDT)
+ Wed, 04 Oct 2023 21:51:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Michael Roth <michael.roth@amd.com>,
- Konstantin Kostiuk <kkostiuk@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH v2 05/22] qapi: Inline QERR_INVALID_PARAMETER definition
- (constant parameter)
-Date: Thu,  5 Oct 2023 06:50:22 +0200
-Message-ID: <20231005045041.52649-6-philmd@linaro.org>
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH v2 08/22] qapi: Inline QERR_INVALID_PARAMETER_TYPE definition
+ (constant value)
+Date: Thu,  5 Oct 2023 06:50:25 +0200
+Message-ID: <20231005045041.52649-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231005045041.52649-1-philmd@linaro.org>
 References: <20231005045041.52649-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,7 +130,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VHWEUaO9z+Ky
+X-TUID: oS9mAqk7tKcx
 
 Address the comment added in commit 4629ed1e98
 ("qerror: Finally unused, clean up"), from 2015:
@@ -145,103 +145,196 @@ coccinelle semantic patch:
 
     @match@
     expression errp;
-    constant param;
+    expression param;
+    constant value;
     @@
-         error_setg(errp, QERR_INVALID_PARAMETER, param);
+         error_setg(errp, QERR_INVALID_PARAMETER_TYPE, param, value);
 
     @script:python strformat depends on match@
-    param << match.param;
+    value << match.value;
     fixedfmt; // new var
     @@
-    fixedfmt = f'"Invalid parameter \'{param[1:-1]}\'"' # Format skipping '"'.
+    fixedfmt = f'"Invalid parameter type for \'%s\', expected: {value[1:-1]}"'
     coccinelle.fixedfmt = cocci.make_ident(fixedfmt)
 
     @replace@
     expression match.errp;
-    constant match.param;
+    expression match.param;
+    constant match.value;
     identifier strformat.fixedfmt;
     @@
-    -    error_setg(errp, QERR_INVALID_PARAMETER, param);
-    +    error_setg(errp, fixedfmt);
+    -    error_setg(errp, QERR_INVALID_PARAMETER_TYPE, param, value);
+    +    error_setg(errp, fixedfmt, param);
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- dump/dump.c        | 6 +++---
- qga/commands.c     | 2 +-
- ui/ui-qmp-cmds.c   | 2 +-
- util/qemu-option.c | 2 +-
- 4 files changed, 6 insertions(+), 6 deletions(-)
+ qapi/qobject-input-visitor.c | 32 ++++++++++++++++----------------
+ qapi/string-input-visitor.c  |  8 ++++----
+ qom/object.c                 | 12 ++++++++----
+ 3 files changed, 28 insertions(+), 24 deletions(-)
 
-diff --git a/dump/dump.c b/dump/dump.c
-index d4ef713cd0..e173f1f14c 100644
---- a/dump/dump.c
-+++ b/dump/dump.c
-@@ -1810,7 +1810,7 @@ static void dump_init(DumpState *s, int fd, bool has_format,
- 
-     s->fd = fd;
-     if (has_filter && !length) {
--        error_setg(errp, QERR_INVALID_PARAMETER, "length");
-+        error_setg(errp, "Invalid parameter 'length'");
-         goto cleanup;
+diff --git a/qapi/qobject-input-visitor.c b/qapi/qobject-input-visitor.c
+index 3e8aca6b15..f110a804b2 100644
+--- a/qapi/qobject-input-visitor.c
++++ b/qapi/qobject-input-visitor.c
+@@ -288,8 +288,8 @@ static bool qobject_input_start_struct(Visitor *v, const char *name, void **obj,
+         return false;
      }
-     s->filter_area_begin = begin;
-@@ -1841,7 +1841,7 @@ static void dump_init(DumpState *s, int fd, bool has_format,
- 
-     /* Is the filter filtering everything? */
-     if (validate_start_block(s) == -1) {
--        error_setg(errp, QERR_INVALID_PARAMETER, "begin");
-+        error_setg(errp, "Invalid parameter 'begin'");
-         goto cleanup;
+     if (qobject_type(qobj) != QTYPE_QDICT) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE,
+-                   full_name(qiv, name), "object");
++        error_setg(errp, "Invalid parameter type for '%s', expected: object",
++                   full_name(qiv, name));
+         return false;
      }
  
-@@ -2145,7 +2145,7 @@ void qmp_dump_guest_memory(bool paging, const char *file,
+@@ -326,8 +326,8 @@ static bool qobject_input_start_list(Visitor *v, const char *name,
+         return false;
+     }
+     if (qobject_type(qobj) != QTYPE_QLIST) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE,
+-                   full_name(qiv, name), "array");
++        error_setg(errp, "Invalid parameter type for '%s', expected: array",
++                   full_name(qiv, name));
+         return false;
      }
  
-     if (fd == -1) {
--        error_setg(errp, QERR_INVALID_PARAMETER, "protocol");
-+        error_setg(errp, "Invalid parameter 'protocol'");
-         return;
+@@ -405,8 +405,8 @@ static bool qobject_input_type_int64(Visitor *v, const char *name, int64_t *obj,
+     }
+     qnum = qobject_to(QNum, qobj);
+     if (!qnum || !qnum_get_try_int(qnum, obj)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE,
+-                   full_name(qiv, name), "integer");
++        error_setg(errp, "Invalid parameter type for '%s', expected: integer",
++                   full_name(qiv, name));
+         return false;
+     }
+     return true;
+@@ -494,8 +494,8 @@ static bool qobject_input_type_bool(Visitor *v, const char *name, bool *obj,
+     }
+     qbool = qobject_to(QBool, qobj);
+     if (!qbool) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE,
+-                   full_name(qiv, name), "boolean");
++        error_setg(errp, "Invalid parameter type for '%s', expected: boolean",
++                   full_name(qiv, name));
+         return false;
      }
  
-diff --git a/qga/commands.c b/qga/commands.c
-index 09c683e263..871210ab0b 100644
---- a/qga/commands.c
-+++ b/qga/commands.c
-@@ -154,7 +154,7 @@ GuestExecStatus *qmp_guest_exec_status(int64_t pid, Error **errp)
- 
-     gei = guest_exec_info_find(pid);
-     if (gei == NULL) {
--        error_setg(errp, QERR_INVALID_PARAMETER, "pid");
-+        error_setg(errp, "Invalid parameter 'pid'");
-         return NULL;
+@@ -534,8 +534,8 @@ static bool qobject_input_type_str(Visitor *v, const char *name, char **obj,
+     }
+     qstr = qobject_to(QString, qobj);
+     if (!qstr) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE,
+-                   full_name(qiv, name), "string");
++        error_setg(errp, "Invalid parameter type for '%s', expected: string",
++                   full_name(qiv, name));
+         return false;
      }
  
-diff --git a/ui/ui-qmp-cmds.c b/ui/ui-qmp-cmds.c
-index debc07d678..41ca0100e7 100644
---- a/ui/ui-qmp-cmds.c
-+++ b/ui/ui-qmp-cmds.c
-@@ -44,7 +44,7 @@ void qmp_set_password(SetPasswordOptions *opts, Error **errp)
-         assert(opts->protocol == DISPLAY_PROTOCOL_VNC);
-         if (opts->connected != SET_PASSWORD_ACTION_KEEP) {
-             /* vnc supports "connected=keep" only */
--            error_setg(errp, QERR_INVALID_PARAMETER, "connected");
-+            error_setg(errp, "Invalid parameter 'connected'");
-             return;
-         }
-         /*
-diff --git a/util/qemu-option.c b/util/qemu-option.c
-index eedd08929b..fb391a7904 100644
---- a/util/qemu-option.c
-+++ b/util/qemu-option.c
-@@ -612,7 +612,7 @@ QemuOpts *qemu_opts_create(QemuOptsList *list, const char *id,
+@@ -565,8 +565,8 @@ static bool qobject_input_type_number(Visitor *v, const char *name, double *obj,
+     }
+     qnum = qobject_to(QNum, qobj);
+     if (!qnum) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE,
+-                   full_name(qiv, name), "number");
++        error_setg(errp, "Invalid parameter type for '%s', expected: number",
++                   full_name(qiv, name));
+         return false;
+     }
  
-     if (list->merge_lists) {
-         if (id) {
--            error_setg(errp, QERR_INVALID_PARAMETER, "id");
-+            error_setg(errp, "Invalid parameter 'id'");
-             return NULL;
-         }
-         opts = qemu_opts_find(list, NULL);
+@@ -587,8 +587,8 @@ static bool qobject_input_type_number_keyval(Visitor *v, const char *name,
+ 
+     if (qemu_strtod_finite(str, NULL, &val)) {
+         /* TODO report -ERANGE more nicely */
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE,
+-                   full_name(qiv, name), "number");
++        error_setg(errp, "Invalid parameter type for '%s', expected: number",
++                   full_name(qiv, name));
+         return false;
+     }
+ 
+@@ -623,8 +623,8 @@ static bool qobject_input_type_null(Visitor *v, const char *name,
+     }
+ 
+     if (qobject_type(qobj) != QTYPE_QNULL) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE,
+-                   full_name(qiv, name), "null");
++        error_setg(errp, "Invalid parameter type for '%s', expected: null",
++                   full_name(qiv, name));
+         return false;
+     }
+     *obj = qnull();
+diff --git a/qapi/string-input-visitor.c b/qapi/string-input-visitor.c
+index 197139c1c0..3f1b9e9b41 100644
+--- a/qapi/string-input-visitor.c
++++ b/qapi/string-input-visitor.c
+@@ -353,8 +353,8 @@ static bool parse_type_number(Visitor *v, const char *name, double *obj,
+ 
+     assert(siv->lm == LM_NONE);
+     if (qemu_strtod_finite(siv->string, NULL, &val)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE, name ? name : "null",
+-                   "number");
++        error_setg(errp, "Invalid parameter type for '%s', expected: number",
++                   name ? name : "null");
+         return false;
+     }
+ 
+@@ -371,8 +371,8 @@ static bool parse_type_null(Visitor *v, const char *name, QNull **obj,
+     *obj = NULL;
+ 
+     if (siv->string[0]) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE, name ? name : "null",
+-                   "null");
++        error_setg(errp, "Invalid parameter type for '%s', expected: null",
++                   name ? name : "null");
+         return false;
+     }
+ 
+diff --git a/qom/object.c b/qom/object.c
+index e25f1e96db..890fa0a106 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1443,7 +1443,8 @@ char *object_property_get_str(Object *obj, const char *name,
+     }
+     qstring = qobject_to(QString, ret);
+     if (!qstring) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE, name, "string");
++        error_setg(errp, "Invalid parameter type for '%s', expected: string",
++                   name);
+         retval = NULL;
+     } else {
+         retval = g_strdup(qstring_get_str(qstring));
+@@ -1504,7 +1505,8 @@ bool object_property_get_bool(Object *obj, const char *name,
+     }
+     qbool = qobject_to(QBool, ret);
+     if (!qbool) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE, name, "boolean");
++        error_setg(errp, "Invalid parameter type for '%s', expected: boolean",
++                   name);
+         retval = false;
+     } else {
+         retval = qbool_get_bool(qbool);
+@@ -1537,7 +1539,8 @@ int64_t object_property_get_int(Object *obj, const char *name,
+ 
+     qnum = qobject_to(QNum, ret);
+     if (!qnum || !qnum_get_try_int(qnum, &retval)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE, name, "int");
++        error_setg(errp, "Invalid parameter type for '%s', expected: int",
++                   name);
+         retval = -1;
+     }
+ 
+@@ -1606,7 +1609,8 @@ uint64_t object_property_get_uint(Object *obj, const char *name,
+     }
+     qnum = qobject_to(QNum, ret);
+     if (!qnum || !qnum_get_try_uint(qnum, &retval)) {
+-        error_setg(errp, QERR_INVALID_PARAMETER_TYPE, name, "uint");
++        error_setg(errp, "Invalid parameter type for '%s', expected: uint",
++                   name);
+         retval = 0;
+     }
+ 
 -- 
 2.41.0
 

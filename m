@@ -1,114 +1,112 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp70501ejc;
-        Wed, 4 Oct 2023 21:54:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHdoxUWO8mURKeJc1gLhqKmsLter9ZtkuwIJCtMXRYGh6RlE5BSCL5kS8fXxgKZXfcSbvys
-X-Received: by 2002:ac8:5987:0:b0:417:b45b:84c7 with SMTP id e7-20020ac85987000000b00417b45b84c7mr5234233qte.19.1696481646143;
-        Wed, 04 Oct 2023 21:54:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696481646; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp70517ejc;
+        Wed, 4 Oct 2023 21:54:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG1mntBisy6QhPG16IiFoLRT8TpNbcOL1vPdsZw8Eohiq+bSeGW4aiJUcnPSK3ifaDZHWhi
+X-Received: by 2002:a05:622a:349:b0:412:3d25:9019 with SMTP id r9-20020a05622a034900b004123d259019mr2145208qtw.6.1696481649614;
+        Wed, 04 Oct 2023 21:54:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696481649; cv=none;
         d=google.com; s=arc-20160816;
-        b=R4qkkGSw+LMqV5SMR1sLdS1HQNE2jaHJ9hmVb5nguQnNL6r0ummNM/bOCPe0cJJff+
-         zlaqg94HcjaF7YQM2h5NId/5c1dxIWKtCg7zhv/Wqqcjf0ntbUwb2fqScFqOa+A3wSMu
-         lmUTH2HhNouhEdqcvHB/iRl/nlqxrvrKjbA/l6XrPGnbE9w9YXup8FA8ZR6yzquv99+S
-         C8obW8q4B/PFN9QwquoGN0E2ZzC8xZS1QFbOI8Rvc3fbMyqyaR3trEWWDU5eZ6pCpLdV
-         wh1d/fSQxt5Awb776SyKaoeVkFodbZ+GXyVNlVyz8oW36z1uu7V5DKco0jpugEjvgrdB
-         diNg==
+        b=QUVSO3m0RhIip6cCZOspjQK+ayu2b6+c5/S+Pn1DLvCvM2P7/AkE1+ltc9O1bjsZKT
+         PMgc9bfT0kJjZEvWuZSYtsZL31nZl2B/pE+22JoVdB9P1B9jYhU9eIKpzUtEGng3pRdy
+         TCVw2goP/oJ2d5Ffv0Ryr6qbyrcLhBCgGg2yvqUg7XvaoLfrzT1ETW7R4Zlt2jhPWo1Y
+         fRJ7hxFw2UWlNMwo66B4NaiJ92ugKmZ/HHa4Ia39OEJv9cmwAJhIpql1C7J7d6ojgKpn
+         flqCPbMPDC0a41LwBjLnlRcK4FR+Y1Pp9d6c1iY6bJCg6TAYw5bu1vxsMQ9yzoSK77HY
+         a3Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=1Q3iLFdosYlx+ShI5rJfNC7P4KhR6Nf8wUwiWyt6XeA=;
-        fh=f/1l33s7qhTIbw99Jc6KpxmMb7npFzisdUwydpQPn0k=;
-        b=eN6A1m47iXzXHP3viZD+xVuY78w6uqmS9E/wa3/cJqXqmTDjKEA7KHYFXvxFRbB7JU
-         tNxahgve6FoBzxnIOEiz3ypzRqzioDu60bKB5rm1Oh+WUmfqbIqo2h0RC93X+TSQYSxT
-         gv69FNrJWIJ2b6wfojc2pEpJblXHwI/I2A6NI2L3cbuM9EMwMqQKmxMPhqmVore2QbjS
-         5nsMfUQfy16tfP4omlH9e+9LhOeI6Jyb6i6qOzyM5nwj2ApmnIAq3aRNIkG3uJDv84Dq
-         1lmlZA2OWwF4mJIt1L7weUva5+p+U1FelaoPSsNc63XyYWmz0EOs0W2w4a0q7KR0eDfw
-         PJbA==
+        bh=iUgMeUD+upV2LccJ26enpy7uECYexY6ww0G/2qJYl+4=;
+        fh=hQC7qgxuI1C+CoTC+aPjdtvWzX3JHmASdQZJ5g3QVcM=;
+        b=OdToGvPT7PCrwT6DE9NYp8AJGWyxaSCzvL7VofoxjPL3ayAEK2I1hJErvEbUJPUrPf
+         sz7bbF3Ka/AjBRUYwLyIsqzMZ7kh+a7E6kK9GZtaAANdXE/918qhqXZG6Q5DypCoRI1V
+         1thgNZ70cf0y57aKPG6tkTVhtxmBYiZFmlXQBeG354AQK4uezo0mD3uu46eR0icEel1A
+         oYRtSYV4cTgf8bcHIg2qRARUZYDFy2F6jZf/RF29yy12LDfgqwD3iJa3pCndVlQ+1bW0
+         74qSzw1r4n3CWXhpu0qB2ivPCRS+4Jeedgm6SCvLp72vToiHCfJ4ENEyRaDtikqzy9F2
+         d9fQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H+A25NBo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NVXIzMMk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v5-20020a05622a144500b0041805d11ac3si419791qtx.657.2023.10.04.21.54.05
+        by mx.google.com with ESMTPS id g20-20020ac87d14000000b003f4ecb4085bsi426080qtb.289.2023.10.04.21.54.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 21:54:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Oct 2023 21:54:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H+A25NBo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=NVXIzMMk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qoGL2-0006Gt-5b; Thu, 05 Oct 2023 00:51:52 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qoGKS-0005Qt-QB; Thu, 05 Oct 2023 00:51:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGKz-0006CT-Oy
- for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:51:49 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGKL-0005Hu-5x
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:51:11 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGKv-0005ct-J1
- for qemu-arm@nongnu.org; Thu, 05 Oct 2023 00:51:48 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4054f790190so5170245e9.2
- for <qemu-arm@nongnu.org>; Wed, 04 Oct 2023 21:51:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGKG-0005SE-M7
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:51:08 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-40651a72807so5064525e9.1
+ for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 21:50:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696481503; x=1697086303; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696481458; x=1697086258; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1Q3iLFdosYlx+ShI5rJfNC7P4KhR6Nf8wUwiWyt6XeA=;
- b=H+A25NBo2FF5cwFv8OKP4DsgoB7kFOUO9kiwYXkMt/rQhOnuNDXBUz8cELE20XRIT8
- EEfees+PCBeObtoQmSuyZMfOctA9gVIgtwcy70A78Dmo4RHoE13oqULD+tnkWt7KO4zC
- yQAWYHkmCdYuzYVFLUggWHn6/mfBzu0JTrYeR4YxYmArUkF0UDCeUHyLJ15wuCjFBIn8
- zsMpZeBcw7usPuU12GywVXXkKsWRudLqFwSWLYWflY2Ys00el7yh0B3nrHdFNel1fraK
- yo51bRruFlIQRFgu3a6pttPpcR3vJTTNMOJS+TMLHOzYGllQVYmc0Ub7MuxAsWFyX1br
- 4PUQ==
+ bh=iUgMeUD+upV2LccJ26enpy7uECYexY6ww0G/2qJYl+4=;
+ b=NVXIzMMkYtI5F0kODpz6zRRwRgIUY7oPA57T9Fof+f3N0dV+PHUSe4J4k1/E0H8oda
+ zCoJH4j74mYudNfMq9N3uKAu72Uny/lV0UDTgwI6AjKkEvWk3tskWLcr0YKw5yjz9sNT
+ K0wbN2Bde7TO/1h6dW243sssc9H65PoU0kKOrns9GcoSecGa/EvqoWbzNPZWQUl/fF9k
+ sPdNcmCnk6dTwrRmRnDEItaUkh40Su4RTZBKm6nSnuVV+IBn1LoULqulG0Kz4cPb02H2
+ 52wBUsQi/qfciRz++neVuSZlS1Iy/ElQe0T7hw0fE8EvtPcVm6/ob9uJbYAVkofKp9oz
+ HNvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696481503; x=1697086303;
+ d=1e100.net; s=20230601; t=1696481458; x=1697086258;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=1Q3iLFdosYlx+ShI5rJfNC7P4KhR6Nf8wUwiWyt6XeA=;
- b=v8MezMSErjJyW5+YyqrLoKHNr+4UxBX7+PoRMvQ7Q2r3lq1BPNXP77+lnpUaayJ7+K
- fd74LHX2nUHuJ/beSLFdOz7TWqxRZBvHCk5vC/+W2gZLwTVMltWhG0/B2Es0mzvw3Bzv
- f9nD59DBRdCoshUgMkxlc+qtI6yIUHyLbOoxvBirsW0j+VF64sh6KYl7Cf3NK2pphGu4
- +5ruH6ehrN8l4bcaSDq/tHAxxyZRykjjirjMbuCy1LADxZUOg9MBn3ApzPENMh3rf95x
- VPHwDRu6FIct1Brdj0Sx4oOk/3Y3qafONR02T9L+chIVCzJYkYhx2hsWtCO37NnQlUcE
- 8O5A==
-X-Gm-Message-State: AOJu0YxZRd1DmNLMuvJNvpmdtLpaJ/5qjM6rBnr7LyVKEiTM3pLIppJa
- ttuNVqSMcpS6z2lQZL5JOYkoBw==
-X-Received: by 2002:a5d:6942:0:b0:31d:c9a1:c538 with SMTP id
- r2-20020a5d6942000000b0031dc9a1c538mr3547086wrw.35.1696481503012; 
- Wed, 04 Oct 2023 21:51:43 -0700 (PDT)
+ bh=iUgMeUD+upV2LccJ26enpy7uECYexY6ww0G/2qJYl+4=;
+ b=isG+8TuaQ1dnokCYMZvHUuHdwpsQz2Yf2Qe2R42c/YGyiFsoQcQwu09iYwT6GWjjGZ
+ OIHQ8lrV0EtHlmWSl+4RlYexe2rsU5IVXVsdp4aJcajlMZVdsw9k/al60AAHyx6UcGj0
+ V1/Dhh7vu4EyBnaEEC2WQ8ymlTOk/bd7fgEC3tJxJ2odrfhz5oWWMYLQ1mUrgkUX/LFq
+ yg8y/khz27s3Bm6Cq1a1OqTvIW6qycDzCrSqR1mO/35OlkZDzA5nD7dYzIQ1cQ2k02mz
+ rm0MuNhpTOAQ4voDQ4QMLtmeeR5xGtAGHR5fTCjtNgb9GrfzvEtYihAvKmalAwDHURZL
+ +eMg==
+X-Gm-Message-State: AOJu0YxXFnSYm4WQmPEvFuQIgMWQ01zfANEm2y/RnQilFFfsUtJBSxBG
+ TGs/PT6KncvKFRMG633tMzdVKVpK0y50kgP8ZsA=
+X-Received: by 2002:a5d:4d8e:0:b0:324:7bdd:678e with SMTP id
+ b14-20020a5d4d8e000000b003247bdd678emr3802256wru.60.1696481457809; 
+ Wed, 04 Oct 2023 21:50:57 -0700 (PDT)
 Received: from m1x-phil.lan (tbo33-h01-176-171-211-120.dsl.sta.abo.bbox.fr.
  [176.171.211.120]) by smtp.gmail.com with ESMTPSA id
- u17-20020adfed51000000b003197efd1e7bsm734982wro.114.2023.10.04.21.51.41
+ o6-20020a5d58c6000000b0031aef72a021sm746323wrf.86.2023.10.04.21.50.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 21:51:42 -0700 (PDT)
+ Wed, 04 Oct 2023 21:50:57 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Michael Roth <michael.roth@amd.com>
-Subject: [PATCH v2 09/22] qapi: Inline and remove QERR_INVALID_PARAMETER_TYPE
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
+Subject: [PATCH v2 02/22] qapi: Inline and remove QERR_DEVICE_HAS_NO_MEDIUM
  definition
-Date: Thu,  5 Oct 2023 06:50:26 +0200
-Message-ID: <20231005045041.52649-10-philmd@linaro.org>
+Date: Thu,  5 Oct 2023 06:50:19 +0200
+Message-ID: <20231005045041.52649-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231005045041.52649-1-philmd@linaro.org>
 References: <20231005045041.52649-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,20 +115,20 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xajVBY2UWSGB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kqq516Bk8J4q
 
 Address the comment added in commit 4629ed1e98
 ("qerror: Finally unused, clean up"), from 2015:
@@ -140,59 +138,65 @@ Address the comment added in commit 4629ed1e98
    * in new code, and do not add new ones!
    */
 
-Manual changes (escaping the format in qapi/visit.py).
-Remove the definition in include/qapi/qmp/qerror.h.
+Mechanical transformation using sed, manually
+removing the definition in include/qapi/qmp/qerror.h.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
  include/qapi/qmp/qerror.h | 3 ---
- qom/object.c              | 3 ++-
- scripts/qapi/visit.py     | 4 ++--
- 3 files changed, 4 insertions(+), 6 deletions(-)
+ block/snapshot.c          | 4 ++--
+ blockdev.c                | 2 +-
+ 3 files changed, 3 insertions(+), 6 deletions(-)
 
 diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-index 63ab775dc5..b723830eff 100644
+index 1a9c2d3502..168177bcd7 100644
 --- a/include/qapi/qmp/qerror.h
 +++ b/include/qapi/qmp/qerror.h
 @@ -17,9 +17,6 @@
   * add new ones!
   */
  
--#define QERR_INVALID_PARAMETER_TYPE \
--    "Invalid parameter type for '%s', expected: %s"
+-#define QERR_DEVICE_HAS_NO_MEDIUM \
+-    "Device '%s' has no medium"
 -
- #define QERR_INVALID_PARAMETER_VALUE \
-     "Parameter '%s' expects %s"
+ #define QERR_DEVICE_IN_USE \
+     "Device '%s' is in use"
  
-diff --git a/qom/object.c b/qom/object.c
-index 890fa0a106..eea61a5068 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -1855,7 +1855,8 @@ static Object *object_resolve_link(Object *obj, const char *name,
-     } else if (!target) {
-         target = object_resolve_path(path, &ambiguous);
-         if (target || ambiguous) {
--            error_setg(errp, QERR_INVALID_PARAMETER_TYPE, name, target_type);
-+            error_setg(errp, "Invalid parameter type for '%s', expected: %s",
-+                             name, target_type);
-         } else {
-             error_set(errp, ERROR_CLASS_DEVICE_NOT_FOUND,
-                       "Device '%s' not found", path);
-diff --git a/scripts/qapi/visit.py b/scripts/qapi/visit.py
-index c56ea4d724..4b4a442383 100644
---- a/scripts/qapi/visit.py
-+++ b/scripts/qapi/visit.py
-@@ -278,8 +278,8 @@ def gen_visit_alternate(name: str, variants: QAPISchemaVariants) -> str:
-         abort();
-     default:
-         assert(visit_is_input(v));
--        error_setg(errp, QERR_INVALID_PARAMETER_TYPE, name ? name : "null",
--                   "%(name)s");
-+        error_setg(errp, "Invalid parameter type for '%%s', expected: %(name)s",
-+                         name ? name : "null");
-         /* Avoid passing invalid *obj to qapi_free_%(c_name)s() */
-         g_free(*obj);
-         *obj = NULL;
+diff --git a/block/snapshot.c b/block/snapshot.c
+index b86b5b24ad..eb43e957e1 100644
+--- a/block/snapshot.c
++++ b/block/snapshot.c
+@@ -345,7 +345,7 @@ int bdrv_snapshot_delete(BlockDriverState *bs,
+     GLOBAL_STATE_CODE();
+ 
+     if (!drv) {
+-        error_setg(errp, QERR_DEVICE_HAS_NO_MEDIUM, bdrv_get_device_name(bs));
++        error_setg(errp, "Device '%s' has no medium", bdrv_get_device_name(bs));
+         return -ENOMEDIUM;
+     }
+     if (!snapshot_id && !name) {
+@@ -420,7 +420,7 @@ int bdrv_snapshot_load_tmp(BlockDriverState *bs,
+     GLOBAL_STATE_CODE();
+ 
+     if (!drv) {
+-        error_setg(errp, QERR_DEVICE_HAS_NO_MEDIUM, bdrv_get_device_name(bs));
++        error_setg(errp, "Device '%s' has no medium", bdrv_get_device_name(bs));
+         return -ENOMEDIUM;
+     }
+     if (!snapshot_id && !name) {
+diff --git a/blockdev.c b/blockdev.c
+index 325b7a3bef..e5617faf0f 100644
+--- a/blockdev.c
++++ b/blockdev.c
+@@ -1422,7 +1422,7 @@ static void external_snapshot_action(TransactionAction *action,
+     bdrv_drained_begin(state->old_bs);
+ 
+     if (!bdrv_is_inserted(state->old_bs)) {
+-        error_setg(errp, QERR_DEVICE_HAS_NO_MEDIUM, device);
++        error_setg(errp, "Device '%s' has no medium", device);
+         goto out;
+     }
+ 
 -- 
 2.41.0
 

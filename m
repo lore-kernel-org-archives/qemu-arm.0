@@ -1,113 +1,112 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp70611ejc;
-        Wed, 4 Oct 2023 21:54:25 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG97/lwZ0Axz1JSjK1fEfS/abZVM+4R05JUhjfMQjJDj6xvU0btgLxNYkJsvQwEEbJOLUmf
-X-Received: by 2002:a05:620a:1a24:b0:769:89c8:4fae with SMTP id bk36-20020a05620a1a2400b0076989c84faemr5612788qkb.52.1696481665537;
-        Wed, 04 Oct 2023 21:54:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696481665; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp70729ejc;
+        Wed, 4 Oct 2023 21:54:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEf1POxbzNcHSQ8JMJbpQUp9r20P8me71Knuz/ypPQ/2Mw0bJaf55Bi4Ict2Ap+so5H9xf2
+X-Received: by 2002:ac8:5e0d:0:b0:40f:e176:ddc5 with SMTP id h13-20020ac85e0d000000b0040fe176ddc5mr5121451qtx.34.1696481690516;
+        Wed, 04 Oct 2023 21:54:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696481690; cv=none;
         d=google.com; s=arc-20160816;
-        b=fm6o0JSsngU+KUAVTgzx9qAODtyO+9lA+/D+39uB8lpktDP0gdLIM1jd9amI8DQgDY
-         +qcCOihoULz/Zpy3zI9+G5WFoTPUp+/vnjihVmXtXUlznMU8LIDJ9Qh6Zju1IDq+L6qK
-         jOvpql0XSHCRqYGJvvcvRTruVWDeKAjYzkdGFTru2NEKe4zvGVgy0J/5QCSJTwwk31Yv
-         Vdx/Re9Yu61PfqdxDiy8xizDXPl67E/8ndK+iFVUuzc+0oHVHEAMVcR1EBb2L3b1DdCh
-         7gIQJC3cBqmfDsAJhaQskTTcVuduFKch9iobikXuXBS15sJFaFWyINvdepkYegXAKda4
-         2WTA==
+        b=rEz+pGWlvwwYMyMt+lPDncKkjBN8QPhowyMvNtObYps5XexIbU+ynF9BJk1ck0/rpU
+         XKpQfpO4z+ifK71Kw181V25bWurIPGCHsGpkvtF996jBqQq4qfoQSMxs9UCFFC5N+UGy
+         0Aou+MNC0xgFyk7NqwqK/jSXYzwQqcAbO7WzBEUg35JlPYfKI1ogU6cb8rtMSphnwaaF
+         vGUb3TGotNR/HeEfsOpVkpbuyiaSNdSnD+g6xdmdGxzQrqXg2xzFX5ZNt+seP+WrTdJT
+         eVy7+XDxzXHOle0iE1iou6JViiX84SqP0jXme+plaAOIiQrAAzj+ZPDjH2GINYH6J9T7
+         14Fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=JgzZrOytqrUApWTqn24h2uNs6StZKBnGHRMADJvQBG0=;
-        fh=ZoAjrgjP1RJGSa9RP9dEtrBjzoYOJeMjdGtN7WHGfK4=;
-        b=G4JhHhITRBsP32AOk8RIDAWOMu4m9gjLaKM2kHgrmiFRE7lfJcLFx0tL9KXKA8jWT+
-         mwYSViJM2PeFk10VQwqp3Y3ZntQHIxF5LxI6thZeoqCrNwJQ+LDLp2basyqOR15FOrzU
-         xjyoLyIntKedNyD6/nQn+L9TD6kmTv6WFXuDnBATWr1dAUeamEvJjZzn9ULgxcwOQ7hK
-         P5z0aB67j6wxcsuoEChJTCHDx6/KI7BE7gyhLkKnMjUQK/PPAQ9Gjke2ibuggC6Z1sST
-         qAWY6NnIjdFiKpCtc2fu9SPacyfBk2KKdHG7T+0JWko6aHBnEh1baoOQsn39Bm9/XI3R
-         uYTg==
+        bh=xsWfVZc9VxkTZJYVgn0fspMadC16MHZrVQJV0TPl4cg=;
+        fh=a3ep33pT5Svu2cDH7WgKWLRwYs5FEj3gqPDuRWXhFrQ=;
+        b=HPBLMHv5jP2tjwbK3mO686cb1iuizOHebyYgVwnfA0pvEiLBlrFfGll2hVoPaLFQz4
+         KwmAGV2s44rc6QJHnPLs+q86wYFgW22uTZ9h2f1TRufiTcnAT5MI1oh7AaJ2ecaB/Brd
+         ABJW/o0omzNU8ReG4jKhRl6y/oyxPLIwbcrquzaxCreAVU2nSK+B/qtYQ2adT3lfuXTZ
+         F4TABpBcKwDd0vhgWar61g2QeD8Z34V72/Eq/0T2QEB9zoQ/h6PNoSLMA1fCZWVFlPmH
+         xqCy7fgaGZP3SV1nkc3DmZDFt2C6FLL3SophC1Sku78mEVxoZ1G0pGO/eMq7kDc7LxKF
+         KPgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=r6N156Se;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YmpkJFhg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d11-20020a05620a240b00b0076ef3e972d8si425647qkn.201.2023.10.04.21.54.25
+        by mx.google.com with ESMTPS id t4-20020a05622a180400b0041092f38eeasi415315qtc.434.2023.10.04.21.54.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 21:54:25 -0700 (PDT)
+        Wed, 04 Oct 2023 21:54:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=r6N156Se;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YmpkJFhg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qoGMS-0001Al-Kq; Thu, 05 Oct 2023 00:53:20 -0400
+	id 1qoGMP-0000qu-51; Thu, 05 Oct 2023 00:53:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGMB-00089S-AN
- for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:53:06 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGM7-00084X-5k
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:53:02 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGM6-0007iG-S4
- for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:53:03 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-317c3ac7339so550344f8f.0
- for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 21:52:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGM1-0007az-1J
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:52:58 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4064876e8b8so5432395e9.0
+ for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 21:52:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696481576; x=1697086376; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696481570; x=1697086370; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JgzZrOytqrUApWTqn24h2uNs6StZKBnGHRMADJvQBG0=;
- b=r6N156Se1kVQOmjFZjLRcDk/AJgw0EhnC+gTgib438FetR7fQ1BzwJdZSKZuet4Tn/
- EhYcH1o2r12itPsn5N/exjqUdG0iFndsouFw3Q43MsFtA+Np8DuvomaBq5c9ivP77aMz
- /7Q7acpc84rxTYCDpiaE69ePYPODozTXSRSJVYLFXHsg6oq1wCG7ijMaNdaTbb1ZR9RL
- bod47kt1I0KJONzBOB8O7rvK5w+3UOxDNkUb4sg2qtkUBGX9l+ZHsssir4v4cWT4r1Cj
- Du50LDAXUTkb0AHxf0Ijmkvfh+0qEEL4DrYUzp6W6yP3aZ7XZIONSWrcx2uCB5hi5ZhD
- DQ5Q==
+ bh=xsWfVZc9VxkTZJYVgn0fspMadC16MHZrVQJV0TPl4cg=;
+ b=YmpkJFhgU3u1YMySpq0rCpKVzddvnnyW8GuPSNDoq2/DWJWovm41EcjMQBLX03kBEd
+ jkffygnQvyozKbqiC/aZg9eaD977fmc1J7yd/sLkXwHcA51G85O9miAzxjJ7QMKHTrFD
+ uRX7kT0ToCcqDhWzIqqY8LYRrF+VOPmBPWdeBKwzPHlh00uaommLwqLq07QFGMWXHv0h
+ l4svZAL30c8Yh0yoE2DVS2oUZ/Ce0PJ5FfeYDlBk6CpqrteRYs4sFigm3t2XxFzIrHtz
+ +hvX7Q4W4HysXnZvLmbplhlRMAnn/yqMRDQSXn/aUjsjdr/Y9ov7Xn8gy6VuBFmjYfn5
+ uLNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696481576; x=1697086376;
+ d=1e100.net; s=20230601; t=1696481570; x=1697086370;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=JgzZrOytqrUApWTqn24h2uNs6StZKBnGHRMADJvQBG0=;
- b=DNRH9hIyvSLFvrG/4ESbgQUtuV2C8UNWJ+4Nw3emVJ24gISK3h73IJOQiPfNrWreXu
- HhG9IZugkl/735m7gAmTv4IIYx31M+/Wz+co20OLFV6MwcphhnGx9B6TBHGPTWD6nyki
- SYI54KWI4Ya8j7IpEoOQjgKWcEd+yyXQtr3acJO3YJckZEWaKjKr1QgRzyJzOivCjRmW
- wBJC01rVYtVXGkNXMNQBmzAl6ifrpZf/gNYzQnxCpFJQ37Q0hsF6Rl83ffCEE1wSjQ7M
- rDS2cJt6L1WxL77JJWT16aW5nxobG3rYusvJhBNV/ctj2S3EFOLyu4hZMv6mRyvRqGXC
- 04Mg==
-X-Gm-Message-State: AOJu0YzSQIJBCoDmen1/X387+Xq9MRI829bxe8xMWaHejNHuJ/63zOiA
- mYbbXFnP/vsUhQshx1p8ZoWd+d1ACuOmKnnU5ow=
-X-Received: by 2002:a05:6000:118d:b0:31f:98b4:4b4d with SMTP id
- g13-20020a056000118d00b0031f98b44b4dmr3699522wrx.42.1696481576065; 
- Wed, 04 Oct 2023 21:52:56 -0700 (PDT)
+ bh=xsWfVZc9VxkTZJYVgn0fspMadC16MHZrVQJV0TPl4cg=;
+ b=abra5xLGYmrRKyWtyHTi5T3WEL/8wVd1vk0dp5SKMN9a0o9DIfSMm2rt9JYW3SUpBV
+ LQj7eFuUuMRAOzQABzyPifvIgBahuU4ORDi1ndEjo3x5EBNqieVXzMAYWb0BTwBRoa+F
+ nZWCRiMAEkvhQ7FAi6fGOdn/1WVIljGrhF7ozc5YzF3E89owZl/17nFT1v7cn9vFyALu
+ Ei1aRMEnF9h+HUPOj8MEh+ewqeT87uZJbCS4DRjwHrzUAUcabb6RwCVFYUMUvelX+ilF
+ TKcekbv+jDWNmoKIH9vcPG1oK2SrATtRGfPfH7LQPZdMeYpjZ8fxvvjV56mAw6H4dDry
+ aGjg==
+X-Gm-Message-State: AOJu0YznW0cJFNbWrw7s6PFKGwZOznaPQG3KJi3BOePhRoDQZHHkf6nC
+ ZmcWWfGKzjh5ZL2bxnCCMwtEklitlvkHRRktrFk=
+X-Received: by 2002:a1c:4b12:0:b0:403:cab3:b763 with SMTP id
+ y18-20020a1c4b12000000b00403cab3b763mr4218395wma.33.1696481570406; 
+ Wed, 04 Oct 2023 21:52:50 -0700 (PDT)
 Received: from m1x-phil.lan (tbo33-h01-176-171-211-120.dsl.sta.abo.bbox.fr.
  [176.171.211.120]) by smtp.gmail.com with ESMTPSA id
- g14-20020adfe40e000000b0031980783d78sm748747wrm.54.2023.10.04.21.52.54
+ q15-20020a7bce8f000000b00405391f485fsm604322wmj.41.2023.10.04.21.52.48
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 21:52:55 -0700 (PDT)
+ Wed, 04 Oct 2023 21:52:50 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Konstantin Kostiuk <kkostiuk@redhat.com>,
- Michael Roth <michael.roth@amd.com>
-Subject: [PATCH v2 20/22] qapi: Inline and remove QERR_QGA_COMMAND_FAILED
- definition
-Date: Thu,  5 Oct 2023 06:50:37 +0200
-Message-ID: <20231005045041.52649-21-philmd@linaro.org>
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH v2 19/22] qapi: Inline and remove
+ QERR_PROPERTY_VALUE_OUT_OF_RANGE definition
+Date: Thu,  5 Oct 2023 06:50:36 +0200
+Message-ID: <20231005045041.52649-20-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231005045041.52649-1-philmd@linaro.org>
 References: <20231005045041.52649-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,7 +128,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: W1pp7QNV6xo3
+X-TUID: lVfVBPGK8Lqx
 
 Address the comment added in commit 4629ed1e98
 ("qerror: Finally unused, clean up"), from 2015:
@@ -139,184 +138,103 @@ Address the comment added in commit 4629ed1e98
    * in new code, and do not add new ones!
    */
 
-Mechanical transformation using the following
-coccinelle semantic patch:
-
-    @match exists@
-    expression errp;
-    expression errmsg;
-    @@
-         error_setg(errp, QERR_QGA_COMMAND_FAILED, errmsg);
-
-    @script:python strformat depends on match@
-    errmsg << match.errmsg;
-    fixedfmt; // new var
-    @@
-    # Format skipping '"'.
-    fixedfmt = f'"Guest agent command failed, error was \'{errmsg[1:-1]}\'"'
-    coccinelle.fixedfmt = cocci.make_ident(fixedfmt)
-
-    @replace@
-    expression match.errp;
-    expression match.errmsg;
-    identifier strformat.fixedfmt;
-    @@
-    -    error_setg(errp, QERR_QGA_COMMAND_FAILED, errmsg);
-    +    error_setg(errp, fixedfmt);
-
-then manually removing the definition in include/qapi/qmp/qerror.h.
+Mechanical transformation using sed, manually
+removing the definition in include/qapi/qmp/qerror.h.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
  include/qapi/qmp/qerror.h |  3 ---
- qga/commands-win32.c      | 38 ++++++++++++++++++++------------------
- qga/commands.c            |  7 ++++---
- 3 files changed, 24 insertions(+), 24 deletions(-)
+ hw/intc/openpic.c         |  3 ++-
+ target/i386/cpu.c         | 12 ++++++++----
+ util/block-helpers.c      |  3 ++-
+ 4 files changed, 12 insertions(+), 9 deletions(-)
 
 diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-index e094f13114..840831cc6a 100644
+index 7862ac55a1..e094f13114 100644
 --- a/include/qapi/qmp/qerror.h
 +++ b/include/qapi/qmp/qerror.h
 @@ -17,9 +17,6 @@
   * add new ones!
   */
  
--#define QERR_QGA_COMMAND_FAILED \
--    "Guest agent command failed, error was '%s'"
+-#define QERR_PROPERTY_VALUE_OUT_OF_RANGE \
+-    "Property %s.%s doesn't take value %" PRId64 " (minimum: %" PRId64 ", maximum: %" PRId64 ")"
 -
- #define QERR_UNSUPPORTED \
-     "this feature or command is not currently supported"
+ #define QERR_QGA_COMMAND_FAILED \
+     "Guest agent command failed, error was '%s'"
  
-diff --git a/qga/commands-win32.c b/qga/commands-win32.c
-index 946dbafbb6..aa8c9770d4 100644
---- a/qga/commands-win32.c
-+++ b/qga/commands-win32.c
-@@ -245,7 +245,8 @@ int64_t qmp_guest_file_open(const char *path, const char *mode, Error **errp)
+diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
+index a6f91d4bcd..4f6ee930e2 100644
+--- a/hw/intc/openpic.c
++++ b/hw/intc/openpic.c
+@@ -1535,7 +1535,8 @@ static void openpic_realize(DeviceState *dev, Error **errp)
+     };
  
- done:
-     if (gerr) {
--        error_setg(errp, QERR_QGA_COMMAND_FAILED, gerr->message);
-+        error_setg(errp,
-+                   "Guest agent command failed, error was 'err -> messag'");
-         g_error_free(gerr);
+     if (opp->nb_cpus > MAX_CPU) {
+-        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE,
++        error_setg(errp, "Property %s.%s doesn't take value %" PRId64
++                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+                    TYPE_OPENPIC, "nb_cpus", (uint64_t)opp->nb_cpus,
+                    (uint64_t)0, (uint64_t)MAX_CPU);
+         return;
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index e5a14885ed..273f865228 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -5086,7 +5086,8 @@ static void x86_cpuid_version_set_family(Object *obj, Visitor *v,
+         return;
      }
-     g_free(w_path);
-@@ -279,8 +280,8 @@ static void acquire_privilege(const char *name, Error **errp)
-         TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &token))
-     {
-         if (!LookupPrivilegeValue(NULL, name, &priv.Privileges[0].Luid)) {
--            error_setg(errp, QERR_QGA_COMMAND_FAILED,
--                       "no luid for requested privilege");
-+            error_setg(errp,
-+                       "Guest agent command failed, error was 'no luid for requested privilege'");
-             goto out;
-         }
- 
-@@ -288,14 +289,14 @@ static void acquire_privilege(const char *name, Error **errp)
-         priv.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
- 
-         if (!AdjustTokenPrivileges(token, FALSE, &priv, 0, NULL, 0)) {
--            error_setg(errp, QERR_QGA_COMMAND_FAILED,
--                       "unable to acquire requested privilege");
-+            error_setg(errp,
-+                       "Guest agent command failed, error was 'unable to acquire requested privilege'");
-             goto out;
-         }
- 
-     } else {
--        error_setg(errp, QERR_QGA_COMMAND_FAILED,
--                   "failed to open privilege token");
-+        error_setg(errp,
-+                   "Guest agent command failed, error was 'failed to open privilege token'");
+     if (value < min || value > max) {
+-        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
++        error_setg(errp, "Property %s doesn't take value %" PRId64
++                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+                    name ? name : "null", value, min, max);
+         return;
      }
- 
- out:
-@@ -309,8 +310,8 @@ static void execute_async(DWORD WINAPI (*func)(LPVOID), LPVOID opaque,
+@@ -5126,7 +5127,8 @@ static void x86_cpuid_version_set_model(Object *obj, Visitor *v,
+         return;
+     }
+     if (value < min || value > max) {
+-        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
++        error_setg(errp, "Property %s doesn't take value %" PRId64
++                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+                    name ? name : "null", value, min, max);
+         return;
+     }
+@@ -5161,7 +5163,8 @@ static void x86_cpuid_version_set_stepping(Object *obj, Visitor *v,
+         return;
+     }
+     if (value < min || value > max) {
+-        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
++        error_setg(errp, "Property %s doesn't take value %" PRId64
++                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+                    name ? name : "null", value, min, max);
+         return;
+     }
+@@ -5263,7 +5266,8 @@ static void x86_cpuid_set_tsc_freq(Object *obj, Visitor *v, const char *name,
+         return;
+     }
+     if (value < min || value > max) {
+-        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE, "",
++        error_setg(errp, "Property %s doesn't take value %" PRId64
++                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+                    name ? name : "null", value, min, max);
+         return;
+     }
+diff --git a/util/block-helpers.c b/util/block-helpers.c
+index c4851432f5..de94909bc4 100644
+--- a/util/block-helpers.c
++++ b/util/block-helpers.c
+@@ -30,7 +30,8 @@ void check_block_size(const char *id, const char *name, int64_t value,
  {
-     HANDLE thread = CreateThread(NULL, 0, func, opaque, 0, NULL);
-     if (!thread) {
--        error_setg(errp, QERR_QGA_COMMAND_FAILED,
--                   "failed to dispatch asynchronous command");
-+        error_setg(errp,
-+                   "Guest agent command failed, error was 'failed to dispatch asynchronous command'");
-     }
- }
- 
-@@ -1423,22 +1424,22 @@ static void check_suspend_mode(GuestSuspendMode mode, Error **errp)
- 
-     ZeroMemory(&sys_pwr_caps, sizeof(sys_pwr_caps));
-     if (!GetPwrCapabilities(&sys_pwr_caps)) {
--        error_setg(errp, QERR_QGA_COMMAND_FAILED,
--                   "failed to determine guest suspend capabilities");
-+        error_setg(errp,
-+                   "Guest agent command failed, error was 'failed to determine guest suspend capabilities'");
+     /* value of 0 means "unset" */
+     if (value && (value < MIN_BLOCK_SIZE || value > MAX_BLOCK_SIZE)) {
+-        error_setg(errp, QERR_PROPERTY_VALUE_OUT_OF_RANGE,
++        error_setg(errp, "Property %s.%s doesn't take value %" PRId64
++                         " (minimum: %" PRId64 ", maximum: %" PRId64 ")",
+                    id, name, value, MIN_BLOCK_SIZE, MAX_BLOCK_SIZE);
          return;
      }
- 
-     switch (mode) {
-     case GUEST_SUSPEND_MODE_DISK:
-         if (!sys_pwr_caps.SystemS4) {
--            error_setg(errp, QERR_QGA_COMMAND_FAILED,
--                       "suspend-to-disk not supported by OS");
-+            error_setg(errp,
-+                       "Guest agent command failed, error was 'suspend-to-disk not supported by OS'");
-         }
-         break;
-     case GUEST_SUSPEND_MODE_RAM:
-         if (!sys_pwr_caps.SystemS3) {
--            error_setg(errp, QERR_QGA_COMMAND_FAILED,
--                       "suspend-to-ram not supported by OS");
-+            error_setg(errp,
-+                       "Guest agent command failed, error was 'suspend-to-ram not supported by OS'");
-         }
-         break;
-     default:
-@@ -1971,7 +1972,8 @@ void qmp_guest_set_user_password(const char *username,
- 
- done:
-     if (gerr) {
--        error_setg(errp, QERR_QGA_COMMAND_FAILED, gerr->message);
-+        error_setg(errp,
-+                   "Guest agent command failed, error was 'err -> messag'");
-         g_error_free(gerr);
-     }
-     g_free(user);
-@@ -2180,8 +2182,8 @@ static void ga_get_win_version(RTL_OSVERSIONINFOEXW *info, Error **errp)
-     HMODULE module = GetModuleHandle("ntdll");
-     PVOID fun = GetProcAddress(module, "RtlGetVersion");
-     if (fun == NULL) {
--        error_setg(errp, QERR_QGA_COMMAND_FAILED,
--            "Failed to get address of RtlGetVersion");
-+        error_setg(errp,
-+                   "Guest agent command failed, error was 'Failed to get address of RtlGetVersion'");
-         return;
-     }
- 
-diff --git a/qga/commands.c b/qga/commands.c
-index 871210ab0b..936634c50a 100644
---- a/qga/commands.c
-+++ b/qga/commands.c
-@@ -475,7 +475,8 @@ GuestExec *qmp_guest_exec(const char *path,
-             guest_exec_task_setup, &has_merge, &pid, input_data ? &in_fd : NULL,
-             has_output ? &out_fd : NULL, has_output ? &err_fd : NULL, &gerr);
-     if (!ret) {
--        error_setg(errp, QERR_QGA_COMMAND_FAILED, gerr->message);
-+        error_setg(errp,
-+                   "Guest agent command failed, error was 'err -> messag'");
-         g_error_free(gerr);
-         goto done;
-     }
-@@ -586,8 +587,8 @@ GuestTimezone *qmp_guest_get_timezone(Error **errp)
-     info = g_new0(GuestTimezone, 1);
-     tz = g_time_zone_new_local();
-     if (tz == NULL) {
--        error_setg(errp, QERR_QGA_COMMAND_FAILED,
--                   "Couldn't retrieve local timezone");
-+        error_setg(errp,
-+                   "Guest agent command failed, error was 'Couldn't retrieve local timezone'");
-         goto error;
-     }
- 
 -- 
 2.41.0
 

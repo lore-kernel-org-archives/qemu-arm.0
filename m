@@ -1,186 +1,114 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp500411ejc;
-        Thu, 5 Oct 2023 11:18:25 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFEDyngKbAC+PpJrpNBs1DCM0iguVKF88lMxOBmcQALPoJvxqZ6ZWVCV84FjesT/djmIzf7
-X-Received: by 2002:a05:6808:1a27:b0:3af:6c91:275f with SMTP id bk39-20020a0568081a2700b003af6c91275fmr7802782oib.2.1696529904777;
-        Thu, 05 Oct 2023 11:18:24 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1696529904; cv=pass;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp518824ejc;
+        Thu, 5 Oct 2023 11:56:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE/dAIllMxWwJGJeHH1mrgcZVyObWvxD0xpZyjeBs2Rel4vMOxELXiO7Bli+DDT8CJpdCPK
+X-Received: by 2002:a05:620a:4622:b0:76f:1ead:ddb9 with SMTP id br34-20020a05620a462200b0076f1eadddb9mr7358101qkb.51.1696532201247;
+        Thu, 05 Oct 2023 11:56:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696532201; cv=none;
         d=google.com; s=arc-20160816;
-        b=V+FRVW5gO81neaJ3+yRj3t9wyEJTFOI2Ro0js5aH8ka+cuKVlnT7se8h9P7DhriUDs
-         jziikF5Md3ajpXU1ljxvoNMenlwrmvoxkLuhX0LoDJCaRHmMs3YtneeCRz8cOQoBB1pR
-         MThFV4P6WUayreEtvNMt3yBTgzy7KECU+vDE5a7XB+ValW3o5sUoJ2aZo89Xk7SrHdPy
-         DuuT61uBMfDOo1u9r5fDGRZAl33YP51N22QoH8dZJkUKX3ittDm/0B75wO0oPfUx86kq
-         V548oImOrcO2Aitg+hzzpN33/ex7zOKjwrGMu/XrMfB3tDD8qiLI2i7AdhrtJtmDpNOe
-         bsVw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ksF652jkj0H+gVQIly5PpnylBV9Mz7gsmo/SYfg2AAk=;
-        fh=GH86YoEhZTrxm1DRZVB5ZFYxvyNVsoDnqZ3COCiDTUA=;
-        b=tbKTYNJWclMRx5e3gYaUpgU2nmNNFC8oP0Jkljt1rTnM4G1mLHFrO8fPpH91VglZd/
-         Jud/fBQufNq+etgn6DEVrB2Znq005bBPAQqr6zfLw1+SVwqHWEC9xnkZxN4iPKZ0Ui3U
-         ldIY3gSh9WXaRXV5ojU5QGT1OsFTs4mAs3GyLDI+eATfCgQvn6pmMMUlg7j65b//mDJS
-         I8ZQ6uxxZrNA/QSm2uYgDzds1amu3DenIVhWQC+BrOseDJQwmusCMppX8g1r9VkafGw5
-         fRmZb0MD0xAtY0aa2RmyZtSK3MnQcJzcuBn2zh7Qa5+p6c/lDOyEedSuVrGktxsorBvx
-         ny4Q==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="JU2Rlt/g";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o21-20020ac87c55000000b004198816340esi1302804qtv.662.2023.10.05.11.18.24
+        b=x+/lwP/6fhPK5ea8cnmq72vkWeF/01nM/4vAzthjFJoLArLzM9r1ReHymgDzz60FGe
+         kixu/pqA6VufVSKm6asmjcX8OvmtLq8x+syg2UHyKsKzmwMQsbtbDW6U7FxOtJGI0c4o
+         5ndGu7lvX/FjdcLMVV5ci36tVROG5DktsBn3YkETox5MRkmRYiLl4EogotwfOxy8yQKf
+         XXJ147HIXKkEc03YB7jdwlaJi/U6h0hGcRqctulO6ytUNzNSuPFL9f+H+ngQ6aCunFAn
+         fbm/ayRC3gVj07+uC69Q52BCjglRj8JooQpIwJNWxHgOXVYuC08CMUGOTzStAp2PWC4A
+         zEng==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=J0fO46ECHysOq4m3Ye+P6l8Lk6TABCFWmkDdrQNga3g=;
+        fh=qxcIe+tFWvJ+i+FtrBHyvjWbmIvanBXERFJcTOLJkZA=;
+        b=VNNKbIQR+u2g/KuafmtmdqWRw8kvhhL348vq+MMHUZ+gV8ZurwIJ5ElyBSZ65fFC3U
+         zyh0NSffLwWAioJfJM1SroVqFD05khDXsLWN0m0S/Tm0kEvFrkbKJ6ekaRkBzzd5zTTT
+         uDxPTFp9TU0C7ARuWgpWVMcqnA+88Isaj2EITRizNnDhEkYfYHxDObT21Uz0qA3pBaqX
+         5uIU0CxnO/HZHOAWHC2xe2TGiRKRzy9h7CGdIY4kyK5XFK2CivgOqgvyLO7tzeMgtbiJ
+         SGhaS89chQRVkV/M1bjTopBonEKQ3CSGKXrfF55PsKUbNkOA8vj8P8VCI0HvxVTiAtIW
+         QJbw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a0epBO1H;
+       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eblake@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id u15-20020a05620a022f00b0076ee90878a9si1243062qkm.594.2023.10.05.11.56.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Oct 2023 11:18:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Oct 2023 11:56:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="JU2Rlt/g";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qoSuf-0000N9-4g; Thu, 05 Oct 2023 14:17:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
- id 1qoSud-0000Mp-Qy; Thu, 05 Oct 2023 14:17:27 -0400
-Received: from mail-bn1nam02on20602.outbound.protection.outlook.com
- ([2a01:111:f400:7eb2::602]
- helo=NAM02-BN1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
- id 1qoSub-0006KI-09; Thu, 05 Oct 2023 14:17:27 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nQ60KordRDLJk98TPECF5nvC5mN0nSp+h7LCynQAx1LdHZr0ITDtVq4Q13NowFIbQd882EWLzza0t/A6dE1gh7WiiiW2BmblhWp16qjgBkQLZkZlYWpr1ClbvSVhNImhbNAyTl684nGo3OOAEwUVBAKy4y1WPNtDS0/8oYmaTNXJP9QVcSZLw7E1QkMPMLFtzLoqtLZqfUJYJA+mfCiA7SUDsgbw/i/cUVtmirbdobi7zRalV+i1OXR2vQ7HGbDAJkJf1p5gaeNJyyXOAkAVQXL4QGuSsTC9AbpC9kRmRvihxYXCueeHSaau96u4ho1OerhX6PCECv4Yt8BklWp4jA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ksF652jkj0H+gVQIly5PpnylBV9Mz7gsmo/SYfg2AAk=;
- b=bWOOlNmVE5MCa2zZX9MzhK/VDBKbouq8gPFMEdNYgeNLC8wfZmJ2yUvA2iEgUt/zso/YxDRdSlue7nDmYQhMpWyCJjoCsEzBfU3+CHOlK+Qg7FKHZleowDb0jhu/nLT6RUiz5bMhBLXeO90b/Z8KkTQRT/kxxQJw29hyu1RhQa6NNlecJ2wSVWJyKUP/jAW5Kiqbd4hhPrXajyHv0/lDfxbm0HkLzKP+n1SSM2KrN7v0JB3QICU4jmlAG5z598+FRvOnlwRDSywnNZeFtplxfFY8yYyRgQXOZtYryi6c2Q89oufRwZS68BZtSOESnAY6ZnziqzrsLVjc5zUuUXNQOg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ksF652jkj0H+gVQIly5PpnylBV9Mz7gsmo/SYfg2AAk=;
- b=JU2Rlt/gGAhiCHG/127cqotu6VpYt4jRd1NyTsX8+uDme+9BQ5rbBUdxVocy+Um3Tp06FoBTC1tj3MrxvXxrUfcu7LrU0GjZSIbpswPxRIoZkfa6U9Bgt2e6fT4CG84hB9xjObDt0RwXs15xWL7GYn+iclvG8cXiNV66zOfiZ38=
-Received: from MN2PR03CA0018.namprd03.prod.outlook.com (2603:10b6:208:23a::23)
- by BY5PR12MB4872.namprd12.prod.outlook.com (2603:10b6:a03:1c4::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6838.34; Thu, 5 Oct
- 2023 18:17:20 +0000
-Received: from BL6PEPF0001AB4E.namprd04.prod.outlook.com
- (2603:10b6:208:23a:cafe::f) by MN2PR03CA0018.outlook.office365.com
- (2603:10b6:208:23a::23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6838.36 via Frontend
- Transport; Thu, 5 Oct 2023 18:17:20 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- BL6PEPF0001AB4E.mail.protection.outlook.com (10.167.242.72) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6838.14 via Frontend Transport; Thu, 5 Oct 2023 18:17:20 +0000
-Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 5 Oct
- 2023 13:17:20 -0500
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB08.amd.com
- (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 5 Oct
- 2023 11:17:19 -0700
-Received: from xsjfnuv50.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.27 via Frontend
- Transport; Thu, 5 Oct 2023 13:17:19 -0500
-From: Vikram Garhwal <vikram.garhwal@amd.com>
-To: <qemu-devel@nongnu.org>
-CC: <sstabellini@kernel.org>, Vikram Garhwal <vikram.garhwal@amd.com>, "Peter
- Maydell" <peter.maydell@linaro.org>, "open list:ARM TCG CPUs"
- <qemu-arm@nongnu.org>
-Subject: [QEMU][PATCH v1 7/7] hw: arm: Add grant mapping.
-Date: Thu, 5 Oct 2023 11:16:29 -0700
-Message-ID: <20231005181629.4046-8-vikram.garhwal@amd.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20231005181629.4046-1-vikram.garhwal@amd.com>
-References: <20231005181629.4046-1-vikram.garhwal@amd.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a0epBO1H;
+       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1696532200;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=J0fO46ECHysOq4m3Ye+P6l8Lk6TABCFWmkDdrQNga3g=;
+	b=a0epBO1HKghPzRHEs5YmuAeUMn8FQAGe5AXYj1ogjI1lPeJh9gTef9gcKBMSYBws5uSmVf
+	ROPpyiD+pyDeOJRC27S4CXZS53IuVCvwqSUFHBzXYOai2wm7pvZkMl8KVGcfH3WBGZrsT+
+	VOvgMZoi83Hn+WOseV3kxoFGRDbkYsk=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-592-WR8VayRUMwmKDrE7lNtWJw-1; Thu, 05 Oct 2023 14:56:37 -0400
+X-MC-Unique: WR8VayRUMwmKDrE7lNtWJw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E1A1E811E86;
+	Thu,  5 Oct 2023 18:56:36 +0000 (UTC)
+Received: from redhat.com (unknown [10.2.16.63])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 005EF215670B;
+	Thu,  5 Oct 2023 18:56:34 +0000 (UTC)
+Date: Thu, 5 Oct 2023 13:56:33 -0500
+From: Eric Blake <eblake@redhat.com>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org, jsnow@redhat.com, 
+	crosa@redhat.com, kwolf@redhat.com, hreitz@redhat.com, 
+	Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>, Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Thomas Huth <thuth@redhat.com>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
+	Peter Maydell <peter.maydell@linaro.org>, Aurelien Jarno <aurelien@aurel32.net>, 
+	Halil Pasic <pasic@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>, 
+	Eric Farman <farman@linux.ibm.com>, Juan Quintela <quintela@redhat.com>, 
+	Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+	Leonardo Bras <leobras@redhat.com>, "open list:Integrator CP" <qemu-arm@nongnu.org>, 
+	"open list:S390 Virtio-ccw" <qemu-s390x@nongnu.org>
+Subject: Re: [PATCH v6 05/14] python/qemu: rename command() to cmd()
+Message-ID: <huzq7ffxyvfdfceulpuz2wna5wubxtbjdxmrlkaztczjjmv6yn@tkwin4kqvms5>
+References: <20231005135550.331657-1-vsementsov@yandex-team.ru>
+ <20231005135550.331657-6-vsementsov@yandex-team.ru>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL6PEPF0001AB4E:EE_|BY5PR12MB4872:EE_
-X-MS-Office365-Filtering-Correlation-Id: 158ff665-8502-45a5-33e6-08dbc5cf509d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: N7RAjEjLnU/2LSkwB+ZtOvuPP3Sbzy2Dek9LBer8nc9aIMNRFD+wmAg3cs7SbGs7G2Vscb9ctyteCY84jHXLDFeUEUdV7iexRgIlIyh5/w2Zz3L6WOIIWIUUWwY0MdTO0h+nBZZhENYUzPaCKy8APXyDBtwvKHl1iUFmK2YfRKQbCDoYgvQGUl6ByvcqtomnxpUZoNk8ZHQzgDOxZddqasJxoReGZZb7uKhqfqnzyVo17atDo/uya+pJzk6I+fhiQ8zYhD8cU4FI/Nk+JEK3xaaPeeZ5wvWIfgLUfPOudTuOcMGneDorb/jC5bgigUh2gOMyeNEcQYTiwshmxTVWnh8US0mrQ8noJmRPqhBruV7HDOHxPQSykeLUZPUUxQfXQbKhevWN33W1lAAoOVYQPc7cKD2OxJzgcZDVW+fJH/3//v3cOXwpaa8Wg9o56rriASgSfr+kVF8D8ZbVjEW3yfUscfBUqnu0P5pZOOKiLGsLTP1u9R+TNgcTQzMpIc1jf21SxbDvSHeENu/3lU6GxqbyRzAX0J5ZmLR3je1e+kXT0bSXrOJeP/ikbOgmayUFEfV4SKFlA81vpwQGtcJbguxMAbHjc9jbXgizFUUNmqTBA4WvJr1JZWn2zpIbgmD+xpiJK4yVxaLbFNFjxQjTHHqC+KZ7tKNeVkkdASeQcMN8ZlgK06nzHJUIQelBnmGZuWod5JKynlgs2gZZLnT45bYTDhbBq5KfMmo0CXdn+ziaFZPIOQqh19rZkqxQ81TCgFjjUyqxYiqZA+bvnD+Jig==
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(376002)(136003)(396003)(346002)(39860400002)(230922051799003)(1800799009)(451199024)(82310400011)(64100799003)(186009)(36840700001)(40470700004)(46966006)(2616005)(2906002)(1076003)(6666004)(47076005)(336012)(426003)(4744005)(26005)(4326008)(54906003)(44832011)(5660300002)(70586007)(6916009)(70206006)(41300700001)(316002)(8676002)(8936002)(40480700001)(40460700003)(36860700001)(478600001)(82740400003)(36756003)(356005)(86362001)(81166007)(36900700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Oct 2023 18:17:20.3971 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 158ff665-8502-45a5-33e6-08dbc5cf509d
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF0001AB4E.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB4872
-Received-SPF: softfail client-ip=2a01:111:f400:7eb2::602;
- envelope-from=vikram.garhwal@amd.com;
- helo=NAM02-BN1-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0oQ2v453o5VX
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20231005135550.331657-6-vsementsov@yandex-team.ru>
+User-Agent: NeoMutt/20230517
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+X-TUID: qyyGlSmyQux6
 
-Enable grant ram mapping support for Xenpvh machine on ARM.
+On Thu, Oct 05, 2023 at 04:55:41PM +0300, Vladimir Sementsov-Ogievskiy wrote:
+> Use a shorter name. We are going to move in iotests from qmp() to
+> command() where possible. But command() is longer than qmp() and don't
+> look better. Let's rename.
+> 
+> You can simply grep for '\.command(' and for 'def command(' to check
+> that everything is updated (command() in tests/docker/docker.py is
+> unrelated).
+> 
+> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>  docs/devel/testing.rst                    |  10 +-
 
-Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
----
- hw/arm/xen_arm.c | 3 +++
- 1 file changed, 3 insertions(+)
+There's a risk that this will need rebasing on top of any other test
+changes being made in parallel; hopefully we can get this series in
+sooner rather than later.
 
-diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-index f83b983ec5..553c289720 100644
---- a/hw/arm/xen_arm.c
-+++ b/hw/arm/xen_arm.c
-@@ -125,6 +125,9 @@ static void xen_init_ram(MachineState *machine)
-         DPRINTF("Initialized region xen.ram.hi: base 0x%llx size 0x%lx\n",
-                 GUEST_RAM1_BASE, ram_size[1]);
-     }
-+
-+    DPRINTF("init grant ram mapping for XEN\n");
-+    ram_grants = *xen_init_grant_ram();
- }
- 
- void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
 -- 
-2.17.1
-
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.
+Virtualization:  qemu.org | libguestfs.org

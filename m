@@ -1,125 +1,123 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp571941ejc;
-        Thu, 5 Oct 2023 13:43:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGPSEGqgGxrY7Uki8bYAF1RwR8DfUtGO6qsW8WFyuibIOw5SBKF9iHBGt2vdMtWPEua4VuH
-X-Received: by 2002:a05:620a:2847:b0:775:ce3e:7bff with SMTP id h7-20020a05620a284700b00775ce3e7bffmr5542985qkp.32.1696538596890;
-        Thu, 05 Oct 2023 13:43:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696538596; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp584766ejc;
+        Thu, 5 Oct 2023 14:11:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IErFEzoZukHQNeE948Enaz9oclrPdio54i/lwSenT/CzAU+Ua+kMHDgAuuvMTwo3txOfqe7
+X-Received: by 2002:a05:622a:4188:b0:419:5be3:d572 with SMTP id cd8-20020a05622a418800b004195be3d572mr7106364qtb.33.1696540311736;
+        Thu, 05 Oct 2023 14:11:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696540311; cv=none;
         d=google.com; s=arc-20160816;
-        b=PNOFnKSWgLBNsmyeC1Qn2WYjnvmVgk3eiUYMfmw1dnLZiQUzuU3K7mbCE46mqlc+HX
-         pUmVaXm3tRdZA/Uoj9c2KbnRH+YvnPeB7FLKm12oORe0MUqY/B1S2waPxjDy62DLfWKc
-         XPhI6wKiaqH+785ARoEcOiQWoz2LVJKZIGoWbJ5Cg5n571cshFxlzZtTwnf7K+1hubcX
-         bufpwDhyPK7o3SUKp6NS9dGQ7ETGTqTaY/h1+GIPaElDEIHYA+vubgXB37dkZl2vUamB
-         MEdv3G3DQ5fKpl2TfRXbyMNNBqUzR/3FOfhL+UCQGHbd0S+K/znmDAu3xWv38oRpPReN
-         aK5Q==
+        b=V9HtC8IP3QocK1QOadhVrEIvxlPuZNBnfPJbQrPdPO6X03nLxlHNSV8qXeKiByqWsw
+         Q9RU3fLOaZADTtlS21yTE603T7CHLG7e8B+vWyyxki310wyc9gxHFNN5L1kEDo+DqQGN
+         +jwddnCP++JLO1C+QAX4DlJjqsi92xw+CLdslDq3l5IrPmb/EHQAQGKDCUFbyYLuPwpG
+         dYAGzKcADmGQMUxD5ovFV1XcyB64kSslWoDfczvGOJ9wmF9q9XyzZSZRcGgorY8992Lt
+         buddj84JQ3yxGsyE6Qz6QRWDRiaYnoalVVBl+VW8k0TEJVd1GiLch53BzUT6HA4eob6K
+         w9VQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=G4zBlYPy4KDMJ4J5xiHxkI43n0YVK+HCjts7PKd6y6w=;
+        bh=lwu3eN0Rpykt3SD/z0yvog3s4BNg5OcSN1ci1NjJI20=;
         fh=z1KdWiyy8wraXUx7ouD6CbiYRDoSKNlzOStkMl49TkY=;
-        b=ZfMG0disngI3FNoWBIGzoYXSl78NiHSO0CNH0LUU8z8cW/CZeLCU/DYS0N8BONjBto
-         JD/BFWxwu5JOoBER6GODSENDaD0wFhcdGu/VWpEFKJfGwl6UZ+RRlHdP6llw7YUPj9Nr
-         aJ68DvQ7pU/ZlMceYSn18B6k0a4w+4ynWJCttZgsq9/NdIOdU6vIe6sjy41zePd7iz4l
-         hJXZyotxxld6oK22MvuOgN6hhc8Lk36rk9xa/SKskC7Uaxkpzpgi8+NKhLlxdwqdwFZG
-         axFbwKFJCUyyuZvQIxlW1I7yUfbqgsHnipCpGQDKZ9RTiduPHonwMeL4gY7Jx8bZiQEB
-         N3+A==
+        b=tYzUawaOBkZqX0w65vm5oH7AcuWsXxyLdyR/TaLJVdMH1PlDzT43NqbSPckNhuw4Vu
+         BUPkf/CegnNcisE/Gb1cFJzHgee9Y4e68895d1GdJhiJ9Wun5oZ6mD0v21QwAMngsbmi
+         B0IQyBhJyi0c551EO6GxeeJ29sDG+oaRGatrMkFrlq1V7hYhO32ilSyVcDGG47AW1Er7
+         6sys8n4fZo4QuQ3FCvOfoR7Lasn86I7LGZ0ezfidx1H/wISM8W0ltXuEpj4m77Zl6fU+
+         jT/AKONMedi/lDziSXBlWArD2fyVstUKuCcHh95VF4f9WjPhG2XN2BdsK/KnsaIqEGBI
+         kZUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b="gqSXWzY/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=shFhpRKO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g13-20020a05620a278d00b007757861297esi1434937qkp.69.2023.10.05.13.43.16
+        by mx.google.com with ESMTPS id v16-20020a05622a131000b004180bc0da7dsi1455600qtk.397.2023.10.05.14.11.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Oct 2023 13:43:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 05 Oct 2023 14:11:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b="gqSXWzY/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=shFhpRKO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qoVAu-0003ay-7I; Thu, 05 Oct 2023 16:42:25 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qoVdG-0004Zi-4Y; Thu, 05 Oct 2023 17:11:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mglenn@mamboa4.aus.stglabs.ibm.com>)
- id 1qoVAs-0003Zz-AI
- for qemu-devel@nongnu.org; Thu, 05 Oct 2023 16:42:22 -0400
+ id 1qoVdF-0004YE-69; Thu, 05 Oct 2023 17:11:41 -0400
 Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mglenn@mamboa4.aus.stglabs.ibm.com>)
- id 1qoVAp-0006Eh-Tm
- for qemu-devel@nongnu.org; Thu, 05 Oct 2023 16:42:22 -0400
-Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
+ id 1qoVdC-0005hy-26; Thu, 05 Oct 2023 17:11:40 -0400
+Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 395KTiC5031135; Thu, 5 Oct 2023 20:41:48 GMT
+ 395KKZr1017939; Thu, 5 Oct 2023 21:11:08 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=from : to : cc : subject
  : date : message-id : mime-version : content-transfer-encoding; s=pp1;
- bh=G4zBlYPy4KDMJ4J5xiHxkI43n0YVK+HCjts7PKd6y6w=;
- b=gqSXWzY/Y49BpiT5azgeatTBkT2LrNxHubAfajgzGEjrFtZF94GA4gFSfawX4pOnaxyZ
- WZL+aRcg16yWkFGWGnU1XCI0ZI+O/ao2XSbMXNc9Gjv4hF6O38DPwPpyCknMD8VDbKNS
- CD0sdIOzFhAd1Lg5MUaD7TfnbtXw5LQU6rp2bp0i+3pDa8ekH3I0j4gUsLpOy7mTxN79
- o1x6WDY4FpgKkGThOf6BbhmRiZs4UsZchLk+KSh/Rbs7cXXmBAbaSxlUWdZ1XUC1k7W4
- aYMJ16oPlND+86yE8UD2daNcIwI9hNs10Nr5Loc0jszqpulMqzAJasBUJ9y4PZDKeuPC eA== 
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tj47rrb07-1
+ bh=lwu3eN0Rpykt3SD/z0yvog3s4BNg5OcSN1ci1NjJI20=;
+ b=shFhpRKOQDvVH/tt1NrLrhZfUnx9xSqGN98Uogdj4tTSltIWiX9SvyJVjLskVHUs9Gi/
+ 2l6wIjMTXx5uj8mdY2BXD9Yi6WRi1hnhKRgw8HQ2ZYlkTk2aX519zbdg0xpJnjP02cgz
+ cO42ZgC2zEamwFt/I3Zdjrr2bIsasREqZbqac0X46DbJ7vrInOmz7XMJHyHYFinurDBC
+ Opvm2WlMqGj7MDhDpK/6UYhAUBkAiRpp5KT/klIQommhIOWrsbbkSgDFvBJSkFRujHWz
+ jV55oljSmP5I46Uohawod9uXcOjZIo/JIluZD82lzbRVsCuaW4H/d2bgGRk464uP8QA2 ZA== 
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tj43d1g3b-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 05 Oct 2023 20:41:48 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 395Ka5FW006679; Thu, 5 Oct 2023 20:41:47 GMT
-Received: from smtprelay05.dal12v.mail.ibm.com ([172.16.1.7])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tf07kty0h-1
+ Thu, 05 Oct 2023 21:11:07 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 395KugRW025087; Thu, 5 Oct 2023 21:11:06 GMT
+Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3texd0496p-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 05 Oct 2023 20:41:47 +0000
-Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
- [10.241.53.105])
- by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 395Kfk6i65274246
+ Thu, 05 Oct 2023 21:11:06 +0000
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
+ [10.39.53.232])
+ by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 395LB5Oo63570340
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 5 Oct 2023 20:41:47 GMT
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C8F575805D;
- Thu,  5 Oct 2023 20:41:46 +0000 (GMT)
-Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B8E3C58060;
- Thu,  5 Oct 2023 20:41:46 +0000 (GMT)
+ Thu, 5 Oct 2023 21:11:05 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 805BA58059;
+ Thu,  5 Oct 2023 21:11:05 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 72FE258061;
+ Thu,  5 Oct 2023 21:11:05 +0000 (GMT)
 Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
- by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTPS;
- Thu,  5 Oct 2023 20:41:46 +0000 (GMT)
+ by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTPS;
+ Thu,  5 Oct 2023 21:11:05 +0000 (GMT)
 Received: from mamboa4.aus.stglabs.ibm.com (localhost [127.0.0.1])
- by mamboa4.aus.stglabs.ibm.com (Postfix) with ESMTPS id 208EA16A0848;
- Thu,  5 Oct 2023 15:41:46 -0500 (CDT)
+ by mamboa4.aus.stglabs.ibm.com (Postfix) with ESMTPS id A1B0616A0848;
+ Thu,  5 Oct 2023 16:11:04 -0500 (CDT)
 Received: (from mglenn@localhost)
- by mamboa4.aus.stglabs.ibm.com (8.15.2/8.15.2/Submit) id 395Kfj6S3522748;
- Thu, 5 Oct 2023 15:41:45 -0500
+ by mamboa4.aus.stglabs.ibm.com (8.15.2/8.15.2/Submit) id 395LB37Q3609625;
+ Thu, 5 Oct 2023 16:11:03 -0500
 From: Glenn Miles <milesg@linux.vnet.ibm.com>
 To: qemu-devel@nongnu.org
 Cc: Glenn Miles <milesg@linux.vnet.ibm.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  andrew@codeconstruct.com.au, Joel Stanley <joel@jms.id.au>
-Subject: [PATCH v2] misc/pca9552: Let external devices set pca9552 inputs
-Date: Thu,  5 Oct 2023 15:41:29 -0500
-Message-Id: <20231005204129.3522685-1-milesg@linux.vnet.ibm.com>
+Subject: [PATCH v2] misc/pca9552: Fix for pca9552 not getting reset
+Date: Thu,  5 Oct 2023 16:10:46 -0500
+Message-Id: <20231005211046.3609577-1-milesg@linux.vnet.ibm.com>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: Tp3srhd8UP_BpfX7a8PE5nyWwKj4Kwnc
-X-Proofpoint-ORIG-GUID: Tp3srhd8UP_BpfX7a8PE5nyWwKj4Kwnc
+X-Proofpoint-GUID: kmHr3jzMgs6_0LPyleF9upy2lHInkDzB
+X-Proofpoint-ORIG-GUID: kmHr3jzMgs6_0LPyleF9upy2lHInkDzB
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-05_15,2023-10-05_01,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=999 phishscore=0
- clxscore=1015 priorityscore=1501 impostorscore=0 suspectscore=0
- lowpriorityscore=0 spamscore=0 bulkscore=0 malwarescore=0 adultscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2309180000 definitions=main-2310050157
+ bulkscore=0 adultscore=0
+ clxscore=1015 mlxlogscore=999 spamscore=0 lowpriorityscore=0
+ malwarescore=0 mlxscore=0 impostorscore=0 priorityscore=1501 phishscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310050160
 Received-SPF: none client-ip=148.163.158.5;
  envelope-from=mglenn@mamboa4.aus.stglabs.ibm.com;
  helo=mx0b-001b2d01.pphosted.com
@@ -131,136 +129,62 @@ X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GgqB+aFUxRFd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QcBaCkH4UWVL
 
-Allow external devices to drive pca9552 input pins by adding
-input GPIO's to the model.  This allows a device to connect
-its output GPIO's to the pca9552 input GPIO's.
+Testing of the pca9552 device on the powernv platform
+showed that the reset method was not being called when
+an instance of the device was realized.  This was causing
+the INPUT0/INPUT1 POR values to be incorrect.
 
-In order for an external device to set the state of a pca9552
-pin, the pin must first be configured for high impedance (LED
-is off).  If the pca9552 pin is configured to drive the pin low
-(LED is on), then external input will be ignored.
+Fixed by overriding the parent pca955x_realize method with a
+new pca9552_realize method which first calls
+the parent pca955x_realize method followed by the
+pca9552_reset function.
 
 Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
 ---
-Based-on: <20230927203221.3286895-1-milesg@linux.vnet.ibm.com>
-([PATCH] misc/pca9552: Fix inverted input status)
- hw/misc/pca9552.c         | 39 ++++++++++++++++++++++++++++++++++-----
- include/hw/misc/pca9552.h |  3 ++-
- 2 files changed, 36 insertions(+), 6 deletions(-)
+ hw/misc/pca9552.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-index ad811fb249..f28b5ecd7e 100644
+index fff19e369a..bc12dced7f 100644
 --- a/hw/misc/pca9552.c
 +++ b/hw/misc/pca9552.c
-@@ -113,16 +113,22 @@ static void pca955x_update_pin_input(PCA955xState *s)
-         switch (config) {
-         case PCA9552_LED_ON:
-             /* Pin is set to 0V to turn on LED */
--            qemu_set_irq(s->gpio[i], 0);
-+            qemu_set_irq(s->gpio_out[i], 0);
-             s->regs[input_reg] &= ~(1 << input_shift);
-             break;
-         case PCA9552_LED_OFF:
-             /*
-              * Pin is set to Hi-Z to turn off LED and
--             * pullup sets it to a logical 1.
-+             * pullup sets it to a logical 1 unless
-+             * external device drives it low.
-              */
--            qemu_set_irq(s->gpio[i], 1);
--            s->regs[input_reg] |= 1 << input_shift;
-+            if (s->ext_state[i] == 0) {
-+                qemu_set_irq(s->gpio_out[i], 0);
-+                s->regs[input_reg] &= ~(1 << input_shift);
-+            } else {
-+                qemu_set_irq(s->gpio_out[i], 1);
-+                s->regs[input_reg] |= 1 << input_shift;
-+            }
-             break;
-         case PCA9552_LED_PWM0:
-         case PCA9552_LED_PWM1:
-@@ -337,6 +343,7 @@ static const VMStateDescription pca9552_vmstate = {
-         VMSTATE_UINT8(len, PCA955xState),
-         VMSTATE_UINT8(pointer, PCA955xState),
-         VMSTATE_UINT8_ARRAY(regs, PCA955xState, PCA955X_NR_REGS),
-+        VMSTATE_UINT8_ARRAY(ext_state, PCA955xState, PCA955X_PIN_COUNT_MAX),
-         VMSTATE_I2C_SLAVE(i2c, PCA955xState),
-         VMSTATE_END_OF_LIST()
-     }
-@@ -355,6 +362,7 @@ static void pca9552_reset(DeviceState *dev)
-     s->regs[PCA9552_LS2] = 0x55;
-     s->regs[PCA9552_LS3] = 0x55;
- 
-+    memset(s->ext_state, 1, PCA955X_PIN_COUNT_MAX);
-     pca955x_update_pin_input(s);
- 
-     s->pointer = 0xFF;
-@@ -377,6 +385,26 @@ static void pca955x_initfn(Object *obj)
-     }
+@@ -384,6 +384,12 @@ static void pca955x_realize(DeviceState *dev, Error **errp)
+     qdev_init_gpio_out(dev, s->gpio, k->pin_count);
  }
  
-+static void pca955x_set_ext_state(PCA955xState *s, int pin, int level)
++static void pca9552_realize(DeviceState *dev, Error **errp)
 +{
-+    if (s->ext_state[pin] != level) {
-+        uint16_t pins_status = pca955x_pins_get_status(s);
-+        s->ext_state[pin] = level;
-+        pca955x_update_pin_input(s);
-+        pca955x_display_pins_status(s, pins_status);
-+    }
++    pca955x_realize(dev, errp);
++    pca9552_reset(dev);
 +}
 +
-+static void pca955x_gpio_in_handler(void *opaque, int pin, int level)
-+{
-+
-+    PCA955xState *s = PCA955X(opaque);
-+    PCA955xClass *k = PCA955X_GET_CLASS(s);
-+
-+    assert((pin >= 0) && (pin < k->pin_count));
-+    pca955x_set_ext_state(s, pin, level);
-+}
-+
- static void pca955x_realize(DeviceState *dev, Error **errp)
- {
-     PCA955xClass *k = PCA955X_GET_CLASS(dev);
-@@ -386,7 +414,8 @@ static void pca955x_realize(DeviceState *dev, Error **errp)
-         s->description = g_strdup("pca-unspecified");
-     }
- 
--    qdev_init_gpio_out(dev, s->gpio, k->pin_count);
-+    qdev_init_gpio_out(dev, s->gpio_out, k->pin_count);
-+    qdev_init_gpio_in(dev, pca955x_gpio_in_handler, k->pin_count);
- }
- 
  static Property pca955x_properties[] = {
-diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
-index b6f4e264fe..c36525f0c3 100644
---- a/include/hw/misc/pca9552.h
-+++ b/include/hw/misc/pca9552.h
-@@ -30,7 +30,8 @@ struct PCA955xState {
-     uint8_t pointer;
+     DEFINE_PROP_STRING("description", PCA955xState, description),
+     DEFINE_PROP_END_OF_LIST(),
+@@ -416,7 +422,7 @@ static void pca9552_class_init(ObjectClass *oc, void *data)
+     DeviceClass *dc = DEVICE_CLASS(oc);
+     PCA955xClass *pc = PCA955X_CLASS(oc);
  
-     uint8_t regs[PCA955X_NR_REGS];
--    qemu_irq gpio[PCA955X_PIN_COUNT_MAX];
-+    qemu_irq gpio_out[PCA955X_PIN_COUNT_MAX];
-+    uint8_t ext_state[PCA955X_PIN_COUNT_MAX];
-     char *description; /* For debugging purpose only */
- };
- 
+-    dc->reset = pca9552_reset;
++    dc->realize = pca9552_realize;
+     dc->vmsd = &pca9552_vmstate;
+     pc->max_reg = PCA9552_LS3;
+     pc->pin_count = 16;
 -- 
 2.31.1
 

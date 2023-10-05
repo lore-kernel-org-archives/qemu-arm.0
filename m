@@ -1,244 +1,186 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp372080ejc;
-        Thu, 5 Oct 2023 07:59:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFFpUSRx9Mgk01VsYhK1fMh9CsN2HUBlotmGaXcVT9rSxwDdjnz65SKA/9aAepJ5gjuRgjt
-X-Received: by 2002:ac8:7fcd:0:b0:40e:daf8:bed3 with SMTP id b13-20020ac87fcd000000b0040edaf8bed3mr6062194qtk.3.1696517978846;
-        Thu, 05 Oct 2023 07:59:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696517978; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp500411ejc;
+        Thu, 5 Oct 2023 11:18:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFEDyngKbAC+PpJrpNBs1DCM0iguVKF88lMxOBmcQALPoJvxqZ6ZWVCV84FjesT/djmIzf7
+X-Received: by 2002:a05:6808:1a27:b0:3af:6c91:275f with SMTP id bk39-20020a0568081a2700b003af6c91275fmr7802782oib.2.1696529904777;
+        Thu, 05 Oct 2023 11:18:24 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1696529904; cv=pass;
         d=google.com; s=arc-20160816;
-        b=bpFm3qcUIRwjZ3dDcJzoePTrsF/RZH8ylmARdEUq5QsqSJM6jGKMhA3VuMlCdYueiH
-         1T1X+f+YSWbnKhtp6s3yGQK/Ojp5uOesMieUJ0quEZ68Uv0re6wzhOzTQuNWzxKoBmqT
-         YqYs2yp/dIz9ffdbEWdVHpTY72QPA68e4svLpRU0FRLiE0H7ZJsfaj95F5OMN4t+z9kd
-         36mPVa4PJmlWcDyulceZCASx2HO1kZi6e6dj6m5VgxnEGEtRocOLxks+xgWrRkY/3xuu
-         Vd2ABpO+mtcp8tp5A51J1SO6II4gwuebh1mP4TJ+jWvFP2rHwTAOlOFtio+/ET3fJmD+
-         Oltw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=YcKj9U7YI0xDriXE/1H6YzU/nCPF39Nq45iBb4rGlbI=;
-        fh=kfhwpYKIAZ/dwZeDAPh0Gf5MPIIg/576clW2VYnslNM=;
-        b=GbCFJMLikDNLe1p6E8h2xk37kcw7l7ZlF/pcdUbQG5hMqnEIYnIMHdXosay7TJZFZK
-         jN/dk2hG+kczItSl2y31RIu2T4YNiLL6RJ6PvVXlz/ZzFdJHUbCzAtac9lt74X+Znb00
-         iDG2gORZRDVYWiQ1uoeam+TQ187G/D3tUkAaT4MNcEjV6l5379YUhdrz32rcMF9cputz
-         rbp8d3xCCYxhhq1ZCTHKL1w3Gd1gejFs01DQQ5ltduECZBwcXzzB5g30xmWriushKnKk
-         C63m7nhfu4rVn/YP/lTk0K1EZE4LA8aGX9xln/Rnf/tJha4i/chMGh7VhC4asPIBVqw5
-         C3/Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EcCPquew;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <jsnow@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id o9-20020ac87c49000000b004108a7e5ef6si1021750qtv.126.2023.10.05.07.59.38
+        b=V+FRVW5gO81neaJ3+yRj3t9wyEJTFOI2Ro0js5aH8ka+cuKVlnT7se8h9P7DhriUDs
+         jziikF5Md3ajpXU1ljxvoNMenlwrmvoxkLuhX0LoDJCaRHmMs3YtneeCRz8cOQoBB1pR
+         MThFV4P6WUayreEtvNMt3yBTgzy7KECU+vDE5a7XB+ValW3o5sUoJ2aZo89Xk7SrHdPy
+         DuuT61uBMfDOo1u9r5fDGRZAl33YP51N22QoH8dZJkUKX3ittDm/0B75wO0oPfUx86kq
+         V548oImOrcO2Aitg+hzzpN33/ex7zOKjwrGMu/XrMfB3tDD8qiLI2i7AdhrtJtmDpNOe
+         bsVw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ksF652jkj0H+gVQIly5PpnylBV9Mz7gsmo/SYfg2AAk=;
+        fh=GH86YoEhZTrxm1DRZVB5ZFYxvyNVsoDnqZ3COCiDTUA=;
+        b=tbKTYNJWclMRx5e3gYaUpgU2nmNNFC8oP0Jkljt1rTnM4G1mLHFrO8fPpH91VglZd/
+         Jud/fBQufNq+etgn6DEVrB2Znq005bBPAQqr6zfLw1+SVwqHWEC9xnkZxN4iPKZ0Ui3U
+         ldIY3gSh9WXaRXV5ojU5QGT1OsFTs4mAs3GyLDI+eATfCgQvn6pmMMUlg7j65b//mDJS
+         I8ZQ6uxxZrNA/QSm2uYgDzds1amu3DenIVhWQC+BrOseDJQwmusCMppX8g1r9VkafGw5
+         fRmZb0MD0xAtY0aa2RmyZtSK3MnQcJzcuBn2zh7Qa5+p6c/lDOyEedSuVrGktxsorBvx
+         ny4Q==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b="JU2Rlt/g";
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o21-20020ac87c55000000b004198816340esi1302804qtv.662.2023.10.05.11.18.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Oct 2023 07:59:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 05 Oct 2023 11:18:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EcCPquew;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1696517978;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YcKj9U7YI0xDriXE/1H6YzU/nCPF39Nq45iBb4rGlbI=;
-	b=EcCPquewWSjwGIFi25l1sD9pG9hwfOzg+GJAcsOrbzpubnn9WINTKCAM3DCYlVxIP0tt46
-	873aapy84FNKILW1JusSmgdVHYz7WSdI2XHVkLXjNcL/jILHp3F9xrmNJiJOqakkiqw3Eb
-	OcYlXRnOKwOW+kgPOtzJJ/AgxPM6qwA=
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-540-9JqsJVf9OFe1GzfQWx5_vw-1; Thu, 05 Oct 2023 10:59:32 -0400
-X-MC-Unique: 9JqsJVf9OFe1GzfQWx5_vw-1
-Received: by mail-pj1-f72.google.com with SMTP id 98e67ed59e1d1-27903b68503so941257a91.0
-        for <alex.bennee@linaro.org>; Thu, 05 Oct 2023 07:59:31 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696517971; x=1697122771;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YcKj9U7YI0xDriXE/1H6YzU/nCPF39Nq45iBb4rGlbI=;
-        b=Akvi+WUhGanQD+JG+/DVuDeS2QKgiKiFi66jRckEfIcORBgDz/AzNmrU5n3mjo9IhK
-         H2dWRHE7yyLPVfAWd5V732/9jtx6hhddH74gCYyvmT9XGKGFmuYBotbO2au3tegpKQzw
-         gxXvbdEIzkquRuwvdmXwsaKrmopBDgXxGSo6rpQl8Z6FpjKlXh2MlgSZ5SDpQUie+EPc
-         uWRVGcQ4mI08R+ZAthFcBcIh06qrYTPIsca10kRyzZ0sWwkdXFDxJZKOdnoulWH6tGT7
-         lazlZ/WPwghikViY/UCNLvy87s3yfyYLuVitk8FkAXdZkqhLLbhQcD7BQH1x07kEsJUh
-         PQ5Q==
-X-Gm-Message-State: AOJu0YzhHbn89lb6jqPXeKE8yAzEUMf/nzm8maapaWkWzVp4dwiQELon
-	CActfy6S6ssb0u8rOLMigDJ3olA215YENkxm+XDTpzbimrc4Q6D9g+UZbw0+NgltjRwzOzbcVhl
-	n8O+kF/5O2eFK3zsLeFdCsUPoZ//CvidR
-X-Received: by 2002:a17:90b:19d0:b0:268:4c01:eb56 with SMTP id nm16-20020a17090b19d000b002684c01eb56mr5091637pjb.2.1696517970830;
-        Thu, 05 Oct 2023 07:59:30 -0700 (PDT)
-X-Received: by 2002:a17:90b:19d0:b0:268:4c01:eb56 with SMTP id
- nm16-20020a17090b19d000b002684c01eb56mr5091624pjb.2.1696517970544; Thu, 05
- Oct 2023 07:59:30 -0700 (PDT)
+       dkim=pass header.i=@amd.com header.s=selector1 header.b="JU2Rlt/g";
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qoSuf-0000N9-4g; Thu, 05 Oct 2023 14:17:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
+ id 1qoSud-0000Mp-Qy; Thu, 05 Oct 2023 14:17:27 -0400
+Received: from mail-bn1nam02on20602.outbound.protection.outlook.com
+ ([2a01:111:f400:7eb2::602]
+ helo=NAM02-BN1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
+ id 1qoSub-0006KI-09; Thu, 05 Oct 2023 14:17:27 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=nQ60KordRDLJk98TPECF5nvC5mN0nSp+h7LCynQAx1LdHZr0ITDtVq4Q13NowFIbQd882EWLzza0t/A6dE1gh7WiiiW2BmblhWp16qjgBkQLZkZlYWpr1ClbvSVhNImhbNAyTl684nGo3OOAEwUVBAKy4y1WPNtDS0/8oYmaTNXJP9QVcSZLw7E1QkMPMLFtzLoqtLZqfUJYJA+mfCiA7SUDsgbw/i/cUVtmirbdobi7zRalV+i1OXR2vQ7HGbDAJkJf1p5gaeNJyyXOAkAVQXL4QGuSsTC9AbpC9kRmRvihxYXCueeHSaau96u4ho1OerhX6PCECv4Yt8BklWp4jA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ksF652jkj0H+gVQIly5PpnylBV9Mz7gsmo/SYfg2AAk=;
+ b=bWOOlNmVE5MCa2zZX9MzhK/VDBKbouq8gPFMEdNYgeNLC8wfZmJ2yUvA2iEgUt/zso/YxDRdSlue7nDmYQhMpWyCJjoCsEzBfU3+CHOlK+Qg7FKHZleowDb0jhu/nLT6RUiz5bMhBLXeO90b/Z8KkTQRT/kxxQJw29hyu1RhQa6NNlecJ2wSVWJyKUP/jAW5Kiqbd4hhPrXajyHv0/lDfxbm0HkLzKP+n1SSM2KrN7v0JB3QICU4jmlAG5z598+FRvOnlwRDSywnNZeFtplxfFY8yYyRgQXOZtYryi6c2Q89oufRwZS68BZtSOESnAY6ZnziqzrsLVjc5zUuUXNQOg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ksF652jkj0H+gVQIly5PpnylBV9Mz7gsmo/SYfg2AAk=;
+ b=JU2Rlt/gGAhiCHG/127cqotu6VpYt4jRd1NyTsX8+uDme+9BQ5rbBUdxVocy+Um3Tp06FoBTC1tj3MrxvXxrUfcu7LrU0GjZSIbpswPxRIoZkfa6U9Bgt2e6fT4CG84hB9xjObDt0RwXs15xWL7GYn+iclvG8cXiNV66zOfiZ38=
+Received: from MN2PR03CA0018.namprd03.prod.outlook.com (2603:10b6:208:23a::23)
+ by BY5PR12MB4872.namprd12.prod.outlook.com (2603:10b6:a03:1c4::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6838.34; Thu, 5 Oct
+ 2023 18:17:20 +0000
+Received: from BL6PEPF0001AB4E.namprd04.prod.outlook.com
+ (2603:10b6:208:23a:cafe::f) by MN2PR03CA0018.outlook.office365.com
+ (2603:10b6:208:23a::23) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6838.36 via Frontend
+ Transport; Thu, 5 Oct 2023 18:17:20 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ BL6PEPF0001AB4E.mail.protection.outlook.com (10.167.242.72) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6838.14 via Frontend Transport; Thu, 5 Oct 2023 18:17:20 +0000
+Received: from SATLEXMB08.amd.com (10.181.40.132) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 5 Oct
+ 2023 13:17:20 -0500
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB08.amd.com
+ (10.181.40.132) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Thu, 5 Oct
+ 2023 11:17:19 -0700
+Received: from xsjfnuv50.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.27 via Frontend
+ Transport; Thu, 5 Oct 2023 13:17:19 -0500
+From: Vikram Garhwal <vikram.garhwal@amd.com>
+To: <qemu-devel@nongnu.org>
+CC: <sstabellini@kernel.org>, Vikram Garhwal <vikram.garhwal@amd.com>, "Peter
+ Maydell" <peter.maydell@linaro.org>, "open list:ARM TCG CPUs"
+ <qemu-arm@nongnu.org>
+Subject: [QEMU][PATCH v1 7/7] hw: arm: Add grant mapping.
+Date: Thu, 5 Oct 2023 11:16:29 -0700
+Message-ID: <20231005181629.4046-8-vikram.garhwal@amd.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20231005181629.4046-1-vikram.garhwal@amd.com>
+References: <20231005181629.4046-1-vikram.garhwal@amd.com>
 MIME-Version: 1.0
-References: <20231004194613.2900323-1-jsnow@redhat.com> <3984cd72-931b-fa9b-e7ac-3d60487ac442@linaro.org>
- <CAJSP0QUYd58Q03Ugm2ULh=aiA8jUni2XM0aZAvxE1CoYbaW5cQ@mail.gmail.com>
-In-Reply-To: <CAJSP0QUYd58Q03Ugm2ULh=aiA8jUni2XM0aZAvxE1CoYbaW5cQ@mail.gmail.com>
-From: John Snow <jsnow@redhat.com>
-Date: Thu, 5 Oct 2023 10:59:18 -0400
-Message-ID: <CAFn=p-Z9L54hV5Wx9N7ZGufRzvLrSAna4xnXxDO1VbA-MvVMvQ@mail.gmail.com>
-Subject: Re: [PULL 0/9] Python patches
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	qemu-devel <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>, 
-	Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>, Qemu-block <qemu-block@nongnu.org>, 
-	Beraldo Leal <bleal@redhat.com>, Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, 
-	Hanna Reitz <hreitz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
-	Vladimir Sementsov-Ogievskiy <v.sementsov-og@mail.ru>, Thomas Huth <thuth@redhat.com>, 
-	Eric Blake <eblake@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
-	Eduardo Habkost <eduardo@habkost.net>, Markus Armbruster <armbru@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000fd61660606f95ea1"
-X-TUID: shixplWcqB49
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL6PEPF0001AB4E:EE_|BY5PR12MB4872:EE_
+X-MS-Office365-Filtering-Correlation-Id: 158ff665-8502-45a5-33e6-08dbc5cf509d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: N7RAjEjLnU/2LSkwB+ZtOvuPP3Sbzy2Dek9LBer8nc9aIMNRFD+wmAg3cs7SbGs7G2Vscb9ctyteCY84jHXLDFeUEUdV7iexRgIlIyh5/w2Zz3L6WOIIWIUUWwY0MdTO0h+nBZZhENYUzPaCKy8APXyDBtwvKHl1iUFmK2YfRKQbCDoYgvQGUl6ByvcqtomnxpUZoNk8ZHQzgDOxZddqasJxoReGZZb7uKhqfqnzyVo17atDo/uya+pJzk6I+fhiQ8zYhD8cU4FI/Nk+JEK3xaaPeeZ5wvWIfgLUfPOudTuOcMGneDorb/jC5bgigUh2gOMyeNEcQYTiwshmxTVWnh8US0mrQ8noJmRPqhBruV7HDOHxPQSykeLUZPUUxQfXQbKhevWN33W1lAAoOVYQPc7cKD2OxJzgcZDVW+fJH/3//v3cOXwpaa8Wg9o56rriASgSfr+kVF8D8ZbVjEW3yfUscfBUqnu0P5pZOOKiLGsLTP1u9R+TNgcTQzMpIc1jf21SxbDvSHeENu/3lU6GxqbyRzAX0J5ZmLR3je1e+kXT0bSXrOJeP/ikbOgmayUFEfV4SKFlA81vpwQGtcJbguxMAbHjc9jbXgizFUUNmqTBA4WvJr1JZWn2zpIbgmD+xpiJK4yVxaLbFNFjxQjTHHqC+KZ7tKNeVkkdASeQcMN8ZlgK06nzHJUIQelBnmGZuWod5JKynlgs2gZZLnT45bYTDhbBq5KfMmo0CXdn+ziaFZPIOQqh19rZkqxQ81TCgFjjUyqxYiqZA+bvnD+Jig==
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(376002)(136003)(396003)(346002)(39860400002)(230922051799003)(1800799009)(451199024)(82310400011)(64100799003)(186009)(36840700001)(40470700004)(46966006)(2616005)(2906002)(1076003)(6666004)(47076005)(336012)(426003)(4744005)(26005)(4326008)(54906003)(44832011)(5660300002)(70586007)(6916009)(70206006)(41300700001)(316002)(8676002)(8936002)(40480700001)(40460700003)(36860700001)(478600001)(82740400003)(36756003)(356005)(86362001)(81166007)(36900700001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Oct 2023 18:17:20.3971 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 158ff665-8502-45a5-33e6-08dbc5cf509d
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF0001AB4E.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB4872
+Received-SPF: softfail client-ip=2a01:111:f400:7eb2::602;
+ envelope-from=vikram.garhwal@amd.com;
+ helo=NAM02-BN1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0oQ2v453o5VX
 
---000000000000fd61660606f95ea1
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Enable grant ram mapping support for Xenpvh machine on ARM.
 
-On Thu, Oct 5, 2023, 9:00 AM Stefan Hajnoczi <stefanha@gmail.com> wrote:
+Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+---
+ hw/arm/xen_arm.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-> On Thu, 5 Oct 2023 at 00:49, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.o=
-rg>
-> wrote:
-> >
-> > Hi John,
-> >
-> > On 4/10/23 21:46, John Snow wrote:
-> > > The following changes since commit
-> da1034094d375afe9e3d8ec8980550ea0f06f7e0:
-> > >
-> > >    Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into
-> staging (2023-10-03 07:43:44 -0400)
-> > >
-> > > are available in the Git repository at:
-> > >
-> > >    https://gitlab.com/jsnow/qemu.git tags/python-pull-request
-> > >
-> > > for you to fetch changes up to
-> 4d7a663cbe8343e884b88e44bd88d37dd0a470e5:
-> > >
-> > >    Python: test Python 3.12 (2023-10-04 15:19:00 -0400)
-> > >
-> > > ----------------------------------------------------------------
-> > > Python pullreq
-> > >
-> > > Buffering improvements for qemu machine, minor changes to support the
-> > > newly released Python 3.12
-> > >
-> > > ----------------------------------------------------------------
-> > >
-> > > John Snow (9):
-> > >    Python/iotests: Add type hint for nbd module
-> > >    python/machine: move socket setup out of _base_args property
-> > >    python/machine: close sock_pair in cleanup path
-> > >    python/console_socket: accept existing FD in initializer
-> > >    python/machine: use socketpair() for console connections
-> > >    python/machine: use socketpair() for qtest connection
-> > >    python/machine: remove unused sock_dir argument
-> > >    python/qmp: remove Server.wait_closed() call for Python 3.12
-> > >    Python: test Python 3.12
-> >
-> > Is that a pull request or a patch series to be reviewed?
->
-> Strange, some of the patches have Reviewed-by tags but others do not.
-> I could not find a "Add type hint for nbd module" patch on the mailing
-> list before this pull request, so I guess it hasn't been reviewed.
->
-> I'll hold off from merging this series for now.
->
-> John: Please make sure all patches have been on the mailing list for
-> review before sending a pull request.
->
-> Stefan
->
+diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+index f83b983ec5..553c289720 100644
+--- a/hw/arm/xen_arm.c
++++ b/hw/arm/xen_arm.c
+@@ -125,6 +125,9 @@ static void xen_init_ram(MachineState *machine)
+         DPRINTF("Initialized region xen.ram.hi: base 0x%llx size 0x%lx\n",
+                 GUEST_RAM1_BASE, ram_size[1]);
+     }
++
++    DPRINTF("init grant ram mapping for XEN\n");
++    ram_grants = *xen_init_grant_ram();
+ }
+ 
+ void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+-- 
+2.17.1
 
-Okey Dokey.
-
---js
-
---000000000000fd61660606f95ea1
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Thu, Oct 5, 2023, 9:00 AM Stefan Hajnoczi &lt;<a hr=
-ef=3D"mailto:stefanha@gmail.com">stefanha@gmail.com</a>&gt; wrote:<br></div=
-><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1=
-px #ccc solid;padding-left:1ex">On Thu, 5 Oct 2023 at 00:49, Philippe Mathi=
-eu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org" target=3D"_blank" re=
-l=3D"noreferrer">philmd@linaro.org</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Hi John,<br>
-&gt;<br>
-&gt; On 4/10/23 21:46, John Snow wrote:<br>
-&gt; &gt; The following changes since commit da1034094d375afe9e3d8ec8980550=
-ea0f06f7e0:<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 =C2=A0 Merge tag &#39;for-upstream&#39; of <a href=3D"https=
-://gitlab.com/bonzini/qemu" rel=3D"noreferrer noreferrer" target=3D"_blank"=
->https://gitlab.com/bonzini/qemu</a> into staging (2023-10-03 07:43:44 -040=
-0)<br>
-&gt; &gt;<br>
-&gt; &gt; are available in the Git repository at:<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 =C2=A0 <a href=3D"https://gitlab.com/jsnow/qemu.git" rel=3D=
-"noreferrer noreferrer" target=3D"_blank">https://gitlab.com/jsnow/qemu.git=
-</a> tags/python-pull-request<br>
-&gt; &gt;<br>
-&gt; &gt; for you to fetch changes up to 4d7a663cbe8343e884b88e44bd88d37dd0=
-a470e5:<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 =C2=A0 Python: test Python 3.12 (2023-10-04 15:19:00 -0400)=
-<br>
-&gt; &gt;<br>
-&gt; &gt; ----------------------------------------------------------------<=
-br>
-&gt; &gt; Python pullreq<br>
-&gt; &gt;<br>
-&gt; &gt; Buffering improvements for qemu machine, minor changes to support=
- the<br>
-&gt; &gt; newly released Python 3.12<br>
-&gt; &gt;<br>
-&gt; &gt; ----------------------------------------------------------------<=
-br>
-&gt; &gt;<br>
-&gt; &gt; John Snow (9):<br>
-&gt; &gt;=C2=A0 =C2=A0 Python/iotests: Add type hint for nbd module<br>
-&gt; &gt;=C2=A0 =C2=A0 python/machine: move socket setup out of _base_args =
-property<br>
-&gt; &gt;=C2=A0 =C2=A0 python/machine: close sock_pair in cleanup path<br>
-&gt; &gt;=C2=A0 =C2=A0 python/console_socket: accept existing FD in initial=
-izer<br>
-&gt; &gt;=C2=A0 =C2=A0 python/machine: use socketpair() for console connect=
-ions<br>
-&gt; &gt;=C2=A0 =C2=A0 python/machine: use socketpair() for qtest connectio=
-n<br>
-&gt; &gt;=C2=A0 =C2=A0 python/machine: remove unused sock_dir argument<br>
-&gt; &gt;=C2=A0 =C2=A0 python/qmp: remove Server.wait_closed() call for Pyt=
-hon 3.12<br>
-&gt; &gt;=C2=A0 =C2=A0 Python: test Python 3.12<br>
-&gt;<br>
-&gt; Is that a pull request or a patch series to be reviewed?<br>
-<br>
-Strange, some of the patches have Reviewed-by tags but others do not.<br>
-I could not find a &quot;Add type hint for nbd module&quot; patch on the ma=
-iling<br>
-list before this pull request, so I guess it hasn&#39;t been reviewed.<br>
-<br>
-I&#39;ll hold off from merging this series for now.<br>
-<br>
-John: Please make sure all patches have been on the mailing list for<br>
-review before sending a pull request.<br>
-<br>
-Stefan<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"=
-auto">Okey Dokey.</div><div dir=3D"auto"><br></div><div dir=3D"auto">--js</=
-div></div>
-
---000000000000fd61660606f95ea1--

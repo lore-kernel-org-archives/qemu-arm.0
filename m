@@ -1,114 +1,112 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp71860ejc;
-        Wed, 4 Oct 2023 21:58:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGHtMMkDUbWkjjaNoPWcbrDSudWf81Wd9TNQ56aiYC/N4weKFqU1gFT4NSVYgCuKXmx+Ios
-X-Received: by 2002:a05:6214:1fd4:b0:658:7f94:3978 with SMTP id jh20-20020a0562141fd400b006587f943978mr4078928qvb.13.1696481921209;
-        Wed, 04 Oct 2023 21:58:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696481921; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp72081ejc;
+        Wed, 4 Oct 2023 21:59:24 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFxvyJ4PunU2dzMSSJRfLwsYaSPjvyBMt7tWL0PKqQYqvjVj2KIBgSU5DTkI4UGj+8W5MY9
+X-Received: by 2002:a05:6214:16d1:b0:655:78f5:bef7 with SMTP id d17-20020a05621416d100b0065578f5bef7mr4347362qvz.21.1696481964660;
+        Wed, 04 Oct 2023 21:59:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696481964; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yt9mLcVHRp0jJ0wAa1JGIz3JvipnBZoTuE+ADNG6dSVSmm83p2FiRLPDKH5weFAv1R
-         yTl1DfNuGjzEBvk48A15TdiCyo+GrVyZKq7wxqLEjF8Dq7gWITCd5z7hziQb1hw0fUc0
-         uf6gVg9ogzMxKzmHECBNCvx5BudVYynyiqYuAylM90uPCrP1g9fk8xAh9bcAYmMagfJT
-         YFyn3v/sLpKw8ssPxj26fpLN93PPTFTg10YKo0gaGTE2AyfeZZIMQ0HmtG5WJBVJ5e4C
-         1etVvulvE9O+lPsoQCOwQxc0YZZ6NYYj9cZe54JItZqGytse1mwUW+cn646qqfau4UaY
-         PN3A==
+        b=RPK3NmYngCD7zMwyAhm21CdDjCZQ04EERsJOVVhjNT7B5AwBzQj5QSKaCr0cu3rHP8
+         /h0WiIXrOu/szBmSIfx9CsIKv+t68y2DimKJtrExPhGF8IBld0FdKJt/olmq/7/iXFE0
+         0wEVL1NV0msGCbrfYd5OcLOTIGfXH0ARjGOAW0bew4ZER7R1wx9jkoNPoVmobw4wIULK
+         b/as7J5pEQNNo9k34zCMGm9YDzQHi2BOhcd4sDoH0j+jaJQI9Locbt7Ribsds9XfgPWI
+         1Wz2QLUpDpxDOfX4ijDXah80KT0Off5ltX8Z8gvMT9QqqNvFNhCKiiILG8maPEP14kOb
+         ye3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+PTJ/05sHPgcAUDGq2+BZ4afKq7cNyAKTrzR+aRyMME=;
-        fh=f/1l33s7qhTIbw99Jc6KpxmMb7npFzisdUwydpQPn0k=;
-        b=A6PKY2+7fJMetEu1G/IY93E1Mzkj+mxVbG8lWc1sx4hZSOkz8CwHWazQUGU4m+GKQW
-         3HhEBnABrO8q3Ir7I9V6z+1uC9cEvmeJ8MAHZTDo+ikEe2DCMkUmgqr/kRm6J/vSbv/A
-         CUAEozI48JnwN/5wYgSuW0gnUAfbJbeCDmXkFl6zZHaFp2VKjuCms1aBpox6wqyGj0jj
-         YgrqPrYilq8W7uo9eW2zwM4MidC+mA/anM2CYK+8wllPgJsv8jzOazomqogl1LSRsL7z
-         TFDCSa1ASv4i06cqBuPjb/ObdZJc6SSxZ+Svi1PAIndj7ZAgLGqinoDbuqgFsM2ZDznu
-         fd+Q==
+        bh=ZMzoYshmIKgiyI46JZRTSl2tAoK4bhnefguZfodjbZQ=;
+        fh=UDFk7AMDAi9TGZTd8AeDYxQWxMLSVq4WmLfu6YLWv1g=;
+        b=Ca4d04lb1wU61Ohl6vgaBXzAZktwPgiww5sc4n8Pat8wpIQ3/QWQGH02+FjyoMKKZk
+         RufEFeVtgmM2YKD++oMYtInuqdLrNei/+2yZOUdpGF9C9bPgjVrqBFXgycYglN3zrYAx
+         EGhhjddVshn3b5NJEc/zbYQNopgGAhi05kIMBy4XaNuweExJ9HbTGImp/ADehbChuKvG
+         eP3O7k8dsivrS4oQQ5WoVTZvcHDy5dls6X9bhweDomS9XFVtbg7DZIi0VE8+9gXx7F0P
+         BlRssZSLEM4t7x5JBoyYJC68nqQu6jbROgw0WAeNaZeomTFgYf5RSK4k4DJRgo5eyQoU
+         dudQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Py9dJhth;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VbBLU7Fe;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z11-20020a0cda8b000000b0065864d02b70si383157qvj.1.2023.10.04.21.58.41
+        by mx.google.com with ESMTPS id p5-20020a0cf545000000b006563271b4dcsi387241qvm.107.2023.10.04.21.59.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Oct 2023 21:58:41 -0700 (PDT)
+        Wed, 04 Oct 2023 21:59:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Py9dJhth;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VbBLU7Fe;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qoGLM-0006mK-Rh; Thu, 05 Oct 2023 00:52:12 -0400
+	id 1qoGMN-0000is-Uf; Thu, 05 Oct 2023 00:53:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGLJ-0006l2-Mn
- for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:52:09 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGLx-00080J-JF
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:52:54 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGLH-0006Jc-04
- for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:52:08 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3214cdb4b27so571508f8f.1
- for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 21:52:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qoGLq-0007Np-Lc
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 00:52:45 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-405497850dbso5030755e9.0
+ for <qemu-devel@nongnu.org>; Wed, 04 Oct 2023 21:52:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696481524; x=1697086324; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696481557; x=1697086357; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+PTJ/05sHPgcAUDGq2+BZ4afKq7cNyAKTrzR+aRyMME=;
- b=Py9dJhthVnEVQD3N5NhxgAOYSmIt8uRU3DsByURzCf1HjJ8dKIOTcadn0Rj9Sr6BtI
- 23fzGPp4/ogjwQ5g9i1gIzuTT53TH0b1karW3M+Vm9e7JrthPHhhOqrVwjaQpGlE42iV
- BfL8cqGsgPeJGdb2pplv+L5KQz3md8kvXiUiQSoOq3+dA/VloSXeX/cGZx9mdtuSUNbT
- gJiwh+Km/u7cGeYCqK3BIdfAQkVTql1jZcm/Att+MplbbzKY3RfCxoCStKtGyM/XKpoV
- gQjv6X7O5pdNwcFnb5D7sKAIO6hcrXSec2OCeMYS3ZX36z8VaRSq7nIO0C3toern7Q9a
- 5XVg==
+ bh=ZMzoYshmIKgiyI46JZRTSl2tAoK4bhnefguZfodjbZQ=;
+ b=VbBLU7FeVN2pcvXqgOlP3zxhcTirOKZVho47eQzeIhhhlUZGhUYMAnborGH/plFbwK
+ YSDwOVv5SGHtGCJO7rQjowyEHb7HPC3gJ21qyIZBZWYfyEZjIa2YfAkD5GKOoF60su9c
+ nCjWbUduUSgPHufAU6fIvYjPcQjKqhupMmnUvg665bL0heNP4sr6f4beNbJvbjfs6tFa
+ MPd4QYOMaXaxqziDJOP9MRjyrBIQeRXnmHsP9g6oB9phWrGxNTBv0urRm0hyfLn3x2Nk
+ rFuBAJ4nZq+P6jJEOrvlrMNUvVRaKvy3h+uKpB3ceRUu9jHdUXnyDp78vWS0ACED1qqV
+ G0KA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696481524; x=1697086324;
+ d=1e100.net; s=20230601; t=1696481557; x=1697086357;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+PTJ/05sHPgcAUDGq2+BZ4afKq7cNyAKTrzR+aRyMME=;
- b=VhYznMkKLDSFWHlrnP3aNSIdB2jflQD0VKQ2YPT80bhIdsTiBcWsVnlDU3fGCBM/Bq
- 1256Hvualf65IVICDL9MYaX/mXCiIXYGbHP5jNeabOFsqkM5CtwunAL8v677SbZO3tjy
- Tli27fZ9khise2hA4pjDUx71vwNYubpfDy0VJfIFFm/Cb+daERveY7D5Ke9MWZqbIO0u
- wZBzJ17JGvmVrfRi5NSOZgwaZOsWaqcZ+GQ0g0ah1B2FdeDH7Hc5LcdfuXRaRJzzafak
- P3rPogXFiwWdcqCfBcPrvOZNOMPkCL8jPY3PIyuFaiQO5FkvcJGSvsE/tBshDse/Gjwf
- pC/g==
-X-Gm-Message-State: AOJu0YwZK5sAW9HF1Q5srGSMYGDJgPBREZjTU37ORLDZ0hwSxpQQzdnD
- GtwmzrGc7zE59x3dCPueg0HRPYJrhV20WPyEh4Q=
-X-Received: by 2002:a5d:6447:0:b0:31f:fb5d:96da with SMTP id
- d7-20020a5d6447000000b0031ffb5d96damr4082442wrw.64.1696481524229; 
- Wed, 04 Oct 2023 21:52:04 -0700 (PDT)
+ bh=ZMzoYshmIKgiyI46JZRTSl2tAoK4bhnefguZfodjbZQ=;
+ b=rGaP1KFjkMP9lslfHL13uWsNnhYiirx18NHDoPGwVJk84VVfN+iulXVVlsdVTTPE1Y
+ uvEJXgmgg+w/I07Exf3oxk8uC5i9mEP2K5Ua0w64MwaXL4D/6ZdGcjOfHjVEm5A2Ug0a
+ 0TfWu7bnb2TWtQYcnpSQmW6HdAs40ajZDSbNGHT01ZblV6JOE1nsD9JIaK/lZ+almKjw
+ omu4PTdDeBupkSExpGgDcsTK4l7FO2qodRIDXydzA4GiNgOV9qWHtdoac+x5YNadNEqb
+ jYE0ty+7J8G9Ks6xcC8QrwG58AyjB5sWtRb89MUHW8REvEqIBgiKUdfR0Ehtvb2XqCap
+ clTg==
+X-Gm-Message-State: AOJu0YyWFldrAW5XFSiw9ssH4V0MiDfOqn7uy6xZdV5rSaqaA/bb7XQy
+ 2mhIFZIzMgoh9KCmO3DwwM/iues4KfmDTaov7zg=
+X-Received: by 2002:a05:600c:ad0:b0:405:375d:b860 with SMTP id
+ c16-20020a05600c0ad000b00405375db860mr4082300wmr.21.1696481557727; 
+ Wed, 04 Oct 2023 21:52:37 -0700 (PDT)
 Received: from m1x-phil.lan (tbo33-h01-176-171-211-120.dsl.sta.abo.bbox.fr.
  [176.171.211.120]) by smtp.gmail.com with ESMTPSA id
- c7-20020a5d4f07000000b00317e77106dbsm747391wru.48.2023.10.04.21.52.02
+ y6-20020a1c4b06000000b00405588aa40asm617496wma.24.2023.10.04.21.52.36
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Oct 2023 21:52:03 -0700 (PDT)
+ Wed, 04 Oct 2023 21:52:37 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
  qemu-s390x@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Michael Roth <michael.roth@amd.com>
-Subject: [PATCH v2 12/22] qapi: Inline QERR_INVALID_PARAMETER_VALUE definition
- (constant param)
-Date: Thu,  5 Oct 2023 06:50:29 +0200
-Message-ID: <20231005045041.52649-13-philmd@linaro.org>
+ Michael Roth <michael.roth@amd.com>
+Subject: [PATCH v2 17/22] qapi: Inline and remove QERR_MISSING_PARAMETER
+ definition
+Date: Thu,  5 Oct 2023 06:50:34 +0200
+Message-ID: <20231005045041.52649-18-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231005045041.52649-1-philmd@linaro.org>
 References: <20231005045041.52649-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,7 +128,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fVf03wJ5bNGp
+X-TUID: 5iSZZh5HezSa
 
 Address the comment added in commit 4629ed1e98
 ("qerror: Finally unused, clean up"), from 2015:
@@ -140,217 +138,70 @@ Address the comment added in commit 4629ed1e98
    * in new code, and do not add new ones!
    */
 
-Mechanical transformation using the following
-coccinelle semantic patch:
-
-    @match@
-    identifier errp;
-    expression param; // not constant
-    constant value;
-    @@
-         error_setg(errp, QERR_INVALID_PARAMETER_VALUE, param, value);
-
-    @script:python strformat depends on match@
-    param << match.param;
-    value << match.value;
-    fixedfmt; // new var
-    @@
-    fixedfmt = f"\"Parameter '%s' expects {value[1:-1]}\""
-    coccinelle.fixedfmt = cocci.make_ident(fixedfmt)
-
-    @replace@
-    identifier match.errp;
-    expression match.param;
-    constant match.value;
-    identifier strformat.fixedfmt;
-    @@
-    -    error_setg(errp, QERR_INVALID_PARAMETER_VALUE, param, value);
-    +    error_setg(errp, fixedfmt, param);
+Mechanical transformation using sed, manually
+removing the definition in include/qapi/qmp/qerror.h.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/core/qdev-properties-system.c |  5 +++--
- qapi/opts-visitor.c              |  3 +--
- qapi/qapi-util.c                 |  3 +--
- qapi/qobject-input-visitor.c     | 18 ++++++++----------
- qapi/string-input-visitor.c      | 18 ++++++++++--------
- util/qemu-option.c               |  7 ++++---
- 6 files changed, 27 insertions(+), 27 deletions(-)
+ include/qapi/qmp/qerror.h    | 3 ---
+ qapi/opts-visitor.c          | 2 +-
+ qapi/qapi-forward-visitor.c  | 2 +-
+ qapi/qobject-input-visitor.c | 2 +-
+ 4 files changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index 688340610e..7752c5fda5 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -769,8 +769,9 @@ static void set_pci_devfn(Object *obj, Visitor *v, const char *name,
-             return;
-         }
-         if (value < -1 || value > 255) {
--            error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
--                       name ? name : "null", "a value between -1 and 255");
-+            error_setg(errp,
-+                       "Parameter '%s' expects a value between -1 and 255",
-+                       name ? name : "null");
-             return;
-         }
-         *ptr = value;
+diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
+index cc4dae1076..b0f48f22fe 100644
+--- a/include/qapi/qmp/qerror.h
++++ b/include/qapi/qmp/qerror.h
+@@ -17,9 +17,6 @@
+  * add new ones!
+  */
+ 
+-#define QERR_MISSING_PARAMETER \
+-    "Parameter '%s' is missing"
+-
+ #define QERR_PROPERTY_VALUE_BAD \
+     "Property '%s.%s' doesn't take value '%s'"
+ 
 diff --git a/qapi/opts-visitor.c b/qapi/opts-visitor.c
-index 3d1a28b419..0393704a73 100644
+index 844db583f4..bf0d8acbd6 100644
 --- a/qapi/opts-visitor.c
 +++ b/qapi/opts-visitor.c
-@@ -515,8 +515,7 @@ opts_type_size(Visitor *v, const char *name, uint64_t *obj, Error **errp)
+@@ -218,7 +218,7 @@ lookup_distinct(const OptsVisitor *ov, const char *name, Error **errp)
  
-     err = qemu_strtosz(opt->str ? opt->str : "", NULL, obj);
-     if (err < 0) {
--        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, opt->name,
--                   "a size value");
-+        error_setg(errp, "Parameter '%s' expects a size value", opt->name);
-         return false;
+     list = g_hash_table_lookup(ov->unprocessed_opts, name);
+     if (!list) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, name);
++        error_setg(errp, "Parameter '%s' is missing", name);
      }
- 
-diff --git a/qapi/qapi-util.c b/qapi/qapi-util.c
-index 63596e11c5..82c3425566 100644
---- a/qapi/qapi-util.c
-+++ b/qapi/qapi-util.c
-@@ -101,8 +101,7 @@ bool qapi_bool_parse(const char *name, const char *value, bool *obj, Error **err
+     return list;
+ }
+diff --git a/qapi/qapi-forward-visitor.c b/qapi/qapi-forward-visitor.c
+index e36d9bc9ba..3fb2c954aa 100644
+--- a/qapi/qapi-forward-visitor.c
++++ b/qapi/qapi-forward-visitor.c
+@@ -49,7 +49,7 @@ static bool forward_field_translate_name(ForwardFieldVisitor *v, const char **na
+         *name = v->to;
          return true;
      }
- 
--    error_setg(errp, QERR_INVALID_PARAMETER_VALUE, name,
--               "'on' or 'off'");
-+    error_setg(errp, "Parameter '%s' expects 'on' or 'off'", name);
+-    error_setg(errp, QERR_MISSING_PARAMETER, *name);
++    error_setg(errp, "Parameter '%s' is missing", *name);
      return false;
  }
  
 diff --git a/qapi/qobject-input-visitor.c b/qapi/qobject-input-visitor.c
-index f110a804b2..f5fa6c1878 100644
+index f5fa6c1878..17e9f3b638 100644
 --- a/qapi/qobject-input-visitor.c
 +++ b/qapi/qobject-input-visitor.c
-@@ -424,8 +424,8 @@ static bool qobject_input_type_int64_keyval(Visitor *v, const char *name,
+@@ -168,7 +168,7 @@ static QObject *qobject_input_get_object(QObjectInputVisitor *qiv,
+     QObject *obj = qobject_input_try_get_object(qiv, name, consume);
  
-     if (qemu_strtoi64(str, NULL, 0, obj) < 0) {
-         /* TODO report -ERANGE more nicely */
--        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
--                   full_name(qiv, name), "integer");
-+        error_setg(errp, "Parameter '%s' expects integer",
-+                   full_name(qiv, name));
-         return false;
+     if (!obj) {
+-        error_setg(errp, QERR_MISSING_PARAMETER, full_name(qiv, name));
++        error_setg(errp, "Parameter '%s' is missing", full_name(qiv, name));
      }
-     return true;
-@@ -458,8 +458,7 @@ static bool qobject_input_type_uint64(Visitor *v, const char *name,
-     }
- 
- err:
--    error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
--               full_name(qiv, name), "uint64");
-+    error_setg(errp, "Parameter '%s' expects uint64", full_name(qiv, name));
-     return false;
+     return obj;
  }
- 
-@@ -475,8 +474,8 @@ static bool qobject_input_type_uint64_keyval(Visitor *v, const char *name,
- 
-     if (qemu_strtou64(str, NULL, 0, obj) < 0) {
-         /* TODO report -ERANGE more nicely */
--        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
--                   full_name(qiv, name), "integer");
-+        error_setg(errp, "Parameter '%s' expects integer",
-+                   full_name(qiv, name));
-         return false;
-     }
-     return true;
-@@ -514,8 +513,8 @@ static bool qobject_input_type_bool_keyval(Visitor *v, const char *name,
-     }
- 
-     if (!qapi_bool_parse(name, str, obj, NULL)) {
--        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
--                   full_name(qiv, name), "'on' or 'off'");
-+        error_setg(errp, "Parameter '%s' expects 'on' or 'off'",
-+                   full_name(qiv, name));
-         return false;
-     }
-     return true;
-@@ -643,8 +642,7 @@ static bool qobject_input_type_size_keyval(Visitor *v, const char *name,
- 
-     if (qemu_strtosz(str, NULL, obj) < 0) {
-         /* TODO report -ERANGE more nicely */
--        error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
--                   full_name(qiv, name), "size");
-+        error_setg(errp, "Parameter '%s' expects size", full_name(qiv, name));
-         return false;
-     }
-     return true;
-diff --git a/qapi/string-input-visitor.c b/qapi/string-input-visitor.c
-index 3f1b9e9b41..6ea6a0c676 100644
---- a/qapi/string-input-visitor.c
-+++ b/qapi/string-input-visitor.c
-@@ -189,16 +189,17 @@ static bool parse_type_int64(Visitor *v, const char *name, int64_t *obj,
-     case LM_NONE:
-         /* just parse a simple int64, bail out if not completely consumed */
-         if (qemu_strtoi64(siv->string, NULL, 0, &val)) {
--            error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
--                       name ? name : "null", "int64");
-+            error_setg(errp, "Parameter '%s' expects int64",
-+                       name ? name : "null");
-             return false;
-         }
-         *obj = val;
-         return true;
-     case LM_UNPARSED:
-         if (try_parse_int64_list_entry(siv, obj)) {
--            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, name ? name : "null",
--                       "list of int64 values or ranges");
-+            error_setg(errp,
-+                       "Parameter '%s' expects list of int64 values or ranges",
-+                       name ? name : "null");
-             return false;
-         }
-         assert(siv->lm == LM_INT64_RANGE);
-@@ -279,16 +280,17 @@ static bool parse_type_uint64(Visitor *v, const char *name, uint64_t *obj,
-     case LM_NONE:
-         /* just parse a simple uint64, bail out if not completely consumed */
-         if (qemu_strtou64(siv->string, NULL, 0, &val)) {
--            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, name ? name : "null",
--                       "uint64");
-+            error_setg(errp, "Parameter '%s' expects uint64",
-+                       name ? name : "null");
-             return false;
-         }
-         *obj = val;
-         return true;
-     case LM_UNPARSED:
-         if (try_parse_uint64_list_entry(siv, obj)) {
--            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, name ? name : "null",
--                       "list of uint64 values or ranges");
-+            error_setg(errp,
-+                       "Parameter '%s' expects list of uint64 values or ranges",
-+                       name ? name : "null");
-             return false;
-         }
-         assert(siv->lm == LM_UINT64_RANGE);
-diff --git a/util/qemu-option.c b/util/qemu-option.c
-index 62dd80a5ae..9440224e5b 100644
---- a/util/qemu-option.c
-+++ b/util/qemu-option.c
-@@ -101,7 +101,7 @@ static bool parse_option_number(const char *name, const char *value,
-         return false;
-     }
-     if (err) {
--        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, name, "a number");
-+        error_setg(errp, "Parameter '%s' expects a number", name);
-         return false;
-     }
-     *ret = number;
-@@ -142,8 +142,9 @@ bool parse_option_size(const char *name, const char *value,
-         return false;
-     }
-     if (err) {
--        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, name,
--                   "a non-negative number below 2^64");
-+        error_setg(errp,
-+                   "Parameter '%s' expects a non-negative number below 2^64",
-+                   name);
-         error_append_hint(errp, "Optional suffix k, M, G, T, P or E means"
-                           " kilo-, mega-, giga-, tera-, peta-\n"
-                           "and exabytes, respectively.\n");
 -- 
 2.41.0
 

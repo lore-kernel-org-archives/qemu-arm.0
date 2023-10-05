@@ -1,114 +1,190 @@
-Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp518824ejc;
-        Thu, 5 Oct 2023 11:56:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE/dAIllMxWwJGJeHH1mrgcZVyObWvxD0xpZyjeBs2Rel4vMOxELXiO7Bli+DDT8CJpdCPK
-X-Received: by 2002:a05:620a:4622:b0:76f:1ead:ddb9 with SMTP id br34-20020a05620a462200b0076f1eadddb9mr7358101qkb.51.1696532201247;
-        Thu, 05 Oct 2023 11:56:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696532201; cv=none;
+Received: by 2002:a17:906:14cc:b0:9b2:89ee:1eb8 with SMTP id y12csp571939ejc;
+        Thu, 5 Oct 2023 13:43:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IERlTr1md01NZ3MJeF1rdX4PBNEwqLSxo++Vfc2xW097Po8JvW87PEcWjpmYAaCnDBN8j3K
+X-Received: by 2002:a0c:cc02:0:b0:65b:2738:9bb4 with SMTP id r2-20020a0ccc02000000b0065b27389bb4mr5670447qvk.23.1696538596851;
+        Thu, 05 Oct 2023 13:43:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696538596; cv=none;
         d=google.com; s=arc-20160816;
-        b=x+/lwP/6fhPK5ea8cnmq72vkWeF/01nM/4vAzthjFJoLArLzM9r1ReHymgDzz60FGe
-         kixu/pqA6VufVSKm6asmjcX8OvmtLq8x+syg2UHyKsKzmwMQsbtbDW6U7FxOtJGI0c4o
-         5ndGu7lvX/FjdcLMVV5ci36tVROG5DktsBn3YkETox5MRkmRYiLl4EogotwfOxy8yQKf
-         XXJ147HIXKkEc03YB7jdwlaJi/U6h0hGcRqctulO6ytUNzNSuPFL9f+H+ngQ6aCunFAn
-         fbm/ayRC3gVj07+uC69Q52BCjglRj8JooQpIwJNWxHgOXVYuC08CMUGOTzStAp2PWC4A
-         zEng==
+        b=hfCisnitybJ6vrwRM8DE0qKvpnxvB8uTL57Ci3V/1vOB6J8IvnPBW2GldO7jb0fY5D
+         AG2DVm+I+ve0JvCK61ZFAjzSIJUasp4lqpTeUOKiD45haQRYre1vdiOYJts923hVbVQ6
+         iwuwgWx7xkH2ltY4Ye/OiGym5pJ8uX8loHQ1xua4ryRTpb84nUwjdEUhVTlNI+W4gbn0
+         oK0fbxqIbUOYTgRzIv9sysBEdy8e8B2OkNcTGlrQoje64pO+m2PYF7PkEl00GZqZx2YK
+         xfjTX7dztj+FEu/1k+6T6TiVy5xoQs3BGo+p/lz9B7BVFYoKM6KRUQEDCiu2S4JWRRWi
+         8SlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=J0fO46ECHysOq4m3Ye+P6l8Lk6TABCFWmkDdrQNga3g=;
-        fh=qxcIe+tFWvJ+i+FtrBHyvjWbmIvanBXERFJcTOLJkZA=;
-        b=VNNKbIQR+u2g/KuafmtmdqWRw8kvhhL348vq+MMHUZ+gV8ZurwIJ5ElyBSZ65fFC3U
-         zyh0NSffLwWAioJfJM1SroVqFD05khDXsLWN0m0S/Tm0kEvFrkbKJ6ekaRkBzzd5zTTT
-         uDxPTFp9TU0C7ARuWgpWVMcqnA+88Isaj2EITRizNnDhEkYfYHxDObT21Uz0qA3pBaqX
-         5uIU0CxnO/HZHOAWHC2xe2TGiRKRzy9h7CGdIY4kyK5XFK2CivgOqgvyLO7tzeMgtbiJ
-         SGhaS89chQRVkV/M1bjTopBonEKQ3CSGKXrfF55PsKUbNkOA8vj8P8VCI0HvxVTiAtIW
-         QJbw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=qBTyIjkX0FsTY0uSX1euWarZaz2rnIXwWz2NVHKjHdA=;
+        fh=z1KdWiyy8wraXUx7ouD6CbiYRDoSKNlzOStkMl49TkY=;
+        b=ExfIS+85+j/MjxUWpsBlt4F0Mv/GOdvhMViCZfZrUSrqsPt0dqemKwcyZCWBIIJhMx
+         TVpqIibSSed32wHJHVsss5J+UXCYVmGpo9yewBkp3t5m2wKwMJxFks5hGSPUC47hn25e
+         lurxgGE/+cbrZu4vqZBPRiwje8axaQYwDEVOJ5xqmEv4ldKXUAmVMUQX+Kojp+QLUivr
+         asiQCBFCq2nWozaG2y0wFMlCoyryv+LUmqvVENUlLYfJ2Pu43NB99/wenzhdd9dCruYX
+         QFlQ0qRxuvcgovVBAMhSjHe4VmPyC3PHWvde8zMTNxbchZR/LVCsrjdv06YG9GvoqAUr
+         36Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a0epBO1H;
-       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eblake@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id u15-20020a05620a022f00b0076ee90878a9si1243062qkm.594.2023.10.05.11.56.41
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=YCb1epPQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id tn24-20020a05620a3c1800b00775a1063051si1428249qkn.501.2023.10.05.13.43.16
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Oct 2023 11:56:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 05 Oct 2023 13:43:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a0epBO1H;
-       spf=pass (google.com: domain of eblake@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eblake@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1696532200;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=J0fO46ECHysOq4m3Ye+P6l8Lk6TABCFWmkDdrQNga3g=;
-	b=a0epBO1HKghPzRHEs5YmuAeUMn8FQAGe5AXYj1ogjI1lPeJh9gTef9gcKBMSYBws5uSmVf
-	ROPpyiD+pyDeOJRC27S4CXZS53IuVCvwqSUFHBzXYOai2wm7pvZkMl8KVGcfH3WBGZrsT+
-	VOvgMZoi83Hn+WOseV3kxoFGRDbkYsk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-592-WR8VayRUMwmKDrE7lNtWJw-1; Thu, 05 Oct 2023 14:56:37 -0400
-X-MC-Unique: WR8VayRUMwmKDrE7lNtWJw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E1A1E811E86;
-	Thu,  5 Oct 2023 18:56:36 +0000 (UTC)
-Received: from redhat.com (unknown [10.2.16.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 005EF215670B;
-	Thu,  5 Oct 2023 18:56:34 +0000 (UTC)
-Date: Thu, 5 Oct 2023 13:56:33 -0500
-From: Eric Blake <eblake@redhat.com>
-To: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org, jsnow@redhat.com, 
-	crosa@redhat.com, kwolf@redhat.com, hreitz@redhat.com, 
-	Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>, Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Thomas Huth <thuth@redhat.com>, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
-	Peter Maydell <peter.maydell@linaro.org>, Aurelien Jarno <aurelien@aurel32.net>, 
-	Halil Pasic <pasic@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>, 
-	Eric Farman <farman@linux.ibm.com>, Juan Quintela <quintela@redhat.com>, 
-	Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
-	Leonardo Bras <leobras@redhat.com>, "open list:Integrator CP" <qemu-arm@nongnu.org>, 
-	"open list:S390 Virtio-ccw" <qemu-s390x@nongnu.org>
-Subject: Re: [PATCH v6 05/14] python/qemu: rename command() to cmd()
-Message-ID: <huzq7ffxyvfdfceulpuz2wna5wubxtbjdxmrlkaztczjjmv6yn@tkwin4kqvms5>
-References: <20231005135550.331657-1-vsementsov@yandex-team.ru>
- <20231005135550.331657-6-vsementsov@yandex-team.ru>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=YCb1epPQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qoVBc-0004XR-1N; Thu, 05 Oct 2023 16:43:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mglenn@mamboa4.aus.stglabs.ibm.com>)
+ id 1qoVBY-0004RG-21
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 16:43:05 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mglenn@mamboa4.aus.stglabs.ibm.com>)
+ id 1qoVBW-0006Se-F2
+ for qemu-devel@nongnu.org; Thu, 05 Oct 2023 16:43:03 -0400
+Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 395KYNlq020124; Thu, 5 Oct 2023 20:42:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=qBTyIjkX0FsTY0uSX1euWarZaz2rnIXwWz2NVHKjHdA=;
+ b=YCb1epPQkNsFaCPcJ+U4skHnJeslcQ6T/jWCRYTf2f8EeG00OLYEyq32KvQoWoTMSwyT
+ VX8f7vRamg9yQ5/cfLzp3jGCFq6yjhTeCiGfjiu5dLZHkR3Z4GGTQy85B+dSch546iGU
+ dnM7iX4OgsYXOs+qojColrtGKSY3rsho7qzbdKMdUP2FAyKr7oRJ7XLHXPARtpdF5k3A
+ fEJwYqjf3M2SYEF5cpzj3npDA8Sm3EMeR2MZDE4haVKEycvMPfgTRMxFhN/enuA12CC5
+ bOaXGt+59KcmT0IMBtkMd7AF7nHK8rX1vUYf6NGcqRtwRJZRxsFALcgYvjuOa2zNVexl aw== 
+Received: from ppma23.wdc07v.mail.ibm.com
+ (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tj438gbgp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 05 Oct 2023 20:42:32 +0000
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 395KKsOh007437; Thu, 5 Oct 2023 20:42:32 GMT
+Received: from smtprelay04.dal12v.mail.ibm.com ([172.16.1.6])
+ by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3teygmbaag-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 05 Oct 2023 20:42:32 +0000
+Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
+ [10.241.53.104])
+ by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 395KgV0i21824216
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 5 Oct 2023 20:42:31 GMT
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9B4A15806B;
+ Thu,  5 Oct 2023 20:42:31 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8AFA358069;
+ Thu,  5 Oct 2023 20:42:31 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
+ by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTPS;
+ Thu,  5 Oct 2023 20:42:31 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (localhost [127.0.0.1])
+ by mamboa4.aus.stglabs.ibm.com (Postfix) with ESMTPS id 0A3EC16A0848;
+ Thu,  5 Oct 2023 15:42:31 -0500 (CDT)
+Received: (from mglenn@localhost)
+ by mamboa4.aus.stglabs.ibm.com (8.15.2/8.15.2/Submit) id 395KgUVc3523027;
+ Thu, 5 Oct 2023 15:42:30 -0500
+From: Glenn Miles <milesg@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org
+Cc: Glenn Miles <milesg@linux.vnet.ibm.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ andrew@codeconstruct.com.au, Joel Stanley <joel@jms.id.au>
+Subject: [PATCH] misc/pca9552: Fix for pca9552 not getting reset
+Date: Thu,  5 Oct 2023 15:42:26 -0500
+Message-Id: <20231005204226.3522978-1-milesg@linux.vnet.ibm.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231005135550.331657-6-vsementsov@yandex-team.ru>
-User-Agent: NeoMutt/20230517
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-X-TUID: qyyGlSmyQux6
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: FTW6Xi2ZC-RLBRWD0VS8NW3z8OKTedXy
+X-Proofpoint-ORIG-GUID: FTW6Xi2ZC-RLBRWD0VS8NW3z8OKTedXy
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-05_15,2023-10-05_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 adultscore=0
+ impostorscore=0 phishscore=0 mlxlogscore=999 bulkscore=0 suspectscore=0
+ priorityscore=1501 clxscore=1015 mlxscore=0 malwarescore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310050157
+Received-SPF: none client-ip=148.163.158.5;
+ envelope-from=mglenn@mamboa4.aus.stglabs.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3xMAYMDGVtwt
 
-On Thu, Oct 05, 2023 at 04:55:41PM +0300, Vladimir Sementsov-Ogievskiy wrote:
-> Use a shorter name. We are going to move in iotests from qmp() to
-> command() where possible. But command() is longer than qmp() and don't
-> look better. Let's rename.
-> 
-> You can simply grep for '\.command(' and for 'def command(' to check
-> that everything is updated (command() in tests/docker/docker.py is
-> unrelated).
-> 
-> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-> ---
->  docs/devel/testing.rst                    |  10 +-
+Testing of the pca9552 device on the powernv platform
+showed that the reset method was not being called when
+an instance of the device was realized.  This was causing
+the INPUT0/INPUT1 POR values to be incorrect.
 
-There's a risk that this will need rebasing on top of any other test
-changes being made in parallel; hopefully we can get this series in
-sooner rather than later.
+Fixed by calling pca9552_reset from within the
+pca9552_realize method.
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
+---
+ hw/misc/pca9552.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
+diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+index f28b5ecd7e..4e198af137 100644
+--- a/hw/misc/pca9552.c
++++ b/hw/misc/pca9552.c
+@@ -418,6 +418,12 @@ static void pca955x_realize(DeviceState *dev, Error **errp)
+     qdev_init_gpio_in(dev, pca955x_gpio_in_handler, k->pin_count);
+ }
+ 
++static void pca9552_realize(DeviceState *dev, Error **errp)
++{
++    pca955x_realize(dev, errp);
++    pca9552_reset(dev);
++}
++
+ static Property pca955x_properties[] = {
+     DEFINE_PROP_STRING("description", PCA955xState, description),
+     DEFINE_PROP_END_OF_LIST(),
+@@ -450,7 +456,7 @@ static void pca9552_class_init(ObjectClass *oc, void *data)
+     DeviceClass *dc = DEVICE_CLASS(oc);
+     PCA955xClass *pc = PCA955X_CLASS(oc);
+ 
+-    dc->reset = pca9552_reset;
++    dc->realize = pca9552_realize;
+     dc->vmsd = &pca9552_vmstate;
+     pc->max_reg = PCA9552_LS3;
+     pc->pin_count = 16;
 -- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.
-Virtualization:  qemu.org | libguestfs.org
+2.31.1
+

@@ -1,1089 +1,369 @@
-Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp430134ejb;
-        Fri, 6 Oct 2023 08:41:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE3KFp40YVEbX7kJyDLtwOErOa3yobl986Ld7ucDkRinilJdj0rtddvl3xGZGhDcPGfB0hu
-X-Received: by 2002:a2e:8686:0:b0:2c2:9872:dfc1 with SMTP id l6-20020a2e8686000000b002c29872dfc1mr7862111lji.42.1696606913616;
-        Fri, 06 Oct 2023 08:41:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696606913; cv=none;
+Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp1137120ejb;
+        Sat, 7 Oct 2023 13:18:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFkAE0B7lvPtVRPC5MEvit04EQ+S6RXVIaRuiw+EKVTtJJqv6vzR/R0ArAor0ETUXFCm3rr
+X-Received: by 2002:a05:620a:ce7:b0:774:1d27:51f with SMTP id c7-20020a05620a0ce700b007741d27051fmr11218827qkj.13.1696709924968;
+        Sat, 07 Oct 2023 13:18:44 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1696709924; cv=pass;
         d=google.com; s=arc-20160816;
-        b=uwFpaRo37YD3pe/6i0iSTEDmXsjdhm+eB3HmXDf2bbhLlBXo9+QljlEKiWlx3VCu2v
-         Sjousca026grcdVPlcbSF8jB52pxzOnRsjs6ycqBe5AlHe+EsctiD+3jVSBh8cCPhKqU
-         ke0l43iFKRzvjjndz9LtuoexO6irhggTvmzM0YtVb6I21aEq+ACE5OcnrgoQCNlahjI0
-         SIYsjReXlEz42lNbb6mX+soFvRwsAV0mjRLbDt0G7auqfbXwARjGMvcmfJM5hkRkmOKG
-         vPbHW+vON4N4/nnzLSxZPBoFsenYLPM9SyVnyzQbJFq/lYtCNGqHT0V+y6K4ro5cr7i7
-         SoiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DDaH1gC0MinVipMy5gWISTn4mqbYLfnQsfceVM1kZGk=;
-        fh=FhRFMmB1Jzsa60+5k7QL4bS/5qrbfmch8TM7xG9X9Uo=;
-        b=bfU0qzIR1QRayTppeHyWXjBl3eXWFviQGE6FWTwGiZqtUroKUNjYb5gGf+Y9L55ZZq
-         EIzkMYgQ2YRkZ45Wc0+NXZAT5xa+OeT+Jxl6x8drO5Kq5T2wDGhBGTQDbUomwL8R3thq
-         swhUiXo8zhimepHjFdQmNThDQtPb/VrZjc/nZxZepr+xcdnMgSG8x+uBwD7IEzQfoc2x
-         uOn7WeFAp4bQ8ENpE+p0NojpdE+cEIoSpr2xI0BgEv/G8lzdYZfNnapu1w0H6NLcfgef
-         5i0l5geoXBzGdJU6j8lfvRtj7BaOtjgqLVwiHdrh8KCiRa0ailXc5DK1b3QDiTnZwcXT
-         oLXQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@yandex-team.ru header.s=default header.b=wcdbxMAe;
-       spf=pass (google.com: domain of vsementsov@yandex-team.ru designates 2a02:6b8:c03:500:1:45:d181:df01 as permitted sender) smtp.mailfrom=vsementsov@yandex-team.ru;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
-Return-Path: <vsementsov@yandex-team.ru>
-Received: from forwardcorp1c.mail.yandex.net (forwardcorp1c.mail.yandex.net. [2a02:6b8:c03:500:1:45:d181:df01])
-        by mx.google.com with ESMTPS id bz14-20020a05651c0c8e00b002c2d6d1c35bsi2468361ljb.144.2023.10.06.08.41.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Oct 2023 08:41:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vsementsov@yandex-team.ru designates 2a02:6b8:c03:500:1:45:d181:df01 as permitted sender) client-ip=2a02:6b8:c03:500:1:45:d181:df01;
+        b=C6O0cLTRLdlK13YAzdpl57KOhcUIaXcO8yhdXywuQmHffj7RXVpU15wP8G+IOPf2kT
+         wqN40BvPUug+6pnE6KxFJX+CmmSl+lcvVguIMjIRN7xJTwthII63GT03miz4zlf6i7mS
+         hqXbBvaEEK+LuQEIXKtlAIMAc3YgD+T/i0TakFGm5ZTVmGDy+//ZsStBsr10FtjC4Mx3
+         BPHGMlebPFlW+Vh28ZL9Ic+gHr5fBe5++D+KU5v2ggLRkoDDtFIFxr6rkTKe2ZR9R5D3
+         bawwUHdmj1IZfyXHqKh+BOXQ/Zq4YDkLMlvA7tltlsUI1svn+ysa7T0m5dh+25XhgfbW
+         K8vQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=IpPvSlhyl0YjSWchjNsw8i+FjufS3vXF1afCUunOuhA=;
+        fh=QuMBvl7k6nIp7+Vaasb1ZwEBxjvdReWA3HcvIChG86w=;
+        b=IgGMwm8c5jkXdSGcX/GXimVUm0FLEFRUSWplw0GKM/XDh+H4/o9Fdx4pOLViV8L7M/
+         Kr2U+LwvD98pxnyDNj+5frp9QP1d5cgHN8DiOqggiNOPMZRl2u1CKFWfGntMgqfhHZDE
+         HsBvbfnxdIsc8jAYWKwyw37MFbf0Lwn4pkbD27ngxtELrdqeA0S7e/doZFdchgAs13no
+         IZSysP8XFdDt/tRSK+PcGY/yZaxFWNb53+ZLxrPwLpdh33k5xyQAV51zP/Q6kI0Yjjiq
+         JqGkPDxgdlIE+u+7VReFF2u2+cNpXs1e3GOEU9/CLFKeRvtUbmK5+nOfHgj2VO0E4rZ+
+         5Gmg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=MrWwsIVG;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x22-20020a05620a0b5600b0077592ac6b4fsi3151376qkg.35.2023.10.07.13.18.44
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 07 Oct 2023 13:18:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@yandex-team.ru header.s=default header.b=wcdbxMAe;
-       spf=pass (google.com: domain of vsementsov@yandex-team.ru designates 2a02:6b8:c03:500:1:45:d181:df01 as permitted sender) smtp.mailfrom=vsementsov@yandex-team.ru;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yandex-team.ru
-Received: from mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net (mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net [IPv6:2a02:6b8:c12:3a8c:0:640:ec94:0])
-	by forwardcorp1c.mail.yandex.net (Yandex) with ESMTP id 8B4B25E910;
-	Fri,  6 Oct 2023 18:41:52 +0300 (MSK)
-Received: from vsementsov-lin.. (unknown [2a02:6b8:b081:a512::1:22])
-	by mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net (smtpcorp/Yandex) with ESMTPSA id VfbK2W5OrKo0-5FGMSNuN;
-	Fri, 06 Oct 2023 18:41:50 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
-	s=default; t=1696606911;
-	bh=DDaH1gC0MinVipMy5gWISTn4mqbYLfnQsfceVM1kZGk=;
-	h=Cc:Message-Id:References:Date:In-Reply-To:Subject:To:From;
-	b=wcdbxMAe3Uq14DMmkHMSSLRuvFrHr35Bu1pSXvBq3Uh+Wg8wWOR5dC37mMiPgpuGF
-	 aOoqQS5NJyG/3UpUr1joOCNTY3d+LssFH9HKwQZiBiMwWK48aJSA5U3sB0clCpGzgV
-	 l4eyLsNx6CoWqqNvmSuqWhg871lynXyJfl99LaPQ=
-Authentication-Results: mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net; dkim=pass header.i=@yandex-team.ru
-From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-To: qemu-block@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	vsementsov@yandex-team.ru,
-	jsnow@redhat.com,
-	crosa@redhat.com,
-	kwolf@redhat.com,
-	hreitz@redhat.com,
-	eblake@redhat.com,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Joel Stanley <joel@jms.id.au>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Eric Farman <farman@linux.ibm.com>,
-	Juan Quintela <quintela@redhat.com>,
-	Peter Xu <peterx@redhat.com>,
-	Fabiano Rosas <farosas@suse.de>,
-	Leonardo Bras <leobras@redhat.com>,
-	qemu-arm@nongnu.org (open list:Integrator CP),
-	qemu-s390x@nongnu.org (open list:S390 Virtio-ccw)
-Subject: [PATCH v7 05/15] python/qemu: rename command() to cmd()
-Date: Fri,  6 Oct 2023 18:41:15 +0300
-Message-Id: <20231006154125.1068348-6-vsementsov@yandex-team.ru>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231006154125.1068348-1-vsementsov@yandex-team.ru>
-References: <20231006154125.1068348-1-vsementsov@yandex-team.ru>
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=MrWwsIVG;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qpDkr-0001Vj-56; Sat, 07 Oct 2023 16:18:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1qpDkp-0001VS-HV; Sat, 07 Oct 2023 16:18:27 -0400
+Received: from mail-dm6nam12on20627.outbound.protection.outlook.com
+ ([2a01:111:f400:fe59::627]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1qpDkm-0005Ki-Rq; Sat, 07 Oct 2023 16:18:26 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dF7XSIkvERbPRVzJrTgZurFavteNrz1MAbqsgPRKctH86rmIGh7oBlDCiGXlY5uiGLqmz0B6h4scpKsPoIv6FO0z8eUiEca87fWEdne3NH4AjsrwNtm+gqsWsxVnTku/UHI1tLcv/NHeKyA7O9/d9A7Fxw9evAjVNuP2oKVBYbPx6z7pkrC0qArOrQH5fCDgknkaWBzA1b/0qsUzXNd3tixacU/VzdxWoBnoJSlJJOnviIPQ7nXfL8TrPhT92uIOVOBNtsf+WgGvCY0cQn/WCVKVB3gv+VL4OZaV52D2azyFET35lJksABi1L9d9x8jUktsdmEu0/9jAacLkhUXHZA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=IpPvSlhyl0YjSWchjNsw8i+FjufS3vXF1afCUunOuhA=;
+ b=bUlTsAbNRRRkd+fy9Xh4I02de4c0Q5oeNA8PPsUBXHjJBAXXBd2uOUc9CnY/xpHIfHxTXMGdNyuK5p4ULQJz97nEQYAGGM+nECxPFFqeHUOyvQ4T8YlhC/Wcn5cFyLw93LX9ugBLwFIM21KrA028Z9jGvgGShcXpekax2IMYZc/n3RTrNIP7aGY8pV/ZIzwe1CuyiR5zQrzK37aHyDNBKw3HoNCVU9nUcFj2uRRWXWi5eOjh39Mk024gB5G28XWHvZkvWgDXIIP5Tw45UEKk9oiEax8rlzCTvnpEiewkn5Z61MRDpY4OOV/kRIxLvrhaIgLSVejb/AqcQsy0MUrI9Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=IpPvSlhyl0YjSWchjNsw8i+FjufS3vXF1afCUunOuhA=;
+ b=MrWwsIVGAcRqPY+MtMeJ+qrP/dxsA6dcY5V4DM4EncfIwf8wZW82gjXUh/G60hDlqxlTJe+Y3byYIEBYwEhty06kGj0WVSWug9XfnfFcq7MXtXlizyCxkrma7hWBGRS8tPbSu8QwoSQcpb/svYUHdsGXn0NCOE6iPlbIj+c6iicBL21kfdn2ccPKBJB2sL0+h8KQraU5PESdBPlE33Arq/Om1mUZuktHULAFoHLPg9BDI4znh/CHlWPjHQeeoW5Rlqy2xmb6M2f7c0aE9WepU7m6pM9J+rYiC3Mrxh6qDNe47hGCiZUP/RCD6Hl2EJDF+gs5BTuMYMot5niW9LxBYg==
+Received: from MN2PR13CA0026.namprd13.prod.outlook.com (2603:10b6:208:160::39)
+ by DM4PR12MB6302.namprd12.prod.outlook.com (2603:10b6:8:a4::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6838.32; Sat, 7 Oct
+ 2023 20:18:20 +0000
+Received: from MN1PEPF0000F0E3.namprd04.prod.outlook.com
+ (2603:10b6:208:160:cafe::2a) by MN2PR13CA0026.outlook.office365.com
+ (2603:10b6:208:160::39) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6863.29 via Frontend
+ Transport; Sat, 7 Oct 2023 20:18:20 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ MN1PEPF0000F0E3.mail.protection.outlook.com (10.167.242.41) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6838.22 via Frontend Transport; Sat, 7 Oct 2023 20:18:18 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Sat, 7 Oct 2023
+ 13:18:03 -0700
+Received: from drhqmail202.nvidia.com (10.126.190.181) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.41; Sat, 7 Oct 2023 13:18:03 -0700
+Received: from sgarnayak-dt.nvidia.com (10.127.8.9) by mail.nvidia.com
+ (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41 via Frontend
+ Transport; Sat, 7 Oct 2023 13:17:56 -0700
+From: <ankita@nvidia.com>
+To: <ankita@nvidia.com>, <jgg@nvidia.com>, <alex.williamson@redhat.com>,
+ <clg@redhat.com>, <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+ <ani@anisinha.ca>, <berrange@redhat.com>, <eduardo@habkost.net>,
+ <imammedo@redhat.com>, <mst@redhat.com>, <eblake@redhat.com>,
+ <armbru@redhat.com>, <david@redhat.com>, <gshan@redhat.com>,
+ <Jonathan.Cameron@huawei.com>
+CC: <aniketa@nvidia.com>, <cjia@nvidia.com>, <kwankhede@nvidia.com>,
+ <targupta@nvidia.com>, <vsethi@nvidia.com>, <acurrid@nvidia.com>,
+ <dnigam@nvidia.com>, <udhoke@nvidia.com>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+Subject: [PATCH v2 2/3] hw/acpi: Implement the SRAT GI affinity structure
+Date: Sun, 8 Oct 2023 01:47:39 +0530
+Message-ID: <20231007201740.30335-3-ankita@nvidia.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20231007201740.30335-1-ankita@nvidia.com>
+References: <20231007201740.30335-1-ankita@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: JzLsRLBKWuRu
+Content-Type: text/plain
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN1PEPF0000F0E3:EE_|DM4PR12MB6302:EE_
+X-MS-Office365-Filtering-Correlation-Id: 36afabd1-8f4c-4fa0-f0bd-08dbc7728bec
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: bRJrGErk2ngAtkqApL4TPznDN05wCL04NK4HFVCoSr6t416FgmBG0u0NrXENrqUQGh0BKaeElgFOSP/+xqFX2RzwozK4g08oXxWsYkW+WNh95TMWH+POiykClLlW+3Wt/iD7I8LC4Jk4UkZLo84jQXYXC2CQItMb4JnKwMvzLrTHPF6g2lnnwCKwGfzhN5AP2TxORdye+tlQtufwe9/3NjmXzqQUV3bRWAYb/DS//5I+qzccAYW98bJW4scqXy6pzQEGw+rUJLotIJTdci4J9mVW6Nlo3gLuYEyuW6Ggo9Jpq5CttC6v6lG5Ig3g/GggiV+lB65WnDMT6bgpgM8toEApQmLYoibl9CeBVpnrJ8iWJmcOf42Z7O28RqLYVXx2QbEh59RHvTVtJ0BXJX+OVQ8ex0jHN2uYkidVioCUZw///21eFuDLkC48X2ukntQ9ZEJaGJglWG6fhS34wGVjgYH6tZ1/LhBUymYRLFryA/mEBkfJkT0YERWmpHZQyyorNIAvHq7MJ966IliobYX8GXjRMGpo8lqZat5wQglIDjrtETIKZe9eDfan16m9MG//xE1y33gUJBKLaABvyrMdM3HXY+TtFGSyUeCtWLHgNgVqVGyjuGMawIwk4nJnhb1cfUgo71gjdsBS8GUr75v8iYLASaLl23k2HwSjNBN/1hwiwiMfCvrgMMVjAPguPhcSxNyLa0G27YrfrZ2yvV7xh9wsPJpjf6nm0tgYMzpk2NSnjLzHrDDyAMb1kE67+MeKDYGhs0sRV2xE0tHQc8AV0w==
+X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
+ SFS:(13230031)(4636009)(396003)(39860400002)(136003)(376002)(346002)(230922051799003)(64100799003)(451199024)(186009)(1800799009)(82310400011)(46966006)(40470700004)(36840700001)(7636003)(921005)(356005)(86362001)(36756003)(40480700001)(2906002)(2876002)(478600001)(82740400003)(4326008)(5660300002)(8936002)(8676002)(6666004)(41300700001)(7696005)(83380400001)(2616005)(336012)(1076003)(426003)(40460700003)(36860700001)(7416002)(70586007)(70206006)(110136005)(316002)(54906003)(47076005)(26005);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Oct 2023 20:18:18.8942 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 36afabd1-8f4c-4fa0-f0bd-08dbc7728bec
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: MN1PEPF0000F0E3.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6302
+Received-SPF: softfail client-ip=2a01:111:f400:fe59::627;
+ envelope-from=ankita@nvidia.com;
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: V1bmGJil5b1L
 
-Use a shorter name. We are going to move in iotests from qmp() to
-command() where possible. But command() is longer than qmp() and don't
-look better. Let's rename.
+From: Ankit Agrawal <ankita@nvidia.com>
 
-You can simply grep for '\.command(' and for 'def command(' to check
-that everything is updated (command() in tests/docker/docker.py is
-unrelated).
+ACPI spec provides a scheme to associate "Generic Initiators" [1]
+(e.g. heterogeneous processors and accelerators, GPUs, and I/O devices with
+integrated compute or DMA engines GPUs) with Proximity Domains. This is
+achieved using Generic Initiator Affinity Structure in SRAT. During bootup,
+Linux kernel parse the ACPI SRAT to determine the PXM ids and create a NUMA
+node for each unique PXM ID encountered. Qemu currently do not implement
+these structures while building SRAT.
 
-Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-[vsementsov: also update three occurrences in
-   tests/avocado/machine_aspeed.py and keep r-b]
+Add GI structures while building VM ACPI SRAT. The association between
+devices and PXM are stored using acpi-generic-initiator object. Lookup
+presence of all such objects and use them to build these structures.
+
+The structure needs a PCI device handle [2] that consists of the device BDF.
+The vfio-pci-nohotplug device corresponding to the acpi-generic-initiator
+object is located to determine the BDF.
+
+[1] ACPI Spec 6.5, Section 5.2.16.6
+[2] ACPI Spec 6.5, Table 5.66
+
+Signed-off-by: Ankit Agrawal <ankita@nvidia.com>
 ---
- docs/devel/testing.rst                    |  10 +-
- python/qemu/machine/machine.py            |   8 +-
- python/qemu/qmp/legacy.py                 |   2 +-
- python/qemu/qmp/qmp_shell.py              |   2 +-
- python/qemu/utils/qemu_ga_client.py       |   2 +-
- python/qemu/utils/qom.py                  |   8 +-
- python/qemu/utils/qom_common.py           |   2 +-
- python/qemu/utils/qom_fuse.py             |   6 +-
- scripts/cpu-x86-uarch-abi.py              |   8 +-
- scripts/device-crash-test                 |   8 +-
- scripts/render_block_graph.py             |   8 +-
- tests/avocado/avocado_qemu/__init__.py    |   4 +-
- tests/avocado/cpu_queries.py              |   5 +-
- tests/avocado/hotplug_cpu.py              |  10 +-
- tests/avocado/info_usernet.py             |   4 +-
- tests/avocado/machine_arm_integratorcp.py |   6 +-
- tests/avocado/machine_aspeed.py           |  12 +-
- tests/avocado/machine_m68k_nextcube.py    |   4 +-
- tests/avocado/machine_mips_malta.py       |   6 +-
- tests/avocado/machine_s390_ccw_virtio.py  |  28 ++--
- tests/avocado/migration.py                |  10 +-
- tests/avocado/pc_cpu_hotplug_props.py     |   2 +-
- tests/avocado/version.py                  |   4 +-
- tests/avocado/virtio_check_params.py      |   6 +-
- tests/avocado/virtio_version.py           |   5 +-
- tests/avocado/x86_cpu_model_versions.py   |  13 +-
- tests/migration/guestperf/engine.py       | 150 +++++++++++-----------
- tests/qemu-iotests/256                    |  34 ++---
- tests/qemu-iotests/257                    |  36 +++---
- 29 files changed, 204 insertions(+), 199 deletions(-)
+ hw/acpi/acpi-generic-initiator.c         | 78 ++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c                 |  3 +
+ hw/vfio/pci.c                            |  2 -
+ hw/vfio/pci.h                            |  2 +
+ include/hw/acpi/acpi-generic-initiator.h | 22 +++++++
+ 5 files changed, 105 insertions(+), 2 deletions(-)
 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index 5d1fc0aa95..21525e9aae 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -1014,8 +1014,8 @@ class.  Here's a simple usage example:
-       """
-       def test_qmp_human_info_version(self):
-           self.vm.launch()
--          res = self.vm.command('human-monitor-command',
--                                command_line='info version')
-+          res = self.vm.cmd('human-monitor-command',
-+                            command_line='info version')
-           self.assertRegexpMatches(res, r'^(\d+\.\d+\.\d)')
- 
- To execute your test, run:
-@@ -1065,15 +1065,15 @@ and hypothetical example follows:
-           first_machine.launch()
-           second_machine.launch()
- 
--          first_res = first_machine.command(
-+          first_res = first_machine.cmd(
-               'human-monitor-command',
-               command_line='info version')
- 
--          second_res = second_machine.command(
-+          second_res = second_machine.cmd(
-               'human-monitor-command',
-               command_line='info version')
- 
--          third_res = self.get_vm(name='third_machine').command(
-+          third_res = self.get_vm(name='third_machine').cmd(
-               'human-monitor-command',
-               command_line='info version')
- 
-diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
-index dd1a79cb37..c4e80544bd 100644
---- a/python/qemu/machine/machine.py
-+++ b/python/qemu/machine/machine.py
-@@ -697,16 +697,16 @@ def qmp(self, cmd: str,
-             self._quit_issued = True
-         return ret
- 
--    def command(self, cmd: str,
--                conv_keys: bool = True,
--                **args: Any) -> QMPReturnValue:
-+    def cmd(self, cmd: str,
-+            conv_keys: bool = True,
-+            **args: Any) -> QMPReturnValue:
-         """
-         Invoke a QMP command.
-         On success return the response dict.
-         On failure raise an exception.
-         """
-         qmp_args = self._qmp_args(conv_keys, args)
--        ret = self._qmp.command(cmd, **qmp_args)
-+        ret = self._qmp.cmd(cmd, **qmp_args)
-         if cmd == 'quit':
-             self._quit_issued = True
-         return ret
-diff --git a/python/qemu/qmp/legacy.py b/python/qemu/qmp/legacy.py
-index e5fa1ce9c4..22a2b5616e 100644
---- a/python/qemu/qmp/legacy.py
-+++ b/python/qemu/qmp/legacy.py
-@@ -207,7 +207,7 @@ def cmd_raw(self, name: str,
-             qmp_cmd['arguments'] = args
-         return self.cmd_obj(qmp_cmd)
- 
--    def command(self, cmd: str, **kwds: object) -> QMPReturnValue:
-+    def cmd(self, cmd: str, **kwds: object) -> QMPReturnValue:
-         """
-         Build and send a QMP command to the monitor, report errors if any
-         """
-diff --git a/python/qemu/qmp/qmp_shell.py b/python/qemu/qmp/qmp_shell.py
-index 988d79c01b..98e684e9e8 100644
---- a/python/qemu/qmp/qmp_shell.py
-+++ b/python/qemu/qmp/qmp_shell.py
-@@ -202,7 +202,7 @@ def close(self) -> None:
- 
-     def _fill_completion(self) -> None:
-         try:
--            cmds = cast(List[Dict[str, str]], self.command('query-commands'))
-+            cmds = cast(List[Dict[str, str]], self.cmd('query-commands'))
-             for cmd in cmds:
-                 self._completer.append(cmd['name'])
-         except ExecuteError:
-diff --git a/python/qemu/utils/qemu_ga_client.py b/python/qemu/utils/qemu_ga_client.py
-index d8411bb2d0..9a665e6e99 100644
---- a/python/qemu/utils/qemu_ga_client.py
-+++ b/python/qemu/utils/qemu_ga_client.py
-@@ -64,7 +64,7 @@
- class QemuGuestAgent(QEMUMonitorProtocol):
-     def __getattr__(self, name: str) -> Callable[..., Any]:
-         def wrapper(**kwds: object) -> object:
--            return self.command('guest-' + name.replace('_', '-'), **kwds)
-+            return self.cmd('guest-' + name.replace('_', '-'), **kwds)
-         return wrapper
- 
- 
-diff --git a/python/qemu/utils/qom.py b/python/qemu/utils/qom.py
-index bcf192f477..426a0f245f 100644
---- a/python/qemu/utils/qom.py
-+++ b/python/qemu/utils/qom.py
-@@ -84,7 +84,7 @@ def __init__(self, args: argparse.Namespace):
-         self.value = args.value
- 
-     def run(self) -> int:
--        rsp = self.qmp.command(
-+        rsp = self.qmp.cmd(
-             'qom-set',
-             path=self.path,
-             property=self.prop,
-@@ -129,7 +129,7 @@ def __init__(self, args: argparse.Namespace):
-         self.prop = tmp[1]
- 
-     def run(self) -> int:
--        rsp = self.qmp.command(
-+        rsp = self.qmp.cmd(
-             'qom-get',
-             path=self.path,
-             property=self.prop
-@@ -231,8 +231,8 @@ def _list_node(self, path: str) -> None:
-             if item.child:
-                 continue
-             try:
--                rsp = self.qmp.command('qom-get', path=path,
--                                       property=item.name)
-+                rsp = self.qmp.cmd('qom-get', path=path,
-+                                   property=item.name)
-                 print(f"  {item.name}: {rsp} ({item.type})")
-             except ExecuteError as err:
-                 print(f"  {item.name}: <EXCEPTION: {err!s}> ({item.type})")
-diff --git a/python/qemu/utils/qom_common.py b/python/qemu/utils/qom_common.py
-index 80da1b2304..dd2c8b1908 100644
---- a/python/qemu/utils/qom_common.py
-+++ b/python/qemu/utils/qom_common.py
-@@ -140,7 +140,7 @@ def qom_list(self, path: str) -> List[ObjectPropertyInfo]:
-         """
-         :return: a strongly typed list from the 'qom-list' command.
-         """
--        rsp = self.qmp.command('qom-list', path=path)
-+        rsp = self.qmp.cmd('qom-list', path=path)
-         # qom-list returns List[ObjectPropertyInfo]
-         assert isinstance(rsp, list)
-         return [ObjectPropertyInfo.make(x) for x in rsp]
-diff --git a/python/qemu/utils/qom_fuse.py b/python/qemu/utils/qom_fuse.py
-index 8dcd59fcde..cf7e344bd5 100644
---- a/python/qemu/utils/qom_fuse.py
-+++ b/python/qemu/utils/qom_fuse.py
-@@ -137,7 +137,7 @@ def read(self, path: str, size: int, offset: int, fh: IO[bytes]) -> bytes:
-         if path == '':
-             path = '/'
-         try:
--            data = str(self.qmp.command('qom-get', path=path, property=prop))
-+            data = str(self.qmp.cmd('qom-get', path=path, property=prop))
-             data += '\n'  # make values shell friendly
-         except ExecuteError as err:
-             raise FuseOSError(EPERM) from err
-@@ -152,8 +152,8 @@ def readlink(self, path: str) -> Union[bool, str]:
-             return False
-         path, prop = path.rsplit('/', 1)
-         prefix = '/'.join(['..'] * (len(path.split('/')) - 1))
--        return prefix + str(self.qmp.command('qom-get', path=path,
--                                             property=prop))
-+        return prefix + str(self.qmp.cmd('qom-get', path=path,
-+                                         property=prop))
- 
-     def getattr(self, path: str,
-                 fh: Optional[IO[bytes]] = None) -> Mapping[str, object]:
-diff --git a/scripts/cpu-x86-uarch-abi.py b/scripts/cpu-x86-uarch-abi.py
-index 893afd1b35..f6baeeff24 100644
---- a/scripts/cpu-x86-uarch-abi.py
-+++ b/scripts/cpu-x86-uarch-abi.py
-@@ -69,7 +69,7 @@
- shell = QEMUMonitorProtocol(sock)
- shell.connect()
- 
--models = shell.command("query-cpu-definitions")
-+models = shell.cmd("query-cpu-definitions")
- 
- # These QMP props don't correspond to CPUID fatures
- # so ignore them
-@@ -93,9 +93,9 @@
- models = {}
- 
- for name in sorted(names):
--    cpu = shell.command("query-cpu-model-expansion",
--                        { "type": "static",
--                          "model": { "name": name }})
-+    cpu = shell.cmd("query-cpu-model-expansion",
-+                    { "type": "static",
-+                      "model": { "name": name }})
- 
-     got = {}
-     for (feature, present) in cpu["model"]["props"].items():
-diff --git a/scripts/device-crash-test b/scripts/device-crash-test
-index 353aa575d7..da8b56edd9 100755
---- a/scripts/device-crash-test
-+++ b/scripts/device-crash-test
-@@ -269,14 +269,14 @@ def formatTestCase(t):
- 
- def qomListTypeNames(vm, **kwargs):
-     """Run qom-list-types QMP command, return type names"""
--    types = vm.command('qom-list-types', **kwargs)
-+    types = vm.cmd('qom-list-types', **kwargs)
-     return [t['name'] for t in types]
- 
- 
- def infoQDM(vm):
-     """Parse 'info qdm' output"""
-     args = {'command-line': 'info qdm'}
--    devhelp = vm.command('human-monitor-command', **args)
-+    devhelp = vm.cmd('human-monitor-command', **args)
-     for l in devhelp.split('\n'):
-         l = l.strip()
-         if l == '' or l.endswith(':'):
-@@ -304,9 +304,9 @@ class QemuBinaryInfo(object):
-             # there's no way to query DeviceClass::user_creatable using QMP,
-             # so use 'info qdm':
-             self.no_user_devs = set([d['name'] for d in infoQDM(vm, ) if d['no-user']])
--            self.machines = list(m['name'] for m in vm.command('query-machines'))
-+            self.machines = list(m['name'] for m in vm.cmd('query-machines'))
-             self.user_devs = self.alldevs.difference(self.no_user_devs)
--            self.kvm_available = vm.command('query-kvm')['enabled']
-+            self.kvm_available = vm.cmd('query-kvm')['enabled']
-         finally:
-             vm.shutdown()
- 
-diff --git a/scripts/render_block_graph.py b/scripts/render_block_graph.py
-index 8f731a5cfe..3e1a2e3fa7 100755
---- a/scripts/render_block_graph.py
-+++ b/scripts/render_block_graph.py
-@@ -43,13 +43,13 @@ def render_block_graph(qmp, filename, format='png'):
-     representation in @format into "@filename.@format"
-     '''
- 
--    bds_nodes = qmp.command('query-named-block-nodes')
-+    bds_nodes = qmp.cmd('query-named-block-nodes')
-     bds_nodes = {n['node-name']: n for n in bds_nodes}
- 
--    job_nodes = qmp.command('query-block-jobs')
-+    job_nodes = qmp.cmd('query-block-jobs')
-     job_nodes = {n['device']: n for n in job_nodes}
- 
--    block_graph = qmp.command('x-debug-query-block-graph')
-+    block_graph = qmp.cmd('x-debug-query-block-graph')
- 
-     graph = Digraph(comment='Block Nodes Graph')
-     graph.format = format
-@@ -94,7 +94,7 @@ class LibvirtGuest():
-     def __init__(self, name):
-         self.name = name
- 
--    def command(self, cmd):
-+    def cmd(self, cmd):
-         # only supports qmp commands without parameters
-         m = {'execute': cmd}
-         ar = ['virsh', 'qemu-monitor-command', self.name, json.dumps(m)]
-diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
-index 0172a359b7..a0de2d39f1 100644
---- a/tests/avocado/avocado_qemu/__init__.py
-+++ b/tests/avocado/avocado_qemu/__init__.py
-@@ -408,8 +408,8 @@ class LinuxSSHMixIn:
- 
-     def ssh_connect(self, username, credential, credential_is_key=True):
-         self.ssh_logger = logging.getLogger('ssh')
--        res = self.vm.command('human-monitor-command',
--                              command_line='info usernet')
-+        res = self.vm.cmd('human-monitor-command',
-+                          command_line='info usernet')
-         port = get_info_usernet_hostfwd_port(res)
-         self.assertIsNotNone(port)
-         self.assertGreater(port, 0)
-diff --git a/tests/avocado/cpu_queries.py b/tests/avocado/cpu_queries.py
-index cf69f69b11..86c2d5c92d 100644
---- a/tests/avocado/cpu_queries.py
-+++ b/tests/avocado/cpu_queries.py
-@@ -23,12 +23,13 @@ def test(self):
-         self.vm.add_args('-S')
-         self.vm.launch()
- 
--        cpus = self.vm.command('query-cpu-definitions')
-+        cpus = self.vm.cmd('query-cpu-definitions')
-         for c in cpus:
-             self.log.info("Checking CPU: %s", c)
-             self.assertNotIn('', c['unavailable-features'], c['name'])
- 
-         for c in cpus:
-             model = {'name': c['name']}
--            e = self.vm.command('query-cpu-model-expansion', model=model, type='full')
-+            e = self.vm.cmd('query-cpu-model-expansion', model=model,
-+                            type='full')
-             self.assertEquals(e['model']['name'], c['name'])
-diff --git a/tests/avocado/hotplug_cpu.py b/tests/avocado/hotplug_cpu.py
-index 6374bf1b54..292bb43e4d 100644
---- a/tests/avocado/hotplug_cpu.py
-+++ b/tests/avocado/hotplug_cpu.py
-@@ -29,9 +29,9 @@ def test(self):
-         with self.assertRaises(AssertionError):
-             self.ssh_command('test -e /sys/devices/system/cpu/cpu1')
- 
--        self.vm.command('device_add',
--                        driver='Haswell-x86_64-cpu',
--                        socket_id=0,
--                        core_id=1,
--                        thread_id=0)
-+        self.vm.cmd('device_add',
-+                    driver='Haswell-x86_64-cpu',
-+                    socket_id=0,
-+                    core_id=1,
-+                    thread_id=0)
-         self.ssh_command('test -e /sys/devices/system/cpu/cpu1')
-diff --git a/tests/avocado/info_usernet.py b/tests/avocado/info_usernet.py
-index fdc4d90c42..e1aa7a6e0a 100644
---- a/tests/avocado/info_usernet.py
-+++ b/tests/avocado/info_usernet.py
-@@ -22,8 +22,8 @@ def test_hostfwd(self):
-         self.require_netdev('user')
-         self.vm.add_args('-netdev', 'user,id=vnet,hostfwd=:127.0.0.1:0-:22')
-         self.vm.launch()
--        res = self.vm.command('human-monitor-command',
--                              command_line='info usernet')
-+        res = self.vm.cmd('human-monitor-command',
-+                          command_line='info usernet')
-         port = get_info_usernet_hostfwd_port(res)
-         self.assertIsNotNone(port,
-                              ('"info usernet" output content does not seem to '
-diff --git a/tests/avocado/machine_arm_integratorcp.py b/tests/avocado/machine_arm_integratorcp.py
-index 1ffe1073ef..87f5cf3953 100644
---- a/tests/avocado/machine_arm_integratorcp.py
-+++ b/tests/avocado/machine_arm_integratorcp.py
-@@ -81,9 +81,9 @@ def test_framebuffer_tux_logo(self):
-         self.boot_integratorcp()
-         framebuffer_ready = 'Console: switching to colour frame buffer device'
-         wait_for_console_pattern(self, framebuffer_ready)
--        self.vm.command('human-monitor-command', command_line='stop')
--        self.vm.command('human-monitor-command',
--                        command_line='screendump %s' % screendump_path)
-+        self.vm.cmd('human-monitor-command', command_line='stop')
-+        self.vm.cmd('human-monitor-command',
-+                    command_line='screendump %s' % screendump_path)
-         logger = logging.getLogger('framebuffer')
- 
-         cpu_count = 1
-diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-index 90f1b7cb77..e655f7d231 100644
---- a/tests/avocado/machine_aspeed.py
-+++ b/tests/avocado/machine_aspeed.py
-@@ -181,8 +181,8 @@ def test_arm_ast2500_evb_buildroot(self):
-              'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
-         exec_command_and_wait_for_pattern(self,
-                              'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
--        self.vm.command('qom-set', path='/machine/peripheral/tmp-test',
--                        property='temperature', value=18000);
-+        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
-+                    property='temperature', value=18000);
-         exec_command_and_wait_for_pattern(self,
-                              'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
- 
-@@ -213,8 +213,8 @@ def test_arm_ast2600_evb_buildroot(self):
-              'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
-         exec_command_and_wait_for_pattern(self,
-                              'cat /sys/class/hwmon/hwmon0/temp1_input', '0')
--        self.vm.command('qom-set', path='/machine/peripheral/tmp-test',
--                        property='temperature', value=18000);
-+        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
-+                    property='temperature', value=18000);
-         exec_command_and_wait_for_pattern(self,
-                              'cat /sys/class/hwmon/hwmon0/temp1_input', '18000')
- 
-@@ -357,8 +357,8 @@ def test_arm_ast2600_evb_sdk(self):
-              'i2c i2c-5: new_device: Instantiated device lm75 at 0x4d');
-         self.ssh_command_output_contains(
-                              'cat /sys/class/hwmon/hwmon19/temp1_input', '0')
--        self.vm.command('qom-set', path='/machine/peripheral/tmp-test',
--                        property='temperature', value=18000);
-+        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
-+                    property='temperature', value=18000);
-         self.ssh_command_output_contains(
-                              'cat /sys/class/hwmon/hwmon19/temp1_input', '18000')
- 
-diff --git a/tests/avocado/machine_m68k_nextcube.py b/tests/avocado/machine_m68k_nextcube.py
-index 6790e7d9cd..d6da2fbb01 100644
---- a/tests/avocado/machine_m68k_nextcube.py
-+++ b/tests/avocado/machine_m68k_nextcube.py
-@@ -43,8 +43,8 @@ def check_bootrom_framebuffer(self, screenshot_path):
-         #       'displaysurface_create 1120x832' trace-event.
-         time.sleep(2)
- 
--        self.vm.command('human-monitor-command',
--                        command_line='screendump %s' % screenshot_path)
-+        self.vm.cmd('human-monitor-command',
-+                    command_line='screendump %s' % screenshot_path)
- 
-     @skipUnless(PIL_AVAILABLE, 'Python PIL not installed')
-     def test_bootrom_framebuffer_size(self):
-diff --git a/tests/avocado/machine_mips_malta.py b/tests/avocado/machine_mips_malta.py
-index 3620266589..2f1d3935b1 100644
---- a/tests/avocado/machine_mips_malta.py
-+++ b/tests/avocado/machine_mips_malta.py
-@@ -72,9 +72,9 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
-         framebuffer_ready = 'Console: switching to colour frame buffer device'
-         wait_for_console_pattern(self, framebuffer_ready,
-                                  failure_message='Kernel panic - not syncing')
--        self.vm.command('human-monitor-command', command_line='stop')
--        self.vm.command('human-monitor-command',
--                        command_line='screendump %s' % screendump_path)
-+        self.vm.cmd('human-monitor-command', command_line='stop')
-+        self.vm.cmd('human-monitor-command',
-+                    command_line='screendump %s' % screendump_path)
-         logger = logging.getLogger('framebuffer')
- 
-         match_threshold = 0.95
-diff --git a/tests/avocado/machine_s390_ccw_virtio.py b/tests/avocado/machine_s390_ccw_virtio.py
-index e7a2a20ba6..e1f493bc44 100644
---- a/tests/avocado/machine_s390_ccw_virtio.py
-+++ b/tests/avocado/machine_s390_ccw_virtio.py
-@@ -107,10 +107,10 @@ def test_s390x_devices(self):
-                         'dd if=/dev/hwrng of=/dev/null bs=1k count=10',
-                         '10+0 records out')
-         self.clear_guest_dmesg()
--        self.vm.command('device_del', id='rn1')
-+        self.vm.cmd('device_del', id='rn1')
-         self.wait_for_crw_reports()
-         self.clear_guest_dmesg()
--        self.vm.command('device_del', id='rn2')
-+        self.vm.cmd('device_del', id='rn2')
-         self.wait_for_crw_reports()
-         exec_command_and_wait_for_pattern(self,
-                         'dd if=/dev/hwrng of=/dev/null bs=1k count=10',
-@@ -132,8 +132,8 @@ def test_s390x_devices(self):
-                         '0x0000000c')
-         # add another device
-         self.clear_guest_dmesg()
--        self.vm.command('device_add', driver='virtio-net-ccw',
--                        devno='fe.0.4711', id='net_4711')
-+        self.vm.cmd('device_add', driver='virtio-net-ccw',
-+                    devno='fe.0.4711', id='net_4711')
-         self.wait_for_crw_reports()
-         exec_command_and_wait_for_pattern(self, 'for i in 1 2 3 4 5 6 7 ; do '
-                     'if [ -e /sys/bus/ccw/devices/*4711 ]; then break; fi ;'
-@@ -141,7 +141,7 @@ def test_s390x_devices(self):
-                     '0.0.4711')
-         # and detach it again
-         self.clear_guest_dmesg()
--        self.vm.command('device_del', id='net_4711')
-+        self.vm.cmd('device_del', id='net_4711')
-         self.vm.event_wait(name='DEVICE_DELETED',
-                            match={'data': {'device': 'net_4711'}})
-         self.wait_for_crw_reports()
-@@ -151,10 +151,10 @@ def test_s390x_devices(self):
-         # test the virtio-balloon device
-         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
-                                           'MemTotal:         115640 kB')
--        self.vm.command('human-monitor-command', command_line='balloon 96')
-+        self.vm.cmd('human-monitor-command', command_line='balloon 96')
-         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
-                                           'MemTotal:          82872 kB')
--        self.vm.command('human-monitor-command', command_line='balloon 128')
-+        self.vm.cmd('human-monitor-command', command_line='balloon 128')
-         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
-                                           'MemTotal:         115640 kB')
- 
-@@ -245,7 +245,7 @@ def test_s390x_fedora(self):
-                 '12+0 records out')
-             with tempfile.NamedTemporaryFile(suffix='.ppm',
-                                              prefix='qemu-scrdump-') as ppmfile:
--                self.vm.command('screendump', filename=ppmfile.name)
-+                self.vm.cmd('screendump', filename=ppmfile.name)
-                 ppmfile.seek(0)
-                 line = ppmfile.readline()
-                 self.assertEqual(line, b"P6\n")
-@@ -261,16 +261,16 @@ def test_s390x_fedora(self):
-         # Hot-plug a virtio-crypto device and see whether it gets accepted
-         self.log.info("Test hot-plug virtio-crypto device")
-         self.clear_guest_dmesg()
--        self.vm.command('object-add', qom_type='cryptodev-backend-builtin',
--                        id='cbe0')
--        self.vm.command('device_add', driver='virtio-crypto-ccw', id='crypdev0',
--                        cryptodev='cbe0', devno='fe.0.2342')
-+        self.vm.cmd('object-add', qom_type='cryptodev-backend-builtin',
-+                    id='cbe0')
-+        self.vm.cmd('device_add', driver='virtio-crypto-ccw', id='crypdev0',
-+                    cryptodev='cbe0', devno='fe.0.2342')
-         exec_command_and_wait_for_pattern(self,
-                         'while ! (dmesg -c | grep Accelerator.device) ; do'
-                         ' sleep 1 ; done', 'Accelerator device is ready')
-         exec_command_and_wait_for_pattern(self, 'lscss', '0.0.2342')
--        self.vm.command('device_del', id='crypdev0')
--        self.vm.command('object-del', id='cbe0')
-+        self.vm.cmd('device_del', id='crypdev0')
-+        self.vm.cmd('object-del', id='cbe0')
-         exec_command_and_wait_for_pattern(self,
-                         'while ! (dmesg -c | grep Start.virtcrypto_remove) ; do'
-                         ' sleep 1 ; done', 'Start virtcrypto_remove.')
-diff --git a/tests/avocado/migration.py b/tests/avocado/migration.py
-index fdc1d234fb..09b62f813e 100644
---- a/tests/avocado/migration.py
-+++ b/tests/avocado/migration.py
-@@ -30,7 +30,7 @@ class MigrationTest(QemuSystemTest):
- 
-     @staticmethod
-     def migration_finished(vm):
--        return vm.command('query-migrate')['status'] in ('completed', 'failed')
-+        return vm.cmd('query-migrate')['status'] in ('completed', 'failed')
- 
-     def assert_migration(self, src_vm, dst_vm):
-         wait.wait_for(self.migration_finished,
-@@ -41,10 +41,10 @@ def assert_migration(self, src_vm, dst_vm):
-                       timeout=self.timeout,
-                       step=0.1,
-                       args=(dst_vm,))
--        self.assertEqual(src_vm.command('query-migrate')['status'], 'completed')
--        self.assertEqual(dst_vm.command('query-migrate')['status'], 'completed')
--        self.assertEqual(dst_vm.command('query-status')['status'], 'running')
--        self.assertEqual(src_vm.command('query-status')['status'],'postmigrate')
-+        self.assertEqual(src_vm.cmd('query-migrate')['status'], 'completed')
-+        self.assertEqual(dst_vm.cmd('query-migrate')['status'], 'completed')
-+        self.assertEqual(dst_vm.cmd('query-status')['status'], 'running')
-+        self.assertEqual(src_vm.cmd('query-status')['status'],'postmigrate')
- 
-     def do_migrate(self, dest_uri, src_uri=None):
-         dest_vm = self.get_vm('-incoming', dest_uri)
-diff --git a/tests/avocado/pc_cpu_hotplug_props.py b/tests/avocado/pc_cpu_hotplug_props.py
-index 52b878188e..b56f51d02a 100644
---- a/tests/avocado/pc_cpu_hotplug_props.py
-+++ b/tests/avocado/pc_cpu_hotplug_props.py
-@@ -32,4 +32,4 @@ def test_no_die_id(self):
-         self.vm.add_args('-smp', '1,sockets=2,cores=2,threads=2,maxcpus=8')
-         self.vm.add_args('-device', 'qemu64-x86_64-cpu,socket-id=1,core-id=0,thread-id=0')
-         self.vm.launch()
--        self.assertEquals(len(self.vm.command('query-cpus-fast')), 2)
-+        self.assertEquals(len(self.vm.cmd('query-cpus-fast')), 2)
-diff --git a/tests/avocado/version.py b/tests/avocado/version.py
-index dd775955eb..93ffdf3d97 100644
---- a/tests/avocado/version.py
-+++ b/tests/avocado/version.py
-@@ -20,6 +20,6 @@ class Version(QemuSystemTest):
-     def test_qmp_human_info_version(self):
-         self.vm.add_args('-nodefaults')
-         self.vm.launch()
--        res = self.vm.command('human-monitor-command',
--                              command_line='info version')
-+        res = self.vm.cmd('human-monitor-command',
-+                          command_line='info version')
-         self.assertRegexpMatches(res, r'^(\d+\.\d+\.\d)')
-diff --git a/tests/avocado/virtio_check_params.py b/tests/avocado/virtio_check_params.py
-index 4093da8a67..f4314ef824 100644
---- a/tests/avocado/virtio_check_params.py
-+++ b/tests/avocado/virtio_check_params.py
-@@ -51,8 +51,8 @@ def query_virtqueue(self, vm, dev_type_name):
-         error = None
-         props = None
- 
--        output = vm.command('human-monitor-command',
--                            command_line = 'info qtree')
-+        output = vm.cmd('human-monitor-command',
-+                        command_line = 'info qtree')
-         props_list = DEV_TYPES[dev_type_name].values();
-         pattern = self.make_pattern(props_list)
-         res = re.findall(pattern, output)
-@@ -121,7 +121,7 @@ def test_machine_types(self):
-         # collect all machine types except 'none', 'isapc', 'microvm'
-         with QEMUMachine(self.qemu_bin) as vm:
-             vm.launch()
--            machines = [m['name'] for m in vm.command('query-machines')]
-+            machines = [m['name'] for m in vm.cmd('query-machines')]
-             vm.shutdown()
-         machines.remove('none')
-         machines.remove('isapc')
-diff --git a/tests/avocado/virtio_version.py b/tests/avocado/virtio_version.py
-index c84e48813a..afe5e828b5 100644
---- a/tests/avocado/virtio_version.py
-+++ b/tests/avocado/virtio_version.py
-@@ -48,7 +48,8 @@ def pci_modern_device_id(virtio_devid):
-     return virtio_devid + 0x1040
- 
- def devtype_implements(vm, devtype, implements):
--    return devtype in [d['name'] for d in vm.command('qom-list-types', implements=implements)]
-+    return devtype in [d['name'] for d in
-+                       vm.cmd('qom-list-types', implements=implements)]
- 
- def get_pci_interfaces(vm, devtype):
-     interfaces = ('pci-express-device', 'conventional-pci-device')
-@@ -78,7 +79,7 @@ def run_device(self, devtype, opts=None, machine='pc'):
-             vm.add_args('-S')
-             vm.launch()
- 
--            pcibuses = vm.command('query-pci')
-+            pcibuses = vm.cmd('query-pci')
-             alldevs = [dev for bus in pcibuses for dev in bus['devices']]
-             devfortest = [dev for dev in alldevs
-                           if dev['qdev_id'] == 'devfortest']
-diff --git a/tests/avocado/x86_cpu_model_versions.py b/tests/avocado/x86_cpu_model_versions.py
-index a6edf74c1c..9e07b8a55d 100644
---- a/tests/avocado/x86_cpu_model_versions.py
-+++ b/tests/avocado/x86_cpu_model_versions.py
-@@ -84,7 +84,8 @@ def test_4_0_alias_compatibility(self):
-         # with older QEMU versions that didn't have the versioned CPU model
-         self.vm.add_args('-S')
-         self.vm.launch()
--        cpus = dict((m['name'], m) for m in self.vm.command('query-cpu-definitions'))
-+        cpus = dict((m['name'], m) for m in
-+                    self.vm.cmd('query-cpu-definitions'))
- 
-         self.assertFalse(cpus['Cascadelake-Server']['static'],
-                          'unversioned Cascadelake-Server CPU model must not be static')
-@@ -115,7 +116,8 @@ def test_4_1_alias(self):
-         self.vm.add_args('-S')
-         self.vm.launch()
- 
--        cpus = dict((m['name'], m) for m in self.vm.command('query-cpu-definitions'))
-+        cpus = dict((m['name'], m) for m in
-+                    self.vm.cmd('query-cpu-definitions'))
- 
-         self.assertFalse(cpus['Cascadelake-Server']['static'],
-                          'unversioned Cascadelake-Server CPU model must not be static')
-@@ -220,7 +222,8 @@ def test_none_alias(self):
-         self.vm.add_args('-S')
-         self.vm.launch()
- 
--        cpus = dict((m['name'], m) for m in self.vm.command('query-cpu-definitions'))
-+        cpus = dict((m['name'], m) for m in
-+                    self.vm.cmd('query-cpu-definitions'))
- 
-         self.assertFalse(cpus['Cascadelake-Server']['static'],
-                          'unversioned Cascadelake-Server CPU model must not be static')
-@@ -246,8 +249,8 @@ class CascadelakeArchCapabilities(avocado_qemu.QemuSystemTest):
-     :avocado: tags=arch:x86_64
-     """
-     def get_cpu_prop(self, prop):
--        cpu_path = self.vm.command('query-cpus-fast')[0].get('qom-path')
--        return self.vm.command('qom-get', path=cpu_path, property=prop)
-+        cpu_path = self.vm.cmd('query-cpus-fast')[0].get('qom-path')
-+        return self.vm.cmd('qom-get', path=cpu_path, property=prop)
- 
-     def test_4_1(self):
-         """
-diff --git a/tests/migration/guestperf/engine.py b/tests/migration/guestperf/engine.py
-index e69d16a62c..da96ca034a 100644
---- a/tests/migration/guestperf/engine.py
-+++ b/tests/migration/guestperf/engine.py
-@@ -77,7 +77,7 @@ def _cpu_timing(self, pid):
-             return TimingRecord(pid, now, 1000 * (stime + utime) / jiffies_per_sec)
- 
-     def _migrate_progress(self, vm):
--        info = vm.command("query-migrate")
-+        info = vm.cmd("query-migrate")
- 
-         if "ram" not in info:
-             info["ram"] = {}
-@@ -109,7 +109,7 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
-         src_vcpu_time = []
-         src_pid = src.get_pid()
- 
--        vcpus = src.command("query-cpus-fast")
-+        vcpus = src.cmd("query-cpus-fast")
-         src_threads = []
-         for vcpu in vcpus:
-             src_threads.append(vcpu["thread-id"])
-@@ -128,82 +128,82 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
-         if self._verbose:
-             print("Starting migration")
-         if scenario._auto_converge:
--            resp = src.command("migrate-set-capabilities",
--                               capabilities = [
--                                   { "capability": "auto-converge",
--                                     "state": True }
--                               ])
--            resp = src.command("migrate-set-parameters",
--                               cpu_throttle_increment=scenario._auto_converge_step)
-+            resp = src.cmd("migrate-set-capabilities",
-+                           capabilities = [
-+                               { "capability": "auto-converge",
-+                                 "state": True }
-+                           ])
-+            resp = src.cmd("migrate-set-parameters",
-+                           cpu_throttle_increment=scenario._auto_converge_step)
- 
-         if scenario._post_copy:
--            resp = src.command("migrate-set-capabilities",
--                               capabilities = [
--                                   { "capability": "postcopy-ram",
--                                     "state": True }
--                               ])
--            resp = dst.command("migrate-set-capabilities",
--                               capabilities = [
--                                   { "capability": "postcopy-ram",
--                                     "state": True }
--                               ])
--
--        resp = src.command("migrate-set-parameters",
--                           max_bandwidth=scenario._bandwidth * 1024 * 1024)
--
--        resp = src.command("migrate-set-parameters",
--                           downtime_limit=scenario._downtime)
-+            resp = src.cmd("migrate-set-capabilities",
-+                           capabilities = [
-+                               { "capability": "postcopy-ram",
-+                                 "state": True }
-+                           ])
-+            resp = dst.cmd("migrate-set-capabilities",
-+                           capabilities = [
-+                               { "capability": "postcopy-ram",
-+                                 "state": True }
-+                           ])
+diff --git a/hw/acpi/acpi-generic-initiator.c b/hw/acpi/acpi-generic-initiator.c
+index 6406736090..1ae79639be 100644
+--- a/hw/acpi/acpi-generic-initiator.c
++++ b/hw/acpi/acpi-generic-initiator.c
+@@ -72,3 +72,81 @@ static void acpi_generic_initiator_class_init(ObjectClass *oc, void *data)
+                               NULL, acpi_generic_initiator_set_node, NULL,
+                               NULL);
+ }
 +
-+        resp = src.cmd("migrate-set-parameters",
-+                       max_bandwidth=scenario._bandwidth * 1024 * 1024)
++static int acpi_generic_initiator_list(Object *obj, void *opaque)
++{
++    GSList **list = opaque;
 +
-+        resp = src.cmd("migrate-set-parameters",
-+                       downtime_limit=scenario._downtime)
++    if (object_dynamic_cast(obj, TYPE_ACPI_GENERIC_INITIATOR)) {
++        *list = g_slist_append(*list, ACPI_GENERIC_INITIATOR(obj));
++    }
++
++    object_child_foreach(obj, acpi_generic_initiator_list, opaque);
++    return 0;
++}
++
++/*
++ * Identify Generic Initiator objects and link them into the list which is
++ * returned to the caller.
++ *
++ * Note: it is the caller's responsibility to free the list to avoid
++ * memory leak.
++ */
++static GSList *acpi_generic_initiator_get_list(void)
++{
++    GSList *list = NULL;
++
++    object_child_foreach(object_get_root(), acpi_generic_initiator_list, &list);
++    return list;
++}
++
++/*
++ * ACPI spec, Revision 6.5
++ * 5.2.16.6 Generic Initiator Affinity Structure
++ */
++static void build_srat_generic_initiator_affinity(GArray *table_data, int node,
++                                                  PCIDeviceHandle *handle,
++                                                  GenericAffinityFlags flags)
++{
++    build_append_int_noprefix(table_data, 5, 1);     /* Type */
++    build_append_int_noprefix(table_data, 32, 1);    /* Length */
++    build_append_int_noprefix(table_data, 0, 1);     /* Reserved */
++    build_append_int_noprefix(table_data, 1, 1);     /* Device Handle Type */
++    build_append_int_noprefix(table_data, node, 4);  /* Proximity Domain */
++    build_append_int_noprefix(table_data, handle->segment, 2);
++    build_append_int_noprefix(table_data, handle->bdf, 2);
++    build_append_int_noprefix(table_data, handle->res0, 4);
++    build_append_int_noprefix(table_data, handle->res1, 8);
++    build_append_int_noprefix(table_data, flags, 4); /* Flags */
++    build_append_int_noprefix(table_data, 0, 4);     /* Reserved */
++}
++
++void build_srat_generic_initiator(GArray *table_data)
++{
++    GSList *gi_list, *list = acpi_generic_initiator_get_list();
++    for (gi_list = list; gi_list; gi_list = gi_list->next) {
++        AcpiGenericInitiator *gi = gi_list->data;
++        Object *o;
++        int count;
++
++        if (gi->node == MAX_NODES) {
++            continue;
++        }
++
++        o = object_resolve_path_type(gi->device, TYPE_VFIO_PCI_NOHOTPLUG, NULL);
++        if (!o) {
++            continue;
++        }
++
++        for (count = 0; count < gi->node_count; count++) {
++            PCIDeviceHandle dev_handle = {0};
++            PCIDevice *pci_dev = PCI_DEVICE(o);
++
++            dev_handle.bdf = pci_dev->devfn;
++            build_srat_generic_initiator_affinity(table_data,
++                                                  gi->node + count, &dev_handle,
++                                                  GEN_AFFINITY_ENABLED);
++        }
++    }
++    g_slist_free(list);
++}
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 6b674231c2..7337d8076b 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -58,6 +58,7 @@
+ #include "migration/vmstate.h"
+ #include "hw/acpi/ghes.h"
+ #include "hw/acpi/viot.h"
++#include "hw/acpi/acpi-generic-initiator.h"
  
-         if scenario._compression_mt:
--            resp = src.command("migrate-set-capabilities",
--                               capabilities = [
--                                   { "capability": "compress",
--                                     "state": True }
--                               ])
--            resp = src.command("migrate-set-parameters",
--                               compress_threads=scenario._compression_mt_threads)
--            resp = dst.command("migrate-set-capabilities",
--                               capabilities = [
--                                   { "capability": "compress",
--                                     "state": True }
--                               ])
--            resp = dst.command("migrate-set-parameters",
--                               decompress_threads=scenario._compression_mt_threads)
-+            resp = src.cmd("migrate-set-capabilities",
-+                           capabilities = [
-+                               { "capability": "compress",
-+                                 "state": True }
-+                           ])
-+            resp = src.cmd("migrate-set-parameters",
-+                           compress_threads=scenario._compression_mt_threads)
-+            resp = dst.cmd("migrate-set-capabilities",
-+                           capabilities = [
-+                               { "capability": "compress",
-+                                 "state": True }
-+                           ])
-+            resp = dst.cmd("migrate-set-parameters",
-+                           decompress_threads=scenario._compression_mt_threads)
+ #define ARM_SPI_BASE 32
  
-         if scenario._compression_xbzrle:
--            resp = src.command("migrate-set-capabilities",
--                               capabilities = [
--                                   { "capability": "xbzrle",
--                                     "state": True }
--                               ])
--            resp = dst.command("migrate-set-capabilities",
--                               capabilities = [
--                                   { "capability": "xbzrle",
--                                     "state": True }
--                               ])
--            resp = src.command("migrate-set-parameters",
--                               xbzrle_cache_size=(
--                                   hardware._mem *
--                                   1024 * 1024 * 1024 / 100 *
--                                   scenario._compression_xbzrle_cache))
-+            resp = src.cmd("migrate-set-capabilities",
-+                           capabilities = [
-+                               { "capability": "xbzrle",
-+                                 "state": True }
-+                           ])
-+            resp = dst.cmd("migrate-set-capabilities",
-+                           capabilities = [
-+                               { "capability": "xbzrle",
-+                                 "state": True }
-+                           ])
-+            resp = src.cmd("migrate-set-parameters",
-+                           xbzrle_cache_size=(
-+                               hardware._mem *
-+                               1024 * 1024 * 1024 / 100 *
-+                               scenario._compression_xbzrle_cache))
+@@ -558,6 +559,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         }
+     }
  
-         if scenario._multifd:
--            resp = src.command("migrate-set-capabilities",
--                               capabilities = [
--                                   { "capability": "multifd",
--                                     "state": True }
--                               ])
--            resp = src.command("migrate-set-parameters",
--                               multifd_channels=scenario._multifd_channels)
--            resp = dst.command("migrate-set-capabilities",
--                               capabilities = [
--                                   { "capability": "multifd",
--                                     "state": True }
--                               ])
--            resp = dst.command("migrate-set-parameters",
--                               multifd_channels=scenario._multifd_channels)
++    build_srat_generic_initiator(table_data);
++
+     if (ms->nvdimms_state->is_enabled) {
+         nvdimm_build_srat(table_data);
+     }
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index a205c6b113..5e2a7c650a 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -43,8 +43,6 @@
+ #include "migration/blocker.h"
+ #include "migration/qemu-file.h"
+ 
+-#define TYPE_VFIO_PCI_NOHOTPLUG "vfio-pci-nohotplug"
 -
--        resp = src.command("migrate", uri=connect_uri)
-+            resp = src.cmd("migrate-set-capabilities",
-+                           capabilities = [
-+                               { "capability": "multifd",
-+                                 "state": True }
-+                           ])
-+            resp = src.cmd("migrate-set-parameters",
-+                           multifd_channels=scenario._multifd_channels)
-+            resp = dst.cmd("migrate-set-capabilities",
-+                           capabilities = [
-+                               { "capability": "multifd",
-+                                 "state": True }
-+                           ])
-+            resp = dst.cmd("migrate-set-parameters",
-+                           multifd_channels=scenario._multifd_channels)
+ /* Protected by BQL */
+ static KVMRouteChange vfio_route_change;
+ 
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index a2771b9ff3..74ac77a260 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -118,6 +118,8 @@ typedef struct VFIOMSIXInfo {
+ #define TYPE_VFIO_PCI "vfio-pci"
+ OBJECT_DECLARE_SIMPLE_TYPE(VFIOPCIDevice, VFIO_PCI)
+ 
++#define TYPE_VFIO_PCI_NOHOTPLUG "vfio-pci-nohotplug"
 +
-+        resp = src.cmd("migrate", uri=connect_uri)
+ struct VFIOPCIDevice {
+     PCIDevice pdev;
+     VFIODevice vbasedev;
+diff --git a/include/hw/acpi/acpi-generic-initiator.h b/include/hw/acpi/acpi-generic-initiator.h
+index e67e6e23b1..e8e2670309 100644
+--- a/include/hw/acpi/acpi-generic-initiator.h
++++ b/include/hw/acpi/acpi-generic-initiator.h
+@@ -27,4 +27,26 @@ typedef struct AcpiGenericInitiatorClass {
+         ObjectClass parent_class;
+ } AcpiGenericInitiatorClass;
  
-         post_copy = False
-         paused = False
-@@ -228,7 +228,7 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
- 
-             if progress._status in ("completed", "failed", "cancelled"):
-                 if progress._status == "completed" and paused:
--                    dst.command("cont")
-+                    dst.cmd("cont")
-                 if progress_history[-1] != progress:
-                     progress_history.append(progress)
- 
-@@ -256,13 +256,13 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
-             if progress._ram._iterations > scenario._max_iters:
-                 if self._verbose:
-                     print("No completion after %d iterations over RAM" % scenario._max_iters)
--                src.command("migrate_cancel")
-+                src.cmd("migrate_cancel")
-                 continue
- 
-             if time.time() > (start + scenario._max_time):
-                 if self._verbose:
-                     print("No completion after %d seconds" % scenario._max_time)
--                src.command("migrate_cancel")
-+                src.cmd("migrate_cancel")
-                 continue
- 
-             if (scenario._post_copy and
-@@ -270,7 +270,7 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
-                 not post_copy):
-                 if self._verbose:
-                     print("Switching to post-copy after %d iterations" % scenario._post_copy_iters)
--                resp = src.command("migrate-start-postcopy")
-+                resp = src.cmd("migrate-start-postcopy")
-                 post_copy = True
- 
-             if (scenario._pause and
-@@ -278,7 +278,7 @@ def _migrate(self, hardware, scenario, src, dst, connect_uri):
-                 not paused):
-                 if self._verbose:
-                     print("Pausing VM after %d iterations" % scenario._pause_iters)
--                resp = src.command("stop")
-+                resp = src.cmd("stop")
-                 paused = True
- 
-     def _is_ppc64le(self):
-diff --git a/tests/qemu-iotests/256 b/tests/qemu-iotests/256
-index d7e67f4a05..f34af6cef7 100755
---- a/tests/qemu-iotests/256
-+++ b/tests/qemu-iotests/256
-@@ -40,25 +40,25 @@ with iotests.FilePath('img0') as img0_path, \
-     def create_target(filepath, name, size):
-         basename = os.path.basename(filepath)
-         nodename = "file_{}".format(basename)
--        log(vm.command('blockdev-create', job_id='job1',
--                       options={
--                           'driver': 'file',
--                           'filename': filepath,
--                           'size': 0,
--                       }))
-+        log(vm.cmd('blockdev-create', job_id='job1',
-+                   options={
-+                       'driver': 'file',
-+                       'filename': filepath,
-+                       'size': 0,
-+                   }))
-         vm.run_job('job1')
--        log(vm.command('blockdev-add', driver='file',
--                       node_name=nodename, filename=filepath))
--        log(vm.command('blockdev-create', job_id='job2',
--                       options={
--                           'driver': iotests.imgfmt,
--                           'file': nodename,
--                           'size': size,
--                       }))
-+        log(vm.cmd('blockdev-add', driver='file',
-+                   node_name=nodename, filename=filepath))
-+        log(vm.cmd('blockdev-create', job_id='job2',
-+                   options={
-+                       'driver': iotests.imgfmt,
-+                       'file': nodename,
-+                       'size': size,
-+                   }))
-         vm.run_job('job2')
--        log(vm.command('blockdev-add', driver=iotests.imgfmt,
--                       node_name=name,
--                       file=nodename))
-+        log(vm.cmd('blockdev-add', driver=iotests.imgfmt,
-+                   node_name=name,
-+                   file=nodename))
- 
-     log('--- Preparing images & VM ---\n')
-     vm.add_object('iothread,id=iothread0')
-diff --git a/tests/qemu-iotests/257 b/tests/qemu-iotests/257
-index e7e7a2317e..7d3720b8e5 100755
---- a/tests/qemu-iotests/257
-+++ b/tests/qemu-iotests/257
-@@ -160,26 +160,26 @@ class Drive:
-         file_node_name = "file_{}".format(basename)
-         vm = self.vm
- 
--        log(vm.command('blockdev-create', job_id='bdc-file-job',
--                       options={
--                           'driver': 'file',
--                           'filename': self.path,
--                           'size': 0,
--                       }))
-+        log(vm.cmd('blockdev-create', job_id='bdc-file-job',
-+                   options={
-+                       'driver': 'file',
-+                       'filename': self.path,
-+                       'size': 0,
-+                   }))
-         vm.run_job('bdc-file-job')
--        log(vm.command('blockdev-add', driver='file',
--                       node_name=file_node_name, filename=self.path))
--
--        log(vm.command('blockdev-create', job_id='bdc-fmt-job',
--                       options={
--                           'driver': fmt,
--                           'file': file_node_name,
--                           'size': size,
--                       }))
-+        log(vm.cmd('blockdev-add', driver='file',
-+                   node_name=file_node_name, filename=self.path))
++/*
++ * ACPI 6.5: Table 5-68 Flags - Generic Initiator
++ */
++typedef enum {
++    GEN_AFFINITY_NOFLAGS = 0,
++    GEN_AFFINITY_ENABLED = (1 << 0),
++    GEN_AFFINITY_ARCH_TRANS = (1 << 1),
++} GenericAffinityFlags;
 +
-+        log(vm.cmd('blockdev-create', job_id='bdc-fmt-job',
-+                   options={
-+                       'driver': fmt,
-+                       'file': file_node_name,
-+                       'size': size,
-+                   }))
-         vm.run_job('bdc-fmt-job')
--        log(vm.command('blockdev-add', driver=fmt,
--                       node_name=name,
--                       file=file_node_name))
-+        log(vm.cmd('blockdev-add', driver=fmt,
-+                   node_name=name,
-+                   file=file_node_name))
-         self.fmt = fmt
-         self.size = size
-         self.node = name
++/*
++ * ACPI 6.5: Table 5-66 Device Handle - PCI
++ * Device Handle definition
++ */
++typedef struct PCIDeviceHandle {
++    uint16_t segment;
++    uint16_t bdf;
++    uint32_t res0;
++    uint64_t res1;
++} PCIDeviceHandle;
++
++void build_srat_generic_initiator(GArray *table_data);
++
+ #endif
 -- 
-2.34.1
+2.17.1
+

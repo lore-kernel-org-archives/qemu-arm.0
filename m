@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t11-20020a5d534b000000b003232380ffd5sm10071994wrv.106.2023.10.09.09.41.06
+        by smtp.gmail.com with ESMTPSA id d12-20020a5d538c000000b0032769103ae9sm10094218wrv.69.2023.10.09.09.41.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 09 Oct 2023 09:41:07 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D6C7A1FFC1;
-	Mon,  9 Oct 2023 17:41:05 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 13F561FFBB;
+	Mon,  9 Oct 2023 17:41:06 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -46,72 +46,45 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	qemu-s390x@nongnu.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 06/25] configure: allow user to override docker engine
-Date: Mon,  9 Oct 2023 17:40:45 +0100
-Message-Id: <20231009164104.369749-7-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 08/25] gdbstub: Fix target_xml initialization
+Date: Mon,  9 Oct 2023 17:40:47 +0100
+Message-Id: <20231009164104.369749-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231009164104.369749-1-alex.bennee@linaro.org>
 References: <20231009164104.369749-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 5Gkm5CgLkH3F
+X-TUID: 0tlUvxL1475s
 
-If you have both engines installed but one is broken you are stuck
-with the automagic. Allow the user to override the engine for this
-case.
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
+target_xml is no longer a fixed-length array but a pointer to a
+variable-length memory.
+
+Fixes: 56e534bd11 ("gdbstub: refactor get_feature_xml")
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230912224107.29669-2-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- configure | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ gdbstub/softmmu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/configure b/configure
-index 707132a3ae..ebad155d9e 100755
---- a/configure
-+++ b/configure
-@@ -180,6 +180,7 @@ fi
- # some defaults, based on the host environment
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index 9f0b8b5497..42645d2220 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -292,7 +292,7 @@ static int find_cpu_clusters(Object *child, void *opaque)
+         assert(cluster->cluster_id != UINT32_MAX);
+         process->pid = cluster->cluster_id + 1;
+         process->attached = false;
+-        process->target_xml[0] = '\0';
++        process->target_xml = NULL;
  
- # default parameters
-+container_engine="auto"
- cpu=""
- cross_compile="no"
- cross_prefix=""
-@@ -787,6 +788,8 @@ for opt do
-   ;;
-   --disable-containers) use_containers="no"
-   ;;
-+  --container-engine=*) container_engine="$optarg"
-+  ;;
-   --gdb=*) gdb_bin="$optarg"
-   ;;
-   # everything else has the same name in configure and meson
-@@ -921,6 +924,7 @@ Advanced options (experts only):
-   --enable-plugins
-                            enable plugins via shared library loading
-   --disable-containers     don't use containers for cross-building
-+  --container-engine=TYPE  which container engine to use [$container_engine]
-   --gdb=GDB-path           gdb to use for gdbstub tests [$gdb_bin]
- EOF
-   meson_options_help
-@@ -1195,14 +1199,14 @@ fi
- container="no"
- runc=""
- if test $use_containers = "yes" && (has "docker" || has "podman"); then
--    case $($python "$source_path"/tests/docker/docker.py probe) in
-+    case $($python "$source_path"/tests/docker/docker.py --engine "$container_engine" probe) in
-         *docker) container=docker ;;
-         podman) container=podman ;;
-         no) container=no ;;
-     esac
-     if test "$container" != "no"; then
-         docker_py="$python $source_path/tests/docker/docker.py --engine $container"
--        runc=$($python "$source_path"/tests/docker/docker.py probe)
-+        runc=$container
-     fi
- fi
- 
+         return 0;
+     }
 -- 
 2.39.2

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id v16-20020a1cf710000000b003fefaf299b6sm11623199wmh.38.2023.10.09.09.41.05
+        by smtp.gmail.com with ESMTPSA id az41-20020a05600c602900b004068495910csm13838934wmb.23.2023.10.09.09.41.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Oct 2023 09:41:05 -0700 (PDT)
+        Mon, 09 Oct 2023 09:41:06 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 2B0161FFBC;
+	by zen.linaroharston (Postfix) with ESMTP id 8775C1FFBE;
 	Mon,  9 Oct 2023 17:41:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -47,146 +47,227 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	qemu-s390x@nongnu.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 01/25] tests/avocado: update firmware to enable OpenBSD test on sbsa-ref
-Date: Mon,  9 Oct 2023 17:40:40 +0100
-Message-Id: <20231009164104.369749-2-alex.bennee@linaro.org>
+Subject: [PATCH 03/25] tests/lcitool: add swtpm to the package list
+Date: Mon,  9 Oct 2023 17:40:42 +0100
+Message-Id: <20231009164104.369749-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231009164104.369749-1-alex.bennee@linaro.org>
 References: <20231009164104.369749-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: d9X2cVeFKos/
+X-TUID: +9hsOUiN1l2Y
 
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+We need this to test some TPM stuff.
 
-Update prebuilt firmware images:
-- Neoverse V1/N2 cpu support
-- non-secure EL2 virtual timer
-- XHCI controller in DSDT
-
-With those changes we can now run OpenBSD as part of sbsa-ref tests.
-
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Message-Id: <20230927120050.210187-2-marcin.juszkiewicz@linaro.org>
-[AJB: fix whitespace and longline]
+Message-Id: <20230925144854.1872513-3-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- tests/avocado/machine_aarch64_sbsaref.py | 70 ++++++++++++++++++++----
- 1 file changed, 60 insertions(+), 10 deletions(-)
+ .gitlab-ci.d/cirrus/macos-12.vars                    | 2 +-
+ tests/docker/dockerfiles/alpine.docker               | 1 +
+ tests/docker/dockerfiles/centos8.docker              | 1 +
+ tests/docker/dockerfiles/debian-amd64-cross.docker   | 1 +
+ tests/docker/dockerfiles/debian-amd64.docker         | 1 +
+ tests/docker/dockerfiles/debian-arm64-cross.docker   | 1 +
+ tests/docker/dockerfiles/debian-armhf-cross.docker   | 1 +
+ tests/docker/dockerfiles/debian-ppc64el-cross.docker | 1 +
+ tests/docker/dockerfiles/debian-s390x-cross.docker   | 1 +
+ tests/docker/dockerfiles/fedora-win32-cross.docker   | 1 +
+ tests/docker/dockerfiles/fedora-win64-cross.docker   | 1 +
+ tests/docker/dockerfiles/fedora.docker               | 1 +
+ tests/docker/dockerfiles/opensuse-leap.docker        | 1 +
+ tests/docker/dockerfiles/ubuntu2204.docker           | 1 +
+ tests/lcitool/libvirt-ci                             | 2 +-
+ tests/lcitool/projects/qemu.yml                      | 1 +
+ 16 files changed, 16 insertions(+), 2 deletions(-)
 
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index a794245e7e..b272053eaf 100644
---- a/tests/avocado/machine_aarch64_sbsaref.py
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -28,33 +28,33 @@ def fetch_firmware(self):
-         """
-         Flash volumes generated using:
- 
--        - Fedora GNU Toolchain version 13.1.1 20230511 (Red Hat 13.1.1-2)
-+        - Fedora GNU Toolchain version 13.2.1 20230728 (Red Hat 13.2.1-1)
- 
-         - Trusted Firmware-A
--          https://github.com/ARM-software/arm-trusted-firmware/tree/c0d8ee38
-+          https://github.com/ARM-software/arm-trusted-firmware/tree/7c3ff62d
- 
-         - Tianocore EDK II
-           https://github.com/tianocore/edk2/tree/0f9283429dd4
--          https://github.com/tianocore/edk2-non-osi/tree/f0bb00937ad6
--          https://github.com/tianocore/edk2-platforms/tree/7880b92e2a04
-+          https://github.com/tianocore/edk2/tree/ad1c0394b177
-+          https://github.com/tianocore/edk2-platforms/tree/d03a60523a60
-         """
- 
-         # Secure BootRom (TF-A code)
-         fs0_xz_url = (
--            "https://fileserver.linaro.org/s/HrYMCjP7MEccjRP/"
-+            "https://fileserver.linaro.org/s/rE43RJyTfxPtBkc/"
-             "download/SBSA_FLASH0.fd.xz"
-         )
--        fs0_xz_hash = "447eff64a90b84ce47703c6ec41fbfc25befaaea"
-+        fs0_xz_hash = "cdb8e4ffdaaa79292b7b465693f9e5fae6b7062d"
-         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
-         archive.extract(tar_xz_path, self.workdir)
-         fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
- 
-         # Non-secure rom (UEFI and EFI variables)
-         fs1_xz_url = (
--            "https://fileserver.linaro.org/s/t8foNnMPz74DZZy/"
-+            "https://fileserver.linaro.org/s/AGWPDXbcqJTKS4R/"
-             "download/SBSA_FLASH1.fd.xz"
-         )
--        fs1_xz_hash = "13a9a262953787c7fc5a9155dfaa26e703631e02"
-+        fs1_xz_hash = "411155ae6984334714dff08d5d628178e790c875"
-         tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash)
-         archive.extract(tar_xz_path, self.workdir)
-         fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
-@@ -144,7 +144,7 @@ def test_sbsaref_alpine_linux_cortex_a57(self):
- 
-     def test_sbsaref_alpine_linux_neoverse_n1(self):
-         """
--        :avocado: tags=cpu:max
-+        :avocado: tags=cpu:neoverse-n1
-         """
-         self.boot_alpine_linux("neoverse-n1")
- 
-@@ -152,4 +152,54 @@ def test_sbsaref_alpine_linux_max(self):
-         """
-         :avocado: tags=cpu:max
-         """
--        self.boot_alpine_linux("max,pauth-impdef=on")
-+        self.boot_alpine_linux("max")
-+
-+
-+    # This tests the whole boot chain from EFI to Userspace
-+    # We only boot a whole OS for the current top level CPU and GIC
-+    # Other test profiles should use more minimal boots
-+    def boot_openbsd73(self, cpu):
-+        self.fetch_firmware()
-+
-+        img_url = (
-+            "https://cdn.openbsd.org/pub/OpenBSD/7.3/arm64/miniroot73.img"
-+        )
-+
-+        img_hash = "7fc2c75401d6f01fbfa25f4953f72ad7d7c18650056d30755c44b9c129b707e5"
-+        img_path = self.fetch_asset(img_url, algorithm="sha256", asset_hash=img_hash)
-+
-+        self.vm.set_console()
-+        self.vm.add_args(
-+            "-cpu",
-+            cpu,
-+            "-drive",
-+            f"file={img_path},format=raw",
-+            "-device",
-+            "virtio-rng-pci,rng=rng0",
-+            "-object",
-+            "rng-random,id=rng0,filename=/dev/urandom",
-+        )
-+
-+        self.vm.launch()
-+        wait_for_console_pattern(self,
-+                                 "Welcome to the OpenBSD/arm64"
-+                                 " 7.3 installation program.")
-+
-+    def test_sbsaref_openbsd73_cortex_a57(self):
-+        """
-+        :avocado: tags=cpu:cortex-a57
-+        """
-+        self.boot_openbsd73("cortex-a57")
-+
-+    def test_sbsaref_openbsd73_neoverse_n1(self):
-+        """
-+        :avocado: tags=cpu:neoverse-n1
-+        """
-+        self.boot_openbsd73("neoverse-n1")
-+
-+    def test_sbsaref_openbsd73_max(self):
-+        """
-+        :avocado: tags=cpu:max
-+        """
-+        self.boot_openbsd73("max")
-+
+diff --git a/.gitlab-ci.d/cirrus/macos-12.vars b/.gitlab-ci.d/cirrus/macos-12.vars
+index 80eadaab29..5f3fb346d1 100644
+--- a/.gitlab-ci.d/cirrus/macos-12.vars
++++ b/.gitlab-ci.d/cirrus/macos-12.vars
+@@ -11,6 +11,6 @@ MAKE='/opt/homebrew/bin/gmake'
+ NINJA='/opt/homebrew/bin/ninja'
+ PACKAGING_COMMAND='brew'
+ PIP3='/opt/homebrew/bin/pip3'
+-PKGS='bash bc bison bzip2 capstone ccache cmocka ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 jemalloc jpeg-turbo json-c libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson mtools ncurses nettle ninja pixman pkg-config python3 rpm2cpio sdl2 sdl2_image snappy socat sparse spice-protocol tesseract usbredir vde vte3 xorriso zlib zstd'
++PKGS='bash bc bison bzip2 capstone ccache cmocka ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 jemalloc jpeg-turbo json-c libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson mtools ncurses nettle ninja pixman pkg-config python3 rpm2cpio sdl2 sdl2_image snappy socat sparse spice-protocol swtpm tesseract usbredir vde vte3 xorriso zlib zstd'
+ PYPI_PKGS='PyYAML numpy pillow sphinx sphinx-rtd-theme tomli'
+ PYTHON='/opt/homebrew/bin/python3'
+diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
+index d25649cb4f..42f6928627 100644
+--- a/tests/docker/dockerfiles/alpine.docker
++++ b/tests/docker/dockerfiles/alpine.docker
+@@ -100,6 +100,7 @@ RUN apk update && \
+         sparse \
+         spice-dev \
+         spice-protocol \
++        swtpm \
+         tar \
+         tesseract-ocr \
+         usbredir-dev \
+diff --git a/tests/docker/dockerfiles/centos8.docker b/tests/docker/dockerfiles/centos8.docker
+index 68bfe606f5..d97c30e96a 100644
+--- a/tests/docker/dockerfiles/centos8.docker
++++ b/tests/docker/dockerfiles/centos8.docker
+@@ -107,6 +107,7 @@ RUN dnf distro-sync -y && \
+         socat \
+         spice-protocol \
+         spice-server-devel \
++        swtpm \
+         systemd-devel \
+         systemtap-sdt-devel \
+         tar \
+diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
+index 0991938595..00bdc06021 100644
+--- a/tests/docker/dockerfiles/debian-amd64-cross.docker
++++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
+@@ -55,6 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       sed \
+                       socat \
+                       sparse \
++                      swtpm \
+                       tar \
+                       tesseract-ocr \
+                       tesseract-ocr-eng \
+diff --git a/tests/docker/dockerfiles/debian-amd64.docker b/tests/docker/dockerfiles/debian-amd64.docker
+index 61dbc3ff24..9b50fb2f63 100644
+--- a/tests/docker/dockerfiles/debian-amd64.docker
++++ b/tests/docker/dockerfiles/debian-amd64.docker
+@@ -124,6 +124,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       sed \
+                       socat \
+                       sparse \
++                      swtpm \
+                       systemtap-sdt-dev \
+                       tar \
+                       tesseract-ocr \
+diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
+index 74eabb274e..2dae3777f7 100644
+--- a/tests/docker/dockerfiles/debian-arm64-cross.docker
++++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
+@@ -55,6 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       sed \
+                       socat \
+                       sparse \
++                      swtpm \
+                       tar \
+                       tesseract-ocr \
+                       tesseract-ocr-eng \
+diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
+index 1ebd6ebd00..180ed836e6 100644
+--- a/tests/docker/dockerfiles/debian-armhf-cross.docker
++++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
+@@ -55,6 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       sed \
+                       socat \
+                       sparse \
++                      swtpm \
+                       tar \
+                       tesseract-ocr \
+                       tesseract-ocr-eng \
+diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
+index 59091fed02..d6be2f0cc5 100644
+--- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
++++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
+@@ -55,6 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       sed \
+                       socat \
+                       sparse \
++                      swtpm \
+                       tar \
+                       tesseract-ocr \
+                       tesseract-ocr-eng \
+diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
+index 48b2f28310..ec0041d6aa 100644
+--- a/tests/docker/dockerfiles/debian-s390x-cross.docker
++++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
+@@ -55,6 +55,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       sed \
+                       socat \
+                       sparse \
++                      swtpm \
+                       tar \
+                       tesseract-ocr \
+                       tesseract-ocr-eng \
+diff --git a/tests/docker/dockerfiles/fedora-win32-cross.docker b/tests/docker/dockerfiles/fedora-win32-cross.docker
+index afa988574f..08799219f9 100644
+--- a/tests/docker/dockerfiles/fedora-win32-cross.docker
++++ b/tests/docker/dockerfiles/fedora-win32-cross.docker
+@@ -55,6 +55,7 @@ exec "$@"\n' > /usr/bin/nosync && \
+                socat \
+                sparse \
+                spice-protocol \
++               swtpm \
+                tar \
+                tesseract \
+                tesseract-langpack-eng \
+diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
+index cf93a0ca60..f8e4cb70d3 100644
+--- a/tests/docker/dockerfiles/fedora-win64-cross.docker
++++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
+@@ -55,6 +55,7 @@ exec "$@"\n' > /usr/bin/nosync && \
+                socat \
+                sparse \
+                spice-protocol \
++               swtpm \
+                tar \
+                tesseract \
+                tesseract-langpack-eng \
+diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
+index f00e9e267c..9e9c71fa94 100644
+--- a/tests/docker/dockerfiles/fedora.docker
++++ b/tests/docker/dockerfiles/fedora.docker
+@@ -118,6 +118,7 @@ exec "$@"\n' > /usr/bin/nosync && \
+                sparse \
+                spice-protocol \
+                spice-server-devel \
++               swtpm \
+                systemd-devel \
+                systemtap-sdt-devel \
+                tar \
+diff --git a/tests/docker/dockerfiles/opensuse-leap.docker b/tests/docker/dockerfiles/opensuse-leap.docker
+index ed04b4d6da..dc0e36ce48 100644
+--- a/tests/docker/dockerfiles/opensuse-leap.docker
++++ b/tests/docker/dockerfiles/opensuse-leap.docker
+@@ -100,6 +100,7 @@ RUN zypper update -y && \
+            socat \
+            sparse \
+            spice-protocol-devel \
++           swtpm \
+            systemd-devel \
+            systemtap-sdt-devel \
+            tar \
+diff --git a/tests/docker/dockerfiles/ubuntu2204.docker b/tests/docker/dockerfiles/ubuntu2204.docker
+index 94c2c16118..2ca9cff79c 100644
+--- a/tests/docker/dockerfiles/ubuntu2204.docker
++++ b/tests/docker/dockerfiles/ubuntu2204.docker
+@@ -124,6 +124,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       sed \
+                       socat \
+                       sparse \
++                      swtpm \
+                       systemtap-sdt-dev \
+                       tar \
+                       tesseract-ocr \
+diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
+index e3ed1e5da1..36bc517161 160000
+--- a/tests/lcitool/libvirt-ci
++++ b/tests/lcitool/libvirt-ci
+@@ -1 +1 @@
+-Subproject commit e3ed1e5da101943e53d8d89424e17b22120743f5
++Subproject commit 36bc517161c45ead20224d47f2dc4fa428af6724
+diff --git a/tests/lcitool/projects/qemu.yml b/tests/lcitool/projects/qemu.yml
+index 6f0885170d..82092c9f17 100644
+--- a/tests/lcitool/projects/qemu.yml
++++ b/tests/lcitool/projects/qemu.yml
+@@ -110,6 +110,7 @@ packages:
+  - spice-protocol
+  - spice-server
+  - ssh-client
++ - swtpm
+  - systemd
+  - tar
+  - tesseract
 -- 
 2.39.2

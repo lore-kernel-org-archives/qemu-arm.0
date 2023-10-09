@@ -1,46 +1,46 @@
-Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp1897915ejb;
-        Mon, 9 Oct 2023 04:31:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEpzAKYrpC3h82J749Q0Msk5Jt+VCpPx9dp/qWYk5NHa8eFKoiOxYkx7YkY1mEllP5PBHgW
-X-Received: by 2002:a7b:cc99:0:b0:405:39b4:313e with SMTP id p25-20020a7bcc99000000b0040539b4313emr12982841wma.13.1696851100690;
-        Mon, 09 Oct 2023 04:31:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696851100; cv=none;
+Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp1898062ejb;
+        Mon, 9 Oct 2023 04:31:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGHDovCTW0zwRYO2V6t/3M6qxZTfLNx9+pCXz6MTtnQT7Ubel9vNnQINfRmurjUkVsBPceH
+X-Received: by 2002:a5d:680d:0:b0:319:83e4:bbbf with SMTP id w13-20020a5d680d000000b0031983e4bbbfmr14290656wru.20.1696851119085;
+        Mon, 09 Oct 2023 04:31:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696851119; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hsq7qLnMThcv065FzKSEPbENz54PXbCTa6xFeO1HDEgMcjkRpqWTHRGFgg21c2rSJu
-         Mcueo6MLYnswZbDyM3fpZTUe+f8dxbvcTtOVYioxaEnCIQLwEPnUSlgun4mTssHOiJ1w
-         aPn1vnc90n5XKgcn5w+XYqt6uisnAUWfxCYHH4JKO7ZEEEojyJ1mQS3BFU1KyhrYFF13
-         a7Mlt1UThTVhKDlCUETwfr23JXcuVHbYC/lKJVCNhfjAn8+NFht4/UBTsUK9/IOOxmlr
-         ww7tvq9lA6jZAku7qmliyk532Nl510CGGVfZn5H5mPKIU81GtKOS+4CXLYUATDPBp6i2
-         PFYg==
+        b=KKchQwAmYXxfAuWCq4av1tW022vQiZ5OL8FC0By44ehJFDJnbkOhabmZeKpolyXKW3
+         QrO6EfqIjw0K49SEJLz+qaAOr51YtKvyN5VbU/wNKO6IswR2VHl/jB47SCy2tRHupf8H
+         dakR41O5wWjZyTyZBxkIJ75cUHfL/83Mm3V8B9wxQVjlDuPcwuqe7I8aQYd6WCfRRJmM
+         5CpgA+/GJZwXf7c0r/PYFTHrGWikSs48XhPViwKTbRkTPQYR3FKgJxtW7MomWoPi5nq/
+         tl3MotV7a1GnwpVCeWMwKDadSELefDYcEUgNHmvw7DUZPRu2kjRbZlJroufmV3NZHtxD
+         u4ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=FJAzIAi1snr8S8gBXUZqOaJejkvqOaRU8JI/YzMrAR0=;
+        bh=STxc0Fi4xNmup7+cEWcE0JUxMo5crViAf7Ui8Qw9I9U=;
         fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
-        b=wW1HWZekpCy/ct5NXjtjNPSi+ndHxHFKnoWVkGZip3o9WmoyJTD8nBk4BY0+ZrHuhb
-         sBXmZoG41o+1rsvdyaPJ+oztZnysKfEVUl9OsFrSvOPqRtD3kjXh5YjEdodgBDuECiXN
-         wy2GssEf+ghxkhz2r5+RD+cRvNgo995qR3UzI47mzX4aNRegnw/1GPpSZEr0pTO7LcdR
-         FyAyRFpZkM5i/TSAG70V8cOSKjeKUQU5J7EFuyQmskN4NQ3sO8yB2RrfGhm1Cg8bxFFU
-         f04eJyeQrqiF5JQzwJ4X8JSgleJy08ZkEjASodwxHkOELz3LP6gV7JRNmGNKEhy4Ujc9
-         94gg==
+        b=KgA9FvnxKcGueKYCdVLRROKGZIec/8DOzfnoCSqrJOAtFrw+oXnf3e0pobef0gMo2Q
+         PQU8yvV4ugutql+D2XZSqgPrU73F/Bi7jUCHsPA4eJteHQC0EKkHQiHAmHlWCsfbcxeg
+         E/saehjNCUENpXOgRmaO8/X1LhQRn65uarxRI0DGpmJkyjUZZjJTd9eg8q0bXlXenuL3
+         Lbl2L2VLefqx9YKqspNmWgipNIOicnk/ccFG++d9xverZYRPG0CuMkXb5iixuSKn5XSu
+         Ga/HYZi2INPMyooiVVZY7NfrL3M62aGV5lt5YJZrIT8VNVpOw0OUc4ZPhrXR09+mufGC
+         aPvA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id bg33-20020a05600c3ca100b004063c6c812asi5039364wmb.91.2023.10.09.04.31.40
+        by mx.google.com with ESMTPS id i9-20020a05600011c900b0031f98163e19si3383648wrx.5.2023.10.09.04.31.58
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Oct 2023 04:31:40 -0700 (PDT)
+        Mon, 09 Oct 2023 04:31:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S3xdj0pgjz6K69W;
-	Mon,  9 Oct 2023 19:29:45 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.200])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S3xf32KShz686d6;
+	Mon,  9 Oct 2023 19:30:03 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.48.154.91) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Mon, 9 Oct 2023 12:31:21 +0100
+ 15.1.2507.31; Mon, 9 Oct 2023 12:31:39 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -57,9 +57,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<linuxarm@huawei.com>
-Subject: [PATCH V3 07/10] hw/acpi: Update ACPI GED framework to support vCPU Hotplug
-Date: Mon, 9 Oct 2023 12:28:09 +0100
-Message-ID: <20231009112812.10612-8-salil.mehta@huawei.com>
+Subject: [PATCH V3 08/10] physmem: Add helper function to destroy CPU AddressSpace
+Date: Mon, 9 Oct 2023 12:28:10 +0100
+Message-ID: <20231009112812.10612-9-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20231009112812.10612-1-salil.mehta@huawei.com>
 References: <20231009112812.10612-1-salil.mehta@huawei.com>
@@ -69,76 +69,92 @@ X-Originating-IP: [10.48.154.91]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
 X-CFilter-Loop: Reflected
-X-TUID: NHrqwC6l6hjX
+X-TUID: 7eeBoJL32tWf
 
-ACPI GED shall be used to convey to the guest kernel about any CPU hot-(un)plug
-events. Therefore, existing ACPI GED framework inside QEMU needs to be enhanced
-to support CPU hotplug state and events.
+Virtual CPU Hot-unplug leads to unrealization of a CPU object. This also
+involves destruction of the CPU AddressSpace. Add common function to help
+destroy the CPU AddressSpace.
 
-Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
 ---
- hw/acpi/generic_event_device.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ include/exec/cpu-common.h |  8 ++++++++
+ include/hw/core/cpu.h     |  1 +
+ softmmu/physmem.c         | 25 +++++++++++++++++++++++++
+ 3 files changed, 34 insertions(+)
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 62d504d231..0d5f0140e5 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -12,6 +12,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/acpi/acpi.h"
-+#include "hw/acpi/cpu.h"
- #include "hw/acpi/generic_event_device.h"
- #include "hw/irq.h"
- #include "hw/mem/pc-dimm.h"
-@@ -239,6 +240,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-         } else {
-             acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
-         }
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-     } else {
-         error_setg(errp, "virt: device plug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -253,6 +256,8 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
-     if ((object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) &&
-                        !(object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)))) {
-         acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -266,6 +271,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
+diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+index 41788c0bdd..eb56a228a2 100644
+--- a/include/exec/cpu-common.h
++++ b/include/exec/cpu-common.h
+@@ -120,6 +120,14 @@ size_t qemu_ram_pagesize_largest(void);
+  */
+ void cpu_address_space_init(CPUState *cpu, int asidx,
+                             const char *prefix, MemoryRegion *mr);
++/**
++ * cpu_address_space_destroy:
++ * @cpu: CPU for which address space needs to be destroyed
++ * @asidx: integer index of this address space
++ *
++ * Note that with KVM only one address space is supported.
++ */
++void cpu_address_space_destroy(CPUState *cpu, int asidx);
  
-     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-         acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -277,6 +284,7 @@ static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
-     AcpiGedState *s = ACPI_GED(adev);
+ void cpu_physical_memory_rw(hwaddr addr, void *buf,
+                             hwaddr len, bool is_write);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 648b5b3586..65d2ae4581 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -355,6 +355,7 @@ struct CPUState {
+     QSIMPLEQ_HEAD(, qemu_work_item) work_list;
  
-     acpi_memory_ospm_status(&s->memhp_state, list);
-+    acpi_cpu_ospm_status(&s->cpuhp_state, list);
+     CPUAddressSpace *cpu_ases;
++    int cpu_ases_count;
+     int num_ases;
+     AddressSpace *as;
+     MemoryRegion *memory;
+diff --git a/softmmu/physmem.c b/softmmu/physmem.c
+index 4f6ca653b3..4dfa0ca66f 100644
+--- a/softmmu/physmem.c
++++ b/softmmu/physmem.c
+@@ -761,6 +761,7 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
+ 
+     if (!cpu->cpu_ases) {
+         cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
++        cpu->cpu_ases_count = cpu->num_ases;
+     }
+ 
+     newas = &cpu->cpu_ases[asidx];
+@@ -774,6 +775,30 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
+     }
  }
  
- static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-@@ -291,6 +299,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-         sel = ACPI_GED_PWR_DOWN_EVT;
-     } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
-         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
-+    } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
-+        sel = ACPI_GED_CPU_HOTPLUG_EVT;
-     } else {
-         /* Unknown event. Return without generating interrupt. */
-         warn_report("GED: Unsupported event %d. No irq injected", ev);
++void cpu_address_space_destroy(CPUState *cpu, int asidx)
++{
++    CPUAddressSpace *cpuas;
++
++    assert(asidx < cpu->num_ases);
++    assert(asidx == 0 || !kvm_enabled());
++    assert(cpu->cpu_ases);
++
++    cpuas = &cpu->cpu_ases[asidx];
++    if (tcg_enabled()) {
++        memory_listener_unregister(&cpuas->tcg_as_listener);
++    }
++
++    address_space_destroy(cpuas->as);
++    g_free_rcu(cpuas->as, rcu);
++
++    if (cpu->cpu_ases_count == 1) {
++        g_free(cpu->cpu_ases);
++        cpu->cpu_ases = NULL;
++    }
++
++    cpu->cpu_ases_count--;
++}
++
+ AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
+ {
+     /* Return the AddressSpace corresponding to the specified index */
 -- 
 2.34.1

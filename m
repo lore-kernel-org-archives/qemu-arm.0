@@ -1,132 +1,177 @@
-Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp2034139ejb;
-        Mon, 9 Oct 2023 08:09:51 -0700 (PDT)
-X-Received: by 2002:a17:906:20ce:b0:9ae:3210:22fd with SMTP id c14-20020a17090620ce00b009ae321022fdmr14345223ejc.48.1696864191529;
-        Mon, 09 Oct 2023 08:09:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696864191; cv=none;
-        d=google.com; s=arc-20160816;
-        b=iVjRDtbkEJA5+uSJrTCd1YgxyhyLXs64+V29DoNCZF8Pg2CiCIP366FZjmmh7VZ2ww
-         JmaByTJHlQ/1/4bObQyCKd+vYqYlYJWqX6S8D/FvT9wnblMURO4LpLd6vPn1ijD8sT7y
-         8dfrHLUkN9gzS8zBgjsLH1gDdxq2LbIQ+m7G3jmO9q1fEU4aiG1Ow3KjENrEB1atpFW6
-         kneEJ4WpoEg1rLTPFCL6YI0g/pj5ytkmzBhAdMeSwZTR4BHINPwLNIFHjztJ8y0brsoK
-         1O0FfnWHIAmUA62qm+qUCah2pOCoc0oNZHFENKfAM4iv6pU68IKkStjTFjdlooyAfg2y
-         U+mQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=NldQiTWA5sMVywFdcvGk4DI6HBcviGKaPNWPOAI7ABo=;
-        fh=gwrf1HRYFAPa0NfDvMWvgKC4jiB2hnFN6ILaWJAclaQ=;
-        b=RaaFGigGB3UrBgfOKMe0KS6z/Vp62F05QDuemIzHcEq1Pz+wmq0RI+vINB9+xbrJcv
-         E/d65kP8m8jVmUZkPNcqvBRJOnkebp9SvfIv4IC5lTKVjOiBzX/kkEUQ5JFg42jwW1uP
-         IRSH7QPn/wa+de+qMpbxZp0t6GXySJ/657d4Wc4/XjwT1KxEi1ds5APP4cCinI8D8nTJ
-         gR+KpWzV4aaVgZ10fo3ukZEfPHLD/GIt1UD0rN3Z9o13rdSknbCQbu30ATV+BQwCmSuP
-         1BPOF9R0/SXgV3ONtOmpkjXuesXxYC/f0pvGdGcv+jaGWoEuHGShUVA0TqtngauIbB49
-         tLKA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vlRJOgLq;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ze15-20020a170906ef8f00b009b2b2660e94sor545776ejb.11.2023.10.09.08.09.51
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 09 Oct 2023 08:09:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vlRJOgLq;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1696864191; x=1697468991; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=NldQiTWA5sMVywFdcvGk4DI6HBcviGKaPNWPOAI7ABo=;
-        b=vlRJOgLqMXklYbW51gsGYUjPyCHHfuQE+RVLgXOYfw4aiGUp2LzjprPAxkAKhz5xJ4
-         q0URV9g04ex6F4LQjDr/SsxBaWjzeaahrTR+vJCIFloSGrBROTkW3LKTc8mjLBdzs0Si
-         bw4CYQ/oy4/Yfe+CmjG5xWJztCzCpcC+JDDVX4KzgESYKxFfJxaWXLClck3DkmCivId3
-         tu1hXWRypO9wA1RvRgLbLPyxksjO6FZh9iyHhBtPlMXetIUkn79ru4eSPy/qZa+eQtrr
-         l512z2P9CRki8AFuPtTlrVtigse86ZrPh5qBJ8D1OPEvQ3+ZG3LVe6Q3bZNN41lUtiT+
-         Co5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696864191; x=1697468991;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NldQiTWA5sMVywFdcvGk4DI6HBcviGKaPNWPOAI7ABo=;
-        b=gJjHsitxs3JnpgzrkUMgf2KI5SNmJ2pcBBvSp7Ssjpe0uJefovd+bw+pyxzWP4RewS
-         W1aPpi0hAzYCSrNcyw0x7Y49mNB2wzdNinCrRy4KGkpTauXxkau5h3n9/gpIpk3IlOJr
-         PfeD03IGfqqBXldidDEqmz8FGDE2pP0pBJmwrpxuP0Ztwco+o4lfPYiBhZYPNOTvylyZ
-         lGuE1k1aXyuDhoHsUR24MDEWzCzPz8NonKwZGHy3qMVwGmu/vXbICaUFXQaNOgY2evWf
-         8WNXiw9aEpSZpIQyHGd2KTBONtscF9c9XHd8NDajcW0m2LpG+f8NqtYUI4eN6ZOi9ByT
-         d9MQ==
-X-Gm-Message-State: AOJu0YwXdojgGuDKnaVpGdflxQSGuBlcddF7mXMGPMsBsNNMFszo9Px5
-	rfCdpCqJ9c26reAN3B6hJcBRqg0r
-X-Google-Smtp-Source: AGHT+IHQ27FjElR7d5mwjgma7Xr1e662z4pYTF7K7YI3KbhnnjFWGYlmg9ucmRkwxS0hlFOhZQGOWA==
-X-Received: by 2002:aa7:c255:0:b0:536:e814:360c with SMTP id y21-20020aa7c255000000b00536e814360cmr14174772edo.4.1696864191113;
-        Mon, 09 Oct 2023 08:09:51 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.115] (thr44-h01-176-170-217-185.dsl.sta.abo.bbox.fr. [176.170.217.185])
-        by smtp.gmail.com with ESMTPSA id l16-20020a056402125000b00536159c6c45sm6114967edw.15.2023.10.09.08.09.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Oct 2023 08:09:50 -0700 (PDT)
-Message-ID: <0052d92a-b712-63ff-5e3d-668787f0213c@linaro.org>
-Date: Mon, 9 Oct 2023 17:09:48 +0200
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id k22-20020a7bc416000000b00404719b05b5sm11668259wmi.27.2023.10.09.09.41.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Oct 2023 09:41:05 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 0F3E81FFBB;
+	Mon,  9 Oct 2023 17:41:05 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Brad Smith <brad@comstyle.com>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	David Hildenbrand <david@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	qemu-riscv@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	qemu-ppc@nongnu.org,
+	John Snow <jsnow@redhat.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	qemu-arm@nongnu.org,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Weiwei Li <liweiwei@iscas.ac.cn>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Song Gao <gaosong@loongson.cn>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	qemu-s390x@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/25] October maintainer omnibus pre-PR (tests, gdbstub, plugins)
+Date: Mon,  9 Oct 2023 17:40:39 +0100
+Message-Id: <20231009164104.369749-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH v2 1/1] tests/avocado: update firmware to enable OpenBSD
- test on sbsa-ref
-Content-Language: en-US
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Beraldo Leal <bleal@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20230927120050.210187-1-marcin.juszkiewicz@linaro.org>
- <20230927120050.210187-2-marcin.juszkiewicz@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230927120050.210187-2-marcin.juszkiewicz@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: ZsDCLRHQuUA7
+X-TUID: lRNGhwIk0yuG
 
-On 27/9/23 14:00, Marcin Juszkiewicz wrote:
-> Update prebuilt firmware images:
-> - Neoverse V1/N2 cpu support
-> - non-secure EL2 virtual timer
-> - XHCI controller in DSDT
-> 
-> With those changes we can now run OpenBSD as part of sbsa-ref tests.
-> 
-> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-> ---
->   tests/avocado/machine_aarch64_sbsaref.py | 68 ++++++++++++++++++++----
->   1 file changed, 58 insertions(+), 10 deletions(-)
-> 
-> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-> index a794245e7e..2d683d4f6a 100644
-> --- a/tests/avocado/machine_aarch64_sbsaref.py
-> +++ b/tests/avocado/machine_aarch64_sbsaref.py
-> @@ -28,33 +28,33 @@ def fetch_firmware(self):
+Hi,
 
+This wraps up my current testing, gdbstub and plugin trees in an
+attempt to do my part to reduce the qemu-devel fire hose. It is pretty
+much the same as the September tree except:
 
-> +    def test_sbsaref_openbsd73_max(self):
-> +        """
-> +        :avocado: tags=cpu:max
-> +        """
-> +        self.boot_openbsd73("max")
-> +
+  - dropped RFC patches
+  - dropped CRIS deprecation patches
+  - dropped makefile dependency tweaks
+  - tweaked RUNC as per Paolo's suggestion
+  - used later version of Marcin's sbsa-ref changes
+  - added a FLAKY_TEST removal
+  - added tags as appropriate
 
-FWIW:
+Now I'm using the pre-PR subject to give people a last chance to
+object before I roll a proper pull request later this week.
 
-Applying: tests/avocado: update firmware to enable OpenBSD test on sbsa-ref
-patch:113: new blank line at EOF.
-+
-warning: 1 line adds whitespace errors.
+The following still could do with review:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+  contrib/plugins: fix coverity warning in hotblocks
+  contrib/plugins: fix coverity warning in lockstep
+  contrib/plugins: fix coverity warning in cache
+  configure: remove gcc version suffixes
+  configure: allow user to override docker engine
+  tests/docker: make docker engine choice entirely configure driven
+  tests/avocado: remove flaky test marking for test_sbsaref_edk2_firmware
+
+Akihiko Odaki (12):
+  gdbstub: Fix target_xml initialization
+  gdbstub: Fix target.xml response
+  plugins: Check if vCPU is realized
+  contrib/plugins: Use GRWLock in execlog
+  gdbstub: Introduce GDBFeature structure
+  target/arm: Move the reference to arm-core.xml
+  hw/core/cpu: Return static value with gdb_arch_name()
+  gdbstub: Use g_markup_printf_escaped()
+  target/arm: Remove references to gdb_has_xml
+  target/ppc: Remove references to gdb_has_xml
+  gdbstub: Remove gdb_has_xml variable
+  gdbstub: Replace gdb_regs with an array
+
+Alex Bennée (9):
+  tests/avocado: remove flaky test marking for
+    test_sbsaref_edk2_firmware
+  tests/lcitool: add swtpm to the package list
+  gitlab: shuffle some targets and reduce avocado noise
+  tests/docker: make docker engine choice entirely configure driven
+  configure: allow user to override docker engine
+  configure: remove gcc version suffixes
+  contrib/plugins: fix coverity warning in cache
+  contrib/plugins: fix coverity warning in lockstep
+  contrib/plugins: fix coverity warning in hotblocks
+
+Marcin Juszkiewicz (1):
+  tests/avocado: update firmware to enable OpenBSD test on sbsa-ref
+
+Matt Borgerson (1):
+  plugins: Set final instruction count in plugin_gen_tb_end
+
+Richard Henderson (2):
+  accel/tcg: Add plugin_enabled to DisasContextBase
+  target/sh4: Disable decode_gusa when plugins enabled
+
+ MAINTAINERS                                   |  2 +-
+ configure                                     | 13 ++-
+ meson.build                                   |  2 +-
+ gdbstub/internals.h                           |  2 -
+ include/exec/gdbstub.h                        | 17 ++--
+ include/exec/plugin-gen.h                     |  4 +-
+ include/exec/translator.h                     |  2 +
+ include/hw/core/cpu.h                         |  4 +-
+ target/ppc/internal.h                         |  2 +-
+ accel/tcg/plugin-gen.c                        |  6 +-
+ accel/tcg/translator.c                        |  3 +-
+ contrib/plugins/cache.c                       | 18 ++--
+ contrib/plugins/execlog.c                     | 16 ++--
+ contrib/plugins/hotblocks.c                   |  2 +-
+ contrib/plugins/lockstep.c                    | 13 ++-
+ gdbstub/gdbstub.c                             | 95 +++++++++----------
+ gdbstub/softmmu.c                             |  2 +-
+ plugins/core.c                                |  2 +-
+ stubs/gdbstub.c                               |  6 +-
+ target/arm/cpu.c                              |  9 +-
+ target/arm/cpu64.c                            |  4 +-
+ target/arm/gdbstub.c                          | 32 +------
+ target/i386/cpu.c                             |  6 +-
+ target/loongarch/cpu.c                        |  8 +-
+ target/ppc/gdbstub.c                          | 24 +----
+ target/riscv/cpu.c                            |  6 +-
+ target/s390x/cpu.c                            |  4 +-
+ target/sh4/translate.c                        | 41 +++++---
+ target/tricore/cpu.c                          |  4 +-
+ .gitlab-ci.d/buildtest.yml                    | 15 ++-
+ .gitlab-ci.d/cirrus/macos-12.vars             |  2 +-
+ scripts/feature_to_c.py                       | 48 ++++++++++
+ scripts/feature_to_c.sh                       | 69 --------------
+ tests/avocado/machine_aarch64_sbsaref.py      | 71 +++++++++++---
+ tests/docker/Makefile.include                 |  9 +-
+ tests/docker/dockerfiles/alpine.docker        |  1 +
+ tests/docker/dockerfiles/centos8.docker       |  1 +
+ .../dockerfiles/debian-amd64-cross.docker     |  1 +
+ tests/docker/dockerfiles/debian-amd64.docker  |  1 +
+ .../dockerfiles/debian-arm64-cross.docker     |  1 +
+ .../dockerfiles/debian-armhf-cross.docker     |  1 +
+ .../dockerfiles/debian-ppc64el-cross.docker   |  1 +
+ .../dockerfiles/debian-s390x-cross.docker     |  1 +
+ .../dockerfiles/fedora-win32-cross.docker     |  1 +
+ .../dockerfiles/fedora-win64-cross.docker     |  1 +
+ tests/docker/dockerfiles/fedora.docker        |  1 +
+ tests/docker/dockerfiles/opensuse-leap.docker |  1 +
+ tests/docker/dockerfiles/ubuntu2204.docker    |  1 +
+ tests/lcitool/libvirt-ci                      |  2 +-
+ tests/lcitool/projects/qemu.yml               |  1 +
+ 50 files changed, 305 insertions(+), 274 deletions(-)
+ create mode 100755 scripts/feature_to_c.py
+ delete mode 100644 scripts/feature_to_c.sh
+
+-- 
+2.39.2

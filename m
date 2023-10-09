@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp2112792ejb;
-        Mon, 9 Oct 2023 10:17:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEniTXyddzsxKQmHRDWCxFcE7NpAQLNz4lC39tlhOAR8AGXIUihYedSgAHF5E46yyAFCjAI
-X-Received: by 2002:a05:620a:430e:b0:76c:e9e1:2b2 with SMTP id u14-20020a05620a430e00b0076ce9e102b2mr19404991qko.13.1696871861326;
-        Mon, 09 Oct 2023 10:17:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696871861; cv=none;
+Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp2125670ejb;
+        Mon, 9 Oct 2023 10:41:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH8UVBaZXYzs2bbr0gjv2xQHQIwvQ5VpK0YeroG5L14153tZAUkZSnhRCGEPvff1HDAkKHr
+X-Received: by 2002:a25:d352:0:b0:d7b:9372:a35a with SMTP id e79-20020a25d352000000b00d7b9372a35amr13790444ybf.30.1696873319222;
+        Mon, 09 Oct 2023 10:41:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696873319; cv=none;
         d=google.com; s=arc-20160816;
-        b=yTFofk15kciOhOMU/0E4xfczMJxuYdkcz0NaAuOYvAiMK0CcJJ8zA/NoczKvmumOJu
-         Cmq96pnpj9Cu0MXJbmdO5MoWi7+5tEO78Qm0osaxnzVUw2xJZ2UGCQwmvxn/JXGUHlWy
-         0PCr+lf9nItpFqGUVtrFS84tBqL7wSyq6KpbthIdaV3WukR2VJ9ZNd3JE8WOxJ7sRkve
-         TrQYlkoy12tEw90q0kgpkXy+QaJCfmmkFm0oY30yeZK6B4cxgIVzXoKn+NfN5EFHVdmo
-         btiirXtsts+TRN1rXsqITL98gm5OHPCm88qiGrNQKX0FNDUW65kjUaOyssU16GrBKXjT
-         LC7w==
+        b=BQzT2IULvGxD5UlwBo+5JNgKP4EtYSlySA6cLMsCs+F8VONEYzmzgMq0iZNmexroPP
+         H1k7Q+jo8zDF236KLv6muBlz1g/r0w66m87tc0I0ZYq0kZtYKG2AR3nkXURnq4zZP4w9
+         66FowCnIszAqbWTdSqwA8X3Wyp9jeU4+xAXxBiWSWTFWhNop5ZEfuVh34povejt/GZED
+         /knXl5LEdrpYX9qQ/vltXyRqq7QvXH/bLzZOigUCXpKDq7bPsD2UEr2NT0axIJzCaDPN
+         SfhvxP6DQXLbr8QYXviXogFni7djM53ne8iHV+z0keyVjhm/qcSGvag3TRtzeOlL2Kd/
+         pSWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=S4TD976jlvRTf3UDLxFoZCC+d2n+VZf+WcbnJ8KGnjY=;
+        bh=jP5OUX+uO77L4bHDyJ8k5kqv4t/x7SsjU46Z2AB+iTs=;
         fh=qShmx9hl1ph34ulEBOCe1Wl+bd1jf8hIEJWbXZnp4xc=;
-        b=xDziYi/0G3ms9xxrFmiRuD0xC1d1Nvb6sgZBB5ucaJKcLY87S1DS8hXXS4mPJAXMk+
-         3lYL3QiVXkMyM505bCBtADwYkQsQoCnopPOgjuhhm5vELxCS43XS0nxaRPQ8JylQovSR
-         LmucIePIM8Ng4oa/xQUvNX4ByUQ6zyQJqZnWRlxir+f4qGFbRBaZ6l3B/VsdKLZnRuc+
-         ZX3aEz1wQpuEhzcNR9rBzSex4c5Wwots3KVoq0HXWYeR6BVKnjsTllRq1EKg2N0lnhen
-         HpLIUPk4iUIjQ54xJdtOJTqA9dD2uy4nQMloK584rVRi8IZ6bcQJaynD/Vkaub4XZPJU
-         Lk2w==
+        b=j6TufdWA4b/wE7rxFzp6lqJZCwgIpmbsGoiBWYqZLlA3URMsqipjXxdrGqeDc035yu
+         VJWIHbozwZyeqfYxI7uiRz6j7fee+D8GdN+tTNF9AGqmBZykbuZJR5KiOInvt5QYIBjF
+         JqrnB/0vVRhS0vqYFnlGzPRLBWsUkafZFSG/86v15/wgdDvbnPn3KrhHa8Y2B/CtDocQ
+         XzCi36Es/eaMWoSpAbfoHDg3EZme0M1T5iBuvpbI/0Scv15QdU70LIPafvkdkPjWLIHA
+         +Busl2C0IFh04XAi07LrdFVHXgePl0Rumo+LkPhX1MNJQmV2D2ruXOElXbNWxIxwjYZw
+         KdTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=CMXlePaa;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ALiqv7JD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i18-20020a05620a249200b00775869cf15fsi6539300qkn.521.2023.10.09.10.17.41
+        by mx.google.com with ESMTPS id h2-20020a0cf442000000b0063f7aae913asi6408801qvm.19.2023.10.09.10.41.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Oct 2023 10:17:41 -0700 (PDT)
+        Mon, 09 Oct 2023 10:41:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=CMXlePaa;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ALiqv7JD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qptsv-00078R-3s; Mon, 09 Oct 2023 13:17:37 -0400
+	id 1qpuGJ-0006Hd-Km; Mon, 09 Oct 2023 13:41:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qptst-000785-54; Mon, 09 Oct 2023 13:17:35 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ id 1qpuGI-0006HK-Io; Mon, 09 Oct 2023 13:41:46 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qptsq-0001km-1H; Mon, 09 Oct 2023 13:17:34 -0400
-Received: from pps.filterd (m0353728.ppops.net [127.0.0.1])
+ id 1qpuGF-00072F-SS; Mon, 09 Oct 2023 13:41:46 -0400
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 399HCTCZ023189; Mon, 9 Oct 2023 17:17:19 GMT
+ 399HU3fS032020; Mon, 9 Oct 2023 17:41:28 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=message-id : date :
  mime-version : subject : to : cc : references : from : in-reply-to :
  content-type : content-transfer-encoding; s=pp1;
- bh=S4TD976jlvRTf3UDLxFoZCC+d2n+VZf+WcbnJ8KGnjY=;
- b=CMXlePaawDdnuYOg5+y5K40Az7xY+bOw93B+qWpd2CuV3YCHDgoDrEQdgCy9fZQihoNr
- aUwYFMmbcPZPs1mg1RpX0PZKZfp+vaq8J4GELcgQ96QFBtMGo+l+suPrcxFs8J3wRhQ7
- U++XlvSZ1t3BEJYKDcs8NYntX3yLZZM2ljtkc9wC1UjK5fjpDgZmoK2KLnjk79Zt3ZBk
- gWXe6wlj6KSkW195sOElov3JyBq8pfZLiCr8Zytorfrv/UXjafQHq2Imw4vZNHzLsFER
- otZLZ7+RdrDvhHLHtDbtia9anq5kjwoJQUV6CaRB57ZVLJ9zgS+QNBUt2NH6agl1ubtd /g== 
+ bh=jP5OUX+uO77L4bHDyJ8k5kqv4t/x7SsjU46Z2AB+iTs=;
+ b=ALiqv7JDS3xSVbEE9X1nSedQ1TrFJ57irp3rbBcVNRQIwXZbIF1R+8VYJ0+gVoQiwktA
+ rZbmiagzLQEn4ej+FvRfYG8d1qqdADGd/opuVLXc/4AIInPmGIaM6SQ+wcbyN/7RfBxw
+ jJh4IxdInNX48H2vft9Q4Ge17pdg2h1cy1aQkst0gQ0nZuUHlcIaBat/WSzkMZiULajp
+ bgpttifUaDZE5dDp+PISiYWRc4ZndPMqhZ6YMEwCL3w0oQ2AKu0H2lu/CYgvSl06QYgc
+ gNTcoFeVYZy9IOEhZFDcoESQ9czQuWDJ6rM+uDXeML5R2Dh8vfhvnz+7GFmOq+kbxxDP wA== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tmnq6gabb-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tmnykrcvk-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Oct 2023 17:17:18 +0000
-Received: from m0353728.ppops.net (m0353728.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 399HD2XV025640;
- Mon, 9 Oct 2023 17:17:17 GMT
-Received: from ppma23.wdc07v.mail.ibm.com
- (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tmnq6ga3x-1
+ Mon, 09 Oct 2023 17:41:28 +0000
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 399HV8hp006617;
+ Mon, 9 Oct 2023 17:41:26 GMT
+Received: from ppma13.dal12v.mail.ibm.com
+ (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tmnykrck8-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Oct 2023 17:17:17 +0000
-Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 399FL0Aq000685; Mon, 9 Oct 2023 17:17:10 GMT
-Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
- by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tkk5kabru-1
+ Mon, 09 Oct 2023 17:41:26 +0000
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 399G3VIc001146; Mon, 9 Oct 2023 17:36:49 GMT
+Received: from smtprelay06.dal12v.mail.ibm.com ([172.16.1.8])
+ by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tkkvjj8er-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Oct 2023 17:17:10 +0000
+ Mon, 09 Oct 2023 17:36:49 +0000
 Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
  [10.241.53.101])
- by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 399HH9WU65143162
+ by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 399HancT58065298
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 9 Oct 2023 17:17:09 GMT
+ Mon, 9 Oct 2023 17:36:49 GMT
 Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6F9F95806D;
- Mon,  9 Oct 2023 17:17:09 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 2D45958051;
+ Mon,  9 Oct 2023 17:36:49 +0000 (GMT)
 Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0A4845805C;
- Mon,  9 Oct 2023 17:17:09 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id CAEFC5805A;
+ Mon,  9 Oct 2023 17:36:48 +0000 (GMT)
 Received: from [9.61.164.107] (unknown [9.61.164.107])
  by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Mon,  9 Oct 2023 17:17:08 +0000 (GMT)
-Message-ID: <cc154522-1219-46d7-b9f6-fe745fd20f8d@linux.ibm.com>
-Date: Mon, 9 Oct 2023 12:17:08 -0500
+ Mon,  9 Oct 2023 17:36:48 +0000 (GMT)
+Message-ID: <565bf568-9dc9-4cb3-8ae5-eabe1bb80430@linux.ibm.com>
+Date: Mon, 9 Oct 2023 12:36:48 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 02/10] hw/fsi: Introduce IBM's scratchpad
@@ -111,25 +111,25 @@ To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
 Cc: qemu-arm@nongnu.org
 References: <20230908222859.3381003-1-ninad@linux.ibm.com>
  <20230908222859.3381003-3-ninad@linux.ibm.com>
- <7f5e6677-4601-8a9a-77b5-5aad535e453b@kaod.org>
+ <b40b9fd5-7fbb-92c6-747f-839a1ca2a0c1@kaod.org>
 From: Ninad Palsule <ninad@linux.ibm.com>
-In-Reply-To: <7f5e6677-4601-8a9a-77b5-5aad535e453b@kaod.org>
+In-Reply-To: <b40b9fd5-7fbb-92c6-747f-839a1ca2a0c1@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: OgYHbr27Khcf5h6cCze5q5OlIf6BegAg
-X-Proofpoint-ORIG-GUID: b5lOV2gGu43oLN2NVX0ScqgOCEb8i2x0
+X-Proofpoint-ORIG-GUID: FFc_2etOzNZoe7ANyCrSGl4S35FLt7jS
+X-Proofpoint-GUID: COyrz0KzZikObbjkwlevtARjoOvKChMW
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-09_15,2023-10-09_01,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 impostorscore=0
- adultscore=0 mlxscore=0 lowpriorityscore=0 priorityscore=1501 phishscore=0
- mlxlogscore=999 spamscore=0 suspectscore=0 bulkscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2309180000
- definitions=main-2310090141
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
+ priorityscore=1501
+ bulkscore=0 clxscore=1015 adultscore=0 spamscore=0 impostorscore=0
+ suspectscore=0 mlxlogscore=957 malwarescore=0 lowpriorityscore=0
+ phishscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310090144
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
 X-Spam_score_int: -19
 X-Spam_score: -2.0
 X-Spam_bar: --
@@ -151,24 +151,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LnHruJiCWMxc
+X-TUID: McCLGsbRoqCc
 
 Hello Cedric,
 
-
-On 9/9/23 03:37, Cédric Le Goater wrote:
+On 9/11/23 07:19, Cédric Le Goater wrote:
 > On 9/9/23 00:28, Ninad Palsule wrote:
 >> This is a part of patchset where IBM's Flexible Service Interface is
 >> introduced.
 >>
 >> The LBUS device is embeded inside the scratchpad. The scratchpad
->
-> embedded
-Fixed
->
 >> provides a non-functional registers. There is a 1-1 relation between
 >> scratchpad and LBUS devices. Each LBUS device has 1K memory mapped in
 >> the LBUS.
+>
+>
+> The commit log is a bit confusing.
+
+I have improved it in my next patch. Please check and let me know.
+
+Thanks for the review.
+
+~Ninad
+
+>
+> C.
+>
+>
 >>
 >> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 >> Signed-off-by: Cédric Le Goater <clg@kaod.org>
@@ -223,10 +232,6 @@ Fixed
 >> +
 >> +    qemu_log_mask(LOG_UNIMP, "%s: read @0x%" HWADDR_PRIx " size=%d\n",
 >> +                  __func__, addr, size);
->
-> This should be a trace event. The comment applies to all similar usage.
-Fixed all required places.
->
 >> +
 >> +    if (addr) {
 >> +        qemu_log_mask(LOG_GUEST_ERROR,
@@ -234,15 +239,6 @@ Fixed all required places.
 >> %u\n",
 >> +                      __func__, addr, size);
 >> +        return 0;
->
-> if the MMIO region is correctly sized, this should not be necessary. Do
-> you plans to add support for registers ?
-
-If required I am going to implement registers. Current plan is to get 
-initial changes in and then add more stuff.
-
-
->
 >> +    }
 >> +
 >> +    return s->reg;
@@ -255,10 +251,6 @@ initial changes in and then add more stuff.
 >> +
 >> +    qemu_log_mask(LOG_UNIMP, "%s: write @0x%" HWADDR_PRIx " size=%d "
 >> +                  "value=%"PRIx64"\n", __func__, addr, size, data);
->
-> trace event
-Fixed
->
 >> +
 >> +    if (addr) {
 >> +        qemu_log_mask(LOG_GUEST_ERROR,
@@ -306,17 +298,6 @@ Fixed
 >> +        | 0x00001000                    /* version */
 >> +        | ENGINE_CONFIG_TYPE_SCRATCHPAD /* type */
 >> +        | 0x00000007;                   /* crc */
->
-> where is ->config used ?
-
-Yes, Its not but I am thinking of keeping it as next step we may need it.
-
-Thanks for the review.
-
-~ Ninad
-
->
->
 >> +}
 >> +
 >> +static const TypeInfo scratchpad_info = {

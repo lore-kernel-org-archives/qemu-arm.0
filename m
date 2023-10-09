@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id x11-20020a05600c21cb00b00405bbfd5d16sm11774930wmj.7.2023.10.09.09.46.12
+        by smtp.gmail.com with ESMTPSA id r18-20020adfe692000000b0031912c0ffebsm10119250wrm.23.2023.10.09.09.46.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 09 Oct 2023 09:46:13 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 82E6B1FFCC;
+	by zen.linaroharston (Postfix) with ESMTP id 2634E1FFC9;
 	Mon,  9 Oct 2023 17:41:07 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -46,59 +46,80 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	qemu-s390x@nongnu.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 20/25] accel/tcg: Add plugin_enabled to DisasContextBase
-Date: Mon,  9 Oct 2023 17:40:59 +0100
-Message-Id: <20231009164104.369749-21-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 17/25] target/ppc: Remove references to gdb_has_xml
+Date: Mon,  9 Oct 2023 17:40:56 +0100
+Message-Id: <20231009164104.369749-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231009164104.369749-1-alex.bennee@linaro.org>
 References: <20231009164104.369749-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: +C+66eVtPGAe
+X-TUID: 7xxlkSWnhS3b
 
-From: Richard Henderson <richard.henderson@linaro.org>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230824181233.1568795-2-richard.henderson@linaro.org>
+GDB has XML support since 6.7 which was released in 2007.
+It's time to remove support for old GDB versions without XML support.
+
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20230912224107.29669-11-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/exec/translator.h | 2 ++
- accel/tcg/translator.c    | 1 +
- 2 files changed, 3 insertions(+)
+ target/ppc/gdbstub.c | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
-diff --git a/include/exec/translator.h b/include/exec/translator.h
-index 9d9e980819..6d3f59d095 100644
---- a/include/exec/translator.h
-+++ b/include/exec/translator.h
-@@ -73,6 +73,7 @@ typedef enum DisasJumpType {
-  * @max_insns: Maximum number of instructions to be translated in this TB.
-  * @singlestep_enabled: "Hardware" single stepping enabled.
-  * @saved_can_do_io: Known value of cpu->neg.can_do_io, or -1 for unknown.
-+ * @plugin_enabled: TCG plugin enabled in this TB.
-  *
-  * Architecture-agnostic disassembly context.
-  */
-@@ -85,6 +86,7 @@ typedef struct DisasContextBase {
-     int max_insns;
-     bool singlestep_enabled;
-     int8_t saved_can_do_io;
-+    bool plugin_enabled;
-     void *host_addr[2];
- } DisasContextBase;
- 
-diff --git a/accel/tcg/translator.c b/accel/tcg/translator.c
-index e7abcd86c1..c5da7b32a5 100644
---- a/accel/tcg/translator.c
-+++ b/accel/tcg/translator.c
-@@ -158,6 +158,7 @@ void translator_loop(CPUState *cpu, TranslationBlock *tb, int *max_insns,
-     } else {
-         plugin_enabled = plugin_gen_tb_start(cpu, db, false);
+diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
+index 778ef73bd7..ec5731e5d6 100644
+--- a/target/ppc/gdbstub.c
++++ b/target/ppc/gdbstub.c
+@@ -54,12 +54,6 @@ static int ppc_gdb_register_len(int n)
+     case 0 ... 31:
+         /* gprs */
+         return sizeof(target_ulong);
+-    case 32 ... 63:
+-        /* fprs */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return 8;
+     case 66:
+         /* cr */
+     case 69:
+@@ -74,12 +68,6 @@ static int ppc_gdb_register_len(int n)
+     case 68:
+         /* ctr */
+         return sizeof(target_ulong);
+-    case 70:
+-        /* fpscr */
+-        if (gdb_has_xml()) {
+-            return 0;
+-        }
+-        return sizeof(target_ulong);
+     default:
+         return 0;
      }
-+    db->plugin_enabled = plugin_enabled;
- 
-     while (true) {
-         *max_insns = ++db->num_insns;
+@@ -132,9 +120,6 @@ int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
+     if (n < 32) {
+         /* gprs */
+         gdb_get_regl(buf, env->gpr[n]);
+-    } else if (n < 64) {
+-        /* fprs */
+-        gdb_get_reg64(buf, *cpu_fpr_ptr(env, n - 32));
+     } else {
+         switch (n) {
+         case 64:
+@@ -158,9 +143,6 @@ int ppc_cpu_gdb_read_register(CPUState *cs, GByteArray *buf, int n)
+         case 69:
+             gdb_get_reg32(buf, cpu_read_xer(env));
+             break;
+-        case 70:
+-            gdb_get_reg32(buf, env->fpscr);
+-            break;
+         }
+     }
+     mem_buf = buf->data + buf->len - r;
 -- 
 2.39.2

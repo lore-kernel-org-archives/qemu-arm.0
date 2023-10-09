@@ -1,147 +1,385 @@
-Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp2056072ejb;
-        Mon, 9 Oct 2023 08:45:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFDO4bIXO/3XaNeb5XPdV36soGJtk1JtrUXX06HfVFDBeuFkt/8TEqNdhHiwiJFdBgt5bAY
-X-Received: by 2002:a5d:4b4f:0:b0:31d:8fed:c527 with SMTP id w15-20020a5d4b4f000000b0031d8fedc527mr12117230wrs.42.1696866328949;
-        Mon, 09 Oct 2023 08:45:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696866328; cv=none;
+Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp2112792ejb;
+        Mon, 9 Oct 2023 10:17:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEniTXyddzsxKQmHRDWCxFcE7NpAQLNz4lC39tlhOAR8AGXIUihYedSgAHF5E46yyAFCjAI
+X-Received: by 2002:a05:620a:430e:b0:76c:e9e1:2b2 with SMTP id u14-20020a05620a430e00b0076ce9e102b2mr19404991qko.13.1696871861326;
+        Mon, 09 Oct 2023 10:17:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696871861; cv=none;
         d=google.com; s=arc-20160816;
-        b=y4B88Q+4rt8UgZjHZR95RIm4SozHVLfXhzz9sdIdNVWUKT8oKg1S+PYrboPx3wJ531
-         +oQFrLwjMvxjdbJx0WSeqCGL/ifukpvzl4NKHyFmgxCSYbYd7VVRa8LXt4pkGJYnGYkS
-         fIv7xHC891sYy7LW3OfNpY9jzsuCxlpvfjNe0Q2wqWWk82HPsV91ggTI1L8lgmHhtXr1
-         9W6SCv+YoaCGZK+81pwq87f4U6HR7YV6kdKnrnGsmDCbK2zq86cSvnmkAZ/Q2JXwDYx3
-         Hgf1QZKYuur3DqOUVDmzYjTLnXa7d/b8lNNSB4eRLintPS9NJv9Ad/QxDSPVppgQNDwz
-         58lA==
+        b=yTFofk15kciOhOMU/0E4xfczMJxuYdkcz0NaAuOYvAiMK0CcJJ8zA/NoczKvmumOJu
+         Cmq96pnpj9Cu0MXJbmdO5MoWi7+5tEO78Qm0osaxnzVUw2xJZ2UGCQwmvxn/JXGUHlWy
+         0PCr+lf9nItpFqGUVtrFS84tBqL7wSyq6KpbthIdaV3WukR2VJ9ZNd3JE8WOxJ7sRkve
+         TrQYlkoy12tEw90q0kgpkXy+QaJCfmmkFm0oY30yeZK6B4cxgIVzXoKn+NfN5EFHVdmo
+         btiirXtsts+TRN1rXsqITL98gm5OHPCm88qiGrNQKX0FNDUW65kjUaOyssU16GrBKXjT
+         LC7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=ppwXuRBibLmhuMZrADNr08iTLwCrKBueJOMerieXuvI=;
-        fh=Kb2Gcs7VD5wSTmDinyryIWwdRPJCIlRG79qMBRsDV+8=;
-        b=olUoD+AI+miw+4FvINGC/5wLfrg2BobHwrD+xVLdPsVSXu+Z8A/TzNnBcOmyvKKM7X
-         VWVK9C9bRzHccHyIN5nl+8NFlCuErdwSLGLuSESu8txJ0FAW0DN8kNO0eX5iPEPq29f/
-         7qla0me4tJe5XNwhCGooiI3rBadHQ4UP6BHr5uDQ+NygQDwGymIeUgUDyC6M12PnVc4r
-         VVOxZXjkKy1A4YNUgjjlIxYF/TlBGE1vnHDTvH+b9g/EADxYnB2xrS/lcwur0Oo2jhMn
-         aOZLdCThG6lOn7L3ohg+VNMpIuXyN9oMXDeTN2ffU7pChNbkTqO6/BkUso7qe8RosOoU
-         PorQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=S4TD976jlvRTf3UDLxFoZCC+d2n+VZf+WcbnJ8KGnjY=;
+        fh=qShmx9hl1ph34ulEBOCe1Wl+bd1jf8hIEJWbXZnp4xc=;
+        b=xDziYi/0G3ms9xxrFmiRuD0xC1d1Nvb6sgZBB5ucaJKcLY87S1DS8hXXS4mPJAXMk+
+         3lYL3QiVXkMyM505bCBtADwYkQsQoCnopPOgjuhhm5vELxCS43XS0nxaRPQ8JylQovSR
+         LmucIePIM8Ng4oa/xQUvNX4ByUQ6zyQJqZnWRlxir+f4qGFbRBaZ6l3B/VsdKLZnRuc+
+         ZX3aEz1wQpuEhzcNR9rBzSex4c5Wwots3KVoq0HXWYeR6BVKnjsTllRq1EKg2N0lnhen
+         HpLIUPk4iUIjQ54xJdtOJTqA9dD2uy4nQMloK584rVRi8IZ6bcQJaynD/Vkaub4XZPJU
+         Lk2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id g12-20020a5d46cc000000b003175b99e12csi3664484wrs.654.2023.10.09.08.45.28
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Oct 2023 08:45:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=CMXlePaa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i18-20020a05620a249200b00775869cf15fsi6539300qkn.521.2023.10.09.10.17.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Oct 2023 10:17:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500003.china.huawei.com (unknown [172.18.147.226])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S43GX52Jpz6K6Tb;
-	Mon,  9 Oct 2023 23:43:32 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500003.china.huawei.com (7.191.162.67) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Mon, 9 Oct 2023 16:45:27 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Mon, 9 Oct 2023 16:45:27 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: David Hildenbrand <david@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "philmd@linaro.org"
-	<philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V3 03/10] hw/acpi: Add ACPI CPU hotplug init stub
-Thread-Topic: [PATCH V3 03/10] hw/acpi: Add ACPI CPU hotplug init stub
-Thread-Index: AQHZ+qP+4EmuUazzyEe6jhCYlq8By7BBUIQAgAAoLOD///HBgIAAL2Tw
-Date: Mon, 9 Oct 2023 15:45:27 +0000
-Message-ID: <5d7f74d31ba449149ff04f107081ed2f@huawei.com>
-References: <20231009112812.10612-1-salil.mehta@huawei.com>
- <20231009112812.10612-4-salil.mehta@huawei.com>
- <8a80612f-07d3-6302-31f9-232d9ce393a1@redhat.com>
- <08840ea0a68e46b1a9d98d1e3544f43b@huawei.com>
- <be019441-793f-bbf1-2b7e-aa32005ead80@redhat.com>
-In-Reply-To: <be019441-793f-bbf1-2b7e-aa32005ead80@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.48.154.91]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=CMXlePaa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qptsv-00078R-3s; Mon, 09 Oct 2023 13:17:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qptst-000785-54; Mon, 09 Oct 2023 13:17:35 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qptsq-0001km-1H; Mon, 09 Oct 2023 13:17:34 -0400
+Received: from pps.filterd (m0353728.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 399HCTCZ023189; Mon, 9 Oct 2023 17:17:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=S4TD976jlvRTf3UDLxFoZCC+d2n+VZf+WcbnJ8KGnjY=;
+ b=CMXlePaawDdnuYOg5+y5K40Az7xY+bOw93B+qWpd2CuV3YCHDgoDrEQdgCy9fZQihoNr
+ aUwYFMmbcPZPs1mg1RpX0PZKZfp+vaq8J4GELcgQ96QFBtMGo+l+suPrcxFs8J3wRhQ7
+ U++XlvSZ1t3BEJYKDcs8NYntX3yLZZM2ljtkc9wC1UjK5fjpDgZmoK2KLnjk79Zt3ZBk
+ gWXe6wlj6KSkW195sOElov3JyBq8pfZLiCr8Zytorfrv/UXjafQHq2Imw4vZNHzLsFER
+ otZLZ7+RdrDvhHLHtDbtia9anq5kjwoJQUV6CaRB57ZVLJ9zgS+QNBUt2NH6agl1ubtd /g== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tmnq6gabb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 09 Oct 2023 17:17:18 +0000
+Received: from m0353728.ppops.net (m0353728.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 399HD2XV025640;
+ Mon, 9 Oct 2023 17:17:17 GMT
+Received: from ppma23.wdc07v.mail.ibm.com
+ (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tmnq6ga3x-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 09 Oct 2023 17:17:17 +0000
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 399FL0Aq000685; Mon, 9 Oct 2023 17:17:10 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
+ by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tkk5kabru-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 09 Oct 2023 17:17:10 +0000
+Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
+ [10.241.53.101])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 399HH9WU65143162
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 9 Oct 2023 17:17:09 GMT
+Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6F9F95806D;
+ Mon,  9 Oct 2023 17:17:09 +0000 (GMT)
+Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 0A4845805C;
+ Mon,  9 Oct 2023 17:17:09 +0000 (GMT)
+Received: from [9.61.164.107] (unknown [9.61.164.107])
+ by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Mon,  9 Oct 2023 17:17:08 +0000 (GMT)
+Message-ID: <cc154522-1219-46d7-b9f6-fe745fd20f8d@linux.ibm.com>
+Date: Mon, 9 Oct 2023 12:17:08 -0500
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: 9TCsEMhfAIM5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 02/10] hw/fsi: Introduce IBM's scratchpad
+Content-Language: en-US
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
+Cc: qemu-arm@nongnu.org
+References: <20230908222859.3381003-1-ninad@linux.ibm.com>
+ <20230908222859.3381003-3-ninad@linux.ibm.com>
+ <7f5e6677-4601-8a9a-77b5-5aad535e453b@kaod.org>
+From: Ninad Palsule <ninad@linux.ibm.com>
+In-Reply-To: <7f5e6677-4601-8a9a-77b5-5aad535e453b@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: OgYHbr27Khcf5h6cCze5q5OlIf6BegAg
+X-Proofpoint-ORIG-GUID: b5lOV2gGu43oLN2NVX0ScqgOCEb8i2x0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-09_15,2023-10-09_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 impostorscore=0
+ adultscore=0 mlxscore=0 lowpriorityscore=0 priorityscore=1501 phishscore=0
+ mlxlogscore=999 spamscore=0 suspectscore=0 bulkscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2309180000
+ definitions=main-2310090141
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LnHruJiCWMxc
 
-PiBGcm9tOiBEYXZpZCBIaWxkZW5icmFuZCA8ZGF2aWRAcmVkaGF0LmNvbT4NCj4gU2VudDogTW9u
-ZGF5LCBPY3RvYmVyIDksIDIwMjMgMjo1NSBQTQ0KPiANCj4gT24gMDkuMTAuMjMgMTU6NDksIFNh
-bGlsIE1laHRhIHdyb3RlOg0KPiA+PiBGcm9tOiBEYXZpZCBIaWxkZW5icmFuZCA8ZGF2aWRAcmVk
-aGF0LmNvbT4NCj4gPj4gU2VudDogTW9uZGF5LCBPY3RvYmVyIDksIDIwMjMgMToyMyBQTQ0KPiA+
-PiBUbzogU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+OyBxZW11LWRldmVsQG5v
-bmdudS5vcmc7IHFlbXUtDQo+ID4+IGFybUBub25nbnUub3JnDQo+ID4+IENjOiBtYXpAa2VybmVs
-Lm9yZzsgamVhbi1waGlsaXBwZUBsaW5hcm8ub3JnOyBKb25hdGhhbiBDYW1lcm9uDQo+ID4+IDxq
-b25hdGhhbi5jYW1lcm9uQGh1YXdlaS5jb20+OyBscGllcmFsaXNpQGtlcm5lbC5vcmc7DQo+ID4+
-IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZzsN
-Cj4gPj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgYW5kcmV3LmpvbmVzQGxpbnV4LmRldjsgcGhpbG1k
-QGxpbmFyby5vcmc7DQo+ID4+IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgb2xpdmVyLnVwdG9uQGxp
-bnV4LmRldjsgcGJvbnppbmlAcmVkaGF0LmNvbTsNCj4gPj4gbXN0QHJlZGhhdC5jb207IHdpbGxA
-a2VybmVsLm9yZzsgZ3NoYW5AcmVkaGF0LmNvbTsgcmFmYWVsQGtlcm5lbC5vcmc7DQo+ID4+IGFs
-ZXguYmVubmVlQGxpbmFyby5vcmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51azsNCj4gPj4gZGFycmVu
-QG9zLmFtcGVyZWNvbXB1dGluZy5jb207IGlsa2thQG9zLmFtcGVyZWNvbXB1dGluZy5jb207DQo+
-ID4+IHZpc2hudUBvcy5hbXBlcmVjb21wdXRpbmcuY29tOyBrYXJsLmhldWJhdW1Ab3JhY2xlLmNv
-bTsNCj4gPj4gbWlndWVsLmx1aXNAb3JhY2xlLmNvbTsgc2FsaWwubWVodGFAb3Buc3JjLm5ldDsg
-emh1a2VxaWFuDQo+ID4+IDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5nIChD
-KSA8d2FuZ3hpb25nZmVuZzJAaHVhd2VpLmNvbT47DQo+ID4+IHdhbmd5YW5hbiAoWSkgPHdhbmd5
-YW5hbjU1QGh1YXdlaS5jb20+OyBqaWFrZXJuZWwyQGdtYWlsLmNvbTsNCj4gPj4gbWFvYmlib0Bs
-b29uZ3Nvbi5jbjsgbGl4aWFuZ2xhaUBsb29uZ3Nvbi5jbjsgTGludXhhcm0NCj4gPGxpbnV4YXJt
-QGh1YXdlaS5jb20+DQo+ID4+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggVjMgMDMvMTBdIGh3L2FjcGk6
-IEFkZCBBQ1BJIENQVSBob3RwbHVnIGluaXQgc3R1Yg0KPiA+Pg0KPiA+PiBPbiAwOS4xMC4yMyAx
-MzoyOCwgU2FsaWwgTWVodGEgd3JvdGU6DQo+ID4+PiBBQ1BJIENQVSBob3RwbHVnIHJlbGF0ZWQg
-aW5pdGlhbGl6YXRpb24gc2hvdWxkIG9ubHkgaGFwcGVuIGlmDQo+ID4+IEFDUElfQ1BVX0hPVFBM
-VUcNCj4gPj4+IHN1cHBvcnQgaGFzIGJlZW4gZW5hYmxlZCBmb3IgcGFydGljdWxhciBhcmNoaXRl
-Y3R1cmUuIEFkZA0KPiA+PiBjcHVfaG90cGx1Z19od19pbml0KCkNCj4gPj4+IHN0dWIgdG8gYXZv
-aWQgY29tcGlsYXRpb24gYnJlYWsuDQo+ID4+Pg0KPiA+Pj4gU2lnbmVkLW9mZi1ieTogU2FsaWwg
-TWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+ID4+PiBSZXZpZXdlZC1ieTogSm9uYXRo
-YW4gQ2FtZXJvbiA8Sm9uYXRoYW4uQ2FtZXJvbkBodWF3ZWkuY29tPg0KPiA+Pj4gUmV2aWV3ZWQt
-Ynk6IEdhdmluIFNoYW4gPGdzaGFuQHJlZGhhdC5jb20+DQo+ID4+PiAtLS0NCj4gPj4+ICAgIGh3
-L2FjcGkvYWNwaS1jcHUtaG90cGx1Zy1zdHViLmMgfCA2ICsrKysrKw0KPiA+Pj4gICAgMSBmaWxl
-IGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKQ0KPiA+Pj4NCj4gPj4+IGRpZmYgLS1naXQgYS9ody9h
-Y3BpL2FjcGktY3B1LWhvdHBsdWctc3R1Yi5jIGIvaHcvYWNwaS9hY3BpLWNwdS0NCj4gaG90cGx1
-Zy0NCj4gPj4gc3R1Yi5jDQo+ID4+PiBpbmRleCAzZmM0YjE0YzI2Li5jNmM2MWJiOWNkIDEwMDY0
-NA0KPiA+Pj4gLS0tIGEvaHcvYWNwaS9hY3BpLWNwdS1ob3RwbHVnLXN0dWIuYw0KPiA+Pj4gKysr
-IGIvaHcvYWNwaS9hY3BpLWNwdS1ob3RwbHVnLXN0dWIuYw0KPiA+Pj4gQEAgLTE5LDYgKzE5LDEy
-IEBAIHZvaWQgbGVnYWN5X2FjcGlfY3B1X2hvdHBsdWdfaW5pdChNZW1vcnlSZWdpb24NCj4gPj4g
-KnBhcmVudCwgT2JqZWN0ICpvd25lciwNCj4gPj4+ICAgICAgICByZXR1cm47DQo+ID4+PiAgICB9
-DQo+ID4+Pg0KPiA+Pj4gK3ZvaWQgY3B1X2hvdHBsdWdfaHdfaW5pdChNZW1vcnlSZWdpb24gKmFz
-LCBPYmplY3QgKm93bmVyLA0KPiA+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICBDUFVIb3Rw
-bHVnU3RhdGUgKnN0YXRlLCBod2FkZHIgYmFzZV9hZGRyKQ0KPiA+Pj4gK3sNCj4gPj4+ICsgICAg
-cmV0dXJuOw0KPiA+Pj4gK30NCj4gPj4NCj4gPj4gV2hpbGUgYXQgaXQsIGNhbiB3ZSBwcmVmaXgg
-dGhhdCBmdW5jdGlvbiB3aXRoIGFjcGk/DQo+ID4NCj4gPiBJIGNhbiBkbyB0aGF0IGJ1dCBpdCBo
-YXMgdG8gYmUgZG9uZSBhdCBvdGhlciBwbGFjZXMgYXMgd2VsbA0KPiA+IHN1Y2ggYXMgaW4gaHcv
-YWNwaS9jcHVfaG90cGx1Zy5jIDxhY3BpX3N3aXRjaF90b19tb2Rlcm5fY3BocCgpPg0KPiA+DQo+
-IA0KPiAkIGdpdCBncmVwIGNwdV9ob3RwbHVnX2h3X2luaXQNCj4gaHcvYWNwaS9jcHUuYzp2b2lk
-IGNwdV9ob3RwbHVnX2h3X2luaXQoTWVtb3J5UmVnaW9uICphcywgT2JqZWN0ICpvd25lciwNCj4g
-aHcvYWNwaS9jcHVfaG90cGx1Zy5jOiAgICBjcHVfaG90cGx1Z19od19pbml0KHBhcmVudCwgZ3Bl
-X2NwdS0+ZGV2aWNlLA0KPiBjcHVocF9zdGF0ZSwgaW9fcG9ydCk7DQo+IGluY2x1ZGUvaHcvYWNw
-aS9jcHUuaDp2b2lkIGNwdV9ob3RwbHVnX2h3X2luaXQoTWVtb3J5UmVnaW9uICphcywgT2JqZWN0
-DQo+ICpvd25lciwNCj4gDQo+IE1pZ2h0IHdhbnQgdG8gZG8gdGhhdCBhcyBhIHNlcGFyYXRlIHBh
-dGNoLCBhZ3JlZWQuDQoNClN1cmUsIHRoYW5rcw0KU2FsaWwuDQo=
+Hello Cedric,
+
+
+On 9/9/23 03:37, Cédric Le Goater wrote:
+> On 9/9/23 00:28, Ninad Palsule wrote:
+>> This is a part of patchset where IBM's Flexible Service Interface is
+>> introduced.
+>>
+>> The LBUS device is embeded inside the scratchpad. The scratchpad
+>
+> embedded
+Fixed
+>
+>> provides a non-functional registers. There is a 1-1 relation between
+>> scratchpad and LBUS devices. Each LBUS device has 1K memory mapped in
+>> the LBUS.
+>>
+>> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+>> ---
+>> v2:
+>> - Incorporated Joel's review comments.
+>> ---
+>>   hw/fsi/Kconfig                     |   4 ++
+>>   hw/fsi/engine-scratchpad.c         | 100 +++++++++++++++++++++++++++++
+>>   hw/fsi/meson.build                 |   1 +
+>>   include/hw/fsi/engine-scratchpad.h |  33 ++++++++++
+>>   4 files changed, 138 insertions(+)
+>>   create mode 100644 hw/fsi/engine-scratchpad.c
+>>   create mode 100644 include/hw/fsi/engine-scratchpad.h
+>>
+>> diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
+>> index 687449e14e..2a9c49f2c9 100644
+>> --- a/hw/fsi/Kconfig
+>> +++ b/hw/fsi/Kconfig
+>> @@ -1,2 +1,6 @@
+>> +config SCRATCHPAD
+>> +    bool
+>> +    select LBUS
+>> +
+>>   config LBUS
+>>       bool
+>> diff --git a/hw/fsi/engine-scratchpad.c b/hw/fsi/engine-scratchpad.c
+>> new file mode 100644
+>> index 0000000000..15a8f8cc66
+>> --- /dev/null
+>> +++ b/hw/fsi/engine-scratchpad.c
+>> @@ -0,0 +1,100 @@
+>> +/*
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + * Copyright (C) 2023 IBM Corp.
+>> + *
+>> + * IBM scratchpad engine
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +
+>> +#include "qapi/error.h"
+>> +#include "qemu/log.h"
+>> +
+>> +#include "hw/fsi/engine-scratchpad.h"
+>> +
+>> +static uint64_t scratchpad_read(void *opaque, hwaddr addr, unsigned 
+>> size)
+>> +{
+>> +    ScratchPad *s = SCRATCHPAD(opaque);
+>> +
+>> +    qemu_log_mask(LOG_UNIMP, "%s: read @0x%" HWADDR_PRIx " size=%d\n",
+>> +                  __func__, addr, size);
+>
+> This should be a trace event. The comment applies to all similar usage.
+Fixed all required places.
+>
+>> +
+>> +    if (addr) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for 
+>> %u\n",
+>> +                      __func__, addr, size);
+>> +        return 0;
+>
+> if the MMIO region is correctly sized, this should not be necessary. Do
+> you plans to add support for registers ?
+
+If required I am going to implement registers. Current plan is to get 
+initial changes in and then add more stuff.
+
+
+>
+>> +    }
+>> +
+>> +    return s->reg;
+>> +}
+>> +
+>> +static void scratchpad_write(void *opaque, hwaddr addr, uint64_t data,
+>> +                                 unsigned size)
+>> +{
+>> +    ScratchPad *s = SCRATCHPAD(opaque);
+>> +
+>> +    qemu_log_mask(LOG_UNIMP, "%s: write @0x%" HWADDR_PRIx " size=%d "
+>> +                  "value=%"PRIx64"\n", __func__, addr, size, data);
+>
+> trace event
+Fixed
+>
+>> +
+>> +    if (addr) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "%s: Out of bounds write: 0x%"HWADDR_PRIx" for 
+>> %u\n",
+>> +                      __func__, addr, size);
+>> +        return;
+>> +    }
+>> +
+>> +    s->reg = data;
+>> +}
+>> +
+>> +static const struct MemoryRegionOps scratchpad_ops = {
+>> +    .read = scratchpad_read,
+>> +    .write = scratchpad_write,
+>> +    .endianness = DEVICE_BIG_ENDIAN,
+>> +};
+>> +
+>> +static void scratchpad_realize(DeviceState *dev, Error **errp)
+>> +{
+>> +    LBusDevice *ldev = LBUS_DEVICE(dev);
+>> +
+>> +    memory_region_init_io(&ldev->iomem, OBJECT(ldev), &scratchpad_ops,
+>> +                          ldev, TYPE_SCRATCHPAD, 0x400);
+>> +}
+>> +
+>> +static void scratchpad_reset(DeviceState *dev)
+>> +{
+>> +    ScratchPad *s = SCRATCHPAD(dev);
+>> +
+>> +    s->reg = 0;
+>> +}
+>> +
+>> +static void scratchpad_class_init(ObjectClass *klass, void *data)
+>> +{
+>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>> +    LBusDeviceClass *ldc = LBUS_DEVICE_CLASS(klass);
+>> +
+>> +    dc->realize = scratchpad_realize;
+>> +    dc->reset = scratchpad_reset;
+>> +
+>> +    ldc->config =
+>> +          ENGINE_CONFIG_NEXT            /* valid */
+>> +        | 0x00010000                    /* slots */
+>> +        | 0x00001000                    /* version */
+>> +        | ENGINE_CONFIG_TYPE_SCRATCHPAD /* type */
+>> +        | 0x00000007;                   /* crc */
+>
+> where is ->config used ?
+
+Yes, Its not but I am thinking of keeping it as next step we may need it.
+
+Thanks for the review.
+
+~ Ninad
+
+>
+>
+>> +}
+>> +
+>> +static const TypeInfo scratchpad_info = {
+>> +    .name = TYPE_SCRATCHPAD,
+>> +    .parent = TYPE_LBUS_DEVICE,
+>> +    .instance_size = sizeof(ScratchPad),
+>> +    .class_init = scratchpad_class_init,
+>> +    .class_size = sizeof(LBusDeviceClass),
+>> +};
+>> +
+>> +static void scratchpad_register_types(void)
+>> +{
+>> +    type_register_static(&scratchpad_info);
+>> +}
+>> +
+>> +type_init(scratchpad_register_types);
+>> diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+>> index e1007d5fea..f90e09ddab 100644
+>> --- a/hw/fsi/meson.build
+>> +++ b/hw/fsi/meson.build
+>> @@ -1 +1,2 @@
+>>   system_ss.add(when: 'CONFIG_LBUS', if_true: files('lbus.c'))
+>> +system_ss.add(when: 'CONFIG_SCRATCHPAD', if_true: 
+>> files('engine-scratchpad.c'))
+>> diff --git a/include/hw/fsi/engine-scratchpad.h 
+>> b/include/hw/fsi/engine-scratchpad.h
+>> new file mode 100644
+>> index 0000000000..63bf89ac5a
+>> --- /dev/null
+>> +++ b/include/hw/fsi/engine-scratchpad.h
+>> @@ -0,0 +1,33 @@
+>> +/*
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + * Copyright (C) 2023 IBM Corp.
+>> + *
+>> + * IBM scratchpad engne
+>> + */
+>> +#ifndef FSI_ENGINE_SCRATCHPAD_H
+>> +#define FSI_ENGINE_SCRATCHPAD_H
+>> +
+>> +#include "qemu/bitops.h"
+>> +
+>> +#include "hw/fsi/lbus.h"
+>> +
+>> +#define ENGINE_CONFIG_NEXT              BE_BIT(0)
+>> +#define ENGINE_CONFIG_VPD               BE_BIT(1)
+>> +#define ENGINE_CONFIG_SLOTS             BE_GENMASK(8, 15)
+>> +#define ENGINE_CONFIG_VERSION           BE_GENMASK(16, 19)
+>> +#define ENGINE_CONFIG_TYPE              BE_GENMASK(20, 27)
+>> +#define   ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
+>> +#define   ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
+>> +#define   ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
+>> +#define ENGINE_CONFIG_CRC              BE_GENMASK(28, 31)
+>> +
+>> +#define TYPE_SCRATCHPAD "scratchpad"
+>> +#define SCRATCHPAD(obj) OBJECT_CHECK(ScratchPad, (obj), 
+>> TYPE_SCRATCHPAD)
+>> +
+>> +typedef struct ScratchPad {
+>> +        LBusDevice parent;
+>> +
+>> +        uint32_t reg;
+>> +} ScratchPad;
+>> +
+>> +#endif /* FSI_ENGINE_SCRATCHPAD_H */
+>

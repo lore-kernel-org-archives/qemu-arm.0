@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id q14-20020adfcb8e000000b003296b488961sm9530042wrh.31.2023.10.09.09.41.05
+        by smtp.gmail.com with ESMTPSA id g7-20020a056000118700b003143c9beeaesm10076058wrx.44.2023.10.09.09.41.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 09 Oct 2023 09:41:06 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 4707B1FFBD;
+	by zen.linaroharston (Postfix) with ESMTP id A33B61FFBF;
 	Mon,  9 Oct 2023 17:41:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -47,51 +47,116 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	qemu-s390x@nongnu.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 02/25] tests/avocado: remove flaky test marking for test_sbsaref_edk2_firmware
-Date: Mon,  9 Oct 2023 17:40:41 +0100
-Message-Id: <20231009164104.369749-3-alex.bennee@linaro.org>
+Subject: [PATCH 04/25] gitlab: shuffle some targets and reduce avocado noise
+Date: Mon,  9 Oct 2023 17:40:43 +0100
+Message-Id: <20231009164104.369749-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231009164104.369749-1-alex.bennee@linaro.org>
 References: <20231009164104.369749-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: hU+GlfhulB3s
+X-TUID: lkRlieHsvyGq
 
-After testing locally I decided to revert a5754847e0 (tests/avocado: Disable the
-test_sbsaref_edk2_firmware by default) as the test seems pretty
-stable:
+We move a couple of targets out of the avocado runs because there are
+no tests to run. Tricore already has some coverage.  The cris target
+only really has check-tcg tests but its getting harder to find
+anything that packages the compiler.
 
-   env QEMU_TEST_FLAKY_TESTS=1 retry.py -n 50 -c -- \
-     ./tests/venv/bin/avocado run \
-     ./tests/avocado/machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_edk2_firmware
-
-yields:
-
-  Results summary:
-  0: 50 times (100.00%), avg time 2.064 (0.04 varience/0.19 deviation)
-  Ran command 50 times, 50 passes
-
-Maybe f0ec14c78c (tests/avocado: Fix console data loss) has made it
-more reliable?
+To reduce the noise of CANCEL messages we also set AVOCADO_TAGS
+appropriately so we filter down the number of tests we attempt.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>
----
- tests/avocado/machine_aarch64_sbsaref.py | 1 -
- 1 file changed, 1 deletion(-)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index b272053eaf..bdd1efc768 100644
---- a/tests/avocado/machine_aarch64_sbsaref.py
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -75,7 +75,6 @@ def fetch_firmware(self):
-             "sbsa-ref",
-         )
+---
+v2
+  - minor commit reword, no longer attempt to keep cris going
+---
+ .gitlab-ci.d/buildtest.yml | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index aee9101507..25af1bc41e 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -30,6 +30,7 @@ avocado-system-alpine:
+   variables:
+     IMAGE: alpine
+     MAKE_CHECK_ARGS: check-avocado
++    AVOCADO_TAGS: arch:avr arch:loongarch64 arch:mips64 arch:mipsel
  
--    @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is not reliable')
-     def test_sbsaref_edk2_firmware(self):
-         """
-         :avocado: tags=cpu:cortex-a57
+ build-system-ubuntu:
+   extends:
+@@ -40,8 +41,7 @@ build-system-ubuntu:
+   variables:
+     IMAGE: ubuntu2204
+     CONFIGURE_ARGS: --enable-docs
+-    TARGETS: alpha-softmmu cris-softmmu hppa-softmmu
+-      microblazeel-softmmu mips64el-softmmu
++    TARGETS: alpha-softmmu microblazeel-softmmu mips64el-softmmu
+     MAKE_CHECK_ARGS: check-build
+ 
+ check-system-ubuntu:
+@@ -61,6 +61,7 @@ avocado-system-ubuntu:
+   variables:
+     IMAGE: ubuntu2204
+     MAKE_CHECK_ARGS: check-avocado
++    AVOCADO_TAGS: arch:alpha arch:microblaze arch:mips64el
+ 
+ build-system-debian:
+   extends:
+@@ -72,7 +73,7 @@ build-system-debian:
+     IMAGE: debian-amd64
+     CONFIGURE_ARGS: --with-coroutine=sigaltstack
+     TARGETS: arm-softmmu i386-softmmu riscv64-softmmu sh4eb-softmmu
+-      sparc-softmmu xtensaeb-softmmu
++      sparc-softmmu xtensa-softmmu
+     MAKE_CHECK_ARGS: check-build
+ 
+ check-system-debian:
+@@ -92,6 +93,7 @@ avocado-system-debian:
+   variables:
+     IMAGE: debian-amd64
+     MAKE_CHECK_ARGS: check-avocado
++    AVOCADO_TAGS: arch:arm arch:i386 arch:riscv64 arch:sh4 arch:sparc arch:xtensa
+ 
+ crash-test-debian:
+   extends: .native_test_job_template
+@@ -114,7 +116,7 @@ build-system-fedora:
+   variables:
+     IMAGE: fedora
+     CONFIGURE_ARGS: --disable-gcrypt --enable-nettle --enable-docs
+-    TARGETS: tricore-softmmu microblaze-softmmu mips-softmmu
++    TARGETS: microblaze-softmmu mips-softmmu
+       xtensa-softmmu m68k-softmmu riscv32-softmmu ppc-softmmu sparc64-softmmu
+     MAKE_CHECK_ARGS: check-build
+ 
+@@ -135,6 +137,8 @@ avocado-system-fedora:
+   variables:
+     IMAGE: fedora
+     MAKE_CHECK_ARGS: check-avocado
++    AVOCADO_TAGS: arch:microblaze arch:mips arch:xtensa arch:m68k
++      arch:riscv32 arch:ppc arch:sparc64
+ 
+ crash-test-fedora:
+   extends: .native_test_job_template
+@@ -180,6 +184,8 @@ avocado-system-centos:
+   variables:
+     IMAGE: centos8
+     MAKE_CHECK_ARGS: check-avocado
++    AVOCADO_TAGS: arch:ppc64 arch:or1k arch:390x arch:x86_64 arch:rx
++      arch:sh4 arch:nios2
+ 
+ build-system-opensuse:
+   extends:
+@@ -209,6 +215,7 @@ avocado-system-opensuse:
+   variables:
+     IMAGE: opensuse-leap
+     MAKE_CHECK_ARGS: check-avocado
++    AVOCADO_TAGS: arch:s390x arch:x86_64 arch:aarch64
+ 
+ 
+ # This jobs explicitly disable TCG (--disable-tcg), KVM is detected by
 -- 
 2.39.2

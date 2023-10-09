@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id b16-20020adfe650000000b003266ece0fe2sm9994397wrn.98.2023.10.09.09.41.08
+        by smtp.gmail.com with ESMTPSA id v5-20020a05600c214500b003fbe791a0e8sm11713158wml.0.2023.10.09.09.41.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 09 Oct 2023 09:41:11 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D11671FFC6;
+	by zen.linaroharston (Postfix) with ESMTP id 849FE1FFC5;
 	Mon,  9 Oct 2023 17:41:06 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -48,249 +48,254 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 14/25] hw/core/cpu: Return static value with gdb_arch_name()
-Date: Mon,  9 Oct 2023 17:40:53 +0100
-Message-Id: <20231009164104.369749-15-alex.bennee@linaro.org>
+Subject: [PATCH 12/25] gdbstub: Introduce GDBFeature structure
+Date: Mon,  9 Oct 2023 17:40:51 +0100
+Message-Id: <20231009164104.369749-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231009164104.369749-1-alex.bennee@linaro.org>
 References: <20231009164104.369749-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /HKwg6ObMwhU
+X-TUID: G427xye9ZY/W
 
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-All implementations of gdb_arch_name() returns dynamic duplicates of
-static strings. It's also unlikely that there will be an implementation
-of gdb_arch_name() that returns a truly dynamic value due to the nature
-of the function returning a well-known identifiers. Qualify the value
-gdb_arch_name() with const and make all of its implementations return
-static strings.
+Before this change, the information from a XML file was stored in an
+array that is not descriptive. Introduce a dedicated structure type to
+make it easier to understand and to extend with more fields.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230912224107.29669-8-akihiko.odaki@daynix.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230912224107.29669-6-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/hw/core/cpu.h  | 2 +-
- target/ppc/internal.h  | 2 +-
- gdbstub/gdbstub.c      | 3 +--
- target/arm/cpu.c       | 6 +++---
- target/arm/cpu64.c     | 4 ++--
- target/i386/cpu.c      | 6 +++---
- target/loongarch/cpu.c | 8 ++++----
- target/ppc/gdbstub.c   | 6 +++---
- target/riscv/cpu.c     | 6 +++---
- target/s390x/cpu.c     | 4 ++--
- target/tricore/cpu.c   | 4 ++--
- 11 files changed, 25 insertions(+), 26 deletions(-)
+ MAINTAINERS             |  2 +-
+ meson.build             |  2 +-
+ include/exec/gdbstub.h  |  9 ++++--
+ gdbstub/gdbstub.c       |  6 ++--
+ stubs/gdbstub.c         |  6 ++--
+ scripts/feature_to_c.py | 48 ++++++++++++++++++++++++++++
+ scripts/feature_to_c.sh | 69 -----------------------------------------
+ 7 files changed, 63 insertions(+), 79 deletions(-)
+ create mode 100755 scripts/feature_to_c.py
+ delete mode 100644 scripts/feature_to_c.sh
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index e02bc5980f..7b8347ed5a 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -165,7 +165,7 @@ struct CPUClass {
-     vaddr (*gdb_adjust_breakpoint)(CPUState *cpu, vaddr addr);
+diff --git a/MAINTAINERS b/MAINTAINERS
+index ea91f9e804..0f421a0a03 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2836,7 +2836,7 @@ F: include/exec/gdbstub.h
+ F: include/gdbstub/*
+ F: gdb-xml/
+ F: tests/tcg/multiarch/gdbstub/
+-F: scripts/feature_to_c.sh
++F: scripts/feature_to_c.py
+ F: scripts/probe-gdb-support.py
  
-     const char *gdb_core_xml_file;
--    gchar * (*gdb_arch_name)(CPUState *cpu);
-+    const gchar * (*gdb_arch_name)(CPUState *cpu);
-     const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
+ Memory API
+diff --git a/meson.build b/meson.build
+index 3bb64b536c..9f4c4f2f1e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3693,7 +3693,7 @@ common_all = static_library('common',
+                             dependencies: common_all.dependencies(),
+                             name_suffix: 'fa')
  
-     void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
-diff --git a/target/ppc/internal.h b/target/ppc/internal.h
-index 15803bc313..c881c67a8b 100644
---- a/target/ppc/internal.h
-+++ b/target/ppc/internal.h
-@@ -221,7 +221,7 @@ void destroy_ppc_opcodes(PowerPCCPU *cpu);
+-feature_to_c = find_program('scripts/feature_to_c.sh')
++feature_to_c = find_program('scripts/feature_to_c.py')
  
- /* gdbstub.c */
- void ppc_gdb_init(CPUState *cs, PowerPCCPUClass *ppc);
--gchar *ppc_gdb_arch_name(CPUState *cs);
-+const gchar *ppc_gdb_arch_name(CPUState *cs);
+ if targetos == 'darwin'
+   entitlement = find_program('scripts/entitlement.sh')
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index 16a139043f..705be2c5d7 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -10,6 +10,11 @@
+ #define GDB_WATCHPOINT_READ      3
+ #define GDB_WATCHPOINT_ACCESS    4
  
- /**
-  * prot_for_access_type:
++typedef struct GDBFeature {
++    const char *xmlname;
++    const char *xml;
++} GDBFeature;
++
+ 
+ /* Get or set a register.  Returns the size of the register.  */
+ typedef int (*gdb_get_reg_cb)(CPUArchState *env, GByteArray *buf, int reg);
+@@ -48,7 +53,7 @@ void gdb_set_stop_cpu(CPUState *cpu);
+  */
+ bool gdb_has_xml(void);
+ 
+-/* in gdbstub-xml.c, generated by scripts/feature_to_c.sh */
+-extern const char *const xml_builtin[][2];
++/* in gdbstub-xml.c, generated by scripts/feature_to_c.py */
++extern const GDBFeature gdb_static_features[];
+ 
+ #endif
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index bba2640293..a20169c27b 100644
+index 4f3762fccf..bba2640293 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -380,10 +380,9 @@ static const char *get_feature_xml(const char *p, const char **newp,
-                             "<target>");
- 
-             if (cc->gdb_arch_name) {
--                g_autofree gchar *arch = cc->gdb_arch_name(cpu);
-                 g_string_append_printf(xml,
-                                        "<architecture>%s</architecture>",
--                                       arch);
-+                                       cc->gdb_arch_name(cpu));
-             }
-             g_string_append(xml, "<xi:include href=\"");
-             g_string_append(xml, cc->gdb_core_xml_file);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index b65e8cfea3..6c6c551573 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2319,15 +2319,15 @@ static Property arm_cpu_properties[] = {
-     DEFINE_PROP_END_OF_LIST()
- };
- 
--static gchar *arm_gdb_arch_name(CPUState *cs)
-+static const gchar *arm_gdb_arch_name(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
- 
-     if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
--        return g_strdup("iwmmxt");
-+        return "iwmmxt";
+@@ -408,11 +408,11 @@ static const char *get_feature_xml(const char *p, const char **newp,
+         }
      }
--    return g_strdup("arm");
-+    return "arm";
- }
- 
- #ifndef CONFIG_USER_ONLY
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 811f3b38c2..1cb9d5b81a 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -781,9 +781,9 @@ static void aarch64_cpu_finalizefn(Object *obj)
- {
- }
- 
--static gchar *aarch64_gdb_arch_name(CPUState *cs)
-+static const gchar *aarch64_gdb_arch_name(CPUState *cs)
- {
--    return g_strdup("aarch64");
-+    return "aarch64";
- }
- 
- static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 9fad31b8db..c09bab4281 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -5915,12 +5915,12 @@ static void x86_cpu_load_model(X86CPU *cpu, X86CPUModel *model)
-     memset(&env->user_features, 0, sizeof(env->user_features));
- }
- 
--static gchar *x86_gdb_arch_name(CPUState *cs)
-+static const gchar *x86_gdb_arch_name(CPUState *cs)
- {
- #ifdef TARGET_X86_64
--    return g_strdup("i386:x86-64");
-+    return "i386:x86-64";
- #else
--    return g_strdup("i386");
-+    return "i386";
- #endif
- }
- 
-diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
-index 2bea7ca5d5..ef1bf89dac 100644
---- a/target/loongarch/cpu.c
-+++ b/target/loongarch/cpu.c
-@@ -766,9 +766,9 @@ static void loongarch_cpu_class_init(ObjectClass *c, void *data)
- #endif
- }
- 
--static gchar *loongarch32_gdb_arch_name(CPUState *cs)
-+static const gchar *loongarch32_gdb_arch_name(CPUState *cs)
- {
--    return g_strdup("loongarch32");
-+    return "loongarch32";
- }
- 
- static void loongarch32_cpu_class_init(ObjectClass *c, void *data)
-@@ -780,9 +780,9 @@ static void loongarch32_cpu_class_init(ObjectClass *c, void *data)
-     cc->gdb_arch_name = loongarch32_gdb_arch_name;
- }
- 
--static gchar *loongarch64_gdb_arch_name(CPUState *cs)
-+static const gchar *loongarch64_gdb_arch_name(CPUState *cs)
- {
--    return g_strdup("loongarch64");
-+    return "loongarch64";
- }
- 
- static void loongarch64_cpu_class_init(ObjectClass *c, void *data)
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 2ad11510bf..778ef73bd7 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -589,12 +589,12 @@ static int gdb_set_vsx_reg(CPUPPCState *env, uint8_t *mem_buf, int n)
-     return 0;
- }
- 
--gchar *ppc_gdb_arch_name(CPUState *cs)
-+const gchar *ppc_gdb_arch_name(CPUState *cs)
- {
- #if defined(TARGET_PPC64)
--    return g_strdup("powerpc:common64");
-+    return "powerpc:common64";
- #else
--    return g_strdup("powerpc:common");
-+    return "powerpc:common";
- #endif
- }
- 
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index ac2b94b6a6..f5572704de 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -2004,17 +2004,17 @@ static Property riscv_cpu_properties[] = {
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
--static gchar *riscv_gdb_arch_name(CPUState *cs)
-+static const gchar *riscv_gdb_arch_name(CPUState *cs)
- {
-     RISCVCPU *cpu = RISCV_CPU(cs);
-     CPURISCVState *env = &cpu->env;
- 
-     switch (riscv_cpu_mxl(env)) {
-     case MXL_RV32:
--        return g_strdup("riscv:rv32");
-+        return "riscv:rv32";
-     case MXL_RV64:
-     case MXL_RV128:
--        return g_strdup("riscv:rv64");
-+        return "riscv:rv64";
-     default:
-         g_assert_not_reached();
+     /* Is it one of the encoded gdb-xml/ files? */
+-    for (int i = 0; xml_builtin[i][0]; i++) {
+-        const char *name = xml_builtin[i][0];
++    for (int i = 0; gdb_static_features[i].xmlname; i++) {
++        const char *name = gdb_static_features[i].xmlname;
+         if ((strncmp(name, p, len) == 0) &&
+             strlen(name) == len) {
+-            return xml_builtin[i][1];
++            return gdb_static_features[i].xml;
+         }
      }
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 4f7599d72c..6093ab0a12 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -282,9 +282,9 @@ static void s390_cpu_initfn(Object *obj)
- #endif
- }
  
--static gchar *s390_gdb_arch_name(CPUState *cs)
-+static const gchar *s390_gdb_arch_name(CPUState *cs)
- {
--    return g_strdup("s390:64-bit");
-+    return "s390:64-bit";
- }
+diff --git a/stubs/gdbstub.c b/stubs/gdbstub.c
+index 2b7aee50d3..580e20702b 100644
+--- a/stubs/gdbstub.c
++++ b/stubs/gdbstub.c
+@@ -1,6 +1,6 @@
+ #include "qemu/osdep.h"
+-#include "exec/gdbstub.h"       /* xml_builtin */
++#include "exec/gdbstub.h"       /* gdb_static_features */
  
- static Property s390x_cpu_properties[] = {
-diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
-index d1477622e6..5ca666ee12 100644
---- a/target/tricore/cpu.c
-+++ b/target/tricore/cpu.c
-@@ -29,9 +29,9 @@ static inline void set_feature(CPUTriCoreState *env, int feature)
-     env->features |= 1ULL << feature;
- }
- 
--static gchar *tricore_gdb_arch_name(CPUState *cs)
-+static const gchar *tricore_gdb_arch_name(CPUState *cs)
- {
--    return g_strdup("tricore");
-+    return "tricore";
- }
- 
- static void tricore_cpu_set_pc(CPUState *cs, vaddr value)
+-const char *const xml_builtin[][2] = {
+-  { NULL, NULL }
++const GDBFeature gdb_static_features[] = {
++  { NULL }
+ };
+diff --git a/scripts/feature_to_c.py b/scripts/feature_to_c.py
+new file mode 100755
+index 0000000000..bcbcb83beb
+--- /dev/null
++++ b/scripts/feature_to_c.py
+@@ -0,0 +1,48 @@
++#!/usr/bin/env python3
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import os, sys
++
++def writeliteral(indent, bytes):
++    sys.stdout.write(' ' * indent)
++    sys.stdout.write('"')
++    quoted = True
++
++    for c in bytes:
++        if not quoted:
++            sys.stdout.write('\n')
++            sys.stdout.write(' ' * indent)
++            sys.stdout.write('"')
++            quoted = True
++
++        if c == b'"'[0]:
++            sys.stdout.write('\\"')
++        elif c == b'\\'[0]:
++            sys.stdout.write('\\\\')
++        elif c == b'\n'[0]:
++            sys.stdout.write('\\n"')
++            quoted = False
++        elif c >= 32 and c < 127:
++            sys.stdout.write(c.to_bytes(1, 'big').decode())
++        else:
++            sys.stdout.write(f'\{c:03o}')
++
++    if quoted:
++        sys.stdout.write('"')
++
++sys.stdout.write('#include "qemu/osdep.h"\n' \
++                 '#include "exec/gdbstub.h"\n' \
++                 '\n'
++                 'const GDBFeature gdb_static_features[] = {\n')
++
++for input in sys.argv[1:]:
++    with open(input, 'rb') as file:
++        read = file.read()
++
++    sys.stdout.write('    {\n')
++    writeliteral(8, bytes(os.path.basename(input), 'utf-8'))
++    sys.stdout.write(',\n')
++    writeliteral(8, read)
++    sys.stdout.write('\n    },\n')
++
++sys.stdout.write('    { NULL }\n};\n')
+diff --git a/scripts/feature_to_c.sh b/scripts/feature_to_c.sh
+deleted file mode 100644
+index c1f67c8f6a..0000000000
+--- a/scripts/feature_to_c.sh
++++ /dev/null
+@@ -1,69 +0,0 @@
+-#!/bin/sh
+-
+-# Convert text files to compilable C arrays.
+-#
+-# Copyright (C) 2007 Free Software Foundation, Inc.
+-#
+-# This file is part of GDB.
+-#
+-# This program is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 2 of the License, or
+-# (at your option) any later version.
+-#
+-# This program is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with this program; if not, see <http://www.gnu.org/licenses/>.
+-
+-if test -z "$1"; then
+-  echo "Usage: $0 INPUTFILE..."
+-  exit 1
+-fi
+-
+-for input; do
+-  arrayname=xml_feature_$(echo $input | sed 's,.*/,,; s/[-.]/_/g')
+-
+-  ${AWK:-awk} 'BEGIN { n = 0
+-      printf "#include \"qemu/osdep.h\"\n"
+-      print "static const char '$arrayname'[] = {"
+-      for (i = 0; i < 255; i++)
+-        _ord_[sprintf("%c", i)] = i
+-    } {
+-      split($0, line, "");
+-      printf "  "
+-      for (i = 1; i <= length($0); i++) {
+-        c = line[i]
+-        if (c == "'\''") {
+-          printf "'\''\\'\'''\'', "
+-        } else if (c == "\\") {
+-          printf "'\''\\\\'\'', "
+-        } else if (_ord_[c] >= 32 && _ord_[c] < 127) {
+-	  printf "'\''%s'\'', ", c
+-        } else {
+-          printf "'\''\\%03o'\'', ", _ord_[c]
+-        }
+-        if (i % 10 == 0)
+-          printf "\n   "
+-      }
+-      printf "'\''\\n'\'', \n"
+-    } END {
+-      print "  0 };"
+-    }' < $input
+-done
+-
+-echo
+-echo '#include "exec/gdbstub.h"'
+-echo "const char *const xml_builtin[][2] = {"
+-
+-for input; do
+-  basename=$(echo $input | sed 's,.*/,,')
+-  arrayname=xml_feature_$(echo $input | sed 's,.*/,,; s/[-.]/_/g')
+-  echo "  { \"$basename\", $arrayname },"
+-done
+-
+-echo "  { (char *)0, (char *)0 }"
+-echo "};"
 -- 
 2.39.2

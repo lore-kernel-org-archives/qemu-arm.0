@@ -1,448 +1,220 @@
-Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp2025127ejb;
-        Mon, 9 Oct 2023 07:58:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGVXlIylhf5PsuqUjo9idgI1LNMGe0nGpm1HVgDfDkPo8FxeEotNp018dVKfvzY9v+Mdtc0
-X-Received: by 2002:ac8:5ccb:0:b0:412:309f:c0fa with SMTP id s11-20020ac85ccb000000b00412309fc0famr15078010qta.64.1696863535397;
-        Mon, 09 Oct 2023 07:58:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696863535; cv=none;
+Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp2034842ejb;
+        Mon, 9 Oct 2023 08:10:51 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFa5KbbUEqo/EeV5BiJqbNAPcXNve6QeQtZufsKNeM9bru7Y+4EncwpvOL0ROi3GHatUWIU
+X-Received: by 2002:a05:600c:b59:b0:401:b1c6:97dc with SMTP id k25-20020a05600c0b5900b00401b1c697dcmr14052123wmr.23.1696864251281;
+        Mon, 09 Oct 2023 08:10:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696864251; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fq41RSOzO5dmu89Gxp4ahNTvnSyfU0MrLXRldjFigrl9LkAnT2NqyNOzyVopSb+7H+
-         6HWYwXaytT8k1wEiJLM/z/ltdFPQbL2C9duoqRY752q0aWBLUEtlSK8WZYlYc64jcjXO
-         KYfk7dB80IqWdQnsuoGuF6oLkd8Cy8oLqn2SDCPv14Kumpql6agOvtXObhekojv6f/e4
-         CiQwIzQCIocQE4WW2vyq6IBHVB8o88F/WyrwdES3cUSxTv70l6DL71fi5a1dPxVMDuCZ
-         JY7DNoTsB5m9DB0YRS5j5g6ct2EA+Pq4hTEDE753CuoJZKJiHLxo5sYK3vFnaQIcY8Rx
-         F6rg==
+        b=O73xzdiHbmKbEJ5/j5WqeAODnC1eDt0bMnYNQXhwSJ4B1D4Rjh1N7sTcRvR3IhHOFr
+         vyXDj/1tEPM13GgZOcmEtBO6/CKwdEorC9RrrPEhz6rKX+7DUwOP9Er38XIOH6ypHSpz
+         YazLV2v6IrLGRHYF/zhwAUSjxEJYet2LTnV12ds8Qh2qF8YHZVpEekZPQEc9Qetlu0Zb
+         D3V+ywJhFaDGB9S+J4L9b05XC0RpDNVQqW6n5Mu8L8UOmSwgBfg8ikkZkArbMVfgP795
+         jgC4R/9KjYWk5IcSOOe4uxzM0bQ+3VeRM8bqZ/dK8H8nIjpbSd5Nogs9OKg9cdNCWVe7
+         VSow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=AQrPXPlSdwmy/h1FWrgClK+E0VJstRQEC9V8v0rNkqg=;
-        fh=qShmx9hl1ph34ulEBOCe1Wl+bd1jf8hIEJWbXZnp4xc=;
-        b=r1W5gm7vszXZuAEYMCGqdyJ48DWcsMFgsLXnLtZ7aUt/69EALbwAqi8chftBceO1js
-         LwZmqWKAcPWzN9VKdNZN6IPxNqp2BIj4WqYss3BIz/V4wPQ84osIrfc4nKsXK49BToFa
-         n8jNK9gZDDXJ4EU13Vy0X/jGBrA7ptwx944yFrM/5CDuqC8dw0ZLiBslsX19uIDuMWb+
-         HRGaSeNG8Q75f6cmZjnFf9fq+H+uyAgLDl9OrYB0sTrYiWFxyi0WnqJcDI4TNJKm0ZcA
-         MgDbBjH0tZT/CWf4rt1XPtaDfyJM/Fn5RlblCxDj9ZAI6zPxzVncXSMixnvDT1Yh1KYp
-         shng==
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=vadRMrc9CpuCe77yf+qyETXiW2xYbTbxogZ/Vo6ikWg=;
+        fh=Kb2Gcs7VD5wSTmDinyryIWwdRPJCIlRG79qMBRsDV+8=;
+        b=IeqfpQXx8oInSzRW7cJ5RRgHgdrCmRppcxDK5psQSYqU3EYkQjzWgsT6q44JCY7xat
+         MjQt/3Cm/og4p3AKbZ6LzszbRQ4X2JzLJZPkq183sHKN9l+KocLjZxAiCrF1PuAm83FI
+         qdpJV7K9ApKVA3gB+/C3XtF9Q1WZsxYWc7gVdmPxJ8bTv+5HwHNDHyV/mVJnOmZaLMau
+         bZci42ZH0ids/k3eA0nzPHGjzwgP2u+jeT9az2rU9yx+ux45+H1cz8ZOy85o3creIwar
+         1/a+4OI2aWyryxn2lLVzCrpYbpggTTlBXTmveLaZ2RlgptMYFSXlM3ACpzhyveIb+aPH
+         yvFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Wo4pt+hl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w14-20020ac87e8e000000b004196273dbbbsi6249222qtj.267.2023.10.09.07.58.55
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Oct 2023 07:58:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id az41-20020a05600c602900b0040472e7a967si6652518wmb.140.2023.10.09.08.10.50
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 09 Oct 2023 08:10:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Wo4pt+hl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qpriG-0001Tn-QR; Mon, 09 Oct 2023 10:58:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qpriE-0001Rk-0f; Mon, 09 Oct 2023 10:58:26 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
- id 1qpriB-0006lB-PF; Mon, 09 Oct 2023 10:58:25 -0400
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 399Eqsfr020247; Mon, 9 Oct 2023 14:58:04 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=AQrPXPlSdwmy/h1FWrgClK+E0VJstRQEC9V8v0rNkqg=;
- b=Wo4pt+hlS4Dc/Dna6xMyX5xKtGxsNw1rXUmIrq4jRmlxz7Id53YxhCWm6E8nCA/XsAZf
- JSuF80rMNLG4mTE5c7OAWenenRyI30jTP8+HH6pFYqK9a7HV4Wtvz5gABz2gYU1UkQjm
- s4LOaPM1KWU+86AhWbMCU8FVKkd7xtG6V9WKzZyDn9lq0NT3T+/k4yy1zivwyCFLW664
- n/tZFMuudXfxsxdXSeGJgOEdW/6t60sqwRLKvqNJpEU9tYtfTjtizCRkhEW6BH8bSsil
- VtcOxmUzJwFQpbmPAgse5i23ac3Es3WwqXyz+CwS54CeYel0Qqi9ivI9USdpO1YB+05c 9A== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tmknr83h4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Oct 2023 14:58:03 +0000
-Received: from m0360083.ppops.net (m0360083.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 399ErdNx023754;
- Mon, 9 Oct 2023 14:58:00 GMT
-Received: from ppma12.dal12v.mail.ibm.com
- (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tmknr83bc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Oct 2023 14:57:59 +0000
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 399DxcxG024498; Mon, 9 Oct 2023 14:57:43 GMT
-Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tkhnsa16h-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Oct 2023 14:57:42 +0000
-Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
- [10.241.53.101])
- by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 399EvgkT3080846
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 9 Oct 2023 14:57:42 GMT
-Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id EB7575805A;
- Mon,  9 Oct 2023 14:57:41 +0000 (GMT)
-Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8A84C58051;
- Mon,  9 Oct 2023 14:57:41 +0000 (GMT)
-Received: from [9.61.164.107] (unknown [9.61.164.107])
- by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Mon,  9 Oct 2023 14:57:41 +0000 (GMT)
-Message-ID: <82889381-02aa-4558-950e-e76c2878afe5@linux.ibm.com>
-Date: Mon, 9 Oct 2023 09:57:41 -0500
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/10] hw/fsi: Introduce IBM's Local bus
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
-Cc: qemu-arm@nongnu.org
-References: <20230908222859.3381003-1-ninad@linux.ibm.com>
- <20230908222859.3381003-2-ninad@linux.ibm.com>
- <e25d0310-72f0-8bb0-2538-dad86f407e01@kaod.org>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.201])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S42VZ2xf4z6K6wg;
+	Mon,  9 Oct 2023 23:08:54 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Mon, 9 Oct 2023 16:10:49 +0100
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
+ Mon, 9 Oct 2023 16:10:49 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: David Hildenbrand <david@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
+	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "philmd@linaro.org"
+	<philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
+	<pbonzini@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "will@kernel.org"
+	<will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
+	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
+	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
+	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+	Linuxarm <linuxarm@huawei.com>
+Subject: RE: [PATCH V3 01/10] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+Thread-Topic: [PATCH V3 01/10] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+Thread-Index: AQHZ+qPnrJn3/z1SYEi9OUvIaCcfXrBBUAWAgAAepOCAAAAuAIAAHeyg
+Date: Mon, 9 Oct 2023 15:10:49 +0000
+Message-ID: <0c972e213f9a46c3a595dc7f933046aa@huawei.com>
+References: <20231009112812.10612-1-salil.mehta@huawei.com>
+	<20231009112812.10612-2-salil.mehta@huawei.com>
+	<a02eae26-6018-6f5c-1b82-e6061544022b@redhat.com>
+	<63f8e47efcd045b1b8481f6fd427c4b1@huawei.com>
+ <ae2e0fc1-7967-2bae-e4fa-b4d886ba4671@redhat.com>
+In-Reply-To: <ae2e0fc1-7967-2bae-e4fa-b4d886ba4671@redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: Ninad Palsule <ninad@linux.ibm.com>
-In-Reply-To: <e25d0310-72f0-8bb0-2538-dad86f407e01@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 5Lyj2Jw2Kh-bsRhqH-fiOgo2dtwi4nTH
-X-Proofpoint-ORIG-GUID: uVX9YrTKM6zCA38L0pWyZgvNt8mAEkam
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-09_13,2023-10-09_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 phishscore=0
- malwarescore=0 priorityscore=1501 mlxlogscore=999 impostorscore=0
- suspectscore=0 adultscore=0 clxscore=1011 mlxscore=0 lowpriorityscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2309180000 definitions=main-2310090124
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qNQAgxU0u/F4
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.48.154.91]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-TUID: aW0JMJAoU1L7
 
-Hello Cederic,
-
-On 9/9/23 03:25, Cédric Le Goater wrote:
-> On 9/9/23 00:28, Ninad Palsule wrote:
->> This is a part of patchset where IBM's Flexible Service Interface is
->> introduced.
->>
->> The LBUS is modelled to maintain the qdev bus hierarchy and to take
->> advantage of the object model to automatically generate the CFAM
->> configuration block. The configuration block presents engines in the
->> order they are attached to the CFAM's LBUS. Engine implementations
->> should subclass the LBusDevice and set the 'config' member of
->> LBusDeviceClass to match the engine's type.
->>
->> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
->> ---
->> v2:
->> - Incorporated Joel's review comments.
->> ---
->
->
-> It is nice to have the header files upfront.
->
->   orderFile = /path/to/qemu/scripts/git.orderfile
-ok, Done. Thanks. I wasn't aware of this.
->
->
->>   hw/Kconfig            |  1 +
->>   hw/fsi/Kconfig        |  2 +
->>   hw/fsi/lbus.c         | 94 +++++++++++++++++++++++++++++++++++++++++++
->>   hw/fsi/meson.build    |  1 +
->>   hw/meson.build        |  1 +
->>   include/hw/fsi/lbus.h | 48 ++++++++++++++++++++++
->>   include/qemu/bitops.h |  6 +++
->>   7 files changed, 153 insertions(+)
->>   create mode 100644 hw/fsi/Kconfig
->>   create mode 100644 hw/fsi/lbus.c
->>   create mode 100644 hw/fsi/meson.build
->>   create mode 100644 include/hw/fsi/lbus.h
->>
->> diff --git a/hw/Kconfig b/hw/Kconfig
->> index ba62ff6417..2ccb73add5 100644
->> --- a/hw/Kconfig
->> +++ b/hw/Kconfig
->> @@ -9,6 +9,7 @@ source core/Kconfig
->>   source cxl/Kconfig
->>   source display/Kconfig
->>   source dma/Kconfig
->> +source fsi/Kconfig
->>   source gpio/Kconfig
->>   source hyperv/Kconfig
->>   source i2c/Kconfig
->> diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
->> new file mode 100644
->> index 0000000000..687449e14e
->> --- /dev/null
->> +++ b/hw/fsi/Kconfig
->> @@ -0,0 +1,2 @@
->> +config LBUS
->> +    bool
->> diff --git a/hw/fsi/lbus.c b/hw/fsi/lbus.c
->> new file mode 100644
->> index 0000000000..afb26ef7ea
->> --- /dev/null
->> +++ b/hw/fsi/lbus.c
->> @@ -0,0 +1,94 @@
->> +/*
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + * Copyright (C) 2023 IBM Corp.
->> + *
->> + * IBM Local bus where FSI slaves are connected
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +
->> +#include "qapi/error.h"
->> +#include "qemu/log.h"
->> +
->> +#include "hw/fsi/lbus.h"
->> +
->> +#include "hw/qdev-properties.h"
->> +
->> +static void lbus_realize(BusState *bus, Error **errp)
->> +{
->> +    LBusNode *node;
->> +    LBus *lbus = LBUS(bus);
->> +
->> +    memory_region_init(&lbus->mr, OBJECT(lbus), TYPE_LBUS,
->> +                       (2 * 1024 * 1024) - 0x400);
->
-> please use some define
-Added defines.
->
->> +
->> +    QLIST_FOREACH(node, &lbus->devices, next) {
->> +        memory_region_add_subregion(&lbus->mr, node->ldev->address,
->> + &node->ldev->iomem);
->> +    }
->> +}
->> +
->> +static void lbus_init(Object *o)
->> +{
->> +}
->> +
->
-> please remove if unused
-Removed.
->
->
->> +static void lbus_class_init(ObjectClass *klass, void *data)
->> +{
->> +    BusClass *k = BUS_CLASS(klass);
->> +    k->realize = lbus_realize;
->> +}
->> +
->> +static const TypeInfo lbus_info = {
->> +    .name = TYPE_LBUS,
->> +    .parent = TYPE_BUS,
->> +    .instance_init = lbus_init,
->> +    .instance_size = sizeof(LBus),
->> +    .class_init = lbus_class_init,
->> +};
->> +
->> +static Property lbus_device_props[] = {
->> +    DEFINE_PROP_UINT32("address", LBusDevice, address, 0),
->> +    DEFINE_PROP_END_OF_LIST(),
->> +};
->> +
->> +DeviceState *lbus_create_device(LBus *bus, const char *type, 
->> uint32_t addr)
->> +{
->> +    DeviceState *dev;
->> +    LBusNode *node;
->> +
->> +    dev = qdev_new(type);
->> +    qdev_prop_set_uint8(dev, "address", addr);
->> +    qdev_realize_and_unref(dev, &bus->bus, &error_fatal);
->
->  BUS(bus) ?
-Fixed
->
->> +
->> +    /* Move to post_load */
->> +    node = g_malloc(sizeof(struct LBusNode));
->> +    node->ldev = LBUS_DEVICE(dev);
->> +    QLIST_INSERT_HEAD(&bus->devices, node, next);
->
-> This list looks useless to me.
-This list is used to add new devices. Keeping it for now.
->
->> +    return dev;
->> +}
->> +
->> +static void lbus_device_class_init(ObjectClass *klass, void *data)
->> +{
->> +    DeviceClass *dc = DEVICE_CLASS(klass);
->> +
->> +    dc->bus_type = TYPE_LBUS;
->> +    device_class_set_props(dc, lbus_device_props);
->> +}
->> +
->> +static const TypeInfo lbus_device_type_info = {
->> +    .name = TYPE_LBUS_DEVICE,
->> +    .parent = TYPE_DEVICE,
->> +    .instance_size = sizeof(LBusDevice),
->> +    .abstract = true,
->> +    .class_init = lbus_device_class_init,
->> +    .class_size = sizeof(LBusDeviceClass),
->> +};
->> +
->> +static void lbus_register_types(void)
->> +{
->> +    type_register_static(&lbus_info);
->> +    type_register_static(&lbus_device_type_info);
->> +}
->> +
->> +type_init(lbus_register_types);
->> diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
->> new file mode 100644
->> index 0000000000..e1007d5fea
->> --- /dev/null
->> +++ b/hw/fsi/meson.build
->> @@ -0,0 +1 @@
->> +system_ss.add(when: 'CONFIG_LBUS', if_true: files('lbus.c'))
->> diff --git a/hw/meson.build b/hw/meson.build
->> index c7ac7d3d75..6c71ee9cfa 100644
->> --- a/hw/meson.build
->> +++ b/hw/meson.build
->> @@ -43,6 +43,7 @@ subdir('virtio')
->>   subdir('watchdog')
->>   subdir('xen')
->>   subdir('xenpv')
->> +subdir('fsi')
->>     subdir('alpha')
->>   subdir('arm')
->> diff --git a/include/hw/fsi/lbus.h b/include/hw/fsi/lbus.h
->> new file mode 100644
->> index 0000000000..fafc065178
->> --- /dev/null
->> +++ b/include/hw/fsi/lbus.h
->> @@ -0,0 +1,48 @@
->> +/*
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + * Copyright (C) 2023 IBM Corp.
->> + *
->> + * IBM Local bus and connected device structures.
->> + */
->> +#ifndef FSI_LBUS_H
->> +#define FSI_LBUS_H
->> +
->> +#include "exec/memory.h"
->> +#include "hw/qdev-core.h"
->> +
->> +#define TYPE_LBUS_DEVICE "lbus.device"
->> +OBJECT_DECLARE_TYPE(LBusDevice, LBusDeviceClass, LBUS_DEVICE)
->>
->
-> Using an "fsi/FSI"  prefix for all definitions seems like a good idea
-> to avoid namespace conflicts.
-Added FSI prefix.
->
->> +typedef struct LBusDevice {
->> +    DeviceState parent;
->> +
->> +    MemoryRegion iomem;
->> +    uint32_t address;
->> +} LBusDevice;
->> +
->> +typedef struct LBusDeviceClass {
->> +    DeviceClass parent;
->> +
->> +    uint32_t config;
->> +} LBusDeviceClass;
->> +
->> +typedef struct LBusNode {
->> +    LBusDevice *ldev;
->> +
->> +    QLIST_ENTRY(LBusNode) next;
->> +} LBusNode;
->> +
->> +#define TYPE_LBUS "lbus"
->> +OBJECT_DECLARE_SIMPLE_TYPE(LBus, LBUS)
->> +
->> +typedef struct LBus {
->> +    BusState bus;
->> +
->> +    MemoryRegion mr;
->> +
->> +    QLIST_HEAD(, LBusNode) devices;
->
-> BusState already has a list. I think this needs to be reworked.
-The list in BusState is for the buses. This list is for devices.
->
->
->> +} LBus;
->> +
->> +DeviceState *lbus_create_device(LBus *bus, const char *type, 
->> uint32_t addr);
->> +int lbus_add_device(LBus *bus, LBusDevice *dev);
->> +#endif /* FSI_LBUS_H */
->> diff --git a/include/qemu/bitops.h b/include/qemu/bitops.h
->> index cb3526d1f4..e12496f619 100644
->> --- a/include/qemu/bitops.h
->> +++ b/include/qemu/bitops.h
->> @@ -618,4 +618,10 @@ static inline uint64_t half_unshuffle64(uint64_t x)
->>       return x;
->>   }
->>   +/* Bitwise operations at the word level. */
->> +#define BE_BIT(x)                          BIT(31 - (x))
->> +#define GENMASK(t, b) \
->> +    (((1ULL << ((t) + 1)) - 1) & ~((1ULL << (b)) - 1))
->> +#define BE_GENMASK(t, b)                   GENMASK(BE_BIT(t), 
->> BE_BIT(b))
->
-> I think we should rework the code to make these macro local to the fsi
-> subsystem, in the fsi.h file, or even better get rid of them.
-
-OK, Removed it from bitops.h
-
-Thanks for the review.
-
-~ Ninad
-
->
-> Thanks,
->
-> C.
->
->
->>   #endif
->
+PiBGcm9tOiBEYXZpZCBIaWxkZW5icmFuZCA8ZGF2aWRAcmVkaGF0LmNvbT4NCj4gU2VudDogTW9u
+ZGF5LCBPY3RvYmVyIDksIDIwMjMgMzoxMSBQTQ0KPiBUbzogU2FsaWwgTWVodGEgPHNhbGlsLm1l
+aHRhQGh1YXdlaS5jb20+OyBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtDQo+IGFybUBub25n
+bnUub3JnDQo+IENjOiBtYXpAa2VybmVsLm9yZzsgamVhbi1waGlsaXBwZUBsaW5hcm8ub3JnOyBK
+b25hdGhhbiBDYW1lcm9uDQo+IDxqb25hdGhhbi5jYW1lcm9uQGh1YXdlaS5jb20+OyBscGllcmFs
+aXNpQGtlcm5lbC5vcmc7DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgcmljaGFyZC5oZW5k
+ZXJzb25AbGluYXJvLm9yZzsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgYW5kcmV3LmpvbmVzQGxp
+bnV4LmRldjsgcGhpbG1kQGxpbmFyby5vcmc7DQo+IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgb2xp
+dmVyLnVwdG9uQGxpbnV4LmRldjsgcGJvbnppbmlAcmVkaGF0LmNvbTsNCj4gbXN0QHJlZGhhdC5j
+b207IHdpbGxAa2VybmVsLm9yZzsgZ3NoYW5AcmVkaGF0LmNvbTsgcmFmYWVsQGtlcm5lbC5vcmc7
+DQo+IGFsZXguYmVubmVlQGxpbmFyby5vcmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51azsNCj4gZGFy
+cmVuQG9zLmFtcGVyZWNvbXB1dGluZy5jb207IGlsa2thQG9zLmFtcGVyZWNvbXB1dGluZy5jb207
+DQo+IHZpc2hudUBvcy5hbXBlcmVjb21wdXRpbmcuY29tOyBrYXJsLmhldWJhdW1Ab3JhY2xlLmNv
+bTsNCj4gbWlndWVsLmx1aXNAb3JhY2xlLmNvbTsgc2FsaWwubWVodGFAb3Buc3JjLm5ldDsgemh1
+a2VxaWFuDQo+IDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5nIChDKSA8d2Fu
+Z3hpb25nZmVuZzJAaHVhd2VpLmNvbT47DQo+IHdhbmd5YW5hbiAoWSkgPHdhbmd5YW5hbjU1QGh1
+YXdlaS5jb20+OyBqaWFrZXJuZWwyQGdtYWlsLmNvbTsNCj4gbWFvYmlib0Bsb29uZ3Nvbi5jbjsg
+bGl4aWFuZ2xhaUBsb29uZ3Nvbi5jbjsgTGludXhhcm0gPGxpbnV4YXJtQGh1YXdlaS5jb20+DQo+
+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggVjMgMDEvMTBdIGFjY2VsL2t2bTogRXh0cmFjdCBjb21tb24g
+S1ZNIHZDUFUNCj4ge2NyZWF0aW9uLHBhcmtpbmd9IGNvZGUNCj4gDQo+IE9uIDA5LjEwLjIzIDE1
+OjQyLCBTYWxpbCBNZWh0YSB3cm90ZToNCj4gPiBIaSBEYXZpZCwNCj4gPiBUaGFua3MgZm9yIHRo
+ZSByZXZpZXcuDQo+ID4NCj4gPj4gRnJvbTogRGF2aWQgSGlsZGVuYnJhbmQgPGRhdmlkQHJlZGhh
+dC5jb20+DQo+ID4+IFNlbnQ6IE1vbmRheSwgT2N0b2JlciA5LCAyMDIzIDE6MjEgUE0NCj4gPj4g
+VG86IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPjsgcWVtdS1kZXZlbEBub25n
+bnUub3JnOyBxZW11LWFybUBub25nbnUub3JnDQo+ID4+IENjOiBtYXpAa2VybmVsLm9yZzsgamVh
+bi1waGlsaXBwZUBsaW5hcm8ub3JnOyBKb25hdGhhbiBDYW1lcm9uDQo+ID4+IDxqb25hdGhhbi5j
+YW1lcm9uQGh1YXdlaS5jb20+OyBscGllcmFsaXNpQGtlcm5lbC5vcmc7DQo+ID4+IHBldGVyLm1h
+eWRlbGxAbGluYXJvLm9yZzsgcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZzsNCj4gPj4gaW1h
+bW1lZG9AcmVkaGF0LmNvbTsgYW5kcmV3LmpvbmVzQGxpbnV4LmRldjsgcGhpbG1kQGxpbmFyby5v
+cmc7DQo+ID4+IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgb2xpdmVyLnVwdG9uQGxpbnV4LmRldjsg
+cGJvbnppbmlAcmVkaGF0LmNvbTsNCj4gPj4gbXN0QHJlZGhhdC5jb207IHdpbGxAa2VybmVsLm9y
+ZzsgZ3NoYW5AcmVkaGF0LmNvbTsgcmFmYWVsQGtlcm5lbC5vcmc7DQo+ID4+IGFsZXguYmVubmVl
+QGxpbmFyby5vcmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51azsNCj4gPj4gZGFycmVuQG9zLmFtcGVy
+ZWNvbXB1dGluZy5jb207IGlsa2thQG9zLmFtcGVyZWNvbXB1dGluZy5jb207DQo+ID4+IHZpc2hu
+dUBvcy5hbXBlcmVjb21wdXRpbmcuY29tOyBrYXJsLmhldWJhdW1Ab3JhY2xlLmNvbTsNCj4gPj4g
+bWlndWVsLmx1aXNAb3JhY2xlLmNvbTsgc2FsaWwubWVodGFAb3Buc3JjLm5ldDsgemh1a2VxaWFu
+DQo+ID4+IDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5nIChDKSA8d2FuZ3hp
+b25nZmVuZzJAaHVhd2VpLmNvbT47DQo+ID4+IHdhbmd5YW5hbiAoWSkgPHdhbmd5YW5hbjU1QGh1
+YXdlaS5jb20+OyBqaWFrZXJuZWwyQGdtYWlsLmNvbTsNCj4gPj4gbWFvYmlib0Bsb29uZ3Nvbi5j
+bjsgbGl4aWFuZ2xhaUBsb29uZ3Nvbi5jbjsgTGludXhhcm0NCj4gPGxpbnV4YXJtQGh1YXdlaS5j
+b20+DQo+ID4+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggVjMgMDEvMTBdIGFjY2VsL2t2bTogRXh0cmFj
+dCBjb21tb24gS1ZNIHZDUFUNCj4gPj4ge2NyZWF0aW9uLHBhcmtpbmd9IGNvZGUNCj4gPj4NCj4g
+Pj4gT24gMDkuMTAuMjMgMTM6MjgsIFNhbGlsIE1laHRhIHdyb3RlOg0KPiA+Pj4gS1ZNIHZDUFUg
+Y3JlYXRpb24gaXMgZG9uZSBvbmNlIGR1cmluZyB0aGUgaW5pdGlhbGl6YXRpb24gb2YgdGhlIFZN
+IHdoZW4gUWVtdQ0KPiA+Pj4gdGhyZWFkIGlzIHNwYXduZWQuIFRoaXMgaXMgY29tbW9uIHRvIGFs
+bCB0aGUgYXJjaGl0ZWN0dXJlcy4NCj4gPj4+DQo+ID4+PiBIb3QtdW5wbHVnIG9mIHZDUFUgcmVz
+dWx0cyBpbiBkZXN0cnVjdGlvbiBvZiB0aGUgdkNQVSBvYmplY3QgaW4gUU9NIGJ1dCB0aGUNCj4g
+Pj4+IGNvcnJlc3BvbmRpbmcgS1ZNIHZDUFUgb2JqZWN0IGluIHRoZSBIb3N0IEtWTSBpcyBub3Qg
+ZGVzdHJveWVkIGFuZCBpdHMNCj4gPj4+IHJlcHJlc2VudGF0aXZlIEtWTSB2Q1BVIG9iamVjdC9j
+b250ZXh0IGluIFFlbXUgaXMgcGFya2VkLg0KPiA+Pj4NCj4gPj4+IFJlZmFjdG9yIGNvbW1vbiBs
+b2dpYyBzbyB0aGF0IHNvbWUgQVBJcyBjb3VsZCBiZSByZXVzZWQgYnkgdkNQVSBIb3RwbHVnIGNv
+ZGUuDQo+ID4+Pg0KPiA+Pj4gU2lnbmVkLW9mZi1ieTogU2FsaWwgTWVodGEgPHNhbGlsLm1laHRh
+QGh1YXdlaS5jb20+DQo+ID4+DQo+ID4+IFsuLi5dDQo+ID4+DQo+ID4+Pg0KPiA+Pj4gICAgaW50
+IGt2bV9pbml0X3ZjcHUoQ1BVU3RhdGUgKmNwdSwgRXJyb3IgKiplcnJwKQ0KPiA+Pj4gQEAgLTM5
+NSwxOSArNDM0LDE0IEBAIGludCBrdm1faW5pdF92Y3B1KENQVVN0YXRlICpjcHUsIEVycm9yICoq
+ZXJycCkNCj4gPj4+DQo+ID4+PiAgICAgICAgdHJhY2Vfa3ZtX2luaXRfdmNwdShjcHUtPmNwdV9p
+bmRleCwga3ZtX2FyY2hfdmNwdV9pZChjcHUpKTsNCj4gPj4+DQo+ID4+PiAtICAgIHJldCA9IGt2
+bV9nZXRfdmNwdShzLCBrdm1fYXJjaF92Y3B1X2lkKGNwdSkpOw0KPiA+Pj4gKyAgICByZXQgPSBr
+dm1fY3JlYXRlX3ZjcHUoY3B1KTsNCj4gPj4+ICAgICAgICBpZiAocmV0IDwgMCkgew0KPiA+Pj4g
+LSAgICAgICAgZXJyb3Jfc2V0Z19lcnJubyhlcnJwLCAtcmV0LCAia3ZtX2luaXRfdmNwdToga3Zt
+X2dldF92Y3B1IGZhaWxlZCAoJWx1KSIsDQo+ID4+PiArICAgICAgICBlcnJvcl9zZXRnX2Vycm5v
+KGVycnAsIC1yZXQsDQo+ID4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICJrdm1faW5pdF92
+Y3B1OiBrdm1fY3JlYXRlX3ZjcHUgZmFpbGVkICglbHUpIiwNCj4gPj4NCj4gPj4gVW5yZWxhdGVk
+IGNoYW5nZS4NCj4gPg0KPiA+DQo+ID4gSXQgaXMgcmVsYXRlZC4gSSB0aGluayB5b3UgbWlzc2Vk
+IGt2bV9nZXRfdmNwdSAtPiBrdm1fY3JlYXRlX3ZjcHUgY2hhbmdlDQo+ID4gaW4gdGhlIHN0cmlu
+Zy4NCj4gDQo+IEluZGVlZCwgSSBkaWQgOikNCj4gDQo+ID4NCj4gPg0KPiA+Pj4gICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIGt2bV9hcmNoX3ZjcHVfaWQoY3B1KSk7DQo+ID4+PiAgICAgICAg
+ICAgIGdvdG8gZXJyOw0KPiA+Pj4gICAgICAgIH0NCj4gPj4+DQo+ID4+PiAtICAgIGNwdS0+a3Zt
+X2ZkID0gcmV0Ow0KPiA+Pj4gLSAgICBjcHUtPmt2bV9zdGF0ZSA9IHM7DQo+ID4+PiAtICAgIGNw
+dS0+dmNwdV9kaXJ0eSA9IHRydWU7DQo+ID4+PiAtICAgIGNwdS0+ZGlydHlfcGFnZXMgPSAwOw0K
+PiA+Pj4gLSAgICBjcHUtPnRocm90dGxlX3VzX3Blcl9mdWxsID0gMDsNCj4gPj4+IC0NCj4gPj4+
+ICAgICAgICBtbWFwX3NpemUgPSBrdm1faW9jdGwocywgS1ZNX0dFVF9WQ1BVX01NQVBfU0laRSwg
+MCk7DQo+ID4+PiAgICAgICAgaWYgKG1tYXBfc2l6ZSA8IDApIHsNCj4gPj4+ICAgICAgICAgICAg
+cmV0ID0gbW1hcF9zaXplOw0KPiA+Pj4gZGlmZiAtLWdpdCBhL2FjY2VsL2t2bS90cmFjZS1ldmVu
+dHMgYi9hY2NlbC9rdm0vdHJhY2UtZXZlbnRzDQo+ID4+PiBpbmRleCAzOTlhYWViMGVjLi4wOGUy
+ZGMyNTNmIDEwMDY0NA0KPiA+Pj4gLS0tIGEvYWNjZWwva3ZtL3RyYWNlLWV2ZW50cw0KPiA+Pj4g
+KysrIGIvYWNjZWwva3ZtL3RyYWNlLWV2ZW50cw0KPiA+Pj4gQEAgLTksNiArOSwxMCBAQCBrdm1f
+ZGV2aWNlX2lvY3RsKGludCBmZCwgaW50IHR5cGUsIHZvaWQgKmFyZykgImRldiBmZCAlZCwgdHlw
+ZSAweCV4LCBhcmcgJXAiDQo+ID4+PiAgICBrdm1fZmFpbGVkX3JlZ19nZXQodWludDY0X3QgaWQs
+IGNvbnN0IGNoYXIgKm1zZykgIldhcm5pbmc6IFVuYWJsZSB0byByZXRyaWV2ZSBPTkVSRUcgJSIg
+UFJJdTY0ICIgZnJvbSBLVk06ICVzIg0KPiA+Pj4gICAga3ZtX2ZhaWxlZF9yZWdfc2V0KHVpbnQ2
+NF90IGlkLCBjb25zdCBjaGFyICptc2cpICJXYXJuaW5nOiBVbmFibGUgdG8gc2V0IE9ORVJFRyAl
+IiBQUkl1NjQgIiB0byBLVk06ICVzIg0KPiA+Pj4gICAga3ZtX2luaXRfdmNwdShpbnQgY3B1X2lu
+ZGV4LCB1bnNpZ25lZCBsb25nIGFyY2hfY3B1X2lkKSAiaW5kZXg6ICVkIGlkOiAlbHUiDQo+ID4+
+PiAra3ZtX2NyZWF0ZV92Y3B1KGludCBjcHVfaW5kZXgsIHVuc2lnbmVkIGxvbmcgYXJjaF9jcHVf
+aWQpICJjcmVhdGluZyBLVk0gY3B1OiBjcHVfaW5kZXg6ICVkIGFyY2ggdmNwdS1pZDogJWx1Ig0K
+PiA+Pj4gK2t2bV9nZXRfdmNwdSh1bnNpZ25lZCBsb25nIGFyY2hfY3B1X2lkKSAidW5wYXJraW5n
+IEtWTSB2Y3B1OiBhcmNoIHZjcHUtaWQ6ICVsdSINCj4gPj4+ICtrdm1fZGVzdHJveV92Y3B1KGlu
+dCBjcHVfaW5kZXgsIHVuc2lnbmVkIGxvbmcgYXJjaF9jcHVfaWQpICJkZXN0cm95IHZjcHU6IGNw
+dV9pbmRleDogJWQgYXJjaCB2Y3B1LWlkOiAlbHUiDQo+ID4+PiAra3ZtX3BhcmtfdmNwdShpbnQg
+Y3B1X2luZGV4LCB1bnNpZ25lZCBsb25nIGFyY2hfY3B1X2lkKSAicGFya2luZyBLVk0gdmNwdTog
+Y3B1X2luZGV4OiAlZCBhcmNoIHZjcHUtaWQ6ICVsdSINCj4gPj4NCj4gPj4gSXQncyBhIGJpdCBj
+b25mdXNpbmcgdGhhdCB0aGVyZSBpcyBub3cNCj4gPj4NCj4gPj4gMSkgY3JlYXRlIChjcmVhdGUg
+bmV3IG9yIHJldHVybiBwYXJrZWQpDQo+ID4+IDIpIGRlc3Ryb3kgKGNsZWFudXAgKyBwYXJrKQ0K
+PiA+PiAzKSBwYXJrIChwYXJrIG9ubHkpDQo+ID4+DQo+ID4+IFdoeSB3b3VsZCBvbmUgdXNlIDIp
+IGluc3RlYWQgb2YgMykgb3IgdGhlIG90aGVyIHdheSBhcm91bmQ/IEJ1dCBJDQo+ID4+IHN1c3Bl
+Y3QgdGhhdCBrdm1fZGVzdHJveV92Y3B1KCkgaXMgb25seSBzdXBwb3NlZCB0byBiZSBhIEtWTS1p
+bnRlcm5hbA0KPiA+PiBoZWxwZXIgLi4uDQo+ID4NCj4gPiBrdm1fZGVzdHJveV92Y3B1IGlzIG1v
+cmUgdGhhbiBqdXN0IHBhcmtpbmc6DQo+ID4NCj4gPiAxLiBBcmNoIGRlc3Ryb3kgdmNwdQ0KPiA+
+IDIuIFVubWFwIGNwdS0+a3ZtX3J1bg0KPiA+IDMuIFBhcmtpbmcgbG9naWMNCj4gPg0KPiA+IFRv
+IHN1cHBvcnQgdmlydHVhbCBDUFUgSG90cGx1ZyBvbiBBUk0gcGxhdGZvcm1zIHdlIHByZS1jcmVh
+dGUgYWxsDQo+ID4gdGhlIEtWTSB2Q1BVcyBidXQgdGhlaXIgY29ycmVzcG9uZGluZyBRZW11IHRo
+cmVhZHMgYXJlIG5vdCBzcGF3bmVkDQo+ID4gKGFuZCBoZW5jZSBjcHUtPmt2bV9ydW4gaXMgbm90
+IG1hcHBlZCkuIFVucGx1Z2dlZCB2Q1BVcyByZW1haW5zDQo+ID4gcGFya2VkIGluIHRoZSBsaXN0
+LiBIZW5jZSwgb25seSBzdGVwLTMgaXMgcmVxdWlyZWQuDQo+IA0KPiBJSVVDLCB5b3VyIGN1cnJl
+bnQgZmxvdyBpcyBnb2luZyB0byBiZQ0KPiANCj4gMSkgQ3JlYXRlDQo+IDIpIFBhcmsNCj4gMykg
+Q3JlYXRlIFt3aGljaCBlbmRzIHVwIHJldXNpbmcgdGhlIHBhcmtlZCBWQ1BVXQ0KPiA0KSBEZXN0
+cm95IFt3aGVuIHVucGx1Z2dpbmcgdGhlIENQVV0NCg0KDQpJbiB0aGUgQVJNIHNwZWNpZmljIGNv
+ZGUsIFllcy4NCg0KIA0KPiBJZiB0aGF0J3MgdGhlIGNhc2UsIHRoYXQgQVBJIHJlYWxseSBpcyBz
+dWJvcHRpbWFsLg0KPiANCj4gV2hhdCBzcGVha3MgYWdhaW5zdCBhbiBBUEkgdGhhdCBtb2RlbHMg
+MSkgYW5kIDIpIGluIGEgc2luZ2xlIHN0ZXANCg0KDQpBUEkgaXMgZ2VuZXJpYyBhbmQgaXMgcGFy
+dCBvZiBhcmNoaXRlY3R1cmUgYWdub3N0aWMgY29kZS4NCg0KDQo+IA0KPiBrdm1fcHJlY3JlYXRl
+X3ZjcHUNCg0KcHJlLWNyZWF0aW9uIGlzIHZlcnkgbXVjaCBzcGVjaWZpYyB0byBBUk0gcmlnaHQg
+bm93LiBJIGFtIG5vdCBzdXJlDQppZiBpdCBpcyByaWdodCB0byBoYXZlIGFuIEFQSSB3aXRoIHRo
+aXMgbmFtZSBpbiB0aGUgY29kZSB3aGljaCBpcw0KY29tbW9uIHRvIG90aGVyIGFyY2hpdGVjdHVy
+ZXMuDQoNCg0KPiBrdm1fY3JlYXRlX3ZjcHUNCj4ga3ZtX2Rlc3Ryb3lfdmNwdQ0KPiANCj4gT25l
+IGNvdWxkIGV2ZW4gbWFrZSBrdm1fY3JlYXRlX3ZjcHUoKSBmYWlsIG9uIEFSTSBpZiB0aGUgVkNQ
+VSBoYXNuJ3QNCj4gYmVlbiBwcmUtY3JlYXRlZC4NCg0KUmlnaHQgbm93LCB3ZSBhYm9ydCB0aGUg
+Q1BVIGluaXRpYWxpemF0aW9uIHByb2Nlc3MgaWYgdGhpcyBoYXBwZW5zLiBJDQphbSBwbGFubmlu
+ZyB0byBjaGFuZ2UgYWJvcnQoKSBpbnRvICdmYXRhbF9lcnJvcicgaW4gUkZDIFYzIHRob3VnaC4N
+Cg0KDQoNCj4gDQo+IE9yIGRpZCBJIGdldCBpdCBhbGwgd3Jvbmc/IDopDQoNCkkgd29uJ3Qgc2F5
+IHRoYXQgaXQgaXMganVzdCBhbm90aGVyIHBvaW50IG9mIHZpZXcgd2hpY2ggaXMgYWJzb2x1dGVs
+eQ0KZmluZS4gQnV0IEkgd291bGQgbGlrZSB0byBzdGljayB0byBjdXJyZW50IEFQSXMuDQoNCg0K
+VGhhbmtzDQpTYWxpbC4NCg0KDQo=

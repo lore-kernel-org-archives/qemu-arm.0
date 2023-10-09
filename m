@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n20-20020adf8b14000000b003296b62d413sm9694532wra.82.2023.10.09.09.41.07
+        by smtp.gmail.com with ESMTPSA id k21-20020adfb355000000b003296b913bbesm9541932wrd.12.2023.10.09.09.41.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 09 Oct 2023 09:41:07 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 446EA1FFBC;
-	Mon,  9 Oct 2023 17:41:06 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id EF1351FFC2;
+	Mon,  9 Oct 2023 17:41:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -46,46 +46,47 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	qemu-s390x@nongnu.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 10/25] plugins: Check if vCPU is realized
-Date: Mon,  9 Oct 2023 17:40:49 +0100
-Message-Id: <20231009164104.369749-11-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 07/25] configure: remove gcc version suffixes
+Date: Mon,  9 Oct 2023 17:40:46 +0100
+Message-Id: <20231009164104.369749-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231009164104.369749-1-alex.bennee@linaro.org>
 References: <20231009164104.369749-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: hvlnmyeK9+Gh
+X-TUID: V3VVLtiG1Nbd
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+The modern packaging of cross GCC's doesn't need the explicit version
+number at the end.
 
-The created member of CPUState tells if the vCPU thread is started, and
-will be always false for the user space emulation that manages threads
-independently. Use the realized member of DeviceState, which is valid
-for both of the system and user space emulation.
-
-Fixes: 54cb65d858 ("plugin: add core code")
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20230912224107.29669-4-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- plugins/core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ configure | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/plugins/core.c b/plugins/core.c
-index 3c4e26c7ed..fcd33a2bff 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -64,7 +64,7 @@ static void plugin_cpu_update__locked(gpointer k, gpointer v, gpointer udata)
-     CPUState *cpu = container_of(k, CPUState, cpu_index);
-     run_on_cpu_data mask = RUN_ON_CPU_HOST_ULONG(*plugin.mask);
- 
--    if (cpu->created) {
-+    if (DEVICE(cpu)->realized) {
-         async_run_on_cpu(cpu, plugin_cpu_update__async, mask);
-     } else {
-         plugin_cpu_update__async(cpu, mask);
+diff --git a/configure b/configure
+index ebad155d9e..e83872571d 100755
+--- a/configure
++++ b/configure
+@@ -1334,7 +1334,7 @@ probe_target_compiler() {
+         # We don't have any bigendian build tools so we only use this for AArch64
+         container_image=debian-arm64-cross
+         container_cross_prefix=aarch64-linux-gnu-
+-        container_cross_cc=${container_cross_prefix}gcc-10
++        container_cross_cc=${container_cross_prefix}gcc
+         ;;
+       alpha)
+         container_image=debian-alpha-cross
+@@ -1397,7 +1397,7 @@ probe_target_compiler() {
+       ppc)
+         container_image=debian-powerpc-test-cross
+         container_cross_prefix=powerpc-linux-gnu-
+-        container_cross_cc=${container_cross_prefix}gcc-10
++        container_cross_cc=${container_cross_prefix}gcc
+         ;;
+       ppc64|ppc64le)
+         container_image=debian-powerpc-test-cross
 -- 
 2.39.2

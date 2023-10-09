@@ -1,176 +1,219 @@
-Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp2041986ejb;
-        Mon, 9 Oct 2023 08:21:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHD8pjcCxMnIfKkWm0L5fHFFowWiYkdsP7jWsmpGVWOsRZg3CCsXYMf+582qsgfiKOxtrGu
-X-Received: by 2002:a05:622a:1742:b0:410:9af1:f9b2 with SMTP id l2-20020a05622a174200b004109af1f9b2mr22008824qtk.3.1696864896783;
-        Mon, 09 Oct 2023 08:21:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696864896; cv=none;
+Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp2047600ejb;
+        Mon, 9 Oct 2023 08:31:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHnZPY1ndBFsMNyaJk2kO9oYOwWvmf2DKErhBoHmI4ioIm+lnDsUOhRRBUJYhS6c+2FSciD
+X-Received: by 2002:a05:620a:2add:b0:775:c0e4:aea4 with SMTP id bn29-20020a05620a2add00b00775c0e4aea4mr16008040qkb.66.1696865474675;
+        Mon, 09 Oct 2023 08:31:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696865474; cv=none;
         d=google.com; s=arc-20160816;
-        b=IffAsKr7W8qnchm8oHzDqeucwB5tM/52ALU/xWRBVAz5hsEsDOF++MIUB1nHh1ceq7
-         3CahpUHwXgkCibVj2nABH0t/U/hM3HkW67okTEqrVd+ah3ohprlY/d7oah+f4y33RGma
-         MKA8wBwPcm07aOryqF+ZIi56eeXho4G/ZOW48+3MUZKu+gXCIhyDtVnM8wDTb9XnUVsB
-         nMbFoIhBAjCIN/nX2USXMrnzKuNwpxq2yZFefY9ANvzEmF4afH2Ea/NpEQz7Wt86/zZy
-         UB+jqRHlMyuH/jDGzd13K8+sx9S1fhpNmL50IXsoPaQZp9xAC9t4/fzYi91WYOF/tiGS
-         eWig==
+        b=FUuOBe7FXYpsJ0rs1ABmGa1+ltgisK1eKNM+589NYepzsCfvANxqXMbi2WzTuQR2B3
+         QoVngb2DrvF4wfJuadft4PuXfQc7rvkXcq3/cmZOHMqOxRpRtgZEMLQ+KYESAEVY7SVJ
+         BFwXxo5xlyLIB+NOgOQQb8RMT90cSdemZk1ZTtZ6Of6Zy4/P+xelqCypBsXrwNLLZH5B
+         6bdoBIHDDRT1pSxDQVZqx0FHrue8TukJc+5ZRCa1e1/Y8iYONAUGrPxG8yeDDrUSLLFP
+         ZM7qOPD1hVrNBCImW7sqzo23s+9sc8Ogxqx0Iviqi0mRo/OOMwfWPUU4uOVe06xeKaG0
+         /DBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:organization
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=SDJrEpCSBJJB1M5Nf7IS/ukbAEF1qbAyaYsHfFthvwM=;
-        fh=B6hYtw/BbyOqu6OjGRBKzIZ+XNWqkJzkX6KeV9DY8XU=;
-        b=ThBzxTdTdCvpzKCRyk4jcsx4+XTYyMVq6QlOznqqQqnUYwEMwjvJBQSuiIKE8rTMq1
-         3t28PNJK8Zt7tDOTeTNxylmTvQyneZDqagUcqEJDoA1Hf+jt2c+owJJbZ4acpws0ewZ3
-         f6Qw73eQ+BHqx2Ig41c6wV1pFnO1jyho1sfTE5sxMe3u39cG3VImHLS9K20G/CMlkQ2B
-         Bk2HoyTjUBTkmq8kKnLdDZui2kLdJFbrXPnZ/ncP1rlrkti2uhJa3ct0ol74xAAiiURR
-         YIBa9VTTBS5nByfYjeZ3W1xHVywxFFX+jTM4QSOe6wXIa7XRi6k+ukDAtE/Fa2EyBVAj
-         hcww==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=QfDOV5f2KMT9v/+XQtuxJQ3jk6F0qhOPBVJXc0FXSDw=;
+        fh=qShmx9hl1ph34ulEBOCe1Wl+bd1jf8hIEJWbXZnp4xc=;
+        b=VF3PdZNVw5MTsaLKpMrhxQ5QseApT998zHJP7OUn9O1LOXuhIVT34rIuekRVy6HHvF
+         nf12OQotOtcPirAQv0o+X37RA7jQPSzJUVnQ41J0uIKg+isS1M4twoqIZg5PZv0tTiBg
+         ueyTcAaXX8OJEw6057qYu5o/v9DJPf5EaARDOmQ8eMH833gXYj1mAwnccihx9uCUrVgA
+         k5AB1DdVmoJAQi+2ra8OytDWidcOZ92x8YZf3Tzr71XQ9mbYYsStp9KmXKoJlp4tiLzg
+         j0catMyE60p/Q5imfs9HPB+4XWGb66rTAQtKCr9Exg11oS3wkzvnkAUB1dhffrxLzDCq
+         hF+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ErZZXgqe;
-       spf=pass (google.com: domain of david@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=david@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <david@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id m19-20020a05622a055300b00403f3141703si6261639qtx.619.2023.10.09.08.21.36
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dcMXOeWM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g22-20020a05620a279600b007740be11648si6333916qkp.38.2023.10.09.08.31.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Oct 2023 08:21:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of david@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Oct 2023 08:31:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ErZZXgqe;
-       spf=pass (google.com: domain of david@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=david@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1696864896;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=SDJrEpCSBJJB1M5Nf7IS/ukbAEF1qbAyaYsHfFthvwM=;
-	b=ErZZXgqefjm9N5pXpl1+y47EENt08vCkpukALr/5JhzYPIRcHVa9ydXNCDNzOJb2TsvRxX
-	vfgPWgenR5R07luuWSVpXKhBOdgVu4wjXMeeg6VPGX42H1pIHI6nCu/e+8Jgs1mgGtp8Gh
-	9CKW3V1HYmEud9FrcpPb2zruMr1kz9Y=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-103-22bNqr1APb60CrnlvkJ4pQ-1; Mon, 09 Oct 2023 11:21:32 -0400
-X-MC-Unique: 22bNqr1APb60CrnlvkJ4pQ-1
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-32006e08483so3037466f8f.0
-        for <alex.bennee@linaro.org>; Mon, 09 Oct 2023 08:21:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696864891; x=1697469691;
-        h=content-transfer-encoding:in-reply-to:organization:from:references
-         :cc:to:content-language:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=SDJrEpCSBJJB1M5Nf7IS/ukbAEF1qbAyaYsHfFthvwM=;
-        b=EFNvkxHbjnlaE2ZBSiMwcLzLkqxNWBed8aBrgFUNeA7OubXd6wx4i7wPmd32wrptCq
-         8uJLwVKFRxfYMCRTUIBNGzt7cElo/p7SzSJmA2w2OOkEGWC2OSleC3oil43roHZtB1o/
-         NMZ2nFxPC9AwdwE8mOQE8IzkqqG0j8btGwrmg0CauMubZDR3kSbOQfVSkyTIfTHQP7XJ
-         KqDNLiBwIAw4R9kSXsyXfDyuvufdlycwFgmLuuizpZB7AOgGtfwhMaJ0IKzOUo7iuq1L
-         AT5DplV802TkuVldNyDBfhyFPY9c2no4ReOu3O5rH1hlEnwA+fEABtprPz5E7Z5sAF1m
-         oFSg==
-X-Gm-Message-State: AOJu0Yzx8ofoZZf1PHi9x7uE0u4WnDkv3hSsM2SHC/c+goyzuFCYv0Q+
-	60EG2G9rtgm3LWycGcNdgXMMm7N7EMArt8fWYlrYq9kv2rYA0t8EPQWcfsRdwBj9KxzqXjDh96y
-	DVY0DLC7a1hd5Xy9B
-X-Received: by 2002:adf:e3ca:0:b0:317:6a07:83a7 with SMTP id k10-20020adfe3ca000000b003176a0783a7mr13789200wrm.38.1696864891560;
-        Mon, 09 Oct 2023 08:21:31 -0700 (PDT)
-X-Received: by 2002:adf:e3ca:0:b0:317:6a07:83a7 with SMTP id k10-20020adfe3ca000000b003176a0783a7mr13789115wrm.38.1696864890057;
-        Mon, 09 Oct 2023 08:21:30 -0700 (PDT)
-Return-Path: <david@redhat.com>
-Received: from ?IPV6:2003:cb:c733:6400:ae10:4bb7:9712:8548? (p200300cbc7336400ae104bb797128548.dip0.t-ipconnect.de. [2003:cb:c733:6400:ae10:4bb7:9712:8548])
-        by smtp.gmail.com with ESMTPSA id y14-20020a5d4ace000000b00327cd5e5ac1sm9951674wrs.1.2023.10.09.08.21.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Oct 2023 08:21:29 -0700 (PDT)
-Message-ID: <792f9f38-6031-1269-109e-941d2ecaddf9@redhat.com>
-Date: Mon, 9 Oct 2023 17:21:27 +0200
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dcMXOeWM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qpsDd-0007IB-H4; Mon, 09 Oct 2023 11:30:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qpsDD-0007F9-1k; Mon, 09 Oct 2023 11:30:28 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qpsD9-0003xN-LN; Mon, 09 Oct 2023 11:30:26 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 399FRptV028067; Mon, 9 Oct 2023 15:30:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=QfDOV5f2KMT9v/+XQtuxJQ3jk6F0qhOPBVJXc0FXSDw=;
+ b=dcMXOeWMSznd/SgM1BuZvp1aY+W0C/sUswtW4Br1FbSMY/feGr7ThwtfNRxuyvCKjlwm
+ 6peBbDcNlbPd++8F/qIIbFs3mD4Sk/eyhV1oPfMwGQv20lZLkqdFhUDWNQBK9QF3xeml
+ q4n/irppHCD/KNDUf7tMrDFEGzzy/gay3wEa0Kr5XnHJarKt4lcYLThDD6S1MshO04MQ
+ 8MYkXE58iT4SwG5Npbqdn0lTIc4915XNEzZ7kfEYeZJRrJe1wRQxeGy+v8xZoSx46khX
+ wpOgMKaHikwWT46C8Dxo8DHhUMRT0eSFWyckqlG+csQC3Vp10edIn4GTwUkKQozKPeJj vA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tmm66r3jn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 09 Oct 2023 15:30:09 +0000
+Received: from m0360083.ppops.net (m0360083.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 399FSAum029939;
+ Mon, 9 Oct 2023 15:30:09 GMT
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tmm66r3hh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 09 Oct 2023 15:30:09 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 399DnhcA024487; Mon, 9 Oct 2023 15:30:08 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tkhnsa7ce-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 09 Oct 2023 15:30:08 +0000
+Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
+ [10.241.53.101])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 399FU7qw58524132
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 9 Oct 2023 15:30:07 GMT
+Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3F0C258062;
+ Mon,  9 Oct 2023 15:30:07 +0000 (GMT)
+Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9153E58068;
+ Mon,  9 Oct 2023 15:30:06 +0000 (GMT)
+Received: from [9.61.164.107] (unknown [9.61.164.107])
+ by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Mon,  9 Oct 2023 15:30:06 +0000 (GMT)
+Message-ID: <d6b88c83-18a1-43eb-9561-d61826488004@linux.ibm.com>
+Date: Mon, 9 Oct 2023 10:30:06 -0500
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH V3 01/10] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-To: Salil Mehta <salil.mehta@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Cc: "maz@kernel.org" <maz@kernel.org>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "imammedo@redhat.com" <imammedo@redhat.com>,
- "andrew.jones@linux.dev" <andrew.jones@linux.dev>,
- "philmd@linaro.org" <philmd@linaro.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "mst@redhat.com"
- <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
- "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
- <rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
- "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
- "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
- "karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
- "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
- "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
- zhukeqian <zhukeqian1@huawei.com>,
- "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
- "wangyanan (Y)" <wangyanan55@huawei.com>,
- "jiakernel2@gmail.com" <jiakernel2@gmail.com>,
- "maobibo@loongson.cn" <maobibo@loongson.cn>,
- "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
- Linuxarm <linuxarm@huawei.com>
-References: <20231009112812.10612-1-salil.mehta@huawei.com>
- <20231009112812.10612-2-salil.mehta@huawei.com>
- <a02eae26-6018-6f5c-1b82-e6061544022b@redhat.com>
- <63f8e47efcd045b1b8481f6fd427c4b1@huawei.com>
- <ae2e0fc1-7967-2bae-e4fa-b4d886ba4671@redhat.com>
- <0c972e213f9a46c3a595dc7f933046aa@huawei.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <0c972e213f9a46c3a595dc7f933046aa@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 10/10] hw/fsi: Update MAINTAINER list
 Content-Language: en-US
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
+Cc: qemu-arm@nongnu.org
+References: <20230908222859.3381003-1-ninad@linux.ibm.com>
+ <20230908222859.3381003-11-ninad@linux.ibm.com>
+ <cd44fbf6-135b-3ffb-0af4-d38381ce79cc@kaod.org>
+From: Ninad Palsule <ninad@linux.ibm.com>
+In-Reply-To: <cd44fbf6-135b-3ffb-0af4-d38381ce79cc@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: vQSoBk++UkPW
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: T0GMAO6u3-n17WyPqRjLdVEn5CMjjFt4
+X-Proofpoint-ORIG-GUID: R8uttdY8ODFTf1BdQWEUeb0ipR7R6054
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-09_13,2023-10-09_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 phishscore=0
+ adultscore=0 priorityscore=1501 mlxlogscore=999 suspectscore=0 mlxscore=0
+ clxscore=1015 malwarescore=0 bulkscore=0 spamscore=0 lowpriorityscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2309180000
+ definitions=main-2310090128
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=ninad@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7fYC5oTyp2l8
 
-> 
+Hello Cedric,
+
+On 9/11/23 07:33, Cédric Le Goater wrote:
+> On 9/9/23 00:28, Ninad Palsule wrote:
+>> Added maintainer for IBM FSI model
 >>
->> kvm_precreate_vcpu
-> 
-> pre-creation is very much specific to ARM right now. I am not sure
-> if it is right to have an API with this name in the code which is
-> common to other architectures.
-
-I don't like exposing the concept of "parking" CPUs externally, which is 
-so far handled completely internally.
-
-[...]
-
-> 
-> 
->> kvm_create_vcpu
->> kvm_destroy_vcpu
+>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+>> ---
+>> V4:
+>>    - Added separate commit for MAINTAINER change.
+>> ---
+>>   MAINTAINERS | 22 ++++++++++++++++++++++
+>>   1 file changed, 22 insertions(+)
 >>
->> One could even make kvm_create_vcpu() fail on ARM if the VCPU hasn't
->> been pre-created.
-> 
-> Right now, we abort the CPU initialization process if this happens. I
-> am planning to change abort() into 'fatal_error' in RFC V3 though.
-> 
-> 
-> 
->>
->> Or did I get it all wrong? :)
-> 
-> I won't say that it is just another point of view which is absolutely
-> fine. But I would like to stick to current APIs.
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 6111b6b4d9..285f3a3bc9 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -3395,6 +3395,28 @@ F: tests/qtest/adm1272-test.c
+>>   F: tests/qtest/max34451-test.c
+>>   F: tests/qtest/isl_pmbus_vr-test.c
+>>   +FSI
+>> +M: Ninad Palsule <ninad@linux.ibm.com>
+>> +S: Maintained
+>
+> Excellent !
+Thanks!
+>
+>> +F: hw/fsi/aspeed-apb2opb.c
+>> +F: hw/fsi/cfam.c
+>> +F: hw/fsi/fsi.c
+>> +F: hw/fsi/fsi-slave.c
+>> +F: hw/fsi/opb.c
+>> +F: hw/fsi/engine-scratchpad.c
+>> +F: hw/fsi/fsi-master.c
+>> +F: hw/fsi/lbus.c
+>
+> This would work the same :
+>
+> hw/fsi/*
+> include/hw/fsi/*
 
-No really strong opinion, I wouldn't do it that way. I'll let others 
-chime in if they have an opinion.
+Fixed.
 
--- 
-Cheers,
+Thanks for the review.
 
-David / dhildenb
+~ Ninad
+
+>
+>> +F: include/hw/fsi/aspeed-apb2opb.h
+>> +F: include/hw/fsi/cfam.h
+>> +F: include/hw/fsi/fsi.h
+>> +F: include/hw/fsi/fsi-slave.h
+>> +F: include/hw/fsi/opb.h
+>> +F: include/hw/fsi/engine-scratchpad.h
+>> +F: include/hw/fsi/fsi-master.h
+>> +F: include/hw/fsi/lbus.h
+>> +F: docs/specs/fsi.rst
+>> +F: tests/qtest/fsi-test.c
+>> +
+>>   Firmware schema specifications
+>>   M: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>   R: Daniel P. Berrange <berrange@redhat.com>
+>

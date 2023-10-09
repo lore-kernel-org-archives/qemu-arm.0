@@ -1,135 +1,201 @@
-Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp1980839ejb;
-        Mon, 9 Oct 2023 06:49:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFOkI5+koth7wOAJZV38KtCIWsdjqUUpXgxxWCmANtCy14GgiAYVvs/bN4S31X9SzY/uisY
-X-Received: by 2002:a5d:65c4:0:b0:321:4c58:7722 with SMTP id e4-20020a5d65c4000000b003214c587722mr13217779wrw.69.1696859374232;
-        Mon, 09 Oct 2023 06:49:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696859374; cv=none;
+Received: by 2002:a17:906:cd17:b0:9b2:89ee:1eb8 with SMTP id oz23csp1984774ejb;
+        Mon, 9 Oct 2023 06:55:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHmy9f9WvosdBU0gB2gcIevlR3APD2B9F6n4/4C0NMbCGZC1ee7xkVlp2GvkIrFA4ZZcdj6
+X-Received: by 2002:a05:622a:38e:b0:403:b088:5d3 with SMTP id j14-20020a05622a038e00b00403b08805d3mr16120516qtx.17.1696859732171;
+        Mon, 09 Oct 2023 06:55:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696859732; cv=none;
         d=google.com; s=arc-20160816;
-        b=J0QtEA++E56gyW6H3bBaxYeITT162JqCZ2+MltureTf0wfhQ7HBsxtnPlpp2scHst3
-         YsM30lxx5MWcYrUWppR6oXB38Cage5BXZgPm64l6gKi8R5evKYCR2daW44uyuBGNyyaY
-         07p/wtVLrsHPH8wP+vMbDMNnzjff/BefkmSZfopzijXWqU+EJCQ/vPTIbVv42fPQpJS+
-         yl0Z3tlDtZ2bMFyWJNqdyU1e/yGgPIl2reMTC52PxiB7suAHro4d2W75WyoNS0fR3eZS
-         wbeR/8MpCcmW1wo6WHG1hWszEBbkDJBkyxp4A62E/Xnfsw6UiQUiPabaZizyrnR22ciP
-         CSmg==
+        b=xgvHr9zi6YjVCdEdFIF65WEjh8fNK3d1AGKlcIqcSYiLezu0SvKLgpbfKxuLxZG0wr
+         vLRKcSxEG8gvmf58rN8TJTNOjUMsn73h4RcOQCL0PvUWf66ywenhXFnHv9XXA6GJyoef
+         S1okI7KRPwIDlphdrd6yy8kXVrxqtPIp4UBhyoK5/UmmoF7DlIkPryucdrVATM/ThGWS
+         oupiRafUCDGBS/emWIJ2gT+xWRD7slNj7eiM7NM2orQC6+d2aWN3bXOe5A/jsxPju4Gl
+         61UBiWjVGnjWpXc3T64hY54V44At68opEKIL3+k2KkvbvTP2dPaxWmIikPBCRRqWresG
+         +NsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=u/BiKmLjgscJuB3h2JLrAhlXSTOk6XowEEGLCrcyxnE=;
-        fh=Kb2Gcs7VD5wSTmDinyryIWwdRPJCIlRG79qMBRsDV+8=;
-        b=S9FHEFR/AewjcOhPet33sBGL5eGQoFpscLp81R1Z/8E4qFME05KznifzQxyjDdTbx1
-         bJH8wWYit4WMmJok4uC1AcwqReI7PHf2FrDjuphvV59CtTF1dXl+8v+y5wTNV0AYkdYK
-         wrNbQK5E55Wh5mtWP6KFQ2YkxvBC4ApPrSFmIJsRIhY8ctTCcYiCOkmbqxrbCDYMKosr
-         v1Na9baoCTUHXO9N6KBD4bbhyYotXdWEWFKjxrb9kenHgWDQ7ucmVqZQWYoF0csch8QN
-         TvUr1KorQLL2e/FUBmgTBgqTUf4X+mcojoZGpneQo7zDIDKmPj7up+lwtKJjBEXZnsws
-         HNNw==
+        h=content-transfer-encoding:content-language:in-reply-to:organization
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=N6twfO3yqRgTzT5YQZu6+KoQxXtSnswIhfjKrGDya4o=;
+        fh=B6hYtw/BbyOqu6OjGRBKzIZ+XNWqkJzkX6KeV9DY8XU=;
+        b=ZkUhG2fBciZW5/Va8EK8hWtFBz6CGprFEI7N1Zmy6x2k5wUmpfw73vwuRkAFVLgmhO
+         mDojYq3pPH9RqZw1yZ3Ao4MftyQrbuNyD4i4nPDykj8km5HBbE8r8ui0pwbLjpcX18lx
+         0bOtkHLOg7aPk7IxGP7U8Ln0+EjNbBfrghAKjcu2bOPGqymwZkwMWQPkNKxS2HuJtqbE
+         pixZZxES5wYCacrZ4cJtL/0WOug8i/b5HLsM+CgkIfJo39/JtFvhfSDkhhzOIPnt8HGt
+         3/wr7t4G9ix6DVWSbkWbtMSAVyJO0aTOODfffSQ2frOWXCRezYlHzwY0XE9UiUA+C3DA
+         aRww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id i11-20020a5d55cb000000b0031f91266e67si3569815wrw.309.2023.10.09.06.49.34
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Oct 2023 06:49:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=as2cjMNm;
+       spf=pass (google.com: domain of david@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=david@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <david@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id l17-20020a05622a175100b00419767946aasi6138748qtk.113.2023.10.09.06.55.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Oct 2023 06:55:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of david@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500002.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S40hp1157z6K5xy;
-	Mon,  9 Oct 2023 21:47:38 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500002.china.huawei.com (7.191.160.78) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Mon, 9 Oct 2023 14:49:32 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Mon, 9 Oct 2023 14:49:32 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: David Hildenbrand <david@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "philmd@linaro.org"
-	<philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V3 03/10] hw/acpi: Add ACPI CPU hotplug init stub
-Thread-Topic: [PATCH V3 03/10] hw/acpi: Add ACPI CPU hotplug init stub
-Thread-Index: AQHZ+qP+4EmuUazzyEe6jhCYlq8By7BBUIQAgAAoLOA=
-Date: Mon, 9 Oct 2023 13:49:32 +0000
-Message-ID: <08840ea0a68e46b1a9d98d1e3544f43b@huawei.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=as2cjMNm;
+       spf=pass (google.com: domain of david@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=david@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1696859731;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=N6twfO3yqRgTzT5YQZu6+KoQxXtSnswIhfjKrGDya4o=;
+	b=as2cjMNmrYveaD0eI2eXt8wdYwq9OmPCR9sXiXMbUetH+/19CHkl8FDWIkNYtAar8WELF6
+	F4TMgEwZGv1+PBH9HRi/auhE5pNI4l8htBqow0F56dRZUQRcMedofu/AdvB46ChpdLBSTa
+	dV/Ljol2/YtITyvsTNlGl1kOZYJK6Ds=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-694-VtvOAlEEO3ezLe5ZsGycWw-1; Mon, 09 Oct 2023 09:55:25 -0400
+X-MC-Unique: VtvOAlEEO3ezLe5ZsGycWw-1
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-406de77fb85so25277005e9.0
+        for <alex.bennee@linaro.org>; Mon, 09 Oct 2023 06:55:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696859724; x=1697464524;
+        h=content-transfer-encoding:in-reply-to:organization:from:references
+         :cc:to:content-language:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=N6twfO3yqRgTzT5YQZu6+KoQxXtSnswIhfjKrGDya4o=;
+        b=Cw+xqgxUi6VNoGGB1dSmsuu9k1XNQs+xqSzhERqwaMi0IpfJFg09/AOyu5KXgSEktE
+         z92hC5RNeLZ4v0RrQwpXUwQRgzXGOU91HByBKHyKKCaKDK/CWi5n5AroyGbaTrfetJ0A
+         rqRPt8a8pnxhNeDqcN9VuTEr3J18R/dFEl/RYd1L+gNE3zfHSSU73zfwKeRa9qYMIUmZ
+         Y7P6bk6viH1sGtK2xUdCEn2Jp4F0oCm3Ad1CbGjRD/I4oNr3TY2cx+9S7X2q209y3lXM
+         OkgeNCfBU4Uydjjik8nl0N9ie6IqtxkiTp26ysYzfi91tRmdJHiuzHwF6+94sjngpHtw
+         oFwg==
+X-Gm-Message-State: AOJu0YyC0Uv7nIG9rMn5qzCwDHBBBVC6mIakAyhjr1dnRlYYkogKbpgs
+	csFOsye3sadRwRZu0bY6T6kMqi14m95a3d3eACXER+NGSBNS+q4S2CC3hSZCUA/Qu1zTbi9WyoD
+	v5PQ72e09+3D27144
+X-Received: by 2002:a7b:cd0a:0:b0:405:3ae6:2400 with SMTP id f10-20020a7bcd0a000000b004053ae62400mr13924603wmj.23.1696859724336;
+        Mon, 09 Oct 2023 06:55:24 -0700 (PDT)
+X-Received: by 2002:a7b:cd0a:0:b0:405:3ae6:2400 with SMTP id f10-20020a7bcd0a000000b004053ae62400mr13924566wmj.23.1696859723919;
+        Mon, 09 Oct 2023 06:55:23 -0700 (PDT)
+Return-Path: <david@redhat.com>
+Received: from ?IPV6:2003:cb:c733:6400:ae10:4bb7:9712:8548? (p200300cbc7336400ae104bb797128548.dip0.t-ipconnect.de. [2003:cb:c733:6400:ae10:4bb7:9712:8548])
+        by smtp.gmail.com with ESMTPSA id l17-20020a1ced11000000b0040588d85b3asm13447466wmh.15.2023.10.09.06.55.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 09 Oct 2023 06:55:23 -0700 (PDT)
+Message-ID: <be019441-793f-bbf1-2b7e-aa32005ead80@redhat.com>
+Date: Mon, 9 Oct 2023 15:55:21 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH V3 03/10] hw/acpi: Add ACPI CPU hotplug init stub
+To: Salil Mehta <salil.mehta@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: "maz@kernel.org" <maz@kernel.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "imammedo@redhat.com" <imammedo@redhat.com>,
+ "andrew.jones@linux.dev" <andrew.jones@linux.dev>,
+ "philmd@linaro.org" <philmd@linaro.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, "mst@redhat.com"
+ <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
+ "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
+ <rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+ "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+ "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+ "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+ "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+ "karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
+ "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
+ "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+ zhukeqian <zhukeqian1@huawei.com>,
+ "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
+ "wangyanan (Y)" <wangyanan55@huawei.com>,
+ "jiakernel2@gmail.com" <jiakernel2@gmail.com>,
+ "maobibo@loongson.cn" <maobibo@loongson.cn>,
+ "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+ Linuxarm <linuxarm@huawei.com>
 References: <20231009112812.10612-1-salil.mehta@huawei.com>
  <20231009112812.10612-4-salil.mehta@huawei.com>
  <8a80612f-07d3-6302-31f9-232d9ce393a1@redhat.com>
-In-Reply-To: <8a80612f-07d3-6302-31f9-232d9ce393a1@redhat.com>
-Accept-Language: en-US
+ <08840ea0a68e46b1a9d98d1e3544f43b@huawei.com>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+In-Reply-To: <08840ea0a68e46b1a9d98d1e3544f43b@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.48.154.91]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: 0tMfeC9s/Q0p
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: 6Ucbk/wRdSSC
 
-PiBGcm9tOiBEYXZpZCBIaWxkZW5icmFuZCA8ZGF2aWRAcmVkaGF0LmNvbT4NCj4gU2VudDogTW9u
-ZGF5LCBPY3RvYmVyIDksIDIwMjMgMToyMyBQTQ0KPiBUbzogU2FsaWwgTWVodGEgPHNhbGlsLm1l
-aHRhQGh1YXdlaS5jb20+OyBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtDQo+IGFybUBub25n
-bnUub3JnDQo+IENjOiBtYXpAa2VybmVsLm9yZzsgamVhbi1waGlsaXBwZUBsaW5hcm8ub3JnOyBK
-b25hdGhhbiBDYW1lcm9uDQo+IDxqb25hdGhhbi5jYW1lcm9uQGh1YXdlaS5jb20+OyBscGllcmFs
-aXNpQGtlcm5lbC5vcmc7DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgcmljaGFyZC5oZW5k
-ZXJzb25AbGluYXJvLm9yZzsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgYW5kcmV3LmpvbmVzQGxp
-bnV4LmRldjsgcGhpbG1kQGxpbmFyby5vcmc7DQo+IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgb2xp
-dmVyLnVwdG9uQGxpbnV4LmRldjsgcGJvbnppbmlAcmVkaGF0LmNvbTsNCj4gbXN0QHJlZGhhdC5j
-b207IHdpbGxAa2VybmVsLm9yZzsgZ3NoYW5AcmVkaGF0LmNvbTsgcmFmYWVsQGtlcm5lbC5vcmc7
-DQo+IGFsZXguYmVubmVlQGxpbmFyby5vcmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51azsNCj4gZGFy
-cmVuQG9zLmFtcGVyZWNvbXB1dGluZy5jb207IGlsa2thQG9zLmFtcGVyZWNvbXB1dGluZy5jb207
-DQo+IHZpc2hudUBvcy5hbXBlcmVjb21wdXRpbmcuY29tOyBrYXJsLmhldWJhdW1Ab3JhY2xlLmNv
-bTsNCj4gbWlndWVsLmx1aXNAb3JhY2xlLmNvbTsgc2FsaWwubWVodGFAb3Buc3JjLm5ldDsgemh1
-a2VxaWFuDQo+IDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5nIChDKSA8d2Fu
-Z3hpb25nZmVuZzJAaHVhd2VpLmNvbT47DQo+IHdhbmd5YW5hbiAoWSkgPHdhbmd5YW5hbjU1QGh1
-YXdlaS5jb20+OyBqaWFrZXJuZWwyQGdtYWlsLmNvbTsNCj4gbWFvYmlib0Bsb29uZ3Nvbi5jbjsg
-bGl4aWFuZ2xhaUBsb29uZ3Nvbi5jbjsgTGludXhhcm0gPGxpbnV4YXJtQGh1YXdlaS5jb20+DQo+
-IFN1YmplY3Q6IFJlOiBbUEFUQ0ggVjMgMDMvMTBdIGh3L2FjcGk6IEFkZCBBQ1BJIENQVSBob3Rw
-bHVnIGluaXQgc3R1Yg0KPiANCj4gT24gMDkuMTAuMjMgMTM6MjgsIFNhbGlsIE1laHRhIHdyb3Rl
-Og0KPiA+IEFDUEkgQ1BVIGhvdHBsdWcgcmVsYXRlZCBpbml0aWFsaXphdGlvbiBzaG91bGQgb25s
-eSBoYXBwZW4gaWYNCj4gQUNQSV9DUFVfSE9UUExVRw0KPiA+IHN1cHBvcnQgaGFzIGJlZW4gZW5h
-YmxlZCBmb3IgcGFydGljdWxhciBhcmNoaXRlY3R1cmUuIEFkZA0KPiBjcHVfaG90cGx1Z19od19p
-bml0KCkNCj4gPiBzdHViIHRvIGF2b2lkIGNvbXBpbGF0aW9uIGJyZWFrLg0KPiA+DQo+ID4gU2ln
-bmVkLW9mZi1ieTogU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+ID4gUmV2
-aWV3ZWQtYnk6IEpvbmF0aGFuIENhbWVyb24gPEpvbmF0aGFuLkNhbWVyb25AaHVhd2VpLmNvbT4N
-Cj4gPiBSZXZpZXdlZC1ieTogR2F2aW4gU2hhbiA8Z3NoYW5AcmVkaGF0LmNvbT4NCj4gPiAtLS0N
-Cj4gPiAgIGh3L2FjcGkvYWNwaS1jcHUtaG90cGx1Zy1zdHViLmMgfCA2ICsrKysrKw0KPiA+ICAg
-MSBmaWxlIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2h3
-L2FjcGkvYWNwaS1jcHUtaG90cGx1Zy1zdHViLmMgYi9ody9hY3BpL2FjcGktY3B1LWhvdHBsdWct
-DQo+IHN0dWIuYw0KPiA+IGluZGV4IDNmYzRiMTRjMjYuLmM2YzYxYmI5Y2QgMTAwNjQ0DQo+ID4g
-LS0tIGEvaHcvYWNwaS9hY3BpLWNwdS1ob3RwbHVnLXN0dWIuYw0KPiA+ICsrKyBiL2h3L2FjcGkv
-YWNwaS1jcHUtaG90cGx1Zy1zdHViLmMNCj4gPiBAQCAtMTksNiArMTksMTIgQEAgdm9pZCBsZWdh
-Y3lfYWNwaV9jcHVfaG90cGx1Z19pbml0KE1lbW9yeVJlZ2lvbg0KPiAqcGFyZW50LCBPYmplY3Qg
-Km93bmVyLA0KPiA+ICAgICAgIHJldHVybjsNCj4gPiAgIH0NCj4gPg0KPiA+ICt2b2lkIGNwdV9o
-b3RwbHVnX2h3X2luaXQoTWVtb3J5UmVnaW9uICphcywgT2JqZWN0ICpvd25lciwNCj4gPiArICAg
-ICAgICAgICAgICAgICAgICAgICAgIENQVUhvdHBsdWdTdGF0ZSAqc3RhdGUsIGh3YWRkciBiYXNl
-X2FkZHIpDQo+ID4gK3sNCj4gPiArICAgIHJldHVybjsNCj4gPiArfQ0KPiANCj4gV2hpbGUgYXQg
-aXQsIGNhbiB3ZSBwcmVmaXggdGhhdCBmdW5jdGlvbiB3aXRoIGFjcGk/DQoNCkkgY2FuIGRvIHRo
-YXQgYnV0IGl0IGhhcyB0byBiZSBkb25lIGF0IG90aGVyIHBsYWNlcyBhcyB3ZWxsDQpzdWNoIGFz
-IGluIGh3L2FjcGkvY3B1X2hvdHBsdWcuYyA8YWNwaV9zd2l0Y2hfdG9fbW9kZXJuX2NwaHAoKT4N
-Cg0KSG9wZSB0aGlzIGlzIG5vdCBhbiBleHRyYW5lb3VzIGNoYW5nZSB0byB0aGlzIHBhdGNoLXNl
-dD8NCg0KVGhhbmtzDQpTYWxpbC4NCg0KDQoNCg==
+On 09.10.23 15:49, Salil Mehta wrote:
+>> From: David Hildenbrand <david@redhat.com>
+>> Sent: Monday, October 9, 2023 1:23 PM
+>> To: Salil Mehta <salil.mehta@huawei.com>; qemu-devel@nongnu.org; qemu-
+>> arm@nongnu.org
+>> Cc: maz@kernel.org; jean-philippe@linaro.org; Jonathan Cameron
+>> <jonathan.cameron@huawei.com>; lpieralisi@kernel.org;
+>> peter.maydell@linaro.org; richard.henderson@linaro.org;
+>> imammedo@redhat.com; andrew.jones@linux.dev; philmd@linaro.org;
+>> eric.auger@redhat.com; oliver.upton@linux.dev; pbonzini@redhat.com;
+>> mst@redhat.com; will@kernel.org; gshan@redhat.com; rafael@kernel.org;
+>> alex.bennee@linaro.org; linux@armlinux.org.uk;
+>> darren@os.amperecomputing.com; ilkka@os.amperecomputing.com;
+>> vishnu@os.amperecomputing.com; karl.heubaum@oracle.com;
+>> miguel.luis@oracle.com; salil.mehta@opnsrc.net; zhukeqian
+>> <zhukeqian1@huawei.com>; wangxiongfeng (C) <wangxiongfeng2@huawei.com>;
+>> wangyanan (Y) <wangyanan55@huawei.com>; jiakernel2@gmail.com;
+>> maobibo@loongson.cn; lixianglai@loongson.cn; Linuxarm <linuxarm@huawei.com>
+>> Subject: Re: [PATCH V3 03/10] hw/acpi: Add ACPI CPU hotplug init stub
+>>
+>> On 09.10.23 13:28, Salil Mehta wrote:
+>>> ACPI CPU hotplug related initialization should only happen if
+>> ACPI_CPU_HOTPLUG
+>>> support has been enabled for particular architecture. Add
+>> cpu_hotplug_hw_init()
+>>> stub to avoid compilation break.
+>>>
+>>> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+>>> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>>> Reviewed-by: Gavin Shan <gshan@redhat.com>
+>>> ---
+>>>    hw/acpi/acpi-cpu-hotplug-stub.c | 6 ++++++
+>>>    1 file changed, 6 insertions(+)
+>>>
+>>> diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-
+>> stub.c
+>>> index 3fc4b14c26..c6c61bb9cd 100644
+>>> --- a/hw/acpi/acpi-cpu-hotplug-stub.c
+>>> +++ b/hw/acpi/acpi-cpu-hotplug-stub.c
+>>> @@ -19,6 +19,12 @@ void legacy_acpi_cpu_hotplug_init(MemoryRegion
+>> *parent, Object *owner,
+>>>        return;
+>>>    }
+>>>
+>>> +void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+>>> +                         CPUHotplugState *state, hwaddr base_addr)
+>>> +{
+>>> +    return;
+>>> +}
+>>
+>> While at it, can we prefix that function with acpi?
+> 
+> I can do that but it has to be done at other places as well
+> such as in hw/acpi/cpu_hotplug.c <acpi_switch_to_modern_cphp()>
+> 
+
+$ git grep cpu_hotplug_hw_init
+hw/acpi/cpu.c:void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+hw/acpi/cpu_hotplug.c:    cpu_hotplug_hw_init(parent, gpe_cpu->device, cpuhp_state, io_port);
+include/hw/acpi/cpu.h:void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+
+Might want to do that as a separate patch, agreed.
+
+-- 
+Cheers,
+
+David / dhildenb

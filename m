@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id m16-20020a7bca50000000b004064ac107cfsm11787284wml.39.2023.10.09.09.46.11
+        by smtp.gmail.com with ESMTPSA id n16-20020a05600c3b9000b0040684abb623sm14062506wms.24.2023.10.09.09.46.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 09 Oct 2023 09:46:11 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9D8CB1FFCD;
-	Mon,  9 Oct 2023 17:41:07 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 122C11FFD0;
+	Mon,  9 Oct 2023 17:41:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -47,92 +47,39 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	qemu-s390x@nongnu.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 21/25] target/sh4: Disable decode_gusa when plugins enabled
-Date: Mon,  9 Oct 2023 17:41:00 +0100
-Message-Id: <20231009164104.369749-22-alex.bennee@linaro.org>
+Subject: [PATCH 25/25] contrib/plugins: fix coverity warning in hotblocks
+Date: Mon,  9 Oct 2023 17:41:04 +0100
+Message-Id: <20231009164104.369749-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231009164104.369749-1-alex.bennee@linaro.org>
 References: <20231009164104.369749-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: BFDgHkf1D3a0
+X-TUID: vMTk431fZ3v4
 
-From: Richard Henderson <richard.henderson@linaro.org>
+Coverity complains that we have an unbalance use of mutex leading to
+potential deadlocks.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230824181233.1568795-3-richard.henderson@linaro.org>
-[AJB: fixed s/cpu_env/tcg_env/ during re-base]
+Fixes: CID 1519048
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/sh4/translate.c | 41 +++++++++++++++++++++++++++++------------
- 1 file changed, 29 insertions(+), 12 deletions(-)
+ contrib/plugins/hotblocks.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index cbd8dfc02f..220a06bdce 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -1816,6 +1816,18 @@ static void decode_opc(DisasContext * ctx)
- }
+diff --git a/contrib/plugins/hotblocks.c b/contrib/plugins/hotblocks.c
+index 6b74d25fea..4de1b13494 100644
+--- a/contrib/plugins/hotblocks.c
++++ b/contrib/plugins/hotblocks.c
+@@ -69,8 +69,8 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
+         }
  
- #ifdef CONFIG_USER_ONLY
-+/*
-+ * Restart with the EXCLUSIVE bit set, within a TB run via
-+ * cpu_exec_step_atomic holding the exclusive lock.
-+ */
-+static void gen_restart_exclusive(DisasContext *ctx)
-+{
-+    ctx->envflags |= TB_FLAG_GUSA_EXCLUSIVE;
-+    gen_save_cpu_state(ctx, false);
-+    gen_helper_exclusive(tcg_env);
-+    ctx->base.is_jmp = DISAS_NORETURN;
-+}
-+
- /* For uniprocessors, SH4 uses optimistic restartable atomic sequences.
-    Upon an interrupt, a real kernel would simply notice magic values in
-    the registers and reset the PC to the start of the sequence.
-@@ -2149,12 +2161,7 @@ static void decode_gusa(DisasContext *ctx, CPUSH4State *env)
-     qemu_log_mask(LOG_UNIMP, "Unrecognized gUSA sequence %08x-%08x\n",
-                   pc, pc_end);
- 
--    /* Restart with the EXCLUSIVE bit set, within a TB run via
--       cpu_exec_step_atomic holding the exclusive lock.  */
--    ctx->envflags |= TB_FLAG_GUSA_EXCLUSIVE;
--    gen_save_cpu_state(ctx, false);
--    gen_helper_exclusive(tcg_env);
--    ctx->base.is_jmp = DISAS_NORETURN;
-+    gen_restart_exclusive(ctx);
- 
-     /* We're not executing an instruction, but we must report one for the
-        purposes of accounting within the TB.  We might as well report the
-@@ -2242,12 +2249,22 @@ static void sh4_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
- #ifdef CONFIG_USER_ONLY
-     if (unlikely(ctx->envflags & TB_FLAG_GUSA_MASK)
-         && !(ctx->envflags & TB_FLAG_GUSA_EXCLUSIVE)) {
--        /* We're in an gUSA region, and we have not already fallen
--           back on using an exclusive region.  Attempt to parse the
--           region into a single supported atomic operation.  Failure
--           is handled within the parser by raising an exception to
--           retry using an exclusive region.  */
--        decode_gusa(ctx, env);
-+        /*
-+         * We're in an gUSA region, and we have not already fallen
-+         * back on using an exclusive region.  Attempt to parse the
-+         * region into a single supported atomic operation.  Failure
-+         * is handled within the parser by raising an exception to
-+         * retry using an exclusive region.
-+         *
-+         * Parsing the region in one block conflicts with plugins,
-+         * so always use exclusive mode if plugins enabled.
-+         */
-+        if (ctx->base.plugin_enabled) {
-+            gen_restart_exclusive(ctx);
-+            ctx->base.pc_next += 2;
-+        } else {
-+            decode_gusa(ctx, env);
-+        }
-         return;
+         g_list_free(it);
+-        g_mutex_unlock(&lock);
      }
- #endif
++    g_mutex_unlock(&lock);
+ 
+     qemu_plugin_outs(report->str);
+ }
 -- 
 2.39.2

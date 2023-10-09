@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t11-20020a5d534b000000b003232380ffd5sm10082444wrv.106.2023.10.09.09.46.12
+        by smtp.gmail.com with ESMTPSA id e24-20020a05600c219800b004013797efb6sm13936639wme.9.2023.10.09.09.46.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 09 Oct 2023 09:46:13 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id ED3E71FFCF;
-	Mon,  9 Oct 2023 17:41:07 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id E9CD81FFC7;
+	Mon,  9 Oct 2023 17:41:06 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -46,72 +46,84 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	qemu-s390x@nongnu.org,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 24/25] contrib/plugins: fix coverity warning in lockstep
-Date: Mon,  9 Oct 2023 17:41:03 +0100
-Message-Id: <20231009164104.369749-25-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 15/25] gdbstub: Use g_markup_printf_escaped()
+Date: Mon,  9 Oct 2023 17:40:54 +0100
+Message-Id: <20231009164104.369749-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231009164104.369749-1-alex.bennee@linaro.org>
 References: <20231009164104.369749-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: NHydK9o9/u6R
+X-TUID: RuIHIt7xngJE
 
-Coverity complains that e don't check for a truncation when copying in
-the path. Bail if we can't copy the whole path into sockaddr.
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-Fixes: CID 1519045
-Fixes: CID 1519046
+g_markup_printf_escaped() is a safer alternative to simple printf() as
+it automatically escapes values.
+
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20230912224107.29669-9-akihiko.odaki@daynix.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- contrib/plugins/lockstep.c | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
+ gdbstub/gdbstub.c | 36 +++++++++++++++++++++---------------
+ 1 file changed, 21 insertions(+), 15 deletions(-)
 
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index 682b11feb2..f0cb8792c6 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -245,6 +245,7 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
- static bool setup_socket(const char *path)
- {
-     struct sockaddr_un sockaddr;
-+    const gsize pathlen = sizeof(sockaddr.sun_path) - 1;
-     int fd;
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index a20169c27b..3dc847f835 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -373,28 +373,34 @@ static const char *get_feature_xml(const char *p, const char **newp,
+     if (strncmp(p, "target.xml", len) == 0) {
+         if (!process->target_xml) {
+             GDBRegisterState *r;
+-            GString *xml = g_string_new("<?xml version=\"1.0\"?>");
++            g_autoptr(GPtrArray) xml = g_ptr_array_new_with_free_func(g_free);
  
-     fd = socket(AF_UNIX, SOCK_STREAM, 0);
-@@ -254,7 +255,11 @@ static bool setup_socket(const char *path)
+-            g_string_append(xml,
+-                            "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
+-                            "<target>");
++            g_ptr_array_add(
++                xml,
++                g_strdup("<?xml version=\"1.0\"?>"
++                         "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
++                         "<target>"));
+ 
+             if (cc->gdb_arch_name) {
+-                g_string_append_printf(xml,
+-                                       "<architecture>%s</architecture>",
+-                                       cc->gdb_arch_name(cpu));
++                g_ptr_array_add(
++                    xml,
++                    g_markup_printf_escaped("<architecture>%s</architecture>",
++                                            cc->gdb_arch_name(cpu)));
+             }
+-            g_string_append(xml, "<xi:include href=\"");
+-            g_string_append(xml, cc->gdb_core_xml_file);
+-            g_string_append(xml, "\"/>");
++            g_ptr_array_add(
++                xml,
++                g_markup_printf_escaped("<xi:include href=\"%s\"/>",
++                                        cc->gdb_core_xml_file));
+             for (r = cpu->gdb_regs; r; r = r->next) {
+-                g_string_append(xml, "<xi:include href=\"");
+-                g_string_append(xml, r->xml);
+-                g_string_append(xml, "\"/>");
++                g_ptr_array_add(
++                    xml,
++                    g_markup_printf_escaped("<xi:include href=\"%s\"/>",
++                                            r->xml));
+             }
+-            g_string_append(xml, "</target>");
++            g_ptr_array_add(xml, g_strdup("</target>"));
++            g_ptr_array_add(xml, NULL);
+ 
+-            process->target_xml = g_string_free(xml, false);
++            process->target_xml = g_strjoinv(NULL, (void *)xml->pdata);
+         }
+         return process->target_xml;
      }
- 
-     sockaddr.sun_family = AF_UNIX;
--    g_strlcpy(sockaddr.sun_path, path, sizeof(sockaddr.sun_path) - 1);
-+    if (g_strlcpy(sockaddr.sun_path, path, pathlen) >= pathlen) {
-+        perror("bad path");
-+        return false;
-+    }
-+
-     if (bind(fd, (struct sockaddr *)&sockaddr, sizeof(sockaddr)) < 0) {
-         perror("bind socket");
-         close(fd);
-@@ -287,6 +292,7 @@ static bool connect_socket(const char *path)
- {
-     int fd;
-     struct sockaddr_un sockaddr;
-+    const gsize pathlen = sizeof(sockaddr.sun_path) - 1;
- 
-     fd = socket(AF_UNIX, SOCK_STREAM, 0);
-     if (fd < 0) {
-@@ -295,7 +301,10 @@ static bool connect_socket(const char *path)
-     }
- 
-     sockaddr.sun_family = AF_UNIX;
--    g_strlcpy(sockaddr.sun_path, path, sizeof(sockaddr.sun_path) - 1);
-+    if (g_strlcpy(sockaddr.sun_path, path, pathlen) >= pathlen) {
-+        perror("bad path");
-+        return false;
-+    }
- 
-     if (connect(fd, (struct sockaddr *)&sockaddr, sizeof(sockaddr)) < 0) {
-         perror("failed to connect");
 -- 
 2.39.2

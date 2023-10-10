@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:fa85:b0:9b6:5cec:e61e with SMTP id lt5csp14108ejb;
+Received: by 2002:a17:906:fa85:b0:9b6:5cec:e61e with SMTP id lt5csp14111ejb;
         Tue, 10 Oct 2023 02:31:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHkpC9MVHOn5SnkIh4wGWWOYoTtgxGnVx9qQMmqJMr2mW0dqQjXZsF+Oy6GdTdElatQcd02
-X-Received: by 2002:a05:620a:1a86:b0:773:bf62:b274 with SMTP id bl6-20020a05620a1a8600b00773bf62b274mr19961995qkb.61.1696930303741;
-        Tue, 10 Oct 2023 02:31:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696930303; cv=none;
+X-Google-Smtp-Source: AGHT+IF5B1u24uRgdowS6jUW3kv3TqhD5c5mGWvlPYmOTv2dvI/D4dw2N2TzLrIhoVRtnihyBe6d
+X-Received: by 2002:a0c:ef0d:0:b0:653:5bed:83d4 with SMTP id t13-20020a0cef0d000000b006535bed83d4mr17002086qvr.30.1696930304017;
+        Tue, 10 Oct 2023 02:31:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696930304; cv=none;
         d=google.com; s=arc-20160816;
-        b=09iapXYiCVApOxDS5ss5maRDkmSXdkWDXrhWU8n9A8X6Gp2luuQ2Z2HI958bwRTmx/
-         c/JTnKFEqDt+Rp6SU8a+Sri8KENFzf94ai1lbwb6lui0DdghBDBtkC7PgxMalLDWO+V0
-         qtUgoVuX9y689E72RVNXqFM1HtagRXzOJnY1WqpUXAS4joPtf+6D1/uFagd62nmX2fMp
-         9NA4Y/j/OyKZagDTPN0/fjCm8HnezexCGe+n0oszoF0Y/3e2IHotR5ciYHmpwtgXlaAV
-         aPZmPRZWJ5r5VupACt+3eXeRtesrPqipJLkQ0EGRcX3fxyafJcNua1E/v+z169WBaG/8
-         WpEg==
+        b=g/33S0l9lQQo/UHVK8HlKg62c4AN7bZxFOh/Y3jsJTqHZjVnS7Uvx4ic+IFhobuddk
+         2M2StKqJRA/MyghvFgjwYdxgJjr9VdRZVdflnfG0abs7APPA4UJGg7k+LQPIadej+kbe
+         pNf8g1BuhMw5Wk6BjRAXPnPIL8jWGhMGHDRd6o85vASg8VEkJtaEQtrpxBUXapwP9WSq
+         QpGlDK22SFMSv9iGkwQwi9wev27SNFL63E7ktey8v2KN5+uMlT/qENA1ssTw4rcfN2jx
+         dNjDY946OGQDLRAakICVaffJHe/H4RG2GmvRssN1JDAam4HxurKT4lOVTW4w9Kz28bOq
+         rsGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=CIEk/ao3BM11WiVM3nzCCvuXQBDA4Jx8RUa5x+46rK0=;
+        bh=FCZsPKk2jjgL5uslZNHqLJ2r1o7NzsXUetagm0hbuBc=;
         fh=iupQBrmerAoZOw8v6swRnyYBx+6KhbF7AbBF1Jawaz4=;
-        b=Be4SEUP90tC32glv9ziw5nEwI38I51CYT57pwrlxbc+41PcRKYcNBs566O7A0yloli
-         i6APmlb2TDjTagrx4QKp4GNZnqswJQIrNaN0n6rHtABLz6GNFtwN/b0alfoXoeq5eyaW
-         Uqyg9ZqSNntAI0tpCdLTFWJBjMasf7Qk5zFE2gZULYwcrQFsBoU2sZvzazwrLKeEi5lX
-         m2L2Xx9xVMoCA0cz24gxJSqF7ui6dktB/QI7TyYvw0eRuJT0lrPvh9uWdxs8RL2h9KRQ
-         K9PcslumkNisN3f2TTL0mbRN3iXYbWheiHfd1/26MoVBEk96WcldeMHkgclLnSipejZu
-         535Q==
+        b=KEDFqfFGmAOJt72MAvGreDNddhAGFStTuYW0tTru+LkZlzC5WZuSOvBAEmbk6wR12Z
+         Tt4GY6Rdr3Q3rK5hUGVJcxlZtz3pwSriMv8nLubxfDTWWOgG1/oJ80461C5XMt0jnO1y
+         7jb0717T4If1xQ1ASlsjV8iURADYmzVLEg+ZLDpMnMao8igJRg5NRzfjHrTDjDDEjm3S
+         Wb4AzHjADuI7L+aeTSf7lmuyN29n/Zl6rtLepLwkN6IXTBgS7+77nIAqaeoK8u53XsRH
+         wSnMGnzHYjMkJIr8D1uiYUkiX7je7XKCVB3SoAIQLUpeQcyRVFQdGGiIV7/Iq3AC9eoG
+         Gszw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Mjs7yt9O;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Ilr/f8eY";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq39-20020a05620a46a700b00774396341a3si7642685qkb.363.2023.10.10.02.31.43
+        by mx.google.com with ESMTPS id n17-20020a0ce491000000b0064f91de2ed8si7252437qvl.551.2023.10.10.02.31.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 10 Oct 2023 02:31:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Mjs7yt9O;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Ilr/f8eY";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qq93n-00006S-8u; Tue, 10 Oct 2023 05:29:51 -0400
+	id 1qq95D-0001wB-Lp; Tue, 10 Oct 2023 05:31:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq93l-0008Tm-Dv
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:29:49 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq94U-0000se-4u
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:30:45 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq93j-0007j8-JN
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:29:49 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-9b2cee55056so986509466b.3
- for <qemu-arm@nongnu.org>; Tue, 10 Oct 2023 02:29:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq94O-00084l-OQ
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:30:33 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-53da80ada57so151332a12.0
+ for <qemu-arm@nongnu.org>; Tue, 10 Oct 2023 02:30:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696930186; x=1697534986; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696930219; x=1697535019; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CIEk/ao3BM11WiVM3nzCCvuXQBDA4Jx8RUa5x+46rK0=;
- b=Mjs7yt9OSWpfEHWrRaHzARwGXb0J/LDr53IVFXfGgO2/5VEssVpJOqJ9HAOznp1emy
- M4gtN7RVAqHCQrEfINYvYzHWBlNm5WzrDZlGUvVkPE4xZBoD4xnEJK+e/gTO61Ok/jlD
- t+Jci3iZVBqIEiCWoNJmobuvvAtVXbzFMDuK+xircIXzpcKXRcZmEjHNVgNlYoJxWFsB
- o93VebqkoVOn4FnqD1ux/GWcYG76d1zVnVqkSmdxZdg4iBz7LMcMPYQXvsPy+nRYyK+m
- v/xxe03PJWJ1UbKr6Fh0DOkcG/4nVuvSQ+az27aGcyk41SLeILEGbxuCdJxEVdrwZ2KT
- MKYA==
+ bh=FCZsPKk2jjgL5uslZNHqLJ2r1o7NzsXUetagm0hbuBc=;
+ b=Ilr/f8eYdXSnsRvSzMA9kNkxqDTVFL8mi9YQlm828cGS+zN00CzZi7R2U6QjbyRS11
+ Oi7l8dL3yLqqPJfYBci8ABAkziFiY4MV4JsLQCOQ6fRj4QlXBd2Z4jrsaJAz5PYufaNy
+ NaoZyXtgZaPKapbDa5HMPsli+jDnFR6HomqbNo30tNrZ3KJ5owFnAKD0su3OR2KeRJ9D
+ A9BfmvantnBo2+Cuc7+rucVM26wPhTK7CGYXxqPThAg/chsw+28aRQa6WM+A7oT3Hr+1
+ o6y2VqyYrRKNFfIda0khDxEaJEhzceUu69HlSc58jtmiTRM6gl24jzLGm8fUIL34Hq3x
+ Z5Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696930186; x=1697534986;
+ d=1e100.net; s=20230601; t=1696930219; x=1697535019;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=CIEk/ao3BM11WiVM3nzCCvuXQBDA4Jx8RUa5x+46rK0=;
- b=JAV0SNT5WjD9+t5UKvT+1eZVTJGnf8T+znOyXFiH0NOHDcKa0eB7csZZzQxP1d4LyM
- BpTRGgp/i+s0O9GKErEJFpBpStn1sv3TbZFfwMr9uJBKRNgnrbYAPoLcuWUGVXKB0DQb
- 9zYxKt9mW55OUbUgHoX5Dmhuci7QvpObX6ZYA12fSKSFi11GDAPtMgF7F3Jl2YRSjcIp
- wElc5szJ1gOU+Ds7YRIfvTiobc4wHicN8IH+pk0zDiDSIgaWFdDvI7x+V/XH12ADo3/R
- BluiT27AL411vbl6oqdxXV4osvpEIOJVBSy3TxOyeFShbmqYKwC38yPpY+qVKAVwhWwS
- NniQ==
-X-Gm-Message-State: AOJu0YyZ1rVYP8jdb3WAFubhZuoo80HcPZTystqH8orO1/57n/dX60e1
- u2KgD8Aahj4gPZhUA2FlCiVKdw==
-X-Received: by 2002:a17:906:19b:b0:9a5:c9a8:1816 with SMTP id
- 27-20020a170906019b00b009a5c9a81816mr16089250ejb.58.1696930186347; 
- Tue, 10 Oct 2023 02:29:46 -0700 (PDT)
+ bh=FCZsPKk2jjgL5uslZNHqLJ2r1o7NzsXUetagm0hbuBc=;
+ b=FzO+/xfaouNj7GgppYT1LeMpGd2gRFmWUYk/n9JzP9iid6HwlEpKLjiRFFsdNMFl3p
+ FlcrD/sWPLIA+jd2i3cUV1nB/X7aYz1Liz9HwgXR5OkJKVsf4S0kGblpB/zpj5Uv+kan
+ 4dhgv0+HJ2HwHtJhVUqU6jKci4/YfY4OXtA8xGoUP16OT/7/DAYhLtqJasl+/9ZO0ooe
+ oZpR85C/NYEdyvZ5P2QLHP5mFXfB7mOkfLivWJ0Y6FzgLFmXN/EwxREPLa4GUbqnVB0R
+ hMbraa2kPxGLyC3vdNyKJ3JpiY8QAlkQOlE7A0G2fOlyxYu3fHVPo1KWAMO4Br/zaeSo
+ CRpg==
+X-Gm-Message-State: AOJu0YxB7H+kP7mKE0HltP3l2Cyrdue82DCCip5VHRMYT8lBAHK2tV6r
+ jxYc9vlcXNiGW8pQP5/e9ChmMA==
+X-Received: by 2002:a50:ee87:0:b0:514:9ab4:3524 with SMTP id
+ f7-20020a50ee87000000b005149ab43524mr16259823edr.7.1696930219293; 
+ Tue, 10 Oct 2023 02:30:19 -0700 (PDT)
 Received: from m1x-phil.lan (aif79-h01-176-172-113-148.dsl.sta.abo.bbox.fr.
  [176.172.113.148]) by smtp.gmail.com with ESMTPSA id
- n10-20020aa7c78a000000b00535204ffdb4sm7430597eds.72.2023.10.10.02.29.42
+ u25-20020aa7db99000000b0053116e45317sm7298755edt.44.2023.10.10.02.30.15
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 10 Oct 2023 02:29:45 -0700 (PDT)
+ Tue, 10 Oct 2023 02:30:18 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -121,17 +121,18 @@ Cc: David Hildenbrand <david@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>, qemu-s390x@nongnu.org
-Subject: [PATCH 05/18] target/hexagon: Declare QOM definitions in 'cpu-qom.h'
-Date: Tue, 10 Oct 2023 11:28:47 +0200
-Message-ID: <20231010092901.99189-6-philmd@linaro.org>
+Subject: [PATCH 09/18] target/i386: Inline target specific
+ TARGET_DEFAULT_CPU_TYPE definition
+Date: Tue, 10 Oct 2023 11:28:51 +0200
+Message-ID: <20231010092901.99189-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231010092901.99189-1-philmd@linaro.org>
 References: <20231010092901.99189-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -153,119 +154,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: t/6E+hvxnjMi
+X-TUID: 6tRDXZ1t5uiY
 
-"target/foo/cpu.h" contains the target specific declarations.
+TARGET_DEFAULT_CPU_TYPE depends on the TARGET_X86_64 definition
+which is target specific. Such target specific definition taint
+"cpu-qom.h".
 
-A heterogeneous setup need to access target agnostic declarations
-(at least the QOM ones, to instantiate the objects).
+Since "cpu-qom.h" must be target agnostic, remove this target
+specific definition uses by inlining TARGET_DEFAULT_CPU_TYPE in
+the two machines using it.
 
-Our convention is to add such target agnostic QOM declarations in
-the "target/foo/cpu-qom.h" header.
-
-Extract QOM definitions from "cpu.h" to "cpu-qom.h".
+"target/i386/cpu-qom.h" is now fully target agnostic.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/hexagon/cpu-qom.h | 35 +++++++++++++++++++++++++++++++++++
- target/hexagon/cpu.h     | 23 +----------------------
- 2 files changed, 36 insertions(+), 22 deletions(-)
- create mode 100644 target/hexagon/cpu-qom.h
+ target/i386/cpu.h | 6 ------
+ hw/i386/microvm.c | 6 +++++-
+ hw/i386/pc.c      | 6 +++++-
+ 3 files changed, 10 insertions(+), 8 deletions(-)
 
-diff --git a/target/hexagon/cpu-qom.h b/target/hexagon/cpu-qom.h
-new file mode 100644
-index 0000000000..cd45850c64
---- /dev/null
-+++ b/target/hexagon/cpu-qom.h
-@@ -0,0 +1,35 @@
-+/*
-+ * QEMU Hexagon CPU QOM header (target agnostic)
-+ *
-+ * Copyright(c) 2019-2023 Qualcomm Innovation Center, Inc. All Rights Reserved.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef QEMU_HEXAGON_CPU_QOM_H
-+#define QEMU_HEXAGON_CPU_QOM_H
-+
-+#include "hw/core/cpu.h"
-+#include "qom/object.h"
-+
-+#define TYPE_HEXAGON_CPU "hexagon-cpu"
-+
-+#define HEXAGON_CPU_TYPE_SUFFIX "-" TYPE_HEXAGON_CPU
-+#define HEXAGON_CPU_TYPE_NAME(name) (name HEXAGON_CPU_TYPE_SUFFIX)
-+
-+#define TYPE_HEXAGON_CPU_V67 HEXAGON_CPU_TYPE_NAME("v67")
-+#define TYPE_HEXAGON_CPU_V68 HEXAGON_CPU_TYPE_NAME("v68")
-+#define TYPE_HEXAGON_CPU_V69 HEXAGON_CPU_TYPE_NAME("v69")
-+#define TYPE_HEXAGON_CPU_V71 HEXAGON_CPU_TYPE_NAME("v71")
-+#define TYPE_HEXAGON_CPU_V73 HEXAGON_CPU_TYPE_NAME("v73")
-+
-+OBJECT_DECLARE_CPU_TYPE(HexagonCPU, HexagonCPUClass, HEXAGON_CPU)
-+
-+typedef struct HexagonCPUClass {
-+    CPUClass parent_class;
-+
-+    DeviceRealize parent_realize;
-+    ResettablePhases parent_phases;
-+} HexagonCPUClass;
-+
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 862e4f1ff5..7c976971c7 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2243,12 +2243,6 @@ uint64_t cpu_get_tsc(CPUX86State *env);
+ 
+ #define CPU_RESOLVING_TYPE TYPE_X86_CPU
+ 
+-#ifdef TARGET_X86_64
+-#define TARGET_DEFAULT_CPU_TYPE X86_CPU_TYPE_NAME("qemu64")
+-#else
+-#define TARGET_DEFAULT_CPU_TYPE X86_CPU_TYPE_NAME("qemu32")
+-#endif
+-
+ #define cpu_list x86_cpu_list
+ 
+ /* MMU modes definitions */
+diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+index b9c93039e2..281bf0c364 100644
+--- a/hw/i386/microvm.c
++++ b/hw/i386/microvm.c
+@@ -650,7 +650,11 @@ static void microvm_class_init(ObjectClass *oc, void *data)
+     mc->has_hotpluggable_cpus = false;
+     mc->auto_enable_numa_with_memhp = false;
+     mc->auto_enable_numa_with_memdev = false;
+-    mc->default_cpu_type = TARGET_DEFAULT_CPU_TYPE;
++#ifdef TARGET_X86_64
++    mc->default_cpu_type = X86_CPU_TYPE_NAME("qemu64");
++#else
++    mc->default_cpu_type = X86_CPU_TYPE_NAME("qemu32");
 +#endif
-diff --git a/target/hexagon/cpu.h b/target/hexagon/cpu.h
-index 10cd1efd57..7c3b993035 100644
---- a/target/hexagon/cpu.h
-+++ b/target/hexagon/cpu.h
-@@ -20,11 +20,10 @@
+     mc->nvdimm_supported = false;
+     mc->default_ram_id = "microvm.ram";
  
- #include "fpu/softfloat-types.h"
- 
-+#include "cpu-qom.h"
- #include "exec/cpu-defs.h"
- #include "hex_regs.h"
- #include "mmvec/mmvec.h"
--#include "qom/object.h"
--#include "hw/core/cpu.h"
- #include "hw/registerfields.h"
- 
- #define NUM_PREGS 4
-@@ -36,18 +35,8 @@
- #define PRED_WRITES_MAX 5                   /* 4 insns + endloop */
- #define VSTORES_MAX 2
- 
--#define TYPE_HEXAGON_CPU "hexagon-cpu"
--
--#define HEXAGON_CPU_TYPE_SUFFIX "-" TYPE_HEXAGON_CPU
--#define HEXAGON_CPU_TYPE_NAME(name) (name HEXAGON_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_HEXAGON_CPU
- 
--#define TYPE_HEXAGON_CPU_V67 HEXAGON_CPU_TYPE_NAME("v67")
--#define TYPE_HEXAGON_CPU_V68 HEXAGON_CPU_TYPE_NAME("v68")
--#define TYPE_HEXAGON_CPU_V69 HEXAGON_CPU_TYPE_NAME("v69")
--#define TYPE_HEXAGON_CPU_V71 HEXAGON_CPU_TYPE_NAME("v71")
--#define TYPE_HEXAGON_CPU_V73 HEXAGON_CPU_TYPE_NAME("v73")
--
- void hexagon_cpu_list(void);
- #define cpu_list hexagon_cpu_list
- 
-@@ -127,16 +116,6 @@ typedef struct CPUArchState {
-     VTCMStoreLog vtcm_log;
- } CPUHexagonState;
- 
--OBJECT_DECLARE_CPU_TYPE(HexagonCPU, HexagonCPUClass, HEXAGON_CPU)
--
--typedef struct HexagonCPUClass {
--    /*< private >*/
--    CPUClass parent_class;
--    /*< public >*/
--    DeviceRealize parent_realize;
--    ResettablePhases parent_phases;
--} HexagonCPUClass;
--
- struct ArchCPU {
-     /*< private >*/
-     CPUState parent_obj;
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index aad7e8ccd1..2f7c0c1bdb 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1818,7 +1818,11 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
+     hc->plug = pc_machine_device_plug_cb;
+     hc->unplug_request = pc_machine_device_unplug_request_cb;
+     hc->unplug = pc_machine_device_unplug_cb;
+-    mc->default_cpu_type = TARGET_DEFAULT_CPU_TYPE;
++#ifdef TARGET_X86_64
++    mc->default_cpu_type = X86_CPU_TYPE_NAME("qemu64");
++#else
++    mc->default_cpu_type = X86_CPU_TYPE_NAME("qemu32");
++#endif
+     mc->nvdimm_supported = true;
+     mc->smp_props.dies_supported = true;
+     mc->default_ram_id = "pc.ram";
 -- 
 2.41.0
 

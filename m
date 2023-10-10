@@ -1,168 +1,140 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp64321ejr;
-        Tue, 10 Oct 2023 04:38:32 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHeEMdvJSIHNlfOlZUJUZ5QFFno2S6xr+NMjMmdUcB8vnjLXvaytWu4mQgQnOxrt8HDd46B
-X-Received: by 2002:adf:da50:0:b0:31f:afeb:4e7d with SMTP id r16-20020adfda50000000b0031fafeb4e7dmr12843196wrl.18.1696937912389;
-        Tue, 10 Oct 2023 04:38:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696937912; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp73581ejr;
+        Tue, 10 Oct 2023 04:56:41 -0700 (PDT)
+X-Received: by 2002:a17:906:254:b0:9b2:b691:9b5f with SMTP id 20-20020a170906025400b009b2b6919b5fmr16663932ejl.41.1696939001656;
+        Tue, 10 Oct 2023 04:56:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696939001; cv=none;
         d=google.com; s=arc-20160816;
-        b=E2y8SSwGJxFu51VPOhTJmSCFkb2UaJwLchGS+Nyyx6hJBk4gT/8dLiuPFETI38Xrs4
-         TUgUvyEVa6J15iREsxPAzWmElaPr15kOIk2/xniHzRCgCcTeI7XwFUgafuxx2pQmVeS4
-         teEyAmid8CI7eWYrSeAavu0KEyjyy/w2LxQkkRXgr5gVFBdZgOXopg4+YIcAdXnoIev/
-         7girbPBVpFQPVuMWcHEKosDaFe9ZhHeh+FQG8Cmx+79wpX+Flyy2R1MVqPW/VEmjx0CE
-         dBUfkkUuVRT7OFfknyEyvRw7NjcFtW/O1lH2iRzKjI/nYT8kgQDs2S7EiTZya1ItIQZn
-         NMXA==
+        b=yz3Rp7aWGcvvf0YuLPwY2TfJWxtfkAUxDjwPzy4IL3Cjb9lt1Rn/Yh3RFYZkVwav2a
+         5e7wOoPptZVXsKYUgqoKA/FfAO4U/3OJ/+/6Dc9H7vamDzopyzReEvzD7o0f6LNHsiq5
+         bPr88SjxV4c7wowKZD8Hlrq9iQfS+ejpt0tD9GzvvcHQcsNTv4b2KsJwm1e+jYi2JsYt
+         OLOo2uZ+cWeo73fNhm1VbKjqbIfSVhjx6eJy6BvLKWvvNqQIWkOA9WlTtHfFgaQqmaNg
+         e003EYgrsOg75MgG0bZ2RcbJFpWaXx7G/Kcj6pviBmcFdPrSnOQM9Uwk3exr9B42E9bj
+         Vmkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=iG+kNFY8svaWyTZqpCDSZb7BqfwhlNqyMflj61Rir60=;
-        fh=RrTLZV0A5IZHRs0gL1etM0WUwmKqocsoR+7SZbDKYTk=;
-        b=vtht4DSd55MnbM9z2vBB6G8LINTyzxaze5AodMDlLWQiVXB0aa+WZ94uRB+nk+D6hS
-         82WoeANABYwkKb4nEDLXkkwmC/E71So/5LPpfVI3QJRhQLYIF743MsEXgckxIeYFDCjJ
-         4rjYq4V+c9irCLdmRoBFbF8L0FS/2210OVHiDJP8JadhPrqhUJYEDATLHmeK1LM93P06
-         vDcTZyT46nY/MMOlmzAaXy5rWrGkrRQcXN+QqyhpWlD/iG8gQzoCkxI/c3CGhUY+BtA9
-         996hBgp/1eRiVqQyUJCsDLomA7K0lh3c3fMETDlwuw7kb9alWD5eQxtTASaIPXduKWFW
-         ejqQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=qlfm40CNX39U3MfQmCxVxB/8tsjjTRpwPggE6Oi56Es=;
+        fh=laApbzcyDW67yvaQPTErmWsSK5B0H2U8qOdh4S20ATg=;
+        b=DjcqQSjftZ6l7X68brX0n1bDwdkrEh3Ahs4JeGEWgBpVX5GZQOlBhdLxczGi3bdczH
+         EzXIKugDwSRUy7u4BNUotdlTU7EGxkJtWL3CX0oCeT/YcJZiX906TDcugpscV82efcBW
+         vJ6Vs3zkxOSrxF0yzSaHnJ9mSPuZWIA7ySaolHHKhPzfv9tAUFVAC1p69Ku9LAxrOqPo
+         iBCPbxrOiTiMklXs12HJNmQa2usDqKOlGcRHGFLXk/e419eJ7TT81neWzogeQ4WRO113
+         MMORARFIMcEJG3OYOdFXmqZy4RpKFjyikY+XY2ofZMUfTdUfNrBqGQXcvXjgToc1zGZk
+         Cuuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d9-20020a5d4f89000000b0032172b9eec4si4526225wru.870.2023.10.10.04.38.32
+       dkim=pass header.i=@linaro.org header.s=google header.b=RpBYWR4S;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id jl22-20020a17090775d600b009b2cc662802sor4022506ejc.15.2023.10.10.04.56.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 04:38:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 10 Oct 2023 04:56:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qqB41-00086r-Dc; Tue, 10 Oct 2023 07:38:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhiwei_liu@linux.alibaba.com>)
- id 1qqB3m-0007oU-8I; Tue, 10 Oct 2023 07:38:00 -0400
-Received: from out30-112.freemail.mail.aliyun.com ([115.124.30.112])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhiwei_liu@linux.alibaba.com>)
- id 1qqB3j-00048w-57; Tue, 10 Oct 2023 07:37:57 -0400
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R561e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=ay29a033018046049;
- MF=zhiwei_liu@linux.alibaba.com; NM=1; PH=DS; RN=43; SR=0;
- TI=SMTPD_---0Vtsm3Mn_1696937857; 
-Received: from 30.221.98.57(mailfrom:zhiwei_liu@linux.alibaba.com
- fp:SMTPD_---0Vtsm3Mn_1696937857) by smtp.aliyun-inc.com;
- Tue, 10 Oct 2023 19:37:39 +0800
-Message-ID: <22ebaf0b-4272-481a-bfaf-5bd2d5f3fd56@linux.alibaba.com>
-Date: Tue, 10 Oct 2023 19:36:38 +0800
+       dkim=pass header.i=@linaro.org header.s=google header.b=RpBYWR4S;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1696939001; x=1697543801; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=qlfm40CNX39U3MfQmCxVxB/8tsjjTRpwPggE6Oi56Es=;
+        b=RpBYWR4SWcaSZWwEQlBb8Yb1KmCK83z6bFHQ5qhIj8YHEDeOe0EIAZNsupHIj7ayQw
+         ChRy3BZjC9G3xjKtuEv6vaySHq+9WAsa3euGSGeocGtCRZva3F9QeynwWUcUq5onBOhd
+         nGvciPx+XrPEX73bKiDWw5F6d2js/JSvq4GMvLO6r6ZDY9Qqb07K7+uRF9Ax8bIKgrNT
+         1qmXShG3POJusZ3wAE0/gpHTbUtWnNipJCnvIbUe/ChWjHLhyxtZL8BIOXAC/gkS97b1
+         EVvvUUUtmoBTd5cNETNB2kyhDYGG4rajGJuOQuNp4zlPnrbpoiWeKLomnCoJHXqjhJlr
+         /7Bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696939001; x=1697543801;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=qlfm40CNX39U3MfQmCxVxB/8tsjjTRpwPggE6Oi56Es=;
+        b=F0oboB6t7RAcntE2SDHy4V7+MC/v9xHloyevrARAeW4trDf9wRWZSwfkGxVQ+2D6Kf
+         4TegqGMGOmm1+uev0GhYNMGJU5dR037wj5KNHill9p09QTMsDuSeNaVSc7/maiDIzR1a
+         O950BQA3r7teAlVIGVfzG7OrdUySqnRZw+Tk8enVG4CSg/tXUi6xI7OBpQUwTF4H4wCG
+         6zFJl0fK8mDT8jP/ch3SF02gKBCfs4leBlOTsw3AcXVaWvt6pqzOVtCJLGqxxCyi9a2O
+         OFfwBHta2kp30PAGFFffOKt6zLjuzA9tAvv32L63PfAWmMCuPhZAsM1XVEdWu7w6lZhc
+         DKtg==
+X-Gm-Message-State: AOJu0Yz8M8tsyM8dzOcXtp58yhkCtDWoy7/edWX5//brsGi34HR8WlwG
+	tO3KoqNKfeW/2PGo3rQXK2qmryCB1PWKo6I+yGjKJBvj
+X-Google-Smtp-Source: AGHT+IF4BFuHaE3LqrKLl7o1W+AUINASUjohGYH7UDTjoiIC+sZBStWET44grVxDUUzv3JS6z77EIA==
+X-Received: by 2002:a17:907:b11:b0:9ae:699d:8a29 with SMTP id h17-20020a1709070b1100b009ae699d8a29mr15104733ejl.6.1696939001009;
+        Tue, 10 Oct 2023 04:56:41 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.115] (aif79-h01-176-172-113-148.dsl.sta.abo.bbox.fr. [176.172.113.148])
+        by smtp.gmail.com with ESMTPSA id kb4-20020a1709070f8400b009adc81bb544sm8337672ejc.106.2023.10.10.04.56.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Oct 2023 04:56:40 -0700 (PDT)
+Message-ID: <bbd46ddb-a848-4e6f-ac5e-dcd2cf99b5c7@linaro.org>
+Date: Tue, 10 Oct 2023 13:56:36 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/18] target/riscv: Remove CPU_RESOLVING_TYPE from
- 'cpu-qom.h'
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH 02/25] tests/avocado: remove flaky test marking for
+ test_sbsaref_edk2_firmware
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Song Gao <gaosong@loongson.cn>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Laurent Vivier <lvivier@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-arm@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Paolo Bonzini <pbonzini@redhat.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Nicholas Piggin <npiggin@gmail.com>, qemu-riscv@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Bin Meng <bin.meng@windriver.com>, Yanan Wang <wangyanan55@huawei.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, Marek Vasut
- <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-ppc@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Laurent Vivier <laurent@vivier.eu>, Stafford Horne <shorne@gmail.com>,
- Thomas Huth <thuth@redhat.com>, Chris Wulff <crwulff@gmail.com>,
- Sergio Lopez <slp@redhat.com>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+Cc: Thomas Huth <thuth@redhat.com>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Brad Smith <brad@comstyle.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ David Hildenbrand <david@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, qemu-riscv@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, Nicholas Piggin <npiggin@gmail.com>,
+ Bin Meng <bin.meng@windriver.com>, Leif Lindholm
+ <quic_llindhol@quicinc.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-ppc@nongnu.org,
+ John Snow <jsnow@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ qemu-arm@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Yanan Wang <wangyanan55@huawei.com>,
+ Weiwei Li <liweiwei@iscas.ac.cn>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+ <berrange@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Beraldo Leal <bleal@redhat.com>, Yoshinori Sato
+ <ysato@users.sourceforge.jp>, Mahmoud Mandour <ma.mandourr@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-s390x@nongnu.org
-References: <20231010092901.99189-1-philmd@linaro.org>
- <20231010092901.99189-4-philmd@linaro.org>
-From: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
-In-Reply-To: <20231010092901.99189-4-philmd@linaro.org>
+ Song Gao <gaosong@loongson.cn>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-s390x@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20231009164104.369749-1-alex.bennee@linaro.org>
+ <20231009164104.369749-3-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20231009164104.369749-3-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=115.124.30.112;
- envelope-from=zhiwei_liu@linux.alibaba.com;
- helo=out30-112.freemail.mail.aliyun.com
-X-Spam_score_int: -98
-X-Spam_score: -9.9
-X-Spam_bar: ---------
-X-Spam_report: (-9.9 / 5.0 requ) BAYES_00=-1.9, ENV_AND_HDR_SPF_MATCH=-0.5,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UNPARSEABLE_RELAY=0.001,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VABHIwW9X5YI
+X-TUID: Gutp6rIsInbM
 
-
-On 2023/10/10 17:28, Philippe Mathieu-Daudé wrote:
-> CPU_RESOLVING_TYPE is a per-target definition, and is
-> irrelevant for other targets. Move it to "cpu.h".
->
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On 9/10/23 18:40, Alex Bennée wrote:
+> After testing locally I decided to revert a5754847e0 (tests/avocado: Disable the
+> test_sbsaref_edk2_firmware by default) as the test seems pretty
+> stable:
+> 
+>     env QEMU_TEST_FLAKY_TESTS=1 retry.py -n 50 -c -- \
+>       ./tests/venv/bin/avocado run \
+>       ./tests/avocado/machine_aarch64_sbsaref.py:Aarch64SbsarefMachine.test_sbsaref_edk2_firmware
+> 
+> yields:
+> 
+>    Results summary:
+>    0: 50 times (100.00%), avg time 2.064 (0.04 varience/0.19 deviation)
+>    Ran command 50 times, 50 passes
+> 
+> Maybe f0ec14c78c (tests/avocado: Fix console data loss) has made it
+> more reliable?
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Thomas Huth <thuth@redhat.com>
 > ---
->   target/riscv/cpu-qom.h | 1 -
->   target/riscv/cpu.h     | 2 ++
->   2 files changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/target/riscv/cpu-qom.h b/target/riscv/cpu-qom.h
-> index 04af50983e..8cb67b84a4 100644
-> --- a/target/riscv/cpu-qom.h
-> +++ b/target/riscv/cpu-qom.h
-> @@ -27,7 +27,6 @@
->   
->   #define RISCV_CPU_TYPE_SUFFIX "-" TYPE_RISCV_CPU
->   #define RISCV_CPU_TYPE_NAME(name) (name RISCV_CPU_TYPE_SUFFIX)
-> -#define CPU_RESOLVING_TYPE TYPE_RISCV_CPU
->   
->   #define TYPE_RISCV_CPU_ANY              RISCV_CPU_TYPE_NAME("any")
->   #define TYPE_RISCV_CPU_BASE32           RISCV_CPU_TYPE_NAME("rv32")
-> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-> index ef9cf21c0c..374b813f20 100644
-> --- a/target/riscv/cpu.h
-> +++ b/target/riscv/cpu.h
-> @@ -31,6 +31,8 @@
->   #include "qapi/qapi-types-common.h"
->   #include "cpu-qom.h"
->   
-> +#define CPU_RESOLVING_TYPE TYPE_RISCV_CPU
+>   tests/avocado/machine_aarch64_sbsaref.py | 1 -
+>   1 file changed, 1 deletion(-)
 
-Reviewed-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
-
-Zhiwei
-
-> +
->   #define TCG_GUEST_DEFAULT_MO 0
->   
->   /*
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

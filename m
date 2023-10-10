@@ -1,93 +1,91 @@
-Received: by 2002:a17:906:fa85:b0:9b6:5cec:e61e with SMTP id lt5csp12009ejb;
-        Tue, 10 Oct 2023 02:29:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFclNP1kn2lo+O1qJw1X69sJDgMWnGaADkWvsUjyAoDHHNJ5fzAowQRMFzM2UjgboQh1RE4
-X-Received: by 2002:a0d:ca4f:0:b0:5a7:bcac:7d3 with SMTP id m76-20020a0dca4f000000b005a7bcac07d3mr1704126ywd.9.1696930184728;
-        Tue, 10 Oct 2023 02:29:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696930184; cv=none;
+Received: by 2002:a17:906:fa85:b0:9b6:5cec:e61e with SMTP id lt5csp12666ejb;
+        Tue, 10 Oct 2023 02:30:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGNvztHDbFpfwcv5l2OcZDnCOkpb2IjUqunVOoKtG4rqDI3OLN5DJhjmhJ3BaQGUEsSmGdQ
+X-Received: by 2002:a05:620a:e96:b0:774:1ba2:5135 with SMTP id w22-20020a05620a0e9600b007741ba25135mr16123390qkm.68.1696930222195;
+        Tue, 10 Oct 2023 02:30:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696930222; cv=none;
         d=google.com; s=arc-20160816;
-        b=TkI2rWHjANNOr3/YQBmgcPgUENLb1/o1kyTS4f0m2rqiNG0UuB4gRcCsxe/JtB2K7a
-         vas8Gn1x6aiRzQESiykUJ8/UwaMHIc6C/+9gppjW5rHz3dcvY+U5YwdP44aSZ1/c9fSC
-         +/72xAr6yMS8FI+yJjrllaPztsa0NQga92SWdeW0+5iZHoJ1GxRdgT+oQfmrSst/Z9cB
-         qU496hxZZE8iKBx1Li5Bm3sPm7jq1aLo+1OPcF7kb4WiG/TDxUBJpX1LdqzJEeuAEYfo
-         sVTNl69SMugU1lsXTNGuTP96AB2fdMl6BobzJQ2Lew/SCrWMrJLwpUFO0SFdCTcJe/Kn
-         3Fsw==
+        b=Dhlg+J61qbsSXvnUGzndjT8868rt0tkz3bIJdyZ06urdwUWPuf1sXVUX3z9leR4z0j
+         ecn8D4VKamDGLu877NckXRgW5xyWA2jvYDZ67Phf8lOtTgMNlWOaD3y1Z1Id6B1vezpu
+         DvhlQgVf+BKj1xzl6bdk9NCteLTwmQYqM68GZ+RB6P/52ywgl1hK0lxYvSwJDdTaVspy
+         GpBKoJzx3pFL5Ct1Fi1m/5sgcCleBQbXWhgDSjAQFIYh4vAfhP2Penucjv6F0GNkz795
+         tu9uJfgX1i3xLQ7xSpAPuKbdXrx2KoWFvW5WJcMNNTkRZLTbmJwvmiRBGvuGBJbaUhrG
+         qVaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=VuKnrD3Kd1ngKxKit5HCcUa6RKlSi5wd8BzeyDj6qrg=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=jVdFJHte50YKA8Z2cBZMBa58ygStm0gO7g9CZPgou1U=;
         fh=iupQBrmerAoZOw8v6swRnyYBx+6KhbF7AbBF1Jawaz4=;
-        b=ZjPFHNRRq4jA7LH2DM89er9sfCh65YYr9A7TDxeqEYjBifDBrDsKqIxs4SnfAYguGH
-         60biKfgSxZGAMeRvmCtoyQ0I7aoPjH46L/fm/KFZgI0tn64sICtUJKtkDwrY5JmQvxoj
-         JQ51DaVP1GbNKX93xEKtvuPezmlwu+I7ljgZxbzuKQtjPhVbRMNC3D/4f8wyb822EUew
-         dNu36dJVTIvsRbYGxyU/imoQrtF3KPKHyu5dgA7gb9mTKsZhKP9f2OqkEVSodlD62lIf
-         KrKXGyMIdQ14HnU25Z9mASeuvTvJpKR8xjFIZDUqmBiQpjSvgFfmZ0wrqa+e2a4+82Xq
-         1PmQ==
+        b=r3O7NEXh3hI1O2lzHpIhUMQLvenrHntWj1SgYQ9iw8L3l8z45/toPJsD4GmSycCKJJ
+         4KkYIxzEgCjwHiSt7GqDwBVMhIRKU1xUtSivSWnmQ/Sk1/8Grk8dMProVpUoN6dWzi+a
+         rxSqounr4PXUHUJkakrm+pvGDddMUYKgF2F6hMIqwrFtsj+ClGOZyQRlX1IyG5+OwRHx
+         qhr0otgmyIu8eO4xic+QNZnH4HPz+h8oJB8YjI8UqPTY1JqPOvcR92Ym3Bi6Jced+j5i
+         ZMiJXFrzjG4nfT5EovR4GJtVu8sjJ6m5D7hGbHGyUSmiTenQMNOvjSNd1DBtEnuiSWWM
+         RDyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ge3zkIoo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mpnjiPEr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p5-20020a0ccb85000000b006582469f16csi7318183qvk.505.2023.10.10.02.29.44
+        by mx.google.com with ESMTPS id dt45-20020a05620a47ad00b007681177b50csi7442216qkb.365.2023.10.10.02.30.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 02:29:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Oct 2023 02:30:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ge3zkIoo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mpnjiPEr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qq93I-0007zK-5r; Tue, 10 Oct 2023 05:29:20 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qq93B-0007qR-DU; Tue, 10 Oct 2023 05:29:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq93F-0007ue-Ef
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:29:17 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq939-0007p4-Ke
+ for qemu-devel@nongnu.org; Tue, 10 Oct 2023 05:29:11 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq93D-0007e8-SC
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:29:17 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-53829312d12so14022502a12.0
- for <qemu-arm@nongnu.org>; Tue, 10 Oct 2023 02:29:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq936-0007d2-JZ
+ for qemu-devel@nongnu.org; Tue, 10 Oct 2023 05:29:11 -0400
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-9ba1eb73c27so335019466b.3
+ for <qemu-devel@nongnu.org>; Tue, 10 Oct 2023 02:29:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696930154; x=1697534954; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=VuKnrD3Kd1ngKxKit5HCcUa6RKlSi5wd8BzeyDj6qrg=;
- b=Ge3zkIoov5HsrKsvDmKFeGQv7qrJPvVY6qrt1VO2F/8RZrNO2RHWoyKrVuwczAugzp
- QXCdtMTe4TJZz2kMxI7hyMZoeBlW2OwDWj/QzDOfvzyTh6rrv23U+7Hg/wLKJogsX7iz
- u/6fLsCfGh320q9GFneEKq0bRixDtHduII6MpYwRPoXOq9lGT3Nwtewen2CLBrBkg6ul
- 0vetT1oOJDTAO6fHhF5REX8SMYerMeC7nt+nKm+vLOXrAwsE5b2Rkr0itvYaEHNVkBCJ
- u54E2Ep7Bz/kD1RUpR92cwiAGzi/gM1PoML7zRUb9aF/m5GXCiBlrGfnHdc9Sg7VenLh
- W+Zw==
+ d=linaro.org; s=google; t=1696930147; x=1697534947; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=jVdFJHte50YKA8Z2cBZMBa58ygStm0gO7g9CZPgou1U=;
+ b=mpnjiPErYC89McTVpbwqkKsP+cn8mDk/QMWg9N2LytlpKfNuXLvO2bI+PbwpqkjRIm
+ 8vxTFXHviucT++bhe2X2MWIvVHluIRp0l/t6Nn6nqedZp6iumKJ9XiUULdFFxnTiG8zl
+ 8jS2GSdBJntH3GaoArxUziVX4tqUjoixKp+3Ix9r/W37UTQIG9AiNVaZ2YHcOJz4Oqda
+ sr85tAWimYhl4AMNmGNQlxQrG3VZ3D3qnz9JGXgaKx1z8QPYS6shmFuYIduetpvtn1wT
+ jjfAgoNotecCd0z0pWsyXjrtiHjbL5Eo+kKQpU4o6FWKY7lEE5J39n9WcDToVkCZ/UR+
+ K89A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696930154; x=1697534954;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=VuKnrD3Kd1ngKxKit5HCcUa6RKlSi5wd8BzeyDj6qrg=;
- b=s1kh0+iU2Ez/gCeF4edN1ihpF0ogiHWKZNcDbVRUr9+s3foXsrkFDaRsUcfLgPkiAe
- 4Ab/dTBrVizQRTFq/IJ83rqeFB6lnqJgnb6xDpGp40iEfx8yqkFEHmCsVwhcP9AHoRgQ
- kjo/fBeuXlqsAh1UYm1TsJrQjBuYhQfSLZLi37oyQJo32Avm6d/zaixy5v7UpwQ7DT92
- pSvUzRdbbtVd1kxI8r574YXcdrl5D38Kt4pJjno/16A4uz1BMnU+C3uJXMbCkFabUHoj
- 7l62onXTmOISI4Dx6cVTA6NcMbp197H8aUd9G83lv6ZfR5sYj1DzIM4UrRdBJcgi0Srb
- aiew==
-X-Gm-Message-State: AOJu0YzVmOeTQcNnQfKBu9XjmihlLP1JXLtluuagX2xgeqzpNWgu6gZ1
- I0i3jLq65cdKkVoCUyR+ZaQF1A==
-X-Received: by 2002:a17:907:318d:b0:9a5:c38d:6b75 with SMTP id
- xe13-20020a170907318d00b009a5c38d6b75mr12798705ejb.15.1696930154598; 
- Tue, 10 Oct 2023 02:29:14 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1696930147; x=1697534947;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jVdFJHte50YKA8Z2cBZMBa58ygStm0gO7g9CZPgou1U=;
+ b=d1o6NaUpwrEfj5GEN+3RGlXVBrRsWKdfKCsNN+pliEXrfUFjHDmdZliiMbn1Z3TeEs
+ OQ8mFym9MhynU2MqfVGMsoiphMe86vMnZrb4CjIdZ1WYEghcH0GeFmM+/rmaxrFDGdGG
+ gD1lforygc9mNG3PF0kGAMKcywzpSk9fKAKKu834wD6hvto00VQGUpjqNZs0q8Nf/VFO
+ y/h/fGYU0y3ljkj62eKEAoGOsxjwQSb9mTaXX1y1QBgV+FatphY7U0yCafrOuUlYVmX3
+ AANavgL4Ic8Hu2KbrcoutZFphSPugK2ifHWdhSENLdLXiClop1SOZLlsKlGCxkWmbgy8
+ 46yg==
+X-Gm-Message-State: AOJu0YzFxaW3keCPfEt0q9tE/QJdAU8+rdcBcjxN1WB9x7mLKMLjHDlA
+ lDToH9YUpO2MZmYPAskcmUTCuNWEdrmB1O4spfka4Q==
+X-Received: by 2002:a17:906:2250:b0:9ae:54ea:5b0f with SMTP id
+ 16-20020a170906225000b009ae54ea5b0fmr17025641ejr.24.1696930146660; 
+ Tue, 10 Oct 2023 02:29:06 -0700 (PDT)
 Received: from m1x-phil.lan (aif79-h01-176-172-113-148.dsl.sta.abo.bbox.fr.
  [176.172.113.148]) by smtp.gmail.com with ESMTPSA id
- c12-20020a170906694c00b009b8a4f9f20esm8131582ejs.102.2023.10.10.02.29.11
+ f23-20020a170906139700b009a5f1d15642sm8105155ejc.158.2023.10.10.02.29.02
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 10 Oct 2023 02:29:14 -0700 (PDT)
+ Tue, 10 Oct 2023 02:29:06 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -121,84 +119,143 @@ Cc: David Hildenbrand <david@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>, qemu-s390x@nongnu.org
-Subject: [PATCH 01/18] target: Mention 'cpu-qom.h' is target agnostic
-Date: Tue, 10 Oct 2023 11:28:43 +0200
-Message-ID: <20231010092901.99189-2-philmd@linaro.org>
+Subject: [PATCH 00/18] target: Make 'cpu-qom.h' really target agnostic
+Date: Tue, 10 Oct 2023 11:28:42 +0200
+Message-ID: <20231010092901.99189-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231010092901.99189-1-philmd@linaro.org>
-References: <20231010092901.99189-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: du7F4+rE+6F3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aS+vAChHZj27
 
-"target/foo/cpu-qom.h" is supposed to be target agnostic
-(include-able by any target). Add such mention in the
-header.
+A heterogeneous machine must be able to instantiate CPUs
+from different architectures. In order to do that, the
+common hw/ code has to access to the QOM CPU definitions
+from various architecture.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/cpu-qom.h        | 2 +-
- target/hppa/cpu-qom.h       | 2 +-
- target/microblaze/cpu-qom.h | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+Those QOM definitions are published in "target/foo/cpu-qom.h".
+All 'cpu-qom.h' must be target agnostic, so hw/ can include
+multiple of them in order to create a heterogeneous machine.
 
-diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
-index 514c22ced9..064317a245 100644
---- a/target/arm/cpu-qom.h
-+++ b/target/arm/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU ARM CPU
-+ * QEMU ARM CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  *
-diff --git a/target/hppa/cpu-qom.h b/target/hppa/cpu-qom.h
-index b96e0318c7..a89a4f3a0a 100644
---- a/target/hppa/cpu-qom.h
-+++ b/target/hppa/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU HPPA CPU
-+ * QEMU HPPA CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2016 Richard Henderson <rth@twiddle.net>
-  *
-diff --git a/target/microblaze/cpu-qom.h b/target/microblaze/cpu-qom.h
-index cda9220fa9..0e3ebaddb1 100644
---- a/target/microblaze/cpu-qom.h
-+++ b/target/microblaze/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU MicroBlaze CPU
-+ * QEMU MicroBlaze CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  *
+This series strengthen all (except PPC...) target 'cpu-qom.h',
+making them target agnostic.
+
+For various targets it is just a matter of moving definitions
+where they belong (either 'cpu.h' or 'cpu-qom.h').
+
+For few (mips/riscv/sparc/x86) we have to remove the target
+specific definitions (which 'taint' the header as target specific).
+
+For mips/sparc/x86 this implies splitting the base target
+definition by making it explicit to the build type (32 or 64-bit).
+
+PPC is missing because CPU types are currently registered
+indistinctly, and whether a CPU is 32/64 bit can not be detected
+at build time (it is done in each cpu_class_init() handler,
+*after* the type is registered).
+
+Based-on: <20231010074952.79165-1-philmd@linaro.org>
+  Introduce qtest_get_base_arch() / qtest_get_arch_bits()
+
+Philippe Mathieu-Daudé (18):
+  target: Mention 'cpu-qom.h' is target agnostic
+  target/ppc: Remove CPU_RESOLVING_TYPE from 'cpu-qom.h'
+  target/riscv: Remove CPU_RESOLVING_TYPE from 'cpu-qom.h'
+  target: Declare FOO_CPU_TYPE_NAME/SUFFIX in 'cpu-qom.h'
+  target/hexagon: Declare QOM definitions in 'cpu-qom.h'
+  target/loongarch: Declare QOM definitions in 'cpu-qom.h'
+  target/nios2: Declare QOM definitions in 'cpu-qom.h'
+  target/openrisc: Declare QOM definitions in 'cpu-qom.h'
+  target/i386: Inline target specific TARGET_DEFAULT_CPU_TYPE definition
+  target/riscv: Inline target specific TYPE_RISCV_CPU_BASE definition
+  target/i386: Declare CPU QOM types using DEFINE_TYPES() macro
+  target/mips: Declare CPU QOM types using DEFINE_TYPES() macro
+  target/ppc: Declare CPU QOM types using DEFINE_TYPES() macro
+  target/sparc: Declare CPU QOM types using DEFINE_TYPES() macro
+  cpus: Open code OBJECT_DECLARE_TYPE() in OBJECT_DECLARE_CPU_TYPE()
+  target/i386: Make X86_CPU common to new I386_CPU / X86_64_CPU types
+  target/mips: Make MIPS_CPU common to new MIPS32_CPU / MIPS64_CPU types
+  target/sparc: Make SPARC_CPU common to new SPARC32_CPU/SPARC64_CPU
+    types
+
+ include/hw/core/cpu.h       |  7 +++-
+ target/alpha/cpu-qom.h      |  5 ++-
+ target/alpha/cpu.h          |  2 --
+ target/arm/cpu-qom.h        |  2 +-
+ target/avr/cpu-qom.h        |  5 ++-
+ target/avr/cpu.h            |  2 --
+ target/cris/cpu-qom.h       |  5 ++-
+ target/cris/cpu.h           |  2 --
+ target/hexagon/cpu-qom.h    | 35 ++++++++++++++++++++
+ target/hexagon/cpu.h        | 23 +------------
+ target/hppa/cpu-qom.h       |  2 +-
+ target/i386/cpu-qom.h       | 19 +++++++----
+ target/i386/cpu.h           | 11 ++-----
+ target/loongarch/cpu-qom.h  | 38 +++++++++++++++++++++
+ target/loongarch/cpu.h      | 26 +--------------
+ target/m68k/cpu-qom.h       |  5 ++-
+ target/m68k/cpu.h           |  2 --
+ target/microblaze/cpu-qom.h |  2 +-
+ target/mips/cpu-qom.h       | 16 +++++----
+ target/mips/cpu.h           |  5 +--
+ target/nios2/cpu-qom.h      | 32 ++++++++++++++++++
+ target/nios2/cpu.h          | 22 +------------
+ target/openrisc/cpu-qom.h   | 36 ++++++++++++++++++++
+ target/openrisc/cpu.h       | 26 +--------------
+ target/ppc/cpu-qom.h        |  3 +-
+ target/ppc/cpu.h            |  2 ++
+ target/riscv/cpu-qom.h      |  9 +----
+ target/riscv/cpu.h          |  2 ++
+ target/rx/cpu-qom.h         |  5 ++-
+ target/rx/cpu.h             |  2 --
+ target/s390x/cpu-qom.h      |  5 ++-
+ target/s390x/cpu.h          |  2 --
+ target/sh4/cpu-qom.h        |  5 ++-
+ target/sh4/cpu.h            |  2 --
+ target/sparc/cpu-qom.h      | 14 ++++----
+ target/sparc/cpu.h          |  5 +--
+ target/tricore/cpu-qom.h    |  5 +++
+ target/tricore/cpu.h        |  2 --
+ target/xtensa/cpu-qom.h     |  5 ++-
+ target/xtensa/cpu.h         |  2 --
+ hw/i386/microvm.c           |  6 +++-
+ hw/i386/pc.c                |  6 +++-
+ hw/riscv/spike.c            |  8 ++++-
+ hw/riscv/virt.c             |  8 ++++-
+ target/i386/cpu.c           | 66 ++++++++++++++++++++++---------------
+ target/mips/cpu.c           | 34 ++++++++++++-------
+ target/ppc/cpu_init.c       | 52 +++++++++++++----------------
+ target/sparc/cpu.c          | 35 +++++++++++++-------
+ tests/qtest/cpu-plug-test.c |  2 +-
+ 49 files changed, 369 insertions(+), 248 deletions(-)
+ create mode 100644 target/hexagon/cpu-qom.h
+ create mode 100644 target/loongarch/cpu-qom.h
+ create mode 100644 target/nios2/cpu-qom.h
+ create mode 100644 target/openrisc/cpu-qom.h
+
 -- 
 2.41.0
 

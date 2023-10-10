@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp21ejr;
-        Tue, 10 Oct 2023 02:31:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHe+an3/fZ/6KwvJuCaaI/Vpb2edbB4ireLCQrYAh8yneNgujw5psrKhmOsVEf5GYdzIf9i
-X-Received: by 2002:a0c:fb02:0:b0:668:ecef:b997 with SMTP id c2-20020a0cfb02000000b00668ecefb997mr18018478qvp.41.1696930315581;
-        Tue, 10 Oct 2023 02:31:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696930315; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp160ejr;
+        Tue, 10 Oct 2023 02:32:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEu5CjNfA2JHJB6F6tMeWgEPslRIxbxP72Rc+2eT4hkvpCGLyWG/Pi3CG++sjDrbSS5REQY
+X-Received: by 2002:a05:6214:5f07:b0:65b:229e:cb8a with SMTP id lx7-20020a0562145f0700b0065b229ecb8amr16258935qvb.44.1696930336349;
+        Tue, 10 Oct 2023 02:32:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696930336; cv=none;
         d=google.com; s=arc-20160816;
-        b=mhM7L5j6n6kXlyd/tfxANkC4JBl3eDThGxMRdZnbDMriyrIQzMbTmfL2DIPH06k+zP
-         M9yUIN5gGxql+AKHAk23g98ghb9suew07HJn59bPwb429r1wMNY6rTJiHqiPb/8Zt/eq
-         xmW610bWC2gPsWw5vdwwxh+8NYS2uH+q5HZe1CXfbYNboOAC1qkQYAWIELzkQtKMWXA1
-         Q3JgKB6ndBPFvWxyxAnX9gKQUfyBMr6jXJ6tHkt8PKBQi1cb2jHIsM/O0L07S0HPf4XQ
-         nG8BllEzkkPqfd7IQQLASQs+dhoNftkRAWnYdmjA6OfbmUhCKdKg1HUUHt7LVeZKqyfC
-         sFEw==
+        b=FIl7WA2aeKxycRLDjb6nRCTEJ2voBqSMxu55disj+H63Eep+RbDvVsi5Fj6H5C0ySm
+         MuBBP1kIQTl1UPKzqnGMARYaKlPbAT+mEM3YCpLCR3l6+jfto7ZXc+g5Ne/Ju76+zQpR
+         roFlfzXsbvH9avodvwk7fYdjJVZfVF8I0tjPk/dPNpa1ERMWlgpVBD/wH6y2oD8npKpH
+         YsREbfbA8t0nbeXaFaLKFGBNYKBy31Yt/yxeWBGekBbqGLt7SpsT+WD3Y+Dc0qiGul1I
+         D7ucVv1EHcPdiTtTpStt1NJ76q2z/Bq/6Q+MrDyCT1AGTig6jC2T+ReKbWa/Vxg0LlnI
+         5vxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ty5A8kcVGZ5VAZ2hfMU3PH9M5Fs6Xopxrwnt8GKnicA=;
+        bh=g9ac00GoAEt719cFFz9dDP5blE56OLyiS+6SiHpN8FY=;
         fh=iupQBrmerAoZOw8v6swRnyYBx+6KhbF7AbBF1Jawaz4=;
-        b=BFuNef4pSbV4nitioQP7Qi3cxiMjT1bW1lyRauzJ4uFjnYXM1NeRPY+cDvQ7Mklo1v
-         2jR/deS8vaYCbNZqF1TyZvMz/3wtE5VUJCPmpTn43oViD+kIm7YXGOy3+95YWfLVosgE
-         bn90M43s8OHV2r2lepmmV0PZQ/OH39kcMGQr73TqYAk9Qw7INez+m3iwSEieylWvq2YX
-         iiN2YOAZlJa0A/b9rGEN9YOv9KcBNgQ4C8f8fud5aQwBRwTj6wGK8NzjhgaNxac3lbwm
-         /liY/Ed4F8qG82+Fv2Glayp8WpmnERkt5DhzsjFJ7fyAFGatZ5D3dthXbHvJ4JaDdWzK
-         qzUg==
+        b=xIVqT7GQzmdwBsUlV0EH6B5bLfxH3JSHd/MTlOtpcCDN8EUYGYipKwtqOeXnC1/fS+
+         +rFRYOoYfod3KaXx9ZBeiH30O2XGv2DhWLaDh7W4W36KAnqmr8PxlhRfUUcvCcVZTrwX
+         2KTo4svdKebTt2yJQhdBIN9Qu37i4pSXlCxnyY04BemnGNh31KcB9pKR+IIoRJ7u/StB
+         YC2kFUAbj+vSmI+Ub/iz5yuff9yuauqvsM3dNtbwoKRQXdxFKsgQo37cN0VGss7lIyVo
+         w2tiyaQYuomi5OUsmSZ6zyQ3ExRKSG0zpXbH5Pqd88uDziC486wmTF+q/bXtfcCHNJ4S
+         oLhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zniWLfBA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VeZUhIXa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j3-20020a05620a410300b00767cc0f9316si7544692qko.289.2023.10.10.02.31.55
+        by mx.google.com with ESMTPS id x14-20020a0c8e8e000000b0065af6e81f13si7253787qvb.121.2023.10.10.02.32.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 02:31:55 -0700 (PDT)
+        Tue, 10 Oct 2023 02:32:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zniWLfBA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VeZUhIXa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qq95J-0002ia-1K; Tue, 10 Oct 2023 05:31:25 -0400
+	id 1qq95b-0003jU-29; Tue, 10 Oct 2023 05:31:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq94U-0000so-Ej
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:30:45 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq950-0001T8-CT
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:31:12 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq94O-00087N-V9
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:30:34 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-533f193fc8dso9509633a12.2
- for <qemu-arm@nongnu.org>; Tue, 10 Oct 2023 02:30:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq94x-0008IM-Jr
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:31:06 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-99de884ad25so969382466b.3
+ for <qemu-arm@nongnu.org>; Tue, 10 Oct 2023 02:31:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696930227; x=1697535027; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696930261; x=1697535061; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ty5A8kcVGZ5VAZ2hfMU3PH9M5Fs6Xopxrwnt8GKnicA=;
- b=zniWLfBANnCE1t8Yfh3k6j4lfrxCepBXZ8o0THtRaLla7edeeH1NbFkAte48JKXidT
- lFISkWVdlGV4ixVxmpqk5OOBY8JGNhDLEprMlfRdaUbIY/iqU1mJ48/cunEfwE3Toh8a
- olmu/vXAj9wAh3JeJTpfg8Z1zuvqI/9TaPq4biTXtfCBO3wrFLOAW4ZIF6PNqu8qDNCy
- F2BhidOWJzIw1ntRq1skTYg5mLWNgA3ZoEEtQh7r83XI8+/pESeYfMjlES5qNznT4PTk
- CslgH7olw7qAxGw0QjQJjzMCaaKXJdvXLoA216yqS8wriWDgFG0s6p663Wl9PCcSbMgM
- svBA==
+ bh=g9ac00GoAEt719cFFz9dDP5blE56OLyiS+6SiHpN8FY=;
+ b=VeZUhIXa7yITGBMlRC2CGpsswo4w8gObX6ZDxgI6G1p1kmiDdIKZjdtoo/7OaUgjMr
+ ZocoIgpgOw9JKxGVtVPx5JNYgx9Jb7hdwG+vzk4Jp8OwjhBl0jgBSfUTtRULfaS8a579
+ u7o20Zz+Lc6+M5ydNQcvRHKDyxAasRHivRBUs+m6DkGavdzW9ND7XRS949kitVILuao2
+ 74/vtNsBUcoEL0lQnSQG6A9J/MQ3Aq2aR83qex8YQMsLlJgmgErTLYMOb64bdFuIyvmW
+ sFOBi6ag5SmdRwh7ELHg9cf2448lN8gKJNzKKuCP623bK9YbJLe219Uy2nh1CF/jWMJy
+ f2JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696930227; x=1697535027;
+ d=1e100.net; s=20230601; t=1696930261; x=1697535061;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ty5A8kcVGZ5VAZ2hfMU3PH9M5Fs6Xopxrwnt8GKnicA=;
- b=MJSvZXLqenXE6J9elRCIiYY3oac4c8NICR8YbOXnFQj30lWHR9SCy+WV4dvRcFxcr7
- odIV1qS8DlsfmkDL+Mve9VqzEty4r6LQANGJEq85zvHjHAEA2rhfCpr8qRh12mC1VIhk
- OeSvrh+PfRQE0przZlj3SpfV6BV7+IQVIyuf/0+HygB0+9fVvXoWkAnatlw5X62zTdVP
- uSv/y2xmmr8WAsOax6ydWvfJ727Gn7Vi8PNd+jbvONNgh5G+5Y+Np1qWHsgijlD+ke1y
- T44iXjbWXRMg+NJPTufKRbIZSh193rA8ERkoDnGT6d20JOkHTldtuylCTeJDqc8qzYV6
- xeFQ==
-X-Gm-Message-State: AOJu0YykI7ItbpTm8VmVPhgPBrmVjkg6jog6bQO5xmW2KYfJKSgwPu+V
- MLSlV/VcIxWaq1wgPU6OBxTeGQ==
-X-Received: by 2002:aa7:c55a:0:b0:532:c81b:99b1 with SMTP id
- s26-20020aa7c55a000000b00532c81b99b1mr15462000edr.18.1696930227507; 
- Tue, 10 Oct 2023 02:30:27 -0700 (PDT)
+ bh=g9ac00GoAEt719cFFz9dDP5blE56OLyiS+6SiHpN8FY=;
+ b=dwwNceJK9BPnl+6cLq32Z44BfOXLJPFUusDsIyG/klUxGXmisoWV/bAa5kMul74ZI/
+ SEYdLtCjBOe/OZ6z3Jc5BngR6v6DTauo1zV+wNbVb8lL3cAedUkGNE47OcUREr8z5I88
+ oF47aydCy150fHIBnoa0rg0hzL0F6pNiDbe7zy95PUfxdrzvV4rDcgxAvyhj0KHPL+OU
+ Ih634iejqZPEEinoVXfdckHzg497M9gMHrwro4Uvw07Thw9kWaenLScKggnf8ySAy4B9
+ PgqNdIQ3OKRHOppo7t+7OCrL3tR4LDyE1cWDkUnYkwl6tlCf/LqDFHE8H9yaSC1Q6mxW
+ LqBg==
+X-Gm-Message-State: AOJu0Yz7Cvr93YmMPCCjgMLcj0cfqFsg7jvOMyXqde5Znzcvd7ui9yCK
+ U02Gt+wokUKnVpw3NkqsW5Gc/w==
+X-Received: by 2002:a17:906:74db:b0:9ad:e0e0:d6ab with SMTP id
+ z27-20020a17090674db00b009ade0e0d6abmr17089848ejl.12.1696930261008; 
+ Tue, 10 Oct 2023 02:31:01 -0700 (PDT)
 Received: from m1x-phil.lan (aif79-h01-176-172-113-148.dsl.sta.abo.bbox.fr.
  [176.172.113.148]) by smtp.gmail.com with ESMTPSA id
- g26-20020aa7c59a000000b00530ccd180a3sm7276170edq.97.2023.10.10.02.30.23
+ n12-20020a170906378c00b0099d45ed589csm8100822ejc.125.2023.10.10.02.30.57
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 10 Oct 2023 02:30:27 -0700 (PDT)
+ Tue, 10 Oct 2023 02:31:00 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -121,25 +121,25 @@ Cc: David Hildenbrand <david@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>, qemu-s390x@nongnu.org
-Subject: [PATCH 10/18] target/riscv: Inline target specific
- TYPE_RISCV_CPU_BASE definition
-Date: Tue, 10 Oct 2023 11:28:52 +0200
-Message-ID: <20231010092901.99189-11-philmd@linaro.org>
+Subject: [PATCH 14/18] target/sparc: Declare CPU QOM types using
+ DEFINE_TYPES() macro
+Date: Tue, 10 Oct 2023 11:28:56 +0200
+Message-ID: <20231010092901.99189-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231010092901.99189-1-philmd@linaro.org>
 References: <20231010092901.99189-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -154,87 +154,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E1ahIYV+Jenm
+X-TUID: diF3T07LwJ9+
 
-TYPE_RISCV_CPU_BASE depends on the TARGET_RISCV32/TARGET_RISCV64
-definitions which are target specific. Such target specific
-definition taints "cpu-qom.h".
+When multiple QOM types are registered in the same file,
+it is simpler to use the the DEFINE_TYPES() macro. In
+particular because type array declared with such macro
+are easier to review.
 
-Since "cpu-qom.h" must be target agnostic, remove its target
-specific definition uses by inlining TYPE_RISCV_CPU_BASE in the
-two machines using it.
-
-"target/riscv/cpu-qom.h" is now fully target agnostic.
+In few commits we are going to add more types, so replace
+the type_register_static() to ease further reviews.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/riscv/cpu-qom.h | 8 +-------
- hw/riscv/spike.c       | 8 +++++++-
- hw/riscv/virt.c        | 8 +++++++-
- 3 files changed, 15 insertions(+), 9 deletions(-)
+ target/sparc/cpu.c | 23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
 
-diff --git a/target/riscv/cpu-qom.h b/target/riscv/cpu-qom.h
-index 8cb67b84a4..f607687384 100644
---- a/target/riscv/cpu-qom.h
-+++ b/target/riscv/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU RISC-V CPU QOM header
-+ * QEMU RISC-V CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2023 Ventana Micro Systems Inc.
-  *
-@@ -43,12 +43,6 @@
- #define TYPE_RISCV_CPU_VEYRON_V1        RISCV_CPU_TYPE_NAME("veyron-v1")
- #define TYPE_RISCV_CPU_HOST             RISCV_CPU_TYPE_NAME("host")
+diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+index 8ba96ae225..1e66413e94 100644
+--- a/target/sparc/cpu.c
++++ b/target/sparc/cpu.c
+@@ -924,17 +924,21 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
+     cc->tcg_ops = &sparc_tcg_ops;
+ }
  
--#if defined(TARGET_RISCV32)
--# define TYPE_RISCV_CPU_BASE            TYPE_RISCV_CPU_BASE32
--#elif defined(TARGET_RISCV64)
--# define TYPE_RISCV_CPU_BASE            TYPE_RISCV_CPU_BASE64
--#endif
--
- typedef struct CPUArchState CPURISCVState;
+-static const TypeInfo sparc_cpu_type_info = {
+-    .name = TYPE_SPARC_CPU,
+-    .parent = TYPE_CPU,
+-    .instance_size = sizeof(SPARCCPU),
+-    .instance_align = __alignof(SPARCCPU),
+-    .instance_init = sparc_cpu_initfn,
+-    .abstract = true,
+-    .class_size = sizeof(SPARCCPUClass),
+-    .class_init = sparc_cpu_class_init,
++static const TypeInfo sparc_cpu_types[] = {
++    {
++        .name           = TYPE_SPARC_CPU,
++        .parent         = TYPE_CPU,
++        .instance_size  = sizeof(SPARCCPU),
++        .instance_align = __alignof(SPARCCPU),
++        .instance_init  = sparc_cpu_initfn,
++        .abstract       = true,
++        .class_size     = sizeof(SPARCCPUClass),
++        .class_init     = sparc_cpu_class_init,
++    }
+ };
  
- OBJECT_DECLARE_CPU_TYPE(RISCVCPU, RISCVCPUClass, RISCV_CPU)
-diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
-index 81f7e53aed..eae49da6d6 100644
---- a/hw/riscv/spike.c
-+++ b/hw/riscv/spike.c
-@@ -349,7 +349,13 @@ static void spike_machine_class_init(ObjectClass *oc, void *data)
-     mc->init = spike_board_init;
-     mc->max_cpus = SPIKE_CPUS_MAX;
-     mc->is_default = true;
--    mc->default_cpu_type = TYPE_RISCV_CPU_BASE;
-+#if defined(TARGET_RISCV32)
-+    mc->default_cpu_type = TYPE_RISCV_CPU_BASE32;
-+#elif defined(TARGET_RISCV64)
-+    mc->default_cpu_type = TYPE_RISCV_CPU_BASE64;
-+#else
-+#error unsupported target
-+#endif
-     mc->possible_cpu_arch_ids = riscv_numa_possible_cpu_arch_ids;
-     mc->cpu_index_to_instance_props = riscv_numa_cpu_index_to_props;
-     mc->get_default_cpu_node_id = riscv_numa_get_default_cpu_node_id;
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index 5edc1d98d2..620a4e5f07 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -1685,7 +1685,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->desc = "RISC-V VirtIO board";
-     mc->init = virt_machine_init;
-     mc->max_cpus = VIRT_CPUS_MAX;
--    mc->default_cpu_type = TYPE_RISCV_CPU_BASE;
-+#if defined(TARGET_RISCV32)
-+    mc->default_cpu_type = TYPE_RISCV_CPU_BASE32;
-+#elif defined(TARGET_RISCV64)
-+    mc->default_cpu_type = TYPE_RISCV_CPU_BASE64;
-+#else
-+#error unsupported target
-+#endif
-     mc->pci_allow_0_address = true;
-     mc->possible_cpu_arch_ids = riscv_numa_possible_cpu_arch_ids;
-     mc->cpu_index_to_instance_props = riscv_numa_cpu_index_to_props;
++DEFINE_TYPES(sparc_cpu_types)
++
+ static void sparc_cpu_cpudef_class_init(ObjectClass *oc, void *data)
+ {
+     SPARCCPUClass *scc = SPARC_CPU_CLASS(oc);
+@@ -959,7 +963,6 @@ static void sparc_cpu_register_types(void)
+ {
+     int i;
+ 
+-    type_register_static(&sparc_cpu_type_info);
+     for (i = 0; i < ARRAY_SIZE(sparc_defs); i++) {
+         sparc_register_cpudef_type(&sparc_defs[i]);
+     }
 -- 
 2.41.0
 

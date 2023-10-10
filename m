@@ -1,38 +1,38 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp62838ejr;
-        Tue, 10 Oct 2023 04:35:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHMnMNC0tfMcDWdXs04l4SgA3efm/mcIGw+v0p+9UuhVThSG0vcOLJKQJ/NzDnCut2t465L
-X-Received: by 2002:a7b:c456:0:b0:405:3e5e:6698 with SMTP id l22-20020a7bc456000000b004053e5e6698mr17363488wmi.27.1696937744718;
-        Tue, 10 Oct 2023 04:35:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696937744; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp64321ejr;
+        Tue, 10 Oct 2023 04:38:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHeEMdvJSIHNlfOlZUJUZ5QFFno2S6xr+NMjMmdUcB8vnjLXvaytWu4mQgQnOxrt8HDd46B
+X-Received: by 2002:adf:da50:0:b0:31f:afeb:4e7d with SMTP id r16-20020adfda50000000b0031fafeb4e7dmr12843196wrl.18.1696937912389;
+        Tue, 10 Oct 2023 04:38:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696937912; cv=none;
         d=google.com; s=arc-20160816;
-        b=l5hWcVN4fI8BL0Nznmo0clQ8ZHm0+XGqMgmu8EY1aN1QgHZoBr3D5ii954QekAaD5D
-         6ba88h3yCF9J5eWEKgEbOZwoeg2R9NlimQerBp9xiZuuv4SPNlxgb+t6wwc6tJWTYwtS
-         6tR/StP/A8tUhZ6TiYTlbj93pBk8LohiIUHXW0/i1O4+K5vnWg1XRlwP94zROVRwR3ak
-         PV4vVTe1CQF8PyZHL+9zobpRkFl0DfAB/hat24e7T24tsM4bukLKjxc5gSWGZ+v/JTvz
-         m6v5WSpNKXBaIf0E/a3jzLSQx6b7b5Zv4I4xbhFLnp2B2Tdwmqf59kGqDeM7Yny8lkTu
-         ZNFA==
+        b=E2y8SSwGJxFu51VPOhTJmSCFkb2UaJwLchGS+Nyyx6hJBk4gT/8dLiuPFETI38Xrs4
+         TUgUvyEVa6J15iREsxPAzWmElaPr15kOIk2/xniHzRCgCcTeI7XwFUgafuxx2pQmVeS4
+         teEyAmid8CI7eWYrSeAavu0KEyjyy/w2LxQkkRXgr5gVFBdZgOXopg4+YIcAdXnoIev/
+         7girbPBVpFQPVuMWcHEKosDaFe9ZhHeh+FQG8Cmx+79wpX+Flyy2R1MVqPW/VEmjx0CE
+         dBUfkkUuVRT7OFfknyEyvRw7NjcFtW/O1lH2iRzKjI/nYT8kgQDs2S7EiTZya1ItIQZn
+         NMXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=oJBF49nNgNIKur3FxwjG57P1aK4VF28iERXOJ/m8+pQ=;
+        bh=iG+kNFY8svaWyTZqpCDSZb7BqfwhlNqyMflj61Rir60=;
         fh=RrTLZV0A5IZHRs0gL1etM0WUwmKqocsoR+7SZbDKYTk=;
-        b=gESi4MoAIKmYE4krEnuYghHIliIzq2QgVz9ekcwkMw+XJrsygpBlnEQ0AFBBiTb7Hl
-         /3Xifl9N0vx32JAUZiyn/a15qmaR8uey4syjvjZVeTZwkWfHMjQiN14t3xs0p0phUnTR
-         1QprPrF9BZsObX1xQfy0j6AuFsb1MZ/foq8EvVgUWguVzpm0JT3dfMqVv1P0DifWe1xU
-         HJ2UCKNT0eow4qKCNOyT0PhmJfTv01hgHVwBoUWRl9jrg1t/n3cB/cQyn4G1PdKT+FID
-         aJ0fUrZVabGKNkZnJPe3byDWUd0LpGKAUjc/ookcROdU5tPfIVWDz+RdxF7AG2xh8/md
-         708A==
+        b=vtht4DSd55MnbM9z2vBB6G8LINTyzxaze5AodMDlLWQiVXB0aa+WZ94uRB+nk+D6hS
+         82WoeANABYwkKb4nEDLXkkwmC/E71So/5LPpfVI3QJRhQLYIF743MsEXgckxIeYFDCjJ
+         4rjYq4V+c9irCLdmRoBFbF8L0FS/2210OVHiDJP8JadhPrqhUJYEDATLHmeK1LM93P06
+         vDcTZyT46nY/MMOlmzAaXy5rWrGkrRQcXN+QqyhpWlD/iG8gQzoCkxI/c3CGhUY+BtA9
+         996hBgp/1eRiVqQyUJCsDLomA7K0lh3c3fMETDlwuw7kb9alWD5eQxtTASaIPXduKWFW
+         ejqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a19-20020a05600c225300b003fe40475dcesi7491776wmm.210.2023.10.10.04.35.44
+        by mx.google.com with ESMTPS id d9-20020a5d4f89000000b0032172b9eec4si4526225wru.870.2023.10.10.04.38.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 04:35:44 -0700 (PDT)
+        Tue, 10 Oct 2023 04:38:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -40,28 +40,28 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qqB0X-0003yQ-7Q; Tue, 10 Oct 2023 07:34:38 -0400
+	id 1qqB41-00086r-Dc; Tue, 10 Oct 2023 07:38:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhiwei_liu@linux.alibaba.com>)
- id 1qqB0R-0003wU-P3; Tue, 10 Oct 2023 07:34:32 -0400
-Received: from out30-124.freemail.mail.aliyun.com ([115.124.30.124])
+ id 1qqB3m-0007oU-8I; Tue, 10 Oct 2023 07:38:00 -0400
+Received: from out30-112.freemail.mail.aliyun.com ([115.124.30.112])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhiwei_liu@linux.alibaba.com>)
- id 1qqB0O-0002Aw-K3; Tue, 10 Oct 2023 07:34:31 -0400
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R201e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=ay29a033018045176;
+ id 1qqB3j-00048w-57; Tue, 10 Oct 2023 07:37:57 -0400
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R561e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=ay29a033018046049;
  MF=zhiwei_liu@linux.alibaba.com; NM=1; PH=DS; RN=43; SR=0;
- TI=SMTPD_---0VtsewtW_1696937651; 
+ TI=SMTPD_---0Vtsm3Mn_1696937857; 
 Received: from 30.221.98.57(mailfrom:zhiwei_liu@linux.alibaba.com
- fp:SMTPD_---0VtsewtW_1696937651) by smtp.aliyun-inc.com;
- Tue, 10 Oct 2023 19:34:13 +0800
-Message-ID: <bbf67862-f1ce-443f-81fc-f56d3466ef08@linux.alibaba.com>
-Date: Tue, 10 Oct 2023 19:33:11 +0800
+ fp:SMTPD_---0Vtsm3Mn_1696937857) by smtp.aliyun-inc.com;
+ Tue, 10 Oct 2023 19:37:39 +0800
+Message-ID: <22ebaf0b-4272-481a-bfaf-5bd2d5f3fd56@linux.alibaba.com>
+Date: Tue, 10 Oct 2023 19:36:38 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 10/18] target/riscv: Inline target specific
- TYPE_RISCV_CPU_BASE definition
+Subject: Re: [PATCH 03/18] target/riscv: Remove CPU_RESOLVING_TYPE from
+ 'cpu-qom.h'
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -94,14 +94,14 @@ Cc: David Hildenbrand <david@redhat.com>, "Michael S. Tsirkin"
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>, qemu-s390x@nongnu.org
 References: <20231010092901.99189-1-philmd@linaro.org>
- <20231010092901.99189-11-philmd@linaro.org>
+ <20231010092901.99189-4-philmd@linaro.org>
 From: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
-In-Reply-To: <20231010092901.99189-11-philmd@linaro.org>
+In-Reply-To: <20231010092901.99189-4-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=115.124.30.124;
+Received-SPF: pass client-ip=115.124.30.112;
  envelope-from=zhiwei_liu@linux.alibaba.com;
- helo=out30-124.freemail.mail.aliyun.com
+ helo=out30-112.freemail.mail.aliyun.com
 X-Spam_score_int: -98
 X-Spam_score: -9.9
 X-Spam_bar: ---------
@@ -123,91 +123,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Fp/J610WP8lZ
+X-TUID: VABHIwW9X5YI
 
 
 On 2023/10/10 17:28, Philippe Mathieu-Daudé wrote:
-> TYPE_RISCV_CPU_BASE depends on the TARGET_RISCV32/TARGET_RISCV64
-> definitions which are target specific. Such target specific
-> definition taints "cpu-qom.h".
->
-> Since "cpu-qom.h" must be target agnostic, remove its target
-> specific definition uses by inlining TYPE_RISCV_CPU_BASE in the
-> two machines using it.
->
-> "target/riscv/cpu-qom.h" is now fully target agnostic.
+> CPU_RESOLVING_TYPE is a per-target definition, and is
+> irrelevant for other targets. Move it to "cpu.h".
 >
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   target/riscv/cpu-qom.h | 8 +-------
->   hw/riscv/spike.c       | 8 +++++++-
->   hw/riscv/virt.c        | 8 +++++++-
->   3 files changed, 15 insertions(+), 9 deletions(-)
+>   target/riscv/cpu-qom.h | 1 -
+>   target/riscv/cpu.h     | 2 ++
+>   2 files changed, 2 insertions(+), 1 deletion(-)
 >
 > diff --git a/target/riscv/cpu-qom.h b/target/riscv/cpu-qom.h
-> index 8cb67b84a4..f607687384 100644
+> index 04af50983e..8cb67b84a4 100644
 > --- a/target/riscv/cpu-qom.h
 > +++ b/target/riscv/cpu-qom.h
-> @@ -1,5 +1,5 @@
->   /*
-> - * QEMU RISC-V CPU QOM header
-> + * QEMU RISC-V CPU QOM header (target agnostic)
->    *
->    * Copyright (c) 2023 Ventana Micro Systems Inc.
->    *
-> @@ -43,12 +43,6 @@
->   #define TYPE_RISCV_CPU_VEYRON_V1        RISCV_CPU_TYPE_NAME("veyron-v1")
->   #define TYPE_RISCV_CPU_HOST             RISCV_CPU_TYPE_NAME("host")
+> @@ -27,7 +27,6 @@
 >   
-> -#if defined(TARGET_RISCV32)
-> -# define TYPE_RISCV_CPU_BASE            TYPE_RISCV_CPU_BASE32
-> -#elif defined(TARGET_RISCV64)
-> -# define TYPE_RISCV_CPU_BASE            TYPE_RISCV_CPU_BASE64
-> -#endif
-> -
->   typedef struct CPUArchState CPURISCVState;
+>   #define RISCV_CPU_TYPE_SUFFIX "-" TYPE_RISCV_CPU
+>   #define RISCV_CPU_TYPE_NAME(name) (name RISCV_CPU_TYPE_SUFFIX)
+> -#define CPU_RESOLVING_TYPE TYPE_RISCV_CPU
 >   
->   OBJECT_DECLARE_CPU_TYPE(RISCVCPU, RISCVCPUClass, RISCV_CPU)
-> diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
-> index 81f7e53aed..eae49da6d6 100644
-> --- a/hw/riscv/spike.c
-> +++ b/hw/riscv/spike.c
-> @@ -349,7 +349,13 @@ static void spike_machine_class_init(ObjectClass *oc, void *data)
->       mc->init = spike_board_init;
->       mc->max_cpus = SPIKE_CPUS_MAX;
->       mc->is_default = true;
-> -    mc->default_cpu_type = TYPE_RISCV_CPU_BASE;
-> +#if defined(TARGET_RISCV32)
-> +    mc->default_cpu_type = TYPE_RISCV_CPU_BASE32;
-> +#elif defined(TARGET_RISCV64)
-> +    mc->default_cpu_type = TYPE_RISCV_CPU_BASE64;
-> +#else
-> +#error unsupported target
-> +#endif
->       mc->possible_cpu_arch_ids = riscv_numa_possible_cpu_arch_ids;
->       mc->cpu_index_to_instance_props = riscv_numa_cpu_index_to_props;
->       mc->get_default_cpu_node_id = riscv_numa_get_default_cpu_node_id;
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index 5edc1d98d2..620a4e5f07 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -1685,7 +1685,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->       mc->desc = "RISC-V VirtIO board";
->       mc->init = virt_machine_init;
->       mc->max_cpus = VIRT_CPUS_MAX;
-> -    mc->default_cpu_type = TYPE_RISCV_CPU_BASE;
-> +#if defined(TARGET_RISCV32)
-> +    mc->default_cpu_type = TYPE_RISCV_CPU_BASE32;
-> +#elif defined(TARGET_RISCV64)
-> +    mc->default_cpu_type = TYPE_RISCV_CPU_BASE64;
-> +#else
-> +#error unsupported target
-> +#endif
+>   #define TYPE_RISCV_CPU_ANY              RISCV_CPU_TYPE_NAME("any")
+>   #define TYPE_RISCV_CPU_BASE32           RISCV_CPU_TYPE_NAME("rv32")
+> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+> index ef9cf21c0c..374b813f20 100644
+> --- a/target/riscv/cpu.h
+> +++ b/target/riscv/cpu.h
+> @@ -31,6 +31,8 @@
+>   #include "qapi/qapi-types-common.h"
+>   #include "cpu-qom.h"
+>   
+> +#define CPU_RESOLVING_TYPE TYPE_RISCV_CPU
 
 Reviewed-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
 
 Zhiwei
 
->       mc->pci_allow_0_address = true;
->       mc->possible_cpu_arch_ids = riscv_numa_possible_cpu_arch_ids;
->       mc->cpu_index_to_instance_props = riscv_numa_cpu_index_to_props;
+> +
+>   #define TCG_GUEST_DEFAULT_MO 0
+>   
+>   /*

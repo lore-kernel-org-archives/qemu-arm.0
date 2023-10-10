@@ -1,137 +1,139 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp295539ejr;
-        Tue, 10 Oct 2023 10:17:25 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGEIa/iLOlxDbuEmi6lkmCquZF32qwPaatktlCUVvO7TeWVve0dbAFLW3oJoPqXmwJOwmlJ
-X-Received: by 2002:a7b:cb8b:0:b0:3fb:e189:3532 with SMTP id m11-20020a7bcb8b000000b003fbe1893532mr16537880wmi.20.1696958245140;
-        Tue, 10 Oct 2023 10:17:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696958245; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp381402ejr;
+        Tue, 10 Oct 2023 12:53:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFGeM/nJMpU85R32U/+xGz0VwE8dVeE5P4Wwhw1dDa9nFp83OS94MkOAyHMMRyTFI668B+L
+X-Received: by 2002:a05:620a:99c:b0:774:a9b:d62e with SMTP id x28-20020a05620a099c00b007740a9bd62emr17578708qkx.46.1696967613210;
+        Tue, 10 Oct 2023 12:53:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696967613; cv=none;
         d=google.com; s=arc-20160816;
-        b=bO2+diL3QKO65P4LoOwgPnYlgl7uxj3PHzeaTVHGhRkEWG6K/h+PeibXmxswTuvKFC
-         QsSQSLEUaz3SoqVPP80KwgsMZdIV4RAOLHykarJMFyA+uOOSMrGGTETJ2SKEd4BvYuUa
-         gTEAukZ+9gjrj9GQ1rBv28ZGw/2pbz11H0TY0UGpceixlunwQKuvGuEahuEf5UxOkpXj
-         by3tTGaXac9PbXSApDvHTb/tvF6A2bkuRxbj6rU84kniaZxDPntNhjGQ23mK9fbXSETc
-         Sg3skEDh58IRH1CylsrizYEuEDuL9qiWbsdOV1/y+8+OaUZNBiUshWbwMkDlC+yJaHq4
-         FRNg==
+        b=znztG3H0AXYl0y33SMEaPSzo3ELAJz+g8l9enXMndwHKebHoukWc5+BrtzzEy6opIx
+         DO3ZY3uQ0kaxmE2YHI9B9bpkF5oxVG8kaY57lzKJObHbdAv4CYCUsBsGmvtv7JXemyJd
+         WrOwrOUiphmZ60DcPgs53plej9uC9jRKmS0oMCOnE3Ey981Vl/hBjrfHGnKCOYYj/ygU
+         RgleTZY5/R/uspH/xfc+0icERz8Db4+KdUX9PLPIELWMSlDcqC5ukXHnptkGFFotOjHF
+         Q4+uXnNAtBVYyz2aOEUXSzyuWGbImtFMBY7fOT0+JJ2y3VaQDB3Hi2K0t5ZaiJA2Krsi
+         drOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=DhM0vSBQjsI9sbUzXZDFwUDwQPB4RCHDAmLe5ux6yBo=;
-        fh=TQ+KLaSdCJR+FnGUoED6wjJWS9ddGc6jnYmTrrAIVVA=;
-        b=hwJbq2l50khGaDIpQ4hG4ns/g0wOwt/vsQkZDVle5VNYhjXMprseErGZpEi3tNP4b+
-         6iJQo2ESnUSP8Kt6bIS7Hq04eQhwwkf6mmMzkegzth2QvkDhRCOzPLRBcSmnnTQmKr9O
-         pcG6yn7sGSdGoAdKpjiiAhyLeRUzthN83UB5HeZAZYXVHK0aCJwvZrd2WTyNjaejA3e8
-         NEBDmaJ+RH6qZzlRxLG3fHZ2Ercs4q4IQZB8Yq9Ae1Mqwr1I20dv1YwpbC3PX5tSsvb5
-         BHMMMylWsvVtb3fIsY7baf1Ld/l/zHoCEZ+MIhKCXifZ9SqyBj7Ey1I/idww04xKuzaF
-         8ZSQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Gknwb3v7ZSal6XeHXKAJUHKxL4uVIJm7A2aR+70E0cU=;
+        fh=M6oNbBQh4cQbij9BjcXQeUvt1lH6pHl+V0A7v5lHX3c=;
+        b=F0SXlwAwljhAmwc5ASIKpznZ0pkjZ0HKsgMvW5sQ5naUKmIIx5Ydnoy7+sczECnvMb
+         Rlrl/HhfUi3BQ3zlmmtWNuey15muPBjf3IbnkEttJo3tDquLIiDFd7qqHACR+OR3fBoc
+         MAjm6VNzLkB8+5eFikhbcYZpfSoVX/1NvnpXdTUor7S/CH0E2b87ndxLsFYCOpJ2a9KC
+         U23fL9TaReroXjmka166rNPL4usr2KFJitk8m7JhshaLkfEeWbV1JQKsavkHJ0GQA+lz
+         qpKJPXm56zaf8wRXTHDeVIk9eS+pnq7hUlRAkoWMaRKSLSsaOm/bxeOUPblqdL8bz8Us
+         TyIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K1naoYeZ;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Zgc586Au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p6-20020a05600c358600b004068bb3087fsi6924865wmq.220.2023.10.10.10.17.24
+        by mx.google.com with ESMTPS id q22-20020a05620a0d9600b007770bfd6336si4918720qkl.569.2023.10.10.12.53.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 10:17:25 -0700 (PDT)
+        Tue, 10 Oct 2023 12:53:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K1naoYeZ;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Zgc586Au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qqGLl-0003o5-Re; Tue, 10 Oct 2023 13:16:53 -0400
+	id 1qqImn-0005Cs-Vc; Tue, 10 Oct 2023 15:52:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qqGLa-0003mP-Qg
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 13:16:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mglenn@mamboa4.aus.stglabs.ibm.com>)
+ id 1qqIml-0005Bv-Q5; Tue, 10 Oct 2023 15:52:55 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qqGLY-0002w7-0P
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 13:16:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696958199;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DhM0vSBQjsI9sbUzXZDFwUDwQPB4RCHDAmLe5ux6yBo=;
- b=K1naoYeZ7V9XD5uy/BOucv6LXeZNxLcjqyeZv5tSGOju2t7EnONEEXeJHZLGUDYmwPbgrs
- skjb193Jd9lLHuykRq3F+qOkSKGF2KFvvYAXjXeHI/bqJlA+fB6q6j0NFvKcPMgvhSYUt2
- VpfRz6ihdpHwIB4Gv6FYrmI6ILO3ueY=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-508-OBIUYEK-M-6thMXtxFSvjA-1; Tue, 10 Oct 2023 13:16:36 -0400
-X-MC-Unique: OBIUYEK-M-6thMXtxFSvjA-1
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-774292d71e3so678917185a.3
- for <qemu-arm@nongnu.org>; Tue, 10 Oct 2023 10:16:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696958196; x=1697562996;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=DhM0vSBQjsI9sbUzXZDFwUDwQPB4RCHDAmLe5ux6yBo=;
- b=VorGjC3z5qST1SJHWNpLBYbV4UH7qJe1A3cG5If4BrlIq4OsRF8n2DuLVq6OFrt86t
- KaenNmOPiuEQZ3zRXJguDkn2i+kkmBHlTvbczhyTwHmoYPNMO11TCNV8n4WPxGC1zOKC
- v/773UOvkSrdSgv2525SaVAb2rWPmR/OIqlIrJXw7OdaQz6LprH7a6adzR8IpNV9XTHz
- yZZazXoTM2BXjyINfWdE7MCUgxaMK5FeR5KxU2QrUYA9DikduyVBOkqQzWOFg1ZJTW0S
- T5xtU39O9Tkrxiv8p299mt+cQqfUCovgkvkZaqWpDkqY8VkcO15YIY58EQuzLbWZ8hzu
- exmg==
-X-Gm-Message-State: AOJu0Yy6VX9NzR7z/o/51OasYI8uHBMvHmwTWnGJcwejRbd5pgr7JhBv
- vDT0ikPtBPftU9nnQlxt7qqkDgA+J0mQT3kYDN4OFAvB2tmJhC8cyWB9xhSeeppf1ZrvB9eDpr2
- SPm5v4dxQccm9
-X-Received: by 2002:a05:620a:999:b0:76d:ada0:4c0 with SMTP id
- x25-20020a05620a099900b0076dada004c0mr17743634qkx.76.1696958195837; 
- Tue, 10 Oct 2023 10:16:35 -0700 (PDT)
-X-Received: by 2002:a05:620a:999:b0:76d:ada0:4c0 with SMTP id
- x25-20020a05620a099900b0076dada004c0mr17743606qkx.76.1696958195512; 
- Tue, 10 Oct 2023 10:16:35 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- x20-20020ae9e914000000b007740c0e52edsm4492032qkf.89.2023.10.10.10.16.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Oct 2023 10:16:34 -0700 (PDT)
-Message-ID: <087d9ee8-2c89-f080-ae09-4027ec396028@redhat.com>
-Date: Tue, 10 Oct 2023 19:16:31 +0200
+ (Exim 4.90_1) (envelope-from <mglenn@mamboa4.aus.stglabs.ibm.com>)
+ id 1qqImk-00046G-0o; Tue, 10 Oct 2023 15:52:55 -0400
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39AJo8RM025247; Tue, 10 Oct 2023 19:52:22 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=Gknwb3v7ZSal6XeHXKAJUHKxL4uVIJm7A2aR+70E0cU=;
+ b=Zgc586Aut+HhmdiMQjBhFInFL+YweNFgKncZJND5DLS+ryGr32mYSnCLNowncv1tWZhg
+ YnvEQUJe5ojQu6slP1KwjGelmJDbe+JHAtrNY5gGjFnifYWGu6Ohy7jmHKZhPP91epN+
+ QUx1OY2jtW/SUdeHokGMEvF2QT7TRK2b7K8J3ZgEVZ6hI/K/k1N4svEZv62pMiSGCeWj
+ PMxqO80UHKn0WBI080O97P1MFoKT4kQinIUA7WnsXiCw9HoHwnkLlRnKAPZI0ezcyqy9
+ Mt2dNlfu286nQR2NLdrzYHf6busqIStu7d/a9JeVjkEz2K7YNfT8CVNas5SaRz+Sm/Hm Xg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tnd45g2ab-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 10 Oct 2023 19:52:20 +0000
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39AJp715027870;
+ Tue, 10 Oct 2023 19:52:20 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tnd45g29x-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 10 Oct 2023 19:52:20 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39AJ8tL1028188; Tue, 10 Oct 2023 19:52:19 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tkj1y2uqy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 10 Oct 2023 19:52:19 +0000
+Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
+ [10.39.53.233])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39AJqJlI36897086
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 10 Oct 2023 19:52:19 GMT
+Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 21ED35804E;
+ Tue, 10 Oct 2023 19:52:19 +0000 (GMT)
+Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 09A185803F;
+ Tue, 10 Oct 2023 19:52:19 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
+ by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTPS;
+ Tue, 10 Oct 2023 19:52:18 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (localhost [127.0.0.1])
+ by mamboa4.aus.stglabs.ibm.com (Postfix) with ESMTPS id 3872A16A07CE;
+ Tue, 10 Oct 2023 14:52:18 -0500 (CDT)
+Received: (from mglenn@localhost)
+ by mamboa4.aus.stglabs.ibm.com (8.15.2/8.15.2/Submit) id 39AJqHPr264806;
+ Tue, 10 Oct 2023 14:52:17 -0500
+From: Glenn Miles <milesg@linux.vnet.ibm.com>
+To: qemu-devel@nongnu.org
+Cc: Glenn Miles <milesg@linux.vnet.ibm.com>, qemu-arm@nongnu.org, clg@kaod.org,
+ clegoate@redhat.com, andrew@codeconstruct.com.au, joel@jms.id.au
+Subject: [PATCH v3] misc/pca9552: Fix for pca9552 not getting reset
+Date: Tue, 10 Oct 2023 14:52:09 -0500
+Message-Id: <20231010195209.264757-1-milesg@linux.vnet.ibm.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v2 12/12] vfio: Remove 64-bit IOVA address space assumption
-To: Alex Williamson <alex.williamson@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- clg@redhat.com, jean-philippe@linaro.org, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
- david@redhat.com, philmd@linaro.org
-References: <20230913080423.523953-1-eric.auger@redhat.com>
- <20230913080423.523953-13-eric.auger@redhat.com>
- <20230919112230.5dfe14fa.alex.williamson@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20230919112230.5dfe14fa.alex.williamson@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-3.339, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: ybTqAcxyE_H8TJ4m5i6rLLftxnuW_L7b
+X-Proofpoint-GUID: kuspBBMIxnBfxXHTgSUkIImSMaZKQ6YD
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-10_16,2023-10-10_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 mlxscore=0
+ lowpriorityscore=0 malwarescore=0 impostorscore=0 suspectscore=0
+ clxscore=1015 spamscore=0 mlxlogscore=999 adultscore=0 phishscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310100153
+Received-SPF: none client-ip=148.163.158.5;
+ envelope-from=mglenn@mamboa4.aus.stglabs.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
  RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -144,108 +146,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7nifdoQFkEzX
+X-TUID: rKhvdzWtJzUZ
 
-Hi Alex,
-On 9/19/23 19:22, Alex Williamson wrote:
-> On Wed, 13 Sep 2023 10:01:47 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
->
->> Now we retrieve the usable IOVA ranges from the host,
->> we now the physical IOMMU aperture and we can remove
->> the assumption of 64b IOVA space when calling
->> vfio_host_win_add().
->>
->> This works fine in general but in case of an IOMMU memory
->> region this becomes more tricky. For instance the virtio-iommu
->> MR has a 64b aperture by default. If the physical IOMMU has a
->> smaller aperture (typically the case for VTD), this means we
->> would need to resize the IOMMU MR when this latter is linked
->> to a container. However this happens on vfio_listener_region_add()
->> when calling the IOMMU MR set_iova_ranges() callback and this
->> would mean we would have a recursive call the
->> vfio_listener_region_add(). This looks like a wrong usage of
->> the memory API causing duplicate IOMMU MR notifier registration
->> for instance.
->>
->> Until we find a better solution, make sure the vfio_find_hostwin()
->> is not called anymore for IOMMU region.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> I have not found any working solution to the IOMMU MR resizing.
->> So I can remove this patch or remove the check for IOMMU MR. Maybe
->> this is an issue which can be handled separately?
->> ---
->>  hw/vfio/common.c | 25 ++++++++++++-------------
->>  1 file changed, 12 insertions(+), 13 deletions(-)
->>
->> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->> index 26da38de05..40cac1ca91 100644
->> --- a/hw/vfio/common.c
->> +++ b/hw/vfio/common.c
->> @@ -1112,13 +1112,6 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>  #endif
->>      }
->>  
->> -    hostwin = vfio_find_hostwin(container, iova, end);
->> -    if (!hostwin) {
->> -        error_setg(&err, "Container %p can't map guest IOVA region"
->> -                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
->> -        goto fail;
->> -    }
->> -
->>      memory_region_ref(section->mr);
->>  
->>      if (memory_region_is_iommu(section->mr)) {
->> @@ -1177,6 +1170,14 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>          return;
->>      }
->>  
->> +    hostwin = vfio_find_hostwin(container, iova, end);
->> +    if (!hostwin) {
->> +        error_setg(&err, "Container %p can't map guest IOVA region"
->> +                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
->> +        goto fail;
->> +    }
->> +
->> +
->>      /* Here we assume that memory_region_is_ram(section->mr)==true */
->>  
->>      /*
->> @@ -2594,12 +2595,10 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
->>          vfio_get_iommu_info_migration(container, info);
->>          g_free(info);
->>  
->> -        /*
->> -         * FIXME: We should parse VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE
->> -         * information to get the actual window extent rather than assume
->> -         * a 64-bit IOVA address space.
->> -         */
->> -        vfio_host_win_add(container, 0, (hwaddr)-1, container->pgsizes);
->> +        g_assert(container->nr_iovas);
-> This assert is a problem for older kernels
-this will be solved in next version by letting
+Testing of the pca9552 device on the powernv platform
+showed that the reset method was not being called when
+an instance of the device was realized.  This was causing
+the INPUT0/INPUT1 POR values to be incorrect.
 
-container->nr_iovas == 1 if the kernel does not support the api, in which case we will assume 64b IOVA
+Fixed by overriding the parent pca955x_realize method with a
+new pca9552_realize method which first calls
+the parent pca955x_realize method followed by the
+pca9552_reset function.
 
->
->> +        vfio_host_win_add(container, 0,
->> +                          container->iova_ranges[container->nr_iovas - 1].end,
->> +                          container->pgsizes);
-> This doesn't address the assumption about the min_iova and adds an
-> assumption that the kernel provided list is sorted.  Thanks,
-agreed. In the next version, container->iova_ranges will be a sorted GList
+Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
+---
+ hw/misc/pca9552.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Thanks!
-
-Eric
->
-> Alex
->
+diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+index fff19e369a..4e183cc554 100644
+--- a/hw/misc/pca9552.c
++++ b/hw/misc/pca9552.c
+@@ -384,6 +384,12 @@ static void pca955x_realize(DeviceState *dev, Error **errp)
+     qdev_init_gpio_out(dev, s->gpio, k->pin_count);
+ }
+ 
++static void pca9552_realize(DeviceState *dev, Error **errp)
++{
++    pca955x_realize(dev, errp);
++    pca9552_reset(dev);
++}
++
+ static Property pca955x_properties[] = {
+     DEFINE_PROP_STRING("description", PCA955xState, description),
+     DEFINE_PROP_END_OF_LIST(),
+@@ -417,6 +423,7 @@ static void pca9552_class_init(ObjectClass *oc, void *data)
+     PCA955xClass *pc = PCA955X_CLASS(oc);
+ 
+     dc->reset = pca9552_reset;
++    dc->realize = pca9552_realize;
+     dc->vmsd = &pca9552_vmstate;
+     pc->max_reg = PCA9552_LS3;
+     pc->pin_count = 16;
+-- 
+2.31.1
 

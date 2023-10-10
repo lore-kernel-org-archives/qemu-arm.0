@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:b756:b0:9b2:89ee:1eb8 with SMTP id fx22csp297488ejb;
-        Tue, 10 Oct 2023 00:41:32 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFXZFMSY2giFn+0xpD0AOegoD5xUPs9Zw9ddrG/OvMGtk1hdexqxbSpz5j4L+rilyXXpvhT
-X-Received: by 2002:a05:622a:30f:b0:419:4f1e:7ea9 with SMTP id q15-20020a05622a030f00b004194f1e7ea9mr20303639qtw.3.1696923692565;
-        Tue, 10 Oct 2023 00:41:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696923692; cv=none;
+Received: by 2002:a17:906:b756:b0:9b2:89ee:1eb8 with SMTP id fx22csp297648ejb;
+        Tue, 10 Oct 2023 00:41:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGiRbabQvA1AMOOFVBszGFOJ9fxHR6TmT4PYZFY0W8XhXg9wrKaojcygGSeSJ8DsewWAVPQ
+X-Received: by 2002:ac8:5b85:0:b0:418:1aa2:6b1a with SMTP id a5-20020ac85b85000000b004181aa26b1amr22632827qta.46.1696923717287;
+        Tue, 10 Oct 2023 00:41:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696923717; cv=none;
         d=google.com; s=arc-20160816;
-        b=pB02ymMH4+lNTjJvExeLXhz5gJLMCT2J2Og1DqeECIAEHp5NOsL0QWc3OzhhHaK4H1
-         lavuFP8YMxgOdtaWwaFOjUyr8wYq2KYHHqB9SlIqxMlKt1haYfwKgFmDQXT0qRu8Escw
-         vI/k06uliuKelgwDMvCCa3UGVz/AUujwZ8GbhUy18j8VVue4RquI30CUR1EdexFaq+HC
-         aN9zHFQmFSD2pewIiJtw5LTQR1NXoyRDuBmB6G/CZ8i5A/k8Utrpx1G+s2YzYDNlQ+10
-         WHlbPJ1Y4n5sS7XnLHe1FeHHGQNwsv2eMasjTJsoW/JmNon8uQxsmLC/52FR5EnLbM3O
-         zGng==
+        b=H8hgLoyJR4W1D1X/oxOPBzkaY8hM5IayNw1pRq4wIAzTldf5ZeDW+XXfh/8MjgkjxW
+         rmxHXKooR+oii7gQyoGDkSPJWjAG/BzO/L2eQnjPROv6bNMR/ScIQRfpbMs5hnm02NkG
+         HAglTwA8E/vsaSFgBzvKKMzVFuR/Gc5LmJr/7EigL7YDbdQVoQscxmbi7nbAgrTIn/yk
+         tezUTI3if1Q/uLanQUCBRcREZVfU8jCfFKXUGILFXhvamEJOTUSXHDuLUcVf9YhyloOX
+         XvDGfFD7MNvl7mon9zC70nMZ9y76ckb96jR2tWNuBt2seg/1Ukw5jctsH9Ez/teqbM6D
+         7KrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=fAYbo/22+Lk3//KJ9ZZBNn5UriCHW++RvethisZHvBg=;
+        bh=luG8MNFoBo+9xrNK3btdo0HEw8saff2GlFzHGAbN/Po=;
         fh=46wv1No7OOLuZCRbeGSaV31Ktmo6cwaISz6jgi4/xrY=;
-        b=jUCSyO4PBn+DaYRkc4t4pGAW80M/iELQS/rF9kRZJhN4g2obDgA8g5Sl1mwuShuJ8J
-         JJX6tOj5FBNHmf7bSG4hXAkgErcPT5BTnen5GaBFFx9cXzQLX5pwLoEYY4af7lCOZfvc
-         25xbXdS3A6+YpgJFxEQPKYiFYvhkJ0fGaR1nhjWjr+/O97DPUZmrfQTgb7UEQ34pS6o+
-         MWcQGJJiuptw9tCNLVXFITMT8GSpuuDIRmW0fFxxdACj+i7yhNQ0Q0VRyz0kFNT3ubN1
-         SCBK1ofDuJ4L5BbP/6r+myyGBbAXnnKTtD9YKPKAWqAXK++zB/NJQfraJcD8jmtIT72+
-         6eHg==
+        b=Lm6OGMoXRr0FS32QCSFou0uHXOuwrIcIxk01AgU3khCpU5qVrWs0l34fbV9v0rg5b0
+         uktWiUY2wz8qPTKA8Pc081uU40EgU50XRtUf3JYjZln2FWC+O18tNFD/A2kGqp9cHzYh
+         de16QxFShBvXyUDdRTQuWPkHEYG1kfdkRMjsP1OioVOdlEh4lqMYSwC56zJs3dpwA2HM
+         eHqmbbfndzEirZSAGIT6W18/D7cJNfuu03faM76DRdoAFOGPzR2OMwG5RGYND04SwuMG
+         xcnX/m2Em9BkLzetmFLDNm7vgMqzxq5VP/zTdMz0BegKYHX3/1YUILKWD8DuHU/+dYvk
+         Ae8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NozJS1Wx;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HqJX3Pyk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j15-20020ac85f8f000000b004194c70c559si7229259qta.653.2023.10.10.00.41.32
+        by mx.google.com with ESMTPS id q9-20020a05622a030900b00405516e0cd1si7368980qtw.445.2023.10.10.00.41.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 00:41:32 -0700 (PDT)
+        Tue, 10 Oct 2023 00:41:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NozJS1Wx;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HqJX3Pyk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qq7LU-0002Zn-K2; Tue, 10 Oct 2023 03:40:00 -0400
+	id 1qq7LW-0002n1-1e; Tue, 10 Oct 2023 03:40:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qq7LK-0002AT-KK
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 03:39:53 -0400
+ id 1qq7LR-0002RC-T9
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 03:39:59 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qq7LI-0001sC-7L
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 03:39:50 -0400
+ id 1qq7LQ-0001uR-F7
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 03:39:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696923587;
+ s=mimecast20190719; t=1696923595;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fAYbo/22+Lk3//KJ9ZZBNn5UriCHW++RvethisZHvBg=;
- b=NozJS1WxE299iALbL29JgUYzeZL+aJes3eRVbIjnbBWbMPewQ3di4D+HvQZRH/LdalH1Nt
- DhObd0uzd8xqB+dOdbNNzDZrkEru2koVXMQbJ+h7h45KxaUiVmaVRbKVmmfgS5KdAapuQI
- RgJDijn3M86DbDKWEvSUw0I4WwWTUO8=
+ bh=luG8MNFoBo+9xrNK3btdo0HEw8saff2GlFzHGAbN/Po=;
+ b=HqJX3PykC7ZkyKXvgEtNRz7BD4/zuNcOQkFaM02vBXjGr71o47uN36qlDkWsvSOsVpbV2i
+ WpmraWwQsi/Lf9jPinTIFL/MpiVEqsN4r+AZIwxI2QwApB9QLJ3xbdL4BIY+CZJCrlq+1K
+ AushjyF2+0R3NY01KfTER0RJxKWHLQ8=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-368-lk0RaqW6ObO6KKUPzYM0lg-1; Tue, 10 Oct 2023 03:39:30 -0400
-X-MC-Unique: lk0RaqW6ObO6KKUPzYM0lg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
+ us-mta-550-3PYAYUocMnmdzTAfx6Qwtw-1; Tue, 10 Oct 2023 03:39:52 -0400
+X-MC-Unique: 3PYAYUocMnmdzTAfx6Qwtw-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B926F8039CB;
- Tue, 10 Oct 2023 07:39:29 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9B469858F1B;
+ Tue, 10 Oct 2023 07:39:51 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.4])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BCF672026D37;
- Tue, 10 Oct 2023 07:39:28 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 62662400F36;
+ Tue, 10 Oct 2023 07:39:50 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>, qemu-arm@nongnu.org,
@@ -89,15 +89,15 @@ Cc: Eric Blake <eblake@redhat.com>, qemu-arm@nongnu.org,
  Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v3 13/18] ui/gtk: -display gtk requires PIXMAN
-Date: Tue, 10 Oct 2023 11:38:25 +0400
-Message-ID: <20231010073830.606570-14-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 18/18] build-sys: make pixman actually optional
+Date: Tue, 10 Oct 2023 11:38:30 +0400
+Message-ID: <20231010073830.606570-19-marcandre.lureau@redhat.com>
 In-Reply-To: <20231010073830.606570-1-marcandre.lureau@redhat.com>
 References: <20231010073830.606570-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -122,32 +122,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 38imW0dp/oyJ
+X-TUID: oKxKPx/tnjq5
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- meson.build | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ meson.build | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index a84a2f25d0..64d2aca79b 100644
+index 64d2aca79b..a35eb8e2ee 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -1501,7 +1501,11 @@ gtkx11 = not_found
- vte = not_found
- have_gtk_clipboard = get_option('gtk_clipboard').enabled()
+@@ -817,9 +817,6 @@ if not get_option('pixman').auto() or have_system or have_tools
+   pixman = dependency('pixman-1', required: get_option('pixman'), version:'>=0.21.8',
+                       method: 'pkg-config')
+ endif
+-if not pixman.found() and (have_system or have_tools)
+-  error('FIXME: pixman is currently required')
+-endif
  
--if not get_option('gtk').auto() or have_system
-+if get_option('gtk') \
-+             .disable_auto_if(not have_system) \
-+             .require(pixman.found(),
-+                      error_message: 'cannot enable GTK if pixman is not available') \
-+             .allowed()
-   gtk = dependency('gtk+-3.0', version: '>=3.22.0',
-                    method: 'pkg-config',
-                    required: get_option('gtk'))
+ zlib = dependency('zlib', required: true)
+ 
 -- 
 2.41.0
 

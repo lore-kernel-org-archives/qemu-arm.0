@@ -1,362 +1,139 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp177564ejr;
-        Tue, 10 Oct 2023 07:25:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHrsDGqOOiKCXyLfEjcT1yqeOcfVYL3mmJKiMMu8YQvkXe+vFvujE3D0ncVrPyOYJbGvGl2
-X-Received: by 2002:a05:6214:627:b0:63c:f325:bb03 with SMTP id a7-20020a056214062700b0063cf325bb03mr21850104qvx.8.1696947950287;
-        Tue, 10 Oct 2023 07:25:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696947950; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp177842ejr;
+        Tue, 10 Oct 2023 07:26:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGKhdGON3sd0iaralWRpKUTOGtvfx19/gpXDzzc8yLCGLok+ZoyeYZtL/nZuaz9CdcKh3es
+X-Received: by 2002:a05:6a20:7485:b0:15e:e0fd:98e7 with SMTP id p5-20020a056a20748500b0015ee0fd98e7mr22030454pzd.20.1696947975034;
+        Tue, 10 Oct 2023 07:26:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696947975; cv=none;
         d=google.com; s=arc-20160816;
-        b=ufjMcfUKZ6h0LYwWqMKm19UfOJjmZ82vzMv7rqRTA339J8g6aukLp/IM/aXXTdln7s
-         gTEbHb9dm0o0qWbucB+Be3XetR/2DWgWxv+mYUAmuiZAjN/5h0wczQY3YF31j22qiFRL
-         3LLf47yaQGdduNUbSRrmsFxw7Ya6t5hBO7DvOlejpR6QoQgWH+opwXu3P4WU2miYZOk1
-         k2I41S1C57XBiY7PmZiFMLgWGKwDu/K/xZd+f4ibwQuwYTaK47YO7gILXCmIMtbvsmTK
-         /3ZImJpwxYXQ9DS3krYo2jOx+zbKiwilgoBArQOViFpMlsDEFqtJFvmMj94Ds8t9p1Sa
-         UNwg==
+        b=D5a+zgcIkmB8Irmfhosk9Aaa4+wCRaNNY6iJmC4fxmeC0Y2cvZlYU7lVRjfskSEJA6
+         MZfum1BwuuBxj2CLuJB3OjoBM5uK0EBB4+l0O8B3cxr7qxdxGnMw1sDVl0v85a1Ssp+P
+         jBVlAqHQnErSthAXhN5DhtbRdc6PHjOSrQCdSZ85RX+PqL3MZLR3FqVCESya+SN/O6uh
+         IDGbqvQ8XTG6Qqi/Lo2TFfjfQkOnc5Fv6F0r4D7JgU895ARFp45TBfSXawYCQgMk5JSh
+         xlh0BkC9nItF0hjJ569l0FtEXvvfXmHiGf0LQ9HW6cuPcO6tURLYoZGb0Wg0u5aTgFwO
+         J/Kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=fYuvM75nGYL9piYfsGV2rb0KwEyIZ2pSLU1CgBAgJN0=;
+        h=list-id:precedence:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=TApefxjm2WEaxEHFO8rc1HF2nVhBHdzR5dt4+KLCQJ0=;
         fh=ImRerk2y7/YfWKyaAH9Jk8iKMFuTfW2jmHv5mlACdLg=;
-        b=qCI4JdTjJBG5aR1IOJJNoJYnI1I+Hvv70wjWFF4WLPu0uTEq3YEhKSTdG5oKlejpyH
-         iT3v9tt64+JipPN0kMDKWcdEgD4BsbgtUuEOrmNce3sRJUHhLHgVG6Zwv5IblZ+IDWJK
-         01NqV7LwGF28erByV9z6O8vMzfuqzfS//3KG73+95xpGuYUS/UrChJgKjnTptUF5kqPI
-         fYytGWUNNrYLQ+mDsHKo13QDvUgzWjkybl+HitPcwXc8OjZG/nbwu9dgZ0F+A6jW7aT6
-         wD54kuQQ/nV6NBu6xZcAdv0JVdiMSt8dxNQtV6N+yu455rzf7fmT9H3olAUPqJ6hT4Zi
-         kcGg==
+        b=NTCDaUfXVXnWETcihZWRmAjHy6nEoqnf/jYVaC3NvK+CwHO4X9s+WHnUfpg8pPwqqN
+         2xS88YGEfqrAAgPo06vL+PoNkX7Fs8JY79xsolJyVUsTNkf2ksVfVpow3lSEklAducFh
+         dWT7dj/ZR1v9hQjio+y2q+YrxEF77Lf0cLJjq+Bsb2lfjdKlq/CQ7TRnrArJw72toybQ
+         ajzh/QwrRWZSlqOFvL5V24/0douI+wUdD9Cw5SeTe+Tt3dkRREP0n5O4CZUh+uMZgwCa
+         xquHvNeQX1KWhLtA9d7BiZ8fb0WtZLKtHzoQmpupGEs1yDeL2KDwnSM0kokpFfeqPdzM
+         J1iA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RTtaRTFj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N4sccOY9;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:8 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z16-20020a0cda90000000b00655dd38f662si7510120qvj.15.2023.10.10.07.25.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 07:25:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from fry.vger.email (fry.vger.email. [2620:137:e000::3:8])
+        by mx.google.com with ESMTPS id fd10-20020a056a002e8a00b0068fb5b1dee2si10131582pfb.303.2023.10.10.07.26.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Oct 2023 07:26:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:8 as permitted sender) client-ip=2620:137:e000::3:8;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RTtaRTFj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N4sccOY9;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::3:8 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qqDfh-0001y0-B5; Tue, 10 Oct 2023 10:25:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1qqDfa-0001x1-Cm
- for qemu-devel@nongnu.org; Tue, 10 Oct 2023 10:25:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1qqDfW-0000EK-Po
- for qemu-devel@nongnu.org; Tue, 10 Oct 2023 10:25:10 -0400
+Received: from out1.vger.email (depot.vger.email [IPv6:2620:137:e000::3:0])
+	by fry.vger.email (Postfix) with ESMTP id 0F50081C508D;
+	Tue, 10 Oct 2023 07:26:13 -0700 (PDT)
+X-Virus-Status: Clean
+X-Virus-Scanned: clamav-milter 0.103.10 at fry.vger.email
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S233088AbjJJO0B (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Tue, 10 Oct 2023 10:26:01 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:33562 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S233080AbjJJOZ5 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 10 Oct 2023 10:25:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 724B5A9
+        for <kvm@vger.kernel.org>; Tue, 10 Oct 2023 07:25:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696947906;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fYuvM75nGYL9piYfsGV2rb0KwEyIZ2pSLU1CgBAgJN0=;
- b=RTtaRTFjP67o+l/VCZJctNb8zBO0tK3YSxwmYfGpPffBmzlqDHNbbBxaJBfs58QviRjMCU
- vq4czIfWJjJhCFv8x5hUfHRsKZYKENVwuQC/GUvMhWNKVF6qOLs12cfXEMvR4bkb+1rJKu
- Z2RCf/NPGNFrB+Jzr7zZSI1Pp0N2VCs=
+        s=mimecast20190719; t=1696947911;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=TApefxjm2WEaxEHFO8rc1HF2nVhBHdzR5dt4+KLCQJ0=;
+        b=N4sccOY9txyP4BwSWUyFvepDbmkEI1otVnzfIKLJQUJa/vUdzwgc1yDOqA3zKC+Bgaopx8
+        IY1ulwBPw9gSmk0FBhsuFfbg2ELqySo5pMMc+Gpl8K5gXbk2JjD1EoKc2pf7+QZwWCNTJf
+        Ysc71pJ+77LPJRjM7KVryH1VkDg6884=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-348--wwiVkXhOD2PcPmd3VABdg-1; Tue, 10 Oct 2023 10:24:59 -0400
-X-MC-Unique: -wwiVkXhOD2PcPmd3VABdg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8817085C1A8;
- Tue, 10 Oct 2023 14:24:58 +0000 (UTC)
-Received: from gondolin.str.redhat.com (dhcp-192-239.str.redhat.com
- [10.33.192.239])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8557221CAC76;
- Tue, 10 Oct 2023 14:24:57 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- kvm@vger.kernel.org, Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH v2 1/3] arm/kvm: convert to kvm_set_one_reg
-Date: Tue, 10 Oct 2023 16:24:51 +0200
-Message-ID: <20231010142453.224369-2-cohuck@redhat.com>
+ us-mta-622-tPeLB-doNmavXo4SrMnqTw-1; Tue, 10 Oct 2023 10:25:02 -0400
+X-MC-Unique: tPeLB-doNmavXo4SrMnqTw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+        (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BB18581DA0F;
+        Tue, 10 Oct 2023 14:25:00 +0000 (UTC)
+Received: from gondolin.str.redhat.com (dhcp-192-239.str.redhat.com [10.33.192.239])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id D0DDF21CAC76;
+        Tue, 10 Oct 2023 14:24:59 +0000 (UTC)
+From:   Cornelia Huck <cohuck@redhat.com>
+To:     Peter Maydell <peter.maydell@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>
+Cc:     Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org,
+        Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v2 3/3] arm/kvm: convert to read_sys_reg64
+Date:   Tue, 10 Oct 2023 16:24:53 +0200
+Message-ID: <20231010142453.224369-4-cohuck@redhat.com>
 In-Reply-To: <20231010142453.224369-1-cohuck@redhat.com>
 References: <20231010142453.224369-1-cohuck@redhat.com>
 MIME-Version: 1.0
 Content-type: text/plain
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vYWryuGEsvRq
+X-Spam-Status: No, score=2.7 required=5.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,RCVD_IN_SBL_CSS,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on fry.vger.email
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-Greylist: Sender passed SPF test, not delayed by milter-greylist-4.6.4 (fry.vger.email [0.0.0.0]); Tue, 10 Oct 2023 07:26:13 -0700 (PDT)
+X-Spam-Level: **
+X-TUID: 8pp3wVs7wbfu
 
-We can neaten the code by switching to the kvm_set_one_reg function.
+We can use read_sys_reg64 to get the SVE_VLS register instead of
+calling GET_ONE_REG directly.
 
-Reviewed-by: Gavin Shan <gshan@redhat.com>
+Suggested-by: Gavin Shan <gshan@redhat.com>
 Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 ---
- target/arm/kvm.c   | 13 +++------
- target/arm/kvm64.c | 66 +++++++++++++---------------------------------
- 2 files changed, 21 insertions(+), 58 deletions(-)
+ target/arm/kvm64.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index b66b936a9586..1a8084c4601c 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -589,7 +589,6 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
-     bool ok = true;
- 
-     for (i = 0; i < cpu->cpreg_array_len; i++) {
--        struct kvm_one_reg r;
-         uint64_t regidx = cpu->cpreg_indexes[i];
-         uint32_t v32;
-         int ret;
-@@ -598,19 +597,17 @@ bool write_list_to_kvmstate(ARMCPU *cpu, int level)
-             continue;
-         }
- 
--        r.id = regidx;
-         switch (regidx & KVM_REG_SIZE_MASK) {
-         case KVM_REG_SIZE_U32:
-             v32 = cpu->cpreg_values[i];
--            r.addr = (uintptr_t)&v32;
-+            ret = kvm_set_one_reg(cs, regidx, &v32);
-             break;
-         case KVM_REG_SIZE_U64:
--            r.addr = (uintptr_t)(cpu->cpreg_values + i);
-+            ret = kvm_set_one_reg(cs, regidx, cpu->cpreg_values + i);
-             break;
-         default:
-             g_assert_not_reached();
-         }
--        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &r);
-         if (ret) {
-             /* We might fail for "unknown register" and also for
-              * "you tried to set a register which is constant with
-@@ -731,17 +728,13 @@ void kvm_arm_get_virtual_time(CPUState *cs)
- void kvm_arm_put_virtual_time(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
--    struct kvm_one_reg reg = {
--        .id = KVM_REG_ARM_TIMER_CNT,
--        .addr = (uintptr_t)&cpu->kvm_vtime,
--    };
-     int ret;
- 
-     if (!cpu->kvm_vtime_dirty) {
-         return;
-     }
- 
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    ret = kvm_set_one_reg(cs, KVM_REG_ARM_TIMER_CNT, &cpu->kvm_vtime);
-     if (ret) {
-         error_report("Failed to set KVM_REG_ARM_TIMER_CNT");
-         abort();
 diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 5e95c496bb9f..047b269a7918 100644
+index 558c0b88dd69..d40c89a84752 100644
 --- a/target/arm/kvm64.c
 +++ b/target/arm/kvm64.c
-@@ -540,14 +540,10 @@ static int kvm_arm_sve_set_vls(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     uint64_t vls[KVM_ARM64_SVE_VLS_WORDS] = { cpu->sve_vq.map };
--    struct kvm_one_reg reg = {
--        .id = KVM_REG_ARM64_SVE_VLS,
--        .addr = (uint64_t)&vls[0],
--    };
+@@ -500,10 +500,6 @@ uint32_t kvm_arm_sve_get_vls(CPUState *cs)
+             .target = -1,
+             .features[0] = (1 << KVM_ARM_VCPU_SVE),
+         };
+-        struct kvm_one_reg reg = {
+-            .id = KVM_REG_ARM64_SVE_VLS,
+-            .addr = (uint64_t)&vls[0],
+-        };
+         int fdarray[3], ret;
  
-     assert(cpu->sve_max_vq <= KVM_ARM64_SVE_VQ_MAX);
- 
--    return kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    return kvm_set_one_reg(cs, KVM_REG_ARM64_SVE_VLS, &vls[0]);
- }
- 
- #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
-@@ -726,19 +722,17 @@ static void kvm_inject_arm_sea(CPUState *c)
- static int kvm_arch_put_fpsimd(CPUState *cs)
- {
-     CPUARMState *env = &ARM_CPU(cs)->env;
--    struct kvm_one_reg reg;
-     int i, ret;
- 
-     for (i = 0; i < 32; i++) {
-         uint64_t *q = aa64_vfp_qreg(env, i);
- #if HOST_BIG_ENDIAN
-         uint64_t fp_val[2] = { q[1], q[0] };
--        reg.addr = (uintptr_t)fp_val;
-+        ret = kvm_set_one_reg(cs, AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]),
-+                                                        fp_val);
- #else
--        reg.addr = (uintptr_t)q;
-+        ret = kvm_set_one_reg(cs, AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]), q);
- #endif
--        reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
--        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-         if (ret) {
-             return ret;
+         probed = true;
+@@ -512,7 +508,7 @@ uint32_t kvm_arm_sve_get_vls(CPUState *cs)
+             error_report("failed to create scratch VCPU with SVE enabled");
+             abort();
          }
-@@ -759,14 +753,11 @@ static int kvm_arch_put_sve(CPUState *cs)
-     CPUARMState *env = &cpu->env;
-     uint64_t tmp[ARM_MAX_VQ * 2];
-     uint64_t *r;
--    struct kvm_one_reg reg;
-     int n, ret;
- 
-     for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; ++n) {
-         r = sve_bswap64(tmp, &env->vfp.zregs[n].d[0], cpu->sve_max_vq * 2);
--        reg.addr = (uintptr_t)r;
--        reg.id = KVM_REG_ARM64_SVE_ZREG(n, 0);
--        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+        ret = kvm_set_one_reg(cs, KVM_REG_ARM64_SVE_ZREG(n, 0), r);
+-        ret = ioctl(fdarray[2], KVM_GET_ONE_REG, &reg);
++        ret = read_sys_reg64(fdarray[2], &vls[0], KVM_REG_ARM64_SVE_VLS);
+         kvm_arm_destroy_scratch_host_vcpu(fdarray);
          if (ret) {
-             return ret;
-         }
-@@ -775,9 +766,7 @@ static int kvm_arch_put_sve(CPUState *cs)
-     for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; ++n) {
-         r = sve_bswap64(tmp, r = &env->vfp.pregs[n].p[0],
-                         DIV_ROUND_UP(cpu->sve_max_vq * 2, 8));
--        reg.addr = (uintptr_t)r;
--        reg.id = KVM_REG_ARM64_SVE_PREG(n, 0);
--        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+        ret = kvm_set_one_reg(cs, KVM_REG_ARM64_SVE_PREG(n, 0), r);
-         if (ret) {
-             return ret;
-         }
-@@ -785,9 +774,7 @@ static int kvm_arch_put_sve(CPUState *cs)
- 
-     r = sve_bswap64(tmp, &env->vfp.pregs[FFR_PRED_NUM].p[0],
-                     DIV_ROUND_UP(cpu->sve_max_vq * 2, 8));
--    reg.addr = (uintptr_t)r;
--    reg.id = KVM_REG_ARM64_SVE_FFR(0);
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    ret = kvm_set_one_reg(cs, KVM_REG_ARM64_SVE_FFR(0), r);
-     if (ret) {
-         return ret;
-     }
-@@ -797,7 +784,6 @@ static int kvm_arch_put_sve(CPUState *cs)
- 
- int kvm_arch_put_registers(CPUState *cs, int level)
- {
--    struct kvm_one_reg reg;
-     uint64_t val;
-     uint32_t fpr;
-     int i, ret;
-@@ -814,9 +800,8 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-     }
- 
-     for (i = 0; i < 31; i++) {
--        reg.id = AARCH64_CORE_REG(regs.regs[i]);
--        reg.addr = (uintptr_t) &env->xregs[i];
--        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+        ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
-+                              &env->xregs[i]);
-         if (ret) {
-             return ret;
-         }
-@@ -827,16 +812,12 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-      */
-     aarch64_save_sp(env, 1);
- 
--    reg.id = AARCH64_CORE_REG(regs.sp);
--    reg.addr = (uintptr_t) &env->sp_el[0];
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.sp), &env->sp_el[0]);
-     if (ret) {
-         return ret;
-     }
- 
--    reg.id = AARCH64_CORE_REG(sp_el1);
--    reg.addr = (uintptr_t) &env->sp_el[1];
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(sp_el1), &env->sp_el[1]);
-     if (ret) {
-         return ret;
-     }
-@@ -847,23 +828,17 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-     } else {
-         val = cpsr_read(env);
-     }
--    reg.id = AARCH64_CORE_REG(regs.pstate);
--    reg.addr = (uintptr_t) &val;
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.pstate), &val);
-     if (ret) {
-         return ret;
-     }
- 
--    reg.id = AARCH64_CORE_REG(regs.pc);
--    reg.addr = (uintptr_t) &env->pc;
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.pc), &env->pc);
-     if (ret) {
-         return ret;
-     }
- 
--    reg.id = AARCH64_CORE_REG(elr_el1);
--    reg.addr = (uintptr_t) &env->elr_el[1];
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(elr_el1), &env->elr_el[1]);
-     if (ret) {
-         return ret;
-     }
-@@ -882,9 +857,8 @@ int kvm_arch_put_registers(CPUState *cs, int level)
- 
-     /* KVM 0-4 map to QEMU banks 1-5 */
-     for (i = 0; i < KVM_NR_SPSR; i++) {
--        reg.id = AARCH64_CORE_REG(spsr[i]);
--        reg.addr = (uintptr_t) &env->banked_spsr[i + 1];
--        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+        ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(spsr[i]),
-+                              &env->banked_spsr[i + 1]);
-         if (ret) {
-             return ret;
-         }
-@@ -899,18 +873,14 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-         return ret;
-     }
- 
--    reg.addr = (uintptr_t)(&fpr);
-     fpr = vfp_get_fpsr(env);
--    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    ret = kvm_set_one_reg(cs, AARCH64_SIMD_CTRL_REG(fp_regs.fpsr), &fpr);
-     if (ret) {
-         return ret;
-     }
- 
--    reg.addr = (uintptr_t)(&fpr);
-     fpr = vfp_get_fpcr(env);
--    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    ret = kvm_set_one_reg(cs, AARCH64_SIMD_CTRL_REG(fp_regs.fpcr), &fpr);
-     if (ret) {
-         return ret;
-     }
+             error_report("failed to get KVM_REG_ARM64_SVE_VLS: %s",
 -- 
 2.41.0
-

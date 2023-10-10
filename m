@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp415ejr;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp427ejr;
+        Tue, 10 Oct 2023 02:32:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFUKpWyGzxzfSk/znR292aExuUasm0I/VlTFCLtwI3fDEVvAYdpu3GYl9cunvDIoJn1YhA0
+X-Received: by 2002:a05:622a:1889:b0:403:72fa:630b with SMTP id v9-20020a05622a188900b0040372fa630bmr23101904qtc.58.1696930374389;
         Tue, 10 Oct 2023 02:32:54 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEJlb4AeYQJNKAJoTgGEvQaQSG08vkk5CrYyv/2Un5/Qg1UTeFzG7mHDJZ1DyDUm1SSjKhn
-X-Received: by 2002:a05:622a:84:b0:417:a469:1680 with SMTP id o4-20020a05622a008400b00417a4691680mr22078050qtw.38.1696930373301;
-        Tue, 10 Oct 2023 02:32:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696930373; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1696930374; cv=none;
         d=google.com; s=arc-20160816;
-        b=UmoEjFRfoN4zav6YcukCmgtCHdp035VUrjC6aLJ8gvI0khBUE2M6X+cyu4O2bRbG/t
-         MMsrmEIV2B/0qz10ymzPLwo5VKRWsAUvNsP5YoESxlsMGeUL2VJsVGmWNz63JJKHidNu
-         RPk19gEfeU8Vk3TkUJpS++jsrwwyXy9U6GxKN0FCWVX6zzKugC8mQI+dWRycZ4J5yrig
-         36Pkq1PU15i5j2Ypd+j2VqJiNqoOmr+Qn8CSrCiwEU/8f7wDTqM6mFY6N2H91EY+D+/s
-         ZWiLoF/wJnK7wY+u6xJoW5fwU9T1dQojF9G/TlxHi6s8/RWzaH+7D08mgDhJfx8mLhI1
-         z9Gg==
+        b=RN1whCZ/JthmIZvXhIaCFg6ajYgWhg+ZsGgXY7z2e5L6TaFNRj0GkELkhENYp9Om6c
+         FbvoDcAwf4cVeZ1ni1tpUET0KuylH5XCEoSzgx62DHqELb++AYrTmpe2JB5dbMX+MDfp
+         8DGvmEQWisiQcWhdyLBkFyl4NReXZokdZZJoNP31PiKZmUa0cemhRITrv3SDufXedS/0
+         8kSgQbn6C6X4AHnOfoQuxNesiNa/0sCMTcOBYh2lqJOO8j6puEDZyq7GU7DRmn/ZgZFt
+         Ixhk+/OHl/WuvQWrCPnwT+Hz2DXcWR5yvVXDmdQ4i6DwW5UXKn1WrILzUpoufgxpdqdt
+         wuEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=igxlAzxucraozvyYxr1AoU5+SPegRZLZXUAG6vlLMuM=;
+        bh=NKemy3mrOQvsycwsAw7RG7OOitRzhA3E8db/8fyu+SQ=;
         fh=iupQBrmerAoZOw8v6swRnyYBx+6KhbF7AbBF1Jawaz4=;
-        b=LGN9/2zGRrgCwbZ5CrD8X6Wbx3Rj4DQk3N0iEMNXGUF+1yUuEBomR/pQTSs02Q5iT4
-         7H0dt8UdDZaasg32Nz06sVwFLwRIJ3fSlDf+H2kt+biCxeKYYIbiuOajDAifn8smbeeL
-         UjeGYyAtynrcL4TXIi1FkpQwCJ/KqYTjiTbTNgzj9dLJ4+DIxCeybx9l5Jn6eWY7aeuT
-         mbg3YRGDmzVQWTXu8QllfSG7PZNyC2YJZhdtGX+jzdLbcghOuMgIu7V6D8J9JWD7M90Y
-         NpewR5GJCp5ndlC6s72tASu7luOGc6hPyMIL9qIub0+NO0+xd5EWGjmnlnGmjK9ywTLh
-         OJkw==
+        b=V2+OHIj0D5o2OqZvBjS9cD/11w+KQna1SFXmLe9njyvaPGUo4L4AjzM5uGEwumtCCD
+         0rVq3UhaecDXBSguz0GSSUpuC5OdOvw/dvclW1dNz3UegU4h0FqG232GCgzB56/JMlOS
+         ShGBlfa7gLxNLSzqfQPmFhbSJQf642+lDx8DQ3mjaz2yA6xgPHM9cXCRkZBnCUlWVmq6
+         wiSbTPqaOPho1rgg1yJBc8JcGvTbn5f6Ez3pCP5Jd7juV2POwgcwcVuzgwkIGf/2zVCw
+         nMp32DLsmPEWslQ22cvoXe5yti5al/x05a7t4x0wHzCMTe6bSMsOS7lF4+gjB+cC1hbl
+         /M7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ugshjq8+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dwBEbjyr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f3-20020a05622a104300b0041964cad786si7227228qte.141.2023.10.10.02.32.52
+        by mx.google.com with ESMTPS id c14-20020a05622a058e00b004109d20c07dsi7369042qtb.499.2023.10.10.02.32.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 02:32:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Oct 2023 02:32:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ugshjq8+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=dwBEbjyr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qq95b-0003jn-Bj; Tue, 10 Oct 2023 05:31:44 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qq93v-0000Un-E6; Tue, 10 Oct 2023 05:29:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq95G-0002Lu-5y
- for qemu-devel@nongnu.org; Tue, 10 Oct 2023 05:31:22 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq93t-0000Oq-Pn
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:29:57 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq95D-0008QK-4d
- for qemu-devel@nongnu.org; Tue, 10 Oct 2023 05:31:21 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-53d8320f0easo519206a12.3
- for <qemu-devel@nongnu.org>; Tue, 10 Oct 2023 02:31:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq93r-0007mm-T8
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:29:57 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-9b275afb6abso1423804866b.1
+ for <qemu-arm@nongnu.org>; Tue, 10 Oct 2023 02:29:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696930277; x=1697535077; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696930194; x=1697534994; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=igxlAzxucraozvyYxr1AoU5+SPegRZLZXUAG6vlLMuM=;
- b=ugshjq8+VseuTYN3ir7Uttxe/UnSs1Hu0LkjAKReFPyRZYaTSZHIVlIsoohCSI8xom
- e+7tkqYcX/I/QRzVpKrIkfJzwLrYv9OtCfQJ4wlx8IkSUV77+UCSiJjqXuzX8pYBFUao
- ckNbjoalDcllWzYR4WtVg276N1FiXLOm0l+yoWwkOPSFBQ+h/OdOa68BKPnDCZv5qseQ
- DxUoNOCQsu2jHHTEAt2EdShTkz7/ZEKs1Mzse7rC7XDPXOPRl+c6dj5OKZPioXT+ajIO
- BwccaWB6+x8bqLGBGPLSCB/1CSs4MbH9kZjK4e4yKOgqlCY2OjVIokpP/03euOUgdTuq
- DvOw==
+ bh=NKemy3mrOQvsycwsAw7RG7OOitRzhA3E8db/8fyu+SQ=;
+ b=dwBEbjyrSzUuv7XYSj8sFlC1jELSU4zOhRTpVet/BFhBoVa+rFMpP65WQ6ss03wneG
+ gaVT4Bmpy8PcLADacQeGeV5M9dApeZbWNQrW919Sfo8SphzLAQql6wLEGALAGTS0MTsK
+ 6CCVZQY1GDM2jOj/fr6nhYYP9bR/7SkROYJyg63udNn+7h/WW13KhFReYwsXAQDQj+9j
+ mg8xcso0iIs8OpAtXfEo0jbe94s2O1sS/MPPi4XTwkW026M7V8c8eRJov2vpk8iRbCRf
+ 7qzy4eFGzq4qAHcaLKe+08oGIQ0I8YfZCUA0E4cmGGN/I6XTWTrbRda17ozsPMKPKOih
+ 5LZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696930277; x=1697535077;
+ d=1e100.net; s=20230601; t=1696930194; x=1697534994;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=igxlAzxucraozvyYxr1AoU5+SPegRZLZXUAG6vlLMuM=;
- b=TRJNOndRYB6unamsdceUJS0PspViqpsOHSdjF3xmJtFNqhu8zfStrSXn+6nl3WGFtN
- mxAu5biYnGJUgm/DoPyuxZmTrg/rCOwatjpcE1VTyz5YRRmIdMkx08rllg3B1WmHKU6K
- gqPy5v3Tf0De23gUz5c5dMEGnyulLKYvDkTMAf2jp7XyWbkg4HvWZAOtzkQzBNVt4U7d
- jklBZ9B3FqymP3cWs6+sS3dkXZJHzRTgoa4eYXtR9juY3nSQBYyvGaeLqkF4YOsAU8Lq
- or6RJFKbEyugYml6NeK1IDBJA2o72TTTGk5E8k7tLzfuuLn5oDJZZk2dFJhEyGp4W3ay
- W+MQ==
-X-Gm-Message-State: AOJu0Yy+3b/NHVlreDZNrzc3fylJOpa7kO0kVduzlti37CFKjUUERyxq
- OGl1VCGvxtplo8lEEiRuLcLS1/j+knywdb5IsptI6g==
-X-Received: by 2002:a05:6402:785:b0:523:ae0a:a446 with SMTP id
- d5-20020a056402078500b00523ae0aa446mr18233078edy.24.1696930277343; 
- Tue, 10 Oct 2023 02:31:17 -0700 (PDT)
+ bh=NKemy3mrOQvsycwsAw7RG7OOitRzhA3E8db/8fyu+SQ=;
+ b=iTXBvDKeHjS7GhSkIoicrpEuR4Wl4ZFoV7jZKCrTv7qdQwbyYeBpQYlixmu9aldkNv
+ gzr6gStzBEkxb/9OXvRp9gdENAw6b5Oxi7bIVn+Pwnck2XIWZa9StF1B3xEodwG1N3mg
+ /7081TvMcnqCXLR1RncvXq3eqKI0y2Lwcyox6CvYYAOXqBFqZWJ/sOHUyqF1u+tsT4ep
+ Gp4vgpohDBmx8/UoLMgz9w+freFCzTPtIk3n4x6JIQcr8uBUPWQBkB82Bb66VhW5cXoa
+ e0DXgLIZSz8e11Q4XIsv/xHCTjj5/sOnVK8gMUsZ46vDLcFcdmtcyou0mp6KMFkDeL6q
+ X2mQ==
+X-Gm-Message-State: AOJu0Yy874sPQFDmYliplxsqB3jLiN8pN4wOOyF5bbR1d0uAG7MMhP29
+ /FUc4Z6e0mdsH686Trx5215jLw==
+X-Received: by 2002:a17:907:3da3:b0:9ae:614f:b159 with SMTP id
+ he35-20020a1709073da300b009ae614fb159mr12111310ejc.36.1696930194440; 
+ Tue, 10 Oct 2023 02:29:54 -0700 (PDT)
 Received: from m1x-phil.lan (aif79-h01-176-172-113-148.dsl.sta.abo.bbox.fr.
  [176.172.113.148]) by smtp.gmail.com with ESMTPSA id
- ev5-20020a056402540500b0053b67aba57bsm4579372edb.17.2023.10.10.02.31.13
+ w13-20020a170906480d00b0098d2d219649sm8226101ejq.174.2023.10.10.02.29.50
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 10 Oct 2023 02:31:16 -0700 (PDT)
+ Tue, 10 Oct 2023 02:29:53 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -121,159 +121,152 @@ Cc: David Hildenbrand <david@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>, qemu-s390x@nongnu.org
-Subject: [PATCH 16/18] target/i386: Make X86_CPU common to new I386_CPU /
- X86_64_CPU types
-Date: Tue, 10 Oct 2023 11:28:58 +0200
-Message-ID: <20231010092901.99189-17-philmd@linaro.org>
+Subject: [PATCH 06/18] target/loongarch: Declare QOM definitions in 'cpu-qom.h'
+Date: Tue, 10 Oct 2023 11:28:48 +0200
+Message-ID: <20231010092901.99189-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231010092901.99189-1-philmd@linaro.org>
 References: <20231010092901.99189-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BdY+C6j78E64
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aEU4B5CD6SrH
 
-"target/foo/cpu-qom.h" can not use any target specific definitions.
+"target/foo/cpu.h" contains the target specific declarations.
 
-Currently "target/i386/cpu-qom.h" defines TYPE_X86_CPU depending
-on the i386/x86_64 build type. This doesn't scale in a heterogeneous
-context where we need to access both types concurrently.
+A heterogeneous setup need to access target agnostic declarations
+(at least the QOM ones, to instantiate the objects).
 
-In order to do that, introduce the new I386_CPU / X86_64_CPU
-types, both inheriting a common TYPE_X86_CPU base type.
+Our convention is to add such target agnostic QOM declarations in
+the "target/foo/cpu-qom.h" header.
 
-Keep the current "base" and "max" CPU types as 32 or 64-bit,
-depending on the binary built.
-
-Adapt the cpu-plug-test, since the 'base' architecture is now
-common to both 32/64-bit x86 targets.
+Extract QOM definitions from "cpu.h" to "cpu-qom.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/i386/cpu-qom.h       | 16 +++++++++-------
- target/i386/cpu.h           |  3 +++
- target/i386/cpu.c           | 20 ++++++++++++++++++--
- tests/qtest/cpu-plug-test.c |  2 +-
- 4 files changed, 31 insertions(+), 10 deletions(-)
+ target/loongarch/cpu-qom.h | 38 ++++++++++++++++++++++++++++++++++++++
+ target/loongarch/cpu.h     | 26 +-------------------------
+ 2 files changed, 39 insertions(+), 25 deletions(-)
+ create mode 100644 target/loongarch/cpu-qom.h
 
-diff --git a/target/i386/cpu-qom.h b/target/i386/cpu-qom.h
-index 78207c0a7c..81f40bf91e 100644
---- a/target/i386/cpu-qom.h
-+++ b/target/i386/cpu-qom.h
-@@ -1,5 +1,5 @@
+diff --git a/target/loongarch/cpu-qom.h b/target/loongarch/cpu-qom.h
+new file mode 100644
+index 0000000000..d577af9f6e
+--- /dev/null
++++ b/target/loongarch/cpu-qom.h
+@@ -0,0 +1,38 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/*
++ * QEMU LoongArch CPU QOM header (target agnostic)
++ *
++ * Copyright (c) 2021 Loongson Technology Corporation Limited
++ */
++
++#ifndef LOONGARCH_CPU_QOM_H
++#define LOONGARCH_CPU_QOM_H
++
++#include "hw/core/cpu.h"
++#include "qom/object.h"
++
++#define TYPE_LOONGARCH_CPU "loongarch-cpu"
++#define TYPE_LOONGARCH32_CPU "loongarch32-cpu"
++#define TYPE_LOONGARCH64_CPU "loongarch64-cpu"
++
++OBJECT_DECLARE_CPU_TYPE(LoongArchCPU, LoongArchCPUClass,
++                        LOONGARCH_CPU)
++
++#define LOONGARCH_CPU_TYPE_SUFFIX "-" TYPE_LOONGARCH_CPU
++#define LOONGARCH_CPU_TYPE_NAME(model) model LOONGARCH_CPU_TYPE_SUFFIX
++
++/**
++ * LoongArchCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ *
++ * A LoongArch CPU model.
++ */
++struct LoongArchCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++};
++
++#endif
+diff --git a/target/loongarch/cpu.h b/target/loongarch/cpu.h
+index 40e70a8119..22cebc6280 100644
+--- a/target/loongarch/cpu.h
++++ b/target/loongarch/cpu.h
+@@ -17,6 +17,7 @@
+ #include "exec/memory.h"
+ #endif
+ #include "cpu-csr.h"
++#include "cpu-qom.h"
+ 
+ #define IOCSRF_TEMP             0
+ #define IOCSRF_NODECNT          1
+@@ -383,29 +384,6 @@ struct ArchCPU {
+     const char *dtb_compatible;
+ };
+ 
+-#define TYPE_LOONGARCH_CPU "loongarch-cpu"
+-#define TYPE_LOONGARCH32_CPU "loongarch32-cpu"
+-#define TYPE_LOONGARCH64_CPU "loongarch64-cpu"
+-
+-OBJECT_DECLARE_CPU_TYPE(LoongArchCPU, LoongArchCPUClass,
+-                        LOONGARCH_CPU)
+-
+-/**
+- * LoongArchCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- *
+- * A LoongArch CPU model.
+- */
+-struct LoongArchCPUClass {
+-    /*< private >*/
+-    CPUClass parent_class;
+-    /*< public >*/
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-};
+-
  /*
-- * QEMU x86 CPU
-+ * QEMU x86 CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  *
-@@ -24,13 +24,15 @@
- #include "qemu/notify.h"
- #include "qom/object.h"
+  * LoongArch CPUs has 4 privilege levels.
+  * 0 for kernel mode, 3 for user mode.
+@@ -482,8 +460,6 @@ void loongarch_cpu_list(void);
  
--#ifdef TARGET_X86_64
--#define TYPE_X86_CPU "x86_64-cpu"
--#else
--#define TYPE_X86_CPU "i386-cpu"
--#endif
-+#define TYPE_X86_CPU    "x86-cpu"
-+#define TYPE_I386_CPU   "i386-cpu"
-+#define TYPE_X86_64_CPU "x86_64-cpu"
+ #include "exec/cpu-all.h"
  
--OBJECT_DECLARE_CPU_TYPE(X86CPU, X86CPUClass, X86_CPU)
-+OBJECT_DECLARE_CPU_TYPE(I386CPU, X86CPUClass, I386_CPU)
-+OBJECT_DECLARE_CPU_TYPE(X86_64CPU, X86CPUClass, X86_64_CPU)
-+
-+#define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
-+#define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
+-#define LOONGARCH_CPU_TYPE_SUFFIX "-" TYPE_LOONGARCH_CPU
+-#define LOONGARCH_CPU_TYPE_NAME(model) model LOONGARCH_CPU_TYPE_SUFFIX
+ #define CPU_RESOLVING_TYPE TYPE_LOONGARCH_CPU
  
- #define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
- #define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 7c976971c7..5deb39a380 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -28,6 +28,9 @@
- #include "qemu/cpu-float.h"
- #include "qemu/timer.h"
- 
-+/* Abstract QOM X86 CPU, not exposed to other targets */
-+OBJECT_DECLARE_CPU_TYPE(X86CPU, X86CPUClass, X86_CPU)
-+
- #define XEN_NR_VIRQS 24
- 
- /* The x86 has a strong memory model with some store-after-load re-ordering */
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 8f1fd5f304..1b1dae92c6 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -8033,12 +8033,28 @@ static const TypeInfo x86_cpu_types[] = {
-         .class_size     = sizeof(X86CPUClass),
-         .class_init     = x86_cpu_common_class_init,
-     }, {
--        .name           = X86_CPU_TYPE_NAME("base"),
-+        .name           = TYPE_I386_CPU,
-         .parent         = TYPE_X86_CPU,
-+        .abstract       = true,
-+    }, {
-+        .name           = TYPE_X86_64_CPU,
-+        .parent         = TYPE_X86_CPU,
-+        .abstract       = true,
-+    }, {
-+        .name           = X86_CPU_TYPE_NAME("base"),
-+#ifdef TARGET_X86_64
-+        .parent         = TYPE_X86_64_CPU,
-+#else
-+        .parent         = TYPE_I386_CPU,
-+#endif
-         .class_init     = x86_cpu_base_class_init,
-     }, {
-         .name           = X86_CPU_TYPE_NAME("max"),
--        .parent         = TYPE_X86_CPU,
-+#ifdef TARGET_X86_64
-+        .parent         = TYPE_X86_64_CPU,
-+#else
-+        .parent         = TYPE_I386_CPU,
-+#endif
-         .instance_init  = max_x86_cpu_initfn,
-         .class_init     = max_x86_cpu_class_init,
-     }
-diff --git a/tests/qtest/cpu-plug-test.c b/tests/qtest/cpu-plug-test.c
-index 7f5dd5f85a..97316d131f 100644
---- a/tests/qtest/cpu-plug-test.c
-+++ b/tests/qtest/cpu-plug-test.c
-@@ -90,7 +90,7 @@ static void add_pc_test_case(const char *mname)
-     data->machine = g_strdup(mname);
-     data->cpu_model = "Haswell"; /* 1.3+ theoretically */
-     data->device_model = g_strdup_printf("%s-%s-cpu", data->cpu_model,
--                                         qtest_get_arch());
-+                                         qtest_get_base_arch());
-     data->sockets = 1;
-     data->cores = 3;
-     data->threads = 2;
+ #endif /* LOONGARCH_CPU_H */
 -- 
 2.41.0
 

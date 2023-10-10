@@ -1,126 +1,191 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp7971ejr;
-        Tue, 10 Oct 2023 02:50:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEJQILryGBqASO128z2IUzE/h68uM3/EXHGN/wb+4Rd+R8oUCOpKGjY5Xu0IG04PfB62Axo
-X-Received: by 2002:a05:600c:3b89:b0:406:478e:9e2d with SMTP id n9-20020a05600c3b8900b00406478e9e2dmr14927323wms.26.1696931439668;
-        Tue, 10 Oct 2023 02:50:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696931439; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp11304ejr;
+        Tue, 10 Oct 2023 02:59:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHu8oyJItR6iJIx8GtiExLjW8JVgghh36d4UJM275Ewpo7jF/iGqvtN9Y+j3XJB8crZp9th
+X-Received: by 2002:ac8:5981:0:b0:409:de05:4593 with SMTP id e1-20020ac85981000000b00409de054593mr22701687qte.62.1696931944050;
+        Tue, 10 Oct 2023 02:59:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696931944; cv=none;
         d=google.com; s=arc-20160816;
-        b=w/F+hNbYG2MaK1wYoN9dl/10Xcl8Gg0be7U3Dtb8FDM/pN2E1S4RL3moebltgGYMoF
-         1HROhO0AOveVgXkEc2PNbzfxcyoXXG2p3lfLVLmt/cqfOQMQ8y6UHny14ifHmzlViqe3
-         09evkq/1xgLB0TJ8Hj1wVgfkeLRFrOKPPhWvhPdOnCnZwtP2+gJcVpWqD3x6rmB4hb9t
-         1ZglWQnY8uZe3rfdwXvMmTI4HVojsv0pd91Z0e/k7pGh0kZeygWNoijuviAvYFSdjtTT
-         +ZYn8vWCPeBz9UPoxeubQhc/tFTO1zTcNbKhg0aDn++CEa7UdE+nqCticZxjmEUvBEwu
-         Je1Q==
+        b=Ii3WXOC/xF6nS1iHK2N29vivytF94hR5iNOI1sdxXE9IliAbWRS5a8g9ts8gRi8vVL
+         pLFdhhHyaBiJaR4swLomQtSKwGhprxjW7UsdEZ2SoemUToIcIHhMJXvhbhKr2Ejxl3B1
+         Tb/XS5DPiVvyWeLvgsKiY9byvtpDIeGDw8Nb0lNPeykgaehjA/Zj+WlrnBWI0jZtyNWX
+         +y+sxLbsFkoTk5AzunoS9LtBPD7Ib8rGgDjaIQJyfed1VX9x+6oz0Jt5HFVsgzxeIAPx
+         Y3VHv3wBRf/47SqxwZEVNj/gPqjVLYm1BXUE1TGzJOqZEkqVU7slrfqLfIBCC58r49sr
+         B6ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=4RMSIDkSCEKnjnYV3ypp9UYSqsw226nS93LFJvwr1pU=;
-        fh=ArDpgR21IQ5SVfoMeq0rTdqbphlAxLfW/mhVyowvahQ=;
-        b=B6lK/ou8yOBp3DNueCqVnL6oSV7KG8Vm33dlZ1cyrf2JaxZUcbrCnJC3PfaTDDDyyJ
-         m8vILpSsaTFHd6jMgfrvl8cDWcO15TS/xqTmn8jAx7grHWf+YjYrpGcof4fKJDR8DWT9
-         linKVUVU3hba5KYJ8z6WuY/BUUOTjrQa7KtW+3KvLjQ8TulRLadw005F8xUDlz1/5NFf
-         +RsPGFtzlF/MQt/NlxtwraoP+iZ/B39uJrbWF97OjD1I7SoZ6YYj9keuS3fslkIUsX8T
-         +f677LHW/XR4Pcj7asFDRL/yWCTUTGQJvTOv79hf6kqhRZVSw3hFAYR76r4o/qikyMHQ
-         H8QQ==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=cFDoNYvu4AGyjhzaDodqA+59Tdxx5F8lL1P2nMkx30I=;
+        fh=nMkDEmoHCshhMbmj1+dWFVTvOFH7uSoFcig+K2lO/yg=;
+        b=lGz06Xf/8wfAoGTMdDOtjjFa1x/cyNkekd/dANKIYo/6hLZJdWVb12E+hmmjlC4FTN
+         dfvuM12qnz25eLQS1TdVGAajpc4E0CIoTSlu0WkOKPbw83RBxsWwxKlQqA7eUjQqYrn4
+         91UxHOIKUAsel1BOVW84CvvnoPwjVSYxnpqyP2tR/cH+qrh/y/S2DtmOxIizHRFHKEiP
+         wBKX7u23nap6zeNbwC3gK7+B+bxvZLpqNP4vqmfqpcVq4R/rsIGJsvOB4JLknWUTUDxe
+         3RemTyGo7A4lM3Rv0ThWqZh6p2aTRey6Y3AzpyrTjK7vY56x6CnM0U+BtAkeSs3Jmtd5
+         2s+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id s13-20020a5d69cd000000b0032336f5d655si4349835wrw.157.2023.10.10.02.50.39
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Oct 2023 02:50:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Gf/Wc0wE";
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id t9-20020a05622a01c900b0040a547f5370si7480879qtw.364.2023.10.10.02.59.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Oct 2023 02:59:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml100006.china.huawei.com (unknown [172.18.147.226])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S4WKQ30LNz6D8cV;
-	Tue, 10 Oct 2023 17:47:38 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml100006.china.huawei.com (7.191.160.224) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Tue, 10 Oct 2023 10:50:38 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Tue, 10 Oct 2023 10:50:38 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Shaoqin Huang <shahuang@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V4 07/10] hw/acpi: Update ACPI GED framework to support
- vCPU Hotplug
-Thread-Topic: [PATCH V4 07/10] hw/acpi: Update ACPI GED framework to support
- vCPU Hotplug
-Thread-Index: AQHZ+vCtAkAWKYXgr0OuLtDfoazlJ7BCnfiAgAAqeOA=
-Date: Tue, 10 Oct 2023 09:50:38 +0000
-Message-ID: <9cf277f61c4b401fa39cbc88109e1db1@huawei.com>
-References: <20231009203601.17584-1-salil.mehta@huawei.com>
- <20231009203601.17584-8-salil.mehta@huawei.com>
- <d9fdeb5b-5da2-8411-7940-e64ad7ebf91b@redhat.com>
-In-Reply-To: <d9fdeb5b-5da2-8411-7940-e64ad7ebf91b@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.126.174.234]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Gf/Wc0wE";
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1696931943;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cFDoNYvu4AGyjhzaDodqA+59Tdxx5F8lL1P2nMkx30I=;
+	b=Gf/Wc0wEWaoiOi0B7SufsZkMKEYAA7G/gD9VBLG+vtOrQUT/rs+5LpxeJihDQpO5EX08Vp
+	yS+MfgOXgyGx74TYEfTq2EatRlfP3hsdexg9HiaFcFMpIiKOu+j013B646Hw4Wtt9G/eFP
+	a8LhpCH0lnQpTx5fwqyXYmh1gR8EfRY=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-524-AxIEpKZnMOKgsS7cel4_XQ-1; Tue, 10 Oct 2023 05:58:52 -0400
+X-MC-Unique: AxIEpKZnMOKgsS7cel4_XQ-1
+Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-41b1f81f3f1so24461571cf.1
+        for <alex.bennee@linaro.org>; Tue, 10 Oct 2023 02:58:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696931932; x=1697536732;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=cFDoNYvu4AGyjhzaDodqA+59Tdxx5F8lL1P2nMkx30I=;
+        b=tMc8X68NTfc182bK5cdlFxd+KQc/QDvnsMeg5CoUo3oY1ScD985SoUmU6J15hE45u2
+         RbFM5OvhaofrPbtmJFArhUy11crSFONoxP+7GRM5OTasrJzxyP8CCymRzbsCcdfkQu5H
+         lf2q1EG7Q4u6U0F/nOtpEb336Nsvs/EoB4BGz/CWUO/01IxW7uliNaRJd9AUzCnp97zl
+         tbnEkKSzALPomHwqrWAN40ISqSTjMYSXF8oeOf8vRxKFQb8nANJ+u92OuFmzB3YMtoqf
+         B5+8vdCXgBxs1hDi8z09ryGwjRBQk0QSBjeGsirql23WJNZqTdwQar4NEmK6ct7Hb01d
+         ZjiA==
+X-Gm-Message-State: AOJu0YxZEBzvgxvkmlDLkWgHd0PPe55VSVT7t6ChChN/DyNgFXeq/ei0
+	ZKxKwIbBkKeddCYhx8KYqH+G5SauGhclPrmKezEQMWAVA9GD4jZgm2xkuJBaWpx8dEbWaoenbpb
+	5s+hR1RKLdocQOJNS
+X-Received: by 2002:a05:622a:144d:b0:40d:6219:d813 with SMTP id v13-20020a05622a144d00b0040d6219d813mr22774626qtx.68.1696931932108;
+        Tue, 10 Oct 2023 02:58:52 -0700 (PDT)
+X-Received: by 2002:a05:622a:144d:b0:40d:6219:d813 with SMTP id v13-20020a05622a144d00b0040d6219d813mr22774595qtx.68.1696931931846;
+        Tue, 10 Oct 2023 02:58:51 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.5] (ip-109-43-176-176.web.vodafone.de. [109.43.176.176])
+        by smtp.gmail.com with ESMTPSA id bb36-20020a05622a1b2400b00403ad6ec2e8sm4352278qtb.26.2023.10.10.02.58.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Oct 2023 02:58:51 -0700 (PDT)
+Message-ID: <a3ff5135-2fd1-b3dd-f576-129ef08b47be@redhat.com>
+Date: Tue, 10 Oct 2023 11:58:44 +0200
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: afjayjj97Sz0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH 4/4] tests/qtest: Use qtest_get_base_arch()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, John Snow <jsnow@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Fam Zheng <fam@euphon.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
+ Bandan Das <bsd@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>, Nicholas Piggin
+ <npiggin@gmail.com>, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, Jeuk Kim
+ <jeuk20.kim@samsung.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Amit Shah <amit@kernel.org>
+References: <20231010074952.79165-1-philmd@linaro.org>
+ <20231010074952.79165-5-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20231010074952.79165-5-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 7ZUPe9RzUiix
 
-PiBGcm9tOiBTaGFvcWluIEh1YW5nIDxzaGFodWFuZ0ByZWRoYXQuY29tPg0KPiBTZW50OiBUdWVz
-ZGF5LCBPY3RvYmVyIDEwLCAyMDIzIDk6MTggQU0NCj4gVG86IFNhbGlsIE1laHRhIDxzYWxpbC5t
-ZWh0YUBodWF3ZWkuY29tPjsgcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LQ0KPiBhcm1Abm9u
-Z251Lm9yZw0KPiBDYzogbWF6QGtlcm5lbC5vcmc7IGplYW4tcGhpbGlwcGVAbGluYXJvLm9yZzsg
-Sm9uYXRoYW4gQ2FtZXJvbg0KPiA8am9uYXRoYW4uY2FtZXJvbkBodWF3ZWkuY29tPjsgbHBpZXJh
-bGlzaUBrZXJuZWwub3JnOw0KPiBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7IHJpY2hhcmQuaGVu
-ZGVyc29uQGxpbmFyby5vcmc7DQo+IGltYW1tZWRvQHJlZGhhdC5jb207IGFuZHJldy5qb25lc0Bs
-aW51eC5kZXY7IGRhdmlkQHJlZGhhdC5jb207DQo+IHBoaWxtZEBsaW5hcm8ub3JnOyBlcmljLmF1
-Z2VyQHJlZGhhdC5jb207IG9saXZlci51cHRvbkBsaW51eC5kZXY7DQo+IHBib256aW5pQHJlZGhh
-dC5jb207IG1zdEByZWRoYXQuY29tOyB3aWxsQGtlcm5lbC5vcmc7IGdzaGFuQHJlZGhhdC5jb207
-DQo+IHJhZmFlbEBrZXJuZWwub3JnOyBhbGV4LmJlbm5lZUBsaW5hcm8ub3JnOyBsaW51eEBhcm1s
-aW51eC5vcmcudWs7DQo+IGRhcnJlbkBvcy5hbXBlcmVjb21wdXRpbmcuY29tOyBpbGtrYUBvcy5h
-bXBlcmVjb21wdXRpbmcuY29tOw0KPiB2aXNobnVAb3MuYW1wZXJlY29tcHV0aW5nLmNvbTsga2Fy
-bC5oZXViYXVtQG9yYWNsZS5jb207DQo+IG1pZ3VlbC5sdWlzQG9yYWNsZS5jb207IHNhbGlsLm1l
-aHRhQG9wbnNyYy5uZXQ7IHpodWtlcWlhbg0KPiA8emh1a2VxaWFuMUBodWF3ZWkuY29tPjsgd2Fu
-Z3hpb25nZmVuZyAoQykgPHdhbmd4aW9uZ2ZlbmcyQGh1YXdlaS5jb20+Ow0KPiB3YW5neWFuYW4g
-KFkpIDx3YW5neWFuYW41NUBodWF3ZWkuY29tPjsgamlha2VybmVsMkBnbWFpbC5jb207DQo+IG1h
-b2JpYm9AbG9vbmdzb24uY247IGxpeGlhbmdsYWlAbG9vbmdzb24uY247IExpbnV4YXJtIDxsaW51
-eGFybUBodWF3ZWkuY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIFY0IDA3LzEwXSBody9hY3Bp
-OiBVcGRhdGUgQUNQSSBHRUQgZnJhbWV3b3JrIHRvIHN1cHBvcnQNCj4gdkNQVSBIb3RwbHVnDQo+
-IA0KPiBPbiAxMC8xMC8yMyAwNDozNSwgU2FsaWwgTWVodGEgdmlhIHdyb3RlOg0KPiA+IEFDUEkg
-R0VEIHNoYWxsIGJlIHVzZWQgdG8gY29udmV5IHRvIHRoZSBndWVzdCBrZXJuZWwgYWJvdXQgYW55
-IENQVSBob3QtDQo+ICh1bilwbHVnDQo+ID4gZXZlbnRzLiBUaGVyZWZvcmUsIGV4aXN0aW5nIEFD
-UEkgR0VEIGZyYW1ld29yayBpbnNpZGUgUUVNVSBuZWVkcyB0byBiZQ0KPiBlbmhhbmNlZA0KPiA+
-IHRvIHN1cHBvcnQgQ1BVIGhvdHBsdWcgc3RhdGUgYW5kIGV2ZW50cy4NCj4gPg0KPiA+IENvLWRl
-dmVsb3BlZC1ieTogS2VxaWFuIFpodSA8emh1a2VxaWFuMUBodWF3ZWkuY29tPg0KPiA+IFNpZ25l
-ZC1vZmYtYnk6IEtlcWlhbiBaaHUgPHpodWtlcWlhbjFAaHVhd2VpLmNvbT4NCj4gPiBTaWduZWQt
-b2ZmLWJ5OiBTYWxpbCBNZWh0YSA8c2FsaWwubWVodGFAaHVhd2VpLmNvbT4NCj4gPiBSZXZpZXdl
-ZC1ieTogSm9uYXRoYW4gQ2FtZXJvbiA8Sm9uYXRoYW4uQ2FtZXJvbkBodWF3ZWkuY29tPg0KPiA+
-IFJldmlld2VkLWJ5OiBHYXZpbiBTaGFuIDxnc2hhbkByZWRoYXQuY29tPg0KPiBSZXZpZXdlZC1i
-eTogU2hhb3FpbiBIdWFuZyA8c2hhaHVhbmdAcmVkaGF0LmNvbT4NCg0KVGhhbmtzDQo=
+On 10/10/2023 09.49, Philippe Mathieu-Daudé wrote:
+> Additionally use qtest_get_arch_bits() when relevant.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   tests/qtest/ahci-test.c           |  5 ++---
+>   tests/qtest/am53c974-test.c       |  4 +---
+>   tests/qtest/bios-tables-test.c    |  6 +++---
+>   tests/qtest/boot-sector.c         |  6 +++---
+>   tests/qtest/device-plug-test.c    |  6 ++----
+>   tests/qtest/drive_del-test.c      | 16 ++++++----------
+>   tests/qtest/erst-test.c           |  4 +---
+>   tests/qtest/fuzz-e1000e-test.c    |  4 +---
+>   tests/qtest/ivshmem-test.c        |  6 +++---
+>   tests/qtest/libqos/qos_external.c |  6 ++++--
+>   tests/qtest/lpc-ich9-test.c       |  4 +---
+>   tests/qtest/m48t59-test.c         |  6 ++----
+>   tests/qtest/pxe-test.c            |  6 +++---
+>   tests/qtest/qos-test.c            |  6 ++++--
+>   tests/qtest/readconfig-test.c     |  6 +-----
+>   tests/qtest/rtas-test.c           |  4 +---
+>   tests/qtest/ufs-test.c            |  4 +---
+>   tests/qtest/usb-hcd-uhci-test.c   |  6 +++---
+>   tests/qtest/virtio-net-test.c     |  3 +--
+>   tests/qtest/virtio-rng-test.c     |  4 +---
+>   20 files changed, 44 insertions(+), 68 deletions(-)
+> 
+> diff --git a/tests/qtest/ahci-test.c b/tests/qtest/ahci-test.c
+> index eea8b5f77b..93d1e14896 100644
+> --- a/tests/qtest/ahci-test.c
+> +++ b/tests/qtest/ahci-test.c
+> @@ -1835,7 +1835,7 @@ static void create_ahci_io_test(enum IOMode type, enum AddrMode addr,
+>   
+>   int main(int argc, char **argv)
+>   {
+> -    const char *arch, *base;
+> +    const char *base;
+>       int ret;
+>       int fd;
+>       int c;
+> @@ -1867,8 +1867,7 @@ int main(int argc, char **argv)
+>       }
+>   
+>       /* Check architecture */
+> -    arch = qtest_get_arch();
+> -    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
+> +    if (strcmp(qtest_get_base_arch(), "x86")) {
+>           g_test_message("Skipping test for non-x86");
+>           return 0;
+>       }
+
+While this change makes sense (unifying two checks into one) ...
+
+> diff --git a/tests/qtest/am53c974-test.c b/tests/qtest/am53c974-test.c
+> index ed3ac7db20..dc41182a38 100644
+> --- a/tests/qtest/am53c974-test.c
+> +++ b/tests/qtest/am53c974-test.c
+> @@ -253,11 +253,9 @@ static void test_reset_before_transfer_ok(void)
+>   
+>   int main(int argc, char **argv)
+>   {
+> -    const char *arch = qtest_get_arch();
+> -
+>       g_test_init(&argc, &argv, NULL);
+>   
+> -    if (strcmp(arch, "i386") == 0) {
+> +    if (!strcmp(qtest_get_base_arch(), "x86") && qtest_get_arch_bits() == 32) {
+
+... this change looks more cumbersome now (doing two checks now instead of 
+one), at least at the current point in time. Do you urgently need this for 
+your refactoring? If not, I'd maybe postpone such changes that make the 
+checks more compilcated to a later point in time.
+
+  Thomas
+

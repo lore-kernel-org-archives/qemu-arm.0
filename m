@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:b756:b0:9b2:89ee:1eb8 with SMTP id fx22csp296849ejb;
-        Tue, 10 Oct 2023 00:39:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGT+eaDy9kKZqe9190PvBGhQSZkN9cq9OVwTGeoRxJxGVSSD/c9J5nXtALrTHUqPWx6ud5k
-X-Received: by 2002:a05:622a:1a16:b0:40c:58a1:cb40 with SMTP id f22-20020a05622a1a1600b0040c58a1cb40mr21172389qtb.15.1696923595009;
-        Tue, 10 Oct 2023 00:39:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696923594; cv=none;
+Received: by 2002:a17:906:b756:b0:9b2:89ee:1eb8 with SMTP id fx22csp297011ejb;
+        Tue, 10 Oct 2023 00:40:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGXmRNQOVmWDZ+lfglw/IyXOjqxEjdO3K707W0poYA5N4Y7HI0vnCL2/NaPRQv/v2gglB04
+X-Received: by 2002:a05:6214:310f:b0:658:59e7:aac5 with SMTP id ks15-20020a056214310f00b0065859e7aac5mr16300698qvb.23.1696923623220;
+        Tue, 10 Oct 2023 00:40:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696923623; cv=none;
         d=google.com; s=arc-20160816;
-        b=KxiOURCbaAdaJZ+LeGGqr0Hnjn5cLWcEXK+qIVZauMG4Eirp3p8w6R7LHNhIHA2Rk6
-         Xr3b/qiHk2zYfqkhbYkwq5uCOCJUEvDTCCzrSHZ2LKIpf3KhjLPh5usdTckCwBId8fO/
-         oJCn7BkU/sV28A81zcmPj/vXGMqehor6jv6WJRb2DvCTsawe5Fg7dJNMGwhKSjk8C9zx
-         Fuj+oFmtHgo3JAKQ9Xni72rvxIOeKsso08xyhH2kZHMNuYY5tJjjh0wndb+t+ug4UdPM
-         cUXdtZjkpjy6qV/4Wgyay5ntiWdRS3kZ559v7OwBsiaD1i+Ros+jmd+yH4CuwnyCndZH
-         MCWQ==
+        b=GTGedVWRSqfhzI+nnX7ex2VUkvwRCySQ+y5uhPg/TMzqBYrmAWlrcI1mtRZzuS27zY
+         3um3LPs9GdIP8YHszMXzHjVrBKvTH/TmcBMU483yvmj32c7Q745f3QRu5M1YZFT8iPKa
+         a0qsNEgUNcikvekheeXTeeRgx6icktgMaB0sPTEnk3rVtoxJVwlg9VpHz4ewgVI3SRnT
+         xH3KHNsIdknzixsXJE4cKnRhssMa0whIN2SG/MO/9dDvY/MyBD0fKuynBle+WZULGvSU
+         T0vm+KaieZa9uU7g3UDHiucwF/i7cBXa3KvnocLTusvVg46cX/ddITh/ZMSwHoEizoZQ
+         vVVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=SpqaCFk4RGXQOGp0t6Oqrm/YZpYrp9qY1NBjwvsxqIs=;
+        bh=OcLFKisrvdsUnoI6kjiP3anO/6zUJnpkUfqLjcRmuyA=;
         fh=46wv1No7OOLuZCRbeGSaV31Ktmo6cwaISz6jgi4/xrY=;
-        b=vHIpUqPRkd+cMCps1HTpjEsJtUZUWTTcWMnHaQu7D0GNIIxxHxqYhRFpzDr06PFd8L
-         69liq268uaI23ePqWX2O7ZpnNIkFE86U4i6v5syZpYN3heiixohbSc3kg1xr4OVGVesD
-         Leqn3SG72BBKchf+IcApDV9C5c8R23JZPS/cQMfUYlpu2dhUVkP56c55cT5H1OZ2DDx0
-         wiRkYknp6HHsHRXf6DzV6Cv6ljhHe84q7qvyK+FmiJvxLpG64Z4ATteukEtz0kqphEej
-         hwgBQIFXMsjSmNezQsaUvbjo71FMq+qVUe2sOE8a8Sr8NXYuUo49vCefbBtLJh9V2iBt
-         TedA==
+        b=yAf2YMz7/Y1Gj93L0YODBSg5bVRNc3kWxADHfDPLmCLn3F3lynZ3c/bQIBYxUxOHTL
+         fQCuBOSEP7fJB9Oj8QSVcL7JXWBa5xvZRaICn9y1NvGIWPhFRLyzf/kQt3dYrWWVuzEY
+         JwS3ixxBEWtOBYi/yGYKNnDzKZdr9MzPKzn6ZZBslzDGViTa0oTQDq0aNwOh1hHtcvdY
+         3D0esJpwc3IFayzFrCilqlW6JAabq3m9ufTLC3XEYvZZnhZBTA4cIE+Dm1PTA1iYE+gp
+         nurGvVg/7nTQmBPq0jGm0iREfAxqAT3VvOt3fP4nu6cvCD1nUHQ0F+t972JYM8oaieAi
+         zAqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e6Uann5r;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b46FgVv4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z18-20020a05622a061200b00417cd1d2a6bsi7434663qta.136.2023.10.10.00.39.54
+        by mx.google.com with ESMTPS id b7-20020a0cf047000000b0064188f9b3d0si7274671qvl.188.2023.10.10.00.40.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 00:39:54 -0700 (PDT)
+        Tue, 10 Oct 2023 00:40:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e6Uann5r;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b46FgVv4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qq7KR-0000JU-M3; Tue, 10 Oct 2023 03:38:55 -0400
+	id 1qq7L9-0001iD-1p; Tue, 10 Oct 2023 03:39:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qq7KQ-0000JC-L0
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 03:38:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1qq7L7-0001YX-Pq
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 03:39:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qq7KO-0001dw-MY
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 03:38:54 -0400
+ id 1qq7L6-0001ph-8v
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 03:39:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696923532;
+ s=mimecast20190719; t=1696923574;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SpqaCFk4RGXQOGp0t6Oqrm/YZpYrp9qY1NBjwvsxqIs=;
- b=e6Uann5rzKKfHMsm7v2aQOgJ2qHYuRTE8JCHN2+fJHODXEph9BckZ8cBPHfFi8fMTyb93Z
- iRPM+bIuYkqC3IXwDhyxcNUPWP8QUrzq63cszdinNcRnDtN663KrjWBtl9LtLrLbORY4rh
- bqfmC4MNJgm5Cb6zCGn3HuFvldovqMM=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-447-69BV7YhUNUC-RvfyNtU1ww-1; Tue, 10 Oct 2023 03:38:48 -0400
-X-MC-Unique: 69BV7YhUNUC-RvfyNtU1ww-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
+ bh=OcLFKisrvdsUnoI6kjiP3anO/6zUJnpkUfqLjcRmuyA=;
+ b=b46FgVv4Bj53hnrncNLR261+VSUf2HdeL0YwfUNYf495aCb/pFYMHOkNtY4LLOdwYWmP61
+ vAbWAcuV0z5aaK3Tj+ymMawVndF/o8Fp+y72fJ6Lkd0wxSyX2Zd0nAL/HWrJopa3Yilg8x
+ BXjfEzXm1Njo36gT63LKV8NETuh+GvM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-42-f4yctnwrOnuBGSXEIrcY9Q-1; Tue, 10 Oct 2023 03:39:26 -0400
+X-MC-Unique: f4yctnwrOnuBGSXEIrcY9Q-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EDE792825E86;
- Tue, 10 Oct 2023 07:38:47 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 840EA802C1A;
+ Tue, 10 Oct 2023 07:39:25 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.4])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AD6BD215670B;
- Tue, 10 Oct 2023 07:38:46 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 68D21C154CE;
+ Tue, 10 Oct 2023 07:39:24 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: Eric Blake <eblake@redhat.com>, qemu-arm@nongnu.org,
@@ -89,16 +89,16 @@ Cc: Eric Blake <eblake@redhat.com>, qemu-arm@nongnu.org,
  Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v3 03/18] ui: add pixman-compat.h
-Date: Tue, 10 Oct 2023 11:38:15 +0400
-Message-ID: <20231010073830.606570-4-marcandre.lureau@redhat.com>
+Subject: [PATCH v3 12/18] ui/spice: SPICE/QXL requires PIXMAN
+Date: Tue, 10 Oct 2023 11:38:24 +0400
+Message-ID: <20231010073830.606570-13-marcandre.lureau@redhat.com>
 In-Reply-To: <20231010073830.606570-1-marcandre.lureau@redhat.com>
 References: <20231010073830.606570-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124;
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -106,7 +106,7 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -122,236 +122,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: v2qwINr+aG34
+X-TUID: PiUhbmh4s/8y
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-This is a tiny subset of PIXMAN API that is used pervasively in QEMU
-codebase to manage images and identify the underlying format.
-
-It doesn't seems worth to wrap this in a QEMU-specific API.
-
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/ui/pixman-compat.h | 195 +++++++++++++++++++++++++++++++++++++
- include/ui/qemu-pixman.h   |   2 +
- 2 files changed, 197 insertions(+)
- create mode 100644 include/ui/pixman-compat.h
+ meson.build        |  6 +++++-
+ hw/display/Kconfig |  2 +-
+ ui/meson.build     | 10 +++++-----
+ 3 files changed, 11 insertions(+), 7 deletions(-)
 
-diff --git a/include/ui/pixman-compat.h b/include/ui/pixman-compat.h
-new file mode 100644
-index 0000000000..91590b4e4c
---- /dev/null
-+++ b/include/ui/pixman-compat.h
-@@ -0,0 +1,195 @@
-+/*
-+ * SPDX-License-Identifier: MIT
-+ *
-+ * Tiny subset of PIXMAN API commonly used by QEMU.
-+ *
-+ * Copyright 1987, 1988, 1989, 1998  The Open Group
-+ * Copyright 1987, 1988, 1989 Digital Equipment Corporation
-+ * Copyright 1999, 2004, 2008 Keith Packard
-+ * Copyright 2000 SuSE, Inc.
-+ * Copyright 2000 Keith Packard, member of The XFree86 Project, Inc.
-+ * Copyright 2004, 2005, 2007, 2008, 2009, 2010 Red Hat, Inc.
-+ * Copyright 2004 Nicholas Miell
-+ * Copyright 2005 Lars Knoll & Zack Rusin, Trolltech
-+ * Copyright 2005 Trolltech AS
-+ * Copyright 2007 Luca Barbato
-+ * Copyright 2008 Aaron Plattner, NVIDIA Corporation
-+ * Copyright 2008 Rodrigo Kumpera
-+ * Copyright 2008 André Tupinambá
-+ * Copyright 2008 Mozilla Corporation
-+ * Copyright 2008 Frederic Plourde
-+ * Copyright 2009, Oracle and/or its affiliates. All rights reserved.
-+ * Copyright 2009, 2010 Nokia Corporation
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a
-+ * copy of this software and associated documentation files (the "Software"),
-+ * to deal in the Software without restriction, including without limitation
-+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
-+ * and/or sell copies of the Software, and to permit persons to whom the
-+ * Software is furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice (including the next
-+ * paragraph) shall be included in all copies or substantial portions of the
-+ * Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-+ * DEALINGS IN THE SOFTWARE.
-+ */
-+
-+#ifndef PIXMAN_COMPAT_H
-+#define PIXMAN_COMPAT_H
-+
-+#define PIXMAN_TYPE_OTHER       0
-+#define PIXMAN_TYPE_ARGB        2
-+#define PIXMAN_TYPE_ABGR        3
-+#define PIXMAN_TYPE_BGRA        8
-+#define PIXMAN_TYPE_RGBA        9
-+
-+#define PIXMAN_FORMAT(bpp,type,a,r,g,b) (((bpp) << 24) |  \
-+                                         ((type) << 16) | \
-+                                         ((a) << 12) |    \
-+                                         ((r) << 8) |     \
-+                                         ((g) << 4) |     \
-+                                         ((b)))
-+
-+#define PIXMAN_FORMAT_RESHIFT(val, ofs, num)                            \
-+        (((val >> (ofs)) & ((1 << (num)) - 1)) << ((val >> 22) & 3))
-+
-+#define PIXMAN_FORMAT_BPP(f)    PIXMAN_FORMAT_RESHIFT(f, 24, 8)
-+#define PIXMAN_FORMAT_TYPE(f)   (((f) >> 16) & 0x3f)
-+#define PIXMAN_FORMAT_A(f)      PIXMAN_FORMAT_RESHIFT(f, 12, 4)
-+#define PIXMAN_FORMAT_R(f)      PIXMAN_FORMAT_RESHIFT(f, 8, 4)
-+#define PIXMAN_FORMAT_G(f)      PIXMAN_FORMAT_RESHIFT(f, 4, 4)
-+#define PIXMAN_FORMAT_B(f)      PIXMAN_FORMAT_RESHIFT(f, 0, 4)
-+#define PIXMAN_FORMAT_DEPTH(f)  (PIXMAN_FORMAT_A(f) +   \
-+                                 PIXMAN_FORMAT_R(f) +   \
-+                                 PIXMAN_FORMAT_G(f) +   \
-+                                 PIXMAN_FORMAT_B(f))
-+
-+typedef enum {
-+    /* 32bpp formats */
-+    PIXMAN_a8r8g8b8 =    PIXMAN_FORMAT(32,PIXMAN_TYPE_ARGB,8,8,8,8),
-+    PIXMAN_x8r8g8b8 =    PIXMAN_FORMAT(32,PIXMAN_TYPE_ARGB,0,8,8,8),
-+    PIXMAN_a8b8g8r8 =    PIXMAN_FORMAT(32,PIXMAN_TYPE_ABGR,8,8,8,8),
-+    PIXMAN_x8b8g8r8 =    PIXMAN_FORMAT(32,PIXMAN_TYPE_ABGR,0,8,8,8),
-+    PIXMAN_b8g8r8a8 =    PIXMAN_FORMAT(32,PIXMAN_TYPE_BGRA,8,8,8,8),
-+    PIXMAN_b8g8r8x8 =    PIXMAN_FORMAT(32,PIXMAN_TYPE_BGRA,0,8,8,8),
-+    PIXMAN_r8g8b8a8 =    PIXMAN_FORMAT(32,PIXMAN_TYPE_RGBA,8,8,8,8),
-+    PIXMAN_r8g8b8x8 =    PIXMAN_FORMAT(32,PIXMAN_TYPE_RGBA,0,8,8,8),
-+    /* 24bpp formats */
-+    PIXMAN_r8g8b8 =      PIXMAN_FORMAT(24,PIXMAN_TYPE_ARGB,0,8,8,8),
-+    PIXMAN_b8g8r8 =      PIXMAN_FORMAT(24,PIXMAN_TYPE_ABGR,0,8,8,8),
-+    /* 16bpp formats */
-+    PIXMAN_r5g6b5 =      PIXMAN_FORMAT(16,PIXMAN_TYPE_ARGB,0,5,6,5),
-+    PIXMAN_a1r5g5b5 =    PIXMAN_FORMAT(16,PIXMAN_TYPE_ARGB,1,5,5,5),
-+    PIXMAN_x1r5g5b5 =    PIXMAN_FORMAT(16,PIXMAN_TYPE_ARGB,0,5,5,5),
-+} pixman_format_code_t;
-+
-+typedef struct pixman_image pixman_image_t;
-+
-+typedef void (* pixman_image_destroy_func_t)(pixman_image_t *image, void *data);
-+
-+struct pixman_image {
-+    int ref_count;
-+    pixman_format_code_t format;
-+    int width;
-+    int height;
-+    int stride;
-+    uint32_t *data;
-+    uint32_t *free_me;
-+    pixman_image_destroy_func_t destroy_func;
-+    void *destroy_data;
-+};
-+
-+typedef struct pixman_color {
-+    uint16_t    red;
-+    uint16_t    green;
-+    uint16_t    blue;
-+    uint16_t    alpha;
-+} pixman_color_t;
-+
-+static inline pixman_image_t *pixman_image_create_bits(pixman_format_code_t format,
-+                                                       int width,
-+                                                       int height,
-+                                                       uint32_t *bits,
-+                                                       int rowstride_bytes)
-+{
-+    pixman_image_t *i = g_new0(pixman_image_t, 1);
-+
-+    i->width = width;
-+    i->height = height;
-+    i->stride = rowstride_bytes ?: width * DIV_ROUND_UP(PIXMAN_FORMAT_BPP(format), 8);
-+    i->format = format;
-+    if (bits) {
-+        i->data = bits;
-+    } else {
-+        i->free_me = i->data = g_malloc0(rowstride_bytes * height);
-+    }
-+    i->ref_count = 1;
-+
-+    return i;
-+}
-+
-+static inline pixman_image_t *pixman_image_ref(pixman_image_t *i)
-+{
-+    i->ref_count++;
-+    return i;
-+}
-+
-+static inline bool pixman_image_unref(pixman_image_t *i)
-+{
-+    i->ref_count--;
-+
-+    if (i->ref_count == 0) {
-+        if (i->destroy_func) {
-+            i->destroy_func(i, i->destroy_data);
-+        }
-+        g_free(i->free_me);
-+        g_free(i);
-+
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
-+static inline void pixman_image_set_destroy_function(pixman_image_t *i,
-+                                                     pixman_image_destroy_func_t func,
-+                                                     void *data)
-+
-+{
-+    i->destroy_func = func;
-+    i->destroy_data = data;
-+}
-+
-+static inline uint32_t* pixman_image_get_data(pixman_image_t *i)
-+{
-+    return i->data;
-+}
-+
-+static inline int pixman_image_get_height(pixman_image_t *i)
-+{
-+    return i->height;
-+}
-+
-+static inline int pixman_image_get_width(pixman_image_t *i)
-+{
-+    return i->width;
-+}
-+
-+static inline int pixman_image_get_stride(pixman_image_t *i)
-+{
-+    return i->stride;
-+}
-+
-+static inline pixman_format_code_t pixman_image_get_format(pixman_image_t *i)
-+{
-+    return i->format;
-+}
-+
-+#endif /* PIXMAN_COMPAT_H */
-diff --git a/include/ui/qemu-pixman.h b/include/ui/qemu-pixman.h
-index 2ff6c4a656..de303d7654 100644
---- a/include/ui/qemu-pixman.h
-+++ b/include/ui/qemu-pixman.h
-@@ -12,6 +12,8 @@
- #pragma GCC diagnostic ignored "-Wredundant-decls"
- #include <pixman.h>
- #pragma GCC diagnostic pop
-+#else
-+#include "pixman-compat.h"
- #endif
+diff --git a/meson.build b/meson.build
+index 291c2f1301..a84a2f25d0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1015,7 +1015,11 @@ if not get_option('spice_protocol').auto() or have_system
+                               method: 'pkg-config')
+ endif
+ spice = not_found
+-if not get_option('spice').auto() or have_system
++if get_option('spice') \
++             .disable_auto_if(not have_system) \
++             .require(pixman.found(),
++                      error_message: 'cannot enable SPICE if pixman is not available') \
++             .allowed()
+   spice = dependency('spice-server', version: '>=0.14.0',
+                      required: get_option('spice'),
+                      method: 'pkg-config')
+diff --git a/hw/display/Kconfig b/hw/display/Kconfig
+index 7b3da68d1c..4d8b0cec40 100644
+--- a/hw/display/Kconfig
++++ b/hw/display/Kconfig
+@@ -93,7 +93,7 @@ config VGA
  
- /*
+ config QXL
+     bool
+-    depends on SPICE && PCI
++    depends on SPICE && PCI && PIXMAN
+     select VGA
+ 
+ config VIRTIO_GPU
+diff --git a/ui/meson.build b/ui/meson.build
+index b3525ef064..7f806a6d48 100644
+--- a/ui/meson.build
++++ b/ui/meson.build
+@@ -141,12 +141,12 @@ if spice.found()
+     'spice-display.c'
+   ))
+   ui_modules += {'spice-core' : spice_core_ss}
+-endif
+ 
+-if spice.found() and gio.found()
+-  spice_ss = ss.source_set()
+-  spice_ss.add(spice, gio, pixman, files('spice-app.c'))
+-  ui_modules += {'spice-app': spice_ss}
++  if gio.found()
++    spice_ss = ss.source_set()
++    spice_ss.add(spice, gio, pixman, files('spice-app.c'))
++    ui_modules += {'spice-app': spice_ss}
++  endif
+ endif
+ 
+ keymaps = [
 -- 
 2.41.0
 

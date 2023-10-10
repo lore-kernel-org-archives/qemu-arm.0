@@ -1,109 +1,146 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp2964ejr;
-        Tue, 10 Oct 2023 02:38:26 -0700 (PDT)
-X-Received: by 2002:a05:6870:fb8f:b0:1bf:1a38:283b with SMTP id kv15-20020a056870fb8f00b001bf1a38283bmr20928509oab.9.1696930706139;
-        Tue, 10 Oct 2023 02:38:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696930706; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp6668ejr;
+        Tue, 10 Oct 2023 02:47:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG6ifn+ApfPiO1+y6bgZlQt6cB4dpuQVXEkz8MU4J5BVPmNK4wGZWizJcvzLB4Px+bcpYK8
+X-Received: by 2002:a25:8a0d:0:b0:d91:6d2e:6f17 with SMTP id g13-20020a258a0d000000b00d916d2e6f17mr14806014ybl.54.1696931254664;
+        Tue, 10 Oct 2023 02:47:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696931254; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZnThufk47rkLg/gDfKJToeai51AcGVzjwMH28mGIL5u1juG+H3pON7M5i8D0HenUiK
-         k8/HSmQwFq9iCIX8fmCpbo5QmP/aKwjhuzXk+DJqmOzjWw2yT0/T9b92R3G8GkJReslp
-         hda4zJ2VzOw85cE/LWzTzgtKThkkec4CRUar9HVC4r0TcoOnO06BTZ9eL91nHs/C4DTe
-         Z4ObQRF66OsLsN+DMuCz2/eKBEgEPayMEpYfIRbv3z2pxEnXo+mPyYwOb5FFP2fuoBb0
-         9/y0FWOPnSh0SdTwucswa9YzhhbLZDoztmR/TgvvDkj73NRhYqiFhkGc217W1IHMlgZG
-         5MIQ==
+        b=M36sLWlf+krhZ88ZGeo0cUA36RvK78jtl8bZFuvXYIj1445pCkW28bPUSl2Qp6tPI6
+         YsDlZo5CaUyukUpAjsKtjuY29GUUNaokvFPi/FT2MGDhcuUkrTHcxJOawTkqafZ3v536
+         5LxMqZoK+I8dPsBC9Q/K12gkC/Vbyx9DHg83cAI0FsOFyD4KNNFlbrGMPYnRq2nfZC7Q
+         NPOEvrzog8ns50EHjYvmPrSWjmuhlzXEZgLHCxV3oVI8JwkLPxBHoSvoRvY5Buf3PFT/
+         Mhv372qCr/Cx7rNcLo2n7pNsS/WfJvZCYrJ/POhRjmDW8UwC5+2l0jGOF4zr9d6WppIz
+         1qAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=HoAO4MU3+HX/pu5nZVUw6NryiBkQ92zJRW3EbT9zs2M=;
-        fh=9PxMPZdVNxY5Pjb2mL9IWu5a/nL69N54g8iecvJMhvg=;
-        b=ZSI8NyAEJIvxugrj4J81VMd3QHpZrWQs2/XZ/J7jA646Qg36Y/YNvl6qYCW8J67d0k
-         aY18f1hrZ++YQY7YPmW272AiFc9F0zmuQ7Mk2rcvOLg8W0Rau7h6HHOZo9YmAQ6hxf+V
-         zGUejDV4EV7ygNj0Ikpm5KKTj8lO7uYsGH8mOk6Ak96fuExvFsOQBuuHp9FddemxIzHv
-         /1pZe4ikKfIVN9OUoirxWjfwKNZnpmS1GoYMbtLX5Co/gKVgoXmmJ2ves767n+Rdn9GV
-         JGyJjzfZCfKV9h23iS9uMsv/Lp6k9sh+9yY/LfKQb9cRuLAokyGvhJNYUim+epfB1v6M
-         GQMg==
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=ii/ZDrVhsuyEXrVrosXCGvbbwBhMJkVjbHUw7FNxbtE=;
+        fh=/pdPzogfhCz23RUGV4EEc/6gj69MJ9DQEIaWDTG0+nk=;
+        b=gVD8V/D1ch/oomRd0sN2q3wGbbjq9/lxZhwOBEGYLSmZqo0bKXy5msP1GRBqpDdXhZ
+         YljdPdFC48QXNXa7VMwTaaUyPvlMRnAX1wN5BuxhEycX5IKOqV3gxEejjIaEf38lPK0Y
+         uVZlwnPKv/TXEyQ5Hxt/D3zh93eFaQ7wYDK66LPFy3GFsMPAKx/D7toqK+CWOgZqDVGi
+         UT5/XBW6pTNs0Ap3QGrwxxr+rPjg/DxnDWlwPb9adGZa9fUt3GP2s1QkrMU/RydAOE+6
+         s4EEBQsEa3OHEpZRRDYxRSFTLMVJ0wsnXHaQUMbisEjr4llYlOdthW0dHf6hmKJ47nDP
+         uczg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=gn6Qo0JY;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v13-20020aa799cd000000b0068ff049a543sor5851900pfi.6.2023.10.10.02.38.25
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 10 Oct 2023 02:38:26 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id c6-20020a633506000000b00584a4a5be67si11815954pga.520.2023.10.10.02.47.33
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Oct 2023 02:47:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=gn6Qo0JY;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1696930705; x=1697535505; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=HoAO4MU3+HX/pu5nZVUw6NryiBkQ92zJRW3EbT9zs2M=;
-        b=gn6Qo0JY5bEXK0+5/Y+etH5tOtKxk67G4GyxbMlpbLr3dRrRcizx5wYQ5tYkS0QpdM
-         RfIupDzHxkDsRY1kSIBw+MiIsmoe8m/zp3Td3qF1SNApJATA9uaml+mwsnMlolCtw8XA
-         nYUvDAk3fWFnvkzp82sjyndKdsz6wJkr8Azt0tOnzTMbSgYv3Qenv7aOd0TFp3JzQBjR
-         5CafRAF0KvarmOLSTQhSYvBxfcmrXes//zJdOWDThGiZSuPpED9JAd0hNirqMM1bY70J
-         LvebP1mlop4hYSsnd656JdLZr7Pa1neA8XVrIiaoaw87wWXhMV4u2LEZHV8fH1UmcoMh
-         j1BA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696930705; x=1697535505;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HoAO4MU3+HX/pu5nZVUw6NryiBkQ92zJRW3EbT9zs2M=;
-        b=g2cDEGAste4HcoUorxf+xttO1STem6MTF4BYaFSWOHMd3SUWzSgAhKD3CsF31mFZlk
-         i2P9JYuHBE9PXU0ii44WYZBvYuYOSNWvjFOtnBRkybiET13yh8AyHYSoWdN58RIqw1Wf
-         sRjqWy5spjlIwnPKZpGPnkPAFvFT8/4GSQinR48fk9ww+ZkwqSB7lzXcgXv3HSDCNWUD
-         20NqmPvmb/DLx2wkkTI/UO2aDUouzw5qVnehBqsQ7jDo+e3NKo0O6/hL/U8zC85EeA5D
-         AzqSc0wtFPZ5GB0ssxRRjAA1votAq+FU7ghNgfAGP6/JfvjyEK6XzQShwtwToLRj3xmZ
-         B2zg==
-X-Gm-Message-State: AOJu0Yx7Gyg5ytsOAHyzIvgEmuftzRASmofY3wNvqWIU/R378PO59WJe
-	j+3pUfOSrXgX2V4F+KYW5enBpw==
-X-Google-Smtp-Source: AGHT+IFLaMgQENjLvJkfk7pzKNhxG7HGIKa0urAQS112N7v4/1GLtegSoR+l/iVqe08cbr+zzgP60w==
-X-Received: by 2002:a05:6a20:ce8f:b0:152:cb38:5b47 with SMTP id if15-20020a056a20ce8f00b00152cb385b47mr17028892pzb.55.1696930705544;
-        Tue, 10 Oct 2023 02:38:25 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from [157.82.206.10] ([157.82.206.10])
-        by smtp.gmail.com with ESMTPSA id it9-20020a056a00458900b0069346777241sm8066145pfb.97.2023.10.10.02.38.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Oct 2023 02:38:24 -0700 (PDT)
-Message-ID: <ab7ffc78-fe3d-4e99-b3c6-e66f7b0c7e18@daynix.com>
-Date: Tue, 10 Oct 2023 18:38:15 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] tests/qtest: Use qtest_get_base_arch()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-ppc@nongnu.org, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, qemu-block@nongnu.org, John Snow <jsnow@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Fam Zheng <fam@euphon.net>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
- Bandan Das <bsd@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Darren Kenny <darren.kenny@oracle.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, Jeuk Kim
- <jeuk20.kim@samsung.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Amit Shah <amit@kernel.org>
-References: <20231010074952.79165-1-philmd@linaro.org>
- <20231010074952.79165-5-philmd@linaro.org>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from lhrpeml100001.china.huawei.com (unknown [172.18.147.207])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S4WFn1191z6J9NZ;
+	Tue, 10 Oct 2023 17:44:29 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ lhrpeml100001.china.huawei.com (7.191.160.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Tue, 10 Oct 2023 10:47:28 +0100
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
+ Tue, 10 Oct 2023 10:47:28 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Shaoqin Huang <shahuang@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
+	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
+	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
+	<will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
+	<pbonzini@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "gshan@redhat.com"
+	<gshan@redhat.com>, "rafael@kernel.org" <rafael@kernel.org>,
+	"borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "linux@armlinux.org.uk"
+	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
+	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
+	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
+	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
+	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
+	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian
+	<zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
+	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com"
+	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
+	"lixianglai@loongson.cn" <lixianglai@loongson.cn>
+Subject: RE: [PATCH RFC V2 03/37] hw/arm/virt: Move setting of common CPU
+ properties in a function
+Thread-Topic: [PATCH RFC V2 03/37] hw/arm/virt: Move setting of common CPU
+ properties in a function
+Thread-Index: AQHZ8GEaEyUsIrH+KUCDDRLt+0W0MrBCmYeAgAA5DPA=
+Date: Tue, 10 Oct 2023 09:47:28 +0000
+Message-ID: <1aa6ddfdb874451a9446d1e6347f60c0@huawei.com>
+References: <20230926100436.28284-1-salil.mehta@huawei.com>
+ <20230926100436.28284-4-salil.mehta@huawei.com>
+ <3632ee24-47f7-ae68-8790-26eb2cf9950b@redhat.com>
+In-Reply-To: <3632ee24-47f7-ae68-8790-26eb2cf9950b@redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20231010074952.79165-5-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: ojFvOo0JTXqn
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.126.174.234]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-TUID: iyA7NoVGdnzs
 
-On 2023/10/10 16:49, Philippe Mathieu-Daudé wrote:
-> Additionally use qtest_get_arch_bits() when relevant.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+SGkgU2hhb3FpbiwNCg0KPiBGcm9tOiBTaGFvcWluIEh1YW5nIDxzaGFodWFuZ0ByZWRoYXQuY29t
+Pg0KPiBTZW50OiBUdWVzZGF5LCBPY3RvYmVyIDEwLCAyMDIzIDc6NDcgQU0NCj4gDQo+IE9uIDkv
+MjYvMjMgMTg6MDQsIFNhbGlsIE1laHRhIHZpYSB3cm90ZToNCj4gPiBGYWN0b3Igb3V0IENQVSBw
+cm9wZXJ0aWVzIGNvZGUgY29tbW9uIGZvciB7aG90LGNvbGR9LXBsdWdnZWQgQ1BVcy4gVGhpcyBh
+bGxvd3MNCj4gPiBjb2RlIHJldXNlLg0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogU2FsaWwgTWVo
+dGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+ID4gLS0tDQo+ID4gICBody9hcm0vdmlydC5j
+ICAgICAgICAgfCAyMjAgKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0t
+DQo+ID4gICBpbmNsdWRlL2h3L2FybS92aXJ0LmggfCAgIDQgKw0KPiA+ICAgMiBmaWxlcyBjaGFu
+Z2VkLCAxNDAgaW5zZXJ0aW9ucygrKSwgODQgZGVsZXRpb25zKC0pDQo+ID4NCj4gPiBkaWZmIC0t
+Z2l0IGEvaHcvYXJtL3ZpcnQuYyBiL2h3L2FybS92aXJ0LmMNCj4gPiBpbmRleCA1N2ZlOTdjMjQy
+Li4wZWI2YmY1YTE4IDEwMDY0NA0KPiA+IC0tLSBhL2h3L2FybS92aXJ0LmMNCj4gPiArKysgYi9o
+dy9hcm0vdmlydC5jDQo+ID4gQEAgLTIwMTgsMTYgKzIwMTgsMTMwIEBAIHN0YXRpYyB2b2lkIHZp
+cnRfY3B1X3Bvc3RfaW5pdChWaXJ0TWFjaGluZVN0YXRlDQo+ICp2bXMsIE1lbW9yeVJlZ2lvbiAq
+c3lzbWVtKQ0KPiA+ICAgICAgIH0NCj4gPiAgIH0NCj4gPg0KPiA+ICtzdGF0aWMgdm9pZCB2aXJ0
+X2NwdV9zZXRfcHJvcGVydGllcyhPYmplY3QgKmNwdW9iaiwgY29uc3QgQ1BVQXJjaElkDQo+ICpj
+cHVfc2xvdCwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRXJyb3Ig
+KiplcnJwKQ0KPiA+ICt7DQo+IA0KPiBIaSBTYWxpbCwNCj4gDQo+IFRoaXMgcGF0Y2ggc2VlbXMg
+YnJlYWsgdGhlIGNvZGUsIHRoZSB2aXJ0X2NwdV9zZXRfcHJvcGVydGllcygpIGZ1bmN0aW9uDQo+
+IGJlaW5nIGRlZmluZWQgYnV0IG5vdCB1c2VkIGluIHRoaXMgcGF0Y2gsIHNvIHRob3NlIG9yaWdp
+bmFsIGNvZGUgaW4gdGhlDQo+IG1hY2h2aXJ0X2luaXQoKSBqdXN0IG5vdCB3b3JrLg0KDQoNCkdv
+b2QgY2F0Y2guIA0KDQpCVFcsIHRoZSBjaGFuZ2UgaW4gdGhpcyBwYXRjaCBpcyBpbnRlbnRpb25h
+bCBhcyBJIHdhbnRlZCB0byBjbGVhcmx5IHNob3cNCnRoZSBtb3ZlLiBCdXQgSSB3aWxsIGZpeCB0
+aGUgY29tcGlsYXRpb24gYnJlYWsgaW4gdGhpcyBwYXRjaCB3aXRoIHNvbWUNCnRyaWNrLg0KDQpU
+aGFua3MgZm9yIGlkZW50aWZ5aW5nIQ0KU2FsaWwuDQoNCg0KPiBXZSBzaG91bGQgdXNlIHRoaXMg
+ZnVuY3Rpb24gaW4gdGhlIG1hY2h2aXJ0X2luaXQoKS4NCj4gDQo+ID4gKyAgICBNYWNoaW5lU3Rh
+dGUgKm1zID0gTUFDSElORShxZGV2X2dldF9tYWNoaW5lKCkpOw0KPiA+ICsgICAgVmlydE1hY2hp
+bmVTdGF0ZSAqdm1zID0gVklSVF9NQUNISU5FKG1zKTsNCj4gPiArICAgIEVycm9yICpsb2NhbF9l
+cnIgPSBOVUxMOw0KPiA+ICsgICAgVmlydE1hY2hpbmVDbGFzcyAqdm1jOw0KPiA+ICsNCj4gPiAr
+ICAgIHZtYyA9IFZJUlRfTUFDSElORV9HRVRfQ0xBU1MobXMpOw0KPiA+ICsNCj4gPiArICAgIC8q
+IG5vdywgc2V0IHRoZSBjcHUgb2JqZWN0IHByb3BlcnR5IHZhbHVlcyAqLw0KPiA+ICsgICAgbnVt
+YV9jcHVfcHJlX3BsdWcoY3B1X3Nsb3QsIERFVklDRShjcHVvYmopLCAmbG9jYWxfZXJyKTsNCj4g
+PiArICAgIGlmIChsb2NhbF9lcnIpIHsNCj4gPiArICAgICAgICBnb3RvIG91dDsNCj4gPiArICAg
+IH0NCj4gPiArDQo+ID4gKyAgICBvYmplY3RfcHJvcGVydHlfc2V0X2ludChjcHVvYmosICJtcC1h
+ZmZpbml0eSIsIGNwdV9zbG90LT5hcmNoX2lkLCBOVUxMKTsNCj4gPiArDQoNClsuLi5dDQoNCj4g
+PiArICAgIC8qDQo+ID4gKyAgICAgKiBSRkM6IFF1ZXN0aW9uOiB0aGlzIG11c3Qgb25seSBiZSBj
+YWxsZWQgZm9yIHRoZSBob3RwbHVnZ2VkIGNwdXMuIEZvciB0aGUNCj4gPiArICAgICAqIGNvbGQg
+Ym9vdGVkIHNlY29uZGFyeSBjcHVzIHRoaXMgaXMgYmVpbmcgdGFrZW4gY2FyZSBpbiBhcm1fbG9h
+ZF9rZXJuZWwoKQ0KPiA+ICsgICAgICogaW4gYm9vdC5jLiBQZXJoYXBzIHdlIHNob3VsZCByZW1v
+dmUgdGhhdCBjb2RlIG5vdz8NCj4gPiArICAgICAqLw0KPiA+ICsgICAgaWYgKHZtcy0+cHNjaV9j
+b25kdWl0ICE9IFFFTVVfUFNDSV9DT05EVUlUX0RJU0FCTEVEKSB7DQo+ID4gKyAgICAgICAgb2Jq
+ZWN0X3Byb3BlcnR5X3NldF9pbnQoY3B1b2JqLCAicHNjaS1jb25kdWl0Iiwgdm1zLT5wc2NpX2Nv
+bmR1aXQsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgTlVMTCk7DQo+ID4g
+Kw0KPiA+ICsgICAgICAgIC8qIFNlY29uZGFyeSBDUFVzIHN0YXJ0IGluIFBTQ0kgcG93ZXJlZC1k
+b3duIHN0YXRlICovDQo+ID4gKyAgICAgICAgaWYgKENQVShjcHVvYmopLT5jcHVfaW5kZXggPiAw
+KSB7DQo+ID4gKyAgICAgICAgICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfYm9vbChjcHVvYmosICJz
+dGFydC1wb3dlcmVkLW9mZiIsIHRydWUsIE5VTEwpOw0KPiA+ICsgICAgICAgIH0NCj4gPiArICAg
+IH0NCj4gDQo+IEJlc2lkZXMsIGlmIHRoaXMgcGF0Y2ggaXMganVzdCBmYWN0b3Igb3V0IHRoZSBj
+b2RlLCB3ZSBjb3VsZCBtb3ZlIHRoZQ0KPiBjaGVjayBwc2NpX2NvbmR1aXQgdG8gbGF0ZXIgcGF0
+Y2gsIGFuZCBrZWVwIHRoaXMgcGF0Y2ggY2xlYW4uDQoNCkkgZG8gbm90IHNlZSB0aGUgcmVhc29u
+IHdoeSB3ZSBzaG91bGQgZG8gdGhhdD8NCg0KDQpUaGFua3MNClNhbGlsLg0KDQoNCg==

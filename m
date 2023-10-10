@@ -1,226 +1,217 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp402314ejr;
-        Tue, 10 Oct 2023 13:36:14 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH/jtpLEXnKiepLy8dinpnPF6XJ8fVkNni3gO3hHgDglQyFm5aAvExpelZffJD4fxOUZBfS
-X-Received: by 2002:ac8:7f81:0:b0:419:5b97:2fbb with SMTP id z1-20020ac87f81000000b004195b972fbbmr21433729qtj.34.1696970174451;
-        Tue, 10 Oct 2023 13:36:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696970174; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp404773ejr;
+        Tue, 10 Oct 2023 13:41:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHQ1VvQ+CvrHxlhYgHK81dxJfXYUoIKhyLrMU+HCS5yZ1GYatL+/6xKuKXMBDJxrgWNE7bN
+X-Received: by 2002:ac8:5981:0:b0:418:1194:42f6 with SMTP id e1-20020ac85981000000b00418119442f6mr22830701qte.31.1696970509391;
+        Tue, 10 Oct 2023 13:41:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696970509; cv=none;
         d=google.com; s=arc-20160816;
-        b=B9H39JaXzlSIyFe1CTef9Ojs1td+c5ilGTW0rpmY+6cmQDVXXlBmkGUOQ8t+OfFXcr
-         uj2UKD1v8aeK/rItTILilavb2KLOzZkgrdqyFqUu2XnFBfI/nhnZGQhH6lsj586qOftx
-         H7XF60nTDL2WP9NpD6a3ranW8E4NNUwKwS0g5Li//uqsHJmbrnZ21FWbpwidUadeF7Ym
-         AdZ4seZfFEP/EnHCf+3VzL85Oh5XF9fXoHWLy0G3msTmU60XDSmOGQBbyVN7g6YyezwA
-         Ad5FUpIbK90qghpd/SHxeteG8xZ8ZyzJUDqAg7B4kvJqOHwAfWctk6ERR/z2eKJyBCQD
-         Br/g==
+        b=eh5YTNKGE2JnL9UxEGbzoUu2lvg7yYur+5tCbpVFXLQx+sLFQdZKOUdK4Uj6i3PffS
+         vPs8jTTsLw6ylF4z10H0pYxy+ZPaEvQXph960PONuY77eH9x4S/y4WwOdg+g/F4jUjGT
+         Mmr3cZsP8Fc68v0R7wVDPUMzWFyI2lu1hJZmu7OFbA7PpFhdi05N26CTZD1p5YZaKLs7
+         g8OGUDTD76oGVwTVJKLFswZvMozzHOfF2ybKybc/Q+6cc5Va91UG4WS5J9Qc/5WTGwcX
+         cutPaAfl//NwpQcD0hhAZHx25rUul00TV6BoBpSOkwE+UPnyaX3pda743FXDXiG328ES
+         nSXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=qjfj0t9qeQ9Ux8rmIPqzvJVhFeongM+ztnhWQ98ZezQ=;
-        fh=tLb6mzEfdrQJfe0bZaIpewWl2Zhme3SBxrAzcS1LpAo=;
-        b=Rc8QY9Kt5ZwWc8NI8fr1dlJx5/odKLNEhMkZykLOsXgfTa+uQQDJxafPfkgtAjana+
-         OyfyAoSCBJlw9tHo8O7W8zxjccbpfncmEOnwAjNnc5mCWVN5i/Jes0tNHp1v8vqpx+bv
-         krldAEH/W5Kh7nTNMMJsaJflH3uDecHZFkPQt1ST+d+eBCmsD4xvW75bGKz4ZpYStzdE
-         OgicII8kFRVkIZwhDMMsoi4UhO2Z4XeSx1I/BHGoAzl1F25GW/A0Cuo3xmG5ZN9EXMQ6
-         6pqCaZSptEyUW8lUohkK2iF7u/xi9lrsP0LYJBNTpcxlMusWIZimcCUtPgl9m1Vz2nJQ
-         ypbw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Mlml52KYEl6hPBbxf5dC0hWl1GcKGoq7JsMQPRCXH6A=;
+        fh=obllUwwYlKaweFRjJI5X4dDrMU6xfGW8nM0990wlKoc=;
+        b=vTEaT7SPBtvIA5IZpt542SN7iJBBfdXqiQ9A5lf9uZSzDCFiqELTS5S3ERaBQdw8MW
+         rhQLC5ZkaG52ajgn5Os160bLgxfX5ZqKYQDIlmvDe1bZP2Xi3OcqBvrOIgqPUJXIAwCA
+         YiJeP3msDNxyYyuCn4yN8CTr0YY9LDrirBsmkoTJ3c3kNLh9ZbDOVsD+4TW5703ykRAB
+         0jgVgnk06mGckyqVKU/3sJ1xosxbP138K0vwZGROBzm+aGI7/vS7UiRRE++hVtH4vV1K
+         2DPKbkWVh1z4850+AMe/pOzb+ubRGfsDYuMLsEsGH1gdswCGeiBLZEzX49ghbiI+5w0U
+         VfyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=lbVMmrZK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hgqmommZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m21-20020a05622a119500b004179ca2f158si8322032qtk.355.2023.10.10.13.36.14
+        by mx.google.com with ESMTPS id d2-20020a05622a15c200b004180f8c4f04si8312597qty.571.2023.10.10.13.41.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 13:36:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Oct 2023 13:41:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=lbVMmrZK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hgqmommZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qqJSI-0006XQ-JG; Tue, 10 Oct 2023 16:35:50 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qqJXy-0000c4-Ie; Tue, 10 Oct 2023 16:41:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
- id 1qqJSH-0006Wt-1C; Tue, 10 Oct 2023 16:35:49 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <clegoate@redhat.com>)
+ id 1qqJXw-0000YA-6t
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 16:41:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
- id 1qqJSD-0005TY-Uk; Tue, 10 Oct 2023 16:35:48 -0400
-Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39AKZ0oa026027; Tue, 10 Oct 2023 20:35:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=qjfj0t9qeQ9Ux8rmIPqzvJVhFeongM+ztnhWQ98ZezQ=;
- b=lbVMmrZKnPfYzlzuPu2lwkC6vNnSzY/dqzPbuGRNNywrEIzvGjHlckSDGsbjDi369Ymk
- OJoWT994xehUq4O9TmlFXwQ0L0WaUkrIPMZLLvFydgXG381HrIjNgazAIcwO/MoTNpCp
- lfaZy3dOqM+2duf0n1Yh4HPckOMTw0fcpgb9W8bW1e8WABXG3FQH8cleNFm1vhmjAa/t
- Vq6T6icPxR8OmmsBTar2M+u16QI91q6htl+BA/l1pCwZ6QYKZcxGe/OGOU4YbmWjGZ8C
- ApQDvAmhwbcZzjaXlXQzzV2Ebd19TYnH9SKvhHxH51IUtSqJQOhw8tMzPsbT4jfeA/yf Ug== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tnds9g055-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 10 Oct 2023 20:35:31 +0000
-Received: from m0353723.ppops.net (m0353723.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39AKZURi027176;
- Tue, 10 Oct 2023 20:35:30 GMT
-Received: from ppma11.dal12v.mail.ibm.com
- (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tnds9g04v-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 10 Oct 2023 20:35:30 +0000
-Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
- by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39AIqrTf023106; Tue, 10 Oct 2023 20:35:29 GMT
-Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
- by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tkmc1jeg3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 10 Oct 2023 20:35:29 +0000
-Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
- [10.241.53.100])
- by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39AKZTHR20251186
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 10 Oct 2023 20:35:29 GMT
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 64E1358058;
- Tue, 10 Oct 2023 20:35:29 +0000 (GMT)
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 276A058059;
- Tue, 10 Oct 2023 20:35:29 +0000 (GMT)
-Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
- by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Tue, 10 Oct 2023 20:35:29 +0000 (GMT)
-Message-ID: <1fcb9e1820b2ca5c5e6b84d7186c328c1df426e8.camel@linux.vnet.ibm.com>
+ (Exim 4.90_1) (envelope-from <clegoate@redhat.com>)
+ id 1qqJXt-0006gh-B3
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 16:41:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1696970495;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Mlml52KYEl6hPBbxf5dC0hWl1GcKGoq7JsMQPRCXH6A=;
+ b=hgqmommZ8P3x8+s5mmHUTTYkb91/dJlyNhLFBxzUxjG+haWP9ZASoYL09HXyEigpNW4cZf
+ lN3VHD8FR6BguNFUZx2Y0IIkHkz+OHdOg770qyyFWmYKhopKd8NVchROJnjbPWgLKKWmbB
+ n4fGD0BW+mK/YR+XFAXH8rZbtFGI4iI=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-100-fOw0ZLyoMsO-FgK_i6ZrUA-1; Tue, 10 Oct 2023 16:41:33 -0400
+X-MC-Unique: fOw0ZLyoMsO-FgK_i6ZrUA-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-774105f6fb1so696900385a.3
+ for <qemu-arm@nongnu.org>; Tue, 10 Oct 2023 13:41:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696970492; x=1697575292;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Mlml52KYEl6hPBbxf5dC0hWl1GcKGoq7JsMQPRCXH6A=;
+ b=ogtA04xZOLF49PhuIHTNXX0xUZ/kSM7A2J5i5xYpkzJ2kEaGjd6B3h7G+VrI5qIPGl
+ vGvBMd1cRawWk7uXTpjMU89QplGT2JF1dYazeiqFMBXDrTLiqhMON1RrDYDIs7CKc7Gv
+ nubZXPRK6a6PpVgWS5HIHJ1prhXPhDQcwtFp3R0MKWU+iZctctSvh2PuP+kMOv000ryM
+ Kv7VL2r5fzqEsXpLvJRIdkHuzj9/7HhieegH/GiSpOvQAdo2efZeJGBgEONjArNuzZRZ
+ q9q3R0lkEbT5tZPoFt2EAcCuoW1o0A82dya+6U6Pnb2ugwyewPK8WlPKgVT/zDngkmuF
+ gpHw==
+X-Gm-Message-State: AOJu0YyAsCDSw1LU3HpYQAyoLwT5YAFU6z+Kkzf+WXInU92PNqpEamfw
+ jjXF4oas76o9q1Z9SMdgqq3TZpRtoU5sXH24GiTYz4zZ4SKllJPbCEvsoi8l1OV6U17LewL6k9p
+ OxIIljCL0jSNDDP6EiYvm
+X-Received: by 2002:a05:620a:2a03:b0:776:5135:d98c with SMTP id
+ o3-20020a05620a2a0300b007765135d98cmr20425222qkp.15.1696970492634; 
+ Tue, 10 Oct 2023 13:41:32 -0700 (PDT)
+X-Received: by 2002:a05:620a:2a03:b0:776:5135:d98c with SMTP id
+ o3-20020a05620a2a0300b007765135d98cmr20425209qkp.15.1696970492399; 
+ Tue, 10 Oct 2023 13:41:32 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ m19-20020ae9e013000000b00767dcf6f4adsm4605283qkk.51.2023.10.10.13.41.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 Oct 2023 13:41:32 -0700 (PDT)
+Message-ID: <4a6e370f-f966-8905-a4ec-338ea42da980@redhat.com>
+Date: Tue, 10 Oct 2023 22:41:29 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
 Subject: Re: [PATCH v3] misc/pca9552: Fix for pca9552 not getting reset
-From: Miles Glenn <milesg@linux.vnet.ibm.com>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, clg@kaod.org, clegoate@redhat.com,
- andrew@codeconstruct.com.au, joel@jms.id.au
-Date: Tue, 10 Oct 2023 15:35:28 -0500
-In-Reply-To: <57112a6f-2624-4bd5-b301-cd28cb197771@ilande.co.uk>
+To: Miles Glenn <milesg@linux.vnet.ibm.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, clg@kaod.org, andrew@codeconstruct.com.au,
+ joel@jms.id.au
 References: <20231010195209.264757-1-milesg@linux.vnet.ibm.com>
  <57112a6f-2624-4bd5-b301-cd28cb197771@ilande.co.uk>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: t0FAbxnPc_S46NKpP7Fp0gSa1muG_4yd
-X-Proofpoint-GUID: EqZEx2RV4WKdO_HvovzTJyBYo1fcNr7H
+ <1fcb9e1820b2ca5c5e6b84d7186c328c1df426e8.camel@linux.vnet.ibm.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clegoate@redhat.com>
+In-Reply-To: <1fcb9e1820b2ca5c5e6b84d7186c328c1df426e8.camel@linux.vnet.ibm.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
-MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-10_16,2023-10-10_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 bulkscore=0
- phishscore=0 adultscore=0 malwarescore=0 spamscore=0 priorityscore=1501
- clxscore=1011 lowpriorityscore=0 mlxscore=0 mlxlogscore=999 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2309180000
- definitions=main-2310100159
-Received-SPF: none client-ip=148.163.158.5;
- envelope-from=milesg@linux.vnet.ibm.com; helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clegoate@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-3.339, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mcMF/IzCEAcW
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ErL4IKuLCuX0
 
-On Tue, 2023-10-10 at 21:31 +0100, Mark Cave-Ayland wrote:
-> On 10/10/2023 20:52, Glenn Miles wrote:
+On 10/10/23 22:35, Miles Glenn wrote:
+> On Tue, 2023-10-10 at 21:31 +0100, Mark Cave-Ayland wrote:
+>> On 10/10/2023 20:52, Glenn Miles wrote:
+>>
+>>> Testing of the pca9552 device on the powernv platform
+>>> showed that the reset method was not being called when
+>>> an instance of the device was realized.  This was causing
+>>> the INPUT0/INPUT1 POR values to be incorrect.
+>>>
+>>> Fixed by overriding the parent pca955x_realize method with a
+>>> new pca9552_realize method which first calls
+>>> the parent pca955x_realize method followed by the
+>>> pca9552_reset function.
+>>>
+>>> Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
+>>> ---
+>>>    hw/misc/pca9552.c | 7 +++++++
+>>>    1 file changed, 7 insertions(+)
+>>>
+>>> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+>>> index fff19e369a..4e183cc554 100644
+>>> --- a/hw/misc/pca9552.c
+>>> +++ b/hw/misc/pca9552.c
+>>> @@ -384,6 +384,12 @@ static void pca955x_realize(DeviceState *dev,
+>>> Error **errp)
+>>>        qdev_init_gpio_out(dev, s->gpio, k->pin_count);
+>>>    }
+>>>    
+>>> +static void pca9552_realize(DeviceState *dev, Error **errp)
+>>> +{
+>>> +    pca955x_realize(dev, errp);
+>>> +    pca9552_reset(dev);
+>>> +}
+>>> +
+>>>    static Property pca955x_properties[] = {
+>>>        DEFINE_PROP_STRING("description", PCA955xState, description),
+>>>        DEFINE_PROP_END_OF_LIST(),
+>>> @@ -417,6 +423,7 @@ static void pca9552_class_init(ObjectClass *oc,
+>>> void *data)
+>>>        PCA955xClass *pc = PCA955X_CLASS(oc);
+>>>    
+>>>        dc->reset = pca9552_reset;
+>>> +    dc->realize = pca9552_realize;
+>>>        dc->vmsd = &pca9552_vmstate;
+>>>        pc->max_reg = PCA9552_LS3;
+>>>        pc->pin_count = 16;
+>>
+>> The reason that the reset function isn't being called here is because
+>> TYPE_I2C_SLAVE
+>> is derived from TYPE_DEVICE, and for various historical reasons the
+>> DeviceClass reset
+>> function is only called for devices that inherit from
+>> TYPE_SYS_BUS_DEVICE.
+>>
+>> Probably the best way to make this work instead of mixing up the
+>> reset and realize
+>> parts of the object lifecycle is to convert pca9552_reset() to use
+>> the new Resettable
+>> interface for TYPE_PCA9552: take a look at commit d43e967f69 ("q800-
+>> glue.c: convert
+>> to Resettable interface") as an example, along with the documentation
+>> at
+>> https://www.qemu.org/docs/master/devel/reset.html.
+>>
 > 
-> > Testing of the pca9552 device on the powernv platform
-> > showed that the reset method was not being called when
-> > an instance of the device was realized.  This was causing
-> > the INPUT0/INPUT1 POR values to be incorrect.
-> > 
-> > Fixed by overriding the parent pca955x_realize method with a
-> > new pca9552_realize method which first calls
-> > the parent pca955x_realize method followed by the
-> > pca9552_reset function.
-> > 
-> > Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
-> > ---
-> >   hw/misc/pca9552.c | 7 +++++++
-> >   1 file changed, 7 insertions(+)
-> > 
-> > diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-> > index fff19e369a..4e183cc554 100644
-> > --- a/hw/misc/pca9552.c
-> > +++ b/hw/misc/pca9552.c
-> > @@ -384,6 +384,12 @@ static void pca955x_realize(DeviceState *dev,
-> > Error **errp)
-> >       qdev_init_gpio_out(dev, s->gpio, k->pin_count);
-> >   }
-> >   
-> > +static void pca9552_realize(DeviceState *dev, Error **errp)
-> > +{
-> > +    pca955x_realize(dev, errp);
-> > +    pca9552_reset(dev);
-> > +}
-> > +
-> >   static Property pca955x_properties[] = {
-> >       DEFINE_PROP_STRING("description", PCA955xState, description),
-> >       DEFINE_PROP_END_OF_LIST(),
-> > @@ -417,6 +423,7 @@ static void pca9552_class_init(ObjectClass *oc,
-> > void *data)
-> >       PCA955xClass *pc = PCA955X_CLASS(oc);
-> >   
-> >       dc->reset = pca9552_reset;
-> > +    dc->realize = pca9552_realize;
-> >       dc->vmsd = &pca9552_vmstate;
-> >       pc->max_reg = PCA9552_LS3;
-> >       pc->pin_count = 16;
-> 
-> The reason that the reset function isn't being called here is because
-> TYPE_I2C_SLAVE 
-> is derived from TYPE_DEVICE, and for various historical reasons the
-> DeviceClass reset 
-> function is only called for devices that inherit from
-> TYPE_SYS_BUS_DEVICE.
-> 
-> Probably the best way to make this work instead of mixing up the
-> reset and realize 
-> parts of the object lifecycle is to convert pca9552_reset() to use
-> the new Resettable 
-> interface for TYPE_PCA9552: take a look at commit d43e967f69 ("q800-
-> glue.c: convert 
-> to Resettable interface") as an example, along with the documentation
-> at 
-> https://www.qemu.org/docs/master/devel/reset.html.
-> 
+> Ahh, that's very helpful.  Thanks, Mark!
 
-Ahh, that's very helpful.  Thanks, Mark!
+yes. My bad, I didn't look close enough. Thanks Mark
 
--Glenn
-
-> 
-> ATB,
-> 
-> Mark.
-> 
+C.
 

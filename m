@@ -1,152 +1,135 @@
-Received: by 2002:a17:906:b756:b0:9b2:89ee:1eb8 with SMTP id fx22csp54917ejb;
-        Mon, 9 Oct 2023 13:54:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEdP1hklvwr8tj17SF1bVCD3lyeZ/x5qIulQOSBH99uPKl1dA1Ko2mfEPZKrs8gYfmZnIoX
-X-Received: by 2002:adf:cd81:0:b0:31c:2f95:8056 with SMTP id q1-20020adfcd81000000b0031c2f958056mr11712170wrj.23.1696884878864;
-        Mon, 09 Oct 2023 13:54:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696884878; cv=none;
+Received: by 2002:a17:906:b756:b0:9b2:89ee:1eb8 with SMTP id fx22csp300669ejb;
+        Tue, 10 Oct 2023 00:49:56 -0700 (PDT)
+X-Received: by 2002:a17:906:51db:b0:9b2:b9a3:d20c with SMTP id v27-20020a17090651db00b009b2b9a3d20cmr12579219ejk.74.1696924196556;
+        Tue, 10 Oct 2023 00:49:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696924196; cv=none;
         d=google.com; s=arc-20160816;
-        b=eJtUHPswsWSg0gDquo1FT++Ryp3DAYpwbLOMy6zfRMi4cTnUjzbeV4P74jDTNU59yL
-         /ZOENW/3eyQ1Hzn2alL/Q1FtvNYC6Y3S2wdLlo+fcwjlrWaD2zdnEvFN8ZMBGTsQZYFJ
-         2Rkq34O0QAk53t0LkttLQoyy/2HFcHVi9wpR4YMZCEXOI78crc5dYJVtBTWjr98mh5+z
-         YBC36QSfqxghWFB+tmYWvdnTV/IiNBf2/HnqX9713nosdtbCc8PMgpgLF08BqRhBDXBD
-         9KP380CnlSbmjuCu5lid5HhnEtXLTkK38TEkMZMEEP4zDyYZgWqchIe1/TEgcAWYGXu9
-         0Wcg==
+        b=lLhMqTQ5GfemJkGvFnO00yH6Vg5Cif+Sh1aGv6TuwSm8PAkh8M9Pg2iLpmdpY26xX0
+         5DlKzij5uv92wyulS3rxFHLz1F7FhU54wvxYoYrVysGXzGwWQAZcCmMOrMbAzWRur8xo
+         qoI4tE1GpyyUeQs8chXiDIqSkvfKShrVMPzyuZi7IUhwa2B/LBQL7nam8Xwz1nXAs1He
+         rT6Nf6LeQOgJQnACRJ2Qy0h569ZmQ0xHR4kJjbpNzNa+Wgb8z2YZm0bY/1uOVe0Bqwtp
+         BOfGxWzoc/Tjn0fnIBDFbfLrA4kNFwKXALZTN9LBlDAmurNACxq1vOlLt2Zfkqa/uxUh
+         W/PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=nGVQ+WD5dKei0AX0YcPDFuL1TJXLqV93V/ppkmdhV7g=;
-        fh=Ip9gjzNoisC7q01iVmEPxtLcq0sI5ZJWwitXLxOPxw4=;
-        b=Y3KbVQLzyzekaFl5/mk926jV5ULvWnahaHa92/LHcvHAQgPkCMyqRZh5LomtbHGxF6
-         M1i11CrcSoBLgwT7EimiGgOObbF+yIq3nfshalfbdiGUDgC5NMo6v1XcNGmbekDShFL9
-         IR6M57RDDeoj2F5zWm2eRxtUEnv/2oUzmIDpAAhH5mYrp5Z1b7JO8pDNNY2PKgrVH/RL
-         n/RNHHpXSq9JjERQuARZIzaq4Ld3SymDXa0xXoSquAG9/Dp+6A5e6ynyyKysTdDxJaPU
-         XpnzLaDqAWr8uht9Yu76hTkS2TC668Vg5rhtBMzLW9IoUKgy8GIkXw6IDXq9sjCoJAo1
-         56UQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=JOtqibj2dbLOoy6fkge4kltiRjME8crv5WjHZGdx+Tg=;
+        fh=H5ieliU25sye5YHfIOtq5FRCn6jB3GWQIglrsMrNJhA=;
+        b=kpgNF+YbecJZnkr9mrWQW4mCSy3SvXOXv6fYjg7PKkHHV+lZLS1rlKJhGXbkrq0L4/
+         3bcOHEg/Gu+m1oJWdKGUNbfIX+teGjexIxwUGL6SL2MNO16KnMaW4z+N5Pqp+Hv6R6QU
+         xJv/HehC6ssfnwKq7vBRbKNNAhrb57sPDIVqs1pCQNRnB0Jfiqn93iWRa3NmaWERtlrr
+         G/XnK5REW2iMuKX5e+ZWiyvZ3eCAMP2WzU40sCrLOcnJru1rEMTyrmkIyxiYSch7ZTBc
+         H7TnHnofEQWgCN2+Nj0Hc+fV6CuXinWQt5M8XKfKcjFBQ05bBK09HkmtNSR6HY3PnyzL
+         kYPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id e17-20020a5d5311000000b0031ff11c0db1si3985729wrv.412.2023.10.09.13.54.38
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Oct 2023 13:54:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=trO6c6wk;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id jz11-20020a17090775eb00b009b2862c6bbfsor3944688ejc.20.2023.10.10.00.49.56
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 10 Oct 2023 00:49:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml100001.china.huawei.com (unknown [172.18.147.226])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S4B970LG5z6K7Gh;
-	Tue, 10 Oct 2023 04:54:19 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml100001.china.huawei.com (7.191.160.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Mon, 9 Oct 2023 21:54:37 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Mon, 9 Oct 2023 21:54:37 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V4 10/10] target/arm/kvm: Write CPU state back to KVM on
- reset
-Thread-Topic: [PATCH V4 10/10] target/arm/kvm: Write CPU state back to KVM on
- reset
-Thread-Index: AQHZ+vDU4bIePd9190qIV2a+Q3I29rBB7aTg
-Date: Mon, 9 Oct 2023 20:54:36 +0000
-Message-ID: <816256a3dd1f406a84f448eeab969c45@huawei.com>
-References: <20231009203601.17584-1-salil.mehta@huawei.com>
- <20231009203601.17584-11-salil.mehta@huawei.com>
-In-Reply-To: <20231009203601.17584-11-salil.mehta@huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.126.175.116]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b=trO6c6wk;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1696924196; x=1697528996; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=JOtqibj2dbLOoy6fkge4kltiRjME8crv5WjHZGdx+Tg=;
+        b=trO6c6wkMfBNpjmj8i21HBrq9+/4vbdb4sscL18tlYKZbeY0SDtcVAsY09J2ACipY+
+         XLSyN2MhcrDMqiFO1RO86micp4KAS5lusCrqiH14+2RpjwJ5xm7kgT8ic0zNzbs74ghY
+         q9/Qhd6OOYKcZsJzG5l+rR6nUf26c39uw4LnaclreOv2gO6XooJU1atzVxDz5SxEhbSX
+         EU3nEyypl23JB67H0/6wi2e7coTxmFg2dgvqm0s5jthdxx8bzDo5RNQEL8Zn4BFQdo4P
+         SOTbGtz3pQ9zoTZ1zeItcYgwx7oZvBgpXjMA8sAdgt3AmiqO6xBddAx60gR9Lv1dg2Q2
+         cf5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696924196; x=1697528996;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=JOtqibj2dbLOoy6fkge4kltiRjME8crv5WjHZGdx+Tg=;
+        b=U/LWj7figYClWI6WO/YbmlqDljtN5raF7HMzWSl53VkQ4x4sIXpqI0h0Bvm8Moelze
+         4wZCAGVPqOUCL7hOXnpgomsUQILoJtGcFKeBSp3oLwX8a5/AH5vxB43DNzFs2CA3dfAW
+         KceH7YADwodNIRoV4gx2ujEga+edzk0rsv9KwDy3JNV/3wDdYpMPGOxP0VtodtlYO5aZ
+         azAZBjqoZ1KE0d5BHjZ2/ZiGqV+zHmkdovJe13SwzRah3e6gTZZBOd4lp0kEnGC8KBvX
+         7b6Pkwov7aWgYkEVd52kA4eHDtJFU/hsqHr8DReHJ1UHyuhWAKpIlxgsX5HBJsgmWajp
+         7prw==
+X-Gm-Message-State: AOJu0YxFk0wFym26+rkJTjVsT48Wv9TT+v8n6dWCABaaaGRwvaTIS3eb
+	8++MLcfltYpnK+uWSeshtOluvnmr
+X-Google-Smtp-Source: AGHT+IGn5xd4xjifpMZWqv3hO+nMNbC6Ki6OXNgt2RSlF4Hs8lSBQ1LGvZ8ECrTZ0+6dtpz/ZesOUQ==
+X-Received: by 2002:a17:906:25d:b0:9ba:1d1a:1e2c with SMTP id 29-20020a170906025d00b009ba1d1a1e2cmr5029409ejl.34.1696924196033;
+        Tue, 10 Oct 2023 00:49:56 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan (aif79-h01-176-172-113-148.dsl.sta.abo.bbox.fr. [176.172.113.148])
+        by smtp.gmail.com with ESMTPSA id r11-20020a170906364b00b009a1a5a7ebacsm7887987ejb.201.2023.10.10.00.49.54
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 10 Oct 2023 00:49:55 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-ppc@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-arm@nongnu.org,
+	qemu-block@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/4] tests/qtest: Introduce qtest_get_base_arch() and qtest_get_arch_bits()
+Date: Tue, 10 Oct 2023 09:49:48 +0200
+Message-ID: <20231010074952.79165-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: TezwvYn6t2ac
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: TAmnngBxeb2A
 
-SGVsbG8sDQpQZXJoYXBzIEkgbmVlZCB0byBkcm9wIHRoaXMgcGF0Y2ggZnJvbSB0aGlzIHBhdGNo
-LXNldCBhcyBpdCBpcyBBUk0gc3BlY2lmaWMuDQpJIHB1bGxlZCB0aGlzIGZyb20gUkZDIFYyIG9m
-IFZpcnR1YWwgQ1BVIEhvdHBsdWcgU3VwcG9ydCBvbiBBUk12OCBhbmQgaXMNCm5vdCByZXF1aXJl
-ZCBieSBvdGhlciBhcmNoaXRlY3R1cmVzIHRyeWluZyB0byBpbXBsZW1lbnQgVmlydHVhbCBDUFUg
-SG90cGx1Zw0KU3VwcG9ydC4NCg0KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8y
-MDIzMDkyNjEwMzY1NC4zNDQyNC0yLXNhbGlsLm1laHRhQGh1YXdlaS5jb20vDQoNCkkgd2lsbCBy
-ZXRhaW4gdGhlIFJldmlld2VkLWJ5J3MgY29sbGVjdGVkIGhlcmUgaW4gdGhlIFJGQyBWMyBwYXRj
-aC1zZXQuDQoNClNvcnJ5LCBmb3IgdGhlIG5vaXNlLg0KDQpUaGFua3MNClNhbGlsLg0KDQo+IEZy
-b206IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPg0KPiBTZW50OiBNb25kYXks
-IE9jdG9iZXIgOSwgMjAyMyA5OjM2IFBNDQo+IFRvOiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFl
-bXUtYXJtQG5vbmdudS5vcmcNCj4gQ2M6IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWku
-Y29tPjsgbWF6QGtlcm5lbC5vcmc7IGplYW4tDQo+IHBoaWxpcHBlQGxpbmFyby5vcmc7IEpvbmF0
-aGFuIENhbWVyb24gPGpvbmF0aGFuLmNhbWVyb25AaHVhd2VpLmNvbT47DQo+IGxwaWVyYWxpc2lA
-a2VybmVsLm9yZzsgcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOw0KPiByaWNoYXJkLmhlbmRlcnNv
-bkBsaW5hcm8ub3JnOyBpbWFtbWVkb0ByZWRoYXQuY29tOyBhbmRyZXcuam9uZXNAbGludXguZGV2
-Ow0KPiBkYXZpZEByZWRoYXQuY29tOyBwaGlsbWRAbGluYXJvLm9yZzsgZXJpYy5hdWdlckByZWRo
-YXQuY29tOw0KPiBvbGl2ZXIudXB0b25AbGludXguZGV2OyBwYm9uemluaUByZWRoYXQuY29tOyBt
-c3RAcmVkaGF0LmNvbTsNCj4gd2lsbEBrZXJuZWwub3JnOyBnc2hhbkByZWRoYXQuY29tOyByYWZh
-ZWxAa2VybmVsLm9yZzsNCj4gYWxleC5iZW5uZWVAbGluYXJvLm9yZzsgbGludXhAYXJtbGludXgu
-b3JnLnVrOw0KPiBkYXJyZW5Ab3MuYW1wZXJlY29tcHV0aW5nLmNvbTsgaWxra2FAb3MuYW1wZXJl
-Y29tcHV0aW5nLmNvbTsNCj4gdmlzaG51QG9zLmFtcGVyZWNvbXB1dGluZy5jb207IGthcmwuaGV1
-YmF1bUBvcmFjbGUuY29tOw0KPiBtaWd1ZWwubHVpc0BvcmFjbGUuY29tOyBzYWxpbC5tZWh0YUBv
-cG5zcmMubmV0OyB6aHVrZXFpYW4NCj4gPHpodWtlcWlhbjFAaHVhd2VpLmNvbT47IHdhbmd4aW9u
-Z2ZlbmcgKEMpIDx3YW5neGlvbmdmZW5nMkBodWF3ZWkuY29tPjsNCj4gd2FuZ3lhbmFuIChZKSA8
-d2FuZ3lhbmFuNTVAaHVhd2VpLmNvbT47IGppYWtlcm5lbDJAZ21haWwuY29tOw0KPiBtYW9iaWJv
-QGxvb25nc29uLmNuOyBsaXhpYW5nbGFpQGxvb25nc29uLmNuOyBMaW51eGFybSA8bGludXhhcm1A
-aHVhd2VpLmNvbT4NCj4gU3ViamVjdDogW1BBVENIIFY0IDEwLzEwXSB0YXJnZXQvYXJtL2t2bTog
-V3JpdGUgQ1BVIHN0YXRlIGJhY2sgdG8gS1ZNIG9uDQo+IHJlc2V0DQo+IA0KPiBGcm9tOiBKZWFu
-LVBoaWxpcHBlIEJydWNrZXIgPGplYW4tcGhpbGlwcGVAbGluYXJvLm9yZz4NCj4gDQo+IFdoZW4g
-YSBLVk0gdkNQVSBpcyByZXNldCBmb2xsb3dpbmcgYSBQU0NJIENQVV9PTiBjYWxsLCBpdHMgcG93
-ZXIgc3RhdGUNCj4gaXMgbm90IHN5bmNocm9uaXplZCB3aXRoIEtWTSBhdCB0aGUgbW9tZW50LiBC
-ZWNhdXNlIHRoZSB2Q1BVIGlzIG5vdA0KPiBtYXJrZWQgZGlydHksIHdlIG1pc3MgdGhlIGNhbGwg
-dG8ga3ZtX2FyY2hfcHV0X3JlZ2lzdGVycygpIHRoYXQgd3JpdGVzDQo+IHRvIEtWTSdzIE1QX1NU
-QVRFLiBGb3JjZSBtcF9zdGF0ZSBzeW5jaHJvbml6YXRpb24uDQo+IA0KPiBTaWduZWQtb2ZmLWJ5
-OiBKZWFuLVBoaWxpcHBlIEJydWNrZXIgPGplYW4tcGhpbGlwcGVAbGluYXJvLm9yZz4NCj4gU2ln
-bmVkLW9mZi1ieTogU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+IFJldmll
-d2VkLWJ5OiBBbGV4IEJlbm7DqWUgPGFsZXguYmVubmVlQGxpbmFyby5vcmc+DQo+IFJldmlld2Vk
-LWJ5OiBHYXZpbiBTaGFuIDxnc2hhbkByZWRoYXQuY29tPg0KPiAtLS0NCj4gIHRhcmdldC9hcm0v
-a3ZtLmMgfCA4ICsrKysrKystDQo+ICAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspLCAx
-IGRlbGV0aW9uKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvdGFyZ2V0L2FybS9rdm0uYyBiL3Rhcmdl
-dC9hcm0va3ZtLmMNCj4gaW5kZXggYjY2YjkzNmE5NS4uOGNiNzBiOWU3YyAxMDA2NDQNCj4gLS0t
-IGEvdGFyZ2V0L2FybS9rdm0uYw0KPiArKysgYi90YXJnZXQvYXJtL2t2bS5jDQo+IEBAIC02NDIs
-MTEgKzY0MiwxMiBAQCB2b2lkIGt2bV9hcm1fY3B1X3Bvc3RfbG9hZChBUk1DUFUgKmNwdSkNCj4g
-IHZvaWQga3ZtX2FybV9yZXNldF92Y3B1KEFSTUNQVSAqY3B1KQ0KPiAgew0KPiAgICAgIGludCBy
-ZXQ7DQo+ICsgICAgQ1BVU3RhdGUgKmNzID0gQ1BVKGNwdSk7DQo+IA0KPiAgICAgIC8qIFJlLWlu
-aXQgVkNQVSBzbyB0aGF0IGFsbCByZWdpc3RlcnMgYXJlIHNldCB0bw0KPiAgICAgICAqIHRoZWly
-IHJlc3BlY3RpdmUgcmVzZXQgdmFsdWVzLg0KPiAgICAgICAqLw0KPiAtICAgIHJldCA9IGt2bV9h
-cm1fdmNwdV9pbml0KENQVShjcHUpKTsNCj4gKyAgICByZXQgPSBrdm1fYXJtX3ZjcHVfaW5pdChj
-cyk7DQo+ICAgICAgaWYgKHJldCA8IDApIHsNCj4gICAgICAgICAgZnByaW50ZihzdGRlcnIsICJr
-dm1fYXJtX3ZjcHVfaW5pdCBmYWlsZWQ6ICVzXG4iLCBzdHJlcnJvcigtcmV0KSk7DQo+ICAgICAg
-ICAgIGFib3J0KCk7DQo+IEBAIC02NjMsNiArNjY0LDExIEBAIHZvaWQga3ZtX2FybV9yZXNldF92
-Y3B1KEFSTUNQVSAqY3B1KQ0KPiAgICAgICAqIGZvciB0aGUgc2FtZSByZWFzb24gd2UgZG8gc28g
-aW4ga3ZtX2FyY2hfZ2V0X3JlZ2lzdGVycygpLg0KPiAgICAgICAqLw0KPiAgICAgIHdyaXRlX2xp
-c3RfdG9fY3B1c3RhdGUoY3B1KTsNCj4gKyAgICAvKg0KPiArICAgICAqIEVuc3VyZSB3ZSBjYWxs
-IGt2bV9hcmNoX3B1dF9yZWdpc3RlcnMoKS4gVGhlIHZDUFUgaXNuJ3QgbWFya2VkDQo+IGRpcnR5
-IGlmDQo+ICsgICAgICogaXQgd2FzIHBhcmtlZCBpbiBLVk0gYW5kIGlzIG5vdyBib290aW5nIGZy
-b20gYSBQU0NJIENQVV9PTiBjYWxsLg0KPiArICAgICAqLw0KPiArICAgIGNzLT52Y3B1X2RpcnR5
-ID0gdHJ1ZTsNCj4gIH0NCj4gDQo+ICAvKg0KPiAtLQ0KPiAyLjM0LjENCg0K
+When unifying some 32/64 architectures as a single binary
+(for example i386 & x86_64 -> x86), some qtests fail because
+we lose some information (the arch bits).
+
+This series introduce the tuple qtest_get_base_arch() /
+qtest_get_arch_bits() to allow the tests to keep passing.
+
+Eventually we should remove qtest_get_arch() entirely
+and rename qtest_get_base_arch() -> qtest_get_arch().
+
+So far these changes are sufficient to keep me progressing,
+so posting up to this point.
+
+Philippe Mathieu-Daudé (4):
+  tests/libqtest: Introduce qtest_get_arch_bits()
+  tests/qtest: Use qtest_get_arch_bits()
+  tests/libqtest: Introduce qtest_get_base_arch()
+  tests/qtest: Use qtest_get_base_arch()
+
+ tests/qtest/libqtest.h            | 15 ++++++++++
+ tests/qtest/ahci-test.c           |  5 ++--
+ tests/qtest/am53c974-test.c       |  4 +--
+ tests/qtest/arm-cpu-features.c    | 49 +++++++++++++++----------------
+ tests/qtest/bios-tables-test.c    | 22 +++++++-------
+ tests/qtest/boot-sector.c         |  6 ++--
+ tests/qtest/device-plug-test.c    |  6 ++--
+ tests/qtest/drive_del-test.c      | 16 ++++------
+ tests/qtest/erst-test.c           |  4 +--
+ tests/qtest/fuzz-e1000e-test.c    |  4 +--
+ tests/qtest/ivshmem-test.c        |  6 ++--
+ tests/qtest/libqos/qos_external.c |  6 ++--
+ tests/qtest/libqtest.c            | 49 +++++++++++++++++++++++++++++++
+ tests/qtest/lpc-ich9-test.c       |  4 +--
+ tests/qtest/m48t59-test.c         |  6 ++--
+ tests/qtest/pxe-test.c            |  6 ++--
+ tests/qtest/qos-test.c            |  6 ++--
+ tests/qtest/readconfig-test.c     |  6 +---
+ tests/qtest/rtas-test.c           |  4 +--
+ tests/qtest/ufs-test.c            |  4 +--
+ tests/qtest/usb-hcd-uhci-test.c   |  6 ++--
+ tests/qtest/virtio-net-test.c     |  3 +-
+ tests/qtest/virtio-rng-test.c     |  4 +--
+ 23 files changed, 138 insertions(+), 103 deletions(-)
+
+-- 
+2.41.0

@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp431ejr;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp447ejr;
+        Tue, 10 Oct 2023 02:32:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFvCjfjVu7kRA/aWkSKULUkW+1LSXRdwYNpip0YaR+yhyHbGrUA8+juU4+p5EKaTDpJXzdj
+X-Received: by 2002:a05:620a:4513:b0:777:2723:ea77 with SMTP id t19-20020a05620a451300b007772723ea77mr1558247qkp.65.1696930375854;
         Tue, 10 Oct 2023 02:32:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE6e8sbUUMgpon675B/UptdENEjiDQhHO2L9I3Eqrt/Fhfoygcw7jqEZi10Rr3VOG62/Qi0
-X-Received: by 2002:a5b:e8b:0:b0:d85:ae5c:527a with SMTP id z11-20020a5b0e8b000000b00d85ae5c527amr16316377ybr.10.1696930374637;
-        Tue, 10 Oct 2023 02:32:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696930374; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1696930375; cv=none;
         d=google.com; s=arc-20160816;
-        b=sRwQmqhro4E3vZwHI1qFFY5MRVGjtWYu7WbMFQoOsBAE8CqkOb6UOopOm1+u0Wduw2
-         nEm+itpTx2Ti1UYTSQKmGWq+6YS4jW0BHEQpr6OUMRaYJm1XEu/h6B02ffRtikoHF9Kc
-         HBDJvyJhyXWUCkTIsiOk0Wg7VnEFUM6ZFK7GkUyBdCvrcV2vzxMk8oBsy0Fx9d0RN0+b
-         cpPb3RhOHuTvKCjjXxXv23qt8a7BZTxbX+/TFvEWNSn+BhmCG/vO5NhJbau1pr2nHRKO
-         O/ZarEgsju4/zke6jRMRKCqB9iSvvUX9WwbB8nKn3bKcgzBIJ5l1wx47nj4Dqit3Hj4e
-         dNXg==
+        b=dcTfnEo3dCQeV6ivavrxX1S4bibGNHbisPAHlrk8t9IGuyy1cmgpJCamXAG52JHksZ
+         lOniH/NDThE/KjQY1hScIiOQ2BKfnMTCwODG5DuhDsKNklBR2/qxKPh1u+PdQfdXdldq
+         TbC9JW6fQlFxSHdXjZ4WMtvkmeRivVw6+7rMBE1J0W2/SnfvtZP3cCMpikT9p9dQFa9b
+         peJvlEmFZdZLlW23BOl6SKdbHGXEtH0NbLvGyhYXeFXKcBlNDa6hkPKo1AR/QpM1Uk6H
+         4O9zUHNb3MTm3Jcbn23ANQuizb6G8UFv20lbO4193sIuScEm4VW7EpAi3dMlB3nVUb5k
+         J0Zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=7WiHkuSW70dwreiTW00ZFUbfeyH/7vFgJnStNjqec/s=;
+        bh=mgsiCqJEVbd0iph25Vp3iyBl0HVLbk20nUnsucfnJsA=;
         fh=iupQBrmerAoZOw8v6swRnyYBx+6KhbF7AbBF1Jawaz4=;
-        b=mxR+EeoQMG+uL1fLvLUdD5BdHccYYX4FXjS2vbBBdQSyBWj5cpL/MXsiOJO3geSnSs
-         ZpFa8T8Axa+ujYbqLo6e82zHmxlvIZCJ2RplHTnIA+91fC/UCIBewWngW2pjuddbb2XR
-         mwr9ZOKVbM4RDVvOkfNWKrDPSGnL8nHJzf2LPFSzG+7b+cMwqs6fRCb/t9VE/iSyvwm9
-         EXIhBul3XYbMVPJYYcxm0KSV0fvM++g2mx05FsIWqvlEa9S8su3cHlUzYzhPxjsahq83
-         pZICFWfz9+0eeBY1/X2uHzOOfRPZ0VJ1VhGu4JrRLYN8Ls78u2Cc8I4jR4PzOVWoL0h4
-         OV8w==
+        b=zSIWQ4V7SkVQmsb0Rxku3iIrXMdmruD8n+4etQ89bWZsVqoR1SAEHksJRblqtCrGwY
+         98nIctetnpBlzQD+1rvC1bbKsBLC3bAs3gxvN8sifNDY65YtBgTNE1hGjykt+FZNK3bR
+         q/4u8+GzujoDQbCURDKBg03HPMDkaNyem14Fpj+Zww+N6x1P1auFA9WdFaIjDFbD0V0m
+         epcLbEBcZ7CSEDCzf+xUV+V4nbgNRmJbPR9G+8RV3LVwAtYhyz+HEZtmG6rS0MgR9TtM
+         m/atgV4pGuz89MjRlop9vokG+8eRbtGnGnXWabRBWvWcLRHWUI2XDincr4RTjtc5lQ0S
+         K9Vw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qr7H9Mw2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OSI5iTqs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n4-20020a0ce544000000b0065b21eef93asi7346106qvm.568.2023.10.10.02.32.53
+        by mx.google.com with ESMTPS id y11-20020a05620a44cb00b0077411b34541si7615721qkp.28.2023.10.10.02.32.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 02:32:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Oct 2023 02:32:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qr7H9Mw2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=OSI5iTqs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qq95i-0004Iw-AI; Tue, 10 Oct 2023 05:31:52 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qq95n-0004h6-0g; Tue, 10 Oct 2023 05:31:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq95B-0001fV-5Y
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:31:18 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq95P-0003MF-Ap
+ for qemu-devel@nongnu.org; Tue, 10 Oct 2023 05:31:31 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq957-0008ON-6V
- for qemu-arm@nongnu.org; Tue, 10 Oct 2023 05:31:14 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-53b32dca0bfso8277340a12.0
- for <qemu-arm@nongnu.org>; Tue, 10 Oct 2023 02:31:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qq95M-0008TA-7p
+ for qemu-devel@nongnu.org; Tue, 10 Oct 2023 05:31:30 -0400
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-9b29186e20aso923858066b.2
+ for <qemu-devel@nongnu.org>; Tue, 10 Oct 2023 02:31:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696930269; x=1697535069; darn=nongnu.org;
+ d=linaro.org; s=google; t=1696930285; x=1697535085; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7WiHkuSW70dwreiTW00ZFUbfeyH/7vFgJnStNjqec/s=;
- b=Qr7H9Mw2UayX2EDnksa4AT4/hbEJVgjpTtAsgFWkCcpEh93+GaNp8FLpGYdq8Vcnwf
- 9Dy99nguGqzXGl/I3Zz5bjjJb6+iS2J0th5aFpWT2h45KveVaGJzMoPoSgz1iiXmkA6j
- DmR79nNwex5LM+5LkqBujWwduAUUHDy39YAj1vKWrBo1y+qPWqqIhfwHkxPiRfAWdOEx
- nYnhFxgxrB6VVSYuOFO1Dt8nQhoSAhNPax/PKzmjPMIxLZZLYMjJsmiV3SJKoAWxX8TF
- shLaFQ758toImPWBqIlJPkExajWgi8R4MbUZpwsq9QOOkQdT92jy3lUppI/upNwyy8A5
- mSPw==
+ bh=mgsiCqJEVbd0iph25Vp3iyBl0HVLbk20nUnsucfnJsA=;
+ b=OSI5iTqsDif8f7TBP68R+kfCKES76Vt3BQHHuYZzh3VoJ5BD8brfUcAV3DpteobBvq
+ 5Bgej7edzuURO1d204wLB57qc79Y6GlYSY6L4Lcv/3Yeq7i9MCyPNz3b9jmnsTM0+pQB
+ XljpPgXESuWE7WKjJT+RdSnSdWiIUhbrkyS1uOdYp+TlcSxRjePtOdjHXML73sTa7pMq
+ WAm2LcCSEv8TjLYWq5/MRvxlWZxY54gTt63kpSD7I96GrgKHfXjWsT5F0HpKZD/uezxq
+ DnBncb0RdEjC4UZ22ZH9Ee3Dt440e5me7vsvUmhQYkP/p6tbLBeA39bdSEosQ3RP5kJ+
+ 7UFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696930269; x=1697535069;
+ d=1e100.net; s=20230601; t=1696930285; x=1697535085;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7WiHkuSW70dwreiTW00ZFUbfeyH/7vFgJnStNjqec/s=;
- b=IfzbG2zOjBOfqf6in3DEtuw/sEckyWukatvmxfLrQHPzqUL7MAswkDGS+LWPWcTSwr
- aW8q7v9XpDhRgD1duphFLUz0lV3Mh7NbFFcSGASPUb2D4j1DyCpqOOim3N8tuFMLR2C6
- /wnaBGWK2yjIiPrmhbCoG/nZ2NXNPUTZ5w1OGbR8wSxMedCv0a8bOWbraH8/V2Mn38SH
- K2K93TOQGKU5aep224nKH6U10WNdr1xeiZ6Y9+XFmRkg7XhNI7rYzB5Pba0lGVvUHb8w
- 9uArEzdvLHq9AatzerBtT7Gn3E6tI9VcATbgcwMv7TMjF173vZvUORJTfj1fYf8CpCQX
- 30bg==
-X-Gm-Message-State: AOJu0YwkI3RYquEOd8vBdC41zlnTVCf9DgzUvrauH/9/02KRvjMY2dv4
- GFYqc94ze4Zs2SB8sqQ7zf7oww==
-X-Received: by 2002:aa7:d1d9:0:b0:531:157d:ba2d with SMTP id
- g25-20020aa7d1d9000000b00531157dba2dmr13586266edp.4.1696930269123; 
- Tue, 10 Oct 2023 02:31:09 -0700 (PDT)
+ bh=mgsiCqJEVbd0iph25Vp3iyBl0HVLbk20nUnsucfnJsA=;
+ b=OPf11p3ot/e51E4omEmFx/QfLU61aKqJI7XtpvvpEpDwM141b4Ah2WhmG+EjOThRa+
+ YPegGbfrZjH9AcMbA2IWuWn27w0Xn/Ipsf0e+mwbSPr7lulrANo/1anVyL8FO7a42g23
+ ogKseUPsVLieOMzwUjjaWV+FqemAJBTmUwslG/wQ+k7fBGCJEWMPZDZ7VZFcJP6ySuDh
+ Vd/LUI7pQIpZ/9Izt+QzKS7uvIN0Pdzxr/F1VM1J5TP4Esf0xQ076I5ZGUiD6wYneXBH
+ 21/ZpY7M6iG/NVNrhVXUseX9cRV69ZWNUkch3K24EbjMzJST57jorPFHPC7DIQ/1uyEj
+ m+7A==
+X-Gm-Message-State: AOJu0YzBtFTCbc8qdc4Z0ROYbxDSiE+NyEakBcvSRuB1iAu505HeF234
+ To+ZOWh3SO87aGcHzoxe8d7tn/XVK3so7Djlb9ZPwA==
+X-Received: by 2002:a17:906:538f:b0:99e:f3b:2f78 with SMTP id
+ g15-20020a170906538f00b0099e0f3b2f78mr17049450ejo.67.1696930285483; 
+ Tue, 10 Oct 2023 02:31:25 -0700 (PDT)
 Received: from m1x-phil.lan (aif79-h01-176-172-113-148.dsl.sta.abo.bbox.fr.
  [176.172.113.148]) by smtp.gmail.com with ESMTPSA id
- b11-20020aa7c90b000000b00536246d1eadsm7353953edt.41.2023.10.10.02.31.05
+ fi10-20020a170906da0a00b009ad8796a6aesm8106883ejb.56.2023.10.10.02.31.21
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 10 Oct 2023 02:31:08 -0700 (PDT)
+ Tue, 10 Oct 2023 02:31:25 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -121,18 +121,18 @@ Cc: David Hildenbrand <david@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>, qemu-s390x@nongnu.org
-Subject: [PATCH 15/18] cpus: Open code OBJECT_DECLARE_TYPE() in
- OBJECT_DECLARE_CPU_TYPE()
-Date: Tue, 10 Oct 2023 11:28:57 +0200
-Message-ID: <20231010092901.99189-16-philmd@linaro.org>
+Subject: [PATCH 17/18] target/mips: Make MIPS_CPU common to new MIPS32_CPU /
+ MIPS64_CPU types
+Date: Tue, 10 Oct 2023 11:28:59 +0200
+Message-ID: <20231010092901.99189-18-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231010092901.99189-1-philmd@linaro.org>
 References: <20231010092901.99189-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,77 +141,115 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WMaT47VPSVos
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lubjQ3sf0h9D
 
-Since the OBJECT_DECLARE_CPU_TYPE() macro uses the abstract ArchCPU
-type, when declaring multiple CPUs of the same ArchCPU type we get
-an error related to the indirect G_DEFINE_AUTOPTR_CLEANUP_FUNC()
-use within OBJECT_DECLARE_TYPE():
+"target/foo/cpu-qom.h" can not use any target specific definitions.
 
-  target/mips/cpu-qom.h:31:1: error: redefinition of 'glib_autoptr_clear_ArchCPU'
-  OBJECT_DECLARE_CPU_TYPE(MIPS64CPU, MIPSCPUClass, MIPS64_CPU)
-  ^
-  include/hw/core/cpu.h:82:5: note: expanded from macro 'OBJECT_DECLARE_CPU_TYPE'
-      OBJECT_DECLARE_TYPE(ArchCPU, CpuClassType, CPU_MODULE_OBJ_NAME);
-      ^
-  include/qom/object.h:237:5: note: expanded from macro 'OBJECT_DECLARE_TYPE'
-      G_DEFINE_AUTOPTR_CLEANUP_FUNC(InstanceType, object_unref) \
-      ^
-  /usr/include/glib-2.0/glib/gmacros.h:1371:3: note: expanded from macro 'G_DEFINE_AUTOPTR_CLEANUP_FUNC'
-    _GLIB_DEFINE_AUTOPTR_CLEANUP_FUNCS(TypeName, TypeName, func)
-    ^
-  /usr/include/glib-2.0/glib/gmacros.h:1354:36: note: expanded from macro '_GLIB_DEFINE_AUTOPTR_CLEANUP_FUNCS'
-    static G_GNUC_UNUSED inline void _GLIB_AUTOPTR_CLEAR_FUNC_NAME(TypeName) (TypeName *_ptr)                     \
-                                     ^
-  /usr/include/glib-2.0/glib/gmacros.h:1338:49: note: expanded from macro '_GLIB_AUTOPTR_CLEAR_FUNC_NAME'
-  #define _GLIB_AUTOPTR_CLEAR_FUNC_NAME(TypeName) glib_autoptr_clear_##TypeName
-                                                  ^
-  <scratch space>:54:1: note: expanded from here
-  glib_autoptr_clear_ArchCPU
-  ^
-  target/mips/cpu-qom.h:30:1: note: previous definition is here
-  OBJECT_DECLARE_CPU_TYPE(MIPS32CPU, MIPSCPUClass, MIPS32_CPU)
-  ^
+Currently "target/mips/cpu-qom.h" defines TYPE_MIPS_CPU depending
+on the mips(32)/mips64 build type. This doesn't scale in a
+heterogeneous context where we need to access both types concurrently.
 
-Avoid that problem by expanding the OBJECT_DECLARE_TYPE() macro
-within OBJECT_DECLARE_CPU_TYPE().
+In order to do that, introduce the new MIPS32_CPU / MIPS64_CPU types,
+both inheriting a common TYPE_MIPS_CPU base type.
+
+Keep the current CPU types registered in mips_register_cpudef_type()
+as 32 or 64-bit, but instead of depending on the binary built being
+targeting 32/64-bit, check whether the CPU is 64-bit by looking at
+the CPU_MIPS64 bit.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/core/cpu.h | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ target/mips/cpu-qom.h | 13 ++++++-------
+ target/mips/cpu.h     |  3 +++
+ target/mips/cpu.c     | 11 ++++++++++-
+ 3 files changed, 19 insertions(+), 8 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index e02bc5980f..ab724fab3a 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -79,7 +79,12 @@ DECLARE_CLASS_CHECKERS(CPUClass, CPU,
-  */
- #define OBJECT_DECLARE_CPU_TYPE(CpuInstanceType, CpuClassType, CPU_MODULE_OBJ_NAME) \
-     typedef struct ArchCPU CpuInstanceType; \
--    OBJECT_DECLARE_TYPE(ArchCPU, CpuClassType, CPU_MODULE_OBJ_NAME);
-+    typedef struct CpuClassType CpuClassType; \
-+    \
-+    G_DEFINE_AUTOPTR_CLEANUP_FUNC(CpuInstanceType, object_unref) \
-+    \
-+    DECLARE_OBJ_CHECKERS(CpuInstanceType, CpuClassType, \
-+                         CPU_MODULE_OBJ_NAME, TYPE_##CPU_MODULE_OBJ_NAME)
+diff --git a/target/mips/cpu-qom.h b/target/mips/cpu-qom.h
+index 9c98ca1956..1a71509b5e 100644
+--- a/target/mips/cpu-qom.h
++++ b/target/mips/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU MIPS CPU
++ * QEMU MIPS CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2012 SUSE LINUX Products GmbH
+  *
+@@ -23,13 +23,12 @@
+ #include "hw/core/cpu.h"
+ #include "qom/object.h"
  
- typedef enum MMUAccessType {
-     MMU_DATA_LOAD  = 0,
+-#ifdef TARGET_MIPS64
+-#define TYPE_MIPS_CPU "mips64-cpu"
+-#else
+-#define TYPE_MIPS_CPU "mips-cpu"
+-#endif
++#define TYPE_MIPS_CPU   "mips-cpu"
++#define TYPE_MIPS32_CPU "mips32-cpu"
++#define TYPE_MIPS64_CPU "mips64-cpu"
+ 
+-OBJECT_DECLARE_CPU_TYPE(MIPSCPU, MIPSCPUClass, MIPS_CPU)
++OBJECT_DECLARE_CPU_TYPE(MIPS32CPU, MIPSCPUClass, MIPS32_CPU)
++OBJECT_DECLARE_CPU_TYPE(MIPS64CPU, MIPSCPUClass, MIPS64_CPU)
+ 
+ #define MIPS_CPU_TYPE_SUFFIX "-" TYPE_MIPS_CPU
+ #define MIPS_CPU_TYPE_NAME(model) model MIPS_CPU_TYPE_SUFFIX
+diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+index 6b026e6bcf..3b6d0a7a8a 100644
+--- a/target/mips/cpu.h
++++ b/target/mips/cpu.h
+@@ -10,6 +10,9 @@
+ #include "hw/clock.h"
+ #include "mips-defs.h"
+ 
++/* Abstract QOM MIPS CPU, not exposed to other targets */
++OBJECT_DECLARE_CPU_TYPE(MIPSCPU, MIPSCPUClass, MIPS_CPU)
++
+ #define TCG_GUEST_DEFAULT_MO (0)
+ 
+ typedef struct CPUMIPSTLBContext CPUMIPSTLBContext;
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index 83ee54f766..f43300dd5e 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -605,6 +605,14 @@ static const TypeInfo mips_cpu_types[] = {
+         .abstract       = true,
+         .class_size     = sizeof(MIPSCPUClass),
+         .class_init     = mips_cpu_class_init,
++    }, {
++        .name           = TYPE_MIPS32_CPU,
++        .parent         = TYPE_MIPS_CPU,
++        .abstract       = true,
++    }, {
++        .name           = TYPE_MIPS64_CPU,
++        .parent         = TYPE_MIPS_CPU,
++        .abstract       = true,
+     }
+ };
+ 
+@@ -621,7 +629,8 @@ static void mips_register_cpudef_type(const struct mips_def_t *def)
+     char *typename = mips_cpu_type_name(def->name);
+     TypeInfo ti = {
+         .name = typename,
+-        .parent = TYPE_MIPS_CPU,
++        .parent = def->insn_flags & CPU_MIPS64
++                  ? TYPE_MIPS64_CPU : TYPE_MIPS32_CPU,
+         .class_init = mips_cpu_cpudef_class_init,
+         .class_data = (void *)def,
+     };
 -- 
 2.41.0
 

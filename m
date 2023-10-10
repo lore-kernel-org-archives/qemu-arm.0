@@ -1,339 +1,338 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp152144ejr;
-        Tue, 10 Oct 2023 06:52:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE/UVFoQErbwKdOu1Klu1oupXdraqiot4SsQ7NARQigV5mgG+CZEIxv5HBJtxfMXxXJoJvW
-X-Received: by 2002:a05:6871:514:b0:1d6:4b84:c7ea with SMTP id s20-20020a056871051400b001d64b84c7eamr18805860oal.11.1696945941335;
-        Tue, 10 Oct 2023 06:52:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696945941; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp177149ejr;
+        Tue, 10 Oct 2023 07:25:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFNS6BkdmMaZUa5SUzNwM98kudOsNZtY8F2Y5SZd2NsOkranXmibocF8hESYzehVJWDnA72
+X-Received: by 2002:a0c:e054:0:b0:65b:1b3d:74b7 with SMTP id y20-20020a0ce054000000b0065b1b3d74b7mr17207481qvk.0.1696947917604;
+        Tue, 10 Oct 2023 07:25:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696947917; cv=none;
         d=google.com; s=arc-20160816;
-        b=rgPf/SjCzGV+mYB+3ylY4BJjdjrCRkTrIOLM5gN2iTYSZPu/lFIQU8ozi5AvtUeEnF
-         VWjoMLg1K7wCYPO7HDfvKgfdsH9PwUSJn9IUqRAtceJ7UcbZ0axFBmJ9rG+ga2J2KweR
-         ZQ3/JnKjG2RHQOr2GGnfCMo5uUMdXXaClCu9BrPSF3UqYY22uf59XW6S/q6aauEAZ6tv
-         3qKELdtJkczQ8uy195lMJytxbW9mp4j9XWF//TnoQ8xYBhfeXibvQEndlY2pW2GQ9XhJ
-         9q6Cz4jfJaFxMTxukMn2bZ5loMmC4tEKh9lVHlOgyCQBQBNL2zAvkX5kmyvKZeYS3l6M
-         hOIQ==
+        b=VBJR6OuBhoIzC9Ly/JrbPgtde48+e7ey40HB7iI8voo0QI1zHu/H+0MxDcUiEvI3Kw
+         UAnywhNUbpiT7fsX/nG6ioht8rO2TynjF1hgGfMW4CQFc6+CsH7xzfKx3TZNzz6Fh3qe
+         LlBJCVMpv5FjLzexdVY7Q8Dn23EU8qeCn2+JLZh9S5bZ1R3l/lwWYelJgDaSlZir7iJV
+         uW26f4vmChJr5EqAUNGUEBL0MNNLPJ2rdeSu1sm8+WAiBHvAjLRipAkCUix5ugMLibRV
+         CMLviCWjEJIW3wU9ST1mGbyzrqEEpGX6dc9wUGk2BC9gxJ83vPMk7en2k/uQ/jDSzEea
+         35HA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=WPlDaTC9Nx/qxNyARQOUIBoi1JEmNCvuT9tftjEj660=;
-        fh=gVmgt05lYC9Kq3vZqToIEPbr8DFcTYootz8XWxc6lQg=;
-        b=QMJKqOscccAOP8gKiAdDbsEyAMFthRR40lsR+jUiu39KYFU1KcjZ+TMEzq4h6P90Vt
-         LZDTKHIq9UnBhF0YP654C6x3sxc6xw8qUA+4JJFalWhqQF7oIBqLK68uTsfKEusIoTSW
-         HUy1OfIkIaIFod5nemnKOxgLFF+v3vYOFtfOx0Z2ynmu9Qivy2mClFWUldyKAB+wY2nk
-         ac1I1/jGtAB1t3Uwoc3sh32G35GxhcN4NE/7QaxeX8V7lGvJUDpRnc1FgmjvIMX3dqKC
-         LUAvmkPyBdBDEvfUMN8lrw5JLi/yZjc88KVgH+rJfjVPcI4eqfFMQznofkRwPilI4rZ4
-         jXwg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=2rhL/1dKBJ7I7XG88xbTal3/xTAn672281HftEnuaUA=;
+        fh=ImRerk2y7/YfWKyaAH9Jk8iKMFuTfW2jmHv5mlACdLg=;
+        b=O3unvYpgPyBZDaKRvUV2pBjxk9IFLMwjVmqIO/iksxu/VqsY1RCU98yp2+MLAv1Y+m
+         Mvl3PDPIOqQEnQAE+En+UOFVHsFtTcMc3urnHl4B3NfBOuO70f5spE2jMk1q096V0s+0
+         AKuJrrrjKpHarawOWfMmt6TAD6uMhvBJVHhxuMY/N1xI3cCwWZhfMSRPUwoYTRwSUAk8
+         VAc6fuTnAUmwh2I+CgrdSysmuRpI9tkyVyVu1AcRfcLHKKqel+t8VlTisBz1F31CtyvN
+         YUKvG0Nuk1qOs9BtQu8xbqP4u2l17Zi6ajALXHF4rQbcKkehQTyhhUECtkkOC/p6ZlT1
+         CUhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OLo+SFg3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E1cXy6MH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10-20020a0cb40a000000b0065b20aeaeabsi7515318qve.498.2023.10.10.06.52.21
+        by mx.google.com with ESMTPS id t15-20020ac8588f000000b004198a7c49dbsi7638484qta.494.2023.10.10.07.25.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Oct 2023 06:52:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Oct 2023 07:25:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OLo+SFg3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E1cXy6MH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qqD95-0006F0-6d; Tue, 10 Oct 2023 09:51:35 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qqDfc-0001xS-H6; Tue, 10 Oct 2023 10:25:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qqD90-0006CY-TN
- for qemu-devel@nongnu.org; Tue, 10 Oct 2023 09:51:32 -0400
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1qqDfa-0001ww-50
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 10:25:10 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qqD8w-0001DT-A8
- for qemu-devel@nongnu.org; Tue, 10 Oct 2023 09:51:30 -0400
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1qqDfW-0000E6-Hs
+ for qemu-arm@nongnu.org; Tue, 10 Oct 2023 10:25:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696945885;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1696947905;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WPlDaTC9Nx/qxNyARQOUIBoi1JEmNCvuT9tftjEj660=;
- b=OLo+SFg30vdzcFu80ZtqfkbUwmCNSxmUIXTWKc/SRN1+OITi6Z4pGY5NixByWoIR7Im0JJ
- U+QOwuurcm+HzQDPCgrzf0hgdGFQ1YletvEilbH9RayO7S3be70fHycbMvjJsQS7Yj2dbd
- 01s0lFnnDhboToywRBnU1pUlOl2iAMw=
-Received: from mail-yb1-f198.google.com (mail-yb1-f198.google.com
- [209.85.219.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-7-o8tr0N1NPa62zg3MiJPsXA-1; Tue, 10 Oct 2023 09:51:23 -0400
-X-MC-Unique: o8tr0N1NPa62zg3MiJPsXA-1
-Received: by mail-yb1-f198.google.com with SMTP id
- 3f1490d57ef6-d9a5a3f2d4fso961746276.3
- for <qemu-devel@nongnu.org>; Tue, 10 Oct 2023 06:51:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696945883; x=1697550683;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=WPlDaTC9Nx/qxNyARQOUIBoi1JEmNCvuT9tftjEj660=;
- b=TvvNtkXazfkOAN2dXOQQtqmgxzuejzWc9aRfzp2+FtnDlEV8z7hfXy6EDyRUDnYH4h
- 7tq3Qd8wbke+za6PEkwOvjF136kGK/mSHglvULpGM6mrMK93Gaxr7kLT6WimAFE+RwdX
- X6d2DBVmZfwi49YWXgcJN/ZgF+yL4pl090knd5NbqC/wc5E1D9SBeJ1Xf2wXPTVyz/d5
- +5xG+RjS4sEyH//pUbd+vYVP27G5iox35L9bD2BEfo+2QliI8hOfLb1g8k9Y1OJ67Y75
- 2JP7DRzLlXailLAJD9cEPFiDAN/7LHvtgbrRSJkd1VChkER05XHr+AzbhkpG9hqi20wj
- rElw==
-X-Gm-Message-State: AOJu0YxLCZlpE0L6jqsrRDSo37W8qC31cTKk69hR+8NsGQBs0qcsWnLc
- 4ycaMMSqx1isVvdR7XHCCr6lc0d6Jq6Xl3bhKzNk6nnEH6bP4VKC8fkeQmhvg64FeAJ4++5ZGWh
- rnasYU5iX6gCsYOs=
-X-Received: by 2002:a25:cf8b:0:b0:d81:5af9:5208 with SMTP id
- f133-20020a25cf8b000000b00d815af95208mr19044367ybg.31.1696945882949; 
- Tue, 10 Oct 2023 06:51:22 -0700 (PDT)
-X-Received: by 2002:a25:cf8b:0:b0:d81:5af9:5208 with SMTP id
- f133-20020a25cf8b000000b00d815af95208mr19044335ybg.31.1696945882570; 
- Tue, 10 Oct 2023 06:51:22 -0700 (PDT)
-Received: from [192.168.43.95] ([37.170.189.5])
- by smtp.gmail.com with ESMTPSA id
- o2-20020a0c8c42000000b0065b22afe53csm4839552qvb.94.2023.10.10.06.51.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Oct 2023 06:51:21 -0700 (PDT)
-Message-ID: <f14be475-7a7b-6709-a7dd-e91504a6afa2@redhat.com>
-Date: Tue, 10 Oct 2023 15:51:17 +0200
+ bh=2rhL/1dKBJ7I7XG88xbTal3/xTAn672281HftEnuaUA=;
+ b=E1cXy6MH2NiOuJBB14Rmxuq1FPjKBB9MOBYoMwvAO8YT1K6vVnsE6RrYom9JwY/c1wYknp
+ O/ZEJaNKb7cvghsKA1e7wSd5rWZyTPKAc6DRUkuSQRFxN7dkZB0DmDp86vHVKqqoQGBxmi
+ 5VHPgC753DS+fe+giyqZDtSrjayMzZg=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-675-BdP-E0pTPfuoW1UX2CxwUA-1; Tue, 10 Oct 2023 10:25:00 -0400
+X-MC-Unique: BdP-E0pTPfuoW1UX2CxwUA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A215F185A7B3;
+ Tue, 10 Oct 2023 14:24:59 +0000 (UTC)
+Received: from gondolin.str.redhat.com (dhcp-192-239.str.redhat.com
+ [10.33.192.239])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B778521CAC6B;
+ Tue, 10 Oct 2023 14:24:58 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ kvm@vger.kernel.org, Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v2 2/3] arm/kvm: convert to kvm_get_one_reg
+Date: Tue, 10 Oct 2023 16:24:52 +0200
+Message-ID: <20231010142453.224369-3-cohuck@redhat.com>
+In-Reply-To: <20231010142453.224369-1-cohuck@redhat.com>
+References: <20231010142453.224369-1-cohuck@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v2 09/12] util/reserved-region: Add new ReservedRegion
- helpers
-Content-Language: en-US
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- alex.williamson@redhat.com, clg@redhat.com, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
- david@redhat.com, philmd@linaro.org
-References: <20230913080423.523953-1-eric.auger@redhat.com>
- <20230913080423.523953-10-eric.auger@redhat.com>
- <20230929161649.GC2957297@myrica>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20230929161649.GC2957297@myrica>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Content-type: text/plain
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-3.339, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e4vSuO0mIYYR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4lFRhCytzIij
 
-Hi Jean,
-On 9/29/23 18:16, Jean-Philippe Brucker wrote:
-> On Wed, Sep 13, 2023 at 10:01:44AM +0200, Eric Auger wrote:
->> Introduce resv_region_list_insert() helper which inserts
->> a new ReservedRegion into a sorted list of reserved region.
->> In case of overlap, the new region has higher priority and
->> hides the existing overlapped segments. If the overlap is
->> partial, new regions are created for parts which are not
->> overlapped. The new region has higher priority independently
->> on the type of the regions.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  include/qemu/reserved-region.h | 32 ++++++++++++
->>  util/reserved-region.c         | 94 ++++++++++++++++++++++++++++++++++
->>  util/meson.build               |  1 +
->>  3 files changed, 127 insertions(+)
->>  create mode 100644 include/qemu/reserved-region.h
->>  create mode 100644 util/reserved-region.c
->>
->> diff --git a/include/qemu/reserved-region.h b/include/qemu/reserved-region.h
->> new file mode 100644
->> index 0000000000..8e6f0a97e2
->> --- /dev/null
->> +++ b/include/qemu/reserved-region.h
->> @@ -0,0 +1,32 @@
->> +/*
->> + * QEMU ReservedRegion helpers
->> + *
->> + * Copyright (c) 2023 Red Hat, Inc.
->> + *
->> + * This program is free software; you can redistribute it and/or
->> + * modify it under the terms of the GNU General Public
->> + * License as published by the Free Software Foundation; either
->> + * version 2 of the License, or (at your option) any later version.
->> + *
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
->> + * General Public License for more details.
->> + *
->> + * You should have received a copy of the GNU General Public License
->> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
->> + */
->> +
->> +#ifndef QEMU_RESERVED_REGION_H
->> +#define QEMU_RESERVED_REGION_H
->> +
->> +#include "exec/memory.h"
->> +
->> +/*
->> + * Insert a new region into a sorted list of reserved regions. In case
->> + * there is overlap with existing regions, the new added region has
->> + * higher priority and replaces the overlapped segment.
->> + */
->> +GList *resv_region_list_insert(GList *list, ReservedRegion *reg);
->> +
->> +#endif
->> diff --git a/util/reserved-region.c b/util/reserved-region.c
->> new file mode 100644
->> index 0000000000..bb26a6bed3
->> --- /dev/null
->> +++ b/util/reserved-region.c
->> @@ -0,0 +1,94 @@
->> +/*
->> + * QEMU ReservedRegion helpers
->> + *
->> + * Copyright (c) 2023 Red Hat, Inc.
->> + *
->> + * This program is free software; you can redistribute it and/or
->> + * modify it under the terms of the GNU General Public
->> + * License as published by the Free Software Foundation; either
->> + * version 2 of the License, or (at your option) any later version.
->> + *
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
->> + * General Public License for more details.
->> + *
->> + * You should have received a copy of the GNU General Public License
->> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "qemu/range.h"
->> +#include "qemu/reserved-region.h"
->> +
->> +GList *resv_region_list_insert(GList *list, ReservedRegion *reg)
->> +{
->> +    ReservedRegion *resv_iter, *new_reg;
->> +    Range *r = &reg->range;
->> +    Range *range_iter;
->> +    GList *l;
->> +
->> +    for (l = list; l ; ) {
->> +        resv_iter = (ReservedRegion *)l->data;
->> +        range_iter = &resv_iter->range;
->> +
->> +        /* Skip all list elements strictly less than range to add */
->> +        if (range_compare(range_iter, r) < 0) {
->> +            l = l->next;
->> +        } else if (range_compare(range_iter, r) > 0) {
->> +            return g_list_insert_before(list, l, reg);
->> +        } else { /* there is an operlap */
-> I guess this could just be 'else if', and the whole block below
-> unindented. But I don't know if the function would look less or more scary :)
-yeah if you don't mind I would be inclided to leave it as is. It
-isolates the case where we have an overlap and you already reviewed it ;-).
->
->> +            if (range_contains_range(r, range_iter)) {
->> +                /* new range contains current item, simply remove this latter */
->> +                GList *prev = l->prev;
->> +                g_free(l->data);
->> +                list = g_list_delete_link(list, l);
->> +                if (prev) {
-> These four lines could just be 'l = prev->next'.
-indeed!
->
->> +                    l = prev;
->> +                    if (l) {
->> +                        l = l->next;
->> +                    }
->> +                } else {
->> +                    l = list;
->> +                }
->> +            } else if (range_contains_range(range_iter, r)) {
->> +                /* new region is included in the current region */
->> +                if (range_lob(range_iter) == range_lob(r)) {
->> +                    /* adjacent on the left side, derives into 2 regions */
->> +                    range_set_bounds(range_iter, range_upb(r) + 1,
->> +                                     range_upb(range_iter));
->> +                    return g_list_insert_before(list, l, reg);
->> +                } else if (range_upb(range_iter) == range_upb(r)) {
->> +                    /* adjacent on the right side, derives into 2 regions */
->> +                    range_set_bounds(range_iter, range_lob(range_iter),
->> +                                     range_lob(r) - 1);
->> +                    l = l->next;
->> +                } else {
->> +                    uint64_t lob = range_lob(range_iter);
->> +                    /*
->> +                     * the new range is in the middle of an existing one,
->> +                     * split this latter into 3 regs instead
->> +                     */
->> +                    range_set_bounds(range_iter, range_upb(r) + 1,
->> +                                     range_upb(range_iter));
->> +                    new_reg = g_new0(ReservedRegion, 1);
->> +                    new_reg->type = resv_iter->type;
->> +                    range_set_bounds(&new_reg->range,
->> +                                     lob, range_lob(r) - 1);
->> +                    list = g_list_insert_before(list, l, new_reg);
->> +                    return g_list_insert_before(list, l, reg);
->> +                }
->> +            } else if (range_lob(r) < range_lob(range_iter)) {
->> +                range_set_bounds(range_iter, range_upb(r) + 1,
->> +                                 range_upb(range_iter));
->> +                return g_list_insert_before(list, l, reg);
->> +            } else { /* intersection on the upper range */
->> +                range_set_bounds(range_iter, range_lob(range_iter),
->> +                                 range_lob(r) - 1);
->> +                l = l->next;
->> +            }
->> +        } /* overlap */
->> +    }
->> +    return g_list_append(list, reg);
-> Looks correct overall
->
-> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+We can neaten the code by switching the callers that work on a
+CPUstate to the kvm_get_one_reg function.
 
-That must have been a pain, really appreciated!
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+---
+ target/arm/kvm.c   | 15 +++---------
+ target/arm/kvm64.c | 57 ++++++++++++----------------------------------
+ 2 files changed, 18 insertions(+), 54 deletions(-)
 
-Eric
->
->> +}
->> +
->> diff --git a/util/meson.build b/util/meson.build
->> index c4827fd70a..eb677b40c2 100644
->> --- a/util/meson.build
->> +++ b/util/meson.build
->> @@ -51,6 +51,7 @@ util_ss.add(files('qdist.c'))
->>  util_ss.add(files('qht.c'))
->>  util_ss.add(files('qsp.c'))
->>  util_ss.add(files('range.c'))
->> +util_ss.add(files('reserved-region.c'))
->>  util_ss.add(files('stats64.c'))
->>  util_ss.add(files('systemd.c'))
->>  util_ss.add(files('transactions.c'))
->> -- 
->> 2.41.0
->>
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 1a8084c4601c..7903e2ddde1b 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -553,24 +553,19 @@ bool write_kvmstate_to_list(ARMCPU *cpu)
+     bool ok = true;
+ 
+     for (i = 0; i < cpu->cpreg_array_len; i++) {
+-        struct kvm_one_reg r;
+         uint64_t regidx = cpu->cpreg_indexes[i];
+         uint32_t v32;
+         int ret;
+ 
+-        r.id = regidx;
+-
+         switch (regidx & KVM_REG_SIZE_MASK) {
+         case KVM_REG_SIZE_U32:
+-            r.addr = (uintptr_t)&v32;
+-            ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &r);
++            ret = kvm_get_one_reg(cs, regidx, &v32);
+             if (!ret) {
+                 cpu->cpreg_values[i] = v32;
+             }
+             break;
+         case KVM_REG_SIZE_U64:
+-            r.addr = (uintptr_t)(cpu->cpreg_values + i);
+-            ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &r);
++            ret = kvm_get_one_reg(cs, regidx, cpu->cpreg_values + i);
+             break;
+         default:
+             g_assert_not_reached();
+@@ -706,17 +701,13 @@ int kvm_arm_sync_mpstate_to_qemu(ARMCPU *cpu)
+ void kvm_arm_get_virtual_time(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+-    struct kvm_one_reg reg = {
+-        .id = KVM_REG_ARM_TIMER_CNT,
+-        .addr = (uintptr_t)&cpu->kvm_vtime,
+-    };
+     int ret;
+ 
+     if (cpu->kvm_vtime_dirty) {
+         return;
+     }
+ 
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    ret = kvm_get_one_reg(cs, KVM_REG_ARM_TIMER_CNT, &cpu->kvm_vtime);
+     if (ret) {
+         error_report("Failed to get KVM_REG_ARM_TIMER_CNT");
+         abort();
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 047b269a7918..558c0b88dd69 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -909,14 +909,11 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+ static int kvm_arch_get_fpsimd(CPUState *cs)
+ {
+     CPUARMState *env = &ARM_CPU(cs)->env;
+-    struct kvm_one_reg reg;
+     int i, ret;
+ 
+     for (i = 0; i < 32; i++) {
+         uint64_t *q = aa64_vfp_qreg(env, i);
+-        reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
+-        reg.addr = (uintptr_t)q;
+-        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++        ret = kvm_get_one_reg(cs, AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]), q);
+         if (ret) {
+             return ret;
+         } else {
+@@ -940,15 +937,12 @@ static int kvm_arch_get_sve(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+-    struct kvm_one_reg reg;
+     uint64_t *r;
+     int n, ret;
+ 
+     for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; ++n) {
+         r = &env->vfp.zregs[n].d[0];
+-        reg.addr = (uintptr_t)r;
+-        reg.id = KVM_REG_ARM64_SVE_ZREG(n, 0);
+-        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++        ret = kvm_get_one_reg(cs, KVM_REG_ARM64_SVE_ZREG(n, 0), r);
+         if (ret) {
+             return ret;
+         }
+@@ -957,9 +951,7 @@ static int kvm_arch_get_sve(CPUState *cs)
+ 
+     for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; ++n) {
+         r = &env->vfp.pregs[n].p[0];
+-        reg.addr = (uintptr_t)r;
+-        reg.id = KVM_REG_ARM64_SVE_PREG(n, 0);
+-        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++        ret = kvm_get_one_reg(cs, KVM_REG_ARM64_SVE_PREG(n, 0), r);
+         if (ret) {
+             return ret;
+         }
+@@ -967,9 +959,7 @@ static int kvm_arch_get_sve(CPUState *cs)
+     }
+ 
+     r = &env->vfp.pregs[FFR_PRED_NUM].p[0];
+-    reg.addr = (uintptr_t)r;
+-    reg.id = KVM_REG_ARM64_SVE_FFR(0);
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    ret = kvm_get_one_reg(cs, KVM_REG_ARM64_SVE_FFR(0), r);
+     if (ret) {
+         return ret;
+     }
+@@ -980,7 +970,6 @@ static int kvm_arch_get_sve(CPUState *cs)
+ 
+ int kvm_arch_get_registers(CPUState *cs)
+ {
+-    struct kvm_one_reg reg;
+     uint64_t val;
+     unsigned int el;
+     uint32_t fpr;
+@@ -990,31 +979,24 @@ int kvm_arch_get_registers(CPUState *cs)
+     CPUARMState *env = &cpu->env;
+ 
+     for (i = 0; i < 31; i++) {
+-        reg.id = AARCH64_CORE_REG(regs.regs[i]);
+-        reg.addr = (uintptr_t) &env->xregs[i];
+-        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++        ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
++                              &env->xregs[i]);
+         if (ret) {
+             return ret;
+         }
+     }
+ 
+-    reg.id = AARCH64_CORE_REG(regs.sp);
+-    reg.addr = (uintptr_t) &env->sp_el[0];
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.sp), &env->sp_el[0]);
+     if (ret) {
+         return ret;
+     }
+ 
+-    reg.id = AARCH64_CORE_REG(sp_el1);
+-    reg.addr = (uintptr_t) &env->sp_el[1];
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(sp_el1), &env->sp_el[1]);
+     if (ret) {
+         return ret;
+     }
+ 
+-    reg.id = AARCH64_CORE_REG(regs.pstate);
+-    reg.addr = (uintptr_t) &val;
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.pstate), &val);
+     if (ret) {
+         return ret;
+     }
+@@ -1031,9 +1013,7 @@ int kvm_arch_get_registers(CPUState *cs)
+      */
+     aarch64_restore_sp(env, 1);
+ 
+-    reg.id = AARCH64_CORE_REG(regs.pc);
+-    reg.addr = (uintptr_t) &env->pc;
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.pc), &env->pc);
+     if (ret) {
+         return ret;
+     }
+@@ -1047,9 +1027,7 @@ int kvm_arch_get_registers(CPUState *cs)
+         aarch64_sync_64_to_32(env);
+     }
+ 
+-    reg.id = AARCH64_CORE_REG(elr_el1);
+-    reg.addr = (uintptr_t) &env->elr_el[1];
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(elr_el1), &env->elr_el[1]);
+     if (ret) {
+         return ret;
+     }
+@@ -1059,9 +1037,8 @@ int kvm_arch_get_registers(CPUState *cs)
+      * KVM SPSRs 0-4 map to QEMU banks 1-5
+      */
+     for (i = 0; i < KVM_NR_SPSR; i++) {
+-        reg.id = AARCH64_CORE_REG(spsr[i]);
+-        reg.addr = (uintptr_t) &env->banked_spsr[i + 1];
+-        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++        ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(spsr[i]),
++                              &env->banked_spsr[i + 1]);
+         if (ret) {
+             return ret;
+         }
+@@ -1082,17 +1059,13 @@ int kvm_arch_get_registers(CPUState *cs)
+         return ret;
+     }
+ 
+-    reg.addr = (uintptr_t)(&fpr);
+-    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    ret = kvm_get_one_reg(cs, AARCH64_SIMD_CTRL_REG(fp_regs.fpsr), &fpr);
+     if (ret) {
+         return ret;
+     }
+     vfp_set_fpsr(env, fpr);
+ 
+-    reg.addr = (uintptr_t)(&fpr);
+-    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    ret = kvm_get_one_reg(cs, AARCH64_SIMD_CTRL_REG(fp_regs.fpcr), &fpr);
+     if (ret) {
+         return ret;
+     }
+-- 
+2.41.0
 

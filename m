@@ -1,65 +1,65 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp224624ejc;
-        Wed, 11 Oct 2023 09:53:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF/HCiB471EiipataocctzMDQqfYBovivuUm6qBNYi2u56kqMH5Ut1hDhMSjr+i9JibrtGb
-X-Received: by 2002:a0d:e2c6:0:b0:5a7:cadb:c721 with SMTP id l189-20020a0de2c6000000b005a7cadbc721mr4408112ywe.12.1697043182965;
-        Wed, 11 Oct 2023 09:53:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697043182; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp224669ejc;
+        Wed, 11 Oct 2023 09:53:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEa6n/kCB1Rr0rCTKZ3yfp6inQDPcsrJTnpdezhnsTQzDsCOBH5sORVP0aCpeqYZIf0TQT7
+X-Received: by 2002:a25:641:0:b0:d86:74e5:9469 with SMTP id 62-20020a250641000000b00d8674e59469mr18003094ybg.16.1697043187111;
+        Wed, 11 Oct 2023 09:53:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697043187; cv=none;
         d=google.com; s=arc-20160816;
-        b=jXUAvfko0H3iRJunLlZlOm3ylwq7E2H6+93AwqNiPDPZPke22C81ScHWwxH4s4cZtV
-         oBYHDGoR125vEXUkNpFcAMhh2Bs7J3zE+W58sewwSoj6OLINiBpsbJ5EwH31HkD6zy5t
-         gGirRDmpsoOLKFPBYdHRbx43GRVXzyz7dPvR2vBvMB5zllJUY7Ylc2CfGCPSMQ5v4h2d
-         Uc7FKsJmb3hv42HBqBkuiFk523XNbzJCMzfakbwVRt2KbnCMmuM429hGMbJgZTrekeSH
-         x3tLnHLXWskxCxEqA3uoXKZCfMwdOmLH7EEBzncX/rY1K/wKxLogJDszIshN7Bpx9yx7
-         VVXQ==
+        b=YvQ3ZYbQ/RW9HBfsBgkVRiq/SVsT7ZDsj8Jg1CNxie74JRDpeOy4/XctnKbCl85yrO
+         gYf6DQ1l1x58EZfp4UTPNDIuPusguQ4aWaJWm/rhhONqQTHCFKy0e9ZhTQwS3ba2tOE8
+         4FJ5sw2emkOS8Ojft5Yt6c+Oek9pYcG0wy/xRx96rSnFpqbT2TA/kCweM1O+29H+dZcI
+         broAimce5dOioaO3IRBWczC3s/Ny4LjOBIoRxwLP1q+rl+JUgva+1C/wfgRNt05impyp
+         VfqmC/gxyn1ZsHPmijnhp2oVdpuUNooYjTQ6YERJcKf6Eto4cxcDeYt+v+m9u3MM7BFs
+         S4ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vIY9iQmVxOtCnb003WgKAaSquLhSf0MtJNj5vG0N7VE=;
+        bh=aKCik6loT2tDTTKOP+RQkmj+QfmfOkUlBUcFV9MK+s8=;
         fh=mISachWtBfNM+xwhtkUSxPXJbL9QWI2VyucuYtl+xAM=;
-        b=Fo/Qjiqp5D4bUI4fOsGWWrMSE4f+7JS5Op+5CAg8XL1id0kcM9ccmaG3Kkn0CWj7cj
-         AJIM24uJ9xCKfTFGoyJN3YZBEaGFX2RW39p5NNrTzKIMnAyJcJWt6IO7j8lLEzTTwQ34
-         HSL+uA71IslXtFjroyZZAQD7scRko356NKDLtGy/Sdnju5uxB23L52el9o7DUJ4eL6kj
-         5KuLx6ph6oVnrJwz3tMQrEZuX7AS4gi5SIZJ2y3TnsQcj942vZO9QgsRgBoEanyxh7/u
-         1F9F8NcDEk1RLE7evWWFpL54Ji+D9t8kkpdAQ/RnErc7zKMheacw/IADYW0i8Sd7X2dy
-         5fug==
+        b=yJYY1nGKyEuBOlm6AuJ/RQD21BKlFQ27IWuM8c4FzdUmMcpiqWx4LJJkwwKS1zjRxB
+         raCuNGoesYDpsa82tgf7QptCG9vKaFzsNiCeJMszliq0iD8JPecwuy8qXcWe9ykRM9Uh
+         mhDOO0fBoh3HDAAI+q1VG4A7sYABo/dytWU4rKpCJXVhIYzVYultnEf6ET6Quu0rc0YB
+         u7S9PjOgdOiVOZNJijUqfkvQjnJcFz2q5H4Oj2LvB00VjPUTwkBmfX1RHIDBrcx6/Q74
+         2NVsjZzXXPc30WbmRNrwjNoVfrLgpfFGXXGIQTtIu8sjAModAZnhP4uSAdx75jg7wFKB
+         Hr8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=p1Oo5wYM;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=luhnnf16;
        spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <quic_svaddagi@quicinc.com>
 Received: from mx0b-0031df01.pphosted.com (mx0b-0031df01.pphosted.com. [205.220.180.131])
-        by mx.google.com with ESMTPS id r145-20020a819a97000000b005a4fe858be0si5003509ywg.206.2023.10.11.09.53.02
+        by mx.google.com with ESMTPS id x8-20020a25ac88000000b00d8678348cfasi4801824ybi.276.2023.10.11.09.53.06
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Oct 2023 09:53:02 -0700 (PDT)
+        Wed, 11 Oct 2023 09:53:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) client-ip=205.220.180.131;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=p1Oo5wYM;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=luhnnf16;
        spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39BFrMNf011672;
-	Wed, 11 Oct 2023 16:53:02 GMT
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39BFqO4R018254;
+	Wed, 11 Oct 2023 16:53:06 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=qcppdkim1;
- bh=vIY9iQmVxOtCnb003WgKAaSquLhSf0MtJNj5vG0N7VE=;
- b=p1Oo5wYMbkVsnWjd0BC1EiIFaq76eX2f/I7taboChpIfnMHPYOB/Jk7s1TCWBpyO50sT
- yNi1iJbOZIc/WO6B5Y/g8kG4afCQoBoi6dODkHanxqxAAi8by5rR6Dh/KPy4oUN9mP7x
- AzEVJAM66lrin2yZUv2G2Ur9BywARQhs6G/jXnVO5PEqpucg3n0i2VrpFweJoB2jM9vN
- ITyrPPfGa8xuTXzw7RSZpyU1SvlNk1fDnHmFDZI1kPlXOkzzPvaitLtzVswCjhqZkmTB
- 5e8PvFlOULUGUMXen36M/ImZ7TbT/UVokxL8KJd/qAomULg2QNa3dMPHmxxriY5fQmjY mg== 
-Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3tnnvw9hh5-1
+ bh=aKCik6loT2tDTTKOP+RQkmj+QfmfOkUlBUcFV9MK+s8=;
+ b=luhnnf16F7VgiAZm31pQMY6xPT37XzVORo2Q69wPgDO9oxtRgtO8BUmJo6b7n3PQmLU1
+ zcSfzqsyoOrEO0D5S6+UJ3akTgpPibslb13EvBUo+3qegDqndRaXdInsEHeCJJcvI5Em
+ 4TMjKbiUcbXNMt4dAAXATOML+6xPVbeUygbVctFnL3c1Ac1JnvAE5MKDxagW+BkDgFB6
+ ngfDRtONeoe2MEgubWGVJNlkKBHRaLnBGpJmioJ1F6BFozxO1h4Xu/zEyPRZIKU/dJeH
+ j2o4cK/fm+2ohlwmKC6/SQiBTEgf6H/lLjqf49i/jhFOuOBseoHd0D/ihz6jfWoMzT5u ZQ== 
+Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3tnn1gsk70-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 11 Oct 2023 16:53:02 +0000
+	Wed, 11 Oct 2023 16:53:06 +0000
 Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39BGr1Zv008046
+	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39BGr5H7002055
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 11 Oct 2023 16:53:01 GMT
+	Wed, 11 Oct 2023 16:53:05 GMT
 Received: from blr-ubuntu-31.qualcomm.com (10.80.80.8) by
  nalasex01b.na.qualcomm.com (10.47.209.197) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.36; Wed, 11 Oct 2023 09:52:56 -0700
+ 15.2.1118.36; Wed, 11 Oct 2023 09:53:01 -0700
 From: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
 To: <peter.maydell@linaro.org>, <alex.bennee@linaro.org>,
         <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
@@ -67,9 +67,9 @@ CC: <quic_svaddagi@quicinc.com>, <quic_tsoni@quicinc.com>,
         <quic_pheragu@quicinc.com>, <quic_eberman@quicinc.com>,
         <quic_yvasi@quicinc.com>, <quic_cvanscha@quicinc.com>,
         <quic_mnalajal@quicinc.com>
-Subject: [RFC/PATCH v0 03/12] gunyah: Basic support
-Date: Wed, 11 Oct 2023 16:52:25 +0000
-Message-ID: <20231011165234.1323725-4-quic_svaddagi@quicinc.com>
+Subject: [RFC/PATCH v0 04/12] gunyah: Add VM properties
+Date: Wed, 11 Oct 2023 16:52:26 +0000
+Message-ID: <20231011165234.1323725-5-quic_svaddagi@quicinc.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
 References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
@@ -81,543 +81,132 @@ X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
  nalasex01b.na.qualcomm.com (10.47.209.197)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: NdtPMWSgDDw8rm-VAoSjw4l1_FzRvfOM
-X-Proofpoint-GUID: NdtPMWSgDDw8rm-VAoSjw4l1_FzRvfOM
+X-Proofpoint-GUID: WuCR72cGOGkJL-ITG09u2xXC6wcirWtI
+X-Proofpoint-ORIG-GUID: WuCR72cGOGkJL-ITG09u2xXC6wcirWtI
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-11_12,2023-10-11_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 mlxscore=0
- impostorscore=0 mlxlogscore=939 bulkscore=0 adultscore=0 phishscore=0
- clxscore=1015 spamscore=0 priorityscore=1501 malwarescore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 spamscore=0
+ mlxlogscore=999 lowpriorityscore=0 suspectscore=0 phishscore=0
+ impostorscore=0 mlxscore=0 priorityscore=1501 clxscore=1015 bulkscore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2309180000 definitions=main-2310110148
-X-TUID: xeCdFIi0JnSp
+X-TUID: 7r2lKZx8lL+k
 
-Add a new accelerator, gunyah, with basic functionality of creating a
-VM. Subsequent patches will add support for other functions required to
-run a VM.
+Add 'protected-vm' and 'preshmem-size' properties that can be specified
+for a VM.
+
+Protected VMs are those that have 'protected-vm' property set. Their
+memory cannot be accessed by their (potentially untrusted) host. They
+are useful to run secure applications whose data should remain private
+to the VM.
+
+Since a protected VM may need some memory shared with its host, for
+exchange of information, 'preshmem-size' specifies what portion of a
+protected VM's memory should be shared with its host, with the remaining
+portion being private to it.
 
 Signed-off-by: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
 ---
- MAINTAINERS                     |   7 +++
- accel/Kconfig                   |   3 +
- accel/gunyah/gunyah-accel-ops.c | 102 ++++++++++++++++++++++++++++++++
- accel/gunyah/gunyah-all.c       |  70 ++++++++++++++++++++++
- accel/gunyah/meson.build        |   7 +++
- accel/meson.build               |   1 +
- accel/stubs/gunyah-stub.c       |  13 ++++
- accel/stubs/meson.build         |   1 +
- docs/about/build-platforms.rst  |   2 +-
- hw/arm/virt.c                   |   3 +
- include/sysemu/gunyah.h         |  43 ++++++++++++++
- include/sysemu/gunyah_int.h     |  27 +++++++++
- meson.build                     |   9 +++
- meson_options.txt               |   2 +
- scripts/meson-buildoptions.sh   |   3 +
- target/arm/cpu64.c              |   5 +-
- 16 files changed, 295 insertions(+), 3 deletions(-)
- create mode 100644 accel/gunyah/gunyah-accel-ops.c
- create mode 100644 accel/gunyah/gunyah-all.c
- create mode 100644 accel/gunyah/meson.build
- create mode 100644 accel/stubs/gunyah-stub.c
- create mode 100644 include/sysemu/gunyah.h
- create mode 100644 include/sysemu/gunyah_int.h
+ accel/gunyah/gunyah-accel-ops.c | 65 +++++++++++++++++++++++++++++++++
+ include/sysemu/gunyah_int.h     |  2 +
+ 2 files changed, 67 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6111b6b4d9..0e76dda91d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -510,6 +510,13 @@ F: accel/hvf/
- F: include/sysemu/hvf.h
- F: include/sysemu/hvf_int.h
- 
-+GUNYAH
-+M: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-+S: Maintained
-+F: accel/gunyah
-+F: include/sysemu/gunyah.h
-+F: include/sysemu/gunyah_int.h
-+
- WHPX CPUs
- M: Sunil Muthuswamy <sunilmut@microsoft.com>
- S: Supported
-diff --git a/accel/Kconfig b/accel/Kconfig
-index 8bdedb7d15..bab1edebf4 100644
---- a/accel/Kconfig
-+++ b/accel/Kconfig
-@@ -19,3 +19,6 @@ config KVM
- config XEN
-     bool
-     select FSDEV_9P if VIRTFS
-+
-+config GUNYAH
-+    bool
 diff --git a/accel/gunyah/gunyah-accel-ops.c b/accel/gunyah/gunyah-accel-ops.c
-new file mode 100644
-index 0000000000..1c1c20abf1
---- /dev/null
+index 1c1c20abf1..77089c4f36 100644
+--- a/accel/gunyah/gunyah-accel-ops.c
 +++ b/accel/gunyah/gunyah-accel-ops.c
-@@ -0,0 +1,102 @@
-+/*
-+ * QEMU Gunyah hypervisor support
-+ *
-+ * (based on KVM accelerator code structure)
-+ *
-+ * Copyright 2008 IBM Corporation
-+ *           2008 Red Hat, Inc.
-+ *
-+ * Copyright(c) 2023 Qualcomm Innovation Center, Inc. All Rights Reserved.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/thread.h"
-+#include "hw/boards.h"
-+#include "hw/core/cpu.h"
-+#include "sysemu/accel-ops.h"
-+#include "sysemu/cpus.h"
-+#include "sysemu/gunyah.h"
-+#include "sysemu/gunyah_int.h"
-+#include "qapi/visitor.h"
-+#include "qapi/error.h"
-+
-+bool gunyah_allowed;
-+
-+static int gunyah_init(MachineState *ms)
+@@ -37,6 +37,60 @@ static void gunyah_accel_instance_init(Object *obj)
+     s->vmfd = -1;
+ }
+ 
++static void gunyah_get_preshmem_size(Object *obj, Visitor *v,
++                                    const char *name, void *opaque,
++                                    Error **errp)
 +{
-+    return gunyah_create_vm();
++    GUNYAHState *s = GUNYAH_STATE(obj);
++    uint32_t value = s->preshmem_size;
++
++    visit_type_uint32(v, name, &value, errp);
 +}
 +
-+static void gunyah_accel_instance_init(Object *obj)
++static void gunyah_set_preshmem_size(Object *obj, Visitor *v,
++                                    const char *name, void *opaque,
++                                    Error **errp)
++{
++    GUNYAHState *s = GUNYAH_STATE(obj);
++    uint32_t value;
++
++    if (s->fd != -1) {
++        error_setg(errp, "Cannot set properties after VM is created");
++        return;
++    }
++
++    if (!visit_type_uint32(v, name, &value, errp)) {
++        error_setg(errp, "preshmem-size must be an unsigned integer");
++        return;
++    }
++
++    if (value & (value - 1)) {
++        error_setg(errp, "preshmem-size must be a power of two");
++        return;
++    }
++
++    if (!s->is_protected_vm) {
++        error_setg(errp, "preshmem-size is applicable only for protected VMs");
++        return;
++    }
++
++    s->preshmem_size = value;
++}
++
++static bool gunyah_get_protected_vm(Object *obj, Error **errp)
 +{
 +    GUNYAHState *s = GUNYAH_STATE(obj);
 +
-+    s->fd = -1;
-+    s->vmfd = -1;
++    return s->is_protected_vm;
 +}
 +
-+static void gunyah_accel_class_init(ObjectClass *oc, void *data)
++static void gunyah_set_protected_vm(Object *obj, bool value, Error **errp)
 +{
-+    AccelClass *ac = ACCEL_CLASS(oc);
++    GUNYAHState *s = GUNYAH_STATE(obj);
 +
-+    ac->name = "GUNYAH";
-+    ac->init_machine = gunyah_init;
-+    ac->allowed = &gunyah_allowed;
++    s->is_protected_vm = value;
 +}
 +
-+static const TypeInfo gunyah_accel_type = {
-+    .name = TYPE_GUNYAH_ACCEL,
-+    .parent = TYPE_ACCEL,
-+    .instance_init = gunyah_accel_instance_init,
-+    .class_init = gunyah_accel_class_init,
-+    .instance_size = sizeof(GUNYAHState),
-+};
+ static void gunyah_accel_class_init(ObjectClass *oc, void *data)
+ {
+     AccelClass *ac = ACCEL_CLASS(oc);
+@@ -44,6 +98,17 @@ static void gunyah_accel_class_init(ObjectClass *oc, void *data)
+     ac->name = "GUNYAH";
+     ac->init_machine = gunyah_init;
+     ac->allowed = &gunyah_allowed;
 +
-+static void gunyah_type_init(void)
-+{
-+    type_register_static(&gunyah_accel_type);
-+}
-+type_init(gunyah_type_init);
++    object_class_property_add_bool(oc, "protected-vm",
++                    gunyah_get_protected_vm, gunyah_set_protected_vm);
++    object_class_property_set_description(oc, "protected-vm",
++            "Launch a VM of protected type");
 +
-+static void gunyah_start_vcpu_thread(CPUState *cpu)
-+{
-+    char thread_name[VCPU_THREAD_NAME_SIZE];
-+
-+    cpu->thread = g_malloc0(sizeof(QemuThread));
-+    cpu->halt_cond = g_malloc0(sizeof(QemuCond));
-+    qemu_cond_init(cpu->halt_cond);
-+
-+    snprintf(thread_name, VCPU_THREAD_NAME_SIZE, "CPU %d/Gunyah",
-+             cpu->cpu_index);
-+    qemu_thread_create(cpu->thread, thread_name, gunyah_cpu_thread_fn,
-+                       cpu, QEMU_THREAD_JOINABLE);
-+}
-+
-+static void gunyah_kick_vcpu_thread(CPUState *cpu)
-+{
-+    cpus_kick_thread(cpu);
-+}
-+
-+static void gunyah_accel_ops_class_init(ObjectClass *oc, void *data)
-+{
-+    AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
-+
-+    ops->create_vcpu_thread = gunyah_start_vcpu_thread;
-+    ops->kick_vcpu_thread = gunyah_kick_vcpu_thread;
-+};
-+
-+static const TypeInfo gunyah_accel_ops_type = {
-+    .name = ACCEL_OPS_NAME("gunyah"),
-+    .parent = TYPE_ACCEL_OPS,
-+    .class_init = gunyah_accel_ops_class_init,
-+    .abstract = true,
-+};
-+
-+static void gunyah_accel_ops_register_types(void)
-+{
-+    type_register_static(&gunyah_accel_ops_type);
-+}
-+
-+type_init(gunyah_accel_ops_register_types);
-diff --git a/accel/gunyah/gunyah-all.c b/accel/gunyah/gunyah-all.c
-new file mode 100644
-index 0000000000..370add75f9
---- /dev/null
-+++ b/accel/gunyah/gunyah-all.c
-@@ -0,0 +1,70 @@
-+/*
-+ * QEMU Gunyah hypervisor support
-+ *
-+ * (based on KVM accelerator code structure)
-+ *
-+ * Copyright 2008 IBM Corporation
-+ *           2008 Red Hat, Inc.
-+ *
-+ * Copyright(c) 2023 Qualcomm Innovation Center, Inc. All Rights Reserved.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include <sys/ioctl.h>
-+#include "qemu/osdep.h"
-+#include "qemu/typedefs.h"
-+#include "hw/core/cpu.h"
-+#include "sysemu/cpus.h"
-+#include "sysemu/gunyah.h"
-+#include "sysemu/gunyah_int.h"
-+#include "linux-headers/linux/gunyah.h"
-+#include "qemu/error-report.h"
-+
-+static int gunyah_ioctl(int type, ...)
-+{
-+    void *arg;
-+    va_list ap;
-+    GUNYAHState *s = GUNYAH_STATE(current_accel());
-+
-+    assert(s->fd);
-+
-+    va_start(ap, type);
-+    arg = va_arg(ap, void *);
-+    va_end(ap);
-+
-+    return ioctl(s->fd, type, arg);
-+}
-+
-+int gunyah_create_vm(void)
-+{
-+    GUNYAHState *s;
-+
-+    s = GUNYAH_STATE(current_accel());
-+
-+    s->fd = qemu_open_old("/dev/gunyah", O_RDWR);
-+    if (s->fd == -1) {
-+        error_report("Could not access Gunyah kernel module at /dev/gunyah: %s",
-+                                strerror(errno));
-+        exit(1);
-+    }
-+
-+    s->vmfd = gunyah_ioctl(GH_CREATE_VM, 0);
-+    if (s->vmfd < 0) {
-+        error_report("Could not create VM: %s", strerror(errno));
-+        exit(1);
-+    }
-+
-+    return 0;
-+}
-+
-+void *gunyah_cpu_thread_fn(void *arg)
-+{
-+    CPUState *cpu = arg;
-+
-+    do {
-+        /* Do nothing */
-+    } while (!cpu->unplug || cpu_can_run(cpu));
-+
-+    return NULL;
-+}
-diff --git a/accel/gunyah/meson.build b/accel/gunyah/meson.build
-new file mode 100644
-index 0000000000..226eea0f2c
---- /dev/null
-+++ b/accel/gunyah/meson.build
-@@ -0,0 +1,7 @@
-+gunyah_ss = ss.source_set()
-+gunyah_ss.add(files(
-+  'gunyah-all.c',
-+  'gunyah-accel-ops.c',
-+))
-+
-+specific_ss.add_all(when: 'CONFIG_GUNYAH', if_true: gunyah_ss)
-diff --git a/accel/meson.build b/accel/meson.build
-index 638a9a03ba..e2b87f74b0 100644
---- a/accel/meson.build
-+++ b/accel/meson.build
-@@ -9,6 +9,7 @@ if have_system
-   subdir('kvm')
-   subdir('xen')
-   subdir('stubs')
-+  subdir('gunyah')
- endif
++    object_class_property_add(oc, "preshmem-size", "uint32",
++                gunyah_get_preshmem_size, gunyah_set_preshmem_size, NULL, NULL);
++    object_class_property_set_description(oc, "preshmem-size",
++        "This property is applicable for protected VMs and indicates "
++        "the portion of VM's memory that should be shared with its host");
+ }
  
- # qtest
-diff --git a/accel/stubs/gunyah-stub.c b/accel/stubs/gunyah-stub.c
-new file mode 100644
-index 0000000000..d515469c01
---- /dev/null
-+++ b/accel/stubs/gunyah-stub.c
-@@ -0,0 +1,13 @@
-+/*
-+ * QEMU Gunyah stub
-+ *
-+ * Copyright(c) 2023 Qualcomm Innovation Center, Inc. All Rights Reserved.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ */
-+
-+#include "sysemu/gunyah.h"
-+#include "sysemu/gunyah_int.h"
-+
-+bool gunyah_allowed;
-diff --git a/accel/stubs/meson.build b/accel/stubs/meson.build
-index f7a9486e06..4f594e09de 100644
---- a/accel/stubs/meson.build
-+++ b/accel/stubs/meson.build
-@@ -3,5 +3,6 @@ sysemu_stubs_ss.add(when: 'CONFIG_HAX', if_false: files('hax-stub.c'))
- sysemu_stubs_ss.add(when: 'CONFIG_XEN', if_false: files('xen-stub.c'))
- sysemu_stubs_ss.add(when: 'CONFIG_KVM', if_false: files('kvm-stub.c'))
- sysemu_stubs_ss.add(when: 'CONFIG_TCG', if_false: files('tcg-stub.c'))
-+sysemu_stubs_ss.add(when: 'CONFIG_GUNYAH', if_false: files('gunyah-stub.c'))
- 
- specific_ss.add_all(when: ['CONFIG_SYSTEM_ONLY'], if_true: sysemu_stubs_ss)
-diff --git a/docs/about/build-platforms.rst b/docs/about/build-platforms.rst
-index 0e2cb9e770..5a3e241f1a 100644
---- a/docs/about/build-platforms.rst
-+++ b/docs/about/build-platforms.rst
-@@ -40,7 +40,7 @@ Those hosts are officially supported, with various accelerators:
-    * - CPU Architecture
-      - Accelerators
-    * - Arm
--     - kvm (64 bit only), tcg, xen
-+     - kvm (64 bit only), tcg, xen, gunyah (64 bit only)
-    * - MIPS (little endian only)
-      - kvm, tcg
-    * - PPC
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b55d5c7282..4222183eb5 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -80,6 +80,7 @@
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/char/pl011.h"
- #include "qemu/guest-random.h"
-+#include "sysemu/gunyah.h"
- 
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -1623,6 +1624,8 @@ static void virt_build_smbios(VirtMachineState *vms)
- 
-     if (kvm_enabled()) {
-         product = "KVM Virtual Machine";
-+    } else if (gunyah_enabled()) {
-+        product = "Gunyah Virtual Machine";
-     }
- 
-     smbios_set_defaults("QEMU", product,
-diff --git a/include/sysemu/gunyah.h b/include/sysemu/gunyah.h
-new file mode 100644
-index 0000000000..aded49cdf6
---- /dev/null
-+++ b/include/sysemu/gunyah.h
-@@ -0,0 +1,43 @@
-+/*
-+ * QEMU Gunyah hypervisor support
-+ *
-+ * Copyright(c) 2023 Qualcomm Innovation Center, Inc. All Rights Reserved.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+/* header to be included in non-Gunyah-specific code */
-+
-+#ifndef QEMU_GUNYAH_H
-+#define QEMU_GUNYAH_H
-+
-+#include "qemu/accel.h"
-+#include "qom/object.h"
-+
-+#ifdef NEED_CPU_H
-+#include "cpu.h"
-+#ifdef CONFIG_GUNYAH
-+# define CONFIG_GUNYAH_IS_POSSIBLE
-+#endif
-+#else
-+# define CONFIG_GUNYAH_IS_POSSIBLE
-+#endif
-+
-+#ifdef CONFIG_GUNYAH_IS_POSSIBLE
-+
-+extern bool gunyah_allowed;
-+
-+#define gunyah_enabled() (gunyah_allowed)
-+
-+#define TYPE_GUNYAH_ACCEL ACCEL_CLASS_NAME("gunyah")
-+typedef struct GUNYAHState GUNYAHState;
-+DECLARE_INSTANCE_CHECKER(GUNYAHState, GUNYAH_STATE,
-+                         TYPE_GUNYAH_ACCEL)
-+
-+#else   /* CONFIG_GUNYAH_IS_POSSIBLE */
-+
-+#define gunyah_enabled()    0
-+
-+#endif  /* CONFIG_GUNYAH_IS_POSSIBLE */
-+
-+#endif  /* QEMU_GUNYAH_H */
+ static const TypeInfo gunyah_accel_type = {
 diff --git a/include/sysemu/gunyah_int.h b/include/sysemu/gunyah_int.h
-new file mode 100644
-index 0000000000..37de628b37
---- /dev/null
+index 37de628b37..b1fd7f9ea2 100644
+--- a/include/sysemu/gunyah_int.h
 +++ b/include/sysemu/gunyah_int.h
-@@ -0,0 +1,27 @@
-+/*
-+ * QEMU Gunyah hypervisor support
-+ *
-+ * Copyright(c) 2023 Qualcomm Innovation Center, Inc. All Rights Reserved.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+/* header to be included in Gunyah-specific code */
-+
-+#ifndef GUNYAH_INT_H
-+#define GUNYAH_INT_H
-+
-+#include "qemu/accel.h"
-+#include "qemu/typedefs.h"
-+
-+struct GUNYAHState {
-+    AccelState parent_obj;
-+
-+    int fd;
-+    int vmfd;
-+};
-+
-+int gunyah_create_vm(void);
-+void *gunyah_cpu_thread_fn(void *arg);
-+
-+#endif    /* GUNYAH_INT_H */
-diff --git a/meson.build b/meson.build
-index 98e68ef0b1..ca46b51c55 100644
---- a/meson.build
-+++ b/meson.build
-@@ -136,6 +136,7 @@ if cpu in ['x86', 'x86_64', 'arm', 'aarch64']
-   # i386 emulator provides xenpv machine type for multiple architectures
-   accelerator_targets += {
-     'CONFIG_XEN': ['i386-softmmu', 'x86_64-softmmu', 'aarch64-softmmu'],
-+    'CONFIG_GUNYAH': ['aarch64-softmmu']
-   }
- endif
- if cpu in ['x86', 'x86_64']
-@@ -608,6 +609,7 @@ iokit = []
- emulator_link_args = []
- nvmm =not_found
- hvf = not_found
-+gunyah = not_found
- midl = not_found
- widl = not_found
- pathcch = not_found
-@@ -668,6 +670,9 @@ if get_option('hax').allowed()
-     accelerators += 'CONFIG_HAX'
-   endif
- endif
-+if get_option('gunyah').allowed()
-+    accelerators += 'CONFIG_GUNYAH'
-+endif
- if targetos == 'netbsd'
-   nvmm = cc.find_library('nvmm', required: get_option('nvmm'))
-   if nvmm.found()
-@@ -718,6 +723,9 @@ endif
- if 'CONFIG_WHPX' not in accelerators and get_option('whpx').enabled()
-   error('WHPX not available on this platform')
- endif
-+if 'CONFIG_GUNYAH' not in accelerators and get_option('gunyah').enabled()
-+  error('Gunyah not available on this platform')
-+endif
+@@ -19,6 +19,8 @@ struct GUNYAHState {
  
- ################
- # Dependencies #
-@@ -4149,6 +4157,7 @@ if have_system
-     summary_info += {'xen ctrl version':  xen.version()}
-   endif
-   summary_info += {'Xen emulation':     config_all.has_key('CONFIG_XEN_EMU')}
-+  summary_info += {'Gunyah support':    config_all.has_key('CONFIG_GUNYAH')}
- endif
- summary_info += {'TCG support':       config_all.has_key('CONFIG_TCG')}
- if config_all.has_key('CONFIG_TCG')
-diff --git a/meson_options.txt b/meson_options.txt
-index aaea5ddd77..b914f0e853 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -105,6 +105,8 @@ option('dbus_display', type: 'feature', value: 'auto',
-        description: '-display dbus support')
- option('tpm', type : 'feature', value : 'auto',
-        description: 'TPM support')
-+option('gunyah', type: 'feature', value: 'auto',
-+       description: 'Gunyah acceleration support')
- 
- # Do not enable it by default even for Mingw32, because it doesn't
- # work on Wine.
-diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-index 9da3fe299b..0c95f79645 100644
---- a/scripts/meson-buildoptions.sh
-+++ b/scripts/meson-buildoptions.sh
-@@ -112,6 +112,7 @@ meson_options_help() {
-   printf "%s\n" '  guest-agent-msi Build MSI package for the QEMU Guest Agent'
-   printf "%s\n" '  hax             HAX acceleration support'
-   printf "%s\n" '  hvf             HVF acceleration support'
-+  printf "%s\n" '  gunyah          Gunyah acceleration support'
-   printf "%s\n" '  iconv           Font glyph conversion support'
-   printf "%s\n" '  jack            JACK sound support'
-   printf "%s\n" '  keyring         Linux keyring support'
-@@ -312,6 +313,8 @@ _meson_option_parse() {
-     --disable-guest-agent) printf "%s" -Dguest_agent=disabled ;;
-     --enable-guest-agent-msi) printf "%s" -Dguest_agent_msi=enabled ;;
-     --disable-guest-agent-msi) printf "%s" -Dguest_agent_msi=disabled ;;
-+    --enable-gunyah) printf "%s" -Dgunyah=enabled ;;
-+    --disable-gunyah) printf "%s" -Dgunyah=disabled ;;
-     --enable-hax) printf "%s" -Dhax=enabled ;;
-     --disable-hax) printf "%s" -Dhax=disabled ;;
-     --enable-hexagon-idef-parser) printf "%s" -Dhexagon_idef_parser=true ;;
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 96158093cc..a712f1a3b3 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -33,6 +33,7 @@
- #include "hw/qdev-properties.h"
- #include "internals.h"
- #include "cpregs.h"
-+#include "sysemu/gunyah.h"
- 
- void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
- {
-@@ -686,7 +687,7 @@ static void aarch64_host_initfn(Object *obj)
- 
- static void aarch64_max_initfn(Object *obj)
- {
--    if (kvm_enabled() || hvf_enabled()) {
-+    if (kvm_enabled() || hvf_enabled() || gunyah_enabled()) {
-         /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
-         aarch64_host_initfn(obj);
-         return;
-@@ -706,7 +707,7 @@ static const ARMCPUInfo aarch64_cpus[] = {
-     { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
-     { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
-     { .name = "max",                .initfn = aarch64_max_initfn },
--#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF) || defined(CONFIG_GUNYAH)
-     { .name = "host",               .initfn = aarch64_host_initfn },
- #endif
+     int fd;
+     int vmfd;
++    bool is_protected_vm;
++    uint32_t preshmem_size;
  };
+ 
+ int gunyah_create_vm(void);
 -- 
 2.25.1

@@ -1,78 +1,77 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp517275ejr;
-        Tue, 10 Oct 2023 18:02:43 -0700 (PDT)
-X-Received: by 2002:a1f:4b45:0:b0:48d:5be:2868 with SMTP id y66-20020a1f4b45000000b0048d05be2868mr10553412vka.0.1696986163105;
-        Tue, 10 Oct 2023 18:02:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696986163; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp518067ejr;
+        Tue, 10 Oct 2023 18:04:10 -0700 (PDT)
+X-Received: by 2002:a05:6122:1d47:b0:49d:eeed:3ed5 with SMTP id gd7-20020a0561221d4700b0049deeed3ed5mr14975425vkb.14.1696986250406;
+        Tue, 10 Oct 2023 18:04:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696986250; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZHJGV2T3v5buA7CGfER0hUDQx+UGS4iFr6xw/rafyLLi1wWO/MLqBX6Fk6vfpOm/Z3
-         XRI/QVfZFMOQ0B5eJctmPlzoh/AePQYiGCYAWDmKHinF6EoVKqtO+auh50q9JzTqh7C5
-         v/kR23Q9c3r113SGOgiAVr5YgMmt82hz2eFIX2xazoh+VDjTigQv8btuFkQ2+XqC58AP
-         oRfOS/Zr9VnMqsG9+5qL0yjD8prUEIlXeNja67cgFn02BVHepJgRRyxJn4lPM2Mw4Nwk
-         0jWewNkSbtFe/CxgITB1W3WC/jjj0rkRSjrVT0FzLYo81JBvMclk90Mzt2CR+ufdq5CB
-         VoxQ==
+        b=vERZYzASzi5qaLQwSAJNGCQBTBcWiUBXBtKKJSGanuGwj+ZefcMghQoDT9o/WSezrL
+         aDCEzUGVwlMHvaIEivER+nCcUsUrUb47nHiWNNv1hTaBkNqzL0gyXgKvAq5hWLHwh9rb
+         ohLAXK/HcaRpQ2BwbDAjBiLbekiN2EXwP/lJRE59MXTDf5hwa2/oMjCjduuaPUDbH3n1
+         M3ZBfcWdGor7S2XaT8Xz1ZuhV/nJtQFNM6zOV85UOB2LS8wt8Jf//4PdRwdtEiRctefT
+         wD6MpWBIeI2hawddz9nv/rlOPlVRH9SFTUG32eM734D0HLp1LrlNkwnfQP5CFxZMm9Lj
+         Se3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=az7hRY13AXihgfwT+snngU6CrW6XXZhg5oEBwlyT9c0=;
-        fh=cS1m9iodkyxZQSyUNnuhOwuBRVvByRyjvwUhrz4vNkk=;
-        b=RfaBsgxmM9A0iPMIfgV7EvG3oa4ZETMP1QA9ayXatgG57Qei4J6+u1AJZ0p8v8KnKR
-         AQKc5oEduKb+uJrckctfrHMHaXzDa69JQwbyx8DXfjXqtvOsdyG4SwLuMND7JkvOYgCc
-         wcq9Wtyr+xrhGDpFlPBbl73m3gryIl9fpmZjRLN2G6M2zR2I3jpNVie/hesxhmZMOOYg
-         wIHLbsXppfFCtSA6QSeyIDtb3lNGCtZMe4nuOxG7dje62Q6+MLnz/TYCz2eZMMHfKFhi
-         JutRpjwleUIgrKoq5J67kiBqmzPNdKOAHwWALpSSynjc/7tkFCSFaWhgB0kMVKAC+psk
-         2EYg==
+        bh=aqO5ka7tR9qZcNKmHJAXn+ExW6wHOnY5HZ1B8d6xlA0=;
+        fh=cqk238ux3/GdOijP7fp8WGbp8VqG0EAAdwsLvgVM+lA=;
+        b=J24AYG2O39ZLToMZzjbPnChvaxGB7lAhFxo2XpnXTxpBEFL7VeEEqdNsLQueInAJN2
+         kHAN2u4AP/jtd72kJQfuZuXJ58N5R6AyhOrEibRBP2ZI43/RwWFniNfUFH60qZdBpSLF
+         U4Gz24jMM/q1ijouvcFDsUJSJB7jo248kQrFkDSsi+8MBxgBg/1TLyIv+rU0qLv19LF8
+         s2rh79uoNnXFOfYPoebV/3mL+GNxGe+4Pikhcp+a/5YgdYb9X7TJrOH+7a8qqcujWXMM
+         qbs8wd4TOoWWJ23ar3IT2H0ZkauE+rtDFMS2VpnDdBYb5N102jbzHllOKj7WbkLp9gvg
+         W1sA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=L38mwIcH;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=c1HJ424E;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <alistair23@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id fw7-20020a0561222a0700b00493648d75f4sor6229195vkb.3.2023.10.10.18.02.42
+        by mx.google.com with SMTPS id k186-20020a1fecc3000000b0049ab760c198sor2262253vkh.2.2023.10.10.18.04.10
         (Google Transport Security);
-        Tue, 10 Oct 2023 18:02:43 -0700 (PDT)
+        Tue, 10 Oct 2023 18:04:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=L38mwIcH;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=c1HJ424E;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696986162; x=1697590962; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1696986249; x=1697591049; darn=linaro.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=az7hRY13AXihgfwT+snngU6CrW6XXZhg5oEBwlyT9c0=;
-        b=L38mwIcHLtKy5TrvdLrSRqpkJ2Ct1S4rc9MhlhME5SV/C+GgPLPf5pnzAuOYdxaF4h
-         e0K0gv2BHm6+JeY6hGMTqIULE2uS3G3B40PjS8LYhAA6va3BAESh3nYYqMiNp3L1MbDN
-         Rt7eAvs7fxuZRkJrSOY3FSW6jLGV31L3gkx7vN5nqSCezXdVrBk8USIzHLn6q3yGlQaI
-         2nlpeb8ELf2eWqaPOEEP7nNjeR0Y1BzSU6uZUzYMpB6iHWTo/8uqVRrg5t+ggP9ahbzm
-         x2edSkeBhLLg3y+Fg8BaxsQRxjl0A7yuVaBeMz/hu7a2g5yA/Up1Y6vijJwoPoSmRDjT
-         T65Q==
+        bh=aqO5ka7tR9qZcNKmHJAXn+ExW6wHOnY5HZ1B8d6xlA0=;
+        b=c1HJ424E3Ii23xZXHypHHB3ykVwEhRrMOgE8S6ZJxlYSKapaCNpYX2xtyz0U9VrLzZ
+         Yq91xquZxymw+c55EiQ5H6DKS1wDTJ5OgZruPUL89+EkoQhwPFJ6x2Z2SLUJTJfiCOB+
+         F25kqpg0vgfiCpHTxb2z0/J94Oq9iv3SrT8IXPD1SvO9UoBduv1Hg7VCxI3G+jMx79SP
+         9Rek11AW3VN0ibfJMeVgX0G2reSZ4JkwxLgAYAdx2gWQC4jCTniqwguDX2ABLPX8wcTQ
+         H4T58hJsF/56lIXoH3D8qMbwa9KympHhgfVZ86C3oMnfWIDIGzGtJ3T3w6QX8UD2HG50
+         RH6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696986162; x=1697590962;
+        d=1e100.net; s=20230601; t=1696986249; x=1697591049;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=az7hRY13AXihgfwT+snngU6CrW6XXZhg5oEBwlyT9c0=;
-        b=w3Uw5TkQPjzf+/ZYzsded3PsQTjJBX2vR6Qg9B2Vmo2dvovB1RZTE/cv90uZ0wk5DK
-         91+FyMHjCDNPESEEOv0tTl6N2c6fvtqKhnX+HE6WK0kq3ns2KtW7p3a8ntKMY6VcCPBh
-         JTOKjCL3nW00wVEUz0A2RS2+ajIDzqjqJOqeSLuyRvxbC6VBgJXaJkAe0NtMuu+LmZsy
-         cxjlNQ9WvagOWJMvpzlkrNz07B2ocvo1nTyinPtHSOSf0zx3UCKGev/R2nedgEVGzpXR
-         bfK1QUeYcwi5CyPKooOFJwZ8QbeOQLqgEI7XMKfuwUrKJYBZRjxi4HuuIUHRTcR9vi8h
-         FhXA==
-X-Gm-Message-State: AOJu0YzaJkK4uyAWKNMr+euXbifDo5jffVSLSrqIAtp8z43si5Vx4oxF
-	qc6LeHzpptk5bw41BKya4lfBVIazME1h02scFfcBkQAg0BF+7Q==
-X-Google-Smtp-Source: AGHT+IEvf93Yxj4oZz0NTJ8qGczKWc2RXD6w5T6XupZRdUvKXy0nd5u+ck78IiMEVRhfzAPo/g2jvt5NP9aBq6r55FY=
-X-Received: by 2002:a1f:e7c4:0:b0:49a:9f99:bb03 with SMTP id
- e187-20020a1fe7c4000000b0049a9f99bb03mr9918940vkh.1.1696986161996; Tue, 10
- Oct 2023 18:02:41 -0700 (PDT)
+        bh=aqO5ka7tR9qZcNKmHJAXn+ExW6wHOnY5HZ1B8d6xlA0=;
+        b=HLQvWnpaKonKZ+OS9PRnvDGkDptXXDntZt+bYfOwxkKK8idB4xG6xc7gSJ6PVsqtWQ
+         eqnLbNuYavujVQA1UOXziRn6xShUDiPBKw0wDY6wiFTkg/HhNU1uls1/u4NwoOMZJSWV
+         d+ubSBPWvB4QXyNVvD7TbDYkhfEPNbA0GHb6+8xWzo2700I6uYYLdREDgO7XbIk16Z43
+         Q9NWLMS7XqOxw989+JRgrXUPYfV6VWNsMMrs/PrxI5dWn0zx7/fX/z/ogYmtSxEGqIIT
+         f9eEf0xPFqzizjStB2j4BF1dvpg+fgy8rNRyraF6sE/ipuGJp3VImgicGOi+GYEEnsNW
+         MDrg==
+X-Gm-Message-State: AOJu0YwJYzJOCgDz5FpLGu0rH2rTlGk8Fg01NBJeveHea7R5RqNWdUO9
+	Q3CqAh8TS9h/ZBq+yutLt9CtvGhrYYHPd3nSSBd5jfnVjVZysA==
+X-Google-Smtp-Source: AGHT+IE+dECs0/kWr7vwAr7Wy9VndFb7DLF3LT2g8gzD4c35dqPtmKLYacBfQzZPQpjsSy45eTmlKRIHhMi98CmdBdM=
+X-Received: by 2002:a1f:c9c1:0:b0:49d:3e4c:6168 with SMTP id
+ z184-20020a1fc9c1000000b0049d3e4c6168mr15264409vkf.7.1696986249500; Tue, 10
+ Oct 2023 18:04:09 -0700 (PDT)
 MIME-Version: 1.0
-References: <20231009164104.369749-1-alex.bennee@linaro.org> <20231009164104.369749-6-alex.bennee@linaro.org>
-In-Reply-To: <20231009164104.369749-6-alex.bennee@linaro.org>
+References: <20231009164104.369749-1-alex.bennee@linaro.org> <20231009164104.369749-17-alex.bennee@linaro.org>
+In-Reply-To: <20231009164104.369749-17-alex.bennee@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 11 Oct 2023 11:02:15 +1000
-Message-ID: <CAKmqyKPgCd0ej7Jd8v8o-8Y=E_keMCA8v1-iLBrNKEfQn_U3ZA@mail.gmail.com>
-Subject: Re: [PATCH 05/25] tests/docker: make docker engine choice entirely
- configure driven
+Date: Wed, 11 Oct 2023 11:03:42 +1000
+Message-ID: <CAKmqyKN86xUqKMjd6U=2pno962DnMNVVRzfJCycT=S_62+PXVw@mail.gmail.com>
+Subject: Re: [PATCH 16/25] target/arm: Remove references to gdb_has_xml
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
 	Xiaojuan Yang <yangxiaojuan@loongson.cn>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -92,91 +91,85 @@ Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>, Song Gao <gaosong@loongson.cn>, 
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-s390x@nongnu.org, 
 	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Akihiko Odaki <akihiko.odaki@daynix.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: cnD41Gszrp3d
+X-TUID: X7f+EmV8YAus
 
-On Tue, Oct 10, 2023 at 4:05=E2=80=AFAM Alex Benn=C3=A9e <alex.bennee@linar=
+On Tue, Oct 10, 2023 at 3:52=E2=80=AFAM Alex Benn=C3=A9e <alex.bennee@linar=
 o.org> wrote:
 >
-> Since 0b1a649047 (tests/docker: use direct RUNC call to build
-> containers) we ended up with the potential for the remaining docker.py
-> script calls to deviate from the direct RUNC calls. Fix this by
-> dropping the use of ENGINE in the makefile and rely entirely on what
-> we detect at configure time.
+> From: Akihiko Odaki <akihiko.odaki@daynix.com>
 >
-> We also tweak the RUNC detection so podman users can still run things
-> from the source tree.
+> GDB has XML support since 6.7 which was released in 2007.
+> It's time to remove support for old GDB versions without XML support.
 >
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Message-Id: <20230912224107.29669-10-akihiko.odaki@daynix.com>
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
->
 > ---
-> v2
->   - add RUNC stanza suggested by Paolo
-> ---
->  configure                     | 1 -
->  tests/docker/Makefile.include | 9 +++------
->  2 files changed, 3 insertions(+), 7 deletions(-)
+>  target/arm/gdbstub.c | 32 ++------------------------------
+>  1 file changed, 2 insertions(+), 30 deletions(-)
 >
-> diff --git a/configure b/configure
-> index e08127045d..707132a3ae 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1694,7 +1694,6 @@ if test -n "$gdb_bin"; then
->  fi
->
->  if test "$container" !=3D no; then
-> -    echo "ENGINE=3D$container" >> $config_host_mak
->      echo "RUNC=3D$runc" >> $config_host_mak
->  fi
->  echo "SUBDIRS=3D$subdirs" >> $config_host_mak
-> diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.includ=
-e
-> index dfabafab92..ab68b2dbad 100644
-> --- a/tests/docker/Makefile.include
-> +++ b/tests/docker/Makefile.include
-> @@ -16,9 +16,8 @@ DOCKER_DEFAULT_REGISTRY :=3D registry.gitlab.com/qemu-p=
-roject/qemu
->  endif
->  DOCKER_REGISTRY :=3D $(if $(REGISTRY),$(REGISTRY),$(DOCKER_DEFAULT_REGIS=
-TRY))
->
-> -RUNC ?=3D docker
-> -ENGINE ?=3D auto
-> -DOCKER_SCRIPT=3D$(SRC_PATH)/tests/docker/docker.py --engine $(ENGINE)
-> +RUNC ?=3D $(if $(shell command -v docker), docker, podman)
-> +DOCKER_SCRIPT=3D$(SRC_PATH)/tests/docker/docker.py --engine $(RUNC)
->
->  CUR_TIME :=3D $(shell date +%Y-%m-%d-%H.%M.%S.$$$$)
->  DOCKER_SRC_COPY :=3D $(BUILD_DIR)/docker-src.$(CUR_TIME)
-> @@ -158,7 +157,7 @@ $(foreach i,$(filter-out $(DOCKER_PARTIAL_IMAGES),$(D=
-OCKER_IMAGES)), \
->  )
->
->  docker:
-> -       @echo 'Build QEMU and run tests inside Docker or Podman container=
-s'
-> +       @echo 'Build QEMU and run tests inside $(RUNC) containers'
->         @echo
->         @echo 'Available targets:'
->         @echo
-> @@ -198,8 +197,6 @@ docker:
->         @echo '    EXECUTABLE=3D<path>    Include executable in image.'
->         @echo '    EXTRA_FILES=3D"<path> [... <path>]"'
->         @echo '                         Include extra files in image.'
-> -       @echo '    ENGINE=3Dauto/docker/podman'
-> -       @echo '                         Specify which container engine to=
- run.'
->         @echo '    REGISTRY=3Durl         Cache builds from registry (def=
-ault:$(DOCKER_REGISTRY))'
->
->  docker-help: docker
+> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+> index 8fc8351df7..b7ace24bfc 100644
+> --- a/target/arm/gdbstub.c
+> +++ b/target/arm/gdbstub.c
+> @@ -46,21 +46,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray=
+ *mem_buf, int n)
+>          /* Core integer register.  */
+>          return gdb_get_reg32(mem_buf, env->regs[n]);
+>      }
+> -    if (n < 24) {
+> -        /* FPA registers.  */
+> -        if (gdb_has_xml()) {
+> -            return 0;
+> -        }
+> -        return gdb_get_zeroes(mem_buf, 12);
+> -    }
+> -    switch (n) {
+> -    case 24:
+> -        /* FPA status register.  */
+> -        if (gdb_has_xml()) {
+> -            return 0;
+> -        }
+> -        return gdb_get_reg32(mem_buf, 0);
+> -    case 25:
+> +    if (n =3D=3D 25) {
+>          /* CPSR, or XPSR for M-profile */
+>          if (arm_feature(env, ARM_FEATURE_M)) {
+>              return gdb_get_reg32(mem_buf, xpsr_read(env));
+> @@ -100,21 +86,7 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t =
+*mem_buf, int n)
+>          env->regs[n] =3D tmp;
+>          return 4;
+>      }
+> -    if (n < 24) { /* 16-23 */
+> -        /* FPA registers (ignored).  */
+> -        if (gdb_has_xml()) {
+> -            return 0;
+> -        }
+> -        return 12;
+> -    }
+> -    switch (n) {
+> -    case 24:
+> -        /* FPA status register (ignored).  */
+> -        if (gdb_has_xml()) {
+> -            return 0;
+> -        }
+> -        return 4;
+> -    case 25:
+> +    if (n =3D=3D 25) {
+>          /* CPSR, or XPSR for M-profile */
+>          if (arm_feature(env, ARM_FEATURE_M)) {
+>              /*
 > --
 > 2.39.2
 >

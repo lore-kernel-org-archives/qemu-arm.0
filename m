@@ -1,164 +1,749 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp713493ejr;
-        Wed, 11 Oct 2023 02:59:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEZxGvvut/E3+NpFmsyBDWRVSpd/A2d25Ne6GZrGnZopsxMkAD+dl6uhHwab5HVU7J2sSqA
-X-Received: by 2002:a17:902:f7cf:b0:1c6:1c80:5663 with SMTP id h15-20020a170902f7cf00b001c61c805663mr16167303plw.41.1697018373840;
-        Wed, 11 Oct 2023 02:59:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697018373; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp727807ejr;
+        Wed, 11 Oct 2023 03:23:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG0vhLxDnjTozNb1Wo0q3MkI1xp559pKOAz3FjuawA+D9QPbQPguQD7ebb9wQ2TcOFH+60J
+X-Received: by 2002:a05:6870:71c5:b0:1b7:308e:6cd9 with SMTP id p5-20020a05687071c500b001b7308e6cd9mr27049596oag.5.1697019808097;
+        Wed, 11 Oct 2023 03:23:28 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1697019808; cv=pass;
         d=google.com; s=arc-20160816;
-        b=lnPGXwnzfahjxCLLJhcG6FG80n1zRbm76z4RkGB/eIxp0RLkl33qM4nTvmH/GF2/+e
-         sO9VC836taG5A4BIJLjV6b3bqBIo0XLBIhSVu/zutbzK7sw5M4Q4qEHNw2IuVOCXZS3B
-         zfaE0ZW37H94ItVycShSFmNTfFgoHNjsy51U+XS3N6oA9aEnwtoIs5o0yhl6Ehlad/jc
-         wZexeM5VCHq0yU24HUcDrB5o2Mk3LzIhXIvmTNpWuLvaGlNVE13s3fzDIwr2UADxVHFe
-         hoiuffOQIBC7gtse1y2Ej+2Zu9XV9mEM06H9F8Z+eT51fEcd4VJv34tsrNuQBJ3gjJVp
-         rqvg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=WNqPPWPuO+MNIG67tzYtoVQsgLPkqytxBnNRQJp7H9Q=;
-        fh=DCV4KZOcuvUG/wve9C1kSJ4RRlBk9KClkYRBzQw+8ow=;
-        b=FmTB4qo3BhxLGR53Xwnonaol5pb/psTdKAostS8NYrNsdh3Rgtru90f+GM/kD7IYQ1
-         oNPHV4gyICj0WqLqBIpfjcjp2ylGyH/kz3CcYDGKjBSZKGBLPjHOeLn4Y5ZIWMnONg4b
-         4EZOrotfR4gCsVP68p9v9RYPzsKeBr9D6GvIMI1I/sZELlniqh29o13a5Q9X9HTKfH/8
-         N3jdzfMDA2zSJV4MGD1Y5VAs98YrH+6yJgbyAfoqF5wr2dlMaV83F0hp4DjiQ3ywkchv
-         DZqdcGCU+JbqbTqxMbm1RQRdm+9bTQ08HVJJaZ/eyaojrBJoseRPc1/ACBsetY29DvJh
-         S2Gw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id lb14-20020a170902fa4e00b001b89613687bsi13282227plb.439.2023.10.11.02.59.32
+        b=m7eIxCVgsgiiikkPyBgDtcJFvgk9wAzQkAy5W70CVEdXAFM7tiXn8e+uFGbNHZXr4F
+         rbooc6LKcv7WAu96Eb4oUCVPBpwxJMEhoZ/i21fz0w8cjCrjfyDDz18QYg9Ltt//Kga4
+         kp4wNc9xpM6WDgy4tqnNb+D6G0mIhRtM13V9GnVavkxpGbHnOw5DAwFxT4LglM9jZ4ER
+         9q+yN4rZRfXzqGkwrmKD9Lj2nOd8ONyYBmftxpa+7fvKEPxi+zjxvHWWmL72i3msvjMe
+         bLAKC5xLM86ENWNdVvL5NFlaCByjiPEKX/byTugvxdkE8Xcv5J10k0JGJpNMIJYusjne
+         rZbQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:date
+         :message-id:dkim-signature;
+        bh=TGcRpjdXWtECreUfet3/NDUmDBPDQHWzqDSO7CinqAc=;
+        fh=+vtg+gEXqlE0J9WYfrU6i+RPcQlqu509lDEs4JwdiQg=;
+        b=K+UiegT4PgE0eTCW3shlToPyLv3YKswLH+Awz2oYtL/Sr1P0a/TeN83Epzovks++Lq
+         Ae35vyTBaB3x5UVoj4aRRlU7CyJtumwIJtSvEFGl+OnOdXkgKIvcGX4XWOb8p38vwW9X
+         v0Sw2ERTcoCAliGr/ULoIwfxSSeZLk+yV4/fVHRcr0Sbw678/Y3bKYFdY/pJG36+3LEO
+         YupOgW1A9GAM2ByrJco23EVUEYjmXn5/cbpHGOcW9XUNuMAc9CLE/0zV9Es8lWnuY/t1
+         Ix0impA86zb9RP/ZjdpkCOaRuMp3bytgtgpEa10dgBMDKaAxpoZOCWMgnb2WzKF4ugFw
+         nLNQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=temperror (no key for signature) header.i=@amperemail.onmicrosoft.com header.s=selector1-amperemail-onmicrosoft-com header.b=T6BFNA21;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=amperemail.onmicrosoft.com dmarc=pass fromdomain=amperemail.onmicrosoft.com);
+       spf=pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f400:7eae::700 as permitted sender) smtp.mailfrom=vishnu@os.amperecomputing.com
+Return-Path: <vishnu@os.amperecomputing.com>
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (mail-bn8nam11on20700.outbound.protection.outlook.com. [2a01:111:f400:7eae::700])
+        by mx.google.com with ESMTPS id y26-20020a637d1a000000b0059c36d7951bsi3580428pgc.68.2023.10.11.03.23.27
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Oct 2023 02:59:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+        Wed, 11 Oct 2023 03:23:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f400:7eae::700 as permitted sender) client-ip=2a01:111:f400:7eae::700;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml100006.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S57T52VXTz6JB1Q;
-	Wed, 11 Oct 2023 17:56:25 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml100006.china.huawei.com (7.191.160.224) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Wed, 11 Oct 2023 10:59:27 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Wed, 11 Oct 2023 10:59:27 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org"
-	<alex.bennee@linaro.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V4 01/10] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-Thread-Topic: [PATCH V4 01/10] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-Thread-Index: AQHZ+vBgREM3O/r310KkRZMgbkve2LBEHPqAgAA8E7A=
-Date: Wed, 11 Oct 2023 09:59:27 +0000
-Message-ID: <d1b0c94a235747aeb6817bb07e49c190@huawei.com>
-References: <20231009203601.17584-1-salil.mehta@huawei.com>
- <20231009203601.17584-2-salil.mehta@huawei.com>
- <910cb268-7344-fa0b-aa1e-935ded612d3e@redhat.com>
-In-Reply-To: <910cb268-7344-fa0b-aa1e-935ded612d3e@redhat.com>
-Accept-Language: en-US
+       dkim=temperror (no key for signature) header.i=@amperemail.onmicrosoft.com header.s=selector1-amperemail-onmicrosoft-com header.b=T6BFNA21;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=amperemail.onmicrosoft.com dmarc=pass fromdomain=amperemail.onmicrosoft.com);
+       spf=pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f400:7eae::700 as permitted sender) smtp.mailfrom=vishnu@os.amperecomputing.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kv4vR8rK0mOsMbsgWGWH55+M6WPoKbT0GAT513RvzpBc8kWTivEdtPcAqwEZ2rKjfhr+/OIPGcftXSIX5L/k/SBL8VirIoaXs1MGDx0kgVjuPzkBjqOb/l18Y9mr6V3ToHJh1Znd+9FXw6Drla/amRa4WFRlMRbx0XRmGSmbHjGjrmODwUwhID3V6U9AG/FW8POELgL+AfFH5W2wIyzs5/A5MV0/2UVlos8yeMB7q3I0oTuUgdtwJhp5aI+83AqOMULumLBaIgDSKCgJlzcLrv6+4vfNedMuLvtzdbDSYPGZpGz3lFII0/PKuRTOVyvfiwFPJsJttFD4OD/zJPOf9Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=TGcRpjdXWtECreUfet3/NDUmDBPDQHWzqDSO7CinqAc=;
+ b=HpcIR+Mgl7aqPIKM8BL7H79Voew4S5lIk7h8vXHWomEb2ljZty7unroi31XiNWD8t6NsXPw7zTXdp/H+Z+TXZ+v49ntMOZo4bkk6ANyByHTd2Tf/QgE3FMYbix7zy18QldtB9Wb13x3VI0He2Z4NVUsy92Tck3aUy4/MtiSUunZQ8mEjLkBQa7TEyf5IPzfarpp/Gp9c9Y3/fY8Zggi281ludMhk8mi22r3LmrIDmdE+1f9/5kK0gUNmjrAGHhXeleTnimr3czgR+qyx1I/Dd47fXFjFWrn3XQIFk5SWZcbgsDO1YyTRyroF+NuLJeLwqSNL4pUs4rdSF2icX4KaQw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=amperemail.onmicrosoft.com; dkim=pass
+ header.d=amperemail.onmicrosoft.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amperemail.onmicrosoft.com; s=selector1-amperemail-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=TGcRpjdXWtECreUfet3/NDUmDBPDQHWzqDSO7CinqAc=;
+ b=T6BFNA21Eoncb9N7F7UJq6GQbsJ1YIO1OLTaEbf7Uxfk4yDDCu8Xgxzh5rjEEL2clEMNQaRR1KvuchARvxQBh8cHg5k9P8XxXMxxzQO3iWogP/ILvQ0LIb1XUdzFd/CWlMcM1f1S2L7PQlZvBCyv2uKimpcTLe5RApcN+WmqI60=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amperemail.onmicrosoft.com;
+Received: from DM6PR01MB3689.prod.exchangelabs.com (2603:10b6:5:84::26) by
+ CH0PR01MB7153.prod.exchangelabs.com (2603:10b6:610:ea::7) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6863.38; Wed, 11 Oct 2023 10:23:21 +0000
+Received: from DM6PR01MB3689.prod.exchangelabs.com
+ ([fe80::d6c4:a6a0:a804:d7c0]) by DM6PR01MB3689.prod.exchangelabs.com
+ ([fe80::d6c4:a6a0:a804:d7c0%3]) with mapi id 15.20.6863.040; Wed, 11 Oct 2023
+ 10:23:20 +0000
+Message-ID: <cfcca2d3-212e-2a90-1acc-1d23105c3804@amperemail.onmicrosoft.com>
+Date: Wed, 11 Oct 2023 15:53:03 +0530
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH RFC V2 00/37] Support of Virtual CPU Hotplug for ARMv8
+ Arch
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, will@kernel.org,
+ ardb@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ mst@redhat.com, gshan@redhat.com, rafael@kernel.org,
+ borntraeger@linux.ibm.com, alex.bennee@linaro.org, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
+ wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
+ maobibo@loongson.cn, lixianglai@loongson.cn
+References: <20230926100436.28284-1-salil.mehta@huawei.com>
 Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.126.168.228]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+From: Vishnu Pajjuri <vishnu@amperemail.onmicrosoft.com>
+In-Reply-To: <20230926100436.28284-1-salil.mehta@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: CH2PR07CA0006.namprd07.prod.outlook.com
+ (2603:10b6:610:20::19) To DM6PR01MB3689.prod.exchangelabs.com
+ (2603:10b6:5:84::26)
+Return-Path: vishnu@os.amperecomputing.com
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: vWp8XR7eQs8A
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR01MB3689:EE_|CH0PR01MB7153:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4dbf05b5-a2cf-4d83-444a-08dbca44169f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	Huj4VHnScEJ9TFST8Qi2NQSnwPy2Tc4J4SPm+ieX9w2WesOH4JgsPkVfxDhfxuhneSE69TA+Gptx/u2Wc8BInrVwERe92/9z3DaizDqzdJnURS2iuP/JVLkkO9cynq0BUoGTlIQnX84bxCT54WOMzmilQXnliZWIkSq6TtEN688AEQTId3JGgEUqdAmcEGvty5ZeLx2FUShwpIRFyHLZdDJuBYcdlzxaaxvsLNUQdn6tqRc7Y9Z688wNsCKBbjuUmtEUuCH3ZW7u7Qo4WeNFtRsP93aZB5QH/oILBKW5/lBxNkaD9nuDxcxBD2hTHCIPeMngseEg3XyA0mjEyke/HVLV0Yjk11MSgKw80Y4z48BmRielwYJSUYhQQr6ChOAz0Mw/oRhB9jCEKvrDSFnx0qOpe9cN+P5+JeU8oAIAwklDeAxE3yxMJbxKvd+QgWByrITe7EwTlojPIrtEKRfATeVtCdyJIA/FdDafGmWA7sOrttbvV52XN5Udcg7spb6Z8yzSMpYlGz2PjGGDOSjSHIbmxduAUCM2JlxJXH1K7/jAJzGB4mdjdpjYAnlQW9ZdXeMrkaBtmCap/NARzAIlDA6b9srvYrTA1qxhVf6t5oE=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR01MB3689.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230031)(376002)(346002)(396003)(39850400004)(136003)(366004)(230922051799003)(1800799009)(64100799003)(451199024)(186009)(6506007)(26005)(42882007)(83170400001)(38100700002)(83380400001)(8676002)(4326008)(8936002)(30864003)(66556008)(66476007)(66946007)(53546011)(41300700001)(6512007)(6486002)(2616005)(2906002)(478600001)(7416002)(6666004)(966005)(316002)(5660300002)(7406005)(31696002)(31686004)(43740500002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?YUhscmIyTUFoV0hLTlp5K3NtZEtzc1JOeEtBNENDSjlaSzYyMXlNZ2xpR0Nr?=
+ =?utf-8?B?Q0JTS29MU2VEOXMwU1JxTjlsdHVFSWo3QjFjTVVqYi9udGUyN2hRdU5saGJq?=
+ =?utf-8?B?L3BQMmJDT244bzh3UkZ2c3FSNkF3NmtEdXVDcDgwRHNrZW1OdzhYUE0vNFhr?=
+ =?utf-8?B?di9UeG9UMVZRSGhkTzhqK3NWb0s5N2NPTWFhcm40MVkzTmlxUHovY2E1R2ZS?=
+ =?utf-8?B?MmQ5YVNhUS84ck5VNXdnRzJVeXpqbjhWVGw5dHN5ZU9qMjAzb09samt4dWVT?=
+ =?utf-8?B?Q2JiUGxjb2tzS0ZuVTV1Umh0T2RxRktYdFdPSG1OS2NaVHU0Z1MzWWdXQ0wv?=
+ =?utf-8?B?emZQVkZWTkVsTHJwbjBQWFJuYXg1UnhiMHh2MWZsd1E5aU9MV1VlakpqNjlw?=
+ =?utf-8?B?R2tMeTVXVUMwbE05UjlvdS9JLzBISjZIakJMbXBIajhkbDl1S3MvZHh4Y3pl?=
+ =?utf-8?B?VWJPV0p6UnJEQkZVb1V0czFhVmkvMUlJSlI3ZHJIa0ZTQWlpU2ZGazkxNUtK?=
+ =?utf-8?B?bkR3b1JPQkFOcWNYZjNBSnRXUVQxbDM5b3F4cTZ5U1pWSVc1eVZmaDdRVU5J?=
+ =?utf-8?B?MkdCb0xQbUV6ZXBtNlB4UG5HMWp4bWFLYzNvZVgvWU41OS9acUpHSlJ5b1Vr?=
+ =?utf-8?B?dFlTNC80NlJpaGJEUVZSbFNmcW0xQmV3MUEzZFZmcEVSdmJIdnUzb1FJeXNI?=
+ =?utf-8?B?cTlRd1NVOER2WnJiSzJSUHZUbFZFVzFaT1NpMmJZUExEZlp4eHl1T1pCbjNR?=
+ =?utf-8?B?eWxsRGg0S0cvd3psZkswOXYzOFhBeDN6dUI3bDBjVy9RaUFYWGgvNUp0OHJv?=
+ =?utf-8?B?WnlCMUFDVk1USm5JMTZOZk5QY3FCMS9helpSU0JvQS9UeklvY3IzYVpjWmUx?=
+ =?utf-8?B?ZHRhKzE1ei9kUHBNM1FuTHRxcTQ5SFh6RyswenB4KzgzanNoM0QyYUhvRENF?=
+ =?utf-8?B?eXQvZ3dlR1ZZSlNpMHVlVWsxbWUrcnJkV2crUmRPMUdrTWV2bm1XNm5CcnFC?=
+ =?utf-8?B?TmM4cDNIY25pdUNWMmxFODYvdlNOSEVGbEZETHE4dVlPSXVDTmRyTFgxam9F?=
+ =?utf-8?B?cHlUVEt1Z3IzUmpDY1lBd3NybkNVV2pmZUhJYitxYUJ5em1PZE1ydklybGhQ?=
+ =?utf-8?B?YjdrS3YxSk55L3pHOTloLzl1blN1ZmVCWVBXY0VnNldHeWtkdzBJWkJTOXda?=
+ =?utf-8?B?QmplQkQ2S1dtLy9KTU1zSWU1QnZNQWxDamFJWERvR2UyQzB6SitLTnVXK1BJ?=
+ =?utf-8?B?dk1SOFhtVS93eUluRXZxVEN3WDBNSGpqL0xJZXVLM0pmQ3VsNEhwZTg1ak9J?=
+ =?utf-8?B?WUZ4dC9lZWlQVUE2ZFJQV01KbXFpb0xlcHB5cWFpMVJXaUVFaEZMRWMwWUpG?=
+ =?utf-8?B?SjJJUmRhYkxUOXJ5R0NLcG4rSFVnYmZiTHBVbitjb2s3NW5ZOE9KditCR0dW?=
+ =?utf-8?B?NFBnRHZvSE45N09Fa0JBQjNQQk53N1lzclYyRFZua1hZS3dSTG42eWU4M3N3?=
+ =?utf-8?B?Nk5zRW01Z3FsNCtKckFHRVdNRzc2Tnhkd2JIaFdVOUhLRnZUazNBZ1U3KzBZ?=
+ =?utf-8?B?bFJPSVZ0L2V6WmlzTVhPdHB3enMrRGFFOUVBbDRjM2Z6TnFTK3o2eGRxMU9M?=
+ =?utf-8?B?Tk9hOXZ3ejQ1cWx4UUNubnVOcTlXa01MSjdtT0Z5Q3dCZWg1QS85eG03YVNO?=
+ =?utf-8?B?allPZ25qZmFOd3ZUaktkLzZpOW5rSC9TeStSTEZiKzJzOFpsaTA0YjRXVGVS?=
+ =?utf-8?B?elpORkdrR0luai9xeUl4Y09IREhPZmprcmJYMXVnY3NIUy9PWGVLOGZWMS92?=
+ =?utf-8?B?NkFKVHJNdDg1amJNNGRZZm5heTFoWU1QM2FJZE1pUTVMSWVOamM2RWs3SVA0?=
+ =?utf-8?B?S1p0QVF2K1hqZnBna2lkQkxjQ05taFl0OW9GZERGY3dsaitZSWlhUFptTjgy?=
+ =?utf-8?B?bGxkQ3QwcEtyQVA3cUNGLzVGNzlyMEEzRUV2NW9MdENZZGd3L2Y5MEV2YjJw?=
+ =?utf-8?B?OXRHcXJqeThHaEJHbDA3eGZ5RnMwQlk1VFV6R0QwTjJrRElab0w4eDFteVNH?=
+ =?utf-8?B?SFJ6ano5Y2pDa1BmUE1nSVJpb1A4UjFTUllsOG1oWEcyc3l2UndHdW10MFZh?=
+ =?utf-8?B?eTcrYldOVklHcHp3RmtQY05XZW51SnFxWDVRRU02QjBIYlF3T2R3RHFkZWpU?=
+ =?utf-8?Q?v7yL4sxWmtAtsDUQfkiH8RI=3D?=
+X-OriginatorOrg: amperemail.onmicrosoft.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4dbf05b5-a2cf-4d83-444a-08dbca44169f
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR01MB3689.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Oct 2023 10:23:19.3094
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /jDVewGElmk2sQ+KaBBftiQkizKimBcW5cqnnDRsjQg4ICvZ6WE466VlAFV7YXeCFncV2qtrBWPSi7kufxf2JSDNBDQ659vfx4vCYfUEASUwhwO1tE/+HrYYLoYPcVG2
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR01MB7153
+X-TUID: TNLGJ1IQcfqo
 
-SGkgR2F2aW4sDQoNCj4gRnJvbTogR2F2aW4gU2hhbiA8Z3NoYW5AcmVkaGF0LmNvbT4NCj4gU2Vu
-dDogV2VkbmVzZGF5LCBPY3RvYmVyIDExLCAyMDIzIDg6MDkgQU0NCj4gVG86IFNhbGlsIE1laHRh
-IDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPjsgcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LWFy
-bUBub25nbnUub3JnDQo+IENjOiBtYXpAa2VybmVsLm9yZzsgamVhbi1waGlsaXBwZUBsaW5hcm8u
-b3JnOyBKb25hdGhhbiBDYW1lcm9uDQo+IDxqb25hdGhhbi5jYW1lcm9uQGh1YXdlaS5jb20+OyBs
-cGllcmFsaXNpQGtlcm5lbC5vcmc7DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgcmljaGFy
-ZC5oZW5kZXJzb25AbGluYXJvLm9yZzsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgYW5kcmV3Lmpv
-bmVzQGxpbnV4LmRldjsgZGF2aWRAcmVkaGF0LmNvbTsNCj4gcGhpbG1kQGxpbmFyby5vcmc7IGVy
-aWMuYXVnZXJAcmVkaGF0LmNvbTsgb2xpdmVyLnVwdG9uQGxpbnV4LmRldjsNCj4gcGJvbnppbmlA
-cmVkaGF0LmNvbTsgbXN0QHJlZGhhdC5jb207IHdpbGxAa2VybmVsLm9yZzsgcmFmYWVsQGtlcm5l
-bC5vcmc7DQo+IGFsZXguYmVubmVlQGxpbmFyby5vcmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51azsN
-Cj4gZGFycmVuQG9zLmFtcGVyZWNvbXB1dGluZy5jb207IGlsa2thQG9zLmFtcGVyZWNvbXB1dGlu
-Zy5jb207DQo+IHZpc2hudUBvcy5hbXBlcmVjb21wdXRpbmcuY29tOyBrYXJsLmhldWJhdW1Ab3Jh
-Y2xlLmNvbTsNCj4gbWlndWVsLmx1aXNAb3JhY2xlLmNvbTsgc2FsaWwubWVodGFAb3Buc3JjLm5l
-dDsgemh1a2VxaWFuDQo+IDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5nIChD
-KSA8d2FuZ3hpb25nZmVuZzJAaHVhd2VpLmNvbT47DQo+IHdhbmd5YW5hbiAoWSkgPHdhbmd5YW5h
-bjU1QGh1YXdlaS5jb20+OyBqaWFrZXJuZWwyQGdtYWlsLmNvbTsNCj4gbWFvYmlib0Bsb29uZ3Nv
-bi5jbjsgbGl4aWFuZ2xhaUBsb29uZ3Nvbi5jbjsgTGludXhhcm0gPGxpbnV4YXJtQGh1YXdlaS5j
-b20+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggVjQgMDEvMTBdIGFjY2VsL2t2bTogRXh0cmFjdCBj
-b21tb24gS1ZNIHZDUFUNCj4ge2NyZWF0aW9uLHBhcmtpbmd9IGNvZGUNCj4gDQo+IEhpIFNhbGls
-LA0KPiANCj4gT24gMTAvMTAvMjMgMDY6MzUsIFNhbGlsIE1laHRhIHdyb3RlOg0KPiA+IEtWTSB2
-Q1BVIGNyZWF0aW9uIGlzIGRvbmUgb25jZSBkdXJpbmcgdGhlIGluaXRpYWxpemF0aW9uIG9mIHRo
-ZSBWTSB3aGVuIFFlbXUNCj4gPiB0aHJlYWQgaXMgc3Bhd25lZC4gVGhpcyBpcyBjb21tb24gdG8g
-YWxsIHRoZSBhcmNoaXRlY3R1cmVzLg0KPiA+DQo+ID4gSG90LXVucGx1ZyBvZiB2Q1BVIHJlc3Vs
-dHMgaW4gZGVzdHJ1Y3Rpb24gb2YgdGhlIHZDUFUgb2JqZWN0IGluIFFPTSBidXQgdGhlDQo+ID4g
-Y29ycmVzcG9uZGluZyBLVk0gdkNQVSBvYmplY3QgaW4gdGhlIEhvc3QgS1ZNIGlzIG5vdCBkZXN0
-cm95ZWQgYW5kIGl0cw0KPiA+IHJlcHJlc2VudGF0aXZlIEtWTSB2Q1BVIG9iamVjdC9jb250ZXh0
-IGluIFFlbXUgaXMgcGFya2VkLg0KPiA+DQo+ID4gUmVmYWN0b3IgY29tbW9uIGxvZ2ljIHNvIHRo
-YXQgc29tZSBBUElzIGNvdWxkIGJlIHJldXNlZCBieSB2Q1BVIEhvdHBsdWcgY29kZS4NCj4gPg0K
-PiA+IFNpZ25lZC1vZmYtYnk6IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPg0K
-PiA+IC0tLQ0KPiA+ICAgYWNjZWwva3ZtL2t2bS1hbGwuYyAgICB8IDY0ICsrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLQ0KPiA+ICAgYWNjZWwva3ZtL3RyYWNlLWV2ZW50
-cyB8ICA0ICsrKw0KPiA+ICAgaW5jbHVkZS9zeXNlbXUva3ZtLmggICB8IDE2ICsrKysrKysrKysr
-DQo+ID4gICAzIGZpbGVzIGNoYW5nZWQsIDY5IGluc2VydGlvbnMoKyksIDE1IGRlbGV0aW9ucygt
-KQ0KPiA+DQo+IA0KPiBXaXRoIHRoZSBmb2xsb3dpbmcgb25lIGNvbW1lbnQgYWRkcmVzc2VkOg0K
-PiANCj4gUmV2aWV3ZWQtYnk6IEdhdmluIFNoYW4gPGdzaGFuQHJlZGhhdC5jb20+DQoNCg0KVGhh
-bmtzDQoNCg0KWy4uLl0NCg0KPiA+IGRpZmYgLS1naXQgYS9hY2NlbC9rdm0vdHJhY2UtZXZlbnRz
-IGIvYWNjZWwva3ZtL3RyYWNlLWV2ZW50cw0KPiA+IGluZGV4IDM5OWFhZWIwZWMuLjA4ZTJkYzI1
-M2YgMTAwNjQ0DQo+ID4gLS0tIGEvYWNjZWwva3ZtL3RyYWNlLWV2ZW50cw0KPiA+ICsrKyBiL2Fj
-Y2VsL2t2bS90cmFjZS1ldmVudHMNCj4gPiBAQCAtOSw2ICs5LDEwIEBAIGt2bV9kZXZpY2VfaW9j
-dGwoaW50IGZkLCBpbnQgdHlwZSwgdm9pZCAqYXJnKSAiZGV2IGZkDQo+ICVkLCB0eXBlIDB4JXgs
-IGFyZyAlcCINCj4gPiAgIGt2bV9mYWlsZWRfcmVnX2dldCh1aW50NjRfdCBpZCwgY29uc3QgY2hh
-ciAqbXNnKSAiV2FybmluZzogVW5hYmxlIHRvIHJldHJpZXZlIE9ORVJFRyAlIiBQUkl1NjQgIiBm
-cm9tIEtWTTogJXMiDQo+ID4gICBrdm1fZmFpbGVkX3JlZ19zZXQodWludDY0X3QgaWQsIGNvbnN0
-IGNoYXIgKm1zZykgIldhcm5pbmc6IFVuYWJsZSB0byBzZXQgT05FUkVHICUiIFBSSXU2NCAiIHRv
-IEtWTTogJXMiDQo+ID4gICBrdm1faW5pdF92Y3B1KGludCBjcHVfaW5kZXgsIHVuc2lnbmVkIGxv
-bmcgYXJjaF9jcHVfaWQpICJpbmRleDogJWQgaWQ6ICVsdSINCj4gPiAra3ZtX2NyZWF0ZV92Y3B1
-KGludCBjcHVfaW5kZXgsIHVuc2lnbmVkIGxvbmcgYXJjaF9jcHVfaWQpICJjcmVhdGluZyBLVk0g
-Y3B1OiBjcHVfaW5kZXg6ICVkIGFyY2ggdmNwdS1pZDogJWx1Ig0KPiA+ICtrdm1fZ2V0X3ZjcHUo
-dW5zaWduZWQgbG9uZyBhcmNoX2NwdV9pZCkgInVucGFya2luZyBLVk0gdmNwdTogYXJjaCB2Y3B1
-LWlkOiAlbHUiDQo+ID4gK2t2bV9kZXN0cm95X3ZjcHUoaW50IGNwdV9pbmRleCwgdW5zaWduZWQg
-bG9uZyBhcmNoX2NwdV9pZCkgImRlc3Ryb3kgdmNwdTogY3B1X2luZGV4OiAlZCBhcmNoIHZjcHUt
-aWQ6ICVsdSINCj4gPiAra3ZtX3BhcmtfdmNwdShpbnQgY3B1X2luZGV4LCB1bnNpZ25lZCBsb25n
-IGFyY2hfY3B1X2lkKSAicGFya2luZyBLVk0gdmNwdTogY3B1X2luZGV4OiAlZCBhcmNoIHZjcHUt
-aWQ6ICVsdSINCj4gDQo+IEkgZG9uJ3QgdGhpbmsgd2UgbmVlZCB0aGUgZHVwbGljYXRlIGlkZW50
-aWZpZXJzIGxpa2UgImNyZWF0aW5nIEtWTSBjcHUiDQo+IHNpbmNlIHRoZSBldmVudCBuYW1lIGNh
-biBzZXJ2ZSB0aGUgcHVycG9zZS4gQmVzaWRlcywgdGhlIHBhcmFtZXRlcnMNCj4gYXJlIGRlc2Ny
-aXB0aXZlIGJ5ICJpbmRleDogJWQgaWQ6ICVsdSIsIHVzZWQgYnkga3ZtX2luaXRfdmNwdSgpLiBX
-ZSBqdXN0DQo+IG5lZWQgdG8gZm9sbG93IHRoYXQgcGF0dGVybi4gT3RoZXJ3aXNlLCBpbmNvbnNp
-c3RlbnQgb3V0cHV0IHdpbGwgYmUgcHJpbnRlZA0KPiBieSBrdm1faW5pdF92Y3B1KCkgYW5kIGt2
-bV9nZXRfdmNwdSgpLiBTbyBJIHdvdWxkIGNoYW5nZSB0aGVtIGxpa2UgYmVsb3c6DQo+IA0KPiBr
-dm1faW5pdF92Y3B1KGludCBjcHVfaW5kZXgsIHVuc2lnbmVkIGxvbmcgYXJjaF9jcHVfaWQpICJp
-bmRleDogJWQgaWQ6ICVsdSINCj4ga3ZtX2NyZWF0ZV92Y3B1KGludCBjcHVfaW5kZXgsIHVuc2ln
-bmVkIGxvbmcgYXJjaF9jcHVfaWQpICJpbmRleDogJWQgaWQ6ICVsdSINCj4ga3ZtX2dldF92Y3B1
-KHVuc2lnbmVkIGxvbmcgYXJjaF9jcHVfaWQpICJpZDogJWx1Ig0KPiBrdm1fZGVzdHJveV92Y3B1
-KGludCBjcHVfaW5kZXgsIHVuc2lnbmVkIGxvbmcgYXJjaF9jcHVfaWQpICJpbmRleDogJWQgaWQ6
-ICVsdSINCj4ga3ZtX3BhcmtfdmNwdShpbnQgY3B1X2luZGV4LCB1bnNpZ25lZCBsb25nIGFyY2hf
-Y3B1X2lkKSAiaW5kZXg6ICVkIGlkOiAlbHUiDQoNCk5vIHByb2JsZW0uIFdpbGwgZml4DQoNCk9u
-bHkgZXhlY3V0ZWQgYmVsb3cgdG8gY2hlY2sgZm9yIG5ldyB0cmFjZSBjb3VudGVyczoNClFlbXU+
-IGluZm8gdHJhY2UtZXZlbnRzDQoNCg0KVGhhbmtzDQpTYWxpbC4NCg0K
+Hi Salil,
+
+On 26-09-2023 15:33, Salil Mehta wrote:
+> [ *REPEAT: Sent patches got held at internal server yesterday* ]
+>
+> PROLOGUE
+> ========
+>
+> To assist in review and set the right expectations from this RFC, please first
+> read below sections *APPENDED AT THE END* of this cover letter,
+>
+> 1. Important *DISCLAIMER* [Section (X)]
+> 2. Work presented at KVMForum Conference (slides available) [Section (V)F]
+> 3. Organization of patches [Section (XI)]
+> 4. References [Section (XII)]
+> 5. Detailed TODO list of the leftover work or work-in-progress [Section (IX)]
+>
+> NOTE: There has been an interest shown by other organizations in adapting
+> this series for their architecture. I am planning to split this RFC into
+> architecture *agnostic* and *specific* patch-sets in subsequent releases. ARM
+> specific patch-set will continue as RFC V3 and architecture agnostic patch-set
+> will be floated without RFC tag and can be consumed in this Qemu cycle if
+> MAINTAINERs ack it.
+>
+> [Please check section (XI)B for details of architecture agnostic patches]
+>
+>
+> SECTIONS [I - XIII] are as follows :
+>
+> (I) Key Changes (RFC V1 -> RFC V2)
+>      ==================================
+>
+>      RFC V1: https://lore.kernel.org/qemu-devel/20200613213629.21984-1-salil.mehta@huawei.com/
+>
+> 1. ACPI MADT Table GIC CPU Interface can now be presented [6] as ACPI
+>     *online-capable* or *enabled* to the Guest OS at the boot time. This means
+>     associated CPUs can have ACPI _STA as *enabled* or *disabled* even after boot
+>     See, UEFI ACPI 6.5 Spec, Section 05, Table 5.37 GICC CPU Interface Flags[20]
+> 2. SMCC/HVC Hypercall exit handling in userspace/Qemu for PSCI CPU_{ON,OFF}
+>     request. This is required to {dis}allow online'ing a vCPU.
+> 3. Always presenting unplugged vCPUs in CPUs ACPI AML code as ACPI _STA.PRESENT
+>     to the Guest OS. Toggling ACPI _STA.Enabled to give an effect of the
+>     hot{un}plug.
+> 4. Live Migration works (some issues are still there)
+> 5. TCG/HVF/qtest does not support Hotplug and falls back to default.
+> 6. Code for TCG support do exists in this release (it is a work-in-progress)
+> 7. ACPI _OSC method can now be used by OSPM to negotiate Qemu VM platform
+>     hotplug capability (_OSC Query support still pending)
+> 8. Misc. Bug fixes
+>
+> (II) Summary
+>       =======
+>
+> This patch-set introduces the virtual CPU hotplug support for ARMv8 architecture
+> in QEMU. Idea is to be able to hotplug and hot-unplug the vCPUs while guest VM
+> is running and no reboot is required. This does *not* makes any assumption of
+> the physical CPU hotplug availability within the host system but rather tries to
+> solve the problem at virtualizer/QEMU layer. Introduces ACPI CPU hotplug hooks
+> and event handling to interface with the guest kernel, code to initialize, plug
+> and unplug CPUs. No changes are required within the host kernel/KVM except the
+> support of hypercall exit handling in the user-space/Qemu which has recently
+> been added to the kernel. Its corresponding Guest kernel changes have been
+> posted on the mailing-list [3] [4] by James Morse.
+>
+> (III) Motivation
+>        ==========
+>
+> This allows scaling the guest VM compute capacity on-demand which would be
+> useful for the following example scenarios,
+>
+> 1. Vertical Pod Autoscaling [9][10] in the cloud: Part of the orchestration
+>     framework which could adjust resource requests (CPU and Mem requests) for
+>     the containers in a pod, based on usage.
+> 2. Pay-as-you-grow Business Model: Infrastructure provider could allocate and
+>     restrict the total number of compute resources available to the guest VM
+>     according to the SLA (Service Level Agreement). VM owner could request for
+>     more compute to be hot-plugged for some cost.
+>
+> For example, Kata Container VM starts with a minimum amount of resources (i.e.
+> hotplug everything approach). why?
+>
+> 1. Allowing faster *boot time* and
+> 2. Reduction in *memory footprint*
+>
+> Kata Container VM can boot with just 1 vCPU and then later more vCPUs can be
+> hot-plugged as per requirement.
+>
+> (IV) Terminology
+>       ===========
+>
+> (*) Posssible CPUs: Total vCPUs which could ever exist in VM. This includes
+>                      any cold booted CPUs plus any CPUs which could be later
+>                      hot-plugged.
+>                      - Qemu parameter(-smp maxcpus=N)
+> (*) Present CPUs:   Possible CPUs which are ACPI 'present'. These might or might
+>                      not be ACPI 'enabled'.
+>                      - Present vCPUs = Possible vCPUs (Always on ARM Arch)
+> (*) Enabled CPUs:   Possible CPUs which are ACPI ‘present’ and 'enabled' and can
+>                      now be ‘onlined’ (PSCI) for use by Guest Kernel. All cold
+>                      booted vCPUs are ACPI 'enabled' at boot. Later, using
+>                      device_add more vCPUs can be hotplugged and be made ACPI
+>                      'enabled.
+>                      - Qemu parameter(-smp cpus=N). Can be used to specify some
+> 		      cold booted vCPUs during VM init. Some can be added using
+> 		      '-device' option.
+>
+> (V) Constraints Due To ARMv8 CPU Architecture [+] Other Impediments
+>      ===============================================================
+>
+> A. Physical Limitation to Support CPU Hotplug: (Architectural Constraint)
+>     1. ARMv8 CPU architecture does not support the concept of the physical CPU
+>        hotplug.
+>        a. There are many per-CPU components like PMU, SVE, MTE, Arch timers etc.
+>           whose behaviour need to be clearly defined when CPU is hot(un)plugged.
+>           There is no specification for this.
+>
+>     2. Other ARM components like GIC etc. have not been designed to realize
+>        physical CPU hotplug capability as of now. For example,
+>        a. Every physical CPU has a unique GICC (GIC CPU Interface) by construct.
+>           Architecture does not specifies what CPU hot(un)plug would mean in
+>           context to any of these.
+>        b. CPUs/GICC are physically connected to unique GICR (GIC Redistributor).
+>           GIC Redistributors are always part of always-on power domain. Hence,
+>           cannot be powered-off as per specification.
+>
+> B. Impediments in Firmware/ACPI (Architectural Constraint)
+>
+>     1. Firmware has to expose GICC, GICR and other per-CPU features like PMU,
+>        SVE, MTE, Arch Timers etc. to the OS. Due to architectural constraint
+>        stated in above section A1(a),  all interrupt controller structures of
+>        MADT describing GIC CPU Interfaces and the GIC Redistibutors MUST be
+>        presented by firmware to the OSPM during the boot time.
+>     2. Architectures that support CPU hotplug can evaluate ACPI _MAT method to
+>        get this kind of information from the firmware even after boot and the
+>        OSPM has capability to process these. ARM kernel uses information in MADT
+>        interrupt controller structures to identify number of Present CPUs during
+>        boot and hence does not allow to change these after boot. Number of
+>        present CPUs cannot be changed. It is an architectural constraint!
+>
+> C. Impediments in KVM to Support Virtual CPU Hotplug (Architectural Constraint)
+>
+>     1. KVM VGIC:
+>         a. Sizing of various VGIC resources like memory regions etc. related to
+>            the redistributor happens only once and is fixed at the VM init time
+>            and cannot be changed later after initialization has happened.
+>            KVM statically configures these resources based on the number of vCPUs
+>            and the number/size of redistributor ranges.
+>         b. Association between vCPU and its VGIC redistributor is fixed at the
+>            VM init time within the KVM i.e. when redistributor iodevs gets
+>            registered. VGIC does not allows to setup/change this association
+>            after VM initialization has happened. Physically, every CPU/GICC is
+>            uniquely connected with its redistributor and there is no
+>            architectural way to set this up.
+>     2. KVM vCPUs:
+>         a. Lack of specification means destruction of KVM vCPUs does not exist as
+>            there is no reference to tell what to do with other per-vCPU
+>            components like redistributors, arch timer etc.
+>         b. Infact, KVM does not implements destruction of vCPUs for any
+>            architecture. This is independent of the fact whether architecture
+>            actually supports CPU Hotplug feature. For example, even for x86 KVM
+>            does not implements destruction of vCPUs.
+>
+> D. Impediments in Qemu to Support Virtual CPU Hotplug (KVM Constraints->Arch)
+>
+>     1. Qemu CPU Objects MUST be created to initialize all the Host KVM vCPUs to
+>        overcome the KVM constraint. KVM vCPUs are created, initialized when Qemu
+>        CPU Objects are realized. But keepinsg the QOM CPU objects realized for
+>        'yet-to-be-plugged' vCPUs can create problems when these new vCPUs shall
+>        be plugged using device_add and a new QOM CPU object shall be created.
+>     2. GICV3State and GICV3CPUState objects MUST be sized over *possible vCPUs*
+>        during VM init time while QOM GICV3 Object is realized. This is because
+>        KVM VGIC can only be initialized once during init time. But every
+>        GICV3CPUState has an associated QOM CPU Object. Later might corresponds to
+>        vCPU which are 'yet-to-be-plugged'(unplugged at init).
+>     3. How should new QOM CPU objects be connected back to the GICV3CPUState
+>        objects and disconnected from it in case CPU is being hot(un)plugged?
+>     4. How should 'unplugged' or 'yet-to-be-plugged' vCPUs be represented in the
+>        QOM for which KVM vCPU already exists? For example, whether to keep,
+>         a. No QOM CPU objects Or
+>         b. Unrealized CPU Objects
+>     5. How should vCPU state be exposed via ACPI to the Guest? Especially for
+>        the unplugged/yet-to-be-plugged vCPUs whose CPU objects might not exists
+>        within the QOM but the Guest always expects all possible vCPUs to be
+>        identified as ACPI *present* during boot.
+>     6. How should Qemu expose GIC CPU interfaces for the unplugged or
+>        yet-to-beplugged vCPUs using ACPI MADT Table to the Guest?
+>
+> E. Summary of Approach ([+] Workarounds to problems in sections A, B, C & D)
+>
+>     1. At VM Init, pre-create all the possible vCPUs in the Host KVM i.e. even
+>        for the vCPUs which are yet-to-be-plugged in Qemu but keep them in the
+>        powered-off state.
+>     2. After the KVM vCPUs have been initialized in the Host, the KVM vCPU
+>        objects corresponding to the unplugged/yet-to-be-plugged vCPUs are parked
+>        at the existing per-VM "kvm_parked_vcpus" list in Qemu. (similar to x86)
+>     3. GICV3State and GICV3CPUState objects are sized over possible vCPUs during
+>        VM init time i.e. when Qemu GIC is realized. This in turn sizes KVM VGIC
+>        resources like memory regions etc. related to the redistributors with the
+>        number of possible KVM vCPUs. This never changes after VM has initialized.
+>     4. Qemu CPU objects corresponding to unplugged/yet-to-be-plugged vCPUs are
+>        released post Host KVM CPU and GIC/VGIC initialization.
+>     5. Build ACPI MADT Table with below updates
+>        a. Number of GIC CPU interface entries (=possible vCPUs)
+>        b. Present Boot vCPU as MADT.GICC.Enabled=1 (Not hot[un]pluggable)
+>        c. Present hot(un)pluggable vCPUs as MADT.GICC.online-capable=1
+>           - MADT.GICC.Enabled=0 (Mutually exclusive) [6][7]
+> 	 - vCPU can be ACPI enabled+onlined after Guest boots (Firmware Policy)
+> 	 - Some issues with above (details in later sections)
+>     6. Expose below ACPI Status to Guest kernel
+>        a. Always _STA.Present=1 (all possible vCPUs)
+>        b. _STA.Enabled=1 (plugged vCPUs)
+>        c. _STA.Enabled=0 (unplugged vCPUs)
+>     7. vCPU hotplug *realizes* new QOM CPU object. Following happens,
+>        a. Realizes, initializes QOM CPU Object & spawns Qemu vCPU thread
+>        b. Unparks the existing KVM vCPU ("kvm_parked_vcpus" list)
+>           - Attaches to QOM CPU object.
+>        c. Reinitializes KVM vCPU in the Host
+>           - Resets the core and sys regs, sets defaults etc.
+>        d. Runs KVM vCPU (created with "start-powered-off")
+> 	 - vCPU thread sleeps (waits for vCPU reset via PSCI)
+>        e. Updates Qemu GIC
+>           - Wires back IRQs related to this vCPU.
+>           - GICV3CPUState association with QOM CPU Object.
+>        f. Updates [6] ACPI _STA.Enabled=1
+>        g. Notifies Guest about new vCPU (via ACPI GED interface)
+> 	 - Guest checks _STA.Enabled=1
+> 	 - Guest adds processor (registers CPU with LDM) [3]
+>        h. Plugs the QOM CPU object in the slot.
+>           - slot-number = cpu-index{socket,cluster,core,thread}
+>        i. Guest online's vCPU (CPU_ON PSCI call over HVC/SMC)
+>           - KVM exits HVC/SMC Hypercall [5] to Qemu (Policy Check).
+>           - Qemu powers-on KVM vCPU in the Host
+>     8. vCPU hot-unplug *unrealizes* QOM CPU Object. Following happens,
+>        a. Notifies Guest (via ACPI GED interface) vCPU hot-unplug event
+>           - Guest offline's vCPU (CPU_OFF PSCI call over HVC/SMC)
+>        b. KVM exits HVC/SMC Hypercall [5] to Qemu (Policy Check).
+>           - Qemu powers-off the KVM vCPU in the Host
+>        c Guest signals *Eject* vCPU to Qemu
+>        d. Qemu updates [6] ACPI _STA.Enabled=0
+>        e. Updates GIC
+>           - Un-wires IRQs related to this vCPU
+>           - GICV3CPUState association with new QOM CPU Object is updated.
+>        f. Unplugs the vCPU
+> 	 - Removes from slot
+>           - Parks KVM vCPU ("kvm_parked_vcpus" list)
+>           - Unrealizes QOM CPU Object & joins back Qemu vCPU thread
+> 	 - Destroys QOM CPU object
+>        g. Guest checks ACPI _STA.Enabled=0
+>           - Removes processor (unregisters CPU with LDM) [3]
+>
+> F. Work Presented at KVM Forum Conferences:
+>     Details of above work has been presented at KVMForum2020 and KVMForum2023
+>     conferences. Slides are available at below links,
+>     a. KVMForum 2023
+>        - Challenges Revisited in Supporting Virt CPU Hotplug on architectures that don't Support CPU Hotplug (like ARM64)
+>          https://kvm-forum.qemu.org/2023/talk/9SMPDQ/
+>     b. KVMForum 2020
+>        - Challenges in Supporting Virtual CPU Hotplug on SoC Based Systems (like ARM64) - Salil Mehta, Huawei
+>          https://sched.co/eE4m
+>
+> (VI) Commands Used
+>       =============
+>
+>      A. Qemu launch commands to init the machine
+>
+>      $ qemu-system-aarch64 --enable-kvm -machine virt,gic-version=3 \
+>      -cpu host -smp cpus=4,maxcpus=6 \
+>      -m 300M \
+>      -kernel Image \
+>      -initrd rootfs.cpio.gz \
+>      -append "console=ttyAMA0 root=/dev/ram rdinit=/init maxcpus=2 acpi=force" \
+>      -nographic \
+>      -bios  QEMU_EFI.fd \
+>
+>      B. Hot-(un)plug related commands
+>
+>      # Hotplug a host vCPU(accel=kvm)
+>      $ device_add host-arm-cpu,id=core4,core-id=4
+>
+>      # Hotplug a vCPU(accel=tcg)
+>      $ device_add cortex-a57-arm-cpu,id=core4,core-id=4
+>
+>      # Delete the vCPU
+>      $ device_del core4
+>
+>      Sample output on guest after boot:
+>
+>      $ cat /sys/devices/system/cpu/possible
+>      0-5
+>      $ cat /sys/devices/system/cpu/present
+>      0-5
+>      $ cat /sys/devices/system/cpu/enabled
+>      0-3
+>      $ cat /sys/devices/system/cpu/online
+>      0-1
+>      $ cat /sys/devices/system/cpu/offline
+>      2-5
+>
+>      Sample output on guest after hotplug of vCPU=4:
+>
+>      $ cat /sys/devices/system/cpu/possible
+>      0-5
+>      $ cat /sys/devices/system/cpu/present
+>      0-5
+>      $ cat /sys/devices/system/cpu/enabled
+>      0-4
+>      $ cat /sys/devices/system/cpu/online
+>      0-1,4
+>      $ cat /sys/devices/system/cpu/offline
+>      2-3,5
+>
+>      Note: vCPU=4 was explicitly 'onlined' after hot-plug
+>      $ echo 1 > /sys/devices/system/cpu/cpu4/online
+>
+> (VII) Repository
+>        ==========
+>
+>   (*) QEMU changes for vCPU hotplug could be cloned from below site,
+>       https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v2
+>   (*) Guest Kernel changes (by James Morse, ARM) are available here:
+>       https://git.kernel.org/pub/scm/linux/kernel/git/morse/linux.git virtual_cpu_hotplug/rfc/v2
+>
+>
+> (VIII) KNOWN ISSUES
+>         ============
+>
+> 1. Migration has been lightly tested. Below are some of the known issues:
+>     - Ocassional CPU stall (not always repeatable)
+>     - Negative test case like asymmetric source/destination VM config causes dump.
+>     - Migration with TCG is not working properly.
+> 2. TCG with Single threaded mode is broken.
+> 3. HVF and qtest support is broken.
+> 4. ACPI MADT Table flags [7] MADT.GICC.Enabled and MADT.GICC.online-capable are
+>     mutually exclusive i.e. as per the change [6] a vCPU cannot be both
+>     GICC.Enabled and GICC.online-capable. This means,
+>        [ Link: https://bugzilla.tianocore.org/show_bug.cgi?id=3706 ]
+>     a. If we have to support hot-unplug of the cold-booted vCPUs then these MUST
+>        be specified as GICC.online-capable in the MADT Table during boot by the
+>        firmware/Qemu. But this requirement conflicts with the requirement to
+>        support new Qemu changes with legacy OS which dont understand
+>        MADT.GICC.online-capable Bit. Legacy OS during boot time will ignore this
+>        bit and hence these vCPUs will not appear on such OS. This is unexpected
+>        behaviour.
+>     b. In case we decide to specify vCPUs as MADT.GICC.Enabled and try to unplug
+>        these cold-booted vCPUs from OS (which in actual should be blocked by
+>        returning error at Qemu) then features like 'kexec' will break.
+>     c. As I understand, removal of the cold-booted vCPUs is a required feature
+>        and x86 world allows it.
+>     d. Hence, either we need a specification change to make the MADT.GICC.Enabled
+>        and MADT.GICC.online-capable Bits NOT mutually exclusive or NOT support
+>        removal of cold-booted vCPUs. In the later case, a check can be introduced
+>        to bar the users from unplugging vCPUs, which were cold-booted, using QMP
+>        commands. (Needs discussion!)
+>        Please check below patch part of this patch-set:
+>            [hw/arm/virt: Expose cold-booted CPUs as MADT GICC Enabled]
+> 5. Code related to the notification to GICV3 about hot(un)plug of a vCPU event
+>     might need further discussion.
+>
+>
+> (IX) THINGS TO DO
+>       ============
+>
+> 1. Fix the Migration Issues
+> 2. Fix issues related to TCG/Emulation support.
+> 3. Comprehensive Testing. Current testing is very basic.
+>     a. Negative Test cases
+> 4. Qemu Documentation(.rst) need to be updated.
+> 5. Fix qtest, HVF Support
+> 6. Fix the design issue related to ACPI MADT.GICC flags discussed in known
+>     issues. This might require UEFI ACPI specification change!
+> 7. Add ACPI _OSC 'Query' support. Only part of _OSC support exists now.
+>
+>   Above is *not* a complete list. Will update later!
+>
+> Best regards
+> Salil.
+>
+> (X) DISCLAIMER
+>      ==========
+>
+> This work is an attempt to present a proof-of-concept of the ARM64 vCPU hotplug
+> implementation to the community. This is *not* a production level code and might
+> have bugs. Only a basic testing has been done on HiSilicon Kunpeng920 SoC for
+> servers. Once the design and core idea behind the implementation has been
+> verified more efforts can be put to harden the code.
+>
+> This work is *mostly* in the lines of the discussions which have happened in the
+> previous years[see refs below] across different channels like mailing-list,
+> Linaro Open Discussions platform, various conferences like KVMFourm etc. This
+> RFC is being used as a way to verify the idea mentioned in this cover-letter and
+> to get community views. Once this has been agreed, a formal patch shall be
+> posted to the mailing-list for review.
+>
+> [The concept being presented has been found to work!]
+>
+> (XI) ORGANIZATION OF PATCHES
+>       =======================
+>   
+>   A. All patches [Architecture 'agnostic' + 'specific']:
+>
+>     [Patch 1-9, 23, 36] logic required during machine init
+>      (*) Some validation checks
+>      (*) Introduces core-id property and some util functions required later.
+>      (*) Refactors Parking logic of vCPUs
+>      (*) Logic to pre-create vCPUs
+>      (*) GIC initialization pre-sized with possible vCPUs.
+>      (*) Some refactoring to have common hot and cold plug logic together.
+>      (*) Release of disable QOM CPU objects in post_cpu_init()
+>      (*) Support of ACPI _OSC method to negotiate platform hotplug capabilities
+>     [Patch 10-22] logic related to ACPI at machine init time
+>      (*) Changes required to Enable ACPI for cpu hotplug
+>      (*) Initialization ACPI GED framework to cater CPU Hotplug Events
+>      (*) Build ACPI AML related to CPU control dev
+>      (*) ACPI MADT/MAT changes
+>     [Patch 24-35] Logic required during vCPU hot-(un)plug
+>      (*) Basic framework changes to suppport vCPU hot-(un)plug
+>      (*) ACPI GED changes for hot-(un)plug hooks.
+>      (*) wire-unwire the IRQs
+>      (*) GIC notification logic
+>      (*) ARMCPU unrealize logic
+>      (*) Handling of SMCC Hypercall Exits by KVM to Qemu
+>     
+>   B. Architecture *agnostic* patches part of patch-set:
+>
+>     [Patch 5,9,11,13,16,20,24,31,33] Common logic to support hotplug
+>      (*) Refactors Parking logic of vCPUs
+>      (*) Introduces ACPI GED Support for vCPU Hotplug Events
+>      (*) Introduces ACPI AML change for CPU Control Device
+>
+> (XII) REFERENCES
+>        ==========
+>
+> [1] https://lore.kernel.org/qemu-devel/20200613213629.21984-1-salil.mehta@huawei.com/
+> [2] https://lore.kernel.org/linux-arm-kernel/20200625133757.22332-1-salil.mehta@huawei.com/
+> [3] https://lore.kernel.org/lkml/20230203135043.409192-1-james.morse@arm.com/
+> [4] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
+> [5] https://lore.kernel.org/all/20230404154050.2270077-1-oliver.upton@linux.dev/
+> [6] https://bugzilla.tianocore.org/show_bug.cgi?id=3706
+> [7] https://uefi.org/specs/ACPI/6.5/05_ACPI_Software_Programming_Model.html#gic-cpu-interface-gicc-structure
+> [8] https://bugzilla.tianocore.org/show_bug.cgi?id=4481#c5
+> [9] https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler
+> [10] https://docs.aws.amazon.com/eks/latest/userguide/vertical-pod-autoscaler.html
+> [11] https://lkml.org/lkml/2019/7/10/235
+> [12] https://lists.cs.columbia.edu/pipermail/kvmarm/2018-July/032316.html
+> [13] https://lists.gnu.org/archive/html/qemu-devel/2020-01/msg06517.html
+> [14] https://op-lists.linaro.org/archives/list/linaro-open-discussions@op-lists.linaro.org/thread/7CGL6JTACPUZEYQC34CZ2ZBWJGSR74WE/
+> [15] http://lists.nongnu.org/archive/html/qemu-devel/2018-07/msg01168.html
+> [16] https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00131.html
+> [17] https://op-lists.linaro.org/archives/list/linaro-open-discussions@op-lists.linaro.org/message/X74JS6P2N4AUWHHATJJVVFDI2EMDZJ74/
+> [18] https://lore.kernel.org/lkml/20210608154805.216869-1-jean-philippe@linaro.org/
+> [19] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
+> [20] https://uefi.org/specs/ACPI/6.5/05_ACPI_Software_Programming_Model.html#gicc-cpu-interface-flags
+>
+> (XIII) ACKNOWLEDGEMENTS
+>         ================
+>
+> I would like to take this opportunity to thank below people for various
+> discussions with me over different channels during the development:
+>
+> Marc Zyngier (Google)               Catalin Marinas (ARM),
+> James Morse(ARM),                   Will Deacon (Google),
+> Jean-Phillipe Brucker (Linaro),     Sudeep Holla (ARM),
+> Lorenzo Pieralisi (Linaro),         Gavin Shan (Redhat),
+> Jonathan Cameron (Huawei),          Darren Hart (Ampere),
+> Igor Mamedov (Redhat),              Ilkka Koskinen (Ampere),
+> Andrew Jones (Redhat),              Karl Heubaum (Oracle),
+> Keqian Zhu (Huawei),                Miguel Luis (Oracle),
+> Xiongfeng Wang (Huawei),            Vishnu Pajjuri (Ampere),
+> Shameerali Kolothum (Huawei)        Russell King (Oracle)
+> Xuwei/Joy (Huawei),                 Peter Maydel (Linaro)
+> Zengtao/Prime (Huawei),             And all those whom I have missed!
+>
+> Many thanks to below people for their current or past contributions:
+>
+> 1. James Morse (ARM)
+>     (Current Kernel part of vCPU Hotplug Support on AARCH64)
+> 2. Jean-Philippe Brucker (Linaro)
+>     (Protoyped one of the earlier PSCI based POC [17][18] based on RFC V1)
+> 3. Keqian Zhu (Huawei)
+>     (Co-developed Qemu prototype)
+> 4. Xiongfeng Wang (Huawei)
+>     (Co-developed earlier kernel prototype)
+> 5. Vishnu Pajjuri (Ampere)
+>     (Verification on Ampere ARM64 Platforms + fixes)
+> 6. Miguel Luis (Oracle)
+>     (Verification on Oracle ARM64 Platforms + fixes)
+>
+>
+> Author Salil Mehta (1):
+>    target/arm/kvm,tcg: Register/Handle SMCCC hypercall exits to VMM/Qemu
+>
+> Jean-Philippe Brucker (2):
+>    hw/acpi: Make _MAT method optional
+>    target/arm/kvm: Write CPU state back to KVM on reset
+>
+> Miguel Luis (1):
+>    tcg/mttcg: enable threads to unregister in tcg_ctxs[]
+>
+> Salil Mehta (33):
+>    arm/virt,target/arm: Add new ARMCPU {socket,cluster,core,thread}-id property
+>    cpus-common: Add common CPU utility for possible vCPUs
+>    hw/arm/virt: Move setting of common CPU properties in a function
+>    arm/virt,target/arm: Machine init time change common to vCPU {cold|hot}-plug
+>    accel/kvm: Extract common KVM vCPU {creation,parking} code
+>    arm/virt,kvm: Pre-create disabled possible vCPUs @machine init
+>    arm/virt,gicv3: Changes to pre-size GIC with possible vcpus @machine init
+>    arm/virt: Init PMU at host for all possible vcpus
+>    hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
+>    arm/acpi: Enable ACPI support for vcpu hotplug
+>    hw/acpi: Add ACPI CPU hotplug init stub
+>    hw/acpi: Use qemu_present_cpu() API in ACPI CPU hotplug init
+>    hw/acpi: Init GED framework with cpu hotplug events
+>    arm/virt: Add cpu hotplug events to GED during creation
+>    arm/virt: Create GED dev before *disabled* CPU Objs are destroyed
+>    hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
+>    arm/virt/acpi: Build CPUs AML with CPU Hotplug support
+>    arm/virt: Make ARM vCPU *present* status ACPI *persistent*
+>    hw/acpi: ACPI/AML Changes to reflect the correct _STA.{PRES,ENA} Bits to Guest
+>    hw/acpi: Update GED _EVT method AML with cpu scan
+>    hw/arm: MADT Tbl change to size the guest with possible vCPUs
+>    arm/virt: Release objects for *disabled* possible vCPUs after init
+>    hw/acpi: Update ACPI GED framework to support vCPU Hotplug
+>    arm/virt: Add/update basic hot-(un)plug framework
+>    arm/virt: Changes to (un)wire GICC<->vCPU IRQs during hot-(un)plug
+>    hw/arm,gicv3: Changes to update GIC with vCPU hot-plug notification
+>    hw/intc/arm-gicv3*: Changes required to (re)init the vCPU register info
+>    arm/virt: Update the guest(via GED) about CPU hot-(un)plug events
+>    hw/arm: Changes required for reset and to support next boot
+>    physmem,gdbstub: Common helping funcs/changes to *unrealize* vCPU
+>    target/arm: Add support of *unrealize* ARMCPU during vCPU Hot-unplug
+>    hw/arm: Support hotplug capability check using _OSC method
+>    hw/arm/virt: Expose cold-booted CPUs as MADT GICC Enabled
+>
+>   accel/kvm/kvm-all.c                    |  61 +-
+>   accel/tcg/tcg-accel-ops-mttcg.c        |   1 +
+>   cpus-common.c                          |  37 ++
+>   gdbstub/gdbstub.c                      |  13 +
+>   hw/acpi/acpi-cpu-hotplug-stub.c        |   6 +
+>   hw/acpi/cpu.c                          |  91 ++-
+>   hw/acpi/generic_event_device.c         |  33 +
+>   hw/arm/Kconfig                         |   1 +
+>   hw/arm/boot.c                          |   2 +-
+>   hw/arm/virt-acpi-build.c               | 110 +++-
+>   hw/arm/virt.c                          | 863 ++++++++++++++++++++-----
+>   hw/core/gpio.c                         |   2 +-
+>   hw/i386/acpi-build.c                   |   2 +-
+>   hw/intc/arm_gicv3.c                    |   1 +
+>   hw/intc/arm_gicv3_common.c             |  66 +-
+>   hw/intc/arm_gicv3_cpuif.c              | 265 ++++----
+>   hw/intc/arm_gicv3_cpuif_common.c       |   5 +
+>   hw/intc/arm_gicv3_kvm.c                |  39 +-
+>   hw/intc/gicv3_internal.h               |   2 +
+>   include/exec/cpu-common.h              |   8 +
+>   include/exec/gdbstub.h                 |   1 +
+>   include/hw/acpi/cpu.h                  |   7 +-
+>   include/hw/acpi/cpu_hotplug.h          |   4 +
+>   include/hw/acpi/generic_event_device.h |   5 +
+>   include/hw/arm/boot.h                  |   2 +
+>   include/hw/arm/virt.h                  |  10 +-
+>   include/hw/core/cpu.h                  |  77 +++
+>   include/hw/intc/arm_gicv3_common.h     |  23 +
+>   include/hw/qdev-core.h                 |   2 +
+>   include/sysemu/kvm.h                   |   2 +
+>   include/tcg/tcg.h                      |   1 +
+>   softmmu/physmem.c                      |  25 +
+>   target/arm/arm-powerctl.c              |  51 +-
+>   target/arm/cpu-qom.h                   |   3 +
+>   target/arm/cpu.c                       | 112 ++++
+>   target/arm/cpu.h                       |  17 +
+>   target/arm/cpu64.c                     |  15 +
+>   target/arm/gdbstub.c                   |   6 +
+>   target/arm/helper.c                    |  27 +-
+>   target/arm/internals.h                 |  12 +-
+>   target/arm/kvm.c                       |  93 ++-
+>   target/arm/kvm64.c                     |  59 +-
+>   target/arm/kvm_arm.h                   |  24 +
+>   target/arm/meson.build                 |   1 +
+>   target/arm/{tcg => }/psci.c            |   8 +
+>   target/arm/tcg/meson.build             |   4 -
+>   tcg/tcg.c                              |  23 +
+>   47 files changed, 1873 insertions(+), 349 deletions(-)
+>   rename target/arm/{tcg => }/psci.c (97%)
+Tested on Ampere's platform for vCPU hotplug/unplug with reboot, 
+suspend/resume and save/restore.
+Also tested for vCPU hotplug/unplug along with VM live migration.
+
+Please feel free to add,
+Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+
+Thanks,
+Vishnu

@@ -1,77 +1,77 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp515375ejr;
-        Tue, 10 Oct 2023 17:58:22 -0700 (PDT)
-X-Received: by 2002:a67:f9d7:0:b0:452:6780:a6d1 with SMTP id c23-20020a67f9d7000000b004526780a6d1mr18924640vsq.1.1696985902213;
-        Tue, 10 Oct 2023 17:58:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696985902; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp515677ejr;
+        Tue, 10 Oct 2023 17:59:25 -0700 (PDT)
+X-Received: by 2002:a67:f4d3:0:b0:452:66a7:1ac with SMTP id s19-20020a67f4d3000000b0045266a701acmr18289069vsn.6.1696985965048;
+        Tue, 10 Oct 2023 17:59:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696985965; cv=none;
         d=google.com; s=arc-20160816;
-        b=yZj3ijjn6koRQmLd/oJ7/yN6fywK42Be9H4LzYleUKXQGnjw7bEUFv1OY6jVLBs4Fz
-         dnM7NyyaEBDFWUlgAEN3OUV3l3CB+Ny8y7AainVzDCgwGwfKSFAo3VwuVPh4F7R2tqYf
-         d13v3xk1uktN6CAl1P2PDVnH+N7UywgSdjLRK2M3PW9uokTq8BInFbMsSp2qNApXUoG1
-         e/3rCY0MbWhSrK3sHXvXmOsgAl+YD8oafQds1yPRbcPuj9GACBDjEaZgC6xwQdYBH5lc
-         NOFLmG9lv0fZryjR3cJc3jMdljbtoatkVKkmjzs4bGEaSDe1iTbMN4R4kh015qRhKTs4
-         UM4A==
+        b=hn07MyPIAjk+KegOb68bcp/0acMf4p7paYIXSBxr/jjUcHGROOEC6jjjKsHvjDt1Du
+         MONnolWFAUf8CtC0zjLZGnDL3SMOgSCrBWjKeckrIOvoeB93si10XsNg9WyBiV14Lv8J
+         0fyJKZn1+vPdLqkymw3DFoPi1t6qvIh/vD6YIpUWjfzx5CcjemnAgKHMbAdfJsm/fcZf
+         5qdaG8bSEBCRY3KQUkDNM4ReSrWlyJgMPhcRIw5MkUGkW7QIM66TsVDZnvdSoh8EE2WL
+         961oKkoikZcu8H+M/cP2fbvlr382zE5TR9ScTN1Fu+DVirwZ0qyRKpyBovpg2hjXeZXJ
+         Rfdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=A57TM/3+3Y4XB6+NXinNYH6inAvqYR+M0a5QwRks3Bg=;
+        bh=AiHimnSOdfouU1hxVB7+hfSpbhB4p+Hd2Gk3DBN4GHg=;
         fh=cqk238ux3/GdOijP7fp8WGbp8VqG0EAAdwsLvgVM+lA=;
-        b=OFdS7dg7iSrM+piwwR+ip9+yVGOY3vqe45SUjYKolC+uFbVU6OVy2QUs20WtvTDM6Y
-         etcGgFL2c+zgU5RGO5BcMmya4Uzh5Gf3qPYKltiBIhqWQKs2dzuSn8MLlsCSA+IOdMdw
-         80TihW46cwlD/Sy8xD018LTgaoNJmpCR1RPt1OoGb4vqhI8aOQUVE8RpEUNORaCN1ihA
-         F6Ql6pvUeDDoW+oLXdZ2FGGvEistX1vy3mpaf6zKc6hm5ReV+H0goaq07gSZYVaKzepp
-         oRNbBNpqHlUrcFT6v1fD81/PkYARtMuHkn1YJeSndrVq+9AEbxv1LQMGCWM4frLrTQc4
-         TKUw==
+        b=XI2UpFr0d8orRR/haeN28ZMXGL51QkBBdSy3M+Tnkx+I3Otl0JDfzdDSBZ9TDo8fX0
+         IAifguqVLwX0t2Az2CfC9lna4S6I7XqPCHO1OPTRB+6GfBlWKcZUvN0d+2MxvFKOf1Zr
+         HFzSvfKFlbPBgLPqLxDqKb1LSmhhaT5ANfRuCBr+9Wvg5RriyK1yACUVhhyncztKPmN5
+         iDvV1C7szmspDbgWsplXvRG8jIgl1bAryA3uREFfPGFAmPsvajb9PNf96gqoyNiTg1ur
+         Eit5vsFS/joxrYYwf8f05T0ya4CJG/0N1iz8dtMJiqWq9DKgqRMjOqe01CTjKTzKuvbH
+         3FGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ENOaG8Ys;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VY978GBO;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <alistair23@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p12-20020a67a60c000000b004526ecb17e3sor4832005vse.7.2023.10.10.17.58.22
+        by mx.google.com with SMTPS id dc30-20020a056102559e00b00457800e3a7esor1813698vsb.11.2023.10.10.17.59.24
         (Google Transport Security);
-        Tue, 10 Oct 2023 17:58:22 -0700 (PDT)
+        Tue, 10 Oct 2023 17:59:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ENOaG8Ys;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VY978GBO;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696985901; x=1697590701; darn=linaro.org;
+        d=gmail.com; s=20230601; t=1696985964; x=1697590764; darn=linaro.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=A57TM/3+3Y4XB6+NXinNYH6inAvqYR+M0a5QwRks3Bg=;
-        b=ENOaG8Ysq08RcAyVW+CIjXMNgvg/sNhHnwgXfvJKEDL/TiGeFkHKcZ+m1PNtXcmON8
-         em0amrNCrrJWirI/jAhR3TxweAjykAXuwP1lZ/IFl5RT5f/6+h7kPkqe5dse6xnUQPlI
-         zBrkmBQCWQa+aaY4vgO286b6enf1P4hzkxJtg5iKp8C1VI1/Gmv1+VxrELLkOivS5JJr
-         AvKAwSS3Z5Ezu79t2uj3+fZWdV/uHrBArxl+gsuBLGo08TKFGgXxYJbxgsCmSZ5OZGDP
-         uxjCX0ISiC9D8Pt46qc0gvKUahY7NMxLaQmK4OpAOXOe2DZ5T3CL5YIad6TJm+Y8ureh
-         iuhA==
+        bh=AiHimnSOdfouU1hxVB7+hfSpbhB4p+Hd2Gk3DBN4GHg=;
+        b=VY978GBOzWmG+7Jl4d5jFp6XW3ihg0mxPALU1Lbjdz++QtRQB1wn63eEU+13qnHcD/
+         oGhTiWmGZn8jMOBWHVpf+JB/NIg7IgK61P79hwAdeT5/amfddVX4qSqZKBwwckmwmdTR
+         j8LL1sLDqh9CHNK2KjfP2aN0wVNW5zTFlgQct4On3nzHpYM6SGo7OMwKFiqhvqbMnIod
+         Y5PxdUehJgLheBvzSp9AE2qlD+PCw8LMqhLrBDsjf13CywN3GXn1MLj1sDz50IjEoCHK
+         H/zjxo4Wui5k+P/6h3uYnojocnBs6OEEDKXXNKBYt1uLB2zKcOfIB4YMgezAQ/n+oIFf
+         +y4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696985901; x=1697590701;
+        d=1e100.net; s=20230601; t=1696985964; x=1697590764;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=A57TM/3+3Y4XB6+NXinNYH6inAvqYR+M0a5QwRks3Bg=;
-        b=bww7JvF/UYfvEAXrKjWCE6C5uCinEuf3tmXt8wuQptVoG1MULd+uZTf5M7UTIh2clV
-         0JEMHW8hnyTDMZDC7HFJc0Irc+lnurHvJ8jSCtFHioKy3Ke5cG4yqNNRKqszvGw5tHJu
-         03QU6Fz9bWuKFydEnS8na3QKYYDp+QsCTvQOYi8q/rnqM9sjjV+IQRpsquUNEjFprkEa
-         0RpuQiKnMUuwkWv5siT6m87qu1zqqrJzSmMCBCDt3VXTNZ4FNxPSSZvU7O7WnWE9oe3R
-         BJhQwYBiDicqkQ6tXwCIoQGeURFw5gef35geJK49/mw+6Ot+z8dfcjeXoJ8+/amDS4sF
-         S1Og==
-X-Gm-Message-State: AOJu0Yz3I51zCQ+fI6NJJk/zBO7z/g9AEk7aVu1DTJY47VFjrxGJ8SSB
-	3mzsfx6/Tphefp2ZijjvW9gD9G0T8nWuOH0WCf14yN7jIAwuYw==
-X-Google-Smtp-Source: AGHT+IF1/cGebYEyPjv1zp7eYAb2uu01zcnezyBsF/1P9pm03X3N0T/+xSZ0wkvVYuuaOpnngMp2DUm51frLL3M8bdk=
-X-Received: by 2002:a05:6102:4a5:b0:44d:5a92:ec40 with SMTP id
- r5-20020a05610204a500b0044d5a92ec40mr19039711vsa.24.1696985901084; Tue, 10
- Oct 2023 17:58:21 -0700 (PDT)
+        bh=AiHimnSOdfouU1hxVB7+hfSpbhB4p+Hd2Gk3DBN4GHg=;
+        b=k3bi9U3K3Uf+4n8ogLxeNHq06ZwmcDVlYBClsKc6NTLiXRJnNkrZsY7ZQ1tzqS6lVu
+         0DbwsfL2e+cE33atsJVo9Lt5s7WMWkzJAli7/cReTQuE8LQoxCFXX4wTyZGp03aAVA6v
+         ddRmPVNodi+Z5A4m7v1Wi0GlZM9xFfqhLlONv62eKTuUEr+QcZlsjR9Ki/T5iW2CLRdm
+         /1BnJYC9jgcN9HKYlXo2f5L52HcN8lmu/zqAtTGQDlYPCSURdlR642aNCqeZZ1h2QP2T
+         bQNzmfGdyjCiS1wXR6zOxP8pLuwG27AmKtYGIjBeRsd+Fw6lB7lsHh840yRg4mq4+7yu
+         Uv3A==
+X-Gm-Message-State: AOJu0Yx9pzF/ImxssmkdINWrxK5ZXO3FIkxGIKope7VCxytnMZTv5vkH
+	BZj65E2+/FXQ3L6qNmviXTSukeXToW0mwzSUJ0SC36sPpTSg6Q==
+X-Google-Smtp-Source: AGHT+IHOIr450w9NLLZ+zgffqfq4SibYaIn0zDubLAlZ3IDzLmTLav264biEDLW2tF8znth7O6gKXC+I6pyqX6B8rTo=
+X-Received: by 2002:a67:f7c1:0:b0:44e:d6c3:51d4 with SMTP id
+ a1-20020a67f7c1000000b0044ed6c351d4mr17411610vsp.18.1696985964176; Tue, 10
+ Oct 2023 17:59:24 -0700 (PDT)
 MIME-Version: 1.0
-References: <20231009164104.369749-1-alex.bennee@linaro.org> <20231009164104.369749-20-alex.bennee@linaro.org>
-In-Reply-To: <20231009164104.369749-20-alex.bennee@linaro.org>
+References: <20231009164104.369749-1-alex.bennee@linaro.org> <20231009164104.369749-19-alex.bennee@linaro.org>
+In-Reply-To: <20231009164104.369749-19-alex.bennee@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 11 Oct 2023 10:57:54 +1000
-Message-ID: <CAKmqyKMa1FU=gvOg8XVsexD6KoF_aZLU7Z=P=dExz3vu4sTEsA@mail.gmail.com>
-Subject: Re: [PATCH 19/25] gdbstub: Replace gdb_regs with an array
+Date: Wed, 11 Oct 2023 10:58:57 +1000
+Message-ID: <CAKmqyKNJ4qm_BG-jh_RghJ3jMSJ6DK=s6L6xVdjr5YW8UMSV9w@mail.gmail.com>
+Subject: Re: [PATCH 18/25] gdbstub: Remove gdb_has_xml variable
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
 	Xiaojuan Yang <yangxiaojuan@loongson.cn>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -95,20 +95,18 @@ Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 1MD7CRSbQtkt
+X-TUID: YJKdvFqUF04p
 
-On Tue, Oct 10, 2023 at 2:47=E2=80=AFAM Alex Benn=C3=A9e <alex.bennee@linar=
+On Tue, Oct 10, 2023 at 2:48=E2=80=AFAM Alex Benn=C3=A9e <alex.bennee@linar=
 o.org> wrote:
 >
 > From: Akihiko Odaki <akihiko.odaki@daynix.com>
 >
-> An array is a more appropriate data structure than a list for gdb_regs
-> since it is initialized only with append operation and read-only after
-> initialization.
+> GDB has XML support since 6.7 which was released in 2007.
+> It's time to remove support for old GDB versions without XML support.
 >
 > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Message-Id: <20230912224107.29669-13-akihiko.odaki@daynix.com>
-> [AJB: fixed a checkpatch violation]
+> Message-Id: <20230912224107.29669-12-akihiko.odaki@daynix.com>
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
@@ -116,112 +114,87 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  include/hw/core/cpu.h |  2 +-
->  gdbstub/gdbstub.c     | 35 +++++++++++++++++++++--------------
->  2 files changed, 22 insertions(+), 15 deletions(-)
+>  gdbstub/internals.h    |  2 --
+>  include/exec/gdbstub.h |  8 --------
+>  gdbstub/gdbstub.c      | 15 ---------------
+>  3 files changed, 25 deletions(-)
 >
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index 7b8347ed5a..3968369554 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -502,7 +502,7 @@ struct CPUState {
+> diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+> index fee243081f..7128c4aa85 100644
+> --- a/gdbstub/internals.h
+> +++ b/gdbstub/internals.h
+> @@ -32,8 +32,6 @@ enum {
+>  typedef struct GDBProcess {
+>      uint32_t pid;
+>      bool attached;
+> -
+> -    /* If gdb sends qXfer:features:read:target.xml this will be populate=
+d */
+>      char *target_xml;
+>  } GDBProcess;
 >
->      CPUJumpCache *tb_jmp_cache;
+> diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+> index 705be2c5d7..1a01c35f8e 100644
+> --- a/include/exec/gdbstub.h
+> +++ b/include/exec/gdbstub.h
+> @@ -45,14 +45,6 @@ int gdbserver_start(const char *port_or_device);
 >
-> -    struct GDBRegisterState *gdb_regs;
-> +    GArray *gdb_regs;
->      int gdb_num_regs;
->      int gdb_num_g_regs;
->      QTAILQ_ENTRY(CPUState) node;
+>  void gdb_set_stop_cpu(CPUState *cpu);
+>
+> -/**
+> - * gdb_has_xml() - report of gdb supports modern target descriptions
+> - *
+> - * This will report true if the gdb negotiated qXfer:features:read
+> - * target descriptions.
+> - */
+> -bool gdb_has_xml(void);
+> -
+>  /* in gdbstub-xml.c, generated by scripts/feature_to_c.py */
+>  extern const GDBFeature gdb_static_features[];
+>
 > diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-> index 62608a5389..b1532118d1 100644
+> index 3dc847f835..62608a5389 100644
 > --- a/gdbstub/gdbstub.c
 > +++ b/gdbstub/gdbstub.c
-> @@ -51,7 +51,6 @@ typedef struct GDBRegisterState {
->      gdb_get_reg_cb get_reg;
->      gdb_set_reg_cb set_reg;
->      const char *xml;
-> -    struct GDBRegisterState *next;
->  } GDBRegisterState;
->
->  GDBState gdbserver_state;
-> @@ -386,7 +385,8 @@ static const char *get_feature_xml(const char *p, con=
-st char **newp,
->                  xml,
->                  g_markup_printf_escaped("<xi:include href=3D\"%s\"/>",
->                                          cc->gdb_core_xml_file));
-> -            for (r =3D cpu->gdb_regs; r; r =3D r->next) {
-> +            for (guint i =3D 0; i < cpu->gdb_regs->len; i++) {
-> +                r =3D &g_array_index(cpu->gdb_regs, GDBRegisterState, i)=
-;
->                  g_ptr_array_add(
->                      xml,
->                      g_markup_printf_escaped("<xi:include href=3D\"%s\"/>=
-",
-> @@ -430,7 +430,8 @@ static int gdb_read_register(CPUState *cpu, GByteArra=
-y *buf, int reg)
->          return cc->gdb_read_register(cpu, buf, reg);
+> @@ -349,11 +349,6 @@ static CPUState *gdb_get_cpu(uint32_t pid, uint32_t =
+tid)
 >      }
+>  }
 >
-> -    for (r =3D cpu->gdb_regs; r; r =3D r->next) {
-> +    for (guint i =3D 0; i < cpu->gdb_regs->len; i++) {
-> +        r =3D &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
->          if (r->base_reg <=3D reg && reg < r->base_reg + r->num_regs) {
->              return r->get_reg(env, buf, reg - r->base_reg);
->          }
-> @@ -448,7 +449,8 @@ static int gdb_write_register(CPUState *cpu, uint8_t =
-*mem_buf, int reg)
->          return cc->gdb_write_register(cpu, mem_buf, reg);
->      }
->
-> -    for (r =3D cpu->gdb_regs; r; r =3D r->next) {
-> +    for (guint i =3D 0; i < cpu->gdb_regs->len; i++) {
-> +        r =3D  &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
->          if (r->base_reg <=3D reg && reg < r->base_reg + r->num_regs) {
->              return r->set_reg(env, mem_buf, reg - r->base_reg);
->          }
-> @@ -461,17 +463,23 @@ void gdb_register_coprocessor(CPUState *cpu,
->                                int num_regs, const char *xml, int g_pos)
->  {
->      GDBRegisterState *s;
-> -    GDBRegisterState **p;
+> -bool gdb_has_xml(void)
+> -{
+> -    return !!gdb_get_cpu_process(gdbserver_state.g_cpu)->target_xml;
+> -}
 > -
-> -    p =3D &cpu->gdb_regs;
-> -    while (*p) {
-> -        /* Check for duplicates.  */
-> -        if (strcmp((*p)->xml, xml) =3D=3D 0)
-> -            return;
-> -        p =3D &(*p)->next;
-> +    guint i;
-> +
-> +    if (cpu->gdb_regs) {
-> +        for (i =3D 0; i < cpu->gdb_regs->len; i++) {
-> +            /* Check for duplicates.  */
-> +            s =3D &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
-> +            if (strcmp(s->xml, xml) =3D=3D 0) {
-> +                return;
-> +            }
-> +        }
-> +    } else {
-> +        cpu->gdb_regs =3D g_array_new(false, false, sizeof(GDBRegisterSt=
-ate));
-> +        i =3D 0;
->      }
+>  static const char *get_feature_xml(const char *p, const char **newp,
+>                                     GDBProcess *process)
+>  {
+> @@ -1086,11 +1081,6 @@ static void handle_set_reg(GArray *params, void *u=
+ser_ctx)
+>  {
+>      int reg_size;
 >
-> -    s =3D g_new0(GDBRegisterState, 1);
-> +    g_array_set_size(cpu->gdb_regs, i + 1);
-> +    s =3D &g_array_index(cpu->gdb_regs, GDBRegisterState, i);
->      s->base_reg =3D cpu->gdb_num_regs;
->      s->num_regs =3D num_regs;
->      s->get_reg =3D get_reg;
-> @@ -480,7 +488,6 @@ void gdb_register_coprocessor(CPUState *cpu,
+> -    if (!gdb_get_cpu_process(gdbserver_state.g_cpu)->target_xml) {
+> -        gdb_put_packet("");
+> -        return;
+> -    }
+> -
+>      if (params->len !=3D 2) {
+>          gdb_put_packet("E22");
+>          return;
+> @@ -1107,11 +1097,6 @@ static void handle_get_reg(GArray *params, void *u=
+ser_ctx)
+>  {
+>      int reg_size;
 >
->      /* Add to end of list.  */
->      cpu->gdb_num_regs +=3D num_regs;
-> -    *p =3D s;
->      if (g_pos) {
->          if (g_pos !=3D s->base_reg) {
->              error_report("Error: Bad gdb register numbering for '%s', "
+> -    if (!gdb_get_cpu_process(gdbserver_state.g_cpu)->target_xml) {
+> -        gdb_put_packet("");
+> -        return;
+> -    }
+> -
+>      if (!params->len) {
+>          gdb_put_packet("E14");
+>          return;
 > --
 > 2.39.2
 >

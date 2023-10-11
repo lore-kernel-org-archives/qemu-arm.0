@@ -1,278 +1,316 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp640129ejr;
-        Wed, 11 Oct 2023 00:04:56 -0700 (PDT)
-X-Received: by 2002:a17:902:c946:b0:1c8:7bb8:321a with SMTP id i6-20020a170902c94600b001c87bb8321amr23184334pla.27.1697007895797;
-        Wed, 11 Oct 2023 00:04:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697007895; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp642092ejr;
+        Wed, 11 Oct 2023 00:09:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IESMmQM5dyehbgkNDJ6+5Lt7iRDmPD7kTKgwGT35iej+9c1tf+z070DsLQGfpF0m/8deNJI
+X-Received: by 2002:a05:622a:1ba0:b0:419:a2c6:8213 with SMTP id bp32-20020a05622a1ba000b00419a2c68213mr22247231qtb.5.1697008157015;
+        Wed, 11 Oct 2023 00:09:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697008157; cv=none;
         d=google.com; s=arc-20160816;
-        b=YcI8mSBPtjXPu87zAMRPwQYe8zYI8xdXojh4hNnozS6Nb/CBjzcCQPfrVvwhAp2Yzg
-         X7U2etWWT8/8bnsUWYLBpq9CEFjgNUYDGOvww6cZj0uIvUJ7sTEKuk7dYDX15yhXCxbo
-         5vVH4jngCPa3OH1eo8hvH6RGjwpGj2Y2oEZM2UQWnD8BvFCTnIe1Q0Sy+Ueh+nkW4UZa
-         UKinhTk9j89RZPQKnWIITjDfdUAMnNzy5vLzvCa88dvwUf7axinPwrRSffu+F25TWcGN
-         9wI2ItGpTieOnlu4zIHd54ZqCEvuayRAwJ60MQO1URe5Wg4ty4N+Ov5iE4UKb2vP6sbD
-         jQUw==
+        b=pTZfTD4kX4le5fxbjrLxSbbpwrcXZfFF3ieMRU1UK29fo5W8xxxq5l11qfCjF1wpRk
+         d18aTmkyYZ5kMT96aacS/ycgFs8GtCCy+Qg82VOKmdFyfa4WabUTL6gmdmpuAgZ4G+6v
+         4i3r/TXMAncZbGdNHE3sifRswqN+Pi7ewPMmqIqfaNymtZK9H78MTmchqZd3R0zOANPA
+         pgkhak3NYKOv42C/sdElQcE3sADasacbsQbXIYRyAOwhNcVqzSlR/9YSzHT3erd3bjE8
+         2PMZgrpHZDwT1hvwo+ALi4+VbEvN5sgzpFcv0PDcpN9m3XJs0yiTkDyFmFmBjBSjHoA9
+         qEiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=5jKGKJo+PheYxYocDwLAGO3qwif/z/ZJ8rm2mFIWfTs=;
-        fh=lW42IFciQRcgi2TpW76JzOW6yI8fNIuUaAjcfrG2GK8=;
-        b=KxzhUxusVsofQDe83YAaA7WkEJeGUWxadJoDppCy32JjxuWvY98PKRFlejMs03ejjp
-         7fUNc+Ns2qqOmBQRUBXvlqgS4ZMlmBJhObvt2vJsJU6k6CbWykgjVzsJA/pwKEDlHfqV
-         5eYt6JPWC++cGzxJByYflT4G6jvZ0CpLs6iARXJ3T00WyE9LnNixTsnL9MBPX1KljrFj
-         Dl2t87LyIZwDQ+H633Z7bTMzy3h2S1Fsq4uXLR6/vamT6cSzAkvdzS96bekydyh1kxkR
-         FKMtzL3Cryv+ripnWVlD7peJr8EZd4GuDQDBM3qrrMetNHPN/NkGmenzHpdIjX1JcawF
-         ksTQ==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=BVJ5aK817DyNc3edpEHQRTyeEzCT4lsEwnNmIlDT+6w=;
+        fh=UoUFvcIH1Llqwj9lcubayb9wLqiblQuJi8py3jS56vc=;
+        b=bK01VTr74dnBif7A3fRdiNFKrGrjfBctJwsLd5JJpkXdsRiQ6q+H8uZwtwJPHP+b5D
+         onY6DQ4uhOeehJpall8wMNOEqL8SskPeM3jDqqHIxcrxNK8stdG5Or2n+6jkxg5v1Kup
+         Hw1FN3icMXcfQrsydn12Sqiv5j2S0DuQCrK41geo+YetlRFm1mKCGOvuYjeSmlv8jkMh
+         pj5NtF+tjp4e6BN3aCa7fpW5Gb//r/7Css3Cc1utIOKpWXve1XQe9jRW59ce1H4L/2xY
+         ZaHGMn5raWyWHK4jAIqr/m8M4C/+HRQkBjEcrysnl4NsaAsgLJZz/nbf+s8IUCZO50p5
+         BpXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Y7jdtQG8;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id m1-20020a170902db0100b001c9b1de5ae4sor916868plx.7.2023.10.11.00.04.55
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=So9JgVWW;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <gshan@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id f7-20020ac87f07000000b0041936da3799si8721703qtk.634.2023.10.11.00.09.16
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 11 Oct 2023 00:04:55 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Oct 2023 00:09:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Y7jdtQG8;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1697007895; x=1697612695; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=5jKGKJo+PheYxYocDwLAGO3qwif/z/ZJ8rm2mFIWfTs=;
-        b=Y7jdtQG8DOw4deDYSHAbS4LPMMG1ojTd2jRCjhtR78Fx/RDy1ZMVByL3nTUXE+N+pC
-         xD1TggqxHCmHDK/e98iymjXRSQPUtwTRgDRPab+P8UIE23Pg5T87BbQKA3MiE80Kc0ql
-         VIXaXAuMx757xwDOgFz+omVDFG1B3vs+9mimg4dOZLjzi+K3AiOvnFB0DKuCoqWI5MJL
-         HebwuVZvLjQJVGIt6qmf1Vlm1+1B9at5JaE/IqquZmwpd3ewCjqaktGQO+LqjAvr3m/2
-         bMVIGixuHmQcIaiIZFR+BcEKvrd5FVEVvn9EwLXjKfF7fQdSnw76UJYmpHiszxtjTjxJ
-         slgA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=So9JgVWW;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1697008156;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=BVJ5aK817DyNc3edpEHQRTyeEzCT4lsEwnNmIlDT+6w=;
+	b=So9JgVWW5mFn+D9TCTZVjIkcGpw7oD/eLo9f9XKl6WrV6u3riWWOcuMNTfCYvJCexdrQDd
+	ABrSWtEb4c8VM1c2/6pR/Sv0dpAX10FTDSrRhQdoO4kJmIZtG08xbjKcim2W148woSimok
+	yqm4bF2u2WlhN0sGWSju9pxX6KYlQi4=
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
+ [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-124-xVVewdg6Nbmk3JdXSGZETQ-1; Wed, 11 Oct 2023 03:09:15 -0400
+X-MC-Unique: xVVewdg6Nbmk3JdXSGZETQ-1
+Received: by mail-pg1-f198.google.com with SMTP id 41be03b00d2f7-5849bcbf26bso528315a12.1
+        for <alex.bennee@linaro.org>; Wed, 11 Oct 2023 00:09:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697007895; x=1697612695;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=5jKGKJo+PheYxYocDwLAGO3qwif/z/ZJ8rm2mFIWfTs=;
-        b=EdvYwxGTtAkL2a6oj/zJW0k2I18uAG+4Ajlhk94GlvlT/6hufgwq8AI7wlTFmGfR5b
-         fWAQrewXZ46I/R1iNsKTEJbxj1yOxNvV6czMlRodyhhA4xPKeia/LdbwWnC27fm8ftpR
-         +sMlN50pkDmMuFbbM1JkhtRA3TGy7bkMPueXoR3A05RrZdOWb5JdezeEQdHqg+a33jLU
-         B1Md/jmspabsbLDu0ybuJl7SgJEiCbRAZ7WYXt6VzTrZ6G4PPq/uj+wCSQHl9t3cmsoI
-         m2OPIt1aNLS7NwSNwf4idYNjfeWoWxkmgOxJaSJLtRcC72VZb/n3mrSrDll5mJNfcR8n
-         MbAQ==
-X-Gm-Message-State: AOJu0Yw3v5DqFlN09oHE+A/+ySsQK7BC8vuR3droxvoFj3EST9BKJTed
-	6OhCnVw20c75roD0wJ3ESpt4tdP969UAte0lBFM=
-X-Google-Smtp-Source: AGHT+IH/DAXR7x+XDXaQuOcL3bVk9INNb7xRCgmoqVDoApO2lgVr6Z1uO8jHrVLddr+MOk7pIw7YAQ==
-X-Received: by 2002:a17:902:d48e:b0:1c6:11ca:8861 with SMTP id c14-20020a170902d48e00b001c611ca8861mr25196781plg.21.1697007895132;
-        Wed, 11 Oct 2023 00:04:55 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from localhost ([157.82.206.10])
-        by smtp.gmail.com with UTF8SMTPSA id jh18-20020a170903329200b001c61901ed37sm13061570plb.191.2023.10.11.00.04.51
+        d=1e100.net; s=20230601; t=1697008154; x=1697612954;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BVJ5aK817DyNc3edpEHQRTyeEzCT4lsEwnNmIlDT+6w=;
+        b=qFN2icnFKb103fvj2RvrP3kQK4HufsxZO8fENGPVkvBNYkf9USJ5zDnU+pm+0gRYk0
+         6HPZztgePlYDmNeYXlgRzPlpcntuN3Hn01eRLa9XYbXe83/1kzNQ/6JDOlT4rGBFhlte
+         eqklOV92GIpxBk4k5wmjtDx/VDI/2iO10M/lLRwoSgD99OlFJVYEyohrxwNYsUGiynp+
+         2OMAnsRCVYCN59Zpe5woAzopcQ5kikLN9GjkGPYyT+HRgYnXfT62CXojXFLnRC5todgR
+         5iXnifA66xJBvwEJcPnpwrKbTt4TgJywjxb3uAp/d+ct4j4PykFoaupKMvLNohLL6bB1
+         G14g==
+X-Gm-Message-State: AOJu0YyfGFgY1Gm0fnMZS08nPBzVhGiQ1UTTjcW2Hgvc7LgEV8tDWcDJ
+	7ybwiQaKpcbZuVBbMAxhXb/fS1tr9/fUqU2bqvUTIZjU2lwxjG7Cye2L1gM+ErOkfUaTkrGRHSb
+	TTsJe8FPwY/f68I/d
+X-Received: by 2002:a05:6a20:160d:b0:126:42ce:bd44 with SMTP id l13-20020a056a20160d00b0012642cebd44mr24617367pzj.17.1697008154310;
+        Wed, 11 Oct 2023 00:09:14 -0700 (PDT)
+X-Received: by 2002:a05:6a20:160d:b0:126:42ce:bd44 with SMTP id l13-20020a056a20160d00b0012642cebd44mr24617344pzj.17.1697008153949;
+        Wed, 11 Oct 2023 00:09:13 -0700 (PDT)
+Return-Path: <gshan@redhat.com>
+Received: from ?IPV6:2001:8003:e5b0:9f00:b890:3e54:96bb:2a15? ([2001:8003:e5b0:9f00:b890:3e54:96bb:2a15])
+        by smtp.gmail.com with ESMTPSA id h19-20020aa786d3000000b0068ff267f092sm9288909pfo.216.2023.10.11.00.09.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Oct 2023 00:04:54 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Mikhail Tyutin <m.tyutin@yadro.com>,
-	Aleksandr Anenkov <a.anenkov@yadro.com>,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
-	qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
-Subject: [PATCH v9 15/23] hw/core/cpu: Remove gdb_get_dynamic_xml member
-Date: Wed, 11 Oct 2023 16:03:01 +0900
-Message-ID: <20231011070335.14398-16-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231011070335.14398-1-akihiko.odaki@daynix.com>
-References: <20231011070335.14398-1-akihiko.odaki@daynix.com>
+        Wed, 11 Oct 2023 00:09:13 -0700 (PDT)
+Message-ID: <910cb268-7344-fa0b-aa1e-935ded612d3e@redhat.com>
+Date: Wed, 11 Oct 2023 17:09:01 +1000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: 1mbEHJPE2s0C
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH V4 01/10] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com,
+ oliver.upton@linux.dev, pbonzini@redhat.com, mst@redhat.com,
+ will@kernel.org, rafael@kernel.org, alex.bennee@linaro.org,
+ linux@armlinux.org.uk, darren@os.amperecomputing.com,
+ ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
+ karl.heubaum@oracle.com, miguel.luis@oracle.com, salil.mehta@opnsrc.net,
+ zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, wangyanan55@huawei.com,
+ jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
+ linuxarm@huawei.com
+References: <20231009203601.17584-1-salil.mehta@huawei.com>
+ <20231009203601.17584-2-salil.mehta@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20231009203601.17584-2-salil.mehta@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: //14msf9RtcU
 
-This function is no longer used.
+Hi Salil,
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- include/hw/core/cpu.h |  4 ----
- target/arm/cpu.h      |  6 ------
- target/ppc/cpu.h      |  1 -
- target/arm/cpu.c      |  1 -
- target/arm/gdbstub.c  | 18 ------------------
- target/ppc/cpu_init.c |  3 ---
- target/ppc/gdbstub.c  | 10 ----------
- target/riscv/cpu.c    | 14 --------------
- 8 files changed, 57 deletions(-)
+On 10/10/23 06:35, Salil Mehta wrote:
+> KVM vCPU creation is done once during the initialization of the VM when Qemu
+> thread is spawned. This is common to all the architectures.
+> 
+> Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
+> corresponding KVM vCPU object in the Host KVM is not destroyed and its
+> representative KVM vCPU object/context in Qemu is parked.
+> 
+> Refactor common logic so that some APIs could be reused by vCPU Hotplug code.
+> 
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>   accel/kvm/kvm-all.c    | 64 ++++++++++++++++++++++++++++++++----------
+>   accel/kvm/trace-events |  4 +++
+>   include/sysemu/kvm.h   | 16 +++++++++++
+>   3 files changed, 69 insertions(+), 15 deletions(-)
+> 
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 11d4b5cd0c..d2e70643f2 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -134,9 +134,6 @@ struct SysemuCPUOps;
-  *           before the insn which triggers a watchpoint rather than after it.
-  * @gdb_arch_name: Optional callback that returns the architecture name known
-  * to GDB. The caller must free the returned string with g_free.
-- * @gdb_get_dynamic_xml: Callback to return dynamically generated XML for the
-- *   gdb stub. Returns a pointer to the XML contents for the specified XML file
-- *   or NULL if the CPU doesn't have a dynamically generated content for it.
-  * @disas_set_info: Setup architecture specific components of disassembly info
-  * @adjust_watchpoint_address: Perform a target-specific adjustment to an
-  * address before attempting to match it against watchpoints.
-@@ -167,7 +164,6 @@ struct CPUClass {
- 
-     const char *gdb_core_xml_file;
-     const gchar * (*gdb_arch_name)(CPUState *cpu);
--    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
- 
-     void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 3702ddaab8..0e4f1d7d0c 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1137,12 +1137,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
- int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- 
--/* Returns the dynamically generated XML for the gdb stub.
-- * Returns a pointer to the XML contents for the specified XML file or NULL
-- * if the XML name doesn't match the predefined one.
-- */
--const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
--
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, DumpState *s);
- int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 84cdc3055f..1782b21edb 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1385,7 +1385,6 @@ int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
- #ifndef CONFIG_USER_ONLY
- hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu);
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
- #endif
- int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                                int cpuid, DumpState *s);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 6d9bf6a14e..e7fe11339b 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2392,7 +2392,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
-     cc->gdb_arch_name = arm_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->disas_set_info = arm_disas_set_info;
- 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index aa2c6c1bde..f9774b5547 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -463,24 +463,6 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs)
- #endif
- #endif /* CONFIG_TCG */
- 
--const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--
--    if (strcmp(xmlname, "system-registers.xml") == 0) {
--        return cpu->dyn_sysreg_feature.desc.xml;
--    } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
--        return cpu->dyn_svereg_feature.desc.xml;
--    } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
--        return cpu->dyn_m_systemreg_feature.desc.xml;
--#ifndef CONFIG_USER_ONLY
--    } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
--        return cpu->dyn_m_secextreg_feature.desc.xml;
--#endif
--    }
--    return NULL;
--}
--
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
- {
-     CPUState *cs = CPU(cpu);
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index af43e73af2..d8a992a45d 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7384,9 +7384,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
- #endif
- 
-     cc->gdb_num_core_regs = 71;
--#ifndef CONFIG_USER_ONLY
--    cc->gdb_get_dynamic_xml = ppc_gdb_get_dynamic_xml;
--#endif
- #ifdef USE_APPLE_GDB
-     cc->gdb_read_register = ppc_cpu_gdb_read_register_apple;
-     cc->gdb_write_register = ppc_cpu_gdb_write_register_apple;
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 2392625441..a20d5922dd 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -339,16 +339,6 @@ void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu)
- 
-     gdb_feature_builder_end(&builder);
- }
--
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
--{
--    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
--
--    if (strcmp(xml_name, "power-spr.xml") == 0) {
--        return pcc->gdb_spr.xml;
--    }
--    return NULL;
--}
- #endif
- 
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 753d79b70c..38e403650e 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -2061,19 +2061,6 @@ static const gchar *riscv_gdb_arch_name(CPUState *cs)
-     }
- }
- 
--static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    RISCVCPU *cpu = RISCV_CPU(cs);
--
--    if (strcmp(xmlname, "riscv-csr.xml") == 0) {
--        return cpu->dyn_csr_feature.xml;
--    } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
--        return cpu->dyn_vreg_feature.xml;
--    }
--
--    return NULL;
--}
--
- #ifndef CONFIG_USER_ONLY
- static int64_t riscv_get_arch_id(CPUState *cs)
- {
-@@ -2251,7 +2238,6 @@ static void riscv_cpu_common_class_init(ObjectClass *c, void *data)
-     cc->get_arch_id = riscv_get_arch_id;
- #endif
-     cc->gdb_arch_name = riscv_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = riscv_gdb_get_dynamic_xml;
-     cc->tcg_ops = &riscv_tcg_ops;
- 
-     object_class_property_add(c, "mvendorid", "uint32", cpu_get_mvendorid,
--- 
-2.42.0
+With the following one comment addressed:
+
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index ff1578bb32..0dcaa15276 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -137,6 +137,7 @@ static QemuMutex kml_slots_lock;
+>   #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
+>   
+>   static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
+> +static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id);
+>   
+>   static inline void kvm_resample_fd_remove(int gsi)
+>   {
+> @@ -320,14 +321,53 @@ err:
+>       return ret;
+>   }
+>   
+> +void kvm_park_vcpu(CPUState *cpu)
+> +{
+> +    struct KVMParkedVcpu *vcpu;
+> +
+> +    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+> +
+> +    vcpu = g_malloc0(sizeof(*vcpu));
+> +    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
+> +    vcpu->kvm_fd = cpu->kvm_fd;
+> +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+> +}
+> +
+> +int kvm_create_vcpu(CPUState *cpu)
+> +{
+> +    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
+> +    KVMState *s = kvm_state;
+> +    int kvm_fd;
+> +
+> +    trace_kvm_create_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+> +
+> +    /* check if the KVM vCPU already exist but is parked */
+> +    kvm_fd = kvm_get_vcpu(s, vcpu_id);
+> +    if (kvm_fd < 0) {
+> +        /* vCPU not parked: create a new KVM vCPU */
+> +        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
+> +        if (kvm_fd < 0) {
+> +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu", vcpu_id);
+> +            return kvm_fd;
+> +        }
+> +    }
+> +
+> +    cpu->kvm_fd = kvm_fd;
+> +    cpu->kvm_state = s;
+> +    cpu->vcpu_dirty = true;
+> +    cpu->dirty_pages = 0;
+> +    cpu->throttle_us_per_full = 0;
+> +
+> +    return 0;
+> +}
+> +
+>   static int do_kvm_destroy_vcpu(CPUState *cpu)
+>   {
+>       KVMState *s = kvm_state;
+>       long mmap_size;
+> -    struct KVMParkedVcpu *vcpu = NULL;
+>       int ret = 0;
+>   
+> -    DPRINTF("kvm_destroy_vcpu\n");
+> +    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+>   
+>       ret = kvm_arch_destroy_vcpu(cpu);
+>       if (ret < 0) {
+> @@ -353,10 +393,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+>           }
+>       }
+>   
+> -    vcpu = g_malloc0(sizeof(*vcpu));
+> -    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
+> -    vcpu->kvm_fd = cpu->kvm_fd;
+> -    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+> +    kvm_park_vcpu(cpu);
+>   err:
+>       return ret;
+>   }
+> @@ -377,6 +414,8 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
+>           if (cpu->vcpu_id == vcpu_id) {
+>               int kvm_fd;
+>   
+> +            trace_kvm_get_vcpu(vcpu_id);
+> +
+>               QLIST_REMOVE(cpu, node);
+>               kvm_fd = cpu->kvm_fd;
+>               g_free(cpu);
+> @@ -384,7 +423,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
+>           }
+>       }
+>   
+> -    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
+> +    return -ENOENT;
+>   }
+>   
+>   int kvm_init_vcpu(CPUState *cpu, Error **errp)
+> @@ -395,19 +434,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+>   
+>       trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+>   
+> -    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
+> +    ret = kvm_create_vcpu(cpu);
+>       if (ret < 0) {
+> -        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
+> +        error_setg_errno(errp, -ret,
+> +                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
+>                            kvm_arch_vcpu_id(cpu));
+>           goto err;
+>       }
+>   
+> -    cpu->kvm_fd = ret;
+> -    cpu->kvm_state = s;
+> -    cpu->vcpu_dirty = true;
+> -    cpu->dirty_pages = 0;
+> -    cpu->throttle_us_per_full = 0;
+> -
+>       mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
+>       if (mmap_size < 0) {
+>           ret = mmap_size;
+> diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
+> index 399aaeb0ec..08e2dc253f 100644
+> --- a/accel/kvm/trace-events
+> +++ b/accel/kvm/trace-events
+> @@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) "dev fd %d, type 0x%x, arg %p"
+>   kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable to retrieve ONEREG %" PRIu64 " from KVM: %s"
+>   kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable to set ONEREG %" PRIu64 " to KVM: %s"
+>   kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+> +kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id) "creating KVM cpu: cpu_index: %d arch vcpu-id: %lu"
+> +kvm_get_vcpu(unsigned long arch_cpu_id) "unparking KVM vcpu: arch vcpu-id: %lu"
+> +kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "destroy vcpu: cpu_index: %d arch vcpu-id: %lu"
+> +kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "parking KVM vcpu: cpu_index: %d arch vcpu-id: %lu"
+
+I don't think we need the duplicate identifiers like "creating KVM cpu"
+since the event name can serve the purpose. Besides, the parameters
+are descriptive by "index: %d id: %lu", used by kvm_init_vcpu(). We just
+need to follow that pattern. Otherwise, inconsistent output will be printed
+by kvm_init_vcpu() and kvm_get_vcpu(). So I would change them like below:
+
+kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+kvm_get_vcpu(unsigned long arch_cpu_id) "id: %lu"
+kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+
+>   kvm_irqchip_commit_routes(void) ""
+>   kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
+>   kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
+> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> index ee9025f8e9..740686ab60 100644
+> --- a/include/sysemu/kvm.h
+> +++ b/include/sysemu/kvm.h
+> @@ -465,6 +465,22 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
+>   int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
+>                                          hwaddr *phys_addr);
+>   
+> +/**
+> + * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
+> + * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
+> + *
+> + * @returns: 0 when success, errno (<0) when failed.
+> + */
+> +int kvm_create_vcpu(CPUState *cpu);
+> +
+> +/**
+> + * kvm_park_vcpu - Park Qemu KVM vCPU context
+> + * @cpu: QOM CPUState object for which Qemu KVM vCPU context has to be parked.
+> + *
+> + * @returns: none
+> + */
+> +void kvm_park_vcpu(CPUState *cpu);
+> +
+>   #endif /* NEED_CPU_H */
+>   
+>   void kvm_cpu_synchronize_state(CPUState *cpu);
+
+Thanks,
+Gavin

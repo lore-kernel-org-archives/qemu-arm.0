@@ -1,86 +1,135 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp127219ejc;
-        Wed, 11 Oct 2023 07:27:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGBnLKeAfO82HfMAVK+uOyKjg/sk2vHgPjSi72C5IFqEd0RQQ3Vjakz/qk0MFa4HyibVlvm
-X-Received: by 2002:a9d:68c6:0:b0:6c4:81d6:171b with SMTP id i6-20020a9d68c6000000b006c481d6171bmr24103537oto.21.1697034475985;
-        Wed, 11 Oct 2023 07:27:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697034475; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp158969ejc;
+        Wed, 11 Oct 2023 08:14:20 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEStoCYzyGrHsNJFPghBviqg7tdeFXNo3HBFT0xqwsCv5f4/LSlxlHK6dRGCeBpRQ5zEpXF
+X-Received: by 2002:a05:6870:b250:b0:1d6:79e2:8486 with SMTP id b16-20020a056870b25000b001d679e28486mr23884440oam.29.1697037259703;
+        Wed, 11 Oct 2023 08:14:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697037259; cv=none;
         d=google.com; s=arc-20160816;
-        b=zZnrAyrKv/jrKtema9DZWZKsJRM8bxArFwMALfIa0iVvPTPTfIogLIlu9PoGH3QXKG
-         K/Z4VvLss/Gb8sxgMFe44i8EgFRp42mPXDqb99nr9xpy0yjWjCF+Lsp3LrW5ZudcS4OJ
-         4aweipdh7lDLTLf4GYEWAKqlbXvwybHEs1Q5u8My3+8V/2XQhO/hKpf3M5NnProody1o
-         G8lW+wSDEbcJgu1Wut8rpqJo4tuOH0ggKdScihfCODneJisB4YIpJhvD792Hc4HcySDm
-         128+ZDsVPPUoTLGDvGvGjfEnS9VvyqGf4+IKSaPtl0DeGGjrAVY5S9khojSUJa5xIsmV
-         oxJg==
+        b=nIndG6rljD1cW5K8c1N4UY8CzsmjSYwtL+z6ZJhC0DMW5bc6TJykh4BiTX2O+gyznU
+         /oc1oc9OPHUsj3ynbldGz4ImtfUefMZ54LZ9jkfKGohOenOtnJK7eMloVUYGpb+9FrZf
+         JvejExTwHpBhen3STd3MjKRa80DXGaQBW6LLfKbYrWZ5EwW3GBZ9kXoovEtbYF+tgbWk
+         jpOjYqkTuN3ucnRlLhdWfPu2yRzJCdNm+oHeyUKT28MKwZSL8Bx9tCZRfPVa7oszV/vl
+         Sq3DenyoCBc3DKI5b2DdZqDZiS8txHRkGqJJke7+LoxnWGkRnAnYxsUc1JhKGDM15aqy
+         opPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=cUFzJyd3B7W5flM0RVcsuOQvIYHlmafj+jKnshsFDVQ=;
-        fh=bmz7anJfKqMSsDWhxfnSZRenMyErtdC3t8rqDso+AN4=;
-        b=AOc8UdE7dkQ2ZOpURGffA9JoNj1OdZbv1gXnShRoLgn3ckWcYRFfBqoWCM8mLW6s7k
-         IPeiBJI0oJyUIG+Q8bntB8BVVuRaQZ6mHLh9DuweqlhSlA3SRZk+v+S8kDb43+Qykt06
-         VVAALaGVs5FGMz+2gZyNEoxjcubkhBTrPtMNFzeL+NX0x6WKoTBWEVEFLg2QFq9Zp+k2
-         SeRWI6NCgVVO/xhS7b3ajv2fVCAzVemxw/y6tXRSFflq8t/TiL0CmiIKy9FipsP9lYcL
-         O1I/OcyqD+kR3chA4rG+1tDtxWYoZUHQf/6r+LWD/hInnZp4HAYVhBAhhW7HmQMQCkfB
-         VeyQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=I6AD8+6vCWMJ9VTvGvEfhtie7JLOc0gfFmzg51A8AQI=;
+        fh=/Ww3feT/iFt+UtShtcSrm/ZkK0mSMJwi4QyqgqL+GT0=;
+        b=tnIupsTRqUEX3L+FPirUa/UL1qYIAqmR4QKAuEH6deAstc+jBt6LKAZYZbxmpQ7eE9
+         MSaMKMThlTq8GuNoOuNoUEYpTzyshL7mZDTGL1C5kCAkGIHmtxX3L+SibLvl+Tu2TBUK
+         +KfPHymzHxWM6mN1Fgl2UFeIzT8glILNlkL4MQhtA/ZIrJmXPvrG5Bm//tHf8lUwp7he
+         nd/Alc7y9TFN9AtWzQlGtmph2NWLMELET79kjVc0PdPCd1c8t1AP4+7Jb71gtEgjAcll
+         XtCUN+J5iGSk/LWZYkGTiScwpKfmktPam+fPCbZd9NkCO/lwIicOolkpahWn+3k7Ek5n
+         AfrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=CVynT605;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7-20020a05622a134700b0041805eb9513si9447803qtk.31.2023.10.11.07.27.55
+        by mx.google.com with ESMTPS id n15-20020a05622a11cf00b00419695d7c82si9727984qtk.525.2023.10.11.08.14.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Oct 2023 07:27:55 -0700 (PDT)
+        Wed, 11 Oct 2023 08:14:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=CVynT605;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qqaBg-0001Ik-9A; Wed, 11 Oct 2023 10:27:48 -0400
+	id 1qqauV-00073S-Gi; Wed, 11 Oct 2023 11:14:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=T27U=FZ=kaod.org=clg@ozlabs.org>)
- id 1qqaBd-0001Hz-7V; Wed, 11 Oct 2023 10:27:45 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qqauP-00072q-Iv; Wed, 11 Oct 2023 11:14:01 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=T27U=FZ=kaod.org=clg@ozlabs.org>)
- id 1qqaBY-0003Mp-W4; Wed, 11 Oct 2023 10:27:43 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4S5FTv3n7mz4xZl;
- Thu, 12 Oct 2023 01:27:31 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4S5FTs6HmMz4xWt;
- Thu, 12 Oct 2023 01:27:29 +1100 (AEDT)
-Message-ID: <e5d37f40-fcf1-5843-ea66-d50fa2353424@kaod.org>
-Date: Wed, 11 Oct 2023 16:27:28 +0200
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1qqauN-0004xn-V7; Wed, 11 Oct 2023 11:14:01 -0400
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39BF0GvB022111; Wed, 11 Oct 2023 15:13:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-type :
+ content-transfer-encoding; s=pp1;
+ bh=I6AD8+6vCWMJ9VTvGvEfhtie7JLOc0gfFmzg51A8AQI=;
+ b=CVynT605RmhUENXkH/GjlGOEARXGYUVZg5UbQmqQ13fbYUOQB/FTMvdmSx9sc5U/VNGT
+ Wi5P0p7oepdl0G64q9/00CeG5OyBcdohUmCSQ2hMpeQOalcyYb2xudXMd0oqgaMHu09I
+ 3nIJqbCFGFukD3q3aK8BM4mUXUjbyaHg8Q3ABU4O9j/ICWC8xDwjkTxk4NjV7sKw0Dbz
+ jnm0azQThc6t7zfOFxf+xI42wZq08obve5RWDiqjejt/kgchHPiaVtpUsdgBBpIkY3Cf
+ yXtDt1TNxwCzKqBoh9YRWtBH10O37jr5Y0MS25oIT9UV3q1oWVftQPVnTZscjE6iv5Ir GQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tnwyc8rs7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 11 Oct 2023 15:13:45 +0000
+Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39BF0dRA024535;
+ Wed, 11 Oct 2023 15:13:45 GMT
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tnwyc8rr2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 11 Oct 2023 15:13:44 +0000
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39BDGA1o024445; Wed, 11 Oct 2023 15:13:43 GMT
+Received: from smtprelay05.wdc07v.mail.ibm.com ([172.16.1.72])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tkhnss7ya-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 11 Oct 2023 15:13:43 +0000
+Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
+ [10.241.53.104])
+ by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39BFDgxH27263534
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 11 Oct 2023 15:13:42 GMT
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 77DB758069;
+ Wed, 11 Oct 2023 15:13:42 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 1FD5B58068;
+ Wed, 11 Oct 2023 15:13:42 +0000 (GMT)
+Received: from gfwa153.aus.stglabs.ibm.com (unknown [9.3.84.127])
+ by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Wed, 11 Oct 2023 15:13:42 +0000 (GMT)
+From: Ninad Palsule <ninad@linux.ibm.com>
+To: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
+ andrew@aj.id.au, joel@jms.id.au, pbonzini@redhat.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com,
+ philmd@linaro.org, lvivier@redhat.com
+Cc: Ninad Palsule <ninad@linux.ibm.com>, qemu-arm@nongnu.org
+Subject: [PATCH v5 00/10] Introduce model for IBM's FSI
+Date: Wed, 11 Oct 2023 10:13:29 -0500
+Message-Id: <20231011151339.2782132-1-ninad@linux.ibm.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH] misc/pca9552: Fix inverted input status
-Content-Language: en-US
-To: Glenn Miles <milesg@linux.vnet.ibm.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, andrew@codeconstruct.com.au,
- Joel Stanley <joel@jms.id.au>
-References: <20230927203221.3286895-1-milesg@linux.vnet.ibm.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20230927203221.3286895-1-milesg@linux.vnet.ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=T27U=FZ=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -72
-X-Spam_score: -7.3
-X-Spam_bar: -------
-X-Spam_report: (-7.3 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.339,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: veXaHa2N5eWO97JIkja1AQwyVD4jm_gt
+X-Proofpoint-GUID: u0UD-UZfHxX8dErC2WZDbmHXqROJDM5v
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-11_09,2023-10-11_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=2
+ mlxscore=2 clxscore=1015
+ impostorscore=0 mlxlogscore=170 bulkscore=0 adultscore=0
+ priorityscore=1501 suspectscore=0 lowpriorityscore=0 malwarescore=0
+ phishscore=0 spamscore=2 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310110133
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,92 +145,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TehVAjUFEavZ
+X-TUID: DHkDDSHLSU1b
 
-On 9/27/23 22:32, Glenn Miles wrote:
-> The pca9552 INPUT0 and INPUT1 registers are supposed to
-> hold the logical values of the LED pins.  A logical 0
-> should be seen in the INPUT0/1 registers for a pin when
-> its corresponding LSn bits are set to 0, which is also
-> the state needed for turning on an LED in a typical
-> usage scenario.  Existing code was doing the opposite
-> and setting INPUT0/1 bit to a 1 when the LSn bit was
-> set to 0, so this commit fixes that.
-> 
-> Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
+Hello,
 
-Looks OK to me.
+Please review the patch-set version 5.
+I have incorporated review comments from Cedric.
 
-May be you could mention that the ON/OFF values are reversed on
-the pca953x family. This is good to know if one wants to model
-these devices one day.
+Ninad Palsule (10):
+  hw/fsi: Introduce IBM's Local bus
+  hw/fsi: Introduce IBM's scratchpad
+  hw/fsi: Introduce IBM's cfam,fsi-slave
+  hw/fsi: Introduce IBM's FSI
+  hw/fsi: IBM's On-chip Peripheral Bus
+  hw/fsi: Aspeed APB2OPB interface
+  hw/arm: Hook up FSI module in AST2600
+  hw/fsi: Added qtest
+  hw/fsi: Added FSI documentation
+  hw/fsi: Update MAINTAINER list
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+ MAINTAINERS                        |   8 +
+ docs/specs/fsi.rst                 | 141 ++++++++++++
+ meson.build                        |   1 +
+ hw/fsi/trace.h                     |   1 +
+ include/hw/arm/aspeed_soc.h        |   4 +
+ include/hw/fsi/aspeed-apb2opb.h    |  33 +++
+ include/hw/fsi/cfam.h              |  58 +++++
+ include/hw/fsi/engine-scratchpad.h |  33 +++
+ include/hw/fsi/fsi-master.h        |  30 +++
+ include/hw/fsi/fsi-slave.h         |  29 +++
+ include/hw/fsi/fsi.h               |  37 +++
+ include/hw/fsi/lbus.h              |  51 +++++
+ include/hw/fsi/opb.h               |  43 ++++
+ include/qemu/bitops.h              |   6 +
+ hw/arm/aspeed_ast2600.c            |  19 ++
+ hw/fsi/aspeed-apb2opb.c            | 350 +++++++++++++++++++++++++++++
+ hw/fsi/cfam.c                      | 220 ++++++++++++++++++
+ hw/fsi/engine-scratchpad.c         |  99 ++++++++
+ hw/fsi/fsi-master.c                | 198 ++++++++++++++++
+ hw/fsi/fsi-slave.c                 |  96 ++++++++
+ hw/fsi/fsi.c                       |  54 +++++
+ hw/fsi/lbus.c                      |  87 +++++++
+ hw/fsi/opb.c                       | 185 +++++++++++++++
+ tests/qtest/fsi-test.c             | 210 +++++++++++++++++
+ hw/Kconfig                         |   1 +
+ hw/arm/Kconfig                     |   1 +
+ hw/fsi/Kconfig                     |  23 ++
+ hw/fsi/meson.build                 |   6 +
+ hw/fsi/trace-events                |  15 ++
+ hw/meson.build                     |   1 +
+ tests/qtest/meson.build            |   2 +
+ 31 files changed, 2042 insertions(+)
+ create mode 100644 docs/specs/fsi.rst
+ create mode 100644 hw/fsi/trace.h
+ create mode 100644 include/hw/fsi/aspeed-apb2opb.h
+ create mode 100644 include/hw/fsi/cfam.h
+ create mode 100644 include/hw/fsi/engine-scratchpad.h
+ create mode 100644 include/hw/fsi/fsi-master.h
+ create mode 100644 include/hw/fsi/fsi-slave.h
+ create mode 100644 include/hw/fsi/fsi.h
+ create mode 100644 include/hw/fsi/lbus.h
+ create mode 100644 include/hw/fsi/opb.h
+ create mode 100644 hw/fsi/aspeed-apb2opb.c
+ create mode 100644 hw/fsi/cfam.c
+ create mode 100644 hw/fsi/engine-scratchpad.c
+ create mode 100644 hw/fsi/fsi-master.c
+ create mode 100644 hw/fsi/fsi-slave.c
+ create mode 100644 hw/fsi/fsi.c
+ create mode 100644 hw/fsi/lbus.c
+ create mode 100644 hw/fsi/opb.c
+ create mode 100644 tests/qtest/fsi-test.c
+ create mode 100644 hw/fsi/Kconfig
+ create mode 100644 hw/fsi/meson.build
+ create mode 100644 hw/fsi/trace-events
 
-Thanks,
-
-C.
-
-
-> ---
->   hw/misc/pca9552.c          | 13 +++++++++----
->   tests/qtest/pca9552-test.c |  6 +++---
->   2 files changed, 12 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-> index fff19e369a..ad811fb249 100644
-> --- a/hw/misc/pca9552.c
-> +++ b/hw/misc/pca9552.c
-> @@ -112,13 +112,18 @@ static void pca955x_update_pin_input(PCA955xState *s)
->   
->           switch (config) {
->           case PCA9552_LED_ON:
-> -            qemu_set_irq(s->gpio[i], 1);
-> -            s->regs[input_reg] |= 1 << input_shift;
-> -            break;
-> -        case PCA9552_LED_OFF:
-> +            /* Pin is set to 0V to turn on LED */
->               qemu_set_irq(s->gpio[i], 0);
->               s->regs[input_reg] &= ~(1 << input_shift);
->               break;
-> +        case PCA9552_LED_OFF:
-> +            /*
-> +             * Pin is set to Hi-Z to turn off LED and
-> +             * pullup sets it to a logical 1.
-> +             */
-> +            qemu_set_irq(s->gpio[i], 1);
-> +            s->regs[input_reg] |= 1 << input_shift;
-> +            break;
->           case PCA9552_LED_PWM0:
->           case PCA9552_LED_PWM1:
->               /* TODO */
-> diff --git a/tests/qtest/pca9552-test.c b/tests/qtest/pca9552-test.c
-> index d80ed93cd3..ccca2b3d91 100644
-> --- a/tests/qtest/pca9552-test.c
-> +++ b/tests/qtest/pca9552-test.c
-> @@ -60,7 +60,7 @@ static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
->       g_assert_cmphex(value, ==, 0x55);
->   
->       value = i2c_get8(i2cdev, PCA9552_INPUT0);
-> -    g_assert_cmphex(value, ==, 0x0);
-> +    g_assert_cmphex(value, ==, 0xFF);
->   
->       pca9552_init(i2cdev);
->   
-> @@ -68,13 +68,13 @@ static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
->       g_assert_cmphex(value, ==, 0x54);
->   
->       value = i2c_get8(i2cdev, PCA9552_INPUT0);
-> -    g_assert_cmphex(value, ==, 0x01);
-> +    g_assert_cmphex(value, ==, 0xFE);
->   
->       value = i2c_get8(i2cdev, PCA9552_LS3);
->       g_assert_cmphex(value, ==, 0x54);
->   
->       value = i2c_get8(i2cdev, PCA9552_INPUT1);
-> -    g_assert_cmphex(value, ==, 0x10);
-> +    g_assert_cmphex(value, ==, 0xEF);
->   }
->   
->   static void pca9552_register_nodes(void)
+-- 
+2.39.2
 

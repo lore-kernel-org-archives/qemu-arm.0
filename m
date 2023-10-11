@@ -1,316 +1,164 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp642092ejr;
-        Wed, 11 Oct 2023 00:09:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IESMmQM5dyehbgkNDJ6+5Lt7iRDmPD7kTKgwGT35iej+9c1tf+z070DsLQGfpF0m/8deNJI
-X-Received: by 2002:a05:622a:1ba0:b0:419:a2c6:8213 with SMTP id bp32-20020a05622a1ba000b00419a2c68213mr22247231qtb.5.1697008157015;
-        Wed, 11 Oct 2023 00:09:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697008157; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp713493ejr;
+        Wed, 11 Oct 2023 02:59:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEZxGvvut/E3+NpFmsyBDWRVSpd/A2d25Ne6GZrGnZopsxMkAD+dl6uhHwab5HVU7J2sSqA
+X-Received: by 2002:a17:902:f7cf:b0:1c6:1c80:5663 with SMTP id h15-20020a170902f7cf00b001c61c805663mr16167303plw.41.1697018373840;
+        Wed, 11 Oct 2023 02:59:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697018373; cv=none;
         d=google.com; s=arc-20160816;
-        b=pTZfTD4kX4le5fxbjrLxSbbpwrcXZfFF3ieMRU1UK29fo5W8xxxq5l11qfCjF1wpRk
-         d18aTmkyYZ5kMT96aacS/ycgFs8GtCCy+Qg82VOKmdFyfa4WabUTL6gmdmpuAgZ4G+6v
-         4i3r/TXMAncZbGdNHE3sifRswqN+Pi7ewPMmqIqfaNymtZK9H78MTmchqZd3R0zOANPA
-         pgkhak3NYKOv42C/sdElQcE3sADasacbsQbXIYRyAOwhNcVqzSlR/9YSzHT3erd3bjE8
-         2PMZgrpHZDwT1hvwo+ALi4+VbEvN5sgzpFcv0PDcpN9m3XJs0yiTkDyFmFmBjBSjHoA9
-         qEiA==
+        b=lnPGXwnzfahjxCLLJhcG6FG80n1zRbm76z4RkGB/eIxp0RLkl33qM4nTvmH/GF2/+e
+         sO9VC836taG5A4BIJLjV6b3bqBIo0XLBIhSVu/zutbzK7sw5M4Q4qEHNw2IuVOCXZS3B
+         zfaE0ZW37H94ItVycShSFmNTfFgoHNjsy51U+XS3N6oA9aEnwtoIs5o0yhl6Ehlad/jc
+         wZexeM5VCHq0yU24HUcDrB5o2Mk3LzIhXIvmTNpWuLvaGlNVE13s3fzDIwr2UADxVHFe
+         hoiuffOQIBC7gtse1y2Ej+2Zu9XV9mEM06H9F8Z+eT51fEcd4VJv34tsrNuQBJ3gjJVp
+         rqvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=BVJ5aK817DyNc3edpEHQRTyeEzCT4lsEwnNmIlDT+6w=;
-        fh=UoUFvcIH1Llqwj9lcubayb9wLqiblQuJi8py3jS56vc=;
-        b=bK01VTr74dnBif7A3fRdiNFKrGrjfBctJwsLd5JJpkXdsRiQ6q+H8uZwtwJPHP+b5D
-         onY6DQ4uhOeehJpall8wMNOEqL8SskPeM3jDqqHIxcrxNK8stdG5Or2n+6jkxg5v1Kup
-         Hw1FN3icMXcfQrsydn12Sqiv5j2S0DuQCrK41geo+YetlRFm1mKCGOvuYjeSmlv8jkMh
-         pj5NtF+tjp4e6BN3aCa7fpW5Gb//r/7Css3Cc1utIOKpWXve1XQe9jRW59ce1H4L/2xY
-         ZaHGMn5raWyWHK4jAIqr/m8M4C/+HRQkBjEcrysnl4NsaAsgLJZz/nbf+s8IUCZO50p5
-         BpXg==
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=WNqPPWPuO+MNIG67tzYtoVQsgLPkqytxBnNRQJp7H9Q=;
+        fh=DCV4KZOcuvUG/wve9C1kSJ4RRlBk9KClkYRBzQw+8ow=;
+        b=FmTB4qo3BhxLGR53Xwnonaol5pb/psTdKAostS8NYrNsdh3Rgtru90f+GM/kD7IYQ1
+         oNPHV4gyICj0WqLqBIpfjcjp2ylGyH/kz3CcYDGKjBSZKGBLPjHOeLn4Y5ZIWMnONg4b
+         4EZOrotfR4gCsVP68p9v9RYPzsKeBr9D6GvIMI1I/sZELlniqh29o13a5Q9X9HTKfH/8
+         N3jdzfMDA2zSJV4MGD1Y5VAs98YrH+6yJgbyAfoqF5wr2dlMaV83F0hp4DjiQ3ywkchv
+         DZqdcGCU+JbqbTqxMbm1RQRdm+9bTQ08HVJJaZ/eyaojrBJoseRPc1/ACBsetY29DvJh
+         S2Gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=So9JgVWW;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id f7-20020ac87f07000000b0041936da3799si8721703qtk.634.2023.10.11.00.09.16
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Oct 2023 00:09:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id lb14-20020a170902fa4e00b001b89613687bsi13282227plb.439.2023.10.11.02.59.32
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 11 Oct 2023 02:59:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=So9JgVWW;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1697008156;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BVJ5aK817DyNc3edpEHQRTyeEzCT4lsEwnNmIlDT+6w=;
-	b=So9JgVWW5mFn+D9TCTZVjIkcGpw7oD/eLo9f9XKl6WrV6u3riWWOcuMNTfCYvJCexdrQDd
-	ABrSWtEb4c8VM1c2/6pR/Sv0dpAX10FTDSrRhQdoO4kJmIZtG08xbjKcim2W148woSimok
-	yqm4bF2u2WlhN0sGWSju9pxX6KYlQi4=
-Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
- [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-124-xVVewdg6Nbmk3JdXSGZETQ-1; Wed, 11 Oct 2023 03:09:15 -0400
-X-MC-Unique: xVVewdg6Nbmk3JdXSGZETQ-1
-Received: by mail-pg1-f198.google.com with SMTP id 41be03b00d2f7-5849bcbf26bso528315a12.1
-        for <alex.bennee@linaro.org>; Wed, 11 Oct 2023 00:09:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697008154; x=1697612954;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BVJ5aK817DyNc3edpEHQRTyeEzCT4lsEwnNmIlDT+6w=;
-        b=qFN2icnFKb103fvj2RvrP3kQK4HufsxZO8fENGPVkvBNYkf9USJ5zDnU+pm+0gRYk0
-         6HPZztgePlYDmNeYXlgRzPlpcntuN3Hn01eRLa9XYbXe83/1kzNQ/6JDOlT4rGBFhlte
-         eqklOV92GIpxBk4k5wmjtDx/VDI/2iO10M/lLRwoSgD99OlFJVYEyohrxwNYsUGiynp+
-         2OMAnsRCVYCN59Zpe5woAzopcQ5kikLN9GjkGPYyT+HRgYnXfT62CXojXFLnRC5todgR
-         5iXnifA66xJBvwEJcPnpwrKbTt4TgJywjxb3uAp/d+ct4j4PykFoaupKMvLNohLL6bB1
-         G14g==
-X-Gm-Message-State: AOJu0YyfGFgY1Gm0fnMZS08nPBzVhGiQ1UTTjcW2Hgvc7LgEV8tDWcDJ
-	7ybwiQaKpcbZuVBbMAxhXb/fS1tr9/fUqU2bqvUTIZjU2lwxjG7Cye2L1gM+ErOkfUaTkrGRHSb
-	TTsJe8FPwY/f68I/d
-X-Received: by 2002:a05:6a20:160d:b0:126:42ce:bd44 with SMTP id l13-20020a056a20160d00b0012642cebd44mr24617367pzj.17.1697008154310;
-        Wed, 11 Oct 2023 00:09:14 -0700 (PDT)
-X-Received: by 2002:a05:6a20:160d:b0:126:42ce:bd44 with SMTP id l13-20020a056a20160d00b0012642cebd44mr24617344pzj.17.1697008153949;
-        Wed, 11 Oct 2023 00:09:13 -0700 (PDT)
-Return-Path: <gshan@redhat.com>
-Received: from ?IPV6:2001:8003:e5b0:9f00:b890:3e54:96bb:2a15? ([2001:8003:e5b0:9f00:b890:3e54:96bb:2a15])
-        by smtp.gmail.com with ESMTPSA id h19-20020aa786d3000000b0068ff267f092sm9288909pfo.216.2023.10.11.00.09.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Oct 2023 00:09:13 -0700 (PDT)
-Message-ID: <910cb268-7344-fa0b-aa1e-935ded612d3e@redhat.com>
-Date: Wed, 11 Oct 2023 17:09:01 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH V4 01/10] accel/kvm: Extract common KVM vCPU
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from lhrpeml100006.china.huawei.com (unknown [172.18.147.201])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S57T52VXTz6JB1Q;
+	Wed, 11 Oct 2023 17:56:25 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ lhrpeml100006.china.huawei.com (7.191.160.224) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Wed, 11 Oct 2023 10:59:27 +0100
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
+ Wed, 11 Oct 2023 10:59:27 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
+	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
+	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
+	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
+	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
+	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org"
+	<alex.bennee@linaro.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
+	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
+	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+	Linuxarm <linuxarm@huawei.com>
+Subject: RE: [PATCH V4 01/10] accel/kvm: Extract common KVM vCPU
  {creation,parking} code
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com,
- oliver.upton@linux.dev, pbonzini@redhat.com, mst@redhat.com,
- will@kernel.org, rafael@kernel.org, alex.bennee@linaro.org,
- linux@armlinux.org.uk, darren@os.amperecomputing.com,
- ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
- karl.heubaum@oracle.com, miguel.luis@oracle.com, salil.mehta@opnsrc.net,
- zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, wangyanan55@huawei.com,
- jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
- linuxarm@huawei.com
+Thread-Topic: [PATCH V4 01/10] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+Thread-Index: AQHZ+vBgREM3O/r310KkRZMgbkve2LBEHPqAgAA8E7A=
+Date: Wed, 11 Oct 2023 09:59:27 +0000
+Message-ID: <d1b0c94a235747aeb6817bb07e49c190@huawei.com>
 References: <20231009203601.17584-1-salil.mehta@huawei.com>
  <20231009203601.17584-2-salil.mehta@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20231009203601.17584-2-salil.mehta@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ <910cb268-7344-fa0b-aa1e-935ded612d3e@redhat.com>
+In-Reply-To: <910cb268-7344-fa0b-aa1e-935ded612d3e@redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: //14msf9RtcU
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.126.168.228]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-TUID: vWp8XR7eQs8A
 
-Hi Salil,
-
-On 10/10/23 06:35, Salil Mehta wrote:
-> KVM vCPU creation is done once during the initialization of the VM when Qemu
-> thread is spawned. This is common to all the architectures.
-> 
-> Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
-> corresponding KVM vCPU object in the Host KVM is not destroyed and its
-> representative KVM vCPU object/context in Qemu is parked.
-> 
-> Refactor common logic so that some APIs could be reused by vCPU Hotplug code.
-> 
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> ---
->   accel/kvm/kvm-all.c    | 64 ++++++++++++++++++++++++++++++++----------
->   accel/kvm/trace-events |  4 +++
->   include/sysemu/kvm.h   | 16 +++++++++++
->   3 files changed, 69 insertions(+), 15 deletions(-)
-> 
-
-With the following one comment addressed:
-
-Reviewed-by: Gavin Shan <gshan@redhat.com>
-
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index ff1578bb32..0dcaa15276 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -137,6 +137,7 @@ static QemuMutex kml_slots_lock;
->   #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
->   
->   static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
-> +static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id);
->   
->   static inline void kvm_resample_fd_remove(int gsi)
->   {
-> @@ -320,14 +321,53 @@ err:
->       return ret;
->   }
->   
-> +void kvm_park_vcpu(CPUState *cpu)
-> +{
-> +    struct KVMParkedVcpu *vcpu;
-> +
-> +    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-> +
-> +    vcpu = g_malloc0(sizeof(*vcpu));
-> +    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> +    vcpu->kvm_fd = cpu->kvm_fd;
-> +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> +}
-> +
-> +int kvm_create_vcpu(CPUState *cpu)
-> +{
-> +    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
-> +    KVMState *s = kvm_state;
-> +    int kvm_fd;
-> +
-> +    trace_kvm_create_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-> +
-> +    /* check if the KVM vCPU already exist but is parked */
-> +    kvm_fd = kvm_get_vcpu(s, vcpu_id);
-> +    if (kvm_fd < 0) {
-> +        /* vCPU not parked: create a new KVM vCPU */
-> +        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
-> +        if (kvm_fd < 0) {
-> +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu", vcpu_id);
-> +            return kvm_fd;
-> +        }
-> +    }
-> +
-> +    cpu->kvm_fd = kvm_fd;
-> +    cpu->kvm_state = s;
-> +    cpu->vcpu_dirty = true;
-> +    cpu->dirty_pages = 0;
-> +    cpu->throttle_us_per_full = 0;
-> +
-> +    return 0;
-> +}
-> +
->   static int do_kvm_destroy_vcpu(CPUState *cpu)
->   {
->       KVMState *s = kvm_state;
->       long mmap_size;
-> -    struct KVMParkedVcpu *vcpu = NULL;
->       int ret = 0;
->   
-> -    DPRINTF("kvm_destroy_vcpu\n");
-> +    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
->   
->       ret = kvm_arch_destroy_vcpu(cpu);
->       if (ret < 0) {
-> @@ -353,10 +393,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
->           }
->       }
->   
-> -    vcpu = g_malloc0(sizeof(*vcpu));
-> -    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> -    vcpu->kvm_fd = cpu->kvm_fd;
-> -    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> +    kvm_park_vcpu(cpu);
->   err:
->       return ret;
->   }
-> @@ -377,6 +414,8 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
->           if (cpu->vcpu_id == vcpu_id) {
->               int kvm_fd;
->   
-> +            trace_kvm_get_vcpu(vcpu_id);
-> +
->               QLIST_REMOVE(cpu, node);
->               kvm_fd = cpu->kvm_fd;
->               g_free(cpu);
-> @@ -384,7 +423,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
->           }
->       }
->   
-> -    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
-> +    return -ENOENT;
->   }
->   
->   int kvm_init_vcpu(CPUState *cpu, Error **errp)
-> @@ -395,19 +434,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
->   
->       trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
->   
-> -    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
-> +    ret = kvm_create_vcpu(cpu);
->       if (ret < 0) {
-> -        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
-> +        error_setg_errno(errp, -ret,
-> +                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
->                            kvm_arch_vcpu_id(cpu));
->           goto err;
->       }
->   
-> -    cpu->kvm_fd = ret;
-> -    cpu->kvm_state = s;
-> -    cpu->vcpu_dirty = true;
-> -    cpu->dirty_pages = 0;
-> -    cpu->throttle_us_per_full = 0;
-> -
->       mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
->       if (mmap_size < 0) {
->           ret = mmap_size;
-> diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
-> index 399aaeb0ec..08e2dc253f 100644
-> --- a/accel/kvm/trace-events
-> +++ b/accel/kvm/trace-events
-> @@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) "dev fd %d, type 0x%x, arg %p"
->   kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable to retrieve ONEREG %" PRIu64 " from KVM: %s"
->   kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable to set ONEREG %" PRIu64 " to KVM: %s"
->   kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> +kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id) "creating KVM cpu: cpu_index: %d arch vcpu-id: %lu"
-> +kvm_get_vcpu(unsigned long arch_cpu_id) "unparking KVM vcpu: arch vcpu-id: %lu"
-> +kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "destroy vcpu: cpu_index: %d arch vcpu-id: %lu"
-> +kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "parking KVM vcpu: cpu_index: %d arch vcpu-id: %lu"
-
-I don't think we need the duplicate identifiers like "creating KVM cpu"
-since the event name can serve the purpose. Besides, the parameters
-are descriptive by "index: %d id: %lu", used by kvm_init_vcpu(). We just
-need to follow that pattern. Otherwise, inconsistent output will be printed
-by kvm_init_vcpu() and kvm_get_vcpu(). So I would change them like below:
-
-kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-kvm_get_vcpu(unsigned long arch_cpu_id) "id: %lu"
-kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-
->   kvm_irqchip_commit_routes(void) ""
->   kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
->   kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index ee9025f8e9..740686ab60 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -465,6 +465,22 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
->   int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
->                                          hwaddr *phys_addr);
->   
-> +/**
-> + * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
-> + * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
-> + *
-> + * @returns: 0 when success, errno (<0) when failed.
-> + */
-> +int kvm_create_vcpu(CPUState *cpu);
-> +
-> +/**
-> + * kvm_park_vcpu - Park Qemu KVM vCPU context
-> + * @cpu: QOM CPUState object for which Qemu KVM vCPU context has to be parked.
-> + *
-> + * @returns: none
-> + */
-> +void kvm_park_vcpu(CPUState *cpu);
-> +
->   #endif /* NEED_CPU_H */
->   
->   void kvm_cpu_synchronize_state(CPUState *cpu);
-
-Thanks,
-Gavin
+SGkgR2F2aW4sDQoNCj4gRnJvbTogR2F2aW4gU2hhbiA8Z3NoYW5AcmVkaGF0LmNvbT4NCj4gU2Vu
+dDogV2VkbmVzZGF5LCBPY3RvYmVyIDExLCAyMDIzIDg6MDkgQU0NCj4gVG86IFNhbGlsIE1laHRh
+IDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPjsgcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LWFy
+bUBub25nbnUub3JnDQo+IENjOiBtYXpAa2VybmVsLm9yZzsgamVhbi1waGlsaXBwZUBsaW5hcm8u
+b3JnOyBKb25hdGhhbiBDYW1lcm9uDQo+IDxqb25hdGhhbi5jYW1lcm9uQGh1YXdlaS5jb20+OyBs
+cGllcmFsaXNpQGtlcm5lbC5vcmc7DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgcmljaGFy
+ZC5oZW5kZXJzb25AbGluYXJvLm9yZzsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgYW5kcmV3Lmpv
+bmVzQGxpbnV4LmRldjsgZGF2aWRAcmVkaGF0LmNvbTsNCj4gcGhpbG1kQGxpbmFyby5vcmc7IGVy
+aWMuYXVnZXJAcmVkaGF0LmNvbTsgb2xpdmVyLnVwdG9uQGxpbnV4LmRldjsNCj4gcGJvbnppbmlA
+cmVkaGF0LmNvbTsgbXN0QHJlZGhhdC5jb207IHdpbGxAa2VybmVsLm9yZzsgcmFmYWVsQGtlcm5l
+bC5vcmc7DQo+IGFsZXguYmVubmVlQGxpbmFyby5vcmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51azsN
+Cj4gZGFycmVuQG9zLmFtcGVyZWNvbXB1dGluZy5jb207IGlsa2thQG9zLmFtcGVyZWNvbXB1dGlu
+Zy5jb207DQo+IHZpc2hudUBvcy5hbXBlcmVjb21wdXRpbmcuY29tOyBrYXJsLmhldWJhdW1Ab3Jh
+Y2xlLmNvbTsNCj4gbWlndWVsLmx1aXNAb3JhY2xlLmNvbTsgc2FsaWwubWVodGFAb3Buc3JjLm5l
+dDsgemh1a2VxaWFuDQo+IDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5nIChD
+KSA8d2FuZ3hpb25nZmVuZzJAaHVhd2VpLmNvbT47DQo+IHdhbmd5YW5hbiAoWSkgPHdhbmd5YW5h
+bjU1QGh1YXdlaS5jb20+OyBqaWFrZXJuZWwyQGdtYWlsLmNvbTsNCj4gbWFvYmlib0Bsb29uZ3Nv
+bi5jbjsgbGl4aWFuZ2xhaUBsb29uZ3Nvbi5jbjsgTGludXhhcm0gPGxpbnV4YXJtQGh1YXdlaS5j
+b20+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggVjQgMDEvMTBdIGFjY2VsL2t2bTogRXh0cmFjdCBj
+b21tb24gS1ZNIHZDUFUNCj4ge2NyZWF0aW9uLHBhcmtpbmd9IGNvZGUNCj4gDQo+IEhpIFNhbGls
+LA0KPiANCj4gT24gMTAvMTAvMjMgMDY6MzUsIFNhbGlsIE1laHRhIHdyb3RlOg0KPiA+IEtWTSB2
+Q1BVIGNyZWF0aW9uIGlzIGRvbmUgb25jZSBkdXJpbmcgdGhlIGluaXRpYWxpemF0aW9uIG9mIHRo
+ZSBWTSB3aGVuIFFlbXUNCj4gPiB0aHJlYWQgaXMgc3Bhd25lZC4gVGhpcyBpcyBjb21tb24gdG8g
+YWxsIHRoZSBhcmNoaXRlY3R1cmVzLg0KPiA+DQo+ID4gSG90LXVucGx1ZyBvZiB2Q1BVIHJlc3Vs
+dHMgaW4gZGVzdHJ1Y3Rpb24gb2YgdGhlIHZDUFUgb2JqZWN0IGluIFFPTSBidXQgdGhlDQo+ID4g
+Y29ycmVzcG9uZGluZyBLVk0gdkNQVSBvYmplY3QgaW4gdGhlIEhvc3QgS1ZNIGlzIG5vdCBkZXN0
+cm95ZWQgYW5kIGl0cw0KPiA+IHJlcHJlc2VudGF0aXZlIEtWTSB2Q1BVIG9iamVjdC9jb250ZXh0
+IGluIFFlbXUgaXMgcGFya2VkLg0KPiA+DQo+ID4gUmVmYWN0b3IgY29tbW9uIGxvZ2ljIHNvIHRo
+YXQgc29tZSBBUElzIGNvdWxkIGJlIHJldXNlZCBieSB2Q1BVIEhvdHBsdWcgY29kZS4NCj4gPg0K
+PiA+IFNpZ25lZC1vZmYtYnk6IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPg0K
+PiA+IC0tLQ0KPiA+ICAgYWNjZWwva3ZtL2t2bS1hbGwuYyAgICB8IDY0ICsrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLQ0KPiA+ICAgYWNjZWwva3ZtL3RyYWNlLWV2ZW50
+cyB8ICA0ICsrKw0KPiA+ICAgaW5jbHVkZS9zeXNlbXUva3ZtLmggICB8IDE2ICsrKysrKysrKysr
+DQo+ID4gICAzIGZpbGVzIGNoYW5nZWQsIDY5IGluc2VydGlvbnMoKyksIDE1IGRlbGV0aW9ucygt
+KQ0KPiA+DQo+IA0KPiBXaXRoIHRoZSBmb2xsb3dpbmcgb25lIGNvbW1lbnQgYWRkcmVzc2VkOg0K
+PiANCj4gUmV2aWV3ZWQtYnk6IEdhdmluIFNoYW4gPGdzaGFuQHJlZGhhdC5jb20+DQoNCg0KVGhh
+bmtzDQoNCg0KWy4uLl0NCg0KPiA+IGRpZmYgLS1naXQgYS9hY2NlbC9rdm0vdHJhY2UtZXZlbnRz
+IGIvYWNjZWwva3ZtL3RyYWNlLWV2ZW50cw0KPiA+IGluZGV4IDM5OWFhZWIwZWMuLjA4ZTJkYzI1
+M2YgMTAwNjQ0DQo+ID4gLS0tIGEvYWNjZWwva3ZtL3RyYWNlLWV2ZW50cw0KPiA+ICsrKyBiL2Fj
+Y2VsL2t2bS90cmFjZS1ldmVudHMNCj4gPiBAQCAtOSw2ICs5LDEwIEBAIGt2bV9kZXZpY2VfaW9j
+dGwoaW50IGZkLCBpbnQgdHlwZSwgdm9pZCAqYXJnKSAiZGV2IGZkDQo+ICVkLCB0eXBlIDB4JXgs
+IGFyZyAlcCINCj4gPiAgIGt2bV9mYWlsZWRfcmVnX2dldCh1aW50NjRfdCBpZCwgY29uc3QgY2hh
+ciAqbXNnKSAiV2FybmluZzogVW5hYmxlIHRvIHJldHJpZXZlIE9ORVJFRyAlIiBQUkl1NjQgIiBm
+cm9tIEtWTTogJXMiDQo+ID4gICBrdm1fZmFpbGVkX3JlZ19zZXQodWludDY0X3QgaWQsIGNvbnN0
+IGNoYXIgKm1zZykgIldhcm5pbmc6IFVuYWJsZSB0byBzZXQgT05FUkVHICUiIFBSSXU2NCAiIHRv
+IEtWTTogJXMiDQo+ID4gICBrdm1faW5pdF92Y3B1KGludCBjcHVfaW5kZXgsIHVuc2lnbmVkIGxv
+bmcgYXJjaF9jcHVfaWQpICJpbmRleDogJWQgaWQ6ICVsdSINCj4gPiAra3ZtX2NyZWF0ZV92Y3B1
+KGludCBjcHVfaW5kZXgsIHVuc2lnbmVkIGxvbmcgYXJjaF9jcHVfaWQpICJjcmVhdGluZyBLVk0g
+Y3B1OiBjcHVfaW5kZXg6ICVkIGFyY2ggdmNwdS1pZDogJWx1Ig0KPiA+ICtrdm1fZ2V0X3ZjcHUo
+dW5zaWduZWQgbG9uZyBhcmNoX2NwdV9pZCkgInVucGFya2luZyBLVk0gdmNwdTogYXJjaCB2Y3B1
+LWlkOiAlbHUiDQo+ID4gK2t2bV9kZXN0cm95X3ZjcHUoaW50IGNwdV9pbmRleCwgdW5zaWduZWQg
+bG9uZyBhcmNoX2NwdV9pZCkgImRlc3Ryb3kgdmNwdTogY3B1X2luZGV4OiAlZCBhcmNoIHZjcHUt
+aWQ6ICVsdSINCj4gPiAra3ZtX3BhcmtfdmNwdShpbnQgY3B1X2luZGV4LCB1bnNpZ25lZCBsb25n
+IGFyY2hfY3B1X2lkKSAicGFya2luZyBLVk0gdmNwdTogY3B1X2luZGV4OiAlZCBhcmNoIHZjcHUt
+aWQ6ICVsdSINCj4gDQo+IEkgZG9uJ3QgdGhpbmsgd2UgbmVlZCB0aGUgZHVwbGljYXRlIGlkZW50
+aWZpZXJzIGxpa2UgImNyZWF0aW5nIEtWTSBjcHUiDQo+IHNpbmNlIHRoZSBldmVudCBuYW1lIGNh
+biBzZXJ2ZSB0aGUgcHVycG9zZS4gQmVzaWRlcywgdGhlIHBhcmFtZXRlcnMNCj4gYXJlIGRlc2Ny
+aXB0aXZlIGJ5ICJpbmRleDogJWQgaWQ6ICVsdSIsIHVzZWQgYnkga3ZtX2luaXRfdmNwdSgpLiBX
+ZSBqdXN0DQo+IG5lZWQgdG8gZm9sbG93IHRoYXQgcGF0dGVybi4gT3RoZXJ3aXNlLCBpbmNvbnNp
+c3RlbnQgb3V0cHV0IHdpbGwgYmUgcHJpbnRlZA0KPiBieSBrdm1faW5pdF92Y3B1KCkgYW5kIGt2
+bV9nZXRfdmNwdSgpLiBTbyBJIHdvdWxkIGNoYW5nZSB0aGVtIGxpa2UgYmVsb3c6DQo+IA0KPiBr
+dm1faW5pdF92Y3B1KGludCBjcHVfaW5kZXgsIHVuc2lnbmVkIGxvbmcgYXJjaF9jcHVfaWQpICJp
+bmRleDogJWQgaWQ6ICVsdSINCj4ga3ZtX2NyZWF0ZV92Y3B1KGludCBjcHVfaW5kZXgsIHVuc2ln
+bmVkIGxvbmcgYXJjaF9jcHVfaWQpICJpbmRleDogJWQgaWQ6ICVsdSINCj4ga3ZtX2dldF92Y3B1
+KHVuc2lnbmVkIGxvbmcgYXJjaF9jcHVfaWQpICJpZDogJWx1Ig0KPiBrdm1fZGVzdHJveV92Y3B1
+KGludCBjcHVfaW5kZXgsIHVuc2lnbmVkIGxvbmcgYXJjaF9jcHVfaWQpICJpbmRleDogJWQgaWQ6
+ICVsdSINCj4ga3ZtX3BhcmtfdmNwdShpbnQgY3B1X2luZGV4LCB1bnNpZ25lZCBsb25nIGFyY2hf
+Y3B1X2lkKSAiaW5kZXg6ICVkIGlkOiAlbHUiDQoNCk5vIHByb2JsZW0uIFdpbGwgZml4DQoNCk9u
+bHkgZXhlY3V0ZWQgYmVsb3cgdG8gY2hlY2sgZm9yIG5ldyB0cmFjZSBjb3VudGVyczoNClFlbXU+
+IGluZm8gdHJhY2UtZXZlbnRzDQoNCg0KVGhhbmtzDQpTYWxpbC4NCg0K

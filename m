@@ -1,105 +1,256 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp227386ejc;
-        Wed, 11 Oct 2023 09:58:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFeI1qjuPMoDumPejASpbJL7zVfxegJgCUKL2a+w5ylBiI5FjsUzgqA85Aw/7S7mE2VqZHG
-X-Received: by 2002:a17:902:db06:b0:1c4:2ca5:8b7c with SMTP id m6-20020a170902db0600b001c42ca58b7cmr21522684plx.61.1697043483997;
-        Wed, 11 Oct 2023 09:58:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697043483; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp323667ejc;
+        Wed, 11 Oct 2023 12:45:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGkwD5kGiJ3OuqqlPYS6fSQvsjhK/hJVT0xVonNrUQry8FEkz0WaLpjYqAXLKMIh6xvhX3n
+X-Received: by 2002:a1c:7907:0:b0:405:409e:1fcb with SMTP id l7-20020a1c7907000000b00405409e1fcbmr16483502wme.5.1697053500108;
+        Wed, 11 Oct 2023 12:45:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697053500; cv=none;
         d=google.com; s=arc-20160816;
-        b=qgDFALkeUxNFSm4knI/4BFwS8T+4j/sxKCcOVQlEmlf0748Gm7HmTyXGxokb6kY/AJ
-         HxROuqN3+jyVkSouPxPcI4hZM+xfFOWRmrYVrJO+CJfbvnb+dSmzZKSiWDJqJzxQlFv6
-         4s4MQbTuol30HixemCSOlIqaUgefOEP5n2BqcBd4DEAHjsri1g4wxrzDXQW32GYmSEWV
-         wIQlDTnZdSFkKkHyJ4H1amQ5XlA0e5IZ5YUUIMVRDT5BZYqYC+ftMzSogfjzhwI8JCKQ
-         sGRYwQ0C12S9n9Fr/nStIYH3uk9mP4fzHWiBFgt/vOE0s60cKhsk8uiS+D1hsTpONXfi
-         hYOQ==
+        b=nKCGwEIiaEggUdYiNjtiP9Ju8hN2BPb+Wwac1NvpR94lsF83JMbTg30gY76kfGuGPV
+         TAmkw9NtLxk79G/lcdVdlkeiqgWfZpWrjGQn/YmrxV2FB/ascraLp4XQ6oOirxLMDN61
+         Iqgt+N+P8p/34OOiiM3ZQ3L1zQM2h07/DzboI56L22/d5dreQf99TYcQHt4lEn26jOHE
+         QiQugqXOdIQKIBEsCFO5Tie3hy1iI6KiUGTv+6Gu8EhPHozSL/YTRpYJD4oQiXwNB4+j
+         SdWkmeO87GpRc456dMvltQpeDxLjjFtEUyAMVzVEjBUBJYem0X0SnKtgOPRcAFtBA2Hp
+         miHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=fkd/lp0Vv0yoio+oUWwxCt/5XMxl17GEKqk4n4pj0nM=;
-        fh=d3IJm+ZxwSl9KZqvnG2kYCeA8E9nvhcF9D+T4HRJtcU=;
-        b=GyTZ6uEw8ugkUN/aNGJDESaHIlvkbq7oLbabyFO7Xl5UUvTsHlsi0njHcpFfDM5Loz
-         NLh7rRfbzRWrqOjbReTG6f5KuBPx0UQVfhaVB+aMBT/byPjNYgZXamHkYKiR/FVj56Hw
-         zc3tjD66HQUI1tL6I7dywRmrKowHiIrMaqMHLFULb4Z2XdGevl3pgehyjUgMIstDWMpi
-         Z/LHyhqz6T50LUSa8VCQE4ffz6mFIqN1y73n4iEo0k8I/Ee3uDrTVfz4MeGEd5fi2wZZ
-         lrg+AFzjvolHHQpggJdUGS03/pYyoVeqUejLQuO0kN3i20a/DwKZPSUP5KFQa2zLsYnj
-         D79g==
+        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=nxiJBFcwt0it4Sy7aNrUlB/Y5N6T3P4W4VpSHc9Z7jg=;
+        fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
+        b=nbC7IRyF8ubw09JovGpQpCh6Xz+ZSzV3g9RmgiEstDoO+tGPdAWmGsR1h4Q1aX/KlS
+         jGdDS3LBqttSdZcNR/avfTKPV4QsFLIX0s5MgBjf4U66W+ZKHbjSSXPknD/IWNMNSXV0
+         jqVySIn25hBsJj2n4eXYX/vYLE49H06qTiQ38Sz3/hhNdAhvCTIac3d3sTeBiGFXfl6n
+         ygY1BEr9jZjujdxmaKzUl+7VkcscD9LIcaymkXEsmH6MpZG5ajGx3pxW3khRvFPnL78N
+         pMhuobYmE7xAYvkZdfhx5PUsTWEmusOQMVX/6Ia8t/+3p/z1QloZkyzBNogXbe8mFMCv
+         lXoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b="B/EnV9RG";
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <quic_svaddagi@quicinc.com>
-Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com. [205.220.168.131])
-        by mx.google.com with ESMTPS id e6-20020a170902cf4600b001c7345bc007si94860plg.486.2023.10.11.09.58.02
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Oct 2023 09:58:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) client-ip=205.220.168.131;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id u7-20020a05600c00c700b004051008190esi9114063wmm.205.2023.10.11.12.44.59
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 11 Oct 2023 12:45:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b="B/EnV9RG";
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39BErI86020533;
-	Wed, 11 Oct 2023 16:58:00 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
- cc : subject : message-id : reply-to : references : mime-version :
- content-type : in-reply-to; s=qcppdkim1;
- bh=fkd/lp0Vv0yoio+oUWwxCt/5XMxl17GEKqk4n4pj0nM=;
- b=B/EnV9RGymRObZta6os3OfM7Ky2zqXem1oNJa5Rdwe/JbN+B3/XK1TJKzlD3Nt/sZcqD
- gvPJ71tMMFjqCqDzqFMrT5ADzkI5fP8Xy2n2lW4nRQesGsBq3xDoFK3VqmWUplQAhkeh
- EkVcLwW0z9mgaFcck+kkcq1DCkxQo/W6hGb/LonyAXQFprHAljyEWq0rQQ1k2RMVxfd5
- gEpcna1dAcqWt9/KXafNerQ1R9tM+R+Pm8zP/mh5gJG3qvK/t0lgGR4+VlA1D3h1um7a
- iJxXWNnosCSwVDYCt0UZkzskjKLzNjz2EmIIFmMygR1PL0l2TLSm6NF9rH/HZ5GsuRbT Mw== 
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3tnstys031-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 11 Oct 2023 16:58:00 +0000
-Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39BGvxMu008954
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 11 Oct 2023 16:57:59 GMT
-Received: from quicinc.com (10.80.80.8) by nalasex01b.na.qualcomm.com
- (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Wed, 11 Oct
- 2023 09:57:55 -0700
-Date: Wed, 11 Oct 2023 22:27:51 +0530
-From: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-To: <peter.maydell@linaro.org>, <alex.bennee@linaro.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <quic_tsoni@quicinc.com>, <quic_pheragu@quicinc.com>,
-        <quic_eberman@quicinc.com>, <quic_yvasi@quicinc.com>,
-        <quic_cvanscha@quicinc.com>, <quic_mnalajal@quicinc.com>
-Subject: Re: [RFC/PATCH v0 02/12] update-linux-headers: Include gunyah.h
-Message-ID: <20231011165751.GA1130358@quicinc.com>
-Reply-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
- <20231011165234.1323725-3-quic_svaddagi@quicinc.com>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.207])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S5NSf3nkHz67PTQ;
+	Thu, 12 Oct 2023 03:41:54 +0800 (CST)
+Received: from A190218597.china.huawei.com (10.126.169.226) by
+ lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Wed, 11 Oct 2023 20:44:40 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
+	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<linuxarm@huawei.com>
+Subject: [PATCH V5 1/9] accel/kvm: Extract common KVM vCPU {creation,parking} code
+Date: Wed, 11 Oct 2023 20:43:47 +0100
+Message-ID: <20231011194355.15628-2-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.8.3
+In-Reply-To: <20231011194355.15628-1-salil.mehta@huawei.com>
+References: <20231011194355.15628-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
-In-Reply-To: <20231011165234.1323725-3-quic_svaddagi@quicinc.com>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01b.na.qualcomm.com (10.47.209.197)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: 0HzssX4kQ_e3kw7Iwdu_A-FnFXtUrynu
-X-Proofpoint-GUID: 0HzssX4kQ_e3kw7Iwdu_A-FnFXtUrynu
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-11_12,2023-10-11_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0 mlxscore=0
- bulkscore=0 malwarescore=0 suspectscore=0 priorityscore=1501
- impostorscore=0 mlxlogscore=777 lowpriorityscore=0 clxscore=1015
- spamscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2309180000 definitions=main-2310110149
-X-TUID: AiU+eLIistMc
+Content-Type: text/plain
+X-Originating-IP: [10.126.169.226]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ lhrpeml500001.china.huawei.com (7.191.163.213)
+X-CFilter-Loop: Reflected
+X-TUID: kDT7Cly2uAoz
 
-* Srivatsa Vaddagiri <quic_svaddagi@quicinc.com> [2023-10-11 16:52:24]:
+KVM vCPU creation is done once during the initialization of the VM when Qemu
+thread is spawned. This is common to all the architectures.
 
-> One of the subsequent versions of the patch is expected to be merged
-> upstream soon, after this this change to 'update-linux-headers' can be
+Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
+corresponding KVM vCPU object in the Host KVM is not destroyed and its
+representative KVM vCPU object/context in Qemu is parked.
 
-Sorry about the typo, will be fixed in next version!
+Refactor common logic so that some APIs could be reused by vCPU Hotplug code.
 
-s/this this/which, this
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+---
+ accel/kvm/kvm-all.c    | 64 ++++++++++++++++++++++++++++++++----------
+ accel/kvm/trace-events |  4 +++
+ include/sysemu/kvm.h   | 16 +++++++++++
+ 3 files changed, 69 insertions(+), 15 deletions(-)
 
-> run against the main Linux kernel source repository from kernel.org.
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index ff1578bb32..0dcaa15276 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -137,6 +137,7 @@ static QemuMutex kml_slots_lock;
+ #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
+ 
+ static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
++static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id);
+ 
+ static inline void kvm_resample_fd_remove(int gsi)
+ {
+@@ -320,14 +321,53 @@ err:
+     return ret;
+ }
+ 
++void kvm_park_vcpu(CPUState *cpu)
++{
++    struct KVMParkedVcpu *vcpu;
++
++    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
++
++    vcpu = g_malloc0(sizeof(*vcpu));
++    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
++    vcpu->kvm_fd = cpu->kvm_fd;
++    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
++}
++
++int kvm_create_vcpu(CPUState *cpu)
++{
++    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
++    KVMState *s = kvm_state;
++    int kvm_fd;
++
++    trace_kvm_create_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
++
++    /* check if the KVM vCPU already exist but is parked */
++    kvm_fd = kvm_get_vcpu(s, vcpu_id);
++    if (kvm_fd < 0) {
++        /* vCPU not parked: create a new KVM vCPU */
++        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
++        if (kvm_fd < 0) {
++            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu", vcpu_id);
++            return kvm_fd;
++        }
++    }
++
++    cpu->kvm_fd = kvm_fd;
++    cpu->kvm_state = s;
++    cpu->vcpu_dirty = true;
++    cpu->dirty_pages = 0;
++    cpu->throttle_us_per_full = 0;
++
++    return 0;
++}
++
+ static int do_kvm_destroy_vcpu(CPUState *cpu)
+ {
+     KVMState *s = kvm_state;
+     long mmap_size;
+-    struct KVMParkedVcpu *vcpu = NULL;
+     int ret = 0;
+ 
+-    DPRINTF("kvm_destroy_vcpu\n");
++    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+ 
+     ret = kvm_arch_destroy_vcpu(cpu);
+     if (ret < 0) {
+@@ -353,10 +393,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+         }
+     }
+ 
+-    vcpu = g_malloc0(sizeof(*vcpu));
+-    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
+-    vcpu->kvm_fd = cpu->kvm_fd;
+-    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
++    kvm_park_vcpu(cpu);
+ err:
+     return ret;
+ }
+@@ -377,6 +414,8 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
+         if (cpu->vcpu_id == vcpu_id) {
+             int kvm_fd;
+ 
++            trace_kvm_get_vcpu(vcpu_id);
++
+             QLIST_REMOVE(cpu, node);
+             kvm_fd = cpu->kvm_fd;
+             g_free(cpu);
+@@ -384,7 +423,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
+         }
+     }
+ 
+-    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
++    return -ENOENT;
+ }
+ 
+ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+@@ -395,19 +434,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+ 
+     trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+ 
+-    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
++    ret = kvm_create_vcpu(cpu);
+     if (ret < 0) {
+-        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
++        error_setg_errno(errp, -ret,
++                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
+                          kvm_arch_vcpu_id(cpu));
+         goto err;
+     }
+ 
+-    cpu->kvm_fd = ret;
+-    cpu->kvm_state = s;
+-    cpu->vcpu_dirty = true;
+-    cpu->dirty_pages = 0;
+-    cpu->throttle_us_per_full = 0;
+-
+     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
+     if (mmap_size < 0) {
+         ret = mmap_size;
+diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
+index 399aaeb0ec..cdd0c95c09 100644
+--- a/accel/kvm/trace-events
++++ b/accel/kvm/trace-events
+@@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) "dev fd %d, type 0x%x, arg %p"
+ kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable to retrieve ONEREG %" PRIu64 " from KVM: %s"
+ kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable to set ONEREG %" PRIu64 " to KVM: %s"
+ kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
++kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
++kvm_get_vcpu(unsigned long arch_cpu_id) "id: %lu"
++kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
++kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+ kvm_irqchip_commit_routes(void) ""
+ kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
+ kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index ee9025f8e9..740686ab60 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -465,6 +465,22 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
+ int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
+                                        hwaddr *phys_addr);
+ 
++/**
++ * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
++ * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
++ *
++ * @returns: 0 when success, errno (<0) when failed.
++ */
++int kvm_create_vcpu(CPUState *cpu);
++
++/**
++ * kvm_park_vcpu - Park Qemu KVM vCPU context
++ * @cpu: QOM CPUState object for which Qemu KVM vCPU context has to be parked.
++ *
++ * @returns: none
++ */
++void kvm_park_vcpu(CPUState *cpu);
++
+ #endif /* NEED_CPU_H */
+ 
+ void kvm_cpu_synchronize_state(CPUState *cpu);
+-- 
+2.34.1

@@ -1,176 +1,569 @@
-Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp518067ejr;
-        Tue, 10 Oct 2023 18:04:10 -0700 (PDT)
-X-Received: by 2002:a05:6122:1d47:b0:49d:eeed:3ed5 with SMTP id gd7-20020a0561221d4700b0049deeed3ed5mr14975425vkb.14.1696986250406;
-        Tue, 10 Oct 2023 18:04:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1696986250; cv=none;
+Received: by 2002:a17:906:6d0c:b0:9b2:89ee:1eb8 with SMTP id m12csp554559ejr;
+        Tue, 10 Oct 2023 19:52:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHi20K9cjzlvE5XR6gbx4dy4o9rh3tyysNVDVw12UYGhYkv0eFY2YrVmOORDKwDtArhXz1b
+X-Received: by 2002:a05:620a:17a5:b0:775:77a5:f20b with SMTP id ay37-20020a05620a17a500b0077577a5f20bmr16755092qkb.59.1696992767001;
+        Tue, 10 Oct 2023 19:52:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696992766; cv=none;
         d=google.com; s=arc-20160816;
-        b=vERZYzASzi5qaLQwSAJNGCQBTBcWiUBXBtKKJSGanuGwj+ZefcMghQoDT9o/WSezrL
-         aDCEzUGVwlMHvaIEivER+nCcUsUrUb47nHiWNNv1hTaBkNqzL0gyXgKvAq5hWLHwh9rb
-         ohLAXK/HcaRpQ2BwbDAjBiLbekiN2EXwP/lJRE59MXTDf5hwa2/oMjCjduuaPUDbH3n1
-         M3ZBfcWdGor7S2XaT8Xz1ZuhV/nJtQFNM6zOV85UOB2LS8wt8Jf//4PdRwdtEiRctefT
-         wD6MpWBIeI2hawddz9nv/rlOPlVRH9SFTUG32eM734D0HLp1LrlNkwnfQP5CFxZMm9Lj
-         Se3Q==
+        b=AxDWUohmAqnBfW/nOnQA/U4erNQlOdqYiEWywm7AOhDHKt51ZYoxA4jXoIrd7W9EjO
+         zGwLUFRT5qXYYSQ1nLVxjS6fG9KYZBJ0RcbQ28nixRTXsfWhE//gCWsRTUQXIPNeZpo0
+         nio4aOucGm7ntNkFnWMmlgUyuEIEj9hohyGUNH3Ol4IuuiOR5B4GYyQULLfx0RplFpDq
+         VSymK2fqG2EPcmXqxtIcI2KN6xsZ4U15+amZ0Y/1l41l/EgVdEAnmGGsyUe22lR+6sPB
+         auoiLxIp3NRm6YRghDNY12Ib8Vytf3+HQ1JVBzVo2/gD19OEFi9eiGPMwl5V76wGA/50
+         Bo5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=aqO5ka7tR9qZcNKmHJAXn+ExW6wHOnY5HZ1B8d6xlA0=;
-        fh=cqk238ux3/GdOijP7fp8WGbp8VqG0EAAdwsLvgVM+lA=;
-        b=J24AYG2O39ZLToMZzjbPnChvaxGB7lAhFxo2XpnXTxpBEFL7VeEEqdNsLQueInAJN2
-         kHAN2u4AP/jtd72kJQfuZuXJ58N5R6AyhOrEibRBP2ZI43/RwWFniNfUFH60qZdBpSLF
-         U4Gz24jMM/q1ijouvcFDsUJSJB7jo248kQrFkDSsi+8MBxgBg/1TLyIv+rU0qLv19LF8
-         s2rh79uoNnXFOfYPoebV/3mL+GNxGe+4Pikhcp+a/5YgdYb9X7TJrOH+7a8qqcujWXMM
-         qbs8wd4TOoWWJ23ar3IT2H0ZkauE+rtDFMS2VpnDdBYb5N102jbzHllOKj7WbkLp9gvg
-         W1sA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=33xj00Bmeuf/H5XoNg3GsoWMvW3XVhcp3MPmgeBUBRw=;
+        fh=RrTLZV0A5IZHRs0gL1etM0WUwmKqocsoR+7SZbDKYTk=;
+        b=ljFdJwCaRR+iikExeE0TumHlZsLcYPErizhHkec0S9c9oJ7UfGpI0Kq/IP7X4Io1jf
+         eCznbe4KHB/EaZV7XT3+I/c1F7qAubaTLoKST+anl8w542YysMdHZWMaWAcNk2B8XdSs
+         rmpFFCdxZ4ZnNWAKfZt3xDIlZITES6ewnaFL6Tl/0cJVrhnyYJd9lPel/2thJ3wsavIy
+         Ss5Dzj60ViwGdhMLN/WoJIuQpjr4Yg+f+sOpuhNXOHKZvpAH/WVoYBxY4PIKuM+QT8Ez
+         YrjMki2oqHnSPg5k8tgkfarPwkj+x948SuS988oj5sOH9onVy5NQUj3TIc6HahTd8xna
+         UCuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=c1HJ424E;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alistair23@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k186-20020a1fecc3000000b0049ab760c198sor2262253vkh.2.2023.10.10.18.04.10
-        (Google Transport Security);
-        Tue, 10 Oct 2023 18:04:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m7-20020a05620a24c700b00773c2e5bbfbsi8974525qkn.530.2023.10.10.19.52.46
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 10 Oct 2023 19:52:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=c1HJ424E;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696986249; x=1697591049; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aqO5ka7tR9qZcNKmHJAXn+ExW6wHOnY5HZ1B8d6xlA0=;
-        b=c1HJ424E3Ii23xZXHypHHB3ykVwEhRrMOgE8S6ZJxlYSKapaCNpYX2xtyz0U9VrLzZ
-         Yq91xquZxymw+c55EiQ5H6DKS1wDTJ5OgZruPUL89+EkoQhwPFJ6x2Z2SLUJTJfiCOB+
-         F25kqpg0vgfiCpHTxb2z0/J94Oq9iv3SrT8IXPD1SvO9UoBduv1Hg7VCxI3G+jMx79SP
-         9Rek11AW3VN0ibfJMeVgX0G2reSZ4JkwxLgAYAdx2gWQC4jCTniqwguDX2ABLPX8wcTQ
-         H4T58hJsF/56lIXoH3D8qMbwa9KympHhgfVZ86C3oMnfWIDIGzGtJ3T3w6QX8UD2HG50
-         RH6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696986249; x=1697591049;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aqO5ka7tR9qZcNKmHJAXn+ExW6wHOnY5HZ1B8d6xlA0=;
-        b=HLQvWnpaKonKZ+OS9PRnvDGkDptXXDntZt+bYfOwxkKK8idB4xG6xc7gSJ6PVsqtWQ
-         eqnLbNuYavujVQA1UOXziRn6xShUDiPBKw0wDY6wiFTkg/HhNU1uls1/u4NwoOMZJSWV
-         d+ubSBPWvB4QXyNVvD7TbDYkhfEPNbA0GHb6+8xWzo2700I6uYYLdREDgO7XbIk16Z43
-         Q9NWLMS7XqOxw989+JRgrXUPYfV6VWNsMMrs/PrxI5dWn0zx7/fX/z/ogYmtSxEGqIIT
-         f9eEf0xPFqzizjStB2j4BF1dvpg+fgy8rNRyraF6sE/ipuGJp3VImgicGOi+GYEEnsNW
-         MDrg==
-X-Gm-Message-State: AOJu0YwJYzJOCgDz5FpLGu0rH2rTlGk8Fg01NBJeveHea7R5RqNWdUO9
-	Q3CqAh8TS9h/ZBq+yutLt9CtvGhrYYHPd3nSSBd5jfnVjVZysA==
-X-Google-Smtp-Source: AGHT+IE+dECs0/kWr7vwAr7Wy9VndFb7DLF3LT2g8gzD4c35dqPtmKLYacBfQzZPQpjsSy45eTmlKRIHhMi98CmdBdM=
-X-Received: by 2002:a1f:c9c1:0:b0:49d:3e4c:6168 with SMTP id
- z184-20020a1fc9c1000000b0049d3e4c6168mr15264409vkf.7.1696986249500; Tue, 10
- Oct 2023 18:04:09 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qqPKp-0005Xb-8C; Tue, 10 Oct 2023 22:52:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhiwei_liu@linux.alibaba.com>)
+ id 1qqPKn-0005Wy-Oh; Tue, 10 Oct 2023 22:52:29 -0400
+Received: from out30-111.freemail.mail.aliyun.com ([115.124.30.111])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhiwei_liu@linux.alibaba.com>)
+ id 1qqPKj-0006yj-Kb; Tue, 10 Oct 2023 22:52:29 -0400
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R211e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=ay29a033018045176;
+ MF=zhiwei_liu@linux.alibaba.com; NM=1; PH=DS; RN=43; SR=0;
+ TI=SMTPD_---0VtuL3TB_1696992726; 
+Received: from 30.221.100.88(mailfrom:zhiwei_liu@linux.alibaba.com
+ fp:SMTPD_---0VtuL3TB_1696992726) by smtp.aliyun-inc.com;
+ Wed, 11 Oct 2023 10:52:08 +0800
+Message-ID: <348eaf9c-9fb6-4674-b324-c3f3017f1851@linux.alibaba.com>
+Date: Wed, 11 Oct 2023 10:51:06 +0800
 MIME-Version: 1.0
-References: <20231009164104.369749-1-alex.bennee@linaro.org> <20231009164104.369749-17-alex.bennee@linaro.org>
-In-Reply-To: <20231009164104.369749-17-alex.bennee@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 11 Oct 2023 11:03:42 +1000
-Message-ID: <CAKmqyKN86xUqKMjd6U=2pno962DnMNVVRzfJCycT=S_62+PXVw@mail.gmail.com>
-Subject: Re: [PATCH 16/25] target/arm: Remove references to gdb_has_xml
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Brad Smith <brad@comstyle.com>, 
-	Radoslaw Biernacki <rad@semihalf.com>, David Hildenbrand <david@redhat.com>, Cleber Rosa <crosa@redhat.com>, 
-	Ilya Leoshkevich <iii@linux.ibm.com>, qemu-riscv@nongnu.org, 
-	Daniel Henrique Barboza <danielhb413@gmail.com>, Alexandre Iooss <erdnaxe@crans.org>, 
-	Nicholas Piggin <npiggin@gmail.com>, Bin Meng <bin.meng@windriver.com>, 
-	Leif Lindholm <quic_llindhol@quicinc.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Eduardo Habkost <eduardo@habkost.net>, Alistair Francis <alistair.francis@wdc.com>, qemu-ppc@nongnu.org, 
-	John Snow <jsnow@redhat.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-arm@nongnu.org, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Peter Maydell <peter.maydell@linaro.org>, Yanan Wang <wangyanan55@huawei.com>, 
-	Weiwei Li <liweiwei@iscas.ac.cn>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Beraldo Leal <bleal@redhat.com>, 
-	Yoshinori Sato <ysato@users.sourceforge.jp>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, Song Gao <gaosong@loongson.cn>, 
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-s390x@nongnu.org, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: X7f+EmV8YAus
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 04/18] target: Declare FOO_CPU_TYPE_NAME/SUFFIX in
+ 'cpu-qom.h'
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: David Hildenbrand <david@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Song Gao <gaosong@loongson.cn>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-arm@nongnu.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Paolo Bonzini <pbonzini@redhat.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-riscv@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Bin Meng <bin.meng@windriver.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, Marek Vasut
+ <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-ppc@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Laurent Vivier <laurent@vivier.eu>, Stafford Horne <shorne@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, Chris Wulff <crwulff@gmail.com>,
+ Sergio Lopez <slp@redhat.com>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-s390x@nongnu.org
+References: <20231010092901.99189-1-philmd@linaro.org>
+ <20231010092901.99189-5-philmd@linaro.org>
+From: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
+In-Reply-To: <20231010092901.99189-5-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=115.124.30.111;
+ envelope-from=zhiwei_liu@linux.alibaba.com;
+ helo=out30-111.freemail.mail.aliyun.com
+X-Spam_score_int: -98
+X-Spam_score: -9.9
+X-Spam_bar: ---------
+X-Spam_report: (-9.9 / 5.0 requ) BAYES_00=-1.9, ENV_AND_HDR_SPF_MATCH=-0.5,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UNPARSEABLE_RELAY=0.001,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eb0ahlzQBB/I
 
-On Tue, Oct 10, 2023 at 3:52=E2=80=AFAM Alex Benn=C3=A9e <alex.bennee@linar=
-o.org> wrote:
+
+On 2023/10/10 17:28, Philippe Mathieu-Daudé wrote:
+> Hegerogeneous code needs access to the FOO_CPU_TYPE_NAME()
+> macro to resolve target CPU types.
+
+Hi Philippe,
+
+I don't understand why should we use FOO_CPU_TYPE_NAME macro to resolve 
+target CPU types? In my opinion, we should pass the
+CPU typename from command line for heterogeneous case.
+
+Could you make it clearer how should we use FOO_CPU_TYPE_NAME macro to 
+resolve target CPU types in heterogeneous case?
+
+Thanks,
+Zhiwei
+
+> Move the declaration
+> (along with the required FOO_CPU_TYPE_SUFFIX) to "cpu-qom.h".
 >
-> From: Akihiko Odaki <akihiko.odaki@daynix.com>
->
-> GDB has XML support since 6.7 which was released in 2007.
-> It's time to remove support for old GDB versions without XML support.
->
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Message-Id: <20230912224107.29669-10-akihiko.odaki@daynix.com>
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  target/arm/gdbstub.c | 32 ++------------------------------
->  1 file changed, 2 insertions(+), 30 deletions(-)
+>   target/alpha/cpu-qom.h   | 5 ++++-
+>   target/alpha/cpu.h       | 2 --
+>   target/avr/cpu-qom.h     | 5 ++++-
+>   target/avr/cpu.h         | 2 --
+>   target/cris/cpu-qom.h    | 5 ++++-
+>   target/cris/cpu.h        | 2 --
+>   target/i386/cpu-qom.h    | 3 +++
+>   target/i386/cpu.h        | 2 --
+>   target/m68k/cpu-qom.h    | 5 ++++-
+>   target/m68k/cpu.h        | 2 --
+>   target/mips/cpu-qom.h    | 3 +++
+>   target/mips/cpu.h        | 2 --
+>   target/rx/cpu-qom.h      | 5 ++++-
+>   target/rx/cpu.h          | 2 --
+>   target/s390x/cpu-qom.h   | 5 ++++-
+>   target/s390x/cpu.h       | 2 --
+>   target/sh4/cpu-qom.h     | 5 ++++-
+>   target/sh4/cpu.h         | 2 --
+>   target/sparc/cpu-qom.h   | 5 ++++-
+>   target/sparc/cpu.h       | 2 --
+>   target/tricore/cpu-qom.h | 5 +++++
+>   target/tricore/cpu.h     | 2 --
+>   target/xtensa/cpu-qom.h  | 5 ++++-
+>   target/xtensa/cpu.h      | 2 --
+>   24 files changed, 47 insertions(+), 33 deletions(-)
 >
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index 8fc8351df7..b7ace24bfc 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -46,21 +46,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray=
- *mem_buf, int n)
->          /* Core integer register.  */
->          return gdb_get_reg32(mem_buf, env->regs[n]);
->      }
-> -    if (n < 24) {
-> -        /* FPA registers.  */
-> -        if (gdb_has_xml()) {
-> -            return 0;
-> -        }
-> -        return gdb_get_zeroes(mem_buf, 12);
-> -    }
-> -    switch (n) {
-> -    case 24:
-> -        /* FPA status register.  */
-> -        if (gdb_has_xml()) {
-> -            return 0;
-> -        }
-> -        return gdb_get_reg32(mem_buf, 0);
-> -    case 25:
-> +    if (n =3D=3D 25) {
->          /* CPSR, or XPSR for M-profile */
->          if (arm_feature(env, ARM_FEATURE_M)) {
->              return gdb_get_reg32(mem_buf, xpsr_read(env));
-> @@ -100,21 +86,7 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t =
-*mem_buf, int n)
->          env->regs[n] =3D tmp;
->          return 4;
->      }
-> -    if (n < 24) { /* 16-23 */
-> -        /* FPA registers (ignored).  */
-> -        if (gdb_has_xml()) {
-> -            return 0;
-> -        }
-> -        return 12;
-> -    }
-> -    switch (n) {
-> -    case 24:
-> -        /* FPA status register (ignored).  */
-> -        if (gdb_has_xml()) {
-> -            return 0;
-> -        }
-> -        return 4;
-> -    case 25:
-> +    if (n =3D=3D 25) {
->          /* CPSR, or XPSR for M-profile */
->          if (arm_feature(env, ARM_FEATURE_M)) {
->              /*
-> --
-> 2.39.2
->
->
+> diff --git a/target/alpha/cpu-qom.h b/target/alpha/cpu-qom.h
+> index 1f200724b6..d596d1b69f 100644
+> --- a/target/alpha/cpu-qom.h
+> +++ b/target/alpha/cpu-qom.h
+> @@ -1,5 +1,5 @@
+>   /*
+> - * QEMU Alpha CPU
+> + * QEMU Alpha CPU QOM header (target agnostic)
+>    *
+>    * Copyright (c) 2012 SUSE LINUX Products GmbH
+>    *
+> @@ -27,6 +27,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(AlphaCPU, AlphaCPUClass, ALPHA_CPU)
+>   
+> +#define ALPHA_CPU_TYPE_SUFFIX "-" TYPE_ALPHA_CPU
+> +#define ALPHA_CPU_TYPE_NAME(model) model ALPHA_CPU_TYPE_SUFFIX
+> +
+>   /**
+>    * AlphaCPUClass:
+>    * @parent_realize: The parent class' realize handler.
+> diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+> index e2a467ec17..ba0d9e3468 100644
+> --- a/target/alpha/cpu.h
+> +++ b/target/alpha/cpu.h
+> @@ -428,8 +428,6 @@ enum {
+>   
+>   void alpha_translate_init(void);
+>   
+> -#define ALPHA_CPU_TYPE_SUFFIX "-" TYPE_ALPHA_CPU
+> -#define ALPHA_CPU_TYPE_NAME(model) model ALPHA_CPU_TYPE_SUFFIX
+>   #define CPU_RESOLVING_TYPE TYPE_ALPHA_CPU
+>   
+>   void alpha_cpu_list(void);
+> diff --git a/target/avr/cpu-qom.h b/target/avr/cpu-qom.h
+> index 01ea5f160b..a810d6dc09 100644
+> --- a/target/avr/cpu-qom.h
+> +++ b/target/avr/cpu-qom.h
+> @@ -1,5 +1,5 @@
+>   /*
+> - * QEMU AVR CPU
+> + * QEMU AVR CPU QOM header (target agnostic)
+>    *
+>    * Copyright (c) 2016-2020 Michael Rolnik
+>    *
+> @@ -28,6 +28,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(AVRCPU, AVRCPUClass, AVR_CPU)
+>   
+> +#define AVR_CPU_TYPE_SUFFIX "-" TYPE_AVR_CPU
+> +#define AVR_CPU_TYPE_NAME(name) (name AVR_CPU_TYPE_SUFFIX)
+> +
+>   /**
+>    *  AVRCPUClass:
+>    *  @parent_realize: The parent class' realize handler.
+> diff --git a/target/avr/cpu.h b/target/avr/cpu.h
+> index 4ce22d8e4f..d3f0cc65d4 100644
+> --- a/target/avr/cpu.h
+> +++ b/target/avr/cpu.h
+> @@ -28,8 +28,6 @@
+>   #error "AVR 8-bit does not support user mode"
+>   #endif
+>   
+> -#define AVR_CPU_TYPE_SUFFIX "-" TYPE_AVR_CPU
+> -#define AVR_CPU_TYPE_NAME(name) (name AVR_CPU_TYPE_SUFFIX)
+>   #define CPU_RESOLVING_TYPE TYPE_AVR_CPU
+>   
+>   #define TCG_GUEST_DEFAULT_MO 0
+> diff --git a/target/cris/cpu-qom.h b/target/cris/cpu-qom.h
+> index 431a1d536a..02a5b589b8 100644
+> --- a/target/cris/cpu-qom.h
+> +++ b/target/cris/cpu-qom.h
+> @@ -1,5 +1,5 @@
+>   /*
+> - * QEMU CRIS CPU
+> + * QEMU CRIS CPU QOM header (target agnostic)
+>    *
+>    * Copyright (c) 2012 SUSE LINUX Products GmbH
+>    *
+> @@ -27,6 +27,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(CRISCPU, CRISCPUClass, CRIS_CPU)
+>   
+> +#define CRIS_CPU_TYPE_SUFFIX "-" TYPE_CRIS_CPU
+> +#define CRIS_CPU_TYPE_NAME(name) (name CRIS_CPU_TYPE_SUFFIX)
+> +
+>   /**
+>    * CRISCPUClass:
+>    * @parent_realize: The parent class' realize handler.
+> diff --git a/target/cris/cpu.h b/target/cris/cpu.h
+> index 676b8e93ca..1af7ae5ef9 100644
+> --- a/target/cris/cpu.h
+> +++ b/target/cris/cpu.h
+> @@ -242,8 +242,6 @@ enum {
+>   /* CRIS uses 8k pages.  */
+>   #define MMAP_SHIFT TARGET_PAGE_BITS
+>   
+> -#define CRIS_CPU_TYPE_SUFFIX "-" TYPE_CRIS_CPU
+> -#define CRIS_CPU_TYPE_NAME(name) (name CRIS_CPU_TYPE_SUFFIX)
+>   #define CPU_RESOLVING_TYPE TYPE_CRIS_CPU
+>   
+>   /* MMU modes definitions */
+> diff --git a/target/i386/cpu-qom.h b/target/i386/cpu-qom.h
+> index 2350f4ae60..78207c0a7c 100644
+> --- a/target/i386/cpu-qom.h
+> +++ b/target/i386/cpu-qom.h
+> @@ -32,6 +32,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(X86CPU, X86CPUClass, X86_CPU)
+>   
+> +#define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
+> +#define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
+> +
+>   typedef struct X86CPUModel X86CPUModel;
+>   
+>   /**
+> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+> index e1875466b9..862e4f1ff5 100644
+> --- a/target/i386/cpu.h
+> +++ b/target/i386/cpu.h
+> @@ -2241,8 +2241,6 @@ void cpu_x86_update_dr7(CPUX86State *env, uint32_t new_dr7);
+>   /* hw/pc.c */
+>   uint64_t cpu_get_tsc(CPUX86State *env);
+>   
+> -#define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
+> -#define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
+>   #define CPU_RESOLVING_TYPE TYPE_X86_CPU
+>   
+>   #ifdef TARGET_X86_64
+> diff --git a/target/m68k/cpu-qom.h b/target/m68k/cpu-qom.h
+> index 0ec7750a92..7192ecd71f 100644
+> --- a/target/m68k/cpu-qom.h
+> +++ b/target/m68k/cpu-qom.h
+> @@ -1,5 +1,5 @@
+>   /*
+> - * QEMU Motorola 68k CPU
+> + * QEMU Motorola 68k CPU QOM header (target agnostic)
+>    *
+>    * Copyright (c) 2012 SUSE LINUX Products GmbH
+>    *
+> @@ -27,6 +27,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(M68kCPU, M68kCPUClass, M68K_CPU)
+>   
+> +#define M68K_CPU_TYPE_SUFFIX "-" TYPE_M68K_CPU
+> +#define M68K_CPU_TYPE_NAME(model) model M68K_CPU_TYPE_SUFFIX
+> +
+>   /*
+>    * M68kCPUClass:
+>    * @parent_realize: The parent class' realize handler.
+> diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+> index 20afb0c94d..ae144ebc2f 100644
+> --- a/target/m68k/cpu.h
+> +++ b/target/m68k/cpu.h
+> @@ -563,8 +563,6 @@ enum {
+>       ACCESS_DATA  = 0x20, /* Data load/store access        */
+>   };
+>   
+> -#define M68K_CPU_TYPE_SUFFIX "-" TYPE_M68K_CPU
+> -#define M68K_CPU_TYPE_NAME(model) model M68K_CPU_TYPE_SUFFIX
+>   #define CPU_RESOLVING_TYPE TYPE_M68K_CPU
+>   
+>   #define cpu_list m68k_cpu_list
+> diff --git a/target/mips/cpu-qom.h b/target/mips/cpu-qom.h
+> index 0dffab453b..9c98ca1956 100644
+> --- a/target/mips/cpu-qom.h
+> +++ b/target/mips/cpu-qom.h
+> @@ -31,6 +31,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(MIPSCPU, MIPSCPUClass, MIPS_CPU)
+>   
+> +#define MIPS_CPU_TYPE_SUFFIX "-" TYPE_MIPS_CPU
+> +#define MIPS_CPU_TYPE_NAME(model) model MIPS_CPU_TYPE_SUFFIX
+> +
+>   /**
+>    * MIPSCPUClass:
+>    * @parent_realize: The parent class' realize handler.
+> diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+> index 5fddceff3a..6b026e6bcf 100644
+> --- a/target/mips/cpu.h
+> +++ b/target/mips/cpu.h
+> @@ -1303,8 +1303,6 @@ enum {
+>    */
+>   #define CPU_INTERRUPT_WAKE CPU_INTERRUPT_TGT_INT_0
+>   
+> -#define MIPS_CPU_TYPE_SUFFIX "-" TYPE_MIPS_CPU
+> -#define MIPS_CPU_TYPE_NAME(model) model MIPS_CPU_TYPE_SUFFIX
+>   #define CPU_RESOLVING_TYPE TYPE_MIPS_CPU
+>   
+>   bool cpu_type_supports_cps_smp(const char *cpu_type);
+> diff --git a/target/rx/cpu-qom.h b/target/rx/cpu-qom.h
+> index 1c8466a187..99fe771534 100644
+> --- a/target/rx/cpu-qom.h
+> +++ b/target/rx/cpu-qom.h
+> @@ -1,5 +1,5 @@
+>   /*
+> - * RX CPU
+> + * QEMU RX CPU QOM header (target agnostic)
+>    *
+>    * Copyright (c) 2019 Yoshinori Sato
+>    *
+> @@ -28,6 +28,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(RXCPU, RXCPUClass, RX_CPU)
+>   
+> +#define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
+> +#define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
+> +
+>   /*
+>    * RXCPUClass:
+>    * @parent_realize: The parent class' realize handler.
+> diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+> index f66754eb8a..f89d88a37f 100644
+> --- a/target/rx/cpu.h
+> +++ b/target/rx/cpu.h
+> @@ -114,8 +114,6 @@ struct ArchCPU {
+>       CPURXState env;
+>   };
+>   
+> -#define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
+> -#define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
+>   #define CPU_RESOLVING_TYPE TYPE_RX_CPU
+>   
+>   const char *rx_crname(uint8_t cr);
+> diff --git a/target/s390x/cpu-qom.h b/target/s390x/cpu-qom.h
+> index 00cae2b131..463fe16386 100644
+> --- a/target/s390x/cpu-qom.h
+> +++ b/target/s390x/cpu-qom.h
+> @@ -1,5 +1,5 @@
+>   /*
+> - * QEMU S/390 CPU
+> + * QEMU S/390 CPU QOM header (target agnostic)
+>    *
+>    * Copyright (c) 2012 SUSE LINUX Products GmbH
+>    *
+> @@ -27,6 +27,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(S390CPU, S390CPUClass, S390_CPU)
+>   
+> +#define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
+> +#define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
+> +
+>   typedef struct S390CPUModel S390CPUModel;
+>   typedef struct S390CPUDef S390CPUDef;
+>   
+> diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+> index 7bea7075e1..3e161862e5 100644
+> --- a/target/s390x/cpu.h
+> +++ b/target/s390x/cpu.h
+> @@ -810,8 +810,6 @@ void s390_set_qemu_cpu_model(uint16_t type, uint8_t gen, uint8_t ec_ga,
+>   
+>   
+>   /* helper.c */
+> -#define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
+> -#define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
+>   #define CPU_RESOLVING_TYPE TYPE_S390_CPU
+>   
+>   /* interrupt.c */
+> diff --git a/target/sh4/cpu-qom.h b/target/sh4/cpu-qom.h
+> index 89785a90f0..ed2de98949 100644
+> --- a/target/sh4/cpu-qom.h
+> +++ b/target/sh4/cpu-qom.h
+> @@ -1,5 +1,5 @@
+>   /*
+> - * QEMU SuperH CPU
+> + * QEMU SuperH CPU QOM header (target agnostic)
+>    *
+>    * Copyright (c) 2012 SUSE LINUX Products GmbH
+>    *
+> @@ -31,6 +31,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(SuperHCPU, SuperHCPUClass, SUPERH_CPU)
+>   
+> +#define SUPERH_CPU_TYPE_SUFFIX "-" TYPE_SUPERH_CPU
+> +#define SUPERH_CPU_TYPE_NAME(model) model SUPERH_CPU_TYPE_SUFFIX
+> +
+>   /**
+>    * SuperHCPUClass:
+>    * @parent_realize: The parent class' realize handler.
+> diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
+> index f75a235973..f44b3e5b25 100644
+> --- a/target/sh4/cpu.h
+> +++ b/target/sh4/cpu.h
+> @@ -252,8 +252,6 @@ int cpu_sh4_is_cached(CPUSH4State * env, target_ulong addr);
+>   
+>   void cpu_load_tlb(CPUSH4State * env);
+>   
+> -#define SUPERH_CPU_TYPE_SUFFIX "-" TYPE_SUPERH_CPU
+> -#define SUPERH_CPU_TYPE_NAME(model) model SUPERH_CPU_TYPE_SUFFIX
+>   #define CPU_RESOLVING_TYPE TYPE_SUPERH_CPU
+>   
+>   #define cpu_list sh4_cpu_list
+> diff --git a/target/sparc/cpu-qom.h b/target/sparc/cpu-qom.h
+> index 78bf00b9a2..86b24a254a 100644
+> --- a/target/sparc/cpu-qom.h
+> +++ b/target/sparc/cpu-qom.h
+> @@ -1,5 +1,5 @@
+>   /*
+> - * QEMU SPARC CPU
+> + * QEMU SPARC CPU QOM header (target agnostic)
+>    *
+>    * Copyright (c) 2012 SUSE LINUX Products GmbH
+>    *
+> @@ -31,6 +31,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(SPARCCPU, SPARCCPUClass, SPARC_CPU)
+>   
+> +#define SPARC_CPU_TYPE_SUFFIX "-" TYPE_SPARC_CPU
+> +#define SPARC_CPU_TYPE_NAME(model) model SPARC_CPU_TYPE_SUFFIX
+> +
+>   typedef struct sparc_def_t sparc_def_t;
+>   /**
+>    * SPARCCPUClass:
+> diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+> index b3a98f1d74..924e83b9ce 100644
+> --- a/target/sparc/cpu.h
+> +++ b/target/sparc/cpu.h
+> @@ -650,8 +650,6 @@ hwaddr cpu_get_phys_page_nofault(CPUSPARCState *env, target_ulong addr,
+>   #endif
+>   #endif
+>   
+> -#define SPARC_CPU_TYPE_SUFFIX "-" TYPE_SPARC_CPU
+> -#define SPARC_CPU_TYPE_NAME(model) model SPARC_CPU_TYPE_SUFFIX
+>   #define CPU_RESOLVING_TYPE TYPE_SPARC_CPU
+>   
+>   #define cpu_list sparc_cpu_list
+> diff --git a/target/tricore/cpu-qom.h b/target/tricore/cpu-qom.h
+> index 612731daa0..5368689bd9 100644
+> --- a/target/tricore/cpu-qom.h
+> +++ b/target/tricore/cpu-qom.h
+> @@ -1,4 +1,6 @@
+>   /*
+> + * QEMU TriCore CPU QOM header (target agnostic)
+> + *
+>    *  Copyright (c) 2012-2014 Bastian Koppelmann C-Lab/University Paderborn
+>    *
+>    * This library is free software; you can redistribute it and/or
+> @@ -26,6 +28,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(TriCoreCPU, TriCoreCPUClass, TRICORE_CPU)
+>   
+> +#define TRICORE_CPU_TYPE_SUFFIX "-" TYPE_TRICORE_CPU
+> +#define TRICORE_CPU_TYPE_NAME(model) model TRICORE_CPU_TYPE_SUFFIX
+> +
+>   struct TriCoreCPUClass {
+>       /*< private >*/
+>       CPUClass parent_class;
+> diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+> index a357b573f2..fc09590a4f 100644
+> --- a/target/tricore/cpu.h
+> +++ b/target/tricore/cpu.h
+> @@ -270,8 +270,6 @@ static inline void cpu_get_tb_cpu_state(CPUTriCoreState *env, vaddr *pc,
+>       *flags = new_flags;
+>   }
+>   
+> -#define TRICORE_CPU_TYPE_SUFFIX "-" TYPE_TRICORE_CPU
+> -#define TRICORE_CPU_TYPE_NAME(model) model TRICORE_CPU_TYPE_SUFFIX
+>   #define CPU_RESOLVING_TYPE TYPE_TRICORE_CPU
+>   
+>   /* helpers.c */
+> diff --git a/target/xtensa/cpu-qom.h b/target/xtensa/cpu-qom.h
+> index 419c7d8e4a..710ffa0403 100644
+> --- a/target/xtensa/cpu-qom.h
+> +++ b/target/xtensa/cpu-qom.h
+> @@ -1,5 +1,5 @@
+>   /*
+> - * QEMU Xtensa CPU
+> + * QEMU Xtensa CPU QOM header (target agnostic)
+>    *
+>    * Copyright (c) 2012 SUSE LINUX Products GmbH
+>    * All rights reserved.
+> @@ -36,6 +36,9 @@
+>   
+>   OBJECT_DECLARE_CPU_TYPE(XtensaCPU, XtensaCPUClass, XTENSA_CPU)
+>   
+> +#define XTENSA_CPU_TYPE_SUFFIX "-" TYPE_XTENSA_CPU
+> +#define XTENSA_CPU_TYPE_NAME(model) model XTENSA_CPU_TYPE_SUFFIX
+> +
+>   typedef struct XtensaConfig XtensaConfig;
+>   
+>   /**
+> diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+> index c6bbef1e5d..20ea6826e4 100644
+> --- a/target/xtensa/cpu.h
+> +++ b/target/xtensa/cpu.h
+> @@ -588,8 +588,6 @@ G_NORETURN void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+>   
+>   #define cpu_list xtensa_cpu_list
+>   
+> -#define XTENSA_CPU_TYPE_SUFFIX "-" TYPE_XTENSA_CPU
+> -#define XTENSA_CPU_TYPE_NAME(model) model XTENSA_CPU_TYPE_SUFFIX
+>   #define CPU_RESOLVING_TYPE TYPE_XTENSA_CPU
+>   
+>   #if TARGET_BIG_ENDIAN

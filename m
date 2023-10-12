@@ -1,158 +1,41 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp624782ejc;
-        Thu, 12 Oct 2023 00:35:42 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IErL+0frZQZmA4elgpebe1a491F2F2D9KItWIRCPfLJxJvKdjR9NsqaGCCeitUlXVHObgO+
-X-Received: by 2002:a05:6214:21ea:b0:66d:182a:c083 with SMTP id p10-20020a05621421ea00b0066d182ac083mr526635qvj.9.1697096141850;
-        Thu, 12 Oct 2023 00:35:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697096141; cv=none;
-        d=google.com; s=arc-20160816;
-        b=XBEzkUm8BEcehp/cic0pyj6B8Vam9YNxQXvfSJ9KLYsOFARsubmpxRgHVxgB0RLuaU
-         VXP7ON0f4BXRQwDyEpgoPfHWEh3Btby+jAl9xYDqpy1iVPX7krCo3aOTTTo2Wp7BzRgQ
-         n8HXGVgq1QriV496OBLwzg9oT+PvBke+cy4FruTFPZ+3pWVQcz1SHC64Qb7ygUkzmOSB
-         Zch6xPdGEfrdfY3BHBo7dXKQHPyPHoRYguIN8XTseZrPrfvP9iXwfpGYS6hjHHrUOjzy
-         j4Bk0zq6ctBbNVESTlxVDvrsdUyKtRIhK9iNx/5zXCecY/u3IMaR2CjtRdxi3HTOKzi9
-         ShYQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=I8fBOeR8xrv+qgc0LrhF3Z38u3u6aHlmcVco6jUBuCk=;
-        fh=9sLdO8mIlVMgJFoi+NkvWYO/GaH9VV3T7QN4rNGlUfY=;
-        b=uFMCLa1RKrML8H5uROODWTsb/Q+F9TMd3xaUL3aJA9NoW9mqesHimEo33GAlGnlMov
-         /YNHzl/6QVlE6lmcikuw9PF4Rxyvx2Qe5fBQtJtoJ89WR06mv6f04CaNyzWOEmJEV9JN
-         prFE5BZwUdIB8SxDxYjkPn3VOnpHfqy3RkCvYEcKHrVD2IybuPQ9yDNZUecb0nSwGQW9
-         6EOceaISAt+4jd8eqEkzUMBN+qLYSGrkPSk4kEqhIURyO6P+HyB6JrL/NtMzOmuNIcIC
-         J6uEGmwZe7RV4IFT2JK5bGOxjmyFRqW3kIJSxjKObng/TSpUuskVjRzi3wfNjnAH9QqQ
-         lw5g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dghjCGfo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14-20020a05620a29ce00b007756dfea0ccsi11103022qkp.90.2023.10.12.00.35.41
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Oct 2023 00:35:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dghjCGfo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qqqDu-0005mj-Ox; Thu, 12 Oct 2023 03:35:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qqqDs-0005lg-Jz
- for qemu-arm@nongnu.org; Thu, 12 Oct 2023 03:35:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qqqDq-0004ww-Tm
- for qemu-arm@nongnu.org; Thu, 12 Oct 2023 03:35:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697096106;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=I8fBOeR8xrv+qgc0LrhF3Z38u3u6aHlmcVco6jUBuCk=;
- b=dghjCGfonV5489ngMgKZS6u1qp4MMkiRbQyiIE8ip06jwt+IoEPdhN7k1xABg2UVidBr9F
- /uqFUXYcQ7DV/KhyYpImewqRKOtghRsqnbvpWBRdKIxvCNzB+DPUffbCo9O1diMgyBM6Fr
- LLKeEPMFQakm5XPN6FBmECk8J6R3C0U=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-193-YSJbBOiWNW6Ak6fYct1DVw-1; Thu, 12 Oct 2023 03:35:00 -0400
-X-MC-Unique: YSJbBOiWNW6Ak6fYct1DVw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6FB01805940;
- Thu, 12 Oct 2023 07:35:00 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.225])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0A03C1C060AE;
- Thu, 12 Oct 2023 07:34:58 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-Subject: [PATCH] hw/arm: Move raspberrypi-fw-defs.h to the include/hw/arm/
- folder
-Date: Thu, 12 Oct 2023 09:34:58 +0200
-Message-ID: <20231012073458.860187-1-thuth@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id k23-20020a5d5257000000b003177074f830sm17551898wrc.59.2023.10.12.00.54.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Oct 2023 00:54:07 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 484011FFBB;
+	Thu, 12 Oct 2023 08:54:07 +0100 (BST)
+References: <20231012073458.860187-1-thuth@redhat.com>
+User-agent: mu4e 1.11.22; emacs 29.1.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH] hw/arm: Move raspberrypi-fw-defs.h to the
+ include/hw/arm/ folder
+Date: Thu, 12 Oct 2023 08:54:00 +0100
+In-reply-to: <20231012073458.860187-1-thuth@redhat.com>
+Message-ID: <875y3cnun4.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MFiwp5AJzuuQ
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 3k/9NDPVK4qr
 
-The file is obviously related to the raspberrypi machine, so
-it should reside in hw/arm/ instead of hw/misc/. And while we're
-at it, also adjust the wildcard in MAINTAINERS so that it covers
-this file, too.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS                                    | 2 +-
- include/hw/{misc => arm}/raspberrypi-fw-defs.h | 0
- hw/misc/bcm2835_property.c                     | 2 +-
- 3 files changed, 2 insertions(+), 2 deletions(-)
- rename include/hw/{misc => arm}/raspberrypi-fw-defs.h (100%)
+Thomas Huth <thuth@redhat.com> writes:
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 71af9633c6..b55aaa2fe2 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -897,7 +897,7 @@ S: Odd Fixes
- F: hw/arm/raspi.c
- F: hw/arm/raspi_platform.h
- F: hw/*/bcm283*
--F: include/hw/arm/raspi*
-+F: include/hw/arm/rasp*
- F: include/hw/*/bcm283*
- F: docs/system/arm/raspi.rst
- 
-diff --git a/include/hw/misc/raspberrypi-fw-defs.h b/include/hw/arm/raspberrypi-fw-defs.h
-similarity index 100%
-rename from include/hw/misc/raspberrypi-fw-defs.h
-rename to include/hw/arm/raspberrypi-fw-defs.h
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index 4ed9faa54a..ff55a4e2cd 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -12,7 +12,7 @@
- #include "migration/vmstate.h"
- #include "hw/irq.h"
- #include "hw/misc/bcm2835_mbox_defs.h"
--#include "hw/misc/raspberrypi-fw-defs.h"
-+#include "hw/arm/raspberrypi-fw-defs.h"
- #include "sysemu/dma.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
--- 
-2.41.0
+> The file is obviously related to the raspberrypi machine, so
+> it should reside in hw/arm/ instead of hw/misc/. And while we're
+> at it, also adjust the wildcard in MAINTAINERS so that it covers
+> this file, too.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

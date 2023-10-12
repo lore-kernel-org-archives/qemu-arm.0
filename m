@@ -1,278 +1,260 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp794982ejc;
-        Thu, 12 Oct 2023 06:07:25 -0700 (PDT)
-X-Received: by 2002:a17:902:f54c:b0:1c1:e818:1e76 with SMTP id h12-20020a170902f54c00b001c1e8181e76mr31727557plf.6.1697116045600;
-        Thu, 12 Oct 2023 06:07:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697116045; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp798502ejc;
+        Thu, 12 Oct 2023 06:11:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH2MGVDs99bkXFt6Yo5E2+nKlNjNjvOAJuGQY1Xm9Gn0/APrEo6hdbjSgKW/+hYwHuOkAMr
+X-Received: by 2002:a05:620a:9ce:b0:773:b50f:c6f3 with SMTP id y14-20020a05620a09ce00b00773b50fc6f3mr25148653qky.52.1697116286081;
+        Thu, 12 Oct 2023 06:11:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1697116286; cv=pass;
         d=google.com; s=arc-20160816;
-        b=DVyaLBa+rw72JIkLPhToR1eabMB3Kdj2t1n7ajkvmyKLnqdU1Yd8nuL7B/vzQn0Gqm
-         1UrubiqYofHWGIZnpaN4xfFLs839UOxVcPZ7QsVkAHErq5xn2yKPTiqDLCsKDFCm5BM4
-         mnsIwKB/4m5Q8XbzZQy4rj2VFyllboCerIUxg6tGWufUeViSR1CGMsBJGvm3PqOTvdps
-         iRM81U9NFwNyzR2kNNWGlRFltM0ppYIL7FqX+RWAlXjbbqIdlO1U60vOHdPKGRyImJWH
-         yGujTs25CpcRLNlO412GDJf9mJiGdisnsVdZBN0/c4ZwRaQ0ezNGW2mERaxwTW8FXVsG
-         gfNg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YNOwbY4r2y9Vu7MFsYpfzT/FYrv6FXwws8lwE8s/vgY=;
-        fh=lW42IFciQRcgi2TpW76JzOW6yI8fNIuUaAjcfrG2GK8=;
-        b=aiqKUedY/mR1dAibiUsuLBYNqXYAoKIkcoswgq4T6XLP/S0EUPsFeRZHHvGtWZysgY
-         xWPmcVNILty9yJStYpR8w9+fG++M/xmEKbI+YLIsyZ4dwLc+oxE8sCnbhZ9XukU9DhKI
-         gi0V680BYSozHKMl/lC+g8zOd0OIaF1vmtSvDr3e3lJQvP5Qu5ney6pnQwyZuOjBX5yI
-         Mkv34O7xAWvPkH8RM9qEBCBsKW1wdr23/28n2dDyegcHf/mjWXajS03h4AsNAgd1G75U
-         JirMr22PLdpku9Bs5V9D4vqrtpt8rOVrY9/U4MuQOdGzK/D3LA7PHP4luX+HiUr4gl3h
-         sFmQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=DR5sCHG8;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f19-20020a170902e99300b001c9b1de5ae4sor868845plb.7.2023.10.12.06.07.25
+        b=hk5ADYVdVHSt1ay21oTjzaoIiqWyAI48XrAvW3YeB2SvoXypISca3GcJP2+KIHqy57
+         oWGCpzi/M92k6lBSmGE22yW/hjzjj+4TZdPRMq6FchH2h/5BEKrxEwGrUn/3qwh4E+6c
+         VP58yQIwygwoDhYm9Vky9qePsYmNCHVGtEIG8ei3KYtbCm+HoMdpnTdFPZOflj5S9Q1e
+         yVr14BHFDpT1VutOaOjiSyl5rQ/WjT9MPy02GlGsIpt54ylJALF688tojhhZ7hkxleOU
+         zsee1AswmVL5DOsZ8z1Wf/uhhAzI8UFy+k1FWtoeB4Mzk6SLo25cIwA8D8KBKhVskBNc
+         ydKw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:subject:user-agent:date:message-id
+         :dkim-signature;
+        bh=2LxWHhP7CeJTOFntoUAFSdVwYRsWAd4vddGDi3lXfBY=;
+        fh=D43IoKQGSxp8SJ0NadXxKCbCff4+D5MTPganKkOvv3E=;
+        b=UQKFsedGTBOagtOX3gb5t4VytP8uUTAKFCB7qL4bFq2uCdEIayyE9yv0iR4gbjiid5
+         C3VRK+QpwIaiEPKKyjwcWLdyNZqZLXpom+t5gtAVitq7zW0r8CfaNSGOHMdFPsgg9IJf
+         N6rKWcdNU0JkKUzxUFH5+SkIL4XV+bLrd8+I6uo5VHcAms4hSHD39Sh1q+sUG6gKnZz7
+         rkW3q5cVN20RMmbDox4r5Sn6V4GBv5cmTjxcjrB+oir1lOHkSsgkDQdP0hjxHWoKpc5L
+         OhIncyjJzyyWau3rUcNaiqZNo0e6um9SKvkv2Mk21PcbTdIUmnSPM0Tlts2wQaGphSXo
+         E+8A==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@quarkslab.com header.s=selector1 header.b=myXqiGPB;
+       arc=pass (i=1 spf=pass spfdomain=quarkslab.com dkim=pass dkdomain=quarkslab.com dmarc=pass fromdomain=quarkslab.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=quarkslab.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q2-20020a05620a0d8200b0077701e962f1si8594159qkl.244.2023.10.12.06.11.25
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 12 Oct 2023 06:07:25 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Oct 2023 06:11:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=DR5sCHG8;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1697116045; x=1697720845; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YNOwbY4r2y9Vu7MFsYpfzT/FYrv6FXwws8lwE8s/vgY=;
-        b=DR5sCHG8thGz9C8Kk4gBwM6/J9w7tp+Em0eJArDI5hFKFBz3+t0xe/MZ2X+d1MMyNB
-         6Jm1CzRX+2OAodGbDDsay0sm0FIkET4K4l3YT0fF27B+KLN3gDd4kvElqW0wZw3yniIC
-         NVAa5opCiMbHdxzi8w6ad7t30wV2cJ4Qr5oFw1U6lRxEQq9mNTnESNaM/5tMaPXnCjcJ
-         13WCPWJBOzOxUdtEz/d0Vvh0NDq90Vh1TOAjQIwI8AdTipd2VD2tmKSRMzi5smU/SCsA
-         yaPzSNX5WGHd6d2FuTQFWQBzayVph9767EUE9kXa10ufrg/+Hd32fj/FPY4JlcYYz3yc
-         gCNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697116045; x=1697720845;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YNOwbY4r2y9Vu7MFsYpfzT/FYrv6FXwws8lwE8s/vgY=;
-        b=tVBCpgA3SvYQBI5b6q0FD19vxoufPPuU/O0xgg/y0Ya8YZJhQb7RkB+ARjqnIkwQEg
-         HBXQVlRDOJUMFiOAQZqLLgBBuhp3IMzYqir797cMoK536mIT+NVJwi9bLWcLPHoedCKD
-         g+nTWXkIGO5o1xgqA7KF/9W8gpItVgmnsdk+IpGTI+rey8MtwxQjSQXg+PxFhv1x6h+T
-         T1HDJJGF4xXuS6cQxuQE0gRNFiZtxyVavF/tXZI4tychT75z45Rme6iRKfnwjOjLuW3l
-         fZvPyQYlxOHEJ1Q6lTb0GLRWAXfoXltX92sqPq8Lc2AvL3F/RtgUZ7aL+pCIKuaCe7n2
-         TtsA==
-X-Gm-Message-State: AOJu0Yz0gyuAqAHb3KEcljy15hGMPLxee7N6305Htic3tZ2kYyjdcBT2
-	BczUs8UmAVXWdHD65JRBaoMgCBYmG+dsTfCq5XFVNg==
-X-Google-Smtp-Source: AGHT+IH19RhsyDwihEtxvL89i+24I71YuX25hAK+69NYIw3D8kohtMYMyhJUUu78JZUQk1Ci9tQHOA==
-X-Received: by 2002:a17:902:e74f:b0:1c9:d422:2833 with SMTP id p15-20020a170902e74f00b001c9d4222833mr6044316plf.29.1697116044837;
-        Thu, 12 Oct 2023 06:07:24 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from localhost ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with UTF8SMTPSA id x5-20020a056a00270500b006889511ab14sm11747920pfv.37.2023.10.12.06.07.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Oct 2023 06:07:24 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Mikhail Tyutin <m.tyutin@yadro.com>,
-	Aleksandr Anenkov <a.anenkov@yadro.com>,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
-	qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
-Subject: [PATCH v11 12/18] hw/core/cpu: Remove gdb_get_dynamic_xml member
-Date: Thu, 12 Oct 2023 22:06:06 +0900
-Message-ID: <20231012130616.7941-13-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231012130616.7941-1-akihiko.odaki@daynix.com>
-References: <20231012130616.7941-1-akihiko.odaki@daynix.com>
+       dkim=pass header.i=@quarkslab.com header.s=selector1 header.b=myXqiGPB;
+       arc=pass (i=1 spf=pass spfdomain=quarkslab.com dkim=pass dkdomain=quarkslab.com dmarc=pass fromdomain=quarkslab.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=quarkslab.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qqvRA-0007If-HD; Thu, 12 Oct 2023 09:09:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fcagnin@quarkslab.com>)
+ id 1qqu9k-0000Dx-5V; Thu, 12 Oct 2023 07:47:08 -0400
+Received: from mail-pr2fra01on20718.outbound.protection.outlook.com
+ ([2a01:111:f400:7e18::718]
+ helo=FRA01-PR2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fcagnin@quarkslab.com>)
+ id 1qqu9h-0002Au-OU; Thu, 12 Oct 2023 07:47:07 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=em5IR7ztLrLlUHQA2m99RhkQvxetmGLk1ma2HYX/OfL97w470Ec4I85PHNXzt3QWm4tSYbAeShRQhEa5iOHclhezMrzDc0t0WcgQI/7XNH5vmm2tjhcj5ZuxBhXJODBmbFukf1BgfaYetUr/rfpWaH59GpbQCybluQ0sw+eJuCkd40w9O4jFTZwcaISOoDBs7xpxVmUAXhFzyARfd4sFoUIe9HZ28dZ6ip+g3MPhYqDv2n/6rF58p8IkIoHTw5Jw4D6kjKW1p8Qz2OsQy330T5SgBP0w/5iIkRFJw8A5Dsv//i9HxNzeRBuVLmAkqTyCc71YuKQpfw8PZV3gdUir8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=2LxWHhP7CeJTOFntoUAFSdVwYRsWAd4vddGDi3lXfBY=;
+ b=CPskHCHL3ATBIzOCpt6zZlcMVOJWVyzyLSKhojGLTV9XzgKGnNzAF88eXMygoZMfLVxeuVjSBtOJxhEyRzMmqzwhuyrfwVIXJIfgOB+4DFNmRmtAzkCRgbqFeUVkvFJ3aEIUqcbEJ2MzNtCCM2T4xP3cnPfyy5cnNBGuMPB3xPbQXdtpgAFYJxVirYsKwR0R9auDZhM7je1wAs+1XjoD37s9SG37p9DhWi2QTNQtYgMdvjhfOrCdRR6h6ZaN262EckyY2EXOatgdQ/PtP1YsxBBxmVJz+SD/fjIoS+vNoJUjR+tP3A6L9oUoE7jOwjIcMO7izGOlJi079B80XJAQZA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=quarkslab.com; dmarc=pass action=none
+ header.from=quarkslab.com; dkim=pass header.d=quarkslab.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quarkslab.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2LxWHhP7CeJTOFntoUAFSdVwYRsWAd4vddGDi3lXfBY=;
+ b=myXqiGPB6EEBiUMPKv4plYVHR+KRK0QyHCTomPZ0P/4V3pDFAMXf1PVgLWMOaVNm2CGvo54yWlWaXxjsayzMF4ocuEDo6WVEAm4yAsZgit18YdtEzpP95nKw1RQoaH9YQdyT3QJz4fVfyT/MYku5A7Z4uYIbxay5DrvI+pHGWfB4RAuuD55sMSO6CofYH1M2H3bzE1EIlw3AzVjs3HTx/LaKQ+nQj4go2eflz5jCKaqCwuFkcSYgY8NOUrhmTFvwo1JtFrOA+fciNXwxIOCWay0P9oKwKv5miKzQpX86J47guRtVQz+Syfb5v6MunMYpolxJeuvWIWhlQFVVOQTalw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=quarkslab.com;
+Received: from PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:11c::6)
+ by PR1P264MB1918.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:192::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6863.45; Thu, 12 Oct
+ 2023 11:47:00 +0000
+Received: from PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM
+ ([fe80::f635:24b9:27c4:698e]) by PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM
+ ([fe80::f635:24b9:27c4:698e%4]) with mapi id 15.20.6863.043; Thu, 12 Oct 2023
+ 11:47:00 +0000
+Message-ID: <746bf183-d805-4e0d-8c5e-e989c5f46823@quarkslab.com>
+Date: Thu, 12 Oct 2023 13:46:58 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 12/12] hw/vmapple/vmapple: Add vmapple machine type
+Content-Language: en-US
+To: Alexander Graf <graf@amazon.com>, qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org,
+ Cameron Esfahani <dirty@apple.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Bernhard Beschow <shentey@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>
+References: <20230830161425.91946-1-graf@amazon.com>
+ <20230830161425.91946-13-graf@amazon.com>
+From: Francesco Cagnin <fcagnin@quarkslab.com>
+Autocrypt: addr=fcagnin@quarkslab.com; keydata=
+ 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
+ XooHsgHHeYUgSIqwlkS7PofS55M=
+In-Reply-To: <20230830161425.91946-13-graf@amazon.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: LO4P265CA0212.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:600:33a::12) To PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:102:11c::6)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: pkXThkVE/SyY
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PAYP264MB3320:EE_|PR1P264MB1918:EE_
+X-MS-Office365-Filtering-Correlation-Id: b2c9db08-e21b-47a2-2e94-08dbcb18f22b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: klDPqs573mW8GlH8q/k16ZIiO63FmrMhJINGupi1i1QVx4q60QO3tUVZiwb4a2sQsCfxdC39gQIiGN9wE8AZS2y+cZ1gHbdNeY1/xvYzA49YMPC46chtF976ZMu+KMxfCRAkS5CZwop0kSp1b3MgK1PaDmxwhyiyEf9R0kwBRO8UtESHn/cUJrW6hr1PrKveusYqBqICpJpbqZS1MbZQ2sU1JgF7qoZ+QB6SZ6rQ3bu9YpHCklVFlSQ19NqZeGwROPKp4m4U7QPWHJRbPsX8QN1RiNUO7uT7f+MsExj/YIvRDJ8gEH0Vza3hozxh7KM5XutkRssGTksjQSiC4yis0Fxw1zfD5Rw7MA0guSmNP+cllafrvndiVgMilJ+CSnj9KIb/u/p4zN/7oG4AVyHj5DdxKStU1iW6IJNfMDtZrBIKsLHDlRqo3R+oRk+MUDaN4qj+UuohD3PzajUDwkryKa33yKtESCOuWg28Ka9Zbybc9MmP2rgFfZr75iyAad2wLmCPLPS3jS+qB8H7qk7fW3pQiEvLvO2dtIgZF0fwTXXvIrpS02DoJD++Pr/JRwEjinBkWd4xgLy/f/XnJfO0bP/26wvgPwIWPvLkxQZ2E4b7NgN+REnevyyjFOPXQ9c4kJjzsWPokDHo8YGUfPKjRg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(13230031)(396003)(136003)(366004)(346002)(376002)(39840400004)(230922051799003)(451199024)(186009)(64100799003)(1800799009)(4744005)(2906002)(5660300002)(8936002)(8676002)(4326008)(7416002)(66476007)(316002)(66556008)(66946007)(54906003)(478600001)(41300700001)(6486002)(31686004)(6512007)(2616005)(6506007)(26005)(36756003)(31696002)(86362001)(38100700002)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UXBpbTU5cUd0ZWFQelJiTFprOEhKMnJYWHFQa1lVRXhHOVg4Z3h6VVFTZ0Fl?=
+ =?utf-8?B?VFpsT1F3MWxJQ1RGU1pYWE1vZTdMck4yM293b2xNN3dMOElQYm1TblY5SU5W?=
+ =?utf-8?B?YTJnSS9VSElDLzNFOXVOYzFtV01KdExRWkJrTkpLSVA0Z2FDOHZ6NTllV2Zx?=
+ =?utf-8?B?UGFGUzBGbkJ1MEQ5UXcxdTZWV2FCNExjdmdwMVQxc2JlZW55Mlp4SDFjdURj?=
+ =?utf-8?B?WGJNN2w1WFNMaVdoRHpsY2hScCtkaWpsYS9oK0tGMnNPd0FsQWZwV2J4VndO?=
+ =?utf-8?B?Y2xmN2NGY1FWMkhmR1hqUUcwUUpDdU4xM0lMNDZ4S1dOK3VwK3VROUphUS8y?=
+ =?utf-8?B?dlBZak9JRTVZK0RQVmlqeXp6YTBsdU1hSXh5VXI0NGUzSFlTblY3K2RSeEdv?=
+ =?utf-8?B?WmVHMXdiMnBSUHdCa0xiSnBzUTRNS3FMWDJObWQxdzlXeVBOdnFDV0FYT3M3?=
+ =?utf-8?B?ODBJdmlzTzVrMWNvdkd1KzBaeXN5Y2RlQnRpRlkxQnA1TzlObHVGWTN0Rmxu?=
+ =?utf-8?B?d2lEVWtSZzlpdkpTOWI4NGJ0VkRGdlhlNkY2M2U5VWhjclR6NUg1WXMvOFp4?=
+ =?utf-8?B?ZERHanI1YXRGdHZnY3ZvZEFhcjJGeGpjNS9QY0prUmFKTE4xMWRLRXRZeWZD?=
+ =?utf-8?B?WFRGY3VXTklPY2ZlSTVSdHo4WjY2UE0rTy9aVlRZZ2RhNDdLei90NFpxbjJV?=
+ =?utf-8?B?VXowWkNhOVZKZFJyV1cvbGsyRGx3SkV0MDI0UFBjNXBaSGo2Zm1MT0x4SmhJ?=
+ =?utf-8?B?YXM3Rk9XWEJLWWdkU0NncWUzVll3Ny81c3ZYOTVQNGV4blVNRHFxM3dvUGgw?=
+ =?utf-8?B?VnJidzdYSEMzcTdGWlZ5YTgwa0l2aXdyTmtZSHptMUJCcUJMdVJ3NFFGYTFL?=
+ =?utf-8?B?RjdTQWpMbDB0RDl3M0VJSWNzeWlhemRQd0FwSGIvRGhWS0NROU15Mk8wdU5v?=
+ =?utf-8?B?TitmZFVZSUFPK0xvYzk1dUNPbExXQjFlalpGVTlHTXA2WExzbGJYL1dGMTMr?=
+ =?utf-8?B?NFpjSkI0UnI3QUdjVHl6VUNWTTg2QkZZekVBN3dhRmMrR2U2SUg0dnFPRTVS?=
+ =?utf-8?B?ajUwbkxtbTlBVDRoSVltRjBZU0EwNE5tL3JvbVF0Q04vMTU1d3prNDNlVnIy?=
+ =?utf-8?B?R2wzR0JRT3RUL2g2MUpzNnNScWp3Uisyb29tNis2Tm5hUHNyejdnTUpzY2hQ?=
+ =?utf-8?B?VUFDRGllY01TUFVKV0k2S3dXSUI5VThlT2Nxb3VxanEvaDI3TlNFOU9rZVZm?=
+ =?utf-8?B?M1pZN3F5WEc4WFQrTG5QWTRWMEYwZFZJT0ZqMzJ0WEt0ZE5maVNKaXF6Z3k3?=
+ =?utf-8?B?RVF3alU4c2ZDTndiOTc2aHRYTFBhLzFMWWNhMm1QdUdmbU9tRXFDMzBXMUZ0?=
+ =?utf-8?B?Z2tpRXQvcG5sSUJVMXNZdDBsaURXd2dGbStCUDZ0MEhzSEVYaDZoc0R3Z0E2?=
+ =?utf-8?B?T3FSKzEzQjJlTy9aMDl2dDNHSjZiSjhTOE92dG9FYmJZaHU3QlNLUzFEZzBl?=
+ =?utf-8?B?cXpDQVhyTmpEblo5dGwzNkNOajA3UEY1MHFJWG44YUxaTmFPY0huTExJM1VX?=
+ =?utf-8?B?dUc4b01iUkJrTlJxZDJ3aktNWDNIdkR4T09FUTZwZCtYcHprU2k1NWFyVzNm?=
+ =?utf-8?B?MlZaZE9vYVE4RjAxOEVkNUowaWVtMUs1MzI3UUZ5cVB5eUFzNnYybWFtV2Ro?=
+ =?utf-8?B?cE9jTi9pbFlUL1lQaFBxQ2d5eEZRV2tGR3pzZlFEYVJQQVlEZFNtTHlKZ01u?=
+ =?utf-8?B?MjNuc3JrVUl0MU5kb25sVWxzRUJFQVNzTUZQMldyeUdMQjFuT05zZlFtdFJV?=
+ =?utf-8?B?cWdWa2hnU1JzT0d2eitpblkwK05MY1JjRWFmS210Tjh0THhpZmZuekFwMzdG?=
+ =?utf-8?B?djBoK1hzL21WdGxxUlFtOENjUnlaajl5dFNSd2VOcllDUCtqUmpOSEJQeVp1?=
+ =?utf-8?B?eWNnMHhHVmszVmN5V2xJMG9CQStvUXNsMHEvQTBQMVl6NmZ6N2huVGltbU9N?=
+ =?utf-8?B?aXNkUmhjUU83Rlk4UkZYMGx0U0xsblpLRWhRWmtyZm85R2YxckFDY2tDU1Zo?=
+ =?utf-8?B?U3BtZm04d1JmQWhiWkZRYVFyc1dIdXdiNTJ2K0hkeUg4YmJSN0RsM1BJN2VP?=
+ =?utf-8?Q?PJ3xb7UhROxGWSvOZdARlIaaO?=
+X-OriginatorOrg: quarkslab.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b2c9db08-e21b-47a2-2e94-08dbcb18f22b
+X-MS-Exchange-CrossTenant-AuthSource: PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Oct 2023 11:47:00.6818 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 6a0d73c7-78c3-4da6-8044-d2eae999a5c5
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: QgoQ4yVsY8Pq6uk8AAhP/oIHxWnMMOJxM7/ySOCArrFXGZhb++fyLPeAiX5I4UOnakKdd3AFjLSf3Q1P0gI4QQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PR1P264MB1918
+Received-SPF: pass client-ip=2a01:111:f400:7e18::718;
+ envelope-from=fcagnin@quarkslab.com;
+ helo=FRA01-PR2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 12 Oct 2023 09:08:58 -0400
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4pJZ1EBCp4tL
 
-This function is no longer used.
+Hi Alexander,
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- include/hw/core/cpu.h |  4 ----
- target/arm/cpu.h      |  6 ------
- target/ppc/cpu.h      |  1 -
- target/arm/cpu.c      |  1 -
- target/arm/gdbstub.c  | 18 ------------------
- target/ppc/cpu_init.c |  3 ---
- target/ppc/gdbstub.c  | 10 ----------
- target/riscv/cpu.c    | 14 --------------
- 8 files changed, 57 deletions(-)
+awesome work, thanks!
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 11d4b5cd0c..d2e70643f2 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -134,9 +134,6 @@ struct SysemuCPUOps;
-  *           before the insn which triggers a watchpoint rather than after it.
-  * @gdb_arch_name: Optional callback that returns the architecture name known
-  * to GDB. The caller must free the returned string with g_free.
-- * @gdb_get_dynamic_xml: Callback to return dynamically generated XML for the
-- *   gdb stub. Returns a pointer to the XML contents for the specified XML file
-- *   or NULL if the CPU doesn't have a dynamically generated content for it.
-  * @disas_set_info: Setup architecture specific components of disassembly info
-  * @adjust_watchpoint_address: Perform a target-specific adjustment to an
-  * address before attempting to match it against watchpoints.
-@@ -167,7 +164,6 @@ struct CPUClass {
- 
-     const char *gdb_core_xml_file;
-     const gchar * (*gdb_arch_name)(CPUState *cpu);
--    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
- 
-     void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 3702ddaab8..0e4f1d7d0c 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1137,12 +1137,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
- int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- 
--/* Returns the dynamically generated XML for the gdb stub.
-- * Returns a pointer to the XML contents for the specified XML file or NULL
-- * if the XML name doesn't match the predefined one.
-- */
--const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
--
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, DumpState *s);
- int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 84cdc3055f..1782b21edb 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1385,7 +1385,6 @@ int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
- #ifndef CONFIG_USER_ONLY
- hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu);
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
- #endif
- int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                                int cpuid, DumpState *s);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 6d9bf6a14e..e7fe11339b 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2392,7 +2392,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
-     cc->gdb_arch_name = arm_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->disas_set_info = arm_disas_set_info;
- 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index aa2c6c1bde..f9774b5547 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -463,24 +463,6 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs)
- #endif
- #endif /* CONFIG_TCG */
- 
--const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--
--    if (strcmp(xmlname, "system-registers.xml") == 0) {
--        return cpu->dyn_sysreg_feature.desc.xml;
--    } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
--        return cpu->dyn_svereg_feature.desc.xml;
--    } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
--        return cpu->dyn_m_systemreg_feature.desc.xml;
--#ifndef CONFIG_USER_ONLY
--    } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
--        return cpu->dyn_m_secextreg_feature.desc.xml;
--#endif
--    }
--    return NULL;
--}
--
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
- {
-     CPUState *cs = CPU(cpu);
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index af43e73af2..d8a992a45d 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7384,9 +7384,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
- #endif
- 
-     cc->gdb_num_core_regs = 71;
--#ifndef CONFIG_USER_ONLY
--    cc->gdb_get_dynamic_xml = ppc_gdb_get_dynamic_xml;
--#endif
- #ifdef USE_APPLE_GDB
-     cc->gdb_read_register = ppc_cpu_gdb_read_register_apple;
-     cc->gdb_write_register = ppc_cpu_gdb_write_register_apple;
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 2392625441..a20d5922dd 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -339,16 +339,6 @@ void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu)
- 
-     gdb_feature_builder_end(&builder);
- }
--
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
--{
--    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
--
--    if (strcmp(xml_name, "power-spr.xml") == 0) {
--        return pcc->gdb_spr.xml;
--    }
--    return NULL;
--}
- #endif
- 
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index d6278d59d5..2f07fc193f 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -1984,19 +1984,6 @@ static const gchar *riscv_gdb_arch_name(CPUState *cs)
-     }
- }
- 
--static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    RISCVCPU *cpu = RISCV_CPU(cs);
--
--    if (strcmp(xmlname, "riscv-csr.xml") == 0) {
--        return cpu->dyn_csr_feature.xml;
--    } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
--        return cpu->dyn_vreg_feature.xml;
--    }
--
--    return NULL;
--}
--
- #ifndef CONFIG_USER_ONLY
- static int64_t riscv_get_arch_id(CPUState *cs)
- {
-@@ -2174,7 +2161,6 @@ static void riscv_cpu_common_class_init(ObjectClass *c, void *data)
-     cc->get_arch_id = riscv_get_arch_id;
- #endif
-     cc->gdb_arch_name = riscv_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = riscv_gdb_get_dynamic_xml;
-     cc->tcg_ops = &riscv_tcg_ops;
- 
-     object_class_property_add(c, "mvendorid", "uint32", cpu_get_mvendorid,
--- 
-2.42.0
+I don't know if it's the most appropriate fix but to have the patch series
+working I had to add `select VMAPPLE_VIRTIO_BLK` to `hw/vmapple/Kconfig`:
+
+ >  config VMAPPLE
+ >      bool
+ >      depends on ARM && HVF
+ >      default y if ARM && HVF
+ >      imply PCI_DEVICES
+ >      select ARM_GIC
+ >      select PLATFORM_BUS
+ >      select PCI_EXPRESS
+ >      select PCI_EXPRESS_GENERIC_BRIDGE
+ >      select PL011 # UART
+ >      select PL031 # RTC
+ >      select PL061 # GPIO
+ >      select GPIO_PWR
+ >      select PVPANIC_MMIO
+ >      select VMAPPLE_AES
+ >      select VMAPPLE_BDIF
+ >      select VMAPPLE_CFG
+ >      select VMAPPLE_PVG
+ > +    select VMAPPLE_VIRTIO_BLK
+
+Otherwise QEMU raises the error `'vmapple-virtio-root' is not a valid device
+model name`.
+
+Francesco
+

@@ -1,158 +1,125 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp551686ejc;
-        Wed, 11 Oct 2023 21:43:41 -0700 (PDT)
-X-Received: by 2002:a17:907:2724:b0:9b2:8c37:82a with SMTP id d4-20020a170907272400b009b28c37082amr19123439ejl.35.1697085821656;
-        Wed, 11 Oct 2023 21:43:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697085821; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp554819ejc;
+        Wed, 11 Oct 2023 21:52:07 -0700 (PDT)
+X-Received: by 2002:a17:906:ce:b0:9b2:a078:4461 with SMTP id 14-20020a17090600ce00b009b2a0784461mr19106033eji.44.1697086327620;
+        Wed, 11 Oct 2023 21:52:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697086327; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vq8LLq5JykgwvTOK/Nn3a4iQxSn6T7Do83yLStAafiCXbyEAAIBAhiCTZRjc6blSMF
-         Isql8LATFOw3Phff28+U55xUUM8V8SLoD+w/qGgNjoe3e3NLX24lR43Ec8cpu8yFR3gB
-         3NHM8l3+g6f0CV+wWb+/gujACFBgWe84gVD+93bQRusdcdW8R0CfeRUYq0oetBrUjFSq
-         IaRqXzpaCDpPh/CLTivU0UnTrBps5I00gItU4uoXRqunF0OUg2SohW8kTymcqBDvFaCX
-         z+AySLKeTr0ngDYzkCHroIrhtGGTmpEjp2BtNuvlUXB08P1M97TFW66VMxGLh4cHhipb
-         0qpw==
+        b=cJqb5Ze7PdEltKg8R+q+II5qmB1t4tLS1bxd4JfAe85pwrC/ICZ+oaFgCNwas806y1
+         G5GP9Qv6hNDpcEeGuaLDnZI3DbZXHKA/KAp9A18xuJWhsSWmdx0b0+xQEK1m79YLdiIT
+         A3dQd9GLevIj5KqYg2Ocpsb42Fg5zQBFeAY51R+uFyjJQ1EZmQu+8WdobXYabmLqlfdR
+         bH21dWgpr/9GyzCfhCSjFMamerk0+XBbTmHBKly7HUmC5bJxcVxTBeSdJh4vlAx9HImA
+         lv/6MM8jSwZ3vfpOGFq5yGFEyffzi/XvwdVH+MSn9uPuH+84ZDf6SMBIHWldEZcbpiGb
+         52bQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=NsQdNAt772Lk3sYaY/eE2FLNruWxHL/eoU/amETLWU4=;
-        fh=tebFjQw8nyYXdpHWOtCSmNiXXYif6WEiSPQxtAL9eeQ=;
-        b=cZwunrR5DJPX9RBBw36PyD+ceE3i05fSoM0xkMUqs58Qnn36e8QSuafMh65eow8Lee
-         OxAYXCQAL9kWwAMI5zq4nQxyhbnQNzlIrbmbj7St6J2qtZpza8d4HREM//BkCgDNQo4C
-         p9wWRa/DIaaBFVnoNA1Cp+hfDB59nfDb+dFN6RpPZT6XoUhHMyPek8TR84clah5AKkgx
-         qNRH0J6ik2LAIqZKgXiFRilCjW7+goDuqYxSdxrgMI4+Owx+1pOEWkrnsodhJnD32i2N
-         /rR4V+v/WhT0Ur+9y7Flucs81h8C/lS+DPYxPmrWp6J0sxge8g5DSPHwv5mfXzYNxg8/
-         NaxA==
+        bh=rDelcTJFe8mOTTTdareous3udwOQBNDSUsx28o0UKnQ=;
+        fh=bnlHsjaKacMB3fDegpjr7nbD1bI6Dl8nlxls0R7wzq0=;
+        b=yJaCPMwJvJ3lXu98FhVDIHvRfZCXwrip2suRAniwS+p9iXsQ1Z/Ie2UoN0/wqd8EOR
+         jdlUQEkyj672xIbvTa2f5dQx8C+xt5wlRa5TtTsor6ILx8IDVFS2LDlqhwchOU5NE+Ub
+         bgNppczoF5ve8cyJ5tk8qs+Cq/2xcDy05aIWYZgqVthcGe/jFlTGAtR/xPsazstCVwGa
+         ddmmleOh2swVOcNx1tRmRVOZNaJooNtulljQjAv+XMfyeun7bmKL4f760quT5mNM3MS1
+         4Ce112UiNM/hkkv5/SQ9EXOwZd/TqDbJsK+N6bfK8jRbTr8nM2l50ehsQ7OsEAKlmCGD
+         e68g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CeWzz2RJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=U4ItcPA0;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ci17-20020a170907267100b009ae614ebfd2sor5572563ejc.1.2023.10.11.21.43.41
+        by mx.google.com with SMTPS id jg37-20020a170907972500b009b9f90579d9sor4962419ejc.20.2023.10.11.21.52.07
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 11 Oct 2023 21:43:41 -0700 (PDT)
+        Wed, 11 Oct 2023 21:52:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CeWzz2RJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=U4ItcPA0;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697085821; x=1697690621; darn=linaro.org;
+        d=linaro.org; s=google; t=1697086327; x=1697691127; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=NsQdNAt772Lk3sYaY/eE2FLNruWxHL/eoU/amETLWU4=;
-        b=CeWzz2RJ2ubsXAk+Ti2DHNiH8rje241l+AxHCphID5RdYe2wotyy+/xHmcFnLbOmNF
-         c1CxYf2FutHLxiAkbGAjqST4jZZm5sApHQzvXWTJqvEQiroAKUOBb7+3gcqpjcoMNj/A
-         VT2CNGfKXHfGs0wDbia41ZtqPEhUBtIxTXoygdebILQazyYzLU7vjuGgYH4Ew2/Il4pe
-         yEiRJHJyX8n0OSNwrVSqVKc9ey12dChaB8f/iSbD3oSowDgXUNio9ES1PYlV/576bgeQ
-         mpsYNuczFcOs3nRvOhn4SdsXHn7cH3F9zlmzApbp/zCSri3iwW2o1vJD3itqJYbVwioe
-         79Ww==
+        bh=rDelcTJFe8mOTTTdareous3udwOQBNDSUsx28o0UKnQ=;
+        b=U4ItcPA0WH7R1xXd1aa3TbmCJshTtG9pvsr4U72eQVk+fxLeqfCITzH83LPkrnE7O7
+         f+fXJ57K6p6F/1DyXfEYGgE1SH/8ja8yVaJp0xPliN9HROziPZbpkMsKl4VFB8imH7Q+
+         6k6DbkCUrutuzs4HDXES9cc9/dMDPed35zJ1JTNEo+Yashz0kFi90ZXEym+pnMC3gsDJ
+         lfd0QqOtpppwAImbrXt/Tua9P5c4h12j/W4upKVqgk2xNaClq8CGtBaPwJBN5nwDwO3o
+         LDefKo2aHXvu06gqU6IboPIJIqNEIg5oUJS4IM0JF8cF9feApkLb1WeHscbScSoBXBSn
+         EazQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697085821; x=1697690621;
+        d=1e100.net; s=20230601; t=1697086327; x=1697691127;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NsQdNAt772Lk3sYaY/eE2FLNruWxHL/eoU/amETLWU4=;
-        b=ruHInWi/7yd6MT/u5It1RpVIEpIVhEjkj85jJPf8QNT7zShgWLssRFryKF3ZT6cCxn
-         BIoxNMHZQeoBcJHAXtybI/ygUNqfXSHa60qXYl9cd85DH5fiqCE9Q91YfiO/sX4ynxAG
-         x8ox1+3iZym9pCaAmPcjwVQbg847iTth72xQR8A3+zNTTsv3s5vn6zvwT7jwaZc3Oodx
-         9Frrlc/QMQxgKvIzrFKRfpK7SN93A0RIIQUXM3Fg1bITrPwyzVIFy7exqtQ/PndrBhbK
-         7f6fYnk+Gwam0mMy2vAy4Ql7U+OgFAXfuLDQ6UtEZehcEvyR9Cb4DQN9iNyn0mq9sDYj
-         D9Gg==
-X-Gm-Message-State: AOJu0YynWRIdwMX7jKqSWmN3JumIaZffNvKFf3BOdpcfWhcIIy8FF7wt
-	QtZSlUMa/jKN9BPpWAz4ua4SiWxM
-X-Google-Smtp-Source: AGHT+IGIlo5zl7YzfkbZUbUX0S0sbo88NwmvU+qedr6hKf7evlCiDKmmKb8Mi9eP7OZWl4Pecf8n5Q==
-X-Received: by 2002:a17:907:1dd2:b0:9ae:406c:3425 with SMTP id og18-20020a1709071dd200b009ae406c3425mr21222384ejc.0.1697085821305;
-        Wed, 11 Oct 2023 21:43:41 -0700 (PDT)
+        bh=rDelcTJFe8mOTTTdareous3udwOQBNDSUsx28o0UKnQ=;
+        b=U4/mowoNe1e9LxGAlzDEFk7IYWRTukul+asHenyN75WhsSJA6m1viiNGRJx40io3yw
+         Gontjk33ws9RfPMGm+6EAjnR86EuWtQkvhvf7fEbGB7BVM0ZT+MG9RKKkYV5uoid/s3c
+         W2Ykij3sSaDxf3OLIb72N10jOA1vY5MTT9dh8jERttpwBv7UD5LkEnF21BqOwDJc3He2
+         Glhhvf9TCh4j9roBqHwqU+i0xZLQxgq5dQHPg2nc1CYzHUaU9BqdpqfnYgnPebghRz0l
+         EcArxfvwTZeH14OO8fWob+8YtMTatHmu9tFohm7kD4FHpkH8/nJ4bqDj3LqCCuIYxSp0
+         4Z0Q==
+X-Gm-Message-State: AOJu0YyBpdpj8WSppcJmJ0TRC+hWSj24thiTCQAJWfsQLeLbFzVWhPTv
+	OVpNdHSpZBDRzXoz3hz00imkHUou
+X-Google-Smtp-Source: AGHT+IFlk9BX7KDI5xqssFr3XSB52uw5GPgrEtmbR+atJftTAlFMST+SYTZU6w9w/G9vnywxzqecvw==
+X-Received: by 2002:a17:906:4e:b0:9b2:9741:e1e9 with SMTP id 14-20020a170906004e00b009b29741e1e9mr20749857ejg.7.1697086327171;
+        Wed, 11 Oct 2023 21:52:07 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.115] (dcs23-h01-176-173-173-31.dsl.sta.abo.bbox.fr. [176.173.173.31])
-        by smtp.gmail.com with ESMTPSA id lf8-20020a170906ae4800b00992e14af9c3sm10706076ejb.143.2023.10.11.21.43.39
+        by smtp.gmail.com with ESMTPSA id e27-20020a170906045b00b009b655c43710sm10582687eja.24.2023.10.11.21.52.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Oct 2023 21:43:40 -0700 (PDT)
-Message-ID: <d2287b37-cd40-10ec-e20f-135a9d27e3fe@linaro.org>
-Date: Thu, 12 Oct 2023 06:43:38 +0200
+        Wed, 11 Oct 2023 21:52:06 -0700 (PDT)
+Message-ID: <31ae6951-2f32-ab86-4ddc-aa70364a89ce@linaro.org>
+Date: Thu, 12 Oct 2023 06:52:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [RFC/PATCH v0 10/12] gunyah: CPU execution loop
+Subject: Re: [RFC/PATCH v0 12/12] gunyah: Documentation
 Content-Language: en-US
 To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>, peter.maydell@linaro.org,
  alex.bennee@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: quic_tsoni@quicinc.com, quic_pheragu@quicinc.com,
  quic_eberman@quicinc.com, quic_yvasi@quicinc.com, quic_cvanscha@quicinc.com,
- quic_mnalajal@quicinc.com
+ quic_mnalajal@quicinc.com, Brian Cain <bcain@quicinc.com>,
+ Mark Burton <mburton@qti.qualcomm.com>
 References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
- <20231011165234.1323725-11-quic_svaddagi@quicinc.com>
+ <20231011165234.1323725-13-quic_svaddagi@quicinc.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231011165234.1323725-11-quic_svaddagi@quicinc.com>
+In-Reply-To: <20231011165234.1323725-13-quic_svaddagi@quicinc.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: 1ixq0PZfbduf
+X-TUID: UD4ymJtKYRQT
+
+Hi Srivatsa,
 
 On 11/10/23 18:52, Srivatsa Vaddagiri wrote:
-> Complete the cpu execution loop. At this time, we recognize exits
-> associated with only MMIO access. Future patches will add support for
-> recognizing other exit reasons, such as PSCI calls made by guest.
+> Add gunyah.rst that provide some informaiton on how to build and test
+> 'gunyah' accelerator with open-source Gunyah hypervisor.
 > 
 > Signed-off-by: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
 > ---
->   accel/gunyah/gunyah-accel-ops.c |   1 +
->   accel/gunyah/gunyah-all.c       | 216 ++++++++++++++++++++++++++++++--
->   include/hw/core/cpu.h           |   6 +
->   include/sysemu/gunyah.h         |   1 +
->   include/sysemu/gunyah_int.h     |   3 +
->   target/arm/gunyah.c             |  13 ++
->   6 files changed, 229 insertions(+), 11 deletions(-)
+>   MAINTAINERS                |   1 +
+>   docs/system/arm/gunyah.rst | 214 +++++++++++++++++++++++++++++++++++++
+>   2 files changed, 215 insertions(+)
+>   create mode 100644 docs/system/arm/gunyah.rst
 
 
-> @@ -110,17 +125,6 @@ int gunyah_create_vm(void)
->       return 0;
->   }
->   
-> -void *gunyah_cpu_thread_fn(void *arg)
-> -{
-> -    CPUState *cpu = arg;
-> -
-> -    do {
-> -        /* Do nothing */
-> -    } while (!cpu->unplug || cpu_can_run(cpu));
-> -
-> -    return NULL;
-> -}
-
-This diff could be nicer if you define gunyah_cpu_thread_fn()
-in the final place in previous patches, so you don't need to
-move it here.
-
->   #define gunyah_slots_lock(s)    qemu_mutex_lock(&s->slots_lock)
->   #define gunyah_slots_unlock(s)  qemu_mutex_unlock(&s->slots_lock)
-
-[...]
-
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index fdcbe87352..b3901e134d 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -240,6 +240,7 @@ typedef struct SavedIOTLB {
->   
->   struct KVMState;
->   struct kvm_run;
-> +struct gh_vcpu_run;
->   
->   /* work queue */
->   
-> @@ -443,6 +444,11 @@ struct CPUState {
->   
->       /* track IOMMUs whose translations we've cached in the TCG TLB */
->       GArray *iommu_notifiers;
+> +Limitations
+> +-----------
 > +
-> +    struct {
-> +        int fd;
-> +        struct gh_vcpu_run *run;
-> +    } gunyah;
+> +Below features are not yet supported.
+> +
+> +* SMP (PSCI support needs to be added)
+> +* virtio-pci (support for which in Qemu seems to rely heavily on KVM, which
+> +  needs to be made multi-hypervisor friendly).
 
-NACK. Please declare as struct AccelCPUState in gunyah_int.h.
+Is QUIC interested in working on that? My work introducing
+AccelCPUState to make CPUState accel-agnostic was done in that
+direction, but I didn't notice much interest in the community
+so I unprioritized it.
 
->   };
+Regards,
+
+Phil.

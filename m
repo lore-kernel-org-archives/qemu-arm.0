@@ -1,82 +1,82 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp548346ejc;
-        Wed, 11 Oct 2023 21:35:40 -0700 (PDT)
-X-Received: by 2002:a17:906:144:b0:9b6:5811:d990 with SMTP id 4-20020a170906014400b009b65811d990mr18521896ejh.47.1697085340406;
-        Wed, 11 Oct 2023 21:35:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697085340; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp548790ejc;
+        Wed, 11 Oct 2023 21:36:38 -0700 (PDT)
+X-Received: by 2002:a17:906:209:b0:9a9:e5bb:eddc with SMTP id 9-20020a170906020900b009a9e5bbeddcmr22051690ejd.16.1697085398376;
+        Wed, 11 Oct 2023 21:36:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697085398; cv=none;
         d=google.com; s=arc-20160816;
-        b=UD9qpFohd6MLzfJa+xU0kiLy95CGOrUroVHsVMpSVXUY/xIM+jOpj6A3j+Afq81csD
-         sqDW0nNbGBofXI6EjJ0R2Zx5cxWi/uSwleOIq2F7BOtqkU3yDM1cOBWuMoXzwujgfqYF
-         fwR0Xdp+HnLm8TAdyJNMunjD0sD2CxBiMb5eWCtOSxxmVgQA7Igv8zFWw0NdiOSgZhs0
-         6eLhbECEO72tnb0FaDLsEeniHHsaKBzEsgneF6V+DiXN0XunzoQXEqhBhH1QRHiwK4Rs
-         YFdX8m3n/d6A9VRXmijCM+i2DeUp2kKP1hHFEfFKE0VQ/mRGZJ6HABAcI5mGenXDQdU6
-         EnXw==
+        b=eNMZYj+XtyBtgbp4PwdMRwL5/erOwd0qWpHw2X27i28feobRwlgc21QyW3xlPeqDNY
+         1YdYkWviwNGepDwpV+2F2ZVQY9/cuZwabVq7D9WtAIklbSlkELSEAYEQ9Cf1Z9h2mYpJ
+         p5r9E+WQh3R6HFVng4Rig6QbZlJDSaLyQJi3k/vxtx5e5iszSbILh0JeQeo/N5DYRkDX
+         TBOxevgwj5TIlc6KR5sm39pXhYMZkB15IuXVGQ7tWygahJi35+orbYXU3KdYLP9sKuiw
+         rs8CInlttYpipp6KAKL7xK5bGOu+vYGT55QgNefRxfeqULMv7gydzZ5w69B7BWV7ad3q
+         0qOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=EN0IDyE+rC9sar4CoPaHY6iTywNrc39u7yDiBEnnNqE=;
+        bh=rsqWk+2/+fzNt1nwuH5nLLJ02vPdHgexuKsMnzAkv3w=;
         fh=tebFjQw8nyYXdpHWOtCSmNiXXYif6WEiSPQxtAL9eeQ=;
-        b=wRmVBJ2l09n1qZ9WVuQUiiyy4VpCNT3kajdQL9Jk/bQtx0sQuk3f7KqcbY3PdEwaMo
-         HoGAQXlCHZ0bHVn4PdTF/CJ1JNQG5ynETq5D8r2/sQ4L9mkmoYLwPa+fm80W2Es7Tk05
-         kXdMtrBlKeQEzJwusVgTHJkOwb6JyIx6j57lpjRaTPhNRo44tDQ+2xnFt//pJ8sJoIcG
-         Y96FqXymaxRmH46hvRJNeYfjTDyrS68+cB0QMI2IXj8b+imkqY5cRWw5kcCe6Ql2C+Qg
-         RB9RP9QueMPPCe2IIFL5mopPdDn4V2BrOk4eoUtbaoFpULe2GzP3/LRiJHJbIqvBHnpP
-         zIXg==
+        b=e7ivVQUweFuHf/CGW03lGbDTB7gYnFwLoVE3yNCrCP+TAhczNk9z4jhLWUFJvpC9tf
+         ub3yd9hdVx5HW0aAU2Ndda+KRIZTR+eGiF8sdJ5XAgh2VgBH0d29zL2ld8PRyk0W/bTn
+         r+c9dJ/MQOMHu4YQu7MYjlFmKE7iATgO2+QhCLyqyi6+WY66zyRVQtRFQUkDhcc9VqIa
+         n4P/OwELvmQcC8A+1JSyt/TmYD0RVUKkNm9mJ9YsVxKm5ugnlR/5OzhYSSTYPf3yPfsh
+         EDQ2lPGMK/qTpp0pxx8kWUrXXPphkZAk6nZOXUaDiR93fTWauG0Usu1GuH6fNpmWfO27
+         62PQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x7dF1w35;
+       dkim=pass header.i=@linaro.org header.s=google header.b=InxYlnDu;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ci18-20020a170907267200b009b2bdbda553sor2786293ejc.13.2023.10.11.21.35.40
+        by mx.google.com with SMTPS id h26-20020a1709070b1a00b009b282006ac9sor5512851ejl.8.2023.10.11.21.36.38
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 11 Oct 2023 21:35:40 -0700 (PDT)
+        Wed, 11 Oct 2023 21:36:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x7dF1w35;
+       dkim=pass header.i=@linaro.org header.s=google header.b=InxYlnDu;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697085340; x=1697690140; darn=linaro.org;
+        d=linaro.org; s=google; t=1697085398; x=1697690198; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=EN0IDyE+rC9sar4CoPaHY6iTywNrc39u7yDiBEnnNqE=;
-        b=x7dF1w3512pljdmRU7zF/8ZLAsEYUa9Eusb8rw+bgA9mxmv6IvBQalW4y/jWaA6e2i
-         LTpp0hiEvHf1jDC0J0VE7P7QVg+pEUQZR8MHvqbfRsX3jhGEqUywEuGdxLdqo3FRgag9
-         qvrPveNUSxJbW2EeUUkiPYuB59FRjNx85qHrL6SpvDRWDJ2xAas3ck4zN/N/pkC4FQek
-         Qv72WH6OHGkqc3Oydsr31D+XeNHDk23F8CGUrx4KKaWTuBw/Z54KwXH1aYveKxVNu+uR
-         JLZJqMUbV4V/TVYah1bykVtk3d3gfK4jvicA+VzzzMPS6RI/6Xe7cZc/ruskN1o9EK+l
-         e0VQ==
+        bh=rsqWk+2/+fzNt1nwuH5nLLJ02vPdHgexuKsMnzAkv3w=;
+        b=InxYlnDuKS9TkKtTywZJzGtd6qbPLNQI4iePBt+riDd+Hxk2xmlDcWwy1ldjlQ1FFD
+         44l0G7Dc78VfTSeWub+q0G5MXPPTiYL4xDNVNgH/ptD8xgAbdUq3U4J5xekqs2O9e5IH
+         pImAS8Iv6iA+v/BMt0ciT+ZlDdzOHNrssuh+NsL2yUBBh0ubNCQ1scm2pv4i4LOHncgq
+         a0VkAb2waAkaB0zwuDWBfdtFYyk8ARDeXwjWCWw69SVITdJMann3j75w7QxKHDmslVxS
+         fg3K1l5GghXXmZpGQyyUQenamGz1QvrBVHzJQFmeiIPTg05mBaN/vFkSRF5i5+wr5n02
+         oIUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697085340; x=1697690140;
+        d=1e100.net; s=20230601; t=1697085398; x=1697690198;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=EN0IDyE+rC9sar4CoPaHY6iTywNrc39u7yDiBEnnNqE=;
-        b=iP4OffBEX+0QF2brTylCYxOfqIiDTPuyL0CI+wbNDH3snTs0XESN0vySb7i/UB+ibT
-         h/WBxSlnd+VzivsrON9Haseo/lFa40m4qqDxORqlgTJSRWwZrWi0nXCxh3xc4o9yrIeM
-         dcDezC3EI9Sh2IWReUMK1aR7cU04irz2i/zTjp1n/YMwysLkXJN1tpAdaBgITLp5vXQV
-         A6rcPWG1OzXXkOzKUxQOrOoqo+kVZhbHXtVOLxpGlEY43+QZpF1vqL3OeYaymxrB7RvG
-         QUhLC16uvi+BIIm0CptShHNDT1foEHkclyDjb4JPCw8z8dc/g2nAQ38Ewv0n3+vqrDoa
-         MBcg==
-X-Gm-Message-State: AOJu0YwA2oc8zG5HpVgVmF9/FHFmJ8qva9i9pUxylf/oHJqJWoCjfDgg
-	hrKBop8wuklIM2cNlmYBl69mKRrm
-X-Google-Smtp-Source: AGHT+IHqfTTeREdL7UgFh5Cs1S+vNAEcHOZ6kY1eJWqQLNipmRtaXlA6Q2NOzrlmsQEqljXXw+3WBA==
-X-Received: by 2002:a17:906:73d3:b0:9b8:df8e:cbda with SMTP id n19-20020a17090673d300b009b8df8ecbdamr19464518ejl.59.1697085340024;
-        Wed, 11 Oct 2023 21:35:40 -0700 (PDT)
+        bh=rsqWk+2/+fzNt1nwuH5nLLJ02vPdHgexuKsMnzAkv3w=;
+        b=gf1saAIWTkwYEz+y5PMB28538ADYsYxCF0rNOnvprRvXVXGcijdgWZ39ieR78gyRnI
+         dA5lnh0qGspWw1Q8dh5I6bu0FZNpCPKn+7dFNJyHY2XhT/2WY93VP4GdOcUIQIGj8B1k
+         ZLFNcQH3a/eS+szlnDd1oMjciJaWcqPZaOgnKbHiDs04R5FedNh5fzzwmULIhCLWWCFQ
+         7P2wFydRfO4oiW8cEOXL6vgIpk334kLW2k2qGtyltouQ3oDkiEvRk36vM4sogpu1skBE
+         8Xk50EfSMCe0GV/DaW4r/DZOji3dLNoOp58x1kagREpRp5yN39T0LM/pt5+MLIPSqQuB
+         xLWQ==
+X-Gm-Message-State: AOJu0Yx5QLjskDaYI08BoxQRL2yLh7gvMgriwnM/vFhv3sfOCoss1ILO
+	8TgpNkRL6ckhAX7I+TFuPxlhWszmr9GFFFLGo5hYnw==
+X-Google-Smtp-Source: AGHT+IGn5Y1WzWdsdU7MfdCfa5PmA9zEevz9KS71cMQv84u2N+RvvzYye12V78QdPYi70J2QkbPG0g==
+X-Received: by 2002:a17:906:844c:b0:9a5:cab0:b050 with SMTP id e12-20020a170906844c00b009a5cab0b050mr19136706ejy.13.1697085397985;
+        Wed, 11 Oct 2023 21:36:37 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.115] (dcs23-h01-176-173-173-31.dsl.sta.abo.bbox.fr. [176.173.173.31])
-        by smtp.gmail.com with ESMTPSA id e5-20020a17090681c500b00993a37aebc5sm10508006ejx.50.2023.10.11.21.35.38
+        by smtp.gmail.com with ESMTPSA id y17-20020a1709064b1100b0099cc3c7ace2sm10727685eju.140.2023.10.11.21.36.36
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Oct 2023 21:35:39 -0700 (PDT)
-Message-ID: <557f2d41-e605-af72-b9a6-85dd67b310ab@linaro.org>
-Date: Thu, 12 Oct 2023 06:35:37 +0200
+        Wed, 11 Oct 2023 21:36:37 -0700 (PDT)
+Message-ID: <f1998265-a32b-e900-6b0c-3b9508789be7@linaro.org>
+Date: Thu, 12 Oct 2023 06:36:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [RFC/PATCH v0 08/12] gunyah: Specific device-tree location
+Subject: Re: [RFC/PATCH v0 09/12] gunyah: Customize device-tree
 Content-Language: en-US
 To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>, peter.maydell@linaro.org,
  alex.bennee@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
@@ -84,52 +84,50 @@ Cc: quic_tsoni@quicinc.com, quic_pheragu@quicinc.com,
  quic_eberman@quicinc.com, quic_yvasi@quicinc.com, quic_cvanscha@quicinc.com,
  quic_mnalajal@quicinc.com
 References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
- <20231011165234.1323725-9-quic_svaddagi@quicinc.com>
+ <20231011165234.1323725-10-quic_svaddagi@quicinc.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231011165234.1323725-9-quic_svaddagi@quicinc.com>
+In-Reply-To: <20231011165234.1323725-10-quic_svaddagi@quicinc.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: VIZKqP9tzZjF
+X-TUID: IKeL5IyNM9rb
 
 On 11/10/23 18:52, Srivatsa Vaddagiri wrote:
-> Specify the location of device-tree and its size, as Gunyah requires the
-> device-tree to be parsed before VM can begin its execution.
+> Customize device-tree with Gunyah specific properties. Some of these
+> properties include specification of doorbells that need to be created
+> and associated with various interrupts.
 > 
 > Signed-off-by: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
 > ---
->   MAINTAINERS             |  1 +
->   hw/arm/virt.c           |  6 ++++++
->   include/sysemu/gunyah.h |  7 +++++++
->   target/arm/gunyah.c     | 45 +++++++++++++++++++++++++++++++++++++++++
->   target/arm/meson.build  |  4 ++++
->   5 files changed, 63 insertions(+)
->   create mode 100644 target/arm/gunyah.c
+>   hw/arm/virt.c           | 11 ++++++
+>   include/sysemu/gunyah.h |  7 ++++
+>   target/arm/gunyah.c     | 79 +++++++++++++++++++++++++++++++++++++++++
+>   3 files changed, 97 insertions(+)
 
 
 > diff --git a/include/sysemu/gunyah.h b/include/sysemu/gunyah.h
-> index aded49cdf6..101e190619 100644
+> index 101e190619..f077837437 100644
 > --- a/include/sysemu/gunyah.h
 > +++ b/include/sysemu/gunyah.h
-> @@ -34,10 +34,17 @@ typedef struct GUNYAHState GUNYAHState;
->   DECLARE_INSTANCE_CHECKER(GUNYAHState, GUNYAH_STATE,
+> @@ -35,6 +35,8 @@ DECLARE_INSTANCE_CHECKER(GUNYAHState, GUNYAH_STATE,
 >                            TYPE_GUNYAH_ACCEL)
 >   
-> +int gunyah_arm_set_dtb(__u64 dtb_start, __u64 dtb_size);
-
-By moving this declaration before the #ifdef ...
-
-> +
+>   int gunyah_arm_set_dtb(__u64 dtb_start, __u64 dtb_size);
+> +void gunyah_arm_fdt_customize(void *fdt, uint64_t mem_base,
+> +                uint32_t gic_phandle);
+>   
 >   #else   /* CONFIG_GUNYAH_IS_POSSIBLE */
 >   
->   #define gunyah_enabled()    0
+> @@ -45,6 +47,11 @@ static inline int gunyah_arm_set_dtb(__u64 dtb_start, __u64 dtb_size)
+>       return -1;
+>   }
 >   
-> +static inline int gunyah_arm_set_dtb(__u64 dtb_start, __u64 dtb_size)
+> +static inline void gunyah_arm_fdt_customize(void *fdt, uint64_t mem_base,
+> +                uint32_t gic_phandle)
 > +{
-> +    return -1;
+
+Similar comment than previous patch: stub can be avoided.
+
 > +}
-
-... you don't need this stub.
-
 > +
 >   #endif  /* CONFIG_GUNYAH_IS_POSSIBLE */
 >   

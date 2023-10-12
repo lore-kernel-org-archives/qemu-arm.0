@@ -1,118 +1,135 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp794885ejc;
-        Thu, 12 Oct 2023 06:07:18 -0700 (PDT)
-X-Received: by 2002:a17:906:3116:b0:9a9:e4ba:2da7 with SMTP id 22-20020a170906311600b009a9e4ba2da7mr22016059ejx.49.1697116038402;
-        Thu, 12 Oct 2023 06:07:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697116038; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp817693ejc;
+        Thu, 12 Oct 2023 06:40:05 -0700 (PDT)
+X-Received: by 2002:a05:6402:b18:b0:523:3e23:15ab with SMTP id bm24-20020a0564020b1800b005233e2315abmr20260951edb.26.1697118005395;
+        Thu, 12 Oct 2023 06:40:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697118005; cv=none;
         d=google.com; s=arc-20160816;
-        b=za4Ghtq/SKWN7Imr2hj1OAS85M+SX/juvC2UTHqHeW0hoOA2VWf7LiF9XFguuYfM4L
-         Sp/4CM7svDJym16PjP7RBtotKpZ8LDbjgNZWrIAP/nTmvR76DPWzEe+KSOFPcYyUYVJS
-         ang5suFj2+VH2rtXWMtfyGH4bWRh0Zak8H8WTkfZHqMdG7aD1kuDHRsvwo1PoNX7girI
-         H2H1zn3xO4mWftbJhKuFETHLUxG64FxZgEG4ah/RXHKP6JMqeg9p1VpgEwZznTpcFCtc
-         Ar1aCoFG9S1CE8v7DldgR6szHFfu38cSZQ5nn0Q+aEgvVbmdhQFaElTaYeP6sZLiRgu+
-         CSsA==
+        b=zgFkKZtgD7OB6oCeMRd6zHUQ0wr8X+tNZ0ZMcOgPHy4Vm6mjUl8jgd+3Ozx31RTqvy
+         VPRibpf01XpRPeu7Gmx4z1m8xbu3Esobuzs0hU0L+1fkFUXSeTx1KZljKAdo9m4qoxl7
+         N9e5GzAt2pdho5jzkOna7/EW+GqRpBwMEUcKBuRTjRmcaGCW11vNukmIAF8ovsIHy3lt
+         Sp7e3L3pgWlWo7IkaQ9p0SsP1tTp9alrbbtPhGjoanjB1Wu8hBaBXEC0PsmhgTEJRqOh
+         sWrGjAa89YkYvNSPMJCjVjQ2St+e6toiUmwVa3rKIqNTthMyIYzGJunA4n1g0hC5YRxc
+         fwBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=uElxi2HlcdsKIdLCnnj5Iek8ftyU5xtffELgvgr3cFw=;
-        fh=t1Ji07xgYgopWOgYSzd1++xm9ncTuyyBDwhGClNmAZ0=;
-        b=TkOfiVTbYq26BvnOQvmVBk4HF3Ln6KspOa/pVM8dPsX4j52OVl2c1AfcNmm9y3qyr+
-         0+i35Pn+t1ANljsuz5OnD6veOwa1G8dpik1bWiW+IuNtaaYzKZ75hIBVtnj+BeeBGWje
-         7vKZZQaMgYmXPvUOOc5bSSiOB7icnVD6FJnvwCU79ymfXRvR5t8mQx5fcuWstZcBS1Po
-         HAx1q9J9eByN3/1sop5F9gc4RQOv+JzyGVwPxbB8KUEEt99D3ZWilomIAxJhhJRioAOS
-         NTjQxm/jvQp/iL8CN1uUI4wZiGrtkJdmmKgmPmSJoceejGH0Av1zAZGf++sdf1sPImV1
-         zDfg==
+        bh=uYKLXRBDpjhnnA5ve4A3/KEPKk2ji4Xv7HCEFBJIRF8=;
+        fh=cGX7IsaA1vpuKiMoCeRajWuVCxXBtfL+id05qlNWIz8=;
+        b=AemD3GOCE9oNFNW8sPUWXsf1nQo8w4x9sBb/wL9iQKFjQCr+7FqYopqY29ZGoQphdu
+         acMGPmFN1g82uVqdRniNYn5yMidak1VyeOCFfjaXfoeCGev+mfg9YzN3z+qlcgPN4mu2
+         uMBjcwbVFknBqSIVG3oLbFFHnBtI2HL9ucwoAbN3pwRWDKcvclBz75kH3bg0N7T2mM8Z
+         UeWpqC4eDFQe7EW/1+P2bvbLybUbzBwumf8pJWouYcFT0zkMyx7wYuTiHxy3OVKvAU1r
+         dKph6jOu6KdgC0tnQQhTBJF3ILxh25WzJYAZVCQNKj5wnwx94Xmx4cn3Bys1VwFHhiQm
+         3POQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rDzjh3ca;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qH0+32pU;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d11-20020a170906304b00b009ba065e7512sor4600775ejd.19.2023.10.12.06.07.18
+        by mx.google.com with SMTPS id g1-20020a056402320100b005383860d2d0sor4486244eda.1.2023.10.12.06.40.05
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 12 Oct 2023 06:07:18 -0700 (PDT)
+        Thu, 12 Oct 2023 06:40:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rDzjh3ca;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qH0+32pU;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697116038; x=1697720838; darn=linaro.org;
+        d=linaro.org; s=google; t=1697118005; x=1697722805; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=uElxi2HlcdsKIdLCnnj5Iek8ftyU5xtffELgvgr3cFw=;
-        b=rDzjh3ca0BIrOVkd/Thtys1Zq4w2TQdG24fKIDodQBkhfauEfinGWBNU1WNWDVHcCq
-         /MqdSwp31izJaqDaTavtn+9Q1l+KE0RvPlPXReZWUEMqS0P0vo6j8tVsZeJHQm5ZKmrV
-         n7ltrrlVolhfKkybhRuXh+XnPo/5Ju26OTu6xIAvhmBReCisEd3n2PL6NuSl/rdt9B4U
-         ZYFrOdNEygi5oWXdW4AcwtlWxsUics7RPRIKz9uTcaXfgixRUyHkBpFNKo2mmYdVZdwX
-         AGKyha46enbySwPWicCXTinUiVgY+TKa0pQ4Uw+MocJ/L+NOgf3R/AMAJ2wfrCfMP+8d
-         mGPw==
+        bh=uYKLXRBDpjhnnA5ve4A3/KEPKk2ji4Xv7HCEFBJIRF8=;
+        b=qH0+32pUSHto7K7ZgJL1M8xuVxJsX2UTDu8zSRCBzTar3BIuti1OhhIejKmXqDmIjN
+         1uYmnCOO0GZ0CX7oYYoAsmrzXpuUoO/xnRWpaBqBko7hB6BRroYsKHbBkeokLgVq1Vrf
+         2VVpyeCoo8ncfM1jvWEb8zs/Ybm44qX5lYhVdcSL3i/JOT+gmsYfRfrOOgIXjNrdZpRw
+         xPNiWzlUsLEeX49WevASBmpGysjv9sttKmkVGaJcJgQNe2jIWoo7RlkH2zwvkPt1srm2
+         erJ8dxJyQuxbTcGoi2jGlA99FDGMKUTW8vjjZwZiW8JfYTrKjXt6G0Yo/fc1hZDphIlz
+         xYhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697116038; x=1697720838;
+        d=1e100.net; s=20230601; t=1697118005; x=1697722805;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uElxi2HlcdsKIdLCnnj5Iek8ftyU5xtffELgvgr3cFw=;
-        b=H9RCWSPaPws+ed559TdIQNn871aVWhBIJfBS/E/mcOSTXe/caHGbmet6S9/0jDNwbD
-         UwsPJbBdfNBWfyINokWdFG4TwaT1w4AsoO6Ajk1i6gw4WywUr7382HoHBpnn13m0ybEA
-         Co9E9utEiZyvykX3sgkwuwgLiUmneuYRQij245WKDuORXQvSBf4fv60UMfeG2q91U3yD
-         /Q6G+h2UzpgoCMs25mqNTi59gGJKUg/iEeNZ2sPtPDbAssLhvSeFKMKodvi5RhxegYZ2
-         sumQGO5QZvg3I89G3yWBuqI+Z3RVWVKwDJXzx0VyNYh3le95JtrFFVUqJO5YwVocxGYk
-         oFuQ==
-X-Gm-Message-State: AOJu0YytIiIPtZ4kP3u5g6iFiVi5FHWtg1vvbzTKqQL7QpW0+HJ+0MFq
-	8REIehOQ9dCAffYLROEAbx+XqG9A
-X-Google-Smtp-Source: AGHT+IEIkexhI37EGGJmyUtUoVkqSOBvDhgJYggwPOEXpYfeb9lEhiYNSWzoaPtXIswYw7Qweec21Q==
-X-Received: by 2002:a05:6402:b18:b0:531:1875:bbc8 with SMTP id bm24-20020a0564020b1800b005311875bbc8mr21096447edb.19.1697116037908;
-        Thu, 12 Oct 2023 06:07:17 -0700 (PDT)
+        bh=uYKLXRBDpjhnnA5ve4A3/KEPKk2ji4Xv7HCEFBJIRF8=;
+        b=dYTrDdVQV49iUHDSW8zYXrGmrqToxDRFsBof2ILqeHKXGnlqYqm8G9HO+gXb0NsIgQ
+         f7DzwuD27MsH7xoHkdIIHeElQ1t3tsYu6q8JboljdZ/lfJfQAgUSufs7WxOhcl/1bCEl
+         /qxrJinuVmHmI+PXn9ncM1OIWDRe0JTLZ+4Q63Rnf8B5Lh+HGVpqO4cUDzcGd0lxWtth
+         FybE2tVSVDR75CkhAKi98dgpgs1YQjKwqC4tBOfgK06M6MmJWuMs+xkXZ4GgmG6SKi7p
+         Dqtlcj5gTeJ5p3IhPncfhDeRKHiNjgCiGjlXPYXc87tgklRiii5NveEaQZtesrC2OgmE
+         uGQw==
+X-Gm-Message-State: AOJu0Yy0JRAGNBzie3kfCVRqjmOYEyfQB4asEnQoC5fG2RGkX4Qabxrr
+	M+t1re4ylK4qCKFu9uMS9iGehmfC58bQkAzjDzvTBSVT
+X-Google-Smtp-Source: AGHT+IEG2/mmPvu6Dk8Uj2JxxGJV/oAs2NAZI7DoFsmE1StO0al7tlMTTqywfa7XlsR5j8JdEqR98Q==
+X-Received: by 2002:a05:6402:60e:b0:523:33eb:1103 with SMTP id n14-20020a056402060e00b0052333eb1103mr21984333edv.14.1697118005004;
+        Thu, 12 Oct 2023 06:40:05 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.115] (176-131-211-232.abo.bbox.fr. [176.131.211.232])
-        by smtp.gmail.com with ESMTPSA id i34-20020a0564020f2200b0053dec545c8fsm1667629eda.3.2023.10.12.06.07.16
+        by smtp.gmail.com with ESMTPSA id ee48-20020a056402293000b0053120f313cbsm3392652edb.39.2023.10.12.06.40.01
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Oct 2023 06:07:17 -0700 (PDT)
-Message-ID: <39fb2593-2184-560b-3d67-51f9203f078a@linaro.org>
-Date: Thu, 12 Oct 2023 15:07:15 +0200
+        Thu, 12 Oct 2023 06:40:04 -0700 (PDT)
+Message-ID: <acb33f5e-4234-fc18-63a6-b74294857468@linaro.org>
+Date: Thu, 12 Oct 2023 15:40:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH v2 06/11] hw/char/pl011: Extract pl011_write_txdata() from
- pl011_write()
+Subject: Re: [PATCH v11 09/18] gdbstub: Change gdb_get_reg_cb and
+ gdb_set_reg_cb
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org
-References: <20230710175102.32429-1-philmd@linaro.org>
- <20230710175102.32429-7-philmd@linaro.org>
- <49918fad-56fc-150e-bb9c-bd00dc67df05@linaro.org>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Mikhail Tyutin <m.tyutin@yadro.com>, Aleksandr Anenkov
+ <a.anenkov@yadro.com>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Brian Cain <bcain@quicinc.com>,
+ Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Laurent Vivier <laurent@vivier.eu>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
+ "open list:S390 general arch..." <qemu-s390x@nongnu.org>
+References: <20231012130616.7941-1-akihiko.odaki@daynix.com>
+ <20231012130616.7941-10-akihiko.odaki@daynix.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <49918fad-56fc-150e-bb9c-bd00dc67df05@linaro.org>
+In-Reply-To: <20231012130616.7941-10-akihiko.odaki@daynix.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: wg2ZxNh98ovj
+X-TUID: js6nTQRHIiHS
 
-On 14/7/23 08:58, Richard Henderson wrote:
-> On 7/10/23 18:50, Philippe Mathieu-Daudé wrote:
->> +static void pl011_write_txdata(PL011State *s, const uint8_t *buf, int 
->> length)
->> +{
->> +    /* ??? Check if transmitter is enabled.  */
->> +
->> +    /* XXX this blocks entire thread. Rewrite to use
->> +     * qemu_chr_fe_write and background I/O callbacks */
->> +    qemu_chr_fe_write_all(&s->chr, buf, 1);
+On 12/10/23 15:06, Akihiko Odaki wrote:
+> Align the parameters of gdb_get_reg_cb and gdb_set_reg_cb with the
+> gdb_read_register and gdb_write_register members of CPUClass to allow
+> to unify the logic to access registers of the core and coprocessors
+> in the future.
 > 
-> Not using length?
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+>   include/exec/gdbstub.h      |  4 +-
+>   target/arm/internals.h      | 12 +++---
+>   target/hexagon/internal.h   |  4 +-
+>   target/microblaze/cpu.h     |  4 +-
+>   gdbstub/gdbstub.c           |  6 +--
+>   target/arm/gdbstub.c        | 51 ++++++++++++++++--------
+>   target/arm/gdbstub64.c      | 27 +++++++++----
+>   target/hexagon/gdbstub.c    | 10 ++++-
+>   target/loongarch/gdbstub.c  | 11 ++++--
+>   target/m68k/helper.c        | 20 ++++++++--
+>   target/microblaze/gdbstub.c |  9 ++++-
+>   target/ppc/gdbstub.c        | 46 +++++++++++++++++-----
+>   target/riscv/gdbstub.c      | 46 ++++++++++++++++------
+>   target/s390x/gdbstub.c      | 77 ++++++++++++++++++++++++++++---------
+>   14 files changed, 236 insertions(+), 91 deletions(-)
 
-This is a simple "code extract" patch. Length is used when
-we switch to FIFO in the last patch.
-
->> +        pl011_write_txdata(s, (uint8_t *) &value, 1);
-> 
-> Host endianness error.  Copy to local uint8_t first.
-
-Oops, good catch, thanks.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

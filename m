@@ -1,260 +1,99 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp798502ejc;
-        Thu, 12 Oct 2023 06:11:26 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH2MGVDs99bkXFt6Yo5E2+nKlNjNjvOAJuGQY1Xm9Gn0/APrEo6hdbjSgKW/+hYwHuOkAMr
-X-Received: by 2002:a05:620a:9ce:b0:773:b50f:c6f3 with SMTP id y14-20020a05620a09ce00b00773b50fc6f3mr25148653qky.52.1697116286081;
-        Thu, 12 Oct 2023 06:11:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1697116286; cv=pass;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp856707ejc;
+        Thu, 12 Oct 2023 07:36:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHpC1ZA4+ldF0B0yB3FFokY0AU0n7c6/xLMvQ46PjELVpmzUlfo4dvvoXSYnE4Elg/8HwtS
+X-Received: by 2002:a1c:720c:0:b0:3fe:5501:d293 with SMTP id n12-20020a1c720c000000b003fe5501d293mr21626661wmc.30.1697121388382;
+        Thu, 12 Oct 2023 07:36:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697121388; cv=none;
         d=google.com; s=arc-20160816;
-        b=hk5ADYVdVHSt1ay21oTjzaoIiqWyAI48XrAvW3YeB2SvoXypISca3GcJP2+KIHqy57
-         oWGCpzi/M92k6lBSmGE22yW/hjzjj+4TZdPRMq6FchH2h/5BEKrxEwGrUn/3qwh4E+6c
-         VP58yQIwygwoDhYm9Vky9qePsYmNCHVGtEIG8ei3KYtbCm+HoMdpnTdFPZOflj5S9Q1e
-         yVr14BHFDpT1VutOaOjiSyl5rQ/WjT9MPy02GlGsIpt54ylJALF688tojhhZ7hkxleOU
-         zsee1AswmVL5DOsZ8z1Wf/uhhAzI8UFy+k1FWtoeB4Mzk6SLo25cIwA8D8KBKhVskBNc
-         ydKw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:subject:user-agent:date:message-id
-         :dkim-signature;
-        bh=2LxWHhP7CeJTOFntoUAFSdVwYRsWAd4vddGDi3lXfBY=;
-        fh=D43IoKQGSxp8SJ0NadXxKCbCff4+D5MTPganKkOvv3E=;
-        b=UQKFsedGTBOagtOX3gb5t4VytP8uUTAKFCB7qL4bFq2uCdEIayyE9yv0iR4gbjiid5
-         C3VRK+QpwIaiEPKKyjwcWLdyNZqZLXpom+t5gtAVitq7zW0r8CfaNSGOHMdFPsgg9IJf
-         N6rKWcdNU0JkKUzxUFH5+SkIL4XV+bLrd8+I6uo5VHcAms4hSHD39Sh1q+sUG6gKnZz7
-         rkW3q5cVN20RMmbDox4r5Sn6V4GBv5cmTjxcjrB+oir1lOHkSsgkDQdP0hjxHWoKpc5L
-         OhIncyjJzyyWau3rUcNaiqZNo0e6um9SKvkv2Mk21PcbTdIUmnSPM0Tlts2wQaGphSXo
-         E+8A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@quarkslab.com header.s=selector1 header.b=myXqiGPB;
-       arc=pass (i=1 spf=pass spfdomain=quarkslab.com dkim=pass dkdomain=quarkslab.com dmarc=pass fromdomain=quarkslab.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=quarkslab.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q2-20020a05620a0d8200b0077701e962f1si8594159qkl.244.2023.10.12.06.11.25
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Oct 2023 06:11:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=JyQyr3PdDib7OiApDWG5DLO/Hs232Fe2PGm94irS4OsAZ2ufQ8I2to22gdFIjjO8Rh
+         WAf87wYsuxGqvVt2GpZxS2PDYz0yrdBiUWcH3umfSr/0PK9+eySGWuKZsH18zRUB0Qo0
+         73oLj7toTAudtJj7DtQWVMUBzIsjNhEKGBHB14p9R0QI/lcBXm9UtDgpcpUrkXGgoyUj
+         4DCe99nupB1QVqVWs65EJd408/gNNpyIGdjv9BE1854ZdjhkxLoqALGvC+d04vF0Svls
+         B2Si3hVatVWDN+yebPOTT5ktFzz1Q69han/MC4HDlJz7GU3XzNCzBDOMDPeaSWwflgVB
+         DYjA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=Hxrcrq8nCVxzyAZsPc8+rDO1kN6NWxTSOLr/w+u8i38=;
+        fh=/EBauY3IXh4VobPm5b6w815uXOAKkGQo/xHlRV7Dr5E=;
+        b=EE21fsHdST9P/dMvCdwMCe/c8reK9ZFcz3J5Br/Hftx37f6LfVbWfosAiL7pnzsgnE
+         XVM1MiKnq19nMdOFwBuT5hz1kORa/J8iO3n0xw4eJCTLj7ZMHC0VqlaarHNw7V5MdCx/
+         NnF45dSOp2ziwnojGYF6alqUmH0m7UT/Z8W5/Bt3I19BVGVQODqzdZi4KUOeoKwyypA9
+         KKjvEureBZmtNzXt0G/6OROzaJiYK/gSk9GCySNgt4XhN7n1QAZGaIszn3hunP5DL4DC
+         Cfrnrz3LARrxZWz/nS+TkcUgxNvNJgRG7UhJ/+EHWvJwmDo86qjeViSW5taEbxCOGJEN
+         gsVg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id o33-20020a05600c512100b003fc08786b38si5238wms.6.2023.10.12.07.36.28
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Oct 2023 07:36:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quarkslab.com header.s=selector1 header.b=myXqiGPB;
-       arc=pass (i=1 spf=pass spfdomain=quarkslab.com dkim=pass dkdomain=quarkslab.com dmarc=pass fromdomain=quarkslab.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=quarkslab.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qqvRA-0007If-HD; Thu, 12 Oct 2023 09:09:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fcagnin@quarkslab.com>)
- id 1qqu9k-0000Dx-5V; Thu, 12 Oct 2023 07:47:08 -0400
-Received: from mail-pr2fra01on20718.outbound.protection.outlook.com
- ([2a01:111:f400:7e18::718]
- helo=FRA01-PR2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fcagnin@quarkslab.com>)
- id 1qqu9h-0002Au-OU; Thu, 12 Oct 2023 07:47:07 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=em5IR7ztLrLlUHQA2m99RhkQvxetmGLk1ma2HYX/OfL97w470Ec4I85PHNXzt3QWm4tSYbAeShRQhEa5iOHclhezMrzDc0t0WcgQI/7XNH5vmm2tjhcj5ZuxBhXJODBmbFukf1BgfaYetUr/rfpWaH59GpbQCybluQ0sw+eJuCkd40w9O4jFTZwcaISOoDBs7xpxVmUAXhFzyARfd4sFoUIe9HZ28dZ6ip+g3MPhYqDv2n/6rF58p8IkIoHTw5Jw4D6kjKW1p8Qz2OsQy330T5SgBP0w/5iIkRFJw8A5Dsv//i9HxNzeRBuVLmAkqTyCc71YuKQpfw8PZV3gdUir8g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2LxWHhP7CeJTOFntoUAFSdVwYRsWAd4vddGDi3lXfBY=;
- b=CPskHCHL3ATBIzOCpt6zZlcMVOJWVyzyLSKhojGLTV9XzgKGnNzAF88eXMygoZMfLVxeuVjSBtOJxhEyRzMmqzwhuyrfwVIXJIfgOB+4DFNmRmtAzkCRgbqFeUVkvFJ3aEIUqcbEJ2MzNtCCM2T4xP3cnPfyy5cnNBGuMPB3xPbQXdtpgAFYJxVirYsKwR0R9auDZhM7je1wAs+1XjoD37s9SG37p9DhWi2QTNQtYgMdvjhfOrCdRR6h6ZaN262EckyY2EXOatgdQ/PtP1YsxBBxmVJz+SD/fjIoS+vNoJUjR+tP3A6L9oUoE7jOwjIcMO7izGOlJi079B80XJAQZA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=quarkslab.com; dmarc=pass action=none
- header.from=quarkslab.com; dkim=pass header.d=quarkslab.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quarkslab.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2LxWHhP7CeJTOFntoUAFSdVwYRsWAd4vddGDi3lXfBY=;
- b=myXqiGPB6EEBiUMPKv4plYVHR+KRK0QyHCTomPZ0P/4V3pDFAMXf1PVgLWMOaVNm2CGvo54yWlWaXxjsayzMF4ocuEDo6WVEAm4yAsZgit18YdtEzpP95nKw1RQoaH9YQdyT3QJz4fVfyT/MYku5A7Z4uYIbxay5DrvI+pHGWfB4RAuuD55sMSO6CofYH1M2H3bzE1EIlw3AzVjs3HTx/LaKQ+nQj4go2eflz5jCKaqCwuFkcSYgY8NOUrhmTFvwo1JtFrOA+fciNXwxIOCWay0P9oKwKv5miKzQpX86J47guRtVQz+Syfb5v6MunMYpolxJeuvWIWhlQFVVOQTalw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=quarkslab.com;
-Received: from PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:11c::6)
- by PR1P264MB1918.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:192::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6863.45; Thu, 12 Oct
- 2023 11:47:00 +0000
-Received: from PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM
- ([fe80::f635:24b9:27c4:698e]) by PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM
- ([fe80::f635:24b9:27c4:698e%4]) with mapi id 15.20.6863.043; Thu, 12 Oct 2023
- 11:47:00 +0000
-Message-ID: <746bf183-d805-4e0d-8c5e-e989c5f46823@quarkslab.com>
-Date: Thu, 12 Oct 2023 13:46:58 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 12/12] hw/vmapple/vmapple: Add vmapple machine type
-Content-Language: en-US
-To: Alexander Graf <graf@amazon.com>, qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org,
- Cameron Esfahani <dirty@apple.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Bernhard Beschow <shentey@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>
-References: <20230830161425.91946-1-graf@amazon.com>
- <20230830161425.91946-13-graf@amazon.com>
-From: Francesco Cagnin <fcagnin@quarkslab.com>
-Autocrypt: addr=fcagnin@quarkslab.com; keydata=
- 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
- XooHsgHHeYUgSIqwlkS7PofS55M=
-In-Reply-To: <20230830161425.91946-13-graf@amazon.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: LO4P265CA0212.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:33a::12) To PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:102:11c::6)
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.207])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S5sdJ3LZDz67XMQ;
+	Thu, 12 Oct 2023 22:36:04 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Thu, 12 Oct
+ 2023 15:36:26 +0100
+Date: Thu, 12 Oct 2023 15:36:25 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
+	<jean-philippe@linaro.org>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
+	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<linuxarm@huawei.com>
+Subject: Re: [PATCH V5 1/9] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+Message-ID: <20231012153625.00005025@Huawei.com>
+In-Reply-To: <20231011194355.15628-2-salil.mehta@huawei.com>
+References: <20231011194355.15628-1-salil.mehta@huawei.com>
+	<20231011194355.15628-2-salil.mehta@huawei.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PAYP264MB3320:EE_|PR1P264MB1918:EE_
-X-MS-Office365-Filtering-Correlation-Id: b2c9db08-e21b-47a2-2e94-08dbcb18f22b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: klDPqs573mW8GlH8q/k16ZIiO63FmrMhJINGupi1i1QVx4q60QO3tUVZiwb4a2sQsCfxdC39gQIiGN9wE8AZS2y+cZ1gHbdNeY1/xvYzA49YMPC46chtF976ZMu+KMxfCRAkS5CZwop0kSp1b3MgK1PaDmxwhyiyEf9R0kwBRO8UtESHn/cUJrW6hr1PrKveusYqBqICpJpbqZS1MbZQ2sU1JgF7qoZ+QB6SZ6rQ3bu9YpHCklVFlSQ19NqZeGwROPKp4m4U7QPWHJRbPsX8QN1RiNUO7uT7f+MsExj/YIvRDJ8gEH0Vza3hozxh7KM5XutkRssGTksjQSiC4yis0Fxw1zfD5Rw7MA0guSmNP+cllafrvndiVgMilJ+CSnj9KIb/u/p4zN/7oG4AVyHj5DdxKStU1iW6IJNfMDtZrBIKsLHDlRqo3R+oRk+MUDaN4qj+UuohD3PzajUDwkryKa33yKtESCOuWg28Ka9Zbybc9MmP2rgFfZr75iyAad2wLmCPLPS3jS+qB8H7qk7fW3pQiEvLvO2dtIgZF0fwTXXvIrpS02DoJD++Pr/JRwEjinBkWd4xgLy/f/XnJfO0bP/26wvgPwIWPvLkxQZ2E4b7NgN+REnevyyjFOPXQ9c4kJjzsWPokDHo8YGUfPKjRg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(13230031)(396003)(136003)(366004)(346002)(376002)(39840400004)(230922051799003)(451199024)(186009)(64100799003)(1800799009)(4744005)(2906002)(5660300002)(8936002)(8676002)(4326008)(7416002)(66476007)(316002)(66556008)(66946007)(54906003)(478600001)(41300700001)(6486002)(31686004)(6512007)(2616005)(6506007)(26005)(36756003)(31696002)(86362001)(38100700002)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UXBpbTU5cUd0ZWFQelJiTFprOEhKMnJYWHFQa1lVRXhHOVg4Z3h6VVFTZ0Fl?=
- =?utf-8?B?VFpsT1F3MWxJQ1RGU1pYWE1vZTdMck4yM293b2xNN3dMOElQYm1TblY5SU5W?=
- =?utf-8?B?YTJnSS9VSElDLzNFOXVOYzFtV01KdExRWkJrTkpLSVA0Z2FDOHZ6NTllV2Zx?=
- =?utf-8?B?UGFGUzBGbkJ1MEQ5UXcxdTZWV2FCNExjdmdwMVQxc2JlZW55Mlp4SDFjdURj?=
- =?utf-8?B?WGJNN2w1WFNMaVdoRHpsY2hScCtkaWpsYS9oK0tGMnNPd0FsQWZwV2J4VndO?=
- =?utf-8?B?Y2xmN2NGY1FWMkhmR1hqUUcwUUpDdU4xM0lMNDZ4S1dOK3VwK3VROUphUS8y?=
- =?utf-8?B?dlBZak9JRTVZK0RQVmlqeXp6YTBsdU1hSXh5VXI0NGUzSFlTblY3K2RSeEdv?=
- =?utf-8?B?WmVHMXdiMnBSUHdCa0xiSnBzUTRNS3FMWDJObWQxdzlXeVBOdnFDV0FYT3M3?=
- =?utf-8?B?ODBJdmlzTzVrMWNvdkd1KzBaeXN5Y2RlQnRpRlkxQnA1TzlObHVGWTN0Rmxu?=
- =?utf-8?B?d2lEVWtSZzlpdkpTOWI4NGJ0VkRGdlhlNkY2M2U5VWhjclR6NUg1WXMvOFp4?=
- =?utf-8?B?ZERHanI1YXRGdHZnY3ZvZEFhcjJGeGpjNS9QY0prUmFKTE4xMWRLRXRZeWZD?=
- =?utf-8?B?WFRGY3VXTklPY2ZlSTVSdHo4WjY2UE0rTy9aVlRZZ2RhNDdLei90NFpxbjJV?=
- =?utf-8?B?VXowWkNhOVZKZFJyV1cvbGsyRGx3SkV0MDI0UFBjNXBaSGo2Zm1MT0x4SmhJ?=
- =?utf-8?B?YXM3Rk9XWEJLWWdkU0NncWUzVll3Ny81c3ZYOTVQNGV4blVNRHFxM3dvUGgw?=
- =?utf-8?B?VnJidzdYSEMzcTdGWlZ5YTgwa0l2aXdyTmtZSHptMUJCcUJMdVJ3NFFGYTFL?=
- =?utf-8?B?RjdTQWpMbDB0RDl3M0VJSWNzeWlhemRQd0FwSGIvRGhWS0NROU15Mk8wdU5v?=
- =?utf-8?B?TitmZFVZSUFPK0xvYzk1dUNPbExXQjFlalpGVTlHTXA2WExzbGJYL1dGMTMr?=
- =?utf-8?B?NFpjSkI0UnI3QUdjVHl6VUNWTTg2QkZZekVBN3dhRmMrR2U2SUg0dnFPRTVS?=
- =?utf-8?B?ajUwbkxtbTlBVDRoSVltRjBZU0EwNE5tL3JvbVF0Q04vMTU1d3prNDNlVnIy?=
- =?utf-8?B?R2wzR0JRT3RUL2g2MUpzNnNScWp3Uisyb29tNis2Tm5hUHNyejdnTUpzY2hQ?=
- =?utf-8?B?VUFDRGllY01TUFVKV0k2S3dXSUI5VThlT2Nxb3VxanEvaDI3TlNFOU9rZVZm?=
- =?utf-8?B?M1pZN3F5WEc4WFQrTG5QWTRWMEYwZFZJT0ZqMzJ0WEt0ZE5maVNKaXF6Z3k3?=
- =?utf-8?B?RVF3alU4c2ZDTndiOTc2aHRYTFBhLzFMWWNhMm1QdUdmbU9tRXFDMzBXMUZ0?=
- =?utf-8?B?Z2tpRXQvcG5sSUJVMXNZdDBsaURXd2dGbStCUDZ0MEhzSEVYaDZoc0R3Z0E2?=
- =?utf-8?B?T3FSKzEzQjJlTy9aMDl2dDNHSjZiSjhTOE92dG9FYmJZaHU3QlNLUzFEZzBl?=
- =?utf-8?B?cXpDQVhyTmpEblo5dGwzNkNOajA3UEY1MHFJWG44YUxaTmFPY0huTExJM1VX?=
- =?utf-8?B?dUc4b01iUkJrTlJxZDJ3aktNWDNIdkR4T09FUTZwZCtYcHprU2k1NWFyVzNm?=
- =?utf-8?B?MlZaZE9vYVE4RjAxOEVkNUowaWVtMUs1MzI3UUZ5cVB5eUFzNnYybWFtV2Ro?=
- =?utf-8?B?cE9jTi9pbFlUL1lQaFBxQ2d5eEZRV2tGR3pzZlFEYVJQQVlEZFNtTHlKZ01u?=
- =?utf-8?B?MjNuc3JrVUl0MU5kb25sVWxzRUJFQVNzTUZQMldyeUdMQjFuT05zZlFtdFJV?=
- =?utf-8?B?cWdWa2hnU1JzT0d2eitpblkwK05MY1JjRWFmS210Tjh0THhpZmZuekFwMzdG?=
- =?utf-8?B?djBoK1hzL21WdGxxUlFtOENjUnlaajl5dFNSd2VOcllDUCtqUmpOSEJQeVp1?=
- =?utf-8?B?eWNnMHhHVmszVmN5V2xJMG9CQStvUXNsMHEvQTBQMVl6NmZ6N2huVGltbU9N?=
- =?utf-8?B?aXNkUmhjUU83Rlk4UkZYMGx0U0xsblpLRWhRWmtyZm85R2YxckFDY2tDU1Zo?=
- =?utf-8?B?U3BtZm04d1JmQWhiWkZRYVFyc1dIdXdiNTJ2K0hkeUg4YmJSN0RsM1BJN2VP?=
- =?utf-8?Q?PJ3xb7UhROxGWSvOZdARlIaaO?=
-X-OriginatorOrg: quarkslab.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b2c9db08-e21b-47a2-2e94-08dbcb18f22b
-X-MS-Exchange-CrossTenant-AuthSource: PAYP264MB3320.FRAP264.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Oct 2023 11:47:00.6818 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 6a0d73c7-78c3-4da6-8044-d2eae999a5c5
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: QgoQ4yVsY8Pq6uk8AAhP/oIHxWnMMOJxM7/ySOCArrFXGZhb++fyLPeAiX5I4UOnakKdd3AFjLSf3Q1P0gI4QQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PR1P264MB1918
-Received-SPF: pass client-ip=2a01:111:f400:7e18::718;
- envelope-from=fcagnin@quarkslab.com;
- helo=FRA01-PR2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 12 Oct 2023 09:08:58 -0400
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4pJZ1EBCp4tL
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500001.china.huawei.com (7.191.163.213) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+X-TUID: AmNn7HTeDGOW
 
-Hi Alexander,
+On Wed, 11 Oct 2023 20:43:47 +0100
+Salil Mehta <salil.mehta@huawei.com> wrote:
 
-awesome work, thanks!
+> KVM vCPU creation is done once during the initialization of the VM when Qemu
+> thread is spawned. This is common to all the architectures.
+> 
+> Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
+> corresponding KVM vCPU object in the Host KVM is not destroyed and its
+> representative KVM vCPU object/context in Qemu is parked.
+> 
+> Refactor common logic so that some APIs could be reused by vCPU Hotplug code.
 
-I don't know if it's the most appropriate fix but to have the patch series
-working I had to add `select VMAPPLE_VIRTIO_BLK` to `hw/vmapple/Kconfig`:
+If you are respinning I'd also call out that you added some trace points.
 
- >  config VMAPPLE
- >      bool
- >      depends on ARM && HVF
- >      default y if ARM && HVF
- >      imply PCI_DEVICES
- >      select ARM_GIC
- >      select PLATFORM_BUS
- >      select PCI_EXPRESS
- >      select PCI_EXPRESS_GENERIC_BRIDGE
- >      select PL011 # UART
- >      select PL031 # RTC
- >      select PL061 # GPIO
- >      select GPIO_PWR
- >      select PVPANIC_MMIO
- >      select VMAPPLE_AES
- >      select VMAPPLE_BDIF
- >      select VMAPPLE_CFG
- >      select VMAPPLE_PVG
- > +    select VMAPPLE_VIRTIO_BLK
+> 
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+Otherwise LGTM as it's a straight forward refactor.
 
-Otherwise QEMU raises the error `'vmapple-virtio-root' is not a valid device
-model name`.
-
-Francesco
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 

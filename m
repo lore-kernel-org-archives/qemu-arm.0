@@ -1,125 +1,132 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1073046ejc;
-        Thu, 12 Oct 2023 13:47:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IESotW9W9ge3yCcT2WL6z9B46sawa8nyrYNHlSjpsAU0sauoT1OttXV4D89q9i1DCjIU8R1
-X-Received: by 2002:a1f:c746:0:b0:495:3d9d:535c with SMTP id x67-20020a1fc746000000b004953d9d535cmr14923780vkf.4.1697143629899;
-        Thu, 12 Oct 2023 13:47:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697143629; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1123934ejc;
+        Thu, 12 Oct 2023 15:41:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFd8ir8P33Gcm4879ilgcK/sFWoVxt843sFpV7K7/vGHk8UhaaeWbAAKH3GbdpwGQ0pkTAp
+X-Received: by 2002:a05:620a:191a:b0:76e:f5c5:1bac with SMTP id bj26-20020a05620a191a00b0076ef5c51bacmr28410927qkb.48.1697150461035;
+        Thu, 12 Oct 2023 15:41:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697150461; cv=none;
         d=google.com; s=arc-20160816;
-        b=LBHAEV7fpT4tr81ePNLTSnvwdfxW/dqQtun0O55Q5nbrYrXKIeY/j/L+o8j/5sdfBw
-         F2Jh6wDyOHVa7PMnOG7e+okEevf6qULe00/vYnShp2ox0IBKGBpsz20lYPAvk+xOj4tW
-         WwzhoPDV1+j1fINK8TW2/LAnL7kIJPzYNx1IJzyL3JzY2CQY6UsQZXyEUSIu2XW4JfmF
-         TbYhKCb03bMFYMjhVAJtvP75dZ08vRHtj0F3PRVZxaK8/0zXQLKCN/C0TvOzOrNJPSbW
-         DoxD7/2LcT4aK9IvMlp0biE03/r7ekWLP09CXzYcvl4SlpopF8qRtOTKDFyBMvw0NFxx
-         sF3w==
+        b=KOw9gxQU/LgFX8dYPT08TbT++LZcWsCrmOiZm1AV+br0a9eQVt2vIn8FPODBgDHZRz
+         jbqFWdizcO5bqm6/MpxWuvnkwdstGviEiWPGDT/GNzznWiPwtF/l0GrBYH/16yQmrLvf
+         5r13DK8K6wgXoRDGMy2och9X0OR3NwiuOHu3oO9FAk5cVTRFYDIVGG9MxEB8zatEJIfn
+         /dVw5TyxOtvQgJzmc4+rQqfB+emnEbUB0oNO/2J9kphzYSy+4+AHm6hEYFNpst0t9ok1
+         N3rn/QHST5My5FuLyh54Xgh8XtqWlnlh7d49khAaZqVcZajpm9mM1OfIgTyDXBLAFfqY
+         QNow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=zWgRwgFvgYeKfEkwumJc+ZtHHrpydy58L7NM3LRa9LA=;
-        fh=ng5vUcoiHnHp7SoA4gH/t1W7f1IBczZcVrHWPHZ5a2U=;
-        b=O5mDpXzoVZgBX84VsMnTsyzOET3eqk7lqB3LJ4zV7tjAXM3Zv0+RWwdMhbbV6dJa2g
-         eZXgFSofQZg4MOQIqqEKtxI9iGQez4ZJ+wRDm7Rz/RaeeT7De0ZfznSQXjyvhVK5zbbP
-         gxr4DiPFQEWHFTabEEZWMS6LfvN8svqJXpIeZK1gSYSaRjLbCY0kluDFvYvXKdmti47N
-         3ZvwzrGvD/aB7QnYhpEkTZjWveG8IQUYVyCYB6b+VguO1NL09JZ1UiRbeMW2iTQYSG6l
-         Xj/C6ogChIfTNuJRD4CTWFnY2rMXfczVwExAjMDce5R9Gbx8eDDdWFfnskgeMUXLGKDZ
-         MStA==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=LFPDFB5uPtSrttVTtWne73CHAzHshQWzP3SnEmOqltI=;
+        fh=VKQpFli2qsmdAIogmo5vxgOyBhEEy1kAYRxNj/AxKK8=;
+        b=OVqrH6mSYG65zAxPNzOqGXJQPXBWYzTNL021q+epGN8C7dJttHiR1TqadSTXsXX14f
+         oWYqQYISS3xSqwlDgkU0vQ05Q+wknukuoZh3dvNhy3k7UfOmxQLYu8xY3MFu/fdcwc4J
+         QLZ+pY3ISvtVo5pCt/hEBvFBZ/qpPISG0Mk9PfklJLOR+Rs3Ix02OrfYas1ry9XOXv/B
+         xObXfE6CMfZjSonkX4Z7sA68UnLEix2SoTmCbyk8DnaW4nPkmDyv4FV/GSTygajOceqS
+         sFxbmLZvtP6t2sCoXSpfB5fkw4B3SY9Fm/nkzU4EeY0Ei/gEglmOwEzcBByy+br+KGj3
+         YWow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ua2OTPKC;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=VEj69mDf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11-20020ac87f4b000000b004181a080726si167117qtk.659.2023.10.12.13.47.09
+        by mx.google.com with ESMTPS id u17-20020a05620a0c5100b007741e910951si297455qki.695.2023.10.12.15.41.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Oct 2023 13:47:09 -0700 (PDT)
+        Thu, 12 Oct 2023 15:41:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ua2OTPKC;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=VEj69mDf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qr2Zs-0008NP-6Y; Thu, 12 Oct 2023 16:46:40 -0400
+	id 1qr4Lx-0001yR-P5; Thu, 12 Oct 2023 18:40:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qr2Zi-0008Kh-EX
- for qemu-arm@nongnu.org; Thu, 12 Oct 2023 16:46:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1qr4Lw-0001xe-5V; Thu, 12 Oct 2023 18:40:24 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qr2Zg-0005hK-SN
- for qemu-arm@nongnu.org; Thu, 12 Oct 2023 16:46:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697143587;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zWgRwgFvgYeKfEkwumJc+ZtHHrpydy58L7NM3LRa9LA=;
- b=Ua2OTPKCoq2zrroMp3cfP2OVsOb2aB45CgNc9fjgP1LjJLbglnvI1VuzZz8uYkiXBLRed/
- poYy+HALycl/7psahSxS5gdwM5vOZ/QgUC+d30h4A7IEP6rUCULMTYwM6YW8XPo8gQZJpk
- bUZ1VykfLQUhy3UVdpfWI3+XUUqee70=
-Received: from mail-oa1-f72.google.com (mail-oa1-f72.google.com
- [209.85.160.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-422-7jVsL0EoOGC-7dOuhI_Ppg-1; Thu, 12 Oct 2023 16:46:26 -0400
-X-MC-Unique: 7jVsL0EoOGC-7dOuhI_Ppg-1
-Received: by mail-oa1-f72.google.com with SMTP id
- 586e51a60fabf-1e990f0629cso1868054fac.2
- for <qemu-arm@nongnu.org>; Thu, 12 Oct 2023 13:46:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697143585; x=1697748385;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=zWgRwgFvgYeKfEkwumJc+ZtHHrpydy58L7NM3LRa9LA=;
- b=anKnHxRoh/Jk5bbbLWsHrPIpaBtsjfxzYzlQ64vpFdAv+WZt8lh/ze8LZZ656EKCGW
- KEEClyohsBJ80CgDuCd/yBgrTht9u1/5CPlrSH6F2H0vOqKSerD2pU/yioQeMn+a71IT
- CvZrV2h+KeH8Pm5Y9laGCh/fzamN8Lzmczb5PEk2asaeLUVDlVPWEcFNrnADtl/yazmS
- CkcP+b+7bT7QpwrlOLOxLbXFCrf3q4M8CG08QmVIbbBZqWPWevMhgcQLyGcdEqzh/8GK
- Pc4ysQVZNbqj93zwWIMidtad1IwNR9TdLbA5paadqMCGZklHcvZ+eparUGT/6jvXVAM+
- lSeQ==
-X-Gm-Message-State: AOJu0YzlQEBVUt/KVCLaO1vSL9S3Sm05Ey3qlC1FiV4ElZ0l07+b1cnL
- lkgZTb9eYd9m4L6c405TUZMfaniH4cBvr+F/vqpdImcLuJ7/NCh3gp1mtTsMgAoF64LXlVoRmp4
- 8YUwzGotKVZzuyvpI9tKWOGvoRx7Q
-X-Received: by 2002:a05:6870:14c1:b0:1b0:89e0:114f with SMTP id
- l1-20020a05687014c100b001b089e0114fmr30863613oab.31.1697143585582; 
- Thu, 12 Oct 2023 13:46:25 -0700 (PDT)
-X-Received: by 2002:a05:6870:14c1:b0:1b0:89e0:114f with SMTP id
- l1-20020a05687014c100b001b089e0114fmr30863592oab.31.1697143585374; Thu, 12
- Oct 2023 13:46:25 -0700 (PDT)
-MIME-Version: 1.0
-References: <20231009100251.56019-1-philmd@linaro.org>
- <20231009100251.56019-5-philmd@linaro.org>
-In-Reply-To: <20231009100251.56019-5-philmd@linaro.org>
-From: John Snow <jsnow@redhat.com>
-Date: Thu, 12 Oct 2023 16:46:14 -0400
-Message-ID: <CAFn=p-Z4mWJXewXk7acmhMwuJ8jdso6h7x=bFUJm1Mce+C4_Og@mail.gmail.com>
-Subject: Re: [PATCH 04/10] tests/cdrom-test: Clean up global variable
- shadowing in prepare_image()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Alberto Garcia <berto@igalia.com>, Hao Wu <wuhaotsh@google.com>,
- Kevin Wolf <kwolf@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org, 
- Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>,
- Tyrone Ting <kfting@nuvoton.com>, Markus Armbruster <armbru@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1qr4Lt-00031J-N3; Thu, 12 Oct 2023 18:40:23 -0400
+Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39CMbBhX012946; Thu, 12 Oct 2023 22:40:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=LFPDFB5uPtSrttVTtWne73CHAzHshQWzP3SnEmOqltI=;
+ b=VEj69mDf30FVk2xGxnCP5ZmGyT0+rzW2pBvRnVMl4ARKC0HWYMHavQbHQTIyOvECslgX
+ vybC0yT8E+A4LOnCS+Xb/s71ur5JuFacJbtayCyTZOnuGZubjG37R+3tVGp5zE2B9/+4
+ BhcKWQKVcs7bUqktzSyjXLf8DCfnkE0Kwp3R4ycotKtA38gsVxWFHfHS9aq6o0TZByp8
+ hnsBJQFig+cBg8Flz5vyFfy/pGGuubhmJIbQSbMIpCSfnK0umbRg6tzyoA4aHDtx4Rde
+ kX7LQrdLJMvRCzQBhnYseXf8V4kAZNm/ANhS/Iu7nFZEmjFkr0qaUqEuDERXtWKT/R5Y wA== 
+Received: from ppma13.dal12v.mail.ibm.com
+ (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tpsm0899u-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 12 Oct 2023 22:40:05 +0000
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39CLDsfm001239; Thu, 12 Oct 2023 22:40:04 GMT
+Received: from smtprelay06.dal12v.mail.ibm.com ([172.16.1.8])
+ by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tkkvkagef-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 12 Oct 2023 22:40:04 +0000
+Received: from smtpav04.dal12v.mail.ibm.com (smtpav04.dal12v.mail.ibm.com
+ [10.241.53.103])
+ by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39CMe3MJ16843506
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 12 Oct 2023 22:40:03 GMT
+Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id BCE9A58062;
+ Thu, 12 Oct 2023 22:40:03 +0000 (GMT)
+Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8D96658052;
+ Thu, 12 Oct 2023 22:40:03 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
+ by smtpav04.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 12 Oct 2023 22:40:03 +0000 (GMT)
+Message-ID: <ff880c8ff240fc37e6af1f00e33fb7a60125ce45.camel@linux.vnet.ibm.com>
+Subject: Re: [PATCH v2] misc/pca9552: Let external devices set pca9552 inputs
+From: Miles Glenn <milesg@linux.vnet.ibm.com>
+To: Joel Stanley <joel@jms.id.au>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
+ <clg@kaod.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, andrew@codeconstruct.com.au
+Date: Thu, 12 Oct 2023 17:40:03 -0500
+In-Reply-To: <CACPK8XfLSBGJvV340SN3V442YgRNS3rHXSDGFeGAyx5r1wE-9A@mail.gmail.com>
+References: <20231005204129.3522685-1-milesg@linux.vnet.ibm.com>
+ <CACPK8XfLSBGJvV340SN3V442YgRNS3rHXSDGFeGAyx5r1wE-9A@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: 5i19c-eRuKwABkGvnaNMFETBybMNA6j6
+X-Proofpoint-ORIG-GUID: 5i19c-eRuKwABkGvnaNMFETBybMNA6j6
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-12_14,2023-10-12_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 clxscore=1015
+ priorityscore=1501 spamscore=0 impostorscore=0 lowpriorityscore=0
+ mlxlogscore=999 bulkscore=0 malwarescore=0 phishscore=0 adultscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310120190
+Received-SPF: none client-ip=148.163.156.1;
+ envelope-from=milesg@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,55 +141,192 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GHC4Oi/rIUIE
+X-TUID: gFt6etUMz1W9
 
-On Mon, Oct 9, 2023 at 6:03=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philmd@=
-linaro.org> wrote:
->
-> Rename the variable to fix:
->
->   tests/qtest/cdrom-test.c:40:50: error: declaration shadows a variable i=
-n the global scope [-Werror,-Wshadow]
->   static int prepare_image(const char *arch, char *isoimage)
->                                                    ^
->   tests/qtest/cdrom-test.c:18:13: note: previous declaration is here
->   static char isoimage[] =3D "cdrom-boot-iso-XXXXXX";
->               ^
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+On Tue, 2023-10-10 at 23:02 +1030, Joel Stanley wrote:
+> On Fri, 6 Oct 2023 at 07:23, Glenn Miles <milesg@linux.vnet.ibm.com>
+> wrote:
+> > Allow external devices to drive pca9552 input pins by adding
+> > input GPIO's to the model.  This allows a device to connect
+> > its output GPIO's to the pca9552 input GPIO's.
+> > 
+> > In order for an external device to set the state of a pca9552
+> > pin, the pin must first be configured for high impedance (LED
+> > is off).  If the pca9552 pin is configured to drive the pin low
+> > (LED is on), then external input will be ignored.
+> 
+> Does this let us use qom-set from the monitor, and have the guest see
+> the state change?
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+Yes, as long as no other device is attached to the input gpio of the
+device, it will behave the same as it did before this change.  The
+behavior of the device only changes when an external device attaches
+its output gpio to one of the pca9552's input gpio's and drives a
+low voltage.  In that case, regardless of what is written to the LS0-
+LS3 registers, the INPUT* bit for that pin will read as '0'.  This is
+because (physically) pca9552 devices don't actually drive the voltage
+high.  Instead, they set the output to "high impedance" and allow the
+pin voltage to go wherever some external component (usually a pullup
+resistor) takes it.  
 
-> ---
->  tests/qtest/cdrom-test.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/tests/qtest/cdrom-test.c b/tests/qtest/cdrom-test.c
-> index f2a8d91929..0945383789 100644
-> --- a/tests/qtest/cdrom-test.c
-> +++ b/tests/qtest/cdrom-test.c
-> @@ -37,17 +37,17 @@ static int exec_xorrisofs(const char **args)
->      return exit_status;
->  }
->
-> -static int prepare_image(const char *arch, char *isoimage)
-> +static int prepare_image(const char *arch, char *isoimagepath)
->  {
->      char srcdir[] =3D "cdrom-test-dir-XXXXXX";
->      char *codefile =3D NULL;
->      int ifh, ret =3D -1;
->      const char *args[] =3D {
->          "xorrisofs", "-quiet", "-l", "-no-emul-boot",
-> -        "-b", NULL, "-o", isoimage, srcdir, NULL
-> +        "-b", NULL, "-o", isoimagepath, srcdir, NULL
->      };
->
-> -    ifh =3D mkstemp(isoimage);
-> +    ifh =3D mkstemp(isoimagepath);
->      if (ifh < 0) {
->          perror("Error creating temporary iso image file");
->          return -1;
-> --
-> 2.41.0
->
+> 
+> An example in the commit message, or even better would be a test.
+> 
+
+I'm definitely open to providing a test.  Maybe the existing tests can
+be added to?  I'm not sure if that environment allows for hooking up
+some of the output gpio's of the pca9552 to some of the input gpios,
+but I can look into it.
+
+My testing so far has been more of an integrated test that has an I2C
+master connected to an I2C bus with a couple of pca9552 devices hanging
+off of that, but it's very specific to the powernv platform.
+
+ 
+> Some other comments below.
+> 
+> > Signed-off-by: Glenn Miles <milesg@linux.vnet.ibm.com>
+> > ---
+> > Based-on: <20230927203221.3286895-1-milesg@linux.vnet.ibm.com>
+> > ([PATCH] misc/pca9552: Fix inverted input status)
+> >  hw/misc/pca9552.c         | 39 ++++++++++++++++++++++++++++++++++-
+> > ----
+> >  include/hw/misc/pca9552.h |  3 ++-
+> >  2 files changed, 36 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+> > index ad811fb249..f28b5ecd7e 100644
+> > --- a/hw/misc/pca9552.c
+> > +++ b/hw/misc/pca9552.c
+> > @@ -113,16 +113,22 @@ static void
+> > pca955x_update_pin_input(PCA955xState *s)
+> >          switch (config) {
+> >          case PCA9552_LED_ON:
+> >              /* Pin is set to 0V to turn on LED */
+> > -            qemu_set_irq(s->gpio[i], 0);
+> > +            qemu_set_irq(s->gpio_out[i], 0);
+> >              s->regs[input_reg] &= ~(1 << input_shift);
+> >              break;
+> >          case PCA9552_LED_OFF:
+> >              /*
+> >               * Pin is set to Hi-Z to turn off LED and
+> > -             * pullup sets it to a logical 1.
+> > +             * pullup sets it to a logical 1 unless
+> > +             * external device drives it low.
+> >               */
+> > -            qemu_set_irq(s->gpio[i], 1);
+> > -            s->regs[input_reg] |= 1 << input_shift;
+> > +            if (s->ext_state[i] == 0) {
+> > +                qemu_set_irq(s->gpio_out[i], 0);
+> > +                s->regs[input_reg] &= ~(1 << input_shift);
+> > +            } else {
+> > +                qemu_set_irq(s->gpio_out[i], 1);
+> > +                s->regs[input_reg] |= 1 << input_shift;
+> > +            }
+> >              break;
+> >          case PCA9552_LED_PWM0:
+> >          case PCA9552_LED_PWM1:
+> > @@ -337,6 +343,7 @@ static const VMStateDescription pca9552_vmstate
+> > = {
+> >          VMSTATE_UINT8(len, PCA955xState),
+> >          VMSTATE_UINT8(pointer, PCA955xState),
+> >          VMSTATE_UINT8_ARRAY(regs, PCA955xState, PCA955X_NR_REGS),
+> > +        VMSTATE_UINT8_ARRAY(ext_state, PCA955xState,
+> > PCA955X_PIN_COUNT_MAX),
+> >          VMSTATE_I2C_SLAVE(i2c, PCA955xState),
+> >          VMSTATE_END_OF_LIST()
+> >      }
+> > @@ -355,6 +362,7 @@ static void pca9552_reset(DeviceState *dev)
+> >      s->regs[PCA9552_LS2] = 0x55;
+> >      s->regs[PCA9552_LS3] = 0x55;
+> > 
+> > +    memset(s->ext_state, 1, PCA955X_PIN_COUNT_MAX);
+> >      pca955x_update_pin_input(s);
+> > 
+> >      s->pointer = 0xFF;
+> > @@ -377,6 +385,26 @@ static void pca955x_initfn(Object *obj)
+> >      }
+> >  }
+> > 
+> > +static void pca955x_set_ext_state(PCA955xState *s, int pin, int
+> > level)
+> > +{
+> > +    if (s->ext_state[pin] != level) {
+> > +        uint16_t pins_status = pca955x_pins_get_status(s);
+> > +        s->ext_state[pin] = level;
+> > +        pca955x_update_pin_input(s);
+> > +        pca955x_display_pins_status(s, pins_status);
+> > +    }
+> > +}
+> > +
+> > +static void pca955x_gpio_in_handler(void *opaque, int pin, int
+> > level)
+> > +{
+> > +
+> > +    PCA955xState *s = PCA955X(opaque);
+> > +    PCA955xClass *k = PCA955X_GET_CLASS(s);
+> > +
+> > +    assert((pin >= 0) && (pin < k->pin_count));
+> > +    pca955x_set_ext_state(s, pin, level);
+> > +}
+> > +
+> >  static void pca955x_realize(DeviceState *dev, Error **errp)
+> >  {
+> >      PCA955xClass *k = PCA955X_GET_CLASS(dev);
+> > @@ -386,7 +414,8 @@ static void pca955x_realize(DeviceState *dev,
+> > Error **errp)
+> >          s->description = g_strdup("pca-unspecified");
+> >      }
+> > 
+> > -    qdev_init_gpio_out(dev, s->gpio, k->pin_count);
+> > +    qdev_init_gpio_out(dev, s->gpio_out, k->pin_count);
+> > +    qdev_init_gpio_in(dev, pca955x_gpio_in_handler, k->pin_count);
+> >  }
+> > 
+> >  static Property pca955x_properties[] = {
+> > diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
+> > index b6f4e264fe..c36525f0c3 100644
+> > --- a/include/hw/misc/pca9552.h
+> > +++ b/include/hw/misc/pca9552.h
+> > @@ -30,7 +30,8 @@ struct PCA955xState {
+> >      uint8_t pointer;
+> > 
+> >      uint8_t regs[PCA955X_NR_REGS];
+> > -    qemu_irq gpio[PCA955X_PIN_COUNT_MAX];
+> > +    qemu_irq gpio_out[PCA955X_PIN_COUNT_MAX];
+> 
+> I wondered if the renaming of gpio to gpio_out could be a separate
+> patch, but once I'd read the entire patch it made sense, so don't
+> bother.
+> 
+> I think Cédric has some magic for sorting the header file changes at
+> the start of the diff output. Here it is:
+> 
+> https://gitlab.com/qemu-project/qemu/-/blob/master/scripts/git.orderfile?ref_type=heads
+> 
+> We should add that to the tips and tricks part of
+> docs/devel/submitting-a-patch.rst
+> 
+
+Ok, I'll try to remember this for future work.  Thanks!
+
+> > +    uint8_t ext_state[PCA955X_PIN_COUNT_MAX];
+> 
+> State is 0 or 1, representing driving the pin low, or high impedance?
+> I think some #defines or enums would make the states clearer.
+> 
+
+Ok, I can certainly do that.
+
+Thanks for the review!
+
+Glenn
+
+> >      char *description; /* For debugging purpose only */
+> >  };
+> > 
+> > --
+> > 2.31.1
+> > 
+> > 
 

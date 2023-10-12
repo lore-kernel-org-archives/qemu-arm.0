@@ -1,137 +1,184 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp673529ejc;
-        Thu, 12 Oct 2023 02:22:57 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEFOT6P/axZSWSOMzYvwdMZctoAWI6fgw2DKUvs+V1QAIrQ1J3ORT+uO8yiPJOlVkfP0UzO
-X-Received: by 2002:adf:e9d0:0:b0:313:e8b6:1699 with SMTP id l16-20020adfe9d0000000b00313e8b61699mr20409825wrn.55.1697102577108;
-        Thu, 12 Oct 2023 02:22:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697102577; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp764096ejc;
+        Thu, 12 Oct 2023 05:19:51 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFuyE+/jxQa3cLcaeCUX9MkrFQE9tRp99BhtibfjB3zHU8KjSmGIJe+XrPQQisRrY5iz6QX
+X-Received: by 2002:ac8:5c52:0:b0:412:1ba6:32c7 with SMTP id j18-20020ac85c52000000b004121ba632c7mr29476010qtj.44.1697113191738;
+        Thu, 12 Oct 2023 05:19:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697113191; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qk9JMT3fkfifKY3iFUPwvGm8rJutXScTk69zbhic+ggSzv/Wbp4bTsQ5TGJeU3UVIT
-         aZpXToDuR8xhUC4KiU0aEfvHLlj0fNWXx9TfRu9/OVLaQE2VB/lgldL2UQLTAiDBwlwh
-         ZjUHu7WRzL8tRxyu12hnMqiWR/+B89bBdsf5bjncF1PJ9ksva/0Do8lw+PwPdVKrUnlc
-         DGny1Ka3A5V8FcKfM+f+GgxgHxWuj3tjtT4VQyMQxbXPU0oJ22ITi+dIqm0KmDtS5NZy
-         my/+QumC73JHUwLXRE4zlvDWr8Y055LXEoQuzhbNZpe2G+uM19dOb+F2RPdRvkmok/Ja
-         EgtA==
+        b=qPsXSJG3YjeJuRlT0AZp7ePNGkSo5waV8X5Dyybyv6nCkwbvEgr7V9ci34gfyJongr
+         Rv45dmvcf0aS+ayu/CA/la5IIaNGTLmzTKFdGGYCocHquRJNw0goZ/sRx9D4aK4pbRKs
+         78cX5fXEDnHktZzVeJfhwzbxXW5c9N0rX4mBH0bpjOShk3H3XqD2vFGvev+CLLCw9ZCK
+         W+xRKmrVeyz+zXUHHiFXC4avHZCt1IKoA8+h1o/uIFvj/TjoQ4hYj4P1hptWcBbWfa85
+         IuJN/8prD7o5OOzK0gSR8yYSJoND3wChWz1DC6HL72hv5+KhauOVm1ec3AU9DjsiCunJ
+         nHTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=QKRYlJrhw8iekdWI9lVQpJJ5VEtwYxStEwrWhfWnYAo=;
-        fh=rhXBpbHgb7sNZuZpjeexfaR9VHJMNYmK/GML+KG0Wzo=;
-        b=Bb/ZEDH+EhO96BE0pBIi+d8PUvqxiMcLYYOc+ZpriJcYcPbzN6+HLBFrO67W/ooIQV
-         Ok9Z1yW4U6OCQq5uDbvmQStlK1ADDTN3YrMFlXe4FtT4UR00fmB8vngdqwK1Sn9kS4oH
-         PBcd9gMjlQmu21woWyGKDiGEhlB1/pbVspo+buMUSmDEPyzlOqMhHIjXwfIrtUVAm4Jp
-         kV8zCgf/rJLnoI+o21UsMZGK5T7zaG2GExDQqBD53Q8CZBftpn3IuboBCFgT16YXmSVH
-         UiTm4nOwlyE6IRaUtyGVgsBC67D7V6lF5DP+Ah/hIykvymxaWOc8mDH6aWbr4ViK6/e+
-         SuAw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=R+a0EyKEUxgm0lXUaYS7q8xxVvw9rO8rB+Ai3q4Lewo=;
+        fh=uMYo3jOuXUsDthaXCE4/M6n3+voY5rtHQA7Grzg1cYU=;
+        b=gFu+P1W0GfxiWuIj1BE/65YARxfqnPnpo1Ib/KoNnQwqmCB29BOyw8ZEtU5UeZLQug
+         ZQ5YSEf89mL2wJsrflg6DlLwWoubsMjKibwxx3oMCEAvcl070cJ5ar9lGGzVzogxbB3J
+         hQNMP7f8oMdRmh+Xw4J6WtivfE2hKJCrKj7apGxEC9MDIomJCpvJ+DHt3yJqSvCry9Wx
+         E/4uRSZUNq0HGnIkVCJedDy2+RtHeh2/+d57TpptYq/PRxFbipiAwXV3ZwF4RHKs9dhF
+         ebH223odESkvaB3g+gRSbnHbvfgyAUXNtfOgT2Kttwk/qw53ihIJzwjc8KOCkJi8ZoKw
+         68Iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id d15-20020adfe84f000000b0032d648564adsi2564383wrn.1036.2023.10.12.02.22.56
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Oct 2023 02:22:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HRYzUdju;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g6-20020ac87d06000000b00417a6207204si11098541qtb.669.2023.10.12.05.19.51
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Oct 2023 05:19:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml100006.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S5kcP4Ss0z688d6;
-	Thu, 12 Oct 2023 17:19:49 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml100006.china.huawei.com (7.191.160.224) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Thu, 12 Oct 2023 10:22:54 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Thu, 12 Oct 2023 10:22:54 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Gavin Shan <gshan@redhat.com>, Salil Mehta <salil.mehta@opnsrc.net>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org"
-	<alex.bennee@linaro.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng
- (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V5 8/9] physmem: Add helper function to destroy CPU
- AddressSpace
-Thread-Topic: [PATCH V5 8/9] physmem: Add helper function to destroy CPU
- AddressSpace
-Thread-Index: AQHZ/Hu2W97dHDuZJkS1Rvdlsfl3xbBFLG+AgAAJLgCAAAPWAIAAqJuQ
-Date: Thu, 12 Oct 2023 09:22:54 +0000
-Message-ID: <4ffab3f51cb4460bb36d4c923e3c3c9a@huawei.com>
-References: <20231011194355.15628-1-salil.mehta@huawei.com>
- <20231011194355.15628-9-salil.mehta@huawei.com>
- <69098d56-8b68-2734-ef40-7338386d7fa9@redhat.com>
- <e73217f7-e6c2-81e7-0174-54ef575ebbce@opnsrc.net>
- <b8c13adb-ce1e-41fc-daa0-4aa31bf5f7a0@redhat.com>
-In-Reply-To: <b8c13adb-ce1e-41fc-daa0-4aa31bf5f7a0@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.195.35.158]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b=HRYzUdju;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qqufC-0003Lj-Ad; Thu, 12 Oct 2023 08:19:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qqufA-0003JR-DT
+ for qemu-devel@nongnu.org; Thu, 12 Oct 2023 08:19:36 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qquf8-0001qf-PL
+ for qemu-devel@nongnu.org; Thu, 12 Oct 2023 08:19:36 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-9b98a699f45so140132066b.3
+ for <qemu-devel@nongnu.org>; Thu, 12 Oct 2023 05:19:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697113173; x=1697717973; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=R+a0EyKEUxgm0lXUaYS7q8xxVvw9rO8rB+Ai3q4Lewo=;
+ b=HRYzUdjuIzzshSApbyr6p80clJeH0G2TR9aLDH244d7GvCcTIH+nk1AKjkmuo7BXXT
+ d/koBRIC3dMcx1KT6P0ECDXYd5S4aL1qcumb82bilXZj/QDhs454npNQKSeG2N/GYm8T
+ aRm3AswaN2pYN2LFzUM2+vYOdYC7Hb1+BQO6oz9FjS9Mjfa3j0tEEIYw69r3FJx/zQwm
+ j+XIUTzKGSEdrpx14brh9WYymhdCPcT6rg37hG4/LWPSvouzX2VfPMfkeyRSbiihJizg
+ Gj6vTP1F3fW8ku7QB4s1aiOuGeyaUOG1F8I1C5sMA1xDvLnb7yklt5eWr5+gDRnLtbrF
+ itGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697113173; x=1697717973;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=R+a0EyKEUxgm0lXUaYS7q8xxVvw9rO8rB+Ai3q4Lewo=;
+ b=iXaATBjjco0W7Qt9f3SJZgoOBn7eSCDaTUadfY0kFw2yrlC7XcdffZYKZskUbT25GW
+ PZK69UuaLoKsON5xUsxOR+OKZT+F0hbSMtKnef+PuRCfuIC2K2+z5cw/h4dbR8gUw/B+
+ uTQbRzrMyUZ4cAjmXD0anJYVCfRtMKK3LRGvBCZ1ccnVYWPQEqQ3lf+aIjSB6twR1IbQ
+ HS1wS3Umfe8mEKq5W3aqs72+/DHZ1zeE+oOFJ23vIO9niLp54JBxPkbLir27mTo0131h
+ Utz29T1vR/EkioPuBCbouIVE4fc63Q5vF8F66jZhfLRbWS0tvIXZzIEbfS7FL318oJey
+ ShDQ==
+X-Gm-Message-State: AOJu0YxvsEtx3j/0btN+/5R26hOt2x3iHTpytljjFbY+MNhxcb7WFq94
+ yM+oNhaaoMzmVRpGhF1ezR8iVZZAOyWqbs0YPX0qHA==
+X-Received: by 2002:a17:906:ef90:b0:9ae:673a:88b9 with SMTP id
+ ze16-20020a170906ef9000b009ae673a88b9mr20120482ejb.22.1697113172897; 
+ Thu, 12 Oct 2023 05:19:32 -0700 (PDT)
+Received: from m1x-phil.lan (176-131-211-232.abo.bbox.fr. [176.131.211.232])
+ by smtp.gmail.com with ESMTPSA id
+ a6-20020a170906190600b009ad89697c86sm11081226eje.144.2023.10.12.05.19.31
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 12 Oct 2023 05:19:32 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 5/8] hw/pci-host/designware: Keep host reference in
+ DesignwarePCIEViewport
+Date: Thu, 12 Oct 2023 14:18:53 +0200
+Message-ID: <20231012121857.31873-6-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231012121857.31873-1-philmd@linaro.org>
+References: <20231012121857.31873-1-philmd@linaro.org>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: 6SmJaadMcrX+
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GqgXlFFJVv5n
 
-PiBGcm9tOiBHYXZpbiBTaGFuIDxnc2hhbkByZWRoYXQuY29tPg0KPiBTZW50OiBUaHVyc2RheSwg
-T2N0b2JlciAxMiwgMjAyMyAxOjE4IEFNDQo+IFRvOiBTYWxpbCBNZWh0YSA8c2FsaWwubWVodGFA
-b3Buc3JjLm5ldD47IFNhbGlsIE1laHRhDQo+IDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPjsgcWVt
-dS1kZXZlbEBub25nbnUub3JnOyBxZW11LWFybUBub25nbnUub3JnDQo+IENjOiBtYXpAa2VybmVs
-Lm9yZzsgamVhbi1waGlsaXBwZUBsaW5hcm8ub3JnOyBKb25hdGhhbiBDYW1lcm9uDQo+IDxqb25h
-dGhhbi5jYW1lcm9uQGh1YXdlaS5jb20+OyBscGllcmFsaXNpQGtlcm5lbC5vcmc7DQo+IHBldGVy
-Lm1heWRlbGxAbGluYXJvLm9yZzsgcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZzsNCj4gaW1h
-bW1lZG9AcmVkaGF0LmNvbTsgYW5kcmV3LmpvbmVzQGxpbnV4LmRldjsgZGF2aWRAcmVkaGF0LmNv
-bTsNCj4gcGhpbG1kQGxpbmFyby5vcmc7IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgb2xpdmVyLnVw
-dG9uQGxpbnV4LmRldjsNCj4gcGJvbnppbmlAcmVkaGF0LmNvbTsgbXN0QHJlZGhhdC5jb207IHdp
-bGxAa2VybmVsLm9yZzsgcmFmYWVsQGtlcm5lbC5vcmc7DQo+IGFsZXguYmVubmVlQGxpbmFyby5v
-cmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51azsNCj4gZGFycmVuQG9zLmFtcGVyZWNvbXB1dGluZy5j
-b207IGlsa2thQG9zLmFtcGVyZWNvbXB1dGluZy5jb207DQo+IHZpc2hudUBvcy5hbXBlcmVjb21w
-dXRpbmcuY29tOyBrYXJsLmhldWJhdW1Ab3JhY2xlLmNvbTsNCj4gbWlndWVsLmx1aXNAb3JhY2xl
-LmNvbTsgemh1a2VxaWFuIDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5nDQo+
-IChDKSA8d2FuZ3hpb25nZmVuZzJAaHVhd2VpLmNvbT47IHdhbmd5YW5hbiAoWSkgPHdhbmd5YW5h
-bjU1QGh1YXdlaS5jb20+Ow0KPiBqaWFrZXJuZWwyQGdtYWlsLmNvbTsgbWFvYmlib0Bsb29uZ3Nv
-bi5jbjsgbGl4aWFuZ2xhaUBsb29uZ3Nvbi5jbjsgTGludXhhcm0NCj4gPGxpbnV4YXJtQGh1YXdl
-aS5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggVjUgOC85XSBwaHlzbWVtOiBBZGQgaGVscGVy
-IGZ1bmN0aW9uIHRvIGRlc3Ryb3kgQ1BVDQo+IEFkZHJlc3NTcGFjZQ0KPiANCj4gSGkgU2FsaWws
-DQo+IA0KPiBPbiAxMC8xMi8yMyAxMDowNCwgU2FsaWwgTWVodGEgd3JvdGU6DQo+ID4gT24gMTIv
-MTAvMjAyMyAwMDozMSwgR2F2aW4gU2hhbiB3cm90ZToNCj4gPj4gT24gMTAvMTIvMjMgMDU6NDMs
-IFNhbGlsIE1laHRhIHdyb3RlOg0KPiANCj4gWy4uLl0NCj4gDQo+ID4+PiArdm9pZCBjcHVfYWRk
-cmVzc19zcGFjZV9kZXN0cm95KENQVVN0YXRlICpjcHUsIGludCBhc2lkeCkNCj4gPj4+ICt7DQo+
-ID4+PiArwqDCoMKgIENQVUFkZHJlc3NTcGFjZSAqY3B1YXM7DQo+ID4+PiArDQo+ID4+PiArwqDC
-oMKgIGFzc2VydChhc2lkeCA8IGNwdS0+bnVtX2FzZXMpOw0KPiA+Pj4gK8KgwqDCoCBhc3NlcnQo
-YXNpZHggPT0gMCB8fCAha3ZtX2VuYWJsZWQoKSk7DQo+ID4+PiArwqDCoMKgIGFzc2VydChjcHUt
-PmNwdV9hc2VzKTsNCj4gPj4+ICsNCj4gPj4NCj4gPj4gVGhlIHR3byBhc3NlcnRzIG9uIEBhc2lk
-eCBhbmQgQGNwdS0+Y3B1X2FzZXMgY2FuIGJlIGNvbWJpbmVkDQo+ID4+IHRvIG9uZSBzbyB0aGF0
-IHRoZXNlIDMgYXNzZXJ0cyBjYW4gYmUgY29tYmluZWQgdG8gdHdvLg0KPiA+Pg0KPiA+PiDCoMKg
-wqDCoMKgwqDCoCAvKiBPbmx5IG9uZSBhZGRyZXNzIHNwYWNlIGlzIHN1cHBvcnRlZCBieSBLVk0g
-Ki8NCj4gPj4gwqDCoMKgwqDCoMKgwqAgYXNzZXJ0KGFzaWR4ID09IDAgfHwgIWt2bV9lbmFibGVk
-KCkpOw0KPiA+PiDCoMKgwqDCoMKgwqDCoCBhc3NlcnQoYXNpZHggPj0gMCAmJiBhc2lkeCA8IGNw
-dS0+Y3B1X2FzZXNfY291bnQpDQo+ID4NCj4gPiBXZSBjYW4gZG8gdGhhdC4NCj4gPg0KPiA+IEkg
-YW0gbm90IGluIGZhdm9yIHRvIHJlbW92ZcKgICdhc3NlcnQoY3B1LT5jcHVfYXNlcyk7JyBhcyB0
-aGlzIGNhbiBzYXZlDQo+IGxvdCBvZiBkZWJ1Z2dpbmcuDQo+ID4NCj4gDQo+IE9rLCBJdCdzIGZp
-bmUgdG8ga2VlcCAnYXNzZXJ0KGNwdS0+Y3B1X2FzZXMpJywgYnV0ICdhc3NlcnQoYXNpZHggPj0g
-MCknIGlzDQo+IHN0aWxsIG5lZWRlZD8gRm9yIGV4YW1wbGUsIHRoZSB3cm9uZyBjaHVuayBvZiBt
-ZW1vcnkgd2lsbCBiZSByZWxlYXNlIHdoZW4NCj4gQGFzaWR4IGlzIHNtYWxsZXIgdGhhbiB6ZXJv
-LCB3aGljaCBpcyBvdXQtb2YtYm91bmQgdG8gQGNwdS0+Y3B1X2FzZXNbXQ0KDQpZZXMsIG9mIGNv
-dXJzZSwgd2UgY2FuIGtlZXAgdGhhdC4NCg0KVGhhbmtzDQpTYWxpbC4NCg0K
+The PCI root function is irrelevant for the ViewPort; only
+a reference to the host bridge is required. Since we can
+directly access the PCI bus, remove the pci_get_bus() call.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/pci-host/designware.h | 2 +-
+ hw/pci-host/designware.c         | 7 +++----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/include/hw/pci-host/designware.h b/include/hw/pci-host/designware.h
+index 9e2caa04e9..e1952ad324 100644
+--- a/include/hw/pci-host/designware.h
++++ b/include/hw/pci-host/designware.h
+@@ -32,7 +32,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(DesignwarePCIEHost, DESIGNWARE_PCIE_HOST)
+ OBJECT_DECLARE_SIMPLE_TYPE(DesignwarePCIERoot, DESIGNWARE_PCIE_ROOT)
+ 
+ typedef struct DesignwarePCIEViewport {
+-    DesignwarePCIERoot *root;
++    DesignwarePCIEHost *host;
+ 
+     MemoryRegion cfg;
+     MemoryRegion mem;
+diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
+index fb46493a05..d12a36b628 100644
+--- a/hw/pci-host/designware.c
++++ b/hw/pci-host/designware.c
+@@ -211,12 +211,11 @@ static uint64_t designware_pcie_root_data_access(void *opaque, hwaddr addr,
+                                                  uint64_t *val, unsigned len)
+ {
+     DesignwarePCIEViewport *viewport = opaque;
+-    DesignwarePCIERoot *root = viewport->root;
++    PCIHostState *pci = PCI_HOST_BRIDGE(viewport->host);
+ 
+     const uint8_t busnum = DESIGNWARE_PCIE_ATU_BUS(viewport->target);
+     const uint8_t devfn  = DESIGNWARE_PCIE_ATU_DEVFN(viewport->target);
+-    PCIBus    *pcibus    = pci_get_bus(PCI_DEVICE(root));
+-    PCIDevice *pcidev    = pci_find_device(pcibus, busnum, devfn);
++    PCIDevice *pcidev    = pci_find_device(pci->bus, busnum, devfn);
+ 
+     if (pcidev) {
+         addr &= pci_config_size(pcidev) - 1;
+@@ -445,7 +444,7 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
+         g_free(name);
+ 
+         viewport = &root->viewports[DESIGNWARE_PCIE_VIEWPORT_OUTBOUND][i];
+-        viewport->root    = root;
++        viewport->host    = host;
+         viewport->inbound = false;
+         viewport->base    = 0x0000000000000000ULL;
+         viewport->target  = 0x0000000000000000ULL;
+-- 
+2.41.0
+

@@ -1,125 +1,118 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp772364ejc;
-        Thu, 12 Oct 2023 05:33:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IETph2uLdfN6mEdI/7t85HclU7khbauNdBbQ6GLgN6EYIG7v+VPW2yGRauPDRK5tZzRU5Ly
-X-Received: by 2002:a05:6a00:234a:b0:68f:b5a1:12bf with SMTP id j10-20020a056a00234a00b0068fb5a112bfmr28278431pfj.29.1697114031610;
-        Thu, 12 Oct 2023 05:33:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697114031; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp794885ejc;
+        Thu, 12 Oct 2023 06:07:18 -0700 (PDT)
+X-Received: by 2002:a17:906:3116:b0:9a9:e4ba:2da7 with SMTP id 22-20020a170906311600b009a9e4ba2da7mr22016059ejx.49.1697116038402;
+        Thu, 12 Oct 2023 06:07:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697116038; cv=none;
         d=google.com; s=arc-20160816;
-        b=XA9ql6dO5B95UAF9isTW+ZAZsBmX12nsvZ8vO6pIcqx+F3ZiCWCTztCzWRDk/6EY6j
-         SOCtGapEy9LrxgjqphNRO1IH+4R6raH+SQPVkhWoE2dWzr6mRF+M/HlO12dDdG7g1ZXh
-         XkXn+9u3T76AIUgpMkCTbUT9qYpETlDksFAWe13V9g16RJWEG3jBUGVw1jwWlpYI5YFn
-         TLpSjnelTnVDNuju7I60ltFQokqqyKUaGthJN7HU2MaKp+yIapx2ZYOIyS42RlLEVWZ4
-         VfqyAw+8lGm6w6r2ZYKnvZ0f+wqIQUwXo+YJqAxCWTNA8q12jVpWe5J57SEZMXnD6utw
-         JAig==
+        b=za4Ghtq/SKWN7Imr2hj1OAS85M+SX/juvC2UTHqHeW0hoOA2VWf7LiF9XFguuYfM4L
+         Sp/4CM7svDJym16PjP7RBtotKpZ8LDbjgNZWrIAP/nTmvR76DPWzEe+KSOFPcYyUYVJS
+         ang5suFj2+VH2rtXWMtfyGH4bWRh0Zak8H8WTkfZHqMdG7aD1kuDHRsvwo1PoNX7girI
+         H2H1zn3xO4mWftbJhKuFETHLUxG64FxZgEG4ah/RXHKP6JMqeg9p1VpgEwZznTpcFCtc
+         Ar1aCoFG9S1CE8v7DldgR6szHFfu38cSZQ5nn0Q+aEgvVbmdhQFaElTaYeP6sZLiRgu+
+         CSsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=xIhpmmI5C2VUd4R1fM9PEnaojoOJBcr3d/1t46H8pX8=;
-        fh=PtCmXlIY6YlxXVQrsky2zWNgmnrXxAMrU7fZfQwUL8g=;
-        b=J+U4X+n4G3C9DwomsCkzCCf7gmB/v53aG9oMmLjgXV0lMIJ0MsMINTJsQ4a7cdQRSG
-         Wh0x6rpQnBYwQzAqc1sBkCqXGoq4ptktQohhq1kq1qnMm2Nxl2jlQcICXt4fWLy9Vgi6
-         GlrazQAx8X9FU8vYJf7x4XLbuEZ4Q1YzjG/IvTxD2TxmEoyo9GYQcZiJMWkX9J5yR9/E
-         yT47nn+LHJ6A+JfjpmQ9EtzYIx71WuablBDQMvkvgw/tKyi+ZPXsbpnDl6ni7ZmAk61X
-         OIesPzMQkBhPARg2OIJCX5eZ1ShCijUlNYj8krmDRcBZP7SGVCjruHG10pZ4UVYt/uIO
-         0qNw==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=uElxi2HlcdsKIdLCnnj5Iek8ftyU5xtffELgvgr3cFw=;
+        fh=t1Ji07xgYgopWOgYSzd1++xm9ncTuyyBDwhGClNmAZ0=;
+        b=TkOfiVTbYq26BvnOQvmVBk4HF3Ln6KspOa/pVM8dPsX4j52OVl2c1AfcNmm9y3qyr+
+         0+i35Pn+t1ANljsuz5OnD6veOwa1G8dpik1bWiW+IuNtaaYzKZ75hIBVtnj+BeeBGWje
+         7vKZZQaMgYmXPvUOOc5bSSiOB7icnVD6FJnvwCU79ymfXRvR5t8mQx5fcuWstZcBS1Po
+         HAx1q9J9eByN3/1sop5F9gc4RQOv+JzyGVwPxbB8KUEEt99D3ZWilomIAxJhhJRioAOS
+         NTjQxm/jvQp/iL8CN1uUI4wZiGrtkJdmmKgmPmSJoceejGH0Av1zAZGf++sdf1sPImV1
+         zDfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=ODW0gUTO;
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <quic_svaddagi@quicinc.com>
-Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com. [205.220.168.131])
-        by mx.google.com with ESMTPS id 19-20020a631753000000b0056b024a4dd0si2084328pgx.614.2023.10.12.05.33.50
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Oct 2023 05:33:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) client-ip=205.220.168.131;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rDzjh3ca;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d11-20020a170906304b00b009ba065e7512sor4600775ejd.19.2023.10.12.06.07.18
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 12 Oct 2023 06:07:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=ODW0gUTO;
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39CBvXfV032368;
-	Thu, 12 Oct 2023 12:33:48 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
- cc : subject : message-id : reply-to : references : mime-version :
- content-type : in-reply-to; s=qcppdkim1;
- bh=xIhpmmI5C2VUd4R1fM9PEnaojoOJBcr3d/1t46H8pX8=;
- b=ODW0gUTOUEXbVDSiV2XDERJHxgxk85R9+/pcgNZFHJmfLsSRL4j8Ao5BBasgNxviKp8b
- ZecnJZ9RpRmmbPfJaD+zPiy/uaUQ9QgmBkISSmvje82/6m2mZqzlsXM0jRFPw9Tf5/C9
- 2BNzaSSZvWWOaF45kEvfU84jGuhzYA942NtkFznJIB91vbVuGDL3Xc9Xj6iBROY8MQqW
- a4NBz87tPZHClLti80E2+SOGoL0WA0P9Acl4FbwZBlpD72B/aQLocGw+DK4VYmIrXqww
- L1lb0fLEpuHaqISRah3V36Iy3Q2mDGQzpvDlPbpGx5gTJ6EMLuRiba26qfvCICtJTLWe rQ== 
-Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3tpesu07j5-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 12 Oct 2023 12:33:48 +0000
-Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39CCXl7J013068
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 12 Oct 2023 12:33:47 GMT
-Received: from quicinc.com (10.80.80.8) by nalasex01b.na.qualcomm.com
- (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.36; Thu, 12 Oct
- 2023 05:33:42 -0700
-Date: Thu, 12 Oct 2023 18:03:38 +0530
-From: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-To: Philippe Mathieu-Daud? <philmd@linaro.org>
-CC: <peter.maydell@linaro.org>, <alex.bennee@linaro.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <quic_tsoni@quicinc.com>, <quic_pheragu@quicinc.com>,
-        <quic_eberman@quicinc.com>, <quic_yvasi@quicinc.com>,
-        <quic_cvanscha@quicinc.com>, <quic_mnalajal@quicinc.com>,
-        Brian Cain <bcain@quicinc.com>,
-        Mark Burton
-	<mburton@qti.qualcomm.com>
-Subject: Re: [RFC/PATCH v0 12/12] gunyah: Documentation
-Message-ID: <20231012123338.GF1130358@quicinc.com>
-Reply-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
- <20231011165234.1323725-13-quic_svaddagi@quicinc.com>
- <31ae6951-2f32-ab86-4ddc-aa70364a89ce@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=rDzjh3ca;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1697116038; x=1697720838; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uElxi2HlcdsKIdLCnnj5Iek8ftyU5xtffELgvgr3cFw=;
+        b=rDzjh3ca0BIrOVkd/Thtys1Zq4w2TQdG24fKIDodQBkhfauEfinGWBNU1WNWDVHcCq
+         /MqdSwp31izJaqDaTavtn+9Q1l+KE0RvPlPXReZWUEMqS0P0vo6j8tVsZeJHQm5ZKmrV
+         n7ltrrlVolhfKkybhRuXh+XnPo/5Ju26OTu6xIAvhmBReCisEd3n2PL6NuSl/rdt9B4U
+         ZYFrOdNEygi5oWXdW4AcwtlWxsUics7RPRIKz9uTcaXfgixRUyHkBpFNKo2mmYdVZdwX
+         AGKyha46enbySwPWicCXTinUiVgY+TKa0pQ4Uw+MocJ/L+NOgf3R/AMAJ2wfrCfMP+8d
+         mGPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697116038; x=1697720838;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=uElxi2HlcdsKIdLCnnj5Iek8ftyU5xtffELgvgr3cFw=;
+        b=H9RCWSPaPws+ed559TdIQNn871aVWhBIJfBS/E/mcOSTXe/caHGbmet6S9/0jDNwbD
+         UwsPJbBdfNBWfyINokWdFG4TwaT1w4AsoO6Ajk1i6gw4WywUr7382HoHBpnn13m0ybEA
+         Co9E9utEiZyvykX3sgkwuwgLiUmneuYRQij245WKDuORXQvSBf4fv60UMfeG2q91U3yD
+         /Q6G+h2UzpgoCMs25mqNTi59gGJKUg/iEeNZ2sPtPDbAssLhvSeFKMKodvi5RhxegYZ2
+         sumQGO5QZvg3I89G3yWBuqI+Z3RVWVKwDJXzx0VyNYh3le95JtrFFVUqJO5YwVocxGYk
+         oFuQ==
+X-Gm-Message-State: AOJu0YytIiIPtZ4kP3u5g6iFiVi5FHWtg1vvbzTKqQL7QpW0+HJ+0MFq
+	8REIehOQ9dCAffYLROEAbx+XqG9A
+X-Google-Smtp-Source: AGHT+IEIkexhI37EGGJmyUtUoVkqSOBvDhgJYggwPOEXpYfeb9lEhiYNSWzoaPtXIswYw7Qweec21Q==
+X-Received: by 2002:a05:6402:b18:b0:531:1875:bbc8 with SMTP id bm24-20020a0564020b1800b005311875bbc8mr21096447edb.19.1697116037908;
+        Thu, 12 Oct 2023 06:07:17 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.115] (176-131-211-232.abo.bbox.fr. [176.131.211.232])
+        by smtp.gmail.com with ESMTPSA id i34-20020a0564020f2200b0053dec545c8fsm1667629eda.3.2023.10.12.06.07.16
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Oct 2023 06:07:17 -0700 (PDT)
+Message-ID: <39fb2593-2184-560b-3d67-51f9203f078a@linaro.org>
+Date: Thu, 12 Oct 2023 15:07:15 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
-In-Reply-To: <31ae6951-2f32-ab86-4ddc-aa70364a89ce@linaro.org>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01b.na.qualcomm.com (10.47.209.197)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: hmKur1IsMjO69xXMxOGHcj06uzUkYzl2
-X-Proofpoint-GUID: hmKur1IsMjO69xXMxOGHcj06uzUkYzl2
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-12_05,2023-10-12_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 impostorscore=0
- adultscore=0 mlxscore=0 phishscore=0 lowpriorityscore=0 bulkscore=0
- clxscore=1015 mlxlogscore=663 suspectscore=0 priorityscore=1501
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2309180000 definitions=main-2310120103
-X-TUID: pSPYMaLOeTPm
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH v2 06/11] hw/char/pl011: Extract pl011_write_txdata() from
+ pl011_write()
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Gavin Shan <gshan@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org
+References: <20230710175102.32429-1-philmd@linaro.org>
+ <20230710175102.32429-7-philmd@linaro.org>
+ <49918fad-56fc-150e-bb9c-bd00dc67df05@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <49918fad-56fc-150e-bb9c-bd00dc67df05@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: wg2ZxNh98ovj
 
-* Philippe Mathieu-Daud? <philmd@linaro.org> [2023-10-12 06:52:04]:
-
-> > +Limitations
-> > +-----------
-> > +
-> > +Below features are not yet supported.
-> > +
-> > +* virtio-pci (support for which in Qemu seems to rely heavily on KVM, which
-> > +  needs to be made multi-hypervisor friendly).
+On 14/7/23 08:58, Richard Henderson wrote:
+> On 7/10/23 18:50, Philippe Mathieu-Daudé wrote:
+>> +static void pl011_write_txdata(PL011State *s, const uint8_t *buf, int 
+>> length)
+>> +{
+>> +    /* ??? Check if transmitter is enabled.  */
+>> +
+>> +    /* XXX this blocks entire thread. Rewrite to use
+>> +     * qemu_chr_fe_write and background I/O callbacks */
+>> +    qemu_chr_fe_write_all(&s->chr, buf, 1);
 > 
-> Is QUIC interested in working on that? My work introducing
-> AccelCPUState to make CPUState accel-agnostic was done in that
-> direction, but I didn't notice much interest in the community
-> so I unprioritized it.
+> Not using length?
 
-Hi Phil,
-	We do want to see Gunyah support merged in Qemu at the earliest (as soon
-as the kernel driver is merged upstream that is), so any dependent change in
-Qemu for Gunyah would be of much interest to us! I am not sure though if Quic
-can sign up for the entire "make cpustate accel agnostic" work. Can you point
-to your ongoing work that I could take a look at? Would that address virtio-pci
-becoming accelerator agnostic? 
+This is a simple "code extract" patch. Length is used when
+we switch to FIFO in the last patch.
 
-Thanks!
-vatsa
+>> +        pl011_write_txdata(s, (uint8_t *) &value, 1);
+> 
+> Host endianness error.  Copy to local uint8_t first.
+
+Oops, good catch, thanks.

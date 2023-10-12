@@ -1,125 +1,125 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp554819ejc;
-        Wed, 11 Oct 2023 21:52:07 -0700 (PDT)
-X-Received: by 2002:a17:906:ce:b0:9b2:a078:4461 with SMTP id 14-20020a17090600ce00b009b2a0784461mr19106033eji.44.1697086327620;
-        Wed, 11 Oct 2023 21:52:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697086327; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp559132ejc;
+        Wed, 11 Oct 2023 22:02:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFG+JRvlCdrqG8HPt3xrVk9G3cYfP0wUA6hOIQYH3iLQ40WKU+8INvv2CidZvJoTKwkI8w9
+X-Received: by 2002:a05:620a:4728:b0:773:af69:e614 with SMTP id bs40-20020a05620a472800b00773af69e614mr26061706qkb.58.1697086966517;
+        Wed, 11 Oct 2023 22:02:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697086966; cv=none;
         d=google.com; s=arc-20160816;
-        b=cJqb5Ze7PdEltKg8R+q+II5qmB1t4tLS1bxd4JfAe85pwrC/ICZ+oaFgCNwas806y1
-         G5GP9Qv6hNDpcEeGuaLDnZI3DbZXHKA/KAp9A18xuJWhsSWmdx0b0+xQEK1m79YLdiIT
-         A3dQd9GLevIj5KqYg2Ocpsb42Fg5zQBFeAY51R+uFyjJQ1EZmQu+8WdobXYabmLqlfdR
-         bH21dWgpr/9GyzCfhCSjFMamerk0+XBbTmHBKly7HUmC5bJxcVxTBeSdJh4vlAx9HImA
-         lv/6MM8jSwZ3vfpOGFq5yGFEyffzi/XvwdVH+MSn9uPuH+84ZDf6SMBIHWldEZcbpiGb
-         52bQ==
+        b=lp3rFSNjOPEaMKxH20qdUTdoAgxEaNcPu4pE20UYgopY2Umqgk8wVpncf3DLjuz9MD
+         2Wk+OL1lSwmJ3KpM8A9y0lJJRjHXCDcd+oZ2kQZXV4lWtCUL/6uao432jRQxKAZXvLrE
+         WPuEZ7lTto8O9UwOrX5jbVuh0ZNA++emjoTU446sifDAnq+MV4xPWYN2twuQYfkL4RFT
+         nXdFdz9ra/jqZJl6gbeKJDHDJKixYaou8U3ahrPtq4y7r8huM6LKdzTIvgoZDWGHvvys
+         2B7jgMW0BH3tySCIxXONocHJg8yop1K92wBqyLMJL5LrvrNxispajgSZzx9CHlUk674+
+         3whw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=rDelcTJFe8mOTTTdareous3udwOQBNDSUsx28o0UKnQ=;
-        fh=bnlHsjaKacMB3fDegpjr7nbD1bI6Dl8nlxls0R7wzq0=;
-        b=yJaCPMwJvJ3lXu98FhVDIHvRfZCXwrip2suRAniwS+p9iXsQ1Z/Ie2UoN0/wqd8EOR
-         jdlUQEkyj672xIbvTa2f5dQx8C+xt5wlRa5TtTsor6ILx8IDVFS2LDlqhwchOU5NE+Ub
-         bgNppczoF5ve8cyJ5tk8qs+Cq/2xcDy05aIWYZgqVthcGe/jFlTGAtR/xPsazstCVwGa
-         ddmmleOh2swVOcNx1tRmRVOZNaJooNtulljQjAv+XMfyeun7bmKL4f760quT5mNM3MS1
-         4Ce112UiNM/hkkv5/SQ9EXOwZd/TqDbJsK+N6bfK8jRbTr8nM2l50ehsQ7OsEAKlmCGD
-         e68g==
+        h=content-transfer-encoding:mime-version:user-agent:message-id
+         :in-reply-to:date:references:subject:cc:to:from:dkim-signature;
+        bh=bEpuwG2bay5KSJPJMED03m4/4dDBW5i8wGLKdx1G47s=;
+        fh=xS3BrZyG2rj1ajevhvmPm9aSpsZ1Ef9x6zZXaxhdPXE=;
+        b=Z2cTL8HVmFExKmiatyZ8mnst/bum2FVaDBhOqm6JODMwbY5veedZYTvsI0bL/7DZP1
+         i/1YW9GuoycDbKrTbMFn/3ECvcNSYohGYLloVe96LOgEr61Zo6VsRHJ+kDqhV8OXG8jm
+         F8BUZjda4cT4QpeDAoiSpB1E9BdCmIF8emfy6JQsFlcFIO5Xo6j6ZqqOU6mhWPO7s9oJ
+         N+k0CnpxDd2UgvxoTTa3Eit9ofnavaCzYezu3t0s205X9ANFIWrqOG49j06TpQolxYyN
+         fyq01S1oybIg5Fbvw/a1ClR5RYou4MrFv1efs9O4QNUQZqrNJ7ISO+ue6WTnjFp+MtQ0
+         d3vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U4ItcPA0;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id jg37-20020a170907972500b009b9f90579d9sor4962419ejc.20.2023.10.11.21.52.07
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fBY70VRl;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id bk36-20020a05620a1a2400b007741b0f3fd8si11086242qkb.283.2023.10.11.22.02.46
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 11 Oct 2023 21:52:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Oct 2023 22:02:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U4ItcPA0;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697086327; x=1697691127; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=rDelcTJFe8mOTTTdareous3udwOQBNDSUsx28o0UKnQ=;
-        b=U4ItcPA0WH7R1xXd1aa3TbmCJshTtG9pvsr4U72eQVk+fxLeqfCITzH83LPkrnE7O7
-         f+fXJ57K6p6F/1DyXfEYGgE1SH/8ja8yVaJp0xPliN9HROziPZbpkMsKl4VFB8imH7Q+
-         6k6DbkCUrutuzs4HDXES9cc9/dMDPed35zJ1JTNEo+Yashz0kFi90ZXEym+pnMC3gsDJ
-         lfd0QqOtpppwAImbrXt/Tua9P5c4h12j/W4upKVqgk2xNaClq8CGtBaPwJBN5nwDwO3o
-         LDefKo2aHXvu06gqU6IboPIJIqNEIg5oUJS4IM0JF8cF9feApkLb1WeHscbScSoBXBSn
-         EazQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697086327; x=1697691127;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rDelcTJFe8mOTTTdareous3udwOQBNDSUsx28o0UKnQ=;
-        b=U4/mowoNe1e9LxGAlzDEFk7IYWRTukul+asHenyN75WhsSJA6m1viiNGRJx40io3yw
-         Gontjk33ws9RfPMGm+6EAjnR86EuWtQkvhvf7fEbGB7BVM0ZT+MG9RKKkYV5uoid/s3c
-         W2Ykij3sSaDxf3OLIb72N10jOA1vY5MTT9dh8jERttpwBv7UD5LkEnF21BqOwDJc3He2
-         Glhhvf9TCh4j9roBqHwqU+i0xZLQxgq5dQHPg2nc1CYzHUaU9BqdpqfnYgnPebghRz0l
-         EcArxfvwTZeH14OO8fWob+8YtMTatHmu9tFohm7kD4FHpkH8/nJ4bqDj3LqCCuIYxSp0
-         4Z0Q==
-X-Gm-Message-State: AOJu0YyBpdpj8WSppcJmJ0TRC+hWSj24thiTCQAJWfsQLeLbFzVWhPTv
-	OVpNdHSpZBDRzXoz3hz00imkHUou
-X-Google-Smtp-Source: AGHT+IFlk9BX7KDI5xqssFr3XSB52uw5GPgrEtmbR+atJftTAlFMST+SYTZU6w9w/G9vnywxzqecvw==
-X-Received: by 2002:a17:906:4e:b0:9b2:9741:e1e9 with SMTP id 14-20020a170906004e00b009b29741e1e9mr20749857ejg.7.1697086327171;
-        Wed, 11 Oct 2023 21:52:07 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.115] (dcs23-h01-176-173-173-31.dsl.sta.abo.bbox.fr. [176.173.173.31])
-        by smtp.gmail.com with ESMTPSA id e27-20020a170906045b00b009b655c43710sm10582687eja.24.2023.10.11.21.52.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Oct 2023 21:52:06 -0700 (PDT)
-Message-ID: <31ae6951-2f32-ab86-4ddc-aa70364a89ce@linaro.org>
-Date: Thu, 12 Oct 2023 06:52:04 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [RFC/PATCH v0 12/12] gunyah: Documentation
-Content-Language: en-US
-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>, peter.maydell@linaro.org,
- alex.bennee@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: quic_tsoni@quicinc.com, quic_pheragu@quicinc.com,
- quic_eberman@quicinc.com, quic_yvasi@quicinc.com, quic_cvanscha@quicinc.com,
- quic_mnalajal@quicinc.com, Brian Cain <bcain@quicinc.com>,
- Mark Burton <mburton@qti.qualcomm.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fBY70VRl;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1697086966;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=bEpuwG2bay5KSJPJMED03m4/4dDBW5i8wGLKdx1G47s=;
+	b=fBY70VRlg3KVHiL90CSQq+6GUelIZPgW1NCOQflSjN/O+DBkTL1R1YUBQE0Fss7CZpc762
+	Tn83Qxzoj+u0JVqJOZPGdr1N4flRGdK5ngKaqFr102HnLBZI8vvb+xIdkiSc7nuvAW+dYw
+	q9E1gdNUI3HdqqKnf8DMhCzLzRtuIBQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-61-raQN4y-POpSPmemt03LyXw-1; Thu, 12 Oct 2023 01:02:40 -0400
+X-MC-Unique: raQN4y-POpSPmemt03LyXw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 40886811E7B;
+	Thu, 12 Oct 2023 05:02:40 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 193781C060AE;
+	Thu, 12 Oct 2023 05:02:40 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 0BBB221E6904; Thu, 12 Oct 2023 07:02:39 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>,
+  peter.maydell@linaro.org,  alex.bennee@linaro.org,
+  qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Peter Xu
+ <peterx@redhat.com>,  quic_tsoni@quicinc.com,  quic_pheragu@quicinc.com,
+  quic_eberman@quicinc.com,  quic_yvasi@quicinc.com,
+  quic_cvanscha@quicinc.com,  quic_mnalajal@quicinc.com,
+    Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [RFC/PATCH v0 01/12] hw/arm/virt: Avoid NULL pointer de-reference
 References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
- <20231011165234.1323725-13-quic_svaddagi@quicinc.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231011165234.1323725-13-quic_svaddagi@quicinc.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: UD4ymJtKYRQT
+	<20231011165234.1323725-2-quic_svaddagi@quicinc.com>
+	<b98e4566-56b4-d0e4-adb2-c163c7c26cfb@linaro.org>
+Date: Thu, 12 Oct 2023 07:02:39 +0200
+In-Reply-To: <b98e4566-56b4-d0e4-adb2-c163c7c26cfb@linaro.org> ("Philippe
+	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 12 Oct 2023 06:30:24
+ +0200")
+Message-ID: <875y3cph5c.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
+X-TUID: 2k7tLTwHXvDx
 
-Hi Srivatsa,
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-On 11/10/23 18:52, Srivatsa Vaddagiri wrote:
-> Add gunyah.rst that provide some informaiton on how to build and test
-> 'gunyah' accelerator with open-source Gunyah hypervisor.
-> 
-> Signed-off-by: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-> ---
->   MAINTAINERS                |   1 +
->   docs/system/arm/gunyah.rst | 214 +++++++++++++++++++++++++++++++++++++
->   2 files changed, 215 insertions(+)
->   create mode 100644 docs/system/arm/gunyah.rst
+> Hi Srivatsa,
+>
+> (+Markus/Peter for QOM fu)
 
+QOM fu needs Paolo; cc'ed.
 
-> +Limitations
-> +-----------
-> +
-> +Below features are not yet supported.
-> +
-> +* SMP (PSCI support needs to be added)
-> +* virtio-pci (support for which in Qemu seems to rely heavily on KVM, which
-> +  needs to be made multi-hypervisor friendly).
+I'm not sure how much this is about QOM, though.  Perhaps it's more
+about good taste.
 
-Is QUIC interested in working on that? My work introducing
-AccelCPUState to make CPUState accel-agnostic was done in that
-direction, but I didn't notice much interest in the community
-so I unprioritized it.
+> On 11/10/23 18:52, Srivatsa Vaddagiri wrote:
+>> Avoid dereferencing a NULL pointer that its_class_name() could return.
+>
+> While your patch is correct, there is some code smell
+> around its_class_name(). IMHO a foo_class_name() handler
+> should never return NULL.
+>
+> I'm trying to rework apic_get_class() similarly, see:
+> https://lore.kernel.org/qemu-devel/20231003082728.83496-1-philmd@linaro.o=
+rg/
 
-Regards,
+In both cases, we have a function to find the device model to use with
+current QEMU configuration and system state.  The fact that one of them
+returns a class name and the other a class is detail.
 
-Phil.
+Observe: this usable device model exists for any QEMU configuration.  It
+may not be usable in certain system states, though.
+
+Since the function deals with both, it can fail.
+
+We can separate the two concerns: first map configuration to device
+model (can't fail), then check the system state (can fail).
+
+Feels like a matter of taste to me.  Does it result in simpler function
+contracts and more readable code?  Can we do it the same way everywhere?

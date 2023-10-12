@@ -1,137 +1,203 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp672140ejc;
-        Thu, 12 Oct 2023 02:19:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFZVlRdQ68zNEdk/Qauwf7lYC6HQsy45UGeowCaFRZ/MSgpy4IkihJG0S0ZPEMbAOV1Pupm
-X-Received: by 2002:adf:a19b:0:b0:32d:8942:9ff6 with SMTP id u27-20020adfa19b000000b0032d89429ff6mr2763450wru.68.1697102383614;
-        Thu, 12 Oct 2023 02:19:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697102383; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp715840ejc;
+        Thu, 12 Oct 2023 03:56:12 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHdN0Dr0MxSpi/+egWZ0vp0PwWletpKWXb7vfHyFCSei0UKfb8ukouREA/EM6+g9oQFYprn
+X-Received: by 2002:ac8:5946:0:b0:412:1fd7:dfa1 with SMTP id 6-20020ac85946000000b004121fd7dfa1mr28458324qtz.8.1697108171870;
+        Thu, 12 Oct 2023 03:56:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697108171; cv=none;
         d=google.com; s=arc-20160816;
-        b=V1QyM6DhT0421zHLuBajMXdVN1loUrEm1cqYwIwGN636QFRPMHkjiNTz2SQ/X6N2vh
-         D1MFWrF+nA+6PHb01X0D2/CkG/qhz3s0q+q1fbibW2C8gQPU2lYSYx5TUNxQjTBmfzfz
-         aEZrKWV/UTfaS96CRF2pf2QbJLquljV6ez6oISbrWXYImWOfIilc7xht+/OLFf4sQHGM
-         sZpJ0AJA2cl8aKfvPyyGaNv36f+wKhb0/XByoFzlK5GvxaHF4sgW7MXu/v1PQDJANAV+
-         1FuchD3fMVbyjl9G+HLlGIaRK+grIQHjBrMj9W2Iq/ytpeoUzmjSF3ARDhQqCaaMAQ10
-         cWiw==
+        b=0ABmreR7p4KhiGdiNdUTdmNKJnfNG6cX2l8+2GdOAgT43Lf2CP3QtpFj4frIMMowTz
+         wQgvzqSXkx4N9N6FNgtiY+5/5lTkDZuDq6jKpVFl5GrVOf62mcLO/fqDC/JZr2ICIus/
+         iYDqm1RuDL7k9bKjhIjdJwwmym/5yi2nZ5wsJdvyftn8SDqprK00i78RLiXrjrFXHGOR
+         ZjnuSeuzKswgI344w7vF7b1N8aUfxvN0qKSzeKneNLEzCBvpT1L68lxRBqoNqXFI8UWG
+         j5+EPUrkUfUF9Fhy9LAYtujmiB92jJ94jaMYMbNsnZ0X7V9EG4nN/qw8jQoXxAKm1LCO
+         M3EQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=Q2fpQtbTUDAJ29v2DlJSxnVYZoM/s4TM+WjQ7lo6Oxs=;
-        fh=DCV4KZOcuvUG/wve9C1kSJ4RRlBk9KClkYRBzQw+8ow=;
-        b=EnabaQ5RAbnhaYdxsX23X+xmHYUtjsL5Sadujv7SoZH1M156IJCx4mGiTyRUqiXwqr
-         5Qp6SEYZ1xY4wdIw1mn838TAOr3WF9DDFfRPk7lrjxD6IgDBkvFdCIj6B+C91sR7Ekwv
-         GfBXIouxnZI5LMNLYEduiu0jMtJ60M7G5mJUUeD4q/Tia6wgs45WRO++we0n/eZLF28S
-         lpqnRCnxHZr7iR/CxFVYOl1GB4tmSvZZ8+MmzoP4zNrVtFeOkzgfn5DZ2s+/HLDTUzRA
-         sGxOR5VvDS3UCspx5M3JgHqEUJlS9lNNZNVB3qQHojECJxXrDnHvQGIY4jR7mmxhiNkN
-         88ig==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=y4JVXY+rszzjibCG+bLuHKE9WCYUyjCUNiHVydRQHSw=;
+        fh=9Fbu3c4RwbYdzyuL443UmSIjpS4yEA4xfIgGU6z2u3I=;
+        b=xeWca6VEgt0gupF9YaHSKEQfP83fIbQvfzOxf7RePAd9V8jCY1ZSB1IQMcsK6Aekzc
+         VR4ZU3QvJQkyrkALenj7ZD3XxhsZmv2r+/oaMbG2wvS3SfRhrW6JQQnTSORm14u9N6Y5
+         w+mzGfFwA5cpeuXR1nByEZQVcS3C9DeN1dn/gGzP4V75K5JQPgctdsEncrbqt8z7PRPS
+         41HS9ajihPjFNR+lX1GoaqOkvZY9uGsBlumNPIHh4bDak6VjgAIUxTXA0dCzZfBYvSGB
+         /9l1vbegID5j9b9ykS0xWBUf+LfAt6/jxrbraxUXVi1xh3VJGv4oTH6dKt2LRiUJ42qD
+         +7MA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id l12-20020a5d668c000000b003248c93950csi6682448wru.952.2023.10.12.02.19.43
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Oct 2023 02:19:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zahgp1gT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h1-20020ac85841000000b00419894fe568si11171002qth.343.2023.10.12.03.56.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Oct 2023 03:56:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500003.china.huawei.com (unknown [172.18.147.200])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S5kYt4tDrz6K5v5;
-	Thu, 12 Oct 2023 17:17:38 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500003.china.huawei.com (7.191.162.67) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Thu, 12 Oct 2023 10:19:41 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Thu, 12 Oct 2023 10:19:41 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Gavin Shan <gshan@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org"
-	<alex.bennee@linaro.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V5 9/9] gdbstub: Add helper function to unregister GDB
- register space
-Thread-Topic: [PATCH V5 9/9] gdbstub: Add helper function to unregister GDB
- register space
-Thread-Index: AQHZ/HvBN0u3se0o1kicXc2uo3J6h7BFNl4AgACq53A=
-Date: Thu, 12 Oct 2023 09:19:41 +0000
-Message-ID: <bb13b0ee0a3544c7891ac29ecceb73d5@huawei.com>
-References: <20231011194355.15628-1-salil.mehta@huawei.com>
- <20231011194355.15628-10-salil.mehta@huawei.com>
- <ca79ed5f-b807-10eb-8f79-c2def1ab028f@redhat.com>
-In-Reply-To: <ca79ed5f-b807-10eb-8f79-c2def1ab028f@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.195.35.158]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zahgp1gT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qqtMC-0004UT-O3; Thu, 12 Oct 2023 06:55:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qqtM9-0004Su-52
+ for qemu-arm@nongnu.org; Thu, 12 Oct 2023 06:55:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qqtM7-0006Hb-N6
+ for qemu-arm@nongnu.org; Thu, 12 Oct 2023 06:55:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697108150;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=y4JVXY+rszzjibCG+bLuHKE9WCYUyjCUNiHVydRQHSw=;
+ b=Zahgp1gTTNv7e9C6Fzppn5aLlWyKmkx3gE5jvAydN2ai9HAOGkYvrjTs8JaSpDHBEYlUEw
+ jcGC5tFDu81fpFkvW7Popx2OKLylZ33BPf4IWQt6DYtAkf+jCpDZzXSRQRPgoPZiyGnG4Z
+ 82IdQSyJR2icp+QyGVKqLEEsVOrzsM8=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-549-nqbUqAABN02mAhRNp06k0w-1; Thu, 12 Oct 2023 06:55:49 -0400
+X-MC-Unique: nqbUqAABN02mAhRNp06k0w-1
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-41957273209so8061741cf.3
+ for <qemu-arm@nongnu.org>; Thu, 12 Oct 2023 03:55:48 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697108148; x=1697712948;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=y4JVXY+rszzjibCG+bLuHKE9WCYUyjCUNiHVydRQHSw=;
+ b=b3tIl4dC6XX6nl5oKgwxCLvVsbsq+mRDhYeau8CD71cXVRnecOkNc55fT/RUgCHIlz
+ SPm/jOsRCs7alAGzVmyxt4JZYC3divoBNjJQdfU4GLm+QOTxylAUM3nOmE65YAhrXMoy
+ ZTJISsjLRvTeMCj/+xsnW4BeSOnosIyBUbJ4Xi9lJ+voH2b+WpvUZf9xbE5sQNXItz++
+ +3o/6L3DIj0ZiRrVJJN/paaBKbEH3DrxZgPM8j6RQnaYdwOMQaaf58GUFP3RxIGy0FpB
+ 9NAIyCYWQ9T4m1bnvynG/brt4qcbT4bOQrqWB11hV4fmi56ZJYWbnrV0FeaGnKlb6nPP
+ EzUw==
+X-Gm-Message-State: AOJu0YzscjTU8HRwqxOH3i4yOQiDNrx6cNmPc5ngiWYJ5IEzysy7y91W
+ tUqTLeIHzgZAlP2dWLTdH7qC2jQU/9G/6X0hRFOJTuNKJwFcBT58VYcwJo33CEd5aLcMluNOVxH
+ rIt604jkBJUqT
+X-Received: by 2002:ac8:5b4b:0:b0:419:529e:dcee with SMTP id
+ n11-20020ac85b4b000000b00419529edceemr29135522qtw.50.1697108148479; 
+ Thu, 12 Oct 2023 03:55:48 -0700 (PDT)
+X-Received: by 2002:ac8:5b4b:0:b0:419:529e:dcee with SMTP id
+ n11-20020ac85b4b000000b00419529edceemr29135506qtw.50.1697108148222; 
+ Thu, 12 Oct 2023 03:55:48 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-176-176.web.vodafone.de.
+ [109.43.176.176]) by smtp.gmail.com with ESMTPSA id
+ h4-20020ac85044000000b004180fb5c6adsm6069315qtm.25.2023.10.12.03.55.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 12 Oct 2023 03:55:47 -0700 (PDT)
+Message-ID: <1f6a6f32-80aa-4a7f-9e33-72d1ca9984dd@redhat.com>
+Date: Thu, 12 Oct 2023 12:55:45 +0200
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: 8+p1cmivmlVa
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm: Move raspberrypi-fw-defs.h to the include/hw/arm/
+ folder
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+References: <20231012073458.860187-1-thuth@redhat.com>
+ <788f54e1-3f2f-f24d-63cf-172efc605823@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <788f54e1-3f2f-f24d-63cf-172efc605823@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KFWUEyj4d252
 
-SGkgR2F2aW4sDQoNCj4gRnJvbTogR2F2aW4gU2hhbiA8Z3NoYW5AcmVkaGF0LmNvbT4NCj4gU2Vu
-dDogVGh1cnNkYXksIE9jdG9iZXIgMTIsIDIwMjMgMTowNyBBTQ0KPiBUbzogU2FsaWwgTWVodGEg
-PHNhbGlsLm1laHRhQGh1YXdlaS5jb20+OyBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtDQo+
-IGFybUBub25nbnUub3JnDQo+IENjOiBtYXpAa2VybmVsLm9yZzsgamVhbi1waGlsaXBwZUBsaW5h
-cm8ub3JnOyBKb25hdGhhbiBDYW1lcm9uDQo+IDxqb25hdGhhbi5jYW1lcm9uQGh1YXdlaS5jb20+
-OyBscGllcmFsaXNpQGtlcm5lbC5vcmc7DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgcmlj
-aGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZzsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgYW5kcmV3
-LmpvbmVzQGxpbnV4LmRldjsgZGF2aWRAcmVkaGF0LmNvbTsNCj4gcGhpbG1kQGxpbmFyby5vcmc7
-IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgb2xpdmVyLnVwdG9uQGxpbnV4LmRldjsNCj4gcGJvbnpp
-bmlAcmVkaGF0LmNvbTsgbXN0QHJlZGhhdC5jb207IHdpbGxAa2VybmVsLm9yZzsgcmFmYWVsQGtl
-cm5lbC5vcmc7DQo+IGFsZXguYmVubmVlQGxpbmFyby5vcmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51
-azsNCj4gZGFycmVuQG9zLmFtcGVyZWNvbXB1dGluZy5jb207IGlsa2thQG9zLmFtcGVyZWNvbXB1
-dGluZy5jb207DQo+IHZpc2hudUBvcy5hbXBlcmVjb21wdXRpbmcuY29tOyBrYXJsLmhldWJhdW1A
-b3JhY2xlLmNvbTsNCj4gbWlndWVsLmx1aXNAb3JhY2xlLmNvbTsgc2FsaWwubWVodGFAb3Buc3Jj
-Lm5ldDsgemh1a2VxaWFuDQo+IDx6aHVrZXFpYW4xQGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5n
-IChDKSA8d2FuZ3hpb25nZmVuZzJAaHVhd2VpLmNvbT47DQo+IHdhbmd5YW5hbiAoWSkgPHdhbmd5
-YW5hbjU1QGh1YXdlaS5jb20+OyBqaWFrZXJuZWwyQGdtYWlsLmNvbTsNCj4gbWFvYmlib0Bsb29u
-Z3Nvbi5jbjsgbGl4aWFuZ2xhaUBsb29uZ3Nvbi5jbjsgTGludXhhcm0gPGxpbnV4YXJtQGh1YXdl
-aS5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggVjUgOS85XSBnZGJzdHViOiBBZGQgaGVscGVy
-IGZ1bmN0aW9uIHRvIHVucmVnaXN0ZXIgR0RCDQo+IHJlZ2lzdGVyIHNwYWNlDQo+IA0KPiBIaSBT
-YWxpbCwNCj4gDQo+IE9uIDEwLzEyLzIzIDA1OjQzLCBTYWxpbCBNZWh0YSB3cm90ZToNCj4gPiBB
-ZGQgY29tbW9uIGZ1bmN0aW9uIHRvIGhlbHAgdW5yZWdpc3RlciB0aGUgR0RCIFJlZ2lzdGVyIFNw
-YWNlLiBUaGlzIHNoYWxsDQo+IGJlDQo+ID4gZG9uZSBpbiBjb250ZXh0IHRvIHRoZSBDUFUgdW5y
-ZWFsaXphdGlvbi4NCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFNhbGlsIE1laHRhIDxzYWxpbC5t
-ZWh0YUBodWF3ZWkuY29tPg0KPiA+IFRlc3RlZC1ieTogVmlzaG51IFBhamp1cmkgPHZpc2hudUBv
-cy5hbXBlcmVjb21wdXRpbmcuY29tPg0KPiA+IC0tLQ0KPiA+ICAgZ2Ric3R1Yi9nZGJzdHViLmMg
-ICAgICB8IDE1ICsrKysrKysrKysrKysrKw0KPiA+ICAgaW5jbHVkZS9leGVjL2dkYnN0dWIuaCB8
-ICA1ICsrKysrDQo+ID4gICAyIGZpbGVzIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKykNCj4gPg0K
-PiANCj4gV2l0aCB0aGUgZm9sbG93aW5nIG5pdHMgYWRkcmVzc2VkOg0KPiANCj4gUmV2aWV3ZWQt
-Ynk6IEdhdmluIFNoYW4gPGdzaGFuQHJlZGhhdC5jb20+DQo+IA0KPiA+IGRpZmYgLS1naXQgYS9n
-ZGJzdHViL2dkYnN0dWIuYyBiL2dkYnN0dWIvZ2Ric3R1Yi5jDQo+ID4gaW5kZXggMzQ5ZDM0OGM3
-Yi4uOTdiODllMmQwMCAxMDA2NDQNCj4gPiAtLS0gYS9nZGJzdHViL2dkYnN0dWIuYw0KPiA+ICsr
-KyBiL2dkYnN0dWIvZ2Ric3R1Yi5jDQo+ID4gQEAgLTQ5MSw2ICs0OTEsMjEgQEAgdm9pZCBnZGJf
-cmVnaXN0ZXJfY29wcm9jZXNzb3IoQ1BVU3RhdGUgKmNwdSwNCj4gPiAgICAgICB9DQo+ID4gICB9
-DQo+ID4NCj4gPiArdm9pZCBnZGJfdW5yZWdpc3Rlcl9jb3Byb2Nlc3Nvcl9hbGwoQ1BVU3RhdGUg
-KmNwdSkNCj4gPiArew0KPiA+ICsgICAgR0RCUmVnaXN0ZXJTdGF0ZSAqcywgKnA7DQo+ID4gKw0K
-PiA+ICsgICAgcCA9IGNwdS0+Z2RiX3JlZ3M7DQo+ID4gKyAgICB3aGlsZSAocCkgew0KPiA+ICsg
-ICAgICAgIHMgPSBwOw0KPiA+ICsgICAgICAgIHAgPSBwLT5uZXh0Ow0KPiA+ICsgICAgICAgIC8q
-IHMtPnhtbCBpcyBzdGF0aWMgY29uc3QgY2hhciBzbyBpc24ndCBmcmVlZCAqLw0KPiA+ICsgICAg
-ICAgIGdfZnJlZShzKTsNCj4gPiArICAgIH0NCj4gPiArICAgIGNwdS0+Z2RiX3JlZ3MgPSBOVUxM
-Ow0KPiANCj4gICAgICAgICBjcHUtPmJhc2VfcmVnID0gMDsNCj4gICAgICAgICBjcHUtPm51bV9y
-ZWdzID0gMDsNCg0KDQpTdXJlLiB0aGFua3MNCg0KU2FsaWwuDQoNCj4gDQo+ID4gKyAgICBjcHUt
-PmdkYl9udW1fZ19yZWdzID0gMDsNCj4gPiArfQ0K
+On 12/10/2023 10.22, Philippe Mathieu-Daudé wrote:
+> On 12/10/23 09:34, Thomas Huth wrote:
+>> The file is obviously related to the raspberrypi machine, so
+>> it should reside in hw/arm/ instead of hw/misc/.
+> 
+> Not quite. These are the VideoCore DSP definitions. Firmware
+> running on SoC including a VC can use this syscall-like interface.
+> 
+> FWIW there are a pair of QEMU VC implementations on GitHub.
+> 
+> Anyhow, preferably rewording the description,
+
+So could you suggest a different wording instead? It's still "related to the 
+raspberypi machine", isn't it?
+
+> Acked-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+  Thanks,
+   Thomas
+
+

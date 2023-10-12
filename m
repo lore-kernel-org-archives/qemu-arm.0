@@ -1,74 +1,68 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id p4-20020a5d68c4000000b003232f167df5sm18617137wrw.108.2023.10.12.07.58.35
+        by smtp.gmail.com with ESMTPSA id s8-20020a7bc388000000b0040684abb623sm104631wmj.24.2023.10.12.08.21.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Oct 2023 07:58:36 -0700 (PDT)
+        Thu, 12 Oct 2023 08:21:28 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 7FE501FFBB;
-	Thu, 12 Oct 2023 15:58:35 +0100 (BST)
-References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
- <20231011165234.1323725-13-quic_svaddagi@quicinc.com>
- <31ae6951-2f32-ab86-4ddc-aa70364a89ce@linaro.org>
- <20231012123338.GF1130358@quicinc.com>
+	by zen.linaroharston (Postfix) with ESMTP id 82C561FFBB;
+	Thu, 12 Oct 2023 16:21:27 +0100 (BST)
+References: <20231012085710.880440-1-mironov@fintech.ru>
 User-agent: mu4e 1.11.22; emacs 29.1.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-Cc: Philippe Mathieu-Daud? <philmd@linaro.org>, peter.maydell@linaro.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, quic_tsoni@quicinc.com,
- quic_pheragu@quicinc.com, quic_eberman@quicinc.com,
- quic_yvasi@quicinc.com, quic_cvanscha@quicinc.com,
- quic_mnalajal@quicinc.com, Brian Cain <bcain@quicinc.com>, Mark Burton
- <mburton@qti.qualcomm.com>
-Subject: Re: [RFC/PATCH v0 12/12] gunyah: Documentation
-Date: Thu, 12 Oct 2023 15:55:59 +0100
-In-reply-to: <20231012123338.GF1130358@quicinc.com>
-Message-ID: <87ttqvnazo.fsf@linaro.org>
+To: Sergey Mironov <mironov@fintech.ru>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH 1/1] target/arm: Adding a check for the result of
+ calling the CPU information check function
+Date: Thu, 12 Oct 2023 16:16:11 +0100
+In-reply-to: <20231012085710.880440-1-mironov@fintech.ru>
+Message-ID: <87pm1jn9xk.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: rsb90NqCLFLQ
+X-TUID: H2T3aIgaFinh
 
 
-Srivatsa Vaddagiri <quic_svaddagi@quicinc.com> writes:
+Sergey Mironov <mironov@fintech.ru> writes:
 
-> * Philippe Mathieu-Daud? <philmd@linaro.org> [2023-10-12 06:52:04]:
->
->> > +Limitations
->> > +-----------
->> > +
->> > +Below features are not yet supported.
->> > +
->> > +* virtio-pci (support for which in Qemu seems to rely heavily on KVM,=
- which
->> > +  needs to be made multi-hypervisor friendly).
->>=20
->> Is QUIC interested in working on that? My work introducing
->> AccelCPUState to make CPUState accel-agnostic was done in that
->> direction, but I didn't notice much interest in the community
->> so I unprioritized it.
->
-> Hi Phil,
-> 	We do want to see Gunyah support merged in Qemu at the earliest (as soon
-> as the kernel driver is merged upstream that is), so any dependent change=
- in
-> Qemu for Gunyah would be of much interest to us! I am not sure though if =
-Quic
-> can sign up for the entire "make cpustate accel agnostic" work. Can you p=
-oint
-> to your ongoing work that I could take a look at? Would that address virt=
-io-pci
-> becoming accelerator agnostic?
+> 6 out of 7 calls to get_arm_cp_reginfo() are checked
 
-Why wouldn't virtio-pci be accelerator agnostic?
-
-It works with KVM and TCG for example. There are I suppose complications
-if you want to share emulated devices with a real PCI bus rather than
-emulating it all within QEMU.
+Yes but we should be careful with asserts (vs if (ri) legs) because I
+don't think get_arm_cp_reginfo() guarantees it will always be
+successful.
 
 >
-> Thanks!
-> vatsa
+> Signed-off-by: Sergey Mironov <mironov@fintech.ru>
+> ---
+>  target/arm/helper.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 74fbb6e1d7..cffbbaf571 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -198,6 +198,7 @@ static void add_cpreg_to_list(gpointer key, gpointer =
+opaque)
+>      uint32_t regidx =3D (uintptr_t)key;
+>      const ARMCPRegInfo *ri =3D get_arm_cp_reginfo(cpu->cp_regs, regidx);
+>=20=20
+> +    assert(ri !=3D NULL);
 
+  /* must always succeed as we are iterating the keys of cp_regs */
+  assert(ri);
+
+is enough for a !NULL check.
+
+>      if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_ALIAS))) {
+>          cpu->cpreg_indexes[cpu->cpreg_array_len] =3D cpreg_to_kvm_id(reg=
+idx);
+>          /* The value array need not be initialized at this point */
+
+That said we already have an assert that would fire in
+init_cpregs_list():
+
+  assert(cpu->cpreg_array_len =3D=3D arraylen);
+
+so I'm not sure what this is adding to ensuring the contract is kept.
 
 --=20
 Alex Benn=C3=A9e

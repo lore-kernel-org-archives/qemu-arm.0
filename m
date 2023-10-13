@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1532509ejc;
-        Fri, 13 Oct 2023 07:05:14 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHRd3xwWNsz9lFub66n01UAYGmW5NWMbGL4oxWrgSkP21/1vqml6a7xJxjrfHZoYRdRvPZy
-X-Received: by 2002:a0c:eccf:0:b0:65b:a66:3109 with SMTP id o15-20020a0ceccf000000b0065b0a663109mr30479367qvq.8.1697205913613;
-        Fri, 13 Oct 2023 07:05:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697205913; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1532731ejc;
+        Fri, 13 Oct 2023 07:05:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFrG/QIH69Pww5ncGEhTHsgM/LRgk63UU315bWTtgtDtOvBoTy8j6xW7lCXlQSoSadwMnIj
+X-Received: by 2002:a05:6358:52c3:b0:15a:8dfd:9c66 with SMTP id z3-20020a05635852c300b0015a8dfd9c66mr22847392rwz.28.1697205930240;
+        Fri, 13 Oct 2023 07:05:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697205930; cv=none;
         d=google.com; s=arc-20160816;
-        b=SMBf9+8NLU0uNTU+eI5OU8tElsO3C11UxXCHRBmixToshEVpR0nN/h/Zeo09NRdC0H
-         zrKBAML6+ZH2u97fm66D3ypZzrBnfW9aHzhF1c1tnXqXkNUd+H+FFBfV/WToRGAEZrRX
-         IatzjY5iHrEFydjYTVJkgEFxfBT9fXldURlDxaktIuNaZ/X0FSy4eZMAlWqD6iVMF/ve
-         gIOJjysZIvutwFW3Q+Vg2+mLjauHuC+EJKkgzNXh6sPNoHc+AxN0UAYh1+PZ+bBSC7NU
-         96LMRFJ78bkTKqoNrjf//2TEIaAyYj0Pn/yqaEr1oE5h//Qn03Dg8Kk7TLbQJn5Vxkhs
-         ifNA==
+        b=BViQljMDzFSLkW4ziVF8hLo+cuvXGSv5j14lJ9fANge/MlOTYrhFm47gMxFhGF9Kmc
+         MpiMweZ7ocrRFlzd1ZnfQgVvj9XXwNy+zJWh6kzMfFgGixhIMEcYRqNuqnUXh9QRkFWR
+         S1V7KI/BaS0yHyNhlr6WAE7O939c+KU+/Uf7cdNaaC/Iy0lL8+AeaAf8bi12awouK1To
+         Jqwrixp4+HpMJVIvHQbOBwDJEOEOqtah/8SsVB8IhWVPJNV8bWUqkL8mX6lT3dr2z282
+         +x2+LtNzsNk2cfbv5v5H6j5LUgyCimt3VZK1ZbSh9MkMdTBAFVjW3/wVu32s6YkLD90s
+         elnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Y9eu+dYuqEAuyUfcja/Rp4G880IWvzHYCzxEd3S6+NQ=;
+        bh=xGFmBfq77hiCYUzTv7o6AOP7VnebQdIwnvJgn+wZM78=;
         fh=yvC9ZPM7MgJn7Xb0eJwxiCf2t+VfzDAYAfYYKFMFkpQ=;
-        b=zF3diPOwLqaxXtAb2RtQLlBH5qPo5nI8qV7wkjVJvsNopfTA6oOGHmvvUgsqWKodM3
-         0hjRQlNB2JmruW8mDskOMyxtkFnayDL6p+5vdCT1XgQvncI22n3h7IsnlXWgW/XGCTgR
-         QoqlblhXTgEZDki+fYB+Z1GRq0EzurgHkL9BY3s4UMRX/bGIC2xWhJKIGVp6Z1Edzyp2
-         grsxTSdXX4WzAcLsDxq+1un+aSvrx9sFkf/O7Fv75CNe69UejmPQ0+gNzLw9nA8kangp
-         lm6HNaCkCcDDYkQnH4sQ7p43XTRTBqMa9kf+cMd8kaabC81Oe2rTAyByDk9Dc97/kjpB
-         lvfQ==
+        b=bSO2JMVDy8IMydaMERp6geVM2wilHPWjeaiAP8Y/ZEXBbeWxCD4MYp++Nm94ZwgK16
+         YkA/u7p5x19yOdTFg9k0AdqBipMTfTrhfpLttI5uPhJC4TmLMNmYxgGLwdvJzzk3e52O
+         1l4B6Py1KNuG7AzvQa5MHXNZ1Ay+6uYwFDcDsNO4NXG+JW1kLTiTGzVRVl/gWf6PUZcW
+         HW8pJ3dM2cw5jLNuQOJkY+OscyJbtNIwXpEmarpHBHRG39yN3f18MEdiDALx2ptu7QM9
+         vg6kvEpEQ5iiVpBBD4iadCpiJKSsADVC3CrB8SddbvOmqGnl5o16YdHCw+XVild08whL
+         E12w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N5HQUzG2;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Gl1d+/KC";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d4-20020a056214184400b0065825c392ffsi1246635qvy.398.2023.10.13.07.05.13
+        by mx.google.com with ESMTPS id q185-20020a1fa7c2000000b0049d2d2548a9si1770789vke.81.2023.10.13.07.05.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 07:05:13 -0700 (PDT)
+        Fri, 13 Oct 2023 07:05:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N5HQUzG2;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Gl1d+/KC";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrImG-0003Iv-Rx; Fri, 13 Oct 2023 10:04:32 -0400
+	id 1qrImQ-0004FO-Ag; Fri, 13 Oct 2023 10:04:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIkI-0007Qy-QL
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:02:37 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIlA-0000ON-Ay
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:03:24 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIkB-0002JI-4M
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:02:27 -0400
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-53de0d1dc46so3746262a12.3
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 07:02:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIl4-0002Tw-8m
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:03:24 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-9adb9fa7200so436555766b.0
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 07:03:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697205741; x=1697810541; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697205796; x=1697810596; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Y9eu+dYuqEAuyUfcja/Rp4G880IWvzHYCzxEd3S6+NQ=;
- b=N5HQUzG2wWqtckjz7CLDWXq9XhC5v26xJpFc5wU7mywdYcs5sle1+yoE04EpmA2dry
- RjTF33XrgyV8t4naAHySbuxZPchIeuvIvdt85pag5LiJchhH3i0+NFVfubLN0gKw0LkT
- 4Vz5bhDnFATsMtsd7yFVfoFFiVx0iIJ7E74BYVO9L4ARAVOndY0c/FLh/Y5MesR1yodE
- gG+g+AwaCftEVuFmVQ7VbT2sL+u1H7AbMacPt4l7NxWZXdKRpjWkpopoJCJHD5SvJK5J
- jjy2WKbBlUVYhkNTMyi9u3RQXyRUcEw0kwR12hKv/TIpjNwWrORRIrj61ixWGD2JMivN
- KnYg==
+ bh=xGFmBfq77hiCYUzTv7o6AOP7VnebQdIwnvJgn+wZM78=;
+ b=Gl1d+/KCZLOrlIC+2NmMc6bozrs9c/TvQsd8IU7lm9F/prb6Y6TcKGypFDktj5eB20
+ 8rKYF1avtBhb1+K56CGgqdMbWGz9LHVu+aAoXjH+3jtvrMkJg442dvlfX6Xg5LiodbN/
+ bd/q1bQT7NKFe6MTQZ35cgrnPmtxZVGK0dVSbikDuzkn3bGTm4hBLG8BZaWJ5DE3Km6Q
+ pG5LPaSNLB/8+p59H7ALch/7Cg/+z6fOMePRlTo3CeFfZRwYMjxDuW7mhmQymorrodnB
+ eogX0agjxW8moKwq4LTAGIJ98xQYEZoW0apXl1ETSmDcprrRjUJqt7k8G5J/tvY7iZoL
+ ZRrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697205741; x=1697810541;
+ d=1e100.net; s=20230601; t=1697205796; x=1697810596;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Y9eu+dYuqEAuyUfcja/Rp4G880IWvzHYCzxEd3S6+NQ=;
- b=xHukLH+ncSi/2yhev3eaRmEU0x9npUWEPVD31fX0W1B0FrdfeFbEt4hK5cL1ejJl7D
- czhNBQ5NQ90jWOo78nhbZbOeWs/4lpqdtwyV8kzYRV9hG2NmFOGv6kU4ZRT+XXPV7Jmt
- YotGKnL6Okn7Jt7Y1ngm/uKya99UdZsG+HnQhbkv7+AdTk65/TV6h8PWdvZfkQ9Fz0eW
- kquB2T9TovZANEzmCSDm43qfEK1wZmmpHXKzJmgRxJeZR0/u9IAPigA+xk99ve8MOBPT
- +96/l4kX15Ekks7zQYynTBF1kR6cHIhBG5qFjyRyXmOfINjOjDVkigf1iMcboICD9zna
- vzhw==
-X-Gm-Message-State: AOJu0Yyq7sdoFqHN97680mWVAW4Iv3zag3a/a843/ghLzdXCy5uu6YPN
- vHhDoXJ410sDFyWR2brb+4NOlQ==
-X-Received: by 2002:a50:c8cd:0:b0:53e:21f6:d784 with SMTP id
- k13-20020a50c8cd000000b0053e21f6d784mr3394709edh.8.1697205740721; 
- Fri, 13 Oct 2023 07:02:20 -0700 (PDT)
+ bh=xGFmBfq77hiCYUzTv7o6AOP7VnebQdIwnvJgn+wZM78=;
+ b=soGL1jN9n5kNW113HfsB2wia4qKg/FxiKCySb8zv2YQg9uUIMkjwCVPCzvaVCRQ4SW
+ oAizzQav2N1wo5mwq9UNnwOcJwkI7l6fHd9MO2B46uJjZZftL6NYVjDcI1yBOcH6rtlg
+ DHEkpqbdg5Qxr/PEARPuDMob5SVHibVqDusEH5j4cJqwZHd1HHBmDUnBjjV7FsxjrnsP
+ DfWcxJcUAZLvuzuXZVHX7GPdaWqnM5IRMpffNQjk2H2vdDFQLUBCoy/3pT9V8ieyT1Nz
+ yrXmBx3akCbAuDpaTweKQb3noOplAXLQmbP/1UwIMPWKDvNUs+jJlyfIAbpptMJBvH/u
+ t43w==
+X-Gm-Message-State: AOJu0YxvbuuTvEd065gwWz23JSNFE1M/0stHOX5Wmyvc2Sbz/C73rLLp
+ JYBLvAJEhaRCN2XaFJFp6rXIag==
+X-Received: by 2002:a17:907:6ea3:b0:9b2:bcea:e517 with SMTP id
+ sh35-20020a1709076ea300b009b2bceae517mr197071ejc.10.1697205795457; 
+ Fri, 13 Oct 2023 07:03:15 -0700 (PDT)
 Received: from m1x-phil.lan ([176.172.118.168])
  by smtp.gmail.com with ESMTPSA id
- p22-20020a05640210d600b00530a9488623sm11526147edu.46.2023.10.13.07.02.15
+ dv8-20020a170906b80800b0099cc36c4681sm12423023ejb.157.2023.10.13.07.03.10
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 13 Oct 2023 07:02:20 -0700 (PDT)
+ Fri, 13 Oct 2023 07:03:14 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <eduardo@habkost.net>,
@@ -121,18 +121,17 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
  Sergio Lopez <slp@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Ilya Leoshkevich <iii@linux.ibm.com>, Michael Rolnik <mrolnik@gmail.com>
-Subject: [PATCH v2 06/16] target: Declare FOO_CPU_TYPE_NAME/SUFFIX in
- 'cpu-qom.h'
-Date: Fri, 13 Oct 2023 16:01:05 +0200
-Message-ID: <20231013140116.255-7-philmd@linaro.org>
+Subject: [PATCH v2 12/16] target: Move ArchCPUClass definition to 'cpu.h'
+Date: Fri, 13 Oct 2023 16:01:11 +0200
+Message-ID: <20231013140116.255-13-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231013140116.255-1-philmd@linaro.org>
 References: <20231013140116.255-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x532.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -154,436 +153,1211 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qOdcqpln3y3S
+X-TUID: Jl3Z8qsKM8DA
 
-Hegerogeneous code needs access to the FOO_CPU_TYPE_NAME()
-macro to resolve target CPU types. Move the declaration
-(along with the required FOO_CPU_TYPE_SUFFIX) to "cpu-qom.h".
+The OBJECT_DECLARE_CPU_TYPE() macro forward-declares each
+ArchCPUClass type. These forward declarations are sufficient
+for code in hw/ to use the QOM definitions. No need to expose
+these structure definitions. Keep each local to their target/
+by moving them to the corresponding "cpu.h" header.
 
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Acked-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/alpha/cpu-qom.h   | 5 ++++-
- target/alpha/cpu.h       | 2 --
- target/avr/cpu-qom.h     | 5 ++++-
- target/avr/cpu.h         | 2 --
- target/cris/cpu-qom.h    | 5 ++++-
- target/cris/cpu.h        | 2 --
- target/i386/cpu-qom.h    | 3 +++
- target/i386/cpu.h        | 2 --
- target/m68k/cpu-qom.h    | 5 ++++-
- target/m68k/cpu.h        | 2 --
- target/mips/cpu-qom.h    | 3 +++
- target/mips/cpu.h        | 2 --
- target/rx/cpu-qom.h      | 5 ++++-
- target/rx/cpu.h          | 2 --
- target/s390x/cpu-qom.h   | 5 ++++-
- target/s390x/cpu.h       | 2 --
- target/sh4/cpu-qom.h     | 5 ++++-
- target/sh4/cpu.h         | 2 --
- target/sparc/cpu-qom.h   | 5 ++++-
- target/sparc/cpu.h       | 2 --
- target/tricore/cpu-qom.h | 5 +++++
- target/tricore/cpu.h     | 2 --
- target/xtensa/cpu-qom.h  | 5 ++++-
- target/xtensa/cpu.h      | 2 --
- 24 files changed, 47 insertions(+), 33 deletions(-)
+ target/alpha/cpu-qom.h      | 16 ---------------
+ target/alpha/cpu.h          | 13 +++++++++++++
+ target/arm/cpu-qom.h        | 27 -------------------------
+ target/arm/cpu.h            | 25 ++++++++++++++++++++++++
+ target/avr/cpu-qom.h        | 16 ---------------
+ target/avr/cpu.h            | 14 +++++++++++++
+ target/cris/cpu-qom.h       | 19 ------------------
+ target/cris/cpu.h           | 16 +++++++++++++++
+ target/hexagon/cpu-qom.h    |  1 -
+ target/hppa/cpu-qom.h       | 16 ---------------
+ target/hppa/cpu.h           | 14 +++++++++++++
+ target/i386/cpu-qom.h       | 39 -------------------------------------
+ target/i386/cpu.h           | 35 +++++++++++++++++++++++++++++++++
+ target/loongarch/cpu-qom.h  |  1 -
+ target/m68k/cpu-qom.h       | 16 ---------------
+ target/m68k/cpu.h           | 13 +++++++++++++
+ target/microblaze/cpu-qom.h | 16 ---------------
+ target/microblaze/cpu.h     | 13 +++++++++++++
+ target/mips/cpu-qom.h       | 20 -------------------
+ target/mips/cpu.h           | 17 ++++++++++++++++
+ target/nios2/cpu-qom.h      |  1 -
+ target/openrisc/cpu-qom.h   |  1 -
+ target/riscv/cpu-qom.h      | 16 +--------------
+ target/riscv/cpu.h          | 14 +++++++++++++
+ target/rx/cpu-qom.h         | 15 --------------
+ target/rx/cpu.h             | 14 +++++++++++++
+ target/s390x/cpu-qom.h      | 37 +----------------------------------
+ target/s390x/cpu.h          | 30 ++++++++++++++++++++++++++++
+ target/s390x/cpu_models.h   |  8 ++++----
+ target/sh4/cpu-qom.h        | 23 ----------------------
+ target/sh4/cpu.h            | 20 +++++++++++++++++++
+ target/sparc/cpu-qom.h      | 18 -----------------
+ target/sparc/cpu.h          | 18 +++++++++++++++--
+ target/tricore/cpu-qom.h    | 10 ----------
+ target/tricore/cpu.h        |  6 ++++++
+ target/xtensa/cpu-qom.h     | 21 --------------------
+ target/xtensa/cpu.h         | 20 +++++++++++++++++--
+ 37 files changed, 284 insertions(+), 335 deletions(-)
 
 diff --git a/target/alpha/cpu-qom.h b/target/alpha/cpu-qom.h
-index c5fbd8f11a..c4a4523993 100644
+index c4a4523993..1b32b18d34 100644
 --- a/target/alpha/cpu-qom.h
 +++ b/target/alpha/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU Alpha CPU
-+ * QEMU Alpha CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  *
-@@ -27,6 +27,9 @@
+@@ -21,7 +21,6 @@
+ #define QEMU_ALPHA_CPU_QOM_H
  
- OBJECT_DECLARE_CPU_TYPE(AlphaCPU, AlphaCPUClass, ALPHA_CPU)
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
  
-+#define ALPHA_CPU_TYPE_SUFFIX "-" TYPE_ALPHA_CPU
-+#define ALPHA_CPU_TYPE_NAME(model) model ALPHA_CPU_TYPE_SUFFIX
-+
- /**
-  * AlphaCPUClass:
-  * @parent_realize: The parent class' realize handler.
+ #define TYPE_ALPHA_CPU "alpha-cpu"
+ 
+@@ -30,19 +29,4 @@ OBJECT_DECLARE_CPU_TYPE(AlphaCPU, AlphaCPUClass, ALPHA_CPU)
+ #define ALPHA_CPU_TYPE_SUFFIX "-" TYPE_ALPHA_CPU
+ #define ALPHA_CPU_TYPE_NAME(model) model ALPHA_CPU_TYPE_SUFFIX
+ 
+-/**
+- * AlphaCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_reset: The parent class' reset handler.
+- *
+- * An Alpha CPU model.
+- */
+-struct AlphaCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    DeviceReset parent_reset;
+-};
+-
+-
+ #endif
 diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index c8d97ac27a..3bff56c565 100644
+index 3bff56c565..d672e911dd 100644
 --- a/target/alpha/cpu.h
 +++ b/target/alpha/cpu.h
-@@ -426,8 +426,6 @@ enum {
- 
- void alpha_translate_init(void);
- 
--#define ALPHA_CPU_TYPE_SUFFIX "-" TYPE_ALPHA_CPU
--#define ALPHA_CPU_TYPE_NAME(model) model ALPHA_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_ALPHA_CPU
- 
- void alpha_cpu_list(void);
-diff --git a/target/avr/cpu-qom.h b/target/avr/cpu-qom.h
-index d89be01e0f..75590cdd97 100644
---- a/target/avr/cpu-qom.h
-+++ b/target/avr/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU AVR CPU
-+ * QEMU AVR CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2016-2020 Michael Rolnik
-  *
-@@ -28,6 +28,9 @@
- 
- OBJECT_DECLARE_CPU_TYPE(AVRCPU, AVRCPUClass, AVR_CPU)
- 
-+#define AVR_CPU_TYPE_SUFFIX "-" TYPE_AVR_CPU
-+#define AVR_CPU_TYPE_NAME(name) (name AVR_CPU_TYPE_SUFFIX)
-+
- /**
-  *  AVRCPUClass:
-  *  @parent_realize: The parent class' realize handler.
-diff --git a/target/avr/cpu.h b/target/avr/cpu.h
-index f8b065ed79..0487399cb2 100644
---- a/target/avr/cpu.h
-+++ b/target/avr/cpu.h
-@@ -28,8 +28,6 @@
- #error "AVR 8-bit does not support user mode"
- #endif
- 
--#define AVR_CPU_TYPE_SUFFIX "-" TYPE_AVR_CPU
--#define AVR_CPU_TYPE_NAME(name) (name AVR_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_AVR_CPU
- 
- #define TCG_GUEST_DEFAULT_MO 0
-diff --git a/target/cris/cpu-qom.h b/target/cris/cpu-qom.h
-index c2fee242f4..d7e5f33e62 100644
---- a/target/cris/cpu-qom.h
-+++ b/target/cris/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU CRIS CPU
-+ * QEMU CRIS CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  *
-@@ -27,6 +27,9 @@
- 
- OBJECT_DECLARE_CPU_TYPE(CRISCPU, CRISCPUClass, CRIS_CPU)
- 
-+#define CRIS_CPU_TYPE_SUFFIX "-" TYPE_CRIS_CPU
-+#define CRIS_CPU_TYPE_NAME(name) (name CRIS_CPU_TYPE_SUFFIX)
-+
- /**
-  * CRISCPUClass:
-  * @parent_realize: The parent class' realize handler.
-diff --git a/target/cris/cpu.h b/target/cris/cpu.h
-index 6aa445348f..b821bb7983 100644
---- a/target/cris/cpu.h
-+++ b/target/cris/cpu.h
-@@ -240,8 +240,6 @@ enum {
- /* CRIS uses 8k pages.  */
- #define MMAP_SHIFT TARGET_PAGE_BITS
- 
--#define CRIS_CPU_TYPE_SUFFIX "-" TYPE_CRIS_CPU
--#define CRIS_CPU_TYPE_NAME(name) (name CRIS_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_CRIS_CPU
- 
- /* MMU modes definitions */
-diff --git a/target/i386/cpu-qom.h b/target/i386/cpu-qom.h
-index 58145717ef..dffc74c1ce 100644
---- a/target/i386/cpu-qom.h
-+++ b/target/i386/cpu-qom.h
-@@ -32,6 +32,9 @@
- 
- OBJECT_DECLARE_CPU_TYPE(X86CPU, X86CPUClass, X86_CPU)
- 
-+#define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
-+#define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
-+
- typedef struct X86CPUModel X86CPUModel;
- 
- /**
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index a600468698..2dea4df086 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -2239,8 +2239,6 @@ void cpu_x86_update_dr7(CPUX86State *env, uint32_t new_dr7);
- /* hw/pc.c */
- uint64_t cpu_get_tsc(CPUX86State *env);
- 
--#define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
--#define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_X86_CPU
- 
- #ifdef TARGET_X86_64
-diff --git a/target/m68k/cpu-qom.h b/target/m68k/cpu-qom.h
-index 13d94c9fe3..df0cc8b7a3 100644
---- a/target/m68k/cpu-qom.h
-+++ b/target/m68k/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU Motorola 68k CPU
-+ * QEMU Motorola 68k CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  *
-@@ -27,6 +27,9 @@
- 
- OBJECT_DECLARE_CPU_TYPE(M68kCPU, M68kCPUClass, M68K_CPU)
- 
-+#define M68K_CPU_TYPE_SUFFIX "-" TYPE_M68K_CPU
-+#define M68K_CPU_TYPE_NAME(model) model M68K_CPU_TYPE_SUFFIX
-+
- /*
-  * M68kCPUClass:
-  * @parent_realize: The parent class' realize handler.
-diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-index 9ea18028ad..7f34686a6f 100644
---- a/target/m68k/cpu.h
-+++ b/target/m68k/cpu.h
-@@ -561,8 +561,6 @@ enum {
-     ACCESS_DATA  = 0x20, /* Data load/store access        */
+@@ -267,6 +267,19 @@ struct ArchCPU {
+     QEMUTimer *alarm_timer;
  };
  
--#define M68K_CPU_TYPE_SUFFIX "-" TYPE_M68K_CPU
--#define M68K_CPU_TYPE_NAME(model) model M68K_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_M68K_CPU
++/**
++ * AlphaCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_reset: The parent class' reset handler.
++ *
++ * An Alpha CPU model.
++ */
++struct AlphaCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    DeviceReset parent_reset;
++};
  
- #define cpu_list m68k_cpu_list
+ #ifndef CONFIG_USER_ONLY
+ extern const VMStateDescription vmstate_alpha_cpu;
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 35c3b0924e..02b914c876 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -21,7 +21,6 @@
+ #define QEMU_ARM_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_ARM_CPU "arm-cpu"
+ 
+@@ -29,35 +28,9 @@ OBJECT_DECLARE_CPU_TYPE(ARMCPU, ARMCPUClass, ARM_CPU)
+ 
+ #define TYPE_ARM_MAX_CPU "max-" TYPE_ARM_CPU
+ 
+-typedef struct ARMCPUInfo {
+-    const char *name;
+-    void (*initfn)(Object *obj);
+-    void (*class_init)(ObjectClass *oc, void *data);
+-} ARMCPUInfo;
+-
+-/**
+- * ARMCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- *
+- * An ARM CPU model.
+- */
+-struct ARMCPUClass {
+-    CPUClass parent_class;
+-
+-    const ARMCPUInfo *info;
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-};
+-
+-
+ #define TYPE_AARCH64_CPU "aarch64-cpu"
+ typedef struct AArch64CPUClass AArch64CPUClass;
+ DECLARE_CLASS_CHECKERS(AArch64CPUClass, AARCH64_CPU,
+                        TYPE_AARCH64_CPU)
+ 
+-struct AArch64CPUClass {
+-    ARMCPUClass parent_class;
+-};
+-
+ #endif
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 06f92dacb9..ad2f32efd5 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1116,6 +1116,31 @@ struct ArchCPU {
+     uint64_t gt_cntfrq_hz;
+ };
+ 
++typedef struct ARMCPUInfo {
++    const char *name;
++    void (*initfn)(Object *obj);
++    void (*class_init)(ObjectClass *oc, void *data);
++} ARMCPUInfo;
++
++/**
++ * ARMCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ *
++ * An ARM CPU model.
++ */
++struct ARMCPUClass {
++    CPUClass parent_class;
++
++    const ARMCPUInfo *info;
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++};
++
++struct AArch64CPUClass {
++    ARMCPUClass parent_class;
++};
++
+ /* Callback functions for the generic timer's timers. */
+ void arm_gt_ptimer_cb(void *opaque);
+ void arm_gt_vtimer_cb(void *opaque);
+diff --git a/target/avr/cpu-qom.h b/target/avr/cpu-qom.h
+index 75590cdd97..38dbcc0535 100644
+--- a/target/avr/cpu-qom.h
++++ b/target/avr/cpu-qom.h
+@@ -22,7 +22,6 @@
+ #define TARGET_AVR_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_AVR_CPU "avr-cpu"
+ 
+@@ -31,19 +30,4 @@ OBJECT_DECLARE_CPU_TYPE(AVRCPU, AVRCPUClass, AVR_CPU)
+ #define AVR_CPU_TYPE_SUFFIX "-" TYPE_AVR_CPU
+ #define AVR_CPU_TYPE_NAME(name) (name AVR_CPU_TYPE_SUFFIX)
+ 
+-/**
+- *  AVRCPUClass:
+- *  @parent_realize: The parent class' realize handler.
+- *  @parent_phases: The parent class' reset phase handlers.
+- *
+- *  A AVR CPU model.
+- */
+-struct AVRCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-};
+-
+-
+ #endif /* TARGET_AVR_CPU_QOM_H */
+diff --git a/target/avr/cpu.h b/target/avr/cpu.h
+index 0487399cb2..8a17862737 100644
+--- a/target/avr/cpu.h
++++ b/target/avr/cpu.h
+@@ -147,6 +147,20 @@ struct ArchCPU {
+     CPUAVRState env;
+ };
+ 
++/**
++ *  AVRCPUClass:
++ *  @parent_realize: The parent class' realize handler.
++ *  @parent_phases: The parent class' reset phase handlers.
++ *
++ *  A AVR CPU model.
++ */
++struct AVRCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++};
++
+ extern const struct VMStateDescription vms_avr_cpu;
+ 
+ void avr_cpu_do_interrupt(CPUState *cpu);
+diff --git a/target/cris/cpu-qom.h b/target/cris/cpu-qom.h
+index d7e5f33e62..741ca97a1b 100644
+--- a/target/cris/cpu-qom.h
++++ b/target/cris/cpu-qom.h
+@@ -21,7 +21,6 @@
+ #define QEMU_CRIS_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_CRIS_CPU "cris-cpu"
+ 
+@@ -30,22 +29,4 @@ OBJECT_DECLARE_CPU_TYPE(CRISCPU, CRISCPUClass, CRIS_CPU)
+ #define CRIS_CPU_TYPE_SUFFIX "-" TYPE_CRIS_CPU
+ #define CRIS_CPU_TYPE_NAME(name) (name CRIS_CPU_TYPE_SUFFIX)
+ 
+-/**
+- * CRISCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- * @vr: Version Register value.
+- *
+- * A CRIS CPU model.
+- */
+-struct CRISCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-
+-    uint32_t vr;
+-};
+-
+-
+ #endif
+diff --git a/target/cris/cpu.h b/target/cris/cpu.h
+index b821bb7983..1be7f90319 100644
+--- a/target/cris/cpu.h
++++ b/target/cris/cpu.h
+@@ -179,6 +179,22 @@ struct ArchCPU {
+     CPUCRISState env;
+ };
+ 
++/**
++ * CRISCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ * @vr: Version Register value.
++ *
++ * A CRIS CPU model.
++ */
++struct CRISCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++
++    uint32_t vr;
++};
+ 
+ #ifndef CONFIG_USER_ONLY
+ extern const VMStateDescription vmstate_cris_cpu;
+diff --git a/target/hexagon/cpu-qom.h b/target/hexagon/cpu-qom.h
+index f02df7ee6f..da92fe7468 100644
+--- a/target/hexagon/cpu-qom.h
++++ b/target/hexagon/cpu-qom.h
+@@ -10,7 +10,6 @@
+ #define QEMU_HEXAGON_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_HEXAGON_CPU "hexagon-cpu"
+ 
+diff --git a/target/hppa/cpu-qom.h b/target/hppa/cpu-qom.h
+index 4b1d48f7ca..7270e93e6b 100644
+--- a/target/hppa/cpu-qom.h
++++ b/target/hppa/cpu-qom.h
+@@ -21,25 +21,9 @@
+ #define QEMU_HPPA_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_HPPA_CPU "hppa-cpu"
+ 
+ OBJECT_DECLARE_CPU_TYPE(HPPACPU, HPPACPUClass, HPPA_CPU)
+ 
+-/**
+- * HPPACPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_reset: The parent class' reset handler.
+- *
+- * An HPPA CPU model.
+- */
+-struct HPPACPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    DeviceReset parent_reset;
+-};
+-
+-
+ #endif
+diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
+index 518ea94f4f..0a0c7366c2 100644
+--- a/target/hppa/cpu.h
++++ b/target/hppa/cpu.h
+@@ -239,6 +239,20 @@ struct ArchCPU {
+     QEMUTimer *alarm_timer;
+ };
+ 
++/**
++ * HPPACPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_reset: The parent class' reset handler.
++ *
++ * An HPPA CPU model.
++ */
++struct HPPACPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    DeviceReset parent_reset;
++};
++
+ #include "exec/cpu-all.h"
+ 
+ static inline int cpu_mmu_index(CPUHPPAState *env, bool ifetch)
+diff --git a/target/i386/cpu-qom.h b/target/i386/cpu-qom.h
+index dffc74c1ce..d4e216d000 100644
+--- a/target/i386/cpu-qom.h
++++ b/target/i386/cpu-qom.h
+@@ -21,8 +21,6 @@
+ #define QEMU_I386_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qemu/notify.h"
+-#include "qom/object.h"
+ 
+ #ifdef TARGET_X86_64
+ #define TYPE_X86_CPU "x86_64-cpu"
+@@ -35,41 +33,4 @@ OBJECT_DECLARE_CPU_TYPE(X86CPU, X86CPUClass, X86_CPU)
+ #define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
+ #define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
+ 
+-typedef struct X86CPUModel X86CPUModel;
+-
+-/**
+- * X86CPUClass:
+- * @cpu_def: CPU model definition
+- * @host_cpuid_required: Whether CPU model requires cpuid from host.
+- * @ordering: Ordering on the "-cpu help" CPU model list.
+- * @migration_safe: See CpuDefinitionInfo::migration_safe
+- * @static_model: See CpuDefinitionInfo::static
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- *
+- * An x86 CPU model or family.
+- */
+-struct X86CPUClass {
+-    CPUClass parent_class;
+-
+-    /* CPU definition, automatically loaded by instance_init if not NULL.
+-     * Should be eventually replaced by subclass-specific property defaults.
+-     */
+-    X86CPUModel *model;
+-
+-    bool host_cpuid_required;
+-    int ordering;
+-    bool migration_safe;
+-    bool static_model;
+-
+-    /* Optional description of CPU model.
+-     * If unavailable, cpu_def->model_id is used */
+-    const char *model_description;
+-
+-    DeviceRealize parent_realize;
+-    DeviceUnrealize parent_unrealize;
+-    ResettablePhases parent_phases;
+-};
+-
+-
+ #endif
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 2dea4df086..e21d293daa 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2037,6 +2037,41 @@ struct ArchCPU {
+     bool xen_vapic;
+ };
+ 
++typedef struct X86CPUModel X86CPUModel;
++
++/**
++ * X86CPUClass:
++ * @cpu_def: CPU model definition
++ * @host_cpuid_required: Whether CPU model requires cpuid from host.
++ * @ordering: Ordering on the "-cpu help" CPU model list.
++ * @migration_safe: See CpuDefinitionInfo::migration_safe
++ * @static_model: See CpuDefinitionInfo::static
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ *
++ * An x86 CPU model or family.
++ */
++struct X86CPUClass {
++    CPUClass parent_class;
++
++    /* CPU definition, automatically loaded by instance_init if not NULL.
++     * Should be eventually replaced by subclass-specific property defaults.
++     */
++    X86CPUModel *model;
++
++    bool host_cpuid_required;
++    int ordering;
++    bool migration_safe;
++    bool static_model;
++
++    /* Optional description of CPU model.
++     * If unavailable, cpu_def->model_id is used */
++    const char *model_description;
++
++    DeviceRealize parent_realize;
++    DeviceUnrealize parent_unrealize;
++    ResettablePhases parent_phases;
++};
+ 
+ #ifndef CONFIG_USER_ONLY
+ extern const VMStateDescription vmstate_x86_cpu;
+diff --git a/target/loongarch/cpu-qom.h b/target/loongarch/cpu-qom.h
+index 82c86d146d..fa3fcf7186 100644
+--- a/target/loongarch/cpu-qom.h
++++ b/target/loongarch/cpu-qom.h
+@@ -9,7 +9,6 @@
+ #define LOONGARCH_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_LOONGARCH_CPU "loongarch-cpu"
+ #define TYPE_LOONGARCH32_CPU "loongarch32-cpu"
+diff --git a/target/m68k/cpu-qom.h b/target/m68k/cpu-qom.h
+index df0cc8b7a3..273e8eae41 100644
+--- a/target/m68k/cpu-qom.h
++++ b/target/m68k/cpu-qom.h
+@@ -21,7 +21,6 @@
+ #define QEMU_M68K_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_M68K_CPU "m68k-cpu"
+ 
+@@ -30,19 +29,4 @@ OBJECT_DECLARE_CPU_TYPE(M68kCPU, M68kCPUClass, M68K_CPU)
+ #define M68K_CPU_TYPE_SUFFIX "-" TYPE_M68K_CPU
+ #define M68K_CPU_TYPE_NAME(model) model M68K_CPU_TYPE_SUFFIX
+ 
+-/*
+- * M68kCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- *
+- * A Motorola 68k CPU model.
+- */
+-struct M68kCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-};
+-
+-
+ #endif
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index 7f34686a6f..6cfc696d2b 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -169,6 +169,19 @@ struct ArchCPU {
+     CPUM68KState env;
+ };
+ 
++/*
++ * M68kCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ *
++ * A Motorola 68k CPU model.
++ */
++struct M68kCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++};
+ 
+ #ifndef CONFIG_USER_ONLY
+ void m68k_cpu_do_interrupt(CPUState *cpu);
+diff --git a/target/microblaze/cpu-qom.h b/target/microblaze/cpu-qom.h
+index 78f549b57d..92e539fb2f 100644
+--- a/target/microblaze/cpu-qom.h
++++ b/target/microblaze/cpu-qom.h
+@@ -21,25 +21,9 @@
+ #define QEMU_MICROBLAZE_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_MICROBLAZE_CPU "microblaze-cpu"
+ 
+ OBJECT_DECLARE_CPU_TYPE(MicroBlazeCPU, MicroBlazeCPUClass, MICROBLAZE_CPU)
+ 
+-/**
+- * MicroBlazeCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- *
+- * A MicroBlaze CPU model.
+- */
+-struct MicroBlazeCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-};
+-
+-
+ #endif
+diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
+index e8000237d8..b5374365f5 100644
+--- a/target/microblaze/cpu.h
++++ b/target/microblaze/cpu.h
+@@ -355,6 +355,19 @@ struct ArchCPU {
+     MicroBlazeCPUConfig cfg;
+ };
+ 
++/**
++ * MicroBlazeCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ *
++ * A MicroBlaze CPU model.
++ */
++struct MicroBlazeCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++};
+ 
+ #ifndef CONFIG_USER_ONLY
+ void mb_cpu_do_interrupt(CPUState *cs);
 diff --git a/target/mips/cpu-qom.h b/target/mips/cpu-qom.h
-index c70b4a34be..5822dfb1d2 100644
+index 5822dfb1d2..0eea2a2598 100644
 --- a/target/mips/cpu-qom.h
 +++ b/target/mips/cpu-qom.h
-@@ -31,6 +31,9 @@
+@@ -21,7 +21,6 @@
+ #define QEMU_MIPS_CPU_QOM_H
  
- OBJECT_DECLARE_CPU_TYPE(MIPSCPU, MIPSCPUClass, MIPS_CPU)
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
  
-+#define MIPS_CPU_TYPE_SUFFIX "-" TYPE_MIPS_CPU
-+#define MIPS_CPU_TYPE_NAME(model) model MIPS_CPU_TYPE_SUFFIX
-+
- /**
-  * MIPSCPUClass:
-  * @parent_realize: The parent class' realize handler.
+ #ifdef TARGET_MIPS64
+ #define TYPE_MIPS_CPU "mips64-cpu"
+@@ -34,23 +33,4 @@ OBJECT_DECLARE_CPU_TYPE(MIPSCPU, MIPSCPUClass, MIPS_CPU)
+ #define MIPS_CPU_TYPE_SUFFIX "-" TYPE_MIPS_CPU
+ #define MIPS_CPU_TYPE_NAME(model) model MIPS_CPU_TYPE_SUFFIX
+ 
+-/**
+- * MIPSCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- *
+- * A MIPS CPU model.
+- */
+-struct MIPSCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-    const struct mips_def_t *cpu_def;
+-
+-    /* Used for the jazz board to modify mips_cpu_do_transaction_failed. */
+-    bool no_data_aborts;
+-};
+-
+-
+ #endif
 diff --git a/target/mips/cpu.h b/target/mips/cpu.h
-index 617c373797..12cc1bfafd 100644
+index 12cc1bfafd..52f13f0363 100644
 --- a/target/mips/cpu.h
 +++ b/target/mips/cpu.h
-@@ -1301,8 +1301,6 @@ enum {
-  */
- #define CPU_INTERRUPT_WAKE CPU_INTERRUPT_TGT_INT_0
+@@ -1217,6 +1217,23 @@ struct ArchCPU {
+     Clock *count_div; /* Divider for CP0_Count clock */
+ };
  
--#define MIPS_CPU_TYPE_SUFFIX "-" TYPE_MIPS_CPU
--#define MIPS_CPU_TYPE_NAME(model) model MIPS_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_MIPS_CPU
++/**
++ * MIPSCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ *
++ * A MIPS CPU model.
++ */
++struct MIPSCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++    const struct mips_def_t *cpu_def;
++
++    /* Used for the jazz board to modify mips_cpu_do_transaction_failed. */
++    bool no_data_aborts;
++};
  
- bool cpu_type_supports_cps_smp(const char *cpu_type);
+ void mips_cpu_list(void);
+ 
+diff --git a/target/nios2/cpu-qom.h b/target/nios2/cpu-qom.h
+index 931bc69b10..2fd9121540 100644
+--- a/target/nios2/cpu-qom.h
++++ b/target/nios2/cpu-qom.h
+@@ -10,7 +10,6 @@
+ #define QEMU_NIOS2_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_NIOS2_CPU "nios2-cpu"
+ 
+diff --git a/target/openrisc/cpu-qom.h b/target/openrisc/cpu-qom.h
+index 1ba9fb0a4c..14bac33312 100644
+--- a/target/openrisc/cpu-qom.h
++++ b/target/openrisc/cpu-qom.h
+@@ -10,7 +10,6 @@
+ #define QEMU_OPENRISC_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_OPENRISC_CPU "or1k-cpu"
+ 
+diff --git a/target/riscv/cpu-qom.h b/target/riscv/cpu-qom.h
+index 76efb614a6..35ca5c4600 100644
+--- a/target/riscv/cpu-qom.h
++++ b/target/riscv/cpu-qom.h
+@@ -20,7 +20,6 @@
+ #define RISCV_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+ 
+ #define TYPE_RISCV_CPU "riscv-cpu"
+ #define TYPE_RISCV_DYNAMIC_CPU "riscv-dynamic-cpu"
+@@ -44,21 +43,8 @@
+ #define TYPE_RISCV_CPU_VEYRON_V1        RISCV_CPU_TYPE_NAME("veyron-v1")
+ #define TYPE_RISCV_CPU_HOST             RISCV_CPU_TYPE_NAME("host")
+ 
+-typedef struct CPUArchState CPURISCVState;
++typedef struct CPUArchState CPURISCVState; // XXX
+ 
+ OBJECT_DECLARE_CPU_TYPE(RISCVCPU, RISCVCPUClass, RISCV_CPU)
+ 
+-/**
+- * RISCVCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- *
+- * A RISCV CPU model.
+- */
+-struct RISCVCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-};
+ #endif /* RISCV_CPU_QOM_H */
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index d832696418..a7edf95213 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -414,6 +414,20 @@ struct ArchCPU {
+     GHashTable *pmu_event_ctr_map;
+ };
+ 
++/**
++ * RISCVCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ *
++ * A RISCV CPU model.
++ */
++struct RISCVCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++};
++
+ static inline int riscv_has_ext(CPURISCVState *env, target_ulong ext)
+ {
+     return (env->misa_ext & ext) != 0;
 diff --git a/target/rx/cpu-qom.h b/target/rx/cpu-qom.h
-index f4cd5664e5..6213d877f7 100644
+index 6213d877f7..ac2e5785ef 100644
 --- a/target/rx/cpu-qom.h
 +++ b/target/rx/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * RX CPU
-+ * QEMU RX CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2019 Yoshinori Sato
-  *
-@@ -28,6 +28,9 @@
+@@ -20,7 +20,6 @@
+ #define RX_CPU_QOM_H
  
- OBJECT_DECLARE_CPU_TYPE(RXCPU, RXCPUClass, RX_CPU)
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
  
-+#define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
-+#define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
-+
- /*
-  * RXCPUClass:
-  * @parent_realize: The parent class' realize handler.
+ #define TYPE_RX_CPU "rx-cpu"
+ 
+@@ -31,18 +30,4 @@ OBJECT_DECLARE_CPU_TYPE(RXCPU, RXCPUClass, RX_CPU)
+ #define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
+ #define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
+ 
+-/*
+- * RXCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- *
+- * A RX CPU model.
+- */
+-struct RXCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-};
+-
+ #endif
 diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-index 8379f4a150..c81613770c 100644
+index c81613770c..e931e77e85 100644
 --- a/target/rx/cpu.h
 +++ b/target/rx/cpu.h
-@@ -112,8 +112,6 @@ struct ArchCPU {
+@@ -112,6 +112,20 @@ struct ArchCPU {
      CPURXState env;
  };
  
--#define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
--#define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
++/*
++ * RXCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ *
++ * A RX CPU model.
++ */
++struct RXCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++};
++
  #define CPU_RESOLVING_TYPE TYPE_RX_CPU
  
  const char *rx_crname(uint8_t cr);
 diff --git a/target/s390x/cpu-qom.h b/target/s390x/cpu-qom.h
-index 1088965fd5..fcd70daddf 100644
+index fcd70daddf..4037e31f79 100644
 --- a/target/s390x/cpu-qom.h
 +++ b/target/s390x/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU S/390 CPU
-+ * QEMU S/390 CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  *
-@@ -27,6 +27,9 @@
+@@ -21,7 +21,6 @@
+ #define QEMU_S390_CPU_QOM_H
  
- OBJECT_DECLARE_CPU_TYPE(S390CPU, S390CPUClass, S390_CPU)
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
  
-+#define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
-+#define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
-+
- typedef struct S390CPUModel S390CPUModel;
- typedef struct S390CPUDef S390CPUDef;
+ #define TYPE_S390_CPU "s390x-cpu"
  
+@@ -30,40 +29,6 @@ OBJECT_DECLARE_CPU_TYPE(S390CPU, S390CPUClass, S390_CPU)
+ #define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
+ #define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
+ 
+-typedef struct S390CPUModel S390CPUModel;
+-typedef struct S390CPUDef S390CPUDef;
+-
+-typedef struct CPUArchState CPUS390XState;
+-
+-typedef enum cpu_reset_type {
+-    S390_CPU_RESET_NORMAL,
+-    S390_CPU_RESET_INITIAL,
+-    S390_CPU_RESET_CLEAR,
+-} cpu_reset_type;
+-
+-/**
+- * S390CPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_reset: The parent class' reset handler.
+- * @load_normal: Performs a load normal.
+- * @cpu_reset: Performs a CPU reset.
+- * @initial_cpu_reset: Performs an initial CPU reset.
+- *
+- * An S/390 CPU model.
+- */
+-struct S390CPUClass {
+-    CPUClass parent_class;
+-
+-    const S390CPUDef *cpu_def;
+-    bool kvm_required;
+-    bool is_static;
+-    bool is_migration_safe;
+-    const char *desc;
+-
+-    DeviceRealize parent_realize;
+-    DeviceReset parent_reset;
+-    void (*load_normal)(CPUState *cpu);
+-    void (*reset)(CPUState *cpu, cpu_reset_type type);
+-};
++typedef struct CPUArchState CPUS390XState; // XXX
+ 
+ #endif
 diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index e56982dd69..988e2954a4 100644
+index 988e2954a4..7e2cccec65 100644
 --- a/target/s390x/cpu.h
 +++ b/target/s390x/cpu.h
-@@ -808,8 +808,6 @@ void s390_set_qemu_cpu_model(uint16_t type, uint8_t gen, uint8_t ec_ga,
+@@ -175,6 +175,36 @@ struct ArchCPU {
+     uint32_t irqstate_saved_size;
+ };
  
++typedef enum cpu_reset_type {
++    S390_CPU_RESET_NORMAL,
++    S390_CPU_RESET_INITIAL,
++    S390_CPU_RESET_CLEAR,
++} cpu_reset_type;
++
++/**
++ * S390CPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_reset: The parent class' reset handler.
++ * @load_normal: Performs a load normal.
++ * @cpu_reset: Performs a CPU reset.
++ * @initial_cpu_reset: Performs an initial CPU reset.
++ *
++ * An S/390 CPU model.
++ */
++struct S390CPUClass {
++    CPUClass parent_class;
++
++    const S390CPUDef *cpu_def;
++    bool kvm_required;
++    bool is_static;
++    bool is_migration_safe;
++    const char *desc;
++
++    DeviceRealize parent_realize;
++    DeviceReset parent_reset;
++    void (*load_normal)(CPUState *cpu);
++    void (*reset)(CPUState *cpu, cpu_reset_type type);
++};
  
- /* helper.c */
--#define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
--#define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
- #define CPU_RESOLVING_TYPE TYPE_S390_CPU
+ #ifndef CONFIG_USER_ONLY
+ extern const VMStateDescription vmstate_s390_cpu;
+diff --git a/target/s390x/cpu_models.h b/target/s390x/cpu_models.h
+index cc7305ec21..d7b8912989 100644
+--- a/target/s390x/cpu_models.h
++++ b/target/s390x/cpu_models.h
+@@ -18,7 +18,7 @@
+ #include "hw/core/cpu.h"
  
- /* interrupt.c */
+ /* static CPU definition */
+-struct S390CPUDef {
++typedef struct S390CPUDef {
+     const char *name;       /* name exposed to the user */
+     const char *desc;       /* description exposed to the user */
+     uint8_t gen;            /* hw generation identification */
+@@ -38,10 +38,10 @@ struct S390CPUDef {
+     S390FeatBitmap full_feat;
+     /* used to init full_feat from generated data */
+     S390FeatInit full_init;
+-};
++} S390CPUDef;
+ 
+ /* CPU model based on a CPU definition */
+-struct S390CPUModel {
++typedef struct S390CPUModel {
+     const S390CPUDef *def;
+     S390FeatBitmap features;
+     /* values copied from the "host" model, can change during migration */
+@@ -49,7 +49,7 @@ struct S390CPUModel {
+     uint32_t cpu_id;        /* CPU id */
+     uint8_t cpu_id_format;  /* CPU id format bit */
+     uint8_t cpu_ver;        /* CPU version, usually "ff" for kvm */
+-};
++} S390CPUModel;
+ 
+ /*
+  * CPU ID
 diff --git a/target/sh4/cpu-qom.h b/target/sh4/cpu-qom.h
-index 08fbebc996..bd0ef49fa1 100644
+index bd0ef49fa1..6cf5fbb074 100644
 --- a/target/sh4/cpu-qom.h
 +++ b/target/sh4/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU SuperH CPU
-+ * QEMU SuperH CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  *
-@@ -31,6 +31,9 @@
+@@ -21,7 +21,6 @@
+ #define QEMU_SUPERH_CPU_QOM_H
  
- OBJECT_DECLARE_CPU_TYPE(SuperHCPU, SuperHCPUClass, SUPERH_CPU)
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
  
-+#define SUPERH_CPU_TYPE_SUFFIX "-" TYPE_SUPERH_CPU
-+#define SUPERH_CPU_TYPE_NAME(model) model SUPERH_CPU_TYPE_SUFFIX
-+
- /**
-  * SuperHCPUClass:
-  * @parent_realize: The parent class' realize handler.
+ #define TYPE_SUPERH_CPU "superh-cpu"
+ 
+@@ -34,26 +33,4 @@ OBJECT_DECLARE_CPU_TYPE(SuperHCPU, SuperHCPUClass, SUPERH_CPU)
+ #define SUPERH_CPU_TYPE_SUFFIX "-" TYPE_SUPERH_CPU
+ #define SUPERH_CPU_TYPE_NAME(model) model SUPERH_CPU_TYPE_SUFFIX
+ 
+-/**
+- * SuperHCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- * @pvr: Processor Version Register
+- * @prr: Processor Revision Register
+- * @cvr: Cache Version Register
+- *
+- * A SuperH CPU model.
+- */
+-struct SuperHCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-
+-    uint32_t pvr;
+-    uint32_t prr;
+-    uint32_t cvr;
+-};
+-
+-
+ #endif
 diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-index dc0561b73b..dbe00e29c2 100644
+index dbe00e29c2..360eac1fbe 100644
 --- a/target/sh4/cpu.h
 +++ b/target/sh4/cpu.h
-@@ -250,8 +250,6 @@ int cpu_sh4_is_cached(CPUSH4State * env, target_ulong addr);
+@@ -209,6 +209,26 @@ struct ArchCPU {
+     CPUSH4State env;
+ };
  
- void cpu_load_tlb(CPUSH4State * env);
++/**
++ * SuperHCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ * @pvr: Processor Version Register
++ * @prr: Processor Revision Register
++ * @cvr: Cache Version Register
++ *
++ * A SuperH CPU model.
++ */
++struct SuperHCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++
++    uint32_t pvr;
++    uint32_t prr;
++    uint32_t cvr;
++};
  
--#define SUPERH_CPU_TYPE_SUFFIX "-" TYPE_SUPERH_CPU
--#define SUPERH_CPU_TYPE_NAME(model) model SUPERH_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_SUPERH_CPU
- 
- #define cpu_list sh4_cpu_list
+ void superh_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+ int superh_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
 diff --git a/target/sparc/cpu-qom.h b/target/sparc/cpu-qom.h
-index b4a0db84ce..aca29415b4 100644
+index aca29415b4..a86331bd58 100644
 --- a/target/sparc/cpu-qom.h
 +++ b/target/sparc/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU SPARC CPU
-+ * QEMU SPARC CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  *
-@@ -31,6 +31,9 @@
+@@ -21,7 +21,6 @@
+ #define QEMU_SPARC_CPU_QOM_H
  
- OBJECT_DECLARE_CPU_TYPE(SPARCCPU, SPARCCPUClass, SPARC_CPU)
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
  
-+#define SPARC_CPU_TYPE_SUFFIX "-" TYPE_SPARC_CPU
-+#define SPARC_CPU_TYPE_NAME(model) model SPARC_CPU_TYPE_SUFFIX
-+
- typedef struct sparc_def_t sparc_def_t;
- /**
-  * SPARCCPUClass:
+ #ifdef TARGET_SPARC64
+ #define TYPE_SPARC_CPU "sparc64-cpu"
+@@ -34,21 +33,4 @@ OBJECT_DECLARE_CPU_TYPE(SPARCCPU, SPARCCPUClass, SPARC_CPU)
+ #define SPARC_CPU_TYPE_SUFFIX "-" TYPE_SPARC_CPU
+ #define SPARC_CPU_TYPE_NAME(model) model SPARC_CPU_TYPE_SUFFIX
+ 
+-typedef struct sparc_def_t sparc_def_t;
+-/**
+- * SPARCCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- *
+- * A SPARC CPU model.
+- */
+-struct SPARCCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-    sparc_def_t *cpu_def;
+-};
+-
+-
+ #endif
 diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 691287f134..31772c9b73 100644
+index 31772c9b73..9cee99d687 100644
 --- a/target/sparc/cpu.h
 +++ b/target/sparc/cpu.h
-@@ -648,8 +648,6 @@ hwaddr cpu_get_phys_page_nofault(CPUSPARCState *env, target_ulong addr,
+@@ -252,7 +252,7 @@ typedef struct trap_state {
  #endif
- #endif
+ #define TARGET_INSN_START_EXTRA_WORDS 1
  
--#define SPARC_CPU_TYPE_SUFFIX "-" TYPE_SPARC_CPU
--#define SPARC_CPU_TYPE_NAME(model) model SPARC_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_SPARC_CPU
+-struct sparc_def_t {
++typedef struct sparc_def_t {
+     const char *name;
+     target_ulong iu_version;
+     uint32_t fpu_version;
+@@ -266,7 +266,7 @@ struct sparc_def_t {
+     uint32_t features;
+     uint32_t nwindows;
+     uint32_t maxtl;
+-};
++} sparc_def_t;
  
- #define cpu_list sparc_cpu_list
+ #define CPU_FEATURE_FLOAT        (1 << 0)
+ #define CPU_FEATURE_FLOAT128     (1 << 1)
+@@ -562,6 +562,20 @@ struct ArchCPU {
+     CPUSPARCState env;
+ };
+ 
++/**
++ * SPARCCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ *
++ * A SPARC CPU model.
++ */
++struct SPARCCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++    sparc_def_t *cpu_def;
++};
+ 
+ #ifndef CONFIG_USER_ONLY
+ extern const VMStateDescription vmstate_sparc_cpu;
 diff --git a/target/tricore/cpu-qom.h b/target/tricore/cpu-qom.h
-index b3b6c75a3a..2598651008 100644
+index 2598651008..e35dc1ad2d 100644
 --- a/target/tricore/cpu-qom.h
 +++ b/target/tricore/cpu-qom.h
-@@ -1,4 +1,6 @@
- /*
-+ * QEMU TriCore CPU QOM header (target agnostic)
-+ *
-  *  Copyright (c) 2012-2014 Bastian Koppelmann C-Lab/University Paderborn
-  *
-  * This library is free software; you can redistribute it and/or
-@@ -26,6 +28,9 @@
+@@ -21,8 +21,6 @@
+ #define QEMU_TRICORE_CPU_QOM_H
  
- OBJECT_DECLARE_CPU_TYPE(TriCoreCPU, TriCoreCPUClass, TRICORE_CPU)
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
+-
  
-+#define TRICORE_CPU_TYPE_SUFFIX "-" TYPE_TRICORE_CPU
-+#define TRICORE_CPU_TYPE_NAME(model) model TRICORE_CPU_TYPE_SUFFIX
-+
- struct TriCoreCPUClass {
-     CPUClass parent_class;
+ #define TYPE_TRICORE_CPU "tricore-cpu"
  
+@@ -31,12 +29,4 @@ OBJECT_DECLARE_CPU_TYPE(TriCoreCPU, TriCoreCPUClass, TRICORE_CPU)
+ #define TRICORE_CPU_TYPE_SUFFIX "-" TYPE_TRICORE_CPU
+ #define TRICORE_CPU_TYPE_NAME(model) model TRICORE_CPU_TYPE_SUFFIX
+ 
+-struct TriCoreCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-};
+-
+-
+ #endif /* QEMU_TRICORE_CPU_QOM_H */
 diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
-index b4a6ab141d..c537a33ee8 100644
+index c537a33ee8..de3ab53a83 100644
 --- a/target/tricore/cpu.h
 +++ b/target/tricore/cpu.h
-@@ -268,8 +268,6 @@ static inline void cpu_get_tb_cpu_state(CPUTriCoreState *env, vaddr *pc,
-     *flags = new_flags;
- }
+@@ -68,6 +68,12 @@ struct ArchCPU {
+     CPUTriCoreState env;
+ };
  
--#define TRICORE_CPU_TYPE_SUFFIX "-" TYPE_TRICORE_CPU
--#define TRICORE_CPU_TYPE_NAME(model) model TRICORE_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_TRICORE_CPU
++struct TriCoreCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++};
  
- /* helpers.c */
+ hwaddr tricore_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ void tricore_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
 diff --git a/target/xtensa/cpu-qom.h b/target/xtensa/cpu-qom.h
-index 424bcbd8dd..03873ea50b 100644
+index 03873ea50b..d932346b5f 100644
 --- a/target/xtensa/cpu-qom.h
 +++ b/target/xtensa/cpu-qom.h
-@@ -1,5 +1,5 @@
- /*
-- * QEMU Xtensa CPU
-+ * QEMU Xtensa CPU QOM header (target agnostic)
-  *
-  * Copyright (c) 2012 SUSE LINUX Products GmbH
-  * All rights reserved.
-@@ -36,6 +36,9 @@
+@@ -30,7 +30,6 @@
+ #define QEMU_XTENSA_CPU_QOM_H
  
- OBJECT_DECLARE_CPU_TYPE(XtensaCPU, XtensaCPUClass, XTENSA_CPU)
+ #include "hw/core/cpu.h"
+-#include "qom/object.h"
  
-+#define XTENSA_CPU_TYPE_SUFFIX "-" TYPE_XTENSA_CPU
-+#define XTENSA_CPU_TYPE_NAME(model) model XTENSA_CPU_TYPE_SUFFIX
-+
- typedef struct XtensaConfig XtensaConfig;
+ #define TYPE_XTENSA_CPU "xtensa-cpu"
  
- /**
+@@ -39,24 +38,4 @@ OBJECT_DECLARE_CPU_TYPE(XtensaCPU, XtensaCPUClass, XTENSA_CPU)
+ #define XTENSA_CPU_TYPE_SUFFIX "-" TYPE_XTENSA_CPU
+ #define XTENSA_CPU_TYPE_NAME(model) model XTENSA_CPU_TYPE_SUFFIX
+ 
+-typedef struct XtensaConfig XtensaConfig;
+-
+-/**
+- * XtensaCPUClass:
+- * @parent_realize: The parent class' realize handler.
+- * @parent_phases: The parent class' reset phase handlers.
+- * @config: The CPU core configuration.
+- *
+- * An Xtensa CPU model.
+- */
+-struct XtensaCPUClass {
+-    CPUClass parent_class;
+-
+-    DeviceRealize parent_realize;
+-    ResettablePhases parent_phases;
+-
+-    const XtensaConfig *config;
+-};
+-
+-
+ #endif
 diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index 85aab1bdf8..d6d2fb1f4e 100644
+index d6d2fb1f4e..dd81729306 100644
 --- a/target/xtensa/cpu.h
 +++ b/target/xtensa/cpu.h
-@@ -586,8 +586,6 @@ G_NORETURN void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+@@ -426,7 +426,7 @@ extern const XtensaOpcodeTranslators xtensa_core_opcodes;
+ extern const XtensaOpcodeTranslators xtensa_fpu2000_opcodes;
+ extern const XtensaOpcodeTranslators xtensa_fpu_opcodes;
  
- #define cpu_list xtensa_cpu_list
+-struct XtensaConfig {
++typedef struct XtensaConfig {
+     const char *name;
+     uint64_t options;
+     XtensaGdbRegmap gdb_regmap;
+@@ -489,7 +489,7 @@ struct XtensaConfig {
+     const xtensa_mpu_entry *mpu_bg;
  
--#define XTENSA_CPU_TYPE_SUFFIX "-" TYPE_XTENSA_CPU
--#define XTENSA_CPU_TYPE_NAME(model) model XTENSA_CPU_TYPE_SUFFIX
- #define CPU_RESOLVING_TYPE TYPE_XTENSA_CPU
+     bool use_first_nan;
+-};
++} XtensaConfig;
  
- #if TARGET_BIG_ENDIAN
+ typedef struct XtensaConfigList {
+     const XtensaConfig *config;
+@@ -562,6 +562,22 @@ struct ArchCPU {
+     Clock *clock;
+ };
+ 
++/**
++ * XtensaCPUClass:
++ * @parent_realize: The parent class' realize handler.
++ * @parent_phases: The parent class' reset phase handlers.
++ * @config: The CPU core configuration.
++ *
++ * An Xtensa CPU model.
++ */
++struct XtensaCPUClass {
++    CPUClass parent_class;
++
++    DeviceRealize parent_realize;
++    ResettablePhases parent_phases;
++
++    const XtensaConfig *config;
++};
+ 
+ #ifndef CONFIG_USER_ONLY
+ bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
 -- 
 2.41.0
 

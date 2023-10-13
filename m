@@ -1,110 +1,111 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1337621ejc;
-        Fri, 13 Oct 2023 01:06:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHKXIUN1Pr7LZqwjLo4IUT/wQ+gizGSc912fJLiRGcSOvRzYbQf8eLKTlfufmsLpGkXs6Vp
-X-Received: by 2002:a05:6214:5585:b0:65a:f55e:5a77 with SMTP id mi5-20020a056214558500b0065af55e5a77mr27204125qvb.34.1697184398838;
-        Fri, 13 Oct 2023 01:06:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697184398; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1338032ejc;
+        Fri, 13 Oct 2023 01:07:37 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFY54TJKc8P78ouDCfgP7FQZtgPL2/IZK97+NlBHHF5NOHQyrcnoy4v1CETLuXpClYOQUXh
+X-Received: by 2002:a05:620a:b5a:b0:770:9bd2:b3be with SMTP id x26-20020a05620a0b5a00b007709bd2b3bemr25992786qkg.5.1697184457019;
+        Fri, 13 Oct 2023 01:07:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697184457; cv=none;
         d=google.com; s=arc-20160816;
-        b=RljGQAP7XvbqEfsEKv26qYPwSD1Gl0lDZw9De9c4Pj00LMmJZDDLCKFZmRt9tyMzHx
-         WxB8ONhIzmGEna/nLlHbbSLZAbhoWicmSGL3xMwzr0aBlc+L45B9PkbAFVKeN8Faap9+
-         aZzd6jRUHUeM94PsEBKBqtss+Hv15Ni3rn5jpuGerYKS/lB2yV+gEY3+44MLQ97Mh0MX
-         Amv6PiVYd2wzpjiE4QNO4nS2HH2QKcQ1u2CkRIURuM5bHAk0HcQZK62BX7K7GYJlXMkf
-         vFMXkCcRmv+IdYOeo4uFV92yURs64SK6OrKXtBIEf2jBzxn9BPpoFmMs9Z4guRbygM/4
-         FLzw==
+        b=PG4SHaYuLoIR4IEjp7q10bCE6VEEUkFxqNBogsiRaGjgkwt9zlXBXpCR1VOtGwXEmC
+         +mFDXlGKH9leuR0a0YJxISI4m+kc250CKj6YLkQK7/ltv2MStoqHSx12a8O6QqalUjgf
+         vd+q/NmagKPvpBobVNoSyf7/ePXhyjDkC6oJsSuDjfHdbsINfoTq9foVFxmBjh9NO3Gd
+         cgmEJEaYkO6DD0oLnjooaW74u6gKTcQr2XINygImvlrpjBPEOizTJMGYnDznwqG8c9qo
+         sfXN4+qEtA/yQf9AxfW0bw8wetHim9Zzwv3qK21yN4ITimxPS2lSt5XNm8x/+1Bqwdxf
+         H0lQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=TgVJaEUfo38wurBGn+D3UK3JXthAmJ84+zCqcU6HvLo=;
-        fh=9I+A4P5ux2QVWc//FtYc0DwEYwqsnwCt6Xj4p5qF3Fc=;
-        b=LooBEZFH07oYsnB8DpgskFPtsILlP9QW6FVgqptn32QkhZDgDbc8JlAawIvFK4VM+Z
-         b0k2iFcEKkwwNb9E3W47sVkHWFd5kmMFhbUoHKeqJ3GPFB+34O6Mmt/+KAaAjCroZvVK
-         BaXqFBu7tG8i0oC4IljvYXOf+Lh8LGHzzDzRKCii9gvofexxOu0DOUleCuHJ0tMCBLg1
-         4QicqvkQMSf6ANsvcXLAWiLBhWq0+sD57T3MZ/o5Wu8xv4+kqZcmBwbusUUNxCla3VRz
-         a7NJHltn+hav1n5jFPtKTcQmQ4gpbjIybk1nMSoRPaD6b6X4FoMFCTD3QtWFnZB3OtXh
-         FfgQ==
+        bh=aZTz17RhWxoUZ3hVHX7ypZhIj3NVSXDU2Rg89KVwrPE=;
+        fh=1CkIaZBADmJB8jP2ieauFT9oPNugo99OaBqF7VaVQrU=;
+        b=deTBxwfK+nkeEpUBq97fU5meTSoi2G+O5FfaSyAO4TuhPsgj467QTIpoFoWUTvRY+Y
+         /33clD2Oc310FI7s/V6THOTV6cKy3/1sLF84ZMlw0f2ExfTX1DAvqOSmmaBj1+Fg+qC8
+         hZy0gPfTNZGQ0Xx6tbHpb9BldXyRGO8BKkCwy6H8JT74ip3IKfVB3JVey7hsMDtHlUAh
+         85rTtU6tStaj+sfaXoCRGAUXQWC6cnFdFVyGucTDVfA9mOq7znkk2nC6RFU/S3+9Gq6B
+         8OJK4Ei7ZnxtVMuKtg2u/jiTmKN+xOWPVTClU4VP+I40yOWmY2/VS2P5jLM3HjFs1uaW
+         8Fmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="iY7uy/36";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=yo6QvDN5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id om25-20020a0562143d9900b0065afb1fed25si844807qvb.404.2023.10.13.01.06.38
+        by mx.google.com with ESMTPS id u7-20020a05620a0c4700b0076dbb17e788si863974qki.721.2023.10.13.01.07.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:06:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 01:07:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="iY7uy/36";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=yo6QvDN5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrD59-00062t-Oi; Fri, 13 Oct 2023 03:59:39 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrCxv-0001Rm-TR; Fri, 13 Oct 2023 03:52:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrD55-0005Gp-ET
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:59:35 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1qrCxT-0007CT-JD
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:46 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrD53-0007EL-CM
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:59:35 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-40651a72807so18845975e9.1
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:59:32 -0700 (PDT)
+ id 1qrCxK-00057R-Qo
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:43 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-405505b07dfso18716665e9.0
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:51:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183971; x=1697788771; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183486; x=1697788286; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=TgVJaEUfo38wurBGn+D3UK3JXthAmJ84+zCqcU6HvLo=;
- b=iY7uy/36mhcTothe3w+judS62EWMyoSuOiPhTWrecb6WwV2r9XtPDKbjaAQRyBVioo
- GdX5AdxIW676VvYPbngMGHm1vO9O0Twzb5t67sy+vEa5qoRSZ1AzkGhQuLW2XspshFSK
- ArEW20HrWtA9N0agQp48HzFgNs13vZLCCvoBVSnu76ciInRYcBgoyiaYTAkVe4/oWstX
- HI5xf15gAjChqkusSbIwOBNbO9yaoT6Ciu/qmWuX5aM+ixBer2TFBfKXr8sAjGCEDnJV
- n/L3NItRz0dvbl7OWzzw3gn/G/0p/daKkWw1RxWksqFt/+DGVJzAjaC0zX60GNldyQ62
- 7GEw==
+ bh=aZTz17RhWxoUZ3hVHX7ypZhIj3NVSXDU2Rg89KVwrPE=;
+ b=yo6QvDN5qXYK1qGQZg1y6wlvqPGS1mxdFEWQvR4KeVsQ8oW8pER0MQ1iXkI5Fe+nxU
+ IsgL4MwWMKSWTf8QOxTXSbZ/rotGnn10szX9IUwx2H8jBbIajOTYPMBg4lKzZ3K5yMBz
+ eHqfGlUFUhBGV7O8omOJ8SQ8sXjHmksLlNNc3SOfnZJWVfE8fJVS33uE3sr/MoOio3oH
+ 3nr9H/3vuAxhc9SuQT/I2b7+CaoFv9//l2TLKcFRB01+UOyNhmaRP1xx/jtlADqHgTsU
+ A6oMsWTqUIO9OAakdqeJmkfPMbl/TXZcBq1TuFHLs51j+PgGBgV5rNMuh2oDoyfDcpsc
+ Aitg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183971; x=1697788771;
+ d=1e100.net; s=20230601; t=1697183486; x=1697788286;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=TgVJaEUfo38wurBGn+D3UK3JXthAmJ84+zCqcU6HvLo=;
- b=jsr9UNc3GOi4Ywd5WYp+zODL+8v82fRS6NybGfuD0u2FuW2yi8PQFXMuu7umeWBgI1
- Y1dYoxcArZ8d7XCiWqQvzfj981KpkmIliTqwVVLiv3IrtJReanCF+jPsJfBWa1lC3u9J
- TICdEffxCgbwm426dISq6Nh6h3Y0VhvexTGR6fQcmRNJKNhiMwt2avYgASWnvU/e/tQd
- v4novtiaCEzPfMSjO1iNksJd6HGfjNbECcXqvbj0ta2IajVYovALDCNb9ucEW8bYfQ2p
- xSjuU6FqowwRveH2hT7dtxEfxRYu2k3+Gr8u0Hx2pUHAeKJsLkEkvrD735dVXeESUjZE
- bYTg==
-X-Gm-Message-State: AOJu0Yz7BW3gStt0yrU6AYZ9Myl/04M6jtUX/woF6GLwrSnB3QLZQFgM
- A7Bo/cBccXqEZElLH5EusI6H4t7YAOexCxnvZ+U=
-X-Received: by 2002:a05:600c:2113:b0:401:73b2:f043 with SMTP id
- u19-20020a05600c211300b0040173b2f043mr24211583wml.1.1697183971468; 
- Fri, 13 Oct 2023 00:59:31 -0700 (PDT)
-Received: from localhost.localdomain (adsl-26.37.6.0.tellas.gr. [37.6.0.26])
- by smtp.gmail.com with ESMTPSA id
- a10-20020a05600c224a00b003fe23b10fdfsm1798183wmm.36.2023.10.13.00.59.30
+ bh=aZTz17RhWxoUZ3hVHX7ypZhIj3NVSXDU2Rg89KVwrPE=;
+ b=W8kYr5bWAgYrsauQjqEn6BAFvDF1ZZT4pu/IGw2n8ZjOgVIJxcn29f9zEgqIG9QwvE
+ X7r9UncAvV43SR8N9IxczYkcb+dFBI2aRFNMcABzLmuAXAnqTH/KD0Kg65X4E3wssGjA
+ iszpw97KerFaPcq26euWTC+TJbqPFqW3N9NXhZFWQprWFi4LAtMWcLrIaL718XxOk8eq
+ AGXU8z4iUg5u1F7UqwVWIg9sBW9TDQ24XQnGuG7SIxzCYJKN2ufMQwFt1MxLzpfn/c9O
+ mIHbHeM61tiIRWKFD2AhPQNmIIt1dtV+48Dz3Bu2m5PLiJhbwvae8wq1HGpFujKDNvSz
+ mHdg==
+X-Gm-Message-State: AOJu0YwKtfLZQ+X+zSPGAPUA0SUD+a1LzYE+ZAMbXVL61mM5b0NZFqaV
+ tR1aj9/dLhkyQhhV7pAv09U69WNfZfU1gPkLoXI=
+X-Received: by 2002:adf:e288:0:b0:329:6d7c:ca71 with SMTP id
+ v8-20020adfe288000000b003296d7cca71mr15995250wri.17.1697183486466; 
+ Fri, 13 Oct 2023 00:51:26 -0700 (PDT)
+Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
+ [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:59:30 -0700 (PDT)
+ Fri, 13 Oct 2023 00:51:25 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:nSeries)
-Subject: [RFC PATCH v2 56/78] hw/input: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:57:23 +0300
-Message-Id: <7f9ab65c5376669408c00fa27d187aef66f2d26e.1697183699.git.manos.pitsidianakis@linaro.org>
+ Thomas Huth <huth@tuxfamily.org>
+Subject: [RFC PATCH 44/78] hw/m68k/mcf_intc.c: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:56 +0300
+Message-Id: <afd58b7b36d587594754b695313ed01232f6735f.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1697183699.git.manos.pitsidianakis@linaro.org>
-References: <cover.1697183699.git.manos.pitsidianakis@linaro.org>
+In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
+References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,278 +114,68 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rma+IEekodW2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 77HU6SSYnJNI
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/input/hid.c     | 3 ++-
- hw/input/tsc2005.c | 4 ++--
- hw/input/tsc210x.c | 2 +-
- 3 files changed, 5 insertions(+), 4 deletions(-)
+ hw/m68k/mcf_intc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/input/hid.c b/hw/input/hid.c
-index a9c7dd1ce1..15fffc5dfb 100644
---- a/hw/input/hid.c
-+++ b/hw/input/hid.c
-@@ -250,88 +250,89 @@ static void hid_keyboard_event(DeviceState *dev, QemuConsole *src,
- static void hid_keyboard_process_keycode(HIDState *hs)
+diff --git a/hw/m68k/mcf_intc.c b/hw/m68k/mcf_intc.c
+index 4cd30188c0..9556a0ccb7 100644
+--- a/hw/m68k/mcf_intc.c
++++ b/hw/m68k/mcf_intc.c
+@@ -58,34 +58,34 @@ static void mcf_intc_update(mcf_intc_state *s)
+ static uint64_t mcf_intc_read(void *opaque, hwaddr addr,
+                               unsigned size)
  {
-     uint8_t hid_code, index, key;
-     int i, keycode, slot;
- 
-     if (hs->n == 0) {
-         return;
+     int offset;
+     mcf_intc_state *s = (mcf_intc_state *)opaque;
+     offset = addr & 0xff;
+     if (offset >= 0x40 && offset < 0x80) {
+         return s->icr[offset - 0x40];
      }
-     slot = hs->head & QUEUE_MASK; QUEUE_INCR(hs->head); hs->n--;
-     keycode = hs->kbd.keycodes[slot];
- 
-     if (!hs->n) {
-         trace_hid_kbd_queue_empty();
-     }
- 
-     key = keycode & 0x7f;
-     index = key | ((hs->kbd.modifiers & (1 << 8)) >> 1);
-     hid_code = hid_usage_keys[index];
-     hs->kbd.modifiers &= ~(1 << 8);
- 
-     switch (hid_code) {
+     switch (offset) {
      case 0x00:
-         return;
- 
-     case 0xe0:
-         assert(key == 0x1d);
-         if (hs->kbd.modifiers & (1 << 9)) {
-             /* The hid_codes for the 0xe1/0x1d scancode sequence are 0xe9/0xe0.
-              * Here we're processing the second hid_code.  By dropping bit 9
-              * and setting bit 8, the scancode after 0x1d will access the
-              * second half of the table.
-              */
-             hs->kbd.modifiers ^= (1 << 8) | (1 << 9);
-             return;
-         }
-         /* fall through to process Ctrl_L */
+         return (uint32_t)(s->ipr >> 32);
+     case 0x04:
+         return (uint32_t)s->ipr;
+     case 0x08:
+         return (uint32_t)(s->imr >> 32);
+     case 0x0c:
+         return (uint32_t)s->imr;
+     case 0x10:
+         return (uint32_t)(s->ifr >> 32);
+     case 0x14:
+         return (uint32_t)s->ifr;
+     case 0xe0: /* SWIACK.  */
+         return s->active_vector;
+     case 0xe1: case 0xe2: case 0xe3: case 0xe4:
+     case 0xe5: case 0xe6: case 0xe7:
+         /* LnIACK */
+         qemu_log_mask(LOG_UNIMP, "%s: LnIACK not implemented (offset 0x%02x)\n",
+                       __func__, offset);
+-        /* fallthru */
 +        fallthrough;
-     case 0xe1 ... 0xe7:
-         /* Ctrl_L/Ctrl_R, Shift_L/Shift_R, Alt_L/Alt_R, Win_L/Win_R.
-          * Handle releases here, or fall through to process presses.
-          */
-         if (keycode & (1 << 7)) {
-             hs->kbd.modifiers &= ~(1 << (hid_code & 0x0f));
-             return;
-         }
--        /* fall through */
-+        fallthrough;
-     case 0xe8 ... 0xe9:
-         /* USB modifiers are just 1 byte long.  Bits 8 and 9 of
-          * hs->kbd.modifiers implement a state machine that detects the
-          * 0xe0 and 0xe1/0x1d sequences.  These bits do not follow the
-          * usual rules where bit 7 marks released keys; they are cleared
-          * elsewhere in the function as the state machine dictates.
-          */
-         hs->kbd.modifiers |= 1 << (hid_code & 0x0f);
-         return;
- 
-     case 0xea ... 0xef:
-         abort();
- 
      default:
-         break;
+         return 0;
      }
- 
-     if (keycode & (1 << 7)) {
-         for (i = hs->kbd.keys - 1; i >= 0; i--) {
-             if (hs->kbd.key[i] == hid_code) {
-                 hs->kbd.key[i] = hs->kbd.key[-- hs->kbd.keys];
-                 hs->kbd.key[hs->kbd.keys] = 0x00;
-                 break;
-             }
-         }
-         if (i < 0) {
-             return;
-         }
-     } else {
-         for (i = hs->kbd.keys - 1; i >= 0; i--) {
-             if (hs->kbd.key[i] == hid_code) {
-                 break;
-             }
-         }
-         if (i < 0) {
-             if (hs->kbd.keys < sizeof(hs->kbd.key)) {
-                 hs->kbd.key[hs->kbd.keys++] = hid_code;
-             }
-         } else {
-             return;
-         }
-     }
- }
-diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
-index db2b80e35f..4f3f1d9d12 100644
---- a/hw/input/tsc2005.c
-+++ b/hw/input/tsc2005.c
-@@ -234,70 +234,70 @@ static void tsc2005_write(TSC2005State *s, int reg, uint16_t data)
- /* This handles most of the chip's logic.  */
- static void tsc2005_pin_update(TSC2005State *s)
- {
-     int64_t expires;
-     bool pin_state;
- 
-     switch (s->pin_func) {
-     case 0:
-         pin_state = !s->pressure && !!s->dav;
-         break;
-     case 1:
-     case 3:
-     default:
-         pin_state = !s->dav;
-         break;
-     case 2:
-         pin_state = !s->pressure;
-     }
- 
-     if (pin_state != s->irq) {
-         s->irq = pin_state;
-         qemu_set_irq(s->pint, s->irq);
-     }
- 
-     switch (s->nextfunction) {
-     case TSC_MODE_XYZ_SCAN:
-     case TSC_MODE_XY_SCAN:
-         if (!s->host_mode && s->dav)
-             s->enabled = false;
-         if (!s->pressure)
-             return;
--        /* Fall through */
-+        fallthrough;
-     case TSC_MODE_AUX_SCAN:
-         break;
- 
-     case TSC_MODE_X:
-     case TSC_MODE_Y:
-     case TSC_MODE_Z:
-         if (!s->pressure)
-             return;
--        /* Fall through */
-+        fallthrough;
-     case TSC_MODE_AUX:
-     case TSC_MODE_TEMP1:
-     case TSC_MODE_TEMP2:
-     case TSC_MODE_X_TEST:
-     case TSC_MODE_Y_TEST:
-     case TSC_MODE_TS_TEST:
-         if (s->dav)
-             s->enabled = false;
-         break;
- 
-     case TSC_MODE_RESERVED:
-     case TSC_MODE_XX_DRV:
-     case TSC_MODE_YY_DRV:
-     case TSC_MODE_YX_DRV:
-     default:
-         return;
-     }
- 
-     if (!s->enabled || s->busy)
-         return;
- 
-     s->busy = true;
-     s->precision = s->nextprecision;
-     s->function = s->nextfunction;
-     s->pdst = !s->pnd0;	/* Synchronised on internal clock */
-     expires = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-         (NANOSECONDS_PER_SECOND >> 7);
-     timer_mod(s->timer, expires);
- }
-diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
-index 950506fb38..9ae426e1a6 100644
---- a/hw/input/tsc210x.c
-+++ b/hw/input/tsc210x.c
-@@ -774,70 +774,70 @@ static void tsc2102_audio_register_write(
- /* This handles most of the chip logic.  */
- static void tsc210x_pin_update(TSC210xState *s)
- {
-     int64_t expires;
-     bool pin_state;
- 
-     switch (s->pin_func) {
-     case 0:
-         pin_state = s->pressure;
-         break;
-     case 1:
-         pin_state = !!s->dav;
-         break;
-     case 2:
-     default:
-         pin_state = s->pressure && !s->dav;
-     }
- 
-     if (!s->enabled)
-         pin_state = false;
- 
-     if (pin_state != s->irq) {
-         s->irq = pin_state;
-         qemu_set_irq(s->pint, !s->irq);
-     }
- 
-     switch (s->nextfunction) {
-     case TSC_MODE_XY_SCAN:
-     case TSC_MODE_XYZ_SCAN:
-         if (!s->pressure)
-             return;
-         break;
- 
-     case TSC_MODE_X:
-     case TSC_MODE_Y:
-     case TSC_MODE_Z:
-         if (!s->pressure)
-             return;
--        /* Fall through */
-+        fallthrough;
-     case TSC_MODE_BAT1:
-     case TSC_MODE_BAT2:
-     case TSC_MODE_AUX:
-     case TSC_MODE_TEMP1:
-     case TSC_MODE_TEMP2:
-         if (s->dav)
-             s->enabled = false;
-         break;
- 
-     case TSC_MODE_AUX_SCAN:
-     case TSC_MODE_PORT_SCAN:
-         break;
- 
-     case TSC_MODE_NO_SCAN:
-     case TSC_MODE_XX_DRV:
-     case TSC_MODE_YY_DRV:
-     case TSC_MODE_YX_DRV:
-     default:
-         return;
-     }
- 
-     if (!s->enabled || s->busy || s->dav)
-         return;
- 
-     s->busy = true;
-     s->precision = s->nextprecision;
-     s->function = s->nextfunction;
-     expires = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-         (NANOSECONDS_PER_SECOND >> 10);
-     timer_mod(s->timer, expires);
  }
 -- 
 2.39.2

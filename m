@@ -1,152 +1,178 @@
-Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1182946dlb;
-        Fri, 13 Oct 2023 02:20:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHPm9NvKQO9+FBY6qL1YdsR5r2BmWH306cyyKfabcSVB53JYBfjU3V7e0nbmm7KNHjLlWQi
-X-Received: by 2002:ac8:5f13:0:b0:418:554:fa25 with SMTP id x19-20020ac85f13000000b004180554fa25mr32935200qta.47.1697188851483;
-        Fri, 13 Oct 2023 02:20:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697188851; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1415142ejc;
+        Fri, 13 Oct 2023 03:52:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHshxSQ1nzSCX4cOalFbJuCDSq3C4MYGlayFtizyfIssBRFSKoVlsni06IthHM/40fOUf0b
+X-Received: by 2002:a05:6a21:33a1:b0:169:3769:2739 with SMTP id yy33-20020a056a2133a100b0016937692739mr26017043pzb.14.1697194334905;
+        Fri, 13 Oct 2023 03:52:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697194334; cv=none;
         d=google.com; s=arc-20160816;
-        b=wjatMeh76zRx0NYD1KovPCh3TGWpWgCaqa7aRawnG+sE1HEgOePoGfpUXeyYORNgNW
-         RW8zjTk+1DLAZasb9VuurgzBU/hQ0LYFwddv1LG3DUwzzE2ugMvclBVbo/XfqL0I4oCI
-         p/aLCNrkpKfw0gbJeDniWyQW9mw1XtPA4B4KbimraNXkv9+DYtva2qiOeiNNuey43IL/
-         RAl86iwbXC3t5h7/WWmlz1UoOQQKm7/zL5rdOP11pev25QAmwuDj2GQ86yuJaxz7r35T
-         F2836MaqyOnEmxn9uQ54ZntxHBMi+F8y1xkam6/I5bCjgteK2JSDBL+zjZ53lbijLgqA
-         8w3w==
+        b=iC1VanJ9BGkzC1wVuccMyBw5ouohZ1LiG6AGcZpX+v72XvsqOUUVsgr7kK0Gkt/Zb2
+         0LalXeLyulfFrgrphE3dA618CDng4nCgUUe/E2GGauh/PBkh9qAVeM++1EOkuHRV/7DW
+         7PzJxofe30AK1CVa+l+1JvYtAMJKwKtcZaebT82yrIRWPjiDoJHtspf9GSg4xPm8n+uG
+         LWUycLFXy7phqy9w6ksWM5cHhmZ+Sp5rXAHzH8sL+Bot/vMrKh1MgXWZcbPrXWFs0UzE
+         ciFWAgraaQ8Ta/x8Z4+Yi1HsYEP3N9an1S2xqKXBeDbF/cN3wlocoYEXmhxYBgjYLk4F
+         jzHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=PzA/o1mqLZWhWgE5bPSaUnGXXWtkY7CixflE7pLoS/A=;
-        fh=tvjXVlbyYwkOHdljk76KZgOiA5ex9+Qi0tdiyoysUSE=;
-        b=kyWTylcVW75HUW2lFjiVIq40UjDsaY+MbrOsFRwx8LbPNKoqYJPdkHhyAJ42XYvMBB
-         6Wp4wPRTR6hYfIlkvx5bcsvcnwfZAH/e22VKRVV+llWNmYNfZpjb52SgNjU49XzTi/KU
-         ad+VlfIJnjNLclymg/EvRkhY8GnYnKsfQHZ/MM6rkjT2YZ2HTbF6Hrxqf2Mie0Nxtf2V
-         Gsnh3EBKHGfUQY/s3vPzqwwqP3fDzrxWZp5AhshwZ422o8kNSGm4J6pKtridgQTy8vPO
-         G0p04z1uN5lOelZ7jR+9BFGQy8pTz0D4nWmAqaoOs703+eIDnZBr5M+uFFLROnpbtG39
-         qadQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=uRAuFswWtIhylQPejTu3R+z47mUNLyoIjmAVYdl9BgQ=;
+        fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
+        b=jGUYzVxXhSgRs/71re7XGFcIXXWAVRsgh6oo1xlehByGDWfDAmUFGAXnS6ZnfIYN66
+         fTgVK/xGxSwGykZI6InNlugi+mP8yKnpceJuLTM4DhRrSSpIV1sy3+Q6IEwRzoWsN/Xv
+         skENIUO/fJnYy0oncfyjv+ROilpJ2U5dfr2OlRMU83Gr26zE1doXGQLEDHMPPtxzBry7
+         0cIeJArBzBaVIcQUZb1UOiFrkrLTIElWMW/5AbtzPcPRV9p3sV9JrkeVDOwefH5IUYfE
+         xVpy3xcTY5LyAEVTaE6Aymzcz0yic0uYhCADqWEIB14+RtcJB0/oOofuvdP67WC6ubyU
+         5o5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RuHsGfC9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u18-20020a05622a14d200b004197f495da6si867633qtx.554.2023.10.13.02.20.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 02:20:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id lk15-20020a17090b33cf00b0027d0adde858si4759953pjb.48.2023.10.13.03.52.13
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 13 Oct 2023 03:52:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RuHsGfC9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrELP-0004RX-GR; Fri, 13 Oct 2023 05:20:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrELN-0004R4-CT
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 05:20:29 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrELL-0006fc-Qh
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 05:20:29 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-53e3b8f906fso893281a12.2
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 02:20:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697188826; x=1697793626; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=PzA/o1mqLZWhWgE5bPSaUnGXXWtkY7CixflE7pLoS/A=;
- b=RuHsGfC9brwO8xheEBmG8/UvNpM2WHYX8dGo6o2pfaubZdH1fVduhNaiA2HxM9fLT0
- 5S8SYoQKAJe4Xbju5RDuF4ocI/pO93V3tzb0h17bqUeSN9yL0tST2f110QkLWzml28Ca
- RBfs2+wj+/Oa+g/HcYfyuSrpDS+AHJ9Y1/F1Zi5Agltquz5enhSXKs+7ZcG28BGXCMe7
- DiPHB3BYdlB1/tNTQXb5CQqk5W7qZ4ksWPff5rk/pR9R0aiDr1zXXFhlCyd0y3SuOd1O
- MvKZM3wM0LXwtgk4FMAzDtYfwQv+TiAbnoVY1YsrKESeBrPoMiTmMwju4oHHpiQ7+xga
- nl4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697188826; x=1697793626;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=PzA/o1mqLZWhWgE5bPSaUnGXXWtkY7CixflE7pLoS/A=;
- b=bo0OYHLOnItj2utyBjTjnfB96KsdlrtlnbBu4t5fddE7RRWjhAck9tcSbc4lrORXRN
- 0+eBW/vZUjNveppi7BWSldL5sGtmewVIibRJ4hTttcmPDh03i+MdUkOSsE11BhrmFe9u
- 5AMCPJP4ltLf3x5wk3TnQqR4CflmxiEICstkUpN8f6wU4JvtfR4qzrhD9wA50fUNx85a
- BXfW5aWTj4xwzOOayNgsjztlUah60jHJjYB7NU5OnmBU16RomaTDfeJ9yUlNtS9LAk9N
- yGzug3l7qMdjKGZ999Bvwk8EY4Z7p7t5WjvbT8jpqgDipaOo/eCr0j8UiAnCiZIUPc9B
- ReuA==
-X-Gm-Message-State: AOJu0YydH+45ZJjyMWNJxX6mJy3+ZO/2H6HEmt7+MNKhmmCAuzLZa8vr
- j41nurCnQI1kEDAZAhK5ed4v5OGaS0jLxOvNETtKBQ==
-X-Received: by 2002:a17:906:cc2:b0:9ae:5db5:149 with SMTP id
- l2-20020a1709060cc200b009ae5db50149mr23290286ejh.35.1697188826248; Fri, 13
- Oct 2023 02:20:26 -0700 (PDT)
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.201])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S6Nc10vsGz6K8sn;
+	Fri, 13 Oct 2023 18:51:45 +0800 (CST)
+Received: from A190218597.china.huawei.com (10.195.247.32) by
+ lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Fri, 13 Oct 2023 11:51:52 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
+	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<linuxarm@huawei.com>
+Subject: [PATCH V6 0/9] Add architecture agnostic code to support vCPU Hotplug
+Date: Fri, 13 Oct 2023 11:51:20 +0100
+Message-ID: <20231013105129.25648-1-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.8.3
 MIME-Version: 1.0
-References: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
- <84a6d743b5ff71c323cee718412e2a67084b9237.1697186560.git.manos.pitsidianakis@linaro.org>
- <01971536-5a3d-45b0-99c2-b3583dbb9584@daynix.com>
-In-Reply-To: <01971536-5a3d-45b0-99c2-b3583dbb9584@daynix.com>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Fri, 13 Oct 2023 12:20:10 +0300
-Message-ID: <CAAjaMXYjgKapC4h4cQTQAuq=GVkUCKp0iYkrpiLFVGFkbrFcwg@mail.gmail.com>
-Subject: Re: [RFC PATCH v3 57/78] hw/net: add fallthrough pseudo-keyword
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Jason Wang <jasowang@redhat.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>, 
- Vikram Garhwal <fnu.vikram@xilinx.com>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>, 
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EMeRogdxkmqn
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.195.247.32]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ lhrpeml500001.china.huawei.com (7.191.163.213)
+X-CFilter-Loop: Reflected
+X-TUID: YEM8XY2vjrB/
 
-On Fri, 13 Oct 2023 at 12:11, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
-> > diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
-> > index 4525fda383..42f19618b1 100644
-> > --- a/hw/net/rtl8139.c
-> > +++ b/hw/net/rtl8139.c
-> > @@ -2447,8 +2447,10 @@ static uint32_t rtl8139_TxStatus_TxAddr_read(RTL8139State *s, uint32_t regs[],
-> >       }
-> >
-> >       switch (size) {
-> > -    case 1: /* fall through */
-> > -    case 2: /* fall through */
-> > +    case 1:
-> > +        fallthrough;
-> > +    case 2:
-> > +        fallthrough;
-> >       case 4:
->
-> I don't think you need comments or pseudo-keywords here.
+Virtual CPU hotplug support is being added across various architectures[1][3].
+This series adds various code bits common across all architectures:
 
-That's correct, it was a stylistic change. I can remove them in the
-next version. Thank you!
+1. vCPU creation and Parking code refactor [Patch 1]
+2. Update ACPI GED framework to support vCPU Hotplug [Patch 4,6,7]
+3. ACPI CPUs AML code change [Patch 5]
+4. Helper functions to support unrealization of CPU objects [Patch 8,9]
+5. Misc [Patch 2,3]
 
-Manos
+
+Repository:
+
+[*] https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v2.common.v6
+
+
+Revision History:
+
+Patch-set  V5 -> V6
+1. Addressed Gavin Shan's comments
+   - Fixed the assert() ranges of address spaces
+   - Rebased the patch-set to latest changes in the qemu.git
+   - Added Reviewed-by tags for patches {8,9}
+2. Addressed Jonathan Cameron's comments
+   - Updated commit-log for [Patch V5 1/9] with mention of trace events
+   - Added Reviewed-by tags for patches {1,5}
+3. Added Tested-by tags from Xianglai Li
+4. Fixed checkpatch.pl error "Qemu -> QEMU" in [Patch V5 1/9] 
+Link: https://lore.kernel.org/qemu-devel/20231011194355.15628-1-salil.mehta@huawei.com/
+
+Patch-set  V4 -> V5
+1. Addressed Gavin Shan's comments
+   - Fixed the trace events print string for kvm_{create,get,park,destroy}_vcpu
+   - Added Reviewed-by tag for patch {1}
+2. Added Shaoqin Huang's Reviewed-by tags for Patches {2,3}
+3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set
+4. Dropped the ARM specific [Patch V4 10/10]
+Link: https://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.mehta@huawei.com/
+
+Patch-set  V3 -> V4
+1. Addressed David Hilderbrand's comments
+   - Fixed the wrong doc comment of kvm_park_vcpu API prototype
+   - Added Reviewed-by tags for patches {2,4}
+Link: https://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.mehta@huawei.com/
+
+Patch-set  V2 -> V3
+1. Addressed Jonathan Cameron's comments
+   - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to 'integer'
+   - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
+   - Updated [Patch V2 3/10] commit-log with details of ACPI_CPU_SCAN_METHOD macro
+   - Updated [Patch V2 5/10] commit-log with details of conditional event handler method
+   - Added Reviewed-by tags for patches {2,3,4,6,7}
+2. Addressed Gavin Shan's comments
+   - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
+   - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
+   - Reset the value of 'gdb_num_g_regs' in gdb_unregister_coprocessor_all
+   - Fixed the kvm_{create,park}_vcpu prototypes docs
+   - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10}
+3. Addressed one earlier missed comment by Alex Bennée in RFC V1
+   - Added traces instead of DPRINTF in the newly added and some existing functions
+Link: https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huawei.com/
+
+Patch-set V1 -> V2
+1. Addressed Alex Bennée's comments
+   - Refactored the kvm_create_vcpu logic to get rid of goto
+   - Added the docs for kvm_{create,park}_vcpu prototypes
+   - Splitted the gdbstub and AddressSpace destruction change into separate patches
+   - Added Reviewed-by tags for patches {2,10}
+Link: https://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.mehta@huawei.com/
+
+References:
+
+[1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com/
+[2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
+[3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/
+
+
+Salil Mehta (9):
+  accel/kvm: Extract common KVM vCPU {creation,parking} code
+  hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
+  hw/acpi: Add ACPI CPU hotplug init stub
+  hw/acpi: Init GED framework with CPU hotplug events
+  hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
+  hw/acpi: Update GED _EVT method AML with CPU scan
+  hw/acpi: Update ACPI GED framework to support vCPU Hotplug
+  physmem: Add helper function to destroy CPU AddressSpace
+  gdbstub: Add helper function to unregister GDB register space
+
+ accel/kvm/kvm-all.c                    | 64 ++++++++++++++++++++------
+ accel/kvm/trace-events                 |  4 ++
+ gdbstub/gdbstub.c                      | 12 +++++
+ hw/acpi/acpi-cpu-hotplug-stub.c        |  6 +++
+ hw/acpi/cpu.c                          | 27 +++++++----
+ hw/acpi/generic_event_device.c         | 22 +++++++++
+ hw/i386/acpi-build.c                   |  3 +-
+ include/exec/cpu-common.h              |  8 ++++
+ include/exec/gdbstub.h                 |  5 ++
+ include/hw/acpi/cpu.h                  |  5 +-
+ include/hw/acpi/cpu_hotplug.h          |  4 ++
+ include/hw/acpi/generic_event_device.h |  5 ++
+ include/hw/core/cpu.h                  |  1 +
+ include/sysemu/kvm.h                   | 16 +++++++
+ system/physmem.c                       | 29 ++++++++++++
+ 15 files changed, 184 insertions(+), 27 deletions(-)
+
+-- 
+2.34.1

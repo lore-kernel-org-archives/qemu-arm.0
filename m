@@ -1,274 +1,317 @@
-Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1179044dlb;
-        Fri, 13 Oct 2023 02:12:13 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGSlQlJE7ihPQfYLAznhR9SzSWJxftITGBYC6Wggo+mO9JwxGIuWQfNmj5E4WAVz4bFrAgV
-X-Received: by 2002:a0c:f1ce:0:b0:66d:2435:b3f8 with SMTP id u14-20020a0cf1ce000000b0066d2435b3f8mr1415236qvl.4.1697188333420;
-        Fri, 13 Oct 2023 02:12:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697188333; cv=none;
+Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1180194dlb;
+        Fri, 13 Oct 2023 02:14:24 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGHbe3yq/eipDyTEZp6dqM0X5vVUK4K7r6DB96py5UxTAWFIPh0NtUiELJDx0fRoaqk5XQJ
+X-Received: by 2002:a05:620a:430c:b0:775:8f42:5f06 with SMTP id u12-20020a05620a430c00b007758f425f06mr30140601qko.22.1697188464047;
+        Fri, 13 Oct 2023 02:14:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697188464; cv=none;
         d=google.com; s=arc-20160816;
-        b=At+ruiobaXFDZp2sAHMuWuH+1BQvfTWeY6e5pFE4a0dny2VClvA5R+j7ivj9k1hPSY
-         roCMV0vH/sfKzqJyM+s7eSIiko66VLLtqcytuxgd6QWMW06x7XbOamiiMoBqoNumNA7O
-         d3BkStfUHnY9AzxPlN6tLZjf5RDv+1BL0I78EmpJqhPzYp2/4kqaKBe5fJnNkG04gV0I
-         fIlud+jN4Yl76koW3Vf4ks4s5tEoK5/Mjhb38I8kkx+fKxgHqPIUeYBejHkjuqhSdv8Q
-         5qilprBpQ/8Pff8V6iI7wd9vUgHAmF51ON5Dj5/HBHDH9rjwZbgdzbV6OAlCJUJPZdqY
-         PReg==
+        b=nqGfP/KEjfmuriUkcBttSh5aV7Yoq4CyYATErRUN37Hy0aIBRTgNbYKuoEhx/YGHjc
+         4W3+pU7U+4K7aOXJ6qU2/FVSfL336WsEaVHWDLBNkhAxSAbfpH1ttAAsQFpzxDpU6cqb
+         on/KnEkHEMGmwszG6AQmtGdXU1m+rEBL8Edvm4ecBT/bkq6G6n8wWB0yhGmFlaZGRMVp
+         2yZQk0U7MbZT9XZrsjbtpDjjy2L/RSVlqB8XvQ3inS7GB+NkgHysnJXrO5njdblTKLpS
+         QpO32ZDlr9ylfbrV7igSCfbqOkPhJHYoDZXFTH0UsIRP9sarrwZtPOBOsQEOeC+chZEX
+         eSFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=KCuLeT7zSl6MJg/g0ThaCPtucbTdymw1irw24OM5YK0=;
-        fh=SiRkTVPdpLAF3fvnDogKUa0tfzYbWmB8l27KrW5jrU8=;
-        b=PZv4RjM3V2suoZ/vxGaKLccX/r2UkK9a8ChfLqYkmUPiJG8XqYjemrQmahffK1l4sw
-         6I20qEECJsf07l+ez4TUjsjMbIZ0GPlKqJNlk8opNeH1fq+OPEDoAlmXZSAGYbdvD1hP
-         u4Px+2fweql0xSH5r3BRcR/TdkZFiEgTHUgXTAqXOfcTpiQceXLFJQ/sZsvf2sNFS2/V
-         Bu2ww5lT/YRN/5Tqt/XV4SiliCbC3onoONJGUqaqP6C8mBaQ6ULfp4mhNcWAsYG9gS0e
-         r8Mbsm23xmQHF6VagaRf5GvWc7enbBT86vbUbWw01W+Zt5emmRPBWyRCvZF1CmHVz8KV
-         VfzQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=pc8rPB6UxfmYbzMynihyhMqFNgNvRjOVqSxPcO4CaoA=;
+        fh=xWCDBABqoaW980p/LHdb+1fTqX2xe+vJIrGYTaUCUos=;
+        b=p441+GK8WyZmQCBhdCCAnQ9ZG9S2AZBylx4O3lfQW7zCb3pWo+QUjmGIdigbNCfqcA
+         yXRk3zUYJ7nM6o9rwHA1eUKXLGzCtXETOHp0nF4FgY8iSiYRY20wCQxgxpBb+saoxZem
+         EoZkRREXACFcnxWExsRGHXGN+qrkW7oh6Jnc23fTQ4wv7TC+S73c5UDPSC2j6kAcxr2J
+         HwPRqYf4toyvAWxP/HLCfgWmxlDFz/nhy4qQD4TfIisZ6C9YRN/TPNsN0Hs6Nfv9zCuy
+         47pqX4fwHmz9V8i/3+rD+ja/KruSj2S0EKOkDDriyQm/id0m3LpVhEvG/QKtYDGpcxDk
+         Pn4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=bxrXIUX1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ep7-20020a05621418e700b0065b20aeaec8si890344qvb.194.2023.10.13.02.12.13
+        by mx.google.com with ESMTPS id h12-20020a05620a284c00b0076d9876dff0si892543qkp.140.2023.10.13.02.14.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 02:12:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 02:14:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=bxrXIUX1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrED0-00060d-Dj; Fri, 13 Oct 2023 05:11:50 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrEF5-0000fx-Pn; Fri, 13 Oct 2023 05:14:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qrECt-0005xv-UA
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 05:11:45 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qrECr-0005QM-86
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 05:11:43 -0400
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-5859d13f73dso1295847a12.1
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 02:11:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1697188299; x=1697793099;
- darn=nongnu.org; 
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=KCuLeT7zSl6MJg/g0ThaCPtucbTdymw1irw24OM5YK0=;
- b=bxrXIUX1S+w+9JWrekm3ews0l7SgV9mPpjFUghDULyaoAFGP63p++6p9sGeNEMg6Aw
- OTbcUV2OBOz2WvitLF7GgcFfLRwC2pXnMJHgct3m0k/yXgMAQRzMrwAMeoawQQvVWeWj
- If0Fe3CvJyPAwMBnSqrWQlvOUflgSATrp/vgcNUATOHFRlFGySaSleKYaGCoJOTtUMc3
- zpWVwL7VSfccFtqC5Oqvvlg9qzNCYOb+ggIcTzq7EKVCfgb3Difu4rzvdM6MV5Nq+vDa
- zhfFoS3DFe62iWhHOJKowwvc9kAWuwiG5n72yi76ahklWVb/dgZQVdpQSHyLXnu5IImO
- 2KIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697188299; x=1697793099;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KCuLeT7zSl6MJg/g0ThaCPtucbTdymw1irw24OM5YK0=;
- b=F/pKTXr/Da27CaqkkAfdiHI6pAyjrT+TB3rx5aFTNpL9YLYzAgz9r0yM4mNb7gphQW
- ZGA4MquB6GTCWLFKtVjYZyltqHlS53Vh4tsj7wy7lL9Zup23q5tI9wPclquQXfPsc/zo
- Ki4ZdIHa0jP4SAPsuoCWmt28/iyrlCGtRG6SpIxh0+y1Yh7KF6YgdP85DcT6kylc8LCA
- P5T0BFN0lpN6p895heICqb5ayzQp8pzoqgn7A7bsdmDkUUaqtYRf2IXKYeD/SEpz5Obf
- VfY8mJ+DROPZ9i2nka1avtpA+Z3YVEVcl9qZkgO/9mAgrI28Wqh89G7LvjmYoG03cjY9
- o6zw==
-X-Gm-Message-State: AOJu0Yxn+6szQ1WG+yaw6l/nNVAGmNgXT0YyNDaLI6SfYDvX0USgDZlH
- Pondskk3h1rO750Y60TaRZ6zqQ==
-X-Received: by 2002:a05:6a21:9997:b0:16b:8b16:bfad with SMTP id
- ve23-20020a056a21999700b0016b8b16bfadmr21010002pzb.32.1697188298669; 
- Fri, 13 Oct 2023 02:11:38 -0700 (PDT)
-Received: from [157.82.206.197] ([157.82.206.197])
- by smtp.gmail.com with ESMTPSA id
- ik5-20020a170902ab0500b001c723d6c410sm3465753plb.16.2023.10.13.02.11.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Oct 2023 02:11:38 -0700 (PDT)
-Message-ID: <01971536-5a3d-45b0-99c2-b3583dbb9584@daynix.com>
-Date: Fri, 13 Oct 2023 18:11:34 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 57/78] hw/net: add fallthrough pseudo-keyword
-Content-Language: en-US
+ (Exim 4.90_1) (envelope-from <gaosong@loongson.cn>)
+ id 1qrEF1-0000eP-Qc; Fri, 13 Oct 2023 05:13:56 -0400
+Received: from mail.loongson.cn ([114.242.206.163])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <gaosong@loongson.cn>)
+ id 1qrEEw-0005iD-RC; Fri, 13 Oct 2023 05:13:54 -0400
+Received: from loongson.cn (unknown [10.20.42.239])
+ by gateway (Coremail) with SMTP id _____8CxRuhICillHasxAA--.42165S3;
+ Fri, 13 Oct 2023 17:13:44 +0800 (CST)
+Received: from [10.20.42.239] (unknown [10.20.42.239])
+ by localhost.localdomain (Coremail) with SMTP id
+ AQAAf8Bx3y9FCillB7EiAA--.7826S3; 
+ Fri, 13 Oct 2023 17:13:43 +0800 (CST)
+Subject: Re: [RFC PATCH v3 01/78] include/qemu/compiler.h: replace
+ QEMU_FALLTHROUGH with fallthrough
 To: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
  qemu-devel@nongnu.org
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>, Vikram Garhwal <fnu.vikram@xilinx.com>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
+Cc: Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "open list:ARM SMMU" <qemu-arm@nongnu.org>
 References: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
- <84a6d743b5ff71c323cee718412e2a67084b9237.1697186560.git.manos.pitsidianakis@linaro.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <84a6d743b5ff71c323cee718412e2a67084b9237.1697186560.git.manos.pitsidianakis@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::529;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pg1-x529.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+ <2e08cff874b2f9fc4143bdcde87ebba9b70b356c.1697186560.git.manos.pitsidianakis@linaro.org>
+From: gaosong <gaosong@loongson.cn>
+Message-ID: <d2893541-a8cd-5e45-7261-3c228fee2eda@loongson.cn>
+Date: Fri, 13 Oct 2023 17:13:41 +0800
+User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
+MIME-Version: 1.0
+In-Reply-To: <2e08cff874b2f9fc4143bdcde87ebba9b70b356c.1697186560.git.manos.pitsidianakis@linaro.org>
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+X-CM-TRANSID: AQAAf8Bx3y9FCillB7EiAA--.7826S3
+X-CM-SenderInfo: 5jdr20tqj6z05rqj20fqof0/
+X-Coremail-Antispam: 1Uk129KBj93XoW3Gr4DGFyrtr4kGr1rAF4rXrc_yoWxJw1xpF
+ s7CayDKF4fJrW5GF97Cw4agFn5Ww4rGryjgrWqg3W0yr43Kw4kXrWktrnFkFW8WrWSvrW7
+ uFyxZry5WayqqrXCm3ZEXasCq-sJn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7ZEXa
+ sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
+ 0xBIdaVrnRJUUUv2b4IE77IF4wAFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26cxKx2
+ IYs7xG6rWj6s0DM7CIcVAFz4kK6r106r15M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
+ e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
+ 0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVCY1x0267AK
+ xVW8Jr0_Cr1UM2AIxVAIcxkEcVAq07x20xvEncxIr21l57IF6xkI12xvs2x26I8E6xACxx
+ 1l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv
+ 67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr41lc7I2V7IY0VAS07
+ AlzVAYIcxG8wCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02
+ F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GF
+ ylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7Cj
+ xVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r
+ 1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Jr0_GrUvcSsGvfC2KfnxnUUI43ZEXa7IU8cz
+ VUUUUUU==
+Received-SPF: pass client-ip=114.242.206.163; envelope-from=gaosong@loongson.cn;
+ helo=mail.loongson.cn
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, MIME_CHARSET_FARAWAY=2.45,
+ NICE_REPLY_A=-3.339, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5TIRntFPgSqt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yeC7bNSLemVE
 
-On 2023/10/13 17:46, Emmanouil Pitsidianakis wrote:
-> In preparation of raising -Wimplicit-fallthrough to 5, replace all
-> fall-through comments with the fallthrough attribute pseudo-keyword.
-> 
+ÔÚ 2023/10/13 ÏÂÎç4:45, Emmanouil Pitsidianakis Ð´µÀ:
 > Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 > ---
->   hw/net/cadence_gem.c     | 4 ++--
->   hw/net/can/can_sja1000.c | 4 ++--
->   hw/net/igb_core.c        | 2 +-
->   hw/net/igbvf.c           | 2 +-
->   hw/net/imx_fec.c         | 2 +-
->   hw/net/net_rx_pkt.c      | 2 +-
->   hw/net/pcnet.c           | 2 +-
->   hw/net/rtl8139.c         | 6 ++++--
->   hw/net/xilinx_ethlite.c  | 2 +-
->   9 files changed, 14 insertions(+), 12 deletions(-)
-> 
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index f445d8bb5e..a59991af5b 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -834,10 +834,10 @@ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
->                   qemu_log_mask(LOG_UNIMP, "TCP compare offsets"
->                                 "unimplemented - assuming UDP\n");
->                   offset += 8;
-> -                /* Fallthrough */
-> +                fallthrough;
->               case 2: /* skip the IP header */
->                   offset += 20;
-> -                /* Fallthrough */
-> +                fallthrough;
->               case 1: /* Count from after the ethertype */
->                   offset += 14;
->                   break;
-> diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
-> index 73201f9139..14052b2700 100644
-> --- a/hw/net/can/can_sja1000.c
-> +++ b/hw/net/can/can_sja1000.c
-> @@ -544,7 +544,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
->               break;
->           case 16: /* RX frame information addr16-28. */
->               s->status_pel |= (1 << 5); /* Set transmit status. */
-> -            /* fallthrough */
-> +            fallthrough;
->           case 17 ... 28:
->               if (s->mode & 0x01) { /* Reset mode */
->                   if (addr < 24) {
-> @@ -642,7 +642,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
->               break;
->           case 10:
->               s->status_bas |= (1 << 5); /* Set transmit status. */
-> -            /* fallthrough */
-> +            fallthrough;
->           case 11 ... 19:
->               if ((s->control & 0x01) == 0) { /* Operation mode */
->                   s->tx_buff[addr - 10] = val; /* Store to TX buffer directly. */
-> diff --git a/hw/net/igb_core.c b/hw/net/igb_core.c
-> index f6a5e2327b..1117f7cb59 100644
-> --- a/hw/net/igb_core.c
-> +++ b/hw/net/igb_core.c
-> @@ -1419,7 +1419,7 @@ igb_build_rx_metadata_common(IGBCore *core,
->               if (!csum_valid) {
->                   *status_flags |= E1000_RXDEXT_STATERR_TCPE;
->               }
-> -            /* fall through */
-> +            fallthrough;
->           case ETH_L4_HDR_PROTO_TCP:
->               *status_flags |= E1000_RXD_STAT_TCPCS;
->               break;
-> diff --git a/hw/net/igbvf.c b/hw/net/igbvf.c
-> index d55e1e8a6a..ff68a4f3c5 100644
-> --- a/hw/net/igbvf.c
-> +++ b/hw/net/igbvf.c
-> @@ -188,7 +188,7 @@ static hwaddr vf_to_pf_addr(hwaddr addr, uint16_t vfn, bool write)
->           if (write) {
->               return HWADDR_MAX;
->           }
-> -        /* fallthrough */
-> +        fallthrough;
->       case 0x34E8: /* PBTWAC */
->       case 0x24E8: /* PBRWAC */
->           return addr;
-> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-> index 5d1f1f104c..a7e8b06d48 100644
-> --- a/hw/net/imx_fec.c
-> +++ b/hw/net/imx_fec.c
-> @@ -918,7 +918,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
->                             TYPE_IMX_FEC, __func__);
->               return;
->           }
-> -        /* fall through */
-> +        fallthrough;
->       case ENET_TDAR:
->           if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
->               s->regs[index] = ENET_TDAR_TDAR;
-> diff --git a/hw/net/net_rx_pkt.c b/hw/net/net_rx_pkt.c
-> index 32e5f3f9cf..52e2432c9b 100644
-> --- a/hw/net/net_rx_pkt.c
-> +++ b/hw/net/net_rx_pkt.c
-> @@ -605,7 +605,7 @@ bool net_rx_pkt_validate_l4_csum(struct NetRxPkt *pkt, bool *csum_valid)
->               trace_net_rx_pkt_l4_csum_validate_udp_with_no_checksum();
->               return false;
->           }
-> -        /* fall through */
-> +        fallthrough;
->       case ETH_L4_HDR_PROTO_TCP:
->           csum = _net_rx_pkt_calc_l4_csum(pkt);
->           *csum_valid = ((csum == 0) || (csum == 0xFFFF));
-> diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
-> index 02828ae716..a32174ef93 100644
-> --- a/hw/net/pcnet.c
-> +++ b/hw/net/pcnet.c
-> @@ -1502,7 +1502,7 @@ static void pcnet_bcr_writew(PCNetState *s, uint32_t rap, uint32_t val)
->   #ifdef PCNET_DEBUG
->          printf("BCR_SWS=0x%04x\n", val);
->   #endif
-> -        /* fall through */
-> +       fallthrough;
->       case BCR_LNKST:
->       case BCR_LED1:
->       case BCR_LED2:
-> diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
-> index 4525fda383..42f19618b1 100644
-> --- a/hw/net/rtl8139.c
-> +++ b/hw/net/rtl8139.c
-> @@ -2447,8 +2447,10 @@ static uint32_t rtl8139_TxStatus_TxAddr_read(RTL8139State *s, uint32_t regs[],
->       }
->   
->       switch (size) {
-> -    case 1: /* fall through */
-> -    case 2: /* fall through */
-> +    case 1:
-> +        fallthrough;
-> +    case 2:
-> +        fallthrough;
->       case 4:
+>   audio/pwaudio.c              |  8 ++++----
+>   hw/arm/smmuv3.c              |  2 +-
+>   include/qemu/compiler.h      | 30 +++++++++++++++++++++++-------
+>   include/qemu/osdep.h         |  4 ++--
+>   target/loongarch/cpu.c       |  4 ++--
+>   target/loongarch/translate.c |  2 +-
+>   tcg/optimize.c               |  8 ++++----
+>   7 files changed, 37 insertions(+), 21 deletions(-)
+For LoongArch:
+Reviewed-by: Song Gao <gaosong@loongson.cn>
 
-I don't think you need comments or pseudo-keywords here.
+Thanks.
+Song Gao.
+
+> diff --git a/audio/pwaudio.c b/audio/pwaudio.c
+> index 3ce5f6507b..bf26fadb06 100644
+> --- a/audio/pwaudio.c
+> +++ b/audio/pwaudio.c
+> @@ -8,16 +8,16 @@
+>    * SPDX-License-Identifier: GPL-2.0-or-later
+>    */
+>   
+> +#include <spa/param/audio/format-utils.h>
+> +#include <spa/utils/ringbuffer.h>
+> +#include <spa/utils/result.h>
+> +#include <spa/param/props.h>
+>   #include "qemu/osdep.h"
+>   #include "qemu/module.h"
+>   #include "audio.h"
+>   #include <errno.h>
+>   #include "qemu/error-report.h"
+>   #include "qapi/error.h"
+> -#include <spa/param/audio/format-utils.h>
+> -#include <spa/utils/ringbuffer.h>
+> -#include <spa/utils/result.h>
+> -#include <spa/param/props.h>
+>   
+>   #include <pipewire/pipewire.h>
+>   #include "trace.h"
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 6f2b2bd45f..545d82ff04 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -1291,7 +1291,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+>                   cmd_error = SMMU_CERROR_ILL;
+>                   break;
+>               }
+> -            QEMU_FALLTHROUGH;
+> +            fallthrough;
+>           case SMMU_CMD_TLBI_NSNH_ALL:
+>               trace_smmuv3_cmdq_tlbi_nh();
+>               smmu_inv_notifiers_all(&s->smmu_state);
+> diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
+> index 1109482a00..959982805d 100644
+> --- a/include/qemu/compiler.h
+> +++ b/include/qemu/compiler.h
+> @@ -165,15 +165,31 @@
+>   #define QEMU_ALWAYS_INLINE
+>   #endif
+>   
+> -/**
+> - * In most cases, normal "fallthrough" comments are good enough for
+> - * switch-case statements, but sometimes the compiler has problems
+> - * with those. In that case you can use QEMU_FALLTHROUGH instead.
+> +/*
+> + * Add the pseudo keyword 'fallthrough' so case statement blocks
+> + * must end with any of these keywords:
+> + *   break;
+> + *   fallthrough;
+> + *   continue;
+> + *   goto <label>;
+> + *   return [expression];
+> + *
+> + *  gcc: https://gcc.gnu.org/onlinedocs/gcc/Statement-Attributes.html#Statement-Attributes
+>    */
+> -#if __has_attribute(fallthrough)
+> -# define QEMU_FALLTHROUGH __attribute__((fallthrough))
+> +
+> +/*
+> + * glib_macros.h contains its own definition of fallthrough, so if we define
+> + * the pseudokeyword here it will expand when the glib header checks for the
+> + * attribute. glib headers must be #included after this header.
+> + */
+> +#ifdef fallthrough
+> +#undef fallthrough
+> +#endif
+> +
+> +#if __has_attribute(__fallthrough__)
+> +# define fallthrough                    __attribute__((__fallthrough__))
+>   #else
+> -# define QEMU_FALLTHROUGH do {} while (0) /* fallthrough */
+> +# define fallthrough                    do {} while (0)  /* fallthrough */
+>   #endif
+>   
+>   #ifdef CONFIG_CFI
+> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+> index 475a1c62ff..8f790f0deb 100644
+> --- a/include/qemu/osdep.h
+> +++ b/include/qemu/osdep.h
+> @@ -50,8 +50,6 @@
+>    */
+>   #pragma GCC poison TARGET_WORDS_BIGENDIAN
+>   
+> -#include "qemu/compiler.h"
+> -
+>   /* Older versions of C++ don't get definitions of various macros from
+>    * stdlib.h unless we define these macros before first inclusion of
+>    * that system header.
+> @@ -160,6 +158,8 @@ QEMU_EXTERN_C int daemon(int, int);
+>    */
+>   #include "glib-compat.h"
+>   
+> +#include "qemu/compiler.h"
+> +
+>   #ifdef _WIN32
+>   #include "sysemu/os-win32.h"
+>   #endif
+> diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+> index 2bea7ca5d5..e01d626b15 100644
+> --- a/target/loongarch/cpu.c
+> +++ b/target/loongarch/cpu.c
+> @@ -178,7 +178,7 @@ static void loongarch_cpu_do_interrupt(CPUState *cs)
+>               env->CSR_DBG = FIELD_DP64(env->CSR_DBG, CSR_DBG, DEI, 1);
+>               goto set_DERA;
+>           }
+> -        QEMU_FALLTHROUGH;
+> +        fallthrough;
+>       case EXCCODE_PIF:
+>       case EXCCODE_ADEF:
+>           cause = cs->exception_index;
+> @@ -193,7 +193,7 @@ static void loongarch_cpu_do_interrupt(CPUState *cs)
+>       case EXCCODE_SXD:
+>       case EXCCODE_ASXD:
+>           env->CSR_BADV = env->pc;
+> -        QEMU_FALLTHROUGH;
+> +        fallthrough;
+>       case EXCCODE_BCE:
+>       case EXCCODE_ADEM:
+>       case EXCCODE_PIL:
+> diff --git a/target/loongarch/translate.c b/target/loongarch/translate.c
+> index 21f4db6fbd..36fceb1beb 100644
+> --- a/target/loongarch/translate.c
+> +++ b/target/loongarch/translate.c
+> @@ -317,7 +317,7 @@ static void loongarch_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+>           break;
+>       case DISAS_EXIT_UPDATE:
+>           tcg_gen_movi_tl(cpu_pc, ctx->base.pc_next);
+> -        QEMU_FALLTHROUGH;
+> +        fallthrough;
+>       case DISAS_EXIT:
+>           tcg_gen_exit_tb(NULL, 0);
+>           break;
+> diff --git a/tcg/optimize.c b/tcg/optimize.c
+> index 3013eb04e6..3da135a353 100644
+> --- a/tcg/optimize.c
+> +++ b/tcg/optimize.c
+> @@ -1089,7 +1089,7 @@ static bool fold_brcond2(OptContext *ctx, TCGOp *op)
+>   
+>       case TCG_COND_NE:
+>           inv = 1;
+> -        QEMU_FALLTHROUGH;
+> +        fallthrough;
+>       case TCG_COND_EQ:
+>           /*
+>            * Simplify EQ/NE comparisons where one of the pairs
+> @@ -1445,7 +1445,7 @@ static bool fold_exts(OptContext *ctx, TCGOp *op)
+>           break;
+>       case INDEX_op_ext_i32_i64:
+>           type_change = true;
+> -        QEMU_FALLTHROUGH;
+> +        fallthrough;
+>       case INDEX_op_ext32s_i64:
+>           sign = INT32_MIN;
+>           z_mask = (uint32_t)z_mask;
+> @@ -1489,7 +1489,7 @@ static bool fold_extu(OptContext *ctx, TCGOp *op)
+>       case INDEX_op_extrl_i64_i32:
+>       case INDEX_op_extu_i32_i64:
+>           type_change = true;
+> -        QEMU_FALLTHROUGH;
+> +        fallthrough;
+>       case INDEX_op_ext32u_i64:
+>           z_mask = (uint32_t)z_mask;
+>           break;
+> @@ -1861,7 +1861,7 @@ static bool fold_setcond2(OptContext *ctx, TCGOp *op)
+>   
+>       case TCG_COND_NE:
+>           inv = 1;
+> -        QEMU_FALLTHROUGH;
+> +        fallthrough;
+>       case TCG_COND_EQ:
+>           /*
+>            * Simplify EQ/NE comparisons where one of the pairs
+

@@ -1,65 +1,65 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1722595ejc;
-        Fri, 13 Oct 2023 12:10:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGajuddCAjWr5enUtkwtFLSsHh/koXEm2MxWbPEKlBD5m61odU8EuMTCN5VIQgwMHiumJc1
-X-Received: by 2002:a05:620a:4086:b0:76d:95d0:c80a with SMTP id f6-20020a05620a408600b0076d95d0c80amr32172549qko.3.1697224210322;
-        Fri, 13 Oct 2023 12:10:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697224210; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1722603ejc;
+        Fri, 13 Oct 2023 12:10:11 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHaKHSkJ5JyQuHpRn8bztwworfXoCHZprF7qOEF7J/cObyY2QZ77is/ILF27LtEPJcsSFc1
+X-Received: by 2002:a05:622a:214:b0:410:8cb9:8dea with SMTP id b20-20020a05622a021400b004108cb98deamr32412080qtx.6.1697224211271;
+        Fri, 13 Oct 2023 12:10:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697224211; cv=none;
         d=google.com; s=arc-20160816;
-        b=r370NwYH055qFc0Y4q6bsiGZUesxwQVC6gY///cy1rm5E8nJ/VJve1HLOLvB91KwNs
-         qIsmvcW2ojlfvHTr4AiPD4ogAfvEpfJYT3oFDd58jFcFb9B18QA0YFONlLHX0CmPl68b
-         K+TGgiOCWIyz9G2/NYm0cFj4XRcHiFV337UZinXFhhtYxpvNpDiq50W7XuB+JL1S9ARc
-         R70ZDHbRzxRwI39WVfSKKXWr0eEwCqlx96yQ/LkxJnn2Z2iOIV0H30+YTYb0LBMXPC3Q
-         NVmTv4a+tjBUwJtrs/1n3bZBui+vmQLUmAHVx5T5BSyGqEv9AKXh1OoyUcpheZ7kGsEQ
-         zhCg==
+        b=Ssvk+PRI4+qvDQgrVcQy6leluhY8WGqrslnWmPjfFTFhhiki+uvK7gSLQ8FRSbxoj6
+         ytcSzD0Holafpl48VsQI+PbIo/akkWJsf35+mmIiNz+SH4kOs+gPj372s1wtWzWfgBId
+         2PjwFaJmN1KiV4QKvgZRNU7kzC4868ar7/hNPEf95o1JtaXyBvI0CsFPSOpB2B1MdI8X
+         NZBQzbe3jjePMi5PeQhAG11teAeDxs+K9LL08+jv7PqLibcU4HdF6RgnK/9TzY9SStyX
+         WHdj0ZBJbuXCMyftbYmKWXvn8+QcFY/ea96+PeKmNYaNYDKaNU3ZRobL9OncGniaiod0
+         562w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fMibcf1WJOst7WqdTUuAwHMJI3PCzA21uGEzA6VguR4=;
+        bh=iJ7wl0Ii06+M3pV66TBNc0GtswGn7yjmI2vwYEHWBIg=;
         fh=D6q9Zl84lh9f35IkUo72nHtoK2p7pHS0kVOpFtZg6qI=;
-        b=IfQW2vX8Wde+gC1bkEEpEG0IU5N7q7Ok3A5G6JxuJ7MBAwINyBQdV2DrfgEOHZ+KRy
-         jVwwikTYmF/qYbpWMD+gd7+qSf157OJii4vuMOdutimOdzDJ4ZjG6N1enpS/hMR0JP3o
-         xHSZHjSoUkGFazwz0UJg4r/XqO0FqMVi1imF521rrKseXATyrP7NTAAQ59uW3eVlo1He
-         AZJgOwtBBe4afealcp7rrnVraZhvSy0AWz0VMD+RKY6nybZMybueDC9nRGVHmqYVQWl5
-         9PojCIuWplsWU8SMICUzy04lmMRufO/l7bNdRnArKc80+bwForGI5Wp1dM6wmly7i/VP
-         F4nw==
+        b=vJTnBGa4Ay6MiroFNImBaZyiMjIOXeLglTkNeOAx4FK5SigddY7XUh2J7ysnLxaf9g
+         laNcW1Fxb4NSE/thUPkuODbbrxEPDGz2PY4QNIUI2Vh1G58BwHBwhX5YOTtNaZrEHp0o
+         fUO8+TpwgW3kerNNO0n3qYQSE+oTG3jZ//ii4aR8QturAV98NylcBU74tp8uvGoms2Bv
+         iKPXFHyaoPkDFDMiBTIhr1RJQKMiuZbkJFwTe+J/HI/3BVNnxK6g1c5Vabdc7VEk73Mh
+         Vhect0qVAf90YaSVmGUKxHf6vZwaNoIitfEQvnMDR+3SvYjIjjvY3lGystHsvHgjfBmn
+         LD6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sze5SwIJ;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QDHs/YrW";
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <jsnow@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id bs11-20020a05620a470b00b0077055f2ec4dsi1763227qkb.250.2023.10.13.12.10.10
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id m8-20020a05622a118800b00417cfd588cesi1696145qtk.766.2023.10.13.12.10.10
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Oct 2023 12:10:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 13 Oct 2023 12:10:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sze5SwIJ;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QDHs/YrW";
+       spf=pass (google.com: domain of jsnow@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1697224209;
+	s=mimecast20190719; t=1697224210;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=fMibcf1WJOst7WqdTUuAwHMJI3PCzA21uGEzA6VguR4=;
-	b=Sze5SwIJ8PDxDHz5NP1umYmA0MF6enh9wqOiqOwZ/TcX5yH5stBSkaFKMxS+WTfQBf1CrT
-	WjqghGjTuW9n1RooSXi0oFKvr15U0NXTKsL/Pmim+At3r83DtTJTbkJO0hT1aZof5duw5L
-	bfaUXKqtL8w6JjeEUPUBuXlbngHLX8k=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-634-HmZhD6_JNOCSufd1RPs1Tg-1; Fri, 13 Oct 2023 15:10:01 -0400
-X-MC-Unique: HmZhD6_JNOCSufd1RPs1Tg-1
+	bh=iJ7wl0Ii06+M3pV66TBNc0GtswGn7yjmI2vwYEHWBIg=;
+	b=QDHs/YrWOBh+awiDlO5RA3v7rWpEQQF4cQj8pCJYleTL8bIs03FyY/ryB25PgSOdLomsnP
+	mQi576SrN9RGp13fZmF2XjV2UqNfK7VMCa9DB7XyI9GJwaqUq7gF1KJeaRY1+pCAp0RsEf
+	Jtx80kMAagYR/SJA+ntAxombN532uAo=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-413-FXReLPtdMmqGpbsaF9VE1A-1; Fri, 13 Oct 2023 15:10:02 -0400
+X-MC-Unique: FXReLPtdMmqGpbsaF9VE1A-1
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com [10.11.54.2])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5161329A9D2A;
-	Fri, 13 Oct 2023 19:10:00 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 93CB28039C1;
+	Fri, 13 Oct 2023 19:10:01 +0000 (UTC)
 Received: from scv.redhat.com (unknown [10.22.32.124])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 14A1D40C6CA0;
-	Fri, 13 Oct 2023 19:09:59 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5D6EB40C6CA0;
+	Fri, 13 Oct 2023 19:10:00 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>,
@@ -94,68 +94,74 @@ Cc: Kevin Wolf <kwolf@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Halil Pasic <pasic@linux.ibm.com>,
 	Cleber Rosa <crosa@redhat.com>
-Subject: [PULL 13/25] scripts/cpu-x86-uarch-abi.py: use .command() instead of .cmd()
-Date: Fri, 13 Oct 2023 15:09:28 -0400
-Message-ID: <20231013190941.3699288-14-jsnow@redhat.com>
+Subject: [PULL 14/25] python: rename QEMUMonitorProtocol.cmd() to cmd_raw()
+Date: Fri, 13 Oct 2023 15:09:29 -0400
+Message-ID: <20231013190941.3699288-15-jsnow@redhat.com>
 In-Reply-To: <20231013190941.3699288-1-jsnow@redhat.com>
 References: <20231013190941.3699288-1-jsnow@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
-X-TUID: 2jS/WicoERwN
+X-TUID: KZ+aorXRzVnB
 
 From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
 
-Here we don't expect a failure. In case of failure we'll crash on
-trying to access ['return']. Better is to use .command() that clearly
-raises on failure.
+Having cmd() and command() methods in one class doesn't look good.
+Rename cmd() to cmd_raw(), to show its meaning better.
+
+We also want to rename command() to cmd() in future, so this commit is
+a necessary step.
 
 Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
 Reviewed-by: Eric Blake <eblake@redhat.com>
-Message-id: 20231006154125.1068348-4-vsementsov@yandex-team.ru
+Message-id: 20231006154125.1068348-5-vsementsov@yandex-team.ru
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- scripts/cpu-x86-uarch-abi.py | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ python/qemu/machine/machine.py | 2 +-
+ python/qemu/qmp/legacy.py      | 4 ++--
+ tests/qemu-iotests/iotests.py  | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/scripts/cpu-x86-uarch-abi.py b/scripts/cpu-x86-uarch-abi.py
-index 82ff07582f..893afd1b35 100644
---- a/scripts/cpu-x86-uarch-abi.py
-+++ b/scripts/cpu-x86-uarch-abi.py
-@@ -69,7 +69,7 @@
- shell = QEMUMonitorProtocol(sock)
- shell.connect()
+diff --git a/python/qemu/machine/machine.py b/python/qemu/machine/machine.py
+index d539e91268..50bba33729 100644
+--- a/python/qemu/machine/machine.py
++++ b/python/qemu/machine/machine.py
+@@ -702,7 +702,7 @@ def qmp(self, cmd: str,
+             conv_keys = True
  
--models = shell.cmd("query-cpu-definitions")
-+models = shell.command("query-cpu-definitions")
+         qmp_args = self._qmp_args(conv_keys, args)
+-        ret = self._qmp.cmd(cmd, args=qmp_args)
++        ret = self._qmp.cmd_raw(cmd, args=qmp_args)
+         if cmd == 'quit' and 'error' not in ret and 'return' in ret:
+             self._quit_issued = True
+         return ret
+diff --git a/python/qemu/qmp/legacy.py b/python/qemu/qmp/legacy.py
+index fe115e301c..e5fa1ce9c4 100644
+--- a/python/qemu/qmp/legacy.py
++++ b/python/qemu/qmp/legacy.py
+@@ -194,8 +194,8 @@ def cmd_obj(self, qmp_cmd: QMPMessage) -> QMPMessage:
+             )
+         )
  
- # These QMP props don't correspond to CPUID fatures
- # so ignore them
-@@ -85,7 +85,7 @@
+-    def cmd(self, name: str,
+-            args: Optional[Dict[str, object]] = None) -> QMPMessage:
++    def cmd_raw(self, name: str,
++                args: Optional[Dict[str, object]] = None) -> QMPMessage:
+         """
+         Build a QMP command and send it to the QMP Monitor.
  
- names = []
+diff --git a/tests/qemu-iotests/iotests.py b/tests/qemu-iotests/iotests.py
+index 145c682713..0c061d8986 100644
+--- a/tests/qemu-iotests/iotests.py
++++ b/tests/qemu-iotests/iotests.py
+@@ -460,7 +460,7 @@ def __init__(self, *args: str, instance_id: str = 'a', qmp: bool = False):
+     def qmp(self, cmd: str, args: Optional[Dict[str, object]] = None) \
+             -> QMPMessage:
+         assert self._qmp is not None
+-        return self._qmp.cmd(cmd, args)
++        return self._qmp.cmd_raw(cmd, args)
  
--for model in models["return"]:
-+for model in models:
-     if "alias-of" in model:
-         continue
-     names.append(model["name"])
-@@ -93,12 +93,12 @@
- models = {}
- 
- for name in sorted(names):
--    cpu = shell.cmd("query-cpu-model-expansion",
--                     { "type": "static",
--                       "model": { "name": name }})
-+    cpu = shell.command("query-cpu-model-expansion",
-+                        { "type": "static",
-+                          "model": { "name": name }})
- 
-     got = {}
--    for (feature, present) in cpu["return"]["model"]["props"].items():
-+    for (feature, present) in cpu["model"]["props"].items():
-         if present and feature not in skip:
-             got[feature] = True
- 
+     def get_qmp(self) -> QEMUMonitorProtocol:
+         assert self._qmp is not None
 -- 
 2.41.0

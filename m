@@ -1,46 +1,46 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1415944ejc;
-        Fri, 13 Oct 2023 03:54:11 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFrHV7hteFNIzqwmeXAwKuY/gZMuGNUnacf0T7RZ6AncugcdqZUJ4vEMjFM/YzwEVVztsnC
-X-Received: by 2002:a05:600c:895:b0:405:3be0:c78d with SMTP id l21-20020a05600c089500b004053be0c78dmr18666959wmp.3.1697194451504;
-        Fri, 13 Oct 2023 03:54:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697194451; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1416166ejc;
+        Fri, 13 Oct 2023 03:54:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHbVmBAYm0eR7itfsAZTbZ3h0W8qBpxlhrcDDvhwGKfLj5Ghzb34GnIkVmtXhwMq8dHFi01
+X-Received: by 2002:a1c:7414:0:b0:405:dbe2:df10 with SMTP id p20-20020a1c7414000000b00405dbe2df10mr24496048wmc.35.1697194484862;
+        Fri, 13 Oct 2023 03:54:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697194484; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZGIwm/hlGPoxDMFYfhhmleoKz9vOQ/VhGilQiSiQAClyI2Gix00dI8nEt5bPZiOEe/
-         cJbOT3HIOfE5sRPJ6o8MEMZXxJzRrcXQLrnuEQGV84wv6iPk9SoUsV/p9MBeX+Ujy4yO
-         argX7RjMqLmHKhKDEECdTR477QGhodHUqYyZEgm/3n3wspYUhXp6o6g9S6lykTMWsmux
-         isOZlcPFc2SVGYGN1OVLTFB0o9scN29KPGUYI0yAkLP72muuf5xgYko8lIu+yD0hjYgg
-         eLV1wu7r51USPervKHqw7klxEz7y68xl77cFClm4jKb44er6hWOBeFI5dIXm5n5kg/5s
-         eKhQ==
+        b=y33u2dvYRtJUmrnFoW81zcWJesfwwfZL7KptmMU5UaFUHz/T2eMgtThZaeEQJbGmyF
+         VFwi7Vny2cKwTMCdHUoW9oRvdjB1DO22c5Iv+GOeN+wyxT0yyVddEKuYdheF4xnzFBMp
+         ZVXpY44JkTiqFnNG/Da51ncvhCklVCB2JvVQKfgSI5jdFewUMzNxD2+VcAQzmS5iRYZv
+         1SNXCswZr0kTfYPuelsk4tsh6MqnOJVWia3xJsdKohwT/rOjKR4tSYsx9oaVda10bPeP
+         iaZg72/2/O6o8ks31hEWsmxKWmwqG+y4TJZPLSn+DBWUyrok4QepeOrwBCVXXh0xzoYZ
+         w0Lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=lAjcg+MOOlmR9Ll96/JBBewIcm8AzCCabl7CWCOpNa0=;
+        bh=SREhLnhQ0U613eO9g9mKLBx7JdpXyuLbjMgSE1OrfVw=;
         fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
-        b=Vw8FpwPg17v7V8JbvFlru5lKMnqii4bSJ5mkfdwvyBEFpnR94ZepfyWFGEDq1H1n79
-         n4Zzv4ElsePEi9TyVKm56/fy7wLb0Ge8qK+aWt3Y+z9ilESvfkl/Dn1OcHhP/qncGwHU
-         htKIl2188aoAdff5NOUEN679P/peyz77eHiudTV+duQu8BHtMu4jAj4vmnrPylKA09iJ
-         1IA7kTpkjx+nMorKn4MLoksFhGZ1r4wZNhCHiuqyE2yCXlMPKBL3k8apOhkko/J0HHmY
-         1zZBya06lJU/NRe5yKIcpBRn1g6jj1xxGhrb8Sfflywki7SabchSm9HXvhLHMje5+En/
-         0OsQ==
+        b=i5w+FlhvkNB9C/UnWlPQgAbJ8cLQ+K6renVziA1RvoeFJg+BBgzQE0sZViHKIcAtQ3
+         PDXIi3sw4HTVONImDCXLqlJm6FitOH+zBqnNimz1fDWQR7H3D529rNVnHcZnEqkLejwy
+         Zh1YOJb+lbrmoL/h2rj5fTsi+a0cmZUoDXK/fa2L5cZHnhcBl4uZUGrBZ+CpT7Lmkhf1
+         6J41BmnQx8uGX8YXS9pzlxN0rmpxGyXQUxuA7WVEwJoq1x8fDk8orL0obZDxjWjSuP+E
+         QVtUZx3+2LZ3n0gbZ2wLltr98/SmgtBx9kEdlTqZW1weGWSJth+T1x0ekOPpsf70GWLs
+         oqCw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id f9-20020adfdb49000000b0032d9b7aff29si599400wrj.541.2023.10.13.03.54.11
+        by mx.google.com with ESMTPS id m18-20020a05600c3b1200b00405336eac58si1000022wms.43.2023.10.13.03.54.44
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Oct 2023 03:54:11 -0700 (PDT)
+        Fri, 13 Oct 2023 03:54:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.200])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S6NcM0vgFz6K5pt;
-	Fri, 13 Oct 2023 18:52:03 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S6Nd04pvHz6K6FX;
+	Fri, 13 Oct 2023 18:52:36 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.195.247.32) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Fri, 13 Oct 2023 11:53:53 +0100
+ 15.1.2507.31; Fri, 13 Oct 2023 11:54:27 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -57,9 +57,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<linuxarm@huawei.com>
-Subject: [PATCH V6 7/9] hw/acpi: Update ACPI GED framework to support vCPU Hotplug
-Date: Fri, 13 Oct 2023 11:51:27 +0100
-Message-ID: <20231013105129.25648-8-salil.mehta@huawei.com>
+Subject: [PATCH V6 9/9] gdbstub: Add helper function to unregister GDB register space
+Date: Fri, 13 Oct 2023 11:51:29 +0100
+Message-ID: <20231013105129.25648-10-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20231013105129.25648-1-salil.mehta@huawei.com>
 References: <20231013105129.25648-1-salil.mehta@huawei.com>
@@ -69,78 +69,58 @@ X-Originating-IP: [10.195.247.32]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
 X-CFilter-Loop: Reflected
-X-TUID: bLBTdEZ8xl3Z
+X-TUID: I6MEwB/B7vH4
 
-ACPI GED shall be used to convey to the guest kernel about any CPU hot-(un)plug
-events. Therefore, existing ACPI GED framework inside QEMU needs to be enhanced
-to support CPU hotplug state and events.
+Add common function to help unregister the GDB register space. This shall be
+done in context to the CPU unrealization.
 
-Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
 Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
 Tested-by: Xianglai Li <lixianglai@loongson.cn>
 ---
- hw/acpi/generic_event_device.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ gdbstub/gdbstub.c      | 12 ++++++++++++
+ include/exec/gdbstub.h |  5 +++++
+ 2 files changed, 17 insertions(+)
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 62d504d231..0d5f0140e5 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -12,6 +12,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/acpi/acpi.h"
-+#include "hw/acpi/cpu.h"
- #include "hw/acpi/generic_event_device.h"
- #include "hw/irq.h"
- #include "hw/mem/pc-dimm.h"
-@@ -239,6 +240,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-         } else {
-             acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
-         }
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-     } else {
-         error_setg(errp, "virt: device plug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -253,6 +256,8 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
-     if ((object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) &&
-                        !(object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)))) {
-         acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -266,6 +271,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
- 
-     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-         acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -277,6 +284,7 @@ static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
-     AcpiGedState *s = ACPI_GED(adev);
- 
-     acpi_memory_ospm_status(&s->memhp_state, list);
-+    acpi_cpu_ospm_status(&s->cpuhp_state, list);
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index b1532118d1..7bd6d45857 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -498,6 +498,18 @@ void gdb_register_coprocessor(CPUState *cpu,
+     }
  }
  
- static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-@@ -291,6 +299,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-         sel = ACPI_GED_PWR_DOWN_EVT;
-     } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
-         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
-+    } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
-+        sel = ACPI_GED_CPU_HOTPLUG_EVT;
-     } else {
-         /* Unknown event. Return without generating interrupt. */
-         warn_report("GED: Unsupported event %d. No irq injected", ev);
++void gdb_unregister_coprocessor_all(CPUState *cpu)
++{
++    /*
++     * Safe to nuke everything. GDBRegisterState::xml is static const char so
++     * it won't be freed
++     */
++    g_array_free(cpu->gdb_regs, true);
++
++    cpu->gdb_regs = NULL;
++    cpu->gdb_num_g_regs = 0;
++}
++
+ static void gdb_process_breakpoint_remove_all(GDBProcess *p)
+ {
+     CPUState *cpu = gdb_get_first_cpu_in_process(p);
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index 1a01c35f8e..3744257ed3 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -32,6 +32,11 @@ typedef int (*gdb_set_reg_cb)(CPUArchState *env, uint8_t *buf, int reg);
+ void gdb_register_coprocessor(CPUState *cpu,
+                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
+                               int num_regs, const char *xml, int g_pos);
++/**
++ * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
++ * @cpu - the CPU associated with registers
++ */
++void gdb_unregister_coprocessor_all(CPUState *cpu);
+ 
+ /**
+  * gdbserver_start: start the gdb server
 -- 
 2.34.1

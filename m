@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1532346ejc;
-        Fri, 13 Oct 2023 07:05:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGM+Zr5BKTeWT3YtMAaee0oKae9/1gLHA3sQDmHdcfj81LKxUsrXyirXqZxBeUnvmftP25c
-X-Received: by 2002:a05:620a:b5a:b0:770:9bd2:b3be with SMTP id x26-20020a05620a0b5a00b007709bd2b3bemr26713445qkg.5.1697205904270;
-        Fri, 13 Oct 2023 07:05:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697205904; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1532509ejc;
+        Fri, 13 Oct 2023 07:05:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHRd3xwWNsz9lFub66n01UAYGmW5NWMbGL4oxWrgSkP21/1vqml6a7xJxjrfHZoYRdRvPZy
+X-Received: by 2002:a0c:eccf:0:b0:65b:a66:3109 with SMTP id o15-20020a0ceccf000000b0065b0a663109mr30479367qvq.8.1697205913613;
+        Fri, 13 Oct 2023 07:05:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697205913; cv=none;
         d=google.com; s=arc-20160816;
-        b=015DUEbPt/K2c9l9hXDGJ+o7IiM1MQlZ3wtTIvUQkF74ycpSnGo4ddDRUVjHQyJRK6
-         yFoHgkn4PPUMAFMrfYN+jDifjOyh70bJnmZaUTcJ54veBMFedmXhCeOfgRpY/NHr6Xy5
-         5rwfJ9San0o1rUJLofjtX5v+o5Kftk1J8phh4+pvtrnmybRTOdHblk/5c/0eFF8O45jT
-         /9q9hFJpLVEomCS46z0I6wuvWg+7AK4Ea4te/IHwWPorcv1SE9+uyBUrssjAlxt5Yk+J
-         7pzLIw4WSB6DhSnD3YHaTs5pkxOkgW8coGD+jJ72Ib9OHcsmJiqCKA4eJ86zHPGGfyvZ
-         7rPw==
+        b=SMBf9+8NLU0uNTU+eI5OU8tElsO3C11UxXCHRBmixToshEVpR0nN/h/Zeo09NRdC0H
+         zrKBAML6+ZH2u97fm66D3ypZzrBnfW9aHzhF1c1tnXqXkNUd+H+FFBfV/WToRGAEZrRX
+         IatzjY5iHrEFydjYTVJkgEFxfBT9fXldURlDxaktIuNaZ/X0FSy4eZMAlWqD6iVMF/ve
+         gIOJjysZIvutwFW3Q+Vg2+mLjauHuC+EJKkgzNXh6sPNoHc+AxN0UAYh1+PZ+bBSC7NU
+         96LMRFJ78bkTKqoNrjf//2TEIaAyYj0Pn/yqaEr1oE5h//Qn03Dg8Kk7TLbQJn5Vxkhs
+         ifNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=07DFvbHkZiBMbxAaSmNu0dQsKVUwAhLuuLPTQQVTtt0=;
+        bh=Y9eu+dYuqEAuyUfcja/Rp4G880IWvzHYCzxEd3S6+NQ=;
         fh=yvC9ZPM7MgJn7Xb0eJwxiCf2t+VfzDAYAfYYKFMFkpQ=;
-        b=puLBd2VwCJ5Xg7ZpXYTYOv5Zukd7OlWvfoPR7ovnhF6ZtByKDniIj3vNNNAgKjO2C3
-         dbGsx+dQ2W/i4ZlnIgmSsZn3EN8vGBvyLBgLl5fnma5eNlaRmtY0FPj0LKpsmvkgBhKf
-         yjet6nxhuvpHeNuigZ0JUvWyPAlezH7RMJfwLWj+GYKHJcnm5evrmRPYbWe2RaSfFEug
-         GOJzOymc69nMMcQWKrsXMepszvKh6+SSD2iKekcIm/FIp/y1Tdns16XpZQSOC/1XfC1q
-         CaUCE91ODvyoMlPyhidrJ4kQpS1hFYmzfnyoOHGezH5oh7ARoTK29BM1Nm+D4C4PbbsO
-         94eA==
+        b=zF3diPOwLqaxXtAb2RtQLlBH5qPo5nI8qV7wkjVJvsNopfTA6oOGHmvvUgsqWKodM3
+         0hjRQlNB2JmruW8mDskOMyxtkFnayDL6p+5vdCT1XgQvncI22n3h7IsnlXWgW/XGCTgR
+         QoqlblhXTgEZDki+fYB+Z1GRq0EzurgHkL9BY3s4UMRX/bGIC2xWhJKIGVp6Z1Edzyp2
+         grsxTSdXX4WzAcLsDxq+1un+aSvrx9sFkf/O7Fv75CNe69UejmPQ0+gNzLw9nA8kangp
+         lm6HNaCkCcDDYkQnH4sQ7p43XTRTBqMa9kf+cMd8kaabC81Oe2rTAyByDk9Dc97/kjpB
+         lvfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OCkIlB5R;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N5HQUzG2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r13-20020a05620a298d00b0077252673dddsi1236441qkp.516.2023.10.13.07.05.04
+        by mx.google.com with ESMTPS id d4-20020a056214184400b0065825c392ffsi1246635qvy.398.2023.10.13.07.05.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 07:05:04 -0700 (PDT)
+        Fri, 13 Oct 2023 07:05:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OCkIlB5R;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N5HQUzG2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrImK-0003VB-Pk; Fri, 13 Oct 2023 10:04:36 -0400
+	id 1qrImG-0003Iv-Rx; Fri, 13 Oct 2023 10:04:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIkq-00086c-2O
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:03:11 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIkI-0007Qy-QL
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:02:37 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIki-0002PD-5e
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:03:03 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-99357737980so354766066b.2
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 07:02:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIkB-0002JI-4M
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:02:27 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-53de0d1dc46so3746262a12.3
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 07:02:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697205768; x=1697810568; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697205741; x=1697810541; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=07DFvbHkZiBMbxAaSmNu0dQsKVUwAhLuuLPTQQVTtt0=;
- b=OCkIlB5RGSCHe071andYqFdVb9ogjsaDXvF/7LQxPRSnO9we7hUVvhVx3/3nsrMNcC
- QPKO69OZKPA50TM+G766N7tTOQRyudfsQpafFVUWyjqSZDt6PcAY8bxw11FMO8Nk/Prw
- +0L+VI0HTdL6emtoNPh3WEgAYuV6+wqfgA3VLvyEK4r2ogHDhHXpAtMXwiRSI8jO0QpT
- +miGQbCfzxA4f6OfsSqMPKelqAhQU9mQc9tI7V8+cS60ehl2/fuFqx2cpZaC4eSrrPW7
- bKhvGMdkI4kkMtfPAvDAoE2Wpuc08AnUYyWcY3CpvinrGlzrlTE1M2xS9NVjKQPQc9Ws
- 4LYw==
+ bh=Y9eu+dYuqEAuyUfcja/Rp4G880IWvzHYCzxEd3S6+NQ=;
+ b=N5HQUzG2wWqtckjz7CLDWXq9XhC5v26xJpFc5wU7mywdYcs5sle1+yoE04EpmA2dry
+ RjTF33XrgyV8t4naAHySbuxZPchIeuvIvdt85pag5LiJchhH3i0+NFVfubLN0gKw0LkT
+ 4Vz5bhDnFATsMtsd7yFVfoFFiVx0iIJ7E74BYVO9L4ARAVOndY0c/FLh/Y5MesR1yodE
+ gG+g+AwaCftEVuFmVQ7VbT2sL+u1H7AbMacPt4l7NxWZXdKRpjWkpopoJCJHD5SvJK5J
+ jjy2WKbBlUVYhkNTMyi9u3RQXyRUcEw0kwR12hKv/TIpjNwWrORRIrj61ixWGD2JMivN
+ KnYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697205768; x=1697810568;
+ d=1e100.net; s=20230601; t=1697205741; x=1697810541;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=07DFvbHkZiBMbxAaSmNu0dQsKVUwAhLuuLPTQQVTtt0=;
- b=fuZAfk1U0DJONwRyZwmn5pNFZdts7RRMTRPX6CXekP+DCiYYWCgf8L7ZrHFIeG3GTH
- DHq9N0pPBQVzvmIiTOzI3PfM8nKITfMnCroK/YRsdmAid2RsYfNs14445nM2+7YcmTw3
- f75aiP2Xx5r+TS9SkLkCEIUGIhC57R3hVdX3BU5kRQhi3188Pjc4OcYex4ly9U0MNMU5
- BZToDDurnS5ukSxWcekhLQDaFI+Ry5VXdwL3KM9dn0nwkIeO5OBBDDLcFqotAlWvdSPr
- mM61n/CAziWtFKRGTcnz/5F+pl/S0bHJl60zrpfjNS0NyjUjZBobFfmSQ05LYtap0eFE
- HVCg==
-X-Gm-Message-State: AOJu0YzNZpf1r9WKLJlDQQvShALFek2OEXgFrf0a5yTFxqCIpjc2ooj5
- eU1rNGb5gUTY13/CpfyNdv8Srw==
-X-Received: by 2002:a17:906:8a47:b0:9b8:9b30:aff with SMTP id
- gx7-20020a1709068a4700b009b89b300affmr22902546ejc.1.1697205767691; 
- Fri, 13 Oct 2023 07:02:47 -0700 (PDT)
+ bh=Y9eu+dYuqEAuyUfcja/Rp4G880IWvzHYCzxEd3S6+NQ=;
+ b=xHukLH+ncSi/2yhev3eaRmEU0x9npUWEPVD31fX0W1B0FrdfeFbEt4hK5cL1ejJl7D
+ czhNBQ5NQ90jWOo78nhbZbOeWs/4lpqdtwyV8kzYRV9hG2NmFOGv6kU4ZRT+XXPV7Jmt
+ YotGKnL6Okn7Jt7Y1ngm/uKya99UdZsG+HnQhbkv7+AdTk65/TV6h8PWdvZfkQ9Fz0eW
+ kquB2T9TovZANEzmCSDm43qfEK1wZmmpHXKzJmgRxJeZR0/u9IAPigA+xk99ve8MOBPT
+ +96/l4kX15Ekks7zQYynTBF1kR6cHIhBG5qFjyRyXmOfINjOjDVkigf1iMcboICD9zna
+ vzhw==
+X-Gm-Message-State: AOJu0Yyq7sdoFqHN97680mWVAW4Iv3zag3a/a843/ghLzdXCy5uu6YPN
+ vHhDoXJ410sDFyWR2brb+4NOlQ==
+X-Received: by 2002:a50:c8cd:0:b0:53e:21f6:d784 with SMTP id
+ k13-20020a50c8cd000000b0053e21f6d784mr3394709edh.8.1697205740721; 
+ Fri, 13 Oct 2023 07:02:20 -0700 (PDT)
 Received: from m1x-phil.lan ([176.172.118.168])
  by smtp.gmail.com with ESMTPSA id
- h17-20020a1709063c1100b009b94a8150d8sm12508110ejg.199.2023.10.13.07.02.43
+ p22-20020a05640210d600b00530a9488623sm11526147edu.46.2023.10.13.07.02.15
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 13 Oct 2023 07:02:47 -0700 (PDT)
+ Fri, 13 Oct 2023 07:02:20 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <eduardo@habkost.net>,
@@ -121,24 +121,25 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
  Sergio Lopez <slp@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Ilya Leoshkevich <iii@linux.ibm.com>, Michael Rolnik <mrolnik@gmail.com>
-Subject: [PATCH v2 09/16] target/nios2: Declare QOM definitions in 'cpu-qom.h'
-Date: Fri, 13 Oct 2023 16:01:08 +0200
-Message-ID: <20231013140116.255-10-philmd@linaro.org>
+Subject: [PATCH v2 06/16] target: Declare FOO_CPU_TYPE_NAME/SUFFIX in
+ 'cpu-qom.h'
+Date: Fri, 13 Oct 2023 16:01:05 +0200
+Message-ID: <20231013140116.255-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231013140116.255-1-philmd@linaro.org>
 References: <20231013140116.255-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x635.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,76 +154,436 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PwNWzTKvZfCf
+X-TUID: qOdcqpln3y3S
 
-"target/foo/cpu.h" contains the target specific declarations.
-
-A heterogeneous setup need to access target agnostic declarations
-(at least the QOM ones, to instantiate the objects).
-
-Our convention is to add such target agnostic QOM declarations in
-the "target/foo/cpu-qom.h" header.
-
-Extract QOM definitions from "cpu.h" to "cpu-qom.h".
+Hegerogeneous code needs access to the FOO_CPU_TYPE_NAME()
+macro to resolve target CPU types. Move the declaration
+(along with the required FOO_CPU_TYPE_SUFFIX) to "cpu-qom.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Acked-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/nios2/cpu-qom.h | 19 +++++++++++++++++++
- target/nios2/cpu.h     |  7 +------
- 2 files changed, 20 insertions(+), 6 deletions(-)
- create mode 100644 target/nios2/cpu-qom.h
+ target/alpha/cpu-qom.h   | 5 ++++-
+ target/alpha/cpu.h       | 2 --
+ target/avr/cpu-qom.h     | 5 ++++-
+ target/avr/cpu.h         | 2 --
+ target/cris/cpu-qom.h    | 5 ++++-
+ target/cris/cpu.h        | 2 --
+ target/i386/cpu-qom.h    | 3 +++
+ target/i386/cpu.h        | 2 --
+ target/m68k/cpu-qom.h    | 5 ++++-
+ target/m68k/cpu.h        | 2 --
+ target/mips/cpu-qom.h    | 3 +++
+ target/mips/cpu.h        | 2 --
+ target/rx/cpu-qom.h      | 5 ++++-
+ target/rx/cpu.h          | 2 --
+ target/s390x/cpu-qom.h   | 5 ++++-
+ target/s390x/cpu.h       | 2 --
+ target/sh4/cpu-qom.h     | 5 ++++-
+ target/sh4/cpu.h         | 2 --
+ target/sparc/cpu-qom.h   | 5 ++++-
+ target/sparc/cpu.h       | 2 --
+ target/tricore/cpu-qom.h | 5 +++++
+ target/tricore/cpu.h     | 2 --
+ target/xtensa/cpu-qom.h  | 5 ++++-
+ target/xtensa/cpu.h      | 2 --
+ 24 files changed, 47 insertions(+), 33 deletions(-)
 
-diff --git a/target/nios2/cpu-qom.h b/target/nios2/cpu-qom.h
-new file mode 100644
-index 0000000000..931bc69b10
---- /dev/null
-+++ b/target/nios2/cpu-qom.h
-@@ -0,0 +1,19 @@
-+/*
-+ * QEMU Nios II CPU QOM header (target agnostic)
-+ *
-+ * Copyright (c) 2012 Chris Wulff <crwulff@gmail.com>
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+
-+#ifndef QEMU_NIOS2_CPU_QOM_H
-+#define QEMU_NIOS2_CPU_QOM_H
-+
-+#include "hw/core/cpu.h"
-+#include "qom/object.h"
-+
-+#define TYPE_NIOS2_CPU "nios2-cpu"
-+
-+OBJECT_DECLARE_CPU_TYPE(Nios2CPU, Nios2CPUClass, NIOS2_CPU)
-+
-+#endif
-diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
-index ede1ba2140..2d79b5b298 100644
---- a/target/nios2/cpu.h
-+++ b/target/nios2/cpu.h
-@@ -21,20 +21,15 @@
- #ifndef NIOS2_CPU_H
- #define NIOS2_CPU_H
+diff --git a/target/alpha/cpu-qom.h b/target/alpha/cpu-qom.h
+index c5fbd8f11a..c4a4523993 100644
+--- a/target/alpha/cpu-qom.h
++++ b/target/alpha/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU Alpha CPU
++ * QEMU Alpha CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2012 SUSE LINUX Products GmbH
+  *
+@@ -27,6 +27,9 @@
  
-+#include "cpu-qom.h"
- #include "exec/cpu-defs.h"
--#include "hw/core/cpu.h"
- #include "hw/registerfields.h"
--#include "qom/object.h"
+ OBJECT_DECLARE_CPU_TYPE(AlphaCPU, AlphaCPUClass, ALPHA_CPU)
  
- typedef struct CPUArchState CPUNios2State;
- #if !defined(CONFIG_USER_ONLY)
- #include "mmu.h"
++#define ALPHA_CPU_TYPE_SUFFIX "-" TYPE_ALPHA_CPU
++#define ALPHA_CPU_TYPE_NAME(model) model ALPHA_CPU_TYPE_SUFFIX
++
+ /**
+  * AlphaCPUClass:
+  * @parent_realize: The parent class' realize handler.
+diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+index c8d97ac27a..3bff56c565 100644
+--- a/target/alpha/cpu.h
++++ b/target/alpha/cpu.h
+@@ -426,8 +426,6 @@ enum {
+ 
+ void alpha_translate_init(void);
+ 
+-#define ALPHA_CPU_TYPE_SUFFIX "-" TYPE_ALPHA_CPU
+-#define ALPHA_CPU_TYPE_NAME(model) model ALPHA_CPU_TYPE_SUFFIX
+ #define CPU_RESOLVING_TYPE TYPE_ALPHA_CPU
+ 
+ void alpha_cpu_list(void);
+diff --git a/target/avr/cpu-qom.h b/target/avr/cpu-qom.h
+index d89be01e0f..75590cdd97 100644
+--- a/target/avr/cpu-qom.h
++++ b/target/avr/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU AVR CPU
++ * QEMU AVR CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2016-2020 Michael Rolnik
+  *
+@@ -28,6 +28,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(AVRCPU, AVRCPUClass, AVR_CPU)
+ 
++#define AVR_CPU_TYPE_SUFFIX "-" TYPE_AVR_CPU
++#define AVR_CPU_TYPE_NAME(name) (name AVR_CPU_TYPE_SUFFIX)
++
+ /**
+  *  AVRCPUClass:
+  *  @parent_realize: The parent class' realize handler.
+diff --git a/target/avr/cpu.h b/target/avr/cpu.h
+index f8b065ed79..0487399cb2 100644
+--- a/target/avr/cpu.h
++++ b/target/avr/cpu.h
+@@ -28,8 +28,6 @@
+ #error "AVR 8-bit does not support user mode"
  #endif
  
--#define TYPE_NIOS2_CPU "nios2-cpu"
--
--OBJECT_DECLARE_CPU_TYPE(Nios2CPU, Nios2CPUClass, NIOS2_CPU)
--
+-#define AVR_CPU_TYPE_SUFFIX "-" TYPE_AVR_CPU
+-#define AVR_CPU_TYPE_NAME(name) (name AVR_CPU_TYPE_SUFFIX)
+ #define CPU_RESOLVING_TYPE TYPE_AVR_CPU
+ 
+ #define TCG_GUEST_DEFAULT_MO 0
+diff --git a/target/cris/cpu-qom.h b/target/cris/cpu-qom.h
+index c2fee242f4..d7e5f33e62 100644
+--- a/target/cris/cpu-qom.h
++++ b/target/cris/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU CRIS CPU
++ * QEMU CRIS CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2012 SUSE LINUX Products GmbH
+  *
+@@ -27,6 +27,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(CRISCPU, CRISCPUClass, CRIS_CPU)
+ 
++#define CRIS_CPU_TYPE_SUFFIX "-" TYPE_CRIS_CPU
++#define CRIS_CPU_TYPE_NAME(name) (name CRIS_CPU_TYPE_SUFFIX)
++
  /**
-  * Nios2CPUClass:
-  * @parent_phases: The parent class' reset phase handlers.
+  * CRISCPUClass:
+  * @parent_realize: The parent class' realize handler.
+diff --git a/target/cris/cpu.h b/target/cris/cpu.h
+index 6aa445348f..b821bb7983 100644
+--- a/target/cris/cpu.h
++++ b/target/cris/cpu.h
+@@ -240,8 +240,6 @@ enum {
+ /* CRIS uses 8k pages.  */
+ #define MMAP_SHIFT TARGET_PAGE_BITS
+ 
+-#define CRIS_CPU_TYPE_SUFFIX "-" TYPE_CRIS_CPU
+-#define CRIS_CPU_TYPE_NAME(name) (name CRIS_CPU_TYPE_SUFFIX)
+ #define CPU_RESOLVING_TYPE TYPE_CRIS_CPU
+ 
+ /* MMU modes definitions */
+diff --git a/target/i386/cpu-qom.h b/target/i386/cpu-qom.h
+index 58145717ef..dffc74c1ce 100644
+--- a/target/i386/cpu-qom.h
++++ b/target/i386/cpu-qom.h
+@@ -32,6 +32,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(X86CPU, X86CPUClass, X86_CPU)
+ 
++#define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
++#define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
++
+ typedef struct X86CPUModel X86CPUModel;
+ 
+ /**
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index a600468698..2dea4df086 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2239,8 +2239,6 @@ void cpu_x86_update_dr7(CPUX86State *env, uint32_t new_dr7);
+ /* hw/pc.c */
+ uint64_t cpu_get_tsc(CPUX86State *env);
+ 
+-#define X86_CPU_TYPE_SUFFIX "-" TYPE_X86_CPU
+-#define X86_CPU_TYPE_NAME(name) (name X86_CPU_TYPE_SUFFIX)
+ #define CPU_RESOLVING_TYPE TYPE_X86_CPU
+ 
+ #ifdef TARGET_X86_64
+diff --git a/target/m68k/cpu-qom.h b/target/m68k/cpu-qom.h
+index 13d94c9fe3..df0cc8b7a3 100644
+--- a/target/m68k/cpu-qom.h
++++ b/target/m68k/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU Motorola 68k CPU
++ * QEMU Motorola 68k CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2012 SUSE LINUX Products GmbH
+  *
+@@ -27,6 +27,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(M68kCPU, M68kCPUClass, M68K_CPU)
+ 
++#define M68K_CPU_TYPE_SUFFIX "-" TYPE_M68K_CPU
++#define M68K_CPU_TYPE_NAME(model) model M68K_CPU_TYPE_SUFFIX
++
+ /*
+  * M68kCPUClass:
+  * @parent_realize: The parent class' realize handler.
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index 9ea18028ad..7f34686a6f 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -561,8 +561,6 @@ enum {
+     ACCESS_DATA  = 0x20, /* Data load/store access        */
+ };
+ 
+-#define M68K_CPU_TYPE_SUFFIX "-" TYPE_M68K_CPU
+-#define M68K_CPU_TYPE_NAME(model) model M68K_CPU_TYPE_SUFFIX
+ #define CPU_RESOLVING_TYPE TYPE_M68K_CPU
+ 
+ #define cpu_list m68k_cpu_list
+diff --git a/target/mips/cpu-qom.h b/target/mips/cpu-qom.h
+index c70b4a34be..5822dfb1d2 100644
+--- a/target/mips/cpu-qom.h
++++ b/target/mips/cpu-qom.h
+@@ -31,6 +31,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(MIPSCPU, MIPSCPUClass, MIPS_CPU)
+ 
++#define MIPS_CPU_TYPE_SUFFIX "-" TYPE_MIPS_CPU
++#define MIPS_CPU_TYPE_NAME(model) model MIPS_CPU_TYPE_SUFFIX
++
+ /**
+  * MIPSCPUClass:
+  * @parent_realize: The parent class' realize handler.
+diff --git a/target/mips/cpu.h b/target/mips/cpu.h
+index 617c373797..12cc1bfafd 100644
+--- a/target/mips/cpu.h
++++ b/target/mips/cpu.h
+@@ -1301,8 +1301,6 @@ enum {
+  */
+ #define CPU_INTERRUPT_WAKE CPU_INTERRUPT_TGT_INT_0
+ 
+-#define MIPS_CPU_TYPE_SUFFIX "-" TYPE_MIPS_CPU
+-#define MIPS_CPU_TYPE_NAME(model) model MIPS_CPU_TYPE_SUFFIX
+ #define CPU_RESOLVING_TYPE TYPE_MIPS_CPU
+ 
+ bool cpu_type_supports_cps_smp(const char *cpu_type);
+diff --git a/target/rx/cpu-qom.h b/target/rx/cpu-qom.h
+index f4cd5664e5..6213d877f7 100644
+--- a/target/rx/cpu-qom.h
++++ b/target/rx/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * RX CPU
++ * QEMU RX CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2019 Yoshinori Sato
+  *
+@@ -28,6 +28,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(RXCPU, RXCPUClass, RX_CPU)
+ 
++#define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
++#define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
++
+ /*
+  * RXCPUClass:
+  * @parent_realize: The parent class' realize handler.
+diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+index 8379f4a150..c81613770c 100644
+--- a/target/rx/cpu.h
++++ b/target/rx/cpu.h
+@@ -112,8 +112,6 @@ struct ArchCPU {
+     CPURXState env;
+ };
+ 
+-#define RX_CPU_TYPE_SUFFIX "-" TYPE_RX_CPU
+-#define RX_CPU_TYPE_NAME(model) model RX_CPU_TYPE_SUFFIX
+ #define CPU_RESOLVING_TYPE TYPE_RX_CPU
+ 
+ const char *rx_crname(uint8_t cr);
+diff --git a/target/s390x/cpu-qom.h b/target/s390x/cpu-qom.h
+index 1088965fd5..fcd70daddf 100644
+--- a/target/s390x/cpu-qom.h
++++ b/target/s390x/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU S/390 CPU
++ * QEMU S/390 CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2012 SUSE LINUX Products GmbH
+  *
+@@ -27,6 +27,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(S390CPU, S390CPUClass, S390_CPU)
+ 
++#define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
++#define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
++
+ typedef struct S390CPUModel S390CPUModel;
+ typedef struct S390CPUDef S390CPUDef;
+ 
+diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
+index e56982dd69..988e2954a4 100644
+--- a/target/s390x/cpu.h
++++ b/target/s390x/cpu.h
+@@ -808,8 +808,6 @@ void s390_set_qemu_cpu_model(uint16_t type, uint8_t gen, uint8_t ec_ga,
+ 
+ 
+ /* helper.c */
+-#define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
+-#define S390_CPU_TYPE_NAME(name) (name S390_CPU_TYPE_SUFFIX)
+ #define CPU_RESOLVING_TYPE TYPE_S390_CPU
+ 
+ /* interrupt.c */
+diff --git a/target/sh4/cpu-qom.h b/target/sh4/cpu-qom.h
+index 08fbebc996..bd0ef49fa1 100644
+--- a/target/sh4/cpu-qom.h
++++ b/target/sh4/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU SuperH CPU
++ * QEMU SuperH CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2012 SUSE LINUX Products GmbH
+  *
+@@ -31,6 +31,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(SuperHCPU, SuperHCPUClass, SUPERH_CPU)
+ 
++#define SUPERH_CPU_TYPE_SUFFIX "-" TYPE_SUPERH_CPU
++#define SUPERH_CPU_TYPE_NAME(model) model SUPERH_CPU_TYPE_SUFFIX
++
+ /**
+  * SuperHCPUClass:
+  * @parent_realize: The parent class' realize handler.
+diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
+index dc0561b73b..dbe00e29c2 100644
+--- a/target/sh4/cpu.h
++++ b/target/sh4/cpu.h
+@@ -250,8 +250,6 @@ int cpu_sh4_is_cached(CPUSH4State * env, target_ulong addr);
+ 
+ void cpu_load_tlb(CPUSH4State * env);
+ 
+-#define SUPERH_CPU_TYPE_SUFFIX "-" TYPE_SUPERH_CPU
+-#define SUPERH_CPU_TYPE_NAME(model) model SUPERH_CPU_TYPE_SUFFIX
+ #define CPU_RESOLVING_TYPE TYPE_SUPERH_CPU
+ 
+ #define cpu_list sh4_cpu_list
+diff --git a/target/sparc/cpu-qom.h b/target/sparc/cpu-qom.h
+index b4a0db84ce..aca29415b4 100644
+--- a/target/sparc/cpu-qom.h
++++ b/target/sparc/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU SPARC CPU
++ * QEMU SPARC CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2012 SUSE LINUX Products GmbH
+  *
+@@ -31,6 +31,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(SPARCCPU, SPARCCPUClass, SPARC_CPU)
+ 
++#define SPARC_CPU_TYPE_SUFFIX "-" TYPE_SPARC_CPU
++#define SPARC_CPU_TYPE_NAME(model) model SPARC_CPU_TYPE_SUFFIX
++
+ typedef struct sparc_def_t sparc_def_t;
+ /**
+  * SPARCCPUClass:
+diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+index 691287f134..31772c9b73 100644
+--- a/target/sparc/cpu.h
++++ b/target/sparc/cpu.h
+@@ -648,8 +648,6 @@ hwaddr cpu_get_phys_page_nofault(CPUSPARCState *env, target_ulong addr,
+ #endif
+ #endif
+ 
+-#define SPARC_CPU_TYPE_SUFFIX "-" TYPE_SPARC_CPU
+-#define SPARC_CPU_TYPE_NAME(model) model SPARC_CPU_TYPE_SUFFIX
+ #define CPU_RESOLVING_TYPE TYPE_SPARC_CPU
+ 
+ #define cpu_list sparc_cpu_list
+diff --git a/target/tricore/cpu-qom.h b/target/tricore/cpu-qom.h
+index b3b6c75a3a..2598651008 100644
+--- a/target/tricore/cpu-qom.h
++++ b/target/tricore/cpu-qom.h
+@@ -1,4 +1,6 @@
+ /*
++ * QEMU TriCore CPU QOM header (target agnostic)
++ *
+  *  Copyright (c) 2012-2014 Bastian Koppelmann C-Lab/University Paderborn
+  *
+  * This library is free software; you can redistribute it and/or
+@@ -26,6 +28,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(TriCoreCPU, TriCoreCPUClass, TRICORE_CPU)
+ 
++#define TRICORE_CPU_TYPE_SUFFIX "-" TYPE_TRICORE_CPU
++#define TRICORE_CPU_TYPE_NAME(model) model TRICORE_CPU_TYPE_SUFFIX
++
+ struct TriCoreCPUClass {
+     CPUClass parent_class;
+ 
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index b4a6ab141d..c537a33ee8 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -268,8 +268,6 @@ static inline void cpu_get_tb_cpu_state(CPUTriCoreState *env, vaddr *pc,
+     *flags = new_flags;
+ }
+ 
+-#define TRICORE_CPU_TYPE_SUFFIX "-" TYPE_TRICORE_CPU
+-#define TRICORE_CPU_TYPE_NAME(model) model TRICORE_CPU_TYPE_SUFFIX
+ #define CPU_RESOLVING_TYPE TYPE_TRICORE_CPU
+ 
+ /* helpers.c */
+diff --git a/target/xtensa/cpu-qom.h b/target/xtensa/cpu-qom.h
+index 424bcbd8dd..03873ea50b 100644
+--- a/target/xtensa/cpu-qom.h
++++ b/target/xtensa/cpu-qom.h
+@@ -1,5 +1,5 @@
+ /*
+- * QEMU Xtensa CPU
++ * QEMU Xtensa CPU QOM header (target agnostic)
+  *
+  * Copyright (c) 2012 SUSE LINUX Products GmbH
+  * All rights reserved.
+@@ -36,6 +36,9 @@
+ 
+ OBJECT_DECLARE_CPU_TYPE(XtensaCPU, XtensaCPUClass, XTENSA_CPU)
+ 
++#define XTENSA_CPU_TYPE_SUFFIX "-" TYPE_XTENSA_CPU
++#define XTENSA_CPU_TYPE_NAME(model) model XTENSA_CPU_TYPE_SUFFIX
++
+ typedef struct XtensaConfig XtensaConfig;
+ 
+ /**
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index 85aab1bdf8..d6d2fb1f4e 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -586,8 +586,6 @@ G_NORETURN void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+ 
+ #define cpu_list xtensa_cpu_list
+ 
+-#define XTENSA_CPU_TYPE_SUFFIX "-" TYPE_XTENSA_CPU
+-#define XTENSA_CPU_TYPE_NAME(model) model XTENSA_CPU_TYPE_SUFFIX
+ #define CPU_RESOLVING_TYPE TYPE_XTENSA_CPU
+ 
+ #if TARGET_BIG_ENDIAN
 -- 
 2.41.0
 

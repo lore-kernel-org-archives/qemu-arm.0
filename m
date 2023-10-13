@@ -1,170 +1,1246 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333305ejc;
-        Fri, 13 Oct 2023 00:58:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHZU0yWqQCGSC8mlvXlaxOaAldnFlb+Jjs/C692s+5S8exN2OF8H0HZ9nNYR5fcrkedxLbn
-X-Received: by 2002:ac8:5f8c:0:b0:417:9431:c61b with SMTP id j12-20020ac85f8c000000b004179431c61bmr32051268qta.18.1697183908022;
-        Fri, 13 Oct 2023 00:58:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183908; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333344ejc;
+        Fri, 13 Oct 2023 00:58:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFIy5p2Ua2d9ZNAQlaxnbO4wWivvQV2pBNL4UrjpyJtpeHYxbYMjrF2MR4Lu7azbu5GCjKS
+X-Received: by 2002:a05:620a:240f:b0:772:63b3:2423 with SMTP id d15-20020a05620a240f00b0077263b32423mr35733218qkn.0.1697183912843;
+        Fri, 13 Oct 2023 00:58:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183912; cv=none;
         d=google.com; s=arc-20160816;
-        b=GFe20A5AX9uR0mPvmcnMRpPJyT0RiqrYhIulXXPpKDdN1bsrsAqL0UKA+3G3OQpddO
-         YGZcxVG1LJW0+dsQannDylYPzdZwxicmFAHEFt9O6v5WBeZ0trB6UAvgB3zoVMTp6geh
-         SZbOsrcbGGTwJHqABaUT295ABktog1tzYlNtGWLZyrSb7MNCuS/dviDa9JWtgRUMxs2O
-         KWXgqwxnDnr2pUmtJ8A23Zu8UB7TezpnVH381+S7V4Fo3/6kY7deu5gExKazrP5NB5Rz
-         VddpOHe0wTE5MLhqVvFqVM6UjfJPl99pYYuoOofYNqMVtpM3gimR+zEbvibDjYv64xhM
-         3jKQ==
+        b=qZjE3F6fF0ab7T0+wAVaXVgjcdl1SV6rellKXUZkQUVwn29Eqb/7RlCi+uxoDSlh/E
+         FlHGQX7QZ7SBKUFVi1PrrLT6Ow7fhWX5TSK0ZsUNhbZBX09+p7fZK0Dm8F0ybYpI/ERl
+         UYK/gBPr2N3ZgNK6Dgvn+wN93IKDlj3tjrIFVRJxmzwQRjPHGpLZP6NTibFu4pVuaZ5e
+         KSlHaFbJm8l8r9UA8I5z5zFFnQcdt0jDQNRosHyrlbRYn2tbd9U6GSU2ZWCxiwxkCpGp
+         aLNwaSWLI1b03zEGhGJupkaACr/4I984TrY8Uei7jSIeMmbzb1zd+xUZ5OPzb6vJc+WS
+         FSxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=RMx3/5vgsTaEtEgPUucXxRgTomEP574B32d5MnG3ZJk=;
-        fh=lAN3ewggoeNY0L/ap0zquylTO2ylw0STTp2NOOj+9bo=;
-        b=mbzjRrkzxrgRhHXLcXG9F3MhBI7XWg726Ul423lLfIL9YI4PjRMPzn52W8nSlwbi6Z
-         IfIgWERUFrPaYOCv6OihG3x+A9NSqA4xAKRjEmYrJQ5uj3/705Ax9tFAj4UIqjg8zOXX
-         C4jFTE8H5RiZ+V18BbddTKG3DxTznP9+TL8OIaB1/RbFcWLWilsS9iHA3ds8BJMi7wTS
-         lKTgDy5vT3zA8QnKCsi43vYko90wZhFwHElBmRunHgAlOGYFekrI0dJ3ETdD1V++ICDp
-         nSSlRiHSDoQMSLyY3WJG3zWkuVNjP/zIUefGnLn6dSVOHQIYCGrymXKXcaCkzYX7nYa7
-         mfuA==
+        bh=DWjJCyJvjNsFpQShtsIY71lI6GpCk63I5QIoGb8T8cM=;
+        fh=6QRzHPaTSaYFNX4LgT1rV8rCDBTXjsgXEl3vwT5kyNg=;
+        b=O/vmCxUiMv4zjuVg1VQP5JJ1BQxf4tXQWX02BMCxHdxnlLS7mR1SgMl3J5VR3BxLjU
+         HCHbeJ+msV/oNcprgkZg7fyU9CUDxl9gnN2rD8k0DqmBpxgrv3uqK0iN5efyDzZwfguo
+         egbvIjPtKRvTNlyDc3XmM1SNCLwGSrCRUaBzcG8FXQcDjDpWOlczLyG7oCFRvJuQA0nK
+         kqzyDfct5TzdCvA6EMCuUHrFroaHJdBxWjnKZh+iKLRxqZ1/5wZ8aWHx8sy7tdCuC/C7
+         K8olknjPEu5EJirq89jQDDH2hLJRVrx+ygy1puKFv0yVlMdKgMRjgSNqkHXZ+7FLDqKz
+         ql6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U3gdZZfT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fvCwx0Rw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g3-20020ac85803000000b004199186909bsi807906qtg.722.2023.10.13.00.58.27
+        by mx.google.com with ESMTPS id j11-20020a05620a410b00b00775681b84fasi858541qko.367.2023.10.13.00.58.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:58:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 00:58:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U3gdZZfT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fvCwx0Rw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrCxc-00088b-FB; Fri, 13 Oct 2023 03:51:52 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qrCwr-0005oq-Ur; Fri, 13 Oct 2023 03:51:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwr-0005sA-S9
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:05 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ id 1qrCwV-00058v-EV
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:48 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwf-0004sN-3J
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:05 -0400
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-32d9d8284abso244043f8f.3
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:50:52 -0700 (PDT)
+ id 1qrCwI-0004eP-DF
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:43 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-31c5cac3ae2so1646389f8f.3
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:50:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183451; x=1697788251; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183428; x=1697788228; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RMx3/5vgsTaEtEgPUucXxRgTomEP574B32d5MnG3ZJk=;
- b=U3gdZZfT56I9FlhBfIF0/5HcAwfSF7P7AWqQLR2EY6lIsPBraEHXlAIJMP1iWg+MZZ
- cTpqaK9IeA1FBAvs1X9SV21V3fbkOkoGXewuNxDRNgqktdPuKc4sh4aurtMNWZJxWitD
- qEk134lPBk+E5bQeSeQm/FSONQEPIktgogWGGzNgvnDQhjRT2TlmVXIkf/TVp9bVAXmV
- KtscAT1BXWalOvX+VIveJ6cWGmtLOIlKKtLTLgHsKwJfBGgfeJoiyey+G9P3hS1myzH0
- lkOx8Ck5SEp5RjiuT8YgrbSz2HYl4Hlh7d76R/IjVkxoB46E45HyZLPAEzdoDjcopUmn
- x9eg==
+ bh=DWjJCyJvjNsFpQShtsIY71lI6GpCk63I5QIoGb8T8cM=;
+ b=fvCwx0RwKRpSpUIRYuNKBKigzt/xHFDP8cr2lf8K+SZ6cwG02+3lIpBhTpmNPEbEd4
+ JLTjW3TY7mmi6FEi28uWbNQmRbGpeCjh4VCkgqh8My+eujdZKWjnREmyeSOpEn6Z1xZM
+ OIs0fHi4HiwGVFD26jYZXdaSfsMpTfPyeJiGWe13JpHK9Pc9xRNnJAiIqzaCKS7u6RDu
+ fzdC5foTcCiZUayQFu3WJIqlOhZli8uTdf391cH07DcMJN85lY+FSPLZJHGYE/ko9BfG
+ 3Gp8N0mZqWe4Mx8c7JSMtGUljFyXLmv4JdMvi9/BqSNDFgsxEB7HcvScqQjbfTB9oi+j
+ Bqgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183451; x=1697788251;
+ d=1e100.net; s=20230601; t=1697183428; x=1697788228;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=RMx3/5vgsTaEtEgPUucXxRgTomEP574B32d5MnG3ZJk=;
- b=omhQLiduDyu4Qi2MNv8H4lGfa5Wbdd3NPifOgTTScOzotgc4JthMzVnucEcpsMxLMl
- O95OQ3og5/WdBN1S+f+USBe8H+BzhRUPxlqhZtYsUKtsATAIbyDGYCegUxDndzyPldNg
- 3tMl0rfOgs4SJXdxmB8Mt+glRzC/eBfLfenMDAYyGkts1JxcmmgWROpSvekLXbvGwEez
- leM8JOCXLs9JeYUQVouWJJUvei34IFU2gA66NhScXmCW2Jn0kQTlDdSTlFfYCyetc7d4
- vrsf5592K0m5bQAvLr/Bygh6Amuh6HOldwU4fdiorvc0Qb2RhksbWaGF5qxPyJLl0HPK
- GEFQ==
-X-Gm-Message-State: AOJu0Yy9iGScImq/L08a8h2aTHl+6T1j34krY4XmM/s64GAJ1MzYYQQ0
- zy/22xin/qCMHEtc00U9WcOsMw==
-X-Received: by 2002:a5d:4f10:0:b0:316:ee7f:f9bb with SMTP id
- c16-20020a5d4f10000000b00316ee7ff9bbmr22502309wru.65.1697183451684; 
- Fri, 13 Oct 2023 00:50:51 -0700 (PDT)
+ bh=DWjJCyJvjNsFpQShtsIY71lI6GpCk63I5QIoGb8T8cM=;
+ b=M323slStH0oE7mX6/a71QrYAQETWy85ji6BWhVB+01hxqb1CYpME+uwPrm26IscOEm
+ aC70Pz9b+FP4HBrSQThK0uHvbEtD3Hi70saxTTa5xmZW+IgYmztYqKLnDTqyg3LicgLU
+ VMQene+hfd2gaCO/ebVTdpelLmjIOSLItYWF0lM6Nsj9rqvMhvl1Guj+ykQe1KIJjKQh
+ fTpbS+07xQPOLh1BfHKmUi2xyAl7ZkAvMnCka2dNbGNOLdzU8UQuZbH1bIA12g+hc3nv
+ mSuKgybG6fAQyozJ1e/H/2KiUpb1KpUmdLvyFncOB17I7EwEIEnRkWdnMwfCcY4ZsBti
+ P51g==
+X-Gm-Message-State: AOJu0YyfVYm3lnoDqqsu8cvTPn6gWi6ra9QSuydMVbkfXXQnNe4lpmnn
+ J47FMvKZgsfYnCIcWga+qGVDXPnFaIedEd5Q38M=
+X-Received: by 2002:a5d:4c50:0:b0:31c:8880:5d0f with SMTP id
+ n16-20020a5d4c50000000b0031c88805d0fmr22212567wrt.11.1697183427564; 
+ Fri, 13 Oct 2023 00:50:27 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.50
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:50:51 -0700 (PDT)
+ Fri, 13 Oct 2023 00:50:26 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>
-Subject: [RFC PATCH 33/78] target/rx: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:37 +0300
-Message-Id: <8e229ef043423876a2c0fc906a513382cf6f9205.1697183082.git.manos.pitsidianakis@linaro.org>
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Subject: [RFC PATCH 21/78] target/sparc: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:25 +0300
+Message-Id: <3eae7d9bab03b7f50f60bba2fb44614cf32e0f22.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NPqBgASf9w9F
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0Wydz0PS7mZW
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- target/rx/translate.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/sparc/ldst_helper.c | 4 ++--
+ target/sparc/mmu_helper.c  | 6 +++---
+ target/sparc/translate.c   | 3 ++-
+ target/sparc/win_helper.c  | 1 +
+ 4 files changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/target/rx/translate.c b/target/rx/translate.c
-index f8860830ae..b00c0a21fb 100644
---- a/target/rx/translate.c
-+++ b/target/rx/translate.c
-@@ -2232,24 +2232,24 @@ static void rx_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
- static void rx_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+diff --git a/target/sparc/ldst_helper.c b/target/sparc/ldst_helper.c
+index 78b03308ae..b233e40da5 100644
+--- a/target/sparc/ldst_helper.c
++++ b/target/sparc/ldst_helper.c
+@@ -1296,294 +1296,294 @@ void helper_st_asi(CPUSPARCState *env, target_ulong addr, target_ulong val,
+ uint64_t helper_ld_asi(CPUSPARCState *env, target_ulong addr,
+                        int asi, uint32_t memop)
  {
-     DisasContext *ctx = container_of(dcbase, DisasContext, base);
+     int size = 1 << (memop & MO_SIZE);
+     int sign = memop & MO_SIGN;
+     CPUState *cs = env_cpu(env);
+     uint64_t ret = 0;
+ #if defined(DEBUG_ASI)
+     target_ulong last_addr = addr;
+ #endif
  
-     switch (ctx->base.is_jmp) {
-     case DISAS_NEXT:
-     case DISAS_TOO_MANY:
-         gen_goto_tb(ctx, 0, dcbase->pc_next);
+     asi &= 0xff;
+ 
+     do_check_asi(env, asi, GETPC());
+     do_check_align(env, addr, size - 1, GETPC());
+     addr = asi_address_mask(env, asi, addr);
+ 
+     switch (asi) {
+     case ASI_PNF:
+     case ASI_PNFL:
+     case ASI_SNF:
+     case ASI_SNFL:
+         {
+             MemOpIdx oi;
+             int idx = (env->pstate & PS_PRIV
+                        ? (asi & 1 ? MMU_KERNEL_SECONDARY_IDX : MMU_KERNEL_IDX)
+                        : (asi & 1 ? MMU_USER_SECONDARY_IDX : MMU_USER_IDX));
+ 
+             if (cpu_get_phys_page_nofault(env, addr, idx) == -1ULL) {
+ #ifdef DEBUG_ASI
+                 dump_asi("read ", last_addr, asi, size, ret);
+ #endif
+                 /* exception_index is set in get_physical_address_data. */
+                 cpu_raise_exception_ra(env, cs->exception_index, GETPC());
+             }
+             oi = make_memop_idx(memop, idx);
+             switch (size) {
+             case 1:
+                 ret = cpu_ldb_mmu(env, addr, oi, GETPC());
+                 break;
+             case 2:
+                 ret = cpu_ldw_mmu(env, addr, oi, GETPC());
+                 break;
+             case 4:
+                 ret = cpu_ldl_mmu(env, addr, oi, GETPC());
+                 break;
+             case 8:
+                 ret = cpu_ldq_mmu(env, addr, oi, GETPC());
+                 break;
+             default:
+                 g_assert_not_reached();
+             }
+         }
          break;
-     case DISAS_JUMP:
-         tcg_gen_lookup_and_goto_ptr();
+ 
+     case ASI_AIUP:  /* As if user primary */
+     case ASI_AIUS:  /* As if user secondary */
+     case ASI_AIUPL: /* As if user primary LE */
+     case ASI_AIUSL: /* As if user secondary LE */
+     case ASI_P:  /* Primary */
+     case ASI_S:  /* Secondary */
+     case ASI_PL: /* Primary LE */
+     case ASI_SL: /* Secondary LE */
+     case ASI_REAL:      /* Bypass */
+     case ASI_REAL_IO:   /* Bypass, non-cacheable */
+     case ASI_REAL_L:    /* Bypass LE */
+     case ASI_REAL_IO_L: /* Bypass, non-cacheable LE */
+     case ASI_N:  /* Nucleus */
+     case ASI_NL: /* Nucleus Little Endian (LE) */
+     case ASI_NUCLEUS_QUAD_LDD:   /* Nucleus quad LDD 128 bit atomic */
+     case ASI_NUCLEUS_QUAD_LDD_L: /* Nucleus quad LDD 128 bit atomic LE */
+     case ASI_TWINX_AIUP:   /* As if user primary, twinx */
+     case ASI_TWINX_AIUS:   /* As if user secondary, twinx */
+     case ASI_TWINX_REAL:   /* Real address, twinx */
+     case ASI_TWINX_AIUP_L: /* As if user primary, twinx, LE */
+     case ASI_TWINX_AIUS_L: /* As if user secondary, twinx, LE */
+     case ASI_TWINX_REAL_L: /* Real address, twinx, LE */
+     case ASI_TWINX_N:  /* Nucleus, twinx */
+     case ASI_TWINX_NL: /* Nucleus, twinx, LE */
+     /* ??? From the UA2011 document; overlaps BLK_INIT_QUAD_LDD_* */
+     case ASI_TWINX_P:  /* Primary, twinx */
+     case ASI_TWINX_PL: /* Primary, twinx, LE */
+     case ASI_TWINX_S:  /* Secondary, twinx */
+     case ASI_TWINX_SL: /* Secondary, twinx, LE */
+         /* These are always handled inline.  */
+         g_assert_not_reached();
+ 
+     case ASI_UPA_CONFIG: /* UPA config */
+         /* XXX */
          break;
-     case DISAS_UPDATE:
-         tcg_gen_movi_i32(cpu_pc, ctx->base.pc_next);
+     case ASI_LSU_CONTROL: /* LSU */
+         ret = env->lsu;
+         break;
+     case ASI_IMMU: /* I-MMU regs */
+         {
+             int reg = (addr >> 3) & 0xf;
+             switch (reg) {
+             case 0:
+                 /* 0x00 I-TSB Tag Target register */
+                 ret = ultrasparc_tag_target(env->immu.tag_access);
+                 break;
+             case 3: /* SFSR */
+                 ret = env->immu.sfsr;
+                 break;
+             case 5: /* TSB access */
+                 ret = env->immu.tsb;
+                 break;
+             case 6:
+                 /* 0x30 I-TSB Tag Access register */
+                 ret = env->immu.tag_access;
+                 break;
+             default:
+                 sparc_raise_mmu_fault(cs, addr, false, false, 1, size, GETPC());
+                 ret = 0;
+             }
+             break;
+         }
+     case ASI_IMMU_TSB_8KB_PTR: /* I-MMU 8k TSB pointer */
+         {
+             /* env->immuregs[5] holds I-MMU TSB register value
+                env->immuregs[6] holds I-MMU Tag Access register value */
+             ret = ultrasparc_tsb_pointer(env, &env->immu, 0);
+             break;
+         }
+     case ASI_IMMU_TSB_64KB_PTR: /* I-MMU 64k TSB pointer */
+         {
+             /* env->immuregs[5] holds I-MMU TSB register value
+                env->immuregs[6] holds I-MMU Tag Access register value */
+             ret = ultrasparc_tsb_pointer(env, &env->immu, 1);
+             break;
+         }
+     case ASI_ITLB_DATA_ACCESS: /* I-MMU data access */
+         {
+             int reg = (addr >> 3) & 0x3f;
+ 
+             ret = env->itlb[reg].tte;
+             break;
+         }
+     case ASI_ITLB_TAG_READ: /* I-MMU tag read */
+         {
+             int reg = (addr >> 3) & 0x3f;
+ 
+             ret = env->itlb[reg].tag;
+             break;
+         }
+     case ASI_DMMU: /* D-MMU regs */
+         {
+             int reg = (addr >> 3) & 0xf;
+             switch (reg) {
+             case 0:
+                 /* 0x00 D-TSB Tag Target register */
+                 ret = ultrasparc_tag_target(env->dmmu.tag_access);
+                 break;
+             case 1: /* 0x08 Primary Context */
+                 ret = env->dmmu.mmu_primary_context;
+                 break;
+             case 2: /* 0x10 Secondary Context */
+                 ret = env->dmmu.mmu_secondary_context;
+                 break;
+             case 3: /* SFSR */
+                 ret = env->dmmu.sfsr;
+                 break;
+             case 4: /* 0x20 SFAR */
+                 ret = env->dmmu.sfar;
+                 break;
+             case 5: /* 0x28 TSB access */
+                 ret = env->dmmu.tsb;
+                 break;
+             case 6: /* 0x30 D-TSB Tag Access register */
+                 ret = env->dmmu.tag_access;
+                 break;
+             case 7:
+                 ret = env->dmmu.virtual_watchpoint;
+                 break;
+             case 8:
+                 ret = env->dmmu.physical_watchpoint;
+                 break;
+             default:
+                 sparc_raise_mmu_fault(cs, addr, false, false, 1, size, GETPC());
+                 ret = 0;
+             }
+             break;
+         }
+     case ASI_DMMU_TSB_8KB_PTR: /* D-MMU 8k TSB pointer */
+         {
+             /* env->dmmuregs[5] holds D-MMU TSB register value
+                env->dmmuregs[6] holds D-MMU Tag Access register value */
+             ret = ultrasparc_tsb_pointer(env, &env->dmmu, 0);
+             break;
+         }
+     case ASI_DMMU_TSB_64KB_PTR: /* D-MMU 64k TSB pointer */
+         {
+             /* env->dmmuregs[5] holds D-MMU TSB register value
+                env->dmmuregs[6] holds D-MMU Tag Access register value */
+             ret = ultrasparc_tsb_pointer(env, &env->dmmu, 1);
+             break;
+         }
+     case ASI_DTLB_DATA_ACCESS: /* D-MMU data access */
+         {
+             int reg = (addr >> 3) & 0x3f;
+ 
+             ret = env->dtlb[reg].tte;
+             break;
+         }
+     case ASI_DTLB_TAG_READ: /* D-MMU tag read */
+         {
+             int reg = (addr >> 3) & 0x3f;
+ 
+             ret = env->dtlb[reg].tag;
+             break;
+         }
+     case ASI_INTR_DISPATCH_STAT: /* Interrupt dispatch, RO */
+         break;
+     case ASI_INTR_RECEIVE: /* Interrupt data receive */
+         ret = env->ivec_status;
+         break;
+     case ASI_INTR_R: /* Incoming interrupt vector, RO */
+         {
+             int reg = (addr >> 4) & 0x3;
+             if (reg < 3) {
+                 ret = env->ivec_data[reg];
+             }
+             break;
+         }
+     case ASI_SCRATCHPAD: /* UA2005 privileged scratchpad */
+         if (unlikely((addr >= 0x20) && (addr < 0x30))) {
+             /* Hyperprivileged access only */
+             sparc_raise_mmu_fault(cs, addr, false, false, 1, size, GETPC());
+         }
 -        /* fall through */
 +        fallthrough;
-     case DISAS_EXIT:
-         tcg_gen_exit_tb(NULL, 0);
+     case ASI_HYP_SCRATCHPAD: /* UA2005 hyperprivileged scratchpad */
+         {
+             unsigned int i = (addr >> 3) & 0x7;
+             ret = env->scratch[i];
+             break;
+         }
+     case ASI_MMU: /* UA2005 Context ID registers */
+         switch ((addr >> 3) & 0x3) {
+         case 1:
+             ret = env->dmmu.mmu_primary_context;
+             break;
+         case 2:
+             ret = env->dmmu.mmu_secondary_context;
+             break;
+         default:
+           sparc_raise_mmu_fault(cs, addr, true, false, 1, size, GETPC());
+         }
          break;
-     case DISAS_NORETURN:
+     case ASI_DCACHE_DATA:     /* D-cache data */
+     case ASI_DCACHE_TAG:      /* D-cache tag access */
+     case ASI_ESTATE_ERROR_EN: /* E-cache error enable */
+     case ASI_AFSR:            /* E-cache asynchronous fault status */
+     case ASI_AFAR:            /* E-cache asynchronous fault address */
+     case ASI_EC_TAG_DATA:     /* E-cache tag data */
+     case ASI_IC_INSTR:        /* I-cache instruction access */
+     case ASI_IC_TAG:          /* I-cache tag access */
+     case ASI_IC_PRE_DECODE:   /* I-cache predecode */
+     case ASI_IC_NEXT_FIELD:   /* I-cache LRU etc. */
+     case ASI_EC_W:            /* E-cache tag */
+     case ASI_EC_R:            /* E-cache tag */
+         break;
+     case ASI_DMMU_TSB_DIRECT_PTR: /* D-MMU data pointer */
+     case ASI_ITLB_DATA_IN:        /* I-MMU data in, WO */
+     case ASI_IMMU_DEMAP:          /* I-MMU demap, WO */
+     case ASI_DTLB_DATA_IN:        /* D-MMU data in, WO */
+     case ASI_DMMU_DEMAP:          /* D-MMU demap, WO */
+     case ASI_INTR_W:              /* Interrupt vector, WO */
+     default:
+         sparc_raise_mmu_fault(cs, addr, false, false, 1, size, GETPC());
+         ret = 0;
+         break;
+     }
+ 
+     /* Convert to signed number */
+     if (sign) {
+         switch (size) {
+         case 1:
+             ret = (int8_t) ret;
+             break;
+         case 2:
+             ret = (int16_t) ret;
+             break;
+         case 4:
+             ret = (int32_t) ret;
+             break;
+         default:
+             break;
+         }
+     }
+ #ifdef DEBUG_ASI
+     dump_asi("read ", last_addr, asi, size, ret);
+ #endif
+     return ret;
+ }
+@@ -1591,341 +1591,341 @@ uint64_t helper_ld_asi(CPUSPARCState *env, target_ulong addr,
+ void helper_st_asi(CPUSPARCState *env, target_ulong addr, target_ulong val,
+                    int asi, uint32_t memop)
+ {
+     int size = 1 << (memop & MO_SIZE);
+     CPUState *cs = env_cpu(env);
+ 
+ #ifdef DEBUG_ASI
+     dump_asi("write", addr, asi, size, val);
+ #endif
+ 
+     asi &= 0xff;
+ 
+     do_check_asi(env, asi, GETPC());
+     do_check_align(env, addr, size - 1, GETPC());
+     addr = asi_address_mask(env, asi, addr);
+ 
+     switch (asi) {
+     case ASI_AIUP:  /* As if user primary */
+     case ASI_AIUS:  /* As if user secondary */
+     case ASI_AIUPL: /* As if user primary LE */
+     case ASI_AIUSL: /* As if user secondary LE */
+     case ASI_P:  /* Primary */
+     case ASI_S:  /* Secondary */
+     case ASI_PL: /* Primary LE */
+     case ASI_SL: /* Secondary LE */
+     case ASI_REAL:      /* Bypass */
+     case ASI_REAL_IO:   /* Bypass, non-cacheable */
+     case ASI_REAL_L:    /* Bypass LE */
+     case ASI_REAL_IO_L: /* Bypass, non-cacheable LE */
+     case ASI_N:  /* Nucleus */
+     case ASI_NL: /* Nucleus Little Endian (LE) */
+     case ASI_NUCLEUS_QUAD_LDD:   /* Nucleus quad LDD 128 bit atomic */
+     case ASI_NUCLEUS_QUAD_LDD_L: /* Nucleus quad LDD 128 bit atomic LE */
+     case ASI_TWINX_AIUP:   /* As if user primary, twinx */
+     case ASI_TWINX_AIUS:   /* As if user secondary, twinx */
+     case ASI_TWINX_REAL:   /* Real address, twinx */
+     case ASI_TWINX_AIUP_L: /* As if user primary, twinx, LE */
+     case ASI_TWINX_AIUS_L: /* As if user secondary, twinx, LE */
+     case ASI_TWINX_REAL_L: /* Real address, twinx, LE */
+     case ASI_TWINX_N:  /* Nucleus, twinx */
+     case ASI_TWINX_NL: /* Nucleus, twinx, LE */
+     /* ??? From the UA2011 document; overlaps BLK_INIT_QUAD_LDD_* */
+     case ASI_TWINX_P:  /* Primary, twinx */
+     case ASI_TWINX_PL: /* Primary, twinx, LE */
+     case ASI_TWINX_S:  /* Secondary, twinx */
+     case ASI_TWINX_SL: /* Secondary, twinx, LE */
+         /* These are always handled inline.  */
+         g_assert_not_reached();
+     /* these ASIs have different functions on UltraSPARC-IIIi
+      * and UA2005 CPUs. Use the explicit numbers to avoid confusion
+      */
+     case 0x31:
+     case 0x32:
+     case 0x39:
+     case 0x3a:
+         if (cpu_has_hypervisor(env)) {
+             /* UA2005
+              * ASI_DMMU_CTX_ZERO_TSB_BASE_PS0
+              * ASI_DMMU_CTX_ZERO_TSB_BASE_PS1
+              * ASI_DMMU_CTX_NONZERO_TSB_BASE_PS0
+              * ASI_DMMU_CTX_NONZERO_TSB_BASE_PS1
+              */
+             int idx = ((asi & 2) >> 1) | ((asi & 8) >> 2);
+             env->dmmu.sun4v_tsb_pointers[idx] = val;
+         } else {
+             helper_raise_exception(env, TT_ILL_INSN);
+         }
+         break;
+     case 0x33:
+     case 0x3b:
+         if (cpu_has_hypervisor(env)) {
+             /* UA2005
+              * ASI_DMMU_CTX_ZERO_CONFIG
+              * ASI_DMMU_CTX_NONZERO_CONFIG
+              */
+             env->dmmu.sun4v_ctx_config[(asi & 8) >> 3] = val;
+         } else {
+             helper_raise_exception(env, TT_ILL_INSN);
+         }
+         break;
+     case 0x35:
+     case 0x36:
+     case 0x3d:
+     case 0x3e:
+         if (cpu_has_hypervisor(env)) {
+             /* UA2005
+              * ASI_IMMU_CTX_ZERO_TSB_BASE_PS0
+              * ASI_IMMU_CTX_ZERO_TSB_BASE_PS1
+              * ASI_IMMU_CTX_NONZERO_TSB_BASE_PS0
+              * ASI_IMMU_CTX_NONZERO_TSB_BASE_PS1
+              */
+             int idx = ((asi & 2) >> 1) | ((asi & 8) >> 2);
+             env->immu.sun4v_tsb_pointers[idx] = val;
+         } else {
+             helper_raise_exception(env, TT_ILL_INSN);
+         }
+       break;
+     case 0x37:
+     case 0x3f:
+         if (cpu_has_hypervisor(env)) {
+             /* UA2005
+              * ASI_IMMU_CTX_ZERO_CONFIG
+              * ASI_IMMU_CTX_NONZERO_CONFIG
+              */
+             env->immu.sun4v_ctx_config[(asi & 8) >> 3] = val;
+         } else {
+           helper_raise_exception(env, TT_ILL_INSN);
+         }
+         break;
+     case ASI_UPA_CONFIG: /* UPA config */
+         /* XXX */
+         return;
+     case ASI_LSU_CONTROL: /* LSU */
+         env->lsu = val & (DMMU_E | IMMU_E);
+         return;
+     case ASI_IMMU: /* I-MMU regs */
+         {
+             int reg = (addr >> 3) & 0xf;
+             uint64_t oldreg;
+ 
+             oldreg = env->immu.mmuregs[reg];
+             switch (reg) {
+             case 0: /* RO */
+                 return;
+             case 1: /* Not in I-MMU */
+             case 2:
+                 return;
+             case 3: /* SFSR */
+                 if ((val & 1) == 0) {
+                     val = 0; /* Clear SFSR */
+                 }
+                 env->immu.sfsr = val;
+                 break;
+             case 4: /* RO */
+                 return;
+             case 5: /* TSB access */
+                 DPRINTF_MMU("immu TSB write: 0x%016" PRIx64 " -> 0x%016"
+                             PRIx64 "\n", env->immu.tsb, val);
+                 env->immu.tsb = val;
+                 break;
+             case 6: /* Tag access */
+                 env->immu.tag_access = val;
+                 break;
+             case 7:
+             case 8:
+                 return;
+             default:
+                 sparc_raise_mmu_fault(cs, addr, true, false, 1, size, GETPC());
+                 break;
+             }
+ 
+             if (oldreg != env->immu.mmuregs[reg]) {
+                 DPRINTF_MMU("immu change reg[%d]: 0x%016" PRIx64 " -> 0x%016"
+                             PRIx64 "\n", reg, oldreg, env->immuregs[reg]);
+             }
+ #ifdef DEBUG_MMU
+             dump_mmu(env);
+ #endif
+             return;
+         }
+     case ASI_ITLB_DATA_IN: /* I-MMU data in */
+         /* ignore real translation entries */
+         if (!(addr & TLB_UST1_IS_REAL_BIT)) {
+             replace_tlb_1bit_lru(env->itlb, env->immu.tag_access,
+                                  val, "immu", env, addr);
+         }
+         return;
+     case ASI_ITLB_DATA_ACCESS: /* I-MMU data access */
+         {
+             /* TODO: auto demap */
+ 
+             unsigned int i = (addr >> 3) & 0x3f;
+ 
+             /* ignore real translation entries */
+             if (!(addr & TLB_UST1_IS_REAL_BIT)) {
+                 replace_tlb_entry(&env->itlb[i], env->immu.tag_access,
+                                   sun4v_tte_to_sun4u(env, addr, val), env);
+             }
+ #ifdef DEBUG_MMU
+             DPRINTF_MMU("immu data access replaced entry [%i]\n", i);
+             dump_mmu(env);
+ #endif
+             return;
+         }
+     case ASI_IMMU_DEMAP: /* I-MMU demap */
+         demap_tlb(env->itlb, addr, "immu", env);
+         return;
+     case ASI_DMMU: /* D-MMU regs */
+         {
+             int reg = (addr >> 3) & 0xf;
+             uint64_t oldreg;
+ 
+             oldreg = env->dmmu.mmuregs[reg];
+             switch (reg) {
+             case 0: /* RO */
+             case 4:
+                 return;
+             case 3: /* SFSR */
+                 if ((val & 1) == 0) {
+                     val = 0; /* Clear SFSR, Fault address */
+                     env->dmmu.sfar = 0;
+                 }
+                 env->dmmu.sfsr = val;
+                 break;
+             case 1: /* Primary context */
+                 env->dmmu.mmu_primary_context = val;
+                 /* can be optimized to only flush MMU_USER_IDX
+                    and MMU_KERNEL_IDX entries */
+                 tlb_flush(cs);
+                 break;
+             case 2: /* Secondary context */
+                 env->dmmu.mmu_secondary_context = val;
+                 /* can be optimized to only flush MMU_USER_SECONDARY_IDX
+                    and MMU_KERNEL_SECONDARY_IDX entries */
+                 tlb_flush(cs);
+                 break;
+             case 5: /* TSB access */
+                 DPRINTF_MMU("dmmu TSB write: 0x%016" PRIx64 " -> 0x%016"
+                             PRIx64 "\n", env->dmmu.tsb, val);
+                 env->dmmu.tsb = val;
+                 break;
+             case 6: /* Tag access */
+                 env->dmmu.tag_access = val;
+                 break;
+             case 7: /* Virtual Watchpoint */
+                 env->dmmu.virtual_watchpoint = val;
+                 break;
+             case 8: /* Physical Watchpoint */
+                 env->dmmu.physical_watchpoint = val;
+                 break;
+             default:
+                 sparc_raise_mmu_fault(cs, addr, true, false, 1, size, GETPC());
+                 break;
+             }
+ 
+             if (oldreg != env->dmmu.mmuregs[reg]) {
+                 DPRINTF_MMU("dmmu change reg[%d]: 0x%016" PRIx64 " -> 0x%016"
+                             PRIx64 "\n", reg, oldreg, env->dmmuregs[reg]);
+             }
+ #ifdef DEBUG_MMU
+             dump_mmu(env);
+ #endif
+             return;
+         }
+     case ASI_DTLB_DATA_IN: /* D-MMU data in */
+       /* ignore real translation entries */
+       if (!(addr & TLB_UST1_IS_REAL_BIT)) {
+           replace_tlb_1bit_lru(env->dtlb, env->dmmu.tag_access,
+                                val, "dmmu", env, addr);
+       }
+       return;
+     case ASI_DTLB_DATA_ACCESS: /* D-MMU data access */
+         {
+             unsigned int i = (addr >> 3) & 0x3f;
+ 
+             /* ignore real translation entries */
+             if (!(addr & TLB_UST1_IS_REAL_BIT)) {
+                 replace_tlb_entry(&env->dtlb[i], env->dmmu.tag_access,
+                                   sun4v_tte_to_sun4u(env, addr, val), env);
+             }
+ #ifdef DEBUG_MMU
+             DPRINTF_MMU("dmmu data access replaced entry [%i]\n", i);
+             dump_mmu(env);
+ #endif
+             return;
+         }
+     case ASI_DMMU_DEMAP: /* D-MMU demap */
+         demap_tlb(env->dtlb, addr, "dmmu", env);
+         return;
+     case ASI_INTR_RECEIVE: /* Interrupt data receive */
+         env->ivec_status = val & 0x20;
+         return;
+     case ASI_SCRATCHPAD: /* UA2005 privileged scratchpad */
+         if (unlikely((addr >= 0x20) && (addr < 0x30))) {
+             /* Hyperprivileged access only */
+             sparc_raise_mmu_fault(cs, addr, true, false, 1, size, GETPC());
+         }
+-        /* fall through */
++        fallthrough;
+     case ASI_HYP_SCRATCHPAD: /* UA2005 hyperprivileged scratchpad */
+         {
+             unsigned int i = (addr >> 3) & 0x7;
+             env->scratch[i] = val;
+             return;
+         }
+     case ASI_MMU: /* UA2005 Context ID registers */
+         {
+           switch ((addr >> 3) & 0x3) {
+           case 1:
+               env->dmmu.mmu_primary_context = val;
+               env->immu.mmu_primary_context = val;
+               tlb_flush_by_mmuidx(cs,
+                                   (1 << MMU_USER_IDX) | (1 << MMU_KERNEL_IDX));
+               break;
+           case 2:
+               env->dmmu.mmu_secondary_context = val;
+               env->immu.mmu_secondary_context = val;
+               tlb_flush_by_mmuidx(cs,
+                                   (1 << MMU_USER_SECONDARY_IDX) |
+                                   (1 << MMU_KERNEL_SECONDARY_IDX));
+               break;
+           default:
+               sparc_raise_mmu_fault(cs, addr, true, false, 1, size, GETPC());
+           }
+         }
+         return;
+     case ASI_QUEUE: /* UA2005 CPU mondo queue */
+     case ASI_DCACHE_DATA: /* D-cache data */
+     case ASI_DCACHE_TAG: /* D-cache tag access */
+     case ASI_ESTATE_ERROR_EN: /* E-cache error enable */
+     case ASI_AFSR: /* E-cache asynchronous fault status */
+     case ASI_AFAR: /* E-cache asynchronous fault address */
+     case ASI_EC_TAG_DATA: /* E-cache tag data */
+     case ASI_IC_INSTR: /* I-cache instruction access */
+     case ASI_IC_TAG: /* I-cache tag access */
+     case ASI_IC_PRE_DECODE: /* I-cache predecode */
+     case ASI_IC_NEXT_FIELD: /* I-cache LRU etc. */
+     case ASI_EC_W: /* E-cache tag */
+     case ASI_EC_R: /* E-cache tag */
+         return;
+     case ASI_IMMU_TSB_8KB_PTR: /* I-MMU 8k TSB pointer, RO */
+     case ASI_IMMU_TSB_64KB_PTR: /* I-MMU 64k TSB pointer, RO */
+     case ASI_ITLB_TAG_READ: /* I-MMU tag read, RO */
+     case ASI_DMMU_TSB_8KB_PTR: /* D-MMU 8k TSB pointer, RO */
+     case ASI_DMMU_TSB_64KB_PTR: /* D-MMU 64k TSB pointer, RO */
+     case ASI_DMMU_TSB_DIRECT_PTR: /* D-MMU data pointer, RO */
+     case ASI_DTLB_TAG_READ: /* D-MMU tag read, RO */
+     case ASI_INTR_DISPATCH_STAT: /* Interrupt dispatch, RO */
+     case ASI_INTR_R: /* Incoming interrupt vector, RO */
+     case ASI_PNF: /* Primary no-fault, RO */
+     case ASI_SNF: /* Secondary no-fault, RO */
+     case ASI_PNFL: /* Primary no-fault LE, RO */
+     case ASI_SNFL: /* Secondary no-fault LE, RO */
+     default:
+         sparc_raise_mmu_fault(cs, addr, true, false, 1, size, GETPC());
+         return;
+     }
+ }
+ #endif /* CONFIG_USER_ONLY */
+ #endif /* TARGET_SPARC64 */
+ 
+ #if !defined(CONFIG_USER_ONLY)
+diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
+index 453498c670..13f0430c5d 100644
+--- a/target/sparc/mmu_helper.c
++++ b/target/sparc/mmu_helper.c
+@@ -545,99 +545,99 @@ static uint64_t build_sfsr(CPUSPARCState *env, int mmu_idx, int rw)
+ static int get_physical_address_data(CPUSPARCState *env, CPUTLBEntryFull *full,
+                                      target_ulong address, int rw, int mmu_idx)
+ {
+     CPUState *cs = env_cpu(env);
+     unsigned int i;
+     uint64_t sfsr;
+     uint64_t context;
+     bool is_user = false;
+ 
+     sfsr = build_sfsr(env, mmu_idx, rw);
+ 
+     switch (mmu_idx) {
+     case MMU_PHYS_IDX:
+         g_assert_not_reached();
+     case MMU_USER_IDX:
+         is_user = true;
+-        /* fallthru */
++        fallthrough;
+     case MMU_KERNEL_IDX:
+         context = env->dmmu.mmu_primary_context & 0x1fff;
+         break;
+     case MMU_USER_SECONDARY_IDX:
+         is_user = true;
+-        /* fallthru */
++        fallthrough;
+     case MMU_KERNEL_SECONDARY_IDX:
+         context = env->dmmu.mmu_secondary_context & 0x1fff;
          break;
      default:
+         context = 0;
+         break;
+     }
+ 
+     for (i = 0; i < 64; i++) {
+         /* ctx match, vaddr match, valid? */
+         if (ultrasparc_tag_match(&env->dtlb[i], address, context,
+                                  &full->phys_addr)) {
+             int do_fault = 0;
+ 
+             if (TTE_IS_IE(env->dtlb[i].tte)) {
+                 full->attrs.byte_swap = true;
+             }
+ 
+             /* access ok? */
+             /* multiple bits in SFSR.FT may be set on TT_DFAULT */
+             if (TTE_IS_PRIV(env->dtlb[i].tte) && is_user) {
+                 do_fault = 1;
+                 sfsr |= SFSR_FT_PRIV_BIT; /* privilege violation */
+                 trace_mmu_helper_dfault(address, context, mmu_idx, env->tl);
+             }
+             if (rw == 4) {
+                 if (TTE_IS_SIDEEFFECT(env->dtlb[i].tte)) {
+                     do_fault = 1;
+                     sfsr |= SFSR_FT_NF_E_BIT;
+                 }
+             } else {
+                 if (TTE_IS_NFO(env->dtlb[i].tte)) {
+                     do_fault = 1;
+                     sfsr |= SFSR_FT_NFO_BIT;
+                 }
+             }
+ 
+             if (do_fault) {
+                 /* faults above are reported with TT_DFAULT. */
+                 cs->exception_index = TT_DFAULT;
+             } else if (!TTE_IS_W_OK(env->dtlb[i].tte) && (rw == 1)) {
+                 do_fault = 1;
+                 cs->exception_index = TT_DPROT;
+ 
+                 trace_mmu_helper_dprot(address, context, mmu_idx, env->tl);
+             }
+ 
+             if (!do_fault) {
+                 full->prot = PAGE_READ;
+                 if (TTE_IS_W_OK(env->dtlb[i].tte)) {
+                     full->prot |= PAGE_WRITE;
+                 }
+ 
+                 TTE_SET_USED(env->dtlb[i].tte);
+ 
+                 return 0;
+             }
+ 
+             env->dmmu.sfsr = sfsr;
+             env->dmmu.sfar = address; /* Fault address register */
+             env->dmmu.tag_access = (address & ~0x1fffULL) | context;
+             return 1;
+         }
+     }
+ 
+     trace_mmu_helper_dmiss(address, context);
+ 
+     /*
+      * On MMU misses:
+      * - UltraSPARC IIi: SFSR and SFAR unmodified
+      * - JPS1: SFAR updated and some fields of SFSR updated
+      */
+     env->dmmu.tag_access = (address & ~0x1fffULL) | context;
+     cs->exception_index = TT_DMISS;
+     return 1;
+ }
+@@ -645,75 +645,75 @@ static int get_physical_address_data(CPUSPARCState *env, CPUTLBEntryFull *full,
+ static int get_physical_address_code(CPUSPARCState *env, CPUTLBEntryFull *full,
+                                      target_ulong address, int mmu_idx)
+ {
+     CPUState *cs = env_cpu(env);
+     unsigned int i;
+     uint64_t context;
+     bool is_user = false;
+ 
+     switch (mmu_idx) {
+     case MMU_PHYS_IDX:
+     case MMU_USER_SECONDARY_IDX:
+     case MMU_KERNEL_SECONDARY_IDX:
          g_assert_not_reached();
+     case MMU_USER_IDX:
+         is_user = true;
+-        /* fallthru */
++        fallthrough;
+     case MMU_KERNEL_IDX:
+         context = env->dmmu.mmu_primary_context & 0x1fff;
+         break;
+     default:
+         context = 0;
+         break;
+     }
+ 
+     if (env->tl == 0) {
+         /* PRIMARY context */
+         context = env->dmmu.mmu_primary_context & 0x1fff;
+     } else {
+         /* NUCLEUS context */
+         context = 0;
+     }
+ 
+     for (i = 0; i < 64; i++) {
+         /* ctx match, vaddr match, valid? */
+         if (ultrasparc_tag_match(&env->itlb[i],
+                                  address, context, &full->phys_addr)) {
+             /* access ok? */
+             if (TTE_IS_PRIV(env->itlb[i].tte) && is_user) {
+                 /* Fault status register */
+                 if (env->immu.sfsr & SFSR_VALID_BIT) {
+                     env->immu.sfsr = SFSR_OW_BIT; /* overflow (not read before
+                                                      another fault) */
+                 } else {
+                     env->immu.sfsr = 0;
+                 }
+                 if (env->pstate & PS_PRIV) {
+                     env->immu.sfsr |= SFSR_PR_BIT;
+                 }
+                 if (env->tl > 0) {
+                     env->immu.sfsr |= SFSR_CT_NUCLEUS;
+                 }
+ 
+                 /* FIXME: ASI field in SFSR must be set */
+                 env->immu.sfsr |= SFSR_FT_PRIV_BIT | SFSR_VALID_BIT;
+                 cs->exception_index = TT_TFAULT;
+ 
+                 env->immu.tag_access = (address & ~0x1fffULL) | context;
+ 
+                 trace_mmu_helper_tfault(address, context);
+ 
+                 return 1;
+             }
+             full->prot = PAGE_EXEC;
+             TTE_SET_USED(env->itlb[i].tte);
+             return 0;
+         }
+     }
+ 
+     trace_mmu_helper_tmiss(address, context);
+ 
+     /* Context is stored in DMMU (dmmuregs[1]) also for IMMU */
+     env->immu.tag_access = (address & ~0x1fffULL) | context;
+     cs->exception_index = TT_TMISS;
+     return 1;
+ }
+diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+index f92ff80ac8..4f179473d7 100644
+--- a/target/sparc/translate.c
++++ b/target/sparc/translate.c
+@@ -1020,167 +1020,168 @@ static void gen_op_next_insn(void)
+ static void gen_compare(DisasCompare *cmp, bool xcc, unsigned int cond,
+                         DisasContext *dc)
+ {
+     static int subcc_cond[16] = {
+         TCG_COND_NEVER,
+         TCG_COND_EQ,
+         TCG_COND_LE,
+         TCG_COND_LT,
+         TCG_COND_LEU,
+         TCG_COND_LTU,
+         -1, /* neg */
+         -1, /* overflow */
+         TCG_COND_ALWAYS,
+         TCG_COND_NE,
+         TCG_COND_GT,
+         TCG_COND_GE,
+         TCG_COND_GTU,
+         TCG_COND_GEU,
+         -1, /* pos */
+         -1, /* no overflow */
+     };
+ 
+     static int logic_cond[16] = {
+         TCG_COND_NEVER,
+         TCG_COND_EQ,     /* eq:  Z */
+         TCG_COND_LE,     /* le:  Z | (N ^ V) -> Z | N */
+         TCG_COND_LT,     /* lt:  N ^ V -> N */
+         TCG_COND_EQ,     /* leu: C | Z -> Z */
+         TCG_COND_NEVER,  /* ltu: C -> 0 */
+         TCG_COND_LT,     /* neg: N */
+         TCG_COND_NEVER,  /* vs:  V -> 0 */
+         TCG_COND_ALWAYS,
+         TCG_COND_NE,     /* ne:  !Z */
+         TCG_COND_GT,     /* gt:  !(Z | (N ^ V)) -> !(Z | N) */
+         TCG_COND_GE,     /* ge:  !(N ^ V) -> !N */
+         TCG_COND_NE,     /* gtu: !(C | Z) -> !Z */
+         TCG_COND_ALWAYS, /* geu: !C -> 1 */
+         TCG_COND_GE,     /* pos: !N */
+         TCG_COND_ALWAYS, /* vc:  !V -> 1 */
+     };
+ 
+     TCGv_i32 r_src;
+     TCGv r_dst;
+ 
+ #ifdef TARGET_SPARC64
+     if (xcc) {
+         r_src = cpu_xcc;
+     } else {
+         r_src = cpu_psr;
+     }
+ #else
+     r_src = cpu_psr;
+ #endif
+ 
+     switch (dc->cc_op) {
+     case CC_OP_LOGIC:
+         cmp->cond = logic_cond[cond];
+     do_compare_dst_0:
+         cmp->is_bool = false;
+         cmp->c2 = tcg_constant_tl(0);
+ #ifdef TARGET_SPARC64
+         if (!xcc) {
+             cmp->c1 = tcg_temp_new();
+             tcg_gen_ext32s_tl(cmp->c1, cpu_cc_dst);
+             break;
+         }
+ #endif
+         cmp->c1 = cpu_cc_dst;
+         break;
+ 
+     case CC_OP_SUB:
+         switch (cond) {
+         case 6:  /* neg */
+         case 14: /* pos */
+             cmp->cond = (cond == 6 ? TCG_COND_LT : TCG_COND_GE);
+             goto do_compare_dst_0;
+ 
+         case 7: /* overflow */
+         case 15: /* !overflow */
+             goto do_dynamic;
+ 
+         default:
+             cmp->cond = subcc_cond[cond];
+             cmp->is_bool = false;
+ #ifdef TARGET_SPARC64
+             if (!xcc) {
+                 /* Note that sign-extension works for unsigned compares as
+                    long as both operands are sign-extended.  */
+                 cmp->c1 = tcg_temp_new();
+                 cmp->c2 = tcg_temp_new();
+                 tcg_gen_ext32s_tl(cmp->c1, cpu_cc_src);
+                 tcg_gen_ext32s_tl(cmp->c2, cpu_cc_src2);
+                 break;
+             }
+ #endif
+             cmp->c1 = cpu_cc_src;
+             cmp->c2 = cpu_cc_src2;
+             break;
+         }
+         break;
+ 
+     default:
+     do_dynamic:
+         gen_helper_compute_psr(tcg_env);
+         dc->cc_op = CC_OP_FLAGS;
+         /* FALLTHRU */
++        fallthrough;
+ 
+     case CC_OP_FLAGS:
+         /* We're going to generate a boolean result.  */
+         cmp->cond = TCG_COND_NE;
+         cmp->is_bool = true;
+         cmp->c1 = r_dst = tcg_temp_new();
+         cmp->c2 = tcg_constant_tl(0);
+ 
+         switch (cond) {
+         case 0x0:
+             gen_op_eval_bn(r_dst);
+             break;
+         case 0x1:
+             gen_op_eval_be(r_dst, r_src);
+             break;
+         case 0x2:
+             gen_op_eval_ble(r_dst, r_src);
+             break;
+         case 0x3:
+             gen_op_eval_bl(r_dst, r_src);
+             break;
+         case 0x4:
+             gen_op_eval_bleu(r_dst, r_src);
+             break;
+         case 0x5:
+             gen_op_eval_bcs(r_dst, r_src);
+             break;
+         case 0x6:
+             gen_op_eval_bneg(r_dst, r_src);
+             break;
+         case 0x7:
+             gen_op_eval_bvs(r_dst, r_src);
+             break;
+         case 0x8:
+             gen_op_eval_ba(r_dst);
+             break;
+         case 0x9:
+             gen_op_eval_bne(r_dst, r_src);
+             break;
+         case 0xa:
+             gen_op_eval_bg(r_dst, r_src);
+             break;
+         case 0xb:
+             gen_op_eval_bge(r_dst, r_src);
+             break;
+         case 0xc:
+             gen_op_eval_bgu(r_dst, r_src);
+             break;
+         case 0xd:
+             gen_op_eval_bcc(r_dst, r_src);
+             break;
+         case 0xe:
+             gen_op_eval_bpos(r_dst, r_src);
+             break;
+         case 0xf:
+             gen_op_eval_bvc(r_dst, r_src);
+             break;
+         }
+         break;
+     }
+ }
+@@ -2186,75 +2187,75 @@ static void gen_ld_asi(DisasContext *dc, TCGv dst, TCGv addr,
+ static void gen_st_asi(DisasContext *dc, TCGv src, TCGv addr,
+                        int insn, MemOp memop)
+ {
+     DisasASI da = get_asi(dc, insn, memop);
+ 
+     switch (da.type) {
+     case GET_ASI_EXCP:
+         break;
+     case GET_ASI_DTWINX: /* Reserved for stda.  */
+ #ifndef TARGET_SPARC64
+         gen_exception(dc, TT_ILL_INSN);
+         break;
+ #else
+         if (!(dc->def->features & CPU_FEATURE_HYPV)) {
+             /* Pre OpenSPARC CPUs don't have these */
+             gen_exception(dc, TT_ILL_INSN);
+             return;
+         }
+         /* in OpenSPARC T1+ CPUs TWINX ASIs in store instructions
+          * are ST_BLKINIT_ ASIs */
+ #endif
+-        /* fall through */
++        fallthrough;
+     case GET_ASI_DIRECT:
+         gen_address_mask(dc, addr);
+         tcg_gen_qemu_st_tl(src, addr, da.mem_idx, da.memop | MO_ALIGN);
+         break;
+ #if !defined(TARGET_SPARC64) && !defined(CONFIG_USER_ONLY)
+     case GET_ASI_BCOPY:
+         /* Copy 32 bytes from the address in SRC to ADDR.  */
+         /* ??? The original qemu code suggests 4-byte alignment, dropping
+            the low bits, but the only place I can see this used is in the
+            Linux kernel with 32 byte alignment, which would make more sense
+            as a cacheline-style operation.  */
+         {
+             TCGv saddr = tcg_temp_new();
+             TCGv daddr = tcg_temp_new();
+             TCGv four = tcg_constant_tl(4);
+             TCGv_i32 tmp = tcg_temp_new_i32();
+             int i;
+ 
+             tcg_gen_andi_tl(saddr, src, -4);
+             tcg_gen_andi_tl(daddr, addr, -4);
+             for (i = 0; i < 32; i += 4) {
+                 /* Since the loads and stores are paired, allow the
+                    copy to happen in the host endianness.  */
+                 tcg_gen_qemu_ld_i32(tmp, saddr, da.mem_idx, MO_UL);
+                 tcg_gen_qemu_st_i32(tmp, daddr, da.mem_idx, MO_UL);
+                 tcg_gen_add_tl(saddr, saddr, four);
+                 tcg_gen_add_tl(daddr, daddr, four);
+             }
+         }
+         break;
+ #endif
+     default:
+         {
+             TCGv_i32 r_asi = tcg_constant_i32(da.asi);
+             TCGv_i32 r_mop = tcg_constant_i32(memop | MO_ALIGN);
+ 
+             save_state(dc);
+ #ifdef TARGET_SPARC64
+             gen_helper_st_asi(tcg_env, addr, src, r_asi, r_mop);
+ #else
+             {
+                 TCGv_i64 t64 = tcg_temp_new_i64();
+                 tcg_gen_extu_tl_i64(t64, src);
+                 gen_helper_st_asi(tcg_env, addr, t64, r_asi, r_mop);
+             }
+ #endif
+ 
+             /* A write to a TLB register may alter page maps.  End the TB. */
+             dc->npc = DYNAMIC_PC;
+         }
+         break;
+     }
+ }
+diff --git a/target/sparc/win_helper.c b/target/sparc/win_helper.c
+index 3a7c0ff943..0c54b63938 100644
+--- a/target/sparc/win_helper.c
++++ b/target/sparc/win_helper.c
+@@ -296,20 +296,21 @@ void helper_wrcwp(CPUSPARCState *env, target_ulong new_cwp)
+ static inline uint64_t *get_gregset(CPUSPARCState *env, uint32_t pstate)
+ {
+     if (env->def.features & CPU_FEATURE_GL) {
+         return env->glregs + (env->gl & 7) * 8;
+     }
+ 
+     switch (pstate) {
+     default:
+         trace_win_helper_gregset_error(pstate);
+         /* fall through to normal set of global registers */
++        fallthrough;
+     case 0:
+         return env->bgregs;
+     case PS_AG:
+         return env->agregs;
+     case PS_MG:
+         return env->mgregs;
+     case PS_IG:
+         return env->igregs;
      }
  }
 -- 

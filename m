@@ -1,46 +1,46 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1415840ejc;
-        Fri, 13 Oct 2023 03:53:57 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEEyfI/svtrJUdLepMvPE0x+RpyepxpRgWSFa1p8FMlFDmoTipA5pDI41eWesZWsqKdvbrY
-X-Received: by 2002:a05:6a00:1a48:b0:690:38b6:b2db with SMTP id h8-20020a056a001a4800b0069038b6b2dbmr29625372pfv.6.1697194437035;
-        Fri, 13 Oct 2023 03:53:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697194437; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1415944ejc;
+        Fri, 13 Oct 2023 03:54:11 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFrHV7hteFNIzqwmeXAwKuY/gZMuGNUnacf0T7RZ6AncugcdqZUJ4vEMjFM/YzwEVVztsnC
+X-Received: by 2002:a05:600c:895:b0:405:3be0:c78d with SMTP id l21-20020a05600c089500b004053be0c78dmr18666959wmp.3.1697194451504;
+        Fri, 13 Oct 2023 03:54:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697194451; cv=none;
         d=google.com; s=arc-20160816;
-        b=AyEglAjBVoBmg322hUxrThP/Ejn6G7w60dcxiyIP3LWDdQnnSo8TvtAE5t//+gM+dM
-         ICb7S1qaOhVzoCFNLNAZ4x41k9DXSL51YY+hg0Ia6a5L2feZQkthn9DqWlKvJMCD/Uwy
-         Dn/d0cFnxeNJO8YuJ227Izm4zwTNkpdEs/m6h/qxmUwNuRrJxMsClcLRGOTx//6+C0ct
-         r8uNVm/f5AK7fA+nVe5b0ZTJck+OfPw72BmZNsvGQ27MbDjZqKn0CcmwmFQqPsso1AF6
-         DIIvFZhB0X6Bp4hf2/B1LvWzVCPQVAg2oV8R+DqicIeeo2fuc9jsMHD4AX3knVEUgZ8L
-         vxwA==
+        b=ZGIwm/hlGPoxDMFYfhhmleoKz9vOQ/VhGilQiSiQAClyI2Gix00dI8nEt5bPZiOEe/
+         cJbOT3HIOfE5sRPJ6o8MEMZXxJzRrcXQLrnuEQGV84wv6iPk9SoUsV/p9MBeX+Ujy4yO
+         argX7RjMqLmHKhKDEECdTR477QGhodHUqYyZEgm/3n3wspYUhXp6o6g9S6lykTMWsmux
+         isOZlcPFc2SVGYGN1OVLTFB0o9scN29KPGUYI0yAkLP72muuf5xgYko8lIu+yD0hjYgg
+         eLV1wu7r51USPervKHqw7klxEz7y68xl77cFClm4jKb44er6hWOBeFI5dIXm5n5kg/5s
+         eKhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=1b9dgrG1hGlZN2xOraczrNOVt87gw6suE9XjngyOdqw=;
+        bh=lAjcg+MOOlmR9Ll96/JBBewIcm8AzCCabl7CWCOpNa0=;
         fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
-        b=jcPGWK3BoEavyHKmJ9wwbc6SY21LNPIJDgVX31huaBezhkGSfYTK9e/H0RCstmOnB7
-         C5wukvi3KzwOGzsR3m/6jTuod+JlYdnVJi3+IEflRJ6ttklF5yof7kBRTO7hQC4eyj6L
-         q5WTZwG/gC/gna6G5JvNeQ7mIwPEU8hebF8t5Ogfl+GhG23IqRk/Z+hTwWobXMIZpvmn
-         fmPSQ9Yokq/bIrZHkzIixBrlFNhs+R0h4DZ0CZ6wUVDCBYfDs9lKuALthXNM0ZcU3QbG
-         WRn5raj+0KKYGl/irbMrHUi2LtnIiokrCL2SS+kzYYH8fFVsVR9qZEhcJ2cZc9PDjmsq
-         DbzQ==
+        b=Vw8FpwPg17v7V8JbvFlru5lKMnqii4bSJ5mkfdwvyBEFpnR94ZepfyWFGEDq1H1n79
+         n4Zzv4ElsePEi9TyVKm56/fy7wLb0Ge8qK+aWt3Y+z9ilESvfkl/Dn1OcHhP/qncGwHU
+         htKIl2188aoAdff5NOUEN679P/peyz77eHiudTV+duQu8BHtMu4jAj4vmnrPylKA09iJ
+         1IA7kTpkjx+nMorKn4MLoksFhGZ1r4wZNhCHiuqyE2yCXlMPKBL3k8apOhkko/J0HHmY
+         1zZBya06lJU/NRe5yKIcpBRn1g6jj1xxGhrb8Sfflywki7SabchSm9HXvhLHMje5+En/
+         0OsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id cq25-20020a056a00331900b0068fb986fcf3si16472334pfb.377.2023.10.13.03.53.56
+        by mx.google.com with ESMTPS id f9-20020adfdb49000000b0032d9b7aff29si599400wrj.541.2023.10.13.03.54.11
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Oct 2023 03:53:57 -0700 (PDT)
+        Fri, 13 Oct 2023 03:54:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.201])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S6Nf06l0Vz6K8sw;
-	Fri, 13 Oct 2023 18:53:28 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.200])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S6NcM0vgFz6K5pt;
+	Fri, 13 Oct 2023 18:52:03 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.195.247.32) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Fri, 13 Oct 2023 11:53:35 +0100
+ 15.1.2507.31; Fri, 13 Oct 2023 11:53:53 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -57,9 +57,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<linuxarm@huawei.com>
-Subject: [PATCH V6 6/9] hw/acpi: Update GED _EVT method AML with CPU scan
-Date: Fri, 13 Oct 2023 11:51:26 +0100
-Message-ID: <20231013105129.25648-7-salil.mehta@huawei.com>
+Subject: [PATCH V6 7/9] hw/acpi: Update ACPI GED framework to support vCPU Hotplug
+Date: Fri, 13 Oct 2023 11:51:27 +0100
+Message-ID: <20231013105129.25648-8-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20231013105129.25648-1-salil.mehta@huawei.com>
 References: <20231013105129.25648-1-salil.mehta@huawei.com>
@@ -69,25 +69,11 @@ X-Originating-IP: [10.195.247.32]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
 X-CFilter-Loop: Reflected
-X-TUID: Aeyxpzj8+0Z0
+X-TUID: bLBTdEZ8xl3Z
 
-OSPM evaluates _EVT method to map the event. The CPU hotplug event eventually
-results in start of the CPU scan. Scan figures out the CPU and the kind of
-event(plug/unplug) and notifies it back to the guest. Update the GED AML _EVT
-method with the call to \\_SB.CPUS.CSCN
-
-Also, macro CPU_SCAN_METHOD might be referred in other places like during GED
-intialization so it makes sense to have its definition placed in some common
-header file like cpu_hotplug.h. But doing this can cause compilation break
-because of the conflicting macro definitions present in cpu.c and cpu_hotplug.c
-and because both these files get compiled due to historic reasons of x86 world
-i.e. decision to use legacy(GPE.2)/modern(GED) CPU hotplug interface happens
-during runtime [1]. To mitigate above, for now, declare a new common macro
-ACPI_CPU_SCAN_METHOD for CPU scan method instead.
-(This needs a separate discussion later on for clean-up)
-
-Reference:
-[1] https://lore.kernel.org/qemu-devel/1463496205-251412-24-git-send-email-imammedo@redhat.com/
+ACPI GED shall be used to convey to the guest kernel about any CPU hot-(un)plug
+events. Therefore, existing ACPI GED framework inside QEMU needs to be enhanced
+to support CPU hotplug state and events.
 
 Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
@@ -97,51 +83,64 @@ Reviewed-by: Gavin Shan <gshan@redhat.com>
 Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
 Tested-by: Xianglai Li <lixianglai@loongson.cn>
 ---
- hw/acpi/cpu.c                  | 2 +-
- hw/acpi/generic_event_device.c | 4 ++++
- include/hw/acpi/cpu_hotplug.h  | 2 ++
- 3 files changed, 7 insertions(+), 1 deletion(-)
+ hw/acpi/generic_event_device.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index 596b6d9d81..5b0eaad1c5 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -323,7 +323,7 @@ const VMStateDescription vmstate_cpu_hotplug = {
- #define CPUHP_RES_DEVICE  "PRES"
- #define CPU_LOCK          "CPLK"
- #define CPU_STS_METHOD    "CSTA"
--#define CPU_SCAN_METHOD   "CSCN"
-+#define CPU_SCAN_METHOD   ACPI_CPU_SCAN_METHOD
- #define CPU_NOTIFY_METHOD "CTFY"
- #define CPU_EJECT_METHOD  "CEJ0"
- #define CPU_OST_METHOD    "COST"
 diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index d2fa1d0e4a..62d504d231 100644
+index 62d504d231..0d5f0140e5 100644
 --- a/hw/acpi/generic_event_device.c
 +++ b/hw/acpi/generic_event_device.c
-@@ -108,6 +108,10 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
-                 aml_append(if_ctx, aml_call0(MEMORY_DEVICES_CONTAINER "."
-                                              MEMORY_SLOT_SCAN_METHOD));
-                 break;
-+            case ACPI_GED_CPU_HOTPLUG_EVT:
-+                aml_append(if_ctx, aml_call0(ACPI_CPU_CONTAINER "."
-+                                             ACPI_CPU_SCAN_METHOD));
-+                break;
-             case ACPI_GED_PWR_DOWN_EVT:
-                 aml_append(if_ctx,
-                            aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
-diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.h
-index 48b291e45e..ef631750b4 100644
---- a/include/hw/acpi/cpu_hotplug.h
-+++ b/include/hw/acpi/cpu_hotplug.h
-@@ -20,6 +20,8 @@
- #include "hw/acpi/cpu.h"
+@@ -12,6 +12,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "hw/acpi/acpi.h"
++#include "hw/acpi/cpu.h"
+ #include "hw/acpi/generic_event_device.h"
+ #include "hw/irq.h"
+ #include "hw/mem/pc-dimm.h"
+@@ -239,6 +240,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
+         } else {
+             acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
+         }
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
++        acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+     } else {
+         error_setg(errp, "virt: device plug request for unsupported device"
+                    " type: %s", object_get_typename(OBJECT(dev)));
+@@ -253,6 +256,8 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
+     if ((object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) &&
+                        !(object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)))) {
+         acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
++        acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+     } else {
+         error_setg(errp, "acpi: device unplug request for unsupported device"
+                    " type: %s", object_get_typename(OBJECT(dev)));
+@@ -266,6 +271,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
  
- #define ACPI_CPU_HOTPLUG_REG_LEN 12
-+#define ACPI_CPU_SCAN_METHOD "CSCN"
-+#define ACPI_CPU_CONTAINER "\\_SB.CPUS"
+     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+         acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
++        acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
+     } else {
+         error_setg(errp, "acpi: device unplug for unsupported device"
+                    " type: %s", object_get_typename(OBJECT(dev)));
+@@ -277,6 +284,7 @@ static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
+     AcpiGedState *s = ACPI_GED(adev);
  
- typedef struct AcpiCpuHotplug {
-     Object *device;
+     acpi_memory_ospm_status(&s->memhp_state, list);
++    acpi_cpu_ospm_status(&s->cpuhp_state, list);
+ }
+ 
+ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+@@ -291,6 +299,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+         sel = ACPI_GED_PWR_DOWN_EVT;
+     } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
+         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
++    } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
++        sel = ACPI_GED_CPU_HOTPLUG_EVT;
+     } else {
+         /* Unknown event. Return without generating interrupt. */
+         warn_report("GED: Unsupported event %d. No irq injected", ev);
 -- 
 2.34.1

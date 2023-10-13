@@ -1,123 +1,119 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1341416ejc;
-        Fri, 13 Oct 2023 01:15:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGL5yN6Md/RR3/bpNWKOG48a0f5AZl6Z7QYnwd9JaRxF8JQtjkZhJM90iVaidkhrxaSBqg+
-X-Received: by 2002:a05:620a:28d0:b0:775:ed1e:2823 with SMTP id l16-20020a05620a28d000b00775ed1e2823mr34219483qkp.15.1697184908787;
-        Fri, 13 Oct 2023 01:15:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697184908; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1341790ejc;
+        Fri, 13 Oct 2023 01:15:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFgTjpEPiD0gkly1Oxhqj7emSHfcvCB+zXY+HR6DY+aP1ZNODBSHBknkayvivITmbcoEtx1
+X-Received: by 2002:a05:620a:4085:b0:775:68c8:79f7 with SMTP id f5-20020a05620a408500b0077568c879f7mr31375325qko.0.1697184958790;
+        Fri, 13 Oct 2023 01:15:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697184958; cv=none;
         d=google.com; s=arc-20160816;
-        b=gr3cJll7RF+zxQ4v7VIdtsya2HajF37jUBt4BBzgj4wB34N6cpUbKiTHhkLaXByRkH
-         VgFe8hyWwpydZwNNcc/bwFNtlaqZOhQvGbqZZt9Z/3nwh9GHLBXpbx0t8yt9mVMnig68
-         9f5Jf0UEpNm1UV2vBDsBBjZUNPwU5FRiJO+rbyVN9KO9rBaZPZYWko0KtT8ArHaFpGQ3
-         8selD0KZr/g9B0/0R+FIs779693u+csnZYKHiTToWSpJuOhbNNIgDFhpfVDn/75jvJGf
-         jY3krr5SibiZgKESSBeRRaee734OUf0wh6sF3vPcBRf2Ip4/ag6rZxHUdzTtYfKgmSmS
-         oEFw==
+        b=VdANk2xiv3VABjjlyxuOiNrWTd9iiEqYzPIL6EzLYau9Y0ATdDxkD/rECmSdQaQ3uh
+         tniO+5l3tpx5O542JgWKxa5du/6wZkDlt/thOacRMovrOrOFONHCRiK+ysFpNF5ebpI0
+         gvoYP4MzGYZcqlAH27Srlxe6SFKCshEhT8XhYgpUMlnBmsEvUggQNrMazKKeX9Np7zQb
+         3/CL2Z24qVNfe5MDQPRAn6lXPXZuv3FIQDEvW9qMEe722fJ991jqnEZG1P/lnQn/PKfy
+         Q+hkXZVBKwIcTCDCO3D72G/4lc194xSOS+0gGd4D+DFpWYlQ1YBCZKrgn1v3uEF+HDQm
+         p2pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=U7eIdKYi0C0PTj9AIh0k7ZAKSjll1l4WSVMVqT9Um+g=;
-        fh=DhIIDuGHzuSRtvIWO6SOlKGfPO7MJymmCP6tUCSl7OM=;
-        b=aYZkg64tVY3WV7IZYGi/1iQCL0vVuet+Y+PKjPbWLpxvg8JbuXhyzAZGdWpDYUeNy6
-         tn23v6ev+3wN3O4x4+V1LBclIK8Msnb4stTpf/Q16YgZs3NPuAqoKByZyQ8S9iCFsIzi
-         eaIrRa9n/0SCVxH6GxtD4cekoeAl38OHRrTgsJHYmpbvs4cDwHWVRxOfVRC6E3wAFMcN
-         u4j77jh/4B3JIS4cznMCM8zG65tZBFNzexe3UXXuqN9KAGNMR3MUXDIVIsoBcu8Cl45O
-         lFgYesMSFZcac01fKa4Iv9CWl/BoaHT1lkohe96uLxda6f4HCpMnH3M5fKgR6SjHcCnl
-         8ipQ==
+        bh=Xmf183b4ta6tcMGecZtTP0rIT/9ZmK0d0ilVGrqNESE=;
+        fh=LpE2tKiSl8uqKQepfQqwH9SHK2W/OUAszsYt+vxgOR4=;
+        b=A8/xYMDsl0ai/7NXNWcQD3FKBqgmiTV98sSRHa4KldgfVroVQ5NNdlwEYK/jBzxwL1
+         kUEBEZ+5NuDBSNbIK8QM1y2wfEJZKfvplEuxJIZ9xnty6Tr88zQhVxopfG7sP+CldQ4Z
+         r/F0pNA6f5lvfkQ2dGYWo5SbuFycszhoNYQFALk3hsanm1qiUX3LLCKfbh4QO9ixJ6Sv
+         szLhZkUe7E1jLlEtDs6tzwoSfjjg45odKnMB5vkwnFRDwBwwXcqGDa9hejZPpE+81vVH
+         82kMXjbW2KmpwznfXpm8VlgMQIG8dht7HlPDlHU9QQeTxsQudDypXgzS77nCBndrCOUQ
+         n/xQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X+7IUvWf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bNHUZbZh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pz11-20020a05620a640b00b007757596c30dsi838896qkn.135.2023.10.13.01.15.08
+        by mx.google.com with ESMTPS id ot20-20020a05620a819400b0076d9a8c430dsi829945qkn.24.2023.10.13.01.15.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:15:08 -0700 (PDT)
+        Fri, 13 Oct 2023 01:15:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X+7IUvWf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bNHUZbZh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrD5B-0006Mi-Hd; Fri, 13 Oct 2023 03:59:41 -0400
+	id 1qrD6G-0002un-Uj; Fri, 13 Oct 2023 04:00:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrD59-0005yU-9X
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:59:39 -0400
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+ id 1qrD5h-0008IZ-2Q
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:00:13 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrD56-0007Gd-2E
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:59:38 -0400
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-50305abe5f0so2426381e87.2
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:59:35 -0700 (PDT)
+ id 1qrD5e-0007Zf-HY
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:00:12 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-5041335fb9cso2336899e87.0
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 01:00:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183974; x=1697788774; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697184007; x=1697788807; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=U7eIdKYi0C0PTj9AIh0k7ZAKSjll1l4WSVMVqT9Um+g=;
- b=X+7IUvWfDUExYuXkBXE/WUrYFtedYXqj//aLdW1siFfA4jLBNYWPmzAQWJdkE0y2NQ
- FxmHtXj9+NRIczztoqjvT5F3uJC394tWr55T6iXP000X7DaT4ABgB1aN3IxYd8x33ajc
- b8BHH6uUDwBPknRASm1BNWpailxWaV4W6LbKLTP+mbAD5lfcmqkKhB9jdamKcEd4HtxG
- iKVmPIjeNJtxqLq8vnPQzu6wGMcaHWrP+K0yi6R+BON+Owb8lCNKUlIKiE1RWfYluzNL
- wc/xnZN4Q2S4uHHkcJzmasi2He9p53YeNXjdjgjKzwVpBHMqiNzBeIGgPz6+DJ/gJ+jl
- 3sGw==
+ bh=Xmf183b4ta6tcMGecZtTP0rIT/9ZmK0d0ilVGrqNESE=;
+ b=bNHUZbZhoEsz+/pPoh0hhjp+D32TtpuMH2Rn2luDICnGWGA4BSzSxfW57mf1WwtZDK
+ TBQQ/BLTatC0uYvq1iCj9GzAVNlbm+FhmFD6c9uPDkpTpxdKiMuyy+czIaJHpw4ZHWkr
+ u1tCL8rt5qWq9zkAhCgulSpWBSnfiw0ctP+pQKvu2cM4qeu5keLZvkzJQ85skOpvZ7JM
+ YL4Y1WiHxzVYBzojDAk1+D/jqq+J7yk+T0V5no+Ehip8RpIyRzEw6z7ux2J40/NEZnJp
+ 7VnG0Q7dKR0oxquPd/FP8cy/gAJHQR63gC27rnEZqLuRAa453JDNVxBWh6duAO7iP85z
+ rCxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183974; x=1697788774;
+ d=1e100.net; s=20230601; t=1697184007; x=1697788807;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=U7eIdKYi0C0PTj9AIh0k7ZAKSjll1l4WSVMVqT9Um+g=;
- b=MBR8NgNPCwLw1G8ccYlEY/6SRY/39xmRAdAQh4BN6YFNFjNi9YEN4xiH72RmPwzIn1
- Ch8mcs71DHLNRASGRueYngwQrOrKDsEOCER8l4M94RVFl78+jXLsjLv8KelvI/A/vxaF
- OV/TRIncPkfQbH/p002UdMPCG4IUfTJfk8cRH/orJ+eCz6mP4hSEJbm2UWtyFqPSjvLT
- eUhybVNfHAxNp8q70Nb03iTpdsqW+8YVhqcJunpDf/2/XFLuabD9vA91N0tVMtYAeO4A
- Q424mth4pYFbxBacgsyHyVd8Taaj8nXYgC4jpX0Ph7owkNVhO4+OVUT0zQJ5g8URyNpf
- X6zw==
-X-Gm-Message-State: AOJu0YyjsR2UsoBcdnoOYTn/0h2+9lFEHrg49GtmjOO3gOf17Q/Drfgx
- syq3+Yv2aa9Csz1QpEfIpC8TJED0PISfu+Y9k1c=
-X-Received: by 2002:a19:f70c:0:b0:500:cb2b:8678 with SMTP id
- z12-20020a19f70c000000b00500cb2b8678mr19584951lfe.40.1697183974047; 
- Fri, 13 Oct 2023 00:59:34 -0700 (PDT)
+ bh=Xmf183b4ta6tcMGecZtTP0rIT/9ZmK0d0ilVGrqNESE=;
+ b=dxcgbm5KJbT/9yibLHgJEgnt+9nVyPMKHlp3zSKM+mSGP8/omXC7GyQVwVEHNZGU8s
+ h29dyuQ3C8IhvvCviphlURruTuzOsMsuI0usrkgCSDHXHR33ce1WkY8sqvjgSOLMymHJ
+ kQlnRSn85g+ut6svHoZ6Bynoa03wtGZRYDYdLZMUYrGdWE4QbPfUkLwUoEH1FKMDTpDn
+ aaKiLuworduqn8es7Y+/FyOk0nLJexEsFm7qSNkvWKLVRVCxJMuDPKBx7UAZvWYCyCyj
+ BQqdFQDZkyQ2H8foAruwEO9R66fO5AGzZrQB1JNPAptLKwLyx4FbhLic6f49QM1R6ZiF
+ qi4Q==
+X-Gm-Message-State: AOJu0YwiN9cS3kTtzp25/m5370JSUwZmEfnFw/Mi0lXHKZuPKSP+6xD9
+ NATZh2XhIQRwEwqOM54DLnMh268rB0LsG018qM4=
+X-Received: by 2002:a05:6512:1104:b0:500:98ff:4162 with SMTP id
+ l4-20020a056512110400b0050098ff4162mr26921139lfg.40.1697184007302; 
+ Fri, 13 Oct 2023 01:00:07 -0700 (PDT)
 Received: from localhost.localdomain (adsl-26.37.6.0.tellas.gr. [37.6.0.26])
  by smtp.gmail.com with ESMTPSA id
- a10-20020a05600c224a00b003fe23b10fdfsm1798183wmm.36.2023.10.13.00.59.31
+ a10-20020a05600c224a00b003fe23b10fdfsm1798183wmm.36.2023.10.13.01.00.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:59:33 -0700 (PDT)
+ Fri, 13 Oct 2023 01:00:06 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
  Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Pavel Pisa <pisa@cmp.felk.cvut.cz>, Vikram Garhwal <fnu.vikram@xilinx.com>,
- Akihiko Odaki <akihiko.odaki@daynix.com>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- qemu-arm@nongnu.org (open list:Xilinx Zynq)
-Subject: [RFC PATCH v2 57/78] hw/net: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:57:24 +0300
-Message-Id: <40a1851702b201aab0c5e11af72c937c2f9aaabc.1697183699.git.manos.pitsidianakis@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:Nuvoton NPCM7xx)
+Subject: [RFC PATCH v2 72/78] hw/ssi: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:57:39 +0300
+Message-Id: <b91b0b3d02447d987b3191f0f8ff26afb54a05d5.1697183699.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183699.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183699.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lf1-x134.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lf1-x12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,986 +128,467 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xS7nnE7AJgM6
+X-TUID: Fzvy82Uh8YYs
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/net/cadence_gem.c     | 4 ++--
- hw/net/can/can_sja1000.c | 4 ++--
- hw/net/igb_core.c        | 2 +-
- hw/net/igbvf.c           | 2 +-
- hw/net/imx_fec.c         | 2 +-
- hw/net/net_rx_pkt.c      | 2 +-
- hw/net/pcnet.c           | 2 +-
- hw/net/rtl8139.c         | 6 ++++--
- hw/net/xilinx_ethlite.c  | 2 +-
- 9 files changed, 14 insertions(+), 12 deletions(-)
+ hw/ssi/npcm7xx_fiu.c | 14 ++++++-------
+ hw/ssi/omap_spi.c    | 48 ++++++++++++++++++++++----------------------
+ 2 files changed, 31 insertions(+), 31 deletions(-)
 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index f445d8bb5e..a59991af5b 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -748,119 +748,119 @@ static int gem_mac_address_filter(CadenceGEMState *s, const uint8_t *packet)
- /* Figure out which queue the received data should be sent to */
- static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
-                                  unsigned rxbufsize)
+diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
+index 4eedb2927e..fadd66a675 100644
+--- a/hw/ssi/npcm7xx_fiu.c
++++ b/hw/ssi/npcm7xx_fiu.c
+@@ -145,103 +145,103 @@ static void npcm7xx_fiu_deselect(NPCM7xxFIUState *s)
+ /* Direct flash memory read handler. */
+ static uint64_t npcm7xx_fiu_flash_read(void *opaque, hwaddr addr,
+                                        unsigned int size)
  {
-     uint32_t reg;
-     bool matched, mismatched;
-     int i, j;
+     NPCM7xxFIUFlash *f = opaque;
+     NPCM7xxFIUState *fiu = f->fiu;
+     uint64_t value = 0;
+     uint32_t drd_cfg;
+     int dummy_cycles;
+     int i;
  
-     for (i = 0; i < s->num_type1_screeners; i++) {
-         reg = s->regs[GEM_SCREENING_TYPE1_REGISTER_0 + i];
-         matched = false;
-         mismatched = false;
- 
-         /* Screening is based on UDP Port */
-         if (reg & GEM_ST1R_UDP_PORT_MATCH_ENABLE) {
-             uint16_t udp_port = rxbuf_ptr[14 + 22] << 8 | rxbuf_ptr[14 + 23];
-             if (udp_port == extract32(reg, GEM_ST1R_UDP_PORT_MATCH_SHIFT,
-                                            GEM_ST1R_UDP_PORT_MATCH_WIDTH)) {
-                 matched = true;
-             } else {
-                 mismatched = true;
-             }
-         }
- 
-         /* Screening is based on DS/TC */
-         if (reg & GEM_ST1R_DSTC_ENABLE) {
-             uint8_t dscp = rxbuf_ptr[14 + 1];
-             if (dscp == extract32(reg, GEM_ST1R_DSTC_MATCH_SHIFT,
-                                        GEM_ST1R_DSTC_MATCH_WIDTH)) {
-                 matched = true;
-             } else {
-                 mismatched = true;
-             }
-         }
- 
-         if (matched && !mismatched) {
-             return extract32(reg, GEM_ST1R_QUEUE_SHIFT, GEM_ST1R_QUEUE_WIDTH);
-         }
+     if (fiu->active_cs != -1) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: direct flash read with CS%d already active",
+                       DEVICE(fiu)->canonical_path, fiu->active_cs);
      }
  
-     for (i = 0; i < s->num_type2_screeners; i++) {
-         reg = s->regs[GEM_SCREENING_TYPE2_REGISTER_0 + i];
-         matched = false;
-         mismatched = false;
+     npcm7xx_fiu_select(fiu, npcm7xx_fiu_cs_index(fiu, f));
  
-         if (reg & GEM_ST2R_ETHERTYPE_ENABLE) {
-             uint16_t type = rxbuf_ptr[12] << 8 | rxbuf_ptr[13];
-             int et_idx = extract32(reg, GEM_ST2R_ETHERTYPE_INDEX_SHIFT,
-                                         GEM_ST2R_ETHERTYPE_INDEX_WIDTH);
+     drd_cfg = fiu->regs[NPCM7XX_FIU_DRD_CFG];
+     ssi_transfer(fiu->spi, FIU_DRD_CFG_RDCMD(drd_cfg));
  
-             if (et_idx > s->num_type2_screeners) {
-                 qemu_log_mask(LOG_GUEST_ERROR, "Out of range ethertype "
-                               "register index: %d\n", et_idx);
-             }
-             if (type == s->regs[GEM_SCREENING_TYPE2_ETHERTYPE_REG_0 +
-                                 et_idx]) {
-                 matched = true;
-             } else {
-                 mismatched = true;
-             }
-         }
+     switch (FIU_DRD_CFG_ADDSIZ(drd_cfg)) {
+     case FIU_ADDSIZ_4BYTES:
+         ssi_transfer(fiu->spi, extract32(addr, 24, 8));
+-        /* fall through */
++        fallthrough;
+     case FIU_ADDSIZ_3BYTES:
+         ssi_transfer(fiu->spi, extract32(addr, 16, 8));
+         ssi_transfer(fiu->spi, extract32(addr, 8, 8));
+         ssi_transfer(fiu->spi, extract32(addr, 0, 8));
+         break;
  
-         /* Compare A, B, C */
-         for (j = 0; j < 3; j++) {
-             uint32_t cr0, cr1, mask;
-             uint16_t rx_cmp;
-             int offset;
-             int cr_idx = extract32(reg, GEM_ST2R_COMPARE_A_SHIFT + j * 6,
-                                         GEM_ST2R_COMPARE_WIDTH);
- 
-             if (!(reg & (GEM_ST2R_COMPARE_A_ENABLE << (j * 6)))) {
-                 continue;
-             }
-             if (cr_idx > s->num_type2_screeners) {
-                 qemu_log_mask(LOG_GUEST_ERROR, "Out of range compare "
-                               "register index: %d\n", cr_idx);
-             }
- 
-             cr0 = s->regs[GEM_TYPE2_COMPARE_0_WORD_0 + cr_idx * 2];
-             cr1 = s->regs[GEM_TYPE2_COMPARE_0_WORD_0 + cr_idx * 2 + 1];
-             offset = extract32(cr1, GEM_T2CW1_OFFSET_VALUE_SHIFT,
-                                     GEM_T2CW1_OFFSET_VALUE_WIDTH);
- 
-             switch (extract32(cr1, GEM_T2CW1_COMPARE_OFFSET_SHIFT,
-                                    GEM_T2CW1_COMPARE_OFFSET_WIDTH)) {
-             case 3: /* Skip UDP header */
-                 qemu_log_mask(LOG_UNIMP, "TCP compare offsets"
-                               "unimplemented - assuming UDP\n");
-                 offset += 8;
--                /* Fallthrough */
-+                fallthrough;
-             case 2: /* skip the IP header */
-                 offset += 20;
--                /* Fallthrough */
-+                fallthrough;
-             case 1: /* Count from after the ethertype */
-                 offset += 14;
-                 break;
-             case 0:
-                 /* Offset from start of frame */
-                 break;
-             }
- 
-             rx_cmp = rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
-             mask = extract32(cr0, 0, 16);
- 
-             if ((rx_cmp & mask) == (extract32(cr0, 16, 16) & mask)) {
-                 matched = true;
-             } else {
-                 mismatched = true;
-             }
-         }
- 
-         if (matched && !mismatched) {
-             return extract32(reg, GEM_ST2R_QUEUE_SHIFT, GEM_ST2R_QUEUE_WIDTH);
-         }
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: bad address size %d\n",
+                       DEVICE(fiu)->canonical_path, FIU_DRD_CFG_ADDSIZ(drd_cfg));
+         break;
      }
  
-     /* We made it here, assume it's queue 0 */
-     return 0;
+     /* Flash chip model expects one transfer per dummy bit, not byte */
+     dummy_cycles =
+         (FIU_DRD_CFG_DBW(drd_cfg) * 8) >> FIU_DRD_CFG_ACCTYPE(drd_cfg);
+     for (i = 0; i < dummy_cycles; i++) {
+         ssi_transfer(fiu->spi, 0);
+     }
+ 
+     for (i = 0; i < size; i++) {
+         value = deposit64(value, 8 * i, 8, ssi_transfer(fiu->spi, 0));
+     }
+ 
+     trace_npcm7xx_fiu_flash_read(DEVICE(fiu)->canonical_path, fiu->active_cs,
+                                  addr, size, value);
+ 
+     npcm7xx_fiu_deselect(fiu);
+ 
+     return value;
  }
-diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
-index 73201f9139..14052b2700 100644
---- a/hw/net/can/can_sja1000.c
-+++ b/hw/net/can/can_sja1000.c
-@@ -422,235 +422,235 @@ static void can_sja_update_bas_irq(CanSJA1000State *s)
- void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
-                        unsigned size)
+ 
+ /* Direct flash memory write handler. */
+ static void npcm7xx_fiu_flash_write(void *opaque, hwaddr addr, uint64_t v,
+                                     unsigned int size)
  {
-     qemu_can_frame   frame;
-     uint32_t         tmp;
-     uint8_t          tmp8, count;
+     NPCM7xxFIUFlash *f = opaque;
+     NPCM7xxFIUState *fiu = f->fiu;
+     uint32_t dwr_cfg;
+     unsigned cs_id;
+     int i;
  
+     if (fiu->active_cs != -1) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: direct flash write with CS%d already active",
+                       DEVICE(fiu)->canonical_path, fiu->active_cs);
+     }
  
-     DPRINTF("write 0x%02llx addr 0x%02x\n",
-             (unsigned long long)val, (unsigned int)addr);
+     cs_id = npcm7xx_fiu_cs_index(fiu, f);
+     trace_npcm7xx_fiu_flash_write(DEVICE(fiu)->canonical_path, cs_id, addr,
+                                   size, v);
+     npcm7xx_fiu_select(fiu, cs_id);
  
-     if (addr > CAN_SJA_MEM_SIZE) {
+     dwr_cfg = fiu->regs[NPCM7XX_FIU_DWR_CFG];
+     ssi_transfer(fiu->spi, FIU_DWR_CFG_WRCMD(dwr_cfg));
+ 
+     switch (FIU_DWR_CFG_ADDSIZ(dwr_cfg)) {
+     case FIU_ADDSIZ_4BYTES:
+         ssi_transfer(fiu->spi, extract32(addr, 24, 8));
+-        /* fall through */
++        fallthrough;
+     case FIU_ADDSIZ_3BYTES:
+         ssi_transfer(fiu->spi, extract32(addr, 16, 8));
+         ssi_transfer(fiu->spi, extract32(addr, 8, 8));
+         ssi_transfer(fiu->spi, extract32(addr, 0, 8));
+         break;
+ 
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: bad address size %d\n",
+                       DEVICE(fiu)->canonical_path, FIU_DWR_CFG_ADDSIZ(dwr_cfg));
+         break;
+     }
+ 
+     for (i = 0; i < size; i++) {
+         ssi_transfer(fiu->spi, extract64(v, i * 8, 8));
+     }
+ 
+     npcm7xx_fiu_deselect(fiu);
+ }
+@@ -282,22 +282,22 @@ static uint64_t npcm7xx_fiu_ctrl_read(void *opaque, hwaddr addr,
+ /* Send the specified number of address bytes from the UMA address register. */
+ static void send_address(SSIBus *spi, unsigned int addsiz, uint32_t addr)
+ {
+     switch (addsiz) {
+     case 4:
+         ssi_transfer(spi, extract32(addr, 24, 8));
+-        /* fall through */
++        fallthrough;
+     case 3:
+         ssi_transfer(spi, extract32(addr, 16, 8));
+-        /* fall through */
++        fallthrough;
+     case 2:
+         ssi_transfer(spi, extract32(addr, 8, 8));
+-        /* fall through */
++        fallthrough;
+     case 1:
+         ssi_transfer(spi, extract32(addr, 0, 8));
+-        /* fall through */
++        fallthrough;
+     case 0:
+         break;
+     }
+ }
+ 
+ /* Send the number of dummy bits specified in the UMA config register. */
+@@ -378,79 +378,79 @@ static void npcm7xx_fiu_uma_transaction(NPCM7xxFIUState *s)
+ /* Control register write handler. */
+ static void npcm7xx_fiu_ctrl_write(void *opaque, hwaddr addr, uint64_t v,
+                                    unsigned int size)
+ {
+     hwaddr reg = addr / sizeof(uint32_t);
+     NPCM7xxFIUState *s = opaque;
+     uint32_t value = v;
+ 
+     trace_npcm7xx_fiu_ctrl_write(DEVICE(s)->canonical_path, addr, value);
+ 
+     switch (reg) {
+     case NPCM7XX_FIU_UMA_CFG:
+         if (s->regs[reg] & FIU_UMA_CFG_CMMLCK) {
+             value &= ~FIU_UMA_CFG_CMMLCK_MASK;
+             value |= (s->regs[reg] & FIU_UMA_CFG_CMMLCK_MASK);
+         }
+-        /* fall through */
++        fallthrough;
+     case NPCM7XX_FIU_DRD_CFG:
+     case NPCM7XX_FIU_DWR_CFG:
+         if (s->regs[reg] & NPCM7XX_FIU_CFG_LCK) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: write to locked register @ 0x%" PRIx64 "\n",
+                           DEVICE(s)->canonical_path, addr);
+             return;
+         }
+         s->regs[reg] = value;
+         break;
+ 
+     case NPCM7XX_FIU_UMA_CTS:
+         if (value & FIU_UMA_CTS_RDYST) {
+             value &= ~FIU_UMA_CTS_RDYST;
+         } else {
+             value |= s->regs[reg] & FIU_UMA_CTS_RDYST;
+         }
+         if ((s->regs[reg] ^ value) & FIU_UMA_CTS_SW_CS) {
+             if (value & FIU_UMA_CTS_SW_CS) {
+                 /*
+                  * Don't drop CS if there's a transfer in progress, or we're
+                  * about to start one.
+                  */
+                 if (!((value | s->regs[reg]) & FIU_UMA_CTS_EXEC_DONE)) {
+                     npcm7xx_fiu_deselect(s);
+                 }
+             } else {
+                 int cs_id = FIU_UMA_CTS_DEV_NUM(s->regs[NPCM7XX_FIU_UMA_CTS]);
+                 npcm7xx_fiu_select(s, cs_id);
+             }
+         }
+         s->regs[reg] = value | (s->regs[reg] & FIU_UMA_CTS_EXEC_DONE);
+         if (value & FIU_UMA_CTS_EXEC_DONE) {
+             npcm7xx_fiu_uma_transaction(s);
+         }
+         break;
+ 
+     case NPCM7XX_FIU_UMA_DR0 ... NPCM7XX_FIU_UMA_DR3:
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: write to read-only register @ 0x%" PRIx64 "\n",
+                       DEVICE(s)->canonical_path, addr);
+         return;
+ 
+     case NPCM7XX_FIU_PRT_CFG:
+     case NPCM7XX_FIU_PRT_CMD0 ... NPCM7XX_FIU_PRT_CMD9:
+         qemu_log_mask(LOG_UNIMP, "%s: PRT is not implemented\n", __func__);
+         break;
+ 
+     case NPCM7XX_FIU_UMA_CMD:
+     case NPCM7XX_FIU_UMA_ADDR:
+     case NPCM7XX_FIU_UMA_DW0 ... NPCM7XX_FIU_UMA_DW3:
+     case NPCM7XX_FIU_CFG:
+         s->regs[reg] = value;
+         break;
+ 
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: write to invalid offset 0x%" PRIx64 "\n",
+                       DEVICE(s)->canonical_path, addr);
          return;
      }
- 
-     if (s->clock & 0x80) { /* PeliCAN Mode */
-         switch (addr) {
-         case SJA_MOD: /* Mode register */
-             s->mode = 0x1f & val;
-             if ((s->mode & 0x01) && ((val & 0x01) == 0)) {
-                 /* Go to operation mode from reset mode. */
-                 if (s->mode & (1 << 3)) { /* Single mode. */
-                     /* For EFF */
-                     can_sja_single_filter(&s->filter[0],
-                         s->code_mask + 0, s->code_mask + 4, 1);
- 
-                     /* For SFF */
-                     can_sja_single_filter(&s->filter[1],
-                         s->code_mask + 0, s->code_mask + 4, 0);
- 
-                     can_bus_client_set_filters(&s->bus_client, s->filter, 2);
-                 } else { /* Dual mode */
-                     /* For EFF */
-                     can_sja_dual_filter(&s->filter[0],
-                         s->code_mask + 0, s->code_mask + 4, 1);
- 
-                     can_sja_dual_filter(&s->filter[1],
-                         s->code_mask + 2, s->code_mask + 6, 1);
- 
-                     /* For SFF */
-                     can_sja_dual_filter(&s->filter[2],
-                         s->code_mask + 0, s->code_mask + 4, 0);
- 
-                     can_sja_dual_filter(&s->filter[3],
-                         s->code_mask + 2, s->code_mask + 6, 0);
- 
-                     can_bus_client_set_filters(&s->bus_client, s->filter, 4);
-                 }
- 
-                 s->rxmsg_cnt = 0;
-                 s->rx_cnt = 0;
-             }
-             break;
- 
-         case SJA_CMR: /* Command register. */
-             if (0x01 & val) { /* Send transmission request. */
-                 buff2frame_pel(s->tx_buff, &frame);
-                 if (DEBUG_FILTER) {
-                     can_display_msg("[cansja]: Tx request " , &frame);
-                 }
- 
-                 /*
-                  * Clear transmission complete status,
-                  * and Transmit Buffer Status.
-                  * write to the backends.
-                  */
-                 s->status_pel &= ~(3 << 2);
- 
-                 can_bus_client_send(&s->bus_client, &frame, 1);
- 
-                 /*
-                  * Set transmission complete status
-                  * and Transmit Buffer Status.
-                  */
-                 s->status_pel |= (3 << 2);
- 
-                 /* Clear transmit status. */
-                 s->status_pel &= ~(1 << 5);
-                 s->interrupt_pel |= 0x02;
-                 can_sja_update_pel_irq(s);
-             }
-             if (0x04 & val) { /* Release Receive Buffer */
-                 if (s->rxmsg_cnt <= 0) {
-                     break;
-                 }
- 
-                 tmp8 = s->rx_buff[s->rxbuf_start]; count = 0;
-                 if (tmp8 & (1 << 7)) { /* EFF */
-                     count += 2;
-                 }
-                 count += 3;
-                 if (!(tmp8 & (1 << 6))) { /* DATA */
-                     count += (tmp8 & 0x0f);
-                 }
- 
-                 if (DEBUG_FILTER) {
-                     qemu_log("[cansja]: message released from "
-                              "Rx FIFO cnt=%d, count=%d\n", s->rx_cnt, count);
-                 }
- 
-                 s->rxbuf_start += count;
-                 s->rxbuf_start %= SJA_RCV_BUF_LEN;
- 
-                 s->rx_cnt -= count;
-                 s->rxmsg_cnt--;
-                 if (s->rxmsg_cnt == 0) {
-                     s->status_pel &= ~(1 << 0);
-                     s->interrupt_pel &= ~(1 << 0);
-                     can_sja_update_pel_irq(s);
-                 }
-             }
-             if (0x08 & val) { /* Clear data overrun */
-                 s->status_pel &= ~(1 << 1);
-                 s->interrupt_pel &= ~(1 << 3);
-                 can_sja_update_pel_irq(s);
-             }
-             break;
-         case SJA_SR: /* Status register */
-         case SJA_IR: /* Interrupt register */
-             break; /* Do nothing */
-         case SJA_IER: /* Interrupt enable register */
-             s->interrupt_en = val;
-             break;
-         case 16: /* RX frame information addr16-28. */
-             s->status_pel |= (1 << 5); /* Set transmit status. */
--            /* fallthrough */
-+            fallthrough;
-         case 17 ... 28:
-             if (s->mode & 0x01) { /* Reset mode */
-                 if (addr < 24) {
-                     s->code_mask[addr - 16] = val;
-                 }
-             } else { /* Operation mode */
-                 s->tx_buff[addr - 16] = val; /* Store to TX buffer directly. */
-             }
-             break;
-         case SJA_CDR:
-             s->clock = val;
-             break;
-         }
-     } else { /* Basic Mode */
-         switch (addr) {
-         case SJA_BCAN_CTR: /* Control register, addr 0 */
-             if ((s->control & 0x01) && ((val & 0x01) == 0)) {
-                 /* Go to operation mode from reset mode. */
-                 s->filter[0].can_id = (s->code << 3) & (0xff << 3);
-                 tmp = (~(s->mask << 3)) & (0xff << 3);
-                 tmp |= QEMU_CAN_EFF_FLAG; /* Only Basic CAN Frame. */
-                 s->filter[0].can_mask = tmp;
-                 can_bus_client_set_filters(&s->bus_client, s->filter, 1);
- 
-                 s->rxmsg_cnt = 0;
-                 s->rx_cnt = 0;
-             } else if (!(s->control & 0x01) && !(val & 0x01)) {
-                 can_sja_software_reset(s);
-             }
- 
-             s->control = 0x1f & val;
-             break;
-         case SJA_BCAN_CMR: /* Command register, addr 1 */
-             if (0x01 & val) { /* Send transmission request. */
-                 buff2frame_bas(s->tx_buff, &frame);
-                 if (DEBUG_FILTER) {
-                     can_display_msg("[cansja]: Tx request " , &frame);
-                 }
- 
-                 /*
-                  * Clear transmission complete status,
-                  * and Transmit Buffer Status.
-                  */
-                 s->status_bas &= ~(3 << 2);
- 
-                 /* write to the backends. */
-                 can_bus_client_send(&s->bus_client, &frame, 1);
- 
-                 /*
-                  * Set transmission complete status,
-                  * and Transmit Buffer Status.
-                  */
-                 s->status_bas |= (3 << 2);
- 
-                 /* Clear transmit status. */
-                 s->status_bas &= ~(1 << 5);
-                 s->interrupt_bas |= 0x02;
-                 can_sja_update_bas_irq(s);
-             }
-             if (0x04 & val) { /* Release Receive Buffer */
-                 if (s->rxmsg_cnt <= 0) {
-                     break;
-                 }
- 
-                 tmp8 = s->rx_buff[(s->rxbuf_start + 1) % SJA_RCV_BUF_LEN];
-                 count = 2 + (tmp8 & 0x0f);
- 
-                 if (DEBUG_FILTER) {
-                     qemu_log("[cansja]: message released from "
-                              "Rx FIFO cnt=%d, count=%d\n", s->rx_cnt, count);
-                 }
- 
-                 s->rxbuf_start += count;
-                 s->rxbuf_start %= SJA_RCV_BUF_LEN;
-                 s->rx_cnt -= count;
-                 s->rxmsg_cnt--;
- 
-                 if (s->rxmsg_cnt == 0) {
-                     s->status_bas &= ~(1 << 0);
-                     s->interrupt_bas &= ~(1 << 0);
-                     can_sja_update_bas_irq(s);
-                 }
-             }
-             if (0x08 & val) { /* Clear data overrun */
-                 s->status_bas &= ~(1 << 1);
-                 s->interrupt_bas &= ~(1 << 3);
-                 can_sja_update_bas_irq(s);
-             }
-             break;
-         case 4:
-             s->code = val;
-             break;
-         case 5:
-             s->mask = val;
-             break;
-         case 10:
-             s->status_bas |= (1 << 5); /* Set transmit status. */
--            /* fallthrough */
-+            fallthrough;
-         case 11 ... 19:
-             if ((s->control & 0x01) == 0) { /* Operation mode */
-                 s->tx_buff[addr - 10] = val; /* Store to TX buffer directly. */
-             }
-             break;
-         case SJA_CDR:
-             s->clock = val;
-             break;
-         }
-     }
  }
-diff --git a/hw/net/igb_core.c b/hw/net/igb_core.c
-index f6a5e2327b..1117f7cb59 100644
---- a/hw/net/igb_core.c
-+++ b/hw/net/igb_core.c
-@@ -1362,75 +1362,75 @@ static void
- igb_build_rx_metadata_common(IGBCore *core,
-                              struct NetRxPkt *pkt,
-                              bool is_eop,
-                              uint32_t *status_flags,
-                              uint16_t *vlan_tag)
+diff --git a/hw/ssi/omap_spi.c b/hw/ssi/omap_spi.c
+index 8f85c3e391..a0f367bd17 100644
+--- a/hw/ssi/omap_spi.c
++++ b/hw/ssi/omap_spi.c
+@@ -137,87 +137,87 @@ void omap_mcspi_reset(struct omap_mcspi_s *s)
+ static uint64_t omap_mcspi_read(void *opaque, hwaddr addr, unsigned size)
  {
-     struct virtio_net_hdr *vhdr;
-     bool hasip4, hasip6, csum_valid;
-     EthL4HdrProto l4hdr_proto;
+     struct omap_mcspi_s *s = opaque;
+     int ch = 0;
+     uint32_t ret;
  
-     *status_flags = E1000_RXD_STAT_DD;
- 
-     /* No additional metadata needed for non-EOP descriptors */
-     if (!is_eop) {
-         goto func_exit;
+     if (size != 4) {
+         return omap_badwidth_read32(opaque, addr);
      }
  
-     *status_flags |= E1000_RXD_STAT_EOP;
- 
-     net_rx_pkt_get_protocols(pkt, &hasip4, &hasip6, &l4hdr_proto);
-     trace_e1000e_rx_metadata_protocols(hasip4, hasip6, l4hdr_proto);
- 
-     /* VLAN state */
-     if (net_rx_pkt_is_vlan_stripped(pkt)) {
-         *status_flags |= E1000_RXD_STAT_VP;
-         *vlan_tag = cpu_to_le16(net_rx_pkt_get_vlan_tag(pkt));
-         trace_e1000e_rx_metadata_vlan(*vlan_tag);
-     }
- 
-     /* RX CSO information */
-     if (hasip6 && (core->mac[RFCTL] & E1000_RFCTL_IPV6_XSUM_DIS)) {
-         trace_e1000e_rx_metadata_ipv6_sum_disabled();
-         goto func_exit;
-     }
- 
-     vhdr = net_rx_pkt_get_vhdr(pkt);
- 
-     if (!(vhdr->flags & VIRTIO_NET_HDR_F_DATA_VALID) &&
-         !(vhdr->flags & VIRTIO_NET_HDR_F_NEEDS_CSUM)) {
-         trace_e1000e_rx_metadata_virthdr_no_csum_info();
-         igb_verify_csum_in_sw(core, pkt, status_flags, l4hdr_proto);
-         goto func_exit;
-     }
- 
-     if (igb_rx_l3_cso_enabled(core)) {
-         *status_flags |= hasip4 ? E1000_RXD_STAT_IPCS : 0;
-     } else {
-         trace_e1000e_rx_metadata_l3_cso_disabled();
-     }
- 
-     if (igb_rx_l4_cso_enabled(core)) {
-         switch (l4hdr_proto) {
-         case ETH_L4_HDR_PROTO_SCTP:
-             if (!net_rx_pkt_validate_l4_csum(pkt, &csum_valid)) {
-                 trace_e1000e_rx_metadata_l4_csum_validation_failed();
-                 goto func_exit;
-             }
-             if (!csum_valid) {
-                 *status_flags |= E1000_RXDEXT_STATERR_TCPE;
-             }
--            /* fall through */
-+            fallthrough;
-         case ETH_L4_HDR_PROTO_TCP:
-             *status_flags |= E1000_RXD_STAT_TCPCS;
-             break;
- 
-         case ETH_L4_HDR_PROTO_UDP:
-             *status_flags |= E1000_RXD_STAT_TCPCS | E1000_RXD_STAT_UDPCS;
-             break;
- 
-         default:
-             break;
-         }
-     } else {
-         trace_e1000e_rx_metadata_l4_cso_disabled();
-     }
-diff --git a/hw/net/igbvf.c b/hw/net/igbvf.c
-index d55e1e8a6a..ff68a4f3c5 100644
---- a/hw/net/igbvf.c
-+++ b/hw/net/igbvf.c
-@@ -62,139 +62,139 @@ struct IgbVfState {
- static hwaddr vf_to_pf_addr(hwaddr addr, uint16_t vfn, bool write)
- {
      switch (addr) {
-     case E1000_CTRL:
-     case E1000_CTRL_DUP:
-         return E1000_PVTCTRL(vfn);
-     case E1000_EICS:
-         return E1000_PVTEICS(vfn);
-     case E1000_EIMS:
-         return E1000_PVTEIMS(vfn);
-     case E1000_EIMC:
-         return E1000_PVTEIMC(vfn);
-     case E1000_EIAC:
-         return E1000_PVTEIAC(vfn);
-     case E1000_EIAM:
-         return E1000_PVTEIAM(vfn);
-     case E1000_EICR:
-         return E1000_PVTEICR(vfn);
-     case E1000_EITR(0):
-     case E1000_EITR(1):
-     case E1000_EITR(2):
-         return E1000_EITR(22) + (addr - E1000_EITR(0)) - vfn * 0xC;
-     case E1000_IVAR0:
-         return E1000_VTIVAR + vfn * 4;
-     case E1000_IVAR_MISC:
-         return E1000_VTIVAR_MISC + vfn * 4;
-     case 0x0F04: /* PBACL */
-         return E1000_PBACLR;
-     case 0x0F0C: /* PSRTYPE */
-         return E1000_PSRTYPE(vfn);
-     case E1000_V2PMAILBOX(0):
-         return E1000_V2PMAILBOX(vfn);
-     case E1000_VMBMEM(0) ... E1000_VMBMEM(0) + 0x3F:
-         return addr + vfn * 0x40;
-     case E1000_RDBAL_A(0):
-         return E1000_RDBAL(vfn);
-     case E1000_RDBAL_A(1):
-         return E1000_RDBAL(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_RDBAH_A(0):
-         return E1000_RDBAH(vfn);
-     case E1000_RDBAH_A(1):
-         return E1000_RDBAH(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_RDLEN_A(0):
-         return E1000_RDLEN(vfn);
-     case E1000_RDLEN_A(1):
-         return E1000_RDLEN(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_SRRCTL_A(0):
-         return E1000_SRRCTL(vfn);
-     case E1000_SRRCTL_A(1):
-         return E1000_SRRCTL(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_RDH_A(0):
-         return E1000_RDH(vfn);
-     case E1000_RDH_A(1):
-         return E1000_RDH(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_RXCTL_A(0):
-         return E1000_RXCTL(vfn);
-     case E1000_RXCTL_A(1):
-         return E1000_RXCTL(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_RDT_A(0):
-         return E1000_RDT(vfn);
-     case E1000_RDT_A(1):
-         return E1000_RDT(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_RXDCTL_A(0):
-         return E1000_RXDCTL(vfn);
-     case E1000_RXDCTL_A(1):
-         return E1000_RXDCTL(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_RQDPC_A(0):
-         return E1000_RQDPC(vfn);
-     case E1000_RQDPC_A(1):
-         return E1000_RQDPC(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_TDBAL_A(0):
-         return E1000_TDBAL(vfn);
-     case E1000_TDBAL_A(1):
-         return E1000_TDBAL(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_TDBAH_A(0):
-         return E1000_TDBAH(vfn);
-     case E1000_TDBAH_A(1):
-         return E1000_TDBAH(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_TDLEN_A(0):
-         return E1000_TDLEN(vfn);
-     case E1000_TDLEN_A(1):
-         return E1000_TDLEN(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_TDH_A(0):
-         return E1000_TDH(vfn);
-     case E1000_TDH_A(1):
-         return E1000_TDH(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_TXCTL_A(0):
-         return E1000_TXCTL(vfn);
-     case E1000_TXCTL_A(1):
-         return E1000_TXCTL(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_TDT_A(0):
-         return E1000_TDT(vfn);
-     case E1000_TDT_A(1):
-         return E1000_TDT(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_TXDCTL_A(0):
-         return E1000_TXDCTL(vfn);
-     case E1000_TXDCTL_A(1):
-         return E1000_TXDCTL(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_TDWBAL_A(0):
-         return E1000_TDWBAL(vfn);
-     case E1000_TDWBAL_A(1):
-         return E1000_TDWBAL(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_TDWBAH_A(0):
-         return E1000_TDWBAH(vfn);
-     case E1000_TDWBAH_A(1):
-         return E1000_TDWBAH(vfn + IGB_MAX_VF_FUNCTIONS);
-     case E1000_VFGPRC:
-         return E1000_PVFGPRC(vfn);
-     case E1000_VFGPTC:
-         return E1000_PVFGPTC(vfn);
-     case E1000_VFGORC:
-         return E1000_PVFGORC(vfn);
-     case E1000_VFGOTC:
-         return E1000_PVFGOTC(vfn);
-     case E1000_VFMPRC:
-         return E1000_PVFMPRC(vfn);
-     case E1000_VFGPRLBC:
-         return E1000_PVFGPRLBC(vfn);
-     case E1000_VFGPTLBC:
-         return E1000_PVFGPTLBC(vfn);
-     case E1000_VFGORLBC:
-         return E1000_PVFGORLBC(vfn);
-     case E1000_VFGOTLBC:
-         return E1000_PVFGOTLBC(vfn);
-     case E1000_STATUS:
-     case E1000_FRTIMER:
-         if (write) {
-             return HWADDR_MAX;
-         }
--        /* fallthrough */
-+        fallthrough;
-     case 0x34E8: /* PBTWAC */
-     case 0x24E8: /* PBRWAC */
-         return addr;
-     }
+     case 0x00:	/* MCSPI_REVISION */
+         return 0x91;
  
-     trace_igbvf_wrn_io_addr_unknown(addr);
+     case 0x10:	/* MCSPI_SYSCONFIG */
+         return s->sysconfig;
  
-     return HWADDR_MAX;
- }
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 5d1f1f104c..a7e8b06d48 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -888,170 +888,170 @@ static void imx_enet_write(IMXFECState *s, uint32_t index, uint32_t value)
- static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-                            unsigned size)
- {
-     IMXFECState *s = IMX_FEC(opaque);
-     const bool single_tx_ring = !imx_eth_is_multi_tx_ring(s);
-     uint32_t index = offset >> 2;
+     case 0x14:	/* MCSPI_SYSSTATUS */
+         return 1;					/* RESETDONE */
  
-     trace_imx_eth_write(index, imx_eth_reg_name(s, index), value);
+     case 0x18:	/* MCSPI_IRQSTATUS */
+         return s->irqst;
  
-     switch (index) {
-     case ENET_EIR:
-         s->regs[index] &= ~value;
-         break;
-     case ENET_EIMR:
-         s->regs[index] = value;
-         break;
-     case ENET_RDAR:
-         if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
-             if (!s->regs[index]) {
-                 imx_eth_enable_rx(s, true);
-             }
-         } else {
-             s->regs[index] = 0;
-         }
-         break;
-     case ENET_TDAR1:
-     case ENET_TDAR2:
-         if (unlikely(single_tx_ring)) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "[%s]%s: trying to access TDAR2 or TDAR1\n",
-                           TYPE_IMX_FEC, __func__);
-             return;
-         }
+     case 0x1c:	/* MCSPI_IRQENABLE */
+         return s->irqen;
+ 
+     case 0x20:	/* MCSPI_WAKEUPENABLE */
+         return s->wken;
+ 
+     case 0x24:	/* MCSPI_SYST */
+         return s->systest;
+ 
+     case 0x28:	/* MCSPI_MODULCTRL */
+         return s->control;
+ 
+     case 0x68: ch ++;
 -        /* fall through */
 +        fallthrough;
-     case ENET_TDAR:
-         if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
-             s->regs[index] = ENET_TDAR_TDAR;
-             imx_eth_do_tx(s, index);
-         }
-         s->regs[index] = 0;
-         break;
-     case ENET_ECR:
-         if (value & ENET_ECR_RESET) {
-             return imx_eth_reset(DEVICE(s));
-         }
-         s->regs[index] = value;
-         if ((s->regs[index] & ENET_ECR_ETHEREN) == 0) {
-             s->regs[ENET_RDAR] = 0;
-             s->rx_descriptor = s->regs[ENET_RDSR];
-             s->regs[ENET_TDAR]  = 0;
-             s->regs[ENET_TDAR1] = 0;
-             s->regs[ENET_TDAR2] = 0;
-             s->tx_descriptor[0] = s->regs[ENET_TDSR];
-             s->tx_descriptor[1] = s->regs[ENET_TDSR1];
-             s->tx_descriptor[2] = s->regs[ENET_TDSR2];
-         }
-         break;
-     case ENET_MMFR:
-         s->regs[index] = value;
-         if (extract32(value, 29, 1)) {
-             /* This is a read operation */
-             s->regs[ENET_MMFR] = deposit32(s->regs[ENET_MMFR], 0, 16,
-                                            imx_phy_read(s,
-                                                        extract32(value,
-                                                                  18, 10)));
-         } else {
-             /* This is a write operation */
-             imx_phy_write(s, extract32(value, 18, 10), extract32(value, 0, 16));
-         }
-         /* raise the interrupt as the PHY operation is done */
-         s->regs[ENET_EIR] |= ENET_INT_MII;
-         break;
-     case ENET_MSCR:
-         s->regs[index] = value & 0xfe;
-         break;
-     case ENET_MIBC:
-         /* TODO: Implement MIB.  */
-         s->regs[index] = (value & 0x80000000) ? 0xc0000000 : 0;
-         break;
-     case ENET_RCR:
-         s->regs[index] = value & 0x07ff003f;
-         /* TODO: Implement LOOP mode.  */
-         break;
-     case ENET_TCR:
-         /* We transmit immediately, so raise GRA immediately.  */
-         s->regs[index] = value;
-         if (value & 1) {
-             s->regs[ENET_EIR] |= ENET_INT_GRA;
-         }
-         break;
-     case ENET_PALR:
-         s->regs[index] = value;
-         s->conf.macaddr.a[0] = value >> 24;
-         s->conf.macaddr.a[1] = value >> 16;
-         s->conf.macaddr.a[2] = value >> 8;
-         s->conf.macaddr.a[3] = value;
-         break;
-     case ENET_PAUR:
-         s->regs[index] = (value | 0x0000ffff) & 0xffff8808;
-         s->conf.macaddr.a[4] = value >> 24;
-         s->conf.macaddr.a[5] = value >> 16;
-         break;
-     case ENET_OPD:
-         s->regs[index] = (value & 0x0000ffff) | 0x00010000;
-         break;
-     case ENET_IAUR:
-     case ENET_IALR:
-     case ENET_GAUR:
-     case ENET_GALR:
-         /* TODO: implement MAC hash filtering.  */
-         break;
-     case ENET_TFWR:
-         if (s->is_fec) {
-             s->regs[index] = value & 0x3;
-         } else {
-             s->regs[index] = value & 0x13f;
-         }
-         break;
-     case ENET_RDSR:
-         if (s->is_fec) {
-             s->regs[index] = value & ~3;
-         } else {
-             s->regs[index] = value & ~7;
-         }
-         s->rx_descriptor = s->regs[index];
-         break;
-     case ENET_TDSR:
-         if (s->is_fec) {
-             s->regs[index] = value & ~3;
-         } else {
-             s->regs[index] = value & ~7;
-         }
-         s->tx_descriptor[0] = s->regs[index];
-         break;
-     case ENET_TDSR1:
-         if (unlikely(single_tx_ring)) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "[%s]%s: trying to access TDSR1\n",
-                           TYPE_IMX_FEC, __func__);
-             return;
-         }
- 
-         s->regs[index] = value & ~7;
-         s->tx_descriptor[1] = s->regs[index];
-         break;
-     case ENET_TDSR2:
-         if (unlikely(single_tx_ring)) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "[%s]%s: trying to access TDSR2\n",
-                           TYPE_IMX_FEC, __func__);
-             return;
-         }
- 
-         s->regs[index] = value & ~7;
-         s->tx_descriptor[2] = s->regs[index];
-         break;
-     case ENET_MRBR:
-         s->regs[index] = value & 0x00003ff0;
-         break;
-     default:
-         if (s->is_fec) {
-             imx_fec_write(s, index, value);
-         } else {
-             imx_enet_write(s, index, value);
-         }
-         return;
-     }
- 
-     imx_eth_update(s);
- }
-diff --git a/hw/net/net_rx_pkt.c b/hw/net/net_rx_pkt.c
-index 32e5f3f9cf..52e2432c9b 100644
---- a/hw/net/net_rx_pkt.c
-+++ b/hw/net/net_rx_pkt.c
-@@ -591,36 +591,36 @@ _net_rx_pkt_validate_sctp_sum(struct NetRxPkt *pkt)
- bool net_rx_pkt_validate_l4_csum(struct NetRxPkt *pkt, bool *csum_valid)
- {
-     uint32_t csum;
- 
-     trace_net_rx_pkt_l4_csum_validate_entry();
- 
-     if (pkt->hasip4 && pkt->ip4hdr_info.fragment) {
-         trace_net_rx_pkt_l4_csum_validate_ip4_fragment();
-         return false;
-     }
- 
-     switch (pkt->l4hdr_info.proto) {
-     case ETH_L4_HDR_PROTO_UDP:
-         if (pkt->l4hdr_info.hdr.udp.uh_sum == 0) {
-             trace_net_rx_pkt_l4_csum_validate_udp_with_no_checksum();
-             return false;
-         }
+     case 0x54: ch ++;
 -        /* fall through */
 +        fallthrough;
-     case ETH_L4_HDR_PROTO_TCP:
-         csum = _net_rx_pkt_calc_l4_csum(pkt);
-         *csum_valid = ((csum == 0) || (csum == 0xFFFF));
-         break;
- 
-     case ETH_L4_HDR_PROTO_SCTP:
-         *csum_valid = _net_rx_pkt_validate_sctp_sum(pkt);
-         break;
- 
-     default:
-         trace_net_rx_pkt_l4_csum_validate_not_xxp();
-         return false;
-     }
- 
-     trace_net_rx_pkt_l4_csum_validate_csum(*csum_valid);
- 
-     return true;
- }
-diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
-index 02828ae716..a32174ef93 100644
---- a/hw/net/pcnet.c
-+++ b/hw/net/pcnet.c
-@@ -1474,47 +1474,47 @@ static uint32_t pcnet_csr_readw(PCNetState *s, uint32_t rap)
- static void pcnet_bcr_writew(PCNetState *s, uint32_t rap, uint32_t val)
- {
-     rap &= 127;
- #ifdef PCNET_DEBUG_BCR
-     printf("pcnet_bcr_writew rap=%d val=0x%04x\n", rap, val);
- #endif
-     switch (rap) {
-     case BCR_SWS:
-         if (!(CSR_STOP(s) || CSR_SPND(s)))
-             return;
-         val &= ~0x0300;
-         switch (val & 0x00ff) {
-         case 0:
-             val |= 0x0200;
-             break;
-         case 1:
-             val |= 0x0100;
-             break;
-         case 2:
-         case 3:
-             val |= 0x0300;
-             break;
-         default:
-             qemu_log_mask(LOG_GUEST_ERROR, "pcnet: Bad SWSTYLE=0x%02x\n",
-                           val & 0xff);
-             val = 0x0200;
-             break;
-         }
- #ifdef PCNET_DEBUG
-        printf("BCR_SWS=0x%04x\n", val);
- #endif
+     case 0x40: ch ++;
 -        /* fall through */
-+       fallthrough;
-     case BCR_LNKST:
-     case BCR_LED1:
-     case BCR_LED2:
-     case BCR_LED3:
-     case BCR_MC:
-     case BCR_FDC:
-     case BCR_BSBC:
-     case BCR_EECAS:
-     case BCR_PLAT:
-         s->bcr[rap] = val;
-         break;
-     default:
-         break;
-     }
- }
-diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
-index 4525fda383..42f19618b1 100644
---- a/hw/net/rtl8139.c
-+++ b/hw/net/rtl8139.c
-@@ -2435,29 +2435,31 @@ static void rtl8139_TxStatus_write(RTL8139State *s, uint32_t txRegOffset, uint32
- static uint32_t rtl8139_TxStatus_TxAddr_read(RTL8139State *s, uint32_t regs[],
-                                              uint32_t base, uint8_t addr,
-                                              int size)
- {
-     uint32_t reg = (addr - base) / 4;
-     uint32_t offset = addr & 0x3;
-     uint32_t ret = 0;
++        fallthrough;
+     case 0x2c:	/* MCSPI_CHCONF */
+         return s->ch[ch].config;
  
-     if (addr & (size - 1)) {
-         DPRINTF("not implemented read for TxStatus/TxAddr "
-                 "addr=0x%x size=0x%x\n", addr, size);
+     case 0x6c: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x58: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x44: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x30:	/* MCSPI_CHSTAT */
+         return s->ch[ch].status;
+ 
+     case 0x70: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x5c: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x48: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x34:	/* MCSPI_CHCTRL */
+         return s->ch[ch].control;
+ 
+     case 0x74: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x60: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x4c: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x38:	/* MCSPI_TX */
+         return s->ch[ch].tx;
+ 
+     case 0x78: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x64: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x50: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x3c:	/* MCSPI_RX */
+         s->ch[ch].status &= ~(1 << 0);			/* RXS */
+         ret = s->ch[ch].rx;
+         omap_mcspi_transfer_run(s, ch);
          return ret;
      }
  
-     switch (size) {
--    case 1: /* fall through */
--    case 2: /* fall through */
-+    case 1:
-+        fallthrough;
-+    case 2:
-+        fallthrough;
-     case 4:
-         ret = (regs[reg] >> offset * 8) & (((uint64_t)1 << (size * 8)) - 1);
-         DPRINTF("TxStatus/TxAddr[%d] read addr=0x%x size=0x%x val=0x%08x\n",
-                 reg, addr, size, ret);
-         break;
-     default:
-         DPRINTF("unsupported size 0x%x of TxStatus/TxAddr reading\n", size);
-         break;
+     OMAP_BAD_REG(addr);
+     return 0;
+ }
+@@ -225,117 +225,117 @@ static uint64_t omap_mcspi_read(void *opaque, hwaddr addr, unsigned size)
+ static void omap_mcspi_write(void *opaque, hwaddr addr,
+                              uint64_t value, unsigned size)
+ {
+     struct omap_mcspi_s *s = opaque;
+     int ch = 0;
+ 
+     if (size != 4) {
+         omap_badwidth_write32(opaque, addr, value);
+         return;
      }
  
-     return ret;
- }
-diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-index 89f4f3b254..5ae4032ec2 100644
---- a/hw/net/xilinx_ethlite.c
-+++ b/hw/net/xilinx_ethlite.c
-@@ -113,55 +113,55 @@ static void
- eth_write(void *opaque, hwaddr addr,
-           uint64_t val64, unsigned int size)
- {
-     struct xlx_ethlite *s = opaque;
-     unsigned int base = 0;
-     uint32_t value = val64;
+     switch (addr) {
+     case 0x00:	/* MCSPI_REVISION */
+     case 0x14:	/* MCSPI_SYSSTATUS */
+     case 0x30:	/* MCSPI_CHSTAT0 */
+     case 0x3c:	/* MCSPI_RX0 */
+     case 0x44:	/* MCSPI_CHSTAT1 */
+     case 0x50:	/* MCSPI_RX1 */
+     case 0x58:	/* MCSPI_CHSTAT2 */
+     case 0x64:	/* MCSPI_RX2 */
+     case 0x6c:	/* MCSPI_CHSTAT3 */
+     case 0x78:	/* MCSPI_RX3 */
+         OMAP_RO_REG(addr);
+         return;
  
-     addr >>= 2;
-     switch (addr) 
-     {
-         case R_TX_CTRL0:
-         case R_TX_CTRL1:
-             if (addr == R_TX_CTRL1)
-                 base = 0x800 / 4;
+     case 0x10:	/* MCSPI_SYSCONFIG */
+         if (value & (1 << 1))				/* SOFTRESET */
+             omap_mcspi_reset(s);
+         s->sysconfig = value & 0x31d;
+         break;
  
-             D(qemu_log("%s addr=" HWADDR_FMT_plx " val=%x\n",
-                        __func__, addr * 4, value));
-             if ((value & (CTRL_P | CTRL_S)) == CTRL_S) {
-                 qemu_send_packet(qemu_get_queue(s->nic),
-                                  (void *) &s->regs[base],
-                                  s->regs[base + R_TX_LEN0]);
-                 D(qemu_log("eth_tx %d\n", s->regs[base + R_TX_LEN0]));
-                 if (s->regs[base + R_TX_CTRL0] & CTRL_I)
-                     eth_pulse_irq(s);
-             } else if ((value & (CTRL_P | CTRL_S)) == (CTRL_P | CTRL_S)) {
-                 memcpy(&s->conf.macaddr.a[0], &s->regs[base], 6);
-                 if (s->regs[base + R_TX_CTRL0] & CTRL_I)
-                     eth_pulse_irq(s);
+     case 0x18:	/* MCSPI_IRQSTATUS */
+         if (!((s->control & (1 << 3)) && (s->systest & (1 << 11)))) {
+             s->irqst &= ~value;
+             omap_mcspi_interrupt_update(s);
+         }
+         break;
+ 
+     case 0x1c:	/* MCSPI_IRQENABLE */
+         s->irqen = value & 0x1777f;
+         omap_mcspi_interrupt_update(s);
+         break;
+ 
+     case 0x20:	/* MCSPI_WAKEUPENABLE */
+         s->wken = value & 1;
+         break;
+ 
+     case 0x24:	/* MCSPI_SYST */
+         if (s->control & (1 << 3))			/* SYSTEM_TEST */
+             if (value & (1 << 11)) {			/* SSB */
+                 s->irqst |= 0x1777f;
+                 omap_mcspi_interrupt_update(s);
              }
+         s->systest = value & 0xfff;
+         break;
  
-             /* We are fast and get ready pretty much immediately so
-                we actually never flip the S nor P bits to one.  */
-             s->regs[addr] = value & ~(CTRL_P | CTRL_S);
-             break;
- 
-         /* Keep these native.  */
-         case R_RX_CTRL0:
-         case R_RX_CTRL1:
-             if (!(value & CTRL_S)) {
-                 qemu_flush_queued_packets(qemu_get_queue(s->nic));
+     case 0x28:	/* MCSPI_MODULCTRL */
+         if (value & (1 << 3))				/* SYSTEM_TEST */
+             if (s->systest & (1 << 11)) {		/* SSB */
+                 s->irqst |= 0x1777f;
+                 omap_mcspi_interrupt_update(s);
              }
--            /* fall through */
-+            fallthrough;
-         case R_TX_LEN0:
-         case R_TX_LEN1:
-         case R_TX_GIE0:
-             D(qemu_log("%s addr=" HWADDR_FMT_plx " val=%x\n",
-                        __func__, addr * 4, value));
-             s->regs[addr] = value;
-             break;
+         s->control = value & 0xf;
+         break;
  
-         default:
-             s->regs[addr] = tswap32(value);
-             break;
+     case 0x68: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x54: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x40: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x2c:	/* MCSPI_CHCONF */
+         if ((value ^ s->ch[ch].config) & (3 << 14))	/* DMAR | DMAW */
+             omap_mcspi_dmarequest_update(s->ch + ch);
+         if (((value >> 12) & 3) == 3) { /* TRM */
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid TRM value (3)\n",
+                           __func__);
+         }
+         if (((value >> 7) & 0x1f) < 3) { /* WL */
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: invalid WL value (%" PRIx64 ")\n",
+                           __func__, (value >> 7) & 0x1f);
+         }
+         s->ch[ch].config = value & 0x7fffff;
+         break;
+ 
+     case 0x70: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x5c: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x48: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x34:	/* MCSPI_CHCTRL */
+         if (value & ~s->ch[ch].control & 1) {		/* EN */
+             s->ch[ch].control |= 1;
+             omap_mcspi_transfer_run(s, ch);
+         } else
+             s->ch[ch].control = value & 1;
+         break;
+ 
+     case 0x74: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x60: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x4c: ch ++;
+-        /* fall through */
++        fallthrough;
+     case 0x38:	/* MCSPI_TX */
+         s->ch[ch].tx = value;
+         s->ch[ch].status &= ~(1 << 1);			/* TXS */
+         omap_mcspi_transfer_run(s, ch);
+         break;
+ 
+     default:
+         OMAP_BAD_REG(addr);
+         return;
      }
  }
 -- 

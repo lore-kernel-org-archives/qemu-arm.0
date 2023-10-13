@@ -1,115 +1,111 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1343332ejc;
-        Fri, 13 Oct 2023 01:19:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHJtpN0kfTBfIf9hSD5J2YZg63mwMsguGynz/g6xsxJ+zIfwuAtpsFffv3siR06vMLqyB2p
-X-Received: by 2002:a05:6214:4019:b0:66d:139f:34cd with SMTP id kd25-20020a056214401900b0066d139f34cdmr4703820qvb.13.1697185181366;
-        Fri, 13 Oct 2023 01:19:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697185181; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1344292ejc;
+        Fri, 13 Oct 2023 01:21:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHwbYSUfD6G6P2l9GiLO860Z5w40QCxEQlikiIDyJbpc0ZLFPYnhUfmYBwebNrwujOJQpv+
+X-Received: by 2002:ac8:5b09:0:b0:418:16d6:5a8d with SMTP id m9-20020ac85b09000000b0041816d65a8dmr34310127qtw.19.1697185316086;
+        Fri, 13 Oct 2023 01:21:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697185316; cv=none;
         d=google.com; s=arc-20160816;
-        b=wQ6oEibE5AnrfD120A5WvsY7VM8As4kMcGiNAjGe4x5ub7C8mDJhYgtdaljLUAqcbO
-         9Es+PgPAPR2OfccEXnHzn2mJ8MoaxXMQEHhtKzmuESrDI8QPMj2YnLIeklWXNs2ltu3E
-         /eozzywcNANuAqNUizPUjteGaL6TuDvZC1bKCXPMoytvqKJy9OZ0Wl1dHDLZFnFhSTEs
-         hBvxGOPzDL4KkPlo7WpD3hdklVzL4rTfY4m0M/sib1Kz7WzsJR/h4u7ELNRp3oixy1Se
-         NPoiCmMkgUOJlqwmWDj56GHlQeuo8gIxGxO4AgcQf0JuUnxwHRF6Ru+XqjfRyhB3chxf
-         tCGw==
+        b=sZI2Hc5YV14YoDy7wuurnBZRGC79OFYCb0M/SYelo1/1+NSJ8Cx7RUWat5YRefH90M
+         n7+5/sCi5zga+uOtuvBlRQ8uN2koYRzVBYUSZgOjRQdTCOQabAaoBY+sv20KTiFXDqe/
+         MboRQUc6Fbyk0ggjbiRL2xyPPVhkDTUcw4FuBC0vtQy782B+Pv19kED3gxlflTvdGqKc
+         Geo6/NXU28sNXyAwTjJLCaWlJFGAVrLeM7D8opxHNGfJl4x40+l0U/YEdF4n87gTYBz1
+         ms/UUAKsgFTDYfPL2d291J5t6D4wNB0Bt9V8uhAyXsXL4WCi/0vtIsrpgQe2zgbsU67I
+         4o6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=CSixY69xmL0JnyirRdBeKYpA0hdWse2178EiFFrGZG8=;
-        fh=SljY2/31Mp/UEmrbI3s31L2OqqR+psAH78bKVNe0Rqk=;
-        b=zaYxkVPSXEAk1cRIqpne9ro8bvcGjGQj0grhv2t+z7UwIC9PBty/r3nq2FzKUdBu9S
-         isu0O/ILantLgqodEyexitREgjpfIUdNsCp0i3Czr8prR32oRP+6DvzB1FGf0g8ggBB/
-         MfS4M0UQTyY3Zjj8GacDQExWun02LYzyTc6PX1/94gFGaIFP1IFY3tJjI42RzKDSiLod
-         yiItsbDhp4YCaDUAIx9FZpZhIAif1GGhdqtfQsvMetLglup8JveqpIQqApvDzx96r6cr
-         x2yTw1vdaiC53k66LK5W3fl8z6gVNL4NPjSzRP3YAat6fJ4AqZYYDfk2gdgs41CdAH68
-         7JCw==
+        bh=a7CRH59E7WDah93GOZUBpOMCM1LCjMQKDPJEI6Vj50o=;
+        fh=0y98MKa0eHX6uiGhZnqhwsx/3/NcGiAriID9nFgLQwk=;
+        b=THxT+DQvI4BNMlaxFQ2PJNTCrqZitNRDz5TJxpWVYWWdMPuqiJbkD3Z6/+SpQUY/w6
+         okRXouN6Svpyu47s2mAxbgkWwM+g9yKhEVq6n8rkf93tBlvDqSRnXiSapy07xHmyiAn/
+         6J8gbnA0kpLlS8dzYRITTHl/ZR1sBGmiz3Jc3yeyw6g6cB+Nay+YMy65K9GSzwpJjNfc
+         r6chmGZ7WbVJIThO06yMdfEaXne+8dIQEYQ5ctQ+9x2uLeixTa+mwhY6J+coZ4Gdxtfv
+         gVg2VjJ+6O85kp21ONuFxsIDJd7FWTvN44Ae2fzUYE+OrpJg93yrqdatX+d9Y1fnlLAK
+         kjug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yzPJYzLK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VVxEGwF5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13-20020a056214012d00b0065d051fc43dsi841223qvs.187.2023.10.13.01.19.41
+        by mx.google.com with ESMTPS id bp36-20020a05622a1ba400b00417afb934casi858542qtb.683.2023.10.13.01.21.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:19:41 -0700 (PDT)
+        Fri, 13 Oct 2023 01:21:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yzPJYzLK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VVxEGwF5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrCwI-0004dW-PI; Fri, 13 Oct 2023 03:50:30 -0400
+	id 1qrCya-00047U-U3; Fri, 13 Oct 2023 03:52:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwH-0004Z4-OU
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:50:29 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1qrCxv-0001MH-Gr
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:52:11 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCvz-0004Ae-Un
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:50:29 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-40572aeb6d0so18703285e9.1
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:50:09 -0700 (PDT)
+ id 1qrCxb-0005Fs-1K
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:52:11 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-406619b53caso19347065e9.1
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:51:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183408; x=1697788208; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183508; x=1697788308; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CSixY69xmL0JnyirRdBeKYpA0hdWse2178EiFFrGZG8=;
- b=yzPJYzLKcLkhrqxfnyDKwMDghBYoz2yBE2z9BrxCcd30CKWmnUWHrf5GV3i84rmxPw
- dol3iFEJ2aKKOi9N1kPHgmoDbBGoVuDPgbmeVEETqqOwKRCzCmb6e0v3Qp+jKeq9JFY+
- TGdp9Z25yPd5DdE4FF9bzax1scstAPYErDTIBhtuCyGWFKAAp6jWCuubOmVPoO6hVb2N
- sX5AxriPHsKHNgAZkuPst9zvK3zg5Fe8JZq4EH7kxVQ0ZiduAEEy6QW1wG3v/g6A1Y9R
- q+rmJ/AHGtv/qumEfVViw4SACt24cvTtyRTzeyvKWHYWMlXP9QjIn0qtHQssuF7XCT0d
- fRsA==
+ bh=a7CRH59E7WDah93GOZUBpOMCM1LCjMQKDPJEI6Vj50o=;
+ b=VVxEGwF5mDA5k2U0aJH9SnO/qFe3X3eCO8Q3Oj+mpSbm9BXi3thhOd8qRQGODIduZ0
+ dp1MT7RPjnNO8lPD6IwQkoxS7gEYc4lntEUs7/NEq/sxShCCmKnXwBqoMEIWeuVSfHv8
+ t0g6EgFtsEXeFGviyhpVmARLxxtxIwAPNLmf4XbU/CG9hu/KWgEW8ajHCLxvtw7olJsI
+ Bal+PxQzcMxhAjwjIYGTZZGCt3RIdp7suTeykplTZIhFwpB71AbBdIVfFkP0AlkZsxkF
+ AmhZcgt2Q9w8vV/QrPxvdJ71b+4KRLIiU8KiOhgcQMA0Uy/RCSiWC6INQUQcrnIjY075
+ uang==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183408; x=1697788208;
+ d=1e100.net; s=20230601; t=1697183508; x=1697788308;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=CSixY69xmL0JnyirRdBeKYpA0hdWse2178EiFFrGZG8=;
- b=UFDiJutAYuzz+y2r+mhqV9QThuVUoLzd0GJp20AvSJlqZvIt0EtOunZ/XLHxziOHh3
- YcGFRlvr4iIBTMi4gRwhV99MjJA0kGMpzymi/LGaJI5TNSKeS3M93KyH7/yuHg5a4ugL
- ZTM0yzHUWupECryOSLvoijMJ+3LBa1hrxWYDpb+4NYI/FGbxO20xWTMBbPtZO8new3Co
- 0YR2L2hsbzreF/H2oGDlvYF5gc85LIZqJEdFWzpkQLO8353MlvqTedIFF1//wOual3Zr
- uZsiaFUw5IWI2cFWlr/HNzfeLk7bZbTzEORCSP2I2qhASx2lpG1G7B4/TXSlUMQmJsol
- CQhw==
-X-Gm-Message-State: AOJu0Yz8vJN7LTke6nJ13701H8LWuiGZyJ5UwwBACfmIRwG8nmM6/pgL
- Uas24mMgyibX8VGo9lwfo3sZhA==
-X-Received: by 2002:a7b:ca54:0:b0:405:3885:490a with SMTP id
- m20-20020a7bca54000000b004053885490amr23203976wml.0.1697183408302; 
- Fri, 13 Oct 2023 00:50:08 -0700 (PDT)
+ bh=a7CRH59E7WDah93GOZUBpOMCM1LCjMQKDPJEI6Vj50o=;
+ b=qUIciro0NQy73VjcQssGNaZSnGvp0HQVsJpS4HSr9wp7fBER99LTK5IrUktdl86Tjm
+ +FM6ejl+ZWgCfayq3z+ScVATWXGahng3oYedzIuVtsw6Rqm1CPm0qSp62DSKQlBpznih
+ FSbosIqSar2+vgwMJ+ScyI7RQqpeMMQfhH8eKKxD11D1BKS2AQVUF71xnKSyoimJUq3q
+ SE7sEJtid/W3VivffB2kFJk8VHdVi7f+NpIZ8OfvcvMZiv6JhASJ17JZVlRbLUXJLYXA
+ QpWESsdxX+km26GSMjP522EE/7SoUgMAuJP/R4yh6vx6R80Pasg9z7AXJlsDKT3tckuJ
+ cgyg==
+X-Gm-Message-State: AOJu0Yy4HG9alUIKrVLvjIoYqJm9Lw3gInMrUL72jwhcrWHPLga/Fv5b
+ /ixlgKLwWi3LVxG+uk9Cdern0w==
+X-Received: by 2002:adf:e19d:0:b0:32c:ea14:89e5 with SMTP id
+ az29-20020adfe19d000000b0032cea1489e5mr10753805wrb.39.1697183508324; 
+ Fri, 13 Oct 2023 00:51:48 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.06
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:50:07 -0700 (PDT)
+ Fri, 13 Oct 2023 00:51:47 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>
-Subject: [RFC PATCH 11/78] hw/timer: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:15 +0300
-Message-Id: <0aa9568d743e6e1cf5763fe5557171fff773d50d.1697183082.git.manos.pitsidianakis@linaro.org>
+ Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>
+Subject: [RFC PATCH 50/78] hw/audio: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:48:08 +0300
+Message-Id: <5fd3f2429559990851dba1e57dea59a2d83c0b18.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,677 +127,563 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: t060j7GV5m6K
+X-TUID: QU1j8QUWBsgn
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/timer/a9gtimer.c     |  8 ++--
- hw/timer/aspeed_timer.c |  1 +
- hw/timer/pxa2xx_timer.c | 94 ++++++++++++++++++++---------------------
- hw/timer/renesas_tmr.c  |  2 +-
- hw/timer/sh_timer.c     |  8 ++--
- 5 files changed, 57 insertions(+), 56 deletions(-)
+ hw/audio/asc.c        | 2 +-
+ hw/audio/cs4231a.c    | 2 +-
+ hw/audio/gusemu_hal.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 5e959b6d09..b83d51da96 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -135,40 +135,40 @@ static void a9_gtimer_update_no_sync(void *opaque)
- static uint64_t a9_gtimer_read(void *opaque, hwaddr addr, unsigned size)
+diff --git a/hw/audio/asc.c b/hw/audio/asc.c
+index 0f36b4ce9b..336da09509 100644
+--- a/hw/audio/asc.c
++++ b/hw/audio/asc.c
+@@ -154,126 +154,126 @@ static uint8_t asc_fifo_get(ASCFIFOState *fs)
+ static int generate_fifo(ASCState *s, int maxsamples)
  {
-     A9GTimerPerCPU *gtb = (A9GTimerPerCPU *)opaque;
-     A9GTimerState *s = gtb->parent;
-     A9GTimerUpdate update;
-     uint64_t ret = 0;
-     int shift = 0;
+     int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+     uint8_t *buf = s->mixbuf;
+     int i, wcount = 0;
  
-     switch (addr) {
-     case R_COUNTER_HI:
-         shift = 32;
--        /* fallthrough */
-+        fallthrough;
-     case R_COUNTER_LO:
-         update = a9_gtimer_get_update(s);
-         ret = extract64(update.new, shift, 32);
-         break;
-     case R_CONTROL:
-         ret = s->control | gtb->control;
-         break;
-     case R_INTERRUPT_STATUS:
-         ret = gtb->status;
-         break;
-     case R_COMPARATOR_HI:
-         shift = 32;
--        /* fallthrough */
-+        fallthrough;
-     case R_COMPARATOR_LO:
-         ret = extract64(gtb->compare, shift, 32);
-         break;
-     case R_AUTO_INCREMENT:
-         ret =  gtb->inc;
-         break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "bad a9gtimer register: %x\n",
-                       (unsigned)addr);
-         return 0;
-     }
+     while (wcount < maxsamples) {
+         uint8_t val;
+         int16_t d, f0, f1;
+         int32_t t;
+         int shift, filter;
+         bool hasdata = false;
  
-     DB_PRINT("addr:%#x data:%#08" PRIx64 "\n", (unsigned)addr, ret);
-     return ret;
- }
-@@ -176,54 +176,54 @@ static uint64_t a9_gtimer_read(void *opaque, hwaddr addr, unsigned size)
- static void a9_gtimer_write(void *opaque, hwaddr addr, uint64_t value,
-                             unsigned size)
- {
-     A9GTimerPerCPU *gtb = (A9GTimerPerCPU *)opaque;
-     A9GTimerState *s = gtb->parent;
-     int shift = 0;
+         for (i = 0; i < 2; i++) {
+             ASCFIFOState *fs = &s->fifos[i];
  
-     DB_PRINT("addr:%#x data:%#08" PRIx64 "\n", (unsigned)addr, value);
+             switch (fs->extregs[ASC_EXTREGS_FIFOCTRL] & 0x83) {
+             case 0x82:
+                 /*
+                  * CD-XA BRR mode: decompress 15 bytes into 28 16-bit
+                  * samples
+                  */
+                 if (!fs->cnt) {
+                     val = 0x80;
+                     break;
+                 }
  
-     switch (addr) {
-     case R_COUNTER_HI:
-         shift = 32;
--        /* fallthrough */
-+        fallthrough;
-     case R_COUNTER_LO:
-         /*
-          * Keep it simple - ARM docco explicitly says to disable timer before
-          * modding it, so don't bother trying to do all the difficult on the fly
-          * timer modifications - (if they even work in real hardware??).
-          */
-         if (s->control & R_CONTROL_TIMER_ENABLE) {
-             qemu_log_mask(LOG_GUEST_ERROR, "Cannot mod running ARM gtimer\n");
-             return;
+                 if (fs->xa_cnt == -1) {
+                     /* Start of packet, get flags */
+                     fs->xa_flags = asc_fifo_get(fs);
+                     fs->xa_cnt = 0;
+                 }
+ 
+                 shift = fs->xa_flags & 0xf;
+                 filter = fs->xa_flags >> 4;
+                 f0 = (int8_t)fs->extregs[ASC_EXTREGS_CDXA_DECOMP_FILT +
+                                  (filter << 1) + 1];
+                 f1 = (int8_t)fs->extregs[ASC_EXTREGS_CDXA_DECOMP_FILT +
+                                  (filter << 1)];
+ 
+                 if ((fs->xa_cnt & 1) == 0) {
+                     if (!fs->cnt) {
+                         val = 0x80;
+                         break;
+                     }
+ 
+                     fs->xa_val = asc_fifo_get(fs);
+                     d = (fs->xa_val & 0xf) << 12;
+                 } else {
+                     d = (fs->xa_val & 0xf0) << 8;
+                 }
+                 t = (d >> shift) + (((fs->xa_last[0] * f0) +
+                                      (fs->xa_last[1] * f1) + 32) >> 6);
+                 if (t < -32768) {
+                     t = -32768;
+                 } else if (t > 32767) {
+                     t = 32767;
+                 }
+ 
+                 /*
+                  * CD-XA BRR generates 16-bit signed output, so convert to
+                  * 8-bit before writing to buffer. Does real hardware do the
+                  * same?
+                  */
+                 val = (uint8_t)(t / 256) ^ 0x80;
+                 hasdata = true;
+                 fs->xa_cnt++;
+ 
+                 fs->xa_last[1] = fs->xa_last[0];
+                 fs->xa_last[0] = (int16_t)t;
+ 
+                 if (fs->xa_cnt == 28) {
+                     /* End of packet */
+                     fs->xa_cnt = -1;
+                 }
+                 break;
+ 
+             default:
+-                /* fallthrough */
++                fallthrough;
+             case 0x80:
+                 /* Raw mode */
+                 if (fs->cnt) {
+                     val = asc_fifo_get(fs);
+                     hasdata = true;
+                 } else {
+                     val = 0x80;
+                 }
+                 break;
+             }
+ 
+             buf[wcount * 2 + i] = val;
          }
-         s->counter = deposit64(s->counter, shift, 32, value);
-         return;
-     case R_CONTROL:
-         a9_gtimer_update(s, (value ^ s->control) & R_CONTROL_NEEDS_SYNC);
-         gtb->control = value & R_CONTROL_BANKED;
-         s->control = value & ~R_CONTROL_BANKED;
-         break;
-     case R_INTERRUPT_STATUS:
-         a9_gtimer_update(s, false);
-         gtb->status &= ~value;
-         break;
-     case R_COMPARATOR_HI:
-         shift = 32;
--        /* fallthrough */
-+        fallthrough;
-     case R_COMPARATOR_LO:
-         a9_gtimer_update(s, false);
-         gtb->compare = deposit64(gtb->compare, shift, 32, value);
-         break;
-     case R_AUTO_INCREMENT:
-         gtb->inc = value;
-         return;
-     default:
-         return;
-     }
  
-     a9_gtimer_update(s, false);
- }
- 
- /* Wrapper functions to implement the "read global timer for
-  * the current CPU" memory regions.
-  */
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 72161f07bb..b343b7ab2c 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -266,53 +266,54 @@ static uint64_t aspeed_timer_read(void *opaque, hwaddr offset, unsigned size)
- static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int reg,
-                                    uint32_t value)
- {
-     AspeedTimer *t;
-     uint32_t old_reload;
- 
-     trace_aspeed_timer_set_value(timer, reg, value);
-     t = &s->timers[timer];
-     switch (reg) {
-     case TIMER_REG_RELOAD:
-         old_reload = t->reload;
-         t->reload = calculate_min_ticks(t, value);
- 
-         /* If the reload value was not previously set, or zero, and
-          * the current value is valid, try to start the timer if it is
-          * enabled.
-          */
-         if (old_reload || !t->reload) {
+         if (!hasdata) {
              break;
          }
-         /* fall through to re-enable */
-+        fallthrough;
-     case TIMER_REG_STATUS:
-         if (timer_enabled(t)) {
-             uint64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-             int64_t delta = (int64_t) value - (int64_t) calculate_ticks(t, now);
-             uint32_t rate = calculate_rate(t);
  
-             if (delta >= 0) {
-                 t->start += muldiv64(delta, NANOSECONDS_PER_SECOND, rate);
-             } else {
-                 t->start -= muldiv64(-delta, NANOSECONDS_PER_SECOND, rate);
-             }
-             aspeed_timer_mod(t);
+         wcount++;
+     }
+ 
+     /*
+      * MacOS (un)helpfully leaves the FIFO engine running even when it has
+      * finished writing out samples, but still expects the FIFO empty
+      * interrupts to be generated for each FIFO cycle (without these interrupts
+      * MacOS will freeze)
+      */
+     if (s->fifos[0].cnt == 0 && s->fifos[1].cnt == 0) {
+         if (!s->fifo_empty_ns) {
+             /* FIFO has completed first empty cycle */
+             s->fifo_empty_ns = now;
+         } else if (now > (s->fifo_empty_ns + ASC_FIFO_CYCLE_TIME)) {
+             /* FIFO has completed entire cycle with no data */
+             s->fifos[0].int_status |= ASC_FIFO_STATUS_HALF_FULL |
+                                       ASC_FIFO_STATUS_FULL_EMPTY;
+             s->fifos[1].int_status |= ASC_FIFO_STATUS_HALF_FULL |
+                                       ASC_FIFO_STATUS_FULL_EMPTY;
+             s->fifo_empty_ns = now;
+             asc_raise_irq(s);
          }
+     } else {
+         /* FIFO contains data, reset empty time */
+         s->fifo_empty_ns = 0;
+     }
+ 
+     return wcount;
+ }
+diff --git a/hw/audio/cs4231a.c b/hw/audio/cs4231a.c
+index 3aa105748d..3bf0116c68 100644
+--- a/hw/audio/cs4231a.c
++++ b/hw/audio/cs4231a.c
+@@ -272,90 +272,90 @@ static void cs_audio_callback (void *opaque, int free)
+ static void cs_reset_voices (CSState *s, uint32_t val)
+ {
+     int xtal;
+     struct audsettings as;
+     IsaDmaClass *k = ISADMA_GET_CLASS(s->isa_dma);
+ 
+ #ifdef DEBUG_XLAW
+     if (val == 0 || val == 32)
+         val = (1 << 4) | (1 << 5);
+ #endif
+ 
+     xtal = val & 1;
+     as.freq = freqs[xtal][(val >> 1) & 7];
+ 
+     if (as.freq == -1) {
+         lerr ("unsupported frequency (val=%#x)\n", val);
+         goto error;
+     }
+ 
+     as.nchannels = (val & (1 << 4)) ? 2 : 1;
+     as.endianness = 0;
+     s->tab = NULL;
+ 
+     switch ((val >> 5) & ((s->dregs[MODE_And_ID] & MODE2) ? 7 : 3)) {
+     case 0:
+         as.fmt = AUDIO_FORMAT_U8;
+         s->shift = as.nchannels == 2;
          break;
-     case TIMER_REG_MATCH_FIRST:
-     case TIMER_REG_MATCH_SECOND:
-         t->match[reg - 2] = value;
-         if (timer_enabled(t)) {
-             aspeed_timer_mod(t);
+ 
+     case 1:
+         s->tab = MuLawDecompressTable;
+         goto x_law;
+     case 3:
+         s->tab = ALawDecompressTable;
+     x_law:
+         as.fmt = AUDIO_FORMAT_S16;
+         as.endianness = AUDIO_HOST_ENDIANNESS;
+         s->shift = as.nchannels == 2;
+         break;
+ 
+     case 6:
+         as.endianness = 1;
+-        /* fall through */
++        fallthrough;
+     case 2:
+         as.fmt = AUDIO_FORMAT_S16;
+         s->shift = as.nchannels;
+         break;
+ 
+     case 7:
+     case 4:
+         lerr ("attempt to use reserved format value (%#x)\n", val);
+         goto error;
+ 
+     case 5:
+         lerr ("ADPCM 4 bit IMA compatible format is not supported\n");
+         goto error;
+     }
+ 
+     s->voice = AUD_open_out (
+         &s->card,
+         s->voice,
+         "cs4231a",
+         s,
+         cs_audio_callback,
+         &as
+         );
+ 
+     if (s->dregs[Interface_Configuration] & PEN) {
+         if (!s->dma_running) {
+             k->hold_DREQ(s->isa_dma, s->dma);
+             AUD_set_active_out (s->voice, 1);
+             s->transferred = 0;
          }
-         break;
-     default:
-         qemu_log_mask(LOG_UNIMP, "%s: Programming error: unexpected reg: %d\n",
-                       __func__, reg);
-         break;
+         s->dma_running = 1;
+     }
+     else {
+         if (s->dma_running) {
+             k->release_DREQ(s->isa_dma, s->dma);
+             AUD_set_active_out (s->voice, 0);
+         }
+         s->dma_running = 0;
+     }
+     return;
+ 
+  error:
+     if (s->dma_running) {
+         k->release_DREQ(s->isa_dma, s->dma);
+         AUD_set_active_out (s->voice, 0);
      }
  }
- 
- /* Control register operations are broken out into helpers that can be
-  * explicitly called on aspeed_timer_reset(), but also from
-  * aspeed_timer_ctrl_op().
-  */
-diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-index 2ae5ae3212..11863e1a42 100644
---- a/hw/timer/pxa2xx_timer.c
-+++ b/hw/timer/pxa2xx_timer.c
-@@ -162,109 +162,109 @@ static void pxa2xx_timer_update4(void *opaque, uint64_t now_qemu, int n)
- static uint64_t pxa2xx_timer_read(void *opaque, hwaddr offset,
-                                   unsigned size)
+diff --git a/hw/audio/gusemu_hal.c b/hw/audio/gusemu_hal.c
+index f159978b49..76dd906ea1 100644
+--- a/hw/audio/gusemu_hal.c
++++ b/hw/audio/gusemu_hal.c
+@@ -190,311 +190,311 @@ unsigned int gus_read(GUSEmuState * state, int port, int size)
+ void gus_write(GUSEmuState * state, int port, int size, unsigned int data)
  {
-     PXA2xxTimerInfo *s = (PXA2xxTimerInfo *) opaque;
-     int tm = 0;
+     uint8_t        *gusptr;
+     gusptr = state->gusdatapos;
+     GUSregd(portaccesses)++;
  
-     switch (offset) {
-     case OSMR3:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR2:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR1:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR0:
-         return s->timer[tm].value;
-     case OSMR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         return s->tm4[tm].tm.value;
-     case OSCR:
-         return s->clock + muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) -
-                         s->lastload, s->freq, NANOSECONDS_PER_SECOND);
-     case OSCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
- 
-         if ((tm == 9 - 4 || tm == 11 - 4) && (s->tm4[tm].control & (1 << 9))) {
-             if (s->tm4[tm - 1].freq)
-                 s->snapshot = s->tm4[tm - 1].clock + muldiv64(
-                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) -
-                                 s->tm4[tm - 1].lastload,
-                                 s->tm4[tm - 1].freq, NANOSECONDS_PER_SECOND);
+     switch (port & 0xff0f)
+     {
+     case 0x200:                 /* MixerCtrlReg */
+         GUSregb(MixerCtrlReg2x0) = (uint8_t) data;
+         break;
+     case 0x206:                 /* IRQstatReg / SB2x6IRQ */
+         if (GUSregb(GUS45TimerCtrl) & 0x20) /* SB IRQ enabled? -> set 2x6IRQ bit */
+         {
+             GUSregb(TimerStatus2x8) |= 0x08;
+             GUSregb(IRQStatReg2x6) = 0x10;
+             GUS_irqrequest(state, state->gusirq, 1);
+         }
+         break;
+     case 0x308:                /* AdLib 388h */
+     case 0x208:                /* AdLibCommandReg */
+         GUSregb(AdLibCommand2xA) = (uint8_t) data;
+         break;
+     case 0x309:                /* AdLib 389h */
+     case 0x209:                /* AdLibDataReg */
+         if ((GUSregb(AdLibCommand2xA) == 0x04) && (!(GUSregb(GUS45TimerCtrl) & 1))) /* GUS auto timer mode enabled? */
+         {
+             if (data & 0x80)
+                 GUSregb(TimerStatus2x8) &= 0x1f; /* AdLib IRQ reset? -> clear maskable adl. timer int regs */
              else
-                 s->snapshot = s->tm4[tm - 1].clock;
+                 GUSregb(TimerDataReg2x9) = (uint8_t) data;
          }
- 
-         if (!s->tm4[tm].freq)
-             return s->tm4[tm].clock;
-         return s->tm4[tm].clock +
-             muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) -
-                      s->tm4[tm].lastload, s->tm4[tm].freq,
-                      NANOSECONDS_PER_SECOND);
-     case OIER:
-         return s->irq_enabled;
-     case OSSR:	/* Status register */
-         return s->events;
-     case OWER:
-         return s->reset3;
-     case OMCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         return s->tm4[tm].control;
-     case OSNR:
-         return s->snapshot;
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "%s: unknown register 0x%02" HWADDR_PRIx "\n",
-                       __func__, offset);
-         break;
-     badreg:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: incorrect register 0x%02" HWADDR_PRIx "\n",
-                       __func__, offset);
-     }
- 
-     return 0;
- }
-@@ -272,128 +272,128 @@ static uint64_t pxa2xx_timer_read(void *opaque, hwaddr offset,
- static void pxa2xx_timer_write(void *opaque, hwaddr offset,
-                                uint64_t value, unsigned size)
- {
-     int i, tm = 0;
-     PXA2xxTimerInfo *s = (PXA2xxTimerInfo *) opaque;
- 
-     switch (offset) {
-     case OSMR3:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR2:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR1:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR0:
-         s->timer[tm].value = value;
-         pxa2xx_timer_update(s, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-         break;
-     case OSMR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         s->tm4[tm].tm.value = value;
-         pxa2xx_timer_update4(s, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), tm);
-         break;
-     case OSCR:
-         s->oldclock = s->clock;
-         s->lastload = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-         s->clock = value;
-         pxa2xx_timer_update(s, s->lastload);
-         break;
-     case OSCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         s->tm4[tm].oldclock = s->tm4[tm].clock;
-         s->tm4[tm].lastload = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-         s->tm4[tm].clock = value;
-         pxa2xx_timer_update4(s, s->tm4[tm].lastload, tm);
-         break;
-     case OIER:
-         s->irq_enabled = value & 0xfff;
-         break;
-     case OSSR:	/* Status register */
-         value &= s->events;
-         s->events &= ~value;
-         for (i = 0; i < 4; i ++, value >>= 1)
-             if (value & 1)
-                 qemu_irq_lower(s->timer[i].irq);
-         if (pxa2xx_timer_has_tm4(s) && !(s->events & 0xff0) && value)
-             qemu_irq_lower(s->irq4);
-         break;
-     case OWER:	/* XXX: Reset on OSMR3 match? */
-         s->reset3 = value;
-         break;
-     case OMCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         s->tm4[tm].control = value & 0x0ff;
-         /* XXX Stop if running (shouldn't happen) */
-         if ((value & (1 << 7)) || tm == 0)
-             s->tm4[tm].freq = pxa2xx_timer4_freq[value & 7];
-         else {
-             s->tm4[tm].freq = 0;
-             pxa2xx_timer_update4(s, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), tm);
+         else
+         {
+             GUSregb(AdLibData2x9) = (uint8_t) data;
+             if (GUSregb(GUS45TimerCtrl) & 0x02)
+             {
+                 GUSregb(TimerStatus2x8) |= 0x01;
+                 GUSregb(IRQStatReg2x6) = 0x10;
+                 GUS_irqrequest(state, state->gusirq, 1);
+             }
          }
          break;
-     case OMCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR8:  tm += 4;
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         s->tm4[tm].control = value & 0x3ff;
-         /* XXX Stop if running (shouldn't happen) */
-         if ((value & (1 << 7)) || !(tm & 1))
-             s->tm4[tm].freq =
-                     pxa2xx_timer4_freq[(value & (1 << 8)) ?  0 : (value & 7)];
-         else {
-             s->tm4[tm].freq = 0;
-             pxa2xx_timer_update4(s, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), tm);
-         }
-         break;
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "%s: unknown register 0x%02" HWADDR_PRIx " "
-                       "(value 0x%08" PRIx64 ")\n",  __func__, offset, value);
-         break;
-     badreg:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: incorrect register 0x%02" HWADDR_PRIx " "
-                       "(value 0x%08" PRIx64 ")\n", __func__, offset, value);
-     }
- }
-diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
-index 43b31213bc..a32521e3c3 100644
---- a/hw/timer/renesas_tmr.c
-+++ b/hw/timer/renesas_tmr.c
-@@ -193,69 +193,69 @@ static uint8_t read_tccr(uint8_t r)
- static uint64_t tmr_read(void *opaque, hwaddr addr, unsigned size)
- {
-     RTMRState *tmr = opaque;
-     int ch = addr & 1;
-     uint64_t ret;
- 
-     if (size == 2 && (ch != 0 || addr == A_TCR || addr == A_TCSR)) {
-         qemu_log_mask(LOG_GUEST_ERROR, "renesas_tmr: Invalid read size 0x%"
-                                        HWADDR_PRIX "\n",
-                       addr);
-         return UINT64_MAX;
-     }
-     switch (addr & 0x0e) {
-     case A_TCR:
-         ret = 0;
-         ret = FIELD_DP8(ret, TCR, CCLR,
-                         FIELD_EX8(tmr->tcr[ch], TCR, CCLR));
-         ret = FIELD_DP8(ret, TCR, OVIE,
-                         FIELD_EX8(tmr->tcr[ch], TCR, OVIE));
-         ret = FIELD_DP8(ret, TCR, CMIEA,
-                         FIELD_EX8(tmr->tcr[ch], TCR, CMIEA));
-         ret = FIELD_DP8(ret, TCR, CMIEB,
-                         FIELD_EX8(tmr->tcr[ch], TCR, CMIEB));
-         return ret;
-     case A_TCSR:
-         ret = 0;
-         ret = FIELD_DP8(ret, TCSR, OSA,
-                         FIELD_EX8(tmr->tcsr[ch], TCSR, OSA));
-         ret = FIELD_DP8(ret, TCSR, OSB,
-                         FIELD_EX8(tmr->tcsr[ch], TCSR, OSB));
-         switch (ch) {
+     case 0x20A:
+         GUSregb(AdLibStatus2x8) = (uint8_t) data;
+         break;                 /* AdLibStatus2x8 */
+     case 0x20B:                /* GUS hidden registers */
+         switch (GUSregb(RegCtrl_2xF) & 0x7)
+         {
          case 0:
-             ret = FIELD_DP8(ret, TCSR, ADTE,
-                             FIELD_EX8(tmr->tcsr[ch], TCSR, ADTE));
+             if (GUSregb(MixerCtrlReg2x0) & 0x40)
+                 GUSregb(IRQ_2xB) = (uint8_t) data; /* control register select bit */
+             else
+                 GUSregb(DMA_2xB) = (uint8_t) data;
              break;
-         case 1: /* CH1 ADTE unimplement always 1 */
-             ret = FIELD_DP8(ret, TCSR, ADTE, 1);
+             /* case 1-4: general purpose emulation regs */
+         case 5:                                    /* clear stat reg 2xF */
+             GUSregb(StatRead_2xF) = 0; /* ToDo: is this identical with GUS classic? */
+             if (!GUSregb(IRQStatReg2x6))
+                 GUS_irqclear(state, state->gusirq);
              break;
+         case 6:                                    /* Jumper reg (Joystick/MIDI enable) */
+             GUSregb(Jumper_2xB) = (uint8_t) data;
+             break;
+         default:;
          }
-         return ret;
-     case A_TCORA:
-         if (size == 1) {
-             return tmr->tcora[ch];
-         } else if (ch == 0) {
-             return concat_reg(tmr->tcora);
+         break;
+     case 0x20C:                /* SB2xCd */
+         if (GUSregb(GUS45TimerCtrl) & 0x20)
+         {
+             GUSregb(TimerStatus2x8) |= 0x10; /* SB IRQ enabled? -> set 2xCIRQ bit */
+             GUSregb(IRQStatReg2x6) = 0x10;
+             GUS_irqrequest(state, state->gusirq, 1);
          }
 -        /* fall through */
 +        fallthrough;
-     case A_TCORB:
-         if (size == 1) {
-             return tmr->tcorb[ch];
-         } else {
-             return concat_reg(tmr->tcorb);
-         }
-     case A_TCNT:
-         return read_tcnt(tmr, size, ch);
-     case A_TCCR:
-         if (size == 1) {
-             return read_tccr(tmr->tccr[ch]);
-         } else {
-             return read_tccr(tmr->tccr[0]) << 8 | read_tccr(tmr->tccr[1]);
-         }
-     default:
-         qemu_log_mask(LOG_UNIMP, "renesas_tmr: Register 0x%" HWADDR_PRIX
-                                  " not implemented\n",
-                       addr);
+     case 0x20D:                /* SB2xCd no IRQ */
+         GUSregb(SB2xCd) = (uint8_t) data;
          break;
-     }
-     return UINT64_MAX;
- }
-diff --git a/hw/timer/sh_timer.c b/hw/timer/sh_timer.c
-index 7788939766..6dbfc2595b 100644
---- a/hw/timer/sh_timer.c
-+++ b/hw/timer/sh_timer.c
-@@ -84,120 +84,120 @@ static uint32_t sh_timer_read(void *opaque, hwaddr offset)
- static void sh_timer_write(void *opaque, hwaddr offset, uint32_t value)
- {
-     SHTimerState *s = opaque;
-     int freq;
+     case 0x20E:                /* SB2xE */
+         GUSregb(SB2xE) = (uint8_t) data;
+         break;
+     case 0x20F:
+         GUSregb(RegCtrl_2xF) = (uint8_t) data;
+         break;                 /* CtrlReg2xF */
+     case 0x302:                /* VoiceSelReg */
+         GUSregb(VoiceSelReg3x2) = (uint8_t) data;
+         break;
+     case 0x303:                /* FunkSelReg */
+         GUSregb(FunkSelReg3x3) = (uint8_t) data;
+         if ((uint8_t) data == 0x8f) /* set irqstatreg, get voicereg and clear IRQ */
+         {
+             int             voice;
+             if (GUSregd(voicewavetableirq)) /* WavetableIRQ */
+             {
+                 for (voice = 0; voice < 31; voice++)
+                 {
+                     if (GUSregd(voicewavetableirq) & (1 << voice))
+                     {
+                         GUSregd(voicewavetableirq) ^= (1 << voice); /* clear IRQ bit */
+                         GUSregb(voice << 5) &= 0x7f; /* clear voice reg irq bit */
+                         if (!GUSregd(voicewavetableirq))
+                             GUSregb(IRQStatReg2x6) &= 0xdf;
+                         if (!GUSregb(IRQStatReg2x6))
+                             GUS_irqclear(state, state->gusirq);
+                         GUSregb(SynVoiceIRQ8f) = voice | 0x60; /* (bit==0 => IRQ wartend) */
+                         return;
+                     }
+                 }
+             }
+             else if (GUSregd(voicevolrampirq)) /* VolRamp IRQ */
+             {
+                 for (voice = 0; voice < 31; voice++)
+                 {
+                     if (GUSregd(voicevolrampirq) & (1 << voice))
+                     {
+                         GUSregd(voicevolrampirq) ^= (1 << voice); /* clear IRQ bit */
+                         GUSregb((voice << 5) + VSRVolRampControl) &= 0x7f; /* clear voice volume reg irq bit */
+                         if (!GUSregd(voicevolrampirq))
+                             GUSregb(IRQStatReg2x6) &= 0xbf;
+                         if (!GUSregb(IRQStatReg2x6))
+                             GUS_irqclear(state, state->gusirq);
+                         GUSregb(SynVoiceIRQ8f) = voice | 0x80; /* (bit==0 => IRQ wartend) */
+                         return;
+                     }
+                 }
+             }
+             GUSregb(SynVoiceIRQ8f) = 0xe8; /* kein IRQ wartet */
+         }
+         break;
+     case 0x304:
+     case 0x305:
+         {
+             uint16_t         writedata = (uint16_t) data;
+             uint16_t         readmask = 0x0000;
+             if (size == 1)
+             {
+                 readmask = 0xff00;
+                 writedata &= 0xff;
+                 if ((port & 0xff0f) == 0x305)
+                 {
+                     writedata = (uint16_t) (writedata << 8);
+                     readmask = 0x00ff;
+                 }
+             }
+             switch (GUSregb(FunkSelReg3x3))
+             {
+                 /* voice specific functions */
+             case 0x00:
+             case 0x01:
+             case 0x02:
+             case 0x03:
+             case 0x04:
+             case 0x05:
+             case 0x06:
+             case 0x07:
+             case 0x08:
+             case 0x09:
+             case 0x0a:
+             case 0x0b:
+             case 0x0c:
+             case 0x0d:
+                 {
+                     int             offset;
+                     if (!(GUSregb(GUS4cReset) & 0x01))
+                         break;  /* reset flag active? */
+                     offset = 2 * (GUSregb(FunkSelReg3x3) & 0x0f);
+                     offset += (GUSregb(VoiceSelReg3x2) & 0x1f) << 5; /*  = Voice*32 + Function*2 */
+                     GUSregw(offset) = (uint16_t) ((GUSregw(offset) & readmask) | writedata);
+                 }
+                 break;
+                 /* voice unspecific functions */
+             case 0x0e:         /* NumVoices */
+                 GUSregb(NumVoices) = (uint8_t) data;
+                 break;
+             /* case 0x0f:      */ /* read only */
+                 /* common functions */
+             case 0x41:         /* DramDMAContrReg */
+                 GUSregb(GUS41DMACtrl) = (uint8_t) data;
+                 if (data & 0x01)
+                     GUS_dmarequest(state);
+                 break;
+             case 0x42:         /* DramDMAmemPosReg */
+                 GUSregw(GUS42DMAStart) = (GUSregw(GUS42DMAStart) & readmask) | writedata;
+                 GUSregb(GUS50DMAHigh) &= 0xf; /* compatibility stuff... */
+                 break;
+             case 0x43:         /* DRAMaddrLo */
+                 GUSregd(GUSDRAMPOS24bit) =
+                     (GUSregd(GUSDRAMPOS24bit) & (readmask | 0xff0000)) | writedata;
+                 break;
+             case 0x44:         /* DRAMaddrHi */
+                 GUSregd(GUSDRAMPOS24bit) =
+                     (GUSregd(GUSDRAMPOS24bit) & 0xffff) | ((data & 0x0f) << 16);
+                 break;
+             case 0x45:         /* TCtrlReg */
+                 GUSregb(GUS45TimerCtrl) = (uint8_t) data;
+                 if (!(data & 0x20))
+                     GUSregb(TimerStatus2x8) &= 0xe7;    /* sb IRQ dis? -> clear 2x8/2xC sb IRQ flags */
+                 if (!(data & 0x02))
+                     GUSregb(TimerStatus2x8) &= 0xfe;    /* adlib data IRQ dis? -> clear 2x8 adlib IRQ flag */
+                 if (!(GUSregb(TimerStatus2x8) & 0x19))
+                     GUSregb(IRQStatReg2x6) &= 0xef;     /* 0xe6; $$clear IRQ if both IRQ bits are inactive or cleared */
+                 /* catch up delayed timer IRQs: */
+                 if ((GUSregw(TimerIRQs) > 1) && (GUSregb(TimerDataReg2x9) & 3))
+                 {
+                     if (GUSregb(TimerDataReg2x9) & 1)   /* start timer 1 (80us decrement rate) */
+                     {
+                         if (!(GUSregb(TimerDataReg2x9) & 0x40))
+                             GUSregb(TimerStatus2x8) |= 0xc0;    /* maskable bits */
+                         if (data & 4) /* timer1 irq enable */
+                         {
+                             GUSregb(TimerStatus2x8) |= 4;       /* nonmaskable bit */
+                             GUSregb(IRQStatReg2x6) |= 4;        /* timer 1 irq pending */
+                         }
+                     }
+                     if (GUSregb(TimerDataReg2x9) & 2)   /* start timer 2 (320us decrement rate) */
+                     {
+                         if (!(GUSregb(TimerDataReg2x9) & 0x20))
+                             GUSregb(TimerStatus2x8) |= 0xa0;    /* maskable bits */
+                         if (data & 8) /* timer2 irq enable */
+                         {
+                             GUSregb(TimerStatus2x8) |= 2;       /* nonmaskable bit */
+                             GUSregb(IRQStatReg2x6) |= 8;        /* timer 2 irq pending */
+                         }
+                     }
+                     GUSregw(TimerIRQs)--;
+                     if (GUSregw(BusyTimerIRQs) > 1)
+                         GUSregw(BusyTimerIRQs)--;
+                     else
+                         GUSregw(BusyTimerIRQs) =
+                             GUS_irqrequest(state, state->gusirq, GUSregw(TimerIRQs));
+                 }
+                 else
+                     GUSregw(TimerIRQs) = 0;
  
-     switch (offset >> 2) {
-     case OFFSET_TCOR:
-         s->tcor = value;
-         ptimer_transaction_begin(s->timer);
-         ptimer_set_limit(s->timer, s->tcor, 0);
-         ptimer_transaction_commit(s->timer);
-         break;
-     case OFFSET_TCNT:
-         s->tcnt = value;
-         ptimer_transaction_begin(s->timer);
-         ptimer_set_count(s->timer, s->tcnt);
-         ptimer_transaction_commit(s->timer);
-         break;
-     case OFFSET_TCR:
-         ptimer_transaction_begin(s->timer);
-         if (s->enabled) {
-             /*
-              * Pause the timer if it is running. This may cause some inaccuracy
-              * due to rounding, but avoids a whole lot of other messiness
-              */
-             ptimer_stop(s->timer);
-         }
-         freq = s->freq;
-         /* ??? Need to recalculate expiry time after changing divisor.  */
-         switch (value & TIMER_TCR_TPSC) {
-         case 0:
-             freq >>= 2;
-             break;
-         case 1:
-             freq >>= 4;
-             break;
-         case 2:
-             freq >>= 6;
-             break;
-         case 3:
-             freq >>= 8;
-             break;
-         case 4:
-             freq >>= 10;
-             break;
-         case 6:
-         case 7:
-             if (s->feat & TIMER_FEAT_EXTCLK) {
+                 if (!(data & 0x04))
+                 {
+                     GUSregb(TimerStatus2x8) &= 0xfb; /* clear non-maskable timer1 bit */
+                     GUSregb(IRQStatReg2x6)  &= 0xfb;
+                 }
+                 if (!(data & 0x08))
+                 {
+                     GUSregb(TimerStatus2x8) &= 0xfd; /* clear non-maskable timer2 bit */
+                     GUSregb(IRQStatReg2x6)  &= 0xf7;
+                 }
+                 if (!GUSregb(IRQStatReg2x6))
+                     GUS_irqclear(state, state->gusirq);
+                 break;
+             case 0x46:          /* Counter1 */
+                 GUSregb(GUS46Counter1) = (uint8_t) data;
+                 break;
+             case 0x47:          /* Counter2 */
+                 GUSregb(GUS47Counter2) = (uint8_t) data;
+                 break;
+             /* case 0x48:       */ /* sampling freq reg not emulated (same as interwave) */
+             case 0x49:          /* SampCtrlReg */
+                 GUSregb(GUS49SampCtrl) = (uint8_t) data;
+                 break;
+             /* case 0x4b:       */ /* joystick trim not emulated */
+             case 0x4c:          /* GUSreset */
+                 GUSregb(GUS4cReset) = (uint8_t) data;
+                 if (!(GUSregb(GUS4cReset) & 1)) /* reset... */
+                 {
+                     GUSregd(voicewavetableirq) = 0;
+                     GUSregd(voicevolrampirq) = 0;
+                     GUSregw(TimerIRQs) = 0;
+                     GUSregw(BusyTimerIRQs) = 0;
+                     GUSregb(NumVoices) = 0xcd;
+                     GUSregb(IRQStatReg2x6) = 0;
+                     GUSregb(TimerStatus2x8) = 0;
+                     GUSregb(AdLibData2x9) = 0;
+                     GUSregb(TimerDataReg2x9) = 0;
+                     GUSregb(GUS41DMACtrl) = 0;
+                     GUSregb(GUS45TimerCtrl) = 0;
+                     GUSregb(GUS49SampCtrl) = 0;
+                     GUSregb(GUS4cReset) &= 0xf9; /* clear IRQ and DAC enable bits */
+                     GUS_irqclear(state, state->gusirq);
+                 }
+                 /* IRQ enable bit checked elsewhere */
+                 /* EnableDAC bit may be used by external callers */
                  break;
              }
--            /* fallthrough */
-+            fallthrough;
-         default:
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved TPSC value\n", __func__);
          }
-         switch ((value & TIMER_TCR_CKEG) >> 3) {
-         case 0:
-             break;
-         case 1:
-         case 2:
-         case 3:
-             if (s->feat & TIMER_FEAT_EXTCLK) {
-                 break;
-             }
--            /* fallthrough */
-+            fallthrough;
-         default:
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved CKEG value\n", __func__);
-         }
-         switch ((value & TIMER_TCR_ICPE) >> 6) {
-         case 0:
-             break;
-         case 2:
-         case 3:
-             if (s->feat & TIMER_FEAT_CAPT) {
-                 break;
-             }
--            /* fallthrough */
-+            fallthrough;
-         default:
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved ICPE value\n", __func__);
-         }
-         if ((value & TIMER_TCR_UNF) == 0) {
-             s->int_level = 0;
-         }
- 
-         value &= ~TIMER_TCR_UNF;
- 
-         if ((value & TIMER_TCR_ICPF) && (!(s->feat & TIMER_FEAT_CAPT))) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved ICPF value\n", __func__);
-         }
- 
-         value &= ~TIMER_TCR_ICPF; /* capture not supported */
- 
-         if (value & TIMER_TCR_RESERVED) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved TCR bits set\n", __func__);
-         }
-         s->tcr = value;
-         ptimer_set_limit(s->timer, s->tcor, 0);
-         ptimer_set_freq(s->timer, freq);
-         if (s->enabled) {
-             /* Restart the timer if still enabled.  */
-             ptimer_run(s->timer, 0);
-         }
-         ptimer_transaction_commit(s->timer);
          break;
-     case OFFSET_TCPR:
-         if (s->feat & TIMER_FEAT_CAPT) {
-             s->tcpr = value;
-             break;
+     case 0x307:                /* DRAMaccess */
+         {
+             uint8_t        *adr;
+             adr = state->himemaddr + (GUSregd(GUSDRAMPOS24bit) & 0xfffff);
+             *adr = (uint8_t) data;
          }
--        /* fallthrough */
-+        fallthrough;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, offset);
+         break;
      }
-     sh_timer_update(s);
  }
+ 
+ /* Attention when breaking up a single DMA transfer to multiple ones:
+  * it may lead to multiple terminal count interrupts and broken transfers:
+  *
+  * 1. Whenever you transfer a piece of data, the gusemu callback is invoked
+  * 2. The callback may generate a TC irq (if the register was set up to do so)
+  * 3. The irq may result in the program using the GUS to reprogram the GUS
+  *
+  * Some programs also decide to upload by just checking if TC occurs
+  * (via interrupt or a cleared GUS dma flag)
+  * and then start the next transfer, without checking DMA state
+  *
+  * Thus: Always make sure to set the TC flag correctly!
+  *
+  * Note that the genuine GUS had a granularity of 16 bytes/words for low/high DMA
+  * while later cards had atomic granularity provided by an additional GUS50DMAHigh register
+  * GUSemu also uses this register to support byte-granular transfers for better compatibility
+  * with emulators other than GUSemu32
+  */
 -- 
 2.39.2
 

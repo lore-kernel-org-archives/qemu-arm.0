@@ -1,118 +1,89 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1342295ejc;
-        Fri, 13 Oct 2023 01:17:05 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFs53HfWkrOva2pjPgtM4i9z48UK8+UU/GIMoUi8Pc6qInn6a8N80RtnNkJZcV61mlbWecj
-X-Received: by 2002:a05:620a:2889:b0:76c:d007:b544 with SMTP id j9-20020a05620a288900b0076cd007b544mr27620600qkp.26.1697185025646;
-        Fri, 13 Oct 2023 01:17:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697185025; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1343391ejc;
+        Fri, 13 Oct 2023 01:19:51 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFEnPsJW7djvfG+eY1dGK9p7jvc2JlrMCqK++0GTgn7iWGjIiCAbhvyGrZyUZxTwyAgZlko
+X-Received: by 2002:a67:e11a:0:b0:457:c650:b810 with SMTP id d26-20020a67e11a000000b00457c650b810mr555019vsl.8.1697185191134;
+        Fri, 13 Oct 2023 01:19:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697185191; cv=none;
         d=google.com; s=arc-20160816;
-        b=W9ERNRvU3poWchLrpHueverD6xk84RZOwTiqRdfvOmh3qD5bijikCVXFiVDQKjdUhw
-         kKoNCRAoo7dDIMOsoQqQEz2jB6a1emoP90Dz++/h7D8fjfL4xbbKnxj9GE5BRoRnbOvb
-         axIQUV89uX99qiFvKkslfgXWYZFsTgB8l4ca42HMzad9TO8RQUz+fJOZo+0fdsFFf/e7
-         AYZSGUX2ieamMYjY2sKFKrSgXQu4o5FZgbECyelYXuLrYIo0GhcGckemz1aYVHpNq+gt
-         ChVO8OHNJ4UkGaIoYeDV3ma/n73rMh2JBDbgtAlmqgSWUhoawzV+PVUMXkFE6kjdzzM9
-         Pn7g==
+        b=d/CkoF7br2Q1hsnghs0SichmqvMCiwpvVlb0Aodzn1MWMBNZry7D88qa9nHxOaaxHA
+         O/i6kx08i4+ddbbskP7VP6dthXyDGe9tjfZXQuXrFhZpNSzao8t7zjV+hJHfIb/+SF1g
+         GdKnbtsQdy3DSnKYKmm1PizVy6ryB9/DY+SX2jk2jzrfqpayVMLvk9U0d2sd62HKPJBZ
+         Ujm3OsTqB8LZRko8/ktuUog1JF0UGJSgyv/lQzrF+sM7rPuVbyKMyrHQis5WRJ8dJzsJ
+         7pd6TZNkZFwWjowZ63v4kywe+d5dk2mTf61S85HB92JQSeDD+34bcSGIfeiA821mj1Es
+         SDVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=fHcUXIeVYL2J2IaeiQjIW4srz6zzb+o5NuSL2EwrB8I=;
-        fh=asEhtIhotNI9uCMGLmBw+ntEmnpVXPzyKuRUsbEEmB8=;
-        b=RWtgtQvea85Ev2MCUzU7iJl8RTLfGYnX8CRy2yWYpMVQO3lbDZxW8Ikb336pOqZMnR
-         AHOfCyHozUqkUDAay0kscw59QnFM69CBiw/0G3+/3P0ipq93zvNS7LxsaVS99UBFNt9h
-         TYuG8Dwu9lQy+To60UyMNoevUiDAWzAGgHumKn29P1OHyFZP648N8uECgmQYtKYW/zpw
-         MRo7aHnArL4agOhz2+pBOhBRZdGfYJpHa17xRN8RCuB9xvixY1cEm6JiG8uVi0pzlrxw
-         mDxf5vF+puOKVsIzL73srq1WFcUcs6Xpr4Dwicxqi1X0doIzTiX5aU0/tiCdXcNvovJq
-         9YJA==
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=KoOqdNCoZ5Q+ABBHJ92AbH5crmX/q7fRZauVNqCLZao=;
+        fh=zT1K3SGl3lTT74dJSibpadGbTxiAWcABptxzoeqZ1pQ=;
+        b=t+cQJYGe+dc7AM+zLqtx7UvuCKcv2LsUJhnJWTMuUFV+1lnYD5AqZPV5kpSN+c/VXF
+         JO/1/O3CWtECchPzsNFQZcwHcToAvPRIeJl+tOzNtdHBXsIDTJlG556Z4p38Cjl/BHp2
+         daQoc7wLZy5CpcLK6d+qqgK6TUFDDO5WH5NLzYpowdtvy1E6+fHACBzZweoYXe88tqoq
+         R0MKtzBUDvR3VxzBT4GvnsBUA6U7T5H5pIceBJS4qMjgeCZxWrw2XPQdhxq4Q116WoUC
+         A3DKM3NjarsnJ00Hw1QSGK3sZfmxAXsm4QMxfOcNF3Ejrbc7h4oAGFZZyJJHUfnpfgkd
+         OZZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gbokYzF5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n21-20020a05620a295500b00775a1063051si855083qkp.501.2023.10.13.01.17.05
+        by mx.google.com with ESMTPS id ep18-20020a05621418f200b006585ee0fcfesi822886qvb.74.2023.10.13.01.19.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:17:05 -0700 (PDT)
+        Fri, 13 Oct 2023 01:19:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gbokYzF5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrCxv-0001Oz-KB; Fri, 13 Oct 2023 03:52:11 -0400
+	id 1qrDGm-0002NZ-Fm; Fri, 13 Oct 2023 04:11:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxK-0006yD-Ja
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:37 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwy-0004zz-JT
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:25 -0400
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-32d3755214dso1743976f8f.0
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:51:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183470; x=1697788270; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fHcUXIeVYL2J2IaeiQjIW4srz6zzb+o5NuSL2EwrB8I=;
- b=gbokYzF59VkVY+gvtFuqzRYFWudyqcG3wFlh871s6i/BrYS1IXhEYblHcGuCnp/F6F
- py7NCdCgXO80SQUAFBjfFy/xoNGnvsr+SQ9J5nadOKy1rvDpb3zRw2oUlJ5b/y4vG81A
- mrIu02oQyd25C8+H4BZBkblARRRVewodahFCFN9GKAoU1OxDQKw2Pb0LLykTkhiZjyYg
- CNk4PlYPC5tl1qZL3EBduz1AAb0TOWDbccjt9NAR5SmAW3JQbqnYPETsH01S/qTHv1cv
- yCh5O7KZf8Pi/YFhSg6iIGHn0rjKF+7ldfLsIWXacb+6qu4cZFs52DtaomkoiM/P6ZEG
- 4fFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183470; x=1697788270;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fHcUXIeVYL2J2IaeiQjIW4srz6zzb+o5NuSL2EwrB8I=;
- b=v9RVry73zLQ7dLt+mBSEoPTCKNP3zkTu4A2PGGRT9pwm8oc+tjWmMhNoXrU6lNhBvN
- rKE8IdBjYMROsLWbmADd3tNl+qREz5IAumOSmixNWewGvt6SlU0b49/cgI+lvhXWExyC
- e7/yUGH3D2xOX7/Hly2KOhcLfNkhoTEVSpEXhTIJjmiI7VLdQc6tAWjnFmTdwEq2ILEa
- UsbNCMjSVjhJCh/MeaUTId7B2I5ARu9aTj6LSjhJcK4M7xPJw/CTGvO4QEI+cb7SOocV
- HistaBDtds00bEtjx4xyCT6J6+IvaCTYcM5Lv0xhYZxOsUYiuNWuKYqi5D2kohzV9hBv
- HVhA==
-X-Gm-Message-State: AOJu0YwGoM7p1GOItddtemZUzrCjs+12QBBhtBKWo/HJqeCOYse94Lya
- 2l//9y/um0vCRWT4l2++Xc0GCfOsYDdqFziHbgg=
-X-Received: by 2002:a5d:6a01:0:b0:317:727f:3bc7 with SMTP id
- m1-20020a5d6a01000000b00317727f3bc7mr22625918wru.17.1697183470156; 
- Fri, 13 Oct 2023 00:51:10 -0700 (PDT)
-Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
- [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:51:09 -0700 (PDT)
-From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-block@nongnu.org
-Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [RFC PATCH 40/75] linux-user: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:48 +0300
-Message-Id: <f2223335977f9b09f8ec069484e0faaad918d85b.1697034504.git.manos.pitsidianakis@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
-References: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
+ (Exim 4.90_1) (envelope-from <SRS0=fS+4=F3=kaod.org=clg@ozlabs.org>)
+ id 1qrDGk-0002Cc-Pf; Fri, 13 Oct 2023 04:11:39 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=fS+4=F3=kaod.org=clg@ozlabs.org>)
+ id 1qrDGh-00021R-1K; Fri, 13 Oct 2023 04:11:38 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4S6K351vvgz4xZX;
+ Fri, 13 Oct 2023 19:11:29 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4S6K3163nKz4xKl;
+ Fri, 13 Oct 2023 19:11:25 +1100 (AEDT)
+Message-ID: <84c576d2-ad2d-4dda-b68e-06d8ad2bcbde@kaod.org>
+Date: Fri, 13 Oct 2023 10:11:21 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 42/75] hw/misc: add fallthrough pseudo-keyword
+To: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
+ <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "open list:New World (mac99)" <qemu-ppc@nongnu.org>
+References: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
+ <425f0e72cbc10f9acc0c92b6404f7d006e69f05f.1697034504.git.manos.pitsidianakis@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <425f0e72cbc10f9acc0c92b6404f7d006e69f05f.1697034504.git.manos.pitsidianakis@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=fS+4=F3=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,262 +98,685 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gew4Ud9EpGNA
+X-TUID: BtpiAKBsjGOh
 
-Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
----
- linux-user/mips/cpu_loop.c | 8 ++++----
- linux-user/mmap.c          | 2 +-
- linux-user/syscall.c       | 2 +-
- 3 files changed, 6 insertions(+), 6 deletions(-)
+On 10/13/23 09:47, Emmanouil Pitsidianakis wrote:
+> Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
+>   hw/misc/a9scu.c            |  2 ++
+>   hw/misc/aspeed_scu.c       |  2 +-
+>   hw/misc/bcm2835_property.c | 12 ++++++------
+>   hw/misc/mos6522.c          |  4 ++--
+>   4 files changed, 11 insertions(+), 9 deletions(-)
 
-diff --git a/linux-user/mips/cpu_loop.c b/linux-user/mips/cpu_loop.c
-index 8735e58bad..38ddcadfc6 100644
---- a/linux-user/mips/cpu_loop.c
-+++ b/linux-user/mips/cpu_loop.c
-@@ -63,68 +63,68 @@ static void do_tr_or_bp(CPUMIPSState *env, unsigned int code, bool trap)
- void cpu_loop(CPUMIPSState *env)
- {
-     CPUState *cs = env_cpu(env);
-     int trapnr, si_code;
-     unsigned int code;
-     abi_long ret;
- # ifdef TARGET_ABI_MIPSO32
-     unsigned int syscall_num;
- # endif
- 
-     for(;;) {
-         cpu_exec_start(cs);
-         trapnr = cpu_exec(cs);
-         cpu_exec_end(cs);
-         process_queued_cpu_work(cs);
- 
-         switch(trapnr) {
-         case EXCP_SYSCALL:
-             env->active_tc.PC += 4;
- # ifdef TARGET_ABI_MIPSO32
-             syscall_num = env->active_tc.gpr[2] - 4000;
-             if (syscall_num >= sizeof(mips_syscall_args)) {
-                 /* syscall_num is larger that any defined for MIPS O32 */
-                 ret = -TARGET_ENOSYS;
-             } else if (mips_syscall_args[syscall_num] ==
-                        MIPS_SYSCALL_NUMBER_UNUSED) {
-                 /* syscall_num belongs to the range not defined for MIPS O32 */
-                 ret = -TARGET_ENOSYS;
-             } else {
-                 /* syscall_num is valid */
-                 int nb_args;
-                 abi_ulong sp_reg;
-                 abi_ulong arg5 = 0, arg6 = 0, arg7 = 0, arg8 = 0;
- 
-                 nb_args = mips_syscall_args[syscall_num];
-                 sp_reg = env->active_tc.gpr[29];
-                 switch (nb_args) {
-                 /* these arguments are taken from the stack */
-                 case 8:
-                     if ((ret = get_user_ual(arg8, sp_reg + 28)) != 0) {
-                         goto done_syscall;
-                     }
--                    /* fall through */
-+                    fallthrough;
-                 case 7:
-                     if ((ret = get_user_ual(arg7, sp_reg + 24)) != 0) {
-                         goto done_syscall;
-                     }
--                    /* fall through */
-+                    fallthrough;
-                 case 6:
-                     if ((ret = get_user_ual(arg6, sp_reg + 20)) != 0) {
-                         goto done_syscall;
-                     }
--                    /* fall through */
-+                    fallthrough;
-                 case 5:
-                     if ((ret = get_user_ual(arg5, sp_reg + 16)) != 0) {
-                         goto done_syscall;
-                     }
--                    /* fall through */
-+                    fallthrough;
-                 default:
-                     break;
-                 }
-                 ret = do_syscall(env, env->active_tc.gpr[2],
-                                  env->active_tc.gpr[4],
-                                  env->active_tc.gpr[5],
-                                  env->active_tc.gpr[6],
-                                  env->active_tc.gpr[7],
-                                  arg5, arg6, arg7, arg8);
-             }
-diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-index 8ccaab7859..ff33b4ccf6 100644
---- a/linux-user/mmap.c
-+++ b/linux-user/mmap.c
-@@ -960,84 +960,84 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
- abi_long target_madvise(abi_ulong start, abi_ulong len_in, int advice)
- {
-     abi_ulong len;
-     int ret = 0;
- 
-     if (start & ~TARGET_PAGE_MASK) {
-         return -TARGET_EINVAL;
-     }
-     if (len_in == 0) {
-         return 0;
-     }
-     len = TARGET_PAGE_ALIGN(len_in);
-     if (len == 0 || !guest_range_valid_untagged(start, len)) {
-         return -TARGET_EINVAL;
-     }
- 
-     /* Translate for some architectures which have different MADV_xxx values */
-     switch (advice) {
-     case TARGET_MADV_DONTNEED:      /* alpha */
-         advice = MADV_DONTNEED;
-         break;
-     case TARGET_MADV_WIPEONFORK:    /* parisc */
-         advice = MADV_WIPEONFORK;
-         break;
-     case TARGET_MADV_KEEPONFORK:    /* parisc */
-         advice = MADV_KEEPONFORK;
-         break;
-     /* we do not care about the other MADV_xxx values yet */
-     }
- 
-     /*
-      * Most advice values are hints, so ignoring and returning success is ok.
-      *
-      * However, some advice values such as MADV_DONTNEED, MADV_WIPEONFORK and
-      * MADV_KEEPONFORK are not hints and need to be emulated.
-      *
-      * A straight passthrough for those may not be safe because qemu sometimes
-      * turns private file-backed mappings into anonymous mappings.
-      * If all guest pages have PAGE_PASSTHROUGH set, mappings have the
-      * same semantics for the host as for the guest.
-      *
-      * We pass through MADV_WIPEONFORK and MADV_KEEPONFORK if possible and
-      * return failure if not.
-      *
-      * MADV_DONTNEED is passed through as well, if possible.
-      * If passthrough isn't possible, we nevertheless (wrongly!) return
-      * success, which is broken but some userspace programs fail to work
-      * otherwise. Completely implementing such emulation is quite complicated
-      * though.
-      */
-     mmap_lock();
-     switch (advice) {
-     case MADV_WIPEONFORK:
-     case MADV_KEEPONFORK:
-         ret = -EINVAL;
--        /* fall through */
-+        fallthrough;
-     case MADV_DONTNEED:
-         if (page_check_range(start, len, PAGE_PASSTHROUGH)) {
-             ret = get_errno(madvise(g2h_untagged(start), len, advice));
-             if ((advice == MADV_DONTNEED) && (ret == 0)) {
-                 page_reset_target_data(start, start + len - 1);
-             }
-         }
-     }
-     mmap_unlock();
- 
-     return ret;
- }
- 
- #ifndef TARGET_FORCE_SHMLBA
- /*
-  * For most architectures, SHMLBA is the same as the page size;
-  * some architectures have larger values, in which case they should
-  * define TARGET_FORCE_SHMLBA and provide a target_shmlba() function.
-  * This corresponds to the kernel arch code defining __ARCH_FORCE_SHMLBA
-  * and defining its own value for SHMLBA.
-  *
-  * The kernel also permits SHMLBA to be set by the architecture to a
-  * value larger than the page size without setting __ARCH_FORCE_SHMLBA;
-  * this means that addresses are rounded to the large size if
-  * SHM_RND is set but addresses not aligned to that size are not rejected
-  * as long as they are at least page-aligned. Since the only architecture
-  * which uses this is ia64 this code doesn't provide for that oddity.
-  */
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index d49cd314a2..d15817846c 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -7740,74 +7740,74 @@ static int do_safe_futex(int *uaddr, int op, int val,
- /* ??? Using host futex calls even when target atomic operations
-    are not really atomic probably breaks things.  However implementing
-    futexes locally would make futexes shared between multiple processes
-    tricky.  However they're probably useless because guest atomic
-    operations won't work either.  */
- #if defined(TARGET_NR_futex) || defined(TARGET_NR_futex_time64)
- static int do_futex(CPUState *cpu, bool time64, target_ulong uaddr,
-                     int op, int val, target_ulong timeout,
-                     target_ulong uaddr2, int val3)
- {
-     struct timespec ts, *pts = NULL;
-     void *haddr2 = NULL;
-     int base_op;
- 
-     /* We assume FUTEX_* constants are the same on both host and target. */
- #ifdef FUTEX_CMD_MASK
-     base_op = op & FUTEX_CMD_MASK;
- #else
-     base_op = op;
- #endif
-     switch (base_op) {
-     case FUTEX_WAIT:
-     case FUTEX_WAIT_BITSET:
-         val = tswap32(val);
-         break;
-     case FUTEX_WAIT_REQUEUE_PI:
-         val = tswap32(val);
-         haddr2 = g2h(cpu, uaddr2);
-         break;
-     case FUTEX_LOCK_PI:
-     case FUTEX_LOCK_PI2:
-         break;
-     case FUTEX_WAKE:
-     case FUTEX_WAKE_BITSET:
-     case FUTEX_TRYLOCK_PI:
-     case FUTEX_UNLOCK_PI:
-         timeout = 0;
-         break;
-     case FUTEX_FD:
-         val = target_to_host_signal(val);
-         timeout = 0;
-         break;
-     case FUTEX_CMP_REQUEUE:
-     case FUTEX_CMP_REQUEUE_PI:
-         val3 = tswap32(val3);
--        /* fall through */
-+        fallthrough;
-     case FUTEX_REQUEUE:
-     case FUTEX_WAKE_OP:
-         /*
-          * For these, the 4th argument is not TIMEOUT, but VAL2.
-          * But the prototype of do_safe_futex takes a pointer, so
-          * insert casts to satisfy the compiler.  We do not need
-          * to tswap VAL2 since it's not compared to guest memory.
-           */
-         pts = (struct timespec *)(uintptr_t)timeout;
-         timeout = 0;
-         haddr2 = g2h(cpu, uaddr2);
-         break;
-     default:
-         return -TARGET_ENOSYS;
-     }
-     if (timeout) {
-         pts = &ts;
-         if (time64
-             ? target_to_host_timespec64(pts, timeout)
-             : target_to_host_timespec(pts, timeout)) {
-             return -TARGET_EFAULT;
-         }
-     }
-     return do_safe_futex(g2h(cpu, uaddr), op, val, pts, haddr2, val3);
- }
- #endif
- 
- #if defined(TARGET_NR_name_to_handle_at) && defined(CONFIG_OPEN_BY_HANDLE)
--- 
-2.39.2
+For aspeed,
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+> 
+> diff --git a/hw/misc/a9scu.c b/hw/misc/a9scu.c
+> index a375ebc987..b422bec3c4 100644
+> --- a/hw/misc/a9scu.c
+> +++ b/hw/misc/a9scu.c
+> @@ -21,26 +21,27 @@
+>   static uint64_t a9_scu_read(void *opaque, hwaddr offset,
+>                               unsigned size)
+>   {
+>       A9SCUState *s = (A9SCUState *)opaque;
+>       switch (offset) {
+>       case 0x00: /* Control */
+>           return s->control;
+>       case 0x04: /* Configuration */
+>           return (((1 << s->num_cpu) - 1) << 4) | (s->num_cpu - 1);
+>       case 0x08: /* CPU Power Status */
+>           return s->status;
+>       case 0x0c: /* Invalidate All Registers In Secure State */
+>           return 0;
+>       case 0x40: /* Filtering Start Address Register */
+>       case 0x44: /* Filtering End Address Register */
+>           /* RAZ/WI, like an implementation with only one AXI master */
+>           return 0;
+>       case 0x50: /* SCU Access Control Register */
+>       case 0x54: /* SCU Non-secure Access Control Register */
+>           /* unimplemented, fall through */
+> +        fallthrough;
+>       default:
+>           qemu_log_mask(LOG_UNIMP, "%s: Unsupported offset 0x%"HWADDR_PRIx"\n",
+>                         __func__, offset);
+>           return 0;
+>       }
+>   }
+> @@ -48,31 +49,32 @@ static uint64_t a9_scu_read(void *opaque, hwaddr offset,
+>   static void a9_scu_write(void *opaque, hwaddr offset,
+>                            uint64_t value, unsigned size)
+>   {
+>       A9SCUState *s = (A9SCUState *)opaque;
+>   
+>       switch (offset) {
+>       case 0x00: /* Control */
+>           s->control = value & 1;
+>           break;
+>       case 0x4: /* Configuration: RO */
+>           break;
+>       case 0x08: case 0x09: case 0x0A: case 0x0B: /* Power Control */
+>           s->status = value;
+>           break;
+>       case 0x0c: /* Invalidate All Registers In Secure State */
+>           /* no-op as we do not implement caches */
+>           break;
+>       case 0x40: /* Filtering Start Address Register */
+>       case 0x44: /* Filtering End Address Register */
+>           /* RAZ/WI, like an implementation with only one AXI master */
+>           break;
+>       case 0x50: /* SCU Access Control Register */
+>       case 0x54: /* SCU Non-secure Access Control Register */
+>           /* unimplemented, fall through */
+> +        fallthrough;
+>       default:
+>           qemu_log_mask(LOG_UNIMP, "%s: Unsupported offset 0x%"HWADDR_PRIx
+>                                    " value 0x%"PRIx64"\n",
+>                         __func__, offset, value);
+>           break;
+>       }
+>   }
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 8335364906..4a1ea2fa21 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -645,65 +645,65 @@ static uint64_t aspeed_ast2600_scu_read(void *opaque, hwaddr offset,
+>   static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
+>                                        uint64_t data64, unsigned size)
+>   {
+>       AspeedSCUState *s = ASPEED_SCU(opaque);
+>       int reg = TO_REG(offset);
+>       /* Truncate here so bitwise operations below behave as expected */
+>       uint32_t data = data64;
+>   
+>       if (reg >= ASPEED_AST2600_SCU_NR_REGS) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
+>                         __func__, offset);
+>           return;
+>       }
+>   
+>       if (reg > PROT_KEY && !s->regs[PROT_KEY]) {
+>           qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n", __func__);
+>       }
+>   
+>       trace_aspeed_scu_write(offset, size, data);
+>   
+>       switch (reg) {
+>       case AST2600_PROT_KEY:
+>           s->regs[reg] = (data == ASPEED_SCU_PROT_KEY) ? 1 : 0;
+>           return;
+>       case AST2600_HW_STRAP1:
+>       case AST2600_HW_STRAP2:
+>           if (s->regs[reg + 2]) {
+>               return;
+>           }
+> -        /* fall through */
+> +        fallthrough;
+>       case AST2600_SYS_RST_CTRL:
+>       case AST2600_SYS_RST_CTRL2:
+>       case AST2600_CLK_STOP_CTRL:
+>       case AST2600_CLK_STOP_CTRL2:
+>           /* W1S (Write 1 to set) registers */
+>           s->regs[reg] |= data;
+>           return;
+>       case AST2600_SYS_RST_CTRL_CLR:
+>       case AST2600_SYS_RST_CTRL2_CLR:
+>       case AST2600_CLK_STOP_CTRL_CLR:
+>       case AST2600_CLK_STOP_CTRL2_CLR:
+>       case AST2600_HW_STRAP1_CLR:
+>       case AST2600_HW_STRAP2_CLR:
+>           /*
+>            * W1C (Write 1 to clear) registers are offset by one address from
+>            * the data register
+>            */
+>           s->regs[reg - 1] &= ~data;
+>           return;
+>   
+>       case AST2600_RNG_DATA:
+>       case AST2600_SILICON_REV:
+>       case AST2600_SILICON_REV2:
+>       case AST2600_CHIP_ID0:
+>       case AST2600_CHIP_ID1:
+>           /* Add read only registers here */
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: Write to read-only offset 0x%" HWADDR_PRIx "\n",
+>                         __func__, offset);
+>           return;
+>       }
+>   
+>       s->regs[reg] = data;
+>   }
+> diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+> index 4ed9faa54a..98170f34a6 100644
+> --- a/hw/misc/bcm2835_property.c
+> +++ b/hw/misc/bcm2835_property.c
+> @@ -24,303 +24,303 @@
+>   static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+>   {
+>       uint32_t tag;
+>       uint32_t bufsize;
+>       uint32_t tot_len;
+>       size_t resplen;
+>       uint32_t tmp;
+>       int n;
+>       uint32_t offset, length, color;
+>   
+>       /*
+>        * Copy the current state of the framebuffer config; we will update
+>        * this copy as we process tags and then ask the framebuffer to use
+>        * it at the end.
+>        */
+>       BCM2835FBConfig fbconfig = s->fbdev->config;
+>       bool fbconfig_updated = false;
+>   
+>       value &= ~0xf;
+>   
+>       s->addr = value;
+>   
+>       tot_len = ldl_le_phys(&s->dma_as, value);
+>   
+>       /* @(addr + 4) : Buffer response code */
+>       value = s->addr + 8;
+>       while (value + 8 <= s->addr + tot_len) {
+>           tag = ldl_le_phys(&s->dma_as, value);
+>           bufsize = ldl_le_phys(&s->dma_as, value + 4);
+>           /* @(value + 8) : Request/response indicator */
+>           resplen = 0;
+>           switch (tag) {
+>           case RPI_FWREQ_PROPERTY_END:
+>               break;
+>           case RPI_FWREQ_GET_FIRMWARE_REVISION:
+>               stl_le_phys(&s->dma_as, value + 12, 346337);
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_GET_BOARD_MODEL:
+>               qemu_log_mask(LOG_UNIMP,
+>                             "bcm2835_property: 0x%08x get board model NYI\n",
+>                             tag);
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_GET_BOARD_REVISION:
+>               stl_le_phys(&s->dma_as, value + 12, s->board_rev);
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_GET_BOARD_MAC_ADDRESS:
+>               resplen = sizeof(s->macaddr.a);
+>               dma_memory_write(&s->dma_as, value + 12, s->macaddr.a, resplen,
+>                                MEMTXATTRS_UNSPECIFIED);
+>               break;
+>           case RPI_FWREQ_GET_BOARD_SERIAL:
+>               qemu_log_mask(LOG_UNIMP,
+>                             "bcm2835_property: 0x%08x get board serial NYI\n",
+>                             tag);
+>               resplen = 8;
+>               break;
+>           case RPI_FWREQ_GET_ARM_MEMORY:
+>               /* base */
+>               stl_le_phys(&s->dma_as, value + 12, 0);
+>               /* size */
+>               stl_le_phys(&s->dma_as, value + 16, s->fbdev->vcram_base);
+>               resplen = 8;
+>               break;
+>           case RPI_FWREQ_GET_VC_MEMORY:
+>               /* base */
+>               stl_le_phys(&s->dma_as, value + 12, s->fbdev->vcram_base);
+>               /* size */
+>               stl_le_phys(&s->dma_as, value + 16, s->fbdev->vcram_size);
+>               resplen = 8;
+>               break;
+>           case RPI_FWREQ_SET_POWER_STATE:
+>               /* Assume that whatever device they asked for exists,
+>                * and we'll just claim we set it to the desired state
+>                */
+>               tmp = ldl_le_phys(&s->dma_as, value + 16);
+>               stl_le_phys(&s->dma_as, value + 16, (tmp & 1));
+>               resplen = 8;
+>               break;
+>   
+>           /* Clocks */
+>   
+>           case RPI_FWREQ_GET_CLOCK_STATE:
+>               stl_le_phys(&s->dma_as, value + 16, 0x1);
+>               resplen = 8;
+>               break;
+>   
+>           case RPI_FWREQ_SET_CLOCK_STATE:
+>               qemu_log_mask(LOG_UNIMP,
+>                             "bcm2835_property: 0x%08x set clock state NYI\n",
+>                             tag);
+>               resplen = 8;
+>               break;
+>   
+>           case RPI_FWREQ_GET_CLOCK_RATE:
+>           case RPI_FWREQ_GET_MAX_CLOCK_RATE:
+>           case RPI_FWREQ_GET_MIN_CLOCK_RATE:
+>               switch (ldl_le_phys(&s->dma_as, value + 12)) {
+>               case RPI_FIRMWARE_EMMC_CLK_ID:
+>                   stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_EMMC_CLK_RATE);
+>                   break;
+>               case RPI_FIRMWARE_UART_CLK_ID:
+>                   stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_UART_CLK_RATE);
+>                   break;
+>               case RPI_FIRMWARE_CORE_CLK_ID:
+>                   stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_CORE_CLK_RATE);
+>                   break;
+>               default:
+>                   stl_le_phys(&s->dma_as, value + 16,
+>                               RPI_FIRMWARE_DEFAULT_CLK_RATE);
+>                   break;
+>               }
+>               resplen = 8;
+>               break;
+>   
+>           case RPI_FWREQ_SET_CLOCK_RATE:
+>           case RPI_FWREQ_SET_MAX_CLOCK_RATE:
+>           case RPI_FWREQ_SET_MIN_CLOCK_RATE:
+>               qemu_log_mask(LOG_UNIMP,
+>                             "bcm2835_property: 0x%08x set clock rate NYI\n",
+>                             tag);
+>               resplen = 8;
+>               break;
+>   
+>           /* Temperature */
+>   
+>           case RPI_FWREQ_GET_TEMPERATURE:
+>               stl_le_phys(&s->dma_as, value + 16, 25000);
+>               resplen = 8;
+>               break;
+>   
+>           case RPI_FWREQ_GET_MAX_TEMPERATURE:
+>               stl_le_phys(&s->dma_as, value + 16, 99000);
+>               resplen = 8;
+>               break;
+>   
+>           /* Frame buffer */
+>   
+>           case RPI_FWREQ_FRAMEBUFFER_ALLOCATE:
+>               stl_le_phys(&s->dma_as, value + 12, fbconfig.base);
+>               stl_le_phys(&s->dma_as, value + 16,
+>                           bcm2835_fb_get_size(&fbconfig));
+>               resplen = 8;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_RELEASE:
+>               resplen = 0;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_BLANK:
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_TEST_PHYSICAL_WIDTH_HEIGHT:
+>           case RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_WIDTH_HEIGHT:
+>               resplen = 8;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_SET_PHYSICAL_WIDTH_HEIGHT:
+>               fbconfig.xres = ldl_le_phys(&s->dma_as, value + 12);
+>               fbconfig.yres = ldl_le_phys(&s->dma_as, value + 16);
+>               bcm2835_fb_validate_config(&fbconfig);
+>               fbconfig_updated = true;
+> -            /* fall through */
+> +            fallthrough;
+>           case RPI_FWREQ_FRAMEBUFFER_GET_PHYSICAL_WIDTH_HEIGHT:
+>               stl_le_phys(&s->dma_as, value + 12, fbconfig.xres);
+>               stl_le_phys(&s->dma_as, value + 16, fbconfig.yres);
+>               resplen = 8;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_WIDTH_HEIGHT:
+>               fbconfig.xres_virtual = ldl_le_phys(&s->dma_as, value + 12);
+>               fbconfig.yres_virtual = ldl_le_phys(&s->dma_as, value + 16);
+>               bcm2835_fb_validate_config(&fbconfig);
+>               fbconfig_updated = true;
+> -            /* fall through */
+> +            fallthrough;
+>           case RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_WIDTH_HEIGHT:
+>               stl_le_phys(&s->dma_as, value + 12, fbconfig.xres_virtual);
+>               stl_le_phys(&s->dma_as, value + 16, fbconfig.yres_virtual);
+>               resplen = 8;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_TEST_DEPTH:
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_SET_DEPTH:
+>               fbconfig.bpp = ldl_le_phys(&s->dma_as, value + 12);
+>               bcm2835_fb_validate_config(&fbconfig);
+>               fbconfig_updated = true;
+> -            /* fall through */
+> +            fallthrough;
+>           case RPI_FWREQ_FRAMEBUFFER_GET_DEPTH:
+>               stl_le_phys(&s->dma_as, value + 12, fbconfig.bpp);
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_TEST_PIXEL_ORDER:
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_SET_PIXEL_ORDER:
+>               fbconfig.pixo = ldl_le_phys(&s->dma_as, value + 12);
+>               bcm2835_fb_validate_config(&fbconfig);
+>               fbconfig_updated = true;
+> -            /* fall through */
+> +            fallthrough;
+>           case RPI_FWREQ_FRAMEBUFFER_GET_PIXEL_ORDER:
+>               stl_le_phys(&s->dma_as, value + 12, fbconfig.pixo);
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_TEST_ALPHA_MODE:
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_SET_ALPHA_MODE:
+>               fbconfig.alpha = ldl_le_phys(&s->dma_as, value + 12);
+>               bcm2835_fb_validate_config(&fbconfig);
+>               fbconfig_updated = true;
+> -            /* fall through */
+> +            fallthrough;
+>           case RPI_FWREQ_FRAMEBUFFER_GET_ALPHA_MODE:
+>               stl_le_phys(&s->dma_as, value + 12, fbconfig.alpha);
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_GET_PITCH:
+>               stl_le_phys(&s->dma_as, value + 12,
+>                           bcm2835_fb_get_pitch(&fbconfig));
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_OFFSET:
+>               resplen = 8;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_OFFSET:
+>               fbconfig.xoffset = ldl_le_phys(&s->dma_as, value + 12);
+>               fbconfig.yoffset = ldl_le_phys(&s->dma_as, value + 16);
+>               bcm2835_fb_validate_config(&fbconfig);
+>               fbconfig_updated = true;
+> -            /* fall through */
+> +            fallthrough;
+>           case RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_OFFSET:
+>               stl_le_phys(&s->dma_as, value + 12, fbconfig.xoffset);
+>               stl_le_phys(&s->dma_as, value + 16, fbconfig.yoffset);
+>               resplen = 8;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_GET_OVERSCAN:
+>           case RPI_FWREQ_FRAMEBUFFER_TEST_OVERSCAN:
+>           case RPI_FWREQ_FRAMEBUFFER_SET_OVERSCAN:
+>               stl_le_phys(&s->dma_as, value + 12, 0);
+>               stl_le_phys(&s->dma_as, value + 16, 0);
+>               stl_le_phys(&s->dma_as, value + 20, 0);
+>               stl_le_phys(&s->dma_as, value + 24, 0);
+>               resplen = 16;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_SET_PALETTE:
+>               offset = ldl_le_phys(&s->dma_as, value + 12);
+>               length = ldl_le_phys(&s->dma_as, value + 16);
+>               n = 0;
+>               while (n < length - offset) {
+>                   color = ldl_le_phys(&s->dma_as, value + 20 + (n << 2));
+>                   stl_le_phys(&s->dma_as,
+>                               s->fbdev->vcram_base + ((offset + n) << 2), color);
+>                   n++;
+>               }
+>               stl_le_phys(&s->dma_as, value + 12, 0);
+>               resplen = 4;
+>               break;
+>           case RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS:
+>               stl_le_phys(&s->dma_as, value + 12, 1);
+>               resplen = 4;
+>               break;
+>   
+>           case RPI_FWREQ_GET_DMA_CHANNELS:
+>               /* channels 2-5 */
+>               stl_le_phys(&s->dma_as, value + 12, 0x003C);
+>               resplen = 4;
+>               break;
+>   
+>           case RPI_FWREQ_GET_COMMAND_LINE:
+>               /*
+>                * We follow the firmware behaviour: no NUL terminator is
+>                * written to the buffer, and if the buffer is too short
+>                * we report the required length in the response header
+>                * and copy nothing to the buffer.
+>                */
+>               resplen = strlen(s->command_line);
+>               if (bufsize >= resplen)
+>                   address_space_write(&s->dma_as, value + 12,
+>                                       MEMTXATTRS_UNSPECIFIED, s->command_line,
+>                                       resplen);
+>               break;
+>   
+>           default:
+>               qemu_log_mask(LOG_UNIMP,
+>                             "bcm2835_property: unhandled tag 0x%08x\n", tag);
+>               break;
+>           }
+>   
+>           trace_bcm2835_mbox_property(tag, bufsize, resplen);
+>           if (tag == 0) {
+>               break;
+>           }
+>   
+>           stl_le_phys(&s->dma_as, value + 8, (1 << 31) | resplen);
+>           value += bufsize + 12;
+>       }
+>   
+>       /* Reconfigure framebuffer if required */
+>       if (fbconfig_updated) {
+>           bcm2835_fb_reconfigure(s->fbdev, &fbconfig);
+>       }
+>   
+>       /* Buffer response code */
+>       stl_le_phys(&s->dma_as, s->addr + 4, (1 << 31));
+>   }
+> diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
+> index d6ba47bde9..a62349e6a0 100644
+> --- a/hw/misc/mos6522.c
+> +++ b/hw/misc/mos6522.c
+> @@ -296,97 +296,97 @@ static void mos6522_portB_write(MOS6522State *s)
+>   uint64_t mos6522_read(void *opaque, hwaddr addr, unsigned size)
+>   {
+>       MOS6522State *s = opaque;
+>       uint32_t val;
+>       int ctrl;
+>       int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>   
+>       if (now >= s->timers[0].next_irq_time) {
+>           mos6522_timer1_update(s, &s->timers[0], now);
+>           s->ifr |= T1_INT;
+>       }
+>       if (now >= s->timers[1].next_irq_time) {
+>           mos6522_timer2_update(s, &s->timers[1], now);
+>           s->ifr |= T2_INT;
+>       }
+>       switch (addr) {
+>       case VIA_REG_B:
+>           val = s->b;
+>           ctrl = (s->pcr & CB2_CTRL_MASK) >> CB2_CTRL_SHIFT;
+>           if (!(ctrl & C2_IND)) {
+>               s->ifr &= ~CB2_INT;
+>           }
+>           s->ifr &= ~CB1_INT;
+>           mos6522_update_irq(s);
+>           break;
+>       case VIA_REG_A:
+>          qemu_log_mask(LOG_UNIMP, "Read access to register A with handshake");
+> -       /* fall through */
+> +       fallthrough;
+>       case VIA_REG_ANH:
+>           val = s->a;
+>           ctrl = (s->pcr & CA2_CTRL_MASK) >> CA2_CTRL_SHIFT;
+>           if (!(ctrl & C2_IND)) {
+>               s->ifr &= ~CA2_INT;
+>           }
+>           s->ifr &= ~CA1_INT;
+>           mos6522_update_irq(s);
+>           break;
+>       case VIA_REG_DIRB:
+>           val = s->dirb;
+>           break;
+>       case VIA_REG_DIRA:
+>           val = s->dira;
+>           break;
+>       case VIA_REG_T1CL:
+>           val = get_counter(s, &s->timers[0]) & 0xff;
+>           s->ifr &= ~T1_INT;
+>           mos6522_update_irq(s);
+>           break;
+>       case VIA_REG_T1CH:
+>           val = get_counter(s, &s->timers[0]) >> 8;
+>           mos6522_update_irq(s);
+>           break;
+>       case VIA_REG_T1LL:
+>           val = s->timers[0].latch & 0xff;
+>           break;
+>       case VIA_REG_T1LH:
+>           /* XXX: check this */
+>           val = (s->timers[0].latch >> 8) & 0xff;
+>           break;
+>       case VIA_REG_T2CL:
+>           val = get_counter(s, &s->timers[1]) & 0xff;
+>           s->ifr &= ~T2_INT;
+>           mos6522_update_irq(s);
+>           break;
+>       case VIA_REG_T2CH:
+>           val = get_counter(s, &s->timers[1]) >> 8;
+>           break;
+>       case VIA_REG_SR:
+>           val = s->sr;
+>           s->ifr &= ~SR_INT;
+>           mos6522_update_irq(s);
+>           break;
+>       case VIA_REG_ACR:
+>           val = s->acr;
+>           break;
+>       case VIA_REG_PCR:
+>           val = s->pcr;
+>           break;
+>       case VIA_REG_IFR:
+>           val = s->ifr;
+>           if (s->ifr & s->ier) {
+>               val |= 0x80;
+>           }
+>           break;
+>       case VIA_REG_IER:
+>           val = s->ier | 0x80;
+>           break;
+>       default:
+>           g_assert_not_reached();
+>       }
+>   
+>       if (addr != VIA_REG_IFR || val != 0) {
+>           trace_mos6522_read(addr, mos6522_reg_names[addr], val);
+>       }
+>   
+>       return val;
+>   }
+> @@ -394,105 +394,105 @@ uint64_t mos6522_read(void *opaque, hwaddr addr, unsigned size)
+>   void mos6522_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
+>   {
+>       MOS6522State *s = opaque;
+>       MOS6522DeviceClass *mdc = MOS6522_GET_CLASS(s);
+>       int ctrl;
+>   
+>       trace_mos6522_write(addr, mos6522_reg_names[addr], val);
+>   
+>       switch (addr) {
+>       case VIA_REG_B:
+>           s->b = (s->b & ~s->dirb) | (val & s->dirb);
+>           mdc->portB_write(s);
+>           ctrl = (s->pcr & CB2_CTRL_MASK) >> CB2_CTRL_SHIFT;
+>           if (!(ctrl & C2_IND)) {
+>               s->ifr &= ~CB2_INT;
+>           }
+>           s->ifr &= ~CB1_INT;
+>           mos6522_update_irq(s);
+>           break;
+>       case VIA_REG_A:
+>          qemu_log_mask(LOG_UNIMP, "Write access to register A with handshake");
+> -       /* fall through */
+> +       fallthrough;
+>       case VIA_REG_ANH:
+>           s->a = (s->a & ~s->dira) | (val & s->dira);
+>           mdc->portA_write(s);
+>           ctrl = (s->pcr & CA2_CTRL_MASK) >> CA2_CTRL_SHIFT;
+>           if (!(ctrl & C2_IND)) {
+>               s->ifr &= ~CA2_INT;
+>           }
+>           s->ifr &= ~CA1_INT;
+>           mos6522_update_irq(s);
+>           break;
+>       case VIA_REG_DIRB:
+>           s->dirb = val;
+>           break;
+>       case VIA_REG_DIRA:
+>           s->dira = val;
+>           break;
+>       case VIA_REG_T1CL:
+>           s->timers[0].latch = (s->timers[0].latch & 0xff00) | val;
+>           mos6522_timer1_update(s, &s->timers[0],
+>                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+>           break;
+>       case VIA_REG_T1CH:
+>           s->timers[0].latch = (s->timers[0].latch & 0xff) | (val << 8);
+>           s->ifr &= ~T1_INT;
+>           set_counter(s, &s->timers[0], s->timers[0].latch);
+>           break;
+>       case VIA_REG_T1LL:
+>           s->timers[0].latch = (s->timers[0].latch & 0xff00) | val;
+>           mos6522_timer1_update(s, &s->timers[0],
+>                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+>           break;
+>       case VIA_REG_T1LH:
+>           s->timers[0].latch = (s->timers[0].latch & 0xff) | (val << 8);
+>           s->ifr &= ~T1_INT;
+>           mos6522_timer1_update(s, &s->timers[0],
+>                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+>           break;
+>       case VIA_REG_T2CL:
+>           s->timers[1].latch = (s->timers[1].latch & 0xff00) | val;
+>           break;
+>       case VIA_REG_T2CH:
+>           /* To ensure T2 generates an interrupt on zero crossing with the
+>              common timer code, write the value directly from the latch to
+>              the counter */
+>           s->timers[1].latch = (s->timers[1].latch & 0xff) | (val << 8);
+>           s->ifr &= ~T2_INT;
+>           set_counter(s, &s->timers[1], s->timers[1].latch);
+>           break;
+>       case VIA_REG_SR:
+>           s->sr = val;
+>           break;
+>       case VIA_REG_ACR:
+>           s->acr = val;
+>           mos6522_timer1_update(s, &s->timers[0],
+>                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+>           break;
+>       case VIA_REG_PCR:
+>           s->pcr = val;
+>           break;
+>       case VIA_REG_IFR:
+>           /* reset bits */
+>           s->ifr &= ~val;
+>           mos6522_update_irq(s);
+>           break;
+>       case VIA_REG_IER:
+>           if (val & IER_SET) {
+>               /* set bits */
+>               s->ier |= val & 0x7f;
+>           } else {
+>               /* reset bits */
+>               s->ier &= ~val;
+>           }
+>           mos6522_update_irq(s);
+>           /* if IER is modified starts needed timers */
+>           mos6522_timer1_update(s, &s->timers[0],
+>                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+>           mos6522_timer2_update(s, &s->timers[1],
+>                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+>           break;
+>       default:
+>           g_assert_not_reached();
+>       }
+>   }
 

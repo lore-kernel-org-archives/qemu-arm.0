@@ -1,111 +1,112 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1331445ejc;
-        Fri, 13 Oct 2023 00:52:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGDwnC+XryBkbZ0dqxFJn6087NBBE5hYyPrd4G2SGW3p1nwJ88/e+7MNQTxraVR+/05e68R
-X-Received: by 2002:a05:620a:4415:b0:775:9a30:f2d8 with SMTP id v21-20020a05620a441500b007759a30f2d8mr34747964qkp.24.1697183569771;
-        Fri, 13 Oct 2023 00:52:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183569; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1331518ejc;
+        Fri, 13 Oct 2023 00:53:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF0zK7g8RPsXNooGAHvKl+iswL01HnqTMGM6c17Mi7GGFsPx+krIu095Z1jlwMj7VrRaWKz
+X-Received: by 2002:a05:620a:2688:b0:775:79d6:9e57 with SMTP id c8-20020a05620a268800b0077579d69e57mr29239938qkp.61.1697183582728;
+        Fri, 13 Oct 2023 00:53:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183582; cv=none;
         d=google.com; s=arc-20160816;
-        b=LjXrfekKk7/ab/7A/uD94ZYKwpC6rgevACZ/ImkyFX6dkL+JpU/P14eaKDPRVpxNH4
-         4ydyrYPv512MtN7jqdLFdMEYDTFQRYN2o2IqsIprMg2n7773w0bT6t3dXfP5xruhDXC6
-         XXOgRMkxsxV5ZSLV69pJRkBC5P6TATq+q393V5kLMxVv/LUaRA4TzCMa1JwFVea4lla0
-         0hI7Rq9zsdMrCDa1b5eDjm+IA1fw86dHUv7Wl29ZdC8OykICSSsMuCtx4qRij/LImyK7
-         LrGxviAw2zHUKlKzszdSRGR9ljhMYdoBJhYmvfRwXSHgDNPcFwwDdCK6VFlwxwfOit1R
-         2aDg==
+        b=bYTW7ADAt23tK6roOA9Z9yf/7Xx01iqvTtSUvubxKRED2tVWGEj/tGbtjydC7kBop+
+         XlkXRPdemURanL3B5xuEkyM52RuGQgcGdYVUbi1zIMm2iuOD01aYXLHT3GSw/U/Dgb4x
+         PvOtUtAoa422SFqqWxz5XVGizFKaL2N86a6hqJdV7+d9lBV/kk2DPUI2XlhfSkrThG4Q
+         aqjGdTDgwwv1zjBOzsSxYyeShC7pZg7HelO2K7Nwy42/6edfSFAMHT4R4hPP3dVPyT1u
+         NfBVitJZ1tzUajHsSz1xK5cPY+X0IxKkJsi88Y88Linrkh+4ZnGmcpy4e9QFRlPuBTXO
+         GjZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=V6QeJL4Wo8y/3eJ5tOXyyC3SVwifvmBvfOxaBUO5XBE=;
-        fh=vLvpSlw1+lBMm+q/nzf+BaJvp9XgxQ3MGYzWL1Gpu4g=;
-        b=WnE1guFO24dv2mCAgvHWFoyeqaGiCIZ7CfGiffNua2RmY0xgpdmwC+xMZ/4AvrtOrZ
-         AJ8b5UqU5P3fidD07r9KRKk2in2GhnwCaSQg5l8sFV++e4/51yMRU9IhFfzcU1SphMYH
-         UuYY1if0vf00CaxXCNqix477hNqugKAOsv0ZdhB9To+37rjaVEUHKg1GDwWCFP74casC
-         VqHXME+1cs50zU6o5H37RnTh+u7KiXt9qzNANfnwluGfVlCK7Ud31SbBdj1IPOUqb5xU
-         LjsEHQ22qXc4WTT5u2oMvZJbWZOU5XljosJmtXQFBDyFk+qU8XarCMDDC3qQo5bW/yAn
-         Ymug==
+        bh=+FVMc7C3P9kHYr0jPsMuU0YyC4w2RjwroOoVS3PMEwE=;
+        fh=adfgdAFcfsWOyxIeAR0zt4/V8TnkKGhPeV4cG324fuY=;
+        b=E6Mnqz0GEBUbSgnUFdZYlHi8FCvVQxKXslY3cHx2ZiN980oLzNZBUKNFVNsxwRO4ak
+         gR1lpmmFlUQ/THLgccqUAxXUAQrFQEM2gaa3N1mCml07eJFwj0ZbAmVc0WMkzaAhF98q
+         sl8tjpyDaWxpUMZAV+NhJxCcVPcLXEk52/ANKjAI8co3hUvBP/U2uHGz7+UZ2Gctxae0
+         M1Kr4cSYx63/gIJ3SEbbgxg/VzRJ1QuzZw1U8c/MVAEp7F4juCftUh5mZUk64STb434M
+         DfCXu44tM7MQfeZ4pspuK/m7Q382LSoeRyuTtkOSbKwa0ekrZ3Xm10gkVcG3B6Z7IxSf
+         layg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wizn7Jn1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zclDPz5V;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id lz4-20020a0562145c4400b00647290d544bsi823849qvb.296.2023.10.13.00.52.49
+        by mx.google.com with ESMTPS id j11-20020a05620a410b00b00775681b84fasi854259qko.367.2023.10.13.00.53.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:52:49 -0700 (PDT)
+        Fri, 13 Oct 2023 00:53:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wizn7Jn1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zclDPz5V;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCxk-0000Pz-Ee; Fri, 13 Oct 2023 03:52:00 -0400
+	id 1qrCwM-0004qv-JU; Fri, 13 Oct 2023 03:50:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwz-0006FT-Te
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:14 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1qrCwL-0004pI-Gf
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:33 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwk-0004uD-6k
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:12 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-406618d0992so18927145e9.0
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:50:57 -0700 (PDT)
+ id 1qrCw4-0004QR-Vt
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:33 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-3248ac76acbso1536298f8f.1
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:50:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183456; x=1697788256; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183415; x=1697788215; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=V6QeJL4Wo8y/3eJ5tOXyyC3SVwifvmBvfOxaBUO5XBE=;
- b=wizn7Jn1SeEU1VTh/TVsFWehmDm3E1Eeh/jy9i9gnAAvMSHcTrl1m/Ge4Uol8RbJLm
- oSOzeFusbdQcTgBxKVh3bLLqtIoXjSI5R9dlDxir0zraXusk/yFHsXng5SYqb5cYuKjL
- 9aanvnFwur7Rek1V3IppVpRSZ/kEtWPYPiqqNbce0PJ0sE1H1Jgsj3EHGFdwvAGHE2rl
- pFQ2wfPqv+V0qupQYht1decEER0RO6PqVmx16caurvivjJ343nlTmH8r5E0Bx0MwySnM
- 9jJhmgdLA0BoSVdgQljjckGNbwWl3d75gHjrNr9QQJN1+zLByokf1GRkyDlMx2DpqN/O
- 1q6g==
+ bh=+FVMc7C3P9kHYr0jPsMuU0YyC4w2RjwroOoVS3PMEwE=;
+ b=zclDPz5VMwA4UFmjPFGAz026lXHHEJ8kRQuRSlZjT1vcMaffwKLgvtrmVWh3gjXb79
+ Riy+Q6c+I5xURY8YvCTDmCUd221jTqLmzVtaYvM+qb+CIHLia30oI2Yka5Vy8Vrx7iXk
+ OoTUhartUcmJt3/7U+YYNjLyOhbURQI2Y/0W8tt7w9CHX9Z2ypJmLmdhIk4IAKYHvLVA
+ CdD8lzmAEWLb9mhyw7l+Q8ENuk2BU8NIk31uDcfL208i7WcRNdNIOwlNlAeDE69l1I6K
+ 6NZM8KnLBk3fDg0iy1a0STYY4WR8V0sVhW3XYeLUR5wdJ4Rv0UvUPVb/V2i1R2H1XH6W
+ kQDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183456; x=1697788256;
+ d=1e100.net; s=20230601; t=1697183415; x=1697788215;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=V6QeJL4Wo8y/3eJ5tOXyyC3SVwifvmBvfOxaBUO5XBE=;
- b=Ar9V7F34r4VACdEsAF85WxjAuysyrFU8fDWIgff5hTxDl9EG32m8a8AAkRUchrkQFS
- 3sf3Q18D1FuIiF4MPRuHxwFsPKvChq2cHlR1ZK2bJfcgs69frUlYW3zsXvzCO+mKH6E0
- 1m3Qn0wBPN6Cc05fV49sYQI3JJlcVfuJc0q0ozO5pzmpAzgmuJp7XYuTJrHjeqJaHZ+R
- 4m0lIeYLieFnwDWBgth9y/+DANdA6viJfHKHcXlXdELJlfTbl05WTgkedQ/yw+ELiwpL
- VcS44tixWW4UYqQKpmlqK3vQ4fO4RSME24xs+GxvFY0ecic8XaBz9q1zvjtxWSyj26nS
- IHow==
-X-Gm-Message-State: AOJu0YzdqtA7LkKKtrGLFEvcoZB8TDl4ztveO8TeUkQmP5+/Lk5u33Y2
- SQf3wRQYt9L1BrfHH3RWj29++P/lGpaDikGvcI4=
-X-Received: by 2002:a05:6000:49:b0:32d:5cc0:2f0c with SMTP id
- k9-20020a056000004900b0032d5cc02f0cmr8641029wrx.40.1697183456434; 
- Fri, 13 Oct 2023 00:50:56 -0700 (PDT)
+ bh=+FVMc7C3P9kHYr0jPsMuU0YyC4w2RjwroOoVS3PMEwE=;
+ b=rz8Tpqcihp7lVt0Cl294JmS6nYaYBQ99uX2RWkxz1QBURnBb+nwQ0rqMo/yQw5me/t
+ bYYiEljKbvsX/Syvx30PNtaelGySgrVOViLcPKcqAz9I+zh0mWwLSOr505eZYRm56tTy
+ GF/hpuO8QNFsSqWsDy1cuCrv9c1PrjrOzOi6wP0dds8232QBaDpNIZebYuJJu6z6uA/z
+ Fi/xLygQLJfmIpCoJZkH1F7aSit6tXogkEyetSwwgDkEvLuRRzz7ki6hvQvdFnM68ywK
+ KWwSksnVd3y+p9gh26xuOPhH60JyKQIjoPJpLO4XH/tZ59bDYMOIvA4t1RuZjJ0x5DJb
+ WJKQ==
+X-Gm-Message-State: AOJu0Yy9uoCCZdvuzfZXRIoZldGvTKNL+zGui8aRtRdQ8Qhij/d9ZcZL
+ 9GfRAd7IW4+XMmyzYoD9lREQBPqj/f+4IvwYF+M=
+X-Received: by 2002:a05:6000:698:b0:32d:8819:4620 with SMTP id
+ bo24-20020a056000069800b0032d88194620mr6716424wrb.14.1697183415366; 
+ Fri, 13 Oct 2023 00:50:15 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.54
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:50:55 -0700 (PDT)
+ Fri, 13 Oct 2023 00:50:14 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Stafford Horne <shorne@gmail.com>
-Subject: [RFC PATCH 36/78] target/openrisc: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:40 +0300
-Message-Id: <2961833b638056d4af03da7531f085ea618e45a6.1697183082.git.manos.pitsidianakis@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [RFC PATCH 15/78] accel/tcg: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:19 +0300
+Message-Id: <0fb697b5da862866e981e581bf61092d0be7e515.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,115 +128,252 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C/K9/A9Gt5or
+X-TUID: IohsmclU/OYT
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- target/openrisc/mmu.c       | 2 +-
- target/openrisc/translate.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ accel/tcg/cputlb.c             | 4 ++--
+ accel/tcg/ldst_atomicity.c.inc | 2 +-
+ accel/tcg/plugin-gen.c         | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/target/openrisc/mmu.c b/target/openrisc/mmu.c
-index 603c26715e..7ed744e81b 100644
---- a/target/openrisc/mmu.c
-+++ b/target/openrisc/mmu.c
-@@ -141,38 +141,38 @@ bool openrisc_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
- hwaddr openrisc_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index b8c5e345b8..92b7ab529a 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -2209,53 +2209,53 @@ static Int128 do_ld_whole_be16(CPUState *cpu, uintptr_t ra,
+ /*
+  * Wrapper for the above.
+  */
+ static uint64_t do_ld_beN(CPUState *cpu, MMULookupPageData *p,
+                           uint64_t ret_be, int mmu_idx, MMUAccessType type,
+                           MemOp mop, uintptr_t ra)
  {
-     OpenRISCCPU *cpu = OPENRISC_CPU(cs);
-     int prot, excp, sr = cpu->env.sr;
-     hwaddr phys_addr;
+     MemOp atom;
+     unsigned tmp, half_size;
  
-     switch (sr & (SR_DME | SR_IME)) {
-     case SR_DME | SR_IME:
-         /* The mmu is definitely enabled.  */
-         excp = get_phys_mmu(cpu, &phys_addr, &prot, addr,
-                             PAGE_READ,
-                             (sr & SR_SM) != 0);
-         if (!excp) {
-             return phys_addr;
+     if (unlikely(p->flags & TLB_MMIO)) {
+         return do_ld_mmio_beN(cpu, p->full, ret_be, p->addr, p->size,
+                               mmu_idx, type, ra);
+     }
+ 
+     /*
+      * It is a given that we cross a page and therefore there is no
+      * atomicity for the load as a whole, but subobjects may need attention.
+      */
+     atom = mop & MO_ATOM_MASK;
+     switch (atom) {
+     case MO_ATOM_SUBALIGN:
+         return do_ld_parts_beN(p, ret_be);
+ 
+     case MO_ATOM_IFALIGN_PAIR:
+     case MO_ATOM_WITHIN16_PAIR:
+         tmp = mop & MO_SIZE;
+         tmp = tmp ? tmp - 1 : 0;
+         half_size = 1 << tmp;
+         if (atom == MO_ATOM_IFALIGN_PAIR
+             ? p->size == half_size
+             : p->size >= half_size) {
+             if (!HAVE_al8_fast && p->size < 4) {
+                 return do_ld_whole_be4(p, ret_be);
+             } else {
+                 return do_ld_whole_be8(cpu, ra, p, ret_be);
+             }
          }
-         excp = get_phys_mmu(cpu, &phys_addr, &prot, addr,
-                             PAGE_EXEC,
-                             (sr & SR_SM) != 0);
-         return excp ? -1 : phys_addr;
+-        /* fall through */
++        fallthrough;
+ 
+     case MO_ATOM_IFALIGN:
+     case MO_ATOM_WITHIN16:
+     case MO_ATOM_NONE:
+         return do_ld_bytes_beN(p, ret_be);
  
      default:
-         /* The mmu is partially enabled, and we don't really have
-            a "real" access type.  Begin by trying the mmu, but if
-            that fails try again without.  */
-         excp = get_phys_mmu(cpu, &phys_addr, &prot, addr,
-                             PAGE_EXEC | PAGE_READ | PAGE_WRITE,
-                             (sr & SR_SM) != 0);
-         if (!excp) {
-             return phys_addr;
-         }
--        /* fallthru */
-+        fallthrough;
- 
-     case 0:
-         /* The mmu is definitely disabled; lookups never fail.  */
-         get_phys_nommu(&phys_addr, &prot, addr);
-         return phys_addr;
+         g_assert_not_reached();
      }
  }
-diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
-index ecff4412b7..de77014d60 100644
---- a/target/openrisc/translate.c
-+++ b/target/openrisc/translate.c
-@@ -1588,53 +1588,53 @@ static void openrisc_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
- static void openrisc_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+ 
+ /*
+  * Wrapper for the above, for 8 < size < 16.
+  */
+@@ -2625,57 +2625,57 @@ static uint64_t do_st16_mmio_leN(CPUState *cpu, CPUTLBEntryFull *full,
+ /*
+  * Wrapper for the above.
+  */
+ static uint64_t do_st_leN(CPUState *cpu, MMULookupPageData *p,
+                           uint64_t val_le, int mmu_idx,
+                           MemOp mop, uintptr_t ra)
  {
-     DisasContext *dc = container_of(dcbase, DisasContext, base);
-     target_ulong jmp_dest;
+     MemOp atom;
+     unsigned tmp, half_size;
  
-     /* If we have already exited the TB, nothing following has effect.  */
-     if (dc->base.is_jmp == DISAS_NORETURN) {
-         return;
+     if (unlikely(p->flags & TLB_MMIO)) {
+         return do_st_mmio_leN(cpu, p->full, val_le, p->addr,
+                               p->size, mmu_idx, ra);
+     } else if (unlikely(p->flags & TLB_DISCARD_WRITE)) {
+         return val_le >> (p->size * 8);
      }
  
-     /* Adjust the delayed branch state for the next TB.  */
-     if ((dc->tb_flags & TB_FLAGS_DFLAG ? 1 : 0) != (dc->delayed_branch != 0)) {
-         tcg_gen_movi_i32(cpu_dflag, dc->delayed_branch != 0);
-     }
+     /*
+      * It is a given that we cross a page and therefore there is no atomicity
+      * for the store as a whole, but subobjects may need attention.
+      */
+     atom = mop & MO_ATOM_MASK;
+     switch (atom) {
+     case MO_ATOM_SUBALIGN:
+         return store_parts_leN(p->haddr, p->size, val_le);
  
-     /* For DISAS_TOO_MANY, jump to the next insn.  */
-     jmp_dest = dc->base.pc_next;
-     tcg_gen_movi_tl(cpu_ppc, jmp_dest - 4);
- 
-     switch (dc->base.is_jmp) {
-     case DISAS_JUMP:
-         jmp_dest = dc->jmp_pc_imm;
-         if (jmp_dest == -1) {
-             /* The jump destination is indirect/computed; use jmp_pc.  */
-             tcg_gen_mov_tl(cpu_pc, jmp_pc);
-             tcg_gen_discard_tl(jmp_pc);
-             tcg_gen_lookup_and_goto_ptr();
-             break;
+     case MO_ATOM_IFALIGN_PAIR:
+     case MO_ATOM_WITHIN16_PAIR:
+         tmp = mop & MO_SIZE;
+         tmp = tmp ? tmp - 1 : 0;
+         half_size = 1 << tmp;
+         if (atom == MO_ATOM_IFALIGN_PAIR
+             ? p->size == half_size
+             : p->size >= half_size) {
+             if (!HAVE_al8_fast && p->size <= 4) {
+                 return store_whole_le4(p->haddr, p->size, val_le);
+             } else if (HAVE_al8) {
+                 return store_whole_le8(p->haddr, p->size, val_le);
+             } else {
+                 cpu_loop_exit_atomic(cpu, ra);
+             }
          }
-         /* The jump destination is direct; use jmp_pc_imm.
-            However, we will have stored into jmp_pc as well;
-            we know now that it wasn't needed.  */
-         tcg_gen_discard_tl(jmp_pc);
--        /* fallthru */
+-        /* fall through */
 +        fallthrough;
  
-     case DISAS_TOO_MANY:
-         if (translator_use_goto_tb(&dc->base, jmp_dest)) {
-             tcg_gen_goto_tb(0);
-             tcg_gen_movi_tl(cpu_pc, jmp_dest);
-             tcg_gen_exit_tb(dc->base.tb, 0);
-             break;
-         }
-         tcg_gen_movi_tl(cpu_pc, jmp_dest);
-         tcg_gen_lookup_and_goto_ptr();
+     case MO_ATOM_IFALIGN:
+     case MO_ATOM_WITHIN16:
+     case MO_ATOM_NONE:
+         return store_bytes_leN(p->haddr, p->size, val_le);
+ 
+     default:
+         g_assert_not_reached();
+     }
+ }
+ 
+ /*
+  * Wrapper for the above, for 8 < size < 16.
+  */
+diff --git a/accel/tcg/ldst_atomicity.c.inc b/accel/tcg/ldst_atomicity.c.inc
+index 1cf5b92166..3752f74214 100644
+--- a/accel/tcg/ldst_atomicity.c.inc
++++ b/accel/tcg/ldst_atomicity.c.inc
+@@ -22,86 +22,86 @@
+ /**
+  * required_atomicity:
+  *
+  * Return the lg2 bytes of atomicity required by @memop for @p.
+  * If the operation must be split into two operations to be
+  * examined separately for atomicity, return -lg2.
+  */
+ static int required_atomicity(CPUState *cpu, uintptr_t p, MemOp memop)
+ {
+     MemOp atom = memop & MO_ATOM_MASK;
+     MemOp size = memop & MO_SIZE;
+     MemOp half = size ? size - 1 : 0;
+     unsigned tmp;
+     int atmax;
+ 
+     switch (atom) {
+     case MO_ATOM_NONE:
+         atmax = MO_8;
          break;
  
-     case DISAS_EXIT:
-         tcg_gen_exit_tb(NULL, 0);
+     case MO_ATOM_IFALIGN_PAIR:
+         size = half;
+-        /* fall through */
++        fallthrough;
+ 
+     case MO_ATOM_IFALIGN:
+         tmp = (1 << size) - 1;
+         atmax = p & tmp ? MO_8 : size;
+         break;
+ 
+     case MO_ATOM_WITHIN16:
+         tmp = p & 15;
+         atmax = (tmp + (1 << size) <= 16 ? size : MO_8);
+         break;
+ 
+     case MO_ATOM_WITHIN16_PAIR:
+         tmp = p & 15;
+         if (tmp + (1 << size) <= 16) {
+             atmax = size;
+         } else if (tmp + (1 << half) == 16) {
+             /*
+              * The pair exactly straddles the boundary.
+              * Both halves are naturally aligned and atomic.
+              */
+             atmax = half;
+         } else {
+             /*
+              * One of the pair crosses the boundary, and is non-atomic.
+              * The other of the pair does not cross, and is atomic.
+              */
+             atmax = -half;
+         }
+         break;
+ 
+     case MO_ATOM_SUBALIGN:
+         /*
+          * Examine the alignment of p to determine if there are subobjects
+          * that must be aligned.  Note that we only really need ctz4() --
+          * any more sigificant bits are discarded by the immediately
+          * following comparison.
+          */
+         tmp = ctz32(p);
+         atmax = MIN(size, tmp);
+         break;
+ 
+     default:
+         g_assert_not_reached();
+     }
+ 
+     /*
+      * Here we have the architectural atomicity of the operation.
+      * However, when executing in a serial context, we need no extra
+      * host atomicity in order to avoid racing.  This reduction
+      * avoids looping with cpu_loop_exit_atomic.
+      */
+     if (cpu_in_serial_context(cpu)) {
+         return MO_8;
+     }
+     return atmax;
+ }
+ 
+ /**
+  * load_atomic2:
+  * @pv: host address
+  *
+  * Atomically load 2 aligned bytes from @pv.
+  */
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index d31c9993ea..ba9a8c8789 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -179,23 +179,23 @@ static void gen_wrapped(enum plugin_gen_from from,
+ static void plugin_gen_empty_callback(enum plugin_gen_from from)
+ {
+     switch (from) {
+     case PLUGIN_GEN_AFTER_INSN:
+         gen_wrapped(from, PLUGIN_GEN_DISABLE_MEM_HELPER,
+                     gen_empty_mem_helper);
+         break;
+     case PLUGIN_GEN_FROM_INSN:
+         /*
+          * Note: plugin_gen_inject() relies on ENABLE_MEM_HELPER being
+          * the first callback of an instruction
+          */
+         gen_wrapped(from, PLUGIN_GEN_ENABLE_MEM_HELPER,
+                     gen_empty_mem_helper);
+-        /* fall through */
++        fallthrough;
+     case PLUGIN_GEN_FROM_TB:
+         gen_wrapped(from, PLUGIN_GEN_CB_UDATA, gen_empty_udata_cb);
+         gen_wrapped(from, PLUGIN_GEN_CB_INLINE, gen_empty_inline_cb);
          break;
      default:
          g_assert_not_reached();

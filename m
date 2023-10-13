@@ -1,632 +1,1357 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1332928ejc;
-        Fri, 13 Oct 2023 00:57:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFRs1SGCbqNb2T+6xcdDYpS4Ip+Isdpcr9K4FfFerFVbhESkJ1ERpMzPvjYzJGNWtsaPUhI
-X-Received: by 2002:a05:622a:1352:b0:414:b35a:c58c with SMTP id w18-20020a05622a135200b00414b35ac58cmr32217003qtk.9.1697183848475;
-        Fri, 13 Oct 2023 00:57:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183848; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333001ejc;
+        Fri, 13 Oct 2023 00:57:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEbXORklUQmuMA5+zs6aNNcZ0Ph2wQ7vP0jwK+uH88onP8qg6hTPsIgIvnZa6D7KyL/sm3g
+X-Received: by 2002:a05:6214:5008:b0:66d:169a:d41a with SMTP id jo8-20020a056214500800b0066d169ad41amr5654339qvb.24.1697183858915;
+        Fri, 13 Oct 2023 00:57:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183858; cv=none;
         d=google.com; s=arc-20160816;
-        b=WChyKHNEuJ/Lzx+U1ImHEg3Qh5yOmsXP5QqYOwdSTTbWwB+/3Fi170jrzJSndYjkyf
-         i3K1cnYWUxOPdWUDJTpjPqcOe3Nsdy/u6oadpJu3+Gzv6WzUVBr7D3n05bcPTU5neVSH
-         XiiEFqPE4x0PkgapKTdM+oj/ZuIqgsFHtCwDWCi11rBTdxFi5tzonrH2H1eg8LP/7D8h
-         L5eYms/7411YSfmWEvW9kcliH9ZyIba0ywKuV6yeQkRnfmnWHBpOxULBh5shXl2+TTM6
-         aPskXuS3G6RdYdVCAOmr+ykTPRBbbGuFnrWN+1t0KX/T5/hV0egxZmcUGiVeNOQM1Djm
-         eLbw==
+        b=OEhdZcK/ef+IzMmXDFrih0KwgTLi6HPaUA6Zf7N/TYl5It8484k8fZA7vu2YY+97Yf
+         zOFz2dG88kLxa/EZVDEhxxH63f4yJTW6l3QEj9pr7i2CfMGpaPhJmHBWDKUvEGOZReld
+         ORueODPcPosbB7F6Ocr9GjDELLDhL6QlkqQcVgcaeY5B8J7BbAfGjoRi2iFiRFGH48I3
+         UOwRlmoLoAtUUJLhVaOvpn1YK/srJ9KRPVJ1CR12o1H/clQJxRE5SeIJX7dn4pUQC8nw
+         FCLnnuQDsDsihR5XKPttAk4EoF+U4VSlJupdeEYeD3v6qcG80JSncyV7Z4+opvuoFoHj
+         Salg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=2gfslYJ4F1Who76ChLxfqYGvbV8UVuDlWQQYCkYUvXI=;
-        fh=asEhtIhotNI9uCMGLmBw+ntEmnpVXPzyKuRUsbEEmB8=;
-        b=bwWu7F2/l97lFWTgqaJnxwWq51Z5dMnXwI5zceuFTBCYjo7pxC8ZCEVSwhA/nGhbR6
-         BNLxufwbbShRVv+BSkNhJvZpJGbzVb3RH9slUWnP8JqHflwcMCdxdOgbLsoDD19A3Vnq
-         0dCklgZtR6DZOW9+ypDT9LlbMWV9bVr4G2jFZR4M5ZQAH4mQmKNv7AB2VIBIdCvjkNj1
-         OQhjWKpEsbGrXWsLS8Tnc+iHbotysHHpuvzeMTvhQ9OoIga1KnridTCTVCkN48dRz09X
-         c0SunaXEvuIpUHLKJgtv3WxGprOUGf4qE7Xt+1D51zGq4tZPH9dBi54QbP/mlP5jvPOd
-         5l3g==
+        bh=26XmJrmy0yeQL+itGkgyNTL5y2J9dMpEXdNv7ZAQr48=;
+        fh=i0WnSTf1XlLr031tSV3w46p5RC5rN51U/FBRG/Zgqeo=;
+        b=RIVgynddEgUAge/6mF8yx8cf9WHMCtUH+ZWIFwbqWQ70TFJOM7cps3MnP/7vxrxkDb
+         F1HxbjaLpoATBOAqAPU0duMR86F0iem5j22BugSv1bvk/rQMQiXlinGty2bg0OlqPuEk
+         EDWyhDVYbtlTumecP7IbcEPg1ABHKIkL2fxyarJOd34lA8mKWQxO9RIo08Z2XS+E/Ni0
+         ++O5gFZuqOIL0N61Xmr5UOBrTVsehFxlNhmeZIgQusKHCjwZn+f00/0JwVp8BgINukKd
+         e5GUUBWh3+H+mU9nUfArZQyXMRurfc+B6CsKeEP/D4183B1dqZwTr00l2zCIvQJMtML9
+         vPqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QiNRehi5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mqKdYQon;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10-20020ac8594a000000b0041981b8a9dfsi814184qtz.75.2023.10.13.00.57.28
+        by mx.google.com with ESMTPS id v3-20020a05620a440300b00775b341e4c3si747283qkp.103.2023.10.13.00.57.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:57:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 00:57:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QiNRehi5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mqKdYQon;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCxm-0000TB-BH; Fri, 13 Oct 2023 03:52:02 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrCwC-0004Uz-Nz; Fri, 13 Oct 2023 03:50:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCws-0005uG-3J
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:06 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1qrCwA-0004Tj-2I
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:50:22 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwd-0004rg-Ut
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:05 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-40572aeb673so19451155e9.0
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:50:51 -0700 (PDT)
+ id 1qrCvz-00048g-IT
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:50:21 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-32799639a2aso1667904f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:50:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183450; x=1697788250; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183402; x=1697788202; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2gfslYJ4F1Who76ChLxfqYGvbV8UVuDlWQQYCkYUvXI=;
- b=QiNRehi5OSUf0978xJSULvaUi1Qo03P245ZcY73m9socGi+IJvFdgV1B71uuYWmowD
- agxTNrZfSF0sOvHH3pQvc3JbNEzsh9LQW+IC2Qi01J+hJePoBC2qPv+t1eCdayVEv6Sh
- 3tOR16ICNVjSNqKfktzSwq47MqgDHi/j6mltR/iWSZEtUt6QN5QFeihLbUfxbfgdJzKL
- UScz7SysjP30mU6JDZvON5TtCvQ0StzJhcGRXfnSp8TnR8XmfypyzECjc3BGtaMirE+n
- 0UUroPzJdVsa7Eh2qe3qOUvC0kyBKGoi+5+TL4Fb5+420XgwJtAgJBFVsNrNBgNm3EiX
- s3mA==
+ bh=26XmJrmy0yeQL+itGkgyNTL5y2J9dMpEXdNv7ZAQr48=;
+ b=mqKdYQonoPMUjSDcNRc0G3cZd9+A88wqKyeLJc4yUcRpo7k/2XTGdQN4JQ7fwDbRzE
+ yL0XZdU5DWMmkukWsKyB4Olp7wTHZYorm2s4IzF8gWu9J8VkeViV7PUorQRh3QiHXReJ
+ OuzARdAuqduiIe4Gc+OunUlXcqzPgyITuHYWLKGOBIHtzpKSjiO20moQpDDFS43WZ/to
+ qD0TdGlpejfC+Hl127ubrgVXTN2+aTkzsXxbSnhpP/ESbZHlWEy4oSl0FWVAU6khMgvV
+ CqbBcoXs1PsMiNoPIxMV+kc0QEydJd4ErDmA2EJItr64o0EeXHPkXgt/UGOvxbiiUMbq
+ KSdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183450; x=1697788250;
+ d=1e100.net; s=20230601; t=1697183402; x=1697788202;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2gfslYJ4F1Who76ChLxfqYGvbV8UVuDlWQQYCkYUvXI=;
- b=usKnRr227gJAew77/7Ym0t5LxBmNDk3FUZUBcgGtJDczX3oJaXMgTQZ6uvUUV11V4+
- hsvOGHMBlSQt80Wm/AU0crIBU/GkZGn0NZfIsU8dQOFwBiKjn3BRYG8EximHqq6fDxQH
- 60PgOq5UT8T/FVBfgISQ/p51mY2+SEaWojDuIvlQaHCaK1X6mQ0mlUTPuqKmKJB7te9n
- DGL3ukrzM+yyKs1D+89i91aryx5IkriLw3yCpFmTLywk69n1nDjL2TsDbynpCevqNrbh
- 7Wo0pw4hghpIWNhMpHCOoRwYce/iog/bvy23soFHkLpkqJKMjcYUgkJiXYJsdGoHZQaT
- VwlA==
-X-Gm-Message-State: AOJu0YxGPgk3H3OZn00jCFN7r7iCbfh2GuLIADdYGmRx3UNIMWkgSfMd
- /T4e6yjNdA3BzEPFJ+sAA0QTz849TULhKiUzGyU=
-X-Received: by 2002:a05:600c:207:b0:405:1c19:476d with SMTP id
- 7-20020a05600c020700b004051c19476dmr22127067wmi.39.1697183449984; 
- Fri, 13 Oct 2023 00:50:49 -0700 (PDT)
+ bh=26XmJrmy0yeQL+itGkgyNTL5y2J9dMpEXdNv7ZAQr48=;
+ b=maYfdOx9ICpJX50NzhngjHI6KNlvQkhX9dhvdsJqIjKx03TY+MHenUEWInOaaMHJ0+
+ Lp3CgwKDqG44Kgz9QnHd2eM4s6uhLURRMwdw9cApkP8y3pUZPorRoR0JODuk0pLXQ8P5
+ yfrcmg1ytJC5BHaBqjWi+E52UA0ZVly5OZ8iC3NVCztKShqdiF1aoQGxq07OBaDnsVZy
+ 11jSaX4Iqa/uJ9IbDuyoNdHMIR2gMxUXOPeCSIdF494Ke76Oyk9esL61KbhwwlR/vMGD
+ wn3TURVks0asnCbR56hewKmG80EHwT2WD40lWpQxp+z8pG64Io3RFOb2mzNibZ41PvEz
+ PjKA==
+X-Gm-Message-State: AOJu0YycwuyAgD9WclDq+bLs2CzYqNQ9eeKxZhmZlhMjZWCct/KbN9r2
+ +14eWXoLCE63r3fyOjhSbyltfQ==
+X-Received: by 2002:a05:6000:c09:b0:32d:a022:855a with SMTP id
+ dn9-20020a0560000c0900b0032da022855amr264291wrb.20.1697183402328; 
+ Fri, 13 Oct 2023 00:50:02 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.48
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:50:49 -0700 (PDT)
+ Fri, 13 Oct 2023 00:50:01 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [RFC PATCH 32/78] target/m68k: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:36 +0300
-Message-Id: <5b7440c1d602e363ec20ef448418ee0c236537bb.1697183082.git.manos.pitsidianakis@linaro.org>
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ xen-devel@lists.xenproject.org (open list:X86 Xen CPUs)
+Subject: [RFC PATCH 08/78] hw/block: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:12 +0300
+Message-Id: <23f52f392ad16af6ae923fae526b7c13daf2a0e2.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OaWbkqVAX+Y5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ot4FNTenZ8D8
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- target/m68k/op_helper.c |  3 ++-
- target/m68k/translate.c | 10 +++++-----
- 2 files changed, 7 insertions(+), 6 deletions(-)
+ hw/block/dataplane/xen-block.c | 4 ++--
+ hw/block/m25p80.c              | 2 +-
+ hw/block/onenand.c             | 2 +-
+ hw/block/pflash_cfi01.c        | 1 +
+ hw/block/pflash_cfi02.c        | 6 ++++--
+ 5 files changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
-index 1ce850bbc5..65058b9e2f 100644
---- a/target/m68k/op_helper.c
-+++ b/target/m68k/op_helper.c
-@@ -285,147 +285,147 @@ static inline void do_stack_frame(CPUM68KState *env, uint32_t *sp,
- static void m68k_interrupt_all(CPUM68KState *env, int is_hw)
+diff --git a/hw/block/dataplane/xen-block.c b/hw/block/dataplane/xen-block.c
+index 3b6f2b0aa2..1ae25a73b2 100644
+--- a/hw/block/dataplane/xen-block.c
++++ b/hw/block/dataplane/xen-block.c
+@@ -144,59 +144,59 @@ static void xen_block_complete_request(XenBlockRequest *request)
+ /*
+  * translate request into iovec + start offset
+  * do sanity checks along the way
+  */
+ static int xen_block_parse_request(XenBlockRequest *request)
  {
-     CPUState *cs = env_cpu(env);
-     uint32_t sp;
-     uint32_t vector;
-     uint16_t sr, oldsr;
+     XenBlockDataPlane *dataplane = request->dataplane;
+     size_t len;
+     int i;
  
-     if (!is_hw) {
-         switch (cs->exception_index) {
-         case EXCP_RTE:
-             /* Return from an exception.  */
-             m68k_rte(env);
-             return;
+     switch (request->req.operation) {
+     case BLKIF_OP_READ:
+         break;
+     case BLKIF_OP_FLUSH_DISKCACHE:
+         request->presync = 1;
+         if (!request->req.nr_segments) {
+             return 0;
          }
+-        /* fall through */
++        fallthrough;
+     case BLKIF_OP_WRITE:
+         break;
+     case BLKIF_OP_DISCARD:
+         return 0;
+     default:
+         error_report("error: unknown operation (%d)", request->req.operation);
+         goto err;
+     };
+ 
+     if (request->req.operation != BLKIF_OP_READ &&
+         !blk_is_writable(dataplane->blk)) {
+         error_report("error: write req for ro device");
+         goto err;
      }
  
-     vector = cs->exception_index << 2;
- 
-     sr = env->sr | cpu_m68k_get_ccr(env);
-     if (qemu_loglevel_mask(CPU_LOG_INT)) {
-         static int count;
-         qemu_log("INT %6d: %s(%#x) pc=%08x sp=%08x sr=%04x\n",
-                  ++count, m68k_exception_name(cs->exception_index),
-                  vector, env->pc, env->aregs[7], sr);
-     }
- 
-     /*
-      * MC68040UM/AD,  chapter 9.3.10
-      */
- 
-     /* "the processor first make an internal copy" */
-     oldsr = sr;
-     /* "set the mode to supervisor" */
-     sr |= SR_S;
-     /* "suppress tracing" */
-     sr &= ~SR_T;
-     /* "sets the processor interrupt mask" */
-     if (is_hw) {
-         sr |= (env->sr & ~SR_I) | (env->pending_level << SR_I_SHIFT);
-     }
-     cpu_m68k_set_sr(env, sr);
-     sp = env->aregs[7];
- 
-     if (!m68k_feature(env, M68K_FEATURE_UNALIGNED_DATA)) {
-         sp &= ~1;
-     }
- 
-     switch (cs->exception_index) {
-     case EXCP_ACCESS:
-         if (env->mmu.fault) {
-             cpu_abort(cs, "DOUBLE MMU FAULT\n");
+     request->start = request->req.sector_number * dataplane->sector_size;
+     for (i = 0; i < request->req.nr_segments; i++) {
+         if (i == BLKIF_MAX_SEGMENTS_PER_REQUEST) {
+             error_report("error: nr_segments too big");
+             goto err;
          }
-         env->mmu.fault = true;
-         /* push data 3 */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* push data 2 */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* push data 1 */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* write back 1 / push data 0 */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* write back 1 address */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* write back 2 data */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* write back 2 address */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* write back 3 data */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* write back 3 address */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, env->mmu.ar, MMU_KERNEL_IDX, 0);
-         /* fault address */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, env->mmu.ar, MMU_KERNEL_IDX, 0);
-         /* write back 1 status */
-         sp -= 2;
-         cpu_stw_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* write back 2 status */
-         sp -= 2;
-         cpu_stw_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* write back 3 status */
-         sp -= 2;
-         cpu_stw_mmuidx_ra(env, sp, 0, MMU_KERNEL_IDX, 0);
-         /* special status word */
-         sp -= 2;
-         cpu_stw_mmuidx_ra(env, sp, env->mmu.ssw, MMU_KERNEL_IDX, 0);
-         /* effective address */
-         sp -= 4;
-         cpu_stl_mmuidx_ra(env, sp, env->mmu.ar, MMU_KERNEL_IDX, 0);
+         if (request->req.seg[i].first_sect > request->req.seg[i].last_sect) {
+             error_report("error: first > last sector");
+             goto err;
+         }
+         if (request->req.seg[i].last_sect * dataplane->sector_size >=
+             XEN_PAGE_SIZE) {
+             error_report("error: page crossing");
+             goto err;
+         }
  
-         do_stack_frame(env, &sp, 7, oldsr, 0, env->pc);
-         env->mmu.fault = false;
-         if (qemu_loglevel_mask(CPU_LOG_INT)) {
-             qemu_log("            "
-                      "ssw:  %08x ea:   %08x sfc:  %d    dfc: %d\n",
-                      env->mmu.ssw, env->mmu.ar, env->sfc, env->dfc);
+         len = (request->req.seg[i].last_sect -
+                request->req.seg[i].first_sect + 1) * dataplane->sector_size;
+         request->size += len;
+     }
+     if (request->start + request->size > blk_getlength(dataplane->blk)) {
+         error_report("error: access beyond end of file");
+         goto err;
+     }
+     return 0;
+@@ -257,63 +257,63 @@ static int xen_block_do_aio(XenBlockRequest *request);
+ static void xen_block_complete_aio(void *opaque, int ret)
+ {
+     XenBlockRequest *request = opaque;
+     XenBlockDataPlane *dataplane = request->dataplane;
+ 
+     aio_context_acquire(dataplane->ctx);
+ 
+     if (ret != 0) {
+         error_report("%s I/O error",
+                      request->req.operation == BLKIF_OP_READ ?
+                      "read" : "write");
+         request->aio_errors++;
+     }
+ 
+     request->aio_inflight--;
+     if (request->presync) {
+         request->presync = 0;
+         xen_block_do_aio(request);
+         goto done;
+     }
+     if (request->aio_inflight > 0) {
+         goto done;
+     }
+ 
+     switch (request->req.operation) {
+     case BLKIF_OP_READ:
+         /* in case of failure request->aio_errors is increased */
+         if (ret == 0) {
+             xen_block_copy_request(request);
          }
          break;
- 
-     case EXCP_ILLEGAL:
-         do_stack_frame(env, &sp, 0, oldsr, 0, env->pc);
+     case BLKIF_OP_WRITE:
+     case BLKIF_OP_FLUSH_DISKCACHE:
+     default:
          break;
+     }
  
-     case EXCP_ADDRESS:
-         do_stack_frame(env, &sp, 2, oldsr, 0, env->pc);
-         break;
+     request->status = request->aio_errors ? BLKIF_RSP_ERROR : BLKIF_RSP_OKAY;
  
-     case EXCP_CHK:
-     case EXCP_DIV0:
-     case EXCP_TRACE:
-     case EXCP_TRAPCC:
-         do_stack_frame(env, &sp, 2, oldsr, env->mmu.ar, env->pc);
-         break;
- 
-     case EXCP_SPURIOUS ... EXCP_INT_LEVEL_7:
-         if (is_hw && (oldsr & SR_M)) {
-             do_stack_frame(env, &sp, 0, oldsr, 0, env->pc);
-             oldsr = sr;
-             env->aregs[7] = sp;
-             cpu_m68k_set_sr(env, sr & ~SR_M);
-             sp = env->aregs[7];
-             if (!m68k_feature(env, M68K_FEATURE_UNALIGNED_DATA)) {
-                 sp &= ~1;
-             }
-             do_stack_frame(env, &sp, 1, oldsr, 0, env->pc);
+     switch (request->req.operation) {
+     case BLKIF_OP_WRITE:
+     case BLKIF_OP_FLUSH_DISKCACHE:
+         if (!request->req.nr_segments) {
              break;
          }
 -        /* fall through */
 +        fallthrough;
- 
+     case BLKIF_OP_READ:
+         if (request->status == BLKIF_RSP_OKAY) {
+             block_acct_done(blk_get_stats(dataplane->blk), &request->acct);
+         } else {
+             block_acct_failed(blk_get_stats(dataplane->blk), &request->acct);
+         }
+         break;
+     case BLKIF_OP_DISCARD:
      default:
-         do_stack_frame(env, &sp, 0, oldsr, 0, env->pc);
          break;
      }
  
-     env->aregs[7] = sp;
-     /* Jump to vector.  */
-     env->pc = cpu_ldl_mmuidx_ra(env, env->vbr + vector, MMU_KERNEL_IDX, 0);
- }
-@@ -880,60 +880,61 @@ struct bf_data {
- static struct bf_data bf_prep(uint32_t addr, int32_t ofs, uint32_t len)
+     xen_block_complete_request(request);
+ 
+     if (dataplane->more_work) {
+         qemu_bh_schedule(dataplane->bh);
+     }
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index afc3fdf4d6..523c34da71 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -1117,360 +1117,360 @@ static bool is_valid_aai_cmd(uint32_t cmd)
+ static void decode_new_cmd(Flash *s, uint32_t value)
  {
-     int bofs, blen;
+     int i;
  
-     /* Bound length; map 0 to 32.  */
-     len = ((len - 1) & 31) + 1;
+     s->cmd_in_progress = value;
+     trace_m25p80_command_decoded(s, value);
  
-     /* Note that ofs is signed.  */
-     addr += ofs / 8;
-     bofs = ofs % 8;
-     if (bofs < 0) {
-         bofs += 8;
-         addr -= 1;
+     if (value != RESET_MEMORY) {
+         s->reset_enable = false;
      }
  
-     /*
-      * Compute the number of bytes required (minus one) to
-      * satisfy the bitfield.
-      */
-     blen = (bofs + len - 1) / 8;
+     if (get_man(s) == MAN_SST && s->aai_enable && !is_valid_aai_cmd(value)) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "M25P80: Invalid cmd within AAI programming sequence");
+     }
  
-     /*
-      * Canonicalize the bit offset for data loaded into a 64-bit big-endian
-      * word.  For the cases where BLEN is not a power of 2, adjust ADDR so
-      * that we can use the next power of two sized load without crossing a
-      * page boundary, unless the field itself crosses the boundary.
-      */
-     switch (blen) {
+     switch (value) {
+ 
+     case ERASE_4K:
+     case ERASE4_4K:
+     case ERASE_32K:
+     case ERASE4_32K:
+     case ERASE_SECTOR:
+     case ERASE4_SECTOR:
+     case PP:
+     case PP4:
+     case DIE_ERASE:
+     case RDID_90:
+     case RDID_AB:
+         s->needed_bytes = get_addr_length(s);
+         s->pos = 0;
+         s->len = 0;
+         s->state = STATE_COLLECTING_DATA;
+         break;
+     case READ:
+     case READ4:
+         if (get_man(s) != MAN_NUMONYX || numonyx_mode(s) == MODE_STD) {
+             s->needed_bytes = get_addr_length(s);
+             s->pos = 0;
+             s->len = 0;
+             s->state = STATE_COLLECTING_DATA;
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Cannot execute cmd %x in "
+                           "DIO or QIO mode\n", s->cmd_in_progress);
+         }
+         break;
+     case DPP:
+         if (get_man(s) != MAN_NUMONYX || numonyx_mode(s) != MODE_QIO) {
+             s->needed_bytes = get_addr_length(s);
+             s->pos = 0;
+             s->len = 0;
+             s->state = STATE_COLLECTING_DATA;
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Cannot execute cmd %x in "
+                           "QIO mode\n", s->cmd_in_progress);
+         }
+         break;
+     case QPP:
+     case QPP_4:
+     case PP4_4:
+         if (get_man(s) != MAN_NUMONYX || numonyx_mode(s) != MODE_DIO) {
+             s->needed_bytes = get_addr_length(s);
+             s->pos = 0;
+             s->len = 0;
+             s->state = STATE_COLLECTING_DATA;
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Cannot execute cmd %x in "
+                           "DIO mode\n", s->cmd_in_progress);
+         }
+         break;
+ 
+     case FAST_READ:
+     case FAST_READ4:
+         decode_fast_read_cmd(s);
+         break;
+     case DOR:
+     case DOR4:
+         if (get_man(s) != MAN_NUMONYX || numonyx_mode(s) != MODE_QIO) {
+             decode_fast_read_cmd(s);
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Cannot execute cmd %x in "
+                           "QIO mode\n", s->cmd_in_progress);
+         }
+         break;
+     case QOR:
+     case QOR4:
+         if (get_man(s) != MAN_NUMONYX || numonyx_mode(s) != MODE_DIO) {
+             decode_fast_read_cmd(s);
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Cannot execute cmd %x in "
+                           "DIO mode\n", s->cmd_in_progress);
+         }
+         break;
+ 
+     case DIOR:
+     case DIOR4:
+         if (get_man(s) != MAN_NUMONYX || numonyx_mode(s) != MODE_QIO) {
+             decode_dio_read_cmd(s);
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Cannot execute cmd %x in "
+                           "QIO mode\n", s->cmd_in_progress);
+         }
+         break;
+ 
+     case QIOR:
+     case QIOR4:
+         if (get_man(s) != MAN_NUMONYX || numonyx_mode(s) != MODE_DIO) {
+             decode_qio_read_cmd(s);
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Cannot execute cmd %x in "
+                           "DIO mode\n", s->cmd_in_progress);
+         }
+         break;
+ 
+     case WRSR:
+         /*
+          * If WP# is low and status_register_write_disabled is high,
+          * status register writes are disabled.
+          * This is also called "hardware protected mode" (HPM). All other
+          * combinations of the two states are called "software protected mode"
+          * (SPM), and status register writes are permitted.
+          */
+         if ((s->wp_level == 0 && s->status_register_write_disabled)
+             || !s->write_enable) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "M25P80: Status register write is disabled!\n");
+             break;
+         }
+ 
+         switch (get_man(s)) {
+         case MAN_SPANSION:
+             s->needed_bytes = 2;
+             s->state = STATE_COLLECTING_DATA;
+             break;
+         case MAN_MACRONIX:
+             s->needed_bytes = 2;
+             s->state = STATE_COLLECTING_VAR_LEN_DATA;
+             break;
+         default:
+             s->needed_bytes = 1;
+             s->state = STATE_COLLECTING_DATA;
+         }
+         s->pos = 0;
+         break;
+ 
+     case WRDI:
+         s->write_enable = false;
+         if (get_man(s) == MAN_SST) {
+             s->aai_enable = false;
+         }
+         break;
+     case WREN:
+         s->write_enable = true;
+         break;
+ 
+     case RDSR:
+         s->data[0] = (!!s->write_enable) << 1;
+         s->data[0] |= (!!s->status_register_write_disabled) << 7;
+         s->data[0] |= (!!s->block_protect0) << 2;
+         s->data[0] |= (!!s->block_protect1) << 3;
+         s->data[0] |= (!!s->block_protect2) << 4;
+         if (s->pi->flags & HAS_SR_TB) {
+             s->data[0] |= (!!s->top_bottom_bit) << 5;
+         }
+         if (s->pi->flags & HAS_SR_BP3_BIT6) {
+             s->data[0] |= (!!s->block_protect3) << 6;
+         }
+ 
+         if (get_man(s) == MAN_MACRONIX || get_man(s) == MAN_ISSI) {
+             s->data[0] |= (!!s->quad_enable) << 6;
+         }
+         if (get_man(s) == MAN_SST) {
+             s->data[0] |= (!!s->aai_enable) << 6;
+         }
+ 
+         s->pos = 0;
+         s->len = 1;
+         s->data_read_loop = true;
+         s->state = STATE_READING_DATA;
+         break;
+ 
+     case READ_FSR:
+         s->data[0] = FSR_FLASH_READY;
+         if (s->four_bytes_address_mode) {
+             s->data[0] |= FSR_4BYTE_ADDR_MODE_ENABLED;
+         }
+         s->pos = 0;
+         s->len = 1;
+         s->data_read_loop = true;
+         s->state = STATE_READING_DATA;
+         break;
+ 
+     case JEDEC_READ:
+         if (get_man(s) != MAN_NUMONYX || numonyx_mode(s) == MODE_STD) {
+             trace_m25p80_populated_jedec(s);
+             for (i = 0; i < s->pi->id_len; i++) {
+                 s->data[i] = s->pi->id[i];
+             }
+             for (; i < SPI_NOR_MAX_ID_LEN; i++) {
+                 s->data[i] = 0;
+             }
+ 
+             s->len = SPI_NOR_MAX_ID_LEN;
+             s->pos = 0;
+             s->state = STATE_READING_DATA;
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Cannot execute JEDEC read "
+                           "in DIO or QIO mode\n");
+         }
+         break;
+ 
+     case RDCR:
+         s->data[0] = s->volatile_cfg & 0xFF;
+         s->data[0] |= (!!s->four_bytes_address_mode) << 5;
+         s->pos = 0;
+         s->len = 1;
+         s->state = STATE_READING_DATA;
+         break;
+ 
+     case BULK_ERASE_60:
+     case BULK_ERASE:
+         if (s->write_enable) {
+             trace_m25p80_chip_erase(s);
+             flash_erase(s, 0, BULK_ERASE);
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: chip erase with write "
+                           "protect!\n");
+         }
+         break;
+     case NOP:
+         break;
+     case EN_4BYTE_ADDR:
+         s->four_bytes_address_mode = true;
+         break;
+     case EX_4BYTE_ADDR:
+         s->four_bytes_address_mode = false;
+         break;
+     case BRRD:
+     case EXTEND_ADDR_READ:
+         s->data[0] = s->ear;
+         s->pos = 0;
+         s->len = 1;
+         s->state = STATE_READING_DATA;
+         break;
+     case BRWR:
+     case EXTEND_ADDR_WRITE:
+         if (s->write_enable) {
+             s->needed_bytes = 1;
+             s->pos = 0;
+             s->len = 0;
+             s->state = STATE_COLLECTING_DATA;
+         }
+         break;
+     case RNVCR:
+         s->data[0] = s->nonvolatile_cfg & 0xFF;
+         s->data[1] = (s->nonvolatile_cfg >> 8) & 0xFF;
+         s->pos = 0;
+         s->len = 2;
+         s->state = STATE_READING_DATA;
+         break;
+     case WNVCR:
+         if (s->write_enable && get_man(s) == MAN_NUMONYX) {
+             s->needed_bytes = 2;
+             s->pos = 0;
+             s->len = 0;
+             s->state = STATE_COLLECTING_DATA;
+         }
+         break;
+     case RVCR:
+         s->data[0] = s->volatile_cfg & 0xFF;
+         s->pos = 0;
+         s->len = 1;
+         s->state = STATE_READING_DATA;
+         break;
+     case WVCR:
+         if (s->write_enable) {
+             s->needed_bytes = 1;
+             s->pos = 0;
+             s->len = 0;
+             s->state = STATE_COLLECTING_DATA;
+         }
+         break;
+     case REVCR:
+         s->data[0] = s->enh_volatile_cfg & 0xFF;
+         s->pos = 0;
+         s->len = 1;
+         s->state = STATE_READING_DATA;
+         break;
+     case WEVCR:
+         if (s->write_enable) {
+             s->needed_bytes = 1;
+             s->pos = 0;
+             s->len = 0;
+             s->state = STATE_COLLECTING_DATA;
+         }
+         break;
+     case RESET_ENABLE:
+         s->reset_enable = true;
+         break;
+     case RESET_MEMORY:
+         if (s->reset_enable) {
+             reset_memory(s);
+         }
+         break;
+     case RDCR_EQIO:
+         switch (get_man(s)) {
+         case MAN_SPANSION:
+             s->data[0] = (!!s->quad_enable) << 1;
+             s->pos = 0;
+             s->len = 1;
+             s->state = STATE_READING_DATA;
+             break;
+         case MAN_MACRONIX:
+             s->quad_enable = true;
+             break;
+         default:
+             break;
+         }
+         break;
+     case RSTQIO:
+         s->quad_enable = false;
+         break;
+     case AAI_WP:
+         if (get_man(s) == MAN_SST) {
+             if (s->write_enable) {
+                 if (s->aai_enable) {
+                     s->state = STATE_PAGE_PROGRAM;
+                 } else {
+                     s->aai_enable = true;
+                     s->needed_bytes = get_addr_length(s);
+                     s->state = STATE_COLLECTING_DATA;
+                 }
+             } else {
+                 qemu_log_mask(LOG_GUEST_ERROR,
+                               "M25P80: AAI_WP with write protect\n");
+             }
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Unknown cmd %x\n", value);
+         }
+         break;
+     case RDSFDP:
+         if (s->pi->sfdp_read) {
+             s->needed_bytes = get_addr_length(s) + 1; /* SFDP addr + dummy */
+             s->pos = 0;
+             s->len = 0;
+             s->state = STATE_COLLECTING_DATA;
+             break;
+         }
+-        /* Fallthrough */
++        fallthrough;
+ 
+     default:
+         s->pos = 0;
+         s->len = 1;
+         s->state = STATE_READING_DATA;
+         s->data_read_loop = true;
+         s->data[0] = 0;
+         qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Unknown cmd %x\n", value);
+         break;
+     }
+ }
+diff --git a/hw/block/onenand.c b/hw/block/onenand.c
+index 50d3d1c985..87583c48a0 100644
+--- a/hw/block/onenand.c
++++ b/hw/block/onenand.c
+@@ -406,202 +406,202 @@ fail:
+ static void onenand_command(OneNANDState *s)
+ {
+     int b;
+     int sec;
+     void *buf;
+ #define SETADDR(block, page)                                \
+     sec = (s->addr[page] & 3) +                             \
+           ((((s->addr[page] >> 2) & 0x3f) +                 \
+             (((s->addr[block] & 0xfff) |                    \
+               (s->addr[block] >> 15 ? s->density_mask : 0)) \
+              << 6))                                         \
+            << (PAGE_SHIFT - 9));
+ #define SETBUF_M()                                                           \
+     buf = (s->bufaddr & 8) ? s->data[(s->bufaddr >> 2) & 1][0] : s->boot[0]; \
+     buf += (s->bufaddr & 3) << 9;
+ #define SETBUF_S()                                          \
+     buf = (s->bufaddr & 8) ?                                \
+             s->data[(s->bufaddr >> 2) & 1][1] : s->boot[1]; \
+     buf += (s->bufaddr & 3) << 4;
+ 
+     switch (s->command) {
+     case 0x00:  /* Load single/multiple sector data unit into buffer */
+         SETADDR(ONEN_BUF_BLOCK, ONEN_BUF_PAGE)
+ 
+         SETBUF_M()
+         if (onenand_load_main(s, sec, s->count, buf))
+             s->status |= ONEN_ERR_CMD | ONEN_ERR_LOAD;
+ 
+ #if 0
+         SETBUF_S()
+         if (onenand_load_spare(s, sec, s->count, buf))
+             s->status |= ONEN_ERR_CMD | ONEN_ERR_LOAD;
+ #endif
+ 
+         /* TODO: if (s->bufaddr & 3) + s->count was > 4 (2k-pages)
+          * or    if (s->bufaddr & 1) + s->count was > 2 (1k-pages)
+          * then we need two split the read/write into two chunks.
+          */
+         s->intstatus |= ONEN_INT | ONEN_INT_LOAD;
+         break;
+     case 0x13:  /* Load single/multiple spare sector into buffer */
+         SETADDR(ONEN_BUF_BLOCK, ONEN_BUF_PAGE)
+ 
+         SETBUF_S()
+         if (onenand_load_spare(s, sec, s->count, buf))
+             s->status |= ONEN_ERR_CMD | ONEN_ERR_LOAD;
+ 
+         /* TODO: if (s->bufaddr & 3) + s->count was > 4 (2k-pages)
+          * or    if (s->bufaddr & 1) + s->count was > 2 (1k-pages)
+          * then we need two split the read/write into two chunks.
+          */
+         s->intstatus |= ONEN_INT | ONEN_INT_LOAD;
+         break;
+     case 0x80:  /* Program single/multiple sector data unit from buffer */
+         SETADDR(ONEN_BUF_BLOCK, ONEN_BUF_PAGE)
+ 
+         SETBUF_M()
+         if (onenand_prog_main(s, sec, s->count, buf))
+             s->status |= ONEN_ERR_CMD | ONEN_ERR_PROG;
+ 
+ #if 0
+         SETBUF_S()
+         if (onenand_prog_spare(s, sec, s->count, buf))
+             s->status |= ONEN_ERR_CMD | ONEN_ERR_PROG;
+ #endif
+ 
+         /* TODO: if (s->bufaddr & 3) + s->count was > 4 (2k-pages)
+          * or    if (s->bufaddr & 1) + s->count was > 2 (1k-pages)
+          * then we need two split the read/write into two chunks.
+          */
+         s->intstatus |= ONEN_INT | ONEN_INT_PROG;
+         break;
+     case 0x1a:  /* Program single/multiple spare area sector from buffer */
+         SETADDR(ONEN_BUF_BLOCK, ONEN_BUF_PAGE)
+ 
+         SETBUF_S()
+         if (onenand_prog_spare(s, sec, s->count, buf))
+             s->status |= ONEN_ERR_CMD | ONEN_ERR_PROG;
+ 
+         /* TODO: if (s->bufaddr & 3) + s->count was > 4 (2k-pages)
+          * or    if (s->bufaddr & 1) + s->count was > 2 (1k-pages)
+          * then we need two split the read/write into two chunks.
+          */
+         s->intstatus |= ONEN_INT | ONEN_INT_PROG;
+         break;
+     case 0x1b:  /* Copy-back program */
+         SETBUF_S()
+ 
+         SETADDR(ONEN_BUF_BLOCK, ONEN_BUF_PAGE)
+         if (onenand_load_main(s, sec, s->count, buf))
+             s->status |= ONEN_ERR_CMD | ONEN_ERR_PROG;
+ 
+         SETADDR(ONEN_BUF_DEST_BLOCK, ONEN_BUF_DEST_PAGE)
+         if (onenand_prog_main(s, sec, s->count, buf))
+             s->status |= ONEN_ERR_CMD | ONEN_ERR_PROG;
+ 
+         /* TODO: spare areas */
+ 
+         s->intstatus |= ONEN_INT | ONEN_INT_PROG;
+         break;
+ 
+     case 0x23:  /* Unlock NAND array block(s) */
+         s->intstatus |= ONEN_INT;
+ 
+         /* XXX the previous (?) area should be locked automatically */
+         for (b = s->unladdr[0]; b <= s->unladdr[1]; b ++) {
+             if (b >= s->blocks) {
+                 s->status |= ONEN_ERR_CMD;
+                 break;
+             }
+             if (s->blockwp[b] == ONEN_LOCK_LOCKTIGHTEN)
+                 break;
+ 
+             s->wpstatus = s->blockwp[b] = ONEN_LOCK_UNLOCKED;
+         }
+         break;
+     case 0x27:  /* Unlock All NAND array blocks */
+         s->intstatus |= ONEN_INT;
+ 
+         for (b = 0; b < s->blocks; b ++) {
+             if (s->blockwp[b] == ONEN_LOCK_LOCKTIGHTEN)
+                 break;
+ 
+             s->wpstatus = s->blockwp[b] = ONEN_LOCK_UNLOCKED;
+         }
+         break;
+ 
+     case 0x2a:  /* Lock NAND array block(s) */
+         s->intstatus |= ONEN_INT;
+ 
+         for (b = s->unladdr[0]; b <= s->unladdr[1]; b ++) {
+             if (b >= s->blocks) {
+                 s->status |= ONEN_ERR_CMD;
+                 break;
+             }
+             if (s->blockwp[b] == ONEN_LOCK_LOCKTIGHTEN)
+                 break;
+ 
+             s->wpstatus = s->blockwp[b] = ONEN_LOCK_LOCKED;
+         }
+         break;
+     case 0x2c:  /* Lock-tight NAND array block(s) */
+         s->intstatus |= ONEN_INT;
+ 
+         for (b = s->unladdr[0]; b <= s->unladdr[1]; b ++) {
+             if (b >= s->blocks) {
+                 s->status |= ONEN_ERR_CMD;
+                 break;
+             }
+             if (s->blockwp[b] == ONEN_LOCK_UNLOCKED)
+                 continue;
+ 
+             s->wpstatus = s->blockwp[b] = ONEN_LOCK_LOCKTIGHTEN;
+         }
+         break;
+ 
+     case 0x71:  /* Erase-Verify-Read */
+         s->intstatus |= ONEN_INT;
+         break;
+     case 0x95:  /* Multi-block erase */
+         qemu_irq_pulse(s->intr);
+-        /* Fall through.  */
++        fallthrough;
+     case 0x94:  /* Block erase */
+         sec = ((s->addr[ONEN_BUF_BLOCK] & 0xfff) |
+                         (s->addr[ONEN_BUF_BLOCK] >> 15 ? s->density_mask : 0))
+                 << (BLOCK_SHIFT - 9);
+         if (onenand_erase(s, sec, 1 << (BLOCK_SHIFT - 9)))
+             s->status |= ONEN_ERR_CMD | ONEN_ERR_ERASE;
+ 
+         s->intstatus |= ONEN_INT | ONEN_INT_ERASE;
+         break;
+     case 0xb0:  /* Erase suspend */
+         break;
+     case 0x30:  /* Erase resume */
+         s->intstatus |= ONEN_INT | ONEN_INT_ERASE;
+         break;
+ 
+     case 0xf0:  /* Reset NAND Flash core */
+         onenand_reset(s, 0);
+         break;
+     case 0xf3:  /* Reset OneNAND */
+         onenand_reset(s, 0);
+         break;
+ 
+     case 0x65:  /* OTP Access */
+         s->intstatus |= ONEN_INT;
+         s->blk_cur = NULL;
+         s->current = s->otp;
+         s->secs_cur = 1 << (BLOCK_SHIFT - 9);
+         s->addr[ONEN_BUF_BLOCK] = 0;
+         s->otpmode = 1;
+         break;
+ 
+     default:
+         s->status |= ONEN_ERR_CMD;
+         s->intstatus |= ONEN_INT;
+         qemu_log_mask(LOG_GUEST_ERROR, "unknown OneNAND command %x\n",
+                       s->command);
+     }
+ 
+     onenand_intr_update(s);
+ }
+diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+index 62056b1d74..cb58f08f53 100644
+--- a/hw/block/pflash_cfi01.c
++++ b/hw/block/pflash_cfi01.c
+@@ -261,123 +261,124 @@ static uint32_t pflash_data_read(PFlashCFI01 *pfl, hwaddr offset,
+ static uint32_t pflash_read(PFlashCFI01 *pfl, hwaddr offset,
+                             int width, int be)
+ {
+     hwaddr boff;
+     uint32_t ret;
+ 
+     ret = -1;
+     switch (pfl->cmd) {
+     default:
+         /* This should never happen : reset state & treat it as a read */
+         trace_pflash_read_unknown_state(pfl->name, pfl->cmd);
+         pfl->wcycle = 0;
+         /*
+          * The command 0x00 is not assigned by the CFI open standard,
+          * but QEMU historically uses it for the READ_ARRAY command (0xff).
+          */
+         pfl->cmd = 0x00;
+         /* fall through to read code */
++        fallthrough;
+     case 0x00: /* This model reset value for READ_ARRAY (not CFI compliant) */
+         /* Flash area read */
+         ret = pflash_data_read(pfl, offset, width, be);
+         break;
+     case 0x10: /* Single byte program */
+     case 0x20: /* Block erase */
+     case 0x28: /* Block erase */
+     case 0x40: /* single byte program */
+     case 0x50: /* Clear status register */
+     case 0x60: /* Block /un)lock */
+     case 0x70: /* Status Register */
+     case 0xe8: /* Write block */
+         /*
+          * Status register read.  Return status from each device in
+          * bank.
+          */
+         ret = pfl->status;
+         if (pfl->device_width && width > pfl->device_width) {
+             int shift = pfl->device_width * 8;
+             while (shift + pfl->device_width * 8 <= width * 8) {
+                 ret |= pfl->status << shift;
+                 shift += pfl->device_width * 8;
+             }
+         } else if (!pfl->device_width && width > 2) {
+             /*
+              * Handle 32 bit flash cases where device width is not
+              * set. (Existing behavior before device width added.)
+              */
+             ret |= pfl->status << 16;
+         }
+         trace_pflash_read_status(pfl->name, ret);
+         break;
+     case 0x90:
+         if (!pfl->device_width) {
+             /* Preserve old behavior if device width not specified */
+             boff = offset & 0xFF;
+             if (pfl->bank_width == 2) {
+                 boff = boff >> 1;
+             } else if (pfl->bank_width == 4) {
+                 boff = boff >> 2;
+             }
+ 
+             switch (boff) {
+             case 0:
+                 ret = pfl->ident0 << 8 | pfl->ident1;
+                 trace_pflash_manufacturer_id(pfl->name, ret);
+                 break;
+             case 1:
+                 ret = pfl->ident2 << 8 | pfl->ident3;
+                 trace_pflash_device_id(pfl->name, ret);
+                 break;
+             default:
+                 trace_pflash_device_info(pfl->name, boff);
+                 ret = 0;
+                 break;
+             }
+         } else {
+             /*
+              * If we have a read larger than the bank_width, combine multiple
+              * manufacturer/device ID queries into a single response.
+              */
+             int i;
+             for (i = 0; i < width; i += pfl->bank_width) {
+                 ret = deposit32(ret, i * 8, pfl->bank_width * 8,
+                                 pflash_devid_query(pfl,
+                                                  offset + i * pfl->bank_width));
+             }
+         }
+         break;
+     case 0x98: /* Query mode */
+         if (!pfl->device_width) {
+             /* Preserve old behavior if device width not specified */
+             boff = offset & 0xFF;
+             if (pfl->bank_width == 2) {
+                 boff = boff >> 1;
+             } else if (pfl->bank_width == 4) {
+                 boff = boff >> 2;
+             }
+ 
+             if (boff < sizeof(pfl->cfi_table)) {
+                 ret = pfl->cfi_table[boff];
+             } else {
+                 ret = 0;
+             }
+         } else {
+             /*
+              * If we have a read larger than the bank_width, combine multiple
+              * CFI queries into a single response.
+              */
+             int i;
+             for (i = 0; i < width; i += pfl->bank_width) {
+                 ret = deposit32(ret, i * 8, pfl->bank_width * 8,
+                                 pflash_cfi_query(pfl,
+                                                  offset + i * pfl->bank_width));
+             }
+         }
+ 
+         break;
+     }
+     trace_pflash_io_read(pfl->name, offset, width, ret, pfl->cmd, pfl->wcycle);
+ 
+     return ret;
+ }
+ 
+ /* update flash content on disk */
+diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+index 2a99b286b0..711f978d7c 100644
+--- a/hw/block/pflash_cfi02.c
++++ b/hw/block/pflash_cfi02.c
+@@ -307,87 +307,89 @@ static bool pflash_sector_is_erasing(PFlashCFI02 *pfl, hwaddr offset)
+ static uint64_t pflash_read(void *opaque, hwaddr offset, unsigned int width)
+ {
+     PFlashCFI02 *pfl = opaque;
+     hwaddr boff;
+     uint64_t ret;
+ 
+     /* Lazy reset to ROMD mode after a certain amount of read accesses */
+     if (!pfl->rom_mode && pfl->wcycle == 0 &&
+         ++pfl->read_counter > PFLASH_LAZY_ROMD_THRESHOLD) {
+         pflash_mode_read_array(pfl);
+     }
+     offset &= pfl->chip_len - 1;
+     boff = offset & 0xFF;
+     if (pfl->width == 2) {
+         boff = boff >> 1;
+     } else if (pfl->width == 4) {
+         boff = boff >> 2;
+     }
+     switch (pfl->cmd) {
+     default:
+         /* This should never happen : reset state & treat it as a read*/
+         trace_pflash_read_unknown_state(pfl->name, pfl->cmd);
+         pflash_reset_state_machine(pfl);
+         /* fall through to the read code */
++        fallthrough;
+     case 0x80: /* Erase (unlock) */
+         /* We accept reads during second unlock sequence... */
+     case 0x00:
+         if (pflash_erase_suspend_mode(pfl) &&
+             pflash_sector_is_erasing(pfl, offset)) {
+             /* Toggle bit 2, but not 6. */
+             toggle_dq2(pfl);
+             /* Status register read */
+             ret = pfl->status;
+             trace_pflash_read_status(pfl->name, ret);
+             break;
+         }
+         /* Flash area read */
+         ret = pflash_data_read(pfl, offset, width);
+         break;
+     case 0x90: /* flash ID read */
+         switch (boff) {
+         case 0x00:
+         case 0x01:
+             ret = boff & 0x01 ? pfl->ident1 : pfl->ident0;
+             break;
+         case 0x02:
+             ret = 0x00; /* Pretend all sectors are unprotected */
+             break;
+         case 0x0E:
+         case 0x0F:
+             ret = boff & 0x01 ? pfl->ident3 : pfl->ident2;
+             if (ret != (uint8_t)-1) {
+                 break;
+             }
+             /* Fall through to data read. */
++            fallthrough;
+         default:
+             ret = pflash_data_read(pfl, offset, width);
+         }
+         trace_pflash_read_done(pfl->name, boff, ret);
+         break;
+     case 0x10: /* Chip Erase */
+     case 0x30: /* Sector Erase */
+         /* Toggle bit 2 during erase, but not program. */
+         toggle_dq2(pfl);
+-        /* fall through */
++        fallthrough;
+     case 0xA0: /* Program */
+         /* Toggle bit 6 */
+         toggle_dq6(pfl);
+         /* Status register read */
+         ret = pfl->status;
+         trace_pflash_read_status(pfl->name, ret);
+         break;
+     case 0x98:
+         /* CFI query mode */
+         if (boff < sizeof(pfl->cfi_table)) {
+             ret = pfl->cfi_table[boff];
+         } else {
+             ret = 0;
+         }
+         break;
+     }
+     trace_pflash_io_read(pfl->name, offset, width, ret, pfl->cmd, pfl->wcycle);
+ 
+     return ret;
+ }
+ 
+ /* update flash content on disk */
+@@ -431,277 +433,277 @@ static void pflash_sector_erase(PFlashCFI02 *pfl, hwaddr offset)
+ static void pflash_write(void *opaque, hwaddr offset, uint64_t value,
+                          unsigned int width)
+ {
+     PFlashCFI02 *pfl = opaque;
+     hwaddr boff;
+     uint8_t *p;
+     uint8_t cmd;
+ 
+     trace_pflash_io_write(pfl->name, offset, width, value, pfl->wcycle);
+     cmd = value;
+     if (pfl->cmd != 0xA0) {
+         /* Reset does nothing during chip erase and sector erase. */
+         if (cmd == 0xF0 && pfl->cmd != 0x10 && pfl->cmd != 0x30) {
+             if (pfl->wcycle == WCYCLE_AUTOSELECT_CFI) {
+                 /* Return to autoselect mode. */
+                 pfl->wcycle = 3;
+                 pfl->cmd = 0x90;
+                 return;
+             }
+             goto reset_flash;
+         }
+     }
+     offset &= pfl->chip_len - 1;
+ 
+     boff = offset;
+     if (pfl->width == 2) {
+         boff = boff >> 1;
+     } else if (pfl->width == 4) {
+         boff = boff >> 2;
+     }
+     /* Only the least-significant 11 bits are used in most cases. */
+     boff &= 0x7FF;
+     switch (pfl->wcycle) {
      case 0:
-         bofs += 56;
+         /* Set the device in I/O access mode if required */
+         if (pfl->rom_mode) {
+             pfl->rom_mode = false;
+             memory_region_rom_device_set_romd(&pfl->orig_mem, false);
+         }
+         pfl->read_counter = 0;
+         /* We're in read mode */
+     check_unlock0:
+         if (boff == 0x55 && cmd == 0x98) {
+             /* Enter CFI query mode */
+             pfl->wcycle = WCYCLE_CFI;
+             pfl->cmd = 0x98;
+             return;
+         }
+         /* Handle erase resume in erase suspend mode, otherwise reset. */
+         if (cmd == 0x30) { /* Erase Resume */
+             if (pflash_erase_suspend_mode(pfl)) {
+                 /* Resume the erase. */
+                 timer_mod(&pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+                           pfl->erase_time_remaining);
+                 pfl->erase_time_remaining = 0;
+                 pfl->wcycle = 6;
+                 pfl->cmd = 0x30;
+                 set_dq7(pfl, 0x00);
+                 assert_dq3(pfl);
+                 return;
+             }
+             goto reset_flash;
+         }
+         /* Ignore erase suspend. */
+         if (cmd == 0xB0) { /* Erase Suspend */
+             return;
+         }
+         if (boff != pfl->unlock_addr0 || cmd != 0xAA) {
+             trace_pflash_unlock0_failed(pfl->name, boff,
+                                         cmd, pfl->unlock_addr0);
+             goto reset_flash;
+         }
+         trace_pflash_write(pfl->name, "unlock sequence started");
          break;
      case 1:
-         bofs += 48;
+         /* We started an unlock sequence */
+     check_unlock1:
+         if (boff != pfl->unlock_addr1 || cmd != 0x55) {
+             trace_pflash_unlock1_failed(pfl->name, boff, cmd);
+             goto reset_flash;
+         }
+         trace_pflash_write(pfl->name, "unlock sequence done");
          break;
      case 2:
-         if (addr & 1) {
-             bofs += 8;
-             addr -= 1;
+         /* We finished an unlock sequence */
+         if (!pfl->bypass && boff != pfl->unlock_addr0) {
+             trace_pflash_write_failed(pfl->name, boff, cmd);
+             goto reset_flash;
          }
-         /* fallthru */
-+        fallthrough;
-     case 3:
-         bofs += 32;
-         break;
-     case 4:
-         if (addr & 3) {
-             bofs += 8 * (addr & 3);
-             addr &= -4;
-         }
-         break;
-     default:
-         g_assert_not_reached();
-     }
- 
-     return (struct bf_data){
-         .addr = addr,
-         .bofs = bofs,
-         .blen = blen,
-         .len = len,
-     };
- }
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 4d0110de95..ce102dc585 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -715,67 +715,67 @@ static void gen_partset_reg(int opsize, TCGv reg, TCGv val)
- /*
-  * Generate code for an "effective address".  Does not adjust the base
-  * register for autoincrement addressing modes.
-  */
- static TCGv gen_lea_mode(CPUM68KState *env, DisasContext *s,
-                          int mode, int reg0, int opsize)
- {
-     TCGv reg;
-     TCGv tmp;
-     uint16_t ext;
-     uint32_t offset;
- 
-     switch (mode) {
-     case 0: /* Data register direct.  */
-     case 1: /* Address register direct.  */
-         return NULL_QREG;
-     case 3: /* Indirect postincrement.  */
-         if (opsize == OS_UNSIZED) {
-             return NULL_QREG;
-         }
--        /* fallthru */
-+        fallthrough;
-     case 2: /* Indirect register */
-         return get_areg(s, reg0);
-     case 4: /* Indirect predecrememnt.  */
-         if (opsize == OS_UNSIZED) {
-             return NULL_QREG;
-         }
-         reg = get_areg(s, reg0);
-         tmp = tcg_temp_new();
-         if (reg0 == 7 && opsize == OS_BYTE &&
-             m68k_feature(s->env, M68K_FEATURE_M68K)) {
-             tcg_gen_subi_i32(tmp, reg, 2);
-         } else {
-             tcg_gen_subi_i32(tmp, reg, opsize_bytes(opsize));
-         }
-         return tmp;
-     case 5: /* Indirect displacement.  */
-         reg = get_areg(s, reg0);
-         tmp = tcg_temp_new();
-         ext = read_im16(env, s);
-         tcg_gen_addi_i32(tmp, reg, (int16_t)ext);
-         return tmp;
-     case 6: /* Indirect index + displacement.  */
-         reg = get_areg(s, reg0);
-         return gen_lea_indexed(env, s, reg);
-     case 7: /* Other */
-         switch (reg0) {
-         case 0: /* Absolute short.  */
-             offset = (int16_t)read_im16(env, s);
-             return tcg_constant_i32(offset);
-         case 1: /* Absolute long.  */
-             offset = read_im32(env, s);
-             return tcg_constant_i32(offset);
-         case 2: /* pc displacement  */
-             offset = s->pc;
-             offset += (int16_t)read_im16(env, s);
-             return tcg_constant_i32(offset);
-         case 3: /* pc index+displacement.  */
-             return gen_lea_indexed(env, s, NULL_QREG);
-         case 4: /* Immediate.  */
+         switch (cmd) {
+         case 0x20:
+             pfl->bypass = 1;
+             goto do_bypass;
+         case 0x80: /* Erase */
+         case 0x90: /* Autoselect */
+         case 0xA0: /* Program */
+             pfl->cmd = cmd;
+             trace_pflash_write_start(pfl->name, cmd);
+             break;
          default:
-             return NULL_QREG;
-         }
-     }
-     /* Should never happen.  */
-     return NULL_QREG;
- }
-@@ -1195,171 +1195,171 @@ typedef struct {
- static void gen_cc_cond(DisasCompare *c, DisasContext *s, int cond)
- {
-     TCGv tmp, tmp2;
-     TCGCond tcond;
-     CCOp op = s->cc_op;
- 
-     /* The CC_OP_CMP form can handle most normal comparisons directly.  */
-     if (op == CC_OP_CMPB || op == CC_OP_CMPW || op == CC_OP_CMPL) {
-         c->v1 = QREG_CC_N;
-         c->v2 = QREG_CC_V;
-         switch (cond) {
-         case 2: /* HI */
-         case 3: /* LS */
-             tcond = TCG_COND_LEU;
-             goto done;
-         case 4: /* CC */
-         case 5: /* CS */
-             tcond = TCG_COND_LTU;
-             goto done;
-         case 6: /* NE */
-         case 7: /* EQ */
-             tcond = TCG_COND_EQ;
-             goto done;
-         case 10: /* PL */
-         case 11: /* MI */
-             c->v2 = tcg_constant_i32(0);
-             c->v1 = tmp = tcg_temp_new();
-             tcg_gen_sub_i32(tmp, QREG_CC_N, QREG_CC_V);
-             gen_ext(tmp, tmp, op - CC_OP_CMPB, 1);
--            /* fallthru */
-+            fallthrough;
-         case 12: /* GE */
-         case 13: /* LT */
-             tcond = TCG_COND_LT;
-             goto done;
-         case 14: /* GT */
-         case 15: /* LE */
-             tcond = TCG_COND_LE;
-             goto done;
-         }
-     }
- 
-     c->v2 = tcg_constant_i32(0);
- 
-     switch (cond) {
-     case 0: /* T */
-     case 1: /* F */
-         c->v1 = c->v2;
-         tcond = TCG_COND_NEVER;
-         goto done;
-     case 14: /* GT (!(Z || (N ^ V))) */
-     case 15: /* LE (Z || (N ^ V)) */
-         /*
-          * Logic operations clear V, which simplifies LE to (Z || N),
-          * and since Z and N are co-located, this becomes a normal
-          * comparison vs N.
-          */
-         if (op == CC_OP_LOGIC) {
-             c->v1 = QREG_CC_N;
-             tcond = TCG_COND_LE;
-             goto done;
+             trace_pflash_write_unknown(pfl->name, cmd);
+             goto reset_flash;
          }
          break;
-     case 12: /* GE (!(N ^ V)) */
-     case 13: /* LT (N ^ V) */
-         /* Logic operations clear V, which simplifies this to N.  */
-         if (op != CC_OP_LOGIC) {
-             break;
-         }
--        /* fallthru */
-+        fallthrough;
-     case 10: /* PL (!N) */
-     case 11: /* MI (N) */
-         /* Several cases represent N normally.  */
-         if (op == CC_OP_ADDB || op == CC_OP_ADDW || op == CC_OP_ADDL ||
-             op == CC_OP_SUBB || op == CC_OP_SUBW || op == CC_OP_SUBL ||
-             op == CC_OP_LOGIC) {
-             c->v1 = QREG_CC_N;
-             tcond = TCG_COND_LT;
-             goto done;
-         }
-         break;
-     case 6: /* NE (!Z) */
-     case 7: /* EQ (Z) */
-         /* Some cases fold Z into N.  */
-         if (op == CC_OP_ADDB || op == CC_OP_ADDW || op == CC_OP_ADDL ||
-             op == CC_OP_SUBB || op == CC_OP_SUBW || op == CC_OP_SUBL ||
-             op == CC_OP_LOGIC) {
-             tcond = TCG_COND_EQ;
-             c->v1 = QREG_CC_N;
-             goto done;
-         }
-         break;
-     case 4: /* CC (!C) */
-     case 5: /* CS (C) */
-         /* Some cases fold C into X.  */
-         if (op == CC_OP_ADDB || op == CC_OP_ADDW || op == CC_OP_ADDL ||
-             op == CC_OP_SUBB || op == CC_OP_SUBW || op == CC_OP_SUBL) {
-             tcond = TCG_COND_NE;
-             c->v1 = QREG_CC_X;
-             goto done;
-         }
--        /* fallthru */
-+        fallthrough;
-     case 8: /* VC (!V) */
-     case 9: /* VS (V) */
-         /* Logic operations clear V and C.  */
-         if (op == CC_OP_LOGIC) {
-             tcond = TCG_COND_NEVER;
-             c->v1 = c->v2;
-             goto done;
-         }
-         break;
-     }
- 
-     /* Otherwise, flush flag state to CC_OP_FLAGS.  */
-     gen_flush_flags(s);
- 
-     switch (cond) {
-     case 0: /* T */
-     case 1: /* F */
-     default:
-         /* Invalid, or handled above.  */
-         abort();
-     case 2: /* HI (!C && !Z) -> !(C || Z)*/
-     case 3: /* LS (C || Z) */
-         c->v1 = tmp = tcg_temp_new();
-         tcg_gen_setcond_i32(TCG_COND_EQ, tmp, QREG_CC_Z, c->v2);
-         tcg_gen_or_i32(tmp, tmp, QREG_CC_C);
-         tcond = TCG_COND_NE;
-         break;
-     case 4: /* CC (!C) */
-     case 5: /* CS (C) */
-         c->v1 = QREG_CC_C;
-         tcond = TCG_COND_NE;
-         break;
-     case 6: /* NE (!Z) */
-     case 7: /* EQ (Z) */
-         c->v1 = QREG_CC_Z;
-         tcond = TCG_COND_EQ;
-         break;
-     case 8: /* VC (!V) */
-     case 9: /* VS (V) */
-         c->v1 = QREG_CC_V;
-         tcond = TCG_COND_LT;
-         break;
-     case 10: /* PL (!N) */
-     case 11: /* MI (N) */
-         c->v1 = QREG_CC_N;
-         tcond = TCG_COND_LT;
-         break;
-     case 12: /* GE (!(N ^ V)) */
-     case 13: /* LT (N ^ V) */
-         c->v1 = tmp = tcg_temp_new();
-         tcg_gen_xor_i32(tmp, QREG_CC_N, QREG_CC_V);
-         tcond = TCG_COND_LT;
-         break;
-     case 14: /* GT (!(Z || (N ^ V))) */
-     case 15: /* LE (Z || (N ^ V)) */
-         c->v1 = tmp = tcg_temp_new();
-         tcg_gen_negsetcond_i32(TCG_COND_EQ, tmp, QREG_CC_Z, c->v2);
-         tmp2 = tcg_temp_new();
-         tcg_gen_xor_i32(tmp2, QREG_CC_N, QREG_CC_V);
-         tcg_gen_or_i32(tmp, tmp, tmp2);
-         tcond = TCG_COND_LT;
-         break;
-     }
- 
-  done:
-     if ((cond & 1) == 0) {
-         tcond = tcg_invert_cond(tcond);
-     }
-     c->tcond = tcond;
- }
-@@ -4223,25 +4223,25 @@ DISAS_INSN(ff1)
- DISAS_INSN(chk)
- {
-     TCGv src, reg;
-     int opsize;
- 
-     switch ((insn >> 7) & 3) {
      case 3:
-         opsize = OS_WORD;
-         break;
-     case 2:
-         if (m68k_feature(env, M68K_FEATURE_CHK2)) {
-             opsize = OS_LONG;
-             break;
+         switch (pfl->cmd) {
+         case 0x80: /* Erase */
+             /* We need another unlock sequence */
+             goto check_unlock0;
+         case 0xA0: /* Program */
+             if (pflash_erase_suspend_mode(pfl) &&
+                 pflash_sector_is_erasing(pfl, offset)) {
+                 /* Ignore writes to erasing sectors. */
+                 if (pfl->bypass) {
+                     goto do_bypass;
+                 }
+                 goto reset_flash;
+             }
+             trace_pflash_data_write(pfl->name, offset, width, value, 0);
+             if (!pfl->ro) {
+                 p = (uint8_t *)pfl->storage + offset;
+                 if (pfl->be) {
+                     uint64_t current = ldn_be_p(p, width);
+                     stn_be_p(p, width, current & value);
+                 } else {
+                     uint64_t current = ldn_le_p(p, width);
+                     stn_le_p(p, width, current & value);
+                 }
+                 pflash_update(pfl, offset, width);
+             }
+             /*
+              * While programming, status bit DQ7 should hold the opposite
+              * value from how it was programmed.
+              */
+             set_dq7(pfl, ~value);
+             /* Let's pretend write is immediate */
+             if (pfl->bypass)
+                 goto do_bypass;
+             goto reset_flash;
+         case 0x90: /* Autoselect */
+             if (pfl->bypass && cmd == 0x00) {
+                 /* Unlock bypass reset */
+                 goto reset_flash;
+             }
+             /*
+              * We can enter CFI query mode from autoselect mode, but we must
+              * return to autoselect mode after a reset.
+              */
+             if (boff == 0x55 && cmd == 0x98) {
+                 /* Enter autoselect CFI query mode */
+                 pfl->wcycle = WCYCLE_AUTOSELECT_CFI;
+                 pfl->cmd = 0x98;
+                 return;
+             }
+-            /* fall through */
++            fallthrough;
+         default:
+             trace_pflash_write_invalid(pfl->name, pfl->cmd);
+             goto reset_flash;
          }
--        /* fallthru */
-+        fallthrough;
+     case 4:
+         switch (pfl->cmd) {
+         case 0xA0: /* Program */
+             /* Ignore writes while flash data write is occurring */
+             /* As we suppose write is immediate, this should never happen */
+             return;
+         case 0x80: /* Erase */
+             goto check_unlock1;
+         default:
+             /* Should never happen */
+             trace_pflash_write_invalid_state(pfl->name, pfl->cmd, 5);
+             goto reset_flash;
+         }
+         break;
+     case 5:
+         if (pflash_erase_suspend_mode(pfl)) {
+             /* Erasing is not supported in erase suspend mode. */
+             goto reset_flash;
+         }
+         switch (cmd) {
+         case 0x10: /* Chip Erase */
+             if (boff != pfl->unlock_addr0) {
+                 trace_pflash_chip_erase_invalid(pfl->name, offset);
+                 goto reset_flash;
+             }
+             /* Chip erase */
+             trace_pflash_chip_erase_start(pfl->name);
+             if (!pfl->ro) {
+                 memset(pfl->storage, 0xff, pfl->chip_len);
+                 pflash_update(pfl, 0, pfl->chip_len);
+             }
+             set_dq7(pfl, 0x00);
+             /* Wait the time specified at CFI address 0x22. */
+             timer_mod(&pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+                       (1ULL << pfl->cfi_table[0x22]) * SCALE_MS);
+             break;
+         case 0x30: /* Sector erase */
+             pflash_sector_erase(pfl, offset);
+             break;
+         default:
+             trace_pflash_write_invalid_command(pfl->name, cmd);
+             goto reset_flash;
+         }
+         pfl->cmd = cmd;
+         break;
+     case 6:
+         switch (pfl->cmd) {
+         case 0x10: /* Chip Erase */
+             /* Ignore writes during chip erase */
+             return;
+         case 0x30: /* Sector erase */
+             if (cmd == 0xB0) {
+                 /*
+                  * If erase suspend happens during the erase timeout (so DQ3 is
+                  * 0), then the device suspends erasing immediately. Set the
+                  * remaining time to be the total time to erase. Otherwise,
+                  * there is a maximum amount of time it can take to enter
+                  * suspend mode. Let's ignore that and suspend immediately and
+                  * set the remaining time to the actual time remaining on the
+                  * timer.
+                  */
+                 if ((pfl->status & 0x08) == 0) {
+                     pfl->erase_time_remaining = pflash_erase_time(pfl);
+                 } else {
+                     int64_t delta = timer_expire_time_ns(&pfl->timer) -
+                         qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+                     /* Make sure we have a positive time remaining. */
+                     pfl->erase_time_remaining = delta <= 0 ? 1 : delta;
+                 }
+                 reset_dq3(pfl);
+                 timer_del(&pfl->timer);
+                 pflash_reset_state_machine(pfl);
+                 return;
+             }
+             /*
+              * If DQ3 is 0, additional sector erase commands can be
+              * written and anything else (other than an erase suspend) resets
+              * the device.
+              */
+             if ((pfl->status & 0x08) == 0) {
+                 if (cmd == 0x30) {
+                     pflash_sector_erase(pfl, offset);
+                 } else {
+                     goto reset_flash;
+                 }
+             }
+             /* Ignore writes during the actual erase. */
+             return;
+         default:
+             /* Should never happen */
+             trace_pflash_write_invalid_state(pfl->name, pfl->cmd, 6);
+             goto reset_flash;
+         }
+         break;
+     /* Special values for CFI queries */
+     case WCYCLE_CFI:
+     case WCYCLE_AUTOSELECT_CFI:
+         trace_pflash_write(pfl->name, "invalid write in CFI query mode");
+         goto reset_flash;
      default:
-         gen_exception(s, s->base.pc_next, EXCP_ILLEGAL);
-         return;
+         /* Should never happen */
+         trace_pflash_write(pfl->name, "invalid write state (wc 7)");
+         goto reset_flash;
      }
-     SRC_EA(env, src, opsize, 1, NULL);
-     reg = gen_extend(s, DREG(insn, 9), opsize, 1);
+     pfl->wcycle++;
  
-     gen_flush_flags(s);
-     gen_helper_chk(tcg_env, reg, src);
+     return;
+ 
+     /* Reset flash */
+  reset_flash:
+     pfl->bypass = 0;
+     pflash_reset_state_machine(pfl);
+     return;
+ 
+  do_bypass:
+     pfl->wcycle = 2;
+     pfl->cmd = 0;
  }
 -- 
 2.39.2

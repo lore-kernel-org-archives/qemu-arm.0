@@ -1,110 +1,116 @@
-Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1168928dlb;
-        Fri, 13 Oct 2023 01:50:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFZjUpIHKIlkZm60bFlspOIHf4hrzDaPjbXVCT/RFK7p0tD0Et32ozldtrNxme69gtYjz93
-X-Received: by 2002:ac8:59c6:0:b0:418:adb:573a with SMTP id f6-20020ac859c6000000b004180adb573amr30362346qtf.41.1697187046304;
-        Fri, 13 Oct 2023 01:50:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697187046; cv=none;
+Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1169238dlb;
+        Fri, 13 Oct 2023 01:51:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFqV4jb/Qt8Ois8G/psemZNJ6VnayZsxxnnL32Yx9tBVfogziDrId8nj74mTaryjSrAG3ZI
+X-Received: by 2002:ac8:5b8e:0:b0:418:1edd:d2ed with SMTP id a14-20020ac85b8e000000b004181eddd2edmr31143895qta.4.1697187096353;
+        Fri, 13 Oct 2023 01:51:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697187096; cv=none;
         d=google.com; s=arc-20160816;
-        b=B9g9EDqy06Qyh6GYOsVTfj8KCYLwDT7pJG+0A87WWJ2q5CD3B+E7hyuTxn3zoj8/mj
-         sVtgRp1C3ryo9oPpvb1XWjWKOTEN9NjP6ydWOtqp78FfOan7EEuDAmQ8E/QRLkCb06SP
-         sWLHIBYno7Pbaoqez4ug+UxGiUE5m0X223iTclnzexhVzLSEWkLsyZsOKnBCn+B8pO++
-         Pq8KhR0+55bcoEKRUgc4SaFjfTeTEk7KThUUYdJ/iMIvl0my7OGOkwJSPMnT7U58lvw2
-         LDblbh2/w/CsIcc4YaBxO+X6fv6Ct5IB0wjy48fPwaL+kgKziRpU4ToFk8i25EdSnUH+
-         YZMw==
+        b=Sn+dVie+iVhnHIs0iorOoeASut8UqacpYwFgTsIXA6TOX8EXg08zqU0e1BuqoHDaxL
+         TY8KNsJyjxX5BnU/E/5tYUfT5AXfb53nOxthrUgxiS80vaP+36nLbuvnWFgQGS8vyDIH
+         IAoaKchbJSzkLinWGbjMg8Lbr3Rhm1/HQpwT7SOftAgCBmhaL20Y+KxzMOFh/thO/s1j
+         /u/k+vO7f6Iu1/oZFho3Sfi+K7FSgfTuNXrPtnSnmdr50YRBLW1lZG7G3CQy7AbFlAwJ
+         T8hyGLknwNzBlTLhT314VCrRf7VSlZL2TCDv0tB1/k/Bx2a0DPlkGp6cTVHUk5clePtr
+         p6Gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=O+axG+8jMpP3JUeMY5SI6Tpq3BCcAFNQzdxrSiz9WHc=;
-        fh=9I+A4P5ux2QVWc//FtYc0DwEYwqsnwCt6Xj4p5qF3Fc=;
-        b=AAP1flg8RZ5R6oHTQs4FEvPIZ8iorAyxz2+OjigyoFvJ4rrGyD4ju7FUHsAaaE5xZb
-         pVG+Rn9I7z0bISADcGck8C+8WSvCLH1xiLCCtjBDcsJ2OwFyCHs35NHNAwtNHac4RaDo
-         aGsgz3ftPSxBMtIDO6X6NcmXucTMV/D7i3Fn8+lOn6vrD6m5PqQ7UHRIjD2sln1BiQbr
-         SQFKTytzVkYU7TI/pCKMtkkUrPX3ujfBVlyNuFloEAzA3xwK49jIp+SmlmDpp19atUcE
-         ycM/0X4tuA8uzgqmd7JLjzscwP8vjITgda1HjxSShPcIZT0t3JfFjhXrdKcIsIHHUP0h
-         DCOw==
+        bh=DgK1ep3PqFzkyT15HRsoi+76YmTmRxdKAsgvMnq7kvw=;
+        fh=L1snmiPDnjUGFMl7egW306l1WUP6X+C97o9CnbuROws=;
+        b=fkLGGyaTL4wGEBGDPj8wVTvUP2L07p4ALYmN4eDwRzIwnd5SnrA0q7jZrdKsxiaR5v
+         8j1z0J3aZ5SP08JICxTFqn/b5t9i0bVfOXapWu4wZxe28kDX6gHF8vj2/j4YRONRXREF
+         z7UYFFrCtIyiIP2gw6Uda/IwSTDjh4cZa3EEZ7vebkV5i8aCQPynVyqarD7S4g+O/qSs
+         4Tu3pVvvfMpMIvooumzisYsRNuFI1OlpMDZm4Eqh1k97MKyLWv8QmRZumhpjbmrc6vEa
+         p8JSEjhdyu72lpP/Kj4lusEJ6arTovx7tVzBEzk10n8hMk0UQpOaH3O0MMvZRSBk7zEj
+         h+7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ukJZXVU7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ctys++7c;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t3-20020a05622a180300b00419393d311dsi875206qtc.218.2023.10.13.01.50.46
+        by mx.google.com with ESMTPS id p7-20020a05622a048700b004198a46d6d9si901562qtx.30.2023.10.13.01.51.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:50:46 -0700 (PDT)
+        Fri, 13 Oct 2023 01:51:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ukJZXVU7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ctys++7c;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrDqu-00028a-0u; Fri, 13 Oct 2023 04:49:00 -0400
+	id 1qrDql-0001VP-DG; Fri, 13 Oct 2023 04:48:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDqj-0001T0-RY
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:48:50 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ id 1qrDqV-0000PR-Rv
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:48:35 -0400
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDqi-0001AL-5N
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:48:49 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-3247cefa13aso1681390f8f.1
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 01:48:47 -0700 (PDT)
+ id 1qrDqR-00015Z-QV
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:48:35 -0400
+Received: by mail-lf1-x130.google.com with SMTP id
+ 2adb3069b0e04-505748580ceso2350759e87.3
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 01:48:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697186926; x=1697791726; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697186906; x=1697791706; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=O+axG+8jMpP3JUeMY5SI6Tpq3BCcAFNQzdxrSiz9WHc=;
- b=ukJZXVU79CczHdqIeyI9dE0GtdYncznRH2mK4QZiZ67C8oIMPIKiz6GDCpBPm3XvJO
- x8enmAYUO5o+WfHtmlJS2y0I8oH3NQ2eThA3a/Mf7ybhY6yXVnMOYZe7eyAqzpp1j+UB
- Bt81xdvOgy8QRD6joUwYVBhWue0cUP6TN+VsztnwSE9b5DzAj9pbqOgUjmQuXoCTwEDL
- v0DbOYQan7EzE3hxEQLF+MFUc49puBhSW5Q2v5WiozT2nCYXhwppoyo48ydKWgyAnLBK
- cWMBDmvOKWcQy8ltYucRxiSVFFJOXZIsmaCVyYvEbQqXEV82jKx6wcKnIQC/2qQ9eX9d
- rqSQ==
+ bh=DgK1ep3PqFzkyT15HRsoi+76YmTmRxdKAsgvMnq7kvw=;
+ b=Ctys++7cgAxNZsR8ba/RQWCkbVVFzwVJocVjBPRMj9ToesFgBVk1HUIGfVEkb35aDe
+ 3zNxLTifsgkb+atBI8b8gi2a7eRGhdOJwnMWsYuln9CmvATPHfAXuiPqlWY4CYCwRs+q
+ jJas9ZQt6iYjOxNgYkfY/z4Vhd8kcqspKMDk+oD2iSMP7d2EtEJvJrjnzAgBD+NAx5z4
+ LcS3DKqiiYdoWNRCLZQcTZX2h9TH6JWBSK3vQHN4Zdft4xc6RZ/FYTOcsAInJruTbt22
+ CoRcvPcMe9EcWznY4RfOHYHxiviwvouwvSrGr97fYdqqsvJrDacGoSlAS2xCgpkUJ2Gv
+ TXiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697186926; x=1697791726;
+ d=1e100.net; s=20230601; t=1697186906; x=1697791706;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=O+axG+8jMpP3JUeMY5SI6Tpq3BCcAFNQzdxrSiz9WHc=;
- b=Xdib2bVc5hy8s/HjN2O22MMJD+PwX23xJuN3TWwoZGIdrJJVGUrzmfnhefs79LTjMS
- U4rAPHnV7Ux2zqyVSI/Zhvj1F5o3AtxIicJsIP37z9XP2ohmcvowT2mMzsIk8aLqdT+A
- Q5j804HjtOyNX/0ij7xkIGj2q5uCSlwkrs0GTpiqeAPlSROXIjJcq5ZXLEIfuCifvKDJ
- 1886EyLQt79NdUiQ5jv1P7ZHhiKBlL836+4zBXms017VWeJ/v581uonO4jbk7iK14pQa
- khuh0sEAo2x0NALm9qLHvZVaSrHdTbB1GPes4V1E5Ss/ZG6+s3G+oqrxXlQeoMPo00Y3
- 5wtw==
-X-Gm-Message-State: AOJu0YyRjoMm7/AhMYXILMCgjsmRSBXDPMQwByjbQvyk7ZkHVh5vGQjC
- PnTj/v+vZz8Ydk+mMdCOA3Hx9pW7HYI4/b4h7Fs=
-X-Received: by 2002:a05:6000:1250:b0:32d:9d66:5742 with SMTP id
- j16-20020a056000125000b0032d9d665742mr682344wrx.10.1697186926509; 
- Fri, 13 Oct 2023 01:48:46 -0700 (PDT)
+ bh=DgK1ep3PqFzkyT15HRsoi+76YmTmRxdKAsgvMnq7kvw=;
+ b=PPPtoLOsJW39WQtQdB65YG1InrFNUQ69QiYpZP6mqvSHWJ3Ly29w7n4XM/QgJlW7IJ
+ GZtBdEw6cTQsKI+bdCYW2jWv/qrbQ1Cmq1YXisc5F5QtbtFjYMedYr+/ktkRpbYgHSV4
+ oIQwJNUjfx+2fdCRf6BdjTjro6gDpqQU0X8+J2e22OE04dgayQZf650CDR6DbQEzVJPH
+ qxb63PqMjrLy3BdiPwiTclHo1WFix5ntGhQHNK3WNRR1DP4fl2C1edUoZLd7myqHGL59
+ ZCLaoHf9+ZOzVe/D+4qrm0BPVT+Y6dxA1t0X0n9YTz1bpMfvmzvQRE7txNRklYz74fRk
+ Pn+g==
+X-Gm-Message-State: AOJu0YxfCB1VWz2HTR7u5UdFjiPtQWxuJvgGW0VDr3Vts395+iRqNkNi
+ 1pBDwUwxAELgRjMad/CVtO0HaCX2mVa3OypcAFo=
+X-Received: by 2002:a05:6512:48d6:b0:500:9734:545a with SMTP id
+ er22-20020a05651248d600b005009734545amr19929543lfb.5.1697186906001; 
+ Fri, 13 Oct 2023 01:48:26 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.48.45
+ v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.48.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 01:48:45 -0700 (PDT)
+ Fri, 13 Oct 2023 01:48:25 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:nSeries)
-Subject: [RFC PATCH v3 56/78] hw/input: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 11:46:24 +0300
-Message-Id: <bcc863c7f9f081a2bbf2e7b50ba22cbe89346c30.1697186560.git.manos.pitsidianakis@linaro.org>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ qemu-arm@nongnu.org (open list:ARM cores),
+ qemu-ppc@nongnu.org (open list:New World (mac99))
+Subject: [RFC PATCH v3 43/78] hw/misc: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 11:46:11 +0300
+Message-Id: <14428b4bb4467c649e4e4a0f7f2ea20f1e9be46b.1697186560.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lf1-x130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,74 +132,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BfVLuwDN1v5F
+X-TUID: /U/EEnhESfUX
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
+(Cédric Le Goater review for aspeed_scu.c)
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/input/hid.c     | 3 ++-
- hw/input/tsc2005.c | 4 ++--
- hw/input/tsc210x.c | 2 +-
- 3 files changed, 5 insertions(+), 4 deletions(-)
+ hw/misc/a9scu.c            |  2 ++
+ hw/misc/aspeed_scu.c       |  2 +-
+ hw/misc/bcm2835_property.c | 12 ++++++------
+ hw/misc/mos6522.c          |  4 ++--
+ 4 files changed, 11 insertions(+), 9 deletions(-)
 
-diff --git a/hw/input/hid.c b/hw/input/hid.c
-index a9c7dd1ce1..15fffc5dfb 100644
---- a/hw/input/hid.c
-+++ b/hw/input/hid.c
-@@ -283,6 +283,7 @@ static void hid_keyboard_process_keycode(HIDState *hs)
-             return;
-         }
-         /* fall through to process Ctrl_L */
+diff --git a/hw/misc/a9scu.c b/hw/misc/a9scu.c
+index a375ebc987..b422bec3c4 100644
+--- a/hw/misc/a9scu.c
++++ b/hw/misc/a9scu.c
+@@ -38,6 +38,7 @@ static uint64_t a9_scu_read(void *opaque, hwaddr offset,
+     case 0x50: /* SCU Access Control Register */
+     case 0x54: /* SCU Non-secure Access Control Register */
+         /* unimplemented, fall through */
 +        fallthrough;
-     case 0xe1 ... 0xe7:
-         /* Ctrl_L/Ctrl_R, Shift_L/Shift_R, Alt_L/Alt_R, Win_L/Win_R.
-          * Handle releases here, or fall through to process presses.
-@@ -291,7 +292,7 @@ static void hid_keyboard_process_keycode(HIDState *hs)
-             hs->kbd.modifiers &= ~(1 << (hid_code & 0x0f));
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s: Unsupported offset 0x%"HWADDR_PRIx"\n",
+                       __func__, offset);
+@@ -69,6 +70,7 @@ static void a9_scu_write(void *opaque, hwaddr offset,
+     case 0x50: /* SCU Access Control Register */
+     case 0x54: /* SCU Non-secure Access Control Register */
+         /* unimplemented, fall through */
++        fallthrough;
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s: Unsupported offset 0x%"HWADDR_PRIx
+                                  " value 0x%"PRIx64"\n",
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 8335364906..4a1ea2fa21 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -672,7 +672,7 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
+         if (s->regs[reg + 2]) {
              return;
          }
 -        /* fall through */
 +        fallthrough;
-     case 0xe8 ... 0xe9:
-         /* USB modifiers are just 1 byte long.  Bits 8 and 9 of
-          * hs->kbd.modifiers implement a state machine that detects the
-diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
-index db2b80e35f..4f3f1d9d12 100644
---- a/hw/input/tsc2005.c
-+++ b/hw/input/tsc2005.c
-@@ -262,7 +262,7 @@ static void tsc2005_pin_update(TSC2005State *s)
-             s->enabled = false;
-         if (!s->pressure)
-             return;
--        /* Fall through */
-+        fallthrough;
-     case TSC_MODE_AUX_SCAN:
+     case AST2600_SYS_RST_CTRL:
+     case AST2600_SYS_RST_CTRL2:
+     case AST2600_CLK_STOP_CTRL:
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+index 4ed9faa54a..98170f34a6 100644
+--- a/hw/misc/bcm2835_property.c
++++ b/hw/misc/bcm2835_property.c
+@@ -182,7 +182,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             fbconfig.yres = ldl_le_phys(&s->dma_as, value + 16);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+-            /* fall through */
++            fallthrough;
+         case RPI_FWREQ_FRAMEBUFFER_GET_PHYSICAL_WIDTH_HEIGHT:
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.xres);
+             stl_le_phys(&s->dma_as, value + 16, fbconfig.yres);
+@@ -193,7 +193,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             fbconfig.yres_virtual = ldl_le_phys(&s->dma_as, value + 16);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+-            /* fall through */
++            fallthrough;
+         case RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_WIDTH_HEIGHT:
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.xres_virtual);
+             stl_le_phys(&s->dma_as, value + 16, fbconfig.yres_virtual);
+@@ -206,7 +206,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             fbconfig.bpp = ldl_le_phys(&s->dma_as, value + 12);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+-            /* fall through */
++            fallthrough;
+         case RPI_FWREQ_FRAMEBUFFER_GET_DEPTH:
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.bpp);
+             resplen = 4;
+@@ -218,7 +218,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             fbconfig.pixo = ldl_le_phys(&s->dma_as, value + 12);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+-            /* fall through */
++            fallthrough;
+         case RPI_FWREQ_FRAMEBUFFER_GET_PIXEL_ORDER:
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.pixo);
+             resplen = 4;
+@@ -230,7 +230,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             fbconfig.alpha = ldl_le_phys(&s->dma_as, value + 12);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+-            /* fall through */
++            fallthrough;
+         case RPI_FWREQ_FRAMEBUFFER_GET_ALPHA_MODE:
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.alpha);
+             resplen = 4;
+@@ -248,7 +248,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             fbconfig.yoffset = ldl_le_phys(&s->dma_as, value + 16);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+-            /* fall through */
++            fallthrough;
+         case RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_OFFSET:
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.xoffset);
+             stl_le_phys(&s->dma_as, value + 16, fbconfig.yoffset);
+diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
+index d6ba47bde9..a62349e6a0 100644
+--- a/hw/misc/mos6522.c
++++ b/hw/misc/mos6522.c
+@@ -320,7 +320,7 @@ uint64_t mos6522_read(void *opaque, hwaddr addr, unsigned size)
          break;
- 
-@@ -271,7 +271,7 @@ static void tsc2005_pin_update(TSC2005State *s)
-     case TSC_MODE_Z:
-         if (!s->pressure)
-             return;
--        /* Fall through */
-+        fallthrough;
-     case TSC_MODE_AUX:
-     case TSC_MODE_TEMP1:
-     case TSC_MODE_TEMP2:
-diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
-index 950506fb38..9ae426e1a6 100644
---- a/hw/input/tsc210x.c
-+++ b/hw/input/tsc210x.c
-@@ -809,7 +809,7 @@ static void tsc210x_pin_update(TSC210xState *s)
-     case TSC_MODE_Z:
-         if (!s->pressure)
-             return;
--        /* Fall through */
-+        fallthrough;
-     case TSC_MODE_BAT1:
-     case TSC_MODE_BAT2:
-     case TSC_MODE_AUX:
+     case VIA_REG_A:
+        qemu_log_mask(LOG_UNIMP, "Read access to register A with handshake");
+-       /* fall through */
++       fallthrough;
+     case VIA_REG_ANH:
+         val = s->a;
+         ctrl = (s->pcr & CA2_CTRL_MASK) >> CA2_CTRL_SHIFT;
+@@ -412,7 +412,7 @@ void mos6522_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
+         break;
+     case VIA_REG_A:
+        qemu_log_mask(LOG_UNIMP, "Write access to register A with handshake");
+-       /* fall through */
++       fallthrough;
+     case VIA_REG_ANH:
+         s->a = (s->a & ~s->dira) | (val & s->dira);
+         mdc->portA_write(s);
 -- 
 2.39.2
 

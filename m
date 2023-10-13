@@ -1,111 +1,111 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1330961ejc;
-        Fri, 13 Oct 2023 00:51:23 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGe7pTb5sVbAn5FnMhAb9VQ73XfVnbfHatO7O4YqKI3XgU7rydxj4WjVeb0sV2toBRfQ6X1
-X-Received: by 2002:a67:fb59:0:b0:452:67fc:b437 with SMTP id e25-20020a67fb59000000b0045267fcb437mr25283239vsr.18.1697183483521;
-        Fri, 13 Oct 2023 00:51:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183483; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1331067ejc;
+        Fri, 13 Oct 2023 00:51:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFCA+SVwBSzWHUndEzMmZVVBCtHnBAjm8arBAjWJxSj1AuDJeZmpIsewCzQmAeDafKlXRGM
+X-Received: by 2002:ac8:7f86:0:b0:417:914a:104d with SMTP id z6-20020ac87f86000000b00417914a104dmr30155886qtj.49.1697183502540;
+        Fri, 13 Oct 2023 00:51:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183502; cv=none;
         d=google.com; s=arc-20160816;
-        b=qfsDVd7QdrkkFkO/oXKrUNRCPyznXSEkT/uzjMksgYLHLqBKeHajt4Hi5hLANEY3Ja
-         FtaLxUEqnZinDtbtl3bAaXGnik2BwM413me4nGifrwonnsfuK1AiOAjETiZDT6NTo/m0
-         nTlRpJGCPepRfeSPzE7gj0b4ksDSZ7saNZCEoFG0iVVQmn1fGsa9xEAzLQTWjn58InJn
-         iVbLPLe/9IV5iRKalxLyNJcY15X7Uu99/AG/4LXANmP8U//Jolmu6F1YvTzwvpn0JA04
-         qzku2ejSWI4qDpmlTyxqCW+pds4ihq8sLKQpVAjIhoFtKQ2KtUYxA0nc+sqJQ/r5Q85q
-         fssQ==
+        b=os+rznkLd2rjMIDlcZAiiYjHJP+L2lJEseVSDG7VTgp20dwRhVo96KBAElJJzENhcK
+         7DL+L/emu5dpKyC60rPu6p65Q1qvnpGdq1GcZpohJy9szVIcKhoM3y8ZJjzuO3OnS0WT
+         8Cuud2g03FBm6sPsJz7dVa3PHiq2qHgpQEP8qMcirFWyudzah4Aoc3fh9jvrIjiFvdjx
+         Fa/2ZE3X7DJS8Gk+niZJZtmUuU3cHBbiC1aHdZW3BZX6aqWOPBL0/mM4aExM2OMAQ1CB
+         wvcSZGYA0mnE81iY4cjTauyW6aT2Gym0psOdPvEgwJ0yQXU3AR2o4rMN7igqb6AbmMys
+         L5jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3SnoIpcz8PzllcxndXq3GJ2EOT2IcTPDKK2bNLd5KNY=;
-        fh=nVUv2AsWO48ViwU2KVCucUhVDavu5iMy3kSsuvPEbrU=;
-        b=NWisqmBPsExUBp9Eiyy+Zb6GVVAB1PjizxImP6sVQIZPSk1b1GopOg+0G+eO1OYiMg
-         q+CEd4af1WXvZ5ClLqf3Ghqm/Bpisk+QuMnLe9BTnu3L2njsXrbVPDmdCRnVp1olosBo
-         mRAoiXN0GciTfVwmJ7FfClColawpQA78g2T264Kyd9XhF+6FacfSDmlzcQCqrXqum1eS
-         j9pfYEAfaIsXlc3DaNlgc7Y9DahInozrt2L/yzlyzAucdPVK9niC+T02uyyS1TA4gVJ4
-         cTBgVJutD9i7M4y6UTnSPhXVdddLQS0LL6npeA2W8EgwS7oxTm2iOMvV7caVS+SnxTBI
-         1GLA==
+        bh=tRSE8Uc0Qfl3ZRKEWagbHPFVdOsv1ON14ZcL2G49NJI=;
+        fh=InIy7hy93v3fjIHwoh5Hv03tQv2aBHXx92p+jEhB9/k=;
+        b=fQkgsiWaWloE9qfJ6cw4WIJ8U6tojK3R5IfIy3no/uOS+XpRzRrAtnvfcE3kZjmX/d
+         kwGiUarmLTdQuUuv/cKw8MXKIjykuqNU0eiYjiAyppNTLfD+Acs48qJ6hWFQn16OqKZs
+         yLkfej22itficR9XGmJfc1iyJE9CuUlYGMr9bhNVYOyqI6vExaZ42BN9i+wsnDW0TwTn
+         M/6vnsthRKNwWeGQgCBZtuufAi3a1lmf4i4ycUW0NFMaxNf0lrYLgAc4LsMax6FDRR97
+         n+rGffEl16sh4Xmci6vCbLxU2PDSSbSPqGk6nA0a6XcMGgLzn7ZGYEHpZTA+zJb8AZe0
+         7qUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hqRr4PQf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CH2KRbEN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id da3-20020a05621408c300b0065af7163b61si837934qvb.82.2023.10.13.00.51.23
+        by mx.google.com with ESMTPS id l7-20020a05622a050700b0040380910a09si834969qtx.217.2023.10.13.00.51.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:51:23 -0700 (PDT)
+        Fri, 13 Oct 2023 00:51:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hqRr4PQf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CH2KRbEN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCw6-0004O9-2C; Fri, 13 Oct 2023 03:50:19 -0400
+	id 1qrCw2-0004JH-87; Fri, 13 Oct 2023 03:50:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCvx-0004Fx-P9
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:16 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ id 1qrCvx-0004Fy-PO
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:10 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCvi-00045p-Hh
+ id 1qrCvi-000462-WD
  for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:02 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-325e9cd483eso1746180f8f.2
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:49:52 -0700 (PDT)
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-3231dff4343so1133325f8f.0
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:49:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183391; x=1697788191; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183393; x=1697788193; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3SnoIpcz8PzllcxndXq3GJ2EOT2IcTPDKK2bNLd5KNY=;
- b=hqRr4PQfCV6iCNzV3mSYAjHw7NHjl4/GSoDO7VlgE4pYTllwunmX0L1GmgKSeCY8om
- Z+WmymhpcJFPurTAfoumTbZb/m0EGVTKrAR6oLXiS1k6aG1nNWm60kW0fdWVIUnE3/I5
- MkwCB0rTLwMTxfnn+VjyWZ53Lt8HjjdLlArKAUN5aKVkn95IApXaXZFXakmDLgDcGN/W
- 3FZvQXbFvEqPIoW4ZaE0CcH18GUGdT+ISyAGfHZ9II5vW+ZWBfS8esgYxvWi1xLpasN7
- ILgirODejx5j8mkOSLX+vBaErCru4AOM9gBGUt5ALzSTMuM4GCPQzhqKS7aD/6pUgAud
- Fj2w==
+ bh=tRSE8Uc0Qfl3ZRKEWagbHPFVdOsv1ON14ZcL2G49NJI=;
+ b=CH2KRbENYkVyjcHLj82p1L6FAukMzQStYzCZ/MCfHk3pCimt++sxbTmIJ3DDmHmBDa
+ PvyS7dq61kD1b816boAku/5se82oP0fawajU1Frjb/oM7n8OkZ9UVHLr3kKmXDG37UAI
+ rPAIxlBWOGw9VgNjdHa9yFgHJaWV14whSMgSqHXJiFA9RrIi6vEYIijp26IEF2+6Dk2g
+ KabqQ0gkiHLL6TSUxcASjqAd8IL6EzrhyKUy62wxOn8AObqaOjr6Bbk6OOBzajj4yMUK
+ U6wXb5+VYb8AurBNZ7N1DwPTMvH61WEJmBzWqPX4T1WBrfIYB01LVp8xST6VTtPC6SUu
+ pu/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183391; x=1697788191;
+ d=1e100.net; s=20230601; t=1697183393; x=1697788193;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3SnoIpcz8PzllcxndXq3GJ2EOT2IcTPDKK2bNLd5KNY=;
- b=dUAwKiAsP3zT1e6Qnk2u2RRv74oomOVabC3h2pYp/udfn0dvzERj3yQJd93TMQUG2W
- jJdGtF9iwodQIsoYfhdT3RsDkNdH6Gjimw7GLG1LbNV4NlbNUoY83y/9lVeGL/hWappO
- SqRygSyG3LAhxkY6Urv2L1jER0L9p95sQeZI3FkZTSrteOd4Qlu5fMDqJstQmJ+FY6tM
- woYAzaXwJXLmJKWJQHK1ghvOWzE1B6EQNGUAFE7J3TpnJP3Ne9EMshePjySWCMhpAZCM
- odbSBnl8El0pVa9UzM12ZrCrUG+IYyZ3Q/RZz+BfphrkJ5LgtRdy3M8yrTGICh544CzM
- RUlA==
-X-Gm-Message-State: AOJu0Yx2WSE2nx0scpWEtBcGEmkoR4m08gq+fDx+gLtwg5w0Y/hWhKyu
- VnZ49pRLfHqdBwMONoUXjiZWerPfPllnkH9d+oI=
-X-Received: by 2002:adf:edc3:0:b0:321:56af:5ef9 with SMTP id
- v3-20020adfedc3000000b0032156af5ef9mr19036438wro.70.1697183391732; 
- Fri, 13 Oct 2023 00:49:51 -0700 (PDT)
+ bh=tRSE8Uc0Qfl3ZRKEWagbHPFVdOsv1ON14ZcL2G49NJI=;
+ b=ZxTR6k1w6DnvcDOx4oYnCxfeA89b+lBH0SUW7Mzx+7DL/4GG0710lGlpdA85Hpe0/Q
+ PgdTrxkjv3S1O4opUNaY8qsNHj2F412oYngx9w+uSsqA1z56bwtV6wYAx6SHxEJAOCnq
+ D796ZG9v8xSqcom3Btbd8oxZn5qf8bV1c0L1TVKLQ7Op+1Oa+kZ77dbxefgdSUwpvMz7
+ RuOugz9STocv2OzsrgUsCPwzUczsJa0Ijdz7JbrEj8JC5nD8qdQqm5weppakgAZRL/rr
+ HVTGzXSIczLaYRRQZwAX2y8E85Kvv+SG0AZHN+Dhglo2ZUn3as7OyqquNiWg5ytILQbE
+ 1YMw==
+X-Gm-Message-State: AOJu0Yx4FRabBoNiRwqYLO5KyZAVmdGpEOwRNlH4l7AisBcQ58+DBy2z
+ AzcS9hEl9DQnwXtITOPgTeaxkYcxhytw/AkSMeY=
+X-Received: by 2002:adf:e749:0:b0:32d:888d:7598 with SMTP id
+ c9-20020adfe749000000b0032d888d7598mr5765502wrn.4.1697183393382; 
+ Fri, 13 Oct 2023 00:49:53 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.49.50
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.49.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:49:51 -0700 (PDT)
+ Fri, 13 Oct 2023 00:49:52 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>
-Subject: [RFC PATCH 04/78] qapi/opts-visitor: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:08 +0300
-Message-Id: <da9d0ba48a5be92f212e6bc04710803ca0ffa7b3.1697183082.git.manos.pitsidianakis@linaro.org>
+ Markus Armbruster <armbru@redhat.com>
+Subject: [RFC PATCH 05/78] qobject/json: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:09 +0300
+Message-Id: <9425bbfc5ff333a6c476c5e01f08077d7821897a.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,150 +127,278 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HV1L9sE527Ja
+X-TUID: Bj+sx1mGxOtg
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- qapi/opts-visitor.c         | 1 +
- qapi/string-input-visitor.c | 4 ++--
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ qobject/json-lexer.c  | 4 ++--
+ qobject/json-parser.c | 5 +++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/qapi/opts-visitor.c b/qapi/opts-visitor.c
-index 8f1efab8b9..d7376bf239 100644
---- a/qapi/opts-visitor.c
-+++ b/qapi/opts-visitor.c
-@@ -249,41 +249,42 @@ static GenericList *
- opts_next_list(Visitor *v, GenericList *tail, size_t size)
+diff --git a/qobject/json-lexer.c b/qobject/json-lexer.c
+index 51341d96e4..ab74470ac6 100644
+--- a/qobject/json-lexer.c
++++ b/qobject/json-lexer.c
+@@ -283,61 +283,61 @@ void json_lexer_init(JSONLexer *lexer, bool enable_interpolation)
+ static void json_lexer_feed_char(JSONLexer *lexer, char ch, bool flush)
  {
-     OptsVisitor *ov = to_ov(v);
+     int new_state;
+     bool char_consumed = false;
  
-     switch (ov->list_mode) {
-     case LM_TRAVERSED:
-         return NULL;
-     case LM_SIGNED_INTERVAL:
-     case LM_UNSIGNED_INTERVAL:
-         if (ov->list_mode == LM_SIGNED_INTERVAL) {
-             if (ov->range_next.s < ov->range_limit.s) {
-                 ++ov->range_next.s;
-                 break;
-             }
-         } else if (ov->range_next.u < ov->range_limit.u) {
-             ++ov->range_next.u;
+     lexer->x++;
+     if (ch == '\n') {
+         lexer->x = 0;
+         lexer->y++;
+     }
+ 
+     while (flush ? lexer->state != lexer->start_state : !char_consumed) {
+         new_state = next_state(lexer, ch, flush, &char_consumed);
+         if (char_consumed) {
+             assert(!flush);
+             g_string_append_c(lexer->token, ch);
+         }
+ 
+         switch (new_state) {
+         case JSON_LCURLY:
+         case JSON_RCURLY:
+         case JSON_LSQUARE:
+         case JSON_RSQUARE:
+         case JSON_COLON:
+         case JSON_COMMA:
+         case JSON_INTERP:
+         case JSON_INTEGER:
+         case JSON_FLOAT:
+         case JSON_KEYWORD:
+         case JSON_STRING:
+             json_message_process_token(lexer, lexer->token, new_state,
+                                        lexer->x, lexer->y);
+-            /* fall through */
++            fallthrough;
+         case IN_START:
+             g_string_truncate(lexer->token, 0);
+             new_state = lexer->start_state;
+             break;
+         case JSON_ERROR:
+             json_message_process_token(lexer, lexer->token, JSON_ERROR,
+                                        lexer->x, lexer->y);
+             new_state = IN_RECOVERY;
+-            /* fall through */
++            fallthrough;
+         case IN_RECOVERY:
+             g_string_truncate(lexer->token, 0);
+             break;
+         default:
              break;
          }
-         ov->list_mode = LM_IN_PROGRESS;
-         /* range has been completed, fall through in order to pop option */
-+        fallthrough;
- 
-     case LM_IN_PROGRESS: {
-         const QemuOpt *opt;
- 
-         opt = g_queue_pop_head(ov->repeated_opts);
-         if (g_queue_is_empty(ov->repeated_opts)) {
-             g_hash_table_remove(ov->unprocessed_opts, opt->name);
-             ov->repeated_opts = NULL;
-             ov->list_mode = LM_TRAVERSED;
-             return NULL;
-         }
-         break;
+         lexer->state = new_state;
      }
  
-     default:
-         abort();
-     }
- 
-     tail->next = g_malloc0(size);
-     return tail->next;
- }
-diff --git a/qapi/string-input-visitor.c b/qapi/string-input-visitor.c
-index 197139c1c0..1ce43da20b 100644
---- a/qapi/string-input-visitor.c
-+++ b/qapi/string-input-visitor.c
-@@ -182,41 +182,41 @@ static int try_parse_int64_list_entry(StringInputVisitor *siv, int64_t *obj)
- static bool parse_type_int64(Visitor *v, const char *name, int64_t *obj,
-                              Error **errp)
- {
-     StringInputVisitor *siv = to_siv(v);
-     int64_t val;
- 
-     switch (siv->lm) {
-     case LM_NONE:
-         /* just parse a simple int64, bail out if not completely consumed */
-         if (qemu_strtoi64(siv->string, NULL, 0, &val)) {
-             error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
-                        name ? name : "null", "int64");
-             return false;
-         }
-         *obj = val;
-         return true;
-     case LM_UNPARSED:
-         if (try_parse_int64_list_entry(siv, obj)) {
-             error_setg(errp, QERR_INVALID_PARAMETER_VALUE, name ? name : "null",
-                        "list of int64 values or ranges");
-             return false;
-         }
-         assert(siv->lm == LM_INT64_RANGE);
--        /* fall through */
-+        fallthrough;
-     case LM_INT64_RANGE:
-         /* return the next element in the range */
-         assert(siv->rangeNext.i64 <= siv->rangeEnd.i64);
-         *obj = siv->rangeNext.i64++;
- 
-         if (siv->rangeNext.i64 > siv->rangeEnd.i64 || *obj == INT64_MAX) {
-             /* end of range, check if there is more to parse */
-             siv->lm = siv->unparsed_string[0] ? LM_UNPARSED : LM_END;
-         }
-         return true;
-     case LM_END:
-         error_setg(errp, "Fewer list elements expected");
-         return false;
-     default:
-         abort();
+     /* Do not let a single token grow to an arbitrarily large size,
+      * this is a security consideration.
+      */
+     if (lexer->token->len > MAX_TOKEN_SIZE) {
+         json_message_process_token(lexer, lexer->token, lexer->state,
+                                    lexer->x, lexer->y);
+         g_string_truncate(lexer->token, 0);
+         lexer->state = lexer->start_state;
      }
  }
-@@ -272,41 +272,41 @@ static int try_parse_uint64_list_entry(StringInputVisitor *siv, uint64_t *obj)
- static bool parse_type_uint64(Visitor *v, const char *name, uint64_t *obj,
-                               Error **errp)
+diff --git a/qobject/json-parser.c b/qobject/json-parser.c
+index d498db6e70..4dc622dcc9 100644
+--- a/qobject/json-parser.c
++++ b/qobject/json-parser.c
+@@ -95,137 +95,137 @@ static int cvt4hex(const char *s)
+ /**
+  * parse_string(): Parse a JSON string
+  *
+  * From RFC 8259 "The JavaScript Object Notation (JSON) Data
+  * Interchange Format":
+  *
+  *    char = unescaped /
+  *        escape (
+  *            %x22 /          ; "    quotation mark  U+0022
+  *            %x5C /          ; \    reverse solidus U+005C
+  *            %x2F /          ; /    solidus         U+002F
+  *            %x62 /          ; b    backspace       U+0008
+  *            %x66 /          ; f    form feed       U+000C
+  *            %x6E /          ; n    line feed       U+000A
+  *            %x72 /          ; r    carriage return U+000D
+  *            %x74 /          ; t    tab             U+0009
+  *            %x75 4HEXDIG )  ; uXXXX                U+XXXX
+  *    escape = %x5C              ; \
+  *    quotation-mark = %x22      ; "
+  *    unescaped = %x20-21 / %x23-5B / %x5D-10FFFF
+  *
+  * Extensions over RFC 8259:
+  * - Extra escape sequence in strings:
+  *   0x27 (apostrophe) is recognized after escape, too
+  * - Single-quoted strings:
+  *   Like double-quoted strings, except they're delimited by %x27
+  *   (apostrophe) instead of %x22 (quotation mark), and can't contain
+  *   unescaped apostrophe, but can contain unescaped quotation mark.
+  *
+  * Note:
+  * - Encoding is modified UTF-8.
+  * - Invalid Unicode characters are rejected.
+  * - Control characters \x00..\x1F are rejected by the lexer.
+  */
+ static QString *parse_string(JSONParserContext *ctxt, JSONToken *token)
  {
-     StringInputVisitor *siv = to_siv(v);
-     uint64_t val;
+     const char *ptr = token->str;
+     GString *str;
+     char quote;
+     const char *beg;
+     int cp, trailing;
+     char *end;
+     ssize_t len;
+     char utf8_buf[5];
  
-     switch (siv->lm) {
-     case LM_NONE:
-         /* just parse a simple uint64, bail out if not completely consumed */
-         if (qemu_strtou64(siv->string, NULL, 0, &val)) {
-             error_setg(errp, QERR_INVALID_PARAMETER_VALUE, name ? name : "null",
-                        "uint64");
-             return false;
+     assert(*ptr == '"' || *ptr == '\'');
+     quote = *ptr++;
+     str = g_string_new(NULL);
+ 
+     while (*ptr != quote) {
+         assert(*ptr);
+         switch (*ptr) {
+         case '\\':
+             beg = ptr++;
+             switch (*ptr++) {
+             case '"':
+                 g_string_append_c(str, '"');
+                 break;
+             case '\'':
+                 g_string_append_c(str, '\'');
+                 break;
+             case '\\':
+                 g_string_append_c(str, '\\');
+                 break;
+             case '/':
+                 g_string_append_c(str, '/');
+                 break;
+             case 'b':
+                 g_string_append_c(str, '\b');
+                 break;
+             case 'f':
+                 g_string_append_c(str, '\f');
+                 break;
+             case 'n':
+                 g_string_append_c(str, '\n');
+                 break;
+             case 'r':
+                 g_string_append_c(str, '\r');
+                 break;
+             case 't':
+                 g_string_append_c(str, '\t');
+                 break;
+             case 'u':
+                 cp = cvt4hex(ptr);
+                 ptr += 4;
+ 
+                 /* handle surrogate pairs */
+                 if (cp >= 0xD800 && cp <= 0xDBFF
+                     && ptr[0] == '\\' && ptr[1] == 'u') {
+                     /* leading surrogate followed by \u */
+                     cp = 0x10000 + ((cp & 0x3FF) << 10);
+                     trailing = cvt4hex(ptr + 2);
+                     if (trailing >= 0xDC00 && trailing <= 0xDFFF) {
+                         /* followed by trailing surrogate */
+                         cp |= trailing & 0x3FF;
+                         ptr += 6;
+                     } else {
+                         cp = -1; /* invalid */
+                     }
+                 }
+ 
+                 if (mod_utf8_encode(utf8_buf, sizeof(utf8_buf), cp) < 0) {
+                     parse_error(ctxt, token,
+                                 "%.*s is not a valid Unicode character",
+                                 (int)(ptr - beg), beg);
+                     goto out;
+                 }
+                 g_string_append(str, utf8_buf);
+                 break;
+             default:
+                 parse_error(ctxt, token, "invalid escape sequence in string");
+                 goto out;
+             }
+             break;
+         case '%':
+             if (ctxt->ap) {
+                 if (ptr[1] != '%') {
+                     parse_error(ctxt, token, "can't interpolate into string");
+                     goto out;
+                 }
+                 ptr++;
+             }
+-            /* fall through */
++            fallthrough;
+         default:
+             cp = mod_utf8_codepoint(ptr, 6, &end);
+             if (cp < 0) {
+                 parse_error(ctxt, token, "invalid UTF-8 sequence in string");
+                 goto out;
+             }
+             ptr = end;
+             len = mod_utf8_encode(utf8_buf, sizeof(utf8_buf), cp);
+             assert(len >= 0);
+             g_string_append(str, utf8_buf);
          }
-         *obj = val;
-         return true;
-     case LM_UNPARSED:
-         if (try_parse_uint64_list_entry(siv, obj)) {
-             error_setg(errp, QERR_INVALID_PARAMETER_VALUE, name ? name : "null",
-                        "list of uint64 values or ranges");
-             return false;
+     }
+ 
+     return qstring_from_gstring(str);
+@@ -481,51 +481,52 @@ static QObject *parse_interpolation(JSONParserContext *ctxt)
+ static QObject *parse_literal(JSONParserContext *ctxt)
+ {
+     JSONToken *token;
+ 
+     token = parser_context_pop_token(ctxt);
+     assert(token);
+ 
+     switch (token->type) {
+     case JSON_STRING:
+         return QOBJECT(parse_string(ctxt, token));
+     case JSON_INTEGER: {
+         /*
+          * Represent JSON_INTEGER as QNUM_I64 if possible, else as
+          * QNUM_U64, else as QNUM_DOUBLE.  Note that qemu_strtoi64()
+          * and qemu_strtou64() fail with ERANGE when it's not
+          * possible.
+          *
+          * qnum_get_int() will then work for any signed 64-bit
+          * JSON_INTEGER, qnum_get_uint() for any unsigned 64-bit
+          * integer, and qnum_get_double() both for any JSON_INTEGER
+          * and any JSON_FLOAT (with precision loss for integers beyond
+          * 53 bits)
+          */
+         int ret;
+         int64_t value;
+         uint64_t uvalue;
+ 
+         ret = qemu_strtoi64(token->str, NULL, 10, &value);
+         if (!ret) {
+             return QOBJECT(qnum_from_int(value));
          }
-         assert(siv->lm == LM_UINT64_RANGE);
--        /* fall through */
+         assert(ret == -ERANGE);
+ 
+         if (token->str[0] != '-') {
+             ret = qemu_strtou64(token->str, NULL, 10, &uvalue);
+             if (!ret) {
+                 return QOBJECT(qnum_from_uint(uvalue));
+             }
+             assert(ret == -ERANGE);
+         }
++        /* fall through to JSON_FLOAT */
 +        fallthrough;
-     case LM_UINT64_RANGE:
-         /* return the next element in the range */
-         assert(siv->rangeNext.u64 <= siv->rangeEnd.u64);
-         *obj = siv->rangeNext.u64++;
- 
-         if (siv->rangeNext.u64 > siv->rangeEnd.u64 || *obj == UINT64_MAX) {
-             /* end of range, check if there is more to parse */
-             siv->lm = siv->unparsed_string[0] ? LM_UNPARSED : LM_END;
-         }
-         return true;
-     case LM_END:
-         error_setg(errp, "Fewer list elements expected");
-         return false;
+     }
+-    /* fall through to JSON_FLOAT */
+     case JSON_FLOAT:
+         /* FIXME dependent on locale; a pervasive issue in QEMU */
+         /* FIXME our lexer matches RFC 8259 in forbidding Inf or NaN,
+          * but those might be useful extensions beyond JSON */
+         return QOBJECT(qnum_from_double(strtod(token->str, NULL)));
      default:
          abort();
      }

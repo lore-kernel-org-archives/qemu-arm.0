@@ -1,447 +1,780 @@
-Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1168724dlb;
-        Fri, 13 Oct 2023 01:50:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGH0kyTkBZKUgHeJ7qevKmjxBzXLp23y3XF99fCtEIsAFbIWV+UCwFpkLZ9u1jrLWoh9UEW
-X-Received: by 2002:a05:620a:2952:b0:774:32f0:e2b5 with SMTP id n18-20020a05620a295200b0077432f0e2b5mr35300609qkp.9.1697187016508;
-        Fri, 13 Oct 2023 01:50:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697187016; cv=none;
+Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1168869dlb;
+        Fri, 13 Oct 2023 01:50:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHOh/6b5p0k4v0jME0LKMqUy7YYuJhrgyFsn4jqsGS4qQh3aWxEzScIMCW55MOZhhSMK2Se
+X-Received: by 2002:a05:6214:f06:b0:66d:1ae6:2a5a with SMTP id gw6-20020a0562140f0600b0066d1ae62a5amr4253255qvb.7.1697187038893;
+        Fri, 13 Oct 2023 01:50:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697187038; cv=none;
         d=google.com; s=arc-20160816;
-        b=y2Nxw5O1vNG24+94u2XrdNuiB5HyqLumyGvIz/urlO8awYbji3CuEJVb1mBwfx2N7V
-         RlE3clMVuUwvayV/EZsShQlQ30RHYmmObDQe45Y7DLTxlOgNDbyXZLzw/ILCBq7q+roC
-         uWKG2vv5an+4BZErJVUG8L41ZNPKEFBW2ZyPmUW6Fm0GqAS4EScWLHGMX6ErUGByqhhD
-         Hc/+gDvehvEvTFoZ4Q5twZbthje3z8bjXdxGIJ1oT0k6pJduVukNt4vxcq/LDB7n+dZy
-         2Gc4VhgvwUV9NY33tdYgqtT54uyGNoaGt1DEh22zavkm/zPCj+zNEOYGhtbnAwVs7iwf
-         qCdQ==
+        b=wbF/Oxzt3ajDjVeTuvUtA+/OhN5uvOQFe7h7wCJ0kL9ZbpvCQBJFGcIhzC18IS6tF7
+         zRu1ODMqNNtIRrICcbPYA0Mq5RQenAC847isNi29WByAuyEplFt7EUmFOYFM37QOiRlB
+         PAEVRYT5TN7HwrNetJKe9b0Vh+n8iDBwCnifqY1pQlO9kz7FIS0OH9HrqkPF4CtjB0De
+         5BgbJbVZ4msl/mepn3CTOOUufv1eHT1hig2K1nkUQE6BbcA6BWV9hByc62uC5u/xkcpe
+         FobQVgAsomQsWyDwBQpAUyDGg4QKbkZ2W2vis5LBbDNUlUPvzWexUXQk6TwbWcbH1c7m
+         tjJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=2TilCLybsKQVSIwhb19nthh+M1jJV+7LFdQfVqtwfBA=;
-        fh=boFaC8m2w9Gjj6IG8vRSxakWxR0AvX1APGEiLozSgqw=;
-        b=wvwhZ0VAoEAa1xatlpRMKTTfT+Mwngg3eWKfiEOkcTRBdayfqz7E3vutbw80Vu33Bo
-         eiVpCcvVFtVhwkRq4aVEGL3e3ZC2lH2N8qJNn7mnGR76L/f5+YbVwLv8ZDJwgo83kT6m
-         6FDohcKpv+l7Sqm9Q4dqCmB1QswrOXJvx88BOrTudcPlUYgabq1x/e7aL5hOjoTeQT3y
-         v+Ua61ixAup37zbKOWulb65ojq05VTXNSbpSRsX8q9TLWbMrqoxsUlwD3EGx5S3SRAnX
-         OpIrqnZIXDOyfUp4jPCCCiFwA5TtXbfmPR4zW2/JVfVKIkw5v17C8LSUjL7qcyTW1lnB
-         jDeA==
+        bh=XaRABGdreikay04+AeAyrNnueQq9sZduRy/psonsURU=;
+        fh=+M5DLj5VgtKICGF8Bsbe21Mn0UFGDHkz6YTz8eQyhnY=;
+        b=BsGiqPngDhhwVp57VtwqgeibHawSkCqhk8ro2V/Y9dKWYdHg53QrRs2KGZRLv9Unpj
+         V1S9Wht3NRfYjcwauSbqgiwzkXidt3sNeqPJ1JN8Tn4zD/jpaGuS/r7SpdcnkXLTdeoc
+         ZfjV4PvI3nZK43nE7kMe8+ycvGPB9qZgM8F3gEMNPBSrr7GcI2Pv4UP5fy3m5TQENklF
+         vX22mexYRZBhxGkxB7wOgBhl4BJ6YDKAeHj44kks7oeRYoCDB9N3D3HkVs3uyclqn55d
+         n/GzJgmGbE5hM1x0NaM49QRni+fQclw74dm+Cmxba29UfqvyUfPnuaSBak+JCLskyFtj
+         P9mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CkkzPqd3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kCUAw1Ym;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r7-20020a05620a298700b00765a70926fbsi852139qkp.543.2023.10.13.01.50.16
+        by mx.google.com with ESMTPS id ei19-20020ad45a13000000b00656289535bbsi852674qvb.472.2023.10.13.01.50.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:50:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 01:50:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CkkzPqd3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kCUAw1Ym;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrDpd-0007Sv-A4; Fri, 13 Oct 2023 04:47:41 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrDqE-0008Cv-RS; Fri, 13 Oct 2023 04:48:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDpa-0007Q2-5X
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:47:38 -0400
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+ id 1qrDpw-0007ha-KY
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 04:48:07 -0400
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDpY-0000nn-1T
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:47:37 -0400
-Received: by mail-lf1-x12e.google.com with SMTP id
- 2adb3069b0e04-503f39d3236so2381806e87.0
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 01:47:35 -0700 (PDT)
+ id 1qrDps-0000rA-M1
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 04:48:00 -0400
+Received: by mail-lf1-x12b.google.com with SMTP id
+ 2adb3069b0e04-5045cb9c091so2476051e87.3
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 01:47:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697186853; x=1697791653; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697186873; x=1697791673; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2TilCLybsKQVSIwhb19nthh+M1jJV+7LFdQfVqtwfBA=;
- b=CkkzPqd3fMKOBmvkAEsNVv9eV4qkzJL7BYWycUavBrGDRqD+twKP99wfrb4Ijdbil9
- aULdcoYgc0xBEfQ8bhQuiXiaz2DDh0cvv2O9dCr63+wN1q3NmOyCDIcma4cKLO5g2+AP
- ZIssRB9kcQmAuJ8PV+LXSFBfAKl9Yr03IiKwoRdg39YgKPDnkGBa3Z+oRv58g+heXDt+
- vmHNyakJNJlNMlmsYpCc6Zmpvr1kg/tNXkx80e+XaQ6wg1YLH++xPnAVPmpsCIuRs5N1
- DjKPt/kergzq16ennb2Kr5ES4MFlWIqJw1Rl7YRICyBSAkHK04UtJN3nDQM4Z0aY8G4l
- qSyg==
+ bh=XaRABGdreikay04+AeAyrNnueQq9sZduRy/psonsURU=;
+ b=kCUAw1YmqKroKF/0eYjMXq3T5ikW/DtZ8T5WdtbX9TdyvHy3BlLYKYnKiNtpvHHeTo
+ LIOtFf+KS2nz3ppPyT29fneMwKF+8BiXLG9AQS1X6TeszKhl9R7mXgFHlf44fjJJQmlr
+ 5i7S3DWlzYPX8OXK27PeE3O8qgmlWGBunUlQFsqczsbPm6k3VukC1e9Reny6feNFhJ3k
+ ZUa8Zt8aDIgzNZ6GH0LI4wzhgF3LTLHNL71igUzKev5ZcYUVbJyvwnVDGAPEgjVYn9E7
+ 9+/TqgXX3+RP+eUoreukFx2wLbpueoJapuni2bgOP+zB8yexuN19JA9Z9+TbuB6IthBO
+ qvPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697186853; x=1697791653;
+ d=1e100.net; s=20230601; t=1697186873; x=1697791673;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2TilCLybsKQVSIwhb19nthh+M1jJV+7LFdQfVqtwfBA=;
- b=Stm/6+Q+VboG/Vcm4ftphefJ+O+iGgIX46IrHe95gAubJpiDBuCm0IpXIxVm//X6PF
- rLmwljeIouML1H+g4LtgcLH0/CWh2hjG9FljaOy5IkqjSE7cCxtyJVJDwXeCO9y5t4Ja
- P1qpXoofdQOaKZluyONefphd3Opa4nUZbCcR3cPIzVhsizxegzPByqLcJnZ4I+OH056j
- xy1TUroamxGDL20Zbol0VvWo2fBpInXZT1fJ1kujDDp+MvnUFx8OQn4qnlRaAOzF/vXQ
- tsuiE6E82wLexKKU6c2bwEYo0ZGb/8GahXYIrxxQoOZMuvNU1j8ni9EP8jMHjc+fzFDZ
- az3w==
-X-Gm-Message-State: AOJu0YwpoJ+P6wDkUI9Dywf7cWiulDWLocdZyuUImUyvV3t6NBvtRd6q
- gjQwLeWUFK0APl94FojXFgWY6hsbLQmL6UOD1f8=
-X-Received: by 2002:a05:6512:130b:b0:502:ffdf:b098 with SMTP id
- x11-20020a056512130b00b00502ffdfb098mr27985287lfu.6.1697186853671; 
- Fri, 13 Oct 2023 01:47:33 -0700 (PDT)
+ bh=XaRABGdreikay04+AeAyrNnueQq9sZduRy/psonsURU=;
+ b=hEgb3Hcz3x26h/iIP+IqikQ7WChg5B6mquFaplDZQgs3+dkinCj/EhT8IVDpWbFMOk
+ 5y6ayBdLUrFXAS/VMCMOUqkr+sXSOXSKQH1OvGRWAC+h1bza1AHtvjsMKGjlkIzufDRo
+ 8lYP65bCOLZTP6YwRwNI0M4KGcEz4BokjQW9MjcOS2T1zQx+gEBQNBKkUw1pc3uDnxpt
+ lGzhezAZZ9CRouZgQ0CDdtjprgccH0MJFqW1VJ7p1/K9dSYijh2u6CgDl8Dub4ZIUEB1
+ 8k07aNNxirq4TbnbTjYalu4LCk8e0y7dmL4g6gtlRzHGWC/ikKxY9f6ME4GYhIMDd2OH
+ 1FnA==
+X-Gm-Message-State: AOJu0Yx9vGLb7ESLLi+X0nxLUBhkcuHuiOicOHUyAC4kOYeO/CaK+rcX
+ 0uRkdKIOs+52AddJdYjqmLw2DQ==
+X-Received: by 2002:ac2:4d87:0:b0:4fb:77d6:89c3 with SMTP id
+ g7-20020ac24d87000000b004fb77d689c3mr20546476lfe.12.1697186873188; 
+ Fri, 13 Oct 2023 01:47:53 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.47.31
+ v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.47.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 01:47:33 -0700 (PDT)
+ Fri, 13 Oct 2023 01:47:52 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>,
- qemu-arm@nongnu.org (open list:ARM cores)
-Subject: [RFC PATCH v3 11/78] hw/timer: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 11:45:39 +0300
-Message-Id: <089c04aaa8a001c7af0e44c309122c738ff2bf50.1697186560.git.manos.pitsidianakis@linaro.org>
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC PATCH v3 23/78] target/arm: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 11:45:51 +0300
+Message-Id: <ce5e63c8c293fb4799d896be68d88a407f5953b7.1697186560.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lf1-x12e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lf1-x12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EV2iYq+0VpBV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GA1WMicZJuyb
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/timer/a9gtimer.c     |  8 ++--
- hw/timer/aspeed_timer.c |  1 +
- hw/timer/pxa2xx_timer.c | 94 ++++++++++++++++++++---------------------
- hw/timer/renesas_tmr.c  |  2 +-
- hw/timer/sh_timer.c     |  8 ++--
- 5 files changed, 57 insertions(+), 56 deletions(-)
+ target/arm/helper.c               | 34 +++++++-------
+ target/arm/ptw.c                  | 10 ++--
+ target/arm/tcg/psci.c             |  2 +-
+ target/arm/tcg/translate-a64.c    | 76 +++++++++++++++----------------
+ target/arm/tcg/translate-m-nocp.c |  2 +-
+ target/arm/tcg/translate-vfp.c    |  2 +-
+ target/arm/tcg/translate.c        |  8 ++--
+ 7 files changed, 68 insertions(+), 66 deletions(-)
 
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 5e959b6d09..b83d51da96 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -143,7 +143,7 @@ static uint64_t a9_gtimer_read(void *opaque, hwaddr addr, unsigned size)
-     switch (addr) {
-     case R_COUNTER_HI:
-         shift = 32;
--        /* fallthrough */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 74fbb6e1d7..e2d1426cf4 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2526,7 +2526,7 @@ static CPAccessResult gt_timer_access(CPUARMState *env, int timeridx,
+         if (!extract32(env->cp15.c14_cntkctl, 9 - timeridx, 1)) {
+             return CP_ACCESS_TRAP;
+         }
+-        /* fall through */
 +        fallthrough;
-     case R_COUNTER_LO:
-         update = a9_gtimer_get_update(s);
-         ret = extract64(update.new, shift, 32);
-@@ -156,7 +156,7 @@ static uint64_t a9_gtimer_read(void *opaque, hwaddr addr, unsigned size)
+ 
+     case 1:
+         if (has_el2 && timeridx == GTIMER_PHYS) {
+@@ -3588,7 +3588,7 @@ static void ats_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+             break;
+         case 2:
+             g_assert(ss != ARMSS_Secure);  /* ARMv8.4-SecEL2 is 64-bit only */
+-            /* fall through */
++            fallthrough;
+         case 1:
+             if (ri->crm == 9 && (env->uncached_cpsr & CPSR_PAN)) {
+                 mmu_idx = ARMMMUIdx_Stage1_E1_PAN;
+@@ -4657,7 +4657,7 @@ static CPAccessResult aa64_cacheop_poc_access(CPUARMState *env,
+         if (!(arm_sctlr(env, 0) & SCTLR_UCI)) {
+             return CP_ACCESS_TRAP;
+         }
+-        /* fall through */
++        fallthrough;
+     case 1:
+         /* ... EL1 must trap to EL2 if HCR_EL2.TPCP is set.  */
+         if (arm_hcr_el2_eff(env) & HCR_TPCP) {
+@@ -4677,7 +4677,7 @@ static CPAccessResult do_cacheop_pou_access(CPUARMState *env, uint64_t hcrflags)
+         if (!(arm_sctlr(env, 0) & SCTLR_UCI)) {
+             return CP_ACCESS_TRAP;
+         }
+-        /* fall through */
++        fallthrough;
+     case 1:
+         /* ... EL1 must trap to EL2 if relevant HCR_EL2 flags are set.  */
+         if (arm_hcr_el2_eff(env) & hcrflags) {
+@@ -6757,7 +6757,7 @@ int sve_exception_el(CPUARMState *env, int el)
+             if (el != 0) {
+                 break;
+             }
+-            /* fall through */
++            fallthrough;
+         case 0:
+         case 2:
+             return 1;
+@@ -6772,7 +6772,7 @@ int sve_exception_el(CPUARMState *env, int el)
+                 if (el != 0 || !(env->cp15.hcr_el2 & HCR_TGE)) {
+                     break;
+                 }
+-                /* fall through */
++                fallthrough;
+             case 0:
+             case 2:
+                 return 2;
+@@ -6806,7 +6806,7 @@ int sme_exception_el(CPUARMState *env, int el)
+             if (el != 0) {
+                 break;
+             }
+-            /* fall through */
++            fallthrough;
+         case 0:
+         case 2:
+             return 1;
+@@ -6821,7 +6821,7 @@ int sme_exception_el(CPUARMState *env, int el)
+                 if (el != 0 || !(env->cp15.hcr_el2 & HCR_TGE)) {
+                     break;
+                 }
+-                /* fall through */
++                fallthrough;
+             case 0:
+             case 2:
+                 return 2;
+@@ -9731,7 +9731,7 @@ void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
+         if (r->cp == 0) {
+             break;
+         }
+-        /* fall through */
++        fallthrough;
+     case ARM_CP_STATE_AA32:
+         if (arm_feature(&cpu->env, ARM_FEATURE_V8) &&
+             !arm_feature(&cpu->env, ARM_FEATURE_M)) {
+@@ -10660,7 +10660,7 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+                     break;
+                 }
+                 /* ... the target is EL3, from secure state ... */
+-                /* fall through */
++                fallthrough;
+             case 1:
+                 /* ... the target is EL1 and SCTLR.SPAN is 0.  */
+                 if (!(env->cp15.sctlr_el[new_el] & SCTLR_SPAN)) {
+@@ -10712,6 +10712,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
          break;
-     case R_COMPARATOR_HI:
-         shift = 32;
--        /* fallthrough */
+     case EXCP_BKPT:
+         /* Fall through to prefetch abort.  */
 +        fallthrough;
-     case R_COMPARATOR_LO:
-         ret = extract64(gtb->compare, shift, 32);
+     case EXCP_PREFETCH_ABORT:
+         env->cp15.ifar_s = env->exception.vaddress;
+         qemu_log_mask(CPU_LOG_INT, "...with HIFAR 0x%x\n",
+@@ -10837,6 +10838,7 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
          break;
-@@ -185,7 +185,7 @@ static void a9_gtimer_write(void *opaque, hwaddr addr, uint64_t value,
-     switch (addr) {
-     case R_COUNTER_HI:
-         shift = 32;
--        /* fallthrough */
+     case EXCP_BKPT:
+         /* Fall through to prefetch abort.  */
 +        fallthrough;
-     case R_COUNTER_LO:
+     case EXCP_PREFETCH_ABORT:
+         A32_BANKED_CURRENT_REG_SET(env, ifsr, env->exception.fsr);
+         A32_BANKED_CURRENT_REG_SET(env, ifar, env->exception.vaddress);
+@@ -11091,7 +11093,7 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+                 is_aa64 = (hcr & HCR_RW) != 0;
+                 break;
+             }
+-            /* fall through */
++            fallthrough;
+         case 1:
+             is_aa64 = is_a64(env);
+             break;
+@@ -11112,7 +11114,7 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+     case EXCP_GPC:
+         qemu_log_mask(CPU_LOG_INT, "...with MFAR 0x%" PRIx64 "\n",
+                       env->cp15.mfar_el3);
+-        /* fall through */
++        fallthrough;
+     case EXCP_PREFETCH_ABORT:
+     case EXCP_DATA_ABORT:
          /*
-          * Keep it simple - ARM docco explicitly says to disable timer before
-@@ -209,7 +209,7 @@ static void a9_gtimer_write(void *opaque, hwaddr addr, uint64_t value,
-         break;
-     case R_COMPARATOR_HI:
-         shift = 32;
--        /* fallthrough */
+@@ -11126,7 +11128,7 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+         env->cp15.far_el[new_el] = env->exception.vaddress;
+         qemu_log_mask(CPU_LOG_INT, "...with FAR 0x%" PRIx64 "\n",
+                       env->cp15.far_el[new_el]);
+-        /* fall through */
 +        fallthrough;
-     case R_COMPARATOR_LO:
-         a9_gtimer_update(s, false);
-         gtb->compare = deposit64(gtb->compare, shift, 32, value);
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 72161f07bb..b343b7ab2c 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -284,6 +284,7 @@ static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int reg,
+     case EXCP_BKPT:
+     case EXCP_UDEF:
+     case EXCP_SWI:
+@@ -11218,7 +11220,7 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+                 != (HCR_E2H | HCR_TGE)) {
+                 break;
+             }
+-            /* fall through */
++            fallthrough;
+         case 1:
+             /* ... the target is EL1 ... */
+             /* ... and SCTLR_ELx.SPAN == 0, then set to 1.  */
+@@ -11956,7 +11958,7 @@ int fp_exception_el(CPUARMState *env, int cur_el)
+             if (cur_el != 0) {
+                 break;
+             }
+-            /* fall through */
++            fallthrough;
+         case 0:
+         case 2:
+             /* Trap from Secure PL0 or PL1 to Secure PL1. */
+@@ -11995,7 +11997,7 @@ int fp_exception_el(CPUARMState *env, int cur_el)
+                 if (cur_el != 0 || !(hcr_el2 & HCR_TGE)) {
+                     break;
+                 }
+-                /* fall through */
++                fallthrough;
+             case 0:
+             case 2:
+                 return 2;
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 95db9ec4c3..3f6783c100 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2374,7 +2374,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
+                     break; /* no access */
+                 case 3:
+                     result->f.prot |= PAGE_WRITE;
+-                    /* fall through */
++                    fallthrough;
+                 case 2:
+                 case 6:
+                     result->f.prot |= PAGE_READ | PAGE_EXEC;
+@@ -2385,7 +2385,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
+                         result->f.prot |= PAGE_READ | PAGE_EXEC;
+                         break;
+                     }
+-                    /* fall through */
++                    fallthrough;
+                 default:
+                     qemu_log_mask(LOG_GUEST_ERROR,
+                                   "DRACR[%d]: Bad value for AP bits: 0x%"
+@@ -2399,7 +2399,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
+                 case 2:
+                 case 3:
+                     result->f.prot |= PAGE_WRITE;
+-                    /* fall through */
++                    fallthrough;
+                 case 5:
+                 case 6:
+                     result->f.prot |= PAGE_READ | PAGE_EXEC;
+@@ -2410,7 +2410,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
+                         result->f.prot |= PAGE_READ | PAGE_EXEC;
+                         break;
+                     }
+-                    /* fall through */
++                    fallthrough;
+                 default:
+                     qemu_log_mask(LOG_GUEST_ERROR,
+                                   "DRACR[%d]: Bad value for AP bits: 0x%"
+@@ -3333,7 +3333,7 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
+             return get_phys_addr_twostage(env, ptw, address, access_type,
+                                           result, fi);
+         }
+-        /* fall through */
++        fallthrough;
+ 
+     default:
+         /* Single stage uses physical for ptw. */
+diff --git a/target/arm/tcg/psci.c b/target/arm/tcg/psci.c
+index 6c1239bb96..dafc39c3d7 100644
+--- a/target/arm/tcg/psci.c
++++ b/target/arm/tcg/psci.c
+@@ -191,7 +191,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+                 ret = 0;
+                 break;
+             }
+-            /* fallthrough */
++            fallthrough;
+         case QEMU_PSCI_0_1_FN_MIGRATE:
+         case QEMU_PSCI_0_2_FN_MIGRATE:
+         default:
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 10e8dcf743..ee97219acb 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -5758,7 +5758,7 @@ static void disas_fp_compare(DisasContext *s, uint32_t insn)
+         if (dc_isar_feature(aa64_fp16, s)) {
              break;
          }
-         /* fall through to re-enable */
-+        fallthrough;
-     case TIMER_REG_STATUS:
-         if (timer_enabled(t)) {
-             uint64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-index 2ae5ae3212..11863e1a42 100644
---- a/hw/timer/pxa2xx_timer.c
-+++ b/hw/timer/pxa2xx_timer.c
-@@ -167,27 +167,27 @@ static uint64_t pxa2xx_timer_read(void *opaque, hwaddr offset,
- 
-     switch (offset) {
-     case OSMR3:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR2:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR1:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR0:
-         return s->timer[tm].value;
-     case OSMR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-@@ -196,19 +196,19 @@ static uint64_t pxa2xx_timer_read(void *opaque, hwaddr offset,
-         return s->clock + muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) -
-                         s->lastload, s->freq, NANOSECONDS_PER_SECOND);
-     case OSCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-@@ -236,19 +236,19 @@ static uint64_t pxa2xx_timer_read(void *opaque, hwaddr offset,
-     case OWER:
-         return s->reset3;
-     case OMCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-@@ -277,29 +277,29 @@ static void pxa2xx_timer_write(void *opaque, hwaddr offset,
- 
-     switch (offset) {
-     case OSMR3:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR2:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR1:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR0:
-         s->timer[tm].value = value;
-         pxa2xx_timer_update(s, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-         break;
-     case OSMR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-@@ -313,19 +313,19 @@ static void pxa2xx_timer_write(void *opaque, hwaddr offset,
-         pxa2xx_timer_update(s, s->lastload);
-         break;
-     case OSCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-@@ -350,11 +350,11 @@ static void pxa2xx_timer_write(void *opaque, hwaddr offset,
-         s->reset3 = value;
-         break;
-     case OMCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-@@ -368,11 +368,11 @@ static void pxa2xx_timer_write(void *opaque, hwaddr offset,
-         }
-         break;
-     case OMCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR8:  tm += 4;
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
-index 43b31213bc..a32521e3c3 100644
---- a/hw/timer/renesas_tmr.c
-+++ b/hw/timer/renesas_tmr.c
-@@ -236,7 +236,7 @@ static uint64_t tmr_read(void *opaque, hwaddr addr, unsigned size)
-         } else if (ch == 0) {
-             return concat_reg(tmr->tcora);
-         }
--        /* fall through */
-+        fallthrough;
-     case A_TCORB:
-         if (size == 1) {
-             return tmr->tcorb[ch];
-diff --git a/hw/timer/sh_timer.c b/hw/timer/sh_timer.c
-index 7788939766..6dbfc2595b 100644
---- a/hw/timer/sh_timer.c
-+++ b/hw/timer/sh_timer.c
-@@ -131,7 +131,7 @@ static void sh_timer_write(void *opaque, hwaddr offset, uint32_t value)
-             if (s->feat & TIMER_FEAT_EXTCLK) {
-                 break;
-             }
--            /* fallthrough */
-+            fallthrough;
-         default:
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved TPSC value\n", __func__);
-@@ -145,7 +145,7 @@ static void sh_timer_write(void *opaque, hwaddr offset, uint32_t value)
-             if (s->feat & TIMER_FEAT_EXTCLK) {
-                 break;
-             }
--            /* fallthrough */
-+            fallthrough;
-         default:
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved CKEG value\n", __func__);
-@@ -158,7 +158,7 @@ static void sh_timer_write(void *opaque, hwaddr offset, uint32_t value)
-             if (s->feat & TIMER_FEAT_CAPT) {
-                 break;
-             }
--            /* fallthrough */
-+            fallthrough;
-         default:
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved ICPE value\n", __func__);
-@@ -194,7 +194,7 @@ static void sh_timer_write(void *opaque, hwaddr offset, uint32_t value)
-             s->tcpr = value;
-             break;
-         }
--        /* fallthrough */
+-        /* fallthru */
 +        fallthrough;
      default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, offset);
+         unallocated_encoding(s);
+         return;
+@@ -5808,7 +5808,7 @@ static void disas_fp_ccomp(DisasContext *s, uint32_t insn)
+         if (dc_isar_feature(aa64_fp16, s)) {
+             break;
+         }
+-        /* fallthru */
++        fallthrough;
+     default:
+         unallocated_encoding(s);
+         return;
+@@ -5872,7 +5872,7 @@ static void disas_fp_csel(DisasContext *s, uint32_t insn)
+         if (dc_isar_feature(aa64_fp16, s)) {
+             break;
+         }
+-        /* fallthru */
++        fallthrough;
+     default:
+         unallocated_encoding(s);
+         return;
+@@ -6194,7 +6194,7 @@ static void disas_fp_1src(DisasContext *s, uint32_t insn)
+         if (type > 1 || !dc_isar_feature(aa64_frint, s)) {
+             goto do_unallocated;
+         }
+-        /* fall through */
++        fallthrough;
+     case 0x0 ... 0x3:
+     case 0x8 ... 0xc:
+     case 0xe ... 0xf:
+@@ -6623,7 +6623,7 @@ static void disas_fp_imm(DisasContext *s, uint32_t insn)
+         if (dc_isar_feature(aa64_fp16, s)) {
+             break;
+         }
+-        /* fallthru */
++        fallthrough;
+     default:
+         unallocated_encoding(s);
+         return;
+@@ -6831,7 +6831,7 @@ static void disas_fp_fixed_conv(DisasContext *s, uint32_t insn)
+         if (dc_isar_feature(aa64_fp16, s)) {
+             break;
+         }
+-        /* fallthru */
++        fallthrough;
+     default:
+         unallocated_encoding(s);
+         return;
+@@ -6958,13 +6958,13 @@ static void disas_fp_int_conv(DisasContext *s, uint32_t insn)
+     case 2: /* SCVTF */
+     case 3: /* UCVTF */
+         itof = true;
+-        /* fallthru */
++        fallthrough;
+     case 4: /* FCVTAS */
+     case 5: /* FCVTAU */
+         if (rmode != 0) {
+             goto do_unallocated;
+         }
+-        /* fallthru */
++        fallthrough;
+     case 0: /* FCVT[NPMZ]S */
+     case 1: /* FCVT[NPMZ]U */
+         switch (type) {
+@@ -6994,7 +6994,7 @@ static void disas_fp_int_conv(DisasContext *s, uint32_t insn)
+             if (!dc_isar_feature(aa64_fp16, s)) {
+                 goto do_unallocated;
+             }
+-            /* fallthru */
++            fallthrough;
+         case 0b00000110: /* FMOV 32-bit */
+         case 0b00000111:
+         case 0b10100110: /* FMOV 64-bit */
+@@ -7386,7 +7386,7 @@ static void disas_simd_across_lanes(DisasContext *s, uint32_t insn)
+             unallocated_encoding(s);
+             return;
+         }
+-        /* fall through */
++        fallthrough;
+     case 0x3: /* SADDLV, UADDLV */
+     case 0xa: /* SMAXV, UMAXV */
+     case 0x1a: /* SMINV, UMINV */
+@@ -8292,7 +8292,7 @@ static void handle_simd_qshl(DisasContext *s, bool scalar, bool is_q,
+         switch (size) {
+         case 0:
+             shift |= shift << 8;
+-            /* fall through */
++            fallthrough;
+         case 1:
+             shift |= shift << 16;
+             break;
+@@ -8639,7 +8639,7 @@ static void disas_simd_scalar_shift_imm(DisasContext *s, uint32_t insn)
+             unallocated_encoding(s);
+             return;
+         }
+-        /* fall through */
++        fallthrough;
+     case 0x00: /* SSHR / USHR */
+     case 0x02: /* SSRA / USRA */
+     case 0x04: /* SRSHR / URSHR */
+@@ -8740,7 +8740,7 @@ static void disas_simd_scalar_three_reg_diff(DisasContext *s, uint32_t insn)
+             break;
+         case 0xb: /* SQDMLSL, SQDMLSL2 */
+             tcg_gen_neg_i64(tcg_res, tcg_res);
+-            /* fall through */
++            fallthrough;
+         case 0x9: /* SQDMLAL, SQDMLAL2 */
+             read_vec_element(s, tcg_op1, rd, 0, MO_64);
+             gen_helper_neon_addl_saturate_s64(tcg_res, tcg_env,
+@@ -8764,7 +8764,7 @@ static void disas_simd_scalar_three_reg_diff(DisasContext *s, uint32_t insn)
+             break;
+         case 0xb: /* SQDMLSL, SQDMLSL2 */
+             gen_helper_neon_negl_u32(tcg_res, tcg_res);
+-            /* fall through */
++            fallthrough;
+         case 0x9: /* SQDMLAL, SQDMLAL2 */
+         {
+             TCGv_i64 tcg_op3 = tcg_temp_new_i64();
+@@ -8887,7 +8887,7 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
+             case 0x39: /* FMLS */
+                 /* As usual for ARM, separate negation for fused multiply-add */
+                 gen_helper_vfp_negd(tcg_op1, tcg_op1);
+-                /* fall through */
++                fallthrough;
+             case 0x19: /* FMLA */
+                 read_vec_element(s, tcg_res, rd, pass, MO_64);
+                 gen_helper_vfp_muladdd(tcg_res, tcg_op1, tcg_op2,
+@@ -8963,7 +8963,7 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
+             case 0x39: /* FMLS */
+                 /* As usual for ARM, separate negation for fused multiply-add */
+                 gen_helper_vfp_negs(tcg_op1, tcg_op1);
+-                /* fall through */
++                fallthrough;
+             case 0x19: /* FMLA */
+                 read_vec_element_i32(s, tcg_res, rd, pass, MO_32);
+                 gen_helper_vfp_muladds(tcg_res, tcg_op1, tcg_op2,
+@@ -9489,7 +9489,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+         switch (opcode) {
+         case 0x2e: /* FCMLT (zero) */
+             swap = true;
+-            /* fallthrough */
++            fallthrough;
+         case 0x2c: /* FCMGT (zero) */
+             genfn = gen_helper_neon_cgt_f64;
+             break;
+@@ -9498,7 +9498,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+             break;
+         case 0x6d: /* FCMLE (zero) */
+             swap = true;
+-            /* fall through */
++            fallthrough;
+         case 0x6c: /* FCMGE (zero) */
+             genfn = gen_helper_neon_cge_f64;
+             break;
+@@ -9529,7 +9529,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+             switch (opcode) {
+             case 0x2e: /* FCMLT (zero) */
+                 swap = true;
+-                /* fall through */
++                fallthrough;
+             case 0x2c: /* FCMGT (zero) */
+                 genfn = gen_helper_advsimd_cgt_f16;
+                 break;
+@@ -9538,7 +9538,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+                 break;
+             case 0x6d: /* FCMLE (zero) */
+                 swap = true;
+-                /* fall through */
++                fallthrough;
+             case 0x6c: /* FCMGE (zero) */
+                 genfn = gen_helper_advsimd_cge_f16;
+                 break;
+@@ -9549,7 +9549,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+             switch (opcode) {
+             case 0x2e: /* FCMLT (zero) */
+                 swap = true;
+-                /* fall through */
++                fallthrough;
+             case 0x2c: /* FCMGT (zero) */
+                 genfn = gen_helper_neon_cgt_f32;
+                 break;
+@@ -9558,7 +9558,7 @@ static void handle_2misc_fcmp_zero(DisasContext *s, int opcode,
+                 break;
+             case 0x6d: /* FCMLE (zero) */
+                 swap = true;
+-                /* fall through */
++                fallthrough;
+             case 0x6c: /* FCMGE (zero) */
+                 genfn = gen_helper_neon_cge_f32;
+                 break;
+@@ -9888,7 +9888,7 @@ static void disas_simd_scalar_two_reg_misc(DisasContext *s, uint32_t insn)
+             unallocated_encoding(s);
+             return;
+         }
+-        /* fall through */
++        fallthrough;
+     case 0x8: /* CMGT, CMGE */
+     case 0x9: /* CMEQ, CMLE */
+     case 0xb: /* ABS, NEG */
+@@ -9902,7 +9902,7 @@ static void disas_simd_scalar_two_reg_misc(DisasContext *s, uint32_t insn)
+             unallocated_encoding(s);
+             return;
+         }
+-        /* fall through */
++        fallthrough;
+     case 0x14: /* SQXTN, UQXTN */
+         if (size == 3) {
+             unallocated_encoding(s);
+@@ -10252,7 +10252,7 @@ static void disas_simd_shift_imm(DisasContext *s, uint32_t insn)
+             unallocated_encoding(s);
+             return;
+         }
+-        /* fall through */
++        fallthrough;
+     case 0x00: /* SSHR / USHR */
+     case 0x02: /* SSRA / USRA (accumulate) */
+     case 0x04: /* SRSHR / URSHR (rounding) */
+@@ -10686,7 +10686,7 @@ static void disas_simd_three_reg_diff(DisasContext *s, uint32_t insn)
+             unallocated_encoding(s);
+             return;
+         }
+-        /* fall through */
++        fallthrough;
+     case 0: /* SADDL, SADDL2, UADDL, UADDL2 */
+     case 2: /* SSUBL, SSUBL2, USUBL, USUBL2 */
+     case 5: /* SABAL, SABAL2, UABAL, UABAL2 */
+@@ -11009,7 +11009,7 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
+             unallocated_encoding(s);
+             return;
+         }
+-        /* fall through */
++        fallthrough;
+     case 0x0: /* SHADD, UHADD */
+     case 0x2: /* SRHADD, URHADD */
+     case 0x4: /* SHSUB, UHSUB */
+@@ -11972,7 +11972,7 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+             unallocated_encoding(s);
+             return;
+         }
+-        /* fall through */
++        fallthrough;
+     case 0x8: /* CMGT, CMGE */
+     case 0x9: /* CMEQ, CMLE */
+     case 0xb: /* ABS, NEG */
+@@ -12075,7 +12075,7 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+                 unallocated_encoding(s);
+                 return;
+             }
+-            /* fall through */
++            fallthrough;
+         case 0x3d: /* FRECPE */
+         case 0x7d: /* FRSQRTE */
+             if (size == 3 && !is_q) {
+@@ -12092,7 +12092,7 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+                 unallocated_encoding(s);
+                 return;
+             }
+-            /* fall through */
++            fallthrough;
+         case 0x16: /* FCVTN, FCVTN2 */
+             /* handle_2misc_narrow does a 2*size -> size operation, but these
+              * instructions encode the source size rather than dest size.
+@@ -12123,7 +12123,7 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+         case 0x38: /* FRINTP */
+         case 0x39: /* FRINTZ */
+             rmode = extract32(opcode, 5, 1) | (extract32(opcode, 0, 1) << 1);
+-            /* fall through */
++            fallthrough;
+         case 0x59: /* FRINTX */
+         case 0x79: /* FRINTI */
+             need_fpstatus = true;
+@@ -12149,7 +12149,7 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+         case 0x1e: /* FRINT32Z */
+         case 0x1f: /* FRINT64Z */
+             rmode = FPROUNDING_ZERO;
+-            /* fall through */
++            fallthrough;
+         case 0x5e: /* FRINT32X */
+         case 0x5f: /* FRINT64X */
+             need_fpstatus = true;
+@@ -12988,7 +12988,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+             case 0x05: /* FMLS */
+                 /* As usual for ARM, separate negation for fused multiply-add */
+                 gen_helper_vfp_negd(tcg_op, tcg_op);
+-                /* fall through */
++                fallthrough;
+             case 0x01: /* FMLA */
+                 read_vec_element(s, tcg_res, rd, pass, MO_64);
+                 gen_helper_vfp_muladdd(tcg_res, tcg_op, tcg_idx, tcg_res, fpst);
+@@ -13244,7 +13244,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+                     break;
+                 case 0x7: /* SQDMLSL, SQDMLSL2 */
+                     tcg_gen_neg_i64(tcg_passres, tcg_passres);
+-                    /* fall through */
++                    fallthrough;
+                 case 0x3: /* SQDMLAL, SQDMLAL2 */
+                     gen_helper_neon_addl_saturate_s64(tcg_res[pass], tcg_env,
+                                                       tcg_res[pass],
+@@ -13318,7 +13318,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+                     break;
+                 case 0x7: /* SQDMLSL, SQDMLSL2 */
+                     gen_helper_neon_negl_u32(tcg_passres, tcg_passres);
+-                    /* fall through */
++                    fallthrough;
+                 case 0x3: /* SQDMLAL, SQDMLAL2 */
+                     gen_helper_neon_addl_saturate_s32(tcg_res[pass], tcg_env,
+                                                       tcg_res[pass],
+@@ -14212,7 +14212,7 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+         switch (dc->base.is_jmp) {
+         default:
+             gen_a64_update_pc(dc, 4);
+-            /* fall through */
++            fallthrough;
+         case DISAS_EXIT:
+         case DISAS_JUMP:
+             gen_step_complete_exception(dc);
+@@ -14229,13 +14229,13 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+         default:
+         case DISAS_UPDATE_EXIT:
+             gen_a64_update_pc(dc, 4);
+-            /* fall through */
++            fallthrough;
+         case DISAS_EXIT:
+             tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_UPDATE_NOCHAIN:
+             gen_a64_update_pc(dc, 4);
+-            /* fall through */
++            fallthrough;
+         case DISAS_JUMP:
+             tcg_gen_lookup_and_goto_ptr();
+             break;
+diff --git a/target/arm/tcg/translate-m-nocp.c b/target/arm/tcg/translate-m-nocp.c
+index f564d06ccf..42d6f516ba 100644
+--- a/target/arm/tcg/translate-m-nocp.c
++++ b/target/arm/tcg/translate-m-nocp.c
+@@ -374,8 +374,8 @@ static bool gen_M_fp_sysreg_write(DisasContext *s, int regno,
+             s->base.is_jmp = DISAS_NEXT;
+             break;
+         }
++        fallthrough;
+     }
+-    /* fall through */
+     case ARM_VFP_FPCXT_S:
+     {
+         TCGv_i32 sfpa, control;
+diff --git a/target/arm/tcg/translate-vfp.c b/target/arm/tcg/translate-vfp.c
+index b9af03b7c3..57d3c41596 100644
+--- a/target/arm/tcg/translate-vfp.c
++++ b/target/arm/tcg/translate-vfp.c
+@@ -819,7 +819,7 @@ static bool trans_VMSR_VMRS(DisasContext *s, arg_VMSR_VMRS *a)
+                                               tcg_constant_i32(a->rt),
+                                               tcg_constant_i32(a->reg));
+             }
+-            /* fall through */
++            fallthrough;
+         case ARM_VFP_FPEXC:
+         case ARM_VFP_FPINST:
+         case ARM_VFP_FPINST2:
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 48927fbb8c..595ef02f0d 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -1596,7 +1596,7 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+             break;
+         case ARM_IWMMXT_wCon:
+             gen_op_iwmmxt_set_cup();
+-            /* Fall through.  */
++            fallthrough;
+         case ARM_IWMMXT_wCSSF:
+             tmp = iwmmxt_load_creg(wrd);
+             tmp2 = load_reg(s, rd);
+@@ -9576,7 +9576,7 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+         case DISAS_UPDATE_EXIT:
+         case DISAS_UPDATE_NOCHAIN:
+             gen_update_pc(dc, curr_insn_len(dc));
+-            /* fall through */
++            fallthrough;
+         default:
+             /* FIXME: Single stepping a WFI insn will not halt the CPU. */
+             gen_singlestep_exception(dc);
+@@ -9600,13 +9600,13 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             break;
+         case DISAS_UPDATE_NOCHAIN:
+             gen_update_pc(dc, curr_insn_len(dc));
+-            /* fall through */
++            fallthrough;
+         case DISAS_JUMP:
+             gen_goto_ptr();
+             break;
+         case DISAS_UPDATE_EXIT:
+             gen_update_pc(dc, curr_insn_len(dc));
+-            /* fall through */
++            fallthrough;
+         default:
+             /* indicate that the hash table must be used to find the next TB */
+             tcg_gen_exit_tb(NULL, 0);
 -- 
 2.39.2
 

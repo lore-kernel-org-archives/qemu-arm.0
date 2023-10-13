@@ -1,111 +1,112 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1334221ejc;
-        Fri, 13 Oct 2023 01:00:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFkAb+xXXY/I8ph9lZVxZqWOTfIJ64IeFZ22gYSKC7n6cY8ElhIoG0eK2/tKxiNfj4Xn8aG
-X-Received: by 2002:a05:620a:4551:b0:776:f693:77bc with SMTP id u17-20020a05620a455100b00776f69377bcmr24277489qkp.72.1697184030515;
-        Fri, 13 Oct 2023 01:00:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697184030; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1334603ejc;
+        Fri, 13 Oct 2023 01:01:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHhEWkPY9ORwN62qc6ogMAVj4cXq0OsfmIL69CXkVE3FYli+xetCrxvy+t+3iy5rnDoDv4d
+X-Received: by 2002:a05:620a:468b:b0:774:2a0e:1166 with SMTP id bq11-20020a05620a468b00b007742a0e1166mr33272254qkb.17.1697184064492;
+        Fri, 13 Oct 2023 01:01:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697184064; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZrSYlsECu9sPD9L4a+cJSpDRny5VE2oKGUtXFD7Kg3+dkIQzoqeTxQbIy7AtEpkXfP
-         vWwkPLbSOUwEkJve15J63nzK+qXycPjlV8Jy1eoeVXORZhUcJzcYp75YtFt8jBPE1gpP
-         bJeMGU+7PFQmNf8UYc4emKNqyQHreasEDndzWP2gA247JokoA5T8GCyPhqELxpNmZjMp
-         Ry2oZlU9hrONMNA2gjUxNr9jkbRBVTuJgvQ6V2Zi656yz4iKJHSP83ubegFAgGPWvtxK
-         3L6w0Iw3rhQEnr8PdMjRom+cYaW9EJLKbzd3hmYzav+pZ/Qdz0pbytlXoxJeYkWh9TbO
-         PkLA==
+        b=gV0yAm9iVzxXa/VTNOoFaud7ZPL02wJ7w8RSaQ2XXsx1bTqgxFhdtaNoEAt8aQMQqD
+         HfBEPKAKhGFCuESr/9f3t/Zz2h8cNM0M6Vw1uaRgoPZ4jHtoFMhBeXrNBIDv2vyxBIV5
+         yWIIp2l4rR/9LRj5moy7kUV/F83FUkF9b0/T1ifTYg6pHT26/odXAI/uUBu7XZuhneAt
+         tlAItcOCjkHgrVyc3YS4wPEOiDv0J81jQePFVQVLTdduPE0r4CMssPT1m9y5hCFW13R1
+         UxuQD4PmPGHETuK25Tl8VkkDBRndY6ZpD996AHtq25AFqFIpKKccabExywYipIZf/gMI
+         j41Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=EXMFvHmrFfRKphR3OqwZTybrMB4noBqhKHecXvyL6KU=;
-        fh=gQ1RCyc3uP7CJi1mDAT8BZLlKuVlGP7hG0bBdYvZ48k=;
-        b=CRioefy5vpSpf0sx7XxIB6fH0ONEAr8WBdYQUfbE0NNhuCjJdTcoU9HpBktrjTXxZe
-         N2y/sIWkJ6MnTCZXl3JGxKobyvTnLEAiItWwZnrY9sIYTuXoSo5c+6bYuwwlwCBgxBgC
-         FUu4Ni/aeEQdnn8SYUofDDcz1fua9bGD6vduMb+9GDmvcfvMHKItX+o8Yy2TcjpSGmn5
-         q7R7MQHkLBfrHLNm9JRrapb/yxoYaVNDOM9DHHFsFKpZsyaMeV//GzbiQJQsUBMo36qg
-         z0RcAy8BX4U29k0Mt3nXy+pnu5EuUEZKuAScALHZFy5JpB6SC1RyBr+mKmQDJ6potPeM
-         9OMA==
+        bh=XyvoLQsYBwCacSjXMUeo1JDpYe89rtdX65GHrpNFkEk=;
+        fh=H4knajuxnTt7umLiusApADibO8BdVd5Z82FPnjnZzW0=;
+        b=mh0k8PvpACAurPidrm2W7VxdHjEakuA2lcoZEWhFjvgB8eL4mxbvI69tyhavENl1fV
+         NdSqFmD6iEaREOwyaPsm7tddEknfKWP7kT/uuRIpw4qMJ6IizjUQpuXM27d6MDap3RXs
+         atUlV/H8A00XY2oTe9HAXfphMuXIWtmws00sYAB5AcKMORkgqnoJoQUGfFpgns+2vrY2
+         9U/JE/TCEYg2E9TNqQUoycg45TRV6beKDudnIjMWx7aKLywlkKmk8OyfaKNUJQ6e5G4X
+         NGJp9C3hQsvNpuPFMb+U4p21cKzOX/aywTnwYZ9sGAC6U5SGWp64l3lVQnSxAX1JngTU
+         59ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WA0sAO+f;
+       dkim=pass header.i=@linaro.org header.s=google header.b=w4bv00Wc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n9-20020a05620a294900b00774396341a3si863607qkp.363.2023.10.13.01.00.30
+        by mx.google.com with ESMTPS id dw17-20020a05620a601100b00773bbc97627si797978qkb.467.2023.10.13.01.01.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:00:30 -0700 (PDT)
+        Fri, 13 Oct 2023 01:01:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WA0sAO+f;
+       dkim=pass header.i=@linaro.org header.s=google header.b=w4bv00Wc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCzJ-00055X-N8; Fri, 13 Oct 2023 03:53:37 -0400
+	id 1qrCyT-0003fp-ML; Fri, 13 Oct 2023 03:52:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCyE-0002JA-2H
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:31 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1qrCxX-0007LJ-5Q
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:47 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxq-0005LY-P8
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:29 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-405361bb94eso21943205e9.0
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:52:06 -0700 (PDT)
+ id 1qrCxK-00058U-QE
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:46 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-32d80ae19f8so1478869f8f.2
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:51:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183525; x=1697788325; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183492; x=1697788292; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EXMFvHmrFfRKphR3OqwZTybrMB4noBqhKHecXvyL6KU=;
- b=WA0sAO+frH5LXy6O7+KpEgHxGp71ZX4mAFTnDoRZSjAjff1t4XFlOuXF2MROlWFS3H
- VRVWlQT8bvnzRoY/t41zGXK7d0OxihJ1wwA3N30LsozPz7NEoGC0YhhPbJB9sQcV+q3t
- sFmlSeH/kH6G5k1c7gFidEmhAm5SvY5z/xYAEd0KorrcVY4go7PUE2L+xIqRxoenpS93
- GECPVJmHLWmOMfp4n3GloBhyllI7IBicCd/o3bzi9rxwWCUwycK1yeXSGHn67vc/iaFl
- TgAwLgQaFp0qPpSNupRU1IVR09NWIEehkw2rdWsB0HR3iLavdoGXvpVYrJjzNv64qGpp
- 3lTg==
+ bh=XyvoLQsYBwCacSjXMUeo1JDpYe89rtdX65GHrpNFkEk=;
+ b=w4bv00WcV/vKtkCuEHhNiPEkWvQtiRMezLkKwYWO3HAGT2xdnMNlkm1IaOFmSNGKXl
+ MOS+eFLbt8rd6fwMzpo9vDGZmlnFVUp6pMWJRBEp7BPJxiKYthP85maEU9wOygoCcCsK
+ +1Gd1FQwpDMdsnsbJy6IWws/zMwCJNASUXDaNwyZ44AGVVepIreXWcIDuBxyreob740N
+ MYKRcey8iJZfayQ5ptHQ+oKxoU5PIBFiB5W871t/ngxdQeERSggNbShIxZtlDvlEpFYM
+ cntKQ7Zmje+s+exgsyhr1qxwtZnMXtt4XmLwvQarnlO01GD+6ngNSJP8XwaVm1vVMIsF
+ VOLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183525; x=1697788325;
+ d=1e100.net; s=20230601; t=1697183492; x=1697788292;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=EXMFvHmrFfRKphR3OqwZTybrMB4noBqhKHecXvyL6KU=;
- b=TMp88LEbntS13pfEQ5tc2T2Ujt6LvTXFmQ/wt0mNB7MtqcS6tJs2T3HncNI8UpD96a
- +/NhV0iDE1SFHVBcpAwWMNaSPhr95ZiGDVH0k/Be2mQ5vSv7cmuS2oYHlTorHEgBDxKF
- n6DfYR7jZXaexnd2azsJAbjAGr9DqPbm0nc7Uu9ljy/9wLDIltHtA+w4I5GxLMeubKLW
- PVTRsTis4FuVq6zLniuVc1qcFFMQPQl5kIC/+36eDW4XXzWdsCTVK34HwS7KaFAvfEF0
- YuxnLYRccmE4ywhUWR057JGCPcVpTj0I5ugPH0bslN0GtuVZm1xxz8mPgupvL5p98hEB
- g1BA==
-X-Gm-Message-State: AOJu0Yxq6XxUkxqosLlK/M53ZdKqREMvpGx1nGCasEdOXo6NF9up9ume
- ITe22dB2nLvcu755g9dHPf6gVh0UUyDxRKPfNyQ=
-X-Received: by 2002:a05:600c:2981:b0:403:8fb9:8d69 with SMTP id
- r1-20020a05600c298100b004038fb98d69mr24001352wmd.25.1697183525026; 
- Fri, 13 Oct 2023 00:52:05 -0700 (PDT)
+ bh=XyvoLQsYBwCacSjXMUeo1JDpYe89rtdX65GHrpNFkEk=;
+ b=s509/KGMuUWsloNgQ7kCJl7LsvZJ/+BrDbOuxBYLNXZlQk432MTBYbgB5NEmAtJ3Ek
+ /ts4xQk8V+hYpQYdJn3w6X6xb8kKOr3FIq6FouSioWzX34IqxQXGhy4r5XvZah4GF7Nn
+ nWi/nYKXIr+wUj6YIDyEep7otN6aiFbryVbWy8MnciBOcDlFZNwdzuasxdEydAIWvUI/
+ jOr1TbTS5SWEBaeiHfW/qGmsM1SsdUKonyxH6DMTKHc4KgKJRfenn1K7gd0ugSwQOSJA
+ 2aG75LIvEss25dlY3UNKqxyzkktaEE0foBmgOvj5X3z3yJd2tpNG+qv8f/5pS83fbXJI
+ ly3w==
+X-Gm-Message-State: AOJu0YxVPey7Rqa8eUS8D4H6opZ0+1EfFnNUcUKXwN0Ho95GPHwtEGVg
+ 1jFloHditef4TNTQ5+VPmmv6QwJL5I2gAD/vke8=
+X-Received: by 2002:a5d:4443:0:b0:323:36f1:c26b with SMTP id
+ x3-20020a5d4443000000b0032336f1c26bmr21907035wrr.6.1697183492020; 
+ Fri, 13 Oct 2023 00:51:32 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.52.03
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:52:04 -0700 (PDT)
+ Fri, 13 Oct 2023 00:51:31 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [RFC PATCH 55/75] hw/input: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:48:18 +0300
-Message-Id: <00d9ffd5b3c5a85c4f719fdd3573a0f5d7e53904.1697034504.git.manos.pitsidianakis@linaro.org>
+ Yuval Shaia <yuval.shaia.ml@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: [RFC PATCH 46/75] contrib/rdmacm-mux: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:59 +0300
+Message-Id: <a45dd47fa12e2e8fe817b1816dfbbecd4f4e8065.1697034504.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,263 +128,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1dPecNzS04nZ
+X-TUID: gJyTbKKaJTCd
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/input/hid.c     | 3 ++-
- hw/input/tsc2005.c | 4 ++--
- hw/input/tsc210x.c | 2 +-
- 3 files changed, 5 insertions(+), 4 deletions(-)
+ contrib/rdmacm-mux/main.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/input/hid.c b/hw/input/hid.c
-index a9c7dd1ce1..15fffc5dfb 100644
---- a/hw/input/hid.c
-+++ b/hw/input/hid.c
-@@ -250,88 +250,89 @@ static void hid_keyboard_event(DeviceState *dev, QemuConsole *src,
- static void hid_keyboard_process_keycode(HIDState *hs)
+diff --git a/contrib/rdmacm-mux/main.c b/contrib/rdmacm-mux/main.c
+index 771ca01e03..dda6917d58 100644
+--- a/contrib/rdmacm-mux/main.c
++++ b/contrib/rdmacm-mux/main.c
+@@ -303,72 +303,72 @@ static void hash_tbl_remove_fd_ifid_pair(int fd)
+ static int get_fd(const char *mad, int umad_len, int *fd, __be64 *gid_ifid)
  {
-     uint8_t hid_code, index, key;
-     int i, keycode, slot;
+     struct umad_hdr *hdr = (struct umad_hdr *)mad;
+     char *data = (char *)hdr + sizeof(*hdr);
+     int32_t comm_id = 0;
+     uint16_t attr_id = be16toh(hdr->attr_id);
+     int rc = 0;
  
-     if (hs->n == 0) {
-         return;
+     if (umad_len <= sizeof(*hdr)) {
+         rc = -EINVAL;
+         syslog(LOG_DEBUG, "Ignoring MAD packets with header only\n");
+         goto out;
      }
-     slot = hs->head & QUEUE_MASK; QUEUE_INCR(hs->head); hs->n--;
-     keycode = hs->kbd.keycodes[slot];
  
-     if (!hs->n) {
-         trace_hid_kbd_queue_empty();
-     }
- 
-     key = keycode & 0x7f;
-     index = key | ((hs->kbd.modifiers & (1 << 8)) >> 1);
-     hid_code = hid_usage_keys[index];
-     hs->kbd.modifiers &= ~(1 << 8);
- 
-     switch (hid_code) {
-     case 0x00:
-         return;
- 
-     case 0xe0:
-         assert(key == 0x1d);
-         if (hs->kbd.modifiers & (1 << 9)) {
-             /* The hid_codes for the 0xe1/0x1d scancode sequence are 0xe9/0xe0.
-              * Here we're processing the second hid_code.  By dropping bit 9
-              * and setting bit 8, the scancode after 0x1d will access the
-              * second half of the table.
-              */
-             hs->kbd.modifiers ^= (1 << 8) | (1 << 9);
-             return;
+     switch (attr_id) {
+     case UMAD_CM_ATTR_REQ:
+         if (unlikely(umad_len < sizeof(*hdr) + CM_REQ_DGID_POS +
+             sizeof(*gid_ifid))) {
+             rc = -EINVAL;
+             syslog(LOG_WARNING,
+                    "Invalid MAD packet size (%d) for attr_id 0x%x\n", umad_len,
+                     attr_id);
+             goto out;
          }
-         /* fall through to process Ctrl_L */
-+        fallthrough;
-     case 0xe1 ... 0xe7:
-         /* Ctrl_L/Ctrl_R, Shift_L/Shift_R, Alt_L/Alt_R, Win_L/Win_R.
-          * Handle releases here, or fall through to process presses.
-          */
-         if (keycode & (1 << 7)) {
-             hs->kbd.modifiers &= ~(1 << (hid_code & 0x0f));
-             return;
-         }
--        /* fall through */
-+        fallthrough;
-     case 0xe8 ... 0xe9:
-         /* USB modifiers are just 1 byte long.  Bits 8 and 9 of
-          * hs->kbd.modifiers implement a state machine that detects the
-          * 0xe0 and 0xe1/0x1d sequences.  These bits do not follow the
-          * usual rules where bit 7 marks released keys; they are cleared
-          * elsewhere in the function as the state machine dictates.
-          */
-         hs->kbd.modifiers |= 1 << (hid_code & 0x0f);
-         return;
- 
-     case 0xea ... 0xef:
-         abort();
- 
-     default:
+         memcpy(gid_ifid, data + CM_REQ_DGID_POS, sizeof(*gid_ifid));
+         rc = hash_tbl_search_fd_by_ifid(fd, gid_ifid);
          break;
-     }
  
-     if (keycode & (1 << 7)) {
-         for (i = hs->kbd.keys - 1; i >= 0; i--) {
-             if (hs->kbd.key[i] == hid_code) {
-                 hs->kbd.key[i] = hs->kbd.key[-- hs->kbd.keys];
-                 hs->kbd.key[hs->kbd.keys] = 0x00;
-                 break;
-             }
+     case UMAD_CM_ATTR_SIDR_REQ:
+         if (unlikely(umad_len < sizeof(*hdr) + CM_SIDR_REQ_DGID_POS +
+             sizeof(*gid_ifid))) {
+             rc = -EINVAL;
+             syslog(LOG_WARNING,
+                    "Invalid MAD packet size (%d) for attr_id 0x%x\n", umad_len,
+                     attr_id);
+             goto out;
          }
-         if (i < 0) {
-             return;
-         }
-     } else {
-         for (i = hs->kbd.keys - 1; i >= 0; i--) {
-             if (hs->kbd.key[i] == hid_code) {
-                 break;
-             }
-         }
-         if (i < 0) {
-             if (hs->kbd.keys < sizeof(hs->kbd.key)) {
-                 hs->kbd.key[hs->kbd.keys++] = hid_code;
-             }
-         } else {
-             return;
-         }
-     }
- }
-diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
-index db2b80e35f..4f3f1d9d12 100644
---- a/hw/input/tsc2005.c
-+++ b/hw/input/tsc2005.c
-@@ -234,70 +234,70 @@ static void tsc2005_write(TSC2005State *s, int reg, uint16_t data)
- /* This handles most of the chip's logic.  */
- static void tsc2005_pin_update(TSC2005State *s)
- {
-     int64_t expires;
-     bool pin_state;
- 
-     switch (s->pin_func) {
-     case 0:
-         pin_state = !s->pressure && !!s->dav;
+         memcpy(gid_ifid, data + CM_SIDR_REQ_DGID_POS, sizeof(*gid_ifid));
+         rc = hash_tbl_search_fd_by_ifid(fd, gid_ifid);
          break;
-     case 1:
-     case 3:
-     default:
-         pin_state = !s->dav;
-         break;
-     case 2:
-         pin_state = !s->pressure;
-     }
  
-     if (pin_state != s->irq) {
-         s->irq = pin_state;
-         qemu_set_irq(s->pint, s->irq);
-     }
- 
-     switch (s->nextfunction) {
-     case TSC_MODE_XYZ_SCAN:
-     case TSC_MODE_XY_SCAN:
-         if (!s->host_mode && s->dav)
-             s->enabled = false;
-         if (!s->pressure)
-             return;
+     case UMAD_CM_ATTR_REP:
 -        /* Fall through */
 +        fallthrough;
-     case TSC_MODE_AUX_SCAN:
-         break;
- 
-     case TSC_MODE_X:
-     case TSC_MODE_Y:
-     case TSC_MODE_Z:
-         if (!s->pressure)
-             return;
+     case UMAD_CM_ATTR_REJ:
 -        /* Fall through */
 +        fallthrough;
-     case TSC_MODE_AUX:
-     case TSC_MODE_TEMP1:
-     case TSC_MODE_TEMP2:
-     case TSC_MODE_X_TEST:
-     case TSC_MODE_Y_TEST:
-     case TSC_MODE_TS_TEST:
-         if (s->dav)
-             s->enabled = false;
-         break;
- 
-     case TSC_MODE_RESERVED:
-     case TSC_MODE_XX_DRV:
-     case TSC_MODE_YY_DRV:
-     case TSC_MODE_YX_DRV:
-     default:
-         return;
-     }
- 
-     if (!s->enabled || s->busy)
-         return;
- 
-     s->busy = true;
-     s->precision = s->nextprecision;
-     s->function = s->nextfunction;
-     s->pdst = !s->pnd0;	/* Synchronised on internal clock */
-     expires = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-         (NANOSECONDS_PER_SECOND >> 7);
-     timer_mod(s->timer, expires);
- }
-diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
-index 950506fb38..9ae426e1a6 100644
---- a/hw/input/tsc210x.c
-+++ b/hw/input/tsc210x.c
-@@ -774,70 +774,70 @@ static void tsc2102_audio_register_write(
- /* This handles most of the chip logic.  */
- static void tsc210x_pin_update(TSC210xState *s)
- {
-     int64_t expires;
-     bool pin_state;
- 
-     switch (s->pin_func) {
-     case 0:
-         pin_state = s->pressure;
-         break;
-     case 1:
-         pin_state = !!s->dav;
-         break;
-     case 2:
-     default:
-         pin_state = s->pressure && !s->dav;
-     }
- 
-     if (!s->enabled)
-         pin_state = false;
- 
-     if (pin_state != s->irq) {
-         s->irq = pin_state;
-         qemu_set_irq(s->pint, !s->irq);
-     }
- 
-     switch (s->nextfunction) {
-     case TSC_MODE_XY_SCAN:
-     case TSC_MODE_XYZ_SCAN:
-         if (!s->pressure)
-             return;
-         break;
- 
-     case TSC_MODE_X:
-     case TSC_MODE_Y:
-     case TSC_MODE_Z:
-         if (!s->pressure)
-             return;
+     case UMAD_CM_ATTR_DREQ:
 -        /* Fall through */
 +        fallthrough;
-     case TSC_MODE_BAT1:
-     case TSC_MODE_BAT2:
-     case TSC_MODE_AUX:
-     case TSC_MODE_TEMP1:
-     case TSC_MODE_TEMP2:
-         if (s->dav)
-             s->enabled = false;
+     case UMAD_CM_ATTR_DREP:
+-        /* Fall through */
++        fallthrough;
+     case UMAD_CM_ATTR_RTU:
+         data += sizeof(comm_id);
+-        /* Fall through */
++        fallthrough;
+     case UMAD_CM_ATTR_SIDR_REP:
+         if (unlikely(umad_len < sizeof(*hdr) + sizeof(comm_id))) {
+             rc = -EINVAL;
+             syslog(LOG_WARNING,
+                    "Invalid MAD packet size (%d) for attr_id 0x%x\n", umad_len,
+                    attr_id);
+             goto out;
+         }
+         memcpy(&comm_id, data, sizeof(comm_id));
+         if (comm_id) {
+             rc = hash_tbl_search_fd_by_comm_id(comm_id, fd, gid_ifid);
+         }
          break;
  
-     case TSC_MODE_AUX_SCAN:
-     case TSC_MODE_PORT_SCAN:
-         break;
- 
-     case TSC_MODE_NO_SCAN:
-     case TSC_MODE_XX_DRV:
-     case TSC_MODE_YY_DRV:
-     case TSC_MODE_YX_DRV:
      default:
-         return;
+         rc = -EINVAL;
+         syslog(LOG_WARNING, "Unsupported attr_id 0x%x\n", attr_id);
      }
  
-     if (!s->enabled || s->busy || s->dav)
-         return;
- 
-     s->busy = true;
-     s->precision = s->nextprecision;
-     s->function = s->nextfunction;
-     expires = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-         (NANOSECONDS_PER_SECOND >> 10);
-     timer_mod(s->timer, expires);
- }
+     syslog(LOG_DEBUG, "mad_to_vm: %d 0x%x 0x%x\n", *fd, attr_id, comm_id);
 -- 
 2.39.2
 

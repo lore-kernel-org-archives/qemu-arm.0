@@ -1,121 +1,133 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1335508ejc;
-        Fri, 13 Oct 2023 01:02:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFGoOkUeXC2/5TAwh4fwH0WteKs0e3k+CFjsjcPEG+f1gsJZXKVNV17tvGBLPhJLh8DSLlx
-X-Received: by 2002:a05:620a:28c5:b0:76e:f804:1532 with SMTP id l5-20020a05620a28c500b0076ef8041532mr31971019qkp.33.1697184149475;
-        Fri, 13 Oct 2023 01:02:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697184149; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1335645ejc;
+        Fri, 13 Oct 2023 01:02:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHIf9S00MjGTU9H9TsxU0aVG9CsLxZhVG21irnX9Ah62GCmBGxd51/eBs43pl6tZvPs6/Jn
+X-Received: by 2002:ac8:7c53:0:b0:403:fee8:7fdc with SMTP id o19-20020ac87c53000000b00403fee87fdcmr33582674qtv.39.1697184162439;
+        Fri, 13 Oct 2023 01:02:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697184162; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ea8H5cMChC68Sp1rzTvIzhkDKmB0WQD0sudEPpopVkTr6iatEQs7U+otYxz+Gyo2md
-         4Cf13l15CjTvrfMrAa5Y4E4BGipWBoLSsZrzAazkmL9SIlNUYfjGxwWKMGBpbBaklA6Q
-         WeYLAy40kRcOM4xGW+wm7E9qGiKyFmB6g7cD9SfBWclMgGNgQVqBSlJwErFjO7lYEzul
-         FngSU/1a+LAGZNJ99QMv3jpoOx8bxTeAXG4rvX8AUhNLVpEeLo79JqIe3WPn1cbpqFXk
-         dvxxYAT1e1jq0oObJCPcIPsm26eNGgEx4uVM0zMyUjYiY46Ny9fZSkOnQxnhk152nFxl
-         TrrQ==
+        b=U4wU/nAtGgx5eOp4vkNaKCsATJvcJjR7iikvUGY+CnokiaeGwxf7599riBmhysyCcv
+         H/q3CG+yKGAuEnozL4H3cdlrLOiT2gEByXSqpGaJ7PaUE/OlL+ZYoQw35gRhP7Xuhteu
+         cOs2+ACiw3f3ay4HTFUeLqPS570oFNUapPNp3XWjxnxTcQGtE0jlOFZKeVXQnfSG5txt
+         tKs2w8s+vRnuBTOfLebM90M/Acg8iyYqdBpht0VopYu9ZdwlGFFkfhbbq2EdEr8crYP2
+         Eoau4rUf7afadIoyhygPDy+ixBh8pMO4bZsmLNDTzvXOA9QT32daZs0QEZV4JLd0SuX3
+         GOwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=CSixY69xmL0JnyirRdBeKYpA0hdWse2178EiFFrGZG8=;
-        fh=boFaC8m2w9Gjj6IG8vRSxakWxR0AvX1APGEiLozSgqw=;
-        b=g2E5fG5ulUfihTWnnWckhRu9MoMXGaa4NiudN47EmBth4+tR9JMXJyKBkDIRZs8SiA
-         7pIaWksHefgq+5dY9UjOiB9txrHsfQC5v4t6ulbSaCo+we7ibnOpZ8XrPgZgjlBfRntB
-         4kCugfN0ZDiMmvf3nWl3Sm858spqbF/48zDTOnXk1cPobAoWNBu6jJT/C5cFYerhNRZa
-         j4ptd93bIo+XWCeMsUTiWX9q/Z/xjHoNrXJfrucXpSa0PKzS6OpYB0ER4z2QBZwePe1P
-         JvRJmXVCD0rlRf0tPZZ7xcDOlBXCnpq0YCXmzbA+YnnkmMV1MCqh9GS/fjQfxjNFqJLp
-         hPNg==
+         :content-language:in-reply-to:organization:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=cZ81yx83Esuspo/MllHZsYgpqECWGlfFwvTqA7xjPbY=;
+        fh=0iDVQQaw7yScE9t7HisFkiQnT4/93Tm42b3vnuvZLzA=;
+        b=ufu781XFH1xKQaTQnKKCQCAkrYc7o/10OjaE1EzYwesI9uHhuD2pW/iOwk2IgcoqFG
+         wrNq1mqbb/FQRJcBPzGMi/KN2JJkCAR3J7t0OEcQ9UfqRAZ5LFzpRdsfIEP9inSiH3rG
+         Q0PjjcOw8ihfKvAEuBDtLbexdaqeh5/UveTdSZ8gscw+7yljuf6mUGHnNyd5TpRowy/y
+         PDSO2Dk3/VOr9OO0lbUNTL8KmMZDgBz6ocekS1bvtscD2pCUOblrmA2uAecdKM1dcd+F
+         5B8FN14PbDadd4+GqBBLR8Fv1VZr8tNeVqfnvaP5n3YJtxypqO+yncgasNTvu04ilR3k
+         AEMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nkpafIUp;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fLBFQBHA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m15-20020ae9e70f000000b0077575bac0a5si812682qka.98.2023.10.13.01.02.29
+        by mx.google.com with ESMTPS id u19-20020a05622a011300b0041816d65a98si861346qtw.421.2023.10.13.01.02.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:02:29 -0700 (PDT)
+        Fri, 13 Oct 2023 01:02:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nkpafIUp;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fLBFQBHA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrD3z-0008T1-5w; Fri, 13 Oct 2023 03:58:27 -0400
+	id 1qrD3U-0005O6-Dm; Fri, 13 Oct 2023 03:57:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrD3x-0008Iz-AB
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:58:25 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrD3r-0006mO-OX
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:58:25 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-406609df1a6so19253885e9.3
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:58:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183898; x=1697788698; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CSixY69xmL0JnyirRdBeKYpA0hdWse2178EiFFrGZG8=;
- b=nkpafIUp8JzyDHzZkpXGSouRwx6aWKTJrI7pnvyKq9IKTIpwfRD/cdjlZDZDiyvO5C
- tRSssuIgquFvVQBYHecdYTjUWxGl1KxLFMdTEo9t7ojgcWb0RDMuTCCiuG6i0Htj/rUr
- NuWDYMt//MyzGqKzA3Q+MpnKHvwRmeplI73l5ZWaNo47KQp0WSRDaiZeWdz9PJWkA+j0
- OnNwy/iofsCzp7cAAdwupGCgKbQyO0N64GxOPp/vaAIDq2vf1XzMjL5lI8imYhBxTmP/
- qSR28cxjipN6Pzs7vYyTCoGAMgtQZsApNmJABC+JQ1QniPppwlZeXvt5S216tZC9/2bw
- FZIQ==
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qrD39-0004rx-ES
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:57:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qrD33-0006dB-S9
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:57:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697183847;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cZ81yx83Esuspo/MllHZsYgpqECWGlfFwvTqA7xjPbY=;
+ b=fLBFQBHAuKr2HrBuwa9NP7rivAeKrAbITNW00z6y8F8SYHP3ZyAP45+qYkqUKGGbJVsV/M
+ KwJLJS0FQ0ZDpRPzHGJr3ztN7TMWNkTV0h9kLEojaSxC4+eQ2eoGZxC35gddOUK7KenxK7
+ HhkB/TkLax7CkYwpKquMRnWc+AwgMYk=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-609-hEHkE8VYOMiF9fMQ6K1PHQ-1; Fri, 13 Oct 2023 03:57:26 -0400
+X-MC-Unique: hEHkE8VYOMiF9fMQ6K1PHQ-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-327ab41de6cso1268425f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:57:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183898; x=1697788698;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CSixY69xmL0JnyirRdBeKYpA0hdWse2178EiFFrGZG8=;
- b=YR9wGPD8XSUflfdDpyK/RtZ0TlU5uk8tHzArgABz0jvHPOVZd0KUW9rYZPa4nD1/cJ
- nRqQ0FqrxX12gqEF4uJxPG6eJDzuoFL1s9N8jSiw2WJMqsBVDtlydrxipAMRqqBCS5R0
- ko7wqs+ZKNNm75IIg0TL1eNj0KwO4vLjsa2jRF9lpBh1/6ayDQW/EFW7dWeq2Zli9nRc
- jftBd09MX3NGOLy/wq1DVNKcfw0J21Ibo2u29xHTpCj4AL/nHd7P/KPDIuJsLMTcV/+u
- L8UuLf+h8Se75XO8yuTwrXV4v2sAOrtOtEvK56d0F780l/zKMG0ufuJFFtM3I3yS7fvh
- Bd4Q==
-X-Gm-Message-State: AOJu0YyqZjxh+SHzGhp2uF2v/zpmiMQhv9eUeVWZWV29SJjotje2ao2R
- S7hOkXbbrlN5UIfGdTZyMtpolA==
-X-Received: by 2002:a05:600c:252:b0:402:f536:2d3e with SMTP id
- 18-20020a05600c025200b00402f5362d3emr22454352wmj.14.1697183898335; 
- Fri, 13 Oct 2023 00:58:18 -0700 (PDT)
-Received: from localhost.localdomain (adsl-26.37.6.0.tellas.gr. [37.6.0.26])
+ d=1e100.net; s=20230601; t=1697183845; x=1697788645;
+ h=content-transfer-encoding:in-reply-to:organization:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=cZ81yx83Esuspo/MllHZsYgpqECWGlfFwvTqA7xjPbY=;
+ b=RqMl2WL0M1w/PiUJbaZL/jx/+zrLdMjxm4m2KDnCaBW2xPJYYpWRjrGn/GXpnvmRrG
+ TaYluUJchJmLBl6f1AkpQbW67lgsUsR2PU4twZLPohvHNGqjSGasBaoBCPmpVz9kbupb
+ KWw9yXu5GcW84u3wSr3BsJhkanFlPlsRVpfFN7Tanp/CsYv6e0xB611fDMKBqoivz4JC
+ VWLs3Yi182A7g7OlidwwlNPuE2vyVoVTe5h7rvbLS+xcc35CGD6GpbrJJKXNX3IP/Ne6
+ ODIHVzi+P9ADAiiz2uymiLO9r0U6iGr8sVYekPa3OlNGUsoAYlIxtpPSiF5vWl3gTkKM
+ dZ7Q==
+X-Gm-Message-State: AOJu0YwkPIjAvAG/WKuRiCHAkHOYihU35j/zCgQJi0EeovZOmcodEq2N
+ 1bWEHjxzhRGysrYZ9X5DZE7QJM697+RrnLHmunnGMQ/2uA32a8CvXhdy7C/4Z5MzOPZNt6SJ54T
+ Vfp7/V+5CKe66
+X-Received: by 2002:a5d:470a:0:b0:321:4ab6:9b28 with SMTP id
+ y10-20020a5d470a000000b003214ab69b28mr22314333wrq.16.1697183844996; 
+ Fri, 13 Oct 2023 00:57:24 -0700 (PDT)
+X-Received: by 2002:a5d:470a:0:b0:321:4ab6:9b28 with SMTP id
+ y10-20020a5d470a000000b003214ab69b28mr22314317wrq.16.1697183844596; 
+ Fri, 13 Oct 2023 00:57:24 -0700 (PDT)
+Received: from [192.168.3.108] (p5b0c6028.dip0.t-ipconnect.de. [91.12.96.40])
  by smtp.gmail.com with ESMTPSA id
- a10-20020a05600c224a00b003fe23b10fdfsm1798183wmm.36.2023.10.13.00.58.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:58:17 -0700 (PDT)
-From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>,
- qemu-arm@nongnu.org (open list:ARM cores)
-Subject: [RFC PATCH v2 11/78] hw/timer: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:56:38 +0300
-Message-Id: <0aa9568d743e6e1cf5763fe5557171fff773d50d.1697183699.git.manos.pitsidianakis@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1697183699.git.manos.pitsidianakis@linaro.org>
-References: <cover.1697183699.git.manos.pitsidianakis@linaro.org>
+ t9-20020a05600001c900b0032179c4a46dsm20182313wrx.100.2023.10.13.00.57.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 13 Oct 2023 00:57:24 -0700 (PDT)
+Message-ID: <2c759236-876e-9169-624e-267d23da1405@redhat.com>
+Date: Fri, 13 Oct 2023 09:57:23 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [RFC PATCH 26/78] target/s390x: add fallthrough pseudo-keyword
+To: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>
+References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
+ <18070bd006c48fe9966502ef6877d12a489135f1.1697183082.git.manos.pitsidianakis@linaro.org>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+In-Reply-To: <18070bd006c48fe9966502ef6877d12a489135f1.1697183082.git.manos.pitsidianakis@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -49
+X-Spam_score: -5.0
+X-Spam_bar: -----
+X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, NICE_REPLY_A=-3.339, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,677 +142,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DAhYgGQ13JPz
+X-TUID: uLv02xLBOsD/
 
-In preparation of raising -Wimplicit-fallthrough to 5, replace all
-fall-through comments with the fallthrough attribute pseudo-keyword.
+On 13.10.23 09:47, Emmanouil Pitsidianakis wrote:
+> In preparation of raising -Wimplicit-fallthrough to 5, replace all
+> fall-through comments with the fallthrough attribute pseudo-keyword.
+> 
+> Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
 
-Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
----
- hw/timer/a9gtimer.c     |  8 ++--
- hw/timer/aspeed_timer.c |  1 +
- hw/timer/pxa2xx_timer.c | 94 ++++++++++++++++++++---------------------
- hw/timer/renesas_tmr.c  |  2 +-
- hw/timer/sh_timer.c     |  8 ++--
- 5 files changed, 57 insertions(+), 56 deletions(-)
+Reviewed-by: David Hildenbrand <david@redhat.com>
 
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 5e959b6d09..b83d51da96 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -135,40 +135,40 @@ static void a9_gtimer_update_no_sync(void *opaque)
- static uint64_t a9_gtimer_read(void *opaque, hwaddr addr, unsigned size)
- {
-     A9GTimerPerCPU *gtb = (A9GTimerPerCPU *)opaque;
-     A9GTimerState *s = gtb->parent;
-     A9GTimerUpdate update;
-     uint64_t ret = 0;
-     int shift = 0;
- 
-     switch (addr) {
-     case R_COUNTER_HI:
-         shift = 32;
--        /* fallthrough */
-+        fallthrough;
-     case R_COUNTER_LO:
-         update = a9_gtimer_get_update(s);
-         ret = extract64(update.new, shift, 32);
-         break;
-     case R_CONTROL:
-         ret = s->control | gtb->control;
-         break;
-     case R_INTERRUPT_STATUS:
-         ret = gtb->status;
-         break;
-     case R_COMPARATOR_HI:
-         shift = 32;
--        /* fallthrough */
-+        fallthrough;
-     case R_COMPARATOR_LO:
-         ret = extract64(gtb->compare, shift, 32);
-         break;
-     case R_AUTO_INCREMENT:
-         ret =  gtb->inc;
-         break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "bad a9gtimer register: %x\n",
-                       (unsigned)addr);
-         return 0;
-     }
- 
-     DB_PRINT("addr:%#x data:%#08" PRIx64 "\n", (unsigned)addr, ret);
-     return ret;
- }
-@@ -176,54 +176,54 @@ static uint64_t a9_gtimer_read(void *opaque, hwaddr addr, unsigned size)
- static void a9_gtimer_write(void *opaque, hwaddr addr, uint64_t value,
-                             unsigned size)
- {
-     A9GTimerPerCPU *gtb = (A9GTimerPerCPU *)opaque;
-     A9GTimerState *s = gtb->parent;
-     int shift = 0;
- 
-     DB_PRINT("addr:%#x data:%#08" PRIx64 "\n", (unsigned)addr, value);
- 
-     switch (addr) {
-     case R_COUNTER_HI:
-         shift = 32;
--        /* fallthrough */
-+        fallthrough;
-     case R_COUNTER_LO:
-         /*
-          * Keep it simple - ARM docco explicitly says to disable timer before
-          * modding it, so don't bother trying to do all the difficult on the fly
-          * timer modifications - (if they even work in real hardware??).
-          */
-         if (s->control & R_CONTROL_TIMER_ENABLE) {
-             qemu_log_mask(LOG_GUEST_ERROR, "Cannot mod running ARM gtimer\n");
-             return;
-         }
-         s->counter = deposit64(s->counter, shift, 32, value);
-         return;
-     case R_CONTROL:
-         a9_gtimer_update(s, (value ^ s->control) & R_CONTROL_NEEDS_SYNC);
-         gtb->control = value & R_CONTROL_BANKED;
-         s->control = value & ~R_CONTROL_BANKED;
-         break;
-     case R_INTERRUPT_STATUS:
-         a9_gtimer_update(s, false);
-         gtb->status &= ~value;
-         break;
-     case R_COMPARATOR_HI:
-         shift = 32;
--        /* fallthrough */
-+        fallthrough;
-     case R_COMPARATOR_LO:
-         a9_gtimer_update(s, false);
-         gtb->compare = deposit64(gtb->compare, shift, 32, value);
-         break;
-     case R_AUTO_INCREMENT:
-         gtb->inc = value;
-         return;
-     default:
-         return;
-     }
- 
-     a9_gtimer_update(s, false);
- }
- 
- /* Wrapper functions to implement the "read global timer for
-  * the current CPU" memory regions.
-  */
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 72161f07bb..b343b7ab2c 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -266,53 +266,54 @@ static uint64_t aspeed_timer_read(void *opaque, hwaddr offset, unsigned size)
- static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int reg,
-                                    uint32_t value)
- {
-     AspeedTimer *t;
-     uint32_t old_reload;
- 
-     trace_aspeed_timer_set_value(timer, reg, value);
-     t = &s->timers[timer];
-     switch (reg) {
-     case TIMER_REG_RELOAD:
-         old_reload = t->reload;
-         t->reload = calculate_min_ticks(t, value);
- 
-         /* If the reload value was not previously set, or zero, and
-          * the current value is valid, try to start the timer if it is
-          * enabled.
-          */
-         if (old_reload || !t->reload) {
-             break;
-         }
-         /* fall through to re-enable */
-+        fallthrough;
-     case TIMER_REG_STATUS:
-         if (timer_enabled(t)) {
-             uint64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-             int64_t delta = (int64_t) value - (int64_t) calculate_ticks(t, now);
-             uint32_t rate = calculate_rate(t);
- 
-             if (delta >= 0) {
-                 t->start += muldiv64(delta, NANOSECONDS_PER_SECOND, rate);
-             } else {
-                 t->start -= muldiv64(-delta, NANOSECONDS_PER_SECOND, rate);
-             }
-             aspeed_timer_mod(t);
-         }
-         break;
-     case TIMER_REG_MATCH_FIRST:
-     case TIMER_REG_MATCH_SECOND:
-         t->match[reg - 2] = value;
-         if (timer_enabled(t)) {
-             aspeed_timer_mod(t);
-         }
-         break;
-     default:
-         qemu_log_mask(LOG_UNIMP, "%s: Programming error: unexpected reg: %d\n",
-                       __func__, reg);
-         break;
-     }
- }
- 
- /* Control register operations are broken out into helpers that can be
-  * explicitly called on aspeed_timer_reset(), but also from
-  * aspeed_timer_ctrl_op().
-  */
-diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-index 2ae5ae3212..11863e1a42 100644
---- a/hw/timer/pxa2xx_timer.c
-+++ b/hw/timer/pxa2xx_timer.c
-@@ -162,109 +162,109 @@ static void pxa2xx_timer_update4(void *opaque, uint64_t now_qemu, int n)
- static uint64_t pxa2xx_timer_read(void *opaque, hwaddr offset,
-                                   unsigned size)
- {
-     PXA2xxTimerInfo *s = (PXA2xxTimerInfo *) opaque;
-     int tm = 0;
- 
-     switch (offset) {
-     case OSMR3:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR2:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR1:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR0:
-         return s->timer[tm].value;
-     case OSMR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         return s->tm4[tm].tm.value;
-     case OSCR:
-         return s->clock + muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) -
-                         s->lastload, s->freq, NANOSECONDS_PER_SECOND);
-     case OSCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
- 
-         if ((tm == 9 - 4 || tm == 11 - 4) && (s->tm4[tm].control & (1 << 9))) {
-             if (s->tm4[tm - 1].freq)
-                 s->snapshot = s->tm4[tm - 1].clock + muldiv64(
-                                 qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) -
-                                 s->tm4[tm - 1].lastload,
-                                 s->tm4[tm - 1].freq, NANOSECONDS_PER_SECOND);
-             else
-                 s->snapshot = s->tm4[tm - 1].clock;
-         }
- 
-         if (!s->tm4[tm].freq)
-             return s->tm4[tm].clock;
-         return s->tm4[tm].clock +
-             muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) -
-                      s->tm4[tm].lastload, s->tm4[tm].freq,
-                      NANOSECONDS_PER_SECOND);
-     case OIER:
-         return s->irq_enabled;
-     case OSSR:	/* Status register */
-         return s->events;
-     case OWER:
-         return s->reset3;
-     case OMCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         return s->tm4[tm].control;
-     case OSNR:
-         return s->snapshot;
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "%s: unknown register 0x%02" HWADDR_PRIx "\n",
-                       __func__, offset);
-         break;
-     badreg:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: incorrect register 0x%02" HWADDR_PRIx "\n",
-                       __func__, offset);
-     }
- 
-     return 0;
- }
-@@ -272,128 +272,128 @@ static uint64_t pxa2xx_timer_read(void *opaque, hwaddr offset,
- static void pxa2xx_timer_write(void *opaque, hwaddr offset,
-                                uint64_t value, unsigned size)
- {
-     int i, tm = 0;
-     PXA2xxTimerInfo *s = (PXA2xxTimerInfo *) opaque;
- 
-     switch (offset) {
-     case OSMR3:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR2:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR1:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR0:
-         s->timer[tm].value = value;
-         pxa2xx_timer_update(s, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-         break;
-     case OSMR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSMR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         s->tm4[tm].tm.value = value;
-         pxa2xx_timer_update4(s, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), tm);
-         break;
-     case OSCR:
-         s->oldclock = s->clock;
-         s->lastload = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-         s->clock = value;
-         pxa2xx_timer_update(s, s->lastload);
-         break;
-     case OSCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR8:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OSCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         s->tm4[tm].oldclock = s->tm4[tm].clock;
-         s->tm4[tm].lastload = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-         s->tm4[tm].clock = value;
-         pxa2xx_timer_update4(s, s->tm4[tm].lastload, tm);
-         break;
-     case OIER:
-         s->irq_enabled = value & 0xfff;
-         break;
-     case OSSR:	/* Status register */
-         value &= s->events;
-         s->events &= ~value;
-         for (i = 0; i < 4; i ++, value >>= 1)
-             if (value & 1)
-                 qemu_irq_lower(s->timer[i].irq);
-         if (pxa2xx_timer_has_tm4(s) && !(s->events & 0xff0) && value)
-             qemu_irq_lower(s->irq4);
-         break;
-     case OWER:	/* XXX: Reset on OSMR3 match? */
-         s->reset3 = value;
-         break;
-     case OMCR7:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR6:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR5:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR4:
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         s->tm4[tm].control = value & 0x0ff;
-         /* XXX Stop if running (shouldn't happen) */
-         if ((value & (1 << 7)) || tm == 0)
-             s->tm4[tm].freq = pxa2xx_timer4_freq[value & 7];
-         else {
-             s->tm4[tm].freq = 0;
-             pxa2xx_timer_update4(s, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), tm);
-         }
-         break;
-     case OMCR11: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR10: tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR9:  tm ++;
--        /* fall through */
-+        fallthrough;
-     case OMCR8:  tm += 4;
-         if (!pxa2xx_timer_has_tm4(s))
-             goto badreg;
-         s->tm4[tm].control = value & 0x3ff;
-         /* XXX Stop if running (shouldn't happen) */
-         if ((value & (1 << 7)) || !(tm & 1))
-             s->tm4[tm].freq =
-                     pxa2xx_timer4_freq[(value & (1 << 8)) ?  0 : (value & 7)];
-         else {
-             s->tm4[tm].freq = 0;
-             pxa2xx_timer_update4(s, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), tm);
-         }
-         break;
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "%s: unknown register 0x%02" HWADDR_PRIx " "
-                       "(value 0x%08" PRIx64 ")\n",  __func__, offset, value);
-         break;
-     badreg:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: incorrect register 0x%02" HWADDR_PRIx " "
-                       "(value 0x%08" PRIx64 ")\n", __func__, offset, value);
-     }
- }
-diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
-index 43b31213bc..a32521e3c3 100644
---- a/hw/timer/renesas_tmr.c
-+++ b/hw/timer/renesas_tmr.c
-@@ -193,69 +193,69 @@ static uint8_t read_tccr(uint8_t r)
- static uint64_t tmr_read(void *opaque, hwaddr addr, unsigned size)
- {
-     RTMRState *tmr = opaque;
-     int ch = addr & 1;
-     uint64_t ret;
- 
-     if (size == 2 && (ch != 0 || addr == A_TCR || addr == A_TCSR)) {
-         qemu_log_mask(LOG_GUEST_ERROR, "renesas_tmr: Invalid read size 0x%"
-                                        HWADDR_PRIX "\n",
-                       addr);
-         return UINT64_MAX;
-     }
-     switch (addr & 0x0e) {
-     case A_TCR:
-         ret = 0;
-         ret = FIELD_DP8(ret, TCR, CCLR,
-                         FIELD_EX8(tmr->tcr[ch], TCR, CCLR));
-         ret = FIELD_DP8(ret, TCR, OVIE,
-                         FIELD_EX8(tmr->tcr[ch], TCR, OVIE));
-         ret = FIELD_DP8(ret, TCR, CMIEA,
-                         FIELD_EX8(tmr->tcr[ch], TCR, CMIEA));
-         ret = FIELD_DP8(ret, TCR, CMIEB,
-                         FIELD_EX8(tmr->tcr[ch], TCR, CMIEB));
-         return ret;
-     case A_TCSR:
-         ret = 0;
-         ret = FIELD_DP8(ret, TCSR, OSA,
-                         FIELD_EX8(tmr->tcsr[ch], TCSR, OSA));
-         ret = FIELD_DP8(ret, TCSR, OSB,
-                         FIELD_EX8(tmr->tcsr[ch], TCSR, OSB));
-         switch (ch) {
-         case 0:
-             ret = FIELD_DP8(ret, TCSR, ADTE,
-                             FIELD_EX8(tmr->tcsr[ch], TCSR, ADTE));
-             break;
-         case 1: /* CH1 ADTE unimplement always 1 */
-             ret = FIELD_DP8(ret, TCSR, ADTE, 1);
-             break;
-         }
-         return ret;
-     case A_TCORA:
-         if (size == 1) {
-             return tmr->tcora[ch];
-         } else if (ch == 0) {
-             return concat_reg(tmr->tcora);
-         }
--        /* fall through */
-+        fallthrough;
-     case A_TCORB:
-         if (size == 1) {
-             return tmr->tcorb[ch];
-         } else {
-             return concat_reg(tmr->tcorb);
-         }
-     case A_TCNT:
-         return read_tcnt(tmr, size, ch);
-     case A_TCCR:
-         if (size == 1) {
-             return read_tccr(tmr->tccr[ch]);
-         } else {
-             return read_tccr(tmr->tccr[0]) << 8 | read_tccr(tmr->tccr[1]);
-         }
-     default:
-         qemu_log_mask(LOG_UNIMP, "renesas_tmr: Register 0x%" HWADDR_PRIX
-                                  " not implemented\n",
-                       addr);
-         break;
-     }
-     return UINT64_MAX;
- }
-diff --git a/hw/timer/sh_timer.c b/hw/timer/sh_timer.c
-index 7788939766..6dbfc2595b 100644
---- a/hw/timer/sh_timer.c
-+++ b/hw/timer/sh_timer.c
-@@ -84,120 +84,120 @@ static uint32_t sh_timer_read(void *opaque, hwaddr offset)
- static void sh_timer_write(void *opaque, hwaddr offset, uint32_t value)
- {
-     SHTimerState *s = opaque;
-     int freq;
- 
-     switch (offset >> 2) {
-     case OFFSET_TCOR:
-         s->tcor = value;
-         ptimer_transaction_begin(s->timer);
-         ptimer_set_limit(s->timer, s->tcor, 0);
-         ptimer_transaction_commit(s->timer);
-         break;
-     case OFFSET_TCNT:
-         s->tcnt = value;
-         ptimer_transaction_begin(s->timer);
-         ptimer_set_count(s->timer, s->tcnt);
-         ptimer_transaction_commit(s->timer);
-         break;
-     case OFFSET_TCR:
-         ptimer_transaction_begin(s->timer);
-         if (s->enabled) {
-             /*
-              * Pause the timer if it is running. This may cause some inaccuracy
-              * due to rounding, but avoids a whole lot of other messiness
-              */
-             ptimer_stop(s->timer);
-         }
-         freq = s->freq;
-         /* ??? Need to recalculate expiry time after changing divisor.  */
-         switch (value & TIMER_TCR_TPSC) {
-         case 0:
-             freq >>= 2;
-             break;
-         case 1:
-             freq >>= 4;
-             break;
-         case 2:
-             freq >>= 6;
-             break;
-         case 3:
-             freq >>= 8;
-             break;
-         case 4:
-             freq >>= 10;
-             break;
-         case 6:
-         case 7:
-             if (s->feat & TIMER_FEAT_EXTCLK) {
-                 break;
-             }
--            /* fallthrough */
-+            fallthrough;
-         default:
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved TPSC value\n", __func__);
-         }
-         switch ((value & TIMER_TCR_CKEG) >> 3) {
-         case 0:
-             break;
-         case 1:
-         case 2:
-         case 3:
-             if (s->feat & TIMER_FEAT_EXTCLK) {
-                 break;
-             }
--            /* fallthrough */
-+            fallthrough;
-         default:
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved CKEG value\n", __func__);
-         }
-         switch ((value & TIMER_TCR_ICPE) >> 6) {
-         case 0:
-             break;
-         case 2:
-         case 3:
-             if (s->feat & TIMER_FEAT_CAPT) {
-                 break;
-             }
--            /* fallthrough */
-+            fallthrough;
-         default:
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved ICPE value\n", __func__);
-         }
-         if ((value & TIMER_TCR_UNF) == 0) {
-             s->int_level = 0;
-         }
- 
-         value &= ~TIMER_TCR_UNF;
- 
-         if ((value & TIMER_TCR_ICPF) && (!(s->feat & TIMER_FEAT_CAPT))) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved ICPF value\n", __func__);
-         }
- 
-         value &= ~TIMER_TCR_ICPF; /* capture not supported */
- 
-         if (value & TIMER_TCR_RESERVED) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Reserved TCR bits set\n", __func__);
-         }
-         s->tcr = value;
-         ptimer_set_limit(s->timer, s->tcor, 0);
-         ptimer_set_freq(s->timer, freq);
-         if (s->enabled) {
-             /* Restart the timer if still enabled.  */
-             ptimer_run(s->timer, 0);
-         }
-         ptimer_transaction_commit(s->timer);
-         break;
-     case OFFSET_TCPR:
-         if (s->feat & TIMER_FEAT_CAPT) {
-             s->tcpr = value;
-             break;
-         }
--        /* fallthrough */
-+        fallthrough;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, offset);
-     }
-     sh_timer_update(s);
- }
 -- 
-2.39.2
+Cheers,
+
+David / dhildenb
 

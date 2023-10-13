@@ -1,639 +1,181 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333148ejc;
-        Fri, 13 Oct 2023 00:58:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFM/hNOdJwPdXZcLi1qsJxSkCz9i6spQxi5oyKe2EWK6dEuGr1tt7gv/l0F/5aEKB6FWMeG
-X-Received: by 2002:a05:620a:21cc:b0:76f:1e31:93cd with SMTP id h12-20020a05620a21cc00b0076f1e3193cdmr26389187qka.43.1697183887902;
-        Fri, 13 Oct 2023 00:58:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183887; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333171ejc;
+        Fri, 13 Oct 2023 00:58:12 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFw2jG6EIQ37/ChOgpR23yV9Ikn/nz5xRqhaOWCFAV1VzMKuNSaFHvC984v//yO2elPS8EY
+X-Received: by 2002:ad4:5c67:0:b0:65b:4f2:13fa with SMTP id i7-20020ad45c67000000b0065b04f213famr34143089qvh.2.1697183891903;
+        Fri, 13 Oct 2023 00:58:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183891; cv=none;
         d=google.com; s=arc-20160816;
-        b=O51fS77XD8hsy/M5trREwXVzAJ3Q4DkelFeMGBz9Za/Gi25oYrzTPO+Z5Ja0sleIXb
-         zvjbRe/rDi84l03moW+e39uLLGfpALpcieojzqVLxvODQM+pugxL9RlpJM6w4a0Bf/wl
-         /dcCjYnrDurJ9DlnEb3kl+L/EST/W7xG9vC2tRMHLAEFJd6V13hP9ktfpkJVhG3FM3cy
-         DjVILunPoSU5qVf9HZ61PRsnRAS4JlYDNRA1PrPyRB4cMEes/fESWDE5zFDmj+mwCcLV
-         qD440HwoKKj8WqC8ARzrXPkp5iDnKGAV7mDFNElxzDiEIfZjDL4nOVqXnx+mp64oVzJs
-         8sYQ==
+        b=DMhK+foWVaavG3+3qiixBM7vr1z/QWYjP6IgHA+ASaVn/4Ugwp85xMzC6QwXpdjqCk
+         ObHsSGjrNfdAndsvzskybboCk0+TPyMMyQU7RZ1pguerF69PdLp8Se1D6Y0O3RiJLYZV
+         s868j2WTZAo6V+8GVY0986seFGXEm9NaGXLl9QnVDq5aO02UejFhmGsdpzV4aQN4AXBG
+         AKDa6uaq7ihaNY7MtL1VTHmQIpMYofYinGWzSPpIug5LFFz5nXeBjvsBbxn1DuVtf7fb
+         uuFTTdmTcposy3/09OWRhTaKR0BdNCD0IFT/0qhTUck4PxvTRuJrTuqPH+/RSme7WEC8
+         MNzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8M1jOKfcEW9WnCMrA6OabjFDX8Mu0kJ8wWs4dOttOyc=;
-        fh=hMg/PbFGrdhivwEXsm0DPfKHMPDTWJ65kViALebJ5v4=;
-        b=J/BxOCfZnMC1hrAGBRbc874jx/wOiehWRZYe2ZTWA7y3VDLxKzJkDLlBT22eZMlz4j
-         i7M/N2/XUh9TQHaM68HB9DCAbCQivBWk0jjNG5pm8NoLYd5QSXv2l9HEc6js5f7vzhXs
-         QRfZT/8vdCGcP4wADNJmZuyWNt4aX47FlxQiHA/e7up0l/u509afbbqLzvUknsnYJMg+
-         FQnVR0YPTqBsZDWilORTAzhfmbZqv/xms6HFnpa0YZ15Ut7WcgCDQIjBYoWS0QJQ3GxB
-         HXsiwHI11W1qEBGLKH5hRUlARN3M7fVOuVcQ3qBWe9GqQw7IUAU/Lvb/nklCgSWkWS2T
-         BBnQ==
+        bh=szRY5OVua4jMraaGx0Wxad48cfHGRUEd9LK/mYhb6Xk=;
+        fh=jqhdg2OssQ/bA/kc4CpqO38PJpQpeWUskwsxLc35AF4=;
+        b=b4Fk7hm4rBvUjbq4DN+1vlKPdQU2r1mw//Ybmla+DtF8sfGlYdkLI/qmvVGWpK8KnG
+         kUfgrAxlUFPKaSpLAiI093a0chEBPgwmUY7Iv8otUs2iVg+FnhFj1orqL9rQPdUbXep4
+         aGkqzpFDD6ncCuhucBJ4zTh5MhUGnOfIiXOTo1oyFX6BgE5uI1gxpvgNLuog2nNFdzrO
+         b9OhMfM+sQ8dktOw9ANNq2IKt8j+ynS1eIZQfuqLhshdQ7cMgJ0gCqoLpP6U2RMEdCnf
+         7oDV7fBdBzKiQYMC9E/9Ww0T4+A4owoSo+L7f54leBVtVy+xsjX8TthTObDwxai2to0M
+         gzaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=j8hbjcJv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ublIUZfn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14-20020ac8590e000000b00418070c227dsi825198qty.349.2023.10.13.00.58.07
+        by mx.google.com with ESMTPS id pz3-20020ad45503000000b0065af2518773si820264qvb.89.2023.10.13.00.58.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:58:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 00:58:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=j8hbjcJv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ublIUZfn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrCxr-0000zy-TM; Fri, 13 Oct 2023 03:52:08 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qrCzE-0004iN-7q; Fri, 13 Oct 2023 03:53:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCx5-0006YR-CW
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:21 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1qrCxv-0001K9-4B
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:11 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCws-0004xy-Gp
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:19 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-32d849cc152so1730538f8f.1
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:51:05 -0700 (PDT)
+ id 1qrCxb-0005GV-Iw
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:10 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-405361bb9f7so19252315e9.2
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:51:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183465; x=1697788265; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183510; x=1697788310; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8M1jOKfcEW9WnCMrA6OabjFDX8Mu0kJ8wWs4dOttOyc=;
- b=j8hbjcJvdL6azvzwnNs9yLDREcmEBbmsUl+dvRVAkJ5a+QQwjiIFQN9gwYCWT/3umM
- Z0lFd2/SkT92OAJXJAdKjoVRjB9D7FfTB7m9vl2yv40Dvmn5n9bDr2ThgmQ9GQm0CyTe
- eBxafkRNSARHmHUPnJt4tuUKFk+OKlLVCRqkvmTbKEvi5cbNZnB9Dy9Ha3WCzNv3pry4
- OIXBfiebzWyPkvhs3ZsGnp2iEk6kWbHyePCfP0nYMmFXZmeXS4np2dQJkOGZSMOvLPsk
- 7mv3ObFiPV6bQCkfa8j3kIxZzNheV/WZU0O9csz+UwnrP3tyIAoqJnxiEriAGrwXOVNr
- 1+1g==
+ bh=szRY5OVua4jMraaGx0Wxad48cfHGRUEd9LK/mYhb6Xk=;
+ b=ublIUZfnjQ373T60q6lqe4wIPkNPgdjSk0DLd3+GyCZzFX4pQITcJXVTjhFAV6BoOt
+ Eaiussk+J+um8UPYQn5+0xS7VPFR08bCjuAyz6JzMDlcBnyHulAM+HNffUveR0PGaPwD
+ rNhSxHPD0ZJQFDPbb3bo6eQwCx3QLvQTUHwi43+XOe/ycd3LGi2MY+5uPnguoCx/cUXJ
+ eE2T0VgVgSLfWndfdFybxkY01wz7dT8CCiZvLqPFHpOg1TNc0JVliJGv22rt6kPEvjsB
+ mBtLMx0M8YxzzoihwuSSO71okcCbqDhkaMmV+2jJrNLn2GW/NdsmdPyU9VqgOpvgedm6
+ ZZ/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183465; x=1697788265;
+ d=1e100.net; s=20230601; t=1697183510; x=1697788310;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8M1jOKfcEW9WnCMrA6OabjFDX8Mu0kJ8wWs4dOttOyc=;
- b=G+erMB+S0mhvmj0V8BWwgTNYIE/GMgWyQXLOeVDvvmF2hsiLEdttsCFA77RnJnre63
- NcdZ824sAApzM7fP9sSiP300BlVYtb8UFEJSe3rNp2hrrzhFXKT4NsBtdl4//d7xc93z
- P0sy6A2aJJKaHrWW2kuy3XS8K/Ml27dHI3kfdq2q0NjyJ9n2PUDP20hIv2eKxXXAuSXp
- aSdLsNLUaYcGcDkGoP2J83IZChMkRd2LhURMWMMhVoh50Q0g5N6wlL+IdB+mvLaRA2qk
- vFSPK96WAKEJqWiMTFXqbcnxZPRBqci97u5LnlCjdj4vMfmuGsRF5xAZQIYZ6pgsYl88
- K8Qw==
-X-Gm-Message-State: AOJu0Yz4JgSZS59jkYBpwhDwQyyRehFnGtHH3JcD2lmdMNQqAz8p3V1u
- OMT3I8SHgx7KxxwoAmuZqTRuVQ==
-X-Received: by 2002:a5d:6748:0:b0:32d:9efe:ccd7 with SMTP id
- l8-20020a5d6748000000b0032d9efeccd7mr438196wrw.27.1697183465054; 
- Fri, 13 Oct 2023 00:51:05 -0700 (PDT)
+ bh=szRY5OVua4jMraaGx0Wxad48cfHGRUEd9LK/mYhb6Xk=;
+ b=QhgrFkoK+wk8rF+W4QAyEJvhBuV6mKgWytOZUDUiAETSW4Ui+f79lJ5XV3LOmuPGH5
+ 0KhfrKU+FF77Zbmtb6S6X+nbnA0wwupK99cjOU6iUWMF/yHkTmjwmeTtEszOJIrwi9Rm
+ Cfvb4IoSchhcmyTwkAgP1XDwFYG1q+odkBPc8mOKfrHuSfDt2RM85+2IamRn9jwK6riH
+ xGvb8p5hxQGd9gIeH+xqCSyOvbJXd5jCdd+flQEYWEGurA8Ku1Wlz6YxANZEk2JkKvCQ
+ LEIJRcyjKYUEiMQyyXGuDha+amZXUF/rLj2QYFs3KV5VktQAg6MKRaQVb+M94lZVywXd
+ CwBQ==
+X-Gm-Message-State: AOJu0Yy3b3IQmTqzAHXvWviZPjFA29peSomSVzBmyADZLybx90Pci8YC
+ C6RIQf/xzFSnVd6zb0bh0gRWu7ULyUMVbXwBwzA=
+X-Received: by 2002:a5d:4b0c:0:b0:32d:9524:386b with SMTP id
+ v12-20020a5d4b0c000000b0032d9524386bmr2978347wrq.32.1697183509935; 
+ Fri, 13 Oct 2023 00:51:49 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.03
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:51:04 -0700 (PDT)
+ Fri, 13 Oct 2023 00:51:49 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- Hannes Reinecke <hare@suse.com>
-Subject: [RFC PATCH 39/78] hw/scsi: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:45 +0300
-Message-Id: <115c73da79fff8e91d402248b3456b7345813e68.1697183082.git.manos.pitsidianakis@linaro.org>
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [RFC PATCH 51/78] chardev: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:48:09 +0300
+Message-Id: <7f3ef498c442a160fb72d745b975decba7e4bbe4.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G2/DQLSe6Rjo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DEKwLWCfBDbf
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/scsi/esp.c       | 2 +-
- hw/scsi/megasas.c   | 2 +-
- hw/scsi/scsi-bus.c  | 4 ++--
- hw/scsi/scsi-disk.c | 2 +-
- 4 files changed, 5 insertions(+), 5 deletions(-)
+ chardev/char-socket.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/scsi/esp.c b/hw/scsi/esp.c
-index 9b11d8c573..d6c8298f51 100644
---- a/hw/scsi/esp.c
-+++ b/hw/scsi/esp.c
-@@ -1022,130 +1022,130 @@ uint64_t esp_reg_read(ESPState *s, uint32_t saddr)
- void esp_reg_write(ESPState *s, uint32_t saddr, uint64_t val)
+diff --git a/chardev/char-socket.c b/chardev/char-socket.c
+index 73947da188..1562e066a4 100644
+--- a/chardev/char-socket.c
++++ b/chardev/char-socket.c
+@@ -549,34 +549,34 @@ static int tcp_chr_sync_read(Chardev *chr, const uint8_t *buf, int len)
+ static char *qemu_chr_compute_filename(SocketChardev *s)
  {
-     trace_esp_mem_writeb(saddr, s->wregs[saddr], val);
-     switch (saddr) {
-     case ESP_TCHI:
-         s->tchi_written = true;
+     struct sockaddr_storage *ss = &s->sioc->localAddr;
+     struct sockaddr_storage *ps = &s->sioc->remoteAddr;
+     socklen_t ss_len = s->sioc->localAddrLen;
+     socklen_t ps_len = s->sioc->remoteAddrLen;
+     char shost[NI_MAXHOST], sserv[NI_MAXSERV];
+     char phost[NI_MAXHOST], pserv[NI_MAXSERV];
+     const char *left = "", *right = "";
+ 
+     switch (ss->ss_family) {
+     case AF_UNIX:
+         return g_strdup_printf("unix:%s%s",
+                                ((struct sockaddr_un *)(ss))->sun_path,
+                                s->is_listen ? ",server=on" : "");
+     case AF_INET6:
+         left  = "[";
+         right = "]";
 -        /* fall through */
 +        fallthrough;
-     case ESP_TCLO:
-     case ESP_TCMID:
-         s->rregs[ESP_RSTAT] &= ~STAT_TC;
-         break;
-     case ESP_FIFO:
-         if (s->do_cmd) {
-             esp_fifo_push(&s->cmdfifo, val);
+     case AF_INET:
+         getnameinfo((struct sockaddr *) ss, ss_len, shost, sizeof(shost),
+                     sserv, sizeof(sserv), NI_NUMERICHOST | NI_NUMERICSERV);
+         getnameinfo((struct sockaddr *) ps, ps_len, phost, sizeof(phost),
+                     pserv, sizeof(pserv), NI_NUMERICHOST | NI_NUMERICSERV);
+         return g_strdup_printf("%s:%s%s%s:%s%s <-> %s%s%s:%s",
+                                qemu_chr_socket_protocol(s),
+                                left, shost, right, sserv,
+                                s->is_listen ? ",server=on" : "",
+                                left, phost, right, pserv);
  
-             /*
-              * If any unexpected message out/command phase data is
-              * transferred using non-DMA, raise the interrupt
-              */
-             if (s->rregs[ESP_CMD] == CMD_TI) {
-                 s->rregs[ESP_RINTR] |= INTR_BS;
-                 esp_raise_irq(s);
-             }
-         } else {
-             esp_fifo_push(&s->fifo, val);
-         }
-         break;
-     case ESP_CMD:
-         s->rregs[saddr] = val;
-         if (val & CMD_DMA) {
-             s->dma = 1;
-             /* Reload DMA counter.  */
-             if (esp_get_stc(s) == 0) {
-                 esp_set_tc(s, 0x10000);
-             } else {
-                 esp_set_tc(s, esp_get_stc(s));
-             }
-         } else {
-             s->dma = 0;
-         }
-         switch (val & CMD_CMD) {
-         case CMD_NOP:
-             trace_esp_mem_writeb_cmd_nop(val);
-             break;
-         case CMD_FLUSH:
-             trace_esp_mem_writeb_cmd_flush(val);
-             fifo8_reset(&s->fifo);
-             break;
-         case CMD_RESET:
-             trace_esp_mem_writeb_cmd_reset(val);
-             esp_soft_reset(s);
-             break;
-         case CMD_BUSRESET:
-             trace_esp_mem_writeb_cmd_bus_reset(val);
-             esp_bus_reset(s);
-             if (!(s->wregs[ESP_CFG1] & CFG1_RESREPT)) {
-                 s->rregs[ESP_RINTR] |= INTR_RST;
-                 esp_raise_irq(s);
-             }
-             break;
-         case CMD_TI:
-             trace_esp_mem_writeb_cmd_ti(val);
-             handle_ti(s);
-             break;
-         case CMD_ICCS:
-             trace_esp_mem_writeb_cmd_iccs(val);
-             write_response(s);
-             s->rregs[ESP_RINTR] |= INTR_FC;
-             s->rregs[ESP_RSTAT] |= STAT_MI;
-             break;
-         case CMD_MSGACC:
-             trace_esp_mem_writeb_cmd_msgacc(val);
-             s->rregs[ESP_RINTR] |= INTR_DC;
-             s->rregs[ESP_RSEQ] = 0;
-             s->rregs[ESP_RFLAGS] = 0;
-             esp_raise_irq(s);
-             break;
-         case CMD_PAD:
-             trace_esp_mem_writeb_cmd_pad(val);
-             s->rregs[ESP_RSTAT] = STAT_TC;
-             s->rregs[ESP_RINTR] |= INTR_FC;
-             s->rregs[ESP_RSEQ] = 0;
-             break;
-         case CMD_SATN:
-             trace_esp_mem_writeb_cmd_satn(val);
-             break;
-         case CMD_RSTATN:
-             trace_esp_mem_writeb_cmd_rstatn(val);
-             break;
-         case CMD_SEL:
-             trace_esp_mem_writeb_cmd_sel(val);
-             handle_s_without_atn(s);
-             break;
-         case CMD_SELATN:
-             trace_esp_mem_writeb_cmd_selatn(val);
-             handle_satn(s);
-             break;
-         case CMD_SELATNS:
-             trace_esp_mem_writeb_cmd_selatns(val);
-             handle_satn_stop(s);
-             break;
-         case CMD_ENSEL:
-             trace_esp_mem_writeb_cmd_ensel(val);
-             s->rregs[ESP_RINTR] = 0;
-             break;
-         case CMD_DISSEL:
-             trace_esp_mem_writeb_cmd_dissel(val);
-             s->rregs[ESP_RINTR] = 0;
-             esp_raise_irq(s);
-             break;
-         default:
-             trace_esp_error_unhandled_command(val);
-             break;
-         }
-         break;
-     case ESP_WBUSID ... ESP_WSYNO:
-         break;
-     case ESP_CFG1:
-     case ESP_CFG2: case ESP_CFG3:
-     case ESP_RES3: case ESP_RES4:
-         s->rregs[saddr] = val;
-         break;
-     case ESP_WCCF ... ESP_WTEST:
-         break;
      default:
-         trace_esp_error_invalid_write(val, saddr);
-         return;
-     }
-     s->wregs[saddr] = val;
- }
-diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
-index 32c70c9e99..54e4d7c8b6 100644
---- a/hw/scsi/megasas.c
-+++ b/hw/scsi/megasas.c
-@@ -2084,113 +2084,113 @@ static int adp_reset_seq[] = {0x00, 0x04, 0x0b, 0x02, 0x07, 0x0d};
- static void megasas_mmio_write(void *opaque, hwaddr addr,
-                                uint64_t val, unsigned size)
- {
-     MegasasState *s = opaque;
-     PCIDevice *pci_dev = PCI_DEVICE(s);
-     uint64_t frame_addr;
-     uint32_t frame_count;
-     int i;
- 
-     switch (addr) {
-     case MFI_IDB:
-         trace_megasas_mmio_writel("MFI_IDB", val);
-         if (val & MFI_FWINIT_ABORT) {
-             /* Abort all pending cmds */
-             for (i = 0; i < s->fw_cmds; i++) {
-                 megasas_abort_command(&s->frames[i]);
-             }
-         }
-         if (val & MFI_FWINIT_READY) {
-             /* move to FW READY */
-             megasas_soft_reset(s);
-         }
-         if (val & MFI_FWINIT_MFIMODE) {
-             /* discard MFIs */
-         }
-         if (val & MFI_FWINIT_STOP_ADP) {
-             /* Terminal error, stop processing */
-             s->fw_state = MFI_FWSTATE_FAULT;
-         }
-         break;
-     case MFI_OMSK:
-         trace_megasas_mmio_writel("MFI_OMSK", val);
-         s->intr_mask = val;
-         if (!megasas_intr_enabled(s) &&
-             !msi_enabled(pci_dev) &&
-             !msix_enabled(pci_dev)) {
-             trace_megasas_irq_lower();
-             pci_irq_deassert(pci_dev);
-         }
-         if (megasas_intr_enabled(s)) {
-             if (msix_enabled(pci_dev)) {
-                 trace_megasas_msix_enabled(0);
-             } else if (msi_enabled(pci_dev)) {
-                 trace_megasas_msi_enabled(0);
-             } else {
-                 trace_megasas_intr_enabled();
-             }
-         } else {
-             trace_megasas_intr_disabled();
-             megasas_soft_reset(s);
-         }
-         break;
-     case MFI_ODCR0:
-         trace_megasas_mmio_writel("MFI_ODCR0", val);
-         s->doorbell = 0;
-         if (megasas_intr_enabled(s)) {
-             if (!msix_enabled(pci_dev) && !msi_enabled(pci_dev)) {
-                 trace_megasas_irq_lower();
-                 pci_irq_deassert(pci_dev);
-             }
-         }
-         break;
-     case MFI_IQPH:
-         trace_megasas_mmio_writel("MFI_IQPH", val);
-         /* Received high 32 bits of a 64 bit MFI frame address */
-         s->frame_hi = val;
-         break;
-     case MFI_IQPL:
-         trace_megasas_mmio_writel("MFI_IQPL", val);
-         /* Received low 32 bits of a 64 bit MFI frame address */
--        /* Fallthrough */
-+        fallthrough;
-     case MFI_IQP:
-         if (addr == MFI_IQP) {
-             trace_megasas_mmio_writel("MFI_IQP", val);
-             /* Received 64 bit MFI frame address */
-             s->frame_hi = 0;
-         }
-         frame_addr = (val & ~0x1F);
-         /* Add possible 64 bit offset */
-         frame_addr |= ((uint64_t)s->frame_hi << 32);
-         s->frame_hi = 0;
-         frame_count = (val >> 1) & 0xF;
-         megasas_handle_frame(s, frame_addr, frame_count);
-         break;
-     case MFI_SEQ:
-         trace_megasas_mmio_writel("MFI_SEQ", val);
-         /* Magic sequence to start ADP reset */
-         if (adp_reset_seq[s->adp_reset++] == val) {
-             if (s->adp_reset == 6) {
-                 s->adp_reset = 0;
-                 s->diag = MFI_DIAG_WRITE_ENABLE;
-             }
-         } else {
-             s->adp_reset = 0;
-             s->diag = 0;
-         }
-         break;
-     case MFI_DIAG:
-         trace_megasas_mmio_writel("MFI_DIAG", val);
-         /* ADP reset */
-         if ((s->diag & MFI_DIAG_WRITE_ENABLE) &&
-             (val & MFI_DIAG_RESET_ADP)) {
-             s->diag |= MFI_DIAG_RESET_ADP;
-             megasas_soft_reset(s);
-             s->adp_reset = 0;
-             s->diag = 0;
-         }
-         break;
-     default:
-         trace_megasas_mmio_invalid_writel(addr, val);
-         break;
-     }
- }
-diff --git a/hw/scsi/scsi-bus.c b/hw/scsi/scsi-bus.c
-index fc4b77fdb0..a1c298a92c 100644
---- a/hw/scsi/scsi-bus.c
-+++ b/hw/scsi/scsi-bus.c
-@@ -1015,141 +1015,141 @@ static int ata_passthrough_16_xfer(SCSIDevice *dev, uint8_t *buf)
- static int scsi_req_xfer(SCSICommand *cmd, SCSIDevice *dev, uint8_t *buf)
- {
-     cmd->xfer = scsi_cdb_xfer(buf);
-     switch (buf[0]) {
-     case TEST_UNIT_READY:
-     case REWIND:
-     case START_STOP:
-     case SET_CAPACITY:
-     case WRITE_FILEMARKS:
-     case WRITE_FILEMARKS_16:
-     case SPACE:
-     case RESERVE:
-     case RELEASE:
-     case ERASE:
-     case ALLOW_MEDIUM_REMOVAL:
-     case SEEK_10:
-     case SYNCHRONIZE_CACHE:
-     case SYNCHRONIZE_CACHE_16:
-     case LOCATE_16:
-     case LOCK_UNLOCK_CACHE:
-     case SET_CD_SPEED:
-     case SET_LIMITS:
-     case WRITE_LONG_10:
-     case UPDATE_BLOCK:
-     case RESERVE_TRACK:
-     case SET_READ_AHEAD:
-     case PRE_FETCH:
-     case PRE_FETCH_16:
-     case ALLOW_OVERWRITE:
-         cmd->xfer = 0;
-         break;
-     case VERIFY_10:
-     case VERIFY_12:
-     case VERIFY_16:
-         if ((buf[1] & 2) == 0) {
-             cmd->xfer = 0;
-         } else if ((buf[1] & 4) != 0) {
-             cmd->xfer = 1;
-         }
-         cmd->xfer *= dev->blocksize;
-         break;
-     case MODE_SENSE:
-         break;
-     case WRITE_SAME_10:
-     case WRITE_SAME_16:
-         cmd->xfer = buf[1] & 1 ? 0 : dev->blocksize;
-         break;
-     case READ_CAPACITY_10:
-         cmd->xfer = 8;
-         break;
-     case READ_BLOCK_LIMITS:
-         cmd->xfer = 6;
-         break;
-     case SEND_VOLUME_TAG:
-         /* GPCMD_SET_STREAMING from multimedia commands.  */
-         if (dev->type == TYPE_ROM) {
-             cmd->xfer = buf[10] | (buf[9] << 8);
-         } else {
-             cmd->xfer = buf[9] | (buf[8] << 8);
-         }
-         break;
-     case WRITE_6:
-         /* length 0 means 256 blocks */
-         if (cmd->xfer == 0) {
-             cmd->xfer = 256;
-         }
--        /* fall through */
-+        fallthrough;
-     case WRITE_10:
-     case WRITE_VERIFY_10:
-     case WRITE_12:
-     case WRITE_VERIFY_12:
-     case WRITE_16:
-     case WRITE_VERIFY_16:
-         cmd->xfer *= dev->blocksize;
-         break;
-     case READ_6:
-     case READ_REVERSE:
-         /* length 0 means 256 blocks */
-         if (cmd->xfer == 0) {
-             cmd->xfer = 256;
-         }
--        /* fall through */
-+        fallthrough;
-     case READ_10:
-     case READ_12:
-     case READ_16:
-         cmd->xfer *= dev->blocksize;
-         break;
-     case FORMAT_UNIT:
-         /* MMC mandates the parameter list to be 12-bytes long.  Parameters
-          * for block devices are restricted to the header right now.  */
-         if (dev->type == TYPE_ROM && (buf[1] & 16)) {
-             cmd->xfer = 12;
-         } else {
-             cmd->xfer = (buf[1] & 16) == 0 ? 0 : (buf[1] & 32 ? 8 : 4);
-         }
-         break;
-     case INQUIRY:
-     case RECEIVE_DIAGNOSTIC:
-     case SEND_DIAGNOSTIC:
-         cmd->xfer = buf[4] | (buf[3] << 8);
-         break;
-     case READ_CD:
-     case READ_BUFFER:
-     case WRITE_BUFFER:
-     case SEND_CUE_SHEET:
-         cmd->xfer = buf[8] | (buf[7] << 8) | (buf[6] << 16);
-         break;
-     case PERSISTENT_RESERVE_OUT:
-         cmd->xfer = ldl_be_p(&buf[5]) & 0xffffffffULL;
-         break;
-     case ERASE_12:
-         if (dev->type == TYPE_ROM) {
-             /* MMC command GET PERFORMANCE.  */
-             cmd->xfer = scsi_get_performance_length(buf[9] | (buf[8] << 8),
-                                                     buf[10], buf[1] & 0x1f);
-         }
-         break;
-     case MECHANISM_STATUS:
-     case READ_DVD_STRUCTURE:
-     case SEND_DVD_STRUCTURE:
-     case MAINTENANCE_OUT:
-     case MAINTENANCE_IN:
-         if (dev->type == TYPE_ROM) {
-             /* GPCMD_REPORT_KEY and GPCMD_SEND_KEY from multi media commands */
-             cmd->xfer = buf[9] | (buf[8] << 8);
-         }
-         break;
-     case ATA_PASSTHROUGH_12:
-         if (dev->type == TYPE_ROM) {
-             /* BLANK command of MMC */
-             cmd->xfer = 0;
-         } else {
-             cmd->xfer = ata_passthrough_12_xfer(dev, buf);
-         }
-         break;
-     case ATA_PASSTHROUGH_16:
-         cmd->xfer = ata_passthrough_16_xfer(dev, buf);
-         break;
-     }
-     return 0;
- }
-diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-index 6691f5edb8..6564ca638c 100644
---- a/hw/scsi/scsi-disk.c
-+++ b/hw/scsi/scsi-disk.c
-@@ -2256,86 +2256,86 @@ illegal_lba:
- static int32_t scsi_disk_dma_command(SCSIRequest *req, uint8_t *buf)
- {
-     SCSIDiskReq *r = DO_UPCAST(SCSIDiskReq, req, req);
-     SCSIDiskState *s = DO_UPCAST(SCSIDiskState, qdev, req->dev);
-     SCSIDiskClass *sdc = (SCSIDiskClass *) object_get_class(OBJECT(s));
-     uint32_t len;
-     uint8_t command;
- 
-     command = buf[0];
- 
-     if (!blk_is_available(s->qdev.conf.blk)) {
-         scsi_check_condition(r, SENSE_CODE(NO_MEDIUM));
-         return 0;
-     }
- 
-     len = scsi_data_cdb_xfer(r->req.cmd.buf);
-     switch (command) {
-     case READ_6:
-     case READ_10:
-     case READ_12:
-     case READ_16:
-         trace_scsi_disk_dma_command_READ(r->req.cmd.lba, len);
-         /* Protection information is not supported.  For SCSI versions 2 and
-          * older (as determined by snooping the guest's INQUIRY commands),
-          * there is no RD/WR/VRPROTECT, so skip this check in these versions.
-          */
-         if (s->qdev.scsi_version > 2 && (r->req.cmd.buf[1] & 0xe0)) {
-             goto illegal_request;
-         }
-         if (!check_lba_range(s, r->req.cmd.lba, len)) {
-             goto illegal_lba;
-         }
-         r->sector = r->req.cmd.lba * (s->qdev.blocksize / BDRV_SECTOR_SIZE);
-         r->sector_count = len * (s->qdev.blocksize / BDRV_SECTOR_SIZE);
-         break;
-     case WRITE_6:
-     case WRITE_10:
-     case WRITE_12:
-     case WRITE_16:
-     case WRITE_VERIFY_10:
-     case WRITE_VERIFY_12:
-     case WRITE_VERIFY_16:
-         if (!blk_is_writable(s->qdev.conf.blk)) {
-             scsi_check_condition(r, SENSE_CODE(WRITE_PROTECTED));
-             return 0;
-         }
-         trace_scsi_disk_dma_command_WRITE(
-                 (command & 0xe) == 0xe ? "And Verify " : "",
-                 r->req.cmd.lba, len);
--        /* fall through */
-+        fallthrough;
-     case VERIFY_10:
-     case VERIFY_12:
-     case VERIFY_16:
-         /* We get here only for BYTCHK == 0x01 and only for scsi-block.
-          * As far as DMA is concerned, we can treat it the same as a write;
-          * scsi_block_do_sgio will send VERIFY commands.
-          */
-         if (s->qdev.scsi_version > 2 && (r->req.cmd.buf[1] & 0xe0)) {
-             goto illegal_request;
-         }
-         if (!check_lba_range(s, r->req.cmd.lba, len)) {
-             goto illegal_lba;
-         }
-         r->sector = r->req.cmd.lba * (s->qdev.blocksize / BDRV_SECTOR_SIZE);
-         r->sector_count = len * (s->qdev.blocksize / BDRV_SECTOR_SIZE);
-         break;
-     default:
-         abort();
-     illegal_request:
-         scsi_check_condition(r, SENSE_CODE(INVALID_FIELD));
-         return 0;
-     illegal_lba:
-         scsi_check_condition(r, SENSE_CODE(LBA_OUT_OF_RANGE));
-         return 0;
-     }
-     r->need_fua_emulation = sdc->need_fua_emulation(&r->req.cmd);
-     if (r->sector_count == 0) {
-         scsi_req_complete(&r->req, GOOD);
-     }
-     assert(r->iov.iov_len == 0);
-     if (r->req.cmd.mode == SCSI_XFER_TO_DEV) {
-         return -r->sector_count * BDRV_SECTOR_SIZE;
-     } else {
-         return r->sector_count * BDRV_SECTOR_SIZE;
+         return g_strdup_printf("unknown");
      }
  }
 -- 

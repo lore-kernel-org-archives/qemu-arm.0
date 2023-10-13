@@ -1,112 +1,111 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1332660ejc;
-        Fri, 13 Oct 2023 00:56:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFEUnbEsMyQM6Z/proRgCyv7MBZIHkFit8QaSmMOvDOwrbuztSMqYHoIxr8oG1dHVmrETua
-X-Received: by 2002:ac8:7d13:0:b0:418:1a5c:dcb0 with SMTP id g19-20020ac87d13000000b004181a5cdcb0mr31228855qtb.6.1697183789930;
-        Fri, 13 Oct 2023 00:56:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183789; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1332670ejc;
+        Fri, 13 Oct 2023 00:56:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFA4n6ZdqX1NzLd9asCIv2p6APEMDxi1wgarEmL7x3gKoS2avZKrsSbXL6ulOr+n9e8NGA5
+X-Received: by 2002:a05:622a:4cb:b0:418:1059:dfbc with SMTP id q11-20020a05622a04cb00b004181059dfbcmr30396996qtx.45.1697183791290;
+        Fri, 13 Oct 2023 00:56:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183791; cv=none;
         d=google.com; s=arc-20160816;
-        b=09PCyc4EJMmBS2xtHtNgzdQSb4ZvYc2aAhmVRhrVcdhBLyASd2AcF/lSX33xuXEvmf
-         YLP7aK328FdrS8Jm+VEia3yVox3Nm3JwYxB7Vig8uWnENTbrtBpE9YVALVhKqmIELQca
-         WPENvVa60NUVclOysyZPu/nKHoF23Gfw4LCX4m3bHndLTMScN4Y+cjc5IZLIXdnDGHUC
-         ie2/uzDlB/EUgznM5O+rdUVzKq7vVvm9nLL9/vy7sVFW3ogX4TJ4HjPF0Dz7OK/tjf7u
-         Fd57+AI1ZeITHjEbsksKwDD7pB7nVGmEgQbg9e/lUG88UEcwvGaybt6RuIUkASt4LXul
-         RArQ==
+        b=toN+VM6YGWYX5IeT81LaAXJYBgu9hKo0KYQus7C+vN/rYkVb6Yo+RmlA5cXMkbswLG
+         OvJS94xUGf6g/Zw/WOKKTzOXhq1UygxG4r7t4AV46WMu0vsQCws1tlJZn2I/5DSKsqXU
+         Z9SDGKXbSZdCkpQGgGWnP6ks3YWU1kNFpCiyiqNWKIWDxJXJka0faqOMb06R6ix5WvSX
+         JiLUdmEM4Z3qT9oApEAV229ndc9W538sa61fbovloe5h/5aSn9sC3iR/6GUbjwC1FZ/U
+         Q+MuMiU5IXIdeoBXACZ0nAsgIhSm/x7qN/JSlHabHDcpqVrd4HvI9kFdU19VqQp/ItZR
+         qvfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ACmNUd64zxjCY/ANkaz/wSfLOgrw3On2aAMpHQJnPUA=;
-        fh=AsXItCTRXGHT4f5eE845/gyvzbMt5ZyhMQeFf4XsPlk=;
-        b=Vi3l/qVcnCU8HHJHgeIgZ/+Fy1FtB58wxRBIo1e24x/yA8M4c7HIWPAr4i25NmbuRM
-         p2fPafZd6Iw7zu35gV5g1oqP90Zfba0TpglmJFRSIVo/zH1LS++NdY2qP1FePXASwk52
-         MWx7gktD9ej7x+qIX6uvwBFF2IAebvJoOvuekOXIldbxYIYJio2Bkk/sfyNtZCP6jmMS
-         qlar9VfithA6J4SBp9gqUC27NqBX/YbadDEQOF64Eh8CJN91dnZMnFKCC74VftEj7q32
-         gb28xHqkit1s+enTkTwB9sfRQ0sq09TIb+cDRxf8YNCygn6CnEd1NRP0vYXh6ltHIFwq
-         YDJg==
+        bh=p/mY16veta2LBLEr6jX5WmGFOjQvyhNpevencSIkR3g=;
+        fh=i4+TEAhTfbgm8NhF7vrLFCUdiAyN6ynqjBGpXaLhBQ0=;
+        b=w2N/qD83SMy8taczywBl2ybmYG/9YkXov2TwALt7FGs11DSYdHTnrgK03MsjgoR9NK
+         j8EEEud3do20NQT5YxpGT9GnonNQetuYbFYLzGCO1dcyjHlSxhnFmKV63QR+MNvd8LcB
+         czWYa2KZYsPSRDzZfis0vgaXahvf75rRbQfXA43U1GkHHu5MAobYNVIZUvLb2TCohD81
+         lEiFX+nGmL/nMoqRqfrFFXIgoCw5fmkpDffDozpSKxbYPeaggkzPj6tSbdMNiiKvZ2+i
+         X5oZmaPwcJ2ZHGbzrH83uz+Rs/0F9Bm9JUF5LA8e6ZIiWZCdQ6KCipZukedi7BlG6Vvz
+         lEZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Haq/4cc9";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EtkacZ9W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17-20020a05622a001100b0040ff099d956si830650qtw.670.2023.10.13.00.56.29
+        by mx.google.com with ESMTPS id w35-20020a05622a192300b004196273dbbbsi836696qtc.267.2023.10.13.00.56.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:56:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 00:56:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Haq/4cc9";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EtkacZ9W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCwG-0004WU-2W; Fri, 13 Oct 2023 03:50:28 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrCxc-00086b-6b; Fri, 13 Oct 2023 03:51:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwD-0004VU-Ih
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:25 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ id 1qrCwp-0005W8-0j
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:03 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCvz-00049o-GB
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:25 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-313e742a787so1106481f8f.1
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:50:05 -0700 (PDT)
+ id 1qrCwZ-0004qg-Ta
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:02 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-40572aeb673so19450645e9.0
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:50:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183404; x=1697788204; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183446; x=1697788246; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ACmNUd64zxjCY/ANkaz/wSfLOgrw3On2aAMpHQJnPUA=;
- b=Haq/4cc9Hdq8J/1SNfxJIoahg0eubA+mvQgNwnit+8JdUuIFiw3DDSxs3+/buUFW19
- cgghZli06gK4dlPMhnCI2wsGbdPE3zrTO4xKRSOViCIpyew9LgLm5cXFoBSOb2ezVugp
- 6lOJ9ZcIZioiDQqMPVKyrTgpGPedJ2Qlo502L35bqWZ+qQPMMloAOICnCq4CvHdSoUwQ
- qaEW/TUWRK+Lv1eUtEBr5llRhWFvd/zT+zEXOQPXXYuQQOwmL3/5olJSR8G5lrLuzbyp
- 8WCVO8VbJ//l/ZKcYutC3jrJh01xbCsKbPKriYy1kjdmZXn+Ykig4NPr+RVc3H7MP4hZ
- qwDQ==
+ bh=p/mY16veta2LBLEr6jX5WmGFOjQvyhNpevencSIkR3g=;
+ b=EtkacZ9WAoacBrGTYKnf9E4SNBK3NzIUDFlR2xP5M89dKvnEWkwNZX8S0qX0ojszCb
+ GBHh8K9kyKS/XDnVPnDNTMK/txfenTbNEL14bVHIDD1AARnS9KsqXvXalNU+plDCSzif
+ q6QzUbtXe7VriGjyUhyc3Z4ohm0XfGDYegBl4eVYQDRnBkzS2sR9n2eLYcyQ57M+fqDy
+ 9lb/2waqKOBn14131+lHsRgMvIdRBaqrWqhpbFKc6vbE1w+j0R8eRNBZ6MWnrtPfEUQq
+ /5KCIwRt8Y0Vi/vxbwFrwF9WxLZf3CRhD9ASOE3o2MvvTN69b6xL7ynWYQ4cfxEDUfOx
+ m0JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183404; x=1697788204;
+ d=1e100.net; s=20230601; t=1697183446; x=1697788246;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ACmNUd64zxjCY/ANkaz/wSfLOgrw3On2aAMpHQJnPUA=;
- b=nEeJMs3JnKzwgkFUGVK7q3+U/OkAHNMgh+r1uusciAXoohNwuXWVS6AFunFnFpLGFj
- ATkvTiZtK5x64oMV6RfDzVuqWMdGJgebd2/7enssIxV4QRrwFqUvzys9gBT/TGBKZ+y0
- 7rnHKqeSwL7ROArws7eveq5aJ9/jXe0HfOKuwpILSiiMXZmUbVOVxBrsKI2ftqqqpsVH
- JsdwUG0ZkWh01FvTMYpeaLs5i6QwID3DaJznJkGQFfdC3v9UVeBcjASu/uZ22g8YNOWM
- eRB+7MtZSk23y+owaSk3upaFz8C976qCz0m11O1IzUFE5AZmGv5Idx4GPGkuYkPCMCMv
- wVBw==
-X-Gm-Message-State: AOJu0YxjJptFzEL+EqOxPxFFIr+F2s98wNwpdnfIslQlA1VqrEv0CIzR
- LFQ4zW1Jknz8tDSVTfCCKj0PGtpk1nuHWJfUkJ8=
-X-Received: by 2002:a5d:6b4b:0:b0:323:1ded:311f with SMTP id
- x11-20020a5d6b4b000000b003231ded311fmr18960161wrw.25.1697183404434; 
- Fri, 13 Oct 2023 00:50:04 -0700 (PDT)
+ bh=p/mY16veta2LBLEr6jX5WmGFOjQvyhNpevencSIkR3g=;
+ b=Nt2B4PlnNyiqE4J+6D02bpI7IxP4WXHLNe5/fTq/3ZVS6jF3/v/ByZvtf+cybiD5qa
+ J1tZHCAvsbMU3fWzeblJzBCNsOeyrAfPysJjOkOBGbkO1mskR7XooUTcCkUNYSi7yriH
+ AVwwyOEqlsdXHgmJyPsiB0rFqGWc64PsUdzS3nqyyyWqYwTwFXCfDef2ZHXSeC2Ooa78
+ KUFrZp8ewyQLYM5EB3R38o9B0SkX2jU9wNIjDWkOJj0F2KjIhJE0KZ0gLZV3BI1ytBk+
+ kRxLIYWFg9+RA4hL5/cdgGVdHvuHjBe1UjR1m5fD4PQwg+9X5BULJlciOsrnkQw57jfV
+ thzQ==
+X-Gm-Message-State: AOJu0YyrxUOz4W83qkr5THiimjC0Q72d6ysL/EAAi85Hgh+WqNR0nI5G
+ +FQzmtoCyo9y9zW+3G8wSjWYVg==
+X-Received: by 2002:a05:600c:207:b0:405:1c19:476d with SMTP id
+ 7-20020a05600c020700b004051c19476dmr22126994wmi.39.1697183446628; 
+ Fri, 13 Oct 2023 00:50:46 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.02
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:50:03 -0700 (PDT)
+ Fri, 13 Oct 2023 00:50:46 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>
-Subject: [RFC PATCH 09/78] hw/acpi/aml-build.c: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:13 +0300
-Message-Id: <7cd146bcd384f4e11754b2983008b385f80343d9.1697183082.git.manos.pitsidianakis@linaro.org>
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>
+Subject: [RFC PATCH 30/78] target/nios2: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:34 +0300
+Message-Id: <8cb3ca5179261aca2fae0f5eaf22f3ce19f71498.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,131 +114,244 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n6WTBOZf+52I
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7+nPmY+BP1NU
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/acpi/aml-build.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ target/nios2/helper.c    | 6 +++---
+ target/nios2/translate.c | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index af66bde0f5..b0cf0c6073 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -292,56 +292,55 @@ static void
- build_prepend_package_length(GArray *package, unsigned length, bool incl_self)
+diff --git a/target/nios2/helper.c b/target/nios2/helper.c
+index bb3b09e5a7..b44e73768e 100644
+--- a/target/nios2/helper.c
++++ b/target/nios2/helper.c
+@@ -125,136 +125,136 @@ static void do_eic_irq(Nios2CPU *cpu)
+ void nios2_cpu_do_interrupt(CPUState *cs)
  {
-     uint8_t byte;
-     unsigned length_bytes;
+     Nios2CPU *cpu = NIOS2_CPU(cs);
+     CPUNios2State *env = &cpu->env;
+     uint32_t tlbmisc_set = 0;
  
-     if (length + 1 < (1 << PACKAGE_LENGTH_1BYTE_SHIFT)) {
-         length_bytes = 1;
-     } else if (length + 2 < (1 << PACKAGE_LENGTH_3BYTE_SHIFT)) {
-         length_bytes = 2;
-     } else if (length + 3 < (1 << PACKAGE_LENGTH_4BYTE_SHIFT)) {
-         length_bytes = 3;
-     } else {
-         length_bytes = 4;
+     if (qemu_loglevel_mask(CPU_LOG_INT)) {
+         const char *name = NULL;
+ 
+         switch (cs->exception_index) {
+         case EXCP_IRQ:
+             name = "interrupt";
+             break;
+         case EXCP_TLB_X:
+         case EXCP_TLB_D:
+             if (env->ctrl[CR_STATUS] & CR_STATUS_EH) {
+                 name = "TLB MISS (double)";
+             } else {
+                 name = "TLB MISS (fast)";
+             }
+             break;
+         case EXCP_PERM_R:
+         case EXCP_PERM_W:
+         case EXCP_PERM_X:
+             name = "TLB PERM";
+             break;
+         case EXCP_SUPERA_X:
+         case EXCP_SUPERA_D:
+             name = "SUPERVISOR (address)";
+             break;
+         case EXCP_SUPERI:
+             name = "SUPERVISOR (insn)";
+             break;
+         case EXCP_ILLEGAL:
+             name = "ILLEGAL insn";
+             break;
+         case EXCP_UNALIGN:
+             name = "Misaligned (data)";
+             break;
+         case EXCP_UNALIGND:
+             name = "Misaligned (destination)";
+             break;
+         case EXCP_DIV:
+             name = "DIV error";
+             break;
+         case EXCP_TRAP:
+             name = "TRAP insn";
+             break;
+         case EXCP_BREAK:
+             name = "BREAK insn";
+             break;
+         case EXCP_SEMIHOST:
+             name = "SEMIHOST insn";
+             break;
+         }
+         if (name) {
+             qemu_log("%s at pc=0x%08x\n", name, env->pc);
+         } else {
+             qemu_log("Unknown exception %d at pc=0x%08x\n",
+                      cs->exception_index, env->pc);
+         }
      }
  
-     /*
-      * NamedField uses PkgLength encoding but it doesn't include length
-      * of PkgLength itself.
-      */
-     if (incl_self) {
-         /*
-          * PkgLength is the length of the inclusive length of the data
-          * and PkgLength's length itself when used for terms with
-          * explicit length.
-          */
-         length += length_bytes;
-     }
+     switch (cs->exception_index) {
+     case EXCP_IRQ:
+         /* Note that PC is advanced for interrupts as well. */
+         env->pc += 4;
+         if (cpu->eic_present) {
+             do_eic_irq(cpu);
+         } else {
+             do_iic_irq(cpu);
+         }
+         break;
  
-     switch (length_bytes) {
-     case 1:
-         byte = length;
-         build_prepend_byte(package, byte);
-         return;
-     case 4:
-         byte = length >> PACKAGE_LENGTH_4BYTE_SHIFT;
-         build_prepend_byte(package, byte);
-         length &= (1 << PACKAGE_LENGTH_4BYTE_SHIFT) - 1;
+     case EXCP_TLB_D:
+         tlbmisc_set = CR_TLBMISC_D;
 -        /* fall through */
 +        fallthrough;
-     case 3:
-         byte = length >> PACKAGE_LENGTH_3BYTE_SHIFT;
-         build_prepend_byte(package, byte);
-         length &= (1 << PACKAGE_LENGTH_3BYTE_SHIFT) - 1;
--        /* fall through */
-+        fallthrough;
-     case 2:
-         byte = length >> PACKAGE_LENGTH_2BYTE_SHIFT;
-         build_prepend_byte(package, byte);
-         length &= (1 << PACKAGE_LENGTH_2BYTE_SHIFT) - 1;
--        /* fall through */
-     }
-     /*
-      * Most significant two bits of byte zero indicate how many following bytes
-      * are in PkgLength encoding.
-      */
-     byte = ((length_bytes - 1) << PACKAGE_LENGTH_1BYTE_SHIFT) | length;
-     build_prepend_byte(package, byte);
- }
-@@ -508,37 +507,38 @@ static void build_buffer(GArray *array, uint8_t op)
- void aml_append(Aml *parent_ctx, Aml *child)
- {
-     GArray *buf = build_alloc_array();
-     build_append_array(buf, child->buf);
+     case EXCP_TLB_X:
+         if (env->ctrl[CR_STATUS] & CR_STATUS_EH) {
+             tlbmisc_set |= CR_TLBMISC_DBL;
+             /*
+              * Normally, we don't write to tlbmisc unless !EH,
+              * so do it manually for the double-tlb miss exception.
+              */
+             env->ctrl[CR_TLBMISC] &= ~(CR_TLBMISC_D |
+                                        CR_TLBMISC_PERM |
+                                        CR_TLBMISC_BAD);
+             env->ctrl[CR_TLBMISC] |= tlbmisc_set;
+             do_exception(cpu, cpu->exception_addr, 0, false);
+         } else {
+             tlbmisc_set |= CR_TLBMISC_WE;
+             do_exception(cpu, cpu->fast_tlb_miss_addr, tlbmisc_set, false);
+         }
+         break;
  
-     switch (child->block_flags) {
-     case AML_OPCODE:
-         build_append_byte(parent_ctx->buf, child->op);
-         break;
-     case AML_EXT_PACKAGE:
-         build_extop_package(buf, child->op);
-         break;
-     case AML_PACKAGE:
-         build_package(buf, child->op);
-         break;
-     case AML_RES_TEMPLATE:
-         build_append_byte(buf, 0x79); /* EndTag */
-         /*
-          * checksum operations are treated as succeeded if checksum
-          * field is zero. [ACPI Spec 1.0b, 6.4.2.8 End Tag]
-          */
-         build_append_byte(buf, 0);
-         /* fall through, to pack resources in buffer */
+     case EXCP_PERM_R:
+     case EXCP_PERM_W:
+         tlbmisc_set = CR_TLBMISC_D;
+-        /* fall through */
 +        fallthrough;
-     case AML_BUFFER:
-         build_buffer(buf, child->op);
+     case EXCP_PERM_X:
+         tlbmisc_set |= CR_TLBMISC_PERM;
+         if (!(env->ctrl[CR_STATUS] & CR_STATUS_EH)) {
+             tlbmisc_set |= CR_TLBMISC_WE;
+         }
+         do_exception(cpu, cpu->exception_addr, tlbmisc_set, false);
          break;
-     case AML_NO_OPCODE:
+ 
+     case EXCP_SUPERA_D:
+     case EXCP_UNALIGN:
+         tlbmisc_set = CR_TLBMISC_D;
+-        /* fall through */
++        fallthrough;
+     case EXCP_SUPERA_X:
+     case EXCP_UNALIGND:
+         tlbmisc_set |= CR_TLBMISC_BAD;
+         do_exception(cpu, cpu->exception_addr, tlbmisc_set, false);
          break;
+ 
+     case EXCP_SUPERI:
+     case EXCP_ILLEGAL:
+     case EXCP_DIV:
+     case EXCP_TRAP:
+         do_exception(cpu, cpu->exception_addr, 0, false);
+         break;
+ 
+     case EXCP_BREAK:
+         do_exception(cpu, cpu->exception_addr, 0, true);
+         break;
+ 
+     case EXCP_SEMIHOST:
+         do_nios2_semihosting(env);
+         break;
+ 
      default:
-         assert(0);
+         cpu_abort(cs, "unhandled exception type=%d\n", cs->exception_index);
+     }
+ }
+diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+index e806623594..2cfe77c90a 100644
+--- a/target/nios2/translate.c
++++ b/target/nios2/translate.c
+@@ -617,64 +617,64 @@ static void rdctl(DisasContext *dc, uint32_t code, uint32_t flags)
+ /* ctlN <- rA */
+ static void wrctl(DisasContext *dc, uint32_t code, uint32_t flags)
+ {
+     if (!gen_check_supervisor(dc)) {
+         return;
+     }
+ 
+ #ifdef CONFIG_USER_ONLY
+     g_assert_not_reached();
+ #else
+     R_TYPE(instr, code);
+     TCGv v = load_gpr(dc, instr.a);
+     uint32_t ofs = offsetof(CPUNios2State, ctrl[instr.imm5]);
+     uint32_t wr = dc->cr_state[instr.imm5].writable;
+     uint32_t ro = dc->cr_state[instr.imm5].readonly;
+ 
+     /* Skip reserved or readonly registers. */
+     if (wr == 0) {
+         return;
+     }
+ 
+     switch (instr.imm5) {
+     case CR_PTEADDR:
+         gen_helper_mmu_write_pteaddr(tcg_env, v);
+         break;
+     case CR_TLBACC:
+         gen_helper_mmu_write_tlbacc(tcg_env, v);
+         break;
+     case CR_TLBMISC:
+         gen_helper_mmu_write_tlbmisc(tcg_env, v);
+         break;
+     case CR_STATUS:
+     case CR_IENABLE:
+         /* If interrupts were enabled using WRCTL, trigger them. */
+         dc->base.is_jmp = DISAS_UPDATE;
+-        /* fall through */
++        fallthrough;
+     default:
+         if (wr == -1) {
+             /* The register is entirely writable. */
+             tcg_gen_st_tl(v, tcg_env, ofs);
+         } else {
+             /*
+              * The register is partially read-only or reserved:
+              * merge the value.
+              */
+             TCGv n = tcg_temp_new();
+ 
+             tcg_gen_andi_tl(n, v, wr);
+ 
+             if (ro != 0) {
+                 TCGv o = tcg_temp_new();
+                 tcg_gen_ld_tl(o, tcg_env, ofs);
+                 tcg_gen_andi_tl(o, o, ro);
+                 tcg_gen_or_tl(n, n, o);
+             }
+ 
+             tcg_gen_st_tl(n, tcg_env, ofs);
+         }
          break;
      }
-     build_append_array(parent_ctx->buf, buf);
-     build_free_array(buf);
+ #endif
  }
  
- /* ACPI 1.0b: 16.2.5.1 Namespace Modifier Objects Encoding: DefScope */
+ /* prs.rC <- rA */
 -- 
 2.39.2
 

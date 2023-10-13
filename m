@@ -1,118 +1,118 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1341947ejc;
-        Fri, 13 Oct 2023 01:16:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG/M9vkRY/KqHVfp/dDhko7vD9qoQWsKsxvXD7+cEZd/LkgwYyRl6dze6OPjeGDp3vKP8tX
-X-Received: by 2002:ac8:59ce:0:b0:417:b901:98ff with SMTP id f14-20020ac859ce000000b00417b90198ffmr32304217qtf.54.1697184977426;
-        Fri, 13 Oct 2023 01:16:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697184977; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1342295ejc;
+        Fri, 13 Oct 2023 01:17:05 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFs53HfWkrOva2pjPgtM4i9z48UK8+UU/GIMoUi8Pc6qInn6a8N80RtnNkJZcV61mlbWecj
+X-Received: by 2002:a05:620a:2889:b0:76c:d007:b544 with SMTP id j9-20020a05620a288900b0076cd007b544mr27620600qkp.26.1697185025646;
+        Fri, 13 Oct 2023 01:17:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697185025; cv=none;
         d=google.com; s=arc-20160816;
-        b=O7+ECwEjQe02ODTv240OwH/OfcCl4vYZAhXuuRP4ENolnY6aLPpBu04B8PNnFEAjJm
-         KTtwGWCjKXodrNXuGK5B+WJXw5P99GZ6SZIeEP+dj2h1oMT1Po1w+56itoEd1cuaQbC4
-         IMlikrVl0CAb4OSFMRgKy7CtmhREjix4RBJPpAx/RC0Qqatou41Ne0+cxhc+kmztFSf3
-         tsRG7s140CrxfRb6ZAql3XOdfDmI6zOVqw2DpOVIBM4VuIURq15GO1IIiNSdgnbncIT8
-         7sN0r9fVu22eGgSeGIjdslHKhU/IAQoyt7H5h+2QXznWALn0UU3ehKqtyAMGj9vpH3tm
-         n3UA==
+        b=W9ERNRvU3poWchLrpHueverD6xk84RZOwTiqRdfvOmh3qD5bijikCVXFiVDQKjdUhw
+         kKoNCRAoo7dDIMOsoQqQEz2jB6a1emoP90Dz++/h7D8fjfL4xbbKnxj9GE5BRoRnbOvb
+         axIQUV89uX99qiFvKkslfgXWYZFsTgB8l4ca42HMzad9TO8RQUz+fJOZo+0fdsFFf/e7
+         AYZSGUX2ieamMYjY2sKFKrSgXQu4o5FZgbECyelYXuLrYIo0GhcGckemz1aYVHpNq+gt
+         ChVO8OHNJ4UkGaIoYeDV3ma/n73rMh2JBDbgtAlmqgSWUhoawzV+PVUMXkFE6kjdzzM9
+         Pn7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=IFSG6N2uxNt6GHbM9eqwyrjOHkw0xm2XSOZPV6L6EYE=;
-        fh=mPWoUiZjF9BLrNCmB38hU4PA8hJFiognrx+bFj3ldcY=;
-        b=V5NCxOsZrNVqkIFhoq3ktWrXJjCtpUIPI44UvKFgKqEWeKAeMqzOc3asA8Gykvmdgi
-         o+aIPBJazl6KynXcIjqrCZYf28fNU5h4m6ekDvGWv5OkM5miEqaujpGRmA83QWjeDCPt
-         Q5htZdgyenL22jepFjGb1EfOiBaaWmj2J5yRiZVXXAxihynwwEbkoiSLHkm+Oy2CWBJp
-         OfqRfTGm+zqppbvUy0asndZEwCesEP6KecZzin1T5ObmybD7ErSJtNncqfWkBGBf5GsU
-         9IEgkI1c5ZF08IjMhbXIrP3L4e+W/uLf0DCb+9j1wb3RgWt8WNtB5y2CkSBAR/CUzfpU
-         MHfg==
+        bh=fHcUXIeVYL2J2IaeiQjIW4srz6zzb+o5NuSL2EwrB8I=;
+        fh=asEhtIhotNI9uCMGLmBw+ntEmnpVXPzyKuRUsbEEmB8=;
+        b=RWtgtQvea85Ev2MCUzU7iJl8RTLfGYnX8CRy2yWYpMVQO3lbDZxW8Ikb336pOqZMnR
+         AHOfCyHozUqkUDAay0kscw59QnFM69CBiw/0G3+/3P0ipq93zvNS7LxsaVS99UBFNt9h
+         TYuG8Dwu9lQy+To60UyMNoevUiDAWzAGgHumKn29P1OHyFZP648N8uECgmQYtKYW/zpw
+         MRo7aHnArL4agOhz2+pBOhBRZdGfYJpHa17xRN8RCuB9xvixY1cEm6JiG8uVi0pzlrxw
+         mDxf5vF+puOKVsIzL73srq1WFcUcs6Xpr4Dwicxqi1X0doIzTiX5aU0/tiCdXcNvovJq
+         9YJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K5VrBusR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gbokYzF5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i19-20020ac85c13000000b004181451a0ecsi835926qti.57.2023.10.13.01.16.17
+        by mx.google.com with ESMTPS id n21-20020a05620a295500b00775a1063051si855083qkp.501.2023.10.13.01.17.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:16:17 -0700 (PDT)
+        Fri, 13 Oct 2023 01:17:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K5VrBusR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gbokYzF5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrCyb-00048G-Di; Fri, 13 Oct 2023 03:52:53 -0400
+	id 1qrCxv-0001Oz-KB; Fri, 13 Oct 2023 03:52:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxs-00011a-9p
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:52:08 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1qrCxK-0006yD-Ja
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:37 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxW-0005EJ-O6
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:52:08 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-32d569e73acso1690334f8f.1
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:51:45 -0700 (PDT)
+ id 1qrCwy-0004zz-JT
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:25 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-32d3755214dso1743976f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:51:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183505; x=1697788305; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183470; x=1697788270; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IFSG6N2uxNt6GHbM9eqwyrjOHkw0xm2XSOZPV6L6EYE=;
- b=K5VrBusRO3gNrsvp7rJXCCKRZ+G+NnAQUpyVLHp3zQR/Bu6mG1J4Tl8krJ5TuVNFvA
- C8QkP3LEIhP03MxCgCQEXdd+Y7KBw58eZMMjX4HsPfq0WIPOxGInaCQahE+2TLx1FS6T
- YIuuNus8Z55LlOsTDbzpeYA0uWwqnBlas+lO9CVeh779K9+pAVV3oGt6ZwCpfUdcBzXX
- iECDc92DgMQ9pZ9vFG/LL4KWwiXH7fG+3womIm+px8Ed/257JkCu8LY6gJu1VCKKb74g
- 4iomMZAf3gIR9hdRF1ITuV01660XfdQrnF0rA+WMtuNL4DI2UUt2aGhmf1vAr98njz6W
- lnRw==
+ bh=fHcUXIeVYL2J2IaeiQjIW4srz6zzb+o5NuSL2EwrB8I=;
+ b=gbokYzF59VkVY+gvtFuqzRYFWudyqcG3wFlh871s6i/BrYS1IXhEYblHcGuCnp/F6F
+ py7NCdCgXO80SQUAFBjfFy/xoNGnvsr+SQ9J5nadOKy1rvDpb3zRw2oUlJ5b/y4vG81A
+ mrIu02oQyd25C8+H4BZBkblARRRVewodahFCFN9GKAoU1OxDQKw2Pb0LLykTkhiZjyYg
+ CNk4PlYPC5tl1qZL3EBduz1AAb0TOWDbccjt9NAR5SmAW3JQbqnYPETsH01S/qTHv1cv
+ yCh5O7KZf8Pi/YFhSg6iIGHn0rjKF+7ldfLsIWXacb+6qu4cZFs52DtaomkoiM/P6ZEG
+ 4fFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183505; x=1697788305;
+ d=1e100.net; s=20230601; t=1697183470; x=1697788270;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=IFSG6N2uxNt6GHbM9eqwyrjOHkw0xm2XSOZPV6L6EYE=;
- b=Q7fq1u5K3RBSX1m6zLBUTpwfCEtC3fwtXLQXnRWOH3//amzbx/dhcF4DSnlel6dvXj
- ZJSjiPmtkbehwRBNFahcLgm1VdhwRmrmDzoXN2qmaH4aLj7d93vV//K2uijKQ3ye/Tui
- k//jaqqTbJtOOpBiCNbTirI4BRfsF9BNQ5yCzEJi45LzF/58cJ/qT5k4L5nRQ75c7axf
- jGhAU3/71KHQ43BI2mk/X2ED7ljalmjQ/Z2NhYyNsb1/m9/5leJsXO5raTr97HMa+mrv
- a3gbvRHsnu4MZnx8dp7vn++JhazuuMfOHHXmQ2q7IZWEvyH9FuWeQyrxuqQoidsN5q8K
- ngoA==
-X-Gm-Message-State: AOJu0YxeC1edNxBJytZ68j6Nr3oJszAbdF9q58CWX8r5s4vNIP0xxupG
- IHFTpeYEPdcsJseOXWpeSeEC+7dEkq46xVIuWZk=
-X-Received: by 2002:a5d:6909:0:b0:314:dc0:2fca with SMTP id
- t9-20020a5d6909000000b003140dc02fcamr22729594wru.29.1697183504758; 
- Fri, 13 Oct 2023 00:51:44 -0700 (PDT)
+ bh=fHcUXIeVYL2J2IaeiQjIW4srz6zzb+o5NuSL2EwrB8I=;
+ b=v9RVry73zLQ7dLt+mBSEoPTCKNP3zkTu4A2PGGRT9pwm8oc+tjWmMhNoXrU6lNhBvN
+ rKE8IdBjYMROsLWbmADd3tNl+qREz5IAumOSmixNWewGvt6SlU0b49/cgI+lvhXWExyC
+ e7/yUGH3D2xOX7/Hly2KOhcLfNkhoTEVSpEXhTIJjmiI7VLdQc6tAWjnFmTdwEq2ILEa
+ UsbNCMjSVjhJCh/MeaUTId7B2I5ARu9aTj6LSjhJcK4M7xPJw/CTGvO4QEI+cb7SOocV
+ HistaBDtds00bEtjx4xyCT6J6+IvaCTYcM5Lv0xhYZxOsUYiuNWuKYqi5D2kohzV9hBv
+ HVhA==
+X-Gm-Message-State: AOJu0YwGoM7p1GOItddtemZUzrCjs+12QBBhtBKWo/HJqeCOYse94Lya
+ 2l//9y/um0vCRWT4l2++Xc0GCfOsYDdqFziHbgg=
+X-Received: by 2002:a5d:6a01:0:b0:317:727f:3bc7 with SMTP id
+ m1-20020a5d6a01000000b00317727f3bc7mr22625918wru.17.1697183470156; 
+ Fri, 13 Oct 2023 00:51:10 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.43
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:51:44 -0700 (PDT)
+ Fri, 13 Oct 2023 00:51:09 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>
-Subject: [RFC PATCH 49/75] hw/audio: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:48:06 +0300
-Message-Id: <adcf74cd58c36dc0bf7373c8a80cc8fea75286d8.1697034504.git.manos.pitsidianakis@linaro.org>
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [RFC PATCH 40/75] linux-user: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:48 +0300
+Message-Id: <f2223335977f9b09f8ec069484e0faaad918d85b.1697034504.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,427 +127,262 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WacTPUFznq00
+X-TUID: gew4Ud9EpGNA
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/audio/cs4231a.c    | 2 +-
- hw/audio/gusemu_hal.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ linux-user/mips/cpu_loop.c | 8 ++++----
+ linux-user/mmap.c          | 2 +-
+ linux-user/syscall.c       | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/audio/cs4231a.c b/hw/audio/cs4231a.c
-index 3aa105748d..3bf0116c68 100644
---- a/hw/audio/cs4231a.c
-+++ b/hw/audio/cs4231a.c
-@@ -272,90 +272,90 @@ static void cs_audio_callback (void *opaque, int free)
- static void cs_reset_voices (CSState *s, uint32_t val)
+diff --git a/linux-user/mips/cpu_loop.c b/linux-user/mips/cpu_loop.c
+index 8735e58bad..38ddcadfc6 100644
+--- a/linux-user/mips/cpu_loop.c
++++ b/linux-user/mips/cpu_loop.c
+@@ -63,68 +63,68 @@ static void do_tr_or_bp(CPUMIPSState *env, unsigned int code, bool trap)
+ void cpu_loop(CPUMIPSState *env)
  {
-     int xtal;
-     struct audsettings as;
-     IsaDmaClass *k = ISADMA_GET_CLASS(s->isa_dma);
+     CPUState *cs = env_cpu(env);
+     int trapnr, si_code;
+     unsigned int code;
+     abi_long ret;
+ # ifdef TARGET_ABI_MIPSO32
+     unsigned int syscall_num;
+ # endif
  
- #ifdef DEBUG_XLAW
-     if (val == 0 || val == 32)
-         val = (1 << 4) | (1 << 5);
+     for(;;) {
+         cpu_exec_start(cs);
+         trapnr = cpu_exec(cs);
+         cpu_exec_end(cs);
+         process_queued_cpu_work(cs);
+ 
+         switch(trapnr) {
+         case EXCP_SYSCALL:
+             env->active_tc.PC += 4;
+ # ifdef TARGET_ABI_MIPSO32
+             syscall_num = env->active_tc.gpr[2] - 4000;
+             if (syscall_num >= sizeof(mips_syscall_args)) {
+                 /* syscall_num is larger that any defined for MIPS O32 */
+                 ret = -TARGET_ENOSYS;
+             } else if (mips_syscall_args[syscall_num] ==
+                        MIPS_SYSCALL_NUMBER_UNUSED) {
+                 /* syscall_num belongs to the range not defined for MIPS O32 */
+                 ret = -TARGET_ENOSYS;
+             } else {
+                 /* syscall_num is valid */
+                 int nb_args;
+                 abi_ulong sp_reg;
+                 abi_ulong arg5 = 0, arg6 = 0, arg7 = 0, arg8 = 0;
+ 
+                 nb_args = mips_syscall_args[syscall_num];
+                 sp_reg = env->active_tc.gpr[29];
+                 switch (nb_args) {
+                 /* these arguments are taken from the stack */
+                 case 8:
+                     if ((ret = get_user_ual(arg8, sp_reg + 28)) != 0) {
+                         goto done_syscall;
+                     }
+-                    /* fall through */
++                    fallthrough;
+                 case 7:
+                     if ((ret = get_user_ual(arg7, sp_reg + 24)) != 0) {
+                         goto done_syscall;
+                     }
+-                    /* fall through */
++                    fallthrough;
+                 case 6:
+                     if ((ret = get_user_ual(arg6, sp_reg + 20)) != 0) {
+                         goto done_syscall;
+                     }
+-                    /* fall through */
++                    fallthrough;
+                 case 5:
+                     if ((ret = get_user_ual(arg5, sp_reg + 16)) != 0) {
+                         goto done_syscall;
+                     }
+-                    /* fall through */
++                    fallthrough;
+                 default:
+                     break;
+                 }
+                 ret = do_syscall(env, env->active_tc.gpr[2],
+                                  env->active_tc.gpr[4],
+                                  env->active_tc.gpr[5],
+                                  env->active_tc.gpr[6],
+                                  env->active_tc.gpr[7],
+                                  arg5, arg6, arg7, arg8);
+             }
+diff --git a/linux-user/mmap.c b/linux-user/mmap.c
+index 8ccaab7859..ff33b4ccf6 100644
+--- a/linux-user/mmap.c
++++ b/linux-user/mmap.c
+@@ -960,84 +960,84 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
+ abi_long target_madvise(abi_ulong start, abi_ulong len_in, int advice)
+ {
+     abi_ulong len;
+     int ret = 0;
+ 
+     if (start & ~TARGET_PAGE_MASK) {
+         return -TARGET_EINVAL;
+     }
+     if (len_in == 0) {
+         return 0;
+     }
+     len = TARGET_PAGE_ALIGN(len_in);
+     if (len == 0 || !guest_range_valid_untagged(start, len)) {
+         return -TARGET_EINVAL;
+     }
+ 
+     /* Translate for some architectures which have different MADV_xxx values */
+     switch (advice) {
+     case TARGET_MADV_DONTNEED:      /* alpha */
+         advice = MADV_DONTNEED;
+         break;
+     case TARGET_MADV_WIPEONFORK:    /* parisc */
+         advice = MADV_WIPEONFORK;
+         break;
+     case TARGET_MADV_KEEPONFORK:    /* parisc */
+         advice = MADV_KEEPONFORK;
+         break;
+     /* we do not care about the other MADV_xxx values yet */
+     }
+ 
+     /*
+      * Most advice values are hints, so ignoring and returning success is ok.
+      *
+      * However, some advice values such as MADV_DONTNEED, MADV_WIPEONFORK and
+      * MADV_KEEPONFORK are not hints and need to be emulated.
+      *
+      * A straight passthrough for those may not be safe because qemu sometimes
+      * turns private file-backed mappings into anonymous mappings.
+      * If all guest pages have PAGE_PASSTHROUGH set, mappings have the
+      * same semantics for the host as for the guest.
+      *
+      * We pass through MADV_WIPEONFORK and MADV_KEEPONFORK if possible and
+      * return failure if not.
+      *
+      * MADV_DONTNEED is passed through as well, if possible.
+      * If passthrough isn't possible, we nevertheless (wrongly!) return
+      * success, which is broken but some userspace programs fail to work
+      * otherwise. Completely implementing such emulation is quite complicated
+      * though.
+      */
+     mmap_lock();
+     switch (advice) {
+     case MADV_WIPEONFORK:
+     case MADV_KEEPONFORK:
+         ret = -EINVAL;
+-        /* fall through */
++        fallthrough;
+     case MADV_DONTNEED:
+         if (page_check_range(start, len, PAGE_PASSTHROUGH)) {
+             ret = get_errno(madvise(g2h_untagged(start), len, advice));
+             if ((advice == MADV_DONTNEED) && (ret == 0)) {
+                 page_reset_target_data(start, start + len - 1);
+             }
+         }
+     }
+     mmap_unlock();
+ 
+     return ret;
+ }
+ 
+ #ifndef TARGET_FORCE_SHMLBA
+ /*
+  * For most architectures, SHMLBA is the same as the page size;
+  * some architectures have larger values, in which case they should
+  * define TARGET_FORCE_SHMLBA and provide a target_shmlba() function.
+  * This corresponds to the kernel arch code defining __ARCH_FORCE_SHMLBA
+  * and defining its own value for SHMLBA.
+  *
+  * The kernel also permits SHMLBA to be set by the architecture to a
+  * value larger than the page size without setting __ARCH_FORCE_SHMLBA;
+  * this means that addresses are rounded to the large size if
+  * SHM_RND is set but addresses not aligned to that size are not rejected
+  * as long as they are at least page-aligned. Since the only architecture
+  * which uses this is ia64 this code doesn't provide for that oddity.
+  */
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index d49cd314a2..d15817846c 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -7740,74 +7740,74 @@ static int do_safe_futex(int *uaddr, int op, int val,
+ /* ??? Using host futex calls even when target atomic operations
+    are not really atomic probably breaks things.  However implementing
+    futexes locally would make futexes shared between multiple processes
+    tricky.  However they're probably useless because guest atomic
+    operations won't work either.  */
+ #if defined(TARGET_NR_futex) || defined(TARGET_NR_futex_time64)
+ static int do_futex(CPUState *cpu, bool time64, target_ulong uaddr,
+                     int op, int val, target_ulong timeout,
+                     target_ulong uaddr2, int val3)
+ {
+     struct timespec ts, *pts = NULL;
+     void *haddr2 = NULL;
+     int base_op;
+ 
+     /* We assume FUTEX_* constants are the same on both host and target. */
+ #ifdef FUTEX_CMD_MASK
+     base_op = op & FUTEX_CMD_MASK;
+ #else
+     base_op = op;
+ #endif
+     switch (base_op) {
+     case FUTEX_WAIT:
+     case FUTEX_WAIT_BITSET:
+         val = tswap32(val);
+         break;
+     case FUTEX_WAIT_REQUEUE_PI:
+         val = tswap32(val);
+         haddr2 = g2h(cpu, uaddr2);
+         break;
+     case FUTEX_LOCK_PI:
+     case FUTEX_LOCK_PI2:
+         break;
+     case FUTEX_WAKE:
+     case FUTEX_WAKE_BITSET:
+     case FUTEX_TRYLOCK_PI:
+     case FUTEX_UNLOCK_PI:
+         timeout = 0;
+         break;
+     case FUTEX_FD:
+         val = target_to_host_signal(val);
+         timeout = 0;
+         break;
+     case FUTEX_CMP_REQUEUE:
+     case FUTEX_CMP_REQUEUE_PI:
+         val3 = tswap32(val3);
+-        /* fall through */
++        fallthrough;
+     case FUTEX_REQUEUE:
+     case FUTEX_WAKE_OP:
+         /*
+          * For these, the 4th argument is not TIMEOUT, but VAL2.
+          * But the prototype of do_safe_futex takes a pointer, so
+          * insert casts to satisfy the compiler.  We do not need
+          * to tswap VAL2 since it's not compared to guest memory.
+           */
+         pts = (struct timespec *)(uintptr_t)timeout;
+         timeout = 0;
+         haddr2 = g2h(cpu, uaddr2);
+         break;
+     default:
+         return -TARGET_ENOSYS;
+     }
+     if (timeout) {
+         pts = &ts;
+         if (time64
+             ? target_to_host_timespec64(pts, timeout)
+             : target_to_host_timespec(pts, timeout)) {
+             return -TARGET_EFAULT;
+         }
+     }
+     return do_safe_futex(g2h(cpu, uaddr), op, val, pts, haddr2, val3);
+ }
  #endif
  
-     xtal = val & 1;
-     as.freq = freqs[xtal][(val >> 1) & 7];
- 
-     if (as.freq == -1) {
-         lerr ("unsupported frequency (val=%#x)\n", val);
-         goto error;
-     }
- 
-     as.nchannels = (val & (1 << 4)) ? 2 : 1;
-     as.endianness = 0;
-     s->tab = NULL;
- 
-     switch ((val >> 5) & ((s->dregs[MODE_And_ID] & MODE2) ? 7 : 3)) {
-     case 0:
-         as.fmt = AUDIO_FORMAT_U8;
-         s->shift = as.nchannels == 2;
-         break;
- 
-     case 1:
-         s->tab = MuLawDecompressTable;
-         goto x_law;
-     case 3:
-         s->tab = ALawDecompressTable;
-     x_law:
-         as.fmt = AUDIO_FORMAT_S16;
-         as.endianness = AUDIO_HOST_ENDIANNESS;
-         s->shift = as.nchannels == 2;
-         break;
- 
-     case 6:
-         as.endianness = 1;
--        /* fall through */
-+        fallthrough;
-     case 2:
-         as.fmt = AUDIO_FORMAT_S16;
-         s->shift = as.nchannels;
-         break;
- 
-     case 7:
-     case 4:
-         lerr ("attempt to use reserved format value (%#x)\n", val);
-         goto error;
- 
-     case 5:
-         lerr ("ADPCM 4 bit IMA compatible format is not supported\n");
-         goto error;
-     }
- 
-     s->voice = AUD_open_out (
-         &s->card,
-         s->voice,
-         "cs4231a",
-         s,
-         cs_audio_callback,
-         &as
-         );
- 
-     if (s->dregs[Interface_Configuration] & PEN) {
-         if (!s->dma_running) {
-             k->hold_DREQ(s->isa_dma, s->dma);
-             AUD_set_active_out (s->voice, 1);
-             s->transferred = 0;
-         }
-         s->dma_running = 1;
-     }
-     else {
-         if (s->dma_running) {
-             k->release_DREQ(s->isa_dma, s->dma);
-             AUD_set_active_out (s->voice, 0);
-         }
-         s->dma_running = 0;
-     }
-     return;
- 
-  error:
-     if (s->dma_running) {
-         k->release_DREQ(s->isa_dma, s->dma);
-         AUD_set_active_out (s->voice, 0);
-     }
- }
-diff --git a/hw/audio/gusemu_hal.c b/hw/audio/gusemu_hal.c
-index f159978b49..76dd906ea1 100644
---- a/hw/audio/gusemu_hal.c
-+++ b/hw/audio/gusemu_hal.c
-@@ -190,311 +190,311 @@ unsigned int gus_read(GUSEmuState * state, int port, int size)
- void gus_write(GUSEmuState * state, int port, int size, unsigned int data)
- {
-     uint8_t        *gusptr;
-     gusptr = state->gusdatapos;
-     GUSregd(portaccesses)++;
- 
-     switch (port & 0xff0f)
-     {
-     case 0x200:                 /* MixerCtrlReg */
-         GUSregb(MixerCtrlReg2x0) = (uint8_t) data;
-         break;
-     case 0x206:                 /* IRQstatReg / SB2x6IRQ */
-         if (GUSregb(GUS45TimerCtrl) & 0x20) /* SB IRQ enabled? -> set 2x6IRQ bit */
-         {
-             GUSregb(TimerStatus2x8) |= 0x08;
-             GUSregb(IRQStatReg2x6) = 0x10;
-             GUS_irqrequest(state, state->gusirq, 1);
-         }
-         break;
-     case 0x308:                /* AdLib 388h */
-     case 0x208:                /* AdLibCommandReg */
-         GUSregb(AdLibCommand2xA) = (uint8_t) data;
-         break;
-     case 0x309:                /* AdLib 389h */
-     case 0x209:                /* AdLibDataReg */
-         if ((GUSregb(AdLibCommand2xA) == 0x04) && (!(GUSregb(GUS45TimerCtrl) & 1))) /* GUS auto timer mode enabled? */
-         {
-             if (data & 0x80)
-                 GUSregb(TimerStatus2x8) &= 0x1f; /* AdLib IRQ reset? -> clear maskable adl. timer int regs */
-             else
-                 GUSregb(TimerDataReg2x9) = (uint8_t) data;
-         }
-         else
-         {
-             GUSregb(AdLibData2x9) = (uint8_t) data;
-             if (GUSregb(GUS45TimerCtrl) & 0x02)
-             {
-                 GUSregb(TimerStatus2x8) |= 0x01;
-                 GUSregb(IRQStatReg2x6) = 0x10;
-                 GUS_irqrequest(state, state->gusirq, 1);
-             }
-         }
-         break;
-     case 0x20A:
-         GUSregb(AdLibStatus2x8) = (uint8_t) data;
-         break;                 /* AdLibStatus2x8 */
-     case 0x20B:                /* GUS hidden registers */
-         switch (GUSregb(RegCtrl_2xF) & 0x7)
-         {
-         case 0:
-             if (GUSregb(MixerCtrlReg2x0) & 0x40)
-                 GUSregb(IRQ_2xB) = (uint8_t) data; /* control register select bit */
-             else
-                 GUSregb(DMA_2xB) = (uint8_t) data;
-             break;
-             /* case 1-4: general purpose emulation regs */
-         case 5:                                    /* clear stat reg 2xF */
-             GUSregb(StatRead_2xF) = 0; /* ToDo: is this identical with GUS classic? */
-             if (!GUSregb(IRQStatReg2x6))
-                 GUS_irqclear(state, state->gusirq);
-             break;
-         case 6:                                    /* Jumper reg (Joystick/MIDI enable) */
-             GUSregb(Jumper_2xB) = (uint8_t) data;
-             break;
-         default:;
-         }
-         break;
-     case 0x20C:                /* SB2xCd */
-         if (GUSregb(GUS45TimerCtrl) & 0x20)
-         {
-             GUSregb(TimerStatus2x8) |= 0x10; /* SB IRQ enabled? -> set 2xCIRQ bit */
-             GUSregb(IRQStatReg2x6) = 0x10;
-             GUS_irqrequest(state, state->gusirq, 1);
-         }
--        /* fall through */
-+        fallthrough;
-     case 0x20D:                /* SB2xCd no IRQ */
-         GUSregb(SB2xCd) = (uint8_t) data;
-         break;
-     case 0x20E:                /* SB2xE */
-         GUSregb(SB2xE) = (uint8_t) data;
-         break;
-     case 0x20F:
-         GUSregb(RegCtrl_2xF) = (uint8_t) data;
-         break;                 /* CtrlReg2xF */
-     case 0x302:                /* VoiceSelReg */
-         GUSregb(VoiceSelReg3x2) = (uint8_t) data;
-         break;
-     case 0x303:                /* FunkSelReg */
-         GUSregb(FunkSelReg3x3) = (uint8_t) data;
-         if ((uint8_t) data == 0x8f) /* set irqstatreg, get voicereg and clear IRQ */
-         {
-             int             voice;
-             if (GUSregd(voicewavetableirq)) /* WavetableIRQ */
-             {
-                 for (voice = 0; voice < 31; voice++)
-                 {
-                     if (GUSregd(voicewavetableirq) & (1 << voice))
-                     {
-                         GUSregd(voicewavetableirq) ^= (1 << voice); /* clear IRQ bit */
-                         GUSregb(voice << 5) &= 0x7f; /* clear voice reg irq bit */
-                         if (!GUSregd(voicewavetableirq))
-                             GUSregb(IRQStatReg2x6) &= 0xdf;
-                         if (!GUSregb(IRQStatReg2x6))
-                             GUS_irqclear(state, state->gusirq);
-                         GUSregb(SynVoiceIRQ8f) = voice | 0x60; /* (bit==0 => IRQ wartend) */
-                         return;
-                     }
-                 }
-             }
-             else if (GUSregd(voicevolrampirq)) /* VolRamp IRQ */
-             {
-                 for (voice = 0; voice < 31; voice++)
-                 {
-                     if (GUSregd(voicevolrampirq) & (1 << voice))
-                     {
-                         GUSregd(voicevolrampirq) ^= (1 << voice); /* clear IRQ bit */
-                         GUSregb((voice << 5) + VSRVolRampControl) &= 0x7f; /* clear voice volume reg irq bit */
-                         if (!GUSregd(voicevolrampirq))
-                             GUSregb(IRQStatReg2x6) &= 0xbf;
-                         if (!GUSregb(IRQStatReg2x6))
-                             GUS_irqclear(state, state->gusirq);
-                         GUSregb(SynVoiceIRQ8f) = voice | 0x80; /* (bit==0 => IRQ wartend) */
-                         return;
-                     }
-                 }
-             }
-             GUSregb(SynVoiceIRQ8f) = 0xe8; /* kein IRQ wartet */
-         }
-         break;
-     case 0x304:
-     case 0x305:
-         {
-             uint16_t         writedata = (uint16_t) data;
-             uint16_t         readmask = 0x0000;
-             if (size == 1)
-             {
-                 readmask = 0xff00;
-                 writedata &= 0xff;
-                 if ((port & 0xff0f) == 0x305)
-                 {
-                     writedata = (uint16_t) (writedata << 8);
-                     readmask = 0x00ff;
-                 }
-             }
-             switch (GUSregb(FunkSelReg3x3))
-             {
-                 /* voice specific functions */
-             case 0x00:
-             case 0x01:
-             case 0x02:
-             case 0x03:
-             case 0x04:
-             case 0x05:
-             case 0x06:
-             case 0x07:
-             case 0x08:
-             case 0x09:
-             case 0x0a:
-             case 0x0b:
-             case 0x0c:
-             case 0x0d:
-                 {
-                     int             offset;
-                     if (!(GUSregb(GUS4cReset) & 0x01))
-                         break;  /* reset flag active? */
-                     offset = 2 * (GUSregb(FunkSelReg3x3) & 0x0f);
-                     offset += (GUSregb(VoiceSelReg3x2) & 0x1f) << 5; /*  = Voice*32 + Function*2 */
-                     GUSregw(offset) = (uint16_t) ((GUSregw(offset) & readmask) | writedata);
-                 }
-                 break;
-                 /* voice unspecific functions */
-             case 0x0e:         /* NumVoices */
-                 GUSregb(NumVoices) = (uint8_t) data;
-                 break;
-             /* case 0x0f:      */ /* read only */
-                 /* common functions */
-             case 0x41:         /* DramDMAContrReg */
-                 GUSregb(GUS41DMACtrl) = (uint8_t) data;
-                 if (data & 0x01)
-                     GUS_dmarequest(state);
-                 break;
-             case 0x42:         /* DramDMAmemPosReg */
-                 GUSregw(GUS42DMAStart) = (GUSregw(GUS42DMAStart) & readmask) | writedata;
-                 GUSregb(GUS50DMAHigh) &= 0xf; /* compatibility stuff... */
-                 break;
-             case 0x43:         /* DRAMaddrLo */
-                 GUSregd(GUSDRAMPOS24bit) =
-                     (GUSregd(GUSDRAMPOS24bit) & (readmask | 0xff0000)) | writedata;
-                 break;
-             case 0x44:         /* DRAMaddrHi */
-                 GUSregd(GUSDRAMPOS24bit) =
-                     (GUSregd(GUSDRAMPOS24bit) & 0xffff) | ((data & 0x0f) << 16);
-                 break;
-             case 0x45:         /* TCtrlReg */
-                 GUSregb(GUS45TimerCtrl) = (uint8_t) data;
-                 if (!(data & 0x20))
-                     GUSregb(TimerStatus2x8) &= 0xe7;    /* sb IRQ dis? -> clear 2x8/2xC sb IRQ flags */
-                 if (!(data & 0x02))
-                     GUSregb(TimerStatus2x8) &= 0xfe;    /* adlib data IRQ dis? -> clear 2x8 adlib IRQ flag */
-                 if (!(GUSregb(TimerStatus2x8) & 0x19))
-                     GUSregb(IRQStatReg2x6) &= 0xef;     /* 0xe6; $$clear IRQ if both IRQ bits are inactive or cleared */
-                 /* catch up delayed timer IRQs: */
-                 if ((GUSregw(TimerIRQs) > 1) && (GUSregb(TimerDataReg2x9) & 3))
-                 {
-                     if (GUSregb(TimerDataReg2x9) & 1)   /* start timer 1 (80us decrement rate) */
-                     {
-                         if (!(GUSregb(TimerDataReg2x9) & 0x40))
-                             GUSregb(TimerStatus2x8) |= 0xc0;    /* maskable bits */
-                         if (data & 4) /* timer1 irq enable */
-                         {
-                             GUSregb(TimerStatus2x8) |= 4;       /* nonmaskable bit */
-                             GUSregb(IRQStatReg2x6) |= 4;        /* timer 1 irq pending */
-                         }
-                     }
-                     if (GUSregb(TimerDataReg2x9) & 2)   /* start timer 2 (320us decrement rate) */
-                     {
-                         if (!(GUSregb(TimerDataReg2x9) & 0x20))
-                             GUSregb(TimerStatus2x8) |= 0xa0;    /* maskable bits */
-                         if (data & 8) /* timer2 irq enable */
-                         {
-                             GUSregb(TimerStatus2x8) |= 2;       /* nonmaskable bit */
-                             GUSregb(IRQStatReg2x6) |= 8;        /* timer 2 irq pending */
-                         }
-                     }
-                     GUSregw(TimerIRQs)--;
-                     if (GUSregw(BusyTimerIRQs) > 1)
-                         GUSregw(BusyTimerIRQs)--;
-                     else
-                         GUSregw(BusyTimerIRQs) =
-                             GUS_irqrequest(state, state->gusirq, GUSregw(TimerIRQs));
-                 }
-                 else
-                     GUSregw(TimerIRQs) = 0;
- 
-                 if (!(data & 0x04))
-                 {
-                     GUSregb(TimerStatus2x8) &= 0xfb; /* clear non-maskable timer1 bit */
-                     GUSregb(IRQStatReg2x6)  &= 0xfb;
-                 }
-                 if (!(data & 0x08))
-                 {
-                     GUSregb(TimerStatus2x8) &= 0xfd; /* clear non-maskable timer2 bit */
-                     GUSregb(IRQStatReg2x6)  &= 0xf7;
-                 }
-                 if (!GUSregb(IRQStatReg2x6))
-                     GUS_irqclear(state, state->gusirq);
-                 break;
-             case 0x46:          /* Counter1 */
-                 GUSregb(GUS46Counter1) = (uint8_t) data;
-                 break;
-             case 0x47:          /* Counter2 */
-                 GUSregb(GUS47Counter2) = (uint8_t) data;
-                 break;
-             /* case 0x48:       */ /* sampling freq reg not emulated (same as interwave) */
-             case 0x49:          /* SampCtrlReg */
-                 GUSregb(GUS49SampCtrl) = (uint8_t) data;
-                 break;
-             /* case 0x4b:       */ /* joystick trim not emulated */
-             case 0x4c:          /* GUSreset */
-                 GUSregb(GUS4cReset) = (uint8_t) data;
-                 if (!(GUSregb(GUS4cReset) & 1)) /* reset... */
-                 {
-                     GUSregd(voicewavetableirq) = 0;
-                     GUSregd(voicevolrampirq) = 0;
-                     GUSregw(TimerIRQs) = 0;
-                     GUSregw(BusyTimerIRQs) = 0;
-                     GUSregb(NumVoices) = 0xcd;
-                     GUSregb(IRQStatReg2x6) = 0;
-                     GUSregb(TimerStatus2x8) = 0;
-                     GUSregb(AdLibData2x9) = 0;
-                     GUSregb(TimerDataReg2x9) = 0;
-                     GUSregb(GUS41DMACtrl) = 0;
-                     GUSregb(GUS45TimerCtrl) = 0;
-                     GUSregb(GUS49SampCtrl) = 0;
-                     GUSregb(GUS4cReset) &= 0xf9; /* clear IRQ and DAC enable bits */
-                     GUS_irqclear(state, state->gusirq);
-                 }
-                 /* IRQ enable bit checked elsewhere */
-                 /* EnableDAC bit may be used by external callers */
-                 break;
-             }
-         }
-         break;
-     case 0x307:                /* DRAMaccess */
-         {
-             uint8_t        *adr;
-             adr = state->himemaddr + (GUSregd(GUSDRAMPOS24bit) & 0xfffff);
-             *adr = (uint8_t) data;
-         }
-         break;
-     }
- }
- 
- /* Attention when breaking up a single DMA transfer to multiple ones:
-  * it may lead to multiple terminal count interrupts and broken transfers:
-  *
-  * 1. Whenever you transfer a piece of data, the gusemu callback is invoked
-  * 2. The callback may generate a TC irq (if the register was set up to do so)
-  * 3. The irq may result in the program using the GUS to reprogram the GUS
-  *
-  * Some programs also decide to upload by just checking if TC occurs
-  * (via interrupt or a cleared GUS dma flag)
-  * and then start the next transfer, without checking DMA state
-  *
-  * Thus: Always make sure to set the TC flag correctly!
-  *
-  * Note that the genuine GUS had a granularity of 16 bytes/words for low/high DMA
-  * while later cards had atomic granularity provided by an additional GUS50DMAHigh register
-  * GUSemu also uses this register to support byte-granular transfers for better compatibility
-  * with emulators other than GUSemu32
-  */
+ #if defined(TARGET_NR_name_to_handle_at) && defined(CONFIG_OPEN_BY_HANDLE)
 -- 
 2.39.2
 

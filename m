@@ -1,105 +1,108 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1330846ejc;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1330847ejc;
         Fri, 13 Oct 2023 00:51:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHORIgxAUhlo/yAjk8wv0glA12QZGmTRQ45sDJVi1E6iq0LwJQhpMoI2JjsvmJ3wlRxgoji
-X-Received: by 2002:a0c:f1c8:0:b0:666:6022:a8c6 with SMTP id u8-20020a0cf1c8000000b006666022a8c6mr25844437qvl.54.1697183466275;
+X-Google-Smtp-Source: AGHT+IH+mfHlcd/cH4r04xJurdvv1B85gwqTe4Il39QJpHNM7jJ+RTCa4CcGrUXfS93+X9DfVvYa
+X-Received: by 2002:a0c:e24b:0:b0:66c:fd0b:271e with SMTP id x11-20020a0ce24b000000b0066cfd0b271emr11442718qvl.10.1697183466383;
         Fri, 13 Oct 2023 00:51:06 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1697183466; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wv6pXJkr4U93fkAXYPF/rZOvC8t35ZEyZjWQCQD29ZyzX96t7Y0NEppnbXrgDf7cSg
-         JSDj6mQYyy9JiffxQPiQtKtYIDr8khp3c+EFkdX/aNNcat3GBECnJ99Xl+2txZHAin8c
-         XtupMx04e9hk7tfFK2sswaEgfVk0nl0qfBj7PC+1FRW1MAdqd4adWLuilNf+Nk0+nXIn
-         hYyhRQQAZJw13fjwky5iTGVtJNhXUq8HA3CJaW1K8iLqU+Xhfgfl16mf0ebWEi1UYxNj
-         ZnnjXM72vM25lFGbrMPZSFFDd+XeK1SBcmWTVMkXJ04kyPb5aUzdxqT8bqol8YXLHCDe
-         4+9Q==
+        b=mBRu9K6LNAQfsaX18Eu/JrWRu0odTpAa3imRcH0tYdtrl17cWKnYaRRJivkOmRYcL1
+         mmz0a193BLsqVxFIEx65e3y4/2UC/wjIWTN8QcxjYUmHxze3kHm/P/ogrZijDKnT45Ly
+         YQw/4Wel3d5yltdDFGaDGciE1k9PXZN7iD3pAc/Ejp1luW/5OBnl87YCjvVcOWmcJp7a
+         PhDaWh4/BQDQMFDp/A4q8i+eDj45AwmLLiwkYtrocRd2KUs8P9qEmpjgJu2IymCOkbwk
+         Tq92C14nFQnjrRQMu3lC1gLSFI2epd5SyTv0OU0B4bqZCbtwk3Pg5xrUsU05ZM9vrkgn
+         bt1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KtdJELuGCqaz6k9Vi6yvdb+Hy9MnEYqnd5uLlh799bE=;
-        fh=wQ3O8kd+IfgCrRp9LKla2HahxJtTKPGo6r1jTn11XQs=;
-        b=gL97xpbLOyyIVXTEbRgfBm+vrA8Deru7NO9KLT8tkD7A1wwSmFTbxHWzgct5Yi+ddX
-         VUMCcTLE3sEaruW0DJMOQjoPoSQYWnfFvjTp22iuB0qaykLSWMGDZmg9/+OduuvKn/EN
-         q97acirZ4TGPNttBLSAq2NFeLVSZmwDgakKn9G0TXL76Vt4XTbGacHK5U8DU0bZRO4JG
-         v/BA/9WPDtIXp6VItA/pRe0nFaJ+yGXJK+SuqzZy7ILYZTRQ0JtcHOQNc1WTdmXwBEr1
-         ER75QoL9JPzBAoWgGdVAbnVaq8VPwIQKKqT6OsnEczIPM2kwKd6uEsXka+1EpMGzmqlm
-         X9qQ==
+        bh=IHHNv9a7p6HwYLVLm/9xkBe05lXBtnT5aw37gy92uds=;
+        fh=1/XwYIDKVFQIbFI6mqXvm718AjTHpCCBi+/Q+s0RByo=;
+        b=PS5eUDEWwHTzIytC7OMZGqmK/IctTkWT6NLfFFNyDLfedLFYrKYcNDC3CDocGSBtr+
+         6CbZ4qFIK7uFpObTeToNvNbpNjoLk/xOGAsmdUISsDy2/YuBoQgviQFaGSrFNu9dfWe5
+         gaYEDZ1YcfTRt8bGHBmCKoJ44NPYapLYdQ2O9241MmuA+hhicPJ54bDcMbNjQ1sW+GpL
+         bL5pkACppHEDlYSSjcyj1vNhbETCWKV+Ph4vo+8diyv2F/05scifvO0cUkWkQA3QKMHU
+         QCTti8qGYdLm1Z5jjfXGC+Ioxec7qC5xJLWALNtdgGxTg6n/7nY8wX0CKYTWjPCSjDCZ
+         Zc/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pGCRRdIv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DA8Qc5Z2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10-20020a056214118a00b0066cfe943369si816224qvv.358.2023.10.13.00.51.06
+        by mx.google.com with ESMTPS id ff3-20020a0562140bc300b0066d05923c78si798607qvb.597.2023.10.13.00.51.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 13 Oct 2023 00:51:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pGCRRdIv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DA8Qc5Z2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrCw2-0004JM-6B; Fri, 13 Oct 2023 03:50:14 -0400
+	id 1qrCwK-0004o6-S2; Fri, 13 Oct 2023 03:50:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCw0-0004IK-BY
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:50:12 -0400
+ id 1qrCwI-0004bD-Gp
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:50:30 -0400
 Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCvx-00047M-BW
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:50:12 -0400
+ id 1qrCw2-0004Nw-PQ
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:50:30 -0400
 Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-323168869daso1722466f8f.2
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:50:00 -0700 (PDT)
+ ffacd0b85a97d-32d9cb5e0fcso303477f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:50:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183400; x=1697788200; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183412; x=1697788212; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KtdJELuGCqaz6k9Vi6yvdb+Hy9MnEYqnd5uLlh799bE=;
- b=pGCRRdIvFtks2OP68Ivj+4q/H4EgNbHhO3R4m+yw4HzPCPJNSSDfPYePs9sqm7tSs0
- VslbYY7GKZQaUJiGCYGhupmPZWotzLURuxZl4gf5z3u0QFTWO0TYLHxmNRKo3+oCwC5C
- eNDw2Ukym76uwmGW+FJ/9zZjc0uaPswaqBsjN7DRS8S7rL58ejPqJyQeNZJci6bhx0y2
- mKVU5z41dtsFaHvt6r6ZaZwDIiDVfJFpng3fFWUxG1Gg9gorfMcJc3CkhnR58jNNxfNN
- hgj9O1TNPRSU+QrELgDinG/iZz9/zRRHQm04lwKevYLtZW7scQ74vhvmu6wAQcgclTIn
- 4wBA==
+ bh=IHHNv9a7p6HwYLVLm/9xkBe05lXBtnT5aw37gy92uds=;
+ b=DA8Qc5Z2ScWu3/yiSrxTyoDuhCUWVN8UiiAa+pFf6K6FCH5TkeWCoMzfDoNlNNCrWe
+ YTzwjzTiQ7puz4bmtmR5IBn+lqMl1JMrTyE+ndnv9f7Py3CoGubJs/xI36o9NSQd3imY
+ agFu/Lb0VPQHLXlrivSQ8HesxHJETRLM5hGISpSmtxLTlOXYnkipnOwMQWisFjfCJEte
+ DvWQangD919Q/sFqCu3i5FlEPhFLKGGXuiHKT3KNqTbKvVhkFmhi14HtO9T80B0Q9z8y
+ TDyTFEHM0RBSqwg5j4aDxlRKMU1oW+mUd0Eo55NzVct6DYVts6HG5+vf8WKZx5mzPrGy
+ WxzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183400; x=1697788200;
+ d=1e100.net; s=20230601; t=1697183412; x=1697788212;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KtdJELuGCqaz6k9Vi6yvdb+Hy9MnEYqnd5uLlh799bE=;
- b=dDlVwziZlefGMO73rdMeHe0VO8tUAW7P1P2txS7vz+3sCo73vWgcnYrwCwgN9Cpr8u
- ig6w/mKwuMeDS2618OpIZ6g91T1zX+ciDbAxo+EsNsIqBel8tL785GuWhMYRL4qovHZ2
- TLrWzgN3jN+siV8O82BCGQJkZW+yHS6vayfs+EMKCWQ9ZcTeHmKh6AQnk9/EF6omlNTK
- nTI7zhIQvY9SqnOFSckWDwv1yckG7Cg8RTXwX32zxCHpoy95/1roYCLzoHTm9nN5WPNU
- 65T6ZGEDonc3xRPgOnTZWjahxsp+BiCwCjebsEkgilUiXz+pDYcWtjez3ZLu2Zby84il
- reUg==
-X-Gm-Message-State: AOJu0YzD7PwcqjiK17W1KtnoI/0Phv3MPJ3w64W4h6R4xndOPEIm0Gng
- Nr0PudUn3bTasxhLI2w+wWYcCA==
-X-Received: by 2002:adf:f68f:0:b0:317:f714:3be6 with SMTP id
- v15-20020adff68f000000b00317f7143be6mr20483928wrp.61.1697183399753; 
- Fri, 13 Oct 2023 00:49:59 -0700 (PDT)
+ bh=IHHNv9a7p6HwYLVLm/9xkBe05lXBtnT5aw37gy92uds=;
+ b=Wc8/1kFnIk70o5Kx/fpnTAZcAK1uFAvlx0sCXvAYoD1/3fIJXy8AlSQei7On7o4f3X
+ 69Mnb83vUZjMnf6STr4pfYA7m9vWjuNxSMfuSiG16fJEYdBAPsEnuJ8ER8gihhO875gb
+ 7IfAmgfD7LBQFtB0s6nC3CukBz6pvwWGSjoV7OSdAFJcDL+yuPi+DEdBB+/GFh2UOWyL
+ XBw7Yfe175O5z8IQvzs6hRDzyxZsJFczQy7wuAK1y0cCWRkFnJ9TtpmTysuEpe262ERL
+ BWjrKZc5wFUFuyeZ6b0Q1KunHKcuHkl7rx9WDi/p4AEWl0qJwnS3q2fmUdP5DNM1kGgW
+ svtQ==
+X-Gm-Message-State: AOJu0YzGSgqRxibvVzWeG0PSdxeEV+uhiCXVLYCz2c4BdZABLNrBU7fX
+ met2kEtcx43BrHHPhFtDTZfX9w==
+X-Received: by 2002:adf:f005:0:b0:321:52fb:5703 with SMTP id
+ j5-20020adff005000000b0032152fb5703mr23883977wro.13.1697183412357; 
+ Fri, 13 Oct 2023 00:50:12 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.49.58
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:49:59 -0700 (PDT)
+ Fri, 13 Oct 2023 00:50:11 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, David Hildenbrand <david@redhat.com>
-Subject: [RFC PATCH 07/78] hw/virtio/virtio-balloon.c: add fallthrough
- pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:11 +0300
-Message-Id: <40e39148a03476f886d37500e4104fad64107d63.1697183082.git.manos.pitsidianakis@linaro.org>
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: [RFC PATCH 13/78] hw/adc: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:17 +0300
+Message-Id: <5bd9400e01587cac991c16c51ce0f89982f3d529.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
@@ -128,77 +131,223 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EMVyKpfp1GsT
+X-TUID: wqVry5TOt2Tf
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/virtio/virtio-balloon.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/adc/aspeed_adc.c | 12 ++++++------
+ hw/adc/zynq-xadc.c  |  2 +-
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/hw/virtio/virtio-balloon.c b/hw/virtio/virtio-balloon.c
-index d004cf29d2..0f0d94bd94 100644
---- a/hw/virtio/virtio-balloon.c
-+++ b/hw/virtio/virtio-balloon.c
-@@ -636,56 +636,57 @@ static int
- virtio_balloon_free_page_hint_notify(NotifierWithReturn *n, void *data)
+diff --git a/hw/adc/aspeed_adc.c b/hw/adc/aspeed_adc.c
+index 0d29663129..f9f5f7bb17 100644
+--- a/hw/adc/aspeed_adc.c
++++ b/hw/adc/aspeed_adc.c
+@@ -107,59 +107,59 @@ static uint32_t read_channel_sample(AspeedADCEngineState *s, int reg)
+ static uint64_t aspeed_adc_engine_read(void *opaque, hwaddr addr,
+                                        unsigned int size)
  {
-     VirtIOBalloon *dev = container_of(n, VirtIOBalloon, free_page_hint_notify);
-     VirtIODevice *vdev = VIRTIO_DEVICE(dev);
-     PrecopyNotifyData *pnd = data;
+     AspeedADCEngineState *s = ASPEED_ADC_ENGINE(opaque);
+     int reg = TO_REG(addr);
+     uint32_t value = 0;
  
-     if (!virtio_balloon_free_page_support(dev)) {
-         /*
-          * This is an optimization provided to migration, so just return 0 to
-          * have the normal migration process not affected when this feature is
-          * not supported.
-          */
-         return 0;
-     }
- 
-     /*
-      * Pages hinted via qemu_guest_free_page_hint() are cleared from the dirty
-      * bitmap and will not get migrated, especially also not when the postcopy
-      * destination starts using them and requests migration from the source; the
-      * faulting thread will stall until postcopy migration finishes and
-      * all threads are woken up. Let's not start free page hinting if postcopy
-      * is possible.
-      */
-     if (migrate_postcopy_ram()) {
-         return 0;
-     }
- 
-     switch (pnd->reason) {
-     case PRECOPY_NOTIFY_BEFORE_BITMAP_SYNC:
-         virtio_balloon_free_page_stop(dev);
-         break;
-     case PRECOPY_NOTIFY_AFTER_BITMAP_SYNC:
-         if (vdev->vm_running) {
-             virtio_balloon_free_page_start(dev);
+     switch (reg) {
+     case BOUNDS_CHANNEL_8 ... BOUNDS_CHANNEL_15:
+         if (s->nr_channels <= 8) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+                           "bounds register %u invalid, only 0...7 valid\n",
+                           __func__, s->engine_id, reg - BOUNDS_CHANNEL_0);
              break;
          }
-         /*
-          * Set S_DONE before migrating the vmstate, so the guest will reuse
-          * all hinted pages once running on the destination. Fall through.
-          */
+-        /* fallthrough */
 +        fallthrough;
-     case PRECOPY_NOTIFY_CLEANUP:
-         /*
-          * Especially, if something goes wrong during precopy or if migration
-          * is canceled, we have to properly communicate S_DONE to the VM.
-          */
-         virtio_balloon_free_page_done(dev);
+     case HYSTERESIS_CHANNEL_8 ... HYSTERESIS_CHANNEL_15:
+         if (s->nr_channels <= 8) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+                           "hysteresis register %u invalid, only 0...7 valid\n",
+                           __func__, s->engine_id, reg - HYSTERESIS_CHANNEL_0);
+             break;
+         }
+-        /* fallthrough */
++        fallthrough;
+     case BOUNDS_CHANNEL_0 ... BOUNDS_CHANNEL_7:
+     case HYSTERESIS_CHANNEL_0 ... HYSTERESIS_CHANNEL_7:
+     case ENGINE_CONTROL:
+     case INTERRUPT_CONTROL:
+     case VGA_DETECT_CONTROL:
+     case CLOCK_CONTROL:
+     case INTERRUPT_SOURCE:
+     case COMPENSATING_AND_TRIMMING:
+         value = s->regs[reg];
          break;
-     case PRECOPY_NOTIFY_SETUP:
-     case PRECOPY_NOTIFY_COMPLETE:
+     case DATA_CHANNEL_9_AND_8 ... DATA_CHANNEL_15_AND_14:
+         if (s->nr_channels <= 8) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+                           "data register %u invalid, only 0...3 valid\n",
+                           __func__, s->engine_id, reg - DATA_CHANNEL_1_AND_0);
+             break;
+         }
+-        /* fallthrough */
++        fallthrough;
+     case DATA_CHANNEL_1_AND_0 ... DATA_CHANNEL_7_AND_6:
+         value = read_channel_sample(s, reg);
+         /* Allow 16-bit reads of the data registers */
+         if (addr & 0x2) {
+             assert(size == 2);
+             value >>= 16;
+         }
          break;
      default:
-         virtio_error(vdev, "%s: %d reason unknown", __func__, pnd->reason);
+         qemu_log_mask(LOG_UNIMP, "%s: engine[%u]: 0x%" HWADDR_PRIx "\n",
+                       __func__, s->engine_id, addr);
+         break;
      }
  
-     return 0;
+     trace_aspeed_adc_engine_read(s->engine_id, addr, value);
+     return value;
+ }
+@@ -167,69 +167,69 @@ static uint64_t aspeed_adc_engine_read(void *opaque, hwaddr addr,
+ static void aspeed_adc_engine_write(void *opaque, hwaddr addr, uint64_t value,
+                                     unsigned int size)
+ {
+     AspeedADCEngineState *s = ASPEED_ADC_ENGINE(opaque);
+     int reg = TO_REG(addr);
+     uint32_t init = 0;
+ 
+     trace_aspeed_adc_engine_write(s->engine_id, addr, value);
+ 
+     switch (reg) {
+     case ENGINE_CONTROL:
+         init = !!(value & ASPEED_ADC_ENGINE_EN);
+         init *= ASPEED_ADC_ENGINE_INIT;
+ 
+         value &= ~ASPEED_ADC_ENGINE_INIT;
+         value |= init;
+ 
+         value &= ~ASPEED_ADC_ENGINE_AUTO_COMP;
+         break;
+     case INTERRUPT_CONTROL:
+     case VGA_DETECT_CONTROL:
+     case CLOCK_CONTROL:
+         break;
+     case DATA_CHANNEL_9_AND_8 ... DATA_CHANNEL_15_AND_14:
+         if (s->nr_channels <= 8) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+                           "data register %u invalid, only 0...3 valid\n",
+                           __func__, s->engine_id, reg - DATA_CHANNEL_1_AND_0);
+             return;
+         }
+-        /* fallthrough */
++        fallthrough;
+     case BOUNDS_CHANNEL_8 ... BOUNDS_CHANNEL_15:
+         if (s->nr_channels <= 8) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+                           "bounds register %u invalid, only 0...7 valid\n",
+                           __func__, s->engine_id, reg - BOUNDS_CHANNEL_0);
+             return;
+         }
+-        /* fallthrough */
++        fallthrough;
+     case DATA_CHANNEL_1_AND_0 ... DATA_CHANNEL_7_AND_6:
+     case BOUNDS_CHANNEL_0 ... BOUNDS_CHANNEL_7:
+         value &= ASPEED_ADC_LH_MASK;
+         break;
+     case HYSTERESIS_CHANNEL_8 ... HYSTERESIS_CHANNEL_15:
+         if (s->nr_channels <= 8) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: engine[%u]: "
+                           "hysteresis register %u invalid, only 0...7 valid\n",
+                           __func__, s->engine_id, reg - HYSTERESIS_CHANNEL_0);
+             return;
+         }
+-        /* fallthrough */
++        fallthrough;
+     case HYSTERESIS_CHANNEL_0 ... HYSTERESIS_CHANNEL_7:
+         value &= (ASPEED_ADC_HYST_EN | ASPEED_ADC_LH_MASK);
+         break;
+     case INTERRUPT_SOURCE:
+         value &= 0xffff;
+         break;
+     case COMPENSATING_AND_TRIMMING:
+         value &= 0xf;
+         break;
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s: engine[%u]: "
+                       "0x%" HWADDR_PRIx " 0x%" PRIx64 "\n",
+                       __func__, s->engine_id, addr, value);
+         break;
+     }
+ 
+     s->regs[reg] = value;
+ }
+diff --git a/hw/adc/zynq-xadc.c b/hw/adc/zynq-xadc.c
+index 032e19cbd0..a74de3a4fd 100644
+--- a/hw/adc/zynq-xadc.c
++++ b/hw/adc/zynq-xadc.c
+@@ -189,61 +189,61 @@ static uint64_t zynq_xadc_read(void *opaque, hwaddr offset, unsigned size)
+ static void zynq_xadc_write(void *opaque, hwaddr offset, uint64_t val,
+                             unsigned size)
+ {
+     ZynqXADCState *s = (ZynqXADCState *)opaque;
+     int reg = offset / 4;
+     int xadc_reg;
+     int xadc_cmd;
+     int xadc_data;
+ 
+     if (!zynq_xadc_check_offset(reg, false)) {
+         qemu_log_mask(LOG_GUEST_ERROR, "zynq_xadc: Invalid write access "
+                       "to addr %" HWADDR_PRIx "\n", offset);
+         return;
+     }
+ 
+     switch (reg) {
+     case CFG:
+         s->regs[CFG] = val;
+         break;
+     case INT_STS:
+         s->regs[INT_STS] &= ~val;
+         break;
+     case INT_MASK:
+         s->regs[INT_MASK] = val & INT_ALL;
+         break;
+     case CMDFIFO:
+         xadc_cmd  = extract32(val, 26,  4);
+         xadc_reg  = extract32(val, 16, 10);
+         xadc_data = extract32(val,  0, 16);
+ 
+         if (s->regs[MCTL] & MCTL_RESET) {
+             qemu_log_mask(LOG_GUEST_ERROR, "zynq_xadc: Sending command "
+                           "while comm channel held in reset: %" PRIx32 "\n",
+                           (uint32_t) val);
+             break;
+         }
+ 
+         if (xadc_reg >= ZYNQ_XADC_NUM_ADC_REGS && xadc_cmd != CMD_NOP) {
+             qemu_log_mask(LOG_GUEST_ERROR, "read/write op to invalid xadc "
+                           "reg 0x%x\n", xadc_reg);
+             break;
+         }
+ 
+         switch (xadc_cmd) {
+         case CMD_READ:
+             xadc_push_dfifo(s, s->xadc_regs[xadc_reg]);
+             break;
+         case CMD_WRITE:
+             s->xadc_regs[xadc_reg] = xadc_data;
+-            /* fallthrough */
++            fallthrough;
+         case CMD_NOP:
+             xadc_push_dfifo(s, 0);
+             break;
+         }
+         break;
+     case MCTL:
+         s->regs[MCTL] = val & 0x00fffeff;
+         break;
+     }
+     zynq_xadc_update_ints(s);
  }
 -- 
 2.39.2

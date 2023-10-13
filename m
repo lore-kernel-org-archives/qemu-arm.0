@@ -1,112 +1,112 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333119ejc;
-        Fri, 13 Oct 2023 00:58:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEPKKjJq0TrTwnxAzgaFMwS9G4Ox0tf/bKz6AcI+qbuh+MeFNEJYLx+jRMqfgi/IYcGc/pe
-X-Received: by 2002:a05:620a:4d8:b0:76e:f73d:5fd3 with SMTP id 24-20020a05620a04d800b0076ef73d5fd3mr25844366qks.72.1697183883249;
-        Fri, 13 Oct 2023 00:58:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183883; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333202ejc;
+        Fri, 13 Oct 2023 00:58:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFJpAp/MFwOJShN6KGwzW69mxduXpczbol2b5iS1h3GeaDPGetuppRZB3WWuWb51anfnci/
+X-Received: by 2002:ae9:e013:0:b0:76d:aa23:f8e1 with SMTP id m19-20020ae9e013000000b0076daa23f8e1mr23809363qkk.27.1697183896216;
+        Fri, 13 Oct 2023 00:58:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183896; cv=none;
         d=google.com; s=arc-20160816;
-        b=KZdFaoo4EBqJ1KeKkEofrrE32zZA8XbQZ5jYWE1E7T7Sp7MZ6H/KkKaWU83c/8yx2i
-         ewvQ0lpZ64cs2TyNVzHOe7HtxcSjvBEEsYJs8ajSXhCcdG55v52KYRJUfC6SeweXobB8
-         CunPdm1OkjoimFmV7507uMdlblB4qKHzzHxzMdFhSxt+e+pHiWwuWcfj2yTVcY+PYtov
-         vhDevcvSnRxPDlMxFPAlJU7wl97b7YmWpMOY/fcSHJvlN3f6WjW+uPhF5u5OuZk2++CW
-         42IlLspr0oRQUCbihfTWy6nOzXi7uugNy/7z2iyYuD7neMqlnlvMQsiD/31nZp+bO7AM
-         iohg==
+        b=cGs3OobLh1hCE5TfQUIwwqJhDcNfqyqi3QvUjjkBRYKsMmHGxMZ6ywL9zSMPzD3nhp
+         qrudqACeyN55YS2nz/N811UhJBSi28J0KrXIjied5P4Me3vGA496mHUq58IA7XwXTwnY
+         y15XudSJ3H79m/tG6iaUDyM35Z35NHY3Nrwhq+Oc8ScoEaoEwUh1+X2/nvQSigHUQ0eg
+         TnIT/VD4CjigJM37wTb7xCHeuXRKkCWER/UnM3iciq4VlgBOWn1AjaiFZcJ9Nd7oKoc6
+         VsQcGa2JJzGSWGslqGb1+2zfgf29+BlsvqTLTvkT/lxJagt5Yyp1IsrHx1dQA+8F8RlJ
+         FgSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=bxbLZHPGz2WnicjXhe2drdGltc5v95N+qyl4FBWOpZQ=;
-        fh=Q0jO3R00X7xpJj88jh+KBXHogKGd67mDrPl+0FGDx9Q=;
-        b=ihmui9NTlgSbWaFzA4BpMxO8RzonXiH7JMNxmdYRD7PfjiCTcnHkzDdflGvOz4xaIR
-         C9rN88CewoYZl/95L31p2y2xpwLPC0PKi3W6njrMM34KkNxzYNOpWuAwXlcoBpTAO8UU
-         ImnGEPc6XEKicNOSX6+Bc9vNFcnd8OEcsd6htO0g5R+qgfbeEKZ0AWaToSH+eJLY+w7F
-         Zhd7Akz+GZjUI0boAmjK/XGpRp3ARQhAfH81uyf2kBCzk5uRlb/z6sfwYor8gYlGNPKq
-         EDhkXdbi17/VjTsaH3RNXFRegz3qoByq7ZvOdrcpmBFS1VZeUuEcX4ieUZz/MlT1Pxap
-         VQhg==
+        bh=zGc1cEcG2xxCnuMTKFZCVGhktVRDUGOsspC3KkTcoQs=;
+        fh=WcQjlFuhnJr6NTCpNUt0hLH8WARIGJsmgYkf8Vhox7w=;
+        b=DHTAQnTVcworuaGXqy4EO52LBGYa00Mt7HpirK8wxyE55bhvhukls1lv2iFtQPqG9b
+         eI2KhQ2AypodLmtasFvdgRQGYfg4QvW1KxQXWb6r527aiUrpxNUjZdpO3D4A8ZMAe74M
+         Bi9A/V/0XWbLzmpiHP1HRmSdcrg111r2b/WS65sYnACsBQnKVNQSDYonpxCv/t5ImogO
+         Lo+BXgHuiB1Cja8Bz9JyX+7dMXI8hhHWl8xHouXyzkMWQac15oTqdjiUzbQUUmwBjDfU
+         e9GjqJKERosi7Vc6YsoKyPLW5lIftUFxiBrN6+hAD6CtN8FipUx6ZfesxlRnPuKM2tL0
+         VL+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RrNNH+Uh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZHk9ALeQ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d11-20020a05622a05cb00b0041822c32e38si797269qtb.511.2023.10.13.00.58.03
+        by mx.google.com with ESMTPS id tp20-20020a05620a3c9400b0077592ac6b4fsi828278qkn.35.2023.10.13.00.58.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:58:03 -0700 (PDT)
+        Fri, 13 Oct 2023 00:58:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RrNNH+Uh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZHk9ALeQ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCzF-0004rY-IY; Fri, 13 Oct 2023 03:53:33 -0400
+	id 1qrCxr-0000rb-40; Fri, 13 Oct 2023 03:52:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCy5-00021y-Lc
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:22 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1qrCxB-0006ju-KL
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:27 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxp-0005KU-08
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:21 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-406402933edso18862985e9.2
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:52:02 -0700 (PDT)
+ id 1qrCwv-0004z5-GJ
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:23 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-40572aeb673so19453305e9.0
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:51:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183521; x=1697788321; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183467; x=1697788267; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=bxbLZHPGz2WnicjXhe2drdGltc5v95N+qyl4FBWOpZQ=;
- b=RrNNH+UhCYCd7FGA9hlQaGuN5CpDnDk19nxdnli+Wbd6afDI7X58y/5nDVDysPwrjm
- sQ4MIViisqOG3zfBNok1ciqvcR0MJtFh9Tiwv6XevhxDc8yze+6q8in8JVL92ZCznZJ5
- 0XiNXHBo+F4wwaIEZLi0HK65LA4d/21OAMxXxrhavc+1qeaKNi+JjhMX0uqtYPxH+uEk
- 50dsEKGCKIDT8xGdXgSNZYLuOkXB4HYq207hiliD39eH3PCYTiaFiudyfm4aTYU779nb
- 8q2u9UUpFxvfKSPJmabDXboR9eHoujQ2vbDUuO/1FGNTbeLMqz2l5NgcMuwbrhChaviH
- vwAA==
+ bh=zGc1cEcG2xxCnuMTKFZCVGhktVRDUGOsspC3KkTcoQs=;
+ b=ZHk9ALeQ8uPBLZ7ug2E8VW5oMyrzXjyMaL8fQ9SJQ/M0Wws6UiITGvlY/pQKvtDO7r
+ Io4szHex8j51A8PR2Aibb4NQlEVr030USIAOy8pJCioutdn2BON/9UcheA3yOH2KF/5y
+ fpoEFMHV7Nyzy/rcsz8hC2SBaw+21/m+ju3F2+CQHcLxIqT9XwCIqZUEAInno5Tozfk1
+ BSiLFGyyR8N3qWW8u/UhVfmQu/0Qb/a9kZHsdsMeLtC9YtkSw/zcQ18Wghex3LA1TRV2
+ t29Co3VihzL1ZDaHwEs7tKZHpxiInhAiaRWNYMYIrPILGsDr7pUBzxPQ7KqVaMmvhb4K
+ 5b5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183521; x=1697788321;
+ d=1e100.net; s=20230601; t=1697183467; x=1697788267;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=bxbLZHPGz2WnicjXhe2drdGltc5v95N+qyl4FBWOpZQ=;
- b=LdkWz+09dSCvRTF8mJMXfdSYDqTWyoS7N1Jn1j3QMaAei9k0qQADL57AorZ8hj+g9N
- 10SUy31E/2mDEo5B5hMBtf/izGdSB2jwEFeKKSC97BNipsx4RLLq9apQZHrZqHnkMscy
- 1hZc7iUCmK2Gl/k78s+0p/Jin1/tPpKHDUQ0uQODtHJaMXW7Ex8GMenQT1qB7PchGKn+
- qUfyLYYkXUxmNU5ngcffZCTQKYjZ9HMb8oaoXHLAdS3fjk0L9e2gHbumteBwZG5rbCEe
- pKQA/KU90T8TKVfJ8gsN2rN/JuUlDFIkw+mWre1m6eTN7zKiQoGTh1/zjDyyPMPwSH9G
- BiRw==
-X-Gm-Message-State: AOJu0YzjwGiv6ShfYQOxK7WfwyeEyC6sAHkDrDme40JHuBF8Zw7Xo8B5
- nWmR9+mY7hxwScXrDmQd3tfSdEMp/41tQccGErA=
-X-Received: by 2002:a5d:4b83:0:b0:321:67d8:c3e7 with SMTP id
- b3-20020a5d4b83000000b0032167d8c3e7mr21378201wrt.12.1697183521688; 
- Fri, 13 Oct 2023 00:52:01 -0700 (PDT)
+ bh=zGc1cEcG2xxCnuMTKFZCVGhktVRDUGOsspC3KkTcoQs=;
+ b=ByQch6gHqaeFBGiNoGxt0x7XQSKeCV892w1uG/i9D4uYKB+GJg2ihzRJhAlud5ZFAm
+ UDSXON9HsynJxOiH2STrRTVKJ4aSCwX0GntzAjO5njp24u95hP8pADp9Lp+O2n7SxL/8
+ D1MA8/sWOXa1HUE2SxPkM1FF/lGUIe7IKkYG9HkMXZiqJrE30eMo8pi1HJtbcVocxHpQ
+ 2aL7FhBjVLe7zIJMlX40RX5Bj4HE+bV+vizRRJCiqnD2ykHsKOsBubd+iLK9ibs4P5lD
+ oBlN51lf8r/T4JZAdvxGb1n63k1TkHvtHKp9/CzwMTw0DcmWTN9EbZLY2mg5UIHq1Var
+ a28Q==
+X-Gm-Message-State: AOJu0Yyzx6tqCH3BcHeVVxKu74LgavROsSqd1A8BBe28TWdTIjbOMNJk
+ cTpvTO9X4yp4eY7GTUBEQyJupehJniDYgKc0P6E=
+X-Received: by 2002:a1c:791a:0:b0:406:5308:cfeb with SMTP id
+ l26-20020a1c791a000000b004065308cfebmr23383378wme.11.1697183466792; 
+ Fri, 13 Oct 2023 00:51:06 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.52.00
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:52:01 -0700 (PDT)
+ Fri, 13 Oct 2023 00:51:06 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Gerd Hoffmann <kraxel@redhat.com>
-Subject: [RFC PATCH 54/75] hw/display: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:48:16 +0300
-Message-Id: <35846978fd822d5ca75128ebf0e0224ae0486a48.1697034504.git.manos.pitsidianakis@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Bin Meng <bin.meng@windriver.com>
+Subject: [RFC PATCH 39/75] hw/sd/sdhci.c: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:46 +0300
+Message-Id: <9830d78710fbdfd12727e3777adfd585d99299c7.1697034504.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,263 +128,318 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yhEF0icfhUjt
+X-TUID: SQm51Rgfbqdk
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/display/cg3.c        | 2 +-
- hw/display/cirrus_vga.c | 2 +-
- hw/display/tcx.c        | 4 ++--
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ hw/sd/sdhci.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/display/cg3.c b/hw/display/cg3.c
-index 2e9656ae1c..53eb9831b2 100644
---- a/hw/display/cg3.c
-+++ b/hw/display/cg3.c
-@@ -199,65 +199,65 @@ static uint64_t cg3_reg_read(void *opaque, hwaddr addr, unsigned size)
- static void cg3_reg_write(void *opaque, hwaddr addr, uint64_t val,
-                           unsigned size)
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 5564765a9b..5c641d24de 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -75,138 +75,138 @@ static bool sdhci_check_capab_freq_range(SDHCIState *s, const char *desc,
+ static void sdhci_check_capareg(SDHCIState *s, Error **errp)
  {
-     CG3State *s = opaque;
-     uint8_t regval;
-     int i;
+     uint64_t msk = s->capareg;
+     uint32_t val;
+     bool y;
  
-     trace_cg3_write(addr, val, size);
-     switch (addr) {
-     case CG3_REG_BT458_ADDR:
-         s->dac_index = val;
-         s->dac_state = 0;
-         break;
-     case CG3_REG_BT458_COLMAP:
-         /* This register can be written to as either a long word or a byte */
-         if (size == 1) {
-             val <<= 24;
-         }
+     switch (s->sd_spec_version) {
+     case 4:
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BUS64BIT_V4);
+         trace_sdhci_capareg("64-bit system bus (v4)", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, BUS64BIT_V4, 0);
  
-         for (i = 0; i < size; i++) {
-             regval = val >> 24;
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, UHS_II);
+         trace_sdhci_capareg("UHS-II", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, UHS_II, 0);
  
-             switch (s->dac_state) {
-             case 0:
-                 s->r[s->dac_index] = regval;
-                 s->dac_state++;
-                 break;
-             case 1:
-                 s->g[s->dac_index] = regval;
-                 s->dac_state++;
-                 break;
-             case 2:
-                 s->b[s->dac_index] = regval;
-                 /* Index autoincrement */
-                 s->dac_index = (s->dac_index + 1) & 0xff;
--                /* fall through */
-+                fallthrough;
-             default:
-                 s->dac_state = 0;
-                 break;
-             }
-             val <<= 8;
-         }
-         s->full_update = 1;
-         break;
-     case CG3_REG_FBC_CTRL:
-         s->regs[0] = val;
-         break;
-     case CG3_REG_FBC_STATUS:
-         if (s->regs[1] & CG3_SR_PENDING_INT) {
-             /* clear interrupt */
-             s->regs[1] &= ~CG3_SR_PENDING_INT;
-             qemu_irq_lower(s->irq);
-         }
-         break;
-     case CG3_REG_FBC_CURSTART ... CG3_REG_SIZE - 1:
-         s->regs[addr - 0x10] = val;
-         break;
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                   "cg3: Unimplemented register write "
-                   "reg 0x%" HWADDR_PRIx " size 0x%x value 0x%" PRIx64 "\n",
-                   addr, size, val);
-         break;
-     }
- }
-diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
-index b80f98b6c4..f1513a084c 100644
---- a/hw/display/cirrus_vga.c
-+++ b/hw/display/cirrus_vga.c
-@@ -1319,97 +1319,97 @@ static int cirrus_vga_read_sr(CirrusVGAState * s)
- static void cirrus_vga_write_sr(CirrusVGAState * s, uint32_t val)
- {
-     switch (s->vga.sr_index) {
-     case 0x00:                  // Standard VGA
-     case 0x01:                  // Standard VGA
-     case 0x02:                  // Standard VGA
-     case 0x03:                  // Standard VGA
-     case 0x04:                  // Standard VGA
-         s->vga.sr[s->vga.sr_index] = val & sr_mask[s->vga.sr_index];
-         if (s->vga.sr_index == 1)
-             s->vga.update_retrace_info(&s->vga);
-         break;
-     case 0x06:                  // Unlock Cirrus extensions
-         val &= 0x17;
-         if (val == 0x12) {
-             s->vga.sr[s->vga.sr_index] = 0x12;
-         } else {
-             s->vga.sr[s->vga.sr_index] = 0x0f;
-         }
-         break;
-     case 0x10:
-     case 0x30:
-     case 0x50:
-     case 0x70:                  // Graphics Cursor X
-     case 0x90:
-     case 0xb0:
-     case 0xd0:
-     case 0xf0:                  // Graphics Cursor X
-         s->vga.sr[0x10] = val;
-         s->vga.hw_cursor_x = (val << 3) | (s->vga.sr_index >> 5);
-         break;
-     case 0x11:
-     case 0x31:
-     case 0x51:
-     case 0x71:                  // Graphics Cursor Y
-     case 0x91:
-     case 0xb1:
-     case 0xd1:
-     case 0xf1:                  // Graphics Cursor Y
-         s->vga.sr[0x11] = val;
-         s->vga.hw_cursor_y = (val << 3) | (s->vga.sr_index >> 5);
-         break;
-     case 0x07:                  // Extended Sequencer Mode
-         cirrus_update_memory_access(s);
--        /* fall through */
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ADMA3);
+         trace_sdhci_capareg("ADMA3", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, ADMA3, 0);
+ 
+-    /* fallthrough */
 +        fallthrough;
-     case 0x08:                  // EEPROM Control
-     case 0x09:                  // Scratch Register 0
-     case 0x0a:                  // Scratch Register 1
-     case 0x0b:                  // VCLK 0
-     case 0x0c:                  // VCLK 1
-     case 0x0d:                  // VCLK 2
-     case 0x0e:                  // VCLK 3
-     case 0x0f:                  // DRAM Control
-     case 0x13:                  // Graphics Cursor Pattern Address
-     case 0x14:                  // Scratch Register 2
-     case 0x15:                  // Scratch Register 3
-     case 0x16:                  // Performance Tuning Register
-     case 0x18:                  // Signature Generator Control
-     case 0x19:                  // Signature Generator Result
-     case 0x1a:                  // Signature Generator Result
-     case 0x1b:                  // VCLK 0 Denominator & Post
-     case 0x1c:                  // VCLK 1 Denominator & Post
-     case 0x1d:                  // VCLK 2 Denominator & Post
-     case 0x1e:                  // VCLK 3 Denominator & Post
-     case 0x1f:                  // BIOS Write Enable and MCLK select
-         s->vga.sr[s->vga.sr_index] = val;
- #ifdef DEBUG_CIRRUS
-         printf("cirrus: handled outport sr_index %02x, sr_value %02x\n",
-                s->vga.sr_index, val);
- #endif
-         break;
-     case 0x12:                  // Graphics Cursor Attribute
-         s->vga.sr[0x12] = val;
-         s->vga.force_shadow = !!(val & CIRRUS_CURSOR_SHOW);
- #ifdef DEBUG_CIRRUS
-         printf("cirrus: cursor ctl SR12=%02x (force shadow: %d)\n",
-                val, s->vga.force_shadow);
- #endif
-         break;
-     case 0x17:                  // Configuration Readback and Extended Control
-         s->vga.sr[s->vga.sr_index] = (s->vga.sr[s->vga.sr_index] & 0x38)
-                                    | (val & 0xc7);
-         cirrus_update_memory_access(s);
-         break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "cirrus: outport sr_index 0x%02x, sr_value 0x%02x\n",
-                       s->vga.sr_index, val);
-         break;
-     }
- }
+     case 3:
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ASYNC_INT);
+         trace_sdhci_capareg("async interrupt", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, ASYNC_INT, 0);
  
- /***************************************
-  *
-  *  I/O access at 0x3c6
-  *
-  ***************************************/
-diff --git a/hw/display/tcx.c b/hw/display/tcx.c
-index 1b27b64f6d..e21450d726 100644
---- a/hw/display/tcx.c
-+++ b/hw/display/tcx.c
-@@ -381,26 +381,26 @@ static void tcx_reset(DeviceState *d)
- static uint64_t tcx_dac_readl(void *opaque, hwaddr addr,
-                               unsigned size)
- {
-     TCXState *s = opaque;
-     uint32_t val = 0;
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SLOT_TYPE);
+         if (val) {
+             error_setg(errp, "slot-type not supported");
+             return;
+         }
+         trace_sdhci_capareg("slot type", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, SLOT_TYPE, 0);
  
-     switch (s->dac_state) {
-     case 0:
-         val = s->r[s->dac_index] << 24;
-         s->dac_state++;
-         break;
+         if (val != 2) {
+             val = FIELD_EX64(s->capareg, SDHC_CAPAB, EMBEDDED_8BIT);
+             trace_sdhci_capareg("8-bit bus", val);
+         }
+         msk = FIELD_DP64(msk, SDHC_CAPAB, EMBEDDED_8BIT, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BUS_SPEED);
+         trace_sdhci_capareg("bus speed mask", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, BUS_SPEED, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, DRIVER_STRENGTH);
+         trace_sdhci_capareg("driver strength mask", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, DRIVER_STRENGTH, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, TIMER_RETUNING);
+         trace_sdhci_capareg("timer re-tuning", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, TIMER_RETUNING, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SDR50_TUNING);
+         trace_sdhci_capareg("use SDR50 tuning", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, SDR50_TUNING, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, RETUNING_MODE);
+         trace_sdhci_capareg("re-tuning mode", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, RETUNING_MODE, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, CLOCK_MULT);
+         trace_sdhci_capareg("clock multiplier", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, CLOCK_MULT, 0);
+ 
+-    /* fallthrough */
++        fallthrough;
+     case 2: /* default version */
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ADMA2);
+         trace_sdhci_capareg("ADMA2", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, ADMA2, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ADMA1);
+         trace_sdhci_capareg("ADMA1", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, ADMA1, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BUS64BIT);
+         trace_sdhci_capareg("64-bit system bus (v3)", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, BUS64BIT, 0);
+ 
+-    /* fallthrough */
++        fallthrough;
      case 1:
-         val = s->g[s->dac_index] << 24;
-         s->dac_state++;
+         y = FIELD_EX64(s->capareg, SDHC_CAPAB, TOUNIT);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, TOUNIT, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, TOCLKFREQ);
+         trace_sdhci_capareg(y ? "timeout (MHz)" : "Timeout (KHz)", val);
+         if (sdhci_check_capab_freq_range(s, "timeout", val, errp)) {
+             return;
+         }
+         msk = FIELD_DP64(msk, SDHC_CAPAB, TOCLKFREQ, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BASECLKFREQ);
+         trace_sdhci_capareg(y ? "base (MHz)" : "Base (KHz)", val);
+         if (sdhci_check_capab_freq_range(s, "base", val, errp)) {
+             return;
+         }
+         msk = FIELD_DP64(msk, SDHC_CAPAB, BASECLKFREQ, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, MAXBLOCKLENGTH);
+         if (val >= 3) {
+             error_setg(errp, "block size can be 512, 1024 or 2048 only");
+             return;
+         }
+         trace_sdhci_capareg("max block length", sdhci_get_fifolen(s));
+         msk = FIELD_DP64(msk, SDHC_CAPAB, MAXBLOCKLENGTH, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, HIGHSPEED);
+         trace_sdhci_capareg("high speed", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, HIGHSPEED, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SDMA);
+         trace_sdhci_capareg("SDMA", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, SDMA, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SUSPRESUME);
+         trace_sdhci_capareg("suspend/resume", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, SUSPRESUME, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, V33);
+         trace_sdhci_capareg("3.3v", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, V33, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, V30);
+         trace_sdhci_capareg("3.0v", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, V30, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, V18);
+         trace_sdhci_capareg("1.8v", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, V18, 0);
          break;
-     case 2:
-         val = s->b[s->dac_index] << 24;
-         s->dac_index = (s->dac_index + 1) & 0xff; /* Index autoincrement */
--        /* fall through */
+ 
+     default:
+         error_setg(errp, "Unsupported spec version: %u", s->sd_spec_version);
+     }
+     if (msk) {
+         qemu_log_mask(LOG_UNIMP,
+                       "SDHCI: unknown CAPAB mask: 0x%016" PRIx64 "\n", msk);
+     }
+ }
+@@ -1688,160 +1688,160 @@ static void
+ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+ {
+     SDHCIState *s = SYSBUS_SDHCI(opaque);
+     uint8_t hostctl1;
+     uint32_t value = (uint32_t)val;
+ 
+     switch (offset) {
+     case USDHC_DLL_CTRL:
+     case USDHC_TUNE_CTRL_STATUS:
+     case USDHC_UNDOCUMENTED_REG27:
+     case USDHC_TUNING_CTRL:
+     case USDHC_WTMK_LVL:
+         break;
+ 
+     case USDHC_VENDOR_SPEC:
+         s->vendor_spec = value;
+         switch (s->vendor) {
+         case SDHCI_VENDOR_IMX:
+             if (value & USDHC_IMX_FRC_SDCLK_ON) {
+                 s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
+             } else {
+                 s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
+             }
+             break;
+         default:
+             break;
+         }
+         break;
+ 
+     case SDHC_HOSTCTL:
+         /*
+          * Here's What ESDHCI has at offset 0x28 (SDHC_HOSTCTL)
+          *
+          *       7         6     5      4      3      2        1      0
+          * |-----------+--------+--------+-----------+----------+---------|
+          * | Card      | Card   | Endian | DATA3     | Data     | Led     |
+          * | Detect    | Detect | Mode   | as Card   | Transfer | Control |
+          * | Signal    | Test   |        | Detection | Width    |         |
+          * | Selection | Level  |        | Pin       |          |         |
+          * |-----------+--------+--------+-----------+----------+---------|
+          *
+          * and 0x29
+          *
+          *  15      10 9    8
+          * |----------+------|
+          * | Reserved | DMA  |
+          * |          | Sel. |
+          * |          |      |
+          * |----------+------|
+          *
+          * and here's what SDCHI spec expects those offsets to be:
+          *
+          * 0x28 (Host Control Register)
+          *
+          *     7        6         5       4  3      2         1        0
+          * |--------+--------+----------+------+--------+----------+---------|
+          * | Card   | Card   | Extended | DMA  | High   | Data     | LED     |
+          * | Detect | Detect | Data     | Sel. | Speed  | Transfer | Control |
+          * | Signal | Test   | Transfer |      | Enable | Width    |         |
+          * | Sel.   | Level  | Width    |      |        |          |         |
+          * |--------+--------+----------+------+--------+----------+---------|
+          *
+          * and 0x29 (Power Control Register)
+          *
+          * |----------------------------------|
+          * | Power Control Register           |
+          * |                                  |
+          * | Description omitted,             |
+          * | since it has no analog in ESDHCI |
+          * |                                  |
+          * |----------------------------------|
+          *
+          * Since offsets 0x2A and 0x2B should be compatible between
+          * both IP specs we only need to reconcile least 16-bit of the
+          * word we've been given.
+          */
+ 
+         /*
+          * First, save bits 7 6 and 0 since they are identical
+          */
+         hostctl1 = value & (SDHC_CTRL_LED |
+                             SDHC_CTRL_CDTEST_INS |
+                             SDHC_CTRL_CDTEST_EN);
+         /*
+          * Second, split "Data Transfer Width" from bits 2 and 1 in to
+          * bits 5 and 1
+          */
+         if (value & USDHC_CTRL_8BITBUS) {
+             hostctl1 |= SDHC_CTRL_8BITBUS;
+         }
+ 
+         if (value & USDHC_CTRL_4BITBUS) {
+             hostctl1 |= USDHC_CTRL_4BITBUS;
+         }
+ 
+         /*
+          * Third, move DMA select from bits 9 and 8 to bits 4 and 3
+          */
+         hostctl1 |= SDHC_DMA_TYPE(value >> (8 - 3));
+ 
+         /*
+          * Now place the corrected value into low 16-bit of the value
+          * we are going to give standard SDHCI write function
+          *
+          * NOTE: This transformation should be the inverse of what can
+          * be found in drivers/mmc/host/sdhci-esdhc-imx.c in Linux
+          * kernel
+          */
+         value &= ~UINT16_MAX;
+         value |= hostctl1;
+         value |= (uint16_t)s->pwrcon << 8;
+ 
+         sdhci_write(opaque, offset, value, size);
+         break;
+ 
+     case USDHC_MIX_CTRL:
+         /*
+          * So, when SD/MMC stack in Linux tries to write to "Transfer
+          * Mode Register", ESDHC i.MX quirk code will translate it
+          * into a write to ESDHC_MIX_CTRL, so we do the opposite in
+          * order to get where we started
+          *
+          * Note that Auto CMD23 Enable bit is located in a wrong place
+          * on i.MX, but since it is not used by QEMU we do not care.
+          *
+          * We don't want to call sdhci_write(.., SDHC_TRNMOD, ...)
+          * here because it will result in a call to
+          * sdhci_send_command(s) which we don't want.
+          *
+          */
+         s->trnmod = value & UINT16_MAX;
+         break;
+     case SDHC_TRNMOD:
+         /*
+          * Similar to above, but this time a write to "Command
+          * Register" will be translated into a 4-byte write to
+          * "Transfer Mode register" where lower 16-bit of value would
+          * be set to zero. So what we do is fill those bits with
+          * cached value from s->trnmod and let the SDHCI
+          * infrastructure handle the rest
+          */
+         sdhci_write(opaque, offset, val | s->trnmod, size);
+         break;
+     case SDHC_BLKSIZE:
+         /*
+          * ESDHCI does not implement "Host SDMA Buffer Boundary", and
+          * Linux driver will try to zero this field out which will
+          * break the rest of SDHCI emulation.
+          *
+          * Linux defaults to maximum possible setting (512K boundary)
+          * and it seems to be the only option that i.MX IP implements,
+          * so we artificially set it to that value.
+          */
+         val |= 0x7 << 12;
+-        /* FALLTHROUGH */
 +        fallthrough;
      default:
-         s->dac_state = 0;
-         break;
-     }
- 
-     return val;
- }
-@@ -408,43 +408,43 @@ static uint64_t tcx_dac_readl(void *opaque, hwaddr addr,
- static void tcx_dac_writel(void *opaque, hwaddr addr, uint64_t val,
-                            unsigned size)
- {
-     TCXState *s = opaque;
-     unsigned index;
- 
-     switch (addr) {
-     case 0: /* Address */
-         s->dac_index = val >> 24;
-         s->dac_state = 0;
-         break;
-     case 4:  /* Pixel colours */
-     case 12: /* Overlay (cursor) colours */
-         if (addr & 8) {
-             index = (s->dac_index & 3) + 256;
-         } else {
-             index = s->dac_index;
-         }
-         switch (s->dac_state) {
-         case 0:
-             s->r[index] = val >> 24;
-             update_palette_entries(s, index, index + 1);
-             s->dac_state++;
-             break;
-         case 1:
-             s->g[index] = val >> 24;
-             update_palette_entries(s, index, index + 1);
-             s->dac_state++;
-             break;
-         case 2:
-             s->b[index] = val >> 24;
-             update_palette_entries(s, index, index + 1);
-             s->dac_index = (s->dac_index + 1) & 0xff; /* Index autoincrement */
--            /* fall through */
-+            fallthrough;
-         default:
-             s->dac_state = 0;
-             break;
-         }
-         break;
-     default: /* Control registers */
+         sdhci_write(opaque, offset, val, size);
          break;
      }
  }

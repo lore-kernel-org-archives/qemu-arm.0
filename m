@@ -1,291 +1,162 @@
-Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1169674dlb;
-        Fri, 13 Oct 2023 01:52:47 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFOaiPar03YwNqcYOxSiBuTemNED1W9nQPvxxVtHO631f4WLMGxql1oiZB/ddzvqfIctGK5
-X-Received: by 2002:a67:e00b:0:b0:457:c025:4c7b with SMTP id c11-20020a67e00b000000b00457c0254c7bmr1857625vsl.19.1697187167668;
-        Fri, 13 Oct 2023 01:52:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697187167; cv=none;
+Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1170017dlb;
+        Fri, 13 Oct 2023 01:53:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE28iWuTethPwF0P0VsdNtIU6AUoT21bBDC3wzXQxJuhSTMe4/Dqa8WM8YmTwTh7O6THbUe
+X-Received: by 2002:ac8:7f05:0:b0:410:9836:8066 with SMTP id f5-20020ac87f05000000b0041098368066mr27082460qtk.43.1697187218650;
+        Fri, 13 Oct 2023 01:53:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697187218; cv=none;
         d=google.com; s=arc-20160816;
-        b=xDzQrkHR1DZQO4dDUP+S/NwLu+Q9qZQXdROzarkDWleVKUzkKGBRzGGLLWFb3SLqG9
-         GX91vfhibz51nB5yWj1ET2GYgxuuCNRfPN/Sp4TgUX6sHt9fgTFz0EzIloUHDpzDnQ3w
-         kmmv1RRbzg4Xi/XFoA8h2Ez2oL60oqzyul2rYQI8sgNNhk0GhKtEQYfcBsPMuaeJI0mw
-         aC3H3d/Gq6BgfjJToGZoPf5APe5BejZUUvv4xm0LVg+L9MSWsb7w1cJGHvjrNOmHkKuv
-         eEUY8Ln24aRSAPiYRnqaduAcV5v0EXtw1l7TGA6Lb6A+an6jW3/pqkhL8BgAfYmHbgMS
-         px2Q==
+        b=ACbtGolEelo/ranYGFoJOp+tkaT9bkOWhadrqEyESjrwtNsOsjJQMO7onnuoL7GtuL
+         LvjspqTQ+qVS9dlnAtURnlFDyDokgQxE5KleXSK+PQU8fGiKp1X9X8Vu7aFVCfVmYPVG
+         PiHrtXRZRoYBdr0JnlQ2pzsTEuyHa6/xFwhTqbiyVZxF6k5Fh4kbmxOLcBDxnv8pVrHn
+         5MY/nISaoKVaX86hdVwd55aaru/LvoxPQH6cCh2xQsDDmCBrc1KbihSSJaj1T2xz7EEO
+         65IMw9b48JEXkwnT9Iic2fwmXvZAwi3xcZwlI38rKQ9nZgxvpgHl5xoBHnH2Uss3FMC5
+         8L1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=xU4oXAs73J7Ai79H+UCs0GR5SNw80dbp8l/zhDvtrMM=;
-        fh=4ZeskhcYOxRF76F44yMehrTaHjAZZh5ApLvBPiq37V0=;
-        b=u4D5QYB5X6PXsigUJdftdqsHiIRG832YI28tShGEV82Hi0LXE9w/X8pk9jy+ALXtPj
-         oNYpugbGSJZHC+WezwGcBPMLaKjuaYVDzIzZ7kELDp8tsfXY4Grod6lt5Ta9QVwloEW6
-         FAOUVlO/kXVCuK6+RUEnXXjG3xDexEglMUjYm9j4ujWV9OkwnUuon7G+QcSe7zUmqkKJ
-         FlcefS8CJSO0mG8TJ4GiU3XXuSMBtUqx+q30qladHITiyAqgM5O/775cJT9da3ImceM3
-         8nwes6bPrGaMiR1VUK69MhQfzutcegz+Uf/PJCQDUjQjRxeJhPpJmDibHPiQAE7eQ1VE
-         ir7Q==
+        bh=hOvGuBypuCWb7hwJnxTfq9f8trGAKqx0KCb984exKgY=;
+        fh=rwdWCS3+t5yhuwz/YhqnsUuEawGPKPVrPFbpAYGu3rk=;
+        b=zusbcjUj5J9ZX4HfUTtO7NVL/civsEPkxjQTQP/hDztVxbc/U+ytSFC8pjCqRgQ7ei
+         ICh0GHF0iEDnNA0xb4Hb39ATRPBmIzmIIZeExBAuVxPbJ6pmQaWfpwxjrop6rm1G9s9k
+         0VDElUXn+9B6cLBywcyUasdGVq42hSG5Y0RtWrCaTudBHBL0v0kLOAjehqxDideD56oD
+         OMmnXvpNKcigTKOx2+qK2gkDxQB1GIf8vyyKd8Vx1NreCRclojrdtUIGziKVAwwx46Nz
+         1WwBSUI9TOfO5OTGqXdbKjxi8UbdxaaRkYPHLxTX4LBVFCff4E9nnM7qiiyO4ZTAk39x
+         27Kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="x/nhuQ8d";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=F+vcCliA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id px22-20020a056214051600b0066d1ca1cb7asi888557qvb.405.2023.10.13.01.52.47
+        by mx.google.com with ESMTPS id k15-20020ac85fcf000000b004181b8ae8edsi926052qta.246.2023.10.13.01.53.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:52:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 01:53:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="x/nhuQ8d";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=F+vcCliA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrDt8-00086j-64; Fri, 13 Oct 2023 04:51:19 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrDqo-0001px-N1; Fri, 13 Oct 2023 04:48:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDsV-0006h0-NL
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:50:40 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1qrDqd-0001Bm-O8
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 04:48:43 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDsJ-0001Xw-6d
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:50:39 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-3226cc3e324so1762394f8f.3
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 01:50:26 -0700 (PDT)
+ id 1qrDqb-00018i-RH
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 04:48:43 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-307d20548adso1689253f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 01:48:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697187025; x=1697791825; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697186920; x=1697791720; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xU4oXAs73J7Ai79H+UCs0GR5SNw80dbp8l/zhDvtrMM=;
- b=x/nhuQ8d1rkyNNloWKI60Bpd4BkExmQ3R84iuasOw/2axCV3K5bCA270mwlcEy5+6Q
- SdtJbzcp+X0GJCz0/004yZbZ/a3tjcy3G4NJdUZfKQ0KSyCSCG4zv22/6Rzm9W79gE9I
- CMEiikV7y/9csMsViA062S8uCuBzjv9bWWDlsqW44t6YtDOSw/RTFi04YQVbUzRPlzE9
- d4AjKc6p4MAktDUPNnE00djFjzCv4q1Dj9fBxH5285VHxQknW6yGFjcTQ0GhkOW0VzJ/
- nMp5RXu/b+O0LRHb0K4XfMeeEOIP+IFmcYNE9SYGG6w476AJlus3VfXxoa4FzkZHSGIB
- YXRg==
+ bh=hOvGuBypuCWb7hwJnxTfq9f8trGAKqx0KCb984exKgY=;
+ b=F+vcCliA8X3dwFVx2x4v/jXyboVUflRqxJGnsOm6qMsXcGrR+fqHbDehW0r8k2ZpYN
+ XVuRaJP3peGpWRUshViz3ytSkr6ka7JMGTlEejWq2nSUY9KY5NVYLvmGupBwF/MbpSqX
+ c1Tw3DAfZSKz7i1WDcGfxNKST8LF1BhISn7s0lXbQgMABpz/B+0MRTDHKIaRRq4bLqxS
+ 7/3GKsJ5Oaj4idYWQmyIcXTM+axCAOtFJFvSE/4HBSXESiio1hwX1lm0t77wa3qlVsFQ
+ cX9r/aLWZqFe0FPOP3wDVongEbO9iOwFqDoI6kMa2vN1tcItTPRMuxzlAVEKzp6+jOEP
+ s/xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697187025; x=1697791825;
+ d=1e100.net; s=20230601; t=1697186920; x=1697791720;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=xU4oXAs73J7Ai79H+UCs0GR5SNw80dbp8l/zhDvtrMM=;
- b=rQCkcmYs5xYWQdkPIuBDZ7Yngru+z/yNzCXVH7KrtTDTjn0sy+uwjVT9OCbBV1DgTM
- R3Q4+M+mbLnG751vIrmbmVL1VH7uU/c5ae1TP0YrRAvjgA8l+cEZQ9mhW9abtlM5SSky
- VTjknXSzJXF9AtJQbjon2ZSDj8opaKSLmsfA5pG5wCAf4KW9xLfVsJ2qKPSGIbFF9tSJ
- 2YFuS6G3vxb9QAkDiADlNK4l7EN1bfoEaizCDD9VEbjJkyiwyXNPnZskv10S/JAweDqF
- x5FgEoYSk1/FAtdN4Py6hqGkbbBkxJjDBWZIo/I4m2pZUV5Mrh2TP132OY3avf51pVd7
- BGRA==
-X-Gm-Message-State: AOJu0YyKdCDR351ChM23gPCAPtMyfq9+aTutmZVl8dOytnGmgUZQCIM3
- Of/Lil84JkuuUltTUjkebEuJh6goCTop2hMKYVA=
-X-Received: by 2002:a05:6000:1d96:b0:32d:4b6b:6ba with SMTP id
- bk22-20020a0560001d9600b0032d4b6b06bamr7206251wrb.48.1697187025477; 
- Fri, 13 Oct 2023 01:50:25 -0700 (PDT)
+ bh=hOvGuBypuCWb7hwJnxTfq9f8trGAKqx0KCb984exKgY=;
+ b=rzohPZ8fco6utF+R3EWJHYLtoIgDc+nIAkLafhOlGNXGpYv957+L9OJfP6lFJ6DhdW
+ 3DyIP2o7Z8XpxG/SRFlVWZaPGYqSSQI5iqHclbMz2s/vOI7HE3hFXCfs5ab3KUooklu9
+ C0SJ8J8nqLA6fXEDuP+EHFMUsJbBsze64PCVg4DkaktsRyYIWJ1s0WcSxXmPZ3WU/obk
+ 0A0Z/ZXinD2iHkNRsU9rxXWVkKZAPYI8W+0imx3Xs/eYOh2294W4qlJDhrW/pcmfRel+
+ LocR2ypk+vzqtbFHX/0ZerDoi3P2b3NuBcfKBVMFtRuc6MYaPSZYLskXFK3yq7HTqdv6
+ EQ4g==
+X-Gm-Message-State: AOJu0Yyvy+7GJ2QM+QCFkG8KJBChleBv7E4Yc1d7QDMHQIhDDFuTeGZh
+ vyn49Sw5Pi4ei05N14aakTPvHw==
+X-Received: by 2002:a05:6000:108d:b0:313:eb09:c029 with SMTP id
+ y13-20020a056000108d00b00313eb09c029mr22881580wrw.43.1697186920539; 
+ Fri, 13 Oct 2023 01:48:40 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.50.23
+ v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.48.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 01:50:24 -0700 (PDT)
+ Fri, 13 Oct 2023 01:48:40 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- qemu-arm@nongnu.org (open list:ARM cores)
-Subject: [RFC PATCH v3 59/78] hw/intc: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 11:46:27 +0300
-Message-Id: <8886379aabaa8f02fa7b3b4c57828bd0e4795535.1697186560.git.manos.pitsidianakis@linaro.org>
+ Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org (open list:NRF51)
+Subject: [RFC PATCH v3 52/78] hw/char: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 11:46:20 +0300
+Message-Id: <299c3af2d3ce4394394fb952e30d97dde24dca04.1697186560.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q6L2TwnoQt0n
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mbymy6x6vW1F
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/intc/apic.c          |  2 +-
- hw/intc/arm_gicv3_kvm.c | 16 ++++++++--------
- hw/intc/armv7m_nvic.c   | 12 ++++++------
- hw/intc/xilinx_intc.c   |  2 +-
- 4 files changed, 16 insertions(+), 16 deletions(-)
+ hw/char/nrf51_uart.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/apic.c b/hw/intc/apic.c
-index ac3d47d231..30f341c722 100644
---- a/hw/intc/apic.c
-+++ b/hw/intc/apic.c
-@@ -183,7 +183,7 @@ void apic_deliver_pic_intr(DeviceState *dev, int level)
-             if (!(lvt & APIC_LVT_LEVEL_TRIGGER))
-                 break;
-             apic_reset_bit(s->irr, lvt & 0xff);
--            /* fall through */
-+            fallthrough;
-         case APIC_DM_EXTINT:
-             apic_update_irq(s);
-             break;
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index 72ad916d3d..782cef3390 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -479,11 +479,11 @@ static void kvm_arm_gicv3_put(GICv3State *s)
-             kvm_gicc_access(s, ICC_AP0R_EL1(3), ncpu, &reg64, true);
-             reg64 = c->icc_apr[GICV3_G0][2];
-             kvm_gicc_access(s, ICC_AP0R_EL1(2), ncpu, &reg64, true);
--            /* fall through */
-+            fallthrough;
-         case 6:
-             reg64 = c->icc_apr[GICV3_G0][1];
-             kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, true);
--            /* fall through */
-+            fallthrough;
-         default:
-             reg64 = c->icc_apr[GICV3_G0][0];
-             kvm_gicc_access(s, ICC_AP0R_EL1(0), ncpu, &reg64, true);
-@@ -495,11 +495,11 @@ static void kvm_arm_gicv3_put(GICv3State *s)
-             kvm_gicc_access(s, ICC_AP1R_EL1(3), ncpu, &reg64, true);
-             reg64 = c->icc_apr[GICV3_G1NS][2];
-             kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, true);
--            /* fall through */
-+            fallthrough;
-         case 6:
-             reg64 = c->icc_apr[GICV3_G1NS][1];
-             kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, true);
--            /* fall through */
-+            fallthrough;
-         default:
-             reg64 = c->icc_apr[GICV3_G1NS][0];
-             kvm_gicc_access(s, ICC_AP1R_EL1(0), ncpu, &reg64, true);
-@@ -636,11 +636,11 @@ static void kvm_arm_gicv3_get(GICv3State *s)
-             c->icc_apr[GICV3_G0][3] = reg64;
-             kvm_gicc_access(s, ICC_AP0R_EL1(2), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G0][2] = reg64;
--            /* fall through */
-+            fallthrough;
-         case 6:
-             kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G0][1] = reg64;
--            /* fall through */
-+            fallthrough;
-         default:
-             kvm_gicc_access(s, ICC_AP0R_EL1(0), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G0][0] = reg64;
-@@ -652,11 +652,11 @@ static void kvm_arm_gicv3_get(GICv3State *s)
-             c->icc_apr[GICV3_G1NS][3] = reg64;
-             kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G1NS][2] = reg64;
--            /* fall through */
-+            fallthrough;
-         case 6:
-             kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G1NS][1] = reg64;
--            /* fall through */
-+            fallthrough;
-         default:
-             kvm_gicc_access(s, ICC_AP1R_EL1(0), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G1NS][0] = reg64;
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 03b6b8c986..72d3ae985e 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -2224,7 +2224,7 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-     /* reads of set and clear both return the status */
-     case 0x100 ... 0x13f: /* NVIC Set enable */
-         offset += 0x80;
+diff --git a/hw/char/nrf51_uart.c b/hw/char/nrf51_uart.c
+index dfe2276d71..3e2b35c7ad 100644
+--- a/hw/char/nrf51_uart.c
++++ b/hw/char/nrf51_uart.c
+@@ -170,13 +170,13 @@ static void uart_write(void *opaque, hwaddr addr,
+         }
+         s->enabled = false;
+         value = 1;
 -        /* fall through */
 +        fallthrough;
-     case 0x180 ... 0x1bf: /* NVIC Clear enable */
-         val = 0;
-         startvec = 8 * (offset - 0x180) + NVIC_FIRST_IRQ; /* vector # */
-@@ -2238,7 +2238,7 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-         break;
-     case 0x200 ... 0x23f: /* NVIC Set pend */
-         offset += 0x80;
--        /* fall through */
-+        fallthrough;
-     case 0x280 ... 0x2bf: /* NVIC Clear pend */
-         val = 0;
-         startvec = 8 * (offset - 0x280) + NVIC_FIRST_IRQ; /* vector # */
-@@ -2280,7 +2280,7 @@ static MemTxResult nvic_sysreg_read(void *opaque, hwaddr addr,
-             val = 0;
-             break;
+     case A_UART_SUSPEND:
+     case A_UART_STOPTX:
+         if (value == 1) {
+             s->tx_started = false;
          }
 -        /* fall through */
 +        fallthrough;
-     case 0xd1c ... 0xd23: /* System Handler Priority (SHPR2, SHPR3) */
-         val = 0;
-         for (i = 0; i < size; i++) {
-@@ -2355,7 +2355,7 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-     case 0x100 ... 0x13f: /* NVIC Set enable */
-         offset += 0x80;
-         setval = 1;
--        /* fall through */
-+        fallthrough;
-     case 0x180 ... 0x1bf: /* NVIC Clear enable */
-         startvec = 8 * (offset - 0x180) + NVIC_FIRST_IRQ;
- 
-@@ -2373,7 +2373,7 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-          */
-         offset += 0x80;
-         setval = 1;
--        /* fall through */
-+        fallthrough;
-     case 0x280 ... 0x2bf: /* NVIC Clear pend */
-         startvec = 8 * (offset - 0x280) + NVIC_FIRST_IRQ; /* vector # */
- 
-@@ -2408,7 +2408,7 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-         if (!arm_feature(&s->cpu->env, ARM_FEATURE_M_MAIN)) {
-             goto exit_ok;
-         }
--        /* fall through */
-+        fallthrough;
-     case 0xd1c ... 0xd23: /* System Handler Priority (SHPR2, SHPR3) */
-         for (i = 0; i < size; i++) {
-             unsigned hdlidx = (offset - 0xd14) + i;
-diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
-index 6e5012e66e..245f452898 100644
---- a/hw/intc/xilinx_intc.c
-+++ b/hw/intc/xilinx_intc.c
-@@ -131,7 +131,7 @@ static void pic_write(void *opaque, hwaddr addr,
-             if ((p->regs[R_MER] & 2)) {
-                 break;
-             }
--            /* fallthrough */
-+            fallthrough;
-         default:
-             if (addr < ARRAY_SIZE(p->regs))
-                 p->regs[addr] = value;
+     case A_UART_STOPRX:
+         if (addr != A_UART_STOPTX && value == 1) {
+             s->rx_started = false;
 -- 
 2.39.2
 

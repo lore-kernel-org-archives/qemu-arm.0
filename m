@@ -1,152 +1,500 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1244563ejc;
-        Thu, 12 Oct 2023 20:57:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFflLaQ8ded2gafaRdzJR8XB/pxXxUR5/K/oEATYoiAe6DIwDNoBx/R31H8FQQOaHDcK/qp
-X-Received: by 2002:a05:6214:2aa7:b0:66d:1ca1:cb86 with SMTP id js7-20020a0562142aa700b0066d1ca1cb86mr3264465qvb.60.1697169453970;
-        Thu, 12 Oct 2023 20:57:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697169453; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1330326ejc;
+        Fri, 13 Oct 2023 00:49:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEGC0NF7mhxbzDf4EQE2I7Isk4UokAl551esriVA8wjj0q8Kh+v/S6tCNeSWoS8B/kPo5fW
+X-Received: by 2002:a05:6214:2a4a:b0:66d:27ac:a595 with SMTP id jf10-20020a0562142a4a00b0066d27aca595mr969897qvb.23.1697183385694;
+        Fri, 13 Oct 2023 00:49:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183385; cv=none;
         d=google.com; s=arc-20160816;
-        b=BcEJyLj4gL9wRHOyLDktHA1G3Kz5oExVP5fgnuCFpMFcqSIzg62U0lQkmiSI/CsaZc
-         U2eDrTBT2GmZcbCL1+RTKFt5vuqhEFTmFe8T5n89IV3JHEaxe6Er7qBh2L5vDvGbRS81
-         j4pEJLnIvgktgD/Tvp/uN0jGSf5LFxpAjIgKJngKVeP1KgSeheWWRbj0QCE3lMtVlu0w
-         NRf6Yx36GzcH+AbMBiDx7xzEZskvoyn6LO+iABq0zbkiHxeEj0qnXstb24Vpf9cJ9IFJ
-         A3Wzg+N/0C4Cn2Lbf/vG8xPpq/RFQ4h+SwTQBVch/BnjXBK4g2sra5WrUwoI3txotAJ+
-         isBw==
+        b=Hdxaj6KKOlFm3uLrJmVcMxnxtxjBQtmhfFxW4nTGVjiMc/4smakQZvw0fices2nQQD
+         13pxXti3defgFSJBoZuAsY0pmlkbZYTo8Dh/ezx4wx+TIMhTOKDoKH2Q8ffR/A3IuzrG
+         D7Blbq8Ckrrr/B6K1G9ZC9nX+kTO0X1dacRNxv5HTsITsD2/qSCb70WQlcb92+Kqkd/R
+         OqAedlDK6IUul0lZHpJpmR8MK7QHMFpi/2HpWMj3lYZ3j4DW0AyBlu1VK8diA43wt1Gx
+         R7Fy9JD8y1pIwfeEI7t8X1tWOCtPwvS/kwQwnYXDGS2Bxp3mOqu/ooWWQPjP/lX44VX8
+         5fCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=kLJsTgpCV8IGz+6OnaZBjvfwx3X3KRa4KAC6RvnLWqE=;
-        fh=gXubrgN/DNqA+aOkXvONQ7GZxGwfaO2Ob7zUa+5fgFM=;
-        b=sXplYU4+wNWlL0+AREyUsU5SjaheH1Mg8OP6W1MAMYQAFPgZNlUrzeq+AxYwl0q//i
-         /Q/6pejALyWoe+attqYRibctah6furaUccUmWdthEAHEsb0AzuysM7M+aQqvjKexfAFs
-         ppXv+bOsp76SYjMNBGna5PnkPel6E02Zh7qYE1subLi0DZqARkoSs5R2WHA9nMtlSSPi
-         /6Ccrg8cOmSShuivBZWMhWh5HD/j61CS5pJP5qmwygNNVtH8840gIzuflqGabPLNsQyo
-         c9fSiDLBWO41xXLpPqZPLel+oRCvfTXBH9Vt5uLd3/WodLUPkUJ7zRxIh7OmvAIs6lMg
-         2Yeg==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ZMWm7PYeA94VivoVKWT0oooHMlaYiSocgiFxO0wxv54=;
+        fh=+ZsZUTuyxoQ5ZtM1/3hdknpz4V7RB/CRpE4IdMKqcXk=;
+        b=p5J2ccOPSOeeQ3eIrLtQGY2xmXED3Kzm8ZhZk5OXyTUj1ukE67qoAcq4TPHWzvDFix
+         rF9bsqA54kQAfZPjwgIRI7fFxslCpZacVPGIw1MMkoDTyY+1BThFJ1lGA8xiBesmikmK
+         cYjAkxxNrKJo1ukTy/gz/FCnnCCmkBvW3UEEaiS+heZG+/9I9lKXaflZp1JeotMQphJF
+         zh7aYF7Th4BOU4VYjYRLI990LW2mDLJgKw7wHKURQdfdhIGWmy9lRReMWJEED6xhpOhG
+         uCVfUUkYAoDjSwcKG+bPrgM8MhjxfS32sBo/wwJ8br7F7qe7lkhjZcJ8k+oOJtQk6lIz
+         dIPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xwKgh85G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QkyAmzX8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m4-20020a0cf184000000b0066cfda15c48si632535qvl.474.2023.10.12.20.57.33
+        by mx.google.com with ESMTPS id t11-20020a05620a450b00b00773c792bdcesi805021qkp.545.2023.10.13.00.49.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Oct 2023 20:57:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 00:49:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xwKgh85G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=QkyAmzX8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qr9IR-0006tC-G6; Thu, 12 Oct 2023 23:57:07 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrCvP-000483-FH; Fri, 13 Oct 2023 03:49:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qr9IP-0006sQ-Ld
- for qemu-devel@nongnu.org; Thu, 12 Oct 2023 23:57:05 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1qrCvN-00047g-Qo
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:49:33 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qr9IO-0004DV-54
- for qemu-devel@nongnu.org; Thu, 12 Oct 2023 23:57:05 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-5a7c011e113so22625597b3.1
- for <qemu-devel@nongnu.org>; Thu, 12 Oct 2023 20:57:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1qrCvL-000429-6G
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:49:33 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-32c9f2ce71aso1490027f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:49:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697169423; x=1697774223; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=kLJsTgpCV8IGz+6OnaZBjvfwx3X3KRa4KAC6RvnLWqE=;
- b=xwKgh85GgGMT4s4YyQjLR4zTRFrlJrYcTDLGF3sp77KuUcT6PJddKarS/vbhBRf7X7
- KCB1O/N+iW2m4syHHtkmqYbQzssHP2rfSTggmoVAQxMGGw+Tdh4+LHNGnUUlZgvzECsd
- mZH3pYAE7gDeN2imY8NPaPXASkMCrKTtc/mHk/Bi/n3YYOvchvcs220YPpnUoi5uFl7W
- MUqln2wS0bpQzn+8UOEP1djiYmk+fKKTWy+nu5vamZ+cMIGvsuONGMT+l6Sb269j8eCc
- KvhVGWSh1aaL7ivDZzRZ1hVmKY/WQfU99kRnZSOwiLUA0uE1o0kcHt1/nUJgKIVYxy7b
- 30yA==
+ d=linaro.org; s=google; t=1697183369; x=1697788169; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZMWm7PYeA94VivoVKWT0oooHMlaYiSocgiFxO0wxv54=;
+ b=QkyAmzX8vNZygBKWvmRBpVmPwlIYbsvd/9h69hBNyDkqTtUBc4GupHlATyf6LD/Etn
+ Ati9tODuC2oOuGlcAKPZ3WyhJr98uaF/0OubMl/7Qc/Z4ZI3Qz7uVjbGuRhnYr5WBepn
+ 04HXbO04Z7CEwFrDlGTClpPzIlnmPSeNm6TKKsr8eFSim9zp4gwevxK4lCi9568rCoAJ
+ 6PnaKkn9cM4ZFyqIX8uQD+ANJkCboME5iEBY5hDfwz7QYxOWukOaxtGn264J7fFzDwuL
+ /Nyk9jUCDPI3OOYbEE9rPcv/jPk+8oLye5JwqVd8Mi+elBuw4g0yFfHQlRes5NGaorXl
+ 865Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697169423; x=1697774223;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kLJsTgpCV8IGz+6OnaZBjvfwx3X3KRa4KAC6RvnLWqE=;
- b=dXqT6socwH5ihF6uPHlRf6ituvVqZQmKagynwhnKns/46E7/iwDaXeUdWSYT4uZ4ar
- 0e8rkkzxV/TkDuSALpmDyxCVn3bcruVqUSXJ3Y8XXCw1O0PRCNeCvu7+1bwtNemH5D4Q
- oRGjgzO0H9RpsDX0ie9OaTEpjZe6hJTqG5zblNzgQ++FXC+MpHZ8DeRI7xmYy9quGYjo
- QtGZ2GoFmX7eR2egEk+yw0oods/WvnxgncbcPX6A8bZlrI1uQUM8EFjJ8w/4oGun/hMF
- Ea2t/dP033sqmrtFccy3sJn9MCWjQEJkzFpnLXjXvsYnkqgLiEEn1oAZtI5HIMspcn3R
- rt+Q==
-X-Gm-Message-State: AOJu0YwG7GpBxyJmGgDdqXqqo5IUQ7XADrs0lGeoLVP1MJcx16BTpxTb
- VnuMaDeNnoW/vB+sE1UfMysA6g==
-X-Received: by 2002:a05:690c:f92:b0:5a7:e6fb:39b with SMTP id
- df18-20020a05690c0f9200b005a7e6fb039bmr7572100ywb.1.1697169422812; 
- Thu, 12 Oct 2023 20:57:02 -0700 (PDT)
-Received: from [192.168.0.4] ([71.212.149.95])
- by smtp.gmail.com with ESMTPSA id
- w26-20020aa79a1a000000b0069b772c4325sm333393pfj.87.2023.10.12.20.57.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Oct 2023 20:57:02 -0700 (PDT)
-Message-ID: <b5d33195-7520-41ed-b5da-bdbf90075cfc@linaro.org>
-Date: Thu, 12 Oct 2023 20:57:00 -0700
+ d=1e100.net; s=20230601; t=1697183369; x=1697788169;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ZMWm7PYeA94VivoVKWT0oooHMlaYiSocgiFxO0wxv54=;
+ b=N2ndW2rqBHaE2anh+OEqw5fuhBHdnSfQvA6A/zmTKnaXg0WeRnyXo1zbt3WWMGI8EM
+ 3jt5hssFmUGh+93GeXdXXsLHPIm3CmS3vSE3VIHWS/04ACn3/lDvf2UowacMu8CVESdF
+ JIMySjdiShLPOeDilc55+K7y+N9yp0dN8wVNRSymqFxL720j0sN4zM2e68fsG1TqSmjf
+ KQGnjlZ2Jq1g58hJDdO5RAN6+gjUu4cOawAYUgfkgsYP8hNrX3A+Re6Oowb2CO8FSPoU
+ Gatk+H9ZXack5hDKgbgvcs/gehJgaVBW4D5ca6MgIL8RqeZPwkjXQyRS5WfgGJ9U02U7
+ G3fw==
+X-Gm-Message-State: AOJu0YxKjmjTc87U3dTbR702I2nG8+uIhPJ2CuwwxM3dpHd35JeqhYuW
+ xWe6IoV5MMG8lyn1R/BrKSXe8Q==
+X-Received: by 2002:a5d:4fcf:0:b0:31f:f99c:6013 with SMTP id
+ h15-20020a5d4fcf000000b0031ff99c6013mr20885228wrw.61.1697183369326; 
+ Fri, 13 Oct 2023 00:49:29 -0700 (PDT)
+Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
+ [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.49.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 Oct 2023 00:49:28 -0700 (PDT)
+From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-block@nongnu.org
+Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
+Subject: [RFC PATCH 00/78] Strict disable implicit fallthrough
+Date: Fri, 13 Oct 2023 10:47:04 +0300
+Message-Id: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/18] target/riscv: Remove CPU_RESOLVING_TYPE from
- 'cpu-qom.h'
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Song Gao <gaosong@loongson.cn>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Laurent Vivier <lvivier@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-arm@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>
-References: <20231010092901.99189-1-philmd@linaro.org>
- <20231010092901.99189-4-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231010092901.99189-4-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=richard.henderson@linaro.org; helo=mail-yw1-x112e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XzD+UALUqGjB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AEDrE4Y8JZjp
 
-On 10/10/23 02:28, Philippe Mathieu-Daudé wrote:
-> CPU_RESOLVING_TYPE is a per-target definition, and is
-> irrelevant for other targets. Move it to "cpu.h".
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   target/riscv/cpu-qom.h | 1 -
->   target/riscv/cpu.h     | 2 ++
->   2 files changed, 2 insertions(+), 1 deletion(-)
+Hello,
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+This RFC is inspired by the kernel's move to -Wimplicit-fallthrough=3
+back in 2019.[0]
+We take one step (or two) further by increasing it to 5 which rejects
+fall through comments and requires an attribute statement.
+
+[0]:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a035d552a93b
+
+The line differences are not many, but they spread all over different
+subsystems, architectures and devices. An attempt has been made to split
+them in cohesive patches to aid post-RFC review. Part of the RFC is to
+determine whether these patch divisions needs improvement.
+
+Main questions this RFC poses
+=============================
+
+- Is this change desirable and net-positive.
+- Should the `fallthrough;` pseudo-keyword be defined like in the Linux
+  kernel, or use glib's G_GNUC_FALLTHROUGH, or keep the already existing
+  QEMU_FALLTHROUGH macro.
+- Should fallthrough comments be removed if they do not include extra
+  information.
+
+Some external resources
+=======================
+
+See the RFC discussion in the kernel:
+
+https://lore.kernel.org/lkml/1d2830aadbe9d8151728a7df5b88528fc72a0095.1564549413.git.joe@perches.com/
+
+The `fallthrough;` pseudo-keyword in the kernel source code:
+
+https://elixir.bootlin.com/linux/latest/C/ident/fallthrough
+
+In summary, I quote the doc comment and definition:
+
+    /*
+     * Add the pseudo keyword 'fallthrough' so case statement blocks
+     * must end with any of these keywords:
+     *   break;
+     *   fallthrough;
+     *   continue;
+     *   goto <label>;
+     *   return [expression];
+     *
+     *  gcc: https://gcc.gnu.org/onlinedocs/gcc/Statement-Attributes.html#Statement-Attributes
+     */
+    #if __has_attribute(__fallthrough__)
+    # define fallthrough                    __attribute__((__fallthrough__))
+    #else
+    # define fallthrough                    do {} while (0)  /* fallthrough */
+    #endif
+
+Background - Motivation
+=======================
+
+The C switch statement allows you to conditionally goto different labels
+depending on a value. A break; statement conveniently goto's the end of
+the switch. If a "case" does not end in a break, we say that the control
+flow falls through the next case label, if any, implicitly. This can
+lead to bugs and QEMU uses the GCC warning -Wimplicit-fallthrough to
+prevent this.
+
+Currently, QEMU is built with -Wimplicit-fallthrough=2. This makes GCC's
+static analyzer check for a case-insensitive matches of the .*falls?[
+\t-]*thr(ough|u).* regular expression. This means the following list of
+comments taken from QEMU all disable the implicit fallthrough warning:
+
+- /* FALLTHRU */
+- /* fall through */
+- /* Fall through.  */
+- /* Fall through... */
+- /* fall through if hEventTimeout is signaled */
+- /* FALL THROUGH */
+
+To keep a constistent code style, this commit adds a macro `fallthrough`
+that looks like a C keyword but expands to an attribute statement in
+supported compilers (GCC at the moment).
+
+Note: there was already such a macro, QEMU_FALLTHROUGH, and it was used
+only around 7 times in the code base. The first commit replaces it.
+
+Emmanouil Pitsidianakis (78):
+  include/qemu/compiler.h: replace QEMU_FALLTHROUGH with fallthrough
+  block: add fallthrough pseudo-keyword
+  fpu/softfloat: add fallthrough pseudo-keyword
+  qapi/opts-visitor: add fallthrough pseudo-keyword
+  qobject/json: add fallthrough pseudo-keyword
+  tcg: add fallthrough pseudo-keyword
+  hw/virtio/virtio-balloon.c: add fallthrough pseudo-keyword
+  hw/block: add fallthrough pseudo-keyword
+  hw/acpi/aml-build.c: add fallthrough pseudo-keyword
+  hw/ide/atapi.c: add fallthrough pseudo-keyword
+  hw/timer: add fallthrough pseudo-keyword
+  hw/usb: add fallthrough pseudo-keyword
+  hw/adc: add fallthrough pseudo-keyword
+  util/error-report.c: add fallthrough pseudo-keyword
+  accel/tcg: add fallthrough pseudo-keyword
+  audio: add fallthrough pseudo-keyword
+  ui/sdl2.c: add fallthrough pseudo-keyword
+  ui/win32-kbd-hook.c: add fallthrough pseudo-keyword
+  target/hppa: add fallthrough pseudo-keyword
+  target/mips: add fallthrough pseudo-keyword
+  target/sparc: add fallthrough pseudo-keyword
+  target/ppc: add fallthrough pseudo-keyword
+  target/arm: add fallthrough pseudo-keyword
+  target/alpha: add fallthrough pseudo-keyword
+  target/i386: add fallthrough pseudo-keyword
+  target/s390x: add fallthrough pseudo-keyword
+  target/riscv: add fallthrough pseudo-keyword
+  target/avr: add fallthrough pseudo-keyword
+  target/cris: add fallthrough pseudo-keyword
+  target/nios2: add fallthrough pseudo-keyword
+  target/xtensa: add fallthrough pseudo-keyword
+  target/m68k: add fallthrough pseudo-keyword
+  target/rx: add fallthrough pseudo-keyword
+  target/tricore: add fallthrough pseudo-keyword
+  target/sh4: add fallthrough pseudo-keyword
+  target/openrisc: add fallthrough pseudo-keyword
+  target/hexagon: add fallthrough pseudo-keyword
+  system/rtc.c: add fallthrough pseudo-keyword
+  hw/scsi: add fallthrough pseudo-keyword
+  hw/sd/sdhci.c: add fallthrough pseudo-keyword
+  linux-user: add fallthrough pseudo-keyword
+  hw/i386: add fallthrough pseudo-keyword
+  hw/misc: add fallthrough pseudo-keyword
+  hw/m68k/mcf_intc.c: add fallthrough pseudo-keyword
+  hw/dma: add fallthrough pseudo-keyword
+  disas: add fallthrough pseudo-keyword
+  contrib/rdmacm-mux: add fallthrough pseudo-keyword
+  contrib/vhost-user-scsi: add fallthrough pseudo-keyword
+  hw/arm: add fallthrough pseudo-keyword
+  hw/audio: add fallthrough pseudo-keyword
+  chardev: add fallthrough pseudo-keyword
+  hw/char: add fallthrough pseudo-keyword
+  nbd: add fallthrough pseudo-keyword
+  hw/core: add fallthrough pseudo-keyword
+  hw/display: add fallthrough pseudo-keyword
+  hw/input: add fallthrough pseudo-keyword
+  hw/net: add fallthrough pseudo-keyword
+  hw/ppc: add fallthrough pseudo-keyword
+  hw/intc: add fallthrough pseudo-keyword
+  qga: add fallthrough pseudo-keyword
+  semihosting: add fallthrough pseudo-keyword
+  hw/gpio: add fallthrough pseudo-keyword
+  hw/ipmi: add fallthrough pseudo-keyword
+  hw/mips: add fallthrough pseudo-keyword
+  hw/nvme: add fallthrough pseudo-keyword
+  hw/nvram/eeprom_at24c.c: add fallthrough pseudo-keyword
+  hw/pci-host/pnv_phb3.c: add fallthrough pseudo-keyword
+  hw/pci: add fallthrough pseudo-keyword
+  hw/rdma/rdma_backend.c: add fallthrough pseudo-keyword
+  hw/rtc: add fallthrough pseudo-keyword
+  hw/s390x: add fallthrough pseudo-keyword
+  hw/ssi: add fallthrough pseudo-keyword
+  hw/watchdog/wdt_diag288.c: add fallthrough pseudo-keyword
+  hw/cxl/cxl-device-utils.c: add fallthrough pseudo-keyword
+  migration: add fallthrough pseudo-keyword
+  qemu-img.c: add fallthrough pseudo-keyword
+  tests/unit/test-char.c: add fallthrough pseudo-keyword
+  meson.build: increase -Wimplicit-fallthrough to 5
+
+ accel/tcg/cputlb.c                          |  4 +-
+ accel/tcg/ldst_atomicity.c.inc              |  2 +-
+ accel/tcg/plugin-gen.c                      |  2 +-
+ audio/audio.c                               | 16 ++--
+ audio/jackaudio.c                           |  4 +-
+ audio/pwaudio.c                             | 12 +--
+ block/block-copy.c                          |  1 +
+ block/file-posix.c                          |  1 +
+ block/io.c                                  |  1 +
+ block/iscsi.c                               |  1 +
+ block/qcow2-cluster.c                       |  5 +-
+ block/vhdx.c                                | 17 +++-
+ chardev/char-socket.c                       |  2 +-
+ contrib/rdmacm-mux/main.c                   | 10 +--
+ contrib/vhost-user-scsi/vhost-user-scsi.c   |  3 +-
+ disas/hppa.c                                |  4 +-
+ disas/m68k.c                                |  2 +-
+ disas/sh4.c                                 |  6 +-
+ disas/sparc.c                               |  2 +-
+ docs/devel/style.rst                        | 23 +++++
+ fpu/softfloat-parts.c.inc                   |  8 +-
+ fpu/softfloat.c                             |  7 +-
+ hw/acpi/aml-build.c                         |  6 +-
+ hw/adc/aspeed_adc.c                         | 12 +--
+ hw/adc/zynq-xadc.c                          |  2 +-
+ hw/arm/omap1.c                              |  8 +-
+ hw/arm/pxa2xx.c                             |  6 +-
+ hw/arm/smmuv3.c                             |  2 +-
+ hw/arm/stellaris.c                          |  1 +
+ hw/audio/asc.c                              |  2 +-
+ hw/audio/cs4231a.c                          |  2 +-
+ hw/audio/gusemu_hal.c                       |  2 +-
+ hw/block/dataplane/xen-block.c              |  4 +-
+ hw/block/m25p80.c                           |  2 +-
+ hw/block/onenand.c                          |  2 +-
+ hw/block/pflash_cfi01.c                     |  1 +
+ hw/block/pflash_cfi02.c                     |  6 +-
+ hw/char/nrf51_uart.c                        |  4 +-
+ hw/core/loader.c                            |  2 +-
+ hw/cxl/cxl-device-utils.c                   |  4 +-
+ hw/display/cg3.c                            |  2 +-
+ hw/display/cirrus_vga.c                     |  2 +-
+ hw/display/tcx.c                            |  4 +-
+ hw/dma/omap_dma.c                           | 32 +++----
+ hw/dma/pxa2xx_dma.c                         |  4 +-
+ hw/dma/sparc32_dma.c                        |  2 +-
+ hw/gpio/omap_gpio.c                         |  2 +-
+ hw/i2c/bitbang_i2c.c                        |  2 +-
+ hw/i386/intel_iommu.c                       |  4 +-
+ hw/i386/kvm/xen_evtchn.c                    |  2 +-
+ hw/i386/x86.c                               |  2 +-
+ hw/ide/atapi.c                              |  1 +
+ hw/input/hid.c                              |  3 +-
+ hw/input/tsc2005.c                          |  4 +-
+ hw/input/tsc210x.c                          |  2 +-
+ hw/intc/apic.c                              |  2 +-
+ hw/intc/arm_gicv3_kvm.c                     | 16 ++--
+ hw/intc/armv7m_nvic.c                       | 12 +--
+ hw/intc/xilinx_intc.c                       |  2 +-
+ hw/ipmi/ipmi_bmc_extern.c                   |  2 +-
+ hw/ipmi/smbus_ipmi.c                        |  4 +-
+ hw/m68k/mcf_intc.c                          |  2 +-
+ hw/mips/boston.c                            | 12 +--
+ hw/misc/a9scu.c                             |  2 +
+ hw/misc/aspeed_scu.c                        |  2 +-
+ hw/misc/bcm2835_property.c                  | 12 +--
+ hw/misc/mos6522.c                           |  4 +-
+ hw/net/cadence_gem.c                        |  4 +-
+ hw/net/can/can_sja1000.c                    |  4 +-
+ hw/net/igb_core.c                           |  2 +-
+ hw/net/igbvf.c                              |  2 +-
+ hw/net/imx_fec.c                            |  2 +-
+ hw/net/net_rx_pkt.c                         |  2 +-
+ hw/net/pcnet.c                              |  2 +-
+ hw/net/rtl8139.c                            |  6 +-
+ hw/net/xilinx_ethlite.c                     |  2 +-
+ hw/nvme/ctrl.c                              | 24 +++---
+ hw/nvme/dif.c                               |  4 +-
+ hw/nvram/eeprom_at24c.c                     |  2 +-
+ hw/pci-host/pnv_phb3.c                      |  2 +-
+ hw/pci/pcie_aer.c                           |  3 +-
+ hw/pci/pcie_doe.c                           |  2 +-
+ hw/ppc/pnv_bmc.c                            |  2 +-
+ hw/ppc/spapr_events.c                       |  1 +
+ hw/rdma/rdma_backend.c                      |  2 +-
+ hw/rtc/aspeed_rtc.c                         |  4 +-
+ hw/rtc/mc146818rtc.c                        |  4 +-
+ hw/s390x/ipl.c                              |  1 +
+ hw/s390x/s390-pci-inst.c                    |  4 +-
+ hw/s390x/sclp.c                             |  4 +-
+ hw/scsi/esp.c                               |  2 +-
+ hw/scsi/megasas.c                           |  2 +-
+ hw/scsi/scsi-bus.c                          |  4 +-
+ hw/scsi/scsi-disk.c                         |  2 +-
+ hw/sd/sdhci.c                               |  8 +-
+ hw/ssi/npcm7xx_fiu.c                        | 14 +--
+ hw/ssi/omap_spi.c                           | 48 +++++------
+ hw/timer/a9gtimer.c                         |  8 +-
+ hw/timer/aspeed_timer.c                     |  1 +
+ hw/timer/pxa2xx_timer.c                     | 94 ++++++++++-----------
+ hw/timer/renesas_tmr.c                      |  2 +-
+ hw/timer/sh_timer.c                         |  8 +-
+ hw/usb/dev-mtp.c                            |  2 +-
+ hw/usb/dev-wacom.c                          |  2 +-
+ hw/usb/hcd-ehci.c                           |  4 +-
+ hw/usb/hcd-xhci.c                           |  4 +-
+ hw/usb/redirect.c                           |  4 +-
+ hw/usb/tusb6010.c                           |  2 +-
+ hw/virtio/virtio-balloon.c                  |  1 +
+ hw/watchdog/wdt_diag288.c                   |  2 +-
+ include/qemu/compiler.h                     | 30 +++++--
+ include/qemu/osdep.h                        |  4 +-
+ linux-user/mips/cpu_loop.c                  |  8 +-
+ linux-user/mmap.c                           |  2 +-
+ linux-user/syscall.c                        |  2 +-
+ meson.build                                 |  2 +-
+ migration/migration.c                       |  2 +-
+ nbd/client.c                                |  4 +-
+ nbd/common.c                                |  2 +-
+ qapi/opts-visitor.c                         |  1 +
+ qapi/string-input-visitor.c                 |  4 +-
+ qemu-img.c                                  |  2 +-
+ qemu-nbd.c                                  |  4 +-
+ qga/main.c                                  |  2 +-
+ qga/vss-win32/requester.cpp                 |  1 +
+ qobject/json-lexer.c                        |  4 +-
+ qobject/json-parser.c                       |  5 +-
+ semihosting/arm-compat-semi.c               |  2 +-
+ system/rtc.c                                |  2 +-
+ target/alpha/helper.c                       |  6 +-
+ target/alpha/translate.c                    |  4 +-
+ target/arm/helper.c                         | 34 ++++----
+ target/arm/ptw.c                            | 10 +--
+ target/arm/tcg/psci.c                       |  2 +-
+ target/arm/tcg/translate-a64.c              | 76 ++++++++---------
+ target/arm/tcg/translate-m-nocp.c           |  2 +-
+ target/arm/tcg/translate-vfp.c              |  2 +-
+ target/arm/tcg/translate.c                  |  8 +-
+ target/avr/translate.c                      |  4 +-
+ target/cris/translate.c                     |  4 +-
+ target/hexagon/idef-parser/parser-helpers.c |  5 +-
+ target/hppa/translate.c                     | 10 +--
+ target/i386/cpu.c                           |  2 +-
+ target/i386/hvf/x86_decode.c                |  1 +
+ target/i386/kvm/kvm.c                       |  4 +-
+ target/i386/tcg/decode-new.c.inc            |  6 +-
+ target/i386/tcg/emit.c.inc                  |  2 +-
+ target/i386/tcg/translate.c                 | 11 +--
+ target/loongarch/cpu.c                      |  4 +-
+ target/loongarch/translate.c                |  2 +-
+ target/m68k/op_helper.c                     |  3 +-
+ target/m68k/translate.c                     | 10 +--
+ target/mips/sysemu/physaddr.c               |  2 +-
+ target/mips/tcg/micromips_translate.c.inc   |  4 +-
+ target/mips/tcg/mips16e_translate.c.inc     | 30 +++----
+ target/mips/tcg/mxu_translate.c             |  8 +-
+ target/mips/tcg/nanomips_translate.c.inc    |  4 +-
+ target/mips/tcg/op_helper.c                 |  2 +-
+ target/mips/tcg/translate.c                 | 79 ++++++++---------
+ target/nios2/helper.c                       |  6 +-
+ target/nios2/translate.c                    |  2 +-
+ target/openrisc/mmu.c                       |  2 +-
+ target/openrisc/translate.c                 |  2 +-
+ target/ppc/cpu_init.c                       |  8 +-
+ target/ppc/excp_helper.c                    |  6 +-
+ target/ppc/mmu-radix64.c                    |  6 +-
+ target/ppc/mmu_common.c                     | 12 +--
+ target/ppc/translate.c                      |  6 +-
+ target/riscv/insn_trans/trans_rvi.c.inc     |  2 +-
+ target/riscv/insn_trans/trans_rvzce.c.inc   | 22 ++---
+ target/riscv/translate.c                    |  4 +-
+ target/rx/translate.c                       |  2 +-
+ target/s390x/cpu.c                          |  4 +-
+ target/s390x/kvm/kvm.c                      |  2 +-
+ target/s390x/mmu_helper.c                   |  6 +-
+ target/s390x/tcg/translate.c                | 18 ++--
+ target/s390x/tcg/translate_vx.c.inc         |  2 +-
+ target/sh4/helper.c                         |  2 +-
+ target/sparc/ldst_helper.c                  |  4 +-
+ target/sparc/mmu_helper.c                   |  6 +-
+ target/sparc/translate.c                    |  3 +-
+ target/sparc/win_helper.c                   |  1 +
+ target/tricore/translate.c                  |  4 +-
+ target/xtensa/op_helper.c                   |  8 +-
+ target/xtensa/translate.c                   |  2 +-
+ tcg/aarch64/tcg-target.c.inc                | 15 +++-
+ tcg/arm/tcg-target.c.inc                    |  5 +-
+ tcg/i386/tcg-target.c.inc                   | 20 +++--
+ tcg/loongarch64/tcg-target.c.inc            |  4 +-
+ tcg/mips/tcg-target.c.inc                   |  8 +-
+ tcg/optimize.c                              |  8 +-
+ tcg/ppc/tcg-target.c.inc                    | 19 +++--
+ tcg/riscv/tcg-target.c.inc                  |  5 +-
+ tcg/s390x/tcg-target.c.inc                  |  8 +-
+ tcg/tcg-op-gvec.c                           | 24 +++---
+ tcg/tcg-op-ldst.c                           |  2 +-
+ tcg/tcg.c                                   | 24 +++---
+ tcg/tci.c                                   |  2 +-
+ tcg/tci/tcg-target.c.inc                    |  2 +-
+ tests/unit/test-char.c                      |  2 +-
+ ui/sdl2.c                                   |  2 +-
+ ui/win32-kbd-hook.c                         |  7 --
+ util/error-report.c                         |  2 +-
+ 203 files changed, 747 insertions(+), 618 deletions(-)
 
 
-r~
+base-commit: cea3ea670fe265421131aad90c36fbb87bc4d206
+-- 
+2.39.2
+

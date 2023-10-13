@@ -1,126 +1,121 @@
-Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1168066dlb;
-        Fri, 13 Oct 2023 01:48:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG+9PPtIhdxFTJYH2GxCDh+aP1PLWC64EYBVY+oNtbnetK6BQNCfrtDEP+hnVo8DOSNPG+5
-X-Received: by 2002:a05:620a:2698:b0:775:6785:3051 with SMTP id c24-20020a05620a269800b0077567853051mr30111513qkp.50.1697186907503;
-        Fri, 13 Oct 2023 01:48:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697186907; cv=none;
+Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1168724dlb;
+        Fri, 13 Oct 2023 01:50:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGH0kyTkBZKUgHeJ7qevKmjxBzXLp23y3XF99fCtEIsAFbIWV+UCwFpkLZ9u1jrLWoh9UEW
+X-Received: by 2002:a05:620a:2952:b0:774:32f0:e2b5 with SMTP id n18-20020a05620a295200b0077432f0e2b5mr35300609qkp.9.1697187016508;
+        Fri, 13 Oct 2023 01:50:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697187016; cv=none;
         d=google.com; s=arc-20160816;
-        b=sdWWWp98XgD72C8ZuEnG/FYba4TG84roWirXqPWp8KXxvoNOYBvj3Rn8GpEebsIxL/
-         fJnWhTuQu+YGB3cH0Spm10p7PW0+C9Cso3daNm+hnsmG2Yds6Q3i5rYdQkZJDvnzrjG1
-         9Asdn8C8bExKmMpYsEmYbS1NXzlm3DubaQU2dmImMPKrspErTP5ZwEoZpv2kgBAnJGpp
-         czPRknKKAlhEU7OdnkXw4X7L6462alv0pi0SLMPiW6Ps9wfwR8Ie1Fyi7h7NXHsNnTFQ
-         9xns3x3lxbVhQm6QzlM/1eMXSTqNmo7rey96ZOYIPECw8j8CLOei6hWLhK0qXTG0/gAi
-         fbVg==
+        b=y2Nxw5O1vNG24+94u2XrdNuiB5HyqLumyGvIz/urlO8awYbji3CuEJVb1mBwfx2N7V
+         RlE3clMVuUwvayV/EZsShQlQ30RHYmmObDQe45Y7DLTxlOgNDbyXZLzw/ILCBq7q+roC
+         uWKG2vv5an+4BZErJVUG8L41ZNPKEFBW2ZyPmUW6Fm0GqAS4EScWLHGMX6ErUGByqhhD
+         Hc/+gDvehvEvTFoZ4Q5twZbthje3z8bjXdxGIJ1oT0k6pJduVukNt4vxcq/LDB7n+dZy
+         2Gc4VhgvwUV9NY33tdYgqtT54uyGNoaGt1DEh22zavkm/zPCj+zNEOYGhtbnAwVs7iwf
+         qCdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=S+81qnoeaIRqKedK6ibK1NLh6+ch/g09aS5I8Db4XR4=;
-        fh=t/uIjHIcj3E8TPe9dpMJv31ogLsCCure7uWBYVatvuY=;
-        b=NGsau+Zu8nufBIbmWZ0v4lthQlIqqBZk7lD8cbO1E0kaIpMGxjxxjcGrJW1d1TEgUr
-         QGNu46NFhi5eaPBBA2+W5p0mu+dnVfDZqrCK/iyaR8kMwjlrl6J5/WaXkDsTVp+SVuXG
-         HJj7IVuE4SK/x9QvsbWq36GwPcHGkgAt4wqrueH3AKNKE00m+JP7fMwjHBdtFYlV2aL+
-         yhztogvBWiW+JxNJ+w07KXE2ulfflXqcPHa9HXsDDQv/Ev5MrePgvCInYwbUbIYgasHB
-         PeF9gzov/mS7XUQeyOZZ8uWBBK+TiUmLRf+z/kvvGMvq+f8phOjahU/2tblRu2mWjAux
-         yghw==
+        bh=2TilCLybsKQVSIwhb19nthh+M1jJV+7LFdQfVqtwfBA=;
+        fh=boFaC8m2w9Gjj6IG8vRSxakWxR0AvX1APGEiLozSgqw=;
+        b=wvwhZ0VAoEAa1xatlpRMKTTfT+Mwngg3eWKfiEOkcTRBdayfqz7E3vutbw80Vu33Bo
+         eiVpCcvVFtVhwkRq4aVEGL3e3ZC2lH2N8qJNn7mnGR76L/f5+YbVwLv8ZDJwgo83kT6m
+         6FDohcKpv+l7Sqm9Q4dqCmB1QswrOXJvx88BOrTudcPlUYgabq1x/e7aL5hOjoTeQT3y
+         v+Ua61ixAup37zbKOWulb65ojq05VTXNSbpSRsX8q9TLWbMrqoxsUlwD3EGx5S3SRAnX
+         OpIrqnZIXDOyfUp4jPCCCiFwA5TtXbfmPR4zW2/JVfVKIkw5v17C8LSUjL7qcyTW1lnB
+         jDeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wJz5XJ2r;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CkkzPqd3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c15-20020ac87d8f000000b0041805eb94ffsi876357qtd.206.2023.10.13.01.48.27
+        by mx.google.com with ESMTPS id r7-20020a05620a298700b00765a70926fbsi852139qkp.543.2023.10.13.01.50.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:48:27 -0700 (PDT)
+        Fri, 13 Oct 2023 01:50:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wJz5XJ2r;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CkkzPqd3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrDpq-0007fV-HY; Fri, 13 Oct 2023 04:47:59 -0400
+	id 1qrDpd-0007Sv-A4; Fri, 13 Oct 2023 04:47:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDpW-0007JP-IX
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:47:36 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1qrDpa-0007Q2-5X
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:47:38 -0400
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDpQ-0000lc-1D
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:47:33 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-31427ddd3fbso1676336f8f.0
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 01:47:25 -0700 (PDT)
+ id 1qrDpY-0000nn-1T
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:47:37 -0400
+Received: by mail-lf1-x12e.google.com with SMTP id
+ 2adb3069b0e04-503f39d3236so2381806e87.0
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 01:47:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697186845; x=1697791645; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697186853; x=1697791653; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=S+81qnoeaIRqKedK6ibK1NLh6+ch/g09aS5I8Db4XR4=;
- b=wJz5XJ2rGaLugvoxNiWDlQdMM+7ThaQb9cMg0RcoKGCLHDY2MIrn6vm/LbFxSOtUU1
- l1l2FikpJuLHRp30MZSlecrpEeKBP0uFim/VCZHKbiXvuOPFBRH2AlEFOika3Ls5tuXI
- SS1kEnHvnJ7ipAv3kWgZ1qMce2LLSxiMTPdc6ycWjk92Vun7lgjrAikLaEKJ3qBI6yPB
- MFIpBFopSHC+D1sDF35PyLWtWPw30aNrVUpL7s93/s1IUG6gbiwlutK8Gl/e7xMJZMbz
- I0X03z8veYROOIo0EjI0h4VR+h47EzMBXqqLMfTQj79Jf8Y3Mbtm4ntIHWRZw10qVLf7
- A9DQ==
+ bh=2TilCLybsKQVSIwhb19nthh+M1jJV+7LFdQfVqtwfBA=;
+ b=CkkzPqd3fMKOBmvkAEsNVv9eV4qkzJL7BYWycUavBrGDRqD+twKP99wfrb4Ijdbil9
+ aULdcoYgc0xBEfQ8bhQuiXiaz2DDh0cvv2O9dCr63+wN1q3NmOyCDIcma4cKLO5g2+AP
+ ZIssRB9kcQmAuJ8PV+LXSFBfAKl9Yr03IiKwoRdg39YgKPDnkGBa3Z+oRv58g+heXDt+
+ vmHNyakJNJlNMlmsYpCc6Zmpvr1kg/tNXkx80e+XaQ6wg1YLH++xPnAVPmpsCIuRs5N1
+ DjKPt/kergzq16ennb2Kr5ES4MFlWIqJw1Rl7YRICyBSAkHK04UtJN3nDQM4Z0aY8G4l
+ qSyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697186845; x=1697791645;
+ d=1e100.net; s=20230601; t=1697186853; x=1697791653;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=S+81qnoeaIRqKedK6ibK1NLh6+ch/g09aS5I8Db4XR4=;
- b=Rit5irjLUb0Qokz58ZyMSV68AZkgnsxiTpazZ0rtNu7Mzf7ZhbPcjNCcyFpu8CUnab
- SkSw2hP38ehMS4QqbWq7Ill1tRQ2sjou/X0STgKemluhPDXwuQX1UZ9h6Drr7K48iyAO
- nsJPx0GnrDBxCaEYkrkpTX0SAFdoXE54gayVKLW64emBIk06U5qhK0+vIrsGcisIW6nl
- K/8jArrUldOWyCXSFkWJGkk2K20nmIxsTzw/9lT+gkt7OiGG+q/g2YCakNXKWwlb7Ucl
- sKIAlvZcgeChgaBtKjg0+F5dwpRELVXYY2JwjVrBbRuzXFGsyDi0OR9mLRl0E2B4WEos
- 8MRg==
-X-Gm-Message-State: AOJu0Yy0ZJXBoJNBV2CLrmZxHQcnzrCDYwbBs+DX+7NaQY3/5b1HqTz+
- JqC6aAxNeyq7u3jiYcycmCxGkkfzLQXNrWmhw+0=
-X-Received: by 2002:adf:e382:0:b0:319:7472:f0b6 with SMTP id
- e2-20020adfe382000000b003197472f0b6mr22839614wrm.15.1697186844403; 
- Fri, 13 Oct 2023 01:47:24 -0700 (PDT)
+ bh=2TilCLybsKQVSIwhb19nthh+M1jJV+7LFdQfVqtwfBA=;
+ b=Stm/6+Q+VboG/Vcm4ftphefJ+O+iGgIX46IrHe95gAubJpiDBuCm0IpXIxVm//X6PF
+ rLmwljeIouML1H+g4LtgcLH0/CWh2hjG9FljaOy5IkqjSE7cCxtyJVJDwXeCO9y5t4Ja
+ P1qpXoofdQOaKZluyONefphd3Opa4nUZbCcR3cPIzVhsizxegzPByqLcJnZ4I+OH056j
+ xy1TUroamxGDL20Zbol0VvWo2fBpInXZT1fJ1kujDDp+MvnUFx8OQn4qnlRaAOzF/vXQ
+ tsuiE6E82wLexKKU6c2bwEYo0ZGb/8GahXYIrxxQoOZMuvNU1j8ni9EP8jMHjc+fzFDZ
+ az3w==
+X-Gm-Message-State: AOJu0YwpoJ+P6wDkUI9Dywf7cWiulDWLocdZyuUImUyvV3t6NBvtRd6q
+ gjQwLeWUFK0APl94FojXFgWY6hsbLQmL6UOD1f8=
+X-Received: by 2002:a05:6512:130b:b0:502:ffdf:b098 with SMTP id
+ x11-20020a056512130b00b00502ffdfb098mr27985287lfu.6.1697186853671; 
+ Fri, 13 Oct 2023 01:47:33 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.47.21
+ v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.47.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 01:47:23 -0700 (PDT)
+ Fri, 13 Oct 2023 01:47:33 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, WANG Xuerui <git@xen0n.name>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Huacai Chen <chenhuacai@kernel.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org (open list:AArch64 TCG target),
- qemu-riscv@nongnu.org (open list:RISC-V TCG target)
-Subject: [RFC PATCH v3 06/78] tcg: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 11:45:34 +0300
-Message-Id: <3303ac9dd5e2106c732d22a4c649445ce073b97c.1697186560.git.manos.pitsidianakis@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ qemu-arm@nongnu.org (open list:ARM cores)
+Subject: [RFC PATCH v3 11/78] hw/timer: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 11:45:39 +0300
+Message-Id: <089c04aaa8a001c7af0e44c309122c738ff2bf50.1697186560.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lf1-x12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,874 +130,318 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Z74xE19fHMag
+X-TUID: EV2iYq+0VpBV
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- target/i386/tcg/translate.c      |  3 +++
- tcg/aarch64/tcg-target.c.inc     | 15 ++++++++++++++-
- tcg/arm/tcg-target.c.inc         |  5 +++--
- tcg/i386/tcg-target.c.inc        | 20 ++++++++++++++------
- tcg/loongarch64/tcg-target.c.inc |  4 ++--
- tcg/mips/tcg-target.c.inc        |  8 ++++++--
- tcg/ppc/tcg-target.c.inc         | 19 ++++++++++++++-----
- tcg/riscv/tcg-target.c.inc       |  5 +++--
- tcg/s390x/tcg-target.c.inc       |  8 ++++++--
- tcg/tcg-op-gvec.c                | 24 ++++++++++++------------
- tcg/tcg-op-ldst.c                |  2 +-
- tcg/tcg.c                        | 24 +++++++++++++-----------
- tcg/tci.c                        |  2 +-
- tcg/tci/tcg-target.c.inc         |  2 +-
- 14 files changed, 93 insertions(+), 48 deletions(-)
+ hw/timer/a9gtimer.c     |  8 ++--
+ hw/timer/aspeed_timer.c |  1 +
+ hw/timer/pxa2xx_timer.c | 94 ++++++++++++++++++++---------------------
+ hw/timer/renesas_tmr.c  |  2 +-
+ hw/timer/sh_timer.c     |  8 ++--
+ 5 files changed, 57 insertions(+), 56 deletions(-)
 
-diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
-index d2061ec44a..e42e3dd653 100644
---- a/target/i386/tcg/translate.c
-+++ b/target/i386/tcg/translate.c
-@@ -1996,6 +1996,7 @@ static void gen_shiftd_rm_T1(DisasContext *s, MemOp ot, int op1,
-          * If TARGET_X86_64 defined then fall through into MO_32 case,
-          * otherwise fall through default case.
-          */
+diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
+index 5e959b6d09..b83d51da96 100644
+--- a/hw/timer/a9gtimer.c
++++ b/hw/timer/a9gtimer.c
+@@ -143,7 +143,7 @@ static uint64_t a9_gtimer_read(void *opaque, hwaddr addr, unsigned size)
+     switch (addr) {
+     case R_COUNTER_HI:
+         shift = 32;
+-        /* fallthrough */
 +        fallthrough;
-     case MO_32:
- #ifdef TARGET_X86_64
-         /* Concatenate the two 32-bit values and use a 64-bit shift.  */
-@@ -3298,6 +3299,7 @@ static bool disas_insn(DisasContext *s, CPUState *cpu)
-         if (CODE64(s))
-             goto illegal_op;
-         /* fall through */
-+        fallthrough;
-     case 0x80: /* GRP1 */
-     case 0x81:
-     case 0x83:
-@@ -7046,6 +7048,7 @@ static void i386_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-         gen_update_cc_op(dc);
-         gen_update_eip_cur(dc);
-         /* fall through */
-+        fallthrough;
-     case DISAS_EOB_ONLY:
-         gen_eob(dc);
+     case R_COUNTER_LO:
+         update = a9_gtimer_get_update(s);
+         ret = extract64(update.new, shift, 32);
+@@ -156,7 +156,7 @@ static uint64_t a9_gtimer_read(void *opaque, hwaddr addr, unsigned size)
          break;
-diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
-index 3afb896a3a..1af7640aab 100644
---- a/tcg/aarch64/tcg-target.c.inc
-+++ b/tcg/aarch64/tcg-target.c.inc
-@@ -298,7 +298,7 @@ static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
+     case R_COMPARATOR_HI:
+         shift = 32;
+-        /* fallthrough */
++        fallthrough;
+     case R_COMPARATOR_LO:
+         ret = extract64(gtb->compare, shift, 32);
          break;
-     case TCG_CT_CONST_ANDI:
-         val = ~val;
--        /* fallthru */
+@@ -185,7 +185,7 @@ static void a9_gtimer_write(void *opaque, hwaddr addr, uint64_t value,
+     switch (addr) {
+     case R_COUNTER_HI:
+         shift = 32;
+-        /* fallthrough */
 +        fallthrough;
-     case TCG_CT_CONST_ORRI:
-         if (val == deposit64(val, 32, 32, val)) {
-             int cmode, imm8;
-@@ -1190,6 +1190,7 @@ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg)
-             break;
-         }
-         /* FALLTHRU */
-+        fallthrough;
- 
-     case TCG_TYPE_V64:
-         tcg_debug_assert(ret >= 32 && arg >= 32);
-@@ -2090,6 +2091,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_add_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_add_i64:
-         if (c2) {
-             tcg_out_addsubi(s, ext, a0, a1, a2);
-@@ -2101,6 +2103,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_sub_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_sub_i64:
-         if (c2) {
-             tcg_out_addsubi(s, ext, a0, a1, -a2);
-@@ -2117,6 +2120,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_and_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_and_i64:
-         if (c2) {
-             tcg_out_logicali(s, I3404_ANDI, ext, a0, a1, a2);
-@@ -2128,6 +2132,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_andc_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_andc_i64:
-         if (c2) {
-             tcg_out_logicali(s, I3404_ANDI, ext, a0, a1, ~a2);
-@@ -2139,6 +2144,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_or_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_or_i64:
-         if (c2) {
-             tcg_out_logicali(s, I3404_ORRI, ext, a0, a1, a2);
-@@ -2150,6 +2156,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_orc_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_orc_i64:
-         if (c2) {
-             tcg_out_logicali(s, I3404_ORRI, ext, a0, a1, ~a2);
-@@ -2161,6 +2168,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_xor_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_xor_i64:
-         if (c2) {
-             tcg_out_logicali(s, I3404_EORI, ext, a0, a1, a2);
-@@ -2172,6 +2180,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_eqv_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_eqv_i64:
-         if (c2) {
-             tcg_out_logicali(s, I3404_EORI, ext, a0, a1, ~a2);
-@@ -2268,6 +2277,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_brcond_i32:
-         a1 = (int32_t)a1;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_brcond_i64:
-         tcg_out_brcond(s, ext, a2, a0, a1, const_args[1], arg_label(args[3]));
-         break;
-@@ -2275,6 +2285,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_setcond_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_setcond_i64:
-         tcg_out_cmp(s, ext, a1, a2, c2);
-         /* Use CSET alias of CSINC Wd, WZR, WZR, invert(cond).  */
-@@ -2285,6 +2296,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_negsetcond_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_negsetcond_i64:
-         tcg_out_cmp(s, ext, a1, a2, c2);
-         /* Use CSETM alias of CSINV Wd, WZR, WZR, invert(cond).  */
-@@ -2295,6 +2307,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_movcond_i32:
-         a2 = (int32_t)a2;
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_movcond_i64:
-         tcg_out_cmp(s, ext, a1, a2, c2);
-         tcg_out_insn(s, 3506, CSEL, ext, a0, REG0(3), REG0(4), args[5]);
-diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-index 0d9c2d157b..ceb747183d 100644
---- a/tcg/arm/tcg-target.c.inc
-+++ b/tcg/arm/tcg-target.c.inc
-@@ -529,6 +529,7 @@ static bool tcg_target_const_match(int64_t val, TCGType type, int ct, int vece)
-     case TCG_CT_CONST_ANDI:
-         val = ~val;
-         /* fallthru */
-+        fallthrough;
-     case TCG_CT_CONST_ORRI:
-         if (val == deposit64(val, 32, 32, val)) {
-             int cmode, imm8;
-@@ -2677,7 +2678,7 @@ static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
-             return;
-         }
-         a2 = ~a2;
--        /* fall through */
-+        fallthrough;
-     case INDEX_op_and_vec:
-         if (const_args[2]) {
-             is_shimm1632(~a2, &cmode, &imm8);
-@@ -2697,7 +2698,7 @@ static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
-             return;
-         }
-         a2 = ~a2;
--        /* fall through */
-+        fallthrough;
-     case INDEX_op_or_vec:
-         if (const_args[2]) {
-             is_shimm1632(a2, &cmode, &imm8);
-diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
-index 788d608150..8f0764156e 100644
---- a/tcg/i386/tcg-target.c.inc
-+++ b/tcg/i386/tcg-target.c.inc
-@@ -181,6 +181,7 @@ static bool patch_reloc(tcg_insn_unit *code_ptr, int type,
-             return false;
-         }
-         /* FALLTHRU */
-+        fallthrough;
-     case R_386_32:
-         tcg_patch32(code_ptr, value);
-         break;
-@@ -845,6 +846,7 @@ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg)
-     case TCG_TYPE_I64:
-         rexw = P_REXW;
-         /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_I32:
-         if (ret < 16) {
-             if (arg < 16) {
-@@ -898,10 +900,12 @@ static bool tcg_out_dup_vec(TCGContext *s, TCGType type, unsigned vece,
-             tcg_out_vex_modrm(s, OPC_PUNPCKLBW, r, a, a);
-             a = r;
-             /* FALLTHRU */
-+            fallthrough;
-         case MO_16:
-             tcg_out_vex_modrm(s, OPC_PUNPCKLWD, r, a, a);
-             a = r;
-             /* FALLTHRU */
-+            fallthrough;
-         case MO_32:
-             tcg_out_vex_modrm(s, OPC_PSHUFD, r, 0, a);
-             /* imm8 operand: all output lanes selected from input lane 0.  */
-@@ -1126,6 +1130,7 @@ static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg ret,
-             break;
-         }
-         /* FALLTHRU */
-+        fallthrough;
-     case TCG_TYPE_V64:
-         /* There is no instruction that can validate 8-byte alignment.  */
-         tcg_debug_assert(ret >= 16);
-@@ -1171,6 +1176,7 @@ static void tcg_out_st(TCGContext *s, TCGType type, TCGReg arg,
-             break;
-         }
-         /* FALLTHRU */
-+        fallthrough;
-     case TCG_TYPE_V64:
-         /* There is no instruction that can validate 8-byte alignment.  */
-         tcg_debug_assert(arg >= 16);
-@@ -1537,7 +1543,7 @@ static void tcg_out_setcond(TCGContext *s, int rexw, TCGCond cond,
-     switch (cond) {
-     case TCG_COND_NE:
-         inv = true;
--        /* fall through */
-+        fallthrough;
-     case TCG_COND_EQ:
-         /* If arg2 is 0, convert to LTU/GEU vs 1. */
-         if (const_arg2 && arg2 == 0) {
-@@ -1548,7 +1554,7 @@ static void tcg_out_setcond(TCGContext *s, int rexw, TCGCond cond,
- 
-     case TCG_COND_LEU:
-         inv = true;
--        /* fall through */
-+        fallthrough;
-     case TCG_COND_GTU:
-         /* If arg2 is a register, swap for LTU/GEU. */
-         if (!const_arg2) {
-@@ -1561,7 +1567,7 @@ static void tcg_out_setcond(TCGContext *s, int rexw, TCGCond cond,
- 
-     case TCG_COND_GEU:
-         inv = true;
--        /* fall through */
-+        fallthrough;
-     case TCG_COND_LTU:
-     do_ltu:
+     case R_COUNTER_LO:
          /*
-@@ -1587,7 +1593,7 @@ static void tcg_out_setcond(TCGContext *s, int rexw, TCGCond cond,
- 
-     case TCG_COND_GE:
-         inv = true;
--        /* fall through */
-+        fallthrough;
-     case TCG_COND_LT:
-         /* If arg2 is 0, extract the sign bit. */
-         if (const_arg2 && arg2 == 0) {
-@@ -2443,6 +2449,7 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
- # define OP_32_64(x) \
-         case glue(glue(INDEX_op_, x), _i64): \
-             rexw = P_REXW; /* FALLTHRU */    \
-+            fallthrough;                     \
-         case glue(glue(INDEX_op_, x), _i32)
- #else
- # define OP_32_64(x) \
-@@ -2689,7 +2696,7 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-             tcg_out_qemu_ld(s, a0, -1, a1, a2, args[3], TCG_TYPE_I32);
-             break;
-         }
--        /* fall through */
-+        fallthrough;
-     case INDEX_op_qemu_ld_a32_i32:
-         tcg_out_qemu_ld(s, a0, -1, a1, -1, a2, TCG_TYPE_I32);
+          * Keep it simple - ARM docco explicitly says to disable timer before
+@@ -209,7 +209,7 @@ static void a9_gtimer_write(void *opaque, hwaddr addr, uint64_t value,
          break;
-@@ -2719,7 +2726,7 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-             tcg_out_qemu_st(s, a0, -1, a1, a2, args[3], TCG_TYPE_I32);
-             break;
-         }
--        /* fall through */
-+        fallthrough;
-     case INDEX_op_qemu_st_a32_i32:
-     case INDEX_op_qemu_st8_a32_i32:
-         tcg_out_qemu_st(s, a0, -1, a1, -1, a2, TCG_TYPE_I32);
-@@ -2846,6 +2853,7 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-             break;
-         }
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_extract_i32:
-         /* On the off-chance that we can use the high-byte registers.
-            Otherwise we emit the same ext16 + shift pattern that we
-diff --git a/tcg/loongarch64/tcg-target.c.inc b/tcg/loongarch64/tcg-target.c.inc
-index 801302d85d..728384ce51 100644
---- a/tcg/loongarch64/tcg-target.c.inc
-+++ b/tcg/loongarch64/tcg-target.c.inc
-@@ -1013,7 +1013,7 @@ static void tcg_out_qemu_ld_indexed(TCGContext *s, MemOp opc, TCGType type,
-             tcg_out_opc_ldx_wu(s, rd, h.base, h.index);
-             break;
-         }
+     case R_COMPARATOR_HI:
+         shift = 32;
 -        /* fallthrough */
 +        fallthrough;
-     case MO_SL:
-         tcg_out_opc_ldx_w(s, rd, h.base, h.index);
-         break;
-@@ -1303,7 +1303,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-     case INDEX_op_bswap32_i32:
-         /* All 32-bit values are computed sign-extended in the register.  */
-         a2 = TCG_BSWAP_OS;
--        /* fallthrough */
-+        fallthrough;
-     case INDEX_op_bswap32_i64:
-         tcg_out_opc_revb_2w(s, a0, a1);
-         if (a2 & TCG_BSWAP_OS) {
-diff --git a/tcg/mips/tcg-target.c.inc b/tcg/mips/tcg-target.c.inc
-index e2892edc6a..0effa5320a 100644
---- a/tcg/mips/tcg-target.c.inc
-+++ b/tcg/mips/tcg-target.c.inc
-@@ -917,6 +917,7 @@ static void tcg_out_setcond(TCGContext *s, TCGCond cond, TCGReg ret,
-     case TCG_COND_GT:
-         s_opc = OPC_SLT;
-         /* FALLTHRU */
-+        fallthrough;
- 
-     case TCG_COND_LTU:
-     case TCG_COND_GEU:
-@@ -974,6 +975,7 @@ static void tcg_out_brcond(TCGContext *s, TCGCond cond, TCGReg arg1,
-         }
-         s_opc = OPC_SLT;
-         /* FALLTHRU */
-+        fallthrough;
- 
-     case TCG_COND_LTU:
-     case TCG_COND_GTU:
-@@ -1109,6 +1111,7 @@ static void tcg_out_movcond(TCGContext *s, TCGCond cond, TCGReg ret,
-     case TCG_COND_EQ:
-         eqz = true;
-         /* FALLTHRU */
-+        fallthrough;
-     case TCG_COND_NE:
-         if (c2 != 0) {
-             tcg_out_opc_reg(s, OPC_XOR, TCG_TMP0, c1, c2);
-@@ -1430,6 +1433,7 @@ static void tcg_out_qemu_ld_direct(TCGContext *s, TCGReg lo, TCGReg hi,
+     case R_COMPARATOR_LO:
+         a9_gtimer_update(s, false);
+         gtb->compare = deposit64(gtb->compare, shift, 32, value);
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index 72161f07bb..b343b7ab2c 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -284,6 +284,7 @@ static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int reg,
              break;
          }
-         /* FALLTHRU */
+         /* fall through to re-enable */
 +        fallthrough;
-     case MO_SL:
-         tcg_out_opc_imm(s, OPC_LW, lo, base, 0);
+     case TIMER_REG_STATUS:
+         if (timer_enabled(t)) {
+             uint64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
+index 2ae5ae3212..11863e1a42 100644
+--- a/hw/timer/pxa2xx_timer.c
++++ b/hw/timer/pxa2xx_timer.c
+@@ -167,27 +167,27 @@ static uint64_t pxa2xx_timer_read(void *opaque, hwaddr offset,
+ 
+     switch (offset) {
+     case OSMR3:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR2:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR1:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR0:
+         return s->timer[tm].value;
+     case OSMR11: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR10: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR9:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR8:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR7:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR6:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR5:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR4:
+         if (!pxa2xx_timer_has_tm4(s))
+             goto badreg;
+@@ -196,19 +196,19 @@ static uint64_t pxa2xx_timer_read(void *opaque, hwaddr offset,
+         return s->clock + muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) -
+                         s->lastload, s->freq, NANOSECONDS_PER_SECOND);
+     case OSCR11: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR10: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR9:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR8:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR7:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR6:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR5:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR4:
+         if (!pxa2xx_timer_has_tm4(s))
+             goto badreg;
+@@ -236,19 +236,19 @@ static uint64_t pxa2xx_timer_read(void *opaque, hwaddr offset,
+     case OWER:
+         return s->reset3;
+     case OMCR11: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR10: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR9:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR8:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR7:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR6:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR5:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR4:
+         if (!pxa2xx_timer_has_tm4(s))
+             goto badreg;
+@@ -277,29 +277,29 @@ static void pxa2xx_timer_write(void *opaque, hwaddr offset,
+ 
+     switch (offset) {
+     case OSMR3:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR2:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR1:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR0:
+         s->timer[tm].value = value;
+         pxa2xx_timer_update(s, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
          break;
-@@ -2117,7 +2121,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-             tcg_out_qemu_ld(s, a0, 0, a1, a2, args[3], TCG_TYPE_I32);
-             break;
+     case OSMR11: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR10: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR9:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR8:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR7:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR6:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR5:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSMR4:
+         if (!pxa2xx_timer_has_tm4(s))
+             goto badreg;
+@@ -313,19 +313,19 @@ static void pxa2xx_timer_write(void *opaque, hwaddr offset,
+         pxa2xx_timer_update(s, s->lastload);
+         break;
+     case OSCR11: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR10: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR9:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR8:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR7:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR6:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR5:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OSCR4:
+         if (!pxa2xx_timer_has_tm4(s))
+             goto badreg;
+@@ -350,11 +350,11 @@ static void pxa2xx_timer_write(void *opaque, hwaddr offset,
+         s->reset3 = value;
+         break;
+     case OMCR7:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR6:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR5:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR4:
+         if (!pxa2xx_timer_has_tm4(s))
+             goto badreg;
+@@ -368,11 +368,11 @@ static void pxa2xx_timer_write(void *opaque, hwaddr offset,
+         }
+         break;
+     case OMCR11: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR10: tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR9:  tm ++;
+-        /* fall through */
++        fallthrough;
+     case OMCR8:  tm += 4;
+         if (!pxa2xx_timer_has_tm4(s))
+             goto badreg;
+diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
+index 43b31213bc..a32521e3c3 100644
+--- a/hw/timer/renesas_tmr.c
++++ b/hw/timer/renesas_tmr.c
+@@ -236,7 +236,7 @@ static uint64_t tmr_read(void *opaque, hwaddr addr, unsigned size)
+         } else if (ch == 0) {
+             return concat_reg(tmr->tcora);
          }
 -        /* fall through */
 +        fallthrough;
-     case INDEX_op_qemu_ld_a32_i32:
-         tcg_out_qemu_ld(s, a0, 0, a1, 0, a2, TCG_TYPE_I32);
-         break;
-@@ -2141,7 +2145,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-             tcg_out_qemu_st(s, a0, 0, a1, a2, args[3], TCG_TYPE_I32);
-             break;
-         }
--        /* fall through */
-+        fallthrough;
-     case INDEX_op_qemu_st_a32_i32:
-         tcg_out_qemu_st(s, a0, 0, a1, 0, a2, TCG_TYPE_I32);
-         break;
-diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
-index 5c873b2161..a438a02045 100644
---- a/tcg/ppc/tcg-target.c.inc
-+++ b/tcg/ppc/tcg-target.c.inc
-@@ -724,6 +724,7 @@ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg)
-     case TCG_TYPE_I64:
-         tcg_debug_assert(TCG_TARGET_REG_BITS == 64);
-         /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_I32:
-         if (ret < TCG_REG_V0) {
-             if (arg < TCG_REG_V0) {
-@@ -748,6 +749,7 @@ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg)
-             }
-         }
-         /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V64:
-     case TCG_TYPE_V128:
-         tcg_debug_assert(ret >= TCG_REG_V0 && arg >= TCG_REG_V0);
-@@ -1300,6 +1302,7 @@ static void tcg_out_mem_long(TCGContext *s, int opi, int opx, TCGReg rt,
-     case LD: case LWA:
-         align = 3;
-         /* FALLTHRU */
-+        fallthrough;
-     default:
-         if (rt > TCG_REG_R0 && rt < TCG_REG_V0) {
-             rs = rt;
-@@ -1317,6 +1320,7 @@ static void tcg_out_mem_long(TCGContext *s, int opi, int opx, TCGReg rt,
-     case STD:
-         align = 3;
-         /* FALLTHRU */
-+        fallthrough;
-     case STB: case STH: case STW:
-         is_int_store = true;
-         break;
-@@ -1389,6 +1393,7 @@ static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg ret,
-             break;
-         }
-         /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V64:
-         tcg_debug_assert(ret >= TCG_REG_V0);
-         if (have_vsx) {
-@@ -1444,6 +1449,7 @@ static void tcg_out_st(TCGContext *s, TCGType type, TCGReg arg,
-             break;
-         }
-         /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V64:
-         tcg_debug_assert(arg >= TCG_REG_V0);
-         if (have_vsx) {
-@@ -1659,6 +1665,7 @@ static void tcg_out_setcond(TCGContext *s, TCGType type, TCGCond cond,
-             tcg_out32(s, NOR | SAB(arg1, arg0, arg1));
-             arg1 = arg0;
-             /* FALLTHRU */
-+            fallthrough;
-         case TCG_COND_LT:
-             /* Extract the sign bit.  */
-             if (type == TCG_TYPE_I32) {
-@@ -1719,7 +1726,7 @@ static void tcg_out_setcond(TCGContext *s, TCGType type, TCGCond cond,
-     case TCG_COND_LE:
-     case TCG_COND_LEU:
-         inv = true;
--        /* fall through */
-+        fallthrough;
-     case TCG_COND_GT:
-     case TCG_COND_GTU:
-         sh = 30; /* CR7 CR_GT */
-@@ -1728,7 +1735,7 @@ static void tcg_out_setcond(TCGContext *s, TCGType type, TCGCond cond,
-     case TCG_COND_GE:
-     case TCG_COND_GEU:
-         inv = true;
--        /* fall through */
-+        fallthrough;
-     case TCG_COND_LT:
-     case TCG_COND_LTU:
-         sh = 29; /* CR7 CR_LT */
-@@ -2744,6 +2751,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-             break;
-         }
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_orc_i64:
-         tcg_out32(s, ORC | SAB(args[1], args[0], args[2]));
-         break;
-@@ -2753,6 +2761,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-             break;
-         }
-         /* FALLTHRU */
-+        fallthrough;
-     case INDEX_op_eqv_i64:
-         tcg_out32(s, EQV | SAB(args[1], args[0], args[2]));
-         break;
-@@ -2968,7 +2977,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-                             args[3], TCG_TYPE_I32);
-             break;
-         }
--        /* fall through */
-+        fallthrough;
-     case INDEX_op_qemu_ld_a32_i32:
-         tcg_out_qemu_ld(s, args[0], -1, args[1], -1, args[2], TCG_TYPE_I32);
-         break;
-@@ -3002,7 +3011,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-                             args[3], TCG_TYPE_I32);
-             break;
-         }
--        /* fall through */
-+        fallthrough;
-     case INDEX_op_qemu_st_a32_i32:
-         tcg_out_qemu_st(s, args[0], -1, args[1], -1, args[2], TCG_TYPE_I32);
-         break;
-@@ -3591,7 +3600,7 @@ static void expand_vec_cmp(TCGType type, unsigned vece, TCGv_vec v0,
-         if (have_isa_3_00 && vece <= MO_32) {
-             break;
-         }
--        /* fall through */
-+        fallthrough;
-     case TCG_COND_LE:
-     case TCG_COND_LEU:
-         need_inv = true;
-diff --git a/tcg/riscv/tcg-target.c.inc b/tcg/riscv/tcg-target.c.inc
-index d6dbcaf3cb..8b0e7b000c 100644
---- a/tcg/riscv/tcg-target.c.inc
-+++ b/tcg/riscv/tcg-target.c.inc
-@@ -948,7 +948,7 @@ static void tcg_out_negsetcond(TCGContext *s, TCGCond cond, TCGReg ret,
-         case TCG_COND_GE:
-             tcg_out_opc_imm(s, OPC_XORI, ret, arg1, -1);
-             arg1 = ret;
--            /* fall through */
-+            fallthrough;
-         case TCG_COND_LT:
-             tcg_out_opc_imm(s, OPC_SRAI, ret, arg1, TCG_TARGET_REG_BITS - 1);
-             return;
-@@ -1373,6 +1373,7 @@ static void tcg_out_qemu_ld_direct(TCGContext *s, TCGReg val,
-             break;
-         }
-         /* FALLTHRU */
-+        fallthrough;
-     case MO_SL:
-         tcg_out_opc_imm(s, OPC_LW, val, base, 0);
-         break;
-@@ -1754,7 +1755,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-         break;
-     case INDEX_op_bswap32_i32:
-         a2 = 0;
--        /* fall through */
-+        fallthrough;
-     case INDEX_op_bswap32_i64:
-         tcg_out_opc_imm(s, OPC_REV8, a0, a1, 0);
-         if (a2 & TCG_BSWAP_OZ) {
-diff --git a/tcg/s390x/tcg-target.c.inc b/tcg/s390x/tcg-target.c.inc
-index 4ef9ac3d5b..3656b8ddf0 100644
---- a/tcg/s390x/tcg-target.c.inc
-+++ b/tcg/s390x/tcg-target.c.inc
-@@ -809,7 +809,7 @@ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg dst, TCGReg src)
-             tcg_out_insn(s, RR, LR, dst, src);
-             break;
-         }
--        /* fallthru */
-+        fallthrough;
- 
-     case TCG_TYPE_I64:
-         if (likely(is_general_reg(dst))) {
-@@ -823,7 +823,7 @@ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg dst, TCGReg src)
-             tcg_out_insn(s, VRSb, VLVG, dst, 0, 0, src, 3);
-             break;
-         }
--        /* fallthru */
-+        fallthrough;
- 
-     case TCG_TYPE_V64:
-     case TCG_TYPE_V128:
-@@ -981,6 +981,7 @@ static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg data,
-             break;
-         }
-         /* fallthru */
-+        fallthrough;
- 
-     case TCG_TYPE_V64:
-         tcg_out_vrx_mem(s, VRX_VLLEZ, data, base, TCG_REG_NONE, ofs, MO_64);
-@@ -1014,6 +1015,7 @@ static void tcg_out_st(TCGContext *s, TCGType type, TCGReg data,
-             break;
-         }
-         /* fallthru */
-+        fallthrough;
- 
-     case TCG_TYPE_V64:
-         tcg_out_vrx_mem(s, VRX_VSTEG, data, base, TCG_REG_NONE, ofs, 0);
-@@ -1306,6 +1308,7 @@ static void tgen_setcond(TCGContext *s, TCGType type, TCGCond cond,
-             break;
-         }
-         /* fallthru */
-+        fallthrough;
- 
-     case TCG_COND_GTU:
-     case TCG_COND_GT:
-@@ -1333,6 +1336,7 @@ static void tgen_setcond(TCGContext *s, TCGType type, TCGCond cond,
-             break;
-         }
-         /* fallthru */
-+        fallthrough;
- 
-     case TCG_COND_LEU:
-     case TCG_COND_LE:
-diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
-index feb2d3686b..35e47902f1 100644
---- a/tcg/tcg-op-gvec.c
-+++ b/tcg/tcg-op-gvec.c
-@@ -496,7 +496,7 @@ static void do_dup_store(TCGType type, uint32_t dofs, uint32_t oprsz,
-         for (; i + 32 <= oprsz; i += 32) {
-             tcg_gen_stl_vec(t_vec, tcg_env, dofs + i, TCG_TYPE_V256);
-         }
--        /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V128:
-         for (; i + 16 <= oprsz; i += 16) {
-             tcg_gen_stl_vec(t_vec, tcg_env, dofs + i, TCG_TYPE_V128);
-@@ -1229,7 +1229,7 @@ void tcg_gen_gvec_2(uint32_t dofs, uint32_t aofs,
-         aofs += some;
-         oprsz -= some;
-         maxsz -= some;
--        /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V128:
-         expand_2_vec(g->vece, dofs, aofs, oprsz, 16, TCG_TYPE_V128,
-                      g->load_dest, g->fniv);
-@@ -1293,7 +1293,7 @@ void tcg_gen_gvec_2i(uint32_t dofs, uint32_t aofs, uint32_t oprsz,
-         aofs += some;
-         oprsz -= some;
-         maxsz -= some;
--        /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V128:
-         expand_2i_vec(g->vece, dofs, aofs, oprsz, 16, TCG_TYPE_V128,
-                       c, g->load_dest, g->fniv);
-@@ -1367,7 +1367,7 @@ void tcg_gen_gvec_2s(uint32_t dofs, uint32_t aofs, uint32_t oprsz,
-             aofs += some;
-             oprsz -= some;
-             maxsz -= some;
--            /* fallthru */
-+            fallthrough;
- 
-         case TCG_TYPE_V128:
-             expand_2s_vec(g->vece, dofs, aofs, oprsz, 16, TCG_TYPE_V128,
-@@ -1440,7 +1440,7 @@ void tcg_gen_gvec_3(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-         bofs += some;
-         oprsz -= some;
-         maxsz -= some;
--        /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V128:
-         expand_3_vec(g->vece, dofs, aofs, bofs, oprsz, 16, TCG_TYPE_V128,
-                      g->load_dest, g->fniv);
-@@ -1508,7 +1508,7 @@ void tcg_gen_gvec_3i(uint32_t dofs, uint32_t aofs, uint32_t bofs,
-         bofs += some;
-         oprsz -= some;
-         maxsz -= some;
--        /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V128:
-         expand_3i_vec(g->vece, dofs, aofs, bofs, oprsz, 16, TCG_TYPE_V128,
-                       c, g->load_dest, g->fniv);
-@@ -1574,7 +1574,7 @@ void tcg_gen_gvec_4(uint32_t dofs, uint32_t aofs, uint32_t bofs, uint32_t cofs,
-         cofs += some;
-         oprsz -= some;
-         maxsz -= some;
--        /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V128:
-         expand_4_vec(g->vece, dofs, aofs, bofs, cofs, oprsz,
-                      16, TCG_TYPE_V128, g->write_aofs, g->fniv);
-@@ -1645,7 +1645,7 @@ void tcg_gen_gvec_4i(uint32_t dofs, uint32_t aofs, uint32_t bofs, uint32_t cofs,
-         cofs += some;
-         oprsz -= some;
-         maxsz -= some;
--        /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V128:
-         expand_4i_vec(g->vece, dofs, aofs, bofs, cofs, oprsz,
-                        16, TCG_TYPE_V128, c, g->fniv);
-@@ -3173,7 +3173,7 @@ do_gvec_shifts(unsigned vece, uint32_t dofs, uint32_t aofs, TCGv_i32 shift,
-             aofs += some;
-             oprsz -= some;
-             maxsz -= some;
--            /* fallthru */
-+            fallthrough;
-         case TCG_TYPE_V128:
-             expand_2sh_vec(vece, dofs, aofs, oprsz, 16,
-                            TCG_TYPE_V128, shift, g->fniv_s);
-@@ -3216,7 +3216,7 @@ do_gvec_shifts(unsigned vece, uint32_t dofs, uint32_t aofs, TCGv_i32 shift,
-             aofs += some;
-             oprsz -= some;
-             maxsz -= some;
--            /* fallthru */
-+            fallthrough;
-         case TCG_TYPE_V128:
-             expand_2s_vec(vece, dofs, aofs, oprsz, 16, TCG_TYPE_V128,
-                           v_shift, false, g->fniv_v);
-@@ -3808,7 +3808,7 @@ void tcg_gen_gvec_cmp(TCGCond cond, unsigned vece, uint32_t dofs,
-         bofs += some;
-         oprsz -= some;
-         maxsz -= some;
--        /* fallthru */
-+        fallthrough;
-     case TCG_TYPE_V128:
-         expand_cmp_vec(vece, dofs, aofs, bofs, oprsz, 16, TCG_TYPE_V128, cond);
-         break;
-@@ -3926,7 +3926,7 @@ void tcg_gen_gvec_cmps(TCGCond cond, unsigned vece, uint32_t dofs,
-             dofs += some;
-             oprsz -= some;
-             maxsz -= some;
--            /* fallthru */
-+            fallthrough;
- 
-         case TCG_TYPE_V128:
-             some = QEMU_ALIGN_DOWN(oprsz, 16);
-diff --git a/tcg/tcg-op-ldst.c b/tcg/tcg-op-ldst.c
-index df4f22c427..5ad51c8cb8 100644
---- a/tcg/tcg-op-ldst.c
-+++ b/tcg/tcg-op-ldst.c
-@@ -70,7 +70,7 @@ static MemOp tcg_canonicalize_memop(MemOp op, bool is64, bool st)
-             op &= ~MO_SIGN;
-             break;
-         }
--        /* fall through */
-+        fallthrough;
-     default:
-         g_assert_not_reached();
-     }
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 637b9e6870..84e74badcf 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -23,6 +23,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/compiler.h"
- 
- /* Define to jump the ELF file used to communicate with GDB.  */
- #undef DEBUG_JIT
-@@ -1192,7 +1193,7 @@ static void init_call_layout(TCGHelperInfo *info)
-             switch (TCG_TARGET_CALL_ARG_I32) {
-             case TCG_CALL_ARG_EVEN:
-                 layout_arg_even(&cum);
--                /* fall through */
-+                fallthrough;
-             case TCG_CALL_ARG_NORMAL:
-                 layout_arg_1(&cum, info, TCG_CALL_ARG_NORMAL);
+     case A_TCORB:
+         if (size == 1) {
+             return tmr->tcorb[ch];
+diff --git a/hw/timer/sh_timer.c b/hw/timer/sh_timer.c
+index 7788939766..6dbfc2595b 100644
+--- a/hw/timer/sh_timer.c
++++ b/hw/timer/sh_timer.c
+@@ -131,7 +131,7 @@ static void sh_timer_write(void *opaque, hwaddr offset, uint32_t value)
+             if (s->feat & TIMER_FEAT_EXTCLK) {
                  break;
-@@ -1209,7 +1210,7 @@ static void init_call_layout(TCGHelperInfo *info)
-             switch (TCG_TARGET_CALL_ARG_I64) {
-             case TCG_CALL_ARG_EVEN:
-                 layout_arg_even(&cum);
--                /* fall through */
-+                fallthrough;
-             case TCG_CALL_ARG_NORMAL:
-                 if (TCG_TARGET_REG_BITS == 32) {
-                     layout_arg_normal_n(&cum, info, 2);
-@@ -1226,7 +1227,7 @@ static void init_call_layout(TCGHelperInfo *info)
-             switch (TCG_TARGET_CALL_ARG_I128) {
-             case TCG_CALL_ARG_EVEN:
-                 layout_arg_even(&cum);
--                /* fall through */
-+                fallthrough;
-             case TCG_CALL_ARG_NORMAL:
-                 layout_arg_normal_n(&cum, info, 128 / TCG_TARGET_REG_BITS);
-                 break;
-@@ -2299,7 +2300,7 @@ static void tcg_reg_alloc_start(TCGContext *s)
-             break;
-         case TEMP_EBB:
-             val = TEMP_VAL_DEAD;
--            /* fall through */
-+            fallthrough;
-         case TEMP_TB:
-             ts->mem_allocated = 0;
-             break;
-@@ -3556,7 +3557,7 @@ liveness_pass_1(TCGContext *s)
-                                 *la_temp_pref(ts) = 0;
-                                 break;
-                             }
--                            /* fall through */
-+                            fallthrough;
-                         default:
-                             *la_temp_pref(ts) =
-                                 tcg_target_available_regs[ts->type];
-@@ -4135,7 +4136,7 @@ static void temp_sync(TCGContext *s, TCGTemp *ts, TCGRegSet allocated_regs,
              }
-             temp_load(s, ts, tcg_target_available_regs[ts->type],
-                       allocated_regs, preferred_regs);
 -            /* fallthrough */
 +            fallthrough;
- 
-         case TEMP_VAL_REG:
-             tcg_out_st(s, ts->type, ts->reg,
-@@ -4622,7 +4623,7 @@ static void tcg_reg_alloc_dup(TCGContext *s, const TCGOp *op)
-             /* Sync the temp back to its slot and load from there.  */
-             temp_sync(s, its, s->reserved_regs, 0, 0);
-         }
--        /* fall through */
-+        fallthrough;
- 
-     case TEMP_VAL_MEM:
-         lowpart_ofs = 0;
-@@ -5289,6 +5290,7 @@ static void tcg_reg_alloc_call(TCGContext *s, TCGOp *op)
-                        ts->mem_base->reg, ts->mem_offset);
-         }
-         /* fall through to mark all parts in memory */
-+        fallthrough;
- 
-     case TCG_CALL_RET_BY_REF:
-         /* The callee has performed a write through the reference. */
-@@ -5489,7 +5491,7 @@ static void tcg_out_helper_load_slots(TCGContext *s,
- 
-         /* No conflicts: perform this move and continue. */
-         tcg_out_movext1(s, &mov[3]);
--        /* fall through */
-+        fallthrough;
- 
-     case 3:
-         tcg_out_movext3(s, mov, mov + 1, mov + 2,
-@@ -5741,7 +5743,7 @@ static void tcg_out_ld_helper_ret(TCGContext *s, const TCGLabelQemuLdst *ldst,
-         if (TCG_TARGET_REG_BITS == 32) {
-             break;
-         }
--        /* fall through */
-+        fallthrough;
- 
-     case TCG_TYPE_I32:
-         mov[0].dst = ldst->datalo_reg;
-@@ -5781,7 +5783,7 @@ static void tcg_out_ld_helper_ret(TCGContext *s, const TCGLabelQemuLdst *ldst,
-             tcg_out_st(s, TCG_TYPE_V128,
-                        tcg_target_call_oarg_reg(TCG_CALL_RET_BY_VEC, 0),
-                        TCG_REG_CALL_STACK, ofs_slot0);
--            /* fall through */
-+            fallthrough;
-         case TCG_CALL_RET_BY_REF:
-             tcg_out_ld(s, TCG_TYPE_I64, ldst->datalo_reg,
-                        TCG_REG_CALL_STACK, ofs_slot0 + 8 * HOST_BIG_ENDIAN);
-@@ -6069,7 +6071,7 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb, uint64_t pc_start)
-             if (tcg_reg_alloc_dup2(s, op)) {
+         default:
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: Reserved TPSC value\n", __func__);
+@@ -145,7 +145,7 @@ static void sh_timer_write(void *opaque, hwaddr offset, uint32_t value)
+             if (s->feat & TIMER_FEAT_EXTCLK) {
                  break;
              }
--            /* fall through */
+-            /* fallthrough */
 +            fallthrough;
          default:
-             /* Sanity check that we've not introduced any unhandled opcodes. */
-             tcg_debug_assert(tcg_op_supported(opc));
-diff --git a/tcg/tci.c b/tcg/tci.c
-index 4640902c88..3368941953 100644
---- a/tcg/tci.c
-+++ b/tcg/tci.c
-@@ -1310,7 +1310,7 @@ int print_insn_tci(bfd_vma addr, disassemble_info *info)
-             info->fprintf_func(info->stream, "align");
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: Reserved CKEG value\n", __func__);
+@@ -158,7 +158,7 @@ static void sh_timer_write(void *opaque, hwaddr offset, uint32_t value)
+             if (s->feat & TIMER_FEAT_CAPT) {
+                 break;
+             }
+-            /* fallthrough */
++            fallthrough;
+         default:
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: Reserved ICPE value\n", __func__);
+@@ -194,7 +194,7 @@ static void sh_timer_write(void *opaque, hwaddr offset, uint32_t value)
+             s->tcpr = value;
              break;
          }
--        /* fall through */
+-        /* fallthrough */
 +        fallthrough;
- 
      default:
-         info->fprintf_func(info->stream, "illegal opcode %d", op);
-diff --git a/tcg/tci/tcg-target.c.inc b/tcg/tci/tcg-target.c.inc
-index 461f4b47ff..f60d0ba037 100644
---- a/tcg/tci/tcg-target.c.inc
-+++ b/tcg/tci/tcg-target.c.inc
-@@ -524,7 +524,7 @@ static void tcg_out_movi(TCGContext *s, TCGType type,
-     case TCG_TYPE_I32:
- #if TCG_TARGET_REG_BITS == 64
-         arg = (int32_t)arg;
--        /* fall through */
-+        fallthrough;
-     case TCG_TYPE_I64:
- #endif
-         break;
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, offset);
 -- 
 2.39.2
 

@@ -1,112 +1,111 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1334988ejc;
-        Fri, 13 Oct 2023 01:01:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGcUHpyO5EAsd9oZI1M1A+5bIOXJS59nF3aSRY0OzqXKWoxvxpqMt2np0v418nhqdrOmEJS
-X-Received: by 2002:a0c:e9ce:0:b0:641:8df1:79e3 with SMTP id q14-20020a0ce9ce000000b006418df179e3mr27516363qvo.29.1697184097988;
-        Fri, 13 Oct 2023 01:01:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697184097; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1335487ejc;
+        Fri, 13 Oct 2023 01:02:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFxz9upjhr1LTAwTXYf4YKP0ZIenTuSjVJ7q+ywjU3q+AEcWiI2A/fOuX9q5K9WQmjiNESG
+X-Received: by 2002:a05:620a:31a3:b0:76d:a110:856d with SMTP id bi35-20020a05620a31a300b0076da110856dmr31979564qkb.0.1697184145977;
+        Fri, 13 Oct 2023 01:02:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697184145; cv=none;
         d=google.com; s=arc-20160816;
-        b=Opgyv2IAe/RRVe6TtZxnC+Ub9ixhgenEAGLCKAO1SYcZ6F5Lvavko5CTgUFDNJdCpL
-         ODOttqBid3vDChfq9Ysda+uH/JgqZ71Hy43kJ+KKYNyX2HO46YthPjPdrZw9kuA2j1kE
-         h2/sDxuRu8bRtMf1UW//k8Bx+mROImoYeVzkX7T//ITan7bxqW5qDYVEf08Hdh3MXbeO
-         fKmWrbQ8LLRVqcV0tkbQO0NV1RD3LIFV8NPl+tPa8nsub8BGxTup7Xy9HbfCnEOd54UU
-         eYL2cPl7pc94ndhH+nXdmQA/x6Yn9NXQ9KVl3XnaBy5dCQ3ehv/k2zUXQEyiuAbfEnBb
-         m+nQ==
+        b=La9HIGKxq1KJDXhmyD7OrfFzfssSnB9kb9QVw4PJPqAGzq/EEFQG4eoVQydK8zNbUS
+         Owv9NI+Spo+s2H6RF+oKp2VWA8DkF5aXfPcwzIRzWU3aIroOBxx3OA5rKX5FhecreOO3
+         fJr7x5O9EewBpUpE6HF0ajv5p5zAxX2mYehjt3x24Pgw+vwsM6BJLPzvTP6FA9q6gwej
+         2+PDRps6VDqRnc/SXSj6en4XtHlnavZjFpd+2quYRH5NBneK7I+L6NzzD2AbUk7aJEZz
+         08/FPUucq5LBxGIrwJ3puB6+P48FQbnijIA4E6QYOG6Q0e4r1JpgL2dxlP/UY69tCpjh
+         ZyyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+v0a8pnZb92e1dablGQHGKBr6F9eqtUoE4xNiVhEhd0=;
-        fh=jqhdg2OssQ/bA/kc4CpqO38PJpQpeWUskwsxLc35AF4=;
-        b=KOtBqe5vIQ/dAH8RO3SqLrWWhjjbVpSpm1MW+64uZn4ONR5GxYxHh+SykSpATWP03V
-         OSR6FlNXOJbZwrFXB9ymH70TXlwRS1q2iZVS51RbqopO/eP8lbteBytewdjBb5KftUm7
-         MTz15zREHyIhCTo7TtIwRJWdaFQ3pdLf5ijX4HjQbn7kHzO0RWYxP1rK1SyxhQnAp4TK
-         h96BmjYjmcVSaV3wY0DVWPQzC1bLV8jIlrM+fRHgRY0mETeTEqcOYHyyQWeYYN1Mjq6g
-         xMtBFrRoAOtqoxooy6nRtyvdtINmuPOuHayapfABZlZTlISUFsHOffF2Fj4mSuDI5xB+
-         g0Bg==
+        bh=kH2xkP24gj4G/GlkLXhLlfq5Bf/No2GnTEh1EueIsAc=;
+        fh=gQ1RCyc3uP7CJi1mDAT8BZLlKuVlGP7hG0bBdYvZ48k=;
+        b=QDZi3TS35Dy8kGWCerjM1a09yKDPmNcjRti3oLBgx8PsmuZEec5URRx5wZG3/OpqTq
+         Zru27mJMjN8gcCFmCC/C2EJdcKCVNFu5HegTtpSiqe65yrztNxARNJkK7rWtEtexlhxb
+         +1ji+em/K2Zgjybp/ZWC3GXFYbit8WCe70sLjR9HENsVFjwkGVCIWwJ/TM/GhSKikae3
+         j+MIqR+qofzVNq+EzXHgJCac2cORPbJyEYr2mETULu9Vm5Lx3FrymMh713fopt5Z3UUN
+         VcBPthAjXfEYmkuqH8H92hHkRPJC/5m8jgLJJzjBdAh2NvuIwgTryrBCCIl0z7PLtqt+
+         LJ3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xrIXeJ23;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gWk1HpzI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id mv9-20020a056214338900b0065b17b925e3si837276qvb.444.2023.10.13.01.01.37
+        by mx.google.com with ESMTPS id p12-20020a05620a132c00b00775967e7e68si795181qkj.221.2023.10.13.01.02.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:01:37 -0700 (PDT)
+        Fri, 13 Oct 2023 01:02:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xrIXeJ23;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gWk1HpzI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCyZ-000438-Dj; Fri, 13 Oct 2023 03:52:51 -0400
+	id 1qrCyZ-00043U-Hb; Fri, 13 Oct 2023 03:52:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxt-0001Bt-Pi
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:09 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1qrCxq-0000mC-7v
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:06 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxY-0005F4-3e
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:09 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-405505b07dfso18718535e9.0
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:51:47 -0700 (PDT)
+ id 1qrCxT-0005Co-Df
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:05 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-40675f06f1fso18593775e9.1
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:51:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183506; x=1697788306; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183502; x=1697788302; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+v0a8pnZb92e1dablGQHGKBr6F9eqtUoE4xNiVhEhd0=;
- b=xrIXeJ23wa4xQuOc9WasPJMSXkPxwf8plHS0ZdpH7ptMCMprCixf6HIYWUlKIm3VwI
- zp0Zt5gSSYV7yoqa+uCPidQR/rsS/FA+51JP7wlHhodjA7Iwq2u3yAFblOHdan35pkL0
- gwIRQbwkLmjFWpQvPmeykHF6txZg3lKljRQhO62+VLQ7qNKacDolVxv3PbWiBTYJfFJO
- f9EJcKk6gSv7VyD6PkHu/+lVyXFjJjUMPfcjLNdfQG6P5aPcgqfVTiMYU0z94JSwmaIx
- mmje+O9iMrGgNfnq0x6Op2GbUEYDi3jlmShpUiRpt1gJMPns3SXPv/11uXNTzPcLmENR
- lhHw==
+ bh=kH2xkP24gj4G/GlkLXhLlfq5Bf/No2GnTEh1EueIsAc=;
+ b=gWk1HpzIsKI4XN0FQKdShI2eh2zcQNhJ6pHH32EYdEzZCCmgcCQ0ctOvi8gG8NbGKq
+ wrupMF2Tv0N+pMTk/H6CSidsPNG9nRC4gLsmEgINbU6JjMNrgA/3LlpAOrQktiiOcAju
+ eZzdzk6Ye4lf5I7SaGufHZ5mUyv78+jbdU/dOShL0pjyFpLJC5QNjcgiUIwlembcgehn
+ 5pxBNVH20/hgKE3hdS+14gblZcX5fgwyURKji8JL6CnDZJ17TMwJ+VIdwJVyEvm0AbxP
+ 1tsExJxIELdg8a8bh4s2s3OBQFBqp9zF0oor357EMVyMrs/zIpOqP4aNU4KcD6gg0tyy
+ SWnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183506; x=1697788306;
+ d=1e100.net; s=20230601; t=1697183502; x=1697788302;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+v0a8pnZb92e1dablGQHGKBr6F9eqtUoE4xNiVhEhd0=;
- b=ltkKVZUEnSDotAKc+LYrgo5MY8L+RukIrsYmwUY/rtk5acUuuOoKCPW9yzc1pcUWkm
- b4GFhXRPV9105nTr6l6zMo07ddlykfPpfPIEcskPbpzjOIDrMTVFQnVKkETEdobF1twR
- /wrnKFbGt+RPt6HyOflFBILReHxg9Q+70jJyAJCBklyRQ0WGWqCOLxVEAXl/STvzy9Bi
- ozbaJCow8dKgEmg+e/tDzLIJPxxNsx19bU+73oAprNh7oTE+2JTGou+xYm7zIafGHDcl
- 2hajuxVlf7A+T8MXN330K+fYFAjssGlWO8P4nYp0D40ya053s15vBlcD9kb57B+wq0o7
- UXFA==
-X-Gm-Message-State: AOJu0YxfCO8pROtYNMGbqnXRqfabZZaS7U551vKEpwcyEwQPRFXcekNv
- kQO5a2uJEcWCBtIzEzJpUF8iB30LXn4jz2xyTJw=
-X-Received: by 2002:a5d:668c:0:b0:317:6579:2b9f with SMTP id
- l12-20020a5d668c000000b0031765792b9fmr18235316wru.30.1697183506421; 
- Fri, 13 Oct 2023 00:51:46 -0700 (PDT)
+ bh=kH2xkP24gj4G/GlkLXhLlfq5Bf/No2GnTEh1EueIsAc=;
+ b=PAIdyO4BT9zejPE13kkkRoJs/slhWuPCS5ZoRfHBergfG40vIywl4bhc0uzthRNs9L
+ aqei0rG0jag1xvbrGGLzc8SPCnbPWSpWwi12TCuvfilvBoE3ZvHxVp7n+NAXEJs13Zv/
+ +zrWqYCOtRJ8pWVeFE/ywkSxVtUxdW58ro8gVG7nzURZw5rvz0ovnso3ahT88ijWltHs
+ pADx+0BJIk4fkVl7j7z9mPKNTtEd+pn7JvIJjxwgGRihlGNINBjJvpEs+0lPJYZqIioe
+ auMYTeqNUCgUbAJOn8DS/E18RKTijhTsScYX6fMcSMM68r59ljtkpJ5u8cl8v2SfZqbK
+ xd1g==
+X-Gm-Message-State: AOJu0Yyv/7UzICBGrj6+cK+IqdpeeoRlz9QDMWHDHrWmapAHcxxQX+Jr
+ g1qKpn0nzlI6Ie1h3f+Jth0jpSL1H4UuxtabVyY=
+X-Received: by 2002:adf:cc83:0:b0:323:1df6:7c17 with SMTP id
+ p3-20020adfcc83000000b003231df67c17mr21824254wrj.9.1697183501610; 
+ Fri, 13 Oct 2023 00:51:41 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.45
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:51:45 -0700 (PDT)
+ Fri, 13 Oct 2023 00:51:41 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [RFC PATCH 50/75] chardev: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:48:07 +0300
-Message-Id: <a2887799d324dbf24bcb947c21b78b551577f7aa.1697034504.git.manos.pitsidianakis@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [RFC PATCH 48/75] hw/arm: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:48:04 +0300
+Message-Id: <11b2abdae5cd5edfd9cd84a7a376cb8e8a310179.1697034504.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,51 +127,564 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R9ot76brDcV9
+X-TUID: EPv5KdvP+/My
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- chardev/char-socket.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/omap1.c     | 8 ++++----
+ hw/arm/pxa2xx.c    | 5 +++--
+ hw/arm/stellaris.c | 1 +
+ 3 files changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/chardev/char-socket.c b/chardev/char-socket.c
-index 73947da188..1562e066a4 100644
---- a/chardev/char-socket.c
-+++ b/chardev/char-socket.c
-@@ -549,34 +549,34 @@ static int tcp_chr_sync_read(Chardev *chr, const uint8_t *buf, int len)
- static char *qemu_chr_compute_filename(SocketChardev *s)
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index d5438156ee..c54a4ec553 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -531,46 +531,46 @@ static struct omap_32khz_timer_s *omap_os_timer_init(MemoryRegion *memory,
+ /* Ultra Low-Power Device Module */
+ static uint64_t omap_ulpd_pm_read(void *opaque, hwaddr addr,
+                                   unsigned size)
  {
-     struct sockaddr_storage *ss = &s->sioc->localAddr;
-     struct sockaddr_storage *ps = &s->sioc->remoteAddr;
-     socklen_t ss_len = s->sioc->localAddrLen;
-     socklen_t ps_len = s->sioc->remoteAddrLen;
-     char shost[NI_MAXHOST], sserv[NI_MAXSERV];
-     char phost[NI_MAXHOST], pserv[NI_MAXSERV];
-     const char *left = "", *right = "";
+     struct omap_mpu_state_s *s = opaque;
+     uint16_t ret;
  
-     switch (ss->ss_family) {
-     case AF_UNIX:
-         return g_strdup_printf("unix:%s%s",
-                                ((struct sockaddr_un *)(ss))->sun_path,
-                                s->is_listen ? ",server=on" : "");
-     case AF_INET6:
-         left  = "[";
-         right = "]";
+     if (size != 2) {
+         return omap_badwidth_read16(opaque, addr);
+     }
+ 
+     switch (addr) {
+     case 0x14:	/* IT_STATUS */
+         ret = s->ulpd_pm_regs[addr >> 2];
+         s->ulpd_pm_regs[addr >> 2] = 0;
+         qemu_irq_lower(qdev_get_gpio_in(s->ih[1], OMAP_INT_GAUGE_32K));
+         return ret;
+ 
+     case 0x18:	/* Reserved */
+     case 0x1c:	/* Reserved */
+     case 0x20:	/* Reserved */
+     case 0x28:	/* Reserved */
+     case 0x2c:	/* Reserved */
+         OMAP_BAD_REG(addr);
 -        /* fall through */
 +        fallthrough;
-     case AF_INET:
-         getnameinfo((struct sockaddr *) ss, ss_len, shost, sizeof(shost),
-                     sserv, sizeof(sserv), NI_NUMERICHOST | NI_NUMERICSERV);
-         getnameinfo((struct sockaddr *) ps, ps_len, phost, sizeof(phost),
-                     pserv, sizeof(pserv), NI_NUMERICHOST | NI_NUMERICSERV);
-         return g_strdup_printf("%s:%s%s%s:%s%s <-> %s%s%s:%s",
-                                qemu_chr_socket_protocol(s),
-                                left, shost, right, sserv,
-                                s->is_listen ? ",server=on" : "",
-                                left, phost, right, pserv);
+     case 0x00:	/* COUNTER_32_LSB */
+     case 0x04:	/* COUNTER_32_MSB */
+     case 0x08:	/* COUNTER_HIGH_FREQ_LSB */
+     case 0x0c:	/* COUNTER_HIGH_FREQ_MSB */
+     case 0x10:	/* GAUGING_CTRL */
+     case 0x24:	/* SETUP_ANALOG_CELL3_ULPD1 */
+     case 0x30:	/* CLOCK_CTRL */
+     case 0x34:	/* SOFT_REQ */
+     case 0x38:	/* COUNTER_32_FIQ */
+     case 0x3c:	/* DPLL_CTRL */
+     case 0x40:	/* STATUS_REQ */
+         /* XXX: check clk::usecount state for every clock */
+     case 0x48:	/* LOCL_TIME */
+     case 0x4c:	/* APLL_CTRL */
+     case 0x50:	/* POWER_CTRL */
+         return s->ulpd_pm_regs[addr >> 2];
+     }
+ 
+     OMAP_BAD_REG(addr);
+     return 0;
+ }
+@@ -600,120 +600,120 @@ static inline void omap_ulpd_req_update(struct omap_mpu_state_s *s,
+ static void omap_ulpd_pm_write(void *opaque, hwaddr addr,
+                                uint64_t value, unsigned size)
+ {
+     struct omap_mpu_state_s *s = opaque;
+     int64_t now, ticks;
+     int div, mult;
+     static const int bypass_div[4] = { 1, 2, 4, 4 };
+     uint16_t diff;
+ 
+     if (size != 2) {
+         omap_badwidth_write16(opaque, addr, value);
+         return;
+     }
+ 
+     switch (addr) {
+     case 0x00:	/* COUNTER_32_LSB */
+     case 0x04:	/* COUNTER_32_MSB */
+     case 0x08:	/* COUNTER_HIGH_FREQ_LSB */
+     case 0x0c:	/* COUNTER_HIGH_FREQ_MSB */
+     case 0x14:	/* IT_STATUS */
+     case 0x40:	/* STATUS_REQ */
+         OMAP_RO_REG(addr);
+         break;
+ 
+     case 0x10:	/* GAUGING_CTRL */
+         /* Bits 0 and 1 seem to be confused in the OMAP 310 TRM */
+         if ((s->ulpd_pm_regs[addr >> 2] ^ value) & 1) {
+             now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+ 
+             if (value & 1)
+                 s->ulpd_gauge_start = now;
+             else {
+                 now -= s->ulpd_gauge_start;
+ 
+                 /* 32-kHz ticks */
+                 ticks = muldiv64(now, 32768, NANOSECONDS_PER_SECOND);
+                 s->ulpd_pm_regs[0x00 >> 2] = (ticks >>  0) & 0xffff;
+                 s->ulpd_pm_regs[0x04 >> 2] = (ticks >> 16) & 0xffff;
+                 if (ticks >> 32)	/* OVERFLOW_32K */
+                     s->ulpd_pm_regs[0x14 >> 2] |= 1 << 2;
+ 
+                 /* High frequency ticks */
+                 ticks = muldiv64(now, 12000000, NANOSECONDS_PER_SECOND);
+                 s->ulpd_pm_regs[0x08 >> 2] = (ticks >>  0) & 0xffff;
+                 s->ulpd_pm_regs[0x0c >> 2] = (ticks >> 16) & 0xffff;
+                 if (ticks >> 32)	/* OVERFLOW_HI_FREQ */
+                     s->ulpd_pm_regs[0x14 >> 2] |= 1 << 1;
+ 
+                 s->ulpd_pm_regs[0x14 >> 2] |= 1 << 0;	/* IT_GAUGING */
+                 qemu_irq_raise(qdev_get_gpio_in(s->ih[1], OMAP_INT_GAUGE_32K));
+             }
+         }
+         s->ulpd_pm_regs[addr >> 2] = value;
+         break;
+ 
+     case 0x18:	/* Reserved */
+     case 0x1c:	/* Reserved */
+     case 0x20:	/* Reserved */
+     case 0x28:	/* Reserved */
+     case 0x2c:	/* Reserved */
+         OMAP_BAD_REG(addr);
+-        /* fall through */
++        fallthrough;
+     case 0x24:	/* SETUP_ANALOG_CELL3_ULPD1 */
+     case 0x38:	/* COUNTER_32_FIQ */
+     case 0x48:	/* LOCL_TIME */
+     case 0x50:	/* POWER_CTRL */
+         s->ulpd_pm_regs[addr >> 2] = value;
+         break;
+ 
+     case 0x30:	/* CLOCK_CTRL */
+         diff = s->ulpd_pm_regs[addr >> 2] ^ value;
+         s->ulpd_pm_regs[addr >> 2] = value & 0x3f;
+         omap_ulpd_clk_update(s, diff, value);
+         break;
+ 
+     case 0x34:	/* SOFT_REQ */
+         diff = s->ulpd_pm_regs[addr >> 2] ^ value;
+         s->ulpd_pm_regs[addr >> 2] = value & 0x1f;
+         omap_ulpd_req_update(s, diff, value);
+         break;
+ 
+     case 0x3c:	/* DPLL_CTRL */
+         /* XXX: OMAP310 TRM claims bit 3 is PLL_ENABLE, and bit 4 is
+          * omitted altogether, probably a typo.  */
+         /* This register has identical semantics with DPLL(1:3) control
+          * registers, see omap_dpll_write() */
+         diff = s->ulpd_pm_regs[addr >> 2] & value;
+         s->ulpd_pm_regs[addr >> 2] = value & 0x2fff;
+         if (diff & (0x3ff << 2)) {
+             if (value & (1 << 4)) {			/* PLL_ENABLE */
+                 div = ((value >> 5) & 3) + 1;		/* PLL_DIV */
+                 mult = MIN((value >> 7) & 0x1f, 1);	/* PLL_MULT */
+             } else {
+                 div = bypass_div[((value >> 2) & 3)];	/* BYPASS_DIV */
+                 mult = 1;
+             }
+             omap_clk_setrate(omap_findclk(s, "dpll4"), div, mult);
+         }
+ 
+         /* Enter the desired mode.  */
+         s->ulpd_pm_regs[addr >> 2] =
+                 (s->ulpd_pm_regs[addr >> 2] & 0xfffe) |
+                 ((s->ulpd_pm_regs[addr >> 2] >> 4) & 1);
+ 
+         /* Act as if the lock is restored.  */
+         s->ulpd_pm_regs[addr >> 2] |= 2;
+         break;
+ 
+     case 0x4c:	/* APLL_CTRL */
+         diff = s->ulpd_pm_regs[addr >> 2] & value;
+         s->ulpd_pm_regs[addr >> 2] = value & 0xf;
+         if (diff & (1 << 0))				/* APLL_NDPLL_SWITCH */
+             omap_clk_reparent(omap_findclk(s, "ck_48m"), omap_findclk(s,
+                                     (value & (1 << 0)) ? "apll" : "dpll4"));
+         break;
  
      default:
-         return g_strdup_printf("unknown");
+         OMAP_BAD_REG(addr);
+     }
+ }
+@@ -3169,97 +3169,97 @@ static void omap_mcbsp_req_update(struct omap_mcbsp_s *s)
+ static uint64_t omap_mcbsp_read(void *opaque, hwaddr addr,
+                                 unsigned size)
+ {
+     struct omap_mcbsp_s *s = opaque;
+     int offset = addr & OMAP_MPUI_REG_MASK;
+     uint16_t ret;
+ 
+     if (size != 2) {
+         return omap_badwidth_read16(opaque, addr);
+     }
+ 
+     switch (offset) {
+     case 0x00:	/* DRR2 */
+         if (((s->rcr[0] >> 5) & 7) < 3)			/* RWDLEN1 */
+             return 0x0000;
+-        /* Fall through.  */
++        fallthrough;
+     case 0x02:	/* DRR1 */
+         if (s->rx_req < 2) {
+             printf("%s: Rx FIFO underrun\n", __func__);
+             omap_mcbsp_rx_done(s);
+         } else {
+             s->tx_req -= 2;
+             if (s->codec && s->codec->in.len >= 2) {
+                 ret = s->codec->in.fifo[s->codec->in.start ++] << 8;
+                 ret |= s->codec->in.fifo[s->codec->in.start ++];
+                 s->codec->in.len -= 2;
+             } else
+                 ret = 0x0000;
+             if (!s->tx_req)
+                 omap_mcbsp_rx_done(s);
+             return ret;
+         }
+         return 0x0000;
+ 
+     case 0x04:	/* DXR2 */
+     case 0x06:	/* DXR1 */
+         return 0x0000;
+ 
+     case 0x08:	/* SPCR2 */
+         return s->spcr[1];
+     case 0x0a:	/* SPCR1 */
+         return s->spcr[0];
+     case 0x0c:	/* RCR2 */
+         return s->rcr[1];
+     case 0x0e:	/* RCR1 */
+         return s->rcr[0];
+     case 0x10:	/* XCR2 */
+         return s->xcr[1];
+     case 0x12:	/* XCR1 */
+         return s->xcr[0];
+     case 0x14:	/* SRGR2 */
+         return s->srgr[1];
+     case 0x16:	/* SRGR1 */
+         return s->srgr[0];
+     case 0x18:	/* MCR2 */
+         return s->mcr[1];
+     case 0x1a:	/* MCR1 */
+         return s->mcr[0];
+     case 0x1c:	/* RCERA */
+         return s->rcer[0];
+     case 0x1e:	/* RCERB */
+         return s->rcer[1];
+     case 0x20:	/* XCERA */
+         return s->xcer[0];
+     case 0x22:	/* XCERB */
+         return s->xcer[1];
+     case 0x24:	/* PCR0 */
+         return s->pcr;
+     case 0x26:	/* RCERC */
+         return s->rcer[2];
+     case 0x28:	/* RCERD */
+         return s->rcer[3];
+     case 0x2a:	/* XCERC */
+         return s->xcer[2];
+     case 0x2c:	/* XCERD */
+         return s->xcer[3];
+     case 0x2e:	/* RCERE */
+         return s->rcer[4];
+     case 0x30:	/* RCERF */
+         return s->rcer[5];
+     case 0x32:	/* XCERE */
+         return s->xcer[4];
+     case 0x34:	/* XCERF */
+         return s->xcer[5];
+     case 0x36:	/* RCERG */
+         return s->rcer[6];
+     case 0x38:	/* RCERH */
+         return s->rcer[7];
+     case 0x3a:	/* XCERG */
+         return s->xcer[6];
+     case 0x3c:	/* XCERH */
+         return s->xcer[7];
+     }
+ 
+     OMAP_BAD_REG(addr);
+     return 0;
+ }
+@@ -3267,135 +3267,135 @@ static uint64_t omap_mcbsp_read(void *opaque, hwaddr addr,
+ static void omap_mcbsp_writeh(void *opaque, hwaddr addr,
+                 uint32_t value)
+ {
+     struct omap_mcbsp_s *s = opaque;
+     int offset = addr & OMAP_MPUI_REG_MASK;
+ 
+     switch (offset) {
+     case 0x00:	/* DRR2 */
+     case 0x02:	/* DRR1 */
+         OMAP_RO_REG(addr);
+         return;
+ 
+     case 0x04:	/* DXR2 */
+         if (((s->xcr[0] >> 5) & 7) < 3)			/* XWDLEN1 */
+             return;
+-        /* Fall through.  */
++        fallthrough;
+     case 0x06:	/* DXR1 */
+         if (s->tx_req > 1) {
+             s->tx_req -= 2;
+             if (s->codec && s->codec->cts) {
+                 s->codec->out.fifo[s->codec->out.len ++] = (value >> 8) & 0xff;
+                 s->codec->out.fifo[s->codec->out.len ++] = (value >> 0) & 0xff;
+             }
+             if (s->tx_req < 2)
+                 omap_mcbsp_tx_done(s);
+         } else
+             printf("%s: Tx FIFO overrun\n", __func__);
+         return;
+ 
+     case 0x08:	/* SPCR2 */
+         s->spcr[1] &= 0x0002;
+         s->spcr[1] |= 0x03f9 & value;
+         s->spcr[1] |= 0x0004 & (value << 2);		/* XEMPTY := XRST */
+         if (~value & 1)					/* XRST */
+             s->spcr[1] &= ~6;
+         omap_mcbsp_req_update(s);
+         return;
+     case 0x0a:	/* SPCR1 */
+         s->spcr[0] &= 0x0006;
+         s->spcr[0] |= 0xf8f9 & value;
+         if (value & (1 << 15))				/* DLB */
+             printf("%s: Digital Loopback mode enable attempt\n", __func__);
+         if (~value & 1) {				/* RRST */
+             s->spcr[0] &= ~6;
+             s->rx_req = 0;
+             omap_mcbsp_rx_done(s);
+         }
+         omap_mcbsp_req_update(s);
+         return;
+ 
+     case 0x0c:	/* RCR2 */
+         s->rcr[1] = value & 0xffff;
+         return;
+     case 0x0e:	/* RCR1 */
+         s->rcr[0] = value & 0x7fe0;
+         return;
+     case 0x10:	/* XCR2 */
+         s->xcr[1] = value & 0xffff;
+         return;
+     case 0x12:	/* XCR1 */
+         s->xcr[0] = value & 0x7fe0;
+         return;
+     case 0x14:	/* SRGR2 */
+         s->srgr[1] = value & 0xffff;
+         omap_mcbsp_req_update(s);
+         return;
+     case 0x16:	/* SRGR1 */
+         s->srgr[0] = value & 0xffff;
+         omap_mcbsp_req_update(s);
+         return;
+     case 0x18:	/* MCR2 */
+         s->mcr[1] = value & 0x03e3;
+         if (value & 3)					/* XMCM */
+             printf("%s: Tx channel selection mode enable attempt\n", __func__);
+         return;
+     case 0x1a:	/* MCR1 */
+         s->mcr[0] = value & 0x03e1;
+         if (value & 1)					/* RMCM */
+             printf("%s: Rx channel selection mode enable attempt\n", __func__);
+         return;
+     case 0x1c:	/* RCERA */
+         s->rcer[0] = value & 0xffff;
+         return;
+     case 0x1e:	/* RCERB */
+         s->rcer[1] = value & 0xffff;
+         return;
+     case 0x20:	/* XCERA */
+         s->xcer[0] = value & 0xffff;
+         return;
+     case 0x22:	/* XCERB */
+         s->xcer[1] = value & 0xffff;
+         return;
+     case 0x24:	/* PCR0 */
+         s->pcr = value & 0x7faf;
+         return;
+     case 0x26:	/* RCERC */
+         s->rcer[2] = value & 0xffff;
+         return;
+     case 0x28:	/* RCERD */
+         s->rcer[3] = value & 0xffff;
+         return;
+     case 0x2a:	/* XCERC */
+         s->xcer[2] = value & 0xffff;
+         return;
+     case 0x2c:	/* XCERD */
+         s->xcer[3] = value & 0xffff;
+         return;
+     case 0x2e:	/* RCERE */
+         s->rcer[4] = value & 0xffff;
+         return;
+     case 0x30:	/* RCERF */
+         s->rcer[5] = value & 0xffff;
+         return;
+     case 0x32:	/* XCERE */
+         s->xcer[4] = value & 0xffff;
+         return;
+     case 0x34:	/* XCERF */
+         s->xcer[5] = value & 0xffff;
+         return;
+     case 0x36:	/* RCERG */
+         s->rcer[6] = value & 0xffff;
+         return;
+     case 0x38:	/* RCERH */
+         s->rcer[7] = value & 0xffff;
+         return;
+     case 0x3a:	/* XCERG */
+         s->xcer[6] = value & 0xffff;
+         return;
+     case 0x3c:	/* XCERH */
+         s->xcer[7] = value & 0xffff;
+         return;
+     }
+ 
+     OMAP_BAD_REG(addr);
+ }
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index 07d5dd8691..ee2b3ef719 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -265,68 +265,68 @@ static void pxa2xx_clkcfg_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static void pxa2xx_pwrmode_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                  uint64_t value)
+ {
+     PXA2xxState *s = (PXA2xxState *)ri->opaque;
+     static const char *pwrmode[8] = {
+         "Normal", "Idle", "Deep-idle", "Standby",
+         "Sleep", "reserved (!)", "reserved (!)", "Deep-sleep",
+     };
+ 
+     if (value & 8) {
+         printf("%s: CPU voltage change attempt\n", __func__);
+     }
+     switch (value & 7) {
+     case 0:
+         /* Do nothing */
+         break;
+ 
+     case 1:
+         /* Idle */
+         if (!(s->cm_regs[CCCR >> 2] & (1U << 31))) { /* CPDIS */
+             cpu_interrupt(CPU(s->cpu), CPU_INTERRUPT_HALT);
+             break;
+         }
+-        /* Fall through.  */
++        fallthrough;
+ 
+     case 2:
+         /* Deep-Idle */
+         cpu_interrupt(CPU(s->cpu), CPU_INTERRUPT_HALT);
+         s->pm_regs[RCSR >> 2] |= 0x8; /* Set GPR */
+         goto message;
+ 
+     case 3:
+         s->cpu->env.uncached_cpsr = ARM_CPU_MODE_SVC;
+         s->cpu->env.daif = PSTATE_A | PSTATE_F | PSTATE_I;
+         s->cpu->env.cp15.sctlr_ns = 0;
+         s->cpu->env.cp15.cpacr_el1 = 0;
+         s->cpu->env.cp15.ttbr0_el[1] = 0;
+         s->cpu->env.cp15.dacr_ns = 0;
+         s->pm_regs[PSSR >> 2] |= 0x8; /* Set STS */
+         s->pm_regs[RCSR >> 2] |= 0x8; /* Set GPR */
+ 
+         /*
+          * The scratch-pad register is almost universally used
+          * for storing the return address on suspend.  For the
+          * lack of a resuming bootloader, perform a jump
+          * directly to that address.
+          */
+         memset(s->cpu->env.regs, 0, 4 * 15);
+         s->cpu->env.regs[15] = s->pm_regs[PSPR >> 2];
+ 
+ #if 0
+         buffer = 0xe59ff000; /* ldr     pc, [pc, #0] */
+         cpu_physical_memory_write(0, &buffer, 4);
+         buffer = s->pm_regs[PSPR >> 2];
+         cpu_physical_memory_write(8, &buffer, 4);
+ #endif
+ 
+         /* Suspend */
+         cpu_interrupt(current_cpu, CPU_INTERRUPT_HALT);
+ 
+         goto message;
+ 
+     default:
+     message:
+         printf("%s: machine entered %s mode\n", __func__,
+                pwrmode[value & 7]);
+     }
+ }
+@@ -419,18 +419,18 @@ static void pxa2xx_setup_cp14(PXA2xxState *s)
+ static uint64_t pxa2xx_mm_read(void *opaque, hwaddr addr,
+                                unsigned size)
+ {
+     PXA2xxState *s = (PXA2xxState *) opaque;
+ 
+     switch (addr) {
+     case MDCNFG ... SA1110:
+         if ((addr & 3) == 0)
+             return s->mm_regs[addr >> 2];
+-        /* fall through */
++        fallthrough;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Bad read offset 0x%"HWADDR_PRIx"\n",
+                       __func__, addr);
+         break;
+     }
+     return 0;
+ }
+@@ -438,19 +438,20 @@ static uint64_t pxa2xx_mm_read(void *opaque, hwaddr addr,
+ static void pxa2xx_mm_write(void *opaque, hwaddr addr,
+                             uint64_t value, unsigned size)
+ {
+     PXA2xxState *s = (PXA2xxState *) opaque;
+ 
+     switch (addr) {
+     case MDCNFG ... SA1110:
+         if ((addr & 3) == 0) {
+             s->mm_regs[addr >> 2] = value;
+             break;
+         }
+         /* fallthrough */
++        fallthrough;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Bad write offset 0x%"HWADDR_PRIx"\n",
+                       __func__, addr);
+         break;
+     }
+ }
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index aa5b0ddfaa..d68602ab71 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -147,20 +147,21 @@ static uint32_t pllcfg_fury[16] = {
+ static int ssys_board_class(const ssys_state *s)
+ {
+     uint32_t did0 = s->did0;
+     switch (did0 & DID0_VER_MASK) {
+     case DID0_VER_0:
+         return DID0_CLASS_SANDSTORM;
+     case DID0_VER_1:
+         switch (did0 & DID0_CLASS_MASK) {
+         case DID0_CLASS_SANDSTORM:
+         case DID0_CLASS_FURY:
+             return did0 & DID0_CLASS_MASK;
+         }
+         /* for unknown classes, fall through */
++        fallthrough;
+     default:
+         /* This can only happen if the hardwired constant did0 value
+          * in this board's stellaris_board_info struct is wrong.
+          */
+         g_assert_not_reached();
      }
  }
 -- 

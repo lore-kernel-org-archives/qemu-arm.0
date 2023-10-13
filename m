@@ -1,180 +1,449 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1338032ejc;
-        Fri, 13 Oct 2023 01:07:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFY54TJKc8P78ouDCfgP7FQZtgPL2/IZK97+NlBHHF5NOHQyrcnoy4v1CETLuXpClYOQUXh
-X-Received: by 2002:a05:620a:b5a:b0:770:9bd2:b3be with SMTP id x26-20020a05620a0b5a00b007709bd2b3bemr25992786qkg.5.1697184457019;
-        Fri, 13 Oct 2023 01:07:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697184457; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1338238ejc;
+        Fri, 13 Oct 2023 01:08:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG/oo5cLwu5JOzHiKXd8SQQZez9atL75WdshFEZCnyvbL4JfQXU4NjyXN3DY72NjjxFD8b5
+X-Received: by 2002:ac8:5fc4:0:b0:417:b970:f2a4 with SMTP id k4-20020ac85fc4000000b00417b970f2a4mr33362727qta.1.1697184484744;
+        Fri, 13 Oct 2023 01:08:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697184484; cv=none;
         d=google.com; s=arc-20160816;
-        b=PG4SHaYuLoIR4IEjp7q10bCE6VEEUkFxqNBogsiRaGjgkwt9zlXBXpCR1VOtGwXEmC
-         +mFDXlGKH9leuR0a0YJxISI4m+kc250CKj6YLkQK7/ltv2MStoqHSx12a8O6QqalUjgf
-         vd+q/NmagKPvpBobVNoSyf7/ePXhyjDkC6oJsSuDjfHdbsINfoTq9foVFxmBjh9NO3Gd
-         cgmEJEaYkO6DD0oLnjooaW74u6gKTcQr2XINygImvlrpjBPEOizTJMGYnDznwqG8c9qo
-         sfXN4+qEtA/yQf9AxfW0bw8wetHim9Zzwv3qK21yN4ITimxPS2lSt5XNm8x/+1Bqwdxf
-         H0lQ==
+        b=p1KrBFL39ihIenqX1E4po903yKrH2gTnsITtsf4XGJU7RnMoBn+T1sKmjmTz2W9nWl
+         w530aSDcpheQW3hiTIj9N1P2ZQremmkhOpIRi2aV6Y9iaaxmx/H+JN9gpCJcJkf8jsqg
+         3h+sUDrgSWGdP8uCJnsC0OjwhjzPTG65hKPVseILFAm9YdhgmIlhAEFvs01vvUAV0MT7
+         jGBpwvzvfY0F20HM2NilzMCNT+wbqlAMLqXLh9euFmv//4erAqv1xpDhlRmS5So7+BiD
+         34/v96OE4anDpo1qry1pcUih8+b1fav1RdoO1JhSkJZloJQvMero9knWfCavXIycLCJM
+         sKLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=aZTz17RhWxoUZ3hVHX7ypZhIj3NVSXDU2Rg89KVwrPE=;
-        fh=1CkIaZBADmJB8jP2ieauFT9oPNugo99OaBqF7VaVQrU=;
-        b=deTBxwfK+nkeEpUBq97fU5meTSoi2G+O5FfaSyAO4TuhPsgj467QTIpoFoWUTvRY+Y
-         /33clD2Oc310FI7s/V6THOTV6cKy3/1sLF84ZMlw0f2ExfTX1DAvqOSmmaBj1+Fg+qC8
-         hZy0gPfTNZGQ0Xx6tbHpb9BldXyRGO8BKkCwy6H8JT74ip3IKfVB3JVey7hsMDtHlUAh
-         85rTtU6tStaj+sfaXoCRGAUXQWC6cnFdFVyGucTDVfA9mOq7znkk2nC6RFU/S3+9Gq6B
-         8OJK4Ei7ZnxtVMuKtg2u/jiTmKN+xOWPVTClU4VP+I40yOWmY2/VS2P5jLM3HjFs1uaW
-         8Fmg==
+        bh=MHkwerARMVrwTTd/RS2SbAUQb/LRufm8Kjc23C7Om/k=;
+        fh=WcQjlFuhnJr6NTCpNUt0hLH8WARIGJsmgYkf8Vhox7w=;
+        b=X29lcHxIHYzzJg6jEGiM95/3Np0x972SSiEGEO9H1F1HODiB6XnLeL9mepB56bVCsb
+         giZKrYwC54k/m4VZrdDW6/8tdR2i9E1SZ6U8wGMu70OUrMIg8vNoNrQlmCVuPXCn9Rhk
+         9n3aXG86sIOxx8gqNW3SiSHLExinyd87Xw7lbw6PB+h2zSQxBrrduWH3tNBycOtlQK5Z
+         6B8vM6XuUoGAt5VGcJKNYsOqPY+YJj34NxN1sVIRlzC+3RWgYt1mNktgiluTrOEK0izG
+         4eHiMr9o1EoXlMTbkLMtJoNyrmaYeQxrFXWsWPDu5xajbOWKjVHCjUjOohZjJEXZg9bt
+         SmAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yo6QvDN5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ojI6qlke;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7-20020a05620a0c4700b0076dbb17e788si863974qki.721.2023.10.13.01.07.36
+        by mx.google.com with ESMTPS id y11-20020a05622a120b00b00403affc6ad2si824337qtx.469.2023.10.13.01.08.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:07:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 01:08:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yo6QvDN5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ojI6qlke;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrCxv-0001Rm-TR; Fri, 13 Oct 2023 03:52:12 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qrCxr-0000uT-Cy; Fri, 13 Oct 2023 03:52:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxT-0007CT-JD
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:46 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1qrCxB-0006jz-NZ
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:27 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxK-00057R-Qo
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:43 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-405505b07dfso18716665e9.0
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:51:28 -0700 (PDT)
+ id 1qrCww-0004za-KH
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:25 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-32d9effe314so147061f8f.3
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:51:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183486; x=1697788286; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183468; x=1697788268; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=aZTz17RhWxoUZ3hVHX7ypZhIj3NVSXDU2Rg89KVwrPE=;
- b=yo6QvDN5qXYK1qGQZg1y6wlvqPGS1mxdFEWQvR4KeVsQ8oW8pER0MQ1iXkI5Fe+nxU
- IsgL4MwWMKSWTf8QOxTXSbZ/rotGnn10szX9IUwx2H8jBbIajOTYPMBg4lKzZ3K5yMBz
- eHqfGlUFUhBGV7O8omOJ8SQ8sXjHmksLlNNc3SOfnZJWVfE8fJVS33uE3sr/MoOio3oH
- 3nr9H/3vuAxhc9SuQT/I2b7+CaoFv9//l2TLKcFRB01+UOyNhmaRP1xx/jtlADqHgTsU
- A6oMsWTqUIO9OAakdqeJmkfPMbl/TXZcBq1TuFHLs51j+PgGBgV5rNMuh2oDoyfDcpsc
- Aitg==
+ bh=MHkwerARMVrwTTd/RS2SbAUQb/LRufm8Kjc23C7Om/k=;
+ b=ojI6qlkeSQNE2G8SIxrQWHUwv5qujm6nhdmAqnpsosUcOyOy8Cp2onYunc2Pl/8WCu
+ BVNrf7Ku+MQtAGeeE8UrZUsT0ptD+fHOLr7hCByqDwRPPsCCe1qnZTP9D1yMYKtoYRYh
+ nqzrm+9D2br+1WJx+yfNOmoXZ4WK6y0pgnpoZ1HUa1c3jPz/G+ylkbi0E+ogCkcSmSx+
+ Lx89iO26gBPQMErvtEkkOeE788iKiN3F6jFzfBY1Bm5ta35sZcOITuF/2cWrfJwxyaB4
+ ZYqu6l4JfERavq/1PE89dHX2Q+Nb0WF3NIZwem76Enx5rHTgcBwoDwN064VNQvyoLG4p
+ ywQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183486; x=1697788286;
+ d=1e100.net; s=20230601; t=1697183468; x=1697788268;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=aZTz17RhWxoUZ3hVHX7ypZhIj3NVSXDU2Rg89KVwrPE=;
- b=W8kYr5bWAgYrsauQjqEn6BAFvDF1ZZT4pu/IGw2n8ZjOgVIJxcn29f9zEgqIG9QwvE
- X7r9UncAvV43SR8N9IxczYkcb+dFBI2aRFNMcABzLmuAXAnqTH/KD0Kg65X4E3wssGjA
- iszpw97KerFaPcq26euWTC+TJbqPFqW3N9NXhZFWQprWFi4LAtMWcLrIaL718XxOk8eq
- AGXU8z4iUg5u1F7UqwVWIg9sBW9TDQ24XQnGuG7SIxzCYJKN2ufMQwFt1MxLzpfn/c9O
- mIHbHeM61tiIRWKFD2AhPQNmIIt1dtV+48Dz3Bu2m5PLiJhbwvae8wq1HGpFujKDNvSz
- mHdg==
-X-Gm-Message-State: AOJu0YwKtfLZQ+X+zSPGAPUA0SUD+a1LzYE+ZAMbXVL61mM5b0NZFqaV
- tR1aj9/dLhkyQhhV7pAv09U69WNfZfU1gPkLoXI=
-X-Received: by 2002:adf:e288:0:b0:329:6d7c:ca71 with SMTP id
- v8-20020adfe288000000b003296d7cca71mr15995250wri.17.1697183486466; 
- Fri, 13 Oct 2023 00:51:26 -0700 (PDT)
+ bh=MHkwerARMVrwTTd/RS2SbAUQb/LRufm8Kjc23C7Om/k=;
+ b=BvyiP5AL1D0yMd6AoGqgpodjZJdy6yaMoNPa3id/yVdWcvH4QRn9O6i0xjWEL2VH/s
+ /zpkIiP2IeBdzj9kw27bAL9waKsVlaTpSjhF6MH6HpVph1cesEsgQ7TTX9Xd7DKgbH7/
+ SjhjKm5X8GPHtxO2mZfdsumhddnVRUd70391XB0sLKc9U/9HH1TRUd7PxvO30pLbJjjY
+ GYCy/kmpLF13TOluP4j3VKzCxZk+OsPpEVCj3gObSzKkdChXBVgAC0dYRX8CyUfifKtY
+ /CBvlR1C11ajsEefoimw6+d7xRbiDoXtTMbdR84gGoU1B2zufEU2+7MzrBMEHO8HMAGO
+ hHwQ==
+X-Gm-Message-State: AOJu0YwMia/TS4FUmCYw52Rrj6lTRuf1tBTY0Int9/OBGqPrADop9Vrr
+ HTkljhIA3xKu1omO7hS86fZb4j3ZEZozqUmhsu0=
+X-Received: by 2002:a05:6000:98f:b0:32d:89b5:6d05 with SMTP id
+ by15-20020a056000098f00b0032d89b56d05mr6199061wrb.35.1697183468572; 
+ Fri, 13 Oct 2023 00:51:08 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.25
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:51:25 -0700 (PDT)
+ Fri, 13 Oct 2023 00:51:08 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Thomas Huth <huth@tuxfamily.org>
-Subject: [RFC PATCH 44/78] hw/m68k/mcf_intc.c: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:56 +0300
-Message-Id: <afd58b7b36d587594754b695313ed01232f6735f.1697183082.git.manos.pitsidianakis@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Bin Meng <bin.meng@windriver.com>
+Subject: [RFC PATCH 40/78] hw/sd/sdhci.c: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:47 +0300
+Message-Id: <9c2cdf34edb01e45141db197877910d22767dd89.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 77HU6SSYnJNI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kDTkpvgWqbac
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/m68k/mcf_intc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/sd/sdhci.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/m68k/mcf_intc.c b/hw/m68k/mcf_intc.c
-index 4cd30188c0..9556a0ccb7 100644
---- a/hw/m68k/mcf_intc.c
-+++ b/hw/m68k/mcf_intc.c
-@@ -58,34 +58,34 @@ static void mcf_intc_update(mcf_intc_state *s)
- static uint64_t mcf_intc_read(void *opaque, hwaddr addr,
-                               unsigned size)
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 5564765a9b..5c641d24de 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -75,138 +75,138 @@ static bool sdhci_check_capab_freq_range(SDHCIState *s, const char *desc,
+ static void sdhci_check_capareg(SDHCIState *s, Error **errp)
  {
-     int offset;
-     mcf_intc_state *s = (mcf_intc_state *)opaque;
-     offset = addr & 0xff;
-     if (offset >= 0x40 && offset < 0x80) {
-         return s->icr[offset - 0x40];
+     uint64_t msk = s->capareg;
+     uint32_t val;
+     bool y;
+ 
+     switch (s->sd_spec_version) {
+     case 4:
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BUS64BIT_V4);
+         trace_sdhci_capareg("64-bit system bus (v4)", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, BUS64BIT_V4, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, UHS_II);
+         trace_sdhci_capareg("UHS-II", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, UHS_II, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ADMA3);
+         trace_sdhci_capareg("ADMA3", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, ADMA3, 0);
+ 
+-    /* fallthrough */
++        fallthrough;
+     case 3:
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ASYNC_INT);
+         trace_sdhci_capareg("async interrupt", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, ASYNC_INT, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SLOT_TYPE);
+         if (val) {
+             error_setg(errp, "slot-type not supported");
+             return;
+         }
+         trace_sdhci_capareg("slot type", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, SLOT_TYPE, 0);
+ 
+         if (val != 2) {
+             val = FIELD_EX64(s->capareg, SDHC_CAPAB, EMBEDDED_8BIT);
+             trace_sdhci_capareg("8-bit bus", val);
+         }
+         msk = FIELD_DP64(msk, SDHC_CAPAB, EMBEDDED_8BIT, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BUS_SPEED);
+         trace_sdhci_capareg("bus speed mask", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, BUS_SPEED, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, DRIVER_STRENGTH);
+         trace_sdhci_capareg("driver strength mask", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, DRIVER_STRENGTH, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, TIMER_RETUNING);
+         trace_sdhci_capareg("timer re-tuning", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, TIMER_RETUNING, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SDR50_TUNING);
+         trace_sdhci_capareg("use SDR50 tuning", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, SDR50_TUNING, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, RETUNING_MODE);
+         trace_sdhci_capareg("re-tuning mode", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, RETUNING_MODE, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, CLOCK_MULT);
+         trace_sdhci_capareg("clock multiplier", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, CLOCK_MULT, 0);
+ 
+-    /* fallthrough */
++        fallthrough;
+     case 2: /* default version */
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ADMA2);
+         trace_sdhci_capareg("ADMA2", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, ADMA2, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ADMA1);
+         trace_sdhci_capareg("ADMA1", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, ADMA1, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BUS64BIT);
+         trace_sdhci_capareg("64-bit system bus (v3)", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, BUS64BIT, 0);
+ 
+-    /* fallthrough */
++        fallthrough;
+     case 1:
+         y = FIELD_EX64(s->capareg, SDHC_CAPAB, TOUNIT);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, TOUNIT, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, TOCLKFREQ);
+         trace_sdhci_capareg(y ? "timeout (MHz)" : "Timeout (KHz)", val);
+         if (sdhci_check_capab_freq_range(s, "timeout", val, errp)) {
+             return;
+         }
+         msk = FIELD_DP64(msk, SDHC_CAPAB, TOCLKFREQ, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BASECLKFREQ);
+         trace_sdhci_capareg(y ? "base (MHz)" : "Base (KHz)", val);
+         if (sdhci_check_capab_freq_range(s, "base", val, errp)) {
+             return;
+         }
+         msk = FIELD_DP64(msk, SDHC_CAPAB, BASECLKFREQ, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, MAXBLOCKLENGTH);
+         if (val >= 3) {
+             error_setg(errp, "block size can be 512, 1024 or 2048 only");
+             return;
+         }
+         trace_sdhci_capareg("max block length", sdhci_get_fifolen(s));
+         msk = FIELD_DP64(msk, SDHC_CAPAB, MAXBLOCKLENGTH, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, HIGHSPEED);
+         trace_sdhci_capareg("high speed", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, HIGHSPEED, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SDMA);
+         trace_sdhci_capareg("SDMA", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, SDMA, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SUSPRESUME);
+         trace_sdhci_capareg("suspend/resume", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, SUSPRESUME, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, V33);
+         trace_sdhci_capareg("3.3v", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, V33, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, V30);
+         trace_sdhci_capareg("3.0v", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, V30, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, V18);
+         trace_sdhci_capareg("1.8v", val);
+         msk = FIELD_DP64(msk, SDHC_CAPAB, V18, 0);
+         break;
+ 
+     default:
+         error_setg(errp, "Unsupported spec version: %u", s->sd_spec_version);
      }
+     if (msk) {
+         qemu_log_mask(LOG_UNIMP,
+                       "SDHCI: unknown CAPAB mask: 0x%016" PRIx64 "\n", msk);
+     }
+ }
+@@ -1688,160 +1688,160 @@ static void
+ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+ {
+     SDHCIState *s = SYSBUS_SDHCI(opaque);
+     uint8_t hostctl1;
+     uint32_t value = (uint32_t)val;
+ 
      switch (offset) {
-     case 0x00:
-         return (uint32_t)(s->ipr >> 32);
-     case 0x04:
-         return (uint32_t)s->ipr;
-     case 0x08:
-         return (uint32_t)(s->imr >> 32);
-     case 0x0c:
-         return (uint32_t)s->imr;
-     case 0x10:
-         return (uint32_t)(s->ifr >> 32);
-     case 0x14:
-         return (uint32_t)s->ifr;
-     case 0xe0: /* SWIACK.  */
-         return s->active_vector;
-     case 0xe1: case 0xe2: case 0xe3: case 0xe4:
-     case 0xe5: case 0xe6: case 0xe7:
-         /* LnIACK */
-         qemu_log_mask(LOG_UNIMP, "%s: LnIACK not implemented (offset 0x%02x)\n",
-                       __func__, offset);
--        /* fallthru */
+     case USDHC_DLL_CTRL:
+     case USDHC_TUNE_CTRL_STATUS:
+     case USDHC_UNDOCUMENTED_REG27:
+     case USDHC_TUNING_CTRL:
+     case USDHC_WTMK_LVL:
+         break;
+ 
+     case USDHC_VENDOR_SPEC:
+         s->vendor_spec = value;
+         switch (s->vendor) {
+         case SDHCI_VENDOR_IMX:
+             if (value & USDHC_IMX_FRC_SDCLK_ON) {
+                 s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
+             } else {
+                 s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
+             }
+             break;
+         default:
+             break;
+         }
+         break;
+ 
+     case SDHC_HOSTCTL:
+         /*
+          * Here's What ESDHCI has at offset 0x28 (SDHC_HOSTCTL)
+          *
+          *       7         6     5      4      3      2        1      0
+          * |-----------+--------+--------+-----------+----------+---------|
+          * | Card      | Card   | Endian | DATA3     | Data     | Led     |
+          * | Detect    | Detect | Mode   | as Card   | Transfer | Control |
+          * | Signal    | Test   |        | Detection | Width    |         |
+          * | Selection | Level  |        | Pin       |          |         |
+          * |-----------+--------+--------+-----------+----------+---------|
+          *
+          * and 0x29
+          *
+          *  15      10 9    8
+          * |----------+------|
+          * | Reserved | DMA  |
+          * |          | Sel. |
+          * |          |      |
+          * |----------+------|
+          *
+          * and here's what SDCHI spec expects those offsets to be:
+          *
+          * 0x28 (Host Control Register)
+          *
+          *     7        6         5       4  3      2         1        0
+          * |--------+--------+----------+------+--------+----------+---------|
+          * | Card   | Card   | Extended | DMA  | High   | Data     | LED     |
+          * | Detect | Detect | Data     | Sel. | Speed  | Transfer | Control |
+          * | Signal | Test   | Transfer |      | Enable | Width    |         |
+          * | Sel.   | Level  | Width    |      |        |          |         |
+          * |--------+--------+----------+------+--------+----------+---------|
+          *
+          * and 0x29 (Power Control Register)
+          *
+          * |----------------------------------|
+          * | Power Control Register           |
+          * |                                  |
+          * | Description omitted,             |
+          * | since it has no analog in ESDHCI |
+          * |                                  |
+          * |----------------------------------|
+          *
+          * Since offsets 0x2A and 0x2B should be compatible between
+          * both IP specs we only need to reconcile least 16-bit of the
+          * word we've been given.
+          */
+ 
+         /*
+          * First, save bits 7 6 and 0 since they are identical
+          */
+         hostctl1 = value & (SDHC_CTRL_LED |
+                             SDHC_CTRL_CDTEST_INS |
+                             SDHC_CTRL_CDTEST_EN);
+         /*
+          * Second, split "Data Transfer Width" from bits 2 and 1 in to
+          * bits 5 and 1
+          */
+         if (value & USDHC_CTRL_8BITBUS) {
+             hostctl1 |= SDHC_CTRL_8BITBUS;
+         }
+ 
+         if (value & USDHC_CTRL_4BITBUS) {
+             hostctl1 |= USDHC_CTRL_4BITBUS;
+         }
+ 
+         /*
+          * Third, move DMA select from bits 9 and 8 to bits 4 and 3
+          */
+         hostctl1 |= SDHC_DMA_TYPE(value >> (8 - 3));
+ 
+         /*
+          * Now place the corrected value into low 16-bit of the value
+          * we are going to give standard SDHCI write function
+          *
+          * NOTE: This transformation should be the inverse of what can
+          * be found in drivers/mmc/host/sdhci-esdhc-imx.c in Linux
+          * kernel
+          */
+         value &= ~UINT16_MAX;
+         value |= hostctl1;
+         value |= (uint16_t)s->pwrcon << 8;
+ 
+         sdhci_write(opaque, offset, value, size);
+         break;
+ 
+     case USDHC_MIX_CTRL:
+         /*
+          * So, when SD/MMC stack in Linux tries to write to "Transfer
+          * Mode Register", ESDHC i.MX quirk code will translate it
+          * into a write to ESDHC_MIX_CTRL, so we do the opposite in
+          * order to get where we started
+          *
+          * Note that Auto CMD23 Enable bit is located in a wrong place
+          * on i.MX, but since it is not used by QEMU we do not care.
+          *
+          * We don't want to call sdhci_write(.., SDHC_TRNMOD, ...)
+          * here because it will result in a call to
+          * sdhci_send_command(s) which we don't want.
+          *
+          */
+         s->trnmod = value & UINT16_MAX;
+         break;
+     case SDHC_TRNMOD:
+         /*
+          * Similar to above, but this time a write to "Command
+          * Register" will be translated into a 4-byte write to
+          * "Transfer Mode register" where lower 16-bit of value would
+          * be set to zero. So what we do is fill those bits with
+          * cached value from s->trnmod and let the SDHCI
+          * infrastructure handle the rest
+          */
+         sdhci_write(opaque, offset, val | s->trnmod, size);
+         break;
+     case SDHC_BLKSIZE:
+         /*
+          * ESDHCI does not implement "Host SDMA Buffer Boundary", and
+          * Linux driver will try to zero this field out which will
+          * break the rest of SDHCI emulation.
+          *
+          * Linux defaults to maximum possible setting (512K boundary)
+          * and it seems to be the only option that i.MX IP implements,
+          * so we artificially set it to that value.
+          */
+         val |= 0x7 << 12;
+-        /* FALLTHROUGH */
 +        fallthrough;
      default:
-         return 0;
+         sdhci_write(opaque, offset, val, size);
+         break;
      }
  }
 -- 

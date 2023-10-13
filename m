@@ -1,112 +1,111 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1338981ejc;
-        Fri, 13 Oct 2023 01:09:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGZ2n94UkoAja1XijZnYd0sF/GybOR9zzvV7xg8dBc6sslMxXwv1VYfFH3kHODklKAfe+oK
-X-Received: by 2002:ac8:5f13:0:b0:418:554:fa25 with SMTP id x19-20020ac85f13000000b004180554fa25mr32799841qta.47.1697184588427;
-        Fri, 13 Oct 2023 01:09:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697184588; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1339825ejc;
+        Fri, 13 Oct 2023 01:11:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGRqdEH8Sqlu538WBCHZHyPka5WVJnCDIpAqAs0URQKrTv3JbtgxLlA5rzqKwSyJzu50A5N
+X-Received: by 2002:a0c:e78b:0:b0:659:5839:f811 with SMTP id x11-20020a0ce78b000000b006595839f811mr26837872qvn.57.1697184706302;
+        Fri, 13 Oct 2023 01:11:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697184706; cv=none;
         d=google.com; s=arc-20160816;
-        b=GjBvRLxfT50M1NRbgv0YFSWOqHOhky2SGvN0ff8H4IjfexGtnqP445WqeaKtKS1bZI
-         6uXtC4fzLEKrGgAJ2BPFonxb0MYAv9q/KnKReUnYgU/ObPj4OYB4oqhfgs7mLHp8tQ1Z
-         OS9bvSIeZzJW4Mk2KhVS2NzE+ai5rdvXtbzCEMWFDY/qXk0we4UYA9LJE3IGtFW7YeRs
-         +knb9GL8fN053v58atmeq5vAueBBNZeD7lCGwzzKMJf/zKRR+k1mCQ98OCggVmkyoHC7
-         TC7VQ7T8vP06zyiThUYLdGAfxcy5EK9GmgcsedzWdeq3H1tsV3NojxuI0cEYlNz47OHP
-         x+NA==
+        b=WvfXTzHAFTsaHvC6oJfk1lMmwu+auA6G309oKvNoIiAy6g+SqIgKUERNLFsjo4+k03
+         3qjW/7J2ew87PIpIqxqAUCLwStkiAS+sNUVsyFuSzSjRJvsh8pT4z4vsCI2m7tjRXlUY
+         PBPdqQ3IkRr6xaFF3MQi2cEW9NRd9j5l727uZ7EhRLpqgWhWmzgLSPvrzLpwg4i1o1vc
+         QAk9o4ZWKuDzW2b8+qWe8zSiyPOveztT0Nj9GfelieLYigKv/qZ1JyPKbA7TRrnPGVzV
+         ixuVYcUL8MEDjuZh0ZdobACVqkUEmf7p7Nlzch/QLKbrGjaaASvaK3FE2GZfDGYq0c4/
+         Nv+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=GBO0NNb0V3LfMWL/3wFiC/lYqJ328EdfxocrGVrl+P8=;
-        fh=HC566KTgTmno/QyODc4PpmbyekdcUkcH5QdUsIOFuUc=;
-        b=cjzSRx8W6P4bRsBOUae6plIASbIDsG9A0cJihytuqrK538cLIzOcA8ltPA2DcmKkyB
-         2U5t8chcHpA+vlvJeLEmvSmxOxAvqCPuVlbGdztfFtPsZwCF7GPdsIvywjRWFzldyTsF
-         UjKOQhshT5a+/6A44o5deolhW3NmTuv4FgSENIr33QUtL2UFMDoLQ/gmQlry1L4lBDXg
-         EcbsKTOLcuKmWSR5XhzkZVKyrVxMvljSabdu2d1C4w3m8CAN93lfVxULLMvYDkCcg50z
-         M+dPGJhZkfIA5hG8rb1uW2XO/qD9UCiOFDW8boULpn+uvtbYmVHEpDyPcaBT1Sczjjt3
-         lqhA==
+        bh=hbCML2QUJhAHlr4bUtsgIbYnvvz0tb/IISc/i9CJrtM=;
+        fh=HTaHvMYlzSHzsYZldX8VAQ+a1GKwVoOMI3UiiwLimq4=;
+        b=ML6x8mFE/B79W1l2V8wP+4L0PEZWuPWhqxPJEGubJvmsbYsaw1ir5ij+r5UaOB/sdG
+         G+3aFX/vG/F4aFmw7bBI38mJmj/IGLTqYChlMet9MM1Mjuwbmpw58I4HFnwqGvKZeyjC
+         6WmLD0lT1z8vT3/0g37xCgHenmP+kA/Ez1Q7dhz2A40+/M+4Ov7iOLedZ7JS4bo+hx9k
+         FnJw1ifSPdxVvRyCcDbIgyT/1BsvgoAgZZLowJGcSWniE7MlRrueMBVrcfs2AQDPeiNT
+         VTqjU9aKGPxzDHgdLxAjBpqt1kWmLhKscAQhcixhgMNAxgGnKnhS5Uz2C31t1ZkaMqma
+         3p2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QcuHB5Rd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nuSyW11S;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6-20020ac87d86000000b0040b4cb9b6f9si843104qtd.102.2023.10.13.01.09.48
+        by mx.google.com with ESMTPS id v21-20020a05620a0f1500b0076cf3531349si859839qkl.760.2023.10.13.01.11.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:09:48 -0700 (PDT)
+        Fri, 13 Oct 2023 01:11:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QcuHB5Rd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nuSyW11S;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCyv-0004SV-QU; Fri, 13 Oct 2023 03:53:15 -0400
+	id 1qrCwv-00066E-AM; Fri, 13 Oct 2023 03:51:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCy1-0001u4-Ae
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:19 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1qrCwd-0005Bc-LW
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:57 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxn-0005Js-Um
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:17 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-405361bba99so18206905e9.2
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:52:00 -0700 (PDT)
+ id 1qrCwN-0004kL-Tr
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:50 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-32799639a2aso1668380f8f.3
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:50:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183519; x=1697788319; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183434; x=1697788234; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GBO0NNb0V3LfMWL/3wFiC/lYqJ328EdfxocrGVrl+P8=;
- b=QcuHB5Rde0mENWIizwqfMWoOfRMR6y5dz0fD2lXJL2EDNBAjT4KUnmmhQTHmvgsS31
- b5lj7toPQovDmLgXMxWaak0J69otw/VCrwkGC6gBsXuyy3S/UXNA3IHYL7McB9Mz5E2h
- 72JWEGxMU8gr3Zt7jnE6Fznytg68N4TLbCM2vBNDSvSaXC0ZqAzUOfrVDL5pnG05iR9W
- EQ7F6VCwFlim8Epy4KbQdBaHFuxfY0cvrfw15O2IPh2e4EZV/tHzOBXQ7k9wZ6JeYjCh
- VngfTTMy+Pwvu5A13aQYUNA8rGrxapeqgxsMnuw9KBFWqjpPnNkyP1PZzZHUgs2d6c9M
- xfhA==
+ bh=hbCML2QUJhAHlr4bUtsgIbYnvvz0tb/IISc/i9CJrtM=;
+ b=nuSyW11SC847QoeZtbDwmQc/nW+dMkdDBy3YN1wSKQD/aB5Cs8jGDdZ7Xcfg1ndpJ9
+ OERcqk0GiI+NDSa1KzlHfu575BeIck60gZfmoClyMO23sUR9cjUGsB/zbEsKYa4tXtqj
+ BRb5vLNJQq3EbDFzyVYfBnRvvDDZ8uueLpx6rsdqdDEORKN29Ul9ymVYMLDxmx6azAoY
+ lorTTOUvQSFToICmyW+RAeUWjd790hGefYMV5qTFtb+RjqL7oi6lbuLMFQOcTwZx/w/W
+ jVbQx8DV6R6WWiWGy7PSXT8k30p6GJZMCqHeqgzqdgO3CgSEt6t5a9R1SKCgrNrucgdX
+ 608A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183519; x=1697788319;
+ d=1e100.net; s=20230601; t=1697183434; x=1697788234;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=GBO0NNb0V3LfMWL/3wFiC/lYqJ328EdfxocrGVrl+P8=;
- b=tCvWtZ/T9tu7fUBxsuCZEC+7z11lMNQWUuYjX7uECNtglC5L8iXvzD8cJhRRSQnRJG
- NmjL6d3MxU9A//26QR9zkP8QikFVGLi5LQc4/J7hajTl7kVmXAhrRT2bw/tqiUkdDppE
- 1jPrW8ZBdPOgFiAbRogr79thM4lgkIiLeZMaudruimPoBeHO000Xznhtf1TAsT+Ro+3/
- cn5H/knw0kiIxb0Lu2De3P+HtJ0B/Vi25656QP1HU2Pd6NtGMrx3qWByDNQwGMnH7MWP
- 4ZSQdpWr3dwgmjTKvIBjunE+adcqNg38TKe4f/m+GYyfuzYnwyFPXl6k6hMlXeBxIqOQ
- ct/w==
-X-Gm-Message-State: AOJu0YzRfU6phQZynHkh04EP4viDkNC0nt5weLbsdGwLZrfliSqDpVjg
- Cj5taoLp0LWO7A9NaeL/GzKAl4QHufr0A0P9A3o=
-X-Received: by 2002:adf:f192:0:b0:32d:7162:7ffe with SMTP id
- h18-20020adff192000000b0032d71627ffemr7695936wro.69.1697183518713; 
- Fri, 13 Oct 2023 00:51:58 -0700 (PDT)
+ bh=hbCML2QUJhAHlr4bUtsgIbYnvvz0tb/IISc/i9CJrtM=;
+ b=OMLdweDbqlUhaH/Mxwnljjxvih8TvAZ4xFO4L6Q8peNs2Y/cjATZ0IDHRJxGU0pmFw
+ hE+4mhQBjiFxw3qGNMKPiLNBTfOhYZqXnTcJVGQ4CxKsAaXyiy+ePSaW21hLgx+gaWoZ
+ pmlxBGDOFiTHXiJpo03YKMG9w2qJHLW4k09GZKY1KGRF4RRjnQKkdG60HqOExY0/0OJZ
+ dHHbFMRwHljX5SS6qz/9GNogbDrvm1IutGBZ4KwVIID6C8Dhf5DyEXj3EQiSm3B81vUx
+ DAaWMGeCXR4leUBqaodnbmJO25oscnUwi3MzyYME70wp9dTIV5Vchd10BV7bHrOg5AA0
+ X7AQ==
+X-Gm-Message-State: AOJu0YwxzGtr7u5tEv5dVSdsItiF6qMfTyMrwreBKsKoS4PubjDOubIq
+ RqX6EljqLkSnVedYgM1VPpXbj/wHAfGEuwVHqnc=
+X-Received: by 2002:adf:f103:0:b0:32d:9cd3:6a9d with SMTP id
+ r3-20020adff103000000b0032d9cd36a9dmr822169wro.25.1697183433903; 
+ Fri, 13 Oct 2023 00:50:33 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.57
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:51:58 -0700 (PDT)
+ Fri, 13 Oct 2023 00:50:33 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Eric Blake <eblake@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-Subject: [RFC PATCH 53/78] nbd: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:48:14 +0300
-Message-Id: <53cd0864892e6764e5487c2b698f122d02afb9a2.1697183082.git.manos.pitsidianakis@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [RFC PATCH 24/78] target/alpha: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:28 +0300
+Message-Id: <d165f3af5d496ace73ef9cb26929c3ad9e628ba3.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,879 +127,1597 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PolLMxF1rwSx
+X-TUID: jGi0P4Umwip1
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- nbd/client.c | 4 ++--
- nbd/common.c | 2 +-
- qemu-nbd.c   | 4 ++--
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ target/alpha/helper.c    | 6 +++---
+ target/alpha/translate.c | 4 +++-
+ 2 files changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/nbd/client.c b/nbd/client.c
-index 29ffc609a4..04507249b2 100644
---- a/nbd/client.c
-+++ b/nbd/client.c
-@@ -1014,102 +1014,102 @@ static int nbd_negotiate_finish_oldstyle(QIOChannel *ioc, NBDExportInfo *info,
- /*
-  * nbd_receive_negotiate:
-  * Connect to server, complete negotiation, and move into transmission phase.
-  * Returns: negative errno: failure talking to server
-  *          0: server is connected
-  */
- int nbd_receive_negotiate(QIOChannel *ioc, QCryptoTLSCreds *tlscreds,
-                           const char *hostname, QIOChannel **outioc,
-                           NBDExportInfo *info, Error **errp)
+diff --git a/target/alpha/helper.c b/target/alpha/helper.c
+index 970c869771..1afdc1beec 100644
+--- a/target/alpha/helper.c
++++ b/target/alpha/helper.c
+@@ -436,45 +436,45 @@ void alpha_cpu_do_interrupt(CPUState *cs)
+ bool alpha_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
  {
-     ERRP_GUARD();
-     int result;
-     bool zeroes;
-     bool base_allocation = info->base_allocation;
+     AlphaCPU *cpu = ALPHA_CPU(cs);
+     CPUAlphaState *env = &cpu->env;
+     int idx = -1;
  
-     assert(info->name && strlen(info->name) <= NBD_MAX_STRING_SIZE);
-     trace_nbd_receive_negotiate_name(info->name);
- 
-     result = nbd_start_negotiate(ioc, tlscreds, hostname, outioc,
-                                  info->mode, &zeroes, errp);
-     if (result < 0) {
-         return result;
+     /* We never take interrupts while in PALmode.  */
+     if (env->flags & ENV_FLAG_PAL_MODE) {
+         return false;
      }
  
-     info->mode = result;
-     info->base_allocation = false;
-     if (tlscreds && *outioc) {
-         ioc = *outioc;
+     /* Fall through the switch, collecting the highest priority
+        interrupt that isn't masked by the processor status IPL.  */
+     /* ??? This hard-codes the OSF/1 interrupt levels.  */
+     switch ((env->flags >> ENV_FLAG_PS_SHIFT) & PS_INT_MASK) {
+     case 0 ... 3:
+         if (interrupt_request & CPU_INTERRUPT_HARD) {
+             idx = EXCP_DEV_INTERRUPT;
+         }
+-        /* FALLTHRU */
++        fallthrough;
+     case 4:
+         if (interrupt_request & CPU_INTERRUPT_TIMER) {
+             idx = EXCP_CLK_INTERRUPT;
+         }
+-        /* FALLTHRU */
++        fallthrough;
+     case 5:
+         if (interrupt_request & CPU_INTERRUPT_SMP) {
+             idx = EXCP_SMP_INTERRUPT;
+         }
+-        /* FALLTHRU */
++        fallthrough;
+     case 6:
+         if (interrupt_request & CPU_INTERRUPT_MCHK) {
+             idx = EXCP_MCHK;
+         }
+     }
+     if (idx >= 0) {
+         cs->exception_index = idx;
+         env->error_code = 0;
+         alpha_cpu_do_interrupt(cs);
+         return true;
+     }
+     return false;
+ }
+ 
+ #endif /* !CONFIG_USER_ONLY */
+diff --git a/target/alpha/translate.c b/target/alpha/translate.c
+index 32333081d8..19e1d2ed86 100644
+--- a/target/alpha/translate.c
++++ b/target/alpha/translate.c
+@@ -1377,1493 +1377,1493 @@ static DisasJumpType gen_mtpr(DisasContext *ctx, TCGv vb, int regno)
+ static DisasJumpType translate_one(DisasContext *ctx, uint32_t insn)
+ {
+     int32_t disp21, disp16, disp12 __attribute__((unused));
+     uint16_t fn11;
+     uint8_t opc, ra, rb, rc, fpfn, fn7, lit;
+     bool islit, real_islit;
+     TCGv va, vb, vc, tmp, tmp2;
+     TCGv_i32 t32;
+     DisasJumpType ret;
+ 
+     /* Decode all instruction fields */
+     opc = extract32(insn, 26, 6);
+     ra = extract32(insn, 21, 5);
+     rb = extract32(insn, 16, 5);
+     rc = extract32(insn, 0, 5);
+     real_islit = islit = extract32(insn, 12, 1);
+     lit = extract32(insn, 13, 8);
+ 
+     disp21 = sextract32(insn, 0, 21);
+     disp16 = sextract32(insn, 0, 16);
+     disp12 = sextract32(insn, 0, 12);
+ 
+     fn11 = extract32(insn, 5, 11);
+     fpfn = extract32(insn, 5, 6);
+     fn7 = extract32(insn, 5, 7);
+ 
+     if (rb == 31 && !islit) {
+         islit = true;
+         lit = 0;
      }
  
-     switch (info->mode) {
-     case NBD_MODE_EXTENDED:
-     case NBD_MODE_STRUCTURED:
-         if (base_allocation) {
-             result = nbd_negotiate_simple_meta_context(ioc, info, errp);
-             if (result < 0) {
-                 return -EINVAL;
-             }
-             info->base_allocation = result == 1;
-         }
+     ret = DISAS_NEXT;
+     switch (opc) {
+     case 0x00:
+         /* CALL_PAL */
+         ret = gen_call_pal(ctx, insn & 0x03ffffff);
+         break;
+     case 0x01:
+         /* OPC01 */
+         goto invalid_opc;
+     case 0x02:
+         /* OPC02 */
+         goto invalid_opc;
+     case 0x03:
+         /* OPC03 */
+         goto invalid_opc;
+     case 0x04:
+         /* OPC04 */
+         goto invalid_opc;
+     case 0x05:
+         /* OPC05 */
+         goto invalid_opc;
+     case 0x06:
+         /* OPC06 */
+         goto invalid_opc;
+     case 0x07:
+         /* OPC07 */
+         goto invalid_opc;
+ 
+     case 0x09:
+         /* LDAH */
+         disp16 = (uint32_t)disp16 << 16;
 -        /* fall through */
 +        fallthrough;
-     case NBD_MODE_SIMPLE:
-         /* Try NBD_OPT_GO first - if it works, we are done (it
-          * also gives us a good message if the server requires
-          * TLS).  If it is not available, fall back to
-          * NBD_OPT_LIST for nicer error messages about a missing
-          * export, then use NBD_OPT_EXPORT_NAME.  */
-         result = nbd_opt_info_or_go(ioc, NBD_OPT_GO, info, errp);
-         if (result < 0) {
-             return -EINVAL;
-         }
-         if (result > 0) {
-             return 0;
-         }
-         /* Check our desired export is present in the
-          * server export list. Since NBD_OPT_EXPORT_NAME
-          * cannot return an error message, running this
-          * query gives us better error reporting if the
-          * export name is not available.
-          */
-         if (nbd_receive_query_exports(ioc, info->name, errp) < 0) {
-             return -EINVAL;
-         }
--        /* fall through */
-+        fallthrough;
-     case NBD_MODE_EXPORT_NAME:
-         /* write the export name request */
-         if (nbd_send_option_request(ioc, NBD_OPT_EXPORT_NAME, -1, info->name,
-                                     errp) < 0) {
-             return -EINVAL;
-         }
- 
-         /* Read the response */
-         if (nbd_read64(ioc, &info->size, "export length", errp) < 0) {
-             return -EINVAL;
-         }
- 
-         if (nbd_read16(ioc, &info->flags, "export flags", errp) < 0) {
-             return -EINVAL;
+     case 0x08:
+         /* LDA */
+         va = dest_gpr(ctx, ra);
+         /* It's worth special-casing immediate loads.  */
+         if (rb == 31) {
+             tcg_gen_movi_i64(va, disp16);
+         } else {
+             tcg_gen_addi_i64(va, load_gpr(ctx, rb), disp16);
          }
          break;
-     case NBD_MODE_OLDSTYLE:
-         if (*info->name) {
-             error_setg(errp, "Server does not support non-empty export names");
-             return -EINVAL;
+ 
+     case 0x0A:
+         /* LDBU */
+         REQUIRE_AMASK(BWX);
+         gen_load_int(ctx, ra, rb, disp16, MO_UB, 0, 0);
+         break;
+     case 0x0B:
+         /* LDQ_U */
+         gen_load_int(ctx, ra, rb, disp16, MO_LEUQ, 1, 0);
+         break;
+     case 0x0C:
+         /* LDWU */
+         REQUIRE_AMASK(BWX);
+         gen_load_int(ctx, ra, rb, disp16, MO_LEUW, 0, 0);
+         break;
+     case 0x0D:
+         /* STW */
+         REQUIRE_AMASK(BWX);
+         gen_store_int(ctx, ra, rb, disp16, MO_LEUW, 0);
+         break;
+     case 0x0E:
+         /* STB */
+         REQUIRE_AMASK(BWX);
+         gen_store_int(ctx, ra, rb, disp16, MO_UB, 0);
+         break;
+     case 0x0F:
+         /* STQ_U */
+         gen_store_int(ctx, ra, rb, disp16, MO_LEUQ, 1);
+         break;
+ 
+     case 0x10:
+         vc = dest_gpr(ctx, rc);
+         vb = load_gpr_lit(ctx, rb, lit, islit);
+ 
+         if (ra == 31) {
+             if (fn7 == 0x00) {
+                 /* Special case ADDL as SEXTL.  */
+                 tcg_gen_ext32s_i64(vc, vb);
+                 break;
+             }
+             if (fn7 == 0x29) {
+                 /* Special case SUBQ as NEGQ.  */
+                 tcg_gen_neg_i64(vc, vb);
+                 break;
+             }
          }
-         if (nbd_negotiate_finish_oldstyle(ioc, info, errp) < 0) {
-             return -EINVAL;
+ 
+         va = load_gpr(ctx, ra);
+         switch (fn7) {
+         case 0x00:
+             /* ADDL */
+             tcg_gen_add_i64(vc, va, vb);
+             tcg_gen_ext32s_i64(vc, vc);
+             break;
+         case 0x02:
+             /* S4ADDL */
+             tmp = tcg_temp_new();
+             tcg_gen_shli_i64(tmp, va, 2);
+             tcg_gen_add_i64(tmp, tmp, vb);
+             tcg_gen_ext32s_i64(vc, tmp);
+             break;
+         case 0x09:
+             /* SUBL */
+             tcg_gen_sub_i64(vc, va, vb);
+             tcg_gen_ext32s_i64(vc, vc);
+             break;
+         case 0x0B:
+             /* S4SUBL */
+             tmp = tcg_temp_new();
+             tcg_gen_shli_i64(tmp, va, 2);
+             tcg_gen_sub_i64(tmp, tmp, vb);
+             tcg_gen_ext32s_i64(vc, tmp);
+             break;
+         case 0x0F:
+             /* CMPBGE */
+             if (ra == 31) {
+                 /* Special case 0 >= X as X == 0.  */
+                 gen_helper_cmpbe0(vc, vb);
+             } else {
+                 gen_helper_cmpbge(vc, va, vb);
+             }
+             break;
+         case 0x12:
+             /* S8ADDL */
+             tmp = tcg_temp_new();
+             tcg_gen_shli_i64(tmp, va, 3);
+             tcg_gen_add_i64(tmp, tmp, vb);
+             tcg_gen_ext32s_i64(vc, tmp);
+             break;
+         case 0x1B:
+             /* S8SUBL */
+             tmp = tcg_temp_new();
+             tcg_gen_shli_i64(tmp, va, 3);
+             tcg_gen_sub_i64(tmp, tmp, vb);
+             tcg_gen_ext32s_i64(vc, tmp);
+             break;
+         case 0x1D:
+             /* CMPULT */
+             tcg_gen_setcond_i64(TCG_COND_LTU, vc, va, vb);
+             break;
+         case 0x20:
+             /* ADDQ */
+             tcg_gen_add_i64(vc, va, vb);
+             break;
+         case 0x22:
+             /* S4ADDQ */
+             tmp = tcg_temp_new();
+             tcg_gen_shli_i64(tmp, va, 2);
+             tcg_gen_add_i64(vc, tmp, vb);
+             break;
+         case 0x29:
+             /* SUBQ */
+             tcg_gen_sub_i64(vc, va, vb);
+             break;
+         case 0x2B:
+             /* S4SUBQ */
+             tmp = tcg_temp_new();
+             tcg_gen_shli_i64(tmp, va, 2);
+             tcg_gen_sub_i64(vc, tmp, vb);
+             break;
+         case 0x2D:
+             /* CMPEQ */
+             tcg_gen_setcond_i64(TCG_COND_EQ, vc, va, vb);
+             break;
+         case 0x32:
+             /* S8ADDQ */
+             tmp = tcg_temp_new();
+             tcg_gen_shli_i64(tmp, va, 3);
+             tcg_gen_add_i64(vc, tmp, vb);
+             break;
+         case 0x3B:
+             /* S8SUBQ */
+             tmp = tcg_temp_new();
+             tcg_gen_shli_i64(tmp, va, 3);
+             tcg_gen_sub_i64(vc, tmp, vb);
+             break;
+         case 0x3D:
+             /* CMPULE */
+             tcg_gen_setcond_i64(TCG_COND_LEU, vc, va, vb);
+             break;
+         case 0x40:
+             /* ADDL/V */
+             tmp = tcg_temp_new();
+             tcg_gen_ext32s_i64(tmp, va);
+             tcg_gen_ext32s_i64(vc, vb);
+             tcg_gen_add_i64(tmp, tmp, vc);
+             tcg_gen_ext32s_i64(vc, tmp);
+             gen_helper_check_overflow(tcg_env, vc, tmp);
+             break;
+         case 0x49:
+             /* SUBL/V */
+             tmp = tcg_temp_new();
+             tcg_gen_ext32s_i64(tmp, va);
+             tcg_gen_ext32s_i64(vc, vb);
+             tcg_gen_sub_i64(tmp, tmp, vc);
+             tcg_gen_ext32s_i64(vc, tmp);
+             gen_helper_check_overflow(tcg_env, vc, tmp);
+             break;
+         case 0x4D:
+             /* CMPLT */
+             tcg_gen_setcond_i64(TCG_COND_LT, vc, va, vb);
+             break;
+         case 0x60:
+             /* ADDQ/V */
+             tmp = tcg_temp_new();
+             tmp2 = tcg_temp_new();
+             tcg_gen_eqv_i64(tmp, va, vb);
+             tcg_gen_mov_i64(tmp2, va);
+             tcg_gen_add_i64(vc, va, vb);
+             tcg_gen_xor_i64(tmp2, tmp2, vc);
+             tcg_gen_and_i64(tmp, tmp, tmp2);
+             tcg_gen_shri_i64(tmp, tmp, 63);
+             tcg_gen_movi_i64(tmp2, 0);
+             gen_helper_check_overflow(tcg_env, tmp, tmp2);
+             break;
+         case 0x69:
+             /* SUBQ/V */
+             tmp = tcg_temp_new();
+             tmp2 = tcg_temp_new();
+             tcg_gen_xor_i64(tmp, va, vb);
+             tcg_gen_mov_i64(tmp2, va);
+             tcg_gen_sub_i64(vc, va, vb);
+             tcg_gen_xor_i64(tmp2, tmp2, vc);
+             tcg_gen_and_i64(tmp, tmp, tmp2);
+             tcg_gen_shri_i64(tmp, tmp, 63);
+             tcg_gen_movi_i64(tmp2, 0);
+             gen_helper_check_overflow(tcg_env, tmp, tmp2);
+             break;
+         case 0x6D:
+             /* CMPLE */
+             tcg_gen_setcond_i64(TCG_COND_LE, vc, va, vb);
+             break;
+         default:
+             goto invalid_opc;
          }
+         break;
+ 
+     case 0x11:
+         if (fn7 == 0x20) {
+             if (rc == 31) {
+                 /* Special case BIS as NOP.  */
+                 break;
+             }
+             if (ra == 31) {
+                 /* Special case BIS as MOV.  */
+                 vc = dest_gpr(ctx, rc);
+                 if (islit) {
+                     tcg_gen_movi_i64(vc, lit);
+                 } else {
+                     tcg_gen_mov_i64(vc, load_gpr(ctx, rb));
+                 }
+                 break;
+             }
+         }
+ 
+         vc = dest_gpr(ctx, rc);
+         vb = load_gpr_lit(ctx, rb, lit, islit);
+ 
+         if (fn7 == 0x28 && ra == 31) {
+             /* Special case ORNOT as NOT.  */
+             tcg_gen_not_i64(vc, vb);
+             break;
+         }
+ 
+         va = load_gpr(ctx, ra);
+         switch (fn7) {
+         case 0x00:
+             /* AND */
+             tcg_gen_and_i64(vc, va, vb);
+             break;
+         case 0x08:
+             /* BIC */
+             tcg_gen_andc_i64(vc, va, vb);
+             break;
+         case 0x14:
+             /* CMOVLBS */
+             tmp = tcg_temp_new();
+             tcg_gen_andi_i64(tmp, va, 1);
+             tcg_gen_movcond_i64(TCG_COND_NE, vc, tmp, load_zero(ctx),
+                                 vb, load_gpr(ctx, rc));
+             break;
+         case 0x16:
+             /* CMOVLBC */
+             tmp = tcg_temp_new();
+             tcg_gen_andi_i64(tmp, va, 1);
+             tcg_gen_movcond_i64(TCG_COND_EQ, vc, tmp, load_zero(ctx),
+                                 vb, load_gpr(ctx, rc));
+             break;
+         case 0x20:
+             /* BIS */
+             tcg_gen_or_i64(vc, va, vb);
+             break;
+         case 0x24:
+             /* CMOVEQ */
+             tcg_gen_movcond_i64(TCG_COND_EQ, vc, va, load_zero(ctx),
+                                 vb, load_gpr(ctx, rc));
+             break;
+         case 0x26:
+             /* CMOVNE */
+             tcg_gen_movcond_i64(TCG_COND_NE, vc, va, load_zero(ctx),
+                                 vb, load_gpr(ctx, rc));
+             break;
+         case 0x28:
+             /* ORNOT */
+             tcg_gen_orc_i64(vc, va, vb);
+             break;
+         case 0x40:
+             /* XOR */
+             tcg_gen_xor_i64(vc, va, vb);
+             break;
+         case 0x44:
+             /* CMOVLT */
+             tcg_gen_movcond_i64(TCG_COND_LT, vc, va, load_zero(ctx),
+                                 vb, load_gpr(ctx, rc));
+             break;
+         case 0x46:
+             /* CMOVGE */
+             tcg_gen_movcond_i64(TCG_COND_GE, vc, va, load_zero(ctx),
+                                 vb, load_gpr(ctx, rc));
+             break;
+         case 0x48:
+             /* EQV */
+             tcg_gen_eqv_i64(vc, va, vb);
+             break;
+         case 0x61:
+             /* AMASK */
+             REQUIRE_REG_31(ra);
+             tcg_gen_andi_i64(vc, vb, ~ctx->amask);
+             break;
+         case 0x64:
+             /* CMOVLE */
+             tcg_gen_movcond_i64(TCG_COND_LE, vc, va, load_zero(ctx),
+                                 vb, load_gpr(ctx, rc));
+             break;
+         case 0x66:
+             /* CMOVGT */
+             tcg_gen_movcond_i64(TCG_COND_GT, vc, va, load_zero(ctx),
+                                 vb, load_gpr(ctx, rc));
+             break;
+         case 0x6C:
+             /* IMPLVER */
+             REQUIRE_REG_31(ra);
+             tcg_gen_movi_i64(vc, ctx->implver);
+             break;
+         default:
+             goto invalid_opc;
+         }
+         break;
+ 
+     case 0x12:
+         vc = dest_gpr(ctx, rc);
+         va = load_gpr(ctx, ra);
+         switch (fn7) {
+         case 0x02:
+             /* MSKBL */
+             gen_msk_l(ctx, vc, va, rb, islit, lit, 0x01);
+             break;
+         case 0x06:
+             /* EXTBL */
+             gen_ext_l(ctx, vc, va, rb, islit, lit, 0x01);
+             break;
+         case 0x0B:
+             /* INSBL */
+             gen_ins_l(ctx, vc, va, rb, islit, lit, 0x01);
+             break;
+         case 0x12:
+             /* MSKWL */
+             gen_msk_l(ctx, vc, va, rb, islit, lit, 0x03);
+             break;
+         case 0x16:
+             /* EXTWL */
+             gen_ext_l(ctx, vc, va, rb, islit, lit, 0x03);
+             break;
+         case 0x1B:
+             /* INSWL */
+             gen_ins_l(ctx, vc, va, rb, islit, lit, 0x03);
+             break;
+         case 0x22:
+             /* MSKLL */
+             gen_msk_l(ctx, vc, va, rb, islit, lit, 0x0f);
+             break;
+         case 0x26:
+             /* EXTLL */
+             gen_ext_l(ctx, vc, va, rb, islit, lit, 0x0f);
+             break;
+         case 0x2B:
+             /* INSLL */
+             gen_ins_l(ctx, vc, va, rb, islit, lit, 0x0f);
+             break;
+         case 0x30:
+             /* ZAP */
+             if (islit) {
+                 gen_zapnoti(vc, va, ~lit);
+             } else {
+                 gen_helper_zap(vc, va, load_gpr(ctx, rb));
+             }
+             break;
+         case 0x31:
+             /* ZAPNOT */
+             if (islit) {
+                 gen_zapnoti(vc, va, lit);
+             } else {
+                 gen_helper_zapnot(vc, va, load_gpr(ctx, rb));
+             }
+             break;
+         case 0x32:
+             /* MSKQL */
+             gen_msk_l(ctx, vc, va, rb, islit, lit, 0xff);
+             break;
+         case 0x34:
+             /* SRL */
+             if (islit) {
+                 tcg_gen_shri_i64(vc, va, lit & 0x3f);
+             } else {
+                 tmp = tcg_temp_new();
+                 vb = load_gpr(ctx, rb);
+                 tcg_gen_andi_i64(tmp, vb, 0x3f);
+                 tcg_gen_shr_i64(vc, va, tmp);
+             }
+             break;
+         case 0x36:
+             /* EXTQL */
+             gen_ext_l(ctx, vc, va, rb, islit, lit, 0xff);
+             break;
+         case 0x39:
+             /* SLL */
+             if (islit) {
+                 tcg_gen_shli_i64(vc, va, lit & 0x3f);
+             } else {
+                 tmp = tcg_temp_new();
+                 vb = load_gpr(ctx, rb);
+                 tcg_gen_andi_i64(tmp, vb, 0x3f);
+                 tcg_gen_shl_i64(vc, va, tmp);
+             }
+             break;
+         case 0x3B:
+             /* INSQL */
+             gen_ins_l(ctx, vc, va, rb, islit, lit, 0xff);
+             break;
+         case 0x3C:
+             /* SRA */
+             if (islit) {
+                 tcg_gen_sari_i64(vc, va, lit & 0x3f);
+             } else {
+                 tmp = tcg_temp_new();
+                 vb = load_gpr(ctx, rb);
+                 tcg_gen_andi_i64(tmp, vb, 0x3f);
+                 tcg_gen_sar_i64(vc, va, tmp);
+             }
+             break;
+         case 0x52:
+             /* MSKWH */
+             gen_msk_h(ctx, vc, va, rb, islit, lit, 0x03);
+             break;
+         case 0x57:
+             /* INSWH */
+             gen_ins_h(ctx, vc, va, rb, islit, lit, 0x03);
+             break;
+         case 0x5A:
+             /* EXTWH */
+             gen_ext_h(ctx, vc, va, rb, islit, lit, 0x03);
+             break;
+         case 0x62:
+             /* MSKLH */
+             gen_msk_h(ctx, vc, va, rb, islit, lit, 0x0f);
+             break;
+         case 0x67:
+             /* INSLH */
+             gen_ins_h(ctx, vc, va, rb, islit, lit, 0x0f);
+             break;
+         case 0x6A:
+             /* EXTLH */
+             gen_ext_h(ctx, vc, va, rb, islit, lit, 0x0f);
+             break;
+         case 0x72:
+             /* MSKQH */
+             gen_msk_h(ctx, vc, va, rb, islit, lit, 0xff);
+             break;
+         case 0x77:
+             /* INSQH */
+             gen_ins_h(ctx, vc, va, rb, islit, lit, 0xff);
+             break;
+         case 0x7A:
+             /* EXTQH */
+             gen_ext_h(ctx, vc, va, rb, islit, lit, 0xff);
+             break;
+         default:
+             goto invalid_opc;
+         }
+         break;
+ 
+     case 0x13:
+         vc = dest_gpr(ctx, rc);
+         vb = load_gpr_lit(ctx, rb, lit, islit);
+         va = load_gpr(ctx, ra);
+         switch (fn7) {
+         case 0x00:
+             /* MULL */
+             tcg_gen_mul_i64(vc, va, vb);
+             tcg_gen_ext32s_i64(vc, vc);
+             break;
+         case 0x20:
+             /* MULQ */
+             tcg_gen_mul_i64(vc, va, vb);
+             break;
+         case 0x30:
+             /* UMULH */
+             tmp = tcg_temp_new();
+             tcg_gen_mulu2_i64(tmp, vc, va, vb);
+             break;
+         case 0x40:
+             /* MULL/V */
+             tmp = tcg_temp_new();
+             tcg_gen_ext32s_i64(tmp, va);
+             tcg_gen_ext32s_i64(vc, vb);
+             tcg_gen_mul_i64(tmp, tmp, vc);
+             tcg_gen_ext32s_i64(vc, tmp);
+             gen_helper_check_overflow(tcg_env, vc, tmp);
+             break;
+         case 0x60:
+             /* MULQ/V */
+             tmp = tcg_temp_new();
+             tmp2 = tcg_temp_new();
+             tcg_gen_muls2_i64(vc, tmp, va, vb);
+             tcg_gen_sari_i64(tmp2, vc, 63);
+             gen_helper_check_overflow(tcg_env, tmp, tmp2);
+             break;
+         default:
+             goto invalid_opc;
+         }
+         break;
+ 
+     case 0x14:
+         REQUIRE_AMASK(FIX);
+         vc = dest_fpr(ctx, rc);
+         switch (fpfn) { /* fn11 & 0x3F */
+         case 0x04:
+             /* ITOFS */
+             REQUIRE_REG_31(rb);
+             REQUIRE_FEN;
+             t32 = tcg_temp_new_i32();
+             va = load_gpr(ctx, ra);
+             tcg_gen_extrl_i64_i32(t32, va);
+             gen_helper_memory_to_s(vc, t32);
+             break;
+         case 0x0A:
+             /* SQRTF */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             vb = load_fpr(ctx, rb);
+             gen_helper_sqrtf(vc, tcg_env, vb);
+             break;
+         case 0x0B:
+             /* SQRTS */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             gen_sqrts(ctx, rb, rc, fn11);
+             break;
+         case 0x14:
+             /* ITOFF */
+             REQUIRE_REG_31(rb);
+             REQUIRE_FEN;
+             t32 = tcg_temp_new_i32();
+             va = load_gpr(ctx, ra);
+             tcg_gen_extrl_i64_i32(t32, va);
+             gen_helper_memory_to_f(vc, t32);
+             break;
+         case 0x24:
+             /* ITOFT */
+             REQUIRE_REG_31(rb);
+             REQUIRE_FEN;
+             va = load_gpr(ctx, ra);
+             tcg_gen_mov_i64(vc, va);
+             break;
+         case 0x2A:
+             /* SQRTG */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             vb = load_fpr(ctx, rb);
+             gen_helper_sqrtg(vc, tcg_env, vb);
+             break;
+         case 0x02B:
+             /* SQRTT */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             gen_sqrtt(ctx, rb, rc, fn11);
+             break;
+         default:
+             goto invalid_opc;
+         }
+         break;
+ 
+     case 0x15:
+         /* VAX floating point */
+         /* XXX: rounding mode and trap are ignored (!) */
+         vc = dest_fpr(ctx, rc);
+         vb = load_fpr(ctx, rb);
+         va = load_fpr(ctx, ra);
+         switch (fpfn) { /* fn11 & 0x3F */
+         case 0x00:
+             /* ADDF */
+             REQUIRE_FEN;
+             gen_helper_addf(vc, tcg_env, va, vb);
+             break;
+         case 0x01:
+             /* SUBF */
+             REQUIRE_FEN;
+             gen_helper_subf(vc, tcg_env, va, vb);
+             break;
+         case 0x02:
+             /* MULF */
+             REQUIRE_FEN;
+             gen_helper_mulf(vc, tcg_env, va, vb);
+             break;
+         case 0x03:
+             /* DIVF */
+             REQUIRE_FEN;
+             gen_helper_divf(vc, tcg_env, va, vb);
+             break;
+         case 0x1E:
+             /* CVTDG -- TODO */
+             REQUIRE_REG_31(ra);
+             goto invalid_opc;
+         case 0x20:
+             /* ADDG */
+             REQUIRE_FEN;
+             gen_helper_addg(vc, tcg_env, va, vb);
+             break;
+         case 0x21:
+             /* SUBG */
+             REQUIRE_FEN;
+             gen_helper_subg(vc, tcg_env, va, vb);
+             break;
+         case 0x22:
+             /* MULG */
+             REQUIRE_FEN;
+             gen_helper_mulg(vc, tcg_env, va, vb);
+             break;
+         case 0x23:
+             /* DIVG */
+             REQUIRE_FEN;
+             gen_helper_divg(vc, tcg_env, va, vb);
+             break;
+         case 0x25:
+             /* CMPGEQ */
+             REQUIRE_FEN;
+             gen_helper_cmpgeq(vc, tcg_env, va, vb);
+             break;
+         case 0x26:
+             /* CMPGLT */
+             REQUIRE_FEN;
+             gen_helper_cmpglt(vc, tcg_env, va, vb);
+             break;
+         case 0x27:
+             /* CMPGLE */
+             REQUIRE_FEN;
+             gen_helper_cmpgle(vc, tcg_env, va, vb);
+             break;
+         case 0x2C:
+             /* CVTGF */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             gen_helper_cvtgf(vc, tcg_env, vb);
+             break;
+         case 0x2D:
+             /* CVTGD -- TODO */
+             REQUIRE_REG_31(ra);
+             goto invalid_opc;
+         case 0x2F:
+             /* CVTGQ */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             gen_helper_cvtgq(vc, tcg_env, vb);
+             break;
+         case 0x3C:
+             /* CVTQF */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             gen_helper_cvtqf(vc, tcg_env, vb);
+             break;
+         case 0x3E:
+             /* CVTQG */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             gen_helper_cvtqg(vc, tcg_env, vb);
+             break;
+         default:
+             goto invalid_opc;
+         }
+         break;
+ 
+     case 0x16:
+         /* IEEE floating-point */
+         switch (fpfn) { /* fn11 & 0x3F */
+         case 0x00:
+             /* ADDS */
+             REQUIRE_FEN;
+             gen_adds(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x01:
+             /* SUBS */
+             REQUIRE_FEN;
+             gen_subs(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x02:
+             /* MULS */
+             REQUIRE_FEN;
+             gen_muls(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x03:
+             /* DIVS */
+             REQUIRE_FEN;
+             gen_divs(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x20:
+             /* ADDT */
+             REQUIRE_FEN;
+             gen_addt(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x21:
+             /* SUBT */
+             REQUIRE_FEN;
+             gen_subt(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x22:
+             /* MULT */
+             REQUIRE_FEN;
+             gen_mult(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x23:
+             /* DIVT */
+             REQUIRE_FEN;
+             gen_divt(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x24:
+             /* CMPTUN */
+             REQUIRE_FEN;
+             gen_cmptun(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x25:
+             /* CMPTEQ */
+             REQUIRE_FEN;
+             gen_cmpteq(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x26:
+             /* CMPTLT */
+             REQUIRE_FEN;
+             gen_cmptlt(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x27:
+             /* CMPTLE */
+             REQUIRE_FEN;
+             gen_cmptle(ctx, ra, rb, rc, fn11);
+             break;
+         case 0x2C:
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             if (fn11 == 0x2AC || fn11 == 0x6AC) {
+                 /* CVTST */
+                 gen_cvtst(ctx, rb, rc, fn11);
+             } else {
+                 /* CVTTS */
+                 gen_cvtts(ctx, rb, rc, fn11);
+             }
+             break;
+         case 0x2F:
+             /* CVTTQ */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             gen_cvttq(ctx, rb, rc, fn11);
+             break;
+         case 0x3C:
+             /* CVTQS */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             gen_cvtqs(ctx, rb, rc, fn11);
+             break;
+         case 0x3E:
+             /* CVTQT */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             gen_cvtqt(ctx, rb, rc, fn11);
+             break;
+         default:
+             goto invalid_opc;
+         }
+         break;
+ 
+     case 0x17:
+         switch (fn11) {
+         case 0x010:
+             /* CVTLQ */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             vc = dest_fpr(ctx, rc);
+             vb = load_fpr(ctx, rb);
+             gen_cvtlq(vc, vb);
+             break;
+         case 0x020:
+             /* CPYS */
+             REQUIRE_FEN;
+             if (rc == 31) {
+                 /* Special case CPYS as FNOP.  */
+             } else {
+                 vc = dest_fpr(ctx, rc);
+                 va = load_fpr(ctx, ra);
+                 if (ra == rb) {
+                     /* Special case CPYS as FMOV.  */
+                     tcg_gen_mov_i64(vc, va);
+                 } else {
+                     vb = load_fpr(ctx, rb);
+                     gen_cpy_mask(vc, va, vb, 0, 0x8000000000000000ULL);
+                 }
+             }
+             break;
+         case 0x021:
+             /* CPYSN */
+             REQUIRE_FEN;
+             vc = dest_fpr(ctx, rc);
+             vb = load_fpr(ctx, rb);
+             va = load_fpr(ctx, ra);
+             gen_cpy_mask(vc, va, vb, 1, 0x8000000000000000ULL);
+             break;
+         case 0x022:
+             /* CPYSE */
+             REQUIRE_FEN;
+             vc = dest_fpr(ctx, rc);
+             vb = load_fpr(ctx, rb);
+             va = load_fpr(ctx, ra);
+             gen_cpy_mask(vc, va, vb, 0, 0xFFF0000000000000ULL);
+             break;
+         case 0x024:
+             /* MT_FPCR */
+             REQUIRE_FEN;
+             va = load_fpr(ctx, ra);
+             gen_helper_store_fpcr(tcg_env, va);
+             if (ctx->tb_rm == QUAL_RM_D) {
+                 /* Re-do the copy of the rounding mode to fp_status
+                    the next time we use dynamic rounding.  */
+                 ctx->tb_rm = -1;
+             }
+             break;
+         case 0x025:
+             /* MF_FPCR */
+             REQUIRE_FEN;
+             va = dest_fpr(ctx, ra);
+             gen_helper_load_fpcr(va, tcg_env);
+             break;
+         case 0x02A:
+             /* FCMOVEQ */
+             REQUIRE_FEN;
+             gen_fcmov(ctx, TCG_COND_EQ, ra, rb, rc);
+             break;
+         case 0x02B:
+             /* FCMOVNE */
+             REQUIRE_FEN;
+             gen_fcmov(ctx, TCG_COND_NE, ra, rb, rc);
+             break;
+         case 0x02C:
+             /* FCMOVLT */
+             REQUIRE_FEN;
+             gen_fcmov(ctx, TCG_COND_LT, ra, rb, rc);
+             break;
+         case 0x02D:
+             /* FCMOVGE */
+             REQUIRE_FEN;
+             gen_fcmov(ctx, TCG_COND_GE, ra, rb, rc);
+             break;
+         case 0x02E:
+             /* FCMOVLE */
+             REQUIRE_FEN;
+             gen_fcmov(ctx, TCG_COND_LE, ra, rb, rc);
+             break;
+         case 0x02F:
+             /* FCMOVGT */
+             REQUIRE_FEN;
+             gen_fcmov(ctx, TCG_COND_GT, ra, rb, rc);
+             break;
+         case 0x030: /* CVTQL */
+         case 0x130: /* CVTQL/V */
+         case 0x530: /* CVTQL/SV */
+             REQUIRE_REG_31(ra);
+             REQUIRE_FEN;
+             vc = dest_fpr(ctx, rc);
+             vb = load_fpr(ctx, rb);
+             gen_helper_cvtql(vc, tcg_env, vb);
+             gen_fp_exc_raise(rc, fn11);
+             break;
+         default:
+             goto invalid_opc;
+         }
+         break;
+ 
+     case 0x18:
+         switch ((uint16_t)disp16) {
+         case 0x0000:
+             /* TRAPB */
+             /* No-op.  */
+             break;
+         case 0x0400:
+             /* EXCB */
+             /* No-op.  */
+             break;
+         case 0x4000:
+             /* MB */
+             tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+             break;
+         case 0x4400:
+             /* WMB */
+             tcg_gen_mb(TCG_MO_ST_ST | TCG_BAR_SC);
+             break;
+         case 0x8000:
+             /* FETCH */
+             /* No-op */
+             break;
+         case 0xA000:
+             /* FETCH_M */
+             /* No-op */
+             break;
+         case 0xC000:
+             /* RPCC */
+             va = dest_gpr(ctx, ra);
+             if (translator_io_start(&ctx->base)) {
+                 ret = DISAS_PC_STALE;
+             }
+             gen_helper_load_pcc(va, tcg_env);
+             break;
+         case 0xE000:
+             /* RC */
+             gen_rx(ctx, ra, 0);
+             break;
+         case 0xE800:
+             /* ECB */
+             break;
+         case 0xF000:
+             /* RS */
+             gen_rx(ctx, ra, 1);
+             break;
+         case 0xF800:
+             /* WH64 */
+             /* No-op */
+             break;
+         case 0xFC00:
+             /* WH64EN */
+             /* No-op */
+             break;
+         default:
+             goto invalid_opc;
+         }
+         break;
+ 
+     case 0x19:
+         /* HW_MFPR (PALcode) */
+ #ifndef CONFIG_USER_ONLY
+         REQUIRE_TB_FLAG(ENV_FLAG_PAL_MODE);
+         va = dest_gpr(ctx, ra);
+         ret = gen_mfpr(ctx, va, insn & 0xffff);
+         break;
+ #else
+         goto invalid_opc;
+ #endif
+ 
+     case 0x1A:
+         /* JMP, JSR, RET, JSR_COROUTINE.  These only differ by the branch
+            prediction stack action, which of course we don't implement.  */
+         vb = load_gpr(ctx, rb);
+         tcg_gen_andi_i64(cpu_pc, vb, ~3);
+         if (ra != 31) {
+             tcg_gen_movi_i64(ctx->ir[ra], ctx->base.pc_next);
+         }
+         ret = DISAS_PC_UPDATED;
+         break;
+ 
+     case 0x1B:
+         /* HW_LD (PALcode) */
+ #ifndef CONFIG_USER_ONLY
+         REQUIRE_TB_FLAG(ENV_FLAG_PAL_MODE);
+         {
+             TCGv addr = tcg_temp_new();
+             vb = load_gpr(ctx, rb);
+             va = dest_gpr(ctx, ra);
+ 
+             tcg_gen_addi_i64(addr, vb, disp12);
+             switch ((insn >> 12) & 0xF) {
+             case 0x0:
+                 /* Longword physical access (hw_ldl/p) */
+                 tcg_gen_qemu_ld_i64(va, addr, MMU_PHYS_IDX, MO_LESL | MO_ALIGN);
+                 break;
+             case 0x1:
+                 /* Quadword physical access (hw_ldq/p) */
+                 tcg_gen_qemu_ld_i64(va, addr, MMU_PHYS_IDX, MO_LEUQ | MO_ALIGN);
+                 break;
+             case 0x2:
+                 /* Longword physical access with lock (hw_ldl_l/p) */
+                 tcg_gen_qemu_ld_i64(va, addr, MMU_PHYS_IDX, MO_LESL | MO_ALIGN);
+                 tcg_gen_mov_i64(cpu_lock_addr, addr);
+                 tcg_gen_mov_i64(cpu_lock_value, va);
+                 break;
+             case 0x3:
+                 /* Quadword physical access with lock (hw_ldq_l/p) */
+                 tcg_gen_qemu_ld_i64(va, addr, MMU_PHYS_IDX, MO_LEUQ | MO_ALIGN);
+                 tcg_gen_mov_i64(cpu_lock_addr, addr);
+                 tcg_gen_mov_i64(cpu_lock_value, va);
+                 break;
+             case 0x4:
+                 /* Longword virtual PTE fetch (hw_ldl/v) */
+                 goto invalid_opc;
+             case 0x5:
+                 /* Quadword virtual PTE fetch (hw_ldq/v) */
+                 goto invalid_opc;
+                 break;
+             case 0x6:
+                 /* Invalid */
+                 goto invalid_opc;
+             case 0x7:
+                 /* Invaliid */
+                 goto invalid_opc;
+             case 0x8:
+                 /* Longword virtual access (hw_ldl) */
+                 goto invalid_opc;
+             case 0x9:
+                 /* Quadword virtual access (hw_ldq) */
+                 goto invalid_opc;
+             case 0xA:
+                 /* Longword virtual access with protection check (hw_ldl/w) */
+                 tcg_gen_qemu_ld_i64(va, addr, MMU_KERNEL_IDX,
+                                     MO_LESL | MO_ALIGN);
+                 break;
+             case 0xB:
+                 /* Quadword virtual access with protection check (hw_ldq/w) */
+                 tcg_gen_qemu_ld_i64(va, addr, MMU_KERNEL_IDX,
+                                     MO_LEUQ | MO_ALIGN);
+                 break;
+             case 0xC:
+                 /* Longword virtual access with alt access mode (hw_ldl/a)*/
+                 goto invalid_opc;
+             case 0xD:
+                 /* Quadword virtual access with alt access mode (hw_ldq/a) */
+                 goto invalid_opc;
+             case 0xE:
+                 /* Longword virtual access with alternate access mode and
+                    protection checks (hw_ldl/wa) */
+                 tcg_gen_qemu_ld_i64(va, addr, MMU_USER_IDX,
+                                     MO_LESL | MO_ALIGN);
+                 break;
+             case 0xF:
+                 /* Quadword virtual access with alternate access mode and
+                    protection checks (hw_ldq/wa) */
+                 tcg_gen_qemu_ld_i64(va, addr, MMU_USER_IDX,
+                                     MO_LEUQ | MO_ALIGN);
+                 break;
+             }
+             break;
+         }
+ #else
+         goto invalid_opc;
+ #endif
+ 
+     case 0x1C:
+         vc = dest_gpr(ctx, rc);
+         if (fn7 == 0x70) {
+             /* FTOIT */
+             REQUIRE_AMASK(FIX);
+             REQUIRE_REG_31(rb);
+             va = load_fpr(ctx, ra);
+             tcg_gen_mov_i64(vc, va);
+             break;
+         } else if (fn7 == 0x78) {
+             /* FTOIS */
+             REQUIRE_AMASK(FIX);
+             REQUIRE_REG_31(rb);
+             t32 = tcg_temp_new_i32();
+             va = load_fpr(ctx, ra);
+             gen_helper_s_to_memory(t32, va);
+             tcg_gen_ext_i32_i64(vc, t32);
+             break;
+         }
+ 
+         vb = load_gpr_lit(ctx, rb, lit, islit);
+         switch (fn7) {
+         case 0x00:
+             /* SEXTB */
+             REQUIRE_AMASK(BWX);
+             REQUIRE_REG_31(ra);
+             tcg_gen_ext8s_i64(vc, vb);
+             break;
+         case 0x01:
+             /* SEXTW */
+             REQUIRE_AMASK(BWX);
+             REQUIRE_REG_31(ra);
+             tcg_gen_ext16s_i64(vc, vb);
+             break;
+         case 0x30:
+             /* CTPOP */
+             REQUIRE_AMASK(CIX);
+             REQUIRE_REG_31(ra);
+             REQUIRE_NO_LIT;
+             tcg_gen_ctpop_i64(vc, vb);
+             break;
+         case 0x31:
+             /* PERR */
+             REQUIRE_AMASK(MVI);
+             REQUIRE_NO_LIT;
+             va = load_gpr(ctx, ra);
+             gen_helper_perr(vc, va, vb);
+             break;
+         case 0x32:
+             /* CTLZ */
+             REQUIRE_AMASK(CIX);
+             REQUIRE_REG_31(ra);
+             REQUIRE_NO_LIT;
+             tcg_gen_clzi_i64(vc, vb, 64);
+             break;
+         case 0x33:
+             /* CTTZ */
+             REQUIRE_AMASK(CIX);
+             REQUIRE_REG_31(ra);
+             REQUIRE_NO_LIT;
+             tcg_gen_ctzi_i64(vc, vb, 64);
+             break;
+         case 0x34:
+             /* UNPKBW */
+             REQUIRE_AMASK(MVI);
+             REQUIRE_REG_31(ra);
+             REQUIRE_NO_LIT;
+             gen_helper_unpkbw(vc, vb);
+             break;
+         case 0x35:
+             /* UNPKBL */
+             REQUIRE_AMASK(MVI);
+             REQUIRE_REG_31(ra);
+             REQUIRE_NO_LIT;
+             gen_helper_unpkbl(vc, vb);
+             break;
+         case 0x36:
+             /* PKWB */
+             REQUIRE_AMASK(MVI);
+             REQUIRE_REG_31(ra);
+             REQUIRE_NO_LIT;
+             gen_helper_pkwb(vc, vb);
+             break;
+         case 0x37:
+             /* PKLB */
+             REQUIRE_AMASK(MVI);
+             REQUIRE_REG_31(ra);
+             REQUIRE_NO_LIT;
+             gen_helper_pklb(vc, vb);
+             break;
+         case 0x38:
+             /* MINSB8 */
+             REQUIRE_AMASK(MVI);
+             va = load_gpr(ctx, ra);
+             gen_helper_minsb8(vc, va, vb);
+             break;
+         case 0x39:
+             /* MINSW4 */
+             REQUIRE_AMASK(MVI);
+             va = load_gpr(ctx, ra);
+             gen_helper_minsw4(vc, va, vb);
+             break;
+         case 0x3A:
+             /* MINUB8 */
+             REQUIRE_AMASK(MVI);
+             va = load_gpr(ctx, ra);
+             gen_helper_minub8(vc, va, vb);
+             break;
+         case 0x3B:
+             /* MINUW4 */
+             REQUIRE_AMASK(MVI);
+             va = load_gpr(ctx, ra);
+             gen_helper_minuw4(vc, va, vb);
+             break;
+         case 0x3C:
+             /* MAXUB8 */
+             REQUIRE_AMASK(MVI);
+             va = load_gpr(ctx, ra);
+             gen_helper_maxub8(vc, va, vb);
+             break;
+         case 0x3D:
+             /* MAXUW4 */
+             REQUIRE_AMASK(MVI);
+             va = load_gpr(ctx, ra);
+             gen_helper_maxuw4(vc, va, vb);
+             break;
+         case 0x3E:
+             /* MAXSB8 */
+             REQUIRE_AMASK(MVI);
+             va = load_gpr(ctx, ra);
+             gen_helper_maxsb8(vc, va, vb);
+             break;
+         case 0x3F:
+             /* MAXSW4 */
+             REQUIRE_AMASK(MVI);
+             va = load_gpr(ctx, ra);
+             gen_helper_maxsw4(vc, va, vb);
+             break;
+         default:
+             goto invalid_opc;
+         }
+         break;
+ 
+     case 0x1D:
+         /* HW_MTPR (PALcode) */
+ #ifndef CONFIG_USER_ONLY
+         REQUIRE_TB_FLAG(ENV_FLAG_PAL_MODE);
+         vb = load_gpr(ctx, rb);
+         ret = gen_mtpr(ctx, vb, insn & 0xffff);
+         break;
+ #else
+         goto invalid_opc;
+ #endif
+ 
+     case 0x1E:
+         /* HW_RET (PALcode) */
+ #ifndef CONFIG_USER_ONLY
+         REQUIRE_TB_FLAG(ENV_FLAG_PAL_MODE);
+         if (rb == 31) {
+             /* Pre-EV6 CPUs interpreted this as HW_REI, loading the return
+                address from EXC_ADDR.  This turns out to be useful for our
+                emulation PALcode, so continue to accept it.  */
+             vb = dest_sink(ctx);
+             tcg_gen_ld_i64(vb, tcg_env, offsetof(CPUAlphaState, exc_addr));
+         } else {
+             vb = load_gpr(ctx, rb);
+         }
+         tcg_gen_movi_i64(cpu_lock_addr, -1);
+         st_flag_byte(load_zero(ctx), ENV_FLAG_RX_SHIFT);
+         tmp = tcg_temp_new();
+         tcg_gen_andi_i64(tmp, vb, 1);
+         st_flag_byte(tmp, ENV_FLAG_PAL_SHIFT);
+         tcg_gen_andi_i64(cpu_pc, vb, ~3);
+         /* Allow interrupts to be recognized right away.  */
+         ret = DISAS_PC_UPDATED_NOCHAIN;
+         break;
+ #else
+         goto invalid_opc;
+ #endif
+ 
+     case 0x1F:
+         /* HW_ST (PALcode) */
+ #ifndef CONFIG_USER_ONLY
+         REQUIRE_TB_FLAG(ENV_FLAG_PAL_MODE);
+         {
+             switch ((insn >> 12) & 0xF) {
+             case 0x0:
+                 /* Longword physical access */
+                 va = load_gpr(ctx, ra);
+                 vb = load_gpr(ctx, rb);
+                 tmp = tcg_temp_new();
+                 tcg_gen_addi_i64(tmp, vb, disp12);
+                 tcg_gen_qemu_st_i64(va, tmp, MMU_PHYS_IDX, MO_LESL | MO_ALIGN);
+                 break;
+             case 0x1:
+                 /* Quadword physical access */
+                 va = load_gpr(ctx, ra);
+                 vb = load_gpr(ctx, rb);
+                 tmp = tcg_temp_new();
+                 tcg_gen_addi_i64(tmp, vb, disp12);
+                 tcg_gen_qemu_st_i64(va, tmp, MMU_PHYS_IDX, MO_LEUQ | MO_ALIGN);
+                 break;
+             case 0x2:
+                 /* Longword physical access with lock */
+                 ret = gen_store_conditional(ctx, ra, rb, disp12,
+                                             MMU_PHYS_IDX, MO_LESL | MO_ALIGN);
+                 break;
+             case 0x3:
+                 /* Quadword physical access with lock */
+                 ret = gen_store_conditional(ctx, ra, rb, disp12,
+                                             MMU_PHYS_IDX, MO_LEUQ | MO_ALIGN);
+                 break;
+             case 0x4:
+                 /* Longword virtual access */
+                 goto invalid_opc;
+             case 0x5:
+                 /* Quadword virtual access */
+                 goto invalid_opc;
+             case 0x6:
+                 /* Invalid */
+                 goto invalid_opc;
+             case 0x7:
+                 /* Invalid */
+                 goto invalid_opc;
+             case 0x8:
+                 /* Invalid */
+                 goto invalid_opc;
+             case 0x9:
+                 /* Invalid */
+                 goto invalid_opc;
+             case 0xA:
+                 /* Invalid */
+                 goto invalid_opc;
+             case 0xB:
+                 /* Invalid */
+                 goto invalid_opc;
+             case 0xC:
+                 /* Longword virtual access with alternate access mode */
+                 goto invalid_opc;
+             case 0xD:
+                 /* Quadword virtual access with alternate access mode */
+                 goto invalid_opc;
+             case 0xE:
+                 /* Invalid */
+                 goto invalid_opc;
+             case 0xF:
+                 /* Invalid */
+                 goto invalid_opc;
+             }
+             break;
+         }
+ #else
+         goto invalid_opc;
+ #endif
+     case 0x20:
+         /* LDF */
+         REQUIRE_FEN;
+         gen_load_fp(ctx, ra, rb, disp16, gen_ldf);
+         break;
+     case 0x21:
+         /* LDG */
+         REQUIRE_FEN;
+         gen_load_fp(ctx, ra, rb, disp16, gen_ldg);
+         break;
+     case 0x22:
+         /* LDS */
+         REQUIRE_FEN;
+         gen_load_fp(ctx, ra, rb, disp16, gen_lds);
+         break;
+     case 0x23:
+         /* LDT */
+         REQUIRE_FEN;
+         gen_load_fp(ctx, ra, rb, disp16, gen_ldt);
+         break;
+     case 0x24:
+         /* STF */
+         REQUIRE_FEN;
+         gen_store_fp(ctx, ra, rb, disp16, gen_stf);
+         break;
+     case 0x25:
+         /* STG */
+         REQUIRE_FEN;
+         gen_store_fp(ctx, ra, rb, disp16, gen_stg);
+         break;
+     case 0x26:
+         /* STS */
+         REQUIRE_FEN;
+         gen_store_fp(ctx, ra, rb, disp16, gen_sts);
+         break;
+     case 0x27:
+         /* STT */
+         REQUIRE_FEN;
+         gen_store_fp(ctx, ra, rb, disp16, gen_stt);
+         break;
+     case 0x28:
+         /* LDL */
+         gen_load_int(ctx, ra, rb, disp16, MO_LESL, 0, 0);
+         break;
+     case 0x29:
+         /* LDQ */
+         gen_load_int(ctx, ra, rb, disp16, MO_LEUQ, 0, 0);
+         break;
+     case 0x2A:
+         /* LDL_L */
+         gen_load_int(ctx, ra, rb, disp16, MO_LESL | MO_ALIGN, 0, 1);
+         break;
+     case 0x2B:
+         /* LDQ_L */
+         gen_load_int(ctx, ra, rb, disp16, MO_LEUQ | MO_ALIGN, 0, 1);
+         break;
+     case 0x2C:
+         /* STL */
+         gen_store_int(ctx, ra, rb, disp16, MO_LEUL, 0);
+         break;
+     case 0x2D:
+         /* STQ */
+         gen_store_int(ctx, ra, rb, disp16, MO_LEUQ, 0);
+         break;
+     case 0x2E:
+         /* STL_C */
+         ret = gen_store_conditional(ctx, ra, rb, disp16,
+                                     ctx->mem_idx, MO_LESL | MO_ALIGN);
+         break;
+     case 0x2F:
+         /* STQ_C */
+         ret = gen_store_conditional(ctx, ra, rb, disp16,
+                                     ctx->mem_idx, MO_LEUQ | MO_ALIGN);
+         break;
+     case 0x30:
+         /* BR */
+         ret = gen_bdirect(ctx, ra, disp21);
+         break;
+     case 0x31: /* FBEQ */
+         REQUIRE_FEN;
+         ret = gen_fbcond(ctx, TCG_COND_EQ, ra, disp21);
+         break;
+     case 0x32: /* FBLT */
+         REQUIRE_FEN;
+         ret = gen_fbcond(ctx, TCG_COND_LT, ra, disp21);
+         break;
+     case 0x33: /* FBLE */
+         REQUIRE_FEN;
+         ret = gen_fbcond(ctx, TCG_COND_LE, ra, disp21);
+         break;
+     case 0x34:
+         /* BSR */
+         ret = gen_bdirect(ctx, ra, disp21);
+         break;
+     case 0x35: /* FBNE */
+         REQUIRE_FEN;
+         ret = gen_fbcond(ctx, TCG_COND_NE, ra, disp21);
+         break;
+     case 0x36: /* FBGE */
+         REQUIRE_FEN;
+         ret = gen_fbcond(ctx, TCG_COND_GE, ra, disp21);
+         break;
+     case 0x37: /* FBGT */
+         REQUIRE_FEN;
+         ret = gen_fbcond(ctx, TCG_COND_GT, ra, disp21);
+         break;
+     case 0x38:
+         /* BLBC */
+         ret = gen_bcond(ctx, TCG_COND_EQ, ra, disp21, 1);
+         break;
+     case 0x39:
+         /* BEQ */
+         ret = gen_bcond(ctx, TCG_COND_EQ, ra, disp21, 0);
+         break;
+     case 0x3A:
+         /* BLT */
+         ret = gen_bcond(ctx, TCG_COND_LT, ra, disp21, 0);
+         break;
+     case 0x3B:
+         /* BLE */
+         ret = gen_bcond(ctx, TCG_COND_LE, ra, disp21, 0);
+         break;
+     case 0x3C:
+         /* BLBS */
+         ret = gen_bcond(ctx, TCG_COND_NE, ra, disp21, 1);
+         break;
+     case 0x3D:
+         /* BNE */
+         ret = gen_bcond(ctx, TCG_COND_NE, ra, disp21, 0);
+         break;
+     case 0x3E:
+         /* BGE */
+         ret = gen_bcond(ctx, TCG_COND_GE, ra, disp21, 0);
+         break;
+     case 0x3F:
+         /* BGT */
+         ret = gen_bcond(ctx, TCG_COND_GT, ra, disp21, 0);
+         break;
+     invalid_opc:
+         ret = gen_invalid(ctx);
+         break;
+     raise_fen:
+         ret = gen_excp(ctx, EXCP_FEN, 0);
+         break;
+     }
+ 
+     return ret;
+ }
+@@ -2929,27 +2929,29 @@ static void alpha_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+ static void alpha_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+ {
+     DisasContext *ctx = container_of(dcbase, DisasContext, base);
+ 
+     switch (ctx->base.is_jmp) {
+     case DISAS_NORETURN:
+         break;
+     case DISAS_TOO_MANY:
+         if (use_goto_tb(ctx, ctx->base.pc_next)) {
+             tcg_gen_goto_tb(0);
+             tcg_gen_movi_i64(cpu_pc, ctx->base.pc_next);
+             tcg_gen_exit_tb(ctx->base.tb, 0);
+         }
+         /* FALLTHRU */
++        fallthrough;
+     case DISAS_PC_STALE:
+         tcg_gen_movi_i64(cpu_pc, ctx->base.pc_next);
+         /* FALLTHRU */
++        fallthrough;
+     case DISAS_PC_UPDATED:
+         tcg_gen_lookup_and_goto_ptr();
+         break;
+     case DISAS_PC_UPDATED_NOCHAIN:
+         tcg_gen_exit_tb(NULL, 0);
          break;
      default:
          g_assert_not_reached();
-     }
- 
-     trace_nbd_receive_negotiate_size_flags(info->size, info->flags);
-     if (zeroes && nbd_drop(ioc, 124, errp) < 0) {
-         error_prepend(errp, "Failed to read reserved block: ");
-         return -EINVAL;
-     }
-     return 0;
- }
- 
- /* Clean up result of nbd_receive_export_list */
-diff --git a/nbd/common.c b/nbd/common.c
-index 3247c1d618..1140ea0888 100644
---- a/nbd/common.c
-+++ b/nbd/common.c
-@@ -222,37 +222,37 @@ const char *nbd_err_lookup(int err)
- int nbd_errno_to_system_errno(int err)
- {
-     int ret;
-     switch (err) {
-     case NBD_SUCCESS:
-         ret = 0;
-         break;
-     case NBD_EPERM:
-         ret = EPERM;
-         break;
-     case NBD_EIO:
-         ret = EIO;
-         break;
-     case NBD_ENOMEM:
-         ret = ENOMEM;
-         break;
-     case NBD_ENOSPC:
-         ret = ENOSPC;
-         break;
-     case NBD_EOVERFLOW:
-         ret = EOVERFLOW;
-         break;
-     case NBD_ENOTSUP:
-         ret = ENOTSUP;
-         break;
-     case NBD_ESHUTDOWN:
-         ret = ESHUTDOWN;
-         break;
-     default:
-         trace_nbd_unknown_error(err);
--        /* fallthrough */
-+        fallthrough;
-     case NBD_EINVAL:
-         ret = EINVAL;
-         break;
-     }
-     return ret;
- }
-diff --git a/qemu-nbd.c b/qemu-nbd.c
-index 186e6468b1..41e50208a5 100644
---- a/qemu-nbd.c
-+++ b/qemu-nbd.c
-@@ -528,704 +528,704 @@ static void qemu_nbd_shutdown(void)
- int main(int argc, char **argv)
- {
-     BlockBackend *blk;
-     BlockDriverState *bs;
-     uint64_t dev_offset = 0;
-     bool readonly = false;
-     bool disconnect = false;
-     const char *bindto = NULL;
-     const char *port = NULL;
-     char *sockpath = NULL;
-     QemuOpts *sn_opts = NULL;
-     const char *sn_id_or_name = NULL;
-     const char *sopt = "hVb:o:p:rsnc:dvk:e:f:tl:x:T:D:AB:L";
-     struct option lopt[] = {
-         { "help", no_argument, NULL, 'h' },
-         { "version", no_argument, NULL, 'V' },
-         { "bind", required_argument, NULL, 'b' },
-         { "port", required_argument, NULL, 'p' },
-         { "socket", required_argument, NULL, 'k' },
-         { "offset", required_argument, NULL, 'o' },
-         { "read-only", no_argument, NULL, 'r' },
-         { "allocation-depth", no_argument, NULL, 'A' },
-         { "bitmap", required_argument, NULL, 'B' },
-         { "connect", required_argument, NULL, 'c' },
-         { "disconnect", no_argument, NULL, 'd' },
-         { "list", no_argument, NULL, 'L' },
-         { "snapshot", no_argument, NULL, 's' },
-         { "load-snapshot", required_argument, NULL, 'l' },
-         { "nocache", no_argument, NULL, 'n' },
-         { "cache", required_argument, NULL, QEMU_NBD_OPT_CACHE },
-         { "aio", required_argument, NULL, QEMU_NBD_OPT_AIO },
-         { "discard", required_argument, NULL, QEMU_NBD_OPT_DISCARD },
-         { "detect-zeroes", required_argument, NULL,
-           QEMU_NBD_OPT_DETECT_ZEROES },
-         { "shared", required_argument, NULL, 'e' },
-         { "format", required_argument, NULL, 'f' },
-         { "persistent", no_argument, NULL, 't' },
-         { "verbose", no_argument, NULL, 'v' },
-         { "object", required_argument, NULL, QEMU_NBD_OPT_OBJECT },
-         { "export-name", required_argument, NULL, 'x' },
-         { "description", required_argument, NULL, 'D' },
-         { "tls-creds", required_argument, NULL, QEMU_NBD_OPT_TLSCREDS },
-         { "tls-hostname", required_argument, NULL, QEMU_NBD_OPT_TLSHOSTNAME },
-         { "tls-authz", required_argument, NULL, QEMU_NBD_OPT_TLSAUTHZ },
-         { "image-opts", no_argument, NULL, QEMU_NBD_OPT_IMAGE_OPTS },
-         { "trace", required_argument, NULL, 'T' },
-         { "fork", no_argument, NULL, QEMU_NBD_OPT_FORK },
-         { "pid-file", required_argument, NULL, QEMU_NBD_OPT_PID_FILE },
-         { "selinux-label", required_argument, NULL,
-           QEMU_NBD_OPT_SELINUX_LABEL },
-         { NULL, 0, NULL, 0 }
-     };
-     int ch;
-     int opt_ind = 0;
-     int flags = BDRV_O_RDWR;
-     int ret = 0;
-     bool seen_cache = false;
-     bool seen_discard = false;
-     bool seen_aio = false;
-     pthread_t client_thread;
-     const char *fmt = NULL;
-     Error *local_err = NULL;
-     BlockdevDetectZeroesOptions detect_zeroes = BLOCKDEV_DETECT_ZEROES_OPTIONS_OFF;
-     QDict *options = NULL;
-     const char *export_name = NULL; /* defaults to "" later for server mode */
-     const char *export_description = NULL;
-     BlockDirtyBitmapOrStrList *bitmaps = NULL;
-     bool alloc_depth = false;
-     const char *tlscredsid = NULL;
-     const char *tlshostname = NULL;
-     bool imageOpts = false;
-     bool writethrough = false; /* Client will flush as needed. */
-     bool list = false;
-     unsigned socket_activation;
-     const char *pid_file_name = NULL;
-     const char *selinux_label = NULL;
-     BlockExportOptions *export_opts;
-     struct NbdClientOpts opts = {
-         .fork_process = false,
-         .verbose = false,
-         .device = NULL,
-         .srcpath = NULL,
-         .saddr = NULL,
-         .old_stderr = STDOUT_FILENO,
-     };
- 
- #ifdef CONFIG_POSIX
-     os_setup_early_signal_handling();
-     os_setup_signal_handling();
- #endif
- 
-     socket_init();
-     error_init(argv[0]);
-     module_call_init(MODULE_INIT_TRACE);
-     qcrypto_init(&error_fatal);
- 
-     module_call_init(MODULE_INIT_QOM);
-     qemu_add_opts(&qemu_trace_opts);
-     qemu_init_exec_dir(argv[0]);
- 
-     while ((ch = getopt_long(argc, argv, sopt, lopt, &opt_ind)) != -1) {
-         switch (ch) {
-         case 's':
-             flags |= BDRV_O_SNAPSHOT;
-             break;
-         case 'n':
-             optarg = (char *) "none";
--            /* fallthrough */
-+            fallthrough;
-         case QEMU_NBD_OPT_CACHE:
-             if (seen_cache) {
-                 error_report("-n and --cache can only be specified once");
-                 exit(EXIT_FAILURE);
-             }
-             seen_cache = true;
-             if (bdrv_parse_cache_mode(optarg, &flags, &writethrough) == -1) {
-                 error_report("Invalid cache mode `%s'", optarg);
-                 exit(EXIT_FAILURE);
-             }
-             break;
-         case QEMU_NBD_OPT_AIO:
-             if (seen_aio) {
-                 error_report("--aio can only be specified once");
-                 exit(EXIT_FAILURE);
-             }
-             seen_aio = true;
-             if (bdrv_parse_aio(optarg, &flags) < 0) {
-                 error_report("Invalid aio mode '%s'", optarg);
-                 exit(EXIT_FAILURE);
-             }
-             break;
-         case QEMU_NBD_OPT_DISCARD:
-             if (seen_discard) {
-                 error_report("--discard can only be specified once");
-                 exit(EXIT_FAILURE);
-             }
-             seen_discard = true;
-             if (bdrv_parse_discard_flags(optarg, &flags) == -1) {
-                 error_report("Invalid discard mode `%s'", optarg);
-                 exit(EXIT_FAILURE);
-             }
-             break;
-         case QEMU_NBD_OPT_DETECT_ZEROES:
-             detect_zeroes =
-                 qapi_enum_parse(&BlockdevDetectZeroesOptions_lookup,
-                                 optarg,
-                                 BLOCKDEV_DETECT_ZEROES_OPTIONS_OFF,
-                                 &local_err);
-             if (local_err) {
-                 error_reportf_err(local_err,
-                                   "Failed to parse detect_zeroes mode: ");
-                 exit(EXIT_FAILURE);
-             }
-             if (detect_zeroes == BLOCKDEV_DETECT_ZEROES_OPTIONS_UNMAP &&
-                 !(flags & BDRV_O_UNMAP)) {
-                 error_report("setting detect-zeroes to unmap is not allowed "
-                              "without setting discard operation to unmap");
-                 exit(EXIT_FAILURE);
-             }
-             break;
-         case 'b':
-             bindto = optarg;
-             break;
-         case 'p':
-             port = optarg;
-             break;
-         case 'o':
-             if (qemu_strtou64(optarg, NULL, 0, &dev_offset) < 0) {
-                 error_report("Invalid offset '%s'", optarg);
-                 exit(EXIT_FAILURE);
-             }
-             break;
-         case 'l':
-             if (strstart(optarg, SNAPSHOT_OPT_BASE, NULL)) {
-                 sn_opts = qemu_opts_parse_noisily(&internal_snapshot_opts,
-                                                   optarg, false);
-                 if (!sn_opts) {
-                     error_report("Failed in parsing snapshot param `%s'",
-                                  optarg);
-                     exit(EXIT_FAILURE);
-                 }
-             } else {
-                 sn_id_or_name = optarg;
-             }
--            /* fall through */
-+            fallthrough;
-         case 'r':
-             readonly = true;
-             flags &= ~BDRV_O_RDWR;
-             break;
-         case 'A':
-             alloc_depth = true;
-             break;
-         case 'B':
-             {
-                 BlockDirtyBitmapOrStr *el = g_new(BlockDirtyBitmapOrStr, 1);
-                 *el = (BlockDirtyBitmapOrStr) {
-                     .type = QTYPE_QSTRING,
-                     .u.local = g_strdup(optarg),
-                 };
-                 QAPI_LIST_PREPEND(bitmaps, el);
-             }
-             break;
-         case 'k':
-             sockpath = optarg;
-             if (sockpath[0] != '/') {
-                 error_report("socket path must be absolute");
-                 exit(EXIT_FAILURE);
-             }
-             break;
-         case 'd':
-             disconnect = true;
-             break;
-         case 'c':
-             opts.device = optarg;
-             break;
-         case 'e':
-             if (qemu_strtoi(optarg, NULL, 0, &shared) < 0 ||
-                 shared < 0) {
-                 error_report("Invalid shared device number '%s'", optarg);
-                 exit(EXIT_FAILURE);
-             }
-             break;
-         case 'f':
-             fmt = optarg;
-             break;
-         case 't':
-             persistent = 1;
-             break;
-         case 'x':
-             export_name = optarg;
-             if (strlen(export_name) > NBD_MAX_STRING_SIZE) {
-                 error_report("export name '%s' too long", export_name);
-                 exit(EXIT_FAILURE);
-             }
-             break;
-         case 'D':
-             export_description = optarg;
-             if (strlen(export_description) > NBD_MAX_STRING_SIZE) {
-                 error_report("export description '%s' too long",
-                              export_description);
-                 exit(EXIT_FAILURE);
-             }
-             break;
-         case 'v':
-             opts.verbose = true;
-             break;
-         case 'V':
-             version(argv[0]);
-             exit(0);
-             break;
-         case 'h':
-             usage(argv[0]);
-             exit(0);
-             break;
-         case '?':
-             error_report("Try `%s --help' for more information.", argv[0]);
-             exit(EXIT_FAILURE);
-         case QEMU_NBD_OPT_OBJECT:
-             user_creatable_process_cmdline(optarg);
-             break;
-         case QEMU_NBD_OPT_TLSCREDS:
-             tlscredsid = optarg;
-             break;
-         case QEMU_NBD_OPT_TLSHOSTNAME:
-             tlshostname = optarg;
-             break;
-         case QEMU_NBD_OPT_IMAGE_OPTS:
-             imageOpts = true;
-             break;
-         case 'T':
-             trace_opt_parse(optarg);
-             break;
-         case QEMU_NBD_OPT_TLSAUTHZ:
-             tlsauthz = optarg;
-             break;
-         case QEMU_NBD_OPT_FORK:
-             opts.fork_process = true;
-             break;
-         case 'L':
-             list = true;
-             break;
-         case QEMU_NBD_OPT_PID_FILE:
-             pid_file_name = optarg;
-             break;
-         case QEMU_NBD_OPT_SELINUX_LABEL:
-             selinux_label = optarg;
-             break;
-         }
-     }
- 
-     if (list) {
-         if (argc != optind) {
-             error_report("List mode is incompatible with a file name");
-             exit(EXIT_FAILURE);
-         }
-         if (export_name || export_description || dev_offset ||
-             opts.device || disconnect || fmt || sn_id_or_name || bitmaps ||
-             alloc_depth || seen_aio || seen_discard || seen_cache) {
-             error_report("List mode is incompatible with per-device settings");
-             exit(EXIT_FAILURE);
-         }
-         if (opts.fork_process) {
-             error_report("List mode is incompatible with forking");
-             exit(EXIT_FAILURE);
-         }
-     } else if ((argc - optind) != 1) {
-         error_report("Invalid number of arguments");
-         error_printf("Try `%s --help' for more information.\n", argv[0]);
-         exit(EXIT_FAILURE);
-     } else if (!export_name) {
-         export_name = "";
-     }
- 
-     if (!trace_init_backends()) {
-         exit(1);
-     }
-     trace_init_file();
-     qemu_set_log(LOG_TRACE, &error_fatal);
- 
-     socket_activation = check_socket_activation();
-     if (socket_activation == 0) {
-         if (!sockpath) {
-             setup_address_and_port(&bindto, &port);
-         }
-     } else {
-         /* Using socket activation - check user didn't use -p etc. */
-         const char *err_msg = socket_activation_validate_opts(opts.device,
-                                                               sockpath,
-                                                               bindto, port,
-                                                               selinux_label,
-                                                               list);
-         if (err_msg != NULL) {
-             error_report("%s", err_msg);
-             exit(EXIT_FAILURE);
-         }
- 
-         /* qemu-nbd can only listen on a single socket.  */
-         if (socket_activation > 1) {
-             error_report("qemu-nbd does not support socket activation with %s > 1",
-                          "LISTEN_FDS");
-             exit(EXIT_FAILURE);
-         }
-     }
- 
-     if (tlscredsid) {
-         if (opts.device) {
-             error_report("TLS is not supported with a host device");
-             exit(EXIT_FAILURE);
-         }
-         if (tlsauthz && list) {
-             error_report("TLS authorization is incompatible with export list");
-             exit(EXIT_FAILURE);
-         }
-         if (tlshostname && !list) {
-             error_report("TLS hostname is only supported with export list");
-             exit(EXIT_FAILURE);
-         }
-         tlscreds = nbd_get_tls_creds(tlscredsid, list, &local_err);
-         if (local_err) {
-             error_reportf_err(local_err, "Failed to get TLS creds: ");
-             exit(EXIT_FAILURE);
-         }
-     } else {
-         if (tlsauthz) {
-             error_report("--tls-authz is not permitted without --tls-creds");
-             exit(EXIT_FAILURE);
-         }
-         if (tlshostname) {
-             error_report("--tls-hostname is not permitted without --tls-creds");
-             exit(EXIT_FAILURE);
-         }
-     }
- 
-     if (selinux_label) {
- #ifdef CONFIG_SELINUX
-         if (sockpath == NULL && opts.device == NULL) {
-             error_report("--selinux-label is not permitted without --socket");
-             exit(EXIT_FAILURE);
-         }
- #else
-         error_report("SELinux support not enabled in this binary");
-         exit(EXIT_FAILURE);
- #endif
-     }
- 
-     if (list) {
-         opts.saddr = nbd_build_socket_address(sockpath, bindto, port);
-         return qemu_nbd_client_list(opts.saddr, tlscreds,
-                                     tlshostname ? tlshostname : bindto);
-     }
- 
- #if !HAVE_NBD_DEVICE
-     if (disconnect || opts.device) {
-         error_report("Kernel /dev/nbdN support not available");
-         exit(EXIT_FAILURE);
-     }
- #else /* HAVE_NBD_DEVICE */
-     if (disconnect) {
-         int nbdfd = open(argv[optind], O_RDWR);
-         if (nbdfd < 0) {
-             error_report("Cannot open %s: %s", argv[optind],
-                          strerror(errno));
-             exit(EXIT_FAILURE);
-         }
-         nbd_disconnect(nbdfd);
- 
-         close(nbdfd);
- 
-         printf("%s disconnected\n", argv[optind]);
- 
-         return 0;
-     }
- #endif
- 
-     if ((opts.device && !opts.verbose) || opts.fork_process) {
- #ifndef WIN32
-         g_autoptr(GError) err = NULL;
-         int stderr_fd[2];
-         pid_t pid;
- 
-         if (!g_unix_open_pipe(stderr_fd, FD_CLOEXEC, &err)) {
-             error_report("Error setting up communication pipe: %s",
-                          err->message);
-             exit(EXIT_FAILURE);
-         }
- 
-         /* Now daemonize, but keep a communication channel open to
-          * print errors and exit with the proper status code.
-          */
-         pid = fork();
-         if (pid < 0) {
-             error_report("Failed to fork: %s", strerror(errno));
-             exit(EXIT_FAILURE);
-         } else if (pid == 0) {
-             int saved_errno;
- 
-             close(stderr_fd[0]);
- 
-             /* Remember parent's stderr if we will be restoring it. */
-             if (opts.verbose /* fork_process is set */) {
-                 opts.old_stderr = dup(STDERR_FILENO);
-                 if (opts.old_stderr < 0) {
-                     error_report("Could not dup original stderr: %s",
-                                  strerror(errno));
-                     exit(EXIT_FAILURE);
-                 }
-             }
- 
-             ret = qemu_daemon(1, 0);
-             saved_errno = errno;    /* dup2 will overwrite error below */
- 
-             /* Temporarily redirect stderr to the parent's pipe...  */
-             if (dup2(stderr_fd[1], STDERR_FILENO) < 0) {
-                 char str[256];
-                 snprintf(str, sizeof(str),
-                          "%s: Failed to link stderr to the pipe: %s\n",
-                          g_get_prgname(), strerror(errno));
-                 /*
-                  * We are unable to use error_report() here as we need to get
-                  * stderr pointed to the parent's pipe. Write to that pipe
-                  * manually.
-                  */
-                 ret = write(stderr_fd[1], str, strlen(str));
-                 exit(EXIT_FAILURE);
-             }
- 
-             if (ret < 0) {
-                 error_report("Failed to daemonize: %s", strerror(saved_errno));
-                 exit(EXIT_FAILURE);
-             }
- 
-             /* ... close the descriptor we inherited and go on.  */
-             close(stderr_fd[1]);
-         } else {
-             bool errors = false;
-             char *buf;
- 
-             /* In the parent.  Print error messages from the child until
-              * it closes the pipe.
-              */
-             close(stderr_fd[1]);
-             buf = g_malloc(1024);
-             while ((ret = read(stderr_fd[0], buf, 1024)) > 0) {
-                 errors = true;
-                 ret = qemu_write_full(STDERR_FILENO, buf, ret);
-                 if (ret < 0) {
-                     exit(EXIT_FAILURE);
-                 }
-             }
-             if (ret < 0) {
-                 error_report("Cannot read from daemon: %s",
-                              strerror(errno));
-                 exit(EXIT_FAILURE);
-             }
- 
-             /* Usually the daemon should not print any message.
-              * Exit with zero status in that case.
-              */
-             exit(errors);
-         }
- #else /* WIN32 */
-         error_report("Unable to fork into background on Windows hosts");
-         exit(EXIT_FAILURE);
- #endif /* WIN32 */
-     }
- 
-     if (opts.device != NULL && sockpath == NULL) {
-         sockpath = g_malloc(128);
-         snprintf(sockpath, 128, SOCKET_PATH, basename(opts.device));
-     }
- 
-     server = qio_net_listener_new();
-     if (socket_activation == 0) {
-         int backlog;
- 
-         if (persistent || shared == 0) {
-             backlog = SOMAXCONN;
-         } else {
-             backlog = MIN(shared, SOMAXCONN);
-         }
- #ifdef CONFIG_SELINUX
-         if (selinux_label && setsockcreatecon_raw(selinux_label) == -1) {
-             error_report("Cannot set SELinux socket create context to %s: %s",
-                          selinux_label, strerror(errno));
-             exit(EXIT_FAILURE);
-         }
- #endif
-         opts.saddr = nbd_build_socket_address(sockpath, bindto, port);
-         if (qio_net_listener_open_sync(server, opts.saddr, backlog,
-                                        &local_err) < 0) {
-             object_unref(OBJECT(server));
-             error_report_err(local_err);
-             exit(EXIT_FAILURE);
-         }
- #ifdef CONFIG_SELINUX
-         if (selinux_label && setsockcreatecon_raw(NULL) == -1) {
-             error_report("Cannot clear SELinux socket create context: %s",
-                          strerror(errno));
-             exit(EXIT_FAILURE);
-         }
- #endif
-     } else {
-         size_t i;
-         /* See comment in check_socket_activation above. */
-         for (i = 0; i < socket_activation; i++) {
-             QIOChannelSocket *sioc;
-             sioc = qio_channel_socket_new_fd(FIRST_SOCKET_ACTIVATION_FD + i,
-                                              &local_err);
-             if (sioc == NULL) {
-                 object_unref(OBJECT(server));
-                 error_reportf_err(local_err,
-                                   "Failed to use socket activation: ");
-                 exit(EXIT_FAILURE);
-             }
-             qio_net_listener_add(server, sioc);
-             object_unref(OBJECT(sioc));
-         }
-     }
- 
-     qemu_init_main_loop(&error_fatal);
-     bdrv_init();
-     atexit(qemu_nbd_shutdown);
- 
-     opts.srcpath = argv[optind];
-     if (imageOpts) {
-         QemuOpts *o;
-         if (fmt) {
-             error_report("--image-opts and -f are mutually exclusive");
-             exit(EXIT_FAILURE);
-         }
-         o = qemu_opts_parse_noisily(&file_opts, opts.srcpath, true);
-         if (!o) {
-             qemu_opts_reset(&file_opts);
-             exit(EXIT_FAILURE);
-         }
-         options = qemu_opts_to_qdict(o, NULL);
-         qemu_opts_reset(&file_opts);
-         blk = blk_new_open(NULL, NULL, options, flags, &local_err);
-     } else {
-         if (fmt) {
-             options = qdict_new();
-             qdict_put_str(options, "driver", fmt);
-         }
-         blk = blk_new_open(opts.srcpath, NULL, options, flags, &local_err);
-     }
- 
-     if (!blk) {
-         error_reportf_err(local_err, "Failed to blk_new_open '%s': ",
-                           argv[optind]);
-         exit(EXIT_FAILURE);
-     }
-     bs = blk_bs(blk);
- 
-     if (dev_offset) {
-         QDict *raw_opts = qdict_new();
-         qdict_put_str(raw_opts, "driver", "raw");
-         qdict_put_str(raw_opts, "file", bs->node_name);
-         qdict_put_int(raw_opts, "offset", dev_offset);
- 
-         aio_context_acquire(qemu_get_aio_context());
-         bs = bdrv_open(NULL, NULL, raw_opts, flags, &error_fatal);
-         aio_context_release(qemu_get_aio_context());
- 
-         blk_remove_bs(blk);
-         blk_insert_bs(blk, bs, &error_fatal);
-         bdrv_unref(bs);
-     }
- 
-     blk_set_enable_write_cache(blk, !writethrough);
- 
-     if (sn_opts) {
-         ret = bdrv_snapshot_load_tmp(bs,
-                                      qemu_opt_get(sn_opts, SNAPSHOT_OPT_ID),
-                                      qemu_opt_get(sn_opts, SNAPSHOT_OPT_NAME),
-                                      &local_err);
-     } else if (sn_id_or_name) {
-         ret = bdrv_snapshot_load_tmp_by_id_or_name(bs, sn_id_or_name,
-                                                    &local_err);
-     }
-     if (ret < 0) {
-         error_reportf_err(local_err, "Failed to load snapshot: ");
-         exit(EXIT_FAILURE);
-     }
- 
-     bs->detect_zeroes = detect_zeroes;
- 
-     nbd_server_is_qemu_nbd(shared);
- 
-     export_opts = g_new(BlockExportOptions, 1);
-     *export_opts = (BlockExportOptions) {
-         .type               = BLOCK_EXPORT_TYPE_NBD,
-         .id                 = g_strdup("qemu-nbd-export"),
-         .node_name          = g_strdup(bdrv_get_node_name(bs)),
-         .has_writethrough   = true,
-         .writethrough       = writethrough,
-         .has_writable       = true,
-         .writable           = !readonly,
-         .u.nbd = {
-             .name                 = g_strdup(export_name),
-             .description          = g_strdup(export_description),
-             .has_bitmaps          = !!bitmaps,
-             .bitmaps              = bitmaps,
-             .has_allocation_depth = alloc_depth,
-             .allocation_depth     = alloc_depth,
-         },
-     };
-     blk_exp_add(export_opts, &error_fatal);
-     qapi_free_BlockExportOptions(export_opts);
- 
-     if (opts.device) {
- #if HAVE_NBD_DEVICE
-         ret = pthread_create(&client_thread, NULL, nbd_client_thread, &opts);
-         if (ret != 0) {
-             error_report("Failed to create client thread: %s", strerror(ret));
-             exit(EXIT_FAILURE);
-         }
- #endif
-     } else {
-         /* Shut up GCC warnings.  */
-         memset(&client_thread, 0, sizeof(client_thread));
-     }
- 
-     nbd_update_server_watch();
- 
-     if (pid_file_name) {
-         qemu_write_pidfile(pid_file_name, &error_fatal);
-     }
- 
-     /* now when the initialization is (almost) complete, chdir("/")
-      * to free any busy filesystems */
-     if (chdir("/") < 0) {
-         error_report("Could not chdir to root directory: %s",
-                      strerror(errno));
-         exit(EXIT_FAILURE);
-     }
- 
-     if (opts.fork_process) {
-         nbd_client_release_pipe(opts.old_stderr);
-     }
- 
-     state = RUNNING;
-     do {
-         main_loop_wait(false);
-         if (state == TERMINATE) {
-             blk_exp_close_all();
-             state = TERMINATED;
-         }
-     } while (state != TERMINATED);
- 
-     blk_unref(blk);
-     if (sockpath) {
-         unlink(sockpath);
-     }
- 
-     qemu_opts_del(sn_opts);
- 
-     if (opts.device) {
-         void *result;
-         pthread_join(client_thread, &result);
-         ret = (intptr_t)result;
-         exit(ret);
-     } else {
-         exit(EXIT_SUCCESS);
      }
  }
 -- 

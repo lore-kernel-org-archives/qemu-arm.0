@@ -1,110 +1,113 @@
-Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1170856dlb;
-        Fri, 13 Oct 2023 01:55:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGcV+yrW5usj6OOsNuhGSdID854pPzQ/RvM1Gzm0U5bvPXsikzfAaFUUXAcoKr4gkk10qL6
-X-Received: by 2002:a05:620a:4008:b0:775:92ac:a0af with SMTP id h8-20020a05620a400800b0077592aca0afmr32359884qko.13.1697187344795;
-        Fri, 13 Oct 2023 01:55:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697187344; cv=none;
+Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1170994dlb;
+        Fri, 13 Oct 2023 01:56:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEhJHoVVHrWuT/LaRG2AfqkbE08yEAMR87oiVEZ3UOh11rEXG/sH4KQ3KjqSbB1OwZkqFHW
+X-Received: by 2002:ac8:7dd3:0:b0:410:9089:6b74 with SMTP id c19-20020ac87dd3000000b0041090896b74mr35561041qte.15.1697187367660;
+        Fri, 13 Oct 2023 01:56:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697187367; cv=none;
         d=google.com; s=arc-20160816;
-        b=oc//IWzRDpb3MOHBbqIgGi35YtHPJ77h1zmf4Qn/LcEgLbImxRPRkyhm4FLsHAdiWu
-         53ZGW4fU3RIjOSZAah6SmKRcF4Y29eCVRiUAEC0McFCK4LUQSBpLfmHQh/7Rpp6SQDnH
-         M6ZBxPTprkFS8W/yd+P6L4RHAMvL5JEdP1FO+ycInIL4Gq1N2oUry8gkqJRGURF7oyqi
-         3cnPpx939tuG20dZo89ayaV4NXTjD5QgCvhN2GfC97so2p5ss5a/snOJbbkzaHPpF+Eb
-         p1gUHJOFnpKXlIpFVaURqZYbTcokrcNz0jpHOfmYGRNsyVh3TIMxdrBhxldkL4VpCzqp
-         lwoA==
+        b=tXjvDfMkq3wy/cLxGXMQnoNg4FkC7dmR5cr88/ORKmXxGnZwq0vxmPPQmqzhlNi/iP
+         zanU6EPTTby9Wsv/U0t8xXRvpgwia3wJWFhNKTB273vZ7zC5DA4d8pApVK9HuRNZoahJ
+         vJM13H/BznY71Qbo8Pl82xRUHi1RgkQrNzgJNGimC1yHO3YhErL40GUuf7evBb4ZzFT1
+         cMo7qNwNraDDgQjaIi9MM2HONUmY30lMLo/nDLdQTDOid3xWy2mv/xRtTKI78LbjraTo
+         poE0TnE9Zjj52hqvncxkXKSHFAPrZC8b1v1Qdewgbf2nZqHurafFJ/G+pS7Adx7H2fqc
+         N0Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=cl281DmBBuKIqdhIrNfrN36TM+jchj7MoFXFzERONDk=;
-        fh=NzSBWYzWXvfcD56ZpOos1hg9h9wc7xIOoGtDTwjwQZk=;
-        b=ZfpWrWSxVN+v4xe5zdqFcJ1HQdk9KV96GhK0J7kpt6L5KCu3OsurIMHyDAbOh8F5qJ
-         s3vfcH/v85uY07j35vhsQJWpKsfoV65mn/1e4P0/0NpTvN1TWEJvv6cKS8BCJ2ayYuOE
-         81h+Hw5Nem0b2dIJ8+26lOP8X9uz0LqKPkpYm7pPZDdtELyKpOQtvQhfpw2Rfbh9FtNc
-         jyb0cdpa4AIuIyeQfQYWjzdMT1K6dko2bvHWXpDiqrOPvDQw7zMSdHAWbN6KvbN5i45d
-         Q8K+XIpjtIRM4Qbe1mf2P2qYFAxB+p0soZpWLBXPqEZ7PmbBPIpYQ6NbiDObPKHfSF8G
-         +8Sg==
+        bh=0VENQfQUdQ3dL4N/9O98oBVereDcK/ooYXylgOlWI+E=;
+        fh=cF18OC1CawvBZplI+kHlCER8ycHiGLYU96cieEbgLUs=;
+        b=qAnWna/7cbum+moB1ZIS6lTpMxWCcJ02lv5m5VYAAhvxEZfh/kuBt4kp5ixbhzIqV+
+         2jzzpijU/b5x/TDitKQLtW1AaOdElDqy+QvjLvJYPuw1PzNVPoTbjHP4vqPtHk8XbFjI
+         Mx9OIWOCpXnYwggGQhBsvUijE2A2ObwkyWwpFrM7aGh2EvlaSlI1MWJtzQRz8Tb6SCh6
+         C8jDerpWYAarXrkgR8FLvuwHIlO9yVFp8rZsZH0NDWAyzdO95o/m3au4fYvZh/eIslrD
+         p+CrsQVib5s50GlrVZMgMBnHN/1CZy4JL8byEFvmUKDoCzamI1gAip+WOOW0lB5EBXqJ
+         9s0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EzfGpCrX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZWXJ+kIa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bs30-20020a05620a471e00b00775902632ffsi867526qkb.279.2023.10.13.01.55.44
+        by mx.google.com with ESMTPS id v35-20020a05622a18a300b00415184c4490si882414qtc.523.2023.10.13.01.56.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:55:44 -0700 (PDT)
+        Fri, 13 Oct 2023 01:56:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EzfGpCrX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZWXJ+kIa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrDsl-00078U-8q; Fri, 13 Oct 2023 04:50:59 -0400
+	id 1qrDtP-0001OZ-Qe; Fri, 13 Oct 2023 04:51:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDsP-0006Eg-KO
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 04:50:34 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1qrDsh-00077b-Rm
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 04:50:53 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDsN-0001YN-Qd
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 04:50:33 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-32799639a2aso1707656f8f.3
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 01:50:31 -0700 (PDT)
+ id 1qrDsf-0001ab-IA
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 04:50:51 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-32799639a2aso1707835f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 01:50:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697187030; x=1697791830; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697187044; x=1697791844; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cl281DmBBuKIqdhIrNfrN36TM+jchj7MoFXFzERONDk=;
- b=EzfGpCrXelaxjgqm0DluPazW/CzyE+SgerwHk26LzH8J8GMGLnP2LgTHG0EQBHm1ug
- U9W2K2npuSlcdUNhAFA5fpDEOeEf6PUKl7lgE6buXSm/LbG3F63FvRyzfoMe6OqaPa7U
- 9zXIAo/ZN2KVi/3AMdpbYlwCrGyXr4NAQdNEjTKAHaoyy9V42jhQ8IXh73ac4G/V9FTU
- d4/p9HPLITBtyj5xaMDEjrRie6jRdQi7DqsruuO6p6Q3x6KBFSBZuTRiLhGNrC+usVAc
- 0ZFcCGHs4iO5WQ6fIbZsPxf0JgtEe+LLXvV+Da9m88wArGHzMm1dzqiRuhdbPZBtylQe
- DFHA==
+ bh=0VENQfQUdQ3dL4N/9O98oBVereDcK/ooYXylgOlWI+E=;
+ b=ZWXJ+kIaPhGcJt5JJ0Hqd+UgFEc9KJpTPtOlMA41CXU7pImfB+FXjezgw9fxOmz7WS
+ KspRZga+VEeJWRm+bFqPl5Byv9JVYEafqw7r7/GcMeJdLDPB0PMRLAngxz4B9xNNh5NV
+ sFahLV6RONDTMizN3zrqXWqTRGpFtzvBZ1CEMriUUgE9JfW3UXYwmN88DBZXFES0D9wf
+ acqEXBT13pAqPuZCSfLbUjgsjSRDoArvA2tOogOVRXQsJ8D5hl4UJubpl0U++7Lm37nU
+ 3X2ncPwrl4MJTWsXYM+Cvaho2k+xtsEuK1Jj+BhBbjZFXnG4URceaeeKrlmxJYYUUn+o
+ Nwtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697187030; x=1697791830;
+ d=1e100.net; s=20230601; t=1697187044; x=1697791844;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=cl281DmBBuKIqdhIrNfrN36TM+jchj7MoFXFzERONDk=;
- b=cj4I6BcIVzEPYjSIYX7QyGz+lxO9NTBwvfKtrSqQDSSUumDPw4t0wNOm/DdYhPbzOL
- eTPTzTkSwmqwS6WAEskDZi5fNIRlx8G3iIpjK0YjfPoYQqI6NEIgsm3nCQTDBgsD60eW
- D2oVkRAIMGpYQ8EGCi9pMl0GxAjLfcIhsgKdxcms/hSbPTEOqlhbNz1DbUKdu98mSe0G
- R1fEsg9A9bkCYlLgwVJU6GCSTfmKW90kIKXj9twcXa9GotDc2MRgPMmAIwsRYkG0eNEg
- x5F+17Cj5ppzBdIUR2UCCxvJ2El9unnldswmrh/HdwkRdMPaP26xE5aZEA0ucXgaHPTe
- ID8g==
-X-Gm-Message-State: AOJu0YylHxNRKz6kgVmxSJusn9smYS4SR2VQ1q9L2MobT1vBimAJRiNL
- fKowcpsGPNQf1NzkuM4kVBkV6ufZ+/uTTzPxCmw=
-X-Received: by 2002:adf:f005:0:b0:321:52fb:5703 with SMTP id
- j5-20020adff005000000b0032152fb5703mr24008995wro.13.1697187030197; 
- Fri, 13 Oct 2023 01:50:30 -0700 (PDT)
+ bh=0VENQfQUdQ3dL4N/9O98oBVereDcK/ooYXylgOlWI+E=;
+ b=UoXZmqk/DS4Osv5gxYGJ3BjzD9p9KfPlfcWFD/g/fR5aVeguOUu3uvWYfon4ru1JgT
+ d5XAyU128+50fmVjZ30gQV4D8pI7Cn9AqVEoIyHixLzh38HnfPFkE7h5uJFgLyeFBrHb
+ 6tqGHu4Ir0qVe/42rF9bvjctV+C76QiNJxKEEnh+dm/9EtUXUE8Rk+33N72bLkM1S8/O
+ dFH7cHaObh+a/aSoafQIAG4bGUaM//k5Jw1LDAYUeYc+YgkCi0dk6I2edowYUnyIWoVl
+ vcePPDQjCR+kEkkZ3TBxsfqOLwaitinCWCxJ7aknsebAwZ3zE5G/ZcrzdKHZWFMItd4C
+ 10hw==
+X-Gm-Message-State: AOJu0YzJuJ33sIdyKBpEWlZTBdLsEoCY3cS97slPCB6Mpx+1xu2sS5Fj
+ hsgc+91+ED4tdkYYzZ4C/g9ZXA==
+X-Received: by 2002:adf:f103:0:b0:32d:9cd3:6a9d with SMTP id
+ r3-20020adff103000000b0032d9cd36a9dmr948807wro.25.1697187044813; 
+ Fri, 13 Oct 2023 01:50:44 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.50.28
+ v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.50.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 01:50:29 -0700 (PDT)
+ Fri, 13 Oct 2023 01:50:44 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:OMAP)
-Subject: [RFC PATCH v3 62/78] hw/gpio: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 11:46:30 +0300
-Message-Id: <0af2d84ed03108dc0ba318fd4125114605f71a27.1697186560.git.manos.pitsidianakis@linaro.org>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org (open list:ASPEED BMCs)
+Subject: [RFC PATCH v3 70/78] hw/rtc: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 11:46:38 +0300
+Message-Id: <7bad24a9243a3d9f0190e2f89c86aa68816de5d6.1697186560.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,43 +129,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nVAOVHoeBCNw
+X-TUID: Uacx0LMrYUlb
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/gpio/omap_gpio.c  | 2 +-
- hw/i2c/bitbang_i2c.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/rtc/aspeed_rtc.c  | 4 ++--
+ hw/rtc/mc146818rtc.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
-index a3341d70f1..82a9ea4810 100644
---- a/hw/gpio/omap_gpio.c
-+++ b/hw/gpio/omap_gpio.c
-@@ -563,7 +563,7 @@ static void omap2_gpio_module_writep(void *opaque, hwaddr addr,
-         cur = omap2_gpio_module_read(opaque, addr & ~3) &
-                 ~(mask << ((addr & 3) << 3));
- 
--        /* Fall through.  */
+diff --git a/hw/rtc/aspeed_rtc.c b/hw/rtc/aspeed_rtc.c
+index fa861e2d49..59c64b01b9 100644
+--- a/hw/rtc/aspeed_rtc.c
++++ b/hw/rtc/aspeed_rtc.c
+@@ -78,7 +78,7 @@ static uint64_t aspeed_rtc_read(void *opaque, hwaddr addr,
+         if (rtc->reg[CONTROL] & RTC_ENABLED) {
+             rtc->reg[r] = aspeed_rtc_get_counter(rtc, r);
+         }
+-        /* fall through */
 +        fallthrough;
-     case 0x18:	/* GPIO_IRQSTATUS1 */
-     case 0x28:	/* GPIO_IRQSTATUS2 */
-     case 0x60:	/* GPIO_CLEARIRQENABLE1 */
-diff --git a/hw/i2c/bitbang_i2c.c b/hw/i2c/bitbang_i2c.c
-index de5f5aacf5..3d768ae564 100644
---- a/hw/i2c/bitbang_i2c.c
-+++ b/hw/i2c/bitbang_i2c.c
-@@ -156,7 +156,7 @@ int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level)
-     case RECEIVING_BIT7:
-         i2c->buffer = i2c_recv(i2c->bus);
-         trace_bitbang_i2c_recv(i2c->buffer);
--        /* Fall through... */
+     case CONTROL:
+         val = rtc->reg[r];
+         break;
+@@ -106,7 +106,7 @@ static void aspeed_rtc_write(void *opaque, hwaddr addr,
+         if (!(rtc->reg[CONTROL] & RTC_UNLOCKED)) {
+             break;
+         }
+-        /* fall through */
 +        fallthrough;
-     case RECEIVING_BIT6 ... RECEIVING_BIT0:
-         data = i2c->buffer >> 7;
-         /* will end up in SENDING_ACK */
+     case CONTROL:
+         rtc->reg[r] = val;
+         aspeed_rtc_calc_offset(rtc);
+diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
+index c27c362db9..6b6eef94fd 100644
+--- a/hw/rtc/mc146818rtc.c
++++ b/hw/rtc/mc146818rtc.c
+@@ -457,7 +457,7 @@ static void cmos_ioport_write(void *opaque, hwaddr addr,
+             break;
+         case RTC_IBM_PS2_CENTURY_BYTE:
+             s->cmos_index = RTC_CENTURY;
+-            /* fall through */
++            fallthrough;
+         case RTC_CENTURY:
+         case RTC_SECONDS:
+         case RTC_MINUTES:
+@@ -686,7 +686,7 @@ static uint64_t cmos_ioport_read(void *opaque, hwaddr addr,
+         switch(s->cmos_index) {
+         case RTC_IBM_PS2_CENTURY_BYTE:
+             s->cmos_index = RTC_CENTURY;
+-            /* fall through */
++            fallthrough;
+         case RTC_CENTURY:
+         case RTC_SECONDS:
+         case RTC_MINUTES:
 -- 
 2.39.2
 

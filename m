@@ -1,123 +1,118 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333189ejc;
-        Fri, 13 Oct 2023 00:58:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEeO+//ztS5ELr/c27RVTfxj0Ghb81jGzyNteplMy9YlvZ5ryZB5BbbgoJDxJEqiUPKb0lM
-X-Received: by 2002:a0c:de08:0:b0:66d:be7:fa67 with SMTP id t8-20020a0cde08000000b0066d0be7fa67mr6289138qvk.24.1697183895096;
-        Fri, 13 Oct 2023 00:58:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183895; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333223ejc;
+        Fri, 13 Oct 2023 00:58:20 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFGBpFE/ZLOcyg6tfFmQf/oHOE6LG9t/tiqwFnGWTX2RY82NnUZ3FxrjAtEyzcZkwx3fUd1
+X-Received: by 2002:a05:620a:f0d:b0:76c:a9a1:a318 with SMTP id v13-20020a05620a0f0d00b0076ca9a1a318mr30902947qkl.6.1697183899879;
+        Fri, 13 Oct 2023 00:58:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183899; cv=none;
         d=google.com; s=arc-20160816;
-        b=AjEecKxb7jArAC33EDjDJowgIL9ugHS2SJJbm4MciwLJN8F8ZaHw0gNFgMNuTW8dyq
-         auQrK77enZzEsERMVv+vzpyWyZDYXsRKVghRYlwD1eLT16JU1wX3Ms9DPLfq3XGSc/7k
-         8RXMG/VeN2Fv+NtzQJf9mYDlZw04ZU2xC+wrJEmXdUFrqI7LdQIDRg9VRoqfdubHrDPN
-         6cAkF2teKmLhlmg/q4cI/6p8WmdLD5NBCd14IKTz31cfk4esvqGqP5Sn583DoQ2qLSKq
-         iXmtjTSNAb/toXFMtwtz25fcYGFIz0OMmqgp5PuYpJZTwNGYaDkBd5HhAJIe89fFgU6Z
-         6hFw==
+        b=K6EPEcYnYUDK12F+1gIyBVXvjbQtmROVfs0zElJYCBl7Pc9K0YpZfp0mLdIPKQ1HwS
+         ptBqQL6mRXi+zXHfGD73OKKtO9w0t4ZkKu7GQvnwB7pbFlFrID4EFbNXIkL6ydkUy+fk
+         aOg2v5CglNt+ohIW5N6Ox/j6wGKmS04ZkUoNBNA437cm54pihtTFGWHS8+PKke1yw60J
+         jWILa6AnNZtGGZ5nEFpwzV4UcSs2pzFb0pmVDl1oXed2A6jx0OGJsFu1Fkn8oh7SMk00
+         NBRIr1ZqAbGb64X9jYtJ1RrFagKKM9nlwRj3nlANI7lyMcsTMevmGImHENAKdMYpEVYu
+         BzkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=X/3hfCPHvt3e6pC8tdZlMAdusEcQDSsosJUnihPSBrg=;
-        fh=h2MVLD9s1IFAVBA68lLm5PQo0M17YJJZZ5UKzOs6KLY=;
-        b=BnO3et42GiLFAxIe4/6ffhDiW4htpUX4izF7x2q6P1T/+97Nraww56MRiABub8cljO
-         WejZaNbZjfuIGjkGLmtrdEjHdvORKetjO10IBCYFypJCcT+4vqMkC0qWF7kdEusS24WT
-         qXA8QglJ7XWU/CiJzC3QoAm+DhlMP2IIBkdSdYQwhX++RktuZ3jf0/UYL/R84hccBKgz
-         4n83cg0aRGQQeEqH4AklZrYYfMKd+pvCZCyewZmFi8VFT8xpEdLwfBnX7DKGq0zPkhnh
-         qI6SlyYjpjZV0QTzdEBJI2CaO1eGgaLRTsAQwVfhkqHvGFbnpPmKQym6GX6kSeHlGKSU
-         32KA==
+        bh=liKgkIDmjxIZ8iQlMr82pqfYKW1BlEIkMZjnyTOJpWk=;
+        fh=lAN3ewggoeNY0L/ap0zquylTO2ylw0STTp2NOOj+9bo=;
+        b=PnrOxqPsKXGGVMOges4H9emaI1l6ai49mzdqW0SIYg1LmfbXQr7Z4HH2KJVLKz8sW/
+         e/mhPrz3Cs9P7LNMMRxE1JZNRRLb+dW+bvaEJNEueeEP/jP20jCyZfSAdaPncRkVYOaG
+         eXIqcHcyTw16DxMl48x9p9tRUpn6UlRMT+3vn1DrmHn586mkbp7KQuKm/wJ39qg5hvRX
+         WtC/VityJxk0l0K6YfPQC1NfeVjVlUg+hOV/JaLdGaqKD9E1Js6JZbd8++o7ph1ynGnZ
+         PiP6yJeZHBOurThzdVmEJDFSezzlvHU5RYcNrO5sqQYdeMOa792fvAHHlvxzDWfleZ5b
+         XFYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p6UdREPV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nsfyFHwI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id mf2-20020a0562145d8200b0065d41a41e7esi794353qvb.537.2023.10.13.00.58.14
+        by mx.google.com with ESMTPS id bm15-20020a05620a198f00b00773e066060csi878285qkb.296.2023.10.13.00.58.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:58:15 -0700 (PDT)
+        Fri, 13 Oct 2023 00:58:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p6UdREPV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nsfyFHwI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCyD-0002Bu-M9; Fri, 13 Oct 2023 03:52:31 -0400
+	id 1qrCxc-00089k-Se; Fri, 13 Oct 2023 03:51:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxN-00072w-Fm
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:39 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1qrCwv-00068R-QE
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:10 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCx4-00052n-9C
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:37 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-325e9cd483eso1747188f8f.2
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:51:17 -0700 (PDT)
+ id 1qrCwi-0004tP-CL
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:09 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-32d569e73acso1689734f8f.1
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:50:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183477; x=1697788277; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183454; x=1697788254; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=X/3hfCPHvt3e6pC8tdZlMAdusEcQDSsosJUnihPSBrg=;
- b=p6UdREPVwvRwIPNvIsaYp+JBOCECDq9Fb6g+etDVeEAWdSOlT1zYPcGcCvG0D8COOJ
- wdG5T+XqVvH6W98z9WrqgQh0dYTJXxJI5Lh/LyM7W6MmJNU6Eof3JFTfOkIx8KcY15nj
- IkJxEVnV8HkAqUwh+BdHcqAY5zLg3kUMyTBtOhYfEgwqmsSReQiTz9nonI1DeDysXB84
- PYl4V1CpM9nEzxBUJjIoe8x93yaWlMbV6dio7gtJ1aRwCXGvTIeqHUrkiCAXQ3lAY2Zp
- UnU/xcXD3mYC9w/hbx/BkYzr1pd6TmZtPtvNhuGWmxwrlP+vWIcOpLdCk+EIOG7snifx
- EiBw==
+ bh=liKgkIDmjxIZ8iQlMr82pqfYKW1BlEIkMZjnyTOJpWk=;
+ b=nsfyFHwILkbNAyiTABDKjy+GPUP0whvI5vqf/tWhsMBcRppix1h6enBc6ifySzaLmp
+ xJ2gyD2XC38IOXjol3E75qfqnVEI8KjOJiLe4617AiPgC88XX9TOWcKqKIfwIYX/dnv2
+ 5nk17f9TpiojRQvChe5/mD2iV+4zG8bsfIzH2K6cjLAmsJT7nx3CQf0FpJTugta8+pI/
+ vWJP+1vs3kwbT2lrsqn3S1Qp2D3/0pMznmuCh1aj5Ofs0/P3YKQRJgfpdClatyuGTeIC
+ iCKFJpVbTW975VLkmm2FqcqNmyxod714zUtkx6vpqjSBbvE37oleZpJVgcf1FSV4BF60
+ V6Lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183477; x=1697788277;
+ d=1e100.net; s=20230601; t=1697183454; x=1697788254;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=X/3hfCPHvt3e6pC8tdZlMAdusEcQDSsosJUnihPSBrg=;
- b=YFhlEJ+J3/7HoYkxoYuy57Ss6QPbVwLl3FZ7Y1ztAU76m3aest4irLilDiAM3bEoML
- WXKbe2peLMWQ6MK/LuJkQH5iK2V3S2BEXVN56M716T98LlFTjXHv/Wmj8cIITZyRl7N6
- SikRWLDr4ZHjOqvEfEuXwzQknQxFuvG9a+Zd7tl1dxpjau8Edy884YhT/BwSDemBOI16
- nkeUn5awKJRC431yowy6xGV8nQ37lM7zLkPVWK7LQirsjejQEE/1Xa2HkasPO4DwYEgv
- 9OvGC+MddACfbH43pWlTKn+9J4OIABfuAvHXbe8MQBn5lO9GF1tmXNDTRTxXCJCR665z
- IdLw==
-X-Gm-Message-State: AOJu0Yyq+JY6MqHHZmTnsjN8PcJgVjlEDU+NHMBEXN0zOT4C97JpIwJs
- H57iUagDEzIPm0OObuIR2IwTITwX1zbSYGrMh3k=
-X-Received: by 2002:a5d:4e88:0:b0:32d:9572:646e with SMTP id
- e8-20020a5d4e88000000b0032d9572646emr2514678wru.54.1697183476711; 
- Fri, 13 Oct 2023 00:51:16 -0700 (PDT)
+ bh=liKgkIDmjxIZ8iQlMr82pqfYKW1BlEIkMZjnyTOJpWk=;
+ b=X/ueZchDdaXyKr0Mb71nMUgDxZPUHHF6yn+Ear3XOCwjlYDhGgRqm0wsq5GqDDv4qf
+ rs8WmzZ5EOj4P6sAyNeFuSHlp6BUk9EUoYCZrZdZjUzkgvmDNQarGPet/kOs0F43/0Jb
+ mRL4edGBNe3bystL3LlkdP3uozPEljYPjNaf5pZYn47yKlJhU1+o7h5ghlTt07zcT8mC
+ AUBKbUplrIpxtuVcGduxC34htwTXzQK5S7RXuzdDN8XolKQ5LlZzYxBj/KVsI2SdzTbO
+ Iqgd3Yl5MQkcw/3n4si7hKVSegSc1xNu9weh+GLwwItnsvUrt2nUMxOhlrjGwFkawwJe
+ e/EQ==
+X-Gm-Message-State: AOJu0Yywik07EyHUxNhWdI3UHxcfEOUWfssku/0VBgD4Vdbv/VdOBwMB
+ IAeQ50mEpETsoB/4uufReCXbAu3KnuZBABpwwlI=
+X-Received: by 2002:a5d:6daf:0:b0:32d:62e7:8ff9 with SMTP id
+ u15-20020a5d6daf000000b0032d62e78ff9mr10470941wrs.34.1697183454741; 
+ Fri, 13 Oct 2023 00:50:54 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.14
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:51:16 -0700 (PDT)
+ Fri, 13 Oct 2023 00:50:54 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Peter Xu <peterx@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Woodhouse <dwmw2@infradead.org>, Paul Durrant <paul@xen.org>
-Subject: [RFC PATCH 42/78] hw/i386: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:51 +0300
-Message-Id: <c08e8dbf0e07552a72c1ae3f520592290279d799.1697183082.git.manos.pitsidianakis@linaro.org>
+ Yoshinori Sato <ysato@users.sourceforge.jp>
+Subject: [RFC PATCH 35/78] target/sh4: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:39 +0300
+Message-Id: <1616b3baa81059284d7b58f2c5480f0b4dde439e.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,202 +127,151 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AZtFFB5wmkL5
+X-TUID: nDM51wK3DKP5
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/i386/intel_iommu.c    | 4 ++--
- hw/i386/kvm/xen_evtchn.c | 2 +-
- hw/i386/x86.c            | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ target/sh4/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 2c832ab68b..bdb2ea3ac5 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -2100,29 +2100,29 @@ static void vtd_context_device_invalidate(IntelIOMMUState *s,
- /* Context-cache invalidation
-  * Returns the Context Actual Invalidation Granularity.
-  * @val: the content of the CCMD_REG
-  */
- static uint64_t vtd_context_cache_invalidate(IntelIOMMUState *s, uint64_t val)
+diff --git a/target/sh4/helper.c b/target/sh4/helper.c
+index e02e7af607..c1cc5e82f4 100644
+--- a/target/sh4/helper.c
++++ b/target/sh4/helper.c
+@@ -56,131 +56,131 @@ int cpu_sh4_is_cached(CPUSH4State *env, target_ulong addr)
+ void superh_cpu_do_interrupt(CPUState *cs)
  {
-     uint64_t caig;
-     uint64_t type = val & VTD_CCMD_CIRG_MASK;
+     SuperHCPU *cpu = SUPERH_CPU(cs);
+     CPUSH4State *env = &cpu->env;
+     int do_irq = cs->interrupt_request & CPU_INTERRUPT_HARD;
+     int do_exp, irq_vector = cs->exception_index;
  
-     switch (type) {
-     case VTD_CCMD_DOMAIN_INVL:
--        /* Fall through */
-+        fallthrough;
-     case VTD_CCMD_GLOBAL_INVL:
-         caig = VTD_CCMD_GLOBAL_INVL_A;
-         vtd_context_global_invalidate(s);
-         break;
+     /* prioritize exceptions over interrupts */
  
-     case VTD_CCMD_DEVICE_INVL:
-         caig = VTD_CCMD_DEVICE_INVL_A;
-         vtd_context_device_invalidate(s, VTD_CCMD_SID(val), VTD_CCMD_FM(val));
-         break;
+     do_exp = cs->exception_index != -1;
+     do_irq = do_irq && (cs->exception_index == -1);
  
-     default:
-         error_report_once("%s: invalid context: 0x%" PRIx64,
-                           __func__, val);
-         caig = 0;
+     if (env->sr & (1u << SR_BL)) {
+         if (do_exp && cs->exception_index != 0x1e0) {
+             /* In theory a masked exception generates a reset exception,
+                which in turn jumps to the reset vector. However this only
+                works when using a bootloader. When using a kernel and an
+                initrd, they need to be reloaded and the program counter
+                should be loaded with the kernel entry point.
+                qemu_system_reset_request takes care of that.  */
+             qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             return;
+         }
+         if (do_irq && !env->in_sleep) {
+             return; /* masked */
+         }
      }
-     return caig;
- }
-@@ -2513,34 +2513,34 @@ static bool vtd_process_wait_desc(IntelIOMMUState *s, VTDInvDesc *inv_desc)
- static bool vtd_process_context_cache_desc(IntelIOMMUState *s,
-                                            VTDInvDesc *inv_desc)
- {
-     uint16_t sid, fmask;
+     env->in_sleep = 0;
  
-     if ((inv_desc->lo & VTD_INV_DESC_CC_RSVD) || inv_desc->hi) {
-         error_report_once("%s: invalid cc inv desc: hi=%"PRIx64", lo=%"PRIx64
-                           " (reserved nonzero)", __func__, inv_desc->hi,
-                           inv_desc->lo);
-         return false;
-     }
-     switch (inv_desc->lo & VTD_INV_DESC_CC_G) {
-     case VTD_INV_DESC_CC_DOMAIN:
-         trace_vtd_inv_desc_cc_domain(
-             (uint16_t)VTD_INV_DESC_CC_DID(inv_desc->lo));
--        /* Fall through */
-+        fallthrough;
-     case VTD_INV_DESC_CC_GLOBAL:
-         vtd_context_global_invalidate(s);
-         break;
- 
-     case VTD_INV_DESC_CC_DEVICE:
-         sid = VTD_INV_DESC_CC_SID(inv_desc->lo);
-         fmask = VTD_INV_DESC_CC_FM(inv_desc->lo);
-         vtd_context_device_invalidate(s, sid, fmask);
-         break;
- 
-     default:
-         error_report_once("%s: invalid cc inv desc: hi=%"PRIx64", lo=%"PRIx64
-                           " (invalid type)", __func__, inv_desc->hi,
-                           inv_desc->lo);
-         return false;
-     }
-     return true;
- }
-diff --git a/hw/i386/kvm/xen_evtchn.c b/hw/i386/kvm/xen_evtchn.c
-index a731738411..d15e324f6e 100644
---- a/hw/i386/kvm/xen_evtchn.c
-+++ b/hw/i386/kvm/xen_evtchn.c
-@@ -2028,71 +2028,71 @@ static int find_be_port(XenEvtchnState *s, struct xenevtchn_handle *xc)
- int xen_be_evtchn_bind_interdomain(struct xenevtchn_handle *xc, uint32_t domid,
-                                    evtchn_port_t guest_port)
- {
-     XenEvtchnState *s = xen_evtchn_singleton;
-     XenEvtchnPort *gp;
-     uint16_t be_port = 0;
-     int ret;
- 
-     if (!s) {
-         return -ENOTSUP;
+     if (do_irq) {
+         irq_vector = sh_intc_get_pending_vector(env->intc_handle,
+ 						(env->sr >> 4) & 0xf);
+         if (irq_vector == -1) {
+             return; /* masked */
+ 	}
      }
  
-     if (!xc) {
-         return -EFAULT;
+     if (qemu_loglevel_mask(CPU_LOG_INT)) {
+ 	const char *expname;
+         switch (cs->exception_index) {
+ 	case 0x0e0:
+ 	    expname = "addr_error";
+ 	    break;
+ 	case 0x040:
+ 	    expname = "tlb_miss";
+ 	    break;
+ 	case 0x0a0:
+ 	    expname = "tlb_violation";
+ 	    break;
+ 	case 0x180:
+ 	    expname = "illegal_instruction";
+ 	    break;
+ 	case 0x1a0:
+ 	    expname = "slot_illegal_instruction";
+ 	    break;
+ 	case 0x800:
+ 	    expname = "fpu_disable";
+ 	    break;
+ 	case 0x820:
+ 	    expname = "slot_fpu";
+ 	    break;
+ 	case 0x100:
+ 	    expname = "data_write";
+ 	    break;
+ 	case 0x060:
+ 	    expname = "dtlb_miss_write";
+ 	    break;
+ 	case 0x0c0:
+ 	    expname = "dtlb_violation_write";
+ 	    break;
+ 	case 0x120:
+ 	    expname = "fpu_exception";
+ 	    break;
+ 	case 0x080:
+ 	    expname = "initial_page_write";
+ 	    break;
+ 	case 0x160:
+ 	    expname = "trapa";
+ 	    break;
+ 	default:
+             expname = do_irq ? "interrupt" : "???";
+             break;
+ 	}
+ 	qemu_log("exception 0x%03x [%s] raised\n",
+ 		  irq_vector, expname);
+         log_cpu_state(cs, 0);
      }
  
-     if (domid != xen_domid) {
-         return -ESRCH;
+     env->ssr = cpu_read_sr(env);
+     env->spc = env->pc;
+     env->sgr = env->gregs[15];
+     env->sr |= (1u << SR_BL) | (1u << SR_MD) | (1u << SR_RB);
+     env->lock_addr = -1;
+ 
+     if (env->flags & TB_FLAG_DELAY_SLOT_MASK) {
+         /* Branch instruction should be executed again before delay slot. */
+ 	env->spc -= 2;
+ 	/* Clear flags for exception/interrupt routine. */
+         env->flags &= ~TB_FLAG_DELAY_SLOT_MASK;
      }
  
-     if (!valid_port(guest_port)) {
-         return -EINVAL;
-     }
- 
-     qemu_mutex_lock(&s->port_lock);
- 
-     /* The guest has to have an unbound port waiting for us to bind */
-     gp = &s->port_table[guest_port];
- 
-     switch (gp->type) {
-     case EVTCHNSTAT_interdomain:
-         /* Allow rebinding after migration, preserve port # if possible */
-         be_port = gp->type_val & ~PORT_INFO_TYPEVAL_REMOTE_QEMU;
-         assert(be_port != 0);
-         if (!s->be_handles[be_port]) {
-             s->be_handles[be_port] = xc;
-             xc->guest_port = guest_port;
-             ret = xc->be_port = be_port;
-             if (kvm_xen_has_cap(EVTCHN_SEND)) {
-                 assign_kernel_eventfd(gp->type, guest_port, xc->fd);
-             }
+     if (do_exp) {
+         env->expevt = cs->exception_index;
+         switch (cs->exception_index) {
+         case 0x000:
+         case 0x020:
+         case 0x140:
+             env->sr &= ~(1u << SR_FD);
+             env->sr |= 0xf << 4; /* IMASK */
+             env->pc = 0xa0000000;
+             break;
+         case 0x040:
+         case 0x060:
+             env->pc = env->vbr + 0x400;
+             break;
+         case 0x160:
+             env->spc += 2; /* special case for TRAPA */
+-            /* fall through */
++            fallthrough;
+         default:
+             env->pc = env->vbr + 0x100;
              break;
          }
--        /* fall through */
-+        fallthrough;
- 
-     case EVTCHNSTAT_unbound:
-         be_port = find_be_port(s, xc);
-         if (!be_port) {
-             ret = -ENOSPC;
-             goto out;
-         }
- 
-         gp->type = EVTCHNSTAT_interdomain;
-         gp->type_val = be_port | PORT_INFO_TYPEVAL_REMOTE_QEMU;
-         xc->guest_port = guest_port;
-         if (kvm_xen_has_cap(EVTCHN_SEND)) {
-             assign_kernel_eventfd(gp->type, guest_port, xc->fd);
-         }
-         ret = be_port;
-         break;
- 
-     default:
-         ret = -EINVAL;
-         break;
+         return;
      }
  
-  out:
-     qemu_mutex_unlock(&s->port_lock);
- 
-     return ret;
- }
-diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index b3d054889b..c1fd0a966a 100644
---- a/hw/i386/x86.c
-+++ b/hw/i386/x86.c
-@@ -597,32 +597,32 @@ DeviceState *cpu_get_current_apic(void)
- void gsi_handler(void *opaque, int n, int level)
- {
-     GSIState *s = opaque;
- 
-     trace_x86_gsi_interrupt(n, level);
-     switch (n) {
-     case 0 ... ISA_NUM_IRQS - 1:
-         if (s->i8259_irq[n]) {
-             /* Under KVM, Kernel will forward to both PIC and IOAPIC */
-             qemu_set_irq(s->i8259_irq[n], level);
-         }
--        /* fall through */
-+        fallthrough;
-     case ISA_NUM_IRQS ... IOAPIC_NUM_PINS - 1:
- #ifdef CONFIG_XEN_EMU
-         /*
-          * Xen delivers the GSI to the Legacy PIC (not that Legacy PIC
-          * routing actually works properly under Xen). And then to
-          * *either* the PIRQ handling or the I/OAPIC depending on
-          * whether the former wants it.
-          */
-         if (xen_mode == XEN_EMULATE && xen_evtchn_set_gsi(n, level)) {
-             break;
-         }
- #endif
-         qemu_set_irq(s->ioapic_irq[n], level);
-         break;
-     case IO_APIC_SECONDARY_IRQBASE
-         ... IO_APIC_SECONDARY_IRQBASE + IOAPIC_NUM_PINS - 1:
-         qemu_set_irq(s->ioapic2_irq[n - IO_APIC_SECONDARY_IRQBASE], level);
-         break;
+     if (do_irq) {
+         env->intevt = irq_vector;
+         env->pc = env->vbr + 0x600;
+         return;
      }
  }
 -- 

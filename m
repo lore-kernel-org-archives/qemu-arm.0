@@ -1,122 +1,124 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333930ejc;
-        Fri, 13 Oct 2023 01:00:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEFnvtWgL3aJue8iZ6/f+POpBAUgPLaUnBBg83KB2cQC+HeNHCNIQkrU+2oyVtIva9EDSYu
-X-Received: by 2002:a0c:b343:0:b0:657:be1c:5d0b with SMTP id a3-20020a0cb343000000b00657be1c5d0bmr24130291qvf.53.1697184001180;
-        Fri, 13 Oct 2023 01:00:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697184001; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333989ejc;
+        Fri, 13 Oct 2023 01:00:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGvByt0HwKWe+HCECInV96ctmImgrOaPG6D5HE3D+RWrH4ViZnYUkLz/WxBdloS62/caoj5
+X-Received: by 2002:a0c:f14d:0:b0:66d:173a:aca7 with SMTP id y13-20020a0cf14d000000b0066d173aaca7mr3353338qvl.55.1697184007551;
+        Fri, 13 Oct 2023 01:00:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697184007; cv=none;
         d=google.com; s=arc-20160816;
-        b=d7BwpptBa6qzah5G8KtbR1aeOJouAulflqPPzjNXpsQNgrtpOUSPkxdjLz38Mv1ln4
-         CqJbE+akFUiWaR63NSYDFFNwGUOa9WJZpWWI1ImN7Jf1NrRCuUHYl9S3flmRL3OUIriE
-         v77ahQU2ZHOPglvuOHcIuFyAxdzd9WDd01tnxjTUf8hBgK717uidESchlFxEtepZR727
-         h2f23l8MET2rmFCNVWX5gH/waeByC28WomQKvKMfJX1qP3Ufcr+OnBIVKoNzvCo8uadc
-         xzmv6zDLdTNtAYClo8VZ3ZPuzAMy6MjtORHr1gtZ/l2Xa8ExQRQE5zv0YU6yn0xbXo5B
-         gJog==
+        b=aiSnnE4M6eHnPzKzpYY4ZxYGfaPRPOxER4plZyCWLuLYzknj8M+0fGECVAxPADTD46
+         IMOLWQci3WV/iBQrnThcWrQO4GU9syFRrbLCK6iKh3FrBfZp6hpVR3peluyfdsreJiGM
+         my2f4dwM5gyA3dHlXHXMvVHandUtHOYOzSmJf37g/xpTo+PCKYC0NxQoax2jyNSrJ98f
+         ggodwMoXzHLUtY/GRPHAjflda0nMJTN/nB2GbVtHSZ03ScYNq+eqHLxyA1gqKyZL9ed7
+         zrXgh4nucPwiCPwFQO/ri7Zf87CUfDlVnjFHjyCQDYqg2GiB5wNJw/Y3gUN7HtKS4QPf
+         b5qQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=y2BbUNGw5oZtiwFs9bl78044TvGJmcMQmCrDFpABE8c=;
-        fh=or8t63towzgbcj1dQvVghHU+BV8Gc4qe9qniFoRGOJ0=;
-        b=s3fdjSPz9k7mhUcROCeC2eIv04jn6kO2SRMzCHXeeFVCRkJ3lFgKTKTOu5/uElr6R5
-         Ga1zc0P0/0zzCmkaTxhterKQiYqUned0Tazy2yQERFrhtlaUuCvXa6pi/tYFZBknvlds
-         Xb5s0fp82/1DJyHon3Z8PHyhuSs+erGw94kTp/1QmqLSb8N7cN9EhfpTYFpZEyMHvcps
-         rfFSaHKgjlH5TGmB0iNOXA0QYO3TEtCLKhpJ1xn1fst3fzCHBqWo0npemUAVpK3t8kh9
-         WT13zohxehbYOzJOvZdhp7G7GR5eM5s3orbk36HLSQTaU01qZC1gwS12nSDw7Y/1NRC/
-         nPPw==
+        bh=86UY9ftbOt4NkSKPB6iXNZTbBfnKqlodz3uI+lSRfwU=;
+        fh=VkKCFrawDLixD9/G4ZzkMoDniHAEAovghV1tQrh/t94=;
+        b=TR43SOU4G7iZZzDmXHaNbWxrvoMlAiOUOFYNuneX4vdkjtPtME0aT9ZLfODXWN2RCT
+         R9mFAkjvq/rhRKWAgjVBsEZS8dSGow5jVgNRb+amVv6vLb1BWV9QLZ+M3v0ntJNBRq8q
+         /F+klN+A/VNn2vGUKuiEIaYcI7950SORXbOiI7JffxuVsPxj8y8o+B0k5IiQSRQesLi4
+         6kDmJ40g3eScTDNNKjNeapJnbMoyUut4F7BaY0oBFE/9LB58L2Z2EUEeHEvcGz/hO0rW
+         M2MJEZSCqcF2dfhq2QrdTq4fgO8by1Z3TR2Ajb6rUDF5HEmE74GUcI8fFmV7ORmOg7wA
+         /U9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XJVMi2ka;
+       dkim=pass header.i=@linaro.org header.s=google header.b="D7zpdr/9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a29-20020a0ca99d000000b00656de90313asi812658qvb.539.2023.10.13.01.00.00
+        by mx.google.com with ESMTPS id md18-20020a056214589200b0065b21eef93asi833497qvb.568.2023.10.13.01.00.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:00:01 -0700 (PDT)
+        Fri, 13 Oct 2023 01:00:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XJVMi2ka;
+       dkim=pass header.i=@linaro.org header.s=google header.b="D7zpdr/9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrCyJ-0002rr-AH; Fri, 13 Oct 2023 03:52:35 -0400
+	id 1qrCzJ-00056X-IN; Fri, 13 Oct 2023 03:53:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxa-0007t3-Pg
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:50 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1qrCyE-0002JB-FA
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:52:31 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxL-00057p-86
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:50 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-31427ddd3fbso1637281f8f.0
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:51:29 -0700 (PDT)
+ id 1qrCxu-0005Nj-Gt
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:52:30 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-32d9b507b00so386074f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:52:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183489; x=1697788289; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183529; x=1697788329; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=y2BbUNGw5oZtiwFs9bl78044TvGJmcMQmCrDFpABE8c=;
- b=XJVMi2kaRiaeuQPpPrNLim8W9b9NFuUZKwhYOpstlFHSWMDfwcKkK34Hs/Wiv5TtfY
- gyXbqpBPVODNOQZZjozrm9XPEdqGcCsptXd1bHhjOnPNanoFA5lmkfaC9d6q/XqFtFFE
- 0dbotDqMJtZ11Ssha/KPOIlbi6jN4KfTX5imYH8vZTU8ofhkN4XUCkf8Hvw8O6WOYpsm
- JmWVzxNNsKrr9SGT27CnBPEXZUvzTJ8/4jbxX9O89T4oBsDwiT2glxZGJHc1QUKl/k/j
- oH3zzpuw8pLMCWTyCsTggwRb7MMA74/Q+tsbRMa/WyPJs25zL20ILsRHKjP5rRSjTVhB
- 1z/g==
+ bh=86UY9ftbOt4NkSKPB6iXNZTbBfnKqlodz3uI+lSRfwU=;
+ b=D7zpdr/99n0l0mRYCd45BrVqw5EHwGkFOJ5EaJZfzs3qyf0SbaMhIMzNofX4olOLIR
+ 3KI2ePlUjYkenU00LUEWQCbYI602WjkPObBFEauCh/nLXy7wXaW7K4lsrhGGf8dgdpl3
+ Gjc7QuRfq6x0XRHF0EhnTaHvvh8GZ+j3Uvadk7bEm+SS85k9Dir63/dZirFbNi61BCsh
+ t/25vDUTYQ7/Z00kwG1Nh3IYjDrWSH5OCWMQKlvDlO3OrNvxO3J9QTGUG/gEmFQXHfl2
+ 2RtDt37FVeQmfRUot8fVkFd/8dQnrxMvKoALCPZ0s7I7jaJ/BodIONxj1jFtRN5E0RzB
+ sHmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183489; x=1697788289;
+ d=1e100.net; s=20230601; t=1697183529; x=1697788329;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=y2BbUNGw5oZtiwFs9bl78044TvGJmcMQmCrDFpABE8c=;
- b=L4JSGn2ooII68Fr13eTo5xBxXzF1/uTHkdHM94PuQXFyf/W7T2gmMnlIoEkseXmA9B
- DxOO0USAVZ13hxqE6J7vZkhjMyNHjoAFgO2f9IqbI0+iclYzU3dzNsnBkcNeoddBi7gy
- AY8+n5fb0Lme/o8CaoyKXzfZMadUE6g7wi2cdtfyQP0RSPeLrotwUaY29X7/JpxYJ4Zn
- XVH+8cv7/Xg/xp1r006qbgKwB1iRtFZsoZ2FtXUq9rdoMeZvpGTbdUnKyIQr4Ox3rDqx
- D4bIsFV0Z7RYLGDiWZBSY+PT2ApRi/tllunhNO+gND6uQ07HsXFZo+T2Xh4HD+uyevZz
- ysHw==
-X-Gm-Message-State: AOJu0Yw2FSAEWLKoN3O6UHV5/9x5nvCpGknlP0UqF0XME5il5Ekrd7/D
- Dsf3SM44hldQuajx516v+CjUGw==
-X-Received: by 2002:a5d:42d2:0:b0:314:1b36:f440 with SMTP id
- t18-20020a5d42d2000000b003141b36f440mr19852372wrr.70.1697183488658; 
- Fri, 13 Oct 2023 00:51:28 -0700 (PDT)
+ bh=86UY9ftbOt4NkSKPB6iXNZTbBfnKqlodz3uI+lSRfwU=;
+ b=Xm6W+3yfJObbNoy1jZrL/0e3CoJDDOutwCHsor1CbBw4RIi9JSK6WHOwm6YOCy+Jc0
+ shIQNrFktXLxdialhizMa8Sgi8EFa9uij2KR0hnFm9eQP0mREhRMpUpKC13yt0x8qNOm
+ hQmkjGFEUbN7HWu7xsZ4BcGBMKP6jsSoHIxPTdTp2OnP3+U2l3waBlZ2C/xahM8KfHvc
+ RM0Qo5K+C4oZp/fX7+t04Ljg2JWaAHDU3HoljVtrdUDpwLM+Iqw4lAKdLiksDzchfI2Q
+ /Er/fwauRNd3a7M2wlHb2NTROKV14ptyHDeFx06qfIY9ZL1Z5kvzmePeiwQudJ9ZT3Gh
+ 3UJQ==
+X-Gm-Message-State: AOJu0Yz6YcsfuoOvHWyxPTzHEtA5omfgvJqvtfvGWyeRNcArFG/005Xj
+ 90IjoEVeG8xIxOizACJ+tZSSkg==
+X-Received: by 2002:adf:c805:0:b0:329:6bfa:dc8c with SMTP id
+ d5-20020adfc805000000b003296bfadc8cmr15577842wrh.46.1697183529031; 
+ Fri, 13 Oct 2023 00:52:09 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.26
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.52.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:51:28 -0700 (PDT)
+ Fri, 13 Oct 2023 00:52:08 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: [RFC PATCH 45/75] disas: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:57 +0300
-Message-Id: <d3b15834823233ee855b1d4c093de9d03a37b8e4.1697034504.git.manos.pitsidianakis@linaro.org>
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>, Vikram Garhwal <fnu.vikram@xilinx.com>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>
+Subject: [RFC PATCH 56/75] hw/net: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:48:20 +0300
+Message-Id: <a6c5b60753c5e702289c75c1abec314d43564474.1697034504.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697034504.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,2689 +133,984 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n+5xkRyCyr+f
+X-TUID: WQtlJ+0SVRpR
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- disas/hppa.c  | 4 ++--
- disas/m68k.c  | 2 +-
- disas/sh4.c   | 4 +++-
- disas/sparc.c | 2 +-
- 4 files changed, 7 insertions(+), 5 deletions(-)
+ hw/net/cadence_gem.c     | 4 ++--
+ hw/net/can/can_sja1000.c | 4 ++--
+ hw/net/igb_core.c        | 2 +-
+ hw/net/igbvf.c           | 2 +-
+ hw/net/imx_fec.c         | 2 +-
+ hw/net/net_rx_pkt.c      | 2 +-
+ hw/net/pcnet.c           | 2 +-
+ hw/net/rtl8139.c         | 6 ++++--
+ hw/net/xilinx_ethlite.c  | 2 +-
+ 9 files changed, 14 insertions(+), 12 deletions(-)
 
-diff --git a/disas/hppa.c b/disas/hppa.c
-index dcf9a47f34..1a2bdb8d39 100644
---- a/disas/hppa.c
-+++ b/disas/hppa.c
-@@ -1954,878 +1954,878 @@ int
- print_insn_hppa (bfd_vma memaddr, disassemble_info *info)
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index f445d8bb5e..a59991af5b 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -748,119 +748,119 @@ static int gem_mac_address_filter(CadenceGEMState *s, const uint8_t *packet)
+ /* Figure out which queue the received data should be sent to */
+ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
+                                  unsigned rxbufsize)
  {
-   bfd_byte buffer[4];
-   unsigned int insn, i;
- 
-   {
-     int status =
-       (*info->read_memory_func) (memaddr, buffer, sizeof (buffer), info);
-     if (status != 0)
-       {
- 	(*info->memory_error_func) (status, memaddr, info);
- 	return -1;
-       }
-   }
- 
-   insn = bfd_getb32 (buffer);
- 
-   for (i = 0; i < NUMOPCODES; ++i)
-     {
-       const struct pa_opcode *opcode = &pa_opcodes[i];
- 
-       if ((insn & opcode->mask) == opcode->match)
- 	{
- 	  const char *s;
- #ifndef BFD64
- 	  if (opcode->arch == pa20w)
- 	    continue;
- #endif
- 	  (*info->fprintf_func) (info->stream, "%s", opcode->name);
- 
- 	  if (!strchr ("cfCY?-+nHNZFIuv{", opcode->args[0]))
- 	    (*info->fprintf_func) (info->stream, " ");
- 	  for (s = opcode->args; *s != '\0'; ++s)
- 	    {
- 	      switch (*s)
- 		{
- 		case 'x':
- 		  fput_reg (GET_FIELD (insn, 11, 15), info);
- 		  break;
- 		case 'a':
- 		case 'b':
- 		  fput_reg (GET_FIELD (insn, 6, 10), info);
- 		  break;
- 		case '^':
- 		  fput_creg (GET_FIELD (insn, 6, 10), info);
- 		  break;
- 		case 't':
- 		  fput_reg (GET_FIELD (insn, 27, 31), info);
- 		  break;
- 
- 		  /* Handle floating point registers.  */
- 		case 'f':
- 		  switch (*++s)
- 		    {
- 		    case 't':
- 		      fput_fp_reg (GET_FIELD (insn, 27, 31), info);
- 		      break;
- 		    case 'T':
- 		      if (GET_FIELD (insn, 25, 25))
- 			fput_fp_reg_r (GET_FIELD (insn, 27, 31), info);
- 		      else
- 			fput_fp_reg (GET_FIELD (insn, 27, 31), info);
- 		      break;
- 		    case 'a':
- 		      if (GET_FIELD (insn, 25, 25))
- 			fput_fp_reg_r (GET_FIELD (insn, 6, 10), info);
- 		      else
- 			fput_fp_reg (GET_FIELD (insn, 6, 10), info);
- 		      break;
- 
- 		      /* 'fA' will not generate a space before the register
- 			 name.  Normally that is fine.  Except that it
- 			 causes problems with xmpyu which has no FP format
- 			 completer.  */
- 		    case 'X':
- 		      fputs_filtered (" ", info);
--		      /* FALLTHRU */
-+		      fallthrough;
- 
- 		    case 'A':
- 		      if (GET_FIELD (insn, 24, 24))
- 			fput_fp_reg_r (GET_FIELD (insn, 6, 10), info);
- 		      else
- 			fput_fp_reg (GET_FIELD (insn, 6, 10), info);
- 		      break;
- 		    case 'b':
- 		      if (GET_FIELD (insn, 25, 25))
- 			fput_fp_reg_r (GET_FIELD (insn, 11, 15), info);
- 		      else
- 			fput_fp_reg (GET_FIELD (insn, 11, 15), info);
- 		      break;
- 		    case 'B':
- 		      if (GET_FIELD (insn, 19, 19))
- 			fput_fp_reg_r (GET_FIELD (insn, 11, 15), info);
- 		      else
- 			fput_fp_reg (GET_FIELD (insn, 11, 15), info);
- 		      break;
- 		    case 'C':
- 		      {
- 			int reg = GET_FIELD (insn, 21, 22);
- 			reg |= GET_FIELD (insn, 16, 18) << 2;
- 			if (GET_FIELD (insn, 23, 23) != 0)
- 			  fput_fp_reg_r (reg, info);
- 			else
- 			  fput_fp_reg (reg, info);
- 			break;
- 		      }
- 		    case 'i':
- 		      {
- 			int reg = GET_FIELD (insn, 6, 10);
- 
- 			reg |= (GET_FIELD (insn, 26, 26) << 4);
- 			fput_fp_reg (reg, info);
- 			break;
- 		      }
- 		    case 'j':
- 		      {
- 			int reg = GET_FIELD (insn, 11, 15);
- 
- 			reg |= (GET_FIELD (insn, 26, 26) << 4);
- 			fput_fp_reg (reg, info);
- 			break;
- 		      }
- 		    case 'k':
- 		      {
- 			int reg = GET_FIELD (insn, 27, 31);
- 
- 			reg |= (GET_FIELD (insn, 26, 26) << 4);
- 			fput_fp_reg (reg, info);
- 			break;
- 		      }
- 		    case 'l':
- 		      {
- 			int reg = GET_FIELD (insn, 21, 25);
- 
- 			reg |= (GET_FIELD (insn, 26, 26) << 4);
- 			fput_fp_reg (reg, info);
- 			break;
- 		      }
- 		    case 'm':
- 		      {
- 			int reg = GET_FIELD (insn, 16, 20);
- 
- 			reg |= (GET_FIELD (insn, 26, 26) << 4);
- 			fput_fp_reg (reg, info);
- 			break;
- 		      }
- 
- 		      /* 'fe' will not generate a space before the register
- 			 name.  Normally that is fine.  Except that it
- 			 causes problems with fstw fe,y(b) which has no FP
- 			 format completer.  */
- 		    case 'E':
- 		      fputs_filtered (" ", info);
--		      /* FALLTHRU */
-+		      fallthrough;
- 
- 		    case 'e':
- 		      if (GET_FIELD (insn, 30, 30))
- 			fput_fp_reg_r (GET_FIELD (insn, 11, 15), info);
- 		      else
- 			fput_fp_reg (GET_FIELD (insn, 11, 15), info);
- 		      break;
- 		    case 'x':
- 		      fput_fp_reg (GET_FIELD (insn, 11, 15), info);
- 		      break;
- 		    }
- 		  break;
- 
- 		case '5':
- 		  fput_const (extract_5_load (insn), info);
- 		  break;
- 		case 's':
- 		  {
- 		    int space = GET_FIELD (insn, 16, 17);
- 		    /* Zero means implicit addressing, not use of sr0.  */
- 		    if (space != 0)
- 		      (*info->fprintf_func) (info->stream, "sr%d", space);
- 		  }
- 		  break;
- 
- 		case 'S':
- 		  (*info->fprintf_func) (info->stream, "sr%d",
- 					 extract_3 (insn));
- 		  break;
- 
- 		  /* Handle completers.  */
- 		case 'c':
- 		  switch (*++s)
- 		    {
- 		    case 'x':
- 		      (*info->fprintf_func)
- 			(info->stream, "%s",
- 			 index_compl_names[GET_COMPL (insn)]);
- 		      break;
- 		    case 'X':
- 		      (*info->fprintf_func)
- 			(info->stream, "%s ",
- 			 index_compl_names[GET_COMPL (insn)]);
- 		      break;
- 		    case 'm':
- 		      (*info->fprintf_func)
- 			(info->stream, "%s",
- 			 short_ldst_compl_names[GET_COMPL (insn)]);
- 		      break;
- 		    case 'M':
- 		      (*info->fprintf_func)
- 			(info->stream, "%s ",
- 			 short_ldst_compl_names[GET_COMPL (insn)]);
- 		      break;
- 		    case 'A':
- 		      (*info->fprintf_func)
- 			(info->stream, "%s ",
- 			 short_bytes_compl_names[GET_COMPL (insn)]);
- 		      break;
- 		    case 's':
- 		      (*info->fprintf_func)
- 			(info->stream, "%s",
- 			 short_bytes_compl_names[GET_COMPL (insn)]);
- 		      break;
- 		    case 'c':
- 		    case 'C':
- 		      switch (GET_FIELD (insn, 20, 21))
- 			{
- 			case 1:
- 			  (*info->fprintf_func) (info->stream, ",bc ");
- 			  break;
- 			case 2:
- 			  (*info->fprintf_func) (info->stream, ",sl ");
- 			  break;
- 			default:
- 			  (*info->fprintf_func) (info->stream, " ");
- 			}
- 		      break;
- 		    case 'd':
- 		      switch (GET_FIELD (insn, 20, 21))
- 			{
- 			case 1:
- 			  (*info->fprintf_func) (info->stream, ",co ");
- 			  break;
- 			default:
- 			  (*info->fprintf_func) (info->stream, " ");
- 			}
- 		      break;
- 		    case 'o':
- 		      (*info->fprintf_func) (info->stream, ",o");
- 		      break;
- 		    case 'g':
- 		      (*info->fprintf_func) (info->stream, ",gate");
- 		      break;
- 		    case 'p':
- 		      (*info->fprintf_func) (info->stream, ",l,push");
- 		      break;
- 		    case 'P':
- 		      (*info->fprintf_func) (info->stream, ",pop");
- 		      break;
- 		    case 'l':
- 		    case 'L':
- 		      (*info->fprintf_func) (info->stream, ",l");
- 		      break;
- 		    case 'w':
- 		      (*info->fprintf_func)
- 			(info->stream, "%s ",
- 			 read_write_names[GET_FIELD (insn, 25, 25)]);
- 		      break;
- 		    case 'W':
- 		      (*info->fprintf_func) (info->stream, ",w ");
- 		      break;
- 		    case 'r':
- 		      if (GET_FIELD (insn, 23, 26) == 5)
- 			(*info->fprintf_func) (info->stream, ",r");
- 		      break;
- 		    case 'Z':
- 		      if (GET_FIELD (insn, 26, 26))
- 			(*info->fprintf_func) (info->stream, ",m ");
- 		      else
- 			(*info->fprintf_func) (info->stream, " ");
- 		      break;
- 		    case 'i':
- 		      if (GET_FIELD (insn, 25, 25))
- 			(*info->fprintf_func) (info->stream, ",i");
- 		      break;
- 		    case 'z':
- 		      if (!GET_FIELD (insn, 21, 21))
- 			(*info->fprintf_func) (info->stream, ",z");
- 		      break;
- 		    case 'a':
- 		      (*info->fprintf_func)
- 			(info->stream, "%s",
- 			 add_compl_names[GET_FIELD (insn, 20, 21)]);
- 		      break;
- 		    case 'Y':
- 		      (*info->fprintf_func)
- 			(info->stream, ",dc%s",
- 			 add_compl_names[GET_FIELD (insn, 20, 21)]);
- 		      break;
- 		    case 'y':
- 		      (*info->fprintf_func)
- 			(info->stream, ",c%s",
- 			 add_compl_names[GET_FIELD (insn, 20, 21)]);
- 		      break;
- 		    case 'v':
- 		      if (GET_FIELD (insn, 20, 20))
- 			(*info->fprintf_func) (info->stream, ",tsv");
- 		      break;
- 		    case 't':
- 		      (*info->fprintf_func) (info->stream, ",tc");
- 		      if (GET_FIELD (insn, 20, 20))
- 			(*info->fprintf_func) (info->stream, ",tsv");
- 		      break;
- 		    case 'B':
- 		      (*info->fprintf_func) (info->stream, ",db");
- 		      if (GET_FIELD (insn, 20, 20))
- 			(*info->fprintf_func) (info->stream, ",tsv");
- 		      break;
- 		    case 'b':
- 		      (*info->fprintf_func) (info->stream, ",b");
- 		      if (GET_FIELD (insn, 20, 20))
- 			(*info->fprintf_func) (info->stream, ",tsv");
- 		      break;
- 		    case 'T':
- 		      if (GET_FIELD (insn, 25, 25))
- 			(*info->fprintf_func) (info->stream, ",tc");
- 		      break;
- 		    case 'S':
- 		      /* EXTRD/W has a following condition.  */
- 		      if (*(s + 1) == '?')
- 			(*info->fprintf_func)
- 			  (info->stream, "%s",
- 			   signed_unsigned_names[GET_FIELD (insn, 21, 21)]);
- 		      else
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   signed_unsigned_names[GET_FIELD (insn, 21, 21)]);
- 		      break;
- 		    case 'h':
- 		      (*info->fprintf_func)
- 			(info->stream, "%s",
- 			 mix_half_names[GET_FIELD (insn, 17, 17)]);
- 		      break;
- 		    case 'H':
- 		      (*info->fprintf_func)
- 			(info->stream, "%s ",
- 			 saturation_names[GET_FIELD (insn, 24, 25)]);
- 		      break;
- 		    case '*':
- 		      (*info->fprintf_func)
- 			(info->stream, ",%d%d%d%d ",
- 			 GET_FIELD (insn, 17, 18), GET_FIELD (insn, 20, 21),
- 			 GET_FIELD (insn, 22, 23), GET_FIELD (insn, 24, 25));
- 		      break;
- 
- 		    case 'q':
- 		      {
- 			int m, a;
- 
- 			m = GET_FIELD (insn, 28, 28);
- 			a = GET_FIELD (insn, 29, 29);
- 
- 			if (m && !a)
- 			  fputs_filtered (",ma ", info);
- 			else if (m && a)
- 			  fputs_filtered (",mb ", info);
- 			else
- 			  fputs_filtered (" ", info);
- 			break;
- 		      }
- 
- 		    case 'J':
- 		      {
- 			int opc = GET_FIELD (insn, 0, 5);
- 
- 			if (opc == 0x16 || opc == 0x1e)
- 			  {
- 			    if (GET_FIELD (insn, 29, 29) == 0)
- 			      fputs_filtered (",ma ", info);
- 			    else
- 			      fputs_filtered (",mb ", info);
- 			  }
- 			else
- 			  fputs_filtered (" ", info);
- 			break;
- 		      }
- 
- 		    case 'e':
- 		      {
- 			int opc = GET_FIELD (insn, 0, 5);
- 
- 			if (opc == 0x13 || opc == 0x1b)
- 			  {
- 			    if (GET_FIELD (insn, 18, 18) == 1)
- 			      fputs_filtered (",mb ", info);
- 			    else
- 			      fputs_filtered (",ma ", info);
- 			  }
- 			else if (opc == 0x17 || opc == 0x1f)
- 			  {
- 			    if (GET_FIELD (insn, 31, 31) == 1)
- 			      fputs_filtered (",ma ", info);
- 			    else
- 			      fputs_filtered (",mb ", info);
- 			  }
- 			else
- 			  fputs_filtered (" ", info);
- 
- 			break;
- 		      }
- 		    }
- 		  break;
- 
- 		  /* Handle conditions.  */
- 		case '?':
- 		  {
- 		    s++;
- 		    switch (*s)
- 		      {
- 		      case 'f':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   float_comp_names[GET_FIELD (insn, 27, 31)]);
- 			break;
- 
- 			/* These four conditions are for the set of instructions
- 			   which distinguish true/false conditions by opcode
- 			   rather than by the 'f' bit (sigh): comb, comib,
- 			   addb, addib.  */
- 		      case 't':
- 			fputs_filtered
- 			  (compare_cond_names[GET_FIELD (insn, 16, 18)], info);
- 			break;
- 		      case 'n':
- 			fputs_filtered
- 			  (compare_cond_names[GET_FIELD (insn, 16, 18)
- 					      + GET_FIELD (insn, 4, 4) * 8],
- 			   info);
- 			break;
- 		      case 'N':
- 			fputs_filtered
- 			  (compare_cond_64_names[GET_FIELD (insn, 16, 18)
- 						 + GET_FIELD (insn, 2, 2) * 8],
- 			   info);
- 			break;
- 		      case 'Q':
- 			fputs_filtered
- 			  (cmpib_cond_64_names[GET_FIELD (insn, 16, 18)],
- 			   info);
- 			break;
- 		      case '@':
- 			fputs_filtered
- 			  (add_cond_names[GET_FIELD (insn, 16, 18)
- 					  + GET_FIELD (insn, 4, 4) * 8],
- 			   info);
- 			break;
- 		      case 's':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   compare_cond_names[GET_COND (insn)]);
- 			break;
- 		      case 'S':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   compare_cond_64_names[GET_COND (insn)]);
- 			break;
- 		      case 'a':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   add_cond_names[GET_COND (insn)]);
- 			break;
- 		      case 'A':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   add_cond_64_names[GET_COND (insn)]);
- 			break;
- 		      case 'd':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s",
- 			   add_cond_names[GET_FIELD (insn, 16, 18)]);
- 			break;
- 
- 		      case 'W':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s",
- 			   wide_add_cond_names[GET_FIELD (insn, 16, 18) +
- 					       GET_FIELD (insn, 4, 4) * 8]);
- 			break;
- 
- 		      case 'l':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   logical_cond_names[GET_COND (insn)]);
- 			break;
- 		      case 'L':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   logical_cond_64_names[GET_COND (insn)]);
- 			break;
- 		      case 'u':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   unit_cond_names[GET_COND (insn)]);
- 			break;
- 		      case 'U':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   unit_cond_64_names[GET_COND (insn)]);
- 			break;
- 		      case 'y':
- 		      case 'x':
- 		      case 'b':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s",
- 			   shift_cond_names[GET_FIELD (insn, 16, 18)]);
- 
- 			/* If the next character in args is 'n', it will handle
- 			   putting out the space.  */
- 			if (s[1] != 'n')
- 			  (*info->fprintf_func) (info->stream, " ");
- 			break;
- 		      case 'X':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s ",
- 			   shift_cond_64_names[GET_FIELD (insn, 16, 18)]);
- 			break;
- 		      case 'B':
- 			(*info->fprintf_func)
- 			  (info->stream, "%s",
- 			   bb_cond_64_names[GET_FIELD (insn, 16, 16)]);
- 
- 			/* If the next character in args is 'n', it will handle
- 			   putting out the space.  */
- 			if (s[1] != 'n')
- 			  (*info->fprintf_func) (info->stream, " ");
- 			break;
- 		      }
- 		    break;
- 		  }
- 
- 		case 'V':
- 		  fput_const (extract_5_store (insn), info);
- 		  break;
- 		case 'r':
- 		  fput_const (extract_5r_store (insn), info);
- 		  break;
- 		case 'R':
- 		  fput_const (extract_5R_store (insn), info);
- 		  break;
- 		case 'U':
- 		  fput_const (extract_10U_store (insn), info);
- 		  break;
- 		case 'B':
- 		case 'Q':
- 		  fput_const (extract_5Q_store (insn), info);
- 		  break;
- 		case 'i':
- 		  fput_const (extract_11 (insn), info);
- 		  break;
- 		case 'j':
- 		  fput_const (extract_14 (insn), info);
- 		  break;
- 		case 'k':
- 		  fputs_filtered ("L%", info);
- 		  fput_const (extract_21 (insn), info);
- 		  break;
- 		case '<':
- 		case 'l':
- 		  /* 16-bit long disp., PA2.0 wide only.  */
- 		  fput_const (extract_16 (insn), info);
- 		  break;
- 		case 'n':
- 		  if (insn & 0x2)
- 		    (*info->fprintf_func) (info->stream, ",n ");
- 		  else
- 		    (*info->fprintf_func) (info->stream, " ");
- 		  break;
- 		case 'N':
- 		  if ((insn & 0x20) && s[1])
- 		    (*info->fprintf_func) (info->stream, ",n ");
- 		  else if (insn & 0x20)
- 		    (*info->fprintf_func) (info->stream, ",n");
- 		  else if (s[1])
- 		    (*info->fprintf_func) (info->stream, " ");
- 		  break;
- 		case 'w':
- 		  (*info->print_address_func)
- 		    (memaddr + 8 + extract_12 (insn), info);
- 		  break;
- 		case 'W':
- 		  /* 17 bit PC-relative branch.  */
- 		  (*info->print_address_func)
- 		    ((memaddr + 8 + extract_17 (insn)), info);
- 		  break;
- 		case 'z':
- 		  /* 17 bit displacement.  This is an offset from a register
- 		     so it gets disasssembled as just a number, not any sort
- 		     of address.  */
- 		  fput_const (extract_17 (insn), info);
- 		  break;
- 
- 		case 'Z':
- 		  /* addil %r1 implicit output.  */
- 		  fputs_filtered ("r1", info);
- 		  break;
- 
- 		case 'Y':
- 		  /* be,l %sr0,%r31 implicit output.  */
- 		  fputs_filtered ("sr0,r31", info);
- 		  break;
- 
- 		case '@':
- 		  (*info->fprintf_func) (info->stream, "0");
- 		  break;
- 
- 		case '.':
- 		  (*info->fprintf_func) (info->stream, "%d",
- 					 GET_FIELD (insn, 24, 25));
- 		  break;
- 		case '*':
- 		  (*info->fprintf_func) (info->stream, "%d",
- 					 GET_FIELD (insn, 22, 25));
- 		  break;
- 		case '!':
- 		  fputs_filtered ("sar", info);
- 		  break;
- 		case 'p':
- 		  (*info->fprintf_func) (info->stream, "%d",
- 					 31 - GET_FIELD (insn, 22, 26));
- 		  break;
- 		case '~':
- 		  {
- 		    int num;
- 		    num = GET_FIELD (insn, 20, 20) << 5;
- 		    num |= GET_FIELD (insn, 22, 26);
- 		    (*info->fprintf_func) (info->stream, "%d", 63 - num);
- 		    break;
- 		  }
- 		case 'P':
- 		  (*info->fprintf_func) (info->stream, "%d",
- 					 GET_FIELD (insn, 22, 26));
- 		  break;
- 		case 'q':
- 		  {
- 		    int num;
- 		    num = GET_FIELD (insn, 20, 20) << 5;
- 		    num |= GET_FIELD (insn, 22, 26);
- 		    (*info->fprintf_func) (info->stream, "%d", num);
- 		    break;
- 		  }
- 		case 'T':
- 		  (*info->fprintf_func) (info->stream, "%d",
- 					 32 - GET_FIELD (insn, 27, 31));
- 		  break;
- 		case '%':
- 		  {
- 		    int num;
- 		    num = (GET_FIELD (insn, 23, 23) + 1) * 32;
- 		    num -= GET_FIELD (insn, 27, 31);
- 		    (*info->fprintf_func) (info->stream, "%d", num);
- 		    break;
- 		  }
- 		case '|':
- 		  {
- 		    int num;
- 		    num = (GET_FIELD (insn, 19, 19) + 1) * 32;
- 		    num -= GET_FIELD (insn, 27, 31);
- 		    (*info->fprintf_func) (info->stream, "%d", num);
- 		    break;
- 		  }
- 		case '$':
- 		  fput_const (GET_FIELD (insn, 20, 28), info);
- 		  break;
- 		case 'A':
- 		  fput_const (GET_FIELD (insn, 6, 18), info);
- 		  break;
- 		case 'D':
- 		  fput_const (GET_FIELD (insn, 6, 31), info);
- 		  break;
- 		case 'v':
- 		  (*info->fprintf_func) (info->stream, ",%d",
- 					 GET_FIELD (insn, 23, 25));
- 		  break;
- 		case 'O':
- 		  fput_const ((GET_FIELD (insn, 6,20) << 5 |
- 			       GET_FIELD (insn, 27, 31)), info);
- 		  break;
- 		case 'o':
- 		  fput_const (GET_FIELD (insn, 6, 20), info);
- 		  break;
- 		case '2':
- 		  fput_const ((GET_FIELD (insn, 6, 22) << 5 |
- 			       GET_FIELD (insn, 27, 31)), info);
- 		  break;
- 		case '1':
- 		  fput_const ((GET_FIELD (insn, 11, 20) << 5 |
- 			       GET_FIELD (insn, 27, 31)), info);
- 		  break;
- 		case '0':
- 		  fput_const ((GET_FIELD (insn, 16, 20) << 5 |
- 			       GET_FIELD (insn, 27, 31)), info);
- 		  break;
- 		case 'u':
- 		  (*info->fprintf_func) (info->stream, ",%d",
- 					 GET_FIELD (insn, 23, 25));
- 		  break;
- 		case 'F':
- 		  /* If no destination completer and not before a completer
- 		     for fcmp, need a space here.  */
- 		  if (s[1] == 'G' || s[1] == '?')
- 		    fputs_filtered
- 		      (float_format_names[GET_FIELD (insn, 19, 20)], info);
- 		  else
- 		    (*info->fprintf_func)
- 		      (info->stream, "%s ",
- 		       float_format_names[GET_FIELD (insn, 19, 20)]);
- 		  break;
- 		case 'G':
- 		  (*info->fprintf_func)
- 		    (info->stream, "%s ",
- 		     float_format_names[GET_FIELD (insn, 17, 18)]);
- 		  break;
- 		case 'H':
- 		  if (GET_FIELD (insn, 26, 26) == 1)
- 		    (*info->fprintf_func) (info->stream, "%s ",
- 					   float_format_names[0]);
- 		  else
- 		    (*info->fprintf_func) (info->stream, "%s ",
- 					   float_format_names[1]);
- 		  break;
- 		case 'I':
- 		  /* If no destination completer and not before a completer
- 		     for fcmp, need a space here.  */
- 		  if (s[1] == '?')
- 		    fputs_filtered
- 		      (float_format_names[GET_FIELD (insn, 20, 20)], info);
- 		  else
- 		    (*info->fprintf_func)
- 		      (info->stream, "%s ",
- 		       float_format_names[GET_FIELD (insn, 20, 20)]);
- 		  break;
- 
- 		case 'J':
- 		  fput_const (extract_14 (insn), info);
- 		  break;
- 
- 		case '#':
- 		  {
- 		    int sign = GET_FIELD (insn, 31, 31);
- 		    int imm10 = GET_FIELD (insn, 18, 27);
- 		    int disp;
- 
- 		    if (sign)
- 		      disp = (-1 << 10) | imm10;
- 		    else
- 		      disp = imm10;
- 
- 		    disp <<= 3;
- 		    fput_const (disp, info);
- 		    break;
- 		  }
- 		case 'K':
- 		case 'd':
- 		  {
- 		    int sign = GET_FIELD (insn, 31, 31);
- 		    int imm11 = GET_FIELD (insn, 18, 28);
- 		    int disp;
- 
- 		    if (sign)
- 		      disp = (-1 << 11) | imm11;
- 		    else
- 		      disp = imm11;
- 
- 		    disp <<= 2;
- 		    fput_const (disp, info);
- 		    break;
- 		  }
- 
- 		case '>':
- 		case 'y':
- 		  {
- 		    /* 16-bit long disp., PA2.0 wide only.  */
- 		    int disp = extract_16 (insn);
- 		    disp &= ~3;
- 		    fput_const (disp, info);
- 		    break;
- 		  }
- 
- 		case '&':
- 		  {
- 		    /* 16-bit long disp., PA2.0 wide only.  */
- 		    int disp = extract_16 (insn);
- 		    disp &= ~7;
- 		    fput_const (disp, info);
- 		    break;
- 		  }
- 
- 		case '_':
- 		  break; /* Dealt with by '{' */
- 
- 		case '{':
- 		  {
- 		    int sub = GET_FIELD (insn, 14, 16);
- 		    int df = GET_FIELD (insn, 17, 18);
- 		    int sf = GET_FIELD (insn, 19, 20);
- 		    const char * const * source = float_format_names;
- 		    const char * const * dest = float_format_names;
- 		    const char *t = "";
- 
- 		    if (sub == 4)
- 		      {
- 			fputs_filtered (",UND ", info);
- 			break;
- 		      }
- 		    if ((sub & 3) == 3)
- 		      t = ",t";
- 		    if ((sub & 3) == 1)
- 		      source = sub & 4 ? fcnv_ufixed_names : fcnv_fixed_names;
- 		    if (sub & 2)
- 		      dest = sub & 4 ? fcnv_ufixed_names : fcnv_fixed_names;
- 
- 		    (*info->fprintf_func) (info->stream, "%s%s%s ",
- 					   t, source[sf], dest[df]);
- 		    break;
- 		  }
- 
- 		case 'm':
- 		  {
- 		    int y = GET_FIELD (insn, 16, 18);
- 
- 		    if (y != 1)
- 		      fput_const ((y ^ 1) - 1, info);
- 		  }
- 		  break;
- 
- 		case 'h':
- 		  {
- 		    int cbit;
- 
- 		    cbit = GET_FIELD (insn, 16, 18);
- 
- 		    if (cbit > 0)
- 		      (*info->fprintf_func) (info->stream, ",%d", cbit - 1);
- 		    break;
- 		  }
- 
- 		case '=':
- 		  {
- 		    int cond = GET_FIELD (insn, 27, 31);
- 
- 		    switch (cond)
- 		      {
- 		      case  0: fputs_filtered (" ", info); break;
- 		      case  1: fputs_filtered ("acc ", info); break;
- 		      case  2: fputs_filtered ("rej ", info); break;
- 		      case  5: fputs_filtered ("acc8 ", info); break;
- 		      case  6: fputs_filtered ("rej8 ", info); break;
- 		      case  9: fputs_filtered ("acc6 ", info); break;
- 		      case 13: fputs_filtered ("acc4 ", info); break;
- 		      case 17: fputs_filtered ("acc2 ", info); break;
- 		      default: break;
- 		      }
- 		    break;
- 		  }
- 
- 		case 'X':
- 		  (*info->print_address_func)
- 		    (memaddr + 8 + extract_22 (insn), info);
- 		  break;
- 		case 'L':
- 		  fputs_filtered (",rp", info);
- 		  break;
- 		default:
- 		  (*info->fprintf_func) (info->stream, "%c", *s);
- 		  break;
- 		}
- 	    }
- 	  return sizeof (insn);
- 	}
-     }
-   (*info->fprintf_func) (info->stream, "#%8x", insn);
-   return sizeof (insn);
- }
-diff --git a/disas/m68k.c b/disas/m68k.c
-index 1f16e295ab..a755951bb7 100644
---- a/disas/m68k.c
-+++ b/disas/m68k.c
-@@ -1087,634 +1087,634 @@ static int
- print_insn_arg (const char *d,
- 		unsigned char *buffer,
- 		unsigned char *p0,
- 		bfd_vma addr,
- 		disassemble_info *info)
- {
-   int val = 0;
-   int place = d[1];
-   unsigned char *p = p0;
-   int regno;
-   const char *regname;
-   unsigned char *p1;
-   double flval;
-   int flt_p;
-   bfd_signed_vma disp;
-   unsigned int uval;
- 
-   switch (*d)
-     {
-     case 'c':		/* Cache identifier.  */
-       {
-         static const char *const cacheFieldName[] = { "nc", "dc", "ic", "bc" };
-         val = fetch_arg (buffer, place, 2, info);
-         (*info->fprintf_func) (info->stream, "%s", cacheFieldName[val]);
-         break;
-       }
- 
-     case 'a':		/* Address register indirect only. Cf. case '+'.  */
-       {
-         (*info->fprintf_func)
- 	  (info->stream,
- 	   "%s@",
- 	   reg_names[fetch_arg (buffer, place, 3, info) + 8]);
-         break;
-       }
- 
-     case '_':		/* 32-bit absolute address for move16.  */
-       {
-         uval = NEXTULONG (p);
- 	(*info->print_address_func) (uval, info);
-         break;
-       }
- 
-     case 'C':
-       (*info->fprintf_func) (info->stream, "%%ccr");
-       break;
- 
-     case 'S':
-       (*info->fprintf_func) (info->stream, "%%sr");
-       break;
- 
-     case 'U':
-       (*info->fprintf_func) (info->stream, "%%usp");
-       break;
- 
-     case 'E':
-       (*info->fprintf_func) (info->stream, "%%acc");
-       break;
- 
-     case 'G':
-       (*info->fprintf_func) (info->stream, "%%macsr");
-       break;
- 
-     case 'H':
-       (*info->fprintf_func) (info->stream, "%%mask");
-       break;
- 
-     case 'J':
-       {
- 	/* FIXME: There's a problem here, different m68k processors call the
- 	   same address different names. This table can't get it right
- 	   because it doesn't know which processor it's disassembling for.  */
- 	static const struct { const char *name; int value; } names[]
- 	  = {{"%sfc", 0x000}, {"%dfc", 0x001}, {"%cacr", 0x002},
- 	     {"%tc",  0x003}, {"%itt0",0x004}, {"%itt1", 0x005},
-              {"%dtt0",0x006}, {"%dtt1",0x007}, {"%buscr",0x008},
- 	     {"%usp", 0x800}, {"%vbr", 0x801}, {"%caar", 0x802},
- 	     {"%msp", 0x803}, {"%isp", 0x804},
- 	     {"%flashbar", 0xc04}, {"%rambar", 0xc05}, /* mcf528x added these.  */
- 
- 	     /* Should we be calling this psr like we do in case 'Y'?  */
- 	     {"%mmusr",0x805},
- 
-              {"%urp", 0x806}, {"%srp", 0x807}, {"%pcr", 0x808}};
- 
- 	val = fetch_arg (buffer, place, 12, info);
- 	for (regno = sizeof names / sizeof names[0] - 1; regno >= 0; regno--)
- 	  if (names[regno].value == val)
- 	    {
- 	      (*info->fprintf_func) (info->stream, "%s", names[regno].name);
- 	      break;
- 	    }
- 	if (regno < 0)
- 	  (*info->fprintf_func) (info->stream, "%d", val);
-       }
-       break;
- 
-     case 'Q':
-       val = fetch_arg (buffer, place, 3, info);
-       /* 0 means 8, except for the bkpt instruction... */
-       if (val == 0 && d[1] != 's')
- 	val = 8;
-       (*info->fprintf_func) (info->stream, "#%d", val);
-       break;
- 
-     case 'x':
-       val = fetch_arg (buffer, place, 3, info);
-       /* 0 means -1.  */
-       if (val == 0)
- 	val = -1;
-       (*info->fprintf_func) (info->stream, "#%d", val);
-       break;
- 
-     case 'M':
-       if (place == 'h')
- 	{
- 	  static const char *const scalefactor_name[] = { "<<", ">>" };
- 	  val = fetch_arg (buffer, place, 1, info);
- 	  (*info->fprintf_func) (info->stream, "%s", scalefactor_name[val]);
- 	}
-       else
- 	{
- 	  val = fetch_arg (buffer, place, 8, info);
- 	  if (val & 0x80)
- 	    val = val - 0x100;
- 	  (*info->fprintf_func) (info->stream, "#%d", val);
- 	}
-       break;
- 
-     case 'T':
-       val = fetch_arg (buffer, place, 4, info);
-       (*info->fprintf_func) (info->stream, "#%d", val);
-       break;
- 
-     case 'D':
-       (*info->fprintf_func) (info->stream, "%s",
- 			     reg_names[fetch_arg (buffer, place, 3, info)]);
-       break;
- 
-     case 'A':
-       (*info->fprintf_func)
- 	(info->stream, "%s",
- 	 reg_names[fetch_arg (buffer, place, 3, info) + 010]);
-       break;
- 
-     case 'R':
-       (*info->fprintf_func)
- 	(info->stream, "%s",
- 	 reg_names[fetch_arg (buffer, place, 4, info)]);
-       break;
- 
-     case 'r':
-       regno = fetch_arg (buffer, place, 4, info);
-       if (regno > 7)
- 	(*info->fprintf_func) (info->stream, "%s@", reg_names[regno]);
-       else
- 	(*info->fprintf_func) (info->stream, "@(%s)", reg_names[regno]);
-       break;
- 
-     case 'F':
-       (*info->fprintf_func)
- 	(info->stream, "%%fp%d",
- 	 fetch_arg (buffer, place, 3, info));
-       break;
- 
-     case 'O':
-       val = fetch_arg (buffer, place, 6, info);
-       if (val & 0x20)
- 	(*info->fprintf_func) (info->stream, "%s", reg_names[val & 7]);
-       else
- 	(*info->fprintf_func) (info->stream, "%d", val);
-       break;
- 
-     case '+':
-       (*info->fprintf_func)
- 	(info->stream, "%s@+",
- 	 reg_names[fetch_arg (buffer, place, 3, info) + 8]);
-       break;
- 
-     case '-':
-       (*info->fprintf_func)
- 	(info->stream, "%s@-",
- 	 reg_names[fetch_arg (buffer, place, 3, info) + 8]);
-       break;
- 
-     case 'k':
-       if (place == 'k')
- 	(*info->fprintf_func)
- 	  (info->stream, "{%s}",
- 	   reg_names[fetch_arg (buffer, place, 3, info)]);
-       else if (place == 'C')
- 	{
- 	  val = fetch_arg (buffer, place, 7, info);
- 	  if (val > 63)		/* This is a signed constant.  */
- 	    val -= 128;
- 	  (*info->fprintf_func) (info->stream, "{#%d}", val);
- 	}
-       else
- 	return -2;
-       break;
- 
-     case '#':
-     case '^':
-       p1 = buffer + (*d == '#' ? 2 : 4);
-       if (place == 's')
- 	val = fetch_arg (buffer, place, 4, info);
-       else if (place == 'C')
- 	val = fetch_arg (buffer, place, 7, info);
-       else if (place == '8')
- 	val = fetch_arg (buffer, place, 3, info);
-       else if (place == '3')
- 	val = fetch_arg (buffer, place, 8, info);
-       else if (place == 'b')
- 	val = NEXTBYTE (p1);
-       else if (place == 'w' || place == 'W')
- 	val = NEXTWORD (p1);
-       else if (place == 'l')
- 	val = NEXTLONG (p1);
-       else
- 	return -2;
-       (*info->fprintf_func) (info->stream, "#%d", val);
-       break;
- 
-     case 'B':
-       if (place == 'b')
- 	disp = NEXTBYTE (p);
-       else if (place == 'B')
- 	disp = COERCE_SIGNED_CHAR (buffer[1]);
-       else if (place == 'w' || place == 'W')
- 	disp = NEXTWORD (p);
-       else if (place == 'l' || place == 'L' || place == 'C')
- 	disp = NEXTLONG (p);
-       else if (place == 'g')
- 	{
- 	  disp = NEXTBYTE (buffer);
- 	  if (disp == 0)
- 	    disp = NEXTWORD (p);
- 	  else if (disp == -1)
- 	    disp = NEXTLONG (p);
- 	}
-       else if (place == 'c')
- 	{
- 	  if (buffer[1] & 0x40)		/* If bit six is one, long offset.  */
- 	    disp = NEXTLONG (p);
- 	  else
- 	    disp = NEXTWORD (p);
- 	}
-       else
- 	return -2;
- 
-       (*info->print_address_func) (addr + disp, info);
-       break;
- 
-     case 'd':
-       val = NEXTWORD (p);
-       (*info->fprintf_func)
- 	(info->stream, "%s@(%d)",
- 	 reg_names[fetch_arg (buffer, place, 3, info) + 8], val);
-       break;
- 
-     case 's':
-       (*info->fprintf_func) (info->stream, "%s",
- 			     fpcr_names[fetch_arg (buffer, place, 3, info)]);
-       break;
- 
-     case 'e':
-       val = fetch_arg(buffer, place, 2, info);
-       (*info->fprintf_func) (info->stream, "%%acc%d", val);
-       break;
- 
-     case 'g':
-       val = fetch_arg(buffer, place, 1, info);
-       (*info->fprintf_func) (info->stream, "%%accext%s", val==0 ? "01" : "23");
-       break;
- 
-     case 'i':
-       val = fetch_arg(buffer, place, 2, info);
-       if (val == 1)
- 	(*info->fprintf_func) (info->stream, "<<");
-       else if (val == 3)
- 	(*info->fprintf_func) (info->stream, ">>");
-       else
- 	return -1;
-       break;
- 
-     case 'I':
-       /* Get coprocessor ID... */
-       val = fetch_arg (buffer, 'd', 3, info);
- 
-       if (val != 1)				/* Unusual coprocessor ID?  */
- 	(*info->fprintf_func) (info->stream, "(cpid=%d) ", val);
-       break;
- 
-     case '4':
-     case '*':
-     case '~':
-     case '%':
-     case ';':
-     case '@':
-     case '!':
-     case '$':
-     case '?':
-     case '/':
-     case '&':
-     case '|':
-     case '<':
-     case '>':
-     case 'm':
-     case 'n':
-     case 'o':
-     case 'p':
-     case 'q':
-     case 'v':
-     case 'b':
-     case 'w':
-     case 'y':
-     case 'z':
-       if (place == 'd')
- 	{
- 	  val = fetch_arg (buffer, 'x', 6, info);
- 	  val = ((val & 7) << 3) + ((val >> 3) & 7);
- 	}
-       else
- 	val = fetch_arg (buffer, 's', 6, info);
- 
-       /* If the <ea> is invalid for *d, then reject this match.  */
-       if (!m68k_valid_ea (*d, val))
- 	return -1;
- 
-       /* Get register number assuming address register.  */
-       regno = (val & 7) + 8;
-       regname = reg_names[regno];
-       switch (val >> 3)
- 	{
- 	case 0:
- 	  (*info->fprintf_func) (info->stream, "%s", reg_names[val]);
- 	  break;
- 
- 	case 1:
- 	  (*info->fprintf_func) (info->stream, "%s", regname);
- 	  break;
- 
- 	case 2:
- 	  (*info->fprintf_func) (info->stream, "%s@", regname);
- 	  break;
- 
- 	case 3:
- 	  (*info->fprintf_func) (info->stream, "%s@+", regname);
- 	  break;
- 
- 	case 4:
- 	  (*info->fprintf_func) (info->stream, "%s@-", regname);
- 	  break;
- 
- 	case 5:
- 	  val = NEXTWORD (p);
- 	  (*info->fprintf_func) (info->stream, "%s@(%d)", regname, val);
- 	  break;
- 
- 	case 6:
- 	  p = print_indexed (regno, p, addr, info);
- 	  break;
- 
- 	case 7:
- 	  switch (val & 7)
- 	    {
- 	    case 0:
- 	      val = NEXTWORD (p);
- 	      (*info->print_address_func) (val, info);
- 	      break;
- 
- 	    case 1:
- 	      uval = NEXTULONG (p);
- 	      (*info->print_address_func) (uval, info);
- 	      break;
- 
- 	    case 2:
- 	      val = NEXTWORD (p);
- 	      (*info->fprintf_func) (info->stream, "%%pc@(");
- 	      (*info->print_address_func) (addr + val, info);
- 	      (*info->fprintf_func) (info->stream, ")");
- 	      break;
- 
- 	    case 3:
- 	      p = print_indexed (-1, p, addr, info);
- 	      break;
- 
- 	    case 4:
- 	      flt_p = 1;	/* Assume it's a float... */
- 	      switch (place)
- 	      {
- 		case 'b':
- 		  val = NEXTBYTE (p);
- 		  flt_p = 0;
- 		  break;
- 
- 		case 'w':
- 		  val = NEXTWORD (p);
- 		  flt_p = 0;
- 		  break;
- 
- 		case 'l':
- 		  val = NEXTLONG (p);
- 		  flt_p = 0;
- 		  break;
- 
- 		case 'f':
- 		  NEXTSINGLE (flval, p);
- 		  break;
- 
- 		case 'F':
- 		  NEXTDOUBLE (flval, p);
- 		  break;
- 
- 		case 'x':
- 		  NEXTEXTEND (flval, p);
- 		  break;
- 
- 		case 'p':
- 		  flval = NEXTPACKED (p);
- 		  break;
- 
- 		default:
- 		  return -1;
- 	      }
- 	      if (flt_p)	/* Print a float? */
- 		(*info->fprintf_func) (info->stream, "#%g", flval);
- 	      else
- 		(*info->fprintf_func) (info->stream, "#%d", val);
- 	      break;
- 
- 	    default:
- 	      return -1;
- 	    }
- 	}
- 
-       /* If place is '/', then this is the case of the mask bit for
- 	 mac/emac loads. Now that the arg has been printed, grab the
- 	 mask bit and if set, add a '&' to the arg.  */
-       if (place == '/')
- 	{
- 	  val = fetch_arg (buffer, place, 1, info);
- 	  if (val)
- 	    info->fprintf_func (info->stream, "&");
- 	}
-       break;
- 
-     case 'L':
-     case 'l':
- 	if (place == 'w')
- 	  {
- 	    char doneany;
- 	    p1 = buffer + 2;
- 	    val = NEXTWORD (p1);
- 	    /* Move the pointer ahead if this point is farther ahead
- 	       than the last.  */
- 	    p = p1 > p ? p1 : p;
- 	    if (val == 0)
- 	      {
- 		(*info->fprintf_func) (info->stream, "#0");
- 		break;
- 	      }
- 	    if (*d == 'l')
- 	      {
- 		int newval = 0;
- 
- 		for (regno = 0; regno < 16; ++regno)
- 		  if (val & (0x8000 >> regno))
- 		    newval |= 1 << regno;
- 		val = newval;
- 	      }
- 	    val &= 0xffff;
- 	    doneany = 0;
- 	    for (regno = 0; regno < 16; ++regno)
- 	      if (val & (1 << regno))
- 		{
- 		  int first_regno;
- 
- 		  if (doneany)
- 		    (*info->fprintf_func) (info->stream, "/");
- 		  doneany = 1;
- 		  (*info->fprintf_func) (info->stream, "%s", reg_names[regno]);
- 		  first_regno = regno;
- 		  while (val & (1 << (regno + 1)))
- 		    ++regno;
- 		  if (regno > first_regno)
- 		    (*info->fprintf_func) (info->stream, "-%s",
- 					   reg_names[regno]);
- 		}
- 	  }
- 	else if (place == '3')
- 	  {
- 	    /* `fmovem' insn.  */
- 	    char doneany;
- 	    val = fetch_arg (buffer, place, 8, info);
- 	    if (val == 0)
- 	      {
- 		(*info->fprintf_func) (info->stream, "#0");
- 		break;
- 	      }
- 	    if (*d == 'l')
- 	      {
- 		int newval = 0;
- 
- 		for (regno = 0; regno < 8; ++regno)
- 		  if (val & (0x80 >> regno))
- 		    newval |= 1 << regno;
- 		val = newval;
- 	      }
- 	    val &= 0xff;
- 	    doneany = 0;
- 	    for (regno = 0; regno < 8; ++regno)
- 	      if (val & (1 << regno))
- 		{
- 		  int first_regno;
- 		  if (doneany)
- 		    (*info->fprintf_func) (info->stream, "/");
- 		  doneany = 1;
- 		  (*info->fprintf_func) (info->stream, "%%fp%d", regno);
- 		  first_regno = regno;
- 		  while (val & (1 << (regno + 1)))
- 		    ++regno;
- 		  if (regno > first_regno)
- 		    (*info->fprintf_func) (info->stream, "-%%fp%d", regno);
- 		}
- 	  }
- 	else if (place == '8')
- 	  {
- 	    /* fmoveml for FP status registers.  */
- 	    (*info->fprintf_func) (info->stream, "%s",
- 				   fpcr_names[fetch_arg (buffer, place, 3,
- 							 info)]);
- 	  }
- 	else
- 	  return -2;
-       break;
- 
-     case 'X':
-       place = '8';
--      /* fall through */
-+      fallthrough;
-     case 'Y':
-     case 'Z':
-     case 'W':
-     case '0':
-     case '1':
-     case '2':
-     case '3':
-       {
- 	int reg = fetch_arg (buffer, place, 5, info);
-         const char *name = 0;
- 
- 	switch (reg)
- 	  {
- 	  case 2: name = "%tt0"; break;
- 	  case 3: name = "%tt1"; break;
- 	  case 0x10: name = "%tc"; break;
- 	  case 0x11: name = "%drp"; break;
- 	  case 0x12: name = "%srp"; break;
- 	  case 0x13: name = "%crp"; break;
- 	  case 0x14: name = "%cal"; break;
- 	  case 0x15: name = "%val"; break;
- 	  case 0x16: name = "%scc"; break;
- 	  case 0x17: name = "%ac"; break;
- 	  case 0x18: name = "%psr"; break;
- 	  case 0x19: name = "%pcsr"; break;
- 	  case 0x1c:
- 	  case 0x1d:
- 	    {
- 	      int break_reg = ((buffer[3] >> 2) & 7);
- 
- 	      (*info->fprintf_func)
- 		(info->stream, reg == 0x1c ? "%%bad%d" : "%%bac%d",
- 		 break_reg);
- 	    }
- 	    break;
- 	  default:
- 	    (*info->fprintf_func) (info->stream, "<mmu register %d>", reg);
- 	  }
- 	if (name)
- 	  (*info->fprintf_func) (info->stream, "%s", name);
-       }
-       break;
- 
-     case 'f':
-       {
- 	int fc = fetch_arg (buffer, place, 5, info);
- 
- 	if (fc == 1)
- 	  (*info->fprintf_func) (info->stream, "%%dfc");
- 	else if (fc == 0)
- 	  (*info->fprintf_func) (info->stream, "%%sfc");
- 	else
- 	  /* xgettext:c-format */
- 	  (*info->fprintf_func) (info->stream, "<function code %d>", fc);
-       }
-       break;
- 
-     case 'V':
-       (*info->fprintf_func) (info->stream, "%%val");
-       break;
- 
-     case 't':
-       {
- 	int level = fetch_arg (buffer, place, 3, info);
- 
- 	(*info->fprintf_func) (info->stream, "%d", level);
-       }
-       break;
- 
-     case 'u':
-       {
- 	short is_upper = 0;
- 	int reg = fetch_arg (buffer, place, 5, info);
- 
- 	if (reg & 0x10)
- 	  {
- 	    is_upper = 1;
- 	    reg &= 0xf;
- 	  }
- 	(*info->fprintf_func) (info->stream, "%s%s",
- 			       reg_half_names[reg],
- 			       is_upper ? "u" : "l");
-       }
-       break;
- 
-     default:
-       return -2;
-     }
- 
-   return p - p0;
- }
- 
- /* Try to match the current instruction to best and if so, return the
-    number of bytes consumed from the instruction stream, else zero.  */
-diff --git a/disas/sh4.c b/disas/sh4.c
-index dcdbdf26d8..3c51fd707d 100644
---- a/disas/sh4.c
-+++ b/disas/sh4.c
-@@ -1509,565 +1509,567 @@ int
- print_insn_sh (bfd_vma memaddr, struct disassemble_info *info)
- {
-   fprintf_function fprintf_fn = info->fprintf_func;
-   void *stream = info->stream;
-   unsigned char insn[4];
-   unsigned char nibs[8];
-   int status;
-   bfd_vma relmask = ~(bfd_vma) 0;
-   const sh_opcode_info *op;
-   unsigned int target_arch;
-   int allow_op32;
- 
-   switch (info->mach)
-     {
-     case bfd_mach_sh:
-       target_arch = arch_sh1;
-       break;
-     case bfd_mach_sh4:
-       target_arch = arch_sh4;
-       break;
-     case bfd_mach_sh5:
- #ifdef INCLUDE_SHMEDIA
-       status = print_insn_sh64 (memaddr, info);
-       if (status != -2)
- 	return status;
- #endif
-       /* When we get here for sh64, it's because we want to disassemble
- 	 SHcompact, i.e. arch_sh4.  */
-       target_arch = arch_sh4;
-       break;
-     default:
-       fprintf (stderr, "sh architecture not supported\n");
-       return -1;
-     }
- 
-   status = info->read_memory_func (memaddr, insn, 2, info);
- 
-   if (status != 0)
-     {
-       info->memory_error_func (status, memaddr, info);
-       return -1;
-     }
- 
-   if (info->endian == BFD_ENDIAN_LITTLE)
-     {
-       nibs[0] = (insn[1] >> 4) & 0xf;
-       nibs[1] = insn[1] & 0xf;
- 
-       nibs[2] = (insn[0] >> 4) & 0xf;
-       nibs[3] = insn[0] & 0xf;
-     }
-   else
-     {
-       nibs[0] = (insn[0] >> 4) & 0xf;
-       nibs[1] = insn[0] & 0xf;
- 
-       nibs[2] = (insn[1] >> 4) & 0xf;
-       nibs[3] = insn[1] & 0xf;
-     }
-   status = info->read_memory_func (memaddr + 2, insn + 2, 2, info);
-   if (status != 0)
-     allow_op32 = 0;
-   else
-     {
-       allow_op32 = 1;
- 
-       if (info->endian == BFD_ENDIAN_LITTLE)
- 	{
- 	  nibs[4] = (insn[3] >> 4) & 0xf;
- 	  nibs[5] = insn[3] & 0xf;
- 
- 	  nibs[6] = (insn[2] >> 4) & 0xf;
- 	  nibs[7] = insn[2] & 0xf;
- 	}
-       else
- 	{
- 	  nibs[4] = (insn[2] >> 4) & 0xf;
- 	  nibs[5] = insn[2] & 0xf;
- 
- 	  nibs[6] = (insn[3] >> 4) & 0xf;
- 	  nibs[7] = insn[3] & 0xf;
- 	}
-     }
- 
-   if (nibs[0] == 0xf && (nibs[1] & 4) == 0
-       && SH_MERGE_ARCH_SET_VALID (target_arch, arch_sh_dsp_up))
-     {
-       if (nibs[1] & 8)
- 	{
- 	  int field_b;
- 
- 	  status = info->read_memory_func (memaddr + 2, insn, 2, info);
- 
- 	  if (status != 0)
- 	    {
- 	      info->memory_error_func (status, memaddr + 2, info);
- 	      return -1;
- 	    }
- 
- 	  if (info->endian == BFD_ENDIAN_LITTLE)
- 	    field_b = insn[1] << 8 | insn[0];
- 	  else
- 	    field_b = insn[0] << 8 | insn[1];
- 
- 	  print_insn_ppi (field_b, info);
- 	  print_insn_ddt ((nibs[1] << 8) | (nibs[2] << 4) | nibs[3], info);
- 	  return 4;
- 	}
-       print_insn_ddt ((nibs[1] << 8) | (nibs[2] << 4) | nibs[3], info);
-       return 2;
-     }
-   for (op = sh_table; op->name; op++)
-     {
-       int n;
-       int imm = 0;
-       int rn = 0;
-       int rm = 0;
-       int rb = 0;
-       int disp_pc;
-       bfd_vma disp_pc_addr = 0;
-       int disp = 0;
-       int has_disp = 0;
-       int max_n = SH_MERGE_ARCH_SET (op->arch, arch_op32) ? 8 : 4;
- 
-       if (!allow_op32
- 	  && SH_MERGE_ARCH_SET (op->arch, arch_op32))
- 	goto fail;
- 
-       if (!SH_MERGE_ARCH_SET_VALID (op->arch, target_arch))
- 	goto fail;
-       for (n = 0; n < max_n; n++)
- 	{
- 	  int i = op->nibbles[n];
- 
- 	  if (i < 16)
- 	    {
- 	      if (nibs[n] == i)
- 		continue;
- 	      goto fail;
- 	    }
- 	  switch (i)
- 	    {
- 	    case BRANCH_8:
- 	      imm = (nibs[2] << 4) | (nibs[3]);
- 	      if (imm & 0x80)
- 		imm |= ~0xff;
- 	      imm = ((char) imm) * 2 + 4;
- 	      goto ok;
- 	    case BRANCH_12:
- 	      imm = ((nibs[1]) << 8) | (nibs[2] << 4) | (nibs[3]);
- 	      if (imm & 0x800)
- 		imm |= ~0xfff;
- 	      imm = imm * 2 + 4;
- 	      goto ok;
- 	    case IMM0_3c:
- 	      if (nibs[3] & 0x8)
- 		goto fail;
- 	      imm = nibs[3] & 0x7;
- 	      break;
- 	    case IMM0_3s:
- 	      if (!(nibs[3] & 0x8))
- 		goto fail;
- 	      imm = nibs[3] & 0x7;
- 	      break;
- 	    case IMM0_3Uc:
- 	      if (nibs[2] & 0x8)
- 		goto fail;
- 	      imm = nibs[2] & 0x7;
- 	      break;
- 	    case IMM0_3Us:
- 	      if (!(nibs[2] & 0x8))
- 		goto fail;
- 	      imm = nibs[2] & 0x7;
- 	      break;
- 	    case DISP0_12:
- 	    case DISP1_12:
- 	      disp = (nibs[5] << 8) | (nibs[6] << 4) | nibs[7];
- 	      has_disp = 1;
- 	      goto ok;
- 	    case DISP0_12BY2:
- 	    case DISP1_12BY2:
- 	      disp = ((nibs[5] << 8) | (nibs[6] << 4) | nibs[7]) << 1;
- 	      relmask = ~(bfd_vma) 1;
- 	      has_disp = 1;
- 	      goto ok;
- 	    case DISP0_12BY4:
- 	    case DISP1_12BY4:
- 	      disp = ((nibs[5] << 8) | (nibs[6] << 4) | nibs[7]) << 2;
- 	      relmask = ~(bfd_vma) 3;
- 	      has_disp = 1;
- 	      goto ok;
- 	    case DISP0_12BY8:
- 	    case DISP1_12BY8:
- 	      disp = ((nibs[5] << 8) | (nibs[6] << 4) | nibs[7]) << 3;
- 	      relmask = ~(bfd_vma) 7;
- 	      has_disp = 1;
- 	      goto ok;
- 	    case IMM0_20_4:
- 	      break;
- 	    case IMM0_20:
- 	      imm = ((nibs[2] << 16) | (nibs[4] << 12) | (nibs[5] << 8)
- 		     | (nibs[6] << 4) | nibs[7]);
- 	      if (imm & 0x80000)
- 		imm -= 0x100000;
- 	      goto ok;
- 	    case IMM0_20BY8:
- 	      imm = ((nibs[2] << 16) | (nibs[4] << 12) | (nibs[5] << 8)
- 		     | (nibs[6] << 4) | nibs[7]);
- 	      imm <<= 8;
- 	      if (imm & 0x8000000)
- 		imm -= 0x10000000;
- 	      goto ok;
- 	    case IMM0_4:
- 	    case IMM1_4:
- 	      imm = nibs[3];
- 	      goto ok;
- 	    case IMM0_4BY2:
- 	    case IMM1_4BY2:
- 	      imm = nibs[3] << 1;
- 	      goto ok;
- 	    case IMM0_4BY4:
- 	    case IMM1_4BY4:
- 	      imm = nibs[3] << 2;
- 	      goto ok;
- 	    case IMM0_8:
- 	    case IMM1_8:
- 	      imm = (nibs[2] << 4) | nibs[3];
- 	      disp = imm;
- 	      has_disp = 1;
- 	      if (imm & 0x80)
- 		imm -= 0x100;
- 	      goto ok;
- 	    case PCRELIMM_8BY2:
- 	      imm = ((nibs[2] << 4) | nibs[3]) << 1;
- 	      relmask = ~(bfd_vma) 1;
- 	      goto ok;
- 	    case PCRELIMM_8BY4:
- 	      imm = ((nibs[2] << 4) | nibs[3]) << 2;
- 	      relmask = ~(bfd_vma) 3;
- 	      goto ok;
- 	    case IMM0_8BY2:
- 	    case IMM1_8BY2:
- 	      imm = ((nibs[2] << 4) | nibs[3]) << 1;
- 	      goto ok;
- 	    case IMM0_8BY4:
- 	    case IMM1_8BY4:
- 	      imm = ((nibs[2] << 4) | nibs[3]) << 2;
- 	      goto ok;
- 	    case REG_N_D:
- 	      if ((nibs[n] & 1) != 0)
- 		goto fail;
--	      /* fall through */
-+        fallthrough;
- 	    case REG_N:
- 	      rn = nibs[n];
- 	      break;
- 	    case REG_M:
- 	      rm = nibs[n];
- 	      break;
- 	    case REG_N_B01:
- 	      if ((nibs[n] & 0x3) != 1 /* binary 01 */)
- 		goto fail;
- 	      rn = (nibs[n] & 0xc) >> 2;
- 	      break;
- 	    case REG_NM:
- 	      rn = (nibs[n] & 0xc) >> 2;
- 	      rm = (nibs[n] & 0x3);
- 	      break;
- 	    case REG_B:
- 	      rb = nibs[n] & 0x07;
- 	      break;
- 	    case SDT_REG_N:
- 	      /* sh-dsp: single data transfer.  */
- 	      rn = nibs[n];
- 	      if ((rn & 0xc) != 4)
- 		goto fail;
- 	      rn = rn & 0x3;
- 	      rn |= (!(rn & 2)) << 2;
- 	      break;
- 	    case PPI:
- 	    case REPEAT:
- 	      goto fail;
- 	    default:
- 	      abort ();
- 	    }
- 	}
- 
-     ok:
-       /* sh2a has D_REG but not X_REG.  We don't know the pattern
- 	 doesn't match unless we check the output args to see if they
- 	 make sense.  */
-       if (target_arch == arch_sh2a
- 	  && ((op->arg[0] == DX_REG_M && (rm & 1) != 0)
- 	      || (op->arg[1] == DX_REG_N && (rn & 1) != 0)))
- 	goto fail;
- 
-       fprintf_fn (stream, "%s\t", op->name);
-       disp_pc = 0;
-       for (n = 0; n < 3 && op->arg[n] != A_END; n++)
- 	{
- 	  if (n && op->arg[1] != A_END)
- 	    fprintf_fn (stream, ",");
- 	  switch (op->arg[n])
- 	    {
- 	    case A_IMM:
- 	      fprintf_fn (stream, "#%d", imm);
- 	      break;
- 	    case A_R0:
- 	      fprintf_fn (stream, "r0");
- 	      break;
- 	    case A_REG_N:
- 	      fprintf_fn (stream, "r%d", rn);
- 	      break;
- 	    case A_INC_N:
- 	    case AS_INC_N:
- 	      fprintf_fn (stream, "@r%d+", rn);
- 	      break;
- 	    case A_DEC_N:
- 	    case AS_DEC_N:
- 	      fprintf_fn (stream, "@-r%d", rn);
- 	      break;
- 	    case A_IND_N:
- 	    case AS_IND_N:
- 	      fprintf_fn (stream, "@r%d", rn);
- 	      break;
- 	    case A_DISP_REG_N:
- 	      fprintf_fn (stream, "@(%d,r%d)", has_disp?disp:imm, rn);
- 	      break;
- 	    case AS_PMOD_N:
- 	      fprintf_fn (stream, "@r%d+r8", rn);
- 	      break;
- 	    case A_REG_M:
- 	      fprintf_fn (stream, "r%d", rm);
- 	      break;
- 	    case A_INC_M:
- 	      fprintf_fn (stream, "@r%d+", rm);
- 	      break;
- 	    case A_DEC_M:
- 	      fprintf_fn (stream, "@-r%d", rm);
- 	      break;
- 	    case A_IND_M:
- 	      fprintf_fn (stream, "@r%d", rm);
- 	      break;
- 	    case A_DISP_REG_M:
- 	      fprintf_fn (stream, "@(%d,r%d)", has_disp?disp:imm, rm);
- 	      break;
- 	    case A_REG_B:
- 	      fprintf_fn (stream, "r%d_bank", rb);
- 	      break;
- 	    case A_DISP_PC:
- 	      disp_pc = 1;
- 	      disp_pc_addr = imm + 4 + (memaddr & relmask);
- 	      (*info->print_address_func) (disp_pc_addr, info);
- 	      break;
- 	    case A_IND_R0_REG_N:
- 	      fprintf_fn (stream, "@(r0,r%d)", rn);
- 	      break;
- 	    case A_IND_R0_REG_M:
- 	      fprintf_fn (stream, "@(r0,r%d)", rm);
- 	      break;
- 	    case A_DISP_GBR:
- 	      fprintf_fn (stream, "@(%d,gbr)", has_disp?disp:imm);
- 	      break;
- 	    case A_TBR:
- 	      fprintf_fn (stream, "tbr");
- 	      break;
- 	    case A_DISP2_TBR:
- 	      fprintf_fn (stream, "@@(%d,tbr)", has_disp?disp:imm);
- 	      break;
- 	    case A_INC_R15:
- 	      fprintf_fn (stream, "@r15+");
- 	      break;
- 	    case A_DEC_R15:
- 	      fprintf_fn (stream, "@-r15");
- 	      break;
- 	    case A_R0_GBR:
- 	      fprintf_fn (stream, "@(r0,gbr)");
- 	      break;
- 	    case A_BDISP12:
- 	    case A_BDISP8:
-                 {
-                     bfd_vma addr;
-                     addr = imm + memaddr;
-                     (*info->print_address_func) (addr, info);
-                 }
- 	      break;
- 	    case A_SR:
- 	      fprintf_fn (stream, "sr");
- 	      break;
- 	    case A_GBR:
- 	      fprintf_fn (stream, "gbr");
- 	      break;
- 	    case A_VBR:
- 	      fprintf_fn (stream, "vbr");
- 	      break;
- 	    case A_DSR:
- 	      fprintf_fn (stream, "dsr");
- 	      break;
- 	    case A_MOD:
- 	      fprintf_fn (stream, "mod");
- 	      break;
- 	    case A_RE:
- 	      fprintf_fn (stream, "re");
- 	      break;
- 	    case A_RS:
- 	      fprintf_fn (stream, "rs");
- 	      break;
- 	    case A_A0:
- 	      fprintf_fn (stream, "a0");
- 	      break;
- 	    case A_X0:
- 	      fprintf_fn (stream, "x0");
- 	      break;
- 	    case A_X1:
- 	      fprintf_fn (stream, "x1");
- 	      break;
- 	    case A_Y0:
- 	      fprintf_fn (stream, "y0");
- 	      break;
- 	    case A_Y1:
- 	      fprintf_fn (stream, "y1");
- 	      break;
- 	    case DSP_REG_M:
- 	      print_dsp_reg (rm, fprintf_fn, stream);
- 	      break;
- 	    case A_SSR:
- 	      fprintf_fn (stream, "ssr");
- 	      break;
- 	    case A_SPC:
- 	      fprintf_fn (stream, "spc");
- 	      break;
- 	    case A_MACH:
- 	      fprintf_fn (stream, "mach");
- 	      break;
- 	    case A_MACL:
- 	      fprintf_fn (stream, "macl");
- 	      break;
- 	    case A_PR:
- 	      fprintf_fn (stream, "pr");
- 	      break;
- 	    case A_SGR:
- 	      fprintf_fn (stream, "sgr");
- 	      break;
- 	    case A_DBR:
- 	      fprintf_fn (stream, "dbr");
- 	      break;
- 	    case F_REG_N:
- 	      fprintf_fn (stream, "fr%d", rn);
- 	      break;
- 	    case F_REG_M:
- 	      fprintf_fn (stream, "fr%d", rm);
- 	      break;
- 	    case DX_REG_N:
- 	      if (rn & 1)
- 		{
- 		  fprintf_fn (stream, "xd%d", rn & ~1);
- 		  break;
- 		}
- 	      /* fallthrough */
-+        fallthrough;
- 	    case D_REG_N:
- 	      fprintf_fn (stream, "dr%d", rn);
- 	      break;
- 	    case DX_REG_M:
- 	      if (rm & 1)
- 		{
- 		  fprintf_fn (stream, "xd%d", rm & ~1);
- 		  break;
- 		}
- 	      /* fallthrough */
-+        fallthrough;
- 	    case D_REG_M:
- 	      fprintf_fn (stream, "dr%d", rm);
- 	      break;
- 	    case FPSCR_M:
- 	    case FPSCR_N:
- 	      fprintf_fn (stream, "fpscr");
- 	      break;
- 	    case FPUL_M:
- 	    case FPUL_N:
- 	      fprintf_fn (stream, "fpul");
- 	      break;
- 	    case F_FR0:
- 	      fprintf_fn (stream, "fr0");
- 	      break;
- 	    case V_REG_N:
- 	      fprintf_fn (stream, "fv%d", rn * 4);
- 	      break;
- 	    case V_REG_M:
- 	      fprintf_fn (stream, "fv%d", rm * 4);
- 	      break;
- 	    case XMTRX_M4:
- 	      fprintf_fn (stream, "xmtrx");
- 	      break;
- 	    default:
- 	      abort ();
- 	    }
- 	}
- 
- #if 0
-       /* This code prints instructions in delay slots on the same line
-          as the instruction which needs the delay slots.  This can be
-          confusing, since other disassembler don't work this way, and
-          it means that the instructions are not all in a line.  So I
-          disabled it.  Ian.  */
-       if (!(info->flags & 1)
- 	  && (op->name[0] == 'j'
- 	      || (op->name[0] == 'b'
- 		  && (op->name[1] == 'r'
- 		      || op->name[1] == 's'))
- 	      || (op->name[0] == 'r' && op->name[1] == 't')
- 	      || (op->name[0] == 'b' && op->name[2] == '.')))
- 	{
- 	  info->flags |= 1;
- 	  fprintf_fn (stream, "\t(slot ");
- 	  print_insn_sh (memaddr + 2, info);
- 	  info->flags &= ~1;
- 	  fprintf_fn (stream, ")");
- 	  return 4;
- 	}
- #endif
- 
-       if (disp_pc && strcmp (op->name, "mova") != 0)
- 	{
- 	  int size;
- 	  bfd_byte bytes[4];
- 
- 	  if (relmask == ~(bfd_vma) 1)
- 	    size = 2;
- 	  else
- 	    size = 4;
- 	  status = info->read_memory_func (disp_pc_addr, bytes, size, info);
- 	  if (status == 0)
- 	    {
- 	      unsigned int val;
- 
- 	      if (size == 2)
- 		{
- 		  if (info->endian == BFD_ENDIAN_LITTLE)
- 		    val = bfd_getl16 (bytes);
- 		  else
- 		    val = bfd_getb16 (bytes);
- 		}
- 	      else
- 		{
- 		  if (info->endian == BFD_ENDIAN_LITTLE)
- 		    val = bfd_getl32 (bytes);
- 		  else
- 		    val = bfd_getb32 (bytes);
- 		}
- 	      if ((*info->symbol_at_address_func) (val, info))
- 		{
- 		  fprintf_fn (stream, "\t! ");
- 		  (*info->print_address_func) (val, info);
- 		}
- 	      else
- 		fprintf_fn (stream, "\t! 0x%x", val);
- 	    }
- 	}
- 
-       return SH_MERGE_ARCH_SET (op->arch, arch_op32) ? 4 : 2;
-     fail:
-       ;
- 
-     }
-   fprintf_fn (stream, ".word 0x%x%x%x%x", nibs[0], nibs[1], nibs[2], nibs[3]);
-   return 2;
- }
-diff --git a/disas/sparc.c b/disas/sparc.c
-index 5689533ce1..61139256b0 100644
---- a/disas/sparc.c
-+++ b/disas/sparc.c
-@@ -2667,570 +2667,570 @@ int
- print_insn_sparc (bfd_vma memaddr, disassemble_info *info)
- {
-   FILE *stream = info->stream;
-   bfd_byte buffer[4];
-   unsigned long insn;
-   sparc_opcode_hash *op;
-   /* Nonzero of opcode table has been initialized.  */
-   static int opcodes_initialized = 0;
-   /* bfd mach number of last call.  */
-   static unsigned long current_mach = 0;
-   bfd_vma (*getword) (const unsigned char *);
- 
-   if (!opcodes_initialized
-       || info->mach != current_mach)
-     {
-       int i;
- 
-       current_arch_mask = compute_arch_mask (info->mach);
- 
-       if (!opcodes_initialized)
-         sorted_opcodes =
-           malloc (sparc_num_opcodes * sizeof (sparc_opcode *));
-       /* Reset the sorted table so we can resort it.  */
-       for (i = 0; i < sparc_num_opcodes; ++i)
-         sorted_opcodes[i] = &sparc_opcodes[i];
-       qsort ((char *) sorted_opcodes, sparc_num_opcodes,
-              sizeof (sorted_opcodes[0]), compare_opcodes);
- 
-       build_hash_table (sorted_opcodes, opcode_hash_table, sparc_num_opcodes);
-       current_mach = info->mach;
-       opcodes_initialized = 1;
-     }
- 
-   {
-     int status =
-       (*info->read_memory_func) (memaddr, buffer, sizeof (buffer), info);
- 
-     if (status != 0)
-       {
-         (*info->memory_error_func) (status, memaddr, info);
-         return -1;
-       }
-   }
- 
-   /* On SPARClite variants such as DANlite (sparc86x), instructions
-      are always big-endian even when the machine is in little-endian mode.  */
-   if (info->endian == BFD_ENDIAN_BIG || info->mach == bfd_mach_sparc_sparclite)
-     getword = bfd_getb32;
-   else
-     getword = bfd_getl32;
- 
-   insn = getword (buffer);
- 
-   info->insn_info_valid = 1;                    /* We do return this info.  */
-   info->insn_type = dis_nonbranch;              /* Assume non branch insn.  */
-   info->branch_delay_insns = 0;                 /* Assume no delay.  */
-   info->target = 0;                             /* Assume no target known.  */
- 
-   for (op = opcode_hash_table[HASH_INSN (insn)]; op; op = op->next)
-     {
-       const sparc_opcode *opcode = op->opcode;
- 
-       /* If the insn isn't supported by the current architecture, skip it.  */
-       if (! (opcode->architecture & current_arch_mask))
-         continue;
- 
-       if ((opcode->match & insn) == opcode->match
-           && (opcode->lose & insn) == 0)
-         {
-           /* Nonzero means that we have found an instruction which has
-              the effect of adding or or'ing the imm13 field to rs1.  */
-           int imm_added_to_rs1 = 0;
-           int imm_ored_to_rs1 = 0;
- 
-           /* Nonzero means that we have found a plus sign in the args
-              field of the opcode table.  */
-           int found_plus = 0;
- 
-           /* Nonzero means we have an annulled branch.  */
-           /* int is_annulled = 0; */ /* see FIXME below */
- 
-           /* Do we have an `add' or `or' instruction combining an
-              immediate with rs1?  */
-           if (opcode->match == 0x80102000) /* or */
-             imm_ored_to_rs1 = 1;
-           if (opcode->match == 0x80002000) /* add */
-             imm_added_to_rs1 = 1;
- 
-           if (X_RS1 (insn) != X_RD (insn)
-               && strchr (opcode->args, 'r') != NULL)
-               /* Can't do simple format if source and dest are different.  */
-               continue;
-           if (X_RS2 (insn) != X_RD (insn)
-               && strchr (opcode->args, 'O') != NULL)
-               /* Can't do simple format if source and dest are different.  */
-               continue;
- 
-           (*info->fprintf_func) (stream, "%s", opcode->name);
- 
-           {
-             const char *s;
- 
-             if (opcode->args[0] != ',')
-               (*info->fprintf_func) (stream, " ");
- 
-             for (s = opcode->args; *s != '\0'; ++s)
-               {
-                 while (*s == ',')
-                   {
-                     (*info->fprintf_func) (stream, ",");
-                     ++s;
-                     switch (*s)
-                       {
-                       case 'a':
-                         (*info->fprintf_func) (stream, "a");
-                         /* is_annulled = 1; */ /* see FIXME below */
-                         ++s;
-                         continue;
-                       case 'N':
-                         (*info->fprintf_func) (stream, "pn");
-                         ++s;
-                         continue;
- 
-                       case 'T':
-                         (*info->fprintf_func) (stream, "pt");
-                         ++s;
-                         continue;
- 
-                       default:
-                         break;
-                       }
-                   }
- 
-                 (*info->fprintf_func) (stream, " ");
- 
-                 switch (*s)
-                   {
-                   case '+':
-                     found_plus = 1;
--                    /* Fall through.  */
-+                    fallthrough;
- 
-                   default:
-                     (*info->fprintf_func) (stream, "%c", *s);
-                     break;
- 
-                   case '#':
-                     (*info->fprintf_func) (stream, "0");
-                     break;
- 
- #define reg(n)  (*info->fprintf_func) (stream, "%%%s", reg_names[n])
-                   case '1':
-                   case 'r':
-                     reg (X_RS1 (insn));
-                     break;
- 
-                   case '2':
-                   case 'O':
-                     reg (X_RS2 (insn));
-                     break;
- 
-                   case 'd':
-                     reg (X_RD (insn));
-                     break;
- #undef  reg
- 
- #define freg(n)         (*info->fprintf_func) (stream, "%%%s", freg_names[n])
- #define fregx(n)        (*info->fprintf_func) (stream, "%%%s", freg_names[((n) & ~1) | (((n) & 1) << 5)])
-                   case 'e':
-                     freg (X_RS1 (insn));
-                     break;
-                   case 'v':     /* Double/even.  */
-                   case 'V':     /* Quad/multiple of 4.  */
-                     fregx (X_RS1 (insn));
-                     break;
- 
-                   case 'f':
-                     freg (X_RS2 (insn));
-                     break;
-                   case 'B':     /* Double/even.  */
-                   case 'R':     /* Quad/multiple of 4.  */
-                     fregx (X_RS2 (insn));
-                     break;
- 
-                   case 'g':
-                     freg (X_RD (insn));
-                     break;
-                   case 'H':     /* Double/even.  */
-                   case 'J':     /* Quad/multiple of 4.  */
-                     fregx (X_RD (insn));
-                     break;
- #undef  freg
- #undef  fregx
- 
- #define creg(n) (*info->fprintf_func) (stream, "%%c%u", (unsigned int) (n))
-                   case 'b':
-                     creg (X_RS1 (insn));
-                     break;
- 
-                   case 'c':
-                     creg (X_RS2 (insn));
-                     break;
- 
-                   case 'D':
-                     creg (X_RD (insn));
-                     break;
- #undef  creg
- 
-                   case 'h':
-                     (*info->fprintf_func) (stream, "%%hi(%#x)",
-                                            ((unsigned) 0xFFFFFFFF
-                                             & ((int) X_IMM22 (insn) << 10)));
-                     break;
- 
-                   case 'i':     /* 13 bit immediate.  */
-                   case 'I':     /* 11 bit immediate.  */
-                   case 'j':     /* 10 bit immediate.  */
-                     {
-                       int imm;
- 
-                       if (*s == 'i')
-                         imm = X_SIMM (insn, 13);
-                       else if (*s == 'I')
-                         imm = X_SIMM (insn, 11);
-                       else
-                         imm = X_SIMM (insn, 10);
- 
-                       /* Check to see whether we have a 1+i, and take
-                          note of that fact.
- 
-                          Note: because of the way we sort the table,
-                          we will be matching 1+i rather than i+1,
-                          so it is OK to assume that i is after +,
-                          not before it.  */
-                       if (found_plus)
-                         imm_added_to_rs1 = 1;
- 
-                       if (imm <= 9)
-                         (*info->fprintf_func) (stream, "%d", imm);
-                       else
-                         (*info->fprintf_func) (stream, "%#x", imm);
-                     }
-                     break;
- 
-                   case 'X':     /* 5 bit unsigned immediate.  */
-                   case 'Y':     /* 6 bit unsigned immediate.  */
-                     {
-                       int imm = X_IMM (insn, *s == 'X' ? 5 : 6);
- 
-                       if (imm <= 9)
-                         (info->fprintf_func) (stream, "%d", imm);
-                       else
-                         (info->fprintf_func) (stream, "%#x", (unsigned) imm);
-                     }
-                     break;
- 
-                   case '3':
-                     (info->fprintf_func) (stream, "%ld", X_IMM (insn, 3));
-                     break;
- 
-                   case 'K':
-                     {
-                       int mask = X_MEMBAR (insn);
-                       int bit = 0x40, printed_one = 0;
-                       const char *name;
- 
-                       if (mask == 0)
-                         (info->fprintf_func) (stream, "0");
-                       else
-                         while (bit)
-                           {
-                             if (mask & bit)
-                               {
-                                 if (printed_one)
-                                   (info->fprintf_func) (stream, "|");
-                                 name = sparc_decode_membar (bit);
-                                 (info->fprintf_func) (stream, "%s", name);
-                                 printed_one = 1;
-                               }
-                             bit >>= 1;
-                           }
-                       break;
-                     }
- 
-                   case 'k':
-                     info->target = memaddr + SEX (X_DISP16 (insn), 16) * 4;
-                     (*info->print_address_func) (info->target, info);
-                     break;
- 
-                   case 'G':
-                     info->target = memaddr + SEX (X_DISP19 (insn), 19) * 4;
-                     (*info->print_address_func) (info->target, info);
-                     break;
- 
-                   case '6':
-                   case '7':
-                   case '8':
-                   case '9':
-                     (*info->fprintf_func) (stream, "%%fcc%c", *s - '6' + '0');
-                     break;
- 
-                   case 'z':
-                     (*info->fprintf_func) (stream, "%%icc");
-                     break;
- 
-                   case 'Z':
-                     (*info->fprintf_func) (stream, "%%xcc");
-                     break;
- 
-                   case 'E':
-                     (*info->fprintf_func) (stream, "%%ccr");
-                     break;
- 
-                   case 's':
-                     (*info->fprintf_func) (stream, "%%fprs");
-                     break;
- 
-                   case 'o':
-                     (*info->fprintf_func) (stream, "%%asi");
-                     break;
- 
-                   case 'W':
-                     (*info->fprintf_func) (stream, "%%tick");
-                     break;
- 
-                   case 'P':
-                     (*info->fprintf_func) (stream, "%%pc");
-                     break;
- 
-                   case '?':
-                     if (X_RS1 (insn) == 31)
-                       (*info->fprintf_func) (stream, "%%ver");
-                     else if ((unsigned) X_RS1 (insn) < 17)
-                       (*info->fprintf_func) (stream, "%%%s",
-                                              v9_priv_reg_names[X_RS1 (insn)]);
-                     else
-                       (*info->fprintf_func) (stream, "%%reserved");
-                     break;
- 
-                   case '!':
-                     if ((unsigned) X_RD (insn) < 17)
-                       (*info->fprintf_func) (stream, "%%%s",
-                                              v9_priv_reg_names[X_RD (insn)]);
-                     else
-                       (*info->fprintf_func) (stream, "%%reserved");
-                     break;
- 
-                   case '$':
-                     if ((unsigned) X_RS1 (insn) < 32)
-                       (*info->fprintf_func) (stream, "%%%s",
-                                              v9_hpriv_reg_names[X_RS1 (insn)]);
-                     else
-                       (*info->fprintf_func) (stream, "%%reserved");
-                     break;
- 
-                   case '%':
-                     if ((unsigned) X_RD (insn) < 32)
-                       (*info->fprintf_func) (stream, "%%%s",
-                                              v9_hpriv_reg_names[X_RD (insn)]);
-                     else
-                       (*info->fprintf_func) (stream, "%%reserved");
-                     break;
- 
-                   case '/':
-                     if (X_RS1 (insn) < 16 || X_RS1 (insn) > 25)
-                       (*info->fprintf_func) (stream, "%%reserved");
-                     else
-                       (*info->fprintf_func) (stream, "%%%s",
-                                              v9a_asr_reg_names[X_RS1 (insn)-16]);
-                     break;
- 
-                   case '_':
-                     if (X_RD (insn) < 16 || X_RD (insn) > 25)
-                       (*info->fprintf_func) (stream, "%%reserved");
-                     else
-                       (*info->fprintf_func) (stream, "%%%s",
-                                              v9a_asr_reg_names[X_RD (insn)-16]);
-                     break;
- 
-                   case '*':
-                     {
-                       const char *name = sparc_decode_prefetch (X_RD (insn));
- 
-                       if (name)
-                         (*info->fprintf_func) (stream, "%s", name);
-                       else
-                         (*info->fprintf_func) (stream, "%ld", X_RD (insn));
-                       break;
-                     }
- 
-                   case 'M':
-                     (*info->fprintf_func) (stream, "%%asr%ld", X_RS1 (insn));
-                     break;
- 
-                   case 'm':
-                     (*info->fprintf_func) (stream, "%%asr%ld", X_RD (insn));
-                     break;
- 
-                   case 'L':
-                     info->target = memaddr + SEX (X_DISP30 (insn), 30) * 4;
-                     (*info->print_address_func) (info->target, info);
-                     break;
- 
-                   case 'n':
-                     (*info->fprintf_func)
-                       (stream, "%#x", SEX (X_DISP22 (insn), 22));
-                     break;
- 
-                   case 'l':
-                     info->target = memaddr + SEX (X_DISP22 (insn), 22) * 4;
-                     (*info->print_address_func) (info->target, info);
-                     break;
- 
-                   case 'A':
-                     {
-                       const char *name;
- 
-                       if ((info->mach == bfd_mach_sparc_v8plusa) ||
-                           ((info->mach >= bfd_mach_sparc_v9) &&
-                            (info->mach <= bfd_mach_sparc_v9b)))
-                         name = sparc_decode_asi_v9 (X_ASI (insn));
-                       else
-                         name = sparc_decode_asi_v8 (X_ASI (insn));
- 
-                       if (name)
-                         (*info->fprintf_func) (stream, "%s", name);
-                       else
-                         (*info->fprintf_func) (stream, "(%ld)", X_ASI (insn));
-                       break;
-                     }
- 
-                   case 'C':
-                     (*info->fprintf_func) (stream, "%%csr");
-                     break;
- 
-                   case 'F':
-                     (*info->fprintf_func) (stream, "%%fsr");
-                     break;
- 
-                   case 'p':
-                     (*info->fprintf_func) (stream, "%%psr");
-                     break;
- 
-                   case 'q':
-                     (*info->fprintf_func) (stream, "%%fq");
-                     break;
- 
-                   case 'Q':
-                     (*info->fprintf_func) (stream, "%%cq");
-                     break;
- 
-                   case 't':
-                     (*info->fprintf_func) (stream, "%%tbr");
-                     break;
- 
-                   case 'w':
-                     (*info->fprintf_func) (stream, "%%wim");
-                     break;
- 
-                   case 'x':
-                     (*info->fprintf_func) (stream, "%ld",
-                                            ((X_LDST_I (insn) << 8)
-                                             + X_ASI (insn)));
-                     break;
- 
-                   case 'y':
-                     (*info->fprintf_func) (stream, "%%y");
-                     break;
- 
-                   case 'u':
-                   case 'U':
-                     {
-                       int val = *s == 'U' ? X_RS1 (insn) : X_RD (insn);
-                       const char *name = sparc_decode_sparclet_cpreg (val);
- 
-                       if (name)
-                         (*info->fprintf_func) (stream, "%s", name);
-                       else
-                         (*info->fprintf_func) (stream, "%%cpreg(%d)", val);
-                       break;
-                     }
-                   }
-               }
-           }
- 
-           /* If we are adding or or'ing something to rs1, then
-              check to see whether the previous instruction was
-              a sethi to the same register as in the sethi.
-              If so, attempt to print the result of the add or
-              or (in this context add and or do the same thing)
-              and its symbolic value.  */
-           if (imm_ored_to_rs1 || imm_added_to_rs1)
-             {
-               unsigned long prev_insn;
-               int errcode;
- 
-               if (memaddr >= 4)
-                 errcode =
-                   (*info->read_memory_func)
-                   (memaddr - 4, buffer, sizeof (buffer), info);
-               else
-                 errcode = 1;
- 
-               prev_insn = getword (buffer);
- 
-               if (errcode == 0)
-                 {
-                   /* If it is a delayed branch, we need to look at the
-                      instruction before the delayed branch.  This handles
-                      sequences such as:
- 
-                      sethi %o1, %hi(_foo), %o1
-                      call _printf
-                      or %o1, %lo(_foo), %o1  */
- 
-                   if (is_delayed_branch (prev_insn))
-                     {
-                       if (memaddr >= 8)
-                         errcode = (*info->read_memory_func)
-                           (memaddr - 8, buffer, sizeof (buffer), info);
-                       else
-                         errcode = 1;
- 
-                       prev_insn = getword (buffer);
-                     }
-                 }
- 
-               /* If there was a problem reading memory, then assume
-                  the previous instruction was not sethi.  */
-               if (errcode == 0)
-                 {
-                   /* Is it sethi to the same register?  */
-                   if ((prev_insn & 0xc1c00000) == 0x01000000
-                       && X_RD (prev_insn) == X_RS1 (insn))
-                     {
-                       (*info->fprintf_func) (stream, "\t! ");
-                       info->target =
-                         ((unsigned) 0xFFFFFFFF
-                          & ((int) X_IMM22 (prev_insn) << 10));
-                       if (imm_added_to_rs1)
-                         info->target += X_SIMM (insn, 13);
-                       else
-                         info->target |= X_SIMM (insn, 13);
-                       (*info->print_address_func) (info->target, info);
-                       info->insn_type = dis_dref;
-                       info->data_size = 4;  /* FIXME!!! */
-                     }
-                 }
+     uint32_t reg;
+     bool matched, mismatched;
+     int i, j;
+ 
+     for (i = 0; i < s->num_type1_screeners; i++) {
+         reg = s->regs[GEM_SCREENING_TYPE1_REGISTER_0 + i];
+         matched = false;
+         mismatched = false;
+ 
+         /* Screening is based on UDP Port */
+         if (reg & GEM_ST1R_UDP_PORT_MATCH_ENABLE) {
+             uint16_t udp_port = rxbuf_ptr[14 + 22] << 8 | rxbuf_ptr[14 + 23];
+             if (udp_port == extract32(reg, GEM_ST1R_UDP_PORT_MATCH_SHIFT,
+                                            GEM_ST1R_UDP_PORT_MATCH_WIDTH)) {
+                 matched = true;
+             } else {
+                 mismatched = true;
              }
+         }
  
-           if (opcode->flags & (F_UNBR|F_CONDBR|F_JSR))
-             {
-                 /* FIXME -- check is_annulled flag.  */
-               if (opcode->flags & F_UNBR)
-                 info->insn_type = dis_branch;
-               if (opcode->flags & F_CONDBR)
-                 info->insn_type = dis_condbranch;
-               if (opcode->flags & F_JSR)
-                 info->insn_type = dis_jsr;
-               if (opcode->flags & F_DELAYED)
-                 info->branch_delay_insns = 1;
+         /* Screening is based on DS/TC */
+         if (reg & GEM_ST1R_DSTC_ENABLE) {
+             uint8_t dscp = rxbuf_ptr[14 + 1];
+             if (dscp == extract32(reg, GEM_ST1R_DSTC_MATCH_SHIFT,
+                                        GEM_ST1R_DSTC_MATCH_WIDTH)) {
+                 matched = true;
+             } else {
+                 mismatched = true;
              }
+         }
  
-           return sizeof (buffer);
+         if (matched && !mismatched) {
+             return extract32(reg, GEM_ST1R_QUEUE_SHIFT, GEM_ST1R_QUEUE_WIDTH);
          }
      }
  
-   info->insn_type = dis_noninsn;        /* Mark as non-valid instruction.  */
-   (*info->fprintf_func) (stream, ".long %#08lx", insn);
-   return sizeof (buffer);
+     for (i = 0; i < s->num_type2_screeners; i++) {
+         reg = s->regs[GEM_SCREENING_TYPE2_REGISTER_0 + i];
+         matched = false;
+         mismatched = false;
+ 
+         if (reg & GEM_ST2R_ETHERTYPE_ENABLE) {
+             uint16_t type = rxbuf_ptr[12] << 8 | rxbuf_ptr[13];
+             int et_idx = extract32(reg, GEM_ST2R_ETHERTYPE_INDEX_SHIFT,
+                                         GEM_ST2R_ETHERTYPE_INDEX_WIDTH);
+ 
+             if (et_idx > s->num_type2_screeners) {
+                 qemu_log_mask(LOG_GUEST_ERROR, "Out of range ethertype "
+                               "register index: %d\n", et_idx);
+             }
+             if (type == s->regs[GEM_SCREENING_TYPE2_ETHERTYPE_REG_0 +
+                                 et_idx]) {
+                 matched = true;
+             } else {
+                 mismatched = true;
+             }
+         }
+ 
+         /* Compare A, B, C */
+         for (j = 0; j < 3; j++) {
+             uint32_t cr0, cr1, mask;
+             uint16_t rx_cmp;
+             int offset;
+             int cr_idx = extract32(reg, GEM_ST2R_COMPARE_A_SHIFT + j * 6,
+                                         GEM_ST2R_COMPARE_WIDTH);
+ 
+             if (!(reg & (GEM_ST2R_COMPARE_A_ENABLE << (j * 6)))) {
+                 continue;
+             }
+             if (cr_idx > s->num_type2_screeners) {
+                 qemu_log_mask(LOG_GUEST_ERROR, "Out of range compare "
+                               "register index: %d\n", cr_idx);
+             }
+ 
+             cr0 = s->regs[GEM_TYPE2_COMPARE_0_WORD_0 + cr_idx * 2];
+             cr1 = s->regs[GEM_TYPE2_COMPARE_0_WORD_0 + cr_idx * 2 + 1];
+             offset = extract32(cr1, GEM_T2CW1_OFFSET_VALUE_SHIFT,
+                                     GEM_T2CW1_OFFSET_VALUE_WIDTH);
+ 
+             switch (extract32(cr1, GEM_T2CW1_COMPARE_OFFSET_SHIFT,
+                                    GEM_T2CW1_COMPARE_OFFSET_WIDTH)) {
+             case 3: /* Skip UDP header */
+                 qemu_log_mask(LOG_UNIMP, "TCP compare offsets"
+                               "unimplemented - assuming UDP\n");
+                 offset += 8;
+-                /* Fallthrough */
++                fallthrough;
+             case 2: /* skip the IP header */
+                 offset += 20;
+-                /* Fallthrough */
++                fallthrough;
+             case 1: /* Count from after the ethertype */
+                 offset += 14;
+                 break;
+             case 0:
+                 /* Offset from start of frame */
+                 break;
+             }
+ 
+             rx_cmp = rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
+             mask = extract32(cr0, 0, 16);
+ 
+             if ((rx_cmp & mask) == (extract32(cr0, 16, 16) & mask)) {
+                 matched = true;
+             } else {
+                 mismatched = true;
+             }
+         }
+ 
+         if (matched && !mismatched) {
+             return extract32(reg, GEM_ST2R_QUEUE_SHIFT, GEM_ST2R_QUEUE_WIDTH);
+         }
+     }
+ 
+     /* We made it here, assume it's queue 0 */
+     return 0;
+ }
+diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
+index 73201f9139..14052b2700 100644
+--- a/hw/net/can/can_sja1000.c
++++ b/hw/net/can/can_sja1000.c
+@@ -422,235 +422,235 @@ static void can_sja_update_bas_irq(CanSJA1000State *s)
+ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
+                        unsigned size)
+ {
+     qemu_can_frame   frame;
+     uint32_t         tmp;
+     uint8_t          tmp8, count;
+ 
+ 
+     DPRINTF("write 0x%02llx addr 0x%02x\n",
+             (unsigned long long)val, (unsigned int)addr);
+ 
+     if (addr > CAN_SJA_MEM_SIZE) {
+         return;
+     }
+ 
+     if (s->clock & 0x80) { /* PeliCAN Mode */
+         switch (addr) {
+         case SJA_MOD: /* Mode register */
+             s->mode = 0x1f & val;
+             if ((s->mode & 0x01) && ((val & 0x01) == 0)) {
+                 /* Go to operation mode from reset mode. */
+                 if (s->mode & (1 << 3)) { /* Single mode. */
+                     /* For EFF */
+                     can_sja_single_filter(&s->filter[0],
+                         s->code_mask + 0, s->code_mask + 4, 1);
+ 
+                     /* For SFF */
+                     can_sja_single_filter(&s->filter[1],
+                         s->code_mask + 0, s->code_mask + 4, 0);
+ 
+                     can_bus_client_set_filters(&s->bus_client, s->filter, 2);
+                 } else { /* Dual mode */
+                     /* For EFF */
+                     can_sja_dual_filter(&s->filter[0],
+                         s->code_mask + 0, s->code_mask + 4, 1);
+ 
+                     can_sja_dual_filter(&s->filter[1],
+                         s->code_mask + 2, s->code_mask + 6, 1);
+ 
+                     /* For SFF */
+                     can_sja_dual_filter(&s->filter[2],
+                         s->code_mask + 0, s->code_mask + 4, 0);
+ 
+                     can_sja_dual_filter(&s->filter[3],
+                         s->code_mask + 2, s->code_mask + 6, 0);
+ 
+                     can_bus_client_set_filters(&s->bus_client, s->filter, 4);
+                 }
+ 
+                 s->rxmsg_cnt = 0;
+                 s->rx_cnt = 0;
+             }
+             break;
+ 
+         case SJA_CMR: /* Command register. */
+             if (0x01 & val) { /* Send transmission request. */
+                 buff2frame_pel(s->tx_buff, &frame);
+                 if (DEBUG_FILTER) {
+                     can_display_msg("[cansja]: Tx request " , &frame);
+                 }
+ 
+                 /*
+                  * Clear transmission complete status,
+                  * and Transmit Buffer Status.
+                  * write to the backends.
+                  */
+                 s->status_pel &= ~(3 << 2);
+ 
+                 can_bus_client_send(&s->bus_client, &frame, 1);
+ 
+                 /*
+                  * Set transmission complete status
+                  * and Transmit Buffer Status.
+                  */
+                 s->status_pel |= (3 << 2);
+ 
+                 /* Clear transmit status. */
+                 s->status_pel &= ~(1 << 5);
+                 s->interrupt_pel |= 0x02;
+                 can_sja_update_pel_irq(s);
+             }
+             if (0x04 & val) { /* Release Receive Buffer */
+                 if (s->rxmsg_cnt <= 0) {
+                     break;
+                 }
+ 
+                 tmp8 = s->rx_buff[s->rxbuf_start]; count = 0;
+                 if (tmp8 & (1 << 7)) { /* EFF */
+                     count += 2;
+                 }
+                 count += 3;
+                 if (!(tmp8 & (1 << 6))) { /* DATA */
+                     count += (tmp8 & 0x0f);
+                 }
+ 
+                 if (DEBUG_FILTER) {
+                     qemu_log("[cansja]: message released from "
+                              "Rx FIFO cnt=%d, count=%d\n", s->rx_cnt, count);
+                 }
+ 
+                 s->rxbuf_start += count;
+                 s->rxbuf_start %= SJA_RCV_BUF_LEN;
+ 
+                 s->rx_cnt -= count;
+                 s->rxmsg_cnt--;
+                 if (s->rxmsg_cnt == 0) {
+                     s->status_pel &= ~(1 << 0);
+                     s->interrupt_pel &= ~(1 << 0);
+                     can_sja_update_pel_irq(s);
+                 }
+             }
+             if (0x08 & val) { /* Clear data overrun */
+                 s->status_pel &= ~(1 << 1);
+                 s->interrupt_pel &= ~(1 << 3);
+                 can_sja_update_pel_irq(s);
+             }
+             break;
+         case SJA_SR: /* Status register */
+         case SJA_IR: /* Interrupt register */
+             break; /* Do nothing */
+         case SJA_IER: /* Interrupt enable register */
+             s->interrupt_en = val;
+             break;
+         case 16: /* RX frame information addr16-28. */
+             s->status_pel |= (1 << 5); /* Set transmit status. */
+-            /* fallthrough */
++            fallthrough;
+         case 17 ... 28:
+             if (s->mode & 0x01) { /* Reset mode */
+                 if (addr < 24) {
+                     s->code_mask[addr - 16] = val;
+                 }
+             } else { /* Operation mode */
+                 s->tx_buff[addr - 16] = val; /* Store to TX buffer directly. */
+             }
+             break;
+         case SJA_CDR:
+             s->clock = val;
+             break;
+         }
+     } else { /* Basic Mode */
+         switch (addr) {
+         case SJA_BCAN_CTR: /* Control register, addr 0 */
+             if ((s->control & 0x01) && ((val & 0x01) == 0)) {
+                 /* Go to operation mode from reset mode. */
+                 s->filter[0].can_id = (s->code << 3) & (0xff << 3);
+                 tmp = (~(s->mask << 3)) & (0xff << 3);
+                 tmp |= QEMU_CAN_EFF_FLAG; /* Only Basic CAN Frame. */
+                 s->filter[0].can_mask = tmp;
+                 can_bus_client_set_filters(&s->bus_client, s->filter, 1);
+ 
+                 s->rxmsg_cnt = 0;
+                 s->rx_cnt = 0;
+             } else if (!(s->control & 0x01) && !(val & 0x01)) {
+                 can_sja_software_reset(s);
+             }
+ 
+             s->control = 0x1f & val;
+             break;
+         case SJA_BCAN_CMR: /* Command register, addr 1 */
+             if (0x01 & val) { /* Send transmission request. */
+                 buff2frame_bas(s->tx_buff, &frame);
+                 if (DEBUG_FILTER) {
+                     can_display_msg("[cansja]: Tx request " , &frame);
+                 }
+ 
+                 /*
+                  * Clear transmission complete status,
+                  * and Transmit Buffer Status.
+                  */
+                 s->status_bas &= ~(3 << 2);
+ 
+                 /* write to the backends. */
+                 can_bus_client_send(&s->bus_client, &frame, 1);
+ 
+                 /*
+                  * Set transmission complete status,
+                  * and Transmit Buffer Status.
+                  */
+                 s->status_bas |= (3 << 2);
+ 
+                 /* Clear transmit status. */
+                 s->status_bas &= ~(1 << 5);
+                 s->interrupt_bas |= 0x02;
+                 can_sja_update_bas_irq(s);
+             }
+             if (0x04 & val) { /* Release Receive Buffer */
+                 if (s->rxmsg_cnt <= 0) {
+                     break;
+                 }
+ 
+                 tmp8 = s->rx_buff[(s->rxbuf_start + 1) % SJA_RCV_BUF_LEN];
+                 count = 2 + (tmp8 & 0x0f);
+ 
+                 if (DEBUG_FILTER) {
+                     qemu_log("[cansja]: message released from "
+                              "Rx FIFO cnt=%d, count=%d\n", s->rx_cnt, count);
+                 }
+ 
+                 s->rxbuf_start += count;
+                 s->rxbuf_start %= SJA_RCV_BUF_LEN;
+                 s->rx_cnt -= count;
+                 s->rxmsg_cnt--;
+ 
+                 if (s->rxmsg_cnt == 0) {
+                     s->status_bas &= ~(1 << 0);
+                     s->interrupt_bas &= ~(1 << 0);
+                     can_sja_update_bas_irq(s);
+                 }
+             }
+             if (0x08 & val) { /* Clear data overrun */
+                 s->status_bas &= ~(1 << 1);
+                 s->interrupt_bas &= ~(1 << 3);
+                 can_sja_update_bas_irq(s);
+             }
+             break;
+         case 4:
+             s->code = val;
+             break;
+         case 5:
+             s->mask = val;
+             break;
+         case 10:
+             s->status_bas |= (1 << 5); /* Set transmit status. */
+-            /* fallthrough */
++            fallthrough;
+         case 11 ... 19:
+             if ((s->control & 0x01) == 0) { /* Operation mode */
+                 s->tx_buff[addr - 10] = val; /* Store to TX buffer directly. */
+             }
+             break;
+         case SJA_CDR:
+             s->clock = val;
+             break;
+         }
+     }
+ }
+diff --git a/hw/net/igb_core.c b/hw/net/igb_core.c
+index f6a5e2327b..1117f7cb59 100644
+--- a/hw/net/igb_core.c
++++ b/hw/net/igb_core.c
+@@ -1362,75 +1362,75 @@ static void
+ igb_build_rx_metadata_common(IGBCore *core,
+                              struct NetRxPkt *pkt,
+                              bool is_eop,
+                              uint32_t *status_flags,
+                              uint16_t *vlan_tag)
+ {
+     struct virtio_net_hdr *vhdr;
+     bool hasip4, hasip6, csum_valid;
+     EthL4HdrProto l4hdr_proto;
+ 
+     *status_flags = E1000_RXD_STAT_DD;
+ 
+     /* No additional metadata needed for non-EOP descriptors */
+     if (!is_eop) {
+         goto func_exit;
+     }
+ 
+     *status_flags |= E1000_RXD_STAT_EOP;
+ 
+     net_rx_pkt_get_protocols(pkt, &hasip4, &hasip6, &l4hdr_proto);
+     trace_e1000e_rx_metadata_protocols(hasip4, hasip6, l4hdr_proto);
+ 
+     /* VLAN state */
+     if (net_rx_pkt_is_vlan_stripped(pkt)) {
+         *status_flags |= E1000_RXD_STAT_VP;
+         *vlan_tag = cpu_to_le16(net_rx_pkt_get_vlan_tag(pkt));
+         trace_e1000e_rx_metadata_vlan(*vlan_tag);
+     }
+ 
+     /* RX CSO information */
+     if (hasip6 && (core->mac[RFCTL] & E1000_RFCTL_IPV6_XSUM_DIS)) {
+         trace_e1000e_rx_metadata_ipv6_sum_disabled();
+         goto func_exit;
+     }
+ 
+     vhdr = net_rx_pkt_get_vhdr(pkt);
+ 
+     if (!(vhdr->flags & VIRTIO_NET_HDR_F_DATA_VALID) &&
+         !(vhdr->flags & VIRTIO_NET_HDR_F_NEEDS_CSUM)) {
+         trace_e1000e_rx_metadata_virthdr_no_csum_info();
+         igb_verify_csum_in_sw(core, pkt, status_flags, l4hdr_proto);
+         goto func_exit;
+     }
+ 
+     if (igb_rx_l3_cso_enabled(core)) {
+         *status_flags |= hasip4 ? E1000_RXD_STAT_IPCS : 0;
+     } else {
+         trace_e1000e_rx_metadata_l3_cso_disabled();
+     }
+ 
+     if (igb_rx_l4_cso_enabled(core)) {
+         switch (l4hdr_proto) {
+         case ETH_L4_HDR_PROTO_SCTP:
+             if (!net_rx_pkt_validate_l4_csum(pkt, &csum_valid)) {
+                 trace_e1000e_rx_metadata_l4_csum_validation_failed();
+                 goto func_exit;
+             }
+             if (!csum_valid) {
+                 *status_flags |= E1000_RXDEXT_STATERR_TCPE;
+             }
+-            /* fall through */
++            fallthrough;
+         case ETH_L4_HDR_PROTO_TCP:
+             *status_flags |= E1000_RXD_STAT_TCPCS;
+             break;
+ 
+         case ETH_L4_HDR_PROTO_UDP:
+             *status_flags |= E1000_RXD_STAT_TCPCS | E1000_RXD_STAT_UDPCS;
+             break;
+ 
+         default:
+             break;
+         }
+     } else {
+         trace_e1000e_rx_metadata_l4_cso_disabled();
+     }
+diff --git a/hw/net/igbvf.c b/hw/net/igbvf.c
+index d55e1e8a6a..ff68a4f3c5 100644
+--- a/hw/net/igbvf.c
++++ b/hw/net/igbvf.c
+@@ -62,139 +62,139 @@ struct IgbVfState {
+ static hwaddr vf_to_pf_addr(hwaddr addr, uint16_t vfn, bool write)
+ {
+     switch (addr) {
+     case E1000_CTRL:
+     case E1000_CTRL_DUP:
+         return E1000_PVTCTRL(vfn);
+     case E1000_EICS:
+         return E1000_PVTEICS(vfn);
+     case E1000_EIMS:
+         return E1000_PVTEIMS(vfn);
+     case E1000_EIMC:
+         return E1000_PVTEIMC(vfn);
+     case E1000_EIAC:
+         return E1000_PVTEIAC(vfn);
+     case E1000_EIAM:
+         return E1000_PVTEIAM(vfn);
+     case E1000_EICR:
+         return E1000_PVTEICR(vfn);
+     case E1000_EITR(0):
+     case E1000_EITR(1):
+     case E1000_EITR(2):
+         return E1000_EITR(22) + (addr - E1000_EITR(0)) - vfn * 0xC;
+     case E1000_IVAR0:
+         return E1000_VTIVAR + vfn * 4;
+     case E1000_IVAR_MISC:
+         return E1000_VTIVAR_MISC + vfn * 4;
+     case 0x0F04: /* PBACL */
+         return E1000_PBACLR;
+     case 0x0F0C: /* PSRTYPE */
+         return E1000_PSRTYPE(vfn);
+     case E1000_V2PMAILBOX(0):
+         return E1000_V2PMAILBOX(vfn);
+     case E1000_VMBMEM(0) ... E1000_VMBMEM(0) + 0x3F:
+         return addr + vfn * 0x40;
+     case E1000_RDBAL_A(0):
+         return E1000_RDBAL(vfn);
+     case E1000_RDBAL_A(1):
+         return E1000_RDBAL(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_RDBAH_A(0):
+         return E1000_RDBAH(vfn);
+     case E1000_RDBAH_A(1):
+         return E1000_RDBAH(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_RDLEN_A(0):
+         return E1000_RDLEN(vfn);
+     case E1000_RDLEN_A(1):
+         return E1000_RDLEN(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_SRRCTL_A(0):
+         return E1000_SRRCTL(vfn);
+     case E1000_SRRCTL_A(1):
+         return E1000_SRRCTL(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_RDH_A(0):
+         return E1000_RDH(vfn);
+     case E1000_RDH_A(1):
+         return E1000_RDH(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_RXCTL_A(0):
+         return E1000_RXCTL(vfn);
+     case E1000_RXCTL_A(1):
+         return E1000_RXCTL(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_RDT_A(0):
+         return E1000_RDT(vfn);
+     case E1000_RDT_A(1):
+         return E1000_RDT(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_RXDCTL_A(0):
+         return E1000_RXDCTL(vfn);
+     case E1000_RXDCTL_A(1):
+         return E1000_RXDCTL(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_RQDPC_A(0):
+         return E1000_RQDPC(vfn);
+     case E1000_RQDPC_A(1):
+         return E1000_RQDPC(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_TDBAL_A(0):
+         return E1000_TDBAL(vfn);
+     case E1000_TDBAL_A(1):
+         return E1000_TDBAL(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_TDBAH_A(0):
+         return E1000_TDBAH(vfn);
+     case E1000_TDBAH_A(1):
+         return E1000_TDBAH(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_TDLEN_A(0):
+         return E1000_TDLEN(vfn);
+     case E1000_TDLEN_A(1):
+         return E1000_TDLEN(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_TDH_A(0):
+         return E1000_TDH(vfn);
+     case E1000_TDH_A(1):
+         return E1000_TDH(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_TXCTL_A(0):
+         return E1000_TXCTL(vfn);
+     case E1000_TXCTL_A(1):
+         return E1000_TXCTL(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_TDT_A(0):
+         return E1000_TDT(vfn);
+     case E1000_TDT_A(1):
+         return E1000_TDT(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_TXDCTL_A(0):
+         return E1000_TXDCTL(vfn);
+     case E1000_TXDCTL_A(1):
+         return E1000_TXDCTL(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_TDWBAL_A(0):
+         return E1000_TDWBAL(vfn);
+     case E1000_TDWBAL_A(1):
+         return E1000_TDWBAL(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_TDWBAH_A(0):
+         return E1000_TDWBAH(vfn);
+     case E1000_TDWBAH_A(1):
+         return E1000_TDWBAH(vfn + IGB_MAX_VF_FUNCTIONS);
+     case E1000_VFGPRC:
+         return E1000_PVFGPRC(vfn);
+     case E1000_VFGPTC:
+         return E1000_PVFGPTC(vfn);
+     case E1000_VFGORC:
+         return E1000_PVFGORC(vfn);
+     case E1000_VFGOTC:
+         return E1000_PVFGOTC(vfn);
+     case E1000_VFMPRC:
+         return E1000_PVFMPRC(vfn);
+     case E1000_VFGPRLBC:
+         return E1000_PVFGPRLBC(vfn);
+     case E1000_VFGPTLBC:
+         return E1000_PVFGPTLBC(vfn);
+     case E1000_VFGORLBC:
+         return E1000_PVFGORLBC(vfn);
+     case E1000_VFGOTLBC:
+         return E1000_PVFGOTLBC(vfn);
+     case E1000_STATUS:
+     case E1000_FRTIMER:
+         if (write) {
+             return HWADDR_MAX;
+         }
+-        /* fallthrough */
++        fallthrough;
+     case 0x34E8: /* PBTWAC */
+     case 0x24E8: /* PBRWAC */
+         return addr;
+     }
+ 
+     trace_igbvf_wrn_io_addr_unknown(addr);
+ 
+     return HWADDR_MAX;
+ }
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 5d1f1f104c..a7e8b06d48 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -888,170 +888,170 @@ static void imx_enet_write(IMXFECState *s, uint32_t index, uint32_t value)
+ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
+                            unsigned size)
+ {
+     IMXFECState *s = IMX_FEC(opaque);
+     const bool single_tx_ring = !imx_eth_is_multi_tx_ring(s);
+     uint32_t index = offset >> 2;
+ 
+     trace_imx_eth_write(index, imx_eth_reg_name(s, index), value);
+ 
+     switch (index) {
+     case ENET_EIR:
+         s->regs[index] &= ~value;
+         break;
+     case ENET_EIMR:
+         s->regs[index] = value;
+         break;
+     case ENET_RDAR:
+         if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
+             if (!s->regs[index]) {
+                 imx_eth_enable_rx(s, true);
+             }
+         } else {
+             s->regs[index] = 0;
+         }
+         break;
+     case ENET_TDAR1:
+     case ENET_TDAR2:
+         if (unlikely(single_tx_ring)) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "[%s]%s: trying to access TDAR2 or TDAR1\n",
+                           TYPE_IMX_FEC, __func__);
+             return;
+         }
+-        /* fall through */
++        fallthrough;
+     case ENET_TDAR:
+         if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
+             s->regs[index] = ENET_TDAR_TDAR;
+             imx_eth_do_tx(s, index);
+         }
+         s->regs[index] = 0;
+         break;
+     case ENET_ECR:
+         if (value & ENET_ECR_RESET) {
+             return imx_eth_reset(DEVICE(s));
+         }
+         s->regs[index] = value;
+         if ((s->regs[index] & ENET_ECR_ETHEREN) == 0) {
+             s->regs[ENET_RDAR] = 0;
+             s->rx_descriptor = s->regs[ENET_RDSR];
+             s->regs[ENET_TDAR]  = 0;
+             s->regs[ENET_TDAR1] = 0;
+             s->regs[ENET_TDAR2] = 0;
+             s->tx_descriptor[0] = s->regs[ENET_TDSR];
+             s->tx_descriptor[1] = s->regs[ENET_TDSR1];
+             s->tx_descriptor[2] = s->regs[ENET_TDSR2];
+         }
+         break;
+     case ENET_MMFR:
+         s->regs[index] = value;
+         if (extract32(value, 29, 1)) {
+             /* This is a read operation */
+             s->regs[ENET_MMFR] = deposit32(s->regs[ENET_MMFR], 0, 16,
+                                            imx_phy_read(s,
+                                                        extract32(value,
+                                                                  18, 10)));
+         } else {
+             /* This is a write operation */
+             imx_phy_write(s, extract32(value, 18, 10), extract32(value, 0, 16));
+         }
+         /* raise the interrupt as the PHY operation is done */
+         s->regs[ENET_EIR] |= ENET_INT_MII;
+         break;
+     case ENET_MSCR:
+         s->regs[index] = value & 0xfe;
+         break;
+     case ENET_MIBC:
+         /* TODO: Implement MIB.  */
+         s->regs[index] = (value & 0x80000000) ? 0xc0000000 : 0;
+         break;
+     case ENET_RCR:
+         s->regs[index] = value & 0x07ff003f;
+         /* TODO: Implement LOOP mode.  */
+         break;
+     case ENET_TCR:
+         /* We transmit immediately, so raise GRA immediately.  */
+         s->regs[index] = value;
+         if (value & 1) {
+             s->regs[ENET_EIR] |= ENET_INT_GRA;
+         }
+         break;
+     case ENET_PALR:
+         s->regs[index] = value;
+         s->conf.macaddr.a[0] = value >> 24;
+         s->conf.macaddr.a[1] = value >> 16;
+         s->conf.macaddr.a[2] = value >> 8;
+         s->conf.macaddr.a[3] = value;
+         break;
+     case ENET_PAUR:
+         s->regs[index] = (value | 0x0000ffff) & 0xffff8808;
+         s->conf.macaddr.a[4] = value >> 24;
+         s->conf.macaddr.a[5] = value >> 16;
+         break;
+     case ENET_OPD:
+         s->regs[index] = (value & 0x0000ffff) | 0x00010000;
+         break;
+     case ENET_IAUR:
+     case ENET_IALR:
+     case ENET_GAUR:
+     case ENET_GALR:
+         /* TODO: implement MAC hash filtering.  */
+         break;
+     case ENET_TFWR:
+         if (s->is_fec) {
+             s->regs[index] = value & 0x3;
+         } else {
+             s->regs[index] = value & 0x13f;
+         }
+         break;
+     case ENET_RDSR:
+         if (s->is_fec) {
+             s->regs[index] = value & ~3;
+         } else {
+             s->regs[index] = value & ~7;
+         }
+         s->rx_descriptor = s->regs[index];
+         break;
+     case ENET_TDSR:
+         if (s->is_fec) {
+             s->regs[index] = value & ~3;
+         } else {
+             s->regs[index] = value & ~7;
+         }
+         s->tx_descriptor[0] = s->regs[index];
+         break;
+     case ENET_TDSR1:
+         if (unlikely(single_tx_ring)) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "[%s]%s: trying to access TDSR1\n",
+                           TYPE_IMX_FEC, __func__);
+             return;
+         }
+ 
+         s->regs[index] = value & ~7;
+         s->tx_descriptor[1] = s->regs[index];
+         break;
+     case ENET_TDSR2:
+         if (unlikely(single_tx_ring)) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "[%s]%s: trying to access TDSR2\n",
+                           TYPE_IMX_FEC, __func__);
+             return;
+         }
+ 
+         s->regs[index] = value & ~7;
+         s->tx_descriptor[2] = s->regs[index];
+         break;
+     case ENET_MRBR:
+         s->regs[index] = value & 0x00003ff0;
+         break;
+     default:
+         if (s->is_fec) {
+             imx_fec_write(s, index, value);
+         } else {
+             imx_enet_write(s, index, value);
+         }
+         return;
+     }
+ 
+     imx_eth_update(s);
+ }
+diff --git a/hw/net/net_rx_pkt.c b/hw/net/net_rx_pkt.c
+index 32e5f3f9cf..52e2432c9b 100644
+--- a/hw/net/net_rx_pkt.c
++++ b/hw/net/net_rx_pkt.c
+@@ -591,36 +591,36 @@ _net_rx_pkt_validate_sctp_sum(struct NetRxPkt *pkt)
+ bool net_rx_pkt_validate_l4_csum(struct NetRxPkt *pkt, bool *csum_valid)
+ {
+     uint32_t csum;
+ 
+     trace_net_rx_pkt_l4_csum_validate_entry();
+ 
+     if (pkt->hasip4 && pkt->ip4hdr_info.fragment) {
+         trace_net_rx_pkt_l4_csum_validate_ip4_fragment();
+         return false;
+     }
+ 
+     switch (pkt->l4hdr_info.proto) {
+     case ETH_L4_HDR_PROTO_UDP:
+         if (pkt->l4hdr_info.hdr.udp.uh_sum == 0) {
+             trace_net_rx_pkt_l4_csum_validate_udp_with_no_checksum();
+             return false;
+         }
+-        /* fall through */
++        fallthrough;
+     case ETH_L4_HDR_PROTO_TCP:
+         csum = _net_rx_pkt_calc_l4_csum(pkt);
+         *csum_valid = ((csum == 0) || (csum == 0xFFFF));
+         break;
+ 
+     case ETH_L4_HDR_PROTO_SCTP:
+         *csum_valid = _net_rx_pkt_validate_sctp_sum(pkt);
+         break;
+ 
+     default:
+         trace_net_rx_pkt_l4_csum_validate_not_xxp();
+         return false;
+     }
+ 
+     trace_net_rx_pkt_l4_csum_validate_csum(*csum_valid);
+ 
+     return true;
+ }
+diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
+index 02828ae716..a32174ef93 100644
+--- a/hw/net/pcnet.c
++++ b/hw/net/pcnet.c
+@@ -1474,47 +1474,47 @@ static uint32_t pcnet_csr_readw(PCNetState *s, uint32_t rap)
+ static void pcnet_bcr_writew(PCNetState *s, uint32_t rap, uint32_t val)
+ {
+     rap &= 127;
+ #ifdef PCNET_DEBUG_BCR
+     printf("pcnet_bcr_writew rap=%d val=0x%04x\n", rap, val);
+ #endif
+     switch (rap) {
+     case BCR_SWS:
+         if (!(CSR_STOP(s) || CSR_SPND(s)))
+             return;
+         val &= ~0x0300;
+         switch (val & 0x00ff) {
+         case 0:
+             val |= 0x0200;
+             break;
+         case 1:
+             val |= 0x0100;
+             break;
+         case 2:
+         case 3:
+             val |= 0x0300;
+             break;
+         default:
+             qemu_log_mask(LOG_GUEST_ERROR, "pcnet: Bad SWSTYLE=0x%02x\n",
+                           val & 0xff);
+             val = 0x0200;
+             break;
+         }
+ #ifdef PCNET_DEBUG
+        printf("BCR_SWS=0x%04x\n", val);
+ #endif
+-        /* fall through */
++       fallthrough;
+     case BCR_LNKST:
+     case BCR_LED1:
+     case BCR_LED2:
+     case BCR_LED3:
+     case BCR_MC:
+     case BCR_FDC:
+     case BCR_BSBC:
+     case BCR_EECAS:
+     case BCR_PLAT:
+         s->bcr[rap] = val;
+         break;
+     default:
+         break;
+     }
+ }
+diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+index 4525fda383..42f19618b1 100644
+--- a/hw/net/rtl8139.c
++++ b/hw/net/rtl8139.c
+@@ -2435,29 +2435,31 @@ static void rtl8139_TxStatus_write(RTL8139State *s, uint32_t txRegOffset, uint32
+ static uint32_t rtl8139_TxStatus_TxAddr_read(RTL8139State *s, uint32_t regs[],
+                                              uint32_t base, uint8_t addr,
+                                              int size)
+ {
+     uint32_t reg = (addr - base) / 4;
+     uint32_t offset = addr & 0x3;
+     uint32_t ret = 0;
+ 
+     if (addr & (size - 1)) {
+         DPRINTF("not implemented read for TxStatus/TxAddr "
+                 "addr=0x%x size=0x%x\n", addr, size);
+         return ret;
+     }
+ 
+     switch (size) {
+-    case 1: /* fall through */
+-    case 2: /* fall through */
++    case 1:
++        fallthrough;
++    case 2:
++        fallthrough;
+     case 4:
+         ret = (regs[reg] >> offset * 8) & (((uint64_t)1 << (size * 8)) - 1);
+         DPRINTF("TxStatus/TxAddr[%d] read addr=0x%x size=0x%x val=0x%08x\n",
+                 reg, addr, size, ret);
+         break;
+     default:
+         DPRINTF("unsupported size 0x%x of TxStatus/TxAddr reading\n", size);
+         break;
+     }
+ 
+     return ret;
+ }
+diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
+index 89f4f3b254..5ae4032ec2 100644
+--- a/hw/net/xilinx_ethlite.c
++++ b/hw/net/xilinx_ethlite.c
+@@ -113,55 +113,55 @@ static void
+ eth_write(void *opaque, hwaddr addr,
+           uint64_t val64, unsigned int size)
+ {
+     struct xlx_ethlite *s = opaque;
+     unsigned int base = 0;
+     uint32_t value = val64;
+ 
+     addr >>= 2;
+     switch (addr) 
+     {
+         case R_TX_CTRL0:
+         case R_TX_CTRL1:
+             if (addr == R_TX_CTRL1)
+                 base = 0x800 / 4;
+ 
+             D(qemu_log("%s addr=" HWADDR_FMT_plx " val=%x\n",
+                        __func__, addr * 4, value));
+             if ((value & (CTRL_P | CTRL_S)) == CTRL_S) {
+                 qemu_send_packet(qemu_get_queue(s->nic),
+                                  (void *) &s->regs[base],
+                                  s->regs[base + R_TX_LEN0]);
+                 D(qemu_log("eth_tx %d\n", s->regs[base + R_TX_LEN0]));
+                 if (s->regs[base + R_TX_CTRL0] & CTRL_I)
+                     eth_pulse_irq(s);
+             } else if ((value & (CTRL_P | CTRL_S)) == (CTRL_P | CTRL_S)) {
+                 memcpy(&s->conf.macaddr.a[0], &s->regs[base], 6);
+                 if (s->regs[base + R_TX_CTRL0] & CTRL_I)
+                     eth_pulse_irq(s);
+             }
+ 
+             /* We are fast and get ready pretty much immediately so
+                we actually never flip the S nor P bits to one.  */
+             s->regs[addr] = value & ~(CTRL_P | CTRL_S);
+             break;
+ 
+         /* Keep these native.  */
+         case R_RX_CTRL0:
+         case R_RX_CTRL1:
+             if (!(value & CTRL_S)) {
+                 qemu_flush_queued_packets(qemu_get_queue(s->nic));
+             }
+-            /* fall through */
++            fallthrough;
+         case R_TX_LEN0:
+         case R_TX_LEN1:
+         case R_TX_GIE0:
+             D(qemu_log("%s addr=" HWADDR_FMT_plx " val=%x\n",
+                        __func__, addr * 4, value));
+             s->regs[addr] = value;
+             break;
+ 
+         default:
+             s->regs[addr] = tswap32(value);
+             break;
+     }
  }
 -- 
 2.39.2

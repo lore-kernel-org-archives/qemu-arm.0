@@ -1,225 +1,855 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1338282ejc;
-        Fri, 13 Oct 2023 01:08:11 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGQRNEzpjwaPffNRWDrNLta95BehfhJmmyrp8Z2v0C2PhJyOwYix2FoYZc3kOMwamYo+aTh
-X-Received: by 2002:a1f:4ec1:0:b0:49a:3537:881c with SMTP id c184-20020a1f4ec1000000b0049a3537881cmr20698227vkb.14.1697184491334;
-        Fri, 13 Oct 2023 01:08:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697184491; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1338821ejc;
+        Fri, 13 Oct 2023 01:09:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEj837Us7DEtcoZaSGx89yvFIk2gCpy/gLG35U0vFJpccNiTkEdUkzOthFTPcd8E+GtLr+/
+X-Received: by 2002:a05:6214:2f03:b0:658:22d8:9 with SMTP id od3-20020a0562142f0300b0065822d80009mr28154156qvb.61.1697184567477;
+        Fri, 13 Oct 2023 01:09:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697184567; cv=none;
         d=google.com; s=arc-20160816;
-        b=GQ6EA7SMoGffsS39brtT/tHn/fB1e/zQkKvnfvx88nPuPIZVpV5yaF68OOhfrh+vbX
-         hWxLDOAYBVnQkaJAKDXvXDQXibL9D/Ar5v0S9pU/z8MdC44KGR1A0iwb1HfFRtvJ3KnG
-         5kAHQs5sxdBmyMrrVluFHsAgIF5x+6huq1zzuBkaYjWO2Kq5Duvh0j96l6RSKZ8tQKmQ
-         gDvajonxqdAxI8wYA38JuCJkeqqCJY0DaXg6ykE+8syOjwiWB1OXiXwI/9bSPE02nJcS
-         rVgd6tSrDgQJFVEBJUH+RxAqbFUMqNEltyjquCa5ULDwyGac7jZYnUtaYxFthiP/e/xr
-         5KSw==
+        b=CI4onp9J2w9aJUVcY/yVn63uFhtyTO15aZnfCRKF8y8CmlgWMAQadY9vIr8utumX/j
+         D9GQVGsdAHBZHSllLZh5Dg8WSZbyDl7/TgmRB8uWA9L8ZAImkc2KsYKLjElldAb/kGBS
+         F4kcy/HeQ6F8MzbrSkvktd4P3kr6OWpIXQovDTJqkzFSYDWTTxx7g6F2d095pTGH/NQU
+         71tPYYszNqpBNhkH7g0EuNFC13YvcuiWaSs4NBDDZ+LBW3S1VKxJbV1VfvFe1qGks2zz
+         CSkhKmsbxIqD628z5baDr7C+ldsD5nvo9Pt+tS7+sjmy+oEMNeRczl7gJ0et5oXhVIsM
+         4gJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=qbwPqKejPqCfjx3i0hAQng1S5moLMZkGirk9RhHcbns=;
-        fh=H4knajuxnTt7umLiusApADibO8BdVd5Z82FPnjnZzW0=;
-        b=tEOo9t7lovh7BHLFqVSyfjmeF/wflDMf8u9cPKkkNg/3kldjtX1qElv4paUKeD2OWY
-         kooKi0x8M2j0c7tjv18O4kjSAtb1hQqpxHoC35+zU3fUXsmcFgekT7qD/W5uYl5XNL5i
-         XSSljho5LioQbRBdJuZpZl+P2FhUJzvDUStq9LDd91YmXZPalF4TRI0xgs3K14DJnpKF
-         vyRlYzLRz58soGm7SCy06g8yEw10jp5LX1rTvXYL23J99Nmzp8EOEwwxMXYpM+ybsItT
-         NLhMwCr9ZGfbHLc8UEUtfbcngwsz9132juGsqYbdlY/wzZt04TXqZkEXPZfenJ8P43sQ
-         fB7A==
+        bh=NCHgvH6STgJj0iPCirxO1TTUh7Ds/wMgB/10h6d6px4=;
+        fh=xWQKCUteZDQtH9f79KBcd1hu+0izw8Lfdn8j1z7Bdvk=;
+        b=Hf+ZASGzrzcexg7iDL0qDb4a0q12grG98IFkzuqDaUE1Wpyi1H5EIe4zFSGIjlXhj7
+         dWJHk5mUT+Q+f4woI8NOHKC7w87NFMmcynIgJf2plwNeXHJC6O4RxrpHFEpxwBYr+qKS
+         kwzOuuh8BYBXSbOKePeutEEGBlFVnPLlthUCPxH9IB8evouZpj5DFSGcn3sVByANgZpx
+         DAa72BS9qkhhvHhQo8wczw64EFTKxoftRl+5x2BTMT/KQUc4COzPnMQwRkiHwXwmw3jr
+         rNKOrNYwoWo8oS56W9es093q/Q2riSfmyyMpTD8P7ysjBaylibRd+VQytMMtHqK8IRX7
+         s86g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SlPQ21WP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LwzTBcBy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ph27-20020a0562144a5b00b0066d15c73fbesi827595qvb.117.2023.10.13.01.08.11
+        by mx.google.com with ESMTPS id ng9-20020a0562143bc900b0065af39608b2si828675qvb.589.2023.10.13.01.09.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:08:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 01:09:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SlPQ21WP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LwzTBcBy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCyO-0003Nm-QY; Fri, 13 Oct 2023 03:52:40 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrD4s-0003Sq-Ej; Fri, 13 Oct 2023 03:59:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxg-000054-82
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:56 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1qrD4q-0003Fc-PH
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:59:20 -0400
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxP-0005AX-1n
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:55 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-40537481094so19558555e9.0
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:51:38 -0700 (PDT)
+ id 1qrD4n-00074t-BH
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:59:20 -0400
+Received: by mail-lj1-x234.google.com with SMTP id
+ 38308e7fff4ca-2b95d5ee18dso22879111fa.1
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:59:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183497; x=1697788297; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183954; x=1697788754; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=qbwPqKejPqCfjx3i0hAQng1S5moLMZkGirk9RhHcbns=;
- b=SlPQ21WPhJwIWURQS8kqkMImWwdbfw4oGQ9WN0ijiBc8Yqa0UZAYcvq1DqIxGlnJkT
- S6y+fSznRa11xpUFtLPZL1qKSYUHL4bkfP41gOxwc8YquVg29CTpF/+oAGShIXDltfCk
- Cu1OMpVSiskGQLD28rigO3xg3MGZ6+mQ1IZhhfaX7GdNc+RtK3FP75iHSFm86IBuhNUf
- V8Ega2J0mTUGx9ZHFQLt/qnVtn4BSB5lRE+bXj7Ixm86vah5gZBrnIre8zuCacfNKu4F
- hEUvGcnL4A3aEe6Gm9pVhBls9pKbZcBZjNQDSuuKTS6frEmI9zH9fHUGQzLRxQtTpX6T
- DKzA==
+ bh=NCHgvH6STgJj0iPCirxO1TTUh7Ds/wMgB/10h6d6px4=;
+ b=LwzTBcByWyiNJ09Mu+fAfOFbQJZGgKF2QFR1yW1yV++cIjPWJ6D1xnj0z4nbfAqMsu
+ D8ihRyBIVarF4HrCbokfgjKbs7pUtxUidalM0Leh4BopUlBcmywpfBy8TdtGnZtVF9KD
+ XvDi75zbQfSsVlCXlMsbu0dbwGpmyOslFGnmBsWOSxe4+NwzGdMTQmrzH1CBaVeD7NwE
+ cc8B6RJTUEG2DwoJyCGtXdHyGd1i6C6KAZLCIdp8rmBHNZjddA4nJaPifYVdWIUYsO0W
+ w1sH3/IV5izXdwcrjT+wW0xxaCuk1hTJe0U1qIbklyrCvWgErvrX2tEblAja7SzC22Uz
+ UUug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183497; x=1697788297;
+ d=1e100.net; s=20230601; t=1697183954; x=1697788754;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=qbwPqKejPqCfjx3i0hAQng1S5moLMZkGirk9RhHcbns=;
- b=UF5rHVHqqsdRA23vegnPhTwz/me+Yy4ZtG+bV0zTTQnKhhbNCYW0WVD128XUcL4G2H
- u+CQFJyoZC+Nx29LMYihgEaz8L2fv0B7ITs6dnCki2FR75WZbSNgIksYfgqja1FsmBZU
- lqo3BS2THbSDgx+HXK67CR/oBNLSVTrpLyhffWuAcM9NHQ0Mez5XUAWltGX13IDoSDZq
- SDZrKWCyGbATLll4S/AD6k02i3wL7IHcry9489P89V2nxrxjd/+VYZpiOrHEsVnLwrFA
- ZpqkoBDJ77qZZt2nK/R+Z/G27qbdn2ljgJJVCz+DMtrIIdlIbmycfmr+8kMDNzKqaERo
- WLvQ==
-X-Gm-Message-State: AOJu0Yz3yBlCepDI2iI25ZBrxNhMYK4QjkF9rOECTjz5P6DuW4zw3Brs
- Acdt7XYTKBvYK02krZPK6oWBeKX0H54oLxnG9lI=
-X-Received: by 2002:a1c:6a0d:0:b0:3fc:1a6:7764 with SMTP id
- f13-20020a1c6a0d000000b003fc01a67764mr23258413wmc.16.1697183496749; 
- Fri, 13 Oct 2023 00:51:36 -0700 (PDT)
-Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
- [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.34
+ bh=NCHgvH6STgJj0iPCirxO1TTUh7Ds/wMgB/10h6d6px4=;
+ b=Wi6NmHoMsmj52GMg1LWNuC4u7BmXhemDi5PvlUypGoLC+49HvdsW7KCpdjo7zn6zzB
+ ECWJdPfjLlaojtK63Enw1KLzMU5itJNjESp+FcdGfSFQJDn5bb11EGYjkyFthTaRxFl5
+ H0cH4xjMGpwAZdr8g55l9N9S6rcWwpXDQfSqh7Thar6edZwhYUZOF+8JFYjBN4ttlEPK
+ G2Wv6o1WFHYeJ/5kG+yHVNoNr2WJ2q4G5//Ao3XOkwL0OOSp4HC+BepWwQyTbysMZl6A
+ mMZsQQbbOfh6md1uy9qdw6n5BtVpzVCP1Y/Piyjv9zipjp8PikIl6qsbwBqFFlK4V36V
+ wjjg==
+X-Gm-Message-State: AOJu0YzV8xpyZPjZbd8m1IGaS6xsSMUqGyiymY3eXFePM6jV1zcVXzhH
+ 01n+vJE1DgSvz5C+GqEPi8/bUoXjXoNPSIOTgOg=
+X-Received: by 2002:a2e:a1c3:0:b0:2b9:3684:165 with SMTP id
+ c3-20020a2ea1c3000000b002b936840165mr18768912ljm.8.1697183954145; 
+ Fri, 13 Oct 2023 00:59:14 -0700 (PDT)
+Received: from localhost.localdomain (adsl-26.37.6.0.tellas.gr. [37.6.0.26])
+ by smtp.gmail.com with ESMTPSA id
+ a10-20020a05600c224a00b003fe23b10fdfsm1798183wmm.36.2023.10.13.00.59.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:51:35 -0700 (PDT)
+ Fri, 13 Oct 2023 00:59:13 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-block@nongnu.org
+To: qemu-devel@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [RFC PATCH 47/78] contrib/rdmacm-mux: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:48:01 +0300
-Message-Id: <79d156347f37b8f4984e52ebb3063604093ae8f4.1697183082.git.manos.pitsidianakis@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ qemu-arm@nongnu.org (open list:OMAP)
+Subject: [RFC PATCH v2 45/78] hw/dma: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:57:12 +0300
+Message-Id: <5070e9550acf207f28bf4ef19cb3ee1fd38e5344.1697183699.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
-References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
+In-Reply-To: <cover.1697183699.git.manos.pitsidianakis@linaro.org>
+References: <cover.1697183699.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::234;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lj1-x234.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ohV3716DCT89
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: B8+E+JFCwERZ
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- contrib/rdmacm-mux/main.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ hw/dma/omap_dma.c    | 32 ++++++++++++++++----------------
+ hw/dma/pxa2xx_dma.c  |  4 ++--
+ hw/dma/sparc32_dma.c |  2 +-
+ 3 files changed, 19 insertions(+), 19 deletions(-)
 
-diff --git a/contrib/rdmacm-mux/main.c b/contrib/rdmacm-mux/main.c
-index 771ca01e03..dda6917d58 100644
---- a/contrib/rdmacm-mux/main.c
-+++ b/contrib/rdmacm-mux/main.c
-@@ -303,72 +303,72 @@ static void hash_tbl_remove_fd_ifid_pair(int fd)
- static int get_fd(const char *mad, int umad_len, int *fd, __be64 *gid_ifid)
+diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
+index 77797a67b5..dd43dbf3d2 100644
+--- a/hw/dma/omap_dma.c
++++ b/hw/dma/omap_dma.c
+@@ -1457,46 +1457,46 @@ static int omap_dma_sys_read(struct omap_dma_s *s, int offset,
+ static uint64_t omap_dma_read(void *opaque, hwaddr addr, unsigned size)
  {
-     struct umad_hdr *hdr = (struct umad_hdr *)mad;
-     char *data = (char *)hdr + sizeof(*hdr);
-     int32_t comm_id = 0;
-     uint16_t attr_id = be16toh(hdr->attr_id);
-     int rc = 0;
+     struct omap_dma_s *s = opaque;
+     int reg, ch;
+     uint16_t ret;
  
-     if (umad_len <= sizeof(*hdr)) {
-         rc = -EINVAL;
-         syslog(LOG_DEBUG, "Ignoring MAD packets with header only\n");
-         goto out;
+     if (size != 2) {
+         return omap_badwidth_read16(opaque, addr);
      }
  
-     switch (attr_id) {
-     case UMAD_CM_ATTR_REQ:
-         if (unlikely(umad_len < sizeof(*hdr) + CM_REQ_DGID_POS +
-             sizeof(*gid_ifid))) {
-             rc = -EINVAL;
-             syslog(LOG_WARNING,
-                    "Invalid MAD packet size (%d) for attr_id 0x%x\n", umad_len,
-                     attr_id);
-             goto out;
+     switch (addr) {
+     case 0x300 ... 0x3fe:
+         if (s->model <= omap_dma_3_1 || !s->omap_3_1_mapping_disabled) {
+             if (omap_dma_3_1_lcd_read(&s->lcd_ch, addr, &ret))
+                 break;
+             return ret;
          }
-         memcpy(gid_ifid, data + CM_REQ_DGID_POS, sizeof(*gid_ifid));
-         rc = hash_tbl_search_fd_by_ifid(fd, gid_ifid);
-         break;
+-        /* Fall through. */
++        fallthrough;
+     case 0x000 ... 0x2fe:
+         reg = addr & 0x3f;
+         ch = (addr >> 6) & 0x0f;
+         if (omap_dma_ch_reg_read(s, &s->ch[ch], reg, &ret))
+             break;
+         return ret;
  
-     case UMAD_CM_ATTR_SIDR_REQ:
-         if (unlikely(umad_len < sizeof(*hdr) + CM_SIDR_REQ_DGID_POS +
-             sizeof(*gid_ifid))) {
-             rc = -EINVAL;
-             syslog(LOG_WARNING,
-                    "Invalid MAD packet size (%d) for attr_id 0x%x\n", umad_len,
-                     attr_id);
-             goto out;
-         }
-         memcpy(gid_ifid, data + CM_SIDR_REQ_DGID_POS, sizeof(*gid_ifid));
-         rc = hash_tbl_search_fd_by_ifid(fd, gid_ifid);
-         break;
+     case 0x404 ... 0x4fe:
+         if (s->model <= omap_dma_3_1)
+             break;
+-        /* Fall through. */
++        fallthrough;
+     case 0x400:
+         if (omap_dma_sys_read(s, addr, &ret))
+             break;
+         return ret;
  
-     case UMAD_CM_ATTR_REP:
--        /* Fall through */
-+        fallthrough;
-     case UMAD_CM_ATTR_REJ:
--        /* Fall through */
-+        fallthrough;
-     case UMAD_CM_ATTR_DREQ:
--        /* Fall through */
-+        fallthrough;
-     case UMAD_CM_ATTR_DREP:
--        /* Fall through */
-+        fallthrough;
-     case UMAD_CM_ATTR_RTU:
-         data += sizeof(comm_id);
--        /* Fall through */
-+        fallthrough;
-     case UMAD_CM_ATTR_SIDR_REP:
-         if (unlikely(umad_len < sizeof(*hdr) + sizeof(comm_id))) {
-             rc = -EINVAL;
-             syslog(LOG_WARNING,
-                    "Invalid MAD packet size (%d) for attr_id 0x%x\n", umad_len,
-                    attr_id);
-             goto out;
+     case 0xb00 ... 0xbfe:
+         if (s->model == omap_dma_3_2 && s->omap_3_1_mapping_disabled) {
+             if (omap_dma_3_2_lcd_read(&s->lcd_ch, addr, &ret))
+                 break;
+             return ret;
          }
-         memcpy(&comm_id, data, sizeof(comm_id));
-         if (comm_id) {
-             rc = hash_tbl_search_fd_by_comm_id(comm_id, fd, gid_ifid);
+         break;
+     }
+ 
+     OMAP_BAD_REG(addr);
+     return 0;
+ }
+@@ -1504,46 +1504,46 @@ static uint64_t omap_dma_read(void *opaque, hwaddr addr, unsigned size)
+ static void omap_dma_write(void *opaque, hwaddr addr,
+                            uint64_t value, unsigned size)
+ {
+     struct omap_dma_s *s = opaque;
+     int reg, ch;
+ 
+     if (size != 2) {
+         omap_badwidth_write16(opaque, addr, value);
+         return;
+     }
+ 
+     switch (addr) {
+     case 0x300 ... 0x3fe:
+         if (s->model <= omap_dma_3_1 || !s->omap_3_1_mapping_disabled) {
+             if (omap_dma_3_1_lcd_write(&s->lcd_ch, addr, value))
+                 break;
+             return;
          }
+-        /* Fall through.  */
++        fallthrough;
+     case 0x000 ... 0x2fe:
+         reg = addr & 0x3f;
+         ch = (addr >> 6) & 0x0f;
+         if (omap_dma_ch_reg_write(s, &s->ch[ch], reg, value))
+             break;
+         return;
+ 
+     case 0x404 ... 0x4fe:
+         if (s->model <= omap_dma_3_1)
+             break;
+-        /* fall through */
++        fallthrough;
+     case 0x400:
+         if (omap_dma_sys_write(s, addr, value))
+             break;
+         return;
+ 
+     case 0xb00 ... 0xbfe:
+         if (s->model == omap_dma_3_2 && s->omap_3_1_mapping_disabled) {
+             if (omap_dma_3_2_lcd_write(&s->lcd_ch, addr, value))
+                 break;
+             return;
+         }
+         break;
+     }
+ 
+     OMAP_BAD_REG(addr);
+ }
+@@ -1702,155 +1702,155 @@ static void omap_dma_interrupts_4_update(struct omap_dma_s *s)
+ static uint64_t omap_dma4_read(void *opaque, hwaddr addr,
+                                unsigned size)
+ {
+     struct omap_dma_s *s = opaque;
+     int irqn = 0, chnum;
+     struct omap_dma_channel_s *ch;
+ 
+     if (size == 1) {
+         return omap_badwidth_read16(opaque, addr);
+     }
+ 
+     switch (addr) {
+     case 0x00:	/* DMA4_REVISION */
+         return 0x40;
+ 
+     case 0x14:	/* DMA4_IRQSTATUS_L3 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x10:	/* DMA4_IRQSTATUS_L2 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x0c:	/* DMA4_IRQSTATUS_L1 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x08:	/* DMA4_IRQSTATUS_L0 */
+         return s->irqstat[irqn];
+ 
+     case 0x24:	/* DMA4_IRQENABLE_L3 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x20:	/* DMA4_IRQENABLE_L2 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x1c:	/* DMA4_IRQENABLE_L1 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x18:	/* DMA4_IRQENABLE_L0 */
+         return s->irqen[irqn];
+ 
+     case 0x28:	/* DMA4_SYSSTATUS */
+         return 1;						/* RESETDONE */
+ 
+     case 0x2c:	/* DMA4_OCP_SYSCONFIG */
+         return s->ocp;
+ 
+     case 0x64:	/* DMA4_CAPS_0 */
+         return s->caps[0];
+     case 0x6c:	/* DMA4_CAPS_2 */
+         return s->caps[2];
+     case 0x70:	/* DMA4_CAPS_3 */
+         return s->caps[3];
+     case 0x74:	/* DMA4_CAPS_4 */
+         return s->caps[4];
+ 
+     case 0x78:	/* DMA4_GCR */
+         return s->gcr;
+ 
+     case 0x80 ... 0xfff:
+         addr -= 0x80;
+         chnum = addr / 0x60;
+         ch = s->ch + chnum;
+         addr -= chnum * 0x60;
          break;
  
      default:
-         rc = -EINVAL;
-         syslog(LOG_WARNING, "Unsupported attr_id 0x%x\n", attr_id);
+         OMAP_BAD_REG(addr);
+         return 0;
      }
  
-     syslog(LOG_DEBUG, "mad_to_vm: %d 0x%x 0x%x\n", *fd, attr_id, comm_id);
+     /* Per-channel registers */
+     switch (addr) {
+     case 0x00:	/* DMA4_CCR */
+         return (ch->buf_disable << 25) |
+                 (ch->src_sync << 24) |
+                 (ch->prefetch << 23) |
+                 ((ch->sync & 0x60) << 14) |
+                 (ch->bs << 18) |
+                 (ch->transparent_copy << 17) |
+                 (ch->constant_fill << 16) |
+                 (ch->mode[1] << 14) |
+                 (ch->mode[0] << 12) |
+                 (0 << 10) | (0 << 9) |
+                 (ch->suspend << 8) |
+                 (ch->enable << 7) |
+                 (ch->priority << 6) |
+                 (ch->fs << 5) | (ch->sync & 0x1f);
+ 
+     case 0x04:	/* DMA4_CLNK_CTRL */
+         return (ch->link_enabled << 15) | ch->link_next_ch;
+ 
+     case 0x08:	/* DMA4_CICR */
+         return ch->interrupts;
+ 
+     case 0x0c:	/* DMA4_CSR */
+         return ch->cstatus;
+ 
+     case 0x10:	/* DMA4_CSDP */
+         return (ch->endian[0] << 21) |
+                 (ch->endian_lock[0] << 20) |
+                 (ch->endian[1] << 19) |
+                 (ch->endian_lock[1] << 18) |
+                 (ch->write_mode << 16) |
+                 (ch->burst[1] << 14) |
+                 (ch->pack[1] << 13) |
+                 (ch->translate[1] << 9) |
+                 (ch->burst[0] << 7) |
+                 (ch->pack[0] << 6) |
+                 (ch->translate[0] << 2) |
+                 (ch->data_type >> 1);
+ 
+     case 0x14:	/* DMA4_CEN */
+         return ch->elements;
+ 
+     case 0x18:	/* DMA4_CFN */
+         return ch->frames;
+ 
+     case 0x1c:	/* DMA4_CSSA */
+         return ch->addr[0];
+ 
+     case 0x20:	/* DMA4_CDSA */
+         return ch->addr[1];
+ 
+     case 0x24:	/* DMA4_CSEI */
+         return ch->element_index[0];
+ 
+     case 0x28:	/* DMA4_CSFI */
+         return ch->frame_index[0];
+ 
+     case 0x2c:	/* DMA4_CDEI */
+         return ch->element_index[1];
+ 
+     case 0x30:	/* DMA4_CDFI */
+         return ch->frame_index[1];
+ 
+     case 0x34:	/* DMA4_CSAC */
+         return ch->active_set.src & 0xffff;
+ 
+     case 0x38:	/* DMA4_CDAC */
+         return ch->active_set.dest & 0xffff;
+ 
+     case 0x3c:	/* DMA4_CCEN */
+         return ch->active_set.element;
+ 
+     case 0x40:	/* DMA4_CCFN */
+         return ch->active_set.frame;
+ 
+     case 0x44:	/* DMA4_COLOR */
+         /* XXX only in sDMA */
+         return ch->color;
+ 
+     default:
+         OMAP_BAD_REG(addr);
+         return 0;
+     }
+ }
+@@ -1858,213 +1858,213 @@ static uint64_t omap_dma4_read(void *opaque, hwaddr addr,
+ static void omap_dma4_write(void *opaque, hwaddr addr,
+                             uint64_t value, unsigned size)
+ {
+     struct omap_dma_s *s = opaque;
+     int chnum, irqn = 0;
+     struct omap_dma_channel_s *ch;
+ 
+     if (size == 1) {
+         omap_badwidth_write16(opaque, addr, value);
+         return;
+     }
+ 
+     switch (addr) {
+     case 0x14:	/* DMA4_IRQSTATUS_L3 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x10:	/* DMA4_IRQSTATUS_L2 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x0c:	/* DMA4_IRQSTATUS_L1 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x08:	/* DMA4_IRQSTATUS_L0 */
+         s->irqstat[irqn] &= ~value;
+         if (!s->irqstat[irqn])
+             qemu_irq_lower(s->irq[irqn]);
+         return;
+ 
+     case 0x24:	/* DMA4_IRQENABLE_L3 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x20:	/* DMA4_IRQENABLE_L2 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x1c:	/* DMA4_IRQENABLE_L1 */
+         irqn ++;
+-        /* fall through */
++        fallthrough;
+     case 0x18:	/* DMA4_IRQENABLE_L0 */
+         s->irqen[irqn] = value;
+         return;
+ 
+     case 0x2c:	/* DMA4_OCP_SYSCONFIG */
+         if (value & 2)						/* SOFTRESET */
+             omap_dma_reset(s->dma);
+         s->ocp = value & 0x3321;
+         if (((s->ocp >> 12) & 3) == 3) { /* MIDLEMODE */
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA power mode\n",
+                           __func__);
+         }
+         return;
+ 
+     case 0x78:	/* DMA4_GCR */
+         s->gcr = value & 0x00ff00ff;
+         if ((value & 0xff) == 0x00) { /* MAX_CHANNEL_FIFO_DEPTH */
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: wrong FIFO depth in GCR\n",
+                           __func__);
+         }
+         return;
+ 
+     case 0x80 ... 0xfff:
+         addr -= 0x80;
+         chnum = addr / 0x60;
+         ch = s->ch + chnum;
+         addr -= chnum * 0x60;
+         break;
+ 
+     case 0x00:	/* DMA4_REVISION */
+     case 0x28:	/* DMA4_SYSSTATUS */
+     case 0x64:	/* DMA4_CAPS_0 */
+     case 0x6c:	/* DMA4_CAPS_2 */
+     case 0x70:	/* DMA4_CAPS_3 */
+     case 0x74:	/* DMA4_CAPS_4 */
+         OMAP_RO_REG(addr);
+         return;
+ 
+     default:
+         OMAP_BAD_REG(addr);
+         return;
+     }
+ 
+     /* Per-channel registers */
+     switch (addr) {
+     case 0x00:	/* DMA4_CCR */
+         ch->buf_disable = (value >> 25) & 1;
+         ch->src_sync = (value >> 24) & 1;	/* XXX For CamDMA must be 1 */
+         if (ch->buf_disable && !ch->src_sync) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: Buffering disable is not allowed in "
+                           "destination synchronised mode\n", __func__);
+         }
+         ch->prefetch = (value >> 23) & 1;
+         ch->bs = (value >> 18) & 1;
+         ch->transparent_copy = (value >> 17) & 1;
+         ch->constant_fill = (value >> 16) & 1;
+         ch->mode[1] = (omap_dma_addressing_t) ((value & 0xc000) >> 14);
+         ch->mode[0] = (omap_dma_addressing_t) ((value & 0x3000) >> 12);
+         ch->suspend = (value & 0x0100) >> 8;
+         ch->priority = (value & 0x0040) >> 6;
+         ch->fs = (value & 0x0020) >> 5;
+         if (ch->fs && ch->bs && ch->mode[0] && ch->mode[1]) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: For a packet transfer at least one port "
+                           "must be constant-addressed\n", __func__);
+         }
+         ch->sync = (value & 0x001f) | ((value >> 14) & 0x0060);
+         /* XXX must be 0x01 for CamDMA */
+ 
+         if (value & 0x0080)
+             omap_dma_enable_channel(s, ch);
+         else
+             omap_dma_disable_channel(s, ch);
+ 
+         break;
+ 
+     case 0x04:	/* DMA4_CLNK_CTRL */
+         ch->link_enabled = (value >> 15) & 0x1;
+         ch->link_next_ch = value & 0x1f;
+         break;
+ 
+     case 0x08:	/* DMA4_CICR */
+         ch->interrupts = value & 0x09be;
+         break;
+ 
+     case 0x0c:	/* DMA4_CSR */
+         ch->cstatus &= ~value;
+         break;
+ 
+     case 0x10:	/* DMA4_CSDP */
+         ch->endian[0] =(value >> 21) & 1;
+         ch->endian_lock[0] =(value >> 20) & 1;
+         ch->endian[1] =(value >> 19) & 1;
+         ch->endian_lock[1] =(value >> 18) & 1;
+         if (ch->endian[0] != ch->endian[1]) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: DMA endianness conversion enable attempt\n",
+                           __func__);
+         }
+         ch->write_mode = (value >> 16) & 3;
+         ch->burst[1] = (value & 0xc000) >> 14;
+         ch->pack[1] = (value & 0x2000) >> 13;
+         ch->translate[1] = (value & 0x1e00) >> 9;
+         ch->burst[0] = (value & 0x0180) >> 7;
+         ch->pack[0] = (value & 0x0040) >> 6;
+         ch->translate[0] = (value & 0x003c) >> 2;
+         if (ch->translate[0] | ch->translate[1]) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: bad MReqAddressTranslate sideband signal\n",
+                           __func__);
+         }
+         ch->data_type = 1 << (value & 3);
+         if ((value & 3) == 3) {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: bad data_type for DMA channel\n", __func__);
+             ch->data_type >>= 1;
+         }
+         break;
+ 
+     case 0x14:	/* DMA4_CEN */
+         ch->set_update = 1;
+         ch->elements = value & 0xffffff;
+         break;
+ 
+     case 0x18:	/* DMA4_CFN */
+         ch->frames = value & 0xffff;
+         ch->set_update = 1;
+         break;
+ 
+     case 0x1c:	/* DMA4_CSSA */
+         ch->addr[0] = (hwaddr) (uint32_t) value;
+         ch->set_update = 1;
+         break;
+ 
+     case 0x20:	/* DMA4_CDSA */
+         ch->addr[1] = (hwaddr) (uint32_t) value;
+         ch->set_update = 1;
+         break;
+ 
+     case 0x24:	/* DMA4_CSEI */
+         ch->element_index[0] = (int16_t) value;
+         ch->set_update = 1;
+         break;
+ 
+     case 0x28:	/* DMA4_CSFI */
+         ch->frame_index[0] = (int32_t) value;
+         ch->set_update = 1;
+         break;
+ 
+     case 0x2c:	/* DMA4_CDEI */
+         ch->element_index[1] = (int16_t) value;
+         ch->set_update = 1;
+         break;
+ 
+     case 0x30:	/* DMA4_CDFI */
+         ch->frame_index[1] = (int32_t) value;
+         ch->set_update = 1;
+         break;
+ 
+     case 0x44:	/* DMA4_COLOR */
+         /* XXX only in sDMA */
+         ch->color = value;
+         break;
+ 
+     case 0x34:	/* DMA4_CSAC */
+     case 0x38:	/* DMA4_CDAC */
+     case 0x3c:	/* DMA4_CCEN */
+     case 0x40:	/* DMA4_CCFN */
+         OMAP_RO_REG(addr);
+         break;
+ 
+     default:
+         OMAP_BAD_REG(addr);
+     }
+ }
+diff --git a/hw/dma/pxa2xx_dma.c b/hw/dma/pxa2xx_dma.c
+index fa896f7edf..ac47256572 100644
+--- a/hw/dma/pxa2xx_dma.c
++++ b/hw/dma/pxa2xx_dma.c
+@@ -266,59 +266,59 @@ static void pxa2xx_dma_run(PXA2xxDMAState *s)
+ static uint64_t pxa2xx_dma_read(void *opaque, hwaddr offset,
+                                 unsigned size)
+ {
+     PXA2xxDMAState *s = (PXA2xxDMAState *) opaque;
+     unsigned int channel;
+ 
+     if (size != 4) {
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad access width %u\n",
+                       __func__, size);
+         return 5;
+     }
+ 
+     switch (offset) {
+     case DRCMR64 ... DRCMR74:
+         offset -= DRCMR64 - DRCMR0 - (64 << 2);
+-        /* Fall through */
++        fallthrough;
+     case DRCMR0 ... DRCMR63:
+         channel = (offset - DRCMR0) >> 2;
+         return s->req[channel];
+ 
+     case DRQSR0:
+     case DRQSR1:
+     case DRQSR2:
+         return 0;
+ 
+     case DCSR0 ... DCSR31:
+         channel = offset >> 2;
+         if (s->chan[channel].request)
+             return s->chan[channel].state | DCSR_REQPEND;
+         return s->chan[channel].state;
+ 
+     case DINT:
+         return s->stopintr | s->eorintr | s->rasintr |
+                 s->startintr | s->endintr;
+ 
+     case DALGN:
+         return s->align;
+ 
+     case DPCSR:
+         return s->pio;
+     }
+ 
+     if (offset >= D_CH0 && offset < D_CH0 + (s->channels << 4)) {
+         channel = (offset - D_CH0) >> 4;
+         switch ((offset & 0x0f) >> 2) {
+         case DDADR:
+             return s->chan[channel].descr;
+         case DSADR:
+             return s->chan[channel].src;
+         case DTADR:
+             return s->chan[channel].dest;
+         case DCMD:
+             return s->chan[channel].cmd;
+         }
+     }
+     qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
+                   __func__, offset);
+     return 7;
+ }
+@@ -326,105 +326,105 @@ static uint64_t pxa2xx_dma_read(void *opaque, hwaddr offset,
+ static void pxa2xx_dma_write(void *opaque, hwaddr offset,
+                              uint64_t value, unsigned size)
+ {
+     PXA2xxDMAState *s = (PXA2xxDMAState *) opaque;
+     unsigned int channel;
+ 
+     if (size != 4) {
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad access width %u\n",
+                       __func__, size);
+         return;
+     }
+ 
+     switch (offset) {
+     case DRCMR64 ... DRCMR74:
+         offset -= DRCMR64 - DRCMR0 - (64 << 2);
+-        /* Fall through */
++        fallthrough;
+     case DRCMR0 ... DRCMR63:
+         channel = (offset - DRCMR0) >> 2;
+ 
+         if (value & DRCMR_MAPVLD)
+             if ((value & DRCMR_CHLNUM) > s->channels)
+                 hw_error("%s: Bad DMA channel %i\n",
+                          __func__, (unsigned)value & DRCMR_CHLNUM);
+ 
+         s->req[channel] = value;
+         break;
+ 
+     case DRQSR0:
+     case DRQSR1:
+     case DRQSR2:
+         /* Nothing to do */
+         break;
+ 
+     case DCSR0 ... DCSR31:
+         channel = offset >> 2;
+         s->chan[channel].state &= 0x0000071f & ~(value &
+                         (DCSR_EORINT | DCSR_ENDINTR |
+                          DCSR_STARTINTR | DCSR_BUSERRINTR));
+         s->chan[channel].state |= value & 0xfc800000;
+ 
+         if (s->chan[channel].state & DCSR_STOPIRQEN)
+             s->chan[channel].state &= ~DCSR_STOPINTR;
+ 
+         if (value & DCSR_NODESCFETCH) {
+             /* No-descriptor-fetch mode */
+             if (value & DCSR_RUN) {
+                 s->chan[channel].state &= ~DCSR_STOPINTR;
+                 pxa2xx_dma_run(s);
+             }
+         } else {
+             /* Descriptor-fetch mode */
+             if (value & DCSR_RUN) {
+                 s->chan[channel].state &= ~DCSR_STOPINTR;
+                 pxa2xx_dma_descriptor_fetch(s, channel);
+                 pxa2xx_dma_run(s);
+             }
+         }
+ 
+         /* Shouldn't matter as our DMA is synchronous.  */
+         if (!(value & (DCSR_RUN | DCSR_MASKRUN)))
+             s->chan[channel].state |= DCSR_STOPINTR;
+ 
+         if (value & DCSR_CLRCMPST)
+             s->chan[channel].state &= ~DCSR_CMPST;
+         if (value & DCSR_SETCMPST)
+             s->chan[channel].state |= DCSR_CMPST;
+ 
+         pxa2xx_dma_update(s, channel);
+         break;
+ 
+     case DALGN:
+         s->align = value;
+         break;
+ 
+     case DPCSR:
+         s->pio = value & 0x80000001;
+         break;
+ 
+     default:
+         if (offset >= D_CH0 && offset < D_CH0 + (s->channels << 4)) {
+             channel = (offset - D_CH0) >> 4;
+             switch ((offset & 0x0f) >> 2) {
+             case DDADR:
+                 s->chan[channel].descr = value;
+                 break;
+             case DSADR:
+                 s->chan[channel].src = value;
+                 break;
+             case DTADR:
+                 s->chan[channel].dest = value;
+                 break;
+             case DCMD:
+                 s->chan[channel].cmd = value;
+                 break;
+             default:
+                 goto fail;
+             }
+ 
+             break;
+         }
+     fail:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
+                       __func__, offset);
+     }
+ }
+diff --git a/hw/dma/sparc32_dma.c b/hw/dma/sparc32_dma.c
+index 0ef13c5e9a..c68e068cc9 100644
+--- a/hw/dma/sparc32_dma.c
++++ b/hw/dma/sparc32_dma.c
+@@ -180,49 +180,49 @@ static uint64_t dma_mem_read(void *opaque, hwaddr addr,
+ static void dma_mem_write(void *opaque, hwaddr addr,
+                           uint64_t val, unsigned size)
+ {
+     DMADeviceState *s = opaque;
+     uint32_t saddr;
+ 
+     saddr = (addr & DMA_MASK) >> 2;
+     trace_sparc32_dma_mem_writel(addr, s->dmaregs[saddr], val);
+     switch (saddr) {
+     case 0:
+         if (val & DMA_INTREN) {
+             if (s->dmaregs[0] & DMA_INTR) {
+                 trace_sparc32_dma_set_irq_raise();
+                 qemu_irq_raise(s->irq);
+             }
+         } else {
+             if (s->dmaregs[0] & (DMA_INTR | DMA_INTREN)) {
+                 trace_sparc32_dma_set_irq_lower();
+                 qemu_irq_lower(s->irq);
+             }
+         }
+         if (val & DMA_RESET) {
+             qemu_irq_raise(s->gpio[GPIO_RESET]);
+             qemu_irq_lower(s->gpio[GPIO_RESET]);
+         } else if (val & DMA_DRAIN_FIFO) {
+             val &= ~DMA_DRAIN_FIFO;
+         } else if (val == 0)
+             val = DMA_DRAIN_FIFO;
+ 
+         if (val & DMA_EN && !(s->dmaregs[0] & DMA_EN)) {
+             trace_sparc32_dma_enable_raise();
+             qemu_irq_raise(s->gpio[GPIO_DMA]);
+         } else if (!(val & DMA_EN) && !!(s->dmaregs[0] & DMA_EN)) {
+             trace_sparc32_dma_enable_lower();
+             qemu_irq_lower(s->gpio[GPIO_DMA]);
+         }
+ 
+         val &= ~DMA_CSR_RO_MASK;
+         val |= DMA_VER;
+         s->dmaregs[0] = (s->dmaregs[0] & DMA_CSR_RO_MASK) | val;
+         break;
+     case 1:
+         s->dmaregs[0] |= DMA_LOADED;
+-        /* fall through */
++        fallthrough;
+     default:
+         s->dmaregs[saddr] = val;
+         break;
+     }
+ }
 -- 
 2.39.2
 

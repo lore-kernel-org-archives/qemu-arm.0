@@ -1,119 +1,123 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333171ejc;
-        Fri, 13 Oct 2023 00:58:12 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFw2jG6EIQ37/ChOgpR23yV9Ikn/nz5xRqhaOWCFAV1VzMKuNSaFHvC984v//yO2elPS8EY
-X-Received: by 2002:ad4:5c67:0:b0:65b:4f2:13fa with SMTP id i7-20020ad45c67000000b0065b04f213famr34143089qvh.2.1697183891903;
-        Fri, 13 Oct 2023 00:58:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183891; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333189ejc;
+        Fri, 13 Oct 2023 00:58:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEeO+//ztS5ELr/c27RVTfxj0Ghb81jGzyNteplMy9YlvZ5ryZB5BbbgoJDxJEqiUPKb0lM
+X-Received: by 2002:a0c:de08:0:b0:66d:be7:fa67 with SMTP id t8-20020a0cde08000000b0066d0be7fa67mr6289138qvk.24.1697183895096;
+        Fri, 13 Oct 2023 00:58:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183895; cv=none;
         d=google.com; s=arc-20160816;
-        b=DMhK+foWVaavG3+3qiixBM7vr1z/QWYjP6IgHA+ASaVn/4Ugwp85xMzC6QwXpdjqCk
-         ObHsSGjrNfdAndsvzskybboCk0+TPyMMyQU7RZ1pguerF69PdLp8Se1D6Y0O3RiJLYZV
-         s868j2WTZAo6V+8GVY0986seFGXEm9NaGXLl9QnVDq5aO02UejFhmGsdpzV4aQN4AXBG
-         AKDa6uaq7ihaNY7MtL1VTHmQIpMYofYinGWzSPpIug5LFFz5nXeBjvsBbxn1DuVtf7fb
-         uuFTTdmTcposy3/09OWRhTaKR0BdNCD0IFT/0qhTUck4PxvTRuJrTuqPH+/RSme7WEC8
-         MNzQ==
+        b=AjEecKxb7jArAC33EDjDJowgIL9ugHS2SJJbm4MciwLJN8F8ZaHw0gNFgMNuTW8dyq
+         auQrK77enZzEsERMVv+vzpyWyZDYXsRKVghRYlwD1eLT16JU1wX3Ms9DPLfq3XGSc/7k
+         8RXMG/VeN2Fv+NtzQJf9mYDlZw04ZU2xC+wrJEmXdUFrqI7LdQIDRg9VRoqfdubHrDPN
+         6cAkF2teKmLhlmg/q4cI/6p8WmdLD5NBCd14IKTz31cfk4esvqGqP5Sn583DoQ2qLSKq
+         iXmtjTSNAb/toXFMtwtz25fcYGFIz0OMmqgp5PuYpJZTwNGYaDkBd5HhAJIe89fFgU6Z
+         6hFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=szRY5OVua4jMraaGx0Wxad48cfHGRUEd9LK/mYhb6Xk=;
-        fh=jqhdg2OssQ/bA/kc4CpqO38PJpQpeWUskwsxLc35AF4=;
-        b=b4Fk7hm4rBvUjbq4DN+1vlKPdQU2r1mw//Ybmla+DtF8sfGlYdkLI/qmvVGWpK8KnG
-         kUfgrAxlUFPKaSpLAiI093a0chEBPgwmUY7Iv8otUs2iVg+FnhFj1orqL9rQPdUbXep4
-         aGkqzpFDD6ncCuhucBJ4zTh5MhUGnOfIiXOTo1oyFX6BgE5uI1gxpvgNLuog2nNFdzrO
-         b9OhMfM+sQ8dktOw9ANNq2IKt8j+ynS1eIZQfuqLhshdQ7cMgJ0gCqoLpP6U2RMEdCnf
-         7oDV7fBdBzKiQYMC9E/9Ww0T4+A4owoSo+L7f54leBVtVy+xsjX8TthTObDwxai2to0M
-         gzaw==
+        bh=X/3hfCPHvt3e6pC8tdZlMAdusEcQDSsosJUnihPSBrg=;
+        fh=h2MVLD9s1IFAVBA68lLm5PQo0M17YJJZZ5UKzOs6KLY=;
+        b=BnO3et42GiLFAxIe4/6ffhDiW4htpUX4izF7x2q6P1T/+97Nraww56MRiABub8cljO
+         WejZaNbZjfuIGjkGLmtrdEjHdvORKetjO10IBCYFypJCcT+4vqMkC0qWF7kdEusS24WT
+         qXA8QglJ7XWU/CiJzC3QoAm+DhlMP2IIBkdSdYQwhX++RktuZ3jf0/UYL/R84hccBKgz
+         4n83cg0aRGQQeEqH4AklZrYYfMKd+pvCZCyewZmFi8VFT8xpEdLwfBnX7DKGq0zPkhnh
+         qI6SlyYjpjZV0QTzdEBJI2CaO1eGgaLRTsAQwVfhkqHvGFbnpPmKQym6GX6kSeHlGKSU
+         32KA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ublIUZfn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=p6UdREPV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pz3-20020ad45503000000b0065af2518773si820264qvb.89.2023.10.13.00.58.11
+        by mx.google.com with ESMTPS id mf2-20020a0562145d8200b0065d41a41e7esi794353qvb.537.2023.10.13.00.58.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:58:11 -0700 (PDT)
+        Fri, 13 Oct 2023 00:58:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ublIUZfn;
+       dkim=pass header.i=@linaro.org header.s=google header.b=p6UdREPV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCzE-0004iN-7q; Fri, 13 Oct 2023 03:53:32 -0400
+	id 1qrCyD-0002Bu-M9; Fri, 13 Oct 2023 03:52:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxv-0001K9-4B
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:11 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1qrCxN-00072w-Fm
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:39 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCxb-0005GV-Iw
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:52:10 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-405361bb9f7so19252315e9.2
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:51:51 -0700 (PDT)
+ id 1qrCx4-00052n-9C
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:51:37 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-325e9cd483eso1747188f8f.2
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:51:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183510; x=1697788310; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183477; x=1697788277; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=szRY5OVua4jMraaGx0Wxad48cfHGRUEd9LK/mYhb6Xk=;
- b=ublIUZfnjQ373T60q6lqe4wIPkNPgdjSk0DLd3+GyCZzFX4pQITcJXVTjhFAV6BoOt
- Eaiussk+J+um8UPYQn5+0xS7VPFR08bCjuAyz6JzMDlcBnyHulAM+HNffUveR0PGaPwD
- rNhSxHPD0ZJQFDPbb3bo6eQwCx3QLvQTUHwi43+XOe/ycd3LGi2MY+5uPnguoCx/cUXJ
- eE2T0VgVgSLfWndfdFybxkY01wz7dT8CCiZvLqPFHpOg1TNc0JVliJGv22rt6kPEvjsB
- mBtLMx0M8YxzzoihwuSSO71okcCbqDhkaMmV+2jJrNLn2GW/NdsmdPyU9VqgOpvgedm6
- ZZ/g==
+ bh=X/3hfCPHvt3e6pC8tdZlMAdusEcQDSsosJUnihPSBrg=;
+ b=p6UdREPVwvRwIPNvIsaYp+JBOCECDq9Fb6g+etDVeEAWdSOlT1zYPcGcCvG0D8COOJ
+ wdG5T+XqVvH6W98z9WrqgQh0dYTJXxJI5Lh/LyM7W6MmJNU6Eof3JFTfOkIx8KcY15nj
+ IkJxEVnV8HkAqUwh+BdHcqAY5zLg3kUMyTBtOhYfEgwqmsSReQiTz9nonI1DeDysXB84
+ PYl4V1CpM9nEzxBUJjIoe8x93yaWlMbV6dio7gtJ1aRwCXGvTIeqHUrkiCAXQ3lAY2Zp
+ UnU/xcXD3mYC9w/hbx/BkYzr1pd6TmZtPtvNhuGWmxwrlP+vWIcOpLdCk+EIOG7snifx
+ EiBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183510; x=1697788310;
+ d=1e100.net; s=20230601; t=1697183477; x=1697788277;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=szRY5OVua4jMraaGx0Wxad48cfHGRUEd9LK/mYhb6Xk=;
- b=QhgrFkoK+wk8rF+W4QAyEJvhBuV6mKgWytOZUDUiAETSW4Ui+f79lJ5XV3LOmuPGH5
- 0KhfrKU+FF77Zbmtb6S6X+nbnA0wwupK99cjOU6iUWMF/yHkTmjwmeTtEszOJIrwi9Rm
- Cfvb4IoSchhcmyTwkAgP1XDwFYG1q+odkBPc8mOKfrHuSfDt2RM85+2IamRn9jwK6riH
- xGvb8p5hxQGd9gIeH+xqCSyOvbJXd5jCdd+flQEYWEGurA8Ku1Wlz6YxANZEk2JkKvCQ
- LEIJRcyjKYUEiMQyyXGuDha+amZXUF/rLj2QYFs3KV5VktQAg6MKRaQVb+M94lZVywXd
- CwBQ==
-X-Gm-Message-State: AOJu0Yy3b3IQmTqzAHXvWviZPjFA29peSomSVzBmyADZLybx90Pci8YC
- C6RIQf/xzFSnVd6zb0bh0gRWu7ULyUMVbXwBwzA=
-X-Received: by 2002:a5d:4b0c:0:b0:32d:9524:386b with SMTP id
- v12-20020a5d4b0c000000b0032d9524386bmr2978347wrq.32.1697183509935; 
- Fri, 13 Oct 2023 00:51:49 -0700 (PDT)
+ bh=X/3hfCPHvt3e6pC8tdZlMAdusEcQDSsosJUnihPSBrg=;
+ b=YFhlEJ+J3/7HoYkxoYuy57Ss6QPbVwLl3FZ7Y1ztAU76m3aest4irLilDiAM3bEoML
+ WXKbe2peLMWQ6MK/LuJkQH5iK2V3S2BEXVN56M716T98LlFTjXHv/Wmj8cIITZyRl7N6
+ SikRWLDr4ZHjOqvEfEuXwzQknQxFuvG9a+Zd7tl1dxpjau8Edy884YhT/BwSDemBOI16
+ nkeUn5awKJRC431yowy6xGV8nQ37lM7zLkPVWK7LQirsjejQEE/1Xa2HkasPO4DwYEgv
+ 9OvGC+MddACfbH43pWlTKn+9J4OIABfuAvHXbe8MQBn5lO9GF1tmXNDTRTxXCJCR665z
+ IdLw==
+X-Gm-Message-State: AOJu0Yyq+JY6MqHHZmTnsjN8PcJgVjlEDU+NHMBEXN0zOT4C97JpIwJs
+ H57iUagDEzIPm0OObuIR2IwTITwX1zbSYGrMh3k=
+X-Received: by 2002:a5d:4e88:0:b0:32d:9572:646e with SMTP id
+ e8-20020a5d4e88000000b0032d9572646emr2514678wru.54.1697183476711; 
+ Fri, 13 Oct 2023 00:51:16 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.48
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:51:49 -0700 (PDT)
+ Fri, 13 Oct 2023 00:51:16 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [RFC PATCH 51/78] chardev: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:48:09 +0300
-Message-Id: <7f3ef498c442a160fb72d745b975decba7e4bbe4.1697183082.git.manos.pitsidianakis@linaro.org>
+ "Michael S. Tsirkin" <mst@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Woodhouse <dwmw2@infradead.org>, Paul Durrant <paul@xen.org>
+Subject: [RFC PATCH 42/78] hw/i386: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:51 +0300
+Message-Id: <c08e8dbf0e07552a72c1ae3f520592290279d799.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,54 +132,202 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DEKwLWCfBDbf
+X-TUID: AZtFFB5wmkL5
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- chardev/char-socket.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/i386/intel_iommu.c    | 4 ++--
+ hw/i386/kvm/xen_evtchn.c | 2 +-
+ hw/i386/x86.c            | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/chardev/char-socket.c b/chardev/char-socket.c
-index 73947da188..1562e066a4 100644
---- a/chardev/char-socket.c
-+++ b/chardev/char-socket.c
-@@ -549,34 +549,34 @@ static int tcp_chr_sync_read(Chardev *chr, const uint8_t *buf, int len)
- static char *qemu_chr_compute_filename(SocketChardev *s)
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index 2c832ab68b..bdb2ea3ac5 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -2100,29 +2100,29 @@ static void vtd_context_device_invalidate(IntelIOMMUState *s,
+ /* Context-cache invalidation
+  * Returns the Context Actual Invalidation Granularity.
+  * @val: the content of the CCMD_REG
+  */
+ static uint64_t vtd_context_cache_invalidate(IntelIOMMUState *s, uint64_t val)
  {
-     struct sockaddr_storage *ss = &s->sioc->localAddr;
-     struct sockaddr_storage *ps = &s->sioc->remoteAddr;
-     socklen_t ss_len = s->sioc->localAddrLen;
-     socklen_t ps_len = s->sioc->remoteAddrLen;
-     char shost[NI_MAXHOST], sserv[NI_MAXSERV];
-     char phost[NI_MAXHOST], pserv[NI_MAXSERV];
-     const char *left = "", *right = "";
+     uint64_t caig;
+     uint64_t type = val & VTD_CCMD_CIRG_MASK;
  
-     switch (ss->ss_family) {
-     case AF_UNIX:
-         return g_strdup_printf("unix:%s%s",
-                                ((struct sockaddr_un *)(ss))->sun_path,
-                                s->is_listen ? ",server=on" : "");
-     case AF_INET6:
-         left  = "[";
-         right = "]";
--        /* fall through */
+     switch (type) {
+     case VTD_CCMD_DOMAIN_INVL:
+-        /* Fall through */
 +        fallthrough;
-     case AF_INET:
-         getnameinfo((struct sockaddr *) ss, ss_len, shost, sizeof(shost),
-                     sserv, sizeof(sserv), NI_NUMERICHOST | NI_NUMERICSERV);
-         getnameinfo((struct sockaddr *) ps, ps_len, phost, sizeof(phost),
-                     pserv, sizeof(pserv), NI_NUMERICHOST | NI_NUMERICSERV);
-         return g_strdup_printf("%s:%s%s%s:%s%s <-> %s%s%s:%s",
-                                qemu_chr_socket_protocol(s),
-                                left, shost, right, sserv,
-                                s->is_listen ? ",server=on" : "",
-                                left, phost, right, pserv);
+     case VTD_CCMD_GLOBAL_INVL:
+         caig = VTD_CCMD_GLOBAL_INVL_A;
+         vtd_context_global_invalidate(s);
+         break;
+ 
+     case VTD_CCMD_DEVICE_INVL:
+         caig = VTD_CCMD_DEVICE_INVL_A;
+         vtd_context_device_invalidate(s, VTD_CCMD_SID(val), VTD_CCMD_FM(val));
+         break;
  
      default:
-         return g_strdup_printf("unknown");
+         error_report_once("%s: invalid context: 0x%" PRIx64,
+                           __func__, val);
+         caig = 0;
+     }
+     return caig;
+ }
+@@ -2513,34 +2513,34 @@ static bool vtd_process_wait_desc(IntelIOMMUState *s, VTDInvDesc *inv_desc)
+ static bool vtd_process_context_cache_desc(IntelIOMMUState *s,
+                                            VTDInvDesc *inv_desc)
+ {
+     uint16_t sid, fmask;
+ 
+     if ((inv_desc->lo & VTD_INV_DESC_CC_RSVD) || inv_desc->hi) {
+         error_report_once("%s: invalid cc inv desc: hi=%"PRIx64", lo=%"PRIx64
+                           " (reserved nonzero)", __func__, inv_desc->hi,
+                           inv_desc->lo);
+         return false;
+     }
+     switch (inv_desc->lo & VTD_INV_DESC_CC_G) {
+     case VTD_INV_DESC_CC_DOMAIN:
+         trace_vtd_inv_desc_cc_domain(
+             (uint16_t)VTD_INV_DESC_CC_DID(inv_desc->lo));
+-        /* Fall through */
++        fallthrough;
+     case VTD_INV_DESC_CC_GLOBAL:
+         vtd_context_global_invalidate(s);
+         break;
+ 
+     case VTD_INV_DESC_CC_DEVICE:
+         sid = VTD_INV_DESC_CC_SID(inv_desc->lo);
+         fmask = VTD_INV_DESC_CC_FM(inv_desc->lo);
+         vtd_context_device_invalidate(s, sid, fmask);
+         break;
+ 
+     default:
+         error_report_once("%s: invalid cc inv desc: hi=%"PRIx64", lo=%"PRIx64
+                           " (invalid type)", __func__, inv_desc->hi,
+                           inv_desc->lo);
+         return false;
+     }
+     return true;
+ }
+diff --git a/hw/i386/kvm/xen_evtchn.c b/hw/i386/kvm/xen_evtchn.c
+index a731738411..d15e324f6e 100644
+--- a/hw/i386/kvm/xen_evtchn.c
++++ b/hw/i386/kvm/xen_evtchn.c
+@@ -2028,71 +2028,71 @@ static int find_be_port(XenEvtchnState *s, struct xenevtchn_handle *xc)
+ int xen_be_evtchn_bind_interdomain(struct xenevtchn_handle *xc, uint32_t domid,
+                                    evtchn_port_t guest_port)
+ {
+     XenEvtchnState *s = xen_evtchn_singleton;
+     XenEvtchnPort *gp;
+     uint16_t be_port = 0;
+     int ret;
+ 
+     if (!s) {
+         return -ENOTSUP;
+     }
+ 
+     if (!xc) {
+         return -EFAULT;
+     }
+ 
+     if (domid != xen_domid) {
+         return -ESRCH;
+     }
+ 
+     if (!valid_port(guest_port)) {
+         return -EINVAL;
+     }
+ 
+     qemu_mutex_lock(&s->port_lock);
+ 
+     /* The guest has to have an unbound port waiting for us to bind */
+     gp = &s->port_table[guest_port];
+ 
+     switch (gp->type) {
+     case EVTCHNSTAT_interdomain:
+         /* Allow rebinding after migration, preserve port # if possible */
+         be_port = gp->type_val & ~PORT_INFO_TYPEVAL_REMOTE_QEMU;
+         assert(be_port != 0);
+         if (!s->be_handles[be_port]) {
+             s->be_handles[be_port] = xc;
+             xc->guest_port = guest_port;
+             ret = xc->be_port = be_port;
+             if (kvm_xen_has_cap(EVTCHN_SEND)) {
+                 assign_kernel_eventfd(gp->type, guest_port, xc->fd);
+             }
+             break;
+         }
+-        /* fall through */
++        fallthrough;
+ 
+     case EVTCHNSTAT_unbound:
+         be_port = find_be_port(s, xc);
+         if (!be_port) {
+             ret = -ENOSPC;
+             goto out;
+         }
+ 
+         gp->type = EVTCHNSTAT_interdomain;
+         gp->type_val = be_port | PORT_INFO_TYPEVAL_REMOTE_QEMU;
+         xc->guest_port = guest_port;
+         if (kvm_xen_has_cap(EVTCHN_SEND)) {
+             assign_kernel_eventfd(gp->type, guest_port, xc->fd);
+         }
+         ret = be_port;
+         break;
+ 
+     default:
+         ret = -EINVAL;
+         break;
+     }
+ 
+  out:
+     qemu_mutex_unlock(&s->port_lock);
+ 
+     return ret;
+ }
+diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+index b3d054889b..c1fd0a966a 100644
+--- a/hw/i386/x86.c
++++ b/hw/i386/x86.c
+@@ -597,32 +597,32 @@ DeviceState *cpu_get_current_apic(void)
+ void gsi_handler(void *opaque, int n, int level)
+ {
+     GSIState *s = opaque;
+ 
+     trace_x86_gsi_interrupt(n, level);
+     switch (n) {
+     case 0 ... ISA_NUM_IRQS - 1:
+         if (s->i8259_irq[n]) {
+             /* Under KVM, Kernel will forward to both PIC and IOAPIC */
+             qemu_set_irq(s->i8259_irq[n], level);
+         }
+-        /* fall through */
++        fallthrough;
+     case ISA_NUM_IRQS ... IOAPIC_NUM_PINS - 1:
+ #ifdef CONFIG_XEN_EMU
+         /*
+          * Xen delivers the GSI to the Legacy PIC (not that Legacy PIC
+          * routing actually works properly under Xen). And then to
+          * *either* the PIRQ handling or the I/OAPIC depending on
+          * whether the former wants it.
+          */
+         if (xen_mode == XEN_EMULATE && xen_evtchn_set_gsi(n, level)) {
+             break;
+         }
+ #endif
+         qemu_set_irq(s->ioapic_irq[n], level);
+         break;
+     case IO_APIC_SECONDARY_IRQBASE
+         ... IO_APIC_SECONDARY_IRQBASE + IOAPIC_NUM_PINS - 1:
+         qemu_set_irq(s->ioapic2_irq[n - IO_APIC_SECONDARY_IRQBASE], level);
+         break;
      }
  }
 -- 

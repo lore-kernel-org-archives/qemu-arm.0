@@ -1,119 +1,123 @@
-Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1171782dlb;
-        Fri, 13 Oct 2023 01:58:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGfM1C8j8pIRwADjqgtL5WVgbeTxJWbTPvzAKjQ/b15PFY2rvw0KDADpTWS12OBba8YLXi1
-X-Received: by 2002:a05:620a:46ab:b0:773:ac84:3f57 with SMTP id bq43-20020a05620a46ab00b00773ac843f57mr32149255qkb.5.1697187498925;
-        Fri, 13 Oct 2023 01:58:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697187498; cv=none;
+Received: by 2002:a05:7022:2383:b0:6d:30c6:dd9e with SMTP id bz3csp1179044dlb;
+        Fri, 13 Oct 2023 02:12:13 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGSlQlJE7ihPQfYLAznhR9SzSWJxftITGBYC6Wggo+mO9JwxGIuWQfNmj5E4WAVz4bFrAgV
+X-Received: by 2002:a0c:f1ce:0:b0:66d:2435:b3f8 with SMTP id u14-20020a0cf1ce000000b0066d2435b3f8mr1415236qvl.4.1697188333420;
+        Fri, 13 Oct 2023 02:12:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697188333; cv=none;
         d=google.com; s=arc-20160816;
-        b=hIdMPmoauruRVi3WQ9jdaC5pXxH6c3QvHvggrbHkoLmxPBOQwmORXayEwUhFPTv7cR
-         tY9uJmLT+gwUXg1pfIlA7KcFJhsDz6djbxsvgiTbDVlfIJQ1znlZaJlwZiIjUqRJ6Wp0
-         aJobX0hAbYxhIT3OZLL/70bXrX8t4AhCneTqIUVvIUAkxYzzY2bQwnYYxp1Z9IbjCjec
-         KBHs9JZFO5sUSVUcj+6ZJ7wEhZ+hSoUXT4Fta+UqrMS0MXBMo5lK0CPq2HbSZ7tv1ynk
-         W9QZwVqwIKqQgFhufX6/oaoO31jfeKix4UPTqTiE7xbtl8h2nzFzr7yn/FWmejZsd43i
-         USqA==
+        b=At+ruiobaXFDZp2sAHMuWuH+1BQvfTWeY6e5pFE4a0dny2VClvA5R+j7ivj9k1hPSY
+         roCMV0vH/sfKzqJyM+s7eSIiko66VLLtqcytuxgd6QWMW06x7XbOamiiMoBqoNumNA7O
+         d3BkStfUHnY9AzxPlN6tLZjf5RDv+1BL0I78EmpJqhPzYp2/4kqaKBe5fJnNkG04gV0I
+         fIlud+jN4Yl76koW3Vf4ks4s5tEoK5/Mjhb38I8kkx+fKxgHqPIUeYBejHkjuqhSdv8Q
+         5qilprBpQ/8Pff8V6iI7wd9vUgHAmF51ON5Dj5/HBHDH9rjwZbgdzbV6OAlCJUJPZdqY
+         PReg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=NUIhP++t1/xzGexyy38QEsbzLOw4q8ngroWW7CBww/E=;
-        fh=HboKDLyi7pn1aUrV+/OwbQZ6k11B2ACB73VXzoMRL8o=;
-        b=kWBbgq5jXFjJXnUl2EXRr84ZPg0lcy5ZUf9vPmS3jmLHqSjEpRMmsh9oXedOKeFcLD
-         DHh9kTNHTa9TKNFLISNWlNPFhKwkojWRw9NYX7t5UhkF0HKw1BIb/aksLMa9HBuBHtHC
-         1BrePkAfRpkFIhLryQog3UPLhYiV9LApYFqxVPN45oJw5+yyIbLw0pNWpV3gJnltpegG
-         iHnQlo80/PW3eq3ow6fFcMwpGKetCELmxiKGl/0c7EXekpJlIx1g3UIdn+XedRv5GhKf
-         tsPB2+6eNHrscxSSeFtLZH9Uq0Uhq+4QPxgpuSupxQEtjG5ytdIHtEIQ1GoLTAu1sxxP
-         drwQ==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=KCuLeT7zSl6MJg/g0ThaCPtucbTdymw1irw24OM5YK0=;
+        fh=SiRkTVPdpLAF3fvnDogKUa0tfzYbWmB8l27KrW5jrU8=;
+        b=PZv4RjM3V2suoZ/vxGaKLccX/r2UkK9a8ChfLqYkmUPiJG8XqYjemrQmahffK1l4sw
+         6I20qEECJsf07l+ez4TUjsjMbIZ0GPlKqJNlk8opNeH1fq+OPEDoAlmXZSAGYbdvD1hP
+         u4Px+2fweql0xSH5r3BRcR/TdkZFiEgTHUgXTAqXOfcTpiQceXLFJQ/sZsvf2sNFS2/V
+         Bu2ww5lT/YRN/5Tqt/XV4SiliCbC3onoONJGUqaqP6C8mBaQ6ULfp4mhNcWAsYG9gS0e
+         r8Mbsm23xmQHF6VagaRf5GvWc7enbBT86vbUbWw01W+Zt5emmRPBWyRCvZF1CmHVz8KV
+         VfzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IH3UhbBs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=bxrXIUX1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pb23-20020a05620a839700b0077597c8aa84si842130qkn.599.2023.10.13.01.58.18
+        by mx.google.com with ESMTPS id ep7-20020a05621418e700b0065b20aeaec8si890344qvb.194.2023.10.13.02.12.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 01:58:18 -0700 (PDT)
+        Fri, 13 Oct 2023 02:12:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IH3UhbBs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=bxrXIUX1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrDtK-0000nS-VY; Fri, 13 Oct 2023 04:51:30 -0400
+	id 1qrED0-00060d-Dj; Fri, 13 Oct 2023 05:11:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDsn-00078o-9N
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:50:59 -0400
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1qrECt-0005xv-UA
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 05:11:45 -0400
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrDsh-0001b0-FD
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 04:50:57 -0400
-Received: by mail-lj1-x234.google.com with SMTP id
- 38308e7fff4ca-2c50cd16f3bso84701fa.2
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 01:50:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1qrECr-0005QM-86
+ for qemu-devel@nongnu.org; Fri, 13 Oct 2023 05:11:43 -0400
+Received: by mail-pg1-x529.google.com with SMTP id
+ 41be03b00d2f7-5859d13f73dso1295847a12.1
+ for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 02:11:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697187049; x=1697791849; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=NUIhP++t1/xzGexyy38QEsbzLOw4q8ngroWW7CBww/E=;
- b=IH3UhbBsDQj7NNo4JwrVDaHXOIuXk2P0zsRq6/29c5KiwOVPPAU+nWnbjakjsJHXiS
- xvVcBA8IbBUIVWr6Yiiy/136lI2WDi10K3e6wc4jskbbrVeT6TeaIvOeVNrse+xxAGVZ
- LZ3VKW2wU+KiZMVkSQ5tDHY+i+h5NlRjC707u9zeh06gyOkvRSf0iXhesDFKLfiqPOJe
- FCbufCWPqtdS3CgwEhLy2YIMgsK9fRK6wkDtOQmqjlCRw7NJbPV8V5cCA5pC9ZJtu9N5
- IP992NrKcw5pL4bRSHBo2oEkbr33PXa7xZT8nX7J/1xv/A3y1LW963nf3Q+W50D+3BGg
- EF6w==
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1697188299; x=1697793099;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=KCuLeT7zSl6MJg/g0ThaCPtucbTdymw1irw24OM5YK0=;
+ b=bxrXIUX1S+w+9JWrekm3ews0l7SgV9mPpjFUghDULyaoAFGP63p++6p9sGeNEMg6Aw
+ OTbcUV2OBOz2WvitLF7GgcFfLRwC2pXnMJHgct3m0k/yXgMAQRzMrwAMeoawQQvVWeWj
+ If0Fe3CvJyPAwMBnSqrWQlvOUflgSATrp/vgcNUATOHFRlFGySaSleKYaGCoJOTtUMc3
+ zpWVwL7VSfccFtqC5Oqvvlg9qzNCYOb+ggIcTzq7EKVCfgb3Difu4rzvdM6MV5Nq+vDa
+ zhfFoS3DFe62iWhHOJKowwvc9kAWuwiG5n72yi76ahklWVb/dgZQVdpQSHyLXnu5IImO
+ 2KIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697187049; x=1697791849;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=NUIhP++t1/xzGexyy38QEsbzLOw4q8ngroWW7CBww/E=;
- b=neGbDXtNfAQlvqEgK7Lsc2PRxYOcSYGVrAj4yWV1pjOv7p0iXnpCE8jKOwYZl4/ohX
- htt4U9tOelQwI6fHcbEIgOEkv7nmpU/VdajlxRfXzCwXQhIwS58R5z8QDGZJ/XjuQ8DJ
- ptpRBBTdVK86nxREDM1L1f0o7HCWQ+ES93uj2187V8wzwyohwQiZDHCdbA6U4P86bI0F
- Z2YnQQGWLA+8TotLUgge0SxprFMPXoe0N3s2UDgUMdy4ibVlP6DtoITB+/SLtp9hLXdh
- 62Wgj0Bf5dTkJ6RVEZz661BgP31BvZ8pJ9GbWT1MOKPn5g0G0zYKTUVdydAj3msaTEF8
- LX9Q==
-X-Gm-Message-State: AOJu0YyI4i9LK4tTKmlz+u1xHEn+6q/Ky+EknsM8GJrI23h3EDmg5IFA
- GiPCgR78Hh9VCz1csmF21htWjgvYtJhSDS+sBX4=
-X-Received: by 2002:a2e:a9a2:0:b0:2c5:32b:28fa with SMTP id
- x34-20020a2ea9a2000000b002c5032b28famr1964682ljq.30.1697187048866; 
- Fri, 13 Oct 2023 01:50:48 -0700 (PDT)
-Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
- [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- v10-20020a5d678a000000b0032d9f32b96csm569185wru.62.2023.10.13.01.50.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 01:50:48 -0700 (PDT)
-From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:Nuvoton NPCM7xx)
-Subject: [RFC PATCH v3 72/78] hw/ssi: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 11:46:40 +0300
-Message-Id: <ddd1b9ad088e5020ef9bea8773f09e18dc474fc0.1697186560.git.manos.pitsidianakis@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
-References: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
+ d=1e100.net; s=20230601; t=1697188299; x=1697793099;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=KCuLeT7zSl6MJg/g0ThaCPtucbTdymw1irw24OM5YK0=;
+ b=F/pKTXr/Da27CaqkkAfdiHI6pAyjrT+TB3rx5aFTNpL9YLYzAgz9r0yM4mNb7gphQW
+ ZGA4MquB6GTCWLFKtVjYZyltqHlS53Vh4tsj7wy7lL9Zup23q5tI9wPclquQXfPsc/zo
+ Ki4ZdIHa0jP4SAPsuoCWmt28/iyrlCGtRG6SpIxh0+y1Yh7KF6YgdP85DcT6kylc8LCA
+ P5T0BFN0lpN6p895heICqb5ayzQp8pzoqgn7A7bsdmDkUUaqtYRf2IXKYeD/SEpz5Obf
+ VfY8mJ+DROPZ9i2nka1avtpA+Z3YVEVcl9qZkgO/9mAgrI28Wqh89G7LvjmYoG03cjY9
+ o6zw==
+X-Gm-Message-State: AOJu0Yxn+6szQ1WG+yaw6l/nNVAGmNgXT0YyNDaLI6SfYDvX0USgDZlH
+ Pondskk3h1rO750Y60TaRZ6zqQ==
+X-Received: by 2002:a05:6a21:9997:b0:16b:8b16:bfad with SMTP id
+ ve23-20020a056a21999700b0016b8b16bfadmr21010002pzb.32.1697188298669; 
+ Fri, 13 Oct 2023 02:11:38 -0700 (PDT)
+Received: from [157.82.206.197] ([157.82.206.197])
+ by smtp.gmail.com with ESMTPSA id
+ ik5-20020a170902ab0500b001c723d6c410sm3465753plb.16.2023.10.13.02.11.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 13 Oct 2023 02:11:38 -0700 (PDT)
+Message-ID: <01971536-5a3d-45b0-99c2-b3583dbb9584@daynix.com>
+Date: Fri, 13 Oct 2023 18:11:34 +0900
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::234;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lj1-x234.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v3 57/78] hw/net: add fallthrough pseudo-keyword
+Content-Language: en-US
+To: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>, Vikram Garhwal <fnu.vikram@xilinx.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
+References: <cover.1697186560.git.manos.pitsidianakis@linaro.org>
+ <84a6d743b5ff71c323cee718412e2a67084b9237.1697186560.git.manos.pitsidianakis@linaro.org>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <84a6d743b5ff71c323cee718412e2a67084b9237.1697186560.git.manos.pitsidianakis@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::529;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pg1-x529.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,181 +132,143 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: j8h4YLCjAHtu
+X-TUID: 5TIRntFPgSqt
 
-In preparation of raising -Wimplicit-fallthrough to 5, replace all
-fall-through comments with the fallthrough attribute pseudo-keyword.
+On 2023/10/13 17:46, Emmanouil Pitsidianakis wrote:
+> In preparation of raising -Wimplicit-fallthrough to 5, replace all
+> fall-through comments with the fallthrough attribute pseudo-keyword.
+> 
+> Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
+>   hw/net/cadence_gem.c     | 4 ++--
+>   hw/net/can/can_sja1000.c | 4 ++--
+>   hw/net/igb_core.c        | 2 +-
+>   hw/net/igbvf.c           | 2 +-
+>   hw/net/imx_fec.c         | 2 +-
+>   hw/net/net_rx_pkt.c      | 2 +-
+>   hw/net/pcnet.c           | 2 +-
+>   hw/net/rtl8139.c         | 6 ++++--
+>   hw/net/xilinx_ethlite.c  | 2 +-
+>   9 files changed, 14 insertions(+), 12 deletions(-)
+> 
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> index f445d8bb5e..a59991af5b 100644
+> --- a/hw/net/cadence_gem.c
+> +++ b/hw/net/cadence_gem.c
+> @@ -834,10 +834,10 @@ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
+>                   qemu_log_mask(LOG_UNIMP, "TCP compare offsets"
+>                                 "unimplemented - assuming UDP\n");
+>                   offset += 8;
+> -                /* Fallthrough */
+> +                fallthrough;
+>               case 2: /* skip the IP header */
+>                   offset += 20;
+> -                /* Fallthrough */
+> +                fallthrough;
+>               case 1: /* Count from after the ethertype */
+>                   offset += 14;
+>                   break;
+> diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
+> index 73201f9139..14052b2700 100644
+> --- a/hw/net/can/can_sja1000.c
+> +++ b/hw/net/can/can_sja1000.c
+> @@ -544,7 +544,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
+>               break;
+>           case 16: /* RX frame information addr16-28. */
+>               s->status_pel |= (1 << 5); /* Set transmit status. */
+> -            /* fallthrough */
+> +            fallthrough;
+>           case 17 ... 28:
+>               if (s->mode & 0x01) { /* Reset mode */
+>                   if (addr < 24) {
+> @@ -642,7 +642,7 @@ void can_sja_mem_write(CanSJA1000State *s, hwaddr addr, uint64_t val,
+>               break;
+>           case 10:
+>               s->status_bas |= (1 << 5); /* Set transmit status. */
+> -            /* fallthrough */
+> +            fallthrough;
+>           case 11 ... 19:
+>               if ((s->control & 0x01) == 0) { /* Operation mode */
+>                   s->tx_buff[addr - 10] = val; /* Store to TX buffer directly. */
+> diff --git a/hw/net/igb_core.c b/hw/net/igb_core.c
+> index f6a5e2327b..1117f7cb59 100644
+> --- a/hw/net/igb_core.c
+> +++ b/hw/net/igb_core.c
+> @@ -1419,7 +1419,7 @@ igb_build_rx_metadata_common(IGBCore *core,
+>               if (!csum_valid) {
+>                   *status_flags |= E1000_RXDEXT_STATERR_TCPE;
+>               }
+> -            /* fall through */
+> +            fallthrough;
+>           case ETH_L4_HDR_PROTO_TCP:
+>               *status_flags |= E1000_RXD_STAT_TCPCS;
+>               break;
+> diff --git a/hw/net/igbvf.c b/hw/net/igbvf.c
+> index d55e1e8a6a..ff68a4f3c5 100644
+> --- a/hw/net/igbvf.c
+> +++ b/hw/net/igbvf.c
+> @@ -188,7 +188,7 @@ static hwaddr vf_to_pf_addr(hwaddr addr, uint16_t vfn, bool write)
+>           if (write) {
+>               return HWADDR_MAX;
+>           }
+> -        /* fallthrough */
+> +        fallthrough;
+>       case 0x34E8: /* PBTWAC */
+>       case 0x24E8: /* PBRWAC */
+>           return addr;
+> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+> index 5d1f1f104c..a7e8b06d48 100644
+> --- a/hw/net/imx_fec.c
+> +++ b/hw/net/imx_fec.c
+> @@ -918,7 +918,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
+>                             TYPE_IMX_FEC, __func__);
+>               return;
+>           }
+> -        /* fall through */
+> +        fallthrough;
+>       case ENET_TDAR:
+>           if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
+>               s->regs[index] = ENET_TDAR_TDAR;
+> diff --git a/hw/net/net_rx_pkt.c b/hw/net/net_rx_pkt.c
+> index 32e5f3f9cf..52e2432c9b 100644
+> --- a/hw/net/net_rx_pkt.c
+> +++ b/hw/net/net_rx_pkt.c
+> @@ -605,7 +605,7 @@ bool net_rx_pkt_validate_l4_csum(struct NetRxPkt *pkt, bool *csum_valid)
+>               trace_net_rx_pkt_l4_csum_validate_udp_with_no_checksum();
+>               return false;
+>           }
+> -        /* fall through */
+> +        fallthrough;
+>       case ETH_L4_HDR_PROTO_TCP:
+>           csum = _net_rx_pkt_calc_l4_csum(pkt);
+>           *csum_valid = ((csum == 0) || (csum == 0xFFFF));
+> diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
+> index 02828ae716..a32174ef93 100644
+> --- a/hw/net/pcnet.c
+> +++ b/hw/net/pcnet.c
+> @@ -1502,7 +1502,7 @@ static void pcnet_bcr_writew(PCNetState *s, uint32_t rap, uint32_t val)
+>   #ifdef PCNET_DEBUG
+>          printf("BCR_SWS=0x%04x\n", val);
+>   #endif
+> -        /* fall through */
+> +       fallthrough;
+>       case BCR_LNKST:
+>       case BCR_LED1:
+>       case BCR_LED2:
+> diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+> index 4525fda383..42f19618b1 100644
+> --- a/hw/net/rtl8139.c
+> +++ b/hw/net/rtl8139.c
+> @@ -2447,8 +2447,10 @@ static uint32_t rtl8139_TxStatus_TxAddr_read(RTL8139State *s, uint32_t regs[],
+>       }
+>   
+>       switch (size) {
+> -    case 1: /* fall through */
+> -    case 2: /* fall through */
+> +    case 1:
+> +        fallthrough;
+> +    case 2:
+> +        fallthrough;
+>       case 4:
 
-Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
----
- hw/ssi/npcm7xx_fiu.c | 14 ++++++-------
- hw/ssi/omap_spi.c    | 48 ++++++++++++++++++++++----------------------
- 2 files changed, 31 insertions(+), 31 deletions(-)
-
-diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
-index 4eedb2927e..fadd66a675 100644
---- a/hw/ssi/npcm7xx_fiu.c
-+++ b/hw/ssi/npcm7xx_fiu.c
-@@ -167,7 +167,7 @@ static uint64_t npcm7xx_fiu_flash_read(void *opaque, hwaddr addr,
-     switch (FIU_DRD_CFG_ADDSIZ(drd_cfg)) {
-     case FIU_ADDSIZ_4BYTES:
-         ssi_transfer(fiu->spi, extract32(addr, 24, 8));
--        /* fall through */
-+        fallthrough;
-     case FIU_ADDSIZ_3BYTES:
-         ssi_transfer(fiu->spi, extract32(addr, 16, 8));
-         ssi_transfer(fiu->spi, extract32(addr, 8, 8));
-@@ -226,7 +226,7 @@ static void npcm7xx_fiu_flash_write(void *opaque, hwaddr addr, uint64_t v,
-     switch (FIU_DWR_CFG_ADDSIZ(dwr_cfg)) {
-     case FIU_ADDSIZ_4BYTES:
-         ssi_transfer(fiu->spi, extract32(addr, 24, 8));
--        /* fall through */
-+        fallthrough;
-     case FIU_ADDSIZ_3BYTES:
-         ssi_transfer(fiu->spi, extract32(addr, 16, 8));
-         ssi_transfer(fiu->spi, extract32(addr, 8, 8));
-@@ -285,16 +285,16 @@ static void send_address(SSIBus *spi, unsigned int addsiz, uint32_t addr)
-     switch (addsiz) {
-     case 4:
-         ssi_transfer(spi, extract32(addr, 24, 8));
--        /* fall through */
-+        fallthrough;
-     case 3:
-         ssi_transfer(spi, extract32(addr, 16, 8));
--        /* fall through */
-+        fallthrough;
-     case 2:
-         ssi_transfer(spi, extract32(addr, 8, 8));
--        /* fall through */
-+        fallthrough;
-     case 1:
-         ssi_transfer(spi, extract32(addr, 0, 8));
--        /* fall through */
-+        fallthrough;
-     case 0:
-         break;
-     }
-@@ -391,7 +391,7 @@ static void npcm7xx_fiu_ctrl_write(void *opaque, hwaddr addr, uint64_t v,
-             value &= ~FIU_UMA_CFG_CMMLCK_MASK;
-             value |= (s->regs[reg] & FIU_UMA_CFG_CMMLCK_MASK);
-         }
--        /* fall through */
-+        fallthrough;
-     case NPCM7XX_FIU_DRD_CFG:
-     case NPCM7XX_FIU_DWR_CFG:
-         if (s->regs[reg] & NPCM7XX_FIU_CFG_LCK) {
-diff --git a/hw/ssi/omap_spi.c b/hw/ssi/omap_spi.c
-index 8f85c3e391..a0f367bd17 100644
---- a/hw/ssi/omap_spi.c
-+++ b/hw/ssi/omap_spi.c
-@@ -170,47 +170,47 @@ static uint64_t omap_mcspi_read(void *opaque, hwaddr addr, unsigned size)
-         return s->control;
- 
-     case 0x68: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x54: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x40: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x2c:	/* MCSPI_CHCONF */
-         return s->ch[ch].config;
- 
-     case 0x6c: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x58: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x44: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x30:	/* MCSPI_CHSTAT */
-         return s->ch[ch].status;
- 
-     case 0x70: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x5c: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x48: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x34:	/* MCSPI_CHCTRL */
-         return s->ch[ch].control;
- 
-     case 0x74: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x60: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x4c: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x38:	/* MCSPI_TX */
-         return s->ch[ch].tx;
- 
-     case 0x78: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x64: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x50: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x3c:	/* MCSPI_RX */
-         s->ch[ch].status &= ~(1 << 0);			/* RXS */
-         ret = s->ch[ch].rx;
-@@ -288,11 +288,11 @@ static void omap_mcspi_write(void *opaque, hwaddr addr,
-         break;
- 
-     case 0x68: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x54: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x40: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x2c:	/* MCSPI_CHCONF */
-         if ((value ^ s->ch[ch].config) & (3 << 14))	/* DMAR | DMAW */
-             omap_mcspi_dmarequest_update(s->ch + ch);
-@@ -309,11 +309,11 @@ static void omap_mcspi_write(void *opaque, hwaddr addr,
-         break;
- 
-     case 0x70: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x5c: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x48: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x34:	/* MCSPI_CHCTRL */
-         if (value & ~s->ch[ch].control & 1) {		/* EN */
-             s->ch[ch].control |= 1;
-@@ -323,11 +323,11 @@ static void omap_mcspi_write(void *opaque, hwaddr addr,
-         break;
- 
-     case 0x74: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x60: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x4c: ch ++;
--        /* fall through */
-+        fallthrough;
-     case 0x38:	/* MCSPI_TX */
-         s->ch[ch].tx = value;
-         s->ch[ch].status &= ~(1 << 1);			/* TXS */
--- 
-2.39.2
-
+I don't think you need comments or pseudo-keywords here.

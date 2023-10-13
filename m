@@ -1,115 +1,110 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333612ejc;
-        Fri, 13 Oct 2023 00:59:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHvzJWpN4rfqbMPcltaTbHsDvlh5UVkOipmcIegX4DZ0sn4ZrKLPGcn/P2qGGNXuy4Z3OsD
-X-Received: by 2002:a05:620a:4008:b0:773:e0e0:638c with SMTP id h8-20020a05620a400800b00773e0e0638cmr32320508qko.15.1697183959116;
-        Fri, 13 Oct 2023 00:59:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183959; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1333666ejc;
+        Fri, 13 Oct 2023 00:59:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFenoXsbBWZPhVQbbhZGbcSvCOyHqK42zlPjUM6nQVXbVGeNmlxlEeKNShGahFpKULbBOsJ
+X-Received: by 2002:a0c:cb8e:0:b0:66d:775:d1af with SMTP id p14-20020a0ccb8e000000b0066d0775d1afmr6612727qvk.59.1697183966775;
+        Fri, 13 Oct 2023 00:59:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183966; cv=none;
         d=google.com; s=arc-20160816;
-        b=KDS3fQnjftaN/EdUrzDf8mI6qw2JnVAYjww/dIoUJ2lb23JuHIj8n4V5qTJw2EJ045
-         NusHVLifFMtXY6QmbT5pKMMgYVakjCYlXpsJiztXvmBm9PwSsOpT9Em+IMaumPBFjfMs
-         BCyK1Ql41jN9FXGiAgNxmku2we2aol/WKaS8LiSVvdqdyzCsN8O21fNOteRHgqd8fN1Y
-         O6YSohTvJhGhk8QI9hNZYv0opx33zcWSey+YOZ5K8EP4oxzz4elaGUFq/OQLnnUj13hP
-         SdIUO0/VMD0deITdIcWifSLcih13eFyRgOXQa0PbJv2AlsNC33d896Hc6cSBi2krs5f4
-         yFlA==
+        b=1JQBPp7635zBP+PH5PZ8kCn5pPbdCArMR7H2dc50LgWPa4SoaHm8k8Mq582nOjgrKg
+         4jRdLd26jUb/rIeFsx1lRl79kgeFmsIEQyUptfsUoCCGDXrtrhBeVzzu88yqH9wCxERB
+         2pRYtDLrN4tAZRovopgukOiXjfBCzG47bT8ULVYQfsKkHsJfhfextiO1nkqARJfyBoGY
+         Zy4nn5QOmpRvflEmZu17Y7XhfgeVR3q/biOelbyMkNuNdQUoSNKHRl2OZjSeaQmdtT2X
+         4Ik637FPAPN8iRgnxxqI/rqaiy8eZpEYLKeluYS2HRZ9sCtcuEK/i9vda+kz9KinKuW9
+         B+vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=R5zVzhRvUudufy7nZftra7i6ofu4qIGu6PKB7Nb4ZsY=;
-        fh=LGa1Xevc9NaDf3gae5Er6iWPaPZ288YhueN0OfGjXDg=;
-        b=LODDA6dLkT4E85+PUpvebbKm+IIprUUV9c/+9y+hXO1V7zxoQ5ulWkrJqgltIaRVZw
-         bWwuGsLM3bPTDd0zOn1/VtMGiD/e4AuZxt4+e+gO+Qb+b3SyXqHD5V6ImRS0pCwvH8Dx
-         v29Ux9mzEWtATWkZxfVFPlck0EpJkToGPUy5kjrtgIXMtjyLlGg8aeSsgPuzuNLdA4RY
-         XgQdpd19j9/HrZaS+GjAjHaFqUV0VgWfuuxhFfqJY+rtehw+VhrUMjwN6wKArUZpacbW
-         77yFQvg0FEAdcGRPb50t5qe+0Cuf/oL20kLPqLYzTwaiRN22V5qqPmBmlgmrPK3ZaSrd
-         LBqA==
+        bh=94FOLE3AewODflMphRBNbnkQLSI+z+5hLHjG8ZH95+c=;
+        fh=+ZsZUTuyxoQ5ZtM1/3hdknpz4V7RB/CRpE4IdMKqcXk=;
+        b=tMECzI6DJFNVlARyuWWhkvqMz3E1lEdrppgN2PALr2w2iMFNSsKou9sAKA3a5MT6K8
+         m40WCJCqlFw+T3+PK8RrZ2f1BquWOeVbqTYfQy5ziD/iUp+oxVFMRQLebehRMJEHo35K
+         /h+fc0bfYtYZZmeW57Zo6joAxaBU0q5lFdBXv+2CdnsvP/EO0w1fUMBgAy1VCZIHxqYm
+         UfCg7HjiUzYbQX/92u1ABtEIeqMTEFb5k/ECpXx75PD2qF7l9lA+6OU1B58BvggrANWM
+         JEV3LJ78tllGqvCZFhZy6g+t5iFNk/w2J7aMRQ/XgPjaCdl2f9RTsTUuX06E+Uvsapho
+         HYvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zPJqIIt2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Rd+JNnji;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ef6-20020a0562140a6600b0066d0869c6absi790419qvb.550.2023.10.13.00.59.18
+        by mx.google.com with ESMTPS id h10-20020a0cf8ca000000b0065b05c4da3dsi820580qvo.561.2023.10.13.00.59.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:59:19 -0700 (PDT)
+        Fri, 13 Oct 2023 00:59:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zPJqIIt2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Rd+JNnji;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrCx2-0006QE-Na; Fri, 13 Oct 2023 03:51:16 -0400
+	id 1qrCxq-0000oN-FX; Fri, 13 Oct 2023 03:52:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwh-0005IW-SZ
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:50:59 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1qrCx2-0006Mi-7w
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:16 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwT-0004oX-57
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:50:55 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-32d8c2c6dfdso1762894f8f.1
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:50:40 -0700 (PDT)
+ id 1qrCwq-0004ww-IT
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:15 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-31c5cac3ae2so1646836f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:51:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183439; x=1697788239; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183463; x=1697788263; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=R5zVzhRvUudufy7nZftra7i6ofu4qIGu6PKB7Nb4ZsY=;
- b=zPJqIIt2LYyqq+FYeZms9eCgJuwQaj/4h5zDc65IEJCepndnqd6IDCEyWXcwoffTW3
- xMfq0atvvLdA80be15AU+v5J+Z5r9M6ANtr0iks2A86023Bdgf3nDCi7+VQOgaNVOJAl
- 7zDuyukBp1owjUJh/oa8bs9/py/tJuBgVpNrgqgCnQyxDjjTdZXH5YNR2zVj9vzFgI/x
- qisWuB6kWGQEaJ7Yi1fH4H2M1V8iTEPD6CWPJVx5GerPTzvFyOcEKvFVjFPEkaA2oYC+
- 7AN8fShprZpaWtBWP40zjJElkBRBlO5k7PdTDfEBdvKHqSi0+lkamwf+jYSjTI97xyiH
- bdaw==
+ bh=94FOLE3AewODflMphRBNbnkQLSI+z+5hLHjG8ZH95+c=;
+ b=Rd+JNnjiT9hmYEnHXiJrJRCJvmPAxZUc2Pn9mmmFPJdixmn3Qo0MlG6mWEITR0nQAn
+ q4YlHOMIewfGqhdZXoOurBemBk/0i1oJ8G9Krdp8wR5MJPjSf7BV0u6FXHqVwc/BbLyJ
+ H11R7xmwSB6uCBaU4ZciEDi+e2YedGfHBmYxIkJlm0HQvgA1ajDR1Qt4HPRddUK7mfz1
+ w36A+ofmOCgyrAYelrWLMIwauw1Z3WDz+JBj1n522UpxEm23hTrr9wnntAgtikcXyWnV
+ OG1BmtHbj00z56a0VShSmAN9eEDrYNq+ATbulyXB/6VUQOJmJXfV3uoGFLFgiSSFPzRD
+ HitA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183439; x=1697788239;
+ d=1e100.net; s=20230601; t=1697183463; x=1697788263;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=R5zVzhRvUudufy7nZftra7i6ofu4qIGu6PKB7Nb4ZsY=;
- b=H4+xa0hn1IstVH0Dqy+YJS20zDWZsNrk7bNRWJpCN6SrUudqWQybcS+6mab3ua3Q40
- xPDSFA2KQ/NdCDnp4fo3iGy5egpFEUVmfyY+p1yvJEGBTBtP22+2rrArSyYtqBc5F/qi
- 8v1lMznD9sRA2qQ8sOEEVMteXyJoelupXgkViBn07SkRJY9xXiXaQTrakxz/WyXoOm2C
- eKdJARl066w1rI5u3+Wz6gE6Xx73/cYX0WhasyiVgg+G0687bLol7LwMnZsBaGW8ITZ3
- RidSrIrsgLPz3eiVAGGzXNkFbJpjUZ3M4q3ID+fyMUxomueWJ7lhf9M3/HerDWkR6uEy
- cguA==
-X-Gm-Message-State: AOJu0YznmLaC72QVOqRAm99qORRdMbGX3msrI6flR/1yPyxuNUyc0OP7
- Eyd+hPNi8+1roleFh0lEedP+4A==
-X-Received: by 2002:a5d:4ccf:0:b0:32d:8183:d130 with SMTP id
- c15-20020a5d4ccf000000b0032d8183d130mr6357879wrt.38.1697183439652; 
- Fri, 13 Oct 2023 00:50:39 -0700 (PDT)
+ bh=94FOLE3AewODflMphRBNbnkQLSI+z+5hLHjG8ZH95+c=;
+ b=k8DFaSn3RNUY3O8CDP6qNzoSxNNJi6tkbBK7zNwiRYALtGBava5QV6OUs5KOM10FeL
+ EJy6sPN8V4MpJHUAm6BnF6xgXxx1LhOBb5REKAPbCVL2IDzJWe3Icvmv5YH8hgZj5AsN
+ IV4ncaKKF4E+QdZSFy8AlggmO+eMLDkEMp7yaGomiViZelwccIM0ACsH0020anElJ/vG
+ jgB6EPrqZ77B74XxrY1g9yDkWjG5avapKyDFbJ5+RtEzaBaCKEl3g1o7wFLO6nJ3tmEF
+ 1Xx4fhW40/46jt1GSHCMGVOIoVD0BvwO41XkMsr26993bWl3qOk0KgvcUMKtoQTjJcue
+ bawQ==
+X-Gm-Message-State: AOJu0YyuUJbn5zH5pOo/MCU5v+FGWf4cPs3wuHwgqy9zesA8/yOb7aKr
+ 8xDwuR+H8HBQfuM0AjWTGFydIA==
+X-Received: by 2002:a05:6000:614:b0:32d:8c7d:a13a with SMTP id
+ bn20-20020a056000061400b0032d8c7da13amr5054363wrb.18.1697183463114; 
+ Fri, 13 Oct 2023 00:51:03 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.37
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.51.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:50:39 -0700 (PDT)
+ Fri, 13 Oct 2023 00:51:02 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
-Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
-Subject: [RFC PATCH 26/78] target/s390x: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:30 +0300
-Message-Id: <18070bd006c48fe9966502ef6877d12a489135f1.1697183082.git.manos.pitsidianakis@linaro.org>
+Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
+Subject: [RFC PATCH 38/78] system/rtc.c: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:44 +0300
+Message-Id: <fd4aa9a42a7ec65acca8836696bb5a8c8215c88c.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,870 +126,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fQ7DWhuJanWj
+X-TUID: TX8nb6Jm2eox
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- target/s390x/cpu.c                  |  4 ++--
- target/s390x/kvm/kvm.c              |  2 +-
- target/s390x/mmu_helper.c           |  6 +++---
- target/s390x/tcg/translate.c        | 18 +++++++++++-------
- target/s390x/tcg/translate_vx.c.inc |  2 +-
- 5 files changed, 18 insertions(+), 14 deletions(-)
+ system/rtc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 4f7599d72c..01df983991 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -150,69 +150,69 @@ static void s390_query_cpu_fast(CPUState *cpu, CpuInfoFast *value)
- /* S390CPUClass::reset() */
- static void s390_cpu_reset(CPUState *s, cpu_reset_type type)
+diff --git a/system/rtc.c b/system/rtc.c
+index 4904581abe..bb406542c8 100644
+--- a/system/rtc.c
++++ b/system/rtc.c
+@@ -48,22 +48,22 @@ QEMUClockType rtc_clock;
+ /***********************************************************/
+ /* RTC reference time/date access */
+ static time_t qemu_ref_timedate(QEMUClockType clock)
  {
-     S390CPU *cpu = S390_CPU(s);
-     S390CPUClass *scc = S390_CPU_GET_CLASS(cpu);
-     CPUS390XState *env = &cpu->env;
-     DeviceState *dev = DEVICE(s);
- 
-     scc->parent_reset(dev);
-     cpu->env.sigp_order = 0;
-     s390_cpu_set_state(S390_CPU_STATE_STOPPED, cpu);
- 
-     switch (type) {
-     case S390_CPU_RESET_CLEAR:
-         memset(env, 0, offsetof(CPUS390XState, start_initial_reset_fields));
+     time_t value = qemu_clock_get_ms(clock) / 1000;
+     switch (clock) {
+     case QEMU_CLOCK_REALTIME:
+         value -= rtc_realtime_clock_offset;
 -        /* fall through */
 +        fallthrough;
-     case S390_CPU_RESET_INITIAL:
-         /* initial reset does not clear everything! */
-         memset(&env->start_initial_reset_fields, 0,
-                offsetof(CPUS390XState, start_normal_reset_fields) -
-                offsetof(CPUS390XState, start_initial_reset_fields));
- 
-         /* architectured initial value for Breaking-Event-Address register */
-         env->gbea = 1;
- 
-         /* architectured initial values for CR 0 and 14 */
-         env->cregs[0] = CR0_RESET;
-         env->cregs[14] = CR14_RESET;
- 
- #if defined(CONFIG_USER_ONLY)
-         /* user mode should always be allowed to use the full FPU */
-         env->cregs[0] |= CR0_AFP;
-         if (s390_has_feat(S390_FEAT_VECTOR)) {
-             env->cregs[0] |= CR0_VECTOR;
-         }
- #endif
- 
-         /* tininess for underflow is detected before rounding */
-         set_float_detect_tininess(float_tininess_before_rounding,
-                                   &env->fpu_status);
--       /* fall through */
-+        fallthrough;
-     case S390_CPU_RESET_NORMAL:
-         env->psw.mask &= ~PSW_MASK_RI;
-         memset(&env->start_normal_reset_fields, 0,
-                offsetof(CPUS390XState, end_reset_fields) -
-                offsetof(CPUS390XState, start_normal_reset_fields));
- 
-         env->pfault_token = -1UL;
-         env->bpbc = false;
+     case QEMU_CLOCK_VIRTUAL:
+         value += rtc_ref_start_datetime;
          break;
-     default:
-         g_assert_not_reached();
-     }
- 
-     /* Reset state inside the kernel that we cannot access yet from QEMU. */
-     if (kvm_enabled()) {
-         switch (type) {
-         case S390_CPU_RESET_CLEAR:
-             kvm_s390_reset_vcpu_clear(cpu);
-             break;
-         case S390_CPU_RESET_INITIAL:
-             kvm_s390_reset_vcpu_initial(cpu);
-             break;
-         case S390_CPU_RESET_NORMAL:
-             kvm_s390_reset_vcpu_normal(cpu);
-             break;
-         }
-     }
- }
-diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
-index bc5c56a305..11b2c05df6 100644
---- a/target/s390x/kvm/kvm.c
-+++ b/target/s390x/kvm/kvm.c
-@@ -1080,48 +1080,48 @@ int kvm_arch_process_async_events(CPUState *cs)
- static int s390_kvm_irq_to_interrupt(struct kvm_s390_irq *irq,
-                                      struct kvm_s390_interrupt *interrupt)
- {
-     int r = 0;
- 
-     interrupt->type = irq->type;
-     switch (irq->type) {
-     case KVM_S390_INT_VIRTIO:
-         interrupt->parm = irq->u.ext.ext_params;
--        /* fall through */
-+        fallthrough;
-     case KVM_S390_INT_PFAULT_INIT:
-     case KVM_S390_INT_PFAULT_DONE:
-         interrupt->parm64 = irq->u.ext.ext_params2;
-         break;
-     case KVM_S390_PROGRAM_INT:
-         interrupt->parm = irq->u.pgm.code;
-         break;
-     case KVM_S390_SIGP_SET_PREFIX:
-         interrupt->parm = irq->u.prefix.address;
-         break;
-     case KVM_S390_INT_SERVICE:
-         interrupt->parm = irq->u.ext.ext_params;
-         break;
-     case KVM_S390_MCHK:
-         interrupt->parm = irq->u.mchk.cr14;
-         interrupt->parm64 = irq->u.mchk.mcic;
-         break;
-     case KVM_S390_INT_EXTERNAL_CALL:
-         interrupt->parm = irq->u.extcall.code;
-         break;
-     case KVM_S390_INT_EMERGENCY:
-         interrupt->parm = irq->u.emerg.code;
-         break;
-     case KVM_S390_SIGP_STOP:
-     case KVM_S390_RESTART:
-         break; /* These types have no parameters */
-     case KVM_S390_INT_IO_MIN...KVM_S390_INT_IO_MAX:
-         interrupt->parm = irq->u.io.subchannel_id << 16;
-         interrupt->parm |= irq->u.io.subchannel_nr;
-         interrupt->parm64 = (uint64_t)irq->u.io.io_int_parm << 32;
-         interrupt->parm64 |= irq->u.io.io_int_word;
-         break;
-     default:
-         r = -EINVAL;
-         break;
-     }
-     return r;
- }
-diff --git a/target/s390x/mmu_helper.c b/target/s390x/mmu_helper.c
-index fbb2f1b4d4..5833917552 100644
---- a/target/s390x/mmu_helper.c
-+++ b/target/s390x/mmu_helper.c
-@@ -126,173 +126,173 @@ static inline bool read_table_entry(CPUS390XState *env, hwaddr gaddr,
- static int mmu_translate_asce(CPUS390XState *env, target_ulong vaddr,
-                               uint64_t asc, uint64_t asce, target_ulong *raddr,
-                               int *flags)
- {
-     const bool edat1 = (env->cregs[0] & CR0_EDAT) &&
-                        s390_has_feat(S390_FEAT_EDAT);
-     const bool edat2 = edat1 && s390_has_feat(S390_FEAT_EDAT_2);
-     const bool iep = (env->cregs[0] & CR0_IEP) &&
-                      s390_has_feat(S390_FEAT_INSTRUCTION_EXEC_PROT);
-     const int asce_tl = asce & ASCE_TABLE_LENGTH;
-     const int asce_p = asce & ASCE_PRIVATE_SPACE;
-     hwaddr gaddr = asce & ASCE_ORIGIN;
-     uint64_t entry;
- 
-     if (asce & ASCE_REAL_SPACE) {
-         /* direct mapping */
-         *raddr = vaddr;
-         return 0;
-     }
- 
-     switch (asce & ASCE_TYPE_MASK) {
-     case ASCE_TYPE_REGION1:
-         if (VADDR_REGION1_TL(vaddr) > asce_tl) {
-             return PGM_REG_FIRST_TRANS;
-         }
-         gaddr += VADDR_REGION1_TX(vaddr) * 8;
-         break;
-     case ASCE_TYPE_REGION2:
-         if (VADDR_REGION1_TX(vaddr)) {
-             return PGM_ASCE_TYPE;
-         }
-         if (VADDR_REGION2_TL(vaddr) > asce_tl) {
-             return PGM_REG_SEC_TRANS;
-         }
-         gaddr += VADDR_REGION2_TX(vaddr) * 8;
-         break;
-     case ASCE_TYPE_REGION3:
-         if (VADDR_REGION1_TX(vaddr) || VADDR_REGION2_TX(vaddr)) {
-             return PGM_ASCE_TYPE;
-         }
-         if (VADDR_REGION3_TL(vaddr) > asce_tl) {
-             return PGM_REG_THIRD_TRANS;
-         }
-         gaddr += VADDR_REGION3_TX(vaddr) * 8;
-         break;
-     case ASCE_TYPE_SEGMENT:
-         if (VADDR_REGION1_TX(vaddr) || VADDR_REGION2_TX(vaddr) ||
-             VADDR_REGION3_TX(vaddr)) {
-             return PGM_ASCE_TYPE;
-         }
-         if (VADDR_SEGMENT_TL(vaddr) > asce_tl) {
-             return PGM_SEGMENT_TRANS;
-         }
-         gaddr += VADDR_SEGMENT_TX(vaddr) * 8;
-         break;
-     }
- 
-     switch (asce & ASCE_TYPE_MASK) {
-     case ASCE_TYPE_REGION1:
-         if (!read_table_entry(env, gaddr, &entry)) {
-             return PGM_ADDRESSING;
-         }
-         if (entry & REGION_ENTRY_I) {
-             return PGM_REG_FIRST_TRANS;
-         }
-         if ((entry & REGION_ENTRY_TT) != REGION_ENTRY_TT_REGION1) {
-             return PGM_TRANS_SPEC;
-         }
-         if (VADDR_REGION2_TL(vaddr) < (entry & REGION_ENTRY_TF) >> 6 ||
-             VADDR_REGION2_TL(vaddr) > (entry & REGION_ENTRY_TL)) {
-             return PGM_REG_SEC_TRANS;
-         }
-         if (edat1 && (entry & REGION_ENTRY_P)) {
-             *flags &= ~PAGE_WRITE;
-         }
-         gaddr = (entry & REGION_ENTRY_ORIGIN) + VADDR_REGION2_TX(vaddr) * 8;
--        /* fall through */
-+        fallthrough;
-     case ASCE_TYPE_REGION2:
-         if (!read_table_entry(env, gaddr, &entry)) {
-             return PGM_ADDRESSING;
-         }
-         if (entry & REGION_ENTRY_I) {
-             return PGM_REG_SEC_TRANS;
-         }
-         if ((entry & REGION_ENTRY_TT) != REGION_ENTRY_TT_REGION2) {
-             return PGM_TRANS_SPEC;
-         }
-         if (VADDR_REGION3_TL(vaddr) < (entry & REGION_ENTRY_TF) >> 6 ||
-             VADDR_REGION3_TL(vaddr) > (entry & REGION_ENTRY_TL)) {
-             return PGM_REG_THIRD_TRANS;
-         }
-         if (edat1 && (entry & REGION_ENTRY_P)) {
-             *flags &= ~PAGE_WRITE;
-         }
-         gaddr = (entry & REGION_ENTRY_ORIGIN) + VADDR_REGION3_TX(vaddr) * 8;
--        /* fall through */
-+        fallthrough;
-     case ASCE_TYPE_REGION3:
-         if (!read_table_entry(env, gaddr, &entry)) {
-             return PGM_ADDRESSING;
-         }
-         if (entry & REGION_ENTRY_I) {
-             return PGM_REG_THIRD_TRANS;
-         }
-         if ((entry & REGION_ENTRY_TT) != REGION_ENTRY_TT_REGION3) {
-             return PGM_TRANS_SPEC;
-         }
-         if (edat2 && (entry & REGION3_ENTRY_CR) && asce_p) {
-             return PGM_TRANS_SPEC;
-         }
-         if (edat1 && (entry & REGION_ENTRY_P)) {
-             *flags &= ~PAGE_WRITE;
-         }
-         if (edat2 && (entry & REGION3_ENTRY_FC)) {
-             if (iep && (entry & REGION3_ENTRY_IEP)) {
-                 *flags &= ~PAGE_EXEC;
-             }
-             *raddr = (entry & REGION3_ENTRY_RFAA) |
-                      (vaddr & ~REGION3_ENTRY_RFAA);
-             return 0;
-         }
-         if (VADDR_SEGMENT_TL(vaddr) < (entry & REGION_ENTRY_TF) >> 6 ||
-             VADDR_SEGMENT_TL(vaddr) > (entry & REGION_ENTRY_TL)) {
-             return PGM_SEGMENT_TRANS;
-         }
-         gaddr = (entry & REGION_ENTRY_ORIGIN) + VADDR_SEGMENT_TX(vaddr) * 8;
--        /* fall through */
-+        fallthrough;
-     case ASCE_TYPE_SEGMENT:
-         if (!read_table_entry(env, gaddr, &entry)) {
-             return PGM_ADDRESSING;
-         }
-         if (entry & SEGMENT_ENTRY_I) {
-             return PGM_SEGMENT_TRANS;
-         }
-         if ((entry & SEGMENT_ENTRY_TT) != SEGMENT_ENTRY_TT_SEGMENT) {
-             return PGM_TRANS_SPEC;
-         }
-         if ((entry & SEGMENT_ENTRY_CS) && asce_p) {
-             return PGM_TRANS_SPEC;
-         }
-         if (entry & SEGMENT_ENTRY_P) {
-             *flags &= ~PAGE_WRITE;
-         }
-         if (edat1 && (entry & SEGMENT_ENTRY_FC)) {
-             if (iep && (entry & SEGMENT_ENTRY_IEP)) {
-                 *flags &= ~PAGE_EXEC;
-             }
-             *raddr = (entry & SEGMENT_ENTRY_SFAA) |
-                      (vaddr & ~SEGMENT_ENTRY_SFAA);
-             return 0;
-         }
-         gaddr = (entry & SEGMENT_ENTRY_ORIGIN) + VADDR_PAGE_TX(vaddr) * 8;
-         break;
-     }
- 
-     if (!read_table_entry(env, gaddr, &entry)) {
-         return PGM_ADDRESSING;
-     }
-     if (entry & PAGE_ENTRY_I) {
-         return PGM_PAGE_TRANS;
-     }
-     if (entry & PAGE_ENTRY_0) {
-         return PGM_TRANS_SPEC;
-     }
-     if (entry & PAGE_ENTRY_P) {
-         *flags &= ~PAGE_WRITE;
-     }
-     if (iep && (entry & PAGE_ENTRY_IEP)) {
-         *flags &= ~PAGE_EXEC;
-     }
- 
-     *raddr = entry & TARGET_PAGE_MASK;
-     return 0;
- }
-diff --git a/target/s390x/tcg/translate.c b/target/s390x/tcg/translate.c
-index 4bae1509f5..986d6433d2 100644
---- a/target/s390x/tcg/translate.c
-+++ b/target/s390x/tcg/translate.c
-@@ -569,90 +569,91 @@ static void set_cc_static(DisasContext *s)
- /* calculates cc into cc_op */
- static void gen_op_calc_cc(DisasContext *s)
- {
-     TCGv_i32 local_cc_op = NULL;
-     TCGv_i64 dummy = NULL;
- 
-     switch (s->cc_op) {
-     default:
-         dummy = tcg_constant_i64(0);
-         /* FALLTHRU */
-+        fallthrough;
-     case CC_OP_ADD_64:
-     case CC_OP_SUB_64:
-     case CC_OP_ADD_32:
-     case CC_OP_SUB_32:
-         local_cc_op = tcg_constant_i32(s->cc_op);
-         break;
-     case CC_OP_CONST0:
-     case CC_OP_CONST1:
-     case CC_OP_CONST2:
-     case CC_OP_CONST3:
-     case CC_OP_STATIC:
-     case CC_OP_DYNAMIC:
-         break;
-     }
- 
-     switch (s->cc_op) {
-     case CC_OP_CONST0:
-     case CC_OP_CONST1:
-     case CC_OP_CONST2:
-     case CC_OP_CONST3:
-         /* s->cc_op is the cc value */
-         tcg_gen_movi_i32(cc_op, s->cc_op - CC_OP_CONST0);
-         break;
-     case CC_OP_STATIC:
-         /* env->cc_op already is the cc value */
-         break;
-     case CC_OP_NZ:
-         tcg_gen_setcondi_i64(TCG_COND_NE, cc_dst, cc_dst, 0);
-         tcg_gen_extrl_i64_i32(cc_op, cc_dst);
-         break;
-     case CC_OP_ABS_64:
-     case CC_OP_NABS_64:
-     case CC_OP_ABS_32:
-     case CC_OP_NABS_32:
-     case CC_OP_LTGT0_32:
-     case CC_OP_LTGT0_64:
-     case CC_OP_COMP_32:
-     case CC_OP_COMP_64:
-     case CC_OP_NZ_F32:
-     case CC_OP_NZ_F64:
-     case CC_OP_FLOGR:
-     case CC_OP_LCBB:
-     case CC_OP_MULS_32:
-         /* 1 argument */
-         gen_helper_calc_cc(cc_op, tcg_env, local_cc_op, dummy, cc_dst, dummy);
-         break;
-     case CC_OP_ADDU:
-     case CC_OP_ICM:
-     case CC_OP_LTGT_32:
-     case CC_OP_LTGT_64:
-     case CC_OP_LTUGTU_32:
-     case CC_OP_LTUGTU_64:
-     case CC_OP_TM_32:
-     case CC_OP_TM_64:
-     case CC_OP_SLA:
-     case CC_OP_SUBU:
-     case CC_OP_NZ_F128:
-     case CC_OP_VC:
-     case CC_OP_MULS_64:
-         /* 2 arguments */
-         gen_helper_calc_cc(cc_op, tcg_env, local_cc_op, cc_src, cc_dst, dummy);
-         break;
-     case CC_OP_ADD_64:
-     case CC_OP_SUB_64:
-     case CC_OP_ADD_32:
-     case CC_OP_SUB_32:
-         /* 3 arguments */
-         gen_helper_calc_cc(cc_op, tcg_env, local_cc_op, cc_src, cc_dst, cc_vr);
-         break;
-     case CC_OP_DYNAMIC:
-         /* unknown operation - assume 3 arguments and cc_op in env */
-         gen_helper_calc_cc(cc_op, tcg_env, cc_op, cc_src, cc_dst, cc_vr);
-         break;
-     default:
-         g_assert_not_reached();
-     }
- 
-     /* We now have cc in cc_op as constant */
-     set_cc_static(s);
- }
-@@ -708,263 +709,264 @@ static const TCGCond nz_cond[16] = {
- /* Interpret MASK in terms of S->CC_OP, and fill in C with all the
-    details required to generate a TCG comparison.  */
- static void disas_jcc(DisasContext *s, DisasCompare *c, uint32_t mask)
- {
-     TCGCond cond;
-     enum cc_op old_cc_op = s->cc_op;
- 
-     if (mask == 15 || mask == 0) {
-         c->cond = (mask ? TCG_COND_ALWAYS : TCG_COND_NEVER);
-         c->u.s32.a = cc_op;
-         c->u.s32.b = cc_op;
-         c->is_64 = false;
-         return;
-     }
- 
-     /* Find the TCG condition for the mask + cc op.  */
-     switch (old_cc_op) {
-     case CC_OP_LTGT0_32:
-     case CC_OP_LTGT0_64:
-     case CC_OP_LTGT_32:
-     case CC_OP_LTGT_64:
-         cond = ltgt_cond[mask];
-         if (cond == TCG_COND_NEVER) {
-             goto do_dynamic;
-         }
-         account_inline_branch(s, old_cc_op);
-         break;
- 
-     case CC_OP_LTUGTU_32:
-     case CC_OP_LTUGTU_64:
-         cond = tcg_unsigned_cond(ltgt_cond[mask]);
-         if (cond == TCG_COND_NEVER) {
-             goto do_dynamic;
-         }
-         account_inline_branch(s, old_cc_op);
-         break;
- 
-     case CC_OP_NZ:
-         cond = nz_cond[mask];
-         if (cond == TCG_COND_NEVER) {
-             goto do_dynamic;
-         }
-         account_inline_branch(s, old_cc_op);
-         break;
- 
-     case CC_OP_TM_32:
-     case CC_OP_TM_64:
-         switch (mask) {
-         case 8:
-             cond = TCG_COND_EQ;
-             break;
-         case 4 | 2 | 1:
-             cond = TCG_COND_NE;
-             break;
-         default:
-             goto do_dynamic;
-         }
-         account_inline_branch(s, old_cc_op);
-         break;
- 
-     case CC_OP_ICM:
-         switch (mask) {
-         case 8:
-             cond = TCG_COND_EQ;
-             break;
-         case 4 | 2 | 1:
-         case 4 | 2:
-             cond = TCG_COND_NE;
-             break;
-         default:
-             goto do_dynamic;
-         }
-         account_inline_branch(s, old_cc_op);
-         break;
- 
-     case CC_OP_FLOGR:
-         switch (mask & 0xa) {
-         case 8: /* src == 0 -> no one bit found */
-             cond = TCG_COND_EQ;
-             break;
-         case 2: /* src != 0 -> one bit found */
-             cond = TCG_COND_NE;
-             break;
-         default:
-             goto do_dynamic;
-         }
-         account_inline_branch(s, old_cc_op);
-         break;
- 
-     case CC_OP_ADDU:
-     case CC_OP_SUBU:
-         switch (mask) {
-         case 8 | 2: /* result == 0 */
-             cond = TCG_COND_EQ;
-             break;
-         case 4 | 1: /* result != 0 */
-             cond = TCG_COND_NE;
-             break;
-         case 8 | 4: /* !carry (borrow) */
-             cond = old_cc_op == CC_OP_ADDU ? TCG_COND_EQ : TCG_COND_NE;
-             break;
-         case 2 | 1: /* carry (!borrow) */
-             cond = old_cc_op == CC_OP_ADDU ? TCG_COND_NE : TCG_COND_EQ;
-             break;
-         default:
-             goto do_dynamic;
-         }
-         account_inline_branch(s, old_cc_op);
-         break;
- 
-     default:
-     do_dynamic:
-         /* Calculate cc value.  */
-         gen_op_calc_cc(s);
-         /* FALLTHRU */
-+        fallthrough;
- 
-     case CC_OP_STATIC:
-         /* Jump based on CC.  We'll load up the real cond below;
-            the assignment here merely avoids a compiler warning.  */
-         account_noninline_branch(s, old_cc_op);
-         old_cc_op = CC_OP_STATIC;
-         cond = TCG_COND_NEVER;
-         break;
-     }
- 
-     /* Load up the arguments of the comparison.  */
-     c->is_64 = true;
-     switch (old_cc_op) {
-     case CC_OP_LTGT0_32:
-         c->is_64 = false;
-         c->u.s32.a = tcg_temp_new_i32();
-         tcg_gen_extrl_i64_i32(c->u.s32.a, cc_dst);
-         c->u.s32.b = tcg_constant_i32(0);
-         break;
-     case CC_OP_LTGT_32:
-     case CC_OP_LTUGTU_32:
-         c->is_64 = false;
-         c->u.s32.a = tcg_temp_new_i32();
-         tcg_gen_extrl_i64_i32(c->u.s32.a, cc_src);
-         c->u.s32.b = tcg_temp_new_i32();
-         tcg_gen_extrl_i64_i32(c->u.s32.b, cc_dst);
-         break;
- 
-     case CC_OP_LTGT0_64:
-     case CC_OP_NZ:
-     case CC_OP_FLOGR:
-         c->u.s64.a = cc_dst;
-         c->u.s64.b = tcg_constant_i64(0);
-         break;
-     case CC_OP_LTGT_64:
-     case CC_OP_LTUGTU_64:
-         c->u.s64.a = cc_src;
-         c->u.s64.b = cc_dst;
-         break;
- 
-     case CC_OP_TM_32:
-     case CC_OP_TM_64:
-     case CC_OP_ICM:
-         c->u.s64.a = tcg_temp_new_i64();
-         c->u.s64.b = tcg_constant_i64(0);
-         tcg_gen_and_i64(c->u.s64.a, cc_src, cc_dst);
-         break;
- 
-     case CC_OP_ADDU:
-     case CC_OP_SUBU:
-         c->is_64 = true;
-         c->u.s64.b = tcg_constant_i64(0);
-         switch (mask) {
-         case 8 | 2:
-         case 4 | 1: /* result */
-             c->u.s64.a = cc_dst;
-             break;
-         case 8 | 4:
-         case 2 | 1: /* carry */
-             c->u.s64.a = cc_src;
-             break;
-         default:
-             g_assert_not_reached();
-         }
-         break;
- 
-     case CC_OP_STATIC:
-         c->is_64 = false;
-         c->u.s32.a = cc_op;
-         switch (mask) {
-         case 0x8 | 0x4 | 0x2: /* cc != 3 */
-             cond = TCG_COND_NE;
-             c->u.s32.b = tcg_constant_i32(3);
-             break;
-         case 0x8 | 0x4 | 0x1: /* cc != 2 */
-             cond = TCG_COND_NE;
-             c->u.s32.b = tcg_constant_i32(2);
-             break;
-         case 0x8 | 0x2 | 0x1: /* cc != 1 */
-             cond = TCG_COND_NE;
-             c->u.s32.b = tcg_constant_i32(1);
-             break;
-         case 0x8 | 0x2: /* cc == 0 || cc == 2 => (cc & 1) == 0 */
-             cond = TCG_COND_EQ;
-             c->u.s32.a = tcg_temp_new_i32();
-             c->u.s32.b = tcg_constant_i32(0);
-             tcg_gen_andi_i32(c->u.s32.a, cc_op, 1);
-             break;
-         case 0x8 | 0x4: /* cc < 2 */
-             cond = TCG_COND_LTU;
-             c->u.s32.b = tcg_constant_i32(2);
-             break;
-         case 0x8: /* cc == 0 */
-             cond = TCG_COND_EQ;
-             c->u.s32.b = tcg_constant_i32(0);
-             break;
-         case 0x4 | 0x2 | 0x1: /* cc != 0 */
-             cond = TCG_COND_NE;
-             c->u.s32.b = tcg_constant_i32(0);
-             break;
-         case 0x4 | 0x1: /* cc == 1 || cc == 3 => (cc & 1) != 0 */
-             cond = TCG_COND_NE;
-             c->u.s32.a = tcg_temp_new_i32();
-             c->u.s32.b = tcg_constant_i32(0);
-             tcg_gen_andi_i32(c->u.s32.a, cc_op, 1);
-             break;
-         case 0x4: /* cc == 1 */
-             cond = TCG_COND_EQ;
-             c->u.s32.b = tcg_constant_i32(1);
-             break;
-         case 0x2 | 0x1: /* cc > 1 */
-             cond = TCG_COND_GTU;
-             c->u.s32.b = tcg_constant_i32(1);
-             break;
-         case 0x2: /* cc == 2 */
-             cond = TCG_COND_EQ;
-             c->u.s32.b = tcg_constant_i32(2);
-             break;
-         case 0x1: /* cc == 3 */
-             cond = TCG_COND_EQ;
-             c->u.s32.b = tcg_constant_i32(3);
-             break;
-         default:
-             /* CC is masked by something else: (8 >> cc) & mask.  */
-             cond = TCG_COND_NE;
-             c->u.s32.a = tcg_temp_new_i32();
-             c->u.s32.b = tcg_constant_i32(0);
-             tcg_gen_shr_i32(c->u.s32.a, tcg_constant_i32(8), cc_op);
-             tcg_gen_andi_i32(c->u.s32.a, c->u.s32.a, mask);
-             break;
-         }
-         break;
- 
-     default:
-         abort();
-     }
-     c->cond = cond;
- }
- 
- /* ====================================================================== */
- /* Define the insn format enumeration.  */
- #define F0(N)                         FMT_##N,
- #define F1(N, X1)                     F0(N)
- #define F2(N, X1, X2)                 F0(N)
- #define F3(N, X1, X2, X3)             F0(N)
- #define F4(N, X1, X2, X3, X4)         F0(N)
- #define F5(N, X1, X2, X3, X4, X5)     F0(N)
- #define F6(N, X1, X2, X3, X4, X5, X6) F0(N)
-@@ -1314,20 +1316,20 @@ static DisasJumpType op_addu64(DisasContext *s, DisasOps *o)
- /* Compute carry into cc_src. */
- static void compute_carry(DisasContext *s)
- {
-     switch (s->cc_op) {
-     case CC_OP_ADDU:
-         /* The carry value is already in cc_src (1,0). */
-         break;
-     case CC_OP_SUBU:
-         tcg_gen_addi_i64(cc_src, cc_src, 1);
-         break;
-     default:
-         gen_op_calc_cc(s);
--        /* fall through */
-+        fallthrough;
-     case CC_OP_STATIC:
-         /* The carry flag is the msb of CC; compute into cc_src. */
-         tcg_gen_extu_i32_i64(cc_src, cc_op);
-         tcg_gen_shri_i64(cc_src, cc_src, 1);
-         break;
-     }
- }
-@@ -2602,53 +2604,53 @@ static DisasJumpType op_iske(DisasContext *s, DisasOps *o)
- static DisasJumpType op_msa(DisasContext *s, DisasOps *o)
- {
-     int r1 = have_field(s, r1) ? get_field(s, r1) : 0;
-     int r2 = have_field(s, r2) ? get_field(s, r2) : 0;
-     int r3 = have_field(s, r3) ? get_field(s, r3) : 0;
-     TCGv_i32 t_r1, t_r2, t_r3, type;
- 
-     switch (s->insn->data) {
-     case S390_FEAT_TYPE_KMA:
-         if (r3 == r1 || r3 == r2) {
-             gen_program_exception(s, PGM_SPECIFICATION);
-             return DISAS_NORETURN;
-         }
--        /* FALL THROUGH */
-+        fallthrough;
-     case S390_FEAT_TYPE_KMCTR:
-         if (r3 & 1 || !r3) {
-             gen_program_exception(s, PGM_SPECIFICATION);
-             return DISAS_NORETURN;
-         }
--        /* FALL THROUGH */
-+        fallthrough;
-     case S390_FEAT_TYPE_PPNO:
-     case S390_FEAT_TYPE_KMF:
-     case S390_FEAT_TYPE_KMC:
-     case S390_FEAT_TYPE_KMO:
-     case S390_FEAT_TYPE_KM:
-         if (r1 & 1 || !r1) {
-             gen_program_exception(s, PGM_SPECIFICATION);
-             return DISAS_NORETURN;
-         }
--        /* FALL THROUGH */
-+        fallthrough;
-     case S390_FEAT_TYPE_KMAC:
-     case S390_FEAT_TYPE_KIMD:
-     case S390_FEAT_TYPE_KLMD:
-         if (r2 & 1 || !r2) {
-             gen_program_exception(s, PGM_SPECIFICATION);
-             return DISAS_NORETURN;
-         }
--        /* FALL THROUGH */
-+        fallthrough;
-     case S390_FEAT_TYPE_PCKMO:
-     case S390_FEAT_TYPE_PCC:
-         break;
-     default:
-         g_assert_not_reached();
-     };
- 
-     t_r1 = tcg_constant_i32(r1);
-     t_r2 = tcg_constant_i32(r2);
-     t_r3 = tcg_constant_i32(r3);
-     type = tcg_constant_i32(s->insn->data);
-     gen_helper_msa(cc_op, tcg_env, t_r1, t_r2, t_r3, type);
-     set_cc_static(s);
-     return DISAS_NEXT;
- }
-@@ -4579,21 +4581,21 @@ static DisasJumpType op_subu64(DisasContext *s, DisasOps *o)
- /* Compute borrow (0, -1) into cc_src. */
- static void compute_borrow(DisasContext *s)
- {
-     switch (s->cc_op) {
-     case CC_OP_SUBU:
-         /* The borrow value is already in cc_src (0,-1). */
-         break;
-     default:
-         gen_op_calc_cc(s);
--        /* fall through */
-+        fallthrough;
-     case CC_OP_STATIC:
-         /* The carry flag is the msb of CC; compute into cc_src. */
-         tcg_gen_extu_i32_i64(cc_src, cc_op);
-         tcg_gen_shri_i64(cc_src, cc_src, 1);
--        /* fall through */
-+        fallthrough;
-     case CC_OP_ADDU:
-         /* Convert carry (1,0) to borrow (0,-1). */
-         tcg_gen_subi_i64(cc_src, cc_src, 1);
-         break;
-     }
- }
-@@ -6479,27 +6481,29 @@ static void s390x_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
- static void s390x_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
- {
-     DisasContext *dc = container_of(dcbase, DisasContext, base);
- 
-     switch (dc->base.is_jmp) {
-     case DISAS_NORETURN:
-         break;
-     case DISAS_TOO_MANY:
-         update_psw_addr(dc);
-         /* FALLTHRU */
-+        fallthrough;
-     case DISAS_PC_UPDATED:
-         /* Next TB starts off with CC_OP_DYNAMIC, so make sure the
-            cc op type is in env */
-         update_cc_op(dc);
-         /* FALLTHRU */
-+        fallthrough;
-     case DISAS_PC_CC_UPDATED:
-         /* Exit the TB, either by raising a debug exception or by return.  */
-         if (dc->exit_to_mainloop) {
-             tcg_gen_exit_tb(NULL, 0);
-         } else {
-             tcg_gen_lookup_and_goto_ptr();
+     case QEMU_CLOCK_HOST:
+         if (rtc_base_type == RTC_BASE_DATETIME) {
+             value -= rtc_host_datetime_offset;
          }
          break;
      default:
-         g_assert_not_reached();
+         assert(0);
      }
- }
-diff --git a/target/s390x/tcg/translate_vx.c.inc b/target/s390x/tcg/translate_vx.c.inc
-index e073e5ad3a..75463b4f5c 100644
---- a/target/s390x/tcg/translate_vx.c.inc
-+++ b/target/s390x/tcg/translate_vx.c.inc
-@@ -662,39 +662,39 @@ static DisasJumpType op_vlgv(DisasContext *s, DisasOps *o)
- static DisasJumpType op_vllez(DisasContext *s, DisasOps *o)
- {
-     uint8_t es = get_field(s, m3);
-     uint8_t enr;
-     TCGv_i64 t;
- 
-     switch (es) {
-     /* rightmost sub-element of leftmost doubleword */
-     case ES_8:
-         enr = 7;
-         break;
-     case ES_16:
-         enr = 3;
-         break;
-     case ES_32:
-         enr = 1;
-         break;
-     case ES_64:
-         enr = 0;
-         break;
-     /* leftmost sub-element of leftmost doubleword */
-     case 6:
-         if (s390_has_feat(S390_FEAT_VECTOR_ENH)) {
-             es = ES_32;
-             enr = 0;
-             break;
-         }
--        /* fallthrough */
-+        fallthrough;
-     default:
-         gen_program_exception(s, PGM_SPECIFICATION);
-         return DISAS_NORETURN;
-     }
- 
-     t = tcg_temp_new_i64();
-     tcg_gen_qemu_ld_i64(t, o->addr1, get_mem_index(s), MO_TE | es);
-     gen_gvec_dup_imm(es, get_field(s, v1), 0);
-     write_vec_element_i64(t, get_field(s, v1), enr, es);
-     return DISAS_NEXT;
+     return value;
  }
 -- 
 2.39.2

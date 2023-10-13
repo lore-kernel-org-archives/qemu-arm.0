@@ -1,189 +1,244 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1244837ejc;
-        Thu, 12 Oct 2023 20:58:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFv2weJB00RrUwm5AsKyMUzjrCr8zDC9cvTnlnvrsOfFfrMNeqMMJo+2DwNZMAPtIO+s5/e
-X-Received: by 2002:a9d:62d4:0:b0:6be:ea3e:367 with SMTP id z20-20020a9d62d4000000b006beea3e0367mr26152527otk.23.1697169514766;
-        Thu, 12 Oct 2023 20:58:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697169514; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1286007ejc;
+        Thu, 12 Oct 2023 22:57:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGBjrHRgLArBHY7Nk+LumHtmJVW+35UCuFAJLyb1KMX3c5jA0k6Li8qdzO+c167vqzXoRrD
+X-Received: by 2002:a05:620a:244b:b0:774:2113:743a with SMTP id h11-20020a05620a244b00b007742113743amr32517243qkn.19.1697176624447;
+        Thu, 12 Oct 2023 22:57:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697176624; cv=none;
         d=google.com; s=arc-20160816;
-        b=LvXrpSVH2IvD9YFCQwmgWGQxZLWw/g+j7/nco6KAKsS1dcLyxWwiRe8WsIzZkMKTw0
-         yeooDnWdOJWJugVVbKiFOts9OCJii8ou0YqQm6mJoAc/4eVlN4iiuolYGqWyEG++8+fX
-         ynTgWKIJYLCNuoa7NQZYlHZC30+9fiJbotWBGS8+LcAOBuTNcPWGgPOx2EJnVxEoQGZ+
-         RMCNeXRctsq09qqufFFQEWWNIkVRL5FaLMRmNzuyxSBMqNBLbI7ynQRoixtepYOGuHSL
-         O50pYNCWhwj94YymVnKrRhJOXOz2wKRZm1xtA6rDJenmTpv0y5dw7PZLk0K51/KY4HCy
-         1lMA==
+        b=uNDq97RaEUStJw4IMzlFXupgjVuNmuVgnZj8PxHsXhSN2HmrEP/mkR1+m5h2mrssw+
+         C4TmYOYfTxBzf7kFA8gfLSRnu6PKe3YDbBMK2RKGF26rB+/HqtwKbc6T1vzyJRH1ONMu
+         GRhLIdyGsUEc9GOyBSy64SHoxIQUZC2FKanNt/J/oI9vHh9puQIMzJurvHBPPpBsP7bg
+         smsNjI+yj0j5Y/+5pBNZ2s+EWYo0SqZiGjmp9R0F1ogDm+S28qH4Mm6RE7q/x/lz3RAy
+         GFpI79SmfY7rrVMoK6EB3mYYlK9o+4sAaa5qDPa2Mgg9T/71kEhXyp2p+lJQZCVrCQ75
+         RyAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=pDQ/PuCkXr9NDWvK/SdEWXjiIEedsRaC/C0QWgCKolY=;
-        fh=K5/ZBjxhABP5Ag55WD2stUTK3i0n4MiytjoGDoYe8Y0=;
-        b=qWEMpvKPhyfYw4NlLqHdSmJJtbaXJfeOj9NN05eSXCkV//yUxfOeToC4CMhGreZ/tN
-         G0Z8b8EgwOcUwKoQdS+UjN73KekRGlSJaEeqYZ721o4/Wy99+4wfzbopkYMxjJdtx+4M
-         sYgdWuQyHnxTdZRiTB1AkoFKgy6akgyWLB8gdVVCoVW1B+e8zWBs2HL7gjGN6IycUVEK
-         3xpJq+ZorqJHikqt1UPh8xov+Kp95bhkPqDOLCQuTmlrZCcxgJiR+V8+42FQqv0EKpfK
-         FcY/W0ZFbRv0dFTjl+SWCjeH8IqoWo54Wsu1WczalEG6OyGy+uaYlIgp+X+Ivgdda8aq
-         NXtQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=VGTGO0kZLu44/JCec7M1A/HLbsedHb1MG+2UMAuKgJU=;
+        fh=gGZ8KC2O7OgwRBDPiLtlNf/Vfu8laUlcFY/sAMdpb+8=;
+        b=JMUR2bhjMrWtPe5CuJkl6hSa7POhbpHVM6P26lqpBDW2lRdOnlcFqfq68ahy++89wE
+         zA7nqX8/qWkxM2ovnYmVaG/AnwCdhdlix4srxEBnt+Rfyl1TcD4OlAmfthP/92avqFSD
+         6HxDM99WCjjiwQmVlVU7i7T8/Vp0uMQoYHHwXMurhJPxQxWN5p/HBUZO5ZYhZJlQtyUe
+         tVOSsoJcKXDkotE3cxSl4pFTt01128Aaw+YH9sfdAMsmaGJzI8r8Syaj661l9neVBehT
+         8cAK6W9oCttzfEclJWZAHHQAJU6tjlK/CXJliqaBXp3kC7ARnEgY5JVKdrQ/YMtHcSa4
+         m4MA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of lixianglai@loongson.cn designates 114.242.206.163 as permitted sender) smtp.mailfrom=lixianglai@loongson.cn
-Return-Path: <lixianglai@loongson.cn>
-Received: from mail.loongson.cn (mail.loongson.cn. [114.242.206.163])
-        by mx.google.com with ESMTP id g48-20020a05683030b000b006bf5bea1fa0si1298536ots.285.2023.10.12.20.58.31;
-        Thu, 12 Oct 2023 20:58:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lixianglai@loongson.cn designates 114.242.206.163 as permitted sender) client-ip=114.242.206.163;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KjArJl4R;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id qj19-20020a05620a881300b007742b023d3esi708807qkn.99.2023.10.12.22.57.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Oct 2023 22:57:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of lixianglai@loongson.cn designates 114.242.206.163 as permitted sender) smtp.mailfrom=lixianglai@loongson.cn
-Received: from loongson.cn (unknown [10.20.42.32])
-	by gateway (Coremail) with SMTP id _____8BxHOtlwChlepQxAA--.25441S3;
-	Fri, 13 Oct 2023 11:58:29 +0800 (CST)
-Received: from [10.20.42.32] (unknown [10.20.42.32])
-	by localhost.localdomain (Coremail) with SMTP id AQAAf8Dx3t5hwChlzn0iAA--.3543S2;
-	Fri, 13 Oct 2023 11:58:27 +0800 (CST)
-Subject: Re: [PATCH V5 0/9] Add architecture agnostic code to support vCPU
- Hotplug
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com,
- oliver.upton@linux.dev, pbonzini@redhat.com, mst@redhat.com,
- will@kernel.org, gshan@redhat.com, rafael@kernel.org,
- alex.bennee@linaro.org, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, linuxarm@huawei.com
-References: <20231011194355.15628-1-salil.mehta@huawei.com>
-From: lixianglai <lixianglai@loongson.cn>
-Message-ID: <34927805-a968-271f-16c2-17c8d90693d9@loongson.cn>
-Date: Fri, 13 Oct 2023 11:58:25 +0800
-User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KjArJl4R;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrBAE-0003Ar-43; Fri, 13 Oct 2023 01:56:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qrBAC-0003AS-Qy
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 01:56:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qrBAA-0007RC-4B
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 01:56:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697176601;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=VGTGO0kZLu44/JCec7M1A/HLbsedHb1MG+2UMAuKgJU=;
+ b=KjArJl4Rn41rhfElSC5fh9mcoUCRnHhDfxOnpxxt52tArrSwKAENVF66TPv+ofWezpsFOF
+ YMXk07RAxXDpvh7l13djNbSNnEdQu50HkBdBYzLp5HA5ntfrgOYOn2fLvvfijd/4I0ho/Y
+ +xSrd4JR8xLfu+MheEZFa6MjD1+Orwk=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-661-IW_lSWj0N5ekBsegRKWeNw-1; Fri, 13 Oct 2023 01:56:39 -0400
+X-MC-Unique: IW_lSWj0N5ekBsegRKWeNw-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ 4fb4d7f45d1cf-5362b33e8ffso1310536a12.3
+ for <qemu-arm@nongnu.org>; Thu, 12 Oct 2023 22:56:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697176598; x=1697781398;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VGTGO0kZLu44/JCec7M1A/HLbsedHb1MG+2UMAuKgJU=;
+ b=SBng5dud5dVNX3NvIpXHzl8vXwMgUgtQjo6PzlSX3tHc+X7Sbte/65A13vXoJF9aag
+ gcTdKXtd/ryL60gJlBbl8OD6j1fh8L5aN/EV0dHNlEISjTfqVSSDmAR0tmaHtpJ1dz9B
+ V+0W+K/LQaFruMRPz/HdLUXAkKZ4voctrtX0jLLveVdZC42sfJfEZH7ySrp6H9PD3tEv
+ 48OUSzWgagXdZA6siuu7eHMznwZ79IBoA/QEHBoC9Zs3EtkkJw4d7GRil6vnC/T+jP/0
+ BORw8gknOSeT5IDxoXQpCN8B7Zf59TuSzN5xcU8hU6CSRYi1w69vEltQ/Yicgya5NsJN
+ 6+QA==
+X-Gm-Message-State: AOJu0YzsVc2hvZRHIOSxeud49bcG1NSZJC+KsPyEtksbqG22JwFf+kVQ
+ uhLcfmOrHhVPM83mFhCCfm70qCyKFgywpDmjfAUqTdGhbeehTJaX3ydRr9rOovSwqS1EUsWPOb5
+ 0QaaYEQABZRil
+X-Received: by 2002:a05:6402:26cc:b0:53e:34c5:fc14 with SMTP id
+ x12-20020a05640226cc00b0053e34c5fc14mr1112875edd.23.1697176598119; 
+ Thu, 12 Oct 2023 22:56:38 -0700 (PDT)
+X-Received: by 2002:a05:6402:26cc:b0:53e:34c5:fc14 with SMTP id
+ x12-20020a05640226cc00b0053e34c5fc14mr1112853edd.23.1697176597701; 
+ Thu, 12 Oct 2023 22:56:37 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-176-176.web.vodafone.de.
+ [109.43.176.176]) by smtp.gmail.com with ESMTPSA id
+ bm15-20020a0564020b0f00b005346925a474sm11029123edb.43.2023.10.12.22.56.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 12 Oct 2023 22:56:37 -0700 (PDT)
+Message-ID: <feda1abb-b74a-4c47-8b6d-b83e87cd805e@redhat.com>
+Date: Fri, 13 Oct 2023 07:56:35 +0200
 MIME-Version: 1.0
-In-Reply-To: <20231011194355.15628-1-salil.mehta@huawei.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/10] system/qtest: Clean up global variable shadowing in
+ qtest_server_init()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Alberto Garcia <berto@igalia.com>,
+ Hao Wu <wuhaotsh@google.com>, Kevin Wolf <kwolf@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-block@nongnu.org, John Snow <jsnow@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Tyrone Ting <kfting@nuvoton.com>, Markus Armbruster <armbru@redhat.com>
+References: <20231009100251.56019-1-philmd@linaro.org>
+ <20231009100251.56019-2-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20231009100251.56019-2-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-X-CM-TRANSID:AQAAf8Dx3t5hwChlzn0iAA--.3543S2
-X-CM-SenderInfo: 5ol0xt5qjotxo6or00hjvr0hdfq/
-X-Coremail-Antispam: 1Uk129KBj93XoWxWr48Wr4kuFy3tFy3JF48Zrc_yoWrZF4kpa
-	nY93WYgw45Kr47ur4fXryrZ345Wa1kGw4IqrsF934rZas0gw1kZrW0g3yjqFyUJrZ7KFyx
-	XFnIqF1kGw1jywcCm3ZEXasCq-sJn29KB7ZKAUJUUUU5529EdanIXcx71UUUUU7KY7ZEXa
-	sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
-	0xBIdaVrnRJUUU9qb4IE77IF4wAFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26cxKx2
-	IYs7xG6rWj6s0DM7CIcVAFz4kK6r1Y6r17M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
-	e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Jr0_JF4l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
-	0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVCY1x0267AK
-	xVW8Jr0_Cr1UM2AIxVAIcxkEcVAq07x20xvEncxIr21l57IF6xkI12xvs2x26I8E6xACxx
-	1l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1Y6r17McIj6I8E87Iv
-	67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr41lc7I2V7IY0VAS07
-	AlzVAYIcxG8wCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE
-	7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI
-	8E67AF67kF1VAFwI0_Wrv_Gr1UMIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_
-	JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJV
-	WUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIY
-	CTnIWIevJa73UjIFyTuYvjxU7iiSDUUUU
-X-TUID: waBz99BtOYZp
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ItNVF3062X0L
 
-Hi Salil Mehta via:
+On 09/10/2023 12.02, Philippe Mathieu-Daudé wrote:
+> Rename the variable to fix:
+> 
+>    softmmu/qtest.c:869:13: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+>        Object *qtest;
+>                ^
+>    softmmu/qtest.c:53:15: note: previous declaration is here
+>    static QTest *qtest;
+>                  ^
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   softmmu/qtest.c | 16 ++++++++--------
+>   1 file changed, 8 insertions(+), 8 deletions(-)
+> 
+> diff --git a/softmmu/qtest.c b/softmmu/qtest.c
+> index 35b643a274..7964f0b248 100644
+> --- a/softmmu/qtest.c
+> +++ b/softmmu/qtest.c
+> @@ -866,7 +866,7 @@ void qtest_server_init(const char *qtest_chrdev, const char *qtest_log, Error **
+>   {
+>       ERRP_GUARD();
+>       Chardev *chr;
+> -    Object *qtest;
+> +    Object *qobj;
+>   
+>       chr = qemu_chr_new("qtest", qtest_chrdev, NULL);
+>       if (chr == NULL) {
+> @@ -875,18 +875,18 @@ void qtest_server_init(const char *qtest_chrdev, const char *qtest_log, Error **
+>           return;
+>       }
+>   
+> -    qtest = object_new(TYPE_QTEST);
+> -    object_property_set_str(qtest, "chardev", chr->label, &error_abort);
+> +    qobj = object_new(TYPE_QTEST);
+> +    object_property_set_str(qobj, "chardev", chr->label, &error_abort);
+>       if (qtest_log) {
+> -        object_property_set_str(qtest, "log", qtest_log, &error_abort);
+> +        object_property_set_str(qobj, "log", qtest_log, &error_abort);
+>       }
+> -    object_property_add_child(qdev_get_machine(), "qtest", qtest);
+> -    user_creatable_complete(USER_CREATABLE(qtest), errp);
+> +    object_property_add_child(qdev_get_machine(), "qtest", qobj);
+> +    user_creatable_complete(USER_CREATABLE(qobj), errp);
+>       if (*errp) {
+> -        object_unparent(qtest);
+> +        object_unparent(qobj);
+>       }
+>       object_unref(OBJECT(chr));
+> -    object_unref(qtest);
+> +    object_unref(qobj);
+>   }
 
-> Virtual CPU hotplug support is being added across various architectures[1][3].
-> This series adds various code bits common across all architectures:
->
-> 1. vCPU creation and Parking code refactor [Patch 1]
-> 2. Update ACPI GED framework to support vCPU Hotplug [Patch 4,6,7]
-> 3. ACPI CPUs AML code change [Patch 5]
-> 4. Helper functions to support unrealization of CPU objects [Patch 8,9]
-> 5. Misc [Patch 2,3]
->
->
-> Repository:
->
-> [*] https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v2.common.v5
->
->
-> Revision History:
->
-> RFC V4 -> RFC V5
-> 1. Addressed Gavin Shan's comments
->     - Fixed the trace events print string for kvm_{create,get,park,destroy}_vcpu
->     - Added Reviewed-by tag for patch {1}
-> 2. Added Shaoqin Huang's Reviewed-by tags for Patches {2,3}
-> 3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set
-> 4. Dropped the ARM specific Patch-10 from V4
-> Link: https://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.mehta@huawei.com/
->
-> RFC V3 -> RFC V4
-> 1. Addressed David Hilderbrand's comments
->     - Fixed the wrong doc comment of kvm_park_vcpu API prototype
->     - Added Reviewed-by tags for patches {2,4}
-> Link: https://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.mehta@huawei.com/
->
-> RFC V2 -> RFC V3
-> 1. Addressed Jonathan Cameron's comments
->     - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to 'integer'
->     - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
->     - Updated [Patch V2 03/10] commit-log with details of ACPI_CPU_SCAN_METHOD macro
->     - Updated [Patch V2 05/10] commit-log with details of conditional event handler method
->     - Added Reviewed-by tags for patches {2,3,4,6,7}
-> 2. Addressed Gavin Shan's comments
->     - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
->     - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
->     - Reset the value of 'gdb_num_g_regs' in gdb_unregister_coprocessor_all
->     - Fixed the kvm_{create,park}_vcpu prototypes docs
->     - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10}
-> 3. Addressed one earlier missed comment by Alex Bennée in RFC V1
->     - Added traces instead of DPRINTF in the newly added and some existing functions
-> Link: https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huawei.com/
->
-> RFC V1 -> RFC V2
-> 1. Addressed Alex Bennée's comments
->     - Refactored the kvm_create_vcpu logic to get rid of goto
->     - Added the docs for kvm_{create,park}_vcpu prototypes
->     - Splitted the gdbstub and AddressSpace destruction change into separate patches
->     - Added Reviewed-by tags for patches {2,10}
-> Link: https://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.mehta@huawei.com/
->
-> References:
->
-> [1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com/
-> [2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
-> [3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/
->
->
-> Salil Mehta (9):
->    accel/kvm: Extract common KVM vCPU {creation,parking} code
->    hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
->    hw/acpi: Add ACPI CPU hotplug init stub
->    hw/acpi: Init GED framework with CPU hotplug events
->    hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
->    hw/acpi: Update GED _EVT method AML with CPU scan
->    hw/acpi: Update ACPI GED framework to support vCPU Hotplug
->    physmem: Add helper function to destroy CPU AddressSpace
->    gdbstub: Add helper function to unregister GDB register space
->
->   accel/kvm/kvm-all.c                    | 64 ++++++++++++++++++++------
->   accel/kvm/trace-events                 |  4 ++
->   gdbstub/gdbstub.c                      | 15 ++++++
->   hw/acpi/acpi-cpu-hotplug-stub.c        |  6 +++
->   hw/acpi/cpu.c                          | 27 +++++++----
->   hw/acpi/generic_event_device.c         | 22 +++++++++
->   hw/i386/acpi-build.c                   |  2 +-
->   include/exec/cpu-common.h              |  8 ++++
->   include/exec/gdbstub.h                 |  5 ++
->   include/hw/acpi/cpu.h                  |  5 +-
->   include/hw/acpi/cpu_hotplug.h          |  4 ++
->   include/hw/acpi/generic_event_device.h |  5 ++
->   include/hw/core/cpu.h                  |  1 +
->   include/sysemu/kvm.h                   | 16 +++++++
->   softmmu/physmem.c                      | 25 ++++++++++
->   15 files changed, 182 insertions(+), 27 deletions(-)
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
-I rebase your patch v5 on loongarch tcg, there is no problem with cpu
-hotplug/unplug.
-
-Thank you so much for your contribution to the community.
-
-Thanks,
-Xianglai.

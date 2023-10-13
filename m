@@ -1,167 +1,165 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1416080ejc;
-        Fri, 13 Oct 2023 03:54:31 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGHdjO3d3IFm3DCDoNWCK5CAlbrMltue6M4JMRZHdRjb2sjUnkvdduC67/K6i8MAFLwXeI0
-X-Received: by 2002:a17:902:744a:b0:1c9:e77d:62d3 with SMTP id e10-20020a170902744a00b001c9e77d62d3mr4516266plt.10.1697194471046;
-        Fri, 13 Oct 2023 03:54:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697194471; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1490225ejc;
+        Fri, 13 Oct 2023 06:02:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF9xLEFIqo5dfHbQCcrIXTiQcnfSwmOPwuaMMG2gxeHaCgiNluQz/G604hEb9KxGn5g8Il/
+X-Received: by 2002:a67:e0c9:0:b0:450:cebb:4f15 with SMTP id m9-20020a67e0c9000000b00450cebb4f15mr32295vsl.1.1697202154334;
+        Fri, 13 Oct 2023 06:02:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697202154; cv=none;
         d=google.com; s=arc-20160816;
-        b=pzRQFpKdFdK6LetxaoQpbFTXj0hhHNtefGa0SSrshMj5MYoU2eDOm//ZNSpS5f+vNI
-         fMHdHkBV+99klbVhgdEKO4wGLe07rtWkUC/hAHb9vUF0kOfwrsg0IWh21PP68SVgXw93
-         4uE+vcCTq8ztPrGoj85AkJ/APUSi80m9WOwH3kZ0um9FcQ0x9F15iTKPIepiMTr/bSQ2
-         NJdvkkC/Rv/fZ1d5YAhLIlj2TnehDDPNkieNIKK0yXUsjZj0lfehgKKC4D++7EMNESSL
-         oWJdYMRUHsuZMU5S62x+2kmvuqjKt1nzCaCOnSsu1Qk4Y6oedD4urE2Tg4JA3d6hygXM
-         ZKeA==
+        b=bRrAfmKcjss+Y1g+FGp+Ri6CsJeFTatMm1SV/fDHVPD33t4kJvi2AcdK9/57GkEhOV
+         cF4avvA5UgsG/qUD+Lb+VvjjV/T/ZhI07OMroUqp9Qf1P2UtIN4Wo4XAmiXitf+FCRNI
+         BYoE72OPJ/o/Huwp0+vBOPThzO9gzfPrl+nxYz1VIbTtSoUEY4RB1pC7vf8fW57fdQff
+         VjJlPrmT1LP5O1AdamLVSEfny3abTw3ot5X9RpHo9VjiioZerV04DGFocE25IrhcwaEX
+         QuVXgmY65hzSAoxwNgBhUsljQnJMojGvk3/5P9dh2fkwsrwHKCj1TKJoPs8yyXUNGruA
+         VVqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=GzjL/5f6cmcvcYQILRSZwb96KCd1A63FmbhYSqcydEg=;
-        fh=I+6CS2uJqPEgP3gz8gmk6tLbm1jsmO9tblK+QTjWHxs=;
-        b=YP6duKyVxGTEu4paBCUTpeO8kbuwnJFWLk3nYR7W21y5nDDOPC5IGpm8UPhP6Vh7Ze
-         4kysIzc+LzRfytoWnxauuBQzU1PcguNSutB8QCJmWMfzKvjxwLqhl7saU/Kw2pG6oG/f
-         0JQ4bihOU1JfQ1fWAWKGuAtr7ye5WsRbXHQmHCYd25/i7IF3qhxFBHfsxZ+6Tl0gvu2N
-         ZQUqDTn0utB9Wy3xIbNmDbVsZx6X+kRDBtdHd/DcbZ3Ab/89H80LZBzqa00vQgDO73mp
-         3RKLhADVDAYhb4bt0T6TvmXCxrld7pAriuUoaf2un8vT+cA9USRiJnuGT/P4I2HfTw2q
-         /64g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=NXt4GRVCqNqLdB3FCLiLzM01NS8NIOi7cr1FVPF/4e0=;
+        fh=fFs7UGnVOueAi6qGPTBS6qj6WzX6NsjPEv+QV7hIp5I=;
+        b=rcc7Yt4AenFo7oPeyI9N0T81NqWZZBdW7J3MVUHetV+vYrMfsiRfd92xzW6iYM4Fsb
+         cNaKNdOGwPJhGfTEXIlkna98EhA9nPHppWnCdnS+R4albXRA7IcnyAhKsYl+rdYjpEP6
+         QHRy4MycYifRzS79Fi7W2ZyzK3g6aVqjH9gl3EQxLmeXBPSM2TJqTSmqfLVZKsdvbScK
+         fpIKidxDo8n33Tqp7NLIZ/4k26r+BM/D95BCkDzBxOUbOEPt9Rbemc3UPzvFULsGJZ8H
+         0Lepx350ptbZq9pwGvRR5/a99MMKAgymtP4AxtZ68eB/vNpDc9KHUEKS06vcNQJ/ofDl
+         Y7cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id m6-20020a170902db0600b001c5cf1c30cfsi375744plx.435.2023.10.13.03.54.30
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Oct 2023 03:54:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zfgfhLCW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e8-20020a056102224800b00452720c5371si120174vsb.417.2023.10.13.06.02.34
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 13 Oct 2023 06:02:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml500001.china.huawei.com (unknown [172.18.147.207])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S6Nff6mBcz6K8tm;
-	Fri, 13 Oct 2023 18:54:02 +0800 (CST)
-Received: from A190218597.china.huawei.com (10.195.247.32) by
- lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Fri, 13 Oct 2023 11:54:10 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
-	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
-	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
-	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
-	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
-	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
-	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
-	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<linuxarm@huawei.com>
-Subject: [PATCH V6 8/9] physmem: Add helper function to destroy CPU AddressSpace
-Date: Fri, 13 Oct 2023 11:51:28 +0100
-Message-ID: <20231013105129.25648-9-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.8.3
-In-Reply-To: <20231013105129.25648-1-salil.mehta@huawei.com>
-References: <20231013105129.25648-1-salil.mehta@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=zfgfhLCW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrHo6-0002nx-IG; Fri, 13 Oct 2023 09:02:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrHo5-0002nQ-Gq
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 09:02:21 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrHo3-0003mp-Rd
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 09:02:21 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-53dd752685fso3698644a12.3
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 06:02:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697202137; x=1697806937; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=NXt4GRVCqNqLdB3FCLiLzM01NS8NIOi7cr1FVPF/4e0=;
+ b=zfgfhLCWfyNaIeKfjHyOjGMz4vE2lUvtYb6zCcWGVjGGK40bPo+sVVTyECU1H26VfT
+ VnbjtonZgqEPJdFBM94XgOFdq32j2DQ1bGbiO3Y8bDGunmu1xHNYJo/lndlrUku9XI4Q
+ Gml3FgBbgqaKgo34gTCyRjIIycJlQWXTnUw6i6HSQMSkWzDmCy3DBbmzMWn2GUJl/gKH
+ EULDWlykYwV0bJi8ndok1c7K8h3twbdtvm/pz9MePqUv7/72EMHfHRlrn+hrcKjRx5o+
+ LFGxC+9SmSFJ3AQAyv8Vc0mf3hmiifZLLX+AINrNAMX+m6b26BQ419qY2+6ZJREtMCuP
+ c0AA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697202137; x=1697806937;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=NXt4GRVCqNqLdB3FCLiLzM01NS8NIOi7cr1FVPF/4e0=;
+ b=IwTbL9oE7KLtzX9XnAJK9nwK6nsUTjh95xQ1+tzuYmpZk0/Nl9Ttutsjs0EeufNULq
+ lxtjXjUrei5Ofvar7ZEPkitdGqAIGa8uBrnkvXcWJ0v7yML4ttu3Dpqw79VLt4vsUuIg
+ Li1liqHVtLX4QiujseywPVzQz8RjPNmdeo7D2dgNzMhavSOjDa97TFsJNnm46d0c20J2
+ V5/tDIHRE3JqCRkr/Sd1XTXSniKe9sn5CkSMZtpsJFIQcCg0Q9Z805umtoubUtCXl3/G
+ Q05LIZ09LMmlqwxmJUsbLj3P5JItatS3PycoxGJQeqOyAd5B+U9EMa1lCtlvTzyr2cA1
+ Pq/A==
+X-Gm-Message-State: AOJu0YwEm8SyQ5GFmf+EV1Mwoxtd8Ao/gLJxbwiNxaCpBxQ4/4oPyiC8
+ xY7Ft965SdNtCFaWNHbIm/Bo9w==
+X-Received: by 2002:aa7:d588:0:b0:525:6c9f:e1a3 with SMTP id
+ r8-20020aa7d588000000b005256c9fe1a3mr23006574edq.20.1697202137472; 
+ Fri, 13 Oct 2023 06:02:17 -0700 (PDT)
+Received: from m1x-phil.lan ([176.172.118.168])
+ by smtp.gmail.com with ESMTPSA id
+ bx21-20020a0564020b5500b0053e163a1ca0sm1932929edb.1.2023.10.13.06.02.16
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 13 Oct 2023 06:02:17 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] hw/arm/exynos4210: Get arm_boot_info declaration from
+ 'hw/arm/boot.h'
+Date: Fri, 13 Oct 2023 15:02:14 +0200
+Message-ID: <20231013130214.95742-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.195.247.32]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- lhrpeml500001.china.huawei.com (7.191.163.213)
-X-CFilter-Loop: Reflected
-X-TUID: CELuM4cdfJKf
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: p3Xu97Zuj1A1
 
-Virtual CPU Hot-unplug leads to unrealization of a CPU object. This also
-involves destruction of the CPU AddressSpace. Add common function to help
-destroy the CPU AddressSpace.
+struct arm_boot_info is declared in "hw/arm/boot.h".
+By including the correct header we don't need to declare
+it again in "target/arm/cpu-qom.h".
 
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
-Tested-by: Xianglai Li <lixianglai@loongson.cn>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/exec/cpu-common.h |  8 ++++++++
- include/hw/core/cpu.h     |  1 +
- system/physmem.c          | 29 +++++++++++++++++++++++++++++
- 3 files changed, 38 insertions(+)
+ include/hw/arm/exynos4210.h | 2 +-
+ target/arm/cpu-qom.h        | 2 --
+ 2 files changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index 605b160a7e..a930e49e02 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -127,6 +127,14 @@ size_t qemu_ram_pagesize_largest(void);
-  */
- void cpu_address_space_init(CPUState *cpu, int asidx,
-                             const char *prefix, MemoryRegion *mr);
-+/**
-+ * cpu_address_space_destroy:
-+ * @cpu: CPU for which address space needs to be destroyed
-+ * @asidx: integer index of this address space
-+ *
-+ * Note that with KVM only one address space is supported.
-+ */
-+void cpu_address_space_destroy(CPUState *cpu, int asidx);
+diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
+index 68db19f0cb..d33fe38586 100644
+--- a/include/hw/arm/exynos4210.h
++++ b/include/hw/arm/exynos4210.h
+@@ -30,7 +30,7 @@
+ #include "hw/intc/exynos4210_gic.h"
+ #include "hw/intc/exynos4210_combiner.h"
+ #include "hw/core/split-irq.h"
+-#include "target/arm/cpu-qom.h"
++#include "hw/arm/boot.h"
+ #include "qom/object.h"
  
- void cpu_physical_memory_rw(hwaddr addr, void *buf,
-                             hwaddr len, bool is_write);
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 3968369554..708b6b48de 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -496,6 +496,7 @@ struct CPUState {
-     QSIMPLEQ_HEAD(, qemu_work_item) work_list;
+ #define EXYNOS4210_NCPUS                    2
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 514c22ced9..d06c08a734 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -23,8 +23,6 @@
+ #include "hw/core/cpu.h"
+ #include "qom/object.h"
  
-     CPUAddressSpace *cpu_ases;
-+    int cpu_ases_count;
-     int num_ases;
-     AddressSpace *as;
-     MemoryRegion *memory;
-diff --git a/system/physmem.c b/system/physmem.c
-index edc3ed8ab9..a16f1d4056 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -761,6 +761,7 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
+-struct arm_boot_info;
+-
+ #define TYPE_ARM_CPU "arm-cpu"
  
-     if (!cpu->cpu_ases) {
-         cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
-+        cpu->cpu_ases_count = cpu->num_ases;
-     }
- 
-     newas = &cpu->cpu_ases[asidx];
-@@ -774,6 +775,34 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
-     }
- }
- 
-+void cpu_address_space_destroy(CPUState *cpu, int asidx)
-+{
-+    CPUAddressSpace *cpuas;
-+
-+    assert(cpu->cpu_ases);
-+    assert(asidx >= 0 && asidx < cpu->num_ases);
-+    /* KVM cannot currently support multiple address spaces. */
-+    assert(asidx == 0 || !kvm_enabled());
-+
-+    cpuas = &cpu->cpu_ases[asidx];
-+    if (tcg_enabled()) {
-+        memory_listener_unregister(&cpuas->tcg_as_listener);
-+    }
-+
-+    address_space_destroy(cpuas->as);
-+    g_free_rcu(cpuas->as, rcu);
-+
-+    if (asidx == 0) {
-+        /* reset the convenience alias for address space 0 */
-+        cpu->as = NULL;
-+    }
-+
-+    if (--cpu->cpu_ases_count == 0) {
-+        g_free(cpu->cpu_ases);
-+        cpu->cpu_ases = NULL;
-+    }
-+}
-+
- AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
- {
-     /* Return the AddressSpace corresponding to the specified index */
+ OBJECT_DECLARE_CPU_TYPE(ARMCPU, ARMCPUClass, ARM_CPU)
 -- 
-2.34.1
+2.41.0
+

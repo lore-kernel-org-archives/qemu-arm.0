@@ -1,106 +1,105 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1293876ejc;
-        Thu, 12 Oct 2023 23:15:57 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHhrQR0AQ0qTjbaBQYKidE/6Yy+Ic5GfPkOBzH3K7jCpOipSiXxuLMGHjCXk0dhsqrhsINR
-X-Received: by 2002:a05:620a:1a8c:b0:773:a809:f059 with SMTP id bl12-20020a05620a1a8c00b00773a809f059mr29624530qkb.17.1697177756760;
-        Thu, 12 Oct 2023 23:15:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697177756; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1296877ejc;
+        Thu, 12 Oct 2023 23:24:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGBHGPo39GnL2HCzgU+TcGznBW7TETg+mNCWFcFFTFmBivImESUEvdEBmPJgyPN1IdLBCnN
+X-Received: by 2002:a05:6214:1942:b0:656:1858:a178 with SMTP id q2-20020a056214194200b006561858a178mr8515378qvk.9.1697178269030;
+        Thu, 12 Oct 2023 23:24:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697178269; cv=none;
         d=google.com; s=arc-20160816;
-        b=OL6vQv2EhtlQXx2+p59eZ7ipZLgkIsUi2rj/EDQER2OMBsQ//3q9GhyNrt7IAAGRI8
-         Yg1XIrsLfEzHAhvDd4pP8qMq3uw2ADX4rDOfrZq4+VhbhzMaJ/NpGP1j8dp5DeaLvF9K
-         /oU5JM1wEEYUhQJ+OEow4lG9214XYIVaQfxgAvWxSj0XvNHC1wwTBMVveiib917PN5Aw
-         bPART8or0HZrMBPBEwEPPHDRKw8FXDZiTcZXt+scK2qpW4d1vzgv4xQ9nQp8G7suTkHq
-         fmALn3QY8NZjAhrviICvuP1F5XSI/UVsmOCCgIWVCHS9NxMSg9cL8M9iwWHr1SIEW9gt
-         HppA==
+        b=SGU74nKgmZS8ddYnbDjSzG2vzTKgUnck1B2nkFsUDjhzzximVlt4FoeSS1JRYGExfE
+         GKOyBTz3PZUWtdrkR0MNbUQTMPyND+MZ1ZBOmJfuCfmQhR4xhJkECbf56FC1mxt5K0dM
+         seiMY78YFXqgBxuWZ61mnGZQnedv1Qb4qVP0TH8ln/LRniR176JJl7yg6ZHYjZFwHjXr
+         fDyd1bUucEMOffqLFaro76S1kzmJkD7Ai73mOzIKFYqrTyOJCI4JQgjeu9j28VqYumip
+         3RtSYihSl7VqC8vwd3wP2qzdx+OE9DoK+a2hiWM3dhIsh2DyjTzOAuj2sdlXqYR+HgJe
+         xRNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=3UrCRGZqL9sg8OBQc4SfklVgJqCd9RjvXeHDnEPNIyg=;
+        bh=ddrmD6HvS4vpzc+P4Ww26v8JWjlQJC65KYz98hcO0vg=;
         fh=gGZ8KC2O7OgwRBDPiLtlNf/Vfu8laUlcFY/sAMdpb+8=;
-        b=gsaXRVIVV/VG/sfCd+tB9Lzp3psfbksPbJsB5XRMN4lF0dSRnDi/LVC95BUdqRsRpu
-         IHEpWe/nJr4OzFiGpfcMr1tjzJEFqJIT0W/LBikPFwyMTdcM1v2V3tLWmHPdn/xxp/jT
-         u15wZbvOrC5o9p6HtYCYgrXSr9fFRAh3Y4987UNo4EVqg2eO8vBtO5BCcHQklIGvnUfG
-         LkfD2/yzp3uI617zxpnnr4sX/pveTPof72aCmYXf1SjWx6/wk83Lfdff5huntuHvZYAy
-         +7BIQtkG51pbIBVLJNvoZcjq+tC70YiVnOKW8tfa4BY1iSTgwdxqYCJn4nZRRtoRPm/1
-         nKLA==
+        b=eHUNGgi5Z5S49PI1iIq2PCalSaVwZe6E1uxJZZbfCdnAcybG7pioOvu3/FTY0CAVVp
+         sGJITC2dbkRNYarel8zxsBopJ/bqBFFFhH2pHLF/ac/1qDTsu3Iq8MF6GsVDZ54rc3F8
+         cTpZOQfBj6dDTKv66+v4/YNd2T4Ui8IcFQ53xL6I4ltyy6HcXa9rhiM20zH5kKjq58pa
+         xLhRayd+T9Fa14v6CJJct7WUYM+lufFLTX60/ctcc3cGNKUuyKVJ3GhpSxX9N/LN3+Cd
+         6rpVmzw7X6LwWjeaXIQzu90QnH/1cXU+RbaTEJWNZhTaMAd3ED/itNUJMzlMYo7YOeQA
+         uXww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CxbiVL6a;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hmQHrkvC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b13-20020ac87fcd000000b00419c9df4106si739347qtk.116.2023.10.12.23.15.56
+        by mx.google.com with ESMTPS id x13-20020a05620a258d00b0077263d908c6si730031qko.756.2023.10.12.23.24.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Oct 2023 23:15:56 -0700 (PDT)
+        Thu, 12 Oct 2023 23:24:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CxbiVL6a;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hmQHrkvC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrBSi-0002NY-NQ; Fri, 13 Oct 2023 02:15:52 -0400
+	id 1qrBaq-00068Q-4P; Fri, 13 Oct 2023 02:24:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qrBSa-0002FO-F0
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 02:15:44 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qrBan-00067n-Fs
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 02:24:13 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qrBSX-0003Ba-Te
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 02:15:44 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qrBak-0004eH-5t
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 02:24:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697177741;
+ s=mimecast20190719; t=1697178249;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=3UrCRGZqL9sg8OBQc4SfklVgJqCd9RjvXeHDnEPNIyg=;
- b=CxbiVL6adhQm+g7xUwqoZu2EUL5rZPkU6NHHpSqBuLM8FxykCogp2iDMbASP1gd6LxgDwx
- aGYgyiGmzssxGsfongNSKPW+J3RTqz1GeEqEY+wNczWhX/ISUBQjFCqfPzhQJr/PdIWd/N
- 0jzqBM/gMmlcLjQUjZFPxUaZK6umn7w=
+ bh=ddrmD6HvS4vpzc+P4Ww26v8JWjlQJC65KYz98hcO0vg=;
+ b=hmQHrkvCDTXDDxSsQszg3Iht6miIVzyYLE5VlaeHWQoqIsBWwxZqZ/Bsa7+RnxruWWO7Tw
+ jA89/9LOpc/WU4O8WmxjmDvNewyKanOoN7gnNqDKba9JEi79qcIu6iREEx+q+DwBX7sT7E
+ ktpBqPGoHXPWrMZlkxhZDANfTAx6FWw=
 Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
  [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-180-I_dssvhSO-C0emgH260iUw-1; Fri, 13 Oct 2023 02:15:32 -0400
-X-MC-Unique: I_dssvhSO-C0emgH260iUw-1
+ us-mta-364-9P0PwWqRM_6sSA0VNbIZkw-1; Fri, 13 Oct 2023 02:24:08 -0400
+X-MC-Unique: 9P0PwWqRM_6sSA0VNbIZkw-1
 Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-9b98d8f6bafso122737666b.1
- for <qemu-arm@nongnu.org>; Thu, 12 Oct 2023 23:15:32 -0700 (PDT)
+ a640c23a62f3a-99c8bbc902eso134575966b.1
+ for <qemu-arm@nongnu.org>; Thu, 12 Oct 2023 23:24:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697177731; x=1697782531;
+ d=1e100.net; s=20230601; t=1697178245; x=1697783045;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3UrCRGZqL9sg8OBQc4SfklVgJqCd9RjvXeHDnEPNIyg=;
- b=e71mHEz744Mt+Hbhik4pkGTUivXBcWoNWLx0ZRcZJxjySYugHit3ZsnKHjuhZsh0Bf
- yzW+65ITxAfpzTndu/Wgk0NafZ4rB9IOhAhC2plnvrol1kZj2jbzCJiIE/6RSrByxWI/
- f2wDl8zxMXErNdmSj2ODD0+4VcB+S5M9Q0If6peiNz9fYe3KVeCvCk4XB9Bl8Hc3bCZv
- mdO2dMzNC2PlLumtftRPEFkJUGaIRfz5Q/Ar8UAWlwl++wa3lVPKlAI9WzAF9oOyXc/P
- VPXx4pYegB9PZlr33+RGJkffsco3edbC4mjnDD43HwSJFVwWYEVgos4KfkaypEmYRTBb
- yS7g==
-X-Gm-Message-State: AOJu0Yz3WUXNJ8JYVu004DsOLIVYSe/8iY8zXE+jUfXweeWFjpS7kZ6t
- A1wkQoqC0sIMO4zBuK+FPbk+GCc/X3Qn75ucap9VQnz2VQC/lCW9zIfhcg6KjAyeKWSJUDVwfRy
- zcL5+/urI2Hjy
-X-Received: by 2002:a17:906:2210:b0:9b2:8323:d916 with SMTP id
- s16-20020a170906221000b009b28323d916mr25451897ejs.17.1697177731300; 
- Thu, 12 Oct 2023 23:15:31 -0700 (PDT)
-X-Received: by 2002:a17:906:2210:b0:9b2:8323:d916 with SMTP id
- s16-20020a170906221000b009b28323d916mr25451884ejs.17.1697177730925; 
- Thu, 12 Oct 2023 23:15:30 -0700 (PDT)
+ bh=ddrmD6HvS4vpzc+P4Ww26v8JWjlQJC65KYz98hcO0vg=;
+ b=NHLodqQTqD0CZAcu9FZZwyDtv5AinBci+VRpkP6FiZWus8AQD+zAy04wZZsrIfhCTM
+ q4ydIRXkScXtaUDwmGMQU5ctT4GntRjoo1Cg8BI6s6jT/QhBz9R8HS04DTu0M/duWVKv
+ 3/33cCBlbmoD/kpGZKk03/pVqm8btzJS8WZd9MmgCEt63Jlr4eKvhZAtGZnHKZ6eF/nN
+ XxTY68kAICEEgiqHm9OZ5UWOdANkzn49G1a2cpA+UNF0BTzi3cMDJe+heHH0yOGgkq5/
+ uIMXNdbV7NgDAyH5AAoQbV1AoEtzwMfHEPfMqVWSEj8ArM8ERwPi4QE04HHilIcy4QVd
+ TzhA==
+X-Gm-Message-State: AOJu0Ywiia7mg+g5f3OtDalN8uM17Yt9U+GxHNODoxhwTzKMVnpvAxU3
+ 26YEGqy+VJs2mmH8BpYzZW1lZ/K1N29y/xX7HEwihdfkTM46giIgDI1R7Jt7ftoRzNLMVYbYk9H
+ dVdDtzb5GK4aZ
+X-Received: by 2002:a17:906:1d4:b0:9bd:7f40:caa5 with SMTP id
+ 20-20020a17090601d400b009bd7f40caa5mr5349366ejj.77.1697178245420; 
+ Thu, 12 Oct 2023 23:24:05 -0700 (PDT)
+X-Received: by 2002:a17:906:1d4:b0:9bd:7f40:caa5 with SMTP id
+ 20-20020a17090601d400b009bd7f40caa5mr5349346ejj.77.1697178245133; 
+ Thu, 12 Oct 2023 23:24:05 -0700 (PDT)
 Received: from [192.168.0.5] (ip-109-43-176-176.web.vodafone.de.
  [109.43.176.176]) by smtp.gmail.com with ESMTPSA id
- gt26-20020a170906f21a00b0099bcf9c2ec6sm11926505ejb.75.2023.10.12.23.15.29
+ sd23-20020a170906ce3700b009b2b9af0784sm11863514ejb.110.2023.10.12.23.24.03
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Oct 2023 23:15:30 -0700 (PDT)
-Message-ID: <9f9f8a1b-f656-4cda-a1d5-b15cfb91a3fc@redhat.com>
-Date: Fri, 13 Oct 2023 08:15:29 +0200
+ Thu, 12 Oct 2023 23:24:04 -0700 (PDT)
+Message-ID: <1a1e7dcb-c3b9-47d1-b910-363edbce8a97@redhat.com>
+Date: Fri, 13 Oct 2023 08:24:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/10] tests/npcm7xx_adc: Clean up global variable
- shadowing
+Subject: Re: [PATCH 08/10] tests/aio: Clean up global variable shadowing
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Alberto Garcia <berto@igalia.com>,
@@ -110,7 +109,7 @@ Cc: qemu-arm@nongnu.org, Alberto Garcia <berto@igalia.com>,
  Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>,
  Tyrone Ting <kfting@nuvoton.com>, Markus Armbruster <armbru@redhat.com>
 References: <20231009100251.56019-1-philmd@linaro.org>
- <20231009100251.56019-8-philmd@linaro.org>
+ <20231009100251.56019-9-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -154,7 +153,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231009100251.56019-8-philmd@linaro.org>
+In-Reply-To: <20231009100251.56019-9-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -168,7 +167,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -183,61 +182,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VJ88Ye5BFLxS
+X-TUID: L+iIrC3X4JrX
 
 On 09/10/2023 12.02, Philippe Mathieu-Daudé wrote:
-> Rename the global 'adc' variable in order to avoid:
+> Rename the argument to fix:
 > 
->    tests/qtest/npcm7xx_adc-test.c:98:58: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->    static uint32_t adc_read_con(QTestState *qts, const ADC *adc)
->                                                             ^
->    tests/qtest/npcm7xx_adc-test.c:103:55: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->    static void adc_write_con(QTestState *qts, const ADC *adc, uint32_t value)
->                                                          ^
->    tests/qtest/npcm7xx_adc-test.c:108:59: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->    static uint32_t adc_read_data(QTestState *qts, const ADC *adc)
->                                                              ^
->    tests/qtest/npcm7xx_adc-test.c:119:53: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->    static void adc_qom_set(QTestState *qts, const ADC *adc,
->                                                        ^
->    tests/qtest/npcm7xx_adc-test.c:135:57: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->    static void adc_write_input(QTestState *qts, const ADC *adc,
->                                                            ^
->    tests/qtest/npcm7xx_adc-test.c:144:56: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->    static void adc_write_vref(QTestState *qts, const ADC *adc, uint32_t value)
->                                                           ^
->    tests/qtest/npcm7xx_adc-test.c:162:59: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->    static uint32_t adc_prescaler(QTestState *qts, const ADC *adc)
->                                                              ^
->    tests/qtest/npcm7xx_adc-test.c:175:64: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->    static void adc_wait_conv_finished(QTestState *qts, const ADC *adc,
->                                                                   ^
->    tests/qtest/npcm7xx_adc-test.c:196:16: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->      const ADC *adc = adc_p;
->                 ^
->    tests/qtest/npcm7xx_adc-test.c:207:16: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->      const ADC *adc = adc_p;
->                 ^
->    tests/qtest/npcm7xx_adc-test.c:235:16: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->      const ADC *adc = adc_p;
->                 ^
->    tests/qtest/npcm7xx_adc-test.c:267:16: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->      const ADC *adc = adc_p;
->                 ^
->    tests/qtest/npcm7xx_adc-test.c:293:16: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->      const ADC *adc = adc_p;
->                 ^
->    tests/qtest/npcm7xx_adc-test.c:311:16: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->      const ADC *adc = adc_p;
->                 ^
->    tests/qtest/npcm7xx_adc-test.c:93:5: note: previous declaration is here
->    ADC adc = {
->        ^
+>    tests/unit/test-aio.c:130:44: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+>    static void set_event_notifier(AioContext *ctx, EventNotifier *notifier,
+>                                               ^
+>    tests/unit/test-aio.c:22:20: note: previous declaration is here
+>    static AioContext *ctx;
+>                       ^
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   tests/qtest/npcm7xx_adc-test.c | 14 +++++++-------
->   1 file changed, 7 insertions(+), 7 deletions(-)
+>   tests/unit/test-aio.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/tests/unit/test-aio.c b/tests/unit/test-aio.c
+> index 71ed31a4db..337b6e4ea7 100644
+> --- a/tests/unit/test-aio.c
+> +++ b/tests/unit/test-aio.c
+> @@ -127,10 +127,10 @@ static void *test_acquire_thread(void *opaque)
+>       return NULL;
+>   }
+>   
+> -static void set_event_notifier(AioContext *ctx, EventNotifier *notifier,
+> +static void set_event_notifier(AioContext *nctx, EventNotifier *notifier,
+>                                  EventNotifierHandler *handler)
+>   {
+> -    aio_set_event_notifier(ctx, notifier, handler, NULL, NULL);
+> +    aio_set_event_notifier(nctx, notifier, handler, NULL, NULL);
+>   }
+>   
+>   static void dummy_notifier_read(EventNotifier *n)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 

@@ -1,118 +1,235 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1691192ejc;
-        Fri, 13 Oct 2023 11:14:25 -0700 (PDT)
-X-Received: by 2002:a92:1a46:0:b0:352:a73a:16f9 with SMTP id z6-20020a921a46000000b00352a73a16f9mr28321138ill.18.1697220865341;
-        Fri, 13 Oct 2023 11:14:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697220865; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1698504ejc;
+        Fri, 13 Oct 2023 11:28:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHTkdMEj6R/myvpoEAcUty1ng8zXkwUnECKr9eNjHnk9US3POM03w5JNae5/XBOcFkteiDM
+X-Received: by 2002:ac8:5d01:0:b0:419:58da:5d54 with SMTP id f1-20020ac85d01000000b0041958da5d54mr28182609qtx.35.1697221682356;
+        Fri, 13 Oct 2023 11:28:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697221682; cv=none;
         d=google.com; s=arc-20160816;
-        b=IWUYf+9XcIdedsq2QaLGBWUuBbExI0dbX4TrIKgyZJdipUmmQ7ceDPRNyGdUrtNTqp
-         M40qGtZmkwxeTm3pcKL9rrTUZ95uDkUYMSKbFk90VHjY9a00Y9Mo35TYAnuuvoESgyCv
-         VGmyGoRy9WzMoHhTDFNj2wFtuc7fMDIg7dBiG3II+R8ggIFEF/cYgWhRxSaFsO1tj2ZV
-         HHVUILHBUWACHJaqjnlynxBlqKKDgZbn7/VvejPz9KN5p8+TUL6Q3xRT6APQbJidsvTB
-         PVCMe6kjuFD1MAVdlr9QDZ4wh2+XRlgIozf1lnVZwEVgjdC4txrLID5P5nyT7TusQ4iw
-         BG0g==
+        b=zlPQsZ8S6eee7rcG2c+j/eUC1YT7aoSe6veyChKptzG+O2k1fZ3FtETAxPz2NzJmMc
+         WAogIJ4wEGQIsS69sV5DSy0pVWcA10UQgKcnxPZf4CVTvdhmJgt85//zEpI8kehio1x6
+         rZOstttW7pRb/nOr8ddiNwhStac8cmia/oXzU0Ey6sggoLvHUQObfdnPff4/WKoZ5VgR
+         pMEunnhRi7WPpYrYAC+qMudj90lcqCAZp4tRTNVqunIvIPwhAJ1coBdM2G2naKO5NK/w
+         X/rcyz1P2XNwuAJcF0ZrGK/0I6ODwOhknNakW8CRucdk3cFRpbcubeQtKe0ynuwE7MpQ
+         06Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=fw91ChDt+rOcqpsYAbBMyeyFK8OsZN5cm1R+uomjBGw=;
-        fh=qaXEkIxbaqNloPQL/FT1tmYxQJ5wxkMY1YwIUrL/c6A=;
-        b=fNlvEpeu+2+zJV6PrDfP5y92JZIgkN/vlHTwJnnuaDyA28eCAp/4WJYOVX/5ZqWcTc
-         B5Xp/NTDbf55Dz++4n0tY3UV+58ybPKKWakhXigYUBIf5faN+VroEXtmMBipfg+KlvTa
-         1lqAJT11IGc1cjHOH7a21qiD/TloM8t+6jvDaz4+6kKjtJGrCmkvmfXD8PKY4rzWJN+E
-         Z7wJMnrO2FazkEq0yP6ibt/NAn6UnS2+P14WqNN0dmybsdEc9/r3j/VNAAygSmxNjQkk
-         5O2BD1iju2bSRGhTSCDfvE0QR5nUiO/ID9nmdTq6Yz4N/v44EV67/TngDmfOxFcGAYGx
-         MtVg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=B4pVf4fJ2bMdaQZKp5f/S8EyLHtuUJnUFKZUiAmTTog=;
+        fh=JhbZF18odFDqZCdO1RhjRGl5HE9KgUVdAuH/iI95rxY=;
+        b=yAXh7pcoBLIb0FnjbNvdgWw98L/d5UhsqUgtp1/RbpmxwfHRiYoRmu2HJm0Sc7UhPh
+         sJZaGgTXAu3/xwpHDOSon/nQ3cRqi1kcE/dOz3Au5G4eW/kjUZg6UohUYNcvNd1z9A4M
+         Z7m6tfA/XVZ6rcJNeGMAXBPmcq44tW/nXwWZNvtgY7uD8iD9+VVIK/tpN6p5c7/VJQsz
+         xK/vkvXQj/WdtuqqH6zfaW6SPEsWXmfCsd/qmBspyWmFWSG0a5n4eS7A7/ZdpgwA2b2R
+         MjVuCuDZWppIBk/CrsvsLfvv4PBwt4f3P1p0uyBQGnKtxc/kPnW8zr9ebQuaNx4STb8D
+         PgFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jxCzfbuP;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b62-20020a62cf41000000b00690284b179bsor8324540pfg.7.2023.10.13.11.14.25
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=BEqmhqAW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 17-20020ac85951000000b004197515b5easi1662702qtz.54.2023.10.13.11.28.01
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 13 Oct 2023 11:14:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 13 Oct 2023 11:28:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jxCzfbuP;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697220865; x=1697825665; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=fw91ChDt+rOcqpsYAbBMyeyFK8OsZN5cm1R+uomjBGw=;
-        b=jxCzfbuPqKPmEZB/PnNqrRBX8I0PoNqD6Ugy38ilJPnp+FkUIvIPZLONoAhS+ldI2e
-         53ypud0GFcjWY6inEBH6ciD6/buQJzLFVOqw3kcEk+hUZTctqfEOgQLTFMTHNfKGSglF
-         0wx6kK4vUM+lweu89kOXwMKPEnWOw/dgBd43Q1v+e/CcPmc7m7PFm8R3o68kG/OKuqhi
-         sI0TzWEotBiwaNt72z/hfWlu53SoExseQlXxdCdDZ9Q9jkrKbmen5MHXTKopaHpJJHgG
-         lImjPmDuP63fN01Z4IzJgn8zSjbl6styGs6h0sFGQBGzAVMmXkKoesrKf6MjwMuiVavE
-         CpVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697220865; x=1697825665;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fw91ChDt+rOcqpsYAbBMyeyFK8OsZN5cm1R+uomjBGw=;
-        b=hP7b0oyMkhqN/puIvdLA0fMCFfqdc0KdDWAQ4hnKBMHsq5QTy5kJsFZgCoIJv7jKj0
-         cBs7LdT+Y08mahKvZGs2iNspBfyvAPojbBAJdxJPvy5aHeiKGaNVQrsrYKewk+6NymhC
-         HYvuKmX1iTY5GeB+urD0aBc58oRGncGcZNwbi/LILRAGpfBiQDPsIR6DetJyIrpIWtYV
-         FL0ixmSx4JUoKNbxeOc/OqOLRACD1fhjJW/KjukkPFPnAGZHetAlC6evgrj2wFYT4BeG
-         70YeoCdFB6a8UDGLpOQKRirC9mXmLkXMtW2dEm0nXMFeHf6YWFg5FxSTexQB0hYie2a+
-         E7iA==
-X-Gm-Message-State: AOJu0YxA7o1pSq/QuM+DTohCN/GKKKzWImfoXtY+FInvGs/eiLPgZZaB
-	jPNVnMDGorHbb9Tnp3I96apzIEtr2ybcVgJK7KHzKw==
-X-Google-Smtp-Source: AGHT+IHMbOsGt3IaMEehF2X0v9zMKUF9GjM1BYuxgVM1cOlWnpCX4IxChicef9+CEJ2B9JW2X5DL3A==
-X-Received: by 2002:a05:6a21:191:b0:155:5c28:ea67 with SMTP id le17-20020a056a21019100b001555c28ea67mr34781275pzb.38.1697220864813;
-        Fri, 13 Oct 2023 11:14:24 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.0.4] ([71.212.149.95])
-        by smtp.gmail.com with ESMTPSA id v5-20020a63bf05000000b005894450b404sm3182968pgf.63.2023.10.13.11.14.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Oct 2023 11:14:24 -0700 (PDT)
-Message-ID: <fb26bbac-e573-431e-a4b4-13ca65a24455@linaro.org>
-Date: Fri, 13 Oct 2023 11:14:17 -0700
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=BEqmhqAW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrMsk-0000Bs-UD; Fri, 13 Oct 2023 14:27:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qrMsR-00009U-B9; Fri, 13 Oct 2023 14:27:11 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qrMsN-0002Cj-6C; Fri, 13 Oct 2023 14:27:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=B4pVf4fJ2bMdaQZKp5f/S8EyLHtuUJnUFKZUiAmTTog=; b=BEqmhqAWNRh/Lwu4r5dWa7Jjaj
+ 6McmjzdZVbdu3lS2eTW741j8cnwi6seN2ER5bcbUW9QE8dMoH1JgV1TDvqVGrewo1+xGy++g3iPQ7
+ oQs1sRZQ6ZjBf3dqjURXzOKM10bOzkKGHA+oY2vUU81OyIYCLdBsP2FFw2jwARnPxiWsYnqglLzHc
+ 5RMnCr3u5NxDouVqKMHUZ42h6ouRZXbOezXhR+OKazYuluHpDv1Eyf+LayEZe6CsYIrwzy3ZqG9Ys
+ f1VuX/Uij3hXI3LQcCk2qjSwH0FyrPD+cr2g6eoD0G0TIoQusOPhKunYXHfHVz5o6Om0j/WRM61hY
+ gqQ1kZOp4dAYIl6Q435Lef9wpCRMXEMZ9ewmZJw0UPqBeW4sWXSvFWxXrqYXcaele75tmREO1o+Vw
+ Ik2bjnL5X8wqMad29+SpYGpDcCx6OCZCjaQ+SF72k52fkomp21ecyfMf6vqrhDu4HvOy3/JnInAM6
+ dFGLK8bdEnu6D2tIHABe6YosUot+VCxOJFnlf+HtuPR4cRz/xsQvKK55hIgcZ/x800tUqzQXgChJv
+ TFHfuHlYNOVnomudwJ+CIgta/yZaKfYMxV+YZuNliGAi8aX5govQoiYmno2LiEVACACjxZKMUQ+4B
+ NdI86tcbruRJplnUqalws0qSXlEBe4r96XHDqLC/k=;
+Received: from [2a00:23c4:8baf:fd00:1033:b5d6:92a3:359f]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qrMr4-0002mm-Oh; Fri, 13 Oct 2023 19:25:50 +0100
+Message-ID: <14b256ef-904a-4ba4-80a6-ca1a33ecaf8c@ilande.co.uk>
+Date: Fri, 13 Oct 2023 19:25:43 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 9/10] hw/char/pl011: Add transmit FIFO to PL011State
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: David Hildenbrand <david@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Song Gao <gaosong@loongson.cn>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-arm@nongnu.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Paolo Bonzini <pbonzini@redhat.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-riscv@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Bin Meng <bin.meng@windriver.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, Marek Vasut
+ <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-ppc@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Stafford Horne <shorne@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Chris Wulff <crwulff@gmail.com>, Sergio Lopez <slp@redhat.com>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Brian Cain <bcain@quicinc.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-s390x@nongnu.org
+References: <20231010092901.99189-1-philmd@linaro.org>
+ <20231010092901.99189-15-philmd@linaro.org>
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20231013141131.1531-1-philmd@linaro.org>
- <20231013141131.1531-10-philmd@linaro.org> <87edhylac2.fsf@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <87edhylac2.fsf@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <20231010092901.99189-15-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: aesJGCLQANXL
+X-SA-Exim-Connect-IP: 2a00:23c4:8baf:fd00:1033:b5d6:92a3:359f
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 14/18] target/sparc: Declare CPU QOM types using
+ DEFINE_TYPES() macro
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 02P/FWp/5k6L
 
-On 10/13/23 10:05, Alex Bennée wrote:
->> @@ -487,7 +505,11 @@ static const VMStateDescription vmstate_pl011 = {
->>       .subsections = (const VMStateDescription * []) {
->>           &vmstate_pl011_clock,
->>           NULL
->> -    }
->> +    },
->> +    .subsections = (const VMStateDescription * []) {
->> +        &vmstate_pl011_xmit_fifo,
->> +        NULL
->> +    },
->>   };
+On 10/10/2023 10:28, Philippe Mathieu-Daudé wrote:
+
+> When multiple QOM types are registered in the same file,
+> it is simpler to use the the DEFINE_TYPES() macro. In
+> particular because type array declared with such macro
+> are easier to review.
 > 
-> Doesn't this necessitate the bumping of the migration version data or
-> do we not worry about new -> old migrations?
+> In few commits we are going to add more types, so replace
+> the type_register_static() to ease further reviews.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   target/sparc/cpu.c | 23 +++++++++++++----------
+>   1 file changed, 13 insertions(+), 10 deletions(-)
+> 
+> diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+> index 8ba96ae225..1e66413e94 100644
+> --- a/target/sparc/cpu.c
+> +++ b/target/sparc/cpu.c
+> @@ -924,17 +924,21 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
+>       cc->tcg_ops = &sparc_tcg_ops;
+>   }
+>   
+> -static const TypeInfo sparc_cpu_type_info = {
+> -    .name = TYPE_SPARC_CPU,
+> -    .parent = TYPE_CPU,
+> -    .instance_size = sizeof(SPARCCPU),
+> -    .instance_align = __alignof(SPARCCPU),
+> -    .instance_init = sparc_cpu_initfn,
+> -    .abstract = true,
+> -    .class_size = sizeof(SPARCCPUClass),
+> -    .class_init = sparc_cpu_class_init,
+> +static const TypeInfo sparc_cpu_types[] = {
+> +    {
+> +        .name           = TYPE_SPARC_CPU,
+> +        .parent         = TYPE_CPU,
+> +        .instance_size  = sizeof(SPARCCPU),
+> +        .instance_align = __alignof(SPARCCPU),
+> +        .instance_init  = sparc_cpu_initfn,
+> +        .abstract       = true,
+> +        .class_size     = sizeof(SPARCCPUClass),
+> +        .class_init     = sparc_cpu_class_init,
+> +    }
+>   };
+>   
+> +DEFINE_TYPES(sparc_cpu_types)
+> +
+>   static void sparc_cpu_cpudef_class_init(ObjectClass *oc, void *data)
+>   {
+>       SPARCCPUClass *scc = SPARC_CPU_CLASS(oc);
+> @@ -959,7 +963,6 @@ static void sparc_cpu_register_types(void)
+>   {
+>       int i;
+>   
+> -    type_register_static(&sparc_cpu_type_info);
+>       for (i = 0; i < ARRAY_SIZE(sparc_defs); i++) {
+>           sparc_register_cpudef_type(&sparc_defs[i]);
+>       }
 
-We usually don't care about new->old, however:
-
-If the fifo is empty, migration will still work because of the subsection.
-If the fifo is not empty... I think the subsection will be ignored, with the only 
-consequence being that some characters will be dropped.
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
 
-r~
+ATB,
+
+Mark.
+

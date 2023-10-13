@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1532235ejc;
-        Fri, 13 Oct 2023 07:04:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH10PHvrGI8XQiJJgZYhXQTJeMTxP3Rh+1k0L8Q2KZy8402hQ0GnPxP5FudWZEgvYAIy//+
-X-Received: by 2002:a05:620a:bca:b0:76c:ba61:f8b with SMTP id s10-20020a05620a0bca00b0076cba610f8bmr31548859qki.23.1697205896280;
-        Fri, 13 Oct 2023 07:04:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697205896; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1532288ejc;
+        Fri, 13 Oct 2023 07:05:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGVeOmbA+7pvEdkrJR80JFDpmAVaAVXdQ+6SB8RwrM8NWIRa/yoCFbwv6zKbOBrhlFSt7JW
+X-Received: by 2002:a05:620a:45a5:b0:774:186f:4d82 with SMTP id bp37-20020a05620a45a500b00774186f4d82mr32555042qkb.50.1697205900513;
+        Fri, 13 Oct 2023 07:05:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697205900; cv=none;
         d=google.com; s=arc-20160816;
-        b=FHz2kkpRpuehjT/4h4KAdBxarKb+1Xo41jJmb3YOkCxf//9Y1/3DiciI8xKxO1yMo4
-         XoHEeCJ/FCG6WdB8LSfFrfUHgFvyHN7lkrXoeQcxDVbVOHm/Q3bs87XciGZE6m9NpjaT
-         ADpX7Buy33NKQ03Vz+IYep239QNpK2t0X0aXo5O6rt7gf0GNy3Vbjqi8iCJt10mDA8jp
-         3HgJgXEzs1+7Mqy8Z21TFkZCm/kx2kNeZy2UTdwrfXSLRG1Sc3q99K4POc3Ab51gqjTs
-         6Ya2VG8uqSKwqpqEUtcam002osNvuy/eevnE+E8w/8eI39OZIBJQSvh4yLp3mqYy7S+D
-         16Bg==
+        b=r9lFkie5wgESHocFE03WdDZJW5KM/0VmauYzQy3/Gv42Eb6KtRd92eVa5tFaxIKfL0
+         UXOzPxfIukfBqFkTiPR6MLquAz00j3r8Ca+uBKY59/PPTTgp24N9j6MfOrNLoHXr8hRa
+         Nw50hjKufbR7K4cgQyEjtyzKgAwy6HWZrJBehNhljX2SDgjjD0LX184L2dFojosydbtP
+         8jiLkKu80E7MzkOcUC3QA4nC231imJn/nRsxJ4PDWTnL3Q6wonHepRkr94wIRR8fl1R/
+         UfWiFYjdp3X2YPI876VLLRkqKHDQv6THXOcqwP3soR9oYkvFi5oNQ1Qz6PokqXKabAsr
+         fGAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=W4alAtOXM/H/5FX7cyO/SwuIUYprCQ9PCZpIdYP2vGY=;
+        bh=QrvfAY2mn68woULbVz677TRglvUf81ZbqsLucDKzz7I=;
         fh=yvC9ZPM7MgJn7Xb0eJwxiCf2t+VfzDAYAfYYKFMFkpQ=;
-        b=aTmiWq/3hwVRVVluESWxlwsqtw07B39rK/7NFnsjAWi3thp23SPu/CQSmUHaqcpVyJ
-         Vdo2k7cdu/uz7NpaYgmk/ffQXsYFoV3n7/U39iWvONL4wcSelEKxMOge1UEloe73eubO
-         jM2BvrYQMWCVtHO35s4brd2w1+CVbQkw4dZR/OxkoQjf88VBIUnEctWABXrudMglweHv
-         PIhY1qJUM+YZonIIXnqEwxkkcb2PEwl41Ki4gBYNkGINeaEBd1r8QjAdNJbIcrE6O7wP
-         euoskC3+HTkFfssXFun34uDzbbj70fnuESFxE9hE+1eOTkWz+9FcZNNpyaX8sjtRJ9Mp
-         46kQ==
+        b=V4F84HDhAbfN6fXgqIrpyr7V/Jinog4WhT9S8g06ieI+11wpujodBihhztrz0ixKjD
+         e5xdEeSBVzNY/aEJCaWeRF5qd/6eYAZIxvkep0tIAX84VZsqnfFkyogT+ToyX3unBRiK
+         MhmXDSRy1gOWzFBb9IjK5zADrIUGo4Md0+2Z4nG2S0eRvmZWPHCZlfDbg4YTPv9kxEFF
+         4I4PDTqZL2V9jV1GUeWPQg0+xXws2k3psdLSdUFNmIqjKJlKhPvgbD9z/8kTYtXw/Ocs
+         RqQHn8iSONvj7kRZf8ZnHZa7AiEf6tzVjM5Axhq7RDODL2m84M1SEOJ/5jSzSAfwb0ZN
+         6Rcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P0K0EOKB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BuR4CrcQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j4-20020a05620a410400b0076d88513635si1295028qko.115.2023.10.13.07.04.54
+        by mx.google.com with ESMTPS id ef7-20020a05620a808700b00767b7c58ac4si1235027qkb.605.2023.10.13.07.05.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 07:04:56 -0700 (PDT)
+        Fri, 13 Oct 2023 07:05:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P0K0EOKB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BuR4CrcQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrImV-0004kg-1n; Fri, 13 Oct 2023 10:04:47 -0400
+	id 1qrImD-0002pY-9K; Fri, 13 Oct 2023 10:04:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIli-0000xg-H9
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:04:00 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIlS-0000ka-NN
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:03:43 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIle-0002gP-KR
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:03:56 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-533c5d10dc7so3802262a12.3
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 07:03:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qrIlL-0002dO-JM
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 10:03:42 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-9ba1eb73c27so354346966b.3
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 07:03:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697205831; x=1697810631; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697205813; x=1697810613; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=W4alAtOXM/H/5FX7cyO/SwuIUYprCQ9PCZpIdYP2vGY=;
- b=P0K0EOKBNNDBU7BITx4q5wgLWKMrIAEvxAY6zGwhsaQ/jB017LuJd1wxmWrbnoqh9U
- fXGvyu8CsFRE+0S3pZzBQl1YhvrqMAXZGFGSa6+o3y505AUBBHIouO8Pi62qQd4USFJn
- gYb4wMwd0Bu1dSdUrSQdC/GpJY6rO2XMcMz1jEAuealT4EDKUkMCXR305D0SZckqav6I
- X14Mlzqkl5a3Pbao9jh9Xi/93OD5fhXrM3Ax+ru2DqTmQ9UKLqCR/cJs+ZzgWhA4Q3yw
- xAtIo3eKFPzYKi6Ck6Aln0X+NetA7bLk0wKP295wZzpLDQWF9NaLVO3Z2qPVaPPfxDXx
- JJRg==
+ bh=QrvfAY2mn68woULbVz677TRglvUf81ZbqsLucDKzz7I=;
+ b=BuR4CrcQgvTLeeaTMb8Bk3H5XdhPsgW98bz4La7ZOnNL3QvJersAfWaAy0I1UN+AXZ
+ LXqF9y/SKBSrq5nkyRn81BiVFwp19C3XvwOx8T8wIfOa+FXb8wcfmq950jUuTqKb9tkm
+ w49Fn6qLw/Xcly8Qklr83OCeG7SQZq26Ymkv16BN0B7dIzKxrCT2Yk6E/FCHhCsYewD1
+ ktx6dYgzD/pdwTxruhG5Tx1qo1Rog2qa9+JNkoHSkBuLh4E1mDCPaJdlcAZe0oosaBgC
+ 8Cbz8ETlCMttoJ78NEwqhQP1O+M2DCyTDu3QWV2lT8sZOTmX5h9FFCZrY5koN3Dvfd4z
+ E0Uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697205831; x=1697810631;
+ d=1e100.net; s=20230601; t=1697205813; x=1697810613;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=W4alAtOXM/H/5FX7cyO/SwuIUYprCQ9PCZpIdYP2vGY=;
- b=vJxMfaWs8eNtHaF6ZJ0v0/JtVF22WQ0LfXfpCb8dVXls8ITxfIceVso7jcijjrdM8X
- i/BNbd7Exq/pwmHXiiEMwDcviopdKlWHa9FHmdhQv72x6prsrQ6maI4en5Qmk5VONCJm
- bcUsG6wMTqK9J3h91Xh9DrFwzLEEsXwD5Wdx2RmvCgonsGgBjkToLW3qwYV8WEfqFiGv
- 7m84znx5eb73qbv+EBqw9+RhQUOZmWRhitnrDoPJwrnkQTddGch0jAZR/ire2WCesHmk
- zvDMnJWs04aom99muW7LR01BwC91cc68kXeYG7R9NZdmF++ZYUl8PZTzQrIOqy4REDKZ
- boDA==
-X-Gm-Message-State: AOJu0YwtZfz4/hZUldZrUrxkXu/B38LYbZZRKCc68DEBTo4uJ43JpJc8
- rv6EHDlV4Cl2Q61Ny3zhWGJRFA==
-X-Received: by 2002:a17:906:30cc:b0:9a1:c447:3c62 with SMTP id
- b12-20020a17090630cc00b009a1c4473c62mr23478118ejb.49.1697205831758; 
- Fri, 13 Oct 2023 07:03:51 -0700 (PDT)
+ bh=QrvfAY2mn68woULbVz677TRglvUf81ZbqsLucDKzz7I=;
+ b=R+1wfP9alDMQwJ83TQFL1bsY3elSq/dwmWZdIj5uAbMlhRO0R9DII0T2Z5q1Ku/bj7
+ eQhI53UYoJ054fUKYb7CQ6bxdEtAmfTgP9ouAo2wfYhHHo9m+RcO/8hvhINvt+HOpMSK
+ 1jyzdt9GWbVrA4BRhYKw/Ak+CzTaqByguJIqBsxnYD/FzpnF8i2ubnubFp6HYU24JB1x
+ P6wi9MfljXvy9In/o9TGnYPWC9rjAKTWt2yrIt++XfNt9TyMU7mFfnq28lrjwrob6vWo
+ VwUa6bqroNkh+WRq2wZ739DK426hkxE60wCvEJHmgKCregvDxBT4HD7Z5Gm1eScTgx7Z
+ ek4g==
+X-Gm-Message-State: AOJu0YxhG2tKHvKi9/yf1Y0u0mDxv3qAGpr6I9GMRNlc3xnkFXl5ebUb
+ HHRo9MrFtdBdvLuQVmQEx3Zlvg==
+X-Received: by 2002:a17:906:23f2:b0:9b2:6db8:e0fa with SMTP id
+ j18-20020a17090623f200b009b26db8e0famr22738729ejg.41.1697205813224; 
+ Fri, 13 Oct 2023 07:03:33 -0700 (PDT)
 Received: from m1x-phil.lan ([176.172.118.168])
  by smtp.gmail.com with ESMTPSA id
- gq7-20020a170906e24700b00993664a9987sm12476932ejb.103.2023.10.13.07.03.47
+ p8-20020a170906b20800b009adce1c97ccsm12437059ejz.53.2023.10.13.07.03.29
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 13 Oct 2023 07:03:51 -0700 (PDT)
+ Fri, 13 Oct 2023 07:03:32 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <eduardo@habkost.net>,
@@ -121,25 +121,25 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
  Sergio Lopez <slp@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Ilya Leoshkevich <iii@linux.ibm.com>, Michael Rolnik <mrolnik@gmail.com>
-Subject: [PATCH v2 16/16] target/sparc: Declare CPU QOM types using
+Subject: [PATCH v2 14/16] target/mips: Declare CPU QOM types using
  DEFINE_TYPES() macro
-Date: Fri, 13 Oct 2023 16:01:15 +0200
-Message-ID: <20231013140116.255-17-philmd@linaro.org>
+Date: Fri, 13 Oct 2023 16:01:13 +0200
+Message-ID: <20231013140116.255-15-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231013140116.255-1-philmd@linaro.org>
 References: <20231013140116.255-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -154,7 +154,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 81+S+xVc5NX2
+X-TUID: 7C3qU1JgELhU
 
 When multiple QOM types are registered in the same file,
 it is simpler to use the the DEFINE_TYPES() macro. In
@@ -167,51 +167,51 @@ the type_register_static() to ease further reviews.
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/sparc/cpu.c | 23 +++++++++++++----------
+ target/mips/cpu.c | 23 +++++++++++++----------
  1 file changed, 13 insertions(+), 10 deletions(-)
 
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-index 8ba96ae225..1e66413e94 100644
---- a/target/sparc/cpu.c
-+++ b/target/sparc/cpu.c
-@@ -924,17 +924,21 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
-     cc->tcg_ops = &sparc_tcg_ops;
+diff --git a/target/mips/cpu.c b/target/mips/cpu.c
+index a0023edd43..83ee54f766 100644
+--- a/target/mips/cpu.c
++++ b/target/mips/cpu.c
+@@ -595,17 +595,21 @@ static void mips_cpu_class_init(ObjectClass *c, void *data)
+ #endif /* CONFIG_TCG */
  }
  
--static const TypeInfo sparc_cpu_type_info = {
--    .name = TYPE_SPARC_CPU,
+-static const TypeInfo mips_cpu_type_info = {
+-    .name = TYPE_MIPS_CPU,
 -    .parent = TYPE_CPU,
--    .instance_size = sizeof(SPARCCPU),
--    .instance_align = __alignof(SPARCCPU),
--    .instance_init = sparc_cpu_initfn,
+-    .instance_size = sizeof(MIPSCPU),
+-    .instance_align = __alignof(MIPSCPU),
+-    .instance_init = mips_cpu_initfn,
 -    .abstract = true,
--    .class_size = sizeof(SPARCCPUClass),
--    .class_init = sparc_cpu_class_init,
-+static const TypeInfo sparc_cpu_types[] = {
+-    .class_size = sizeof(MIPSCPUClass),
+-    .class_init = mips_cpu_class_init,
++static const TypeInfo mips_cpu_types[] = {
 +    {
-+        .name           = TYPE_SPARC_CPU,
++        .name           = TYPE_MIPS_CPU,
 +        .parent         = TYPE_CPU,
-+        .instance_size  = sizeof(SPARCCPU),
-+        .instance_align = __alignof(SPARCCPU),
-+        .instance_init  = sparc_cpu_initfn,
++        .instance_size  = sizeof(MIPSCPU),
++        .instance_align = __alignof(MIPSCPU),
++        .instance_init  = mips_cpu_initfn,
 +        .abstract       = true,
-+        .class_size     = sizeof(SPARCCPUClass),
-+        .class_init     = sparc_cpu_class_init,
++        .class_size     = sizeof(MIPSCPUClass),
++        .class_init     = mips_cpu_class_init,
 +    }
  };
  
-+DEFINE_TYPES(sparc_cpu_types)
++DEFINE_TYPES(mips_cpu_types)
 +
- static void sparc_cpu_cpudef_class_init(ObjectClass *oc, void *data)
+ static void mips_cpu_cpudef_class_init(ObjectClass *oc, void *data)
  {
-     SPARCCPUClass *scc = SPARC_CPU_CLASS(oc);
-@@ -959,7 +963,6 @@ static void sparc_cpu_register_types(void)
+     MIPSCPUClass *mcc = MIPS_CPU_CLASS(oc);
+@@ -630,7 +634,6 @@ static void mips_cpu_register_types(void)
  {
      int i;
  
--    type_register_static(&sparc_cpu_type_info);
-     for (i = 0; i < ARRAY_SIZE(sparc_defs); i++) {
-         sparc_register_cpudef_type(&sparc_defs[i]);
+-    type_register_static(&mips_cpu_type_info);
+     for (i = 0; i < mips_defs_number; i++) {
+         mips_register_cpudef_type(&mips_defs[i]);
      }
 -- 
 2.41.0

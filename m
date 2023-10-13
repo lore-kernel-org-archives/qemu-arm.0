@@ -1,500 +1,706 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1330326ejc;
-        Fri, 13 Oct 2023 00:49:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEGC0NF7mhxbzDf4EQE2I7Isk4UokAl551esriVA8wjj0q8Kh+v/S6tCNeSWoS8B/kPo5fW
-X-Received: by 2002:a05:6214:2a4a:b0:66d:27ac:a595 with SMTP id jf10-20020a0562142a4a00b0066d27aca595mr969897qvb.23.1697183385694;
-        Fri, 13 Oct 2023 00:49:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183385; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1330359ejc;
+        Fri, 13 Oct 2023 00:49:50 -0700 (PDT)
+X-Received: by 2002:adf:ef91:0:b0:31f:f1f4:ca8b with SMTP id d17-20020adfef91000000b0031ff1f4ca8bmr20619153wro.40.1697183390571;
+        Fri, 13 Oct 2023 00:49:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183390; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hdxaj6KKOlFm3uLrJmVcMxnxtxjBQtmhfFxW4nTGVjiMc/4smakQZvw0fices2nQQD
-         13pxXti3defgFSJBoZuAsY0pmlkbZYTo8Dh/ezx4wx+TIMhTOKDoKH2Q8ffR/A3IuzrG
-         D7Blbq8Ckrrr/B6K1G9ZC9nX+kTO0X1dacRNxv5HTsITsD2/qSCb70WQlcb92+Kqkd/R
-         OqAedlDK6IUul0lZHpJpmR8MK7QHMFpi/2HpWMj3lYZ3j4DW0AyBlu1VK8diA43wt1Gx
-         R7Fy9JD8y1pIwfeEI7t8X1tWOCtPwvS/kwQwnYXDGS2Bxp3mOqu/ooWWQPjP/lX44VX8
-         5fCw==
+        b=UGjo0BliXIVJlxNjEniJMXXJJq7gaETix46LAXI7s69Okq/hwHpvcwww1AlQDlKHaQ
+         Io7+62lmxNiFNBThOorknT8ylUlaGtJLyfde0q1TGO1sTuIdIQ/LJvGjF4RXeJUq3bJI
+         iZAHAda50kizVsR4p9IAXzRAIEO5HTrwaXB5pawHqKhFmvKuCcDaTv4cnwi+XQPXyGnI
+         pVDFb1dbiWybO1LFVtAIuCD2hiyLLc217qLOJYBNQ12rNikveSc9sgwqWD2xLYZ0wgTw
+         3b9bN8Yj79JZ5FodV3k39Rpk3r4fHDTM0rZSepgsoMAR0u/MS1L0cSRuxe9Ram98hPf5
+         4MNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ZMWm7PYeA94VivoVKWT0oooHMlaYiSocgiFxO0wxv54=;
-        fh=+ZsZUTuyxoQ5ZtM1/3hdknpz4V7RB/CRpE4IdMKqcXk=;
-        b=p5J2ccOPSOeeQ3eIrLtQGY2xmXED3Kzm8ZhZk5OXyTUj1ukE67qoAcq4TPHWzvDFix
-         rF9bsqA54kQAfZPjwgIRI7fFxslCpZacVPGIw1MMkoDTyY+1BThFJ1lGA8xiBesmikmK
-         cYjAkxxNrKJo1ukTy/gz/FCnnCCmkBvW3UEEaiS+heZG+/9I9lKXaflZp1JeotMQphJF
-         zh7aYF7Th4BOU4VYjYRLI990LW2mDLJgKw7wHKURQdfdhIGWmy9lRReMWJEED6xhpOhG
-         uCVfUUkYAoDjSwcKG+bPrgM8MhjxfS32sBo/wwJ8br7F7qe7lkhjZcJ8k+oOJtQk6lIz
-         dIPA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7aeKq35mmTIUN+fGFa1jZeWofe0W3T+gZsntbEXTBh4=;
+        fh=833eazwMBQ/ecAkJe1Ne9GB+2E2aDQFyo8VMdUIwDP4=;
+        b=CcZJZPjhagSKhLPJT6uHaENphEdrsyAvhs4RA9h6MZZzy6+dVoEtrrjLNfJf7Hurxe
+         tTG7vaXUH+/9GxL0enArJe4XtIQQU85189ZhI0tTeGre/zYZhIPBtg05HCclE25hL8/G
+         gE16VgZcgVKOn/S0/pX52v42v5AfqS0sJTPsFdnjhEHkDV4no4VmjqoclPurT+drpPg7
+         z0WFpOkV9FL070AEto9rM2rtqnFtk8Dg9HZzstIhJLbLW1lhc+4f+dW1lOmwOxtAswKs
+         LNAxNMmyAuCUkgdoByKN10aILsxumnNdedLWCYRzZamnbqO05J4mZhJ3By3reLtUJBuI
+         8xlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QkyAmzX8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Y/Bb+9Dw";
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t11-20020a05620a450b00b00773c792bdcesi805021qkp.545.2023.10.13.00.49.45
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k13-20020adfb34d000000b0032d8bad6e2asor1309135wrd.0.2023.10.13.00.49.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:49:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 13 Oct 2023 00:49:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QkyAmzX8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="Y/Bb+9Dw";
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrCvP-000483-FH; Fri, 13 Oct 2023 03:49:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCvN-00047g-Qo
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:49:33 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCvL-000429-6G
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:49:33 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-32c9f2ce71aso1490027f8f.1
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:49:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183369; x=1697788169; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=ZMWm7PYeA94VivoVKWT0oooHMlaYiSocgiFxO0wxv54=;
- b=QkyAmzX8vNZygBKWvmRBpVmPwlIYbsvd/9h69hBNyDkqTtUBc4GupHlATyf6LD/Etn
- Ati9tODuC2oOuGlcAKPZ3WyhJr98uaF/0OubMl/7Qc/Z4ZI3Qz7uVjbGuRhnYr5WBepn
- 04HXbO04Z7CEwFrDlGTClpPzIlnmPSeNm6TKKsr8eFSim9zp4gwevxK4lCi9568rCoAJ
- 6PnaKkn9cM4ZFyqIX8uQD+ANJkCboME5iEBY5hDfwz7QYxOWukOaxtGn264J7fFzDwuL
- /Nyk9jUCDPI3OOYbEE9rPcv/jPk+8oLye5JwqVd8Mi+elBuw4g0yFfHQlRes5NGaorXl
- 865Q==
+        d=linaro.org; s=google; t=1697183390; x=1697788190; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7aeKq35mmTIUN+fGFa1jZeWofe0W3T+gZsntbEXTBh4=;
+        b=Y/Bb+9DwKMi3Z0zpsv0URTozMlkD7Gw1X/xinFl/U9bRHfEny7atub7d+ELHXwBais
+         VRC7A5nvOgPEDZ9SXrrm2nd4xq0Wy2wTKg5tQL1b1+TO/clzEyZkcdpmlN3grd+IUEVJ
+         2k5InnF/Zwv+3iFCZnW0IfisfVV1GUQwndwMDyqKsA3GHwguUIkI5IPq6qttUczrjNeV
+         poPBIOyG2H2CHXMJFY9zWAttz964jihlnBooO339lgnNObzve5XTLRZblx7tX8u0fUHh
+         90XcCTL0Ew1bmZUXFt3gF1tMZ//mP53lpCmENJGztNb9dTeWFNaUQYNRSN8BeXr1n4eh
+         X3Pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183369; x=1697788169;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ZMWm7PYeA94VivoVKWT0oooHMlaYiSocgiFxO0wxv54=;
- b=N2ndW2rqBHaE2anh+OEqw5fuhBHdnSfQvA6A/zmTKnaXg0WeRnyXo1zbt3WWMGI8EM
- 3jt5hssFmUGh+93GeXdXXsLHPIm3CmS3vSE3VIHWS/04ACn3/lDvf2UowacMu8CVESdF
- JIMySjdiShLPOeDilc55+K7y+N9yp0dN8wVNRSymqFxL720j0sN4zM2e68fsG1TqSmjf
- KQGnjlZ2Jq1g58hJDdO5RAN6+gjUu4cOawAYUgfkgsYP8hNrX3A+Re6Oowb2CO8FSPoU
- Gatk+H9ZXack5hDKgbgvcs/gehJgaVBW4D5ca6MgIL8RqeZPwkjXQyRS5WfgGJ9U02U7
- G3fw==
-X-Gm-Message-State: AOJu0YxKjmjTc87U3dTbR702I2nG8+uIhPJ2CuwwxM3dpHd35JeqhYuW
- xWe6IoV5MMG8lyn1R/BrKSXe8Q==
-X-Received: by 2002:a5d:4fcf:0:b0:31f:f99c:6013 with SMTP id
- h15-20020a5d4fcf000000b0031ff99c6013mr20885228wrw.61.1697183369326; 
- Fri, 13 Oct 2023 00:49:29 -0700 (PDT)
-Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
- [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.49.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:49:28 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1697183390; x=1697788190;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=7aeKq35mmTIUN+fGFa1jZeWofe0W3T+gZsntbEXTBh4=;
+        b=ICXREKqCVyOAsF5TF9RPbu+yIidXcqG+rUij6R3HEpXzejpgEE65r1oz69dM+SzZOk
+         7iYItXOtwo1Nzc/kfiq+kDfnZUAo+0qL4EDgAAv4q2F5eQMCDIB9eNUtl5KzlgqUaTy1
+         IGMtWsdYKk/TjLmvAIkO+4WEPU4FQm7h/E1rtsC6Hmbhn3YDPLOnZXBRBsHC1tqSknpI
+         ZrRHZpBIXBM9ORqQIcTKyCaWnU5WWRYXBVSjicd5lrGFOf49PNhJoAsqT8q55uU14FT5
+         vSq16xjbqXPe31e9Q0c6VSMc37S5aEb4x72JgW1z/ApKGoAf030qT4y8TnQ/WaK9nkf+
+         Buig==
+X-Gm-Message-State: AOJu0Yyk1wivYW7q8oT8uRkvNa8MwA6du/lLbyo1885j95KJfT3O3IE3
+	lsToXV6AxzR9mtXgQJ3iDuNTjl4E
+X-Google-Smtp-Source: AGHT+IFELsz3uCt0tiTm+VEqnfXz+EDHiO9BNF6vnJTsWChhcLiftpgY6NUn4jcUngww3YefDO7x3A==
+X-Received: by 2002:a05:6000:1cc:b0:32d:819c:5da6 with SMTP id t12-20020a05600001cc00b0032d819c5da6mr6967311wrx.21.1697183390123;
+        Fri, 13 Oct 2023 00:49:50 -0700 (PDT)
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr. [109.242.226.170])
+        by smtp.gmail.com with ESMTPSA id m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.49.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Oct 2023 00:49:49 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
-Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [RFC PATCH 00/78] Strict disable implicit fallthrough
-Date: Fri, 13 Oct 2023 10:47:04 +0300
-Message-Id: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
+Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RFC PATCH 03/78] fpu/softfloat: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:07 +0300
+Message-Id: <f329886becdeaa9a0b7cc2d19a02b3973266151b.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
+References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AEDrE4Y8JZjp
+X-TUID: EUelCwnF50Hp
 
-Hello,
+In preparation of raising -Wimplicit-fallthrough to 5, replace all
+fall-through comments with the fallthrough attribute pseudo-keyword.
 
-This RFC is inspired by the kernel's move to -Wimplicit-fallthrough=3
-back in 2019.[0]
-We take one step (or two) further by increasing it to 5 which rejects
-fall through comments and requires an attribute statement.
+Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
+---
+ fpu/softfloat-parts.c.inc | 8 ++++----
+ fpu/softfloat.c           | 7 ++++---
+ 2 files changed, 8 insertions(+), 7 deletions(-)
 
-[0]:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a035d552a93b
-
-The line differences are not many, but they spread all over different
-subsystems, architectures and devices. An attempt has been made to split
-them in cohesive patches to aid post-RFC review. Part of the RFC is to
-determine whether these patch divisions needs improvement.
-
-Main questions this RFC poses
-=============================
-
-- Is this change desirable and net-positive.
-- Should the `fallthrough;` pseudo-keyword be defined like in the Linux
-  kernel, or use glib's G_GNUC_FALLTHROUGH, or keep the already existing
-  QEMU_FALLTHROUGH macro.
-- Should fallthrough comments be removed if they do not include extra
-  information.
-
-Some external resources
-=======================
-
-See the RFC discussion in the kernel:
-
-https://lore.kernel.org/lkml/1d2830aadbe9d8151728a7df5b88528fc72a0095.1564549413.git.joe@perches.com/
-
-The `fallthrough;` pseudo-keyword in the kernel source code:
-
-https://elixir.bootlin.com/linux/latest/C/ident/fallthrough
-
-In summary, I quote the doc comment and definition:
-
-    /*
-     * Add the pseudo keyword 'fallthrough' so case statement blocks
-     * must end with any of these keywords:
-     *   break;
-     *   fallthrough;
-     *   continue;
-     *   goto <label>;
-     *   return [expression];
-     *
-     *  gcc: https://gcc.gnu.org/onlinedocs/gcc/Statement-Attributes.html#Statement-Attributes
-     */
-    #if __has_attribute(__fallthrough__)
-    # define fallthrough                    __attribute__((__fallthrough__))
-    #else
-    # define fallthrough                    do {} while (0)  /* fallthrough */
-    #endif
-
-Background - Motivation
-=======================
-
-The C switch statement allows you to conditionally goto different labels
-depending on a value. A break; statement conveniently goto's the end of
-the switch. If a "case" does not end in a break, we say that the control
-flow falls through the next case label, if any, implicitly. This can
-lead to bugs and QEMU uses the GCC warning -Wimplicit-fallthrough to
-prevent this.
-
-Currently, QEMU is built with -Wimplicit-fallthrough=2. This makes GCC's
-static analyzer check for a case-insensitive matches of the .*falls?[
-\t-]*thr(ough|u).* regular expression. This means the following list of
-comments taken from QEMU all disable the implicit fallthrough warning:
-
-- /* FALLTHRU */
-- /* fall through */
-- /* Fall through.  */
-- /* Fall through... */
-- /* fall through if hEventTimeout is signaled */
-- /* FALL THROUGH */
-
-To keep a constistent code style, this commit adds a macro `fallthrough`
-that looks like a C keyword but expands to an attribute statement in
-supported compilers (GCC at the moment).
-
-Note: there was already such a macro, QEMU_FALLTHROUGH, and it was used
-only around 7 times in the code base. The first commit replaces it.
-
-Emmanouil Pitsidianakis (78):
-  include/qemu/compiler.h: replace QEMU_FALLTHROUGH with fallthrough
-  block: add fallthrough pseudo-keyword
-  fpu/softfloat: add fallthrough pseudo-keyword
-  qapi/opts-visitor: add fallthrough pseudo-keyword
-  qobject/json: add fallthrough pseudo-keyword
-  tcg: add fallthrough pseudo-keyword
-  hw/virtio/virtio-balloon.c: add fallthrough pseudo-keyword
-  hw/block: add fallthrough pseudo-keyword
-  hw/acpi/aml-build.c: add fallthrough pseudo-keyword
-  hw/ide/atapi.c: add fallthrough pseudo-keyword
-  hw/timer: add fallthrough pseudo-keyword
-  hw/usb: add fallthrough pseudo-keyword
-  hw/adc: add fallthrough pseudo-keyword
-  util/error-report.c: add fallthrough pseudo-keyword
-  accel/tcg: add fallthrough pseudo-keyword
-  audio: add fallthrough pseudo-keyword
-  ui/sdl2.c: add fallthrough pseudo-keyword
-  ui/win32-kbd-hook.c: add fallthrough pseudo-keyword
-  target/hppa: add fallthrough pseudo-keyword
-  target/mips: add fallthrough pseudo-keyword
-  target/sparc: add fallthrough pseudo-keyword
-  target/ppc: add fallthrough pseudo-keyword
-  target/arm: add fallthrough pseudo-keyword
-  target/alpha: add fallthrough pseudo-keyword
-  target/i386: add fallthrough pseudo-keyword
-  target/s390x: add fallthrough pseudo-keyword
-  target/riscv: add fallthrough pseudo-keyword
-  target/avr: add fallthrough pseudo-keyword
-  target/cris: add fallthrough pseudo-keyword
-  target/nios2: add fallthrough pseudo-keyword
-  target/xtensa: add fallthrough pseudo-keyword
-  target/m68k: add fallthrough pseudo-keyword
-  target/rx: add fallthrough pseudo-keyword
-  target/tricore: add fallthrough pseudo-keyword
-  target/sh4: add fallthrough pseudo-keyword
-  target/openrisc: add fallthrough pseudo-keyword
-  target/hexagon: add fallthrough pseudo-keyword
-  system/rtc.c: add fallthrough pseudo-keyword
-  hw/scsi: add fallthrough pseudo-keyword
-  hw/sd/sdhci.c: add fallthrough pseudo-keyword
-  linux-user: add fallthrough pseudo-keyword
-  hw/i386: add fallthrough pseudo-keyword
-  hw/misc: add fallthrough pseudo-keyword
-  hw/m68k/mcf_intc.c: add fallthrough pseudo-keyword
-  hw/dma: add fallthrough pseudo-keyword
-  disas: add fallthrough pseudo-keyword
-  contrib/rdmacm-mux: add fallthrough pseudo-keyword
-  contrib/vhost-user-scsi: add fallthrough pseudo-keyword
-  hw/arm: add fallthrough pseudo-keyword
-  hw/audio: add fallthrough pseudo-keyword
-  chardev: add fallthrough pseudo-keyword
-  hw/char: add fallthrough pseudo-keyword
-  nbd: add fallthrough pseudo-keyword
-  hw/core: add fallthrough pseudo-keyword
-  hw/display: add fallthrough pseudo-keyword
-  hw/input: add fallthrough pseudo-keyword
-  hw/net: add fallthrough pseudo-keyword
-  hw/ppc: add fallthrough pseudo-keyword
-  hw/intc: add fallthrough pseudo-keyword
-  qga: add fallthrough pseudo-keyword
-  semihosting: add fallthrough pseudo-keyword
-  hw/gpio: add fallthrough pseudo-keyword
-  hw/ipmi: add fallthrough pseudo-keyword
-  hw/mips: add fallthrough pseudo-keyword
-  hw/nvme: add fallthrough pseudo-keyword
-  hw/nvram/eeprom_at24c.c: add fallthrough pseudo-keyword
-  hw/pci-host/pnv_phb3.c: add fallthrough pseudo-keyword
-  hw/pci: add fallthrough pseudo-keyword
-  hw/rdma/rdma_backend.c: add fallthrough pseudo-keyword
-  hw/rtc: add fallthrough pseudo-keyword
-  hw/s390x: add fallthrough pseudo-keyword
-  hw/ssi: add fallthrough pseudo-keyword
-  hw/watchdog/wdt_diag288.c: add fallthrough pseudo-keyword
-  hw/cxl/cxl-device-utils.c: add fallthrough pseudo-keyword
-  migration: add fallthrough pseudo-keyword
-  qemu-img.c: add fallthrough pseudo-keyword
-  tests/unit/test-char.c: add fallthrough pseudo-keyword
-  meson.build: increase -Wimplicit-fallthrough to 5
-
- accel/tcg/cputlb.c                          |  4 +-
- accel/tcg/ldst_atomicity.c.inc              |  2 +-
- accel/tcg/plugin-gen.c                      |  2 +-
- audio/audio.c                               | 16 ++--
- audio/jackaudio.c                           |  4 +-
- audio/pwaudio.c                             | 12 +--
- block/block-copy.c                          |  1 +
- block/file-posix.c                          |  1 +
- block/io.c                                  |  1 +
- block/iscsi.c                               |  1 +
- block/qcow2-cluster.c                       |  5 +-
- block/vhdx.c                                | 17 +++-
- chardev/char-socket.c                       |  2 +-
- contrib/rdmacm-mux/main.c                   | 10 +--
- contrib/vhost-user-scsi/vhost-user-scsi.c   |  3 +-
- disas/hppa.c                                |  4 +-
- disas/m68k.c                                |  2 +-
- disas/sh4.c                                 |  6 +-
- disas/sparc.c                               |  2 +-
- docs/devel/style.rst                        | 23 +++++
- fpu/softfloat-parts.c.inc                   |  8 +-
- fpu/softfloat.c                             |  7 +-
- hw/acpi/aml-build.c                         |  6 +-
- hw/adc/aspeed_adc.c                         | 12 +--
- hw/adc/zynq-xadc.c                          |  2 +-
- hw/arm/omap1.c                              |  8 +-
- hw/arm/pxa2xx.c                             |  6 +-
- hw/arm/smmuv3.c                             |  2 +-
- hw/arm/stellaris.c                          |  1 +
- hw/audio/asc.c                              |  2 +-
- hw/audio/cs4231a.c                          |  2 +-
- hw/audio/gusemu_hal.c                       |  2 +-
- hw/block/dataplane/xen-block.c              |  4 +-
- hw/block/m25p80.c                           |  2 +-
- hw/block/onenand.c                          |  2 +-
- hw/block/pflash_cfi01.c                     |  1 +
- hw/block/pflash_cfi02.c                     |  6 +-
- hw/char/nrf51_uart.c                        |  4 +-
- hw/core/loader.c                            |  2 +-
- hw/cxl/cxl-device-utils.c                   |  4 +-
- hw/display/cg3.c                            |  2 +-
- hw/display/cirrus_vga.c                     |  2 +-
- hw/display/tcx.c                            |  4 +-
- hw/dma/omap_dma.c                           | 32 +++----
- hw/dma/pxa2xx_dma.c                         |  4 +-
- hw/dma/sparc32_dma.c                        |  2 +-
- hw/gpio/omap_gpio.c                         |  2 +-
- hw/i2c/bitbang_i2c.c                        |  2 +-
- hw/i386/intel_iommu.c                       |  4 +-
- hw/i386/kvm/xen_evtchn.c                    |  2 +-
- hw/i386/x86.c                               |  2 +-
- hw/ide/atapi.c                              |  1 +
- hw/input/hid.c                              |  3 +-
- hw/input/tsc2005.c                          |  4 +-
- hw/input/tsc210x.c                          |  2 +-
- hw/intc/apic.c                              |  2 +-
- hw/intc/arm_gicv3_kvm.c                     | 16 ++--
- hw/intc/armv7m_nvic.c                       | 12 +--
- hw/intc/xilinx_intc.c                       |  2 +-
- hw/ipmi/ipmi_bmc_extern.c                   |  2 +-
- hw/ipmi/smbus_ipmi.c                        |  4 +-
- hw/m68k/mcf_intc.c                          |  2 +-
- hw/mips/boston.c                            | 12 +--
- hw/misc/a9scu.c                             |  2 +
- hw/misc/aspeed_scu.c                        |  2 +-
- hw/misc/bcm2835_property.c                  | 12 +--
- hw/misc/mos6522.c                           |  4 +-
- hw/net/cadence_gem.c                        |  4 +-
- hw/net/can/can_sja1000.c                    |  4 +-
- hw/net/igb_core.c                           |  2 +-
- hw/net/igbvf.c                              |  2 +-
- hw/net/imx_fec.c                            |  2 +-
- hw/net/net_rx_pkt.c                         |  2 +-
- hw/net/pcnet.c                              |  2 +-
- hw/net/rtl8139.c                            |  6 +-
- hw/net/xilinx_ethlite.c                     |  2 +-
- hw/nvme/ctrl.c                              | 24 +++---
- hw/nvme/dif.c                               |  4 +-
- hw/nvram/eeprom_at24c.c                     |  2 +-
- hw/pci-host/pnv_phb3.c                      |  2 +-
- hw/pci/pcie_aer.c                           |  3 +-
- hw/pci/pcie_doe.c                           |  2 +-
- hw/ppc/pnv_bmc.c                            |  2 +-
- hw/ppc/spapr_events.c                       |  1 +
- hw/rdma/rdma_backend.c                      |  2 +-
- hw/rtc/aspeed_rtc.c                         |  4 +-
- hw/rtc/mc146818rtc.c                        |  4 +-
- hw/s390x/ipl.c                              |  1 +
- hw/s390x/s390-pci-inst.c                    |  4 +-
- hw/s390x/sclp.c                             |  4 +-
- hw/scsi/esp.c                               |  2 +-
- hw/scsi/megasas.c                           |  2 +-
- hw/scsi/scsi-bus.c                          |  4 +-
- hw/scsi/scsi-disk.c                         |  2 +-
- hw/sd/sdhci.c                               |  8 +-
- hw/ssi/npcm7xx_fiu.c                        | 14 +--
- hw/ssi/omap_spi.c                           | 48 +++++------
- hw/timer/a9gtimer.c                         |  8 +-
- hw/timer/aspeed_timer.c                     |  1 +
- hw/timer/pxa2xx_timer.c                     | 94 ++++++++++-----------
- hw/timer/renesas_tmr.c                      |  2 +-
- hw/timer/sh_timer.c                         |  8 +-
- hw/usb/dev-mtp.c                            |  2 +-
- hw/usb/dev-wacom.c                          |  2 +-
- hw/usb/hcd-ehci.c                           |  4 +-
- hw/usb/hcd-xhci.c                           |  4 +-
- hw/usb/redirect.c                           |  4 +-
- hw/usb/tusb6010.c                           |  2 +-
- hw/virtio/virtio-balloon.c                  |  1 +
- hw/watchdog/wdt_diag288.c                   |  2 +-
- include/qemu/compiler.h                     | 30 +++++--
- include/qemu/osdep.h                        |  4 +-
- linux-user/mips/cpu_loop.c                  |  8 +-
- linux-user/mmap.c                           |  2 +-
- linux-user/syscall.c                        |  2 +-
- meson.build                                 |  2 +-
- migration/migration.c                       |  2 +-
- nbd/client.c                                |  4 +-
- nbd/common.c                                |  2 +-
- qapi/opts-visitor.c                         |  1 +
- qapi/string-input-visitor.c                 |  4 +-
- qemu-img.c                                  |  2 +-
- qemu-nbd.c                                  |  4 +-
- qga/main.c                                  |  2 +-
- qga/vss-win32/requester.cpp                 |  1 +
- qobject/json-lexer.c                        |  4 +-
- qobject/json-parser.c                       |  5 +-
- semihosting/arm-compat-semi.c               |  2 +-
- system/rtc.c                                |  2 +-
- target/alpha/helper.c                       |  6 +-
- target/alpha/translate.c                    |  4 +-
- target/arm/helper.c                         | 34 ++++----
- target/arm/ptw.c                            | 10 +--
- target/arm/tcg/psci.c                       |  2 +-
- target/arm/tcg/translate-a64.c              | 76 ++++++++---------
- target/arm/tcg/translate-m-nocp.c           |  2 +-
- target/arm/tcg/translate-vfp.c              |  2 +-
- target/arm/tcg/translate.c                  |  8 +-
- target/avr/translate.c                      |  4 +-
- target/cris/translate.c                     |  4 +-
- target/hexagon/idef-parser/parser-helpers.c |  5 +-
- target/hppa/translate.c                     | 10 +--
- target/i386/cpu.c                           |  2 +-
- target/i386/hvf/x86_decode.c                |  1 +
- target/i386/kvm/kvm.c                       |  4 +-
- target/i386/tcg/decode-new.c.inc            |  6 +-
- target/i386/tcg/emit.c.inc                  |  2 +-
- target/i386/tcg/translate.c                 | 11 +--
- target/loongarch/cpu.c                      |  4 +-
- target/loongarch/translate.c                |  2 +-
- target/m68k/op_helper.c                     |  3 +-
- target/m68k/translate.c                     | 10 +--
- target/mips/sysemu/physaddr.c               |  2 +-
- target/mips/tcg/micromips_translate.c.inc   |  4 +-
- target/mips/tcg/mips16e_translate.c.inc     | 30 +++----
- target/mips/tcg/mxu_translate.c             |  8 +-
- target/mips/tcg/nanomips_translate.c.inc    |  4 +-
- target/mips/tcg/op_helper.c                 |  2 +-
- target/mips/tcg/translate.c                 | 79 ++++++++---------
- target/nios2/helper.c                       |  6 +-
- target/nios2/translate.c                    |  2 +-
- target/openrisc/mmu.c                       |  2 +-
- target/openrisc/translate.c                 |  2 +-
- target/ppc/cpu_init.c                       |  8 +-
- target/ppc/excp_helper.c                    |  6 +-
- target/ppc/mmu-radix64.c                    |  6 +-
- target/ppc/mmu_common.c                     | 12 +--
- target/ppc/translate.c                      |  6 +-
- target/riscv/insn_trans/trans_rvi.c.inc     |  2 +-
- target/riscv/insn_trans/trans_rvzce.c.inc   | 22 ++---
- target/riscv/translate.c                    |  4 +-
- target/rx/translate.c                       |  2 +-
- target/s390x/cpu.c                          |  4 +-
- target/s390x/kvm/kvm.c                      |  2 +-
- target/s390x/mmu_helper.c                   |  6 +-
- target/s390x/tcg/translate.c                | 18 ++--
- target/s390x/tcg/translate_vx.c.inc         |  2 +-
- target/sh4/helper.c                         |  2 +-
- target/sparc/ldst_helper.c                  |  4 +-
- target/sparc/mmu_helper.c                   |  6 +-
- target/sparc/translate.c                    |  3 +-
- target/sparc/win_helper.c                   |  1 +
- target/tricore/translate.c                  |  4 +-
- target/xtensa/op_helper.c                   |  8 +-
- target/xtensa/translate.c                   |  2 +-
- tcg/aarch64/tcg-target.c.inc                | 15 +++-
- tcg/arm/tcg-target.c.inc                    |  5 +-
- tcg/i386/tcg-target.c.inc                   | 20 +++--
- tcg/loongarch64/tcg-target.c.inc            |  4 +-
- tcg/mips/tcg-target.c.inc                   |  8 +-
- tcg/optimize.c                              |  8 +-
- tcg/ppc/tcg-target.c.inc                    | 19 +++--
- tcg/riscv/tcg-target.c.inc                  |  5 +-
- tcg/s390x/tcg-target.c.inc                  |  8 +-
- tcg/tcg-op-gvec.c                           | 24 +++---
- tcg/tcg-op-ldst.c                           |  2 +-
- tcg/tcg.c                                   | 24 +++---
- tcg/tci.c                                   |  2 +-
- tcg/tci/tcg-target.c.inc                    |  2 +-
- tests/unit/test-char.c                      |  2 +-
- ui/sdl2.c                                   |  2 +-
- ui/win32-kbd-hook.c                         |  7 --
- util/error-report.c                         |  2 +-
- 203 files changed, 747 insertions(+), 618 deletions(-)
-
-
-base-commit: cea3ea670fe265421131aad90c36fbb87bc4d206
+diff --git a/fpu/softfloat-parts.c.inc b/fpu/softfloat-parts.c.inc
+index a44649f4f4..df64cc7a29 100644
+--- a/fpu/softfloat-parts.c.inc
++++ b/fpu/softfloat-parts.c.inc
+@@ -138,166 +138,166 @@ static void partsN(canonicalize)(FloatPartsN *p, float_status *status,
+ /*
+  * Round and uncanonicalize a floating-point number by parts. There
+  * are FRAC_SHIFT bits that may require rounding at the bottom of the
+  * fraction; these bits will be removed. The exponent will be biased
+  * by EXP_BIAS and must be bounded by [EXP_MAX-1, 0].
+  */
+ static void partsN(uncanon_normal)(FloatPartsN *p, float_status *s,
+                                    const FloatFmt *fmt)
+ {
+     const int exp_max = fmt->exp_max;
+     const int frac_shift = fmt->frac_shift;
+     const uint64_t round_mask = fmt->round_mask;
+     const uint64_t frac_lsb = round_mask + 1;
+     const uint64_t frac_lsbm1 = round_mask ^ (round_mask >> 1);
+     const uint64_t roundeven_mask = round_mask | frac_lsb;
+     uint64_t inc;
+     bool overflow_norm = false;
+     int exp, flags = 0;
+ 
+     switch (s->float_rounding_mode) {
+     case float_round_nearest_even:
+         if (N > 64 && frac_lsb == 0) {
+             inc = ((p->frac_hi & 1) || (p->frac_lo & round_mask) != frac_lsbm1
+                    ? frac_lsbm1 : 0);
+         } else {
+             inc = ((p->frac_lo & roundeven_mask) != frac_lsbm1
+                    ? frac_lsbm1 : 0);
+         }
+         break;
+     case float_round_ties_away:
+         inc = frac_lsbm1;
+         break;
+     case float_round_to_zero:
+         overflow_norm = true;
+         inc = 0;
+         break;
+     case float_round_up:
+         inc = p->sign ? 0 : round_mask;
+         overflow_norm = p->sign;
+         break;
+     case float_round_down:
+         inc = p->sign ? round_mask : 0;
+         overflow_norm = !p->sign;
+         break;
+     case float_round_to_odd:
+         overflow_norm = true;
+-        /* fall through */
++        fallthrough;
+     case float_round_to_odd_inf:
+         if (N > 64 && frac_lsb == 0) {
+             inc = p->frac_hi & 1 ? 0 : round_mask;
+         } else {
+             inc = p->frac_lo & frac_lsb ? 0 : round_mask;
+         }
+         break;
+     default:
+         g_assert_not_reached();
+     }
+ 
+     exp = p->exp + fmt->exp_bias;
+     if (likely(exp > 0)) {
+         if (p->frac_lo & round_mask) {
+             flags |= float_flag_inexact;
+             if (frac_addi(p, p, inc)) {
+                 frac_shr(p, 1);
+                 p->frac_hi |= DECOMPOSED_IMPLICIT_BIT;
+                 exp++;
+             }
+             p->frac_lo &= ~round_mask;
+         }
+ 
+         if (fmt->arm_althp) {
+             /* ARM Alt HP eschews Inf and NaN for a wider exponent.  */
+             if (unlikely(exp > exp_max)) {
+                 /* Overflow.  Return the maximum normal.  */
+                 flags = float_flag_invalid;
+                 exp = exp_max;
+                 frac_allones(p);
+                 p->frac_lo &= ~round_mask;
+             }
+         } else if (unlikely(exp >= exp_max)) {
+             flags |= float_flag_overflow;
+             if (s->rebias_overflow) {
+                 exp -= fmt->exp_re_bias;
+             } else if (overflow_norm) {
+                 flags |= float_flag_inexact;
+                 exp = exp_max - 1;
+                 frac_allones(p);
+                 p->frac_lo &= ~round_mask;
+             } else {
+                 flags |= float_flag_inexact;
+                 p->cls = float_class_inf;
+                 exp = exp_max;
+                 frac_clear(p);
+             }
+         }
+         frac_shr(p, frac_shift);
+     } else if (unlikely(s->rebias_underflow)) {
+         flags |= float_flag_underflow;
+         exp += fmt->exp_re_bias;
+         if (p->frac_lo & round_mask) {
+             flags |= float_flag_inexact;
+             if (frac_addi(p, p, inc)) {
+                 frac_shr(p, 1);
+                 p->frac_hi |= DECOMPOSED_IMPLICIT_BIT;
+                 exp++;
+             }
+             p->frac_lo &= ~round_mask;
+         }
+         frac_shr(p, frac_shift);
+     } else if (s->flush_to_zero) {
+         flags |= float_flag_output_denormal;
+         p->cls = float_class_zero;
+         exp = 0;
+         frac_clear(p);
+     } else {
+         bool is_tiny = s->tininess_before_rounding || exp < 0;
+ 
+         if (!is_tiny) {
+             FloatPartsN discard;
+             is_tiny = !frac_addi(&discard, p, inc);
+         }
+ 
+         frac_shrjam(p, !fmt->m68k_denormal - exp);
+ 
+         if (p->frac_lo & round_mask) {
+             /* Need to recompute round-to-even/round-to-odd. */
+             switch (s->float_rounding_mode) {
+             case float_round_nearest_even:
+                 if (N > 64 && frac_lsb == 0) {
+                     inc = ((p->frac_hi & 1) ||
+                            (p->frac_lo & round_mask) != frac_lsbm1
+                            ? frac_lsbm1 : 0);
+                 } else {
+                     inc = ((p->frac_lo & roundeven_mask) != frac_lsbm1
+                            ? frac_lsbm1 : 0);
+                 }
+                 break;
+             case float_round_to_odd:
+             case float_round_to_odd_inf:
+                 if (N > 64 && frac_lsb == 0) {
+                     inc = p->frac_hi & 1 ? 0 : round_mask;
+                 } else {
+                     inc = p->frac_lo & frac_lsb ? 0 : round_mask;
+                 }
+                 break;
+             default:
+                 break;
+             }
+             flags |= float_flag_inexact;
+             frac_addi(p, p, inc);
+             p->frac_lo &= ~round_mask;
+         }
+ 
+         exp = (p->frac_hi & DECOMPOSED_IMPLICIT_BIT) && !fmt->m68k_denormal;
+         frac_shr(p, frac_shift);
+ 
+         if (is_tiny && (flags & float_flag_inexact)) {
+             flags |= float_flag_underflow;
+         }
+         if (exp == 0 && frac_eqz(p)) {
+             p->cls = float_class_zero;
+         }
+     }
+     p->exp = exp;
+     float_raise(flags, s);
+ }
+@@ -1051,219 +1051,219 @@ static void partsN(round_to_int)(FloatPartsN *a, FloatRoundMode rmode,
+ /*
+  * Returns the result of converting the floating-point value `a' to
+  * the two's complement integer format. The conversion is performed
+  * according to the IEC/IEEE Standard for Binary Floating-Point
+  * Arithmetic---which means in particular that the conversion is
+  * rounded according to the current rounding mode. If `a' is a NaN,
+  * the largest positive integer is returned. Otherwise, if the
+  * conversion overflows, the largest integer with the same sign as `a'
+  * is returned.
+  */
+ static int64_t partsN(float_to_sint)(FloatPartsN *p, FloatRoundMode rmode,
+                                      int scale, int64_t min, int64_t max,
+                                      float_status *s)
+ {
+     int flags = 0;
+     uint64_t r;
+ 
+     switch (p->cls) {
+     case float_class_snan:
+         flags |= float_flag_invalid_snan;
+-        /* fall through */
++        fallthrough;
+     case float_class_qnan:
+         flags |= float_flag_invalid;
+         r = max;
+         break;
+ 
+     case float_class_inf:
+         flags = float_flag_invalid | float_flag_invalid_cvti;
+         r = p->sign ? min : max;
+         break;
+ 
+     case float_class_zero:
+         return 0;
+ 
+     case float_class_normal:
+         /* TODO: N - 2 is frac_size for rounding; could use input fmt. */
+         if (parts_round_to_int_normal(p, rmode, scale, N - 2)) {
+             flags = float_flag_inexact;
+         }
+ 
+         if (p->exp <= DECOMPOSED_BINARY_POINT) {
+             r = p->frac_hi >> (DECOMPOSED_BINARY_POINT - p->exp);
+         } else {
+             r = UINT64_MAX;
+         }
+         if (p->sign) {
+             if (r <= -(uint64_t)min) {
+                 r = -r;
+             } else {
+                 flags = float_flag_invalid | float_flag_invalid_cvti;
+                 r = min;
+             }
+         } else if (r > max) {
+             flags = float_flag_invalid | float_flag_invalid_cvti;
+             r = max;
+         }
+         break;
+ 
+     default:
+         g_assert_not_reached();
+     }
+ 
+     float_raise(flags, s);
+     return r;
+ }
+ 
+ /*
+  *  Returns the result of converting the floating-point value `a' to
+  *  the unsigned integer format. The conversion is performed according
+  *  to the IEC/IEEE Standard for Binary Floating-Point
+  *  Arithmetic---which means in particular that the conversion is
+  *  rounded according to the current rounding mode. If `a' is a NaN,
+  *  the largest unsigned integer is returned. Otherwise, if the
+  *  conversion overflows, the largest unsigned integer is returned. If
+  *  the 'a' is negative, the result is rounded and zero is returned;
+  *  values that do not round to zero will raise the inexact exception
+  *  flag.
+  */
+ static uint64_t partsN(float_to_uint)(FloatPartsN *p, FloatRoundMode rmode,
+                                       int scale, uint64_t max, float_status *s)
+ {
+     int flags = 0;
+     uint64_t r;
+ 
+     switch (p->cls) {
+     case float_class_snan:
+         flags |= float_flag_invalid_snan;
+-        /* fall through */
++        fallthrough;
+     case float_class_qnan:
+         flags |= float_flag_invalid;
+         r = max;
+         break;
+ 
+     case float_class_inf:
+         flags = float_flag_invalid | float_flag_invalid_cvti;
+         r = p->sign ? 0 : max;
+         break;
+ 
+     case float_class_zero:
+         return 0;
+ 
+     case float_class_normal:
+         /* TODO: N - 2 is frac_size for rounding; could use input fmt. */
+         if (parts_round_to_int_normal(p, rmode, scale, N - 2)) {
+             flags = float_flag_inexact;
+             if (p->cls == float_class_zero) {
+                 r = 0;
+                 break;
+             }
+         }
+ 
+         if (p->sign) {
+             flags = float_flag_invalid | float_flag_invalid_cvti;
+             r = 0;
+         } else if (p->exp > DECOMPOSED_BINARY_POINT) {
+             flags = float_flag_invalid | float_flag_invalid_cvti;
+             r = max;
+         } else {
+             r = p->frac_hi >> (DECOMPOSED_BINARY_POINT - p->exp);
+             if (r > max) {
+                 flags = float_flag_invalid | float_flag_invalid_cvti;
+                 r = max;
+             }
+         }
+         break;
+ 
+     default:
+         g_assert_not_reached();
+     }
+ 
+     float_raise(flags, s);
+     return r;
+ }
+ 
+ /*
+  * Like partsN(float_to_sint), except do not saturate the result.
+  * Instead, return the rounded unbounded precision two's compliment result,
+  * modulo 2**(bitsm1 + 1).
+  */
+ static int64_t partsN(float_to_sint_modulo)(FloatPartsN *p,
+                                             FloatRoundMode rmode,
+                                             int bitsm1, float_status *s)
+ {
+     int flags = 0;
+     uint64_t r;
+     bool overflow = false;
+ 
+     switch (p->cls) {
+     case float_class_snan:
+         flags |= float_flag_invalid_snan;
+-        /* fall through */
++        fallthrough;
+     case float_class_qnan:
+         flags |= float_flag_invalid;
+         r = 0;
+         break;
+ 
+     case float_class_inf:
+         overflow = true;
+         r = 0;
+         break;
+ 
+     case float_class_zero:
+         return 0;
+ 
+     case float_class_normal:
+         /* TODO: N - 2 is frac_size for rounding; could use input fmt. */
+         if (parts_round_to_int_normal(p, rmode, 0, N - 2)) {
+             flags = float_flag_inexact;
+         }
+ 
+         if (p->exp <= DECOMPOSED_BINARY_POINT) {
+             /*
+              * Because we rounded to integral, and exp < 64,
+              * we know frac_low is zero.
+              */
+             r = p->frac_hi >> (DECOMPOSED_BINARY_POINT - p->exp);
+             if (p->exp < bitsm1) {
+                 /* Result in range. */
+             } else if (p->exp == bitsm1) {
+                 /* The only in-range value is INT_MIN. */
+                 overflow = !p->sign || p->frac_hi != DECOMPOSED_IMPLICIT_BIT;
+             } else {
+                 overflow = true;
+             }
+         } else {
+             /* Overflow, but there might still be bits to return. */
+             int shl = p->exp - DECOMPOSED_BINARY_POINT;
+             if (shl < N) {
+                 frac_shl(p, shl);
+                 r = p->frac_hi;
+             } else {
+                 r = 0;
+             }
+             overflow = true;
+         }
+ 
+         if (p->sign) {
+             r = -r;
+         }
+         break;
+ 
+     default:
+         g_assert_not_reached();
+     }
+ 
+     if (overflow) {
+         flags = float_flag_invalid | float_flag_invalid_cvti;
+     }
+     float_raise(flags, s);
+     return r;
+ }
+ 
+ /*
+  * Integer to float conversions
+  *
+  * Returns the result of converting the two's complement integer `a'
+  * to the floating-point format. The conversion is performed according
+  * to the IEC/IEEE Standard for Binary Floating-Point Arithmetic.
+  */
+diff --git a/fpu/softfloat.c b/fpu/softfloat.c
+index 027a8e576d..e16e1896ee 100644
+--- a/fpu/softfloat.c
++++ b/fpu/softfloat.c
+@@ -1811,56 +1811,57 @@ static bool floatx80_unpack_canonical(FloatParts128 *p, floatx80 f,
+ static floatx80 floatx80_round_pack_canonical(FloatParts128 *p,
+                                               float_status *s)
+ {
+     const FloatFmt *fmt = &floatx80_params[s->floatx80_rounding_precision];
+     uint64_t frac;
+     int exp;
+ 
+     switch (p->cls) {
+     case float_class_normal:
+         if (s->floatx80_rounding_precision == floatx80_precision_x) {
+             parts_uncanon_normal(p, s, fmt);
+             frac = p->frac_hi;
+             exp = p->exp;
+         } else {
+             FloatParts64 p64;
+ 
+             p64.sign = p->sign;
+             p64.exp = p->exp;
+             frac_truncjam(&p64, p);
+             parts_uncanon_normal(&p64, s, fmt);
+             frac = p64.frac;
+             exp = p64.exp;
+         }
+         if (exp != fmt->exp_max) {
+             break;
+         }
+         /* rounded to inf -- fall through to set frac correctly */
++        fallthrough;
+ 
+     case float_class_inf:
+         /* x86 and m68k differ in the setting of the integer bit. */
+         frac = floatx80_infinity_low;
+         exp = fmt->exp_max;
+         break;
+ 
+     case float_class_zero:
+         frac = 0;
+         exp = 0;
+         break;
+ 
+     case float_class_snan:
+     case float_class_qnan:
+         /* NaNs have the integer bit set. */
+         frac = p->frac_hi | (1ull << 63);
+         exp = fmt->exp_max;
+         break;
+ 
+     default:
+         g_assert_not_reached();
+     }
+ 
+     return packFloatx80(p->sign, exp, frac);
+ }
+ 
+ /*
+  * Addition and subtraction
+  */
+@@ -2668,35 +2669,35 @@ floatx80 floatx80_mod(floatx80 a, floatx80 b, float_status *status)
+ static void parts_float_to_ahp(FloatParts64 *a, float_status *s)
+ {
+     switch (a->cls) {
+     case float_class_snan:
+         float_raise(float_flag_invalid_snan, s);
+-        /* fall through */
++        fallthrough;
+     case float_class_qnan:
+         /*
+          * There is no NaN in the destination format.  Raise Invalid
+          * and return a zero with the sign of the input NaN.
+          */
+         float_raise(float_flag_invalid, s);
+         a->cls = float_class_zero;
+         break;
+ 
+     case float_class_inf:
+         /*
+          * There is no Inf in the destination format.  Raise Invalid
+          * and return the maximum normal with the correct sign.
+          */
+         float_raise(float_flag_invalid, s);
+         a->cls = float_class_normal;
+         a->exp = float16_params_ahp.exp_max;
+         a->frac = MAKE_64BIT_MASK(float16_params_ahp.frac_shift,
+                                   float16_params_ahp.frac_size + 1);
+         break;
+ 
+     case float_class_normal:
+     case float_class_zero:
+         break;
+ 
+     default:
+         g_assert_not_reached();
+     }
+ }
+@@ -3190,53 +3191,53 @@ static int64_t float128_to_int64_scalbn(float128 a, FloatRoundMode rmode,
+ static Int128 float128_to_int128_scalbn(float128 a, FloatRoundMode rmode,
+                                         int scale, float_status *s)
+ {
+     int flags = 0;
+     Int128 r;
+     FloatParts128 p;
+ 
+     float128_unpack_canonical(&p, a, s);
+ 
+     switch (p.cls) {
+     case float_class_snan:
+         flags |= float_flag_invalid_snan;
+-        /* fall through */
++        fallthrough;
+     case float_class_qnan:
+         flags |= float_flag_invalid;
+         r = UINT128_MAX;
+         break;
+ 
+     case float_class_inf:
+         flags = float_flag_invalid | float_flag_invalid_cvti;
+         r = p.sign ? INT128_MIN : INT128_MAX;
+         break;
+ 
+     case float_class_zero:
+         return int128_zero();
+ 
+     case float_class_normal:
+         if (parts_round_to_int_normal(&p, rmode, scale, 128 - 2)) {
+             flags = float_flag_inexact;
+         }
+ 
+         if (p.exp < 127) {
+             int shift = 127 - p.exp;
+             r = int128_urshift(int128_make128(p.frac_lo, p.frac_hi), shift);
+             if (p.sign) {
+                 r = int128_neg(r);
+             }
+         } else if (p.exp == 127 && p.sign && p.frac_lo == 0 &&
+                    p.frac_hi == DECOMPOSED_IMPLICIT_BIT) {
+             r = INT128_MIN;
+         } else {
+             flags = float_flag_invalid | float_flag_invalid_cvti;
+             r = p.sign ? INT128_MIN : INT128_MAX;
+         }
+         break;
+ 
+     default:
+         g_assert_not_reached();
+     }
+ 
+     float_raise(flags, s);
+     return r;
+ }
+@@ -3617,54 +3618,54 @@ static uint64_t float128_to_uint64_scalbn(float128 a, FloatRoundMode rmode,
+ static Int128 float128_to_uint128_scalbn(float128 a, FloatRoundMode rmode,
+                                          int scale, float_status *s)
+ {
+     int flags = 0;
+     Int128 r;
+     FloatParts128 p;
+ 
+     float128_unpack_canonical(&p, a, s);
+ 
+     switch (p.cls) {
+     case float_class_snan:
+         flags |= float_flag_invalid_snan;
+-        /* fall through */
++        fallthrough;
+     case float_class_qnan:
+         flags |= float_flag_invalid;
+         r = UINT128_MAX;
+         break;
+ 
+     case float_class_inf:
+         flags = float_flag_invalid | float_flag_invalid_cvti;
+         r = p.sign ? int128_zero() : UINT128_MAX;
+         break;
+ 
+     case float_class_zero:
+         return int128_zero();
+ 
+     case float_class_normal:
+         if (parts_round_to_int_normal(&p, rmode, scale, 128 - 2)) {
+             flags = float_flag_inexact;
+             if (p.cls == float_class_zero) {
+                 r = int128_zero();
+                 break;
+             }
+         }
+ 
+         if (p.sign) {
+             flags = float_flag_invalid | float_flag_invalid_cvti;
+             r = int128_zero();
+         } else if (p.exp <= 127) {
+             int shift = 127 - p.exp;
+             r = int128_urshift(int128_make128(p.frac_lo, p.frac_hi), shift);
+         } else {
+             flags = float_flag_invalid | float_flag_invalid_cvti;
+             r = UINT128_MAX;
+         }
+         break;
+ 
+     default:
+         g_assert_not_reached();
+     }
+ 
+     float_raise(flags, s);
+     return r;
+ }
 -- 
 2.39.2
-

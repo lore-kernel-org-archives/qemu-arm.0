@@ -1,106 +1,105 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1297836ejc;
-        Thu, 12 Oct 2023 23:27:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFRZOR+G8OBIficYWR0DUZoWA6g6+XrQpw48XBgWb9MXKpj6ISVij0e1nKUOD9Rx/LXF1O9
-X-Received: by 2002:a05:622a:1388:b0:418:1194:42f2 with SMTP id o8-20020a05622a138800b00418119442f2mr31642869qtk.46.1697178437116;
-        Thu, 12 Oct 2023 23:27:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697178437; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1298303ejc;
+        Thu, 12 Oct 2023 23:28:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEWHT3ymYXItEDX5l9rYkHKdVXlWyoSmoOJKVeU867gC+qXMJire2oWCFjoYQWyMbbUFzUa
+X-Received: by 2002:ac8:5815:0:b0:411:f5c0:5db with SMTP id g21-20020ac85815000000b00411f5c005dbmr32788893qtg.26.1697178537020;
+        Thu, 12 Oct 2023 23:28:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697178537; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mg/06EQRWxjz2aX+6I6Pu99+dv+NtW8G4cnTKOHQ75EclRy0cLuJqkXd572V3aVI2j
-         43iZKDBo0tT4T+xb5us0hZU1OdUhhLWvrXMYmcmqSzZiUKQ/agG4WY/QO8FtFhmHQ5kS
-         DxreuNQ8cDpuOMzQeoOs8TOutGZlXne9ck4cLmHYXrfHTeeXiSeEeV6OLaJduHCORonc
-         w9YKmPj7uaAVBFfuHTuVpUTPaJgHR9cAMWBbc0NZdP/Y69Ql5l8kru/0NVVM6I48Xaoo
-         cskOQVHN7nS+HmxfxUsftoGpcwl+TL6Yl9i2tpJ0oeQb6ixXbLnB3nn/EVQt+BJ743g1
-         czZA==
+        b=K8O2KCEdTtfr7lQFqwPRTydkEXy9h9XqicWToDfW+DoVqMoZ29RPIKylaNEx/35mlG
+         2KqdxgF8NYYO0jbAv9zawL1tetN9jOMUbRoV3LuYSHWxrU1WIEUUTIYXscZAh4y+kqRb
+         yyVAy3WcR+ggomhp6x/N5138vwVCjKFGOGnEnSujCIiFT2RzvXOxppRPltKGXtU9htCd
+         WOGOeaFORoCL5eLH4fq5M7q2ieY9n2+wGWADgcFBKO1lso1mR7RwFNSMSJj/rebw1HWL
+         +rVId5qCVvU+sqvl9zd22mfEBgmIYqwaMkPyttew9ea9xVgspSAMDj0QW9FagC2nZm76
+         j0Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=f7HEKLNq8M2lvJCHLYhDjbmjEdtYnnAPMI10vX2ZiXo=;
+        bh=nS3c0yX6775ErUYiGM257OspaLSskQXdHZo+imQiXwM=;
         fh=gGZ8KC2O7OgwRBDPiLtlNf/Vfu8laUlcFY/sAMdpb+8=;
-        b=wS7Lsb7ymWbA90cknD6/+267U0QhAtwcHUS0CMBq992ABYXvnvkR4RRuuUQvL4T/dW
-         KK6mj1TKk4pieiHJc3rs67B8if1IelHa0Q13locbd8zSv9S1bizadxDBGMafjz5DOEsT
-         cih/BKNcOkOy8CpwI0KG1JHYwRCtBbVx85bkkWx1RjsffN9ARrxeh2EuP5+9tCmBg61o
-         AvNFM7O+4WYgUCMIDnLo3PwaLe5A8dQRdi/WGGWQSywkHmVCEnPYCFR3Z3egTU5X7Bif
-         lz+5EfyJFQDn/LCCb2aRNJL5HX3cALlAoWiayisERIK8IsrB2351F1BnZWxwiPH9xEbe
-         FDIw==
+        b=W23xchA3q+fpnLSK9DgX6LWzJj2JBIspzILG2dA2wVsuqp3buHBp5arW9WNcvPW/Zn
+         cd6g06WU0h8pRzaXcaT2DWCiXYT6O9bHkTpkWn+hZHlhTp0TOLoocJb6RY27il/woNIN
+         kKCE8yukwaltZdjg0ebXJ5RJnMWusHsugIqxfaaVYh4+E5fzfNR0ePjWVcb+Jw3ITXy+
+         epGqx93KWPY2CrQaK4UKQsjKYHSMqe4FnVMjYDdSUG2eHQU9GHRVsehB8hKZ+DqmZJ5C
+         FdW+fZny5Zo19JFIBSYZpK54g9X+/JjzwxA0yhoqDljvJilhVnh+GPgvqb63gQzdWqIB
+         LFWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=inql+OV6;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cA4gLwi5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 18-20020ac85952000000b004032cc7e439si724985qtz.471.2023.10.12.23.27.16
+        by mx.google.com with ESMTPS id p20-20020a05622a00d400b0041981d576b4si735777qtw.733.2023.10.12.23.28.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Oct 2023 23:27:17 -0700 (PDT)
+        Thu, 12 Oct 2023 23:28:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=inql+OV6;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cA4gLwi5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrBdV-0007ZV-4F; Fri, 13 Oct 2023 02:27:01 -0400
+	id 1qrBem-0000D1-J7; Fri, 13 Oct 2023 02:28:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qrBdT-0007XU-6o
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 02:26:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qrBed-0000A0-Mv
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 02:28:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qrBdO-0005NF-PL
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 02:26:58 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qrBec-0005li-Cu
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 02:28:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697178414;
+ s=mimecast20190719; t=1697178488;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=f7HEKLNq8M2lvJCHLYhDjbmjEdtYnnAPMI10vX2ZiXo=;
- b=inql+OV6SCXTF2xhvq5AkDQamXFzVzq0SnF/QYjj18m6HQ0V1/ZtHJ9sJOYrVD80Hk7g0E
- bBVBGGDsNzCN64rCO9RC5pEbQQhWOJ7dF3D1TfiMDZgKwPDBbb3mah2twh404Hgr4mW5s1
- QcNIELfJxFAgZ5vtXFavQYmg4HcMIoI=
-Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
- [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=nS3c0yX6775ErUYiGM257OspaLSskQXdHZo+imQiXwM=;
+ b=cA4gLwi5IObnSGyujVjNDX5VaYCrYCU+InmccpgJez0Q9zwRz45ZNbnK5r0OJHcS4dV3lG
+ coqSEIthBS4BZ8PFesVPTTfYTyfqvESIzBqJdkR2Q0A8qjLI/lRSE71R79shCj2Ry93e8E
+ 8fA4g7fpQgW7P8rlr/ZVJniToDao4/A=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-80-jEOSqQeLNYOqNGY5lIS_-w-1; Fri, 13 Oct 2023 02:26:52 -0400
-X-MC-Unique: jEOSqQeLNYOqNGY5lIS_-w-1
-Received: by mail-ed1-f69.google.com with SMTP id
- 4fb4d7f45d1cf-53db0df5b7cso1456682a12.1
- for <qemu-arm@nongnu.org>; Thu, 12 Oct 2023 23:26:52 -0700 (PDT)
+ us-mta-493-73s8CA5RPMORl-QmJd9quQ-1; Fri, 13 Oct 2023 02:27:52 -0400
+X-MC-Unique: 73s8CA5RPMORl-QmJd9quQ-1
+Received: by mail-ed1-f70.google.com with SMTP id
+ 4fb4d7f45d1cf-5346626c1c5so1506352a12.1
+ for <qemu-arm@nongnu.org>; Thu, 12 Oct 2023 23:27:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697178411; x=1697783211;
+ d=1e100.net; s=20230601; t=1697178471; x=1697783271;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=f7HEKLNq8M2lvJCHLYhDjbmjEdtYnnAPMI10vX2ZiXo=;
- b=I9QOuXGBsZMSNmJ+VPIVRrVsEDPm/gONvKlB0b4X6KrudeQ7ujJQDAS6fENjuu/ehU
- lExzyUmbKqr11bOTdofcYg7jTnmk8vUH+/zzVhUCWytcGvDNvXihn2vdHnPx1P8jnuLm
- 0QrLekqGYIyh5OPpGTLIiBnyO41fu6YiuUygXog4F96KakMgJsO2kXzANnedSMGfcfCs
- 1F0dGSIlLHr2UWd0hSwHtokPbv4LKpqyxOaHlTjJdsMmRM3l8EXd6f4aRhchA6I66PM+
- 30TFdKgQQ4jrNP7HMp/Q/PrPeIcUXqeHHvMVUCvLa3KeMQJlyPLviDZstcEYTMTNxtDU
- MSPA==
-X-Gm-Message-State: AOJu0YyeVB2b3fDkUsL0zUGj3x82mtBsLMDQAlhfQZL1s432MA+zuxpa
- I8GYbrvT7Db+RKiSOUxY3tNT9DIt6nAsLNWTBIw0V+Z4JabfAbtdsop/tnuajjzNELLieuXMW+z
- BiOfkbc8pP7xi
-X-Received: by 2002:a50:c302:0:b0:53d:e139:64a5 with SMTP id
- a2-20020a50c302000000b0053de13964a5mr6447301edb.27.1697178411652; 
- Thu, 12 Oct 2023 23:26:51 -0700 (PDT)
-X-Received: by 2002:a50:c302:0:b0:53d:e139:64a5 with SMTP id
- a2-20020a50c302000000b0053de13964a5mr6447281edb.27.1697178411381; 
- Thu, 12 Oct 2023 23:26:51 -0700 (PDT)
+ bh=nS3c0yX6775ErUYiGM257OspaLSskQXdHZo+imQiXwM=;
+ b=o7FviwIGdeMtjYGSOi7bugvUilcxl3IOZ4k6uxHb/FGCKWRVQvlif22VUXodYHtHIb
+ LfMDTLfo2Re+w3p2mFzelyyzZy4lb/4Kw5DLCXY4YpDdArYh3CiJ2MAi8uk/gZ+HHLWA
+ KbbKfrLPS8gM+CEl8W5WOyrcBsN5N8p/tay7TvxuLNYe/GjObmTR2GyEhqctjJZDu0Dc
+ H9vU4emkUdT7RfZLt3PipCdAHl6LVvO2QJYfLiMIcKOeKXJjjpVPqXVjsrTbKxa+h8ol
+ 6vvC4qkB3aBlzsPUrwn8FufZ/YH+vb4+Desc1G9UHLgXf3CpZ99/UUHPVGVy9NJUrbuW
+ yCYA==
+X-Gm-Message-State: AOJu0YzFJ15z84r6dvlMcxIsNWmU+WyXR7JuAejZRZj0kbl3tA56IcbH
+ NJ7N+cmr1H5T/hvqyei/tU0Q8zbQNoBZCTc9m1hVoVCY2mCSgFa1LnnO71Fa4bdF7Nq09VEo8by
+ T4jXaib50nAeC
+X-Received: by 2002:a05:6402:1608:b0:52b:c8d9:1d66 with SMTP id
+ f8-20020a056402160800b0052bc8d91d66mr18860814edv.42.1697178471069; 
+ Thu, 12 Oct 2023 23:27:51 -0700 (PDT)
+X-Received: by 2002:a05:6402:1608:b0:52b:c8d9:1d66 with SMTP id
+ f8-20020a056402160800b0052bc8d91d66mr18860796edv.42.1697178470807; 
+ Thu, 12 Oct 2023 23:27:50 -0700 (PDT)
 Received: from [192.168.0.5] (ip-109-43-176-176.web.vodafone.de.
  [109.43.176.176]) by smtp.gmail.com with ESMTPSA id
- i22-20020a50d756000000b0053dda7926fcsm2953926edj.60.2023.10.12.23.26.50
+ i22-20020a50d756000000b0053dda7926fcsm2953926edj.60.2023.10.12.23.27.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Oct 2023 23:26:51 -0700 (PDT)
-Message-ID: <51c9380c-e1aa-46e9-8d53-c88672edd270@redhat.com>
-Date: Fri, 13 Oct 2023 08:26:49 +0200
+ Thu, 12 Oct 2023 23:27:50 -0700 (PDT)
+Message-ID: <24ac3531-239a-4cc8-adea-3466a9f66cbd@redhat.com>
+Date: Fri, 13 Oct 2023 08:27:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/10] tests/aio-multithread: Clean up global variable
- shadowing
+Subject: Re: [PATCH 10/10] tests/coroutine: Clean up global variable shadowing
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Alberto Garcia <berto@igalia.com>,
@@ -110,7 +109,7 @@ Cc: qemu-arm@nongnu.org, Alberto Garcia <berto@igalia.com>,
  Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>,
  Tyrone Ting <kfting@nuvoton.com>, Markus Armbruster <armbru@redhat.com>
 References: <20231009100251.56019-1-philmd@linaro.org>
- <20231009100251.56019-10-philmd@linaro.org>
+ <20231009100251.56019-11-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -154,21 +153,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231009100251.56019-10-philmd@linaro.org>
+In-Reply-To: <20231009100251.56019-11-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -183,81 +182,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: k+1dcWluQKWI
+X-TUID: 588b9Yi+H4KS
 
 On 09/10/2023 12.02, Philippe Mathieu-Daudé wrote:
-> Rename the argument to avoid:
+> Rename the global variable to avoid:
 > 
->    tests/unit/test-aio-multithread.c:226:37: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->    static void test_multi_co_mutex(int threads, int seconds)
->                                        ^
->    tests/unit/test-aio-multithread.c:401:34: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
->    static void test_multi_mutex(int threads, int seconds)
->                                     ^
->    tests/unit/test-aio-multithread.c:24:18: note: previous declaration is here
->    static IOThread *threads[NUM_CONTEXTS];
->                     ^
+>    tests/unit/test-coroutine.c:430:11: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+>        bool *done = opaque;
+>              ^
+>    tests/unit/test-coroutine.c:438:10: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+>        bool done = false;
+>             ^
+>    tests/unit/test-coroutine.c:198:12: note: previous declaration is here
+>    static int done;
+>               ^
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   tests/unit/test-aio-multithread.c | 16 ++++++++--------
->   1 file changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/tests/unit/test-aio-multithread.c b/tests/unit/test-aio-multithread.c
-> index 08d4570ccb..d587f20667 100644
-> --- a/tests/unit/test-aio-multithread.c
-> +++ b/tests/unit/test-aio-multithread.c
-> @@ -223,7 +223,7 @@ static void coroutine_fn test_multi_co_mutex_entry(void *opaque)
->       qatomic_dec(&running);
->   }
->   
-> -static void test_multi_co_mutex(int threads, int seconds)
-> +static void test_multi_co_mutex(unsigned ctx_num, int seconds)
+>   tests/unit/test-coroutine.c | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 
-Why did you change the type of the variable? ... you should at least mention 
-this in the commit description.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
->   {
->       int i;
->   
-> @@ -233,9 +233,9 @@ static void test_multi_co_mutex(int threads, int seconds)
->       now_stopping = false;
->   
->       create_aio_contexts();
-> -    assert(threads <= NUM_CONTEXTS);
-> -    running = threads;
-> -    for (i = 0; i < threads; i++) {
-> +    assert(ctx_num <= NUM_CONTEXTS);
-> +    running = ctx_num;
-> +    for (i = 0; i < ctx_num; i++) {
->           Coroutine *co1 = qemu_coroutine_create(test_multi_co_mutex_entry, NULL);
->           aio_co_schedule(ctx[i], co1);
->       }
-> @@ -398,7 +398,7 @@ static void test_multi_mutex_entry(void *opaque)
->       qatomic_dec(&running);
->   }
->   
-> -static void test_multi_mutex(int threads, int seconds)
-> +static void test_multi_mutex(unsigned ctx_num, int seconds)
-
-dito.
-
-  Thomas
-
->   {
->       int i;
->   
-> @@ -408,9 +408,9 @@ static void test_multi_mutex(int threads, int seconds)
->       now_stopping = false;
->   
->       create_aio_contexts();
-> -    assert(threads <= NUM_CONTEXTS);
-> -    running = threads;
-> -    for (i = 0; i < threads; i++) {
-> +    assert(ctx_num <= NUM_CONTEXTS);
-> +    running = ctx_num;
-> +    for (i = 0; i < ctx_num; i++) {
->           Coroutine *co1 = qemu_coroutine_create(test_multi_mutex_entry, NULL);
->           aio_co_schedule(ctx[i], co1);
->       }
 

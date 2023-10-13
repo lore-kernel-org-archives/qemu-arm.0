@@ -1,256 +1,427 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1332094ejc;
-        Fri, 13 Oct 2023 00:54:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHdQPfdkaF/SATpDiqK9S9rQ2jWWpps2pM3xIoBp7QbUQfh4oVPIxiBiG9y/ixmo2cbQH/6
-X-Received: by 2002:a05:622a:1787:b0:410:9626:f0bf with SMTP id s7-20020a05622a178700b004109626f0bfmr29164620qtk.13.1697183690563;
-        Fri, 13 Oct 2023 00:54:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697183690; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1332340ejc;
+        Fri, 13 Oct 2023 00:55:30 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH5VtburVRqA+L8udBqj9xBq1Do1iVaUF9tuqHsNZVBgrQYHkF1WmwcJ/Luqey9UVUyNfce
+X-Received: by 2002:a05:620a:454a:b0:770:6854:fb7a with SMTP id u10-20020a05620a454a00b007706854fb7amr33649270qkp.17.1697183730183;
+        Fri, 13 Oct 2023 00:55:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697183730; cv=none;
         d=google.com; s=arc-20160816;
-        b=KeQByOrA5NuaDT5P/ilXpKhAHsn3evsLucLoouiZ66IrRbRUe8Yz9d/PnCof44E7wh
-         K334jX9ZrfRw/WwOwHNxnGp+dtsROAAyDGH/T2K4zzbttZLmTvw3Elair/I5ebYR3Y8k
-         QNOkTu6kOxopyWULKa/0p6jM6R5HRuOIinl2LubWZnswf3TQg/ClfkXbzTNecjxIgE4Y
-         qBHW8THQgeCSqoo+vAmZbZOvHj4MwmfcirLJWqOTGM7cGy64wyMjaj8QYzpm7mqi1Yv4
-         7e9e6D5SKgbb7GzxRVl36VyX6gfBszjm92yvPUkUkOIUjHakdK1iupgRv7SX7U8b2TVf
-         wKNA==
+        b=Vac0i/LtwId1LHOpHMQCKa6mMeQld2OZY9A/lzqILAtwLDAR+jiTXU2eCeH5bdygaK
+         5NuIovQQisTHY46ncV5GUB2z/LSUUUb9H8i0PugfJUZiPmOhNURyEj7MkB6LIEn8r7t2
+         bMQUFT99FtrbT7y0GCRKSSmLp0/Piss+UvlblwDb5IUD5WvO+5O6gxqfIMtC2f7hdM8F
+         Lm/jexUhMkjUJ5xq2H/2AG7Tw6DYh6LoeV/9fv0nNofaLgBBqabKUNW6437zTUBsJmqQ
+         wPnARwNJbNUIrB7mEMioj+umzWywfHOewovzOEedqI0QtRDKO0tzLT0++8OvssIJGkXT
+         kZUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=uM0E9ceeAMWbhoziwyQzC8KkJu+r5Wws3ZK6kx7zlsI=;
-        fh=HTaHvMYlzSHzsYZldX8VAQ+a1GKwVoOMI3UiiwLimq4=;
-        b=sCCcVdTiSXUW9qU1T0nthQvOfWyx6C6l/xHK8Iy2p+VVkC9IWYEQBV13qgSo5v3FOa
-         heLvLxiOLc6p3Z4tEDjqOHpG+D7grcvNSpaDhoU+P2MFtVPOpcVw/ZmsbiI7ZxzDTpr/
-         8XAVa5DEw3xGrOJ4FGf4Bh8VtICRpZnWF67U5x+yfk2XNZxb7cQzDO38+kYtsGvFGjas
-         bpFi+0UqOteqkAVg+RY64eM7Wtc+SKW96YLHxui+Fd0lfLaQoT/hqWnJE1vHzvEDpDi6
-         1Odci+r5HKidISpC6h+McK57mxkyQqrxqM2Ijl9R5l4eohcCFaglIctiBcJAc7SZsqA/
-         2e0A==
+        bh=ZZoxu2fQjlSrHAg6BVR82z3xBTX4HSZAJalvN6ykP5U=;
+        fh=NbdgpDufm2av4pZujfw5StR5THSJriZ8on6lPN27WIY=;
+        b=oupIk2iFahBBS97NtmWksanDHLkMK5l0LL9Qths9gEVyxhdE6FzIXfuQ/MH/TlCEAH
+         OHcIXwAd4J6mvcobJ8KZO3mDo56IFPwWZOl95UO4xEjnoUHxqmDaGJrzXqMefnPOf1QL
+         t0aQYzYnYMfZwmUNFAJdrpMiHTk5J+t/kePnrCJ1NRyiPoWI5FPNoUNkcJ6bM2H6l2sm
+         S/40KUelI+OuBa/T8V/MNBpVYwmukEHG4Tg49jcv8qXciDJGNL44SW8iMF4C50St3Nvb
+         rqxevAqHQxFcxuTYOoyK7Ia8fCTVmxpvsvRPkRJ9spwmqdE4WGIK2/KGuyOq7a6qDWdL
+         xxAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="w/bvPJ35";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=aMjila57;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v10-20020a05622a144a00b0041202f5992asi826384qtx.96.2023.10.13.00.54.50
+        by mx.google.com with ESMTPS id m18-20020ae9f212000000b00767185b2dfasi768640qkg.622.2023.10.13.00.55.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 00:54:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Oct 2023 00:55:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="w/bvPJ35";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=aMjila57;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qrCwR-0004xe-Ls; Fri, 13 Oct 2023 03:50:39 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qrCxd-0008DK-AQ; Fri, 13 Oct 2023 03:51:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwQ-0004w1-3h
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:38 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1qrCwv-00068S-R3
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:10 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qrCwD-0004WB-TZ
- for qemu-devel@nongnu.org; Fri, 13 Oct 2023 03:50:37 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-3296b49c546so1516066f8f.3
- for <qemu-devel@nongnu.org>; Fri, 13 Oct 2023 00:50:24 -0700 (PDT)
+ id 1qrCwg-0004sy-E0
+ for qemu-arm@nongnu.org; Fri, 13 Oct 2023 03:51:09 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4065f29e933so20978645e9.1
+ for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 00:50:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697183423; x=1697788223; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697183453; x=1697788253; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=uM0E9ceeAMWbhoziwyQzC8KkJu+r5Wws3ZK6kx7zlsI=;
- b=w/bvPJ35yI9w+7OsNGJMY0u9u473e9Z0MK/wEalC2Alq0BXPVPvUYWcZe3owQnTc6r
- IBu6WOtF0UqdPimG2os7IYilkUDgGfKKOBLLeKcRaDyW2BCgDZnAQvSDiuxff6cYv01N
- Ch4VIYwahEgBxmTTqGIRoGMpFupVMW0ihQO/NshlfAHmK2yyFP8WpzyorFUFfh6OtORm
- v/GnX/n/4AX0DYOFhKvhxdAWpTCOL2p2aMx+dGb/mZSzFQK0zABStZrej6pbIjPd1N6I
- EdWqj4NXoouU0nX6+R2DsMADt73RVgAAzO8WlquNKL+zAP2+Bq+PT5kpJ2Szlcmbw1Mi
- crAw==
+ bh=ZZoxu2fQjlSrHAg6BVR82z3xBTX4HSZAJalvN6ykP5U=;
+ b=aMjila57uCtfxHVQxEGRVKSHR8anZJGrqkZjuRTk6kNyGmQedNNMjJ+qTWkLQyqGYm
+ hYWhpzYNUeD/SdFGqliSAnuYupVBuus7iQY+PJRkyxddQ168D9NQxQjYlaPzY/IrLzk7
+ 3WqtXae7JEFlUZ3fDI2wsEu5A/TVgmSdsicbAXgK7+fjY5m4JYeLPQuAIkwbGrpOflu7
+ MdyzKMBUQy9P14my8nwdiTOrJdN2eK0tAU3tR7lCrXa9JVklOm6ltk4NUXEzBNCMlnun
+ MyaKMpITERVJ1E/khlpM2dBLDKpx8DVv7Ef/5xjx/mZODHNPNC13gx3IpdwBSsG2c2E2
+ slyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697183423; x=1697788223;
+ d=1e100.net; s=20230601; t=1697183453; x=1697788253;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=uM0E9ceeAMWbhoziwyQzC8KkJu+r5Wws3ZK6kx7zlsI=;
- b=PzuFttyAKasQdhkam+PqAIZGzi4Cw51vy6Lc+RtZLN5zFbjOpgot65QHJpnjB5C0ll
- Q5IzyaK5FtYCpv9p2MOKQZ3GiUnk11x8vwbkWbozVfkK7zN+zyQWyK882KWam4IWkyhm
- kO21VClEm0uuRdAyD0uPbD9ZKBB+LhNrohsMdcom6A/6432rSb1XxWbQrppN5FsyjM+q
- zNQRBFw2XhpB853iBLbGGKp/p7nkAsiZmBhswSt9GwFxMIFOwZqVb+r00swTVr0MRb4u
- KoDUFwcbeTzNVhYq3+/YZ9o/XbdeOSp1pTlI7G8uX6M1dSmNqRoCmJO5tZaxgPzJwa5K
- Un5Q==
-X-Gm-Message-State: AOJu0YzPup7M00h7jsYy7hyoRYt1HJEaCkrex9jN8fXPH7d+4KytowPX
- TfYlIjXZroVhagiw878erSgpwaq63e7PuxjeQiU=
-X-Received: by 2002:adf:eec5:0:b0:319:7134:a3cf with SMTP id
- a5-20020adfeec5000000b003197134a3cfmr23274764wrp.31.1697183422786; 
- Fri, 13 Oct 2023 00:50:22 -0700 (PDT)
+ bh=ZZoxu2fQjlSrHAg6BVR82z3xBTX4HSZAJalvN6ykP5U=;
+ b=hN2ckCE3enAzdOobqHppmSPl/oqWI7ADgAzug31YFYrqT7FzglOUmAjC0kbSTvjfjH
+ B4lXc3UFujaMWMXxhpg9rji5AHPgzVOE+rRp6JC1DVpJ9yjk6VaCPCP4smFcAGXR7G1Z
+ WiABeWmHST3uJXLH+gd7oOQiJZGVkWvQlFv8/eHbIbF4ZYgEm37Wp3zFmHXH5Rpjp5h4
+ gV1s7juhnwd7rHAGRceu3PJSVRfpNyAO0/MqAnAY2kSV2lwTvv39Pd+iMalTXbUY200x
+ aEXVLEyKjNxGkkJsdPJfXUghed9mCgf4Enoshz5mo+vCIt9dl83d/4/VG29zyQaqSk4g
+ TmCw==
+X-Gm-Message-State: AOJu0YwaNClXzB+Tzr54pmCxOXetoY+FbeKZleNP5FYFHIkh+cIiUNjD
+ 10P2bAOaUoOUfv49OZ5vpSwaHl9jKiA5sLGy9x8=
+X-Received: by 2002:adf:a41e:0:b0:32d:3e9d:fddf with SMTP id
+ d30-20020adfa41e000000b0032d3e9dfddfmr7888113wra.50.1697183453159; 
+ Fri, 13 Oct 2023 00:50:53 -0700 (PDT)
 Received: from localhost.localdomain (adsl-170.109.242.226.tellas.gr.
  [109.242.226.170]) by smtp.gmail.com with ESMTPSA id
- m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.21
+ m8-20020adfa3c8000000b0032d7fde2d3csm7990663wrb.79.2023.10.13.00.50.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Oct 2023 00:50:22 -0700 (PDT)
+ Fri, 13 Oct 2023 00:50:52 -0700 (PDT)
 From: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-block@nongnu.org
 Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [RFC PATCH 19/78] target/hppa: add fallthrough pseudo-keyword
-Date: Fri, 13 Oct 2023 10:47:23 +0300
-Message-Id: <f896b2cc935370ad4556d2d1019529f61caa3074.1697183082.git.manos.pitsidianakis@linaro.org>
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Subject: [RFC PATCH 34/78] target/tricore: add fallthrough pseudo-keyword
+Date: Fri, 13 Oct 2023 10:47:38 +0300
+Message-Id: <367c842370fcabd0d61ec69646d49ad120bf34f7.1697183082.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Zv8KbWqoL8YO
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LVo1U9G9DS8T
 
 In preparation of raising -Wimplicit-fallthrough to 5, replace all
 fall-through comments with the fallthrough attribute pseudo-keyword.
 
 Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- target/hppa/translate.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ target/tricore/translate.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target/hppa/translate.c b/target/hppa/translate.c
-index 9f3ba9f42f..1df81b0fa2 100644
---- a/target/hppa/translate.c
-+++ b/target/hppa/translate.c
-@@ -480,14 +480,14 @@ static DisasCond cond_make(TCGCond c, TCGv_reg a0, TCGv_reg a1)
- static void cond_free(DisasCond *cond)
+diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+index dd812ec0f0..4e42f06ec8 100644
+--- a/target/tricore/translate.c
++++ b/target/tricore/translate.c
+@@ -2899,259 +2899,259 @@ static void gen_fret(DisasContext *ctx)
+ static void gen_compute_branch(DisasContext *ctx, uint32_t opc, int r1,
+                                int r2 , int32_t constant , int32_t offset)
  {
-     switch (cond->c) {
-     default:
-         cond->a0 = NULL;
-         cond->a1 = NULL;
--        /* fallthru */
+     TCGv temp, temp2;
+     int n;
+ 
+     switch (opc) {
+ /* SB-format jumps */
+     case OPC1_16_SB_J:
+     case OPC1_32_B_J:
+         gen_goto_tb(ctx, 0, ctx->base.pc_next + offset * 2);
+         break;
+     case OPC1_32_B_CALL:
+     case OPC1_16_SB_CALL:
+         gen_helper_1arg(call, ctx->pc_succ_insn);
+         gen_goto_tb(ctx, 0, ctx->base.pc_next + offset * 2);
+         break;
+     case OPC1_16_SB_JZ:
+         gen_branch_condi(ctx, TCG_COND_EQ, cpu_gpr_d[15], 0, offset);
+         break;
+     case OPC1_16_SB_JNZ:
+         gen_branch_condi(ctx, TCG_COND_NE, cpu_gpr_d[15], 0, offset);
+         break;
+ /* SBC-format jumps */
+     case OPC1_16_SBC_JEQ:
+         gen_branch_condi(ctx, TCG_COND_EQ, cpu_gpr_d[15], constant, offset);
+         break;
+     case OPC1_16_SBC_JEQ2:
+         gen_branch_condi(ctx, TCG_COND_EQ, cpu_gpr_d[15], constant,
+                          offset + 16);
+         break;
+     case OPC1_16_SBC_JNE:
+         gen_branch_condi(ctx, TCG_COND_NE, cpu_gpr_d[15], constant, offset);
+         break;
+     case OPC1_16_SBC_JNE2:
+         gen_branch_condi(ctx, TCG_COND_NE, cpu_gpr_d[15],
+                          constant, offset + 16);
+         break;
+ /* SBRN-format jumps */
+     case OPC1_16_SBRN_JZ_T:
+         temp = tcg_temp_new();
+         tcg_gen_andi_tl(temp, cpu_gpr_d[15], 0x1u << constant);
+         gen_branch_condi(ctx, TCG_COND_EQ, temp, 0, offset);
+         break;
+     case OPC1_16_SBRN_JNZ_T:
+         temp = tcg_temp_new();
+         tcg_gen_andi_tl(temp, cpu_gpr_d[15], 0x1u << constant);
+         gen_branch_condi(ctx, TCG_COND_NE, temp, 0, offset);
+         break;
+ /* SBR-format jumps */
+     case OPC1_16_SBR_JEQ:
+         gen_branch_cond(ctx, TCG_COND_EQ, cpu_gpr_d[r1], cpu_gpr_d[15],
+                         offset);
+         break;
+     case OPC1_16_SBR_JEQ2:
+         gen_branch_cond(ctx, TCG_COND_EQ, cpu_gpr_d[r1], cpu_gpr_d[15],
+                         offset + 16);
+         break;
+     case OPC1_16_SBR_JNE:
+         gen_branch_cond(ctx, TCG_COND_NE, cpu_gpr_d[r1], cpu_gpr_d[15],
+                         offset);
+         break;
+     case OPC1_16_SBR_JNE2:
+         gen_branch_cond(ctx, TCG_COND_NE, cpu_gpr_d[r1], cpu_gpr_d[15],
+                         offset + 16);
+         break;
+     case OPC1_16_SBR_JNZ:
+         gen_branch_condi(ctx, TCG_COND_NE, cpu_gpr_d[r1], 0, offset);
+         break;
+     case OPC1_16_SBR_JNZ_A:
+         gen_branch_condi(ctx, TCG_COND_NE, cpu_gpr_a[r1], 0, offset);
+         break;
+     case OPC1_16_SBR_JGEZ:
+         gen_branch_condi(ctx, TCG_COND_GE, cpu_gpr_d[r1], 0, offset);
+         break;
+     case OPC1_16_SBR_JGTZ:
+         gen_branch_condi(ctx, TCG_COND_GT, cpu_gpr_d[r1], 0, offset);
+         break;
+     case OPC1_16_SBR_JLEZ:
+         gen_branch_condi(ctx, TCG_COND_LE, cpu_gpr_d[r1], 0, offset);
+         break;
+     case OPC1_16_SBR_JLTZ:
+         gen_branch_condi(ctx, TCG_COND_LT, cpu_gpr_d[r1], 0, offset);
+         break;
+     case OPC1_16_SBR_JZ:
+         gen_branch_condi(ctx, TCG_COND_EQ, cpu_gpr_d[r1], 0, offset);
+         break;
+     case OPC1_16_SBR_JZ_A:
+         gen_branch_condi(ctx, TCG_COND_EQ, cpu_gpr_a[r1], 0, offset);
+         break;
+     case OPC1_16_SBR_LOOP:
+         gen_loop(ctx, r1, offset * 2 - 32);
+         break;
+ /* SR-format jumps */
+     case OPC1_16_SR_JI:
+         tcg_gen_andi_tl(cpu_PC, cpu_gpr_a[r1], 0xfffffffe);
+         ctx->base.is_jmp = DISAS_EXIT;
+         break;
+     case OPC2_32_SYS_RET:
+     case OPC2_16_SR_RET:
+         gen_helper_ret(tcg_env);
+         ctx->base.is_jmp = DISAS_EXIT;
+         break;
+ /* B-format */
+     case OPC1_32_B_CALLA:
+         gen_helper_1arg(call, ctx->pc_succ_insn);
+         gen_goto_tb(ctx, 0, EA_B_ABSOLUT(offset));
+         break;
+     case OPC1_32_B_FCALL:
+         gen_fcall_save_ctx(ctx);
+         gen_goto_tb(ctx, 0, ctx->base.pc_next + offset * 2);
+         break;
+     case OPC1_32_B_FCALLA:
+         gen_fcall_save_ctx(ctx);
+         gen_goto_tb(ctx, 0, EA_B_ABSOLUT(offset));
+         break;
+     case OPC1_32_B_JLA:
+         tcg_gen_movi_tl(cpu_gpr_a[11], ctx->pc_succ_insn);
+-        /* fall through */
 +        fallthrough;
-     case TCG_COND_ALWAYS:
-         cond->c = TCG_COND_NEVER;
+     case OPC1_32_B_JA:
+         gen_goto_tb(ctx, 0, EA_B_ABSOLUT(offset));
          break;
-     case TCG_COND_NEVER:
+     case OPC1_32_B_JL:
+         tcg_gen_movi_tl(cpu_gpr_a[11], ctx->pc_succ_insn);
+         gen_goto_tb(ctx, 0, ctx->base.pc_next + offset * 2);
          break;
-     }
- }
-@@ -3831,65 +3831,65 @@ static bool trans_fcmp_d(DisasContext *ctx, arg_fclass2 *a)
- static bool trans_ftest(DisasContext *ctx, arg_ftest *a)
- {
-     TCGv_reg t;
- 
-     nullify_over(ctx);
- 
-     t = get_temp(ctx);
-     tcg_gen_ld32u_reg(t, tcg_env, offsetof(CPUHPPAState, fr0_shadow));
- 
-     if (a->y == 1) {
-         int mask;
-         bool inv = false;
- 
-         switch (a->c) {
-         case 0: /* simple */
-             tcg_gen_andi_reg(t, t, 0x4000000);
-             ctx->null_cond = cond_make_0(TCG_COND_NE, t);
-             goto done;
-         case 2: /* rej */
-             inv = true;
--            /* fallthru */
-+            fallthrough;
-         case 1: /* acc */
-             mask = 0x43ff800;
-             break;
-         case 6: /* rej8 */
-             inv = true;
--            /* fallthru */
-+            fallthrough;
-         case 5: /* acc8 */
-             mask = 0x43f8000;
-             break;
-         case 9: /* acc6 */
-             mask = 0x43e0000;
-             break;
-         case 13: /* acc4 */
-             mask = 0x4380000;
-             break;
-         case 17: /* acc2 */
-             mask = 0x4200000;
-             break;
-         default:
-             gen_illegal(ctx);
-             return true;
-         }
-         if (inv) {
-             TCGv_reg c = load_const(ctx, mask);
-             tcg_gen_or_reg(t, t, c);
-             ctx->null_cond = cond_make(TCG_COND_EQ, t, c);
+ /* BOL format */
+     case OPCM_32_BRC_EQ_NEQ:
+          if (MASK_OP_BRC_OP2(ctx->opcode) == OPC2_32_BRC_JEQ) {
+             gen_branch_condi(ctx, TCG_COND_EQ, cpu_gpr_d[r1], constant, offset);
+          } else {
+             gen_branch_condi(ctx, TCG_COND_NE, cpu_gpr_d[r1], constant, offset);
+          }
+          break;
+     case OPCM_32_BRC_GE:
+          if (MASK_OP_BRC_OP2(ctx->opcode) == OP2_32_BRC_JGE) {
+             gen_branch_condi(ctx, TCG_COND_GE, cpu_gpr_d[r1], constant, offset);
+          } else {
+             constant = MASK_OP_BRC_CONST4(ctx->opcode);
+             gen_branch_condi(ctx, TCG_COND_GEU, cpu_gpr_d[r1], constant,
+                              offset);
+          }
+          break;
+     case OPCM_32_BRC_JLT:
+          if (MASK_OP_BRC_OP2(ctx->opcode) == OPC2_32_BRC_JLT) {
+             gen_branch_condi(ctx, TCG_COND_LT, cpu_gpr_d[r1], constant, offset);
+          } else {
+             constant = MASK_OP_BRC_CONST4(ctx->opcode);
+             gen_branch_condi(ctx, TCG_COND_LTU, cpu_gpr_d[r1], constant,
+                              offset);
+          }
+          break;
+     case OPCM_32_BRC_JNE:
+         temp = tcg_temp_new();
+         if (MASK_OP_BRC_OP2(ctx->opcode) == OPC2_32_BRC_JNED) {
+             tcg_gen_mov_tl(temp, cpu_gpr_d[r1]);
+             /* subi is unconditional */
+             tcg_gen_subi_tl(cpu_gpr_d[r1], cpu_gpr_d[r1], 1);
+             gen_branch_condi(ctx, TCG_COND_NE, temp, constant, offset);
          } else {
-             tcg_gen_andi_reg(t, t, mask);
-             ctx->null_cond = cond_make_0(TCG_COND_EQ, t);
+             tcg_gen_mov_tl(temp, cpu_gpr_d[r1]);
+             /* addi is unconditional */
+             tcg_gen_addi_tl(cpu_gpr_d[r1], cpu_gpr_d[r1], 1);
+             gen_branch_condi(ctx, TCG_COND_NE, temp, constant, offset);
          }
-     } else {
-         unsigned cbit = (a->y ^ 1) - 1;
+         break;
+ /* BRN format */
+     case OPCM_32_BRN_JTT:
+         n = MASK_OP_BRN_N(ctx->opcode);
  
-         tcg_gen_extract_reg(t, t, 21 - cbit, 1);
-         ctx->null_cond = cond_make_0(TCG_COND_NE, t);
+         temp = tcg_temp_new();
+         tcg_gen_andi_tl(temp, cpu_gpr_d[r1], (1 << n));
+ 
+         if (MASK_OP_BRN_OP2(ctx->opcode) == OPC2_32_BRN_JNZ_T) {
+             gen_branch_condi(ctx, TCG_COND_NE, temp, 0, offset);
+         } else {
+             gen_branch_condi(ctx, TCG_COND_EQ, temp, 0, offset);
+         }
+         break;
+ /* BRR Format */
+     case OPCM_32_BRR_EQ_NEQ:
+         if (MASK_OP_BRR_OP2(ctx->opcode) == OPC2_32_BRR_JEQ) {
+             gen_branch_cond(ctx, TCG_COND_EQ, cpu_gpr_d[r1], cpu_gpr_d[r2],
+                             offset);
+         } else {
+             gen_branch_cond(ctx, TCG_COND_NE, cpu_gpr_d[r1], cpu_gpr_d[r2],
+                             offset);
+         }
+         break;
+     case OPCM_32_BRR_ADDR_EQ_NEQ:
+         if (MASK_OP_BRR_OP2(ctx->opcode) == OPC2_32_BRR_JEQ_A) {
+             gen_branch_cond(ctx, TCG_COND_EQ, cpu_gpr_a[r1], cpu_gpr_a[r2],
+                             offset);
+         } else {
+             gen_branch_cond(ctx, TCG_COND_NE, cpu_gpr_a[r1], cpu_gpr_a[r2],
+                             offset);
+         }
+         break;
+     case OPCM_32_BRR_GE:
+         if (MASK_OP_BRR_OP2(ctx->opcode) == OPC2_32_BRR_JGE) {
+             gen_branch_cond(ctx, TCG_COND_GE, cpu_gpr_d[r1], cpu_gpr_d[r2],
+                             offset);
+         } else {
+             gen_branch_cond(ctx, TCG_COND_GEU, cpu_gpr_d[r1], cpu_gpr_d[r2],
+                             offset);
+         }
+         break;
+     case OPCM_32_BRR_JLT:
+         if (MASK_OP_BRR_OP2(ctx->opcode) == OPC2_32_BRR_JLT) {
+             gen_branch_cond(ctx, TCG_COND_LT, cpu_gpr_d[r1], cpu_gpr_d[r2],
+                             offset);
+         } else {
+             gen_branch_cond(ctx, TCG_COND_LTU, cpu_gpr_d[r1], cpu_gpr_d[r2],
+                             offset);
+         }
+         break;
+     case OPCM_32_BRR_LOOP:
+         if (MASK_OP_BRR_OP2(ctx->opcode) == OPC2_32_BRR_LOOP) {
+             gen_loop(ctx, r2, offset * 2);
+         } else {
+             /* OPC2_32_BRR_LOOPU */
+             gen_goto_tb(ctx, 0, ctx->base.pc_next + offset * 2);
+         }
+         break;
+     case OPCM_32_BRR_JNE:
+         temp = tcg_temp_new();
+         temp2 = tcg_temp_new();
+         if (MASK_OP_BRC_OP2(ctx->opcode) == OPC2_32_BRR_JNED) {
+             tcg_gen_mov_tl(temp, cpu_gpr_d[r1]);
+             /* also save r2, in case of r1 == r2, so r2 is not decremented */
+             tcg_gen_mov_tl(temp2, cpu_gpr_d[r2]);
+             /* subi is unconditional */
+             tcg_gen_subi_tl(cpu_gpr_d[r1], cpu_gpr_d[r1], 1);
+             gen_branch_cond(ctx, TCG_COND_NE, temp, temp2, offset);
+         } else {
+             tcg_gen_mov_tl(temp, cpu_gpr_d[r1]);
+             /* also save r2, in case of r1 == r2, so r2 is not decremented */
+             tcg_gen_mov_tl(temp2, cpu_gpr_d[r2]);
+             /* addi is unconditional */
+             tcg_gen_addi_tl(cpu_gpr_d[r1], cpu_gpr_d[r1], 1);
+             gen_branch_cond(ctx, TCG_COND_NE, temp, temp2, offset);
+         }
+         break;
+     case OPCM_32_BRR_JNZ:
+         if (MASK_OP_BRR_OP2(ctx->opcode) == OPC2_32_BRR_JNZ_A) {
+             gen_branch_condi(ctx, TCG_COND_NE, cpu_gpr_a[r1], 0, offset);
+         } else {
+             gen_branch_condi(ctx, TCG_COND_EQ, cpu_gpr_a[r1], 0, offset);
+         }
+         break;
+     default:
+         generate_trap(ctx, TRAPC_INSN_ERR, TIN2_IOPC);
      }
- 
-  done:
-     return nullify_end(ctx);
  }
+ 
  
  /*
-  * Float class 2
+  * Functions for decoding instructions
   */
-@@ -4219,28 +4219,28 @@ static void hppa_tr_translate_insn(DisasContextBase *dcbase, CPUState *cs)
- static void hppa_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+@@ -8445,23 +8445,23 @@ static void tricore_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+ static void tricore_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
  {
      DisasContext *ctx = container_of(dcbase, DisasContext, base);
-     DisasJumpType is_jmp = ctx->base.is_jmp;
  
-     switch (is_jmp) {
-     case DISAS_NORETURN:
-         break;
+     switch (ctx->base.is_jmp) {
      case DISAS_TOO_MANY:
-     case DISAS_IAQ_N_STALE:
-     case DISAS_IAQ_N_STALE_EXIT:
-         copy_iaoq_entry(cpu_iaoq_f, ctx->iaoq_f, cpu_iaoq_f);
-         copy_iaoq_entry(cpu_iaoq_b, ctx->iaoq_b, cpu_iaoq_b);
-         nullify_save(ctx);
--        /* FALLTHRU */
-+        fallthrough;
-     case DISAS_IAQ_N_UPDATED:
-         if (is_jmp != DISAS_IAQ_N_STALE_EXIT) {
-             tcg_gen_lookup_and_goto_ptr();
-             break;
-         }
--        /* FALLTHRU */
+         gen_goto_tb(ctx, 0, ctx->base.pc_next);
+         break;
+     case DISAS_EXIT_UPDATE:
+         gen_save_pc(ctx->base.pc_next);
+-        /* fall through */
 +        fallthrough;
      case DISAS_EXIT:
          tcg_gen_exit_tb(NULL, 0);
+         break;
+     case DISAS_JUMP:
+         tcg_gen_lookup_and_goto_ptr();
+         break;
+     case DISAS_NORETURN:
          break;
      default:
          g_assert_not_reached();

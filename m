@@ -1,213 +1,160 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1810437ejc;
-        Fri, 13 Oct 2023 15:28:11 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH+F7JatscwzPuHAIVPJBWr5C+GR8CcfMcaXC4TEDVzluHeVfUcaz/goceq29EQUi1g1hV/
-X-Received: by 2002:a05:6214:528a:b0:66d:f91:fa33 with SMTP id kj10-20020a056214528a00b0066d0f91fa33mr8277134qvb.29.1697236091439;
-        Fri, 13 Oct 2023 15:28:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697236091; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp1959326ejc;
+        Fri, 13 Oct 2023 23:40:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IECIuoRALZjYvtzLRm8JtfRBys+BDrIHtOK/cBfRmo6DuemnCWCw6DSnT4cRXPpQYw2Kzy7
+X-Received: by 2002:a7b:c84d:0:b0:3fa:934c:8356 with SMTP id c13-20020a7bc84d000000b003fa934c8356mr26276372wml.10.1697265634080;
+        Fri, 13 Oct 2023 23:40:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697265634; cv=none;
         d=google.com; s=arc-20160816;
-        b=xoHwEZAFOSd17ILVpBR+scNx/QWw2rYQWBDxlhdLbaRtZUjDsBLoTB2N03HeLA0gW3
-         nqgoU6n5k7hn+tmOTE9VoQcVXstsgSG4PzdkhjjfHCPOVpaRR9H7a/QNbIMx/hYb9VU+
-         gjrQL3Ng9NxFRrzTWjgPneDMX17YcixkhzQnbtmlh/OMxr+r5axQ1O3cQeG4ulkeIHln
-         OP6akLo6O5z4sEC5M3lFyU91P/rR3mhsCO2XoikqRkP6LhP13MhB37MdWEKx0wD9/zH6
-         kkVpaqusKOplHcQkDrCHlN17do63dNg1KRx62AsrPu3peTRpdf/NUu3CcWuWl2F7AWUX
-         fI5A==
+        b=qY+7njncuVNkQJTwpZZPJedLweTpO4vE4Ni7cJcQnlss/9dyrtUjYPwqa7oCnpAJdU
+         cOysTa/wbUSoGzNdctG67klLF+y2+PlzAPUb0i3Vvw6SiQoTi6oWYLuB4+3OC74O4yLq
+         sa1l5xKMAxS5XDdhXvtl4pH5ssk14qLk8PR58CKgjjZukjMzuFBVFwh7yLGfXjVpewem
+         96pJcC+ySnEyN0mNdkJw+XrNcBPpHva+lgOI/HE2X62WK4m9H/szIRyIDm+OGyKIAyYY
+         fG6/V29g6Gey8TZ9Z5dFwf1aSiFPHLCsBo8xfBVVOMjIUeM6x8NjL3tEVTXma8AzPwVL
+         pA3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=FbzJ4p59VknbHdZo5j906NmNiX8r+Ge50Ay/6i/dIjg=;
-        fh=WqFkrZKGvMj0jGEvOALcjVPt/SUTOjrHROxU/nT+zJg=;
-        b=FbytqNR58FMsgNIwnQ+IIuk/cMJnK4PukAVk/Ia9vV0TWsfVI9KwSghXS6JHAeOqHS
-         NMW4JmJaADShAAe8MXHGXkurMpqqa7p1HfnYj15n1+QhiLi6gl/LgNJKsdme1DrAI2g/
-         coUfKMY9kCAZCyrG2B6C0MEVh8X0ps600/H3M7TZ+Gy/Vzle7VXEb3CFCWnu6E6aUTE7
-         Wms5rkocs+caxVKAC0zGTpbri2Y2Uuot2/iieR2bJcYYD+TzcghZKDz3S2JqTIfO++lu
-         TtjICG+MmVrRmdRmtEzMfOP5uoG4LcFpfpq90Yfi7oQ+KgqT+mQF4t/eB8valoooceci
-         pZSA==
+        h=subject:content-transfer-encoding:in-reply-to:autocrypt:from
+         :references:cc:to:content-language:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=KjpvjkumV3l1qDGzg5tyVYtOVwdF1r3RIOwBPvPoK88=;
+        fh=eW2+F9ZvKsknV67VW5alAcNyjpnlxqM8mNyU+cNCcfg=;
+        b=wBS/GG0qzcc8OSXzfg1KK0JWGFe9HAeHkzGThCawW0sJJWXIyg3yv3LT2JM5JE6qto
+         GOav92imPuFf02OVQTmr6JYGv1D0mNSnUL93jU8o6b0mwiMTyq2xq+9MEWG74QStGxcg
+         L4Qm3XoHeDu09P+51D+4xO8ae4gO016vfWTlbfLlJzuiGciX1gejhsQ2l1LKJdTyJ1ec
+         U1f26dDKZIFSphJlow8eji7gaEntAGPXTonDg738KS+aATUsQn4kBl4JBUZHyQO339XM
+         7g3ky/ttcnttrh0IzTJDvfFk0gAOpv1qWruYfl3wBnRVTo7oMi5NweMNt755f8WQlSVV
+         8DAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W+LLWnnR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m2-20020a05620a24c200b00773c43e5e5dsi1989973qkn.651.2023.10.13.15.28.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Oct 2023 15:28:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b=Cz8rZ3gG;
+       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <mark.cave-ayland@ilande.co.uk>
+Received: from mail.ilande.co.uk (mail.ilande.co.uk. [2001:41c9:1:41f::167])
+        by mx.google.com with ESMTPS id j8-20020adff548000000b0031c8c9361easi9340236wrp.1063.2023.10.13.23.40.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Oct 2023 23:40:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) client-ip=2001:41c9:1:41f::167;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W+LLWnnR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qrQdH-0006e7-El; Fri, 13 Oct 2023 18:27:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qrQdG-0006dx-C0
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 18:27:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1qrQdE-0002Bp-Ub
- for qemu-arm@nongnu.org; Fri, 13 Oct 2023 18:27:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697236064;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FbzJ4p59VknbHdZo5j906NmNiX8r+Ge50Ay/6i/dIjg=;
- b=W+LLWnnRpMqyVBzcgNG07JCj8WgQngTzFXhAaQrj9KYSmNsvUqCb2S2sfUOIbVYi0C5+pf
- 7PyhceHkIdZ/Y8n0v90xEji9YC5hk+eMkxXhuNyF1xpS9xvvcWc6CH8U9XUppXSKtsc84l
- wCzHQjcS6dgrfpNpipYGAdDprUQWe8s=
-Received: from mail-oa1-f70.google.com (mail-oa1-f70.google.com
- [209.85.160.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-70-bQDUfonIN7q9xvgmIPPHpg-1; Fri, 13 Oct 2023 18:27:37 -0400
-X-MC-Unique: bQDUfonIN7q9xvgmIPPHpg-1
-Received: by mail-oa1-f70.google.com with SMTP id
- 586e51a60fabf-1e170528d43so3166872fac.1
- for <qemu-arm@nongnu.org>; Fri, 13 Oct 2023 15:27:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697236057; x=1697840857;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=FbzJ4p59VknbHdZo5j906NmNiX8r+Ge50Ay/6i/dIjg=;
- b=fT09DeAWkmhvIXunZkkeuWXsd+15YlmtJUyI4uA89/NSH5HXPmbjK48wne076z+7St
- Ffc8QAqocx8RBGH04m9B/CAjl4Pu1PiaqbB3BLKKA3cyd5MhZC1wo4v7p3ft4maFNI3R
- 4mGd0TD+pk+CL1gq0uoL8nxzkxctYvM52owiVuQS7FIJgDCzB6TLgpoqXCTT+bE7d6Ru
- 8ODu0sS9AV47kPnDEJBuMFl4LaVJNu+4r8Z+NZO7965mhv1fCFr5oknyzdsGq3jOHpJi
- mFDSlibJwN759ZRlBXh1Hsy02LoLSaVq5qv7G34c9aoh7Fvj/knLNJ/k7mBHZUKwqM2V
- Y8JA==
-X-Gm-Message-State: AOJu0YyDoIpdyl1vvC8XZYIGlogTjqdPy3V/Sl+FkvAp56ZUGtkOPzd6
- uqAj9OTEJ0D0GWAFYdQON10BfAXPCEe9p2tF6txzdZOVNkC2nt3AkMYFeayZJ3gZwPt4yFCOhHu
- 0PDCv3/8JKjOXBjA6zu/HdK0cEjTW
-X-Received: by 2002:a05:6870:2381:b0:1bb:99fe:6ad1 with SMTP id
- e1-20020a056870238100b001bb99fe6ad1mr33847662oap.6.1697236056821; 
- Fri, 13 Oct 2023 15:27:36 -0700 (PDT)
-X-Received: by 2002:a05:6870:2381:b0:1bb:99fe:6ad1 with SMTP id
- e1-20020a056870238100b001bb99fe6ad1mr33847644oap.6.1697236056513; Fri, 13 Oct
- 2023 15:27:36 -0700 (PDT)
+       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b=Cz8rZ3gG;
+       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=KjpvjkumV3l1qDGzg5tyVYtOVwdF1r3RIOwBPvPoK88=; b=Cz8rZ3gGY+gJ/dtAANLC4WuMe7
+	d9jOqNMrUraG4O/iPm2gff6R2sfZG+sJQoqJI8Y+Pdb1DtA81xCbGYg6ls50iXAEuBkzWruH/0uRL
+	Yy+qIQvCqmzqKeM7z3s0DA/2nBTFd6A3UiiaxB0y3FjJoElDpMdSNjDTeMRoRNtfev9bcsD1bRRMp
+	PgMvufnEXkt5ddpnZ6HJZYHurV1EhjmP4pNTi6lDP6jbiF78jE+IZnuec13vlrukURCCK28j1IHpe
+	PfdI5VtL+FqtfBCOyRPvM9xrH5lgubgyu8PEdyohmfIRf5MPCQFDRkAyzxCh4mmGy/l11HVd1xawu
+	36bWKJ/3GlAiBtIJAGGDOpbNYTlEbXN4Rc/Suppc/KnO/IRY1JVcZsb7Umb85+bSYS3lAwywPmfyK
+	AO+2ymOiTmAm0kXB/DTDXS3l4FEFoffEQrnDgc1VwFkZaPjyFIVwhDOgiAUQ/phieNhDRIVlBSwVm
+	qtkJAnM7Brc21AQPaFcNfkkfeJ5pdN6ZkMMJuB8OM4r91a51p96JwVIfiqJTvBu/EkIC3jU8Orihe
+	71nCbG2dzo5nwHQe3a8rDM92SpQ4Ayz+CFrhc8H9C8IccK1M+Qso2j0rFmZ/83br27DViWDbEGa9X
+	jnMvfuWjixWdWvlN0Uodpn/XUk4nmPESL9dBVRoI8=;
+Received: from [2a00:23c4:8baf:fd00:1033:b5d6:92a3:359f]
+	by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.92)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1qrYK0-00073L-D7; Sat, 14 Oct 2023 07:40:28 +0100
+Message-ID: <b5da70d0-6e91-413d-93da-b1748c68d001@ilande.co.uk>
+Date: Sat, 14 Oct 2023 07:40:24 +0100
 MIME-Version: 1.0
-References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
- <cef77c3b4f13c967f371d203d1aba515b05f3555.1697183082.git.manos.pitsidianakis@linaro.org>
-In-Reply-To: <cef77c3b4f13c967f371d203d1aba515b05f3555.1697183082.git.manos.pitsidianakis@linaro.org>
-From: John Snow <jsnow@redhat.com>
-Date: Fri, 13 Oct 2023 18:27:25 -0400
-Message-ID: <CAFn=p-ZZmrB3LtqAAm1wDB4b1mk6QDq9jz_giSR7TpD9Vkxg0g@mail.gmail.com>
-Subject: Re: [RFC PATCH 10/78] hw/ide/atapi.c: add fallthrough pseudo-keyword
-To: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dDlRZN1TeznE
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Gavin Shan <gshan@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20231013141131.1531-1-philmd@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <20231013141131.1531-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8baf:fd00:1033:b5d6:92a3:359f
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
+	mail.default.ilande.bv.iomart.io
+X-Spam-Level: 
+X-Spam-Status: No, score=-2.8 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+	URIBL_BLOCKED,URIBL_SBL_A autolearn=no autolearn_force=no version=3.4.2
+Subject: Re: [PATCH v3 0/10] hw/char/pl011: Implement TX (async) FIFO to avoid
+ blocking the main loop
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+X-TUID: hWjNBOhiYUVY
 
-On Fri, Oct 13, 2023 at 3:50=E2=80=AFAM Emmanouil Pitsidianakis
-<manos.pitsidianakis@linaro.org> wrote:
->
-> In preparation of raising -Wimplicit-fallthrough to 5, replace all
-> fall-through comments with the fallthrough attribute pseudo-keyword.
->
-> Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
-> ---
->  hw/ide/atapi.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
-> index dcc39df9a4..85c74a5ffe 100644
-> --- a/hw/ide/atapi.c
-> +++ b/hw/ide/atapi.c
-> @@ -1189,53 +1189,54 @@ static void cmd_read_disc_information(IDEState *s=
-, uint8_t* buf)
->  static void cmd_read_dvd_structure(IDEState *s, uint8_t* buf)
->  {
->      int max_len;
->      int media =3D buf[1];
->      int format =3D buf[7];
->      int ret;
->
->      max_len =3D lduw_be_p(buf + 8);
->
->      if (format < 0xff) {
->          if (media_is_cd(s)) {
->              ide_atapi_cmd_error(s, ILLEGAL_REQUEST,
->                                  ASC_INCOMPATIBLE_FORMAT);
->              return;
->          } else if (!media_present(s)) {
->              ide_atapi_cmd_error(s, ILLEGAL_REQUEST,
->                                  ASC_INV_FIELD_IN_CMD_PACKET);
->              return;
->          }
->      }
->
->      memset(buf, 0, max_len > IDE_DMA_BUF_SECTORS * BDRV_SECTOR_SIZE + 4 =
-?
->             IDE_DMA_BUF_SECTORS * BDRV_SECTOR_SIZE + 4 : max_len);
->
->      switch (format) {
->          case 0x00 ... 0x7f:
->          case 0xff:
->              if (media =3D=3D 0) {
->                  ret =3D ide_dvd_read_structure(s, format, buf, buf);
->
->                  if (ret < 0) {
->                      ide_atapi_cmd_error(s, ILLEGAL_REQUEST, -ret);
->                  } else {
->                      ide_atapi_cmd_reply(s, ret, max_len);
->                  }
->
->                  break;
->              }
->              /* TODO: BD support, fall through for now */
-> +            fallthrough;
+On 13/10/2023 15:11, Philippe Mathieu-Daudé wrote:
 
-ACK. For a moment I was wondering if this was something new to gcc,
-but I guess it's just a macro you made O:-)
+> Hi,
+> 
+> This series add support for (async) FIFO on the transmit path
+> of the PL011 UART.
+> 
+> Since v2:
+> - Added R-b tags
+> - Addressed Richard comments on migration
+> 
+> Since v1:
+> - Restrict pl011_ops[] impl access_size,
+> - Do not check transmitter is enabled (Peter),
+> - Addressed Alex's review comments,
+> - Simplified migration trying to care about backward compat,
+>    but still unsure...
+> 
+> Philippe Mathieu-Daudé (9):
+>    util/fifo8: Allow fifo8_pop_buf() to not populate popped length
+>    util/fifo8: Introduce fifo8_peek_buf()
+>    hw/char/pl011: Split RX/TX path of pl011_reset_fifo()
+>    hw/char/pl011: Extract pl011_write_txdata() from pl011_write()
+>    hw/char/pl011: Extract pl011_read_rxdata() from pl011_read()
+>    hw/char/pl011: Warn when using disabled transmitter
+>    hw/char/pl011: Check if receiver is enabled
+>    hw/char/pl011: Rename RX FIFO methods
+>    hw/char/pl011: Add transmit FIFO to PL011State
+>    hw/char/pl011: Implement TX FIFO
+> 
+>   include/hw/char/pl011.h |   2 +
+>   include/qemu/fifo8.h    |  37 +++++++++--
+>   hw/char/pl011.c         | 140 +++++++++++++++++++++++++++++-----------
+>   util/fifo8.c            |  28 ++++++--
+>   hw/char/trace-events    |   4 +-
+>   5 files changed, 161 insertions(+), 50 deletions(-)
 
-Acked-by: John Snow <jsnow@redhat.com>
+Looks like patch 10 where all the interesting stuff is didn't make it to the list? 
+Patchew also agrees here: 
+https://patchew.org/QEMU/20231013141131.1531-1-philmd@linaro.org/.
 
->
->          /* Generic disk structures */
->          case 0x80: /* TODO: AACS volume identifier */
->          case 0x81: /* TODO: AACS media serial number */
->          case 0x82: /* TODO: AACS media identifier */
->          case 0x83: /* TODO: AACS media key block */
->          case 0x90: /* TODO: List of recognized format layers */
->          case 0xc0: /* TODO: Write protection status */
->          default:
->              ide_atapi_cmd_error(s, ILLEGAL_REQUEST,
->                                  ASC_INV_FIELD_IN_CMD_PACKET);
->              break;
->      }
->  }
-> --
-> 2.39.2
->
 
+ATB,
+
+Mark.

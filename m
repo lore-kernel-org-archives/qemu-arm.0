@@ -1,118 +1,165 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3067937ejc;
-        Mon, 16 Oct 2023 03:09:14 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHgsldoSkx+uhdlJjBMIryYtliJ+CuyfX4y5QuLc/psOqg/ChCU5KPVP5O/jGyRuhtpOzd8
-X-Received: by 2002:a05:6a20:914e:b0:15d:42d5:6cb5 with SMTP id x14-20020a056a20914e00b0015d42d56cb5mr32716032pzc.28.1697450953994;
-        Mon, 16 Oct 2023 03:09:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697450953; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3210804ejc;
+        Mon, 16 Oct 2023 07:14:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF2mt/iAHwAtF0N9PHG+PQiuo+LTYHBZEEXbLaGQjXF7UCiyWsQ6I1R0x3tMekFxfshOmdw
+X-Received: by 2002:a05:6808:1511:b0:3af:611c:c74f with SMTP id u17-20020a056808151100b003af611cc74fmr43281136oiw.5.1697465665740;
+        Mon, 16 Oct 2023 07:14:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697465665; cv=none;
         d=google.com; s=arc-20160816;
-        b=rkG/AUIYeBlC0YJfy2FMlYSXqTYzetx6lZSVmApmUGdd8fiviMOgdz0k506mbNdXlo
-         kXPr02RVGSBQilpQHk/gonanbIrB3WK1qUc+FfLiuoGVP1uyqEsgz+unjwd5uXCTwaMc
-         iAUdf6sT6JNKbYvqGKn+9/rDpcdG+MdLGLW/zqq5SRlAXjLDd106bQgjjQFmrq21d6bj
-         8J+m5gtZ43BMLsWDaxE7AyhD+RJJDLDPv4TjCbYkb/tydtia5Cr6yVUqvshzI1WApRp1
-         80KoFcz6Ks0rmP+GKrLJkIEnMmnEh33HfAo1ZdXpCaSTDibJtIOrELwdMVYLRqocgwwa
-         w3fg==
+        b=wu1FvkRah7MMlGXdgZzKAgNBJpGk0LB2wcFKQt4XVA5Ieuefiek+BewTZTFNvTDVpT
+         Tmb4TItxYM9j41xIFAjFVA2J55fXjzTp2aVJgg88AxRSEawxMw5s+b7iD1cNzZmUiohi
+         KiWGAuNTycsfw63m4KnDFyoGglDVphy1HwckVcg6AU/ZouAYWL952jcZjZ1fUXogBaHW
+         Wg3vWg3pXzT0QYAtpMg5hq3VSyqX3r2ZzRGM/xAH1x4RKHLZPb9CrtnLlgE+t5SgGcbL
+         QDHwYiNIvR56AsT0rhjqb1nkkL8IAxiMJHUgqzuoWDzf8k4NBqEAl83kunMbs5ObzbLa
+         QBsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=O5QV4MbZRKuOccbK9kPN8JaifrETp+bJnjbnRFD6T6o=;
-        fh=WFKiYQ0ahdra82bC/XG1W++R922uaSCu9viexCDasTE=;
-        b=zyJ9g66COJ855gkn0QfhxC8DDbAnbNhQpFjoj02+k0jPdj7y9b5tqjYf23YrZGU3Ke
-         K1XuGHsTowWKEWlfClO2gWejYgECnrWRKLWXBHyHxwrd3rTrVWdvJMuz2FxFTl/ZuhQc
-         8lSQdya+fLgH/GP3K7JXFTpKAodgOKKXSdxVWXWuhCaZ1h66Q7ztYENaFZ7ewDH4bMII
-         G/er8UeG+hfir3tMIGZe52pEdLcyMj+XsGaNxCkFlAYvTupNeKJtCwGNV5mMiiJq9FSC
-         ZqpMnpQ4IXc1j0fKargp99DntQA0eYe/dNSSXOr8nCTc3rvaKPEeojcrV3BmJM7FJvem
-         w4dQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=phQxIX8T/eE5G1lpVLOkFYrKOLOKnb+r3Zm5nLLnAGo=;
+        fh=YqwzSgE4zJvz4/IunW6OwTPS6XM7IyAKcDKuWdVMekE=;
+        b=Iq0JJq1qH5mgy9mTkDIa1MguxZ6owGQaudNfsV1Ydd5gHiqAy1D/pIz+LZIZuXsTCZ
+         SB/UuyZV6BDW5qB5AiI/no42MyeHmcitjKr4yv4mFMfSwpAWt9chqNj/mfsKBW4n/rx+
+         tb7QiAmdcYAZfskuO2Th4q8Jj5RzxozrO7eP6wTvpZiFuq5MIqjqnKfCvLuLM30nic1b
+         OmkWcFy1Dba/aB8BSPLzBckE7VcSyPTCEUvFnJVaRJNG8CzC5zED7oHCxFUMYfmDxK6l
+         6SkzPTYLTfiq2f/KH7gm4uLPsUkn/Y9QnYNNOB6QsYPSLnMjtA3Xk3x51/5hB4fdjofJ
+         PwEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id pt11-20020a17090b3d0b00b0027740192bc9si5973076pjb.152.2023.10.16.03.09.13
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Oct 2023 03:09:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=o5U3K77g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a6-20020a05622a064600b00417ccca0054si5351170qtb.174.2023.10.16.07.14.25
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Oct 2023 07:14:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from lhrpeml100001.china.huawei.com (unknown [172.18.147.200])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4S8CVw3jyxz6K8tb;
-	Mon, 16 Oct 2023 18:08:40 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml100001.china.huawei.com (7.191.160.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.31; Mon, 16 Oct 2023 11:09:08 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
- Mon, 16 Oct 2023 11:09:08 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Miguel Luis <miguel.luis@oracle.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, Marc Zyngier <maz@kernel.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron
-	<jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, Peter Maydell <peter.maydell@linaro.org>, "Richard
- Henderson" <richard.henderson@linaro.org>, "imammedo@redhat.com"
-	<imammedo@redhat.com>, "andrew.jones@linux.dev" <andrew.jones@linux.dev>,
-	"david@redhat.com" <david@redhat.com>, "philmd@linaro.org"
-	<philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, Karl Heubaum
-	<karl.heubaum@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V6 0/9] Add architecture agnostic code to support vCPU
- Hotplug
-Thread-Topic: [PATCH V6 0/9] Add architecture agnostic code to support vCPU
- Hotplug
-Thread-Index: AQHZ/cNQxAxt9PC9FEqdNAxyY88QobBH2dQAgARWpID///LWgIAAEfmw
-Date: Mon, 16 Oct 2023 10:09:08 +0000
-Message-ID: <5e838e6c4f454e08a0077c99262be846@huawei.com>
-References: <20231013105129.25648-1-salil.mehta@huawei.com>
- <4764CF47-47CA-4685-805C-BBE6310BE164@oracle.com>
- <187d0a24a81b4f1abbb23795325073ea@huawei.com>
- <D78AD548-0934-48E3-957A-E5123D9E7F4C@oracle.com>
-In-Reply-To: <D78AD548-0934-48E3-957A-E5123D9E7F4C@oracle.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.48.147.12]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b=o5U3K77g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qsOM5-0002vO-Dc; Mon, 16 Oct 2023 10:14:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qsOM2-0002uS-Qa
+ for qemu-arm@nongnu.org; Mon, 16 Oct 2023 10:13:59 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qsOM1-00020l-7b
+ for qemu-arm@nongnu.org; Mon, 16 Oct 2023 10:13:58 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-53de8fc1ad8so7935377a12.0
+ for <qemu-arm@nongnu.org>; Mon, 16 Oct 2023 07:13:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697465635; x=1698070435; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=phQxIX8T/eE5G1lpVLOkFYrKOLOKnb+r3Zm5nLLnAGo=;
+ b=o5U3K77g0qa67A8YIbdB+OCk9LClRjWIkZVZLex59PHDcu5NtDtYma+BhoAFDN1Qdp
+ s0Tj+jyVkTb6hjowFID/vN3hT+Cbd+aaeGaNFAbtolHg7Spzp5lFkoM9VPKCQJ+0sRNJ
+ lFdQJomzY35OGA12R2lJQk8zwjlnbdGPFpinxwnoi88B7WxoYZtXgOOO9SvChX7ZsdYp
+ e5FI2hflRM0MI/LJLeHJzBzd3jZ/CJI70Fv7KBqD1w7IvHuDADtB0iX8OOAchZQsYpXv
+ D/S9s5uOWHAcFlM6JXK0CyoQpMcXkinYtsRfHHGzaO8QpkvTAdm+IIAKzm7u0RPXWQ/h
+ tN5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697465635; x=1698070435;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=phQxIX8T/eE5G1lpVLOkFYrKOLOKnb+r3Zm5nLLnAGo=;
+ b=K/DHc/tbWOY3PYrMpwAtJyzQWPMsmcUSCMlKCZpWR5MjoHP4a/F15EXT2Aj0yK/n7X
+ WAPAj0Q5pLWbRdZdqzjS299Xwrf/J2HXjUuYvkrD9hnVwyUJFa91NkR7qBSmcigVz+5A
+ M9qwYlIpNQa0QxpNyJqMC3i0vXkDjDzD/MgmGjde+GH+niWEXdDTz9CIJJn9ZfH93zhH
+ JbitvVtWqesH9/BAAP/ZK5nrZIFK+B9wavjVkfPoD36aw6G9xBnp2cVPRxP/ezRe3Bx9
+ KJHk3RpMh6vb9KhviwTi6X3jyRVkpiixbbCEuALCClkwPyQFRsVd3CteqR31H5PWaZnp
+ PWyw==
+X-Gm-Message-State: AOJu0YwyIK4bx03Cbefop+G3jKjZ3dDDjfkTeQBd/D5cxOkOXOF9RCSo
+ LDP/rnAsOtPWbLsOkoqz3ysyyOwRuoXm0U5CzUAJKw==
+X-Received: by 2002:a50:8adc:0:b0:53e:467c:33f1 with SMTP id
+ k28-20020a508adc000000b0053e467c33f1mr6728635edk.8.1697465634909; Mon, 16 Oct
+ 2023 07:13:54 -0700 (PDT)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-TUID: pYUEKhhHqxlA
+References: <cover.1697183081.git.manos.pitsidianakis@linaro.org>
+ <87o7h2hey5.fsf@pond.sub.org>
+In-Reply-To: <87o7h2hey5.fsf@pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 16 Oct 2023 15:13:43 +0100
+Message-ID: <CAFEAcA-LQP_dQ0mjeNe8nOtMVy22iwJt2yfG5m_f4oQjQ9ts7w@mail.gmail.com>
+Subject: Re: [RFC PATCH 00/78] Strict disable implicit fallthrough
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0kvv76CEbZGw
 
-PiBGcm9tOiBNaWd1ZWwgTHVpcyA8bWlndWVsLmx1aXNAb3JhY2xlLmNvbT4NCj4gU2VudDogTW9u
-ZGF5LCBPY3RvYmVyIDE2LCAyMDIzIDExOjAyIEFNDQo+IFRvOiBTYWxpbCBNZWh0YSA8c2FsaWwu
-bWVodGFAaHVhd2VpLmNvbT4NCj4gDQo+IEhpIFNhbGlsLA0KPiANCj4gPiBPbiAxNiBPY3QgMjAy
-MywgYXQgMDk6NTIsIFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPiB3cm90ZToN
-Cj4gPg0KPiA+IEhpIE1pZ3VlbCwNCj4gPg0KPiA+PiBGcm9tOiBNaWd1ZWwgTHVpcyA8bWlndWVs
-Lmx1aXNAb3JhY2xlLmNvbT4NCj4gPj4gU2VudDogRnJpZGF5LCBPY3RvYmVyIDEzLCAyMDIzIDU6
-MzQgUE0NCj4gPj4gVG86IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPg0KDQpb
-Li4uXQ0KDQo+ID4+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggVjYgMC85XSBBZGQgYXJjaGl0ZWN0dXJl
-IGFnbm9zdGljIGNvZGUgdG8gc3VwcG9ydCB2Q1BVDQo+ID4+IEhvdHBsdWcNCj4gPj4NCj4gPj4g
-SGkgU2FsaWwsDQo+ID4+DQo+ID4+PiBPbiAxMyBPY3QgMjAyMywgYXQgMTA6NTEsIFNhbGlsIE1l
-aHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPiB3cm90ZToNCj4gPj4+DQo+ID4+PiBWaXJ0dWFs
-IENQVSBob3RwbHVnIHN1cHBvcnQgaXMgYmVpbmcgYWRkZWQgYWNyb3NzIHZhcmlvdXMNCj4gPj4g
-YXJjaGl0ZWN0dXJlc1sxXVszXS4NCj4gPj4+IFRoaXMgc2VyaWVzIGFkZHMgdmFyaW91cyBjb2Rl
-IGJpdHMgY29tbW9uIGFjcm9zcyBhbGwgYXJjaGl0ZWN0dXJlczoNCj4gPg0KPiA+IFsuLi5dDQo+
-ID4NCj4gPj4gSSB0ZXN0ZWQgaXQgZm9yIEFybTY0LCBtYWtlIGNoZWNrLCBib290L3JlYm9vdCwg
-bGl2ZSBtaWdyYXRpb24gYW5kIGZvdW5kIG5vDQo+ID4+IGlzc3VlcywNCj4gPj4gc28gZm9yIHRo
-aXMsIHBsZWFzZSBmZWVsIGZyZWUgdG8gYWRkOg0KPiA+Pg0KPiA+PiBUZXN0ZWQtYnk6IE1pZ3Vl
-bCBMdWlzIDxtaWd1ZWwubHVpc0BvcmFjbGUuY29tPg0KPiA+DQo+ID4gR3JlYXQuIE1hbnkgdGhh
-bmtzIGZvciB0aGUgY29uZmlybWF0aW9uLg0KPiA+DQo+ID4gSSBndWVzcyB5b3UgYXJlIHJlcGVh
-dGluZyB0aGUgc2FtZSBmb3IgeDg2IGFzIHdlbGw/DQo+ID4NCj4gDQo+IFlvdSBhcmUgd2VsY29t
-ZSENCj4gDQo+IEFic29sdXRlbHksIEnigJltIHJlcGVhdGluZyB0aG9zZSBzYW1lIHRlc3RzIGZv
-ciB4ODYuDQoNCkJyaWxsaWFudC4gVGhhbmtzIGZvciBwcm9hY3RpdmVseSB0YWtpbmcgdGhpcyB1
-cC4NCg0KU2FsaWwuDQoNCg==
+On Fri, 13 Oct 2023 at 13:42, Markus Armbruster <armbru@redhat.com> wrote:
+>
+> Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
+>
+> > Hello,
+> >
+> > This RFC is inspired by the kernel's move to -Wimplicit-fallthrough=3
+> > back in 2019.[0]
+> > We take one step (or two) further by increasing it to 5 which rejects
+> > fall through comments and requires an attribute statement.
+> >
+> > [0]:
+> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a035d552a93b
+> >
+> > The line differences are not many, but they spread all over different
+> > subsystems, architectures and devices. An attempt has been made to split
+> > them in cohesive patches to aid post-RFC review. Part of the RFC is to
+> > determine whether these patch divisions needs improvement.
+> >
+> > Main questions this RFC poses
+> > =============================
+> >
+> > - Is this change desirable and net-positive.
+>
+> Unwanted fallthrough is an easy mistake to make, and
+> -Wimplicit-fallthrough=N helps avoid it.  The question is how far up we
+> need to push N.  Right now we're at N=2.  Has unwanted fallthrough been
+> a problem?
+
+Mmm, this is my opinion I think. We have a mechanism for
+catching "forgot the 'break'" already (our =2 setting) and
+a way to say "intentional" in a fairly natural way (add the
+comment). Does pushing N up any further gain us anything
+except a load of churn?
+
+Also, the compiler is not the only thing that processes our
+code: Coverity also looks for "unexpected fallthrough" issues,
+so if we wanted to switch away from our current practice we
+should check whether what we're switching to is an idiom
+that Coverity recognises.
+
+thanks
+-- PMM

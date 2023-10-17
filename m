@@ -1,111 +1,110 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3891150ejc;
-        Tue, 17 Oct 2023 05:44:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGuUB0OUl9G7V1JvKGH3PNYBpwF9imgy4T4q9gzAQh1+EFhaYskHZ4qrecGKEDOKSAsPM/C
-X-Received: by 2002:adf:e3d0:0:b0:32d:9d91:6273 with SMTP id k16-20020adfe3d0000000b0032d9d916273mr1590918wrm.71.1697546670529;
-        Tue, 17 Oct 2023 05:44:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697546670; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3891482ejc;
+        Tue, 17 Oct 2023 05:45:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH6s+2BfjOJm3jQwGGGyxhVFITcFztm5aMwNZaOHdTQdAUFrTbAu6mTO+jPbhjjp7KyJnO1
+X-Received: by 2002:a7b:c44c:0:b0:405:95c3:e79d with SMTP id l12-20020a7bc44c000000b0040595c3e79dmr1595116wmi.40.1697546706496;
+        Tue, 17 Oct 2023 05:45:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697546706; cv=none;
         d=google.com; s=arc-20160816;
-        b=FR1DveFS5IN4IsRwpx5QsKJOpDkx6eaevyiLDd21eDagH2Fplamti0+imAWGbOXLaz
-         8kW01ViuDNMUfCWf0AObkOQTLUtHfGe712QsnYZXRKJ60bPiGUxJt0P2MJr9dmpA7tcd
-         q7qfBS5lUkwcNzYOTwEv89zgwgvUNrlhb8DGsAXKwvRnDTZmvxkDRbLJydI3YQQoVXam
-         lLF0s9SnMrWTuts9HA/oN0+FEM+fj/OqKaTo+PzvrOr4ErQQa2muGmlKaVOSlFJd1Kxx
-         1OrBPAX26MxbFddXs/QS9QM69I/9zcfAKpu33jypyPj7hCzULc3YV4Ts1gFKZMwNYZIE
-         YqBw==
+        b=LgoCLRZs1mtxO6OpvujkZ8HLmo+nHpGaUS9kC15sQwJAqHGlc1mfofHoC0IK8gNzGP
+         Yi7JcfSAUxMlI1iAKHYFP7Qeu6USl2qJpn1fwinOSpQ/9U8DslFwrtzvff7+TceYYUCJ
+         emu+mtahjwPVgi5UlFwuIVagiyP51YVH3mN9zfTRcG+y0NHF2X6/rgOrwWKs5eGNkhPH
+         vq3Igv09D9EKHONTB0JYvitgj3YHbLbqPs7Qb2yHR0ZFoaZfWtYoM52noCJaSsWOB6h+
+         gqUaETxIsJwRCk1o+MVQy2y+zhOO3uCI6hpcT+3bw6VUHZlHnAkDh6RUqkHi2qX92whb
+         b+kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=OI6XxeHEGNN/AelK/4GCeSwmqDn2vKzxp14UeZdcQUY=;
+        bh=iDynNsTl47oEPZltiAbi07WZ0fTDkuChOLRqUfE+Tuc=;
         fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=Fp+6fz//4qvHTBvgezDWTW8NWAhNw2xwJKw1lpF9JD9wiqdYWktjwvaGS8yho8kPkF
-         woUVNcaPmhXoxuwkKyE9hk2Wf2oBgEkYI35fHcgHAagBgLrcUK19xcph3/IZHKIhzyiV
-         vRM9ovLrKPLBylYC0Y+bxkGLUzihEisp5hrvuG8oMVolKt9XeldP+QGBxDPxyA5ndxAJ
-         JwTK+fNAUcpYZHzBUZwhkVwBkJ09FT4PwiCYJDGey0eduaP/u14pt1UXK3MGcTD7wOZz
-         vLJlnqWfztQMXnLOZbCTXRwri/iZckfTTbRqoOCxp3+Vsg4QLb6ZncEf9abilB89x2+Q
-         KINg==
+        b=u1DVVHBzIEIfYOLiyfKh5FV3cWpfOqvJozbxH+Z4c0BS/iGYiOKp5/ygBzav64zQ9E
+         fqTXwxpTo0zZyRKg9+1i+/kK+24PLLOdGC3ENuD/hPLXzA8WwnsC2zX+6hItAYIelid8
+         OXf6uaEnh11jnhSYo6InuK+P7iYwOBd+YIO6zZ9Uf/56yIIN2vvepg6wwqZC6YdzVTdV
+         LnxKasF7a4uchMVAYIBjO4wHo3KxhQHd7Vc61URsy1aCvFDO4XV3cwCZJcBrpTKaR4i7
+         dPCO6ziUxa7JYA1EPNf8DgXK+UqiOdgIszIgs319EKODmxjTcPiVva7xQ5EUZmkTDIzr
+         I/LA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mHj+oaIk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mWhXKU7K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12-20020a5d658c000000b0032dbaf50346si951260wru.1031.2023.10.17.05.44.30
+        by mx.google.com with ESMTPS id fl16-20020a05600c0b9000b00400e56d2622si3974723wmb.88.2023.10.17.05.45.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 05:44:30 -0700 (PDT)
+        Tue, 17 Oct 2023 05:45:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mHj+oaIk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mWhXKU7K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qsjQk-00077x-KN; Tue, 17 Oct 2023 08:44:14 -0400
+	id 1qsjRR-0007Z7-73; Tue, 17 Oct 2023 08:44:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsjQj-00077P-9I
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:44:13 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsjRQ-0007Yr-Fq
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:44:56 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsjQh-00086Y-Ds
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:44:13 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-9c53e8b7cf4so222683366b.1
- for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 05:44:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsjRO-0008BB-Vo
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:44:56 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-53dfc28a2afso9714564a12.1
+ for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 05:44:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697546650; x=1698151450; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697546692; x=1698151492; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=OI6XxeHEGNN/AelK/4GCeSwmqDn2vKzxp14UeZdcQUY=;
- b=mHj+oaIkUkeI+vNTf8XsAvdcL/GNJTkNIlhVO8h0LjBBJQWERfuisIH7snre8kPWi9
- iwLu/FVnmp1OQpN0NJtC5yVRPitnLjQPl6+DU+IVFXDKOc2wBE8As+j4F0hWlABbV7LI
- DmeJCTfXKm3W3BPxwZugRjB8giEeBUTu+m9FIuDxAORhfjXY2KVPdgTk5CBaFoUrR8GS
- QfdznBUaPoEUR5qaIn7PdRITFCmwamVUKvJKfLAYrkZD7TfUpNKkuVknH+giLMdk47qW
- B/uIH6yQn+GD7x+qSCDFnGmW/X7mkdE8FKBKxsJ/amv52DUDK/3OcbrWeLXZ9uswZgei
- MlPQ==
+ bh=iDynNsTl47oEPZltiAbi07WZ0fTDkuChOLRqUfE+Tuc=;
+ b=mWhXKU7KK4J9FUsqbY5R4Np50uNPlLMobfdMKEu0k75lEHNavf4KB19SDEslXKYyDK
+ d6jG/RoYyEFdMNC3hnh4ewfQp1DgunQ4CY59NrE2KuDmWuDfvIx4QCWMpIqIIKApZkYe
+ YJzMe7aTKl+Pon6Wa6KSGqkj+aUsf/0WmUSp4/sd/5eX4pat23TbIHWX1fPQVSrUbg9H
+ zfONl7gpcBI2mE66gdhnTjtPpdp718EVrOqVL+ZIFZNMgxowbldFid2eK8LRDj/CNJT9
+ NaSt4ifbFYDMiqHi0dyUmb8SxV6G9RYQF5oQ+mba/p0aQ9nc9SieCTt8qBNP2ghFLX2+
+ KRhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697546650; x=1698151450;
+ d=1e100.net; s=20230601; t=1697546692; x=1698151492;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=OI6XxeHEGNN/AelK/4GCeSwmqDn2vKzxp14UeZdcQUY=;
- b=cNLgbTO2IDPH1StGgjcYHlOX5/a8gzJ8uWEiz9HV4qJkN1bQyessXl4qcGxt3tEjDq
- DPAgtzx5T55gIM4pBDUrwCd+lPDCvOU+GuhWG1t4EhurX4FY+nArSsB9PbUc5PZznZ/g
- khVoaMBBuKivKf7yf6kjGie6DYp+EnKodAu58thQbtdsyNBLpl7ZtmzJ4avlrvx+ikLB
- SSX/Qfs8orjsDfo8J5xyPDkQbCZOhuSBD9NLJ27498tz7KMMt10pnEVB/Q6gfgkm8+87
- f0KxfcoUeYQsAXtLN7BaubwBYvh4XYbShTolJDg+I32eK0ZwNZ7Mt8QQFf6DY1vzAzIk
- 5Naw==
-X-Gm-Message-State: AOJu0YwUmbSMxy71bLNvt6rJ6QeKwBXhqxvxZYhFUspgtp/Gt3AWX4BX
- eWA3CJCVjcMvg8e0Yul22XCGVfm0t6vSvKXZthT16A==
-X-Received: by 2002:a17:906:da88:b0:9a6:4f54:1da6 with SMTP id
- xh8-20020a170906da8800b009a64f541da6mr1356029ejb.57.1697546649620; 
- Tue, 17 Oct 2023 05:44:09 -0700 (PDT)
+ bh=iDynNsTl47oEPZltiAbi07WZ0fTDkuChOLRqUfE+Tuc=;
+ b=uqIyvspXcD/9PP6pV2JP8Wnk5XS+l4K7mywgT9lFatyVnEYq9xFZoxpKVBwBgpKlAt
+ ewp6jFHl3lySaX8gjoFmW6oQRX3WTK2J4tzB05ajwx9UwnE4jrbviT7kKG889h529Y9o
+ hb0CYea+hfbj51ClqlOPYOqlrNAuok7kTP5l77W8Gf/x7qwlqZfPGsVrW8ByJHr3iGxt
+ pAIQAPEQKX92o6fxuhJFgfHuHGXVRzFYHufNjJCIm4PbgjRzSBUXAqoXOS4t8ST0d5P9
+ PhZJwtrwKcSWxMp0h0kcyF01jREV4H6vAwh9OcNssCNK6tZGyzvEt92kzO0D3y4TLPEa
+ BUow==
+X-Gm-Message-State: AOJu0YxDm0G1GLym8rVar5zofItPsY3XjFC0QlkhW9tVgFCTKjjpt1EW
+ 6WMEQ8xcaBnMi3Vzbr+SYc+7iQ==
+X-Received: by 2002:a05:6402:4315:b0:53d:fbf6:72c with SMTP id
+ m21-20020a056402431500b0053dfbf6072cmr1893981edc.1.1697546692773; 
+ Tue, 17 Oct 2023 05:44:52 -0700 (PDT)
 Received: from [192.168.69.115] ([176.172.118.33])
  by smtp.gmail.com with ESMTPSA id
- m15-20020a17090607cf00b0099ddc81903asm1201474ejc.221.2023.10.17.05.44.08
+ 16-20020a508e50000000b0053eb9af1e15sm1190483edx.77.2023.10.17.05.44.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Oct 2023 05:44:09 -0700 (PDT)
-Message-ID: <c61b98d3-cafd-862b-09ad-818a5e2f051d@linaro.org>
-Date: Tue, 17 Oct 2023 14:44:07 +0200
+ Tue, 17 Oct 2023 05:44:52 -0700 (PDT)
+Message-ID: <c985a5c2-dbe8-8ea5-e4c6-1df9d530dd68@linaro.org>
+Date: Tue, 17 Oct 2023 14:44:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH 4/6] hw/input/stellaris_gamepad: Remove
- StellarisGamepadButton struct
+Subject: Re: [PATCH 1/6] hw/input/stellaris_input: Rename to stellaris_gamepad
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20231017122302.1692902-1-peter.maydell@linaro.org>
- <20231017122302.1692902-5-peter.maydell@linaro.org>
+ <20231017122302.1692902-2-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231017122302.1692902-5-peter.maydell@linaro.org>
+In-Reply-To: <20231017122302.1692902-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -53
 X-Spam_score: -5.4
 X-Spam_bar: -----
@@ -127,50 +126,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iv1QsY3s0+vK
+X-TUID: s7f4PCxpUcgL
 
-Hi Peter,
-
-On 17/10/23 14:23, Peter Maydell wrote:
-> Currently for each button on the device we have a
-> StellarisGamepadButton struct which has the irq, keycode and pressed
-> state for it.  When we convert to qdev, the qdev property and GPIO
-> APIs are going to require that we have separate arrays for the irqs
-> and keycodes.  Convert from array-of-structs to three separate arrays
-> in preparation.
+On 17/10/23 14:22, Peter Maydell wrote:
+> This source file implements a stellaris gamepad device; rename
+> it so that it is a closer match to the device name.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   hw/input/stellaris_gamepad.c | 43 ++++++++++++------------------------
->   1 file changed, 14 insertions(+), 29 deletions(-)
+>   include/hw/input/{gamepad.h => stellaris_gamepad.h} | 6 +++---
+>   hw/arm/stellaris.c                                  | 2 +-
+>   hw/input/{stellaris_input.c => stellaris_gamepad.c} | 2 +-
+>   hw/arm/Kconfig                                      | 2 +-
+>   hw/input/Kconfig                                    | 2 +-
+>   hw/input/meson.build                                | 2 +-
+>   6 files changed, 8 insertions(+), 8 deletions(-)
+>   rename include/hw/input/{gamepad.h => stellaris_gamepad.h} (77%)
+>   rename hw/input/{stellaris_input.c => stellaris_gamepad.c} (98%)
 
-
-> -static const VMStateDescription vmstate_stellaris_button = {
-> -    .name = "stellaris_button",
-> -    .version_id = 0,
-> -    .minimum_version_id = 0,
-> -    .fields = (VMStateField[]) {
-> -        VMSTATE_UINT8(pressed, StellarisGamepadButton),
-> -        VMSTATE_END_OF_LIST()
-> -    }
-> -};
-> -
->   static const VMStateDescription vmstate_stellaris_gamepad = {
->       .name = "stellaris_gamepad",
->       .version_id = 2,
->       .minimum_version_id = 2,
->       .fields = (VMStateField[]) {
->           VMSTATE_INT32(extension, StellarisGamepad),
-> -        VMSTATE_STRUCT_VARRAY_POINTER_INT32(buttons, StellarisGamepad,
-> -                                            num_buttons,
-> -                                            vmstate_stellaris_button,
-> -                                            StellarisGamepadButton),
-> +        VMSTATE_VARRAY_UINT32(pressed, StellarisGamepad, num_buttons,
-> +                              0, vmstate_info_uint8, uint8_t),
-
-Don't this break the migration stream?
-
->           VMSTATE_END_OF_LIST()
->       }
->   };
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

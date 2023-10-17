@@ -1,113 +1,93 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3504782ejc;
-        Mon, 16 Oct 2023 15:24:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHs4GBBdVo92lmFLRNd31VzprhjNzsr8/AaUs+fY2dFrcxlned5NEMJYuBYmbwGwPfldpt/
-X-Received: by 2002:a05:620a:f14:b0:774:1c2f:ac48 with SMTP id v20-20020a05620a0f1400b007741c2fac48mr616736qkl.45.1697495054994;
-        Mon, 16 Oct 2023 15:24:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697495054; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3741712ejc;
+        Tue, 17 Oct 2023 00:49:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHtdDCMddqGrKs7yivLKrGlsHw0tp3fMwtWzbdffZOKU+Nxn7PRTfKvYT3AHZO8DSPF7Tso
+X-Received: by 2002:a05:622a:1182:b0:417:d1e7:5e9b with SMTP id m2-20020a05622a118200b00417d1e75e9bmr1937740qtk.26.1697528946636;
+        Tue, 17 Oct 2023 00:49:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697528946; cv=none;
         d=google.com; s=arc-20160816;
-        b=yEsX6w3IY4ubTEG4xpo0RU5R2X+PzwR+hXK1wnxdw7aHXD+WVJRN4ND9Pn+K0xRxW2
-         Ca08i3C6Ad3zcZUMuSITqXeccoUHNKzz2E/gH0CWy7GNn9VyhwYFEN6+QesyKud7yx4b
-         AY0ihS+AI1klJwG9mn/4cpVYtTBCNX9K5ZBHEjh4YpFICD7tRcPICg4VGy0W7uM1hkRb
-         vEKlaBu4Y7fS9xQbKQ4arsdf6hbFpW4KzODY0lt8GgiH64LPDYn/4CDNi1t0O0m8A2RK
-         zTmRuFvKUwI40VDgwjKZ8S3c6PXRK6I2fhu74qMvS/jIPaG384VqKnLbmscCZog7y8jB
-         ZY+A==
+        b=Wo3h2RAqXayqVsmyFj3ancyhV1DtHEDu6+yRMc+VbzLIVGFRnuWYAENq+AIxN8nAJr
+         VrmaGZ0Xn/xEVWP42ZY0XvLohUKMuqWw43zj3SP6XNcKEUsMUKFB3kUgdK3jxytnGQfG
+         wwcLf3cq3T+x6W9nQ0Vnd3KCWY43K4W3vKgPCLne6/+Hb0oStF1cDcKxWFQ6ClCJ//6T
+         +mBJVwADON0RmPaNA4+qSnHl+ROTt0XcGVpo2dUQORKK5+Cr3rJsvHq588qB87EGFw9z
+         djfNMpfKBRvwUdNm9rFupM6uSlABNolsKnyY3zz3+BOMNfBQNNBQMygT/klTLSRxR+8T
+         kNPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=LboeHrynkStEU1Mw4mM3PS8t5ngHh4Jj3A4fdgOy26w=;
-        fh=dGkXD/vMF72n+Hn/EXL8BMhlQJKATuOFZ5gFS+N51UE=;
-        b=yGxX6jkLvvQHKJcy9qrDQKNrJ/88ZUlfQzw94VtVbFw8qJhgyrwruUnAOOQ8UD3tTJ
-         52dsKKimW0X08dm67Vep9r61d885xKjYGvXKVd0+JNQXDdpSruXm64S4qnU4tTEOuxEl
-         nb2i17D3gMgGOFQ6WsNKOx7wvQ7fPFzZzT5TyExFLSjeguKsFqJssqMD3OtZwtShKS4V
-         VQkPR41DN3G2Q6dAZpYahDEtguiaV1VNsivyqxzeNsR+ZVV10O5fIUfwouri9uguJmc9
-         eEaGvUPe2jrjiLBV0tsE/uIMmEa31kcVkVLEdgW8/zRIoA2gxTuR/F9+wcBIaRLohlcn
-         nCdA==
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=FsWGjoiQz9o9+jcC4jZM0jnofWMwl8FabZlxz/AdIkM=;
+        fh=FQudIxJAVafJ8SIPt9dDDiSBF16B9Tf7tHRFaMXBmqU=;
+        b=jSMFRfTZQZ1GxdlvxgvW8frRtYGPcFjMDhiGiXReBRQ1uDvoYn6hWEWOtPwfVuRBrW
+         eBCbZuaz/nzcDnQDjnrde+YdXcQiC3D51OCofd0Dk10vAerAuHM4Nqjx9R9PpNsYOW+t
+         LcDKg1Ae+ddwDn8Y6TO9KXDOuoJaIe3RoRu4MUZ14CsSoCg60Augfl9OWkPiwrSswgnm
+         KQySlXZx03xKi8JiDlRb8sq9wOpK7mDwuPVX17Z1ORpNG8sPWVXQvuuTCR0qxT4Lt6pj
+         ZivOtn1YH+8UHkZWzr5ru7aQ7nkU8/aQYHthlKesTJ2kXkhDgYf8wyqf98K44WTEjAeg
+         nEYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="d2/wkuhZ";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z28-20020a05620a101c00b007777245a955si145803qkj.407.2023.10.16.15.24.14
+        by mx.google.com with ESMTPS id c13-20020a05622a058d00b004194d25f6a0si731000qtb.249.2023.10.17.00.49.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Oct 2023 15:24:14 -0700 (PDT)
+        Tue, 17 Oct 2023 00:49:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="d2/wkuhZ";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qsW0M-0006ii-F5; Mon, 16 Oct 2023 18:24:06 -0400
+	id 1qseoz-00056y-M2; Tue, 17 Oct 2023 03:48:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1qsVAm-0003Lx-FE
- for qemu-arm@nongnu.org; Mon, 16 Oct 2023 17:30:53 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1qsVAj-0002tW-TA
- for qemu-arm@nongnu.org; Mon, 16 Oct 2023 17:30:48 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-323168869daso4746273f8f.2
- for <qemu-arm@nongnu.org>; Mon, 16 Oct 2023 14:30:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697491842; x=1698096642; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=LboeHrynkStEU1Mw4mM3PS8t5ngHh4Jj3A4fdgOy26w=;
- b=d2/wkuhZSO/M8R6pTDr0rMxEJUKdBu1W48ZuDAEkw9lQsYOI/RhlxNiRg/gFzH3Fop
- keVQIhE4iNzscg7WIiCMsnof+T7rNbR/grpx9CPj6n+oo7nKhFRvjX0DF7LDy2mKrAON
- yTIZmH0CnCTCpUjbHQOHQPYkwduUBP6pAI4bnLcz0YLnM4r+UpAEofhWGoj8DqDBM61B
- XRlbRWvv9xAwzHDfA2Ug6E46hjM0Nsa9irElce1Ubw8rozgAv/dWTCmyN9IANq7ryJxQ
- XfgCSiBjgMZ1ZYH9BGmnaeBHSoKhxwr82XxCyavuQZxeBCsBBIBz6FhM5Ln9og73Vf4k
- dS4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697491842; x=1698096642;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=LboeHrynkStEU1Mw4mM3PS8t5ngHh4Jj3A4fdgOy26w=;
- b=I5dAzze/pliLrpROo4CoaBPT22ujoiaeMXa4xy94Xwdb2pUAMUP4xv/VXrHEOh53IH
- jceTwpAJcFWfxY6pxOPx/EAgUfPfJW3dvt2LORdtnLiOU4g+4P0z+SXhnqHiIuG4kcRC
- zgV70aeCZRkZhljrRc19BXPwed1fFHYlx5OzulcQ8BQC/DtFG+lvKX2Q8mGTvSkpqcC7
- fMfnvGz1VeJX7mHfYAs21TG9DgzYNYyj6tKg6MBI7I+VF1sTcD5qBDHPGW1S9+E6HS7Y
- /JYI6shrJlUaXKQCxweGSG/167HvpdjITzIjl6XZCXUwv8abzecNS/irs1JTPlt66NxR
- b/gg==
-X-Gm-Message-State: AOJu0YyhNk/1O6moRTP+4rGRMvno2b03xybAAMro4NYjzRDmzoc6rZnh
- MKcYhb+1tAsK2f0lHPv6fHOexgxUADOlDqXENMYfcw==
-X-Received: by 2002:adf:ecc1:0:b0:317:727f:3bc7 with SMTP id
- s1-20020adfecc1000000b00317727f3bc7mr453790wro.17.1697491842276; Mon, 16 Oct
- 2023 14:30:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mironov@fintech.ru>)
+ id 1qseou-00053r-6v; Tue, 17 Oct 2023 03:48:53 -0400
+Received: from exchange.fintech.ru ([195.54.195.159])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mironov@fintech.ru>)
+ id 1qseor-0005wZ-6k; Tue, 17 Oct 2023 03:48:51 -0400
+Received: from Ex16-02.fintech.ru (10.0.10.19) by exchange.fintech.ru
+ (195.54.195.159) with Microsoft SMTP Server (TLS) id 14.3.498.0; Tue, 17 Oct
+ 2023 10:48:30 +0300
+Received: from Ex16-02.fintech.ru (10.0.10.19) by Ex16-02.fintech.ru
+ (10.0.10.19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Tue, 17 Oct
+ 2023 10:48:30 +0300
+Received: from Ex16-02.fintech.ru ([fe80::18b6:cd4a:a259:613c]) by
+ Ex16-02.fintech.ru ([fe80::18b6:cd4a:a259:613c%3]) with mapi id
+ 15.01.2242.004; Tue, 17 Oct 2023 10:48:30 +0300
+From: =?koi8-r?B?7cnSz87P1yDzxdLHxcog98zBxMnNydLP18ne?= <mironov@fintech.ru>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 1/1] target/arm: Adding a check for the result of calling
+ the CPU information check function
+Thread-Topic: [PATCH 1/1] target/arm: Adding a check for the result of calling
+ the CPU information check function
+Thread-Index: AQHZ/Oockw9FDKXV3E6X4qPU6uyPIrBMbjAAgAExPY8=
+Date: Tue, 17 Oct 2023 07:48:29 +0000
+Message-ID: <9683808b184c4ab3b273ebffe6d66c6a@fintech.ru>
+References: <20231012085710.880440-1-mironov@fintech.ru>,
+ <CAFEAcA_jD+yQq8fJBY0YUobWMgadrjEPwQs1W10DtZ80Pb2ROw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_jD+yQq8fJBY0YUobWMgadrjEPwQs1W10DtZ80Pb2ROw@mail.gmail.com>
+Accept-Language: ru-RU, en-US
+Content-Language: ru-RU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.0.1.141]
+Content-Type: multipart/alternative;
+ boundary="_000_9683808b184c4ab3b273ebffe6d66c6afintechru_"
 MIME-Version: 1.0
-References: <CANW9uyvsD8UWJ9yrrvgb4i7nEoDAXNaepk-zsJWuyw=tp_W9oA@mail.gmail.com>
- <20231002102231.GA3075015@myrica>
- <CANW9uyu85z9+-v8ait9EWcjWRu1+C8Xx3cM__8oBKof7fJwRwA@mail.gmail.com>
- <20231004105558.GA1454132@myrica>
-In-Reply-To: <20231004105558.GA1454132@myrica>
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-Date: Mon, 16 Oct 2023 15:30:30 -0600
-Message-ID: <CANLsYky87enj0bkSs_PaKE=rM7odowfXZ2bT6W0KJ1RFyZApwg@mail.gmail.com>
-Subject: Re: Quick start guide on RME emulation
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: Itaru Kitayama <itaru.kitayama@gmail.com>, qemu-arm@nongnu.org, 
- Shashi Mallela <shashi.mallela@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=195.54.195.159; envelope-from=mironov@fintech.ru;
+ helo=exchange.fintech.ru
+X-Spam_score_int: 38
+X-Spam_score: 3.8
+X-Spam_bar: +++
+X-Spam_report: (3.8 / 5.0 requ) BAYES_00=-1.9, CHARSET_FARAWAY_HEADER=3.2,
+ HTML_MESSAGE=0.001, MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 16 Oct 2023 18:24:05 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,300 +101,176 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VFtKu0NEn8nK
+X-TUID: 22KQ96EBR+Hk
 
-Hi Jean-philippe,
+--_000_9683808b184c4ab3b273ebffe6d66c6afintechru_
+Content-Type: text/plain; charset="koi8-r"
+Content-Transfer-Encoding: quoted-printable
 
-Following the steps herein I have the following questions - please see below.
+Yes, the warning was initially received in the static analyzer SVACE,
 
-On Wed, 4 Oct 2023 at 04:55, Jean-Philippe Brucker
-<jean-philippe@linaro.org> wrote:
->
-> On Mon, Oct 02, 2023 at 07:52:28PM +0900, Itaru Kitayama wrote:
-> > Jean,
-> > It is indeed the latter. Itd be good if we could test how far we can go in
-> > terms of launching a Realm guest via the CCA aware KVM.
->
-> Here is a draft doc that explains how to build and run the whole stack.
-> I'm not sure where such a document should go. Maybe the QEMU wiki would be
-> best, since these instructions will change frequently.
->
-> Note:
->
-> * The following instructions are for QEMU virt machine (just because it's
->   the one I'm familiar with). The sbsa-ref machine will be supported.
->
-> * I haven't tried to run a secure payload yet, there might be some
->   outstanding bugs. Secure payload such as optee would be packaged with
->   TF-A as BL32.
->
-> * I need to rebase the guest edk2 support, so didn't include instructions
->   for that.
->
-> Software components:
->
->            |              |              |
->            |    REALM     |  NON-SECURE  |
->            |              |              |
->     -------+--------------+--------------+
->            |              |              |
->       EL0  | Guest Rootfs |  Host Rootfs |
->            |              |  VMM         |
->            |              |              |
->     -------+--------------+--------------+
->            |              |              |
->       EL1  |        EDK2  |              |
->            | Linux Guest  |              |
->            |              |  EDK2        |
->     -------+--------------+  Linux Host  |
->            |              |    (KVM)     |
->       EL2  |      TF-RMM  |              |
->            |              |              |
->     -------+--------------+--------------+
->            |                             |
->       EL3  |            TF-A             |
->            |                             |
->     -------+-----------------------------+
->            |                             |
->       HW   |            QEMU             |
->            |                             |
->     -------+-----------------------------+
->
->
-> TF-RMM
-> ------
->
-> The Realm Management Monitor (RMM) connects KVM and the Realm guest.
->
-> RMM gets loaded into NS DRAM (because there isn't enough space in Secure
-> RAM). TF-A carves out 24MB of memory for the RMM, and tells other software
-> about it using a device-tree reserved memory node.
->
-> Status: QEMU support is currently under review. Additional patches are
->   needed until QEMU supports a couple additional features that are
->   mandatory for RME (PMUv3p7 and ECV).
->
-> Repo: currently at https://jpbrucker.net/git/rmm/ branch qemu-rme
->       official is https://git.trustedfirmware.org/TF-RMM/tf-rmm.git/
->
-> Build:  git submodule update --init --recursive
->         export CROSS_COMPILE=aarch64-linux-gnu-
->         cmake -DCMAKE_BUILD_TYPE=Debug -DRMM_CONFIG=qemu_virt_defcfg -DRMM_TOOLCHAIN=llvm -B build-qemu
->         cmake --build build-qemu
->
+the same type as Coverity.
 
-The -DRMM_TOOLCHAIN part puzzled me since it was not in the RMM build
-instruction for the FVP model.  Is it mandatory and if so, what
-version of llvm are you using?  As with the FVP model, I used the
-following:
+In this case, return value of a function 'get_arm_cp_reginfo' is referenced
+at helper.c without checking for ALL, but it is usually checked for this fu=
+nction (8/9).
 
-CROSS_COMPILE=/home/mpoirier/work/cca/optee-cca/toolchains/aarch64-none-elf/bin/aarch64-none-elf-
-cmake -DRMM_CONFIG=qemu_virt_defcfg -DCMAKE_BUILD_TYPE=Debug
--DLOG_LEVEL=40 -B build
-cmake --build build
+________________________________
+=EF=D4: Peter Maydell <peter.maydell@linaro.org>
+=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF: 16 =CF=CB=D4=D1=C2=D2=D1 2023 =C7. 19:23
+=EB=CF=CD=D5: =ED=C9=D2=CF=CE=CF=D7 =F3=C5=D2=C7=C5=CA =F7=CC=C1=C4=C9=CD=
+=C9=D2=CF=D7=C9=DE
+=EB=CF=D0=C9=D1: qemu-devel@nongnu.org; qemu-arm@nongnu.org
+=F4=C5=CD=C1: Re: [PATCH 1/1] target/arm: Adding a check for the result of =
+calling the CPU information check function
 
-The "aarch64-none-elf" is exactly the same as the one in the FVP model.
+On Thu, 12 Oct 2023 at 09:57, Sergey Mironov <mironov@fintech.ru> wrote:
+>
+> 6 out of 7 calls to get_arm_cp_reginfo() are checked
 
->
-> Host EDK2
-> ---------
->
-> Works out of the box, although it doesn't properly account for reserved
-> RMM memory yet.
->
+This sounds like it's talking about a Coverity warning, though
+it doesn't say so. Is that the motivation here ? If so,
+it would be good to say so in the commit message. If not,
+the commit message should explain why we're making the change.
 
-Not sure what to make of the above statement - should I expect the
-host boot stack to crash when launching QEMU?
+That particular Coverity warning is quite prone to false
+positives, since it's only a heuristic. Sometimes it's
+useful to add an assert(), if it helps both Coverity and
+human readers, but not always.
 
-> Repo: https://github.com/tianocore/edk2.git
->
-> Build:  git submodule update --init --recursive
->         source edksetup.sh
->         make -j -C BaseTools
->         export GCC5_AARCH64_PREFIX=aarch64-linux-gnu-
->         build -b RELEASE -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemuKernel.dsc
->
+assert()s are also most useful if there's a comment that explains
+why we can assume the thing they're assuming, as Alex suggests.
 
-This compiled properly.
-
->
-> TF-A
-> ----
->
-> TF-A loads the RMM as well as the Non-secure firmware, and bridges RMM and
-> KVM. It also owns the Granule Protection Table (GPT).
->
-> Status: QEMU support is currently under review.
->
-> Repo: currently at https://jpbrucker.net/git/tf-a/ branch qemu-rme
->       official is https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/
->
-> Build:  # Embed the RMM image and edk2 into the Final Image Package (FIP)
->         make -j CROSS_COMPILE=aarch64-linux-gnu- PLAT=qemu
->                 ENABLE_RME=1 DEBUG=1 LOG_LEVEL=40
->                 RMM=rmm/build-qemu/Debug/rmm.img
->                 BL33=edk2/Build/ArmVirtQemuKernel-AARCH64/RELEASE_GCC5/FV/QEMU_EFI.fd
->                 all fip
->
->         # Pack whole image into flash.bin
->         dd if=tfa/build/qemu/debug/bl1.bin of=flash.bin
->         dd if=tfa/build/qemu/debug/fip.bin of=flash.bin seek=64 bs=4096
->
-
-This compiled properly.
-
->
-> Host & Guest Linux
-> ------------------
->
-> Both host and guest need extra patches
->
-> Status: https://lore.kernel.org/linux-arm-kernel/20231002124311.204614-1-suzuki.poulose@arm.com/
->
-> Repo: https://gitlab.arm.com/linux-arm/linux-cca cca-full/rmm-v1.0-eac2
->
-> Build: arm64 defconfig
->
->
-
-This compiled properly.
-
-> VMM
+> Signed-off-by: Sergey Mironov <mironov@fintech.ru>
 > ---
+>  target/arm/helper.c | 1 +
+>  1 file changed, 1 insertion(+)
 >
-> Kvmtool and QEMU can be used to launch Realm guests. For kvmtool, see the
-> cover letter for the Linux support above.
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 74fbb6e1d7..cffbbaf571 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -198,6 +198,7 @@ static void add_cpreg_to_list(gpointer key, gpointer =
+opaque)
+>      uint32_t regidx =3D (uintptr_t)key;
+>      const ARMCPRegInfo *ri =3D get_arm_cp_reginfo(cpu->cp_regs, regidx);
 >
-> Status: In development
->
-> Repo: for now https://jpbrucker.net/git/qemu/ branch cca/rmm-v1.0-eac2
->
-> Build:  git submodule update --init --recursive
->         # to download the missing subprojects because buildroot won't do it:
->         ./configure --target-list=aarch64-softmmu
->         # Note: when buildroot is configured to use this tree (see below),
->         # it will rsync the whole tree including binary files. Therefore,
->         # use a separate build directory to make the system emulation
->         # QEMU, to avoid conflicts between native binary files and
->         # buildroot's cross-build.
->
+> +    assert(ri !=3D NULL);
 
-This got a little tricky.  From what I understand this is the
-"emulation" QEMU, which should likely be in a directory called
-"qemu.host".  The QEMU referenced from buildroot should be in another
-directory, something like "qemu.buildroot", for buildroot to build.
-Is this correct?
+>      if (!(ri->type & (ARM_CP_NO_RAW | ARM_CP_ALIAS))) {
+>          cpu->cpreg_indexes[cpu->cpreg_array_len] =3D cpreg_to_kvm_id(reg=
+idx);
+>          /* The value array need not be initialized at this point */
+> --
+> 2.31.1
 
->
-> Rootfs
-> ------
->
-> Buildroot provides a convenient way to build lightweight root filesystems.
-> It can also embed the VMM into the rootfs if you specify the path to
-> kvmtool or QEMU source in a local.mk file in the build directory.
->
-> Repo: https://gitlab.com/buildroot.org/buildroot.git
->
+thanks
+-- PMM
 
-Did you use the master branch or a stable one?  If so, which one?
+--_000_9683808b184c4ab3b273ebffe6d66c6afintechru_
+Content-Type: text/html; charset="koi8-r"
+Content-Transfer-Encoding: quoted-printable
 
-> local.mk
->         KVMTOOL_OVERRIDE_SRCDIR = path/to/kvmtool/
->         QEMU_OVERRIDE_SRCDIR = path/to/qemu/
->
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dkoi8-r">
+<style type=3D"text/css" style=3D"display:none;"><!-- P {margin-top:0;margi=
+n-bottom:0;} --></style>
+</head>
+<body dir=3D"ltr">
+<div id=3D"divtagdefaultwrapper" style=3D"font-size:12pt;color:#000000;font=
+-family:Calibri,Helvetica,sans-serif;" dir=3D"ltr">
+<div id=3D"divtagdefaultwrapper" style=3D"font-size: 12pt; color: rgb(0, 0,=
+ 0); font-family: Calibri, Helvetica, sans-serif, EmojiFont, &quot;Apple Co=
+lor Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Segoe UI=
+ Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols;" dir=3D"ltr">
+<p><span>Yes, the warning was initially received in the static analyzer SVA=
+CE,&nbsp;</span></p>
+<p><span>the same type as Coverity.</span><br>
+</p>
+<div id=3D"divtagdefaultwrapper" style=3D"font-size: 12pt; color: rgb(0, 0,=
+ 0); font-family: Calibri, Helvetica, sans-serif, EmojiFont, &quot;Apple Co=
+lor Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Segoe UI=
+ Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols;" dir=3D"ltr">
+<br>
+</div>
+<span>In this case, return value of a function 'get_arm_cp_reginfo' is refe=
+renced&nbsp;</span></div>
+<div id=3D"divtagdefaultwrapper" style=3D"font-size: 12pt; color: rgb(0, 0,=
+ 0); font-family: Calibri, Helvetica, sans-serif, EmojiFont, &quot;Apple Co=
+lor Emoji&quot;, &quot;Segoe UI Emoji&quot;, NotoColorEmoji, &quot;Segoe UI=
+ Symbol&quot;, &quot;Android Emoji&quot;, EmojiSymbols;" dir=3D"ltr">
+<span>at helper.c without checking for ALL, but it is usually checked for t=
+his function (8/9).</span><br>
+<br>
+<div style=3D"color: rgb(0, 0, 0);">
+<div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
+color=3D"#000000" style=3D"font-size:11pt"><b>=EF=D4:</b> Peter Maydell &lt=
+;peter.maydell@linaro.org&gt;<br>
+<b>=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF:</b> 16 =CF=CB=D4=D1=C2=D2=D1 2023 =C7. 1=
+9:23<br>
+<b>=EB=CF=CD=D5:</b> =ED=C9=D2=CF=CE=CF=D7 =F3=C5=D2=C7=C5=CA =F7=CC=C1=C4=
+=C9=CD=C9=D2=CF=D7=C9=DE<br>
+<b>=EB=CF=D0=C9=D1:</b> qemu-devel@nongnu.org; qemu-arm@nongnu.org<br>
+<b>=F4=C5=CD=C1:</b> Re: [PATCH 1/1] target/arm: Adding a check for the res=
+ult of calling the CPU information check function</font>
+<div>&nbsp;</div>
+</div>
+</div>
+<font size=3D"2"><span style=3D"font-size:10pt;">
+<div class=3D"PlainText">On Thu, 12 Oct 2023 at 09:57, Sergey Mironov &lt;m=
+ironov@fintech.ru&gt; wrote:<br>
+&gt;<br>
+&gt; 6 out of 7 calls to get_arm_cp_reginfo() are checked<br>
+<br>
+This sounds like it's talking about a Coverity warning, though<br>
+it doesn't say so. Is that the motivation here ? If so,<br>
+it would be good to say so in the commit message. If not,<br>
+the commit message should explain why we're making the change.<br>
+<br>
+That particular Coverity warning is quite prone to false<br>
+positives, since it's only a heuristic. Sometimes it's<br>
+useful to add an assert(), if it helps both Coverity and<br>
+human readers, but not always.<br>
+<br>
+assert()s are also most useful if there's a comment that explains<br>
+why we can assume the thing they're assuming, as Alex suggests.<br>
+<br>
+&gt; Signed-off-by: Sergey Mironov &lt;mironov@fintech.ru&gt;<br>
+&gt; ---<br>
+&gt;&nbsp; target/arm/helper.c | 1 &#43;<br>
+&gt;&nbsp; 1 file changed, 1 insertion(&#43;)<br>
+&gt;<br>
+&gt; diff --git a/target/arm/helper.c b/target/arm/helper.c<br>
+&gt; index 74fbb6e1d7..cffbbaf571 100644<br>
+&gt; --- a/target/arm/helper.c<br>
+&gt; &#43;&#43;&#43; b/target/arm/helper.c<br>
+&gt; @@ -198,6 &#43;198,7 @@ static void add_cpreg_to_list(gpointer key, gp=
+ointer opaque)<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; uint32_t regidx =3D (uintptr_t)key;<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; const ARMCPRegInfo *ri =3D get_arm_cp_re=
+ginfo(cpu-&gt;cp_regs, regidx);<br>
+&gt;<br>
+&gt; &#43;&nbsp;&nbsp;&nbsp; assert(ri !=3D NULL);<br>
+<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!(ri-&gt;type &amp; (ARM_CP_NO_RAW |=
+ ARM_CP_ALIAS))) {<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cpu-&gt;cpreg_in=
+dexes[cpu-&gt;cpreg_array_len] =3D cpreg_to_kvm_id(regidx);<br>
+&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* The value arr=
+ay need not be initialized at this point */<br>
+&gt; --<br>
+&gt; 2.31.1<br>
+<br>
+thanks<br>
+-- PMM<br>
+</div>
+</span></font></div>
+</div>
+</div>
+</body>
+</html>
 
-Please confirm that "local.mk" is not part of the buildroot repository
-and needs to be created.  Also confirm that KVMTOOLS don't need to be
-specified, this is for demonstration purposes.  And following my
-comment above, "path/to/qemu" should be "path/to/qemu.buildroot".
-
-> Build:  make qemu_aarch64_virt_defconfig
->         # then change some options
->           # BR2_LINUX_KERNEL is not set
->           BR2_PACKAGE_KVMTOOL=y
->           BR2_PACKAGE_QEMU=y
->           BR2_PACKAGE_QEMU_SYSTEM=y
->           # BR2_PACKAGE_QEMU_BLOBS is not set
->           BR2_PACKAGE_QEMU_SLIRP=y
->           BR2_PACKAGE_QEMU_CHOOSE_TARGETS=y
->           BR2_PACKAGE_QEMU_TARGET_AARCH64=y
->           BR2_TARGET_ROOTFS_EXT2_SIZE=256M
->
-
-I used branch 2023.08.x and several of the above options were _not_
-present in the ".config" file, namely BR2_PACKAGE_QEMU_SYSTEM,
-BR2_PACKAGE_QEMU_BLOBS, BR2_PACKAGE_QEMU_SLIRP,
-BR2_PACKAGE_QEMU_CHOOSE_TARGETS and BR2_PACKAGE_QEMU_TARGET_AARCH64.
-Moreover, I tried building buildroot without any changes to the
-".config" file and the compilation failed.  This leads me to beleive
-we are working on different branches.  I will try the master branch
-once I am done with this email.
-
-Clarifications on the above points would be great.
-
-Thanks,
-Mathieu
-
->           # Generate an initrd for the guest
->           BR2_TARGET_ROOTFS_CPIO=y
->
->         make
->
->
-> QEMU system emulation
-> ---------------------
->
-> Repo: https://gitlab.com/qemu-project/qemu.git
->
-> Run with:
->
->         qemu-system-aarch64 -M virt,virtualization=on,secure=on,gic-version=3
->                 -M acpi=off -cpu max,x-rme=on,sme=off -m 3G -smp 8
->                 -nographic
->                 -bios tf-a/flash.bin
->                 -kernel linux/arch/arm64/boot/Image
->                 -drive format=raw,if=none,file=buildroot/output/images/rootfs.ext4,id=hd0
->                 -device virtio-blk-pci,drive=hd0
->                 -append root=/dev/vda
->
-> To use separate consoles for FW (port 54320), secure payload (54321), host
-> (54322) and guest (54323):
->
->                 -nodefaults
->                 -serial tcp:localhost:54320
->                 -serial tcp:localhost:54321
->                 -chardev socket,mux=on,id=hvc0,port=54322,host=localhost
->                 -device virtio-serial-device
->                 -device virtconsole,chardev=hvc0
->                 -chardev socket,mux=on,id=hvc1,port=54323,host=localhost
->                 -device virtio-serial-device
->                 -device virtconsole,chardev=hvc1
->                 -append "root=/dev/vda console=hvc0"
->                 -device virtio-net-pci,netdev=net0 -net user,id=net0
->
->   And connect with 'socat -,rawer TCP-LISTEN:5432x'
->
-> To share the files needed for booting the guest:
->
->                 -device virtio-9p-device,fsdev=shr0,mount_tag=shr0
->                 -fsdev local,security_model=none,path=.,id=shr0
->
->   And 'mount -t 9p shr0 /mnt' in the host.
->
->
-> Then in the host, launch a Realm guest:
->
->         qemu-system-aarch64 -M virt,acpi=off,gic-version=3 -nographic
->                 -cpu host -enable-kvm -smp 2 -m 512M -overcommit mem-lock=on
->                 -kernel /mnt/linux/arch/arm64/boot/Image
->                 -initrd /mnt/buildroot/output/images/rootfs.cpio
->                 -append "console=hvc0 root=/dev/vda"
->                 -M confidential-guest-support=rme0
->                 -object rme-guest,id=rme0,measurement-algo=sha512,num-pmu-counters=6,sve-vector-length=256
->                 -nodefaults -chardev stdio,mux=on,id=hvc0,signal=off
->                 -device virtio-serial-pci -device virtconsole,chardev=hvc0
->                 -device virtio-net-pci,netdev=net0,romfile= -netdev user,id=net0
->                 </dev/hvc1 >/dev/hvc1 &
->         ...
->         [    0.000000] RME: RSI version 13.0 advertised
->
+--_000_9683808b184c4ab3b273ebffe6d66c6afintechru_--

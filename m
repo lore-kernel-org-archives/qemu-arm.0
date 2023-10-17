@@ -1,85 +1,85 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4180817ejc;
-        Tue, 17 Oct 2023 13:26:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGmwT7e4CFTvBKtOKJn6M8A+6rPIMV9yBsXTdKgoSyCtIizklpH2IBqPXD+WaMrhfrPt/YT
-X-Received: by 2002:a05:620a:318a:b0:76a:ece7:2071 with SMTP id bi10-20020a05620a318a00b0076aece72071mr4391186qkb.41.1697574390665;
-        Tue, 17 Oct 2023 13:26:30 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1697574390; cv=pass;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4180889ejc;
+        Tue, 17 Oct 2023 13:26:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFOci/OuyW6CSmLIZRIK28YPm5tXkn/6xawQS5MaOkIpw+WbrGfyjQTCbvX3hOywYL18kxe
+X-Received: by 2002:ad4:5cea:0:b0:66d:2090:d22 with SMTP id iv10-20020ad45cea000000b0066d20900d22mr4957927qvb.35.1697574401118;
+        Tue, 17 Oct 2023 13:26:41 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1697574401; cv=pass;
         d=google.com; s=arc-20160816;
-        b=WHwqU3xhkFWK+tsCNppcPk3Y+22Pf0YIcmaDDB0myIfrsIYD5lSd0Bt/9vjKaQikt2
-         dbpARpRRQ8sL9KRnMp41GuLTOxwS4rZ0nw94xQ57UCMHEfnwITocQ5+pkDdUf+zBNl4s
-         uC+SighGLcatFfvq9Byb809oC7I5K75sj74DPfi4je8A9jCwwa+sssBsM/fktVJEG34w
-         O1EG5LZc9z3kCDyGWhQ3rPQY+pUYns/lLa7ZjR9LpH8AoU54A8ER8aFugYCQGZP07YcP
-         sVjSzt/ODxxwvsFnKVbhOwSSdC2eQyuw9QknwhH2CE9KFM6RazCJfJG/r/c+UJhEpwqB
-         BzeA==
+        b=i94v5mDumU+alu93jr6TiDBtUa1KXryvitGI0hSeB5jiH7agTLdMA7tttJmBeKQzFs
+         3AE2D9zwK4nE+Zakx6cJbO88FRT8+0ZpEKniiMM+ihfs9CsKGKhj/kTlmD8dW/hC4/OC
+         6DYdIMeIu1oQhNrTo7n0fjTNwzo7Xw09k5T+QzpSF0cqWuTWfgUGUNUxU3Tn/tFxIfk5
+         8ItpXKrhQyvGqjcLeVrsuwp3ma7hNAGvKxfjrU4Hbe/3ka+j4yJ1XnGxuBoNn1oH4+s0
+         JdNuIg5F2QjQgBfddpQuj9MkqEkNXs8SiUBt1xO2RALzFnVPFAWt3syp+Yj9o+y1gWEU
+         rdfQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=SmoVqKpHJv02WQOVFouzw4IskBOZEEJDik76TxVclHM=;
+        bh=JpFZ+m3FMZcFkiO8EUyTwZ2nJYfSiCBTYgSFpHc6ywA=;
         fh=kvjuwtH9giDGfGlPwmo1t0Db25iSxi7YMBDJIv/6/Us=;
-        b=bcFyDPC4znctUqqg8mzY8TT3tmvykLbEG7xBkVXJDTplxqvvUsSnguzCFlEhZZhdyl
-         yLpoh1GxDZ6SGLrsqsfAjp1tAjlJc0M26uclOSl3FvrPFqaM4e0R9+nh56OUOCDQ7XfD
-         1uYlJcx8lMj+fVmkaqG8z04uwv77/JPnhCiXPPBmVz4Oo810bxdJC4Q10qmIkFm5abfz
-         9I8Wl8ai+7MVw+50PvnQmnOIRJ2q4mXiW2+uyHBbQ0Zc+NF64TX3ExQmThgd9okioIrA
-         /5qg7NqZ/Q4ziItXqYamIq1nUyyRA4r2FSsvZYX6Dx6uTe1mQEu/YOE2ARywDldHh3j5
-         /cPw==
+        b=0USN3mDlVTNQmbARtkBfe983/f4me+6Y4/edTEXAj8zgCMLLBmMnv1ThaLUrxO7gvz
+         qEAuIQSq2qgkb8ceoQ77DWn1zVYs/QwFipg+wP9i6B2GmM1ZdCUDIazmGTBfAxWz3M9p
+         SRO2gV6I3OmBgFkhH6gjYVI+xyipfG9SIlgH5Onq9BZMycnHpHB7ErsTcdHvH1nAU7NG
+         1qNA+b5nkZNtEvvEl/xTx4KoTbNWcf/HRUjUZkdn6DZljw2A9w68LFDYYvPsAje/fAwK
+         uGilcbf1H+LH5CeeScCMYT7ioPti8YLF2tbl0RtboePle2EtNgdqTyixErcA2cpw01wq
+         xaXA==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="sf/ZGREP";
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=vE4YRS4N;
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s10-20020a05620a080a00b0076eef941267si1604814qks.495.2023.10.17.13.26.30
+        by mx.google.com with ESMTPS id u19-20020a0cb413000000b0066cf2fa02c6si1519503qve.201.2023.10.17.13.26.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 13:26:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Oct 2023 13:26:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="sf/ZGREP";
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=vE4YRS4N;
        arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qsqdQ-0007VT-50; Tue, 17 Oct 2023 16:25:48 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qsqdk-0007d5-76; Tue, 17 Oct 2023 16:26:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1qspzl-00044J-MI; Tue, 17 Oct 2023 15:44:49 -0400
-Received: from mail-dm6nam11on2060b.outbound.protection.outlook.com
- ([2a01:111:f400:7eaa::60b]
+ id 1qspzp-000455-IB; Tue, 17 Oct 2023 15:44:53 -0400
+Received: from mail-dm6nam11on20608.outbound.protection.outlook.com
+ ([2a01:111:f400:7eaa::608]
  helo=NAM11-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1qspzj-0000v2-LD; Tue, 17 Oct 2023 15:44:49 -0400
+ id 1qspzn-0000vm-JD; Tue, 17 Oct 2023 15:44:53 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=aQK7VuFCY61YnFxdEFXkPzMm4joEf6IrjHpo6iXNL3ilQgDJF8JD98lacbFknK8LVBr/wKTDlEO36fGXseVNK8Nb3Pa2j6ESFXujujVgZaH3m38HGlCRNuwlWq7hKlXxbd202RaDebglY/CZdPOLia0OYpJ+gQIKoClLAbGQ7DeC5vIFdxs4TbdO1oPvQ0sIyfwY/QRnJ6a2U4m1/68bl8HclPZ1PwCUGEMD2fTIFQM1BeMTwWWEM/S9FvCY9okkiGt0XDf6ndod0iFKoOnHhY0GRQdxGH3xXeW+1XV3/lGfDQPVirym+oGWKWWRbsVWnew9FH9f0wsNWClDov3W1g==
+ b=FCy/iamP79AIRKb6WL4OgvNcPP9jxorXzN1kqRhIzWowCmUBphbBO3dH4+03fKGzolhlkS/FUhULq1MIbmtNC8PFtU37n5aMNDxss4jKgBisUACPSEuHsrSJWCVWo6WTYPA9tOkxMYGX8O911pzlpj/TqE4KT8gq94AonGwcrnFnDtIe+I/Q1nTpMXIw2i+oovwhkNHm2LohmioOaJzcYsC8SDO7aWojmcflswJ97NfEzuQjXSbPAplu46hEQl07ZzXjgKn1c1D9NhNecRxv07QoO5CDZLDupBB6nSiy17ftBDj7CgVLiHyWCLyNK+/mJozEJQXIaznQkAJQ4QLaGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=SmoVqKpHJv02WQOVFouzw4IskBOZEEJDik76TxVclHM=;
- b=KMhKZDzjCs1IPjgUDTSR39V1kZ0ugWkt8IAgm+2YS47LeMrOgzJpzI6SOmgCOVx7qlqTq/4tvJ5otnat38SBGvW/lEBuOV43DL7OO98q7mTvzcYyqnBSxcfmSH+fZHlGGEoZ9GEhWcjcSbM35Tj1U7Pr1LaGTG59wyxSBHSx1ZnqDCS1ECJwlME+KRHm5HzWHXdcZtROAR9ITzP6D62dkxE15AEP2iLgVKv3XfW3s2WJOnBm2xCzmScp4+Pi2ntDru/XKYFAcHMeb1InOO7tnUAVDlObEy1bmVNaGpFjUghk1pHbXLdQBZsfT8sML8GpnMdnfV6V54Ilqj7o0YRAlg==
+ bh=JpFZ+m3FMZcFkiO8EUyTwZ2nJYfSiCBTYgSFpHc6ywA=;
+ b=IIhPUDK8wQfWKQNdsJU2evtb2essWfG+Hg0TYu+Y+bq5N1FvieBbN1BOZIrV65KIW93mbHfnIBipl1MIugwYcUUJTw53cOhKkdU1POSYlFCl5ghp3up9eyOCMIiTVmrTcGwCxPDOKsbkdoNcrbHnqEuNnzx1p1+38zjXEvPIg85Xf4BU99otRaEVw/hvqy3zcPyHTnjg/HTcAwTo+1m3XOTsx0HVc3dM3azVlq1BWcBrH9A+oI4ZU7bH1vlRn+6ljGRECofGyrhOuSRH4GWor5mQvg/Kt3HewgDb9n8sDbTSvYF79g/N99yvTi61TRbSxT6SxY5W6SDZS58S3y8KZQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SmoVqKpHJv02WQOVFouzw4IskBOZEEJDik76TxVclHM=;
- b=sf/ZGREPNYyEKtOqJsJ/89f3s1kPCshyQ1ILXBfkLGqDsvzMuTPXPPrbnKdxxHNx2dTLzJBZi6txZCYPeeS3eQfyhfZxOCEAO1j//GpaOB1rDoG9dTt8wYKIbnqx+OmepXR9NtJw7b13dZGGjK5F92WJDJ/79SYxyghNaWLZRGs=
-Received: from BY5PR13CA0034.namprd13.prod.outlook.com (2603:10b6:a03:180::47)
- by DM4PR12MB6160.namprd12.prod.outlook.com (2603:10b6:8:a7::13) with
- Microsoft SMTP Server (version=TLS1_2,
+ bh=JpFZ+m3FMZcFkiO8EUyTwZ2nJYfSiCBTYgSFpHc6ywA=;
+ b=vE4YRS4Nz0saXbTAomnBmRTQLNjPVtntYg0KHEG9Jl5d/Mn/gX1hfOWwBN3FjQTbq4pdQnAAGYR1ERBOrgmIFZOBAgW7og+eG3SLdeRJQue77If15fXzcKUpeWpQBmduXW/BGo/csUG12FNFue8MpO+EP4Ok0m2TPZgeK+E1ylI=
+Received: from BY5PR20CA0034.namprd20.prod.outlook.com (2603:10b6:a03:1f4::47)
+ by IA1PR12MB7520.namprd12.prod.outlook.com (2603:10b6:208:42f::8)
+ with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6886.36; Tue, 17 Oct
- 2023 19:44:43 +0000
-Received: from CO1PEPF000042AA.namprd03.prod.outlook.com
- (2603:10b6:a03:180:cafe::c1) by BY5PR13CA0034.outlook.office365.com
- (2603:10b6:a03:180::47) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.18 via Frontend
- Transport; Tue, 17 Oct 2023 19:44:43 +0000
+ 2023 19:44:47 +0000
+Received: from CO1PEPF000042AB.namprd03.prod.outlook.com
+ (2603:10b6:a03:1f4:cafe::b6) by BY5PR20CA0034.outlook.office365.com
+ (2603:10b6:a03:1f4::47) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6886.36 via Frontend
+ Transport; Tue, 17 Oct 2023 19:44:46 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
@@ -87,16 +87,16 @@ Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
  client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
 Received: from SATLEXMB04.amd.com (165.204.84.17) by
- CO1PEPF000042AA.mail.protection.outlook.com (10.167.243.39) with Microsoft
+ CO1PEPF000042AB.mail.protection.outlook.com (10.167.243.40) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6907.22 via Frontend Transport; Tue, 17 Oct 2023 19:44:43 +0000
+ 15.20.6907.23 via Frontend Transport; Tue, 17 Oct 2023 19:44:46 +0000
 Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB04.amd.com
  (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 17 Oct
- 2023 14:44:41 -0500
+ 2023 14:44:45 -0500
 Received: from luc-work-vm.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
  (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.27 via Frontend
- Transport; Tue, 17 Oct 2023 14:44:40 -0500
+ Transport; Tue, 17 Oct 2023 14:44:44 -0500
 From: Luc Michel <luc.michel@amd.com>
 To: <qemu-devel@nongnu.org>
 CC: Luc Michel <luc.michel@amd.com>, <qemu-arm@nongnu.org>, "Edgar E .
@@ -106,10 +106,10 @@ CC: Luc Michel <luc.michel@amd.com>, <qemu-arm@nongnu.org>, "Edgar E .
  <philmd@linaro.org>, Francisco Iglesias <francisco.iglesias@amd.com>,
  Frederic Konrad <frederic.konrad@amd.com>, Sai Pavan Boddu
  <sai.pavan.boddu@amd.com>
-Subject: [PATCH 05/11] hw/net/cadence_gem: use FIELD to describe DMACFG
- register fields
-Date: Tue, 17 Oct 2023 21:44:16 +0200
-Message-ID: <20231017194422.4124691-6-luc.michel@amd.com>
+Subject: [PATCH 07/11] hw/net/cadence_gem: use FIELD to describe IRQ register
+ fields
+Date: Tue, 17 Oct 2023 21:44:18 +0200
+Message-ID: <20231017194422.4124691-8-luc.michel@amd.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231017194422.4124691-1-luc.michel@amd.com>
 References: <20231017194422.4124691-1-luc.michel@amd.com>
@@ -118,27 +118,27 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PEPF000042AA:EE_|DM4PR12MB6160:EE_
-X-MS-Office365-Filtering-Correlation-Id: 05a7d50b-77cb-4b8e-14a7-08dbcf498294
+X-MS-TrafficTypeDiagnostic: CO1PEPF000042AB:EE_|IA1PR12MB7520:EE_
+X-MS-Office365-Filtering-Correlation-Id: f2fb2be4-dd75-46c2-7542-08dbcf4984ba
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: bW8WpoXWifAEW75DAgKwyJLdVVT0jeslzYbci1jcO9qPY9O83AtfhMiY+rZMfQZ27TCU4CP/nlRm3b5UPo2bS8jekelUKztfU6kOL+hwKgN9s6oHczeD5BollkcO2DkDckowxds7ZQmYyRX5v0lWOxvromh+k7W0zgUXH90kyGzRmFJo6srRh59WQKE5q1EXOlwAEshogVd7TFzb88RTHDkbAJDDazlvL08XAH7Y4t0n5r/YRLfvgJ50eP2nYOt9zsTqu57mJ8WCxpcXGM4nBjf8qSF6XUkmv7rLwSvCZz44cGTLkrUifIjRUjRslLZNn4jwSeRTmdEcg0EwocbQcvyuOV3R8SDxt/W8u/RfUmCmKrtv4kblRR+/tcaNNM6UYsf11Bkhx3WQTssNeNtDTNrBm1I5VN2stW/ccgdJodvp95xWAJfL8u9Hv//QaNtrNAzKW5gdr+EzISNbDSR1ujbiumm0LGvjQr3DNYoD/tsPAL4SdCAqqHk7JL6m8ZyVE2KNfH8yN2jnTyhhqVTtKS2QU74J2FWRpI/0j2d1DLJNufXsM51yPMACOEP/Fz6k8Qtffnk/U3XVu5pAK40+gCojWU/ISE9mqqXYHYzSdHmhNuGzOAn8ePp+Ql4QgTE9xtqCkw+fNeP5ZvXiUXsctnBhubtFbwZYQTuOrLRrasTwU7Ayp5lONkNGt2wvkuaIBAWWKd3mEKs9sZ9hlhEWs2ZYiauFMwx8nSutbxUQ+eHs1WnMJXzWKx3Ww03P74spmn8v1fU3aSsEmttzIHD9vQ==
+X-Microsoft-Antispam-Message-Info: x2irgnGx82jkPb8+YAG6Rq5rsMdPCy5YUnMkhs1fqqJFZq98YiWfv9XflPPUy8k215IVuMdqp/ycynHXdlmA0C03WKwPB1JHGE9JSB2ZbTZImEtYSX4Q0QJwztt3o0BwI09DPu7r3ilDxZtvK3ZstX4OLlQ5q4WL8m+bkfZrKuwleUqTuDiZ5alwEYemZGhdLDv0JnJ1NW3iYOJapoF+Yvz1J/uqiP30lasWE95ne/QaukIRo97yWxZyfjufzqWVTqXhI6CLzX+OU9BMnskGPAbG1AKipWYO0I0SR0bwM66YUsUqpwlOGf5rw+sNzJbJH/XWcUqmbp2nql0zedSSxZgIj4U9nJy10DPFcH73JJ9/JELzgd5oEK7E9uJy4J2AlMxJRfJjljvS4c/0vjrKI8U+BWZrKgih0n2nI9CwbYiBiSxX0zBLPeimJn1moIJimO4yrPjrBwXYbXin04tj8IAM3UrN+cK6ZgSCUc/Zp79nysCKTx7wWoDhehBjgoCaKBrzS4vK2vmepMQrMl7f5FHYj3pj66TdGbhHH20rDKl94AiKX8tyh54MoOm6K7FWf0DOgEXhsne1QGLoFPMUIovkdBg5Lkb3ogBwuPY4XeN+2WD+/siA5T+nKGZJB0BafUsW4EWQxSYFLLzfGIkBf7px2xIhb1BN4kbVLOzDg2wZ7qRhwKCNS16ibmGx+6AFhs6UL5pmbNS16yulINAMgaZZbpnk703zTaRI1CADYACNVZAed/HflqQkLbQTc61/19iSwSfkEAmcAWdFQoF6/w==
 X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(396003)(39860400002)(376002)(346002)(136003)(230922051799003)(82310400011)(1800799009)(64100799003)(186009)(451199024)(40470700004)(46966006)(36840700001)(83380400001)(6666004)(478600001)(2616005)(356005)(81166007)(1076003)(82740400003)(26005)(426003)(336012)(36860700001)(44832011)(40460700003)(5660300002)(41300700001)(8676002)(8936002)(4326008)(316002)(6916009)(47076005)(54906003)(40480700001)(70586007)(86362001)(70206006)(2906002)(36756003)(36900700001);
+ SFS:(13230031)(4636009)(136003)(346002)(396003)(39860400002)(376002)(230922051799003)(1800799009)(451199024)(64100799003)(82310400011)(186009)(36840700001)(46966006)(40470700004)(40460700003)(26005)(2616005)(1076003)(6666004)(8936002)(426003)(70586007)(36860700001)(336012)(83380400001)(8676002)(5660300002)(4326008)(44832011)(47076005)(41300700001)(70206006)(2906002)(478600001)(316002)(6916009)(54906003)(82740400003)(356005)(81166007)(86362001)(36756003)(40480700001)(36900700001);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Oct 2023 19:44:43.1174 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 05a7d50b-77cb-4b8e-14a7-08dbcf498294
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Oct 2023 19:44:46.7869 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: f2fb2be4-dd75-46c2-7542-08dbcf4984ba
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
  Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000042AA.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000042AB.namprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6160
-Received-SPF: softfail client-ip=2a01:111:f400:7eaa::60b;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB7520
+Received-SPF: softfail client-ip=2a01:111:f400:7eaa::608;
  envelope-from=Luc.Michel@amd.com;
  helo=NAM11-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
@@ -148,181 +148,175 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 17 Oct 2023 16:25:46 -0400
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Tue, 17 Oct 2023 16:26:01 -0400
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: c10CruAXjf7e
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iiJrJd7Eq/4N
 
-Use de FIELD macro to describe the DMACFG register fields.
+Use de FIELD macro to describe the IRQ related register fields.
 
 Signed-off-by: Luc Michel <luc.michel@amd.com>
 ---
- hw/net/cadence_gem.c | 48 ++++++++++++++++++++++++++++----------------
- 1 file changed, 31 insertions(+), 17 deletions(-)
+ hw/net/cadence_gem.c | 51 +++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 39 insertions(+), 12 deletions(-)
 
 diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 09f570b6fb..5c386adff2 100644
+index 0acee1d544..6d084a3b31 100644
 --- a/hw/net/cadence_gem.c
 +++ b/hw/net/cadence_gem.c
-@@ -108,11 +108,31 @@ REG32(NWCFG, 0x4) /* Network Config reg */
-     FIELD(NWCFG, IGNORE_IPG_RX_ER, 30, 1)
-     FIELD(NWCFG, UNI_DIRECTION_ENABLE, 31, 1)
+@@ -155,13 +155,46 @@ REG32(RXSTATUS, 0x20) /* RX Status reg */
+     FIELD(RXSTATUS, RECEIVE_OVERRUN, 2, 1)
+     FIELD(RXSTATUS, FRAME_RECEIVED, 1, 1)
+     FIELD(RXSTATUS, BUF_NOT_AVAILABLE, 0, 1)
  
- REG32(NWSTATUS, 0x8) /* Network Status reg */
- REG32(USERIO, 0xc) /* User IO reg */
-+
- REG32(DMACFG, 0x10) /* DMA Control reg */
-+    FIELD(DMACFG, SEND_BCAST_TO_ALL_QS, 31, 1)
-+    FIELD(DMACFG, DMA_ADDR_BUS_WIDTH, 30, 1)
-+    FIELD(DMACFG, TX_BD_EXT_MODE_EN , 29, 1)
-+    FIELD(DMACFG, RX_BD_EXT_MODE_EN , 28, 1)
-+    FIELD(DMACFG, FORCE_MAX_AMBA_BURST_TX, 26, 1)
-+    FIELD(DMACFG, FORCE_MAX_AMBA_BURST_RX, 25, 1)
-+    FIELD(DMACFG, FORCE_DISCARD_ON_ERR, 24, 1)
-+    FIELD(DMACFG, RX_BUF_SIZE, 16, 8)
-+    FIELD(DMACFG, CRC_ERROR_REPORT, 13, 1)
-+    FIELD(DMACFG, INF_LAST_DBUF_SIZE_EN, 12, 1)
-+    FIELD(DMACFG, TX_PBUF_CSUM_OFFLOAD, 11, 1)
-+    FIELD(DMACFG, TX_PBUF_SIZE, 10, 1)
-+    FIELD(DMACFG, RX_PBUF_SIZE, 8, 2)
-+    FIELD(DMACFG, ENDIAN_SWAP_PACKET, 7, 1)
-+    FIELD(DMACFG, ENDIAN_SWAP_MGNT, 6, 1)
-+    FIELD(DMACFG, HDR_DATA_SPLIT_EN, 5, 1)
-+    FIELD(DMACFG, AMBA_BURST_LEN , 0, 5)
-+#define GEM_DMACFG_RBUFSZ_MUL  64         /* DMA RX Buffer Size multiplier */
-+
- REG32(TXSTATUS, 0x14) /* TX Status reg */
- REG32(RXQBASE, 0x18) /* RX Q Base address reg */
- REG32(TXQBASE, 0x1c) /* TX Q Base address reg */
- REG32(RXSTATUS, 0x20) /* RX Status reg */
  REG32(ISR, 0x24) /* Interrupt Status reg */
-@@ -263,17 +283,10 @@ REG32(TYPE2_COMPARE_0_WORD_1, 0x704)
-     FIELD(TYPE2_COMPARE_0_WORD_1, COMPARE_OFFSET, 7, 2)
-     FIELD(TYPE2_COMPARE_0_WORD_1, DISABLE_MASK, 9, 1)
++    FIELD(ISR, TX_LOCKUP, 31, 1)
++    FIELD(ISR, RX_LOCKUP, 30, 1)
++    FIELD(ISR, TSU_TIMER, 29, 1)
++    FIELD(ISR, WOL, 28, 1)
++    FIELD(ISR, RECV_LPI, 27, 1)
++    FIELD(ISR, TSU_SEC_INCR, 26, 1)
++    FIELD(ISR, PTP_PDELAY_RESP_XMIT, 25, 1)
++    FIELD(ISR, PTP_PDELAY_REQ_XMIT, 24, 1)
++    FIELD(ISR, PTP_PDELAY_RESP_RECV, 23, 1)
++    FIELD(ISR, PTP_PDELAY_REQ_RECV, 22, 1)
++    FIELD(ISR, PTP_SYNC_XMIT, 21, 1)
++    FIELD(ISR, PTP_DELAY_REQ_XMIT, 20, 1)
++    FIELD(ISR, PTP_SYNC_RECV, 19, 1)
++    FIELD(ISR, PTP_DELAY_REQ_RECV, 18, 1)
++    FIELD(ISR, PCS_LP_PAGE_RECV, 17, 1)
++    FIELD(ISR, PCS_AN_COMPLETE, 16, 1)
++    FIELD(ISR, EXT_IRQ, 15, 1)
++    FIELD(ISR, PAUSE_FRAME_XMIT, 14, 1)
++    FIELD(ISR, PAUSE_TIME_ELAPSED, 13, 1)
++    FIELD(ISR, PAUSE_FRAME_RECV, 12, 1)
++    FIELD(ISR, RESP_NOT_OK, 11, 1)
++    FIELD(ISR, RECV_OVERRUN, 10, 1)
++    FIELD(ISR, LINK_CHANGE, 9, 1)
++    FIELD(ISR, USXGMII_INT, 8, 1)
++    FIELD(ISR, XMIT_COMPLETE, 7, 1)
++    FIELD(ISR, AMBA_ERROR, 6, 1)
++    FIELD(ISR, RETRY_EXCEEDED, 5, 1)
++    FIELD(ISR, XMIT_UNDER_RUN, 4, 1)
++    FIELD(ISR, TX_USED, 3, 1)
++    FIELD(ISR, RX_USED, 2, 1)
++    FIELD(ISR, RECV_COMPLETE, 1, 1)
++    FIELD(ISR, MGNT_FRAME_SENT, 0, 1)
+ REG32(IER, 0x28) /* Interrupt Enable reg */
+ REG32(IDR, 0x2c) /* Interrupt Disable reg */
+ REG32(IMR, 0x30) /* Interrupt Mask reg */
++
+ REG32(PHYMNTNC, 0x34) /* Phy Maintenance reg */
+ REG32(RXPAUSE, 0x38) /* RX Pause Time reg */
+ REG32(TXPAUSE, 0x3c) /* TX Pause Time reg */
+ REG32(TXPARTIALSF, 0x40) /* TX Partial Store and Forward */
+ REG32(RXPARTIALSF, 0x44) /* RX Partial Store and Forward */
+@@ -306,16 +339,10 @@ REG32(TYPE2_COMPARE_0_WORD_1, 0x704)
      FIELD(TYPE2_COMPARE_0_WORD_1, COMPARE_VLAN_ID, 10, 1)
  
  /*****************************************/
--#define GEM_DMACFG_ADDR_64B    (1U << 30)
--#define GEM_DMACFG_TX_BD_EXT   (1U << 29)
--#define GEM_DMACFG_RX_BD_EXT   (1U << 28)
--#define GEM_DMACFG_RBUFSZ_M    0x00FF0000 /* DMA RX Buffer Size mask */
--#define GEM_DMACFG_RBUFSZ_S    16         /* DMA RX Buffer Size shift */
--#define GEM_DMACFG_RBUFSZ_MUL  64         /* DMA RX Buffer Size multiplier */
--#define GEM_DMACFG_TXCSUM_OFFL 0x00000800 /* Transmit checksum offload */
  
- #define GEM_TXSTATUS_TXCMPL    0x00000020 /* Transmit Complete */
- #define GEM_TXSTATUS_USED      0x00000001 /* sw owned descriptor encountered */
  
- #define GEM_RXSTATUS_FRMRCVD   0x00000002 /* Frame received */
-@@ -367,11 +380,11 @@ REG32(TYPE2_COMPARE_0_WORD_1, 0x704)
+-/* GEM_ISR GEM_IER GEM_IDR GEM_IMR */
+-#define GEM_INT_TXCMPL        0x00000080 /* Transmit Complete */
+-#define GEM_INT_AMBA_ERR      0x00000040
+-#define GEM_INT_TXUSED         0x00000008
+-#define GEM_INT_RXUSED         0x00000004
+-#define GEM_INT_RXCMPL        0x00000002
  
- static inline uint64_t tx_desc_get_buffer(CadenceGEMState *s, uint32_t *desc)
- {
-     uint64_t ret = desc[0];
+ #define GEM_PHYMNTNC_OP_R      0x20000000 /* read operation */
+ #define GEM_PHYMNTNC_OP_W      0x10000000 /* write operation */
+ #define GEM_PHYMNTNC_ADDR      0x0F800000 /* Address bits */
+ #define GEM_PHYMNTNC_ADDR_SHFT 23
+@@ -1002,11 +1029,11 @@ static void gem_get_rx_desc(CadenceGEMState *s, int q)
  
--    if (s->regs[R_DMACFG] & GEM_DMACFG_ADDR_64B) {
-+    if (FIELD_EX32(s->regs[R_DMACFG], DMACFG, DMA_ADDR_BUS_WIDTH)) {
-         ret |= (uint64_t)desc[2] << 32;
+     /* Descriptor owned by software ? */
+     if (rx_desc_get_ownership(s->rx_desc[q]) == 1) {
+         DB_PRINT("descriptor 0x%" HWADDR_PRIx " owned by sw.\n", desc_addr);
+         s->regs[R_RXSTATUS] |= R_RXSTATUS_BUF_NOT_AVAILABLE_MASK;
+-        gem_set_isr(s, q, GEM_INT_RXUSED);
++        gem_set_isr(s, q, R_ISR_RX_USED_MASK);
+         /* Handle interrupt consequences */
+         gem_update_int_status(s);
      }
-     return ret;
  }
  
-@@ -412,25 +425,25 @@ static inline void print_gem_tx_desc(uint32_t *desc, uint8_t queue)
+@@ -1102,11 +1129,11 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+     /* Find which queue we are targeting */
+     q = get_queue_from_screen(s, rxbuf_ptr, rxbufsize);
  
- static inline uint64_t rx_desc_get_buffer(CadenceGEMState *s, uint32_t *desc)
- {
-     uint64_t ret = desc[0] & ~0x3UL;
- 
--    if (s->regs[R_DMACFG] & GEM_DMACFG_ADDR_64B) {
-+    if (FIELD_EX32(s->regs[R_DMACFG], DMACFG, DMA_ADDR_BUS_WIDTH)) {
-         ret |= (uint64_t)desc[2] << 32;
-     }
-     return ret;
- }
- 
- static inline int gem_get_desc_len(CadenceGEMState *s, bool rx_n_tx)
- {
-     int ret = 2;
- 
--    if (s->regs[R_DMACFG] & GEM_DMACFG_ADDR_64B) {
-+    if (FIELD_EX32(s->regs[R_DMACFG], DMACFG, DMA_ADDR_BUS_WIDTH)) {
-         ret += 2;
-     }
--    if (s->regs[R_DMACFG] & (rx_n_tx ? GEM_DMACFG_RX_BD_EXT
--                                       : GEM_DMACFG_TX_BD_EXT)) {
-+    if (s->regs[R_DMACFG] & (rx_n_tx ? R_DMACFG_RX_BD_EXT_MODE_EN_MASK
-+                                     : R_DMACFG_TX_BD_EXT_MODE_EN_MASK)) {
-         ret += 2;
+     if (size > gem_get_max_buf_len(s, false)) {
+         qemu_log_mask(LOG_GUEST_ERROR, "rx frame too long\n");
+-        gem_set_isr(s, q, GEM_INT_AMBA_ERR);
++        gem_set_isr(s, q, R_ISR_AMBA_ERROR_MASK);
+         return -1;
      }
  
-     assert(ret <= DESC_MAX_NUM_WORDS);
-     return ret;
-@@ -940,11 +953,11 @@ static inline uint32_t gem_get_rx_queue_base_addr(CadenceGEMState *s, int q)
+     while (bytes_to_copy) {
+         hwaddr desc_addr;
+@@ -1179,11 +1206,11 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
  
- static hwaddr gem_get_desc_addr(CadenceGEMState *s, bool tx, int q)
- {
-     hwaddr desc_addr = 0;
+     /* Count it */
+     gem_receive_updatestats(s, buf, size);
  
--    if (s->regs[R_DMACFG] & GEM_DMACFG_ADDR_64B) {
-+    if (FIELD_EX32(s->regs[R_DMACFG], DMACFG, DMA_ADDR_BUS_WIDTH)) {
-         desc_addr = s->regs[tx ? R_TBQPH : R_RBQPH];
-     }
-     desc_addr <<= 32;
-     desc_addr |= tx ? s->tx_desc_addr[q] : s->rx_desc_addr[q];
-     return desc_addr;
-@@ -1022,12 +1035,13 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
-     rxbuf_offset = FIELD_EX32(s->regs[R_NWCFG], NWCFG, RECV_BUF_OFFSET);
+     s->regs[R_RXSTATUS] |= R_RXSTATUS_FRAME_RECEIVED_MASK;
+-    gem_set_isr(s, q, GEM_INT_RXCMPL);
++    gem_set_isr(s, q, R_ISR_RECV_COMPLETE_MASK);
  
-     /* The configure size of each receive buffer.  Determines how many
-      * buffers needed to hold this packet.
-      */
--    rxbufsize = ((s->regs[R_DMACFG] & GEM_DMACFG_RBUFSZ_M) >>
--                 GEM_DMACFG_RBUFSZ_S) * GEM_DMACFG_RBUFSZ_MUL;
-+    rxbufsize = FIELD_EX32(s->regs[R_DMACFG], DMACFG, RX_BUF_SIZE);
-+    rxbufsize *= GEM_DMACFG_RBUFSZ_MUL;
-+
-     bytes_to_copy = size;
+     /* Handle interrupt consequences */
+     gem_update_int_status(s);
  
-     /* Hardware allows a zero value here but warns against it. To avoid QEMU
-      * indefinite loops we enforce a minimum value here
-      */
-@@ -1306,11 +1320,11 @@ static void gem_transmit(CadenceGEMState *s)
+     return size;
+@@ -1292,11 +1319,11 @@ static void gem_transmit(CadenceGEMState *s)
+                                                (p - s->tx_packet)) {
+                 qemu_log_mask(LOG_GUEST_ERROR, "TX descriptor @ 0x%" \
+                          HWADDR_PRIx " too large: size 0x%x space 0x%zx\n",
+                          packet_desc_addr, tx_desc_get_length(desc),
+                          gem_get_max_buf_len(s, true) - (p - s->tx_packet));
+-                gem_set_isr(s, q, GEM_INT_AMBA_ERR);
++                gem_set_isr(s, q, R_ISR_AMBA_ERROR_MASK);
+                 break;
+             }
+ 
+             /* Gather this fragment of the packet from "dma memory" to our
+              * contig buffer.
+@@ -1330,11 +1357,11 @@ static void gem_transmit(CadenceGEMState *s)
+                                          4 * gem_get_desc_len(s, false);
+                 }
+                 DB_PRINT("TX descriptor next: 0x%08x\n", s->tx_desc_addr[q]);
+ 
+                 s->regs[R_TXSTATUS] |= R_TXSTATUS_TRANSMIT_COMPLETE_MASK;
+-                gem_set_isr(s, q, GEM_INT_TXCMPL);
++                gem_set_isr(s, q, R_ISR_XMIT_COMPLETE_MASK);
  
                  /* Handle interrupt consequences */
                  gem_update_int_status(s);
  
                  /* Is checksum offload enabled? */
--                if (s->regs[R_DMACFG] & GEM_DMACFG_TXCSUM_OFFL) {
-+                if (FIELD_EX32(s->regs[R_DMACFG], DMACFG, TX_PBUF_CSUM_OFFLOAD)) {
-                     net_checksum_calculate(s->tx_packet, total_bytes, CSUM_ALL);
-                 }
+@@ -1380,11 +1407,11 @@ static void gem_transmit(CadenceGEMState *s)
  
-                 /* Update MAC statistics */
-                 gem_transmit_updatestats(s, s->tx_packet, total_bytes);
-@@ -1330,11 +1344,11 @@ static void gem_transmit(CadenceGEMState *s)
-                 total_bytes = 0;
+         if (tx_desc_get_used(desc)) {
+             s->regs[R_TXSTATUS] |= R_TXSTATUS_USED_BIT_READ_MASK;
+             /* IRQ TXUSED is defined only for queue 0 */
+             if (q == 0) {
+-                gem_set_isr(s, 0, GEM_INT_TXUSED);
++                gem_set_isr(s, 0, R_ISR_TX_USED_MASK);
              }
- 
-             /* read next descriptor */
-             if (tx_desc_get_wrap(desc)) {
--                if (s->regs[R_DMACFG] & GEM_DMACFG_ADDR_64B) {
-+                if (FIELD_EX32(s->regs[R_DMACFG], DMACFG, DMA_ADDR_BUS_WIDTH)) {
-                     packet_desc_addr = s->regs[R_TBQPH];
-                     packet_desc_addr <<= 32;
-                 } else {
-                     packet_desc_addr = 0;
-                 }
+             gem_update_int_status(s);
+         }
+     }
+ }
 -- 
 2.39.2
 

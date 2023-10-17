@@ -1,85 +1,85 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3934956ejc;
-        Tue, 17 Oct 2023 06:52:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGGCyVrADNRxUnh8jv5n07CdB8TCMH1Odn1DJa58NPy1KRO25VMAWTlwo36eQrInG9HAOoC
-X-Received: by 2002:a9d:6b17:0:b0:6c0:79ed:be35 with SMTP id g23-20020a9d6b17000000b006c079edbe35mr2301505otp.24.1697550720739;
-        Tue, 17 Oct 2023 06:52:00 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1697550720; cv=pass;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3940487ejc;
+        Tue, 17 Oct 2023 07:01:24 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG/r2cUwayrFoNznm35sKdHq29rWFcDNVg5T72CZeNJJP3ZrZGntWsw9WRHoPFJgxwlWKHu
+X-Received: by 2002:a05:620a:bd4:b0:774:1992:15c9 with SMTP id s20-20020a05620a0bd400b00774199215c9mr2665688qki.42.1697551284588;
+        Tue, 17 Oct 2023 07:01:24 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1697551284; cv=pass;
         d=google.com; s=arc-20160816;
-        b=D1gmM8Y46p39HDpqZWhE61DHcJ2EyProbVBJ44AbT/RUGsU0mjEMxy1pAi8aRnkZwD
-         ttl1dbbrKD5eJvQHiVl/3BKHcFv3QgrVx6O5r3+1IJX+0pG6stSww7Ryw+iOrnZkvI/R
-         c+kV6qXAkTsfsFVEDqroymlWOA4lxjl7eNJTlJ9yfxpSQOWn3yKm+w97LMJc9aeeeIDw
-         ZQg1dBalVkmIC8x5nvAQov02t8GgIxse9LHiIVcv93pstJvVs0ISXHdZgeMDOroNhdBx
-         95h4EESJBIo7a042UtzN1sX5avwqElx1wB2tkyIL6B2ffoKqdBDVm2R9jGANlPmiHwzb
-         e6Ng==
+        b=vJoZjBe5pj2XimgGj1s1nFWKVU5sJJkaBWQBqqGf8p4mCiu6lW1cqq4Rnihr+g6TJ+
+         EcbStPyrBh8M6hu13I2ymGII220Sd0NFiUp/GDH6nbNkA2DollFMckSEJO3dMt3AAttf
+         8UM5KA7xQKxaQ57vAPIwfTIRwbn+b3oS3ZakX+XzKWtqnCykFK5VAkfViJmDbOWFDIQv
+         OHiKT21uyOF4uWOanh1Cqs0AUo3/bmPzs5P9A6QQ3stqnTVsS7LPDqIeqKWQABIqcC0K
+         b5iJbhMJRyFVbci11yZMm7wZ7koJqZSwTaxVoAfNVCmFA1QNuZx2LL1PwaIQxaOyJdxy
+         f4Mg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:msip_labels:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=cu+th3V2yEsN8+2Apt0NdJNT4xylyvt7isfTWA1Mc1E=;
+        bh=gHLT4dVABvGLToa660wpkJrBUtXewQe/hEJnDcMw5f0=;
         fh=B1j8c5i52dzSlSP/tCsmpY4SrX+Oct80AcpVUavgD3w=;
-        b=VUn0g7gLCg/mkFaBxdZNBfFz0buQJfncnb/ZEJPi+TNk3oXDIlWjTlWrh0Q7ngq/p+
-         bn2yMdfkrxvEnQjECgRlaq+cNMKyevzyjs/gl5a+nHRssKdHeZW2EdoLH4j71xl1dO9W
-         65iidLcjmEQcYFot21iNNDGR1IYKNcH+ysX93aI1gkVKC5XWPIBgtIR2vRwEMBs84Zyg
-         x5S14/Mv8F/aD1lnLuXAGSCTvEJLesbHhFkcIm0a1HFW26Gzx1vFMcKmFZAzF1rh4yi0
-         +32EbRVT9+YhociDBe1ENDIXMmMcx8f0+hqobAh8qI9rVBUoBjUnJttQWIHHg2eS+0Qt
-         AIZA==
+        b=veUcBbAyjmjkE/WPg2f7n9JG0M0ZxHL8ukJLpuxgk+Wszx/nX4D3otz4WBNtuNPMPo
+         PISSA58psXsAkiDGZRXMzaEOFVjQPTCIxVjyjW70ehWypoQGod4vuhTUn94AXF7f9iUe
+         /5xQ9ntAbM2cR+tb3+lvpgmJ7QOtGEoeRjBsMnrZbJ0jpfzbM0BxiJzvmC7eAkj1RQd1
+         nL/2+Y9XLFvkjBfMbJlbk5z9DZhNhqL0Cp5yAAR56XK/FJkMMISL7VOsOl/XNndGDLPL
+         /oJxghtQj6uKjeH8FD0AZjKHM6CKmPOHP36CJ1jKpkSb/E3LShF8u91qnaB2BBIEcNbG
+         xH/A==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=jEXXcT+5;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=N8JEf6el;
        arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w14-20020a05622a190e00b0041984a44b47si1195331qtc.26.2023.10.17.06.52.00
+        by mx.google.com with ESMTPS id v2-20020a05620a0f0200b0077592ac6b2fsi1116290qkl.161.2023.10.17.07.01.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 06:52:00 -0700 (PDT)
+        Tue, 17 Oct 2023 07:01:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=jEXXcT+5;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=N8JEf6el;
        arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qskUB-0000Xo-Gu; Tue, 17 Oct 2023 09:51:53 -0400
+	id 1qskdI-00030l-1Q; Tue, 17 Oct 2023 10:01:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1qskU6-0000Sb-9d; Tue, 17 Oct 2023 09:51:46 -0400
-Received: from mail-dm6nam12on20604.outbound.protection.outlook.com
- ([2a01:111:f400:fe59::604]
- helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ id 1qskd7-0002pH-FI; Tue, 17 Oct 2023 10:01:05 -0400
+Received: from mail-bn8nam11on20601.outbound.protection.outlook.com
+ ([2a01:111:f400:7eae::601]
+ helo=NAM11-BN8-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
- id 1qskTz-0006CJ-0g; Tue, 17 Oct 2023 09:51:46 -0400
+ id 1qskd3-00084y-LZ; Tue, 17 Oct 2023 10:01:04 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=oAp9lqz5KhOO5kW9ntbHdMq9cqMfXtMVtWGiRXVKHxtBo0slYKNm7TMF/6L1bHyqLrfBBc7bCFKenJGipgupoTeHs9LDduVPK8N8djnHWfKiBMsJt2ZrOxvWIN0i/HNkhKlLzOpBEbbab0xvR6b2DP20pdDcUwqsPQKaNYWsgCoXfmyAEkBYxz7JR8RtZE9/qTZA97vLo4NMUqAaYzT4/MXYzOBIfRopgpBwP0v0fwbdxmYGkSYlE8xMMkOmtFvd3Lx18/VQLTjMO4AyXsZmLpzETTCFv95vt7LJDX7SVlbBB4fvz+maHw2o5yYAQ+vPQDAPEr0xqpPi4GKHXFx1jQ==
+ b=JlYFZ5W76BC0nE8PQo8E8CmNGK+E84cCC1Y+VIlwMmpJbKUQqfI6Wx7HlHVQeO9tqiY5R9GONRbgMbUEDIfRO3xtR88q0Z90zGvgREpk3grrtq4F7odJz3lQy55hwfjL7egXah4IlFw1luu/QPfwnDzI0BZ5QDihQ3B3urjrM5ltHwre6spfhd38HjxWEkMooGa0FpKAQyNhYu4Aim+dvmKcfZehUvzcecMth7lafa/gd3UcfIDYSUN1qlxlwPJQWLvqeN0KJqhrSdT6lG5oS8cB71r/IsbyAJY8n4yfqO5ot7uThpfGnYutcPrJpxAa26xgyvmi0GhEXjR9m6RGXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cu+th3V2yEsN8+2Apt0NdJNT4xylyvt7isfTWA1Mc1E=;
- b=DVh3trQHaU/TWjV1Ykk67ngkeRkQzYb6Hwy4mWupqYfkOEjMsD8TATa6U2Xx484DxD4gcKW2Ue4iDZ/iarhxcAFb8m0r+78mymwNeE868aM+zHo6PZgYD6OwVCL55+GgYR8aGuwKO/++4fQ32rdMXWT7NlKKdkd6PYVfYroVkApILvo0j1S6WG1/0f5f85WAA44+Ji2PkMLI7Yr33sz8zKKgD8eD0q/ei0TQKN9z5e/kMKP4ej8YZM8AnPNzWwiZwsOcjcwj/rIZEtrkvJutLTGsmlQZhoNJO4tFD5quAC8HEdbRJ7e4WDlQdeqwJBpSClenabowrdAi/Ow+qrg70g==
+ bh=gHLT4dVABvGLToa660wpkJrBUtXewQe/hEJnDcMw5f0=;
+ b=Nb5CxMq2zFMLz3ya9mjefQnPLeHuMAEQiO1pfPqRHy7xZgQpiLGHPsRGYu0gRsAE/I8BdtnsYXDP5uNGao38lKod/LEDrx4ppVdWoFJ418cfrlvfs2MkRlEyw+4IysvvfInWUqCLfRpBfb6FV7nH5kOU0qrp6mXIyYco2avXWDqiWJCjJi00HZb3iCX2lT40ArP8F0Ba2SWuHqfaKOPSqYPIDfUIiNOKZcahhUdWH18pbnkjN1zYOjziuxUvyC8+WOHIEJZ670Pq1WTPpKWJCTPBEYMi44/DNVuo8+Dkyjm39VkcDrKo9PsqcJKKFIbs82VXChfv8jixOa5ilY1ZSQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=cu+th3V2yEsN8+2Apt0NdJNT4xylyvt7isfTWA1Mc1E=;
- b=jEXXcT+5DwQnwIrPW7rd3jU9WiNj2frTqLQJElEVz5uDsYfoNYuLzZQNBAYi5llr4ZBUuIuKajJiEgmMeOIAPHBf6rDiGYPhWv6PSg6okIjnAyWiLkMK/POavf332sowy73edPIRQXVwWkODNfAzgCr04O9O3PRxijFf26I3QNGSwE25K8Z+BLZk1Z4GrwFDMS8HQPdYCO+unC1L/5YIGVY/TYgtOx98xsJInbUDuuPQgeBipRj30oFjhfUR3Gp8PMy59Cl8uv7pkqIO/TU7HD8rHkLGrBJJvELKa0+JAbBXzUT/8jmKLlcNRXZbf6HpiX2qUL3CXVvl3++4eElhnA==
+ bh=gHLT4dVABvGLToa660wpkJrBUtXewQe/hEJnDcMw5f0=;
+ b=N8JEf6elkfGx52PGkAeoKy1CtBuxL2/X1RA1AyvIk+ACBebqdAEzq7cVMS8B6XDL7hzeEi+RzeQ8p77TlBgnYH/UvvHqF3nyPZkUBdbOYe6gjwiVmjpKPveq7vXVmuqD1/DEnr2pDKRYwxuD8mFMqBAbPT7C5zBkYKhrAEBPVOT4/xIJ7aCUVj6rFLQK55Miw6LFfG3Z3zsLdxzvyasbF9gPOogz5HxsXK2fd/2MwGgtZ6UNFDzG1C/8xvy+9KuQYVIhReEM+KxQpiseM7RidV4+FMXHNbi7wG4yodboygrZcKVKpaAnVk0+oBtai3gbjRLGeJdNgXml9GQUHR0VIQ==
 Received: from BY5PR12MB3763.namprd12.prod.outlook.com (2603:10b6:a03:1a8::24)
- by SA3PR12MB9129.namprd12.prod.outlook.com (2603:10b6:806:397::16)
+ by SN7PR12MB8001.namprd12.prod.outlook.com (2603:10b6:806:340::5)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6863.45; Tue, 17 Oct
- 2023 13:51:23 +0000
+ 2023 14:00:55 +0000
 Received: from BY5PR12MB3763.namprd12.prod.outlook.com
  ([fe80::8df1:6ad8:23c2:fb65]) by BY5PR12MB3763.namprd12.prod.outlook.com
  ([fe80::8df1:6ad8:23c2:fb65%7]) with mapi id 15.20.6907.021; Tue, 17 Oct 2023
- 13:51:23 +0000
+ 14:00:55 +0000
 From: Ankit Agrawal <ankita@nvidia.com>
 To: Alex Williamson <alex.williamson@redhat.com>
 CC: Jason Gunthorpe <jgg@nvidia.com>, "clg@redhat.com" <clg@redhat.com>,
@@ -96,15 +96,17 @@ CC: Jason Gunthorpe <jgg@nvidia.com>, "clg@redhat.com" <clg@redhat.com>,
  Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
  <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
  <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2 2/3] hw/acpi: Implement the SRAT GI affinity structure
-Thread-Topic: [PATCH v2 2/3] hw/acpi: Implement the SRAT GI affinity structure
-Thread-Index: AQHZ+VtrWTk70ZdgMEa2ZZ1iZJjt1rBB+QIAgAwUWXE=
-Date: Tue, 17 Oct 2023 13:51:22 +0000
-Message-ID: <BY5PR12MB37631C627C940EC010D0CAA7B0D6A@BY5PR12MB3763.namprd12.prod.outlook.com>
+Subject: Re: [PATCH v2 3/3] qom: Link multiple numa nodes to device using a
+ new object
+Thread-Topic: [PATCH v2 3/3] qom: Link multiple numa nodes to device using a
+ new object
+Thread-Index: AQHZ+Vt18QX6bvNz2EmmGfmD0VHJcbBB+PCAgAwXSoU=
+Date: Tue, 17 Oct 2023 14:00:54 +0000
+Message-ID: <BY5PR12MB3763CA80432643CE144C7A23B0D6A@BY5PR12MB3763.namprd12.prod.outlook.com>
 References: <20231007201740.30335-1-ankita@nvidia.com>
- <20231007201740.30335-3-ankita@nvidia.com>
- <20231009151626.28910a90.alex.williamson@redhat.com>
-In-Reply-To: <20231009151626.28910a90.alex.williamson@redhat.com>
+ <20231007201740.30335-4-ankita@nvidia.com>
+ <20231009151611.02175567.alex.williamson@redhat.com>
+In-Reply-To: <20231009151611.02175567.alex.williamson@redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -113,68 +115,67 @@ msip_labels:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BY5PR12MB3763:EE_|SA3PR12MB9129:EE_
-x-ms-office365-filtering-correlation-id: 7d85878f-8de3-48dc-1369-08dbcf182627
+x-ms-traffictypediagnostic: BY5PR12MB3763:EE_|SN7PR12MB8001:EE_
+x-ms-office365-filtering-correlation-id: 9d0c7072-b3a4-47c0-85c4-08dbcf197b14
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: X4qpl6015U1dpemUO7TqqXeo34O8yZeZCXBpmAvBQFHv2zC+mCLjMIesptqrE9GBLK0afIcr/HVV7yPvl+trbDkrOVZbYraA91eJxTHUwOSP/cILebdPvo2o6AdR5hu9WEfmhGxPQkxCEP/LAIVxxGUXraI8Ebg6ceEkFsl3E2J3l785EHwGaJ8+PGL8/VmItCSbjg1xc8iE6tPxOqU7cWXvQBJMyOHsyTHfgXixmzZyjIrhJqBHUR3VmAcCUrBves/WeErISkueQs7S5/RV9vCt4xxP/pmKG5rpArwQeraYS7nWyCnvfXuGih9+YAaPbVEyBuCjXMs7OK3f8fA22XlwdqgK+54QnXBn38dW47QwcjLX1oGHNRF00Mo6YOlnHdywezBFiVMTNwd4rIjvBGki1+wRHP9q36Ulzi8iop2UfzDMmS+ghA8R0OLrq5169SKBqqabE35+wzPEjX4wAQWziuzGa8VCUjNpGirC64ExrZNAI9OMrwV4e4CcCcQdJstA6ba5s9wbDTXyJX32T19985BlOsgciH/F0CVSd1Ynnk78hvM2b5knTd5rD//e6MMnwsuRl3DOMNtJxGHfzNtxm1L0+n/x/aTRqwbo92MOWUl4yzcfo7+3xD81YgAp
+x-microsoft-antispam-message-info: IHaWXUldbByEUBSdYoAHaZ8UMZeqmRv7Ug7ter603ksFbNubuMhypZIJCgiKfxdILi6QOoNoI9c4BxlvZoyitcd/6ko1oJNtFGxT5n2sleqhzU+E1huL4prDGji9cJ2IOf7fy5rYmw1S++ptbdJgO+1hnqh3Z1RPGQmV+oQVUCNALB5M/RpBAYmrowl9Nvfb3YTmeveY+zoDfVbDO5MajRcz8OOXi508luL/nEYL1ZtZ7E0ReyAXvVidk0RKU3xmpxXbfKLpUqbcxwoncVO/KACPcUMAllohYB9XeBEBZHydeffPMaORARLZ0RRTa4BjCxNFaH0Cm/55g15FlvIvmry3cA6Au/iSK1pJD/wEFdIRk8XDm7NO33vo1cylsznfo98eOWN/Nrergvt0kVr1xSI9xbdWdPkFbnFTy2CGQ5sAyFP0VGcAPeCI+U0OyiQ2TVK6qZzd0MZ5D9/HMueAhEMeiJsAIxLS1nlZmOcCXTWf9PUIZ0nHjt7XnDqX3rPXiGJ9qOmiTQ6ve3ItQG5wTSF2OStPD+IIKKDFicQ6ywIlvd5ymMhI45Pl6oLhm46MFFA2wvct8OaO9aDNa7L83C4tZhdqALnawIbJwslOoR8UMEaziSNZpH1cMvkNho+Z
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BY5PR12MB3763.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376002)(136003)(346002)(39860400002)(396003)(366004)(230922051799003)(64100799003)(451199024)(1800799009)(186009)(8936002)(55016003)(7416002)(66446008)(6506007)(7696005)(2906002)(71200400001)(478600001)(8676002)(4326008)(52536014)(91956017)(5660300002)(76116006)(66946007)(54906003)(66476007)(316002)(66556008)(64756008)(6916009)(41300700001)(33656002)(26005)(9686003)(122000001)(38100700002)(86362001)(38070700005);
+ SFS:(13230031)(39860400002)(346002)(366004)(376002)(136003)(396003)(230922051799003)(1800799009)(451199024)(186009)(64100799003)(7416002)(66446008)(55016003)(38070700005)(26005)(122000001)(9686003)(38100700002)(2906002)(5660300002)(66476007)(64756008)(66556008)(41300700001)(76116006)(54906003)(6916009)(66946007)(91956017)(8676002)(4326008)(8936002)(316002)(86362001)(33656002)(7696005)(52536014)(6506007)(71200400001)(478600001);
  DIR:OUT; SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?BRvPkEo1fkWIAe8YIqWipa80uKmiKIBueYuTayjdgXUFS4vZ9iKwAEw61e?=
- =?iso-8859-1?Q?KZLlAiFYk5mZzRgYXEC1g6vwodMJSoi5G0eVR2VWeUB25gkzqfKa9CBKWY?=
- =?iso-8859-1?Q?iTlIFqHvS9AVWbPknx0/YrgZHNVrhqWKKLPbJZH2Se0ER1Z1JmAFhDrPWG?=
- =?iso-8859-1?Q?czV9i1T5VL8phCOs6glfyqD7HHLtTnofYyEKeb6KK2M8av1SUKvGFWsIZ4?=
- =?iso-8859-1?Q?RcqPdu9KuwR0I+zqMDQRvBa5VCSu5s9g5fw0JXKSlBfhgxgR7bMYG7dbrh?=
- =?iso-8859-1?Q?peOhkBrq26faVE4rcQPwBzXH/OALu74R2RFXMY/hQCsUC82ks+U19Vibsp?=
- =?iso-8859-1?Q?K+MxYVRgwphM02dg4flcRVCdLQS7ylNNIHfEuZTskcR2la/xYnuJdz5VCW?=
- =?iso-8859-1?Q?Qbe0IAuq75GnRWmstcMZ0rY8ql5Sj2sHVL7CcT3WSiFBo60bGX1NTr9lvz?=
- =?iso-8859-1?Q?nmOtYmcpYwCBndxlxrCuXv8jR36qXfvBpiQcfawTY6sIXBG0ENpPvmnOkW?=
- =?iso-8859-1?Q?wKV8jOyaN1MUI0ok1dzjFJ3KQfm3YHnD/NW5Bce2jQIv+hpF2GRSLTQL0X?=
- =?iso-8859-1?Q?+/umY81dqSyeTTsRYLHm+eRxU6z2w1RnK/C4jBxJ7I1Et86wBaQXbIrSa8?=
- =?iso-8859-1?Q?Uydu/rjKqtuZ6C4jb2oCEHCDrfEPAAyaoCReTncHwbsJcVXkfVYq6LVOYF?=
- =?iso-8859-1?Q?OxnwKEKcAwPoi5ejtbiagqycQzZKo8m/IB3uEbC1QqI52LZLtSwS1qKDa6?=
- =?iso-8859-1?Q?yvXyV+i5Zg8myCc5ylTbaLpzoYTcBrNYn1AjSYPW59teGH3Sn0KZJ4XNHH?=
- =?iso-8859-1?Q?L3joLEivm6ZQfucqKw7OdkVB4YT2Ca1kctP+soTIogiVPxsNl7xxBZN6v+?=
- =?iso-8859-1?Q?hF0mzhp7jU/7TD5xCinrjiXRm0yzZuoYmugVcfuD/b3n2S2LN31NZUY3y8?=
- =?iso-8859-1?Q?+zvT0tVfEGngFzcPsn8f5xiH4OnU+8R7mbW9XWR24/BskyQDuE8xG7u+DT?=
- =?iso-8859-1?Q?xTLMZGFqLInAFbv4svUpJIpN4MXbjfUEYGJ2KgKb/MjZVL4ceOlfuZOdRS?=
- =?iso-8859-1?Q?OtXxkewbfrmF8eJSCFXqXRoKUTg6dSg3Wp2MNNrQ3uTsqGZFy+Ee4jDuhw?=
- =?iso-8859-1?Q?Y6m/LnUmlGByY6s6b5m3oO1+YqGRGgvOtVW548s9sRv6ybkkfquQ8q+VRW?=
- =?iso-8859-1?Q?wptjEKO3jF6GgF2qKbJJ0qvO9f+USEYXggespfhnnn7tBf3hzdM+kCtxcO?=
- =?iso-8859-1?Q?9zFuhowfrfR5NMF9PeLzu5ikOHzAyUYxLBLu//l30wLiFRieKSYx4Z1Hu6?=
- =?iso-8859-1?Q?ui3TtkPv7d32jfy0ra+tkIpLK7fKt+wgcMAh+VMLATpfyQB1jXW9WrktQB?=
- =?iso-8859-1?Q?Ak7EO6A3b3ryg/UcFmC+gfMPVYmDv+cZOAjgVhHoOjeG2CAhS25bEDwBTb?=
- =?iso-8859-1?Q?eaZKT6kqi6pnwE4ZGun3+ZbpZ5oVWPZK8god5q6wZ5+iBF2cFxuy2cOUeJ?=
- =?iso-8859-1?Q?ghz2iYD+jfGphvORAew4zH37bplO+JxXX1sM+BAI1LubyicnmIXALy5ym8?=
- =?iso-8859-1?Q?ZLIMW8ViXScWYSbjBD3YX6I6ZUCEnEEw2dJw1N36J70RkFjkV7soE/7Gpy?=
- =?iso-8859-1?Q?xJYHE85oD/7Ic=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?1sk9hYGHWXoHKPwKN0EGcH2QBMYEH1nT3oP2HFDGZBGryawC9sYBJdbcXT?=
+ =?iso-8859-1?Q?hy6EHR5AfoEA41+xpIkKiI68PXlR40LH0ic2hmqB/mDHO+iwu4BbeE6siK?=
+ =?iso-8859-1?Q?j1EXFTsmpDF5H4CD9l2FD31WzMObUWSIGh1JpbILecpGij7B0ypnk4tEwT?=
+ =?iso-8859-1?Q?ytU07KCaUjkGM3RXTg8hVyUDzCXVSpGN1Wqvra3iT7/80+bZ0tEJb6SXfr?=
+ =?iso-8859-1?Q?kIt8xTuWeBYFUm3vscMniOPS2FWzPOWB737dKEbblYZdNTeXR/QQFnJ/nr?=
+ =?iso-8859-1?Q?82oXGp6LzQkG5lgM5IUytiZkI6qWDGz2uUvdqDY8v/AtzzXZS+40a58Myr?=
+ =?iso-8859-1?Q?e8wfTEAhJ/al4L9MvVvsQ3N+BRyyFlKEEdlLZt90DGUhndI3MAUB/1DurZ?=
+ =?iso-8859-1?Q?i7aQ539Iv9GvtttsNL2hXOsMmF8fe8xV7yVnGksCXQEjFgmwNGrxQGc10L?=
+ =?iso-8859-1?Q?U/D+CaGezkouj85Pxtkk/1hHWmZgBdU2lJHIK2rUOM9mIxv+qALvrnm0Ly?=
+ =?iso-8859-1?Q?FCkujWToOKa8FtKpPTjQNTL7MJXaHDJtGlfJ7o163xOUN1lQ6PFPYDcgg6?=
+ =?iso-8859-1?Q?RVtOJ2QpJxGv3pOGjX32Ma42gQHxiCiXd2UrN7aI0lGUg8O0YLcekFLLad?=
+ =?iso-8859-1?Q?eIAdC/q13Re+7BbKJx/fUULDMrgLHPM6oSQm1FrYaV4p/+yc38+yDZEz3l?=
+ =?iso-8859-1?Q?9lx62XF/26WMBKrZtqplVFO5aki2OMts5m37VcOSDgtGSadz/4CkECSD2N?=
+ =?iso-8859-1?Q?ViEpQG2qQn6JDV+z/dqHFlrTVuav4qPOpbjfzo35aYYSeLuTOH+IWUd9p/?=
+ =?iso-8859-1?Q?5P8zGfoed3RzrdF5yVjitASs3OTNW9WE7uMENzwGIZAQFd+GUBqQydHV7U?=
+ =?iso-8859-1?Q?iXqHB70AmjTUfo9eWHmrX+D8YQ/nsC4cLF1cClVjC+IXvm7bkCPJqRuUmq?=
+ =?iso-8859-1?Q?sY4iV4pwmKgdnv9IUB/AXpEmt4pbpjuggMwzyiTYkXAAbskxkXvuhLVN0X?=
+ =?iso-8859-1?Q?RzosAXAm/Bj/EDSn2LY6T21WNI2JaLyvVVHfSDaB219/gFMX5tEnk2zT9i?=
+ =?iso-8859-1?Q?UOb9M9qb8KBjcJN7PLv05SD697bN1LYKkgkIFdBI/YVWvwTHkQlNcqkYCw?=
+ =?iso-8859-1?Q?JE5oXh4nOJL3y2glk+xQngNYYLpRdTniJLK02ii/mndjIhUmyi3s4FBBat?=
+ =?iso-8859-1?Q?yPni6Xi87PjPw5xAOAxw/UJ+41WAIPALdLEMyRn0BoA/vjH3wiTDhz5nlg?=
+ =?iso-8859-1?Q?bo4zPUTi1IWJHI17Q4BHWxyQWdAX2azZo2AXzt7GkHQEylWcubJNMwL/O0?=
+ =?iso-8859-1?Q?1T0OGcGJ9khXYy2zA3NlX9WAPmyl3YIYfGoZW83WQapdeUT3fgLoiIcCLJ?=
+ =?iso-8859-1?Q?X7dVrrnnvTv3Q1sYdVPcD5Io6mEoycvb0KP6Dg+qHgM7Ex8k7eMS+CJ/8W?=
+ =?iso-8859-1?Q?yJbu9uXMZAPlfumapNtjlKCDmSMrzdegabplMFW4lXZyqDTJQVXLnH+dgN?=
+ =?iso-8859-1?Q?/hgPtB5yoU7AFJd5OFsrLNMzSDlhMvydxKNqxlQNS0AUpIsLtN9Bvdzo5e?=
+ =?iso-8859-1?Q?q3ahd+Pa/d+omHFoUwMSNr2eEs+fgNWpInRmT7zobn+4vaeKmgF+I5OHF2?=
+ =?iso-8859-1?Q?x56PvEYwUn/Rg=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: Nvidia.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: BY5PR12MB3763.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7d85878f-8de3-48dc-1369-08dbcf182627
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Oct 2023 13:51:22.8802 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9d0c7072-b3a4-47c0-85c4-08dbcf197b14
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Oct 2023 14:00:54.8778 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: l9IR1oRXInpcDzLNZmyA0tsbjeeiKT1CSMYYIoJt6fqD3yiJ+pbkbaxl0um3cCezj2HXHyxtUHGk9rpYHryCjg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB9129
-Received-SPF: softfail client-ip=2a01:111:f400:fe59::604;
+X-MS-Exchange-CrossTenant-userprincipalname: wqncxWIkKi0YqH1KcQ7NVk2zRp4DK+QsndNDW1rKBfU2f6hb4Wcw6ZIEGNUs9d33I1eVo8MiGDXQ3iGS4EqpKw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB8001
+Received-SPF: softfail client-ip=2a01:111:f400:7eae::601;
  envelope-from=ankita@nvidia.com;
- helo=NAM12-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ helo=NAM11-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -189,100 +190,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TNSoAuaOHJZY
+X-TUID: +/ibIJ9zs5Cy
 
->> +static void build_srat_generic_initiator_affinity(GArray *table_data, i=
-nt node,=0A=
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0 PCIDeviceHandle *handle,=0A=
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0 GenericAffinityFlags flags)=0A=
->> +{=0A=
->> +=A0=A0=A0 build_append_int_noprefix(table_data, 5, 1);=A0=A0=A0=A0 /* T=
-ype */=0A=
->> +=A0=A0=A0 build_append_int_noprefix(table_data, 32, 1);=A0=A0=A0 /* Len=
-gth */=0A=
->> +=A0=A0=A0 build_append_int_noprefix(table_data, 0, 1);=A0=A0=A0=A0 /* R=
-eserved */=0A=
->> +=A0=A0=A0 build_append_int_noprefix(table_data, 1, 1);=A0=A0=A0=A0 /* D=
-evice Handle Type */=0A=
->> +=A0=A0=A0 build_append_int_noprefix(table_data, node, 4);=A0 /* Proximi=
-ty Domain */=0A=
->> +=A0=A0=A0 build_append_int_noprefix(table_data, handle->segment, 2);=0A=
->> +=A0=A0=A0 build_append_int_noprefix(table_data, handle->bdf, 2);=0A=
->> +=A0=A0=A0 build_append_int_noprefix(table_data, handle->res0, 4);=0A=
->> +=A0=A0=A0 build_append_int_noprefix(table_data, handle->res1, 8);=0A=
+>>=A0=A0=A0=A0=A0=A0=A0=A0 -device vfio-pci-nohotplug,host=3D0009:01:00.0,b=
+us=3Dpcie.0,addr=3D04.0,rombar=3D0,id=3Ddev0 \=0A=
+>>=A0=A0=A0=A0=A0=A0=A0=A0 -object nvidia-acpi-generic-initiator,id=3Dgi0,d=
+evice=3Ddev0,numa-node-start=3D2,numa-node-count=3D8=0A=
 >=0A=
-> Why are we storing reserved fields in the PCIDeviceHandle?=A0 This=0A=
-> function is already specific to building a PCI Device Handle, so we=0A=
-> could just loop build_append_byte() with a fixed zero value here.=0A=
+> Why didn't we just implement start and count in the base object (or a=0A=
+> list)? It seems like this gives the nvidia-acpi-generic-initiator two=0A=
+> different ways to set gi->node, either node=3D of the parent or=0A=
+> numa-node-start=3D here.=A0 Once we expose the implicit node count in the=
 =0A=
-Good point, will make the change.=0A=
+> base object, I'm not sure the purpose of this object.=A0 I would have=0A=
+> thought it for keying the build of the NVIDIA specific _DSD, but that's=
 =0A=
+> not implemented in this version.=0A=
 =0A=
->> +void build_srat_generic_initiator(GArray *table_data)=0A=
->> +{=0A=
->> +=A0=A0=A0 GSList *gi_list, *list =3D acpi_generic_initiator_get_list();=
+Agree, allowing a list of nodes to be provided to the acpi-generic-initiato=
+r=0A=
+will remove the need for the nvidia-acpi-generic-initiator object. =0A=
 =0A=
->> +=A0=A0=A0 for (gi_list =3D list; gi_list; gi_list =3D gi_list->next) {=
+> I also don't see any programatic means for management tools to know how=
 =0A=
->> +=A0=A0=A0=A0=A0=A0=A0 AcpiGenericInitiator *gi =3D gi_list->data;=0A=
->> +=A0=A0=A0=A0=A0=A0=A0 Object *o;=0A=
->> +=A0=A0=A0=A0=A0=A0=A0 int count;=0A=
->> +=0A=
->> +=A0=A0=A0=A0=A0=A0=A0 if (gi->node =3D=3D MAX_NODES) {=0A=
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 continue;=0A=
->> +=A0=A0=A0=A0=A0=A0=A0 }=0A=
->=0A=
-> Why do we have uninitialized AcpiGenericInitiator objects lingering?=0A=
+> many nodes to create.=A0 For example what happens if there's a MIGv2 that=
 =0A=
-Right, we don't need the check.=0A=
+> supports 16 partitions by default and makes use of the same vfio-pci=0A=
+> variant driver?=A0 Thanks,=0A=
 =0A=
->> +=0A=
->> +=A0=A0=A0=A0=A0=A0=A0 o =3D object_resolve_path_type(gi->device, TYPE_V=
-FIO_PCI_NOHOTPLUG, NULL);=0A=
->=0A=
-> TYPE_PCI_DEVICE?=A0 Maybe you could check hotpluggable from the device=0A=
-> class, but certainly the generic code should not be dependent on being=0A=
-> a vfio-pci-nohotplug device.=A0 =0A=
-=0A=
-Understood.=0A=
-=0A=
-> The spec also supports an ACPI object=0A=
-> description, so should this be build_srat_generic_pci_initiator()?=0A=
-=0A=
-Sure, makes sense.=0A=
-=0A=
->> +=A0=A0=A0=A0=A0=A0=A0 if (!o) {=0A=
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 continue;=0A=
->> +=A0=A0=A0=A0=A0=A0=A0 }=0A=
->> +=0A=
->> +=A0=A0=A0=A0=A0=A0=A0 for (count =3D 0; count < gi->node_count; count++=
-) {=0A=
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 PCIDeviceHandle dev_handle =3D {0};=
-=0A=
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 PCIDevice *pci_dev =3D PCI_DEVICE(o);=
-=0A=
->> +=0A=
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 dev_handle.bdf =3D pci_dev->devfn;=0A=
->=0A=
-> Where does the bus part of the bdf get filled in?=0A=
-=0A=
-Good catch, should have code to added the bus.=0A=
-=0A=
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 build_srat_generic_initiator_affinity=
-(table_data,=0A=
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0 gi->node + count, &dev_handle,=0A=
->> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0 GEN_AFFINITY_ENABLED);=0A=
->=0A=
-> Seems like the code that built the AcpiGenericInitiator object should=0A=
-> supply the flags.=A0 In fact the flag GEN_AFFINITY_ENABLED might be a=0A=
-> better indicator to populate the SRAT with the GI than the node value.=0A=
-=0A=
-Yeah, sure.=
+It is supposed to stay at 8 for all the G+H devices. Maybe this can be mana=
+ged=0A=
+through proper documentation in the user manual?=

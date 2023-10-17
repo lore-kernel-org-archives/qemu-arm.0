@@ -1,211 +1,171 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4002934ejc;
-        Tue, 17 Oct 2023 08:21:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHIEEknEWFhh5KP5B0RiRjj+czN+mWmMFIwO9gAnys7a1xtwyyO6Od9XIPK3W7eQgQdm8Iw
-X-Received: by 2002:a05:622a:1713:b0:40f:4cfd:7158 with SMTP id h19-20020a05622a171300b0040f4cfd7158mr3283708qtk.27.1697556100573;
-        Tue, 17 Oct 2023 08:21:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697556100; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4007081ejc;
+        Tue, 17 Oct 2023 08:28:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHzTIQE90qJjb8ZKwpHbYF9BURa2vb5rYYXBL0P6OQTLfqbCTcT6+xi0JKPZiIfvebHMP3Y
+X-Received: by 2002:a05:620a:4555:b0:776:5135:d98c with SMTP id u21-20020a05620a455500b007765135d98cmr3301412qkp.15.1697556532133;
+        Tue, 17 Oct 2023 08:28:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697556532; cv=none;
         d=google.com; s=arc-20160816;
-        b=HryXhrbwtGjL3vqIZao9UuRKFrwSxvaQrIwDj1vBNm7V3llGy99/hVQ9m/Bg+sFrSI
-         f5ZHmPUcYwfvPImyyE9R5GmdYBUiaQ/2nxAQHNIULxNFpWtODOq/+NqFuP6NF+ig3xGA
-         bFFt7GupEXcAkUSjP5pmsgYOBYEnowDOvtko6I29FGXi2j1GG21pjc4ozT8EHtCOLyv4
-         P/7E1U6fjjjBanucd1L8byaZCDCB7dw3v23cFEJVn0DFXHnewxyIld/i0b7o09dUOEjw
-         Y62FeW5VO64mN7BobE408aUY3wRA7APy9H4K2JwkZypdRihsHId37iuu2jacfEbmw6xv
-         57yg==
+        b=ucoujVlu3DHj1Ggt3RagsrvcBl6KLQC4/ZcLffF8OmRpGRY/DkgEBer1exPsHvzpDf
+         1Kr0QaxaqRRDxl5FLJfJKhqDoDo7q0FEEn603saJapMY7B9S5ouEd0ivGA6FzIH2KH+z
+         MY3E1EvV7Jxj7jlwvrmp4fu8Rh7llkolhUKL8hhygt2TnSk8fuxUvs/LHBX9rhHfmwLj
+         CjWbNl4yXoyQtdU0LrerGRAHrRLBwoCkjQamEu4tMCxX/Fka0Zo1bGR/u7gQQMz1/pdH
+         pvwW7Z8n+8HPsEwuIS8pPTeHpVPS8GWU+O1pd9ul0Ra5X1a61ihrYjJthg+35zAZ7WR8
+         edeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=XOsN61A9Uh+Yc1V+O1Q2QFWHt2VM8WfR7GpGRHmru24=;
-        fh=lcEdZPBQohEiwT9CwNuFQ7+HN1jcOVix8Kht4EVbqhY=;
-        b=tMYVp1p530H8vLm3OfoLUHNgdQemootr6fzrlhIgCGSnNCpfRag/fS4D4/98yK6olU
-         5KCgMAB1RVQItWRqoOeFEe6GMPvWYDqBd8Gz4BLZb09v33l6jP2eMTqy5zoXyydutnrc
-         w3w8Sy6tCqg7IGWMXU6TCOD/QvtfNX9fzs82Y7xlxTQPzi+WBXGtGSlyBxBpdZtm5yhh
-         4Rmov+g+t3TAZ2HY6eFmgErH/Ki+y+nO8Sa+LkS54IKdjkPtjLOkfI0aPS9O+WmVgWcl
-         pX7d8xaLzpnpyPCMiyO6b1PZ6W/2jNQzsf8uaHLZ6Du1z4KON62SSVQxP1rb/AV21X7d
-         chag==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=C+wMnezdSmjs10pDeNJeo7+9S3n3Z8j46jkaSy9yiGY=;
+        fh=OyoTVk+lo04ExT3w8FnkNJ14bTFix4ms2qASqTbHSiI=;
+        b=N+h5466AJQVsCzM/A4NGbetgxKNwClDxh60otEAi79CfiZHMRoiu1Sa1Qy0VEJA2F4
+         avAELHR366vtARrkDql8013o9a5Mw2hRfKS+VaA/HM0re+xkmqklWN0psruZsboprA+r
+         PYnrIQXp1gf/inbxHzB+BMSD7/cB7UDdST0CU6ILgww3eJPtbnh0wowaV2sJzXLWNqLS
+         5H/6AtyFobe/chgRqnP9Ahbenul7CMHzmA+QqOpqvm64h+WP+W3cmJhs2KzQVHDKcjFq
+         PZtKjefMIj0TAeTPbeIOUFzl5MAZYhThqCO8VUI1+uQg+gBLDfZwzXCC/NtFo0JtSsNy
+         sfWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G4k0L4IY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z9+ORFIK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c22-20020ac87d96000000b00417a0a8c674si1228927qtd.225.2023.10.17.08.21.40
+        by mx.google.com with ESMTPS id bm24-20020a05620a199800b00774315b5ae1si1214801qkb.317.2023.10.17.08.28.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 08:21:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Oct 2023 08:28:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G4k0L4IY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z9+ORFIK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qslst-0002je-De; Tue, 17 Oct 2023 11:21:27 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qslzf-0005Uh-MA; Tue, 17 Oct 2023 11:28:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1qslss-0002jP-55
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 11:21:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1qslzc-0005U5-Gd
+ for qemu-devel@nongnu.org; Tue, 17 Oct 2023 11:28:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
- id 1qslsq-0005hc-Kb
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 11:21:25 -0400
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1qslza-0006sv-TW
+ for qemu-devel@nongnu.org; Tue, 17 Oct 2023 11:28:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697556084;
+ s=mimecast20190719; t=1697556501;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XOsN61A9Uh+Yc1V+O1Q2QFWHt2VM8WfR7GpGRHmru24=;
- b=G4k0L4IY9hfQSvxxXsmGHJaaaz+DMvXRivrqJG3fdJ1WWD35EIq3wnnkgYpcktdmRS8y7t
- adwsiYCC00hlCOOfUjcN1TbxA4g2zC/cY6TvrZ8Gjt5G/wIMksFz7gLKBGbL+SBft6/nYz
- ziJND29Iq3g83sr6wo2mjN5/krFBX/0=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-693-cAifY0-wPCC9DAvxIc5uog-1; Tue, 17 Oct 2023 11:21:20 -0400
-X-MC-Unique: cAifY0-wPCC9DAvxIc5uog-1
-Received: by mail-il1-f199.google.com with SMTP id
- e9e14a558f8ab-35798fe62b2so6565565ab.0
- for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 08:21:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697556079; x=1698160879;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=dMAz18AKOENGkj8VyQD8a/V0CUA2HQraUfUmddK8y3Y=;
- b=Bt2+CqU+FKo1hW61XzHkS6uQBKKkbrrLA9J0SGGLe/EKrcA7WE0cV8su1dD8wT5RgX
- AqmOr4aynlO9NojB+saBmNXR/BxxqMDlhY5x3DfB+bp4p1EdNdj/Z19tRBXdx60+3Zk/
- 978NzJBZ4hKKRbLnaDGbZyPrFnJosVPWM5d5ooPiK+NgAivZPyTMfas34Ihp1Chzd+V/
- RgRgkvFoxOn9Z3cBefyWqC3kNCzOh25Cj79ydUkzwdV4KKrHl2CPHm2mou0hOisVoDO4
- 3XgqWoJQFXWCWFfv5/tG/3e1gQlvA9Re7rTOayEYny7wfGmWLqXKrlQrTMDlDn3+xKno
- LPOA==
-X-Gm-Message-State: AOJu0YxCf3vBRPYxw7mJjGfUJ6U3yJORAYudUHPyH5kA6oRJvWI0kXbE
- 6pwFU3Eg7chmKr1eik0p4wPDSRTWOg3ugxDbyN9rWkrTfESvRC+d4eto9lZTZ20NKkhLzzuugAo
- MbAiWpDmkBMIg
-X-Received: by 2002:a05:6e02:1a0a:b0:351:4cdd:f533 with SMTP id
- s10-20020a056e021a0a00b003514cddf533mr2790216ild.4.1697556079446; 
- Tue, 17 Oct 2023 08:21:19 -0700 (PDT)
-X-Received: by 2002:a05:6e02:1a0a:b0:351:4cdd:f533 with SMTP id
- s10-20020a056e021a0a00b003514cddf533mr2790201ild.4.1697556079212; 
- Tue, 17 Oct 2023 08:21:19 -0700 (PDT)
-Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
- w3-20020a029683000000b0043193487854sm568519jai.142.2023.10.17.08.21.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Oct 2023 08:21:18 -0700 (PDT)
-Date: Tue, 17 Oct 2023 09:21:16 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Ankit Agrawal <ankita@nvidia.com>
-Cc: Jason Gunthorpe <jgg@nvidia.com>, "clg@redhat.com" <clg@redhat.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
- <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
- "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
- "eblake@redhat.com" <eblake@redhat.com>, "armbru@redhat.com"
- <armbru@redhat.com>, "david@redhat.com" <david@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>, "Jonathan.Cameron@huawei.com"
- <Jonathan.Cameron@huawei.com>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
- <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
- (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, Andy
- Currid <acurrid@nvidia.com>, Dheeraj Nigam <dnigam@nvidia.com>, Uday Dhoke
- <udhoke@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, <libvir-list@redhat.com>,
- Laine Stump <laine@redhat.com>
-Subject: Re: [PATCH v2 3/3] qom: Link multiple numa nodes to device using a
- new object
-Message-ID: <20231017092116.09ad2737.alex.williamson@redhat.com>
-In-Reply-To: <BY5PR12MB3763CA80432643CE144C7A23B0D6A@BY5PR12MB3763.namprd12.prod.outlook.com>
-References: <20231007201740.30335-1-ankita@nvidia.com>
- <20231007201740.30335-4-ankita@nvidia.com>
- <20231009151611.02175567.alex.williamson@redhat.com>
- <BY5PR12MB3763CA80432643CE144C7A23B0D6A@BY5PR12MB3763.namprd12.prod.outlook.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+ bh=C+wMnezdSmjs10pDeNJeo7+9S3n3Z8j46jkaSy9yiGY=;
+ b=Z9+ORFIKsV++1iaoeuLiuIu5JqWgvzfH4gPc+IIkYfGq3jhoSNvUJY7Df6D5Ltiz0U0aPx
+ JwAKUN4AEFPfqzhd82Smmv4GrDEQcNnQpVMqpp5hL7qsIIaD+DdS439AZlNhVsDmHLRRah
+ A8ovb8/aPyTW8cGbVN1rPLKTmue/8oA=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-584-ZpPK_h1lNnK7KmZix5YMOA-1; Tue, 17 Oct 2023 11:28:08 -0400
+X-MC-Unique: ZpPK_h1lNnK7KmZix5YMOA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 591A58E4148;
+ Tue, 17 Oct 2023 15:28:08 +0000 (UTC)
+Received: from localhost (unknown [10.39.193.165])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1D540150;
+ Tue, 17 Oct 2023 15:28:08 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org
+Subject: Re: [PATCH v2 3/3] arm/kvm: convert to read_sys_reg64
+In-Reply-To: <CAFEAcA88O-VDq2rRfVhZ_6OShFq1ANEMmHWHVtNS5hCPQNYtdg@mail.gmail.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy Ross"
+References: <20231010142453.224369-1-cohuck@redhat.com>
+ <20231010142453.224369-4-cohuck@redhat.com>
+ <CAFEAcA88O-VDq2rRfVhZ_6OShFq1ANEMmHWHVtNS5hCPQNYtdg@mail.gmail.com>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Tue, 17 Oct 2023 17:28:06 +0200
+Message-ID: <87y1g1clq1.fsf@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=alex.williamson@redhat.com;
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w5pG0iqXYyiN
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dib6aixXzY06
 
-On Tue, 17 Oct 2023 14:00:54 +0000
-Ankit Agrawal <ankita@nvidia.com> wrote:
+On Tue, Oct 17 2023, Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> >>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -device vfio-pci-nohot=
-plug,host=3D0009:01:00.0,bus=3Dpcie.0,addr=3D04.0,rombar=3D0,id=3Ddev0 \
-> >>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -object nvidia-acpi-ge=
-neric-initiator,id=3Dgi0,device=3Ddev0,numa-node-start=3D2,numa-node-count=
-=3D8 =20
-> >
-> > Why didn't we just implement start and count in the base object (or a
-> > list)? It seems like this gives the nvidia-acpi-generic-initiator two
-> > different ways to set gi->node, either node=3D of the parent or
-> > numa-node-start=3D here.=C2=A0 Once we expose the implicit node count i=
-n the
-> > base object, I'm not sure the purpose of this object.=C2=A0 I would hav=
-e
-> > thought it for keying the build of the NVIDIA specific _DSD, but that's
-> > not implemented in this version. =20
->=20
-> Agree, allowing a list of nodes to be provided to the acpi-generic-initia=
-tor
-> will remove the need for the nvidia-acpi-generic-initiator object.=20
+> On Tue, 10 Oct 2023 at 15:25, Cornelia Huck <cohuck@redhat.com> wrote:
+>>
+>> We can use read_sys_reg64 to get the SVE_VLS register instead of
+>> calling GET_ONE_REG directly.
+>>
+>> Suggested-by: Gavin Shan <gshan@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
+>>  target/arm/kvm64.c | 6 +-----
+>>  1 file changed, 1 insertion(+), 5 deletions(-)
+>>
+>> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+>> index 558c0b88dd69..d40c89a84752 100644
+>> --- a/target/arm/kvm64.c
+>> +++ b/target/arm/kvm64.c
+>> @@ -500,10 +500,6 @@ uint32_t kvm_arm_sve_get_vls(CPUState *cs)
+>>              .target = -1,
+>>              .features[0] = (1 << KVM_ARM_VCPU_SVE),
+>>          };
+>> -        struct kvm_one_reg reg = {
+>> -            .id = KVM_REG_ARM64_SVE_VLS,
+>> -            .addr = (uint64_t)&vls[0],
+>> -        };
+>>          int fdarray[3], ret;
+>>
+>>          probed = true;
+>> @@ -512,7 +508,7 @@ uint32_t kvm_arm_sve_get_vls(CPUState *cs)
+>>              error_report("failed to create scratch VCPU with SVE enabled");
+>>              abort();
+>>          }
+>> -        ret = ioctl(fdarray[2], KVM_GET_ONE_REG, &reg);
+>> +        ret = read_sys_reg64(fdarray[2], &vls[0], KVM_REG_ARM64_SVE_VLS);
+>>          kvm_arm_destroy_scratch_host_vcpu(fdarray);
+>>          if (ret) {
+>>              error_report("failed to get KVM_REG_ARM64_SVE_VLS: %s",
+>
+> read_sys_reg64() asserts that the register you're trying to
+> read is 64 bits, but KVM_REG_ARM64_SVE_VLS is not, it's 512 bits:
+>
+> #define KVM_REG_ARM64_SVE_VLS           (KVM_REG_ARM64 | KVM_REG_ARM64_SVE | \
+>                                          KVM_REG_SIZE_U512 | 0xffff)
+>
+> So this change would trip the assert on a host where SVE
+> is supported and enabled.
 
-And what happened to the _DSD?  Is it no longer needed?  Why?
-
-> > I also don't see any programatic means for management tools to know how
-> > many nodes to create.=C2=A0 For example what happens if there's a MIGv2=
- that
-> > supports 16 partitions by default and makes use of the same vfio-pci
-> > variant driver?=C2=A0 Thanks, =20
->=20
-> It is supposed to stay at 8 for all the G+H devices. Maybe this can be ma=
-naged
-> through proper documentation in the user manual?
-
-I thought the intention here was that a management tool would
-automatically configure the VM with these nodes and GI object in
-support of the device.  Planning only for Grace-Hopper isn't looking
-too far into the future and it's difficult to make software that can
-reference a user manual.  This leads to a higher maintenance burden
-where the management tool needs to recognize not only the driver, but
-the device bound to the driver and update as new devices are released.
-The management tool will never automatically support new devices without
-making an assumption about the node configuration.
-
-Do we therefore need some programatic means for the kernel driver to
-expose the node configuration to userspace?  What interfaces would
-libvirt like to see here?  Is there an opportunity that this could
-begin to define flavors or profiles for variant devices like we have
-types for mdev devices where the node configuration would be
-encompassed in a device profile?  Thanks,
-
-Alex
+Whoops, it seems that I misread this. (And my test environment didn't
+have that enabled...)
 

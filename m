@@ -1,113 +1,115 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4111073ejc;
-        Tue, 17 Oct 2023 11:14:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHcZcXJ6f1N8VD5TC0u7AxHiuS3FZipiCJUbQIxQWTOJFVPhGgsQ0JvcR0+B5tGyAL2x+ai
-X-Received: by 2002:a5b:50:0:b0:d81:ce57:571a with SMTP id e16-20020a5b0050000000b00d81ce57571amr3346181ybp.54.1697566454716;
-        Tue, 17 Oct 2023 11:14:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697566454; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4111233ejc;
+        Tue, 17 Oct 2023 11:14:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG0VJA6ozA4oqjchNlF4tz5kIc5FsOZfdzNcNeGGm6/l5L54p6LX6rn7nX6HFIuhzq5gPfd
+X-Received: by 2002:a05:620a:4051:b0:775:a44b:6513 with SMTP id i17-20020a05620a405100b00775a44b6513mr3413024qko.16.1697566472462;
+        Tue, 17 Oct 2023 11:14:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697566472; cv=none;
         d=google.com; s=arc-20160816;
-        b=LD9anyBcv7kZeKMV4z8rMzPeGbmoK15OriXJpwBvRZWbbEDAQltJsKs5OQQhbeN/CR
-         Z32ZW6d+KD5+OKQvS0FujVPsTb2Qgti6W5Nz9FPW5tyZ8ov6IRQnKNTGgsjaCH0v53ds
-         U4cLyohEnC33Y1X2O8N1wVlxJ0LvI6cZoIs/SmqMELr6QxL/j2OLoFEkbQbFgAq+YzXw
-         3fw6a2DHYxxrOdsJ3+7/EkBNkhnuPsZsMozRZXQP58qYeB16sX8ywyziHK/dT+hEX3ad
-         aGcdKdHJ0qN91N8iesh8jFq2SOIg/NiJqxJDNnxyCfOu1j0mJEq0XtAf58b8EfLdCBBg
-         aEIQ==
+        b=XvLummUrbpy//o/CL5zgPwN550dGz2Gb/cblYqNtkIYsmEB3B0VDR0u7OaneIIjNst
+         eICeQm5tWJ7wSFfHemTVW/9XT8v08x7Z1ZSQQyJoAAH0xv7elwQHyO1bkYnHtR3MrqOP
+         i1R403mQs050VoHbpiMYtjztIdLodWXoofjvhirhnDf9ZyPfYVLedKhv88bLGZfdcrh9
+         DRto1oJn0lpUBYgAuEE5+v5CsyfcAwtjFZxvs5ClbFhvkN6IkNErxfwQCL9dsPx+5Ttn
+         RxPr4tgZ7gl94PqUevwA4m/GvoCh8QQepBkoDJ40nAEfBAMxw8Al2v6zwLDCyYak6hVP
+         LVTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=xQC0tCobRDWyrCn2K27SujmYWuPprNzqJ1s8uOOE3JM=;
-        fh=VpdIyJR9n9QpzQWHJW541W97F/M8Z10MnahQ3EEY1JY=;
-        b=bWJX2zGLd8mhNhpkDfZgRPG6q002/u+4yJ5klZa9/q8082xYMiOLkspJ4xOe/Y5wVv
-         w8WqWj7qORB4TQoy5m4sNFCexSfMXCV2MElYZzxgZxoYUoKMWc5NCHt0MvMz+6QKK78+
-         mKI5ReJkiK9cj+lKQkvj+fNFbfI2luI6NHDXEKrZbwnfWH09a7E3QyQxuTERVnux+T+U
-         dnxZNq0ddDbzMQFpg2VgT3LD+D1y/GET4ZIICxCs89RnvEO3cSp1uXjC8veT8KQVCnzl
-         Q8YP+zq6M/xH7DCVAZu5Z/CRggzWYALbXJe/ekHq8tFx0q9HMDuT8VZ9t8GmI/0Zzhpv
-         EZ6g==
+        bh=kPxDzb+YY/2cdumCQrGp7YShciNVNdHfYhzmrg5Jh9U=;
+        fh=5A9rIZi8Z8466MpVipzMSDtnAN6Xw5wyWrNfaUwsYuo=;
+        b=zMRHgn31j8yv8sD8KarxdjhAsnbmKsHMBHbLvY3GvZNowE/HdrA8eawNmT/MrQkFWX
+         6o9/EbHocZzQgkEo88b3VDwZsdMb521Exmx0zqlfzQdSuy8uaiim/cK/yxH+qAVnroKf
+         UFwW4dm6d6zrYzxE/na3wWZAUj8xdl59g7XM0yEVI3SGD8tr3ZbYTwAHZzpSvCht5yHn
+         fa797ZDJbMm25GZleHmocweirUd4rgZMvENzoyb0AC5Fy3vRzrgYp6cWEcLfZPs4icMZ
+         W7n0CdQ35g4tCLnMlJru4XmuJhfWq5mmCbDX5dIg8O8SqxvMcPzPqUpdmJ3Low5WcI4/
+         1Dew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=NAf6I2Nu;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=XQ5O8iXY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qr5-20020a05620a390500b00775771084d6si1530663qkn.295.2023.10.17.11.14.14
+        by mx.google.com with ESMTPS id m8-20020ae9f208000000b0076cd9307ac1si1371224qkg.548.2023.10.17.11.14.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 11:14:14 -0700 (PDT)
+        Tue, 17 Oct 2023 11:14:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=NAf6I2Nu;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=XQ5O8iXY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qsoY2-0004r3-9F; Tue, 17 Oct 2023 14:12:06 -0400
+	id 1qsoYK-0005Et-Py; Tue, 17 Oct 2023 14:12:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3b84uZQwKCvYlYZgfcqrcdYlemmejc.amkocks-bctcjlmlels.mpe@flex--nabihestefan.bounces.google.com>)
- id 1qsoY0-0004q1-LW
- for qemu-devel@nongnu.org; Tue, 17 Oct 2023 14:12:04 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
+ <3f84uZQwKCggvijqpm01mnivowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--nabihestefan.bounces.google.com>)
+ id 1qsoYF-00053e-6S
+ for qemu-devel@nongnu.org; Tue, 17 Oct 2023 14:12:19 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3b84uZQwKCvYlYZgfcqrcdYlemmejc.amkocks-bctcjlmlels.mpe@flex--nabihestefan.bounces.google.com>)
- id 1qsoXx-0006vI-7O
- for qemu-devel@nongnu.org; Tue, 17 Oct 2023 14:12:04 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id
- 3f1490d57ef6-d9a3a98b34dso8313444276.3
- for <qemu-devel@nongnu.org>; Tue, 17 Oct 2023 11:11:59 -0700 (PDT)
+ <3f84uZQwKCggvijqpm01mnivowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--nabihestefan.bounces.google.com>)
+ id 1qsoYD-0006zi-A8
+ for qemu-devel@nongnu.org; Tue, 17 Oct 2023 14:12:18 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-d9ab7badadeso8241591276.1
+ for <qemu-devel@nongnu.org>; Tue, 17 Oct 2023 11:12:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1697566319; x=1698171119; darn=nongnu.org;
+ d=google.com; s=20230601; t=1697566335; x=1698171135; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=xQC0tCobRDWyrCn2K27SujmYWuPprNzqJ1s8uOOE3JM=;
- b=NAf6I2Nudqzp9Dz3upyJjJvWHQVo/7AqWyxvUpUGuyTg2ce0GzlUwd1o+t6MAPIkNJ
- GL9cBIYMepdOJGOIyENxBCDvAWZ7yd+U/wVbcICjU5IZL04LG7WcKRfYX41LpIs7mJew
- 2IiNVLRJCvOGbEqy2O0zISpjATZc4A3z2E80HwMoF8pWhWrN1XPJuptX1fQepJPaphE5
- jtqI8HxrSK1X3NJd+CMIjlfPWub7100aMlXYRj286z6a2zc9Ec3ffI+UStLMs3QLMt+T
- CObx8GUb8xmg6CDV2cnL1QzLAgYKnBrPSFUF+Io3xWgWsXVCfwwNfSCsUe8XFl5WNEzr
- oL0Q==
+ bh=kPxDzb+YY/2cdumCQrGp7YShciNVNdHfYhzmrg5Jh9U=;
+ b=XQ5O8iXY4fXoo0mTx+8N1KHOU5UROX1gH4qg7oyLtxeRuLPplJaWgtSS+mC/Mg3wxx
+ tdULY2/gT612BadRmUqJZFvfFm7rZVtwtQLhpyN0lutZbv4KsqF0WuxFk1yA6feC+Zk5
+ st2hi4O3i1YULQ6Qr1No0muBcjRSUdbDqZA795731kdMpiAMdgnYSCqW/VVl7u/LuVSH
+ Ytl3PQeI0xBU1g8KwHuschrKu7EHVtu46YpAwzBoCqg8A4Bojss5SSqjTwLUh90vphvz
+ 1tAsbJW2WuaMhFR+ZUSXeWx2kg++B2nSNZmX2P1DnUiP+/TOG8pfTSl5akn+D60DYDLN
+ t61A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697566319; x=1698171119;
+ d=1e100.net; s=20230601; t=1697566335; x=1698171135;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xQC0tCobRDWyrCn2K27SujmYWuPprNzqJ1s8uOOE3JM=;
- b=oxEXjmNMOHg/J7zlakj4bBuSuuqfx5ifTPlY+KUmPYc8H9fsndaQXCQ5o5HZD5XwCN
- jXhdwBxC8dOViObF3DW5I01xqnVg8fQDsUxniHNaDGfhd0uaC54gwfOzWBvtffAgn9bd
- gGEEVmoVEYGyRKMUxCrbNyoQPpptPRbYQIadcMezweVYlKpeHTakyGiz6onXRRFa6fcn
- 4sNPPF0kcFgYCKbkVntSZTqSAU1qu23+hRxO9OUXSnMw6+tTg3ebioNGQC+rbunnJWHs
- W2SSEYNssLKgBWSYhH256RLOeWk6oa2TNJ6HTWuPk+J6R9iWTm1egxm8mUogz3aEFVTI
- odMQ==
-X-Gm-Message-State: AOJu0Ywgf9aC/bGSK64VCHcn+G3HzbFl/8BGT9Ru6C/uS2ugFRsutAAC
- SW3FPBPDjlUTCFQnPlRibOSK2mG/D1Bw4MRuBwc=
+ bh=kPxDzb+YY/2cdumCQrGp7YShciNVNdHfYhzmrg5Jh9U=;
+ b=NIsH3lFyvs59FAVyiAMxsfWAHhHTTBCDs0eAjP4UeqaLZZ17ZNiX8f9u/9sQKWspqs
+ 6noTJ+0usDKoNexcQhCkSsFaBBZIBvH3KP2YGAquOlb43yydE6PKOY6xjtTmpVBMoqOC
+ fV8eUz+MnVk+gCNh7Fh2J5TeTdAIuPIiFyDhd8qMzCyFwDS3i/2OofUa1Qx4MKuAfEHp
+ f116I+DMK9gOwPOQyBywr79hCN9PlnM+Q3qRRfwzBkGhXOIdtsuc4wLqtKHYNZedcMWH
+ QEivxpcrLFdTVXjTUbPQ+kFPvtQFoAZWRVATDom+xySYekaxAwPfQDbdvuraVIXUGzLy
+ hl9Q==
+X-Gm-Message-State: AOJu0Ywj7h7pLSBuoDKNAHRapfwjWMQCEuMI820bJCRdHeTQEjuF5vM2
+ Ird6dUwe407HuRBTpEeoLUeDqbA6kyFGjbtqpl4=
 X-Received: from nabihestefan.c.googlers.com
  ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a05:6902:102d:b0:d9c:2a58:b905 with
- SMTP id x13-20020a056902102d00b00d9c2a58b905mr82921ybt.9.1697566319499; Tue,
- 17 Oct 2023 11:11:59 -0700 (PDT)
-Date: Tue, 17 Oct 2023 18:11:42 +0000
+ (user=nabihestefan job=sendgmr) by 2002:a5b:c06:0:b0:d9a:3f67:672c with SMTP
+ id f6-20020a5b0c06000000b00d9a3f67672cmr63329ybq.3.1697566335550; Tue, 17 Oct
+ 2023 11:12:15 -0700 (PDT)
+Date: Tue, 17 Oct 2023 18:11:52 +0000
 In-Reply-To: <20231017181152.201887-1-nabihestefan@google.com>
 Mime-Version: 1.0
 References: <20231017181152.201887-1-nabihestefan@google.com>
 X-Mailer: git-send-email 2.42.0.655.g421f12c284-goog
-Message-ID: <20231017181152.201887-2-nabihestefan@google.com>
-Subject: [PATCH 01/11] hw/misc: Add Nuvoton's PCI Mailbox Module
+Message-ID: <20231017181152.201887-12-nabihestefan@google.com>
+Subject: [PATCH 11/11] tests/qtest: Adding PCS Module test to GMAC Qtest
 From: Nabih Estefan <nabihestefan@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
- wuhaotsh@google.com, jasonwang@redhat.com, avi.fishman@nuvoton.com
+ wuhaotsh@google.com, jasonwang@redhat.com, avi.fishman@nuvoton.com, 
+ Nabih Estefan Diaz <nabihestefan@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3b84uZQwKCvYlYZgfcqrcdYlemmejc.amkocks-bctcjlmlels.mpe@flex--nabihestefan.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3f84uZQwKCggvijqpm01mnivowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--nabihestefan.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ UPPERCASE_50_75=0.008,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,536 +124,190 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X00zNNDDWSKK
+X-TUID: OcC83hlb8jIK
 
-From: Hao Wu <wuhaotsh@google.com>
+From: Nabih Estefan Diaz <nabihestefan@google.com>
 
-The PCI Mailbox Module is a high-bandwidth communcation module
-between a Nuvoton BMC and CPU. It features 16KB RAM that are both
-accessible by the BMC and core CPU. and supports interrupt for
-both sides.
+ - Add PCS Register check to npcm_gmac-test
 
-This patch implements the BMC side of the PCI mailbox module.
-Communication with the core CPU is emulated via a chardev and
-will be in a follow-up patch.
-
-Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Signed-off-by: Nabih Estefan Diaz <nabihestefan@google.com>
 ---
- hw/arm/npcm7xx.c                   |  16 +-
- hw/misc/meson.build                |   1 +
- hw/misc/npcm7xx_pci_mbox.c         | 324 +++++++++++++++++++++++++++++
- hw/misc/trace-events               |   5 +
- include/hw/arm/npcm7xx.h           |   1 +
- include/hw/misc/npcm7xx_pci_mbox.h |  81 ++++++++
- 6 files changed, 427 insertions(+), 1 deletion(-)
- create mode 100644 hw/misc/npcm7xx_pci_mbox.c
- create mode 100644 include/hw/misc/npcm7xx_pci_mbox.h
+ tests/qtest/npcm_gmac-test.c | 134 ++++++++++++++++++++++++++++++++++-
+ 1 file changed, 133 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index 15ff21d047..c69e936669 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -53,6 +53,9 @@
- /* ADC Module */
- #define NPCM7XX_ADC_BA          (0xf000c000)
+diff --git a/tests/qtest/npcm_gmac-test.c b/tests/qtest/npcm_gmac-test.c
+index 84511fd915..1f0ad664f4 100644
+--- a/tests/qtest/npcm_gmac-test.c
++++ b/tests/qtest/npcm_gmac-test.c
+@@ -20,6 +20,10 @@
+ /* Name of the GMAC Device */
+ #define TYPE_NPCM_GMAC "npcm-gmac"
  
-+/* PCI Mailbox Module */
-+#define NPCM7XX_PCI_MBOX_BA     (0xf0848000)
++/* Address of the PCS Module */
++#define PCS_BASE_ADDRESS 0xf0780000
++#define NPCM_PCS_IND_AC_BA 0x1fe
 +
- /* Internal AHB SRAM */
- #define NPCM7XX_RAM3_BA         (0xc0008000)
- #define NPCM7XX_RAM3_SZ         (4 * KiB)
-@@ -83,6 +86,10 @@ enum NPCM7xxInterrupt {
-     NPCM7XX_UART1_IRQ,
-     NPCM7XX_UART2_IRQ,
-     NPCM7XX_UART3_IRQ,
-+    NPCM7XX_PECI_IRQ            = 6,
-+    NPCM7XX_PCI_MBOX_IRQ        = 8,
-+    NPCM7XX_KCS_HIB_IRQ         = 9,
-+    NPCM7XX_GMAC1_IRQ           = 14,
-     NPCM7XX_EMC1RX_IRQ          = 15,
-     NPCM7XX_EMC1TX_IRQ,
-     NPCM7XX_MMC_IRQ             = 26,
-@@ -706,6 +713,14 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-         }
-     }
+ typedef struct GMACModule {
+     int irq;
+     uint64_t base_addr;
+@@ -111,6 +115,62 @@ typedef enum NPCMRegister {
+     NPCM_GMAC_PTP_STNSUR = 0x714,
+     NPCM_GMAC_PTP_TAR = 0x718,
+     NPCM_GMAC_PTP_TTSR = 0x71c,
++
++    /* PCS Registers */
++    NPCM_PCS_SR_CTL_ID1 = 0x3c0008,
++    NPCM_PCS_SR_CTL_ID2 = 0x3c000a,
++    NPCM_PCS_SR_CTL_STS = 0x3c0010,
++
++    NPCM_PCS_SR_MII_CTRL = 0x3e0000,
++    NPCM_PCS_SR_MII_STS = 0x3e0002,
++    NPCM_PCS_SR_MII_DEV_ID1 = 0x3e0004,
++    NPCM_PCS_SR_MII_DEV_ID2 = 0x3e0006,
++    NPCM_PCS_SR_MII_AN_ADV = 0x3e0008,
++    NPCM_PCS_SR_MII_LP_BABL = 0x3e000a,
++    NPCM_PCS_SR_MII_AN_EXPN = 0x3e000c,
++    NPCM_PCS_SR_MII_EXT_STS = 0x3e001e,
++
++    NPCM_PCS_SR_TIM_SYNC_ABL = 0x3e0e10,
++    NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_LWR = 0x3e0e12,
++    NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_UPR = 0x3e0e14,
++    NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_LWR = 0x3e0e16,
++    NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_UPR = 0x3e0e18,
++    NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_LWR = 0x3e0e1a,
++    NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_UPR = 0x3e0e1c,
++    NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_LWR = 0x3e0e1e,
++    NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_UPR = 0x3e0e20,
++
++    NPCM_PCS_VR_MII_MMD_DIG_CTRL1 = 0x3f0000,
++    NPCM_PCS_VR_MII_AN_CTRL = 0x3f0002,
++    NPCM_PCS_VR_MII_AN_INTR_STS = 0x3f0004,
++    NPCM_PCS_VR_MII_TC = 0x3f0006,
++    NPCM_PCS_VR_MII_DBG_CTRL = 0x3f000a,
++    NPCM_PCS_VR_MII_EEE_MCTRL0 = 0x3f000c,
++    NPCM_PCS_VR_MII_EEE_TXTIMER = 0x3f0010,
++    NPCM_PCS_VR_MII_EEE_RXTIMER = 0x3f0012,
++    NPCM_PCS_VR_MII_LINK_TIMER_CTRL = 0x3f0014,
++    NPCM_PCS_VR_MII_EEE_MCTRL1 = 0x3f0016,
++    NPCM_PCS_VR_MII_DIG_STS = 0x3f0020,
++    NPCM_PCS_VR_MII_ICG_ERRCNT1 = 0x3f0022,
++    NPCM_PCS_VR_MII_MISC_STS = 0x3f0030,
++    NPCM_PCS_VR_MII_RX_LSTS = 0x3f0040,
++    NPCM_PCS_VR_MII_MP_TX_BSTCTRL0 = 0x3f0070,
++    NPCM_PCS_VR_MII_MP_TX_LVLCTRL0 = 0x3f0074,
++    NPCM_PCS_VR_MII_MP_TX_GENCTRL0 = 0x3f007a,
++    NPCM_PCS_VR_MII_MP_TX_GENCTRL1 = 0x3f007c,
++    NPCM_PCS_VR_MII_MP_TX_STS = 0x3f0090,
++    NPCM_PCS_VR_MII_MP_RX_GENCTRL0 = 0x3f00b0,
++    NPCM_PCS_VR_MII_MP_RX_GENCTRL1 = 0x3f00b2,
++    NPCM_PCS_VR_MII_MP_RX_LOS_CTRL0 = 0x3f00ba,
++    NPCM_PCS_VR_MII_MP_MPLL_CTRL0 = 0x3f00f0,
++    NPCM_PCS_VR_MII_MP_MPLL_CTRL1 = 0x3f00f2,
++    NPCM_PCS_VR_MII_MP_MPLL_STS = 0x3f0110,
++    NPCM_PCS_VR_MII_MP_MISC_CTRL2 = 0x3f0126,
++    NPCM_PCS_VR_MII_MP_LVL_CTRL = 0x3f0130,
++    NPCM_PCS_VR_MII_MP_MISC_CTRL0 = 0x3f0132,
++    NPCM_PCS_VR_MII_MP_MISC_CTRL1 = 0x3f0134,
++    NPCM_PCS_VR_MII_DIG_CTRL2 = 0x3f01c2,
++    NPCM_PCS_VR_MII_DIG_ERRCNT_SEL = 0x3f01c4,
+ } NPCMRegister;
  
-+    /* PCI Mailbox. Cannot fail */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->pci_mbox), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pci_mbox), 0, NPCM7XX_PCI_MBOX_BA);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pci_mbox), 1,
-+        NPCM7XX_PCI_MBOX_BA + NPCM7XX_PCI_MBOX_RAM_SIZE);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pci_mbox), 0,
-+                       npcm7xx_irq(s, NPCM7XX_PCI_MBOX_IRQ));
-+
-     /* RAM2 (SRAM) */
-     memory_region_init_ram(&s->sram, OBJECT(dev), "ram2",
-                            NPCM7XX_RAM2_SZ, &error_abort);
-@@ -765,7 +780,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("npcm7xx.usbd[8]",      0xf0838000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.usbd[9]",      0xf0839000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.sd",           0xf0840000,   8 * KiB);
--    create_unimplemented_device("npcm7xx.pcimbx",       0xf0848000, 512 * KiB);
-     create_unimplemented_device("npcm7xx.aes",          0xf0858000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.des",          0xf0859000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.sha",          0xf085a000,   4 * KiB);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index f60de33f9a..3ee3f2226f 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -73,6 +73,7 @@ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files(
-   'npcm7xx_clk.c',
-   'npcm7xx_gcr.c',
-   'npcm7xx_mft.c',
-+  'npcm7xx_pci_mbox.c',
-   'npcm7xx_pwm.c',
-   'npcm7xx_rng.c',
- ))
-diff --git a/hw/misc/npcm7xx_pci_mbox.c b/hw/misc/npcm7xx_pci_mbox.c
-new file mode 100644
-index 0000000000..c770ad6fcf
---- /dev/null
-+++ b/hw/misc/npcm7xx_pci_mbox.c
-@@ -0,0 +1,324 @@
-+/*
-+ * Nuvoton NPCM7xx PCI Mailbox Module
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "chardev/char-fe.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/qdev-properties-system.h"
-+#include "hw/misc/npcm7xx_pci_mbox.h"
-+#include "hw/registerfields.h"
-+#include "migration/vmstate.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "qemu/bitops.h"
-+#include "qemu/error-report.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/timer.h"
-+#include "qemu/units.h"
-+#include "trace.h"
-+
-+REG32(NPCM7XX_PCI_MBOX_BMBXSTAT, 0x00);
-+REG32(NPCM7XX_PCI_MBOX_BMBXCTL, 0x04);
-+REG32(NPCM7XX_PCI_MBOX_BMBXCMD, 0x08);
-+
-+enum NPCM7xxPCIMBoxOperation {
-+    NPCM7XX_PCI_MBOX_OP_READ = 1,
-+    NPCM7XX_PCI_MBOX_OP_WRITE,
-+};
-+
-+#define NPCM7XX_PCI_MBOX_OFFSET_BYTES 8
-+
-+/* Response code */
-+#define NPCM7XX_PCI_MBOX_OK 0
-+#define NPCM7XX_PCI_MBOX_INVALID_OP 0xa0
-+#define NPCM7XX_PCI_MBOX_INVALID_SIZE 0xa1
-+#define NPCM7XX_PCI_MBOX_UNSPECIFIED_ERROR 0xff
-+
-+#define NPCM7XX_PCI_MBOX_NR_CI 8
-+#define NPCM7XX_PCI_MBOX_CI_MASK MAKE_64BIT_MASK(0, NPCM7XX_PCI_MBOX_NR_CI)
-+
-+static void npcm7xx_pci_mbox_update_irq(NPCM7xxPCIMBoxState *s)
-+{
-+    /* We should send an interrupt when one of the CIE and CIF are both 1. */
-+    if (s->regs[R_NPCM7XX_PCI_MBOX_BMBXSTAT] &
-+        s->regs[R_NPCM7XX_PCI_MBOX_BMBXCTL] &
-+        NPCM7XX_PCI_MBOX_CI_MASK) {
-+        qemu_irq_raise(s->irq);
-+        trace_npcm7xx_pci_mbox_irq(1);
-+    } else {
-+        qemu_irq_lower(s->irq);
-+        trace_npcm7xx_pci_mbox_irq(0);
-+    }
-+}
-+
-+static void npcm7xx_pci_mbox_send_response(NPCM7xxPCIMBoxState *s, uint8_t code)
-+{
-+    qemu_chr_fe_write(&s->chr, &code, 1);
-+    if (code == NPCM7XX_PCI_MBOX_OK && s->op == NPCM7XX_PCI_MBOX_OP_READ) {
-+        qemu_chr_fe_write(&s->chr, (uint8_t *)(&s->data), s->size);
-+    }
-+}
-+
-+static void npcm7xx_pci_mbox_handle_read(NPCM7xxPCIMBoxState *s)
-+{
-+    MemTxResult r = memory_region_dispatch_read(
-+        &s->ram, s->offset, &s->data, MO_LE | size_memop(s->size),
-+        MEMTXATTRS_UNSPECIFIED);
-+
-+    npcm7xx_pci_mbox_send_response(s, (uint8_t)r);
-+}
-+
-+static void npcm7xx_pci_mbox_handle_write(NPCM7xxPCIMBoxState *s)
-+{
-+    MemTxResult r = memory_region_dispatch_write(
-+        &s->ram, s->offset, s->data, MO_LE | size_memop(s->size),
-+        MEMTXATTRS_UNSPECIFIED);
-+
-+    npcm7xx_pci_mbox_send_response(s, (uint8_t)r);
-+}
-+
-+static void npcm7xx_pci_mbox_receive_char(NPCM7xxPCIMBoxState *s, uint8_t byte)
-+{
-+    switch (s->state) {
-+    case NPCM7XX_PCI_MBOX_STATE_IDLE:
-+        switch (byte) {
-+        case NPCM7XX_PCI_MBOX_OP_READ:
-+        case NPCM7XX_PCI_MBOX_OP_WRITE:
-+            s->op = byte;
-+            s->state = NPCM7XX_PCI_MBOX_STATE_OFFSET;
-+            s->offset = 0;
-+            s->receive_count = 0;
-+            break;
-+
-+        default:
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                "received invalid op type: 0x%" PRIx8, byte);
-+            npcm7xx_pci_mbox_send_response(s, NPCM7XX_PCI_MBOX_INVALID_OP);
-+            break;
-+        }
-+        break;
-+
-+    case NPCM7XX_PCI_MBOX_STATE_OFFSET:
-+        s->offset += (uint64_t)byte << (s->receive_count * BITS_PER_BYTE);
-+        if (++s->receive_count >= NPCM7XX_PCI_MBOX_OFFSET_BYTES) {
-+            s->state = NPCM7XX_PCI_MBOX_STATE_SIZE;
-+        }
-+        break;
-+
-+    case NPCM7XX_PCI_MBOX_STATE_SIZE:
-+        s->size = byte;
-+        if (s->size < 1 || s->size > sizeof(uint64_t)) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "received invalid size: %u", byte);
-+            npcm7xx_pci_mbox_send_response(s, NPCM7XX_PCI_MBOX_INVALID_SIZE);
-+            s->state = NPCM7XX_PCI_MBOX_STATE_IDLE;
-+            break;
-+        }
-+        if (s->op == NPCM7XX_PCI_MBOX_OP_READ) {
-+            npcm7xx_pci_mbox_handle_read(s);
-+            s->state = NPCM7XX_PCI_MBOX_STATE_IDLE;
-+        } else {
-+            s->receive_count = 0;
-+            s->data = 0;
-+            s->state = NPCM7XX_PCI_MBOX_STATE_DATA;
-+        }
-+        break;
-+
-+    case NPCM7XX_PCI_MBOX_STATE_DATA:
-+        g_assert(s->op == NPCM7XX_PCI_MBOX_OP_WRITE);
-+        s->data += (uint64_t)byte << (s->receive_count * BITS_PER_BYTE);
-+        if (++s->receive_count >= s->size) {
-+            npcm7xx_pci_mbox_handle_write(s);
-+            s->state = NPCM7XX_PCI_MBOX_STATE_IDLE;
-+        }
-+        break;
-+
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static uint64_t npcm7xx_pci_mbox_read(void *opaque, hwaddr offset,
-+                                      unsigned size)
-+{
-+    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(opaque);
-+    uint16_t value = 0;
-+
-+    if (offset / sizeof(uint32_t) >= NPCM7XX_PCI_MBOX_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
-+                      __func__, offset);
-+        return 0;
-+    }
-+
-+    value = s->regs[offset / sizeof(uint32_t)];
-+    trace_npcm7xx_pci_mbox_read(DEVICE(s)->canonical_path, offset, value, size);
-+    return value;
-+}
-+
-+static void npcm7xx_pci_mbox_write(void *opaque, hwaddr offset,
-+                              uint64_t v, unsigned size)
-+{
-+    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(opaque);
-+
-+    trace_npcm7xx_pci_mbox_write(DEVICE(s)->canonical_path, offset, v, size);
-+    switch (offset) {
-+    case A_NPCM7XX_PCI_MBOX_BMBXSTAT:
-+        /* Clear bits that are 1. */
-+        s->regs[R_NPCM7XX_PCI_MBOX_BMBXSTAT] &= ~v;
-+        break;
-+
-+    case A_NPCM7XX_PCI_MBOX_BMBXCTL:
-+        s->regs[R_NPCM7XX_PCI_MBOX_BMBXCTL] = v;
-+        break;
-+
-+    case A_NPCM7XX_PCI_MBOX_BMBXCMD:
-+        /* Set the bits that are 1. */
-+        s->regs[R_NPCM7XX_PCI_MBOX_BMBXCMD] |= v;
-+        /* TODO: Set interrupt to host. */
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
-+                      __func__, offset);
-+    }
-+    npcm7xx_pci_mbox_update_irq(s);
-+}
-+
-+static const struct MemoryRegionOps npcm7xx_pci_mbox_ops = {
-+    .read       = npcm7xx_pci_mbox_read,
-+    .write      = npcm7xx_pci_mbox_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid      = {
-+        .min_access_size        = 4,
-+        .max_access_size        = 4,
-+        .unaligned              = false,
-+    },
-+};
-+
-+static void npcm7xx_pci_mbox_enter_reset(Object *obj, ResetType type)
-+{
-+    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(obj);
-+
-+    memset(s->regs, 0, 4 * NPCM7XX_PCI_MBOX_NR_REGS);
-+    s->state = NPCM7XX_PCI_MBOX_STATE_IDLE;
-+    s->receive_count = 0;
-+}
-+
-+static void npcm7xx_pci_mbox_hold_reset(Object *obj)
-+{
-+    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(obj);
-+
-+    qemu_irq_lower(s->irq);
-+}
-+
-+static int can_receive(void *opaque)
-+{
-+    return 1;
-+}
-+
-+static void receive(void *opaque, const uint8_t *buf, int size)
-+{
-+    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(opaque);
-+    int i;
-+
-+    for (i = 0; i < size; ++i) {
-+        npcm7xx_pci_mbox_receive_char(s, buf[i]);
-+    }
-+}
-+
-+static void chr_event(void *opaque, QEMUChrEvent event)
-+{
-+    switch (event) {
-+    case CHR_EVENT_OPENED:
-+    case CHR_EVENT_CLOSED:
-+    case CHR_EVENT_BREAK:
-+    case CHR_EVENT_MUX_IN:
-+    case CHR_EVENT_MUX_OUT:
-+        /* Ignore */
-+        break;
-+
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static void npcm7xx_pci_mbox_init(Object *obj)
-+{
-+    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+
-+    memory_region_init_ram_device_ptr(&s->ram, obj, "pci-mbox-ram",
-+                                      NPCM7XX_PCI_MBOX_RAM_SIZE, s->content);
-+    memory_region_init_io(&s->iomem, obj, &npcm7xx_pci_mbox_ops, s,
-+                          "pci-mbox-iomem", 4 * KiB);
-+    sysbus_init_mmio(sbd, &s->ram);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
-+}
-+
-+static void npcm7xx_pci_mbox_realize(DeviceState *dev, Error **errp)
-+{
-+    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(dev);
-+
-+    qemu_chr_fe_set_handlers(&s->chr, can_receive, receive,
-+                             chr_event, NULL, OBJECT(dev), NULL, true);
-+}
-+
-+static const VMStateDescription vmstate_npcm7xx_pci_mbox = {
-+    .name = "npcm7xx-pci-mbox-module",
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, NPCM7xxPCIMBoxState,
-+                             NPCM7XX_PCI_MBOX_NR_REGS),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
-+static Property npcm7xx_pci_mbox_properties[] = {
-+    DEFINE_PROP_CHR("chardev", NPCM7xxPCIMBoxState, chr),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void npcm7xx_pci_mbox_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "NPCM7xx PCI Mailbox Controller";
-+    dc->vmsd = &vmstate_npcm7xx_pci_mbox;
-+    dc->realize = npcm7xx_pci_mbox_realize;
-+    rc->phases.enter = npcm7xx_pci_mbox_enter_reset;
-+    rc->phases.hold = npcm7xx_pci_mbox_hold_reset;
-+    device_class_set_props(dc, npcm7xx_pci_mbox_properties);
-+}
-+
-+static const TypeInfo npcm7xx_pci_mbox_info = {
-+    .name               = TYPE_NPCM7XX_PCI_MBOX,
-+    .parent             = TYPE_SYS_BUS_DEVICE,
-+    .instance_size      = sizeof(NPCM7xxPCIMBoxState),
-+    .class_init         = npcm7xx_pci_mbox_class_init,
-+    .instance_init      = npcm7xx_pci_mbox_init,
-+};
-+
-+static void npcm7xx_pci_mbox_register_type(void)
-+{
-+    type_register_static(&npcm7xx_pci_mbox_info);
-+}
-+type_init(npcm7xx_pci_mbox_register_type);
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 24ba7cc4d0..36c7840143 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -148,6 +148,11 @@ npcm7xx_pwm_write(const char *id, uint64_t offset, uint32_t value) "%s offset: 0
- npcm7xx_pwm_update_freq(const char *id, uint8_t index, uint32_t old_value, uint32_t new_value) "%s pwm[%u] Update Freq: old_freq: %u, new_freq: %u"
- npcm7xx_pwm_update_duty(const char *id, uint8_t index, uint32_t old_value, uint32_t new_value) "%s pwm[%u] Update Duty: old_duty: %u, new_duty: %u"
+ static uint32_t gmac_read(QTestState *qts, const GMACModule *mod,
+@@ -119,6 +179,15 @@ static uint32_t gmac_read(QTestState *qts, const GMACModule *mod,
+     return qtest_readl(qts, mod->base_addr + regno);
+ }
  
-+# npcm7xx_pci_mbox.c
-+npcm7xx_pci_mbox_read(const char *id, uint64_t offset, uint64_t value, unsigned size) "%s offset: 0x%04" PRIx64 " value: 0x%02" PRIx64 " size: %u"
-+npcm7xx_pci_mbox_write(const char *id, uint64_t offset, uint64_t value, unsigned size) "%s offset: 0x%04" PRIx64 " value: 0x%02" PRIx64 " size: %u"
-+npcm7xx_pci_mbox_irq(int irq_level) "irq level: %d"
++static uint16_t pcs_read(QTestState *qts, const GMACModule *mod,
++                          NPCMRegister regno)
++{
++    uint32_t write_value = (regno & 0x3ffe00) >> 9;
++    qtest_writel(qts, PCS_BASE_ADDRESS + NPCM_PCS_IND_AC_BA, write_value);
++    uint32_t read_offset = regno & 0x1ff;
++    return qtest_readl(qts, PCS_BASE_ADDRESS + read_offset);
++}
 +
- # stm32f4xx_syscfg.c
- stm32f4xx_syscfg_set_irq(int gpio, int line, int level) "Interrupt: GPIO: %d, Line: %d; Level: %d"
- stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
-diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index 72c7722096..273090ac60 100644
---- a/include/hw/arm/npcm7xx.h
-+++ b/include/hw/arm/npcm7xx.h
-@@ -26,6 +26,7 @@
- #include "hw/misc/npcm7xx_clk.h"
- #include "hw/misc/npcm7xx_gcr.h"
- #include "hw/misc/npcm7xx_mft.h"
-+#include "hw/misc/npcm7xx_pci_mbox.h"
- #include "hw/misc/npcm7xx_pwm.h"
- #include "hw/misc/npcm7xx_rng.h"
- #include "hw/net/npcm7xx_emc.h"
-diff --git a/include/hw/misc/npcm7xx_pci_mbox.h b/include/hw/misc/npcm7xx_pci_mbox.h
-new file mode 100644
-index 0000000000..e595fbcc70
---- /dev/null
-+++ b/include/hw/misc/npcm7xx_pci_mbox.h
-@@ -0,0 +1,81 @@
-+/*
-+ * Nuvoton NPCM7xx PCI Mailbox Module
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+#ifndef NPCM7XX_PCI_MBOX_H
-+#define NPCM7XX_PCI_MBOX_H
+ /* Check that GMAC registers are reset to default value */
+ static void test_init(gconstpointer test_data)
+ {
+@@ -129,7 +198,12 @@ static void test_init(gconstpointer test_data)
+ #define CHECK_REG32(regno, value) \
+     do { \
+         g_assert_cmphex(gmac_read(qts, mod, (regno)), ==, (value)); \
+-    } while (0)
++    } while (0) ;
 +
-+#include "chardev/char-fe.h"
-+#include "exec/memory.h"
-+#include "hw/clock.h"
-+#include "hw/irq.h"
-+#include "hw/pci/pci.h"
-+#include "hw/sysbus.h"
-+#include "qom/object.h"
++#define CHECK_REG_PCS(regno, value) \
++    do { \
++        g_assert_cmphex(pcs_read(qts, mod, (regno)), ==, (value)); \
++    } while (0) ;
+ 
+     CHECK_REG32(NPCM_DMA_BUS_MODE, 0x00020100);
+     CHECK_REG32(NPCM_DMA_XMT_POLL_DEMAND, 0);
+@@ -180,6 +254,64 @@ static void test_init(gconstpointer test_data)
+     CHECK_REG32(NPCM_GMAC_PTP_TAR, 0);
+     CHECK_REG32(NPCM_GMAC_PTP_TTSR, 0);
+ 
++    /* TODO Add registers PCS */
++    if (mod->base_addr == 0xf0802000) {
++        CHECK_REG_PCS(NPCM_PCS_SR_CTL_ID1, 0x699e)
++        CHECK_REG_PCS(NPCM_PCS_SR_CTL_ID2, 0)
++        CHECK_REG_PCS(NPCM_PCS_SR_CTL_STS, 0x8000)
 +
-+#define NPCM7XX_PCI_MBOX_RAM_SIZE 0x4000
++        CHECK_REG_PCS(NPCM_PCS_SR_MII_CTRL, 0x1140)
++        CHECK_REG_PCS(NPCM_PCS_SR_MII_STS, 0x0109)
++        CHECK_REG_PCS(NPCM_PCS_SR_MII_DEV_ID1, 0x699e)
++        CHECK_REG_PCS(NPCM_PCS_SR_MII_DEV_ID2, 0x0ced0)
++        CHECK_REG_PCS(NPCM_PCS_SR_MII_AN_ADV, 0x0020)
++        CHECK_REG_PCS(NPCM_PCS_SR_MII_LP_BABL, 0)
++        CHECK_REG_PCS(NPCM_PCS_SR_MII_AN_EXPN, 0)
++        CHECK_REG_PCS(NPCM_PCS_SR_MII_EXT_STS, 0xc000)
 +
-+#define NPCM7XX_PCI_VENDOR_ID   0x1050
-+#define NPCM7XX_PCI_DEVICE_ID   0x0750
-+#define NPCM7XX_PCI_REVISION    0
-+#define NPCM7XX_PCI_CLASS_CODE  0xff
++        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_ABL, 0x0003)
++        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_LWR, 0x0038)
++        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_UPR, 0)
++        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_LWR, 0x0038)
++        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_UPR, 0)
++        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_LWR, 0x0058)
++        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_UPR, 0)
++        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_LWR, 0x0048)
++        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_UPR, 0)
 +
-+typedef enum NPCM7xxPCIMBoxHostState {
-+    NPCM7XX_PCI_MBOX_STATE_IDLE,
-+    NPCM7XX_PCI_MBOX_STATE_OFFSET,
-+    NPCM7XX_PCI_MBOX_STATE_SIZE,
-+    NPCM7XX_PCI_MBOX_STATE_DATA,
-+} NPCM7xxPCIMBoxHostState ;
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MMD_DIG_CTRL1, 0x2400)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_AN_CTRL, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_AN_INTR_STS, 0x000a)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_TC, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_DBG_CTRL, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_MCTRL0, 0x899c)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_TXTIMER, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_RXTIMER, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_LINK_TIMER_CTRL, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_MCTRL1, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_STS, 0x0010)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_ICG_ERRCNT1, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MISC_STS, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_RX_LSTS, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_BSTCTRL0, 0x00a)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_LVLCTRL0, 0x007f)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_GENCTRL0, 0x0001)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_GENCTRL1, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_STS, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_GENCTRL0, 0x0100)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_GENCTRL1, 0x1100)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_LOS_CTRL0, 0x000e)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_CTRL0, 0x0100)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_CTRL1, 0x0032)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_STS, 0x0001)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL2, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_LVL_CTRL, 0x0019)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL0, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL1, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_CTRL2, 0)
++        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_ERRCNT_SEL, 0)
++    }
 +
-+/*
-+ * Maximum amount of control registers in PCI Mailbox module. Do not increase
-+ * this value without bumping vm version.
-+ */
-+#define NPCM7XX_PCI_MBOX_NR_REGS 3
-+
-+/**
-+ * struct NPCM7xxPciMboxState - PCI Mailbox Device
-+ * @parent: System bus device.
-+ * @ram: the mailbox RAM memory space
-+ * @iomem: Memory region through which registers are accessed.
-+ * @content: The content of the PCI mailbox, initialized to 0.
-+ * @regs: The MMIO registers.
-+ * @chr: The chardev backend used to communicate with core CPU.
-+ * @offset: The offset to start transfer.
-+ */
-+typedef struct NPCM7xxPCIMBoxState {
-+    SysBusDevice parent;
-+
-+    MemoryRegion ram;
-+    MemoryRegion iomem;
-+
-+    qemu_irq irq;
-+    uint8_t content[NPCM7XX_PCI_MBOX_RAM_SIZE];
-+    uint32_t regs[NPCM7XX_PCI_MBOX_NR_REGS];
-+    CharBackend chr;
-+
-+    /* aux data for receiving host commands. */
-+    NPCM7xxPCIMBoxHostState state;
-+    uint8_t op;
-+    hwaddr offset;
-+    uint8_t size;
-+    uint64_t data;
-+    int receive_count;
-+} NPCM7xxPCIMBoxState;
-+
-+#define TYPE_NPCM7XX_PCI_MBOX "npcm7xx-pci-mbox"
-+#define NPCM7XX_PCI_MBOX(obj) \
-+    OBJECT_CHECK(NPCM7xxPCIMBoxState, (obj), TYPE_NPCM7XX_PCI_MBOX)
-+
-+#endif /* NPCM7XX_PCI_MBOX_H */
+     qtest_quit(qts);
+ }
+ 
 -- 
 2.42.0.655.g421f12c284-goog
 

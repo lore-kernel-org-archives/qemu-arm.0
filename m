@@ -1,79 +1,79 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4172379ejc;
-        Tue, 17 Oct 2023 13:10:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGjedNm4Pjyq7y0DgBQgzCsuDwB2J9smoSmQ1VSOKSuXRFMmPOHGQ7gNeR8EM21MshBMxy1
-X-Received: by 2002:a05:620a:199e:b0:774:3742:31e4 with SMTP id bm30-20020a05620a199e00b00774374231e4mr3565512qkb.52.1697573421343;
-        Tue, 17 Oct 2023 13:10:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697573421; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4172615ejc;
+        Tue, 17 Oct 2023 13:10:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGpnGZmesG70a3404TBzz8lFNmfvZ/RK6xVV+w34UVXsSkm8a6vdp9/aBJW+T4COh6+CAUV
+X-Received: by 2002:a05:6102:2051:b0:457:c052:1949 with SMTP id q17-20020a056102205100b00457c0521949mr3785227vsr.25.1697573444880;
+        Tue, 17 Oct 2023 13:10:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697573444; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ewwiy8x9p9nnFvpS2kvQLiutvA9hAm1t3YuqMBa6CM3BEx/H6QuAJ8u0s3K6enpdFm
-         fCYU2adBUBWj3imegmfpzSfzvKrgh5vzIsdmu9rkMzEr+JIIEf1mOOYV5BCWz43bcEVp
-         ov4nu8XVafebcOrHxFhTXSGEpxxaAo3J0ZtF9iEP2K835oJhf4NowQs0EG+nqnLptZU/
-         bpNJe5llxx9unmsS5QSiudRfX4qipRkuVOVumXk+L7spRTDuyUB9WZVK2OVlyUt/loy/
-         lEq6/NJOt9Ub118ldijRNwrSMBdxT8Y1bpvl+TwX2OKZ6si9kPvS7/txQAZ01/LMEVru
-         Ew6Q==
+        b=O191izUJFPSUjXnBcpuQrqrzFoO8GXx+IPlS2hT2RBpQ6iLkwlIPy20rDc1cDrL7fV
+         XqkA7IiR8LhlHre/diN697S1PKkVGn9wD24/4uhuCFF3/Volxl4LnLD1jV3aqAhxNbMQ
+         4Hz+1ibBesDUsZVK5FX2GSsPisPSy8ZDukgV7oNoZHJ297eNAKrPxG3p0/7oUzgYM2gQ
+         NAro0dQxgfBhv99YZTdM5RHEgkWqgTED+w6YtQla2Vyy5Lihmi16YUaGKE6aWChuEQ2Z
+         0mfrmOFsA/hGl8rQU/9S6BfrKj4HEOvC8zWe6pu8pg8CK+SCH59Zhychq2oDVCmh718X
+         VsVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
          :to:content-language:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=vt/12v/bN3D1UDBLUnDhFGepAg8EYl3o+KQXj4hXb7I=;
+        bh=U23o4OOwj4qPRPlIw1d0Vdg+CJ+lgeeN6m5pLnyfQI4=;
         fh=hOIYQAkp+qllEZGDaNYMtbC69yK4JPmV8Zv5L5YpIPE=;
-        b=tRpCAFgMSlnG+/9HfPeMUhyj7/CIK5nhKgQ7dFtc0tujmedHIGqekDqorFPZz+vk3i
-         /wU6htI6YoqhQHKdnIi+3WOF5FSDHHc1gQZEELsTSePHLASudTx3nYPwLac+WWOGlEzO
-         r1JVQw4OZHG5/CYjyGpJnT37HNQY6wui/HObPhz58zkvlkhIK3lxyj0ez8iS7lcPVWEm
-         zfZmDHdWGf7jwLOd0N7xIzMI3sGqlcbgQEsB+YHsNQJBSb3sc3wYunxDGq/0VxZG1yP/
-         RaqRkiefNhVR8fuAAsej6XX24hjj3oDWMX79gwa6Vt2R5r9XbB+r1bjboOvqSDl64ySa
-         PuFw==
+        b=eVRy8bUKK+Nsxli1rtYDwWs84jhnl3oTcOOlqRST1hyu74ANFkXiZNT6pRX1P2Tbho
+         k1O5xZPI6z0G0FF5t/Ya+DK/dFQagD//aEzyUfjg4MkdF6BrDM2PeRtyvHBzsj6ZYx0k
+         WsAa1pYWxEaI9e+siyhmpX/TWPiB3aphJqaqm0pqDZ16jPh1GiL+IK1HTDCsNQpTVvAE
+         k5zxNzxJ2ho2wxKzUXIJZGqR2UCzc9ioN75wBKsr3SUrJMoV4UWciJ/zqNo8To99RqOW
+         EkBKin9fC/aKZKO8oSeuuexnhVwQVF7CDQ31GMTP+fvEULZ8Ap5jzQ958ueFWWoJ51co
+         atcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=dD++kppZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=uWb+jgWg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q20-20020a05620a0d9400b0076daabde0a1si1664733qkl.404.2023.10.17.13.10.21
+        by mx.google.com with ESMTPS id t11-20020a05622a01cb00b0041817f70871si1641972qtw.510.2023.10.17.13.10.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 13:10:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Oct 2023 13:10:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=dD++kppZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=uWb+jgWg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qsqOA-0003Zu-S0; Tue, 17 Oct 2023 16:10:04 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qsqOh-0004Vg-1f; Tue, 17 Oct 2023 16:10:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qsqO6-0003Ya-HS; Tue, 17 Oct 2023 16:09:58 -0400
+ id 1qsqOf-0004Po-9L; Tue, 17 Oct 2023 16:10:34 -0400
 Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qsqO4-00065f-Vy; Tue, 17 Oct 2023 16:09:58 -0400
+ id 1qsqOd-0006Li-0G; Tue, 17 Oct 2023 16:10:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
  In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=vt/12v/bN3D1UDBLUnDhFGepAg8EYl3o+KQXj4hXb7I=; b=dD++kppZpEIXXPclDYlmY1qgyI
- v28xb9Gl4C1qt2r5gsux2pE7BBMxKdVtmAWPryqTDmPe/ix7AuLfL1s8x9F82+SlEEAJY4+/z+bka
- tyCKDCkijdbeSafqGSAHiNatEEnj5oGvVJd4VY5FZYTVFXjN4USEa59hNv6zivxMnYY7T4xBdWWZ8
- l5CWmm8CfiW0GjOW41iDyo6Urs4fIpg2sWsRfD2msoPWj/YC9eJo80QroN5jOlik+qjAVEzNhnThk
- ax+RzwCcaZGDpj1vC0fhhoyKZY5aY8R3vc1S4rfNQz2j1r44Ayo0f3c6iEtGkSX+8GALvrzGrndYC
- 8DbnZGF0ix9BRSdRaunY8Aibp1lI1dwCufzvlfwZhqnnftPH8tHv87iKeBxbbs8tjwKMICY+rchbO
- KzPd+1+uk6Q2qsRFcc6CnrBTiNqzIL7dRoSLHpmHF9lBYqKzpnxw64o2g32AMRKLaAXdkxch3WCVN
- E7OapKLnjJ9yvq9N6Vv+i2/IamB/AzZklKD1HcfL+TPLBSBSKfaXvkCEUMn+2N8Ob6hexxkr2Fs7n
- czeprJo4porU5gnY6hkdwgdUkK8s40pXUxfpD1XDgdLZ4I+tex8TCWGHN8AXAkThKqKugmX3Afm+g
- WX8r1jYEWS8r5WNZAKxQOVI62zB8PaBgvuoNFrADg=;
+ bh=U23o4OOwj4qPRPlIw1d0Vdg+CJ+lgeeN6m5pLnyfQI4=; b=uWb+jgWg9KYeTr9ObQllozh4xc
+ s7lIZ/2eyV2dUv9legHYNme0qa5tJMCAmRh6mxiE41KVwN9Bm7+YCO6lZWKTd5nVVfimW2wmgeKVx
+ 0jnGi57xlCqbRCCpW6hpv99PdPCemFkx0PcjG77Txb7muU1FHgsf79fX4Oa8N2XDz75qyjdFiTinH
+ BlwmsI+z50XEe+Y2LvfXhTpm9y/maVrP7BNVTxjUPXhGBZsN5golsp0mG2SlcXpWKeZf2wXhMe8lf
+ xjnHdXM6oTmAGQO1IB4wJJ+vIUJUWlGiottRAQ9sp7GK7TodRyEjb3LzNmwomVevOLe2HF2x2xHQK
+ VKN7Q4N+7NF/sMXjP5ySoyEWALuJ+c7O5eiTE3FvR3U1TLk/tu17WqlalERphABuu/1T1pF1sayYj
+ /Eg6pqQP7RAUSyAO9Isnv5WGZqDcpaCnXGVWgvff0ygVUnXSBfKv3Qk9h+8e+55c0RksckTBBqio8
+ dyD7V3q4KG8W89SCkJMLsd2F1mg9s/vvADoUxwtqfZyqdyOvAnDKAosKV98Nyj9QhcAmpX0sQvOtC
+ 0K2SefkvmTz3HWMzSnIdlN16C3z5rBDXUCyyaeoqbSnRNP2F4SKtbY0gd93JcxecZsO/bEaTMfCPb
+ KQI7N5DzwqNW1OnhEPrXr5ZI78jiDZDceTOHKuy8g=;
 Received: from [2a00:23c4:8bb0:3200:407d:a65c:9fb4:b9b4]
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qsqNs-0001am-42; Tue, 17 Oct 2023 21:09:48 +0100
-Message-ID: <a7da8f7d-2309-4647-b61d-3498bc80ba28@ilande.co.uk>
-Date: Tue, 17 Oct 2023 21:09:46 +0100
+ id 1qsqOR-0001am-Na; Tue, 17 Oct 2023 21:10:23 +0100
+Message-ID: <88a49583-d4a0-4c86-a26b-b98803630d1e@ilande.co.uk>
+Date: Tue, 17 Oct 2023 21:10:22 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Content-Language: en-US
@@ -88,7 +88,7 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Alistair Francis <alistair@alistair23.me>, Gerd Hoffmann <kraxel@redhat.com>
 References: <20231017140150.44995-1-philmd@linaro.org>
- <20231017140150.44995-3-philmd@linaro.org>
+ <20231017140150.44995-4-philmd@linaro.org>
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
  xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
@@ -114,13 +114,12 @@ Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
  Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
  KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
  imgcU9TTGC5qd9g=
-In-Reply-To: <20231017140150.44995-3-philmd@linaro.org>
+In-Reply-To: <20231017140150.44995-4-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8bb0:3200:407d:a65c:9fb4:b9b4
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 2/7] hw/block/vhost-user-blk: Use DEVICE() /
- VIRTIO_DEVICE() macros
+Subject: Re: [PATCH 3/7] hw/display/virtio-gpu: Use VIRTIO_DEVICE() macro
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -132,52 +131,43 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KcXr6a7lpb0T
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VGftrfP0mnXd
 
 On 17/10/2023 15:01, Philippe Mathieu-Daudé wrote:
 
-> Access QOM parent with the proper QOM [VIRTIO_]DEVICE() macros.
+> Access QOM parent with the proper QOM VIRTIO_DEVICE() macro.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/block/vhost-user-blk.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   hw/display/virtio-gpu.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/block/vhost-user-blk.c b/hw/block/vhost-user-blk.c
-> index eecf3f7a81..4b37e26120 100644
-> --- a/hw/block/vhost-user-blk.c
-> +++ b/hw/block/vhost-user-blk.c
-> @@ -405,7 +405,7 @@ static void vhost_user_blk_event(void *opaque, QEMUChrEvent event)
+> diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+> index 93857ad523..51cb517999 100644
+> --- a/hw/display/virtio-gpu.c
+> +++ b/hw/display/virtio-gpu.c
+> @@ -1132,7 +1132,7 @@ static void virtio_gpu_ctrl_bh(void *opaque)
+>       VirtIOGPU *g = opaque;
+>       VirtIOGPUClass *vgc = VIRTIO_GPU_GET_CLASS(g);
 >   
->   static int vhost_user_blk_realize_connect(VHostUserBlk *s, Error **errp)
->   {
-> -    DeviceState *dev = &s->parent_obj.parent_obj;
-> +    DeviceState *dev = DEVICE(s);
->       int ret;
+> -    vgc->handle_ctrl(&g->parent_obj.parent_obj, g->ctrl_vq);
+> +    vgc->handle_ctrl(VIRTIO_DEVICE(g), g->ctrl_vq);
+>   }
 >   
->       s->connected = false;
-> @@ -423,7 +423,7 @@ static int vhost_user_blk_realize_connect(VHostUserBlk *s, Error **errp)
->       assert(s->connected);
->   
->       ret = vhost_dev_get_config(&s->dev, (uint8_t *)&s->blkcfg,
-> -                               s->parent_obj.config_len, errp);
-> +                               VIRTIO_DEVICE(s)->config_len, errp);
->       if (ret < 0) {
->           qemu_chr_fe_disconnect(&s->chardev);
->           vhost_dev_cleanup(&s->dev);
+>   static void virtio_gpu_handle_cursor(VirtIODevice *vdev, VirtQueue *vq)
 
 Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 

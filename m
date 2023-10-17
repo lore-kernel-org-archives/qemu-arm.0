@@ -1,177 +1,294 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4174334ejc;
-        Tue, 17 Oct 2023 13:13:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHj2KBYYcHrFOeDrAzhzPOozQ4GffFf4xSw6qJDazGgjUNt50irdsYWRMRMSyOQf2jKPGpc
-X-Received: by 2002:a05:622a:4f:b0:417:a42d:d91b with SMTP id y15-20020a05622a004f00b00417a42dd91bmr3717629qtw.36.1697573625955;
-        Tue, 17 Oct 2023 13:13:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697573625; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4225046ejc;
+        Tue, 17 Oct 2023 15:00:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGwgHHy9m+I+TaR07prCrGVTG7Av3qYGMWeA3Bwr+vFAXTVYAPpwm8vZ/RF7B8m0YtI9jWk
+X-Received: by 2002:a05:6102:4411:b0:457:c725:4bdb with SMTP id df17-20020a056102441100b00457c7254bdbmr4168446vsb.28.1697580036754;
+        Tue, 17 Oct 2023 15:00:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697580036; cv=none;
         d=google.com; s=arc-20160816;
-        b=v7mfmVjisJhy8mVixuR/561g7t07mUsvtknY5n2ZShoRVWtqcmLJOJTGQslG2nbGre
-         KKd9rEElNYgLVdMioycY87otPwKr+Rx0M2jlo3DxY2xkDEkGW9a3oG6xMkdJ4HGoSblS
-         0m5RWAJcgLLd0FFA++wLBg+V3UTXuiLU33XdjRlVuNK99dxTPRPJMYrdnHA39jjxwoiV
-         mix59Gl2n/fYsUQn6z+JlAY9wFrM+snKJ1pueZvtMYQbkgrULc1uN09E/f0p68YqP75u
-         yasrzCAAxk9UhumG0IU+J/3ae0ntY8J6s1EUAMwjydiOyq511rfqeVNfKeYHeEFls1Wr
-         miNw==
+        b=GFK9j4qtu81pg918Cnpal9BSbRg3Mnm5ih19BtAe29ca/wg+qzhW1yvg4YWRxi8C9M
+         PPZ/ZkdmTyrxk58oW5Hcpfm2UsSg28UYe1be+BZPaXZEJdodyHRs2jBJ/zb8E0O5keMF
+         P2mQne6w7rURcXRG7/GZu2/WwOy/j0diuESAHQS3T+k0XM33oGcZHur2DZ24hcQNVsrr
+         wEDB8OI/EipHt3RnfTqcJRR+NNJesqkjb8RXfawwUL6sD+gI7BcXiHFjaWQvEVvMRLUT
+         dR2V7Ym7OFG6hQaFRI/n/DXDLiRz/Q7wfvulvOhQ8iQhg2woTtpM3PuV0h5znjH76Wsg
+         PomQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
-         :to:content-language:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=DbcMEpdIUfzgUkY9tJe/Ytpcy0FAgmNnY65/OITlR9g=;
-        fh=hOIYQAkp+qllEZGDaNYMtbC69yK4JPmV8Zv5L5YpIPE=;
-        b=eRW5DImsTTwLdcuOTRjdGgMqnjAbHeUIhKuRsteqyJEd55clxJdDHrqlMJPAb8ZxJD
-         OvenYtMileytiRZKKc/j5qLWDYePM6QYkQAfhdS035lxXy7AAXBDYo7AQN3EVrq9vqml
-         b+KZh2rvMWVHllkv/gON65lulvhzSNBQgy4P2ZzNtMy96Y3Uzgigp11MelwC5ey9kCHw
-         yzZpV5G9PGoBqctrI1g0rzY4fj3ESWw3mi+zJ5Z1YY5d67vg1GZBmbYcshLIxCLEgKJL
-         eYr5hweAy3foQ8Y7NIwwZNvA39+UTF2T+4gHj3mDQZgvhKZQUq398IdwTBtGpD1d8Tqd
-         hfsQ==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=MQyFeapujUzC5EPFuR98l+MElDouPf72NlPSas9OsIc=;
+        fh=nD6vmBZ6lxExUhLJfxe+1Yzkpvsf6XYhTVKkKswScRI=;
+        b=KVgNdJIqs4eOnfooOJJLZs3pYgXVNOHPME2TUL6nm1/EstpYbk0om8094jr+O871tj
+         KXe1GGiJRMKtOEbuyux5MvlfLo6ATJA3vKbH4M/sbRTcjBK8agtXburEDiC1zl/2wY9n
+         KAtDTCiY5voC1UQxQgPsJLRs+ex5M1aeVm6nuv5eS/ViGCGCmAFSttyjQXYGMOXcOxRU
+         4WaD3tBK2O+DRuqSbjtHa9vXLEkLIi7Fad7hBe/qQtwFiNAtmAsQAoilB9wm5ePZsEkg
+         4HlFTwqRecH4wm8EkVmZtoH6DRbC4H9fVsEJt2PT9Fz6GAjQC5pnjcJCQLADas3qBkny
+         BGhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="A/9gc1iv";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MW/nOaJ4";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s6-20020ac85cc6000000b0041961ddd98esi1682514qta.329.2023.10.17.13.13.45
+        by mx.google.com with ESMTPS id u19-20020a05622a14d300b00403cad59323si1883935qtx.779.2023.10.17.15.00.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 13:13:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Oct 2023 15:00:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="A/9gc1iv";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MW/nOaJ4";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qsqRK-0005tQ-0x; Tue, 17 Oct 2023 16:13:18 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qss6y-0007oE-Fc; Tue, 17 Oct 2023 18:00:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qsqRF-0005tB-Ia; Tue, 17 Oct 2023 16:13:14 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1qss6t-0007nV-Ua
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 18:00:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qsqRE-0006f4-5Q; Tue, 17 Oct 2023 16:13:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=DbcMEpdIUfzgUkY9tJe/Ytpcy0FAgmNnY65/OITlR9g=; b=A/9gc1ivD7sta/DCGBBer3yz4v
- EFXdEtuWYzpZrB3JHC+THTUaZGlJb27l8+BgE3ujKUvLujYtWuphxQSFXxjnwW5JzBe82cY7CAGxb
- cvyguBk9gXVp99R2Hb0uMYXQHCbf999NwL7NN7NaPlxl1kmzum6/5Weg9TvYGRvHI56XG0LE1hkXm
- cIKqYfxQq5y6NmWl5jLYr4i/UVdioNZ6Vb8oHT2up30qN2oX5r2DGl3btKkfbS+glJ9N9kBUy9dDE
- JWMlIF8n606zSXdtjmZ0W3jK2AN/DeBDTl/b2CkslHkXLPYgF7SOFIoOIVovmFhB6kzSyRkdYPR2B
- 2AjjfGD0RXMJ8qk6topfoJzetm6QdMDhy2P1pqUiKXGuq6ub+yDqZx1gKPvC+pl2nnuj6pz/2tPv5
- A7w6PJBrpvk4gcKoBddMuWVUvnk5cQPuuWO/mlq9jWgBYQbm00ZzWwfVj6hOVJH3/jEMokSrJLrKt
- e6RRLVYgN/6wVR+fEKCbiYNXCb0rlBWJtDYAcNAt1F3qcZzqme2eitDDgEgFY8DvWgF9KuakzEt8t
- 69S3EoQzZMAmjDAoUSaxR7GzYz3a5sVsyS7nIzpa61raKRNFhTqAONljMGJyu7MEIMWStjExrE5f5
- pCeIpQVun1Z5JC5OtzoqV1rL1JxPVNPSy6jO5lxJI=;
-Received: from [2a00:23c4:8bb0:3200:407d:a65c:9fb4:b9b4]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qsqR4-0001gT-0z; Tue, 17 Oct 2023 21:13:06 +0100
-Message-ID: <24a56749-78a2-43b2-af29-7ab1145343df@ilande.co.uk>
-Date: Tue, 17 Oct 2023 21:13:03 +0100
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1qss6q-0000W3-JB
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 18:00:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697580014;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=MQyFeapujUzC5EPFuR98l+MElDouPf72NlPSas9OsIc=;
+ b=MW/nOaJ4oMSk9sHwPTWiQYJ++gZwZAiG/xiYkrp6B6xCMzGYmHTJ6hQsPdCtjfdx6RoAx8
+ uEnFYSbqs9Mj3ELxFsQs7yjupUxu8D91rC4ePINHO5ERMPPhA+4RauR8QXSr8TPD3kifgU
+ HNbB8CAEqaGnpZIJ6ZrbrDpUShwGWNA=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-314-KguWsQ-WNV25D_4hfUfzyg-1; Tue, 17 Oct 2023 18:00:10 -0400
+X-MC-Unique: KguWsQ-WNV25D_4hfUfzyg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 94F9B2932494;
+ Tue, 17 Oct 2023 22:00:09 +0000 (UTC)
+Received: from redhat.com (unknown [10.2.16.20])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6D78B25C8;
+ Tue, 17 Oct 2023 22:00:08 +0000 (UTC)
+Date: Tue, 17 Oct 2023 17:00:06 -0500
+From: Eric Blake <eblake@redhat.com>
+To: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
+Cc: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>, 
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Song Gao <gaosong@loongson.cn>, 
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ "open list:ARM SMMU" <qemu-arm@nongnu.org>
+Subject: Re: [RFC PATCH v2 01/78] include/qemu/compiler.h: replace
+ QEMU_FALLTHROUGH with fallthrough
+Message-ID: <3e2wiwbl3g5t37msvmxcjxi5mhzpaazkd3phbw2p2dauuophxo@np3sbg6l7fq3>
+References: <cover.1697183699.git.manos.pitsidianakis@linaro.org>
+ <2e08cff874b2f9fc4143bdcde87ebba9b70b356c.1697183699.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- Fam Zheng <fam@euphon.net>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Raphael Norwitz <raphael.norwitz@nutanix.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Gerd Hoffmann <kraxel@redhat.com>
-References: <20231017140150.44995-1-philmd@linaro.org>
- <20231017140150.44995-5-philmd@linaro.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
- eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-In-Reply-To: <20231017140150.44995-5-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bb0:3200:407d:a65c:9fb4:b9b4
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 4/7] hw/scsi/virtio-scsi: Use VIRTIO_SCSI_COMMON() macro
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2e08cff874b2f9fc4143bdcde87ebba9b70b356c.1697183699.git.manos.pitsidianakis@linaro.org>
+User-Agent: NeoMutt/20230517
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=eblake@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YX2yMH6GKsHG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: L/9r5noOXxOj
 
-On 17/10/2023 15:01, Philippe Mathieu-Daudé wrote:
+On Fri, Oct 13, 2023 at 10:56:28AM +0300, Emmanouil Pitsidianakis wrote:
+> Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-> Access QOM parent with the proper QOM VIRTIO_SCSI_COMMON() macro.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+The subject line gives the 'what', but the commit body is
+conspicuously lacking on the 'why'.
+
 > ---
->   hw/scsi/virtio-scsi.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>  audio/pwaudio.c              |  8 ++++----
+>  hw/arm/smmuv3.c              |  2 +-
+>  include/qemu/compiler.h      | 30 +++++++++++++++++++++++-------
+>  include/qemu/osdep.h         |  4 ++--
+>  target/loongarch/cpu.c       |  4 ++--
+>  target/loongarch/translate.c |  2 +-
+>  tcg/optimize.c               |  8 ++++----
+>  7 files changed, 37 insertions(+), 21 deletions(-)
 > 
-> diff --git a/hw/scsi/virtio-scsi.c b/hw/scsi/virtio-scsi.c
-> index 45b95ea070..fa53f0902c 100644
-> --- a/hw/scsi/virtio-scsi.c
-> +++ b/hw/scsi/virtio-scsi.c
-> @@ -761,7 +761,7 @@ static void virtio_scsi_fail_cmd_req(VirtIOSCSIReq *req)
->   
->   static int virtio_scsi_handle_cmd_req_prepare(VirtIOSCSI *s, VirtIOSCSIReq *req)
->   {
-> -    VirtIOSCSICommon *vs = &s->parent_obj;
-> +    VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(s);
->       SCSIDevice *d;
->       int rc;
+> diff --git a/audio/pwaudio.c b/audio/pwaudio.c
+> index 3ce5f6507b..bf26fadb06 100644
+> --- a/audio/pwaudio.c
+> +++ b/audio/pwaudio.c
+> @@ -1,29 +1,29 @@
+>  /*
+>   * QEMU PipeWire audio driver
+>   *
+>   * Copyright (c) 2023 Red Hat Inc.
+>   *
+>   * Author: Dorinda Bassey       <dbassey@redhat.com>
+>   *
+>   * SPDX-License-Identifier: GPL-2.0-or-later
+>   */
+>  
+> +#include <spa/param/audio/format-utils.h>
+> +#include <spa/utils/ringbuffer.h>
+> +#include <spa/utils/result.h>
+> +#include <spa/param/props.h>
+>  #include "qemu/osdep.h"
+>  #include "qemu/module.h"
+>  #include "audio.h"
+>  #include <errno.h>
+>  #include "qemu/error-report.h"
+>  #include "qapi/error.h"
+> -#include <spa/param/audio/format-utils.h>
+> -#include <spa/utils/ringbuffer.h>
+> -#include <spa/utils/result.h>
+> -#include <spa/param/props.h>
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Rearranging #includes should be called out in the commit message, or
+even better split into its own commit as it is distinct from renaming
+the fallthrough macro.
 
+>  
+>  #include <pipewire/pipewire.h>
+>  #include "trace.h"
+>  
+>  #define AUDIO_CAP "pipewire"
+>  #define RINGBUFFER_SIZE    (1u << 22)
+>  #define RINGBUFFER_MASK    (RINGBUFFER_SIZE - 1)
+>  
+>  #include "audio_int.h"
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 6f2b2bd45f..545d82ff04 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -1166,210 +1166,210 @@ smmuv3_invalidate_ste(gpointer key, gpointer value, gpointer user_data)
 
-ATB,
+Wow, your git settings picked up a LOT of context - makes for a longer
+email, but in this particular case, it IS nice to see the impact of
+the fallthrough by seeing the full switch statment.
 
-Mark.
+...
+>          qemu_mutex_lock(&s->mutex);
+>          switch (type) {
+>          case SMMU_CMD_SYNC:
+...
+>          case SMMU_CMD_TLBI_NH_ALL:
+>              if (!STAGE1_SUPPORTED(s)) {
+>                  cmd_error = SMMU_CERROR_ILL;
+>                  break;
+>              }
+> -            QEMU_FALLTHROUGH;
+> +            fallthrough;
+>          case SMMU_CMD_TLBI_NSNH_ALL:
+
+Yes, that still looks legible to me.
+
+> +++ b/include/qemu/compiler.h
+> @@ -1,215 +1,231 @@
+...
+>  #if defined(__OPTIMIZE__)
+>  #define QEMU_ALWAYS_INLINE  __attribute__((always_inline))
+>  #else
+>  #define QEMU_ALWAYS_INLINE
+>  #endif
+>  
+> -/**
+> - * In most cases, normal "fallthrough" comments are good enough for
+> - * switch-case statements, but sometimes the compiler has problems
+> - * with those. In that case you can use QEMU_FALLTHROUGH instead.
+> +/*
+> + * Add the pseudo keyword 'fallthrough' so case statement blocks
+> + * must end with any of these keywords:
+> + *   break;
+> + *   fallthrough;
+> + *   continue;
+> + *   goto <label>;
+> + *   return [expression];
+> + *
+> + *  gcc: https://gcc.gnu.org/onlinedocs/gcc/Statement-Attributes.html#Statement-Attributes
+>   */
+> -#if __has_attribute(fallthrough)
+> -# define QEMU_FALLTHROUGH __attribute__((fallthrough))
+> +
+> +/*
+> + * glib_macros.h contains its own definition of fallthrough, so if we define
+> + * the pseudokeyword here it will expand when the glib header checks for the
+> + * attribute. glib headers must be #included after this header.
+> + */
+> +#ifdef fallthrough
+> +#undef fallthrough
+> +#endif
+> +
+> +#if __has_attribute(__fallthrough__)
+> +# define fallthrough                    __attribute__((__fallthrough__))
+>  #else
+> -# define QEMU_FALLTHROUGH do {} while (0) /* fallthrough */
+> +# define fallthrough                    do {} while (0)  /* fallthrough */
+>  #endif
+>
+
+Looks okay.
+
+> +++ b/include/qemu/osdep.h
+> @@ -1,171 +1,171 @@
+>  /*
+>   * TARGET_WORDS_BIGENDIAN was replaced with TARGET_BIG_ENDIAN. Prevent it from
+>   * creeping back in.
+>   */
+>  #pragma GCC poison TARGET_WORDS_BIGENDIAN
+>  
+> -#include "qemu/compiler.h"
+> -
+>  /* Older versions of C++ don't get definitions of various macros from
+>   * stdlib.h unless we define these macros before first inclusion of
+>   * that system header.
+>   */
+...
+>  /*
+>   * This is somewhat like a system header; it must be outside any extern "C"
+>   * block because it includes system headers itself, including glib.h,
+>   * which will not compile if inside an extern "C" block.
+>   */
+>  #include "glib-compat.h"
+>  
+> +#include "qemu/compiler.h"
+> +
+
+The commit message should detail why we had to sink this include
+later, and any audit you did to ensure that none of the intermediate
+code is impacted by that change.
+
+At this point, since the series is RFC, I'll leave merely:
+
+Acked-by: Eric Blake <eblake@redhat.com>
+
+but if others like the approach, I'll probably replace it with R-b in
+the next version.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.
+Virtualization:  qemu.org | libguestfs.org
 

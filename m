@@ -1,313 +1,260 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4111233ejc;
-        Tue, 17 Oct 2023 11:14:32 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG0VJA6ozA4oqjchNlF4tz5kIc5FsOZfdzNcNeGGm6/l5L54p6LX6rn7nX6HFIuhzq5gPfd
-X-Received: by 2002:a05:620a:4051:b0:775:a44b:6513 with SMTP id i17-20020a05620a405100b00775a44b6513mr3413024qko.16.1697566472462;
-        Tue, 17 Oct 2023 11:14:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697566472; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4152808ejc;
+        Tue, 17 Oct 2023 12:32:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHIReVM6+yGyOUf1EYH7K5T8oK+nTPV03jzCnMfKQdlpQ+ELM/vDoHxM5xdkjUIzbT/x6q9
+X-Received: by 2002:a05:620a:4728:b0:778:8ebc:129e with SMTP id bs40-20020a05620a472800b007788ebc129emr2637682qkb.15.1697571165088;
+        Tue, 17 Oct 2023 12:32:45 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1697571165; cv=pass;
         d=google.com; s=arc-20160816;
-        b=XvLummUrbpy//o/CL5zgPwN550dGz2Gb/cblYqNtkIYsmEB3B0VDR0u7OaneIIjNst
-         eICeQm5tWJ7wSFfHemTVW/9XT8v08x7Z1ZSQQyJoAAH0xv7elwQHyO1bkYnHtR3MrqOP
-         i1R403mQs050VoHbpiMYtjztIdLodWXoofjvhirhnDf9ZyPfYVLedKhv88bLGZfdcrh9
-         DRto1oJn0lpUBYgAuEE5+v5CsyfcAwtjFZxvs5ClbFhvkN6IkNErxfwQCL9dsPx+5Ttn
-         RxPr4tgZ7gl94PqUevwA4m/GvoCh8QQepBkoDJ40nAEfBAMxw8Al2v6zwLDCyYak6hVP
-         LVTQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=ONiaLOy2Fuw7NiK0k7EII5geeMqoHQOhnEjPF8x9dqEwEPML+fBAeag3NAn6K7VGCE
+         hhs4nSXHXpuc4NroUlX7Kw7qnBVli8TR+vlqeicPOcyTL2W+dFjDCe54JBH2bmji055Z
+         h+gW9Eo7q413kxx5Nl16WGwqHA0DUbXq8olRLOl0TbONUds/XBx8RJF/pX+xjrUMISZG
+         HSIFQxIHP5aSAuF9DhOFSM9Dyv0TLfuYkFF0ZHushxf+0QQ6aHcTYXSmwuO2lp8fMEpv
+         Wj2P7Me63SN/yl878FEBsZc98UR8WN8XW/c9pjHe03MclwhL20Sarg/d2SpB+Vs2S3GB
+         Fv/w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=kPxDzb+YY/2cdumCQrGp7YShciNVNdHfYhzmrg5Jh9U=;
-        fh=5A9rIZi8Z8466MpVipzMSDtnAN6Xw5wyWrNfaUwsYuo=;
-        b=zMRHgn31j8yv8sD8KarxdjhAsnbmKsHMBHbLvY3GvZNowE/HdrA8eawNmT/MrQkFWX
-         6o9/EbHocZzQgkEo88b3VDwZsdMb521Exmx0zqlfzQdSuy8uaiim/cK/yxH+qAVnroKf
-         UFwW4dm6d6zrYzxE/na3wWZAUj8xdl59g7XM0yEVI3SGD8tr3ZbYTwAHZzpSvCht5yHn
-         fa797ZDJbMm25GZleHmocweirUd4rgZMvENzoyb0AC5Fy3vRzrgYp6cWEcLfZPs4icMZ
-         W7n0CdQ35g4tCLnMlJru4XmuJhfWq5mmCbDX5dIg8O8SqxvMcPzPqUpdmJ3Low5WcI4/
-         1Dew==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=XQ5O8iXY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=zdVXyil0s86cuUklP3SIRnzO9twBpd5wp6HImWSvSAI=;
+        fh=voBcUzMOU8H7GhrKfzDBeuNEarwOE0Oh9mBXV+XTGOc=;
+        b=Qvbhw1hPwYQyBpB7JgWp3Mh0HUNZpbOXbBro2xOeZ0xPWo412lhQl1kulJOdZPiYrQ
+         tTbTFv4iRqAx8dDIpV6eoKYliS1lqGfsp5KAct71PLzyR9sU519976SyPEi0c8nDOZIr
+         wgbcatd8vFpN2dUju/1c3o+d5NlXAjEZHbNSovlS07drMMFrAdh3dhO2rvcxAs6CdW6H
+         6NaDOEb2Dcb3TBGCXqgEpPwqdA14NpASjxoxGg+ICbQ7TvZ2DJN//VlYBp8VWre/pFaT
+         o8VeF2jc6yu3JbX3vghRccN5sFX+sZNiUworN4NTd5s8iMzl928c2KwRnE7QiKeBJFj1
+         064Q==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=RnyinruS;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m8-20020ae9f208000000b0076cd9307ac1si1371224qkg.548.2023.10.17.11.14.32
+        by mx.google.com with ESMTPS id y4-20020a05620a0e0400b0076c8d5c1aeesi1436839qkm.551.2023.10.17.12.32.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 11:14:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Oct 2023 12:32:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=XQ5O8iXY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=RnyinruS;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qsoYK-0005Et-Py; Tue, 17 Oct 2023 14:12:24 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qspnp-0006th-8M; Tue, 17 Oct 2023 15:32:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3f84uZQwKCggvijqpm01mnivowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--nabihestefan.bounces.google.com>)
- id 1qsoYF-00053e-6S
- for qemu-devel@nongnu.org; Tue, 17 Oct 2023 14:12:19 -0400
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3f84uZQwKCggvijqpm01mnivowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--nabihestefan.bounces.google.com>)
- id 1qsoYD-0006zi-A8
- for qemu-devel@nongnu.org; Tue, 17 Oct 2023 14:12:18 -0400
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-d9ab7badadeso8241591276.1
- for <qemu-devel@nongnu.org>; Tue, 17 Oct 2023 11:12:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1697566335; x=1698171135; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=kPxDzb+YY/2cdumCQrGp7YShciNVNdHfYhzmrg5Jh9U=;
- b=XQ5O8iXY4fXoo0mTx+8N1KHOU5UROX1gH4qg7oyLtxeRuLPplJaWgtSS+mC/Mg3wxx
- tdULY2/gT612BadRmUqJZFvfFm7rZVtwtQLhpyN0lutZbv4KsqF0WuxFk1yA6feC+Zk5
- st2hi4O3i1YULQ6Qr1No0muBcjRSUdbDqZA795731kdMpiAMdgnYSCqW/VVl7u/LuVSH
- Ytl3PQeI0xBU1g8KwHuschrKu7EHVtu46YpAwzBoCqg8A4Bojss5SSqjTwLUh90vphvz
- 1tAsbJW2WuaMhFR+ZUSXeWx2kg++B2nSNZmX2P1DnUiP+/TOG8pfTSl5akn+D60DYDLN
- t61A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697566335; x=1698171135;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kPxDzb+YY/2cdumCQrGp7YShciNVNdHfYhzmrg5Jh9U=;
- b=NIsH3lFyvs59FAVyiAMxsfWAHhHTTBCDs0eAjP4UeqaLZZ17ZNiX8f9u/9sQKWspqs
- 6noTJ+0usDKoNexcQhCkSsFaBBZIBvH3KP2YGAquOlb43yydE6PKOY6xjtTmpVBMoqOC
- fV8eUz+MnVk+gCNh7Fh2J5TeTdAIuPIiFyDhd8qMzCyFwDS3i/2OofUa1Qx4MKuAfEHp
- f116I+DMK9gOwPOQyBywr79hCN9PlnM+Q3qRRfwzBkGhXOIdtsuc4wLqtKHYNZedcMWH
- QEivxpcrLFdTVXjTUbPQ+kFPvtQFoAZWRVATDom+xySYekaxAwPfQDbdvuraVIXUGzLy
- hl9Q==
-X-Gm-Message-State: AOJu0Ywj7h7pLSBuoDKNAHRapfwjWMQCEuMI820bJCRdHeTQEjuF5vM2
- Ird6dUwe407HuRBTpEeoLUeDqbA6kyFGjbtqpl4=
-X-Received: from nabihestefan.c.googlers.com
- ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a5b:c06:0:b0:d9a:3f67:672c with SMTP
- id f6-20020a5b0c06000000b00d9a3f67672cmr63329ybq.3.1697566335550; Tue, 17 Oct
- 2023 11:12:15 -0700 (PDT)
-Date: Tue, 17 Oct 2023 18:11:52 +0000
-In-Reply-To: <20231017181152.201887-1-nabihestefan@google.com>
-Mime-Version: 1.0
-References: <20231017181152.201887-1-nabihestefan@google.com>
-X-Mailer: git-send-email 2.42.0.655.g421f12c284-goog
-Message-ID: <20231017181152.201887-12-nabihestefan@google.com>
-Subject: [PATCH 11/11] tests/qtest: Adding PCS Module test to GMAC Qtest
-From: Nabih Estefan <nabihestefan@google.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
- wuhaotsh@google.com, jasonwang@redhat.com, avi.fishman@nuvoton.com, 
- Nabih Estefan Diaz <nabihestefan@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3f84uZQwKCggvijqpm01mnivowwotm.kwuymu2-lm3mtvwvov2.wzo@flex--nabihestefan.bounces.google.com;
- helo=mail-yb1-xb49.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qspnn-0006t2-KV; Tue, 17 Oct 2023 15:32:27 -0400
+Received: from mail-mw2nam10on20627.outbound.protection.outlook.com
+ ([2a01:111:f400:7e89::627]
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qspnl-0006nC-G4; Tue, 17 Oct 2023 15:32:27 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=OvxEOTSml7Cua+2fUDOVB3AKencfGWlRzMUbcjfKrahfrxKd0ZboSyx7GWmhWiYGNc/b5AmG8kKHUyRPKOF3ZYoSXNl9RRTb+JmveVtwotVR+FctaZtuwI4idP83vXqB0pSqAAY9tGVCJv9LjjDmVnSHzR6At/5Yu9lM5yadD+J412K/8KwiH4JJL2Yo42k5Hht6BZQRuw+NJUb4MltoxzFFoOLSSQb0CYmo4LupNLl50jENBC4JHk+/2063XyYRbqSTWY+XYMays2R/oaLCHveVIdApnxt5DqyINUiVzYE6op0yutPb44De9W1Hqx6vhnlRu+WlhLAvoOfz8REYRg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zdVXyil0s86cuUklP3SIRnzO9twBpd5wp6HImWSvSAI=;
+ b=n3TOZ3Sj92wU1aT/byq8oL6HyadNAnnvI3FEAJp9pRwiQxOth/hDSD4jJhpg01+aaSMDzmSB14d+4ow0VpQEEKkbyrh8JF0jWbl2PzDX56ewXS8yVXIC6KR0Xa85fN5tZLOYXnqDptVmdFsm+kxBHOlr6Mc4DOf5ck3kSCv9rFhfWMFgT0iiuBTMXVJM/173+3L5dcv/9KWgAbIqr8w9e1Vr39y3WX2rPBErnRqzxpyn1YqHsX+1X01w/f8ohxgu3LjHaNvywl0nDg1Nm8zptY6xEED65lyP52kvpn7neISL8EMc1jGG8YBXuk73XmOByoRypW58FO89oVXDRCLtQQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zdVXyil0s86cuUklP3SIRnzO9twBpd5wp6HImWSvSAI=;
+ b=RnyinruSIdgssE1847M+Grz7kBu2Kmcq7NIUkSoi9GPBIZt15zGhDfj79h9M9DXT3tZh4mi6Zi9d3ZsZViM6L/eXMOvyPc1CpF8h/tUcMh87j/jkzbRGGaF9Uf4LO+4C7pglDbEL9msu7g7Gl+TES17+KguAssX8D596GAfpFS4=
+Received: from CY8PR11CA0045.namprd11.prod.outlook.com (2603:10b6:930:4a::28)
+ by PH0PR12MB5418.namprd12.prod.outlook.com (2603:10b6:510:e5::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.21; Tue, 17 Oct
+ 2023 19:32:21 +0000
+Received: from CY4PEPF0000FCC0.namprd03.prod.outlook.com
+ (2603:10b6:930:4a:cafe::99) by CY8PR11CA0045.outlook.office365.com
+ (2603:10b6:930:4a::28) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.21 via Frontend
+ Transport; Tue, 17 Oct 2023 19:32:21 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ CY4PEPF0000FCC0.mail.protection.outlook.com (10.167.242.102) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6907.23 via Frontend Transport; Tue, 17 Oct 2023 19:32:20 +0000
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 17 Oct
+ 2023 14:32:19 -0500
+Received: from xsjtongh40.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.27 via Frontend
+ Transport; Tue, 17 Oct 2023 14:32:19 -0500
+From: Tong Ho <tong.ho@amd.com>
+To: <qemu-arm@nongnu.org>
+CC: <qemu-devel@nongnu.org>, <alistair@alistair23.me>,
+ <edgar.iglesias@gmail.com>, <peter.maydell@linaro.org>,
+ <richard.henderson@linaro.org>, <frasse.iglesias@gmail.com>,
+ <tong.ho@amd.com>
+Subject: [PATCH v4 2/3] hw/arm: xlnx-versal-virt: Add AMD/Xilinx TRNG device
+Date: Tue, 17 Oct 2023 12:32:16 -0700
+Message-ID: <20231017193217.1512868-3-tong.ho@amd.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20231017193217.1512868-1-tong.ho@amd.com>
+References: <20231017193217.1512868-1-tong.ho@amd.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000FCC0:EE_|PH0PR12MB5418:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3fd5c5b8-793b-4819-122b-08dbcf47c823
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: OqrB30KTA689ouwGfaas0Iwo72b0Snlac0EfUkwcANOEU/wrbI1ek4cdkSKyT3q3wrNMHJ02cjITsRPywadkkZMtRRilri46OXkMjHsMrMC6MbhCzxk43T9Qk4kFTZAvqWDjFGlL8kjdK9Iy6moy3amtLFzZai3b3Jp6kaJbwZ9MQ3Am/XekLVvjIP/MJESieY/M8hErEI5ZnOgIHyJ3h1mFPb2g7DEi9+YZ/BPLer33IhBOsdg5k1M3ZFHMnCcNw0+naLdXlSBAcoh5bsWHZKhWLiuAeGuo46KKdl94o1K60MQPZ9bVvoJK1MtHUJ3nK/FYGMA9TVoSDfqeEwMg0xm9dCDwJ0QGZInYqEoufR0JFP7qvKBQD57I1DmDYs6Ynu4UZg5bkgLySDfx7sCg5Z4TrhwyBjNlGk5uMZU+gCq0y+pPipJwsLVfqPikph4dGPwzW+1fticcdJ1CCyt5Wd/iexhBRqLYTyt2Bajom77nlo8PJkAfgcDbY5BCoS4Ia7oQX2STQtdMz0F7mvGEmZmoY5yMNh9FMua041+7P77aBzADeagHUcWbhaoL+Qh2bNiMj+80MPFuGiCu4vvC2BQklBPrb3m7jBZhgiOxhBmrHSTh1bTNu1rTFBwsUHCatNeag1O+itaFANwdmALNAjG51AjUa5RGXnJYXdVLbEkbzwMoLhluDgtCOWYgfZXFJxsBbnb11No1w5Zb3JobUoZpAZAA9OChcza/+JXcgdmYmsD6+ljZbgghchqs4+lLFQNsH2FniykdQX1nCNXhNQ==
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(346002)(39860400002)(376002)(136003)(396003)(230922051799003)(186009)(451199024)(1800799009)(64100799003)(82310400011)(36840700001)(46966006)(40470700004)(86362001)(40480700001)(82740400003)(36756003)(40460700003)(478600001)(6916009)(5660300002)(70586007)(316002)(54906003)(70206006)(81166007)(356005)(6666004)(36860700001)(47076005)(26005)(426003)(336012)(1076003)(2616005)(4326008)(8936002)(44832011)(83380400001)(8676002)(2906002)(41300700001)(36900700001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Oct 2023 19:32:20.9488 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3fd5c5b8-793b-4819-122b-08dbcf47c823
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000FCC0.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB5418
+Received-SPF: softfail client-ip=2a01:111:f400:7e89::627;
+ envelope-from=tong.ho@amd.com;
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OcC83hlb8jIK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ASccsLbBt2Ze
 
-From: Nabih Estefan Diaz <nabihestefan@google.com>
+Connect the support for Versal True Random Number Generator
+(TRNG) device.
 
- - Add PCS Register check to npcm_gmac-test
+Warning: unlike the TRNG component in a real device from the
+Versal device familiy, the connected TRNG model is not of
+cryptographic grade and is not intended for use cases when
+cryptograpically strong TRNG is needed.
 
-Signed-off-by: Nabih Estefan Diaz <nabihestefan@google.com>
+Signed-off-by: Tong Ho <tong.ho@amd.com>
 ---
- tests/qtest/npcm_gmac-test.c | 134 ++++++++++++++++++++++++++++++++++-
- 1 file changed, 133 insertions(+), 1 deletion(-)
+ hw/arm/Kconfig               |  1 +
+ hw/arm/xlnx-versal.c         | 16 ++++++++++++++++
+ include/hw/arm/xlnx-versal.h |  5 +++++
+ 3 files changed, 22 insertions(+)
 
-diff --git a/tests/qtest/npcm_gmac-test.c b/tests/qtest/npcm_gmac-test.c
-index 84511fd915..1f0ad664f4 100644
---- a/tests/qtest/npcm_gmac-test.c
-+++ b/tests/qtest/npcm_gmac-test.c
-@@ -20,6 +20,10 @@
- /* Name of the GMAC Device */
- #define TYPE_NPCM_GMAC "npcm-gmac"
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 7e68348440..0a3ff6748d 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -482,6 +482,7 @@ config XLNX_VERSAL
+     select XLNX_BBRAM
+     select XLNX_EFUSE_VERSAL
+     select XLNX_USB_SUBSYS
++    select XLNX_VERSAL_TRNG
  
-+/* Address of the PCS Module */
-+#define PCS_BASE_ADDRESS 0xf0780000
-+#define NPCM_PCS_IND_AC_BA 0x1fe
-+
- typedef struct GMACModule {
-     int irq;
-     uint64_t base_addr;
-@@ -111,6 +115,62 @@ typedef enum NPCMRegister {
-     NPCM_GMAC_PTP_STNSUR = 0x714,
-     NPCM_GMAC_PTP_TAR = 0x718,
-     NPCM_GMAC_PTP_TTSR = 0x71c,
-+
-+    /* PCS Registers */
-+    NPCM_PCS_SR_CTL_ID1 = 0x3c0008,
-+    NPCM_PCS_SR_CTL_ID2 = 0x3c000a,
-+    NPCM_PCS_SR_CTL_STS = 0x3c0010,
-+
-+    NPCM_PCS_SR_MII_CTRL = 0x3e0000,
-+    NPCM_PCS_SR_MII_STS = 0x3e0002,
-+    NPCM_PCS_SR_MII_DEV_ID1 = 0x3e0004,
-+    NPCM_PCS_SR_MII_DEV_ID2 = 0x3e0006,
-+    NPCM_PCS_SR_MII_AN_ADV = 0x3e0008,
-+    NPCM_PCS_SR_MII_LP_BABL = 0x3e000a,
-+    NPCM_PCS_SR_MII_AN_EXPN = 0x3e000c,
-+    NPCM_PCS_SR_MII_EXT_STS = 0x3e001e,
-+
-+    NPCM_PCS_SR_TIM_SYNC_ABL = 0x3e0e10,
-+    NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_LWR = 0x3e0e12,
-+    NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_UPR = 0x3e0e14,
-+    NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_LWR = 0x3e0e16,
-+    NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_UPR = 0x3e0e18,
-+    NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_LWR = 0x3e0e1a,
-+    NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_UPR = 0x3e0e1c,
-+    NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_LWR = 0x3e0e1e,
-+    NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_UPR = 0x3e0e20,
-+
-+    NPCM_PCS_VR_MII_MMD_DIG_CTRL1 = 0x3f0000,
-+    NPCM_PCS_VR_MII_AN_CTRL = 0x3f0002,
-+    NPCM_PCS_VR_MII_AN_INTR_STS = 0x3f0004,
-+    NPCM_PCS_VR_MII_TC = 0x3f0006,
-+    NPCM_PCS_VR_MII_DBG_CTRL = 0x3f000a,
-+    NPCM_PCS_VR_MII_EEE_MCTRL0 = 0x3f000c,
-+    NPCM_PCS_VR_MII_EEE_TXTIMER = 0x3f0010,
-+    NPCM_PCS_VR_MII_EEE_RXTIMER = 0x3f0012,
-+    NPCM_PCS_VR_MII_LINK_TIMER_CTRL = 0x3f0014,
-+    NPCM_PCS_VR_MII_EEE_MCTRL1 = 0x3f0016,
-+    NPCM_PCS_VR_MII_DIG_STS = 0x3f0020,
-+    NPCM_PCS_VR_MII_ICG_ERRCNT1 = 0x3f0022,
-+    NPCM_PCS_VR_MII_MISC_STS = 0x3f0030,
-+    NPCM_PCS_VR_MII_RX_LSTS = 0x3f0040,
-+    NPCM_PCS_VR_MII_MP_TX_BSTCTRL0 = 0x3f0070,
-+    NPCM_PCS_VR_MII_MP_TX_LVLCTRL0 = 0x3f0074,
-+    NPCM_PCS_VR_MII_MP_TX_GENCTRL0 = 0x3f007a,
-+    NPCM_PCS_VR_MII_MP_TX_GENCTRL1 = 0x3f007c,
-+    NPCM_PCS_VR_MII_MP_TX_STS = 0x3f0090,
-+    NPCM_PCS_VR_MII_MP_RX_GENCTRL0 = 0x3f00b0,
-+    NPCM_PCS_VR_MII_MP_RX_GENCTRL1 = 0x3f00b2,
-+    NPCM_PCS_VR_MII_MP_RX_LOS_CTRL0 = 0x3f00ba,
-+    NPCM_PCS_VR_MII_MP_MPLL_CTRL0 = 0x3f00f0,
-+    NPCM_PCS_VR_MII_MP_MPLL_CTRL1 = 0x3f00f2,
-+    NPCM_PCS_VR_MII_MP_MPLL_STS = 0x3f0110,
-+    NPCM_PCS_VR_MII_MP_MISC_CTRL2 = 0x3f0126,
-+    NPCM_PCS_VR_MII_MP_LVL_CTRL = 0x3f0130,
-+    NPCM_PCS_VR_MII_MP_MISC_CTRL0 = 0x3f0132,
-+    NPCM_PCS_VR_MII_MP_MISC_CTRL1 = 0x3f0134,
-+    NPCM_PCS_VR_MII_DIG_CTRL2 = 0x3f01c2,
-+    NPCM_PCS_VR_MII_DIG_ERRCNT_SEL = 0x3f01c4,
- } NPCMRegister;
- 
- static uint32_t gmac_read(QTestState *qts, const GMACModule *mod,
-@@ -119,6 +179,15 @@ static uint32_t gmac_read(QTestState *qts, const GMACModule *mod,
-     return qtest_readl(qts, mod->base_addr + regno);
+ config NPCM7XX
+     bool
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+index fa556d8764..4f74a64a0d 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -373,6 +373,21 @@ static void versal_create_rtc(Versal *s, qemu_irq *pic)
+                        qdev_get_gpio_in(DEVICE(&s->pmc.apb_irq_orgate), 0));
  }
  
-+static uint16_t pcs_read(QTestState *qts, const GMACModule *mod,
-+                          NPCMRegister regno)
++static void versal_create_trng(Versal *s, qemu_irq *pic)
 +{
-+    uint32_t write_value = (regno & 0x3ffe00) >> 9;
-+    qtest_writel(qts, PCS_BASE_ADDRESS + NPCM_PCS_IND_AC_BA, write_value);
-+    uint32_t read_offset = regno & 0x1ff;
-+    return qtest_readl(qts, PCS_BASE_ADDRESS + read_offset);
++    SysBusDevice *sbd;
++    MemoryRegion *mr;
++
++    object_initialize_child(OBJECT(s), "trng", &s->pmc.trng,
++                            TYPE_XLNX_VERSAL_TRNG);
++    sbd = SYS_BUS_DEVICE(&s->pmc.trng);
++    sysbus_realize(sbd, &error_fatal);
++
++    mr = sysbus_mmio_get_region(sbd, 0);
++    memory_region_add_subregion(&s->mr_ps, MM_PMC_TRNG, mr);
++    sysbus_connect_irq(sbd, 0, pic[VERSAL_TRNG_IRQ]);
 +}
 +
- /* Check that GMAC registers are reset to default value */
- static void test_init(gconstpointer test_data)
+ static void versal_create_xrams(Versal *s, qemu_irq *pic)
  {
-@@ -129,7 +198,12 @@ static void test_init(gconstpointer test_data)
- #define CHECK_REG32(regno, value) \
-     do { \
-         g_assert_cmphex(gmac_read(qts, mod, (regno)), ==, (value)); \
--    } while (0)
-+    } while (0) ;
-+
-+#define CHECK_REG_PCS(regno, value) \
-+    do { \
-+        g_assert_cmphex(pcs_read(qts, mod, (regno)), ==, (value)); \
-+    } while (0) ;
+     int nr_xrams = ARRAY_SIZE(s->lpd.xram.ctrl);
+@@ -909,6 +924,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
+     versal_create_sds(s, pic);
+     versal_create_pmc_apb_irq_orgate(s, pic);
+     versal_create_rtc(s, pic);
++    versal_create_trng(s, pic);
+     versal_create_xrams(s, pic);
+     versal_create_bbram(s, pic);
+     versal_create_efuse(s, pic);
+diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+index 7b419f88c2..54f4b98d9d 100644
+--- a/include/hw/arm/xlnx-versal.h
++++ b/include/hw/arm/xlnx-versal.h
+@@ -31,6 +31,7 @@
+ #include "hw/dma/xlnx_csu_dma.h"
+ #include "hw/misc/xlnx-versal-crl.h"
+ #include "hw/misc/xlnx-versal-pmc-iou-slcr.h"
++#include "hw/misc/xlnx-versal-trng.h"
+ #include "hw/net/xlnx-versal-canfd.h"
+ #include "hw/misc/xlnx-versal-cfu.h"
+ #include "hw/misc/xlnx-versal-cframe-reg.h"
+@@ -116,6 +117,7 @@ struct Versal {
+         } iou;
  
-     CHECK_REG32(NPCM_DMA_BUS_MODE, 0x00020100);
-     CHECK_REG32(NPCM_DMA_XMT_POLL_DEMAND, 0);
-@@ -180,6 +254,64 @@ static void test_init(gconstpointer test_data)
-     CHECK_REG32(NPCM_GMAC_PTP_TAR, 0);
-     CHECK_REG32(NPCM_GMAC_PTP_TTSR, 0);
+         XlnxZynqMPRTC rtc;
++        XlnxVersalTRng trng;
+         XlnxBBRam bbram;
+         XlnxEFuse efuse;
+         XlnxVersalEFuseCtrl efuse_ctrl;
+@@ -160,6 +162,7 @@ struct Versal {
+ #define VERSAL_OSPI_IRQ            124
+ #define VERSAL_SD0_IRQ_0           126
+ #define VERSAL_EFUSE_IRQ           139
++#define VERSAL_TRNG_IRQ            141
+ #define VERSAL_RTC_ALARM_IRQ       142
+ #define VERSAL_RTC_SECONDS_IRQ     143
  
-+    /* TODO Add registers PCS */
-+    if (mod->base_addr == 0xf0802000) {
-+        CHECK_REG_PCS(NPCM_PCS_SR_CTL_ID1, 0x699e)
-+        CHECK_REG_PCS(NPCM_PCS_SR_CTL_ID2, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_CTL_STS, 0x8000)
-+
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_CTRL, 0x1140)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_STS, 0x0109)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_DEV_ID1, 0x699e)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_DEV_ID2, 0x0ced0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_AN_ADV, 0x0020)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_LP_BABL, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_AN_EXPN, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_EXT_STS, 0xc000)
-+
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_ABL, 0x0003)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_LWR, 0x0038)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_UPR, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_LWR, 0x0038)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_UPR, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_LWR, 0x0058)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_UPR, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_LWR, 0x0048)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_UPR, 0)
-+
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MMD_DIG_CTRL1, 0x2400)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_AN_CTRL, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_AN_INTR_STS, 0x000a)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_TC, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DBG_CTRL, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_MCTRL0, 0x899c)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_TXTIMER, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_RXTIMER, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_LINK_TIMER_CTRL, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_MCTRL1, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_STS, 0x0010)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_ICG_ERRCNT1, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MISC_STS, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_RX_LSTS, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_BSTCTRL0, 0x00a)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_LVLCTRL0, 0x007f)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_GENCTRL0, 0x0001)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_GENCTRL1, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_STS, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_GENCTRL0, 0x0100)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_GENCTRL1, 0x1100)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_LOS_CTRL0, 0x000e)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_CTRL0, 0x0100)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_CTRL1, 0x0032)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_STS, 0x0001)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL2, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_LVL_CTRL, 0x0019)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL0, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL1, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_CTRL2, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_ERRCNT_SEL, 0)
-+    }
-+
-     qtest_quit(qts);
- }
- 
+@@ -329,4 +332,6 @@ struct Versal {
+ #define MM_PMC_CRP_SIZE             0x10000
+ #define MM_PMC_RTC                  0xf12a0000
+ #define MM_PMC_RTC_SIZE             0x10000
++#define MM_PMC_TRNG                 0xf1230000
++#define MM_PMC_TRNG_SIZE            0x10000
+ #endif
 -- 
-2.42.0.655.g421f12c284-goog
+2.25.1
 

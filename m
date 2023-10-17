@@ -1,109 +1,120 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3870842ejc;
-        Tue, 17 Oct 2023 05:09:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF7QTwc7gy39Ae5sHxJIyOyaMOo04ZJrXIZKkxnybWXhOlfJevWI7gLQD/ozhFVIw0KD2uj
-X-Received: by 2002:a05:6214:2686:b0:66d:55d9:bc7b with SMTP id gm6-20020a056214268600b0066d55d9bc7bmr2929678qvb.31.1697544586744;
-        Tue, 17 Oct 2023 05:09:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697544586; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3907695ejc;
+        Tue, 17 Oct 2023 06:09:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGhFehUIeH/q8sP6JhqugNrUZkO7mr3xgycfpxfLxTMXB/NvZ8e9TaZZ2v5B3gGVVBOSrf9
+X-Received: by 2002:a05:6808:2209:b0:3ae:156f:d31e with SMTP id bd9-20020a056808220900b003ae156fd31emr2936238oib.1.1697548163616;
+        Tue, 17 Oct 2023 06:09:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697548163; cv=none;
         d=google.com; s=arc-20160816;
-        b=N7EX7ufaRNzo1Md4jawviL5fzDXE88tlSuyJoerGePmxHls4NEzLLxoxlu+1vU/yRH
-         QATEsCFTVpcQB3bKFJNxoE+E1TMj6kbkxT6R5j1CRL/rR4IgCOlZx8j10ZS4Qbiyc7VW
-         fdfFjKgZYQ5xc9fBA944MD+DFJKvWLkdFqrgx7jKx9C5T4wRQtEyhgVcvWAPLiRyRd8+
-         P6xwAnosr8GiLn/dzDdaS84GHn9kIPajIAcmVpoOwykM0BnLUIK9yfFqVzsVKkv+ZwpK
-         9vch59nUeAkQwL/mMQxOwXwHd8B5DBcMNnrKHYwhOL+634UBKXmXEEZ7BmbFs8RS+uM8
-         2QZw==
+        b=xCtSdzqjU2z8TJAXFOcyDgvggzNmVwGhPG0caRBe7W6jGejNvY0fRs12p42kl1Uer4
+         jvsJH1aMG7bjduiBKrKkznZonKvpU75itNM2VEchd+HRbdmY8Kufqv/yqaQ1QO21z11F
+         nFTRY9JhH9EUT+UYqdukrWaRQy7zyf+ukyaBXh4Aot8V7+HVA7QKJmFwgVVBQ4kHcL3f
+         u4CgdM2sx8qxcSO96U7hjaYg9aF7cCjW1wAxkW1evMtv1plm5Z6siJaY0A2aoLrAHSbo
+         vYZD0KG6EzlvvIi6AJSWAEfuBV8KU46KfZj5940PJ5Jj0Y8JkJXwTO4hmkV21CoCyJhr
+         HoEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ZH0F3f+uCOPEXSYjYgewFnE5Faf1m9Z5ZRrf3gXOZSQ=;
-        fh=EaL8vpFTtKEklWwwD6O/c+T8TzXw1DOSm5u3xOKG98U=;
-        b=Rk4cneDAtpB1127mUZk1SwpD+QUq25C5tpPZeRWrKFDRmEhh0mhkVnNV1zwojUoTPZ
-         QLu4MB73b74nvgEYNS7Q5MvS6TazdbM3XnScamkz2+iW39XYOkYpTG+vtuzaBfS66M+s
-         IPBlo2G0ONa6Z3JL7d2WG9spLvnbS9wV2OwSJiU9eedDEEidJ6UYrRgwpcFkY7ED3KIT
-         x5BXG9YuoFXbsAMyWzhS6Jr5D0ibfA56vXctbm+8XfCRuQCu4NXIU5XLx4qKBGTX6kRL
-         UfpqnT4zEvoLXpJ+XjCNOlc7i8dr9U3ob1hQnDvuzjaFa/gGFsXx/I+0R4V+7ujfMbm+
-         w8IA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=OdHpVOBGqtyjj6N6slLJ8VS4WGBxvZvhkhBf9bBth5c=;
+        fh=PpZ1CCXoZMh/DRvZh+FxXhmYvb7cgaexUeWdx5nsuRU=;
+        b=gE3JUgqgs8c9lHg7WFTRXLBQdXK5RPYfXLqjOSnmf5zuuAb9jIfrFymhJshfE+JO1j
+         WMqrGHk2gohcOG4zQ5hmkbR4IOB7Xqt1TnhTctwUAkddsxOLH09c09Tcc1k+2aPv3SSf
+         Pn4ogsAA6juBm5SB26EUXWv3/2QCS2WjbRWQZtHUyDdIcqQd26JByO8wtW3C+6xeuMZw
+         Lh+S+d0xUpoAm8IMguRkgjl1zuYz18/ioGNbHx3Ge2+E3S8inQqM3Afm0cwEj0/GMV0h
+         Ii1EVUNnl8tMr29+SGyAM7O7SB2g4zmSXBfD3Bofn96/oDYS1NTojCBVqR6f5rmmr4NL
+         aHoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qmhn+M8Q;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eb1GMh6n;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1-20020a0cb341000000b0065b0fa8e10fsi834655qvf.324.2023.10.17.05.09.46
+        by mx.google.com with ESMTPS id d133-20020a1f9b8b000000b00496d0a5cba8si130146vke.0.2023.10.17.06.09.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 05:09:46 -0700 (PDT)
+        Tue, 17 Oct 2023 06:09:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qmhn+M8Q;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eb1GMh6n;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qsit3-0000WM-DL; Tue, 17 Oct 2023 08:09:25 -0400
+	id 1qsjov-000754-Mz; Tue, 17 Oct 2023 09:09:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qsit1-0000Vl-5U
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:09:23 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsjot-00071O-4F
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 09:09:11 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qsisz-0000b7-FF
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:09:22 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-53e08e439c7so9280625a12.0
- for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 05:09:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsjor-0005bw-Fs
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 09:09:10 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4065dea9a33so53150265e9.3
+ for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 06:09:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697544559; x=1698149359; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ZH0F3f+uCOPEXSYjYgewFnE5Faf1m9Z5ZRrf3gXOZSQ=;
- b=qmhn+M8QDs2IFeLjmU+OEaG9vz+JENgQNnH4g+/yN/c52f0/iEgNNNLkUuQS8a2c93
- wC6O2LpaUIpVfafqZyjCXUXvOyB8NPtSjiYO6jNGZrI35LLykLUUF9mWYT22Cr/1SQOY
- JWRRBA2a6SpUXancq3WSBHD3P7Cb3RVrsszy8Ck5/k05kAxg3/icuCIHdjfx6Q8RJwgV
- mujb6Q6CHaHKnHl2WKOWYLi2zpLKB4fj9VcPuNqrMyZCusBqoFUWXlo/UUY4kkHcjTiI
- 5Ur8RAChdFqEkFM7fY8tR1cCWSSwYry7gt7zXFBfQj8mR/5ZNwziBFhk+2MUXjCVYOoA
- sR8w==
+ d=linaro.org; s=google; t=1697548147; x=1698152947; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=OdHpVOBGqtyjj6N6slLJ8VS4WGBxvZvhkhBf9bBth5c=;
+ b=eb1GMh6nrHAvugzrUT7hVQVrfOPuiJc767FD7BQKdUwOazyclj3S7rg2bcCr5tyUg+
+ xxCzNukjsP0sFr+XiB4rcgO3r4rYBLKd7bKZefHUMGwoNEQi8IilUqLgDeBVwLhqbV5M
+ 6x/CvleLEPKMWFhMFwX5H3+gHVU2w/y3+gZJgRPMnRjNP0WvI2ZrxNZwG5WYEQpK+Jir
+ EbK/WeGxh1B+I1In1WK3N2aocpN5srlE9Qh+YYLWDbiKm11oAkeCriSFjCZ1TryxmLVk
+ CVKiLIudbmnjGc0eTjQeE+BPtH0TandAmyXn4aOAwUM4ffiYGScztbT2j2Btw0Q4UEhi
+ E4CA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697544559; x=1698149359;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ZH0F3f+uCOPEXSYjYgewFnE5Faf1m9Z5ZRrf3gXOZSQ=;
- b=Ka13vP3wUt4NDycWM1g2VvQim0hWYahy8vAoyJOpP8GTpPYyvuA9ML/2JkRsXjsr9a
- X6RArkRHpC31gFxMB4cv2kFZsOFRKZw1NmdJQZpOLNN6Mr3HEN3HfzaHt5MYdVcp+zCE
- CbZ1spCvfj0YYywiEoiKB7F9TawMv9Dv7rnhG0ihrPDpAH+zymX/l5JXyy03V79eh8b4
- 6hUMbYY6tjmK5gshw+nnWAloAAQoW9OzbN7LeL2BwdhRIiam9w5YebVq78ysrreJ57bh
- cmZKonGzkCjzFMCzIVEsLZWR7Yv2yCnSHfQeMW4vqmjTUxo+Tidcrun40wkJFyHauz33
- mJeA==
-X-Gm-Message-State: AOJu0Yz+bOGp7JOdgoMF+HDPKHo7KtIh0m4qyEebZ7BR6MYFXYENfDpi
- HU8uUtNNq/50YByxVudc5/JLN2kdrAfxcYn4M0+ufg==
-X-Received: by 2002:a50:9e24:0:b0:53d:a0c9:dbd4 with SMTP id
- z33-20020a509e24000000b0053da0c9dbd4mr1427326ede.21.1697544559610; Tue, 17
- Oct 2023 05:09:19 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1697548147; x=1698152947;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=OdHpVOBGqtyjj6N6slLJ8VS4WGBxvZvhkhBf9bBth5c=;
+ b=kUK7730zsA+3wGRZvS7i77FB/V8WGzHXLMHlji3De3k2+/WXln7aVWvV5uBaLi8W/3
+ AHnfTIcaxq6RCkEKQoe+9VNxNsJ5FxNIOZJKR8anOQIfpaBAVdSHQGi3cgHP03i7otye
+ TXKQoP6AGOIwEgZf2ockQ5kDKUUE8agkaE6CwvIyxxVn0+3cjAxP2ObgRGHdSbbBd/ln
+ g+v+4RNPfTOjvIKQ5g8w5zy33S/z9irjyEukp9Z4xy/zB+h5Hu2g+2l751j2sZfnpFVk
+ St08goJXaZh6urYUrt/SXh7yP88QLw8WJbUV9mlfZvWGmrj0NrCb2vab2f9S5wV/BczQ
+ tBzg==
+X-Gm-Message-State: AOJu0YxXF4LIIKb/CxOVjUyKaI+NnJKEl10xtNJwcE1ng8ThZhK6Tk5L
+ eK2FHcDk/uMh83aUo2vcPNABww==
+X-Received: by 2002:a5d:4e45:0:b0:32d:b411:4667 with SMTP id
+ r5-20020a5d4e45000000b0032db4114667mr1761638wrt.30.1697548147408; 
+ Tue, 17 Oct 2023 06:09:07 -0700 (PDT)
+Received: from [192.168.69.115] ([176.172.118.33])
+ by smtp.gmail.com with ESMTPSA id
+ o6-20020a5d4a86000000b003271be8440csm1645124wrq.101.2023.10.17.06.09.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 17 Oct 2023 06:09:07 -0700 (PDT)
+Message-ID: <ae8c8832-4d67-a0dc-5dc9-2a7da560f2c9@linaro.org>
+Date: Tue, 17 Oct 2023 15:09:05 +0200
 MIME-Version: 1.0
-References: <20231010142453.224369-1-cohuck@redhat.com>
- <20231010142453.224369-4-cohuck@redhat.com>
-In-Reply-To: <20231010142453.224369-4-cohuck@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Oct 2023 13:09:08 +0100
-Message-ID: <CAFEAcA88O-VDq2rRfVhZ_6OShFq1ANEMmHWHVtNS5hCPQNYtdg@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] arm/kvm: convert to read_sys_reg64
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Gavin Shan <gshan@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH 4/6] hw/input/stellaris_gamepad: Remove
+ StellarisGamepadButton struct
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20231017122302.1692902-1-peter.maydell@linaro.org>
+ <20231017122302.1692902-5-peter.maydell@linaro.org>
+ <c61b98d3-cafd-862b-09ad-818a5e2f051d@linaro.org>
+ <CAFEAcA8OfRyVnP-tdMWz0g9HvYJtQb6xDha1zO05Dp855_SMfw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA8OfRyVnP-tdMWz0g9HvYJtQb6xDha1zO05Dp855_SMfw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,52 +129,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xIw0CaPe2Mm3
+X-TUID: p7Hu22AFtCyl
 
-On Tue, 10 Oct 2023 at 15:25, Cornelia Huck <cohuck@redhat.com> wrote:
->
-> We can use read_sys_reg64 to get the SVE_VLS register instead of
-> calling GET_ONE_REG directly.
->
-> Suggested-by: Gavin Shan <gshan@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  target/arm/kvm64.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
->
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 558c0b88dd69..d40c89a84752 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -500,10 +500,6 @@ uint32_t kvm_arm_sve_get_vls(CPUState *cs)
->              .target = -1,
->              .features[0] = (1 << KVM_ARM_VCPU_SVE),
->          };
-> -        struct kvm_one_reg reg = {
-> -            .id = KVM_REG_ARM64_SVE_VLS,
-> -            .addr = (uint64_t)&vls[0],
-> -        };
->          int fdarray[3], ret;
->
->          probed = true;
-> @@ -512,7 +508,7 @@ uint32_t kvm_arm_sve_get_vls(CPUState *cs)
->              error_report("failed to create scratch VCPU with SVE enabled");
->              abort();
->          }
-> -        ret = ioctl(fdarray[2], KVM_GET_ONE_REG, &reg);
-> +        ret = read_sys_reg64(fdarray[2], &vls[0], KVM_REG_ARM64_SVE_VLS);
->          kvm_arm_destroy_scratch_host_vcpu(fdarray);
->          if (ret) {
->              error_report("failed to get KVM_REG_ARM64_SVE_VLS: %s",
+On 17/10/23 14:52, Peter Maydell wrote:
+> On Tue, 17 Oct 2023 at 13:44, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> Hi Peter,
+>>
+>> On 17/10/23 14:23, Peter Maydell wrote:
+>>> Currently for each button on the device we have a
+>>> StellarisGamepadButton struct which has the irq, keycode and pressed
+>>> state for it.  When we convert to qdev, the qdev property and GPIO
+>>> APIs are going to require that we have separate arrays for the irqs
+>>> and keycodes.  Convert from array-of-structs to three separate arrays
+>>> in preparation.
+>>>
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>> ---
+>>>    hw/input/stellaris_gamepad.c | 43 ++++++++++++------------------------
+>>>    1 file changed, 14 insertions(+), 29 deletions(-)
+>>
+>>
+>>> -static const VMStateDescription vmstate_stellaris_button = {
+>>> -    .name = "stellaris_button",
+>>> -    .version_id = 0,
+>>> -    .minimum_version_id = 0,
+>>> -    .fields = (VMStateField[]) {
+>>> -        VMSTATE_UINT8(pressed, StellarisGamepadButton),
+>>> -        VMSTATE_END_OF_LIST()
+>>> -    }
+>>> -};
+>>> -
+>>>    static const VMStateDescription vmstate_stellaris_gamepad = {
+>>>        .name = "stellaris_gamepad",
+>>>        .version_id = 2,
+>>>        .minimum_version_id = 2,
+>>>        .fields = (VMStateField[]) {
+>>>            VMSTATE_INT32(extension, StellarisGamepad),
+>>> -        VMSTATE_STRUCT_VARRAY_POINTER_INT32(buttons, StellarisGamepad,
+>>> -                                            num_buttons,
+>>> -                                            vmstate_stellaris_button,
+>>> -                                            StellarisGamepadButton),
+>>> +        VMSTATE_VARRAY_UINT32(pressed, StellarisGamepad, num_buttons,
+>>> +                              0, vmstate_info_uint8, uint8_t),
+>>
+>> Don't this break the migration stream?
+> 
+> Yes; this is OK because we don't care about migration compat
+> for this board. But I forgot to mention it in the commit
+> message, and we should bump the version_id fields too.
 
-read_sys_reg64() asserts that the register you're trying to
-read is 64 bits, but KVM_REG_ARM64_SVE_VLS is not, it's 512 bits:
+OK, this is what I thought (I'm still trying to correctly understand
+that myself). With that updated:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-#define KVM_REG_ARM64_SVE_VLS           (KVM_REG_ARM64 | KVM_REG_ARM64_SVE | \
-                                         KVM_REG_SIZE_U512 | 0xffff)
 
-So this change would trip the assert on a host where SVE
-is supported and enabled.
-
-thanks
--- PMM

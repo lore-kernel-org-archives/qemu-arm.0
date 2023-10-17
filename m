@@ -1,216 +1,188 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4153218ejc;
-        Tue, 17 Oct 2023 12:33:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF7KrpgygUoVN8vHo50ZxvGLwhwlG8JtwCbZZStgNZmr1lGqyitq9LawaI8CGWIAiM5d7OE
-X-Received: by 2002:a05:6214:f6b:b0:66d:403:414 with SMTP id iy11-20020a0562140f6b00b0066d04030414mr3985287qvb.54.1697571218571;
-        Tue, 17 Oct 2023 12:33:38 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1697571218; cv=pass;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4172379ejc;
+        Tue, 17 Oct 2023 13:10:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGjedNm4Pjyq7y0DgBQgzCsuDwB2J9smoSmQ1VSOKSuXRFMmPOHGQ7gNeR8EM21MshBMxy1
+X-Received: by 2002:a05:620a:199e:b0:774:3742:31e4 with SMTP id bm30-20020a05620a199e00b00774374231e4mr3565512qkb.52.1697573421343;
+        Tue, 17 Oct 2023 13:10:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697573421; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ty21xS9oRCpIZGDqkgTWhaSbJyOxU+ZF/j3RrscZKQvuVr4yvkwNQkQHWfuZ9Y4SVH
-         9nRrt5IRrttznbakr72PGV29Zl5KzULJdFQ0fFP8XlvYJz+VmUnzXRF1KvIRNpnrs37n
-         SwRkj7ev/faVXaWgnUq7kCZJ7MMi2V5rPDKfEjDjR28DozaMHZf+pYf9fTvoKvkk7vQn
-         yfc84SCGscRcTrMkLwqbu6Nu6eqGr3yPVszZ2axxmWze9928TrBf1+yXnDsLOhXGPYJP
-         HEN1uiWEAmUh1JLJlgFTCikufJtmWFwjwxYYrxOjc4D//QNgodydrLJaFtaMwUC6bSdS
-         +0kQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Ewwiy8x9p9nnFvpS2kvQLiutvA9hAm1t3YuqMBa6CM3BEx/H6QuAJ8u0s3K6enpdFm
+         fCYU2adBUBWj3imegmfpzSfzvKrgh5vzIsdmu9rkMzEr+JIIEf1mOOYV5BCWz43bcEVp
+         ov4nu8XVafebcOrHxFhTXSGEpxxaAo3J0ZtF9iEP2K835oJhf4NowQs0EG+nqnLptZU/
+         bpNJe5llxx9unmsS5QSiudRfX4qipRkuVOVumXk+L7spRTDuyUB9WZVK2OVlyUt/loy/
+         lEq6/NJOt9Ub118ldijRNwrSMBdxT8Y1bpvl+TwX2OKZ6si9kPvS7/txQAZ01/LMEVru
+         Ew6Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=V2PpJPMLEli0H1jbdkD4Iy1a39gpyhemoraoTUKHYNo=;
-        fh=voBcUzMOU8H7GhrKfzDBeuNEarwOE0Oh9mBXV+XTGOc=;
-        b=nj6gQui3iMmCdj1jg+aNV0M1h5YAykSa4gQet7z4Y76Rq8fhl5oR5aMK0RK/xOQ6fH
-         OrLyzwvjmQ/dnR7GLLecf+vIq/E7Rd2CGwfI6yVXgaf4XyvvQ3QAzkxj+US+0uDkkAIC
-         ZYeCBFDEcGPaaBVxxC08gu7GZ9SG4AnPPDBWDyOwkLLBsy0eqIaPIwjkrfHAN9Ur+OlN
-         NFkc3OnSkTG4PULuWtBgfBk7rwKmQQUZO7XrZSS7VDozQs5weyAr2kAMZxN2NnyJ45hp
-         33//vUp4WkH0Y6Y4VNY3hT7SVZvQmstT59InnZwsrcg9k5CRFeLDxNQFKjwCf8KxC98x
-         5Xcg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="D/ofKKW+";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+         :to:content-language:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=vt/12v/bN3D1UDBLUnDhFGepAg8EYl3o+KQXj4hXb7I=;
+        fh=hOIYQAkp+qllEZGDaNYMtbC69yK4JPmV8Zv5L5YpIPE=;
+        b=tRpCAFgMSlnG+/9HfPeMUhyj7/CIK5nhKgQ7dFtc0tujmedHIGqekDqorFPZz+vk3i
+         /wU6htI6YoqhQHKdnIi+3WOF5FSDHHc1gQZEELsTSePHLASudTx3nYPwLac+WWOGlEzO
+         r1JVQw4OZHG5/CYjyGpJnT37HNQY6wui/HObPhz58zkvlkhIK3lxyj0ez8iS7lcPVWEm
+         zfZmDHdWGf7jwLOd0N7xIzMI3sGqlcbgQEsB+YHsNQJBSb3sc3wYunxDGq/0VxZG1yP/
+         RaqRkiefNhVR8fuAAsej6XX24hjj3oDWMX79gwa6Vt2R5r9XbB+r1bjboOvqSDl64ySa
+         PuFw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=dD++kppZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id du14-20020a05621409ae00b006558ce26d49si1522856qvb.199.2023.10.17.12.33.38
+        by mx.google.com with ESMTPS id q20-20020a05620a0d9400b0076daabde0a1si1664733qkl.404.2023.10.17.13.10.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 12:33:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Oct 2023 13:10:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="D/ofKKW+";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=dD++kppZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qspns-0006wf-Ln; Tue, 17 Oct 2023 15:32:32 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qsqOA-0003Zu-S0; Tue, 17 Oct 2023 16:10:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1qspnn-0006t3-Kk; Tue, 17 Oct 2023 15:32:27 -0400
-Received: from mail-mw2nam04on20603.outbound.protection.outlook.com
- ([2a01:111:f400:7e8c::603]
- helo=NAM04-MW2-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qsqO6-0003Ya-HS; Tue, 17 Oct 2023 16:09:58 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
- id 1qspnl-0006n6-3x; Tue, 17 Oct 2023 15:32:27 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=j9wPvpF3LtrXGlZpWK4cgtjwNGjwAY+nLL26lgHOjKlkstw3PnQUtDCtnhYQ7kZGtAa6cQGw5rzHGgFZ0EkyJMyUwnu8o1U/VQhUj9jk6v1oNNXKByqGbz8YqMcmboRc2L2uf7ZY4rC1SungCG5mSQ+KGVH4k6qki61yaXO1NwGS1St4ync0e6v+iskc1D4DvoD5c1GbQkLUbmOANltTnhKpQT6+5u1Uv+908OH6l7pV5W6yTJEkr2YIA2LTmbWpV4zfv4IjGsw15NDVa4ywoLyxuZAI3YJpsHNJOFQoAUDFyJ7G/JHdsxc3KQ75YZROfeRgZ52l4U1doTcYgqCGvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=V2PpJPMLEli0H1jbdkD4Iy1a39gpyhemoraoTUKHYNo=;
- b=DsTq/dCfIK4xfu0iLMK2W7T17TyTTISiI1ptTWnPoErmj+EIpa23UPlph8jnwbg/Soe1qYqsBBWEC7R5k4QHJXW1mk48QYVrkI7KvRkGdJ6Rg+KoIAhY48Z5DGFwM2sqp6WUYm0DU7RwY7SdBuK3zLOb31NKFsEuPJZGVpbLpUF23LCuBiDOSkROJ/UXcXTnO9I5DcSgTbGjo4hTzKzjR3Pn40EGU5663K9EDiKzShpuutF0iklN+5G5uNQoH+73FMMBwHd1ItnJSOmD3ky9yTRYf5BHiA0ri1Wy1RRDNCivTErWX3YpJw8V0I76VD59yIMPhsAyD61PElGw56ipug==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=V2PpJPMLEli0H1jbdkD4Iy1a39gpyhemoraoTUKHYNo=;
- b=D/ofKKW+GbcYue+9YaH2vcpNxUTWJyvjYWH8DzM/99wy4njsu2pZEZ2bEqwJ/NthfwF7nBbiy9c8q0cts3Kg5v9i8gN+TRN18lxx8UgIT2PUlKVZ6j14u4n/m8TMZk4kEy31Kgoa2Y4m1Y84On305Y0mEca6+ROkor2IdG/ld4w=
-Received: from DM6PR07CA0079.namprd07.prod.outlook.com (2603:10b6:5:337::12)
- by PH8PR12MB7446.namprd12.prod.outlook.com (2603:10b6:510:216::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.21; Tue, 17 Oct
- 2023 19:32:19 +0000
-Received: from DS2PEPF00003447.namprd04.prod.outlook.com
- (2603:10b6:5:337:cafe::7d) by DM6PR07CA0079.outlook.office365.com
- (2603:10b6:5:337::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6886.36 via Frontend
- Transport; Tue, 17 Oct 2023 19:32:19 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- DS2PEPF00003447.mail.protection.outlook.com (10.167.17.74) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6907.20 via Frontend Transport; Tue, 17 Oct 2023 19:32:18 +0000
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 17 Oct
- 2023 14:32:18 -0500
-Received: from xsjtongh40.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.27 via Frontend
- Transport; Tue, 17 Oct 2023 14:32:17 -0500
-From: Tong Ho <tong.ho@amd.com>
-To: <qemu-arm@nongnu.org>
-CC: <qemu-devel@nongnu.org>, <alistair@alistair23.me>,
- <edgar.iglesias@gmail.com>, <peter.maydell@linaro.org>,
- <richard.henderson@linaro.org>, <frasse.iglesias@gmail.com>,
- <tong.ho@amd.com>
-Subject: [PATCH v4 0/3] AMD/Xilinx Versal TRNG support
-Date: Tue, 17 Oct 2023 12:32:14 -0700
-Message-ID: <20231017193217.1512868-1-tong.ho@amd.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qsqO4-00065f-Vy; Tue, 17 Oct 2023 16:09:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=vt/12v/bN3D1UDBLUnDhFGepAg8EYl3o+KQXj4hXb7I=; b=dD++kppZpEIXXPclDYlmY1qgyI
+ v28xb9Gl4C1qt2r5gsux2pE7BBMxKdVtmAWPryqTDmPe/ix7AuLfL1s8x9F82+SlEEAJY4+/z+bka
+ tyCKDCkijdbeSafqGSAHiNatEEnj5oGvVJd4VY5FZYTVFXjN4USEa59hNv6zivxMnYY7T4xBdWWZ8
+ l5CWmm8CfiW0GjOW41iDyo6Urs4fIpg2sWsRfD2msoPWj/YC9eJo80QroN5jOlik+qjAVEzNhnThk
+ ax+RzwCcaZGDpj1vC0fhhoyKZY5aY8R3vc1S4rfNQz2j1r44Ayo0f3c6iEtGkSX+8GALvrzGrndYC
+ 8DbnZGF0ix9BRSdRaunY8Aibp1lI1dwCufzvlfwZhqnnftPH8tHv87iKeBxbbs8tjwKMICY+rchbO
+ KzPd+1+uk6Q2qsRFcc6CnrBTiNqzIL7dRoSLHpmHF9lBYqKzpnxw64o2g32AMRKLaAXdkxch3WCVN
+ E7OapKLnjJ9yvq9N6Vv+i2/IamB/AzZklKD1HcfL+TPLBSBSKfaXvkCEUMn+2N8Ob6hexxkr2Fs7n
+ czeprJo4porU5gnY6hkdwgdUkK8s40pXUxfpD1XDgdLZ4I+tex8TCWGHN8AXAkThKqKugmX3Afm+g
+ WX8r1jYEWS8r5WNZAKxQOVI62zB8PaBgvuoNFrADg=;
+Received: from [2a00:23c4:8bb0:3200:407d:a65c:9fb4:b9b4]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qsqNs-0001am-42; Tue, 17 Oct 2023 21:09:48 +0100
+Message-ID: <a7da8f7d-2309-4647-b61d-3498bc80ba28@ilande.co.uk>
+Date: Tue, 17 Oct 2023 21:09:46 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Fam Zheng <fam@euphon.net>, qemu-arm@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Gerd Hoffmann <kraxel@redhat.com>
+References: <20231017140150.44995-1-philmd@linaro.org>
+ <20231017140150.44995-3-philmd@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <20231017140150.44995-3-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS2PEPF00003447:EE_|PH8PR12MB7446:EE_
-X-MS-Office365-Filtering-Correlation-Id: f774f362-61e9-4def-84b4-08dbcf47c6d9
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: nR72qtSkRsOsTolvn1zXbhUcF1RL5xofGRTbwlG5PXBiRFRG2s2FsLe9ZOa4J6HtCr2liKX9CaePdx80DfM5jaavkqmJo5qKmfSCIu3w3tf6/ALiesjt3PInq0/I7LGT9bdaT4995x32tnJljUyle3AqrmCOUgjZiKLKzIv/6PDiraV0kqMgdAbE4C+jd0QyBbD2ZHE0g+QRQj4y2GBtEfU64HA1ToLcPeIIYsucirOxA28tQo1dYkYGPPjRA85NKEmyVjPBo7AZdpUsemku0Jy/2msM/e/ui5BsxDFOhj7uLIuoXXg6XqLa6RqZrsiGz6CFLeb16NiySI/m9iH0UNUChUzVYx69q6ZBVWY2V/7cFCeUuHynFm6gVchjxuPZuQ9E64sidNOM4w2C6cMHGVT3k2avSwJZArOWkraO5Cb8LEx/bev8K1JNHQIQHEOnoE1bUHw7VWPFS6h6kMyQwE3mbB1W3rJguWg0njYwvEcuBVakJ+M0Hv7UUVnFhIaXltdBTWY54YtPy877pXWsJYCst3s9rZSp65GYD0BUebtf34rFel6ZgncZ5qRFi/mUMWQSXYtVnZjPi/KGQ9a3P35tHOXlO6KXazEXkI1SjgF3UJgfwENxQMgpgCOUt1Yv6SIRWFqiLGbXtm+yDydYY8GnZ/77l7G/wNwP1JOEQRaR+AJqYXFQlKAmp1wDSgJ61SGaglZiRo6atf1D9KHHkGWgOHoPqQDyfvPMkGu5CinAzegYldfl7g/qRKW9gryg4RG0UpO7cs4qeqMmJ7RN1A==
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(396003)(136003)(346002)(376002)(39860400002)(230922051799003)(64100799003)(186009)(451199024)(1800799009)(82310400011)(36840700001)(46966006)(40470700004)(6666004)(36756003)(336012)(426003)(478600001)(47076005)(2616005)(36860700001)(316002)(54906003)(6916009)(70206006)(70586007)(26005)(83380400001)(1076003)(41300700001)(44832011)(5660300002)(81166007)(82740400003)(356005)(40460700003)(4326008)(8676002)(8936002)(2906002)(40480700001)(86362001)(36900700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Oct 2023 19:32:18.8047 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: f774f362-61e9-4def-84b4-08dbcf47c6d9
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: DS2PEPF00003447.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7446
-Received-SPF: softfail client-ip=2a01:111:f400:7e8c::603;
- envelope-from=tong.ho@amd.com;
- helo=NAM04-MW2-obe.outbound.protection.outlook.com
+X-SA-Exim-Connect-IP: 2a00:23c4:8bb0:3200:407d:a65c:9fb4:b9b4
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 2/7] hw/block/vhost-user-blk: Use DEVICE() /
+ VIRTIO_DEVICE() macros
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R0Q6XSWqdmrb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KcXr6a7lpb0T
 
-This series adds support for the True Random Number Generator
-(TRNG) in the AMD/Xilinx Versal family of devices.
+On 17/10/2023 15:01, Philippe Mathieu-Daudé wrote:
 
-The series starts by introducing a non-cryptographic grade model
-of the TRNG controller in the Versal family of devices, followed
-by instantiating the model in Xilinx Versal machine.
+> Access QOM parent with the proper QOM [VIRTIO_]DEVICE() macros.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/block/vhost-user-blk.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/block/vhost-user-blk.c b/hw/block/vhost-user-blk.c
+> index eecf3f7a81..4b37e26120 100644
+> --- a/hw/block/vhost-user-blk.c
+> +++ b/hw/block/vhost-user-blk.c
+> @@ -405,7 +405,7 @@ static void vhost_user_blk_event(void *opaque, QEMUChrEvent event)
+>   
+>   static int vhost_user_blk_realize_connect(VHostUserBlk *s, Error **errp)
+>   {
+> -    DeviceState *dev = &s->parent_obj.parent_obj;
+> +    DeviceState *dev = DEVICE(s);
+>       int ret;
+>   
+>       s->connected = false;
+> @@ -423,7 +423,7 @@ static int vhost_user_blk_realize_connect(VHostUserBlk *s, Error **errp)
+>       assert(s->connected);
+>   
+>       ret = vhost_dev_get_config(&s->dev, (uint8_t *)&s->blkcfg,
+> -                               s->parent_obj.config_len, errp);
+> +                               VIRTIO_DEVICE(s)->config_len, errp);
+>       if (ret < 0) {
+>           qemu_chr_fe_disconnect(&s->chardev);
+>           vhost_dev_cleanup(&s->dev);
 
-The series ends with a q-test for sanity check of the TRNG model
-in the Xilinx Versal machine.
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-V3 => V4
-1) Patch #1
-   a) Simplify the data given to g_rand_set_seed_array() as an
-      array of guint32.
-   b) Use qemu_guest_getrandom_nofail() as the entropy source
-      when the device is configured in TRNG (mode 3).
-   c) Allow 0 and (2^32-1) as valid output of the generator
-   d) Add output-related context to VMSTATE.
-2) Patch #3
-   Remove test's assumption of PRNG output != TRNG output.
 
-V2 => V3
-1) Patch #1 Use DEFINE_PROP to define a property with custom action on set
-2) Patch #1 Remove duplicated version-check on writing to CTRL4 register
-3) Patch #2 Defer adding TRNG to machine's device-tree to a future patch
-4) Patch #3 Code style fix: group all local vars definitions together
+ATB,
 
-V1 => V2
-1) Change patch #1 only
-2) Use g_rand_*() PRNG from glib to replace V1's custom PRNG.
-3) Implement ResettableClass for device-reset.
-4) Add device-mode description to commit-message.
-
-Best regards,
-Tong Ho
-
-Tong Ho (3):
-  hw/misc: Introduce AMD/Xilix Versal TRNG device
-  hw/arm: xlnx-versal-virt: Add AMD/Xilinx TRNG device
-  tests/qtest: Introduce tests for AMD/Xilinx Versal TRNG device
-
- hw/arm/Kconfig                      |   1 +
- hw/arm/xlnx-versal.c                |  16 +
- hw/misc/Kconfig                     |   3 +
- hw/misc/meson.build                 |   3 +
- hw/misc/xlnx-versal-trng.c          | 727 ++++++++++++++++++++++++++++
- include/hw/arm/xlnx-versal.h        |   5 +
- include/hw/misc/xlnx-versal-trng.h  |  58 +++
- tests/qtest/meson.build             |   2 +-
- tests/qtest/xlnx-versal-trng-test.c | 486 +++++++++++++++++++
- 9 files changed, 1300 insertions(+), 1 deletion(-)
- create mode 100644 hw/misc/xlnx-versal-trng.c
- create mode 100644 include/hw/misc/xlnx-versal-trng.h
- create mode 100644 tests/qtest/xlnx-versal-trng-test.c
-
--- 
-2.25.1
+Mark.
 

@@ -1,109 +1,144 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3948705ejc;
-        Tue, 17 Oct 2023 07:10:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGIjnhXXki97f+qcRRnZBOAeBpIvXhyev253+xKMc/VWJDvRRps5OCyOGpM38TzLSSkWk31
-X-Received: by 2002:ac2:4a82:0:b0:507:a383:fe18 with SMTP id l2-20020ac24a82000000b00507a383fe18mr1932172lfp.40.1697551844041;
-        Tue, 17 Oct 2023 07:10:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697551844; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4002934ejc;
+        Tue, 17 Oct 2023 08:21:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHIEEknEWFhh5KP5B0RiRjj+czN+mWmMFIwO9gAnys7a1xtwyyO6Od9XIPK3W7eQgQdm8Iw
+X-Received: by 2002:a05:622a:1713:b0:40f:4cfd:7158 with SMTP id h19-20020a05622a171300b0040f4cfd7158mr3283708qtk.27.1697556100573;
+        Tue, 17 Oct 2023 08:21:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697556100; cv=none;
         d=google.com; s=arc-20160816;
-        b=mk7qd59WB4S9j/jiXBaZbSZdp1YfBkuRFjbVqY/y2a1fP/HHQSHDrqa1GrU7SdaJtg
-         1KrIP4VsO1jYyV+Rm9Ic3hB/XBdcDLTqvEThyrdrGkVjkBaE4DI/VctzQI1syADBvQvY
-         wEcpx2pRseUKDsP8jtviDkn3pNnoCut7TJhOC8Gke13WXjCAPI/LQCZvQrLXVojshRxo
-         5a9lDvQ3pkOaVYbSQsjEn2LFmFY9jCEFtOgR4Po2ThYrcmKD0IlS/0kPQDRF0RUqVIg4
-         jqyvWYFLIUb3JGSNDIqmMLWCZHAqGawjS3rvlxP+KSATgisAmmGprC3vR4qRl0oSXPth
-         gHnw==
+        b=HryXhrbwtGjL3vqIZao9UuRKFrwSxvaQrIwDj1vBNm7V3llGy99/hVQ9m/Bg+sFrSI
+         f5ZHmPUcYwfvPImyyE9R5GmdYBUiaQ/2nxAQHNIULxNFpWtODOq/+NqFuP6NF+ig3xGA
+         bFFt7GupEXcAkUSjP5pmsgYOBYEnowDOvtko6I29FGXi2j1GG21pjc4ozT8EHtCOLyv4
+         P/7E1U6fjjjBanucd1L8byaZCDCB7dw3v23cFEJVn0DFXHnewxyIld/i0b7o09dUOEjw
+         Y62FeW5VO64mN7BobE408aUY3wRA7APy9H4K2JwkZypdRihsHId37iuu2jacfEbmw6xv
+         57yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=RfXxDinu9OQhxnaOVr87zTLSfy0yMhLOxm8G1hEtg1w=;
-        fh=Ih5WSXUNOM7tdVEin/QM8IzWzshQakt2hPWKv7EUIh8=;
-        b=UrGez4wXvRqPBpzcYxMn1TcgFXIjgVV4M5slThxNWMNajN2T8fTtbNtyCjCZBnw9XO
-         PUJSZs9bqpFVmjC2c/YrXc8Swi2zQWX6KXC1eFGbnCW2ckIL3A2X35oT+j0CcdEXEkUO
-         NGjTkRv0Iskb/Ym865YHE/xUtCFvFnOhzyGPs/t0trU4Owg4XGtwJ1f2Ej35u8T9HR7r
-         H5wtoxzmo08bWDNLDBcHdE95E4bVf55cFgqkljMYPAawRL7fspKH+E4aQoO5pRoSSuZB
-         1RIeMAxcXBC1irSpadPIJqjNqxeGw0mtgJ7ZfI5niGhiozJpFcAv3dM0om1zDzzPaX27
-         BEdg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=XOsN61A9Uh+Yc1V+O1Q2QFWHt2VM8WfR7GpGRHmru24=;
+        fh=lcEdZPBQohEiwT9CwNuFQ7+HN1jcOVix8Kht4EVbqhY=;
+        b=tMYVp1p530H8vLm3OfoLUHNgdQemootr6fzrlhIgCGSnNCpfRag/fS4D4/98yK6olU
+         5KCgMAB1RVQItWRqoOeFEe6GMPvWYDqBd8Gz4BLZb09v33l6jP2eMTqy5zoXyydutnrc
+         w3w8Sy6tCqg7IGWMXU6TCOD/QvtfNX9fzs82Y7xlxTQPzi+WBXGtGSlyBxBpdZtm5yhh
+         4Rmov+g+t3TAZ2HY6eFmgErH/Ki+y+nO8Sa+LkS54IKdjkPtjLOkfI0aPS9O+WmVgWcl
+         pX7d8xaLzpnpyPCMiyO6b1PZ6W/2jNQzsf8uaHLZ6Du1z4KON62SSVQxP1rb/AV21X7d
+         chag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n0zcOeei;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G4k0L4IY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n4-20020a5d4844000000b00315a57f112dsi1025230wrs.122.2023.10.17.07.10.43
+        by mx.google.com with ESMTPS id c22-20020ac87d96000000b00417a0a8c674si1228927qtd.225.2023.10.17.08.21.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 07:10:44 -0700 (PDT)
+        Tue, 17 Oct 2023 08:21:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n0zcOeei;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G4k0L4IY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qskmJ-0002Cg-87; Tue, 17 Oct 2023 10:10:35 -0400
+	id 1qslst-0002je-De; Tue, 17 Oct 2023 11:21:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qskmI-0002B3-ME
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 10:10:34 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qskmF-0002eX-Sn
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 10:10:34 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-53de0d1dc46so9959492a12.3
- for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 07:10:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697551829; x=1698156629; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=RfXxDinu9OQhxnaOVr87zTLSfy0yMhLOxm8G1hEtg1w=;
- b=n0zcOeeicUFwbtdadgDYHhNimV6GOn071F9VwQiNLkc/JKNAUNVIGJ14dUnPU/prvG
- in7cuDcN9d+5NnQptMVfRPR5vFpjMFszgq56LdcL6Raw9oUTkBag3MVEpTdNUJSMdxVe
- kjft41eyloN8o+am8LrXrwa/g6cdvZdYsmZZXSLstfqbz7JZRf48om1byRosw0WNRfEL
- UXDZkN86dcfeZUCslfuF8PmZ5Nw4OksZhiS5Xrw+9YogkwcxBmTl2k1kemqMuTMneyr4
- Dm1siZbCu3sEAEiZX+EhKf3a8tmEu4J/kyVe6D3N+J0uhNTttNPMm27YIcBopZdJN9rc
- CSrQ==
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1qslss-0002jP-55
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 11:21:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1qslsq-0005hc-Kb
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 11:21:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697556084;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=XOsN61A9Uh+Yc1V+O1Q2QFWHt2VM8WfR7GpGRHmru24=;
+ b=G4k0L4IY9hfQSvxxXsmGHJaaaz+DMvXRivrqJG3fdJ1WWD35EIq3wnnkgYpcktdmRS8y7t
+ adwsiYCC00hlCOOfUjcN1TbxA4g2zC/cY6TvrZ8Gjt5G/wIMksFz7gLKBGbL+SBft6/nYz
+ ziJND29Iq3g83sr6wo2mjN5/krFBX/0=
+Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
+ [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-693-cAifY0-wPCC9DAvxIc5uog-1; Tue, 17 Oct 2023 11:21:20 -0400
+X-MC-Unique: cAifY0-wPCC9DAvxIc5uog-1
+Received: by mail-il1-f199.google.com with SMTP id
+ e9e14a558f8ab-35798fe62b2so6565565ab.0
+ for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 08:21:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697551829; x=1698156629;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=RfXxDinu9OQhxnaOVr87zTLSfy0yMhLOxm8G1hEtg1w=;
- b=fSmWvlCAAd0YltYKBdF9bk700fTme4mJXiHN/F56r+D2Ehho7B2jbw3d5Av5RetFVx
- 4iT7Pw11FgU5cApz6zYha0GAraxxbLTX14FkKvU5N8bVhVNhSLA1FXxHN1kEaZRBMH9L
- mvckCSfGMCmvlwRNziWpivHTwHiSPDjGL4EDEoPA3ogvLud7rFBRz4HBwYD8SzW2aY+h
- HYIQKq4Oh11q8uFd42T+D/iyngaO9mTHrRgB0MKmOJiC1/RC2YE59lPTp3BI8VlXxTmR
- /Mowk/HGU7HjfpX+afk/AXpuTKsxWRPLlTD6jWSA/jUbx8i9aZfzCWifsabq0Uf2WXRw
- m9LQ==
-X-Gm-Message-State: AOJu0YwaouFEBufhhQk+/RXbJyhtBCKPurIFwchM13FHHjb1v8QsfOSL
- h51RO2F1h/4vB71De08gMzK39/soNi5905Rxzs5qxQ==
-X-Received: by 2002:a05:6402:4410:b0:525:73dd:4f71 with SMTP id
- y16-20020a056402441000b0052573dd4f71mr2159824eda.14.1697551829619; Tue, 17
- Oct 2023 07:10:29 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1697556079; x=1698160879;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=dMAz18AKOENGkj8VyQD8a/V0CUA2HQraUfUmddK8y3Y=;
+ b=Bt2+CqU+FKo1hW61XzHkS6uQBKKkbrrLA9J0SGGLe/EKrcA7WE0cV8su1dD8wT5RgX
+ AqmOr4aynlO9NojB+saBmNXR/BxxqMDlhY5x3DfB+bp4p1EdNdj/Z19tRBXdx60+3Zk/
+ 978NzJBZ4hKKRbLnaDGbZyPrFnJosVPWM5d5ooPiK+NgAivZPyTMfas34Ihp1Chzd+V/
+ RgRgkvFoxOn9Z3cBefyWqC3kNCzOh25Cj79ydUkzwdV4KKrHl2CPHm2mou0hOisVoDO4
+ 3XgqWoJQFXWCWFfv5/tG/3e1gQlvA9Re7rTOayEYny7wfGmWLqXKrlQrTMDlDn3+xKno
+ LPOA==
+X-Gm-Message-State: AOJu0YxCf3vBRPYxw7mJjGfUJ6U3yJORAYudUHPyH5kA6oRJvWI0kXbE
+ 6pwFU3Eg7chmKr1eik0p4wPDSRTWOg3ugxDbyN9rWkrTfESvRC+d4eto9lZTZ20NKkhLzzuugAo
+ MbAiWpDmkBMIg
+X-Received: by 2002:a05:6e02:1a0a:b0:351:4cdd:f533 with SMTP id
+ s10-20020a056e021a0a00b003514cddf533mr2790216ild.4.1697556079446; 
+ Tue, 17 Oct 2023 08:21:19 -0700 (PDT)
+X-Received: by 2002:a05:6e02:1a0a:b0:351:4cdd:f533 with SMTP id
+ s10-20020a056e021a0a00b003514cddf533mr2790201ild.4.1697556079212; 
+ Tue, 17 Oct 2023 08:21:19 -0700 (PDT)
+Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
+ w3-20020a029683000000b0043193487854sm568519jai.142.2023.10.17.08.21.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 17 Oct 2023 08:21:18 -0700 (PDT)
+Date: Tue, 17 Oct 2023 09:21:16 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Ankit Agrawal <ankita@nvidia.com>
+Cc: Jason Gunthorpe <jgg@nvidia.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
+ "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
+ "eblake@redhat.com" <eblake@redhat.com>, "armbru@redhat.com"
+ <armbru@redhat.com>, "david@redhat.com" <david@redhat.com>,
+ "gshan@redhat.com" <gshan@redhat.com>, "Jonathan.Cameron@huawei.com"
+ <Jonathan.Cameron@huawei.com>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
+ <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
+ (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, Andy
+ Currid <acurrid@nvidia.com>, Dheeraj Nigam <dnigam@nvidia.com>, Uday Dhoke
+ <udhoke@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, <libvir-list@redhat.com>,
+ Laine Stump <laine@redhat.com>
+Subject: Re: [PATCH v2 3/3] qom: Link multiple numa nodes to device using a
+ new object
+Message-ID: <20231017092116.09ad2737.alex.williamson@redhat.com>
+In-Reply-To: <BY5PR12MB3763CA80432643CE144C7A23B0D6A@BY5PR12MB3763.namprd12.prod.outlook.com>
+References: <20231007201740.30335-1-ankita@nvidia.com>
+ <20231007201740.30335-4-ankita@nvidia.com>
+ <20231009151611.02175567.alex.williamson@redhat.com>
+ <BY5PR12MB3763CA80432643CE144C7A23B0D6A@BY5PR12MB3763.namprd12.prod.outlook.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20231004142746.350225-1-tong.ho@amd.com>
- <20231004142746.350225-2-tong.ho@amd.com>
-In-Reply-To: <20231004142746.350225-2-tong.ho@amd.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Oct 2023 15:10:18 +0100
-Message-ID: <CAFEAcA8OgCNT7E4KyXv6XuY2bZ4T2F=2oyL-9cuHJsUHXcjC3g@mail.gmail.com>
-Subject: Re: [PATCH v3 1/3] hw/misc: Introduce AMD/Xilix Versal TRNG device
-To: Tong Ho <tong.ho@amd.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, alistair@alistair23.me, 
- edgar.iglesias@gmail.com, frasse.iglesias@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=alex.williamson@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,178 +153,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 26moSI+fdxVq
+X-TUID: w5pG0iqXYyiN
 
-On Wed, 4 Oct 2023 at 15:27, Tong Ho <tong.ho@amd.com> wrote:
->
-> This adds a non-cryptographic grade implementation of the
-> model for the True Random Number Generator (TRNG) component
-> in AMD/Xilinx Versal device family.
->
-> This implements all 3 modes defined by the actual hardware
-> specs, all of which selectable by guest software at will
-> at anytime:
-> 1) PRNG mode, in which the generated sequence is required to
->    be reproducible after reseeded by the same 384-bit value
->    as supplied by guest software.
-> 2) Test mode, in which the generated sequence is required to
->    be reproducible ater reseeded by the same 128-bit test
->    seed supplied by guest software.
-> 3) TRNG mode, in which non-reproducible sequence is generated
->    based on periodic reseed by a suitable entropy source.
->
-> This model is only intended for non-real world testing of
-> guest software, where cryptographically strong PRNG and TRNG
-> is not needed.
->
-> This model supports versions 1 & 2 of the device, with
-> default to be version 2; the 'hw-version' uint32 property
-> can be set to 0x0100 to override the default.
->
-> Other implemented properties:
-> - 'forced-prng', uint64
->   When set to non-zero, mode 3's entropy source is implemented
->   as a deterministic sequence based on the given value and other
->   deterministic parameters.
->   This option allows the emulation to test guest software using
->   mode 3 and to reproduce data-dependent defects.
->
-> - 'fips-fault-events', uint32, bit-mask
->   bit 3: Triggers the SP800-90B entropy health test fault irq
->   bit 1: Triggers the FIPS 140-2 continuous test fault irq
->
-> Signed-off-by: Tong Ho <tong.ho@amd.com>
-> ---
+On Tue, 17 Oct 2023 14:00:54 +0000
+Ankit Agrawal <ankita@nvidia.com> wrote:
 
-> +    enum {
-> +        U384_U32 = 384 / 32,
-> +    };
-> +
-> +    /*
-> +     * Maximum seed length is len(personalized string) + len(ext seed).
-> +     *
-> +     * Use little-endian to ensure guest sequence being indepedent of
-> +     * host endian.
-> +     */
-> +    struct {
-> +        guint32 ps[U384_U32];
-> +        union {
-> +            uint64_t int_seed[2];
-> +            guint32 ext_seed[U384_U32];
-> +        };
-> +    } gs;
+> >>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -device vfio-pci-nohot=
+plug,host=3D0009:01:00.0,bus=3Dpcie.0,addr=3D04.0,rombar=3D0,id=3Ddev0 \
+> >>=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -object nvidia-acpi-ge=
+neric-initiator,id=3Dgi0,device=3Ddev0,numa-node-start=3D2,numa-node-count=
+=3D8 =20
+> >
+> > Why didn't we just implement start and count in the base object (or a
+> > list)? It seems like this gives the nvidia-acpi-generic-initiator two
+> > different ways to set gi->node, either node=3D of the parent or
+> > numa-node-start=3D here.=C2=A0 Once we expose the implicit node count i=
+n the
+> > base object, I'm not sure the purpose of this object.=C2=A0 I would hav=
+e
+> > thought it for keying the build of the NVIDIA specific _DSD, but that's
+> > not implemented in this version. =20
+>=20
+> Agree, allowing a list of nodes to be provided to the acpi-generic-initia=
+tor
+> will remove the need for the nvidia-acpi-generic-initiator object.=20
 
-This struct-and-union seems unnecessarily complicated.
-It also means you will be seeding the RNG with different
-values on little and big endian, because the two halves
-of the uint64_t values will be the opposite way around
-when g_rand_set_seed_array() views them as a set of guint32s.
-Probably better to use a simple array of guint32.
+And what happened to the _DSD?  Is it no longer needed?  Why?
 
-> +    /*
-> +     * A disabled personalized string is the same as
-> +     * a string with all zeros.
-> +     *
-> +     * The device's hardware spec defines 3 modes (all selectable
-> +     * by guest at will and at anytime):
-> +     * 1) External seeding
-> +     *    This is a PRNG mode, in which the produced sequence shall
-> +     *    be reproducible if reseeded by the same 384-bit seed, as
-> +     *    supplied by guest software.
-> +     * 2) Test seeding
-> +     *    This is a PRNG mode, in which the produced sequence shall
-> +     *    be reproducible if reseeded by a 128-bit test seed, as
-> +     *    supplied by guest software.
-> +     * 3) Truly-random seeding
-> +     *    This is the TRNG mode, in which the produced sequence is
-> +     *    periodically reseeded by a crypto-strength entropy source.
-> +     *
-> +     * To assist debugging of certain classes of software defects,
-> +     * this QEMU model implements a 4th mode,
-> +     * 4) Forced PRNG
-> +     *    When in this mode, a reproducible sequence is generated
-> +     *    if software has selected the TRNG mode (mode 2).
-> +     *
-> +     *    This emulation-only mode can only be selected by setting
-> +     *    the uint64 property 'forced-prng' to a non-zero value.
-> +     *    Guest software cannot select this mode.
-> +     */
-> +    memset(&gs, 0, sizeof(gs));
-> +    gs.ext_seed[ARRAY_SIZE(gs.ext_seed) - 1] = cpu_to_be32(1);
-> +
-> +    if (!pers_disabled) {
-> +        trng_le384(gs.ps, &s->regs[R_PER_STRNG_0]);
-> +    }
-> +
-> +    if (ext_seed) {
-> +        trng_le384(gs.ext_seed, &s->regs[R_EXT_SEED_0]);
-> +    } else if (trng_test_enabled(s)) {
-> +        gs.int_seed[0] = cpu_to_le64(s->tst_seed[0]);
-> +        gs.int_seed[1] = cpu_to_le64(s->tst_seed[1]);
-> +    } else if (s->forced_prng_seed) {
-> +        s->forced_prng_count++;
-> +        gs.int_seed[0] = cpu_to_le64(s->forced_prng_count);
-> +        gs.int_seed[1] = cpu_to_le64(s->forced_prng_seed);
-> +    } else {
-> +        gs.int_seed[0] = cpu_to_le64(qemu_clock_get_ns(QEMU_CLOCK_HOST));
-> +        gs.int_seed[1] = cpu_to_le64(getpid());
+> > I also don't see any programatic means for management tools to know how
+> > many nodes to create.=C2=A0 For example what happens if there's a MIGv2=
+ that
+> > supports 16 partitions by default and makes use of the same vfio-pci
+> > variant driver?=C2=A0 Thanks, =20
+>=20
+> It is supposed to stay at 8 for all the G+H devices. Maybe this can be ma=
+naged
+> through proper documentation in the user manual?
 
-This is not "a crypto strength entropy source". It's also going
-to cause problems for record-and-replay, because the value will
-not be the same on replay as it was on record.
+I thought the intention here was that a management tool would
+automatically configure the VM with these nodes and GI object in
+support of the device.  Planning only for Grace-Hopper isn't looking
+too far into the future and it's difficult to make software that can
+reference a user manual.  This leads to a higher maintenance burden
+where the management tool needs to recognize not only the driver, but
+the device bound to the driver and update as new devices are released.
+The management tool will never automatically support new devices without
+making an assumption about the node configuration.
 
-If you want 128 (or 384) bits of random data, call
-qemu_guest_getrandom_nofail().
+Do we therefore need some programatic means for the kernel driver to
+expose the node configuration to userspace?  What interfaces would
+libvirt like to see here?  Is there an opportunity that this could
+begin to define flavors or profiles for variant devices like we have
+types for mdev devices where the node configuration would be
+encompassed in a device profile?  Thanks,
 
-> +    }
-> +
-> +    g_rand_set_seed_array(s->prng, gs.ps,
-> +                          sizeof(gs) / sizeof(guint32));
+Alex
 
-> +
-> +    s->rand_count = 0;
-> +    s->rand_reseed = 1ULL << 48;
-> +}
-> +
-> +static void trng_regen(XlnxVersalTRng *s)
-> +{
-> +    if (s->rand_reseed == 0) {
-> +        TRNG_GUEST_ERROR(s, "Too many generations without a reseed");
-> +        trng_reseed(s);
-> +    }
-> +    s->rand_reseed--;
-> +
-> +    /*
-> +     * In real hardware, each regen creates 256 bits, but QCNT
-> +     * reports a max of 4.
-> +     */
-> +    ARRAY_FIELD_DP32(s->regs, STATUS, QCNT, 4);
-> +    s->rand_count = 256 / 32;
-> +}
-> +
-> +static uint32_t trng_rdout(XlnxVersalTRng *s)
-> +{
-> +    assert(s->rand_count);
-> +
-> +    s->rand_count--;
-> +    if (s->rand_count < 4) {
-> +        ARRAY_FIELD_DP32(s->regs, STATUS, QCNT, s->rand_count);
-> +    }
-> +
-> +    /* Reject all 0's and all 1's */
-
-This is weird. Why do we need to do this ?
-
-> +    while (true) {
-> +        /* g_rand_int_range() returns gint32, not guint32 */
-> +        guint32 nr = g_rand_int(s->prng);
-> +
-> +        if (nr && (nr != ~0)) {
-> +            return nr;
-> +        }
-> +    }
-> +}
-> +
-
-thanks
--- PMM

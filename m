@@ -1,111 +1,110 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3891529ejc;
-        Tue, 17 Oct 2023 05:45:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGnfryw0vGZNd9PVSc6C/Yf7ISNQqoy7ntEf8I6KC4qdc0e7J2E4pd2YSxC+N/VNSYyBRbA
-X-Received: by 2002:adf:e412:0:b0:32d:a853:af6e with SMTP id g18-20020adfe412000000b0032da853af6emr1796749wrm.1.1697546709884;
-        Tue, 17 Oct 2023 05:45:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697546709; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3893422ejc;
+        Tue, 17 Oct 2023 05:48:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHxhgofEvrcaFvHh+LMHG8bypBhi5Kv5W5Q8NXr6YNCRapJ8E5IOF5EVXXDA40efipDPA0b
+X-Received: by 2002:a25:694a:0:b0:d32:cd49:2469 with SMTP id e71-20020a25694a000000b00d32cd492469mr2199082ybc.24.1697546921776;
+        Tue, 17 Oct 2023 05:48:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697546921; cv=none;
         d=google.com; s=arc-20160816;
-        b=aFW8uACiEhoX93+76BxMPMbnppxqphCJ4/Ih5hcGbl98CH1FHX0tUL9HZAH2Jkt95H
-         5y91Ajm7kPMNW1vZCo1EpTn0TPVqNffEjPuU8+D3VAvLsT4aD/tp6lBqlEOOkSnHFPA8
-         FS7OyAel95uth5pXExOttvuS0zDr76w2+o1O6eMF67Wi9cK96PYGasOKUFaNBZXo8kAD
-         st3NkhB3HMFuCWClYPznqN1Dnt0KAWTSA68RR6kS0mc1rtkBsoW8khUaBCbRO5Gku7ay
-         0N+vrI0ISPXmFf+i7rBC+7efI67oXjhk60VPkvxBLtWOL7Igb2HZ1XDMPR7KjcbAqsus
-         SjSA==
+        b=tA0RDmz/wC5R/c0QGnAdOaPtHQCQd9Ka7Mtx6MAGca+EZpzyyyUirne0ybfOZ34NRp
+         8tPvdL7YmxfBS6xZu83vQS1HiwB1z+vXhcokvCtUGzWX4snzNI+JyuidWvWJDXh7hCa3
+         ztjv/88APv1Mr/9Cn1H+ghmELHYbFaGvOmQc/xCEBex7tknKuB3r6yYTwUjAgp56DOeO
+         vxLMTTYn5fXqxi7uKp2k9x9VWpcisSqiYZx1PmsaPIIGnCETZOvKM/m6ynBYYbEPptad
+         qV/DjAiBS6lgP2V77R2Rcftmn6JmR6F8dldr2wlQt7Z3p6F7X+pxTpI38BIwfczlqzGf
+         rXNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:to:content-language:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=wKulzNlfgfrpkUT+QrxCc7IozboSTp13pn0UnsMQw2k=;
+        bh=YlHuA2uoNWxtLjQaJ6jG5mttnQNTAHKXn44yFnClLpg=;
         fh=+xj4Yfkfa7hWRbLS+DTrcNY2o0evBrBbm0gAigyTnIw=;
-        b=hq3706mQoaxYm+NWLSxRuqFt2RbHjvh90hwNCdZ27mgfKQ4vFShlj9MMQ8qKsyj9v4
-         pQ5NjBBONWbGTSNRi5pEUnrjBQgzIvGgMaY4LqJ4on7KRd0syJ39HrFB0h8Bv5uGRryU
-         fV5PnKyCMdN6T8wPD1YX1+O0RhHPH/5xvcXkqwZ4mk5qWEMCGl8rzKqP0HnjLOXQZ3/l
-         kchpjGqxI0Xqkan3v3Bm/YA+1nIxfNC1MXG8TI8szsAgeMsNIRm0qJNE6hgHBHlg+xCy
-         SZZ7Y3+VIaW5CBPeMhJxamLaAETZu3gT6izwCNewHx92h7CmDpRlq2OxvxZD+a117XcJ
-         NmVQ==
+        b=m7bcUZ3S+JOKkjEjLBHI1aBmiLgbZpfakiRJwYaekkFZ6DEyHdZvnAp4mxkhz6dRr8
+         hQHt2Ksklzr4TnYStvUxt4NIiyj5VvFN3dQGjPiKvq69SDjw0jUBgTar58vbQcG2sC5t
+         tW3wSvZDsVqrcqjNORXo1HIE+fL/QZSkfONpJrLkVpJlIOAw3QKqze7QBdTmXTIHJhZG
+         H/+Jq1GxJ1Y9DQNTkJndu/ljLwuAf+i4+QClUcUKwEI5xVQy2/KLAwKG6zJiW6m4Dpyy
+         NdcT3YHZNuyN3AVc5OVQSHR1SwIL8/Ax9OskEASPs/zpfoMCMvLqJJZiGtqqD9P/tT6a
+         tjVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aO+daUZW;
+       dkim=pass header.i=@linaro.org header.s=google header.b=b660ZHcR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12-20020adfffcc000000b0032d95527cc3si938204wrs.271.2023.10.17.05.45.09
+        by mx.google.com with ESMTPS id f22-20020a05620a12f600b0077432af294fsi971139qkl.434.2023.10.17.05.48.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 05:45:09 -0700 (PDT)
+        Tue, 17 Oct 2023 05:48:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aO+daUZW;
+       dkim=pass header.i=@linaro.org header.s=google header.b=b660ZHcR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qsjRc-0007hr-7V; Tue, 17 Oct 2023 08:45:08 -0400
+	id 1qsjUo-0002BY-PX; Tue, 17 Oct 2023 08:48:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsjRa-0007dA-8m
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:45:06 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsjUl-0002AM-Hg
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:48:23 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsjRY-0008EP-Gd
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:45:05 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-533d31a8523so9578441a12.1
- for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 05:45:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsjUk-0001Bv-1V
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:48:23 -0400
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-9c2a0725825so387428266b.2
+ for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 05:48:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697546702; x=1698151502; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697546899; x=1698151699; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=wKulzNlfgfrpkUT+QrxCc7IozboSTp13pn0UnsMQw2k=;
- b=aO+daUZWHa97/8byhTsJYsuWxEdkTmBvnaVYxuh1TKE5jXF1bWxeNXvw4OswjEWMj3
- r9fXK/cJ/MSir8syYyhmX/zew5rTMNbdc9Q4Z+mnuj/JaUxUnKfoyZq3m6VNup+ixH9n
- XumxItzjlJsdHY2K3cwxX7Hc+TMaswPhGPtn35tRVMPGIrfA4W+u7FT/oKmzowgKIm/m
- xwQ7OW2ul+oWTUqPBj/97uzOSY4PTojGcYGmO2KCfeZ9GMDhvxALPrw94EshAcuZeglZ
- SyBHhyxUXWCTaQSpo/QYuoit+2u+XPH0swP9KjsSUOkZD0kRhhR5rN7fDYJywXQ8dfky
- PoSg==
+ bh=YlHuA2uoNWxtLjQaJ6jG5mttnQNTAHKXn44yFnClLpg=;
+ b=b660ZHcR+CT7ule9nDJF9Hs1XGCTzHlWwG1Iwc3kBOvOus5N2zpcJKlmGxNoMGI87v
+ Ib+hE1Ua64y0M/DlcGpN32Wz/QyFZtQXJuOkgA6pSVqRBLGVa/qDZw73lovEkJfEvY40
+ /9awMGl5bs4UquuS7Ffs444PCk50ghuf12zqTeVBumMjIekqaQEBUxDJFSny2H8GW2yX
+ 4gR/ipJq2pjKNXgyxIeIbYzXjskz8my6gH6aVoVIaVUJyNvjxHWj8Y9SGDpFva7C4CRY
+ ToXWEvoxnWOzXTH0z9VPXHoNT0friKvBVI7O5kmwqqJ0NzYsm40KLEWiQYwS3xwh/DEQ
+ 3gxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697546702; x=1698151502;
+ d=1e100.net; s=20230601; t=1697546899; x=1698151699;
  h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wKulzNlfgfrpkUT+QrxCc7IozboSTp13pn0UnsMQw2k=;
- b=pbKlJ3KTr4Y+Om6Z8EtrG2KHMeik0bvncK4hoEbRqjld0cA8cpKdN19n+RD6p5zw3Y
- 9sexnru0gStu2DHapCsCot3pGWK+B64yHjgWqE/5VUxdMi40MhBVCW5iN7pM3inisjWs
- FwMdVBF0+71UMbQba5x3HoN/wI4i0Kp0BbfSH9gpp9fxqnleN67Nj2MNbMyknAwTPh8X
- /3tlqmarfbUW6yFJJy0cCPteKHTO4Hue/O9qWe8onGq2Ukb60GaTVdP/v5WAwZ0RqCzs
- dfVuDE5C/lXgEWZeNU05qVqV/c2DDKxxVv6w1h1B0XQkeLTf5gAVG0bzC6opp3zwr95T
- c3Ow==
-X-Gm-Message-State: AOJu0Yx3HNi2n2V7Ut4NUGZvPKW5V6FUmpEjJ7kuYR/mLRess+6TQAkc
- Mswj12wDzRwC8MQ8MjtwQBHduRtAKVvnQd2UlmLWNg==
-X-Received: by 2002:a50:d658:0:b0:53e:47e9:9614 with SMTP id
- c24-20020a50d658000000b0053e47e99614mr1699519edj.7.1697546701998; 
- Tue, 17 Oct 2023 05:45:01 -0700 (PDT)
+ bh=YlHuA2uoNWxtLjQaJ6jG5mttnQNTAHKXn44yFnClLpg=;
+ b=PBZTtiKTbUDInj8YHY198qSci++YC/hSGJ0ceWYoMb9gEAy0cz66eEfR15OhUdLUsZ
+ xIqA5skHoE7JDdtE16aK2IGSaw952IUiAxSEqfj7krb/VoFOqlU6zBYaSqNFAQF3cbNo
+ lUoOrCQ2T3dspRAia96D/OJnjyFqsf6GeJRFyky++SvusCyJfrJ92rX7HKMly92AJgUp
+ SS297b1jqj3YSmfn6esOxuErxMsp/AnFXmSXDGjfZE8ciZ2SSPHBTuBQ+h9zK8buKabH
+ fqEp95L91Ds4+PRpVVpT2DuYg3jE1hPDnk6yRUA8sdt0yaCjBh71ZsSatF5jkLVpnNtk
+ riCA==
+X-Gm-Message-State: AOJu0YwIU+LWOuzjNNEH0piNHH0nvA0IomRFaJlBpt1djyJOeltUkNEh
+ Ky12ob/MzApttL9L8dM7mlZPFhcDr3bbO7V0Xsmhgw==
+X-Received: by 2002:a17:907:2ce6:b0:9ae:3d17:d5d0 with SMTP id
+ hz6-20020a1709072ce600b009ae3d17d5d0mr1560919ejc.31.1697546899394; 
+ Tue, 17 Oct 2023 05:48:19 -0700 (PDT)
 Received: from [192.168.69.115] ([176.172.118.33])
  by smtp.gmail.com with ESMTPSA id
- o7-20020a056402038700b005333922efb0sm1147916edv.78.2023.10.17.05.45.00
+ cw5-20020a170906c78500b009ad8d444be4sm1184475ejb.43.2023.10.17.05.48.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Oct 2023 05:45:01 -0700 (PDT)
-Message-ID: <4a335345-782f-1166-5cb7-cd491fcccf94@linaro.org>
-Date: Tue, 17 Oct 2023 14:44:59 +0200
+ Tue, 17 Oct 2023 05:48:18 -0700 (PDT)
+Message-ID: <f85817c0-df0f-6e71-c5d4-61e6f2082a75@linaro.org>
+Date: Tue, 17 Oct 2023 14:48:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH 2/6] hw/input/stellaris_gamepad: Rename structs to our
- usual convention
+Subject: Re: [PATCH 5/6] hw/input/stellaris_input: Convert to qdev
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20231017122302.1692902-1-peter.maydell@linaro.org>
- <20231017122302.1692902-3-peter.maydell@linaro.org>
+ <20231017122302.1692902-6-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231017122302.1692902-3-peter.maydell@linaro.org>
+In-Reply-To: <20231017122302.1692902-6-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -53
 X-Spam_score: -5.4
 X-Spam_bar: -----
@@ -127,16 +126,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fP9iXCGsd/Ov
+X-TUID: WugmDMlP55D0
 
-On 17/10/23 14:22, Peter Maydell wrote:
-> Rename the structs in stellaris_gamepad.c to our now-standard
-> CamelCase convention.
+On 17/10/23 14:23, Peter Maydell wrote:
+> Convert the hw/input/stellaris_input device to qdev.
+> 
+> The interface uses an array property for the board to specify the
+> keycodes to use, so the s->keycodes memory is now allocated by the
+> array-property machinery.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   hw/input/stellaris_gamepad.c | 22 +++++++++++-----------
->   1 file changed, 11 insertions(+), 11 deletions(-)
+>   include/hw/input/stellaris_gamepad.h | 25 +++++++++-
+>   hw/arm/stellaris.c                   | 26 +++++++---
+>   hw/input/stellaris_gamepad.c         | 73 +++++++++++++++++++---------
+>   3 files changed, 92 insertions(+), 32 deletions(-)
 
+
+> +#define TYPE_STELLARIS_GAMEPAD "stellaris-gamepad"
+> +OBJECT_DECLARE_SIMPLE_TYPE(StellarisGamepad, STELLARIS_GAMEPAD)
+> +
+> +struct StellarisGamepad {
+> +    /*< private >*/
+
+Since commit 067109a11c ("docs/devel: mention the spacing requirement
+for QOM") we don't use these private/public comments anymore.
+
+Otherwise,
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+> +    SysBusDevice parent_obj;
+> +
+> +    /*< public >*/
+> +    uint32_t num_buttons;
+> +    qemu_irq *irqs;
+> +    uint32_t *keycodes;
+> +    uint8_t *pressed;
+> +    int extension;
+> +};
 

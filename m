@@ -1,103 +1,102 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3861132ejc;
-        Tue, 17 Oct 2023 04:55:07 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEhlVqCP+ZjAOElc/5HP11GKCeqNoQCnL7Nv7rgPBRpM3BIlQ7Tgh+P6n66SOHfVx0iOhlv
-X-Received: by 2002:ac8:698d:0:b0:41b:7f87:b2c9 with SMTP id o13-20020ac8698d000000b0041b7f87b2c9mr1392785qtq.45.1697543707201;
-        Tue, 17 Oct 2023 04:55:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697543707; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3870842ejc;
+        Tue, 17 Oct 2023 05:09:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF7QTwc7gy39Ae5sHxJIyOyaMOo04ZJrXIZKkxnybWXhOlfJevWI7gLQD/ozhFVIw0KD2uj
+X-Received: by 2002:a05:6214:2686:b0:66d:55d9:bc7b with SMTP id gm6-20020a056214268600b0066d55d9bc7bmr2929678qvb.31.1697544586744;
+        Tue, 17 Oct 2023 05:09:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697544586; cv=none;
         d=google.com; s=arc-20160816;
-        b=DEcxPks5XFKW23CP5Q5haVG1rPVBP/PCLaQsGTtrHIM7pyAJQqQx7mOpJDrmJhrva8
-         tronuiUJAwrQTuZOyZpZkfALLbkifaVyAe78dgW3cn5HqVjre3eRLdwZ7D/pjtgjSO4B
-         toab7phmN+4kS8+0aD0vKDcY8OsMKDDlygq3x2jAq90la9mXO6q1UhyL01bzMOE+9Skm
-         5VKD7YkCEp4A2jC1LP2Izq4rIlQs3u9bsoeHSqmQAse8gtWvwJGTVMWYUIHpuFOlKszL
-         lj9M5fZSS3tNUA9WS73s/ewaOMGv8rNlu/9cihW2SVeH7lVdTC/RtgkDmLbV0GxSBUp1
-         yT4A==
+        b=N7EX7ufaRNzo1Md4jawviL5fzDXE88tlSuyJoerGePmxHls4NEzLLxoxlu+1vU/yRH
+         QATEsCFTVpcQB3bKFJNxoE+E1TMj6kbkxT6R5j1CRL/rR4IgCOlZx8j10ZS4Qbiyc7VW
+         fdfFjKgZYQ5xc9fBA944MD+DFJKvWLkdFqrgx7jKx9C5T4wRQtEyhgVcvWAPLiRyRd8+
+         P6xwAnosr8GiLn/dzDdaS84GHn9kIPajIAcmVpoOwykM0BnLUIK9yfFqVzsVKkv+ZwpK
+         9vch59nUeAkQwL/mMQxOwXwHd8B5DBcMNnrKHYwhOL+634UBKXmXEEZ7BmbFs8RS+uM8
+         2QZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=QOOY5JrfO4GpTG8CZNRDaBIYx08D0HRbf1Tnt5GUlMA=;
-        fh=1+iHolRYECe2ybtGU55u4K8H4b0+ghpL8z/BMNYY7WM=;
-        b=Aa1jI+LGQWEDGo1CfoQFu5jdBpUF5ii2vdW9cLqJOJIJhdeVcPsgbMXfKqf6JfALN3
-         E9r61oFmyvCpT62rCg3TIApeA8dHonhmUtDiA3u1nBC602rCm6198wN1qv/OYJy8zKOZ
-         Rx4qpswWw7Bw0zk1IjKBrz6P/wJbEbPT4Y/YJr2SZpo0ch4igSLf5W2MJnDqZNsYd7Dz
-         mhYeQpf+VvVJd+WP5HV/tCFZFTSWwKjsECs5qDRmMcJcj28a2nqbKKBw0jHSJaWsDJgQ
-         nEB5aZWQ49Dx0wupVt9wTIUhD5BiVHXCdRdpfLEmxZ97pzjVyFlRV4c+qq1TvjROrOrR
-         Zo1w==
+        bh=ZH0F3f+uCOPEXSYjYgewFnE5Faf1m9Z5ZRrf3gXOZSQ=;
+        fh=EaL8vpFTtKEklWwwD6O/c+T8TzXw1DOSm5u3xOKG98U=;
+        b=Rk4cneDAtpB1127mUZk1SwpD+QUq25C5tpPZeRWrKFDRmEhh0mhkVnNV1zwojUoTPZ
+         QLu4MB73b74nvgEYNS7Q5MvS6TazdbM3XnScamkz2+iW39XYOkYpTG+vtuzaBfS66M+s
+         IPBlo2G0ONa6Z3JL7d2WG9spLvnbS9wV2OwSJiU9eedDEEidJ6UYrRgwpcFkY7ED3KIT
+         x5BXG9YuoFXbsAMyWzhS6Jr5D0ibfA56vXctbm+8XfCRuQCu4NXIU5XLx4qKBGTX6kRL
+         UfpqnT4zEvoLXpJ+XjCNOlc7i8dr9U3ob1hQnDvuzjaFa/gGFsXx/I+0R4V+7ujfMbm+
+         w8IA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=npyDSJRJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qmhn+M8Q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x6-20020a05622a000600b00417a3aa1fb5si985801qtw.573.2023.10.17.04.55.07
+        by mx.google.com with ESMTPS id a1-20020a0cb341000000b0065b0fa8e10fsi834655qvf.324.2023.10.17.05.09.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 04:55:07 -0700 (PDT)
+        Tue, 17 Oct 2023 05:09:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=npyDSJRJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qmhn+M8Q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qsidy-0005GO-7E; Tue, 17 Oct 2023 07:53:50 -0400
+	id 1qsit3-0000WM-DL; Tue, 17 Oct 2023 08:09:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qsidu-0005Am-GK
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 07:53:46 -0400
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+ id 1qsit1-0000Vl-5U
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:09:23 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qsids-00057W-4z
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 07:53:46 -0400
-Received: by mail-lf1-x133.google.com with SMTP id
- 2adb3069b0e04-507a62d4788so4159747e87.0
- for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 04:53:43 -0700 (PDT)
+ id 1qsisz-0000b7-FF
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 08:09:22 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-53e08e439c7so9280625a12.0
+ for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 05:09:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697543622; x=1698148422; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697544559; x=1698149359; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=QOOY5JrfO4GpTG8CZNRDaBIYx08D0HRbf1Tnt5GUlMA=;
- b=npyDSJRJ4FBaS0CFzXijHNEqd/mElgDHp38XfO+dWerYPh40w9VGqkHrEnDbW10WN2
- 6AXZtELf6w2RWViT7j0f3NlzExxT2hQpdHr6C95/VK1L+rL2Bi7kigdkHKIQiOR7ZuLB
- 7jFdDXa+J9SUdIw4IipSKbNI/H14mAsDD1XAnasHn9YjoqssWbWZvXbqliWns72Ze4t+
- x0Rz+8kCzHqvYszlZWppox77oFONYSNqGDTtzbIY1p1/cEUKERstjilkNSGjBC4PYDhD
- rmtWXDGT7ickPioJn9HECWCKHQLHIQRNVm01mG8tLei4OsYd5d6KSPmhkxVp85b10nm0
- DA9w==
+ bh=ZH0F3f+uCOPEXSYjYgewFnE5Faf1m9Z5ZRrf3gXOZSQ=;
+ b=qmhn+M8QDs2IFeLjmU+OEaG9vz+JENgQNnH4g+/yN/c52f0/iEgNNNLkUuQS8a2c93
+ wC6O2LpaUIpVfafqZyjCXUXvOyB8NPtSjiYO6jNGZrI35LLykLUUF9mWYT22Cr/1SQOY
+ JWRRBA2a6SpUXancq3WSBHD3P7Cb3RVrsszy8Ck5/k05kAxg3/icuCIHdjfx6Q8RJwgV
+ mujb6Q6CHaHKnHl2WKOWYLi2zpLKB4fj9VcPuNqrMyZCusBqoFUWXlo/UUY4kkHcjTiI
+ 5Ur8RAChdFqEkFM7fY8tR1cCWSSwYry7gt7zXFBfQj8mR/5ZNwziBFhk+2MUXjCVYOoA
+ sR8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697543622; x=1698148422;
+ d=1e100.net; s=20230601; t=1697544559; x=1698149359;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=QOOY5JrfO4GpTG8CZNRDaBIYx08D0HRbf1Tnt5GUlMA=;
- b=DOoXnBlgtx0Q1tp716ojNlZ3gbyYyjQfBqrDAY1H0gfBrhWo+Ka2RzzlON+EZOwInx
- CLtXoOWDKkOEDR2WqJ8IAx1V/Cj4CSaH9pSlRzZ0SZy+XVEO1+eXSbA1vt4E4pB4f2s9
- asgX4SN4zXmX5etyFaB5p4bHCWUJ+CnAAuBOK0JEZ184TAVgUnlREygdGtnIWD+bJPyN
- olDPvvghmhM3hcrVInLYPjMHjhzvcId6riVYbDOcfvR9tyMtD1spb5Ax4qRX6/RaoXMm
- BdPIE7Pir9rZnAahVPaDVyZnOp1QF4LYwklaZ5b9yZtPjBBvU7jj1Osii/9mueBRRbj3
- Sjww==
-X-Gm-Message-State: AOJu0Yzqi2ZGrVlV4qd+l24H7gsvALoYZwIbHowhHh3sky8rLhkZ1CEt
- bHgflJ2HAjPGKUVQETElKy/QClNnJAmLRSAIP/kppbbzjsQ/OH5F
-X-Received: by 2002:a05:6512:450:b0:503:1d46:6f29 with SMTP id
- y16-20020a056512045000b005031d466f29mr1489862lfk.37.1697543622302; Tue, 17
- Oct 2023 04:53:42 -0700 (PDT)
+ bh=ZH0F3f+uCOPEXSYjYgewFnE5Faf1m9Z5ZRrf3gXOZSQ=;
+ b=Ka13vP3wUt4NDycWM1g2VvQim0hWYahy8vAoyJOpP8GTpPYyvuA9ML/2JkRsXjsr9a
+ X6RArkRHpC31gFxMB4cv2kFZsOFRKZw1NmdJQZpOLNN6Mr3HEN3HfzaHt5MYdVcp+zCE
+ CbZ1spCvfj0YYywiEoiKB7F9TawMv9Dv7rnhG0ihrPDpAH+zymX/l5JXyy03V79eh8b4
+ 6hUMbYY6tjmK5gshw+nnWAloAAQoW9OzbN7LeL2BwdhRIiam9w5YebVq78ysrreJ57bh
+ cmZKonGzkCjzFMCzIVEsLZWR7Yv2yCnSHfQeMW4vqmjTUxo+Tidcrun40wkJFyHauz33
+ mJeA==
+X-Gm-Message-State: AOJu0Yz+bOGp7JOdgoMF+HDPKHo7KtIh0m4qyEebZ7BR6MYFXYENfDpi
+ HU8uUtNNq/50YByxVudc5/JLN2kdrAfxcYn4M0+ufg==
+X-Received: by 2002:a50:9e24:0:b0:53d:a0c9:dbd4 with SMTP id
+ z33-20020a509e24000000b0053da0c9dbd4mr1427326ede.21.1697544559610; Tue, 17
+ Oct 2023 05:09:19 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230919090229.188092-1-quic_llindhol@quicinc.com>
-In-Reply-To: <20230919090229.188092-1-quic_llindhol@quicinc.com>
+References: <20231010142453.224369-1-cohuck@redhat.com>
+ <20231010142453.224369-4-cohuck@redhat.com>
+In-Reply-To: <20231010142453.224369-4-cohuck@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Oct 2023 12:53:30 +0100
-Message-ID: <CAFEAcA8_05mkFSqsA7NR3dP3UYqF3h0O6_SEEn_7N90FcKCQ1Q@mail.gmail.com>
-Subject: Re: [PATCH v2 0/3] Refactor PPI logic/definitions for virt/sbsa-ref
-To: Leif Lindholm <quic_llindhol@quicinc.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Radoslaw Biernacki <rad@semihalf.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Date: Tue, 17 Oct 2023 13:09:08 +0100
+Message-ID: <CAFEAcA88O-VDq2rRfVhZ_6OShFq1ANEMmHWHVtNS5hCPQNYtdg@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] arm/kvm: convert to read_sys_reg64
+To: Cornelia Huck <cohuck@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Gavin Shan <gshan@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::133;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x133.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,25 +118,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HlmSdGNyOI8w
+X-TUID: xIw0CaPe2Mm3
 
-On Tue, 19 Sept 2023 at 10:02, Leif Lindholm <quic_llindhol@quicinc.com> wrote:
+On Tue, 10 Oct 2023 at 15:25, Cornelia Huck <cohuck@redhat.com> wrote:
 >
-> This set reworks the handling of private peripheral interrupts in virt
-> to use INTIDs instead of PPI IDs, to make it easier to cross reference
-> against Arm's Base System Architecture specification.
+> We can use read_sys_reg64 to get the SVE_VLS register instead of
+> calling GET_ONE_REG directly.
 >
-> It then breaks those definitions out into a separate header and switches
-> sbsa-ref to use the same header instead of defining its own values
-> locally.
+> Suggested-by: Gavin Shan <gshan@redhat.com>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>  target/arm/kvm64.c | 6 +-----
+>  1 file changed, 1 insertion(+), 5 deletions(-)
+>
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 558c0b88dd69..d40c89a84752 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -500,10 +500,6 @@ uint32_t kvm_arm_sve_get_vls(CPUState *cs)
+>              .target = -1,
+>              .features[0] = (1 << KVM_ARM_VCPU_SVE),
+>          };
+> -        struct kvm_one_reg reg = {
+> -            .id = KVM_REG_ARM64_SVE_VLS,
+> -            .addr = (uint64_t)&vls[0],
+> -        };
+>          int fdarray[3], ret;
+>
+>          probed = true;
+> @@ -512,7 +508,7 @@ uint32_t kvm_arm_sve_get_vls(CPUState *cs)
+>              error_report("failed to create scratch VCPU with SVE enabled");
+>              abort();
+>          }
+> -        ret = ioctl(fdarray[2], KVM_GET_ONE_REG, &reg);
+> +        ret = read_sys_reg64(fdarray[2], &vls[0], KVM_REG_ARM64_SVE_VLS);
+>          kvm_arm_destroy_scratch_host_vcpu(fdarray);
+>          if (ret) {
+>              error_report("failed to get KVM_REG_ARM64_SVE_VLS: %s",
 
-I've applied these patches, with a few tweaks to patch 2:
- * the macro PPI_TO_INTID is unused, so I dropped it
- * I sorted the defines into numerical order
- * I added ARCH_TIMER_NS_EL2_VIRT_IRQ, which fixes up a
-   minor conflict with the recent sbsa-ref change which added
-   use of that IRQ
+read_sys_reg64() asserts that the register you're trying to
+read is 64 bits, but KVM_REG_ARM64_SVE_VLS is not, it's 512 bits:
 
-Applied to target-arm.next, thanks.
+#define KVM_REG_ARM64_SVE_VLS           (KVM_REG_ARM64 | KVM_REG_ARM64_SVE | \
+                                         KVM_REG_SIZE_U512 | 0xffff)
 
+So this change would trip the assert on a host where SVE
+is supported and enabled.
+
+thanks
 -- PMM

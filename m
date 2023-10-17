@@ -1,113 +1,144 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4050562ejc;
-        Tue, 17 Oct 2023 09:33:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF913NjhnLYdzLoGRB3kASZCGuz/Mw1H/ngZm1P1pOv3aOHDAXra2ODkdN9e0XpMfFFIAlh
-X-Received: by 2002:a05:6214:1d0b:b0:658:9565:9736 with SMTP id e11-20020a0562141d0b00b0065895659736mr3440449qvd.56.1697560413963;
-        Tue, 17 Oct 2023 09:33:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697560413; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4062407ejc;
+        Tue, 17 Oct 2023 09:55:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHU3TKrw+pWbSEpRnMQ9hk3asZ/8sqPUkxRTE31668qqWG7PJBtu8NzeIkSD8YSlWLFrYzx
+X-Received: by 2002:a05:620a:298a:b0:777:1cfc:ece0 with SMTP id r10-20020a05620a298a00b007771cfcece0mr3256285qkp.43.1697561709275;
+        Tue, 17 Oct 2023 09:55:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697561709; cv=none;
         d=google.com; s=arc-20160816;
-        b=bupJ3xUCPyhT+/Fi2gx3/EkCg6I1z7f37fg+fl1uXaQNQQy7y/u8UrbXxLEZSk5hkn
-         wvY/UGR3G0+OHx/DD8qWVrvAMMwkWgE+uM7qz6pqkC1eN3vTN0vzjILz2QZGqXcitf2s
-         UeJxxy+eozDOnTEFPQlWC/l08VYwNw+TxnsMwE37s9seC2a79IfbY1UYAI3F2GPkLvy9
-         O6+OLHzZcl8AXhzS+FLOYCERoYQ6G5hHHdFrRAvVrnClJuA89AYSFdxaHnVAwGxbGzLv
-         pIrexfzHl4SJcgXZu++Zjq8LIdfLSs0AWRE/+xsxzQDg2PotsZEga3jxZNBFDTZO/74x
-         aYSA==
+        b=B7jV3KD6mhzsm6+uPfg9F6CHon/7M5UTMTBsveJaut5cR+i6VdmFkk+s7sSHrKxjUd
+         2+DHmXyff5U44TvDao6Ppg3TGRRB0YuwtD2Vi2EkL3c0vOUlQu1N1l+V3x34LgNYs6B6
+         PxPg1YlgeVNSjVhDHuMH4ngZwuNLl5viPvmAhQsJ5bcZCDlxOCRxXNgKTM+UFVjAYRTR
+         0dP5vPtNGD/EV1Xd0+Yyf4jiGq2XjpDwXbKk8vihlM0FJ9+H8sVPI+gLl0Vg3slgLfkq
+         0KfRkkX7m1MIwbI0PebH4PVrLMaBe4CbeqsalC4xtgqsJQN72iQccT6qM/yu3el/R8LJ
+         M3Vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=ApZ6dWptMed9FFcnGR/+NtEdFJDhlsQueolLsuqiDCw=;
-        fh=SK5x4hx8wvzk6BSdv/2ji2hc+6Da5OLpfcqaB6Bkztg=;
-        b=lHD8LJH5/yNjC3H8uqb16i2slZdH94AAf1RQmq+6YAYrqIWl6Br8n6CgMcpB65qNV2
-         bSPgNF5zJSBwT00wYEtN5H0kGUZ0WtR2y5GoH1DEhEY/6Z4gLHktaKzICPpSAzPVCGMe
-         IOOfbg+51NxkTg2CgelAce90P4bhtqeSONdKjwdSfeRDidTGFaQ2e4EYKSYilrRVZKEk
-         i9kxUDHv29ciMgPKwcai/GITuW7IACCKv4mMrpPOdpG4430HHKzdHfw44pnecGolXRby
-         vKj8tPcM6OVi7tYZGy3UvG59CtEEqkY9+dC201HPP9aGdzPGbO+aQRvSHOuwMpLe39J6
-         gEow==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=93+EZ9iT/5J5h5rDgQuIvUUaXCtYiQfX6XQBSJugr1Y=;
+        fh=baFyGB7ziUcmR1spHS7VBBV9XcVc6z6fNkUN3rm2lYo=;
+        b=R9DEAjvQ03k3iT+Elhhzz+yzhap/JNYqbvWYZ47noWuOipLca0kUwUODWe2NTB4HiI
+         t0TOTd1HRtFFSnIPaR0HltlRUrKQ1DS7ExmmYjDc+dlJ2JZMQotdmLRlXYeZOysL99h5
+         Jj6rINizegabYBIiwpVqxxN6oL0nuWrqxV9cD++aLwdKQS7DgVUkEouZxL2DmxVX7Xpq
+         b0HbODwXjKTU9kNNiNYDmUyoeNF2Jr25dBQdaTZR8TrdZQHimlhzKXyK0aBC1Pc97dRe
+         D/HWd1tpHSDMdGNM2vET+FE8iWo8FwTTh6XUpcv3SVVxAOio6SFAyU046IjYwOh3usWC
+         7PKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hRERmOC3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i1Wadqlr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u1-20020a0cdd01000000b0066d1eae4841si1254439qvk.95.2023.10.17.09.33.33
+        by mx.google.com with ESMTPS id u10-20020a05620a430a00b0076f117f54e2si1425578qko.668.2023.10.17.09.55.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 09:33:33 -0700 (PDT)
+        Tue, 17 Oct 2023 09:55:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hRERmOC3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i1Wadqlr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qsn0U-0005lb-Mh; Tue, 17 Oct 2023 12:33:22 -0400
+	id 1qsnLG-0001CD-0Z; Tue, 17 Oct 2023 12:54:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qsn0N-0005Zs-8w
- for qemu-devel@nongnu.org; Tue, 17 Oct 2023 12:33:20 -0400
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qsn0L-0003Vq-Gr
- for qemu-devel@nongnu.org; Tue, 17 Oct 2023 12:33:14 -0400
-Received: by mail-lf1-x130.google.com with SMTP id
- 2adb3069b0e04-507b96095abso2010743e87.3
- for <qemu-devel@nongnu.org>; Tue, 17 Oct 2023 09:33:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697560391; x=1698165191; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ApZ6dWptMed9FFcnGR/+NtEdFJDhlsQueolLsuqiDCw=;
- b=hRERmOC3GaFcyMIe14SXBRwmAsi2+ckso1DH4hgbFKLzG5yfKgxDWl79VdfURHLFHB
- n1DWHsPvAj5G+SJ0TWcGbU//VjprevMKvAOc3L1ftsgrVlhQD9ZmbJ59OCgudLJAVHhX
- megq+4D8qs7P3Hps/ay0LRwQfS45sUr7QQ4+y3EWkgjELyWvC6OHN8a+p7Z+bAoatEBF
- jOs/c+xJUgEUc/+rRU+wYbIvLIQSQ16f/wNUWRslMIs+2sfV03vyHaj+GdAra9AvVoKi
- em04a33mT3FT/LPELPrIAbJ6gXZOc1BabHOEC2vEITih9PCeWjWuOfGoIvIvQFYCf0Oy
- wv/w==
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1qsnL8-0001Bj-DZ
+ for qemu-devel@nongnu.org; Tue, 17 Oct 2023 12:54:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1qsnL6-0007X1-Jo
+ for qemu-devel@nongnu.org; Tue, 17 Oct 2023 12:54:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697561679;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=93+EZ9iT/5J5h5rDgQuIvUUaXCtYiQfX6XQBSJugr1Y=;
+ b=i1WadqlrazdH1Skvr64BEKGrTCbeV+zpFdamIBO98lVD0k8jIHQ9tu6ARFK3gd0CJzYV9m
+ HSEek4jkOeSBlLP8aXmPgQxCMktnmQg9/Ue/IuCnnS7PJZVlTvqatxwfnUvwa5dw8dfAJP
+ dI1e8TO3Qw8cJoKfmFr8ahDCnmML5xY=
+Received: from mail-oi1-f197.google.com (mail-oi1-f197.google.com
+ [209.85.167.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-546-nlNS7snkOg2gJCxHguFpRQ-1; Tue, 17 Oct 2023 12:54:23 -0400
+X-MC-Unique: nlNS7snkOg2gJCxHguFpRQ-1
+Received: by mail-oi1-f197.google.com with SMTP id
+ 5614622812f47-3b2e21c06f9so711023b6e.0
+ for <qemu-devel@nongnu.org>; Tue, 17 Oct 2023 09:54:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697560391; x=1698165191;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1697561662; x=1698166462;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ApZ6dWptMed9FFcnGR/+NtEdFJDhlsQueolLsuqiDCw=;
- b=OSKashfzNskCf2NycWuvChc3Vx5HeNUF/Jw3JK3Nf5oQjiCI1DJLdrlrdh+8HJYetR
- 2gaNpnq7dj1CS9dzcWPT999n6YdB6opKTUudq9Z5MhA43Rn7GKIhjmhh/Zx5yVVY2aGy
- Qolt+LDyDa+KI8iJM/U5ciJmasHlXliWIG8eJe0yHK7zZ4caIgKwPCnICnzmZsqtjSTZ
- XRdO9MQolK4AHBc/3xH/a30hpNc6j2V7AT0zqI0SJdv5VoH3Bnd5MInCejY3Fws9FrRl
- dGsFJWXRdyzGga5SZpsDymUgjFhqHh3U1ifZ/CIYIZLwLBXTu/Dj0vPIGDbOEvTmHEJm
- 7ymQ==
-X-Gm-Message-State: AOJu0YxcaVUYH4BYpaA+kmDsdn8Nzpvkf7cb1VMQfomueohd4hGi1xjv
- LarVwP8nydYEicXi0QZUw+AMpxzX+Kx++Y3WU0B01Q==
-X-Received: by 2002:ac2:43af:0:b0:4fd:faa5:64ed with SMTP id
- t15-20020ac243af000000b004fdfaa564edmr2044674lfl.11.1697560391106; Tue, 17
- Oct 2023 09:33:11 -0700 (PDT)
+ bh=93+EZ9iT/5J5h5rDgQuIvUUaXCtYiQfX6XQBSJugr1Y=;
+ b=TIlIIjXiVje5Jrxk7eodZI4+IW3Wr7BiAM12c76OX4MVSRcSid7Af70qTvVduUgOVC
+ D2h2xxV9fd3J2lx6DbiGYlyEGzODKWXHaTJsj+3sTbQddT5XkQ1UV1qn0F0sqFLdf6KT
+ yqbHdGXl4/B5JqzwenImX89RSdIvZp0I+HK1zRh2rI7DY8Ap7GW7yPXMR0lwyCKT677p
+ q77WNSuqnl3Tt52QbEwXOYOtRtW5Io57li6bAoputln7p3fliGaJEb03u2mvF4QfSr7o
+ z58bznDPFZllJrEJ8Jd1baDHHIWFI6AkEbHV/Pluh6IgV4yH+4Czqthrb5inTAUSMpyv
+ vKwQ==
+X-Gm-Message-State: AOJu0YzfgcAoWH3Oo43qQw7kl63JVvATPHDNJtilP74bzgrplR+9TbMw
+ 7+/tCPDaVaYt2+QHV+67eYy+PGTgpY8eCuE1+ZTfppBfib135s2N6uPskJdK0ANhtWxzgg/2lb2
+ jhqxZ40KooAkGVfM=
+X-Received: by 2002:a05:6808:218d:b0:3a7:44da:d5e6 with SMTP id
+ be13-20020a056808218d00b003a744dad5e6mr3899165oib.38.1697561662453; 
+ Tue, 17 Oct 2023 09:54:22 -0700 (PDT)
+X-Received: by 2002:a05:6808:218d:b0:3a7:44da:d5e6 with SMTP id
+ be13-20020a056808218d00b003a744dad5e6mr3899132oib.38.1697561662202; 
+ Tue, 17 Oct 2023 09:54:22 -0700 (PDT)
+Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
+ az8-20020a056638418800b00454df11c71csm590032jab.97.2023.10.17.09.54.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 17 Oct 2023 09:54:21 -0700 (PDT)
+Date: Tue, 17 Oct 2023 10:54:19 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Ankit Agrawal <ankita@nvidia.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
+ "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
+ "eblake@redhat.com" <eblake@redhat.com>, "armbru@redhat.com"
+ <armbru@redhat.com>, "david@redhat.com" <david@redhat.com>,
+ "gshan@redhat.com" <gshan@redhat.com>, "Jonathan.Cameron@huawei.com"
+ <Jonathan.Cameron@huawei.com>, Aniket Agashe <aniketa@nvidia.com>, Neo Jia
+ <cjia@nvidia.com>, Kirti Wankhede <kwankhede@nvidia.com>, "Tarun Gupta
+ (SW-GPU)" <targupta@nvidia.com>, Vikram Sethi <vsethi@nvidia.com>, Andy
+ Currid <acurrid@nvidia.com>, Dheeraj Nigam <dnigam@nvidia.com>, Uday Dhoke
+ <udhoke@nvidia.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, libvir-list@redhat.com,
+ Laine Stump <laine@redhat.com>
+Subject: Re: [PATCH v2 3/3] qom: Link multiple numa nodes to device using a
+ new object
+Message-ID: <20231017105419.1469e5c9.alex.williamson@redhat.com>
+In-Reply-To: <20231017152830.GC3952@nvidia.com>
+References: <20231007201740.30335-1-ankita@nvidia.com>
+ <20231007201740.30335-4-ankita@nvidia.com>
+ <20231009151611.02175567.alex.williamson@redhat.com>
+ <BY5PR12MB3763CA80432643CE144C7A23B0D6A@BY5PR12MB3763.namprd12.prod.outlook.com>
+ <20231017092116.09ad2737.alex.williamson@redhat.com>
+ <20231017152830.GC3952@nvidia.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20231012121857.31873-1-philmd@linaro.org>
- <20231012121857.31873-4-philmd@linaro.org>
-In-Reply-To: <20231012121857.31873-4-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Oct 2023 17:33:00 +0100
-Message-ID: <CAFEAcA-qgZejcWSvi40p+FsmYS2ipPAua3u9bYA_6LKj8HV3Rg@mail.gmail.com>
-Subject: Re: [PATCH 3/8] hw/pci-host/designware: Add 'host_mem' variable for
- clarity
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Andrey Smirnov <andrew.smirnov@gmail.com>,
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::130;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x130.google.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=alex.williamson@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,19 +153,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /Ics6qYgAPkG
+X-TUID: Iv9YIh/TeaH+
 
-On Thu, 12 Oct 2023 at 13:19, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> designware_pcie_root_realize() uses get_system_memory()
-> as the "host side memory region", as opposed to the "PCI
-> side" one. Introduce the 'host_mem' variable for clarity.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
+On Tue, 17 Oct 2023 12:28:30 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> On Tue, Oct 17, 2023 at 09:21:16AM -0600, Alex Williamson wrote:
+> 
+> > Do we therefore need some programatic means for the kernel driver to
+> > expose the node configuration to userspace?  What interfaces would
+> > libvirt like to see here?  Is there an opportunity that this could
+> > begin to define flavors or profiles for variant devices like we have
+> > types for mdev devices where the node configuration would be
+> > encompassed in a device profile?   
+> 
+> I don't think we should shift this mess into the kernel..
+> 
+> We have a wide range of things now that the orchestration must do in
+> order to prepare that are fairly device specific. I understand in K8S
+> configurations the preference is using operators (aka user space
+> drivers) to trigger these things.
+> 
+> Supplying a few extra qemu command line options seems minor compared
+> to all the profile and provisioning work that has to happen for other
+> device types.
 
-thanks
--- PMM
+This seems to be a growing problem for things like mlx5-vfio-pci where
+there's non-trivial device configuration necessary to enable migration
+support.  It's not super clear to me how those devices are actually
+expected to be used in practice with that configuration burden.
+
+Are we simply saying here that it's implicit knowledge that the
+orchestration must posses that when assigning devices exactly matching
+10de:2342 or 10de:2345 when bound to the nvgrace-gpu-vfio-pci driver
+that 8 additional NUMA nodes should be added to the VM and an ACPI
+generic initiator object created linking those additional nodes to the
+assigned GPU?
+
+Is libvirt ok with that specification or are we simply going to bubble
+this up as a user problem? Thanks,
+
+Alex
+

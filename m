@@ -1,122 +1,112 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3783342ejc;
-        Tue, 17 Oct 2023 02:22:03 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGopxtx2hxoCrNYVJXSOANLiplofSiScRsxnbZP9hRKFXKvzIuB5hCBjdBSKb+lqJztxjTX
-X-Received: by 2002:a25:f56:0:b0:d9b:4f28:4f7a with SMTP id 83-20020a250f56000000b00d9b4f284f7amr1533922ybp.55.1697534523218;
-        Tue, 17 Oct 2023 02:22:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697534523; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3889028ejc;
+        Tue, 17 Oct 2023 05:40:23 -0700 (PDT)
+X-Received: by 2002:a05:6402:520b:b0:526:5c70:7318 with SMTP id s11-20020a056402520b00b005265c707318mr1712565edd.6.1697546423124;
+        Tue, 17 Oct 2023 05:40:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697546423; cv=none;
         d=google.com; s=arc-20160816;
-        b=IxU+/L67ytTsHdkup1ZLncaMCALoiwcXoloLIzLYypjicv2DPIMQMx3D4PzuyQ1eFS
-         Wv1s/Rs+rvBpw64JDyAy2J9N+VxLpUScEtGW0X1mI+CqmU8OCxR4Ih8GRtht3ykLPP4q
-         eTZajgk84vuGtQDDeFtNdxMCud1u93CgiBZ3ebIrXsn+y7H8GgUa6ASFxD6wFNxf8lc9
-         if3QrkzeWxLbDo4ytHBNayGuscKGzmFUQje3vTrhtRJ+UPTAD8TygcdhFSl0bK2O9Zif
-         fqYB0mgmOHVM+HEk4NWX6Hy+n49KDpZn8nzvtO1sBQ9EzuzTcDHeCtrviPZBa9Us0Wfb
-         DeSA==
+        b=GSbIIQtk4i6L/HroFrIUUnvNUpKcsWlCkPkFHoes/WDE8TWGO2CVLi47VCVAZJMHuD
+         bTkOsBjlN4pVIhbuQktkeULHfBxTt/GrnFzcPQAJNDk//jLQLUJ/ZnOJ+J0qQtkAt518
+         d4bIiKzZCBlAuuPGY9HElpv/BGaZCnmgdr3RFnq2qxLL2/pAZ7Tskyv8wqp5Bi957kgL
+         8HYXddVZ7vWGGuo55sfa6IqvwTGqrkx3SBhSuEVmIAF6jWdQeZ0YT9Lsw9UI6/LwzYDC
+         punSx8yMTY30mCMREoB7Z8ezfGlbE1ZaIGX9sEmVWJ6e5izj4b3CamiCAFrRlVB/cU0e
+         t36w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=1qeGk3zhOotevqJQGHJ9RRK/VZ2RvlFuBdV8SDV82vQ=;
-        fh=fmwShfj/oMnMXJVmmkYihRxMUmUntuSBtOPL1loPlXY=;
-        b=XOZ9NFibOiCytJHVYptKAqCS5LT13AP/DX8TJlVemRXaGwk2LfhySspq6vVTtnGGuF
-         YuMIa3gGOg50SvH8giXx2AO2fLMlQ1rA0lySNB9/eePaZR150SqVBnm2UEVUKXwUMuPj
-         YXDo/lxERD/QOL6IP+tffcAQpHgbvadVHQ0obTcypxpZRP+7UB8WF2MKHyLpOEWVv7bc
-         fC2g2lb6B4EiznOsMxeZJaFzIKezt/oP74IYyMPKc0LNteu+xn8oEIvV1fvv4TplDq6j
-         neMyQ9YyKl3HJ8iLcvagwgjGewzdQuvuiO2UX1CdGOu7TWcgYtB3sf5xaBbEFnx+pjPK
-         axlg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=r0QIgBtowzSJ55PrgABlXL74OTmeFvX5QvUBMAW1EAs=;
+        fh=ULANnUNAmSuH4sheoaawq3/FCOGkml8D1FbHtbsXyu0=;
+        b=v1M1I//orEyQsUpLnHI/z4hVdez86ui1ALgA/LVqmtI2+jRs/E1A92aLehvPg/50zj
+         bLDqsgUGDvaXRrwJcpyK2ZtDyGYULFKwKXcWgziRSwx5TNY54S7KgUiq4I0QqmFsUDqI
+         friU+tnr0ODOcNTln/Z+CrRAGyHMM66cRRmKfptopWOq52aPt0NhJt1ZU0+ayUxz6Qp5
+         LMRPrqU3Iv/wRViIU4o7MIPUTUmohiHJHa1gmnR9OI6KLAyefiw/VeUhwWy3iX9WvnTS
+         HMP2dMJwINn1nMI3NnPkHGWGDFHAZM+UCY2h3D7Q+PuVJCV8SLq70TzC+JNafQsHHftD
+         39Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b="P/tZAmra";
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <quic_svaddagi@quicinc.com>
-Received: from mx0b-0031df01.pphosted.com (mx0b-0031df01.pphosted.com. [205.220.180.131])
-        by mx.google.com with ESMTPS id f186-20020a251fc3000000b00d9ac450d5fdsi497214ybf.724.2023.10.17.02.22.02
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2023 02:22:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) client-ip=205.220.180.131;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UCjiUU9S;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g1-20020a50d5c1000000b005377830246bsor532672edj.5.2023.10.17.05.40.23
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 17 Oct 2023 05:40:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b="P/tZAmra";
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 39H9FfxN011546;
-	Tue, 17 Oct 2023 09:22:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=date : from : to :
- cc : subject : message-id : reply-to : references : mime-version :
- content-type : in-reply-to; s=qcppdkim1;
- bh=1qeGk3zhOotevqJQGHJ9RRK/VZ2RvlFuBdV8SDV82vQ=;
- b=P/tZAmraBZnlOxmOAwLMD0aYomCiuHVY18xgpRWpaI/yQ4pP7V9vTEi1oCZSbIHgJSCj
- YkMXOKNiohubfDSGTljHokY0Uo7pctzv3y5nksFg375ljZU1He2eLJJx+3jI+qRngwih
- 66tMirlSUjX/MPeujnZSzaCeoL5gp/UCSMFsf0KaM0FnuezLHwPet8ocnBj+u6Q4Ua5m
- Gc8EtcwuFGr8JIP3oTbzyT9nvdtXrt55NhtHaHXgu9CjC59cn7tbTJOBXzMIDgOIgGf5
- vR7MZ3/zu1wR7aIGMJ7ySqqgUFdngQyPuN6rq/9ooSiRSw9PP58OerkOwr11kX21M4NH 4w== 
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ts85ft5m3-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 17 Oct 2023 09:22:02 +0000
-Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 39H9M1bS006999
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 17 Oct 2023 09:22:01 GMT
-Received: from quicinc.com (10.80.80.8) by nalasex01b.na.qualcomm.com
- (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.39; Tue, 17 Oct
- 2023 02:21:56 -0700
-Date: Tue, 17 Oct 2023 14:51:52 +0530
-From: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-To: Alex Benn?e <alex.bennee@linaro.org>
-CC: Philippe Mathieu-Daud? <philmd@linaro.org>, <peter.maydell@linaro.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <quic_tsoni@quicinc.com>, <quic_pheragu@quicinc.com>,
-        <quic_eberman@quicinc.com>, <quic_yvasi@quicinc.com>,
-        <quic_cvanscha@quicinc.com>, <quic_mnalajal@quicinc.com>,
-        Brian Cain <bcain@quicinc.com>,
-        Mark Burton
-	<mburton@qti.qualcomm.com>
-Subject: Re: [RFC/PATCH v0 12/12] gunyah: Documentation
-Message-ID: <20231017092152.GA689217@quicinc.com>
-Reply-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
- <20231011165234.1323725-13-quic_svaddagi@quicinc.com>
- <31ae6951-2f32-ab86-4ddc-aa70364a89ce@linaro.org>
- <20231012123338.GF1130358@quicinc.com>
- <87ttqvnazo.fsf@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=UCjiUU9S;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1697546423; x=1698151223; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=r0QIgBtowzSJ55PrgABlXL74OTmeFvX5QvUBMAW1EAs=;
+        b=UCjiUU9SqVsmC4XdRE2cPCNz3yVCEXk4oRXV7GqcB4gAA8FCobOjpqXS0hlyp1CPe3
+         YGcMRI/lBxZto9EF8Rc/iU3DsZJxKV20pWz0YEysqCxkgy6/Xw70ghkZaL3qx8Qg9O8k
+         ooko2PeP3yhphXO3fHpjm546rEKIjuLtHQaTC4XvofQf+LrhbmakCzy8k88dSUmwoy3m
+         KCQoofjECfhR4HT2nnZRVitDcb6dRbDkdtiCbuGHidGhNr+bw9lIRG4Q3ApLrN8m/bv2
+         Mllvvgrx6fdWSiK6WVvH7snsIJmYgkG07qoIHZUUD/yrybEzkhnFeq9h2Xt1Y9JNYmGn
+         4vRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697546423; x=1698151223;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=r0QIgBtowzSJ55PrgABlXL74OTmeFvX5QvUBMAW1EAs=;
+        b=qbJM0CxqnFRKKVp26EK2w0yDoyjrj2gyAIAqjUg4R07ZP2qP+yH/3QyKB7ywyLaJ4B
+         KSM9lu6u1R4X4E5TahZoTUicivGfuAFkvzCOFnMdpxzZNGXMXLD+AwRDHCHRrIu42WSV
+         ALYYedLP9nO8lBDuPXsEjyE0YtpFNZtf4KvVwyOXuxiwHbP+2sXoMC5mq6D2kan4PFlU
+         tHJSCs194mBXELoSmWWsSwXu+n+8wppCkjVu02KuMrl3KienY35k5Whu1HEJnyBYuPYW
+         GSm39RpVD4xJE2OtopIjTM8T5VedjQ64qVBe1tYm4h2uXYjcoi+fD8u/zEluyWl/iIJf
+         Ic/w==
+X-Gm-Message-State: AOJu0YxK3veKl6kuqa1T2gwLylOhR3PA4NhjyqV9x+8RoTDxhn6nDsxg
+	jxgOzqEicJkB4Doi4uhKpiabYkgreuxHB88d7atNyCfj
+X-Google-Smtp-Source: AGHT+IGCIAMcIuVHuVdGJhWmnffWavr+gGhpF0aBbYnLS8xnH4MidD3t/6krAOzIG2H016Zgf+fqJIN4YdRpFGN8rHE=
+X-Received: by 2002:a05:6402:5194:b0:53e:395:59d with SMTP id
+ q20-20020a056402519400b0053e0395059dmr1782315edd.8.1697546422752; Tue, 17 Oct
+ 2023 05:40:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
-In-Reply-To: <87ttqvnazo.fsf@linaro.org>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nalasex01b.na.qualcomm.com (10.47.209.197)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: r49WL8qdl2RfA9U_0HwWVH1AxBB9rjzK
-X-Proofpoint-GUID: r49WL8qdl2RfA9U_0HwWVH1AxBB9rjzK
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-16_13,2023-10-12_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 adultscore=0
- priorityscore=1501 phishscore=0 malwarescore=0 spamscore=0 mlxscore=0
- bulkscore=0 impostorscore=0 suspectscore=0 mlxlogscore=518
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2309180000 definitions=main-2310170077
-X-TUID: cE8Jk+yGgSnD
+References: <20230915185453.1871167-1-peter.maydell@linaro.org>
+In-Reply-To: <20230915185453.1871167-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Oct 2023 13:40:11 +0100
+Message-ID: <CAFEAcA_Lppdk-aEXRC1vd0OZpiCvh3kK+mqz8OpaAe01Vy_bFg@mail.gmail.com>
+Subject: Re: [PATCH 0/2] target/arm: Implement Neoverse-N2
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
+	Leif Lindholm <quic_llindhol@quicinc.com>, Radoslaw Biernacki <rad@semihalf.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: i4YmFUDOwBlt
 
-* Alex Benn?e <alex.bennee@linaro.org> [2023-10-12 15:55:59]:
+Ping for code review -- Richard or Alex, maybe ?
 
-> > Hi Phil,
-> > 	We do want to see Gunyah support merged in Qemu at the earliest (as soon
-> > as the kernel driver is merged upstream that is), so any dependent change in
-> > Qemu for Gunyah would be of much interest to us! I am not sure though if Quic
-> > can sign up for the entire "make cpustate accel agnostic" work. Can you point
-> > to your ongoing work that I could take a look at? Would that address virtio-pci
-> > becoming accelerator agnostic?
-> 
-> Why wouldn't virtio-pci be accelerator agnostic?
+thanks
+-- PMM
 
-I checked usage of few KVM APIs in virtio-pci.c. I think most of them are to do
-with use of MSI and IRQFD. If lets say we are not supporting MSI, then I *think*
-current virtio-pci should work just fine. It would use virtio_pci_notify ->
-pci_set_irq -> .. -> qemu_set_irq, which should land in
-gunyah_arm_gicv3_set_irq [Patch 7/12] AFAICT. Let me try getting virtio-pci
-working and then I can update this thread again!
-
-- vatsa
+On Fri, 15 Sept 2023 at 19:54, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchset implements a model of the Neoverse-N2 CPU.
+> Because it's very similar to the Cortex-A710 we don't
+> need to implement any new features for it; but because it
+> supports 48 bit physical addresses we can use it in the
+> sbsa-ref board.
+>
+> Patch 1 fixes a few minor errors in the A710 definition
+> that I spotted while I was cross-checking it against the
+> N2 TRM to see what had changed.
+>
+> Patch 2 is the new CPU model.
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (2):
+>   target/arm: Correct minor errors in Cortex-A710 definition
+>   target/arm: Implement Neoverse N2 CPU model
+>
+>  docs/system/arm/virt.rst |   1 +
+>  hw/arm/sbsa-ref.c        |   1 +
+>  hw/arm/virt.c            |   1 +
+>  target/arm/tcg/cpu64.c   | 114 ++++++++++++++++++++++++++++++++++++++-
+>  4 files changed, 115 insertions(+), 2 deletions(-)

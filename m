@@ -1,278 +1,216 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4141264ejc;
-        Tue, 17 Oct 2023 12:10:42 -0700 (PDT)
-X-Received: by 2002:a05:6359:5e02:b0:134:e301:2c21 with SMTP id pw2-20020a0563595e0200b00134e3012c21mr3351205rwb.15.1697569841929;
-        Tue, 17 Oct 2023 12:10:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697569841; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4153218ejc;
+        Tue, 17 Oct 2023 12:33:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF7KrpgygUoVN8vHo50ZxvGLwhwlG8JtwCbZZStgNZmr1lGqyitq9LawaI8CGWIAiM5d7OE
+X-Received: by 2002:a05:6214:f6b:b0:66d:403:414 with SMTP id iy11-20020a0562140f6b00b0066d04030414mr3985287qvb.54.1697571218571;
+        Tue, 17 Oct 2023 12:33:38 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1697571218; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Bq7V+ZG0jF9zcUadzsWlqtzQyUV0aEQNJ1dLMXdyzGuOLXJFoU32nRTIu8Si5EGjPh
-         nizADdYwnIWbxm3DvizUjeNpep8s/jcnTqFMDJHV7M7Gz/u9py7pIaiRidUbwrNu+ul3
-         DaKp1G5+kgWa2VSburhLwn3hO8sLhCnwPIoH9duWZRi8REmkw2yj7k/Ey5R3TqQx23v9
-         45yL5vksL42TfbU5gEM5wCibp2QZQ3D6syTKWrUuaHDdEgdrq6qyWyk+9AgSmuchXcM5
-         v8GkSX/Fy1FVS5xpTZRTUrFsJ/DYXhnk434i52JOxEICfm+fd/7ZbRLepvhq7mo6gecv
-         uEiA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=24qZu+1ggT2JDviRKMuixfNs8e2VzD5si+04t5PRRIg=;
-        fh=WA5Ih+z6Ze7tQYrjkp5FJyvVwB6osmNafM1nTpBVX90=;
-        b=VjJ1bYhCPnGSdIEJsAJTS44JaQyh0cOPh6dcsPYDWOuN/fnV5wwnA6JumlLvLN2viS
-         JiAVc3oqeTszGdQnCiS7uFt2s9iZ4YP2C+81RV/6yx14zTSEOJ2AsCvykOvwuYrtUkEE
-         6H783triRwYdafTkNJJrO2m1kIJ8OUcCZkgKP+5h+49W1PqyyTBxwtoNmnZXRinxuAQI
-         9GGfZ4xoRnZjh/oxblghkud0e7LDQpzh7fnsLZKVSQBCao5vZHWFT+NjOrRN5nPH4/hX
-         CxwBrQqX8uTg/dTDpuqQ/I8lgLNvcHsSW8cfONe1DdLxWaFWFhivkgd0yVNl5v/bY16Y
-         l9Dg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=1EpTw7R7;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b17-20020a056a0002d100b006b5034de047sor945999pft.8.2023.10.17.12.10.41
+        b=Ty21xS9oRCpIZGDqkgTWhaSbJyOxU+ZF/j3RrscZKQvuVr4yvkwNQkQHWfuZ9Y4SVH
+         9nRrt5IRrttznbakr72PGV29Zl5KzULJdFQ0fFP8XlvYJz+VmUnzXRF1KvIRNpnrs37n
+         SwRkj7ev/faVXaWgnUq7kCZJ7MMi2V5rPDKfEjDjR28DozaMHZf+pYf9fTvoKvkk7vQn
+         yfc84SCGscRcTrMkLwqbu6Nu6eqGr3yPVszZ2axxmWze9928TrBf1+yXnDsLOhXGPYJP
+         HEN1uiWEAmUh1JLJlgFTCikufJtmWFwjwxYYrxOjc4D//QNgodydrLJaFtaMwUC6bSdS
+         +0kQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=V2PpJPMLEli0H1jbdkD4Iy1a39gpyhemoraoTUKHYNo=;
+        fh=voBcUzMOU8H7GhrKfzDBeuNEarwOE0Oh9mBXV+XTGOc=;
+        b=nj6gQui3iMmCdj1jg+aNV0M1h5YAykSa4gQet7z4Y76Rq8fhl5oR5aMK0RK/xOQ6fH
+         OrLyzwvjmQ/dnR7GLLecf+vIq/E7Rd2CGwfI6yVXgaf4XyvvQ3QAzkxj+US+0uDkkAIC
+         ZYeCBFDEcGPaaBVxxC08gu7GZ9SG4AnPPDBWDyOwkLLBsy0eqIaPIwjkrfHAN9Ur+OlN
+         NFkc3OnSkTG4PULuWtBgfBk7rwKmQQUZO7XrZSS7VDozQs5weyAr2kAMZxN2NnyJ45hp
+         33//vUp4WkH0Y6Y4VNY3hT7SVZvQmstT59InnZwsrcg9k5CRFeLDxNQFKjwCf8KxC98x
+         5Xcg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b="D/ofKKW+";
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id du14-20020a05621409ae00b006558ce26d49si1522856qvb.199.2023.10.17.12.33.38
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 17 Oct 2023 12:10:41 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 17 Oct 2023 12:33:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=1EpTw7R7;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1697569841; x=1698174641; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=24qZu+1ggT2JDviRKMuixfNs8e2VzD5si+04t5PRRIg=;
-        b=1EpTw7R7PakNz089BO/TWy7UtC63iPFFEAP4cjxgyj71klW5dBM7QpPwBZaAI5Wsd8
-         /Bxr/OsxQ2BRgqVNCEVhTIDp3BWy6lJ6qiVqKZtkn2LMq5xH0t5y8hShbpMcPv1nwYzZ
-         ZYpzLcIiQkBlkGHOUsVU980LNGT2YRjtARVHlrIEvGEVkjKnNq0dvmcoy0UOF9Su6Jtn
-         9R6dhOgQAvW5vmPy/djpw3eHD3djUPbsFcZrPgMvRJ/afPVLEr6kIT/X4wxDMgA48j8S
-         w3OBqgfqt8NcMrR/+j7ZyU5oVVL9Yex2aR9w4w4u0DJoB2W0G4KUjZEZthlQcKlZ8Dwl
-         KlHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697569841; x=1698174641;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=24qZu+1ggT2JDviRKMuixfNs8e2VzD5si+04t5PRRIg=;
-        b=rfA6i2PzAnYH++K30Emj7AzAig31FwZ04o4adl8nmkgevxuobPi/gNwhdmbvv7dOjd
-         L7B3q265QYa4TeaMiwp8+NoYvOlYA1k3PeWw5uQRO9Dfs3J2fd/Ys9LHigSaOo3OR0Dr
-         PXfuWzDI3tdkqEDJlqkSuhJ1hX/gwX6VasHITanz0WRQiVtkpY0YZDirj3F5SsiFP5iR
-         vTo9hjIKrMQmiokh+BGp1V4XClGeMq1y93LpKCmZMsPMzTWqHUpD1FYeTUd+q/rzNxuS
-         d352ygPAFlpcf05WJzosvkxlH5zXn6Y6s/lPegJ+XdqUdpSFfGyVqijiduO6sEf/m33G
-         9o+w==
-X-Gm-Message-State: AOJu0YwCUBqF9FD4KThkIB2X5Ji4CUKVSZuOYvEcZyA22srv640XotbK
-	2FxLA5xGJkKK7O8lw9UTvd1RC3TjmjLD3hIFliObSg==
-X-Google-Smtp-Source: AGHT+IHbDSWxhExQ5WQ6WRkx4x4/zua2+84pYdaF1mBKE/IfN/FxBI6ApvBGuD25dHFNT85/ZG5qzQ==
-X-Received: by 2002:a05:6a00:1995:b0:6be:2991:d878 with SMTP id d21-20020a056a00199500b006be2991d878mr3498192pfl.15.1697569841278;
-        Tue, 17 Oct 2023 12:10:41 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from localhost ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
-        by smtp.gmail.com with UTF8SMTPSA id k3-20020aa79d03000000b0069102aa1918sm1803941pfp.48.2023.10.17.12.10.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Oct 2023 12:10:40 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Mikhail Tyutin <m.tyutin@yadro.com>,
-	Aleksandr Anenkov <a.anenkov@yadro.com>,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org
-Subject: [PATCH v13 12/18] hw/core/cpu: Remove gdb_get_dynamic_xml member
-Date: Wed, 18 Oct 2023 04:09:22 +0900
-Message-ID: <20231017190931.16211-13-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20231017190931.16211-1-akihiko.odaki@daynix.com>
-References: <20231017190931.16211-1-akihiko.odaki@daynix.com>
+       dkim=pass header.i=@amd.com header.s=selector1 header.b="D/ofKKW+";
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qspns-0006wf-Ln; Tue, 17 Oct 2023 15:32:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qspnn-0006t3-Kk; Tue, 17 Oct 2023 15:32:27 -0400
+Received: from mail-mw2nam04on20603.outbound.protection.outlook.com
+ ([2a01:111:f400:7e8c::603]
+ helo=NAM04-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tong.ho@amd.com>)
+ id 1qspnl-0006n6-3x; Tue, 17 Oct 2023 15:32:27 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=j9wPvpF3LtrXGlZpWK4cgtjwNGjwAY+nLL26lgHOjKlkstw3PnQUtDCtnhYQ7kZGtAa6cQGw5rzHGgFZ0EkyJMyUwnu8o1U/VQhUj9jk6v1oNNXKByqGbz8YqMcmboRc2L2uf7ZY4rC1SungCG5mSQ+KGVH4k6qki61yaXO1NwGS1St4ync0e6v+iskc1D4DvoD5c1GbQkLUbmOANltTnhKpQT6+5u1Uv+908OH6l7pV5W6yTJEkr2YIA2LTmbWpV4zfv4IjGsw15NDVa4ywoLyxuZAI3YJpsHNJOFQoAUDFyJ7G/JHdsxc3KQ75YZROfeRgZ52l4U1doTcYgqCGvA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=V2PpJPMLEli0H1jbdkD4Iy1a39gpyhemoraoTUKHYNo=;
+ b=DsTq/dCfIK4xfu0iLMK2W7T17TyTTISiI1ptTWnPoErmj+EIpa23UPlph8jnwbg/Soe1qYqsBBWEC7R5k4QHJXW1mk48QYVrkI7KvRkGdJ6Rg+KoIAhY48Z5DGFwM2sqp6WUYm0DU7RwY7SdBuK3zLOb31NKFsEuPJZGVpbLpUF23LCuBiDOSkROJ/UXcXTnO9I5DcSgTbGjo4hTzKzjR3Pn40EGU5663K9EDiKzShpuutF0iklN+5G5uNQoH+73FMMBwHd1ItnJSOmD3ky9yTRYf5BHiA0ri1Wy1RRDNCivTErWX3YpJw8V0I76VD59yIMPhsAyD61PElGw56ipug==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=V2PpJPMLEli0H1jbdkD4Iy1a39gpyhemoraoTUKHYNo=;
+ b=D/ofKKW+GbcYue+9YaH2vcpNxUTWJyvjYWH8DzM/99wy4njsu2pZEZ2bEqwJ/NthfwF7nBbiy9c8q0cts3Kg5v9i8gN+TRN18lxx8UgIT2PUlKVZ6j14u4n/m8TMZk4kEy31Kgoa2Y4m1Y84On305Y0mEca6+ROkor2IdG/ld4w=
+Received: from DM6PR07CA0079.namprd07.prod.outlook.com (2603:10b6:5:337::12)
+ by PH8PR12MB7446.namprd12.prod.outlook.com (2603:10b6:510:216::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.21; Tue, 17 Oct
+ 2023 19:32:19 +0000
+Received: from DS2PEPF00003447.namprd04.prod.outlook.com
+ (2603:10b6:5:337:cafe::7d) by DM6PR07CA0079.outlook.office365.com
+ (2603:10b6:5:337::12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6886.36 via Frontend
+ Transport; Tue, 17 Oct 2023 19:32:19 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ DS2PEPF00003447.mail.protection.outlook.com (10.167.17.74) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.6907.20 via Frontend Transport; Tue, 17 Oct 2023 19:32:18 +0000
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 17 Oct
+ 2023 14:32:18 -0500
+Received: from xsjtongh40.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.27 via Frontend
+ Transport; Tue, 17 Oct 2023 14:32:17 -0500
+From: Tong Ho <tong.ho@amd.com>
+To: <qemu-arm@nongnu.org>
+CC: <qemu-devel@nongnu.org>, <alistair@alistair23.me>,
+ <edgar.iglesias@gmail.com>, <peter.maydell@linaro.org>,
+ <richard.henderson@linaro.org>, <frasse.iglesias@gmail.com>,
+ <tong.ho@amd.com>
+Subject: [PATCH v4 0/3] AMD/Xilinx Versal TRNG support
+Date: Tue, 17 Oct 2023 12:32:14 -0700
+Message-ID: <20231017193217.1512868-1-tong.ho@amd.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: WVevpPL3KzRJ
+Content-Type: text/plain
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS2PEPF00003447:EE_|PH8PR12MB7446:EE_
+X-MS-Office365-Filtering-Correlation-Id: f774f362-61e9-4def-84b4-08dbcf47c6d9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: nR72qtSkRsOsTolvn1zXbhUcF1RL5xofGRTbwlG5PXBiRFRG2s2FsLe9ZOa4J6HtCr2liKX9CaePdx80DfM5jaavkqmJo5qKmfSCIu3w3tf6/ALiesjt3PInq0/I7LGT9bdaT4995x32tnJljUyle3AqrmCOUgjZiKLKzIv/6PDiraV0kqMgdAbE4C+jd0QyBbD2ZHE0g+QRQj4y2GBtEfU64HA1ToLcPeIIYsucirOxA28tQo1dYkYGPPjRA85NKEmyVjPBo7AZdpUsemku0Jy/2msM/e/ui5BsxDFOhj7uLIuoXXg6XqLa6RqZrsiGz6CFLeb16NiySI/m9iH0UNUChUzVYx69q6ZBVWY2V/7cFCeUuHynFm6gVchjxuPZuQ9E64sidNOM4w2C6cMHGVT3k2avSwJZArOWkraO5Cb8LEx/bev8K1JNHQIQHEOnoE1bUHw7VWPFS6h6kMyQwE3mbB1W3rJguWg0njYwvEcuBVakJ+M0Hv7UUVnFhIaXltdBTWY54YtPy877pXWsJYCst3s9rZSp65GYD0BUebtf34rFel6ZgncZ5qRFi/mUMWQSXYtVnZjPi/KGQ9a3P35tHOXlO6KXazEXkI1SjgF3UJgfwENxQMgpgCOUt1Yv6SIRWFqiLGbXtm+yDydYY8GnZ/77l7G/wNwP1JOEQRaR+AJqYXFQlKAmp1wDSgJ61SGaglZiRo6atf1D9KHHkGWgOHoPqQDyfvPMkGu5CinAzegYldfl7g/qRKW9gryg4RG0UpO7cs4qeqMmJ7RN1A==
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230031)(4636009)(396003)(136003)(346002)(376002)(39860400002)(230922051799003)(64100799003)(186009)(451199024)(1800799009)(82310400011)(36840700001)(46966006)(40470700004)(6666004)(36756003)(336012)(426003)(478600001)(47076005)(2616005)(36860700001)(316002)(54906003)(6916009)(70206006)(70586007)(26005)(83380400001)(1076003)(41300700001)(44832011)(5660300002)(81166007)(82740400003)(356005)(40460700003)(4326008)(8676002)(8936002)(2906002)(40480700001)(86362001)(36900700001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Oct 2023 19:32:18.8047 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: f774f362-61e9-4def-84b4-08dbcf47c6d9
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: DS2PEPF00003447.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7446
+Received-SPF: softfail client-ip=2a01:111:f400:7e8c::603;
+ envelope-from=tong.ho@amd.com;
+ helo=NAM04-MW2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: R0Q6XSWqdmrb
 
-This function is no longer used.
+This series adds support for the True Random Number Generator
+(TRNG) in the AMD/Xilinx Versal family of devices.
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- include/hw/core/cpu.h |  4 ----
- target/arm/cpu.h      |  6 ------
- target/ppc/cpu.h      |  1 -
- target/arm/cpu.c      |  1 -
- target/arm/gdbstub.c  | 18 ------------------
- target/ppc/cpu_init.c |  3 ---
- target/ppc/gdbstub.c  | 10 ----------
- target/riscv/cpu.c    | 14 --------------
- 8 files changed, 57 deletions(-)
+The series starts by introducing a non-cryptographic grade model
+of the TRNG controller in the Versal family of devices, followed
+by instantiating the model in Xilinx Versal machine.
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 11d4b5cd0c..d2e70643f2 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -134,9 +134,6 @@ struct SysemuCPUOps;
-  *           before the insn which triggers a watchpoint rather than after it.
-  * @gdb_arch_name: Optional callback that returns the architecture name known
-  * to GDB. The caller must free the returned string with g_free.
-- * @gdb_get_dynamic_xml: Callback to return dynamically generated XML for the
-- *   gdb stub. Returns a pointer to the XML contents for the specified XML file
-- *   or NULL if the CPU doesn't have a dynamically generated content for it.
-  * @disas_set_info: Setup architecture specific components of disassembly info
-  * @adjust_watchpoint_address: Perform a target-specific adjustment to an
-  * address before attempting to match it against watchpoints.
-@@ -167,7 +164,6 @@ struct CPUClass {
- 
-     const char *gdb_core_xml_file;
-     const gchar * (*gdb_arch_name)(CPUState *cpu);
--    const char * (*gdb_get_dynamic_xml)(CPUState *cpu, const char *xmlname);
- 
-     void (*disas_set_info)(CPUState *cpu, disassemble_info *info);
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 3702ddaab8..0e4f1d7d0c 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1137,12 +1137,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
- int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- 
--/* Returns the dynamically generated XML for the gdb stub.
-- * Returns a pointer to the XML contents for the specified XML file or NULL
-- * if the XML name doesn't match the predefined one.
-- */
--const char *arm_gdb_get_dynamic_xml(CPUState *cpu, const char *xmlname);
--
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, DumpState *s);
- int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 84cdc3055f..1782b21edb 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1385,7 +1385,6 @@ int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
- #ifndef CONFIG_USER_ONLY
- hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu);
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
- #endif
- int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                                int cpuid, DumpState *s);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 6d9bf6a14e..e7fe11339b 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2392,7 +2392,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->sysemu_ops = &arm_sysemu_ops;
- #endif
-     cc->gdb_arch_name = arm_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = arm_gdb_get_dynamic_xml;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->disas_set_info = arm_disas_set_info;
- 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index aa2c6c1bde..f9774b5547 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -463,24 +463,6 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs)
- #endif
- #endif /* CONFIG_TCG */
- 
--const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--
--    if (strcmp(xmlname, "system-registers.xml") == 0) {
--        return cpu->dyn_sysreg_feature.desc.xml;
--    } else if (strcmp(xmlname, "sve-registers.xml") == 0) {
--        return cpu->dyn_svereg_feature.desc.xml;
--    } else if (strcmp(xmlname, "arm-m-system.xml") == 0) {
--        return cpu->dyn_m_systemreg_feature.desc.xml;
--#ifndef CONFIG_USER_ONLY
--    } else if (strcmp(xmlname, "arm-m-secext.xml") == 0) {
--        return cpu->dyn_m_secextreg_feature.desc.xml;
--#endif
--    }
--    return NULL;
--}
--
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
- {
-     CPUState *cs = CPU(cpu);
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index af43e73af2..d8a992a45d 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7384,9 +7384,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
- #endif
- 
-     cc->gdb_num_core_regs = 71;
--#ifndef CONFIG_USER_ONLY
--    cc->gdb_get_dynamic_xml = ppc_gdb_get_dynamic_xml;
--#endif
- #ifdef USE_APPLE_GDB
-     cc->gdb_read_register = ppc_cpu_gdb_read_register_apple;
-     cc->gdb_write_register = ppc_cpu_gdb_write_register_apple;
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 2392625441..a20d5922dd 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -339,16 +339,6 @@ void ppc_gdb_gen_spr_feature(PowerPCCPU *cpu)
- 
-     gdb_feature_builder_end(&builder);
- }
--
--const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name)
--{
--    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cs);
--
--    if (strcmp(xml_name, "power-spr.xml") == 0) {
--        return pcc->gdb_spr.xml;
--    }
--    return NULL;
--}
- #endif
- 
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 3ee1e6ae03..ace400db1c 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -1427,19 +1427,6 @@ static const gchar *riscv_gdb_arch_name(CPUState *cs)
-     }
- }
- 
--static const char *riscv_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
--{
--    RISCVCPU *cpu = RISCV_CPU(cs);
--
--    if (strcmp(xmlname, "riscv-csr.xml") == 0) {
--        return cpu->dyn_csr_feature.xml;
--    } else if (strcmp(xmlname, "riscv-vector.xml") == 0) {
--        return cpu->dyn_vreg_feature.xml;
--    }
--
--    return NULL;
--}
--
- #ifndef CONFIG_USER_ONLY
- static int64_t riscv_get_arch_id(CPUState *cs)
- {
-@@ -1593,7 +1580,6 @@ static void riscv_cpu_common_class_init(ObjectClass *c, void *data)
-     cc->get_arch_id = riscv_get_arch_id;
- #endif
-     cc->gdb_arch_name = riscv_gdb_arch_name;
--    cc->gdb_get_dynamic_xml = riscv_gdb_get_dynamic_xml;
- 
-     object_class_property_add(c, "mvendorid", "uint32", cpu_get_mvendorid,
-                               cpu_set_mvendorid, NULL, NULL);
+The series ends with a q-test for sanity check of the TRNG model
+in the Xilinx Versal machine.
+
+V3 => V4
+1) Patch #1
+   a) Simplify the data given to g_rand_set_seed_array() as an
+      array of guint32.
+   b) Use qemu_guest_getrandom_nofail() as the entropy source
+      when the device is configured in TRNG (mode 3).
+   c) Allow 0 and (2^32-1) as valid output of the generator
+   d) Add output-related context to VMSTATE.
+2) Patch #3
+   Remove test's assumption of PRNG output != TRNG output.
+
+V2 => V3
+1) Patch #1 Use DEFINE_PROP to define a property with custom action on set
+2) Patch #1 Remove duplicated version-check on writing to CTRL4 register
+3) Patch #2 Defer adding TRNG to machine's device-tree to a future patch
+4) Patch #3 Code style fix: group all local vars definitions together
+
+V1 => V2
+1) Change patch #1 only
+2) Use g_rand_*() PRNG from glib to replace V1's custom PRNG.
+3) Implement ResettableClass for device-reset.
+4) Add device-mode description to commit-message.
+
+Best regards,
+Tong Ho
+
+Tong Ho (3):
+  hw/misc: Introduce AMD/Xilix Versal TRNG device
+  hw/arm: xlnx-versal-virt: Add AMD/Xilinx TRNG device
+  tests/qtest: Introduce tests for AMD/Xilinx Versal TRNG device
+
+ hw/arm/Kconfig                      |   1 +
+ hw/arm/xlnx-versal.c                |  16 +
+ hw/misc/Kconfig                     |   3 +
+ hw/misc/meson.build                 |   3 +
+ hw/misc/xlnx-versal-trng.c          | 727 ++++++++++++++++++++++++++++
+ include/hw/arm/xlnx-versal.h        |   5 +
+ include/hw/misc/xlnx-versal-trng.h  |  58 +++
+ tests/qtest/meson.build             |   2 +-
+ tests/qtest/xlnx-versal-trng-test.c | 486 +++++++++++++++++++
+ 9 files changed, 1300 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/xlnx-versal-trng.c
+ create mode 100644 include/hw/misc/xlnx-versal-trng.h
+ create mode 100644 tests/qtest/xlnx-versal-trng-test.c
+
 -- 
-2.42.0
+2.25.1
+

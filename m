@@ -1,151 +1,114 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4181395ejc;
-        Tue, 17 Oct 2023 13:27:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFUdld7zZCpD7Nm3C0zSR6c7KKx9a1orwX0Heb7QytLt9xq2QSOJ84LElxFC8ydjaveRLQS
-X-Received: by 2002:a05:620a:3950:b0:777:f6ad:783e with SMTP id qs16-20020a05620a395000b00777f6ad783emr3483233qkn.20.1697574468512;
-        Tue, 17 Oct 2023 13:27:48 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1697574468; cv=pass;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4255337ejc;
+        Tue, 17 Oct 2023 16:04:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFdnJHZRry6Bz+avCCp03SWpuLmvzgxYEfaE/7jxjYOGt/dIhgx91R2eLIKYmxOGPcYpPdb
+X-Received: by 2002:ac8:5887:0:b0:415:15bd:94d2 with SMTP id t7-20020ac85887000000b0041515bd94d2mr4426666qta.43.1697583882196;
+        Tue, 17 Oct 2023 16:04:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697583882; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cuo/oRy/+7SK+GpBFoDXClr6hCX4pPI14YcOVFb4jNSSBKLcTzMxJMfksEBL7oZNa6
-         tCmedsSdoc3iJ2UbkQg3NDbXWBnlRfB3hjVPoNMqHyZ8Upxs/LH2wwfsqSn6GRfiL020
-         yfdaEWAKu8JCwKlTzghCC727h/CQjwt90C2YQTARjWK5Hgusa72AKRacklR3H+338yX9
-         a5+T7hHAwauJVDlH0wO/aX+srgcRpc6HT+o/Z205a8W4w9ps3MizoAAQ7i8+0wSVA9Fo
-         r2L6QeogWLaTaNCw/ssd3V53w0KksAdxO0iwlFKDl7y66K0VHFNSeI73TAD7JtKWbZ1v
-         GnYw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Yp2nD/r/qPkyeljPI5TXLcgaurjE0ZFOIL0O3Jq5oyAZ8uiKuiZ/hKTf6HzT3tAmnf
+         Zw4/uSDnuN9Ft8MQ3osUIeHhYoo/sapopt+Z4M1kT+7BOf0jxaW1JpSOkCFm//ucL+1P
+         +dFoKLGGEXn1KnKzp87REnZtNyH6JP/qogt6BwuXpWjxQc1EEMcn3N82sbrreRevfFX6
+         897VFwTS0cLLL17pZuv5szzxjkakONnp4/gGNx822YrTXE6BlqcLNpkFleYInWbUrFAC
+         ItDmO4xX+WX9+4GQnxcloi/+RhVFYg7hssKfp4zwwd8X7rTw1hc+YGu6tI1e851MJRxv
+         OSBA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=HZrLxbN/OfAMSr8G4wLa9Tsy2CGeS/W9nGuxr8fPrIM=;
-        fh=kvjuwtH9giDGfGlPwmo1t0Db25iSxi7YMBDJIv/6/Us=;
-        b=UPGrNu+I4vf0WwP6INfg4ciSb6bXMqLVQ+u0j3lcujA80rFB7iplEXoZOIOe0EmvWG
-         zUngMxL8fJKt9YyHsxaiPJ7FdowEwrENQVcHfdH4aNf8QtkUnf5+3Q7s6bGDYCppFXIS
-         w7O31dC148Jo//mbSJEe0k6tZ8/iPCZoGOVdvHpGX5y+DAYjJXasu+pr2jgbdq79aBAd
-         /AILSH58fqLVL9eI5Rj2qrmL3thV6wNPDOA9/bpF9zPDaAICcpY9BAicbftn03Rtvpvr
-         vI6B3nEmkXgBEfHS05r5jWMld8KfejbWp+K3kyJ+0r8csGeQY1JWb/RSVU1I3Aebc9CZ
-         GwyQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="YJc/cIiS";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=ZtnZX3qq6VUqd48mODDcHeavJ1fpcDwaSYbnpD75Hjw=;
+        fh=5A9rIZi8Z8466MpVipzMSDtnAN6Xw5wyWrNfaUwsYuo=;
+        b=sz/ts/9ryL+2ucJOjDYVdp2h8XdHwibv0GhO7fSSJbspV5ejtJsuK9cHjtbnHsDeHA
+         7dbppbKLFe+UGVygosqbZhHpOkA6JKOLInyGROKmFHB0j0Avy1eRRazbB9BhkFJm0fu6
+         ateXtbfWr16DBykxhgdAxFyhBOdb/S/5opEnUZtYBG7ZejC1tclR15E5H5WjNK3BAipv
+         Cc8UJYm2gm4njLjmZPOOUmO0LuytfggtPdT4wRxn3v+O1ZjltKSUcnY+utDuk08ifXCz
+         g2EsvhaIQ6MBnEa/QyLmUiSnx5l/fi8WufMFR96K2PEIabh/aE7Sywloyqr39vHpYeCK
+         NxTA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=vfadcReX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f22-20020a05620a12f600b0077438d488d2si1578053qkl.405.2023.10.17.13.27.48
+        by mx.google.com with ESMTPS id i5-20020ac85c05000000b00403332e2e31si1772399qti.559.2023.10.17.16.04.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 13:27:48 -0700 (PDT)
+        Tue, 17 Oct 2023 16:04:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b="YJc/cIiS";
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       dkim=pass header.i=@google.com header.s=20230601 header.b=vfadcReX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qsqdR-0007Wp-Jt; Tue, 17 Oct 2023 16:25:49 -0400
+	id 1qst6U-0005uE-KT; Tue, 17 Oct 2023 19:03:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1qspzh-000437-DK; Tue, 17 Oct 2023 15:44:45 -0400
-Received: from mail-bn7nam10on20602.outbound.protection.outlook.com
- ([2a01:111:f400:7e8a::602]
- helo=NAM10-BN7-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1qspzc-0000sF-Bk; Tue, 17 Oct 2023 15:44:45 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=T2CM1pAVozX9SoZyfkTj3PI9qhocqi40jTKBFMGgpi9C79UP7ypLW9XJ9KuR5DkdUhsC10l8zSKbTA8K2gugj5+Enel3dwq1zSSM9gbOEqfdEQ3hTFo31LCzUEw1o5lVZlrhM2KPI6RvmQG9Wlj8jGV+/nl9MnnoDQa7vOMO8PJu4y3uc8UNq5faVBeYkaUBCFRoRv3oQNuCKlObgI/0sK52wavDoDT7pvps5iSOg0vqOTZh8vHuvinjudqmu93itlaMpLjzoaQE37EHa+5WIFvyfLqE+blFHMcMpfAqQ/pwzrILPuJJErT822EN6hUeHe3VaIc5LApSSjd5F/CaYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HZrLxbN/OfAMSr8G4wLa9Tsy2CGeS/W9nGuxr8fPrIM=;
- b=HGtz1v74mqlwdK5ZOn2w2qrcVgpRzrG+J1lzBsy31QkeEhLTOd2NOommFdOW4GdbTxShIi3hL3BuEJXVTOsEWBPmTRvwc18mi3JxQDEvqt5+pyR2Rt2hSron3GZZqn1qDGYa0w+NY/HqFnOQdq48nM3f1j88dT6NtQ/e4xBikM8OxQvXVfK7UNDxxQtSLkrVrXS6/PRC5zZ5I56jJnBC0BlnDL3bR1k/vehDCTu4EYWHb3/XqWgfhxNH1hYX31BsakAyZJVF2oULgI833mNF3VJKKEJO2LRF3KHIMczqMQ0f2hESHEZCtsDccW5ZSGvCMavnXj/UpQjew1nto/9SqQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HZrLxbN/OfAMSr8G4wLa9Tsy2CGeS/W9nGuxr8fPrIM=;
- b=YJc/cIiSwjtUjk/WtVmI7UMPGQh+aSAfC9lHmcOfG9jQh1KOHZJXE56PJKTNyQkfIx8hHgyWNYItPihgVg1S+VoJQKF5tOHjDcNsUXJ0s7AYZ+eu/zhh15dltkCsQ1ROv9mdLe6Rd9NlSBESh1IWxpQ0X5jj3zWUwCNOPUHzwz4=
-Received: from DM6PR03CA0075.namprd03.prod.outlook.com (2603:10b6:5:333::8) by
- IA1PR12MB6091.namprd12.prod.outlook.com (2603:10b6:208:3ed::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6886.35; Tue, 17 Oct
- 2023 19:44:32 +0000
-Received: from DS1PEPF0001709D.namprd05.prod.outlook.com
- (2603:10b6:5:333:cafe::d) by DM6PR03CA0075.outlook.office365.com
- (2603:10b6:5:333::8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6886.35 via Frontend
- Transport; Tue, 17 Oct 2023 19:44:32 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- DS1PEPF0001709D.mail.protection.outlook.com (10.167.18.107) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6907.22 via Frontend Transport; Tue, 17 Oct 2023 19:44:32 +0000
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Tue, 17 Oct
- 2023 14:44:31 -0500
-Received: from luc-work-vm.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.27 via Frontend
- Transport; Tue, 17 Oct 2023 14:44:30 -0500
-From: Luc Michel <luc.michel@amd.com>
-To: <qemu-devel@nongnu.org>
-CC: Luc Michel <luc.michel@amd.com>, <qemu-arm@nongnu.org>, "Edgar E .
- Iglesias" <edgar.iglesias@gmail.com>, Alistair Francis
- <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>, "Jason
- Wang" <jasowang@redhat.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Francisco Iglesias <francisco.iglesias@amd.com>,
- Frederic Konrad <frederic.konrad@amd.com>, Sai Pavan Boddu
- <sai.pavan.boddu@amd.com>
-Subject: [PATCH 00/11] Various updates for the Cadence GEM model
-Date: Tue, 17 Oct 2023 21:44:11 +0200
-Message-ID: <20231017194422.4124691-1-luc.michel@amd.com>
-X-Mailer: git-send-email 2.39.2
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS1PEPF0001709D:EE_|IA1PR12MB6091:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6b1c04cb-4930-41d8-1ce2-08dbcf497c05
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: JQUS5S1MGI6k7ZT8royauEmBc++w/UfmaqnVyoPieOoIQgY2N1gM8R3N/ArSYcxw9g4AZ/yrjp5HOD1DdZwXg5XjP9wGrlw0OxovFqL+R6E0g4hJvbxqcvKuqls6dXlsc62cp40aYNcYkfhh3IeMwiAh9rC/LlLIJ+eUdemwvBspeDgj4DZ23OtIir4HeW/iwkyxNqs3hpHeYxu5JK8L8j95Nbs1qWBSwXUT3yCsZ+d/l8pT/X8vZQOZ+te3wCi14B2PeojYVb1sQ0o7Y9DuqvGq1m7GWpmIXeRNFMFwui/ThP9+rGhwjaGkhPCNGRb/rxCk0/fpKHjgnWH4RLVCl80h71xi+W8i0b/NlrA3xQXhlQ2FgjlRT5YA4dCMH0Luoxpr5QliwkKyFtse9iRB7nLv2K2A0FqMuw2l0D8n9ocf4J7m1I2bpP7k7YEWAGdrJFIKPSqBOuJtolrnwWkseEbl9K7hUfC5HyfmQRo4zfYuMvAzaV22FQk4bqnEGXu8LEys7RiVnrGmAVQKQ1YDlMkDfb+yn0KPuFpCZesV5BWkIM85BShnMElyag84QCmf4mdOFqoNNQDDDKjY4Zs5bWhvEGLGXGyR5wHg7ia2XMPAzxMvtFAGv0Izg6wWaCfZTWP3X+EZ0hol4U/YndNa+XQjXMyWwyTgTuTOFbJc1MKsZ8gPBrHCZlsX2718vBeEYBcildHoOT8pzL1FKGzp7c0o66uG6PORou4YjvGnUzeLx9LX94GPBrQ6pfpgWPxWwWy60i4tiyqOjNpcnzj9kA==
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(346002)(39860400002)(136003)(396003)(376002)(230922051799003)(82310400011)(1800799009)(64100799003)(451199024)(186009)(36840700001)(40470700004)(46966006)(41300700001)(81166007)(40480700001)(356005)(86362001)(2906002)(478600001)(36756003)(54906003)(70206006)(70586007)(6916009)(36860700001)(6666004)(316002)(8936002)(8676002)(40460700003)(44832011)(26005)(1076003)(426003)(82740400003)(336012)(2616005)(83380400001)(4326008)(47076005)(5660300002)(36900700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Oct 2023 19:44:32.2547 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6b1c04cb-4930-41d8-1ce2-08dbcf497c05
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: DS1PEPF0001709D.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6091
-Received-SPF: softfail client-ip=2a01:111:f400:7e8a::602;
- envelope-from=Luc.Michel@amd.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ (Exim 4.90_1) (envelope-from
+ <32BIvZQwKCOkYLMTSPdePQLYRZZRWP.NZXbPXf-LcXYZYRYf.ZcR@flex--nabihestefan.bounces.google.com>)
+ id 1qst6T-0005tZ-57
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 19:03:57 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <32BIvZQwKCOkYLMTSPdePQLYRZZRWP.NZXbPXf-LcXYZYRYf.ZcR@flex--nabihestefan.bounces.google.com>)
+ id 1qst6Q-0002I1-KB
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 19:03:56 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-d9a39444700so6143030276.0
+ for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 16:03:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1697583832; x=1698188632; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=ZtnZX3qq6VUqd48mODDcHeavJ1fpcDwaSYbnpD75Hjw=;
+ b=vfadcReX9k5MH8ecjANc/H/A8zXpvEAchLiGqMSzCrwacCsTDoRXL9avk6u2HeSqAX
+ yqKcAlV0/KsLT63DQ578TMnpVRcSqLXoAm4WhInxwrHZWt07ED9NFbl9rFz+O7e/LEBM
+ nExtg3DbJZkulAWGhe2GTryA3MCi6iHZamBlejTO3p/Gkz+zw5/yp9iHvC9b1lv18l0l
+ M1xErRpUvsqmLSwAciad+FJijG4bW2zs74JwYUr9NnfvDlFIyZmrDYfondKHaxQESBNu
+ fd84vwnYHW8Lq6HNrZdA3KmeMrcW+Eyu9P9H6Z1cWtXmNMKs14Ys6BglzjGeMahuqpzz
+ 5B+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697583832; x=1698188632;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ZtnZX3qq6VUqd48mODDcHeavJ1fpcDwaSYbnpD75Hjw=;
+ b=tvow3QdwNhIsQrwpNxYdb0S11gPGDewST9mpTYApUmnD30BDYjjk4fjszBqzUH2xQg
+ WapyoXWzkWuEIVRavHxqr4YpLMR+RwOcii5fbv2ZtnYXbvaE0uNr/fNGYHIxeild0/IX
+ MGD8TXC336w/IYTMx8qbena5Q72hMhfriOhe33pzCzpzyoVQ/mDz6LSESkn8kHLpA2r2
+ nBli9T7t+v2/aoLY9ekqOi/CFHi2NI7fEIp+CQRPjw122zd2tXEzteHYC6lTuY9kMU/Z
+ p2oiMWY+ikK6FnRXjktCL1bmFX3vHIftd0VNWrZ86EoFcK2Xk1zZOQf9aCWhMS3j96eR
+ JpsA==
+X-Gm-Message-State: AOJu0Yw0Ou9sQlT+rVeZNJ6Uh2JchmnbYSoR6zYua2piIXoLPkk7SUId
+ M5nPO7Is7joAUyk4MEfbDd+TBQGhLFRMn2MaFiA=
+X-Received: from nabihestefan.c.googlers.com
+ ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
+ (user=nabihestefan job=sendgmr) by 2002:a05:6902:b16:b0:d9a:fd4d:d536 with
+ SMTP id ch22-20020a0569020b1600b00d9afd4dd536mr83747ybb.3.1697583832692; Tue,
+ 17 Oct 2023 16:03:52 -0700 (PDT)
+Date: Tue, 17 Oct 2023 23:03:31 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.42.0.655.g421f12c284-goog
+Message-ID: <20231017230342.311227-1-nabihestefan@google.com>
+Subject: [PATCH v3 00/11] Implementation of NPI Mailbox and GMAC Networking
+ Module
+From: Nabih Estefan <nabihestefan@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
+ wuhaotsh@google.com, jasonwang@redhat.com, avi.fishman@nuvoton.com, 
+ Nabih Estefan Diaz <nabihestefan@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=32BIvZQwKCOkYLMTSPdePQLYRZZRWP.NZXbPXf-LcXYZYRYf.ZcR@flex--nabihestefan.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 17 Oct 2023 16:25:46 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -159,44 +122,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eYYvew7L3pZZ
+X-TUID: JJh6V5BtVJBz
 
-Hi,
+From: Nabih Estefan Diaz <nabihestefan@google.com>
 
-This series brings small changes to the Cadence GEM Ethernet model.
-There is (almost) no behaviour change.
+[Changes since v2]
+Fixed bugs related to the RC functionality of the GMAC. Added and
+squashed patches related to that.
+[Changes since v1]
+Fixed some errors in formatting.
+Fixed a merge error that I didn't see in v1.
+Removed Nuvoton 8xx references since that is a separate patch set.
 
-Patches 1 to 9 replace handcrafted defines with the use of REG32 and
-FIELDS macros for register and fields declarations.
+[Original Cover]
+Creates NPI Mailbox Module with data verification for read and write (internal and external),
+wiring to the Nuvoton SoC, and QTests.
 
-Patch 10 fixes PHY accesses so that they are done only on a write to the
-PHYMNTNC register (as the real hardware does).
+Also creates the GMAC Networking Module. Implements read and write functionalities with cooresponding descriptors
+and registers. Also includes QTests for the different functionalities.
 
-Patch 11 fixes a potential bug on hosts where unsigned would not be 32
-bits.
+Hao Wu (5):
+  hw/misc: Add Nuvoton's PCI Mailbox Module
+  hw/arm: Add PCI mailbox module to Nuvoton SoC
+  hw/misc: Add qtest for NPCM7xx PCI Mailbox
+  hw/net: Add NPCMXXX GMAC device
+  hw/arm: Add GMAC devices to NPCM7XX SoC
 
-Thanks,
+Nabih Estefan Diaz (6):
+  \tests/qtest: Creating qtest for GMAC Module
+  include/hw/net: Implemented Classes and Masks for GMAC Descriptors
+  hw/net: General GMAC Implementation
+  hw/net: GMAC Rx Implementation
+  hw/net: GMAC Tx Implementation
+  tests/qtest: Adding PCS Module test to GMAC Qtest
+
+ docs/system/arm/nuvoton.rst         |   2 +
+ hw/arm/npcm7xx.c                    |  53 +-
+ hw/misc/meson.build                 |   1 +
+ hw/misc/npcm7xx_pci_mbox.c          | 324 ++++++++++
+ hw/misc/trace-events                |   5 +
+ hw/net/meson.build                  |   2 +-
+ hw/net/npcm_gmac.c                  | 942 ++++++++++++++++++++++++++++
+ hw/net/trace-events                 |  20 +
+ include/hw/arm/npcm7xx.h            |   4 +
+ include/hw/misc/npcm7xx_pci_mbox.h  |  81 +++
+ include/hw/net/npcm_gmac.h          | 340 ++++++++++
+ tests/qtest/meson.build             |  12 +-
+ tests/qtest/npcm7xx_pci_mbox-test.c | 238 +++++++
+ tests/qtest/npcm_gmac-test.c        | 341 ++++++++++
+ 14 files changed, 2356 insertions(+), 9 deletions(-)
+ create mode 100644 hw/misc/npcm7xx_pci_mbox.c
+ create mode 100644 hw/net/npcm_gmac.c
+ create mode 100644 include/hw/misc/npcm7xx_pci_mbox.h
+ create mode 100644 include/hw/net/npcm_gmac.h
+ create mode 100644 tests/qtest/npcm7xx_pci_mbox-test.c
+ create mode 100644 tests/qtest/npcm_gmac-test.c
 
 -- 
-Luc
-
-Luc Michel (11):
-  hw/net/cadence_gem: use REG32 macro for register definitions
-  hw/net/cadence_gem: use FIELD for screening registers
-  hw/net/cadence_gem: use FIELD to describe NWCTRL register fields
-  hw/net/cadence_gem: use FIELD to describe NWCFG register fields
-  hw/net/cadence_gem: use FIELD to describe DMACFG register fields
-  hw/net/cadence_gem: use FIELD to describe [TX|RX]STATUS register
-    fields
-  hw/net/cadence_gem: use FIELD to describe IRQ register fields
-  hw/net/cadence_gem: use FIELD to describe DESCONF6 register fields
-  hw/net/cadence_gem: use FIELD to describe PHYMNTNC register fields
-  hw/net/cadence_gem: perform PHY access on write only
-  hw/net/cadence_gem: enforce 32 bits variable size for CRC
-
- hw/net/cadence_gem.c | 910 ++++++++++++++++++++++++-------------------
- 1 file changed, 510 insertions(+), 400 deletions(-)
-
--- 
-2.39.2
+2.42.0.655.g421f12c284-goog
 

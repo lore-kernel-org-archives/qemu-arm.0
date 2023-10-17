@@ -1,110 +1,180 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3932816ejc;
-        Tue, 17 Oct 2023 06:48:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEJj8ts9o6RzPbZF+hX1tAAjCBSBFYZPCnJOTvwlXQrIpzThfo2OqkzKoAEII06NrVZDf5r
-X-Received: by 2002:a0c:fbc4:0:b0:65a:f7b2:2057 with SMTP id n4-20020a0cfbc4000000b0065af7b22057mr2319639qvp.24.1697550482670;
-        Tue, 17 Oct 2023 06:48:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697550482; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3934956ejc;
+        Tue, 17 Oct 2023 06:52:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGGCyVrADNRxUnh8jv5n07CdB8TCMH1Odn1DJa58NPy1KRO25VMAWTlwo36eQrInG9HAOoC
+X-Received: by 2002:a9d:6b17:0:b0:6c0:79ed:be35 with SMTP id g23-20020a9d6b17000000b006c079edbe35mr2301505otp.24.1697550720739;
+        Tue, 17 Oct 2023 06:52:00 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1697550720; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Y1uzeOg2HNYHaJODh2KIpFfJhNEQ987YjJ7v1NhuhbB97NqZzlObhhcvhxeZSMmfVA
-         +Xg9vLKlPW5y+hdYADBUNMGxjs+9OYVzdqzCGQM7hvaFZWIcJ3cqB8kdnU42iScOvk3u
-         dL8wmR8hjsJHA7SRNRpkN4qy6HOHgN/4izMbR7NMuCzo57DcAO8MyxCCejfgL2DnbDEF
-         AYLfv/AdshQZ2O2xnY1WkNQQni+lM+0t/5wWwgWvkj94u9CA2h3Nhzn/j1LAUMvq0/r6
-         LdAgYb+XS+bVsf43py3u7xuP/O6RH+P9bqSVN2EJcvDLvZ2GQLqavdWSqX2PdymcLo7V
-         Jicw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=D1gmM8Y46p39HDpqZWhE61DHcJ2EyProbVBJ44AbT/RUGsU0mjEMxy1pAi8aRnkZwD
+         ttl1dbbrKD5eJvQHiVl/3BKHcFv3QgrVx6O5r3+1IJX+0pG6stSww7Ryw+iOrnZkvI/R
+         c+kV6qXAkTsfsFVEDqroymlWOA4lxjl7eNJTlJ9yfxpSQOWn3yKm+w97LMJc9aeeeIDw
+         ZQg1dBalVkmIC8x5nvAQov02t8GgIxse9LHiIVcv93pstJvVs0ISXHdZgeMDOroNhdBx
+         95h4EESJBIo7a042UtzN1sX5avwqElx1wB2tkyIL6B2ffoKqdBDVm2R9jGANlPmiHwzb
+         e6Ng==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=kT6tbBlWVaFEs6BExuSkBQhN71HDEFU/UCl0nf/kFuw=;
-        fh=Ih5WSXUNOM7tdVEin/QM8IzWzshQakt2hPWKv7EUIh8=;
-        b=OqWLmXl3VH9KeRpikC2ktpnvlx3th7fVTtVZvmxQrGGnLpBUHqj0NmJPKucIkXrG+n
-         jk7DxolVNjTFWuVm0usQZAseYHfMeJ0nLgRiirr4MFm6RNRtxZjEWYp7UBNFm1OKxI8i
-         wRqjIhatQXkaXPDQNoil3pAqqg9zLB8mvoP2pTeg2x4KPp/XsaKD1piioBWmZD/NFcH8
-         0ECt+0qwwYh8xKW4RK1JpUtJMSv+9uRqGE+6tyqp+W7MmVG9kaak0nz7yfoT1izkmicD
-         pUaS2tyQ2EPzS/0WxN2K8ompsGSWWInCUvV6oeL8zPxcu0UxXDfxgNe0ZbkPyQfircny
-         vJBA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GSDWUIET;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=cu+th3V2yEsN8+2Apt0NdJNT4xylyvt7isfTWA1Mc1E=;
+        fh=B1j8c5i52dzSlSP/tCsmpY4SrX+Oct80AcpVUavgD3w=;
+        b=VUn0g7gLCg/mkFaBxdZNBfFz0buQJfncnb/ZEJPi+TNk3oXDIlWjTlWrh0Q7ngq/p+
+         bn2yMdfkrxvEnQjECgRlaq+cNMKyevzyjs/gl5a+nHRssKdHeZW2EdoLH4j71xl1dO9W
+         65iidLcjmEQcYFot21iNNDGR1IYKNcH+ysX93aI1gkVKC5XWPIBgtIR2vRwEMBs84Zyg
+         x5S14/Mv8F/aD1lnLuXAGSCTvEJLesbHhFkcIm0a1HFW26Gzx1vFMcKmFZAzF1rh4yi0
+         +32EbRVT9+YhociDBe1ENDIXMmMcx8f0+hqobAh8qI9rVBUoBjUnJttQWIHHg2eS+0Qt
+         AIZA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=jEXXcT+5;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cp13-20020ad44aed000000b00655dd38f662si992855qvb.15.2023.10.17.06.48.02
+        by mx.google.com with ESMTPS id w14-20020a05622a190e00b0041984a44b47si1195331qtc.26.2023.10.17.06.52.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 06:48:02 -0700 (PDT)
+        Tue, 17 Oct 2023 06:52:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GSDWUIET;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=jEXXcT+5;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qskQ9-0005mL-4p; Tue, 17 Oct 2023 09:47:42 -0400
+	id 1qskUB-0000Xo-Gu; Tue, 17 Oct 2023 09:51:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qskQ7-0005lz-KO
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 09:47:39 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qskQ5-0005Fb-SP
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 09:47:39 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-53e08b60febso8823376a12.1
- for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 06:47:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697550456; x=1698155256; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=kT6tbBlWVaFEs6BExuSkBQhN71HDEFU/UCl0nf/kFuw=;
- b=GSDWUIETNJEIlXIn0G3PDf94BsVyo8S50k2cIGLRbnM/ixmQoji3pt2O9q8uAwl5j4
- 7yNXAz6e3/0eXgQCrD3Da9a+As/mznAc30MlGVrH4ar90ut/lFyU8gHZyiDy/KWFNgMG
- fmz2KXR7/am9A2UUPPQMoIBlnpU+j0YNcui8Bv5lIeHA/iNioFGdwAgQvsD5lx9VFUrR
- wipo6QfZzoJljUtj2Nz1Dijvzo2v6DknYXfH5Eyt4q9pOOkJy4S3BwFihmUWK8Lc5W5q
- JjE+ehiGXpJGXta7+phuzQsL4efWjy+PVkuNPBJIETA3nIM5gTgmM0sUv+wMLBONZx9K
- qy/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697550456; x=1698155256;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=kT6tbBlWVaFEs6BExuSkBQhN71HDEFU/UCl0nf/kFuw=;
- b=u/9+YF76NJcHdw/Y6fJA6deiOf6nFVXB0iNctNa447GQTfBUiSGMPH4vfAQEpVBLoE
- lYRYCwyo0b+WVQ8gX0z3F76Oitd1AzFdb+BKE8LVloAHV3i4kj0e8d88/TNU/fa+7yKS
- g/N3xAMNx3fMiBaQnhGAAovLOHQ5zF9C9cMg4v10gJ2v6/l1bl3AbFzEaT5UuGw0/rV+
- L1Gk2NellK6jzeEfHKQyyeZ5gocVy039tzONgQUHrTAiWmp99dU1u1noAqi4Vb22X6ys
- g7SWitNuEHKmrYm2o4wXqu127VXSiffqqIuEQD+osPxhUPta7NzrHGlChF7EjV3hsXKJ
- Q7ow==
-X-Gm-Message-State: AOJu0Ywnb1psXcgWoaJzY+MouGcQR8Ns5VMW48uKFK82UlkuZJ+oDD52
- rvOukmWwTEWMd9S6cSvoOHqYWfXyWGBFNWLgk+R8Vg==
-X-Received: by 2002:a05:6402:35c5:b0:53e:b8e2:1d58 with SMTP id
- z5-20020a05640235c500b0053eb8e21d58mr2055604edc.13.1697550456212; Tue, 17 Oct
- 2023 06:47:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1qskU6-0000Sb-9d; Tue, 17 Oct 2023 09:51:46 -0400
+Received: from mail-dm6nam12on20604.outbound.protection.outlook.com
+ ([2a01:111:f400:fe59::604]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ankita@nvidia.com>)
+ id 1qskTz-0006CJ-0g; Tue, 17 Oct 2023 09:51:46 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=oAp9lqz5KhOO5kW9ntbHdMq9cqMfXtMVtWGiRXVKHxtBo0slYKNm7TMF/6L1bHyqLrfBBc7bCFKenJGipgupoTeHs9LDduVPK8N8djnHWfKiBMsJt2ZrOxvWIN0i/HNkhKlLzOpBEbbab0xvR6b2DP20pdDcUwqsPQKaNYWsgCoXfmyAEkBYxz7JR8RtZE9/qTZA97vLo4NMUqAaYzT4/MXYzOBIfRopgpBwP0v0fwbdxmYGkSYlE8xMMkOmtFvd3Lx18/VQLTjMO4AyXsZmLpzETTCFv95vt7LJDX7SVlbBB4fvz+maHw2o5yYAQ+vPQDAPEr0xqpPi4GKHXFx1jQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=cu+th3V2yEsN8+2Apt0NdJNT4xylyvt7isfTWA1Mc1E=;
+ b=DVh3trQHaU/TWjV1Ykk67ngkeRkQzYb6Hwy4mWupqYfkOEjMsD8TATa6U2Xx484DxD4gcKW2Ue4iDZ/iarhxcAFb8m0r+78mymwNeE868aM+zHo6PZgYD6OwVCL55+GgYR8aGuwKO/++4fQ32rdMXWT7NlKKdkd6PYVfYroVkApILvo0j1S6WG1/0f5f85WAA44+Ji2PkMLI7Yr33sz8zKKgD8eD0q/ei0TQKN9z5e/kMKP4ej8YZM8AnPNzWwiZwsOcjcwj/rIZEtrkvJutLTGsmlQZhoNJO4tFD5quAC8HEdbRJ7e4WDlQdeqwJBpSClenabowrdAi/Ow+qrg70g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=cu+th3V2yEsN8+2Apt0NdJNT4xylyvt7isfTWA1Mc1E=;
+ b=jEXXcT+5DwQnwIrPW7rd3jU9WiNj2frTqLQJElEVz5uDsYfoNYuLzZQNBAYi5llr4ZBUuIuKajJiEgmMeOIAPHBf6rDiGYPhWv6PSg6okIjnAyWiLkMK/POavf332sowy73edPIRQXVwWkODNfAzgCr04O9O3PRxijFf26I3QNGSwE25K8Z+BLZk1Z4GrwFDMS8HQPdYCO+unC1L/5YIGVY/TYgtOx98xsJInbUDuuPQgeBipRj30oFjhfUR3Gp8PMy59Cl8uv7pkqIO/TU7HD8rHkLGrBJJvELKa0+JAbBXzUT/8jmKLlcNRXZbf6HpiX2qUL3CXVvl3++4eElhnA==
+Received: from BY5PR12MB3763.namprd12.prod.outlook.com (2603:10b6:a03:1a8::24)
+ by SA3PR12MB9129.namprd12.prod.outlook.com (2603:10b6:806:397::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6863.45; Tue, 17 Oct
+ 2023 13:51:23 +0000
+Received: from BY5PR12MB3763.namprd12.prod.outlook.com
+ ([fe80::8df1:6ad8:23c2:fb65]) by BY5PR12MB3763.namprd12.prod.outlook.com
+ ([fe80::8df1:6ad8:23c2:fb65%7]) with mapi id 15.20.6907.021; Tue, 17 Oct 2023
+ 13:51:23 +0000
+From: Ankit Agrawal <ankita@nvidia.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "clg@redhat.com" <clg@redhat.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "ani@anisinha.ca"
+ <ani@anisinha.ca>, "berrange@redhat.com" <berrange@redhat.com>,
+ "eduardo@habkost.net" <eduardo@habkost.net>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "eblake@redhat.com"
+ <eblake@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "david@redhat.com" <david@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
+ "Jonathan.Cameron@huawei.com" <Jonathan.Cameron@huawei.com>, Aniket Agashe
+ <aniketa@nvidia.com>, Neo Jia <cjia@nvidia.com>, Kirti Wankhede
+ <kwankhede@nvidia.com>, "Tarun Gupta (SW-GPU)" <targupta@nvidia.com>, Vikram
+ Sethi <vsethi@nvidia.com>, Andy Currid <acurrid@nvidia.com>, Dheeraj Nigam
+ <dnigam@nvidia.com>, Uday Dhoke <udhoke@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v2 2/3] hw/acpi: Implement the SRAT GI affinity structure
+Thread-Topic: [PATCH v2 2/3] hw/acpi: Implement the SRAT GI affinity structure
+Thread-Index: AQHZ+VtrWTk70ZdgMEa2ZZ1iZJjt1rBB+QIAgAwUWXE=
+Date: Tue, 17 Oct 2023 13:51:22 +0000
+Message-ID: <BY5PR12MB37631C627C940EC010D0CAA7B0D6A@BY5PR12MB3763.namprd12.prod.outlook.com>
+References: <20231007201740.30335-1-ankita@nvidia.com>
+ <20231007201740.30335-3-ankita@nvidia.com>
+ <20231009151626.28910a90.alex.williamson@redhat.com>
+In-Reply-To: <20231009151626.28910a90.alex.williamson@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BY5PR12MB3763:EE_|SA3PR12MB9129:EE_
+x-ms-office365-filtering-correlation-id: 7d85878f-8de3-48dc-1369-08dbcf182627
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: X4qpl6015U1dpemUO7TqqXeo34O8yZeZCXBpmAvBQFHv2zC+mCLjMIesptqrE9GBLK0afIcr/HVV7yPvl+trbDkrOVZbYraA91eJxTHUwOSP/cILebdPvo2o6AdR5hu9WEfmhGxPQkxCEP/LAIVxxGUXraI8Ebg6ceEkFsl3E2J3l785EHwGaJ8+PGL8/VmItCSbjg1xc8iE6tPxOqU7cWXvQBJMyOHsyTHfgXixmzZyjIrhJqBHUR3VmAcCUrBves/WeErISkueQs7S5/RV9vCt4xxP/pmKG5rpArwQeraYS7nWyCnvfXuGih9+YAaPbVEyBuCjXMs7OK3f8fA22XlwdqgK+54QnXBn38dW47QwcjLX1oGHNRF00Mo6YOlnHdywezBFiVMTNwd4rIjvBGki1+wRHP9q36Ulzi8iop2UfzDMmS+ghA8R0OLrq5169SKBqqabE35+wzPEjX4wAQWziuzGa8VCUjNpGirC64ExrZNAI9OMrwV4e4CcCcQdJstA6ba5s9wbDTXyJX32T19985BlOsgciH/F0CVSd1Ynnk78hvM2b5knTd5rD//e6MMnwsuRl3DOMNtJxGHfzNtxm1L0+n/x/aTRqwbo92MOWUl4yzcfo7+3xD81YgAp
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR12MB3763.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376002)(136003)(346002)(39860400002)(396003)(366004)(230922051799003)(64100799003)(451199024)(1800799009)(186009)(8936002)(55016003)(7416002)(66446008)(6506007)(7696005)(2906002)(71200400001)(478600001)(8676002)(4326008)(52536014)(91956017)(5660300002)(76116006)(66946007)(54906003)(66476007)(316002)(66556008)(64756008)(6916009)(41300700001)(33656002)(26005)(9686003)(122000001)(38100700002)(86362001)(38070700005);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?BRvPkEo1fkWIAe8YIqWipa80uKmiKIBueYuTayjdgXUFS4vZ9iKwAEw61e?=
+ =?iso-8859-1?Q?KZLlAiFYk5mZzRgYXEC1g6vwodMJSoi5G0eVR2VWeUB25gkzqfKa9CBKWY?=
+ =?iso-8859-1?Q?iTlIFqHvS9AVWbPknx0/YrgZHNVrhqWKKLPbJZH2Se0ER1Z1JmAFhDrPWG?=
+ =?iso-8859-1?Q?czV9i1T5VL8phCOs6glfyqD7HHLtTnofYyEKeb6KK2M8av1SUKvGFWsIZ4?=
+ =?iso-8859-1?Q?RcqPdu9KuwR0I+zqMDQRvBa5VCSu5s9g5fw0JXKSlBfhgxgR7bMYG7dbrh?=
+ =?iso-8859-1?Q?peOhkBrq26faVE4rcQPwBzXH/OALu74R2RFXMY/hQCsUC82ks+U19Vibsp?=
+ =?iso-8859-1?Q?K+MxYVRgwphM02dg4flcRVCdLQS7ylNNIHfEuZTskcR2la/xYnuJdz5VCW?=
+ =?iso-8859-1?Q?Qbe0IAuq75GnRWmstcMZ0rY8ql5Sj2sHVL7CcT3WSiFBo60bGX1NTr9lvz?=
+ =?iso-8859-1?Q?nmOtYmcpYwCBndxlxrCuXv8jR36qXfvBpiQcfawTY6sIXBG0ENpPvmnOkW?=
+ =?iso-8859-1?Q?wKV8jOyaN1MUI0ok1dzjFJ3KQfm3YHnD/NW5Bce2jQIv+hpF2GRSLTQL0X?=
+ =?iso-8859-1?Q?+/umY81dqSyeTTsRYLHm+eRxU6z2w1RnK/C4jBxJ7I1Et86wBaQXbIrSa8?=
+ =?iso-8859-1?Q?Uydu/rjKqtuZ6C4jb2oCEHCDrfEPAAyaoCReTncHwbsJcVXkfVYq6LVOYF?=
+ =?iso-8859-1?Q?OxnwKEKcAwPoi5ejtbiagqycQzZKo8m/IB3uEbC1QqI52LZLtSwS1qKDa6?=
+ =?iso-8859-1?Q?yvXyV+i5Zg8myCc5ylTbaLpzoYTcBrNYn1AjSYPW59teGH3Sn0KZJ4XNHH?=
+ =?iso-8859-1?Q?L3joLEivm6ZQfucqKw7OdkVB4YT2Ca1kctP+soTIogiVPxsNl7xxBZN6v+?=
+ =?iso-8859-1?Q?hF0mzhp7jU/7TD5xCinrjiXRm0yzZuoYmugVcfuD/b3n2S2LN31NZUY3y8?=
+ =?iso-8859-1?Q?+zvT0tVfEGngFzcPsn8f5xiH4OnU+8R7mbW9XWR24/BskyQDuE8xG7u+DT?=
+ =?iso-8859-1?Q?xTLMZGFqLInAFbv4svUpJIpN4MXbjfUEYGJ2KgKb/MjZVL4ceOlfuZOdRS?=
+ =?iso-8859-1?Q?OtXxkewbfrmF8eJSCFXqXRoKUTg6dSg3Wp2MNNrQ3uTsqGZFy+Ee4jDuhw?=
+ =?iso-8859-1?Q?Y6m/LnUmlGByY6s6b5m3oO1+YqGRGgvOtVW548s9sRv6ybkkfquQ8q+VRW?=
+ =?iso-8859-1?Q?wptjEKO3jF6GgF2qKbJJ0qvO9f+USEYXggespfhnnn7tBf3hzdM+kCtxcO?=
+ =?iso-8859-1?Q?9zFuhowfrfR5NMF9PeLzu5ikOHzAyUYxLBLu//l30wLiFRieKSYx4Z1Hu6?=
+ =?iso-8859-1?Q?ui3TtkPv7d32jfy0ra+tkIpLK7fKt+wgcMAh+VMLATpfyQB1jXW9WrktQB?=
+ =?iso-8859-1?Q?Ak7EO6A3b3ryg/UcFmC+gfMPVYmDv+cZOAjgVhHoOjeG2CAhS25bEDwBTb?=
+ =?iso-8859-1?Q?eaZKT6kqi6pnwE4ZGun3+ZbpZ5oVWPZK8god5q6wZ5+iBF2cFxuy2cOUeJ?=
+ =?iso-8859-1?Q?ghz2iYD+jfGphvORAew4zH37bplO+JxXX1sM+BAI1LubyicnmIXALy5ym8?=
+ =?iso-8859-1?Q?ZLIMW8ViXScWYSbjBD3YX6I6ZUCEnEEw2dJw1N36J70RkFjkV7soE/7Gpy?=
+ =?iso-8859-1?Q?xJYHE85oD/7Ic=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-References: <20231004142746.350225-1-tong.ho@amd.com>
- <20231004142746.350225-4-tong.ho@amd.com>
-In-Reply-To: <20231004142746.350225-4-tong.ho@amd.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Oct 2023 14:47:25 +0100
-Message-ID: <CAFEAcA-s61X-YAc6Fx27HWAdoGEWt3C9dRa-ncNUaMb5RPwxYw@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] tests/qtest: Introduce tests for AMD/Xilinx Versal
- TRNG device
-To: Tong Ho <tong.ho@amd.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, alistair@alistair23.me, 
- edgar.iglesias@gmail.com, frasse.iglesias@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR12MB3763.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7d85878f-8de3-48dc-1369-08dbcf182627
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Oct 2023 13:51:22.8802 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: l9IR1oRXInpcDzLNZmyA0tsbjeeiKT1CSMYYIoJt6fqD3yiJ+pbkbaxl0um3cCezj2HXHyxtUHGk9rpYHryCjg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB9129
+Received-SPF: softfail client-ip=2a01:111:f400:fe59::604;
+ envelope-from=ankita@nvidia.com;
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,74 +189,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 765unamT17xf
+X-TUID: TNSoAuaOHJZY
 
-On Wed, 4 Oct 2023 at 15:27, Tong Ho <tong.ho@amd.com> wrote:
->
-> Signed-off-by: Tong Ho <tong.ho@amd.com>
-> ---
->  tests/qtest/meson.build             |   2 +-
->  tests/qtest/xlnx-versal-trng-test.c | 490 ++++++++++++++++++++++++++++
->  2 files changed, 491 insertions(+), 1 deletion(-)
->  create mode 100644 tests/qtest/xlnx-versal-trng-test.c
->
-
-
-
-> +static void trng_test_autogen(void)
-> +{
-> +    const size_t cnt = 512 / 32;
-> +    uint32_t rng[cnt], prng[cnt];
-> +    size_t n;
-> +
-> +    trng_reset();
-> +
-> +    /* PRNG run #1 */
-> +    trng_reseed(prng_seed);
-> +    trng_generate(true);
-> +
-> +    n = trng_collect(prng, cnt);
-> +    if (n != cnt) {
-> +        FAILED("PRNG_1 Auto-gen test failed: expected = %u, got = %u",
-> +               (unsigned)cnt, (unsigned)n);
-> +    }
-> +
-> +    /* TRNG, should not match PRNG */
-> +    trng_reseed(NULL);
-> +    trng_generate(true);
-> +
-> +    n = trng_collect(rng, cnt);
-> +    if (n != cnt) {
-> +        FAILED("TRNG Auto-gen test failed: expected = %u, got = %u",
-> +               (unsigned)cnt, (unsigned)n);
-> +    }
-> +
-> +    if (!memcmp(rng, prng, sizeof(rng))) {
-> +        FAILED("TRNG test failed: matching PRNG");
-> +    }
-
-Why can't the TRNG output ever match the PRNG output ?
-It's random numbers, so you might get (un)lucky.
-This sort of check results in flaky CI, because very very
-occasionally the RNG will give you output that results in
-a test failure.
-
-> +
-> +    /* PRNG #2: should matches run #1 */
-> +    trng_reseed(prng_seed);
-> +    trng_generate(true);
-> +
-> +    n = trng_collect(rng, cnt);
-> +    if (n != cnt) {
-> +        FAILED("PRNG_2 Auto-gen test failed: expected = %u, got = %u",
-> +               (unsigned)cnt, (unsigned)n);
-> +    }
-> +
-> +    if (memcmp(rng, prng, sizeof(rng))) {
-> +        FAILED("PRNG_2 Auto-gen test failed: does not match PRNG_1");
-> +    }
-> +}
-> +
-
-thanks
--- PMM
+>> +static void build_srat_generic_initiator_affinity(GArray *table_data, i=
+nt node,=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0 PCIDeviceHandle *handle,=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0 GenericAffinityFlags flags)=0A=
+>> +{=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, 5, 1);=A0=A0=A0=A0 /* T=
+ype */=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, 32, 1);=A0=A0=A0 /* Len=
+gth */=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, 0, 1);=A0=A0=A0=A0 /* R=
+eserved */=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, 1, 1);=A0=A0=A0=A0 /* D=
+evice Handle Type */=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, node, 4);=A0 /* Proximi=
+ty Domain */=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, handle->segment, 2);=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, handle->bdf, 2);=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, handle->res0, 4);=0A=
+>> +=A0=A0=A0 build_append_int_noprefix(table_data, handle->res1, 8);=0A=
+>=0A=
+> Why are we storing reserved fields in the PCIDeviceHandle?=A0 This=0A=
+> function is already specific to building a PCI Device Handle, so we=0A=
+> could just loop build_append_byte() with a fixed zero value here.=0A=
+=0A=
+Good point, will make the change.=0A=
+=0A=
+=0A=
+>> +void build_srat_generic_initiator(GArray *table_data)=0A=
+>> +{=0A=
+>> +=A0=A0=A0 GSList *gi_list, *list =3D acpi_generic_initiator_get_list();=
+=0A=
+>> +=A0=A0=A0 for (gi_list =3D list; gi_list; gi_list =3D gi_list->next) {=
+=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 AcpiGenericInitiator *gi =3D gi_list->data;=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 Object *o;=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 int count;=0A=
+>> +=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 if (gi->node =3D=3D MAX_NODES) {=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 continue;=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 }=0A=
+>=0A=
+> Why do we have uninitialized AcpiGenericInitiator objects lingering?=0A=
+=0A=
+Right, we don't need the check.=0A=
+=0A=
+>> +=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 o =3D object_resolve_path_type(gi->device, TYPE_V=
+FIO_PCI_NOHOTPLUG, NULL);=0A=
+>=0A=
+> TYPE_PCI_DEVICE?=A0 Maybe you could check hotpluggable from the device=0A=
+> class, but certainly the generic code should not be dependent on being=0A=
+> a vfio-pci-nohotplug device.=A0 =0A=
+=0A=
+Understood.=0A=
+=0A=
+> The spec also supports an ACPI object=0A=
+> description, so should this be build_srat_generic_pci_initiator()?=0A=
+=0A=
+Sure, makes sense.=0A=
+=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 if (!o) {=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 continue;=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 }=0A=
+>> +=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0 for (count =3D 0; count < gi->node_count; count++=
+) {=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 PCIDeviceHandle dev_handle =3D {0};=
+=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 PCIDevice *pci_dev =3D PCI_DEVICE(o);=
+=0A=
+>> +=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 dev_handle.bdf =3D pci_dev->devfn;=0A=
+>=0A=
+> Where does the bus part of the bdf get filled in?=0A=
+=0A=
+Good catch, should have code to added the bus.=0A=
+=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 build_srat_generic_initiator_affinity=
+(table_data,=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0 gi->node + count, &dev_handle,=0A=
+>> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0 GEN_AFFINITY_ENABLED);=0A=
+>=0A=
+> Seems like the code that built the AcpiGenericInitiator object should=0A=
+> supply the flags.=A0 In fact the flag GEN_AFFINITY_ENABLED might be a=0A=
+> better indicator to populate the SRAT with the GI than the node value.=0A=
+=0A=
+Yeah, sure.=

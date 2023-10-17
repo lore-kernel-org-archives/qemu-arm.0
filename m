@@ -1,118 +1,124 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3937667ejc;
-        Tue, 17 Oct 2023 06:57:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEcDfAb4HxuT2ZUll8TUnOYQuc/WIuK4Gws/HECn2l2wzriDNC2fV7iy9aLNPZoGEnJWIXW
-X-Received: by 2002:a05:6214:29cc:b0:655:d6af:1c37 with SMTP id gh12-20020a05621429cc00b00655d6af1c37mr2341724qvb.65.1697551024349;
-        Tue, 17 Oct 2023 06:57:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697551024; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3941383ejc;
+        Tue, 17 Oct 2023 07:02:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHRpHQoHm+jbhPgjGIjNY/DEssJJTB2gbIsPgnlbxssuzLLFk/Ief1RxIsG5VhGHlTaAAGv
+X-Received: by 2002:a92:c0c9:0:b0:357:a04c:31d2 with SMTP id t9-20020a92c0c9000000b00357a04c31d2mr344168ilf.16.1697551336871;
+        Tue, 17 Oct 2023 07:02:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697551336; cv=none;
         d=google.com; s=arc-20160816;
-        b=K+ZxmqLmxYBUVhzOcPIg2QG5oMIpIMuozfHf43hXaOy43+nUWMcEDly92LvDQquv1n
-         1GsDy7xBwZUw/fQ8WI2xKdvepzCPILn+BGteGBDH4kbbkyEtDc/8/XsKcqqad7TvyCWy
-         /ubphRl7OPTJABrSsHrEfybuaiT+aWIs2GZ/si/xGVGRCR0dDgWzZyQPfi40Pooa2EFB
-         9reBotkfXshxSR1aLqlBHNECCSy4MjqiaNBoUIcYT/+OXb15zo8xbf0VLlP6sbsk17d+
-         EtCC84icJ9dFibimKnL1jO5uDzA2OqszQv+mvndD+owP3IocZoAweuzVcPKGBVzyiV4v
-         38vw==
+        b=DDE2jUjOmFbwFQfr76RaeqSI4FQF36vYLPqEZa4Og3Jtr0KKY2d/14ZNjv/fiz/q35
+         g6RL6AbOHatCoLIMzy/N/kH8fnPcVmN/RBD+RyhebdSMhwF6UjshMcrzE+Ghg7Pi7S82
+         2kvazN81RVY69HrB17u/FC276T6T0dJ1KzoUSJaUpG58ydbnh0KYdbQemX2CsN+dlsil
+         mFXkh8qKIgSWNJ6BzYt+MeJrM13vkpsQoDzfKpGPv3XsyQQO1UgSMJL5y7uPCMeaqw4Q
+         O6/PAcjy3OsQ8HbVBjcHYl0+NdVgX71ahM1IN4yDvRhGi+JDgIf8KsopiP2tSP7Bjesc
+         D/LA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=hbIxBE94fKsxgztzJMk2M0FJiSXDy4k4lvIgryPHLsE=;
-        fh=Pfhq8wFxCkpFzniIvj4dX8EJ6qNAeD3ht3csU6tASyU=;
-        b=Xc1pllIdUWU7eAyq4srsvq7nkyjkAn6Tjm9vsTF6eOoRBh5QDyQGPO2j6ofQyte5D3
-         I32hokM1hR9/owF5wPAm7gbkIloVbJQge902ouTOiDYBLgSYoJzkwuFu9siL+oNIrJfX
-         G44CyeWqOOb+Ni7dUztFEtluKM8pUJ/CgMw9Lua6Am/py+fg7LFh2DGr/JtzByGrzDz2
-         wDMdnIPfEnX+YLd9uh/zIFrLQMtyilFIE7KYD6FJlSMERHEvR2ZLI7c0m+z3xf+O9WlG
-         aca/TlLu5AQd9CnJbEePAQA6lqtebxMaB1MBP4ogqdrp1qWUMLjCAFeqK1rRlMDFWt5k
-         EAgA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=jK9MnOkarN7NF0Qc/XLSYHaYAFfcVhsfbF2N1g/hNuw=;
+        fh=PkQUf9c5shm23GEgSgwIjaGjrTFXVTBGToef+bFaIfM=;
+        b=YGA2GyunKK+ILXyEry2kpPult0XIBF0leR33lpG8F9j9854LamVXVfMi1iObwOhfBy
+         qapO3Y4uPR1qr+4fKy9ZObtEi5XquhDT7HEKvBP5DIaX3waiHff0uGtlhFqsEuHdC36O
+         4gukeyU0wJhUAJSdYB/B3IZXqqNWTosyRnfeFruCnsRYomnmoTUQVJCO5R3wojdgFG9J
+         0u6xfRrbhLGpajqZdOlEEDOf3NvxBSMwC2gqn+1joymxb1G/U+kunjHcDoRYyqjWenUB
+         esuwFO521gmJIhtd3zjHdJOhVEEYuBCqbnVzPdKlS3TII9bLutPrVRHnXyhj1y8k35SM
+         0w7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UfIT08T5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zSdT+W3R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id nd10-20020a056214420a00b0065afca081f4si999730qvb.301.2023.10.17.06.57.04
+        by mx.google.com with ESMTPS id ds1-20020a05613027c100b007a4f345e7a0si148970uab.152.2023.10.17.07.02.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 06:57:04 -0700 (PDT)
+        Tue, 17 Oct 2023 07:02:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UfIT08T5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zSdT+W3R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qskZ4-0005cj-Bs; Tue, 17 Oct 2023 09:56:54 -0400
+	id 1qske8-0003t2-GQ; Tue, 17 Oct 2023 10:02:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qskZ3-0005c2-DM
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 09:56:53 -0400
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qske6-0003ni-1I
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 10:02:06 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qskYu-0007J4-Nf
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 09:56:53 -0400
-Received: by mail-lf1-x12f.google.com with SMTP id
- 2adb3069b0e04-5079eed8bfbso5069278e87.1
- for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 06:56:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qske4-0008Kk-AF
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 10:02:05 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-323168869daso5299701f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 07:02:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697551002; x=1698155802; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=hbIxBE94fKsxgztzJMk2M0FJiSXDy4k4lvIgryPHLsE=;
- b=UfIT08T57j4V/9UwElwJAmyKRUKX/KWWceIvQ80aE3Ba5cHtmdzy9nL3BwfDtomVQZ
- z2N7TdBEbZDLsp/C3TXLErhLKmVYYPS8jpOQ4DtxGYd6UYJmDtZwVJ/htlKyI14J3JKr
- ZkbbB+EhPO+BoQmJSlGuN0BsLDgx+wM7RmMGKF5YGX7HRtEPPoDCD1iGJ6vDU1Nq2EVE
- 1vPsCNr1sm+0l2uL/4jgp390CY+MMHWgXykQoVcH+JlvE+m7Brhrtbpd4edi0gdTv57D
- +Vi+7ayER6+qNbUcLAgB3mC+9a0ZoUSqrlxJeIvNxVIbqn87y3SoJCzHCJruGfQDsD67
- PKWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697551002; x=1698155802;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1697551322; x=1698156122; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=hbIxBE94fKsxgztzJMk2M0FJiSXDy4k4lvIgryPHLsE=;
- b=tJ1EUzzwQ5+v53Amn3L20rGSe06pucQi24zLCcB+ixIr0Snn2X1RiGnZQ29J44bAD6
- xTIck8hNY7EHoUIh8MAP/zQaslSN81Y9WAXHUW9zPtto3uYMJL/HruE7zQlmsTbj1HMv
- sHKxScKPH/+WKHq9KQ7kbHOwG/9V4Omx0Sgo7n7EUINjTl1m3d6c3dFOkNT2p1i7XEUP
- UeXEdt0kEWQYlcmSB47QD5MDa2iWo+esokG7RfH00t8ZEzFggXM+O+sZNK9gcA71OE5x
- +ETXZMpiQf3YCduvYa88s+jhQAO7sPv3Cv+jmEhDw7G2you5Z96PEw60ttzyo2Aze02B
- gYGA==
-X-Gm-Message-State: AOJu0YyZH1vfFlSNAgqLsngpdIrWswxjiWbYyVqVSfklsQ0prF+M9Yo7
- 6CDi0KVo0McvSOz+uhQIZD9XAZFSTWRUGLhAb70=
-X-Received: by 2002:ac2:4d90:0:b0:507:9ff6:75b6 with SMTP id
- g16-20020ac24d90000000b005079ff675b6mr1790071lfe.50.1697551002211; 
- Tue, 17 Oct 2023 06:56:42 -0700 (PDT)
-Received: from myrica ([2a02:c7c:7290:b00:fd32:2b31:6755:400c])
+ bh=jK9MnOkarN7NF0Qc/XLSYHaYAFfcVhsfbF2N1g/hNuw=;
+ b=zSdT+W3RXlk8Y+3VgBCP3MsJ/OnvuuLZTZbf33m0UqBVFYinFzWm6xqx6vKB6VfhXd
+ gG+KmKFbIUiNRNOdeQUutJzVOmjxZ7ba+ROV/s0htRUPb5NPdvbQ39sMMIODSIlu/5rW
+ mTUwO+ntSr7ziwNfdqQNZcrLoHSnvWd6xQ4SDOdOTUinTj867TNy34HndKO7fx+oZkj4
+ wSbFIDxlWYkl/ew3vhaPebKznJv45Hr17BeJ+6hH8v+fXa20RaHa9qF8L1WyhFGjWIww
+ 0tQKRHF40rF+C/QVRDtLqgNAJPgVkNAGXexNxl/dQTuSHPw+TxzBQavNWEI9RlFzGWvh
+ EVKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697551322; x=1698156122;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=jK9MnOkarN7NF0Qc/XLSYHaYAFfcVhsfbF2N1g/hNuw=;
+ b=Mw4YDkJyj2RJcG5hJy6MICWEGdsNJiazpiVGO1QeqEfr2HrFPGar6dFKaALLDJxadX
+ ms67r2jRLFcwv4VsiZShA5VBMCoDQ+FsaS7+ah0tGMbKlX3v8tcnGqxKOuB/4uKFxz9D
+ i5yJe3+4sa//nLFX25COcd4+C9LWs6luijnq8mEMpk0R4bG1RxSCjUGBzWk+VH0pxXD8
+ irNxggMVrCak3FyPgW13/4/n688/ElHr3VoakArXND3qKaI3uBA47pxoD7dN9OrbAy8T
+ vpixVl5V9ZNdN+c/b74U7tsBHf61S1S9ktoXiWf/A9yWCNBtQm7cXWTND8ndhkgv7Oq+
+ ooRQ==
+X-Gm-Message-State: AOJu0YwHzJAK8qKaiaipNHgkPSQ6tGWyfZsipKG6vJ7vZzXKUuUpuzjF
+ gEyOfmCU2ExlQx3V+OrCDT1iLA==
+X-Received: by 2002:a5d:6802:0:b0:32d:9a1b:5d79 with SMTP id
+ w2-20020a5d6802000000b0032d9a1b5d79mr1705786wru.33.1697551321681; 
+ Tue, 17 Oct 2023 07:02:01 -0700 (PDT)
+Received: from m1x-phil.lan ([176.172.118.33])
  by smtp.gmail.com with ESMTPSA id
- r2-20020a5d4982000000b0032d87b13240sm1762439wrq.73.2023.10.17.06.56.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Oct 2023 06:56:41 -0700 (PDT)
-Date: Tue, 17 Oct 2023 14:56:47 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: Itaru Kitayama <itaru.kitayama@gmail.com>, qemu-arm@nongnu.org,
- Shashi Mallela <shashi.mallela@linaro.org>
-Subject: Re: Quick start guide on RME emulation
-Message-ID: <20231017135647.GB835650@myrica>
-References: <CANW9uyvsD8UWJ9yrrvgb4i7nEoDAXNaepk-zsJWuyw=tp_W9oA@mail.gmail.com>
- <20231002102231.GA3075015@myrica>
- <CANW9uyu85z9+-v8ait9EWcjWRu1+C8Xx3cM__8oBKof7fJwRwA@mail.gmail.com>
- <20231004105558.GA1454132@myrica>
- <CANLsYky87enj0bkSs_PaKE=rM7odowfXZ2bT6W0KJ1RFyZApwg@mail.gmail.com>
+ x5-20020a5d60c5000000b0032179c4a46dsm1730095wrt.100.2023.10.17.07.01.59
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 17 Oct 2023 07:02:00 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ Fam Zheng <fam@euphon.net>, qemu-arm@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 1/7] hw/virtio/virtio-pmem: Replace impossible check by
+ assertion
+Date: Tue, 17 Oct 2023 16:01:44 +0200
+Message-ID: <20231017140150.44995-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231017140150.44995-1-philmd@linaro.org>
+References: <20231017140150.44995-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CANLsYky87enj0bkSs_PaKE=rM7odowfXZ2bT6W0KJ1RFyZApwg@mail.gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
- envelope-from=jean-philippe@linaro.org; helo=mail-lf1-x12f.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,173 +133,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4Eur/Ndawi3X
+X-TUID: LugwDPBcOuQJ
 
-On Mon, Oct 16, 2023 at 03:30:30PM -0600, Mathieu Poirier wrote:
-> > TF-RMM
-> > ------
-> >
-> > The Realm Management Monitor (RMM) connects KVM and the Realm guest.
-> >
-> > RMM gets loaded into NS DRAM (because there isn't enough space in Secure
-> > RAM). TF-A carves out 24MB of memory for the RMM, and tells other software
-> > about it using a device-tree reserved memory node.
-> >
-> > Status: QEMU support is currently under review. Additional patches are
-> >   needed until QEMU supports a couple additional features that are
-> >   mandatory for RME (PMUv3p7 and ECV).
-> >
-> > Repo: currently at https://jpbrucker.net/git/rmm/ branch qemu-rme
-> >       official is https://git.trustedfirmware.org/TF-RMM/tf-rmm.git/
-> >
-> > Build:  git submodule update --init --recursive
-> >         export CROSS_COMPILE=aarch64-linux-gnu-
-> >         cmake -DCMAKE_BUILD_TYPE=Debug -DRMM_CONFIG=qemu_virt_defcfg -DRMM_TOOLCHAIN=llvm -B build-qemu
-> >         cmake --build build-qemu
-> >
-> 
-> The -DRMM_TOOLCHAIN part puzzled me since it was not in the RMM build
-> instruction for the FVP model.  Is it mandatory and if so, what
-> version of llvm are you using?  As with the FVP model, I used the
-> following:
-> 
-> CROSS_COMPILE=/home/mpoirier/work/cca/optee-cca/toolchains/aarch64-none-elf/bin/aarch64-none-elf-
-> cmake -DRMM_CONFIG=qemu_virt_defcfg -DCMAKE_BUILD_TYPE=Debug
-> -DLOG_LEVEL=40 -B build
-> cmake --build build
-> 
-> The "aarch64-none-elf" is exactly the same as the one in the FVP model.
+The get_memory_region() handler is used when (un)plugging the
+device, which can only occur *after* it is realized.
 
-Both GCC and LLVM should work, but I had some trouble with GCC and haven't
-had time to investigate yet, so I provided instructions for LLVM (v16)
-which works for me. I'm probably using the wrong GCC toolchain, because
-I'm currently getting these link errors:
+virtio_pmem_realize() ensure the instance can not be realized
+without 'memdev'. Remove the superfluous check, replacing it
+by an assertion.
 
-/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: warning: libc.so.6, needed by /usr/aarch64-linux-gnu/lib/libm.so.6, not found (try using -rpath or -rpath-link)
-/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__strtold_nan@GLIBC_PRIVATE'
-/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `stderr@GLIBC_2.17'
-/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `qsort@GLIBC_2.17'
-/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__strtof_nan@GLIBC_PRIVATE'
-/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `fwrite@GLIBC_2.17'
-/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `errno@GLIBC_PRIVATE'
-/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `fputs@GLIBC_2.17'
-/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__strtod_nan@GLIBC_PRIVATE'
-/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__assert_fail@GLIBC_2.17'
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/virtio/virtio-pmem.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
+diff --git a/hw/virtio/virtio-pmem.c b/hw/virtio/virtio-pmem.c
+index c3512c2dae..cc24812d2e 100644
+--- a/hw/virtio/virtio-pmem.c
++++ b/hw/virtio/virtio-pmem.c
+@@ -147,10 +147,7 @@ static void virtio_pmem_fill_device_info(const VirtIOPMEM *pmem,
+ static MemoryRegion *virtio_pmem_get_memory_region(VirtIOPMEM *pmem,
+                                                    Error **errp)
+ {
+-    if (!pmem->memdev) {
+-        error_setg(errp, "'%s' property must be set", VIRTIO_PMEM_MEMDEV_PROP);
+-        return NULL;
+-    }
++    assert(pmem->memdev);
+ 
+     return &pmem->memdev->mr;
+ }
+-- 
+2.41.0
 
-> 
-> >
-> > Host EDK2
-> > ---------
-> >
-> > Works out of the box, although it doesn't properly account for reserved
-> > RMM memory yet.
-> >
-> 
-> Not sure what to make of the above statement - should I expect the
-> host boot stack to crash when launching QEMU?
-
-I'm still figuring that out but I don't think so, because edk2 seems to
-allocate stack and heap memory from the top of RAM, so it won't touch the
-RMM memory (which I placed near the bottom at 0x40100000-0x418fffff).
-
-But we can't rely on this, so long term we'll need to make edk2 aware that
-there is a hole in RAM. I need a better understanding of edk2 memory
-management first.
-
-> > VMM
-> > ---
-> >
-> > Kvmtool and QEMU can be used to launch Realm guests. For kvmtool, see the
-> > cover letter for the Linux support above.
-> >
-> > Status: In development
-> >
-> > Repo: for now https://jpbrucker.net/git/qemu/ branch cca/rmm-v1.0-eac2
-> >
-> > Build:  git submodule update --init --recursive
-> >         # to download the missing subprojects because buildroot won't do it:
-> >         ./configure --target-list=aarch64-softmmu
-> >         # Note: when buildroot is configured to use this tree (see below),
-> >         # it will rsync the whole tree including binary files. Therefore,
-> >         # use a separate build directory to make the system emulation
-> >         # QEMU, to avoid conflicts between native binary files and
-> >         # buildroot's cross-build.
-> >
-> 
-> This got a little tricky.  From what I understand this is the
-> "emulation" QEMU, which should likely be in a directory called
-> "qemu.host".  The QEMU referenced from buildroot should be in another
-> directory, something like "qemu.buildroot", for buildroot to build.
-> Is this correct?
-
-Yes. Two separate source trees should be easiest to deal with.
-
-To ensure my VMM changes don't break emulation QEMU I use a single source
-tree, and a separate build directory for the emulation QEMU:
-
-	cd ~/build/qemu.host/
-	~/src/qemu/configure --target-list=aarch64-softmmu
-	make -j
-
-> >
-> > Rootfs
-> > ------
-> >
-> > Buildroot provides a convenient way to build lightweight root filesystems.
-> > It can also embed the VMM into the rootfs if you specify the path to
-> > kvmtool or QEMU source in a local.mk file in the build directory.
-> >
-> > Repo: https://gitlab.com/buildroot.org/buildroot.git
-> >
-> 
-> Did you use the master branch or a stable one?  If so, which one?
-
-I'm using the master branch (currently I'm on 96130dc204)
-
-> 
-> > local.mk
-> >         KVMTOOL_OVERRIDE_SRCDIR = path/to/kvmtool/
-> >         QEMU_OVERRIDE_SRCDIR = path/to/qemu/
-> >
-> 
-> Please confirm that "local.mk" is not part of the buildroot repository
-> and needs to be created.  Also confirm that KVMTOOLS don't need to be
-> specified, this is for demonstration purposes.  And following my
-> comment above, "path/to/qemu" should be "path/to/qemu.buildroot".
-
-Yes, local.mk needs to be created, and KVMTOOL_OVERRIDE_SRCDIR isn't
-needed if you're planning to only use QEMU to launch Realm VMs
-
-> 
-> > Build:  make qemu_aarch64_virt_defconfig
-> >         # then change some options
-> >           # BR2_LINUX_KERNEL is not set
-> >           BR2_PACKAGE_KVMTOOL=y
-> >           BR2_PACKAGE_QEMU=y
-> >           BR2_PACKAGE_QEMU_SYSTEM=y
-> >           # BR2_PACKAGE_QEMU_BLOBS is not set
-> >           BR2_PACKAGE_QEMU_SLIRP=y
-> >           BR2_PACKAGE_QEMU_CHOOSE_TARGETS=y
-> >           BR2_PACKAGE_QEMU_TARGET_AARCH64=y
-> >           BR2_TARGET_ROOTFS_EXT2_SIZE=256M
-> >
-> 
-> I used branch 2023.08.x and several of the above options were _not_
-> present in the ".config" file, namely BR2_PACKAGE_QEMU_SYSTEM,
-> BR2_PACKAGE_QEMU_BLOBS, BR2_PACKAGE_QEMU_SLIRP,
-> BR2_PACKAGE_QEMU_CHOOSE_TARGETS and BR2_PACKAGE_QEMU_TARGET_AARCH64.
-> Moreover, I tried building buildroot without any changes to the
-> ".config" file and the compilation failed.  This leads me to beleive
-> we are working on different branches.  I will try the master branch
-> once I am done with this email.
-> 
-
-Buildroot keeps the QEMU build recipe in package/qemu/qemu.mk which only
-has instructions for one version of QEMU (QEMU_VERSION). Since QEMU's
-configure options change regularly and my VMM modifications are based on
-QEMU's master branch, I use buildroot's master branch in order to get the
-most recent qemu.mk.
-
-Thanks,
-Jean

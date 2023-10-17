@@ -1,109 +1,113 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4225046ejc;
-        Tue, 17 Oct 2023 15:00:36 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGwgHHy9m+I+TaR07prCrGVTG7Av3qYGMWeA3Bwr+vFAXTVYAPpwm8vZ/RF7B8m0YtI9jWk
-X-Received: by 2002:a05:6102:4411:b0:457:c725:4bdb with SMTP id df17-20020a056102441100b00457c7254bdbmr4168446vsb.28.1697580036754;
-        Tue, 17 Oct 2023 15:00:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697580036; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4244585ejc;
+        Tue, 17 Oct 2023 15:39:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGX+6Sy9v6bxD7VOwzxr1n96Nf/ndjNZx/EwdzFNaHubPhQNgPIvIDY6u4zuq73EaUybdhd
+X-Received: by 2002:a05:6214:c22:b0:65b:2008:8a23 with SMTP id a2-20020a0562140c2200b0065b20088a23mr3873035qvd.53.1697582376107;
+        Tue, 17 Oct 2023 15:39:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697582376; cv=none;
         d=google.com; s=arc-20160816;
-        b=GFK9j4qtu81pg918Cnpal9BSbRg3Mnm5ih19BtAe29ca/wg+qzhW1yvg4YWRxi8C9M
-         PPZ/ZkdmTyrxk58oW5Hcpfm2UsSg28UYe1be+BZPaXZEJdodyHRs2jBJ/zb8E0O5keMF
-         P2mQne6w7rURcXRG7/GZu2/WwOy/j0diuESAHQS3T+k0XM33oGcZHur2DZ24hcQNVsrr
-         wEDB8OI/EipHt3RnfTqcJRR+NNJesqkjb8RXfawwUL6sD+gI7BcXiHFjaWQvEVvMRLUT
-         dR2V7Ym7OFG6hQaFRI/n/DXDLiRz/Q7wfvulvOhQ8iQhg2woTtpM3PuV0h5znjH76Wsg
-         PomQ==
+        b=oEzW+kYbZ96nD4ADXZSrWHUzH5CJSu0iYAa3w+7uR8ck1EE31GrqR3G7e2zJjdUXjA
+         QLIjAcv1XkNpcRa60/r1lVKimKGh2i/2hBAiWg5ckzQoC+HVb7h8Cn8nbnNE5HCCvJTv
+         tFa+NQ/lJk4difEFVyhENkB77xef+dE0AA7AvfQlMH2StjZjnp/SEZMMiX805J5+c/nJ
+         CV972q3PhIenAQah2k6oqkeMfJS2SiKxxrCcBEnDbrA4Gsk3tmaeKe5P9Ferr0xIZ0Ab
+         93E55fZpRnR1J9x9WQO/zv7N+I9UR3Y4mrT4f+c6RgjOMoUGGDCun7CfV7wamebN+h/u
+         BJfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=MQyFeapujUzC5EPFuR98l+MElDouPf72NlPSas9OsIc=;
-        fh=nD6vmBZ6lxExUhLJfxe+1Yzkpvsf6XYhTVKkKswScRI=;
-        b=KVgNdJIqs4eOnfooOJJLZs3pYgXVNOHPME2TUL6nm1/EstpYbk0om8094jr+O871tj
-         KXe1GGiJRMKtOEbuyux5MvlfLo6ATJA3vKbH4M/sbRTcjBK8agtXburEDiC1zl/2wY9n
-         KAtDTCiY5voC1UQxQgPsJLRs+ex5M1aeVm6nuv5eS/ViGCGCmAFSttyjQXYGMOXcOxRU
-         4WaD3tBK2O+DRuqSbjtHa9vXLEkLIi7Fad7hBe/qQtwFiNAtmAsQAoilB9wm5ePZsEkg
-         4HlFTwqRecH4wm8EkVmZtoH6DRbC4H9fVsEJt2PT9Fz6GAjQC5pnjcJCQLADas3qBkny
-         BGhg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=xXbuEngyOp00YLVGb6sOhxliFtaPzq8x0M1UxYFVVQ8=;
+        fh=dGkXD/vMF72n+Hn/EXL8BMhlQJKATuOFZ5gFS+N51UE=;
+        b=0H3zqf70TMd5be9v8wa3oViH2x2LdSeDrbkyByuUOBCUzoNTtI/OBlBgF/MoMtzDvT
+         BVveLc4jD6dMAq9h5vkCB0UPURGhzPrnLSGVCh4ihv7NfUcBvDIEib0qU9s7nf26ZyZO
+         G3hbmm4VUn9XKAwYD5s2HX2lIsaTOHe6JJsp8Gf5v6rSINK0hthm1iqphH9P5jmb4AQC
+         eCTUdz1dSTEV/SMP9gx74ifAlmm40MD6F+kBjpY9M/7ZEFeC20m5YMuE4zXWakLCihZh
+         wvSFJNQzgGyr2p1B3nRDiJ/42aDFIGSY06zD19xkU+jAqM6/0zI6WbCs4+mcnB7Dh6Zr
+         ggUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MW/nOaJ4";
+       dkim=pass header.i=@linaro.org header.s=google header.b=b6whxvje;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u19-20020a05622a14d300b00403cad59323si1883935qtx.779.2023.10.17.15.00.36
+        by mx.google.com with ESMTPS id jz13-20020a0562140e6d00b0065cfd56f080si1804035qvb.581.2023.10.17.15.39.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Oct 2023 15:00:36 -0700 (PDT)
+        Tue, 17 Oct 2023 15:39:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MW/nOaJ4";
+       dkim=pass header.i=@linaro.org header.s=google header.b=b6whxvje;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qss6y-0007oE-Fc; Tue, 17 Oct 2023 18:00:24 -0400
+	id 1qssio-0006Sg-5l; Tue, 17 Oct 2023 18:39:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1qss6t-0007nV-Ua
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 18:00:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1qss6q-0000W3-JB
- for qemu-arm@nongnu.org; Tue, 17 Oct 2023 18:00:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697580014;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=MQyFeapujUzC5EPFuR98l+MElDouPf72NlPSas9OsIc=;
- b=MW/nOaJ4oMSk9sHwPTWiQYJ++gZwZAiG/xiYkrp6B6xCMzGYmHTJ6hQsPdCtjfdx6RoAx8
- uEnFYSbqs9Mj3ELxFsQs7yjupUxu8D91rC4ePINHO5ERMPPhA+4RauR8QXSr8TPD3kifgU
- HNbB8CAEqaGnpZIJ6ZrbrDpUShwGWNA=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-314-KguWsQ-WNV25D_4hfUfzyg-1; Tue, 17 Oct 2023 18:00:10 -0400
-X-MC-Unique: KguWsQ-WNV25D_4hfUfzyg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 94F9B2932494;
- Tue, 17 Oct 2023 22:00:09 +0000 (UTC)
-Received: from redhat.com (unknown [10.2.16.20])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6D78B25C8;
- Tue, 17 Oct 2023 22:00:08 +0000 (UTC)
-Date: Tue, 17 Oct 2023 17:00:06 -0500
-From: Eric Blake <eblake@redhat.com>
-To: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>, 
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Song Gao <gaosong@loongson.cn>, 
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Richard Henderson <richard.henderson@linaro.org>, 
- "open list:ARM SMMU" <qemu-arm@nongnu.org>
-Subject: Re: [RFC PATCH v2 01/78] include/qemu/compiler.h: replace
- QEMU_FALLTHROUGH with fallthrough
-Message-ID: <3e2wiwbl3g5t37msvmxcjxi5mhzpaazkd3phbw2p2dauuophxo@np3sbg6l7fq3>
-References: <cover.1697183699.git.manos.pitsidianakis@linaro.org>
- <2e08cff874b2f9fc4143bdcde87ebba9b70b356c.1697183699.git.manos.pitsidianakis@linaro.org>
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1qssil-0006J8-Sz
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 18:39:27 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1qssif-0006nz-Po
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 18:39:27 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-31fa15f4cc6so5413025f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 15:39:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697582359; x=1698187159; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=xXbuEngyOp00YLVGb6sOhxliFtaPzq8x0M1UxYFVVQ8=;
+ b=b6whxvje8t/J8PW7vEYVGsTmyubouquxCu/UqneQQCZ5NBZZh0u1K7DYxQEFXwiMrk
+ 7iH9isB99j/LPH9Ho3169iCe/S7vfgc5T/weI/MAkb+7S8x0bI2c5jgk+vRNIsAC57fP
+ 4yPxWe8Czms85WFPQrYg6V/BtQFfK2yVj3zkqs0GrRC5j8qXtnuUCjzXYecsuQ/4JRx9
+ M4rZ0x/iYmb3GS12CXhGNKOLxqCSeD3i8RycHSQQI1pjYEn+C9BJhP2bSNgD5OOdOPYS
+ QOkftcD0bPhJfaGqqCR1dlODQIzmqjLtcVypYwzjvzckSAHxp5At2riY9k/g5i3Kt/vm
+ 1MPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697582359; x=1698187159;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=xXbuEngyOp00YLVGb6sOhxliFtaPzq8x0M1UxYFVVQ8=;
+ b=baO3RTcX+8x7JNXsqkFZ6jruCUXHQ+PDVRnokNGReYlOoSTeurJLFpeIr0+O+yCeHb
+ HxGD9sMAFjSzgG5h97dca0Msv/CifHR8gzwl/FqkQnM70wOtKgiePB2KEcj9OKUTCeiB
+ rQWDDYCPS5SYBDShWV+l6zff1mOsxCqBOWlQa9t9FZ5soXdJ1qDzmw/oWngAxmNSo8Br
+ GTpZ52c2XK+r9zBN+mQGeOBWP5w2hrn0bLLFNglkmTbe64bRoYsZanGsqFXnP2Us6vPN
+ TvIH/8+QxBoakIvKrJhnRbCiQ79NjxndAGCYMYh1NbJgkolNinU/NLtD+5QSiuVjuDO6
+ QP6g==
+X-Gm-Message-State: AOJu0Yx4OmLtnxpQ3V8JJJxbli9ASoIjx+c1sn2nuoqHTrOYVf9/lTLL
+ K2YcyW986QBBREfHD90o28nv6qbOwukXR+e1e51gJg==
+X-Received: by 2002:adf:f791:0:b0:32d:804c:15d1 with SMTP id
+ q17-20020adff791000000b0032d804c15d1mr2620925wrp.47.1697582359524; Tue, 17
+ Oct 2023 15:39:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2e08cff874b2f9fc4143bdcde87ebba9b70b356c.1697183699.git.manos.pitsidianakis@linaro.org>
-User-Agent: NeoMutt/20230517
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <CANW9uyvsD8UWJ9yrrvgb4i7nEoDAXNaepk-zsJWuyw=tp_W9oA@mail.gmail.com>
+ <20231002102231.GA3075015@myrica>
+ <CANW9uyu85z9+-v8ait9EWcjWRu1+C8Xx3cM__8oBKof7fJwRwA@mail.gmail.com>
+ <20231004105558.GA1454132@myrica>
+ <CANLsYky87enj0bkSs_PaKE=rM7odowfXZ2bT6W0KJ1RFyZApwg@mail.gmail.com>
+ <20231017135647.GB835650@myrica>
+In-Reply-To: <20231017135647.GB835650@myrica>
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+Date: Tue, 17 Oct 2023 16:39:08 -0600
+Message-ID: <CANLsYkwwKRKW8qD__JvmpJteSgmzh0nEVVmR382oer+5v6ZuCQ@mail.gmail.com>
+Subject: Re: Quick start guide on RME emulation
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: Itaru Kitayama <itaru.kitayama@gmail.com>, qemu-arm@nongnu.org, 
+ Shashi Mallela <shashi.mallela@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,177 +122,216 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: L/9r5noOXxOj
+X-TUID: lklppw0HFohm
 
-On Fri, Oct 13, 2023 at 10:56:28AM +0300, Emmanouil Pitsidianakis wrote:
-> Signed-off-by: Emmanouil Pitsidianakis <manos.pitsidianakis@linaro.org>
-
-The subject line gives the 'what', but the commit body is
-conspicuously lacking on the 'why'.
-
-> ---
->  audio/pwaudio.c              |  8 ++++----
->  hw/arm/smmuv3.c              |  2 +-
->  include/qemu/compiler.h      | 30 +++++++++++++++++++++++-------
->  include/qemu/osdep.h         |  4 ++--
->  target/loongarch/cpu.c       |  4 ++--
->  target/loongarch/translate.c |  2 +-
->  tcg/optimize.c               |  8 ++++----
->  7 files changed, 37 insertions(+), 21 deletions(-)
-> 
-> diff --git a/audio/pwaudio.c b/audio/pwaudio.c
-> index 3ce5f6507b..bf26fadb06 100644
-> --- a/audio/pwaudio.c
-> +++ b/audio/pwaudio.c
-> @@ -1,29 +1,29 @@
->  /*
->   * QEMU PipeWire audio driver
->   *
->   * Copyright (c) 2023 Red Hat Inc.
->   *
->   * Author: Dorinda Bassey       <dbassey@redhat.com>
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
->  
-> +#include <spa/param/audio/format-utils.h>
-> +#include <spa/utils/ringbuffer.h>
-> +#include <spa/utils/result.h>
-> +#include <spa/param/props.h>
->  #include "qemu/osdep.h"
->  #include "qemu/module.h"
->  #include "audio.h"
->  #include <errno.h>
->  #include "qemu/error-report.h"
->  #include "qapi/error.h"
-> -#include <spa/param/audio/format-utils.h>
-> -#include <spa/utils/ringbuffer.h>
-> -#include <spa/utils/result.h>
-> -#include <spa/param/props.h>
-
-Rearranging #includes should be called out in the commit message, or
-even better split into its own commit as it is distinct from renaming
-the fallthrough macro.
-
->  
->  #include <pipewire/pipewire.h>
->  #include "trace.h"
->  
->  #define AUDIO_CAP "pipewire"
->  #define RINGBUFFER_SIZE    (1u << 22)
->  #define RINGBUFFER_MASK    (RINGBUFFER_SIZE - 1)
->  
->  #include "audio_int.h"
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 6f2b2bd45f..545d82ff04 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1166,210 +1166,210 @@ smmuv3_invalidate_ste(gpointer key, gpointer value, gpointer user_data)
-
-Wow, your git settings picked up a LOT of context - makes for a longer
-email, but in this particular case, it IS nice to see the impact of
-the fallthrough by seeing the full switch statment.
-
-...
->          qemu_mutex_lock(&s->mutex);
->          switch (type) {
->          case SMMU_CMD_SYNC:
-...
->          case SMMU_CMD_TLBI_NH_ALL:
->              if (!STAGE1_SUPPORTED(s)) {
->                  cmd_error = SMMU_CERROR_ILL;
->                  break;
->              }
-> -            QEMU_FALLTHROUGH;
-> +            fallthrough;
->          case SMMU_CMD_TLBI_NSNH_ALL:
-
-Yes, that still looks legible to me.
-
-> +++ b/include/qemu/compiler.h
-> @@ -1,215 +1,231 @@
-...
->  #if defined(__OPTIMIZE__)
->  #define QEMU_ALWAYS_INLINE  __attribute__((always_inline))
->  #else
->  #define QEMU_ALWAYS_INLINE
->  #endif
->  
-> -/**
-> - * In most cases, normal "fallthrough" comments are good enough for
-> - * switch-case statements, but sometimes the compiler has problems
-> - * with those. In that case you can use QEMU_FALLTHROUGH instead.
-> +/*
-> + * Add the pseudo keyword 'fallthrough' so case statement blocks
-> + * must end with any of these keywords:
-> + *   break;
-> + *   fallthrough;
-> + *   continue;
-> + *   goto <label>;
-> + *   return [expression];
-> + *
-> + *  gcc: https://gcc.gnu.org/onlinedocs/gcc/Statement-Attributes.html#Statement-Attributes
->   */
-> -#if __has_attribute(fallthrough)
-> -# define QEMU_FALLTHROUGH __attribute__((fallthrough))
-> +
-> +/*
-> + * glib_macros.h contains its own definition of fallthrough, so if we define
-> + * the pseudokeyword here it will expand when the glib header checks for the
-> + * attribute. glib headers must be #included after this header.
-> + */
-> +#ifdef fallthrough
-> +#undef fallthrough
-> +#endif
-> +
-> +#if __has_attribute(__fallthrough__)
-> +# define fallthrough                    __attribute__((__fallthrough__))
->  #else
-> -# define QEMU_FALLTHROUGH do {} while (0) /* fallthrough */
-> +# define fallthrough                    do {} while (0)  /* fallthrough */
->  #endif
+On Tue, 17 Oct 2023 at 07:56, Jean-Philippe Brucker
+<jean-philippe@linaro.org> wrote:
+>
+> On Mon, Oct 16, 2023 at 03:30:30PM -0600, Mathieu Poirier wrote:
+> > > TF-RMM
+> > > ------
+> > >
+> > > The Realm Management Monitor (RMM) connects KVM and the Realm guest.
+> > >
+> > > RMM gets loaded into NS DRAM (because there isn't enough space in Secure
+> > > RAM). TF-A carves out 24MB of memory for the RMM, and tells other software
+> > > about it using a device-tree reserved memory node.
+> > >
+> > > Status: QEMU support is currently under review. Additional patches are
+> > >   needed until QEMU supports a couple additional features that are
+> > >   mandatory for RME (PMUv3p7 and ECV).
+> > >
+> > > Repo: currently at https://jpbrucker.net/git/rmm/ branch qemu-rme
+> > >       official is https://git.trustedfirmware.org/TF-RMM/tf-rmm.git/
+> > >
+> > > Build:  git submodule update --init --recursive
+> > >         export CROSS_COMPILE=aarch64-linux-gnu-
+> > >         cmake -DCMAKE_BUILD_TYPE=Debug -DRMM_CONFIG=qemu_virt_defcfg -DRMM_TOOLCHAIN=llvm -B build-qemu
+> > >         cmake --build build-qemu
+> > >
+> >
+> > The -DRMM_TOOLCHAIN part puzzled me since it was not in the RMM build
+> > instruction for the FVP model.  Is it mandatory and if so, what
+> > version of llvm are you using?  As with the FVP model, I used the
+> > following:
+> >
+> > CROSS_COMPILE=/home/mpoirier/work/cca/optee-cca/toolchains/aarch64-none-elf/bin/aarch64-none-elf-
+> > cmake -DRMM_CONFIG=qemu_virt_defcfg -DCMAKE_BUILD_TYPE=Debug
+> > -DLOG_LEVEL=40 -B build
+> > cmake --build build
+> >
+> > The "aarch64-none-elf" is exactly the same as the one in the FVP model.
+>
+> Both GCC and LLVM should work, but I had some trouble with GCC and haven't
+> had time to investigate yet, so I provided instructions for LLVM (v16)
+> which works for me. I'm probably using the wrong GCC toolchain, because
+> I'm currently getting these link errors:
+>
+> /usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: warning: libc.so.6, needed by /usr/aarch64-linux-gnu/lib/libm.so.6, not found (try using -rpath or -rpath-link)
+> /usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__strtold_nan@GLIBC_PRIVATE'
+> /usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `stderr@GLIBC_2.17'
+> /usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `qsort@GLIBC_2.17'
+> /usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__strtof_nan@GLIBC_PRIVATE'
+> /usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `fwrite@GLIBC_2.17'
+> /usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `errno@GLIBC_PRIVATE'
+> /usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `fputs@GLIBC_2.17'
+> /usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__strtod_nan@GLIBC_PRIVATE'
+> /usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__assert_fail@GLIBC_2.17'
 >
 
-Looks okay.
+I had the same errors, which is why I switched to aarch64-none-elf
+[1], the same as what is used for the FVP code base.  If you have
+time, try that on your side and let me know if things still work.
 
-> +++ b/include/qemu/osdep.h
-> @@ -1,171 +1,171 @@
->  /*
->   * TARGET_WORDS_BIGENDIAN was replaced with TARGET_BIG_ENDIAN. Prevent it from
->   * creeping back in.
->   */
->  #pragma GCC poison TARGET_WORDS_BIGENDIAN
->  
-> -#include "qemu/compiler.h"
-> -
->  /* Older versions of C++ don't get definitions of various macros from
->   * stdlib.h unless we define these macros before first inclusion of
->   * that system header.
->   */
-...
->  /*
->   * This is somewhat like a system header; it must be outside any extern "C"
->   * block because it includes system headers itself, including glib.h,
->   * which will not compile if inside an extern "C" block.
->   */
->  #include "glib-compat.h"
->  
-> +#include "qemu/compiler.h"
-> +
+[1]. https://developer.arm.com/-/media/Files/downloads/gnu/12.3.rel1/binrel/arm-gnu-toolchain-12.3.rel1-x86_64-aarch64-none-elf.tar.xz?rev=a8bbb76353aa44a69ce6b11fd560142d&hash=20124930455F791137DDEA1F0AF79B10
 
-The commit message should detail why we had to sink this include
-later, and any audit you did to ensure that none of the intermediate
-code is impacted by that change.
+>
+> >
+> > >
+> > > Host EDK2
+> > > ---------
+> > >
+> > > Works out of the box, although it doesn't properly account for reserved
+> > > RMM memory yet.
+> > >
+> >
+> > Not sure what to make of the above statement - should I expect the
+> > host boot stack to crash when launching QEMU?
+>
+> I'm still figuring that out but I don't think so, because edk2 seems to
+> allocate stack and heap memory from the top of RAM, so it won't touch the
+> RMM memory (which I placed near the bottom at 0x40100000-0x418fffff).
+>
+> But we can't rely on this, so long term we'll need to make edk2 aware that
+> there is a hole in RAM. I need a better understanding of edk2 memory
+> management first.
+>
 
-At this point, since the series is RFC, I'll leave merely:
+Ok, I hope to get to that part tomorrow.
 
-Acked-by: Eric Blake <eblake@redhat.com>
+> > > VMM
+> > > ---
+> > >
+> > > Kvmtool and QEMU can be used to launch Realm guests. For kvmtool, see the
+> > > cover letter for the Linux support above.
+> > >
+> > > Status: In development
+> > >
+> > > Repo: for now https://jpbrucker.net/git/qemu/ branch cca/rmm-v1.0-eac2
+> > >
+> > > Build:  git submodule update --init --recursive
+> > >         # to download the missing subprojects because buildroot won't do it:
+> > >         ./configure --target-list=aarch64-softmmu
+> > >         # Note: when buildroot is configured to use this tree (see below),
+> > >         # it will rsync the whole tree including binary files. Therefore,
+> > >         # use a separate build directory to make the system emulation
+> > >         # QEMU, to avoid conflicts between native binary files and
+> > >         # buildroot's cross-build.
+> > >
+> >
+> > This got a little tricky.  From what I understand this is the
+> > "emulation" QEMU, which should likely be in a directory called
+> > "qemu.host".  The QEMU referenced from buildroot should be in another
+> > directory, something like "qemu.buildroot", for buildroot to build.
+> > Is this correct?
+>
+> Yes. Two separate source trees should be easiest to deal with.
+>
+> To ensure my VMM changes don't break emulation QEMU I use a single source
+> tree, and a separate build directory for the emulation QEMU:
+>
+>         cd ~/build/qemu.host/
+>         ~/src/qemu/configure --target-list=aarch64-softmmu
+>         make -j
+>
+> > >
+> > > Rootfs
+> > > ------
+> > >
+> > > Buildroot provides a convenient way to build lightweight root filesystems.
+> > > It can also embed the VMM into the rootfs if you specify the path to
+> > > kvmtool or QEMU source in a local.mk file in the build directory.
+> > >
+> > > Repo: https://gitlab.com/buildroot.org/buildroot.git
+> > >
+> >
+> > Did you use the master branch or a stable one?  If so, which one?
+>
+> I'm using the master branch (currently I'm on 96130dc204)
+>
+> >
+> > > local.mk
+> > >         KVMTOOL_OVERRIDE_SRCDIR = path/to/kvmtool/
+> > >         QEMU_OVERRIDE_SRCDIR = path/to/qemu/
+> > >
+> >
+> > Please confirm that "local.mk" is not part of the buildroot repository
+> > and needs to be created.  Also confirm that KVMTOOLS don't need to be
+> > specified, this is for demonstration purposes.  And following my
+> > comment above, "path/to/qemu" should be "path/to/qemu.buildroot".
+>
+> Yes, local.mk needs to be created, and KVMTOOL_OVERRIDE_SRCDIR isn't
+> needed if you're planning to only use QEMU to launch Realm VMs
+>
+> >
+> > > Build:  make qemu_aarch64_virt_defconfig
+> > >         # then change some options
+> > >           # BR2_LINUX_KERNEL is not set
+> > >           BR2_PACKAGE_KVMTOOL=y
+> > >           BR2_PACKAGE_QEMU=y
+> > >           BR2_PACKAGE_QEMU_SYSTEM=y
+> > >           # BR2_PACKAGE_QEMU_BLOBS is not set
+> > >           BR2_PACKAGE_QEMU_SLIRP=y
+> > >           BR2_PACKAGE_QEMU_CHOOSE_TARGETS=y
+> > >           BR2_PACKAGE_QEMU_TARGET_AARCH64=y
+> > >           BR2_TARGET_ROOTFS_EXT2_SIZE=256M
+> > >
+> >
+> > I used branch 2023.08.x and several of the above options were _not_
+> > present in the ".config" file, namely BR2_PACKAGE_QEMU_SYSTEM,
+> > BR2_PACKAGE_QEMU_BLOBS, BR2_PACKAGE_QEMU_SLIRP,
+> > BR2_PACKAGE_QEMU_CHOOSE_TARGETS and BR2_PACKAGE_QEMU_TARGET_AARCH64.
+> > Moreover, I tried building buildroot without any changes to the
+> > ".config" file and the compilation failed.  This leads me to beleive
+> > we are working on different branches.  I will try the master branch
+> > once I am done with this email.
+> >
+>
 
-but if others like the approach, I'll probably replace it with R-b in
-the next version.
+I figured that part - missing options are because
+qemu_aarch64_virt_defconfig doesn't include QEMU, it has to be
+enabled.  To do so "make menuconfig" needs to be used rather than
+adding the configuration by hand, otherwise some options will be
+missing.
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.
-Virtualization:  qemu.org | libguestfs.org
+> Buildroot keeps the QEMU build recipe in package/qemu/qemu.mk which only
+> has instructions for one version of QEMU (QEMU_VERSION). Since QEMU's
+> configure options change regularly and my VMM modifications are based on
+> QEMU's master branch, I use buildroot's master branch in order to get the
+> most recent qemu.mk.
+>
 
+I also figured that problem out - have a look at this [2].  Simply
+put, that patch moves the handling of submodules to the mason build
+system.  As such doing "git submodule update --init --recursive" won't
+work to download the submodules in the QEMU code base.  Nowadays QEMU
+submodules are downloaded as part of the configure script that calls
+mason.  So calling "./configure --target-list=aarch64-softmmu" will
+download the submodules.  So the procedure becomes:
+
+$ cd qemu.target
+$  ./configure --target-list=aarch64-softmmu //downloads the
+submodules as part of the configuration process
+$ make clean  //removes the "build" directory and configuration files,
+but leaves the submodules.
+$ // qemu.target is now ready to be referenced in the local.mk file in
+the buildroot directory
+
+The above is a hack to deal with an upstream regression.  We will have
+to address that regression but for now all I want is to reproduce your
+environment, something I will hopefully be able to achieve tomorrow.
+
+[2].  https://www.mail-archive.com/qemu-devel@nongnu.org/msg967757.html
+
+> Thanks,
+> Jean

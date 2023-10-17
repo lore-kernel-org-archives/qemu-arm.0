@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3942700ejc;
-        Tue, 17 Oct 2023 07:03:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE3PLAwJU5SfcrAmdozxF1rWM+4dsKNR4GtcgVcG6k58qFuel8k2zVyg7lgUvFhymBPGGED
-X-Received: by 2002:ac8:5a55:0:b0:417:b901:98ff with SMTP id o21-20020ac85a55000000b00417b90198ffmr2702103qta.54.1697551420219;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3942712ejc;
+        Tue, 17 Oct 2023 07:03:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IETQWiswI1oTbu/RqTuwRuGFoPhdTiDLNJnll2b+QPMU468Ey2QYISupPXEiBg1fpYe6dN9
+X-Received: by 2002:a05:6359:6c97:b0:166:a7ff:afa6 with SMTP id td23-20020a0563596c9700b00166a7ffafa6mr1559420rwb.12.1697551420784;
         Tue, 17 Oct 2023 07:03:40 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1697551420; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hzv0dbpANd1wvEKdtbn+uAY2bswyo95phoc6iBYMcSKDfO72nscV7Z6lTgxUiyiND0
-         VFrwRpKT+pZcDnhn2hf1XkzOPj//AdmzVmI7df8hJ5KU1ZEc1qJhyqi/vs6dxrzp+KI2
-         XY8/V6L5zttsB9fvw6YMsw2eEk6DAAQMOpoX5/5wh4lCv2wN3+K22HGp8s16cHimC2mp
-         A8k7zY81wVlVYFO60ai69QdaLNZYTV5ML0yG7gIFcq3EvWzbNR7YWH57AkkoxnSnZDWP
-         jAKURCeVeMQFT+KKeOVPPV+fT7A9hvlyVypl+dbPquuBwl6yAeTnMTWRI9N3ybV158n7
-         V/3Q==
+        b=Qx3B1kvHhAbT+kTsJKbX64UScjScfgyYfG/IfNu+mYYUJ+0gHqwWaGkz86XpmG42LH
+         eQOpimkGGNRlx7ogBAYhkKvlsAqcgLhFxPd67pIT1YwR521oScfsAPl5OHqqVVpQVv8j
+         Qg3Cgcxr7jMuoPHcmGSZ4OklzuCo0GJ5RvakFtVmiXoAuEQdZq5B6htfIDaC/Xv5BcX4
+         ntLOd/MmnCfrFVdJsQOoAj5u7N2z2EVzm8huL36zzxahVKioTJE2UxxgrQ12nPG8uqbq
+         /EH7AtLz8Hrurfdi4euvu5gEddIztUK8yAlpGTuvrm2XT19SitLA5vvhJEFzRCx2rzqy
+         wOcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WSV6TxGYLgcQL/krz5TOyE8HELjjUeVpowrQ5kqb6M0=;
+        bh=8Zd7XFPGgQEK2cJC81izUf+xDXi7YU9Dxs0UeK55tGc=;
         fh=PkQUf9c5shm23GEgSgwIjaGjrTFXVTBGToef+bFaIfM=;
-        b=SZClSY1uKKtpjmy+9j78ixk7NQzCDzRdujCSbwBPCNt7yhgObxIAygiR8nwa80ZPBL
-         jHGIaUf4ohXEtQp+Idyq5ly1HeA6SzYNonuD6hqrf/vPqiTS25lJpQybnqjJFLwaWYFc
-         PDKnMru72gtrAr7HYrXMjgo9ohhmwscf3t7geVkx0t7j8vyve9YYYoYoGYwOt967Row8
-         5CM8TsDWvvVtFodw+062/0M6Fps8WYmAQzOTca+zAjVyjX/rg6J4tGzP968FqTwkkc5J
-         H9r2Pd5G+kza5iAbdtQqmMrVRRb1Fqk3LwIR3F5UUSMJQnNFhgIe7lcE22JeUXFAWYuE
-         Bl2g==
+        b=S0YPvs/HahnP9MwA6liUWV2Z3xmVmD+friuntiEp0v0oxZ/64+8qcHvIAdi2fJOa8V
+         rUYlSwiXIgu02KqqO5YD9KPAhp1tKYbMg/3QmLIRG13nIzUBmedD9wimfmNGs05shR+E
+         LAZ6bVr5cNSuGbfGgiLJUL0EyfgXIE2q+ZAM/FZo3X8b6x/kdWPoOMrA6nxSWNrjz7If
+         YbYzexat93WbpTJa1DcTi/xiIkNLWVDLQPbRV0BO2EZM9iEGP+U/Thx5/6scvFL6NMzt
+         EzTbRt6+tEiqG11hXmwP40QLwVZoCjRacceHGhYAXoqCYRN/rSdN4JQQnFRjDFiBk983
+         /Plw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ChgdXX7h;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sMVJhPUZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e22-20020ac84e56000000b00417b7f7dfb9si1176002qtw.228.2023.10.17.07.03.40
+        by mx.google.com with ESMTPS id q17-20020a1f2a11000000b0049d0dda7b0dsi146105vkq.34.2023.10.17.07.03.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 17 Oct 2023 07:03:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ChgdXX7h;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sMVJhPUZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qsket-0004sa-Ev; Tue, 17 Oct 2023 10:02:55 -0400
+	id 1qsket-0004pd-4u; Tue, 17 Oct 2023 10:02:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qskep-0004P2-0m
- for qemu-devel@nongnu.org; Tue, 17 Oct 2023 10:02:52 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsked-0004F2-2j
+ for qemu-devel@nongnu.org; Tue, 17 Oct 2023 10:02:40 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qskem-0008Sa-9t
- for qemu-devel@nongnu.org; Tue, 17 Oct 2023 10:02:50 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-40684f53ef3so60050235e9.3
- for <qemu-devel@nongnu.org>; Tue, 17 Oct 2023 07:02:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qskeZ-0008Q3-NC
+ for qemu-devel@nongnu.org; Tue, 17 Oct 2023 10:02:38 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4064876e8b8so60406065e9.0
+ for <qemu-devel@nongnu.org>; Tue, 17 Oct 2023 07:02:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697551366; x=1698156166; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697551351; x=1698156151; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WSV6TxGYLgcQL/krz5TOyE8HELjjUeVpowrQ5kqb6M0=;
- b=ChgdXX7hg0odR/B9WbhlAGKUQatVxNaRdajE2hHb2knOpCxehS/w8D+KGiVRTpmMEt
- tMKPijUzP7GHwArvUjRVpMo+J6XQbmjOVkNZVe/lzzTJv5oozJB6OuDwowkX8+2wdRjW
- XRTQdYoWm34yAVsPASVtv2GuP4t1Um5Skpy5q6pWYmcy6pHZCgd0ucwZI+CGkrwWtHtP
- ViyR85uVxc9XZQGlGW5XjO6iHO/0SY2VPvgwWdlJli3UYRa734lcd2bJQkF4WwvrVNkD
- 1Vit5Qkd2wcul3Z5Jt/KuoBuoAWsoibAmjnaXlSXvGRSkndXwRn+fVOSbh0lhlfudZmb
- NUbA==
+ bh=8Zd7XFPGgQEK2cJC81izUf+xDXi7YU9Dxs0UeK55tGc=;
+ b=sMVJhPUZHMJjYFGLGbMb5BHLHrWSFrRS5URZ00agLBSFkOAjuLF7+SupN/pCddravn
+ vPwbEviyf0vNTn0KI4CpLdeV2E9WMXiPs+a0Qu4gHhwD+IojRlGyaRv8DDs7oHZsJIeH
+ +Sm2/oxNIY4bNWcf8BFyZHqOG+UuihzmCmN0eAhZFHBXh34G9TPDHhKIkV6b3sL5Qhec
+ EICDkUiEam61zFHQKHfrs2FEIe9y8bD6anQn9S2dIOApSWL3ZkQkCv3lte7HckoUPafb
+ XNWzQ019M1BjU7kxLxhHE/VaJiw4BJTp+VtO/g1Mjk4HzKLO7VBM4TjFGyPyHGhShajX
+ 4HuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697551366; x=1698156166;
+ d=1e100.net; s=20230601; t=1697551351; x=1698156151;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=WSV6TxGYLgcQL/krz5TOyE8HELjjUeVpowrQ5kqb6M0=;
- b=Nbxu6603HGGLT/VIVsEdxXWos1z5UgJTTn8NCvDPM1kDc+ogCemecG4zc02WWB07DX
- IB9ve/ZCkNyhZnP4JoAUxZkITBNDXjwqornbe1Q/pArQg7gp7L/VST3cACbkrqkAalia
- OjqhHWDOM914GezI2VwrkNI/5pRho6rPEJy9GEZNoUUdKpIR6f7T28OMa2/UkDj/VeDY
- rQf/2qfGpN5XI6Oe7HDha4INnzkHEroLlJFXCC7+Xm/Xn+vs0wlgZk9/EZina1CSGiFJ
- rElmBn4xNu5j/AME/40dhdbYRhdobUA7RKklcd+TyES4vZXuwFWCblMSz+7RA1pyBO2N
- miFw==
-X-Gm-Message-State: AOJu0Yznw6eNGZLNlSHXJ0PUf3IyZ7TmqqsAeut2vDBeTty1ehPiPRL+
- uRx1UL7KCF9TjKJa5COscqdfqcm5otOb7W6INsDNzQ==
-X-Received: by 2002:a05:6000:a87:b0:32d:8894:6aa2 with SMTP id
- dh7-20020a0560000a8700b0032d88946aa2mr1705571wrb.2.1697551365810; 
- Tue, 17 Oct 2023 07:02:45 -0700 (PDT)
+ bh=8Zd7XFPGgQEK2cJC81izUf+xDXi7YU9Dxs0UeK55tGc=;
+ b=DuSwazjrm1xEzF7nvv0DnH3sJlW142sakdauG9H6C49XA2Ho1UnefjxCQdJJKx2vEo
+ Ys9EqNBbkgl/7gBG4ki98ejFTtdyg9EZY10U5aoEMUmoXW8Wds7UpijgwaTv+KlMNRyD
+ 7qEWa1hQsGsuz/qerP7JQHmKOyv6y4popTdktkpQX/26qDLd/+hhU7yCVk9IQxwol8ea
+ GBbqarvBCgy7MVLJrMciUGdyfYNo+tFEwgW+E6TL358dFWksU+wJVaDRqH1NeJPbIgvW
+ 6/4alEWsF8p1hRlEASfDSep2VI4+UaPrADCL4b8K8EnSLldx6HF+EfNTHcRVK/C9kpY8
+ TwIQ==
+X-Gm-Message-State: AOJu0Yx/yy2SS0if9HQqpjAH0XSdACFIUJuot4FCWxaFbs4OkGXf3yXt
+ zW2pJMSPFqwT6NeRmN7m+QxY6fhSHoeJpNvSrIZaZQ==
+X-Received: by 2002:a5d:5232:0:b0:313:f463:9d40 with SMTP id
+ i18-20020a5d5232000000b00313f4639d40mr1747107wra.65.1697551350315; 
+ Tue, 17 Oct 2023 07:02:30 -0700 (PDT)
 Received: from m1x-phil.lan ([176.172.118.33])
  by smtp.gmail.com with ESMTPSA id
- x5-20020a5d60c5000000b0032179c4a46dsm1731419wrt.100.2023.10.17.07.02.43
+ o14-20020a5d62ce000000b0031779a6b451sm1744270wrv.83.2023.10.17.07.02.27
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 17 Oct 2023 07:02:45 -0700 (PDT)
+ Tue, 17 Oct 2023 07:02:29 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
@@ -100,17 +100,17 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
  Gerd Hoffmann <kraxel@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 7/7] hw/usb: Declare link using static DEFINE_PROP_LINK() macro
-Date: Tue, 17 Oct 2023 16:01:50 +0200
-Message-ID: <20231017140150.44995-8-philmd@linaro.org>
+Subject: [PATCH 5/7] hw/dma: Declare link using static DEFINE_PROP_LINK() macro
+Date: Tue, 17 Oct 2023 16:01:48 +0200
+Message-ID: <20231017140150.44995-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231017140150.44995-1-philmd@linaro.org>
 References: <20231017140150.44995-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,45 +132,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FMr1KG+O3wm8
+X-TUID: Qv7CERTQ1o6I
 
-Pull the 'dma' property to the core XHCI type, declare
-its link statically using DEFINE_PROP_LINK().
+Declare link statically using DEFINE_PROP_LINK().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/usb/hcd-xhci-sysbus.c | 4 ----
- hw/usb/hcd-xhci.c        | 2 ++
- 2 files changed, 2 insertions(+), 4 deletions(-)
+ hw/dma/xilinx_axidma.c |  6 ++----
+ hw/dma/xlnx-zdma.c     |  7 ++-----
+ hw/dma/xlnx_csu_dma.c  | 13 ++++---------
+ 3 files changed, 8 insertions(+), 18 deletions(-)
 
-diff --git a/hw/usb/hcd-xhci-sysbus.c b/hw/usb/hcd-xhci-sysbus.c
-index faf57b4797..15983d0b96 100644
---- a/hw/usb/hcd-xhci-sysbus.c
-+++ b/hw/usb/hcd-xhci-sysbus.c
-@@ -60,10 +60,6 @@ static void xhci_sysbus_instance_init(Object *obj)
-     object_initialize_child(obj, "xhci-core", &s->xhci, TYPE_XHCI);
-     qdev_alias_all_properties(DEVICE(&s->xhci), obj);
- 
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+index 12c90267df..0ae056ed06 100644
+--- a/hw/dma/xilinx_axidma.c
++++ b/hw/dma/xilinx_axidma.c
+@@ -577,10 +577,6 @@ static void xilinx_axidma_init(Object *obj)
+     object_initialize_child(OBJECT(s), "axistream-control-connected-target",
+                             &s->rx_control_dev,
+                             TYPE_XILINX_AXI_DMA_CONTROL_STREAM);
 -    object_property_add_link(obj, "dma", TYPE_MEMORY_REGION,
--                             (Object **)&s->xhci.dma_mr,
+-                             (Object **)&s->dma_mr,
 -                             qdev_prop_allow_set_link_before_realize,
 -                             OBJ_PROP_LINK_STRONG);
-     s->xhci.intr_update = NULL;
-     s->xhci.intr_raise = xhci_sysbus_intr_raise;
- }
-diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-index 4b60114207..012a6f3644 100644
---- a/hw/usb/hcd-xhci.c
-+++ b/hw/usb/hcd-xhci.c
-@@ -3638,6 +3638,8 @@ static Property xhci_properties[] = {
-     DEFINE_PROP_UINT32("p3",    XHCIState, numports_3, 4),
-     DEFINE_PROP_LINK("host",    XHCIState, hostOpaque, TYPE_DEVICE,
-                      DeviceState *),
-+    DEFINE_PROP_LINK("dma", XHCIState, dma_mr,
+ 
+     sysbus_init_irq(sbd, &s->streams[0].irq);
+     sysbus_init_irq(sbd, &s->streams[1].irq);
+@@ -596,6 +592,8 @@ static Property axidma_properties[] = {
+                      tx_data_dev, TYPE_STREAM_SINK, StreamSink *),
+     DEFINE_PROP_LINK("axistream-control-connected", XilinxAXIDMA,
+                      tx_control_dev, TYPE_STREAM_SINK, StreamSink *),
++    DEFINE_PROP_LINK("dma", XilinxAXIDMA, dma_mr,
 +                     TYPE_MEMORY_REGION, MemoryRegion *),
      DEFINE_PROP_END_OF_LIST(),
  };
  
+diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+index 4eb7f66e9f..84c0083013 100644
+--- a/hw/dma/xlnx-zdma.c
++++ b/hw/dma/xlnx-zdma.c
+@@ -795,11 +795,6 @@ static void zdma_init(Object *obj)
+                           TYPE_XLNX_ZDMA, ZDMA_R_MAX * 4);
+     sysbus_init_mmio(sbd, &s->iomem);
+     sysbus_init_irq(sbd, &s->irq_zdma_ch_imr);
+-
+-    object_property_add_link(obj, "dma", TYPE_MEMORY_REGION,
+-                             (Object **)&s->dma_mr,
+-                             qdev_prop_allow_set_link_before_realize,
+-                             OBJ_PROP_LINK_STRONG);
+ }
+ 
+ static const VMStateDescription vmstate_zdma = {
+@@ -817,6 +812,8 @@ static const VMStateDescription vmstate_zdma = {
+ 
+ static Property zdma_props[] = {
+     DEFINE_PROP_UINT32("bus-width", XlnxZDMA, cfg.bus_width, 64),
++    DEFINE_PROP_LINK("dma", XlnxZDMA, dma_mr,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
+index 88002698a1..e89089821a 100644
+--- a/hw/dma/xlnx_csu_dma.c
++++ b/hw/dma/xlnx_csu_dma.c
+@@ -702,6 +702,10 @@ static Property xlnx_csu_dma_properties[] = {
+      * which channel the device is connected to.
+      */
+     DEFINE_PROP_BOOL("is-dst", XlnxCSUDMA, is_dst, true),
++    DEFINE_PROP_LINK("stream-connected-dma", XlnxCSUDMA, tx_dev,
++                     TYPE_STREAM_SINK, StreamSink *),
++    DEFINE_PROP_LINK("dma", XlnxCSUDMA, dma_mr,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -728,15 +732,6 @@ static void xlnx_csu_dma_init(Object *obj)
+ 
+     memory_region_init(&s->iomem, obj, TYPE_XLNX_CSU_DMA,
+                        XLNX_CSU_DMA_R_MAX * 4);
+-
+-    object_property_add_link(obj, "stream-connected-dma", TYPE_STREAM_SINK,
+-                             (Object **)&s->tx_dev,
+-                             qdev_prop_allow_set_link_before_realize,
+-                             OBJ_PROP_LINK_STRONG);
+-    object_property_add_link(obj, "dma", TYPE_MEMORY_REGION,
+-                             (Object **)&s->dma_mr,
+-                             qdev_prop_allow_set_link_before_realize,
+-                             OBJ_PROP_LINK_STRONG);
+ }
+ 
+ static const TypeInfo xlnx_csu_dma_info = {
 -- 
 2.41.0
 

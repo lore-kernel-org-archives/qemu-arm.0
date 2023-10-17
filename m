@@ -1,246 +1,299 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f19-20020a05600c4e9300b00403b63e87f2sm1967412wmq.32.2023.10.17.06.50.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Oct 2023 06:50:27 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A9C931FFBB;
-	Tue, 17 Oct 2023 14:50:26 +0100 (BST)
-References: <20230915185453.1871167-1-peter.maydell@linaro.org>
- <20230915185453.1871167-3-peter.maydell@linaro.org>
-User-agent: mu4e 1.11.22; emacs 29.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Marcin Juszkiewicz
- <marcin.juszkiewicz@linaro.org>, Leif Lindholm
- <quic_llindhol@quicinc.com>, Radoslaw Biernacki <rad@semihalf.com>,
- qemu-arm@nongnu.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Subject: Re: [PATCH 2/2] target/arm: Implement Neoverse N2 CPU model
-Date: Tue, 17 Oct 2023 14:29:45 +0100
-In-reply-to: <20230915185453.1871167-3-peter.maydell@linaro.org>
-Message-ID: <87edhtbbod.fsf@linaro.org>
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp3937667ejc;
+        Tue, 17 Oct 2023 06:57:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEcDfAb4HxuT2ZUll8TUnOYQuc/WIuK4Gws/HECn2l2wzriDNC2fV7iy9aLNPZoGEnJWIXW
+X-Received: by 2002:a05:6214:29cc:b0:655:d6af:1c37 with SMTP id gh12-20020a05621429cc00b00655d6af1c37mr2341724qvb.65.1697551024349;
+        Tue, 17 Oct 2023 06:57:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697551024; cv=none;
+        d=google.com; s=arc-20160816;
+        b=K+ZxmqLmxYBUVhzOcPIg2QG5oMIpIMuozfHf43hXaOy43+nUWMcEDly92LvDQquv1n
+         1GsDy7xBwZUw/fQ8WI2xKdvepzCPILn+BGteGBDH4kbbkyEtDc/8/XsKcqqad7TvyCWy
+         /ubphRl7OPTJABrSsHrEfybuaiT+aWIs2GZ/si/xGVGRCR0dDgWzZyQPfi40Pooa2EFB
+         9reBotkfXshxSR1aLqlBHNECCSy4MjqiaNBoUIcYT/+OXb15zo8xbf0VLlP6sbsk17d+
+         EtCC84icJ9dFibimKnL1jO5uDzA2OqszQv+mvndD+owP3IocZoAweuzVcPKGBVzyiV4v
+         38vw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=hbIxBE94fKsxgztzJMk2M0FJiSXDy4k4lvIgryPHLsE=;
+        fh=Pfhq8wFxCkpFzniIvj4dX8EJ6qNAeD3ht3csU6tASyU=;
+        b=Xc1pllIdUWU7eAyq4srsvq7nkyjkAn6Tjm9vsTF6eOoRBh5QDyQGPO2j6ofQyte5D3
+         I32hokM1hR9/owF5wPAm7gbkIloVbJQge902ouTOiDYBLgSYoJzkwuFu9siL+oNIrJfX
+         G44CyeWqOOb+Ni7dUztFEtluKM8pUJ/CgMw9Lua6Am/py+fg7LFh2DGr/JtzByGrzDz2
+         wDMdnIPfEnX+YLd9uh/zIFrLQMtyilFIE7KYD6FJlSMERHEvR2ZLI7c0m+z3xf+O9WlG
+         aca/TlLu5AQd9CnJbEePAQA6lqtebxMaB1MBP4ogqdrp1qWUMLjCAFeqK1rRlMDFWt5k
+         EAgA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UfIT08T5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id nd10-20020a056214420a00b0065afca081f4si999730qvb.301.2023.10.17.06.57.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 17 Oct 2023 06:57:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UfIT08T5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qskZ4-0005cj-Bs; Tue, 17 Oct 2023 09:56:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qskZ3-0005c2-DM
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 09:56:53 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qskYu-0007J4-Nf
+ for qemu-arm@nongnu.org; Tue, 17 Oct 2023 09:56:53 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-5079eed8bfbso5069278e87.1
+ for <qemu-arm@nongnu.org>; Tue, 17 Oct 2023 06:56:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697551002; x=1698155802; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=hbIxBE94fKsxgztzJMk2M0FJiSXDy4k4lvIgryPHLsE=;
+ b=UfIT08T57j4V/9UwElwJAmyKRUKX/KWWceIvQ80aE3Ba5cHtmdzy9nL3BwfDtomVQZ
+ z2N7TdBEbZDLsp/C3TXLErhLKmVYYPS8jpOQ4DtxGYd6UYJmDtZwVJ/htlKyI14J3JKr
+ ZkbbB+EhPO+BoQmJSlGuN0BsLDgx+wM7RmMGKF5YGX7HRtEPPoDCD1iGJ6vDU1Nq2EVE
+ 1vPsCNr1sm+0l2uL/4jgp390CY+MMHWgXykQoVcH+JlvE+m7Brhrtbpd4edi0gdTv57D
+ +Vi+7ayER6+qNbUcLAgB3mC+9a0ZoUSqrlxJeIvNxVIbqn87y3SoJCzHCJruGfQDsD67
+ PKWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697551002; x=1698155802;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=hbIxBE94fKsxgztzJMk2M0FJiSXDy4k4lvIgryPHLsE=;
+ b=tJ1EUzzwQ5+v53Amn3L20rGSe06pucQi24zLCcB+ixIr0Snn2X1RiGnZQ29J44bAD6
+ xTIck8hNY7EHoUIh8MAP/zQaslSN81Y9WAXHUW9zPtto3uYMJL/HruE7zQlmsTbj1HMv
+ sHKxScKPH/+WKHq9KQ7kbHOwG/9V4Omx0Sgo7n7EUINjTl1m3d6c3dFOkNT2p1i7XEUP
+ UeXEdt0kEWQYlcmSB47QD5MDa2iWo+esokG7RfH00t8ZEzFggXM+O+sZNK9gcA71OE5x
+ +ETXZMpiQf3YCduvYa88s+jhQAO7sPv3Cv+jmEhDw7G2you5Z96PEw60ttzyo2Aze02B
+ gYGA==
+X-Gm-Message-State: AOJu0YyZH1vfFlSNAgqLsngpdIrWswxjiWbYyVqVSfklsQ0prF+M9Yo7
+ 6CDi0KVo0McvSOz+uhQIZD9XAZFSTWRUGLhAb70=
+X-Received: by 2002:ac2:4d90:0:b0:507:9ff6:75b6 with SMTP id
+ g16-20020ac24d90000000b005079ff675b6mr1790071lfe.50.1697551002211; 
+ Tue, 17 Oct 2023 06:56:42 -0700 (PDT)
+Received: from myrica ([2a02:c7c:7290:b00:fd32:2b31:6755:400c])
+ by smtp.gmail.com with ESMTPSA id
+ r2-20020a5d4982000000b0032d87b13240sm1762439wrq.73.2023.10.17.06.56.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 17 Oct 2023 06:56:41 -0700 (PDT)
+Date: Tue, 17 Oct 2023 14:56:47 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: Itaru Kitayama <itaru.kitayama@gmail.com>, qemu-arm@nongnu.org,
+ Shashi Mallela <shashi.mallela@linaro.org>
+Subject: Re: Quick start guide on RME emulation
+Message-ID: <20231017135647.GB835650@myrica>
+References: <CANW9uyvsD8UWJ9yrrvgb4i7nEoDAXNaepk-zsJWuyw=tp_W9oA@mail.gmail.com>
+ <20231002102231.GA3075015@myrica>
+ <CANW9uyu85z9+-v8ait9EWcjWRu1+C8Xx3cM__8oBKof7fJwRwA@mail.gmail.com>
+ <20231004105558.GA1454132@myrica>
+ <CANLsYky87enj0bkSs_PaKE=rM7odowfXZ2bT6W0KJ1RFyZApwg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: VuVxBzIKx/h6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CANLsYky87enj0bkSs_PaKE=rM7odowfXZ2bT6W0KJ1RFyZApwg@mail.gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=jean-philippe@linaro.org; helo=mail-lf1-x12f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4Eur/Ndawi3X
+
+On Mon, Oct 16, 2023 at 03:30:30PM -0600, Mathieu Poirier wrote:
+> > TF-RMM
+> > ------
+> >
+> > The Realm Management Monitor (RMM) connects KVM and the Realm guest.
+> >
+> > RMM gets loaded into NS DRAM (because there isn't enough space in Secure
+> > RAM). TF-A carves out 24MB of memory for the RMM, and tells other software
+> > about it using a device-tree reserved memory node.
+> >
+> > Status: QEMU support is currently under review. Additional patches are
+> >   needed until QEMU supports a couple additional features that are
+> >   mandatory for RME (PMUv3p7 and ECV).
+> >
+> > Repo: currently at https://jpbrucker.net/git/rmm/ branch qemu-rme
+> >       official is https://git.trustedfirmware.org/TF-RMM/tf-rmm.git/
+> >
+> > Build:  git submodule update --init --recursive
+> >         export CROSS_COMPILE=aarch64-linux-gnu-
+> >         cmake -DCMAKE_BUILD_TYPE=Debug -DRMM_CONFIG=qemu_virt_defcfg -DRMM_TOOLCHAIN=llvm -B build-qemu
+> >         cmake --build build-qemu
+> >
+> 
+> The -DRMM_TOOLCHAIN part puzzled me since it was not in the RMM build
+> instruction for the FVP model.  Is it mandatory and if so, what
+> version of llvm are you using?  As with the FVP model, I used the
+> following:
+> 
+> CROSS_COMPILE=/home/mpoirier/work/cca/optee-cca/toolchains/aarch64-none-elf/bin/aarch64-none-elf-
+> cmake -DRMM_CONFIG=qemu_virt_defcfg -DCMAKE_BUILD_TYPE=Debug
+> -DLOG_LEVEL=40 -B build
+> cmake --build build
+> 
+> The "aarch64-none-elf" is exactly the same as the one in the FVP model.
+
+Both GCC and LLVM should work, but I had some trouble with GCC and haven't
+had time to investigate yet, so I provided instructions for LLVM (v16)
+which works for me. I'm probably using the wrong GCC toolchain, because
+I'm currently getting these link errors:
+
+/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: warning: libc.so.6, needed by /usr/aarch64-linux-gnu/lib/libm.so.6, not found (try using -rpath or -rpath-link)
+/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__strtold_nan@GLIBC_PRIVATE'
+/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `stderr@GLIBC_2.17'
+/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `qsort@GLIBC_2.17'
+/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__strtof_nan@GLIBC_PRIVATE'
+/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `fwrite@GLIBC_2.17'
+/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `errno@GLIBC_PRIVATE'
+/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `fputs@GLIBC_2.17'
+/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__strtod_nan@GLIBC_PRIVATE'
+/usr/lib/gcc/aarch64-linux-gnu/13.2.0/../../../../aarch64-linux-gnu/bin/ld: /usr/aarch64-linux-gnu/lib/libm.so.6: undefined reference to `__assert_fail@GLIBC_2.17'
 
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+> 
+> >
+> > Host EDK2
+> > ---------
+> >
+> > Works out of the box, although it doesn't properly account for reserved
+> > RMM memory yet.
+> >
+> 
+> Not sure what to make of the above statement - should I expect the
+> host boot stack to crash when launching QEMU?
 
-> Implement a model of the Neoverse N2 CPU. This is an Armv9.0-A
-> processor very similar to the Cortex-A710. The differences are:
->  * no FEAT_EVT
->  * FEAT_DGH (data gathering hint)
->  * FEAT_NV (not yet implemented in QEMU)
->  * Statistical Profiling Extension (not implemented in QEMU)
->  * 48 bit physical address range, not 40
->  * CTR_EL0.DIC =3D 1 (no explicit icache cleaning needed)
->  * PMCR_EL0.N =3D 6 (always 6 PMU counters, not 20)
->
-> Because it has 48-bit physical address support, we can use
-> this CPU in the sbsa-ref board as well as the virt board.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  docs/system/arm/virt.rst |   1 +
->  hw/arm/sbsa-ref.c        |   1 +
->  hw/arm/virt.c            |   1 +
->  target/arm/tcg/cpu64.c   | 103 +++++++++++++++++++++++++++++++++++++++
->  4 files changed, 106 insertions(+)
->
-> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-> index e1697ac8f48..7c4c80180c6 100644
-> --- a/docs/system/arm/virt.rst
-> +++ b/docs/system/arm/virt.rst
-> @@ -63,6 +63,7 @@ Supported guest CPU types:
->  - ``host`` (with KVM only)
->  - ``neoverse-n1`` (64-bit)
->  - ``neoverse-v1`` (64-bit)
-> +- ``neoverse-n2`` (64-bit)
->  - ``max`` (same as ``host`` for KVM; best possible emulation with TCG)
->=20=20
->  Note that the default is ``cortex-a15``, so for an AArch64 guest you must
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index bc89eb48062..4db287287e1 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -154,6 +154,7 @@ static const char * const valid_cpus[] =3D {
->      ARM_CPU_TYPE_NAME("cortex-a72"),
->      ARM_CPU_TYPE_NAME("neoverse-n1"),
->      ARM_CPU_TYPE_NAME("neoverse-v1"),
-> +    ARM_CPU_TYPE_NAME("neoverse-n2"),
->      ARM_CPU_TYPE_NAME("max"),
->  };
->=20=20
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 8ad78b23c24..42253462735 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -215,6 +215,7 @@ static const char *valid_cpus[] =3D {
->      ARM_CPU_TYPE_NAME("a64fx"),
->      ARM_CPU_TYPE_NAME("neoverse-n1"),
->      ARM_CPU_TYPE_NAME("neoverse-v1"),
-> +    ARM_CPU_TYPE_NAME("neoverse-n2"),
->  #endif
->      ARM_CPU_TYPE_NAME("cortex-a53"),
->      ARM_CPU_TYPE_NAME("cortex-a57"),
-> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-> index ea43cf3c1ee..370cc82f0ef 100644
-> --- a/target/arm/tcg/cpu64.c
-> +++ b/target/arm/tcg/cpu64.c
-> @@ -963,6 +963,108 @@ static void aarch64_a710_initfn(Object *obj)
->      aarch64_add_sve_properties(obj);
->  }
->=20=20
-> +/* Extra IMPDEF regs in the N2 beyond those in the A710 */
-> +static const ARMCPRegInfo neoverse_n2_cp_reginfo[] =3D {
-> +    { .name =3D "CPURNDBR_EL3", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 6, .crn =3D 15, .crm =3D 3, .opc2 =3D 0,
-> +      .access =3D PL3_RW, .type =3D ARM_CP_CONST, .resetvalue =3D 0 },
-> +    { .name =3D "CPURNDPEID_EL3", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 6, .crn =3D 15, .crm =3D 3, .opc2 =3D 1,
-> +      .access =3D PL3_RW, .type =3D ARM_CP_CONST, .resetvalue =3D 0 },
-> +};
-> +
-> +static void aarch64_neoverse_n2_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu =3D ARM_CPU(obj);
-> +
-> +    cpu->dtb_compatible =3D "arm,neoverse-n2";
-> +    set_feature(&cpu->env, ARM_FEATURE_V8);
-> +    set_feature(&cpu->env, ARM_FEATURE_NEON);
-> +    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-> +    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> +    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-> +    set_feature(&cpu->env, ARM_FEATURE_EL2);
-> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
-> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
-> +
-> +    /* Ordered by Section B.5: AArch64 ID registers */
-> +    cpu->midr          =3D 0x410FD493; /* r0p3 */
-> +    cpu->revidr        =3D 0;
-> +    cpu->isar.id_pfr0  =3D 0x21110131;
-> +    cpu->isar.id_pfr1  =3D 0x00010000; /* GIC filled in later */
-> +    cpu->isar.id_dfr0  =3D 0x16011099;
-> +    cpu->id_afr0       =3D 0;
-> +    cpu->isar.id_mmfr0 =3D 0x10201105;
-> +    cpu->isar.id_mmfr1 =3D 0x40000000;
-> +    cpu->isar.id_mmfr2 =3D 0x01260000;
-> +    cpu->isar.id_mmfr3 =3D 0x02122211;
-> +    cpu->isar.id_isar0 =3D 0x02101110;
-> +    cpu->isar.id_isar1 =3D 0x13112111;
-> +    cpu->isar.id_isar2 =3D 0x21232042;
-> +    cpu->isar.id_isar3 =3D 0x01112131;
-> +    cpu->isar.id_isar4 =3D 0x00010142;
-> +    cpu->isar.id_isar5 =3D 0x11011121; /* with Crypto */
-> +    cpu->isar.id_mmfr4 =3D 0x01021110;
-> +    cpu->isar.id_isar6 =3D 0x01111111;
-> +    cpu->isar.mvfr0    =3D 0x10110222;
-> +    cpu->isar.mvfr1    =3D 0x13211111;
-> +    cpu->isar.mvfr2    =3D 0x00000043;
-> +    cpu->isar.id_pfr2  =3D 0x00000011;
-> +    cpu->isar.id_aa64pfr0  =3D 0x1201111120111112ull; /* GIC filled in l=
-ater */
-> +    cpu->isar.id_aa64pfr1  =3D 0x0000000000000221ull;
-> +    cpu->isar.id_aa64zfr0  =3D 0x0000110100110021ull; /* with Crypto */
-> +    cpu->isar.id_aa64dfr0  =3D 0x000011f210305619ull;
-> +    cpu->isar.id_aa64dfr1  =3D 0;
-> +    cpu->id_aa64afr0       =3D 0;
-> +    cpu->id_aa64afr1       =3D 0;
-> +    cpu->isar.id_aa64isar0 =3D 0x0221111110212120ull; /* with Crypto */
-> +    cpu->isar.id_aa64isar1 =3D 0x0011111101211052ull;
-> +    cpu->isar.id_aa64mmfr0 =3D 0x0000022200101125ull;
-> +    cpu->isar.id_aa64mmfr1 =3D 0x0000000010212122ull;
-> +    cpu->isar.id_aa64mmfr2 =3D 0x1221011112101011ull;
-> +    cpu->clidr             =3D 0x0000001482000023ull;
-> +    cpu->gm_blocksize      =3D 4;
-> +    cpu->ctr               =3D 0x00000004b444c004ull;
-> +    cpu->dcz_blocksize     =3D 4;
-> +    /* TODO FEAT_MPAM: mpamidr_el1 =3D 0x0000_0001_001e_01ff */
+I'm still figuring that out but I don't think so, because edk2 seems to
+allocate stack and heap memory from the top of RAM, so it won't touch the
+RMM memory (which I placed near the bottom at 0x40100000-0x418fffff).
 
-Jonathan mentioned he was hacking about with MPAM so if there is a stub
-implementation of the fields it would be nice to add them.
+But we can't rely on this, so long term we'll need to make edk2 aware that
+there is a hole in RAM. I need a better understanding of edk2 memory
+management first.
 
-> +
-> +    /* Section B.7.2: PMCR_EL0 */
-> +    cpu->isar.reset_pmcr_el0 =3D 0x3000;  /* with 6 counters */
-> +
-> +    /* Section B.8.9: ICH_VTR_EL2 */
-> +    cpu->gic_num_lrs =3D 4;
-> +    cpu->gic_vpribits =3D 5;
-> +    cpu->gic_vprebits =3D 5;
-> +    cpu->gic_pribits =3D 5;
-> +
-> +    /* Section 14: Scalable Vector Extensions support */
-> +    cpu->sve_vq.supported =3D 1 << 0;  /* 128bit */
-> +
-> +    /*
-> +     * The Neoverse N2 TRM does not list CCSIDR values.  The layout of
-> +     * the caches are in text in Table 7-1, Table 8-1, and Table 9-1.
-> +     *
-> +     * L1: 4-way set associative 64-byte line size, total 64K.
-> +     * L2: 8-way set associative 64 byte line size, total either 512K or=
- 1024K.
-> +     */
-> +    cpu->ccsidr[0] =3D make_ccsidr64(4, 64, 64 * KiB);   /* L1 dcache */
-> +    cpu->ccsidr[1] =3D cpu->ccsidr[0];                   /* L1 icache */
-> +    cpu->ccsidr[2] =3D make_ccsidr64(8, 64, 512 * KiB);  /* L2 cache */
-> +
-> +    /* FIXME: Not documented -- copied from neoverse-v1 */
-> +    cpu->reset_sctlr =3D 0x30c50838;
+> > VMM
+> > ---
+> >
+> > Kvmtool and QEMU can be used to launch Realm guests. For kvmtool, see the
+> > cover letter for the Linux support above.
+> >
+> > Status: In development
+> >
+> > Repo: for now https://jpbrucker.net/git/qemu/ branch cca/rmm-v1.0-eac2
+> >
+> > Build:  git submodule update --init --recursive
+> >         # to download the missing subprojects because buildroot won't do it:
+> >         ./configure --target-list=aarch64-softmmu
+> >         # Note: when buildroot is configured to use this tree (see below),
+> >         # it will rsync the whole tree including binary files. Therefore,
+> >         # use a separate build directory to make the system emulation
+> >         # QEMU, to avoid conflicts between native binary files and
+> >         # buildroot's cross-build.
+> >
+> 
+> This got a little tricky.  From what I understand this is the
+> "emulation" QEMU, which should likely be in a directory called
+> "qemu.host".  The QEMU referenced from buildroot should be in another
+> directory, something like "qemu.buildroot", for buildroot to build.
+> Is this correct?
 
-Hmm reset_sctlr might need to be bigger because being used for sctlr_el3
-is a 64 bit entity which has a number of fields:
+Yes. Two separate source trees should be easiest to deal with.
 
-  - DSSBS,bit[44] to have some sort of impdef value
-  - the others all look like architecturally UNKNOWN values
+To ensure my VMM changes don't break emulation QEMU I use a single source
+tree, and a separate build directory for the emulation QEMU:
 
-Otherwise I think this is:
+	cd ~/build/qemu.host/
+	~/src/qemu/configure --target-list=aarch64-softmmu
+	make -j
 
-  - 3 - RES1 29:28
-  - 0 - RES0 + I assume LE EE bit
-  - c - RES1 23, EIS 22 (architecturally UNKNOWN on reset)
-  - 5 - RES1 18, 16
-  - 0 - RES0 15:14, EnDB 13 (architecturally UNKNOWN on reset), I 12 RES0
-  - 8 - EOS 11 (architecturally UNKNOWN on reset)
-  - 3 - RES1 5:4
-  - 8 - SA 3 (architecturally UNKNOWN on reset)
+> >
+> > Rootfs
+> > ------
+> >
+> > Buildroot provides a convenient way to build lightweight root filesystems.
+> > It can also embed the VMM into the rootfs if you specify the path to
+> > kvmtool or QEMU source in a local.mk file in the build directory.
+> >
+> > Repo: https://gitlab.com/buildroot.org/buildroot.git
+> >
+> 
+> Did you use the master branch or a stable one?  If so, which one?
 
-It's a little confusing because the language describing these
-architecturally unknown states refers to resetting to EL3 (I assume a
-decent firmware would make sure everything is set correctly). Which
-makes me wonder if reset_sctlr is really "sane values for a direct
-kernel boot"?
+I'm using the master branch (currently I'm on 96130dc204)
 
-> +
-> +    /*
-> +     * The Neoverse N2 has all of the Cortex-A710 IMPDEF registers,
-> +     * and a few more RNG related ones.
-> +     */
-> +    define_arm_cp_regs(cpu, cortex_a710_cp_reginfo);
-> +    define_arm_cp_regs(cpu, neoverse_n2_cp_reginfo);
-> +
-> +    aarch64_add_pauth_properties(obj);
-> +    aarch64_add_sve_properties(obj);
-> +}
-> +
->  /*
->   * -cpu max: a CPU with as many features enabled as our emulation suppor=
-ts.
->   * The version of '-cpu max' for qemu-system-arm is defined in cpu32.c;
-> @@ -1159,6 +1261,7 @@ static const ARMCPUInfo aarch64_cpus[] =3D {
->      { .name =3D "a64fx",              .initfn =3D aarch64_a64fx_initfn },
->      { .name =3D "neoverse-n1",        .initfn =3D aarch64_neoverse_n1_in=
-itfn },
->      { .name =3D "neoverse-v1",        .initfn =3D aarch64_neoverse_v1_in=
-itfn },
-> +    { .name =3D "neoverse-n2",        .initfn =3D aarch64_neoverse_n2_in=
-itfn },
->  };
->=20=20
->  static void aarch64_cpu_register_types(void)
+> 
+> > local.mk
+> >         KVMTOOL_OVERRIDE_SRCDIR = path/to/kvmtool/
+> >         QEMU_OVERRIDE_SRCDIR = path/to/qemu/
+> >
+> 
+> Please confirm that "local.mk" is not part of the buildroot repository
+> and needs to be created.  Also confirm that KVMTOOLS don't need to be
+> specified, this is for demonstration purposes.  And following my
+> comment above, "path/to/qemu" should be "path/to/qemu.buildroot".
 
+Yes, local.mk needs to be created, and KVMTOOL_OVERRIDE_SRCDIR isn't
+needed if you're planning to only use QEMU to launch Realm VMs
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+> 
+> > Build:  make qemu_aarch64_virt_defconfig
+> >         # then change some options
+> >           # BR2_LINUX_KERNEL is not set
+> >           BR2_PACKAGE_KVMTOOL=y
+> >           BR2_PACKAGE_QEMU=y
+> >           BR2_PACKAGE_QEMU_SYSTEM=y
+> >           # BR2_PACKAGE_QEMU_BLOBS is not set
+> >           BR2_PACKAGE_QEMU_SLIRP=y
+> >           BR2_PACKAGE_QEMU_CHOOSE_TARGETS=y
+> >           BR2_PACKAGE_QEMU_TARGET_AARCH64=y
+> >           BR2_TARGET_ROOTFS_EXT2_SIZE=256M
+> >
+> 
+> I used branch 2023.08.x and several of the above options were _not_
+> present in the ".config" file, namely BR2_PACKAGE_QEMU_SYSTEM,
+> BR2_PACKAGE_QEMU_BLOBS, BR2_PACKAGE_QEMU_SLIRP,
+> BR2_PACKAGE_QEMU_CHOOSE_TARGETS and BR2_PACKAGE_QEMU_TARGET_AARCH64.
+> Moreover, I tried building buildroot without any changes to the
+> ".config" file and the compilation failed.  This leads me to beleive
+> we are working on different branches.  I will try the master branch
+> once I am done with this email.
+> 
+
+Buildroot keeps the QEMU build recipe in package/qemu/qemu.mk which only
+has instructions for one version of QEMU (QEMU_VERSION). Since QEMU's
+configure options change regularly and my VMM modifications are based on
+QEMU's master branch, I use buildroot's master branch in order to get the
+most recent qemu.mk.
+
+Thanks,
+Jean

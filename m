@@ -1,313 +1,190 @@
-Received: by 2002:a17:906:b794:b0:9b6:5cec:e61e with SMTP id dt20csp20012ejb;
-        Wed, 18 Oct 2023 11:13:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGM8+n5Ltk2+Y31dRYB86xJMfNLzuP2wW0TZIIyP5WSBME6Y4hVra9+Thna72P9bbhyn8gG
-X-Received: by 2002:a05:6870:8a21:b0:1e9:d8a4:551f with SMTP id p33-20020a0568708a2100b001e9d8a4551fmr183209oaq.17.1697652839097;
-        Wed, 18 Oct 2023 11:13:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697652839; cv=none;
+Received: by 2002:a17:906:b794:b0:9b6:5cec:e61e with SMTP id dt20csp20070ejb;
+        Wed, 18 Oct 2023 11:14:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEf7YBS++kvY0bZ/TXP4rN4YI2MAtU5bhLSW3f0tX4oSaPukXw4V8Twr3AXB+Zes2Voyd6x
+X-Received: by 2002:a05:6214:2129:b0:635:93fb:fc05 with SMTP id r9-20020a056214212900b0063593fbfc05mr68840qvc.10.1697652843793;
+        Wed, 18 Oct 2023 11:14:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697652843; cv=none;
         d=google.com; s=arc-20160816;
-        b=KYD6ZnO2fTwEiVhminAzG3ttDEIUtKrh77zzhrkNNjSz6r7kDcESKgi/7HXXxbKGwh
-         y91wC8yZcAAyjvb1sbkxA1Tez+8fnBQg9v/DiP0cpG0iSlalWc7MXUbDrHpyDEvqoDgM
-         oOep5TboTxBkwDUpFgAoc8g8UBqgSOSpybLkkBN4+cxrf2eNKTnB0Tp/4NcFEnMYhQ2p
-         BQQYLmtBzBMnw4PKX3vuaT8hQmXWMArb92WMjI1k20PJxP9b7sQ5/LkLAPHlDIM+0D62
-         ygzP/09zYcPkNLPqokJSXPfO6mQGu7JXpCQ1RG5UDih43ZbbWG3h86V8AlMgi9YpOEWe
-         RuAw==
+        b=TSmOuN7CLpepUxF1NbM9tuCLMRr2T7MR85UcurIz/TtdR3KAFS9BIfrjzn7KrzSyhk
+         wdj6lutEp7RU4sPRz8ncO0aAeg1vDDmYktmTzDjJPenpckV/WCUV69oed1TdK6lh94eP
+         2qad07lJDSbPA11lEGzqB6dan6jiyO48iSnhgfsufq4LVRgU/WvLoY1rcfZfgxkNkC2X
+         Wdn9KMvNVsI4509siRWKY/gXuUrOmTezfu22dJv0dfyk894N9PWCFGBS9ztF1492Dms0
+         YznKkGzrZRMUoiKENfiiR5sV93Qku/2Q7AMp+NWyikU9TQ4yxZVzaTHHbrnc68aLU8hY
+         VGgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=90akPlnyRJ5zgnZFIuWWHhh2caiIuDeE7ak8tV8kgG4=;
+        bh=fpTYqbzbpK0KwCDIcxLgpCv/rd2lgYasN8Y7y7lzZh8=;
         fh=8TcdNm2PUOSTOLTAPwKw1HRZgze8qTDV0WK6iGCckjQ=;
-        b=W/og9e+K1nlnEO1ZKvlpktvhrljN3bkZ82k62Nmi2GaIVKQ0fn7kQL9UK50FOTOVYm
-         otHF76A1/rHNBB2PjDxH64yqwooPsGPxup9ef9oNmOU1U0Xs5gFiFzrU1nnKfJoCWKUm
-         8imFZ/zUomxfOoUp/hOf1LCbkm642S0dmAHvRy+fbAqWpUAL54DUb8nAvkzRm2RCFMVi
-         HfMMkvkNMKs/SAk34duqiMbUPc3O8UrHmGZWAv/ggUu+a+EXtxjpWZ1SPNyFzchrylJX
-         TVBOH57Nj0FM+fE1y01Cwunpz9nGCdijLicB+8em+LpezLSX/n+FYolIlXfGgmORshEJ
-         nKFQ==
+        b=xyWj4yiiRgJ09bAQr/iu/Oxd3sMFQ+coTTMCvfyAakT39wEjaOz2I0eYArPnllFcTW
+         Cbysk8PTFMVR14Otjsdsk6QRkPgNQtZKIdagG2WX2jxR2QkX79Gx6yS05iRS+oGoAoVb
+         2nt9jG0MLsuW0Oafgal5owNcjaYowMXI+LsV9Gdn79pyPnEKi1yK6p+thcSvak/WlLN0
+         xfsE+c0cRlImBC2wCXYHyw4bBH8rio8nyZSzy0XrB+p7TssZXTeQmB7ZYGzlEPqXofZp
+         Zacc0a/o0aHZSISdbGc0YPvqYtRXyd00DqhnevXdnxGYJr5V4cNWOy3EoF9hbYuU2wZF
+         DYfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=ZLTquW+4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=bcSfo5Xp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p12-20020a05622a13cc00b0041991ffde0dsi318854qtk.574.2023.10.18.11.13.58
+        by mx.google.com with ESMTPS id c26-20020ae9e21a000000b007788bb3ee9esi290923qkc.554.2023.10.18.11.14.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Oct 2023 11:13:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Oct 2023 11:14:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=ZLTquW+4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=bcSfo5Xp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtB1l-0006i9-AP; Wed, 18 Oct 2023 14:12:17 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qtB2b-0008KH-ST; Wed, 18 Oct 2023 14:13:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3_R8wZQwKCC4XKLSROcdOPKXQYYQVO.MYWaOWe-KbWXYXQXe.YbQ@flex--nabihestefan.bounces.google.com>)
- id 1qtB1k-0006h0-Jf
- for qemu-arm@nongnu.org; Wed, 18 Oct 2023 14:12:16 -0400
-Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
+ <3MSAwZQwKCmINABIHESTEFANGOOGLE.COMQEMU-DEVELNONGNU.ORG@flex--nabihestefan.bounces.google.com>)
+ id 1qtB2Z-0008BA-Vz
+ for qemu-devel@nongnu.org; Wed, 18 Oct 2023 14:13:08 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3_R8wZQwKCC4XKLSROcdOPKXQYYQVO.MYWaOWe-KbWXYXQXe.YbQ@flex--nabihestefan.bounces.google.com>)
- id 1qtB1i-0008CY-OC
- for qemu-arm@nongnu.org; Wed, 18 Oct 2023 14:12:16 -0400
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-5a8b33d2a93so13492257b3.1
- for <qemu-arm@nongnu.org>; Wed, 18 Oct 2023 11:12:14 -0700 (PDT)
+ <3MSAwZQwKCmINABIHESTEFANGOOGLE.COMQEMU-DEVELNONGNU.ORG@flex--nabihestefan.bounces.google.com>)
+ id 1qtB2Y-0008HI-F0
+ for qemu-devel@nongnu.org; Wed, 18 Oct 2023 14:13:07 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-d9a3942461aso10415213276.2
+ for <qemu-devel@nongnu.org>; Wed, 18 Oct 2023 11:13:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1697652733; x=1698257533; darn=nongnu.org;
+ d=google.com; s=20230601; t=1697652785; x=1698257585; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=90akPlnyRJ5zgnZFIuWWHhh2caiIuDeE7ak8tV8kgG4=;
- b=ZLTquW+4AZFeIHYiXPsdEPYkm+Lsy8sNcgMXkLGfEM2GOcLEchuY1fd+IPJ/tGJIWG
- 2/S2/I6TMEMZ5OJ2HmvIc87NCINpqPqUaBIpxasrXiSz7c8HviSd9/r4ha5Z205vFcok
- XHw0Mf5J1h6D9+2oQmAX9S2otvco64aRj5XGLC1MBKQKm0xTijqzrrR9RX+bw1rxCRsA
- S+SLMN/Ps7ppRRUdGddu/E+hhYSiixsOBS/R0Yj2ds4hXQ6jvVpuJUb4CYY6J43n86wh
- 6jdJeSQCkYVxf7rdgFylNST0tStieuWTWEaAAS6tpdZhg9kR2jT/l02BYmoQ2hI7IX2m
- oXBQ==
+ bh=fpTYqbzbpK0KwCDIcxLgpCv/rd2lgYasN8Y7y7lzZh8=;
+ b=bcSfo5XpiXYtxDNP/ZhronBAVbTw4cOvmt6Z1z5koegpbWbnI9qeRzDTo03fvD0UoT
+ 18/f/S/3g16RKrPOc1kl19FBit8m/OOh0Q6kTOP9zG8rH8KFuQlUSCbFwC+GpCTxveO6
+ iG+Ok3KcS3+1dzjBjgLRzDJ1XhAVMeGTJOneXzu7q1GZk5+QPDedealv2HHNYGhgcANP
+ 21kIJZAJchoKdeywCcE+jaXlNILzrBysEQLsY2SEcPOnwSY6R435SvBiS8jtgZ810H/x
+ UbEFO2RMXJXf06L0kIL+xNO3R2EIhX9jpTt3++VnqHpoqqHl/Tt64OszPBGjdmupTw9M
+ 5d9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697652733; x=1698257533;
+ d=1e100.net; s=20230601; t=1697652785; x=1698257585;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=90akPlnyRJ5zgnZFIuWWHhh2caiIuDeE7ak8tV8kgG4=;
- b=S3nOFEfl/lbhisvwQU+t7YZaUcP3zWpbRWqFRDN8/OkmRDuxmEPOitJr+QmnfG/XYI
- ILYOBtv1ihUK6AAYV/12Ii4XoAOliTGDi8NAePGmHsgtHX7pets7QhZsgu4sORotJkmC
- JSvXL99J8i2v45uCuY7JIEDhDAij8Y9Xu2ZSBMwMiwJt0ElkUXIOb9XZ6iQPrht9/NjY
- Aux+09MgAjPVP5SNYYhDkEByvrjYdCZMBG7aS4NAFAmBhSQdLvZSLpRSdGU+kIAoEfuW
- f2ucPs5osuReI1pAflX/VW88TmQApb4Qwrkg2S3X8l4jJDWW+GpaZCd9+y2tbPmNfs41
- Xrdg==
-X-Gm-Message-State: AOJu0YwXl+coC/Heutg0uKGfiYspAcPdCytniSPxtEl43358CB7XHUlD
- BVXZzCqhZAititKiy05ZELjCtS64epCMCANK0gA=
+ bh=fpTYqbzbpK0KwCDIcxLgpCv/rd2lgYasN8Y7y7lzZh8=;
+ b=WfDWN+eVjlp2juxTsVobJPLDeMWhksdDvMibYhwtx25WB29cAthOZPUmvRBzS8xQ49
+ X8/n1umG4it12WCDK9kaya2ZqxZHDtL1iMaPmCPtuMTINgx0qabfGJtSzqa5R/QuVL27
+ YViy/nC1Rh7xFCbihZ+Dk92g+Iim+7dIHrdLVdLQsjQE+1bUdP0qc5giJwKGRCNAbF8X
+ lQ7Gjpc6sa/kNKgkmWPnf/Q0Ka/f26d0xscOw69HTRLcep4P2204p3JoxRUWwZ9NJFNs
+ BBCgXW/A8XoVK+QhIb5nnqufgcRZQY57OcmwG1YhSDIkrD6wq+aQnDKDfNXjPw/8P0bY
+ t9kg==
+X-Gm-Message-State: AOJu0Yy/xWN3Vl7vL/vqjdZrjfbn2j0AEIRTDVYfPFioe/yekgIa0ADf
+ rMESjKMNOjOTkbtgvuKdhMesxrHJ8Hc+jAjCYqw=
 X-Received: from nabihestefan.c.googlers.com
  ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
- (user=nabihestefan job=sendgmr) by 2002:a25:74cc:0:b0:d89:cd65:c2b0 with SMTP
- id p195-20020a2574cc000000b00d89cd65c2b0mr152457ybc.6.1697652733659; Wed, 18
- Oct 2023 11:12:13 -0700 (PDT)
-Date: Wed, 18 Oct 2023 18:11:52 +0000
-In-Reply-To: <20231018181152.745496-1-nabihestefan@google.com>
+ (user=nabihestefan job=sendgmr) by 2002:a25:b21b:0:b0:d9a:4329:86cf with SMTP
+ id i27-20020a25b21b000000b00d9a432986cfmr2648ybj.12.1697652785392; Wed, 18
+ Oct 2023 11:13:05 -0700 (PDT)
+Date: Wed, 18 Oct 2023 18:12:50 +0000
+In-Reply-To: <20231018181259.748819-1-nabihestefan@google.com>
 Mime-Version: 1.0
-References: <20231018181152.745496-1-nabihestefan@google.com>
+References: <20231018181259.748819-1-nabihestefan@google.com>
 X-Mailer: git-send-email 2.42.0.655.g421f12c284-goog
-Message-ID: <20231018181152.745496-12-nabihestefan@google.com>
-Subject: [PATCH 11/11] tests/qtest: Adding PCS Module test to GMAC Qtest
+Message-ID: <20231018181259.748819-3-nabihestefan@google.com>
+Subject: [PATCH v4 02/11] hw/arm: Add PCI mailbox module to Nuvoton SoC
 From: Nabih Estefan <nabihestefan@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
  wuhaotsh@google.com, jasonwang@redhat.com, avi.fishman@nuvoton.com, 
  nabihestefan@google.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
- envelope-from=3_R8wZQwKCC4XKLSROcdOPKXQYYQVO.MYWaOWe-KbWXYXQXe.YbQ@flex--nabihestefan.bounces.google.com;
- helo=mail-yw1-x1149.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3MSAwZQwKCmINABIHESTEFANGOOGLE.COMQEMU-DEVELNONGNU.ORG@flex--nabihestefan.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=no autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JvntBR2Nr3tg
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lnAYP3jbV9E+
 
-From: Nabih Estefan Diaz <nabihestefan@google.com>
+From: Hao Wu <wuhaotsh@google.com>
 
- - Add PCS Register check to npcm_gmac-test
+This patch wires the PCI mailbox module to Nuvoton SoC.
 
-Signed-off-by: Nabih Estefan Diaz <nabihestefan@google.com>
+Google-Rebase-Count: 5
+Google-Bug-Id: 262938292
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Change-Id: Ifd858a7ed760557faa15a7a1cef66b2056f06e2e
 ---
- tests/qtest/npcm_gmac-test.c | 134 ++++++++++++++++++++++++++++++++++-
- 1 file changed, 133 insertions(+), 1 deletion(-)
+ docs/system/arm/nuvoton.rst | 2 ++
+ hw/arm/npcm7xx.c            | 3 ++-
+ include/hw/arm/npcm7xx.h    | 1 +
+ 3 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/npcm_gmac-test.c b/tests/qtest/npcm_gmac-test.c
-index 130a1599a8..0958b13814 100644
---- a/tests/qtest/npcm_gmac-test.c
-+++ b/tests/qtest/npcm_gmac-test.c
-@@ -20,6 +20,10 @@
- /* Name of the GMAC Device */
- #define TYPE_NPCM_GMAC "npcm-gmac"
+diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
+index 0424cae4b0..e611099545 100644
+--- a/docs/system/arm/nuvoton.rst
++++ b/docs/system/arm/nuvoton.rst
+@@ -50,6 +50,8 @@ Supported devices
+  * Ethernet controller (EMC)
+  * Tachometer
+  * Peripheral SPI controller (PSPI)
++ * BIOS POST code FIFO
++ * PCI Mailbox
  
-+/* Address of the PCS Module */
-+#define PCS_BASE_ADDRESS 0xf0780000
-+#define NPCM_PCS_IND_AC_BA 0x1fe
-+
- typedef struct GMACModule {
-     int irq;
-     uint64_t base_addr;
-@@ -111,6 +115,62 @@ typedef enum NPCMRegister {
-     NPCM_GMAC_PTP_STNSUR = 0x714,
-     NPCM_GMAC_PTP_TAR = 0x718,
-     NPCM_GMAC_PTP_TTSR = 0x71c,
-+
-+    /* PCS Registers */
-+    NPCM_PCS_SR_CTL_ID1 = 0x3c0008,
-+    NPCM_PCS_SR_CTL_ID2 = 0x3c000a,
-+    NPCM_PCS_SR_CTL_STS = 0x3c0010,
-+
-+    NPCM_PCS_SR_MII_CTRL = 0x3e0000,
-+    NPCM_PCS_SR_MII_STS = 0x3e0002,
-+    NPCM_PCS_SR_MII_DEV_ID1 = 0x3e0004,
-+    NPCM_PCS_SR_MII_DEV_ID2 = 0x3e0006,
-+    NPCM_PCS_SR_MII_AN_ADV = 0x3e0008,
-+    NPCM_PCS_SR_MII_LP_BABL = 0x3e000a,
-+    NPCM_PCS_SR_MII_AN_EXPN = 0x3e000c,
-+    NPCM_PCS_SR_MII_EXT_STS = 0x3e001e,
-+
-+    NPCM_PCS_SR_TIM_SYNC_ABL = 0x3e0e10,
-+    NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_LWR = 0x3e0e12,
-+    NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_UPR = 0x3e0e14,
-+    NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_LWR = 0x3e0e16,
-+    NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_UPR = 0x3e0e18,
-+    NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_LWR = 0x3e0e1a,
-+    NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_UPR = 0x3e0e1c,
-+    NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_LWR = 0x3e0e1e,
-+    NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_UPR = 0x3e0e20,
-+
-+    NPCM_PCS_VR_MII_MMD_DIG_CTRL1 = 0x3f0000,
-+    NPCM_PCS_VR_MII_AN_CTRL = 0x3f0002,
-+    NPCM_PCS_VR_MII_AN_INTR_STS = 0x3f0004,
-+    NPCM_PCS_VR_MII_TC = 0x3f0006,
-+    NPCM_PCS_VR_MII_DBG_CTRL = 0x3f000a,
-+    NPCM_PCS_VR_MII_EEE_MCTRL0 = 0x3f000c,
-+    NPCM_PCS_VR_MII_EEE_TXTIMER = 0x3f0010,
-+    NPCM_PCS_VR_MII_EEE_RXTIMER = 0x3f0012,
-+    NPCM_PCS_VR_MII_LINK_TIMER_CTRL = 0x3f0014,
-+    NPCM_PCS_VR_MII_EEE_MCTRL1 = 0x3f0016,
-+    NPCM_PCS_VR_MII_DIG_STS = 0x3f0020,
-+    NPCM_PCS_VR_MII_ICG_ERRCNT1 = 0x3f0022,
-+    NPCM_PCS_VR_MII_MISC_STS = 0x3f0030,
-+    NPCM_PCS_VR_MII_RX_LSTS = 0x3f0040,
-+    NPCM_PCS_VR_MII_MP_TX_BSTCTRL0 = 0x3f0070,
-+    NPCM_PCS_VR_MII_MP_TX_LVLCTRL0 = 0x3f0074,
-+    NPCM_PCS_VR_MII_MP_TX_GENCTRL0 = 0x3f007a,
-+    NPCM_PCS_VR_MII_MP_TX_GENCTRL1 = 0x3f007c,
-+    NPCM_PCS_VR_MII_MP_TX_STS = 0x3f0090,
-+    NPCM_PCS_VR_MII_MP_RX_GENCTRL0 = 0x3f00b0,
-+    NPCM_PCS_VR_MII_MP_RX_GENCTRL1 = 0x3f00b2,
-+    NPCM_PCS_VR_MII_MP_RX_LOS_CTRL0 = 0x3f00ba,
-+    NPCM_PCS_VR_MII_MP_MPLL_CTRL0 = 0x3f00f0,
-+    NPCM_PCS_VR_MII_MP_MPLL_CTRL1 = 0x3f00f2,
-+    NPCM_PCS_VR_MII_MP_MPLL_STS = 0x3f0110,
-+    NPCM_PCS_VR_MII_MP_MISC_CTRL2 = 0x3f0126,
-+    NPCM_PCS_VR_MII_MP_LVL_CTRL = 0x3f0130,
-+    NPCM_PCS_VR_MII_MP_MISC_CTRL0 = 0x3f0132,
-+    NPCM_PCS_VR_MII_MP_MISC_CTRL1 = 0x3f0134,
-+    NPCM_PCS_VR_MII_DIG_CTRL2 = 0x3f01c2,
-+    NPCM_PCS_VR_MII_DIG_ERRCNT_SEL = 0x3f01c4,
- } NPCMRegister;
+ Missing devices
+ ---------------
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index c69e936669..c9e87162cb 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -86,7 +86,6 @@ enum NPCM7xxInterrupt {
+     NPCM7XX_UART1_IRQ,
+     NPCM7XX_UART2_IRQ,
+     NPCM7XX_UART3_IRQ,
+-    NPCM7XX_PECI_IRQ            = 6,
+     NPCM7XX_PCI_MBOX_IRQ        = 8,
+     NPCM7XX_KCS_HIB_IRQ         = 9,
+     NPCM7XX_GMAC1_IRQ           = 14,
+@@ -463,6 +462,8 @@ static void npcm7xx_init(Object *obj)
+         object_initialize_child(obj, "pspi[*]", &s->pspi[i], TYPE_NPCM_PSPI);
+     }
  
- static uint32_t gmac_read(QTestState *qts, const GMACModule *mod,
-@@ -119,6 +179,15 @@ static uint32_t gmac_read(QTestState *qts, const GMACModule *mod,
-     return qtest_readl(qts, mod->base_addr + regno);
++    object_initialize_child(obj, "pci-mbox", &s->pci_mbox,
++                            TYPE_NPCM7XX_PCI_MBOX);
+     object_initialize_child(obj, "mmc", &s->mmc, TYPE_NPCM7XX_SDHCI);
  }
  
-+static uint16_t pcs_read(QTestState *qts, const GMACModule *mod,
-+                          NPCMRegister regno)
-+{
-+    uint32_t write_value = (regno & 0x3ffe00) >> 9;
-+    qtest_writel(qts, PCS_BASE_ADDRESS + NPCM_PCS_IND_AC_BA, write_value);
-+    uint32_t read_offset = regno & 0x1ff;
-+    return qtest_readl(qts, PCS_BASE_ADDRESS + read_offset);
-+}
-+
- /* Check that GMAC registers are reset to default value */
- static void test_init(gconstpointer test_data)
- {
-@@ -129,7 +198,12 @@ static void test_init(gconstpointer test_data)
- #define CHECK_REG32(regno, value) \
-     do { \
-         g_assert_cmphex(gmac_read(qts, mod, (regno)), ==, (value)); \
--    } while (0)
-+    } while (0) ;
-+
-+#define CHECK_REG_PCS(regno, value) \
-+    do { \
-+        g_assert_cmphex(pcs_read(qts, mod, (regno)), ==, (value)); \
-+    } while (0) ;
- 
-     CHECK_REG32(NPCM_DMA_BUS_MODE, 0x00020100);
-     CHECK_REG32(NPCM_DMA_XMT_POLL_DEMAND, 0);
-@@ -180,6 +254,64 @@ static void test_init(gconstpointer test_data)
-     CHECK_REG32(NPCM_GMAC_PTP_TAR, 0);
-     CHECK_REG32(NPCM_GMAC_PTP_TTSR, 0);
- 
-+    /* TODO Add registers PCS */
-+    if (mod->base_addr == 0xf0802000) {
-+        CHECK_REG_PCS(NPCM_PCS_SR_CTL_ID1, 0x699e)
-+        CHECK_REG_PCS(NPCM_PCS_SR_CTL_ID2, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_CTL_STS, 0x8000)
-+
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_CTRL, 0x1140)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_STS, 0x0109)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_DEV_ID1, 0x699e)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_DEV_ID2, 0x0ced0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_AN_ADV, 0x0020)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_LP_BABL, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_AN_EXPN, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_MII_EXT_STS, 0xc000)
-+
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_ABL, 0x0003)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_LWR, 0x0038)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MAX_DLY_UPR, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_LWR, 0x0038)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_TX_MIN_DLY_UPR, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_LWR, 0x0058)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MAX_DLY_UPR, 0)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_LWR, 0x0048)
-+        CHECK_REG_PCS(NPCM_PCS_SR_TIM_SYNC_RX_MIN_DLY_UPR, 0)
-+
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MMD_DIG_CTRL1, 0x2400)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_AN_CTRL, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_AN_INTR_STS, 0x000a)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_TC, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DBG_CTRL, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_MCTRL0, 0x899c)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_TXTIMER, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_RXTIMER, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_LINK_TIMER_CTRL, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_EEE_MCTRL1, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_STS, 0x0010)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_ICG_ERRCNT1, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MISC_STS, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_RX_LSTS, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_BSTCTRL0, 0x00a)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_LVLCTRL0, 0x007f)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_GENCTRL0, 0x0001)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_GENCTRL1, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_TX_STS, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_GENCTRL0, 0x0100)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_GENCTRL1, 0x1100)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_RX_LOS_CTRL0, 0x000e)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_CTRL0, 0x0100)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_CTRL1, 0x0032)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MPLL_STS, 0x0001)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL2, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_LVL_CTRL, 0x0019)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL0, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_MP_MISC_CTRL1, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_CTRL2, 0)
-+        CHECK_REG_PCS(NPCM_PCS_VR_MII_DIG_ERRCNT_SEL, 0)
-+    }
-+
-     qtest_quit(qts);
- }
- 
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index 273090ac60..cec3792a2e 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -105,6 +105,7 @@ struct NPCM7xxState {
+     OHCISysBusState     ohci;
+     NPCM7xxFIUState     fiu[2];
+     NPCM7xxEMCState     emc[2];
++    NPCM7xxPCIMBoxState pci_mbox;
+     NPCM7xxSDHCIState   mmc;
+     NPCMPSPIState       pspi[2];
+ };
 -- 
 2.42.0.655.g421f12c284-goog
 

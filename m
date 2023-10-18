@@ -1,198 +1,246 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4630019ejc;
-        Wed, 18 Oct 2023 06:16:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEGgtGh4xSgwGRfMf8MofCpGPdHqfHF4VXe/nyp51X+y9Yp61LMhuqiiOP9JFxkbMBYNIfE
-X-Received: by 2002:a05:620a:948e:b0:772:4706:99c0 with SMTP id sn14-20020a05620a948e00b00772470699c0mr4594701qkn.26.1697634989556;
-        Wed, 18 Oct 2023 06:16:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697634989; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4644379ejc;
+        Wed, 18 Oct 2023 06:38:19 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGBvCojY39JHMN9fo5DWijtKrAA938sUS7Nai/XmCFgi8o2Bcx7STEnr7ztnm2i6BWmAbRw
+X-Received: by 2002:ac8:5a8a:0:b0:417:95e7:a2f7 with SMTP id c10-20020ac85a8a000000b0041795e7a2f7mr6389623qtc.19.1697636298699;
+        Wed, 18 Oct 2023 06:38:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697636298; cv=none;
         d=google.com; s=arc-20160816;
-        b=zUyCu9y1Vu9ROr88yTkfsE8qIp8fbPRlaGexw3wn4WXE7EqlUTyei2R8BIUMV5eGrl
-         LnRpblVgFSB/wUTbK8sn6XphFf+TYo1pgeSh9Ybv3hlSYi1/fkEtFKgt04OZaiMk8SJZ
-         wMDZSvaLzYJruEqoAToKEgHTpeqdxtQrJfbfXkudXN0SpFEbt7G2mB1JFDeG9UqzkGGn
-         h2L5RynYbHw9sTK39xiftw8aqD/sE/xQTN3EIIIUVMj3upd9xNJbXL7vRgEKVZiyTz66
-         MhFOgelXwDIYxg8/lsy4y5HJSpcP0JQ4DqgnuIsktv/q7lzyHujDHuVagxB8vZzzVQD+
-         Kupg==
+        b=WeVEqkcCflZnBsWDrTEb0nW+jkm3zrvOM2sDdLmyynkDdAk+fdU0ubX/jGxAOR6G82
+         pwtxEqjjvsBL6pqlz1/mUWRMM3S+tIfHjuQklT9HaGOTGTC5Lz0jIeKLcKBIVWssHSic
+         ok1Wh+db0/tKiMnrmQfNrfddsRqbpPxo0ZK6RufTQ/xEwTL5Id4ttkqIaG01sHdCCOsf
+         H3bimuRf6gi7m4tOLPN0ABelR6vH3HyxwoeLD2ocUj3qpefyLzwbQ5kaD4OEJ6sCCDaM
+         gbOCGN8eS4/2mK8xldBkX9Cc8CiydbZU8gPQlPV0Nc/j7K98oR2oa4OqKHjimWqK0xtW
+         A4Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=kCYRI8Q1kvi4VpcB4GZtS6fXIL0c6XiuN6TOx6QUjpw=;
-        fh=Uq4CCH4qgIScoA1ZlzK6h1LD8Rw6xac8JtYTs6G5zlc=;
-        b=G51hcCJdcVX7JxdlEx8NkccX/uOzxuF95lVb4blKU3Kz5s06GgLZpY3Lf9NelQScML
-         QmwAsLFMX+fIoUltiQxZmCTSKVUAZX/DJD1tBP41+tdpB1PWHMZ86UugDqobEny44p1t
-         g6SgXLOf1rbQWP+J8USHRffX86v8B1jnLHm5tThFZCkXVcUh9uulcL6/BxjAjYv6wbm9
-         AFhqRYVbMT9EisywPi4R1DLnpVOn9yVCya0TY8BlB3BHRnK2ZixQexAPSVceE7sQjSY7
-         L/yrnf5u7CLUsLI0EVpo4VY/0uHaE4qE3bDJ99wEddqVqDrLspTWjOqQL/fHC/BjZHPl
-         2nxQ==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=zMDcZMZnclUHY4/QlbNcyySn6eFDKQLV8RGIW4pDFzY=;
+        fh=320xXaJBhFW3Pw6CLKjnKZsQCFYMQnMNI4MtZAgneNY=;
+        b=B9hjOjFTI9dN/ijKl6gpr3PLHGCibrGaIjkYg53LKwsW53SS5EqS8kF/ksTGNxLuyZ
+         wFa9YZWvQ6D6efR74/jY5rY858tCWhtwKRnz+7M6Y1TfwGX7xpgnoWZdTMmXoiiTgdyW
+         nuMDawRRQ++3UZDxL3K9Wsnbc0CaZXUdxDlnIKpmMPOL5DI85wtj6yq46wwRGLv/1IRY
+         EmBqU0hFObNxmJraz6kcePTtBwU9Ds24fO0XzPsxzbygHJa1frhX37b1TiEXp663HnPf
+         ypI52+ichWrXKrCLPeUUOCvhUI4UJDrw8roNdXJovCHafGXh6xNo6LtY/soEPupSwtvq
+         vJSw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Rr63uc5f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hBI26MA7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w9-20020a05620a444900b0076dabaa2929si2779706qkp.188.2023.10.18.06.16.29
+        by mx.google.com with ESMTPS id b2-20020ac85bc2000000b0041814373040si2866290qtb.49.2023.10.18.06.38.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Oct 2023 06:16:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Oct 2023 06:38:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Rr63uc5f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hBI26MA7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qt6Mc-0007oe-Ac; Wed, 18 Oct 2023 09:13:30 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qt6kZ-0007G2-GK; Wed, 18 Oct 2023 09:38:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt6M5-0007KT-VC
- for qemu-devel@nongnu.org; Wed, 18 Oct 2023 09:12:58 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt6M4-0000mt-7S
- for qemu-devel@nongnu.org; Wed, 18 Oct 2023 09:12:57 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-9c53e8b7cf4so407302766b.1
- for <qemu-devel@nongnu.org>; Wed, 18 Oct 2023 06:12:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697634773; x=1698239573; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=kCYRI8Q1kvi4VpcB4GZtS6fXIL0c6XiuN6TOx6QUjpw=;
- b=Rr63uc5fQQU2B+Ih95WeWIDcUNdFoPgfNIxwcgQLvsFzFI3HAaCFoulhBojd10hOHt
- WPu9AbaRkTo36eV5xT2hSzwKANGZIEsbuksxEVKft8kB/l55oY7DpcN3+lZQKN+BWT1r
- ruqECkI0I/zV7Yii4jiOmJR2qSsgEo2JMbOA7f9/o2l2ccPLa34NPc9jWfXFHiBpCQaz
- OiKanezl+gZeVHIZYEbeNxmj0HOGzoGdfKwG1no6cig8pqA+N4KL22uJ7Es5z0MNG5wE
- 7Fk6J0srEyl4ZNDbUYEKNbSmZcLxAeVS9Xq2Ejm08iggFACLjhosq/+V+PRC4u9mJKwP
- FpmA==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qt6kQ-00079H-KW
+ for qemu-arm@nongnu.org; Wed, 18 Oct 2023 09:38:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qt6kO-00064A-Ht
+ for qemu-arm@nongnu.org; Wed, 18 Oct 2023 09:38:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697636283;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zMDcZMZnclUHY4/QlbNcyySn6eFDKQLV8RGIW4pDFzY=;
+ b=hBI26MA7WBBE1rgYlgVcHmObF/wpXgsoNEFBlFyqIYmimjsAXyY+sgN8j30KKIWOVDAgpw
+ 3KZKZKI490xlPhAwWwAyFuTthiF6mRomni5NS9Azd0U/U1P40rkQGnCfbj3UR8MYQKBmUU
+ YeF11MSnmB7oAVHKMhMyxaHuHpZrbVs=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-493-Di6Xl8DaMwmBctiqLQFJdA-1; Wed, 18 Oct 2023 09:37:55 -0400
+X-MC-Unique: Di6Xl8DaMwmBctiqLQFJdA-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-3f5df65fa35so43038995e9.3
+ for <qemu-arm@nongnu.org>; Wed, 18 Oct 2023 06:37:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697634773; x=1698239573;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=kCYRI8Q1kvi4VpcB4GZtS6fXIL0c6XiuN6TOx6QUjpw=;
- b=tVv0ODvWJ3o0XXvb9mOLRJ6HfZjF0TkF+GGF/W/xazRTi3H60D3gVA6q+8U1Gys3EI
- 4yl/uU0d5x2A/1D+6y26AdtA5gaQvwtmJMkGp6AzQqsUEYwnwl5BaNX//lMBvOsKjCWg
- IjEmYnJW4gtoewGI4mBVCwZHw/UV2+zOudNFKRC9xJL0N+f5tvP1ArhrpeziVtBiZLRm
- 37+tLEtGq2mG8kVqgs8hA9T2gq5uld+elABIT5tj9L5FwiGBlayA+578lE8m47wPdYNe
- nndvYYu7sqjn/wr+qKsApywJSERWBIPoJGKEJFU7fqdfuLdivD93fs+YDu9M6CCkIaaj
- VNvQ==
-X-Gm-Message-State: AOJu0Yz8IP3olaJJ1BDbVipug9M3xvpUTqiNxcptElkva2ldPNWi33PK
- nuJ/Jams+idMrr2udGT1kppg+aIh5ph1ebLLj0s=
-X-Received: by 2002:a17:907:7f23:b0:9b2:982e:339a with SMTP id
- qf35-20020a1709077f2300b009b2982e339amr3668353ejc.22.1697634772894; 
- Wed, 18 Oct 2023 06:12:52 -0700 (PDT)
-Received: from m1x-phil.lan (gyl59-h01-176-171-218-149.dsl.sta.abo.bbox.fr.
- [176.171.218.149]) by smtp.gmail.com with ESMTPSA id
- m15-20020a1709066d0f00b0099d804da2e9sm1663596ejr.225.2023.10.18.06.12.51
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 18 Oct 2023 06:12:52 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 5/8] hw/pcmcia/pxa2xx: Inline pxa2xx_pcmcia_init()
-Date: Wed, 18 Oct 2023 15:12:17 +0200
-Message-ID: <20231018131220.84380-6-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231018131220.84380-1-philmd@linaro.org>
-References: <20231018131220.84380-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1697636274; x=1698241074;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=zMDcZMZnclUHY4/QlbNcyySn6eFDKQLV8RGIW4pDFzY=;
+ b=c/woek0ndK+wGSRc68CfnQYYNvsLIBWonxzTyybWC4w4ZE5nyW+gusVCyfcfRtgHb6
+ 7fvAUhtm7QnFThbyF3nmSGc5bdYPfLMmqls6VWkzVgn+wGKHDs+JXVUhe4fjP7AC3y29
+ jP4YGbSdM8dsB97xYZgiwinnRfC9nkYAZhGC10CVZDEdOKEP2C5VxPzDfxW7LY3At3R5
+ TZpJTBQMtxslnrFZ894V4ljoBj12Fm/CT0g8Whx2cxoAOs/J8q4RnKKAFFOxiZg420K7
+ c75D6ayjq05ltWtH38EMaVT2Qt1TkECxKVreCtjjbJrp0wJkD6E0mlezA58LDJyFm7wT
+ iNIQ==
+X-Gm-Message-State: AOJu0Yw5AzBq65ZRS+9V3dtDdxFOZ7YkUUc3F6MSf5N71DTiiO+cDDeg
+ v3ZxTVo5P9a5W8ypm5jvQvx9ntmBOTrcHG2zAZV13jc0OKFzc7T/CzYLbrSH0GCVFrYK/f6TdbX
+ uslEupk2lDJ7d
+X-Received: by 2002:a05:600c:3114:b0:408:2686:e1cb with SMTP id
+ g20-20020a05600c311400b004082686e1cbmr3287162wmo.23.1697636273994; 
+ Wed, 18 Oct 2023 06:37:53 -0700 (PDT)
+X-Received: by 2002:a05:600c:3114:b0:408:2686:e1cb with SMTP id
+ g20-20020a05600c311400b004082686e1cbmr3287138wmo.23.1697636273594; 
+ Wed, 18 Oct 2023 06:37:53 -0700 (PDT)
+Received: from redhat.com ([2a02:14f:1f2:2037:f34:d61b:7da0:a7be])
+ by smtp.gmail.com with ESMTPSA id
+ j6-20020adff006000000b003198a9d758dsm2139973wro.78.2023.10.18.06.37.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 18 Oct 2023 06:37:53 -0700 (PDT)
+Date: Wed, 18 Oct 2023 09:37:46 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ alex.williamson@redhat.com, clg@redhat.com,
+ jean-philippe@linaro.org, pbonzini@redhat.com,
+ peter.maydell@linaro.org, peterx@redhat.com, david@redhat.com,
+ philmd@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com
+Subject: Re: [PATCH v3 00/13] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
+Message-ID: <20231018093723-mutt-send-email-mst@kernel.org>
+References: <20231011175516.541374-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x634.google.com
+In-Reply-To: <20231011175516.541374-1-eric.auger@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4urH48uekL21
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zVmYJHGDf8WM
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/arm/pxa.h |  2 --
- hw/arm/pxa2xx.c      | 12 ++++++++----
- hw/pcmcia/pxa2xx.c   |  6 ------
- 3 files changed, 8 insertions(+), 12 deletions(-)
+On Wed, Oct 11, 2023 at 07:52:16PM +0200, Eric Auger wrote:
+> This applies on top of vfio-next:
+> https://github.com/legoater/qemu/, vfio-next branch
 
-diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
-index 54eb895e42..4c6caee113 100644
---- a/include/hw/arm/pxa.h
-+++ b/include/hw/arm/pxa.h
-@@ -100,8 +100,6 @@ void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
- #define TYPE_PXA2XX_PCMCIA "pxa2xx-pcmcia"
- OBJECT_DECLARE_SIMPLE_TYPE(PXA2xxPCMCIAState, PXA2XX_PCMCIA)
- 
--PXA2xxPCMCIAState *pxa2xx_pcmcia_init(MemoryRegion *sysmem,
--                                      hwaddr base);
- int pxa2xx_pcmcia_attach(void *opaque, PCMCIACardState *card);
- int pxa2xx_pcmcia_detach(void *opaque);
- void pxa2xx_pcmcia_set_irq_cb(void *opaque, qemu_irq irq, qemu_irq cd_irq);
-diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-index 07d5dd8691..601ddd8766 100644
---- a/hw/arm/pxa2xx.c
-+++ b/hw/arm/pxa2xx.c
-@@ -2205,8 +2205,10 @@ PXA2xxState *pxa270_init(unsigned int sdram_size, const char *cpu_type)
-     sysbus_create_simple("sysbus-ohci", 0x4c000000,
-                          qdev_get_gpio_in(s->pic, PXA2XX_PIC_USBH1));
- 
--    s->pcmcia[0] = pxa2xx_pcmcia_init(address_space, 0x20000000);
--    s->pcmcia[1] = pxa2xx_pcmcia_init(address_space, 0x30000000);
-+    s->pcmcia[0] = PXA2XX_PCMCIA(sysbus_create_simple(TYPE_PXA2XX_PCMCIA,
-+                                                      0x20000000, NULL));
-+    s->pcmcia[1] = PXA2XX_PCMCIA(sysbus_create_simple(TYPE_PXA2XX_PCMCIA,
-+                                                      0x30000000, NULL));
- 
-     sysbus_create_simple(TYPE_PXA2XX_RTC, 0x40900000,
-                     qdev_get_gpio_in(s->pic, PXA2XX_PIC_RTCALARM));
-@@ -2338,8 +2340,10 @@ PXA2xxState *pxa255_init(unsigned int sdram_size)
-         s->ssp[i] = (SSIBus *)qdev_get_child_bus(dev, "ssi");
-     }
- 
--    s->pcmcia[0] = pxa2xx_pcmcia_init(address_space, 0x20000000);
--    s->pcmcia[1] = pxa2xx_pcmcia_init(address_space, 0x30000000);
-+    s->pcmcia[0] = PXA2XX_PCMCIA(sysbus_create_simple(TYPE_PXA2XX_PCMCIA,
-+                                                      0x20000000, NULL));
-+    s->pcmcia[1] = PXA2XX_PCMCIA(sysbus_create_simple(TYPE_PXA2XX_PCMCIA,
-+                                                      0x30000000, NULL));
- 
-     sysbus_create_simple(TYPE_PXA2XX_RTC, 0x40900000,
-                     qdev_get_gpio_in(s->pic, PXA2XX_PIC_RTCALARM));
-diff --git a/hw/pcmcia/pxa2xx.c b/hw/pcmcia/pxa2xx.c
-index a2ab96d749..e3111fdf1a 100644
---- a/hw/pcmcia/pxa2xx.c
-+++ b/hw/pcmcia/pxa2xx.c
-@@ -138,12 +138,6 @@ static void pxa2xx_pcmcia_set_irq(void *opaque, int line, int level)
-     qemu_set_irq(s->irq, level);
- }
- 
--PXA2xxPCMCIAState *pxa2xx_pcmcia_init(MemoryRegion *sysmem,
--                                      hwaddr base)
--{
--    return PXA2XX_PCMCIA(sysbus_create_simple(TYPE_PXA2XX_PCMCIA, base, NULL));
--}
--
- static void pxa2xx_pcmcia_initfn(Object *obj)
- {
-     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
--- 
-2.41.0
+virtio things make sense
+
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+let me know how you want to merge all this.
+
+
+
+> On x86, when assigning VFIO-PCI devices protected with virtio-iommu
+> we encounter the case where the guest tries to map IOVAs beyond 48b
+> whereas the physical VTD IOMMU only supports 48b. This ends up with
+> VFIO_MAP_DMA failures at qemu level because at kernel level,
+> vfio_iommu_iova_dma_valid() check returns false on vfio_map_do_map().
+> 
+> This is due to the fact the virtio-iommu currently unconditionally
+> exposes an IOVA range of 64b through its config input range fields.
+> 
+> This series removes this assumption by retrieving the usable IOVA
+> regions through the VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE UAPI when
+> a VFIO device is attached. This info is communicated to the
+> virtio-iommu memory region, transformed into the inversed info, ie.
+> the host reserved IOVA regions. Then those latter are combined with the
+> reserved IOVA regions set though the virtio-iommu reserved-regions
+> property. That way, the guest virtio-iommu driver, unchanged, is
+> able to probe the whole set of reserved regions and prevent any IOVA
+> belonging to those ranges from beeing used, achieving the original goal.
+> 
+> Best Regards
+> 
+> Eric
+> 
+> This series can be found at:
+> https://github.com/eauger/qemu/tree/vfio-next-iommu_geometry-v3
+> 
+> History:
+> v2 -> v3:
+> - rebase on top of vfio-next (including iommufd prereq)
+> - take into account IOVA range info capability may not be offered by
+>   old kernel and use nr_iovas = -1 to encode that [Alex]
+> - use GList * everywhere instead of arrays (in the range_inverse_array)
+>   with the benefice it sorts ranges retrieved from the kernel which are
+>   not garanteed to be sorted. Rework the tests accordingly [Alex]
+> - Make sure resv_regions GList is build before the probe() [Jean]
+>   per device list is first populated with prop resv regions on
+>   IOMMUDevice creation and then rebuilt on set_iova()
+> - Add a warning if set_iova builds a valid list after probe was
+>   called [Jean]
+> - Build host windows on top of IOVA valid ranges if this info can
+>   be retrieved from the kernel. As many windows are created as
+>   valid ranges
+> v1 -> v2:
+> - Remove "[PATCH 12/13] virtio-iommu: Resize memory region according
+>   to the max iova info" which causes way too much trouble: trigger
+>   a coredump in vhost, causes duplication of IOMMU notifiers causing
+>   EEXIST vfio_dma_map errors, ... This looks like a bad usage of the
+>   memory API so I prefer removing this from this series. So I was
+>   also obliged to remove the vfio_find_hostwin() check in the case
+>   of an IOMMU.
+> - Let range_inverse_array() take low/high args instead of hardcoding
+>   0, UINT64_MAX which both complexifies the algo and the tests.
+> - Move range function description in header.
+> - Check that if set_iova_ranges is called several times, new resv
+>   regions are included in previous ones
+> 
+> Eric Auger (13):
+>   memory: Let ReservedRegion use Range
+>   memory: Introduce memory_region_iommu_set_iova_ranges
+>   vfio: Collect container iova range info
+>   virtio-iommu: Rename reserved_regions into prop_resv_regions
+>   range: Make range_compare() public
+>   util/reserved-region: Add new ReservedRegion helpers
+>   virtio-iommu: Introduce per IOMMUDevice reserved regions
+>   range: Introduce range_inverse_array()
+>   virtio-iommu: Record whether a probe request has been issued
+>   virtio-iommu: Implement set_iova_ranges() callback
+>   virtio-iommu: Consolidate host reserved regions and property set ones
+>   test: Add some tests for range and resv-mem helpers
+>   vfio: Remove 64-bit IOVA address space assumption
+> 
+>  include/exec/memory.h            |  34 +++-
+>  include/hw/vfio/vfio-common.h    |   2 +
+>  include/hw/virtio/virtio-iommu.h |   7 +-
+>  include/qemu/range.h             |  14 ++
+>  include/qemu/reserved-region.h   |  32 ++++
+>  hw/core/qdev-properties-system.c |   9 +-
+>  hw/vfio/common.c                 |  23 ++-
+>  hw/vfio/container.c              |  67 ++++++-
+>  hw/virtio/virtio-iommu-pci.c     |   8 +-
+>  hw/virtio/virtio-iommu.c         | 155 +++++++++++++--
+>  system/memory.c                  |  13 ++
+>  tests/unit/test-resv-mem.c       | 318 +++++++++++++++++++++++++++++++
+>  util/range.c                     |  61 +++++-
+>  util/reserved-region.c           |  91 +++++++++
+>  hw/virtio/trace-events           |   1 +
+>  tests/unit/meson.build           |   1 +
+>  util/meson.build                 |   1 +
+>  17 files changed, 791 insertions(+), 46 deletions(-)
+>  create mode 100644 include/qemu/reserved-region.h
+>  create mode 100644 tests/unit/test-resv-mem.c
+>  create mode 100644 util/reserved-region.c
+> 
+> -- 
+> 2.41.0
 

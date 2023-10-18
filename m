@@ -1,93 +1,93 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4668723ejc;
-        Wed, 18 Oct 2023 07:13:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFsTMKJfc9UAP7vs1ok7SWZ3EIulmTEwNks8ebw4ZqO2+PQdxXWvOvG7s6W7Y0Eg1lc+LzY
-X-Received: by 2002:ad4:5f8c:0:b0:66d:63ad:f51 with SMTP id jp12-20020ad45f8c000000b0066d63ad0f51mr6983706qvb.65.1697638381337;
-        Wed, 18 Oct 2023 07:13:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697638381; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4668953ejc;
+        Wed, 18 Oct 2023 07:13:20 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFpI0lzw0uiKxuxIo40IuhZupTAs8LC47YrRuazXZ71m5jkqAYrVHcse/qbv4Xhgyy0Nwfi
+X-Received: by 2002:a05:6830:2703:b0:6b9:c51c:f4d5 with SMTP id j3-20020a056830270300b006b9c51cf4d5mr6564017otu.10.1697638400488;
+        Wed, 18 Oct 2023 07:13:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697638400; cv=none;
         d=google.com; s=arc-20160816;
-        b=aadpBbHiEbyQT5TkAQZWvB8udYXzVW9QFzY4hI0TMWODu90c0h0J0VDjZ5wWQJMmRI
-         kUcW17iS0RQWKDTkOYtSR0/Y7HwpLlayFJ9Q3T8P/CLNeow8TdCkWZv2y2Jau1VKXTbF
-         SGiyAvlg6sZQUTfBoK8heA6bn6te2rzRJcETg3W6o+K2vouBZlxgaS0qR7y67sXIZGV2
-         MeMuhRljYwzbiZqhmKwY6MpzheeCIkMbEp788F8hc9GtDmWwSKXm0N4D8fXTv4v+vh1X
-         GqrSY9i2HVB2eYfxYeDLc1DV7xbRYBzoi9ikQeCvLvaA9N4tPmD50h3ecRTeEIAsZczH
-         kwZQ==
+        b=gIwOC2ezAy5Fwlr8PMqXghP/G/PQbNG0plySaY3xVL23waDgewGfvMkZSAXxM2OQg3
+         iJngMIWEyfCF8bves8oX4Ldk02K9xNZGaYTkii1rIwnbngQvAaOlg0O/heoNWxRTMIvw
+         iYPsJBdjcGLiKb+AeGMSGudC7RaUNKljXtTKN5kL8iIOdFcNgzpq5mRgXRsuDdnvB767
+         mr2JQAg9jVdd1hIO2dSyNX3rkqyOcvem6IfZuKPqx+dYn3+/j+a8lP8bECVq5h6TrPS9
+         1RldcNOOgiswhYT2xBYcZnMZKbGIn28W8oQMr6YkdtFrxldCR46sdc9TOsN/pQeJ8IpZ
+         +aKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=U5zian4RrM8OBn3rj31JdRNyc5wh1SA22kx5TYn7Hao=;
+        bh=poPJ+bMANM3F4WTSkIKk7d4BzsQMnyYxPL7gQ+lwFeU=;
         fh=ANIikQnX6ADG7FYuHYnQUKFZKV9+VnxLLzGv0RFOlfg=;
-        b=TmIkagD+Q32qI4jiAT3lmNWL4zKfNJtrcxIqlfC0SCUXf04GGBW3RJkEFaaWL1MAIe
-         Xm/0caAevvY3AKwPrbtHvcD7yIZoWbbhWzORhrxSn0GSaqvqjbg9g2ch0k6FMjG2qFtq
-         2gi8QY3bbELlW5BJ2J82yTmZ6AY3sTZ18kzhQSgAwsLQq4OwnKOWiwGre/O5NjAm3xN/
-         Lqce+NO1nb9dC6b/sVLuGViyhTyNMVK+6vk0Oo6rqbUWOMo8D5ZFi9M82E/tKS+4CyL2
-         32i1RM1Bau3aBL3qn30p3iTzVjIxTSpABHN/JtEgPKHpz3f6Glx+/EhicfSuoWK3r4gO
-         tGGA==
+        b=BD/v+NaKVZgL9m3OrL7vHPC2HDw9SIb+tu3/UOCic75jsW+gtr11fK7jcZqLTrFA8J
+         nB4V77wLAX05x+eeHql3HxRIyuLAZMYD02LLL/9XpKDsHSyvN8ByMUhW/olzSzjgR6Zv
+         vOK8iPKRfG99Y0YOSiRhEtg4TdlmvNI6f89NF0VjsrFHvIGeTF/2NiJenR6OHIwtzjOP
+         H+PuZ0N7YGa2gfeP2AYT0rG9vK2ucHWiCP6r/RpjoBKC22gT7zpOQ+mtW2k59KP0SIgn
+         PyqlAyBg4czbvtDOXax+OoCvrSJL5tNqekUHwsSk3PkTTbNteoLDiigmZY5ysRRioYm2
+         fDfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B3URizAA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zLjopPIi;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id et16-20020a056214177000b0066d110cd0a3si2657562qvb.375.2023.10.18.07.13.01
+        by mx.google.com with ESMTPS id o18-20020ac87c52000000b0041b6b847b6esi2908611qtv.771.2023.10.18.07.13.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Oct 2023 07:13:01 -0700 (PDT)
+        Wed, 18 Oct 2023 07:13:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B3URizAA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zLjopPIi;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qt7Hl-0006lE-Ez; Wed, 18 Oct 2023 10:12:33 -0400
+	id 1qt7Hg-0006df-3N; Wed, 18 Oct 2023 10:12:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt7Hk-0006km-Gc
- for qemu-devel@nongnu.org; Wed, 18 Oct 2023 10:12:32 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt7HV-0006UV-5F
+ for qemu-devel@nongnu.org; Wed, 18 Oct 2023 10:12:20 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt7Hi-0004ph-1E
- for qemu-devel@nongnu.org; Wed, 18 Oct 2023 10:12:32 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-9be7e3fa1daso728907366b.3
- for <qemu-devel@nongnu.org>; Wed, 18 Oct 2023 07:12:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt7HS-0004mc-9O
+ for qemu-devel@nongnu.org; Wed, 18 Oct 2023 10:12:16 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-53ed4688b9fso5435337a12.0
+ for <qemu-devel@nongnu.org>; Wed, 18 Oct 2023 07:12:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697638347; x=1698243147; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697638332; x=1698243132; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=U5zian4RrM8OBn3rj31JdRNyc5wh1SA22kx5TYn7Hao=;
- b=B3URizAA0sNJB5/H0eeDF8cIO7XCncVZNMCsDuRKCO6uX+jqTYyqqgV5H+eySIClKM
- SuBtfxWvXx1GW2XeTw+PdB8Vu+3flEkcEYsJ+twiyQ5nb2mTlddNgwSa7ynRpHBquKx7
- y39UP9gK8L5znYdS4wzyb8ixr7C5781fOs2I8VXIEziunfMtUtKCboQt+Q3MCUN89zJu
- U1fmgwTHAPwzrSIjRX+r1tax/orRWJCKLSXaNrbhmrwudN01wxe9+05gs8/a5Q7mqTxK
- VNk8zV2uDDgke8NHrNliejfBTyC9GZD3SC5yWCGmVzMiUgjjlMEXflFcu1CmZEjC2tjI
- PELw==
+ bh=poPJ+bMANM3F4WTSkIKk7d4BzsQMnyYxPL7gQ+lwFeU=;
+ b=zLjopPIifT36n5nFcapJFlzMHhgOBP48e2+Z1PZ1IRk1VkflpRd8BDmz5eX4sROu2+
+ 4nhc173G/9+XDDFxdJjCmIzCZNQAI8sWcs1ssahUHT0l1TuVGDZomK9odYRyj27Gbe7U
+ kp2yIJeC3pzNMyJRr3LxdSfnmh3fwH3Gq4GZqaukisUekN3RIR/LtEEvGUVWxHxh7EqN
+ 8KY92s8K/CI6wXAO1MvVE1fZpO9QyGaMvDbriBfEwVy0BPgxLJ+6VeyV/YM/QXu2PAJ9
+ hMWn55cbBTvoe8xQtWEWqgLCdeu1M1n1i4a4nuPMtcvHww+lL0g85Sy6EahmlnMbKzhf
+ aHQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697638347; x=1698243147;
+ d=1e100.net; s=20230601; t=1697638332; x=1698243132;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=U5zian4RrM8OBn3rj31JdRNyc5wh1SA22kx5TYn7Hao=;
- b=e2sISf7Ru5ydG3nJ5JB2mSjY7s0E6QOaGAxQfMb16SejMQtoTFUDBCJslnSWNfAJK/
- MmXAzfKOb2f1YepiBVUULco9rCyxN76Nyv/AtYhobHHMxQRZgd3tet+2eOTi9Cu3nJfb
- x05cPQb3b/LY7+S/9o6XJ/M82zjSgaSibFZVt2v2QrV+ZHN0FK/LZhmlyW/rTfFtzRY1
- HWtLiiY8Lwwhi+eCR8J4YnTeo4gt9r0HlLTjs4fpYgRHEgrGYV5Ytbzi1nEXTnXOh40l
- 1SKVU9/ekOTDydcZv5z7CQVFeKlAhy7evR06DCSzxW5AVqFSDhtf6PY3l1Az7VTd7V0E
- rRmw==
-X-Gm-Message-State: AOJu0YwpPQx6e++WsHK7RtyeaB7reVCcMD9PsWx/43LR0iuebbtOJmH5
- 1vbsVkM8kY0LDBicsQW+O6yHHBsS4cGEqj2nnzc=
-X-Received: by 2002:a17:907:25c1:b0:9be:ef46:6b9c with SMTP id
- ae1-20020a17090725c100b009beef466b9cmr4047074ejc.70.1697638347467; 
- Wed, 18 Oct 2023 07:12:27 -0700 (PDT)
+ bh=poPJ+bMANM3F4WTSkIKk7d4BzsQMnyYxPL7gQ+lwFeU=;
+ b=s/qhq7OvFRZQnmvKuSZhwfmcqcUnAhMUT6y/16wN/18/eefoZRiRVV6f9PtwjSKS5P
+ 22UNrfxhXEHNkpVb6ZWpkbwyMyckZb2r7AFt0KDjKRtnC3d2NHHLOxL2MoxuN3PvWERO
+ e03r4WU9qgxQKjflVNQH6KjnQaolK/4oigPrS/l5wZF0prNs8aHR5UmlciiEEFi1Mjhc
+ pRFlkeIKHeTPTqWrGISSdePN7d2sAXmk2l0XTLGHYV1S9fw8nF3mX+Cs8f5p+J2Ulhfv
+ m9qZHoCcJX801Q78h1MA0p9TVumujctQphUxRde4VOe07PJsvLxKxiiX9O7vj66WvtFU
+ O/Kg==
+X-Gm-Message-State: AOJu0YxQDiLthAT5DZJlIf4vzdZYKmuB7eCliBSuKFHA77ziPwkUah4k
+ ea160/ZAGs2n3fH7jgNTCOHOD1vd5i9innl1iHM=
+X-Received: by 2002:a17:906:c105:b0:9be:aebc:d479 with SMTP id
+ do5-20020a170906c10500b009beaebcd479mr4429521ejc.19.1697638332227; 
+ Wed, 18 Oct 2023 07:12:12 -0700 (PDT)
 Received: from m1x-phil.lan (gyl59-h01-176-171-218-149.dsl.sta.abo.bbox.fr.
  [176.171.218.149]) by smtp.gmail.com with ESMTPSA id
- q20-20020a170906145400b009c387ff67bdsm1795642ejc.22.2023.10.18.07.12.24
+ jt24-20020a170906dfd800b009b9977867fbsm1748529ejc.109.2023.10.18.07.12.08
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 18 Oct 2023 07:12:27 -0700 (PDT)
+ Wed, 18 Oct 2023 07:12:11 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -107,18 +107,18 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 04/12] hw/misc/allwinner-dramc: Do not use SysBus API to map
- local MMIO region
-Date: Wed, 18 Oct 2023 16:11:42 +0200
-Message-ID: <20231018141151.87466-5-philmd@linaro.org>
+Subject: [PATCH 02/12] hw/i386/intel_iommu: Do not use SysBus API to map local
+ MMIO region
+Date: Wed, 18 Oct 2023 16:11:40 +0200
+Message-ID: <20231018141151.87466-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231018141151.87466-1-philmd@linaro.org>
 References: <20231018141151.87466-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -140,7 +140,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EYe/vlr1c/kj
+X-TUID: ZRi77EEpxYYT
 
 There is no point in exposing an internal MMIO region via
 SysBus and directly mapping it in the very same device.
@@ -149,51 +149,38 @@ Just map it without using the SysBus API.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/misc/allwinner-r40-dramc.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ hw/i386/intel_iommu.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/hw/misc/allwinner-r40-dramc.c b/hw/misc/allwinner-r40-dramc.c
-index 2cc0254a55..3d81ddb2e1 100644
---- a/hw/misc/allwinner-r40-dramc.c
-+++ b/hw/misc/allwinner-r40-dramc.c
-@@ -414,7 +414,6 @@ static void allwinner_r40_dramc_reset(DeviceState *dev)
- static void allwinner_r40_dramc_realize(DeviceState *dev, Error **errp)
- {
-     AwR40DramCtlState *s = AW_R40_DRAMC(dev);
--    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index 2c832ab68b..e4f6cedcb1 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -4134,6 +4134,8 @@ static void vtd_realize(DeviceState *dev, Error **errp)
+     qemu_mutex_init(&s->iommu_lock);
+     memory_region_init_io(&s->csrmem, OBJECT(s), &vtd_mem_ops, s,
+                           "intel_iommu", DMAR_REG_SIZE);
++    memory_region_add_subregion(get_system_memory(),
++                                Q35_HOST_BRIDGE_IOMMU_ADDR, &s->csrmem);
  
-     if (!get_match_ddr(s->ram_size)) {
-         error_report("%s: ram-size %u MiB is not supported",
-@@ -422,23 +421,23 @@ static void allwinner_r40_dramc_realize(DeviceState *dev, Error **errp)
-         exit(1);
-     }
- 
--    /* R40 support max 2G memory but we only support up to 1G now. index 3 */
-+    /* R40 support max 2G memory but we only support up to 1G now. */
-     memory_region_init_io(&s->detect_cells, OBJECT(s),
-                           &allwinner_r40_detect_ops, s,
-                           "DRAMCELLS", 1 * GiB);
--    sysbus_init_mmio(sbd, &s->detect_cells);
--    sysbus_mmio_map_overlap(sbd, 3, s->ram_addr, 10);
-+    memory_region_add_subregion_overlap(get_system_memory(), s->ram_addr,
-+                                        &s->detect_cells, 10);
-     memory_region_set_enabled(&s->detect_cells, false);
- 
-     /*
-      * We only support DRAM size up to 1G now, so prepare a high memory page
--     * after 1G for dualrank detect. index = 4
-+     * after 1G for dualrank detect.
-      */
-     memory_region_init_io(&s->dram_high, OBJECT(s),
-                             &allwinner_r40_dualrank_detect_ops, s,
-                             "DRAMHIGH", KiB);
--    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->dram_high);
--    sysbus_mmio_map(SYS_BUS_DEVICE(s), 4, s->ram_addr + GiB);
-+    memory_region_add_subregion(get_system_memory(), s->ram_addr + GiB,
-+                                &s->dram_high);
- }
- 
- static void allwinner_r40_dramc_init(Object *obj)
+     /* Create the shared memory regions by all devices */
+     memory_region_init(&s->mr_nodmar, OBJECT(s), "vtd-nodmar",
+@@ -4148,15 +4150,12 @@ static void vtd_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion_overlap(&s->mr_nodmar,
+                                         VTD_INTERRUPT_ADDR_FIRST,
+                                         &s->mr_ir, 1);
+-
+-    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->csrmem);
+     /* No corresponding destroy */
+     s->iotlb = g_hash_table_new_full(vtd_iotlb_hash, vtd_iotlb_equal,
+                                      g_free, g_free);
+     s->vtd_address_spaces = g_hash_table_new_full(vtd_as_hash, vtd_as_equal,
+                                       g_free, g_free);
+     vtd_init(s);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(s), 0, Q35_HOST_BRIDGE_IOMMU_ADDR);
+     pci_setup_iommu(bus, vtd_host_dma_iommu, dev);
+     /* Pseudo address space under root PCI bus. */
+     x86ms->ioapic_as = vtd_host_dma_iommu(bus, s, Q35_PSEUDO_DEVFN_IOAPIC);
 -- 
 2.41.0
 

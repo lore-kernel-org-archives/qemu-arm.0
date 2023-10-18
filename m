@@ -1,86 +1,86 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4531434ejc;
-        Wed, 18 Oct 2023 03:19:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGSuat7h1rM0hWeTOvvBkb6aAajDs+djAE7ZhhCHp+/6eMk7k4KlAI59w6a1DuDus2qKzA5
-X-Received: by 2002:a05:620a:4316:b0:774:30b7:ed93 with SMTP id u22-20020a05620a431600b0077430b7ed93mr5198620qko.29.1697624357367;
-        Wed, 18 Oct 2023 03:19:17 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1697624357; cv=pass;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4532453ejc;
+        Wed, 18 Oct 2023 03:21:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHuWISjtNp4tFslgoDeR3UG8/nEg0/r/lPJOS72gHaoB9vQJRoXJyiAfuxJiqm89NP0LCS3
+X-Received: by 2002:ad4:5de2:0:b0:66d:303a:46bd with SMTP id jn2-20020ad45de2000000b0066d303a46bdmr6909685qvb.13.1697624494293;
+        Wed, 18 Oct 2023 03:21:34 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1697624494; cv=pass;
         d=google.com; s=arc-20160816;
-        b=TlaEfJSny6hsxM3EWXyOiSGGShBozHSibywzE7XHfWp2ERmOYe5slxEoBzZU0Zf83B
-         jqJpbnpsSbIw0F0BS0BBJ2rGOO/e9xgwT2hhe9aYE8AW+dT/NKfHhmB6dhamm08ZBKLx
-         2dEabCUhaH+v+Y+VcCJxclx35YNnu+62RV5yJND5JMTqvezOzlDyd1kSQMZaG/GnUyJQ
-         BTDeajyhdDjjr3s2eThFlhLO2cjewWHJpQr2NbbXf1div8LPjch7sp+teAew6Kpbljmd
-         LYIokvkXo8XeGOwMkZPc44Av0blVPhuBvCUhIvEvzR8RTTnsYPAgG4Gps61lvItivmMx
-         Wiww==
+        b=t4ilObKjU63JRAHJ2i6FBwHPEnGF2L74/RyJFXc0LerJSmZz4NIxK6xwFD867DHAqh
+         kjG6noRyQ5Dgz+fME7pIaIJ+XjAXFx/msCCPO1h7yzGYgJGBrzAfE2mEDQICEt0RQPRw
+         9oTnb3UCjMGJBiQ3BKnxcAM4JJz2kTNg3B0qVZDtUoYSVbZEersJtWJvD9iZ1dua1oO7
+         uwS+/u1j6UXnbymAG/lSJqH3sx5XJ1BewhHdbwFWybqg6EGXG1M/MCjsO/gIN/tZ05EA
+         BTB6X7AuDfuv4rhBaNv2SNWTximnzICtD5Oz7Jz46D5/t+Ka9pyMakWuP/desbidq3NX
+         BBsQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:content-language:accept-language
          :in-reply-to:references:message-id:date:thread-index:thread-topic
          :subject:cc:to:from:dkim-signature;
-        bh=NMkvgSJ195B6GfRVZxcP270rM1uogzOyLbEFE1HGPkg=;
+        bh=RraA6Axn6Z9WlJv+FaHL2C455nh+YrruPPXsuvRjz0s=;
         fh=ti0m/g87CcSeUpEJKlFFAoTseRnB1S9szZHdE3iR3Gs=;
-        b=Nx4tUw2zW12o6Njo6kSMNmHd7tspLigDKBe+Eo0XiGBhsKxglnSdRP89oMMG/8xTbk
-         CjemwIu9fmjUiZRaLM4ZNbBG/nEvecoBQU47Fh/GzjqWaudCJ5cLBBE83JkiAw258Aui
-         rt59AbpCb3H2ZSB3IblheCD/U8WgyT07fRzQKTM/+ZPOkYfrHLpxuM7OfRmoA9psHPlk
-         QrBBN6Uy9BEjv2Cd/WcbuuIw6QGodBvPvYT1vBPx2L5hDBT2ht1kS1FDFNuPdHlMMXHh
-         zX8wyCvx9C8R/a7OkFTKaY2943aFuTl57uFE4HYsOtjV4olA8GYXnyH5Ls8FQbnKosAF
-         FFNQ==
+        b=kkxrUxeyUk46bjC0aoU+kdKM0ujZmkxFKGA2VfSnUNSJcyhCr1iQzMQ9jhUe2fH6Sm
+         SeIw9yKj4ZNaUzLFi887reSlu//l8gSuuwHILUu1S8ZGd3kWEpYNRgyRTFeTS7dkegiY
+         4SVmb7vt1zHtLzWCEWUV+cTcRyE5jvN+CoquOGdgZ1Av8IEmKGIwWF09+mTt/GSzym/S
+         R1LqTiLzKiIm+8EFw70wWB9WEYhtEXo889GhHt4H00na/icvJiHShisOZsmrFa3vlajS
+         LhCIsfYa8asMDGjFKXQ9NyhnRibpfXqADtxVWY1rtuKRuDZlqsfx9QHrgKcumgagernM
+         sqfw==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=pz3Cx8u2;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=aYuyCPaA;
        arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bp33-20020a05620a45a100b00773eb4de2c7si2652964qkb.257.2023.10.18.03.19.17
+        by mx.google.com with ESMTPS id q6-20020ad45746000000b0065d13c27e57si2556175qvx.487.2023.10.18.03.21.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Oct 2023 03:19:17 -0700 (PDT)
+        Wed, 18 Oct 2023 03:21:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=pz3Cx8u2;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=aYuyCPaA;
        arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qt3dc-0003bb-OP; Wed, 18 Oct 2023 06:18:52 -0400
+	id 1qt3fr-00055Q-1O; Wed, 18 Oct 2023 06:21:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
- id 1qt3db-0003ay-4p
- for qemu-devel@nongnu.org; Wed, 18 Oct 2023 06:18:51 -0400
-Received: from mail-bn7nam10on2060e.outbound.protection.outlook.com
- ([2a01:111:f400:7e8a::60e]
- helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+ id 1qt3fo-00054S-T6
+ for qemu-devel@nongnu.org; Wed, 18 Oct 2023 06:21:08 -0400
+Received: from mail-dm6nam10on20606.outbound.protection.outlook.com
+ ([2a01:111:f400:7e88::606]
+ helo=NAM10-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
- id 1qt3dZ-0000oe-8G
- for qemu-devel@nongnu.org; Wed, 18 Oct 2023 06:18:50 -0400
+ id 1qt3fn-0001JV-4a
+ for qemu-devel@nongnu.org; Wed, 18 Oct 2023 06:21:08 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ii/dlEKHPQkeoid3oV09OpmcpXMsZjK4m/ihmg6R+RjxZSV1kGoJD/G2hSsSpZzpNNV5lJBM9C1hNig0ZZUm97m501KH1gKfgAoaYe56SP0jTjSSB+W72x7y9xy0YGk3+vsZzIymwjb/31cL3dFXEgGG19NgU6aQvxXSACs1+UFTolqScySCZAEkKWnwbP3QfeXbsYng7+WKEmO3Cm1TFXjmnJiEkU+BXwr/XgVKRzf7J8hw48MBthB6hGeJ1G5RWZeprbW4BbZ3puqn9sX8mbcdzCzdPm5q+zHOKm361gAUb+gDt7U05pnPsv+GJ/hJSSepjIZMlotaBUdMdJWAUg==
+ b=jMevosKfpzgkGmPPQdQVsqz3mPWGYCTGFYW18WMpAP3rZrydvIxFl3vOqjVtXcfrs918QDrJ+zM//7oIwCsehMTJlJjRX83/zHegUxFMvoO5E+WtccsaPzxdEpofx0M7pzRj4daArl0K5cRc/lM+OLUdzqxS914TeWaidrqrr1A+IFg/93OnXVyEc0FEaRtAH/erT4LORx1u5fbVTYO/gsi3I92FuzEAl/L+sgxYEY79OJ1dzt6dz3XzPDwlqek8uK4cG0MOxk9JVNmR+2DgaGK84v8VJhidkRVHr2pSYuTEYFO9QFxf5IIw+cE5gKPihV/j1/4USB7irqEaLnj8PQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NMkvgSJ195B6GfRVZxcP270rM1uogzOyLbEFE1HGPkg=;
- b=JSYXTgbCCzGCPT6x31Uc9HMTV/L0Qbe2BmIkn1bxFyM5V8nPtQCdEy5VnKv0xLJLyPADD+f8Iyajd3zRsorDPZi6CK0+YizNt+STs44sr1E1JyBMWqqOBQy6WeeifCMsDgpbZ1fs+AqKYBgDi5uS9RPX5f5ZGBr/1hG2wUQmBRvP+B2o3RUgAZH9X+8oSh16Us82AVk5n6b3jQITVkey35WkNjXZE6iy66xWu9HuRfGfVdO2jK1n0Z3KqOF7XzpPWl4RCAZoIlIaGfYAhVUARovWrjB9uzfMEOKGdqbk8nXBrOE0KL9fscbUKZ16YOzJISwFajMLVArQxxg8bXiS6A==
+ bh=RraA6Axn6Z9WlJv+FaHL2C455nh+YrruPPXsuvRjz0s=;
+ b=NLGmIRH+57os7ZZ7kRMWCZYc5DCUW6Arkggo5nRM4pnWuTN1s3fB/+xE4yrtH0u9PCW7fYOVjm23Z4zV1I+I86oayrYWpptLP6obDwXi1efR5MKGt/BJc9ADn2SFVa7pLc303y8Lcd1rOVWSUH78IegZuG+pXRQFcIwJWI8q9Hobpj6jkA9QyS+NVCrwQzks5TXUx3Rk+Ss7kG+OEXuXOuL2ECWn0aizPGO4hM16apaDPOYLL0KOkmxjLKjtLM/P9e1YmPlzF09sHokkjyiD6jm3uY68zcpwhJNedWNY04l/rO2r/wWN7qOUXMhMEvivTO4V+TebCzUCL3tASVzUnw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
  header.d=amd.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NMkvgSJ195B6GfRVZxcP270rM1uogzOyLbEFE1HGPkg=;
- b=pz3Cx8u23hp0SbEhK4f7BQ+q6Zk1gdWb3YIafKffCmk3MRmnQtfTCpW5tVBld9D0H5mRjIrJZ+gn/kZC/qwPBAmIHDVTVbeIx9y3wey0qgxPL+5SlocN+LAxY3UOphGCGszRykYmJjZ+fdA0Xs6ZNe8VDUa2yJpthqK8LJTPlkE=
+ bh=RraA6Axn6Z9WlJv+FaHL2C455nh+YrruPPXsuvRjz0s=;
+ b=aYuyCPaAX8rCN2dvJjmheSQe9hv0yRT//2Sl5PnQGe3xU3dCRjwbkDAtcWwfR9artwI03O0DnG4epDXHLd7QMvtboP+onPHdayWgcvBC46ZlBsORLUFsfpFDvKZeRqtLlVCsZhlyaivgiQ/2yaTX303y7i5JAJ36bV2YElX1cuk=
 Received: from DS7PR12MB5741.namprd12.prod.outlook.com (2603:10b6:8:70::7) by
  IA0PR12MB7652.namprd12.prod.outlook.com (2603:10b6:208:434::6) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6863.47; Wed, 18 Oct 2023 10:18:40 +0000
+ 15.20.6863.47; Wed, 18 Oct 2023 10:20:58 +0000
 Received: from DS7PR12MB5741.namprd12.prod.outlook.com
  ([fe80::8f6b:fb45:d9a1:d4f5]) by DS7PR12MB5741.namprd12.prod.outlook.com
  ([fe80::8f6b:fb45:d9a1:d4f5%3]) with mapi id 15.20.6907.021; Wed, 18 Oct 2023
- 10:18:40 +0000
+ 10:20:58 +0000
 From: "Boddu, Sai Pavan" <sai.pavan.boddu@amd.com>
 To: "Michel, Luc" <Luc.Michel@amd.com>, "qemu-devel@nongnu.org"
  <qemu-devel@nongnu.org>
@@ -91,16 +91,16 @@ CC: "Michel, Luc" <Luc.Michel@amd.com>, "qemu-arm@nongnu.org"
  =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, "Iglesias,
  Francisco" <francisco.iglesias@amd.com>, "Konrad, Frederic"
  <Frederic.Konrad@amd.com>
-Subject: RE: [PATCH 04/11] hw/net/cadence_gem: use FIELD to describe NWCFG
+Subject: RE: [PATCH 05/11] hw/net/cadence_gem: use FIELD to describe DMACFG
  register fields
-Thread-Topic: [PATCH 04/11] hw/net/cadence_gem: use FIELD to describe NWCFG
+Thread-Topic: [PATCH 05/11] hw/net/cadence_gem: use FIELD to describe DMACFG
  register fields
-Thread-Index: AQHaATJoEMzg/11QnUK0VG5gSKjBOrBPVmWQ
-Date: Wed, 18 Oct 2023 10:18:40 +0000
-Message-ID: <DS7PR12MB574161D6A4005388DB0715C3B6D5A@DS7PR12MB5741.namprd12.prod.outlook.com>
+Thread-Index: AQHaATJnY6tszmvZC0qyaucku7Cr6LBPVssw
+Date: Wed, 18 Oct 2023 10:20:57 +0000
+Message-ID: <DS7PR12MB5741CF5A89A3998C7D14D716B6D5A@DS7PR12MB5741.namprd12.prod.outlook.com>
 References: <20231017194422.4124691-1-luc.michel@amd.com>
- <20231017194422.4124691-5-luc.michel@amd.com>
-In-Reply-To: <20231017194422.4124691-5-luc.michel@amd.com>
+ <20231017194422.4124691-6-luc.michel@amd.com>
+In-Reply-To: <20231017194422.4124691-6-luc.michel@amd.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -109,60 +109,60 @@ authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=amd.com;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: DS7PR12MB5741:EE_|IA0PR12MB7652:EE_
-x-ms-office365-filtering-correlation-id: 57d408b8-0671-49da-9353-08dbcfc39986
+x-ms-office365-filtering-correlation-id: ef97a486-1dd5-460d-dc77-08dbcfc3eb89
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: UsPBiNpbkOXte0CgveBsowdvCwKpUYUdQPmcnMnicjDnGqA5kzWgQ3pltJCWD7rqTlYsQMgP3vWLmUY0vZDT+GmahHkWDFriP+8UOoj+VLeOOzV5HsHOoduQOh7Qu7rrIkDPSDUu3WlzqkyaIQMOzcyv8vvuiD7NVSl0fgbGvBQfU43wKX/7wmmxmH6cEvibS90h6+mvi/P4qvWwUG5+iJxZlWvSYf2C+iGHr6NiKcvux2KLu6+CwY/8Zxq1kr7cWxT6OmlbGyQOl2WU7sPIlqMMuv8qq2H3gdrH9Q0QvwaqXsdO0pRiUkLF1tYprul1vTwP75qySCkrEswibN0CXcW15CXd7RAqubZAjOnTwoYk8yRRoFUxtjuLRT0QHQmbKEhCuyv2ESubMAH46v2OkFLbhHUD+5Ng4+pPZKQOl8ggy2GFbpar4ALfjxofWpsFOISkEBgMQoQHkaKj6KR3rOQppNbUyrefJ9CLeOuG2Dd6pS7WqkntXE+sudazDhZcpKzZ/oDZ+4qbDotVIVubyJTdaagBR6Z2NBZZYOj9ffX3xd0XD78lBRfWwNAHxsOHv473nAyS4E7vw7JdfHvM+XmFZ8cq1YEyD1y/+9niPd3yt2wdYJAKLG3tK5LSYBpKQ01LbToebLgbv5eYKbCg9wqD2XD+De6KB028DkRq1xo=
+x-microsoft-antispam-message-info: sOKOH3GpttXgVS6zHn75pNaWDwAqDNY1nGgBgMeSi/T6YId/Iu7kCbiy+eWpRIxUz7Xvylru0IlpYKAUhxH8Fqtm7hJs8SSSafPxAAr/op1QbU3w9yFpk8Kkc2TCENwc+PnFgcGm4nMJjftSoYLBlA0tv46Vw6hiN4niyv62o5PIyO/3wPYaN/1P/diA+M0BAqZS8IKBbZgQKtzDXPFI2QwoRhLRPkJ5MYA7csEa19TLHwI3VDngGboSfBJLL8Xt3ZmeQ61KzE6O14yy193Iaa+HExqFXb/WxP7+mZblnupgEMPqm/pKd88FNwV9jLdzfV0Z2+eNnVFgUtplpXn+diTWbksRXcan8dSYYeUmQ7XWneJwanFVgz2tEThhfdDoL7vzPV7oWBm+LJsH6En6jawsAXTyr0C6onnLNhkCy99BPjejpG3Ag/jAJv8ZZl5ycqbwbslhxpzFNa4cKMcbBq5ZhEdvXwcvLqOxnpwaOfgifRatBBGvDcuEjzxnOH36SN8urityzB2pnPpnGUmYo63ABU2bhljeNc8qSHCei29J12/+wOW5J/qnrHlDD9LULN1iZwtmuy/S7gexFFs7DIREw9UZxVFNoibSzsBxUd7x/yotV6FTXss/0c38AXukCRLqKMSEeMJdtqZQWMRPmnc3jmKqApFOR/qCdjGDNQg=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS7PR12MB5741.namprd12.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230031)(396003)(136003)(39860400002)(366004)(376002)(346002)(230922051799003)(64100799003)(186009)(1800799009)(451199024)(55016003)(26005)(7696005)(9686003)(6506007)(83380400001)(66476007)(71200400001)(52536014)(8936002)(4326008)(316002)(5660300002)(478600001)(2906002)(8676002)(54906003)(64756008)(66556008)(66946007)(76116006)(110136005)(38070700005)(122000001)(86362001)(66446008)(38100700002)(41300700001)(33656002);
  DIR:OUT; SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Sy5iTava/jB7IpLXxYt5Y7whuqSzE0i1r61xaTsFdjfO8SWWAmbfITl9c4?=
- =?iso-8859-1?Q?h4Esgz8B9Fg2KyLw/bt487FDemZwkdo6zsgi9M2/+AJio1mD3xq6o+TCjP?=
- =?iso-8859-1?Q?Ul577uaTi/enhM0PV/LdmXXwJlaZBHn1PzToYDlTDc6tzUr6XL6xX7i348?=
- =?iso-8859-1?Q?Aehp+Y94OX1I6wavVwkocoAY1Cs5YqQV7xlQFQV3krfDRo0M06Qu3fZY6R?=
- =?iso-8859-1?Q?BK5JA5lxHZeiQ5fZRYAebATkIdbVFlJxNrNA1bMv949cRlWPlty6Lswk2D?=
- =?iso-8859-1?Q?wf94bZVpY3KKGg2c8t8vVEGjn07dJVItGIrbgXBcqeeNFXYdJvgY6znH95?=
- =?iso-8859-1?Q?rkVa5moSn37O7h4Z7mQFCAAVbRTLyXyEBaFQtiOsFOBbllzBWBtrwkKFoq?=
- =?iso-8859-1?Q?WAwpAMxfoymWvh7WBR1ZFnMus7LSCHbkBf4Ryr4W1SnQ800UMhtj72+nQM?=
- =?iso-8859-1?Q?ON318+316PGCn6jzk/AHPbMA1fbaNkWmyWmvFN4ZdrDveqXsFStdXC3nLd?=
- =?iso-8859-1?Q?KaXrbSjR9VwqdivHvEIHSdPln69nYl8lg7yPNb0zMhXelHg1ojiJvJWYmN?=
- =?iso-8859-1?Q?hYhgNZkHfEp1rRYIYjYsYM54DxpTr0Ew7wxahFTCQNrnVaWHD7YOU8QNov?=
- =?iso-8859-1?Q?FTIOxv480b9rOG7if4HnP8NpyFuqBRmbt3Ck+jZcPlf5uhg43BXXwL4CiV?=
- =?iso-8859-1?Q?CiAek3aI+g0gh2WtKehz+rSWb8HUKIAwNCZVLVZndPjunnhtIQMVEwrfls?=
- =?iso-8859-1?Q?sl5cbOOXaF42G31xca0BbZsO7tXitiNzlSnxi2kLVvK1GmtVwB4UrPDlay?=
- =?iso-8859-1?Q?Ar1ORpbPaLkMtnOFa39H5TPLpeHM7DDLF951OZ4qCLfToq6uR6fOjrBA6w?=
- =?iso-8859-1?Q?L2zJpx8DFh7gjNzCidPhUW8qgyLfT/zm70apxRF4I7PK+7fPwOcinRcpD/?=
- =?iso-8859-1?Q?XjBLsDtNKNFd0p+XAQruSXwk3Mj1dle58aThR28u12fxaB1LM1CfYYXj4f?=
- =?iso-8859-1?Q?uybgXGUph7js5dwBtUQnIVt0F20+JI2kwRYQANDwhlMfoS5jFVRBuiGx+N?=
- =?iso-8859-1?Q?TNZsL1Ex++Y3ayixVa/2D/diRd0oJid4npfQ77gZJtAhLRNZUdr/BVdeHC?=
- =?iso-8859-1?Q?Cp/+r8Y7rcuUXf77nuT1TngvihzFX0VDBm2QMZR6tupmDtZzpbuWiUBB5f?=
- =?iso-8859-1?Q?4Vvc5Rk/DTZDqWpz/QHP4Hu9aJBNqrsRIbD3gt0Wa2fQrPSZ4LmJSfsYNp?=
- =?iso-8859-1?Q?cqHoYQqMOcN2u8kyIu0Z6wlMPf6Vi656ZspAswjdDYoYeZU6fMQd051G8j?=
- =?iso-8859-1?Q?ox/ra6BhNm6XZGHjFTXJsYhR/6Qc4jDYD5NRz6wcUWgiHdXnZRVJFluUpP?=
- =?iso-8859-1?Q?1cZysSUY01coQAAmNNqOACRUPqRUdF1grpv2vsrmSKJn9F9SSlvmnfQsnJ?=
- =?iso-8859-1?Q?+C8QnWpPs7vHqPtCRmkcBFXZDmYpCjle7kAw7d9I+ADrQrxXWxKqCgZn6v?=
- =?iso-8859-1?Q?ZbRRrSlb9dbApIzWZfrsG3XOCjrx1FyBCdwf2Erg8nyYUBk+cJNhP0ejMw?=
- =?iso-8859-1?Q?39jA4O1Hb61GTVhDTmDto/5ZSgNB0bvXK/DpJQvbRnGTY418y+wbm6nEnr?=
- =?iso-8859-1?Q?OquNdAMtZVTcc=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?134qp97/FjXMF688WkhbkcvEBols+SEvxXY88OW9OP+bgL7H6sTMiSzLor?=
+ =?iso-8859-1?Q?IacOmJgmf2Cgb8pZynda6zh22sADMHVAWS2ZGG/RxNVmpi7AzQ1OFP7nQE?=
+ =?iso-8859-1?Q?OwrGR5EvGOjcHlPsHnfDVbeu4KsZIQGeeBndZMJ7mUUROkAPDB5EHp7akC?=
+ =?iso-8859-1?Q?T5Eu9waI01TDhwgp9qQVeC6mOtUMVvO737t8SvtHXGIZtrvJSh/BGnkgoD?=
+ =?iso-8859-1?Q?hA+JaSacgLhEjWCP+A04G1/+DolBfOLQO+0WiQNe8G/xow0yYrCe7QddE4?=
+ =?iso-8859-1?Q?v28oK1AasT5p8P9YUaDu6ogLuy1uKMy6riea4vqWa2t7+W2dvcUGyaot8m?=
+ =?iso-8859-1?Q?DYs+2JB4BqLXaqMB+KR9RJOEqxme/RoUaRE/vBeE4k7ltlnIpzROf3VIPi?=
+ =?iso-8859-1?Q?SUe2dvusYXau751JO4QD1xjTp7pPrQrIi1syFiJLeZ3ylibHMrJwo6iCdS?=
+ =?iso-8859-1?Q?nlHm031iDiL29qGEFJmNrpt2NwkAhS2dFEgKQrGp5GaG424LysHZPZ8m4K?=
+ =?iso-8859-1?Q?H2yRyOrcU4UnvekxAqL1Pci44JId1sg3/Wq9yyQp7MG8QUQORXp9Dx9aIK?=
+ =?iso-8859-1?Q?kny38bjpT4aLsyGxICMuy+MMTzHBvrF/gnP3yDJNf46Qgqye7wfqepYJbC?=
+ =?iso-8859-1?Q?ILY9Vye77601a9LuT+aspCZ6wdRMCrnHk/IWF/QnKcwLonzQS8q6Grkj7t?=
+ =?iso-8859-1?Q?rCHUVTM48hnAgaoam0ZmQg4ENsXzWHnxcR82ik4MGjDL0OwJ7p6/eX10Fw?=
+ =?iso-8859-1?Q?jw/b6evVb20TiE4QNv7H1Uzve7E0puLJI8Go6C+yvp9dn0DKSW22pQf6x1?=
+ =?iso-8859-1?Q?o4JAjjBABa4rRjUeihQBCKDSZ9QEjRCDLxCo2TdDzP2KuxAz5uTnprC1mZ?=
+ =?iso-8859-1?Q?v7aYJLOIdE39o8clr3sDZ44ZbHy+1XBAiRhRj0qm1fCA4iFRKvQCzaRSzD?=
+ =?iso-8859-1?Q?ZMZBeIIagUHVjLQLVqPljEfuUgWsFZHkrgparQKkVIMsb7kMSY1DIcMzyH?=
+ =?iso-8859-1?Q?jFjqmdX/ZQ7RfBJBT7ZOpCACHQCUwZsOnjmI9Jt/OltIa0RwDQr4CFPpW6?=
+ =?iso-8859-1?Q?xb0yPGrRepEsP2+/aMiwc11Cayw42EyuUVXKQuv3m+RgYHpRLVtF0Fw2bk?=
+ =?iso-8859-1?Q?uYeMaLFSXMv2zxppcmMqkNXO7T9e+nu1Ple0YQdds8IwD6f2weMcsWmKvy?=
+ =?iso-8859-1?Q?5IKKDD9VOk+ky9RHhjtGsGjcY1PEu6fFVRXQEwY06OaRtqE0zb9BV3Ukxa?=
+ =?iso-8859-1?Q?6IztN/ycESEM0aAjaJS+MYyQhbyt9m9rf9x01zK79gt6AoJIMY0KJg0cQ5?=
+ =?iso-8859-1?Q?orEg7n8Sb+7eq+uQ7vflQaZMkYCkFpFBS26BG0Nlk6qsOU5mmiygbj/b6X?=
+ =?iso-8859-1?Q?Yl3HLdRYvfpxbyiwx6E98iwXxVezPNId8I4OOsjeG9VFbIjRYAHneoxsic?=
+ =?iso-8859-1?Q?N16H8Ycr/grmn/4e3D9pYdgn/6DF4S9VatoortZ+jpCLB6Ab3tIFuD63bL?=
+ =?iso-8859-1?Q?oG4fEXRgzbF9S0JPRKXoBoNvKYG+sZnn42fWYIIdrHPZjO0QTI0WkcyL2M?=
+ =?iso-8859-1?Q?Po0VyvogjvtStAwIIaSrC4BXJIRGymPfRFX2DlOWSf01XqpElpUYT+Op8U?=
+ =?iso-8859-1?Q?IkftukA1Tb7k0=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: amd.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB5741.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 57d408b8-0671-49da-9353-08dbcfc39986
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Oct 2023 10:18:40.3995 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ef97a486-1dd5-460d-dc77-08dbcfc3eb89
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Oct 2023 10:20:58.0050 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +FJU/0/pUnCXQ9bXyot206+qA883pYx9yBh/AZQg7MjMfQxspdNYQIskhMTtkD0i
+X-MS-Exchange-CrossTenant-userprincipalname: J3e9Kc9DrWNAj74sARwxAIsBT9SQmYEFuaXq+8O4WYIlk7tB10a/dg++XI5ETqIZ
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB7652
-Received-SPF: softfail client-ip=2a01:111:f400:7e8a::60e;
+Received-SPF: softfail client-ip=2a01:111:f400:7e88::606;
  envelope-from=sai.pavan.boddu@amd.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
+ helo=NAM10-DM6-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -183,7 +183,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a/pxEExKuqlg
+X-TUID: 6HI0D9l+kVhk
 
 
 
@@ -199,203 +199,189 @@ X-TUID: a/pxEExKuqlg
 >Iglesias, Francisco <francisco.iglesias@amd.com>; Konrad, Frederic
 ><Frederic.Konrad@amd.com>; Boddu, Sai Pavan
 ><sai.pavan.boddu@amd.com>
->Subject: [PATCH 04/11] hw/net/cadence_gem: use FIELD to describe NWCFG
+>Subject: [PATCH 05/11] hw/net/cadence_gem: use FIELD to describe DMACFG
 >register fields
 >
->Use de FIELD macro to describe the NWCFG register fields.
+>Use de FIELD macro to describe the DMACFG register fields.
 >
 >Signed-off-by: Luc Michel <luc.michel@amd.com>
 
 Reviewed-by: sai.pavan.boddu@amd.com
 
-Regards,
-Sai Pavan
 >---
-> hw/net/cadence_gem.c | 60 ++++++++++++++++++++++++++++---------------
+> hw/net/cadence_gem.c | 48 ++++++++++++++++++++++++++++---------------
 >-
-> 1 file changed, 39 insertions(+), 21 deletions(-)
+> 1 file changed, 31 insertions(+), 17 deletions(-)
 >
 >diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c index
->2864f0940e..09f570b6fb 100644
+>09f570b6fb..5c386adff2 100644
 >--- a/hw/net/cadence_gem.c
 >+++ b/hw/net/cadence_gem.c
->@@ -77,10 +77,39 @@ REG32(NWCTRL, 0x0) /* Network Control reg */
->     FIELD(NWCTRL, SEL_MII_ON_RGMII, 28, 1)
->     FIELD(NWCTRL, TWO_PT_FIVE_GIG, 29, 1)
->     FIELD(NWCTRL, IFG_EATS_QAV_CREDIT, 30, 1)
+>@@ -108,11 +108,31 @@ REG32(NWCFG, 0x4) /* Network Config reg */
+>     FIELD(NWCFG, IGNORE_IPG_RX_ER, 30, 1)
+>     FIELD(NWCFG, UNI_DIRECTION_ENABLE, 31, 1)
 >
-> REG32(NWCFG, 0x4) /* Network Config reg */
->+    FIELD(NWCFG, SPEED, 0, 1)
->+    FIELD(NWCFG, FULL_DUPLEX, 1, 1)
->+    FIELD(NWCFG, DISCARD_NON_VLAN_FRAMES, 2, 1)
->+    FIELD(NWCFG, JUMBO_FRAMES, 3, 1)
->+    FIELD(NWCFG, PROMISC, 4, 1)
->+    FIELD(NWCFG, NO_BROADCAST, 5, 1)
->+    FIELD(NWCFG, MULTICAST_HASH_EN, 6, 1)
->+    FIELD(NWCFG, UNICAST_HASH_EN, 7, 1)
->+    FIELD(NWCFG, RECV_1536_BYTE_FRAMES, 8, 1)
->+    FIELD(NWCFG, EXTERNAL_ADDR_MATCH_EN, 9, 1)
->+    FIELD(NWCFG, GIGABIT_MODE_ENABLE, 10, 1)
->+    FIELD(NWCFG, PCS_SELECT, 11, 1)
->+    FIELD(NWCFG, RETRY_TEST, 12, 1)
->+    FIELD(NWCFG, PAUSE_ENABLE, 13, 1)
->+    FIELD(NWCFG, RECV_BUF_OFFSET, 14, 2)
->+    FIELD(NWCFG, LEN_ERR_DISCARD, 16, 1)
->+    FIELD(NWCFG, FCS_REMOVE, 17, 1)
->+    FIELD(NWCFG, MDC_CLOCK_DIV, 18, 3)
->+    FIELD(NWCFG, DATA_BUS_WIDTH, 21, 2)
->+    FIELD(NWCFG, DISABLE_COPY_PAUSE_FRAMES, 23, 1)
->+    FIELD(NWCFG, RECV_CSUM_OFFLOAD_EN, 24, 1)
->+    FIELD(NWCFG, EN_HALF_DUPLEX_RX, 25, 1)
->+    FIELD(NWCFG, IGNORE_RX_FCS, 26, 1)
->+    FIELD(NWCFG, SGMII_MODE_ENABLE, 27, 1)
->+    FIELD(NWCFG, IPG_STRETCH_ENABLE, 28, 1)
->+    FIELD(NWCFG, NSP_ACCEPT, 29, 1)
->+    FIELD(NWCFG, IGNORE_IPG_RX_ER, 30, 1)
->+    FIELD(NWCFG, UNI_DIRECTION_ENABLE, 31, 1)
->+
 > REG32(NWSTATUS, 0x8) /* Network Status reg */  REG32(USERIO, 0xc) /*
->User IO reg */  REG32(DMACFG, 0x10) /* DMA Control reg */
->REG32(TXSTATUS, 0x14) /* TX Status reg */  REG32(RXQBASE, 0x18) /* RX Q
->Base address reg */ @@ -234,21 +263,10 @@
->REG32(TYPE2_COMPARE_0_WORD_1, 0x704)
+>User IO reg */
+>+
+> REG32(DMACFG, 0x10) /* DMA Control reg */
+>+    FIELD(DMACFG, SEND_BCAST_TO_ALL_QS, 31, 1)
+>+    FIELD(DMACFG, DMA_ADDR_BUS_WIDTH, 30, 1)
+>+    FIELD(DMACFG, TX_BD_EXT_MODE_EN , 29, 1)
+>+    FIELD(DMACFG, RX_BD_EXT_MODE_EN , 28, 1)
+>+    FIELD(DMACFG, FORCE_MAX_AMBA_BURST_TX, 26, 1)
+>+    FIELD(DMACFG, FORCE_MAX_AMBA_BURST_RX, 25, 1)
+>+    FIELD(DMACFG, FORCE_DISCARD_ON_ERR, 24, 1)
+>+    FIELD(DMACFG, RX_BUF_SIZE, 16, 8)
+>+    FIELD(DMACFG, CRC_ERROR_REPORT, 13, 1)
+>+    FIELD(DMACFG, INF_LAST_DBUF_SIZE_EN, 12, 1)
+>+    FIELD(DMACFG, TX_PBUF_CSUM_OFFLOAD, 11, 1)
+>+    FIELD(DMACFG, TX_PBUF_SIZE, 10, 1)
+>+    FIELD(DMACFG, RX_PBUF_SIZE, 8, 2)
+>+    FIELD(DMACFG, ENDIAN_SWAP_PACKET, 7, 1)
+>+    FIELD(DMACFG, ENDIAN_SWAP_MGNT, 6, 1)
+>+    FIELD(DMACFG, HDR_DATA_SPLIT_EN, 5, 1)
+>+    FIELD(DMACFG, AMBA_BURST_LEN , 0, 5)
+>+#define GEM_DMACFG_RBUFSZ_MUL  64         /* DMA RX Buffer Size multiplie=
+r
+>*/
+>+
+> REG32(TXSTATUS, 0x14) /* TX Status reg */  REG32(RXQBASE, 0x18) /* RX Q
+>Base address reg */  REG32(TXQBASE, 0x1c) /* TX Q Base address reg */
+>REG32(RXSTATUS, 0x20) /* RX Status reg */  REG32(ISR, 0x24) /* Interrupt
+>Status reg */ @@ -263,17 +283,10 @@ REG32(TYPE2_COMPARE_0_WORD_1,
+>0x704)
 >     FIELD(TYPE2_COMPARE_0_WORD_1, COMPARE_OFFSET, 7, 2)
 >     FIELD(TYPE2_COMPARE_0_WORD_1, DISABLE_MASK, 9, 1)
 >     FIELD(TYPE2_COMPARE_0_WORD_1, COMPARE_VLAN_ID, 10, 1)
 >
 > /*****************************************/
->-#define GEM_NWCFG_STRIP_FCS    0x00020000 /* Strip FCS field */
->-#define GEM_NWCFG_LERR_DISC    0x00010000 /* Discard RX frames with len
->err */
->-#define GEM_NWCFG_BUFF_OFST_M  0x0000C000 /* Receive buffer offset
->mask */
->-#define GEM_NWCFG_BUFF_OFST_S  14         /* Receive buffer offset shift =
-*/
->-#define GEM_NWCFG_RCV_1538     0x00000100 /* Receive 1538 bytes frame
+>-#define GEM_DMACFG_ADDR_64B    (1U << 30)
+>-#define GEM_DMACFG_TX_BD_EXT   (1U << 29)
+>-#define GEM_DMACFG_RX_BD_EXT   (1U << 28)
+>-#define GEM_DMACFG_RBUFSZ_M    0x00FF0000 /* DMA RX Buffer Size mask
 >*/
->-#define GEM_NWCFG_UCAST_HASH   0x00000080 /* accept unicast if hash
->match */
->-#define GEM_NWCFG_MCAST_HASH   0x00000040 /* accept multicast if hash
->match */
->-#define GEM_NWCFG_BCAST_REJ    0x00000020 /* Reject broadcast packets
+>-#define GEM_DMACFG_RBUFSZ_S    16         /* DMA RX Buffer Size shift */
+>-#define GEM_DMACFG_RBUFSZ_MUL  64         /* DMA RX Buffer Size multiplie=
+r
 >*/
->-#define GEM_NWCFG_PROMISC      0x00000010 /* Accept all packets */
->-#define GEM_NWCFG_JUMBO_FRAME  0x00000008 /* Jumbo Frames enable
->*/
->-
-> #define GEM_DMACFG_ADDR_64B    (1U << 30)
-> #define GEM_DMACFG_TX_BD_EXT   (1U << 29)
-> #define GEM_DMACFG_RX_BD_EXT   (1U << 28)
-> #define GEM_DMACFG_RBUFSZ_M    0x00FF0000 /* DMA RX Buffer Size mask
->*/
-> #define GEM_DMACFG_RBUFSZ_S    16         /* DMA RX Buffer Size shift */
->@@ -480,21 +498,22 @@ static inline void rx_desc_set_sar(uint32_t *desc, i=
-nt
->sar_idx)  static const uint8_t broadcast_addr[] =3D { 0xFF, 0xFF, 0xFF, 0x=
-FF, 0xFF,
->0xFF };
+>-#define GEM_DMACFG_TXCSUM_OFFL 0x00000800 /* Transmit checksum
+>offload */
 >
-> static uint32_t gem_get_max_buf_len(CadenceGEMState *s, bool tx)  {
->     uint32_t size;
->-    if (s->regs[R_NWCFG] & GEM_NWCFG_JUMBO_FRAME) {
->+    if (FIELD_EX32(s->regs[R_NWCFG], NWCFG, JUMBO_FRAMES)) {
->         size =3D s->regs[R_JUMBO_MAX_LEN];
->         if (size > s->jumbo_max_len) {
->             size =3D s->jumbo_max_len;
->             qemu_log_mask(LOG_GUEST_ERROR, "GEM_JUMBO_MAX_LEN reg
->cannot be"
->                 " greater than 0x%" PRIx32 "\n", s->jumbo_max_len);
->         }
->     } else if (tx) {
->         size =3D 1518;
->     } else {
->-        size =3D s->regs[R_NWCFG] & GEM_NWCFG_RCV_1538 ? 1538 : 1518;
->+        size =3D FIELD_EX32(s->regs[R_NWCFG],
->+                          NWCFG, RECV_1536_BYTE_FRAMES) ? 1538 : 1518;
+> #define GEM_TXSTATUS_TXCMPL    0x00000020 /* Transmit Complete */
+> #define GEM_TXSTATUS_USED      0x00000001 /* sw owned descriptor
+>encountered */
+>
+> #define GEM_RXSTATUS_FRMRCVD   0x00000002 /* Frame received */
+>@@ -367,11 +380,11 @@ REG32(TYPE2_COMPARE_0_WORD_1, 0x704)
+>
+> static inline uint64_t tx_desc_get_buffer(CadenceGEMState *s, uint32_t *d=
+esc)
+>{
+>     uint64_t ret =3D desc[0];
+>
+>-    if (s->regs[R_DMACFG] & GEM_DMACFG_ADDR_64B) {
+>+    if (FIELD_EX32(s->regs[R_DMACFG], DMACFG, DMA_ADDR_BUS_WIDTH)) {
+>         ret |=3D (uint64_t)desc[2] << 32;
 >     }
->     return size;
+>     return ret;
 > }
 >
-> static void gem_set_isr(CadenceGEMState *s, int q, uint32_t flag) @@ -730=
-,26
->+749,26 @@ static int gem_mac_address_filter(CadenceGEMState *s, const
->uint8_t *packet)  {
->     uint8_t *gem_spaddr;
->     int i, is_mc;
+>@@ -412,25 +425,25 @@ static inline void print_gem_tx_desc(uint32_t *desc,
+>uint8_t queue)
 >
->     /* Promiscuous mode? */
->-    if (s->regs[R_NWCFG] & GEM_NWCFG_PROMISC) {
->+    if (FIELD_EX32(s->regs[R_NWCFG], NWCFG, PROMISC)) {
->         return GEM_RX_PROMISCUOUS_ACCEPT;
+> static inline uint64_t rx_desc_get_buffer(CadenceGEMState *s, uint32_t *d=
+esc)
+>{
+>     uint64_t ret =3D desc[0] & ~0x3UL;
+>
+>-    if (s->regs[R_DMACFG] & GEM_DMACFG_ADDR_64B) {
+>+    if (FIELD_EX32(s->regs[R_DMACFG], DMACFG, DMA_ADDR_BUS_WIDTH)) {
+>         ret |=3D (uint64_t)desc[2] << 32;
+>     }
+>     return ret;
+> }
+>
+> static inline int gem_get_desc_len(CadenceGEMState *s, bool rx_n_tx)  {
+>     int ret =3D 2;
+>
+>-    if (s->regs[R_DMACFG] & GEM_DMACFG_ADDR_64B) {
+>+    if (FIELD_EX32(s->regs[R_DMACFG], DMACFG, DMA_ADDR_BUS_WIDTH)) {
+>         ret +=3D 2;
+>     }
+>-    if (s->regs[R_DMACFG] & (rx_n_tx ? GEM_DMACFG_RX_BD_EXT
+>-                                       : GEM_DMACFG_TX_BD_EXT)) {
+>+    if (s->regs[R_DMACFG] & (rx_n_tx ?
+>R_DMACFG_RX_BD_EXT_MODE_EN_MASK
+>+                                     :
+>+ R_DMACFG_TX_BD_EXT_MODE_EN_MASK)) {
+>         ret +=3D 2;
 >     }
 >
->     if (!memcmp(packet, broadcast_addr, 6)) {
->         /* Reject broadcast packets? */
->-        if (s->regs[R_NWCFG] & GEM_NWCFG_BCAST_REJ) {
->+        if (FIELD_EX32(s->regs[R_NWCFG], NWCFG, NO_BROADCAST)) {
->             return GEM_RX_REJECT;
->         }
->         return GEM_RX_BROADCAST_ACCEPT;
+>     assert(ret <=3D DESC_MAX_NUM_WORDS);
+>     return ret;
+>@@ -940,11 +953,11 @@ static inline uint32_t
+>gem_get_rx_queue_base_addr(CadenceGEMState *s, int q)
+>
+> static hwaddr gem_get_desc_addr(CadenceGEMState *s, bool tx, int q)  {
+>     hwaddr desc_addr =3D 0;
+>
+>-    if (s->regs[R_DMACFG] & GEM_DMACFG_ADDR_64B) {
+>+    if (FIELD_EX32(s->regs[R_DMACFG], DMACFG, DMA_ADDR_BUS_WIDTH)) {
+>         desc_addr =3D s->regs[tx ? R_TBQPH : R_RBQPH];
 >     }
->
->     /* Accept packets -w- hash match? */
->     is_mc =3D is_multicast_ether_addr(packet);
->-    if ((is_mc && (s->regs[R_NWCFG] & GEM_NWCFG_MCAST_HASH)) ||
->-        (!is_mc && (s->regs[R_NWCFG] & GEM_NWCFG_UCAST_HASH))) {
->+    if ((is_mc && (FIELD_EX32(s->regs[R_NWCFG], NWCFG,
->MULTICAST_HASH_EN))) ||
->+        (!is_mc && FIELD_EX32(s->regs[R_NWCFG], NWCFG,
->+ UNICAST_HASH_EN))) {
->         uint64_t buckets;
->         unsigned hash_index;
->
->         hash_index =3D calc_mac_hash(packet);
->         buckets =3D ((uint64_t)s->regs[R_HASHHI] << 32) | s->regs[R_HASHL=
-O]; @@
->-981,11 +1000,11 @@ static ssize_t gem_receive(NetClientState *nc, const
->uint8_t *buf, size_t size)
->     if (maf =3D=3D GEM_RX_REJECT) {
->         return size;  /* no, drop silently b/c it's not an error */
->     }
->
->     /* Discard packets with receive length error enabled ? */
->-    if (s->regs[R_NWCFG] & GEM_NWCFG_LERR_DISC) {
->+    if (FIELD_EX32(s->regs[R_NWCFG], NWCFG, LEN_ERR_DISCARD)) {
->         unsigned type_len;
->
->         /* Fish the ethertype / length field out of the RX packet */
->         type_len =3D buf[12] << 8 | buf[13];
->         /* It is a length field, not an ethertype */ @@ -998,12 +1017,11 =
-@@ static
->ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->     }
->
->     /*
->      * Determine configured receive buffer offset (probably 0)
->      */
->-    rxbuf_offset =3D (s->regs[R_NWCFG] & GEM_NWCFG_BUFF_OFST_M) >>
->-                   GEM_NWCFG_BUFF_OFST_S;
->+    rxbuf_offset =3D FIELD_EX32(s->regs[R_NWCFG], NWCFG,
->+ RECV_BUF_OFFSET);
+>     desc_addr <<=3D 32;
+>     desc_addr |=3D tx ? s->tx_desc_addr[q] : s->rx_desc_addr[q];
+>     return desc_addr;
+>@@ -1022,12 +1035,13 @@ static ssize_t gem_receive(NetClientState *nc,
+>const uint8_t *buf, size_t size)
+>     rxbuf_offset =3D FIELD_EX32(s->regs[R_NWCFG], NWCFG,
+>RECV_BUF_OFFSET);
 >
 >     /* The configure size of each receive buffer.  Determines how many
 >      * buffers needed to hold this packet.
 >      */
->     rxbufsize =3D ((s->regs[R_DMACFG] & GEM_DMACFG_RBUFSZ_M) >> @@ -
->1024,11 +1042,11 @@ static ssize_t gem_receive(NetClientState *nc, const
->uint8_t *buf, size_t size)
->     if (size < 60) {
->         size =3D 60;
->     }
+>-    rxbufsize =3D ((s->regs[R_DMACFG] & GEM_DMACFG_RBUFSZ_M) >>
+>-                 GEM_DMACFG_RBUFSZ_S) * GEM_DMACFG_RBUFSZ_MUL;
+>+    rxbufsize =3D FIELD_EX32(s->regs[R_DMACFG], DMACFG, RX_BUF_SIZE);
+>+    rxbufsize *=3D GEM_DMACFG_RBUFSZ_MUL;
+>+
+>     bytes_to_copy =3D size;
 >
->     /* Strip of FCS field ? (usually yes) */
->-    if (s->regs[R_NWCFG] & GEM_NWCFG_STRIP_FCS) {
->+    if (FIELD_EX32(s->regs[R_NWCFG], NWCFG, FCS_REMOVE)) {
->         rxbuf_ptr =3D (void *)buf;
->     } else {
->         unsigned crc_val;
+>     /* Hardware allows a zero value here but warns against it. To avoid Q=
+EMU
+>      * indefinite loops we enforce a minimum value here
+>      */
+>@@ -1306,11 +1320,11 @@ static void gem_transmit(CadenceGEMState *s)
 >
->         if (size > MAX_FRAME_SIZE - sizeof(crc_val)) {
+>                 /* Handle interrupt consequences */
+>                 gem_update_int_status(s);
+>
+>                 /* Is checksum offload enabled? */
+>-                if (s->regs[R_DMACFG] & GEM_DMACFG_TXCSUM_OFFL) {
+>+                if (FIELD_EX32(s->regs[R_DMACFG], DMACFG,
+>+ TX_PBUF_CSUM_OFFLOAD)) {
+>                     net_checksum_calculate(s->tx_packet, total_bytes, CSU=
+M_ALL);
+>                 }
+>
+>                 /* Update MAC statistics */
+>                 gem_transmit_updatestats(s, s->tx_packet, total_bytes); @=
+@ -
+>1330,11 +1344,11 @@ static void gem_transmit(CadenceGEMState *s)
+>                 total_bytes =3D 0;
+>             }
+>
+>             /* read next descriptor */
+>             if (tx_desc_get_wrap(desc)) {
+>-                if (s->regs[R_DMACFG] & GEM_DMACFG_ADDR_64B) {
+>+                if (FIELD_EX32(s->regs[R_DMACFG], DMACFG,
+>+ DMA_ADDR_BUS_WIDTH)) {
+>                     packet_desc_addr =3D s->regs[R_TBQPH];
+>                     packet_desc_addr <<=3D 32;
+>                 } else {
+>                     packet_desc_addr =3D 0;
+>                 }
 >--
 >2.39.2
 

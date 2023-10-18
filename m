@@ -1,182 +1,114 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4759702ejc;
-        Wed, 18 Oct 2023 09:24:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG2BWVjOLbt7+ByEanU8dRTxwi4n/wQKBGyWASgrAb5ecqMRcIJmsB3puMrULRRtoEw24mj
-X-Received: by 2002:a05:6214:cc8:b0:66d:4680:6dc5 with SMTP id 8-20020a0562140cc800b0066d46806dc5mr8781560qvx.50.1697646286260;
-        Wed, 18 Oct 2023 09:24:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697646286; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4830147ejc;
+        Wed, 18 Oct 2023 11:12:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGKSLqXjl6G5/AwIpMDEeVDx+Pte4Z6iUHtDpFApA5DifWDQ8WBVZ8PhQ8hA8ctTB3+pSZ3
+X-Received: by 2002:a25:bd2:0:b0:d81:7d00:41f9 with SMTP id 201-20020a250bd2000000b00d817d0041f9mr121909ybl.57.1697652734203;
+        Wed, 18 Oct 2023 11:12:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697652734; cv=none;
         d=google.com; s=arc-20160816;
-        b=oFdIuBM8gZpSChrY03RSkdlTSAdNgKzmjTVL8KiiG43lX5kuxWViBSZ6bMkGF7KAgH
-         ub1kqw2clEbbnzd4ZvCAbt8RZ3MV8e+Y70K/HeHADFVv3G3MbgyF6jcfj2vSFS0UhlQj
-         E99Oe0WQezDUqohnjbMp3erXiUzCKv/3e4d2PEnMVk19qoizD84HqN1uJrzdt6CxxWTb
-         +W3x+v3ugwIzGW1QaRh+yzZs9OwbS/GIcCQJDavwrwJN5dGZn1nF5Qe52l+aGmue4ZLx
-         2A4p+PTqnl1lK0T1gDYsLqLYxWTwRVRdSG/HMreePoHfhwlwqm/E6apyO7jCrY13++tt
-         pjow==
+        b=03R2PONkmWt4zB8lzmcTToXjqrTG5C2CjhEGrcUM9O73rf7zecSGk5WZm+9zMtVI/L
+         ORjZBEJLJ+MMkZWoNwKhHj2fXh3E6G9qcUclj9ZYmY9JeRikzZHvJV6OKUihDHlvteJl
+         Ej243yEkmwbLwcsxdh+7WF3F4mJIG/e4pYcWdvdDWAvu+8X6BWvg+3COwkK7LxUhj690
+         gdzgn/Q8uO0cVvmIl86atQB/jCqhtwXcwEH7Pf7wRkHaWCnIornqN9ex9d6zaqWJTzUd
+         NklkWSBRqZaJJ8JQBJcuWSjhI77lNU/FvwJMn/SsgrugIGglO2DXxuh7atEZllZVceE5
+         6OZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=DxaQpWyohR1989GHWUZ08ZEv6gnHvALDQAL8GToFJnI=;
-        fh=5KD7BjLGFDublHDNRImOelVUthgQZWbxdG3c9Bb6fGg=;
-        b=rwN/FfKcXjcnNNu9ug54/jdywmcCK8t7+WT0MMm+VabKjp6xElLromLYFB2FQLHi+K
-         mRR2IAYh8jUTDqAlUQ1eew6BAfysJkAHUG5538ka2T5y09SBFkKnf82MgDdJKbxzK3UR
-         3AhxSBB6MO+UOPtYGGUrx+xV9VWTLkUtgCTRa5sYtwmS15thEWnp6DTfrm7O4LTkObfP
-         zHdZdRvoKwz8G1Wz837xj3DSx5JcGpYqc4cLV/UNXuXmPz6ixKJnWIrmu3TtyCXDpO2S
-         nDaNOXJXP+lCN1BBdb8KfssCtNGcS9mBrrHJSepuly3kDiNZJFUcG+vVpL2vUfFuyGyi
-         0kFg==
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=xQC0tCobRDWyrCn2K27SujmYWuPprNzqJ1s8uOOE3JM=;
+        fh=8TcdNm2PUOSTOLTAPwKw1HRZgze8qTDV0WK6iGCckjQ=;
+        b=R/IZdb1Xqmu/aS4LGS+oCrBqvD2oIEAz3e89UKwZNlTOHpdNc4bqJyRS61ZgVq0r7V
+         vYP2Z6aOfcPpmEoT3xKthO1aB1xHGjs+5OeT+XNSfAzQB9F8sTXj/ctfTLLeJijIG8S+
+         2GAbA6/6+jhSoiPTzkLLy9GCCMIP30AY4to0xPGkMhdwDvbFG2xngpC2r6XnZIqf2fK6
+         zWD+VGb5tKpolMxcMpI0PkZVM/lKivrcj0U2s5ZcrBizh9R7SQm2QQdkISwlERdjImd+
+         0NLIMYmApPCyjMbaBuNHlOUR8caAQSMpZIW39rbyO6LKDQFQKPjtpEhFhHVdMKGPYBr2
+         icgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iSoBwodq;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=qYfjiRgT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l18-20020a0cd6d2000000b0066cfe943369si156320qvi.358.2023.10.18.09.24.46
+        by mx.google.com with ESMTPS id ke20-20020a056214301400b0064f4b37f21dsi363026qvb.118.2023.10.18.11.12.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Oct 2023 09:24:46 -0700 (PDT)
+        Wed, 18 Oct 2023 11:12:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iSoBwodq;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=qYfjiRgT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qt9Lf-0002MZ-7V; Wed, 18 Oct 2023 12:24:43 -0400
+	id 1qtB1Y-0006SX-D4; Wed, 18 Oct 2023 14:12:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qt9Ld-0002MA-HE
- for qemu-arm@nongnu.org; Wed, 18 Oct 2023 12:24:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qt9Lb-0005JV-Ol
- for qemu-arm@nongnu.org; Wed, 18 Oct 2023 12:24:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697646278;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=DxaQpWyohR1989GHWUZ08ZEv6gnHvALDQAL8GToFJnI=;
- b=iSoBwodq0SVGnwMDZ1+OSpH/wbwNpYHdvkSS2w/xUNdRO80M+vUVwf79NdPaCAv+kLCM7X
- Qd2+LPeE9bZAoZXH3wsv2dZJeY0cEjK0l+3hrV/ngrE50EI0mTMypMJanPwjhFSBuohqiV
- JXXlr7dphVlT+8KzwLZlcFgY4b+3YZ8=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-549-oaf5qr8QOgKS8ksgkgU8xw-1; Wed, 18 Oct 2023 12:24:22 -0400
-X-MC-Unique: oaf5qr8QOgKS8ksgkgU8xw-1
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-66d120c28afso78821456d6.0
- for <qemu-arm@nongnu.org>; Wed, 18 Oct 2023 09:24:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from
+ <37R8wZQwKCB4H45CB8MN894HAIIAF8.6IGK8GO-4LGHIHAHO.ILA@flex--nabihestefan.bounces.google.com>)
+ id 1qtB1W-0006RC-D4
+ for qemu-arm@nongnu.org; Wed, 18 Oct 2023 14:12:02 -0400
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <37R8wZQwKCB4H45CB8MN894HAIIAF8.6IGK8GO-4LGHIHAHO.ILA@flex--nabihestefan.bounces.google.com>)
+ id 1qtB1S-00088j-Ps
+ for qemu-arm@nongnu.org; Wed, 18 Oct 2023 14:12:02 -0400
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-5a7e4745acdso110862467b3.3
+ for <qemu-arm@nongnu.org>; Wed, 18 Oct 2023 11:11:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1697652717; x=1698257517; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=xQC0tCobRDWyrCn2K27SujmYWuPprNzqJ1s8uOOE3JM=;
+ b=qYfjiRgT//cfq+NbpBYBDNqWkH6Mo59vm08mcIbk1I0zVMDT0AjWaOyu9s6JIdjspp
+ kUQWBhFWPqm4TS9nTLhqJHIYnJpEif0d/BoumC0QiIVnUfAZaJ7Rw8YZVypJz2lEVfGY
+ 9aIUi2cKNUDCwfvhgb3kTurfoSU4/bIMibIfDjx95OIhyxcSwj9EY1Ke/Fp+cMqgQeeO
+ B3ixcYUHmy0vgm+WtnuGQ1yKnaZUcff2YEIRjezY2KGMYCjCIHEfpZVUl4upR6QvKnos
+ mh+oeRtG0gHfXGxr703me4/jSgDlqVqcCCwv8ennPI0hvdgkyu3X+L2iGsDCLu2EKVjD
+ 053g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697646262; x=1698251062;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=DxaQpWyohR1989GHWUZ08ZEv6gnHvALDQAL8GToFJnI=;
- b=eJBqykB94udJFTUr+eCP5l1HpdA/TU0dgRwXEpZKei38S+OcahSt7SPTN8nd86T9yX
- 04kZuspz5AzoK8ENG3NuP7nRafEIuBiIQ/lSnQzXCWcvnqmMpL3MDcHIU6rWQWbiZeJV
- Ts3GbajHAggUwG19Ly4GySkyVrJ/xzLcxNCwG1sAIfwWaeHhMvmHjCUu3vcGW5xfwsIC
- qQ1Bmh5qVlo7/hVYM1WR26M22L9UMx8KFmgUDh7pQUwwR+rJKhj2Oyor28zzXMt/CWd3
- Tf0wZ2Op9qMC0236mYIdLo1wQ77uNC7H1TwdLzT4X6aDkuEyB/P7C//gtdLZ/z6lnNCG
- LxlQ==
-X-Gm-Message-State: AOJu0YzcAFraizAqyFzpYQtzSlYOx6nvjComyG8khPbSHb3jZ3svcnRV
- nJBq5iQICZ9p1ElzJfSI1ygqMNZOS1694Hpehl7QMgeT78qFJ/aXoh9CGZT6xq/9pUAYH+nKg6f
- U6z3XDGaIpa8E
-X-Received: by 2002:a05:6214:19e7:b0:66d:5d84:f833 with SMTP id
- q7-20020a05621419e700b0066d5d84f833mr7772492qvc.37.1697646262016; 
- Wed, 18 Oct 2023 09:24:22 -0700 (PDT)
-X-Received: by 2002:a05:6214:19e7:b0:66d:5d84:f833 with SMTP id
- q7-20020a05621419e700b0066d5d84f833mr7772455qvc.37.1697646261738; 
- Wed, 18 Oct 2023 09:24:21 -0700 (PDT)
-Received: from [192.168.0.5] (ip-109-43-176-141.web.vodafone.de.
- [109.43.176.141]) by smtp.gmail.com with ESMTPSA id
- p18-20020a0cfad2000000b006564afc5908sm66189qvo.111.2023.10.18.09.24.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Oct 2023 09:24:21 -0700 (PDT)
-Message-ID: <393f1aa0-afb5-4269-8499-80afd5b98e48@redhat.com>
-Date: Wed, 18 Oct 2023 18:24:13 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/12] hw: Strengthen SysBus & QBus API
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Eric Farman <farman@linux.ibm.com>, Peter Xu <peterx@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, Sergio Lopez <slp@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
- qemu-s390x@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
- Song Gao <gaosong@loongson.cn>, Huacai Chen <chenhuacai@kernel.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20231018141151.87466-1-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20231018141151.87466-1-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ d=1e100.net; s=20230601; t=1697652717; x=1698257517;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xQC0tCobRDWyrCn2K27SujmYWuPprNzqJ1s8uOOE3JM=;
+ b=mZwdB3VcuUwICZ1hm+97Zo8ttbK2pRxItgO69Hd3zPjbepvkSR5QSZp/z207efFq8t
+ ULf5HzW3ltM3OVd1Ey45Afxquk3J2DOd9/bDwhu6os2HJczrdLCWIQq4cySbGIsB75Cn
+ +iD3Yf8W2OTv58H9U2fYz/9ANzhx2jAc+kjNmsnrSdU37Qh5PE7bPK3AFNwxBTpQLGWv
+ ojw5N2fEGLB0irwpzH0HkMBd/xPaS/q3bqTCNCCnXA6Sfd/ernoo+ut3CIyaYy9FP291
+ Pz48FrGD/l3jkawnsF1+y+stkSDDi0WjPI94rXWbVmxIGmuJKed6UVfigUG4CR/L2Xqd
+ F4eg==
+X-Gm-Message-State: AOJu0YyxuSUIsBTfjSQV+kBJQCQmMjjnoQyLtr0sZcD4mXQtys8BFk0Y
+ oLEq9IIenrsGo6BEZgnB+Ln98AfqpBEAFHNRED0=
+X-Received: from nabihestefan.c.googlers.com
+ ([fda3:e722:ac3:cc00:20:ed76:c0a8:2737])
+ (user=nabihestefan job=sendgmr) by 2002:a81:4944:0:b0:58c:b45f:3e94 with SMTP
+ id w65-20020a814944000000b0058cb45f3e94mr584ywa.8.1697652717490; Wed, 18 Oct
+ 2023 11:11:57 -0700 (PDT)
+Date: Wed, 18 Oct 2023 18:11:42 +0000
+In-Reply-To: <20231018181152.745496-1-nabihestefan@google.com>
+Mime-Version: 1.0
+References: <20231018181152.745496-1-nabihestefan@google.com>
+X-Mailer: git-send-email 2.42.0.655.g421f12c284-goog
+Message-ID: <20231018181152.745496-2-nabihestefan@google.com>
+Subject: [PATCH 01/11] hw/misc: Add Nuvoton's PCI Mailbox Module
+From: Nabih Estefan <nabihestefan@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
+ wuhaotsh@google.com, jasonwang@redhat.com, avi.fishman@nuvoton.com, 
+ nabihestefan@google.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=37R8wZQwKCB4H45CB8MN894HAIIAF8.6IGK8GO-4LGHIHAHO.ILA@flex--nabihestefan.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -191,118 +123,536 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bkUmytPFdFvd
+X-TUID: NUTs9D0GzPXl
 
-On 18/10/2023 16.11, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> This series ensure:
-> 
-> - qbus_new() and sysbus_init_mmio() are called *before*
->    a device is realized,
-> - sysbus_mmio_map() is called *after* it is realized.
-> 
-> First we fix some abuse, then we enforce in qdev/sysbus
-> core code.
+From: Hao Wu <wuhaotsh@google.com>
 
-I like the idea, and just had a try with "make check-qtest" with the patches 
-here, but seems like there are more spots that need attention:
+The PCI Mailbox Module is a high-bandwidth communcation module
+between a Nuvoton BMC and CPU. It features 16KB RAM that are both
+accessible by the BMC and core CPU. and supports interrupt for
+both sides.
 
-  10/433 qemu:qtest+qtest-ppc64 / qtest-ppc64/qom-test 
-              ERROR           0.72s   killed by signal 6 SIGABRT
- >>> MALLOC_PERTURB_=217 QTEST_QEMU_IMG=./qemu-img 
-G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh 
-PYTHON=/home/thuth/tmp/qemu-build/pyvenv/bin/python3 
-QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon 
-QTEST_QEMU_BINARY=./qemu-system-ppc64 
-/home/thuth/tmp/qemu-build/tests/qtest/qom-test --tap -k
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― ✀ 
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-stderr:
-qemu-system-ppc64: sysbus_mmio_map(type:power9_v2.2-pnv-chip, index:0, 
-addr:0x603fc00000000, prio:0) but object is not realized
-Broken pipe
-../../devel/qemu/tests/qtest/libqtest.c:203: kill_qemu() detected QEMU death 
-from signal 6 (Aborted) (core dumped)
+This patch implements the BMC side of the PCI mailbox module.
+Communication with the core CPU is emulated via a chardev and
+will be in a follow-up patch.
 
-(test program exited with status code -6)
+Signed-off-by: Hao Wu <wuhaotsh@google.com>
+---
+ hw/arm/npcm7xx.c                   |  16 +-
+ hw/misc/meson.build                |   1 +
+ hw/misc/npcm7xx_pci_mbox.c         | 324 +++++++++++++++++++++++++++++
+ hw/misc/trace-events               |   5 +
+ include/hw/arm/npcm7xx.h           |   1 +
+ include/hw/misc/npcm7xx_pci_mbox.h |  81 ++++++++
+ 6 files changed, 427 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/npcm7xx_pci_mbox.c
+ create mode 100644 include/hw/misc/npcm7xx_pci_mbox.h
 
-TAP parsing error: Too few tests run (expected 17, got 0)
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-
-...
-
-  24/433 qemu:qtest+qtest-aarch64 / qtest-aarch64/qom-test 
-              ERROR           5.94s   killed by signal 6 SIGABRT
- >>> QTEST_QEMU_BINARY=./qemu-system-aarch64 
-G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh 
-QTEST_QEMU_IMG=./qemu-img 
-PYTHON=/home/thuth/tmp/qemu-build/pyvenv/bin/python3 
-QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon 
-MALLOC_PERTURB_=105 /home/thuth/tmp/qemu-build/tests/qtest/qom-test --tap -k
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― ✀ 
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-stderr:
-qemu-system-aarch64: sysbus_init_mmio(type:pxa2xx_pic) but object is realized
-Broken pipe
-../../devel/qemu/tests/qtest/libqtest.c:203: kill_qemu() detected QEMU death 
-from signal 6 (Aborted) (core dumped)
-
-(test program exited with status code -6)
-
-TAP parsing error: Too few tests run (expected 95, got 3)
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-
-...
-
-  73/433 qemu:qtest+qtest-ppc64 / qtest-ppc64/boot-serial-test 
-              ERROR           2.65s   killed by signal 6 SIGABRT
- >>> QTEST_QEMU_IMG=./qemu-img 
-G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh 
-PYTHON=/home/thuth/tmp/qemu-build/pyvenv/bin/python3 
-QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon 
-MALLOC_PERTURB_=129 QTEST_QEMU_BINARY=./qemu-system-ppc64 
-/home/thuth/tmp/qemu-build/tests/qtest/boot-serial-test --tap -k
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― ✀ 
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-stderr:
-qemu-system-ppc64: sysbus_mmio_map(type:spapr-xive, index:0, 
-addr:0x6010000000000, prio:0) but object is not realized
-Broken pipe
-../../devel/qemu/tests/qtest/libqtest.c:203: kill_qemu() detected QEMU death 
-from signal 6 (Aborted) (core dumped)
-
-(test program exited with status code -6)
-
-TAP parsing error: Too few tests run (expected 7, got 3)
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-
-...
-
-270/433 qemu:qtest+qtest-ppc64 / qtest-ppc64/cpu-plug-test 
-             ERROR           0.40s   killed by signal 6 SIGABRT
- >>> QTEST_QEMU_IMG=./qemu-img 
-G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh 
-PYTHON=/home/thuth/tmp/qemu-build/pyvenv/bin/python3 
-QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon 
-MALLOC_PERTURB_=175 QTEST_QEMU_BINARY=./qemu-system-ppc64 
-/home/thuth/tmp/qemu-build/tests/qtest/cpu-plug-test --tap -k
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― ✀ 
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-stderr:
-qemu-system-ppc64: qbus_new(type:spapr-vio-bus parent:spapr-vio-bridge, 
-name:spapr-vio) but parent realized
-Broken pipe
-../../devel/qemu/tests/qtest/libqtest.c:203: kill_qemu() detected QEMU death 
-from signal 6 (Aborted) (core dumped)
-
-(test program exited with status code -6)
-
-TAP parsing error: Too few tests run (expected 3, got 0)
-―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-
-...
-
-  HTH,
-   Thomas
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index 15ff21d047..c69e936669 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -53,6 +53,9 @@
+ /* ADC Module */
+ #define NPCM7XX_ADC_BA          (0xf000c000)
+ 
++/* PCI Mailbox Module */
++#define NPCM7XX_PCI_MBOX_BA     (0xf0848000)
++
+ /* Internal AHB SRAM */
+ #define NPCM7XX_RAM3_BA         (0xc0008000)
+ #define NPCM7XX_RAM3_SZ         (4 * KiB)
+@@ -83,6 +86,10 @@ enum NPCM7xxInterrupt {
+     NPCM7XX_UART1_IRQ,
+     NPCM7XX_UART2_IRQ,
+     NPCM7XX_UART3_IRQ,
++    NPCM7XX_PECI_IRQ            = 6,
++    NPCM7XX_PCI_MBOX_IRQ        = 8,
++    NPCM7XX_KCS_HIB_IRQ         = 9,
++    NPCM7XX_GMAC1_IRQ           = 14,
+     NPCM7XX_EMC1RX_IRQ          = 15,
+     NPCM7XX_EMC1TX_IRQ,
+     NPCM7XX_MMC_IRQ             = 26,
+@@ -706,6 +713,14 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+         }
+     }
+ 
++    /* PCI Mailbox. Cannot fail */
++    sysbus_realize(SYS_BUS_DEVICE(&s->pci_mbox), &error_abort);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pci_mbox), 0, NPCM7XX_PCI_MBOX_BA);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->pci_mbox), 1,
++        NPCM7XX_PCI_MBOX_BA + NPCM7XX_PCI_MBOX_RAM_SIZE);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->pci_mbox), 0,
++                       npcm7xx_irq(s, NPCM7XX_PCI_MBOX_IRQ));
++
+     /* RAM2 (SRAM) */
+     memory_region_init_ram(&s->sram, OBJECT(dev), "ram2",
+                            NPCM7XX_RAM2_SZ, &error_abort);
+@@ -765,7 +780,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("npcm7xx.usbd[8]",      0xf0838000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.usbd[9]",      0xf0839000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.sd",           0xf0840000,   8 * KiB);
+-    create_unimplemented_device("npcm7xx.pcimbx",       0xf0848000, 512 * KiB);
+     create_unimplemented_device("npcm7xx.aes",          0xf0858000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.des",          0xf0859000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.sha",          0xf085a000,   4 * KiB);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index f60de33f9a..3ee3f2226f 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -73,6 +73,7 @@ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files(
+   'npcm7xx_clk.c',
+   'npcm7xx_gcr.c',
+   'npcm7xx_mft.c',
++  'npcm7xx_pci_mbox.c',
+   'npcm7xx_pwm.c',
+   'npcm7xx_rng.c',
+ ))
+diff --git a/hw/misc/npcm7xx_pci_mbox.c b/hw/misc/npcm7xx_pci_mbox.c
+new file mode 100644
+index 0000000000..c770ad6fcf
+--- /dev/null
++++ b/hw/misc/npcm7xx_pci_mbox.c
+@@ -0,0 +1,324 @@
++/*
++ * Nuvoton NPCM7xx PCI Mailbox Module
++ *
++ * Copyright 2021 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "qemu/osdep.h"
++#include "chardev/char-fe.h"
++#include "hw/irq.h"
++#include "hw/qdev-clock.h"
++#include "hw/qdev-properties-system.h"
++#include "hw/misc/npcm7xx_pci_mbox.h"
++#include "hw/registerfields.h"
++#include "migration/vmstate.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "qemu/bitops.h"
++#include "qemu/error-report.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qemu/timer.h"
++#include "qemu/units.h"
++#include "trace.h"
++
++REG32(NPCM7XX_PCI_MBOX_BMBXSTAT, 0x00);
++REG32(NPCM7XX_PCI_MBOX_BMBXCTL, 0x04);
++REG32(NPCM7XX_PCI_MBOX_BMBXCMD, 0x08);
++
++enum NPCM7xxPCIMBoxOperation {
++    NPCM7XX_PCI_MBOX_OP_READ = 1,
++    NPCM7XX_PCI_MBOX_OP_WRITE,
++};
++
++#define NPCM7XX_PCI_MBOX_OFFSET_BYTES 8
++
++/* Response code */
++#define NPCM7XX_PCI_MBOX_OK 0
++#define NPCM7XX_PCI_MBOX_INVALID_OP 0xa0
++#define NPCM7XX_PCI_MBOX_INVALID_SIZE 0xa1
++#define NPCM7XX_PCI_MBOX_UNSPECIFIED_ERROR 0xff
++
++#define NPCM7XX_PCI_MBOX_NR_CI 8
++#define NPCM7XX_PCI_MBOX_CI_MASK MAKE_64BIT_MASK(0, NPCM7XX_PCI_MBOX_NR_CI)
++
++static void npcm7xx_pci_mbox_update_irq(NPCM7xxPCIMBoxState *s)
++{
++    /* We should send an interrupt when one of the CIE and CIF are both 1. */
++    if (s->regs[R_NPCM7XX_PCI_MBOX_BMBXSTAT] &
++        s->regs[R_NPCM7XX_PCI_MBOX_BMBXCTL] &
++        NPCM7XX_PCI_MBOX_CI_MASK) {
++        qemu_irq_raise(s->irq);
++        trace_npcm7xx_pci_mbox_irq(1);
++    } else {
++        qemu_irq_lower(s->irq);
++        trace_npcm7xx_pci_mbox_irq(0);
++    }
++}
++
++static void npcm7xx_pci_mbox_send_response(NPCM7xxPCIMBoxState *s, uint8_t code)
++{
++    qemu_chr_fe_write(&s->chr, &code, 1);
++    if (code == NPCM7XX_PCI_MBOX_OK && s->op == NPCM7XX_PCI_MBOX_OP_READ) {
++        qemu_chr_fe_write(&s->chr, (uint8_t *)(&s->data), s->size);
++    }
++}
++
++static void npcm7xx_pci_mbox_handle_read(NPCM7xxPCIMBoxState *s)
++{
++    MemTxResult r = memory_region_dispatch_read(
++        &s->ram, s->offset, &s->data, MO_LE | size_memop(s->size),
++        MEMTXATTRS_UNSPECIFIED);
++
++    npcm7xx_pci_mbox_send_response(s, (uint8_t)r);
++}
++
++static void npcm7xx_pci_mbox_handle_write(NPCM7xxPCIMBoxState *s)
++{
++    MemTxResult r = memory_region_dispatch_write(
++        &s->ram, s->offset, s->data, MO_LE | size_memop(s->size),
++        MEMTXATTRS_UNSPECIFIED);
++
++    npcm7xx_pci_mbox_send_response(s, (uint8_t)r);
++}
++
++static void npcm7xx_pci_mbox_receive_char(NPCM7xxPCIMBoxState *s, uint8_t byte)
++{
++    switch (s->state) {
++    case NPCM7XX_PCI_MBOX_STATE_IDLE:
++        switch (byte) {
++        case NPCM7XX_PCI_MBOX_OP_READ:
++        case NPCM7XX_PCI_MBOX_OP_WRITE:
++            s->op = byte;
++            s->state = NPCM7XX_PCI_MBOX_STATE_OFFSET;
++            s->offset = 0;
++            s->receive_count = 0;
++            break;
++
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                "received invalid op type: 0x%" PRIx8, byte);
++            npcm7xx_pci_mbox_send_response(s, NPCM7XX_PCI_MBOX_INVALID_OP);
++            break;
++        }
++        break;
++
++    case NPCM7XX_PCI_MBOX_STATE_OFFSET:
++        s->offset += (uint64_t)byte << (s->receive_count * BITS_PER_BYTE);
++        if (++s->receive_count >= NPCM7XX_PCI_MBOX_OFFSET_BYTES) {
++            s->state = NPCM7XX_PCI_MBOX_STATE_SIZE;
++        }
++        break;
++
++    case NPCM7XX_PCI_MBOX_STATE_SIZE:
++        s->size = byte;
++        if (s->size < 1 || s->size > sizeof(uint64_t)) {
++            qemu_log_mask(LOG_GUEST_ERROR, "received invalid size: %u", byte);
++            npcm7xx_pci_mbox_send_response(s, NPCM7XX_PCI_MBOX_INVALID_SIZE);
++            s->state = NPCM7XX_PCI_MBOX_STATE_IDLE;
++            break;
++        }
++        if (s->op == NPCM7XX_PCI_MBOX_OP_READ) {
++            npcm7xx_pci_mbox_handle_read(s);
++            s->state = NPCM7XX_PCI_MBOX_STATE_IDLE;
++        } else {
++            s->receive_count = 0;
++            s->data = 0;
++            s->state = NPCM7XX_PCI_MBOX_STATE_DATA;
++        }
++        break;
++
++    case NPCM7XX_PCI_MBOX_STATE_DATA:
++        g_assert(s->op == NPCM7XX_PCI_MBOX_OP_WRITE);
++        s->data += (uint64_t)byte << (s->receive_count * BITS_PER_BYTE);
++        if (++s->receive_count >= s->size) {
++            npcm7xx_pci_mbox_handle_write(s);
++            s->state = NPCM7XX_PCI_MBOX_STATE_IDLE;
++        }
++        break;
++
++    default:
++        g_assert_not_reached();
++    }
++}
++
++static uint64_t npcm7xx_pci_mbox_read(void *opaque, hwaddr offset,
++                                      unsigned size)
++{
++    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(opaque);
++    uint16_t value = 0;
++
++    if (offset / sizeof(uint32_t) >= NPCM7XX_PCI_MBOX_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
++                      __func__, offset);
++        return 0;
++    }
++
++    value = s->regs[offset / sizeof(uint32_t)];
++    trace_npcm7xx_pci_mbox_read(DEVICE(s)->canonical_path, offset, value, size);
++    return value;
++}
++
++static void npcm7xx_pci_mbox_write(void *opaque, hwaddr offset,
++                              uint64_t v, unsigned size)
++{
++    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(opaque);
++
++    trace_npcm7xx_pci_mbox_write(DEVICE(s)->canonical_path, offset, v, size);
++    switch (offset) {
++    case A_NPCM7XX_PCI_MBOX_BMBXSTAT:
++        /* Clear bits that are 1. */
++        s->regs[R_NPCM7XX_PCI_MBOX_BMBXSTAT] &= ~v;
++        break;
++
++    case A_NPCM7XX_PCI_MBOX_BMBXCTL:
++        s->regs[R_NPCM7XX_PCI_MBOX_BMBXCTL] = v;
++        break;
++
++    case A_NPCM7XX_PCI_MBOX_BMBXCMD:
++        /* Set the bits that are 1. */
++        s->regs[R_NPCM7XX_PCI_MBOX_BMBXCMD] |= v;
++        /* TODO: Set interrupt to host. */
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
++                      __func__, offset);
++    }
++    npcm7xx_pci_mbox_update_irq(s);
++}
++
++static const struct MemoryRegionOps npcm7xx_pci_mbox_ops = {
++    .read       = npcm7xx_pci_mbox_read,
++    .write      = npcm7xx_pci_mbox_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid      = {
++        .min_access_size        = 4,
++        .max_access_size        = 4,
++        .unaligned              = false,
++    },
++};
++
++static void npcm7xx_pci_mbox_enter_reset(Object *obj, ResetType type)
++{
++    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(obj);
++
++    memset(s->regs, 0, 4 * NPCM7XX_PCI_MBOX_NR_REGS);
++    s->state = NPCM7XX_PCI_MBOX_STATE_IDLE;
++    s->receive_count = 0;
++}
++
++static void npcm7xx_pci_mbox_hold_reset(Object *obj)
++{
++    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(obj);
++
++    qemu_irq_lower(s->irq);
++}
++
++static int can_receive(void *opaque)
++{
++    return 1;
++}
++
++static void receive(void *opaque, const uint8_t *buf, int size)
++{
++    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(opaque);
++    int i;
++
++    for (i = 0; i < size; ++i) {
++        npcm7xx_pci_mbox_receive_char(s, buf[i]);
++    }
++}
++
++static void chr_event(void *opaque, QEMUChrEvent event)
++{
++    switch (event) {
++    case CHR_EVENT_OPENED:
++    case CHR_EVENT_CLOSED:
++    case CHR_EVENT_BREAK:
++    case CHR_EVENT_MUX_IN:
++    case CHR_EVENT_MUX_OUT:
++        /* Ignore */
++        break;
++
++    default:
++        g_assert_not_reached();
++    }
++}
++
++static void npcm7xx_pci_mbox_init(Object *obj)
++{
++    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    memory_region_init_ram_device_ptr(&s->ram, obj, "pci-mbox-ram",
++                                      NPCM7XX_PCI_MBOX_RAM_SIZE, s->content);
++    memory_region_init_io(&s->iomem, obj, &npcm7xx_pci_mbox_ops, s,
++                          "pci-mbox-iomem", 4 * KiB);
++    sysbus_init_mmio(sbd, &s->ram);
++    sysbus_init_mmio(sbd, &s->iomem);
++    sysbus_init_irq(sbd, &s->irq);
++}
++
++static void npcm7xx_pci_mbox_realize(DeviceState *dev, Error **errp)
++{
++    NPCM7xxPCIMBoxState *s = NPCM7XX_PCI_MBOX(dev);
++
++    qemu_chr_fe_set_handlers(&s->chr, can_receive, receive,
++                             chr_event, NULL, OBJECT(dev), NULL, true);
++}
++
++static const VMStateDescription vmstate_npcm7xx_pci_mbox = {
++    .name = "npcm7xx-pci-mbox-module",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, NPCM7xxPCIMBoxState,
++                             NPCM7XX_PCI_MBOX_NR_REGS),
++        VMSTATE_END_OF_LIST(),
++    },
++};
++
++static Property npcm7xx_pci_mbox_properties[] = {
++    DEFINE_PROP_CHR("chardev", NPCM7xxPCIMBoxState, chr),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void npcm7xx_pci_mbox_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "NPCM7xx PCI Mailbox Controller";
++    dc->vmsd = &vmstate_npcm7xx_pci_mbox;
++    dc->realize = npcm7xx_pci_mbox_realize;
++    rc->phases.enter = npcm7xx_pci_mbox_enter_reset;
++    rc->phases.hold = npcm7xx_pci_mbox_hold_reset;
++    device_class_set_props(dc, npcm7xx_pci_mbox_properties);
++}
++
++static const TypeInfo npcm7xx_pci_mbox_info = {
++    .name               = TYPE_NPCM7XX_PCI_MBOX,
++    .parent             = TYPE_SYS_BUS_DEVICE,
++    .instance_size      = sizeof(NPCM7xxPCIMBoxState),
++    .class_init         = npcm7xx_pci_mbox_class_init,
++    .instance_init      = npcm7xx_pci_mbox_init,
++};
++
++static void npcm7xx_pci_mbox_register_type(void)
++{
++    type_register_static(&npcm7xx_pci_mbox_info);
++}
++type_init(npcm7xx_pci_mbox_register_type);
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 24ba7cc4d0..36c7840143 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -148,6 +148,11 @@ npcm7xx_pwm_write(const char *id, uint64_t offset, uint32_t value) "%s offset: 0
+ npcm7xx_pwm_update_freq(const char *id, uint8_t index, uint32_t old_value, uint32_t new_value) "%s pwm[%u] Update Freq: old_freq: %u, new_freq: %u"
+ npcm7xx_pwm_update_duty(const char *id, uint8_t index, uint32_t old_value, uint32_t new_value) "%s pwm[%u] Update Duty: old_duty: %u, new_duty: %u"
+ 
++# npcm7xx_pci_mbox.c
++npcm7xx_pci_mbox_read(const char *id, uint64_t offset, uint64_t value, unsigned size) "%s offset: 0x%04" PRIx64 " value: 0x%02" PRIx64 " size: %u"
++npcm7xx_pci_mbox_write(const char *id, uint64_t offset, uint64_t value, unsigned size) "%s offset: 0x%04" PRIx64 " value: 0x%02" PRIx64 " size: %u"
++npcm7xx_pci_mbox_irq(int irq_level) "irq level: %d"
++
+ # stm32f4xx_syscfg.c
+ stm32f4xx_syscfg_set_irq(int gpio, int line, int level) "Interrupt: GPIO: %d, Line: %d; Level: %d"
+ stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index 72c7722096..273090ac60 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -26,6 +26,7 @@
+ #include "hw/misc/npcm7xx_clk.h"
+ #include "hw/misc/npcm7xx_gcr.h"
+ #include "hw/misc/npcm7xx_mft.h"
++#include "hw/misc/npcm7xx_pci_mbox.h"
+ #include "hw/misc/npcm7xx_pwm.h"
+ #include "hw/misc/npcm7xx_rng.h"
+ #include "hw/net/npcm7xx_emc.h"
+diff --git a/include/hw/misc/npcm7xx_pci_mbox.h b/include/hw/misc/npcm7xx_pci_mbox.h
+new file mode 100644
+index 0000000000..e595fbcc70
+--- /dev/null
++++ b/include/hw/misc/npcm7xx_pci_mbox.h
+@@ -0,0 +1,81 @@
++/*
++ * Nuvoton NPCM7xx PCI Mailbox Module
++ *
++ * Copyright 2021 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++#ifndef NPCM7XX_PCI_MBOX_H
++#define NPCM7XX_PCI_MBOX_H
++
++#include "chardev/char-fe.h"
++#include "exec/memory.h"
++#include "hw/clock.h"
++#include "hw/irq.h"
++#include "hw/pci/pci.h"
++#include "hw/sysbus.h"
++#include "qom/object.h"
++
++#define NPCM7XX_PCI_MBOX_RAM_SIZE 0x4000
++
++#define NPCM7XX_PCI_VENDOR_ID   0x1050
++#define NPCM7XX_PCI_DEVICE_ID   0x0750
++#define NPCM7XX_PCI_REVISION    0
++#define NPCM7XX_PCI_CLASS_CODE  0xff
++
++typedef enum NPCM7xxPCIMBoxHostState {
++    NPCM7XX_PCI_MBOX_STATE_IDLE,
++    NPCM7XX_PCI_MBOX_STATE_OFFSET,
++    NPCM7XX_PCI_MBOX_STATE_SIZE,
++    NPCM7XX_PCI_MBOX_STATE_DATA,
++} NPCM7xxPCIMBoxHostState ;
++
++/*
++ * Maximum amount of control registers in PCI Mailbox module. Do not increase
++ * this value without bumping vm version.
++ */
++#define NPCM7XX_PCI_MBOX_NR_REGS 3
++
++/**
++ * struct NPCM7xxPciMboxState - PCI Mailbox Device
++ * @parent: System bus device.
++ * @ram: the mailbox RAM memory space
++ * @iomem: Memory region through which registers are accessed.
++ * @content: The content of the PCI mailbox, initialized to 0.
++ * @regs: The MMIO registers.
++ * @chr: The chardev backend used to communicate with core CPU.
++ * @offset: The offset to start transfer.
++ */
++typedef struct NPCM7xxPCIMBoxState {
++    SysBusDevice parent;
++
++    MemoryRegion ram;
++    MemoryRegion iomem;
++
++    qemu_irq irq;
++    uint8_t content[NPCM7XX_PCI_MBOX_RAM_SIZE];
++    uint32_t regs[NPCM7XX_PCI_MBOX_NR_REGS];
++    CharBackend chr;
++
++    /* aux data for receiving host commands. */
++    NPCM7xxPCIMBoxHostState state;
++    uint8_t op;
++    hwaddr offset;
++    uint8_t size;
++    uint64_t data;
++    int receive_count;
++} NPCM7xxPCIMBoxState;
++
++#define TYPE_NPCM7XX_PCI_MBOX "npcm7xx-pci-mbox"
++#define NPCM7XX_PCI_MBOX(obj) \
++    OBJECT_CHECK(NPCM7xxPCIMBoxState, (obj), TYPE_NPCM7XX_PCI_MBOX)
++
++#endif /* NPCM7XX_PCI_MBOX_H */
+-- 
+2.42.0.655.g421f12c284-goog
 

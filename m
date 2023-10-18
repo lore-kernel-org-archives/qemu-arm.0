@@ -1,149 +1,434 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4506988ejc;
-        Wed, 18 Oct 2023 02:24:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGBsf6WJGMlyIXtrEjwZtL5hV9AePWZqAt+t3C8MEdBaIMOEgek3Q85BpPOAr+g3mD9Dzzn
-X-Received: by 2002:a05:620a:3914:b0:777:27f9:7e54 with SMTP id qr20-20020a05620a391400b0077727f97e54mr5631402qkn.50.1697621046350;
-        Wed, 18 Oct 2023 02:24:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697621046; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4529479ejc;
+        Wed, 18 Oct 2023 03:15:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGlYn7Tw9eDhabJArwn+CPQJzZIMRZ9WtGMebCwD6LvWEPimfwjJeLkJOIr0A/GPMNUtj3o
+X-Received: by 2002:a05:6214:258a:b0:65a:f55e:5a77 with SMTP id fq10-20020a056214258a00b0065af55e5a77mr5090796qvb.34.1697624121947;
+        Wed, 18 Oct 2023 03:15:21 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1697624121; cv=pass;
         d=google.com; s=arc-20160816;
-        b=zbx/uIa2oMRdPBOPBpuKiAjmwaKkbLtyFMFc00iVHy1nOiOUntFrQJjazPx640t+7M
-         wwfqj6RPwOE9p1+7fYm6t5oLaR3lesbORwpA5kKXsk7AVol/ksTBb588291KbqhC0epr
-         SC2VVx9FhCGEFfJ9UzNO0BiamzOsmpqNTVlgViDyruWmNNLIfiZ2RjsuMOvAdWRQVPdM
-         Ou/04W9DjIfXv/GAIcD/NHtUKFM/YxrAE5E9f4jgEQd2Lyv2cA7BgtfN4oIxj5Q951zD
-         OvUtFFyzCS2kea2sfDnXf+Eo5gNUil3f8TdS0rafIZZNqbqylNS2pdxRPx61pk/U4RwE
-         vNxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=L680APRykDiB3dtDq+o2x++QN81ZxcWo62tCgalCFGYd0iLHjpeTPWekg24Wrfe67C
+         591dKP5l/TACYQjX3gFcc0ioGksOPVVUQD8y9i9Xo7xf5jNeUgEWZTGx33o7SkOPxavN
+         zZnf7FDxBkXMqaVAx+ki+MCeT+K8i6ldQCJtuCuVIMqvEozZj9modPG37elfSAktivCm
+         v408fDdCcL+9j0lH/IJ+1LTNi8++pPfT3NQuMgvn1gcEBoicbjI/9whJnqP3FHdlEfsh
+         iIL/bCIgk7xRj2Eu/Mt+QPTPpvN7ae33ek/a6SCOKjRt5kz3h8omUzWLEHkVQnquFcQy
+         ED/w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ir4Oi4tJmqD6fb/jTTWI/cvH3QiKo4l3/ltMHsKg+ZY=;
-        fh=bZ9Wf0smTP0GJi+WovNSAbRHmtpbA1395yM/1ms8q4Y=;
-        b=X3LHzWUyz5BKGTRAD80K0dWebOgK4KqBeVpx2yzcgtvzVAohrN7eKck4he4+ZZs9XC
-         tSY4EhGEmnCzressoidmZ8GnpJdJIhp3RKCnyKxDs2nUo4TDxquFyNvCnDU93UQRwPIO
-         7RMHfRE7PGbePfZZeow3eLlh+ulNcdG9UhickSHw5MLm9sXjGHN6DKAIj5eW3kACeWRM
-         Ri2qjcRfZYszM7ojWtEs35yOY8IL3XZgV2TfNEzPqNkJo9SHDfSD+f7DPwdIw/pFDcmB
-         e1WDpB12QKlvZjDQI1K94ftWEPS/FUrZLmNvkTt6OC+AXl/NU8eeYEI9TRaB6px9qmFs
-         xvlQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ynXjKCQO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=Wa3o/UzmotaHV31GSrJrScnzFgviLQKFGcAPcegXmhI=;
+        fh=ti0m/g87CcSeUpEJKlFFAoTseRnB1S9szZHdE3iR3Gs=;
+        b=nrwC4YPJhbeNIIDOv38dWv6GYk/POP75ri4C1Bik1UxeFzV55XLmhrrtXHO5DYYmCP
+         S9CajxvGHJC1o0W2jD8cDqyS9fRTdajwH17tvrs63grUjcDhJqLy5MCSbbS57QfwmtWp
+         tWLNxWwBlDb1LHplM3eoIpwVr3/akn14Yzdfnuanzv/YDM4xUk4Ud0oenEIKvVwr0New
+         YKoT3h6gRIn+V7n7Q5qkqQ4vO6GfzYmVebA0Rtk3Hnp29dsFlQ4wB3hmbppcrzXQaFAK
+         eph+hQeoN5aUINjlTkN+OHMzQVmkUzmi2/71Ee3lWKLpCsLEodPA+bMUbj3OdBmj/td5
+         yyYg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=wsBMBra8;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l7-20020a05620a28c700b007759399e39dsi2527874qkp.692.2023.10.18.02.24.06
+        by mx.google.com with ESMTPS id p6-20020a05622a00c600b00417fa6502a2si2420650qtw.387.2023.10.18.03.15.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Oct 2023 02:24:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Oct 2023 03:15:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ynXjKCQO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=wsBMBra8;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qt2mV-0005nC-8D; Wed, 18 Oct 2023 05:23:59 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qt3Zd-0000zE-28; Wed, 18 Oct 2023 06:14:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt2mS-0005mp-S9
- for qemu-arm@nongnu.org; Wed, 18 Oct 2023 05:23:56 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt2mR-0007sH-3l
- for qemu-arm@nongnu.org; Wed, 18 Oct 2023 05:23:56 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-523100882f2so10937207a12.2
- for <qemu-arm@nongnu.org>; Wed, 18 Oct 2023 02:23:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697621033; x=1698225833; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ir4Oi4tJmqD6fb/jTTWI/cvH3QiKo4l3/ltMHsKg+ZY=;
- b=ynXjKCQOCzzq62wRzOHslRIBYPt9MMlTgSZ7/H3mHABsuPXLtfFOOX2+r9QQp8Fqv1
- KOIx8z5SvNmxyh25BLgfgxD6BzB4Vjcl1VC/05j25t3yRzWjlAhRh+CP9ULmR/WSypsp
- me+iyJQ1lSPDDdf6ID+pFS8j+eUhP24kId4JmYNUrcESgYLiEqnMdVhS0nO/PkHZaEP+
- thdE/qAba/+f5WiWZLmMzQbYBx3VDehzgmQAZVMgvDgyYZzF8SfYBo0pT3rsXJPKYbAM
- bgccHfl+CaPZkMCCmrL0IuQNo0pgdf/dJU1FuJ/+/NqUjnFqmctuIcXPlJPLdhtKYzt8
- oz/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697621033; x=1698225833;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ir4Oi4tJmqD6fb/jTTWI/cvH3QiKo4l3/ltMHsKg+ZY=;
- b=UIOQd3N7dSAhEUB/tIxAmDABeNq0igUO28w2ROlTD9E5u2+HLqspI2jvQrJYm4+iNK
- /ODLMdHHfua7rjSIvA5j9or8h4granhUPYSf2hpQv327+otKD7SU2aqAWwv2GwjqIYlV
- pVsrSunNq2jVluiROSxNHK/ld5IH5EGJFbat56bYMKnQ3sTuLbNMVconz26N7xwJXX9N
- +m/qgodM97GtTp8cYuaTbp8q/1TMFoo7kgJqm6qayiXSBrgd7Ls9bjbJ71Gx2IEWfdK+
- G0PDCPN64XyR2TKhQcLnnCCM9t2gJcXdSMFRigeZPgRX/tb7z1Dd8zCP7UYb0UymWLK+
- oAAQ==
-X-Gm-Message-State: AOJu0Yx3QdP1zf1NEMUlT168XGmzMZvkN6bPbXJ75cVbM2Nfj/PIkGJS
- nPPFoePP9yVZfi5rxCO6rKPy+A==
-X-Received: by 2002:a05:6402:27ca:b0:53e:1825:d547 with SMTP id
- c10-20020a05640227ca00b0053e1825d547mr4065360ede.24.1697621033385; 
- Wed, 18 Oct 2023 02:23:53 -0700 (PDT)
-Received: from [192.168.69.115] ([176.172.118.33])
- by smtp.gmail.com with ESMTPSA id
- w23-20020a50fa97000000b0053e5edeff3bsm2419154edr.93.2023.10.18.02.23.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Oct 2023 02:23:52 -0700 (PDT)
-Message-ID: <404e3e4d-f478-bb50-300e-b41248a1d0cc@linaro.org>
-Date: Wed, 18 Oct 2023 11:23:50 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH 11/11] hw/net/cadence_gem: enforce 32 bits variable size
- for CRC
-Content-Language: en-US
-To: Luc Michel <luc.michel@amd.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Frederic Konrad <frederic.konrad@amd.com>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1qt3Zb-0000z6-4t
+ for qemu-devel@nongnu.org; Wed, 18 Oct 2023 06:14:43 -0400
+Received: from mail-bn8nam12on20605.outbound.protection.outlook.com
+ ([2a01:111:f400:fe5b::605]
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1qt3ZZ-000092-6L
+ for qemu-devel@nongnu.org; Wed, 18 Oct 2023 06:14:42 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TpePqw4nL19Ap911QYtbGdGzgWG7GTCBnu+Fy0wlswOUDL1ZR4aFLgozQWyFqL1ryD2tmCrIjvTYnMwi3nA4mInOm7tnEVGZeAGeQhw6FLf1mkjOqpxmisd7kmrdSEnrln936DgeBgGqS3scpm5D0WDRWp2eBSkfuamQuCwf5G6u4H8yFsVAXQ9jVs8Q1Jz4mQKviiHXkJ/T0tY7mtSimINZqrogBMzFsxOZ4elasqnsh5mXJVO9sgJ7BDgaft6AHCjWxm/ypE6Ji98ApA7mmFpxXuUFZZ8+WGWVsfdIwn9y5n+ctObBbVR+xLDRgY7ef5NIc7kPFK7xcfWTfG8KzQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Wa3o/UzmotaHV31GSrJrScnzFgviLQKFGcAPcegXmhI=;
+ b=IgTTNfvQkI+b7pE6FNMpKMD5Otpc8N5dmiHJGdjvRf2eJQ/3fovOu/bKhF1p0jQ9QzX1q0GjEi+hJqNflik7/njglJVe+MJW1+ak+mpXEIWK2mZHEpWGk5kngapeajYDG16+m8byg+9Ie5Fni4n0o+sMhhmNvy5l2ZVnrKGhAm6o/l8F7xoHEGmhy/3urlhBPhh5EyPfNjpYvLxZ3hQ3RbQNFtj3cXe1WFOi0gJO+e5zDJJI0ehUDeWDkUq+PhTTM9Ox0Wjhz+H4c9/3p0Z1UIUtW2O2e2LKuOQqeBQToVX63tAiAhZV2n1pjMZSToTomz/HpPf9Ncpsc3mZ9vgkjw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Wa3o/UzmotaHV31GSrJrScnzFgviLQKFGcAPcegXmhI=;
+ b=wsBMBra8LLCBXV1jJdGD4NttctzFT9CzWJTMgWxd3GkHQZii2btz33dQOfJgqlYANR/PbYAGDg0a7aHQQ5RRIuW0KO8bXMvaC2d5KNtJaeP65NMt97F5FY3j2nt2xeOW4sB/hvaWJsz+6//8P0C6nLbhZKK1fQYjbe+QFev8gjA=
+Received: from DS7PR12MB5741.namprd12.prod.outlook.com (2603:10b6:8:70::7) by
+ PH7PR12MB6882.namprd12.prod.outlook.com (2603:10b6:510:1b8::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6886.35; Wed, 18 Oct
+ 2023 10:14:29 +0000
+Received: from DS7PR12MB5741.namprd12.prod.outlook.com
+ ([fe80::8f6b:fb45:d9a1:d4f5]) by DS7PR12MB5741.namprd12.prod.outlook.com
+ ([fe80::8f6b:fb45:d9a1:d4f5%3]) with mapi id 15.20.6907.021; Wed, 18 Oct 2023
+ 10:14:29 +0000
+From: "Boddu, Sai Pavan" <sai.pavan.boddu@amd.com>
+To: "Michel, Luc" <Luc.Michel@amd.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+CC: "Michel, Luc" <Luc.Michel@amd.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Peter Maydell
+ <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, "Iglesias,
+ Francisco" <francisco.iglesias@amd.com>, "Konrad, Frederic"
+ <Frederic.Konrad@amd.com>
+Subject: RE: [PATCH 02/11] hw/net/cadence_gem: use FIELD for screening
+ registers
+Thread-Topic: [PATCH 02/11] hw/net/cadence_gem: use FIELD for screening
+ registers
+Thread-Index: AQHaATJe0ywlEMnZbUaSBY8oGHvTC7BPVSjg
+Date: Wed, 18 Oct 2023 10:14:29 +0000
+Message-ID: <DS7PR12MB57412366EE672C8CAE7BF3A3B6D5A@DS7PR12MB5741.namprd12.prod.outlook.com>
 References: <20231017194422.4124691-1-luc.michel@amd.com>
- <20231017194422.4124691-12-luc.michel@amd.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231017194422.4124691-12-luc.michel@amd.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <20231017194422.4124691-3-luc.michel@amd.com>
+In-Reply-To: <20231017194422.4124691-3-luc.michel@amd.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DS7PR12MB5741:EE_|PH7PR12MB6882:EE_
+x-ms-office365-filtering-correlation-id: e3c6d6b7-6d1a-4c82-d080-08dbcfc3041c
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: MYUDCDWV+Tsl4LK7aTOYpRdbeDavto5yNK2WqENWXdcNxtwf3BKp41TTmp+d/KDnLVfxHiTk+ZUYUp819Vowc+EGQt2BVXJ6tY/ALr8h/35tMPpJeKewiN+gTpwnyWdVmm2CLDOwm1j4sFLGsTAKgjXUtm7xVWXFZx+mDdKVv9lQyjfSn9mVuxDvPDn8lhcyEDNCxAHcM4PF53IkbHayqzstZPu0LTz0zGn4lEk45luwqrzfms3idIxqYsRVn825N0wW4y3sp9wh7j6jShMgnYSxbdxLfSLJjSHGaOpmXTvUXk09Z21yjh4SBl4VrVqgRig7OAo4na8gaHEz+kgSqlS5SLAD1VGFhatr8bCblNG7u4UCxWL2sFpdKtvnJnFrqGYk2ZoXVqwo0EidtAzLN/GxzJQLHB1yKy5yGzApVgX1NkVgDRaEUo9lEgYaDP/rgdX3nTpzeMK0/ArJ2AdGk/CECgcK7gCdDbJDfKsT3f3egDlhHU/pnWE8C5MjQBI3t1G8u5r7D5xdNFktVIY9HOfdu3INCeS/OfqyWd6sXcV8GGRZ4iTeh3IGtstG6C58R0nf5vv1IJcRcG8dNcbHGqKC5OBsdLGUYfmR7YuLn991dxpRCbB5SbOEaGKCNk/i
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS7PR12MB5741.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(396003)(136003)(366004)(376002)(39860400002)(346002)(230922051799003)(451199024)(1800799009)(186009)(64100799003)(55016003)(6506007)(7696005)(52536014)(33656002)(71200400001)(5660300002)(2906002)(122000001)(83380400001)(26005)(38100700002)(38070700005)(86362001)(9686003)(54906003)(316002)(66556008)(41300700001)(110136005)(64756008)(66946007)(66446008)(66476007)(76116006)(478600001)(8936002)(4326008)(8676002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?10qLXL5Z/MxyMPIXDIl8Kir1Ws0a3wziixxBSCNIE/cxXJWuqxowBS35kg?=
+ =?iso-8859-1?Q?2wUNG+PN6c/DO92IibXaZJshMQuWpBvr1EtMRPpBA2TsOYNdH9TsGedVlJ?=
+ =?iso-8859-1?Q?V6LEFJxKaWldw/K+fCPvO82Lsb+MZC7OtalqhV6NpC/b5EnCEGu7LjlNnC?=
+ =?iso-8859-1?Q?TShqLx770AnAd/hNEQCEpbYTww7iqDrdJUm89q79lt6a0MpeUyAVvbjYCG?=
+ =?iso-8859-1?Q?WeeuQmbDG5rVlmkusaXqCLE8sTR3GTJTPLjY7FP75b7hMmBAulIkv9ONCp?=
+ =?iso-8859-1?Q?L6HUTJNmiRbjAB4Eq6t6vWRrfjXPc76HU+ePVpkcYD84AqRh0Xufl09LKh?=
+ =?iso-8859-1?Q?DKSYn9BQFI4lsmj55/Zc+Aud2c0wgkj3HWFS/Q5fNlv8EiFVOYIMkW3kbS?=
+ =?iso-8859-1?Q?covx9ErLhgYlpDeQtNUyzAgHCoLDzmjSS9iuEcKOrcG3eG78LctCyDPIiz?=
+ =?iso-8859-1?Q?Ll3gf1SIkivCccznuEj+kmNLpUt1okEQq2hJvJExt2EWQZY0r8jTHj9O5t?=
+ =?iso-8859-1?Q?V15eJVr/QiErPgICH1vx+LtviNgoREe/3k/CY1Jh+RGAzaPGWFxjnvLP25?=
+ =?iso-8859-1?Q?rnSZscrK9eMip8LhzDiha9rkgx5KtbL/orYY1T8aHhSYg9chmd34wj/9tk?=
+ =?iso-8859-1?Q?ySaxYtFMJ/RBbvgikP9BnToXvjI5VsRshw6MmL3g8lJyIx/Ywiw4CCajK3?=
+ =?iso-8859-1?Q?jU/8ZaQCqf1iuLMGtz4dTLVKfMbAtL4L4TXcNerC7iGZcgvMjNnr5+q6tL?=
+ =?iso-8859-1?Q?+EgMYyCRm60YyCSHqYsq2D3vpAc5bBLFvbLxeTiVOxic7WMy4Exe4wApFW?=
+ =?iso-8859-1?Q?xlk/MVROC21LscIdgWNz69/0ZEEdxsp+lO6h054vfsmWurpMvGi69q9cUU?=
+ =?iso-8859-1?Q?uj49lbBZTx6vEsMmdLmzTlyHxxt5knx7jUblvWbbna74aIuiyyFtu0kDo1?=
+ =?iso-8859-1?Q?TA+7vIvKMG14P1SUCUuThlwTodHXLWc2bOwUm33T9KTQLudH9A+22eyBUk?=
+ =?iso-8859-1?Q?RahppG41mULsNvaVu4znA3HjYBLcnOkWSzmskBbbBUEWAUqSHMFIwngSWy?=
+ =?iso-8859-1?Q?c64tui7sebVs9zUzmMfkAcv9w66z8QtcecFryTHNmlDyLgoNhyxA2DPQpc?=
+ =?iso-8859-1?Q?n6W7sgp4qlKubYpQajzbGbJ8SkgAg8dvvG9wr1HCh38duMV9XD7HHAAo0b?=
+ =?iso-8859-1?Q?mcXvTZ0mxwpKFVDbXJ3ZeH95oyozwU/vKGAB2LpRYNlk28Ff/T/TEO7Ris?=
+ =?iso-8859-1?Q?rb7YNv9OLQich5L+TLAg7FU2ziTzx4dWqi4iUH37yXjUphxCWKoDT3Lqzb?=
+ =?iso-8859-1?Q?du3cI148ddbvxAZpSn3W3yCxbQAPQZovqbY49iBTj7A/sjGN6bIJUxHx0t?=
+ =?iso-8859-1?Q?Q5iQqakLJT+9PVdjFgt/NB2K64h4pD0MmciOPiqCmC+QCLb1n0RpSdgNXe?=
+ =?iso-8859-1?Q?3yHSY3VeieBXzagj3Dmw/9UU4OOhuTad+/QYMos++LggglFVi+zxvWgmvG?=
+ =?iso-8859-1?Q?RXkAQH0TUO0vEqef/xD5VrNbze5x8iszTd9sc2+Luqmf4maeEnTPUwOxYQ?=
+ =?iso-8859-1?Q?QZMrOpLDJSSwJADxpGtz+cRAc6GGcVSu7vRHoI63t2bOjfEstD4yKZ/LO8?=
+ =?iso-8859-1?Q?9Ov1ITsno43Z0=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB5741.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e3c6d6b7-6d1a-4c82-d080-08dbcfc3041c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Oct 2023 10:14:29.7259 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: kdWTiZ+tWoSoKGOwzxN1bqeeGzlNTMbwq/MnYjeRUVcbm87M0N8mPyZ2+RpWrUY7
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB6882
+Received-SPF: softfail client-ip=2a01:111:f400:fe5b::605;
+ envelope-from=sai.pavan.boddu@amd.com;
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NdYugBI9ukv0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /i8fkra8lpXB
 
-On 17/10/23 21:44, Luc Michel wrote:
-> The CRC was stored in an unsigned variable in gem_receive. Change it for
-> a uint32_t to ensure we have the correct variable size here.
-> 
 
-Fixes: e9f186e514 ("cadence_gem: initial version of device model")
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>-----Original Message-----
+>From: Luc Michel <luc.michel@amd.com>
+>Sent: Wednesday, October 18, 2023 1:14 AM
+>To: qemu-devel@nongnu.org
+>Cc: Michel, Luc <Luc.Michel@amd.com>; qemu-arm@nongnu.org; Edgar E .
+>Iglesias <edgar.iglesias@gmail.com>; Alistair Francis <alistair@alistair23=
+.me>;
+>Peter Maydell <peter.maydell@linaro.org>; Jason Wang
+><jasowang@redhat.com>; Philippe Mathieu-Daud=E9 <philmd@linaro.org>;
+>Iglesias, Francisco <francisco.iglesias@amd.com>; Konrad, Frederic
+><Frederic.Konrad@amd.com>; Boddu, Sai Pavan
+><sai.pavan.boddu@amd.com>
+>Subject: [PATCH 02/11] hw/net/cadence_gem: use FIELD for screening registe=
+rs
+>
+>Describe screening registers fields using the FIELD macros.
+>
+>Signed-off-by: Luc Michel <luc.michel@amd.com>
 
-> Signed-off-by: Luc Michel <luc.michel@amd.com>
-> ---
->   hw/net/cadence_gem.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: sai.pavan.boddu@amd.com
+
+Regards,
+Sai Pavan
+>---
+> hw/net/cadence_gem.c | 92 ++++++++++++++++++++++----------------------
+> 1 file changed, 47 insertions(+), 45 deletions(-)
+>
+>diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c index
+>0e5744ecd7..f01c81de97 100644
+>--- a/hw/net/cadence_gem.c
+>+++ b/hw/net/cadence_gem.c
+>@@ -168,39 +168,42 @@ REG32(INT_Q7_ENABLE, 0x618)
+>
+> REG32(INT_Q1_DISABLE, 0x620)
+> REG32(INT_Q7_DISABLE, 0x638)
+>
+> REG32(SCREENING_TYPE1_REG0, 0x500)
+>-
+>-#define GEM_ST1R_UDP_PORT_MATCH_ENABLE  (1 << 29)
+>-#define GEM_ST1R_DSTC_ENABLE            (1 << 28)
+>-#define GEM_ST1R_UDP_PORT_MATCH_SHIFT   (12)
+>-#define GEM_ST1R_UDP_PORT_MATCH_WIDTH   (27 -
+>GEM_ST1R_UDP_PORT_MATCH_SHIFT + 1)
+>-#define GEM_ST1R_DSTC_MATCH_SHIFT       (4)
+>-#define GEM_ST1R_DSTC_MATCH_WIDTH       (11 -
+>GEM_ST1R_DSTC_MATCH_SHIFT + 1)
+>-#define GEM_ST1R_QUEUE_SHIFT            (0)
+>-#define GEM_ST1R_QUEUE_WIDTH            (3 - GEM_ST1R_QUEUE_SHIFT + 1)
+>+    FIELD(SCREENING_TYPE1_REG0, QUEUE_NUM, 0, 4)
+>+    FIELD(SCREENING_TYPE1_REG0, DSTC_MATCH, 4, 8)
+>+    FIELD(SCREENING_TYPE1_REG0, UDP_PORT_MATCH, 12, 16)
+>+    FIELD(SCREENING_TYPE1_REG0, DSTC_ENABLE, 28, 1)
+>+    FIELD(SCREENING_TYPE1_REG0, UDP_PORT_MATCH_EN, 29, 1)
+>+    FIELD(SCREENING_TYPE1_REG0, DROP_ON_MATCH, 30, 1)
+>
+> REG32(SCREENING_TYPE2_REG0, 0x540)
+>-
+>-#define GEM_ST2R_COMPARE_A_ENABLE       (1 << 18)
+>-#define GEM_ST2R_COMPARE_A_SHIFT        (13)
+>-#define GEM_ST2R_COMPARE_WIDTH          (17 -
+>GEM_ST2R_COMPARE_A_SHIFT + 1)
+>-#define GEM_ST2R_ETHERTYPE_ENABLE       (1 << 12)
+>-#define GEM_ST2R_ETHERTYPE_INDEX_SHIFT  (9) -#define
+>GEM_ST2R_ETHERTYPE_INDEX_WIDTH  (11 -
+>GEM_ST2R_ETHERTYPE_INDEX_SHIFT \
+>-                                            + 1)
+>-#define GEM_ST2R_QUEUE_SHIFT            (0)
+>-#define GEM_ST2R_QUEUE_WIDTH            (3 - GEM_ST2R_QUEUE_SHIFT + 1)
+>+    FIELD(SCREENING_TYPE2_REG0, QUEUE_NUM, 0, 4)
+>+    FIELD(SCREENING_TYPE2_REG0, VLAN_PRIORITY, 4, 3)
+>+    FIELD(SCREENING_TYPE2_REG0, VLAN_ENABLE, 8, 1)
+>+    FIELD(SCREENING_TYPE2_REG0, ETHERTYPE_REG_INDEX, 9, 3)
+>+    FIELD(SCREENING_TYPE2_REG0, ETHERTYPE_ENABLE, 12, 1)
+>+    FIELD(SCREENING_TYPE2_REG0, COMPARE_A, 13, 5)
+>+    FIELD(SCREENING_TYPE2_REG0, COMPARE_A_ENABLE, 18, 1)
+>+    FIELD(SCREENING_TYPE2_REG0, COMPARE_B, 19, 5)
+>+    FIELD(SCREENING_TYPE2_REG0, COMPARE_B_ENABLE, 24, 1)
+>+    FIELD(SCREENING_TYPE2_REG0, COMPARE_C, 25, 5)
+>+    FIELD(SCREENING_TYPE2_REG0, COMPARE_C_ENABLE, 30, 1)
+>+    FIELD(SCREENING_TYPE2_REG0, DROP_ON_MATCH, 31, 1)
+>
+> REG32(SCREENING_TYPE2_ETHERTYPE_REG0, 0x6e0)
+>+
+> REG32(TYPE2_COMPARE_0_WORD_0, 0x700)
+>+    FIELD(TYPE2_COMPARE_0_WORD_0, MASK_VALUE, 0, 16)
+>+    FIELD(TYPE2_COMPARE_0_WORD_0, COMPARE_VALUE, 16, 16)
+>
+>-#define GEM_T2CW1_COMPARE_OFFSET_SHIFT  (7) -#define
+>GEM_T2CW1_COMPARE_OFFSET_WIDTH  (8 -
+>GEM_T2CW1_COMPARE_OFFSET_SHIFT + 1)
+>-#define GEM_T2CW1_OFFSET_VALUE_SHIFT    (0)
+>-#define GEM_T2CW1_OFFSET_VALUE_WIDTH    (6 -
+>GEM_T2CW1_OFFSET_VALUE_SHIFT + 1)
+>+REG32(TYPE2_COMPARE_0_WORD_1, 0x704)
+>+    FIELD(TYPE2_COMPARE_0_WORD_1, OFFSET_VALUE, 0, 7)
+>+    FIELD(TYPE2_COMPARE_0_WORD_1, COMPARE_OFFSET, 7, 2)
+>+    FIELD(TYPE2_COMPARE_0_WORD_1, DISABLE_MASK, 9, 1)
+>+    FIELD(TYPE2_COMPARE_0_WORD_1, COMPARE_VLAN_ID, 10, 1)
+>
+> /*****************************************/
+> #define GEM_NWCTRL_TXSTART     0x00000200 /* Transmit Enable */
+> #define GEM_NWCTRL_TXENA       0x00000008 /* Transmit Enable */
+> #define GEM_NWCTRL_RXENA       0x00000004 /* Receive Enable */
+>@@ -753,45 +756,43 @@ static int
+>get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
+>         reg =3D s->regs[R_SCREENING_TYPE1_REG0 + i];
+>         matched =3D false;
+>         mismatched =3D false;
+>
+>         /* Screening is based on UDP Port */
+>-        if (reg & GEM_ST1R_UDP_PORT_MATCH_ENABLE) {
+>+        if (FIELD_EX32(reg, SCREENING_TYPE1_REG0, UDP_PORT_MATCH_EN)) {
+>             uint16_t udp_port =3D rxbuf_ptr[14 + 22] << 8 | rxbuf_ptr[14 =
++ 23];
+>-            if (udp_port =3D=3D extract32(reg, GEM_ST1R_UDP_PORT_MATCH_SH=
+IFT,
+>-                                           GEM_ST1R_UDP_PORT_MATCH_WIDTH)=
+) {
+>+            if (udp_port =3D=3D FIELD_EX32(reg, SCREENING_TYPE1_REG0,
+>+ UDP_PORT_MATCH)) {
+>                 matched =3D true;
+>             } else {
+>                 mismatched =3D true;
+>             }
+>         }
+>
+>         /* Screening is based on DS/TC */
+>-        if (reg & GEM_ST1R_DSTC_ENABLE) {
+>+        if (FIELD_EX32(reg, SCREENING_TYPE1_REG0, DSTC_ENABLE)) {
+>             uint8_t dscp =3D rxbuf_ptr[14 + 1];
+>-            if (dscp =3D=3D extract32(reg, GEM_ST1R_DSTC_MATCH_SHIFT,
+>-                                       GEM_ST1R_DSTC_MATCH_WIDTH)) {
+>+            if (dscp =3D=3D FIELD_EX32(reg, SCREENING_TYPE1_REG0,
+>+ DSTC_MATCH)) {
+>                 matched =3D true;
+>             } else {
+>                 mismatched =3D true;
+>             }
+>         }
+>
+>         if (matched && !mismatched) {
+>-            return extract32(reg, GEM_ST1R_QUEUE_SHIFT,
+>GEM_ST1R_QUEUE_WIDTH);
+>+            return FIELD_EX32(reg, SCREENING_TYPE1_REG0, QUEUE_NUM);
+>         }
+>     }
+>
+>     for (i =3D 0; i < s->num_type2_screeners; i++) {
+>         reg =3D s->regs[R_SCREENING_TYPE2_REG0 + i];
+>         matched =3D false;
+>         mismatched =3D false;
+>
+>-        if (reg & GEM_ST2R_ETHERTYPE_ENABLE) {
+>+        if (FIELD_EX32(reg, SCREENING_TYPE2_REG0, ETHERTYPE_ENABLE)) {
+>             uint16_t type =3D rxbuf_ptr[12] << 8 | rxbuf_ptr[13];
+>-            int et_idx =3D extract32(reg, GEM_ST2R_ETHERTYPE_INDEX_SHIFT,
+>-                                        GEM_ST2R_ETHERTYPE_INDEX_WIDTH);
+>+            int et_idx =3D FIELD_EX32(reg, SCREENING_TYPE2_REG0,
+>+                                    ETHERTYPE_REG_INDEX);
+>
+>             if (et_idx > s->num_type2_screeners) {
+>                 qemu_log_mask(LOG_GUEST_ERROR, "Out of range ethertype "
+>                               "register index: %d\n", et_idx);
+>             }
+>@@ -803,31 +804,31 @@ static int
+>get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
+>             }
+>         }
+>
+>         /* Compare A, B, C */
+>         for (j =3D 0; j < 3; j++) {
+>-            uint32_t cr0, cr1, mask;
+>+            uint32_t cr0, cr1, mask, compare;
+>             uint16_t rx_cmp;
+>             int offset;
+>-            int cr_idx =3D extract32(reg, GEM_ST2R_COMPARE_A_SHIFT + j * =
+6,
+>-                                        GEM_ST2R_COMPARE_WIDTH);
+>+            int cr_idx =3D extract32(reg,
+>R_SCREENING_TYPE2_REG0_COMPARE_A_SHIFT + j * 6,
+>+
+>+ R_SCREENING_TYPE2_REG0_COMPARE_A_LENGTH);
+>
+>-            if (!(reg & (GEM_ST2R_COMPARE_A_ENABLE << (j * 6)))) {
+>+            if (!extract32(reg,
+>R_SCREENING_TYPE2_REG0_COMPARE_A_ENABLE_SHIFT + j * 6,
+>+
+>+ R_SCREENING_TYPE2_REG0_COMPARE_A_ENABLE_LENGTH)) {
+>                 continue;
+>             }
+>+
+>             if (cr_idx > s->num_type2_screeners) {
+>                 qemu_log_mask(LOG_GUEST_ERROR, "Out of range compare "
+>                               "register index: %d\n", cr_idx);
+>             }
+>
+>             cr0 =3D s->regs[R_TYPE2_COMPARE_0_WORD_0 + cr_idx * 2];
+>-            cr1 =3D s->regs[R_TYPE2_COMPARE_0_WORD_0 + cr_idx * 2 + 1];
+>-            offset =3D extract32(cr1, GEM_T2CW1_OFFSET_VALUE_SHIFT,
+>-                                    GEM_T2CW1_OFFSET_VALUE_WIDTH);
+>+            cr1 =3D s->regs[R_TYPE2_COMPARE_0_WORD_1 + cr_idx * 2];
+>+            offset =3D FIELD_EX32(cr1, TYPE2_COMPARE_0_WORD_1,
+>+ OFFSET_VALUE);
+>
+>-            switch (extract32(cr1, GEM_T2CW1_COMPARE_OFFSET_SHIFT,
+>-                                   GEM_T2CW1_COMPARE_OFFSET_WIDTH)) {
+>+            switch (FIELD_EX32(cr1, TYPE2_COMPARE_0_WORD_1,
+>+ COMPARE_OFFSET)) {
+>             case 3: /* Skip UDP header */
+>                 qemu_log_mask(LOG_UNIMP, "TCP compare offsets"
+>                               "unimplemented - assuming UDP\n");
+>                 offset +=3D 8;
+>                 /* Fallthrough */
+>@@ -841,21 +842,22 @@ static int
+>get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
+>                 /* Offset from start of frame */
+>                 break;
+>             }
+>
+>             rx_cmp =3D rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
+>-            mask =3D extract32(cr0, 0, 16);
+>+            mask =3D FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, MASK_VALUE);
+>+            compare =3D FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0,
+>+ COMPARE_VALUE);
+>
+>-            if ((rx_cmp & mask) =3D=3D (extract32(cr0, 16, 16) & mask)) {
+>+            if ((rx_cmp & mask) =3D=3D (compare & mask)) {
+>                 matched =3D true;
+>             } else {
+>                 mismatched =3D true;
+>             }
+>         }
+>
+>         if (matched && !mismatched) {
+>-            return extract32(reg, GEM_ST2R_QUEUE_SHIFT,
+>GEM_ST2R_QUEUE_WIDTH);
+>+            return FIELD_EX32(reg, SCREENING_TYPE2_REG0, QUEUE_NUM);
+>         }
+>     }
+>
+>     /* We made it here, assume it's queue 0 */
+>     return 0;
+>--
+>2.39.2
 

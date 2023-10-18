@@ -1,106 +1,105 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4753043ejc;
-        Wed, 18 Oct 2023 09:14:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGyIaI1ufQIIU3rj8xAJfXsJVnbV/+s10axjwF5dYINKE0+e69O27PrnZRdSr1cWoLlGkkc
-X-Received: by 2002:a05:622a:1182:b0:417:d1e7:5e9b with SMTP id m2-20020a05622a118200b00417d1e75e9bmr7090830qtk.26.1697645685040;
-        Wed, 18 Oct 2023 09:14:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697645685; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4759702ejc;
+        Wed, 18 Oct 2023 09:24:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG2BWVjOLbt7+ByEanU8dRTxwi4n/wQKBGyWASgrAb5ecqMRcIJmsB3puMrULRRtoEw24mj
+X-Received: by 2002:a05:6214:cc8:b0:66d:4680:6dc5 with SMTP id 8-20020a0562140cc800b0066d46806dc5mr8781560qvx.50.1697646286260;
+        Wed, 18 Oct 2023 09:24:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697646286; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fm7lvfaqamVgDekCKknqIdbQBl+dUlgZwGRiMcv4j0IBN+46CHTvoMCWwGsH70SBEQ
-         mclqKpfou+fgy+xUQ+iLlq/MSFbhw5Cwno/4Dad7PtrnWttzThEPz3PD9dpRqybt7QR8
-         GwQxHNxc45d0E4JgS0k3fqRpEIj+qNbz+3/DN2s+L3NJj8b8AQdt+kdeVN68KAd+Jv1G
-         nt1h+59k23/8eJ5j8ZlpOKLC5X8BTVcb2QS7vlVwLC82uJbq2x5vcsAtHICxFeKDByJ5
-         CRIvV/osmcNcvuk0PEcNQ9vPoRCTTsDsA71DgkQEyXCrlBTRPT0Fm3gTaoWmRy+Q/UGe
-         KmOw==
+        b=oFdIuBM8gZpSChrY03RSkdlTSAdNgKzmjTVL8KiiG43lX5kuxWViBSZ6bMkGF7KAgH
+         ub1kqw2clEbbnzd4ZvCAbt8RZ3MV8e+Y70K/HeHADFVv3G3MbgyF6jcfj2vSFS0UhlQj
+         E99Oe0WQezDUqohnjbMp3erXiUzCKv/3e4d2PEnMVk19qoizD84HqN1uJrzdt6CxxWTb
+         +W3x+v3ugwIzGW1QaRh+yzZs9OwbS/GIcCQJDavwrwJN5dGZn1nF5Qe52l+aGmue4ZLx
+         2A4p+PTqnl1lK0T1gDYsLqLYxWTwRVRdSG/HMreePoHfhwlwqm/E6apyO7jCrY13++tt
+         pjow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2jx3MKIhr3Cy2mMKX0bXq+MRNohATmhsH0HuVOnk4E4=;
+        bh=DxaQpWyohR1989GHWUZ08ZEv6gnHvALDQAL8GToFJnI=;
         fh=5KD7BjLGFDublHDNRImOelVUthgQZWbxdG3c9Bb6fGg=;
-        b=p3zqys7NRDttXr+exWC/kzWXK89cXcbRkaPHJ/A4/qdTS1QmOzgK+V7zo97AtTzBj6
-         OMzG1dIzdH+GGk+3qd5Axw9JU2q01CZi5f+wj+InQRh6/qsDoO3PO08XIZDrJH1Blshw
-         4fEyUdYBv8MbwsAcRLUFSC1O64m6ijSBLQEawU6dNcIkB6pw6j53gspYeUqO7ZpjVZJV
-         N1K6j6bms1ZwacCIo60JghqjzwpG9j7/fV0mQu14F8rQXKUbIL6Y3O0oCm/602lM0J78
-         chn59b+6pahxZA+7+gx+fhSA8v9IKXKe8RcAskx4alu+fe1pPI1/PVMn26fZ78ntDcA0
-         huzA==
+        b=rwN/FfKcXjcnNNu9ug54/jdywmcCK8t7+WT0MMm+VabKjp6xElLromLYFB2FQLHi+K
+         mRR2IAYh8jUTDqAlUQ1eew6BAfysJkAHUG5538ka2T5y09SBFkKnf82MgDdJKbxzK3UR
+         3AhxSBB6MO+UOPtYGGUrx+xV9VWTLkUtgCTRa5sYtwmS15thEWnp6DTfrm7O4LTkObfP
+         zHdZdRvoKwz8G1Wz837xj3DSx5JcGpYqc4cLV/UNXuXmPz6ixKJnWIrmu3TtyCXDpO2S
+         nDaNOXJXP+lCN1BBdb8KfssCtNGcS9mBrrHJSepuly3kDiNZJFUcG+vVpL2vUfFuyGyi
+         0kFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QdahWCR0;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iSoBwodq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z22-20020ac87f96000000b004033ec2f5e4si152296qtj.464.2023.10.18.09.14.44
+        by mx.google.com with ESMTPS id l18-20020a0cd6d2000000b0066cfe943369si156320qvi.358.2023.10.18.09.24.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Oct 2023 09:14:44 -0700 (PDT)
+        Wed, 18 Oct 2023 09:24:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QdahWCR0;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iSoBwodq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qt9BH-0007Ou-To; Wed, 18 Oct 2023 12:14:01 -0400
+	id 1qt9Lf-0002MZ-7V; Wed, 18 Oct 2023 12:24:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qt9BG-0006uw-3S
- for qemu-arm@nongnu.org; Wed, 18 Oct 2023 12:13:58 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qt9Ld-0002MA-HE
+ for qemu-arm@nongnu.org; Wed, 18 Oct 2023 12:24:41 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qt9BE-0002RS-GU
- for qemu-arm@nongnu.org; Wed, 18 Oct 2023 12:13:57 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qt9Lb-0005JV-Ol
+ for qemu-arm@nongnu.org; Wed, 18 Oct 2023 12:24:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697645635;
+ s=mimecast20190719; t=1697646278;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=2jx3MKIhr3Cy2mMKX0bXq+MRNohATmhsH0HuVOnk4E4=;
- b=QdahWCR0ky+54WPWj02F7MPB0UgU44l8cjbSyh0GXiv3o3LLM74cEiwb4A+im5qZ1Qf/b7
- gKY07ReJM6lO9jjhv4OoZAbER4SM2AjxjxUe0v1Z/ra5olbm+YhyBhlFtM2pd9Z3KEqh78
- 1zXizFClYCxbBbBqvWKVNr8JZGuuaAE=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=DxaQpWyohR1989GHWUZ08ZEv6gnHvALDQAL8GToFJnI=;
+ b=iSoBwodq0SVGnwMDZ1+OSpH/wbwNpYHdvkSS2w/xUNdRO80M+vUVwf79NdPaCAv+kLCM7X
+ Qd2+LPeE9bZAoZXH3wsv2dZJeY0cEjK0l+3hrV/ngrE50EI0mTMypMJanPwjhFSBuohqiV
+ JXXlr7dphVlT+8KzwLZlcFgY4b+3YZ8=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-615-nhkFy0aqMX-sMM2fAOdr3g-1; Wed, 18 Oct 2023 12:13:49 -0400
-X-MC-Unique: nhkFy0aqMX-sMM2fAOdr3g-1
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-77774341b3bso255961585a.3
- for <qemu-arm@nongnu.org>; Wed, 18 Oct 2023 09:13:49 -0700 (PDT)
+ us-mta-549-oaf5qr8QOgKS8ksgkgU8xw-1; Wed, 18 Oct 2023 12:24:22 -0400
+X-MC-Unique: oaf5qr8QOgKS8ksgkgU8xw-1
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-66d120c28afso78821456d6.0
+ for <qemu-arm@nongnu.org>; Wed, 18 Oct 2023 09:24:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697645629; x=1698250429;
+ d=1e100.net; s=20230601; t=1697646262; x=1698251062;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2jx3MKIhr3Cy2mMKX0bXq+MRNohATmhsH0HuVOnk4E4=;
- b=vdkz/U8l2kPaJVMtOKoBFPpX0+DUXg+USpyxcL1J4UhSMwSuRwpMTTbvLfhIJDcVzb
- gyjAgkfv4JLzLw0NQtezcja3IZZ0xoTjrM+SgZsDiC2qflEMiYLJe9vCllOs8RoHdebn
- HpYG0omplO1fV9f7IitnYs62Hri3inWU6YHEleGB4GPL3uJphz8jppG83l0g6pr3Pkqv
- /NU0gZpZ1IjQA5GFLOODUAnA7tT1EGJIRATDLxJFajAvT6imASN6wprMTkSJJGrozR/L
- /wFtWS1qLCvhVNB8E2pYrLfL24zxtca+XUxEZKSTHyiDWttjcNzHgznGUg+q88nQ0iex
- S8QQ==
-X-Gm-Message-State: AOJu0Yzg+nc8NjcrDgpW7CAz74gckWZ3se5NixoYrDnP9tcEuRV0E8zM
- iHUje1VBsXEuGsbz5iuLyX9jAc/hEa4lQVbvefrQFs5syukopu7MmqHX0OJlxNcw+wbu7VYyw1t
- JfJ03gxm6TvIc
-X-Received: by 2002:a05:620a:1929:b0:774:33ce:cfb6 with SMTP id
- bj41-20020a05620a192900b0077433cecfb6mr7102486qkb.30.1697645628762; 
- Wed, 18 Oct 2023 09:13:48 -0700 (PDT)
-X-Received: by 2002:a05:620a:1929:b0:774:33ce:cfb6 with SMTP id
- bj41-20020a05620a192900b0077433cecfb6mr7102439qkb.30.1697645628439; 
- Wed, 18 Oct 2023 09:13:48 -0700 (PDT)
+ bh=DxaQpWyohR1989GHWUZ08ZEv6gnHvALDQAL8GToFJnI=;
+ b=eJBqykB94udJFTUr+eCP5l1HpdA/TU0dgRwXEpZKei38S+OcahSt7SPTN8nd86T9yX
+ 04kZuspz5AzoK8ENG3NuP7nRafEIuBiIQ/lSnQzXCWcvnqmMpL3MDcHIU6rWQWbiZeJV
+ Ts3GbajHAggUwG19Ly4GySkyVrJ/xzLcxNCwG1sAIfwWaeHhMvmHjCUu3vcGW5xfwsIC
+ qQ1Bmh5qVlo7/hVYM1WR26M22L9UMx8KFmgUDh7pQUwwR+rJKhj2Oyor28zzXMt/CWd3
+ Tf0wZ2Op9qMC0236mYIdLo1wQ77uNC7H1TwdLzT4X6aDkuEyB/P7C//gtdLZ/z6lnNCG
+ LxlQ==
+X-Gm-Message-State: AOJu0YzcAFraizAqyFzpYQtzSlYOx6nvjComyG8khPbSHb3jZ3svcnRV
+ nJBq5iQICZ9p1ElzJfSI1ygqMNZOS1694Hpehl7QMgeT78qFJ/aXoh9CGZT6xq/9pUAYH+nKg6f
+ U6z3XDGaIpa8E
+X-Received: by 2002:a05:6214:19e7:b0:66d:5d84:f833 with SMTP id
+ q7-20020a05621419e700b0066d5d84f833mr7772492qvc.37.1697646262016; 
+ Wed, 18 Oct 2023 09:24:22 -0700 (PDT)
+X-Received: by 2002:a05:6214:19e7:b0:66d:5d84:f833 with SMTP id
+ q7-20020a05621419e700b0066d5d84f833mr7772455qvc.37.1697646261738; 
+ Wed, 18 Oct 2023 09:24:21 -0700 (PDT)
 Received: from [192.168.0.5] (ip-109-43-176-141.web.vodafone.de.
  [109.43.176.141]) by smtp.gmail.com with ESMTPSA id
- t22-20020a05620a0b1600b007757eddae8bsm65681qkg.62.2023.10.18.09.13.42
+ p18-20020a0cfad2000000b006564afc5908sm66189qvo.111.2023.10.18.09.24.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Oct 2023 09:13:46 -0700 (PDT)
-Message-ID: <44597d18-292d-4a4a-91b0-febf2519d9b8@redhat.com>
-Date: Wed, 18 Oct 2023 18:13:41 +0200
+ Wed, 18 Oct 2023 09:24:21 -0700 (PDT)
+Message-ID: <393f1aa0-afb5-4269-8499-80afd5b98e48@redhat.com>
+Date: Wed, 18 Oct 2023 18:24:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 12/12] hw/sysbus: Ensure device is realized before mapping
- it
+Subject: Re: [PATCH 00/12] hw: Strengthen SysBus & QBus API
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -120,7 +119,6 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 References: <20231018141151.87466-1-philmd@linaro.org>
- <20231018141151.87466-13-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -164,7 +162,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231018141151.87466-13-philmd@linaro.org>
+In-Reply-To: <20231018141151.87466-1-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -193,44 +191,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eBgVo+vmyQuF
+X-TUID: bkUmytPFdFvd
 
 On 18/10/2023 16.11, Philippe Mathieu-Daudé wrote:
-> sysbus_mmio_map() should not be called on unrealized device.
+> Hi,
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/core/sysbus.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
+> This series ensure:
 > 
-> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-> index ce54e2c416..a46828a808 100644
-> --- a/hw/core/sysbus.c
-> +++ b/hw/core/sysbus.c
-> @@ -20,6 +20,7 @@
->   #include "qemu/osdep.h"
->   #include "qapi/error.h"
->   #include "qemu/module.h"
-> +#include "qemu/error-report.h"
+> - qbus_new() and sysbus_init_mmio() are called *before*
+>    a device is realized,
+> - sysbus_mmio_map() is called *after* it is realized.
+> 
+> First we fix some abuse, then we enforce in qdev/sysbus
+> core code.
 
-I assume this hunk should go into the previous patch?
+I like the idea, and just had a try with "make check-qtest" with the patches 
+here, but seems like there are more spots that need attention:
 
->   #include "hw/sysbus.h"
->   #include "monitor/monitor.h"
->   #include "exec/address-spaces.h"
-> @@ -132,6 +133,13 @@ static void sysbus_mmio_map_common(SysBusDevice *dev, int n, hwaddr addr,
->   {
->       assert(n >= 0 && n < dev->num_mmio);
->   
-> +    if (!DEVICE(dev)->realized) {
-> +        error_report("sysbus_mmio_map(type:%s, index:%d, addr:0x%"HWADDR_PRIx","
-> +                     " prio:%d) but object is not realized",
-> +                     object_get_typename(OBJECT(dev)), n, addr, priority);
-> +        abort();
-> +    }
+  10/433 qemu:qtest+qtest-ppc64 / qtest-ppc64/qom-test 
+              ERROR           0.72s   killed by signal 6 SIGABRT
+ >>> MALLOC_PERTURB_=217 QTEST_QEMU_IMG=./qemu-img 
+G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh 
+PYTHON=/home/thuth/tmp/qemu-build/pyvenv/bin/python3 
+QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon 
+QTEST_QEMU_BINARY=./qemu-system-ppc64 
+/home/thuth/tmp/qemu-build/tests/qtest/qom-test --tap -k
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― ✀ 
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+stderr:
+qemu-system-ppc64: sysbus_mmio_map(type:power9_v2.2-pnv-chip, index:0, 
+addr:0x603fc00000000, prio:0) but object is not realized
+Broken pipe
+../../devel/qemu/tests/qtest/libqtest.c:203: kill_qemu() detected QEMU death 
+from signal 6 (Aborted) (core dumped)
 
-With the hunk moved (or the order of the patches reversed):
+(test program exited with status code -6)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+TAP parsing error: Too few tests run (expected 17, got 0)
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 
+...
+
+  24/433 qemu:qtest+qtest-aarch64 / qtest-aarch64/qom-test 
+              ERROR           5.94s   killed by signal 6 SIGABRT
+ >>> QTEST_QEMU_BINARY=./qemu-system-aarch64 
+G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh 
+QTEST_QEMU_IMG=./qemu-img 
+PYTHON=/home/thuth/tmp/qemu-build/pyvenv/bin/python3 
+QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon 
+MALLOC_PERTURB_=105 /home/thuth/tmp/qemu-build/tests/qtest/qom-test --tap -k
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― ✀ 
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+stderr:
+qemu-system-aarch64: sysbus_init_mmio(type:pxa2xx_pic) but object is realized
+Broken pipe
+../../devel/qemu/tests/qtest/libqtest.c:203: kill_qemu() detected QEMU death 
+from signal 6 (Aborted) (core dumped)
+
+(test program exited with status code -6)
+
+TAP parsing error: Too few tests run (expected 95, got 3)
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+
+...
+
+  73/433 qemu:qtest+qtest-ppc64 / qtest-ppc64/boot-serial-test 
+              ERROR           2.65s   killed by signal 6 SIGABRT
+ >>> QTEST_QEMU_IMG=./qemu-img 
+G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh 
+PYTHON=/home/thuth/tmp/qemu-build/pyvenv/bin/python3 
+QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon 
+MALLOC_PERTURB_=129 QTEST_QEMU_BINARY=./qemu-system-ppc64 
+/home/thuth/tmp/qemu-build/tests/qtest/boot-serial-test --tap -k
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― ✀ 
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+stderr:
+qemu-system-ppc64: sysbus_mmio_map(type:spapr-xive, index:0, 
+addr:0x6010000000000, prio:0) but object is not realized
+Broken pipe
+../../devel/qemu/tests/qtest/libqtest.c:203: kill_qemu() detected QEMU death 
+from signal 6 (Aborted) (core dumped)
+
+(test program exited with status code -6)
+
+TAP parsing error: Too few tests run (expected 7, got 3)
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+
+...
+
+270/433 qemu:qtest+qtest-ppc64 / qtest-ppc64/cpu-plug-test 
+             ERROR           0.40s   killed by signal 6 SIGABRT
+ >>> QTEST_QEMU_IMG=./qemu-img 
+G_TEST_DBUS_DAEMON=/home/thuth/devel/qemu/tests/dbus-vmstate-daemon.sh 
+PYTHON=/home/thuth/tmp/qemu-build/pyvenv/bin/python3 
+QTEST_QEMU_STORAGE_DAEMON_BINARY=./storage-daemon/qemu-storage-daemon 
+MALLOC_PERTURB_=175 QTEST_QEMU_BINARY=./qemu-system-ppc64 
+/home/thuth/tmp/qemu-build/tests/qtest/cpu-plug-test --tap -k
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― ✀ 
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+stderr:
+qemu-system-ppc64: qbus_new(type:spapr-vio-bus parent:spapr-vio-bridge, 
+name:spapr-vio) but parent realized
+Broken pipe
+../../devel/qemu/tests/qtest/libqtest.c:203: kill_qemu() detected QEMU death 
+from signal 6 (Aborted) (core dumped)
+
+(test program exited with status code -6)
+
+TAP parsing error: Too few tests run (expected 3, got 0)
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+
+...
+
+  HTH,
+   Thomas
 

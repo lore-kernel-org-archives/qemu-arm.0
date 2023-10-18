@@ -1,112 +1,131 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4648547ejc;
-        Wed, 18 Oct 2023 06:44:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGd5NjrZFylyeGNl2975xPxps3YpP2Ik/RE79sO8OxajCJoimssMUFKsambKyMP0YXKV8B2
-X-Received: by 2002:ac8:58c5:0:b0:418:12d4:c096 with SMTP id u5-20020ac858c5000000b0041812d4c096mr7100724qta.2.1697636686307;
-        Wed, 18 Oct 2023 06:44:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697636686; cv=none;
+Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4668311ejc;
+        Wed, 18 Oct 2023 07:12:31 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFPWrfbDNsgYKcDF9zscU1+KFbyq65HeVA7BhaO1n82LwXD28B2qXBxq6nFhRXc4WEY9SEj
+X-Received: by 2002:a05:622a:34f:b0:40d:589d:9ce5 with SMTP id r15-20020a05622a034f00b0040d589d9ce5mr6234356qtw.34.1697638351504;
+        Wed, 18 Oct 2023 07:12:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697638351; cv=none;
         d=google.com; s=arc-20160816;
-        b=uOMwEuCMo+QMUkRvF8Shl7kbvj8LPq/nNRXY5gVWt/bqjmBiVv727c8KvPmPZphKqO
-         RlCTTeiPRYll/2swwXe1OEyq7W9qdFeUOYzqrwa57QyI2+4MMzPYooZnKuBfCNx8R7d+
-         TG6oPpwh0/4yy9gDWREKwXNFER6H5CioeTSjIsOmW3FkmwPIjqHE9d40s8ohUm5MR30l
-         JX8TODDVWima8OUIfeHNoMH9wcpRscAlVlrfyS/oZIb4BWcsbNY45F0n3MhosyGrk+sL
-         fpNbMwfjAxaoo1bP/mz6GixwFz2j349YcBLlg4NE0ZL5KgzEm3uhO9f5szzX2ivqcZKv
-         tdmQ==
+        b=V2itgkyuW+J+UKtT+pNKlOMoAY4hxtjpg5cFBxCfgrlm/iwWIVsQHGe6Fzg0Z+E3UF
+         3cYQRnnq6OLaI73dSJPJmaO3KWj+nvQlFjDB7SdVC1BwTvcb7271iuOEg7tb208Xv8l/
+         iOWUojIvUoFWLwa36nyfpMG5GYdr9kxDm0QpVZ7z0P4UfnjLN9p+/CkjSC1gD7fbLmrI
+         wGoaAgUHjJux0Tm5xpb8A23AdFjUXC5Vez21p6TRLE/Ug+IhW9ZJXg4BBd5Ro2uJQWyQ
+         gnG8lGIcLiD/a7pwHaBNBqu9tkls1vVo6KERx7xExqrjtg5OJZ4R+44ZVlZoSxxbW1TA
+         oVWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Jm7z9T8PI3TaN5Ibcu8ZAR34M0vHVjaqargdypAD7v0=;
-        fh=Szf62vI2mdRKxFE/n72kPzB8VnojR8p9hbcglhPNB2o=;
-        b=l9DxFbSCZV0V179pnfbPwr0x9O2SBa0RISSW4tvvS6UzK23tHnvTzc/AayEDox2CCk
-         94C+mOIIvPjVZfaXO22c3DKbiN7bVIkmaeCcou7mcoa4IpfCXvnBJztRcrIA93rOu2F0
-         R5SYLl5U6fB5o9B3YK7t7gcIBtMVcYe3Mq1ttnPgagftId9Ghkd0I3ulW8xh5cRoavEp
-         HHI5Ojp0xmpMvsUaBCmYPSjIcPLk+kd7/xqvTOd1IpJNjASV+L7YOkL3OX9rHgV0fwOS
-         U0x0TfvdTFxi8KLr1q9HZQN39586cU/xbUcSWcl2ZuesPpQ4sDu/LTKF1OzYDqu3oHqO
-         9X2Q==
+        bh=OG/eTeWn+OzUtyx8iBSPb0Amcuu5LlJ9K/x3TvIXfKM=;
+        fh=ANIikQnX6ADG7FYuHYnQUKFZKV9+VnxLLzGv0RFOlfg=;
+        b=ncwiWwUh8nx6SU1W20qX/qF77qS4cx2qvoSVhoEC+4+Atk2TZWRsiYFKpgzXZCZ2kA
+         zI5gzk0GX8Xfo7Dbq05eBcD71gcBM4g9wLYiO4mYd/c/Fzc/7+SUazsv6wS0JrGWo7DC
+         lpM3/NMH60dVaqcDboG3Lk7GTeS0CNVwysdQuNPmXA09NN4INItxvkZXGCLU6TCAlezq
+         FeeQ53GIQ+kuRn/xWh9oeFHspmFKPWyQZ8gh2emQB+UJpHnN8GgCZcbL4w4Db0gJO46o
+         zOjs35fCpamsVKV4Tw4UfY8Zj3m4K5k5QGY3lBDWhfmsHE3M1sLSymhHBP9RjcbMYggT
+         pwRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B9SKyDc2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O6XBzWAG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j3-20020ac85f83000000b0041987badccasi2661344qta.233.2023.10.18.06.44.46
+        by mx.google.com with ESMTPS id o17-20020ac85a51000000b0041815de1524si2907701qta.178.2023.10.18.07.12.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Oct 2023 06:44:46 -0700 (PDT)
+        Wed, 18 Oct 2023 07:12:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B9SKyDc2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O6XBzWAG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qt6mE-0002XV-Qv; Wed, 18 Oct 2023 09:39:58 -0400
+	id 1qt7Hf-0006dw-0b; Wed, 18 Oct 2023 10:12:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qt6m6-00022f-Pc
- for qemu-arm@nongnu.org; Wed, 18 Oct 2023 09:39:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1qt6m5-0006Mb-0p
- for qemu-arm@nongnu.org; Wed, 18 Oct 2023 09:39:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697636388;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Jm7z9T8PI3TaN5Ibcu8ZAR34M0vHVjaqargdypAD7v0=;
- b=B9SKyDc2WahwG2UnK0LDbUxJ8VnvU8PpW7U4SqDOTPTswsWE24KWGUeIioTAqPWEiWs2pn
- MyAqnkgsa9pEaEfIMrXZffTGdbK+uvr0fuoUW5jH8f7plNmfVLt4bikCHu3HQo5MNh4j1j
- s21WqpdUOzPlX9aV9WG14wUZo8Nk2VQ=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-35-LXUBcsCwNY6KCFjeFIe6UA-1; Wed, 18 Oct 2023 09:39:44 -0400
-X-MC-Unique: LXUBcsCwNY6KCFjeFIe6UA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 63F163822555;
- Wed, 18 Oct 2023 13:39:43 +0000 (UTC)
-Received: from localhost (unknown [10.39.208.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A1743C15BB8;
- Wed, 18 Oct 2023 13:39:42 +0000 (UTC)
-From: marcandre.lureau@redhat.com
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt7Hb-0006ZO-Ni
+ for qemu-arm@nongnu.org; Wed, 18 Oct 2023 10:12:23 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt7Ha-0004nj-3i
+ for qemu-arm@nongnu.org; Wed, 18 Oct 2023 10:12:23 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-53f6ccea1eeso890255a12.3
+ for <qemu-arm@nongnu.org>; Wed, 18 Oct 2023 07:12:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697638340; x=1698243140; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=OG/eTeWn+OzUtyx8iBSPb0Amcuu5LlJ9K/x3TvIXfKM=;
+ b=O6XBzWAGJEbDYnp9Qhkf44wboosoFezSlnL8AqWEa0PHlRXYOAcefz8acs0DWCpZI/
+ mCzDQk2xfLucil+lpXTbCG6wSM2zfoatCIsVfjk2goQk8pMVtMg5Kxwm9NZmWUYChIWW
+ JigeAgt+IB36yuvcRoOaInA20B9d1qIHTUZGKeEffM93+fX37G/ZI+mM1jHS4J4Vu1QU
+ w/wFJws+AtB6OfG8Q8kacOC715s36oqWFPtJiEAs7ctmNs9dZI0bAuefYRboZT9ggR1B
+ gOLpLdH6X2T71a8bGBe9560bYMj8buKRkGYJjN0hXwXsVZg2xuClVQ5iNtdWp4b7qIhd
+ jRfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697638340; x=1698243140;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=OG/eTeWn+OzUtyx8iBSPb0Amcuu5LlJ9K/x3TvIXfKM=;
+ b=L+QVyYQeDOKuawXlBUBAs2mbREFEdAFCaNOSj2/HJMIz0uo0ZWXT3AKPFH1NGIE1LA
+ Qsl37kkQV16dD6McyWln0O7jlF0IpfPjTmgkZlw80CGu24Xw+eAa9vqodGI0Zh81+Ltv
+ q7yJKmYDmn1oUV8f8dD4eVCegFdUWbOqasELuSyIKh32M9rzTJ1XTqG/sD+2etzMuDCJ
+ P4fwO/xQlJ57V4DLfuAWnjXxN2lG6wZOlPVXu3R4M0nPnmj277r7OjGcmSDZ6JDudgTH
+ Z+V3O1H2B+GzDwX4ZxCGQO8o2Gn6b8VyQHEZYV+8grhb3Yt7eqmXGRKxnPTTnEJqeJ7n
+ +M0w==
+X-Gm-Message-State: AOJu0YzObxXiGk4CQ2aSj+M6MRyfS+NT/qWXG0LYHtBn2zVnyqjwzu6E
+ I3b738iF7QF1ZDYQXWVAF4hFuw==
+X-Received: by 2002:a17:907:98e:b0:9bd:fa48:83c5 with SMTP id
+ bf14-20020a170907098e00b009bdfa4883c5mr3938988ejc.70.1697638340025; 
+ Wed, 18 Oct 2023 07:12:20 -0700 (PDT)
+Received: from m1x-phil.lan (gyl59-h01-176-171-218-149.dsl.sta.abo.bbox.fr.
+ [176.171.218.149]) by smtp.gmail.com with ESMTPSA id
+ 2-20020a170906224200b009c6e58437dasm1783529ejr.37.2023.10.18.07.12.16
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 18 Oct 2023 07:12:19 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Eric Farman <farman@linux.ibm.com>, Peter Xu <peterx@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Sergio Lopez <slp@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+ qemu-s390x@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Song Gao <gaosong@loongson.cn>, Huacai Chen <chenhuacai@kernel.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-arm@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
- "Dr. David Alan Gilbert" <dave@treblig.org>, qemu-ppc@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Eric Blake <eblake@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v4 18/19] hw/display: make ATI_VGA depend on PIXMAN
-Date: Wed, 18 Oct 2023 17:38:19 +0400
-Message-ID: <20231018133820.1556962-19-marcandre.lureau@redhat.com>
-In-Reply-To: <20231018133820.1556962-1-marcandre.lureau@redhat.com>
-References: <20231018133820.1556962-1-marcandre.lureau@redhat.com>
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH 03/12] hw/misc/allwinner-dramc: Move sysbus_mmio_map call from
+ init -> realize
+Date: Wed, 18 Oct 2023 16:11:41 +0200
+Message-ID: <20231018141151.87466-4-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231018141151.87466-1-philmd@linaro.org>
+References: <20231018141151.87466-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,57 +140,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: woSNZzfSYvf0
+X-TUID: eH/irhfDQoZx
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+In order to make the next commit trivial, move the sysbus_init_mmio()
+call in allwinner_r40_dramc_init() just before the corresponding
+sysbus_mmio_map_overlap() call in allwinner_r40_dramc_realize().
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Acked-by: BALATON Zoltan <balaton@eik.bme.hu>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- configs/devices/mips64el-softmmu/default.mak | 2 +-
- hw/display/Kconfig                           | 2 +-
- hw/display/meson.build                       | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ hw/misc/allwinner-r40-dramc.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
 
-diff --git a/configs/devices/mips64el-softmmu/default.mak b/configs/devices/mips64el-softmmu/default.mak
-index d5188f7ea5..8d85607571 100644
---- a/configs/devices/mips64el-softmmu/default.mak
-+++ b/configs/devices/mips64el-softmmu/default.mak
-@@ -3,7 +3,7 @@
- include ../mips-softmmu/common.mak
- CONFIG_FULOONG=y
- CONFIG_LOONGSON3V=y
--CONFIG_ATI_VGA=y
-+# CONFIG_ATI_VGA=n
- CONFIG_RTL8139_PCI=y
- CONFIG_JAZZ=y
- CONFIG_VT82C686=y
-diff --git a/hw/display/Kconfig b/hw/display/Kconfig
-index 1aafe1923d..4d8a6c4af8 100644
---- a/hw/display/Kconfig
-+++ b/hw/display/Kconfig
-@@ -125,7 +125,7 @@ config DPCD
- config ATI_VGA
-     bool
-     default y if PCI_DEVICES
--    depends on PCI
-+    depends on PCI && PIXMAN
-     select VGA
-     select BITBANG_I2C
-     select DDC
-diff --git a/hw/display/meson.build b/hw/display/meson.build
-index 9c06aaee20..344dfe3d8c 100644
---- a/hw/display/meson.build
-+++ b/hw/display/meson.build
-@@ -62,7 +62,7 @@ system_ss.add(when: 'CONFIG_XLNX_DISPLAYPORT', if_true: files('xlnx_dp.c'))
+diff --git a/hw/misc/allwinner-r40-dramc.c b/hw/misc/allwinner-r40-dramc.c
+index 6944f84455..2cc0254a55 100644
+--- a/hw/misc/allwinner-r40-dramc.c
++++ b/hw/misc/allwinner-r40-dramc.c
+@@ -414,6 +414,7 @@ static void allwinner_r40_dramc_reset(DeviceState *dev)
+ static void allwinner_r40_dramc_realize(DeviceState *dev, Error **errp)
+ {
+     AwR40DramCtlState *s = AW_R40_DRAMC(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
  
- system_ss.add(when: 'CONFIG_ARTIST', if_true: files('artist.c'))
+     if (!get_match_ddr(s->ram_size)) {
+         error_report("%s: ram-size %u MiB is not supported",
+@@ -421,8 +422,12 @@ static void allwinner_r40_dramc_realize(DeviceState *dev, Error **errp)
+         exit(1);
+     }
  
--system_ss.add(when: [pixman, 'CONFIG_ATI_VGA'], if_true: files('ati.c', 'ati_2d.c', 'ati_dbg.c'))
-+system_ss.add(when: 'CONFIG_ATI_VGA', if_true: [files('ati.c', 'ati_2d.c', 'ati_dbg.c'), pixman])
+-    /* detect_cells */
+-    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(s), 3, s->ram_addr, 10);
++    /* R40 support max 2G memory but we only support up to 1G now. index 3 */
++    memory_region_init_io(&s->detect_cells, OBJECT(s),
++                          &allwinner_r40_detect_ops, s,
++                          "DRAMCELLS", 1 * GiB);
++    sysbus_init_mmio(sbd, &s->detect_cells);
++    sysbus_mmio_map_overlap(sbd, 3, s->ram_addr, 10);
+     memory_region_set_enabled(&s->detect_cells, false);
  
+     /*
+@@ -458,12 +463,6 @@ static void allwinner_r40_dramc_init(Object *obj)
+                           &allwinner_r40_dramphy_ops, s,
+                           "DRAMPHY", 4 * KiB);
+     sysbus_init_mmio(sbd, &s->dramphy_iomem);
+-
+-    /* R40 support max 2G memory but we only support up to 1G now. index 3 */
+-    memory_region_init_io(&s->detect_cells, OBJECT(s),
+-                          &allwinner_r40_detect_ops, s,
+-                          "DRAMCELLS", 1 * GiB);
+-    sysbus_init_mmio(sbd, &s->detect_cells);
+ }
  
- if config_all_devices.has_key('CONFIG_VIRTIO_GPU')
+ static Property allwinner_r40_dramc_properties[] = {
 -- 
 2.41.0
 

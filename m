@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp526194ejb;
-        Thu, 19 Oct 2023 06:47:47 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFYfM256zcn+XCUuw9ypczk1+ZPpWyz+vxE3f9A5Icufq0FILRb+MisSS4GNRGB12afBjwL
-X-Received: by 2002:a05:620a:294b:b0:775:9ca1:7490 with SMTP id n11-20020a05620a294b00b007759ca17490mr2350477qkp.6.1697723267567;
-        Thu, 19 Oct 2023 06:47:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697723267; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp526221ejb;
+        Thu, 19 Oct 2023 06:47:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH2CH/8CCy0zjEPNsDhR//Vrrno9DZ8aXd9U8SV9hMxZsxIxgdVHWN/MT8XwdpIyv76jR/1
+X-Received: by 2002:a05:620a:4899:b0:774:2fb3:fe62 with SMTP id ea25-20020a05620a489900b007742fb3fe62mr2213810qkb.27.1697723269978;
+        Thu, 19 Oct 2023 06:47:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697723269; cv=none;
         d=google.com; s=arc-20160816;
-        b=cWuV92fYTWrcLg49tf2rkZfURXe94/oamRw7JAhhl+mOejBZd4JZ5NEzM0dPyeMvbR
-         s3qGUqjhSz/7l35M8vGYCFq2FJxKtxjgmtxmcUDqrv/qzctMPj3OJcVEHhOQMWenFXAt
-         yzgZA0LZJwm1UxXtGqWtha/rmqs6edTWGlpeWle+p6+JWixMEb6QOxRcKVl0SOU0iVQT
-         3KHGEON2/SgO7IxSyy4lBmsrl4XQvCC9BMieH62RiKk1/fUmP7i1mH3ZTYJGX3oBg1It
-         pho2gKdBqJcZp1HxELTePkO6ZL8GZ2m6RqlyDLOabNonDeKWGMRARw8RX2Ns9JsPZFiH
-         BQhA==
+        b=NInLlazwLll48ofq2d1dZH2pacq9n/BMdQehfjAX+D+MV96FC5/5G1+d+YEBLyMZPX
+         V7VqLKvZ8GM3WT45ZydTSqAeiQ2A7ukq1O28+0fj3fL9r/K5fZj1XmjR6/eLB526gRrK
+         aO0UbbnZtVC1ggfHJL5lRsjr1b3tHwTonacKuLkqPnDBs3WXr2cPqwIKcL3a6HjbgyFA
+         DuUufa34hF2mD2LJKjiXeWt3zZIOyvPNrRiTJn5Xz7wGwvtSa9HbbWT8YJwEXQGv7sPH
+         Az24NWQwDSQq//dApzVcJkgq9cIRSUpc2704RHeLIKv0rHHYKuI+4D+WecpQY2zRc5od
+         C8Jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=rZCl+gGtzQi9el+ultRZkl2MAbZZ/O9mKreEVwoqTWU=;
+        bh=r7eTDaV1FpmzV9pK9W2jRFz0sJAK8VoUAbbbjFcDpcA=;
         fh=tKh4J0nBsRIusPtBH+FcUVX1EUO0S/KOQKlAHLEPEHM=;
-        b=y+Y5HXFGrMRdD5zg1z+avVci0I0Halpo1R2yUFeZ09rzTkfij+Y2JiNZNnUw2suDbT
-         tsDuX1J1D5SF1UXlWapRN+W6gnUBOTMVpgYlP/+zrZPkCV4ABUPNIu0xUmDFQlTrMpVp
-         GPKnGFjN7NrmMYd9II5ZS3lU4kutcbI82HdL6tZYQzobtkPxnhcO/3yF7bN0qQ1NsS35
-         ThWdkOiLFfgJ04SxOfkERtyptrIUN1hm/anONJ/E6RE2JSmoWgKv5MzhxhRNkgO8unAE
-         +hg0Iz+15AfwJ0GVOxV4rVjHTtAd4vTtuFtKxs/92+hy1B2u7VKMw40GGGhWWqiR/WN3
-         XKnA==
+        b=OAWb+0SR+LOgGH3/JLVia2CJFDZ6VTQWJ5yDkAWfEgs60Ep6laOqRhizVsNBx8m8LP
+         EzSx7rBtHpmWL8np+ebYHWJJEXbeyTUsCPpGc5tek4XLd6Z5mDjpIuwcsx2ljhhZxKfT
+         9XAFUTfQeWDHnpmbUByUCQjcPyg4HfEDZT1lI6OZ7GEgLNERcIaukdG8ZDQQk4Ysis2H
+         C3uvTwqkBMY5on+aE6x1Ut9wiLT+AipfoAsZGIIEgm/ESWIEcvmPO3fmz4BvhOP53hvF
+         bubU6P9V/W52t/Az0XBsRhCkMe3zBJ6pmVg00B15gTtmdOZYiH+zY/Cana7MACLFkYoE
+         7LuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CNNUbE2+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DBI4/zAs";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u11-20020a05620a084b00b00773eed09877si1506779qku.589.2023.10.19.06.47.47
+        by mx.google.com with ESMTPS id m11-20020a05620a290b00b00774396341a3si1675628qkp.363.2023.10.19.06.47.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 06:47:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Oct 2023 06:47:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CNNUbE2+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DBI4/zAs";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtTNH-0001WF-GX; Thu, 19 Oct 2023 09:47:43 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qtTMu-0001IV-2O; Thu, 19 Oct 2023 09:47:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qtTMu-0001IY-ON
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 09:47:22 -0400
+ id 1qtTMs-0001H0-C6
+ for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:47:18 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qtTMs-0002vw-MY
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 09:47:20 -0400
+ id 1qtTMp-0002rt-Dc
+ for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:47:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697723238;
+ s=mimecast20190719; t=1697723234;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rZCl+gGtzQi9el+ultRZkl2MAbZZ/O9mKreEVwoqTWU=;
- b=CNNUbE2+cP2+c9nvKHsKzqWd3PXN2F4uoB/U4MImGmbJkuC0mk2y9uLQmulTR92vz/a8k5
- 9glbgOP5+QMdwr9y7v9Mmjsgua9f9OSE2m1w80A8ccUwCZh8Ew3S3TB0C+4+oaO7yqVsI9
- V2dhV+4YORIHvqp4OSnRCdkBcu4DBsw=
+ bh=r7eTDaV1FpmzV9pK9W2jRFz0sJAK8VoUAbbbjFcDpcA=;
+ b=DBI4/zAs0Q/vY3dNxHv6nNFPrKqJvfaY9DEWxTWhF8WLfjOauDDTdRnoExwn3gM0bvsi1c
+ pFOK8DzpaKzTkupWPJQcsLQVzF0/5XmSpsRHkKD60LrGa+Yu/rSj5SQpLZJ8l4kcdSHelo
+ sLfnr5nQwSZCdBZWNO6oz/FN+IofJtw=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-532-vw2dXoPKNCOj6KMUWZKSlQ-1; Thu, 19 Oct 2023 09:47:15 -0400
-X-MC-Unique: vw2dXoPKNCOj6KMUWZKSlQ-1
+ us-mta-140-wsS1gl1hPMGWMJ4wn2z2JQ-1; Thu, 19 Oct 2023 09:47:10 -0400
+X-MC-Unique: wsS1gl1hPMGWMJ4wn2z2JQ-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
  [10.11.54.10])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4CCEF3C0F457;
- Thu, 19 Oct 2023 13:47:14 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 13E2638116FA;
+ Thu, 19 Oct 2023 13:47:05 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.195.144])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 86E19492BFA;
- Thu, 19 Oct 2023 13:47:11 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5FE24492BFA;
+ Thu, 19 Oct 2023 13:47:02 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, alex.williamson@redhat.com, clg@redhat.com,
@@ -84,9 +84,9 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: peter.maydell@linaro.org, peterx@redhat.com, david@redhat.com,
  philmd@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
  yanghliu@redhat.com
-Subject: [PATCH v4 06/12] util/reserved-region: Add new ReservedRegion helpers
-Date: Thu, 19 Oct 2023 15:45:12 +0200
-Message-ID: <20231019134651.842175-7-eric.auger@redhat.com>
+Subject: [PATCH v4 03/12] vfio: Collect container iova range info
+Date: Thu, 19 Oct 2023 15:45:09 +0200
+Message-ID: <20231019134651.842175-4-eric.auger@redhat.com>
 In-Reply-To: <20231019134651.842175-1-eric.auger@redhat.com>
 References: <20231019134651.842175-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -100,195 +100,188 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A0V9ojxgI5o0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fxK7KAVfzMXm
 
-Introduce resv_region_list_insert() helper which inserts
-a new ReservedRegion into a sorted list of reserved region.
-In case of overlap, the new region has higher priority and
-hides the existing overlapped segments. If the overlap is
-partial, new regions are created for parts which are not
-overlapped. The new region has higher priority independently
-on the type of the regions.
+Collect iova range information if VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE
+capability is supported.
+
+This allows to propagate the information though the IOMMU MR
+set_iova_ranges() callback so that virtual IOMMUs
+get aware of those aperture constraints. This is only done if
+the info is available and the number of iova ranges is greater than
+0.
+
+A new vfio_get_info_iova_range helper is introduced matching
+the coding style of existing vfio_get_info_dma_avail. The
+boolean returned value isn't used though. Code is aligned
+between both.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Reviewed-by: Alex Williamson <alex.williamson@redhat.com>
 Tested-by: Yanghang Liu <yanghliu@redhat.com>
 
 ---
 
-v2 -> v3:
-- use l = prev->next
-- Added jean's R-b
----
- include/qemu/reserved-region.h | 32 ++++++++++++
- util/reserved-region.c         | 91 ++++++++++++++++++++++++++++++++++
- util/meson.build               |  1 +
- 3 files changed, 124 insertions(+)
- create mode 100644 include/qemu/reserved-region.h
- create mode 100644 util/reserved-region.c
+v3 -> v4:
+- removed nr_iovas and check iova_ranges before calling
+  set_iova_ranges()
+- Added Alex' R-b
 
-diff --git a/include/qemu/reserved-region.h b/include/qemu/reserved-region.h
-new file mode 100644
-index 0000000000..8e6f0a97e2
---- /dev/null
-+++ b/include/qemu/reserved-region.h
-@@ -0,0 +1,32 @@
-+/*
-+ * QEMU ReservedRegion helpers
-+ *
-+ * Copyright (c) 2023 Red Hat, Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef QEMU_RESERVED_REGION_H
-+#define QEMU_RESERVED_REGION_H
-+
-+#include "exec/memory.h"
-+
-+/*
-+ * Insert a new region into a sorted list of reserved regions. In case
-+ * there is overlap with existing regions, the new added region has
-+ * higher priority and replaces the overlapped segment.
-+ */
-+GList *resv_region_list_insert(GList *list, ReservedRegion *reg);
-+
-+#endif
-diff --git a/util/reserved-region.c b/util/reserved-region.c
-new file mode 100644
-index 0000000000..18f83eb4c6
---- /dev/null
-+++ b/util/reserved-region.c
-@@ -0,0 +1,91 @@
-+/*
-+ * QEMU ReservedRegion helpers
-+ *
-+ * Copyright (c) 2023 Red Hat, Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/range.h"
-+#include "qemu/reserved-region.h"
-+
-+GList *resv_region_list_insert(GList *list, ReservedRegion *reg)
-+{
-+    ReservedRegion *resv_iter, *new_reg;
-+    Range *r = &reg->range;
-+    Range *range_iter;
-+    GList *l;
-+
-+    for (l = list; l ; ) {
-+        resv_iter = (ReservedRegion *)l->data;
-+        range_iter = &resv_iter->range;
-+
-+        /* Skip all list elements strictly less than range to add */
-+        if (range_compare(range_iter, r) < 0) {
-+            l = l->next;
-+        } else if (range_compare(range_iter, r) > 0) {
-+            return g_list_insert_before(list, l, reg);
-+        } else { /* there is an overlap */
-+            if (range_contains_range(r, range_iter)) {
-+                /* new range contains current item, simply remove this latter */
-+                GList *prev = l->prev;
-+                g_free(l->data);
-+                list = g_list_delete_link(list, l);
-+                if (prev) {
-+                    l = prev->next;
-+                } else {
-+                    l = list;
-+                }
-+            } else if (range_contains_range(range_iter, r)) {
-+                /* new region is included in the current region */
-+                if (range_lob(range_iter) == range_lob(r)) {
-+                    /* adjacent on the left side, derives into 2 regions */
-+                    range_set_bounds(range_iter, range_upb(r) + 1,
-+                                     range_upb(range_iter));
-+                    return g_list_insert_before(list, l, reg);
-+                } else if (range_upb(range_iter) == range_upb(r)) {
-+                    /* adjacent on the right side, derives into 2 regions */
-+                    range_set_bounds(range_iter, range_lob(range_iter),
-+                                     range_lob(r) - 1);
-+                    l = l->next;
-+                } else {
-+                    uint64_t lob = range_lob(range_iter);
-+                    /*
-+                     * the new range is in the middle of an existing one,
-+                     * split this latter into 3 regs instead
-+                     */
-+                    range_set_bounds(range_iter, range_upb(r) + 1,
-+                                     range_upb(range_iter));
-+                    new_reg = g_new0(ReservedRegion, 1);
-+                    new_reg->type = resv_iter->type;
-+                    range_set_bounds(&new_reg->range,
-+                                     lob, range_lob(r) - 1);
-+                    list = g_list_insert_before(list, l, new_reg);
-+                    return g_list_insert_before(list, l, reg);
-+                }
-+            } else if (range_lob(r) < range_lob(range_iter)) {
-+                range_set_bounds(range_iter, range_upb(r) + 1,
-+                                 range_upb(range_iter));
-+                return g_list_insert_before(list, l, reg);
-+            } else { /* intersection on the upper range */
-+                range_set_bounds(range_iter, range_lob(range_iter),
-+                                 range_lob(r) - 1);
-+                l = l->next;
+v2 -> v3:
+- Turn nr_iovas into a int initialized to -1
+- memory_region_iommu_set_iova_ranges only is called if nr_iovas > 0
+- vfio_get_info_iova_range returns a bool to match
+  vfio_get_info_dma_avail. Uniformize both code by using !hdr in
+  the check
+- rebase on top of vfio-next
+---
+ include/hw/vfio/vfio-common.h |  1 +
+ hw/vfio/common.c              |  9 ++++++++
+ hw/vfio/container.c           | 42 ++++++++++++++++++++++++++++++++---
+ 3 files changed, 49 insertions(+), 3 deletions(-)
+
+diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
+index 7780b9073a..0c3d390e8b 100644
+--- a/include/hw/vfio/vfio-common.h
++++ b/include/hw/vfio/vfio-common.h
+@@ -99,6 +99,7 @@ typedef struct VFIOContainer {
+     QLIST_HEAD(, VFIORamDiscardListener) vrdl_list;
+     QLIST_ENTRY(VFIOContainer) next;
+     QLIST_HEAD(, VFIODevice) device_list;
++    GList *iova_ranges;
+ } VFIOContainer;
+ 
+ typedef struct VFIOGuestIOMMU {
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 5ff5acf1d8..d36e02225d 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -699,6 +699,15 @@ static void vfio_listener_region_add(MemoryListener *listener,
+             goto fail;
+         }
+ 
++        if (container->iova_ranges) {
++            ret = memory_region_iommu_set_iova_ranges(giommu->iommu_mr,
++                    container->iova_ranges, &err);
++            if (ret) {
++                g_free(giommu);
++                goto fail;
 +            }
-+        } /* overlap */
++        }
++
+         ret = memory_region_register_iommu_notifier(section->mr, &giommu->n,
+                                                     &err);
+         if (ret) {
+diff --git a/hw/vfio/container.c b/hw/vfio/container.c
+index adc467210f..fc88222377 100644
+--- a/hw/vfio/container.c
++++ b/hw/vfio/container.c
+@@ -382,7 +382,7 @@ bool vfio_get_info_dma_avail(struct vfio_iommu_type1_info *info,
+     /* If the capability cannot be found, assume no DMA limiting */
+     hdr = vfio_get_iommu_type1_info_cap(info,
+                                         VFIO_IOMMU_TYPE1_INFO_DMA_AVAIL);
+-    if (hdr == NULL) {
++    if (!hdr) {
+         return false;
+     }
+ 
+@@ -394,6 +394,32 @@ bool vfio_get_info_dma_avail(struct vfio_iommu_type1_info *info,
+     return true;
+ }
+ 
++static bool vfio_get_info_iova_range(struct vfio_iommu_type1_info *info,
++                                     VFIOContainer *container)
++{
++    struct vfio_info_cap_header *hdr;
++    struct vfio_iommu_type1_info_cap_iova_range *cap;
++
++    hdr = vfio_get_iommu_type1_info_cap(info,
++                                        VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE);
++    if (!hdr) {
++        return false;
 +    }
-+    return g_list_append(list, reg);
++
++    cap = (void *)hdr;
++
++    for (int i = 0; i < cap->nr_iovas; i++) {
++        Range *range = g_new(Range, 1);
++
++        range_set_bounds(range, cap->iova_ranges[i].start,
++                         cap->iova_ranges[i].end);
++        container->iova_ranges =
++            range_list_insert(container->iova_ranges, range);
++    }
++
++    return true;
 +}
 +
-diff --git a/util/meson.build b/util/meson.build
-index c4827fd70a..eb677b40c2 100644
---- a/util/meson.build
-+++ b/util/meson.build
-@@ -51,6 +51,7 @@ util_ss.add(files('qdist.c'))
- util_ss.add(files('qht.c'))
- util_ss.add(files('qsp.c'))
- util_ss.add(files('range.c'))
-+util_ss.add(files('reserved-region.c'))
- util_ss.add(files('stats64.c'))
- util_ss.add(files('systemd.c'))
- util_ss.add(files('transactions.c'))
+ static void vfio_kvm_device_add_group(VFIOGroup *group)
+ {
+     Error *err = NULL;
+@@ -535,6 +561,12 @@ static void vfio_get_iommu_info_migration(VFIOContainer *container,
+     }
+ }
+ 
++static void vfio_free_container(VFIOContainer *container)
++{
++    g_list_free_full(container->iova_ranges, g_free);
++    g_free(container);
++}
++
+ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+                                   Error **errp)
+ {
+@@ -616,6 +648,7 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+     container->error = NULL;
+     container->dirty_pages_supported = false;
+     container->dma_max_mappings = 0;
++    container->iova_ranges = NULL;
+     QLIST_INIT(&container->giommu_list);
+     QLIST_INIT(&container->hostwin_list);
+     QLIST_INIT(&container->vrdl_list);
+@@ -652,6 +685,9 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+         if (!vfio_get_info_dma_avail(info, &container->dma_max_mappings)) {
+             container->dma_max_mappings = 65535;
+         }
++
++        vfio_get_info_iova_range(info, container);
++
+         vfio_get_iommu_info_migration(container, info);
+         g_free(info);
+ 
+@@ -765,7 +801,7 @@ enable_discards_exit:
+     vfio_ram_block_discard_disable(container, false);
+ 
+ free_container_exit:
+-    g_free(container);
++    vfio_free_container(container);
+ 
+ close_fd_exit:
+     close(fd);
+@@ -819,7 +855,7 @@ static void vfio_disconnect_container(VFIOGroup *group)
+ 
+         trace_vfio_disconnect_container(container->fd);
+         close(container->fd);
+-        g_free(container);
++        vfio_free_container(container);
+ 
+         vfio_put_address_space(space);
+     }
 -- 
 2.41.0
 

@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp325800ejb;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp325806ejb;
         Thu, 19 Oct 2023 00:18:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGzhqMjivstoK2y7OrUlRDsc9zYZdYIxPpE2sHDVpBQuCNuKvN/l/HbzZDTM5JDHvAn4X/D
-X-Received: by 2002:a05:620a:1429:b0:778:909b:58c8 with SMTP id k9-20020a05620a142900b00778909b58c8mr1280230qkj.78.1697699938776;
-        Thu, 19 Oct 2023 00:18:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697699938; cv=none;
+X-Google-Smtp-Source: AGHT+IG8wkI9WVLhyr3+E+XeEBP2YbJu79DDvli/uFGx17+jSLyE914GBpOjJBNjaADhVOYyrsoC
+X-Received: by 2002:a05:6122:8d6:b0:495:cace:d59c with SMTP id 22-20020a05612208d600b00495caced59cmr1646467vkg.0.1697699939571;
+        Thu, 19 Oct 2023 00:18:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697699939; cv=none;
         d=google.com; s=arc-20160816;
-        b=KANFNQDA416iIU1uV6ZbJmlgnzSKzg+oQ/FUqb+yERd3ZMjBJlBvbQybSmW9ODswhe
-         JQwpF7kJ8sF0d9hqxMS4y+h2yUmbms6GCobWP3aBarOedEKRk5AuP5TFcGl+4V48Y/iH
-         BoInfi/z39zOq6skpftZ+vQRefEO0Ffv4dcvRxWi61ACjhspJJZuuwKmm7agLydsSABN
-         sEnHcuqJKjuboVBPfpSLyrhlS9hKatKcmFK1d4b/LGsaQL3BWedCzywpDKSGKhZQZk/2
-         bl5tm2lYZK1PJ39wuyWOPmcGx2aBnBVkRpWzKQT7hFRNEZM2UkmL9oZLEjmVhDL/WS2V
-         r4/w==
+        b=PkUEnPyssOPXoNeDChujLimnIC0Uyh8KZOMaiWQNhIGknEGsk42sP2Rh+9qYcs2MU3
+         Ix0Qb9/s1ZXNBo1mWKJXn0bIzjTUiVTPeEntZK8gBC4D0sSyDWgaC3PAettwHlwLiARU
+         IZBcpL8YYx5fhcNkeCadawnOmwwFiKcw5EfGxWvywoHI39RklUGmbCpeYf19R+VfdQpE
+         93YGsGUslo8GEa8AwSoJUGPMCw7/lK8GS2mbv8hJ9S0zduVMlBbQlby9zzbFjKNrYHby
+         I3huibzEotrhLlzxWMxIQprK+TK8BM4S0bCL9KV5F+yJGkAaGByreSmMaOUj5ULswvG3
+         +oUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=cFAMYwhnq3nxNfGtfJVokxRT7cRevtvOipnlNAGOBcc=;
+        bh=FOncUjOO3yMCwvbdhDakCobkCJgYZJVQZiN+TzHHG2s=;
         fh=6jYKO1R8PvzdW4tN+W/XYlQifBf+lht0eG+bQc5OUAg=;
-        b=XP+ivnQCV7pnChSQt6f24D4gGnoKSVYGE6dJv44tqHbU5MiPC3v4Rk+v/Ns2uNd8HE
-         qQeMNH/5dpC0PdUCxoXlprqxq4pi+bYhn+9k4X7U9wqWyIHHnfXCttOsEbnB5VD6ds2J
-         p9C7UpPXgTjyIOwGzknROLONRQ4FVfozFahFa8yBTpjQUqA1mU7msD9x0l3KnByy0JVm
-         M7xR6nweB/hh5sV9pdv0u5TcymtwDQ5+Nls82dZ8LitNXh/0K5b7uIJiKrfh/UVgp2GT
-         PHzL712TtOCl0iNaQpkLYli17RacH1Q8P8hFvkLW+H5tPEE68fdnLpbW9BM1VZTwUDup
-         Zm7A==
+        b=iUZ7FuX9OBqiAPGRLI7CPwOQY2e1GpNQGnWXXMLQiT/duQpwV8Qta35FJiO7kOHdat
+         1vePkqx9qoqqTZ7T9+d2uh+UNGi/AWNHZhW+OqQ2AGMW62cuJFrPz1BQKYv6GiH0lBp3
+         1MIp9ECV63OMUiD5/mpRDV08nmkQyC9keJxZoPAVnZWvxi0ar3A8qN0+esa3XFAXO4Ed
+         jdkIEhikRTGfqN2kkb8fOgr9QOBHtVsryRuOG1r2OPcYTmLN/cdtu8dlp1/FmPxF6nwd
+         9Jg9vGTO2IOwLaRjtxax9bacyuJgh/3x3qzI6tIwWcE08zI+R4+UMHFS/DrB47sSgfbE
+         vnlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bjkZDZs7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hbaqSxf7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p17-20020a05620a113100b00777045734c4si1100290qkk.560.2023.10.19.00.18.58
+        by mx.google.com with ESMTPS id f16-20020ac859d0000000b004197ddb7c07si1176720qtf.288.2023.10.19.00.18.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 00:18:58 -0700 (PDT)
+        Thu, 19 Oct 2023 00:18:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bjkZDZs7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hbaqSxf7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtNHY-0005n0-Cj; Thu, 19 Oct 2023 03:17:25 -0400
+	id 1qtNIu-0007ch-Qk; Thu, 19 Oct 2023 03:18:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtNHP-0005Rv-Un
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:17:15 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtNIM-0006aE-BH
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:18:19 -0400
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtNHM-0003EW-7P
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:17:15 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-3296b3f03e5so6181908f8f.2
- for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 00:17:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtNIK-0003bN-Ny
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:18:14 -0400
+Received: by mail-lf1-x133.google.com with SMTP id
+ 2adb3069b0e04-507a29c7eefso6972326e87.1
+ for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 00:18:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697699829; x=1698304629; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697699891; x=1698304691; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cFAMYwhnq3nxNfGtfJVokxRT7cRevtvOipnlNAGOBcc=;
- b=bjkZDZs70Lg43rIIKd5RgCJWeMkiMo3ANIdC+/B0KaAlclb8eo2s3gec8sksInwrBi
- YJC78nlu4kzRTiN+D9rVzXfT800qzg0dGG7w5lMIAnihnKsLaMXoKVbvj7+r+lVDK+wS
- YBewy57shKO+fgPM5ABC+CmWOToL/KAiEov9lk2oV+uHNaSkoHXodnzyzQ1aV+r1uGrn
- 1uIjP7F1vyoS/On/gTe6tWkX66EkQhFRDYv2H0pJJxWdlgBKZGU8tsW3lrZx7yEFyQxZ
- IHzslQZRmI0npS5qmVAdRnzUhFqEcx+I1NvHcQVI6Evn+vTVePzCrSVfOHXW0ATWNbd7
- lv2Q==
+ bh=FOncUjOO3yMCwvbdhDakCobkCJgYZJVQZiN+TzHHG2s=;
+ b=hbaqSxf7DxiBTz8M0isdUZq2zoH4UJ4v2ufU/jB/idSIidRMSVez5eFDQX9CZ87EIR
+ wiGQs1QYoxRYt6CN6gno+SsmBAolfmnW9Xm6gOhu9pvLj6tKsxk1H/ZUQO0UJaxXwN1y
+ WL40oyLBJhFI2DLlSuJT0uDcXV1OrMG2NH44FgjUKlHmlj1kB+WWWCficl0AQmtZwd9R
+ 3jj94LFrygDDBdulRwf65xAorfHU/N/kgugCBxGSooVz+AyGhHR6UhLgrKh+768CR8pL
+ 0VmaHBRurVEG/51gf2yxZWxF2aeokl65M21jUNWlMz2j1M2y5FCnXamxV7dUqlTMca5T
+ suow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697699829; x=1698304629;
+ d=1e100.net; s=20230601; t=1697699891; x=1698304691;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=cFAMYwhnq3nxNfGtfJVokxRT7cRevtvOipnlNAGOBcc=;
- b=Nj4IrfLJSW6TTF9gvUIq+NW0lyfkFN9lmzkzY9kv3gLlDej9PoJBayvxZf1r3SuRZu
- LITwfkLqBl2vAGUq22YcyZjJQkXVXvWKRzqcVJfFBYdV5vDRgeD2oBJYP118qYUcfEXx
- OuAqw5kB33ebef06zbPf3L0S+o6uFbgO9TpJsJciaZSYpjP60nPEhC5Vixbx5jJ332Al
- gKabLG3iD3ljLa9mEMPy+d5c6jLWRcc28+QoACYwOjVAuw7mZscyGpg2nF8G6ZIdcHHr
- nVhpUfHW4S9+lbfijCb/qG0vrI0RzQWoipMvO9SANKG0aF1LQ0YakzAUXZYVqMmeQGXq
- s/xA==
-X-Gm-Message-State: AOJu0Ywp9LS+hrDUU2FR8KfsQSS1X9MXOx/3oye1+PnvQ+LL63r4CZKL
- YMd801GBWSwtoG7uJJorvcKsLg==
-X-Received: by 2002:adf:e605:0:b0:32d:8401:404a with SMTP id
- p5-20020adfe605000000b0032d8401404amr986009wrm.10.1697699829535; 
- Thu, 19 Oct 2023 00:17:09 -0700 (PDT)
+ bh=FOncUjOO3yMCwvbdhDakCobkCJgYZJVQZiN+TzHHG2s=;
+ b=UTWJJseQX2V8BGGQqP+OEs9JBJPsYaZPaV1qJwaW+hZNx4viZVL1OcbGhsTnZ8wkBF
+ RATXWXumxVZ32EmYNWdhZEgKPZ7XKglX3Ai/E5DuHMgGbBxASH7ZDX4T8fd+OyyghAsr
+ 0RIfk+DRL0CCj8hotBe9Zms7i8sBWfmBwZaFtz+5ky0QR3LNpxDwdmJKiLwuYJ9N9ZAP
+ 7tLuW7NjMWNhnU2KEGirPRRT/M2UFYyFnbgLYbhYXrxaPyKzVY2PJMJL4nWKovqcjLfs
+ FiDxS4hFCS+4mLwKqss0GmFOF/qeAQhM1p0zcjpoPqjn/8Us7xJ8dRN0t4WBjxcGUN3W
+ m5Cg==
+X-Gm-Message-State: AOJu0YznIwxDEjZ2FhKXiTg3pPKgcXBl9wrYeum6lo48DVB0EmugfHtu
+ 8Fq1HAMcDue74j46qOrMajDiDw==
+X-Received: by 2002:a19:f013:0:b0:4ff:7046:984a with SMTP id
+ p19-20020a19f013000000b004ff7046984amr730479lfc.7.1697699891125; 
+ Thu, 19 Oct 2023 00:18:11 -0700 (PDT)
 Received: from localhost.localdomain (92.red-88-28-12.dynamicip.rima-tde.net.
  [88.28.12.92]) by smtp.gmail.com with ESMTPSA id
- b3-20020adff243000000b003258934a4bcsm3776251wrp.42.2023.10.19.00.17.04
+ y18-20020a5d4712000000b0031984b370f2sm3765991wrq.47.2023.10.19.00.18.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Oct 2023 00:17:09 -0700 (PDT)
+ Thu, 19 Oct 2023 00:18:10 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -108,18 +108,18 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  David Hildenbrand <david@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>
-Subject: [PATCH v2 05/12] hw/pci-host/bonito: Do not use SysBus API to map
- local MMIO region
-Date: Thu, 19 Oct 2023 09:16:03 +0200
-Message-ID: <20231019071611.98885-6-philmd@linaro.org>
+Subject: [PATCH v2 11/12] hw/sysbus: Ensure device is not realized before
+ adding MMIO region
+Date: Thu, 19 Oct 2023 09:16:09 +0200
+Message-ID: <20231019071611.98885-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231019071611.98885-1-philmd@linaro.org>
 References: <20231019071611.98885-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::133;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,122 +141,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TNX+m2B7gXVy
+X-TUID: EtlgvNGzjkxe
 
-There is no point in exposing an internal MMIO region via
-SysBus and directly mapping it in the very same device.
+sysbus_init_mmio() should not be called on realized device.
 
-Just map it without using the SysBus API.
-
-Transformation done using the following coccinelle script:
-
-  @@
-  expression sbdev;
-  expression index;
-  expression addr;
-  expression subregion;
-  @@
-  -    sysbus_init_mmio(sbdev, subregion);
-       ... when != sbdev
-  -    sysbus_mmio_map(sbdev, index, addr);
-  +    memory_region_add_subregion(get_system_memory(), addr, subregion);
-
-and manually adding the local 'host_mem' variable to
-avoid multiple calls to get_system_memory().
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/pci-host/bonito.c | 32 ++++++++++++++++----------------
- 1 file changed, 16 insertions(+), 16 deletions(-)
+ hw/core/sysbus.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-index ee6cb85e97..96bd028671 100644
---- a/hw/pci-host/bonito.c
-+++ b/hw/pci-host/bonito.c
-@@ -654,10 +654,10 @@ static void bonito_host_realize(DeviceState *dev, Error **errp)
- static void bonito_pci_realize(PCIDevice *dev, Error **errp)
- {
-     PCIBonitoState *s = PCI_BONITO(dev);
--    SysBusDevice *sysbus = SYS_BUS_DEVICE(s->pcihost);
-     PCIHostState *phb = PCI_HOST_BRIDGE(s->pcihost);
-     BonitoState *bs = s->pcihost;
-     MemoryRegion *pcimem_alias = g_new(MemoryRegion, 1);
-+    MemoryRegion *host_mem = get_system_memory();
+diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+index 35f902b582..8f53cb926b 100644
+--- a/hw/core/sysbus.c
++++ b/hw/core/sysbus.c
+@@ -20,6 +20,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
++#include "qemu/error-report.h"
+ #include "hw/sysbus.h"
+ #include "monitor/monitor.h"
+ #include "exec/address-spaces.h"
+@@ -192,6 +193,11 @@ void sysbus_init_mmio(SysBusDevice *dev, MemoryRegion *memory)
+     int n;
  
-     /*
-      * Bonito North Bridge, built on FPGA,
-@@ -668,48 +668,48 @@ static void bonito_pci_realize(PCIDevice *dev, Error **errp)
-     /* set the north bridge register mapping */
-     memory_region_init_io(&s->iomem, OBJECT(s), &bonito_ops, s,
-                           "north-bridge-register", BONITO_INTERNAL_REG_SIZE);
--    sysbus_init_mmio(sysbus, &s->iomem);
--    sysbus_mmio_map(sysbus, 0, BONITO_INTERNAL_REG_BASE);
-+    memory_region_add_subregion(host_mem, BONITO_INTERNAL_REG_BASE,
-+                                &s->iomem);
- 
-     /* set the north bridge pci configure  mapping */
-     memory_region_init_io(&phb->conf_mem, OBJECT(s), &bonito_pciconf_ops, s,
-                           "north-bridge-pci-config", BONITO_PCICONFIG_SIZE);
--    sysbus_init_mmio(sysbus, &phb->conf_mem);
--    sysbus_mmio_map(sysbus, 1, BONITO_PCICONFIG_BASE);
-+    memory_region_add_subregion(host_mem, BONITO_PCICONFIG_BASE,
-+                                &phb->conf_mem);
- 
-     /* set the south bridge pci configure  mapping */
-     memory_region_init_io(&phb->data_mem, OBJECT(s), &bonito_spciconf_ops, s,
-                           "south-bridge-pci-config", BONITO_SPCICONFIG_SIZE);
--    sysbus_init_mmio(sysbus, &phb->data_mem);
--    sysbus_mmio_map(sysbus, 2, BONITO_SPCICONFIG_BASE);
-+    memory_region_add_subregion(host_mem, BONITO_SPCICONFIG_BASE,
-+                                &phb->data_mem);
- 
-     create_unimplemented_device("bonito", BONITO_REG_BASE, BONITO_REG_SIZE);
- 
-     memory_region_init_io(&s->iomem_ldma, OBJECT(s), &bonito_ldma_ops, s,
-                           "ldma", 0x100);
--    sysbus_init_mmio(sysbus, &s->iomem_ldma);
--    sysbus_mmio_map(sysbus, 3, 0x1fe00200);
-+    memory_region_add_subregion(host_mem, 0x1fe00200,
-+                                &s->iomem_ldma);
- 
-     /* PCI copier */
-     memory_region_init_io(&s->iomem_cop, OBJECT(s), &bonito_cop_ops, s,
-                           "cop", 0x100);
--    sysbus_init_mmio(sysbus, &s->iomem_cop);
--    sysbus_mmio_map(sysbus, 4, 0x1fe00300);
-+    memory_region_add_subregion(host_mem, 0x1fe00300,
-+                                &s->iomem_cop);
- 
-     create_unimplemented_device("ROMCS", BONITO_FLASH_BASE, 60 * MiB);
- 
-     /* Map PCI IO Space  0x1fd0 0000 - 0x1fd1 0000 */
-     memory_region_init_alias(&s->bonito_pciio, OBJECT(s), "isa_mmio",
-                              get_system_io(), 0, BONITO_PCIIO_SIZE);
--    sysbus_init_mmio(sysbus, &s->bonito_pciio);
--    sysbus_mmio_map(sysbus, 5, BONITO_PCIIO_BASE);
-+    memory_region_add_subregion(host_mem, BONITO_PCIIO_BASE,
-+                                &s->bonito_pciio);
- 
-     /* add pci local io mapping */
- 
-     memory_region_init_alias(&s->bonito_localio, OBJECT(s), "IOCS[0]",
-                              get_system_io(), 0, 256 * KiB);
--    sysbus_init_mmio(sysbus, &s->bonito_localio);
--    sysbus_mmio_map(sysbus, 6, BONITO_DEV_BASE);
-+    memory_region_add_subregion(host_mem, BONITO_DEV_BASE,
-+                                &s->bonito_localio);
-     create_unimplemented_device("IOCS[1]", BONITO_DEV_BASE + 1 * 256 * KiB,
-                                 256 * KiB);
-     create_unimplemented_device("IOCS[2]", BONITO_DEV_BASE + 2 * 256 * KiB,
-@@ -719,7 +719,7 @@ static void bonito_pci_realize(PCIDevice *dev, Error **errp)
- 
-     memory_region_init_alias(pcimem_alias, NULL, "pci.mem.alias",
-                              &bs->pci_mem, 0, BONITO_PCIHI_SIZE);
--    memory_region_add_subregion(get_system_memory(),
-+    memory_region_add_subregion(host_mem,
-                                 BONITO_PCIHI_BASE, pcimem_alias);
-     create_unimplemented_device("PCI_2",
-                                 (hwaddr)BONITO_PCIHI_BASE + BONITO_PCIHI_SIZE,
+     assert(dev->num_mmio < QDEV_MAX_MMIO);
++    if (DEVICE(dev)->realized) {
++        error_report("sysbus_init_mmio(type:%s) but object is realized",
++                     object_get_typename(OBJECT(dev)));
++        abort();
++    }
+     n = dev->num_mmio++;
+     dev->mmio[n].addr = -1;
+     dev->mmio[n].memory = memory;
 -- 
 2.41.0
 

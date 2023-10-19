@@ -1,114 +1,112 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp618919ejb;
-        Thu, 19 Oct 2023 09:02:22 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFHP8bP/XKVZXHSUvUKyHWMOYx8GUIH3ca70/1OSNXin5DuKeMyPOnuz7HF4hPCVmZWQTip
-X-Received: by 2002:a67:e1cc:0:b0:452:9356:ab4e with SMTP id p12-20020a67e1cc000000b004529356ab4emr1839273vsl.25.1697731342382;
-        Thu, 19 Oct 2023 09:02:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697731342; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp620477ejb;
+        Thu, 19 Oct 2023 09:03:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFs8UqAHlv4voPSVOHs9Z9CmTT/hXknxZQJEK6DmvxZ9KRjnRjFZNCGc1cURiw34HUDjeKZ
+X-Received: by 2002:a05:6122:2222:b0:496:3906:33e3 with SMTP id bb34-20020a056122222200b00496390633e3mr2380158vkb.15.1697731432218;
+        Thu, 19 Oct 2023 09:03:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697731432; cv=none;
         d=google.com; s=arc-20160816;
-        b=QyFske7MwpYX1OZaIIPSRZmUiiIbd8sMRuoZfBTFh1EUrI3UDeXDTPSjl2lzLvVLG0
-         kqrgU8oP51fgqsmOv1FwH7rpyKljPxrzomssKSku4bt+Dwxhqga3axq5Jg4OlK+lDguu
-         OtyTlT4D/0K8zTfscI30ORRLrwBH0UOd0DA6ElD/nOdstKPW8QBWPcel8le2ZvMMlJtJ
-         8bPnFzihAmEcBIqY+ywOiesXOGP3TD9kdbyQ34hAfPNLQeJjp/tgc46cqcJmVTOblBn4
-         ehEEXtCkBDf3q6vQRHXZeLKs1eyN3F+zXhKf7UJ8oj+9d+9e+CghHlazSWNP70tO+Q6/
-         gIbA==
+        b=LbWJC/GwQ6jmJuQr9GKVQ/8D+NBmZlVaOI/sPo/YrpcvrHXd+Xx7I+dtnrtmwdEe38
+         /e2wS/oDg4YEp5PQSocqJ1CjVprBcl+jx2SIeVORIWyVXebRLAyILuEiNA5MsY+nP9lQ
+         dGUTJtHCtajl6Ml32xqI2P/V2IP1DzTIDK4wQ1aKCoJtrLwbub/TNubd5t/msNihwbor
+         5VHY3JlEhp0Xa/1oZGRakyHvRbMMuypwRKo4FfbGQQhYGbebVjj0X4QFGo6N4mllqBdV
+         BgAk+b1eHMJt+4m7t4CH/5wLDww5icofGaC4LxWOf9M/Y7NzCzz7qIp1tv0VK1kgkhRF
+         OGvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:references:cc:to:from
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=4ZESWvR311D17ovm2EazPNaYzHaKs9IhFUFNrBA8qaE=;
+        bh=/XnzNo1H4sJBs7xVFclRp/S6i35hzOQKRILc59mZJuY=;
         fh=DpkbP7dEedV4PMQm4eXqOJbSESG+s5DDiq4o/Hms8vM=;
-        b=EPxWagzjEwVinq00c4fQS2BvLnFaiGqlAcuj95ZLTWzyVg2tkMVG1xg2zc6xyR5Q+G
-         Sqjks8nKtGFvEbVMgWpgesgfFgOP/fxjm7Ot6SkvgNPHtW5/Ukf7gQzbLW35B7Mmd1/n
-         lcOHhdb9WjMMZVJ30XS7oihNu+JoYsIGIAyi9+l5OS6jTJ7PJSxk+Q/VVQTaP7FyJDHc
-         s8x3bayFTv3nwuqxQEn17Kv0rv78jE4dLybU90VCi+zJk7FDXKKmoBlN2fiVTUjlRNI6
-         z9PgZaOq9YJs0OGwgqbWtms8BamVFDMNPyulyN9lLQEU66XcFAsVzBLWc7uy2nS8tZVL
-         8kyA==
+        b=kDDCSnbYKrfw2vMNXSr5MF32++K6TZcwb4xXKjk/GApvOT8gYiJ1K9NzbyMEft/Ozv
+         64oOnlocEXzTdaKEeZV45MSSC12h/lJqWNxPHcUi3ZwdTB37rKq2o9qLLo7kD9R9u7Fj
+         Uo03Gp5NbYmWWvysHKbQxif2QvzRcAFvCZya8N85RxAV/7omje5B+e32Pjwl6Z14QLvi
+         MTSl6LolGGj+BHYuao6tGLQFd0q8FHxedQ8AWLhOX+i355X40XVc5HfSTROo/qHR4pLH
+         2dCbnXAnuDpUThMWtLd1GS+flKv65JoLI4H7LUTaoGhMsdGJj0qmGbOxQNfNRucFDxo7
+         08cA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HwIoIqoL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S3wqE7vu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y16-20020a05610207d000b0045282d6db51si604917vsg.521.2023.10.19.09.02.22
+        by mx.google.com with ESMTPS id h194-20020a1f9ecb000000b0048fd0f10a38si671841vke.23.2023.10.19.09.03.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 09:02:22 -0700 (PDT)
+        Thu, 19 Oct 2023 09:03:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HwIoIqoL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S3wqE7vu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtVSw-0007SQ-OZ; Thu, 19 Oct 2023 12:01:44 -0400
+	id 1qtVRn-0006yZ-Pu; Thu, 19 Oct 2023 12:00:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtVSc-0007Js-1J
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 12:01:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtVRm-0006xL-NJ
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 12:00:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtVSa-0002b1-Bx
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 12:01:21 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtVRl-0002QD-0i
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 12:00:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697731279;
+ s=mimecast20190719; t=1697731227;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=4ZESWvR311D17ovm2EazPNaYzHaKs9IhFUFNrBA8qaE=;
- b=HwIoIqoL5gkTwaHi1k4kln8R+BhDW2x3y5yZrTS8Plv+OdXZ3EeV01VSi+cpli9BqTL4I0
- gzFZ3JrT9cJmW797MPUEikziexSAlzoRNDwZSwOHShjXcOhOSiCAF70h5wDtGOR89tVqqS
- zm9hE08TwNlkcEPq4oJtKR11jOcJBx8=
-Received: from mail-oo1-f69.google.com (mail-oo1-f69.google.com
- [209.85.161.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=/XnzNo1H4sJBs7xVFclRp/S6i35hzOQKRILc59mZJuY=;
+ b=S3wqE7vufNMpfbfKpykMOU9lMspdPj8IQdQT2aFGYIA7cdPJGzgM0p57kMKWowqioZNriE
+ TMLbHxtNZoPEHJ2xR/aVwwkd1q+PxZUXm+8QKhU1TpCVMGmqBX4h8Hqm2IdtGLly8ASDTR
+ a6QmWfOblJr+b3U0mRi/ZCRNkoN6saE=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-48-kRVZTXTrP5Gj5i5T_CY_BQ-1; Thu, 19 Oct 2023 12:01:18 -0400
-X-MC-Unique: kRVZTXTrP5Gj5i5T_CY_BQ-1
-Received: by mail-oo1-f69.google.com with SMTP id
- 006d021491bc7-581d8975bafso4375449eaf.1
- for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 09:01:17 -0700 (PDT)
+ us-mta-91-UbBUhbPNNVWi9604-zE4JQ-1; Thu, 19 Oct 2023 12:00:25 -0400
+X-MC-Unique: UbBUhbPNNVWi9604-zE4JQ-1
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-41cca2532b8so7620731cf.1
+ for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 09:00:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697731277; x=1698336077;
- h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
- :from:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=4ZESWvR311D17ovm2EazPNaYzHaKs9IhFUFNrBA8qaE=;
- b=ZpIoebIoUbR/zCzu+s9jgnnfCybU4VdFrU4MgSL8I6WDdQMKTaQgAtjnpUAIp01+b1
- pHno+REhcryWv0ZokjHnlC/VAA+44OJtdein6XqbWFzCgedakHOYmVhuNHdvlGbwWNJu
- lSh218mcBAHqY8FJ1g9Q3Ks0DaLndFu3xA2jEFRDGVQ5BvwmiTw5vAD1RMkuqU/s6Ihf
- QQ3D6RyX4eY8iXp5iOx6Fvsr+Wb+YYAztPPoF9LRjo8xAx6zHroqeKGTWRzK6zqXvT8b
- go2rZ03NtbhaVBjzzP9nsQwbIwRxc9Q3PNAw7TIyQWb5xrHHM3cdlD65GXPJs4T33Ezn
- EI9Q==
-X-Gm-Message-State: AOJu0Yy1SOXlOkXdqkHrXEoSABUlGa5lmD4kLsZxWuz+U+jiV8vOXb55
- ZL/Bb78p/8GtCPizLp6MduhkkHlcTeVlTLaxyUFjVRik67OdlpSYMs66zzWy/JTGVO74aT6LL9e
- JQapPak6FiK4W
-X-Received: by 2002:a05:6358:1812:b0:143:82e0:8cbc with SMTP id
- u18-20020a056358181200b0014382e08cbcmr2836108rwm.1.1697731276941; 
- Thu, 19 Oct 2023 09:01:16 -0700 (PDT)
-X-Received: by 2002:a05:6358:1812:b0:143:82e0:8cbc with SMTP id
- u18-20020a056358181200b0014382e08cbcmr2836013rwm.1.1697731275849; 
- Thu, 19 Oct 2023 09:01:15 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1697731225; x=1698336025;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=/XnzNo1H4sJBs7xVFclRp/S6i35hzOQKRILc59mZJuY=;
+ b=gmEeMFsIh9X0uqQYORDaHdkdZJJCLX0CDiLv5twPhVuTHbvfIQ8p8cG78UusQquGqD
+ hZsJY+Xn3S3qitRRbTm2e8UyLYfzUodrJSI7G5SQLs/CnfMSDVTr8fHwwuS1GQdiGbcX
+ wIth/iVfkQpdx8hxcOu+puYIDoiSl3cX/Xl7xgbDl53bblJ0f0vA/sC0DIa4Hu0/9S2N
+ /DmOiG4PEOPmulBRKRFCeDcIMwenM7slN2qV5UV2x5+EgtGMs9z2k/Om01/XTWwYVkBm
+ s6FHJVUD3x4U+J4DEeECUrW7xbSUPz/jSlq/HXWE+dbOpunDZkl0QZysqevxGxtBpTVs
+ 5Y7A==
+X-Gm-Message-State: AOJu0YzpN53i53ws+xT8XlNpJRTtmyoTSrGetw5hsAuhI9qHsQLwWAe+
+ RDKxhLQ6Ac7iefeZazHIbTr1KNAY/uiCJmYTv4TauTeRVqU9s/4EqWQakwiT7EC2XytIMqv+srZ
+ +0xxZlrPDm3j2
+X-Received: by 2002:a05:622a:291:b0:41c:bac1:6ad with SMTP id
+ z17-20020a05622a029100b0041cbac106admr3053783qtw.18.1697731224738; 
+ Thu, 19 Oct 2023 09:00:24 -0700 (PDT)
+X-Received: by 2002:a05:622a:291:b0:41c:bac1:6ad with SMTP id
+ z17-20020a05622a029100b0041cbac106admr3053754qtw.18.1697731224384; 
+ Thu, 19 Oct 2023 09:00:24 -0700 (PDT)
 Received: from [192.168.0.5] (ip-109-43-176-141.web.vodafone.de.
  [109.43.176.141]) by smtp.gmail.com with ESMTPSA id
- l4-20020ac84584000000b0041b9b6eb309sm812116qtn.93.2023.10.19.09.01.14
+ l4-20020ac84584000000b0041b9b6eb309sm812116qtn.93.2023.10.19.09.00.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Oct 2023 09:01:15 -0700 (PDT)
-Message-ID: <d226027c-7566-4df7-9b94-a2affe754c05@redhat.com>
-Date: Thu, 19 Oct 2023 18:01:14 +0200
+ Thu, 19 Oct 2023 09:00:24 -0700 (PDT)
+Message-ID: <f72271dc-ea1c-46b7-9609-1917e6567b3a@redhat.com>
+Date: Thu, 19 Oct 2023 18:00:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 1/9] hw/sd/pxa2xx: Realize sysbus device before
  accessing it
-From: Thomas Huth <thuth@redhat.com>
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 References: <20231019130925.18744-1-philmd@linaro.org>
  <20231019130925.18744-2-philmd@linaro.org>
- <f72271dc-ea1c-46b7-9609-1917e6567b3a@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
  yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
@@ -151,21 +149,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <f72271dc-ea1c-46b7-9609-1917e6567b3a@redhat.com>
+In-Reply-To: <20231019130925.18744-2-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -180,37 +178,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Opk61jv5sMBx
+X-TUID: yGiwZdgnCXP2
 
-On 19/10/2023 18.00, Thomas Huth wrote:
-> On 19/10/2023 15.09, Philippe Mathieu-Daudé wrote:
->> sysbus_mmio_map() and sysbus_connect_irq() should not be
->> called on unrealized device.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/sd/pxa2xx_mmci.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
->> index 124fbf8bbd..9f7a880bac 100644
->> --- a/hw/sd/pxa2xx_mmci.c
->> +++ b/hw/sd/pxa2xx_mmci.c
->> @@ -483,11 +483,11 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
->>       dev = qdev_new(TYPE_PXA2XX_MMCI);
->>       sbd = SYS_BUS_DEVICE(dev);
->> +    sysbus_realize_and_unref(sbd, &error_fatal);
->>       sysbus_mmio_map(sbd, 0, base);
->>       sysbus_connect_irq(sbd, 0, irq);
->>       qdev_connect_gpio_out_named(dev, "rx-dma", 0, rx_dma);
->>       qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
->> -    sysbus_realize_and_unref(sbd, &error_fatal);
->>       return PXA2XX_MMCI(dev);
->>   }
+On 19/10/2023 15.09, Philippe Mathieu-Daudé wrote:
+> sysbus_mmio_map() and sysbus_connect_irq() should not be
+> called on unrealized device.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/sd/pxa2xx_mmci.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+> index 124fbf8bbd..9f7a880bac 100644
+> --- a/hw/sd/pxa2xx_mmci.c
+> +++ b/hw/sd/pxa2xx_mmci.c
+> @@ -483,11 +483,11 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+>   
+>       dev = qdev_new(TYPE_PXA2XX_MMCI);
+>       sbd = SYS_BUS_DEVICE(dev);
+> +    sysbus_realize_and_unref(sbd, &error_fatal);
+>       sysbus_mmio_map(sbd, 0, base);
+>       sysbus_connect_irq(sbd, 0, irq);
+>       qdev_connect_gpio_out_named(dev, "rx-dma", 0, rx_dma);
+>       qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
+> -    sysbus_realize_and_unref(sbd, &error_fatal);
+>   
+>       return PXA2XX_MMCI(dev);
+>   }
 
-Drat, copy-n-paste failure. That should be:
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 

@@ -1,110 +1,112 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp802006ejb;
-        Thu, 19 Oct 2023 14:23:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF3oDLDbcgvLTt9Yk/m4JU+JL8Y6iM/eSFQDOVbRpsS/Kq6b9sQzylQ7C258aa/zUpiYKDt
-X-Received: by 2002:a05:620a:2887:b0:777:6631:85b6 with SMTP id j7-20020a05620a288700b00777663185b6mr3862149qkp.39.1697750614974;
-        Thu, 19 Oct 2023 14:23:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697750614; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp802067ejb;
+        Thu, 19 Oct 2023 14:23:42 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEupz/QaUr1VChkjrymXVbuyf2ZPBr80WcSslF2bmW/LGOTvhZoVxgPrueid3+sUe8DjknY
+X-Received: by 2002:a05:6122:178f:b0:495:3d9d:535c with SMTP id o15-20020a056122178f00b004953d9d535cmr31291vkf.4.1697750621790;
+        Thu, 19 Oct 2023 14:23:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697750621; cv=none;
         d=google.com; s=arc-20160816;
-        b=eHlJln/OZWd32bewJGCk1AhI+qUtBVojSzTj/Q+NGwrVzYVktriVqF22vQGyyLB985
-         6MXgIMrxLUKkr3l7bVMR85PAJ0k6ii7Gr5qF2O24BISvSv2gOjti/epjQ2ZWLJoF+t4c
-         ZQkFACu64E9tq4IIaKWjfqRHXRDRwGCx499CTu1BNPqfGqygcjEU5XieA4GDod5JPiyQ
-         YRSUmzzKnL0ihvKR6lX4mFkDiNxH/EKoa93uwayrvLpw2LRw4YrapTvwJGLCQPGU+6/p
-         enUFynjSSX/3B2ab27dyy/YBRo16TE6UdveWRViAWc8lDyBVKxlT8YNjn1SyePfPZrOO
-         JUpw==
+        b=WvLGGXASqroDrmilo8Syu5MKr3Ei/3YjdmvnXpsqIswvdmBZil3w+i+jH3Cs6btLIT
+         3VDXLRAf8w6JqWgp4zoj3AAFh5NdtQqUmYET7RW6aHySYQBGecfP1Wpdb+VubZ5Zoun1
+         sdGLpySfa5l7ra20zk9w6R9XQGqxKxAEYyt8Qs/5gvgeV56JLRZHwzuhfyxZjHJWTgkw
+         ZIxIXInB4lfsu0bff0emnK+knSoobYfN+UeUJWfRHyegSF9pv7gBi4mxpsjccbghWGKz
+         wMbpHhnMHeMqJEMNrwQGg7WRT2ssHe8c1ACCBWWc0oXpfJPYXc0HD89FfOYBnYG9uP2D
+         vj7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=QiDSBb1U1Y6ntpHTs6MX3TQXj3gIN80QBkiJrswp04U=;
-        fh=/VuZmIqr4bR18HTgg1hSyedIsQzndzO0C0UCJ5egpbw=;
-        b=0wLhR1/d5IMPOWzJD984aiVwgk5ICrQRUyJji+I6KoJni6Fgg9qJ2qyY9ppxHctQ4G
-         Xd/p+QXSXrjsbvvnKRWXUjsrnNFGZrPP8sp5Iu1UK5wR3fzLRRasBcZvOihUdKB1Yf54
-         l1TRDGV95G4cyjPe6OFWyhZTZw0noQvdyEjNRaNWMZFLk5xIxrcsTQXFQPkObC5Pi6Kb
-         Ihaab3R1us22ODEeI0A+s5HrAiLaNtX3pR14GXJZVwMOh9VuEKGxOF/PzIllqKoAR223
-         vTRCIu/NsTyWJn83jTmSvC4JXVTJRHr5hqkqHU8vNPNQZZ6yBPf2NEV3zHHnfrD6NzHT
-         4Hag==
+        bh=5L3KhgnR+wD3KYNvWp6CWYVG73hhXTbT/VSAj1bhVwM=;
+        fh=JJVrIxA960fi2M8f1oD8ZiXLObaAuT+S4YeQ3hi6v/I=;
+        b=i7cMUB0vV/QBrSIpDAGSvs8kSQ6bpnnGi9hEbTISIU6NqHBINrY++WhYCupQGlrn76
+         j2736JEyIBipnk/yTHTFM/SJ3cqb8MyH80S0M0BGrOlyo9SQViX0Ix3W7LKMlgI/HOql
+         4mqXstGh0PqYv7ZoT4A67kOCK8rrLdDyC+qMSyjXo+AX9zeM6oOmcnB+iRXaD4tABBlD
+         rPnPdVA4ByoRO5bcHrxB71Agtz9e+MoiBd+YP+7adELstBpTYB9aM3kB1GgoFDMOHjN/
+         6y2CtGGDLr0a3s4hYVKhoOVotCe8POBwEacAYXrSwRzQgKwdLrgORC8HHavb04NyOWOz
+         QXtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UeTn10uh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N5WPcaSW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o14-20020a05620a110e00b0077421d5f27dsi250534qkk.571.2023.10.19.14.23.34
+        by mx.google.com with ESMTPS id o10-20020ac85a4a000000b00417fa5bd43dsi256772qta.314.2023.10.19.14.23.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 14:23:34 -0700 (PDT)
+        Thu, 19 Oct 2023 14:23:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UeTn10uh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N5WPcaSW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtaTV-0003wr-KV; Thu, 19 Oct 2023 17:22:37 -0400
+	id 1qtaRD-0007Y8-Ve; Thu, 19 Oct 2023 17:20:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaTT-0003q3-LS
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:22:35 -0400
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaQz-0007E6-7L
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:20:01 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaTR-0000eO-90
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:22:35 -0400
-Received: by mail-lj1-x234.google.com with SMTP id
- 38308e7fff4ca-2c50cf61f6dso1792981fa.2
- for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 14:22:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaQw-0005Aw-B3
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:20:00 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-32d849cc152so111852f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 14:19:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697750551; x=1698355351; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697750396; x=1698355196; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=QiDSBb1U1Y6ntpHTs6MX3TQXj3gIN80QBkiJrswp04U=;
- b=UeTn10uhHgomNxL3kTLEuknBBuI9wRb/rnqKau1RgOeWZd+1BQZN2O2t1brhCNFVgE
- KfQN1/r8P97CShIb0cT2+UKfhti03Z/lSVTGXhGzLfD0PsfkDW103m93xcj2rzKcwZJi
- zudwgENHSEr0PH14WuLOA2GXBDNh9FJj063Ych7oUrIEWsQNuc7zCPdpUXcVl8CnAvqH
- jlwkhl/6+/Cb86+rnp4VdO/uQAwRph67H5XJHBGL293M4TQOrlQn4NCPVTMsxhEydObr
- 4NUfP+hzzUCh3y37dFk8O87WniJOoSID58NOvtti7GZHfE4KhZf06dI8jxcxyt02QT+0
- r2Mw==
+ bh=5L3KhgnR+wD3KYNvWp6CWYVG73hhXTbT/VSAj1bhVwM=;
+ b=N5WPcaSWVaFJ9iyQSiuRHSaSFqeTfDy3aN+rLAwIRSFb8lkDR3U3gDDevC0h1uNg1S
+ fvfeBgU6RUR1vhzG1etx6B0OqmJNt0ltCLqWLLKQhI4NRrvJ1anu+jYiVyU/3BEgnNs/
+ qBip4i50VkqMfMXvW6I9cOds0er7OKesxl0Fa4nwwaaueswnR8zwx40+h8xL4Q0DK5yl
+ BQk18LNSUu/dZJsfLGhzfToFAqoeGJm+BmkjTDBf7auKbBoBvqr5DszSVAjuyCJf4jfd
+ m/U/5Y/N3Z3QejCz1WfH2r1RD9ZxYV55InHEA7D/S7SXmqTe5KZsZIzQbymg9guHfKow
+ DGlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697750551; x=1698355351;
+ d=1e100.net; s=20230601; t=1697750396; x=1698355196;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=QiDSBb1U1Y6ntpHTs6MX3TQXj3gIN80QBkiJrswp04U=;
- b=iF61H1jvJgW7Zma9iGvUHGLA2ubhvPEH/alloVANQqCJh5BuPjnca39TF+vLiEpbBK
- YNojimCxVaPGbprR36CGUDmb6t2ejOMNCMArjJxPg+NuvV0ov/DxqX9SDaLBpJ5ZL/wZ
- BwNRiIts+/l2aK9qhaqBKzkGczKT/h8mQHRODrSuy/QS0xkZGcuR3N7pnilJ+fjnz5Ma
- ZbT90AmtcNun5iSZTGIfTlPhns7F99O+Ioq4CZxmkKHzUJ5V6zLEGH8W5a+X6Rqxg4Az
- KekzeTWRudDdAnHRpCBs5kIaiydb44CJn9Y9IN59HOw9pWxJ04OCjj76PC9RD4/545Ug
- naTg==
-X-Gm-Message-State: AOJu0YwwVJnagzxKd9J9Ot/Cq6v5pdr/LQVBdHeJsbF7dpOUphhXHWz4
- PKf7Q5CM7VlHFlLravZ9ZcLKHg==
-X-Received: by 2002:a05:651c:1a29:b0:2b9:ee3e:2412 with SMTP id
- by41-20020a05651c1a2900b002b9ee3e2412mr122813ljb.22.1697750551506; 
- Thu, 19 Oct 2023 14:22:31 -0700 (PDT)
+ bh=5L3KhgnR+wD3KYNvWp6CWYVG73hhXTbT/VSAj1bhVwM=;
+ b=IGfV2EPsUHfcG58SWHt/KI1egJHo2vCoCXiaNZmjrfymehYdcLEKDbosU6FIjCz2tq
+ QmWFwb5k81O/Xz+XxRtv+ebKNedAvk0Nh5U6zorKicECxN6b4tdmxjdJdiYbCx0GgnXi
+ QOzaNfkR8VNuBoN64LSDHhW+cdzPKr9MkXJrK/PFueBRRSWt2D7Emi3n9n1Nn+czF+Mo
+ +0aPUvyYcqpQ/1qwBOZFu32qwGWYEHh0JnhcL+zRrkQ5p0WFO8tvIkd+3NammIPyzHYm
+ F12SuyCruBW+qwfj+i+gofVqnYC/s9GI5d4wurgPzVtPDwkZOeIJNj/NGjYhInCFTMeD
+ 8fqw==
+X-Gm-Message-State: AOJu0Yz6DF/UWBF/Wo6A89jPt5bYtd++ryyyrhuw+Jf8xkpXbxh+aGHj
+ ybsban8gBe+uHOA8TtY/4J3MBA==
+X-Received: by 2002:a5d:4202:0:b0:32d:9b80:e2c6 with SMTP id
+ n2-20020a5d4202000000b0032d9b80e2c6mr1914430wrq.26.1697750396472; 
+ Thu, 19 Oct 2023 14:19:56 -0700 (PDT)
 Received: from m1x-phil.lan (176-131-216-177.abo.bbox.fr. [176.131.216.177])
  by smtp.gmail.com with ESMTPSA id
- r9-20020a05600c158900b0040776008abdsm508640wmf.40.2023.10.19.14.22.30
+ h2-20020a5d5042000000b0032d886039easm233498wrt.14.2023.10.19.14.19.54
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Oct 2023 14:22:31 -0700 (PDT)
+ Thu, 19 Oct 2023 14:19:56 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
  qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>
-Subject: [PULL 38/46] hw/isa: Realize ISA bridge device before accessing it
-Date: Thu, 19 Oct 2023 23:18:03 +0200
-Message-ID: <20231019211814.30576-39-philmd@linaro.org>
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>
+Subject: [PULL 15/46] hw/pci-host/sh_pcic: Declare CPU QOM types using
+ DEFINE_TYPES() macro
+Date: Thu, 19 Oct 2023 23:17:40 +0200
+Message-ID: <20231019211814.30576-16-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231019211814.30576-1-philmd@linaro.org>
 References: <20231019211814.30576-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::234;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x234.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,49 +128,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7Vs3BPHk1qid
+X-TUID: yOEm+o6hhpS3
 
-qbus_new() should not be called on unrealized device.
+When multiple QOM types are registered in the same file,
+it is simpler to use the the DEFINE_TYPES() macro. In
+particular because type array declared with such macro
+are easier to review.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20231019071611.98885-9-philmd@linaro.org>
+Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
+Message-Id: <20231012041237.22281-2-philmd@linaro.org>
 ---
- hw/isa/isa-bus.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ hw/pci-host/sh_pci.c | 40 +++++++++++++++++-----------------------
+ 1 file changed, 17 insertions(+), 23 deletions(-)
 
-diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
-index a289eccfb1..f1e0f14007 100644
---- a/hw/isa/isa-bus.c
-+++ b/hw/isa/isa-bus.c
-@@ -52,18 +52,25 @@ static const TypeInfo isa_bus_info = {
- ISABus *isa_bus_new(DeviceState *dev, MemoryRegion* address_space,
-                     MemoryRegion *address_space_io, Error **errp)
- {
-+    DeviceState *bridge = NULL;
-+
-     if (isabus) {
-         error_setg(errp, "Can't create a second ISA bus");
-         return NULL;
-     }
-     if (!dev) {
--        dev = qdev_new("isabus-bridge");
--        sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+        bridge = qdev_new("isabus-bridge");
-+        dev = bridge;
-     }
- 
-     isabus = ISA_BUS(qbus_new(TYPE_ISA_BUS, dev, NULL));
-     isabus->address_space = address_space;
-     isabus->address_space_io = address_space_io;
-+
-+    if (bridge) {
-+        sysbus_realize_and_unref(SYS_BUS_DEVICE(bridge), &error_fatal);
-+    }
-+
-     return isabus;
+diff --git a/hw/pci-host/sh_pci.c b/hw/pci-host/sh_pci.c
+index 77e7bbc65f..41aed48c85 100644
+--- a/hw/pci-host/sh_pci.c
++++ b/hw/pci-host/sh_pci.c
+@@ -167,17 +167,6 @@ static void sh_pci_host_class_init(ObjectClass *klass, void *data)
+     dc->user_creatable = false;
  }
  
+-static const TypeInfo sh_pci_host_info = {
+-    .name          = "sh_pci_host",
+-    .parent        = TYPE_PCI_DEVICE,
+-    .instance_size = sizeof(PCIDevice),
+-    .class_init    = sh_pci_host_class_init,
+-    .interfaces = (InterfaceInfo[]) {
+-        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+-        { },
+-    },
+-};
+-
+ static void sh_pci_device_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -185,17 +174,22 @@ static void sh_pci_device_class_init(ObjectClass *klass, void *data)
+     dc->realize = sh_pci_device_realize;
+ }
+ 
+-static const TypeInfo sh_pci_device_info = {
+-    .name          = TYPE_SH_PCI_HOST_BRIDGE,
+-    .parent        = TYPE_PCI_HOST_BRIDGE,
+-    .instance_size = sizeof(SHPCIState),
+-    .class_init    = sh_pci_device_class_init,
++static const TypeInfo sh_pcic_types[] = {
++    {
++        .name           = TYPE_SH_PCI_HOST_BRIDGE,
++        .parent         = TYPE_PCI_HOST_BRIDGE,
++        .instance_size  = sizeof(SHPCIState),
++        .class_init     = sh_pci_device_class_init,
++    }, {
++        .name           = "sh_pci_host",
++        .parent         = TYPE_PCI_DEVICE,
++        .instance_size  = sizeof(PCIDevice),
++        .class_init     = sh_pci_host_class_init,
++        .interfaces = (InterfaceInfo[]) {
++            { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++            { },
++        },
++    },
+ };
+ 
+-static void sh_pci_register_types(void)
+-{
+-    type_register_static(&sh_pci_device_info);
+-    type_register_static(&sh_pci_host_info);
+-}
+-
+-type_init(sh_pci_register_types)
++DEFINE_TYPES(sh_pcic_types)
 -- 
 2.41.0
 

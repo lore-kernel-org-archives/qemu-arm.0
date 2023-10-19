@@ -1,232 +1,217 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp372628ejb;
-        Thu, 19 Oct 2023 02:04:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG1A6Cm0vLBnfFdnQBMtzwyqfwmkxjQZ5HOiy4kAaC5s64yxDlG2qs5Q4wt+x2DcyOM+IHM
-X-Received: by 2002:a05:620a:45a9:b0:767:923:48e7 with SMTP id bp41-20020a05620a45a900b00767092348e7mr1640389qkb.5.1697706295644;
-        Thu, 19 Oct 2023 02:04:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697706295; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp385999ejb;
+        Thu, 19 Oct 2023 02:34:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGtkUUfB0mVRlOThPc9jv5EhR/PlK4UA4ekCt8WRGgL6sow6swwy2czmoXwjqkVrjqcsTHg
+X-Received: by 2002:a05:6000:b46:b0:31a:d450:c513 with SMTP id dk6-20020a0560000b4600b0031ad450c513mr1148310wrb.26.1697708079190;
+        Thu, 19 Oct 2023 02:34:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697708079; cv=none;
         d=google.com; s=arc-20160816;
-        b=y815b0xTjt39m2TwxKFSGOm+GyX0stlNp47GAZufa8ONlNb29xFLOoaiBZHCQh3x5x
-         l0UuYMVOz0+mqhdTQOlzpZ9gsF0gesD/TK/rsqbaMLCEvi24bWu/oeJ59pKvn0299JqH
-         M8XM16KDBadLVGSEGgeKfIEEcfcP+R7SGnQJNFost2ufteMgE7Yrgk4RULRTjc2JTYyG
-         /gk7ed2kq0Z1RsqgvSq2KzboflZ8NFrUz3qGYTG7510AQBFQQ3ldvQy9GnjsLdPrMJWV
-         ShPveEfdXSQieL2KhDgUYU+Q+8x8xYr8RbIeknrEydKNBNWzn4s6ixOJwUi9ApLosbKo
-         Me4g==
+        b=wwLZyVXuRGx/OqFOOMkDCaTuPLEmJ0UNanl2Gh8FuReGiqkkQPRxO5lAbEjBP9+B/m
+         POWt47urBA3Y5ofsMsgdjeovk89xygRGEzsmtJ/HmC6iFCzYlWLLhpwPLWpkPu6kuOi0
+         RDujgGJ3ZRWwlUpOlJnHd2SF4BiJfSCNwa0D+8TBcGUMan9EMsv8xxVL11hEepaoNz2p
+         DhBLVL9ZUkJynnkKyfB0qC5EOhaJUo4Wncvg6fRLaIC/eQM566lTClo7S5tEWRqZcycg
+         sl0brkdnX1i+FnnSQu5oX3xtP7ZIzyIViHu8bQOTYKMNa5+YlHkWUWkDiXWpSAEmGtY+
+         bHLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=rGPyu2oyb6K1VJTFIEw7kMpYSIo1edfld6pQEvAngzc=;
-        fh=HQu76LFN0DbKXHr60vGnzTmi359RrU+EPC8eBDHkPTc=;
-        b=KTSuhdGzXZ5KfUTib9he0sSbVvIcsy4S4FoUpckSr6XgkTW/qEG4y06vweE9iK4SPP
-         6ydkrvsixwxPKRZxzNVjbSGkIY4klFAWPSOeqRUwk+F/QIR9/R0HuLsHd9HwrXI+DB3O
-         Nx7FoQ+mmulfxdkWlNuhu+W6XYRheFii5P8uVzp90bXTsTTESJ3AcuGMbYIGTrQW6nzS
-         jjFRoTE8tT8Wtt0wZOEERwAqEzJto/2AkTJWMvI7nChHUyS6dH7gkocpyPdUMK2hkDsR
-         2XuPp6G9l1O2XUpis2XXNG9WxsFScuiLHz17jdKn+C0Nquz5CVRSfbHS2tjlO3i8JbG1
-         C7DA==
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=KHJ4DZkoYsWxs/UV4+mBTkrM4ZTCB1y4pUAv1TWEFg0=;
+        fh=ArDpgR21IQ5SVfoMeq0rTdqbphlAxLfW/mhVyowvahQ=;
+        b=yXkO3YsQo18voX9pmPELvKBN7SIYK99OTBaL3d702By6zdbuYMiDvxC4VXPGY7b201
+         uQYB/cd2FhqWYcllKJ8CNx2PsI3nWM0K9tSnmjBaequNrHqQqv6E1NCck1VmiULSCikK
+         FKx7Jo8N+4hwC7RjWGXAp6/lb7iVfIWkBFvtFnQmCwqNidyvQavjsv591wstWSIuUz3q
+         xOaRWzoyX8JSpGS6NUT+q8WhTHLqwc15kKx8VFGL3zMvrSBI6x3ePcWW2C048wnpRcGt
+         dFXd5Un4pwSwYRwYiJH09oYt2Co4JI0c9FnF5uhhQnivCz9yXd+qjJii1oKXEW/Aj6Rx
+         pSbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VumxcHLC;
-       spf=pass (google.com: domain of shahuang@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=shahuang@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <shahuang@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id s16-20020a05620a29d000b007682117be3csi1231199qkp.62.2023.10.19.02.04.55
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Oct 2023 02:04:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shahuang@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id r1-20020a5d6941000000b0032b69535faasi2296367wrw.1007.2023.10.19.02.34.38
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 19 Oct 2023 02:34:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VumxcHLC;
-       spf=pass (google.com: domain of shahuang@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=shahuang@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1697706295;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=rGPyu2oyb6K1VJTFIEw7kMpYSIo1edfld6pQEvAngzc=;
-	b=VumxcHLCSlqt+ko8yFWJXTAMndqKth6VQMaSnfpzYPqkJerOjbpEGBxaWsrw0tDxEM9Eev
-	MMvWaNXzSzQeXqsKg6hCOOR/iTJbtZCbWkHclDzBfvsz5YkjxHfRucYyF+qTdgMqpZGQMc
-	P6PEesABP+xXWuRCY36Lmp7lM4jsPnA=
-Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com
- [209.85.210.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-187-whRgtkraNKaOddlkmdwd7Q-1; Thu, 19 Oct 2023 05:04:53 -0400
-X-MC-Unique: whRgtkraNKaOddlkmdwd7Q-1
-Received: by mail-pf1-f197.google.com with SMTP id d2e1a72fcca58-6b2df09dcdcso1877513b3a.0
-        for <alex.bennee@linaro.org>; Thu, 19 Oct 2023 02:04:53 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697706293; x=1698311093;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rGPyu2oyb6K1VJTFIEw7kMpYSIo1edfld6pQEvAngzc=;
-        b=tnad2E9kyM3g0kViz51d04eL6m4VTJ6aS3h7f4eeQKSjiKzWYYnXLwgXvAoZDRfcSC
-         rktbNKTy4h5oDJrdvc79zmCxzL0WoDgz7CynGSp1hM893EDYXtq+sniBdy+/sOahYMn4
-         hSlL6QvuWq1cSTYvs6kJVhJvH5N8eBtQ6IaG2wymznms0qqo4cmog7FyZqHBSiBglRpx
-         RkGzxSw+wMJVdHD0E/NjGOM2t31bgaI0h+5VY46oaIkWd+sre0oOqKn3odySHh8AzoDP
-         hlzJO6as/P+p0BThwaAGN3Wfm3Li4ts6kVt8LX7G9gR2m978icmYPQRNPg8AL86eIsN/
-         QJ0g==
-X-Gm-Message-State: AOJu0YyMnFMtBuKmxveH4+OIhtJr0R4+HIDo4/JzDaDEpGqDxocNRmJI
-	tFSzj43YVL1vyEEb0LVAmqr+VLFrpl9bPU//eCVLYztI51NeglBuB7fX5L0qOgOFqi2rg1Jyuw8
-	CpGT7+HWlzADoGxvP
-X-Received: by 2002:a05:6a20:4401:b0:13d:fff1:c672 with SMTP id ce1-20020a056a20440100b0013dfff1c672mr1960415pzb.4.1697706292718;
-        Thu, 19 Oct 2023 02:04:52 -0700 (PDT)
-X-Received: by 2002:a05:6a20:4401:b0:13d:fff1:c672 with SMTP id ce1-20020a056a20440100b0013dfff1c672mr1960361pzb.4.1697706292374;
-        Thu, 19 Oct 2023 02:04:52 -0700 (PDT)
-Return-Path: <shahuang@redhat.com>
-Received: from [10.66.61.39] ([43.228.180.230])
-        by smtp.gmail.com with ESMTPSA id mz24-20020a17090b379800b00256799877ffsm1133812pjb.47.2023.10.19.02.04.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Oct 2023 02:04:51 -0700 (PDT)
-Message-ID: <d1278ad1-cb78-90f1-64a6-c3e8711bacd7@redhat.com>
-Date: Thu, 19 Oct 2023 17:04:44 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH V6 0/9] Add architecture agnostic code to support vCPU
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from lhrpeml100003.china.huawei.com (unknown [172.18.147.207])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4SB2bc4CVCz6K6gc;
+	Thu, 19 Oct 2023 17:34:04 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ lhrpeml100003.china.huawei.com (7.191.160.210) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.31; Thu, 19 Oct 2023 10:34:36 +0100
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.031;
+ Thu, 19 Oct 2023 10:34:36 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Shaoqin Huang <shahuang@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
+	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
+	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
+	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
+	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
+	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
+	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
+	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
+	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+	Linuxarm <linuxarm@huawei.com>
+Subject: RE: [PATCH V6 0/9] Add architecture agnostic code to support vCPU
  Hotplug
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com,
- oliver.upton@linux.dev, pbonzini@redhat.com, mst@redhat.com,
- will@kernel.org, gshan@redhat.com, rafael@kernel.org,
- alex.bennee@linaro.org, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, lixianglai@loongson.cn, linuxarm@huawei.com
+Thread-Topic: [PATCH V6 0/9] Add architecture agnostic code to support vCPU
+ Hotplug
+Thread-Index: AQHZ/cNQxAxt9PC9FEqdNAxyY88QobBQylAAgAAYu3A=
+Date: Thu, 19 Oct 2023 09:34:36 +0000
+Message-ID: <262138951966462dbc7f05a5efa146d6@huawei.com>
 References: <20231013105129.25648-1-salil.mehta@huawei.com>
-From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <20231013105129.25648-1-salil.mehta@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ <d1278ad1-cb78-90f1-64a6-c3e8711bacd7@redhat.com>
+In-Reply-To: <d1278ad1-cb78-90f1-64a6-c3e8711bacd7@redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: sulWpKiJ4h4/
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.126.171.120]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-TUID: YjsiiQw9Umcz
 
-
-
-On 10/13/23 18:51, Salil Mehta via wrote:
-> Virtual CPU hotplug support is being added across various architectures[1][3].
-> This series adds various code bits common across all architectures:
-> 
-> 1. vCPU creation and Parking code refactor [Patch 1]
-> 2. Update ACPI GED framework to support vCPU Hotplug [Patch 4,6,7]
-> 3. ACPI CPUs AML code change [Patch 5]
-> 4. Helper functions to support unrealization of CPU objects [Patch 8,9]
-> 5. Misc [Patch 2,3]
-> 
-> 
-> Repository:
-> 
-> [*] https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v2.common.v6
-> 
-> 
-> Revision History:
-> 
-> Patch-set  V5 -> V6
-> 1. Addressed Gavin Shan's comments
->     - Fixed the assert() ranges of address spaces
->     - Rebased the patch-set to latest changes in the qemu.git
->     - Added Reviewed-by tags for patches {8,9}
-> 2. Addressed Jonathan Cameron's comments
->     - Updated commit-log for [Patch V5 1/9] with mention of trace events
->     - Added Reviewed-by tags for patches {1,5}
-> 3. Added Tested-by tags from Xianglai Li
-> 4. Fixed checkpatch.pl error "Qemu -> QEMU" in [Patch V5 1/9]
-> Link: https://lore.kernel.org/qemu-devel/20231011194355.15628-1-salil.mehta@huawei.com/
-> 
-> Patch-set  V4 -> V5
-> 1. Addressed Gavin Shan's comments
->     - Fixed the trace events print string for kvm_{create,get,park,destroy}_vcpu
->     - Added Reviewed-by tag for patch {1}
-> 2. Added Shaoqin Huang's Reviewed-by tags for Patches {2,3}
-> 3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set
-> 4. Dropped the ARM specific [Patch V4 10/10]
-> Link: https://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.mehta@huawei.com/
-> 
-> Patch-set  V3 -> V4
-> 1. Addressed David Hilderbrand's comments
->     - Fixed the wrong doc comment of kvm_park_vcpu API prototype
->     - Added Reviewed-by tags for patches {2,4}
-> Link: https://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.mehta@huawei.com/
-> 
-> Patch-set  V2 -> V3
-> 1. Addressed Jonathan Cameron's comments
->     - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to 'integer'
->     - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
->     - Updated [Patch V2 3/10] commit-log with details of ACPI_CPU_SCAN_METHOD macro
->     - Updated [Patch V2 5/10] commit-log with details of conditional event handler method
->     - Added Reviewed-by tags for patches {2,3,4,6,7}
-> 2. Addressed Gavin Shan's comments
->     - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
->     - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
->     - Reset the value of 'gdb_num_g_regs' in gdb_unregister_coprocessor_all
->     - Fixed the kvm_{create,park}_vcpu prototypes docs
->     - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10}
-> 3. Addressed one earlier missed comment by Alex Bennée in RFC V1
->     - Added traces instead of DPRINTF in the newly added and some existing functions
-> Link: https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huawei.com/
-> 
-> Patch-set V1 -> V2
-> 1. Addressed Alex Bennée's comments
->     - Refactored the kvm_create_vcpu logic to get rid of goto
->     - Added the docs for kvm_{create,park}_vcpu prototypes
->     - Splitted the gdbstub and AddressSpace destruction change into separate patches
->     - Added Reviewed-by tags for patches {2,10}
-> Link: https://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.mehta@huawei.com/
-> 
-> References:
-> 
-> [1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com/
-> [2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
-> [3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/
-> 
-> 
-> Salil Mehta (9):
->    accel/kvm: Extract common KVM vCPU {creation,parking} code
->    hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
->    hw/acpi: Add ACPI CPU hotplug init stub
->    hw/acpi: Init GED framework with CPU hotplug events
->    hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
->    hw/acpi: Update GED _EVT method AML with CPU scan
->    hw/acpi: Update ACPI GED framework to support vCPU Hotplug
->    physmem: Add helper function to destroy CPU AddressSpace
->    gdbstub: Add helper function to unregister GDB register space
-> 
->   accel/kvm/kvm-all.c                    | 64 ++++++++++++++++++++------
->   accel/kvm/trace-events                 |  4 ++
->   gdbstub/gdbstub.c                      | 12 +++++
->   hw/acpi/acpi-cpu-hotplug-stub.c        |  6 +++
->   hw/acpi/cpu.c                          | 27 +++++++----
->   hw/acpi/generic_event_device.c         | 22 +++++++++
->   hw/i386/acpi-build.c                   |  3 +-
->   include/exec/cpu-common.h              |  8 ++++
->   include/exec/gdbstub.h                 |  5 ++
->   include/hw/acpi/cpu.h                  |  5 +-
->   include/hw/acpi/cpu_hotplug.h          |  4 ++
->   include/hw/acpi/generic_event_device.h |  5 ++
->   include/hw/core/cpu.h                  |  1 +
->   include/sysemu/kvm.h                   | 16 +++++++
->   system/physmem.c                       | 29 ++++++++++++
->   15 files changed, 184 insertions(+), 27 deletions(-)
-> 
-
-Hi salil,
-
-All patches looks good to me. Thanks for you effort to update it so 
-actively. No issues being found by simply testing and several daily use.
-
-Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
-
-Thanks,
-Shaoqin
-
--- 
-Shaoqin
+SGkgU2hhb3FpbiwNCg0KPiBGcm9tOiBTaGFvcWluIEh1YW5nIDxzaGFodWFuZ0ByZWRoYXQuY29t
+Pg0KPiBTZW50OiBUaHVyc2RheSwgT2N0b2JlciAxOSwgMjAyMyAxMDowNSBBTQ0KPiBUbzogU2Fs
+aWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+OyBxZW11LWRldmVsQG5vbmdudS5vcmc7
+IHFlbXUtDQo+IGFybUBub25nbnUub3JnDQo+IENjOiBtYXpAa2VybmVsLm9yZzsgamVhbi1waGls
+aXBwZUBsaW5hcm8ub3JnOyBKb25hdGhhbiBDYW1lcm9uDQo+IDxqb25hdGhhbi5jYW1lcm9uQGh1
+YXdlaS5jb20+OyBscGllcmFsaXNpQGtlcm5lbC5vcmc7DQo+IHBldGVyLm1heWRlbGxAbGluYXJv
+Lm9yZzsgcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZzsNCj4gaW1hbW1lZG9AcmVkaGF0LmNv
+bTsgYW5kcmV3LmpvbmVzQGxpbnV4LmRldjsgZGF2aWRAcmVkaGF0LmNvbTsNCj4gcGhpbG1kQGxp
+bmFyby5vcmc7IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgb2xpdmVyLnVwdG9uQGxpbnV4LmRldjsN
+Cj4gcGJvbnppbmlAcmVkaGF0LmNvbTsgbXN0QHJlZGhhdC5jb207IHdpbGxAa2VybmVsLm9yZzsg
+Z3NoYW5AcmVkaGF0LmNvbTsNCj4gcmFmYWVsQGtlcm5lbC5vcmc7IGFsZXguYmVubmVlQGxpbmFy
+by5vcmc7IGxpbnV4QGFybWxpbnV4Lm9yZy51azsNCj4gZGFycmVuQG9zLmFtcGVyZWNvbXB1dGlu
+Zy5jb207IGlsa2thQG9zLmFtcGVyZWNvbXB1dGluZy5jb207DQo+IHZpc2hudUBvcy5hbXBlcmVj
+b21wdXRpbmcuY29tOyBrYXJsLmhldWJhdW1Ab3JhY2xlLmNvbTsNCj4gbWlndWVsLmx1aXNAb3Jh
+Y2xlLmNvbTsgc2FsaWwubWVodGFAb3Buc3JjLm5ldDsgemh1a2VxaWFuDQo+IDx6aHVrZXFpYW4x
+QGh1YXdlaS5jb20+OyB3YW5neGlvbmdmZW5nIChDKSA8d2FuZ3hpb25nZmVuZzJAaHVhd2VpLmNv
+bT47DQo+IHdhbmd5YW5hbiAoWSkgPHdhbmd5YW5hbjU1QGh1YXdlaS5jb20+OyBqaWFrZXJuZWwy
+QGdtYWlsLmNvbTsNCj4gbWFvYmlib0Bsb29uZ3Nvbi5jbjsgbGl4aWFuZ2xhaUBsb29uZ3Nvbi5j
+bjsgTGludXhhcm0gPGxpbnV4YXJtQGh1YXdlaS5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0gg
+VjYgMC85XSBBZGQgYXJjaGl0ZWN0dXJlIGFnbm9zdGljIGNvZGUgdG8gc3VwcG9ydCB2Q1BVDQo+
+IEhvdHBsdWcNCj4gDQo+IA0KPiANCj4gT24gMTAvMTMvMjMgMTg6NTEsIFNhbGlsIE1laHRhIHZp
+YSB3cm90ZToNCj4gPiBWaXJ0dWFsIENQVSBob3RwbHVnIHN1cHBvcnQgaXMgYmVpbmcgYWRkZWQg
+YWNyb3NzIHZhcmlvdXMNCj4gYXJjaGl0ZWN0dXJlc1sxXVszXS4NCj4gPiBUaGlzIHNlcmllcyBh
+ZGRzIHZhcmlvdXMgY29kZSBiaXRzIGNvbW1vbiBhY3Jvc3MgYWxsIGFyY2hpdGVjdHVyZXM6DQo+
+ID4NCj4gPiAxLiB2Q1BVIGNyZWF0aW9uIGFuZCBQYXJraW5nIGNvZGUgcmVmYWN0b3IgW1BhdGNo
+IDFdDQo+ID4gMi4gVXBkYXRlIEFDUEkgR0VEIGZyYW1ld29yayB0byBzdXBwb3J0IHZDUFUgSG90
+cGx1ZyBbUGF0Y2ggNCw2LDddDQo+ID4gMy4gQUNQSSBDUFVzIEFNTCBjb2RlIGNoYW5nZSBbUGF0
+Y2ggNV0NCj4gPiA0LiBIZWxwZXIgZnVuY3Rpb25zIHRvIHN1cHBvcnQgdW5yZWFsaXphdGlvbiBv
+ZiBDUFUgb2JqZWN0cyBbUGF0Y2ggOCw5XQ0KPiA+IDUuIE1pc2MgW1BhdGNoIDIsM10NCj4gPg0K
+PiA+DQo+ID4gUmVwb3NpdG9yeToNCj4gPg0KPiA+IFsqXSBodHRwczovL2dpdGh1Yi5jb20vc2Fs
+aWwtbWVodGEvcWVtdS5naXQgdmlydC1jcHVocC1hcm12OC9yZmMtDQo+IHYyLmNvbW1vbi52Ng0K
+PiA+DQo+ID4NCj4gPiBSZXZpc2lvbiBIaXN0b3J5Og0KPiA+DQo+ID4gUGF0Y2gtc2V0ICBWNSAt
+PiBWNg0KPiA+IDEuIEFkZHJlc3NlZCBHYXZpbiBTaGFuJ3MgY29tbWVudHMNCj4gPiAgICAgLSBG
+aXhlZCB0aGUgYXNzZXJ0KCkgcmFuZ2VzIG9mIGFkZHJlc3Mgc3BhY2VzDQo+ID4gICAgIC0gUmVi
+YXNlZCB0aGUgcGF0Y2gtc2V0IHRvIGxhdGVzdCBjaGFuZ2VzIGluIHRoZSBxZW11LmdpdA0KPiA+
+ICAgICAtIEFkZGVkIFJldmlld2VkLWJ5IHRhZ3MgZm9yIHBhdGNoZXMgezgsOX0NCj4gPiAyLiBB
+ZGRyZXNzZWQgSm9uYXRoYW4gQ2FtZXJvbidzIGNvbW1lbnRzDQo+ID4gICAgIC0gVXBkYXRlZCBj
+b21taXQtbG9nIGZvciBbUGF0Y2ggVjUgMS85XSB3aXRoIG1lbnRpb24gb2YgdHJhY2UgZXZlbnRz
+DQo+ID4gICAgIC0gQWRkZWQgUmV2aWV3ZWQtYnkgdGFncyBmb3IgcGF0Y2hlcyB7MSw1fQ0KPiA+
+IDMuIEFkZGVkIFRlc3RlZC1ieSB0YWdzIGZyb20gWGlhbmdsYWkgTGkNCj4gPiA0LiBGaXhlZCBj
+aGVja3BhdGNoLnBsIGVycm9yICJRZW11IC0+IFFFTVUiIGluIFtQYXRjaCBWNSAxLzldDQo+ID4g
+TGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDIzMTAxMTE5NDM1NS4x
+NTYyOC0xLQ0KPiBzYWxpbC5tZWh0YUBodWF3ZWkuY29tLw0KPiA+DQo+ID4gUGF0Y2gtc2V0ICBW
+NCAtPiBWNQ0KPiA+IDEuIEFkZHJlc3NlZCBHYXZpbiBTaGFuJ3MgY29tbWVudHMNCj4gPiAgICAg
+LSBGaXhlZCB0aGUgdHJhY2UgZXZlbnRzIHByaW50IHN0cmluZyBmb3INCj4ga3ZtX3tjcmVhdGUs
+Z2V0LHBhcmssZGVzdHJveX1fdmNwdQ0KPiA+ICAgICAtIEFkZGVkIFJldmlld2VkLWJ5IHRhZyBm
+b3IgcGF0Y2ggezF9DQo+ID4gMi4gQWRkZWQgU2hhb3FpbiBIdWFuZydzIFJldmlld2VkLWJ5IHRh
+Z3MgZm9yIFBhdGNoZXMgezIsM30NCj4gPiAzLiBBZGRlZCBUZXN0ZWQtYnkgVGFnIGZyb20gVmlz
+aG51IFBhamp1cmkgdG8gdGhlIHBhdGNoLXNldA0KPiA+IDQuIERyb3BwZWQgdGhlIEFSTSBzcGVj
+aWZpYyBbUGF0Y2ggVjQgMTAvMTBdDQo+ID4gTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
+cWVtdS1kZXZlbC8yMDIzMTAwOTIwMzYwMS4xNzU4NC0xLQ0KPiBzYWxpbC5tZWh0YUBodWF3ZWku
+Y29tLw0KPiA+DQo+ID4gUGF0Y2gtc2V0ICBWMyAtPiBWNA0KPiA+IDEuIEFkZHJlc3NlZCBEYXZp
+ZCBIaWxkZXJicmFuZCdzIGNvbW1lbnRzDQo+ID4gICAgIC0gRml4ZWQgdGhlIHdyb25nIGRvYyBj
+b21tZW50IG9mIGt2bV9wYXJrX3ZjcHUgQVBJIHByb3RvdHlwZQ0KPiA+ICAgICAtIEFkZGVkIFJl
+dmlld2VkLWJ5IHRhZ3MgZm9yIHBhdGNoZXMgezIsNH0NCj4gPiBMaW5rOiBodHRwczovL2xvcmUu
+a2VybmVsLm9yZy9xZW11LWRldmVsLzIwMjMxMDA5MTEyODEyLjEwNjEyLTEtDQo+IHNhbGlsLm1l
+aHRhQGh1YXdlaS5jb20vDQo+ID4NCj4gPiBQYXRjaC1zZXQgIFYyIC0+IFYzDQo+ID4gMS4gQWRk
+cmVzc2VkIEpvbmF0aGFuIENhbWVyb24ncyBjb21tZW50cw0KPiA+ICAgICAtIEZpeGVkICd2Y3B1
+LWlkJyB0eXBlIHdyb25nbHkgY2hhbmdlZCBmcm9tICd1bnNpZ25lZCBsb25nJyB0bw0KPiAnaW50
+ZWdlcicNCj4gPiAgICAgLSBSZW1vdmVkIHVubmVjZXNzYXJ5IHVzZSBvZiB2YXJpYWJsZSAndmNw
+dV9pZCcgaW4ga3ZtX3BhcmtfdmNwdQ0KPiA+ICAgICAtIFVwZGF0ZWQgW1BhdGNoIFYyIDMvMTBd
+IGNvbW1pdC1sb2cgd2l0aCBkZXRhaWxzIG9mDQo+IEFDUElfQ1BVX1NDQU5fTUVUSE9EIG1hY3Jv
+DQo+ID4gICAgIC0gVXBkYXRlZCBbUGF0Y2ggVjIgNS8xMF0gY29tbWl0LWxvZyB3aXRoIGRldGFp
+bHMgb2YgY29uZGl0aW9uYWwNCj4gZXZlbnQgaGFuZGxlciBtZXRob2QNCj4gPiAgICAgLSBBZGRl
+ZCBSZXZpZXdlZC1ieSB0YWdzIGZvciBwYXRjaGVzIHsyLDMsNCw2LDd9DQo+ID4gMi4gQWRkcmVz
+c2VkIEdhdmluIFNoYW4ncyBjb21tZW50cw0KPiA+ICAgICAtIFJlbW92ZSB1bm5lY2Vzc2FyeSB1
+c2Ugb2YgdmFyaWFibGUgJ3ZjcHVfaWQnIGluIGt2bV9wYXJfdmNwdQ0KPiA+ICAgICAtIEZpeGVk
+IHJldHVybiB2YWx1ZSBpbiBrdm1fZ2V0X3ZjcHUgZnJvbSAtMSB0byAtRU5PRU5UDQo+ID4gICAg
+IC0gUmVzZXQgdGhlIHZhbHVlIG9mICdnZGJfbnVtX2dfcmVncycgaW4NCj4gZ2RiX3VucmVnaXN0
+ZXJfY29wcm9jZXNzb3JfYWxsDQo+ID4gICAgIC0gRml4ZWQgdGhlIGt2bV97Y3JlYXRlLHBhcmt9
+X3ZjcHUgcHJvdG90eXBlcyBkb2NzDQo+ID4gICAgIC0gQWRkZWQgUmV2aWV3ZWQtYnkgdGFncyBm
+b3IgcGF0Y2hlcyB7MiwzLDQsNSw2LDcsOSwxMH0NCj4gPiAzLiBBZGRyZXNzZWQgb25lIGVhcmxp
+ZXIgbWlzc2VkIGNvbW1lbnQgYnkgQWxleCBCZW5uw6llIGluIFJGQyBWMQ0KPiA+ICAgICAtIEFk
+ZGVkIHRyYWNlcyBpbnN0ZWFkIG9mIERQUklOVEYgaW4gdGhlIG5ld2x5IGFkZGVkIGFuZCBzb21l
+DQo+IGV4aXN0aW5nIGZ1bmN0aW9ucw0KPiA+IExpbms6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3Jn
+L3FlbXUtZGV2ZWwvMjAyMzA5MzAwMDE5MzMuMjY2MC0xLQ0KPiBzYWxpbC5tZWh0YUBodWF3ZWku
+Y29tLw0KPiA+DQo+ID4gUGF0Y2gtc2V0IFYxIC0+IFYyDQo+ID4gMS4gQWRkcmVzc2VkIEFsZXgg
+QmVubsOpZSdzIGNvbW1lbnRzDQo+ID4gICAgIC0gUmVmYWN0b3JlZCB0aGUga3ZtX2NyZWF0ZV92
+Y3B1IGxvZ2ljIHRvIGdldCByaWQgb2YgZ290bw0KPiA+ICAgICAtIEFkZGVkIHRoZSBkb2NzIGZv
+ciBrdm1fe2NyZWF0ZSxwYXJrfV92Y3B1IHByb3RvdHlwZXMNCj4gPiAgICAgLSBTcGxpdHRlZCB0
+aGUgZ2Ric3R1YiBhbmQgQWRkcmVzc1NwYWNlIGRlc3RydWN0aW9uIGNoYW5nZSBpbnRvDQo+IHNl
+cGFyYXRlIHBhdGNoZXMNCj4gPiAgICAgLSBBZGRlZCBSZXZpZXdlZC1ieSB0YWdzIGZvciBwYXRj
+aGVzIHsyLDEwfQ0KPiA+IExpbms6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwv
+MjAyMzA5MjkxMjQzMDQuMTM2NzItMS0NCj4gc2FsaWwubWVodGFAaHVhd2VpLmNvbS8NCj4gPg0K
+PiA+IFJlZmVyZW5jZXM6DQo+ID4NCj4gPiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVt
+dS1kZXZlbC8yMDIzMDkyNjEwMDQzNi4yODI4NC0xLQ0KPiBzYWxpbC5tZWh0YUBodWF3ZWkuY29t
+Lw0KPiA+IFsyXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyMzA5MTMxNjM4MjMuNzg4
+MC0xLQ0KPiBqYW1lcy5tb3JzZUBhcm0uY29tLw0KPiA+IFszXSBodHRwczovL2xvcmUua2VybmVs
+Lm9yZy9xZW11LQ0KPiBkZXZlbC9jb3Zlci4xNjk1Njk3NzAxLmdpdC5saXhpYW5nbGFpQGxvb25n
+c29uLmNuLw0KPiA+DQo+ID4NCj4gPiBTYWxpbCBNZWh0YSAoOSk6DQo+ID4gICAgYWNjZWwva3Zt
+OiBFeHRyYWN0IGNvbW1vbiBLVk0gdkNQVSB7Y3JlYXRpb24scGFya2luZ30gY29kZQ0KPiA+ICAg
+IGh3L2FjcGk6IE1vdmUgQ1BVIGN0cmwtZGV2IE1NSU8gcmVnaW9uIGxlbiBtYWNybyB0byBjb21t
+b24gaGVhZGVyIGZpbGUNCj4gPiAgICBody9hY3BpOiBBZGQgQUNQSSBDUFUgaG90cGx1ZyBpbml0
+IHN0dWINCj4gPiAgICBody9hY3BpOiBJbml0IEdFRCBmcmFtZXdvcmsgd2l0aCBDUFUgaG90cGx1
+ZyBldmVudHMNCj4gPiAgICBody9hY3BpOiBVcGRhdGUgQ1BVcyBBTUwgd2l0aCBjcHUtKGN0cmwp
+ZGV2IGNoYW5nZQ0KPiA+ICAgIGh3L2FjcGk6IFVwZGF0ZSBHRUQgX0VWVCBtZXRob2QgQU1MIHdp
+dGggQ1BVIHNjYW4NCj4gPiAgICBody9hY3BpOiBVcGRhdGUgQUNQSSBHRUQgZnJhbWV3b3JrIHRv
+IHN1cHBvcnQgdkNQVSBIb3RwbHVnDQo+ID4gICAgcGh5c21lbTogQWRkIGhlbHBlciBmdW5jdGlv
+biB0byBkZXN0cm95IENQVSBBZGRyZXNzU3BhY2UNCj4gPiAgICBnZGJzdHViOiBBZGQgaGVscGVy
+IGZ1bmN0aW9uIHRvIHVucmVnaXN0ZXIgR0RCIHJlZ2lzdGVyIHNwYWNlDQo+ID4NCj4gPiAgIGFj
+Y2VsL2t2bS9rdm0tYWxsLmMgICAgICAgICAgICAgICAgICAgIHwgNjQgKysrKysrKysrKysrKysr
+KysrKystLS0tLS0NCj4gPiAgIGFjY2VsL2t2bS90cmFjZS1ldmVudHMgICAgICAgICAgICAgICAg
+IHwgIDQgKysNCj4gPiAgIGdkYnN0dWIvZ2Ric3R1Yi5jICAgICAgICAgICAgICAgICAgICAgIHwg
+MTIgKysrKysNCj4gPiAgIGh3L2FjcGkvYWNwaS1jcHUtaG90cGx1Zy1zdHViLmMgICAgICAgIHwg
+IDYgKysrDQo+ID4gICBody9hY3BpL2NwdS5jICAgICAgICAgICAgICAgICAgICAgICAgICB8IDI3
+ICsrKysrKystLS0tDQo+ID4gICBody9hY3BpL2dlbmVyaWNfZXZlbnRfZGV2aWNlLmMgICAgICAg
+ICB8IDIyICsrKysrKysrKw0KPiA+ICAgaHcvaTM4Ni9hY3BpLWJ1aWxkLmMgICAgICAgICAgICAg
+ICAgICAgfCAgMyArLQ0KPiA+ICAgaW5jbHVkZS9leGVjL2NwdS1jb21tb24uaCAgICAgICAgICAg
+ICAgfCAgOCArKysrDQo+ID4gICBpbmNsdWRlL2V4ZWMvZ2Ric3R1Yi5oICAgICAgICAgICAgICAg
+ICB8ICA1ICsrDQo+ID4gICBpbmNsdWRlL2h3L2FjcGkvY3B1LmggICAgICAgICAgICAgICAgICB8
+ICA1ICstDQo+ID4gICBpbmNsdWRlL2h3L2FjcGkvY3B1X2hvdHBsdWcuaCAgICAgICAgICB8ICA0
+ICsrDQo+ID4gICBpbmNsdWRlL2h3L2FjcGkvZ2VuZXJpY19ldmVudF9kZXZpY2UuaCB8ICA1ICsr
+DQo+ID4gICBpbmNsdWRlL2h3L2NvcmUvY3B1LmggICAgICAgICAgICAgICAgICB8ICAxICsNCj4g
+PiAgIGluY2x1ZGUvc3lzZW11L2t2bS5oICAgICAgICAgICAgICAgICAgIHwgMTYgKysrKysrKw0K
+PiA+ICAgc3lzdGVtL3BoeXNtZW0uYyAgICAgICAgICAgICAgICAgICAgICAgfCAyOSArKysrKysr
+KysrKysNCj4gPiAgIDE1IGZpbGVzIGNoYW5nZWQsIDE4NCBpbnNlcnRpb25zKCspLCAyNyBkZWxl
+dGlvbnMoLSkNCj4gPg0KPiANCj4gSGkgc2FsaWwsDQo+IA0KPiBBbGwgcGF0Y2hlcyBsb29rcyBn
+b29kIHRvIG1lLiBUaGFua3MgZm9yIHlvdSBlZmZvcnQgdG8gdXBkYXRlIGl0IHNvDQo+IGFjdGl2
+ZWx5LiBObyBpc3N1ZXMgYmVpbmcgZm91bmQgYnkgc2ltcGx5IHRlc3RpbmcgYW5kIHNldmVyYWwg
+ZGFpbHkgdXNlLg0KPiANCj4gUmV2aWV3ZWQtYnk6IFNoYW9xaW4gSHVhbmcgPHNoYWh1YW5nQHJl
+ZGhhdC5jb20+DQoNCk1hbnkgdGhhbmtzISBKdXN0IHdhbnRlZCB0byBjb25maXJtIGlmIHlvdSBo
+YXZlIHRlc3RlZCB0aGlzIHBhdGNoIG92ZXINCng4NiBwbGF0Zm9ybSBhcyB3ZWxsPw0KDQoNCkNo
+ZWVycw0KU2FsaWwuDQo=

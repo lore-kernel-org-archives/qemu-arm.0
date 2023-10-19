@@ -1,261 +1,159 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp802277ejb;
-        Thu, 19 Oct 2023 14:24:13 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEHa1U7Oqb10TeGEBkxaf/Fcp/YLfHm+DyuBREr5DuFkj7VUr5cZnegQbQTYpAuiS5vW3Yi
-X-Received: by 2002:a05:6122:99e:b0:49d:c1f5:d491 with SMTP id g30-20020a056122099e00b0049dc1f5d491mr3467046vkd.15.1697750652781;
-        Thu, 19 Oct 2023 14:24:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697750652; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp802323ejb;
+        Thu, 19 Oct 2023 14:24:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGGeRI0Qwm3t+/6K2bo1yy2M/LSFNCgDvcPcmTxATX1L5Xx4PmFrNPNznJ520X4A/AhWxpq
+X-Received: by 2002:a05:620a:2548:b0:76f:8c6:a537 with SMTP id s8-20020a05620a254800b0076f08c6a537mr3792045qko.77.1697750657925;
+        Thu, 19 Oct 2023 14:24:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697750657; cv=none;
         d=google.com; s=arc-20160816;
-        b=nCgYTZ+jqRkpiqYEFKj27OPh0daiCx44dZZl/OzIg1EON26GDpDgEBxgSIb1Pyg6VJ
-         KZEwyEM5fbq8FCfSFetWn4EoXHkvRl8e21bR58qfN7+5MKAwa313CPC9n1p25n1wtg1R
-         ZE1StAQHmyK9BPqcLObNqgb+L4n+ppiS5H8N7hTBI0vggpAl8Qi78Vzuqa8kIglwPc6J
-         fTJYLP3FchjFH41A8+bRkdyJG5dkgUk8m18PEYTES90TuH4dIeAaI78gRO3jNUrl4ddl
-         prNRR1uAS3hQnpE5suZkd84nlPrEizN/byktyNkxFEO2Au/m7PYKdh7KVtVjFF+w4+fu
-         aniw==
+        b=e8cWnMSU8V4Mkp3aoPnMNX2gdup5ZvchvnycuYUhXSgcPKz58IQRNRTI7blYGV7CrD
+         fi9txelIn3veVPsztLapRkoezdTqgS1fJgGF5ah7hIoB1ziY3teqHS6cthXv7fHK6rEI
+         oN07srNJQJvyGRQ5hL6vZ3Utw+Kegy5blpqmhvjmTHExjc+KDLa2ESVsZjF66WR40lpm
+         MT+RoFwxecT7/cmtlEwskC2FQHMhzgVKFAmeEy3Ldybh00ln9tNZNh5lT0mwKmNZhMNw
+         NDs0J0m2HAufJXbrKmSjGwITH7LnXQzZ69b2FExftBUTUAzhIKkjOk1NobSEgF3P5lnG
+         CVOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=JphZjrzTl79mhHMgBe5a65MwYyuf+BAarrB+apkBPKc=;
-        fh=HsJnBu0udoMl2e2NS8rHSx0tRz1W37jeyQS25M8iQmY=;
-        b=qXz8c7e1nAdN2eqTPx+or0drf2oetV+MqmLnbek5EbfY19hBNZmVN7IKGW0A48Bm+j
-         snqD/REATocq4KBL8ovKCH2Vju2moFb1ovm/2NqSB6wFnfTSlzELFALQ4nlqrZiQN6eO
-         psPFdXKESfODpab1wbIM8VZQDbqWrmekEUnCMtU2NIbB8NiNBFzp7EF1gScRTlCphcUx
-         TAdbydaDzIgYTq8ILEwbs4ffORAGoePiramn5lVCnGPEEvztkTAfbGYYrcb1RsigrLIJ
-         pFFScVaxD3Z4k1WJe51NnLOpvLH1Ahfc+b8Dtdiv20kgP8T2C28dfJWqKmqMUUb/1MOI
-         cBaw==
+        bh=8655uhkf4Iv3nGM9fMF2CltwIDAJNWHol1jKSBeCR8A=;
+        fh=Uj8HDrldIoYWHqqMC7Rg3wRXZjU4364GbB0sXdwIGXY=;
+        b=nsC352iKq8PClwQC6iNmVX3XsWPgO+/EhPsJw3PbFnCHu6Lun8F2tv30gW0Eyy6U30
+         3s/147zEIgrWS2GWH8wXZS8zVNEdDZXguhTFRLwEH68MRVGRe2dAp7Pkhar82PDnrIi6
+         OAxJJjkZfkNFQW6rDR+XeJDV48Th52TWtwROeYO9elUYP8DnI2SQ2NUR+A7K26tgRFfX
+         7BDhtbjnPXKqHEFf4QQAbqk/HiXIc3rBUQcJqSF2X66p7xGYlcXRQVO3v3h0q6/XQDRO
+         hASeIaPfP3NcsN6RhUs0bGm+/49HlW+UDT4Mt17kVOLzFfqOKz6WSi1Px/N3qk/isqYe
+         hi2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MwQnKa1Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="X+UUb/6U";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d2-20020ac85ac2000000b0041cc48c4959si248399qtd.645.2023.10.19.14.24.12
+        by mx.google.com with ESMTPS id e25-20020a05620a12d900b0077431227b58si247567qkl.27.2023.10.19.14.24.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 14:24:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Oct 2023 14:24:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MwQnKa1Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="X+UUb/6U";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtaRc-0000Ar-3N; Thu, 19 Oct 2023 17:20:40 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qtaTO-0003kK-VT; Thu, 19 Oct 2023 17:22:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaRT-0008C6-PU
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:20:33 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaTN-0003hx-MD
+ for qemu-devel@nongnu.org; Thu, 19 Oct 2023 17:22:29 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaRS-0005Zw-03
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:20:31 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-31f71b25a99so98509f8f.2
- for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 14:20:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaTK-0000aA-UM
+ for qemu-devel@nongnu.org; Thu, 19 Oct 2023 17:22:29 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-4084de32db5so1160695e9.0
+ for <qemu-devel@nongnu.org>; Thu, 19 Oct 2023 14:22:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697750429; x=1698355229; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697750545; x=1698355345; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JphZjrzTl79mhHMgBe5a65MwYyuf+BAarrB+apkBPKc=;
- b=MwQnKa1Y/utQNk7vldVnonkqUAtxaNBs1E5KOc10G3rCcg5oa8OFN+fPGXP5B0Ic90
- HEWxPaHcigYlqvRjStCEQF0pGsJNnzBEBZK6LVOjDkKQy0i3swC+8amq/pP4pl5fOBuQ
- rP3Y68qyEl/gRBBL/1DwOTXXMD66SPnkmd1Mj1bzS6g4nH5TrFa5B0Sd5nXaNhc20giX
- 7ifJjBQu1zYanDmVdtwM+eDLo1Oa/kvKKeFpdAwd+TZhYxxTw+I5j/5fqnajfltcIhid
- /gBHEuuAE8sh3gajHNaSXnzRzFRpWLX6TXGtMZ/OpwRZRGEX7pkrQZsJKEY4oNwv8qey
- lFLA==
+ bh=8655uhkf4Iv3nGM9fMF2CltwIDAJNWHol1jKSBeCR8A=;
+ b=X+UUb/6U60mLi+OG1P+nmw2Y3pBMwy6+hXg33OSoxjofgUE/R17wqSqikT5OiLzAnm
+ 1jRCS0VbGGXWBiVMCBmfbVmA/4NBFVPJ+cwMks6S47/UkAX58/KTsufxo3vB6p5a60tN
+ 1BgLc4k1wGo801pJMx8TQNPHJKc5g3F1MyXRRa6dz8i4R5VXQDxLE4OWTAYWm692mKqf
+ ycIM3nkb+yaTcsOEdM4+Nt+LQgs0fprdouRXnIP/WsVPnu2/yQmXiPjvJ7u6iCA7d9dQ
+ yBJL9Ccu6D9vMcyZbO3Bepju5CoB8KRx/JTa8PKc52z4jP4b89MQOziw+1gXSoJ1tDcU
+ GlaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697750429; x=1698355229;
+ d=1e100.net; s=20230601; t=1697750545; x=1698355345;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=JphZjrzTl79mhHMgBe5a65MwYyuf+BAarrB+apkBPKc=;
- b=HPfxLPx401jy2PZIYeFyRtDV56COy9YVXUzMC3S1HriOwpQszY5qClYtJx0q+zCcHE
- 8jLxrWcoOHra2yubTrAuT0pkNkmTFF0CKc9uJ6Ylx72SczMTL/E2heEYPYuTUp2zqdW7
- +lY+5C27KHXxIVst/ND2vbihSwdQMd9RAghSsE6am0IQXHH03DAH7oE/d2MCElseLqlP
- hJQOCcHa6MRI9s30uDvZxn264itHLfPZbGZI7QvY8VJitJ5Z2+Opoxu9axr7i+ou1ize
- VpxF6trX7b6EFMaHDny28hmmLGYazyA5g+4t/yw4iZQAp4NfKW4j0CJozXiB47YJLeiA
- m4+A==
-X-Gm-Message-State: AOJu0YyCoYuXOVEmyY0jxgTemrJvTIxALzd6TW0CHAYKKGD4jzncETMv
- MvDcsUxEd0vM3hd+7lQZNS/nLIa54hmglEWqFcZX3g==
-X-Received: by 2002:adf:e802:0:b0:32d:b55c:41fa with SMTP id
- o2-20020adfe802000000b0032db55c41famr2277786wrm.28.1697750428731; 
- Thu, 19 Oct 2023 14:20:28 -0700 (PDT)
+ bh=8655uhkf4Iv3nGM9fMF2CltwIDAJNWHol1jKSBeCR8A=;
+ b=SA0IGC1TuvdgcX/7rIMOFpmZMawtErB6NwyCoX9j+ofwPs8zfHnQCir2NojJJ/M8Yf
+ ypv6gDrXq7Mjco0vkpTIhEC07GqIZ6dCB5hsNgmkv6NtjeGf0aNrQlHbkhP93UjU5khF
+ 1Q/GmqMSumXzAxTD4HXGnWhGNeYUatha+1NNzTstQjvaEyGQ95He+642aG0akjPgHOYD
+ G9RSj1CwPilUHBZUkX7/F+Kv1wll8RzKxeATPg6yCsEE9I4p8DEM6vrWXklVzKrJc6mR
+ D+lXeWtGpcRxQKfHGvUNEA2Egq67uDm8onoang+KvFSbWn552/PG5m2s3vRty7qvNIbg
+ T/+A==
+X-Gm-Message-State: AOJu0YyS28R0DA3DfHIplITJ7JaAcSQFu1rNvtw85YR0p9uJJpu8CjLa
+ C+MiJwGen6OLFVQ7MbGQDZbqhXkORl6wdypRWyjFAw==
+X-Received: by 2002:adf:ee06:0:b0:32d:9e48:c2ef with SMTP id
+ y6-20020adfee06000000b0032d9e48c2efmr2057438wrn.44.1697750545332; 
+ Thu, 19 Oct 2023 14:22:25 -0700 (PDT)
 Received: from m1x-phil.lan (176-131-216-177.abo.bbox.fr. [176.131.216.177])
  by smtp.gmail.com with ESMTPSA id
- o22-20020a5d58d6000000b003143867d2ebsm220609wrf.63.2023.10.19.14.20.27
+ q11-20020a056000136b00b0032dc74c093dsm215583wrz.103.2023.10.19.14.22.23
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Oct 2023 14:20:28 -0700 (PDT)
+ Thu, 19 Oct 2023 14:22:24 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
  qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PULL 20/46] hw/pci: Clean up global variable shadowing of
- address_space_io variable
-Date: Thu, 19 Oct 2023 23:17:45 +0200
-Message-ID: <20231019211814.30576-21-philmd@linaro.org>
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 37/46] hw/arm/virt: Realize ARM_GICV2M sysbus device before
+ accessing it
+Date: Thu, 19 Oct 2023 23:18:02 +0200
+Message-ID: <20231019211814.30576-38-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231019211814.30576-1-philmd@linaro.org>
 References: <20231019211814.30576-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: boxQ0xljM1pQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: BrwSPVEzsRT3
 
-Fix:
-
-  hw/pci/pci.c:504:54: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
-                                         MemoryRegion *address_space_io,
-                                                       ^
-  hw/pci/pci.c:533:38: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
-                         MemoryRegion *address_space_io,
-                                       ^
-  hw/pci/pci.c:543:40: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
-                           MemoryRegion *address_space_io,
-                                         ^
-  hw/pci/pci.c:590:45: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
-                                MemoryRegion *address_space_io,
-                                              ^
-  include/exec/address-spaces.h:35:21: note: previous declaration is here
-  extern AddressSpace address_space_io;
-                      ^
+sysbus_mmio_map() should not be called on unrealized device.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20231010115048.11856-6-philmd@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20231018141151.87466-8-philmd@linaro.org>
 ---
- include/hw/pci/pci.h |  9 +++------
- hw/pci/pci.c         | 25 +++++++++----------------
- 2 files changed, 12 insertions(+), 22 deletions(-)
+ hw/arm/virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index b70a0b95ff..ea5aff118b 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -279,12 +279,10 @@ bool pci_bus_is_express(const PCIBus *bus);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 02c7a7ff3c..5b08a98f07 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -690,10 +690,10 @@ static void create_v2m(VirtMachineState *vms)
+     DeviceState *dev;
  
- void pci_root_bus_init(PCIBus *bus, size_t bus_size, DeviceState *parent,
-                        const char *name,
--                       MemoryRegion *address_space_mem,
--                       MemoryRegion *address_space_io,
-+                       MemoryRegion *mem, MemoryRegion *io,
-                        uint8_t devfn_min, const char *typename);
- PCIBus *pci_root_bus_new(DeviceState *parent, const char *name,
--                         MemoryRegion *address_space_mem,
--                         MemoryRegion *address_space_io,
-+                         MemoryRegion *mem, MemoryRegion *io,
-                          uint8_t devfn_min, const char *typename);
- void pci_root_bus_cleanup(PCIBus *bus);
- void pci_bus_irqs(PCIBus *bus, pci_set_irq_fn set_irq,
-@@ -304,8 +302,7 @@ int pci_swizzle_map_irq_fn(PCIDevice *pci_dev, int pin);
- PCIBus *pci_register_root_bus(DeviceState *parent, const char *name,
-                               pci_set_irq_fn set_irq, pci_map_irq_fn map_irq,
-                               void *irq_opaque,
--                              MemoryRegion *address_space_mem,
--                              MemoryRegion *address_space_io,
-+                              MemoryRegion *mem, MemoryRegion *io,
-                               uint8_t devfn_min, int nirq,
-                               const char *typename);
- void pci_unregister_root_bus(PCIBus *bus);
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index b0d21bf43a..7d09e1a39d 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -500,15 +500,14 @@ bool pci_bus_bypass_iommu(PCIBus *bus)
- }
+     dev = qdev_new("arm-gicv2m");
+-    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_GIC_V2M].base);
+     qdev_prop_set_uint32(dev, "base-spi", irq);
+     qdev_prop_set_uint32(dev, "num-spi", NUM_GICV2M_SPIS);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_GIC_V2M].base);
  
- static void pci_root_bus_internal_init(PCIBus *bus, DeviceState *parent,
--                                       MemoryRegion *address_space_mem,
--                                       MemoryRegion *address_space_io,
-+                                       MemoryRegion *mem, MemoryRegion *io,
-                                        uint8_t devfn_min)
- {
-     assert(PCI_FUNC(devfn_min) == 0);
-     bus->devfn_min = devfn_min;
-     bus->slot_reserved_mask = 0x0;
--    bus->address_space_mem = address_space_mem;
--    bus->address_space_io = address_space_io;
-+    bus->address_space_mem = mem;
-+    bus->address_space_io = io;
-     bus->flags |= PCI_BUS_IS_ROOT;
- 
-     /* host bridge */
-@@ -529,25 +528,21 @@ bool pci_bus_is_express(const PCIBus *bus)
- 
- void pci_root_bus_init(PCIBus *bus, size_t bus_size, DeviceState *parent,
-                        const char *name,
--                       MemoryRegion *address_space_mem,
--                       MemoryRegion *address_space_io,
-+                       MemoryRegion *mem, MemoryRegion *io,
-                        uint8_t devfn_min, const char *typename)
- {
-     qbus_init(bus, bus_size, typename, parent, name);
--    pci_root_bus_internal_init(bus, parent, address_space_mem,
--                               address_space_io, devfn_min);
-+    pci_root_bus_internal_init(bus, parent, mem, io, devfn_min);
- }
- 
- PCIBus *pci_root_bus_new(DeviceState *parent, const char *name,
--                         MemoryRegion *address_space_mem,
--                         MemoryRegion *address_space_io,
-+                         MemoryRegion *mem, MemoryRegion *io,
-                          uint8_t devfn_min, const char *typename)
- {
-     PCIBus *bus;
- 
-     bus = PCI_BUS(qbus_new(typename, parent, name));
--    pci_root_bus_internal_init(bus, parent, address_space_mem,
--                               address_space_io, devfn_min);
-+    pci_root_bus_internal_init(bus, parent, mem, io, devfn_min);
-     return bus;
- }
- 
-@@ -586,15 +581,13 @@ void pci_bus_irqs_cleanup(PCIBus *bus)
- PCIBus *pci_register_root_bus(DeviceState *parent, const char *name,
-                               pci_set_irq_fn set_irq, pci_map_irq_fn map_irq,
-                               void *irq_opaque,
--                              MemoryRegion *address_space_mem,
--                              MemoryRegion *address_space_io,
-+                              MemoryRegion *mem, MemoryRegion *io,
-                               uint8_t devfn_min, int nirq,
-                               const char *typename)
- {
-     PCIBus *bus;
- 
--    bus = pci_root_bus_new(parent, name, address_space_mem,
--                           address_space_io, devfn_min, typename);
-+    bus = pci_root_bus_new(parent, name, mem, io, devfn_min, typename);
-     pci_bus_irqs(bus, set_irq, irq_opaque, nirq);
-     pci_bus_map_irqs(bus, map_irq);
-     return bus;
+     for (i = 0; i < NUM_GICV2M_SPIS; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
 -- 
 2.41.0
 

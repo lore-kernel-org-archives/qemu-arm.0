@@ -1,94 +1,94 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp514001ejb;
-        Thu, 19 Oct 2023 06:28:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGiIW00dpLiHC2UizqfxdRLi7yhJNcfiM4/vzWCxTJSTEM7Gc/NuYDIbuNCog1X/KE78sSe
-X-Received: by 2002:a05:620a:562d:b0:778:6a53:f13f with SMTP id vv13-20020a05620a562d00b007786a53f13fmr2352862qkn.21.1697722097726;
-        Thu, 19 Oct 2023 06:28:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697722097; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp514410ejb;
+        Thu, 19 Oct 2023 06:29:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFgkg8s/7cO1KZm+DyhpKCIK5sN2tJW7jBeHarzHbDe8L36h3VcQmKcTnR9LUGq47UKoZvV
+X-Received: by 2002:ad4:5be2:0:b0:66d:5dd:26f6 with SMTP id k2-20020ad45be2000000b0066d05dd26f6mr1911783qvc.25.1697722141452;
+        Thu, 19 Oct 2023 06:29:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697722141; cv=none;
         d=google.com; s=arc-20160816;
-        b=0/fNF5bkQEXDOiccJusDXq+NaVWFD3xaHtRdxStaxEFdXhYi9E1uI9+bP8GPcPWVSJ
-         h153qM7lbjG1ZQ0DcZ/bddUkeXTNZyUHjTuE8pF/9G0TgoFeMsvKz7qZgP/G79dxeFol
-         xnoPWs5XSUAH/p+calQDnoVlQVcma6RPCKXkJui7pqCMOXR5hSXtJUBkHtJ8oP3B1z2A
-         9xp9/9Op3yhQwR3qrQZL6UGx+6CWosbBz0+2dNd5UOzMY3V833xoji0peYwqOqXJa0SS
-         4taEAlZjxskc/AfdACYZJxWJDbikpFCfgP7V/QIo8TCaJ/r8rUIw8wtSlwf11gYSjGO/
-         HHEA==
+        b=U229CLMjDjzNLjnhHhD1botJh921r1/1OiwblqUtw9TOZU5q1VR8niInVBoNQCCcfB
+         2vvAKKLGdnGNXm32gZMtj1lb5T6mdR9Y9ynD6cZnCu5QBR2nxxDltpuKD2TwNM8R8DD+
+         GZAEImuUbDiqQ3Gia/RrzgeazbwXodKHs77TkSGnxJFZAqmvc2swbjkBsoIiIcotjx3P
+         VBbLfUOdtzGji/eS/5pJ29EkoaK/l/zQtKrMJ/HKPixQJrPc2B5bc7ZJlHovu2JOzmj2
+         4og0LcbxUe4DT6zm9BPdHeLPMn6lH7rSclFjaF0CTSqJt+3sHK8vsIwsPbevMLt7+Lie
+         zD2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=BTqjHSwvXnZ4FtIzUidovs3zewyMkdDm5J3DS6d49vA=;
+        bh=Z8oZXaiydKHI4wKN9JehPjEa0sbBfs9Y1tmcXM98vSI=;
         fh=qS7HOACB/fnzOG4UkP/DQwrsj+RVK26yEZmW8KA6D/k=;
-        b=mnM/IrCUvrTYFL+qiMQxrSAYM3F5a4LRIvMSARATlM6R3R3mBr6iFJ+lvUXRsk6a7J
-         UWF/SXfUP934TY/KjR0pBVhsDvXRXdpCD4lWp1Z0q2kxI9y+l8/FiLMHJBG3AX3UlLHZ
-         u0pFQK+QlNmS/qxjaxrd0V/hutOiv8qFfeiGLEEiiM4EaTmblZlZto7afMT5p1FYw4N0
-         VyoBAOs3QFoP9s2V9Ekr4oUMWb6ahSc+Qiq8ABRQnhRhRhBnboV2pJeuPqAYxxVE+gjp
-         c5PXaqfsEmOoKUs8IupsMdLUhHLCZCRshh7Ahe0IIJD+EJ0pYdx42HZNewwI1oninrX1
-         wU3w==
+        b=l5sprejpu4pfy2GIodHk46jHtdwzOT8DnJveHDEQTxS0SXOkdakn2l75PWzSmq3rpa
+         6o3iV4kuS8W7kIqR+MEFAtuJCg9PLAzR6E7CMBH+/OYP2bpEMuPaxKn1Qc/fVR6DZPKR
+         WVA/NcuF/+LDwIRSfgl7wTWU65FXmECrA4122aHitrGtZJWNi6IQi2YK9S6EpUYhNM6O
+         iX61D887YoNI7wYs75xJPmVENl/+8ZAiHbYnibCJ85T86S8o2T0WHCKIWEc/yIsUqKd+
+         FP7DVLEueL7CfMU0ftgPylzhdY1QALY1yrlj69R+BJxtQ6h40/hA6xSFOps2q4zu5B2S
+         OGBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=FU0fBRtG;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=GgKqU2eb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5-20020a05620a16a500b00774393b193bsi1429093qkj.631.2023.10.19.06.28.17
+        by mx.google.com with ESMTPS id d3-20020a37c403000000b007758e5dba33si1508612qki.469.2023.10.19.06.29.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 06:28:17 -0700 (PDT)
+        Thu, 19 Oct 2023 06:29:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=FU0fBRtG;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=GgKqU2eb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtT4E-0003tJ-Nv; Thu, 19 Oct 2023 09:28:02 -0400
+	id 1qtT3y-0003fz-9l; Thu, 19 Oct 2023 09:27:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qtT4C-0003s9-Ut
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:28:00 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+ id 1qtT3j-0003dN-Nc
+ for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:27:31 -0400
+Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1qtT4B-0006iU-BB
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:28:00 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-6ba54c3ed97so4796341b3a.2
- for <qemu-devel@nongnu.org>; Thu, 19 Oct 2023 06:27:58 -0700 (PDT)
+ id 1qtT3g-0006Yj-69
+ for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:27:30 -0400
+Received: by mail-oo1-xc33.google.com with SMTP id
+ 006d021491bc7-581d487f8dbso1577006eaf.1
+ for <qemu-devel@nongnu.org>; Thu, 19 Oct 2023 06:27:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1697722078; x=1698326878; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1697722047; x=1698326847; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BTqjHSwvXnZ4FtIzUidovs3zewyMkdDm5J3DS6d49vA=;
- b=FU0fBRtGukcp8Kcek75rE2KG0rYUWVjqmAlJjXS32xdjYfbAKXbIlEKsWBOcHl3ces
- 4+QyvUaOCWc7HQ5J88+X29VbW+MUFNBp3cmbxuJTMklovx321anxG5j2dajZTAPNVHd1
- gcK2bLdSxWd10GJp/PPznbJdnl8xxqa1414O7+6/BuXGqe+mJj6xqW0kqwn4r3T+jssq
- Y/Esvr1tBQiwF0/fIn2bplpJNbtEvJSEXrBuNe7eg4ZZ+OVg/ODGV5jxXHhj0XF6xGCX
- VlthJNxiu7O1AmyMF1xIbB5iwguuRV+VnBi07/hwOX/VldAr0CUWb9Ji+7zFND0tbVdC
- F+YQ==
+ bh=Z8oZXaiydKHI4wKN9JehPjEa0sbBfs9Y1tmcXM98vSI=;
+ b=GgKqU2ebUtaDU8TxAlaRXd0EO/jf5QdDQV/1hdkTIvQOusM85xErNLgVikk6QahzBX
+ hrt78ngxXXbA0NjmJjNBQcjbl5JaFlTe3JWB1VL39zZ3K8Mcl7bCQovn6Ua8Y99vnXER
+ Lxx3bLSY7U7ea/dW5qjPKsgxLFg+0zQNzgQ5DT7sjwQ1C3WfcNhk9pK2SYHEgfx+/1zC
+ G23IHV2DOicwdn6UQujRxGNPxVM2o9/3Hwqs3Cxc00lIT/yIP/RkryH6zmKqFArMwVF2
+ ZUzCj70hm0jFLY+nAux09nBsJWuhzK3bVb/FNgL2FPfgyWbHbARkpCEbh/OXeYK3PY4D
+ UHKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697722078; x=1698326878;
+ d=1e100.net; s=20230601; t=1697722047; x=1698326847;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=BTqjHSwvXnZ4FtIzUidovs3zewyMkdDm5J3DS6d49vA=;
- b=RZh7k0VLpwtAcNz9egYeEnXZqBeUL7xgksrTnc3RaFv3J3C5cwEECOOs+AM4Fo2z+w
- uVwgUGoKWoVU8JT/m7ckzhSiQQMqzyPKFxc3ZdC1JBbngqVtkWqC42dhglt/9p7loqNg
- 3QknQKO0iP3szbN9MSLnm4npu5O3pnwBEEX+xQzo6/D/N9aNPX+IKDQCn53fGlzAmtnH
- tz6xv5mzhmBtXJvbXSNwAa70OzJyoBpSR65TIB8XWnavFa9Gym6MgYSohtYHxuOFo+Pp
- vWB08K3fA1sYrE4V3Wlt9YEy6EmMVd0z5XPSvmPXYdfwdV0hBuuvY0cUNGwYJsGg6OGh
- g5Zg==
-X-Gm-Message-State: AOJu0YxphKMqBYn/rEtPIdz5AMfSSc5rLpzY5Umiqt9dvqRx+z5AA4Qf
- E+JyUTNCsNMRbXyZlUFyD6SzTQ==
-X-Received: by 2002:a05:6a00:138f:b0:6be:25c5:4f74 with SMTP id
- t15-20020a056a00138f00b006be25c54f74mr2249725pfg.13.1697722076410; 
- Thu, 19 Oct 2023 06:27:56 -0700 (PDT)
+ bh=Z8oZXaiydKHI4wKN9JehPjEa0sbBfs9Y1tmcXM98vSI=;
+ b=oU/AFdICPyNsBQOsqlqMFozj9zsJvMKsqnjqy3Bqu9L0qSY3VVt8ydzQNR8IivkRhp
+ +Nv+7ltLnXXuuuRlPAidSHV+XQ010Cn3FN/8hQELBHa80Aapwg9ughRqxn0/CAEU/3Rl
+ a/+Tst6lagT0jmS/r0BdMO4AWNaWFzXUBPFKvRCf+FSMCAwQ8vKgUeJGfbcfQ6kj2mT0
+ ktaIat2Ioz/MKAzx8LyGz9Uvk7nVxsW/2vDiZNdWqA1Aoyx+O6D1cBmZ0tlaEbecIRnw
+ Nrh4O6SnqfS5qFQv0+bfIiZf9N8zvulg+ei1anc8ANl+BssekVN3iQ+8Z/hXCi+XNe3B
+ pEMg==
+X-Gm-Message-State: AOJu0Yxnvx9tfwiORtTh2DHEYsZiPKHAo2EK7VhYsmHWrSfBcnFpHjcJ
+ GXpt9eHXeXk+ZEoRmJ7YSsRcew==
+X-Received: by 2002:a05:6359:1b8f:b0:13f:2833:bf41 with SMTP id
+ ur15-20020a0563591b8f00b0013f2833bf41mr1730355rwb.23.1697722046844; 
+ Thu, 19 Oct 2023 06:27:26 -0700 (PDT)
 Received: from sunil-laptop.dc1.ventanamicro.com
  ([2409:4071:6e8b:3a98:dd76:4e82:7da6:44ab])
  by smtp.gmail.com with ESMTPSA id
- f11-20020a056a00228b00b0068feb378b89sm5273113pfe.171.2023.10.19.06.27.49
+ f11-20020a056a00228b00b0068feb378b89sm5273113pfe.171.2023.10.19.06.27.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Oct 2023 06:27:55 -0700 (PDT)
+ Thu, 19 Oct 2023 06:27:26 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-riscv@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -108,16 +108,17 @@ Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
  Andrew Jones <ajones@ventanamicro.com>,
  Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>,
  Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH v3 05/12] hw/riscv/virt-acpi-build.c: Add IMSIC in the MADT
-Date: Thu, 19 Oct 2023 18:56:41 +0530
-Message-Id: <20231019132648.23703-6-sunilvl@ventanamicro.com>
+Subject: [PATCH v3 01/12] hw/arm/virt-acpi-build.c: Migrate fw_cfg creation to
+ common location
+Date: Thu, 19 Oct 2023 18:56:37 +0530
+Message-Id: <20231019132648.23703-2-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20231019132648.23703-1-sunilvl@ventanamicro.com>
 References: <20231019132648.23703-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x431.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c33;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-oo1-xc33.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,70 +140,160 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fs1UhNyMY2hd
+X-TUID: eG9truUeHXPO
 
-Add IMSIC structure in MADT when IMSIC is configured.
+RISC-V also needs to use the same code to create fw_cfg in DSDT. So, avoid
+code duplication by moving the code in arm and riscv to a device specific
+file.
 
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- hw/riscv/virt-acpi-build.c | 34 ++++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ hw/arm/virt-acpi-build.c       | 19 ++-----------------
+ hw/nvram/fw_cfg-acpi.c         | 17 +++++++++++++++++
+ hw/nvram/meson.build           |  1 +
+ hw/riscv/virt-acpi-build.c     | 19 ++-----------------
+ include/hw/nvram/fw_cfg_acpi.h |  9 +++++++++
+ 5 files changed, 31 insertions(+), 34 deletions(-)
+ create mode 100644 hw/nvram/fw_cfg-acpi.c
+ create mode 100644 include/hw/nvram/fw_cfg_acpi.h
 
-diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index 073c85f327..7f1a370e54 100644
---- a/hw/riscv/virt-acpi-build.c
-+++ b/hw/riscv/virt-acpi-build.c
-@@ -281,8 +281,20 @@ static void build_madt(GArray *table_data,
-     uint8_t  guest_index_bits;
-     uint32_t imsic_size;
-     uint32_t local_cpu_id, socket_id;
-+    uint8_t  hart_index_bits, group_index_bits, group_index_shift;
-+    uint16_t imsic_max_hart_per_socket = 0;
-+    uint8_t  socket;
-+
-+    for (socket = 0; socket < riscv_socket_count(ms); socket++) {
-+        if (imsic_max_hart_per_socket < s->soc[socket].num_harts) {
-+            imsic_max_hart_per_socket = s->soc[socket].num_harts;
-+        }
-+    }
- 
-     guest_index_bits = imsic_num_bits(s->aia_guests + 1);
-+    hart_index_bits = imsic_num_bits(imsic_max_hart_per_socket);
-+    group_index_bits = imsic_num_bits(riscv_socket_count(ms));
-+    group_index_shift = IMSIC_MMIO_GROUP_MIN_SHIFT;
- 
-     AcpiTable table = { .sig = "APIC", .rev = 6, .oem_id = s->oem_id,
-                         .oem_table_id = s->oem_table_id };
-@@ -307,6 +319,28 @@ static void build_madt(GArray *table_data,
-                                   s->aia_type, imsic_addr, imsic_size);
-     }
- 
-+    /* IMSIC */
-+    if (s->aia_type == VIRT_AIA_TYPE_APLIC_IMSIC) {
-+        /* IMSIC */
-+        build_append_int_noprefix(table_data, 0x19, 1);     /* Type */
-+        build_append_int_noprefix(table_data, 16, 1);       /* Length */
-+        build_append_int_noprefix(table_data, 1, 1);        /* Version */
-+        build_append_int_noprefix(table_data, 0, 1);        /* Reserved */
-+        build_append_int_noprefix(table_data, 0, 4);        /* Flags */
-+        /* Number of supervisor mode Interrupt Identities */
-+        build_append_int_noprefix(table_data, VIRT_IRQCHIP_NUM_MSIS, 2);
-+        /* Number of guest mode Interrupt Identities */
-+        build_append_int_noprefix(table_data, VIRT_IRQCHIP_NUM_MSIS, 2);
-+        /* Guest Index Bits */
-+        build_append_int_noprefix(table_data, guest_index_bits, 1);
-+        /* Hart Index Bits */
-+        build_append_int_noprefix(table_data, hart_index_bits, 1);
-+        /* Group Index Bits */
-+        build_append_int_noprefix(table_data, group_index_bits, 1);
-+        /* Group Index Shift */
-+        build_append_int_noprefix(table_data, group_index_shift, 1);
-+    }
-+
-     acpi_table_end(linker, &table);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 6b674231c2..b8e725d953 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -35,7 +35,7 @@
+ #include "target/arm/cpu.h"
+ #include "hw/acpi/acpi-defs.h"
+ #include "hw/acpi/acpi.h"
+-#include "hw/nvram/fw_cfg.h"
++#include "hw/nvram/fw_cfg_acpi.h"
+ #include "hw/acpi/bios-linker-loader.h"
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/utils.h"
+@@ -94,21 +94,6 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+     aml_append(scope, dev);
  }
  
+-static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+-{
+-    Aml *dev = aml_device("FWCF");
+-    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+-    /* device present, functioning, decoding, not shown in UI */
+-    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+-    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+-
+-    Aml *crs = aml_resource_template();
+-    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
+-                                       fw_cfg_memmap->size, AML_READ_WRITE));
+-    aml_append(dev, aml_name_decl("_CRS", crs));
+-    aml_append(scope, dev);
+-}
+-
+ static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
+ {
+     Aml *dev, *crs;
+@@ -864,7 +849,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     if (vmc->acpi_expose_flash) {
+         acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+     }
+-    acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
++    fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+     acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+                     (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+     acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, vms);
+diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
+new file mode 100644
+index 0000000000..4eeb81bc36
+--- /dev/null
++++ b/hw/nvram/fw_cfg-acpi.c
+@@ -0,0 +1,17 @@
++#include "hw/nvram/fw_cfg_acpi.h"
++#include "hw/acpi/aml-build.h"
++
++void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap)
++{
++    Aml *dev = aml_device("FWCF");
++    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
++    /* device present, functioning, decoding, not shown in UI */
++    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
++    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
++
++    Aml *crs = aml_resource_template();
++    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
++                                       fw_cfg_memmap->size, AML_READ_WRITE));
++    aml_append(dev, aml_name_decl("_CRS", crs));
++    aml_append(scope, dev);
++}
+diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
+index 75e415b1a0..4996c72456 100644
+--- a/hw/nvram/meson.build
++++ b/hw/nvram/meson.build
+@@ -17,3 +17,4 @@ system_ss.add(when: 'CONFIG_XLNX_EFUSE_ZYNQMP', if_true: files(
+ system_ss.add(when: 'CONFIG_XLNX_BBRAM', if_true: files('xlnx-bbram.c'))
+ 
+ specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_nvram.c'))
++specific_ss.add(when: 'CONFIG_ACPI', if_true: files('fw_cfg-acpi.c'))
+diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+index 7331248f59..d8772c2821 100644
+--- a/hw/riscv/virt-acpi-build.c
++++ b/hw/riscv/virt-acpi-build.c
+@@ -28,6 +28,7 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/utils.h"
++#include "hw/nvram/fw_cfg_acpi.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/reset.h"
+@@ -97,22 +98,6 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtState *s)
+     }
+ }
+ 
+-static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+-{
+-    Aml *dev = aml_device("FWCF");
+-    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+-
+-    /* device present, functioning, decoding, not shown in UI */
+-    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+-    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+-
+-    Aml *crs = aml_resource_template();
+-    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
+-                                       fw_cfg_memmap->size, AML_READ_WRITE));
+-    aml_append(dev, aml_name_decl("_CRS", crs));
+-    aml_append(scope, dev);
+-}
+-
+ /* RHCT Node[N] starts at offset 56 */
+ #define RHCT_NODE_ARRAY_OFFSET 56
+ 
+@@ -226,7 +211,7 @@ static void build_dsdt(GArray *table_data,
+     scope = aml_scope("\\_SB");
+     acpi_dsdt_add_cpus(scope, s);
+ 
+-    acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
++    fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+ 
+     aml_append(dsdt, scope);
+ 
+diff --git a/include/hw/nvram/fw_cfg_acpi.h b/include/hw/nvram/fw_cfg_acpi.h
+new file mode 100644
+index 0000000000..6e2c5f04b7
+--- /dev/null
++++ b/include/hw/nvram/fw_cfg_acpi.h
+@@ -0,0 +1,9 @@
++#ifndef FW_CFG_ACPI_H
++#define FW_CFG_ACPI_H
++
++#include "qemu/osdep.h"
++#include "exec/hwaddr.h"
++
++void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap);
++
++#endif
 -- 
 2.34.1
 

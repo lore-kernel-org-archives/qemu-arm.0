@@ -1,112 +1,115 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp802067ejb;
-        Thu, 19 Oct 2023 14:23:42 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEupz/QaUr1VChkjrymXVbuyf2ZPBr80WcSslF2bmW/LGOTvhZoVxgPrueid3+sUe8DjknY
-X-Received: by 2002:a05:6122:178f:b0:495:3d9d:535c with SMTP id o15-20020a056122178f00b004953d9d535cmr31291vkf.4.1697750621790;
-        Thu, 19 Oct 2023 14:23:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697750621; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp802078ejb;
+        Thu, 19 Oct 2023 14:23:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEVxk98W8aH1MceyTZ7iQ8I74M6UlqdPmLnsxprnuBI7moQYECz+HXtxlq/9YVjtAC4Igwx
+X-Received: by 2002:a05:620a:199e:b0:775:6f44:5c1c with SMTP id bm30-20020a05620a199e00b007756f445c1cmr3592551qkb.60.1697750624020;
+        Thu, 19 Oct 2023 14:23:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697750624; cv=none;
         d=google.com; s=arc-20160816;
-        b=WvLGGXASqroDrmilo8Syu5MKr3Ei/3YjdmvnXpsqIswvdmBZil3w+i+jH3Cs6btLIT
-         3VDXLRAf8w6JqWgp4zoj3AAFh5NdtQqUmYET7RW6aHySYQBGecfP1Wpdb+VubZ5Zoun1
-         sdGLpySfa5l7ra20zk9w6R9XQGqxKxAEYyt8Qs/5gvgeV56JLRZHwzuhfyxZjHJWTgkw
-         ZIxIXInB4lfsu0bff0emnK+knSoobYfN+UeUJWfRHyegSF9pv7gBi4mxpsjccbghWGKz
-         wMbpHhnMHeMqJEMNrwQGg7WRT2ssHe8c1ACCBWWc0oXpfJPYXc0HD89FfOYBnYG9uP2D
-         vj7Q==
+        b=ipC/HCSCSqozVeHLRuZWO1iFpl/jXOxY7UnGpRGklAxwaWi7KU4k+zv4j33C7lMfFO
+         blWsoBqRC++1cCmmJf8GXyfdDQs4gMindvsU+0DnSCVfpDnOR8sWdIGNJKLgRMIMf0TQ
+         9oCXhSDJ3HcsmP07WwPEc2IMxYy0KYUDx6aX7bJe4WhnjtDQrYu3JvRy5VOW1Dft3x2L
+         Gue+m46G5cJ/MPYQoZ7r44K3UzpTyHqmU0pt55LYzGkeMkimbZnnlY5sJI5VWkP0iKfI
+         RPIWb6RJT4YhGSZtELsB8QuHQpTTifBSwwj6EG6RLEwhFqWa2tAMSIqHGrPsuAvlveL7
+         lLbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=5L3KhgnR+wD3KYNvWp6CWYVG73hhXTbT/VSAj1bhVwM=;
-        fh=JJVrIxA960fi2M8f1oD8ZiXLObaAuT+S4YeQ3hi6v/I=;
-        b=i7cMUB0vV/QBrSIpDAGSvs8kSQ6bpnnGi9hEbTISIU6NqHBINrY++WhYCupQGlrn76
-         j2736JEyIBipnk/yTHTFM/SJ3cqb8MyH80S0M0BGrOlyo9SQViX0Ix3W7LKMlgI/HOql
-         4mqXstGh0PqYv7ZoT4A67kOCK8rrLdDyC+qMSyjXo+AX9zeM6oOmcnB+iRXaD4tABBlD
-         rPnPdVA4ByoRO5bcHrxB71Agtz9e+MoiBd+YP+7adELstBpTYB9aM3kB1GgoFDMOHjN/
-         6y2CtGGDLr0a3s4hYVKhoOVotCe8POBwEacAYXrSwRzQgKwdLrgORC8HHavb04NyOWOz
-         QXtA==
+        bh=kG3m+UrB+1tXa81IHczK7QBkGPM1a1yV1vD8kixZHhU=;
+        fh=AVBhj4Fy+QyIIwcX4VOy9V2m7/XoySUoeqZjVcC7SWY=;
+        b=mT5xyckxKCDzSe3zqGDvXJq+oiAdBPH7tQylrxc/vX/vn1+EYutz/MyMe5CUnXjwOE
+         /4u8X7mhNce8dXsX4h85qLGCTGWlJMDAryhQPHXErCjiJcrlanu3xGrfRJWoL1hbAKbC
+         ADTZu/vpzmUWt6WFcg04a3rB7uCdmcVsFI4YF4ETkb8wnLblpCEvsoP79LeoFFqxjfHj
+         5FCTT5+6c1HiMvMSfoWrSRgd5gHVU1RQyGpNkOa5sG9D/LJCSq2z1h/p5/w1fzQ4Yyep
+         NkQjgIZZ3Lge5HvWy45f7ZI5O2L3oabwEJiI0t7+PSN6qNglcR04QoHhqWGmjPGfWXT2
+         aPrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N5WPcaSW;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zxWNbtDB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o10-20020ac85a4a000000b00417fa5bd43dsi256772qta.314.2023.10.19.14.23.41
+        by mx.google.com with ESMTPS id de42-20020a05620a372a00b0076f17d9dc1asi271093qkb.493.2023.10.19.14.23.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 14:23:41 -0700 (PDT)
+        Thu, 19 Oct 2023 14:23:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N5WPcaSW;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zxWNbtDB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtaRD-0007Y8-Ve; Thu, 19 Oct 2023 17:20:16 -0400
+	id 1qtaRq-0000vO-Pl; Thu, 19 Oct 2023 17:20:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaQz-0007E6-7L
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:20:01 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaRp-0000uU-FF
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:20:53 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaQw-0005Aw-B3
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:20:00 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-32d849cc152so111852f8f.1
- for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 14:19:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaRn-0005da-06
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:20:53 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-40839652b97so925045e9.3
+ for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 14:20:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697750396; x=1698355196; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697750449; x=1698355249; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5L3KhgnR+wD3KYNvWp6CWYVG73hhXTbT/VSAj1bhVwM=;
- b=N5WPcaSWVaFJ9iyQSiuRHSaSFqeTfDy3aN+rLAwIRSFb8lkDR3U3gDDevC0h1uNg1S
- fvfeBgU6RUR1vhzG1etx6B0OqmJNt0ltCLqWLLKQhI4NRrvJ1anu+jYiVyU/3BEgnNs/
- qBip4i50VkqMfMXvW6I9cOds0er7OKesxl0Fa4nwwaaueswnR8zwx40+h8xL4Q0DK5yl
- BQk18LNSUu/dZJsfLGhzfToFAqoeGJm+BmkjTDBf7auKbBoBvqr5DszSVAjuyCJf4jfd
- m/U/5Y/N3Z3QejCz1WfH2r1RD9ZxYV55InHEA7D/S7SXmqTe5KZsZIzQbymg9guHfKow
- DGlw==
+ bh=kG3m+UrB+1tXa81IHczK7QBkGPM1a1yV1vD8kixZHhU=;
+ b=zxWNbtDBgcvI2l+R/7m3HyIXyXO79WWJGiO70Tyg+MJ+nj4ReWReEiuTC1eqjddfMj
+ HsUdd//q6a7Wmo5tQ3GALNuYLw6lIJ0nhGcQAuvcsFVFz4oXBmDLkylxG+KrQcXNByI/
+ iUPFyXjV3JlcqYqIsHA8/1Up6YX0p4dtQqxgnIQ3/XHlt0/NdoV1Vrdu+oFSPFQrZpXg
+ rK7st6hyZZciHqj02XZ10a+1OIuBIXcZNNl1cZTLY27kZJBG/QKiXjsXkCTCG399dUtD
+ sO8sgTGnH+N+W5B6brwukB+0RlOk0A3WgYpeYx+vxz2tmc9+3PX+cv6ZUSts9wead9l8
+ HE6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697750396; x=1698355196;
+ d=1e100.net; s=20230601; t=1697750449; x=1698355249;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=5L3KhgnR+wD3KYNvWp6CWYVG73hhXTbT/VSAj1bhVwM=;
- b=IGfV2EPsUHfcG58SWHt/KI1egJHo2vCoCXiaNZmjrfymehYdcLEKDbosU6FIjCz2tq
- QmWFwb5k81O/Xz+XxRtv+ebKNedAvk0Nh5U6zorKicECxN6b4tdmxjdJdiYbCx0GgnXi
- QOzaNfkR8VNuBoN64LSDHhW+cdzPKr9MkXJrK/PFueBRRSWt2D7Emi3n9n1Nn+czF+Mo
- +0aPUvyYcqpQ/1qwBOZFu32qwGWYEHh0JnhcL+zRrkQ5p0WFO8tvIkd+3NammIPyzHYm
- F12SuyCruBW+qwfj+i+gofVqnYC/s9GI5d4wurgPzVtPDwkZOeIJNj/NGjYhInCFTMeD
- 8fqw==
-X-Gm-Message-State: AOJu0Yz6DF/UWBF/Wo6A89jPt5bYtd++ryyyrhuw+Jf8xkpXbxh+aGHj
- ybsban8gBe+uHOA8TtY/4J3MBA==
-X-Received: by 2002:a5d:4202:0:b0:32d:9b80:e2c6 with SMTP id
- n2-20020a5d4202000000b0032d9b80e2c6mr1914430wrq.26.1697750396472; 
- Thu, 19 Oct 2023 14:19:56 -0700 (PDT)
+ bh=kG3m+UrB+1tXa81IHczK7QBkGPM1a1yV1vD8kixZHhU=;
+ b=t3f+OiKZfe04Q3bB9wNdVHKBiRfmcpzervLUka4IM615KSKkVYXk7jLFTCFfJqzb4o
+ FAeDSkB/vrWvUfonS8dh/oc3MnJsDgfqC9icUEzf9VrAKiIO4p0cbbQ1jAxIy2b6mmxL
+ Ri830GfuPrBhYazQvHQsifTAVmSMyPaY5POeIupUAMPihymKdR8pavviA5gFVK3AlFjy
+ EHC8qmKBedWum1cBH03znTTBOpafoD3e4PpuRNdvVnQewlk/BGVuxVoZ4WBFF+G9Vjc2
+ C4evreyMztcGiaXBDlFWlbkrutk8K29CiavJ5bFn5DkACMnnX5qjWyrMAOtvpwoX3mkq
+ TZfA==
+X-Gm-Message-State: AOJu0Yx11duiqtDt5nfz0bgydL17o+T2xvdubOaeby1PVMGNel6+uws3
+ QidkVhMh6U+eMTM79ixfrAw9HQ==
+X-Received: by 2002:a05:600c:1d25:b0:408:3eaa:aea6 with SMTP id
+ l37-20020a05600c1d2500b004083eaaaea6mr69227wms.7.1697750449130; 
+ Thu, 19 Oct 2023 14:20:49 -0700 (PDT)
 Received: from m1x-phil.lan (176-131-216-177.abo.bbox.fr. [176.131.216.177])
  by smtp.gmail.com with ESMTPSA id
- h2-20020a5d5042000000b0032d886039easm233498wrt.14.2023.10.19.14.19.54
+ t6-20020a05600c450600b0040535648639sm515316wmo.36.2023.10.19.14.20.46
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Oct 2023 14:19:56 -0700 (PDT)
+ Thu, 19 Oct 2023 14:20:48 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
  qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>
-Subject: [PULL 15/46] hw/pci-host/sh_pcic: Declare CPU QOM types using
- DEFINE_TYPES() macro
-Date: Thu, 19 Oct 2023 23:17:40 +0200
-Message-ID: <20231019211814.30576-16-philmd@linaro.org>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Thomas Huth <thuth@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>
+Subject: [PULL 23/46] hw/ppc/spapr_vio: Realize SPAPR_VIO_BRIDGE device before
+ accessing it
+Date: Thu, 19 Oct 2023 23:17:48 +0200
+Message-ID: <20231019211814.30576-24-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231019211814.30576-1-philmd@linaro.org>
 References: <20231019211814.30576-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,77 +131,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yOEm+o6hhpS3
+X-TUID: AOXxEs6RfltA
 
-When multiple QOM types are registered in the same file,
-it is simpler to use the the DEFINE_TYPES() macro. In
-particular because type array declared with such macro
-are easier to review.
+qbus_new() should not be called on unrealized device.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Yoshinori Sato <ysato@users.sourceforge.jp>
-Message-Id: <20231012041237.22281-2-philmd@linaro.org>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20231019131647.19690-2-philmd@linaro.org>
 ---
- hw/pci-host/sh_pci.c | 40 +++++++++++++++++-----------------------
- 1 file changed, 17 insertions(+), 23 deletions(-)
+ hw/ppc/spapr_vio.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/pci-host/sh_pci.c b/hw/pci-host/sh_pci.c
-index 77e7bbc65f..41aed48c85 100644
---- a/hw/pci-host/sh_pci.c
-+++ b/hw/pci-host/sh_pci.c
-@@ -167,17 +167,6 @@ static void sh_pci_host_class_init(ObjectClass *klass, void *data)
-     dc->user_creatable = false;
- }
+diff --git a/hw/ppc/spapr_vio.c b/hw/ppc/spapr_vio.c
+index 9d4fec2c04..f8ef2b6fa8 100644
+--- a/hw/ppc/spapr_vio.c
++++ b/hw/ppc/spapr_vio.c
+@@ -574,13 +574,14 @@ SpaprVioBus *spapr_vio_bus_init(void)
  
--static const TypeInfo sh_pci_host_info = {
--    .name          = "sh_pci_host",
--    .parent        = TYPE_PCI_DEVICE,
--    .instance_size = sizeof(PCIDevice),
--    .class_init    = sh_pci_host_class_init,
--    .interfaces = (InterfaceInfo[]) {
--        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
--        { },
--    },
--};
--
- static void sh_pci_device_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -185,17 +174,22 @@ static void sh_pci_device_class_init(ObjectClass *klass, void *data)
-     dc->realize = sh_pci_device_realize;
- }
+     /* Create bridge device */
+     dev = qdev_new(TYPE_SPAPR_VIO_BRIDGE);
+-    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
  
--static const TypeInfo sh_pci_device_info = {
--    .name          = TYPE_SH_PCI_HOST_BRIDGE,
--    .parent        = TYPE_PCI_HOST_BRIDGE,
--    .instance_size = sizeof(SHPCIState),
--    .class_init    = sh_pci_device_class_init,
-+static const TypeInfo sh_pcic_types[] = {
-+    {
-+        .name           = TYPE_SH_PCI_HOST_BRIDGE,
-+        .parent         = TYPE_PCI_HOST_BRIDGE,
-+        .instance_size  = sizeof(SHPCIState),
-+        .class_init     = sh_pci_device_class_init,
-+    }, {
-+        .name           = "sh_pci_host",
-+        .parent         = TYPE_PCI_DEVICE,
-+        .instance_size  = sizeof(PCIDevice),
-+        .class_init     = sh_pci_host_class_init,
-+        .interfaces = (InterfaceInfo[]) {
-+            { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-+            { },
-+        },
-+    },
- };
+     /* Create bus on bridge device */
+     qbus = qbus_new(TYPE_SPAPR_VIO_BUS, dev, "spapr-vio");
+     bus = SPAPR_VIO_BUS(qbus);
+     bus->next_reg = SPAPR_VIO_REG_BASE;
  
--static void sh_pci_register_types(void)
--{
--    type_register_static(&sh_pci_device_info);
--    type_register_static(&sh_pci_host_info);
--}
--
--type_init(sh_pci_register_types)
-+DEFINE_TYPES(sh_pcic_types)
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++
+     /* hcall-vio */
+     spapr_register_hypercall(H_VIO_SIGNAL, h_vio_signal);
+ 
 -- 
 2.41.0
 

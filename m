@@ -1,109 +1,110 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp775893ejb;
-        Thu, 19 Oct 2023 13:30:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHxEB30+jL6YJ4iI1LNXOzeL+DMtbLGjcsKzIfXpWmjiGyaX3MTSDyZbCvRL2jIYsEOBYCN
-X-Received: by 2002:a05:622a:1a09:b0:417:70dc:ad5d with SMTP id f9-20020a05622a1a0900b0041770dcad5dmr3116219qtb.48.1697747458690;
-        Thu, 19 Oct 2023 13:30:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697747458; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp775930ejb;
+        Thu, 19 Oct 2023 13:31:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGsHOhuhFBOv+ZTCJ3RtFFxkNwVxQ8Y+5HR7q6aK47nzJFbC4GDX4NNDo6rPl+CZU/yyJ8g
+X-Received: by 2002:a05:622a:184:b0:41c:c149:731e with SMTP id s4-20020a05622a018400b0041cc149731emr4469381qtw.28.1697747463066;
+        Thu, 19 Oct 2023 13:31:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697747463; cv=none;
         d=google.com; s=arc-20160816;
-        b=QxBWKzUs3wZIAiO+7I0MLX9x4xjpYJh/DZyOrHZ5nr9PqmbLSiZT2kA2t/CT7VaG62
-         4WFrXpsWtotrhYXtoS/44QKt7URTn6J6zJyHsUG/27kTGFgM6HdidR90rBzTsdJQe4S2
-         mspowRwuRwZRDIWXnOPx8fmnjVNpTczxhxrA2pDNd7TFy5WYeWnfNhYapeIFD3+lT/Ga
-         dhCYMuzDUd+/ZVyGAhrosekNesfiZFI7YhV/lZsTDqCAWtERjHs6JSiSKPOCb8GRHFv4
-         uZyox4jeEaJ3+CXkGyNx2bCdVOxS5oV16IdTrJka5MvVTXajx/0GCOgocY0qmDIvZWLt
-         Ut4g==
+        b=kM1L4mi65Ef4BsOYvU03yPSoZbusai/zgZO6GGVwFT0cpY76uFBgfabTQm1Aw3/Br/
+         cTJ56UsmZZy1woejJPiAYs57jeV7u23y4C0Q1HrFIz5nWmW27qAVtYWzWYdR8gcmFBbz
+         4jUGl3jeljoQnc7kYJLNKA2dF8usPV1s/Ehkzn4gNb0YbaptbhsX/jD6cy46Lk9hXHP9
+         EUemmS3ZL0c/NhErQ8M7ox0fc3jEplIpV9axEQTK7EgObVKzJaBTgofWgfBAejIhDfG8
+         dM+Cclq2G43Mp/NmGBEjEnRusAMTo2ylYDFgYW2oGCuyvpWuwjBX1X3sXxfnd0+AhTaT
+         pjKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=TmRI68Iob89crTy0YFgiPtlij3tobhQNhxNbxAWFrHo=;
+        bh=nnrEyjGp5QZQoZPRgiOl9huuA1pIeT9IyWWA9zGnSgY=;
         fh=nDcgOyJ5wI4ec5cBWrHogeHeYCn4pzALdxpM3FX1gnA=;
-        b=ueBKgwNHC/+JAeMntdsxblUFygOanl535plSygEU7Pg3NkfoH843s2nWZZ8fUDYvpR
-         2AqB1XijPIB1k+6YtewUfDaIn9kQfD9P3qUdB5rahhWar4rTcmOLIFSNyOHA2S6C138V
-         XoJQt+9rGQJjzfp0XuSIQha7u/BRgtMXtLTh2Hgq8FtOmp61b7/uRProZwGIL4zeEuRP
-         aMVwx25VdId159013BeYaGuxjoxM7EsX60Kirc0GE3/0Dt4wTKw9Ku05+zGFt8xGpnMF
-         +idwxMBFFe+F9qpHe/5ODnNtXQa/igrIseuRCzyuFRoyN5rrqnv47oYCNj9Up0whYEST
-         YfgQ==
+        b=hqRPfHNa8tyhar/KSU1D2V07FvhiMiZEQUfPezrYsilCuJt7JE7/43B+8EIEeqIo8n
+         JpdXilMl3L4dIPC+jttd27UYVFtT1OO8YNvwuOP27Qrzfsdv8ZNbL+ykW9/gzYN0BGe/
+         AoY2S6Qtv1XuzXtbHxXAkx3d7SDXeqbbongXpNRXsdxdfbVvjNCvBmcts7neasMb7EjS
+         aFlHiESX41MJZ8crlXuMndKhoQigDW+GImwfmRO0v5mcCK/zsNuV4Ayv3s2zg/twfesj
+         FFcb9aVcqtAzu7y6mo+6nJE/GCvzxuwsEKtqRj1DJ9/C/xoAwuYHK0sxRSCYjy2wQ49e
+         daZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=TwvHWCUN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=nklG672D;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q16-20020a05622a04d000b0041804dba740si186648qtx.747.2023.10.19.13.30.58
+        by mx.google.com with ESMTPS id f10-20020a05622a1a0a00b0041cbbbc2eeesi199347qtb.379.2023.10.19.13.31.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 13:30:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Oct 2023 13:31:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=TwvHWCUN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=nklG672D;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtZep-0002Ot-22; Thu, 19 Oct 2023 16:30:15 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qtZfE-0002VS-R1; Thu, 19 Oct 2023 16:30:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1qtZen-0002OD-FE; Thu, 19 Oct 2023 16:30:13 -0400
+ id 1qtZfC-0002U1-BK; Thu, 19 Oct 2023 16:30:38 -0400
 Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1qtZel-0004yv-75; Thu, 19 Oct 2023 16:30:13 -0400
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+ id 1qtZfA-00051v-DR; Thu, 19 Oct 2023 16:30:37 -0400
+Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39JKQkuM031521; Thu, 19 Oct 2023 20:29:48 GMT
+ 39JKS9BQ022374; Thu, 19 Oct 2023 20:30:12 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=message-id : date :
  mime-version : subject : to : cc : references : from : in-reply-to :
  content-type : content-transfer-encoding; s=pp1;
- bh=TmRI68Iob89crTy0YFgiPtlij3tobhQNhxNbxAWFrHo=;
- b=TwvHWCUNCzTqwmWpTkKOU7N4r+yYkADhHeXvmYjnGmXNwW5freEcivyjJrrsMoEaz2Qc
- NeO3NSwiw/ou7+mZkUkr6qW8GcfCUxJU/u6bHkv8W027kjeRUBhB95s0LtlCzr1Vu8wi
- vFoD7iXyErWWzFLMO36L/keVe5rR2xuKCcu7a0rMwYHuFLCDcXiJ9Jx8FO/Q6Wqmm8OJ
- Bn/WOoUQenZfWBi2bxX8ebIoL6ck6R1l9JUkgQY424Q/vb4O3MVNGZPS7nBl+8Bepaa8
- Arr+TmPtUNd2fV45AfBRstqw7NcNwXEQGZYc9OU4PfwHlxjy2NzEMqmkT1cEsL5b1AGL kw== 
+ bh=nnrEyjGp5QZQoZPRgiOl9huuA1pIeT9IyWWA9zGnSgY=;
+ b=nklG672Dpwm3GpYpJhxfFRAXGrjdbe/mZuaNlqMpwlm8hRcqUicRqGLTRyaSsvZ2k7nn
+ r5INAzki0ikIU82ZkWjc9R/HPs3bB+p3E4P0DSq9Vn+W73YhFrsEb08doNaCfh1r9HcP
+ PFwPS1vNhPjUDc96kQiOpV+9/FVLm78dDVSUaWwkIkgIIzS1mQlum6tJd51obLuA4PDe
+ 3S22+UUJr4qqOhL7VTeKvKn6HuPlHEm0c7Zp2o98h55F/R4b8v/5aZOfTIW2JCMGm+mB
+ DsoMKJfzBQrO7uOgGIQagOv1dY+oejQS+Rqy6aqwmid0/+M5gHSnmOkoYvEjq1A6GD/u ow== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tubgcr3gt-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tub8m8drc-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 19 Oct 2023 20:29:48 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39JKSsuG007857;
- Thu, 19 Oct 2023 20:29:47 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tubgcr3g8-1
+ Thu, 19 Oct 2023 20:30:11 +0000
+Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39JKT0R4025550;
+ Thu, 19 Oct 2023 20:30:10 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tub8m8dpe-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 19 Oct 2023 20:29:47 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 39JK220A030742; Thu, 19 Oct 2023 20:29:46 GMT
-Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3tr7hk30v7-1
+ Thu, 19 Oct 2023 20:30:10 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39JIt5fk012949; Thu, 19 Oct 2023 20:30:09 GMT
+Received: from smtprelay03.wdc07v.mail.ibm.com ([172.16.1.70])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tr5pyujej-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 19 Oct 2023 20:29:46 +0000
+ Thu, 19 Oct 2023 20:30:09 +0000
 Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
  [10.241.53.100])
- by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 39JKTj0O24314446
+ by smtprelay03.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39JKU8e623790278
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 19 Oct 2023 20:29:45 GMT
+ Thu, 19 Oct 2023 20:30:09 GMT
 Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2FBA458061;
- Thu, 19 Oct 2023 20:29:45 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 962BA58057;
+ Thu, 19 Oct 2023 20:30:08 +0000 (GMT)
 Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 08DA458057;
- Thu, 19 Oct 2023 20:29:41 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 1A7CB58062;
+ Thu, 19 Oct 2023 20:30:04 +0000 (GMT)
 Received: from [9.47.158.152] (unknown [9.47.158.152])
  by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTPS;
- Thu, 19 Oct 2023 20:29:40 +0000 (GMT)
-Message-ID: <745782e7-f236-32d5-f63b-cc91a94857a0@linux.ibm.com>
-Date: Thu, 19 Oct 2023 16:29:39 -0400
+ Thu, 19 Oct 2023 20:30:03 +0000 (GMT)
+Message-ID: <6b3104ad-c48b-c9f9-78ee-1148e5a0227e@linux.ibm.com>
+Date: Thu, 19 Oct 2023 16:30:02 -0400
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH 05/13] migration: Use VMSTATE_INSTANCE_ID_ANY for slirp
+Subject: Re: [PATCH 06/13] migration: Use VMSTATE_INSTANCE_ID_ANY for s390
+ devices
 Content-Language: en-US
 To: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
 Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>,
@@ -128,22 +129,22 @@ Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>,
  David Gibson <david@gibson.dropbear.id.au>, Halil Pasic
  <pasic@linux.ibm.com>, Daniel Henrique Barboza <danielhb413@gmail.com>
 References: <20231019190831.20363-1-quintela@redhat.com>
- <20231019190831.20363-6-quintela@redhat.com>
+ <20231019190831.20363-7-quintela@redhat.com>
 From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <20231019190831.20363-6-quintela@redhat.com>
+In-Reply-To: <20231019190831.20363-7-quintela@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: ZNI5tbRSK_sSpuhijyalOxs7KtvzTPeh
-X-Proofpoint-GUID: MlPP0ungcSBMoPqY25Xl60Q-a-XhVHQc
+X-Proofpoint-GUID: PHDvnHg4F6tfbDT_67m_4uG7bo1X-pR2
+X-Proofpoint-ORIG-GUID: EhFtIFuLunSUKxdtRftQXT3dXc0xAg6y
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2023-10-19_20,2023-10-19_01,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 spamscore=0
- clxscore=1015 impostorscore=0 mlxlogscore=999 malwarescore=0
- lowpriorityscore=0 suspectscore=0 bulkscore=0 adultscore=0 mlxscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ bulkscore=0 spamscore=0
+ malwarescore=0 mlxscore=0 impostorscore=0 phishscore=0 clxscore=1015
+ adultscore=0 priorityscore=1501 mlxlogscore=999 lowpriorityscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2309180000 definitions=main-2310190174
 Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
  helo=mx0b-001b2d01.pphosted.com
@@ -155,27 +156,28 @@ X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KFlPx73u1d9R
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GQ4D6QAi3Bkq
 
 
 On 10/19/23 15:08, Juan Quintela wrote:
-> Each user network conection create a new slirp instance.  We register
-> more than one slirp instance for number 0.
+> Just with make check I can see that we can have more than one of this
+> devices, so use ANY.
 >
-> qemu-system-x86_64: -netdev user,id=hs1: savevm_state_handler_insert: Detected duplicate SaveStateEntry: id=slirp, instance_id=0x0
+> ok 5 /s390x/device/introspect/abstract-interfaces
+> ...
 > Broken pipe
 > ../../../../../mnt/code/qemu/full/tests/qtest/libqtest.c:195: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
 > Aborted (core dumped)
@@ -183,29 +185,49 @@ On 10/19/23 15:08, Juan Quintela wrote:
 > Signed-off-by: Juan Quintela <quintela@redhat.com>
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 > ---
->   net/slirp.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
+>   hw/s390x/s390-skeys.c    | 3 ++-
+>   hw/s390x/s390-stattrib.c | 3 ++-
+>   2 files changed, 4 insertions(+), 2 deletions(-)
 >
-> diff --git a/net/slirp.c b/net/slirp.c
-> index c33b3e02e7..25b49c4526 100644
-> --- a/net/slirp.c
-> +++ b/net/slirp.c
-> @@ -46,6 +46,7 @@
->   #include "qapi/qmp/qdict.h"
->   #include "util.h"
+> diff --git a/hw/s390x/s390-skeys.c b/hw/s390x/s390-skeys.c
+> index 5024faf411..ef089e1967 100644
+> --- a/hw/s390x/s390-skeys.c
+> +++ b/hw/s390x/s390-skeys.c
+> @@ -22,6 +22,7 @@
+>   #include "sysemu/kvm.h"
+>   #include "migration/qemu-file-types.h"
 >   #include "migration/register.h"
 > +#include "migration/vmstate.h"
->   #include "migration/qemu-file-types.h"
 >
->   static int get_str_sep(char *buf, int buf_size, const char **pp, int sep)
-> @@ -659,8 +660,8 @@ static int net_slirp_init(NetClientState *peer, const char *model,
->        * specific version?
->        */
->       g_assert(slirp_state_version() == 4);
-> -    register_savevm_live("slirp", 0, slirp_state_version(),
-> -                         &savevm_slirp_state, s->slirp);
-> +    register_savevm_live("slirp", VMSTATE_INSTANCE_ID_ANY,
-> +                         slirp_state_version(), &savevm_slirp_state, s->slirp);
+>   #define S390_SKEYS_BUFFER_SIZE (128 * KiB)  /* Room for 128k storage keys */
+>   #define S390_SKEYS_SAVE_FLAG_EOS 0x01
+> @@ -457,7 +458,7 @@ static inline void s390_skeys_set_migration_enabled(Object *obj, bool value,
+>       ss->migration_enabled = value;
 >
->       s->poll_notifier.notify = net_slirp_poll_notify;
->       main_loop_poll_add_notifier(&s->poll_notifier);
+>       if (ss->migration_enabled) {
+> -        register_savevm_live(TYPE_S390_SKEYS, 0, 1,
+> +        register_savevm_live(TYPE_S390_SKEYS, VMSTATE_INSTANCE_ID_ANY, 1,
+>                                &savevm_s390_storage_keys, ss);
+>       } else {
+>           unregister_savevm(VMSTATE_IF(ss), TYPE_S390_SKEYS, ss);
+> diff --git a/hw/s390x/s390-stattrib.c b/hw/s390x/s390-stattrib.c
+> index 220e845d12..055d382c3c 100644
+> --- a/hw/s390x/s390-stattrib.c
+> +++ b/hw/s390x/s390-stattrib.c
+> @@ -13,6 +13,7 @@
+>   #include "qemu/units.h"
+>   #include "migration/qemu-file.h"
+>   #include "migration/register.h"
+> +#include "migration/vmstate.h"
+>   #include "hw/s390x/storage-attributes.h"
+>   #include "qemu/error-report.h"
+>   #include "exec/ram_addr.h"
+> @@ -380,7 +381,7 @@ static void s390_stattrib_instance_init(Object *obj)
+>   {
+>       S390StAttribState *sas = S390_STATTRIB(obj);
+>
+> -    register_savevm_live(TYPE_S390_STATTRIB, 0, 0,
+> +    register_savevm_live(TYPE_S390_STATTRIB, VMSTATE_INSTANCE_ID_ANY, 0,
+>                            &savevm_s390_stattrib_handlers, sas);
+>
+>       object_property_add_bool(obj, "migration-enabled",

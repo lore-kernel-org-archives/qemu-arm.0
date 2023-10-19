@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp324957ejb;
-        Thu, 19 Oct 2023 00:17:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEEGR25uoo0fVLJC6vbjUKsNzS2vnoPqQCZt3HdbF021h+T6tfTHGAJJWGJxtRFVE1YuuvY
-X-Received: by 2002:a05:6122:1687:b0:49d:d0af:771a with SMTP id 7-20020a056122168700b0049dd0af771amr1291014vkl.6.1697699821980;
-        Thu, 19 Oct 2023 00:17:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697699821; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp325268ejb;
+        Thu, 19 Oct 2023 00:17:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFauk2804RP+C4QOybaNYlXBG41GcfmjRFg8fBmIeYJCTLwQ7gSXzEvI+0414EAei0wqHKU
+X-Received: by 2002:ad4:5ec6:0:b0:66d:4fdb:5e36 with SMTP id jm6-20020ad45ec6000000b0066d4fdb5e36mr1713570qvb.36.1697699865064;
+        Thu, 19 Oct 2023 00:17:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697699865; cv=none;
         d=google.com; s=arc-20160816;
-        b=NEMT9hIm/Uw+y/ABIrZjx1rvMHJER02+6Mgp7DgNxsx2cMhqGTiIpKO3dTWcBvsDdm
-         QO7cAFUWVDAw+Do2yxx/DGGvmKUUtSTcc95RSNsd6qK5Yyzfmc/QtarBH73zcL4qzfAI
-         TOkhKe5rEqtPNR5+hdhcpUtCcdorIiOeBlhBTNg2eKP89ap36oIA/5S3c18JqCA6uXlQ
-         wSNrCMHlu6mEeak0ShHZF8/tBjiIvRzEIiXYj8rVHNFBVRQrxmc3RoV9COV6L2r7iIWN
-         WCMhpoYT76YEi3CBonMCWctWV75o1vsTC4sZdHaP270jLMYoknEgUigNiAF7FyZWyzXO
-         En1w==
+        b=JO06PCb8yfHAY8sQOFcIC/ySBPS3PZ2EKHq6Bw0+TMoB81sL+KQl4Rjl0F7BOv6/rh
+         lcY9GY4xn+5z+157JyoNoDDHI9UxT62yBBdAzVIpF2M7tqg6iQkN7b1ugo1uIVAePVM6
+         BXErKvxYd0xLk08cERq0TNYLbCv0WOsNQJZ0rbLXDIYMpjlMboVIyNPoiFya5XiwWpS6
+         bwJ2aw+YHgUywosadCowkpiCuE2Qd82ZWYfFPUaeYjZeRVrHIVugNfEZH4Z0V6PfafIj
+         PgmRq+T+tDTNen8P47CR5N4PLZdJm8Ih5rCOicDS+J6mbZsLdcwN+hG1Yi5r3LFJovYP
+         SFpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=31IMAee+VZo6+j+lZFd22FV62NKoWHWg3TvBlA119f8=;
+        bh=XTgBuZGYkLbr0wmI8JEwCdSLvjSRDlVIxUJmeWPbI+s=;
         fh=6jYKO1R8PvzdW4tN+W/XYlQifBf+lht0eG+bQc5OUAg=;
-        b=AfbbR67WsYVOU+AXDcS9JiNn3ovhC7uWMBjqm3+p/R8grQPgOE8w1kdZDfC9y78Nui
-         w98V9g26yLvhvZDpbLeh5xg5rgv+kEmfRRs4yguDAtvzoGngxX9yD0eyNmLBN2Jdg3A4
-         R4FPb4Hge1smglTGHUa6O0o0FhG7Mt3V+Vw5ZlteHaOoVBbPu/SrCufGbxBit572kz0J
-         bFEPMbjkBFHN9IxxodM+/qJKDb0xdU1Yukn1BwX29+xjqGdzs15eTqhJJeABgRoPugSK
-         wzVoGQELTEqtXYzs0acYxh1XZn1OxzmWwuNaMiqkluEZ1112tpLHwhpVRKJy8LdYuicE
-         kkqw==
+        b=ECunhphAQXvDUZtpGZJ5qqsyGXIHaBSO5chBkhX3ym5tDFxi2UKlZoQKzfSnaN46Wg
+         FNqEHn8DRx2+qrG+39s3gTlSoEetkB9AWw7B7mMRMnrAlRFFYf1lp9MvWKbaPRxB+6h6
+         ymNNWyLurr6gdO9IcPRotEfyd9rM9oylK2zEBN13sd7nnsR0qbJ3zk16HYFcnHdP6vdz
+         DzlEdfcoka4jKwj0wjHcepQHL6CF9oeaZwIEwL9IdRt/iYyrCv2XkOdMlpqGaUl/Y62f
+         nVawCJ1HzICoWkdjn3m3d41346Au4JwvvsTIdo8MX6EpWbA6RHZS/Wx2QAKEYADhXgM2
+         u67Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JiiiZJX2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=B1DK3B28;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f11-20020ac87f0b000000b0041243a5cf43si1116165qtk.593.2023.10.19.00.17.01
+        by mx.google.com with ESMTPS id p11-20020a05620a22eb00b00774383c131dsi1086728qki.121.2023.10.19.00.17.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 00:17:01 -0700 (PDT)
+        Thu, 19 Oct 2023 00:17:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JiiiZJX2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=B1DK3B28;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtNGt-0004rl-Qj; Thu, 19 Oct 2023 03:16:43 -0400
+	id 1qtNHW-0005aA-MF; Thu, 19 Oct 2023 03:17:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtNGr-0004rJ-RX
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:16:42 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtNHD-00057f-OQ
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:17:03 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtNGq-0003Aj-8j
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:16:41 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-31f71b25a99so6615509f8f.2
- for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 00:16:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtNHA-0003DI-Ud
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:17:03 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-32d895584f1so6192312f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 00:17:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697699799; x=1698304599; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697699819; x=1698304619; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=31IMAee+VZo6+j+lZFd22FV62NKoWHWg3TvBlA119f8=;
- b=JiiiZJX2Ul0XFeys+tTH56OyMyqLueNy/2tqHDb0lNtj0AWpJiGsUTR1k3CXGVtbwV
- UUbQDwMxmtDknDnLBgaWXp+ByJ3RM3C750Bp1pFu1oWWbvmgrCGLxfCi4KmvaOam3iGK
- bsI8rxL/6a9kSuTNyCNY9eYarRW038iqRyfFn2Kq/cT+tYsaz5Iqkphu0yiG22EmyM8+
- hWs9p8Sio9fur8zvbrEEP0rIMc6V/GytAkHJZuJMK5nbWgGP9eP0twgyigFWKjxgmvcY
- c1Vpxcai1SPM825bZO94Dk58PbbWiIG4wW128/oAXEVh/+E5sOAby8BN/sl5R5KLtAw3
- CHPw==
+ bh=XTgBuZGYkLbr0wmI8JEwCdSLvjSRDlVIxUJmeWPbI+s=;
+ b=B1DK3B28ACzOYr/ul6k4jg9R9rhDsxVWWLnD6Ozk1ob/zB34o75Oc7uiKVy7yINQs5
+ p0QHL0AU895qGkyE1o7UwSsulk+qNS3CwIXfHs+1w/V7o6Pahd2LXM5CI/sk1kXVp9Rz
+ qQMtDQgPZ6AlElGR1Xia3Okn5/lfRfwDeYRjug8zBvpb4AbHefBB5Vlmd5u3wexXLYI4
+ XKaVplk2upg57RdOsQGfH8aE1jN5XF40U80jTuRUtUksz+0xPmu+pAr+TxhIzzj6GHeR
+ 4n7RhONKRSllMuJeNypDwM7ofBbZYvstyqujn+cuKv83yukoN7YaDIobkyiVbuKjA4Ol
+ hbcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697699799; x=1698304599;
+ d=1e100.net; s=20230601; t=1697699819; x=1698304619;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=31IMAee+VZo6+j+lZFd22FV62NKoWHWg3TvBlA119f8=;
- b=g5tofqguC5vq2KwV4V/JPWm+3dtdovptVUNFf14NXZljejKwSFQuBvbUps1SPFwmef
- PBL+aVrYW65hjr1tdZmbt5d/wy2cgjUJqzDV3RKU/fiZX1Jkh3bUu3MMztvtxp6mg7p/
- eWHU3VprVWPCJd4V1evLtyw/342lMr9lGt8WLM2d/ubh0B274tbbTQReRVSo1E5K8NbO
- /MGZmGMfOgr3ujUgfs2E8TLr3gv07ddgwdjFMzR+eKfYd36CUdaa+LhkhLAQnO5Yn0Ud
- Zb6kT67Qdgi8pRY0vpJ1mLznhlWr3cQpHd3waRliPmTWYbinkI76+qbiLgPdqP/0vLFz
- GibQ==
-X-Gm-Message-State: AOJu0YxJyVW9MSw8mVH3G5DoQUbkJ0piM1UNu1HAl8N00KO73FcVwB8i
- HalzJnJQahCCpqLMbfE6/ajwMRs17PUIeTwHnG3slA==
-X-Received: by 2002:adf:f682:0:b0:32d:8cfd:5780 with SMTP id
- v2-20020adff682000000b0032d8cfd5780mr918954wrp.27.1697699798766; 
- Thu, 19 Oct 2023 00:16:38 -0700 (PDT)
+ bh=XTgBuZGYkLbr0wmI8JEwCdSLvjSRDlVIxUJmeWPbI+s=;
+ b=Sw5+INh1lA+g6ISaKaWxMmdqC7Tp70Y8XBca+EEs8EzWY/NEEJwyfTe7tfmrwl1Pv3
+ 5yNzTZxUh0tfT0RKWUNoJOKtSZDDLQod+4/37eeX4IJJksL2KWDRj3LO6UrTcJdAF6tj
+ x6GmlhE48v/9jFbpB9aTONPCms+/vvah93hHTiJKXw2xgW0DFgPjFEOEhDWx0aLC+CrL
+ y8n8Ln78/wxqzIsfd5TwAHFyoKwhDsUwgT9+eU9ZQi0f3+XQoiMoeOkGp62dQDATvlK3
+ Tomb57UHN2KmqSTCD2EMZ9HNN297/hh7eOijsAYRqJhPa9AwzN8nUvfWS0tjmaMekFhe
+ Vb5g==
+X-Gm-Message-State: AOJu0YytjTFca7uiqilc3h2A5gxgOGS2UG5hskTc2e+bzaI8orKFOjPY
+ /pMs8kJE4n744PBPY+qi7R1jYg==
+X-Received: by 2002:a5d:5082:0:b0:32d:9ce0:35ae with SMTP id
+ a2-20020a5d5082000000b0032d9ce035aemr788960wrt.52.1697699819245; 
+ Thu, 19 Oct 2023 00:16:59 -0700 (PDT)
 Received: from localhost.localdomain (92.red-88-28-12.dynamicip.rima-tde.net.
  [88.28.12.92]) by smtp.gmail.com with ESMTPSA id
- i3-20020a5d6303000000b0032db4e660d9sm3755308wru.56.2023.10.19.00.16.33
+ d14-20020a056000114e00b003232380ffd5sm3732348wrx.106.2023.10.19.00.16.54
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Oct 2023 00:16:38 -0700 (PDT)
+ Thu, 19 Oct 2023 00:16:58 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -108,18 +108,18 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  David Hildenbrand <david@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>
-Subject: [PATCH v2 02/12] hw/i386/intel_iommu: Do not use SysBus API to map
- local MMIO region
-Date: Thu, 19 Oct 2023 09:16:00 +0200
-Message-ID: <20231019071611.98885-3-philmd@linaro.org>
+Subject: [PATCH v2 04/12] hw/misc/allwinner-dramc: Do not use SysBus API to
+ map local MMIO region
+Date: Thu, 19 Oct 2023 09:16:02 +0200
+Message-ID: <20231019071611.98885-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231019071611.98885-1-philmd@linaro.org>
 References: <20231019071611.98885-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,7 +141,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: M3D7koohWkVP
+X-TUID: SQ9rPdD1n5VX
 
 There is no point in exposing an internal MMIO region via
 SysBus and directly mapping it in the very same device.
@@ -159,43 +159,66 @@ Transformation done using the following coccinelle script:
   -    sysbus_init_mmio(sbdev, subregion);
        ... when != sbdev
   -    sysbus_mmio_map(sbdev, index, addr);
-  +    memory_region_add_subregion(get_system_memory(), addr, subregion);
+  +    memory_region_add_subregion(get_system_memory(),
+  +                                addr, subregion);
+
+  @@
+  expression priority;
+  @@
+  -    sysbus_init_mmio(sbdev, subregion);
+       ... when != sbdev
+  -    sysbus_mmio_map_overlap(sbdev, index, addr, priority);
+  +    memory_region_add_subregion_overlap(get_system_memory(),
+  +                                        addr,
+  +                                        subregion, priority);
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/i386/intel_iommu.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ hw/misc/allwinner-r40-dramc.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 2c832ab68b..e4f6cedcb1 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -4134,6 +4134,8 @@ static void vtd_realize(DeviceState *dev, Error **errp)
-     qemu_mutex_init(&s->iommu_lock);
-     memory_region_init_io(&s->csrmem, OBJECT(s), &vtd_mem_ops, s,
-                           "intel_iommu", DMAR_REG_SIZE);
-+    memory_region_add_subregion(get_system_memory(),
-+                                Q35_HOST_BRIDGE_IOMMU_ADDR, &s->csrmem);
+diff --git a/hw/misc/allwinner-r40-dramc.c b/hw/misc/allwinner-r40-dramc.c
+index 2cc0254a55..3d81ddb2e1 100644
+--- a/hw/misc/allwinner-r40-dramc.c
++++ b/hw/misc/allwinner-r40-dramc.c
+@@ -414,7 +414,6 @@ static void allwinner_r40_dramc_reset(DeviceState *dev)
+ static void allwinner_r40_dramc_realize(DeviceState *dev, Error **errp)
+ {
+     AwR40DramCtlState *s = AW_R40_DRAMC(dev);
+-    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
  
-     /* Create the shared memory regions by all devices */
-     memory_region_init(&s->mr_nodmar, OBJECT(s), "vtd-nodmar",
-@@ -4148,15 +4150,12 @@ static void vtd_realize(DeviceState *dev, Error **errp)
-     memory_region_add_subregion_overlap(&s->mr_nodmar,
-                                         VTD_INTERRUPT_ADDR_FIRST,
-                                         &s->mr_ir, 1);
--
--    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->csrmem);
-     /* No corresponding destroy */
-     s->iotlb = g_hash_table_new_full(vtd_iotlb_hash, vtd_iotlb_equal,
-                                      g_free, g_free);
-     s->vtd_address_spaces = g_hash_table_new_full(vtd_as_hash, vtd_as_equal,
-                                       g_free, g_free);
-     vtd_init(s);
--    sysbus_mmio_map(SYS_BUS_DEVICE(s), 0, Q35_HOST_BRIDGE_IOMMU_ADDR);
-     pci_setup_iommu(bus, vtd_host_dma_iommu, dev);
-     /* Pseudo address space under root PCI bus. */
-     x86ms->ioapic_as = vtd_host_dma_iommu(bus, s, Q35_PSEUDO_DEVFN_IOAPIC);
+     if (!get_match_ddr(s->ram_size)) {
+         error_report("%s: ram-size %u MiB is not supported",
+@@ -422,23 +421,23 @@ static void allwinner_r40_dramc_realize(DeviceState *dev, Error **errp)
+         exit(1);
+     }
+ 
+-    /* R40 support max 2G memory but we only support up to 1G now. index 3 */
++    /* R40 support max 2G memory but we only support up to 1G now. */
+     memory_region_init_io(&s->detect_cells, OBJECT(s),
+                           &allwinner_r40_detect_ops, s,
+                           "DRAMCELLS", 1 * GiB);
+-    sysbus_init_mmio(sbd, &s->detect_cells);
+-    sysbus_mmio_map_overlap(sbd, 3, s->ram_addr, 10);
++    memory_region_add_subregion_overlap(get_system_memory(), s->ram_addr,
++                                        &s->detect_cells, 10);
+     memory_region_set_enabled(&s->detect_cells, false);
+ 
+     /*
+      * We only support DRAM size up to 1G now, so prepare a high memory page
+-     * after 1G for dualrank detect. index = 4
++     * after 1G for dualrank detect.
+      */
+     memory_region_init_io(&s->dram_high, OBJECT(s),
+                             &allwinner_r40_dualrank_detect_ops, s,
+                             "DRAMHIGH", KiB);
+-    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->dram_high);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(s), 4, s->ram_addr + GiB);
++    memory_region_add_subregion(get_system_memory(), s->ram_addr + GiB,
++                                &s->dram_high);
+ }
+ 
+ static void allwinner_r40_dramc_init(Object *obj)
 -- 
 2.41.0
 

@@ -1,110 +1,119 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp503757ejb;
-        Thu, 19 Oct 2023 06:12:07 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEF291colVecWB5DEKjK4tdlcJ0gXJF8uYpodFkxIpm66jIV6c0bZhSJjo4U/CHE9zD47cO
-X-Received: by 2002:a19:7001:0:b0:4f9:51ac:41eb with SMTP id h1-20020a197001000000b004f951ac41ebmr1364983lfc.16.1697721126987;
-        Thu, 19 Oct 2023 06:12:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697721126; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp513812ejb;
+        Thu, 19 Oct 2023 06:27:57 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGDrc4HaEObV81Q4uijuYZIKZ8SKGP/xuGGlfNeh4L2+xdyVepbwwG9648UvfpZxUr2fJt5
+X-Received: by 2002:ad4:5ba9:0:b0:66d:544d:8e68 with SMTP id 9-20020ad45ba9000000b0066d544d8e68mr2710902qvq.3.1697722077209;
+        Thu, 19 Oct 2023 06:27:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697722077; cv=none;
         d=google.com; s=arc-20160816;
-        b=acM2ZangJ0XNh+ajq1Gy4SNKUczt52cKgTKME6GffOUAiNhHSPQ+0pLOJbaj7dFN01
-         2qSOG92b8rIa+8SsHcnT32cV17MHAXWEXoAZWQM6pjHZEfG6wp9q/VpbRqKziLbP+MKz
-         QzL5ORq7Jlt037shDjQU9tD9//kGC4sS8ydFDlonWmxcgkJ+Wr4NrPCbqyo37omPZcJF
-         GUvC6tc3TR7LInrCCAm54YsfNAqbHE+dlbmCRQSPBdu9hmEAVgAIoYFXokstLn3t1IrD
-         BN/CCKnJfvoYoTnIPcwjS2HN9kY+zaUSvCD6xkWgAd2U5/A0Ph55nmEE9UCKuy7sFri4
-         63OA==
+        b=yJKi+P9LD0qjm6i/a0bs/sFzX7hxBD3A+ldUHN5uTFNJVa6VzaM1D7/FOVybECo6Pd
+         kL8qRvdojK004sb85wBB7052oIjtbIqmMQP3ABSFy7k1HQ3omUKzdL8QdhpEmu2fQNhT
+         U3QKfjbvD5iCN0MNanQnkruBAAB8urk27GX23bQRZt8CCl2zoDU3vmGCt5FMAzwNNDxa
+         49AnlIlqY4fKhl7tXSLc+sY7thpEn+dVxZxr/DhZ9KTbgW8Br24/ALpsBq0rvvhZ4r4r
+         dSRsFLN0ux8wSG7Olc/m/8dBoDPhOy5mFP8yIV/Tl7ieDFAv8Ww40hoY0/zg8w5IrJKV
+         MswA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=jWeKlxu/1oSXjew02PYYb/4LgtdqaZA73Poob6GIouM=;
-        fh=rYBZhAJdgCvxZRRcO2tKw9iXjHkAG8ZfVdmqU/2KeAE=;
-        b=v0esnTvhlkF7PNuIkD6sAGr7+awo4UzjWoLP4x8s2YDmTcx7GIwVnLEKqFHurK+QLK
-         u/cH9qdniRIhLDwYM87cbmH7pi6DQOJvA/HL6hlNmfbgkNTRtiPZ8Fc6oD1qi2gU60Sd
-         Dc75t5NIPEu7OpDwu4PkqnSsk5gj/6ehP1AAAbpMzqBlXzbAkO6Fnq/rUQVntPr+441B
-         XFBC/krjW65vQmWzv8soBypldDt8RIuYjTM2V4IqUGBc9R4opb9ALM3zX+/od/pjEhE5
-         ma+5ZeMtswMnkYjrDJ4xl+DV7LnpSRyxmpTaYrpoyQG5TvptqGfMkSGXAcqhOs33z5Kv
-         Ecgw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7kNBu2eX1X8AHgLmoRKI6DQsuRe/7tTX2acgsC1oaaY=;
+        fh=qS7HOACB/fnzOG4UkP/DQwrsj+RVK26yEZmW8KA6D/k=;
+        b=XZ9tkKpRjoj+5dbLOlRIykDLLZNHV1ydcXY0cH09jikc1J9pvvwcFo2MNuAeitW3G2
+         4OhsW1geCY0phtKHQgQtCIHN9GoVZF8LEytKZWNjwKrFlv7+DHuJ5uAj2HcX0aXaqwKn
+         GygnESVUEWy6InEnS56RYDwtCn+fqJhjOSTyy+Wp63jp/S01o68tmo+h+/AnXwZcDa6k
+         ZNtanppPTu1bWY6nKFJ7B0/RaI/Gg+4evAbc1U8G0/lammInoiQGlbZ4FKPZaBLb6uWA
+         MEM0XV3bWMImFe6oX1u8++bNITetFUTXgDtN6bSNWz5ZrzLDRbRwKP/UYb5ISH75bYlN
+         D/zQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RkTgFM8f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Fhc5TNDD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12-20020adfffcc000000b0032d8e60d308si2680628wrs.1024.2023.10.19.06.12.06
+        by mx.google.com with ESMTPS id lx13-20020a0562145f0d00b0066ceeacae81si1581241qvb.536.2023.10.19.06.27.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 06:12:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Oct 2023 06:27:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RkTgFM8f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Fhc5TNDD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtSn7-0005h9-PQ; Thu, 19 Oct 2023 09:10:21 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtT3i-0003d5-BZ; Thu, 19 Oct 2023 09:27:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtSn5-0005dJ-BD
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:10:19 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qtT3c-0003aL-Vt
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 09:27:25 -0400
+Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtSn3-00085K-6K
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:10:18 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-31f71b25a99so6853312f8f.2
- for <qemu-devel@nongnu.org>; Thu, 19 Oct 2023 06:10:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qtT3a-0006Xk-5c
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 09:27:24 -0400
+Received: by mail-oa1-x32.google.com with SMTP id
+ 586e51a60fabf-1e12f41e496so4900587fac.3
+ for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 06:27:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697721015; x=1698325815; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=jWeKlxu/1oSXjew02PYYb/4LgtdqaZA73Poob6GIouM=;
- b=RkTgFM8fg6H1DlCEBPBowU4aLivDDNyXf1c5QGyIjjhldO98ezgd4C+eSURS5cbq2x
- GNlifTc+fazdYfAN2tl6pg4Y6aATiEg1aB/WgWVSnvcDtBOs67QwfI1zmRmTdJJOQTEZ
- gVRycj/9Arw6t6JiBD2W6fiY0hdXJ/RqZPrmVnm+ckae9f+BuPh3Rv3IJ7ZnKQ5o+hDA
- PVXXm1Ur1K/Bq1QlZr31e+ekpwfT8PB34JLnBxlImHjqeULKyzWLFBbBlh59AMEkvrLJ
- vTHez2BNCHCJt73c3j22DDoRKXrjaw/qFtBpzvqK5+GnMC39lWmXUGnhZwqwXWtDzAPQ
- VgOQ==
+ d=ventanamicro.com; s=google; t=1697722039; x=1698326839; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=7kNBu2eX1X8AHgLmoRKI6DQsuRe/7tTX2acgsC1oaaY=;
+ b=Fhc5TNDD5fnrf3eLVM+yRnrkXS3XFzV92/itNZ96h9zRvvGl4DBQD6XoUIeDDMCcG3
+ Pgxyl0kY5PuppQI8BPx7P+sXiinalNNF9VkdR0Uy5aHNySzOo+zfvY7S2VtDGMk3Jktz
+ 2MwxAExgv9oBNg4eI6xsO3BK3tcY8NTONd+phk5QRczU01qOmZox3wA29d2U0GoxQXzz
+ r956/FeDyYJpcIFd9PghJIQl7tp/4w7c4rCNBoesq7A9WKxJO0ITe9CtJoyCTuxP/MeK
+ 5aQlDXCe5+JnI2jueHf2iCjk6PohV8WpqY71TLNtzzXK5WLxm7c9Yj/6OQWjKvD44B4n
+ 5euQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697721015; x=1698325815;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=jWeKlxu/1oSXjew02PYYb/4LgtdqaZA73Poob6GIouM=;
- b=ITePQk8wBGmHw/tB+NNXr4lzfM0dSnA666aa/gOVtPjLqZEW21kYZGZCeUYpRUhBtp
- u6//nyvD2Qk7riToRKFxi+lLXMnySG5AIoe8kQPOyc8ER6Q5ivNje785Aw9YZY7kStOc
- /PKLPO6QB6dcd4DhZY35mw6eNhNzjYEPU6Z1uooYyhaH5mSjZVpZ3JPFpisTLp4fExp4
- RoH8uxaYPLsjoyExgFQzFdtsqrH49EzAIdUgHyVQItf8dRs4SVd3d3qrPPkuqk+Qa4Ti
- 5d03zlYMP9vOQvFANE9cD4jz9uTxCA+woO8p6XlBur2V3yEuENfwdMGx5LuWTqUn74fT
- Xytg==
-X-Gm-Message-State: AOJu0Yze3jkCoi9eyd3Pz2MY40k0DWi6e3WmNn8CLNOzd3kfWNdoDQ2I
- xUzOKBi5/T+f3FqHh67c4hOn1OmN/SSsiLM27AVphQ==
-X-Received: by 2002:a5d:66cd:0:b0:321:677d:98b0 with SMTP id
- k13-20020a5d66cd000000b00321677d98b0mr1477106wrw.11.1697721015193; 
- Thu, 19 Oct 2023 06:10:15 -0700 (PDT)
-Received: from m1x-phil.lan (176-131-216-177.abo.bbox.fr. [176.131.216.177])
+ d=1e100.net; s=20230601; t=1697722039; x=1698326839;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=7kNBu2eX1X8AHgLmoRKI6DQsuRe/7tTX2acgsC1oaaY=;
+ b=QBuEIIzwQzQ90gqzUY8aKPa7NiT5a8++IA3VqjMxvgAvxeBBMdKBFqX2/MHASJUNP3
+ 6qBkL4LOVAm77DZ5N175q57FoJRHGO6CCVfjOfY+Qk//4l2NW84RLTiMfGNycN0VxQ2v
+ rskMPucPnYHl5Fxt9SNY4VHyMUR/gyDY8CUkqrfXCLyak4aXMMg97teHNgpL8HVT31u+
+ QHGzqCoM3HRLfT+68sKv7Sb2IrN2xwiGu+ER6TFQpQCSTl6m9a6RV89HHedoIqhlal+w
+ 0BklQpyMMIjWA6evZC3iXNcVpdesoF7gjtcBzMjiD1+kZJnqqtD2eFKnObuUkcrYSeUu
+ BAOw==
+X-Gm-Message-State: AOJu0YzZbbQ+hSscosldv7fzT6VDbTZmw9EgwFQKdHXxDNHncdoxlHGo
+ 7VV2ZJVhAyzRBiYfEFOpVxLGog==
+X-Received: by 2002:a05:6870:c14f:b0:1ea:2506:3e90 with SMTP id
+ g15-20020a056870c14f00b001ea25063e90mr2093805oad.35.1697722039440; 
+ Thu, 19 Oct 2023 06:27:19 -0700 (PDT)
+Received: from sunil-laptop.dc1.ventanamicro.com
+ ([2409:4071:6e8b:3a98:dd76:4e82:7da6:44ab])
  by smtp.gmail.com with ESMTPSA id
- l16-20020a5d4bd0000000b00323293bd023sm4461613wrt.6.2023.10.19.06.10.13
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Oct 2023 06:10:14 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 8/9] hw/intc/pxa2xx: Factor pxa2xx_pic_realize() out of
- pxa2xx_pic_init()
-Date: Thu, 19 Oct 2023 15:09:23 +0200
-Message-ID: <20231019130925.18744-9-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231019130925.18744-1-philmd@linaro.org>
-References: <20231019130925.18744-1-philmd@linaro.org>
+ f11-20020a056a00228b00b0068feb378b89sm5273113pfe.171.2023.10.19.06.27.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Oct 2023 06:27:18 -0700 (PDT)
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: qemu-riscv@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Anup Patel <apatel@ventanamicro.com>,
+ Andrew Jones <ajones@ventanamicro.com>,
+ Atish Kumar Patra <atishp@rivosinc.com>, Haibo Xu <haibo1.xu@intel.com>,
+ Sunil V L <sunilvl@ventanamicro.com>
+Subject: [PATCH v3 00/12] RISC-V: ACPI: Enable AIA, PLIC and update RHCT
+Date: Thu, 19 Oct 2023 18:56:36 +0530
+Message-Id: <20231019132648.23703-1-sunilvl@ventanamicro.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::32;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-oa1-x32.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,73 +122,94 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G3dG5ZrJLo2x
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: R6CA/XzI/hXg
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/arm/pxa2xx_pic.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
+This series primarily enables external interrupt controllers (AIA and PLIC)
+in ACPI tables for RISC-V virt platform. It also updates RHCT with CMO and
+MMU related information.
 
-diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
-index 7e180635c2..1373a0d275 100644
---- a/hw/arm/pxa2xx_pic.c
-+++ b/hw/arm/pxa2xx_pic.c
-@@ -287,12 +287,18 @@ static void pxa2xx_pic_reset_hold(Object *obj)
- DeviceState *pxa2xx_pic_init(hwaddr base, ARMCPU *cpu)
- {
-     DeviceState *dev = qdev_new(TYPE_PXA2XX_PIC);
--    PXA2xxPICState *s = PXA2XX_PIC(dev);
- 
-     object_property_set_link(OBJECT(dev), "arm-cpu",
-                              OBJECT(cpu), &error_abort);
--
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-+
-+    return dev;
-+}
-+
-+static void pxa2xx_pic_realize(DeviceState *dev, Error **errp)
-+{
-+    PXA2xxPICState *s = PXA2XX_PIC(dev);
- 
-     qdev_init_gpio_in(dev, pxa2xx_pic_set_irq, PXA2XX_PIC_SRCS);
- 
-@@ -300,12 +306,9 @@ DeviceState *pxa2xx_pic_init(hwaddr base, ARMCPU *cpu)
-     memory_region_init_io(&s->iomem, OBJECT(s), &pxa2xx_pic_ops, s,
-                           "pxa2xx-pic", 0x00100000);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
- 
-     /* Enable IC coprocessor access.  */
--    define_arm_cp_regs_with_opaque(cpu, pxa_pic_cp_reginfo, s);
--
--    return dev;
-+    define_arm_cp_regs_with_opaque(s->cpu, pxa_pic_cp_reginfo, s);
- }
- 
- static const VMStateDescription vmstate_pxa2xx_pic_regs = {
-@@ -335,6 +338,7 @@ static void pxa2xx_pic_class_init(ObjectClass *klass, void *data)
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
- 
-     device_class_set_props(dc, pxa2xx_pic_properties);
-+    dc->realize = pxa2xx_pic_realize;
-     dc->desc = "PXA2xx PIC";
-     dc->vmsd = &vmstate_pxa2xx_pic_regs;
-     rc->phases.hold = pxa2xx_pic_reset_hold;
+Below ECRs for these changes are approved by ASWG and will be
+available in next ACPI spec release.
+
+1) MADT (AIA) - https://drive.google.com/file/d/1oMGPyOD58JaPgMl1pKasT-VKsIKia7zR/view?usp=sharing
+2) RHCT - https://drive.google.com/file/d/1sKbOa8m1UZw1JkquZYe3F1zQBN1xXsaf/view?usp=sharing
+
+First two patches in this series are to migrate a couple of functions from
+ARM architecture to common code so that RISC-V doesn't need to duplicate
+the same.
+
+The patch set is based on Alistair's riscv-to-apply.next branch.
+
+These changes are also available in  riscv_acpi_b2_v3 branch at:
+https://github.com/vlsunil/qemu/
+
+Changes since v2:
+        1) Rebased to latest riscv-to-apply.next branch which needed
+           changing ext_icboz to ext_zicboz in CMO patch.
+        2) Fixed node type in MMU node.
+        3) Added latest tags.
+
+Changes since v1:
+        1) As per Igor's suggestion, migrated fw_cfg and virtio creation
+           functions to device specific file instead of generic aml-build.c.
+           Since ACPI is optional, new files are created and enabled for
+           build only when CONFIG_ACPI is enabled.
+        2) As per Igor's suggestion, properties are added to the GPEX PCI
+           host to indicate MMIO ranges. The platform fw can initialize
+           these to appropriate values and the DSDT generator can fetch
+           the information from the host bus itself. This makes the code
+           generic instead of machine specific.
+        3) Added PLIC patch from Haibo.
+        4) Rebased to latest riscv-to-apply.next and added RB tags as
+           appropriate.
+
+Sunil V L (12):
+  hw/arm/virt-acpi-build.c: Migrate fw_cfg creation to common location
+  hw/arm/virt-acpi-build.c: Migrate virtio creation to common location
+  hw/riscv: virt: Make few IMSIC macros and functions public
+  hw/riscv/virt-acpi-build.c: Add AIA support in RINTC
+  hw/riscv/virt-acpi-build.c: Add IMSIC in the MADT
+  hw/riscv/virt-acpi-build.c: Add APLIC in the MADT
+  hw/riscv/virt-acpi-build.c: Add CMO information in RHCT
+  hw/riscv/virt-acpi-build.c: Add MMU node in RHCT
+  hw/pci-host/gpex: Define properties for MMIO ranges
+  hw/riscv/virt: Update GPEX MMIO related properties
+  hw/riscv/virt-acpi-build.c: Add IO controllers and devices
+  hw/riscv/virt-acpi-build.c: Add PLIC in MADT
+
+ hw/arm/virt-acpi-build.c        |  48 +----
+ hw/nvram/fw_cfg-acpi.c          |  17 ++
+ hw/nvram/meson.build            |   1 +
+ hw/pci-host/gpex-acpi.c         |  13 ++
+ hw/pci-host/gpex.c              |  12 ++
+ hw/riscv/Kconfig                |   1 +
+ hw/riscv/virt-acpi-build.c      | 342 +++++++++++++++++++++++++++++---
+ hw/riscv/virt.c                 |  72 +++----
+ hw/virtio/meson.build           |   1 +
+ hw/virtio/virtio-acpi.c         |  28 +++
+ include/hw/nvram/fw_cfg_acpi.h  |   9 +
+ include/hw/pci-host/gpex.h      |  28 ++-
+ include/hw/riscv/virt.h         |  26 +++
+ include/hw/virtio/virtio-acpi.h |  11 +
+ 14 files changed, 492 insertions(+), 117 deletions(-)
+ create mode 100644 hw/nvram/fw_cfg-acpi.c
+ create mode 100644 hw/virtio/virtio-acpi.c
+ create mode 100644 include/hw/nvram/fw_cfg_acpi.h
+ create mode 100644 include/hw/virtio/virtio-acpi.h
+
 -- 
-2.41.0
+2.34.1
 

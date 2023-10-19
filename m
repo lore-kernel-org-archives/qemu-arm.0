@@ -1,80 +1,82 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp526740ejb;
-        Thu, 19 Oct 2023 06:48:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGxoNphUuD0SzM6lxu4hZHb10goz/7XsKmYZlv5OFwQ0oMdAHuq6pE+65nU1Ef458ax1DMo
-X-Received: by 2002:ad4:5b8b:0:b0:66d:3314:f7be with SMTP id 11-20020ad45b8b000000b0066d3314f7bemr2080346qvp.3.1697723318317;
-        Thu, 19 Oct 2023 06:48:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697723318; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp526839ejb;
+        Thu, 19 Oct 2023 06:48:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHWKsctVwl7/RFUG+RG0LyJkn5vvNg6RlGg8EFAcprnb9JaG531QbHXkKnVTYT4HcNQKmdB
+X-Received: by 2002:a05:620a:84c:b0:774:2dc0:649b with SMTP id u12-20020a05620a084c00b007742dc0649bmr1855917qku.18.1697723328826;
+        Thu, 19 Oct 2023 06:48:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697723328; cv=none;
         d=google.com; s=arc-20160816;
-        b=bCBtrCs0JOofP0OJ6v4NUwPjzEwajDn72EmCA3/N6xgQfww8VlAId+SuCQ0okDxgrt
-         sDw3tD6cS+s4LPKsyztOT3syn3w0VHc+3hU/UaD6V0kJU1cMFpxtR9D8/cf5dJQLjPHK
-         thxg8Nz6bxLjzzs+FrwYZ/nks/F0INQym490EYawfcsDXxa+TAFtpz1E/fKqsyiO44uV
-         LPxmlVv9WuPFMtqW/+XlALGiDcmTQIqqAvIz/ReAfannG+PmIc0RBxEM02LmYKal8x0N
-         L2jnBD4YEa81H4VAI1GyQe9sCUqviTxbht9MuM8LwwRsUgxC1oGc0P/UuKMwFT/zrIF3
-         Swkw==
+        b=uatl/mg8Ekt+qsDcGYSk0xk5qmFO2bvw/T6cCMiC+Lr/4eEUaiZABaPeP9y5eQ8MKu
+         kli7mPTpb6vlumaGnQ6L7DOVpO8u7p42TrlcvV+uqDb5XZhAhr6msuP4xHniOXHUcjP5
+         ly83WJ6Qf652JGyrMbwlEjeYAgvwXSoghaQTSjtcAS6/bdH801YNagYO966Xkenku+0F
+         JqwkNR5xbXZr2cAjK4MzAa7+p+5qS3FSnAabo/dUHSz+DYILR09qmdbQREQSu5ufYnSS
+         NYHvjmAlLemsuGbZqU1z8vL4iptB9Zq70gwYbM1mxbVRZV66g+Bj6QlQAygU+FUouEP+
+         /IjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CMFWaJZjOECyVSpmfQbeH28DH9GydIaSi+W1r190Npg=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=SzKEod8q9u4SBAnz56fOS2R5f4u3a2mZM4Pi6wST3c4=;
         fh=tKh4J0nBsRIusPtBH+FcUVX1EUO0S/KOQKlAHLEPEHM=;
-        b=ihEDrgBVQdg3DJ78k07xi/fYKcGvDNrMPsqLkYyVwnuuRV6ngW8LdzBURq1hPV9wHT
-         73ONg8f6l5yjdcE4O+m/yMqWvYyjAB4CtPDahlbqHhUqZIihZLDVIG0RDD1MehnV8kL3
-         3ZWX0NI8T+eiD2JBBrfyxmQWads9evShJhFGq2AZtQ7JtctyL+Rucor1/hBTB6DcWOG8
-         ogRtLevOIxTaMLm+VZSxLY7N/OJDAkIq7q0O7A7edbN12KV+3NRQRqfD9TKK5RrCr2EY
-         hBx4ISnEgic3slkF6BRTeYBqoyVF9AtWui+uxVAixSJHrTtevC5KT6m8tPa3SUmYhyUf
-         B4dw==
+        b=ZrnUyB1HMc14wpkg+os4CgSR1e3BVAN4VebtSSjY4db1FVPv5uuD4qospMLaPOlUmT
+         HkiHbpddeUfmDsMRbvvGhpmsRQ8HHLFKEChiaHA+w6I9kcFIVMTTnvuVPjkdGnlnPPvY
+         5B5yK8Xx8wqyUsOmsAdwoQSMpoZ3spSsMxhaDc7RRHOR1D5DTL0o1qYLrBhJxraFjzHY
+         AixSBztvksTwqvxYJXJvvoi/SsYCQQuIXoCTSguKIO8Le+Wlj9xiGtSxPdKO7irak452
+         +bQLV+J9Hpmyafa53Hip8OUrYPQZopcC7d6qt7xlJC71fXrWCXohByrwlIjl0k5Ibnsc
+         gDfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J5Otqy1H;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G40zkROJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8-20020a05620a094800b0076ef65e3814si1544774qkw.116.2023.10.19.06.48.38
+        by mx.google.com with ESMTPS id z14-20020a05620a08ce00b0077438f60e5esi1572397qkz.211.2023.10.19.06.48.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 06:48:38 -0700 (PDT)
+        Thu, 19 Oct 2023 06:48:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J5Otqy1H;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G40zkROJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtTMf-00018C-Bf; Thu, 19 Oct 2023 09:47:05 -0400
+	id 1qtTNC-0001S8-ID; Thu, 19 Oct 2023 09:47:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qtTMe-00017w-7q
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:47:04 -0400
+ id 1qtTMt-0001I1-0y
+ for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:47:19 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qtTMc-0002Sc-1J
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:47:03 -0400
+ id 1qtTMq-0002s3-Vs
+ for qemu-devel@nongnu.org; Thu, 19 Oct 2023 09:47:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697723220;
+ s=mimecast20190719; t=1697723235;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=CMFWaJZjOECyVSpmfQbeH28DH9GydIaSi+W1r190Npg=;
- b=J5Otqy1HSPSZisLT2SlL628IPmvlXJosqzXrnny9O7c95pT99WjWmUIScmj8md5xDIc4kb
- +jBAVvCx//zN1wWks0nIV0I7/8rQqpf88y5AzUZ+YydBYHOTOgFcQ8npf/ZFimWJslDYie
- 2adIHe1Kmt5sWiry381T3MsoFEykFBA=
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SzKEod8q9u4SBAnz56fOS2R5f4u3a2mZM4Pi6wST3c4=;
+ b=G40zkROJ+8ceu8b5t9L0MV6a4LDRh4aCoWxsR4+LFZv7TWjF9KW/uCRzFpk0554HMrTslV
+ plQ0PbfBAd7P67BzAiQ33UpAsZj54H3kdgsvRwoLvWjIwkqNgMI5FqqjaCk+ZU6K0F4zOC
+ w3I1CX2kF3rKnijmDP/sZM2caomyIjk=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-487-dpj1o0YPPWi7Itk0p3cp1w-1; Thu, 19 Oct 2023 09:46:56 -0400
-X-MC-Unique: dpj1o0YPPWi7Itk0p3cp1w-1
+ us-mta-621-kpwCKWRoO3m5XE3_pKrJIw-1; Thu, 19 Oct 2023 09:47:02 -0400
+X-MC-Unique: kpwCKWRoO3m5XE3_pKrJIw-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
  [10.11.54.10])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2770E82DFB8;
- Thu, 19 Oct 2023 13:46:56 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1C8C387A9F6;
+ Thu, 19 Oct 2023 13:47:02 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.195.144])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5726A492BFA;
- Thu, 19 Oct 2023 13:46:53 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 658B7492BFA;
+ Thu, 19 Oct 2023 13:46:59 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, alex.williamson@redhat.com, clg@redhat.com,
@@ -82,11 +84,12 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: peter.maydell@linaro.org, peterx@redhat.com, david@redhat.com,
  philmd@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
  yanghliu@redhat.com
-Subject: [PATCH v4 00/12] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
-Date: Thu, 19 Oct 2023 15:45:06 +0200
-Message-ID: <20231019134651.842175-1-eric.auger@redhat.com>
+Subject: [PATCH v4 02/12] memory: Introduce memory_region_iommu_set_iova_ranges
+Date: Thu, 19 Oct 2023 15:45:08 +0200
+Message-ID: <20231019134651.842175-3-eric.auger@redhat.com>
+In-Reply-To: <20231019134651.842175-1-eric.auger@redhat.com>
+References: <20231019134651.842175-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
 Received-SPF: pass client-ip=170.10.129.124;
@@ -112,105 +115,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QG6NtWE4KHU/
+X-TUID: lr4en76HyWpp
 
-On x86, when assigning VFIO-PCI devices protected with virtio-iommu 
-we encounter the case where the guest tries to map IOVAs beyond 48b
-whereas the physical VTD IOMMU only supports 48b. This ends up with
-VFIO_MAP_DMA failures at qemu level because at kernel level,
-vfio_iommu_iova_dma_valid() check returns false on vfio_map_do_map().
+This helper will allow to convey information about valid
+IOVA ranges to virtual IOMMUS.
 
-This is due to the fact the virtio-iommu currently unconditionally
-exposes an IOVA range of 64b through its config input range fields.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Acked-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-This series removes this assumption by retrieving the usable IOVA
-regions through the VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE UAPI when
-a VFIO device is attached. This info is communicated to the
-virtio-iommu memory region, transformed into the inversed info, ie.
-the host reserved IOVA regions. Then those latter are combined with the
-reserved IOVA regions set though the virtio-iommu reserved-regions
-property. That way, the guest virtio-iommu driver, unchanged, is 
-able to probe the whole set of reserved regions and prevent any IOVA
-belonging to those ranges from beeing used, achieving the original goal.
-
-Best Regards
-
-Eric
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/iommu_geometry-v4
-
-History:
-v3 -> v4:
-- removed nr_iovas (Alex) and droppped last patch (Alex)
-- Collected Michael's R-b, Peter's R-b and Yanghang's T-b
+---
 
 v2 -> v3:
-- rebase on top of vfio-next (including iommufd prereq)
-- take into account IOVA range info capability may not be offered by
-  old kernel and use nr_iovas = -1 to encode that [Alex]
-- use GList * everywhere instead of arrays (in the range_inverse_array)
-  with the benefice it sorts ranges retrieved from the kernel which are
-  not garanteed to be sorted. Rework the tests accordingly [Alex]
-- Make sure resv_regions GList is build before the probe() [Jean]
-  per device list is first populated with prop resv regions on
-  IOMMUDevice creation and then rebuilt on set_iova()
-- Add a warning if set_iova builds a valid list after probe was
-  called [Jean]
-- Build host windows on top of IOVA valid ranges if this info can
-  be retrieved from the kernel. As many windows are created as
-  valid ranges
-v1 -> v2:
-- Remove "[PATCH 12/13] virtio-iommu: Resize memory region according
-  to the max iova info" which causes way too much trouble: trigger
-  a coredump in vhost, causes duplication of IOMMU notifiers causing
-  EEXIST vfio_dma_map errors, ... This looks like a bad usage of the
-  memory API so I prefer removing this from this series. So I was
-  also obliged to remove the vfio_find_hostwin() check in the case
-  of an IOMMU.
-- Let range_inverse_array() take low/high args instead of hardcoding
-  0, UINT64_MAX which both complexifies the algo and the tests.
-- Move range function description in header.
-- Check that if set_iova_ranges is called several times, new resv
-  regions are included in previous ones
+- Pass a Glist instead
+- Added a comment on memory_region_iommu_set_iova_ranges
+- Removed R-b due to that change
+---
+ include/exec/memory.h | 30 ++++++++++++++++++++++++++++++
+ system/memory.c       | 13 +++++++++++++
+ 2 files changed, 43 insertions(+)
 
-
-Eric Auger (12):
-  memory: Let ReservedRegion use Range
-  memory: Introduce memory_region_iommu_set_iova_ranges
-  vfio: Collect container iova range info
-  virtio-iommu: Rename reserved_regions into prop_resv_regions
-  range: Make range_compare() public
-  util/reserved-region: Add new ReservedRegion helpers
-  virtio-iommu: Introduce per IOMMUDevice reserved regions
-  range: Introduce range_inverse_array()
-  virtio-iommu: Record whether a probe request has been issued
-  virtio-iommu: Implement set_iova_ranges() callback
-  virtio-iommu: Consolidate host reserved regions and property set ones
-  test: Add some tests for range and resv-mem helpers
-
- include/exec/memory.h            |  34 +++-
- include/hw/vfio/vfio-common.h    |   1 +
- include/hw/virtio/virtio-iommu.h |   7 +-
- include/qemu/range.h             |  14 ++
- include/qemu/reserved-region.h   |  32 ++++
- hw/core/qdev-properties-system.c |   9 +-
- hw/vfio/common.c                 |   9 +
- hw/vfio/container.c              |  42 +++-
- hw/virtio/virtio-iommu-pci.c     |   8 +-
- hw/virtio/virtio-iommu.c         | 155 +++++++++++++--
- system/memory.c                  |  13 ++
- tests/unit/test-resv-mem.c       | 318 +++++++++++++++++++++++++++++++
- util/range.c                     |  61 +++++-
- util/reserved-region.c           |  91 +++++++++
- hw/virtio/trace-events           |   1 +
- tests/unit/meson.build           |   1 +
- util/meson.build                 |   1 +
- 17 files changed, 764 insertions(+), 33 deletions(-)
- create mode 100644 include/qemu/reserved-region.h
- create mode 100644 tests/unit/test-resv-mem.c
- create mode 100644 util/reserved-region.c
-
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index a089ab4555..1b2791145e 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -527,6 +527,24 @@ struct IOMMUMemoryRegionClass {
+      int (*iommu_set_page_size_mask)(IOMMUMemoryRegion *iommu,
+                                      uint64_t page_size_mask,
+                                      Error **errp);
++    /**
++     * @iommu_set_iova_ranges:
++     *
++     * Propagate information about the usable IOVA ranges for a given IOMMU
++     * memory region. Used for example to propagate host physical device
++     * reserved memory region constraints to the virtual IOMMU.
++     *
++     * Optional method: if this method is not provided, then the default IOVA
++     * aperture is used.
++     *
++     * @iova_ranges: list of ordered IOVA ranges (at least one range)
++     *
++     * Returns 0 on success, or a negative error. In case of failure, the error
++     * object must be created.
++     */
++     int (*iommu_set_iova_ranges)(IOMMUMemoryRegion *iommu,
++                                  GList *iova_ranges,
++                                  Error **errp);
+ };
+ 
+ typedef struct RamDiscardListener RamDiscardListener;
+@@ -1856,6 +1874,18 @@ int memory_region_iommu_set_page_size_mask(IOMMUMemoryRegion *iommu_mr,
+                                            uint64_t page_size_mask,
+                                            Error **errp);
+ 
++/**
++ * memory_region_iommu_set_iova_ranges - Set the usable IOVA ranges
++ * for a given IOMMU MR region
++ *
++ * @iommu_mr: IOMMU memory region
++ * @iova_ranges: list of ordered IOVA ranges (at least one range)
++ * @errp: pointer to Error*, to store an error if it happens.
++ */
++int memory_region_iommu_set_iova_ranges(IOMMUMemoryRegion *iommu,
++                                        GList *iova_ranges,
++                                        Error **errp);
++
+ /**
+  * memory_region_name: get a memory region's name
+  *
+diff --git a/system/memory.c b/system/memory.c
+index a800fbc9e5..1034f136f0 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -1916,6 +1916,19 @@ int memory_region_iommu_set_page_size_mask(IOMMUMemoryRegion *iommu_mr,
+     return ret;
+ }
+ 
++int memory_region_iommu_set_iova_ranges(IOMMUMemoryRegion *iommu_mr,
++                                        GList *iova_ranges,
++                                        Error **errp)
++{
++    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
++    int ret = 0;
++
++    if (imrc->iommu_set_iova_ranges) {
++        ret = imrc->iommu_set_iova_ranges(iommu_mr, iova_ranges, errp);
++    }
++    return ret;
++}
++
+ int memory_region_register_iommu_notifier(MemoryRegion *mr,
+                                           IOMMUNotifier *n, Error **errp)
+ {
 -- 
 2.41.0
 

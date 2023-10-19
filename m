@@ -1,111 +1,116 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp802323ejb;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp802328ejb;
         Thu, 19 Oct 2023 14:24:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGGeRI0Qwm3t+/6K2bo1yy2M/LSFNCgDvcPcmTxATX1L5Xx4PmFrNPNznJ520X4A/AhWxpq
-X-Received: by 2002:a05:620a:2548:b0:76f:8c6:a537 with SMTP id s8-20020a05620a254800b0076f08c6a537mr3792045qko.77.1697750657925;
-        Thu, 19 Oct 2023 14:24:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697750657; cv=none;
+X-Google-Smtp-Source: AGHT+IE7r5vX/7AKccjgV4B4zXIjzgTJhMIlzhJuaV0c70Ry5aOhnB056wuLspECaCriSyFa3Jdn
+X-Received: by 2002:a05:620a:1a87:b0:775:9c23:1da9 with SMTP id bl7-20020a05620a1a8700b007759c231da9mr3497844qkb.49.1697750658275;
+        Thu, 19 Oct 2023 14:24:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697750658; cv=none;
         d=google.com; s=arc-20160816;
-        b=e8cWnMSU8V4Mkp3aoPnMNX2gdup5ZvchvnycuYUhXSgcPKz58IQRNRTI7blYGV7CrD
-         fi9txelIn3veVPsztLapRkoezdTqgS1fJgGF5ah7hIoB1ziY3teqHS6cthXv7fHK6rEI
-         oN07srNJQJvyGRQ5hL6vZ3Utw+Kegy5blpqmhvjmTHExjc+KDLa2ESVsZjF66WR40lpm
-         MT+RoFwxecT7/cmtlEwskC2FQHMhzgVKFAmeEy3Ldybh00ln9tNZNh5lT0mwKmNZhMNw
-         NDs0J0m2HAufJXbrKmSjGwITH7LnXQzZ69b2FExftBUTUAzhIKkjOk1NobSEgF3P5lnG
-         CVOQ==
+        b=rhAjA+rYXk4bOclLErAZEbPLB5tPi4mkHk3hVK5gbwZBYInJWUIns7mYewr5wsSjR5
+         AVkBFwXAFCBddX5MRcJ0iwVgSC2JWdRkXol8HhdvH4PGbcougw9A1awk6unlC/IKsMjN
+         xlkedym1g6HFyo/eas3Sok+7B3us/mY4HCRvoW1N+67KOnmQDj+u13uJ2nkJGrlzjxHM
+         SpkJzGHbGuCGaRtTw3ry5ydSugcLLcn1AsVd/17l4pwIEUXA7IfAlAHxU/i5VF1kz1ht
+         5cFStap/XLFgRHVQb4fMX4HeFfIBk6av6/oEDVGH2p7V+Xh1aHN0KTeSJDVymGKpgdxs
+         43Vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8655uhkf4Iv3nGM9fMF2CltwIDAJNWHol1jKSBeCR8A=;
-        fh=Uj8HDrldIoYWHqqMC7Rg3wRXZjU4364GbB0sXdwIGXY=;
-        b=nsC352iKq8PClwQC6iNmVX3XsWPgO+/EhPsJw3PbFnCHu6Lun8F2tv30gW0Eyy6U30
-         3s/147zEIgrWS2GWH8wXZS8zVNEdDZXguhTFRLwEH68MRVGRe2dAp7Pkhar82PDnrIi6
-         OAxJJjkZfkNFQW6rDR+XeJDV48Th52TWtwROeYO9elUYP8DnI2SQ2NUR+A7K26tgRFfX
-         7BDhtbjnPXKqHEFf4QQAbqk/HiXIc3rBUQcJqSF2X66p7xGYlcXRQVO3v3h0q6/XQDRO
-         hASeIaPfP3NcsN6RhUs0bGm+/49HlW+UDT4Mt17kVOLzFfqOKz6WSi1Px/N3qk/isqYe
-         hi2A==
+        bh=G9lJp+b2DIJ9xUd00S7g/tXGm5acpgAQSoiQZWG4ikE=;
+        fh=UuosDu/5muO8BtRxI3ShEIVecwKV0k+49wsUzMynCe4=;
+        b=xc7jFuG8tx4bUdibjyMFS5p6E7HypH2feTc6gVlY9wd21u2XxMjOwZio5/J9KaffZd
+         tHzf/T8CMy4yiTf5YLZ/cH5y4y96ZVzX+YTQogg/jSAMlLuaXfbN1W1ZLGkFH1aDTlFn
+         gRy7P+RK7xFL6Z51P/QHfdoq1yCOGWtwbyI1cFi4Xpqxt7R7EZZQ9RKQn54ybOpy1Mz/
+         ZaDNyktSIB0XNbb3Xm6KbATaC1y2zXxgV4UJCEyS/aAHHjyVjt6RZVxDg+fwI2epizCX
+         8P+GQePrg+CtKzpO9OdDau2SawU7wDrcoa1QLDQ/ZazJHiOiDLQ8tMliroJrB3Au7vjG
+         Pg8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="X+UUb/6U";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=X6L+++nr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e25-20020a05620a12d900b0077431227b58si247567qkl.27.2023.10.19.14.24.17
+        by mx.google.com with ESMTPS id h5-20020a05620a244500b0077091864d1esi258740qkn.687.2023.10.19.14.24.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 14:24:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Oct 2023 14:24:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="X+UUb/6U";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=X6L+++nr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtaTO-0003kK-VT; Thu, 19 Oct 2023 17:22:30 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtaUI-0008CM-V9; Thu, 19 Oct 2023 17:23:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaTN-0003hx-MD
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 17:22:29 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaUH-00083G-5r
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:23:25 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaTK-0000aA-UM
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 17:22:29 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-4084de32db5so1160695e9.0
- for <qemu-devel@nongnu.org>; Thu, 19 Oct 2023 14:22:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaUE-0001jW-VG
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:23:24 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-32003aae100so791055f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 14:23:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697750545; x=1698355345; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697750601; x=1698355401; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8655uhkf4Iv3nGM9fMF2CltwIDAJNWHol1jKSBeCR8A=;
- b=X+UUb/6U60mLi+OG1P+nmw2Y3pBMwy6+hXg33OSoxjofgUE/R17wqSqikT5OiLzAnm
- 1jRCS0VbGGXWBiVMCBmfbVmA/4NBFVPJ+cwMks6S47/UkAX58/KTsufxo3vB6p5a60tN
- 1BgLc4k1wGo801pJMx8TQNPHJKc5g3F1MyXRRa6dz8i4R5VXQDxLE4OWTAYWm692mKqf
- ycIM3nkb+yaTcsOEdM4+Nt+LQgs0fprdouRXnIP/WsVPnu2/yQmXiPjvJ7u6iCA7d9dQ
- yBJL9Ccu6D9vMcyZbO3Bepju5CoB8KRx/JTa8PKc52z4jP4b89MQOziw+1gXSoJ1tDcU
- GlaA==
+ bh=G9lJp+b2DIJ9xUd00S7g/tXGm5acpgAQSoiQZWG4ikE=;
+ b=X6L+++nrtugMAVc6/0dwi4syZpnex7PBq68RLsEjilLZR+JFmglRA9SPhPuQVd/oYO
+ Z95BOD/rK8c+CrncLprVZKecV+VARqV/weB+vtduITYAhQVb7t5db/0db/Uzo0hud/YY
+ E0cSh86SPJHaemnAleOBEpVN8O+Z6MtZGKNemsj7DwemPvFeQQczWQnD1234xbfpTIS6
+ iNxfb39xyRf2YdrBVAQyUZEJ1RKDO6EASIA+Zw4o1f7heqs1UD4Vf+A2Ke/4A6U/6hOq
+ 1P423MgHO+mx7Pqca6XtQ6B2/QP30PaNPX1JM4RHRGPfkI9ZQWY2Up179jAHwgFUiTqB
+ BBAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697750545; x=1698355345;
+ d=1e100.net; s=20230601; t=1697750601; x=1698355401;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8655uhkf4Iv3nGM9fMF2CltwIDAJNWHol1jKSBeCR8A=;
- b=SA0IGC1TuvdgcX/7rIMOFpmZMawtErB6NwyCoX9j+ofwPs8zfHnQCir2NojJJ/M8Yf
- ypv6gDrXq7Mjco0vkpTIhEC07GqIZ6dCB5hsNgmkv6NtjeGf0aNrQlHbkhP93UjU5khF
- 1Q/GmqMSumXzAxTD4HXGnWhGNeYUatha+1NNzTstQjvaEyGQ95He+642aG0akjPgHOYD
- G9RSj1CwPilUHBZUkX7/F+Kv1wll8RzKxeATPg6yCsEE9I4p8DEM6vrWXklVzKrJc6mR
- D+lXeWtGpcRxQKfHGvUNEA2Egq67uDm8onoang+KvFSbWn552/PG5m2s3vRty7qvNIbg
- T/+A==
-X-Gm-Message-State: AOJu0YyS28R0DA3DfHIplITJ7JaAcSQFu1rNvtw85YR0p9uJJpu8CjLa
- C+MiJwGen6OLFVQ7MbGQDZbqhXkORl6wdypRWyjFAw==
-X-Received: by 2002:adf:ee06:0:b0:32d:9e48:c2ef with SMTP id
- y6-20020adfee06000000b0032d9e48c2efmr2057438wrn.44.1697750545332; 
- Thu, 19 Oct 2023 14:22:25 -0700 (PDT)
+ bh=G9lJp+b2DIJ9xUd00S7g/tXGm5acpgAQSoiQZWG4ikE=;
+ b=P9h4ydh//SyPxynDNlaROJMN9fKT/pffmfaRSpTsTlHZDaYXhaA3VKpsZvBOJiXZji
+ DGMgr+Rn81vfJDjSXe1+CXDnrlZqMBEewtdFP5zY2rIHwWPcgjscuxVjGLlQDBhRt5o+
+ BHbTDoprztTeJveRJfLZZNQKqurJQEPU4JCeWI5s9muOP0/ZLrvmD1bjul+12AeyDtbx
+ r0AuOW3m656dFVCtMPaRt9qa8u96+E/1oPUl7q5bGrq/bR3GOZpF+L8D9dVM/HXlOSuI
+ bmylWkyPFvKfhZDlZo1WXZ80cB4kdJNzibt1E5Zanqiiq4Gd6wZa/jvTj5SB3vV0FLE+
+ Ow3Q==
+X-Gm-Message-State: AOJu0YyGHiS7ayxZhof4eUFSH4LbNkE5JitcqVS7qXG/2rqQT//WLN81
+ kIJ04pnPA9kgntlUze38hC2DGw==
+X-Received: by 2002:a5d:5956:0:b0:32d:de4f:140b with SMTP id
+ e22-20020a5d5956000000b0032dde4f140bmr2955479wri.6.1697750601701; 
+ Thu, 19 Oct 2023 14:23:21 -0700 (PDT)
 Received: from m1x-phil.lan (176-131-216-177.abo.bbox.fr. [176.131.216.177])
  by smtp.gmail.com with ESMTPSA id
- q11-20020a056000136b00b0032dc74c093dsm215583wrz.103.2023.10.19.14.22.23
+ x9-20020a05600c420900b004065e235417sm5250795wmh.21.2023.10.19.14.23.20
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Oct 2023 14:22:24 -0700 (PDT)
+ Thu, 19 Oct 2023 14:23:21 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
  qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 37/46] hw/arm/virt: Realize ARM_GICV2M sysbus device before
- accessing it
-Date: Thu, 19 Oct 2023 23:18:02 +0200
-Message-ID: <20231019211814.30576-38-philmd@linaro.org>
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ xen-devel@lists.xenproject.org
+Subject: [PULL 46/46] ui/input: Constify QemuInputHandler structure
+Date: Thu, 19 Oct 2023 23:18:11 +0200
+Message-ID: <20231019211814.30576-47-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231019211814.30576-1-philmd@linaro.org>
 References: <20231019211814.30576-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,46 +119,287 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BrwSPVEzsRT3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bDppx0Uuyp++
 
-sysbus_mmio_map() should not be called on unrealized device.
+Access to QemuInputHandlerState::handler are read-only.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20231018141151.87466-8-philmd@linaro.org>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-Id: <20231017131251.43708-1-philmd@linaro.org>
 ---
- hw/arm/virt.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/hw/virtio/virtio-input.h | 2 +-
+ include/ui/input.h               | 2 +-
+ chardev/msmouse.c                | 2 +-
+ chardev/wctablet.c               | 2 +-
+ hw/char/escc.c                   | 2 +-
+ hw/display/xenfb.c               | 6 +++---
+ hw/input/adb-kbd.c               | 2 +-
+ hw/input/hid.c                   | 6 +++---
+ hw/input/ps2.c                   | 4 ++--
+ hw/input/virtio-input-hid.c      | 8 ++++----
+ ui/input-legacy.c                | 2 +-
+ ui/input.c                       | 4 ++--
+ ui/vdagent.c                     | 2 +-
+ 13 files changed, 22 insertions(+), 22 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 02c7a7ff3c..5b08a98f07 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -690,10 +690,10 @@ static void create_v2m(VirtMachineState *vms)
-     DeviceState *dev;
+diff --git a/include/hw/virtio/virtio-input.h b/include/hw/virtio/virtio-input.h
+index 08f1591424..a6c9703644 100644
+--- a/include/hw/virtio/virtio-input.h
++++ b/include/hw/virtio/virtio-input.h
+@@ -84,7 +84,7 @@ struct VirtIOInputHID {
+     VirtIOInput                       parent_obj;
+     char                              *display;
+     uint32_t                          head;
+-    QemuInputHandler                  *handler;
++    const QemuInputHandler            *handler;
+     QemuInputHandlerState             *hs;
+     int                               ledstate;
+     bool                              wheel_axis;
+diff --git a/include/ui/input.h b/include/ui/input.h
+index 24d8e4579e..8f9aac562e 100644
+--- a/include/ui/input.h
++++ b/include/ui/input.h
+@@ -30,7 +30,7 @@ struct QemuInputHandler {
+ };
  
-     dev = qdev_new("arm-gicv2m");
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_GIC_V2M].base);
-     qdev_prop_set_uint32(dev, "base-spi", irq);
-     qdev_prop_set_uint32(dev, "num-spi", NUM_GICV2M_SPIS);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_GIC_V2M].base);
+ QemuInputHandlerState *qemu_input_handler_register(DeviceState *dev,
+-                                                   QemuInputHandler *handler);
++                                            const QemuInputHandler *handler);
+ void qemu_input_handler_activate(QemuInputHandlerState *s);
+ void qemu_input_handler_deactivate(QemuInputHandlerState *s);
+ void qemu_input_handler_unregister(QemuInputHandlerState *s);
+diff --git a/chardev/msmouse.c b/chardev/msmouse.c
+index ab8fe981d6..a774c397b4 100644
+--- a/chardev/msmouse.c
++++ b/chardev/msmouse.c
+@@ -171,7 +171,7 @@ static int msmouse_chr_write(struct Chardev *s, const uint8_t *buf, int len)
+     return len;
+ }
  
-     for (i = 0; i < NUM_GICV2M_SPIS; i++) {
-         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+-static QemuInputHandler msmouse_handler = {
++static const QemuInputHandler msmouse_handler = {
+     .name  = "QEMU Microsoft Mouse",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
+     .event = msmouse_input_event,
+diff --git a/chardev/wctablet.c b/chardev/wctablet.c
+index 43bdf6b608..f4008bf35b 100644
+--- a/chardev/wctablet.c
++++ b/chardev/wctablet.c
+@@ -178,7 +178,7 @@ static void wctablet_input_sync(DeviceState *dev)
+     }
+ }
+ 
+-static QemuInputHandler wctablet_handler = {
++static const QemuInputHandler wctablet_handler = {
+     .name  = "QEMU Wacom Pen Tablet",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
+     .event = wctablet_input_event,
+diff --git a/hw/char/escc.c b/hw/char/escc.c
+index 4be66053c1..48b30ee760 100644
+--- a/hw/char/escc.c
++++ b/hw/char/escc.c
+@@ -845,7 +845,7 @@ static void sunkbd_handle_event(DeviceState *dev, QemuConsole *src,
+     put_queue(s, keycode);
+ }
+ 
+-static QemuInputHandler sunkbd_handler = {
++static const QemuInputHandler sunkbd_handler = {
+     .name  = "sun keyboard",
+     .mask  = INPUT_EVENT_MASK_KEY,
+     .event = sunkbd_handle_event,
+diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
+index 0074a9b6f8..b2130a0d70 100644
+--- a/hw/display/xenfb.c
++++ b/hw/display/xenfb.c
+@@ -321,20 +321,20 @@ static void xenfb_mouse_sync(DeviceState *dev)
+     xenfb->wheel = 0;
+ }
+ 
+-static QemuInputHandler xenfb_keyboard = {
++static const QemuInputHandler xenfb_keyboard = {
+     .name  = "Xen PV Keyboard",
+     .mask  = INPUT_EVENT_MASK_KEY,
+     .event = xenfb_key_event,
+ };
+ 
+-static QemuInputHandler xenfb_abs_mouse = {
++static const QemuInputHandler xenfb_abs_mouse = {
+     .name  = "Xen PV Mouse",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
+     .event = xenfb_mouse_event,
+     .sync  = xenfb_mouse_sync,
+ };
+ 
+-static QemuInputHandler xenfb_rel_mouse = {
++static const QemuInputHandler xenfb_rel_mouse = {
+     .name  = "Xen PV Mouse",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
+     .event = xenfb_mouse_event,
+diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
+index a9088c910c..e21edf9acd 100644
+--- a/hw/input/adb-kbd.c
++++ b/hw/input/adb-kbd.c
+@@ -355,7 +355,7 @@ static void adb_kbd_reset(DeviceState *dev)
+     s->count = 0;
+ }
+ 
+-static QemuInputHandler adb_keyboard_handler = {
++static const QemuInputHandler adb_keyboard_handler = {
+     .name  = "QEMU ADB Keyboard",
+     .mask  = INPUT_EVENT_MASK_KEY,
+     .event = adb_keyboard_event,
+diff --git a/hw/input/hid.c b/hw/input/hid.c
+index a9c7dd1ce1..b8e85374ca 100644
+--- a/hw/input/hid.c
++++ b/hw/input/hid.c
+@@ -510,20 +510,20 @@ void hid_free(HIDState *hs)
+     hid_del_idle_timer(hs);
+ }
+ 
+-static QemuInputHandler hid_keyboard_handler = {
++static const QemuInputHandler hid_keyboard_handler = {
+     .name  = "QEMU HID Keyboard",
+     .mask  = INPUT_EVENT_MASK_KEY,
+     .event = hid_keyboard_event,
+ };
+ 
+-static QemuInputHandler hid_mouse_handler = {
++static const QemuInputHandler hid_mouse_handler = {
+     .name  = "QEMU HID Mouse",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
+     .event = hid_pointer_event,
+     .sync  = hid_pointer_sync,
+ };
+ 
+-static QemuInputHandler hid_tablet_handler = {
++static const QemuInputHandler hid_tablet_handler = {
+     .name  = "QEMU HID Tablet",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
+     .event = hid_pointer_event,
+diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+index 45af76a837..c8fd23cf36 100644
+--- a/hw/input/ps2.c
++++ b/hw/input/ps2.c
+@@ -1231,7 +1231,7 @@ static const VMStateDescription vmstate_ps2_mouse = {
+     }
+ };
+ 
+-static QemuInputHandler ps2_keyboard_handler = {
++static const QemuInputHandler ps2_keyboard_handler = {
+     .name  = "QEMU PS/2 Keyboard",
+     .mask  = INPUT_EVENT_MASK_KEY,
+     .event = ps2_keyboard_event,
+@@ -1242,7 +1242,7 @@ static void ps2_kbd_realize(DeviceState *dev, Error **errp)
+     qemu_input_handler_register(dev, &ps2_keyboard_handler);
+ }
+ 
+-static QemuInputHandler ps2_mouse_handler = {
++static const QemuInputHandler ps2_mouse_handler = {
+     .name  = "QEMU PS/2 Mouse",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
+     .event = ps2_mouse_event,
+diff --git a/hw/input/virtio-input-hid.c b/hw/input/virtio-input-hid.c
+index 7053ad72d4..45e4d4c75d 100644
+--- a/hw/input/virtio-input-hid.c
++++ b/hw/input/virtio-input-hid.c
+@@ -265,7 +265,7 @@ static const TypeInfo virtio_input_hid_info = {
+ 
+ /* ----------------------------------------------------------------- */
+ 
+-static QemuInputHandler virtio_keyboard_handler = {
++static const QemuInputHandler virtio_keyboard_handler = {
+     .name  = VIRTIO_ID_NAME_KEYBOARD,
+     .mask  = INPUT_EVENT_MASK_KEY,
+     .event = virtio_input_handle_event,
+@@ -322,7 +322,7 @@ static const TypeInfo virtio_keyboard_info = {
+ 
+ /* ----------------------------------------------------------------- */
+ 
+-static QemuInputHandler virtio_mouse_handler = {
++static const QemuInputHandler virtio_mouse_handler = {
+     .name  = VIRTIO_ID_NAME_MOUSE,
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
+     .event = virtio_input_handle_event,
+@@ -416,7 +416,7 @@ static const TypeInfo virtio_mouse_info = {
+ 
+ /* ----------------------------------------------------------------- */
+ 
+-static QemuInputHandler virtio_tablet_handler = {
++static const QemuInputHandler virtio_tablet_handler = {
+     .name  = VIRTIO_ID_NAME_TABLET,
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
+     .event = virtio_input_handle_event,
+@@ -541,7 +541,7 @@ static const TypeInfo virtio_tablet_info = {
+ 
+ /* ----------------------------------------------------------------- */
+ 
+-static QemuInputHandler virtio_multitouch_handler = {
++static const QemuInputHandler virtio_multitouch_handler = {
+     .name  = VIRTIO_ID_NAME_MULTITOUCH,
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_MTT,
+     .event = virtio_input_handle_event,
+diff --git a/ui/input-legacy.c b/ui/input-legacy.c
+index 46ea74e44d..210ae5eaca 100644
+--- a/ui/input-legacy.c
++++ b/ui/input-legacy.c
+@@ -127,7 +127,7 @@ static void legacy_kbd_event(DeviceState *dev, QemuConsole *src,
+     }
+ }
+ 
+-static QemuInputHandler legacy_kbd_handler = {
++static const QemuInputHandler legacy_kbd_handler = {
+     .name  = "legacy-kbd",
+     .mask  = INPUT_EVENT_MASK_KEY,
+     .event = legacy_kbd_event,
+diff --git a/ui/input.c b/ui/input.c
+index cbe8573c5c..dc745860f4 100644
+--- a/ui/input.c
++++ b/ui/input.c
+@@ -10,7 +10,7 @@
+ 
+ struct QemuInputHandlerState {
+     DeviceState       *dev;
+-    QemuInputHandler  *handler;
++    const QemuInputHandler *handler;
+     int               id;
+     int               events;
+     QemuConsole       *con;
+@@ -46,7 +46,7 @@ static uint32_t queue_count;
+ static uint32_t queue_limit = 1024;
+ 
+ QemuInputHandlerState *qemu_input_handler_register(DeviceState *dev,
+-                                                   QemuInputHandler *handler)
++                                            const QemuInputHandler *handler)
+ {
+     QemuInputHandlerState *s = g_new0(QemuInputHandlerState, 1);
+     static int id = 1;
+diff --git a/ui/vdagent.c b/ui/vdagent.c
+index 00d36a8677..706d6d97bd 100644
+--- a/ui/vdagent.c
++++ b/ui/vdagent.c
+@@ -297,7 +297,7 @@ static void vdagent_pointer_sync(DeviceState *dev)
+     }
+ }
+ 
+-static QemuInputHandler vdagent_mouse_handler = {
++static const QemuInputHandler vdagent_mouse_handler = {
+     .name  = "vdagent mouse",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
+     .event = vdagent_pointer_event,
 -- 
 2.41.0
 

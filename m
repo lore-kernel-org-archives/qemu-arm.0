@@ -1,138 +1,86 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp309333ejb;
-        Wed, 18 Oct 2023 23:39:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFcJ1f9QEiO8znA9OFQjIijciSgo0xuJqU3ULzrYpaI+IVsdVNS50nEcSHqMCIQe/NMb3Xj
-X-Received: by 2002:ac8:5b86:0:b0:3f9:aa80:b48a with SMTP id a6-20020ac85b86000000b003f9aa80b48amr1274460qta.8.1697697599296;
-        Wed, 18 Oct 2023 23:39:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697697599; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp324840ejb;
+        Thu, 19 Oct 2023 00:16:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEPE5lCQWgBtA5ELW+vWYaw97TxDLNJgny5ltPD62P8gBLIAszCCLBg6JDPbYNFwK8BvEhq
+X-Received: by 2002:a0c:ea2a:0:b0:63d:8447:ddd with SMTP id t10-20020a0cea2a000000b0063d84470dddmr1225312qvp.20.1697699806775;
+        Thu, 19 Oct 2023 00:16:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697699806; cv=none;
         d=google.com; s=arc-20160816;
-        b=IyOA/WtZlEto7pwjZTc5iA86ttu6SdnObWye9QE1NK0CMh2N4fQwRR/KoSkC3PCbgI
-         gR9FftUXEWu9qJ9wlvo8XcLfbfkmSXQqn8v6Be28NcSmfYKlWBOBPmYmN6HiQuNEdKpV
-         TkDhTlQWvoWt5f8hDX4M6/kB7bB6xfgvqWYm5XyamP+vvRihuMAMUJSGOWoXkTJ52NU0
-         Xkc1oskTFgKdD/2LvMtoTFHeBKBmcC1watncWboT7kLyYvwgOhJnaot6ln6n2G9L1ArK
-         rW+8hfAiECJwnfU8gCANFFScI4jpXN3Vh/pccNG5MIxEkFkb6zfWgJZ2Ht6HAqjfAOjl
-         f8jw==
+        b=aYEhPdlDzx8DXJiMx5pa5cdG/bcX87R7GxlPIat1Z13AKy+8hrRPuju6DF9W/Bdr+Q
+         NaKBosOyEMaEZliOlRBpaTo6Vre2gm7COGcqIkQyNT7vx4VQvveUacQr5vWpiFtAEypo
+         AZClYDI2rs9ILy7B4OnVxUQATydMHyi0CJsOzV5Qd6mX6DuLHe/d2hIyYd/vto2+v9O2
+         jGGgsfM6ZMkyEGP6KqiYor5im3rTBylK/fI0bVdwEF7gpAVIjx3PcJRO5rogksFfbucx
+         PCM4xW7PNYEGX5g5V2KVq6Zed5oE3sA4jxclryKy2DdHTTkJNFpUbFhJnC5qkm7twI3M
+         vD/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Qsq+R0RytK51CIWoEH1OXGbDK8mM1Ns3/YSoH9Mxk4M=;
-        fh=dYlMkLiw1BFJkKieDSWjn5wkFauh7Di4xUeLxUeQkZM=;
-        b=rJ9zYQe7qx82jCNnm42n5i9GmP6EWMwR5LRl1WXMXO5654wBJwjHrun0mDPyUx4g/4
-         k0QJiMJanxCR5/1wgFgSzksrsHltBokEhTqB2WK82Kh9xPHuAGdMThVf14laI3QzT53c
-         tWla0ZYWO8AU/g6TVCQt8nWKPtfT6dxRINRFB24ntVkKP5q3WV/3uP2H1IX1hlkAcoYn
-         R3MXsQOe6mcDmhL27CcsA5Y7L8PaELdKhkCaKtynafp2F7GJZiVi0Enkcc5bIixMwdBs
-         3DceVPzd3FaQxSbidgvFdIbL5pp83UiXt6CdUkJPDWBqvbDPgqmfrOe5idle74o5GGG6
-         lebQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=wsbiW+NHTcOe6PQT7YfPuDfefva872dlhc85eiuWXt4=;
+        fh=mIJGsCCezl/E0qHOjEsRVAduFTIo6OTQPvroE0vb+p0=;
+        b=GhqC0LOPNWWfYhT9fP932HD7H1Vrpwm9WjKCRfR31+ILcgcWm8U7kyZDWwFDPvLcaq
+         /fp/qdCrf0HArWv3Rv/e3Omj7UNqWKp4hxnJrQNWXlCbySKmV7NBuU6JJa4qiKzI51gU
+         WBFxt08dwpiJlmmIsIPy9J+OyQzr6iLZiPvanPLooSfEMhm27zqMjgNeFH1SgSB9zR17
+         5UfgfkaZbPqmI8Bjajjl8UB0O/OlAWa6tXY1+OXoK/HKEZvScU/eE6aT+tkItccSyGNE
+         dw9wHWy8Qx8tz3/bAh099rgy3HAQsgRZjgdqsEvmrECp958ASVR+jt1W4LcnlOPboOkR
+         d65Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TLz6y+8e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e2-20020a05622a110200b0041961b33c4fsi1078258qty.808.2023.10.18.23.39.59
+        by mx.google.com with ESMTPS id oh8-20020a056214438800b0064f4d7d85c4si1211469qvb.354.2023.10.19.00.16.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Oct 2023 23:39:59 -0700 (PDT)
+        Thu, 19 Oct 2023 00:16:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TLz6y+8e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtMh4-0001CB-Ui; Thu, 19 Oct 2023 02:39:42 -0400
+	id 1qtNGf-0004oa-HV; Thu, 19 Oct 2023 03:16:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qtMh3-00015i-N4
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 02:39:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <SRS0=PA0m=GB=kaod.org=clg@ozlabs.org>)
+ id 1qtNGc-0004ne-VJ; Thu, 19 Oct 2023 03:16:27 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qtMh2-0005FP-1J
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 02:39:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697697579;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Qsq+R0RytK51CIWoEH1OXGbDK8mM1Ns3/YSoH9Mxk4M=;
- b=TLz6y+8ePQGg1aEWG7OiMR1UnoALlZx/TepiZuxAsjLuVUegtdnKs6kNR4fwUlBWHYeAEq
- LLepoR36dYRItmfK/Df/g9ihZm1ZKI1DvVG8AVrE3/0neMz+qLASupUOLQVG5KhAvWIVg1
- XfLerJuTJjX5nL4RRCOiSU/aUXtulsQ=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-486-NjUnHhV1PWmJWSE9QnHysg-1; Thu, 19 Oct 2023 02:39:38 -0400
-X-MC-Unique: NjUnHhV1PWmJWSE9QnHysg-1
-Received: by mail-qv1-f72.google.com with SMTP id
- 6a1803df08f44-66d03b02d16so7864916d6.0
- for <qemu-arm@nongnu.org>; Wed, 18 Oct 2023 23:39:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697697577; x=1698302377;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Qsq+R0RytK51CIWoEH1OXGbDK8mM1Ns3/YSoH9Mxk4M=;
- b=YqcPNGpydAFPq4K5+YvnhI37/ioMtUQukjTQ4QuU89xyQ8sWb3NeCGZOo+RwD96JAh
- a+GQJRAh8AutiNW/byegcfqKUh32d75agYkZXBlq33ZT+cuHuw670//7EgetTVeePn1m
- R5fb1y7AJjSl/FwrzSm1hqdG1/OUMZEAgatZ6Hk/celiBzRQVlf6xfTGWga85soTMQFu
- Kw6daiNBIEwbpkfOZmexoTGaVgWYJ7nh4Jws+4Kf9pyVTrZBQf94y+dL/auZYVJ52GSD
- BD1osYAxMKpvBSvRENK9/j5owYZ2f+5qSuoHMttAjzX8H19TRVvk3nISokGZMaNhFYxp
- u4dg==
-X-Gm-Message-State: AOJu0YzQm0XkD5xHHqKFFY4EwNn7bFSKtd8aBhUP8/lcUieEFNceMdO8
- giF0mAgO6EY+KpY6moC7yrsG6TR7/MMCUZ+slp1McIqS2h++YiZng7RFdLILNTe/TXGuVoArC55
- csNK95HbTa6ZC
-X-Received: by 2002:a05:620a:1929:b0:773:cd00:e1ac with SMTP id
- bj41-20020a05620a192900b00773cd00e1acmr1191686qkb.36.1697697577446; 
- Wed, 18 Oct 2023 23:39:37 -0700 (PDT)
-X-Received: by 2002:a05:620a:1929:b0:773:cd00:e1ac with SMTP id
- bj41-20020a05620a192900b00773cd00e1acmr1191668qkb.36.1697697577185; 
- Wed, 18 Oct 2023 23:39:37 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- o14-20020ae9f50e000000b0076d6a08ac98sm537783qkg.76.2023.10.18.23.39.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Oct 2023 23:39:35 -0700 (PDT)
-Message-ID: <c0c88363-2b5d-df82-86f4-257521ed5ba2@redhat.com>
-Date: Thu, 19 Oct 2023 08:39:32 +0200
+ (Exim 4.90_1) (envelope-from <SRS0=PA0m=GB=kaod.org=clg@ozlabs.org>)
+ id 1qtNGX-00036h-Lp; Thu, 19 Oct 2023 03:16:25 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4S9zXX6pwlz4xcT;
+ Thu, 19 Oct 2023 18:16:12 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4S9zXT0Fcgz4xM1;
+ Thu, 19 Oct 2023 18:16:08 +1100 (AEDT)
+Message-ID: <4e2c6e58-ecb7-416f-8025-f6a6d882f8bf@kaod.org>
+Date: Thu, 19 Oct 2023 09:16:05 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v3 03/13] vfio: Collect container iova range info
-To: Alex Williamson <alex.williamson@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- clg@redhat.com, jean-philippe@linaro.org, mst@redhat.com,
- pbonzini@redhat.com, peter.maydell@linaro.org, peterx@redhat.com,
- david@redhat.com, philmd@linaro.org, zhenzhong.duan@intel.com,
- yi.l.liu@intel.com
-References: <20231011175516.541374-1-eric.auger@redhat.com>
- <20231011175516.541374-4-eric.auger@redhat.com>
- <20231018130737.3815d3c4.alex.williamson@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20231018130737.3815d3c4.alex.williamson@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 06/10] hw/fsi: Aspeed APB2OPB interface
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+To: Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
+ peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
+ thuth@redhat.com, philmd@linaro.org, lvivier@redhat.com
+Cc: qemu-arm@nongnu.org
+References: <20231011151339.2782132-1-ninad@linux.ibm.com>
+ <20231011151339.2782132-7-ninad@linux.ibm.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20231011151339.2782132-7-ninad@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-3.339, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=PA0m=GB=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,191 +93,517 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qy/tIs0aTqDx
+X-TUID: UDdCz2bbFA23
 
-Hi Alex,
+On 10/11/23 17:13, Ninad Palsule wrote:
+> This is a part of patchset where IBM's Flexible Service Interface is
+> introduced.
+> 
+> An APB-to-OPB bridge enabling access to the OPB from the ARM core in
+> the AST2600. Hardware limitations prevent the OPB from being directly
+> mapped into APB, so all accesses are indirect through the bridge.
+> 
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+> ---
+> v2:
+> - Incorporated review comments by Joel
+> v3:
+> - Incorporated review comments by Thomas Huth
+> v4:
+>    - Compile FSI with ASPEED_SOC only.
+> v5:
+> - Incorporated review comments by Cedric.
+> ---
+>   meson.build                     |   1 +
+>   hw/fsi/trace.h                  |   1 +
+>   include/hw/fsi/aspeed-apb2opb.h |  33 +++
+>   hw/fsi/aspeed-apb2opb.c         | 350 ++++++++++++++++++++++++++++++++
+>   hw/arm/Kconfig                  |   1 +
+>   hw/fsi/Kconfig                  |   4 +
+>   hw/fsi/meson.build              |   1 +
+>   hw/fsi/trace-events             |   2 +
+>   8 files changed, 393 insertions(+)
+>   create mode 100644 hw/fsi/trace.h
+>   create mode 100644 include/hw/fsi/aspeed-apb2opb.h
+>   create mode 100644 hw/fsi/aspeed-apb2opb.c
+> 
+> diff --git a/meson.build b/meson.build
+> index 98e68ef0b1..1a722693a6 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -3244,6 +3244,7 @@ if have_system
+>       'hw/char',
+>       'hw/display',
+>       'hw/dma',
+> +    'hw/fsi',
+>       'hw/hyperv',
+>       'hw/i2c',
+>       'hw/i386',
+> diff --git a/hw/fsi/trace.h b/hw/fsi/trace.h
+> new file mode 100644
+> index 0000000000..ee67c7fb04
+> --- /dev/null
+> +++ b/hw/fsi/trace.h
+> @@ -0,0 +1 @@
+> +#include "trace/trace-hw_fsi.h"
+> diff --git a/include/hw/fsi/aspeed-apb2opb.h b/include/hw/fsi/aspeed-apb2opb.h
+> new file mode 100644
+> index 0000000000..a81ae67023
+> --- /dev/null
+> +++ b/include/hw/fsi/aspeed-apb2opb.h
+> @@ -0,0 +1,33 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * Copyright (C) 2023 IBM Corp.
+> + *
+> + * ASPEED APB2OPB Bridge
+> + */
+> +#ifndef FSI_ASPEED_APB2OPB_H
+> +#define FSI_ASPEED_APB2OPB_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "hw/fsi/opb.h"
+> +
+> +#define TYPE_ASPEED_APB2OPB "aspeed.apb2opb"
+> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedAPB2OPBState, ASPEED_APB2OPB)
+> +
+> +#define ASPEED_APB2OPB_NR_REGS ((0xe8 >> 2) + 1)
+> +
+> +#define ASPEED_FSI_NUM 2
+> +
+> +typedef struct AspeedAPB2OPBState {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +
+> +    /*< public >*/
+> +    MemoryRegion iomem;
+> +
+> +    uint32_t regs[ASPEED_APB2OPB_NR_REGS];
+> +    qemu_irq irq;
+> +
+> +    OPBus opb[ASPEED_FSI_NUM];
+> +} AspeedAPB2OPBState;
+> +
+> +#endif /* FSI_ASPEED_APB2OPB_H */
+> diff --git a/hw/fsi/aspeed-apb2opb.c b/hw/fsi/aspeed-apb2opb.c
+> new file mode 100644
+> index 0000000000..e4efc08778
+> --- /dev/null
+> +++ b/hw/fsi/aspeed-apb2opb.c
+> @@ -0,0 +1,350 @@
+> +/*
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * Copyright (C) 2023 IBM Corp.
+> + *
+> + * ASPEED APB-OPB FSI interface
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "qom/object.h"
+> +#include "qapi/error.h"
+> +#include "trace.h"
+> +
+> +#include "hw/fsi/aspeed-apb2opb.h"
+> +#include "hw/qdev-core.h"
+> +
+> +#define TO_REG(x) (x >> 2)
+> +#define GENMASK(t, b) (((1ULL << ((t) + 1)) - 1) & ~((1ULL << (b)) - 1))
+> +
+> +#define APB2OPB_VERSION                    TO_REG(0x00)
+> +#define   APB2OPB_VERSION_VER              GENMASK(7, 0)
+> +
+> +#define APB2OPB_TRIGGER                    TO_REG(0x04)
+> +#define   APB2OPB_TRIGGER_EN               BIT(0)
+> +
+> +#define APB2OPB_CONTROL                    TO_REG(0x08)
+> +#define   APB2OPB_CONTROL_OFF              GENMASK(31, 13)
+> +
+> +#define APB2OPB_OPB2FSI                    TO_REG(0x0c)
+> +#define   APB2OPB_OPB2FSI_OFF              GENMASK(31, 22)
+> +
+> +#define APB2OPB_OPB0_SEL                   TO_REG(0x10)
+> +#define APB2OPB_OPB1_SEL                   TO_REG(0x28)
+> +#define   APB2OPB_OPB_SEL_EN               BIT(0)
+> +
+> +#define APB2OPB_OPB0_MODE                  TO_REG(0x14)
+> +#define APB2OPB_OPB1_MODE                  TO_REG(0x2c)
+> +#define   APB2OPB_OPB_MODE_RD              BIT(0)
+> +
+> +#define APB2OPB_OPB0_XFER                  TO_REG(0x18)
+> +#define APB2OPB_OPB1_XFER                  TO_REG(0x30)
+> +#define   APB2OPB_OPB_XFER_FULL            BIT(1)
+> +#define   APB2OPB_OPB_XFER_HALF            BIT(0)
+> +
+> +#define APB2OPB_OPB0_ADDR                  TO_REG(0x1c)
+> +#define APB2OPB_OPB0_WRITE_DATA            TO_REG(0x20)
+> +
+> +#define APB2OPB_OPB1_DMA_EN                TO_REG(0x24)
+> +#define APB2OPB_OPB1_DMA_EN_3              BIT(3)
+> +#define APB2OPB_OPB1_DMA_EN_2              BIT(2)
+> +#define APB2OPB_OPB1_DMA_EN_1              BIT(1)
+> +#define APB2OPB_OPB1_DMA_EN_0              BIT(0)
+> +
+> +#define APB2OPB_OPB1_ADDR                  TO_REG(0x34)
+> +#define APB2OPB_OPB1_WRITE_DATA                  TO_REG(0x38)
+> +
+> +#define APB2OPB_OPB_CLK                    TO_REG(0x3c)
+> +#define   APB2OPB_OPB_CLK_SYNC             BIT(0)
+> +
+> +#define APB2OPB_IRQ_CLEAR                  TO_REG(0x40)
+> +#define   APB2OPB_IRQ_CLEAR_EN             BIT(0)
+> +
+> +#define APB2OPB_IRQ_MASK                   TO_REG(0x44)
+> +#define   APB2OPB_IRQ_MASK_OPB1_TX_ACK     BIT(17)
+> +#define   APB2OPB_IRQ_MASK_OPB0_TX_ACK     BIT(16)
+> +#define   APB2OPB_IRQ_MASK_CH3_TCONT       BIT(15)
+> +#define   APB2OPB_IRQ_MASK_CH2_TCONT       BIT(14)
+> +#define   APB2OPB_IRQ_MASK_CH1_TCONT       BIT(13)
+> +#define   APB2OPB_IRQ_MASK_CH0_TCONT       BIT(12)
+> +#define   APB2OPB_IRQ_MASK_CH3_FIFO_EMPTY  BIT(11)
+> +#define   APB2OPB_IRQ_MASK_CH2_FIFO_EMPTY  BIT(10)
+> +#define   APB2OPB_IRQ_MASK_CH1_FIFO_EMPTY  BIT(9)
+> +#define   APB2OPB_IRQ_MASK_CH0_FIFO_EMPTY  BIT(8)
+> +#define   APB2OPB_IRQ_MASK_CH3_FIFO_FULL   BIT(7)
+> +#define   APB2OPB_IRQ_MASK_CH2_FIFO_FULL   BIT(6)
+> +#define   APB2OPB_IRQ_MASK_CH1_FIFO_FULL   BIT(5)
+> +#define   APB2OPB_IRQ_MASK_CH0_FIFO_FULL   BIT(4)
+> +#define   APB2OPB_IRQ_MASK_CH3_DMA_EOT     BIT(3)
+> +#define   APB2OPB_IRQ_MASK_CH2_DMA_EOT     BIT(2)
+> +#define   APB2OPB_IRQ_MASK_CH1_DMA_EOT     BIT(1)
+> +#define   APB2OPB_IRQ_MASK_CH0_DMA_EOT     BIT(0)
+> +
+> +#define APB2OPB_IRQ_STS                    TO_REG(0x48)
+> +#define   APB2OPB_IRQ_STS_MASTER_ERROR     BIT(28)
+> +#define   APB2OPB_IRQ_STS_PORT_ERROR       BIT(27)
+> +#define   APB2OPB_IRQ_STS_HOTPLUG          BIT(26)
+> +#define   APB2OPB_IRQ_STS_SLAVE_7          BIT(25)
+> +#define   APB2OPB_IRQ_STS_SLAVE_6          BIT(24)
+> +#define   APB2OPB_IRQ_STS_SLAVE_5          BIT(23)
+> +#define   APB2OPB_IRQ_STS_SLAVE_4          BIT(22)
+> +#define   APB2OPB_IRQ_STS_SLAVE_3          BIT(21)
+> +#define   APB2OPB_IRQ_STS_SLAVE_2          BIT(20)
+> +#define   APB2OPB_IRQ_STS_SLAVE_1          BIT(19)
+> +#define   APB2OPB_IRQ_STS_SLAVE_0          BIT(18)
+> +#define   APB2OPB_IRQ_STS_OPB1_TX_ACK      BIT(17)
+> +#define   APB2OPB_IRQ_STS_OPB0_TX_ACK      BIT(16)
+> +#define   APB2OPB_IRQ_STS_CH3_TCONT        BIT(15)
+> +#define   APB2OPB_IRQ_STS_CH2_TCONT        BIT(14)
+> +#define   APB2OPB_IRQ_STS_CH1_TCONT        BIT(13)
+> +#define   APB2OPB_IRQ_STS_CH0_TCONT        BIT(12)
+> +#define   APB2OPB_IRQ_STS_CH3_FIFO_EMPTY   BIT(11)
+> +#define   APB2OPB_IRQ_STS_CH2_FIFO_EMPTY   BIT(10)
+> +#define   APB2OPB_IRQ_STS_CH1_FIFO_EMPTY   BIT(9)
+> +#define   APB2OPB_IRQ_STS_CH0_FIFO_EMPTY   BIT(8)
+> +#define   APB2OPB_IRQ_STS_CH3_FIFO_FULL    BIT(7)
+> +#define   APB2OPB_IRQ_STS_CH2_FIFO_FULL    BIT(6)
+> +#define   APB2OPB_IRQ_STS_CH1_FIFO_FULL    BIT(5)
+> +#define   APB2OPB_IRQ_STS_CH0_FIFO_FULL    BIT(4)
+> +#define   APB2OPB_IRQ_STS_CH3_DMA_EOT      BIT(3)
+> +#define   APB2OPB_IRQ_STS_CH2_DMA_EOT      BIT(2)
+> +#define   APB2OPB_IRQ_STS_CH1_DMA_EOT      BIT(1)
+> +#define   APB2OPB_IRQ_STS_CH0_DMA_EOT      BIT(0)
+> +
+> +#define APB2OPB_OPB0_WRITE_WORD_ENDIAN     TO_REG(0x4c)
+> +#define   APB2OPB_OPB0_WRITE_WORD_ENDIAN_BE 0x0011101b
+> +#define APB2OPB_OPB0_WRITE_BYTE_ENDIAN     TO_REG(0x50)
+> +#define   APB2OPB_OPB0_WRITE_BYTE_ENDIAN_BE 0x0c330f3f
+> +#define APB2OPB_OPB1_WRITE_WORD_ENDIAN     TO_REG(0x54)
+> +#define APB2OPB_OPB1_WRITE_BYTE_ENDIAN     TO_REG(0x58)
+> +#define APB2OPB_OPB0_READ_BYTE_ENDIAN      TO_REG(0x5c)
+> +#define   APB2OPB_OPB0_READ_WORD_ENDIAN_BE  0x00030b1b
+> +#define APB2OPB_OPB1_READ_BYTE_ENDIAN      TO_REG(0x60)
+> +
+> +#define APB2OPB_RETRY                      TO_REG(0x64)
+> +#define   APB2OPB_RETRY_COUNTER            GENMASK(15, 0)
+> +
+> +#define APB2OPB_OPB0_STATUS                TO_REG(0x80)
+> +#define APB2OPB_OPB1_STATUS                TO_REG(0x8c)
+> +#define   APB2OPB_OPB_STATUS_TIMEOUT       BIT(4)
+> +#define   APB2OPB_OPB_STATUS_RETRY         BIT(3)
+> +#define   APB2OPB_OPB_STATUS_ERROR_ACK     BIT(2)
+> +#define   APB2OPB_OPB_STATUS_FW_ACK        BIT(1)
+> +#define   APB2OPB_OPB_STATUS_HW_ACK        BIT(0)
+> +
+> +#define APB2OPB_OPB0_READ_DATA         TO_REG(0x84)
+> +
+> +#define APB2OPB_OPB1_DMA_STATUS            TO_REG(0x88)
+> +#define   APB2OPB_OPB1_DMA_STATUS_CH3_EOT  BIT(7)
+> +#define   APB2OPB_OPB1_DMA_STATUS_CH2_EOT  BIT(6)
+> +#define   APB2OPB_OPB1_DMA_STATUS_CH1_EOT  BIT(5)
+> +#define   APB2OPB_OPB1_DMA_STATUS_CH0_EOT  BIT(4)
+> +#define   APB2OPB_OPB1_DMA_STATUS_CH3_REQ  BIT(3)
+> +#define   APB2OPB_OPB1_DMA_STATUS_CH2_REQ  BIT(2)
+> +#define   APB2OPB_OPB1_DMA_STATUS_CH1_REQ  BIT(1)
+> +#define   APB2OPB_OPB1_DMA_STATUS_CH0_REQ  BIT(0)
+> +
+> +#define APB2OPB_OPB1_READ_DATA         TO_REG(0x90)
 
-On 10/18/23 21:07, Alex Williamson wrote:
-> On Wed, 11 Oct 2023 19:52:19 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
->
->> Collect iova range information if VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE
->> capability is supported.
->>
->> This allows to propagate the information though the IOMMU MR
->> set_iova_ranges() callback so that virtual IOMMUs
->> get aware of those aperture constraints. This is only done if
->> the info is available and the number of iova ranges is greater than
->> 0.
->>
->> A new vfio_get_info_iova_range helper is introduced matching
->> the coding style of existing vfio_get_info_dma_avail. The
->> boolean returned value isn't used though. Code is aligned
->> between both.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v2 -> v3:
->> - Turn nr_iovas into a int initialized to -1
->> - memory_region_iommu_set_iova_ranges only is called if nr_iovas > 0
->> - vfio_get_info_iova_range returns a bool to match
->>   vfio_get_info_dma_avail. Uniformize both code by using !hdr in
->>   the check
->> - rebase on top of vfio-next
->> ---
->>  include/hw/vfio/vfio-common.h |  2 ++
->>  hw/vfio/common.c              |  9 +++++++
->>  hw/vfio/container.c           | 44 ++++++++++++++++++++++++++++++++---
->>  3 files changed, 52 insertions(+), 3 deletions(-)
->>
->> diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
->> index 7780b9073a..848ff47960 100644
->> --- a/include/hw/vfio/vfio-common.h
->> +++ b/include/hw/vfio/vfio-common.h
->> @@ -99,6 +99,8 @@ typedef struct VFIOContainer {
->>      QLIST_HEAD(, VFIORamDiscardListener) vrdl_list;
->>      QLIST_ENTRY(VFIOContainer) next;
->>      QLIST_HEAD(, VFIODevice) device_list;
->> +    int nr_iovas;
->> +    GList *iova_ranges;
-> Nit, nr_iovas seems like it has a pretty weak use case here.  We can
-> just test iova_ranges != NULL for calling set_iova_ranges.  In patch 13
-> we can again test against NULL, which I think also negates the need to
-> assert nr_iovas since the NULL test automatically catches the zero
-> case.  Otherwise
->
-> Reviewed-by: Alex Williamson <alex.williamson@redhat.com>
+I think you can reduce this list of define to the minimum and re-introduce
+the definitions when they are needed.
 
-Makes sense,  all the more I am going to drop patch 13. So I will respin
-and remove nr_iovas and just rely on testing iova_ranges.
+> +
+> +static uint64_t aspeed_apb2opb_read(void *opaque, hwaddr addr, unsigned size)
+> +{
+> +    AspeedAPB2OPBState *s = ASPEED_APB2OPB(opaque);
+> +
+> +    trace_aspeed_apb2opb_read(addr, size);
+> +
+> +    if (addr + size > sizeof(s->regs)) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Out of bounds read: 0x%"HWADDR_PRIx" for %u\n",
+> +                      __func__, addr, size);
+> +        return 0;
+> +    }
+> +
+> +    return s->regs[TO_REG(addr)];
+> +}
+> +
+> +static void aspeed_apb2opb_write(void *opaque, hwaddr addr, uint64_t data,
+> +                                 unsigned size)
+> +{
+> +    AspeedAPB2OPBState *s = ASPEED_APB2OPB(opaque);
+> +
+> +    trace_aspeed_apb2opb_write(addr, size, data);
+> +
+> +    if (addr + size > sizeof(s->regs)) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Out of bounds write: %"HWADDR_PRIx" for %u\n",
+> +                      __func__, addr, size);
+> +        return;
+> +    }
+> +
+> +    switch (TO_REG(addr)) {
+> +    case APB2OPB_CONTROL:
+> +        opb_fsi_master_address(&s->opb[0], data & APB2OPB_CONTROL_OFF);
+> +        break;
+> +    case APB2OPB_OPB2FSI:
+> +        opb_opb2fsi_address(&s->opb[0], data & APB2OPB_OPB2FSI_OFF);
+> +        break;
+> +    case APB2OPB_OPB0_WRITE_WORD_ENDIAN:
+> +        if (data != APB2OPB_OPB0_WRITE_WORD_ENDIAN_BE) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: Bridge needs to be driven as BE (0x%x)\n",
+> +                          __func__, APB2OPB_OPB0_WRITE_WORD_ENDIAN_BE);
+> +        }
+> +        break;
+> +    case APB2OPB_OPB0_WRITE_BYTE_ENDIAN:
+> +        if (data != APB2OPB_OPB0_WRITE_BYTE_ENDIAN_BE) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: Bridge needs to be driven as BE (0x%x)\n",
+> +                          __func__, APB2OPB_OPB0_WRITE_BYTE_ENDIAN_BE);
+> +        }
+> +        break;
+> +    case APB2OPB_OPB0_READ_BYTE_ENDIAN:
+> +        if (data != APB2OPB_OPB0_READ_WORD_ENDIAN_BE) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: Bridge needs to be driven as BE (0x%x)\n",
+> +                          __func__, APB2OPB_OPB0_READ_WORD_ENDIAN_BE);
+> +        }
+> +        break;
+> +    case APB2OPB_TRIGGER:
+> +    {
+> +        uint32_t opb, op_mode, op_size, op_addr, op_data;
+> +
+> +        assert((s->regs[APB2OPB_OPB0_SEL] & APB2OPB_OPB_SEL_EN) ^
+> +               (s->regs[APB2OPB_OPB1_SEL] & APB2OPB_OPB_SEL_EN));
+> +
+> +        if (s->regs[APB2OPB_OPB0_SEL] & APB2OPB_OPB_SEL_EN) {
+> +            opb = 0;
+> +            op_mode = s->regs[APB2OPB_OPB0_MODE];
+> +            op_size = s->regs[APB2OPB_OPB0_XFER];
+> +            op_addr = s->regs[APB2OPB_OPB0_ADDR];
+> +            op_data = s->regs[APB2OPB_OPB0_WRITE_DATA];
+> +        } else if (s->regs[APB2OPB_OPB1_SEL] & APB2OPB_OPB_SEL_EN) {
+> +            opb = 1;
+> +            op_mode = s->regs[APB2OPB_OPB1_MODE];
+> +            op_size = s->regs[APB2OPB_OPB1_XFER];
+> +            op_addr = s->regs[APB2OPB_OPB1_ADDR];
+> +            op_data = s->regs[APB2OPB_OPB1_WRITE_DATA];
+> +        } else {
+> +            g_assert_not_reached();
 
-Thanks!
+This makes the memop quite fatal. A LOG_GUEST_ERROR would be more appropriate.
 
-Eric
->
->>  } VFIOContainer;
->>  
->>  typedef struct VFIOGuestIOMMU {
->> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->> index 5ff5acf1d8..9d804152ba 100644
->> --- a/hw/vfio/common.c
->> +++ b/hw/vfio/common.c
->> @@ -699,6 +699,15 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>              goto fail;
->>          }
->>  
->> +        if (container->nr_iovas > 0) {
->> +            ret = memory_region_iommu_set_iova_ranges(giommu->iommu_mr,
->> +                    container->iova_ranges, &err);
->> +            if (ret) {
->> +                g_free(giommu);
->> +                goto fail;
->> +            }
->> +        }
->> +
->>          ret = memory_region_register_iommu_notifier(section->mr, &giommu->n,
->>                                                      &err);
->>          if (ret) {
->> diff --git a/hw/vfio/container.c b/hw/vfio/container.c
->> index adc467210f..5122ff6d92 100644
->> --- a/hw/vfio/container.c
->> +++ b/hw/vfio/container.c
->> @@ -382,7 +382,7 @@ bool vfio_get_info_dma_avail(struct vfio_iommu_type1_info *info,
->>      /* If the capability cannot be found, assume no DMA limiting */
->>      hdr = vfio_get_iommu_type1_info_cap(info,
->>                                          VFIO_IOMMU_TYPE1_INFO_DMA_AVAIL);
->> -    if (hdr == NULL) {
->> +    if (!hdr) {
->>          return false;
->>      }
->>  
->> @@ -394,6 +394,33 @@ bool vfio_get_info_dma_avail(struct vfio_iommu_type1_info *info,
->>      return true;
->>  }
->>  
->> +static bool vfio_get_info_iova_range(struct vfio_iommu_type1_info *info,
->> +                                     VFIOContainer *container)
->> +{
->> +    struct vfio_info_cap_header *hdr;
->> +    struct vfio_iommu_type1_info_cap_iova_range *cap;
->> +
->> +    hdr = vfio_get_iommu_type1_info_cap(info,
->> +                                        VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE);
->> +    if (!hdr) {
->> +        return false;
->> +    }
->> +
->> +    cap = (void *)hdr;
->> +
->> +    container->nr_iovas = cap->nr_iovas;
->> +    for (int i = 0; i < cap->nr_iovas; i++) {
->> +        Range *range = g_new(Range, 1);
->> +
->> +        range_set_bounds(range, cap->iova_ranges[i].start,
->> +                         cap->iova_ranges[i].end);
->> +        container->iova_ranges =
->> +            range_list_insert(container->iova_ranges, range);
->> +    }
->> +
->> +    return true;
->> +}
->> +
->>  static void vfio_kvm_device_add_group(VFIOGroup *group)
->>  {
->>      Error *err = NULL;
->> @@ -535,6 +562,12 @@ static void vfio_get_iommu_info_migration(VFIOContainer *container,
->>      }
->>  }
->>  
->> +static void vfio_free_container(VFIOContainer *container)
->> +{
->> +    g_list_free_full(container->iova_ranges, g_free);
->> +    g_free(container);
->> +}
->> +
->>  static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
->>                                    Error **errp)
->>  {
->> @@ -616,6 +649,8 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
->>      container->error = NULL;
->>      container->dirty_pages_supported = false;
->>      container->dma_max_mappings = 0;
->> +    container->nr_iovas = -1;
->> +    container->iova_ranges = NULL;
->>      QLIST_INIT(&container->giommu_list);
->>      QLIST_INIT(&container->hostwin_list);
->>      QLIST_INIT(&container->vrdl_list);
->> @@ -652,6 +687,9 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
->>          if (!vfio_get_info_dma_avail(info, &container->dma_max_mappings)) {
->>              container->dma_max_mappings = 65535;
->>          }
->> +
->> +        vfio_get_info_iova_range(info, container);
->> +
->>          vfio_get_iommu_info_migration(container, info);
->>          g_free(info);
->>  
->> @@ -765,7 +803,7 @@ enable_discards_exit:
->>      vfio_ram_block_discard_disable(container, false);
->>  
->>  free_container_exit:
->> -    g_free(container);
->> +    vfio_free_container(container);
->>  
->>  close_fd_exit:
->>      close(fd);
->> @@ -819,7 +857,7 @@ static void vfio_disconnect_container(VFIOGroup *group)
->>  
->>          trace_vfio_disconnect_container(container->fd);
->>          close(container->fd);
->> -        g_free(container);
->> +        vfio_free_container(container);
->>  
->>          vfio_put_address_space(space);
->>      }
+> +        }
+> +
+> +        if (op_size & ~(APB2OPB_OPB_XFER_HALF | APB2OPB_OPB_XFER_FULL)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "OPB transaction failed: Unrecognised access width: %d\n",
+> +                          op_size);
+> +            return;
+> +        }
+> +
+> +        op_size += 1;
+> +
+> +        if (op_mode & APB2OPB_OPB_MODE_RD) {
+> +            int index = opb ? APB2OPB_OPB1_READ_DATA
+> +                : APB2OPB_OPB0_READ_DATA;
+> +
+> +            switch (op_size) {
+> +            case 1:
+> +                s->regs[index] = opb_read8(&s->opb[opb], op_addr);
+> +                break;
+> +            case 2:
+> +                s->regs[index] = opb_read16(&s->opb[opb], op_addr);
+> +                break;
+> +            case 4:
+> +                s->regs[index] = opb_read32(&s->opb[opb], op_addr);
+> +                break;
+> +            default:
+> +                g_assert_not_reached(); /* should have bailed above */
+> +            }
+> +        } else {
+> +            /* FIXME: Endian swizzling */
+> +            switch (op_size) {
+> +            case 1:
+> +                opb_write8(&s->opb[opb], op_addr, op_data);
+> +                break;
+> +            case 2:
+> +                opb_write16(&s->opb[opb], op_addr, op_data);
+> +                break;
+> +            case 4:
+> +                opb_write32(&s->opb[opb], op_addr, op_data);
+> +                break;
+> +            default:
+> +                g_assert_not_reached(); /* should have bailed above */
+> +            }
+> +        }
+> +        s->regs[APB2OPB_IRQ_STS] |= opb ? APB2OPB_IRQ_STS_OPB1_TX_ACK
+> +            : APB2OPB_IRQ_STS_OPB0_TX_ACK;
+> +        break;
+> +    }
+> +    }
+> +
+> +    s->regs[TO_REG(addr)] = data;
+> +}
+> +
+> +static const struct MemoryRegionOps aspeed_apb2opb_ops = {
+> +    .read = aspeed_apb2opb_read,
+> +    .write = aspeed_apb2opb_write,
+> +    .valid.max_access_size = 4,
+> +    .valid.min_access_size = 4,
+> +    .impl.max_access_size = 4,
+> +    .impl.min_access_size = 4,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +};
+> +
+> +static void aspeed_apb2opb_realize(DeviceState *dev, Error **errp)
+> +{
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    AspeedAPB2OPBState *s = ASPEED_APB2OPB(dev);
+> +
+> +    qbus_init(&s->opb[0], sizeof(s->opb[0]), TYPE_OP_BUS,
+> +                        DEVICE(s), NULL);
+> +    qbus_init(&s->opb[1], sizeof(s->opb[1]), TYPE_OP_BUS,
+> +                        DEVICE(s), NULL);
+> +
+> +    sysbus_init_irq(sbd, &s->irq);
+> +
+> +    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_apb2opb_ops, s,
+> +                          TYPE_ASPEED_APB2OPB, 0x1000);
+> +    sysbus_init_mmio(sbd, &s->iomem);
+> +}
+> +
+> +static void aspeed_apb2opb_reset(DeviceState *dev)
+> +{
+> +    AspeedAPB2OPBState *s = ASPEED_APB2OPB(dev);
+> +
+> +    memset(s->regs, 0, sizeof(s->regs));
+> +
+> +    s->regs[APB2OPB_VERSION] = 0x000000a1;
+> +
+> +    /*
+> +     * The following magic values came from AST2600 data sheet
+> +     * The register values are defined under section "FSI controller"
+> +     * as initial values.
+> +     */
+> +    s->regs[APB2OPB_OPB0_WRITE_WORD_ENDIAN] = 0x0044eee4;
+> +    s->regs[APB2OPB_OPB0_WRITE_BYTE_ENDIAN] = 0x0055aaff;
+> +    s->regs[APB2OPB_OPB1_WRITE_WORD_ENDIAN] = 0x00117717;
+> +    s->regs[APB2OPB_OPB1_WRITE_BYTE_ENDIAN] = 0xffaa5500;
+> +    s->regs[APB2OPB_OPB0_READ_BYTE_ENDIAN] = 0x0044eee4;
+> +    s->regs[APB2OPB_OPB0_READ_BYTE_ENDIAN] = 0x00117717;
+
+You could use a reset array to set the values. See SCU.
+
+
+The reset looks good.
+
+Thanks,
+
+C.
+
+
+> +}
+> +
+> +static void aspeed_apb2opb_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED APB2OPB Bridge";
+> +    dc->realize = aspeed_apb2opb_realize;
+> +    dc->reset = aspeed_apb2opb_reset;
+> +}
+> +
+> +static const TypeInfo aspeed_apb2opb_info = {
+> +    .name = TYPE_ASPEED_APB2OPB,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(AspeedAPB2OPBState),
+> +    .class_init = aspeed_apb2opb_class_init,
+> +};
+> +
+> +static void aspeed_apb2opb_register_types(void)
+> +{
+> +    type_register_static(&aspeed_apb2opb_info);
+> +}
+> +
+> +type_init(aspeed_apb2opb_register_types);
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 7e68348440..d963de74c9 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -555,6 +555,7 @@ config ASPEED_SOC
+>       select LED
+>       select PMBUS
+>       select MAX31785
+> +    select FSI_APB2OPB_ASPEED
+>   
+>   config MPS2
+>       bool
+> diff --git a/hw/fsi/Kconfig b/hw/fsi/Kconfig
+> index 0f6e6d331a..6bbcb8f6ca 100644
+> --- a/hw/fsi/Kconfig
+> +++ b/hw/fsi/Kconfig
+> @@ -1,3 +1,7 @@
+> +config FSI_APB2OPB_ASPEED
+> +    bool
+> +    select FSI_OPB
+> +
+>   config FSI_OPB
+>       bool
+>       select FSI_CFAM
+> diff --git a/hw/fsi/meson.build b/hw/fsi/meson.build
+> index 407b8c2775..1bc6bb63cc 100644
+> --- a/hw/fsi/meson.build
+> +++ b/hw/fsi/meson.build
+> @@ -3,3 +3,4 @@ system_ss.add(when: 'CONFIG_FSI_SCRATCHPAD', if_true: files('engine-scratchpad.c
+>   system_ss.add(when: 'CONFIG_FSI_CFAM', if_true: files('cfam.c'))
+>   system_ss.add(when: 'CONFIG_FSI', if_true: files('fsi.c','fsi-master.c','fsi-slave.c'))
+>   system_ss.add(when: 'CONFIG_FSI_OPB', if_true: files('opb.c'))
+> +system_ss.add(when: 'CONFIG_FSI_APB2OPB_ASPEED', if_true: files('aspeed-apb2opb.c'))
+> diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
+> index ec9bab2fe8..4d4eb47c0b 100644
+> --- a/hw/fsi/trace-events
+> +++ b/hw/fsi/trace-events
+> @@ -11,3 +11,5 @@ fsi_master_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+>   fsi_master_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+>   opb_unimplemented_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+>   opb_unimplemented_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+> +aspeed_apb2opb_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+> +aspeed_apb2opb_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
 

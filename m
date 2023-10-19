@@ -1,117 +1,115 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp801435ejb;
-        Thu, 19 Oct 2023 14:22:26 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFFOD9Bj+ltsrjO/01LQME1IhzBGYfRcz9sBiNXjH6ewu32vIscMZNYQiovS3RnQEQx+krQ
-X-Received: by 2002:a67:a64b:0:b0:457:d207:4328 with SMTP id r11-20020a67a64b000000b00457d2074328mr195814vsh.23.1697750546579;
-        Thu, 19 Oct 2023 14:22:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697750546; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp801570ejb;
+        Thu, 19 Oct 2023 14:22:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFgGcRbczfWz8Wdsp0nM0BrOZ7O0zizW8L0qXZ1pY9VRaFHoLM7+JLXJjPauD1eyzNijtTx
+X-Received: by 2002:a54:450c:0:b0:3a7:56a7:6a91 with SMTP id l12-20020a54450c000000b003a756a76a91mr24963oil.23.1697750564065;
+        Thu, 19 Oct 2023 14:22:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697750564; cv=none;
         d=google.com; s=arc-20160816;
-        b=K8VXfJMExdphSBQvwhMwFNK+YGreI6RKgrNIORsucb9E50fR3WUJhzc9NzWfCTuAkh
-         KrcDDgNXNn1U4EQBWgexRypuR3jZmk5dFKHq6ko3h2IjDBvBQ4nKPnlK6BZlRsAGITE7
-         tfA9YBqZuaPwOrJZlnxcdyijYCv4bNWJSyETFjE2rNV2bSTnrWjlN5MOboPElCQG/Xta
-         dwGXJeYkbJ1qcAjo3ZGcGEBGxPhHkFKLdn0d6YG8PzSVZx+pIDkX3YX7tZtwvrWZD0Ik
-         4kunoNRoWlgtRnL/MxfzUdJsDWPzABATGzQDG0NBTz0n6ImvthtRy6NbDJimkN8kayAW
-         x/qA==
+        b=kCOqL1LvJtMlEvUgGPsQ0BfmipX2nFUNf28bVz+Ir9rshoJcl3amuQVXIxWgAo5vZ/
+         ol6xRTdaO3fPV0xaUijDs42LC2IpQZVeLbck70Fi6Wqq6/+syvB8Bd+Izr7jXB3o2rMC
+         Vgs29q6TK3g18AWy4J3k+Ytu2VasJ0W4G2EFWtv6ds2Z/1FkkSb0pbflw8p0zHq7v25v
+         vOd/yU9L+PVMRH06cxeFRG6btexPs0miovhTnFIEtUBGelxvc/Pb/bJd/XibrKpGxoq/
+         SE9kHaVAUOKCcN/cVUnV6HaMcr4um9RnxgOK/vMGaPkiZ5VdyyOavzyFGPUVDnOPTXyH
+         nwXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=L77YzspB8FLbeJAi/xMSeTxKS717pbBpnSqxW2g70VQ=;
-        fh=2q5eMg19MBJX4UJEslUyHr343qyfN+8GSNgdOvlNCm8=;
-        b=TEL2cB+CwYGUgm/GjLNFCLGG9xQuTJJ2lSH6P56LvRIXCZwS7abc6rNkOH+a7xkEIw
-         PKATS2wGj+LY9t3xCsbB3isCx/pZRtcO5lIRieFLpE/DF23BW187GVZ7gsTxFQyGxT88
-         /GYEI+miQgTBChHubS3p+EAkeFA4PCd8eyjFPjKPAoWYS7auQocY+vxMrv8T6Q2QVsb5
-         HEhsdnicVl0kAP50msUwnaQixS5cXqQbg56gD8OJYPUnp2jiL88QuKYbI3H0o1QJmdnh
-         OCq0/Fxj+BxAJijpgVjFGokxshcsZwrcYlNCuqBBcyVOOAXZIJZeq6iBdxaW86nwFb5h
-         6feQ==
+        bh=fejYroQSsxnLZIKfcKraO7+R46FW2xsffxb069wCoCk=;
+        fh=K4WRy4jG1atjyVM9eQJXeEi/Wd3/UW+ZJqEtboNK/hM=;
+        b=zNYT3mIMCmfx1GlkgwZHWR+ijHbRqmOzc51P5bBhUP/V3TrPQnEoA0SjCxJE61ATo4
+         NTENvqIeUqlP0MZCiKc06EJ+rdz8jV5R0MW0p3+db9SvHcAS9SjaKHS4uXNpmmx1POfb
+         sy5I3YdDlqbpLuZL5+XplF3cFTm0SEl4Ujx+1xHDwCt1qqlNtxYvIxdssM0D9XDaGTCM
+         luqGwbGe8eVTH6KttLXCtTEZhJfaIDGAB/ggcUgOpBuUH/zMdeckHrf9DwqkaUVI3DCf
+         nU4VMsyVTN/iCS3Wv2iif6REXrXM/CY7JSFdX9eUZpZZhNg5innrjss2hPIPFFpUjDEy
+         KGRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ullVvB39;
+       dkim=pass header.i=@linaro.org header.s=google header.b="huNWD51/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q13-20020a05620a0d8d00b00775762f28c2si265718qkl.81.2023.10.19.14.22.26
+        by mx.google.com with ESMTPS id y11-20020a056214016b00b00668da565494si358465qvs.162.2023.10.19.14.22.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 14:22:26 -0700 (PDT)
+        Thu, 19 Oct 2023 14:22:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ullVvB39;
+       dkim=pass header.i=@linaro.org header.s=google header.b="huNWD51/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtaSR-0001OF-Q1; Thu, 19 Oct 2023 17:21:31 -0400
+	id 1qtaQM-0005s6-GP; Thu, 19 Oct 2023 17:19:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaSO-0001Ji-Fv
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 17:21:28 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaQL-0005rA-RK
+ for qemu-devel@nongnu.org; Thu, 19 Oct 2023 17:19:21 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaSM-0006kX-7k
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 17:21:28 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-40790b0a224so1090255e9.0
- for <qemu-devel@nongnu.org>; Thu, 19 Oct 2023 14:21:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaQI-00051T-Ms
+ for qemu-devel@nongnu.org; Thu, 19 Oct 2023 17:19:21 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4083cd3917eso999885e9.3
+ for <qemu-devel@nongnu.org>; Thu, 19 Oct 2023 14:19:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697750484; x=1698355284; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697750357; x=1698355157; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=L77YzspB8FLbeJAi/xMSeTxKS717pbBpnSqxW2g70VQ=;
- b=ullVvB39rcaCkPICFdiESGxAOLYEaJe2fO++yDn9Ek/WeRbqYTd/k0wLAFIt2eP3dN
- vdTHAZLTe1mxrUS/5CtbDkBZSTOA52MS4UiaqCfwyIApoWUv8RViiNne88CRJ24WwS4j
- Xs8WDgiPWrqhxVLeTu9LL5MaZ77ZrLAhw2H/FOqVHovfYp/b7KKfEkYOHpbjeJWXUXFB
- YXHu1N4k794mIwXuo4hojO6ql7BV10x6Z+nHoPHVuNapNoZvkxg/wOWTntqstHq4Finh
- 5dWwhqMlLTdNuJ8l0WzCT5n7Kxg4zpCCFD7W1gvTaF7GdpRc106MXliEdTTsANwRshLb
- IojQ==
+ bh=fejYroQSsxnLZIKfcKraO7+R46FW2xsffxb069wCoCk=;
+ b=huNWD51/eCLMiYcpAtfNCK3faHAPLcfBRHa5k+wFx+QgaaflRFf5veWrEXPx8JHOVT
+ 1AbAyU1DGSWEqXVbd7SG3nu0GUVqJOJn8biTZb9KxIiguuVe8SQqn/NOTbmv3qJ+Zm8x
+ eFitUUa+Hqd9lgdwUJjr86eNeqxQJuaoEKVUTuJJqSUgxBxXsjRD4yh376vv+do732oD
+ zP0/TWnuYokXEdkbrZubAXYAD3RWJsMPYbtyzbjSao9vin+VQNP20NQNwYKVWC68exQq
+ D3LvDpiV86vcS849caPMx73hQ2ZJZqj9bra56dsgqdTYZxO5JeqZZTMy36scxLycbxnq
+ oRMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697750484; x=1698355284;
+ d=1e100.net; s=20230601; t=1697750357; x=1698355157;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=L77YzspB8FLbeJAi/xMSeTxKS717pbBpnSqxW2g70VQ=;
- b=PRzi5tQ2qGh8/yI3MRjmd/nJA7hp0syUckOid1tJgO+91tTedjrP5VFNv3P+OfGhjo
- yHEmRFrWH0kdl1H67jIo7bQ/l8qq+Q88PcLhOHakXeWe2ljyc1wGNHLmpVwOy30viLNl
- YvrHghtgEp45FL4+BaYWK6s3Uy2bYXCm81iX1n7HI6dgy5XrFHyecPHGdqx7DYFBHfvw
- 2h0tUTzqEFpFtjiDWwfUSaxhzJxkMFORWF/Z7OhWnT2NckppMJpmF3mTuLq0/84Esirn
- wTUWuv2nnatjSsUd3UOnbJk5r7IRo42YwLrLCsWKjZDyhPjxfY9Gdj19w0cMBAj/6+u1
- 5VlA==
-X-Gm-Message-State: AOJu0YyXX19fecpBfawTscbWPzvSfAIJxVvyqtFCGMOBhQTQpixs+yxO
- vbd1SzW/hqMYni9WiMRPA9YbIMFRYDG3+LfOVfmCvA==
-X-Received: by 2002:a05:600c:4992:b0:406:513d:7373 with SMTP id
- h18-20020a05600c499200b00406513d7373mr67452wmp.11.1697750484293; 
- Thu, 19 Oct 2023 14:21:24 -0700 (PDT)
+ bh=fejYroQSsxnLZIKfcKraO7+R46FW2xsffxb069wCoCk=;
+ b=dR27Hq6x30sBVRNgFzbBpaLRs8SMzeVmj8Dkc77yQeBBjowTxyhI8C0I0EzGU7gBmj
+ qt4Ki10BA9HKZXDTg6NQtaz/BUnYOFOudKUDKhOlCHrJdHA6dC0oaeNoX1sqtwpNFxO2
+ MrkltPGTsncPvu7la0T7wk9IpynLvqpxaI3gg2dwmmETMq8kxWLSoR5Vc1Z+1ETuLwC0
+ 9TXnEtvSYyrJcpmLrQbv3NKC+1bAshGgw/2wtMlceL5kTjYdA1Qhco2YcllNoErX8tR8
+ G0hxM2DA/zsk06ZnqUj9fmwJhHCKkwO3WALpwlGwbL244ZAekExP/8BXkLi3Spb8NUtj
+ BcOQ==
+X-Gm-Message-State: AOJu0YwZ9syVhOX55ASuN0JhLW0eKbr+kfYUn8vyhQOvgApKnVlpsPBm
+ 7duKL5hX0EhRKcxVveMnXnElWR6FhWMk0ZSZBM8Lag==
+X-Received: by 2002:adf:f30b:0:b0:32d:cd02:d4f3 with SMTP id
+ i11-20020adff30b000000b0032dcd02d4f3mr2998039wro.40.1697750357189; 
+ Thu, 19 Oct 2023 14:19:17 -0700 (PDT)
 Received: from m1x-phil.lan (176-131-216-177.abo.bbox.fr. [176.131.216.177])
  by smtp.gmail.com with ESMTPSA id
- b24-20020a05600c06d800b004064e3b94afsm5307518wmn.4.2023.10.19.14.21.21
+ n15-20020adfe78f000000b003197869bcd7sm228642wrm.13.2023.10.19.14.19.15
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Oct 2023 14:21:23 -0700 (PDT)
+ Thu, 19 Oct 2023 14:19:16 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
  qemu-arm@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, LIU Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>
-Subject: [PULL 28/46] hw/intc/spapr_xive: Move sysbus_init_mmio() calls around
-Date: Thu, 19 Oct 2023 23:17:53 +0200
-Message-ID: <20231019211814.30576-29-philmd@linaro.org>
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Xu <peterx@redhat.com>
+Subject: [PULL 09/46] memory: follow Error API guidelines
+Date: Thu, 19 Oct 2023 23:17:34 +0200
+Message-ID: <20231019211814.30576-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231019211814.30576-1-philmd@linaro.org>
 References: <20231019211814.30576-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -133,57 +131,178 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J9AsPhWM8jMX
+X-TUID: TnrGMoMkZJLF
 
-In order to make the next commit trivial, move sysbus_init_mmio()
-calls just before the corresponding sysbus_mmio_map() calls.
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
+Return true/false on success/failure.
+
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-ID: <20231009075310.153617-1-marcandre.lureau@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20231019131647.19690-7-philmd@linaro.org>
 ---
- hw/intc/spapr_xive.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ include/hw/core/cpu.h             |  4 +++-
+ include/hw/core/sysemu-cpu-ops.h  |  2 +-
+ include/sysemu/memory_mapping.h   |  2 +-
+ target/i386/cpu.h                 |  2 +-
+ hw/core/cpu-sysemu.c              |  6 +++---
+ system/memory_mapping.c           | 13 ++++++-------
+ target/i386/arch_memory_mapping.c |  6 ++++--
+ 7 files changed, 19 insertions(+), 16 deletions(-)
 
-diff --git a/hw/intc/spapr_xive.c b/hw/intc/spapr_xive.c
-index 7f701d414b..12057ffe5b 100644
---- a/hw/intc/spapr_xive.c
-+++ b/hw/intc/spapr_xive.c
-@@ -316,7 +316,6 @@ static void spapr_xive_realize(DeviceState *dev, Error **errp)
-     if (!qdev_realize(DEVICE(xsrc), NULL, errp)) {
-         return;
-     }
--    sysbus_init_mmio(SYS_BUS_DEVICE(xive), &xsrc->esb_mmio);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 3968369554..18593db5b2 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -618,8 +618,10 @@ bool cpu_paging_enabled(const CPUState *cpu);
+  * @cpu: The CPU whose memory mappings are to be obtained.
+  * @list: Where to write the memory mappings to.
+  * @errp: Pointer for reporting an #Error.
++ *
++ * Returns: %true on success, %false otherwise.
+  */
+-void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
++bool cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
+                             Error **errp);
  
-     /*
-      * Initialize the END ESB source
-@@ -328,7 +327,6 @@ static void spapr_xive_realize(DeviceState *dev, Error **errp)
-     if (!qdev_realize(DEVICE(end_xsrc), NULL, errp)) {
-         return;
-     }
--    sysbus_init_mmio(SYS_BUS_DEVICE(xive), &end_xsrc->esb_mmio);
- 
-     /* Set the mapping address of the END ESB pages after the source ESBs */
-     xive->end_base = xive->vc_base + xive_source_esb_len(xsrc);
-@@ -347,14 +345,16 @@ static void spapr_xive_realize(DeviceState *dev, Error **errp)
-     /* TIMA initialization */
-     memory_region_init_io(&xive->tm_mmio, OBJECT(xive), &spapr_xive_tm_ops,
-                           xive, "xive.tima", 4ull << TM_SHIFT);
--    sysbus_init_mmio(SYS_BUS_DEVICE(xive), &xive->tm_mmio);
- 
-     /*
-      * Map all regions. These will be enabled or disabled at reset and
-      * can also be overridden by KVM memory regions if active
+ #if !defined(CONFIG_USER_ONLY)
+diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
+index ee169b872c..24d003fe04 100644
+--- a/include/hw/core/sysemu-cpu-ops.h
++++ b/include/hw/core/sysemu-cpu-ops.h
+@@ -19,7 +19,7 @@ typedef struct SysemuCPUOps {
+     /**
+      * @get_memory_mapping: Callback for obtaining the memory mappings.
       */
-+    sysbus_init_mmio(SYS_BUS_DEVICE(xive), &xsrc->esb_mmio);
-     sysbus_mmio_map(SYS_BUS_DEVICE(xive), 0, xive->vc_base);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(xive), &end_xsrc->esb_mmio);
-     sysbus_mmio_map(SYS_BUS_DEVICE(xive), 1, xive->end_base);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(xive), &xive->tm_mmio);
-     sysbus_mmio_map(SYS_BUS_DEVICE(xive), 2, xive->tm_base);
+-    void (*get_memory_mapping)(CPUState *cpu, MemoryMappingList *list,
++    bool (*get_memory_mapping)(CPUState *cpu, MemoryMappingList *list,
+                                Error **errp);
+     /**
+      * @get_paging_enabled: Callback for inquiring whether paging is enabled.
+diff --git a/include/sysemu/memory_mapping.h b/include/sysemu/memory_mapping.h
+index 3bbeb1bcb4..021e0a6230 100644
+--- a/include/sysemu/memory_mapping.h
++++ b/include/sysemu/memory_mapping.h
+@@ -71,7 +71,7 @@ void guest_phys_blocks_free(GuestPhysBlockList *list);
+ void guest_phys_blocks_init(GuestPhysBlockList *list);
+ void guest_phys_blocks_append(GuestPhysBlockList *list);
+ 
+-void qemu_get_guest_memory_mapping(MemoryMappingList *list,
++bool qemu_get_guest_memory_mapping(MemoryMappingList *list,
+                                    const GuestPhysBlockList *guest_phys_blocks,
+                                    Error **errp);
+ 
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index e1875466b9..471e71dbc5 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2055,7 +2055,7 @@ int x86_cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
+ int x86_cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
+                                  DumpState *s);
+ 
+-void x86_cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
++bool x86_cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
+                                 Error **errp);
+ 
+ void x86_cpu_dump_state(CPUState *cs, FILE *f, int flags);
+diff --git a/hw/core/cpu-sysemu.c b/hw/core/cpu-sysemu.c
+index 5eaf2e79e6..d0d6a910f9 100644
+--- a/hw/core/cpu-sysemu.c
++++ b/hw/core/cpu-sysemu.c
+@@ -34,17 +34,17 @@ bool cpu_paging_enabled(const CPUState *cpu)
+     return false;
+ }
+ 
+-void cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
++bool cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
+                             Error **errp)
+ {
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
+     if (cc->sysemu_ops->get_memory_mapping) {
+-        cc->sysemu_ops->get_memory_mapping(cpu, list, errp);
+-        return;
++        return cc->sysemu_ops->get_memory_mapping(cpu, list, errp);
+     }
+ 
+     error_setg(errp, "Obtaining memory mappings is unsupported on this CPU.");
++    return false;
+ }
+ 
+ hwaddr cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
+diff --git a/system/memory_mapping.c b/system/memory_mapping.c
+index 8ba9968f8c..6f884c5b90 100644
+--- a/system/memory_mapping.c
++++ b/system/memory_mapping.c
+@@ -304,10 +304,11 @@ static CPUState *find_paging_enabled_cpu(void)
+     return NULL;
+ }
+ 
+-void qemu_get_guest_memory_mapping(MemoryMappingList *list,
++bool qemu_get_guest_memory_mapping(MemoryMappingList *list,
+                                    const GuestPhysBlockList *guest_phys_blocks,
+                                    Error **errp)
+ {
++    ERRP_GUARD();
+     CPUState *cpu, *first_paging_enabled_cpu;
+     GuestPhysBlock *block;
+     ram_addr_t offset, length;
+@@ -316,14 +317,11 @@ void qemu_get_guest_memory_mapping(MemoryMappingList *list,
+     if (first_paging_enabled_cpu) {
+         for (cpu = first_paging_enabled_cpu; cpu != NULL;
+              cpu = CPU_NEXT(cpu)) {
+-            Error *err = NULL;
+-            cpu_get_memory_mapping(cpu, list, &err);
+-            if (err) {
+-                error_propagate(errp, err);
+-                return;
++            if (!cpu_get_memory_mapping(cpu, list, errp)) {
++                return false;
+             }
+         }
+-        return;
++        return true;
+     }
+ 
+     /*
+@@ -335,6 +333,7 @@ void qemu_get_guest_memory_mapping(MemoryMappingList *list,
+         length = block->target_end - block->target_start;
+         create_new_memory_mapping(list, offset, offset, length);
+     }
++    return true;
+ }
+ 
+ void qemu_get_guest_simple_memory_mapping(MemoryMappingList *list,
+diff --git a/target/i386/arch_memory_mapping.c b/target/i386/arch_memory_mapping.c
+index 271cb5e41b..d1ff659128 100644
+--- a/target/i386/arch_memory_mapping.c
++++ b/target/i386/arch_memory_mapping.c
+@@ -266,7 +266,7 @@ static void walk_pml5e(MemoryMappingList *list, AddressSpace *as,
+ }
+ #endif
+ 
+-void x86_cpu_get_memory_mapping(CPUState *cs, MemoryMappingList *list,
++bool x86_cpu_get_memory_mapping(CPUState *cs, MemoryMappingList *list,
+                                 Error **errp)
+ {
+     X86CPU *cpu = X86_CPU(cs);
+@@ -275,7 +275,7 @@ void x86_cpu_get_memory_mapping(CPUState *cs, MemoryMappingList *list,
+ 
+     if (!cpu_paging_enabled(cs)) {
+         /* paging is disabled */
+-        return;
++        return true;
+     }
+ 
+     a20_mask = x86_get_a20_mask(env);
+@@ -310,5 +310,7 @@ void x86_cpu_get_memory_mapping(CPUState *cs, MemoryMappingList *list,
+         pse = !!(env->cr[4] & CR4_PSE_MASK);
+         walk_pde2(list, cs->as, pde_addr, a20_mask, pse);
+     }
++
++    return true;
  }
  
 -- 

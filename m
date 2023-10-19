@@ -1,160 +1,218 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp735571ejb;
-        Thu, 19 Oct 2023 12:11:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGvlOoE9TrduAAmv7dHoPoWUr51uGG3tJGjl3aAbHm5sbDsd7NJL25oc40CcPm0MjZqWIU0
-X-Received: by 2002:a05:622a:1354:b0:40b:9015:7eee with SMTP id w20-20020a05622a135400b0040b90157eeemr3549676qtk.8.1697742715542;
-        Thu, 19 Oct 2023 12:11:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697742715; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp770449ejb;
+        Thu, 19 Oct 2023 13:19:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH0I2MSZvcZDniXOFLdE6T20Y3B6VfibudjiI8r09QBxgRPHLzgw2hznknl+S2/dqF9+f5I
+X-Received: by 2002:ac8:57cb:0:b0:418:1ae2:86e0 with SMTP id w11-20020ac857cb000000b004181ae286e0mr3664326qta.54.1697746740829;
+        Thu, 19 Oct 2023 13:19:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697746740; cv=none;
         d=google.com; s=arc-20160816;
-        b=nfKaHsPTiN/hNn+6/P+UsitvfAMwXK2C55K3PwV2NLKDKQo0V3X0WmoMQMGrQjv0PG
-         +zQGeWH/eHD5Uo3z+JTNaTiFnZUzD+7Zgr1GS1HQHeYsN57lIhq9Cgc9W/aalt4G0jiv
-         18lzLjMnix4LY5zMHfClsq38mjiU4lWGGWZw0MYCeEMjlCNU/YTaOaMl+srMzaYNjkFd
-         fWqXl9ko4EvWKN8DMIXcSXN6j2OdDIXqNhV9/lgE50ih7rBaTwQhdS2sFgZ5cbHP6Xj5
-         7XNYxfjK6bNOWBgecVU8EgOCTt/RRXLclZjOI51fkd/aG0tVQniQ8VzdyI90cY56S3Q7
-         scRA==
+        b=LQMPV4usIkbW2R7ri7sXewDqf1EOI/xi1h89KmBpMlV/5MSgnwvLGPUX82UgXZX8po
+         oBpu5uaBa5cHTGoEhD/iJkzbWF8k3Vk12O1C3hg/DaGEybsqFYp9MCehI4NZBp6l1k6e
+         9ObjNlaFIeIqG9LMVj4sI34svuZDD8W1q8j7gNgExfZlV5l+0jt9weqPY67usBPU1KlW
+         DbAxGfrRMiARmYTvQnlv6YzNh6725q2qPO33dzmAHufum4tFIVY9aCjyiFuyGO5CKhFa
+         25JFE0cw4pqwgoX877Mlq3uxxCJlfL9PMljeWAYUnZwceAWhNKk/M5ORhTAGEgvQAbxH
+         W1zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=xXpghZgxXfjzdj4iZW+QGkAoeoW+TbyEJIWXFwrNOTg=;
-        fh=Xlf3et2nYyn6Dffgqd/l95XMDkc357MJlcbLmxiOqZU=;
-        b=Ze/k0+Jg0i5wOwnE5D+0KK0V0blcx2tKkXT+tUjEcC1NszMZvQ5gOALL/pLaU0C4Lj
-         FHwbR/uYJBNyuBqLSCz1GjgVPkA/RmEJi3DStHLpvYAwlqZPhWkQwUjR3P2C3Pfwdx6i
-         y17XbfAuujJt53Rv2X0Qm3/Q2J7M9pYxBZYPu01NLy7WkcwRd+N+pc4LqPv+trcGODgu
-         eZdkRvkxSlgeOckiZP/wjJqehbRW95vdifyIWaFSdp8znBM3Mox/LTOJZT9YHqahzwrG
-         yvDSfxZ+sTd0uFNVIiRyQyAwOoGRYDdUz5t2i6NlX7ebZzN4jpqXEWc7XLIWef1wp3Y+
-         DYUQ==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=bOJybXwM91jTNGdqWrakgu3zsqEos+EdF1ziHM2oK9c=;
+        fh=nDcgOyJ5wI4ec5cBWrHogeHeYCn4pzALdxpM3FX1gnA=;
+        b=tA5/H1VTQ6g5gefMq33N5anLyvWdud4dnBMI0NfEwtL1avXYrPE8f+L3qvaVLHHoay
+         DD4IFIzWxMyN8BGBqRMQca3prmRYFUmcNi2CDEzVKcgUF5NaERuOfhXVcXOnJhPOPdo7
+         qtl3PCswTxC5XgIGGaTR2XC/RPLg6tSsdRyxuLlh8sCFi81/DQB/sYWslhuKUVec2YO9
+         ApIVrzb7vbo80rUdD0kobLhXV8ocnfH5CYSQ6h0vTBxPRk/OvHtj9gJamC/JFupNQBtj
+         QXWe6/Q9SUWRZhgsiGHYaxsvDyOO/fCQV4Rx/CyHhXr7kskAJvv3YWm3zW9/pJj+qWYX
+         CR9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GXnsXDK4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=egT8+Y6o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v20-20020a05622a189400b004180bc0da7dsi71216qtc.397.2023.10.19.12.11.55
+        by mx.google.com with ESMTPS id f16-20020ac87f10000000b004198662d6dbsi164183qtk.744.2023.10.19.13.19.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 12:11:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Oct 2023 13:19:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GXnsXDK4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=egT8+Y6o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtYPV-0001vp-RF; Thu, 19 Oct 2023 15:10:21 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtZTp-0003Bg-IS; Thu, 19 Oct 2023 16:18:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtYPF-0001IH-Kz
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 15:10:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1qtZTm-00038J-PB; Thu, 19 Oct 2023 16:18:51 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtYP9-0005Te-AM
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 15:10:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697742597;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xXpghZgxXfjzdj4iZW+QGkAoeoW+TbyEJIWXFwrNOTg=;
- b=GXnsXDK4Yb7Z7qtQXnSQrbRjrxOrLV6QWOwkJ1l8YtNq5+3Pjbfek8SbYUK66NAUlNspSD
- QxOy7vVQmVpyv1GhnxcZWwUCkAKf0QoTcOOBDseuNGrCW7guNE1T/JwNT3ukSPiWci0bAf
- iQMwiofTug3p4hHYy1w01oqTwHExLCI=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-264-x9AZaYXVNEmqc0lSA50PUQ-1; Thu, 19 Oct 2023 15:09:54 -0400
-X-MC-Unique: x9AZaYXVNEmqc0lSA50PUQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4EC521802A08;
- Thu, 19 Oct 2023 19:09:49 +0000 (UTC)
-Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 582381121314;
- Thu, 19 Oct 2023 19:09:44 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1qtZTi-0007lv-Ub; Thu, 19 Oct 2023 16:18:49 -0400
+Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39JKHEu4010423; Thu, 19 Oct 2023 20:18:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=bOJybXwM91jTNGdqWrakgu3zsqEos+EdF1ziHM2oK9c=;
+ b=egT8+Y6obf3/6eccEtb6DLnvAuryzNzdp3NZroPJey+HuY89FCglg/2F/lDNwQ0ybIv5
+ gnu65Olimg0cvMqJnjIO0IJwM32lzhymOqGCgg47VNAySjZogigNVHcFyUHNt6PXXJtK
+ uhwfwYrzKFYRZNh8FJzK0QWuRZZVEOQTeQR0hH8iZ6MgAMLXyKgvABx1/ErVxbjctD96
+ N5yAwV8Y1USRUFfgapc4D8D5iAqjAKw7fmrgTnmajnim8/UVnVVbUTQwogHMvkSOiqR8
+ XeRSCDCtj9J0B1yccmDvjlxwXdT3218MVfi9uyX+qd2ONIF7LLl4Bpt9hWkIWy3h3WS1 fA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tubc1g1js-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 19 Oct 2023 20:18:23 +0000
+Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 39JKHxiJ013256;
+ Thu, 19 Oct 2023 20:18:22 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3tubc1g1hs-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 19 Oct 2023 20:18:22 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 39JIt5aw012949; Thu, 19 Oct 2023 20:18:21 GMT
+Received: from smtprelay06.dal12v.mail.ibm.com ([172.16.1.8])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3tr5pyuggf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 19 Oct 2023 20:18:21 +0000
+Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
+ [10.241.53.100])
+ by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 39JKIK2X14090938
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 19 Oct 2023 20:18:20 GMT
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3B22758058;
+ Thu, 19 Oct 2023 20:18:20 +0000 (GMT)
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7B9C258059;
+ Thu, 19 Oct 2023 20:18:16 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTPS;
+ Thu, 19 Oct 2023 20:18:16 +0000 (GMT)
+Message-ID: <0b5225ef-db4b-fb59-ca27-67d4111ed0a9@linux.ibm.com>
+Date: Thu, 19 Oct 2023 16:18:15 -0400
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 01/13] migration: Create vmstate_register_any()
+Content-Language: en-US
+To: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org
 Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
  Nicholas Piggin <npiggin@gmail.com>, qemu-s390x@nongnu.org,
  Gerd Hoffmann <kraxel@redhat.com>, Corey Minyard <cminyard@mvista.com>,
  Samuel Thibault <samuel.thibault@ens-lyon.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Fabiano Rosas <farosas@suse.de>, Eric Farman <farman@linux.ibm.com>,
- Peter Xu <peterx@redhat.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ David Hildenbrand <david@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>,
+ Eric Farman <farman@linux.ibm.com>, Peter Xu <peterx@redhat.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
  John Snow <jsnow@redhat.com>, qemu-block@nongnu.org,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  Stefan Weil <sw@weilnetz.de>, qemu-arm@nongnu.org,
- Juan Quintela <quintela@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Corey Minyard <minyard@acm.org>, Leonardo Bras <leobras@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Halil Pasic <pasic@linux.ibm.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>
-Subject: [PATCH 13/13] migration: Use vmstate_register_any() for vmware_vga
-Date: Thu, 19 Oct 2023 21:08:31 +0200
-Message-ID: <20231019190831.20363-14-quintela@redhat.com>
-In-Reply-To: <20231019190831.20363-1-quintela@redhat.com>
+ Jason Wang <jasowang@redhat.com>, Corey Minyard <minyard@acm.org>,
+ Leonardo Bras <leobras@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Halil Pasic
+ <pasic@linux.ibm.com>, Daniel Henrique Barboza <danielhb413@gmail.com>
 References: <20231019190831.20363-1-quintela@redhat.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <20231019190831.20363-2-quintela@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <20231019190831.20363-2-quintela@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: UBFn1tjn1sn2HOyJiG1XB7j_NNYjTqD9
+X-Proofpoint-GUID: bZXnkwHhAxjKWxPPs8JK8KKkDbo-DfFE
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-19_20,2023-10-19_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 mlxscore=0
+ malwarescore=0 adultscore=0 impostorscore=0 lowpriorityscore=0 bulkscore=0
+ mlxlogscore=999 priorityscore=1501 spamscore=0 clxscore=1011
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2309180000 definitions=main-2310190173
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -52
+X-Spam_score: -5.3
+X-Spam_bar: -----
+X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SvhZKIHp3Vn8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GdpFlspxc9vc
 
-I have no idea if we can have more than one vmware_vga device, so play
-it safe.
 
-Signed-off-by: Juan Quintela <quintela@redhat.com>
----
- hw/display/vmware_vga.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 10/19/23 15:08, Juan Quintela wrote:
+> We have lots of cases where we are using an instance_id==0 when we
+> should be using VMSTATE_INSTANCE_ID_ANY (-1).  Basically everything
+> that can have more than one needs to have a proper instance_id or -1
+> and the system will take one for it.
+>
+> vmstate_register_any(): We register with -1.
+>
+> Signed-off-by: Juan Quintela <quintela@redhat.com>
 
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index 09591fbd39..7490d43881 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -1264,7 +1264,7 @@ static void vmsvga_init(DeviceState *dev, struct vmsvga_state_s *s,
- 
-     vga_common_init(&s->vga, OBJECT(dev), &error_fatal);
-     vga_init(&s->vga, OBJECT(dev), address_space, io, true);
--    vmstate_register(NULL, 0, &vmstate_vga_common, &s->vga);
-+    vmstate_register_any(NULL, &vmstate_vga_common, &s->vga);
-     s->new_depth = 32;
- }
- 
--- 
-2.41.0
 
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+
+> ---
+>   include/migration/vmstate.h | 17 +++++++++++++++++
+>   1 file changed, 17 insertions(+)
+>
+> diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+> index 1a31fb7293..9ca7e9cc48 100644
+> --- a/include/migration/vmstate.h
+> +++ b/include/migration/vmstate.h
+> @@ -1230,6 +1230,23 @@ static inline int vmstate_register(VMStateIf *obj, int instance_id,
+>                                             opaque, -1, 0, NULL);
+>   }
+>
+> +/**
+> + * vmstate_register_any() - legacy function to register state
+> + * serialisation description and let the function choose the id
+> + *
+> + * New code shouldn't be using this function as QOM-ified devices have
+> + * dc->vmsd to store the serialisation description.
+> + *
+> + * Returns: 0 on success, -1 on failure
+> + */
+> +static inline int vmstate_register_any(VMStateIf *obj,
+> +                                       const VMStateDescription *vmsd,
+> +                                       void *opaque)
+> +{
+> +    return vmstate_register_with_alias_id(obj, VMSTATE_INSTANCE_ID_ANY, vmsd,
+> +                                          opaque, -1, 0, NULL);
+> +}
+> +
+>   void vmstate_unregister(VMStateIf *obj, const VMStateDescription *vmsd,
+>                           void *opaque);
+>

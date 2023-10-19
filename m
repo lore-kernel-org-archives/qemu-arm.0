@@ -1,106 +1,106 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp337072ejb;
-        Thu, 19 Oct 2023 00:45:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFYu3sBLiveHM1tgVYPphrmxAaALq810IuyBRCtps66g/ccr7erG/jDVsErPy+Zg8ODB6pg
-X-Received: by 2002:a05:622a:1a83:b0:41c:bd6f:e77f with SMTP id s3-20020a05622a1a8300b0041cbd6fe77fmr1776362qtc.55.1697701538979;
-        Thu, 19 Oct 2023 00:45:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697701538; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp337392ejb;
+        Thu, 19 Oct 2023 00:46:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFBFoEDSe6nOy/d620M9ZavrMYhf1U715TaCKUctSWHeWkhs7dj6bv2yMIXw+hn2e+pWmqw
+X-Received: by 2002:a05:6122:1d05:b0:49a:b0ff:eeaf with SMTP id gc5-20020a0561221d0500b0049ab0ffeeafmr1338781vkb.1.1697701583032;
+        Thu, 19 Oct 2023 00:46:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697701583; cv=none;
         d=google.com; s=arc-20160816;
-        b=yKYl72DaG7QLNTEAJvBI3KfNRT2Ro5CN5yVLio0YPi/hN78mYVxd10lcHU8ckNO+s6
-         oZVnxzXB4yhQljNGjfbocPiyuEQ7NpACGlAYXa60l0MzF1++6oOcUNJP33p22IrJ2nOe
-         RjDrfW2RdLohL0uUXCopAqpWlysvOhUDuuTgWJNydMykzjFSxWaT51S/Ow74os3g0mmv
-         6nBnOD0ArgDKwIg4/yBGhuce5nrOL8djYD5ltJyUo69YnjaGukmgLch5Xz9G4b5eNKuL
-         HDn1NxnYwSp8A/G43CEqA5G14sqyMd1etYUtUSOL+kkT3rc7vM1pKKH0fkjA7axmHHNU
-         V54Q==
+        b=Yi73Ixqph04VBhngcz5mIVHOj6YqdLr38CowpAQNf6gRuwkIkswjOs8pEPzF40fEdl
+         VfadHw/tQ2bjlvdkZgnUYbg1u348ArKefakhjRuYMS2XDK4j6r4yFhQ/4VbS5b+NnqCe
+         ZdMxKmwROSKhGGCutq4XXxafAQRDPdyMKWnMbEzo1Y74dcS/Up+WphDYB9YNBNdpbAVS
+         lHa0qsovoyalhPtviNBZva2S8xFWNWQpxQVn/csxRThJT3UtXdHTpJMHW0TuHQJJdxFD
+         oWQNI4+tboMo+JgoCKevO6iOf3sQzrCapkKcS+8KtR+SHZsX/n8u6iwGLtF4mUb4wQzq
+         Q/+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=/YPfYdad7SsXQMIQSnRAHnWJH4XbDODUlROipljkV50=;
+        bh=mQLv3N7vB62Lq8AMLowKbryhnRx7+Q/OD9rTPMAgufE=;
         fh=/Gu37Vr91t9MFY1Ts9oDksSE8ZDQNteBQkb4V4psqfw=;
-        b=nq9afdF4GMjn5sgOYrkNBwZbdOEog10uz/uwSp0uSymSiep7rATvm8keM2MY6QZAfa
-         8HWuBDArTR94sRJPTAxUDJjMsNwNIXrYly4VsiJP/de04UvhioVsSXMn0EFJUvdMKPVl
-         ES4U7BLU3j4XVb+YmQRn2BN3TvNiKw/ddbsrFnJH/t8xpyTUsKT5UDsBgvA5qka0W84Q
-         bkruh6P0hKV31ipZfebGlsYPm3vxf7rrRqFf9gfEudv7bERGo2KQx0k1eZKW/IHXSQgd
-         4UVUYawia7xzARRnRXScxc2byJP1Wxvlp3c03KGSG4S3sBiG7Q5CjL5Txv7b4uaa15Or
-         kYyw==
+        b=ler5wO4WWQwE/JpR9eBQRpJBP4utwk4iKS01qZjG92E6feVio8qoRZMXYErr2tOBmB
+         Zv8S2heLe66vDuSrIVjQYh9KUvDwnuhQKhttyhkNT2L1xohLUGQEU2lbfcjs8IUJyfFY
+         p/ESQDZef9+fQ+RhoqUDAOIAml3NM83esZ1Iw1yqbcVKzy7EAUiljPNsgdDP1XyaU3Yc
+         XK7VsmjSftchW1+CjA7d/CaklpzQzOuQ00N5ACJYTfdWhKnd3qj6GH/Bw62pMBjgoO9L
+         8YHWvnUmZ+tObcrSTYVPlcwD88G4YeN5Wn3E+vH3baJTjE0Iy+BWTnBaiIL4JFytI1cS
+         LfNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kj8AMgm3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RdYoonn6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b8-20020ac87fc8000000b004197e29e35bsi1219769qtk.128.2023.10.19.00.45.38
+        by mx.google.com with ESMTPS id j17-20020a05622a039100b004197bfc153fsi1134734qtx.648.2023.10.19.00.46.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 00:45:38 -0700 (PDT)
+        Thu, 19 Oct 2023 00:46:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Kj8AMgm3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RdYoonn6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtNil-0003ai-7f; Thu, 19 Oct 2023 03:45:31 -0400
+	id 1qtNjP-00058X-4w; Thu, 19 Oct 2023 03:46:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtNiU-0003RD-QS
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:45:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtNjN-00052Y-RA
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:46:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtNiQ-0005u6-Gz
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:45:13 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtNjM-0006bh-AA
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 03:46:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697701508;
+ s=mimecast20190719; t=1697701567;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=/YPfYdad7SsXQMIQSnRAHnWJH4XbDODUlROipljkV50=;
- b=Kj8AMgm3aFLx5K65Xv6e2ZUkXlsadtkZrWgDIXIgJr5T4PY7HIjwOirDf9s5MDWOQmWDRu
- r8BVyY1PF0FjIRsT9jPXXMvWM3PfHHDv3F1ej+vFUZKc4TrkuIPqTkc2JLMy2aE8nAikZG
- bOLjN00kHgzg/w4MJyiSoVEmWGL34ok=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=mQLv3N7vB62Lq8AMLowKbryhnRx7+Q/OD9rTPMAgufE=;
+ b=RdYoonn6J21DtSQOI9ASnnj3Z+HHyALdQJLbtHtX2Q36VC0TTL7UCI7yCEZRq/jAvfUwot
+ naCgFziCBMkclKMbukz4l7MKRw2Z0miYj0VPCzC/IQv5x12qgLq5TB9S2gHSepttWdX5xD
+ A5biSAHqkvZlzy1XOZRwit8GYCj2RcE=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-478-gv2ZI293PNGnxs_r37ZGxg-1; Thu, 19 Oct 2023 03:44:51 -0400
-X-MC-Unique: gv2ZI293PNGnxs_r37ZGxg-1
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-77892a3d8f3so257545885a.3
- for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 00:44:51 -0700 (PDT)
+ us-mta-363-UeRIZdtDNUanGtiBi4KUaA-1; Thu, 19 Oct 2023 03:46:05 -0400
+X-MC-Unique: UeRIZdtDNUanGtiBi4KUaA-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-77435bbb71dso760242285a.1
+ for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 00:46:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697701491; x=1698306291;
+ d=1e100.net; s=20230601; t=1697701564; x=1698306364;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/YPfYdad7SsXQMIQSnRAHnWJH4XbDODUlROipljkV50=;
- b=lyNe6CpgdCH3gx2ePoJ1IWemrIWQBNlON/8B5E4+00+LOz0wlhtyvqtHVVD1MAYy5R
- fcTrizrGnrObvSGQZBItiL7AB1yGOTaxGNpx+Y7xoz/LDuU0uo7fwP67W+vIhDqj9k6k
- wPNM9JAtT2OMSzXTNm97fNwhC7LrHlJbbmlNEh/hU5slfckhUBOgCGLL0v3a+wrU5vHy
- oMY/sQnmbIUDiKguKvhjocKf/tGfhU9EdIEg+OqDI2fR9EElb9HK05gqmKc7+nnXeZNj
- adQSfGcaU4hrChlbQrEeGqQoKgqGRh9rO01s2jd8+SWNNnFqMDxA+thw3+4R9tleNScT
- Tr1w==
-X-Gm-Message-State: AOJu0YxDe9NlMIWqBASlsN5Mxwo3UfA253qHcIJgwi6v7qxVS2TaXl5f
- 2Y1uaHwFcyZA9mU+C+NA1UuPfDds9p3zVtL2+hAcIJwNa2He5BF66huM4vsQBVv0MABf/iHwZWD
- Ai2/NhaWzlQvW
-X-Received: by 2002:a05:620a:2591:b0:76f:17ad:3c83 with SMTP id
- x17-20020a05620a259100b0076f17ad3c83mr1581236qko.47.1697701490978; 
- Thu, 19 Oct 2023 00:44:50 -0700 (PDT)
-X-Received: by 2002:a05:620a:2591:b0:76f:17ad:3c83 with SMTP id
- x17-20020a05620a259100b0076f17ad3c83mr1581219qko.47.1697701490645; 
- Thu, 19 Oct 2023 00:44:50 -0700 (PDT)
+ bh=mQLv3N7vB62Lq8AMLowKbryhnRx7+Q/OD9rTPMAgufE=;
+ b=uMzlpT+MZynOpMEY05wZ4EitJA+GpGDoEZiAZSZRPxmEdALdp2votLXilXX/ZCEdZX
+ +qrvfcF7x3U8zu1LG7+L5HEjmZP4V/VspgoAb3XRUsHX0LphL/GYoO8u/m09Mvg2+/Jk
+ n7UB7KopMqCrc63PWlLBnCloj3IuWZ6gkkPsuSrzI9VI7CSPIP2IJz/GHO2z76ui99kL
+ OmxtUig4FXscVPPgQsao3+Xcw7/P908+6hKYpLW3cuG+jojd80S1/MnaTNTwzeu9A7tT
+ idqae5uRwSPN4deBgcXGrBXajCzLc/LZERPGYgARtuBRP11TDwj/V6aTcYDS08PhVxh8
+ VPTQ==
+X-Gm-Message-State: AOJu0YxkM8L8EQ4tQ5+r1NnmztTTWBQ3PLdt5MdgGyvXmctIacrVRl2i
+ z84XRbPTAY/0uZ35VnU+r+o3EwRXJEonihUywCKLBhA9RuAzfFfCfe3PfB/8AWVmT8vsiX7RUJE
+ dDPnCE7eAVA1R
+X-Received: by 2002:a05:620a:24c6:b0:775:6d22:d1f5 with SMTP id
+ m6-20020a05620a24c600b007756d22d1f5mr1612226qkn.51.1697701564729; 
+ Thu, 19 Oct 2023 00:46:04 -0700 (PDT)
+X-Received: by 2002:a05:620a:24c6:b0:775:6d22:d1f5 with SMTP id
+ m6-20020a05620a24c600b007756d22d1f5mr1612203qkn.51.1697701564456; 
+ Thu, 19 Oct 2023 00:46:04 -0700 (PDT)
 Received: from [192.168.0.5] (ip-109-43-176-141.web.vodafone.de.
  [109.43.176.141]) by smtp.gmail.com with ESMTPSA id
- d6-20020a05620a140600b00767d8e12ce3sm573639qkj.49.2023.10.19.00.44.46
+ d6-20020a05620a140600b00767d8e12ce3sm573639qkj.49.2023.10.19.00.46.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Oct 2023 00:44:50 -0700 (PDT)
-Message-ID: <71e30641-cfa9-43f3-89e5-95578f92cb58@redhat.com>
-Date: Thu, 19 Oct 2023 09:44:44 +0200
+ Thu, 19 Oct 2023 00:46:04 -0700 (PDT)
+Message-ID: <37f4b736-2629-4684-9669-7ccb60275f2d@redhat.com>
+Date: Thu, 19 Oct 2023 09:46:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 04/12] hw/misc/allwinner-dramc: Do not use SysBus API
- to map local MMIO region
+Subject: Re: [PATCH v2 09/12] hw/s390x/css-bridge: Realize sysbus device
+ before accessing it
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
@@ -120,7 +120,7 @@ Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
  <mst@redhat.com>, Jason Wang <jasowang@redhat.com>
 References: <20231019071611.98885-1-philmd@linaro.org>
- <20231019071611.98885-5-philmd@linaro.org>
+ <20231019071611.98885-10-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -164,21 +164,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231019071611.98885-5-philmd@linaro.org>
+In-Reply-To: <20231019071611.98885-10-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -193,43 +194,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mDDvbRJxnXkA
+X-TUID: 3qa+DVjdCcFk
 
 On 19/10/2023 09.16, Philippe Mathieu-Daudé wrote:
-> There is no point in exposing an internal MMIO region via
-> SysBus and directly mapping it in the very same device.
-> 
-> Just map it without using the SysBus API.
-> 
-> Transformation done using the following coccinelle script:
-> 
->    @@
->    expression sbdev;
->    expression index;
->    expression addr;
->    expression subregion;
->    @@
->    -    sysbus_init_mmio(sbdev, subregion);
->         ... when != sbdev
->    -    sysbus_mmio_map(sbdev, index, addr);
->    +    memory_region_add_subregion(get_system_memory(),
->    +                                addr, subregion);
-> 
->    @@
->    expression priority;
->    @@
->    -    sysbus_init_mmio(sbdev, subregion);
->         ... when != sbdev
->    -    sysbus_mmio_map_overlap(sbdev, index, addr, priority);
->    +    memory_region_add_subregion_overlap(get_system_memory(),
->    +                                        addr,
->    +                                        subregion, priority);
+> qbus_new() should not be called on unrealized device.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/misc/allwinner-r40-dramc.c | 13 ++++++-------
->   1 file changed, 6 insertions(+), 7 deletions(-)
+>   hw/s390x/css-bridge.c | 7 +++----
+>   1 file changed, 3 insertions(+), 4 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-
 

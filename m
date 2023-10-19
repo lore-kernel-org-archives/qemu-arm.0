@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp734623ejb;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp734637ejb;
+        Thu, 19 Oct 2023 12:10:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH0VzVcX9tA/eyDEiSqclxBLq1H+SwwMvO465ELFCbz7WP4oeULZaqXZbT70luZDNfxDy4O
+X-Received: by 2002:a0d:d146:0:b0:5a7:aa7b:cb9f with SMTP id t67-20020a0dd146000000b005a7aa7bcb9fmr2921158ywd.14.1697742626821;
         Thu, 19 Oct 2023 12:10:26 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH3fi2KG8ftJ5/ZnlB2tBibmwrcxBbDlqJs9ETvvDtqG+jJb2fTpApzJOsruZR+LTW3FLDs
-X-Received: by 2002:ac8:5744:0:b0:41c:bbd0:48ed with SMTP id 4-20020ac85744000000b0041cbbd048edmr3539099qtx.30.1697742625900;
-        Thu, 19 Oct 2023 12:10:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697742625; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1697742626; cv=none;
         d=google.com; s=arc-20160816;
-        b=rlfsCcExl232YRpJE78Fl9tPeZ4BWFa0r5jBRNcZiDUC4FPr3F+VV6sStw8KYM217O
-         dz7dupQZZwLexFWgJOg0YrHo+QvZ635EWYtC/Jt5KfZyzFdgqaCf7KSZFdlTXGuX897U
-         VLpF2I8kMH93aN9IwN1T74LYx8B/X1rEJrtBrduEHSPXKPui5T8WWMXDS5PWOkXV8K3O
-         gJOH2fuj4hxNCVjHuHPQHTy7qAFVzUoVPpOj9vPFP49cZ6x6vJNRGylmHcvNKorY74Fh
-         tcJKA+mBaCaCGQ7aPyZh2cO+PF1IEW/ES3enlkOeliWRRjbqXYy4xTzfV71fcro6Ok72
-         JGuw==
+        b=pmm59JvJ+NK22dwrUpqw/OnXD4BP9D2P5UOTxsuJN5RVgJYMdtXQNtYJiPDQHzrE9B
+         0fiCu1mfnwZEblyViAnkKU8QZW2pC6WdWIOekC4sAlxao788rPXRz1B7uUTNhhWx3c77
+         x4c0fMkbcaxByPITn8Stl9mNVHdrxQqtx2r63u1lO8SsCrD4WyxcUesU+PM3VLUbrKvU
+         0D6BEEudwy7m6MMCjX2qEidC1UGi2d1mw1vSZ7RvqGGb34aYmNkWy6MsIWF6M7WJIgZx
+         uwhYvc8Jey0SlJySU/GDnE19b98MbVTVlWSkcWEneqfn/W3rTOvA4GigbiCy7HO7yuDh
+         EvrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=51VRLWfDh449V7/e8LGXIVSHszK25iDX1Q+NJ/45GiY=;
-        fh=5Qf/qaI7Jk/Fc29AtJ7PmqWe90k8LVJZTk9TBk9YoSk=;
-        b=ildiYv0nYIzhOyFo73F/AliL53Q79XQxqgTmAqT4nPMbBQZT20dbrOdm+AKLgR10iZ
-         IIGQHU+TpgKp8RWVN8hLuhZcMHM2QbhGFNaMBehyxTObFBxdcIWliZWn6a2pAXie+sJN
-         10IC8khBMthMuRRRrViTc0aaLN157f6MhxDgBNdvFuKBrfaiJ7TRfjYxZSRUIAcyOV2i
-         h3LBRyzBoZZmiXHVMovYczJXREC4dUBDR0JqlqZW3sZksF4eX7Tu6Jrgqyt9bWwYEgQa
-         SiUvm8OryxryZFaU40Ypbw9e2hAHn90VQKIHu8Mf/8ERO6igMB84JDEWSQ9ZgandtUQq
-         0qjQ==
+        bh=BWujscRM8+aWcF0nTSqKgyNKyjeFasRA2h8oLoqgdv8=;
+        fh=Xlf3et2nYyn6Dffgqd/l95XMDkc357MJlcbLmxiOqZU=;
+        b=CHIbpDRVpuQqzpTWnJ1FSw/B+Jwab46NTecWPw+eYhQOv6Sr4m9p8Tp6oD/ZiS5gJ5
+         +jnFXjJC5RM2ICl9lo7HXIl2mGS/orbEEc0ORsroBounW+XlkOU7dTt+qa3YAYYUHtnO
+         1GIvh9qubfbI0z5puPahWuyyJ1J5m62vk0lD9AJYVWkU3FoDYWFBfnSaeonRE5uikvWc
+         Mw76ebpL4V46qdAe9hiSz1UOTeNeA7JrYZtWE1sB2SYz+8cBwtQnltMFHIT+YxRIR/7Q
+         qGHYfkeCoBfQraOqNJj6qoynB8X+wAjJlbe3QZZhgk8cJmTGk8IxyUpOIuSHiOE19faG
+         ODkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DxNEmT6s;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hvRYapsE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11-20020ac87d0b000000b0041cc117cfadsi75508qtb.338.2023.10.19.12.10.25
+        by mx.google.com with ESMTPS id g24-20020a05620a109800b00774067d659csi79394qkk.92.2023.10.19.12.10.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 12:10:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Oct 2023 12:10:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DxNEmT6s;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hvRYapsE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtYOq-0008Vp-UY; Thu, 19 Oct 2023 15:09:40 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtYOc-0007ps-Ok; Thu, 19 Oct 2023 15:09:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtYOn-0008PC-W3
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 15:09:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1qtYOO-0007bN-BE
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 15:09:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qtYOm-0004yV-Fl
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 15:09:37 -0400
+ id 1qtYOL-0003ls-TC
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 15:09:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697742575;
+ s=mimecast20190719; t=1697742549;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=51VRLWfDh449V7/e8LGXIVSHszK25iDX1Q+NJ/45GiY=;
- b=DxNEmT6so/N08V67eG5CstoDUx/q61fwlLt43k2bwyxB+lIV1jTl3p3HPbMbrAsVspcTNr
- 9lfp25Hr9/G/6jjQncpXOb3wt0yEtceZaz2PUXGRsAndCF6wbpp/AEQDJjc/4pbEI3pZuN
- 3qnAxgu47AxmaKQH5aXreULE0o3KaU8=
+ bh=BWujscRM8+aWcF0nTSqKgyNKyjeFasRA2h8oLoqgdv8=;
+ b=hvRYapsEPNXf676Z4V4/wS5h3VnED3+0OpR6Jlr3M8Q62ynpOtWwssf30geFoALZmhC4NB
+ vXiVZDh9vmrTZ2OwDHoVnp1ULXdbFVZrKuOTY0iEhfSGEuqdjC+SXXtKGElvTLA/mpVkOx
+ 2uU+fuK0MAiZbflIa0KBsfe4/3obWZI=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-184-binT-E-HOoKTkGI9wVNpyA-1; Thu, 19 Oct 2023 15:09:29 -0400
-X-MC-Unique: binT-E-HOoKTkGI9wVNpyA-1
+ us-mta-199-0BfHBklaNhmTmbzqSSvhQA-1; Thu, 19 Oct 2023 15:08:53 -0400
+X-MC-Unique: 0BfHBklaNhmTmbzqSSvhQA-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
  [10.11.54.3])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E9A528E6D2F;
- Thu, 19 Oct 2023 19:09:27 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9078710201F4;
+ Thu, 19 Oct 2023 19:08:49 +0000 (UTC)
 Received: from secure.mitica (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1DFF3111D794;
- Thu, 19 Oct 2023 19:09:21 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A27781121314;
+ Thu, 19 Oct 2023 19:08:44 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>,
@@ -100,95 +100,206 @@ Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  David Gibson <david@gibson.dropbear.id.au>,
  Halil Pasic <pasic@linux.ibm.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>
-Subject: [PATCH 09/13] migration: Check in savevm_state_handler_insert for dups
-Date: Thu, 19 Oct 2023 21:08:27 +0200
-Message-ID: <20231019190831.20363-10-quintela@redhat.com>
+ Daniel Henrique Barboza <danielhb413@gmail.com>
+Subject: [PATCH 02/13] migration: Use vmstate_register_any()
+Date: Thu, 19 Oct 2023 21:08:20 +0200
+Message-ID: <20231019190831.20363-3-quintela@redhat.com>
 In-Reply-To: <20231019190831.20363-1-quintela@redhat.com>
 References: <20231019190831.20363-1-quintela@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: de9CWU9gU8vC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: T+2DmF9Nztid
 
-From: Peter Xu <peterx@redhat.com>
+This are the easiest cases, where we were already using
+VMSTATE_INSTANCE_ID_ANY.
 
-Before finally register one SaveStateEntry, we detect for duplicated
-entries.  This could be helpful to notify us asap instead of get
-silent migration failures which could be hard to diagnose.
-
-For example, this patch will generate a message like this (if without
-previous fixes on x2apic) as long as we wants to boot a VM instance
-with "-smp 200,maxcpus=288,sockets=2,cores=72,threads=2" and QEMU will
-bail out even before VM starts:
-
-savevm_state_handler_insert: Detected duplicate SaveStateEntry: id=apic, instance_id=0x0
-
-Suggested-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Signed-off-by: Juan Quintela <quintela@redhat.com>
 ---
- migration/savevm.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ backends/dbus-vmstate.c     | 3 +--
+ backends/tpm/tpm_emulator.c | 3 +--
+ hw/i2c/core.c               | 2 +-
+ hw/input/adb.c              | 2 +-
+ hw/input/ads7846.c          | 2 +-
+ hw/input/stellaris_input.c  | 3 +--
+ hw/net/eepro100.c           | 3 +--
+ hw/pci/pci.c                | 2 +-
+ hw/ppc/spapr_nvdimm.c       | 3 +--
+ hw/timer/arm_timer.c        | 2 +-
+ hw/virtio/virtio-mem.c      | 4 ++--
+ 11 files changed, 12 insertions(+), 17 deletions(-)
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 8622f229e5..e26833eaae 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -237,6 +237,8 @@ static SaveState savevm_state = {
-     .global_section_id = 0,
- };
+diff --git a/backends/dbus-vmstate.c b/backends/dbus-vmstate.c
+index 57369ec0f2..a9d8cb0acd 100644
+--- a/backends/dbus-vmstate.c
++++ b/backends/dbus-vmstate.c
+@@ -426,8 +426,7 @@ dbus_vmstate_complete(UserCreatable *uc, Error **errp)
+         return;
+     }
  
-+static SaveStateEntry *find_se(const char *idstr, uint32_t instance_id);
-+
- static bool should_validate_capability(int capability)
- {
-     assert(capability >= 0 && capability < MIGRATION_CAPABILITY__MAX);
-@@ -716,6 +718,18 @@ static void savevm_state_handler_insert(SaveStateEntry *nse)
+-    if (vmstate_register(VMSTATE_IF(self), VMSTATE_INSTANCE_ID_ANY,
+-                         &dbus_vmstate, self) < 0) {
++    if (vmstate_register_any(VMSTATE_IF(self), &dbus_vmstate, self) < 0) {
+         error_setg(errp, "Failed to register vmstate");
+     }
+ }
+diff --git a/backends/tpm/tpm_emulator.c b/backends/tpm/tpm_emulator.c
+index 402a2d6312..8920b75251 100644
+--- a/backends/tpm/tpm_emulator.c
++++ b/backends/tpm/tpm_emulator.c
+@@ -978,8 +978,7 @@ static void tpm_emulator_inst_init(Object *obj)
+         qemu_add_vm_change_state_handler(tpm_emulator_vm_state_change,
+                                          tpm_emu);
  
-     assert(priority <= MIG_PRI_MAX);
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY,
+-                     &vmstate_tpm_emulator, obj);
++    vmstate_register_any(NULL, &vmstate_tpm_emulator, obj);
+ }
  
-+    /*
-+     * This should never happen otherwise migration will probably fail
-+     * silently somewhere because we can be wrongly applying one
-+     * object properties upon another one.  Bail out ASAP.
-+     */
-+    if (find_se(nse->idstr, nse->instance_id)) {
-+        error_report("%s: Detected duplicate SaveStateEntry: "
-+                     "id=%s, instance_id=0x%"PRIx32, __func__,
-+                     nse->idstr, nse->instance_id);
-+        exit(EXIT_FAILURE);
-+    }
-+
-     for (i = priority - 1; i >= 0; i--) {
-         se = savevm_state.handler_pri_head[i];
-         if (se != NULL) {
+ /*
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index bed594fe59..879a1d45cb 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -64,7 +64,7 @@ I2CBus *i2c_init_bus(DeviceState *parent, const char *name)
+     bus = I2C_BUS(qbus_new(TYPE_I2C_BUS, parent, name));
+     QLIST_INIT(&bus->current_devs);
+     QSIMPLEQ_INIT(&bus->pending_masters);
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_i2c_bus, bus);
++    vmstate_register_any(NULL, &vmstate_i2c_bus, bus);
+     return bus;
+ }
+ 
+diff --git a/hw/input/adb.c b/hw/input/adb.c
+index 214ae6f42b..8aed0da2cd 100644
+--- a/hw/input/adb.c
++++ b/hw/input/adb.c
+@@ -247,7 +247,7 @@ static void adb_bus_realize(BusState *qbus, Error **errp)
+     adb_bus->autopoll_timer = timer_new_ms(QEMU_CLOCK_VIRTUAL, adb_autopoll,
+                                            adb_bus);
+ 
+-    vmstate_register(NULL, -1, &vmstate_adb_bus, adb_bus);
++    vmstate_register_any(NULL, &vmstate_adb_bus, adb_bus);
+ }
+ 
+ static void adb_bus_unrealize(BusState *qbus)
+diff --git a/hw/input/ads7846.c b/hw/input/ads7846.c
+index dc0998ac79..91116c6bdb 100644
+--- a/hw/input/ads7846.c
++++ b/hw/input/ads7846.c
+@@ -158,7 +158,7 @@ static void ads7846_realize(SSIPeripheral *d, Error **errp)
+ 
+     ads7846_int_update(s);
+ 
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_ads7846, s);
++    vmstate_register_any(NULL, &vmstate_ads7846, s);
+ }
+ 
+ static void ads7846_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/input/stellaris_input.c b/hw/input/stellaris_input.c
+index e6ee5e11f1..a58721c8cd 100644
+--- a/hw/input/stellaris_input.c
++++ b/hw/input/stellaris_input.c
+@@ -88,6 +88,5 @@ void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode)
+     }
+     s->num_buttons = n;
+     qemu_add_kbd_event_handler(stellaris_gamepad_put_key, s);
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY,
+-                     &vmstate_stellaris_gamepad, s);
++    vmstate_register_any(NULL, &vmstate_stellaris_gamepad, s);
+ }
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index dc07984ae9..94ce9e18ff 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -1883,8 +1883,7 @@ static void e100_nic_realize(PCIDevice *pci_dev, Error **errp)
+ 
+     s->vmstate = g_memdup(&vmstate_eepro100, sizeof(vmstate_eepro100));
+     s->vmstate->name = qemu_get_queue(s->nic)->model;
+-    vmstate_register(VMSTATE_IF(&pci_dev->qdev), VMSTATE_INSTANCE_ID_ANY,
+-                     s->vmstate, s);
++    vmstate_register_any(VMSTATE_IF(&pci_dev->qdev), s->vmstate, s);
+ }
+ 
+ static void eepro100_instance_init(Object *obj)
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index b0d21bf43a..294c3c38ea 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -147,7 +147,7 @@ static void pci_bus_realize(BusState *qbus, Error **errp)
+     bus->machine_done.notify = pcibus_machine_done;
+     qemu_add_machine_init_done_notifier(&bus->machine_done);
+ 
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_pcibus, bus);
++    vmstate_register_any(NULL, &vmstate_pcibus, bus);
+ }
+ 
+ static void pcie_bus_realize(BusState *qbus, Error **errp)
+diff --git a/hw/ppc/spapr_nvdimm.c b/hw/ppc/spapr_nvdimm.c
+index b2f009c816..ad7afe7544 100644
+--- a/hw/ppc/spapr_nvdimm.c
++++ b/hw/ppc/spapr_nvdimm.c
+@@ -876,8 +876,7 @@ static void spapr_nvdimm_realize(NVDIMMDevice *dimm, Error **errp)
+         s_nvdimm->hcall_flush_required = true;
+     }
+ 
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY,
+-                     &vmstate_spapr_nvdimm_states, dimm);
++    vmstate_register_any(NULL, &vmstate_spapr_nvdimm_states, dimm);
+ }
+ 
+ static void spapr_nvdimm_unrealize(NVDIMMDevice *dimm)
+diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
+index 69c8863472..9afe8da831 100644
+--- a/hw/timer/arm_timer.c
++++ b/hw/timer/arm_timer.c
+@@ -181,7 +181,7 @@ static arm_timer_state *arm_timer_init(uint32_t freq)
+     s->control = TIMER_CTRL_IE;
+ 
+     s->timer = ptimer_init(arm_timer_tick, s, PTIMER_POLICY_LEGACY);
+-    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_arm_timer, s);
++    vmstate_register_any(NULL, &vmstate_arm_timer, s);
+     return s;
+ }
+ 
+diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+index 9dc3c61b5a..a5ea3be414 100644
+--- a/hw/virtio/virtio-mem.c
++++ b/hw/virtio/virtio-mem.c
+@@ -1119,8 +1119,8 @@ static void virtio_mem_device_realize(DeviceState *dev, Error **errp)
+     host_memory_backend_set_mapped(vmem->memdev, true);
+     vmstate_register_ram(&vmem->memdev->mr, DEVICE(vmem));
+     if (vmem->early_migration) {
+-        vmstate_register(VMSTATE_IF(vmem), VMSTATE_INSTANCE_ID_ANY,
+-                         &vmstate_virtio_mem_device_early, vmem);
++        vmstate_register_any(VMSTATE_IF(vmem),
++                             &vmstate_virtio_mem_device_early, vmem);
+     }
+     qemu_register_reset(virtio_mem_system_reset, vmem);
+ 
 -- 
 2.41.0
 

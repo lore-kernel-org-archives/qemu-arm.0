@@ -1,147 +1,232 @@
-Received: by 2002:a17:907:8744:b0:9bd:85f7:2662 with SMTP id qo4csp4770464ejc;
-        Wed, 18 Oct 2023 09:40:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGZqFgO1k/OZITQKuQRgN/bTdQG95HFt86S1jWjIw+L0E+2S1YAsfU1z2SH9wbKtkFeKnnY
-X-Received: by 2002:adf:e792:0:b0:32d:cb21:4e99 with SMTP id n18-20020adfe792000000b0032dcb214e99mr4545140wrm.13.1697647234615;
-        Wed, 18 Oct 2023 09:40:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697647234; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp372628ejb;
+        Thu, 19 Oct 2023 02:04:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG1A6Cm0vLBnfFdnQBMtzwyqfwmkxjQZ5HOiy4kAaC5s64yxDlG2qs5Q4wt+x2DcyOM+IHM
+X-Received: by 2002:a05:620a:45a9:b0:767:923:48e7 with SMTP id bp41-20020a05620a45a900b00767092348e7mr1640389qkb.5.1697706295644;
+        Thu, 19 Oct 2023 02:04:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697706295; cv=none;
         d=google.com; s=arc-20160816;
-        b=ITK03R57/rPDH5jm+cIHvo+RhFcfngDpadwodnWWrOJMmcaGHoJ/+oFSXiPqgUcR5Z
-         bIJ4edWVoc4P6mr49K0ofxeKB7gjTAxGf+uXjRVTSpw7SIBMJ5CchYYN4WMUlq8f+sfE
-         Fd9ureIxmhgZNhVK1yvDCIN/43ekPmnA6FefMNu/PbgtZf/ruvWGMOhvqmdd/9+1tS2g
-         y3fwdeSnGDdocZYsFUSo8IDJEneXTWfS7ZHsKvhvLj+xCHxTaUHGHVKiLPb8BWjOXFlo
-         6b8sjTJMZnoGK+DblHFVQ0GaUvzy/Cf0eLQENwMPiP/GoJeWgGbXdntR21v7w5yPLSBX
-         5GEg==
+        b=y815b0xTjt39m2TwxKFSGOm+GyX0stlNp47GAZufa8ONlNb29xFLOoaiBZHCQh3x5x
+         l0UuYMVOz0+mqhdTQOlzpZ9gsF0gesD/TK/rsqbaMLCEvi24bWu/oeJ59pKvn0299JqH
+         M8XM16KDBadLVGSEGgeKfIEEcfcP+R7SGnQJNFost2ufteMgE7Yrgk4RULRTjc2JTYyG
+         /gk7ed2kq0Z1RsqgvSq2KzboflZ8NFrUz3qGYTG7510AQBFQQ3ldvQy9GnjsLdPrMJWV
+         ShPveEfdXSQieL2KhDgUYU+Q+8x8xYr8RbIeknrEydKNBNWzn4s6ixOJwUi9ApLosbKo
+         Me4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=Cw6Ww9qVFu18XScQbUYySkVA3mm9ap2DhaKeIlogz3Q=;
-        fh=tebFjQw8nyYXdpHWOtCSmNiXXYif6WEiSPQxtAL9eeQ=;
-        b=Inq7TCscQlj3IQnA9cxeezET/SXsFhZ//91FG1Rnvp4L+anakruLHbzCirVaONqbKL
-         tVWp0ixxV6PTBKQE0qff0LPXGNO6CtjCR8dwqbxJO1p//FquzI47VO6Fyq7tP3BhjOy4
-         4poLFcyeJgYJD9DZ6hARopsOvOr0xpVlcU5WeUArAY85n5GAf1aSCO+T8H9p9f27ITBr
-         bzgEFF00soVdfH5NowkowaW61i4tR0J++HdPsXJ6GraO8NZZ1jN7O4EbT7oW4y14yLH7
-         h1mou46QYF0xJpGNNGY/7XgqA/8v0Fqv58UFZJxD29w68jpkE1dvkuffbPQBJsCGB0M0
-         ur2g==
+        bh=rGPyu2oyb6K1VJTFIEw7kMpYSIo1edfld6pQEvAngzc=;
+        fh=HQu76LFN0DbKXHr60vGnzTmi359RrU+EPC8eBDHkPTc=;
+        b=KTSuhdGzXZ5KfUTib9he0sSbVvIcsy4S4FoUpckSr6XgkTW/qEG4y06vweE9iK4SPP
+         6ydkrvsixwxPKRZxzNVjbSGkIY4klFAWPSOeqRUwk+F/QIR9/R0HuLsHd9HwrXI+DB3O
+         Nx7FoQ+mmulfxdkWlNuhu+W6XYRheFii5P8uVzp90bXTsTTESJ3AcuGMbYIGTrQW6nzS
+         jjFRoTE8tT8Wtt0wZOEERwAqEzJto/2AkTJWMvI7nChHUyS6dH7gkocpyPdUMK2hkDsR
+         2XuPp6G9l1O2XUpis2XXNG9WxsFScuiLHz17jdKn+C0Nquz5CVRSfbHS2tjlO3i8JbG1
+         C7DA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bn+8uKhc;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VumxcHLC;
+       spf=pass (google.com: domain of shahuang@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=shahuang@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pbonzini@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id w11-20020adfee4b000000b0032dafee39e1si1492142wro.330.2023.10.18.09.40.34
+Return-Path: <shahuang@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id s16-20020a05620a29d000b007682117be3csi1231199qkp.62.2023.10.19.02.04.55
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Oct 2023 09:40:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Thu, 19 Oct 2023 02:04:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of shahuang@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bn+8uKhc;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VumxcHLC;
+       spf=pass (google.com: domain of shahuang@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=shahuang@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1697647233;
+	s=mimecast20190719; t=1697706295;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Cw6Ww9qVFu18XScQbUYySkVA3mm9ap2DhaKeIlogz3Q=;
-	b=bn+8uKhcpLrJEeOGMwHuLM83g1Y7mWC/W7FgepCU1tnHgNfl7h0lwu5O2yRALf2EK/XOVh
-	3sGkP3r5okePI3lX0kDCY0NOcsPyMb9TT1XiFy8I1kVGxzSnQnFPUORX3QwuDnhGfRGrit
-	NPkbcMDeZr+mt1nW4etQq6gwrK+2bvE=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=rGPyu2oyb6K1VJTFIEw7kMpYSIo1edfld6pQEvAngzc=;
+	b=VumxcHLCSlqt+ko8yFWJXTAMndqKth6VQMaSnfpzYPqkJerOjbpEGBxaWsrw0tDxEM9Eev
+	MMvWaNXzSzQeXqsKg6hCOOR/iTJbtZCbWkHclDzBfvsz5YkjxHfRucYyF+qTdgMqpZGQMc
+	P6PEesABP+xXWuRCY36Lmp7lM4jsPnA=
+Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com
+ [209.85.210.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-356-ybqIBroDOquwR6A6NW9C4A-1; Wed, 18 Oct 2023 12:40:31 -0400
-X-MC-Unique: ybqIBroDOquwR6A6NW9C4A-1
-Received: by mail-ej1-f69.google.com with SMTP id a640c23a62f3a-9a9e12a3093so778709866b.0
-        for <alex.bennee@linaro.org>; Wed, 18 Oct 2023 09:40:31 -0700 (PDT)
+ us-mta-187-whRgtkraNKaOddlkmdwd7Q-1; Thu, 19 Oct 2023 05:04:53 -0400
+X-MC-Unique: whRgtkraNKaOddlkmdwd7Q-1
+Received: by mail-pf1-f197.google.com with SMTP id d2e1a72fcca58-6b2df09dcdcso1877513b3a.0
+        for <alex.bennee@linaro.org>; Thu, 19 Oct 2023 02:04:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697647230; x=1698252030;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1697706293; x=1698311093;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Cw6Ww9qVFu18XScQbUYySkVA3mm9ap2DhaKeIlogz3Q=;
-        b=SHLpnl4S6wMk/wPCT4jEMXyKro69FTTjuEuUyiZazYrv1VfstEPAwZXdWoY0se7GzJ
-         pWTL9MbRmTuEWHUQJ9ixjH+jyPInQ2pyzRGAeFax7l3aZWAR8UTcR7iSdup1aeJ579Yl
-         twVUQ3DwZwTggHNMueBHmH42ZsAt3TmG93rLFBFGJgbO4K7XorZlgqW/5m/gG+xigw3N
-         YzgSAW7WY4MxvkvBYoHiSVJlV758EsHpi9F7XhPfcjBVbtNHd6E6dCRyBzOigqYHm13B
-         8aEo2f9fUVEf/JHT9eXF7L+fS3zBlMwj7ZsixpuSspVCdNd8TbeMzP2u4/7sgtOZ+oZS
-         YEAg==
-X-Gm-Message-State: AOJu0Yyu6af1YL9VfEiabdPOPJKcDUIvay4Kn/kyc4j2JmVrWDDkqVpD
-	JHAZVlrzdvmd1PN8s8NZyFLUG2hrd758S0aZuYH9yqUODz5z2Z6QU6OgQC5rdARJKC1+FWDJGjD
-	yoaKGTnWipAb6GXcC
-X-Received: by 2002:a17:907:1dd4:b0:9bd:bdfd:e17a with SMTP id og20-20020a1709071dd400b009bdbdfde17amr3968797ejc.6.1697647230363;
-        Wed, 18 Oct 2023 09:40:30 -0700 (PDT)
-X-Received: by 2002:a17:907:1dd4:b0:9bd:bdfd:e17a with SMTP id og20-20020a1709071dd400b009bdbdfde17amr3968780ejc.6.1697647230048;
-        Wed, 18 Oct 2023 09:40:30 -0700 (PDT)
-Return-Path: <pbonzini@redhat.com>
-Received: from ?IPV6:2001:b07:6468:f312:63a7:c72e:ea0e:6045? ([2001:b07:6468:f312:63a7:c72e:ea0e:6045])
-        by smtp.googlemail.com with ESMTPSA id m8-20020a170906160800b009ae54585aebsm2030807ejd.89.2023.10.18.09.40.27
+        bh=rGPyu2oyb6K1VJTFIEw7kMpYSIo1edfld6pQEvAngzc=;
+        b=tnad2E9kyM3g0kViz51d04eL6m4VTJ6aS3h7f4eeQKSjiKzWYYnXLwgXvAoZDRfcSC
+         rktbNKTy4h5oDJrdvc79zmCxzL0WoDgz7CynGSp1hM893EDYXtq+sniBdy+/sOahYMn4
+         hSlL6QvuWq1cSTYvs6kJVhJvH5N8eBtQ6IaG2wymznms0qqo4cmog7FyZqHBSiBglRpx
+         RkGzxSw+wMJVdHD0E/NjGOM2t31bgaI0h+5VY46oaIkWd+sre0oOqKn3odySHh8AzoDP
+         hlzJO6as/P+p0BThwaAGN3Wfm3Li4ts6kVt8LX7G9gR2m978icmYPQRNPg8AL86eIsN/
+         QJ0g==
+X-Gm-Message-State: AOJu0YyMnFMtBuKmxveH4+OIhtJr0R4+HIDo4/JzDaDEpGqDxocNRmJI
+	tFSzj43YVL1vyEEb0LVAmqr+VLFrpl9bPU//eCVLYztI51NeglBuB7fX5L0qOgOFqi2rg1Jyuw8
+	CpGT7+HWlzADoGxvP
+X-Received: by 2002:a05:6a20:4401:b0:13d:fff1:c672 with SMTP id ce1-20020a056a20440100b0013dfff1c672mr1960415pzb.4.1697706292718;
+        Thu, 19 Oct 2023 02:04:52 -0700 (PDT)
+X-Received: by 2002:a05:6a20:4401:b0:13d:fff1:c672 with SMTP id ce1-20020a056a20440100b0013dfff1c672mr1960361pzb.4.1697706292374;
+        Thu, 19 Oct 2023 02:04:52 -0700 (PDT)
+Return-Path: <shahuang@redhat.com>
+Received: from [10.66.61.39] ([43.228.180.230])
+        by smtp.gmail.com with ESMTPSA id mz24-20020a17090b379800b00256799877ffsm1133812pjb.47.2023.10.19.02.04.45
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Oct 2023 09:40:29 -0700 (PDT)
-Message-ID: <244c53a4-e727-44a8-ba30-598a1e43c1a8@redhat.com>
-Date: Wed, 18 Oct 2023 18:40:25 +0200
+        Thu, 19 Oct 2023 02:04:51 -0700 (PDT)
+Message-ID: <d1278ad1-cb78-90f1-64a6-c3e8711bacd7@redhat.com>
+Date: Thu, 19 Oct 2023 17:04:44 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC/PATCH v0 00/12] Gunyah hypervisor support
-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>, peter.maydell@linaro.org,
- alex.bennee@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: quic_tsoni@quicinc.com, quic_pheragu@quicinc.com,
- quic_eberman@quicinc.com, quic_yvasi@quicinc.com, quic_cvanscha@quicinc.com,
- quic_mnalajal@quicinc.com
-References: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <20231011165234.1323725-1-quic_svaddagi@quicinc.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH V6 0/9] Add architecture agnostic code to support vCPU
+ Hotplug
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com,
+ oliver.upton@linux.dev, pbonzini@redhat.com, mst@redhat.com,
+ will@kernel.org, gshan@redhat.com, rafael@kernel.org,
+ alex.bennee@linaro.org, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
+ wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
+ maobibo@loongson.cn, lixianglai@loongson.cn, linuxarm@huawei.com
+References: <20231013105129.25648-1-salil.mehta@huawei.com>
+From: Shaoqin Huang <shahuang@redhat.com>
+In-Reply-To: <20231013105129.25648-1-salil.mehta@huawei.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: IlYhI1kuNoUz
+Content-Transfer-Encoding: 8bit
+X-TUID: sulWpKiJ4h4/
 
-On 10/11/23 18:52, Srivatsa Vaddagiri wrote:
-> Gunyah is an open-source Type-1 hypervisor, that is currently supported on ARM64
-> architecture. Source code for it can be obtained from:
-> 
-> https://github.com/quic/gunyah-hypervisor.
-> 
-> This patch series adds support for Gunyah hypervisor via a new
-> accelerator option, 'gunyah'. This patch series is based on the Linux kernel's
-> Gunyah driver, which is being actively developed and not yet merged upstream
-> [1].
-> 
-> This patch series is thus *NOT YET READY* for merge. Early version of this patch
-> is being published to solicit comments from Qemu community.
-> 
-> This patch has been tested with the open-source version of Gunyah hypervisor.
-> Instructions to build hypervisor and test this patch are provided in this
-> patch series.
-> 
-> Limitations:
-> 
-> 1) SMP is not yet supported. This restriction will be removed in the next version
-> of this patch series.
-> 
-> 2) virtio-pci is not yet supported. hw/virtio/virtio-pci.c seems to support only
-> KVM and would need changes to support other hypervisors. If there is any ongoing
-> work in this regard, would like to build upon it and add support for Gunyah
-> hypervisor.
 
-virtio-pci does support other hypervisors; what is not yet supported is 
-cross-hypervisor support for IRQFD[1].  This is more of a QEMU issue 
-than something specific to virtio-pci.  The way to fix it is to add 
-wrappers for kvm_irqchip_add_irqfd_notifier_gsi and 
-kvm_irqchip_remove_irqfd_notifier_gsi to AccelOpsClass, and move the 
-stub implementations in accel/stubs/kvm-stub.c to the abstract 
-superclass.  Then you can switch the users of these KVM functions to the 
-AccelOpsClass wrapper.
 
-By the way I've just posted a series to remove support for really really 
-old kernels, and this should remove more KVM-specific code from device 
-models.
+On 10/13/23 18:51, Salil Mehta via wrote:
+> Virtual CPU hotplug support is being added across various architectures[1][3].
+> This series adds various code bits common across all architectures:
+> 
+> 1. vCPU creation and Parking code refactor [Patch 1]
+> 2. Update ACPI GED framework to support vCPU Hotplug [Patch 4,6,7]
+> 3. ACPI CPUs AML code change [Patch 5]
+> 4. Helper functions to support unrealization of CPU objects [Patch 8,9]
+> 5. Misc [Patch 2,3]
+> 
+> 
+> Repository:
+> 
+> [*] https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v2.common.v6
+> 
+> 
+> Revision History:
+> 
+> Patch-set  V5 -> V6
+> 1. Addressed Gavin Shan's comments
+>     - Fixed the assert() ranges of address spaces
+>     - Rebased the patch-set to latest changes in the qemu.git
+>     - Added Reviewed-by tags for patches {8,9}
+> 2. Addressed Jonathan Cameron's comments
+>     - Updated commit-log for [Patch V5 1/9] with mention of trace events
+>     - Added Reviewed-by tags for patches {1,5}
+> 3. Added Tested-by tags from Xianglai Li
+> 4. Fixed checkpatch.pl error "Qemu -> QEMU" in [Patch V5 1/9]
+> Link: https://lore.kernel.org/qemu-devel/20231011194355.15628-1-salil.mehta@huawei.com/
+> 
+> Patch-set  V4 -> V5
+> 1. Addressed Gavin Shan's comments
+>     - Fixed the trace events print string for kvm_{create,get,park,destroy}_vcpu
+>     - Added Reviewed-by tag for patch {1}
+> 2. Added Shaoqin Huang's Reviewed-by tags for Patches {2,3}
+> 3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set
+> 4. Dropped the ARM specific [Patch V4 10/10]
+> Link: https://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.mehta@huawei.com/
+> 
+> Patch-set  V3 -> V4
+> 1. Addressed David Hilderbrand's comments
+>     - Fixed the wrong doc comment of kvm_park_vcpu API prototype
+>     - Added Reviewed-by tags for patches {2,4}
+> Link: https://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.mehta@huawei.com/
+> 
+> Patch-set  V2 -> V3
+> 1. Addressed Jonathan Cameron's comments
+>     - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to 'integer'
+>     - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
+>     - Updated [Patch V2 3/10] commit-log with details of ACPI_CPU_SCAN_METHOD macro
+>     - Updated [Patch V2 5/10] commit-log with details of conditional event handler method
+>     - Added Reviewed-by tags for patches {2,3,4,6,7}
+> 2. Addressed Gavin Shan's comments
+>     - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
+>     - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
+>     - Reset the value of 'gdb_num_g_regs' in gdb_unregister_coprocessor_all
+>     - Fixed the kvm_{create,park}_vcpu prototypes docs
+>     - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10}
+> 3. Addressed one earlier missed comment by Alex Bennée in RFC V1
+>     - Added traces instead of DPRINTF in the newly added and some existing functions
+> Link: https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huawei.com/
+> 
+> Patch-set V1 -> V2
+> 1. Addressed Alex Bennée's comments
+>     - Refactored the kvm_create_vcpu logic to get rid of goto
+>     - Added the docs for kvm_{create,park}_vcpu prototypes
+>     - Splitted the gdbstub and AddressSpace destruction change into separate patches
+>     - Added Reviewed-by tags for patches {2,10}
+> Link: https://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.mehta@huawei.com/
+> 
+> References:
+> 
+> [1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com/
+> [2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
+> [3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/
+> 
+> 
+> Salil Mehta (9):
+>    accel/kvm: Extract common KVM vCPU {creation,parking} code
+>    hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
+>    hw/acpi: Add ACPI CPU hotplug init stub
+>    hw/acpi: Init GED framework with CPU hotplug events
+>    hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
+>    hw/acpi: Update GED _EVT method AML with CPU scan
+>    hw/acpi: Update ACPI GED framework to support vCPU Hotplug
+>    physmem: Add helper function to destroy CPU AddressSpace
+>    gdbstub: Add helper function to unregister GDB register space
+> 
+>   accel/kvm/kvm-all.c                    | 64 ++++++++++++++++++++------
+>   accel/kvm/trace-events                 |  4 ++
+>   gdbstub/gdbstub.c                      | 12 +++++
+>   hw/acpi/acpi-cpu-hotplug-stub.c        |  6 +++
+>   hw/acpi/cpu.c                          | 27 +++++++----
+>   hw/acpi/generic_event_device.c         | 22 +++++++++
+>   hw/i386/acpi-build.c                   |  3 +-
+>   include/exec/cpu-common.h              |  8 ++++
+>   include/exec/gdbstub.h                 |  5 ++
+>   include/hw/acpi/cpu.h                  |  5 +-
+>   include/hw/acpi/cpu_hotplug.h          |  4 ++
+>   include/hw/acpi/generic_event_device.h |  5 ++
+>   include/hw/core/cpu.h                  |  1 +
+>   include/sysemu/kvm.h                   | 16 +++++++
+>   system/physmem.c                       | 29 ++++++++++++
+>   15 files changed, 184 insertions(+), 27 deletions(-)
+> 
 
-Paolo
+Hi salil,
 
-[1] a Linux eventfd (or QEMU EventNotifier) that triggers a guest 
-interrupt when it becomes readable.  QEMU writes to the eventfd and the 
-kernel responds by injecting the interrupt
+All patches looks good to me. Thanks for you effort to update it so 
+actively. No issues being found by simply testing and several daily use.
+
+Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+
+Thanks,
+Shaoqin
+
+-- 
+Shaoqin

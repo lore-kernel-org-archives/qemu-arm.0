@@ -1,103 +1,117 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp357828ejb;
-        Thu, 19 Oct 2023 01:30:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEqbiPmwU5CBlH7JlSIc3njsXVv5/uAz+a7SDomoiB2o4o0PIdybOvv+J1SXO73AepIkR3n
-X-Received: by 2002:a5b:788:0:b0:d78:1502:9330 with SMTP id b8-20020a5b0788000000b00d7815029330mr1671312ybq.7.1697704248927;
-        Thu, 19 Oct 2023 01:30:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697704248; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp374141ejb;
+        Thu, 19 Oct 2023 02:07:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEBryZDOW5ghSfde2OLmoqPQ/Gg85eF1+Tly2Zu8W17VNemYCrqVULBWNamEtZ2vjrloy5B
+X-Received: by 2002:a05:6214:2385:b0:66d:1a20:f26c with SMTP id fw5-20020a056214238500b0066d1a20f26cmr1173557qvb.37.1697706464926;
+        Thu, 19 Oct 2023 02:07:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697706464; cv=none;
         d=google.com; s=arc-20160816;
-        b=BisiXx5YQ45BXIdWKtm821LkVbnqBMIglnHidW71BvjXxn+3UT/iGUd9UCS6yvtEAH
-         sTeH1CMCVeMOzmK5IUDIslFnEwkRJ5R7mwR4SQRSFTZU8gvjpWXAfzMbRAaN4BSer7iE
-         r8n1ujZZLMtjIxcBor6F3tAb9zd0FIjzTnDVeCjMn370cr76170jjQUUGJwR4F7M4ejn
-         xm5c3BcUkSyTiaJo3Cy6vWIHez+pSb5SAWxh2mWgrkYzUqY8JY+KQFUta8QstM8DnDLD
-         B78AMfgouDrh6BOtkJmCMF14wcBecjgKmjkfvwqJ5BO69bYpFZUTSqhvr1J14tMXgzdy
-         vDiA==
+        b=MaAmO+1SIkKHnT24q2I3vXBs6S8jCJnKFZ4JYOs7Aqy8xTwNuifRoOcIT45HRSSHnj
+         Wi31Ct3u93qb2FSKt8oPnWKehypo24t0+uMV1BPZEkVeOzBh4CXfQMAylXnnZ/DUiQ5X
+         63ygAj3wogWh3EEbOPXWzCRoOND5LMJJdVU5pcGvopk1SsXPNWxfIpUpHkRcmiEasRR+
+         +2oV7DfufYn4JTGGWkyqIM15ot6z8aWiLt5QKjsBomnydvidcZW67u1Z/r95IPmqw91d
+         rr1Nw9xZbYBwMCy6GJuoUi7YB2aspkjMWDXkJJlyyR4err7pg1KWusU8vFJA+xrOvr8B
+         2Mlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=F7NjyhzIF+bfkK8LJE42urWGupvmh3O/r3UDDNbVG+w=;
-        fh=/coRUL1wBKUBvSHKckqPd31uAjBR6MoeU+vSbjwwHlw=;
-        b=ylzGnWDeru6j26X9xr0dJyGF5oar9DF7uW2uxc+vQ7Wz2MxUMGn623QJrv5+kUO8+2
-         fwFgxSickrX3Lu1DP7KcaOvF9ms2YERCMPNfgdBIY73/eErnX3x4IiCzKDcfdUUoDY06
-         zRHaQUoH1Wbk2KAHX1Xiokdm6Ows6KD2wuoiDX5NjO/k7sznJ4LHLw6jQ8/DoPdt9p3A
-         +HW8+gauQ6SuBNWjXJvL1sDD7tICotBnxtEQDX9mM8z55WAKtgJcs46qHqsd4Eg3Imga
-         FeehIWhJbiBDMXFAVgvwWgzlvIvsS+oN3R+qhvfuByAEqBoGBH5fq6PW24UQdj+Pfp3h
-         PbNg==
+        bh=otrf+KyCMw/Ydvi/gAU7O3+mROmgl3QS9I3TKAF2hCY=;
+        fh=F17jLVu8AZLcLgxntiwfuOYo6J4yPopdhjl9CABfLQQ=;
+        b=vRZlLWDnT8Lm7kzIFtFH1EDwgSpXI9M+yJQUcsgqhiyZBC2iDyB3N/Uy3DtaoBL0qg
+         nRB1FTBM/Jx8sLAZ3Q253ycqDB/5tjgSeeK9EdrGup5KnIV0GTjr0SEuZrOFeeAEN/cA
+         Cot6OgLeRJ17AjYyz0ajUD91ocg9wTqZBxZVqCS2LWIOjHWyw/gwrLcWj7OOhDB31qSu
+         D+Zf1BoZIQtU+oHfe8S0qA/xKXmLmyz7DXDzckT1MiYDXqPdGow/OGsiY0sIjAcj9aS5
+         2cfu5SDIpr3CarY2mT2FbahsT5A61bel/TH1sbaQ/oa2ZlDoNvkVoil+LhMNbnknrL7u
+         FpCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TSwuK6Ah;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BILmG6kw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id on13-20020a056214448d00b0065ae5abb042si1289572qvb.85.2023.10.19.01.30.48
+        by mx.google.com with ESMTPS id x7-20020a05620a258700b00775a1063051si1228505qko.501.2023.10.19.02.07.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 01:30:48 -0700 (PDT)
+        Thu, 19 Oct 2023 02:07:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TSwuK6Ah;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BILmG6kw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qtOQ9-0005ce-S4; Thu, 19 Oct 2023 04:30:21 -0400
+	id 1qtP07-0006w9-0m; Thu, 19 Oct 2023 05:07:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1qtOQ5-0005at-Px
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 04:30:18 -0400
+ (Exim 4.90_1) (envelope-from <yanghliu@redhat.com>)
+ id 1qtP05-0006vz-N0
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 05:07:29 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1qtOQ1-0000m4-96
- for qemu-arm@nongnu.org; Thu, 19 Oct 2023 04:30:17 -0400
+ (Exim 4.90_1) (envelope-from <yanghliu@redhat.com>)
+ id 1qtP03-0000j4-RS
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 05:07:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697704212;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1697706446;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=F7NjyhzIF+bfkK8LJE42urWGupvmh3O/r3UDDNbVG+w=;
- b=TSwuK6Ah3Igy1PKGG0y1oS/hSL3qLJ1dnvP71JteVZSc+B2xFqv66M0zl/e2lo/0rUoaRK
- I/BcGE+JfaF1fXxBoIUlcg/Of+SR33R3gMeuSNYeiIcnRjpiAJcofXc6VYzm/wiUXnJXjd
- s5bZzh0rbF3O4AMgtsyRzSY5XBn1B9g=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-617-hM1zhTwTOYG9mndDlXvbaA-1; Thu, 19 Oct 2023 04:30:08 -0400
-X-MC-Unique: hM1zhTwTOYG9mndDlXvbaA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 07EB03C0F448;
- Thu, 19 Oct 2023 08:30:08 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.60])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 93B2D2166B26;
- Thu, 19 Oct 2023 08:30:05 +0000 (UTC)
-Date: Thu, 19 Oct 2023 09:30:03 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Ninad Palsule <ninad@linux.ibm.com>
-Cc: qemu-devel@nongnu.org, clg@kaod.org, peter.maydell@linaro.org,
- andrew@aj.id.au, joel@jms.id.au, pbonzini@redhat.com,
- marcandre.lureau@redhat.com, thuth@redhat.com, philmd@linaro.org,
- lvivier@redhat.com, qemu-arm@nongnu.org
-Subject: Re: [PATCH v5 05/10] hw/fsi: IBM's On-chip Peripheral Bus
-Message-ID: <ZTDpC/ymolhCpMdZ@redhat.com>
-References: <20231011151339.2782132-1-ninad@linux.ibm.com>
- <20231011151339.2782132-6-ninad@linux.ibm.com>
+ bh=otrf+KyCMw/Ydvi/gAU7O3+mROmgl3QS9I3TKAF2hCY=;
+ b=BILmG6kw/JWqiKyJUg4Bb/sCmfkCGLmehnaSgeWe2X74MCuwZ+m54d+Vd9cFJ+LB0yZAad
+ oWTuaXCHEuS98lqJgdZflcCxibXswL7x6+jrxrayd3MmW58XRF/HKaRDNjnRYRLpfG4b1f
+ nr5qZ55xPZxdh29VH1V0jYBMnnQYBS8=
+Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
+ [209.85.208.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-683-aQ4XDbVnOu2Bl-7Sz2dgKw-1; Thu, 19 Oct 2023 05:07:24 -0400
+X-MC-Unique: aQ4XDbVnOu2Bl-7Sz2dgKw-1
+Received: by mail-lj1-f198.google.com with SMTP id
+ 38308e7fff4ca-2c512a53e82so49420111fa.0
+ for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 02:07:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697706443; x=1698311243;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=otrf+KyCMw/Ydvi/gAU7O3+mROmgl3QS9I3TKAF2hCY=;
+ b=JRVbsU2i04Apy9FnAB2GVzq4lYoI+B2aHTxV/tfEe82lCECMWhHhcOS7EVR1VB5q63
+ po1vnERAIoVMa8iUh+YN/defq320CekAeNZM2jHgLLsoReB6u1ALVNlWyD9yAQWe0mEe
+ QevHdHB5b3T0VfUpKf5/CRXZ1H50TsRQ3SFPL0zlmVffXa722rTpZtGbr72zIyeJD2+5
+ /crRUU8WeAwRgaAOkCTeTIB5nx/q60JnobGvbMQFl8vsTUx9+ZY0eLglVgXpAwMBqNEQ
+ pgFCmK8dSmtIOf0ZJyaVSBUQRxINyWfyJZ70QZZwoi9Qt9claaQtMkGh3Tt7/ncWxeNf
+ rdXg==
+X-Gm-Message-State: AOJu0YwEFrbrJQ+n4QRQ6xxcwYpamMXC00fjzGhpDpHlDLh43fT9wwWo
+ W6qupaiODDETA35+gtSl+vTaGb7WUh+VkO9jkhuc+0kMpo1pc4XQSejCcQIdKLPGh8gxsbE9P6M
+ dMR2qeB8SkDivvc4xKfWGTToq6HQ1
+X-Received: by 2002:a05:651c:2109:b0:2c5:fde:e457 with SMTP id
+ a9-20020a05651c210900b002c50fdee457mr1099806ljq.3.1697706443172; 
+ Thu, 19 Oct 2023 02:07:23 -0700 (PDT)
+X-Received: by 2002:a05:651c:2109:b0:2c5:fde:e457 with SMTP id
+ a9-20020a05651c210900b002c50fdee457mr1099781ljq.3.1697706442781; Thu, 19 Oct
+ 2023 02:07:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231011151339.2782132-6-ninad@linux.ibm.com>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+References: <20231011175516.541374-1-eric.auger@redhat.com>
+ <20231018093723-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20231018093723-mutt-send-email-mst@kernel.org>
+From: YangHang Liu <yanghliu@redhat.com>
+Date: Thu, 19 Oct 2023 17:07:11 +0800
+Message-ID: <CAGYh1E_RQOWkDP+rxfTV-AoVekw_SpuOxOVCZ0V7Gj+keZWXLw@mail.gmail.com>
+Subject: Re: [PATCH v3 00/13] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org, alex.williamson@redhat.com, clg@redhat.com, 
+ jean-philippe@linaro.org, pbonzini@redhat.com, peter.maydell@linaro.org, 
+ peterx@redhat.com, david@redhat.com, philmd@linaro.org, 
+ zhenzhong.duan@intel.com, yi.l.liu@intel.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=yanghliu@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -118,240 +132,132 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pzwGkvRcSJXt
+X-TUID: 6kbvi8nGFz9f
 
-On Wed, Oct 11, 2023 at 10:13:34AM -0500, Ninad Palsule wrote:
-> This is a part of patchset where IBM's Flexible Service Interface is
-> introduced.
-> 
-> The On-Chip Peripheral Bus (OPB): A low-speed bus typically found in
-> POWER processors. This now makes an appearance in the ASPEED SoC due
-> to tight integration of the FSI master IP with the OPB, mainly the
-> existence of an MMIO-mapping of the CFAM address straight onto a
-> sub-region of the OPB address space.
-> 
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> ---
-> v2:
-> - Incorporated review comment by Joel.
-> v5:
-> - Incorporated review comments by Cedric.
-> ---
->  include/hw/fsi/opb.h |  43 ++++++++++
->  hw/fsi/fsi-master.c  |   3 +-
->  hw/fsi/opb.c         | 185 +++++++++++++++++++++++++++++++++++++++++++
->  hw/fsi/Kconfig       |   4 +
->  hw/fsi/meson.build   |   1 +
->  hw/fsi/trace-events  |   2 +
->  6 files changed, 236 insertions(+), 2 deletions(-)
->  create mode 100644 include/hw/fsi/opb.h
->  create mode 100644 hw/fsi/opb.c
-> 
-> diff --git a/include/hw/fsi/opb.h b/include/hw/fsi/opb.h
-> new file mode 100644
-> index 0000000000..f8ce00383e
-> --- /dev/null
-> +++ b/include/hw/fsi/opb.h
-> @@ -0,0 +1,43 @@
-> +/*
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + * Copyright (C) 2023 IBM Corp.
-> + *
-> + * IBM On-Chip Peripheral Bus
-> + */
-> +#ifndef FSI_OPB_H
-> +#define FSI_OPB_H
-> +
-> +#include "exec/memory.h"
-> +#include "hw/fsi/fsi-master.h"
-> +
-> +#define TYPE_OP_BUS "opb"
-> +OBJECT_DECLARE_SIMPLE_TYPE(OPBus, OP_BUS)
-> +
-> +typedef struct OPBus {
-> +        /*< private >*/
-> +        BusState bus;
-> +
-> +        /*< public >*/
-> +        MemoryRegion mr;
-> +        AddressSpace as;
-> +
-> +        /* Model OPB as dumb enough just to provide an address-space */
-> +        /* TODO: Maybe don't store device state in the bus? */
-> +        FSIMasterState fsi;
-> +} OPBus;
-> +
-> +typedef struct OPBusClass {
-> +        BusClass parent_class;
-> +} OPBusClass;
-> +
-> +uint8_t opb_read8(OPBus *opb, hwaddr addr);
-> +uint16_t opb_read16(OPBus *opb, hwaddr addr);
-> +uint32_t opb_read32(OPBus *opb, hwaddr addr);
-> +void opb_write8(OPBus *opb, hwaddr addr, uint8_t data);
-> +void opb_write16(OPBus *opb, hwaddr addr, uint16_t data);
-> +void opb_write32(OPBus *opb, hwaddr addr, uint32_t data);
-> +
-> +void opb_fsi_master_address(OPBus *opb, hwaddr addr);
-> +void opb_opb2fsi_address(OPBus *opb, hwaddr addr);
-> +
-> +#endif /* FSI_OPB_H */
-> diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
-> index 8f4ae641c7..ede1a58e98 100644
-> --- a/hw/fsi/fsi-master.c
-> +++ b/hw/fsi/fsi-master.c
-> @@ -11,8 +11,7 @@
->  #include "trace.h"
->  
->  #include "hw/fsi/fsi-master.h"
-> -
-> -#define TYPE_OP_BUS "opb"
-> +#include "hw/fsi/opb.h"
->  
->  #define TO_REG(x)                               ((x) >> 2)
->  
-> diff --git a/hw/fsi/opb.c b/hw/fsi/opb.c
-> new file mode 100644
-> index 0000000000..7ffd7730f7
-> --- /dev/null
-> +++ b/hw/fsi/opb.c
-> @@ -0,0 +1,185 @@
-> +/*
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + * Copyright (C) 2023 IBM Corp.
-> + *
-> + * IBM On-chip Peripheral Bus
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +
-> +#include "qapi/error.h"
-> +#include "qemu/log.h"
-> +#include "trace.h"
-> +
-> +#include "hw/fsi/opb.h"
-> +
-> +static MemTxResult opb_read(OPBus *opb, hwaddr addr, void *data, size_t len)
-> +{
-> +    MemTxResult tx;
-> +    tx = address_space_read(&opb->as, addr, MEMTXATTRS_UNSPECIFIED, data,
-> +                              len);
-> +    if (tx) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: OPB read failed: 0x%"HWADDR_PRIx" for %lu\n",
-> +                      __func__, addr, len);
-> +    }
-> +    return tx;
-> +}
+The original issue I found : After starting a VM which has two ice PFs
+and a virtio-iommu device, qemu-kvm and VM guest dmesg throw lots of
+duplicate VFIO_MAP_DMA errors
 
-Use a tracepoint rather than an always-on log
+After testing with Eric's build, the  original issue is gone and the
+Tier1 regression test against ice PF and virtio iommu device gets PASS
+as well.
 
-> +
-> +uint8_t opb_read8(OPBus *opb, hwaddr addr)
-> +{
-> +    uint8_t data = -1;
-> +
-> +    (void)opb_read(opb, addr, &data, sizeof(data));
-> +
-> +    return data;
-> +}
-> +
-> +uint16_t opb_read16(OPBus *opb, hwaddr addr)
-> +{
-> +    uint16_t data = -1;
-> +
-> +    (void)opb_read(opb, addr, &data, sizeof(data));
-> +
-> +    return data;
-> +}
-> +
-> +uint32_t opb_read32(OPBus *opb, hwaddr addr)
-> +{
-> +    uint32_t data = -1;
-> +
-> +    (void)opb_read(opb, addr, &data, sizeof(data));
-> +
-> +    return data;
-> +}
-> +
-> +static void opb_write(OPBus *opb, hwaddr addr, void *data, size_t len)
-> +{
-> +    MemTxResult tx;
-> +    tx = address_space_write(&opb->as, addr, MEMTXATTRS_UNSPECIFIED, data,
-> +                               len);
-> +    if (tx) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: OPB write failed: %"HWADDR_PRIx" for %lu\n",
-> +                      __func__, addr, len);
-> +    }
-> +}
-
-Again tracepoint
+Tested-by: Yanghang Liu <yanghliu@redhat.com>
 
 
-> +static void opb_realize(BusState *bus, Error **errp)
-> +{
-> +    OPBus *opb = OP_BUS(bus);
-> +    Error *err = NULL;
-> +
-> +    memory_region_init_io(&opb->mr, OBJECT(opb), &opb_unimplemented_ops, opb,
-> +                          NULL, UINT32_MAX);
-> +    address_space_init(&opb->as, &opb->mr, "opb");
-> +
-> +    object_property_set_bool(OBJECT(&opb->fsi), "realized", true, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-
-Redundant local error object
-
-> +    memory_region_add_subregion(&opb->mr, 0x80000000, &opb->fsi.iomem);
-> +
-> +    /* OPB2FSI region */
-> +    /*
-> +     * Avoid endianness issues by mapping each slave's memory region directly.
-> +     * Manually bridging multiple address-spaces causes endian swapping
-> +     * headaches as memory_region_dispatch_read() and
-> +     * memory_region_dispatch_write() correct the endianness based on the
-> +     * target machine endianness and not relative to the device endianness on
-> +     * either side of the bridge.
-> +     */
-> +    /*
-> +     * XXX: This is a bit hairy and will need to be fixed when I sort out the
-> +     * bus/slave relationship and any changes to the CFAM modelling (multiple
-> +     * slaves, LBUS)
-> +     */
-> +    memory_region_add_subregion(&opb->mr, 0xa0000000, &opb->fsi.opb2fsi);
-> +}
-> +
-
-> diff --git a/hw/fsi/trace-events b/hw/fsi/trace-events
-> index d7afef0460..ec9bab2fe8 100644
-> --- a/hw/fsi/trace-events
-> +++ b/hw/fsi/trace-events
-> @@ -9,3 +9,5 @@ fsi_slave_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
->  fsi_slave_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
->  fsi_master_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
->  fsi_master_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
-> +opb_unimplemented_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
-> +opb_unimplemented_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
-
-Please consistently use an 'fsi_' prefix for all trace points, as it
-makes it possible to enable all tracing for this subsystem using a
-wildcard match
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+On Wed, Oct 18, 2023 at 9:45=E2=80=AFPM Michael S. Tsirkin <mst@redhat.com>=
+ wrote:
+>
+> On Wed, Oct 11, 2023 at 07:52:16PM +0200, Eric Auger wrote:
+> > This applies on top of vfio-next:
+> > https://github.com/legoater/qemu/, vfio-next branch
+>
+> virtio things make sense
+>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+>
+> let me know how you want to merge all this.
+>
+>
+>
+> > On x86, when assigning VFIO-PCI devices protected with virtio-iommu
+> > we encounter the case where the guest tries to map IOVAs beyond 48b
+> > whereas the physical VTD IOMMU only supports 48b. This ends up with
+> > VFIO_MAP_DMA failures at qemu level because at kernel level,
+> > vfio_iommu_iova_dma_valid() check returns false on vfio_map_do_map().
+> >
+> > This is due to the fact the virtio-iommu currently unconditionally
+> > exposes an IOVA range of 64b through its config input range fields.
+> >
+> > This series removes this assumption by retrieving the usable IOVA
+> > regions through the VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE UAPI when
+> > a VFIO device is attached. This info is communicated to the
+> > virtio-iommu memory region, transformed into the inversed info, ie.
+> > the host reserved IOVA regions. Then those latter are combined with the
+> > reserved IOVA regions set though the virtio-iommu reserved-regions
+> > property. That way, the guest virtio-iommu driver, unchanged, is
+> > able to probe the whole set of reserved regions and prevent any IOVA
+> > belonging to those ranges from beeing used, achieving the original goal=
+.
+> >
+> > Best Regards
+> >
+> > Eric
+> >
+> > This series can be found at:
+> > https://github.com/eauger/qemu/tree/vfio-next-iommu_geometry-v3
+> >
+> > History:
+> > v2 -> v3:
+> > - rebase on top of vfio-next (including iommufd prereq)
+> > - take into account IOVA range info capability may not be offered by
+> >   old kernel and use nr_iovas =3D -1 to encode that [Alex]
+> > - use GList * everywhere instead of arrays (in the range_inverse_array)
+> >   with the benefice it sorts ranges retrieved from the kernel which are
+> >   not garanteed to be sorted. Rework the tests accordingly [Alex]
+> > - Make sure resv_regions GList is build before the probe() [Jean]
+> >   per device list is first populated with prop resv regions on
+> >   IOMMUDevice creation and then rebuilt on set_iova()
+> > - Add a warning if set_iova builds a valid list after probe was
+> >   called [Jean]
+> > - Build host windows on top of IOVA valid ranges if this info can
+> >   be retrieved from the kernel. As many windows are created as
+> >   valid ranges
+> > v1 -> v2:
+> > - Remove "[PATCH 12/13] virtio-iommu: Resize memory region according
+> >   to the max iova info" which causes way too much trouble: trigger
+> >   a coredump in vhost, causes duplication of IOMMU notifiers causing
+> >   EEXIST vfio_dma_map errors, ... This looks like a bad usage of the
+> >   memory API so I prefer removing this from this series. So I was
+> >   also obliged to remove the vfio_find_hostwin() check in the case
+> >   of an IOMMU.
+> > - Let range_inverse_array() take low/high args instead of hardcoding
+> >   0, UINT64_MAX which both complexifies the algo and the tests.
+> > - Move range function description in header.
+> > - Check that if set_iova_ranges is called several times, new resv
+> >   regions are included in previous ones
+> >
+> > Eric Auger (13):
+> >   memory: Let ReservedRegion use Range
+> >   memory: Introduce memory_region_iommu_set_iova_ranges
+> >   vfio: Collect container iova range info
+> >   virtio-iommu: Rename reserved_regions into prop_resv_regions
+> >   range: Make range_compare() public
+> >   util/reserved-region: Add new ReservedRegion helpers
+> >   virtio-iommu: Introduce per IOMMUDevice reserved regions
+> >   range: Introduce range_inverse_array()
+> >   virtio-iommu: Record whether a probe request has been issued
+> >   virtio-iommu: Implement set_iova_ranges() callback
+> >   virtio-iommu: Consolidate host reserved regions and property set ones
+> >   test: Add some tests for range and resv-mem helpers
+> >   vfio: Remove 64-bit IOVA address space assumption
+> >
+> >  include/exec/memory.h            |  34 +++-
+> >  include/hw/vfio/vfio-common.h    |   2 +
+> >  include/hw/virtio/virtio-iommu.h |   7 +-
+> >  include/qemu/range.h             |  14 ++
+> >  include/qemu/reserved-region.h   |  32 ++++
+> >  hw/core/qdev-properties-system.c |   9 +-
+> >  hw/vfio/common.c                 |  23 ++-
+> >  hw/vfio/container.c              |  67 ++++++-
+> >  hw/virtio/virtio-iommu-pci.c     |   8 +-
+> >  hw/virtio/virtio-iommu.c         | 155 +++++++++++++--
+> >  system/memory.c                  |  13 ++
+> >  tests/unit/test-resv-mem.c       | 318 +++++++++++++++++++++++++++++++
+> >  util/range.c                     |  61 +++++-
+> >  util/reserved-region.c           |  91 +++++++++
+> >  hw/virtio/trace-events           |   1 +
+> >  tests/unit/meson.build           |   1 +
+> >  util/meson.build                 |   1 +
+> >  17 files changed, 791 insertions(+), 46 deletions(-)
+> >  create mode 100644 include/qemu/reserved-region.h
+> >  create mode 100644 tests/unit/test-resv-mem.c
+> >  create mode 100644 util/reserved-region.c
+> >
+> > --
+> > 2.41.0
+>
+>
 

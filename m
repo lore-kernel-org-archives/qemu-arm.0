@@ -1,228 +1,170 @@
-Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp802335ejb;
-        Thu, 19 Oct 2023 14:24:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHvcQ+4d38+3RaXkNyub0nzrSqSmIySfmBS92P01xmj08ioEvfWxRkJ5RbF9FQFQMnRpKC6
-X-Received: by 2002:a05:6830:7187:b0:6b9:a926:4a12 with SMTP id el7-20020a056830718700b006b9a9264a12mr4024003otb.28.1697750658571;
-        Thu, 19 Oct 2023 14:24:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1697750658; cv=none;
+Received: by 2002:a17:906:cf90:b0:9bd:85f7:2662 with SMTP id um16csp802366ejb;
+        Thu, 19 Oct 2023 14:24:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGoQvdetWyopxQD3NUT1/Nz8kUaeGi+ayR6VKuO2BTRjBWCvKCfjTQb30AsnLBGZpuGfq/i
+X-Received: by 2002:a05:6214:d4b:b0:66d:65ae:18f6 with SMTP id 11-20020a0562140d4b00b0066d65ae18f6mr85080qvr.50.1697750662921;
+        Thu, 19 Oct 2023 14:24:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1697750662; cv=none;
         d=google.com; s=arc-20160816;
-        b=iAU/xdu+YAzrhQt/6M7+xsxWx70YE0nxx2GwnRYvc2s/jAew7IF8i8vJzdRXL9nJgp
-         mw8ORmZHI/dC1PMOwswUqaL7qvqPgmbCJQB12WXoVvN6F9niywa9fYc+im8uOgWHqEsa
-         eQdqd/jsvFAkRzUm4EJiuURaU0JFCA6kIuuMgTBAsykWoTnRZOYGLSK7ABpfHCk2kD9x
-         +ludL1YTKquxPiz444KTQHCSB7KZofRLqLYz5j8g1h6NYN99YdNqaq+Cgi1P3kWziClY
-         x8Rg46w04chfazxZxfh13T3VcLHGgvTxVFM3c9Wf3qZVSOSrf9AAsAhcykdh+nQ7FSP9
-         qb2A==
+        b=GdMKcbnRPJ6SqIVATVLrlbcHd6/mUq+KlS1aI4qvEWL0zm2ApHGzCjAoJ4hbQMoHmn
+         02BuzY5M2Bl6S80nfx1be9Cqr8mK2re/DFY1NFC5Ilu9DBIKWDqYRub8Vw0Sm2L7lAZV
+         9ToovDVhbdSxAC3AF8jrh3PXRhiOrkt1gDC12jAB/sMUjwRJ70p7Ao5UUZ0X8/ia2v4u
+         W5jKNdzEdDc8HGjQP17NZ9q8EF6va2CcryfX2ojCntqdMT2AAcdmoK7G4kGbhwIDUppf
+         6V9Uuu1PmX37jUHLQm2Malb4Crxu8LdXCdeNiVGQI5SvDQPKXOlIucMCtJITyedcLTA2
+         t62g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=e1KVZlIcRQGW0XDbXXS/PkAkK9AJc9io1ITINi4/pEc=;
-        fh=em90avnwZxAZh3y74ofYEsa5+N2lx1xWbpCcLvXEFo0=;
-        b=bUqS9x26idjOB8+jelsHKsL/2f6GdVwLv9A8k0f8mlLIZQjCSEAYUsfFshARUqQTV/
-         ja0XBWgEc8nCr+jmjtgRMNV09oMheFSn787jXQION8WzNlys/MWFsiay07sZoGlK/p7L
-         UMdXBllYRXHZiWKAKoGF+cq0EwnRHxwr7CIlaelkXRZbQ/YwABWc3a0YxpTARB8BQ6Eq
-         Xpg5smOAA7+n1mDI3KkuQ858pzpAgYnR4Bax8Y/OlEkryFbsGX4JhYcAITbspOiO1tNt
-         dnR+KeYfgWkZ1XsGBofdUctIeI/Cyr6GKvzjjmloB3/AChrIeJCYok1nKvG2pGjDgUFS
-         CL6w==
+        bh=EAIq9fwE+HBUXOdrKkuK6NI9pJuWSCDleAybIfCpGM4=;
+        fh=PURj5iNFTT2Ys+ENrL2QLsGUVEWEE2wiUjVhZOrMPtg=;
+        b=WKzoiKJufDAgA5M0tzJexYHNioHGizEG8b/NEQ42WL5TYB2685FFXS2mCrX8W7DJ7/
+         bfAwBk6gcRINHVszhNxwPIWsO7TIWAilsJFtJfZhHw1pazxM3Te1tuR8LDSMrlmmqrTg
+         RkpVlztA6/M0s+Do2E/aFnyKTQ6D9Vd4z7TFDV/kvtEelngpgSVGf2b42NtcI1NW0pVN
+         eEnaNPk9/J21vCsb/imBfxZnGQgRrlmSBBr1ZURgEbe4gneOLD9I2gzaQMiYa4Soq1D8
+         RJVCTDb21ejF2C08XUdzWDBYCgC4zNqg1JAYwQI9OnluT8HAC+OI/RABMeJLNG7jkPMD
+         u5Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PlyfPiR7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PSuRZZvt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c15-20020ac87d8f000000b004195ad3b40dsi269086qtd.229.2023.10.19.14.24.18
+        by mx.google.com with ESMTPS id nh12-20020a056214390c00b0066cfbbee518si373860qvb.389.2023.10.19.14.24.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Oct 2023 14:24:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 19 Oct 2023 14:24:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PlyfPiR7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PSuRZZvt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qtaU8-0007CR-R1; Thu, 19 Oct 2023 17:23:16 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qtaTn-0005Lw-U1; Thu, 19 Oct 2023 17:22:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaU6-00073y-Id
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 17:23:14 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaTm-0005DB-VE
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:22:55 -0400
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaU3-0001gG-JI
- for qemu-devel@nongnu.org; Thu, 19 Oct 2023 17:23:14 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-406609df1a6so970445e9.3
- for <qemu-devel@nongnu.org>; Thu, 19 Oct 2023 14:23:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtaTl-0001Tq-5B
+ for qemu-arm@nongnu.org; Thu, 19 Oct 2023 17:22:54 -0400
+Received: by mail-lj1-x236.google.com with SMTP id
+ 38308e7fff4ca-2c5210a1515so2159421fa.0
+ for <qemu-arm@nongnu.org>; Thu, 19 Oct 2023 14:22:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697750589; x=1698355389; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697750571; x=1698355371; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=e1KVZlIcRQGW0XDbXXS/PkAkK9AJc9io1ITINi4/pEc=;
- b=PlyfPiR73/l+jcLWpe2OTLzyWqY4ayVQxyCkR2aPsQCahvDUgqwbQuxQhe0nvSNSaN
- yp+eRb35uJWdzyn4NV0g8VvV2oxdtrV4h1CqKjYy/5dYH4cipUaVJq9nRebKhHUvZg//
- CLBGNOOyZUI8GiRN8d09iJ17FUQX0Wk3GOaTlTyHJDjwRjo7QsnxJHI90uRLERH/TWg/
- 6uuYWWc7zoduTeSqDil1pRXYeOtGbh3gh8vP1Tb5Z08nYXTKWMurgSHIGrrrmDSEbbq/
- lAJhIWRPpYJlHjmQg3CSM5dyv04P+Ul/MSZXrZicInrHUGSuPTauS8CqVBMtRtxRPFhm
- t6Pw==
+ bh=EAIq9fwE+HBUXOdrKkuK6NI9pJuWSCDleAybIfCpGM4=;
+ b=PSuRZZvtf/+4cQrSYMjvDM7kQElQpNV6uK/avnGzAbJXwrFDiC/Bci0nSzsV4LZ7I9
+ HvFD0mnHWN9n1hwMYcZV2+KXQXpckSyFWtYVgDwMFTiRTCFcEObeofWY71IBZ8gyHAHJ
+ d4oMjjLWAPhR5P0m8PSD8pc7MLwaRHejZZLUC7uc8QEkhOGgIEUPpas5qGw9RaJL72S0
+ NslZa95f99EzPUheeKs4KVE++3HCDB/6p9UJRR2DXnZSKGUg+qKJSGzNnHwhqHsPjdXU
+ mQ8wGxzQsYSphPom14JxSufvIh1PIHI5vBbnpn6kk4cwWWsEvIGx/ewz7OsfPMlU/iIx
+ 82cA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697750589; x=1698355389;
+ d=1e100.net; s=20230601; t=1697750571; x=1698355371;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=e1KVZlIcRQGW0XDbXXS/PkAkK9AJc9io1ITINi4/pEc=;
- b=Kx0jeYZos50CCoM+C7Kn+o95Oz49U08cvTMCKPHKNMpU3BLiOEhWkvIm/LjQXH7hbH
- WgLRzxYHDkKrEzjH4m15bKDr2aiTJUUJ9GD+4BBsUShIEwYdP+Bq7Pc6+4H3gNFOodQ6
- GCLPDP3bCAuxCdutPowWQdrPntVppMPVr1UVfG/9dWyw/9wwXaSjyQYO/5bnjNSuR0EO
- zGqjQHEDmfD5ZL/eveiEy5nEL3EwIWzneLn5FSmcLYVO8IaMwno8zciK+OlJXJ9Kbae5
- e1pjt5XbGhpp3aVDD+q4WlaNR5QQuYVHpO6uPIlhGmIS+l+16uNtTN1+DW1/R0JxEWxn
- JHaQ==
-X-Gm-Message-State: AOJu0YyDLCyDCxzTd0zTzpBuqyyUBChUAVSkrJpiWSPdtF/2GO8GE/IM
- INCHKShxquU6oErkMrHUG6Jg+0vVjlvUVcL3gOp+hA==
-X-Received: by 2002:a05:600c:4446:b0:407:7e5f:ffb9 with SMTP id
- v6-20020a05600c444600b004077e5fffb9mr34692wmn.9.1697750589715; 
- Thu, 19 Oct 2023 14:23:09 -0700 (PDT)
+ bh=EAIq9fwE+HBUXOdrKkuK6NI9pJuWSCDleAybIfCpGM4=;
+ b=NfbgduMrK2TY3As45r8gzRSndVn81CyMy73d6dTke3UlMAj8MXEW0tEKRsBXQhYkjC
+ faDFq2h/FNeyHDU+mgLIYM8aNQapNSFDPwlFpxI7eTpm9QhzgETWZID4VUW0fenZJwnL
+ 0EpjEs996klj8k5pBhCflhJgA4RYtbyGeNR39HjTYPEP+a5NeO4auJsPNUl7nfM/NxsY
+ 4Z99s82d6Favg4Zi1hvaj4C2T3fbKbuWAV/wvO3wo2qqIRM1LPiSrnnYWJVm1cINalbY
+ O8uZejPPg0+w/rUIS0TAWSFfEK0pRMj2AWO88YJsS6spa4Uqe7rDbFryUpXzobCx1PZP
+ WlVQ==
+X-Gm-Message-State: AOJu0YwTBfL4jy1GkReCqVlH10rqcNmaWCJRw0X8n6RdVlg9Us9W5pjD
+ S744hyJAMp7r3mip7H40W/+s+w==
+X-Received: by 2002:a2e:3a03:0:b0:2c5:1482:719a with SMTP id
+ h3-20020a2e3a03000000b002c51482719amr133394lja.21.1697750571533; 
+ Thu, 19 Oct 2023 14:22:51 -0700 (PDT)
 Received: from m1x-phil.lan (176-131-216-177.abo.bbox.fr. [176.131.216.177])
  by smtp.gmail.com with ESMTPSA id
- o12-20020a05600c4fcc00b0040775501256sm530184wmq.16.2023.10.19.14.23.08
+ b12-20020a05600c150c00b0040586360a36sm5254311wmg.17.2023.10.19.14.22.49
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 19 Oct 2023 14:23:09 -0700 (PDT)
+ Thu, 19 Oct 2023 14:22:51 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, qemu-block@nongnu.org,
  qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 44/46] hw/dma: Declare link using static DEFINE_PROP_LINK()
- macro
-Date: Thu, 19 Oct 2023 23:18:09 +0200
-Message-ID: <20231019211814.30576-45-philmd@linaro.org>
+ Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>
+Subject: [PULL 41/46] hw/block/vhost-user-blk: Use DEVICE() / VIRTIO_DEVICE()
+ macros
+Date: Thu, 19 Oct 2023 23:18:06 +0200
+Message-ID: <20231019211814.30576-42-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231019211814.30576-1-philmd@linaro.org>
 References: <20231019211814.30576-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::236;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x236.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T0aAmpltqY0F
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Q8XQD5LKmEzt
 
-Declare link statically using DEFINE_PROP_LINK().
+Access QOM parent with the proper QOM [VIRTIO_]DEVICE() macros.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-Id: <20231017140150.44995-6-philmd@linaro.org>
+Message-Id: <20231017140150.44995-3-philmd@linaro.org>
 ---
- hw/dma/xilinx_axidma.c |  6 ++----
- hw/dma/xlnx-zdma.c     |  7 ++-----
- hw/dma/xlnx_csu_dma.c  | 13 ++++---------
- 3 files changed, 8 insertions(+), 18 deletions(-)
+ hw/block/vhost-user-blk.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-index 12c90267df..0ae056ed06 100644
---- a/hw/dma/xilinx_axidma.c
-+++ b/hw/dma/xilinx_axidma.c
-@@ -577,10 +577,6 @@ static void xilinx_axidma_init(Object *obj)
-     object_initialize_child(OBJECT(s), "axistream-control-connected-target",
-                             &s->rx_control_dev,
-                             TYPE_XILINX_AXI_DMA_CONTROL_STREAM);
--    object_property_add_link(obj, "dma", TYPE_MEMORY_REGION,
--                             (Object **)&s->dma_mr,
--                             qdev_prop_allow_set_link_before_realize,
--                             OBJ_PROP_LINK_STRONG);
+diff --git a/hw/block/vhost-user-blk.c b/hw/block/vhost-user-blk.c
+index eecf3f7a81..4b37e26120 100644
+--- a/hw/block/vhost-user-blk.c
++++ b/hw/block/vhost-user-blk.c
+@@ -405,7 +405,7 @@ static void vhost_user_blk_event(void *opaque, QEMUChrEvent event)
  
-     sysbus_init_irq(sbd, &s->streams[0].irq);
-     sysbus_init_irq(sbd, &s->streams[1].irq);
-@@ -596,6 +592,8 @@ static Property axidma_properties[] = {
-                      tx_data_dev, TYPE_STREAM_SINK, StreamSink *),
-     DEFINE_PROP_LINK("axistream-control-connected", XilinxAXIDMA,
-                      tx_control_dev, TYPE_STREAM_SINK, StreamSink *),
-+    DEFINE_PROP_LINK("dma", XilinxAXIDMA, dma_mr,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-     DEFINE_PROP_END_OF_LIST(),
- };
+ static int vhost_user_blk_realize_connect(VHostUserBlk *s, Error **errp)
+ {
+-    DeviceState *dev = &s->parent_obj.parent_obj;
++    DeviceState *dev = DEVICE(s);
+     int ret;
  
-diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
-index 4eb7f66e9f..84c0083013 100644
---- a/hw/dma/xlnx-zdma.c
-+++ b/hw/dma/xlnx-zdma.c
-@@ -795,11 +795,6 @@ static void zdma_init(Object *obj)
-                           TYPE_XLNX_ZDMA, ZDMA_R_MAX * 4);
-     sysbus_init_mmio(sbd, &s->iomem);
-     sysbus_init_irq(sbd, &s->irq_zdma_ch_imr);
--
--    object_property_add_link(obj, "dma", TYPE_MEMORY_REGION,
--                             (Object **)&s->dma_mr,
--                             qdev_prop_allow_set_link_before_realize,
--                             OBJ_PROP_LINK_STRONG);
- }
+     s->connected = false;
+@@ -423,7 +423,7 @@ static int vhost_user_blk_realize_connect(VHostUserBlk *s, Error **errp)
+     assert(s->connected);
  
- static const VMStateDescription vmstate_zdma = {
-@@ -817,6 +812,8 @@ static const VMStateDescription vmstate_zdma = {
- 
- static Property zdma_props[] = {
-     DEFINE_PROP_UINT32("bus-width", XlnxZDMA, cfg.bus_width, 64),
-+    DEFINE_PROP_LINK("dma", XlnxZDMA, dma_mr,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
-index 88002698a1..e89089821a 100644
---- a/hw/dma/xlnx_csu_dma.c
-+++ b/hw/dma/xlnx_csu_dma.c
-@@ -702,6 +702,10 @@ static Property xlnx_csu_dma_properties[] = {
-      * which channel the device is connected to.
-      */
-     DEFINE_PROP_BOOL("is-dst", XlnxCSUDMA, is_dst, true),
-+    DEFINE_PROP_LINK("stream-connected-dma", XlnxCSUDMA, tx_dev,
-+                     TYPE_STREAM_SINK, StreamSink *),
-+    DEFINE_PROP_LINK("dma", XlnxCSUDMA, dma_mr,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-@@ -728,15 +732,6 @@ static void xlnx_csu_dma_init(Object *obj)
- 
-     memory_region_init(&s->iomem, obj, TYPE_XLNX_CSU_DMA,
-                        XLNX_CSU_DMA_R_MAX * 4);
--
--    object_property_add_link(obj, "stream-connected-dma", TYPE_STREAM_SINK,
--                             (Object **)&s->tx_dev,
--                             qdev_prop_allow_set_link_before_realize,
--                             OBJ_PROP_LINK_STRONG);
--    object_property_add_link(obj, "dma", TYPE_MEMORY_REGION,
--                             (Object **)&s->dma_mr,
--                             qdev_prop_allow_set_link_before_realize,
--                             OBJ_PROP_LINK_STRONG);
- }
- 
- static const TypeInfo xlnx_csu_dma_info = {
+     ret = vhost_dev_get_config(&s->dev, (uint8_t *)&s->blkcfg,
+-                               s->parent_obj.config_len, errp);
++                               VIRTIO_DEVICE(s)->config_len, errp);
+     if (ret < 0) {
+         qemu_chr_fe_disconnect(&s->chardev);
+         vhost_dev_cleanup(&s->dev);
 -- 
 2.41.0
 
